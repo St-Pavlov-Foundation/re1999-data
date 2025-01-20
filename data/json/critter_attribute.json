@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "效率",
+    "icon": "critter_manufacture_attricon_1"
+  },
+  {
+    "id": 2,
+    "name": "耐性",
+    "icon": "critter_manufacture_attricon_2"
+  },
+  {
+    "id": 3,
+    "name": "专长",
+    "icon": "critter_manufacture_attricon_3"
+  }
+]

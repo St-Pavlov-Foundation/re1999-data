@@ -1,0 +1,236 @@
+[
+  {
+    "activityId": 11206,
+    "id": 1280101,
+    "name": "升阶训练",
+    "tabId": 1,
+    "openDay": 1,
+    "icon": "img_photo_1shengjie",
+    "des": "将咒语升至三阶以获取胜利。当然，效率的考量也是战斗的必要一环。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280102,
+    "name": "仪式训练",
+    "tabId": 2,
+    "openDay": 1,
+    "icon": "img_photo_2yishi",
+    "des": "咒语的融合、移动、使用——想必你已明了蕴蓄仪式的方法，精进于此并获取胜利。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280103,
+    "name": "克制训练",
+    "tabId": 3,
+    "openDay": 1,
+    "icon": "img_photo_7shengcun",
+    "des": "灵感克制是神秘术战斗中的重要制胜因素，需将此类规则熟稔于心。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280104,
+    "name": "增益训练",
+    "tabId": 4,
+    "openDay": 1,
+    "icon": "img_photo_4zengyi",
+    "des": "战斗中需善用神秘术增益自身，增益类咒语的叠加将使我方攻击效果更为显著。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280105,
+    "name": "减益训练",
+    "tabId": 5,
+    "openDay": 2,
+    "icon": "img_photo_5shengcun",
+    "des": "战斗中需善用神秘术减益敌人，减益类咒语的叠加将使我方攻击效果更为显著。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280106,
+    "name": "激情训练",
+    "tabId": 6,
+    "openDay": 3,
+    "icon": "img_photo_3xiaojian",
+    "des": "敌人的“至终的仪式”将为其扭转战局，需选用恰当的咒语阻止仪式的施行。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1280107,
+    "name": "爆发训练",
+    "tabId": 7,
+    "openDay": 4,
+    "icon": "img_photo_6baofa",
+    "des": "敌人具备极为难缠的回复能力，需尽可能于单回合内造成更大创伤以击败敌人。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290101,
+    "name": "升阶训练",
+    "tabId": 1,
+    "openDay": 1,
+    "icon": "img_photo_1shengjie",
+    "des": "将咒语升至三阶以获取胜利。当然，效率的考量也是战斗的必要一环。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290102,
+    "name": "仪式训练",
+    "tabId": 2,
+    "openDay": 1,
+    "icon": "img_photo_2yishi",
+    "des": "咒语的融合、移动、使用——想必你已明了蕴蓄仪式的方法，精进于此并获取胜利。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290103,
+    "name": "克制训练",
+    "tabId": 3,
+    "openDay": 1,
+    "icon": "img_photo_7shengcun",
+    "des": "灵感克制是神秘术战斗中的重要制胜因素，需将此类规则熟稔于心。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290104,
+    "name": "增益训练",
+    "tabId": 4,
+    "openDay": 1,
+    "icon": "img_photo_4zengyi",
+    "des": "战斗中需善用神秘术增益自身，增益类咒语的叠加将使我方攻击效果更为显著。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290105,
+    "name": "减益训练",
+    "tabId": 5,
+    "openDay": 2,
+    "icon": "img_photo_5shengcun",
+    "des": "战斗中需善用神秘术减益敌人，减益类咒语的叠加将使我方攻击效果更为显著。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290106,
+    "name": "激情训练",
+    "tabId": 6,
+    "openDay": 3,
+    "icon": "img_photo_3xiaojian",
+    "des": "敌人的“至终的仪式”将为其扭转战局，需选用恰当的咒语阻止仪式的施行。"
+  },
+  {
+    "activityId": 11206,
+    "id": 1290107,
+    "name": "爆发训练",
+    "tabId": 7,
+    "openDay": 4,
+    "icon": "img_photo_6baofa",
+    "des": "敌人具备极为难缠的回复能力，需尽可能于单回合内造成更大创伤以击败敌人。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390101,
+    "name": "暴击试炼",
+    "tabId": 1,
+    "openDay": 1,
+    "icon": "img_photo_1baoji",
+    "des": "在此，神秘学家们能在瞬时爆发出更强大的力量。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390102,
+    "name": "中毒试炼",
+    "tabId": 2,
+    "openDay": 1,
+    "icon": "img_photo_2zhongdu",
+    "des": "在此，毒性可以叠加更多层，箱中的药剂师们应会为此而雀跃。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390103,
+    "name": "护盾试炼",
+    "tabId": 3,
+    "openDay": 1,
+    "icon": "img_photo_3hudun",
+    "des": "在此，你拥有了更坚韧的护盾，它能为你抵挡更多。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390104,
+    "name": "极限试炼",
+    "tabId": 4,
+    "openDay": 2,
+    "icon": "img_photo_4jixian",
+    "des": "在此，越接近绝境，你便变得更加强大。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390105,
+    "name": "治疗试炼",
+    "tabId": 5,
+    "openDay": 3,
+    "icon": "img_photo_5zhiliao",
+    "des": "在此，你的敌人十分凶猛，但你可以信赖伙伴们的治疗。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390106,
+    "name": "激情试炼",
+    "tabId": 6,
+    "openDay": 4,
+    "icon": "img_photo_6jiqing",
+    "des": "在此，你谙熟于如何蕴蓄激情，这帮助你走得更远。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390201,
+    "name": "暴击试炼",
+    "tabId": 1,
+    "openDay": 1,
+    "icon": "img_photo_1baoji",
+    "des": "在此，神秘学家们能在瞬时爆发出更强大的力量。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390202,
+    "name": "中毒试炼",
+    "tabId": 2,
+    "openDay": 1,
+    "icon": "img_photo_2zhongdu",
+    "des": "在此，毒性可以叠加更多层，箱中的药剂师们应会为此而雀跃。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390203,
+    "name": "护盾试炼",
+    "tabId": 3,
+    "openDay": 1,
+    "icon": "img_photo_3hudun",
+    "des": "在此，你拥有了更坚韧的护盾，它能为你抵挡更多。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390204,
+    "name": "极限试炼",
+    "tabId": 4,
+    "openDay": 2,
+    "icon": "img_photo_4jixian",
+    "des": "在此，越接近绝境，你便变得更加强大。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390205,
+    "name": "治疗试炼",
+    "tabId": 5,
+    "openDay": 3,
+    "icon": "img_photo_5zhiliao",
+    "des": "在此，你的敌人十分凶猛，但你可以信赖伙伴们的治疗。"
+  },
+  {
+    "activityId": 11307,
+    "id": 1390206,
+    "name": "激情试炼",
+    "tabId": 6,
+    "openDay": 4,
+    "icon": "img_photo_6jiqing",
+    "des": "在此，你谙熟于如何蕴蓄激情，这帮助你走得更远。"
+  }
+]

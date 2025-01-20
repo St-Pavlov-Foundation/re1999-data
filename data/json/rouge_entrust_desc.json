@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "desc": "赚取<color=#FFB052>▩1%s金雀子儿</color>，当前已赚取<color=#FFB052>▩2%s金雀子儿</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "赚取<color=#FFB052>▩1%s金雀子儿</color>，当前已赚取<color=#FFB052>▩2%s金雀子儿</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 2,
+    "desc": "累计失去<color=#FFB052>▩1%s金雀子儿</color>，当前已经失去<color=#FFB052>▩2%s金雀子儿</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "累计失去<color=#FFB052>▩1%s金雀子儿</color>，当前已经失去<color=#FFB052>▩2%s金雀子儿</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 3,
+    "desc": "进入<color=#FFB052>▩1%s次▩2%s</color>路径点，当前已进入<color=#FFB052>▩3%s次</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "进入<color=#FFB052>▩1%s次▩2%s</color>路径点，当前已进入<color=#FFB052>▩3%s次</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 4,
+    "desc": "<color=#FFB052>成功抵达</color>下个休整地域",
+    "finishDesc": "<color=#FFB052>成功抵达</color>下个休整地域"
+  },
+  {
+    "id": 5,
+    "desc": "获得<color=#FFB052>▩1%s媒介</color>，当前已获得<color=#FFB052>▩2%s媒介</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "获得<color=#FFB052>▩1%s媒介</color>，当前已获得<color=#FFB052>▩2%s媒介</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 6,
+    "desc": "累计失去<color=#FFB052>▩1%s媒介</color>，当前已经失去<color=#FFB052>▩2%s媒介</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "累计失去<color=#FFB052>▩1%s媒介</color>，当前已经失去<color=#FFB052>▩2%s媒介</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 7,
+    "desc": "完成<color=#FFB052>▩1%s</color>事件\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "完成<color=#FFB052>▩1%s</color>事件"
+  },
+  {
+    "id": 8,
+    "desc": "获得<color=#FFB052>▩1%s件造物</color>，当前已获得<color=#FFB052>▩2%s件</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "获得<color=#FFB052>▩1%s件造物</color>，当前已获得<color=#FFB052>▩2%s件</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 9,
+    "desc": "累计获得<color=#FFB052>▩1%s个完全增强的声象</color>，当前已获得<color=#FFB052>▩2%s个</color>\n(完成后到达下个休整地域领取奖励）",
+    "finishDesc": "获得<color=#FFB052>▩1%s个完全增强的声象</color>，当前已获得<color=#FFB052>▩2%s个</color>\n<color=#FFB052>（已完成）</color>"
+  }
+]

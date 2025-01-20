@@ -1,0 +1,44 @@
+[
+  {
+    "id": 23220101,
+    "buildingId": 22202,
+    "itemId": 232203,
+    "name": "夏日甜心",
+    "useDesc": "皮卡运输的装饰风格。",
+    "desc": "撒点儿砂糖、混入奶油，再淋上一大勺草莓酱。亲爱的，您的车喷漆完工啦！",
+    "icon": "22205",
+    "rewardIcon": "22205",
+    "rare": 4,
+    "nameEn": "Summer Sweetheart",
+    "path": "scenes/m_s07_xiaowu/prefab/building/2_2_simulate/simulate_pika_02.prefab",
+    "vehicleId": 22205
+  },
+  {
+    "id": 23220102,
+    "buildingId": 22203,
+    "itemId": 232204,
+    "name": "自由漂流",
+    "useDesc": "货船运输的装饰风格。",
+    "desc": "水手们常哼的那首歌，忧伤绵长，无论航行了多远、多久，它们始终挂念着回家的路线。",
+    "icon": "22206",
+    "rewardIcon": "22206",
+    "rare": 4,
+    "nameEn": "Free Drifter",
+    "path": "scenes/m_s07_xiaowu/prefab/building/2_2_simulate/simulate_huochuan_02.prefab",
+    "vehicleId": 22206
+  },
+  {
+    "id": 23220103,
+    "buildingId": 22204,
+    "itemId": 232205,
+    "name": "落日融化前",
+    "useDesc": "直升机运输的装饰风格。",
+    "desc": "穿越赤道，横跨地平线，往上，再往上，趁落日西沉前！",
+    "icon": "22207",
+    "rewardIcon": "22207",
+    "rare": 5,
+    "nameEn": "Sunchaser",
+    "path": "scenes/m_s07_xiaowu/prefab/building/2_2_simulate/simulate_zhishengji_02.prefab",
+    "vehicleId": 22207
+  }
+]

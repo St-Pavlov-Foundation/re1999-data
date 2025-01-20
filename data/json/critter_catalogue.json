@@ -1,0 +1,541 @@
+[
+  {
+    "id": 100000,
+    "type": 1,
+    "parentId": 0,
+    "name": "魔精门",
+    "baseCard": ""
+  },
+  {
+    "id": 110000,
+    "type": 2,
+    "parentId": 100000,
+    "name": "裂生纲",
+    "baseCard": ""
+  },
+  {
+    "id": 120000,
+    "type": 2,
+    "parentId": 100000,
+    "name": "感染纲",
+    "baseCard": ""
+  },
+  {
+    "id": 130000,
+    "type": 2,
+    "parentId": 100000,
+    "name": "原生纲",
+    "baseCard": ""
+  },
+  {
+    "id": 131000,
+    "type": 3,
+    "parentId": 130000,
+    "name": "飞行原生魔精亚纲",
+    "baseCard": ""
+  },
+  {
+    "id": 132000,
+    "type": 3,
+    "parentId": 130000,
+    "name": "水生原生魔精亚纲",
+    "baseCard": ""
+  },
+  {
+    "id": 133000,
+    "type": 3,
+    "parentId": 130000,
+    "name": "陆生原生魔精亚纲",
+    "baseCard": ""
+  },
+  {
+    "id": 110100,
+    "type": 4,
+    "parentId": 110000,
+    "name": "种子目",
+    "baseCard": ""
+  },
+  {
+    "id": 120100,
+    "type": 4,
+    "parentId": 120000,
+    "name": "啮齿目",
+    "baseCard": ""
+  },
+  {
+    "id": 120200,
+    "type": 4,
+    "parentId": 120000,
+    "name": "两栖目",
+    "baseCard": ""
+  },
+  {
+    "id": 131100,
+    "type": 4,
+    "parentId": 131000,
+    "name": "妖精目",
+    "baseCard": ""
+  },
+  {
+    "id": 131200,
+    "type": 4,
+    "parentId": 131000,
+    "name": "飞行奇兽目",
+    "baseCard": ""
+  },
+  {
+    "id": 131300,
+    "type": 4,
+    "parentId": 131000,
+    "name": "鸟目",
+    "baseCard": ""
+  },
+  {
+    "id": 132100,
+    "type": 4,
+    "parentId": 132000,
+    "name": "两栖目",
+    "baseCard": ""
+  },
+  {
+    "id": 132200,
+    "type": 4,
+    "parentId": 132000,
+    "name": "海生目",
+    "baseCard": ""
+  },
+  {
+    "id": 133100,
+    "type": 4,
+    "parentId": 133000,
+    "name": "灵长目",
+    "baseCard": ""
+  },
+  {
+    "id": 133200,
+    "type": 4,
+    "parentId": 133000,
+    "name": "地下目",
+    "baseCard": ""
+  },
+  {
+    "id": 133300,
+    "type": 4,
+    "parentId": 133000,
+    "name": "奇兽目",
+    "baseCard": ""
+  },
+  {
+    "id": 110110,
+    "type": 5,
+    "parentId": 110100,
+    "name": "天蛾人鳞粉科",
+    "baseCard": ""
+  },
+  {
+    "id": 120110,
+    "type": 5,
+    "parentId": 120100,
+    "name": "亚鼠科",
+    "baseCard": ""
+  },
+  {
+    "id": 120210,
+    "type": 5,
+    "parentId": 120200,
+    "name": "类蛙科",
+    "baseCard": ""
+  },
+  {
+    "id": 131110,
+    "type": 5,
+    "parentId": 131100,
+    "name": "牙仙科",
+    "baseCard": ""
+  },
+  {
+    "id": 131210,
+    "type": 5,
+    "parentId": 131200,
+    "name": "类鳐科",
+    "baseCard": ""
+  },
+  {
+    "id": 131310,
+    "type": 5,
+    "parentId": 131300,
+    "name": "类鸟科",
+    "baseCard": ""
+  },
+  {
+    "id": 131320,
+    "type": 5,
+    "parentId": 131300,
+    "name": "鸠鸽科",
+    "baseCard": ""
+  },
+  {
+    "id": 131330,
+    "type": 5,
+    "parentId": 131300,
+    "name": "鹦鹉科",
+    "baseCard": ""
+  },
+  {
+    "id": 132110,
+    "type": 5,
+    "parentId": 132100,
+    "name": "类鱼科",
+    "baseCard": ""
+  },
+  {
+    "id": 132120,
+    "type": 5,
+    "parentId": 132100,
+    "name": "类蜥科",
+    "baseCard": ""
+  },
+  {
+    "id": 132130,
+    "type": 5,
+    "parentId": 132100,
+    "name": "类蟹科",
+    "baseCard": ""
+  },
+  {
+    "id": 132140,
+    "type": 5,
+    "parentId": 132100,
+    "name": "类蜗牛科",
+    "baseCard": ""
+  },
+  {
+    "id": 133110,
+    "type": 5,
+    "parentId": 133100,
+    "name": "类猿科",
+    "baseCard": ""
+  },
+  {
+    "id": 133210,
+    "type": 5,
+    "parentId": 133200,
+    "name": "虫科",
+    "baseCard": ""
+  },
+  {
+    "id": 133310,
+    "type": 5,
+    "parentId": 133300,
+    "name": "类犬科",
+    "baseCard": ""
+  },
+  {
+    "id": 133320,
+    "type": 5,
+    "parentId": 133300,
+    "name": "卡邦克鲁科",
+    "baseCard": ""
+  },
+  {
+    "id": 133330,
+    "type": 5,
+    "parentId": 133300,
+    "name": "类植物科",
+    "baseCard": ""
+  },
+  {
+    "id": 133340,
+    "type": 5,
+    "parentId": 133300,
+    "name": "天蛾人科",
+    "baseCard": ""
+  },
+  {
+    "id": 133350,
+    "type": 5,
+    "parentId": 133300,
+    "name": "类兔科",
+    "baseCard": ""
+  },
+  {
+    "id": 133360,
+    "type": 5,
+    "parentId": 133300,
+    "name": "无机物科",
+    "baseCard": ""
+  },
+  {
+    "id": 133370,
+    "type": 5,
+    "parentId": 133300,
+    "name": "幽灵科",
+    "baseCard": ""
+  },
+  {
+    "id": 133380,
+    "type": 5,
+    "parentId": 133300,
+    "name": "类猫科",
+    "baseCard": ""
+  },
+  {
+    "id": 110111,
+    "type": 6,
+    "parentId": 110110,
+    "name": "鳞粉种子属",
+    "baseCard": ""
+  },
+  {
+    "id": 120111,
+    "type": 6,
+    "parentId": 120110,
+    "name": "犀牛角属",
+    "baseCard": ""
+  },
+  {
+    "id": 120211,
+    "type": 6,
+    "parentId": 120210,
+    "name": "小型拉夫兰蛙人属",
+    "baseCard": ""
+  },
+  {
+    "id": 131111,
+    "type": 6,
+    "parentId": 131110,
+    "name": "牙仙属",
+    "baseCard": ""
+  },
+  {
+    "id": 131211,
+    "type": 6,
+    "parentId": 131210,
+    "name": "奥利图欧属",
+    "baseCard": ""
+  },
+  {
+    "id": 131311,
+    "type": 6,
+    "parentId": 131310,
+    "name": "傻瓜鸟属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131312,
+    "type": 6,
+    "parentId": 131310,
+    "name": "针脚花属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131313,
+    "type": 6,
+    "parentId": 131310,
+    "name": "三脚架鸟属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131314,
+    "type": 6,
+    "parentId": 131310,
+    "name": "特里波德罗属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131315,
+    "type": 6,
+    "parentId": 131310,
+    "name": "尖峰钻子属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131321,
+    "type": 6,
+    "parentId": 131320,
+    "name": "渡渡鸟属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 131331,
+    "type": 6,
+    "parentId": 131330,
+    "name": "毛腿鹦鹉属",
+    "baseCard": "room_handbook_cardbg_2"
+  },
+  {
+    "id": 132111,
+    "type": 6,
+    "parentId": 132110,
+    "name": "基基图克属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132112,
+    "type": 6,
+    "parentId": 132110,
+    "name": "毛鱼属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132113,
+    "type": 6,
+    "parentId": 132110,
+    "name": "阿邦·阿库属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132121,
+    "type": 6,
+    "parentId": 132120,
+    "name": "奇罗谷怪蜥属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132122,
+    "type": 6,
+    "parentId": 132120,
+    "name": "魔鬼蜥蜴属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132131,
+    "type": 6,
+    "parentId": 132130,
+    "name": "招潮蟹属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 132141,
+    "type": 6,
+    "parentId": 132140,
+    "name": "萨尔玛提克蜗牛属",
+    "baseCard": "room_handbook_cardbg_3"
+  },
+  {
+    "id": 133111,
+    "type": 6,
+    "parentId": 133110,
+    "name": "阿尔戈佩尔特属",
+    "baseCard": ""
+  },
+  {
+    "id": 133211,
+    "type": 6,
+    "parentId": 133210,
+    "name": "林德虫属",
+    "baseCard": ""
+  },
+  {
+    "id": 133212,
+    "type": 6,
+    "parentId": 133210,
+    "name": "沙米尔蠕虫属",
+    "baseCard": ""
+  },
+  {
+    "id": 133311,
+    "type": 6,
+    "parentId": 133310,
+    "name": "提科特勒属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133312,
+    "type": 6,
+    "parentId": 133310,
+    "name": "鸣叫茶壶犬属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133313,
+    "type": 6,
+    "parentId": 133310,
+    "name": "斧柄猎犬属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133314,
+    "type": 6,
+    "parentId": 133310,
+    "name": "山坡古格属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133315,
+    "type": 6,
+    "parentId": 133310,
+    "name": "双头狼属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133321,
+    "type": 6,
+    "parentId": 133320,
+    "name": "卡邦克鲁属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133331,
+    "type": 6,
+    "parentId": 133330,
+    "name": "仙人掌猫属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133332,
+    "type": 6,
+    "parentId": 133330,
+    "name": "食人树属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133341,
+    "type": 6,
+    "parentId": 133340,
+    "name": "凶兆·天蛾人属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133351,
+    "type": 6,
+    "parentId": 133350,
+    "name": "鹿角兔属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133352,
+    "type": 6,
+    "parentId": 133350,
+    "name": "杰克巨兔属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133361,
+    "type": 6,
+    "parentId": 133360,
+    "name": "雕像属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133371,
+    "type": 6,
+    "parentId": 133370,
+    "name": "幽灵树精属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133381,
+    "type": 6,
+    "parentId": 133380,
+    "name": "天使猫属",
+    "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133382,
+    "type": 6,
+    "parentId": 133380,
+    "name": "风暴猫属",
+    "baseCard": "room_handbook_cardbg_1"
+  }
+]

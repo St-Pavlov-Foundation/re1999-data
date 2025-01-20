@@ -1,0 +1,532 @@
+[
+  {
+    "id": 30001,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "获得年轮切片*15",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "101",
+    "coinValue": -15
+  },
+  {
+    "id": 30002,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "完成2场角斗后，获得年轮切片*20",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "102",
+    "coinValue": -15
+  },
+  {
+    "id": 30003,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "从赛后补给间累计购买3个造物后，返还年轮切片*20",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "103",
+    "coinValue": -15
+  },
+  {
+    "id": 30004,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "从赛后补给间累计招募3组偶人后，返还年轮切片*20",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "104",
+    "coinValue": -15
+  },
+  {
+    "id": 30005,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "失去1次参与机会后，获得年轮切片*12",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "105",
+    "coinValue": -12
+  },
+  {
+    "id": 30006,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "时运的风帆",
+    "desc": "重新获得1次参与机会（无法高于上限）",
+    "icon": "act174_pick_bufficon_5",
+    "effects": "106",
+    "coinValue": 0
+  },
+  {
+    "id": 30007,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " Musae Ⅲ 赞助提供",
+    "desc": "赛后补给间每次刷新后，至少出现1个<#B8945F>妙想</color>品质的造物",
+    "icon": "act174_pick_bufficon_3",
+    "effects": "107",
+    "coinValue": 0
+  },
+  {
+    "id": 30008,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " Musae Ⅲ 赞助提供",
+    "desc": "进入赛后补给间时，前2次刷新免费",
+    "icon": "act174_pick_bufficon_3",
+    "effects": "108",
+    "coinValue": 0
+  },
+  {
+    "id": 30009,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " Musae Ⅲ 赞助提供",
+    "desc": "每次刷新赛后补给间后，30%概率使下次刷新免费",
+    "icon": "act174_pick_bufficon_3",
+    "effects": "109",
+    "coinValue": 0
+  },
+  {
+    "id": 30010,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " Musae Ⅲ 赞助提供",
+    "desc": "赛后补给间刷新价格降低40%",
+    "icon": "act174_pick_bufficon_3",
+    "effects": "110",
+    "coinValue": 0
+  },
+  {
+    "id": 30011,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "高效筹资",
+    "desc": "70%概率获得年轮切片*12，20%概率获得年轮切片*20，10%概率获得年轮切片*30",
+    "icon": "act174_pick_bufficon_1",
+    "effects": "112",
+    "coinValue": -15
+  },
+  {
+    "id": 30012,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " Musae Ⅲ 赞助提供",
+    "desc": "60%概率获得<#8D6993>精巧</color>品质的造物，40%概率获得<#B8945F>妙想</color>品质的造物",
+    "icon": "act174_pick_bufficon_3",
+    "effects": "113",
+    "coinValue": 0
+  },
+  {
+    "id": 30013,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "来自拉普拉斯",
+    "desc": "完成2场角斗后，重新选择高级赞助商替换该赞助商",
+    "icon": "act174_pick_bufficon_4",
+    "effects": "114",
+    "coinValue": 0
+  },
+  {
+    "id": 30014,
+    "season": "2,3",
+    "rare": "1",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n首回合开始时，使随机敌方失去10%最大生命，触发3次",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30015,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n进入战斗时，使己方全体获得2层【无形无影】",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30016,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "乌卢鲁的赠予",
+    "desc": "随机招募3个不高于5星的偶人",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "201",
+    "coinValue": 0
+  },
+  {
+    "id": 30017,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募小春雀儿（若已招募小春雀儿，则获得年轮切片*12）\n小春雀儿新增洞悉效果：\n至终的仪式吸血率、穿透率提升50%；\n其他友方主动使用至终的仪式攻击后，对主目标追加释放自身至终的仪式",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "202|203",
+    "coinValue": 0
+  },
+  {
+    "id": 30018,
+    "season": "2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募夏利（若已招募夏利，则获得年轮切片*12）\n夏利洞悉Ⅲ效果变更：\n攻击后对自身造成最大生命值10%的本源创伤，之后对敌方全体造成1.5倍伤害，回合结束时自身回复20%已损失生命",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "204|205",
+    "coinValue": 0
+  },
+  {
+    "id": 30019,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募柏林以东（若已招募柏林以东，则获得年轮切片*12）\n柏林以东新增洞悉效果：\n己方角色每次攻击后，赋予目标1层【聚焦·削弱】；自身攻击携带20层【聚焦·削弱】的目标后，激情+1",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "206|207",
+    "coinValue": 0
+  },
+  {
+    "id": 30020,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "乌卢鲁的赠予",
+    "desc": "招募维拉（若已招募维拉，则获得年轮切片*15）",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "208",
+    "coinValue": 0
+  },
+  {
+    "id": 30021,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "乌卢鲁的赠予",
+    "desc": "招募牙仙（若已招募牙仙，则获得年轮切片*15）",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "209",
+    "coinValue": 0
+  },
+  {
+    "id": 30024,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "乌卢鲁的赠予",
+    "desc": "获得3个随机<#587FA1>寻常</color>品质的造物",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "301",
+    "coinValue": 0
+  },
+  {
+    "id": 30025,
+    "season": "2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得扎人的毛线帽造物，\n效果变为进入战斗时，使自身与编号1号位角色获得10层【汲取】和5层【荆棘】",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "302|303",
+    "coinValue": 0
+  },
+  {
+    "id": 30026,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得皇家马蹄铁造物，\n效果变为己方角色受到至终的仪式攻击时，受到伤害降低50%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "304|305",
+    "coinValue": 0
+  },
+  {
+    "id": 30027,
+    "season": "1,2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得兔头弩箭造物，\n效果变为自身使用2/3阶咒语后，使自身和编号1号位角色获得【咒语强化】，持续2回合",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "306|307",
+    "coinValue": 0
+  },
+  {
+    "id": 30028,
+    "season": "2,3",
+    "rare": "1",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得口水喷瓶造物，\n效果变为首回合开始时，编号1号位角色，获得【嘲讽】，持续6回合",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "308|309",
+    "coinValue": 0
+  },
+  {
+    "id": 30030,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "开始寻找对手后，己方未携带造物的角色，临时获得随机<#587FA1>寻常</color>造物",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "115",
+    "coinValue": 0
+  },
+  {
+    "id": 30031,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n进入战斗时，每有1个候补选手，使己方角色造成伤害+1%",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30032,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n进入战斗时，每有1个可用造物，使己方最前方角色受创减免+2%",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30034,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n进入战斗时，非6星角色造成伤害+40%",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30038,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n进入战斗时，编号1号位角色攻击和现实、精神防御提升30%，最大生命提升100%，行动点+1；编号2、3、4号位角色失去100%最大生命",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30039,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n己方任意角色退场后，己方最前方角色伤害提升50%（可叠加）",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30040,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n回合开始时，使己方随机角色激情+1，触发2次",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30041,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n从第4回合开始，每回合己方角色造成伤害提升20%（可叠加）",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30042,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n己方角色激情上限&至终的仪式消耗激情-1",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30043,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "战斗效果：\n己方角色释放至终的仪式后，激情+1",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30044,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": " 自信良药",
+    "desc": "己方角色失去【无形无影】后，获得1层【无形无影】（每场战斗最多触发3次）",
+    "icon": "act174_pick_bufficon_2",
+    "effects": "",
+    "coinValue": 0
+  },
+  {
+    "id": 30046,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "乌卢鲁的赠予",
+    "desc": "60%概率获得2个<#8D6993>精巧</color>品质的造物，40%概率获得2个<#B8945F>妙想</color>品质的造物",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "117",
+    "coinValue": 0
+  },
+  {
+    "id": 30047,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "来自拉普拉斯",
+    "desc": "所有<#B8945F>妙想</color>品质以下可用造物，变形为其他同品质的造物（相同造物仅变形其中1个）",
+    "icon": "act174_pick_bufficon_4",
+    "effects": "118|119",
+    "coinValue": 0
+  },
+  {
+    "id": 30048,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "时运的风帆",
+    "desc": "参与机会用尽时，若至少拥有年轮切片*30，则消耗年轮切片*30重获1次参与机会，触发后可选择1份勇气嘉奖（仅触发1次，进入勇气嘉奖赛后无法触发）",
+    "icon": "act174_pick_bufficon_5",
+    "effects": "120",
+    "coinValue": -15
+  },
+  {
+    "id": 30049,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "乌卢鲁的赠予",
+    "desc": "随机招募2个6星列队选手",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "212",
+    "coinValue": 0
+  },
+  {
+    "id": 30050,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募沙丝绒（若已招募沙丝绒，则获得年轮切片*25）\n沙丝绒洞悉Ⅲ效果变更：\n进入战斗时，己方场上每存在1名【兽】灵感角色，使己方全体激情+1（最多触发1次）；\n若其他友方中有1名【兽】灵感角色，则其他友方角色释放至终的仪式后，使自身和站位1号位角色激情+1",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "213|214",
+    "coinValue": 0
+  },
+  {
+    "id": 30051,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募苏芙比（若已招募苏芙比，则获得年轮切片*25）\n苏芙比洞悉Ⅰ效果变更：\n【三倍用量！】施加的【中毒】状态持续回合+1；每回合开始时，获得2层【聚焦·中毒】；\n释放至终的仪式后，自身激情+1",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "215|216",
+    "coinValue": 0
+  },
+  {
+    "id": 30052,
+    "season": "2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募温妮弗雷德（若已招募温妮弗雷德，则获得年轮切片*25）\n温妮弗雷德洞悉Ⅰ效果变更：\n免疫【流血】【腐蚀】【中毒】；进入战斗时，获得【永生之血】\n温妮弗雷德洞悉Ⅲ效果变更：\n主动攻击后，消耗自身10%当前生命，额外造成自身已损失生命*50%的本源创伤，可暴击（不可驱散）\n\n【永生之血】：最大生命+20%，创伤加成+25%，受创回复+25%；不会受到【属性削弱】影响",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "217|218",
+    "coinValue": 0
+  },
+  {
+    "id": 30053,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募兔毛手袋（若已招募兔毛手袋，则获得年轮切片*25）\n兔毛手袋新增洞悉效果：\n敌方任意行动后， 若已方任意角色的血量低于40%，则兔毛手袋释放一次【聚焦·炼金容器】咒语",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "219|220",
+    "coinValue": 0
+  },
+  {
+    "id": 30054,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "招募泥鯭的士（若已招募泥鯭的士，则获得年轮切片*25）\n泥鯭的士洞悉Ⅲ效果变更：\n每回合开始时，在【聚焦·休息时间】【聚焦·捉鬼时间】之间切换；\n进入【聚焦·捉鬼时间】时，己方全体所有咒语阶次+1；\n进入【聚焦·休息时间】时，己方全体获得各自最大生命百分比15%的护盾，持续2回合",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "221|222",
+    "coinValue": 0
+  },
+  {
+    "id": 30055,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "乌卢鲁的赠予",
+    "desc": "获得2个随机<#8D6993>精巧</color>品质的造物",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "312",
+    "coinValue": 0
+  },
+  {
+    "id": 30056,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "乌卢鲁的赠予",
+    "desc": "获得1个随机<#B8945F>妙想</color>品质的造物",
+    "icon": "act174_pick_bufficon_7",
+    "effects": "313",
+    "coinValue": 0
+  },
+  {
+    "id": 30057,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得1个古董银剑造物，\n效果变为编队中每额外携带1个古董银剑，己方全体仪式威力额外提升5%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "314|315",
+    "coinValue": 0
+  },
+  {
+    "id": 30058,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得1个超高效鸟铳造物，\n效果变为编队中每额外携带1个超高效鸟铳，使本次伤害额外提升15%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "316|317",
+    "coinValue": 0
+  },
+  {
+    "id": 30059,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得1个褶皱和圆造物，\n效果变为编队中每额外携带1个『褶皱和圆』，自身造成伤害提升10%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "318|319",
+    "coinValue": 0
+  },
+  {
+    "id": 30060,
+    "season": "1,2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得1个狂想苏打造物，\n效果升级为编队中若同时携带黑药水，受到中毒伤害提升30%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "320|321",
+    "coinValue": 0
+  },
+  {
+    "id": 30062,
+    "season": "2,3",
+    "rare": "2",
+    "title": "七叶树协会赞助提供",
+    "desc": "获得1个独角兽号船模造物，\n效果升级为编队中每额外携带1个<#B8945F>妙想</color>品质造物，己方全体受创减免额外+10%",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "324|325",
+    "coinValue": 0
+  }
+]

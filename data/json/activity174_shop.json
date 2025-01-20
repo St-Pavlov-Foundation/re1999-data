@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "activityId": 12304,
+    "season": 1,
+    "level": 1,
+    "name": "赛后补给间Ⅰ"
+  },
+  {
+    "id": 2,
+    "activityId": 12304,
+    "season": 1,
+    "level": 2,
+    "name": "赛后补给间Ⅱ"
+  },
+  {
+    "id": 3,
+    "activityId": 12304,
+    "season": 1,
+    "level": 3,
+    "name": "赛后补给间Ⅲ"
+  },
+  {
+    "id": 4,
+    "activityId": 12304,
+    "season": 2,
+    "level": 1,
+    "name": "赛后补给间Ⅰ"
+  },
+  {
+    "id": 5,
+    "activityId": 12304,
+    "season": 2,
+    "level": 2,
+    "name": "赛后补给间Ⅱ"
+  },
+  {
+    "id": 6,
+    "activityId": 12304,
+    "season": 2,
+    "level": 3,
+    "name": "赛后补给间Ⅲ"
+  },
+  {
+    "id": 7,
+    "activityId": 12304,
+    "season": 3,
+    "level": 1,
+    "name": "赛后补给间Ⅰ"
+  },
+  {
+    "id": 8,
+    "activityId": 12304,
+    "season": 3,
+    "level": 2,
+    "name": "赛后补给间Ⅱ"
+  },
+  {
+    "id": 9,
+    "activityId": 12304,
+    "season": 3,
+    "level": 3,
+    "name": "赛后补给间Ⅲ"
+  }
+]

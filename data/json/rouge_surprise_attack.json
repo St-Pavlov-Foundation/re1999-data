@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "title": "强敌环伺",
+    "additionRule": "2#521100001",
+    "hiddenRule": "",
+    "ruleDesc": "所有敌人攻击、现实防御和精神防御+20%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 2,
+    "title": "怒火中烧",
+    "additionRule": "2#521100002",
+    "hiddenRule": "",
+    "ruleDesc": "所有敌人攻击+40%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 3,
+    "title": "暴戾杀戮",
+    "additionRule": "2#521100003",
+    "hiddenRule": "",
+    "ruleDesc": "所有敌人暴击率+30%，暴击创伤+30%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 4,
+    "title": "公理矗立",
+    "additionRule": "2#521100004",
+    "hiddenRule": "",
+    "ruleDesc": "所有敌人现实防御和精神防御+40%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 5,
+    "title": "撕裂现实",
+    "additionRule": "2#521100005",
+    "hiddenRule": "",
+    "ruleDesc": "受到现实创伤时抗暴率+100%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 6,
+    "title": "欺诈精神",
+    "additionRule": "2#521100006",
+    "hiddenRule": "",
+    "ruleDesc": "受到精神创伤时抗暴率+100%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 7,
+    "title": "甘冽清泉",
+    "additionRule": "2#521100007",
+    "hiddenRule": "",
+    "ruleDesc": "受创回复+10%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 8,
+    "title": "主场作战",
+    "additionRule": "2#521100008",
+    "hiddenRule": "",
+    "ruleDesc": "行动点+1",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 9,
+    "title": "瘟疫蔓延",
+    "additionRule": "1#521100009",
+    "hiddenRule": "",
+    "ruleDesc": "受到的治疗效果-50%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 10,
+    "title": "灵感强化",
+    "additionRule": "2#521100010",
+    "hiddenRule": "",
+    "ruleDesc": "克制伤害系数提升40%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 11,
+    "title": "灵感抵御",
+    "additionRule": "2#521100011",
+    "hiddenRule": "",
+    "ruleDesc": "受到攻击时，非克制伤害降低100%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 12,
+    "title": "踪迹难觅",
+    "additionRule": "2#521100012",
+    "hiddenRule": "",
+    "ruleDesc": "所有控制抗性+50%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 13,
+    "title": "皮糙肉厚",
+    "additionRule": "2#521100013",
+    "hiddenRule": "",
+    "ruleDesc": "单次受到伤害不超过自身生命上限的10%",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 14,
+    "title": "激情澎湃",
+    "additionRule": "2#521100014",
+    "hiddenRule": "",
+    "ruleDesc": "激情降低抗性+50%\n回合开始时，使自身激情+1",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 15,
+    "title": "激情消逝",
+    "additionRule": "1#521100015",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，激情少于5的角色激情-1",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 16,
+    "title": "净化异常",
+    "additionRule": "2#521100016",
+    "hiddenRule": "",
+    "ruleDesc": "回合结束时，净化己方全体随机3种【状态异常】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 17,
+    "title": "净化削弱",
+    "additionRule": "2#521100017",
+    "hiddenRule": "",
+    "ruleDesc": "回合结束时，净化己方全体【属性削弱】【控制】状态",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 18,
+    "title": "应激紊乱",
+    "additionRule": "1#521100018",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，随机1名角色应激+5",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 19,
+    "title": "灵光流失",
+    "additionRule": "1#521100019",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体灵光-5",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 20,
+    "title": "无形无影",
+    "additionRule": "2#521100020",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体获得1层【无形无影】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 21,
+    "title": "荆棘蔓生",
+    "additionRule": "2#521100021",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体获得1层【荆棘】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 22,
+    "title": "涣散凝视",
+    "additionRule": "1#521100022",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体获得2层【涣散】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 23,
+    "title": "污染蔓延",
+    "additionRule": "1#521100023",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，赋予己方全体2层【污染】，持续2回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 24,
+    "title": "休养",
+    "additionRule": "2#521100024",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体获得2层【再生】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 25,
+    "title": "寒潮",
+    "additionRule": "1#521100025",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，己方全体获得2层【迟缓】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 26,
+    "title": "噩梦戒律",
+    "additionRule": "1#521100026",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，随机1名角色陷入【噩梦】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 27,
+    "title": "石化戒律",
+    "additionRule": "1#521100027",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，随机1名角色陷入【石化】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 28,
+    "title": "冰冻戒律",
+    "additionRule": "1#521100028",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，随机1名角色陷入【冰冻】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 29,
+    "title": "缴械戒律",
+    "additionRule": "1#521100029",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，随机1名角色陷入【缴械】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 30,
+    "title": "封印戒律",
+    "additionRule": "1#521100030",
+    "hiddenRule": "",
+    "ruleDesc": "奇数回合开始时，己方全体陷入【封印】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 31,
+    "title": "缄默戒律",
+    "additionRule": "1#521100031",
+    "hiddenRule": "",
+    "ruleDesc": "奇数回合开始时，己方全体陷入【缄默】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 32,
+    "title": "精神壁垒",
+    "additionRule": "2#521100032",
+    "hiddenRule": "",
+    "ruleDesc": "奇数回合结束时，己方全体进入【坚定】状态，持续1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 33,
+    "title": "隐蔽之人",
+    "additionRule": "2#521100033",
+    "hiddenRule": "",
+    "ruleDesc": "奇数回合结束时，己方全体进入【隐蔽】状态，持续1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 34,
+    "title": "混沌改写",
+    "additionRule": "1#521100034",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，所有咒语改写【混沌】效果",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 35,
+    "title": "躁动改写",
+    "additionRule": "1#521100035",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，所有咒语改写【躁动】效果",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 36,
+    "title": "冻结改写",
+    "additionRule": "1#521100036",
+    "hiddenRule": "",
+    "ruleDesc": "回合开始时，使己方随机2张咒语改写【冻结】效果，持续1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 37,
+    "title": "伏击",
+    "additionRule": "1#521100037",
+    "hiddenRule": "",
+    "ruleDesc": "战斗开始时，打乱我方上阵角色的位置",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 38,
+    "title": "斗志昂扬",
+    "additionRule": "2#521100038",
+    "hiddenRule": "",
+    "ruleDesc": "战斗开始时，己方全体激情+5",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 39,
+    "title": "仪式断绝",
+    "additionRule": "1#521100039",
+    "hiddenRule": "",
+    "ruleDesc": "战斗开始时，己方全体陷入永久的【心神不宁】状态",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 40,
+    "title": "免疫",
+    "additionRule": "2#521100040",
+    "hiddenRule": "",
+    "ruleDesc": "进入战斗时，进入【免疫】状态5回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 41,
+    "title": "闷棍",
+    "additionRule": "1#521100041",
+    "hiddenRule": "",
+    "ruleDesc": "战斗开始时，己方全体陷入【眩晕】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 42,
+    "title": "不屈",
+    "additionRule": "2#521100042",
+    "hiddenRule": "",
+    "ruleDesc": "进入战斗时，获得2层【弥留】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 43,
+    "title": "应激失控",
+    "additionRule": "3#521100043",
+    "hiddenRule": "",
+    "ruleDesc": "进入战斗时，敌我全体应激+20",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 44,
+    "title": "庇护祝福",
+    "additionRule": "2#521100044",
+    "hiddenRule": "",
+    "ruleDesc": "进入战斗时，获得自身最大生命*50%的护盾，持续2回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 45,
+    "title": "咖啡爱好者",
+    "additionRule": "2#521100045",
+    "hiddenRule": "",
+    "ruleDesc": "退场时，使己方全体回复50%已损失生命值",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 46,
+    "title": "挽歌",
+    "additionRule": "2#521100046",
+    "hiddenRule": "",
+    "ruleDesc": "退场时，使其他友方激情+1，并回复10%最大生命",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 47,
+    "title": "遗志",
+    "additionRule": "2#521100047",
+    "hiddenRule": "",
+    "ruleDesc": "退场时，使随机友方获得【濒死挣扎】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 48,
+    "title": "恐惧蔓延",
+    "additionRule": "2#521100048",
+    "hiddenRule": "",
+    "ruleDesc": "退场时，敌方全体激情-5，陷入【心神不宁】状态1回合",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 49,
+    "title": "激情燃烧",
+    "additionRule": "2#521100049",
+    "hiddenRule": "",
+    "ruleDesc": "当失去激情时，净化自身的【属性削弱】【状态异常】【控制】",
+    "tipsDesc": "不测之祸"
+  },
+  {
+    "id": 50,
+    "title": "狂乱蔓延",
+    "additionRule": "2#521100050",
+    "hiddenRule": "",
+    "ruleDesc": "退场时，随机敌人应激+10",
+    "tipsDesc": "不测之祸"
+  }
+]

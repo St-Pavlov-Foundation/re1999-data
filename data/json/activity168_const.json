@@ -1,0 +1,86 @@
+[
+  {
+    "activityId": 12204,
+    "id": 1,
+    "value1": 0,
+    "value2": "",
+    "mlValue": "7#很远|5#较远|3#不远|1#附近"
+  },
+  {
+    "activityId": 12204,
+    "id": 2,
+    "value1": 2,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 3,
+    "value1": 200,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 4,
+    "value1": 50,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 5,
+    "value1": 2,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 6,
+    "value1": 3,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 7,
+    "value1": 1001,
+    "value2": "进入雨林，并跟随枪声的方向前进，沿途搜集炼金材料|已到达河岸的贫民区，罗德里戈口中桑德罗的所在地",
+    "mlValue": "旅程终点在<color=#E99B56>▩1%s</color>的<color=#E99B56>▩2%s</color>方向"
+  },
+  {
+    "activityId": 12204,
+    "id": 8,
+    "value1": 1002,
+    "value2": "安全起见，回到雨林中，继续启程寻找桑德罗|已到达一片林中湿地，湖边的废弃小屋里似乎藏着好东西",
+    "mlValue": "目的地在<color=#E99B56>▩1%s</color>的<color=#E99B56>▩2%s</color>方向"
+  },
+  {
+    "activityId": 12204,
+    "id": 9,
+    "value1": 1003,
+    "value2": "与芝诺的同伴会合，跟随枪声方向继续前进|已到达一处隐蔽的庄园，目标近在眼前",
+    "mlValue": "<color=#E99B56>▩1%s</color>的<color=#E99B56>▩2%s</color>方向传来枪响"
+  },
+  {
+    "activityId": 12204,
+    "id": 10,
+    "value1": 0,
+    "value2": "",
+    "mlValue": "v2a2_lopera_levelmap1"
+  },
+  {
+    "activityId": 12204,
+    "id": 11,
+    "value1": 6,
+    "value2": "",
+    "mlValue": ""
+  },
+  {
+    "activityId": 12204,
+    "id": 1220409,
+    "value1": 0,
+    "value2": "再次回到雨林，这里永远不会让你失望",
+    "mlValue": ""
+  }
+]

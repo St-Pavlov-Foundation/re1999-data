@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1100,
+    "num": 1,
+    "dropGroupType": "武器"
+  },
+  {
+    "id": 1200,
+    "num": 1,
+    "dropGroupType": "防具"
+  },
+  {
+    "id": 1300,
+    "num": 1,
+    "dropGroupType": "饰品"
+  },
+  {
+    "id": 1400,
+    "num": 1,
+    "dropGroupType": "附魔"
+  },
+  {
+    "id": 1110,
+    "num": 1,
+    "dropGroupType": "1阶武器"
+  },
+  {
+    "id": 1111,
+    "num": 3,
+    "dropGroupType": "1阶武器"
+  },
+  {
+    "id": 1210,
+    "num": 1,
+    "dropGroupType": "1阶防具"
+  },
+  {
+    "id": 1211,
+    "num": 3,
+    "dropGroupType": "1阶防具"
+  },
+  {
+    "id": 1310,
+    "num": 1,
+    "dropGroupType": "1阶饰品"
+  },
+  {
+    "id": 1311,
+    "num": 3,
+    "dropGroupType": "1阶饰品"
+  },
+  {
+    "id": 1510,
+    "num": 1,
+    "dropGroupType": "造物"
+  },
+  {
+    "id": 1511,
+    "num": 3,
+    "dropGroupType": "造物"
+  },
+  {
+    "id": 1120,
+    "num": 1,
+    "dropGroupType": "3阶武器"
+  },
+  {
+    "id": 1121,
+    "num": 3,
+    "dropGroupType": "3阶武器"
+  },
+  {
+    "id": 1220,
+    "num": 1,
+    "dropGroupType": "3阶防具"
+  },
+  {
+    "id": 1221,
+    "num": 3,
+    "dropGroupType": "3阶防具"
+  },
+  {
+    "id": 1320,
+    "num": 1,
+    "dropGroupType": "3阶饰品"
+  },
+  {
+    "id": 1321,
+    "num": 3,
+    "dropGroupType": "3阶饰品"
+  },
+  {
+    "id": 1520,
+    "num": 1,
+    "dropGroupType": "造物"
+  },
+  {
+    "id": 1521,
+    "num": 3,
+    "dropGroupType": "造物"
+  },
+  {
+    "id": 1530,
+    "num": 1,
+    "dropGroupType": "boss造物"
+  },
+  {
+    "id": 1330,
+    "num": 1,
+    "dropGroupType": "boss饰品"
+  },
+  {
+    "id": 1533,
+    "num": 3,
+    "dropGroupType": "boss造物"
+  },
+  {
+    "id": 1333,
+    "num": 3,
+    "dropGroupType": "boss饰品"
+  },
+  {
+    "id": 1,
+    "num": 1,
+    "dropGroupType": "掉落测试"
+  },
+  {
+    "id": 2,
+    "num": 1,
+    "dropGroupType": "掉落测试"
+  },
+  {
+    "id": 3,
+    "num": 3,
+    "dropGroupType": "3选1掉落测试"
+  },
+  {
+    "id": 5,
+    "num": 1,
+    "dropGroupType": "录制掉落"
+  },
+  {
+    "id": 6,
+    "num": 1,
+    "dropGroupType": "录制掉落"
+  },
+  {
+    "id": 11000,
+    "num": 1,
+    "dropGroupType": "跑侧用掉落组"
+  },
+  {
+    "id": 101402,
+    "num": 1,
+    "dropGroupType": ""
+  },
+  {
+    "id": 109005,
+    "num": 1,
+    "dropGroupType": ""
+  },
+  {
+    "id": 99999,
+    "num": 1,
+    "dropGroupType": ""
+  },
+  {
+    "id": 91320050,
+    "num": 1,
+    "dropGroupType": "兔宝宝头套"
+  },
+  {
+    "id": 91120020,
+    "num": 1,
+    "dropGroupType": "咬人弩"
+  },
+  {
+    "id": 91320040,
+    "num": 1,
+    "dropGroupType": "扎人的毛线帽"
+  },
+  {
+    "id": 91320060,
+    "num": 1,
+    "dropGroupType": "锈蚀领结"
+  },
+  {
+    "id": 91120030,
+    "num": 1,
+    "dropGroupType": "古董银剑"
+  },
+  {
+    "id": 91320030,
+    "num": 1,
+    "dropGroupType": "冠军徽章"
+  },
+  {
+    "id": 91220020,
+    "num": 1,
+    "dropGroupType": "隐光虫标本"
+  },
+  {
+    "id": 91330030,
+    "num": 1,
+    "dropGroupType": "特浓微尘烟斗"
+  },
+  {
+    "id": 91320070,
+    "num": 1,
+    "dropGroupType": "神秘的纸箱帽"
+  },
+  {
+    "id": 91220030,
+    "num": 1,
+    "dropGroupType": "隐光虫茧"
+  },
+  {
+    "id": 91210040,
+    "num": 1,
+    "dropGroupType": "酣睡捕网"
+  },
+  {
+    "id": 91110010,
+    "num": 1,
+    "dropGroupType": "木化兽齿"
+  },
+  {
+    "id": 1600,
+    "num": 1,
+    "dropGroupType": "合并"
+  },
+  {
+    "id": 1610,
+    "num": 1,
+    "dropGroupType": "合并"
+  },
+  {
+    "id": 1620,
+    "num": 1,
+    "dropGroupType": "合并"
+  },
+  {
+    "id": 1601,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 1611,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 1621,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 1602,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 1603,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 1604,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 101101,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 101102,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 101103,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  },
+  {
+    "id": 101104,
+    "num": 3,
+    "dropGroupType": "合并三选一"
+  }
+]

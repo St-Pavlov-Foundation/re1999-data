@@ -1,0 +1,82 @@
+[
+  {
+    "activityId": 12304,
+    "id": 1,
+    "name": "交锋里程",
+    "desc": "单局角斗中通关的最高关卡数",
+    "icon": "act174_badgeicon1",
+    "trigger": "PassCount",
+    "actParam": 6,
+    "spParam": 12
+  },
+  {
+    "activityId": 12304,
+    "id": 2,
+    "name": "高“芯”角斗士 ",
+    "desc": "单局角斗获得的最多偶人之芯数量",
+    "icon": "act174_badgeicon4",
+    "trigger": "GainScore",
+    "actParam": 900,
+    "spParam": 1999
+  },
+  {
+    "activityId": 12304,
+    "id": 3,
+    "name": "胜利鼓点",
+    "desc": "角斗胜利的总关卡数",
+    "icon": "act174_badgeicon2",
+    "trigger": "WinNum",
+    "actParam": 12,
+    "spParam": 30
+  },
+  {
+    "activityId": 12304,
+    "id": 4,
+    "name": "心跳游戏",
+    "desc": "角斗加码后胜利的总次数",
+    "icon": "act174_badgeicon3",
+    "trigger": "BetWinNum",
+    "actParam": 10,
+    "spParam": 25
+  },
+  {
+    "activityId": 12304,
+    "id": 5,
+    "name": "胜利的艺术",
+    "desc": "连续5个关卡获得胜利的总次数",
+    "icon": "act174_badgeicon5",
+    "trigger": "Win5Num",
+    "actParam": 3,
+    "spParam": 7
+  },
+  {
+    "activityId": 12304,
+    "id": 6,
+    "name": "“好老板”",
+    "desc": "累计购买偶人组合的次数",
+    "icon": "act174_badgeicon6",
+    "trigger": "BuyHeroNUM",
+    "actParam": 15,
+    "spParam": 40
+  },
+  {
+    "activityId": 12304,
+    "id": 7,
+    "name": "锯工速成",
+    "desc": "累计获得年轮切片的数量",
+    "icon": "act174_badgeicon7",
+    "trigger": "GainCoin",
+    "actParam": 666,
+    "spParam": 1500
+  },
+  {
+    "activityId": 12304,
+    "id": 8,
+    "name": "兔脚代言人",
+    "desc": "单局角斗中，前9个关卡未尝一败的次数",
+    "icon": "act174_badgeicon8",
+    "trigger": "FullHpPass9",
+    "actParam": 2,
+    "spParam": 5
+  }
+]

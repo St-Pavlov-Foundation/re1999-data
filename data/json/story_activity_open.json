@@ -1,0 +1,3122 @@
+[
+  {
+    "chapter": 1,
+    "part": 1,
+    "title": "领衔的人们",
+    "titleEn": "The Leading Ones",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 2,
+    "title": "临时派对",
+    "titleEn": "An Impromptu Party",
+    "labelRes": "qianming3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 3,
+    "title": "犬类的哲学",
+    "titleEn": "Philosophy of the Puppies",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 4,
+    "title": "头条新闻",
+    "titleEn": "Headline",
+    "labelRes": "qianming4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 5,
+    "title": "不回头",
+    "titleEn": "No Turning Back",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 6,
+    "title": "航线合流",
+    "titleEn": "Confluence of the Routes",
+    "labelRes": "qianming4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 7,
+    "title": "正中红心",
+    "titleEn": "Hit the Bullseye",
+    "labelRes": "qianming3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 8,
+    "title": "非暴力合作",
+    "titleEn": "Non-violent Cooperation",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 9,
+    "title": "天才调音师",
+    "titleEn": "The Genius DJ",
+    "labelRes": "qianming4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 10,
+    "title": "小礼物",
+    "titleEn": "A Small Gift",
+    "labelRes": "qianming4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 11,
+    "title": "空降嘉宾",
+    "titleEn": "Out of the Blue",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 12,
+    "title": "泡泡无可破灭",
+    "titleEn": "Bubbles Won't be Broken",
+    "labelRes": "qianming3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 13,
+    "title": "自由的频段",
+    "titleEn": "The Channel of Freedom",
+    "labelRes": "qianming4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 14,
+    "title": "真相泛滥",
+    "titleEn": "Information Overload",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 15,
+    "title": "选择题",
+    "titleEn": "The Puppy's Choice",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 16,
+    "title": "皆大欢喜",
+    "titleEn": "As We Like It",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 17,
+    "title": "旧照片",
+    "titleEn": "An Old Photo",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 18,
+    "title": "继任者",
+    "titleEn": "The Successor",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 19,
+    "title": "邀请函",
+    "titleEn": "Invitation",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 20,
+    "title": "第一堂课",
+    "titleEn": "The First Lesson",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 21,
+    "title": "寻物游戏",
+    "titleEn": "Treasure Hunt",
+    "labelRes": "qianming5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 22,
+    "title": "易位棋局",
+    "titleEn": "Switching Side",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 23,
+    "title": "完美答卷",
+    "titleEn": "Perfect Answer",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 24,
+    "title": "怪盗实习",
+    "titleEn": "The Intern Thief",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 25,
+    "title": "落幕与新篇",
+    "titleEn": "Ending and New Beginning",
+    "labelRes": "qianming1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 26,
+    "title": "盛情来电",
+    "titleEn": "A Warm Call",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 27,
+    "title": "颠扑苹果派",
+    "titleEn": "A Floating APPLe Pie",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 28,
+    "title": "误解相对论",
+    "titleEn": "Relativity of Misunderstanding",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 29,
+    "title": "泡泡碰撞机",
+    "titleEn": "Bubble Crash",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 30,
+    "title": "掉队的球鞋",
+    "titleEn": "A Shoe Left Behind",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 31,
+    "title": "自由计划者",
+    "titleEn": "A Planner with No Plan",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 32,
+    "title": "回弹球",
+    "titleEn": "Bouncey Ball",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 1,
+    "part": 33,
+    "title": "赠予仪式",
+    "titleEn": "Transfer Ceremony",
+    "labelRes": "qianming2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 0,
+    "title": "营地惊魂",
+    "titleEn": "The Campsite",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 1,
+    "title": "陌生人来信",
+    "titleEn": "A Letter From Stranger",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 2,
+    "title": "乳齿儿",
+    "titleEn": "Baby Teeth",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 27,
+    "title": "空铁皮",
+    "titleEn": "Empty Pillbox",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 3,
+    "title": "廉价糖浆",
+    "titleEn": "Cheap Syrup",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 4,
+    "title": "嘶吼明星",
+    "titleEn": "Roaring Stars",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 5,
+    "title": "林中木屋",
+    "titleEn": "Cabin in the Forest",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 6,
+    "title": "勇敢者游戏",
+    "titleEn": "Games for the Brave",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 7,
+    "title": "太妃糖罐中",
+    "titleEn": "In the Toffee Jar",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 8,
+    "title": "最后的女孩",
+    "titleEn": "The Last Girl",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 9,
+    "title": "收集癖",
+    "titleEn": "Hoarding Obsession",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 10,
+    "title": "白苔藓",
+    "titleEn": "White Moss",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 11,
+    "title": "急速激情",
+    "titleEn": "Rapid and Furious",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 12,
+    "title": "幸运曲奇",
+    "titleEn": "Inside Lucky Cookies",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 13,
+    "title": "高塔之上",
+    "titleEn": "Top of the Lighthouse",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 14,
+    "title": "绿湖妖潭",
+    "titleEn": "Creature from the Greenlake",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 15,
+    "title": "怪物设计家",
+    "titleEn": "Monster Designer",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 16,
+    "title": "新出埃及记",
+    "titleEn": "The New Exodus",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 17,
+    "title": "俗套写真",
+    "titleEn": "A Cliché Photograph",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 18,
+    "title": "遗落之处",
+    "titleEn": "A Forgotten Place",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 19,
+    "title": "66号公路",
+    "titleEn": "Route 66",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 20,
+    "title": "空玻璃罐",
+    "titleEn": "Empty Glass Jar",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 21,
+    "title": "后视镜",
+    "titleEn": "Rearview Mirror",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 22,
+    "title": "乳牙与智齿",
+    "titleEn": "Baby Teeth & Wisdom Teeth",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 23,
+    "title": "美鲁酚",
+    "titleEn": "Mellophine",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 24,
+    "title": "志愿者",
+    "titleEn": "Volunteer",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 25,
+    "title": "语音信箱",
+    "titleEn": "Voice Mailbox",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 2,
+    "part": 26,
+    "title": "最初的邀请",
+    "titleEn": "The Story Just Begins",
+    "labelRes": "",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 1,
+    "title": "观星者们",
+    "titleEn": "The Stargazers",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 2,
+    "title": "黄水晶灵摆",
+    "titleEn": "Yellow Crystal Pendulum",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 3,
+    "title": "寻宝新骑兵",
+    "titleEn": "The Young Indiana Jones",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 4,
+    "title": "交织线",
+    "titleEn": "Intersecting Lines",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 5,
+    "title": "继承者",
+    "titleEn": "The Heir",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 6,
+    "title": "菩提树",
+    "titleEn": "The Sacred Fig",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 7,
+    "title": "银手镯",
+    "titleEn": "The Silver Bangle",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 8,
+    "title": "泪水壶",
+    "titleEn": "Drown in Tears",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 9,
+    "title": "小守护者",
+    "titleEn": "The Little Guardians",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 10,
+    "title": "篱笆墙之外",
+    "titleEn": "Outside the Fence",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 11,
+    "title": "硕鼠的智慧",
+    "titleEn": "Rat and Its Days",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 12,
+    "title": "以卵击石",
+    "titleEn": "Straws Against the Wind",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 13,
+    "title": "芝麻开门",
+    "titleEn": "Open Sesame",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 14,
+    "title": "无星之地",
+    "titleEn": "No Starry Sky",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 15,
+    "title": "博识者美餐",
+    "titleEn": "Feast for the Savant",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 16,
+    "title": "新观星者们",
+    "titleEn": "The New Stargazers",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 17,
+    "title": "无昼无夜",
+    "titleEn": "Neither Day Nor Night",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 18,
+    "title": "拖延症候群",
+    "titleEn": "The Procrastination Syndrome",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 19,
+    "title": "零星的闪烁",
+    "titleEn": "Twinkling Stars ",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 20,
+    "title": "对峙时刻",
+    "titleEn": "Confrontation",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 21,
+    "title": "问答的艺术",
+    "titleEn": "The Art of Defense",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 22,
+    "title": "非此即彼",
+    "titleEn": "Either This or That",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 23,
+    "title": "群星不再",
+    "titleEn": "The Fading Stars",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 24,
+    "title": "星体与神话",
+    "titleEn": "Celestial Bodies and Mythologies",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 25,
+    "title": "尘埃与星",
+    "titleEn": "Dust and Stars",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 26,
+    "title": "山林尾声",
+    "titleEn": "Last Echoes in the Forest",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 27,
+    "title": "片瓦无存",
+    "titleEn": "Reduced to Ashes",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 28,
+    "title": "利齿与拳腕",
+    "titleEn": "Fangs and Fists",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 29,
+    "title": "在谦逊中",
+    "titleEn": "In Humility",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 30,
+    "title": "旧雨重逢",
+    "titleEn": "It Rains the Same Old Rain",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 31,
+    "title": "茸毛的友谊",
+    "titleEn": "Friendship with a Fluffball",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 32,
+    "title": "密林尽头",
+    "titleEn": "At the End of the Forest",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3,
+    "part": 33,
+    "title": "渐熄的余烬",
+    "titleEn": "Dimming Embers",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 1,
+    "title": "翻滚碰碰车",
+    "titleEn": "Roller Coaster",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 2,
+    "title": "邻人友爱",
+    "titleEn": "The Lovely Neighbor",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 3,
+    "title": "金格！金格！",
+    "titleEn": "Chinga! Chinga!",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 4,
+    "title": "后手直拳",
+    "titleEn": "Cross",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 5,
+    "title": "漂浮球们",
+    "titleEn": "The Buoy Balls",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 6,
+    "title": "涅槃日",
+    "titleEn": "Day of Rebirth",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 7,
+    "title": "老火种",
+    "titleEn": "The Old Flame",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 8,
+    "title": "火警热线",
+    "titleEn": "Triple Zero",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 9,
+    "title": "万事救星",
+    "titleEn": "The Superman",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 10,
+    "title": "过家家",
+    "titleEn": "Let's Play House",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 11,
+    "title": "玻璃鞋",
+    "titleEn": "Glass Slippers",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 12,
+    "title": "千年独行",
+    "titleEn": "Lone Journey",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 13,
+    "title": "“永不沉没”",
+    "titleEn": "Unsinkable",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 14,
+    "title": "跑者史诗",
+    "titleEn": "The Runner's Epic",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 15,
+    "title": "红岩护卫队",
+    "titleEn": "The Uluru Guardians",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 16,
+    "title": "新馆长",
+    "titleEn": "The New Curator",
+    "labelRes": "0",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 17,
+    "title": "旧线圈",
+    "titleEn": "Change of the Coils",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 18,
+    "title": "黑樱桃",
+    "titleEn": "Circe's Plant",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 19,
+    "title": "世界的水手",
+    "titleEn": "Sailor of the World",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 20,
+    "title": "老相识",
+    "titleEn": "Old Aquaintance",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 21,
+    "title": "窃火者",
+    "titleEn": "One Who Stole Fire",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 22,
+    "title": "积雪之上",
+    "titleEn": "Above the Snow",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 23,
+    "title": "燃火处",
+    "titleEn": "Ignition",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 24,
+    "title": "卵石叮当",
+    "titleEn": "Clattering Pebbles",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 25,
+    "title": "逐火之人",
+    "titleEn": "The Ones Chasing the Flame",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 26,
+    "title": "高温以外",
+    "titleEn": "Beyond the Flame",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 27,
+    "title": "掌心之内",
+    "titleEn": "Within the Palm",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 28,
+    "title": "糖与盐",
+    "titleEn": "Sugar and Salt",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 29,
+    "title": "起床铃",
+    "titleEn": "Morning Alarm",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 5,
+    "part": 30,
+    "title": "你与我的故事",
+    "titleEn": "The Story of You and Me",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 6,
+    "part": 1,
+    "title": "启程的祷声",
+    "titleEn": "Safe Travel",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 2,
+    "title": "柔板",
+    "titleEn": "Adagio",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 3,
+    "title": "仙子草地",
+    "titleEn": "The Fairyland",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_02.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 4,
+    "title": "俯身旷野",
+    "titleEn": "Strange Horses",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_02.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 5,
+    "title": "巴别塔消融",
+    "titleEn": "Language Barrier",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_02.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 6,
+    "title": "黄沙道",
+    "titleEn": "The Yellow Sand Road",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_02.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 7,
+    "title": "远来是客",
+    "titleEn": "The Guests From Afar",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 8,
+    "title": "十万个问答",
+    "titleEn": "Questions and Answers",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 9,
+    "title": "街市狂澜",
+    "titleEn": "Chaos on Streets",
+    "labelRes": "9",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 10,
+    "title": "异乡人关怀",
+    "titleEn": "Treat Them Right",
+    "labelRes": "10",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 11,
+    "title": "廊下夜话",
+    "titleEn": "Night Talk",
+    "labelRes": "11",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 12,
+    "title": "倾杯舞",
+    "titleEn": "Dancing Dolls",
+    "labelRes": "12",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 13,
+    "title": "葛生",
+    "titleEn": "Gesheng",
+    "labelRes": "13",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 14,
+    "title": "往日鎏金",
+    "titleEn": "The Old Days",
+    "labelRes": "14",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 15,
+    "title": "空心眼",
+    "titleEn": "Hollow Eyed",
+    "labelRes": "15",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_04.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 16,
+    "title": "见我所见",
+    "titleEn": "See What I See",
+    "labelRes": "16",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_04.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 17,
+    "title": "舍玉求石",
+    "titleEn": "Jade or Stone",
+    "labelRes": "17",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 18,
+    "title": "除夜宴",
+    "titleEn": "New Year's Eve",
+    "labelRes": "18",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 19,
+    "title": "如愿",
+    "titleEn": "A Wish Come True",
+    "labelRes": "19",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 20,
+    "title": "别春山",
+    "titleEn": "Farewell to the Past",
+    "labelRes": "20",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_04.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 21,
+    "title": "天堑亦通途",
+    "titleEn": "Another Way Out",
+    "labelRes": "21",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_04.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 22,
+    "title": "“所求必应”",
+    "titleEn": "Ask and Acquire",
+    "labelRes": "22",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 23,
+    "title": "他日再逢",
+    "titleEn": "We Will Meet Again",
+    "labelRes": "23",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_02.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 24,
+    "title": "入此城中",
+    "titleEn": "To the Town",
+    "labelRes": "0",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 25,
+    "title": "三与九",
+    "titleEn": "The Third and the Ninth",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 26,
+    "title": "百样事",
+    "titleEn": "What the Xiangruis Do",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 27,
+    "title": "闲时节",
+    "titleEn": "Idle Time",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 28,
+    "title": "存身之处",
+    "titleEn": "A Place to Belong",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 29,
+    "title": "去岁如山",
+    "titleEn": "Time Slipping Away",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 30,
+    "title": "结新彩",
+    "titleEn": "Festoons",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 31,
+    "title": "行路难",
+    "titleEn": "Difficult Is the Way",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 32,
+    "title": "且尽余杯",
+    "titleEn": "Till the Last Drop",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_03.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 33,
+    "title": "远行客",
+    "titleEn": "The One Traveling Far",
+    "labelRes": "0",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 34,
+    "title": "更漏长",
+    "titleEn": "Dripping Inside the Hourglass",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 35,
+    "title": "流水今日",
+    "titleEn": "A Flood of Memories",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 36,
+    "title": "有所求",
+    "titleEn": "Want Something",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 37,
+    "title": "不同谋",
+    "titleEn": "Part Ways",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 38,
+    "title": "身非木石",
+    "titleEn": "Heart of Flesh",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 39,
+    "title": "壶中天",
+    "titleEn": "The Limited Sky in the Teapot",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 40,
+    "title": "歧路无多",
+    "titleEn": "No More Astray",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 6,
+    "part": 41,
+    "title": "平芜尽处",
+    "titleEn": "After the Endless Plain",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a6_storyactivityopenclose/v1a6_story_bg_01.jpg"
+  },
+  {
+    "chapter": 8,
+    "part": 1,
+    "title": "欢迎仪式",
+    "titleEn": "Welcoming Ceremony",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 2,
+    "title": "大发现！",
+    "titleEn": "Big Discoveries!",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 3,
+    "title": "羽茅地",
+    "titleEn": "Needle-Grass",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 4,
+    "title": "园丁对花儿说",
+    "titleEn": "Said the Gardener to Flowers",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 5,
+    "title": "手风琴",
+    "titleEn": "Accordion",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 6,
+    "title": "好日子，坏日子",
+    "titleEn": "Good Days, Bad Days",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 7,
+    "title": "纸奖章",
+    "titleEn": "A Paper Medal",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 8,
+    "title": "工厂颂",
+    "titleEn": "The Ode of Factory",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 9,
+    "title": "比知识更重",
+    "titleEn": "Heavier Than Knowledge",
+    "labelRes": "9",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 10,
+    "title": "仅有的日子",
+    "titleEn": "The Only Days Left",
+    "labelRes": "10",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 11,
+    "title": "最后一位乡下人",
+    "titleEn": "The Ley Hunter",
+    "labelRes": "11",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 12,
+    "title": "晚班列车",
+    "titleEn": "The Night Train",
+    "labelRes": "12",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 13,
+    "title": "别了芝诺！",
+    "titleEn": "So Long, Zeno!",
+    "labelRes": "13",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 14,
+    "title": "从现实到现实",
+    "titleEn": "The Future We Choose",
+    "labelRes": "14",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 15,
+    "title": "哦草根，草根",
+    "titleEn": "O, Grass-Roots",
+    "labelRes": "15",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 16,
+    "title": "前进进行曲",
+    "titleEn": "Marching March",
+    "labelRes": "16",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 17,
+    "title": "雪与雪之外的",
+    "titleEn": "Snow, and the Others",
+    "labelRes": "17",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 18,
+    "title": "你好，来亚什基",
+    "titleEn": "Hello, Rayashki",
+    "labelRes": "18",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 19,
+    "title": "致后代",
+    "titleEn": "To Descedants",
+    "labelRes": "19",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 20,
+    "title": "日落时",
+    "titleEn": "At Dusk",
+    "labelRes": "0",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 21,
+    "title": "水泥蝴蝶",
+    "titleEn": "Crushed Butterflies",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 22,
+    "title": "在岸边",
+    "titleEn": "On the Shore",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 23,
+    "title": "厨房谈话",
+    "titleEn": "Kitchen Conversations",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 24,
+    "title": "没有寄出的信",
+    "titleEn": "Letters Unsent",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 25,
+    "title": "沉思间",
+    "titleEn": "As She Ponders",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 26,
+    "title": "真实世界",
+    "titleEn": "Reality",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 27,
+    "title": "日光灿烂",
+    "titleEn": "Under the Warm Sun",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 28,
+    "title": "教师之歌",
+    "titleEn": "A Song for the Teacher",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 29,
+    "title": "银厅的诘问",
+    "titleEn": "Queries in the Hall",
+    "labelRes": "1",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 30,
+    "title": "象牙塔尖",
+    "titleEn": "Top of the Ivory Tower",
+    "labelRes": "2",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 31,
+    "title": "寄生蜂群",
+    "titleEn": "Parasites",
+    "labelRes": "3",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 32,
+    "title": "兔与龟",
+    "titleEn": "Tortoise and the Hare",
+    "labelRes": "4",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 33,
+    "title": "学者于雪海",
+    "titleEn": "The Researcher in Snow",
+    "labelRes": "5",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 34,
+    "title": "泡沫之下",
+    "titleEn": "After the Bubble Bursts",
+    "labelRes": "6",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 35,
+    "title": "守夜人",
+    "titleEn": "The Night Keeper",
+    "labelRes": "7",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 8,
+    "part": 36,
+    "title": "同行者",
+    "titleEn": "Comrade",
+    "labelRes": "8",
+    "storyBg": "singlebg/v1a8_storyactivityopenclose/v1a8_story_bg_1.png"
+  },
+  {
+    "chapter": 20,
+    "part": 1,
+    "title": "周末狂热",
+    "titleEn": "Weekend Fever",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 2,
+    "title": "娱乐不至死",
+    "titleEn": "We Won't Amuse Ourselves to Death",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 3,
+    "title": "小匣子",
+    "titleEn": "A Small Box",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 4,
+    "title": "新客人",
+    "titleEn": "A New Guest",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 5,
+    "title": "审讯节目",
+    "titleEn": "\"Interrogation\"",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 6,
+    "title": "乐园在即",
+    "titleEn": "Elysium Is Coming",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 7,
+    "title": "好哥们，好主顾",
+    "titleEn": "Best Bud, Best Guest",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 8,
+    "title": "晚祷的叮嘱",
+    "titleEn": "A Warning at Dinner",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 9,
+    "title": "离巢的蛇",
+    "titleEn": "Snake in the Grass",
+    "labelRes": "9",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 10,
+    "title": "再见，鼠辈",
+    "titleEn": "See you, Rats",
+    "labelRes": "10",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 11,
+    "title": "炉火与铁砧",
+    "titleEn": "Ingle and Anvil",
+    "labelRes": "11",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 12,
+    "title": "空棺柩",
+    "titleEn": "Empty Coffin",
+    "labelRes": "12",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 13,
+    "title": "小窍门",
+    "titleEn": "A Small Tip",
+    "labelRes": "13",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 14,
+    "title": "赞颂诗",
+    "titleEn": "Hymns",
+    "labelRes": "14",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 15,
+    "title": "眼中之物",
+    "titleEn": "Don't Look at It",
+    "labelRes": "15",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 16,
+    "title": "走吧，羔羊",
+    "titleEn": "Come with Me, Lost Lambs",
+    "labelRes": "16",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 17,
+    "title": "离别赠礼",
+    "titleEn": "Parting Gift",
+    "labelRes": "17",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 18,
+    "title": "别无所依",
+    "titleEn": "Alone",
+    "labelRes": "18",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 19,
+    "title": "绒丝带",
+    "titleEn": "Velvet Ribbon",
+    "labelRes": "19",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 20,
+    "title": "信鸽",
+    "titleEn": "Letter Home",
+    "labelRes": "20",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 21,
+    "title": "旱鸭子",
+    "titleEn": "Landlubber",
+    "labelRes": "21",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 22,
+    "title": "门前足音",
+    "titleEn": "Unanswered Door",
+    "labelRes": "22",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 23,
+    "title": "“一桩生意”",
+    "titleEn": "\"An Offer\"",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 24,
+    "title": "东方的朋友",
+    "titleEn": "A Friend From the East",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 25,
+    "title": "撑伞人",
+    "titleEn": "The One With an Umbrella",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 26,
+    "title": "友好会面",
+    "titleEn": "Friendly Meeting",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 27,
+    "title": "狂欢迪斯科",
+    "titleEn": "Disco Party",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 28,
+    "title": "冤家路窄",
+    "titleEn": "Me Again",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 29,
+    "title": "盛情晚宴",
+    "titleEn": "Grand Feast",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 30,
+    "title": "伙计们",
+    "titleEn": "The Guys",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 31,
+    "title": "篝火聚会",
+    "titleEn": "The Bonfire Party",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 32,
+    "title": "捡石子游戏",
+    "titleEn": "The Stone-Picking Game",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 33,
+    "title": "月光与海浪",
+    "titleEn": "By the Moonlit Sea",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 34,
+    "title": "启程日",
+    "titleEn": "The Day of Departure",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 35,
+    "title": "加州假日",
+    "titleEn": "Vacation in California",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 36,
+    "title": "中转站",
+    "titleEn": "Rest Stop Reveille",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 37,
+    "title": "随波逐流",
+    "titleEn": "Go With the Flow",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 20,
+    "part": 38,
+    "title": "重归好时光",
+    "titleEn": "The Good Old Days",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a0_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 1,
+    "title": "迷途的脚印",
+    "titleEn": "A Trail of Footprints",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 2,
+    "title": "浓雾天",
+    "titleEn": "Fog Descends",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 3,
+    "title": "婴儿电台",
+    "titleEn": "Baby Broadcaster",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 4,
+    "title": "红勋章",
+    "titleEn": "Medal of Honor",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 5,
+    "title": "临时通讯",
+    "titleEn": "A Sudden Message",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 6,
+    "title": "玻璃酒瓶",
+    "titleEn": "Glass Bottles",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 7,
+    "title": "羊皮纸",
+    "titleEn": "The Parchment",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 8,
+    "title": "纪实文学",
+    "titleEn": "Face Reality",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 9,
+    "title": "丝与线",
+    "titleEn": "Spider Silk",
+    "labelRes": "9",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 10,
+    "title": "嘿，万圣节！",
+    "titleEn": "It’s Spooky Time!",
+    "labelRes": "10",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 11,
+    "title": "“请勿打扰”",
+    "titleEn": "\"Please Do Not Disturb\"",
+    "labelRes": "11",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 12,
+    "title": "猎犬与姑娘",
+    "titleEn": "The Girl and the Hound",
+    "labelRes": "12",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 13,
+    "title": "反刍的胃袋",
+    "titleEn": "The Churning Stomach",
+    "labelRes": "13",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 14,
+    "title": "保佑她",
+    "titleEn": "May They Be Blessed",
+    "labelRes": "14",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 15,
+    "title": "服务热线",
+    "titleEn": "The Front Desk Call",
+    "labelRes": "15",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 16,
+    "title": "苦目糖",
+    "titleEn": "Picrasma Candy",
+    "labelRes": "16",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 17,
+    "title": "小水洼",
+    "titleEn": "The Puddle on the Road",
+    "labelRes": "17",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 18,
+    "title": "不眠夜",
+    "titleEn": "Sleepless Night",
+    "labelRes": "18",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 19,
+    "title": "飘",
+    "titleEn": "Gone in the Wind",
+    "labelRes": "19",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 20,
+    "title": "往日不再",
+    "titleEn": "Gone Are the Old Days",
+    "labelRes": "20",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 21,
+    "title": "迢遥或咫尺",
+    "titleEn": "Near or Far",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 22,
+    "title": "并非来客",
+    "titleEn": "Not Visitors",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 23,
+    "title": "毡帽与手枪",
+    "titleEn": "A Hat and a Pistol",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 24,
+    "title": "但求杯水",
+    "titleEn": "Just a Drink of Water",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 25,
+    "title": "血色暴行",
+    "titleEn": "Blood and Violence",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 26,
+    "title": "永不餍足",
+    "titleEn": "Never Enough",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 27,
+    "title": "无人允诺",
+    "titleEn": "No One Cares",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 28,
+    "title": "杏子的颜色",
+    "titleEn": "The Color of Apricots",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 29,
+    "title": "欢迎光临",
+    "titleEn": "Welcome!",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 30,
+    "title": "丝绒心脏",
+    "titleEn": "Velvet Heart",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 31,
+    "title": "摇篮曲",
+    "titleEn": "Lullaby",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 32,
+    "title": "无声夜",
+    "titleEn": "Silent Night",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 33,
+    "title": "怪房客",
+    "titleEn": "A Strange Guest",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 34,
+    "title": "克里斯汀的婴儿",
+    "titleEn": "Christine's Baby",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 35,
+    "title": "牧羊人",
+    "titleEn": "The Shepherdess",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 21,
+    "part": 36,
+    "title": "双面镜",
+    "titleEn": "The Double-Sided Mirror",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a1_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 1,
+    "title": "伦敦第一日",
+    "titleEn": "First Day Back in London",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 2,
+    "title": "烟囱里的雨燕",
+    "titleEn": "Swallows in the Chimney",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 3,
+    "title": "雾中鬼婆",
+    "titleEn": "Fog Hag",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 4,
+    "title": "久远的辉煌",
+    "titleEn": "Past Glory",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 5,
+    "title": "小叫醒工",
+    "titleEn": "Little Knocker-Upper",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 6,
+    "title": "黑天鹅",
+    "titleEn": "Black Swan",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 7,
+    "title": "早午餐",
+    "titleEn": "Brunch",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 8,
+    "title": "小巷落难记",
+    "titleEn": "Raining Fish",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 9,
+    "title": "天平与角逐",
+    "titleEn": "Hesitation and Challenge",
+    "labelRes": "9",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 10,
+    "title": "明珠蒙尘",
+    "titleEn": "Dust-Covered Pearl",
+    "labelRes": "10",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 11,
+    "title": "叮叮当当！",
+    "titleEn": "Clang! Clang!",
+    "labelRes": "11",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 12,
+    "title": "老木头",
+    "titleEn": "Old Wood",
+    "labelRes": "12",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 13,
+    "title": "剪彩仪式",
+    "titleEn": "Ribbon-Cutting Ceremony",
+    "labelRes": "13",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 14,
+    "title": "一粒灰尘",
+    "titleEn": "Soot in the Petri Dish",
+    "labelRes": "14",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 15,
+    "title": "触底反弹",
+    "titleEn": "Back in the Game",
+    "labelRes": "15",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 16,
+    "title": "我们的乌卢鲁",
+    "titleEn": "Our Uluru Games",
+    "labelRes": "16",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 17,
+    "title": "开幕式",
+    "titleEn": "Opening Ceremony",
+    "labelRes": "17",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 18,
+    "title": "灰黄的对话",
+    "titleEn": "Hazy Memories",
+    "labelRes": "18",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 19,
+    "title": "雾中独舞",
+    "titleEn": "Dancing in the Smog",
+    "labelRes": "19",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 20,
+    "title": "伦敦今日晴",
+    "titleEn": "London, Sunny",
+    "labelRes": "20",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 21,
+    "title": "蜗牛行迹",
+    "titleEn": "Slithering Snails",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 22,
+    "title": "润滑脂",
+    "titleEn": "Machine Lubricant",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 23,
+    "title": "无翼飞鸟",
+    "titleEn": "Fallen Swan",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 24,
+    "title": "柔光",
+    "titleEn": "Flickering Candlelight",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 25,
+    "title": "简易通讯",
+    "titleEn": "Phone Call",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 26,
+    "title": "叩门的回音",
+    "titleEn": "Echoing Knocks",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 27,
+    "title": "领奖台",
+    "titleEn": "Podium",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 28,
+    "title": "再见，朋友",
+    "titleEn": "Goodbye, Friend",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 29,
+    "title": "鸟儿的邀约",
+    "titleEn": "Bird Companion",
+    "labelRes": "1",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 30,
+    "title": "失物",
+    "titleEn": "Stolen Name",
+    "labelRes": "2",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 31,
+    "title": "十字街",
+    "titleEn": "Cross Street",
+    "labelRes": "3",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 32,
+    "title": "新朋友，老朋友",
+    "titleEn": "New Friends, Old Friends",
+    "labelRes": "4",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 33,
+    "title": "花与小石子儿",
+    "titleEn": "Flowers and Pebbles",
+    "labelRes": "5",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 34,
+    "title": "跃动的爪印",
+    "titleEn": "Peppy Paws",
+    "labelRes": "6",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 35,
+    "title": "穿行于暗梦",
+    "titleEn": "Through the Darkness",
+    "labelRes": "7",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 23,
+    "part": 36,
+    "title": "谜底",
+    "titleEn": "The Answer",
+    "labelRes": "8",
+    "storyBg": "singlebg/v2a3_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 24,
+    "part": 1,
+    "title": "船讯",
+    "titleEn": "A Message Delivered",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 2,
+    "title": "“自由海风”",
+    "titleEn": "\"Free Breeze\"",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 3,
+    "title": "密码学入门",
+    "titleEn": "Cryptography for Beginners",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 4,
+    "title": "时代之声",
+    "titleEn": "Music of the Era",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 5,
+    "title": "离港日",
+    "titleEn": "The Day We Set Sail",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 6,
+    "title": "群岛已远",
+    "titleEn": "As Home Fades",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 7,
+    "title": "音乐或亮光",
+    "titleEn": "Music or Light",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 8,
+    "title": "老调子",
+    "titleEn": "An Old Song at Sea",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 9,
+    "title": "战争与和平",
+    "titleEn": "Science Salon",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 10,
+    "title": "一面又一面",
+    "titleEn": "Piracy—Not the Fun Kind.",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 11,
+    "title": "我可恨的乡土啊",
+    "titleEn": "The Hateful Hometown",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 12,
+    "title": "三个音乐家",
+    "titleEn": "Clashing Genres",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 13,
+    "title": "太阳之死",
+    "titleEn": "End of the Sun",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 14,
+    "title": "紧急通讯",
+    "titleEn": "A Call for Help",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 15,
+    "title": "海风儿在翻阅",
+    "titleEn": "A New Page Turned",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 16,
+    "title": "意大利之歌",
+    "titleEn": "Barcarolle",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 17,
+    "title": "不和谐音",
+    "titleEn": "Dissonance",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 18,
+    "title": "二十七岁俱乐部",
+    "titleEn": "The 27 Club",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 19,
+    "title": "我们称作乡愁之物",
+    "titleEn": "The Pain of Missing Home",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 20,
+    "title": "向别处",
+    "titleEn": "To Elsewhere, To Home",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 21,
+    "title": "最后一次告别",
+    "titleEn": "Final Farewell",
+    "labelRes": "21",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 22,
+    "title": "我不曾遗憾",
+    "titleEn": "Without Regret",
+    "labelRes": "22",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 23,
+    "title": "海中升起的她",
+    "titleEn": "Finding Home on the Waves",
+    "labelRes": "23",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 24,
+    "title": "深空波",
+    "titleEn": "From the Depths of Space",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 25,
+    "title": "人道主义",
+    "titleEn": "\"Humanitarian\" Management",
+    "labelRes": "0",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 26,
+    "title": "新朋友",
+    "titleEn": "A New Friend",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 27,
+    "title": "迎新会",
+    "titleEn": "A Welcome Party",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 28,
+    "title": "噪音",
+    "titleEn": "Unwanted Noise",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 29,
+    "title": "长假将尽",
+    "titleEn": "No More Idleness",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 30,
+    "title": "人情味",
+    "titleEn": "\"Humanitarian\" Approach",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 31,
+    "title": "生日派对",
+    "titleEn": "A Not-so-happy Birthday",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 32,
+    "title": "遍历可能性",
+    "titleEn": "Ergodicity",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 33,
+    "title": "星云假说",
+    "titleEn": "\"Nebular Hypothesis\"",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 34,
+    "title": "河港与海之间",
+    "titleEn": "Beyond the Coastline",
+    "labelRes": "0",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 35,
+    "title": "木桶宝座\n\n  ",
+    "titleEn": "VIP Barrel Seat",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 36,
+    "title": "应许之地",
+    "titleEn": "Promised Destinations",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 37,
+    "title": "回旋曲",
+    "titleEn": "A Monotonous Rondo",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 38,
+    "title": "热情易逝",
+    "titleEn": "Passion and Hesitation",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 39,
+    "title": "不可拆卸之物",
+    "titleEn": "The Indivisible",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 40,
+    "title": "位于世界中",
+    "titleEn": "Into the Vast World",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 41,
+    "title": "故乡渺茫",
+    "titleEn": "Farewell, Cremona",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 24,
+    "part": 42,
+    "title": "良夜多宁静 ",
+    "titleEn": "Such a Serene Evening",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 1,
+    "title": "新警局故事",
+    "titleEn": "Fresh Police Story",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 2,
+    "title": "最高危机",
+    "titleEn": "Total Crisis",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 3,
+    "title": "秩序与失衡",
+    "titleEn": "Order and Chaos",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 4,
+    "title": "降邪",
+    "titleEn": "Exorcism",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 5,
+    "title": "局外人",
+    "titleEn": "Other Side, Same Coin",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 6,
+    "title": "秘密通缉令",
+    "titleEn": "Secret Warrant",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 7,
+    "title": "参演须知",
+    "titleEn": "Rookie Actor's Guide",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 8,
+    "title": "餐后审问室",
+    "titleEn": "Post-lunch Questioning",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 9,
+    "title": "没头脑嘉宾",
+    "titleEn": "A Name Deserved",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 10,
+    "title": "抽丝剥茧论",
+    "titleEn": "Unraveling the Mystery",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 11,
+    "title": "喂，跑龙套！",
+    "titleEn": "Hey, Kelefe!",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 12,
+    "title": "捕鼠器",
+    "titleEn": "Mousetrap",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 13,
+    "title": "A计划外",
+    "titleEn": "A Project Gone Awry",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 14,
+    "title": "荧屏正发光",
+    "titleEn": "Lit Screen, Lit Eyes",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 15,
+    "title": "紧急播报",
+    "titleEn": "This Just In",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 16,
+    "title": "小人物纪录",
+    "titleEn": "Before the Spotlight",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 17,
+    "title": "夜游者",
+    "titleEn": "Watchers, Protectors, Defenders",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 18,
+    "title": "因果定律",
+    "titleEn": "The Law of Causation",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 19,
+    "title": "恶与善的挽歌",
+    "titleEn": "False Dilemma",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 20,
+    "title": "直至消逝的光",
+    "titleEn": "Until the Light Fades",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 21,
+    "title": "重映日",
+    "titleEn": "Rescreen",
+    "labelRes": "21",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 22,
+    "title": "无署名访客",
+    "titleEn": "Anonymous Visitor",
+    "labelRes": "22",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 23,
+    "title": "红",
+    "titleEn": "Red",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 24,
+    "title": "蓝",
+    "titleEn": "Blue",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 25,
+    "title": "绿",
+    "titleEn": "Green",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 26,
+    "title": "紫",
+    "titleEn": "Purple",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 27,
+    "title": "水蓝",
+    "titleEn": "Aqua",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 28,
+    "title": "黄",
+    "titleEn": "Yellow",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 29,
+    "title": "白",
+    "titleEn": "White",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 30,
+    "title": "霜降",
+    "titleEn": "Descent of Frost",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 31,
+    "title": "立冬",
+    "titleEn": "Commencement of Winter",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 32,
+    "title": "小雪",
+    "titleEn": "Light Snow",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 33,
+    "title": "冬至",
+    "titleEn": "Winter Solstice",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 34,
+    "title": "大寒",
+    "titleEn": "Severe Cold",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 35,
+    "title": "立春",
+    "titleEn": "Commencement of Spring",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 36,
+    "title": "雨水",
+    "titleEn": "Rain Water",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 25,
+    "part": 37,
+    "title": "惊蛰",
+    "titleEn": "Waking of Insects",
+    "labelRes": "8",
+    "storyBg": ""
+  }
+]

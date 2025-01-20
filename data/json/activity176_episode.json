@@ -1,0 +1,50 @@
+[
+  {
+    "activityId": 12306,
+    "id": 2360101,
+    "elementId": 0,
+    "target": ""
+  },
+  {
+    "activityId": 12306,
+    "id": 2360102,
+    "elementId": 0,
+    "target": ""
+  },
+  {
+    "activityId": 12306,
+    "id": 2360103,
+    "elementId": 23601011,
+    "target": "逃往东面树林深处"
+  },
+  {
+    "activityId": 12306,
+    "id": 2360104,
+    "elementId": 23601012,
+    "target": "前往北面僵尸公墓"
+  },
+  {
+    "activityId": 12306,
+    "id": 2360105,
+    "elementId": 23601013,
+    "target": "前往西面下午茶俱乐部"
+  },
+  {
+    "activityId": 12306,
+    "id": 2360106,
+    "elementId": 23601014,
+    "target": "前往东北面肉罐头加工厂"
+  },
+  {
+    "activityId": 12306,
+    "id": 2360107,
+    "elementId": 23601015,
+    "target": "遍历黑暗到达最东面"
+  },
+  {
+    "activityId": 12306,
+    "id": 2360108,
+    "elementId": 0,
+    "target": ""
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 2001,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "媒介上限-10"
+  },
+  {
+    "id": 2002,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "全队失去40%生命"
+  },
+  {
+    "id": 2003,
+    "unlockType": 4,
+    "unlockParam": "20",
+    "desc": "失去20媒介"
+  },
+  {
+    "id": 2101,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "媒介上限-8"
+  },
+  {
+    "id": 2102,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "全队失去30%生命"
+  },
+  {
+    "id": 2103,
+    "unlockType": 4,
+    "unlockParam": "16",
+    "desc": "失去16媒介"
+  },
+  {
+    "id": 3001,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "媒介上限-20"
+  },
+  {
+    "id": 3002,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "全队失去80%生命"
+  },
+  {
+    "id": 3003,
+    "unlockType": 4,
+    "unlockParam": "40",
+    "desc": "失去40媒介"
+  },
+  {
+    "id": 3101,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "媒介上限-16"
+  },
+  {
+    "id": 3102,
+    "unlockType": 0,
+    "unlockParam": "",
+    "desc": "全队失去60%生命"
+  },
+  {
+    "id": 3103,
+    "unlockType": 4,
+    "unlockParam": "32",
+    "desc": "失去32媒介"
+  }
+]

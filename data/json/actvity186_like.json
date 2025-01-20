@@ -1,0 +1,34 @@
+[
+  {
+    "type": 1,
+    "activityId": 12518,
+    "name": "人缘",
+    "nameen": "",
+    "icon": "",
+    "basevalueornot": 0
+  },
+  {
+    "type": 2,
+    "activityId": 12518,
+    "name": "幸运",
+    "nameen": "",
+    "icon": "",
+    "basevalueornot": 0
+  },
+  {
+    "type": 3,
+    "activityId": 12518,
+    "name": "财富",
+    "nameen": "",
+    "icon": "",
+    "basevalueornot": 0
+  },
+  {
+    "type": 4,
+    "activityId": 12518,
+    "name": "基础数值",
+    "nameen": "",
+    "icon": "",
+    "basevalueornot": 1
+  }
+]

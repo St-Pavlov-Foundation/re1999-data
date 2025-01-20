@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "从无创造",
+    "reddotid": 1009,
+    "icon": "icon1",
+    "sortPriority": 0
+  },
+  {
+    "id": 2,
+    "name": "活动中心名",
+    "reddotid": 1010,
+    "icon": "icon_2",
+    "sortPriority": 2
+  },
+  {
+    "id": 3,
+    "name": "新手福利",
+    "reddotid": 1908,
+    "icon": "icon_5",
+    "sortPriority": 3
+  }
+]

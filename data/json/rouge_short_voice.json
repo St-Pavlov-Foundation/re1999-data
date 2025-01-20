@@ -1,0 +1,261 @@
+[
+  {
+    "id": 1,
+    "audioId": 610023043,
+    "groupId": 1,
+    "desc": "久违的城市街道。",
+    "weight": 1000
+  },
+  {
+    "id": 2,
+    "audioId": 610023044,
+    "groupId": 2,
+    "desc": "这里的居民可不友善，当心。",
+    "weight": 1000
+  },
+  {
+    "id": 3,
+    "audioId": 610023045,
+    "groupId": 3,
+    "desc": "道路两侧的树林中潜伏着不少的魔精，当心。",
+    "weight": 1000
+  },
+  {
+    "id": 4,
+    "audioId": 610023046,
+    "groupId": 4,
+    "desc": "您确定真的要走这条路？",
+    "weight": 1000
+  },
+  {
+    "id": 5,
+    "audioId": 610023047,
+    "groupId": 5,
+    "desc": "由采石所形成的地下湖泊？没想到居然会有这种地方。",
+    "weight": 1000
+  },
+  {
+    "id": 6,
+    "audioId": 610023048,
+    "groupId": 6,
+    "desc": "我或许可以顺路去占卜一下……开个玩笑。",
+    "weight": 1000
+  },
+  {
+    "id": 7,
+    "audioId": 610023049,
+    "groupId": 7,
+    "desc": "这里的建筑物似乎颇有历史，可惜我对此一窍不通。",
+    "weight": 1000
+  },
+  {
+    "id": 8,
+    "audioId": 610023050,
+    "groupId": 8,
+    "desc": "“暴雨”即将来临，我的时间所剩无几了。",
+    "weight": 1000
+  },
+  {
+    "id": 9,
+    "audioId": 610023050,
+    "groupId": 9,
+    "desc": "“暴雨”即将来临，我的时间所剩无几了。",
+    "weight": 1000
+  },
+  {
+    "id": 10,
+    "audioId": 610023051,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 11,
+    "audioId": 610023052,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 12,
+    "audioId": 610023053,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 13,
+    "audioId": 610023054,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 14,
+    "audioId": 610023055,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 15,
+    "audioId": 610023056,
+    "groupId": 10,
+    "desc": "",
+    "weight": 200
+  },
+  {
+    "id": 16,
+    "audioId": 610023057,
+    "groupId": 11,
+    "desc": "轻松。",
+    "weight": 500
+  },
+  {
+    "id": 17,
+    "audioId": 610023058,
+    "groupId": 12,
+    "desc": "不错的战斗。",
+    "weight": 500
+  },
+  {
+    "id": 18,
+    "audioId": 610023059,
+    "groupId": 13,
+    "desc": "值得铭记的胜利。",
+    "weight": 500
+  },
+  {
+    "id": 19,
+    "audioId": 610023060,
+    "groupId": 14,
+    "desc": "有趣的经历。",
+    "weight": 500
+  },
+  {
+    "id": 20,
+    "audioId": 610023061,
+    "groupId": 15,
+    "desc": "购物机会。",
+    "weight": 500
+  },
+  {
+    "id": 21,
+    "audioId": 610023062,
+    "groupId": 16,
+    "desc": "略作小憩。",
+    "weight": 500
+  },
+  {
+    "id": 22,
+    "audioId": 610023063,
+    "groupId": 17,
+    "desc": "偶有所得。",
+    "weight": 500
+  },
+  {
+    "id": 23,
+    "audioId": 610023064,
+    "groupId": 18,
+    "desc": "瓦伦缇娜？我从未听说过这个名字。",
+    "weight": 1000
+  },
+  {
+    "id": 24,
+    "audioId": 610023065,
+    "groupId": 19,
+    "desc": "见鬼，这究竟是怎么回事？",
+    "weight": 1000
+  },
+  {
+    "id": 25,
+    "audioId": 610023066,
+    "groupId": 20,
+    "desc": "罗蕾莱……她为什么会躲在那里？",
+    "weight": 1000
+  },
+  {
+    "id": 26,
+    "audioId": 610023067,
+    "groupId": 21,
+    "desc": "我该做出最后的决定了。",
+    "weight": 1000
+  },
+  {
+    "id": 27,
+    "audioId": 610023068,
+    "groupId": 22,
+    "desc": "继续前进。",
+    "weight": 1000
+  },
+  {
+    "id": 28,
+    "audioId": 610023069,
+    "groupId": 23,
+    "desc": "嗯……",
+    "weight": 100
+  },
+  {
+    "id": 29,
+    "audioId": 610023070,
+    "groupId": 23,
+    "desc": "很好。",
+    "weight": 100
+  },
+  {
+    "id": 30,
+    "audioId": 610023071,
+    "groupId": 23,
+    "desc": "别有遗漏。",
+    "weight": 100
+  },
+  {
+    "id": 31,
+    "audioId": 610023072,
+    "groupId": 23,
+    "desc": "做足准备工作。",
+    "weight": 100
+  },
+  {
+    "id": 32,
+    "audioId": 610023073,
+    "groupId": 24,
+    "desc": "注意时间。",
+    "weight": 500
+  },
+  {
+    "id": 33,
+    "audioId": 610023074,
+    "groupId": 24,
+    "desc": "尽快结束吧。",
+    "weight": 500
+  },
+  {
+    "id": 34,
+    "audioId": 610023068,
+    "groupId": 25,
+    "desc": "继续前进。",
+    "weight": 1000
+  },
+  {
+    "id": 35,
+    "audioId": 610023068,
+    "groupId": 26,
+    "desc": "继续前进。",
+    "weight": 1000
+  },
+  {
+    "id": 36,
+    "audioId": 610023068,
+    "groupId": 27,
+    "desc": "继续前进。",
+    "weight": 1000
+  },
+  {
+    "id": 37,
+    "audioId": 610023068,
+    "groupId": 28,
+    "desc": "继续前进。",
+    "weight": 1000
+  }
+]

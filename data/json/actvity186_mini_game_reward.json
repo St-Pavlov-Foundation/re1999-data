@@ -1,0 +1,74 @@
+[
+  {
+    "type": 1,
+    "rewardId": 1,
+    "prob": 200,
+    "bonus": "26#1#20|2#2503#15|1#491004#1",
+    "blessingtitle": "",
+    "blessingdes": ""
+  },
+  {
+    "type": 1,
+    "rewardId": 2,
+    "prob": 200,
+    "bonus": "26#2#20|2#2503#20|2#3#5000",
+    "blessingtitle": "",
+    "blessingdes": ""
+  },
+  {
+    "type": 1,
+    "rewardId": 3,
+    "prob": 200,
+    "bonus": "26#3#20|2#2503#25",
+    "blessingtitle": "",
+    "blessingdes": ""
+  },
+  {
+    "type": 2,
+    "rewardId": 1,
+    "prob": 166,
+    "bonus": "26#2#20|26#4#20|2#2503#20|1#491003#1",
+    "blessingtitle": "大吉大利",
+    "blessingdes": "万事顺意，鸿运当头。此签福星高照之象，诸事皆宜。"
+  },
+  {
+    "type": 2,
+    "rewardId": 2,
+    "prob": 166,
+    "bonus": "26#2#20|26#4#20|2#2503#20|2#3#5000",
+    "blessingtitle": "时来运转",
+    "blessingdes": "峰回路转，柳暗花明。此签逢凶化吉之象，宜随心自在。"
+  },
+  {
+    "type": 2,
+    "rewardId": 3,
+    "prob": 170,
+    "bonus": "26#3#20|26#4#20|2#2503#30",
+    "blessingtitle": "财运亨通",
+    "blessingdes": "积金累玉，日进斗金。此签福禄双全之象，宜大展宏图。"
+  },
+  {
+    "type": 2,
+    "rewardId": 4,
+    "prob": 166,
+    "bonus": "26#3#20|26#4#20|2#2503#25|2#5#3000",
+    "blessingtitle": "财源广进",
+    "blessingdes": "前程似锦，八方来财。此签锦上添花之象，宜广开财路。"
+  },
+  {
+    "type": 2,
+    "rewardId": 5,
+    "prob": 166,
+    "bonus": "26#1#20|26#4#20|2#2503#15|1#491004#1",
+    "blessingtitle": "宾朋满座",
+    "blessingdes": "笙歌鼎沸，车马盈门。此签杯觥交错之象，宜设宴聚饮。"
+  },
+  {
+    "type": 2,
+    "rewardId": 6,
+    "prob": 166,
+    "bonus": "26#1#20|26#4#20|2#2503#10|1#491004#2",
+    "blessingtitle": "酒逢知己",
+    "blessingdes": "以诚待友，同道而谋。此签高山流水之象，宜以情会友。"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "skillName": "甲胄",
+    "skillValueDesc": "后发制人",
+    "skillInfoDesc": "美枣生荆棘，万象勃勃天地喜。",
+    "skillIcon": "",
+    "skillNameEn": "ARMOR"
+  },
+  {
+    "id": 3,
+    "skillName": "丰饶",
+    "skillValueDesc": "灵机一动",
+    "skillInfoDesc": "取之渺渺一粒粟，获而翌年千谷穗。",
+    "skillIcon": "",
+    "skillNameEn": "ABUNDANCE"
+  },
+  {
+    "id": 2,
+    "skillName": "不息",
+    "skillValueDesc": "援之以手",
+    "skillInfoDesc": "百草中惟此不顾冰雪，最先春也。",
+    "skillIcon": "",
+    "skillNameEn": "CIRCLE"
+  },
+  {
+    "id": 4,
+    "skillName": "亘久",
+    "skillValueDesc": "追逐技巧",
+    "skillInfoDesc": "坐于破岩之间，岿然不动之气骨。",
+    "skillIcon": "",
+    "skillNameEn": "PERSISTENCE"
+  }
+]

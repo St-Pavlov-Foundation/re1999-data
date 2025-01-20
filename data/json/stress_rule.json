@@ -1,0 +1,4142 @@
+[
+  {
+    "id": 1001,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "敌人退场时，自身应激-5"
+  },
+  {
+    "id": 1002,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "击败敌人时，自身应激-10"
+  },
+  {
+    "id": 1003,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "其他友方阵亡时，自身应激+25"
+  },
+  {
+    "id": 1004,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "低应激时，概率根据灵感触发警觉行为"
+  },
+  {
+    "id": 1005,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "高应激时，概率根据灵感触发紊乱行为"
+  },
+  {
+    "id": 1006,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "应激到达50时，触发专注或失控行为"
+  },
+  {
+    "id": 1007,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 1,
+    "desc": "专注：帮助队伍，比如降低友方应激"
+  },
+  {
+    "id": 1008,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 1,
+    "desc": "失控：打乱规划，比如使自身无法行动"
+  },
+  {
+    "id": 200111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200111",
+    "isNoShow": 1,
+    "desc": "回合结束时，20%概率使生命最低的友方获得【坚壁Ⅱ】或【蔑视Ⅱ】，持续1回合"
+  },
+  {
+    "id": 200211,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200211",
+    "isNoShow": 1,
+    "desc": "回合开始时，20%概率赋予敌方全体1层【明昧】"
+  },
+  {
+    "id": 200311,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200311",
+    "isNoShow": 1,
+    "desc": "回合结束时，20%概率随机赋予己方全体【防御增益集合】中的1种效果"
+  },
+  {
+    "id": 200411,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200411",
+    "isNoShow": 1,
+    "desc": "回合开始时，10%概率立即释放自身1阶技能1攻击随机敌人"
+  },
+  {
+    "id": 200511,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200511",
+    "isNoShow": 1,
+    "desc": "回合结束时，25%概率使随机敌人应激-5"
+  },
+  {
+    "id": 200611,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200611",
+    "isNoShow": 1,
+    "desc": "不会产生警觉行为"
+  },
+  {
+    "id": 200121,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200121",
+    "isNoShow": 1,
+    "desc": "回合结束时，20%概率使随机友方获得1层【虚弱】"
+  },
+  {
+    "id": 200221,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200221",
+    "isNoShow": 1,
+    "desc": "回合开始时，20%概率赋予自身1层【明昧】，并不受控制的冲到最前"
+  },
+  {
+    "id": 200321,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200321",
+    "isNoShow": 1,
+    "desc": "回合结束时，20%概率随机赋予己方全体【状态异常集合】中的1种，持续2回合"
+  },
+  {
+    "id": 200421,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200421",
+    "isNoShow": 1,
+    "desc": "回合开始时，10%概率立即释放自身1阶技能1攻击随机敌人，随后自身陷入【眩晕】状态1回合"
+  },
+  {
+    "id": 200521,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200521",
+    "isNoShow": 1,
+    "desc": "回合结束时，25%概率使自身应激+5"
+  },
+  {
+    "id": 200621,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200621",
+    "isNoShow": 1,
+    "desc": "不会产生紊乱行为"
+  },
+  {
+    "id": 100131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38100131",
+    "isNoShow": 1,
+    "desc": "其他友方应激-10"
+  },
+  {
+    "id": 200131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200131",
+    "isNoShow": 1,
+    "desc": "己方全体获得【顽抗Ⅰ】"
+  },
+  {
+    "id": 200231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200231",
+    "isNoShow": 1,
+    "desc": "己方随机单位获得1个【永久增益状态】，随机9次"
+  },
+  {
+    "id": 200331,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200331",
+    "isNoShow": 1,
+    "desc": "其他友方获得【愈合】2回合"
+  },
+  {
+    "id": 200431,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200431",
+    "isNoShow": 1,
+    "desc": "自身激情回满，并立即触发一次至终的仪式"
+  },
+  {
+    "id": 200531,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200531",
+    "isNoShow": 1,
+    "desc": "本场战斗，自身应激增加抗性+100%"
+  },
+  {
+    "id": 200631,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200631",
+    "isNoShow": 1,
+    "desc": "降低己方全体应激值10"
+  },
+  {
+    "id": 400131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38400131",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体【现实防御降低】，持续2回合"
+  },
+  {
+    "id": 400231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38400231",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体【精神防御降低】，持续2回合"
+  },
+  {
+    "id": 410131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410131",
+    "isNoShow": 1,
+    "desc": "赋予自身4层【激昂】"
+  },
+  {
+    "id": 410231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410231",
+    "isNoShow": 1,
+    "desc": "赋予自身4层【坚固】"
+  },
+  {
+    "id": 410331,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410331",
+    "isNoShow": 1,
+    "desc": "赋予己方全体随机5个【永久增益状态】"
+  },
+  {
+    "id": 410431,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410431",
+    "isNoShow": 1,
+    "desc": "使血量百分比最低的友方回复50%最大生命"
+  },
+  {
+    "id": 410531,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410531",
+    "isNoShow": 1,
+    "desc": "赋予自身1层【最终伤害提高】，攻击后消耗"
+  },
+  {
+    "id": 410631,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410631",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体随机10种减益，持续3回合"
+  },
+  {
+    "id": 410731,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410731",
+    "isNoShow": 1,
+    "desc": "赋予随机敌方【眩晕】，持续2回合"
+  },
+  {
+    "id": 410831,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410831",
+    "isNoShow": 1,
+    "desc": "赋予己方全体大量【护盾】，持续2回合"
+  },
+  {
+    "id": 410931,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410931",
+    "isNoShow": 1,
+    "desc": "驱散敌方全体的所有增益"
+  },
+  {
+    "id": 411031,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411031",
+    "isNoShow": 1,
+    "desc": "净化己方全体的所有减益"
+  },
+  {
+    "id": 411131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411131",
+    "isNoShow": 1,
+    "desc": "使自身回复100%最大生命"
+  },
+  {
+    "id": 411231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411231",
+    "isNoShow": 1,
+    "desc": "使随机敌人陷入【中毒】状态，持续3回合，重复5次"
+  },
+  {
+    "id": 411331,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411331",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体【重伤】，持续3回合"
+  },
+  {
+    "id": 411431,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411431",
+    "isNoShow": 1,
+    "desc": "使用1次自身的技能1"
+  },
+  {
+    "id": 411531,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411531",
+    "isNoShow": 1,
+    "desc": "使用1次自身的技能1"
+  },
+  {
+    "id": 411631,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411631",
+    "isNoShow": 1,
+    "desc": "使用1次自身的技能2"
+  },
+  {
+    "id": 411831,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411831",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体15层【燃烧】"
+  },
+  {
+    "id": 411931,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411931",
+    "isNoShow": 1,
+    "desc": "赋予己方全体【免疫】，持续1回合"
+  },
+  {
+    "id": 412031,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412031",
+    "isNoShow": 1,
+    "desc": "获得【克制】1回合。克制：行动前，有50%概率使自身获得1层【激昂】"
+  },
+  {
+    "id": 412131,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412131",
+    "isNoShow": 1,
+    "desc": "使自身失去50%当前生命，获得2层【弥留】"
+  },
+  {
+    "id": 412231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412231",
+    "isNoShow": 1,
+    "desc": "自身不受控制位移，并驱散己方全体状态异常"
+  },
+  {
+    "id": 412331,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412331",
+    "isNoShow": 1,
+    "desc": "赋予己方全体【调阶】，持续2回合"
+  },
+  {
+    "id": 100141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38100141",
+    "isNoShow": 1,
+    "desc": "使自身陷入【破绽】状态1回合"
+  },
+  {
+    "id": 200141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200141",
+    "isNoShow": 1,
+    "desc": "敌方全体获得【顽抗Ⅰ】"
+  },
+  {
+    "id": 200241,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200241",
+    "isNoShow": 1,
+    "desc": "敌方随机单位获得9个【永久增益状态】"
+  },
+  {
+    "id": 200341,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200341",
+    "isNoShow": 1,
+    "desc": "己方全体，1回合内无法获得治疗"
+  },
+  {
+    "id": 200441,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200441",
+    "isNoShow": 1,
+    "desc": "自身激情清空"
+  },
+  {
+    "id": 200541,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200541",
+    "isNoShow": 1,
+    "desc": "本场战斗，自身应激增加抗性-100%，不可叠加"
+  },
+  {
+    "id": 200641,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38200641",
+    "isNoShow": 1,
+    "desc": "增加敌方全体应激值5"
+  },
+  {
+    "id": 400141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38400141",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体现实防御提高15%，持续2回合"
+  },
+  {
+    "id": 400241,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38400241",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体精神防御提高15%，持续2回合"
+  },
+  {
+    "id": 410141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410141",
+    "isNoShow": 1,
+    "desc": "赋予自身4层【虚弱】"
+  },
+  {
+    "id": 410241,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410241",
+    "isNoShow": 1,
+    "desc": "赋予自身4层【脆弱】"
+  },
+  {
+    "id": 410341,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410341",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体随机5个【永久增益状态】"
+  },
+  {
+    "id": 410441,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410441",
+    "isNoShow": 1,
+    "desc": "血量百分比最低的友方单位，2回合内无法获得治疗"
+  },
+  {
+    "id": 410541,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410541",
+    "isNoShow": 1,
+    "desc": "赋予自身1层【最终伤害降低】，攻击后消耗"
+  },
+  {
+    "id": 410641,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410641",
+    "isNoShow": 1,
+    "desc": "赋予己方全体随机10种减益，持续3回合"
+  },
+  {
+    "id": 410741,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410741",
+    "isNoShow": 1,
+    "desc": "赋予自身【眩晕】，持续2回合"
+  },
+  {
+    "id": 410841,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410841",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体30%最大生命【护盾】，持续2回合"
+  },
+  {
+    "id": 410941,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38410941",
+    "isNoShow": 1,
+    "desc": "驱散己方全体的所有增益"
+  },
+  {
+    "id": 411041,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411041",
+    "isNoShow": 1,
+    "desc": "净化敌方全体的所有减益"
+  },
+  {
+    "id": 411141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411141",
+    "isNoShow": 1,
+    "desc": "使自身失去50%当前生命"
+  },
+  {
+    "id": 411241,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411241",
+    "isNoShow": 1,
+    "desc": "使随机友方陷入【中毒】状态，持续3回合，重复5次"
+  },
+  {
+    "id": 411341,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411341",
+    "isNoShow": 1,
+    "desc": "赋予己方全体【重伤】，持续3回合"
+  },
+  {
+    "id": 411441,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411441",
+    "isNoShow": 1,
+    "desc": "自身陷入【意识失控】状态1回合"
+  },
+  {
+    "id": 411541,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411541",
+    "isNoShow": 1,
+    "desc": "自身陷入【精神失控】状态1回合"
+  },
+  {
+    "id": 411641,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411641",
+    "isNoShow": 1,
+    "desc": "自身陷入【躯体失控】状态1回合"
+  },
+  {
+    "id": 411841,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411841",
+    "isNoShow": 1,
+    "desc": "赋予己方全体15层【燃烧】"
+  },
+  {
+    "id": 411941,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38411941",
+    "isNoShow": 1,
+    "desc": "赋予敌方全体【免疫】，持续1回合"
+  },
+  {
+    "id": 412041,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412041",
+    "isNoShow": 1,
+    "desc": "自身获得【迷茫】2回合"
+  },
+  {
+    "id": 412141,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412141",
+    "isNoShow": 1,
+    "desc": "使自身失去80%当前生命"
+  },
+  {
+    "id": 412241,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412241",
+    "isNoShow": 1,
+    "desc": "自身不受控制位移，并驱散己方全体状态增益"
+  },
+  {
+    "id": 412341,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38412341",
+    "isNoShow": 1,
+    "desc": "赋予己方全体【降阶】，持续2回合"
+  },
+  {
+    "id": 530911,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530911",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色应激-15"
+  },
+  {
+    "id": 530812,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530812",
+    "isNoShow": 1,
+    "desc": "（不显示）获得10层【预燃】，【热度】+20"
+  },
+  {
+    "id": 530651,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530651",
+    "isNoShow": 1,
+    "desc": "（不显示）获得【咒语强化Ⅱ】，持续1回合"
+  },
+  {
+    "id": 530862,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530862",
+    "isNoShow": 1,
+    "desc": "（不显示）获得30层【电能】"
+  },
+  {
+    "id": 530982,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530982",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色获得5层【镇定】，持续1回合"
+  },
+  {
+    "id": 530972,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530972",
+    "isNoShow": 1,
+    "desc": "（不显示）驱散敌方全体的【属性提升】【状态增益】"
+  },
+  {
+    "id": 530992,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530992",
+    "isNoShow": 1,
+    "desc": "（不显示）使敌方全体陷入【噩梦】状态，持续1回合"
+  },
+  {
+    "id": 530271,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530271",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色获得【超然】，持续1回合"
+  },
+  {
+    "id": 530791,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530791",
+    "isNoShow": 1,
+    "desc": "（不显示）己方角色获得4层【克制】，持续1回合"
+  },
+  {
+    "id": 530041,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530041",
+    "isNoShow": 1,
+    "desc": "（不显示）对场上所有敌人追击1次"
+  },
+  {
+    "id": 530251,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530251",
+    "isNoShow": 1,
+    "desc": "（不显示）使己方全体进入【躁动摇滚！】状态，持续1回合"
+  },
+  {
+    "id": 530281,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530281",
+    "isNoShow": 1,
+    "desc": "（不显示）使己方全体获得4层【汲取】"
+  },
+  {
+    "id": 530231,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530231",
+    "isNoShow": 1,
+    "desc": "（不显示）使己方全体造成伤害提升40%，受到伤害减少40%，持续2回合"
+  },
+  {
+    "id": 530412,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530412",
+    "isNoShow": 1,
+    "desc": "（不显示）使己方全体暴击率提升50%，持续1回合，若十四行诗在场，效果提升至100%"
+  },
+  {
+    "id": 530091,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530091",
+    "isNoShow": 1,
+    "desc": "（不显示）50%概率赋予每个友方1层【毒瓶】(概率独立判定）"
+  },
+  {
+    "id": 530032,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530032",
+    "isNoShow": 1,
+    "desc": "（不显示）己方全体获得【免疫】，持续1回合"
+  },
+  {
+    "id": 530471,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530471",
+    "isNoShow": 1,
+    "desc": "（不显示）赋予随机敌人【眩晕】，持续1回合"
+  },
+  {
+    "id": 530572,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530572",
+    "isNoShow": 1,
+    "desc": "（不显示）赋予敌方全体1层【麻痹】"
+  },
+  {
+    "id": 530912,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530912",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色应激+15"
+  },
+  {
+    "id": 530802,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530802",
+    "isNoShow": 1,
+    "desc": "（不显示）清除自身所有【移情】值"
+  },
+  {
+    "id": 530813,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530813",
+    "isNoShow": 1,
+    "desc": "（不显示）获得10层【预燃】，激情回满，对己方全体使用至终的仪式"
+  },
+  {
+    "id": 530652,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530652",
+    "isNoShow": 1,
+    "desc": "（不显示）获得【眩晕】，持续1回合"
+  },
+  {
+    "id": 530863,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530863",
+    "isNoShow": 1,
+    "desc": "（不显示）移除所有【电能】，获得【电量焦虑】，持续1回合"
+  },
+  {
+    "id": 530983,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530983",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色获得5层【狂躁】，持续1回合"
+  },
+  {
+    "id": 530973,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530973",
+    "isNoShow": 1,
+    "desc": "（不显示）获得5层【致盲】"
+  },
+  {
+    "id": 530993,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530993",
+    "isNoShow": 1,
+    "desc": "（不显示）使自身陷入【噩梦】状态，持续3回合"
+  },
+  {
+    "id": 530272,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530272",
+    "isNoShow": 1,
+    "desc": "（不显示）全场角色激情-5，并陷入【心神不宁】状态，持续2回合"
+  },
+  {
+    "id": 530792,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530792",
+    "isNoShow": 1,
+    "desc": "（不显示）己方角色获得4层【失控】，持续1回合"
+  },
+  {
+    "id": 530042,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530042",
+    "isNoShow": 1,
+    "desc": "（不显示）获得【精神失控】，持续2回合"
+  },
+  {
+    "id": 530252,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530252",
+    "isNoShow": 1,
+    "desc": "（不显示）使自身进入【嘲讽】状态，持续1回合"
+  },
+  {
+    "id": 530282,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530282",
+    "isNoShow": 1,
+    "desc": "（不显示）自身获得【禁疗】状态，持续2回合"
+  },
+  {
+    "id": 530232,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530232",
+    "isNoShow": 1,
+    "desc": "（不显示）自身获得【缴械】，持续2回合"
+  },
+  {
+    "id": 530413,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530413",
+    "isNoShow": 1,
+    "desc": "（不显示）使己方全体暴击率降低50%，持续1回合"
+  },
+  {
+    "id": 530092,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530092",
+    "isNoShow": 1,
+    "desc": "（不显示）50%概率赋予每个敌人1层【毒瓶】(概率独立判定）"
+  },
+  {
+    "id": 530033,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530033",
+    "isNoShow": 1,
+    "desc": "（不显示）己方全体获得【石化】，持续1回合"
+  },
+  {
+    "id": 530472,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530472",
+    "isNoShow": 1,
+    "desc": "（不显示）赋予随机友方【眩晕】，持续1回合"
+  },
+  {
+    "id": 530573,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "38530573",
+    "isNoShow": 1,
+    "desc": "（不显示）己方全体获得【恐惧】，持续2回合"
+  },
+  {
+    "id": 5210001,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:521000131>】"
+  },
+  {
+    "id": 5210002,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "521000241",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对生命百分比最高的敌方释放1次【海渊之触】，攻击后赋予目标1层【冻痕】"
+  },
+  {
+    "id": 5210003,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "521000341",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对生命百分比最高的敌方释放1次【海渊之触】，攻击后赋予目标1层【冻痕】"
+  },
+  {
+    "id": 5210011,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:521001131>】"
+  },
+  {
+    "id": 5210012,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521001231",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，获得【坚壁Ⅱ】和【嘲讽】，持续1回合"
+  },
+  {
+    "id": 5210013,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521001331",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使岛之主和放牧人的应激+10"
+  },
+  {
+    "id": 5210021,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:521002131>】"
+  },
+  {
+    "id": 5210022,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521002221",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，移除己方全体【积层】，赋予己方全体1层【愠怒】"
+  },
+  {
+    "id": 1211001,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52100001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【悚惧】"
+  },
+  {
+    "id": 8011101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101002",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予己方全体10层【礼仪】"
+  },
+  {
+    "id": 2190002,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190003,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190004,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190005,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190006,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190007,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190008,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190009,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190010,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190011,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190012,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190013,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190014,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190015,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190016,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190017,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190018,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190019,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190020,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190021,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190022,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190023,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190024,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 2190025,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8018101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8018103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8018104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8018105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101051",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予己方全体4层【庇护】"
+  },
+  {
+    "id": 8018106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101052",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予己方全体4层【倾力】"
+  },
+  {
+    "id": 8018107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101048",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体【束缚】【变幻】，持续1回合"
+  },
+  {
+    "id": 8018108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101047",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体4层【涣散】"
+  },
+  {
+    "id": 8018109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101049",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【再生】"
+  },
+  {
+    "id": 8018110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101050",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使自身激情+2"
+  },
+  {
+    "id": 8018301,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101053",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体获得【士气凝结】状态，持续2回合；使己方全体获得随机2种正面状态，持续2回合"
+  },
+  {
+    "id": 8018302,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101055",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使自身激情+2，自身获得20层【礼仪】"
+  },
+  {
+    "id": 8018303,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101054",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体激情+1"
+  },
+  {
+    "id": 8011401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101073",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身进入【倍受鼓舞】状态，持续2回合"
+  },
+  {
+    "id": 8011402,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011403,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011404,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011405,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011406,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101056",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【自愈】状态，持续3回合"
+  },
+  {
+    "id": 8011407,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011408,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101059",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放1阶的【无形的压制】"
+  },
+  {
+    "id": 8011409,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101058",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使自身激情+2"
+  },
+  {
+    "id": 8011410,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101057",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得25层【惑众流言】"
+  },
+  {
+    "id": 8011411,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101061",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【催眠】"
+  },
+  {
+    "id": 8011412,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011413,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101062",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，驱散自身的【梦魇化身】状态"
+  },
+  {
+    "id": 8011414,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101063",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得10枚金雀子儿，赋予其他友方2层【术式源】"
+  },
+  {
+    "id": 8011415,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101060",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌方全体陷入【缴械】状态，持续1回合"
+  },
+  {
+    "id": 8011701,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101065",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【冻痕】"
+  },
+  {
+    "id": 8011702,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011703,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101066",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使自身进入【培养基】状态1回合；赋予己方全体2层【成长】"
+  },
+  {
+    "id": 8011704,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011705,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101067",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体获得使用者最大生命*33%的护盾，持续3回合"
+  },
+  {
+    "id": 8011706,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011707,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101068",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体1层【冻痕】\n下回合自身行动点+1"
+  },
+  {
+    "id": 8011708,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011709,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101069",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体【厌豆情结】"
+  },
+  {
+    "id": 8011710,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101070",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【白羽卫士】，进入【嘲讽】状态1回合"
+  },
+  {
+    "id": 8011711,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011712,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8011713,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101071",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【属性削弱】【状态异常】【控制】后获得2层【血腥狩猎】"
+  },
+  {
+    "id": 8011714,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8013501,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8013502,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8013503,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8013504,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8013505,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015501,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016501,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101079",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放2阶的【春日精灵】"
+  },
+  {
+    "id": 8016502,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101075",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得2层【弥留】，赋予其他友方1层【弥留】"
+  },
+  {
+    "id": 8016503,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016504,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101072",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身随机获得【永久增益集合】中的1种，重复10次"
+  },
+  {
+    "id": 8017501,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101076",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身进入【培养基】状态，持续1回合；使随机1名敌方陷入【石化】状态1回合"
+  },
+  {
+    "id": 8017502,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "未使用"
+  },
+  {
+    "id": 8017503,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101077",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体激情+1"
+  },
+  {
+    "id": 801120101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801120103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801120106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801120108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801120110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101005",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得12层【倾力】"
+  },
+  {
+    "id": 801120111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101005",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得12层【倾力】"
+  },
+  {
+    "id": 801120112,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101003",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【躁狂】状态，持续3回合"
+  },
+  {
+    "id": 801120113,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101004",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，己方全体获得【躁狂】状态，持续2回合"
+  },
+  {
+    "id": 801130101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801130102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801130103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 801130104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101009",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得20枚金雀子儿"
+  },
+  {
+    "id": 801130105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101006",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，己方全体获得10枚金雀子儿"
+  },
+  {
+    "id": 801130106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101007",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得10枚金雀子儿"
+  },
+  {
+    "id": 801130107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101008",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得20枚金雀子儿"
+  },
+  {
+    "id": 801130108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101010",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，立即释放1阶【一束星河】"
+  },
+  {
+    "id": 801130109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014112,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101015",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体10层【燃烧】"
+  },
+  {
+    "id": 8014202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101017",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体10层【燃烧】"
+  },
+  {
+    "id": 8014203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101018",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予其他友方2层【采矿】"
+  },
+  {
+    "id": 8014204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101019",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【诛法加护】，持续3回合"
+  },
+  {
+    "id": 8014301,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101011",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得1层【高温余烬】，赋予敌方全体10层【燃烧】"
+  },
+  {
+    "id": 8014302,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101012",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，召唤1个深埋石像"
+  },
+  {
+    "id": 8014303,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101013",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，召唤1个深埋石像"
+  },
+  {
+    "id": 8014304,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101014",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，驱散自身【余烬】状态，赋予敌方全体2层【冰焰】"
+  },
+  {
+    "id": 8014305,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101014",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，驱散自身【余烬】状态，赋予敌方全体2层【冰焰】"
+  },
+  {
+    "id": 8014306,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101014",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，驱散自身【余烬】状态，赋予敌方全体2层【冰焰】"
+  },
+  {
+    "id": 8015101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8015201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101025",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【僵冷】"
+  },
+  {
+    "id": 8015202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101027",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【僵冷】"
+  },
+  {
+    "id": 8015203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101028",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5颗【穿甲子弹】"
+  },
+  {
+    "id": 8015301,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101021",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体1层【冻痕】和1层【僵冷】"
+  },
+  {
+    "id": 8015302,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101022",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人陷入【缴械】状态2回合"
+  },
+  {
+    "id": 8015303,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101023",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使其他友方激情+1并赋予其1层【弥留】"
+  },
+  {
+    "id": 8015304,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101024",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使其他友方激情+1并赋予其1层【弥留】"
+  },
+  {
+    "id": 8016106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016112,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016113,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016114,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016115,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101033",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌人全体陷入2个【中毒】，持续2回合"
+  },
+  {
+    "id": 8016202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101034",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予己方全体2层【荆棘】"
+  },
+  {
+    "id": 8016203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101035",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，随机赋予敌方全体【减益集合】中的4种，持续2回合"
+  },
+  {
+    "id": 8016204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101035",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，随机赋予敌方全体【减益集合】中的4种，持续2回合"
+  },
+  {
+    "id": 8016205,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101101",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【忧惧】"
+  },
+  {
+    "id": 8016206,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101036",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌人全体陷入2个【中毒】，持续2回合"
+  },
+  {
+    "id": 8016207,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101037",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌人全体陷入2个【污染】，持续2回合"
+  },
+  {
+    "id": 8016301,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101029",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身所有【状态异常】，使己方全体获得3层【荆棘】"
+  },
+  {
+    "id": 8016302,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101030",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体进入【倍受鼓舞】状态1回合"
+  },
+  {
+    "id": 8016303,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101031",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【土星占卜】和5层【盈月占卜】"
+  },
+  {
+    "id": 8016304,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101032",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【火星占卜】和5层【盈月占卜】"
+  },
+  {
+    "id": 8016305,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101030",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体进入【倍受鼓舞】状态1回合"
+  },
+  {
+    "id": 8016306,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101030",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使己方全体进入【倍受鼓舞】状态1回合"
+  },
+  {
+    "id": 8017101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101041",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得3层【一瞬隐蔽】"
+  },
+  {
+    "id": 8017202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101042",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得3层【一瞬隐蔽】"
+  },
+  {
+    "id": 8017203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101043",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【属性削弱】【状态异常】【控制】，布设术阵【候审】"
+  },
+  {
+    "id": 8017204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101044",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，召唤1个惊慌的声音（场上怪物数量最大为3）并布设术阵【全景影像】"
+  },
+  {
+    "id": 8017205,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101045",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，召唤1个惊慌的声音（场上怪物数量最大为3）并布设术阵【全景影像】"
+  },
+  {
+    "id": 8017206,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101046",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得2层【一瞬坚定】，使自身激情+1"
+  },
+  {
+    "id": 8017301,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101038",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得4层【激昂】和12层【礼仪】"
+  },
+  {
+    "id": 8017302,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101039",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得2层【恶作剧】后进入【隐蔽】状态1回合"
+  },
+  {
+    "id": 8017303,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101040",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予己方全体2层【一瞬坚定】"
+  },
+  {
+    "id": 8017304,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017305,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017306,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017307,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017308,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017311,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017312,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8016401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101064",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【翡翠运势】【明珠运势】【玛瑙运势】，持续1回合"
+  },
+  {
+    "id": 8017401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101078",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放2阶的【更尽一杯】"
+  },
+  {
+    "id": 6210102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101079",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放2阶的【春日精灵】"
+  },
+  {
+    "id": 6210103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101080",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予最左侧角色5层【拔高的审美】"
+  },
+  {
+    "id": 6210104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101081",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对敌我全体释放【真实显露】"
+  },
+  {
+    "id": 6210105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101098",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使所有蘑菇成熟并立即触发效果"
+  },
+  {
+    "id": 6210106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101082",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得40枚金雀子儿"
+  },
+  {
+    "id": 6210111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8012401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101084",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得20枚金雀子儿，使其他友方激情+1"
+  },
+  {
+    "id": 8012402,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101085",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放1阶的【撕碎、咀嚼！】"
+  },
+  {
+    "id": 8015401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101086",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【共生】"
+  },
+  {
+    "id": 8015402,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8014401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101087",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【控制】状态后获得10层【燃烧】"
+  },
+  {
+    "id": 8014402,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101089",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌我全体角色10层【燃烧】"
+  },
+  {
+    "id": 8014403,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8017402,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101090",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得2层【无形无影】；己方全体进入【隐现】状态1回合"
+  },
+  {
+    "id": 8018401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101049",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【再生】"
+  },
+  {
+    "id": 6210121,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210122,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210123,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210124,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210125,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101091",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身灵光+6"
+  },
+  {
+    "id": 6210126,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101104",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得10层【音律】，使随机1名敌方陷入【石化】状态1回合"
+  },
+  {
+    "id": 6210127,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101092",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【无理数的升华】"
+  },
+  {
+    "id": 6210128,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 6210129,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101088",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【控制】状态后获得10层【燃烧】"
+  },
+  {
+    "id": 8026101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026106,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026107,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101093",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对敌方全体释放【高温回火】"
+  },
+  {
+    "id": 8026108,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101094",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放2阶的【热烈奔行！】"
+  },
+  {
+    "id": 8026109,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026110,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101105",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌方全体应激+10，目标每携带1层【蚀】，应激额外+1"
+  },
+  {
+    "id": 8026111,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101095",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【坚壁Ⅳ】，持续3回合"
+  },
+  {
+    "id": 8026112,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101071",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【属性削弱】【状态异常】【控制】后获得2层【血腥狩猎】"
+  },
+  {
+    "id": 8026113,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101095",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【坚壁Ⅳ】，持续3回合"
+  },
+  {
+    "id": 8026114,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52100001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【悚惧】"
+  },
+  {
+    "id": 8026115,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101096",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【蔑视Ⅳ】，持续3回合"
+  },
+  {
+    "id": 8026116,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101071",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，净化自身【属性削弱】【状态异常】【控制】后获得2层【血腥狩猎】"
+  },
+  {
+    "id": 8026117,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101096",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得【蔑视Ⅳ】，持续3回合"
+  },
+  {
+    "id": 8026118,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52100001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体2层【悚惧】"
+  },
+  {
+    "id": 8026119,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101097",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【再生】"
+  },
+  {
+    "id": 8026120,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026121,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101106",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使敌方全体陷入【噩梦】状态，持续1回合"
+  },
+  {
+    "id": 8026122,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101050",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使自身激情+2"
+  },
+  {
+    "id": 8026123,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026124,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026125,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8026126,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101015",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体10层【燃烧】"
+  },
+  {
+    "id": 8024103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025101,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025102,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025103,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025104,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025105,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101085",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放1阶的【撕碎、咀嚼！】"
+  },
+  {
+    "id": 8022202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8022203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101086",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得5层【共生】"
+  },
+  {
+    "id": 8022204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101084",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得20枚金雀子儿，使其他友方激情+1"
+  },
+  {
+    "id": 8023202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8023203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101084",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得20枚金雀子儿，使其他友方激情+1"
+  },
+  {
+    "id": 8023204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101085",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌人释放1阶的【撕碎、咀嚼！】"
+  },
+  {
+    "id": 8024201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101015",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，赋予敌方全体10层【燃烧】"
+  },
+  {
+    "id": 8024202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101099",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，回复自身40%最大生命"
+  },
+  {
+    "id": 8024205,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8024206,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025201,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101100",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机1名敌人陷入【冰冻】1回合"
+  },
+  {
+    "id": 8025202,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 8025203,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101100",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机1名敌人陷入【冰冻】1回合"
+  },
+  {
+    "id": 8025204,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "52101001",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，使随机敌人应激+10"
+  },
+  {
+    "id": 521200001,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200001",
+    "isNoShow": 0,
+    "desc": "行动后，自身应激+5"
+  },
+  {
+    "id": 521300102,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "521300102",
+    "isNoShow": 0,
+    "desc": "回合结束时，自身应激+5"
+  },
+  {
+    "id": 521300002,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300002",
+    "isNoShow": 0,
+    "desc": "失控时，若自身处于【躁狂】状态，敌方全体应激+8"
+  },
+  {
+    "id": 521300003,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300003",
+    "isNoShow": 0,
+    "desc": "失控时，若自身处于【躁狂】状态，己方全体应激+8"
+  },
+  {
+    "id": 521300004,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300004",
+    "isNoShow": 0,
+    "desc": "失控时，自身携带1枚金雀子儿，敌方全体应激+1"
+  },
+  {
+    "id": 521300005,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300005",
+    "isNoShow": 0,
+    "desc": "失控时，消耗10枚金雀子儿，敌方全体应激+10"
+  },
+  {
+    "id": 521300006,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300006",
+    "isNoShow": 0,
+    "desc": "失控时，敌方每携带1层【燃烧】，应激+1"
+  },
+  {
+    "id": 521300007,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300007",
+    "isNoShow": 0,
+    "desc": "失控时，使处于【护盾】的敌人应激+20，驱散敌方所有【护盾】"
+  },
+  {
+    "id": 521300008,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300008",
+    "isNoShow": 0,
+    "desc": "失控时，敌方每携带1层【冰焰】，应激+1"
+  },
+  {
+    "id": 521300009,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300009",
+    "isNoShow": 0,
+    "desc": "失控时，敌方每携带1层【燃烧】，应激+1"
+  },
+  {
+    "id": 521300010,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300010",
+    "isNoShow": 0,
+    "desc": "失控时，敌方每携带1层【黑炎】，应激+1"
+  },
+  {
+    "id": 521300011,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300011",
+    "isNoShow": 0,
+    "desc": "失控时，敌方每携带1层【冻痕】或【僵冷】，应激+2"
+  },
+  {
+    "id": 521300012,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300012",
+    "isNoShow": 0,
+    "desc": "失控时，处于【缴械】状态的敌人应激+10，处于【冰冻】状态的敌人应激+20"
+  },
+  {
+    "id": 521300013,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300013",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1颗【子弹】，敌方全体应激+1"
+  },
+  {
+    "id": 521300014,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300014",
+    "isNoShow": 0,
+    "desc": "失控时，己方全体每携带1层【荆棘】，敌方全体应激+1"
+  },
+  {
+    "id": 521300015,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300015",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1层【荆棘】，敌方全体应激+1"
+  },
+  {
+    "id": 521300016,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300016",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1层【土星占卜】【火星占卜】【盈月占卜】，敌方全体应激+1"
+  },
+  {
+    "id": 521300017,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300017",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1层【礼仪】，敌方全体应激+1"
+  },
+  {
+    "id": 521300018,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300018",
+    "isNoShow": 0,
+    "desc": "失控时，赋予敌方全体5层【注目】"
+  },
+  {
+    "id": 521300019,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300019",
+    "isNoShow": 0,
+    "desc": "失控时，己方全体每携带1层【一瞬坚定】，敌方全体应激+1"
+  },
+  {
+    "id": 521300020,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300020",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1种正面状态，敌方全体应激+2"
+  },
+  {
+    "id": 521300021,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521300021",
+    "isNoShow": 0,
+    "desc": "失控时，自身每携带1层【倾力】，敌方全体应激+2"
+  },
+  {
+    "id": 521200022,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "521200022",
+    "isNoShow": 0,
+    "desc": "回合结束时，自身应激+5"
+  },
+  {
+    "id": 621114,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "6210271",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对敌方全体释放咒语-礼仪大全第357页"
+  },
+  {
+    "id": 621125,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "6210272",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对随机敌方释放咒语-与众不同的工具们"
+  },
+  {
+    "id": 621135,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "6210273",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，牺牲所有友方，对随机敌方造成高额伤害，并使自身获得1层【共生】"
+  },
+  {
+    "id": 621146,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "6210274",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身获得4层【计划】"
+  },
+  {
+    "id": 5220001,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:522001131>】"
+  },
+  {
+    "id": 5220002,
+    "type": "triggerSkill",
+    "target": 213,
+    "targetLimit": 0,
+    "param": "522001241",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对2名生命百分比最高的敌方释放1次【追踪式清洗】"
+  },
+  {
+    "id": 5220003,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "522001341",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放1次【供能效用】"
+  },
+  {
+    "id": 5220004,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522001441",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放1次【声波干扰】"
+  },
+  {
+    "id": 5220011,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:522002131>】"
+  },
+  {
+    "id": 5220012,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522002241",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对生命百分比最高的敌方释放1次【激昂合掌】"
+  },
+  {
+    "id": 5220013,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522002341",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对生命百分比最高的敌方释放1次【颤动指尖】"
+  },
+  {
+    "id": 5220021,
+    "type": "",
+    "target": 0,
+    "targetLimit": 0,
+    "param": "",
+    "isNoShow": 0,
+    "desc": "回合开始时，若自身应激到达50，清空所有应激，放弃原本的行动改为释放【蕴之外壳<id:522000131>】"
+  },
+  {
+    "id": 5220022,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522000241",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放1次【真理狂热】"
+  },
+  {
+    "id": 5220023,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522000341",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放1次【观念重构】"
+  },
+  {
+    "id": 5220024,
+    "type": "triggerSkill",
+    "target": 208,
+    "targetLimit": 0,
+    "param": "522000441",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，释放1次【混乱演出】"
+  },
+  {
+    "id": 6230002,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "6230139",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，对敌方释放2阶的【左舷开火】"
+  },
+  {
+    "id": 9241004,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103013",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241006,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103012",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241015,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103011",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241016,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103015",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241017,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103014",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241018,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103016",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241115,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103021",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241116,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103025",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241117,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103024",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241118,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103026",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241215,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103031",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241216,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103035",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241217,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103034",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241218,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103036",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241304,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103043",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241306,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103042",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241315,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103041",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241316,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103045",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241317,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103044",
+    "isNoShow": 0,
+    "desc": "当自身应激达到50时，自身转变为随机重塑之手成员"
+  },
+  {
+    "id": 9241318,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103046",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
+  },
+  {
+    "id": 9241401,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "924103001",
+    "isNoShow": 0,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  }
+]

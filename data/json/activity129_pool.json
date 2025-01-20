@@ -1,0 +1,47 @@
+[
+  {
+    "activityId": 11406,
+    "poolId": 1401,
+    "type": 1,
+    "name": "律的解析",
+    "nameEn": "Analysis of Log",
+    "cost": "2#1401#200",
+    "maxDraw": 0
+  },
+  {
+    "activityId": 11406,
+    "poolId": 1402,
+    "type": 1,
+    "name": "造影的论证",
+    "nameEn": "Hypothesis of Psychube",
+    "cost": "2#1401#200",
+    "maxDraw": 0
+  },
+  {
+    "activityId": 11406,
+    "poolId": 1403,
+    "type": 1,
+    "name": "灵知的论证",
+    "nameEn": "Hypothesis of Insight",
+    "cost": "2#1401#200",
+    "maxDraw": 0
+  },
+  {
+    "activityId": 11406,
+    "poolId": 1404,
+    "type": 1,
+    "name": "步履的论证",
+    "nameEn": "Hypothesis of Wilderness",
+    "cost": "2#1401#200",
+    "maxDraw": 0
+  },
+  {
+    "activityId": 11406,
+    "poolId": 1405,
+    "type": 2,
+    "name": "漫谈的集合",
+    "nameEn": "Set of Hypotheses",
+    "cost": "2#1401#10",
+    "maxDraw": 0
+  }
+]

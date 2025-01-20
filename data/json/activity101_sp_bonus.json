@@ -1,0 +1,10 @@
+[
+  {
+    "activityId": 12110,
+    "id": 1,
+    "taskDesc": "累计签到3天或\n中秋（9月17日）当日登录获得",
+    "bonus": "11#12111#1",
+    "canGetDate": "2024-9-17 5:00:00",
+    "canGetSignInDays": 3
+  }
+]

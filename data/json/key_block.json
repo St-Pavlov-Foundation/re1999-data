@@ -1,0 +1,42 @@
+[
+  {
+    "hud": 1,
+    "name": "主界面",
+    "blockkey": []
+  },
+  {
+    "hud": 2,
+    "name": "第三扇门",
+    "blockkey": [
+      "Alpha1",
+      "Alpha2",
+      "Alpha3",
+      "Alpha4",
+      "Alpha5",
+      "Alpha6",
+      "Alpha7",
+      "Alpha8",
+      "Alpha9"
+    ]
+  },
+  {
+    "hud": 3,
+    "name": "战斗界面",
+    "blockkey": [
+      "Alpha1",
+      "Alpha2",
+      "Alpha3",
+      "Alpha4",
+      "Alpha5",
+      "Alpha6",
+      "Alpha7",
+      "Alpha8",
+      "Alpha9"
+    ]
+  },
+  {
+    "hud": 4,
+    "name": "不休荒原",
+    "blockkey": []
+  }
+]

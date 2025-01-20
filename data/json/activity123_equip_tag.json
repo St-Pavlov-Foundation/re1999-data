@@ -1,0 +1,380 @@
+[
+  {
+    "activityId": 11700,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 11700,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 2
+  },
+  {
+    "activityId": 11700,
+    "id": 22,
+    "desc": "燃烧技巧",
+    "order": 3
+  },
+  {
+    "activityId": 11700,
+    "id": 23,
+    "desc": "密集施术",
+    "order": 4
+  },
+  {
+    "activityId": 11700,
+    "id": 24,
+    "desc": "保持完满",
+    "order": 5
+  },
+  {
+    "activityId": 11700,
+    "id": 25,
+    "desc": "支援艺术",
+    "order": 6
+  },
+  {
+    "activityId": 11700,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 11811,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 11811,
+    "id": 29,
+    "desc": "本源创伤",
+    "order": 2
+  },
+  {
+    "activityId": 11811,
+    "id": 27,
+    "desc": "仪器供能",
+    "order": 3
+  },
+  {
+    "activityId": 11811,
+    "id": 28,
+    "desc": "激情蕴蓄",
+    "order": 4
+  },
+  {
+    "activityId": 11811,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 5
+  },
+  {
+    "activityId": 11811,
+    "id": 22,
+    "desc": "燃烧技巧",
+    "order": 6
+  },
+  {
+    "activityId": 11811,
+    "id": 25,
+    "desc": "支援艺术",
+    "order": 7
+  },
+  {
+    "activityId": 11811,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 8
+  },
+  {
+    "activityId": 11906,
+    "id": 27,
+    "desc": "仪器供能",
+    "order": 8
+  },
+  {
+    "activityId": 11906,
+    "id": 28,
+    "desc": "激情蕴蓄",
+    "order": 9
+  },
+  {
+    "activityId": 11906,
+    "id": 29,
+    "desc": "本源创伤",
+    "order": 10
+  },
+  {
+    "activityId": 11906,
+    "id": 30,
+    "desc": "咒语交错",
+    "order": 8
+  },
+  {
+    "activityId": 11906,
+    "id": 31,
+    "desc": "血的代价",
+    "order": 9
+  },
+  {
+    "activityId": 11906,
+    "id": 32,
+    "desc": "毒性感染",
+    "order": 10
+  },
+  {
+    "activityId": 11906,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 11906,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 2
+  },
+  {
+    "activityId": 11906,
+    "id": 23,
+    "desc": "密集施术",
+    "order": 4
+  },
+  {
+    "activityId": 11906,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 12006,
+    "id": 28,
+    "desc": "激情蕴蓄",
+    "order": 9
+  },
+  {
+    "activityId": 12006,
+    "id": 29,
+    "desc": "本源创伤",
+    "order": 10
+  },
+  {
+    "activityId": 12006,
+    "id": 30,
+    "desc": "咒语交错",
+    "order": 8
+  },
+  {
+    "activityId": 12006,
+    "id": 31,
+    "desc": "血的代价",
+    "order": 9
+  },
+  {
+    "activityId": 12006,
+    "id": 33,
+    "desc": "进阶技艺",
+    "order": 11
+  },
+  {
+    "activityId": 12006,
+    "id": 34,
+    "desc": "行为主义",
+    "order": 12
+  },
+  {
+    "activityId": 12006,
+    "id": 35,
+    "desc": "周至筹备",
+    "order": 13
+  },
+  {
+    "activityId": 12006,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 12006,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 2
+  },
+  {
+    "activityId": 12006,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 12115,
+    "id": 28,
+    "desc": "激情蕴蓄",
+    "order": 9
+  },
+  {
+    "activityId": 12115,
+    "id": 29,
+    "desc": "本源创伤",
+    "order": 10
+  },
+  {
+    "activityId": 12115,
+    "id": 30,
+    "desc": "咒语交错",
+    "order": 8
+  },
+  {
+    "activityId": 12115,
+    "id": 31,
+    "desc": "血的代价",
+    "order": 9
+  },
+  {
+    "activityId": 12115,
+    "id": 33,
+    "desc": "进阶技艺",
+    "order": 11
+  },
+  {
+    "activityId": 12115,
+    "id": 34,
+    "desc": "行为主义",
+    "order": 12
+  },
+  {
+    "activityId": 12115,
+    "id": 35,
+    "desc": "周至筹备",
+    "order": 13
+  },
+  {
+    "activityId": 12115,
+    "id": 36,
+    "desc": "中毒艺术",
+    "order": 14
+  },
+  {
+    "activityId": 12115,
+    "id": 37,
+    "desc": "同频咒语",
+    "order": 15
+  },
+  {
+    "activityId": 12115,
+    "id": 38,
+    "desc": "共鸣咒语",
+    "order": 16
+  },
+  {
+    "activityId": 12115,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 12115,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 2
+  },
+  {
+    "activityId": 12115,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 12315,
+    "id": 28,
+    "desc": "激情蕴蓄",
+    "order": 9
+  },
+  {
+    "activityId": 12315,
+    "id": 29,
+    "desc": "本源创伤",
+    "order": 10
+  },
+  {
+    "activityId": 12315,
+    "id": 30,
+    "desc": "咒语交错",
+    "order": 8
+  },
+  {
+    "activityId": 12315,
+    "id": 31,
+    "desc": "血的代价",
+    "order": 9
+  },
+  {
+    "activityId": 12315,
+    "id": 33,
+    "desc": "进阶技艺",
+    "order": 11
+  },
+  {
+    "activityId": 12315,
+    "id": 34,
+    "desc": "行为主义",
+    "order": 12
+  },
+  {
+    "activityId": 12315,
+    "id": 35,
+    "desc": "周至筹备",
+    "order": 13
+  },
+  {
+    "activityId": 12315,
+    "id": 36,
+    "desc": "中毒艺术",
+    "order": 14
+  },
+  {
+    "activityId": 12315,
+    "id": 37,
+    "desc": "同频咒语",
+    "order": 15
+  },
+  {
+    "activityId": 12315,
+    "id": 38,
+    "desc": "共鸣咒语",
+    "order": 16
+  },
+  {
+    "activityId": 12315,
+    "id": 39,
+    "desc": "咒语编织",
+    "order": 18
+  },
+  {
+    "activityId": 12315,
+    "id": 20,
+    "desc": "能力均衡",
+    "order": 1
+  },
+  {
+    "activityId": 12315,
+    "id": 21,
+    "desc": "多次行动",
+    "order": 2
+  },
+  {
+    "activityId": 12315,
+    "id": 26,
+    "desc": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 12315,
+    "id": 25,
+    "desc": "支援艺术",
+    "order": 17
+  }
+]

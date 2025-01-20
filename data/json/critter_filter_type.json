@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "种族",
+    "nameEn": "Taxon",
+    "filterTab": "131300#132100#133300",
+    "tabName": "",
+    "tabIcon": ""
+  },
+  {
+    "id": 2,
+    "name": "特质",
+    "nameEn": "Feature",
+    "filterTab": "201#202#203#204#205",
+    "tabName": "效率加成#耐性加成#专长加成#休憩加成#培育加成",
+    "tabIcon": "critter_manufacture_skillicon_4#critter_manufacture_skillicon_1#critter_manufacture_skillicon_5#critter_manufacture_skillicon_3#critter_manufacture_skillicon_6"
+  }
+]

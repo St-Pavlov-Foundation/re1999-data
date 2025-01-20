@@ -1,0 +1,156 @@
+[
+  {
+    "id": 11,
+    "defaultUnlock": 1,
+    "mapElement": 0,
+    "infoID": 1,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic01.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion01.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion01_locked.png",
+    "detailedDesc": "璀璨耀眼的项链，曾属于一颗天真之心，后在流浪途中被小扒手所窃走，换取数日的饱腹。",
+    "relatedDesc": "“我抓住那个小扒手，他的骨头比枝桠脆弱而纤细，但他刚长出的牙齿也太硬了！不然我才不松手。”"
+  },
+  {
+    "id": 21,
+    "defaultUnlock": 0,
+    "mapElement": 1080802,
+    "infoID": 2,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic02.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion02.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion02_locked.png",
+    "detailedDesc": "她曾借此抚慰那些稚童般的老人，以那令人忘却止痛药与旧皮囊的塞壬之歌。",
+    "relatedDesc": "“偶尔，我会歌唱。但老人们总是落泪，接着轻声细语地说并非我的错。”"
+  },
+  {
+    "id": 22,
+    "defaultUnlock": 0,
+    "mapElement": 1081202,
+    "infoID": 2,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic03.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion03.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion03_locked.png",
+    "detailedDesc": "那一尘不染的羽翼，却永无法，无法飞过河岸。",
+    "relatedDesc": "“它爱极了捉弄我们，从屋檐上飞下来，扑落在我们的头和肩上，就好像它生来是个坏孩子……”"
+  },
+  {
+    "id": 31,
+    "defaultUnlock": 0,
+    "mapElement": 1081701,
+    "infoID": 3,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic04.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion04.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion04_locked.png",
+    "detailedDesc": "一封被截获的电报，秘密被揭晓，刑场上多了一个弹孔。",
+    "relatedDesc": "“我、我与这些事情没有任何关系，我保证，我保证……那与我无关，别再问我了！”"
+  },
+  {
+    "id": 32,
+    "defaultUnlock": 0,
+    "mapElement": 1081801,
+    "infoID": 3,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic05.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion05.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion05_locked.png",
+    "detailedDesc": "一只丑陋的发条小人，仅此而已。",
+    "relatedDesc": "“当我看见货架和橱柜里摆着那样多一样的……玩具，我发誓，从此绝对不再走进去！就算有免费试吃糖果！”"
+  },
+  {
+    "id": 41,
+    "defaultUnlock": 1,
+    "mapElement": 0,
+    "infoID": 4,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic09.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion09.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion09_locked.png",
+    "detailedDesc": "每一粒子弹壳的落地，都象征着一名军人永久地告别了使命、荣誉，与本应最为恪守的忠诚。",
+    "relatedDesc": "“我可从不觉得这是种耻辱……相反，它是芝诺交给我的任务里最值得夸耀的那个！”"
+  },
+  {
+    "id": 42,
+    "defaultUnlock": 0,
+    "mapElement": 1082001,
+    "infoID": 4,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic10.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion10.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion10_locked.png",
+    "detailedDesc": "一对长管左轮枪，曾经陪伴姊妹度过了无数个靶场的午后——或者说，曾经的姊妹。",
+    "relatedDesc": "“我的这一把，很少在训练中赢过另一把……即使是在最后一次。”"
+  },
+  {
+    "id": 43,
+    "defaultUnlock": 0,
+    "mapElement": 1082402,
+    "infoID": 4,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic11.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion11.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion11_locked.png",
+    "detailedDesc": "它的主人暂未想出更为高明的取胜方式。但，至少它有效提供了诡计成功时的窃喜情绪。",
+    "relatedDesc": "“无论如何，能赢不就行了？难不成……要我把主动权交给那摸不清性子的命运女神吗？”"
+  },
+  {
+    "id": 51,
+    "defaultUnlock": 1,
+    "mapElement": 0,
+    "infoID": 5,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic06.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion06.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion06_locked.png",
+    "detailedDesc": "一位老战友的遗物，其中包含一枚芝诺勋章，和几封饱含对女儿的思念之情的信件。",
+    "relatedDesc": "“好吧，好吧。坦诚来说，直到遇见那个溺水的小女孩儿之前，我都没勇气打开这些信。”"
+  },
+  {
+    "id": 52,
+    "defaultUnlock": 0,
+    "mapElement": 1081101,
+    "infoID": 5,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic07.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion07.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion07_locked.png",
+    "detailedDesc": " 看似毫不起眼的普通扳手，与这位擅长手工艺的老先生一样布满故事与岁月的痕迹。",
+    "relatedDesc": "“别看我这老伙计其貌不扬的，它可是一切改造的基础——就像我这双满是老茧的手一样！”"
+  },
+  {
+    "id": 53,
+    "defaultUnlock": 0,
+    "mapElement": 1081902,
+    "infoID": 5,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic08.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion08.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion08_locked.png",
+    "detailedDesc": "1961年，于刚果维和行动中偶然留存的部队合照，拍摄人、准确日期、具体地点均已无从考究。",
+    "relatedDesc": "“三个巴西人，两个西班牙人，一个阿根廷人……我们可是队里立功最多的侦察班！”"
+  },
+  {
+    "id": 61,
+    "defaultUnlock": 1,
+    "mapElement": 0,
+    "infoID": 6,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic12.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion12.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion12_locked.png",
+    "detailedDesc": "一位无国界医生的药箱，里面有她的仁厚，也有她过往旅途中的遗憾。",
+    "relatedDesc": "“贫民区居民的病根不在躯体，而在他们眼中那没有前路的未来。对这未来，任何药都无济于事。”"
+  },
+  {
+    "id": 62,
+    "defaultUnlock": 0,
+    "mapElement": 1080902,
+    "infoID": 6,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic13.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion13.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion13_locked.png",
+    "detailedDesc": "一卷绷带，为病患婉拒了死神的拜访，为医生熄灭了世界的光亮。",
+    "relatedDesc": "“一旦习惯与黑暗作伴，你会发现它是如此仁慈——较之剥夺了我视野的命运而言。”"
+  },
+  {
+    "id": 63,
+    "defaultUnlock": 0,
+    "mapElement": 1082202,
+    "infoID": 6,
+    "mapRes": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_pic14.png",
+    "res": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion14.png",
+    "mapResLocked": "singlebg/v2a2_investigate_singlebg/v2a2_investigate_opinion14_locked.png",
+    "detailedDesc": "一台造型奇异的打字机，也是这位医生同命运对抗时，手边仅有的武器。",
+    "relatedDesc": "“它陪我走过雨林的每一寸角落。我们书写，然后记录，为了人们不把发生过的一切遗忘。”"
+  }
+]

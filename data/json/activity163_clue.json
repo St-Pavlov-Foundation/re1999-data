@@ -1,0 +1,200 @@
+[
+  {
+    "clueId": 1,
+    "clueIcon": "v2a1_aergusi_chat_clue9",
+    "clueName": "阿尔古斯",
+    "clueDesc": "来到德州的雇佣兵，神秘术是能看到一些别人看不到的痕迹",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 2,
+    "clueIcon": "v2a1_aergusi_chat_clue1",
+    "clueName": "折叠的机票",
+    "clueDesc": "一张折叠的机票，上面记录了阿尔古斯寻找的某人的信息",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 3,
+    "clueIcon": "v2a1_aergusi_chat_clue8",
+    "clueName": "戴蒙德",
+    "clueDesc": "阿尔古斯进入酒馆后，还没有与任何人起冲突前，便开始出言挑衅阿尔古斯的客人",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 4,
+    "clueIcon": "v2a1_aergusi_chat_clue6",
+    "clueName": "酒保",
+    "clueDesc": "在交流过程中因某种原因，先行用枪制服住了阿尔古斯，并准备移交给治安官",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 5,
+    "clueIcon": "v2a1_aergusi_chat_clue3",
+    "clueName": "墙",
+    "clueDesc": "小镇附近一处由酒保提到的未知的地方",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 6,
+    "clueIcon": "v2a1_aergusi_chat_clue5",
+    "clueName": "治安官",
+    "clueDesc": "德州没有警察，治安官维护着这里的秩序",
+    "episodeId": 1210501,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 7,
+    "clueIcon": "v2a1_aergusi_chat_clue7",
+    "clueName": "猎人",
+    "clueDesc": "一位身上带有血迹的猎人，经常将毛皮和肉卖给亚当",
+    "episodeId": 1210502,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 8,
+    "clueIcon": "v2a1_aergusi_chat_clue6",
+    "clueName": "亚当",
+    "clueDesc": "酒馆的酒保，在交流过程中因某种原因，先行用枪制服住了阿尔古斯，并准备移交给治安官|有一个死在红墙的姐姐，其案件的凶手目前仍未找到",
+    "episodeId": 1210502,
+    "materialId": "",
+    "replaceId": 4
+  },
+  {
+    "clueId": 9,
+    "clueIcon": "v2a1_aergusi_chat_clue11",
+    "clueName": "退伍兵",
+    "clueDesc": "流窜的退伍兵在树林中谋杀女孩",
+    "episodeId": 1210503,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 10,
+    "clueIcon": "v2a1_aergusi_chat_clue12",
+    "clueName": "雇佣兵",
+    "clueDesc": "在战场上的士兵，退伍后一部分加入了雇佣兵公司",
+    "episodeId": 1210503,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 11,
+    "clueIcon": "v2a1_aergusi_chat_clue12",
+    "clueName": "雇佣兵",
+    "clueDesc": "流窜在树林中谋杀女孩，曾经是在战场上幸存下来的士兵",
+    "episodeId": 1210503,
+    "materialId": "9#10",
+    "replaceId": 0
+  },
+  {
+    "clueId": 12,
+    "clueIcon": "v2a1_aergusi_chat_clue3",
+    "clueName": "红墙",
+    "clueDesc": "1984年圣地亚哥疗养院附近的院墙遗址，如今已是一片断墙",
+    "episodeId": 1210503,
+    "materialId": "",
+    "replaceId": 5
+  },
+  {
+    "clueId": 13,
+    "clueIcon": "v2a1_aergusi_chat_clue5",
+    "clueName": "治安官",
+    "clueDesc": "德州没有警察，治安官维护着这里的秩序，告诉了一部分阿尔古斯关于红墙的信息",
+    "episodeId": 1210503,
+    "materialId": "",
+    "replaceId": 6
+  },
+  {
+    "clueId": 14,
+    "clueIcon": "v2a1_aergusi_chat_clue4",
+    "clueName": "红线缠绕的档案袋",
+    "clueDesc": "记录了数起失踪案|其中一份特殊的案件记录了一起祭祀行为，好在其中全是动物皮毛和血迹，并无人血可能",
+    "episodeId": 1210504,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 15,
+    "clueIcon": "v2a1_aergusi_chat_clue7",
+    "clueName": "猎人",
+    "clueDesc": "一位身上带有血迹的猎人，经常将毛皮和肉卖给亚当|卖给亚当的带血的皮毛和肉隔天便不见了",
+    "episodeId": 1210504,
+    "materialId": "",
+    "replaceId": 7
+  },
+  {
+    "clueId": 16,
+    "clueIcon": "v2a1_aergusi_chat_clue4",
+    "clueName": "红线缠绕的档案袋",
+    "clueDesc": "记录了数起失踪案|其中一份特殊的案件记录了一起祭祀行为，推断为亚当放置了从猎人处购买的动物皮毛和肉",
+    "episodeId": 1210504,
+    "materialId": "14#15",
+    "replaceId": 0
+  },
+  {
+    "clueId": 17,
+    "clueIcon": "v2a1_aergusi_chat_clue10",
+    "clueName": "剥皮行者",
+    "clueDesc": "亚当口中，红墙事件相关的神秘人",
+    "episodeId": 1210504,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 18,
+    "clueIcon": "v2a1_aergusi_chat_clue3",
+    "clueName": "红墙",
+    "clueDesc": "1984年圣地亚哥疗养院附近的院墙遗址，如今已是一片断墙|红墙处有陈年的人血痕迹与新鲜的动物血迹和大量的动物皮毛混杂在一起",
+    "episodeId": 1210506,
+    "materialId": "",
+    "replaceId": 12
+  },
+  {
+    "clueId": 19,
+    "clueIcon": "v2a1_aergusi_chat_clue10",
+    "clueName": "剥皮行者",
+    "clueDesc": "亚当口中，红墙事件相关的神秘人|剥皮行者会夺走动物的皮毛伪装家畜，目的是趁人放松时吃人或者将人类转化成他们的同类",
+    "episodeId": 1210506,
+    "materialId": "",
+    "replaceId": 17
+  },
+  {
+    "clueId": 20,
+    "clueIcon": "v2a1_aergusi_chat_clue2",
+    "clueName": "混合的血液",
+    "clueDesc": "祭祀的羊血和陈旧的人血里有一样的血锈，从同一把砍刀，或者工业链锯的切割环节中来。",
+    "episodeId": 1210507,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 21,
+    "clueIcon": "v2a1_aergusi_chat_clue7",
+    "clueName": "猎人",
+    "clueDesc": "卖给过亚当皮毛和动物血的猎人，如今在林中深处找到了独居的他，是一位说俄语的移民",
+    "episodeId": 1210507,
+    "materialId": "",
+    "replaceId": 0
+  },
+  {
+    "clueId": 22,
+    "clueIcon": "v2a1_aergusi_chat_clue6",
+    "clueName": "亚当",
+    "clueDesc": "酒馆的酒保，在交流过程中因某种原因，先行用枪制服住了阿尔古斯，并准备移交给治安官|有一个死在红墙的姐姐，其案件的凶手目前仍未找到|昨天猎人卖给亚当的皮毛今天便全都不见了，与档案袋中的祭祀者在红墙处放置动物皮毛和血肉的行为吻合",
+    "episodeId": 1210507,
+    "materialId": "16#8",
+    "replaceId": 0
+  }
+]

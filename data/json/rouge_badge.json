@@ -1,0 +1,212 @@
+[
+  {
+    "season": 1,
+    "id": 1,
+    "name": "踢门者",
+    "desc": "累计战斗超过12场",
+    "icon": "rouge_result_badgeicon_1",
+    "trigger": 1,
+    "triggerParam": "12",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 2,
+    "name": "收藏家",
+    "desc": "累计获得造物数量≥40",
+    "icon": "rouge_result_badgeicon_2",
+    "trigger": 2,
+    "triggerParam": "40",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 3,
+    "name": "奇巧窗棂",
+    "desc": "进行3次的奇巧置换",
+    "icon": "rouge_result_badgeicon_3",
+    "trigger": 3,
+    "triggerParam": "3",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 4,
+    "name": "灵光闪烁",
+    "desc": "媒介消耗≥120",
+    "icon": "rouge_result_badgeicon_4",
+    "trigger": 4,
+    "triggerParam": "120",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 5,
+    "name": "慷慨解囊",
+    "desc": "累计消耗金雀子儿≥1000",
+    "icon": "rouge_result_badgeicon_5",
+    "trigger": 5,
+    "triggerParam": "1000",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 6,
+    "name": "爆发力",
+    "desc": "单卡最高伤害≥150000",
+    "icon": "rouge_result_badgeicon_6",
+    "trigger": 6,
+    "triggerParam": "150000",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 7,
+    "name": "迷途明灯",
+    "desc": "单局内复活过1个角色",
+    "icon": "rouge_result_badgeicon_7",
+    "trigger": 7,
+    "triggerParam": "1",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 8,
+    "name": "挑战者",
+    "desc": "击败3个环伺之厄战斗",
+    "icon": "rouge_result_badgeicon_8",
+    "trigger": 8,
+    "triggerParam": "3",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 9,
+    "name": "恪尽职守",
+    "desc": "完成3个传闻",
+    "icon": "rouge_result_badgeicon_9",
+    "trigger": 9,
+    "triggerParam": "3",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 10,
+    "name": "人脉管理",
+    "desc": "过程中获取的角色数量≥20",
+    "icon": "rouge_result_badgeicon_10",
+    "trigger": 10,
+    "triggerParam": "20",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 11,
+    "name": "精简主义",
+    "desc": "击败最终boss时，行动者与协同者人数总和＜5人",
+    "icon": "rouge_result_badgeicon_11",
+    "trigger": 11,
+    "triggerParam": "5",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 12,
+    "name": "法术现代化",
+    "desc": "获得『软盘』数量≥15",
+    "icon": "rouge_result_badgeicon_12",
+    "trigger": 12,
+    "triggerParam": "15",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 13,
+    "name": "话语权",
+    "desc": "击败绅士风尚特邀人",
+    "icon": "rouge_result_badgeicon_13",
+    "trigger": 13,
+    "triggerParam": "103206",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 14,
+    "name": "凝固的歌",
+    "desc": "获得“应急鸟蛋”",
+    "icon": "rouge_result_badgeicon_14",
+    "trigger": 14,
+    "triggerParam": "8330111",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 15,
+    "name": "黄昏的森林",
+    "desc": "在“赃物”事件中据理力争并胜利",
+    "icon": "rouge_result_badgeicon_15",
+    "trigger": 13,
+    "triggerParam": "101917",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 16,
+    "name": "星空尽头",
+    "desc": "击败星穹所视及其的眷属",
+    "icon": "rouge_result_badgeicon_16",
+    "trigger": 13,
+    "triggerParam": "103409",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 17,
+    "name": "噩梦捕手",
+    "desc": "获得“荆棘与蛇蜕”",
+    "icon": "rouge_result_badgeicon_17",
+    "trigger": 14,
+    "triggerParam": "8330311",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 18,
+    "name": "水道冲刷",
+    "desc": "获得“管廊焚毁者”",
+    "icon": "rouge_result_badgeicon_18",
+    "trigger": 14,
+    "triggerParam": "8330112",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 19,
+    "name": "幸运儿",
+    "desc": "命运之泉中，全部选项均获得金雀子儿",
+    "icon": "rouge_result_badgeicon_19",
+    "trigger": 15,
+    "triggerParam": "10611301#10611311#10611321",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 20,
+    "name": "歧路之皿",
+    "desc": "获得“悠远器皿”",
+    "icon": "rouge_result_badgeicon_20",
+    "trigger": 14,
+    "triggerParam": "8320025",
+    "score": 150
+  },
+  {
+    "season": 1,
+    "id": 21,
+    "name": "见习小队",
+    "desc": "最终战斗中，队伍中没有1个6星角色",
+    "icon": "rouge_result_badgeicon_21",
+    "trigger": 16,
+    "triggerParam": "5",
+    "score": 150
+  }
+]

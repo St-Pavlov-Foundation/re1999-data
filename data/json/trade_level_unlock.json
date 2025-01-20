@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "开放新建造权限",
+    "icon": "",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>新建筑</color>",
+    "sort": 101,
+    "itemType": 1
+  },
+  {
+    "id": 4,
+    "name": "培训上限",
+    "icon": "room_task_icon14",
+    "type": 2,
+    "levelupDes": "<color=#F3994B>驯化栏位</color>上限提升<color=#F3994B>+▩1%s</color>",
+    "sort": 102,
+    "itemType": 0
+  },
+  {
+    "id": 6,
+    "name": "建筑等级上限",
+    "icon": "",
+    "type": 2,
+    "levelupDes": "<color=#F3994B>建筑等级</color>上限提升<color=#F3994B>+▩1%s</color>",
+    "sort": 201,
+    "itemType": 1
+  },
+  {
+    "id": 7,
+    "name": "孤屿数量上限",
+    "icon": "room_task_icon10",
+    "type": 2,
+    "levelupDes": "<color=#F3994B>地块上限</color>上限提升<color=#F3994B>+▩1%s</color>",
+    "sort": 103,
+    "itemType": 0
+  },
+  {
+    "id": 8,
+    "name": "开放运输功能",
+    "icon": "room_task_icon11",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>运输功能</color>开放",
+    "sort": 104,
+    "itemType": 0
+  },
+  {
+    "id": 9,
+    "name": "里程碑规划",
+    "icon": "room_task_icon16",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>里程碑奖金</color>开放",
+    "sort": 105,
+    "itemType": 0
+  },
+  {
+    "id": 10,
+    "name": "道具奖励",
+    "icon": "",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>道具奖励</color>",
+    "sort": 301,
+    "itemType": 2
+  },
+  {
+    "id": 11,
+    "name": "开放订单交易",
+    "icon": "room_task_icon13",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>订单交易</color>开放",
+    "sort": 107,
+    "itemType": 0
+  },
+  {
+    "id": 12,
+    "name": "开放魔精混合",
+    "icon": "room_task_icon15",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>魔精混合</color>开放",
+    "sort": 108,
+    "itemType": 0
+  },
+  {
+    "id": 13,
+    "name": "开放建筑升级",
+    "icon": "room_task_icon12",
+    "type": 1,
+    "levelupDes": "<color=#F3994B>建筑升级</color>开放",
+    "sort": 109,
+    "itemType": 0
+  },
+  {
+    "id": 14,
+    "name": "运输路线上限",
+    "icon": "room_task_icon11",
+    "type": 2,
+    "levelupDes": "<color=#F3994B>路线</color>上限提升",
+    "sort": 110,
+    "itemType": 0
+  }
+]

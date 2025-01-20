@@ -1,0 +1,209 @@
+[
+  {
+    "evidenceId": 101,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得治安官的信任",
+    "conditionStr": "提交线索证明不是自己先出手的",
+    "errorTip": 2,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 102,
+    "dialogGroupType": 2,
+    "puzzleTxt": "取得治安官的信任",
+    "conditionStr": "找到治安官知道的错误信息，并提交线索",
+    "errorTip": 2,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 103,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得治安官的信任",
+    "conditionStr": "告诉治安官来到这里的目的",
+    "errorTip": 2,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 104,
+    "dialogGroupType": 2,
+    "puzzleTxt": "获取更多信息",
+    "conditionStr": "找到话题的切入点，追问新线索",
+    "errorTip": 2,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 105,
+    "dialogGroupType": 1,
+    "puzzleTxt": "获取更多信息",
+    "conditionStr": "组合线索，提交治安官讨厌雇佣兵的原因",
+    "errorTip": 2,
+    "tips": 0,
+    "showFusion": 1
+  },
+  {
+    "evidenceId": 123,
+    "dialogGroupType": 1,
+    "puzzleTxt": "",
+    "conditionStr": "",
+    "errorTip": 0,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 106,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "告诉亚当你的信息来源",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 107,
+    "dialogGroupType": 2,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "从亚当的话语中，追问新线索",
+    "errorTip": 6,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 108,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "引出红墙的另一桩案件",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 109,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "举出亚当和祭祀案的联系",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 110,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "举出亚当和失踪案的联系",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 111,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "组合线索，提交和失踪案相关的推论",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 1
+  },
+  {
+    "evidenceId": 112,
+    "dialogGroupType": 1,
+    "puzzleTxt": "取得亚当的信任",
+    "conditionStr": "告诉亚当你的神秘术信息以取得他的信任",
+    "errorTip": 6,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 113,
+    "dialogGroupType": 1,
+    "puzzleTxt": "",
+    "conditionStr": "",
+    "errorTip": 0,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 114,
+    "dialogGroupType": 2,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "确认村民是否真正知道红墙发生的一切",
+    "errorTip": 14,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 115,
+    "dialogGroupType": 2,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "反驳村民知晓的错误信息",
+    "errorTip": 14,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 116,
+    "dialogGroupType": 1,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "告诉村民祭祀用品的来源",
+    "errorTip": 14,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 117,
+    "dialogGroupType": 2,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "指出必须要去红墙的人",
+    "errorTip": 14,
+    "tips": 3,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 118,
+    "dialogGroupType": 1,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "举出凶杀案和祭祀之间的联系",
+    "errorTip": 14,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 119,
+    "dialogGroupType": 1,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "提交和动物皮毛有关的传闻",
+    "errorTip": 14,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 120,
+    "dialogGroupType": 1,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "组合线索，指出你推论中前去祭祀的人",
+    "errorTip": 14,
+    "tips": 0,
+    "showFusion": 1
+  },
+  {
+    "evidenceId": 121,
+    "dialogGroupType": 1,
+    "puzzleTxt": "向镇民们说出自己的推论",
+    "conditionStr": "指出你推论中的失踪案凶手",
+    "errorTip": 14,
+    "tips": 0,
+    "showFusion": 0
+  },
+  {
+    "evidenceId": 122,
+    "dialogGroupType": 1,
+    "puzzleTxt": "",
+    "conditionStr": "",
+    "errorTip": 0,
+    "tips": 0,
+    "showFusion": 0
+  }
+]

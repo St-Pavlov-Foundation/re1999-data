@@ -1,0 +1,98 @@
+[
+  {
+    "activityId": 12114,
+    "id": 1211401,
+    "name": "欢迎光临",
+    "mapIds": 0,
+    "mainConditionStr": "",
+    "mapName": "",
+    "storyBefore": 309801,
+    "storyClear": 0,
+    "preEpisode": 0,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211402,
+    "name": "丝绒心脏",
+    "mapIds": 121201,
+    "mainConditionStr": "探索蓝手帕的梦境|追上蓝手帕|追上蓝手帕|前往盥洗室|追上蓝手帕|寻找刚合上的门|前往旅馆前台|追上蓝手帕",
+    "mapName": "心脏房间#旅馆走廊#盥洗室#旅馆前台",
+    "storyBefore": 309802,
+    "storyClear": 0,
+    "preEpisode": 1211401,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211403,
+    "name": "摇篮曲",
+    "mapIds": 0,
+    "mainConditionStr": "",
+    "mapName": "",
+    "storyBefore": 309807,
+    "storyClear": 0,
+    "preEpisode": 1211402,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211404,
+    "name": "无声夜",
+    "mapIds": 121401,
+    "mainConditionStr": "探索旅馆前台|前往二楼|检查每一扇房门|回到旅馆前台|逃离怪物的追猎",
+    "mapName": "旅馆前台#旅馆走廊#心脏房间",
+    "storyBefore": 309808,
+    "storyClear": 0,
+    "preEpisode": 1211403,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211405,
+    "name": "怪房客",
+    "mapIds": 121501,
+    "mainConditionStr": "检查旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊|离开旅馆走廊",
+    "mapName": "旅馆走廊#旅馆走廊#旅馆走廊#旅馆走廊#心脏房间#旅馆走廊#旅馆走廊#旅馆走廊#旅馆走廊#旅馆走廊",
+    "storyBefore": 309816,
+    "storyClear": 0,
+    "preEpisode": 1211404,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211406,
+    "name": "克里斯汀的婴儿",
+    "mapIds": 121601,
+    "mainConditionStr": "探索旅馆前台|逃离怪物的追猎|逃离怪物的追猎|触碰幻觉并逃离房间|前往盥洗室|将怪物引到深处|直面恐惧",
+    "mapName": "旅馆前台#旅馆走廊#客房#盥洗室",
+    "storyBefore": 309817,
+    "storyClear": 0,
+    "preEpisode": 1211405,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211407,
+    "name": "牧羊人",
+    "mapIds": 0,
+    "mainConditionStr": "",
+    "mapName": "",
+    "storyBefore": 309824,
+    "storyClear": 0,
+    "preEpisode": 1211406,
+    "storyRepeat": 0
+  },
+  {
+    "activityId": 12114,
+    "id": 1211408,
+    "name": "双面镜",
+    "mapIds": 0,
+    "mainConditionStr": "",
+    "mapName": "",
+    "storyBefore": 309825,
+    "storyClear": 0,
+    "preEpisode": 1211407,
+    "storyRepeat": 0
+  }
+]

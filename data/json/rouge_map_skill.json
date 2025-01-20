@@ -1,0 +1,110 @@
+[
+  {
+    "id": 10101,
+    "version": "101",
+    "powerCost": 20,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38010101",
+    "desc": "下场战斗中应激提高时变化值-50%，应激降低时变化值+50%",
+    "icon": "rouge_faction_smallicon_23",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 10901,
+    "version": "101",
+    "powerCost": 30,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38010901",
+    "desc": "下场战斗中释放至终的仪式后，专注概率提升30%，持续到战斗结束",
+    "icon": "rouge_faction_smallicon_24",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 11201,
+    "version": "101",
+    "powerCost": 20,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38011201",
+    "desc": "获得1个可以被『嗜血木槌』锻造升级的随机造物",
+    "icon": "rouge_faction_smallicon_25",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 12401,
+    "version": "101",
+    "powerCost": 15,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38012401",
+    "desc": "获得1件随机造物",
+    "icon": "rouge_faction_smallicon_26",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 13001,
+    "version": "101",
+    "powerCost": 5,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38013001",
+    "desc": "点亮本地区的某一条路线",
+    "icon": "rouge_faction_smallicon_27",
+    "middleLayerLimit": 0
+  },
+  {
+    "id": 13002,
+    "version": "101",
+    "powerCost": 10,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38013002",
+    "desc": "将随机2个非藏金窟和环伺之厄的路径点变为藏金窟",
+    "icon": "rouge_faction_smallicon_28",
+    "middleLayerLimit": 0
+  },
+  {
+    "id": 13003,
+    "version": "101",
+    "powerCost": 10,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38013003",
+    "desc": "获得1个『尘封宝箱』",
+    "icon": "rouge_faction_smallicon_30",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 13301,
+    "version": "101",
+    "powerCost": 15,
+    "coinCost": 0,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38013301",
+    "desc": "队伍角色当前应激-20%",
+    "icon": "rouge_faction_smallicon_29",
+    "middleLayerLimit": 1
+  },
+  {
+    "id": 11011,
+    "version": "101",
+    "powerCost": 30,
+    "coinCost": 100,
+    "stepCd": 1,
+    "useLimit": 1,
+    "effects": "38011017",
+    "desc": "失去100金雀子儿，75%概率获得150金雀子儿；20%概率获得200金雀子儿；5%概率获得500金雀子儿",
+    "icon": "rouge_faction_smallicon_19",
+    "middleLayerLimit": 1
+  }
+]

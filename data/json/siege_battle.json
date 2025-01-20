@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "stage": 1,
+    "sort": 1,
+    "unlockCondition": "",
+    "heroId": 1,
+    "instructionDesc": "苹果没有肩膀，但还是可以帮你站得更高。",
+    "episodeId": 1910101
+  },
+  {
+    "id": 2,
+    "stage": 1,
+    "sort": 2,
+    "unlockCondition": "",
+    "heroId": 2,
+    "instructionDesc": "这首诗尚未完成，亦未得名，但真真切切。",
+    "episodeId": 1910102
+  },
+  {
+    "id": 3,
+    "stage": 1,
+    "sort": 3,
+    "unlockCondition": "",
+    "heroId": 3,
+    "instructionDesc": "手册上尚未记载这些，但很快就会有了。",
+    "episodeId": 1910103
+  },
+  {
+    "id": 4,
+    "stage": 1,
+    "sort": 4,
+    "unlockCondition": "",
+    "heroId": 4,
+    "instructionDesc": "星球在转动，正如打碟机上的唱片。",
+    "episodeId": 1910104
+  },
+  {
+    "id": 5,
+    "stage": 1,
+    "sort": 5,
+    "unlockCondition": "",
+    "heroId": 5,
+    "instructionDesc": "天才往往只提出一个建议，一个关键性的建议。",
+    "episodeId": 1910105
+  },
+  {
+    "id": 6,
+    "stage": 2,
+    "sort": 1,
+    "unlockCondition": "1_3",
+    "heroId": 0,
+    "instructionDesc": "",
+    "episodeId": 1910106
+  }
+]

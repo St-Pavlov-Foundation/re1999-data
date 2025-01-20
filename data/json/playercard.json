@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "name": "箱中角色",
+    "nameEn": "Crew",
+    "displayPriority": 1
+  },
+  {
+    "id": 2,
+    "type": 3,
+    "name": "启程日",
+    "nameEn": "Date of Departure",
+    "displayPriority": 2
+  },
+  {
+    "id": 3,
+    "type": 2,
+    "name": "旅行时长",
+    "nameEn": "Days into Journey",
+    "displayPriority": 3
+  },
+  {
+    "id": 4,
+    "type": 2,
+    "name": "完美访客",
+    "nameEn": "Max Level Characters",
+    "displayPriority": 4
+  },
+  {
+    "id": 5,
+    "type": 2,
+    "name": "慷慨之证",
+    "nameEn": "Character Lending",
+    "displayPriority": 5
+  },
+  {
+    "id": 6,
+    "type": 2,
+    "name": "信任的系结",
+    "nameEn": "Maximum Bonds",
+    "displayPriority": 6
+  },
+  {
+    "id": 7,
+    "type": 2,
+    "name": "衣着收藏",
+    "nameEn": "Garments Owned",
+    "displayPriority": 7
+  },
+  {
+    "id": 8,
+    "type": 2,
+    "name": "活性消耗",
+    "nameEn": "Cellular Activity Consumed",
+    "displayPriority": 8
+  },
+  {
+    "id": 9,
+    "type": 2,
+    "name": "幕前互动",
+    "nameEn": "Main Interface Interactions",
+    "displayPriority": 9
+  }
+]

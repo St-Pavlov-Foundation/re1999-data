@@ -1,0 +1,26 @@
+[
+  {
+    "activityId": 11203,
+    "id": 1,
+    "name": "营地密林",
+    "name_En": "Dense Woods",
+    "openId": 50,
+    "ambientAudio": 3300017
+  },
+  {
+    "activityId": 11203,
+    "id": 2,
+    "name": "小屋周边",
+    "name_En": "Around the Cabin",
+    "openId": 50,
+    "ambientAudio": 3300017
+  },
+  {
+    "activityId": 11203,
+    "id": 3,
+    "name": "魔精居所",
+    "name_En": "Critter Residence",
+    "openId": 50,
+    "ambientAudio": 3300017
+  }
+]

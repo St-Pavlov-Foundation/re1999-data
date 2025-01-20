@@ -1,0 +1,72 @@
+[
+  {
+    "activityId": 11509,
+    "id": 307301,
+    "name": "新馆长",
+    "nameen": "CHAPTER",
+    "titleen": "The New Curator",
+    "episodeId": -1,
+    "icon": 0,
+    "order": "1"
+  },
+  {
+    "activityId": 11509,
+    "id": 307302,
+    "name": "旧线圈",
+    "nameen": "CHAPTER",
+    "titleen": "Change of the Coils",
+    "episodeId": 1,
+    "icon": 1,
+    "order": "2"
+  },
+  {
+    "activityId": 11509,
+    "id": 307303,
+    "name": "黑樱桃",
+    "nameen": "CHAPTER",
+    "titleen": "Circe's Plant",
+    "episodeId": 1,
+    "icon": 2,
+    "order": "3"
+  },
+  {
+    "activityId": 11509,
+    "id": 307304,
+    "name": "世界的水手",
+    "nameen": "CHAPTER",
+    "titleen": "Sailor of the World",
+    "episodeId": 2,
+    "icon": 1,
+    "order": "4"
+  },
+  {
+    "activityId": 11509,
+    "id": 307305,
+    "name": "老相识",
+    "nameen": "CHAPTER",
+    "titleen": "Old Aquaintance",
+    "episodeId": 2,
+    "icon": 2,
+    "order": "5"
+  },
+  {
+    "activityId": 11509,
+    "id": 307306,
+    "name": "窃火者",
+    "nameen": "CHAPTER",
+    "titleen": "One Who Stole Fire",
+    "episodeId": 3,
+    "icon": 1,
+    "order": "6"
+  },
+  {
+    "activityId": 11509,
+    "id": 307307,
+    "name": "积雪之上",
+    "nameen": "CHAPTER",
+    "titleen": "Above the Snow",
+    "episodeId": 4,
+    "icon": 2,
+    "order": "7"
+  }
+]

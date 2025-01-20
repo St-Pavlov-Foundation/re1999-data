@@ -1,0 +1,29 @@
+[
+  {
+    "teachId": 1,
+    "preTeachId": 0,
+    "episodeId": 2203101,
+    "firstBonus": "1#110103#1",
+    "name": "即时效应",
+    "desc": "即刻生效",
+    "strategy": "连续攻击快速击败敌方"
+  },
+  {
+    "teachId": 2,
+    "preTeachId": 1,
+    "episodeId": 2203102,
+    "firstBonus": "1#110603#1",
+    "name": "记忆外壳",
+    "desc": "护盾机制",
+    "strategy": "利用克制攻击击破敌方记忆外壳"
+  },
+  {
+    "teachId": 3,
+    "preTeachId": 2,
+    "episodeId": 2203103,
+    "firstBonus": "1#110103#1",
+    "name": "王车易位",
+    "desc": "轮换机制",
+    "strategy": "击破记忆外壳回复后援角色激情，将后援角色轮换上场给予敌人终结一击"
+  }
+]

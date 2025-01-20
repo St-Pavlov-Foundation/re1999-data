@@ -1,0 +1,672 @@
+[
+  {
+    "id": 101,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110001",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『支援』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 102,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110002",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『支援』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 103,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110003",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『同频』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 104,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110004",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『同频』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 105,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110005",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『共鸣』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 106,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110006",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『共鸣』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 107,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110007",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『仪式』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 108,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110008",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『仪式』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 109,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110009",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『合成』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 110,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110010",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『合成』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 111,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110011",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『丰沛』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 112,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110012",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『丰沛』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 113,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110075",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#C8A25A>妙想</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 114,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110076",
+    "attribute": "",
+    "ban": "",
+    "desc": "选择2个随机<color=#8D6993>精巧</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 115,
+    "type": 1,
+    "version": "",
+    "interactive": "1#11110077",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得5个随机<color=#8D6993>精巧</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 116,
+    "type": 1,
+    "version": "101",
+    "interactive": "1#21110008",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『向导』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 117,
+    "type": 1,
+    "version": "101",
+    "interactive": "1#21110009",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『向导』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 118,
+    "type": 1,
+    "version": "101",
+    "interactive": "1#21110010",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机<color=#8D6993>精巧</color>及以上品质的『应激』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 119,
+    "type": 1,
+    "version": "101",
+    "interactive": "1#21110011",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得1个随机『应激』造物（优先获得未拥有的）",
+    "unlockType": 0
+  },
+  {
+    "id": 201,
+    "type": 2,
+    "version": "",
+    "interactive": "1#11110017",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得2个随机<color=#587FA1>寻常</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 202,
+    "type": 2,
+    "version": "",
+    "interactive": "1#11110018",
+    "attribute": "",
+    "ban": "",
+    "desc": "获得60金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 203,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "完成下个战斗路径点时，获得1个随机<color=#8D6993>精巧</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 204,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "完成下个战斗路径点时，获得80金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 205,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个行至途中时，获得1个随机<color=#8D6993>精巧</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 206,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个行至途中时，获得80金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 207,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个休憩地时，获得1个随机<color=#8D6993>精巧</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 208,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个休憩地时，获得80金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 209,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "进入下个购物契机时，获得80金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 210,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "完成下2个战斗路径点时，一次性获得4个随机<color=#8D6993>精巧</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 211,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "完成下2个战斗路径点时，一次性获得100金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 212,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "离开下2个行至途中时，一次性获得4个随机<color=#8D6993>精巧</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 213,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "离开下2个行至途中时，一次性获得100金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 214,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "离开下2个休憩地时，一次性获得4个随机<color=#8D6993>精巧</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 215,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "离开下2个休憩地时，一次性获得120金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 216,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『支援』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 217,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『同频』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 218,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『共鸣』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 219,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『仪式』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 220,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『合成』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 221,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『丰沛』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 222,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『额外行动』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 223,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "6",
+    "desc": "后续不再掉落『蓄电』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 224,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "完成下个战斗路径点时，获得4个随机<color=#587FA1>寻常</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 225,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个行至途中时，获得4个随机<color=#587FA1>寻常</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 226,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个休憩地时，获得4个随机<color=#587FA1>寻常</color>『软盘』",
+    "unlockType": 0
+  },
+  {
+    "id": 227,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "完成下2个战斗路径点时，一次性获得3个随机<color=#587FA1>寻常</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 228,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下2个行至途中时，一次性获得3个随机<color=#587FA1>寻常</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 229,
+    "type": 2,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下2个休憩地时，一次性获得3个随机<color=#587FA1>寻常</color>造物",
+    "unlockType": 0
+  },
+  {
+    "id": 230,
+    "type": 2,
+    "version": "101",
+    "interactive": "2#1",
+    "attribute": "",
+    "ban": "",
+    "desc": "选择丢弃1个造物，使全队应激度降低10点",
+    "unlockType": 0
+  },
+  {
+    "id": 231,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "失去200金雀子儿，使全队应激度降低10点",
+    "unlockType": 0
+  },
+  {
+    "id": 232,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个藏宝地时，一次性获得1个『尘封皮箱』",
+    "unlockType": 0
+  },
+  {
+    "id": 233,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下2个藏宝地时，一次性获得1个『尘封宝箱』",
+    "unlockType": 0
+  },
+  {
+    "id": 234,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下个瞭望塔时，一次性获得100金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 235,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "离开下2个瞭望塔时，一次性获得150金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 236,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "进入下个区域时，一次性获得100金雀子儿",
+    "unlockType": 0
+  },
+  {
+    "id": 242,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "后续不再掉落『向导』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 243,
+    "type": 2,
+    "version": "101",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "后续不再掉落『应激』造物",
+    "unlockType": 0
+  },
+  {
+    "id": 301,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "102#60",
+    "ban": "",
+    "desc": "角色攻击+6%",
+    "unlockType": 0
+  },
+  {
+    "id": 302,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "101#120",
+    "ban": "",
+    "desc": "角色最大生命+12%",
+    "unlockType": 0
+  },
+  {
+    "id": 303,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "103#60",
+    "ban": "",
+    "desc": "角色现实防御+6%",
+    "unlockType": 0
+  },
+  {
+    "id": 304,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "104#60",
+    "ban": "",
+    "desc": "角色精神防御+6%",
+    "unlockType": 0
+  },
+  {
+    "id": 305,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "201#100",
+    "ban": "",
+    "desc": "角色暴击率+10%",
+    "unlockType": 0
+  },
+  {
+    "id": 306,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "203#150",
+    "ban": "",
+    "desc": "角色暴击创伤+15%",
+    "unlockType": 0
+  },
+  {
+    "id": 307,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "角色克制伤害系数提升8%",
+    "unlockType": 0
+  },
+  {
+    "id": 308,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "角色受克制伤害系数降低8%",
+    "unlockType": 0
+  },
+  {
+    "id": 309,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "角色造成非克制伤害时，创伤加成+10%",
+    "unlockType": 0
+  },
+  {
+    "id": 310,
+    "type": 3,
+    "version": "",
+    "interactive": "",
+    "attribute": "",
+    "ban": "",
+    "desc": "角色受到非克制伤害时，受创减免+10%",
+    "unlockType": 0
+  }
+]

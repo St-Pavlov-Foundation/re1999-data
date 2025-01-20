@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "",
+    "icon": "",
+    "sortId": 1,
+    "show": 1
+  },
+  {
+    "id": 2,
+    "name": "",
+    "icon": "",
+    "sortId": 2,
+    "show": 1
+  },
+  {
+    "id": 3,
+    "name": "盗火者们",
+    "icon": "singlebg/dungeon/rolestory_singlebg/season_img_01.png",
+    "sortId": 3,
+    "show": 1
+  },
+  {
+    "id": 4,
+    "name": "",
+    "icon": "singlebg_lang/txt_rouge/enter/rk_rouge.png",
+    "sortId": 4,
+    "show": 1
+  },
+  {
+    "id": 6,
+    "name": "",
+    "icon": "singlebg_lang/txt_act174_singlebg/act174_img_01.png",
+    "sortId": 3,
+    "show": 1
+  },
+  {
+    "id": 7,
+    "name": "努库泰澳兴建日！",
+    "icon": "singlebg_lang/txt_v2a5_autochess_singlebg/main/v2a4_tutushizi_enter_banner.png",
+    "sortId": 3,
+    "show": 1
+  },
+  {
+    "id": 8,
+    "name": "小怪物翻斗棋",
+    "icon": "singlebg_lang/txt_v2a5_autochess_singlebg/main/v2a5_autochess_main_enter.png",
+    "sortId": 3,
+    "show": 1
+  }
+]

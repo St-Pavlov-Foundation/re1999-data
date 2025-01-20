@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "初始金雀子儿",
+    "value": 20,
+    "ismul": 0,
+    "icon": "rouge_talen_icon_5"
+  },
+  {
+    "id": 2,
+    "name": "金巷信用获取",
+    "value": 5,
+    "ismul": 1,
+    "icon": "rouge_talen_icon_2"
+  },
+  {
+    "id": 3,
+    "name": "初始编队噪点",
+    "value": 2,
+    "ismul": 0,
+    "icon": "rouge_talen_icon_3"
+  },
+  {
+    "id": 4,
+    "name": "金雀子儿获取",
+    "value": 10,
+    "ismul": 1,
+    "icon": "rouge_talen_icon_6"
+  },
+  {
+    "id": 5,
+    "name": "触媒灵质获取",
+    "value": 10,
+    "ismul": 1,
+    "icon": "rouge_talen_icon_1"
+  }
+]

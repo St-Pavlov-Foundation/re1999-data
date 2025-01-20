@@ -1,0 +1,67 @@
+[
+  {
+    "heroId": 3003,
+    "slotsId": 3003,
+    "facetsId": "300301"
+  },
+  {
+    "heroId": 3004,
+    "slotsId": 3004,
+    "facetsId": "300401#300402"
+  },
+  {
+    "heroId": 3009,
+    "slotsId": 3009,
+    "facetsId": "300901"
+  },
+  {
+    "heroId": 3051,
+    "slotsId": 3051,
+    "facetsId": "305101"
+  },
+  {
+    "heroId": 3052,
+    "slotsId": 3052,
+    "facetsId": "305201"
+  },
+  {
+    "heroId": 3072,
+    "slotsId": 3072,
+    "facetsId": "307201"
+  },
+  {
+    "heroId": 3020,
+    "slotsId": 3020,
+    "facetsId": "302001"
+  },
+  {
+    "heroId": 3056,
+    "slotsId": 3056,
+    "facetsId": "305601"
+  },
+  {
+    "heroId": 3043,
+    "slotsId": 3043,
+    "facetsId": "304301"
+  },
+  {
+    "heroId": 3048,
+    "slotsId": 3048,
+    "facetsId": "304801"
+  },
+  {
+    "heroId": 3041,
+    "slotsId": 3041,
+    "facetsId": "304101"
+  },
+  {
+    "heroId": 3063,
+    "slotsId": 3063,
+    "facetsId": "306301"
+  },
+  {
+    "heroId": 3039,
+    "slotsId": 3039,
+    "facetsId": "303901"
+  }
+]

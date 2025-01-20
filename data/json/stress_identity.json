@@ -1,0 +1,3762 @@
+[
+  {
+    "id": 1001,
+    "name": "角色通用",
+    "identity": "base",
+    "typeParam": "1",
+    "effect": "addSkill",
+    "param": "521300201",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2001,
+    "name": "岩",
+    "identity": "career",
+    "typeParam": "1",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "警觉时，赋予血量最低的友方保护性正面状态；紊乱时，虚弱随机友方"
+  },
+  {
+    "id": 2002,
+    "name": "星",
+    "identity": "career",
+    "typeParam": "2",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "警觉时，赋予敌人【明昧】；紊乱时，获得【明昧】并前移"
+  },
+  {
+    "id": 2003,
+    "name": "木",
+    "identity": "career",
+    "typeParam": "3",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "警觉时，赋予己方保护性正面状态；紊乱时，赋予己方状态异常"
+  },
+  {
+    "id": 2004,
+    "name": "兽",
+    "identity": "career",
+    "typeParam": "4",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "警觉时，使用自身的咒语1攻击；紊乱时，使用自身的咒语1攻击后陷入【眩晕】"
+  },
+  {
+    "id": 2005,
+    "name": "灵",
+    "identity": "career",
+    "typeParam": "5",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "警觉时，使随机敌人应激降低；紊乱时，使自身应激提高"
+  },
+  {
+    "id": 2006,
+    "name": "智",
+    "identity": "career",
+    "typeParam": "6",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "不会触发警觉或紊乱"
+  },
+  {
+    "id": 3001,
+    "name": "神秘学家",
+    "identity": "heroType",
+    "typeParam": "1",
+    "effect": "addSkill",
+    "param": "38003001",
+    "isNoShow": 0,
+    "desc": "战斗中应激到达阈值时，低概率触发专注，高概率触发失控"
+  },
+  {
+    "id": 3002,
+    "name": "神秘学家混血种",
+    "identity": "heroType",
+    "typeParam": "2",
+    "effect": "addSkill",
+    "param": "38003002",
+    "isNoShow": 0,
+    "desc": "战斗中应激到达阈值时，触发专注和失控的概率均为一半；\n战斗中应激增加时，变化值提升50%"
+  },
+  {
+    "id": 3003,
+    "name": "神秘学家感染种",
+    "identity": "heroType",
+    "typeParam": "3",
+    "effect": "addSkill",
+    "param": "38003003",
+    "isNoShow": 0,
+    "desc": "受击时若触发专注，复制正面效果给随机友方；\n受击时若触发失控，复制负面效果给随机友方"
+  },
+  {
+    "id": 3004,
+    "name": "超自然者",
+    "identity": "heroType",
+    "typeParam": "4",
+    "effect": "addSkill",
+    "param": "38003004",
+    "isNoShow": 0,
+    "desc": "战斗中应激增加或减少时，变化值降低50%"
+  },
+  {
+    "id": 3005,
+    "name": "意识唤醒者",
+    "identity": "heroType",
+    "typeParam": "5",
+    "effect": "addSkill",
+    "param": "38003005",
+    "isNoShow": 0,
+    "desc": "回合开始时若生命高于50%，专注概率大幅提升；\n回合开始时若生命低于50%，失控概率大幅提升"
+  },
+  {
+    "id": 3006,
+    "name": "人类",
+    "identity": "heroType",
+    "typeParam": "6",
+    "effect": "addSkill",
+    "param": "38003006",
+    "isNoShow": 0,
+    "desc": "战斗中应激减少时，变化值提升100%"
+  },
+  {
+    "id": 4001,
+    "name": "现实创伤",
+    "identity": "battleTag",
+    "typeParam": "1",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，降低敌方的现实防御；失控时，提高敌方的现实防御"
+  },
+  {
+    "id": 4002,
+    "name": "精神创伤",
+    "identity": "battleTag",
+    "typeParam": "2",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，降低敌方的精神防御；失控时，提高敌方的精神防御"
+  },
+  {
+    "id": 4101,
+    "name": "输出",
+    "identity": "battleTag",
+    "typeParam": "101",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，获得多层【激昂】；失控时，获得多层【虚弱】"
+  },
+  {
+    "id": 4102,
+    "name": "防御",
+    "identity": "battleTag",
+    "typeParam": "102",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，获得多层【坚固】；失控时，获得多层【脆弱】"
+  },
+  {
+    "id": 4103,
+    "name": "辅助",
+    "identity": "battleTag",
+    "typeParam": "103",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，赋予己方多种正面状态；失控时，赋予敌方多种正面状态"
+  },
+  {
+    "id": 4104,
+    "name": "治疗",
+    "identity": "battleTag",
+    "typeParam": "104",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，治疗低血量的友方；失控时，使低血量的己方受治疗效果大幅降低"
+  },
+  {
+    "id": 4105,
+    "name": "爆发",
+    "identity": "battleTag",
+    "typeParam": "105",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使下一次攻击伤害大幅提高；失控时，使下一次攻击伤害大幅降低"
+  },
+  {
+    "id": 4106,
+    "name": "削弱",
+    "identity": "battleTag",
+    "typeParam": "106",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，赋予敌方多种负面状态；失控时，赋予己方多种负面状态"
+  },
+  {
+    "id": 4107,
+    "name": "控制",
+    "identity": "battleTag",
+    "typeParam": "107",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使随机敌人陷入【眩晕】；失控时，陷入【眩晕】"
+  },
+  {
+    "id": 4108,
+    "name": "护盾",
+    "identity": "battleTag",
+    "typeParam": "108",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方获得大量【护盾】；失控时，敌方获得大量【护盾】"
+  },
+  {
+    "id": 4109,
+    "name": "驱散",
+    "identity": "battleTag",
+    "typeParam": "109",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，驱散敌方的所有正面状态；失控时，驱散己方的所有正面状态"
+  },
+  {
+    "id": 4110,
+    "name": "净化",
+    "identity": "battleTag",
+    "typeParam": "110",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，驱散己方的所有负面状态；失控时，驱散敌方的所有负面状态"
+  },
+  {
+    "id": 4111,
+    "name": "自愈",
+    "identity": "battleTag",
+    "typeParam": "111",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，回复100%最大生命；失控时，失去50%当前生命"
+  },
+  {
+    "id": 4112,
+    "name": "中毒",
+    "identity": "battleTag",
+    "typeParam": "112",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使敌方陷入多次【中毒】；失控时，使己方陷入多次【中毒】"
+  },
+  {
+    "id": 4113,
+    "name": "重伤",
+    "identity": "battleTag",
+    "typeParam": "113",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使敌方陷入【重伤】；失控时，使己方陷入【重伤】"
+  },
+  {
+    "id": 4114,
+    "name": "额外行动",
+    "identity": "battleTag",
+    "typeParam": "114",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使用自身的咒语1攻击；失控时，陷入【意识失控】状态"
+  },
+  {
+    "id": 4115,
+    "name": "追击",
+    "identity": "battleTag",
+    "typeParam": "115",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使用自身的咒语1攻击；失控时，陷入【意识失控】状态"
+  },
+  {
+    "id": 4116,
+    "name": "反击",
+    "identity": "battleTag",
+    "typeParam": "116",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使用自身的咒语2攻击；失控时，陷入【意识失控】状态"
+  },
+  {
+    "id": 4118,
+    "name": "燃烧",
+    "identity": "battleTag",
+    "typeParam": "118",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，赋予敌方多层【燃烧】；失控时，赋予己方多层【燃烧】"
+  },
+  {
+    "id": 4119,
+    "name": "免疫",
+    "identity": "battleTag",
+    "typeParam": "119",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，赋予己方【免疫】；失控时，赋予敌方【免疫】"
+  },
+  {
+    "id": 4120,
+    "name": "收割",
+    "identity": "battleTag",
+    "typeParam": "120",
+    "effect": "addSkill",
+    "param": "38004120",
+    "isNoShow": 0,
+    "desc": "专注时，获得【克制】；失控时，获得【迷茫】"
+  },
+  {
+    "id": 4121,
+    "name": "燃血",
+    "identity": "battleTag",
+    "typeParam": "121",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，失去50%当前生命并获得多层【弥留】；失控时，失去80%当前生命"
+  },
+  {
+    "id": 4122,
+    "name": "位移",
+    "identity": "battleTag",
+    "typeParam": "122",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，不受控制位移并驱散己方全体状态异常；失控时，不受控制位移并驱散己方全体状态增益"
+  },
+  {
+    "id": 4123,
+    "name": "调阶",
+    "identity": "battleTag",
+    "typeParam": "123",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，赋予己方全体【调阶】；失控时，赋予己方全体【降阶】"
+  },
+  {
+    "id": 53088,
+    "name": "塞梅尔维斯",
+    "identity": "id",
+    "typeParam": "3088",
+    "effect": "addSkill",
+    "param": "38530881",
+    "isNoShow": 0,
+    "desc": "专注或失控后，获得【生的余音】"
+  },
+  {
+    "id": 53091,
+    "name": "罗蕾莱",
+    "identity": "id",
+    "typeParam": "3091",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，大幅降低全场单位应激；失控时，大幅提升全场单位应激；"
+  },
+  {
+    "id": 53080,
+    "name": "卡卡尼亚",
+    "identity": "id",
+    "typeParam": "3080",
+    "effect": "addSkill",
+    "param": "38530801",
+    "isNoShow": 0,
+    "desc": "其他友方失控时，降低自身应激，若存在伊索尔德时，额外降低应激；失控时，移除所有【移情】值"
+  },
+  {
+    "id": 53081,
+    "name": "伊索尔德",
+    "identity": "id",
+    "typeParam": "3081",
+    "effect": "addSkill",
+    "param": "38530811",
+    "isNoShow": 0,
+    "desc": "专注时，【热度】增加；失控时，释放至终的仪式\n专注或失控时，若卡卡尼亚在场，降低己方全体应激；"
+  },
+  {
+    "id": 53065,
+    "name": "马库斯",
+    "identity": "id",
+    "typeParam": "3065",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，获得【咒语强化Ⅱ】；失控时，陷入【眩晕】状态"
+  },
+  {
+    "id": 53086,
+    "name": "露西",
+    "identity": "id",
+    "typeParam": "3086",
+    "effect": "addSkill",
+    "param": "38530861",
+    "isNoShow": 0,
+    "desc": "专注时，获得多层【电能】，若存在意识唤醒者，下回合行动点+1；失控时，失去所有【电能】，1回合内无法获得【电能】"
+  },
+  {
+    "id": 53098,
+    "name": "蓝手帕",
+    "identity": "id",
+    "typeParam": "3098",
+    "effect": "addSkill",
+    "param": "38530981",
+    "isNoShow": 0,
+    "desc": "战斗中敌方应激增加时效果提升，己方应激降低时效果提升\n专注时，全场单位获得多层【镇定】；失控时，全场单位获得多层【狂躁】"
+  },
+  {
+    "id": 53097,
+    "name": "阿尔古斯",
+    "identity": "id",
+    "typeParam": "3097",
+    "effect": "addSkill",
+    "param": "38530971",
+    "isNoShow": 0,
+    "desc": "回合开始时，处于【勘破】状态下的敌人应激降低\n专注时，驱散敌方全体正面状态；失控时，获得【致盲】"
+  },
+  {
+    "id": 53099,
+    "name": "数羊羔",
+    "identity": "id",
+    "typeParam": "3099",
+    "effect": "addSkill",
+    "param": "38530991",
+    "isNoShow": 0,
+    "desc": "回合开始时，若处于【噩梦】状态，失去一定生命，若队伍中存在医生或知晓音乐的角色，改为降低自身应激\n专注时，敌方全体陷入【噩梦】状态；失控时，自身陷入【噩梦】状态"
+  },
+  {
+    "id": 53027,
+    "name": "无线电小姐",
+    "identity": "id",
+    "typeParam": "3027",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体获得【超然】；失控时，己方全体激情-5，并陷入【心神不宁】状态"
+  },
+  {
+    "id": 53066,
+    "name": "37",
+    "identity": "id",
+    "typeParam": "3066",
+    "effect": "addSkill",
+    "param": "38530661",
+    "isNoShow": 0,
+    "desc": "专注后，自身灵光回复至最大值；失控后，自身灵光清零"
+  },
+  {
+    "id": 53079,
+    "name": "6",
+    "identity": "id",
+    "typeParam": "3079",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体获得多层【专注】；失控时，己方全体获得多层【失控】"
+  },
+  {
+    "id": 53004,
+    "name": "红弩箭",
+    "identity": "id",
+    "typeParam": "3004",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，使用自身追击对敌方全体攻击1次；失控时，陷入【精神失控】状态"
+  },
+  {
+    "id": 53025,
+    "name": "星锑",
+    "identity": "id",
+    "typeParam": "3025",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体获得【躁动摇滚】；失控时，进入【嘲讽】状态"
+  },
+  {
+    "id": 53028,
+    "name": "APPLe",
+    "identity": "id",
+    "typeParam": "3028",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体获得多层【汲取】；失控时，陷入【禁疗】状态"
+  },
+  {
+    "id": 53023,
+    "name": "十四行诗",
+    "identity": "id",
+    "typeParam": "3023",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体创伤加成、受创减免大幅提升，降低玛蒂尔达当前应激；失控时，自身陷入【缴械】状态，提升玛蒂尔达当前应激"
+  },
+  {
+    "id": 53041,
+    "name": "玛蒂尔达",
+    "identity": "id",
+    "typeParam": "3041",
+    "effect": "addSkill",
+    "param": "38530411",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体暴击率提升，若十四行诗在场，暴击率额外提升；失控时，己方全体暴击率降低"
+  },
+  {
+    "id": 53009,
+    "name": "苏芙比",
+    "identity": "id",
+    "typeParam": "3009",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，己方全体获得【毒瓶】；失控时，敌方全体获得【毒瓶】"
+  },
+  {
+    "id": 53003,
+    "name": "槲寄生",
+    "identity": "id",
+    "typeParam": "3003",
+    "effect": "addSkill",
+    "param": "38530031",
+    "isNoShow": 0,
+    "desc": "免疫【石化】，回合结束时使全场处于【石化】状态的单位受创减免降低\n专注时，己方全体获得【免疫】；失控时，己方全体陷入【石化】状态"
+  },
+  {
+    "id": 53047,
+    "name": "兔毛手袋",
+    "identity": "id",
+    "typeParam": "3047",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "专注时，随机敌人陷入【眩晕】状态；失控时，随机友方陷入【眩晕】状态"
+  },
+  {
+    "id": 53057,
+    "name": "小梅斯梅尔",
+    "identity": "id",
+    "typeParam": "3057",
+    "effect": "addSkill",
+    "param": "38530571",
+    "isNoShow": 0,
+    "desc": "友方失控时获得【镇定】；回合开始时若存在意识唤醒者友方，自身应激概率提升\n专注时，赋予敌方全体【麻痹】；失控时，己方全体陷入【恐惧】状态"
+  },
+  {
+    "id": 5210001,
+    "name": "海怪-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210002,
+    "name": "触手1-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210003,
+    "name": "触手2-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210011,
+    "name": "岛之主-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210012,
+    "name": "放牧人-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210013,
+    "name": "奉酒人-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210021,
+    "name": "大地的愠怒-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5210022,
+    "name": "原初居民-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 1211001,
+    "name": "2.1-主活动通用身份",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011101,
+    "name": "1.9地牢-市区-警惕的卫兵",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011102,
+    "name": "1.9地牢-市区-敬业的卫兵",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011103,
+    "name": "1.9地牢-市区-暴动者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011104,
+    "name": "1.9地牢-市区-卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011105,
+    "name": "1.9地牢-市区-卡邦克鲁群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011106,
+    "name": "1.9地牢-市区-卡邦克鲁之主",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190002,
+    "name": "1.9地牢-2层通用-流浪汉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190003,
+    "name": "1.9地牢-2层通用-醉汉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190004,
+    "name": "1.9地牢-2层通用-无知恶童",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190005,
+    "name": "1.9地牢-2层通用-粗鲁恶童",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190006,
+    "name": "1.9地牢-2层通用-采访记者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190007,
+    "name": "1.9地牢-3层通用-迎宾士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190008,
+    "name": "1.9地牢-3层通用-盾迎宾士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190009,
+    "name": "1.9地牢-3层通用-唁丧迎宾士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190010,
+    "name": "1.9地牢-3层通用-礼乐人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190011,
+    "name": "1.9地牢-3层通用-杖礼乐人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190012,
+    "name": "1.9地牢-3层通用-仪枪礼乐人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190013,
+    "name": "1.9地牢-3层通用-鼓槌手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190014,
+    "name": "1.9地牢-3层通用-敲击手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190015,
+    "name": "1.9地牢-4层通用-防护警卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190016,
+    "name": "1.9地牢-4层通用-持盾警卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190017,
+    "name": "1.9地牢-4层通用-持械警卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190018,
+    "name": "1.9地牢-4层通用-防暴警卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190019,
+    "name": "1.9地牢-4层通用-普通职员",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190020,
+    "name": "1.9地牢-4层通用-平凡职员",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190021,
+    "name": "1.9地牢-4层通用-踏实的防卫者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190022,
+    "name": "1.9地牢-4层通用-普通守卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190023,
+    "name": "1.9地牢-4层通用-平凡守卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190024,
+    "name": "1.9地牢-4层通用-精英守卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 2190025,
+    "name": "1.9地牢-4层通用-电枪守卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018101,
+    "name": "1.9地牢-暴雨扭曲的城市-剧院观众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018103,
+    "name": "1.9地牢-暴雨扭曲的城市-重塑·教众男",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018104,
+    "name": "1.9地牢-暴雨扭曲的城市-重塑·教众女",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018105,
+    "name": "1.9地牢-暴雨扭曲的城市-道具盔甲",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018106,
+    "name": "1.9地牢-暴雨扭曲的城市-道具魔杖",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018107,
+    "name": "1.9地牢-暴雨扭曲的城市-浊导从者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018108,
+    "name": "1.9地牢-暴雨扭曲的城市-观演者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018109,
+    "name": "1.9地牢-暴雨扭曲的城市-黑脓敲击手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018110,
+    "name": "1.9地牢-暴雨扭曲的城市-飞艇",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018301,
+    "name": "1.9地牢-暴雨扭曲的城市-剃刀队长",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300020",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018302,
+    "name": "1.9地牢-暴雨扭曲的城市-战争坦克",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300021",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018303,
+    "name": "1.9地牢-暴雨扭曲的城市-剃刀队员",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011401,
+    "name": "1.9地牢-事件关-杰克巨兔",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011402,
+    "name": "1.9地牢-事件关-垃圾袋1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011403,
+    "name": "1.9地牢-事件关-垃圾袋2（玛蒂尔达）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011404,
+    "name": "1.9地牢-事件关-玛蒂尔达",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011405,
+    "name": "1.9地牢-事件关-黄金卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011406,
+    "name": "1.9地牢-事件关-狼群（黑帮的清算小组）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011407,
+    "name": "1.9地牢-事件关-奇怪的苹果",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011408,
+    "name": "1.9地牢-事件关-巨大本耶普—尾",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011409,
+    "name": "1.9地牢-事件关-巨大本耶普—手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011410,
+    "name": "1.9地牢-事件关-巨大本耶普—口",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011411,
+    "name": "1.9地牢-事件关-催眠幽灵",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011412,
+    "name": "1.9地牢-事件关-催眠泡泡",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011413,
+    "name": "1.9地牢-事件关-梦魇",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011414,
+    "name": "1.9地牢-事件关-银行资本家",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011415,
+    "name": "1.9地牢-事件关-皮克勒斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011701,
+    "name": "1.9地牢-通用精英关卡-大奥利图欧",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011702,
+    "name": "1.9地牢-通用精英关卡-奥利图欧",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011703,
+    "name": "1.9地牢-通用精英关卡-牙仙女王",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011704,
+    "name": "1.9地牢-通用精英关卡-牙仙精灵",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011705,
+    "name": "1.9地牢-通用精英关卡-挖掘艺术",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011706,
+    "name": "1.9地牢-通用精英关卡-重塑阿奇翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011707,
+    "name": "1.9地牢-通用精英关卡-巨大卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011708,
+    "name": "1.9地牢-通用精英关卡-凝眸的造物",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011709,
+    "name": "1.9地牢-通用精英关卡-黑豆国王",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011710,
+    "name": "1.9地牢-通用精英关卡-白公鸡国王",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011711,
+    "name": "1.9地牢-通用精英关卡-褴褛新郎",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011712,
+    "name": "1.9地牢-通用精英关卡-沙米尔壤虫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011713,
+    "name": "1.9地牢-通用精英关卡-屠夫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8011714,
+    "name": "1.9地牢-通用精英关卡-梦境核心",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8013501,
+    "name": "1.9地牢-委托关卡-绿湖卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8013502,
+    "name": "1.9地牢-委托关卡-仙人掌魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8013503,
+    "name": "1.9地牢-委托关卡-斗士魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8013504,
+    "name": "1.9地牢-委托关卡-自爆魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8013505,
+    "name": "1.9地牢-委托关卡-仙人掌魔精群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015501,
+    "name": "1.9地牢-委托关-拳击手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016501,
+    "name": "1.9地牢-委托关-拉拉泉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016502,
+    "name": "1.9地牢-委托关-讣告人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016503,
+    "name": "1.9地牢-委托关-门",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016504,
+    "name": "1.9地牢-委托关-梦境高级守卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017501,
+    "name": "1.9地牢-委托关卡-槲寄生",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017502,
+    "name": "1.9地牢-委托关卡-坦南特",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017503,
+    "name": "1.9地牢-委托关卡-罗蕾莱",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120101,
+    "name": "1.9肉鸽-动物园-草坪沙米尔虫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120103,
+    "name": "1.9肉鸽-动物园-矮树丛怪鸟",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120106,
+    "name": "1.9肉鸽-动物园-草丛塔泽尔亚龙",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120108,
+    "name": "1.9肉鸽-动物园-绿荫郊狼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120110,
+    "name": "1.9肉鸽-动物园-巨型灰白蛾",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120111,
+    "name": "1.9肉鸽-动物园-巨型灰白蛾",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120112,
+    "name": "1.9肉鸽-动物园-公园守卫者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300002",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801120113,
+    "name": "1.9肉鸽-动物园-绿地巨鸟",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300003",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130101,
+    "name": "1.9肉鸽-贫民窟-绅士风尚追寻者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130102,
+    "name": "1.9肉鸽-贫民窟-绅士风尚体验者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130103,
+    "name": "1.9肉鸽-贫民窟-绅士风尚初探者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130104,
+    "name": "1.9肉鸽-贫民窟-绅士风尚捍卫者",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130105,
+    "name": "1.9肉鸽-贫民窟-真正的绅士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300004",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130106,
+    "name": "1.9肉鸽-贫民窟-绅士聚会筹划队",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130107,
+    "name": "1.9肉鸽-贫民窟-绅士聚会话事人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130108,
+    "name": "1.9肉鸽-贫民窟-绅士风尚特邀人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300005",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 801130109,
+    "name": "1.9肉鸽-贫民窟-轮班警卫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014106,
+    "name": "1.9地牢-地下湖泊小怪-阿其翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014107,
+    "name": "1.9地牢-地下湖泊小怪-火苗",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014108,
+    "name": "1.9地牢-地下湖泊小怪-岩·卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014109,
+    "name": "1.9地牢-地下湖泊小怪-修罗石像1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014110,
+    "name": "1.9地牢-地下湖泊小怪-修罗石像2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014111,
+    "name": "1.9地牢-地下湖泊小怪-兽·卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014112,
+    "name": "1.9地牢-地下湖泊小怪-变色装置",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014201,
+    "name": "1.9地牢-地下湖泊精英-大型烛夜",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014202,
+    "name": "1.9地牢-地下湖泊精英-守卫魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014203,
+    "name": "1.9地牢-地下湖泊精英-换皮屠夫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014204,
+    "name": "1.9地牢-地下湖泊精英-巨大石像",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014301,
+    "name": "1.9地牢-地下湖泊Boss-巨大和平乌鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300006",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014302,
+    "name": "1.9地牢-地下湖泊Boss-湿婆神像（攻击形态）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300007",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014303,
+    "name": "1.9地牢-地下湖泊Boss-湿婆神像（防御形态）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300007",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014304,
+    "name": "1.9地牢-地下湖泊Boss-伊索尔德（阶段1）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300008",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014305,
+    "name": "1.9地牢-地下湖泊Boss-伊索尔德（阶段2）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300009",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014306,
+    "name": "1.9地牢-地下湖泊Boss-伊索尔德（阶段3）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300010",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015101,
+    "name": "1.9地牢-下水道小怪-少毛卡邦克鲁群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015102,
+    "name": "1.9地牢-下水道小怪-多毛狼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015103,
+    "name": "1.9地牢-下水道小怪-多毛蜘蛛",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015104,
+    "name": "1.9地牢-下水道小怪-研究协会成员A",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015105,
+    "name": "1.9地牢-下水道小怪-研究协会成员B",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015106,
+    "name": "1.9地牢-下水道小怪-少毛卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015107,
+    "name": "1.9地牢-下水道小怪-奇肯恩",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015108,
+    "name": "1.9地牢-下水道小怪-岩城弓箭手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015109,
+    "name": "1.9地牢-下水道小怪-子弹箱",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015201,
+    "name": "1.9地牢-下水道精英-多毛守卫魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015202,
+    "name": "1.9地牢-下水道精英-变异奇肯恩",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015203,
+    "name": "1.9地牢-下水道精英-岩城扫除人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015301,
+    "name": "1.9地牢-下水道Boss-雪山卡邦克鲁之王",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300011",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015302,
+    "name": "1.9地牢-下水道Boss-重塑意志聚合体",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300012",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015303,
+    "name": "1.9地牢-下水道Boss-猪脸杰克",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300013",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015304,
+    "name": "1.9地牢-下水道Boss-小指彼得",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300013",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016106,
+    "name": "1.9地牢-吉卜赛小怪-捕食雕像",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016107,
+    "name": "1.9地牢-吉卜赛小怪-猎食雕像",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016108,
+    "name": "1.9地牢-吉卜赛小怪-逐昏双狼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016109,
+    "name": "1.9地牢-吉卜赛小怪-变异布鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016110,
+    "name": "1.9地牢-吉卜赛小怪-变异林德虫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016111,
+    "name": "1.9地牢-吉卜赛小怪-绿湖卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016112,
+    "name": "1.9地牢-吉卜赛小怪-老鼠",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016113,
+    "name": "1.9地牢-吉卜赛小怪-重塑意志聚合物",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016114,
+    "name": "1.9地牢-吉卜赛小怪-吉卜赛住民",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016115,
+    "name": "1.9地牢-吉卜赛小怪-换皮阿奇翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016201,
+    "name": "1.9地牢-吉卜赛精英-爱宠",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016202,
+    "name": "1.9地牢-吉卜赛精英-洋葱头",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016203,
+    "name": "1.9地牢-吉卜赛精英-兽·露萨尔姬",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016204,
+    "name": "1.9地牢-吉卜赛精英-木·露萨尔姬",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016205,
+    "name": "1.9地牢-吉卜赛精英-变异天使猫",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016206,
+    "name": "1.9地牢-吉卜赛精英-苏芙比",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016207,
+    "name": "1.9地牢-吉卜赛精英-换皮大阿其翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016301,
+    "name": "1.9地牢-吉卜赛Boss-食人树",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300014",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016302,
+    "name": "1.9地牢-吉卜赛Boss-泥人花",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300015",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016303,
+    "name": "1.9地牢-吉卜赛Boss-伽菈波那1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300016",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016304,
+    "name": "1.9地牢-吉卜赛Boss-伽菈波那2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300016",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016305,
+    "name": "1.9地牢-吉卜赛Boss-泥人花（残血）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300015",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016306,
+    "name": "1.9地牢-吉卜赛Boss-泥人花（满血）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300015",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017101,
+    "name": "1.9地牢-旧贵族小怪-灵体1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017102,
+    "name": "1.9地牢-旧贵族小怪-灵体2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017103,
+    "name": "1.9地牢-旧贵族小怪-鬼火",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017104,
+    "name": "1.9地牢-旧贵族小怪-幽灵树精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017105,
+    "name": "1.9地牢-旧贵族小怪-斯普特尼克",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017106,
+    "name": "1.9地牢-旧贵族小怪-星之眼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017107,
+    "name": "1.9地牢-旧贵族小怪-凶星",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017201,
+    "name": "1.9地牢-旧贵族精英-盔甲石像1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017202,
+    "name": "1.9地牢-旧贵族精英-盔甲石像2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017203,
+    "name": "1.9地牢-旧贵族精英-帕米埃",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017204,
+    "name": "1.9地牢-旧贵族精英-TTT",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017205,
+    "name": "1.9地牢-旧贵族精英-远旅",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017206,
+    "name": "1.9地牢-旧贵族精英-天体",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017301,
+    "name": "1.9地牢-旧贵族Boss-未锈铠",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300017",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017302,
+    "name": "1.9地牢-旧贵族Boss-吵闹鬼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300018",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017303,
+    "name": "1.9地牢-旧贵族Boss-库玛尔",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300019",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017304,
+    "name": "1.9地牢-旧贵族Boss-凶星·土星",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017305,
+    "name": "1.9地牢-旧贵族Boss-凶星·火星",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017306,
+    "name": "1.9地牢-旧贵族Boss-凶星·太阳",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017307,
+    "name": "1.9地牢-旧贵族Boss-凶星·计都",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017308,
+    "name": "1.9地牢-旧贵族Boss-凶星·罗睺",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017311,
+    "name": "1.9地牢-旧贵族Boss-未锈铠(助战）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017312,
+    "name": "1.9地牢-旧贵族Boss-吵闹鬼(助战）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8016401,
+    "name": "1.8赛季-坎吉拉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017401,
+    "name": "1.8赛季-奥利图欧",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210101,
+    "name": "2.1肉鸽曲娘事件关-曲娘",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210102,
+    "name": "2.1肉鸽曲娘事件关-拉拉泉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210103,
+    "name": "2.1肉鸽歌剧事件关-伊索尔德",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210104,
+    "name": "2.1肉鸽应激触发事件关-塞梅",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210105,
+    "name": "2.1肉鸽媒介触发事件关-爱兹拉",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210106,
+    "name": "2.1肉鸽媒介触发事件关-仙人掌魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210107,
+    "name": "2.1肉鸽媒介触发事件关-仙人掌魔精群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210108,
+    "name": "2.1肉鸽媒介触发事件关-柑橘魔精",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210109,
+    "name": "2.1肉鸽媒介触发事件关-柑橘魔精群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210110,
+    "name": "2.1肉鸽金币触发事件关-温妮",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210111,
+    "name": "2.1肉鸽应激触发事件关-塞梅幻想体",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8012401,
+    "name": "2.1肉鸽据点关-莱格斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8012402,
+    "name": "2.1肉鸽据点关-特种格拉瓦库斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015401,
+    "name": "2.1肉鸽据点关-地脉净化者·迸发",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8015402,
+    "name": "2.1肉鸽据点关-鳞翼基基图克",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014401,
+    "name": "2.1肉鸽据点关-可燃点",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014402,
+    "name": "2.1肉鸽据点关-巨大和平乌鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8014403,
+    "name": "2.1肉鸽据点关-火苗",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8017402,
+    "name": "2.1肉鸽据点关-咔嚓咔嚓",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8018401,
+    "name": "2.1肉鸽据点关-黑脓敲击手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210121,
+    "name": "2.1肉鸽据点关-城门郎A",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210122,
+    "name": "2.1肉鸽据点关-城门郎B",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210123,
+    "name": "2.1肉鸽据点关-斑纹马",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210124,
+    "name": "2.1肉鸽据点关-红尾斑纹马",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210125,
+    "name": "2.1肉鸽据点关-葛天",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210126,
+    "name": "2.1肉鸽据点关-勿忘我",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210127,
+    "name": "2.1肉鸽据点关-重塑·苏菲亚",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210128,
+    "name": "2.1肉鸽据点关-重塑·女性教众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6210129,
+    "name": "2.1肉鸽据点关-幻想可燃点",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026101,
+    "name": "2.1地牢-吉卜赛普通-启明会青年女",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026102,
+    "name": "2.1地牢-吉卜赛普通-启明会青年男",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026103,
+    "name": "2.1地牢-旧贵族普通-诡异卵",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026104,
+    "name": "2.1地牢-旧贵族普通-僵尸新郎",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026105,
+    "name": "2.1地牢-暴雨扭曲的城市-捕食雕像",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026106,
+    "name": "2.1地牢-暴雨扭曲的城市-猎食雕像",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026107,
+    "name": "2.1地牢-吉卜赛精英-J",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026108,
+    "name": "2.1地牢-吉卜赛精英-燃烧可燃点",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026109,
+    "name": "2.1地牢-吉卜赛精英-凝滞的造物",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026110,
+    "name": "2.1地牢-吉卜赛精英-泥浆傀偶",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026111,
+    "name": "2.1地牢-旧贵族精英-老奶奶（现实版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026112,
+    "name": "2.1地牢-旧贵族精英-屠夫（现实版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026113,
+    "name": "2.1地牢-旧贵族精英-老爷爷（现实版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026114,
+    "name": "2.1地牢-旧贵族精英-镜中幽灵（现实版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026115,
+    "name": "2.1地牢-旧贵族精英-老奶奶（精神版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026116,
+    "name": "2.1地牢-旧贵族精英-屠夫（精神版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026117,
+    "name": "2.1地牢-旧贵族精英-老爷爷（精神版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026118,
+    "name": "2.1地牢-旧贵族精英-镜中幽灵（精神版）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026119,
+    "name": "2.1地牢-暴雨扭曲的城市精英-食人树",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026120,
+    "name": "2.1地牢-暴雨扭曲的城市精英-伴生腺体*3",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026121,
+    "name": "2.1地牢-暴雨扭曲的城市精英-数羊羔",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026122,
+    "name": "2.1地牢-暴雨扭曲的城市精英-飞艇",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026123,
+    "name": "2.1地牢-暴雨扭曲的城市精英-空降兵重塑·教众男",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026124,
+    "name": "2.1地牢-暴雨扭曲的城市精英-空降兵重塑·教众女",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026125,
+    "name": "2.1地牢-暴雨扭曲的城市精英-空降兵重塑剧院观众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8026126,
+    "name": "2.1地牢-暴雨扭曲的城市精英-梦幻泡影",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022101,
+    "name": "2.1地牢-动物园普通（公园区）-多毛蜘蛛",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022102,
+    "name": "2.1地牢-动物园普通（公园区）-多毛狼",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022103,
+    "name": "2.1地牢-动物园普通（公园区）-多毛卡邦克鲁群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022104,
+    "name": "2.1地牢-动物园普通（公园区）-多毛卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023101,
+    "name": "2.1地牢-黑帮普通（贫民窟）-中层帮众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023102,
+    "name": "2.1地牢-黑帮普通（贫民窟）-高级帮众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023103,
+    "name": "2.1地牢-黑帮普通（贫民窟）-帮派话事人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023104,
+    "name": "2.1地牢-黑帮普通（贫民窟）-高级帮众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024101,
+    "name": "2.1地牢-熔岩普通（地下湖泊）-兽·卡邦克鲁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024102,
+    "name": "2.1地牢-熔岩普通（地下湖泊）-大型烛夜",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024103,
+    "name": "2.1地牢-熔岩普通（地下湖泊）-阿其翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024104,
+    "name": "2.1地牢-熔岩普通（地下湖泊）火苗",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025101,
+    "name": "2.1地牢-冰雪普通（下水道）-岩城狙击手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025102,
+    "name": "2.1地牢-冰雪普通（下水道）-岩城弓箭手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025103,
+    "name": "2.1地牢-冰雪普通（下水道）-岩城圣裁人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025104,
+    "name": "2.1地牢-冰雪普通（下水道）-岩城扫除人",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025105,
+    "name": "2.1地牢-冰雪普通（下水道）-岩城远射手",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022201,
+    "name": "2.1地牢-动物园精英（公园区）-特种格拉瓦库斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022202,
+    "name": "2.1地牢-动物园精英（公园区）-箱子",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022203,
+    "name": "2.1地牢-动物园精英（公园区）-实体地脉能力",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8022204,
+    "name": "2.1地牢-动物园精英（公园区）-基基图克",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023201,
+    "name": "2.1地牢-黑帮精英（贫民窟）-莱格斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023202,
+    "name": "2.1地牢-黑帮精英（贫民窟）-警戒火炮",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023203,
+    "name": "2.1地牢-黑帮精英（贫民窟）-莱格斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8023204,
+    "name": "2.1地牢-黑帮精英（贫民窟）-特种格拉瓦库斯",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024201,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-大型烛夜",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024202,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-阿其翁",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024203,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-敌方中立位置医疗箱",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024204,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-造物进阶+造物碎片1+造物碎片2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024205,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-造物碎片1",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8024206,
+    "name": "2.1地牢-熔岩精英（地下湖泊）-造物碎片2",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025201,
+    "name": "2.1地牢-冰雪精英（下水道）-雪山之女",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025202,
+    "name": "2.1地牢-冰雪精英（下水道）-我方中立位置火苗",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025203,
+    "name": "2.1地牢-冰雪精英（下水道）-雪山之女",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 8025204,
+    "name": "2.1地牢-冰雪精英（下水道）-多毛卡邦克鲁群",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 621114,
+    "name": "2.1赛季-绅士卡邦克鲁之主",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 621125,
+    "name": "2.1赛季-莫桑女士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 621135,
+    "name": "2.1赛季-地脉能量",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 621146,
+    "name": "2.1赛季-37",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220001,
+    "name": "2.2 bossrush-艾佛森-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220002,
+    "name": "2.2 bossrush-大机器人-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220003,
+    "name": "2.2 bossrush-小机器人-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220004,
+    "name": "2.2 bossrush-小机器人2-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220011,
+    "name": "2.2 bossrush-重塑人面花-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220012,
+    "name": "2.2 bossrush-迎宾士-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220013,
+    "name": "2.2 bossrush-礼乐人-难度4",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220021,
+    "name": "2.2 bossrush-飞艇",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220022,
+    "name": "2.2 bossrush-男性教众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220023,
+    "name": "2.2 bossrush-女性教众",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 5220024,
+    "name": "2.2 bossrush-术士",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "52100061",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 6230001,
+    "name": "2.3赛季白朗姆",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "521300001",
+    "isNoShow": 1,
+    "desc": ""
+  },
+  {
+    "id": 9241004,
+    "name": "2.4主活动-努库泰澳人（小怪关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241005,
+    "name": "2.4主活动-重塑努库泰澳人（小怪关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103002",
+    "isNoShow": 1,
+    "desc": "行动后，自身应激+5"
+  },
+  {
+    "id": 9241006,
+    "name": "2.4主活动-躁动的旅客（小怪关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241015,
+    "name": "2.4主活动-努库泰澳人（精英关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241016,
+    "name": "2.4主活动-努库泰澳人（精英关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241017,
+    "name": "2.4主活动-躁动的旅客（精英关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241018,
+    "name": "2.4主活动-努库泰澳人（boss关）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241115,
+    "name": "小怪-努库泰澳人（精英关1-特殊应激）（困难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241116,
+    "name": "小怪-努库泰澳人（精英关2-特殊应激）（困难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241117,
+    "name": "小怪-躁动的旅客（精英关2-特殊应激）（困难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241118,
+    "name": "小怪-努库泰澳人（boss关-特殊应激）（困难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241215,
+    "name": "小怪-努库泰澳人（精英关1-特殊应激）（艰难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241216,
+    "name": "小怪-努库泰澳人（精英关2-特殊应激）（艰难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241217,
+    "name": "小怪-躁动的旅客（精英关2-特殊应激）（艰难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241218,
+    "name": "小怪-努库泰澳人（boss关-特殊应激）（艰难难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241304,
+    "name": "小怪-努库泰澳人（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241306,
+    "name": "小怪-躁动的旅客（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241315,
+    "name": "小怪-努库泰澳人（精英关1-特殊应激）（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241316,
+    "name": "小怪-努库泰澳人（精英关2-特殊应激）（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241317,
+    "name": "小怪-躁动的旅客（精英关2-特殊应激）（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9241318,
+    "name": "小怪-努库泰澳人（boss关-特殊应激）（探索难度）",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "addSkill",
+    "param": "924103001",
+    "isNoShow": 1,
+    "desc": "行动后，失去10%当前生命，自身应激+10"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "多尔切奥拉琴",
+    "switch": 1,
+    "icon": "dolceola"
+  },
+  {
+    "id": 2,
+    "name": "单簧管",
+    "switch": 1,
+    "icon": "clarinet"
+  },
+  {
+    "id": 3,
+    "name": "马林巴",
+    "switch": 1,
+    "icon": "marimba"
+  },
+  {
+    "id": 4,
+    "name": "贝斯",
+    "switch": 1,
+    "icon": "bass"
+  },
+  {
+    "id": 5,
+    "name": "拍手",
+    "switch": 0,
+    "icon": "clap"
+  },
+  {
+    "id": 6,
+    "name": "底鼓",
+    "switch": 0,
+    "icon": "kick"
+  },
+  {
+    "id": 7,
+    "name": "沙锤",
+    "switch": 0,
+    "icon": "shaker"
+  },
+  {
+    "id": 8,
+    "name": "军鼓",
+    "switch": 0,
+    "icon": "snare"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "activityId": 11815,
+    "missionGroupId": 101,
+    "type": 1,
+    "mapName": "另一首颂歌"
+  },
+  {
+    "activityId": 11815,
+    "missionGroupId": 201,
+    "type": 2,
+    "mapName": "所铸造的"
+  },
+  {
+    "activityId": 11815,
+    "missionGroupId": 202,
+    "type": 2,
+    "mapName": "向冰峰起誓"
+  },
+  {
+    "activityId": 11815,
+    "missionGroupId": 203,
+    "type": 2,
+    "mapName": "童年时代"
+  },
+  {
+    "activityId": 11815,
+    "missionGroupId": 204,
+    "type": 2,
+    "mapName": "尘世的愿望"
+  }
+]

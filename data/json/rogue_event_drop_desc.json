@@ -1,0 +1,74 @@
+[
+  {
+    "type": 1,
+    "id": 1,
+    "title": "金雀子儿",
+    "desc": "用于在怪奇货摊中交换货物。",
+    "icon": "100603",
+    "iconbg": "v1a6_cachot_reward_bg1"
+  },
+  {
+    "type": 1,
+    "id": 2,
+    "title": "共济",
+    "desc": "用于强化队伍意志等级。",
+    "icon": "100604",
+    "iconbg": "v1a6_cachot_reward_bg1"
+  },
+  {
+    "type": 2,
+    "id": 1,
+    "title": "进行疗养",
+    "desc": "选择▩1%s位角色回复▩2%s%生命。",
+    "icon": "v1a6_cachot_reward_icon4",
+    "iconbg": "v1a6_cachot_reward_bg4"
+  },
+  {
+    "type": 2,
+    "id": 2,
+    "title": "进行疗养",
+    "desc": "随机▩1%s位角色回复▩2%s%生命。",
+    "icon": "v1a6_cachot_reward_icon4",
+    "iconbg": "v1a6_cachot_reward_bg4"
+  },
+  {
+    "type": 2,
+    "id": 3,
+    "title": "进行疗养",
+    "desc": "全体回复▩1%s%生命。",
+    "icon": "v1a6_cachot_reward_icon4",
+    "iconbg": "v1a6_cachot_reward_bg4"
+  },
+  {
+    "type": 3,
+    "id": 1,
+    "title": "招揽同伴",
+    "desc": "邀请一位角色同行。",
+    "icon": "v1a6_cachot_reward_icon3",
+    "iconbg": "v1a6_cachot_reward_bg4"
+  },
+  {
+    "type": 4,
+    "id": 1,
+    "title": "搜寻造物",
+    "desc": "选择一件造物获得。",
+    "icon": "v1a6_cachot_reward_icon1",
+    "iconbg": "v1a6_cachot_reward_bg2"
+  },
+  {
+    "type": 5,
+    "id": 1,
+    "title": "？？？",
+    "desc": "",
+    "icon": "",
+    "iconbg": "v1a6_cachot_reward_bg1"
+  },
+  {
+    "type": 6,
+    "id": 1,
+    "title": "提升士气",
+    "desc": "强化队伍意志等级。",
+    "icon": "v1a6_cachot_reward_icon2",
+    "iconbg": "v1a6_cachot_reward_bg3"
+  }
+]

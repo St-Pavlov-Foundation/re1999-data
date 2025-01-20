@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "支援",
+    "iconUrl": "rouge_collection_tag1"
+  },
+  {
+    "id": 2,
+    "name": "仪式",
+    "iconUrl": "rouge_collection_tag5"
+  },
+  {
+    "id": 3,
+    "name": "合成",
+    "iconUrl": "rouge_collection_tag6"
+  },
+  {
+    "id": 4,
+    "name": "同频",
+    "iconUrl": "rouge_collection_tag2"
+  },
+  {
+    "id": 5,
+    "name": "共鸣",
+    "iconUrl": "rouge_collection_tag3"
+  },
+  {
+    "id": 6,
+    "name": "丰沛",
+    "iconUrl": "rouge_collection_tag4"
+  },
+  {
+    "id": 7,
+    "name": "额外行动",
+    "iconUrl": "rouge_collection_tag7"
+  },
+  {
+    "id": 8,
+    "name": "蓄电",
+    "iconUrl": "rouge_collection_tag8"
+  },
+  {
+    "id": 9,
+    "name": "应激",
+    "iconUrl": "rouge_collection_tag9"
+  },
+  {
+    "id": 10,
+    "name": "向导",
+    "iconUrl": "rouge_collection_tag11"
+  },
+  {
+    "id": 101,
+    "name": "饰物",
+    "iconUrl": "rouge_collection_equiptag3"
+  },
+  {
+    "id": 102,
+    "name": "奇珍",
+    "iconUrl": "rouge_collection_equiptag2"
+  },
+  {
+    "id": 103,
+    "name": "利器",
+    "iconUrl": "rouge_collection_equiptag1"
+  },
+  {
+    "id": 104,
+    "name": "药剂",
+    "iconUrl": "rouge_collection_equiptag4"
+  },
+  {
+    "id": 105,
+    "name": "软盘",
+    "iconUrl": "rouge_collection_equiptag5"
+  },
+  {
+    "id": 106,
+    "name": "物资",
+    "iconUrl": "rouge_collection_tag10"
+  },
+  {
+    "id": 107,
+    "name": "声象",
+    "iconUrl": "rouge_collection_tag12"
+  }
+]

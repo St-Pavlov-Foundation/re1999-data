@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "寻常",
+    "rareColor": "587FA1"
+  },
+  {
+    "id": 2,
+    "name": "精巧",
+    "rareColor": "8D6993"
+  },
+  {
+    "id": 3,
+    "name": "妙想",
+    "rareColor": "C8A25A"
+  },
+  {
+    "id": 4,
+    "name": "珍奇",
+    "rareColor": "D07D45"
+  }
+]

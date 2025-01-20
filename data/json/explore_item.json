@@ -1,0 +1,58 @@
+[
+  {
+    "id": 150001,
+    "type": 3,
+    "name": "坚岩之碑",
+    "desc": "使用坚岩之碑后，可在身边8格内塑造一座十分沉重的石碑",
+    "desc2": "它沉默且坚定，截断通行的道路。",
+    "icon": "icon_yanbei",
+    "audioId": 25004116,
+    "isStackable": false,
+    "isClientStackable": false,
+    "effect": "1#209",
+    "interactEffect": "1",
+    "isReserve": false
+  },
+  {
+    "id": 150002,
+    "type": 2,
+    "name": "遗石",
+    "desc": "遗石与遗留之柱互有关联，已被唤醒的一方可将另一方点亮",
+    "desc2": "随处可见，并不起眼的石块——但有人能为它寻见最合适的位置。",
+    "icon": "icon_mofa",
+    "audioId": 0,
+    "isStackable": false,
+    "isClientStackable": false,
+    "effect": "2",
+    "interactEffect": "",
+    "isReserve": false
+  },
+  {
+    "id": 150003,
+    "type": 1,
+    "name": "第一束光",
+    "desc": "“第一束光”可让自身周围4格的棱镜产生受光效果",
+    "desc2": "那些能帮你开辟通路的光亮。",
+    "icon": "icon_guangyuan",
+    "audioId": 25004116,
+    "isStackable": false,
+    "isClientStackable": false,
+    "effect": "3#216",
+    "interactEffect": "1",
+    "isReserve": true
+  },
+  {
+    "id": 150004,
+    "type": 1,
+    "name": "棱镜",
+    "desc": "可用完好的棱镜替换损坏的棱镜，使其恢复作用",
+    "desc2": "方正，可靠。用于自我审视略有些不便，但用来摆弄光线则刚好。",
+    "icon": "icon_lengjinglingjian",
+    "audioId": 0,
+    "isStackable": false,
+    "isClientStackable": false,
+    "effect": "4",
+    "interactEffect": "",
+    "isReserve": false
+  }
+]

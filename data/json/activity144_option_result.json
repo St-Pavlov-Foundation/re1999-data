@@ -1,0 +1,1322 @@
+[
+  {
+    "activityId": 11509,
+    "optionId": 10010101,
+    "name": "给予物资",
+    "bonus": "10101#6",
+    "picture": "",
+    "desc": "行动力-5，获得收集物\"高山紫苑\"，解锁T2-1【废弃缆车站】"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10010201,
+    "name": "护送他前往邻近的营地",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3，解锁T2-1【废弃缆车站】"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10010301,
+    "name": "忽视",
+    "bonus": "",
+    "picture": "",
+    "desc": "解锁T2-2【倒在雪中的登山客】"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10020101,
+    "name": "搜寻物资",
+    "bonus": "10102#4",
+    "picture": "",
+    "desc": "行动力+3，获取收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10020201,
+    "name": "稍作休息",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10020301,
+    "name": "拒绝",
+    "bonus": "10101#5",
+    "picture": "",
+    "desc": "获取收集物\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10030101,
+    "name": "搜寻物资",
+    "bonus": "10102#5",
+    "picture": "",
+    "desc": "获取收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10030201,
+    "name": "埋葬",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10030301,
+    "name": "忽视",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10040101,
+    "name": "提供治疗",
+    "bonus": "20102#6",
+    "picture": "",
+    "desc": "行动力-3，获取收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10040201,
+    "name": "视作伙伴",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5，获取前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10040301,
+    "name": "忽视",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10050101,
+    "name": "走近并攀谈",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10050201,
+    "name": "离开",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10060101,
+    "name": "交换情报",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10060201,
+    "name": "请求物资",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10070101,
+    "name": "绕道而行",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10070201,
+    "name": "给予食物",
+    "bonus": "10102#6",
+    "picture": "",
+    "desc": "行动力-5，获得收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10070301,
+    "name": "保持戒备",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10080101,
+    "name": "切割鹿肉",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10080201,
+    "name": "观察残骸",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10080301,
+    "name": "观察环境",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10090101,
+    "name": "探听情报",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10090201,
+    "name": "请求物资",
+    "bonus": "20101#5",
+    "picture": "",
+    "desc": "获得收集物\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10100101,
+    "name": "了解情况",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10100201,
+    "name": "探讨研究",
+    "bonus": "10201#5",
+    "picture": "",
+    "desc": "获得收集物\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10100301,
+    "name": "请求物资",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10110101,
+    "name": "尝试沟通",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10110201,
+    "name": "给予食物",
+    "bonus": "10101#6",
+    "picture": "",
+    "desc": "行动力-3，获得收集物\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10120101,
+    "name": "搜寻其他植物",
+    "bonus": "20101#5",
+    "picture": "",
+    "desc": "获得收集物\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10120201,
+    "name": "采集蛇麻草",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10130101,
+    "name": "搜寻物资",
+    "bonus": "20102#5",
+    "picture": "",
+    "desc": "获得收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10130201,
+    "name": "寻找线索",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10140101,
+    "name": "探听情报",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10140201,
+    "name": "交换物资",
+    "bonus": "20102#6",
+    "picture": "",
+    "desc": "行动力-3，获得收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10150101,
+    "name": "提供治疗",
+    "bonus": "30102#6",
+    "picture": "",
+    "desc": "行动力-3，获得收集物“高山覆盆子”"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10150201,
+    "name": "保持距离",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10160101,
+    "name": "搜寻物资",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10160201,
+    "name": "为他埋葬",
+    "bonus": "40101#5",
+    "picture": "",
+    "desc": "获得收集物\"鸦跖花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10170101,
+    "name": "搜寻食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10170201,
+    "name": "搜寻植物",
+    "bonus": "20201#5",
+    "picture": "",
+    "desc": "获取收集物\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 10170301,
+    "name": "研究地图",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91020101,
+    "name": "补充淡水",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91020201,
+    "name": "收集水样",
+    "bonus": "10201#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91020301,
+    "name": "标记位置",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91030101,
+    "name": "搜寻物资",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91030201,
+    "name": "标记位置",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91090101,
+    "name": "烹饪食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91090201,
+    "name": "烘干衣物",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91100101,
+    "name": "驱赶洞内野兽",
+    "bonus": "10102#6",
+    "picture": "",
+    "desc": "行动力-3，获得\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91100201,
+    "name": "在洞口驻扎",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91100301,
+    "name": "继续前行",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91110101,
+    "name": "尝试修复",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91110201,
+    "name": "攀岩绕过",
+    "bonus": "10101#5",
+    "picture": "",
+    "desc": "获得\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91110301,
+    "name": "寻找其他路线",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91120101,
+    "name": "冒险进入",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91120201,
+    "name": "记录位置，放弃进入",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91120301,
+    "name": "在入口处观察",
+    "bonus": "10201#5",
+    "picture": "",
+    "desc": "获得\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91130101,
+    "name": "迅速跟上",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91130201,
+    "name": "改变路线",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91130301,
+    "name": "悄悄逼近",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91070101,
+    "name": "后退并撤退",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91070201,
+    "name": "伪装并穿行",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91070301,
+    "name": "等待它们离开",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91080101,
+    "name": "呵退掠食者",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91080201,
+    "name": "防卫反击",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91080301,
+    "name": "留下食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91140101,
+    "name": "加快脚步",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91140201,
+    "name": "原地扎营",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91140301,
+    "name": "寻找掩体",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91150101,
+    "name": "涉水过溪",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91150201,
+    "name": "倒木",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 91150301,
+    "name": "跳石",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92020101,
+    "name": "前去查看",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92020201,
+    "name": "置之不理",
+    "bonus": "20201#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92020301,
+    "name": "犹豫不决",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92030101,
+    "name": "尝试帮忙",
+    "bonus": "20101#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92030201,
+    "name": "快速离去",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92090101,
+    "name": "寻找掩体",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92090201,
+    "name": "加速奔跑",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92100101,
+    "name": "成交",
+    "bonus": "20102#6",
+    "picture": "",
+    "desc": "行动力-3，获得\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92100201,
+    "name": "辨别真假",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92100301,
+    "name": "委婉拒绝",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92110101,
+    "name": "一心前进",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92110201,
+    "name": "驻足欣赏",
+    "bonus": "20101#5",
+    "picture": "",
+    "desc": "获得\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92110301,
+    "name": "仔细观察",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92120101,
+    "name": "原地等待",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92120201,
+    "name": "迅速躲避",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92120301,
+    "name": "跟随它们",
+    "bonus": "20201#5",
+    "picture": "",
+    "desc": "获得\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92130101,
+    "name": "装备起来",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92130201,
+    "name": "留下它们",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92130301,
+    "name": "无视它们",
+    "bonus": "20102#5",
+    "picture": "",
+    "desc": "获得\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92070101,
+    "name": "试试滑雪",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92070201,
+    "name": "制作手杖",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92070301,
+    "name": "无视它",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92080101,
+    "name": "大胆前行",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92080201,
+    "name": "小心探索",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92080301,
+    "name": "无视它",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92140101,
+    "name": "开怀畅饮",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92140201,
+    "name": "小睡一会",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92140301,
+    "name": "沟通交流",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92150101,
+    "name": "走左侧",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92150201,
+    "name": "走中间",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 92150301,
+    "name": "走右侧",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93010101,
+    "name": "立即食用",
+    "bonus": "30102#4",
+    "picture": "",
+    "desc": "行动力+10，获得行动力消耗+2，获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93010201,
+    "name": "采摘并保存",
+    "bonus": "30101#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93010301,
+    "name": "忽视",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93030101,
+    "name": "绕道而行",
+    "bonus": "30103#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"龙胆花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93030201,
+    "name": "走过湖面",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93060101,
+    "name": "沐浴阳光",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93060201,
+    "name": "大步前进",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93060301,
+    "name": "驻足欣赏",
+    "bonus": "30101#6",
+    "picture": "",
+    "desc": "行动力-3，获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93090101,
+    "name": "烹饪食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93090201,
+    "name": "烘干衣物",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93100101,
+    "name": "向他请教",
+    "bonus": "30102#6",
+    "picture": "",
+    "desc": "行动力-3，获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93100201,
+    "name": "与他交易",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93100301,
+    "name": "保持怀疑",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93110101,
+    "name": "尝试躲避",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93110201,
+    "name": "驱赶它",
+    "bonus": "30103#5",
+    "picture": "",
+    "desc": "获得\"龙胆花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93110301,
+    "name": "与它同行",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93120101,
+    "name": "更换地点",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93120201,
+    "name": "加速扎营",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93120301,
+    "name": "跑开躲避",
+    "bonus": "30101#5",
+    "picture": "",
+    "desc": "获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93130101,
+    "name": "重新掩埋",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93130201,
+    "name": "清理遗物",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93130301,
+    "name": "绕开此处",
+    "bonus": "30102#5",
+    "picture": "",
+    "desc": "获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93050101,
+    "name": "服用药物",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93050201,
+    "name": "稍作休整",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93050301,
+    "name": "坚持前进",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93080101,
+    "name": "呵退掠食者",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93080201,
+    "name": "防卫反击",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93080301,
+    "name": "留下食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93140101,
+    "name": "加快脚步",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93140201,
+    "name": "原地扎营",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93140301,
+    "name": "寻找掩体",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93150101,
+    "name": "涉水过溪",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93150201,
+    "name": "倒木",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 93150301,
+    "name": "跳石",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94030101,
+    "name": "搜寻物资",
+    "bonus": "40201#4",
+    "picture": "",
+    "desc": "行动力+3，获得\"雪绒花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94030201,
+    "name": "标记位置",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94060101,
+    "name": "留下登山杖",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94060201,
+    "name": "收下登山杖",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94060301,
+    "name": "原地等待",
+    "bonus": "40201#6",
+    "picture": "",
+    "desc": "行动力-3，获得\"雪绒花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94090101,
+    "name": "烹饪食物",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94090201,
+    "name": "烘干衣物",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94110101,
+    "name": "仰望",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94110201,
+    "name": "休息",
+    "bonus": "40102#5",
+    "picture": "",
+    "desc": "获得\"高山石竹\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94110301,
+    "name": "趁夜前行",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94120101,
+    "name": "摸索前行",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94120201,
+    "name": "一鼓作气",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94120301,
+    "name": "做足准备",
+    "bonus": "40101#5",
+    "picture": "",
+    "desc": "获得\"鸦跖花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94130101,
+    "name": "迅速跟上",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94130201,
+    "name": "改变路线",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94130301,
+    "name": "悄悄逼近",
+    "bonus": "40102#5",
+    "picture": "",
+    "desc": "获得\"高山石竹\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94040101,
+    "name": "寻找其他路线",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94040201,
+    "name": "艰难跋涉",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94050101,
+    "name": "短暂调整",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94050201,
+    "name": "咬牙坚持",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94050301,
+    "name": "坚持前进",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94140101,
+    "name": "继续前进",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94140201,
+    "name": "回到补给点",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94140301,
+    "name": "试图修补",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94150101,
+    "name": "返回补给点",
+    "bonus": "",
+    "picture": "",
+    "desc": "获得前进行动力消耗增加2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94150201,
+    "name": "冒雨前行",
+    "bonus": "",
+    "picture": "",
+    "desc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 94150301,
+    "name": "临时躲避",
+    "bonus": "",
+    "picture": "",
+    "desc": "无影响"
+  }
+]

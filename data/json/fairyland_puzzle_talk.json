@@ -1,0 +1,1252 @@
+[
+  {
+    "id": 1,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022597,
+    "speaker": "星锑？",
+    "content": "嘿～维尔汀，你要去哪呢？",
+    "elementId": 2
+  },
+  {
+    "id": 1,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022598,
+    "speaker": "星锑？",
+    "content": "我给数学呆子们准备了够补上他们上半辈子量的咖啡！",
+    "elementId": 2
+  },
+  {
+    "id": 1,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022599,
+    "speaker": "星锑？",
+    "content": "你不来喝一口么？来嘛，来吧！",
+    "elementId": 2
+  },
+  {
+    "id": 1,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023194,
+    "speaker": "维尔汀",
+    "content": "抱歉，这违反了岛上的戒律。我不能食用豆子或豆子制品。",
+    "elementId": 1
+  },
+  {
+    "id": 1,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022600,
+    "speaker": "星锑？",
+    "content": "噢～戒律，又是戒律！你想走开还不想违反戒律，对吧？那就试试这个！",
+    "elementId": 2
+  },
+  {
+    "id": 2,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022601,
+    "speaker": "星锑？",
+    "content": "哈，这下你必须得吃豆子了，或者你把他们都捡起来！",
+    "elementId": 2
+  },
+  {
+    "id": 2,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023195,
+    "speaker": "维尔汀",
+    "content": "我不能捡起落下的豆子，更不能吃掉它们，这座山也不可能自行消失。",
+    "elementId": 1
+  },
+  {
+    "id": 2,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023196,
+    "speaker": "维尔汀",
+    "content": "幸好它的结构并不稳定。",
+    "elementId": 1
+  },
+  {
+    "id": 3,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022530,
+    "speaker": "？？？",
+    "content": "一个幻象的内涵只有咖啡豆，就好比一个海盗的角色塑造只有铁钩与海盗船。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022531,
+    "speaker": "？？？",
+    "content": "呵呵，这样可塑造不出令人信服的实体，稍许质疑就会令它彻底崩塌。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022532,
+    "speaker": "？？？",
+    "content": "人的理解力非常有限。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022533,
+    "speaker": "？？？",
+    "content": "他们必须用概念去包装各种事物，去复杂化问题，小脑瓜子才能嗡嗡转动。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022534,
+    "speaker": "？？？",
+    "content": "但总的来说，当一个人见识了太多东西，习惯了各种被剧作家当作公式用的描写。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 6,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022535,
+    "speaker": "？？？",
+    "content": "就会开始无视那些包装，去直面最核心的，构成事物本质的部分。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 7,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022536,
+    "speaker": "？？？",
+    "content": "所以您又如何呢？是什么塑造了您？",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 8,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022537,
+    "speaker": "？？？",
+    "content": "您的内涵是否能比咖啡豆优秀一点呢？",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 9,
+    "type": "options",
+    "param": "1#2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "我的过去#我的信念",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 10,
+    "type": "selector",
+    "param": "1",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 11,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022538,
+    "speaker": "？？？",
+    "content": "是的，亲爱的。人的一切塑造都只是基于过去养成的条件反射。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 12,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022539,
+    "speaker": "？？？",
+    "content": "每一项选择，每一次行动，都是过去朝向未来的延伸，严密无比。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 13,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022540,
+    "speaker": "？？？",
+    "content": "灵魂和思考甚至找不到一点能够钻进去的缝隙。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 14,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022541,
+    "speaker": "？？？",
+    "content": "喝咖啡时加入牛奶与糖的人未必是想要享受牛奶与糖块。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 15,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022542,
+    "speaker": "？？？",
+    "content": "他们只是想要咖啡，舌头却接受不了苦涩。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 16,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022543,
+    "speaker": "？？？",
+    "content": "那他们喜欢咖啡么？也许他们只是受不了早上起来一片混沌的头脑。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 17,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022544,
+    "speaker": "？？？",
+    "content": "像这样的理由裹挟了每一个人。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 18,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022545,
+    "speaker": "？？？",
+    "content": "将它们一一剥除之后，您才能品尝到一杯真正的饮料。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 19,
+    "type": "selector",
+    "param": "2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 20,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022546,
+    "speaker": "？？？",
+    "content": "信念，灵魂，那些真的存在么？",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 21,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022547,
+    "speaker": "？？？",
+    "content": "干渴的骡子梦想一缕清泉，饥饿的猎豹追求一匹斑马，孤独的红鹤渴望一名益友。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 22,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022548,
+    "speaker": "？？？",
+    "content": "生命的每一项行动都会被肉体和大脑做出解释。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 23,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022549,
+    "speaker": "？？？",
+    "content": "也许我们都只是缺陷众多的肉体为了适应环境而做出的反馈的集合体。",
+    "elementId": 0
+  },
+  {
+    "id": 3,
+    "step": 24,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022550,
+    "speaker": "？？？",
+    "content": "也许真正的我们哪里都不存在，亲爱的。",
+    "elementId": 0
+  },
+  {
+    "id": 4,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023203,
+    "speaker": "37？",
+    "content": "维尔汀，你在往哪里走？",
+    "elementId": 2
+  },
+  {
+    "id": 4,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023204,
+    "speaker": "37？",
+    "content": "我们还在集会中呢，你必须从左边离开会场。",
+    "elementId": 2
+  },
+  {
+    "id": 4,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023197,
+    "speaker": "维尔汀",
+    "content": "可左边是我来时的路，我无法从那出去。",
+    "elementId": 1
+  },
+  {
+    "id": 4,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023205,
+    "speaker": "37？",
+    "content": "那太糟了，你已经违背了一半戒律，得被关在牢里直到证明出四色定理为止了。",
+    "elementId": 2
+  },
+  {
+    "id": 4,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023206,
+    "speaker": "37？",
+    "content": "千万不能再违反另一半了，否则你就得去洋流里做永恒回归运动了！",
+    "elementId": 2
+  },
+  {
+    "id": 4,
+    "step": 6,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023207,
+    "speaker": "37？",
+    "content": "不过别担心，我们可是朋友，我会帮你辩护。",
+    "elementId": 2
+  },
+  {
+    "id": 4,
+    "step": 7,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023208,
+    "speaker": "37？",
+    "content": "我会让对你的惩罚减轻为“在牢里用尺规去三等分角”～",
+    "elementId": 2
+  },
+  {
+    "id": 5,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023198,
+    "speaker": "维尔汀",
+    "content": "我必须前进……但我不能向右去，一定能有办法让左和右颠倒。",
+    "elementId": 1
+  },
+  {
+    "id": 6,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022551,
+    "speaker": "？？？",
+    "content": "噢～换个角度左右就会互换，究竟是谁创造了这么随性的定义？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022552,
+    "speaker": "？？？",
+    "content": "活在如此随性的定义之中还要遵守戒律，像我这样头脑僵化的老人家可受不了。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022553,
+    "speaker": "？？？",
+    "content": "让我们把定义变得简单易懂些，用孩童的纯粹眼光去审视那些脆弱的概念吧。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022554,
+    "speaker": "？？？",
+    "content": "先从数学开始，它们是否也如此脆弱？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022555,
+    "speaker": "？？？",
+    "content": "1是否永远会是1？3和4之间是否有着另一个仍未被发现的整数？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 6,
+    "type": "options",
+    "param": "1#2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "真理永存#你说得对",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 7,
+    "type": "selector",
+    "param": "1",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 8,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022556,
+    "speaker": "？？？",
+    "content": "那永存的真理是否带给过您什么？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 9,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022557,
+    "speaker": "？？？",
+    "content": "如果您不曾真正见过它，它不曾直接影响过您，它又要如何证明自己的存在呢？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 10,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022558,
+    "speaker": "？？？",
+    "content": "也许墙壁上的影子才是真实的，太阳只是影子经由被光照这一行为产生的虚像。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 11,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022559,
+    "speaker": "？？？",
+    "content": "如果那些留在洞穴中享受影子的穴居朋友才是真正的智者呢？",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 12,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022560,
+    "speaker": "？？？",
+    "content": "那您就需要好好审视真理了，亲爱的。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 13,
+    "type": "selector",
+    "param": "2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 14,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022561,
+    "speaker": "？？？",
+    "content": "是的，数学的定义可能很脆弱。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 15,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022562,
+    "speaker": "？？？",
+    "content": "而“数学的定义很脆弱”这一定义，也可能很脆弱。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 16,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022563,
+    "speaker": "？？？",
+    "content": "当您质疑一个东西之后，您就不得不质疑您的质疑。",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 17,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022564,
+    "speaker": "？？？",
+    "content": "然后质疑，再质疑，一遍又一遍……",
+    "elementId": 0
+  },
+  {
+    "id": 6,
+    "step": 18,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022565,
+    "speaker": "？？？",
+    "content": "除了选择相信以外，没有办法跳出这质疑形成的俄罗斯套娃。",
+    "elementId": 0
+  },
+  {
+    "id": 7,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022593,
+    "speaker": "十四行诗？",
+    "content": "司辰，您对宴会没有兴趣么？",
+    "elementId": 2
+  },
+  {
+    "id": 7,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022594,
+    "speaker": "十四行诗？",
+    "content": "也许我们可以到一旁去讨论线性回归方程？",
+    "elementId": 2
+  },
+  {
+    "id": 7,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023199,
+    "speaker": "维尔汀",
+    "content": "抱歉，我现在必须离开，十四行诗。",
+    "elementId": 1
+  },
+  {
+    "id": 7,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022595,
+    "speaker": "十四行诗？",
+    "content": "或者我们可以来一场即兴辩论？我已经吸取了之前的教训，能请您为我验证一下么？",
+    "elementId": 2
+  },
+  {
+    "id": 7,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022596,
+    "speaker": "十四行诗？",
+    "content": "“暴雨”已经过去了，我们有很多休息时间。您不用一直只看着计时器和任务了。",
+    "elementId": 2
+  },
+  {
+    "id": 7,
+    "step": 6,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023200,
+    "speaker": "维尔汀",
+    "content": "时间紧迫，向十四行诗说明情况会耗费大量时间。",
+    "elementId": 1
+  },
+  {
+    "id": 7,
+    "step": 7,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023201,
+    "speaker": "维尔汀",
+    "content": "我需要能立即拒绝会谈的理由，比如让声音暂时消失……",
+    "elementId": 1
+  },
+  {
+    "id": 8,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "……",
+    "elementId": 2
+  },
+  {
+    "id": 8,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "…………？",
+    "elementId": 2
+  },
+  {
+    "id": 8,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "………………！",
+    "elementId": 2
+  },
+  {
+    "id": 9,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "？？？",
+    "content": "……，……，……",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022566,
+    "speaker": "？？？",
+    "content": "如果您想要贯彻自己的意志，那么惜字如金，然后充耳不闻就是最好的选择。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022567,
+    "speaker": "？？？",
+    "content": "沉默又冷酷，但要注意不要做得太过火。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022568,
+    "speaker": "？？？",
+    "content": "否则没说出口的单词就会演变成暴力。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022569,
+    "speaker": "？？？",
+    "content": "而当双方都选择沉默，放弃倾听的两股力量就会成为至高的暴力。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 6,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022570,
+    "speaker": "？？？",
+    "content": "必须有一方放弃世界才会和平，没有人怀疑过这个规则么？",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 7,
+    "type": "options",
+    "param": "1#2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "别无他法#……",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 8,
+    "type": "selector",
+    "param": "1",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 9,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022571,
+    "speaker": "？？？",
+    "content": "我欣赏年轻人独有的果断，你们总是会立刻做出取舍。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 10,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022572,
+    "speaker": "？？？",
+    "content": "无视少数和多数，抛开道德与善恶，只有正确和错误这两个概念。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 11,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022573,
+    "speaker": "？？？",
+    "content": "祝您早日发现那究极正确的概念，亲爱的。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 12,
+    "type": "selector",
+    "param": "2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 13,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022574,
+    "speaker": "？？？",
+    "content": "……好吧，您已经掌握了这最有力的武器。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 14,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022575,
+    "speaker": "？？？",
+    "content": "我想我只能用相同的手段回应您。",
+    "elementId": 0
+  },
+  {
+    "id": 9,
+    "step": 15,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022576,
+    "speaker": "？？？",
+    "content": "这下我们达成平衡了……",
+    "elementId": 0
+  },
+  {
+    "id": 10,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022602,
+    "speaker": "苏菲亚？",
+    "content": "原来你在这里，维尔汀。",
+    "elementId": 2
+  },
+  {
+    "id": 10,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022603,
+    "speaker": "苏菲亚？",
+    "content": "你突然不见了，我正想和你讨论我的灵魂数字呢。",
+    "elementId": 2
+  },
+  {
+    "id": 10,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610023202,
+    "speaker": "维尔汀",
+    "content": "抱歉，我现在必须离开这。",
+    "elementId": 1
+  },
+  {
+    "id": 10,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022604,
+    "speaker": "苏菲亚？",
+    "content": "我恳请你，只有你能帮助我进行这场验算。",
+    "elementId": 2
+  },
+  {
+    "id": 10,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022605,
+    "speaker": "苏菲亚？",
+    "content": "就一会就好，不会占用你很多时间的。",
+    "elementId": 2
+  },
+  {
+    "id": 11,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022606,
+    "speaker": "苏菲亚？",
+    "content": "这个数字很完美，但不是这个，它不属于我。",
+    "elementId": 2
+  },
+  {
+    "id": 11,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022607,
+    "speaker": "苏菲亚？",
+    "content": "我们重来一遍，请帮我归零，数字0。",
+    "elementId": 2
+  },
+  {
+    "id": 11,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022608,
+    "speaker": "苏菲亚？",
+    "content": "输入0吧，然后我们继续。",
+    "elementId": 2
+  },
+  {
+    "id": 12,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022609,
+    "speaker": "苏菲亚？",
+    "content": "不对，也不是这个，这个数字过于耀眼，我和它不一样。",
+    "elementId": 2
+  },
+  {
+    "id": 12,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022610,
+    "speaker": "苏菲亚？",
+    "content": "请再让它归零吧，0。",
+    "elementId": 2
+  },
+  {
+    "id": 13,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022611,
+    "speaker": "苏菲亚？",
+    "content": "这个数字……37讨厌它，而我甚至不能拥有这个数字。",
+    "elementId": 2
+  },
+  {
+    "id": 13,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022612,
+    "speaker": "苏菲亚？",
+    "content": "我们再来最后一次吧，这次一定会是我要的结果。",
+    "elementId": 2
+  },
+  {
+    "id": 14,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022577,
+    "speaker": "？？？",
+    "content": "我是谁，一个永恒的问题。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022578,
+    "speaker": "？？？",
+    "content": "姓名不足以回答这个问题，那只是一个被后人赋予意义的符号。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022579,
+    "speaker": "？？？",
+    "content": "于是找不到自我的人开始用真理去诠释、理解自己。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022580,
+    "speaker": "？？？",
+    "content": "接着他们意识到自己甚至无法掌握真理。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 5,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022581,
+    "speaker": "？？？",
+    "content": "然后恐惧开始蔓延，他们开始简化自己，四舍五入，取整，削去难以理解的部分。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 6,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022582,
+    "speaker": "？？？",
+    "content": "最终把自己变成三岁孩童也能理解的性质。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 7,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022583,
+    "speaker": "？？？",
+    "content": "世上最胆小的鸵鸟在他们面前都要甘拜下风。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 8,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022584,
+    "speaker": "？？？",
+    "content": "那么我究竟是谁呢？",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 9,
+    "type": "options",
+    "param": "1#2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "我想，我就是我#我也不知道你是谁",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 10,
+    "type": "selector",
+    "param": "1",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 11,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022585,
+    "speaker": "？？？",
+    "content": "噢！原来答案一直藏在谜题之中。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 12,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022586,
+    "speaker": "？？？",
+    "content": "记住这个答案，亲爱的，这是过来人的一个建议。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 13,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022587,
+    "speaker": "？？？",
+    "content": "等到您从他者的角度审视自己时，您就会因此收获一个有趣的笑话。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 14,
+    "type": "selector",
+    "param": "2",
+    "audioId": 0,
+    "speaker": "",
+    "content": "",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 15,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022588,
+    "speaker": "？？？",
+    "content": "哦呵呵呵，您想出了个有趣的笑话，亲爱的。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 16,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022589,
+    "speaker": "？？？",
+    "content": "有幽默感是好事，保持心情愉悦有益于身心健康。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 17,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022590,
+    "speaker": "？？？",
+    "content": "但讲笑话的目的最好是为了逗其他人笑，而不是为了自己。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 18,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022591,
+    "speaker": "？？？",
+    "content": "回归正题，您确实找对了方向。",
+    "elementId": 0
+  },
+  {
+    "id": 14,
+    "step": 19,
+    "type": "dialog",
+    "param": "",
+    "audioId": 610022592,
+    "speaker": "？？？",
+    "content": "这个问题的答案无法通过自己得出，起码得找面镜子。",
+    "elementId": 0
+  },
+  {
+    "id": 15,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "维尔汀",
+    "content": "一次震动或许能摧毁这座豆子山……拖动圆形音符来回晃动一段时间？",
+    "elementId": 1
+  },
+  {
+    "id": 16,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "维尔汀",
+    "content": "我需要一次180度旋转，或者……这个方形也有它的存在意义？",
+    "elementId": 1
+  },
+  {
+    "id": 17,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "维尔汀",
+    "content": "也许我可以暂时远离音源……这个三角形似乎能代劳？",
+    "elementId": 1
+  },
+  {
+    "id": 18,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "苏菲亚？",
+    "content": "不对，这个假设并不合理，我们再来一次。",
+    "elementId": 2
+  },
+  {
+    "id": 19,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "苏菲亚？",
+    "content": "在矩形中输入左侧计算的答案吧。",
+    "elementId": 2
+  },
+  {
+    "id": 20,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "苏菲亚？",
+    "content": "输入0吧，然后我们继续。",
+    "elementId": 2
+  },
+  {
+    "id": 21,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "维尔汀",
+    "content": "一串无理数……我想这个错误答案也应该归零。输入0吧。",
+    "elementId": 1
+  },
+  {
+    "id": 22,
+    "step": 1,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "……",
+    "elementId": 2
+  },
+  {
+    "id": 22,
+    "step": 2,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "…………？",
+    "elementId": 2
+  },
+  {
+    "id": 22,
+    "step": 3,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "十四行诗？",
+    "content": "………………！",
+    "elementId": 2
+  },
+  {
+    "id": 22,
+    "step": 4,
+    "type": "dialog",
+    "param": "",
+    "audioId": 0,
+    "speaker": "维尔汀",
+    "content": "……声音去哪了？无论如何，这正是我需要的。",
+    "elementId": 1
+  }
+]

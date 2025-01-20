@@ -1,0 +1,212 @@
+[
+  {
+    "activityId": 12204,
+    "itemId": 1,
+    "name": "金属子弹",
+    "type": 1,
+    "compostType": 1,
+    "weight": 50,
+    "icon": "logo_zidan",
+    "desc": "炼制所需：火药残渣、庞巴迪甲虫、烂掉的香蕉皮"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 2,
+    "name": "毒性子弹",
+    "type": 1,
+    "compostType": 1,
+    "weight": 50,
+    "icon": "logo_duxing",
+    "desc": "炼制所需：火药残渣、庞巴迪甲虫、烂掉的香蕉皮"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 3,
+    "name": "腐蚀子弹",
+    "type": 1,
+    "compostType": 1,
+    "weight": 50,
+    "icon": "logo_fushi",
+    "desc": "炼制所需：火药残渣、庞巴迪甲虫、烂掉的香蕉皮"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 4,
+    "name": "炸药子弹",
+    "type": 1,
+    "compostType": 1,
+    "weight": 50,
+    "icon": "logo_baozha",
+    "desc": "炼制所需：火药残渣、庞巴迪甲虫、烂掉的香蕉皮"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 5,
+    "name": "金鱼皮纳塔",
+    "type": 1,
+    "compostType": 2,
+    "weight": 50,
+    "icon": "logo_jinyu",
+    "desc": "炼制所需：华丽羽毛、假币、发臭鮟鱇鱼肝"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 6,
+    "name": "飞蛾皮纳塔",
+    "type": 1,
+    "compostType": 2,
+    "weight": 50,
+    "icon": "logo_hudie",
+    "desc": "炼制所需：华丽羽毛、假币、发臭鮟鱇鱼肝"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 7,
+    "name": "皮纳塔烟雾弹",
+    "type": 1,
+    "compostType": 2,
+    "weight": 50,
+    "icon": "logo_yanwu",
+    "desc": "炼制所需：华丽羽毛、假币、发臭鮟鱇鱼肝"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 8,
+    "name": "皮纳塔闪光弹",
+    "type": 1,
+    "compostType": 2,
+    "weight": 50,
+    "icon": "logo_shanguang",
+    "desc": "炼制所需：华丽羽毛、假币、发臭鮟鱇鱼肝"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 9,
+    "name": "皮纳塔陷阱",
+    "type": 1,
+    "compostType": 2,
+    "weight": 50,
+    "icon": "logo_xianjing",
+    "desc": "炼制所需：华丽羽毛、假币、发臭鮟鱇鱼肝"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 10,
+    "name": "内服浓剂",
+    "type": 1,
+    "compostType": 3,
+    "weight": 50,
+    "icon": "logo_yeti",
+    "desc": "炼制所需：蘑菇、可可豆、瓜拿纳果"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 11,
+    "name": "烈性果汁",
+    "type": 1,
+    "compostType": 3,
+    "weight": 50,
+    "icon": "logo_guozhi",
+    "desc": "炼制所需：蘑菇、可可豆、瓜拿纳果"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 12,
+    "name": "香甜帕索卡",
+    "type": 1,
+    "compostType": 3,
+    "weight": 50,
+    "icon": "logo_xiangtian",
+    "desc": "炼制所需：蘑菇、可可豆、瓜拿纳果"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1001,
+    "name": "火药残渣",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_huoyao",
+    "desc": "可炼成标准弹药"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1002,
+    "name": "庞巴迪甲虫",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_chong",
+    "desc": "可炼成标准弹药"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1003,
+    "name": "烂掉的香蕉皮",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_xiangjiao",
+    "desc": "可炼成标准弹药"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1004,
+    "name": "华丽的羽毛",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_yumao",
+    "desc": "可炼成缤纷皮纳塔"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1005,
+    "name": "假币",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_jiabi",
+    "desc": "可炼成缤纷皮纳塔"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1006,
+    "name": "发臭鮟鱇鱼肝",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_ankangyu",
+    "desc": "可炼成缤纷皮纳塔"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1007,
+    "name": "蘑菇",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_mogu",
+    "desc": "可炼成小零食"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1008,
+    "name": "可可豆",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_keke",
+    "desc": "可炼成小零食"
+  },
+  {
+    "activityId": 12204,
+    "itemId": 1009,
+    "name": "瓜拿纳果",
+    "type": 2,
+    "compostType": 0,
+    "weight": 0,
+    "icon": "logo_guaguo",
+    "desc": "可炼成小零食"
+  }
+]

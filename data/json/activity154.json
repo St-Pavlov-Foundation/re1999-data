@@ -1,0 +1,52 @@
+[
+  {
+    "activityId": 11710,
+    "day": 1,
+    "puzzleId": 117101,
+    "puzzleTitle": "第一道谜题",
+    "puzzleDesc": "是什么辽阔无际，由枯黄转为欣欣向荣？\n沿着河继续行走，应到达的地域是何处？\n亲爱的神秘学家，请你告诉我答案。",
+    "puzzleIcon": "v1a7_lamp_puzzlepic_1",
+    "answerId": 3,
+    "bonus": "2#2#60|2#5#4000"
+  },
+  {
+    "activityId": 11710,
+    "day": 2,
+    "puzzleId": 117102,
+    "puzzleTitle": "第二道谜题",
+    "puzzleDesc": "无需双手，无需双足，其人如何漫游？\n自高树上，自古城中，又将去往何方？\n亲爱的神秘学家，请你告诉我答案。",
+    "puzzleIcon": "v1a7_lamp_puzzlepic_2",
+    "answerId": 3,
+    "bonus": "10#11#1|1#115033#6"
+  },
+  {
+    "activityId": 11710,
+    "day": 3,
+    "puzzleId": 117103,
+    "puzzleTitle": "第三道谜题",
+    "puzzleDesc": "一条白色的毯子，覆盖行囊与脚步。\n一个冬天的邀请，直至她再次启程。\n亲爱的神秘学家，请你告诉我答案。",
+    "puzzleIcon": "v1a7_lamp_puzzlepic_3",
+    "answerId": 2,
+    "bonus": "11#11711#1|1#110202#5"
+  },
+  {
+    "activityId": 11710,
+    "day": 4,
+    "puzzleId": 117104,
+    "puzzleTitle": "第四道谜题",
+    "puzzleDesc": "它驽钝而凶狠，它笃实而温顺。\n你熟悉的对头，毛茸茸的朋友。\n亲爱的神秘学家，请你告诉我答案。",
+    "puzzleIcon": "v1a7_lamp_puzzlepic_4",
+    "answerId": 3,
+    "bonus": "1#115043#6|2#3#4000"
+  },
+  {
+    "activityId": 11710,
+    "day": 5,
+    "puzzleId": 117105,
+    "puzzleTitle": "第五道谜题",
+    "puzzleDesc": "我不等人，却无法停滞——果真如此吗？\n我无形状，却变化不止——果真如此吗？\n亲爱的神秘学家，请你告诉我答案。",
+    "puzzleIcon": "v1a7_lamp_puzzlepic_5",
+    "answerId": 3,
+    "bonus": "2#2#60|9#1003#5"
+  }
+]

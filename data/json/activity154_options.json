@@ -1,0 +1,77 @@
+[
+  {
+    "puzzleId": 117101,
+    "optionId": 1,
+    "optionText": "海洋"
+  },
+  {
+    "puzzleId": 117101,
+    "optionId": 2,
+    "optionText": "农田"
+  },
+  {
+    "puzzleId": 117101,
+    "optionId": 3,
+    "optionText": "草原"
+  },
+  {
+    "puzzleId": 117102,
+    "optionId": 1,
+    "optionText": "步行"
+  },
+  {
+    "puzzleId": 117102,
+    "optionId": 2,
+    "optionText": "游泳"
+  },
+  {
+    "puzzleId": 117102,
+    "optionId": 3,
+    "optionText": "飞行"
+  },
+  {
+    "puzzleId": 117103,
+    "optionId": 1,
+    "optionText": "霜"
+  },
+  {
+    "puzzleId": 117103,
+    "optionId": 2,
+    "optionText": "雪"
+  },
+  {
+    "puzzleId": 117103,
+    "optionId": 3,
+    "optionText": "冰雹"
+  },
+  {
+    "puzzleId": 117104,
+    "optionId": 1,
+    "optionText": "杰克巨兔"
+  },
+  {
+    "puzzleId": 117104,
+    "optionId": 2,
+    "optionText": "捕食雕像"
+  },
+  {
+    "puzzleId": 117104,
+    "optionId": 3,
+    "optionText": "卡邦克鲁"
+  },
+  {
+    "puzzleId": 117105,
+    "optionId": 1,
+    "optionText": "空气"
+  },
+  {
+    "puzzleId": 117105,
+    "optionId": 2,
+    "optionText": "微尘"
+  },
+  {
+    "puzzleId": 117105,
+    "optionId": 3,
+    "optionText": "时间"
+  }
+]

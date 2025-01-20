@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "“往维也纳”",
+    "storyId": 600605,
+    "endingIcon": "v1a6_cachot_ending_cg1",
+    "resultIcon": "v1a6_cachot_finish_resultbg3",
+    "endingDesc": "往那乌云密布之处。"
+  },
+  {
+    "id": 2,
+    "title": "“回声”",
+    "storyId": 600606,
+    "endingIcon": "v1a6_cachot_ending_cg2",
+    "resultIcon": "v1a6_cachot_finish_resultbg4",
+    "endingDesc": "回声依旧萦绕不绝。"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "towerId": 1,
+    "bossId": 1,
+    "name": "木魅山鬼",
+    "nameEn": "Mountain Ghost"
+  },
+  {
+    "towerId": 2,
+    "bossId": 2,
+    "name": "星体灾兆",
+    "nameEn": "Star of Misfortune"
+  },
+  {
+    "towerId": 3,
+    "bossId": 3,
+    "name": "戏剧的折射",
+    "nameEn": "Operatic Reflection"
+  },
+  {
+    "towerId": 4,
+    "bossId": 4,
+    "name": "骨炭狼烟",
+    "nameEn": "Ashen Beast"
+  },
+  {
+    "towerId": 5,
+    "bossId": 5,
+    "name": "原始欢乐",
+    "nameEn": "Primitive Urge"
+  }
+]

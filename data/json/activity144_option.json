@@ -1,0 +1,1322 @@
+[
+  {
+    "activityId": 11509,
+    "optionId": 100101,
+    "conditionDesc": "登山客向你表示了感谢。“朋友，你的品质配得上这个，请您收下吧”\n你获得了一朵花。",
+    "optionResults": "10010101",
+    "name": "给予物资",
+    "optionDesc": "行动力-5，获得收集物\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100102,
+    "conditionDesc": "你安全护送登山客到达了邻近的营地，这耽误了不少时间。\n临分别时，登山客向你提起了一个废弃的缆车站。",
+    "optionResults": "10010201",
+    "name": "护送他前往邻近的营地",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100103,
+    "conditionDesc": "你并未提供帮助。\n每一位登山者都需要为自己的生命负责，也包括你。只能祝他好运了。",
+    "optionResults": "10010301",
+    "name": "忽视",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100201,
+    "conditionDesc": "你在游客中心的仓库内找到了一些临期食品。\n当你向登山客提供帮助时，你并未料想到会有如此丰厚的回报。",
+    "optionResults": "10020101",
+    "name": "搜寻物资",
+    "optionDesc": "行动力+3，获取收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100202,
+    "conditionDesc": "你在缆车站的售票厅度过了温暖的一夜。\n这是一处理想的庇护所。",
+    "optionResults": "10020201",
+    "name": "稍作休息",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100203,
+    "conditionDesc": "你没有在缆车站多做停留，你放弃了一些机遇，也错过了一些危险。\n你在缆车站的门口发现了几株“高山紫苑”。",
+    "optionResults": "10020301",
+    "name": "拒绝",
+    "optionDesc": "获取收集物\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100301,
+    "conditionDesc": "“饥饿”先于“寒冷”夺走了他的性命。\n你在他的包裹内找到了几朵花。",
+    "optionResults": "10030101",
+    "name": "搜寻物资",
+    "optionDesc": "获取收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100302,
+    "conditionDesc": "一个简单的仪式。\n他葬在了这里，这是每位登山者的归宿。",
+    "optionResults": "10030201",
+    "name": "埋葬",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100303,
+    "conditionDesc": "熟悉的身影并未令你止步。",
+    "optionResults": "10030301",
+    "name": "忽视",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100401,
+    "conditionDesc": "你为这个小生命进行了简单的包扎。\n它带着你找到了几株白水仙。\n",
+    "optionResults": "10040101",
+    "name": "提供治疗",
+    "optionDesc": "行动力-3，获取收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100402,
+    "conditionDesc": "食物与治疗，你为你的新“朋友”提供了力所能及的帮助。\n这耽误了些时间，但你认为值得。",
+    "optionResults": "10040201",
+    "name": "视作伙伴",
+    "optionDesc": "行动力-5，获取前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100403,
+    "conditionDesc": "你并未因此驻足。\n风雪中的每个生物都要直面自己的命运，雪兔也不例外。\n",
+    "optionResults": "10040301",
+    "name": "忽视",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100501,
+    "conditionDesc": "尽管语言不通，你们仍尝试着沟通。\n“儿子”“寻找”“等待”。这是他掌握的有限几个英文词汇。\n你答应他会在上山途中会替他留意，他感激地将一块面包分给了你。",
+    "optionResults": "10050101",
+    "name": "走近并攀谈",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100502,
+    "conditionDesc": "隔着一段距离，你向他回以注目礼。\n这成为了你们唯一的交集。",
+    "optionResults": "10050201",
+    "name": "离开",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100601,
+    "conditionDesc": "你得知了外勤人员此次上山是为了寻找一位名叫“奥茨”的失踪者，报案人叫“西蒙”，是一位德裔旅行家。",
+    "optionResults": "10060101",
+    "name": "交换情报",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100602,
+    "conditionDesc": "外勤人员将大部分食物交给了你。\n这里已邻近山脚的小镇，他应该能顺利下山。",
+    "optionResults": "10060201",
+    "name": "请求物资",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100701,
+    "conditionDesc": "你采取了最谨慎的策略。\n管住好奇心，多费些时间，才能将风险降至最低。",
+    "optionResults": "10070101",
+    "name": "绕道而行",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100702,
+    "conditionDesc": "你慢慢走近灌木丛，将一块面包放在了地上。\n一只孩童的手从灌木丛中伸出。他拾起面包，迅速地逃走了。\n从背影看，他大概十岁大。",
+    "optionResults": "10070201",
+    "name": "给予食物",
+    "optionDesc": "行动力-5，获得收集物\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100703,
+    "conditionDesc": "你蹲下身子，保持防御姿态，等待了一段时间，\n当灌木丛里彻底没了动静，你步履缓慢地通过了此处。",
+    "optionResults": "10070301",
+    "name": "保持戒备",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100801,
+    "conditionDesc": "野外生存环境下，任何人都要时刻为最坏的情况做好打算。",
+    "optionResults": "10080101",
+    "name": "切割羊肉",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100802,
+    "conditionDesc": "山羊的胸膛被粗暴地撕裂开，像是一场野兽的猎食活动。\n但是，背腹部的切割痕迹却像是人类工具留下的。",
+    "optionResults": "10080201",
+    "name": "观察残骸",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100803,
+    "conditionDesc": "你在一旁的雪地上找到了一枚染血的箭簇。",
+    "optionResults": "10080301",
+    "name": "观察环境",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100901,
+    "conditionDesc": "男孩的父母经营着湖畔旁的牧场。好客的父母带着造访的基金会外勤人员上山了，从此音信杳无。",
+    "optionResults": "10090101",
+    "name": "探听情报",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 100902,
+    "conditionDesc": "为了回报你先前的施予，牧童将一袋无茎蝇子草种子交到了你手中。",
+    "optionResults": "10090201",
+    "name": "请求物资",
+    "optionDesc": "获得收集物\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101001,
+    "conditionDesc": "几日前，仓库内的食物失窃，食物储备已不支持原来的研究计划，因此她要返回科研中心。",
+    "optionResults": "10100101",
+    "name": "了解情况",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101002,
+    "conditionDesc": "此次上山，她是为了研究雪山上的某一苔藓组织。你们交流了这片区域的物候情况。临行时，她送给了你几株花。",
+    "optionResults": "10100201",
+    "name": "探讨研究",
+    "optionDesc": "获得收集物\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101003,
+    "conditionDesc": "研究员将自己额外的食物分给了你，她希望能提供力所能及的帮助。",
+    "optionResults": "10100301",
+    "name": "请求物资",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101101,
+    "conditionDesc": "蒙面的猎人并未说话，他拿着树枝在雪地上画了一个圈。\n他究竟想表达什么含义？这究竟是“圆”还是“O”?\n至少目前，你无从知晓。",
+    "optionResults": "10110101",
+    "name": "尝试沟通",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101102,
+    "conditionDesc": "蒙面的猎人接受了你的好意。为表感谢，他送给了你几株花。",
+    "optionResults": "10110201",
+    "name": "给予食物",
+    "optionDesc": "行动力-3，获得收集物\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101201,
+    "conditionDesc": "你在蛇麻草树的附近发现了几株无茎蝇子草。",
+    "optionResults": "10120101",
+    "name": "搜寻其他植物",
+    "optionDesc": "获得收集物\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101202,
+    "conditionDesc": "你将蛇麻草的根与叶切片保存，其中的成分可用于后续制备药品。",
+    "optionResults": "10120201",
+    "name": "采集蛇麻草",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101301,
+    "conditionDesc": "尽管希望渺茫，这仍然值得尝试。\n好在，你并非一无所获。",
+    "optionResults": "10130101",
+    "name": "搜寻物资",
+    "optionDesc": "获得收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101302,
+    "conditionDesc": "你找到了篝火旁的一张纸条。\n\"感谢你们夫妇的领航，基金会会感谢你们的慷慨帮助。接下来，我还要往更高海拔地区前进，就在这里告别吧。我为你们烹饪了浓汤，请喝下后再上路吧。\"",
+    "optionResults": "10130201",
+    "name": "寻找线索",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101401,
+    "conditionDesc": "信息有时比物资更管用。\n“一个叫西蒙的老家伙把他的三儿子弄丢了，连带着弄丢的还有他那柄宝贵的铜制手斧。”",
+    "optionResults": "10140101",
+    "name": "探听情报",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101402,
+    "conditionDesc": "下山的与上山的总是各有所需。\n你用食物与他们交换了一些植物。",
+    "optionResults": "10140201",
+    "name": "交换物资",
+    "optionDesc": "行动力-3，获得收集物\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101501,
+    "conditionDesc": "你使用随身携带的医用喷雾为他治疗了创口。\n你发现，他肩部的外伤是由箭矢造成的。",
+    "optionResults": "10150101",
+    "name": "提供治疗",
+    "optionDesc": "行动力-3，获得收集物“高山覆盆子”"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101502,
+    "conditionDesc": "无论你出于何种考量，你都做出了最谨慎的抉择。",
+    "optionResults": "10150201",
+    "name": "保持距离",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101601,
+    "conditionDesc": "一块风干奶酪和一只生羊腿，这是你能找到的所有物品。",
+    "optionResults": "10160101",
+    "name": "搜寻物资",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101602,
+    "conditionDesc": "雪山可以埋藏很多秘密，也能成为一具躯体的居所。他葬在了这里，永远地。",
+    "optionResults": "10160201",
+    "name": "为他埋葬",
+    "optionDesc": "获得收集物\"鸦跖花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101701,
+    "conditionDesc": "仓库内仍留有一些冷冻食品，你的收获颇丰。",
+    "optionResults": "10170101",
+    "name": "搜寻食物",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101702,
+    "conditionDesc": "你发现了不少珍贵的植物样本。",
+    "optionResults": "10170201",
+    "name": "搜寻植物",
+    "optionDesc": "获取收集物\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 101703,
+    "conditionDesc": "你在一副线路图上发现了一处废弃的缆车站。",
+    "optionResults": "10170301",
+    "name": "研究地图",
+    "optionDesc": "行动力+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910201,
+    "conditionDesc": "你在此处短暂停留，补充淡水后继续上路。",
+    "optionResults": "91020101",
+    "name": "补充淡水",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910202,
+    "conditionDesc": "你对水泊中的淡水进行了采样，之后可以在理想的实验环境下做进一步检测。采样过程中，你发现了几株洁白的花。",
+    "optionResults": "91020201",
+    "name": "收集水样",
+    "optionDesc": "行动力+3，获得\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910203,
+    "conditionDesc": "你在地图上标记了湖泊的位置。",
+    "optionResults": "91020301",
+    "name": "标记位置",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910301,
+    "conditionDesc": "你仔细搜寻了这间废弃的小屋,在堆叠的木板下竟意外发现了一些尚可使用的登山绳索和抓钩。这无疑为你的登山之旅增加了宝贵的装备。",
+    "optionResults": "91030101",
+    "name": "搜寻物资",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910302,
+    "conditionDesc": "你在地图上精心标出了这座小屋的位置,就像在荒野中留下路标一般，以防未来在山野中迷路。",
+    "optionResults": "91030201",
+    "name": "标记位置",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910901,
+    "conditionDesc": "你煮熟了一部分携带的食材。温热的事物令你疲惫的身躯重获了力量。",
+    "optionResults": "91090101",
+    "name": "烹饪食物",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910902,
+    "conditionDesc": "你将湿冷的衣服与鞋袜放在铁丝网上烘干，他们在热气中恢复了干燥与蓬松。当你将衣物穿回身上，你感到动作也轻盈了不少。",
+    "optionResults": "91090201",
+    "name": "烘干衣物",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911001,
+    "conditionDesc": "你以身犯险，赶走了洞窟内的野兽，这费了你一番功夫。幸运的是，在过程中，你有了意外的收获。",
+    "optionResults": "91100101",
+    "name": "驱赶洞内野兽",
+    "optionDesc": "行动力-3，获得\"高山白头翁\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911002,
+    "conditionDesc": "你在山洞的入口处扎营。\n你与空窟内的野兽并未谋面，片刻的歇息令你恢复了体力。",
+    "optionResults": "91100201",
+    "name": "在洞口驻扎",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911003,
+    "conditionDesc": "最谨慎的选择。",
+    "optionResults": "91100301",
+    "name": "继续前行",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911101,
+    "conditionDesc": "你仔细检查了索桥的构造，试图用有限的工具对索桥最脆弱的部分进行加固。\n这是一个冒险的尝试，可能通向捷径，也可能白费力气。",
+    "optionResults": "91110101",
+    "name": "尝试修复",
+    "optionDesc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911102,
+    "conditionDesc": "你转向一旁的陡峭山崖，向着山崖的对岸艰难地攀登前行。在悬崖的边缘处，你发现了意外的收获。",
+    "optionResults": "91110201",
+    "name": "攀岩绕过",
+    "optionDesc": "获得\"高山紫苑\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911103,
+    "conditionDesc": "你只能另寻他路。",
+    "optionResults": "91110301",
+    "name": "寻找其他路线",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911201,
+    "conditionDesc": "你鼓起勇气进入了这个未知的隧道。你在黑暗处摸索前行，希望有所发现。可惜的是，除了黑暗与寒冷，你别无所获。",
+    "optionResults": "91120101",
+    "name": "冒险进入",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911202,
+    "conditionDesc": "你并未打算进入这个隧道，只是记录下了它所处的位置，便按照原定路线继续前行。",
+    "optionResults": "91120201",
+    "name": "记录位置，放弃进入",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911203,
+    "conditionDesc": "你在隧道旁发现了一处有价值的标本。",
+    "optionResults": "91120301",
+    "name": "在入口处观察",
+    "optionDesc": "获得\"风茄\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911301,
+    "conditionDesc": "你沿着动物的足迹前行，希望能追上它们。足迹的尽头是一处悬崖。这成为了一场无意义追逐。",
+    "optionResults": "91130101",
+    "name": "迅速跟上",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911302,
+    "conditionDesc": "你规避了潜在的危险，做出了最谨慎的选择。",
+    "optionResults": "91130201",
+    "name": "改变路线",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911303,
+    "conditionDesc": "雪地掩去了大部分足迹，那些动物已经不知去向。",
+    "optionResults": "91130301",
+    "name": "悄悄逼近",
+    "optionDesc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910701,
+    "conditionDesc": "你谨慎地后退，离开了牛群的活动范围。此次行动计划只能以失败告终，好在你安然无恙。",
+    "optionResults": "91070101",
+    "name": "后退并撤退",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910702,
+    "conditionDesc": "你混入其中，冒险前行。天然植物中提取的精油喷雾掩盖了你身上的气息。只能祈祷易怒的牛群们不会在你通过之前嗅出你的气味。",
+    "optionResults": "91070201",
+    "name": "伪装并穿行",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910703,
+    "conditionDesc": "牛群们向着相反的方向远去了，漫长的等待耗费了一些体力。",
+    "optionResults": "91070301",
+    "name": "等待它们离开",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910801,
+    "conditionDesc": "你向着挡路的野兽大声呵斥，投掷碎石块驱赶了它们。",
+    "optionResults": "91080101",
+    "name": "呵退掠食者",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910802,
+    "conditionDesc": "你做出了防守的姿态，警戒地与他们保持距离。在周旋与僵持中，你寻找着潜在的出路，试图挣脱困境。",
+    "optionResults": "91080201",
+    "name": "防卫反击",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 910803,
+    "conditionDesc": "你采取了最保险的策略，扔下了一些食物以分散猞猁的注意力。在猞猁门争抢食物时，你迅速地绕开了。",
+    "optionResults": "91080301",
+    "name": "留下食物",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911401,
+    "conditionDesc": "你冒着风雪继续前行，希望能尽快抵达目的地。恶劣的天气消耗了你极大的体力，而终点仍遥遥无期。",
+    "optionResults": "91140101",
+    "name": "加快脚步",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911402,
+    "conditionDesc": "你选择就地扎营等待风雪过去。这耽误了不少时间，但你有了意外的收获。",
+    "optionResults": "91140201",
+    "name": "原地扎营",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911403,
+    "conditionDesc": "你找到了一处可以躲避风雪的山洞。",
+    "optionResults": "91140301",
+    "name": "寻找掩体",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911501,
+    "conditionDesc": "你成功抵达了对面，寒冷的雪水令你的感到虚弱与疲惫。",
+    "optionResults": "91150101",
+    "name": "涉水过溪",
+    "optionDesc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911502,
+    "conditionDesc": "你找到了一颗尺寸合适的圆木，并将它架设在了溪流的两岸。\n你顺利到达了对岸，尽管这消耗了你许多体力。",
+    "optionResults": "91150201",
+    "name": "倒木",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 911503,
+    "conditionDesc": "你找到了溪流中较大的岩石，将它们作为跳板。\n这非常考验平衡能力，但你还是安全抵达了对面。",
+    "optionResults": "91150301",
+    "name": "跳石",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920201,
+    "conditionDesc": "你在石缝中艰难地摸索许久，寻获了一株常用于止血的药用植物。\n虽然不算太罕见，但也算一项收获。",
+    "optionResults": "92020101",
+    "name": "前去查看",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920202,
+    "conditionDesc": "你礼貌地感谢了对方，决定避开未知的危险。",
+    "optionResults": "92020201",
+    "name": "置之不理",
+    "optionDesc": "行动力+3，获得\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920203,
+    "conditionDesc": "你尚需时间决定，将这件事暂时搁置在脑海一角。",
+    "optionResults": "92020301",
+    "name": "犹豫不决",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920301,
+    "conditionDesc": "你试着打开捕兽夹，解救了这匹狼。它看了看你，就跑向了远处。\n尽管不慎划伤了手掌，但你认为这是值得的。",
+    "optionResults": "92030101",
+    "name": "尝试帮忙",
+    "optionDesc": "行动力+3，获得\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920302,
+    "conditionDesc": "你担心狼群仍在周围徘徊，手头也没有能够打开捕兽夹的工具，只能离开。",
+    "optionResults": "92030201",
+    "name": "快速离去",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920901,
+    "conditionDesc": "你在附近寻找到一块巨石，安全度过了这次危机。",
+    "optionResults": "92090101",
+    "name": "寻找掩体",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920902,
+    "conditionDesc": "你朝着道路一侧跑开了。尽管偏离了原路，但至少安全。",
+    "optionResults": "92090201",
+    "name": "加速奔跑",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921001,
+    "conditionDesc": "你用一些食物向他换来了这株植物。\n尽管并非珍品，但它总能派上用场。",
+    "optionResults": "92100101",
+    "name": "成交",
+    "optionDesc": "行动力-3，获得\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921002,
+    "conditionDesc": "你向他说明了这株植物与他口中珍品的区别。它们的确看上去相似，但效用不同。\n登山者向你道谢后离开了。",
+    "optionResults": "92100201",
+    "name": "辨别真假",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921003,
+    "conditionDesc": "你携带的物资并不算太充足，只能拒绝他的提议。\n登山者遗憾地离开了。",
+    "optionResults": "92100301",
+    "name": "委婉拒绝",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921101,
+    "conditionDesc": "你决定以登上峰顶为先，风景可留待下次欣赏。",
+    "optionResults": "92110101",
+    "name": "一心前进",
+    "optionDesc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921102,
+    "conditionDesc": "你谨慎地踏上了石块，在它断裂前惊慌地站回了坚实的地面。\n好在，你至少还是安全的。",
+    "optionResults": "92110201",
+    "name": "驻足欣赏",
+    "optionDesc": "获得\"无茎蝇子草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921103,
+    "conditionDesc": "你靠近石块，拨开了附近的植物，发现它显然无法承载你的重量。",
+    "optionResults": "92110301",
+    "name": "仔细观察",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921201,
+    "conditionDesc": "羚羊在距你不远处停了下来，开始吃草。\n你静静地看着它们，松了一口气。",
+    "optionResults": "92120101",
+    "name": "原地等待",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921202,
+    "conditionDesc": "你赶紧避往附近的山洞。羚羊飞快地离开，并没有造成什么影响。",
+    "optionResults": "92120201",
+    "name": "迅速躲避",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921203,
+    "conditionDesc": "你朝着羚羊奔去的方向前进，发现了一处湖泊。\n这是个灌满水壶的好机会。",
+    "optionResults": "92120301",
+    "name": "跟随它们",
+    "optionDesc": "获得\"仙女木\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921301,
+    "conditionDesc": "你挑选了自己需要的装备，进行了简单修理，让它们为自己的攀登提供帮助。",
+    "optionResults": "92130101",
+    "name": "装备起来",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921302,
+    "conditionDesc": "你现有的装备已经足够使用，这些东西应当留给更需要它们的人。",
+    "optionResults": "92130201",
+    "name": "留下它们",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921303,
+    "conditionDesc": "你认为使用它们有一定风险，并未在此停留。",
+    "optionResults": "92130301",
+    "name": "无视它们",
+    "optionDesc": "获得\"白水仙\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920701,
+    "conditionDesc": "你在雪地中愉快地滑行，离山顶越来越远。",
+    "optionResults": "92070101",
+    "name": "试试滑雪",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920702,
+    "conditionDesc": "你拆掉了滑雪板，用材料做了简易的登山杖。虽然不太好用，但能支持一阵。",
+    "optionResults": "92070201",
+    "name": "制作手杖",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920703,
+    "conditionDesc": "你见惯了这样被丢在路边的工具，并未多做逗留。",
+    "optionResults": "92070301",
+    "name": "无视它",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920801,
+    "conditionDesc": "你沿着小路前行，在绕过几处巨石与岩缝后，发现的确加快了攀登进程。",
+    "optionResults": "92080101",
+    "name": "大胆前行",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920802,
+    "conditionDesc": "你小心翼翼地沿着小路前行了一段时间，收集到少量浆果与植物后，还是决定返回大路，不再继续深入。",
+    "optionResults": "92080201",
+    "name": "小心探索",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 920803,
+    "conditionDesc": "你决定坚定自己最初的选择。",
+    "optionResults": "92080301",
+    "name": "无视它",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921401,
+    "conditionDesc": "难得的休息时间，你与登山者们共享了一壶美味的热可可。",
+    "optionResults": "92140101",
+    "name": "开怀畅饮",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921402,
+    "conditionDesc": "登山者们为你留出一处位置，你在火堆旁休息，恢复了体力。",
+    "optionResults": "92140201",
+    "name": "小睡一会",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921403,
+    "conditionDesc": "你与大家分享了见闻，对自己的攀登之旅又多了几分笃定。",
+    "optionResults": "92140301",
+    "name": "沟通交流",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921501,
+    "conditionDesc": "你踉踉跄跄，艰难地在岩石之间穿梭。\n虽然多花了一些时间，总算是到达了目的地。",
+    "optionResults": "92150101",
+    "name": "走左侧",
+    "optionDesc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921502,
+    "conditionDesc": "你的装备齐全，虽然花费了一些力气，但很快到达了目的地。",
+    "optionResults": "92150201",
+    "name": "走中间",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 921503,
+    "conditionDesc": "你稳步前行，在崖壁上采摘到一些花朵。",
+    "optionResults": "92150301",
+    "name": "走右侧",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930101,
+    "conditionDesc": "这是一个不可轻易错过的补给点。\n你填饱了肚子，也恢复了精力，只是脑袋有些发晕。",
+    "optionResults": "93010101",
+    "name": "立即食用",
+    "optionDesc": "行动力+10，行动力消耗+2，获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930102,
+    "conditionDesc": "这些浆果成为了你的干粮储备。\n你能攀登的高度又提升了。",
+    "optionResults": "93010201",
+    "name": "采摘并保存",
+    "optionDesc": "行动力+3，获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930103,
+    "conditionDesc": "最谨慎的选择。\n你放弃了一次补充体力的机会，也躲开了一次潜在的危机。",
+    "optionResults": "93010301",
+    "name": "忽视",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930301,
+    "conditionDesc": "你绕开了这片湖泊，决定以安全为先。",
+    "optionResults": "93030101",
+    "name": "绕道而行",
+    "optionDesc": "行动力+3，获得\"龙胆花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930302,
+    "conditionDesc": "你谨慎地踏上冰面，缓慢前进。幸运的是，湖上的冰足够结实。",
+    "optionResults": "93030201",
+    "name": "走过湖面",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930601,
+    "conditionDesc": "暖烘烘的阳光使你心情畅快，抚平了你心头的疲惫。",
+    "optionResults": "93060101",
+    "name": "沐浴阳光",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930602,
+    "conditionDesc": "你想趁着好天气尽快前往下个补给点，于是加快了脚步。",
+    "optionResults": "93060201",
+    "name": "大步前进",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930603,
+    "conditionDesc": "难得的美景令你选择暂且停留，享受这份自然的馈赠。",
+    "optionResults": "93060301",
+    "name": "驻足欣赏",
+    "optionDesc": "行动力-3，获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930901,
+    "conditionDesc": "你煮熟了一部分携带的食材。温热的事物令你疲惫的身躯重获了力量。",
+    "optionResults": "93090101",
+    "name": "烹饪食物",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930902,
+    "conditionDesc": "你将湿冷的衣服与鞋袜放在铁丝网上烘干，他们在热气中恢复了干燥与蓬松。当你将衣物穿回身上，你感到动作也轻盈了不少。",
+    "optionResults": "93090201",
+    "name": "烘干衣物",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931001,
+    "conditionDesc": "你向他请教登顶的路线与途中的注意事项，收获颇丰。",
+    "optionResults": "93100101",
+    "name": "向他请教",
+    "optionDesc": "行动力-3，获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931002,
+    "conditionDesc": "你与他交易了一些物资，以保证攀登的顺利。",
+    "optionResults": "93100201",
+    "name": "与他交易",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931003,
+    "conditionDesc": "你和他打了个招呼，寒暄几句，便各自走上自己选择的路。",
+    "optionResults": "93100301",
+    "name": "保持怀疑",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931101,
+    "conditionDesc": "你加快了步子，试图将它甩在身后。过了一会儿，这只动物静静地离开了。",
+    "optionResults": "93110101",
+    "name": "尝试躲避",
+    "optionDesc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931102,
+    "conditionDesc": "你丢出手边的石块，猞猁惊慌地转身跑开。",
+    "optionResults": "93110201",
+    "name": "驱赶它",
+    "optionDesc": "获得\"龙胆花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931103,
+    "conditionDesc": "你继续前行，这只动物与你作伴了一小段路，随后悄无声息地离去。",
+    "optionResults": "93110301",
+    "name": "与它同行",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931201,
+    "conditionDesc": "你立刻收好了物品，冒着风前行了一小段路，寻到一处更适宜的地点扎营。尽管消耗了不少体力，但你安稳地度过了夜晚。",
+    "optionResults": "93120101",
+    "name": "更换地点",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931202,
+    "conditionDesc": "你快速扎好帐篷，钻入其中。好在风雪很快就停息了。",
+    "optionResults": "93120201",
+    "name": "加速扎营",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931203,
+    "conditionDesc": "带着大量物件很难移动，你将物品埋在雪中，独自跑向了背风处。好在你返回检查时，它们并没有损坏。",
+    "optionResults": "93120301",
+    "name": "跑开躲避",
+    "optionDesc": "获得\"高山勿忘草\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931301,
+    "conditionDesc": "你重新掩埋了遗骸，带着对自然的敬畏继续前行。",
+    "optionResults": "93130101",
+    "name": "重新掩埋",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931302,
+    "conditionDesc": "你清理了雪堆中残留的物品，带着对方未完成的心愿继续前行。",
+    "optionResults": "93130201",
+    "name": "清理遗物",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931303,
+    "conditionDesc": "你不愿打扰对方的安眠，默默致意后避开了此处。",
+    "optionResults": "93130301",
+    "name": "绕开此处",
+    "optionDesc": "获得\"高山覆盆子\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930501,
+    "conditionDesc": "你服下了一片右美沙芬。肺血管短暂扩张，氧气摄取增加，高原反应有所减轻。",
+    "optionResults": "93050101",
+    "name": "服用药物",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930502,
+    "conditionDesc": "你在原地进行了短暂的调整，适应环境并回复了一部分体力。",
+    "optionResults": "93050201",
+    "name": "稍作休整",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930503,
+    "conditionDesc": "你强忍着疲惫继续前行,体能状况仍在不断恶化。",
+    "optionResults": "93050301",
+    "name": "坚持前进",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930801,
+    "conditionDesc": "你向着挡路的野兽大声呵斥，投掷碎石块驱赶了它们。",
+    "optionResults": "93080101",
+    "name": "呵退掠食者",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930802,
+    "conditionDesc": "你做出了防守的姿态，警戒地与他们保持距离。在周旋与僵持中，你寻找着潜在的出路，试图挣脱困境。",
+    "optionResults": "93080201",
+    "name": "防卫反击",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 930803,
+    "conditionDesc": "你采取了最保险的策略，扔下了一些食物以分散猞猁的注意力。在猞猁门争抢食物时，你迅速地绕开了。",
+    "optionResults": "93080301",
+    "name": "留下食物",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931401,
+    "conditionDesc": "你冒着风雪继续前行，希望能尽快抵达目的地。恶劣的天气消耗了你极大的体力，而终点仍遥遥无期。",
+    "optionResults": "93140101",
+    "name": "加快脚步",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931402,
+    "conditionDesc": "你选择就地扎营等待风雪过去。这耽误了不少时间，但你有了意外的收获。",
+    "optionResults": "93140201",
+    "name": "原地扎营",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931403,
+    "conditionDesc": "你找到了一处可以躲避风雪的山洞。",
+    "optionResults": "93140301",
+    "name": "寻找掩体",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931501,
+    "conditionDesc": "你成功抵达了对面，寒冷的雪水令你的感到虚弱与疲惫。",
+    "optionResults": "93150101",
+    "name": "涉水过溪",
+    "optionDesc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931502,
+    "conditionDesc": "你找到了一颗尺寸合适的圆木，并将它架设在了溪流的两岸。\n你顺利到达了对岸，尽管这消耗了你许多体力。",
+    "optionResults": "93150201",
+    "name": "倒木",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 931503,
+    "conditionDesc": "你找到了溪流中较大的岩石，将它们作为跳板。\n这非常考验平衡能力，但你还是安全抵达了对面。",
+    "optionResults": "93150301",
+    "name": "跳石",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940301,
+    "conditionDesc": "你仔细搜寻了这间废弃的小屋,在堆叠的木板下竟意外发现了一些尚可使用的登山绳索和抓钩。这无疑为你的登山之旅增加了宝贵的装备。",
+    "optionResults": "94030101",
+    "name": "搜寻物资",
+    "optionDesc": "行动力+3，获得\"雪绒花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940302,
+    "conditionDesc": "你在地图上精心标出了这座小屋的位置,就像在荒野中留下路标一般，以防未来在山野中迷路。",
+    "optionResults": "94030201",
+    "name": "标记位置",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940601,
+    "conditionDesc": "你决定不去动那支被遗落的登山杖,将它原封不动地留在了冰层的裂缝处。",
+    "optionResults": "94060101",
+    "name": "留下登山杖",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940602,
+    "conditionDesc": "你拾起这支登山杖,它让你接下来的旅程轻松了一些。",
+    "optionResults": "94060201",
+    "name": "收下登山杖",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940603,
+    "conditionDesc": "你在原地等待了一段时间,可惜它的主人并没有出现。幸好，在等待的过程中，你有了别的收获。",
+    "optionResults": "94060301",
+    "name": "原地等待",
+    "optionDesc": "行动力-3，获得\"雪绒花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940901,
+    "conditionDesc": "你煮熟了一部分携带的食材。温热的事物令你疲惫的身躯重获了力量。",
+    "optionResults": "94090101",
+    "name": "烹饪食物",
+    "optionDesc": "行动力+5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940902,
+    "conditionDesc": "你将湿冷的衣服与鞋袜放在铁丝网上烘干，他们在热气中恢复了干燥与蓬松。当你将衣物穿回身上，你感到动作也轻盈了不少。",
+    "optionResults": "94090201",
+    "name": "烘干衣物",
+    "optionDesc": "获得前进行动力消耗-2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941101,
+    "conditionDesc": "你抬头辨认着星座，尽情享受这份轻松的时光。",
+    "optionResults": "94110101",
+    "name": "仰望",
+    "optionDesc": "行动力+3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941102,
+    "conditionDesc": "此时此刻，没有什么比一场无人打扰的睡眠更吸引人了。你躺下入睡。",
+    "optionResults": "94110201",
+    "name": "休息",
+    "optionDesc": "获得\"高山石竹\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941103,
+    "conditionDesc": "你决定趁着安静的夜晚，在群星的陪伴下独自赶路。",
+    "optionResults": "94110301",
+    "name": "趁夜前行",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941201,
+    "conditionDesc": "你依靠着自己的装备与经验艰难前行，虽然行动缓慢，但最终成功抵达了目的地。",
+    "optionResults": "94120101",
+    "name": "摸索前行",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941202,
+    "conditionDesc": "你调整好装备后，向着坡顶加快速度攀登。虽然消耗了大量体力，但成功到达了坡顶。",
+    "optionResults": "94120201",
+    "name": "一鼓作气",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941203,
+    "conditionDesc": "你选择做好完全的准备后稳步攀登，轻松到达了冰坡顶部。",
+    "optionResults": "94120301",
+    "name": "做足准备",
+    "optionDesc": "获得\"鸦跖花\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941301,
+    "conditionDesc": "你沿着动物的足迹前行，希望能追上它们。足迹的尽头是一处悬崖。这成为了一场无意义追逐。",
+    "optionResults": "94130101",
+    "name": "迅速跟上",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941302,
+    "conditionDesc": "你规避了潜在的危险，做出了最谨慎的选择。",
+    "optionResults": "94130201",
+    "name": "改变路线",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941303,
+    "conditionDesc": "雪地掩去了大部分足迹，那些动物已经不知去向。",
+    "optionResults": "94130301",
+    "name": "悄悄逼近",
+    "optionDesc": "获得\"高山石竹\""
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940401,
+    "conditionDesc": "最终，你找到了一条迂回的小路,避开了冰川继续前行，尽管这耗费了你不少时间。",
+    "optionResults": "94040101",
+    "name": "寻找其他路线",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940402,
+    "conditionDesc": "你决定从崩塌的冰川上冒险跋涉而过，每一步都可能踩空。你小心翼翼,付出了惊人的毅力与耐力,终于跨过了这一道险峻的障碍。",
+    "optionResults": "94040201",
+    "name": "艰难跋涉",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940501,
+    "conditionDesc": "你在原地休息，试图调整呼吸。度过一段时间后，你感觉好多了。",
+    "optionResults": "94050101",
+    "name": "短暂调整",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940502,
+    "conditionDesc": "离山顶只差一点儿了，你决定继续坚持，但缺氧带来的不适越发严重。",
+    "optionResults": "94050201",
+    "name": "咬牙坚持",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 940503,
+    "conditionDesc": "你猛吸了几口氧气，加快了前进的速度，但没走多远就头晕目眩，摔倒在地",
+    "optionResults": "94050301",
+    "name": "坚持前进",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941401,
+    "conditionDesc": "在攀登一处不算陡峭的冰坡时，登山镐彻底损坏。你滑了下来，受了些轻伤。",
+    "optionResults": "94140101",
+    "name": "继续前进",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941402,
+    "conditionDesc": "你回到补给点，修复好登山镐后继续前行。",
+    "optionResults": "94140201",
+    "name": "回到补给点",
+    "optionDesc": "行动力-3"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941403,
+    "conditionDesc": "你试着用沿途找到的材料修补它，但只是加速了它的损毁。",
+    "optionResults": "94140301",
+    "name": "试图修补",
+    "optionDesc": "无影响"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941501,
+    "conditionDesc": "你决定先返回上个补给点，待大雨停歇再继续前行。",
+    "optionResults": "94150101",
+    "name": "返回补给点",
+    "optionDesc": "获得前进行动力消耗+2"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941502,
+    "conditionDesc": "你认为自己的装备足以支撑，继续前进。最终，失温的风险使你依然选择返回补给点。",
+    "optionResults": "94150201",
+    "name": "冒雨前行",
+    "optionDesc": "行动力-5"
+  },
+  {
+    "activityId": 11509,
+    "optionId": 941503,
+    "conditionDesc": "你找到了一处洞穴，坚持到了大雨停歇。",
+    "optionResults": "94150301",
+    "name": "临时躲避",
+    "optionDesc": "无影响"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "activityId": 12210,
+    "talentId": 2201,
+    "name": "自罪妄想",
+    "nameEn": "Guilt Delusion",
+    "icon": "",
+    "baseSkillIds": "840010000",
+    "baseSkillIds2": "",
+    "sortIndex": 1
+  },
+  {
+    "activityId": 12210,
+    "talentId": 2202,
+    "name": "强迫冲动",
+    "nameEn": "Compulsive Impulses",
+    "icon": "",
+    "baseSkillIds": "840020000",
+    "baseSkillIds2": "",
+    "sortIndex": 2
+  },
+  {
+    "activityId": 12210,
+    "talentId": 2203,
+    "name": "认知解离",
+    "nameEn": "Cognitive Dissonance",
+    "icon": "",
+    "baseSkillIds": "840030000",
+    "baseSkillIds2": "",
+    "sortIndex": 3
+  },
+  {
+    "activityId": 12400,
+    "talentId": 2401,
+    "name": "自罪妄想",
+    "nameEn": "Guilt Delusion",
+    "icon": "",
+    "baseSkillIds": "",
+    "baseSkillIds2": "342410000",
+    "sortIndex": 1
+  },
+  {
+    "activityId": 12400,
+    "talentId": 2402,
+    "name": "强迫冲动",
+    "nameEn": "Compulsive Impulses",
+    "icon": "",
+    "baseSkillIds": "342420000",
+    "baseSkillIds2": "",
+    "sortIndex": 2
+  },
+  {
+    "activityId": 12400,
+    "talentId": 2403,
+    "name": "认知解离",
+    "nameEn": "Cognitive Dissonance",
+    "icon": "",
+    "baseSkillIds": "342430000",
+    "baseSkillIds2": "",
+    "sortIndex": 3
+  }
+]

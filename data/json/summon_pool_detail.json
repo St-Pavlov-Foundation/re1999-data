@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "desc": "",
+    "info": "800\n",
+    "name": "第一滴雨",
+    "historyShowType": 99,
+    "order": 999,
+    "openId": 11
+  },
+  {
+    "id": 2,
+    "desc": "",
+    "info": "801\n",
+    "name": "常驻角色征集",
+    "historyShowType": 1,
+    "order": 1,
+    "openId": 11
+  },
+  {
+    "id": 3,
+    "desc": "",
+    "info": "802\n",
+    "name": "限时活动征集",
+    "historyShowType": 0,
+    "order": 3,
+    "openId": 11
+  },
+  {
+    "id": 4,
+    "desc": "",
+    "info": "803",
+    "name": "限时角色征集",
+    "historyShowType": 1,
+    "order": 4,
+    "openId": 11
+  },
+  {
+    "id": 5,
+    "desc": "",
+    "info": "804",
+    "name": "湖的丰饶",
+    "historyShowType": 0,
+    "order": 50,
+    "openId": 11
+  },
+  {
+    "id": 6,
+    "desc": "",
+    "info": "809",
+    "name": "湖的邀约",
+    "historyShowType": 0,
+    "order": 40,
+    "openId": 11
+  },
+  {
+    "id": 7,
+    "desc": "",
+    "info": "812",
+    "name": "新春限定征集",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
+  },
+  {
+    "id": 8,
+    "desc": "",
+    "info": "813",
+    "name": "湖的启示",
+    "historyShowType": 0,
+    "order": 30,
+    "openId": 11
+  },
+  {
+    "id": 13,
+    "desc": "",
+    "info": "823",
+    "name": "限时活动征集（单5星）",
+    "historyShowType": 0,
+    "order": 3,
+    "openId": 11
+  },
+  {
+    "id": 10,
+    "desc": "",
+    "info": "824",
+    "name": "周年限定征集",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
+  },
+  {
+    "id": 11,
+    "desc": "",
+    "info": "825",
+    "name": "湖的应许",
+    "historyShowType": 0,
+    "order": 30,
+    "openId": 11
+  },
+  {
+    "id": 12,
+    "desc": "",
+    "info": "828",
+    "name": "湖的馈赠",
+    "historyShowType": 0,
+    "order": 32,
+    "openId": 11
+  },
+  {
+    "id": 14,
+    "desc": "",
+    "info": "829",
+    "name": "巡游限定征集",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
+  },
+  {
+    "id": 101,
+    "desc": "",
+    "info": "830",
+    "name": "金纺轮",
+    "historyShowType": 0,
+    "order": 40,
+    "openId": 11
+  },
+  {
+    "id": 15,
+    "desc": "",
+    "info": "831",
+    "name": "湖的涟漪",
+    "historyShowType": 0,
+    "order": 10,
+    "openId": 11
+  },
+  {
+    "id": 17,
+    "desc": "",
+    "info": "817",
+    "name": "新春限定征集\n【赤心如昼明】",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
+  },
+  {
+    "id": 18,
+    "desc": "",
+    "info": "819",
+    "name": "新春限定征集\n【尽杯酌】",
+    "historyShowType": 0,
+    "order": 3,
+    "openId": 11
+  }
+]

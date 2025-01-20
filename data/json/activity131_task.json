@@ -1,0 +1,38 @@
+[
+  {
+    "id": 200001,
+    "activityId": 11403,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>TN-6【有顶之屋】</color>",
+    "listenerType": "Act131Episode",
+    "listenerParam": "6",
+    "maxProgress": 1,
+    "jumpId": 10606,
+    "bonus": "2#2#80|1#110703#2|2#5#10000"
+  },
+  {
+    "id": 200002,
+    "activityId": 11403,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>TN-7【穷举法】</color>",
+    "listenerType": "Act131Episode",
+    "listenerParam": "7",
+    "maxProgress": 1,
+    "jumpId": 10607,
+    "bonus": "2#2#80|9#1003#8|2#3#10000"
+  },
+  {
+    "id": 200003,
+    "activityId": 11403,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>TN-10【海面以下】</color>",
+    "listenerType": "Act131Episode",
+    "listenerParam": "10",
+    "maxProgress": 1,
+    "jumpId": 10610,
+    "bonus": "2#2#80|1#110103#2|2#5#10000"
+  }
+]

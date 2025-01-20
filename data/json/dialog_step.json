@@ -1,0 +1,4853 @@
+[
+  {
+    "groupId": 1,
+    "id": 1001,
+    "type": 1,
+    "content": "这个电话真的打通了？是我，老板。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1002,
+    "type": 2,
+    "content": "你是来归还那盒假票的？哎，都晚了。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1003,
+    "type": 1,
+    "content": "晚了？怎么，他们找你麻烦了？",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1004,
+    "type": 2,
+    "content": "你知道那些混帮派的小子是怎么办事的。事情本来很简单，我为他们卖假票，他们便给我分些好处。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1005,
+    "type": 2,
+    "content": "他们知道是你偷——拿走了那盒票，让他们少赚了一大笔钱。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1006,
+    "type": 2,
+    "content": "我不傻，可不会等着他们上门来找麻烦。这几天报刊亭都没开门，先避避风头。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1007,
+    "type": 2,
+    "content": "至于那盒假票，随你怎么处置。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1008,
+    "type": 1,
+    "content": "其实，我是来询问那些假票的消息的。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1009,
+    "type": 1,
+    "content": "你知道还有哪些人在替他们卖票了吗？",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1010,
+    "type": 1,
+    "content": "我要把那些假票都收缴上来，绝不能让它们流通到不知情的观众手里。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1011,
+    "type": 2,
+    "content": "这么说，乌卢鲁运动会真的要举办了？上次见你时，我记得你还忙着和他们划清界限。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1012,
+    "type": 1,
+    "content": "那不重要，没有永远的敌人，不是吗？虽然不能透露给你太多信息，但一切都在进程中。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1013,
+    "type": 1,
+    "content": "所以，你能帮我打探到情报吗？这样你也算弃暗投明，有你一份功劳。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1014,
+    "type": 2,
+    "content": "好吧，我有自己的信息渠道。我会帮你留意那些假票的走向的。",
+    "name": "报刊亭老板",
+    "avatar": "615301",
+    "chessId": 2
+  },
+  {
+    "groupId": 1,
+    "id": 1015,
+    "type": 1,
+    "content": "记得及时联系我。在假票流通到市场上前，我会一网打尽！",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 1,
+    "id": 1016,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 2,
+    "id": 2001,
+    "type": 1,
+    "content": "奶奶，那团火！快看，那团火，好像在说话，它还在飘呢！",
+    "name": "男孩",
+    "avatar": "616101",
+    "chessId": 1
+  },
+  {
+    "groupId": 2,
+    "id": 2002,
+    "type": 2,
+    "content": "难道是……乌卢鲁圣火？是她，真的是她！",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2003,
+    "type": 2,
+    "content": "那个传闻是真的，乌卢鲁运动会真的要重新举办了。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2004,
+    "type": 1,
+    "content": "她？乌卢鲁……圣火？那是什么东西呀！",
+    "name": "男孩",
+    "avatar": "616101",
+    "chessId": 1
+  },
+  {
+    "groupId": 2,
+    "id": 2005,
+    "type": 2,
+    "content": "她大概要比我的祖母年龄还要大哩，她是乌卢鲁运动会的圣火。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2006,
+    "type": 2,
+    "content": "那是一个专属于神秘学家的盛会，每年都会在乌卢鲁岩地举办。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2007,
+    "type": 1,
+    "content": "那你去乌卢鲁运动会现场看过比赛吗？奶奶。",
+    "name": "男孩",
+    "avatar": "616101",
+    "chessId": 1
+  },
+  {
+    "groupId": 2,
+    "id": 2008,
+    "type": 2,
+    "content": "去过，去过。我这辈子都不会忘记。还记得，第一次观看点火仪式，奶奶还和你现在一般年纪。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2009,
+    "type": 2,
+    "content": "整个体育场里都坐满了人。当圣火顺利点燃火炬，呐喊声与掌声连绵不绝，每个观众的心脏都快要跳了出来。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2010,
+    "type": 2,
+    "content": "可后来，它却停办了，一转眼，半个世纪就过去了。那场战争将整个文明世界都拖入了泥沼，连带着这团火焰。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2011,
+    "type": 1,
+    "content": "半个世纪？消失了那么久？现在，她又重新出现了！！",
+    "name": "男孩",
+    "avatar": "616101",
+    "chessId": 1
+  },
+  {
+    "groupId": 2,
+    "id": 2012,
+    "type": 2,
+    "content": "看来，那个传闻是真的，乌卢鲁运动会真的要重新举办了。",
+    "name": "老妇人",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 2,
+    "id": 2013,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 3,
+    "id": 3001,
+    "type": 2,
+    "content": "小爱兹拉，你在认真地看什么？",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3002,
+    "type": 1,
+    "content": "啊……教授，这个，算是课外读物。",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3003,
+    "type": 2,
+    "content": "克劳福德博士的《轮回者实录》，一本很冷门的专著。没想到你能啃得动，真不错。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3004,
+    "type": 1,
+    "content": "是的……它有些难懂，我花费了一些时间来查资料才能看懂，但它也很有意思。",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3005,
+    "type": 1,
+    "content": "管理员索菲婶婶跟我说，这本书上次被借阅还是三年前。",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3006,
+    "type": 1,
+    "content": "让我看看借阅记录，哈，这个人叫大卫·威……啊？教授，是你？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3007,
+    "type": 2,
+    "content": "哈哈，学长的著作总是要第一时间借来读的。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3008,
+    "type": 1,
+    "content": "学长？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3009,
+    "type": 2,
+    "content": "我与克劳福德曾在同一所实验室共事过，不过我们的研究方向各有不同。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3010,
+    "type": 2,
+    "content": "我喜欢与植物打交道，而他则对社会学着了迷，热衷于和身边的人打交道。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3011,
+    "type": 1,
+    "content": "你真的认识他？他是一名神秘学家吗？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3012,
+    "type": 2,
+    "content": "神秘学家？不，他是人类，和我们并无区别。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3013,
+    "type": 1,
+    "content": "咦？作为人类也可以研究“轮回者”吗？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3014,
+    "type": 1,
+    "content": "抱歉，教授……我是说，“轮回者”只出现在神秘学家血脉中，不是吗？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3015,
+    "type": 2,
+    "content": "哈，原来这才是你担心的。爱兹拉，每位外科医生都会感激伦琴先生发现的X射线，科学的领域间并没有无法跨越的鸿沟。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3016,
+    "type": 2,
+    "content": "对于科研者而言，各个研究领域间并不存在跨不过去的鸿沟。",
+    "name": "教授",
+    "avatar": "505701",
+    "chessId": 2
+  },
+  {
+    "groupId": 3,
+    "id": 3017,
+    "type": 1,
+    "content": "您的意思是，我也可以将“轮回者”视作我的研究方向？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3018,
+    "type": 1,
+    "content": "就像您的……学长一样？",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 1
+  },
+  {
+    "groupId": 3,
+    "id": 3019,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 4,
+    "id": 4001,
+    "type": 1,
+    "content": "我、我亲爱的朋友们啊——你……你们看了最新一期的《叮当快报》吗……？",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4002,
+    "type": 2,
+    "content": "当然，我总得看看那些**怎么扯谎。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 3
+  },
+  {
+    "groupId": 4,
+    "id": 4003,
+    "type": 1,
+    "content": "对，没错！谎言！那都是谎言！",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4004,
+    "type": 1,
+    "content": "看……看啊！看我形似飞盘的外观，我悬浮飘荡的DUU-DUU-BELL-BOO，你能想象这是一位外星间谍的着装吗？",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4005,
+    "type": 2,
+    "content": "请放心，星之眼先生。同为可转动的圆形物体，我自然更愿意相信你。",
+    "name": "宽檐帽",
+    "avatar": "615201",
+    "chessId": 2
+  },
+  {
+    "groupId": 4,
+    "id": 4006,
+    "type": 2,
+    "content": "其实你……也不能说是不可疑。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 3
+  },
+  {
+    "groupId": 4,
+    "id": 4007,
+    "type": 1,
+    "content": "啊……啊？！",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4008,
+    "type": 2,
+    "content": "哈——但是叮当快报都那么信誓旦旦地说了，什么“侵略地球的外星人”就肯定作不得数了——",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 3
+  },
+  {
+    "groupId": 4,
+    "id": 4009,
+    "type": 2,
+    "content": "那玩意儿上面什么时候能有一句实话了？他们还说我是被住房焦虑压垮的当代年轻人范本呢！放*！",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 3
+  },
+  {
+    "groupId": 4,
+    "id": 4010,
+    "type": 1,
+    "content": "对……对啊！这肯定是航测局的那帮臭彩袜的阴谋……只是荒诞的办公室政治斗争中一个可笑的注脚！",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4011,
+    "type": 1,
+    "content": "我——太感谢你们如此相信我——了！真的！",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4012,
+    "type": 2,
+    "content": "别太担心，我的朋友。",
+    "name": "宽檐帽",
+    "avatar": "615201",
+    "chessId": 2
+  },
+  {
+    "groupId": 4,
+    "id": 4013,
+    "type": 2,
+    "content": "没有谎言是牢不可灭的，凡事都有先后，我们往往处理完最大的危机，才会料理小的危机。",
+    "name": "宽檐帽",
+    "avatar": "615201",
+    "chessId": 2
+  },
+  {
+    "groupId": 4,
+    "id": 4014,
+    "type": 1,
+    "content": "……！",
+    "name": "星之眼",
+    "avatar": "303401",
+    "chessId": 1
+  },
+  {
+    "groupId": 4,
+    "id": 4015,
+    "type": 2,
+    "content": "哦？我从没想到一枚飞碟能流下如此多的汗，这可真是令人震惊。",
+    "name": "宽檐帽",
+    "avatar": "615201",
+    "chessId": 2
+  },
+  {
+    "groupId": 4,
+    "id": 4016,
+    "type": 2,
+    "content": "多喝些水吧，对你的身体有好处。",
+    "name": "宽檐帽",
+    "avatar": "615201",
+    "chessId": 2
+  },
+  {
+    "groupId": 4,
+    "id": 4017,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 5,
+    "id": 5001,
+    "type": 2,
+    "content": "小丝绒，我的甜豌豆。在跑道上，你的小伙伴们总是追不上你。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5002,
+    "type": 1,
+    "content": "奶奶，那些家伙都太慢了，我总不能放水故意等他们吧。",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5003,
+    "type": 2,
+    "content": "你的身子比同龄的孩子们发育得快许多，体育老师说你是块干田径的好料子。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5004,
+    "type": 1,
+    "content": "“田径”？那是什么？",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5005,
+    "type": 2,
+    "content": "嗯……就是在运动场上，跑啊，跳啊，把手里的东西扔到很远的地方。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5006,
+    "type": 1,
+    "content": "不会砸到观众吗？",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5007,
+    "type": 2,
+    "content": "哈哈，不会。如果你能砸到他们，那你就已经是个传奇的田径运动员了。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5008,
+    "type": 1,
+    "content": "嗯……听起来好像没什么挑战。",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5009,
+    "type": 2,
+    "content": "你还有很多其他的选择。你是一只无所不能的小鸟。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5010,
+    "type": 2,
+    "content": "你可以做诗人，做画家，或者，去做一个歌手。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5011,
+    "type": 2,
+    "content": "有数不尽的选择等着你去探索。如果你珍视自己身上的天赋，你也可以做一个运动员。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5012,
+    "type": 2,
+    "content": "在墙壁上行走如飞，地心引力也拿你没办法。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5013,
+    "type": 1,
+    "content": "波拉比也可以做运动员吗？它能跑得跟我一样快。",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5014,
+    "type": 2,
+    "content": "哈哈，我的孩子，那你一定要去参加盛装骑术赛，“波拉比”会成为你最好的搭档。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5015,
+    "type": 1,
+    "content": "“盛装骑术赛”？",
+    "name": "小沙丝绒",
+    "avatar": "621601",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5016,
+    "type": 2,
+    "content": "嗨……奶奶老糊涂啦，忘记啦。那个时代早就翻篇啦，属于神秘学家的运动会已经停办很久咯。",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5017,
+    "type": 2,
+    "content": "也不知道，乌卢鲁运动会是否还有重新举办的那一天呐……",
+    "name": "祖母",
+    "avatar": "616001",
+    "chessId": 2
+  },
+  {
+    "groupId": 5,
+    "id": 5018,
+    "type": 1,
+    "content": "……",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5019,
+    "type": 1,
+    "content": "奶奶，我时常想起你。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5020,
+    "type": 1,
+    "content": "请保佑我吧，你记忆中的那个时代又回来了。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5021,
+    "type": 1,
+    "content": "你说得没错，“波拉比”成为了我最好的搭档。",
+    "name": "沙丝绒",
+    "avatar": "307501",
+    "chessId": 1
+  },
+  {
+    "groupId": 5,
+    "id": 5022,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 6,
+    "id": 6001,
+    "type": 1,
+    "content": "所以说，你是个没有接受过系统教育的疗愈师？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6002,
+    "type": 2,
+    "content": "系统？行星之间的联系么？",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6003,
+    "type": 1,
+    "content": "……好吧，我明白了，不过没关系，曾担任纪律辅员的玛蒂尔达很擅长和偏科生交流！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6004,
+    "type": 1,
+    "content": "我们可以先从互通对一些基本概念的认知开始。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6005,
+    "type": 1,
+    "content": "首先是“灵性”！你认知中的灵性是什么？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6006,
+    "type": 2,
+    "content": "那道光和随之而来的色彩……是宇宙能量。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6007,
+    "type": 1,
+    "content": "所以你认知中的灵性是一种来自于外太空的能量？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6008,
+    "type": 2,
+    "content": "不，宇宙能量来自万事万物。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6009,
+    "type": 2,
+    "content": "当一束光亮起时，你看到的并不是光，而是事物本身的颜色。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6010,
+    "type": 1,
+    "content": "啊哈！我明白了，这难不倒成绩数一数二的玛蒂尔达！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6011,
+    "type": 1,
+    "content": "你是泛神论派的，你认为世间一切的本质都能统一为灵性，都在于你所谓的光之中！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6012,
+    "type": 2,
+    "content": "不，宇宙能量都有自己的个性，就像是黑暗夜晚中的蝉鸣般此起彼伏。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6013,
+    "type": 1,
+    "content": "嗯……那么是东方泛灵论？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6014,
+    "type": 1,
+    "content": "你认为人都能够通过特定的修行提升自我么？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6015,
+    "type": 2,
+    "content": "宇宙能量是自由的，没有约束与教条，只要像水一样自由前进，最终都会抵达大海。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6016,
+    "type": 1,
+    "content": "有些复杂……而且怎么都感觉和宇宙没有关系？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6017,
+    "type": 1,
+    "content": "不过没关系，天才的玛蒂尔达能想到更好的办法，你可以把那个“宇宙能量”画下来！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6018,
+    "type": 2,
+    "content": "没问题，我会向你展示。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 6,
+    "id": 6019,
+    "type": 1,
+    "content": "……你这只是把字画在了墙上！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 6,
+    "id": 6020,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 7,
+    "id": 7001,
+    "type": 1,
+    "content": "霍利克，去不去看电影？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7002,
+    "type": 2,
+    "content": "干什么？你缺钱了？先说好，我手头也紧。",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7003,
+    "type": 1,
+    "content": "你把我当什么人了？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7004,
+    "type": 1,
+    "content": "街坊们送了我两张电影票，说是平时帮忙的回礼。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7005,
+    "type": 1,
+    "content": "还让我带上新交的女朋友一起去，我像是有女朋友的人么？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7006,
+    "type": 1,
+    "content": "所以你到底有没有兴趣？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7007,
+    "type": 2,
+    "content": "什么电影？不是所有电影都值得我把屁股塞进电影院的小椅子里的。",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7008,
+    "type": 2,
+    "content": "或者你把两张票都给我，我很乐意占两座。",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7009,
+    "type": 1,
+    "content": "我记得好像是《周六夜狂热》——",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7010,
+    "type": 2,
+    "content": "那还不错，我去——",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7011,
+    "type": 1,
+    "content": "的续集。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7012,
+    "type": 2,
+    "content": "我去你的！",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7013,
+    "type": 1,
+    "content": "不去就不去，你发那么大火干嘛？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 1
+  },
+  {
+    "groupId": 7,
+    "id": 7014,
+    "type": 2,
+    "content": "《周六夜狂热》的续集不能叫《周六夜狂热》！",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7015,
+    "type": 2,
+    "content": "你记好了！这个才叫周！六！夜！狂！热！",
+    "name": "霍利克",
+    "avatar": "625701",
+    "chessId": 2
+  },
+  {
+    "groupId": 7,
+    "id": 7016,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 8,
+    "id": 8001,
+    "type": 1,
+    "content": "时间差不多了，我们该走了，你还在做什么？",
+    "name": "“剃刀”",
+    "avatar": "510401",
+    "chessId": 1
+  },
+  {
+    "groupId": 8,
+    "id": 8002,
+    "type": 2,
+    "content": "难得来一趟，我想留点纪念再走，队长。",
+    "name": "“剃刀”小队队员",
+    "avatar": "506101",
+    "chessId": 2
+  },
+  {
+    "groupId": 8,
+    "id": 8003,
+    "type": 1,
+    "content": "所以你在那玩喷漆罐？万一弄脏制服你可得自己洗。",
+    "name": "“剃刀”",
+    "avatar": "510401",
+    "chessId": 1
+  },
+  {
+    "groupId": 8,
+    "id": 8004,
+    "type": 2,
+    "content": "了解，队长，只是我现在遇到了问题。",
+    "name": "“剃刀”小队队员",
+    "avatar": "506101",
+    "chessId": 2
+  },
+  {
+    "groupId": 8,
+    "id": 8005,
+    "type": 2,
+    "content": "我本想把我喜欢的乐队画上去。",
+    "name": "“剃刀”小队队员",
+    "avatar": "506101",
+    "chessId": 2
+  },
+  {
+    "groupId": 8,
+    "id": 8006,
+    "type": 2,
+    "content": "但这里的照片和我记忆中的乐队相貌有很大出入。",
+    "name": "“剃刀”小队队员",
+    "avatar": "506101",
+    "chessId": 2
+  },
+  {
+    "groupId": 8,
+    "id": 8007,
+    "type": 2,
+    "content": "请您帮我拿拿主意，究竟该画哪个样子比较好？",
+    "name": "“剃刀”小队队员",
+    "avatar": "506101",
+    "chessId": 2
+  },
+  {
+    "groupId": 8,
+    "id": 8008,
+    "type": 1,
+    "content": "很简单，想想我们的小队名。",
+    "name": "“剃刀”",
+    "avatar": "510401",
+    "chessId": 1
+  },
+  {
+    "groupId": 8,
+    "id": 8009,
+    "type": 1,
+    "content": "既然添加画像会导致问题复杂化，那就不要添加画像。",
+    "name": "“剃刀”",
+    "avatar": "510401",
+    "chessId": 1
+  },
+  {
+    "groupId": 8,
+    "id": 8010,
+    "type": 1,
+    "content": "干脆点，涂个名字上去，我们可不是来度假的。",
+    "name": "“剃刀”",
+    "avatar": "510401",
+    "chessId": 1
+  },
+  {
+    "groupId": 8,
+    "id": 8011,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 9,
+    "id": 9001,
+    "type": 1,
+    "content": "呦，J！瞧瞧你，竟然能静下心来到后厨准备食材。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9002,
+    "type": 1,
+    "content": "给土豆剥皮可不是件容易的事儿。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9003,
+    "type": 2,
+    "content": "……",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9004,
+    "type": 1,
+    "content": "你今天安静得有点儿吓人，说吧，究竟发生了什么事，小子。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9005,
+    "type": 1,
+    "content": "霍利克又被老板训了？贝克特又被人欺负？还是……",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9006,
+    "type": 1,
+    "content": "像你这种剥法，明天采购土豆的量可得多上两倍都不止。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9007,
+    "type": 2,
+    "content": "老爹，你有过这样的经历吗？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9008,
+    "type": 2,
+    "content": "愤怒、恼火、身不由已，明明攥紧拳头，却又不得不放开的经历？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9009,
+    "type": 1,
+    "content": "小子，你知道这家餐厅的由来吗？",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9010,
+    "type": 1,
+    "content": "当年，我刚从唐人街那些琐碎的事务里头彻底抽身，想要开一家小餐馆。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9011,
+    "type": 1,
+    "content": "想借餐馆的名义，帮衬一下只能在街头混口饭吃的伙计们。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9012,
+    "type": 1,
+    "content": "就结果而言——惨败。毫无来由上门捣乱的混混、以为要跟他们争地盘的黑帮打手、三番两次上门索要卫生许可证的大人物……",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9013,
+    "type": 1,
+    "content": "当我收拾好行囊滚蛋的那一刻，我的感觉和你现在差不了多少——恼怒、不甘心、愤慨、足足憋了一肚子怨气。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9014,
+    "type": 2,
+    "content": "倒闭？原来这儿不是你开的第一家餐馆。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9015,
+    "type": 2,
+    "content": "嚯！老爹，没想到你还挺多情的！",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9016,
+    "type": 1,
+    "content": "呵呵，你小子！",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9017,
+    "type": 1,
+    "content": "当时的我，完全就是个颓废又惹人厌的老混球，只会把气发泄到别人身上，喝过的酒简直能淹没整个海特街。那天我像往常一样在街上乱晃，刚从维斯塔公园出来的时候，恰巧被一场大雨截住。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9018,
+    "type": 1,
+    "content": "于是，我就站在街角的雨棚等雨停，喏，就是店门口那块招牌附近的位置。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9019,
+    "type": 2,
+    "content": "所以说？老爹你就是站在这里……",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 9,
+    "id": 9020,
+    "type": 1,
+    "content": "没错，小子，就在这儿。神奇的是，没过一会儿，太阳就出来了，它带走了那场雨，同时也带走了我心里所有的不愉快。顺着阳光的方向，我看到了一块招牌，一块写着店铺转让的招牌。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9021,
+    "type": 1,
+    "content": "很快，它就变成了我们现在的招牌。",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9022,
+    "type": 1,
+    "content": "哈哈，在当时的我看来，它比阳光还要闪亮上几十倍、几百倍呢！",
+    "name": "唐吉老爹",
+    "avatar": "626301",
+    "chessId": 1
+  },
+  {
+    "groupId": 9,
+    "id": 9023,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10,
+    "id": 10001,
+    "type": 1,
+    "content": "我不理解。我是说，我不理解，他们为什么非得在这一集增加主角去法国交换留学的情节。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10002,
+    "type": 1,
+    "content": "这是刻板印象！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10003,
+    "type": 2,
+    "content": "我从来没去过法国，小家伙，你和我妹妹就是我见过的唯二两个法国人。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10004,
+    "type": 2,
+    "content": "这么看来，我倒觉得还挺符合现实的。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10005,
+    "type": 1,
+    "content": "哼，要抱怨就趁现在吧，你真应该珍惜和我相处的日子。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10006,
+    "type": 1,
+    "content": "以后，你可就见不到像我这么耀眼、这么勇敢的天才了！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10007,
+    "type": 2,
+    "content": "噢，你真应该见见我妹妹。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10008,
+    "type": 1,
+    "content": "妹妹？指的是保利娜小姐吗？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10009,
+    "type": 2,
+    "content": "那时候的她，应该跟你差不多年纪。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10010,
+    "type": 2,
+    "content": "不，或许比你还要稍微再小上一点儿。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10011,
+    "type": 2,
+    "content": "我坐在这张破沙发上，而她每次都倚在旁边那块毛绒垫子里边儿，抱着她最爱的小熊，跟我一块儿看这部情景喜剧。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10012,
+    "type": 2,
+    "content": "我俩的观点从来都没一致过！从来没有！",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10013,
+    "type": 2,
+    "content": "就像她喜欢那只叫“什么什么几世”的兔子，但我简直烦死它了！",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10014,
+    "type": 2,
+    "content": "一世、二世、九世……这都起的是什么鬼名字？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10015,
+    "type": 1,
+    "content": "（小声）说实话，J这个名字也挺随便的。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10016,
+    "type": 2,
+    "content": "咳咳！",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10017,
+    "type": 2,
+    "content": "不过，她总是撑不过片尾曲就睡着了……到那时，我还得把她抱回床上，再帮她掖掖被角。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10018,
+    "type": 1,
+    "content": "原来如此！哼哼，本天才完全看穿了你的想法！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10019,
+    "type": 2,
+    "content": "啊？",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10,
+    "id": 10020,
+    "type": 1,
+    "content": "以免你这种傻大个儿在我走后过于想念我，我也在这面墙上留点纪念好了！就当作是——天才玛蒂尔达送给你的礼物吧！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 10,
+    "id": 10021,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 11,
+    "id": 11001,
+    "type": 1,
+    "content": "果然如此。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11002,
+    "type": 2,
+    "content": "噢，又到了这个时候，每天一次，环状水星定期的冥想会。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11003,
+    "type": 1,
+    "content": "我能感受到……你身上的能量并不稳定，建议不要出行。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11004,
+    "type": 2,
+    "content": "你知道我根本不相信这些。灵性、疗愈、净化仪式、能量的流动与交汇……太复杂了，我一点儿都记不住。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11005,
+    "type": 1,
+    "content": "你的能量波动得更厉害了。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11006,
+    "type": 1,
+    "content": "作为朋友，我不会对你使用任何神秘术，J。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11007,
+    "type": 1,
+    "content": "我只负责说出我的感受。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11008,
+    "type": 2,
+    "content": "好好好，你是专业疗愈师，你说得对。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11009,
+    "type": 2,
+    "content": "和你一样，我也感受到了——有一股力量，一股我不熟悉的力量，正朝着海特街袭来。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11010,
+    "type": 1,
+    "content": "你很不安。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11011,
+    "type": 2,
+    "content": "不，我没有！你把我当什么人了！",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11012,
+    "type": 2,
+    "content": "我的字典里从来没有“不安”这个词。",
+    "name": "J",
+    "avatar": "309401",
+    "chessId": 2
+  },
+  {
+    "groupId": 11,
+    "id": 11013,
+    "type": 1,
+    "content": "任何感觉，任何情绪，都是理所当然存在于此处之物。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11014,
+    "type": 1,
+    "content": "不必在意。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 1
+  },
+  {
+    "groupId": 11,
+    "id": 11015,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 12,
+    "id": 12001,
+    "type": 1,
+    "content": "呜哇，我还从没来过真正的迪斯科舞厅呢。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12002,
+    "type": 1,
+    "content": "哦？这个灯球，好像和普通的迪斯科灯球长得不太一样？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12003,
+    "type": 1,
+    "content": "我是不是之前在哪儿见过你。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12004,
+    "type": 2,
+    "content": "啊？这。",
+    "name": "斯普特尼克",
+    "avatar": "305501",
+    "chessId": 2
+  },
+  {
+    "groupId": 12,
+    "id": 12005,
+    "type": 1,
+    "content": "奇怪，到底是在哪儿呢？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12006,
+    "type": 1,
+    "content": "总之，你肯定不是什么普通的迪斯科灯球！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12007,
+    "type": 1,
+    "content": "让我来摸一摸，只要摸一下，没错，就像平时占卜时那样。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12008,
+    "type": 1,
+    "content": "哼哼，一切尽在本天才的掌握之中。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12009,
+    "type": 2,
+    "content": "啊！",
+    "name": "斯普特尼克",
+    "avatar": "305501",
+    "chessId": 2
+  },
+  {
+    "groupId": 12,
+    "id": 12010,
+    "type": 1,
+    "content": "噢，这份触感，这种独特的、怪异的、冷冰冰的外壳，你肯定是……",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12011,
+    "type": 1,
+    "content": "这不就是个普通的灯球嘛！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 12,
+    "id": 12012,
+    "type": 2,
+    "content": "哦？嗯……",
+    "name": "斯普特尼克",
+    "avatar": "305501",
+    "chessId": 2
+  },
+  {
+    "groupId": 12,
+    "id": 12013,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 13,
+    "id": 13001,
+    "type": 1,
+    "content": "环状水星小姐，上次跟你探讨过灵性和宇宙能量后，我还有点儿没完全弄明白的部分。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13002,
+    "type": 2,
+    "content": "请讲。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13003,
+    "type": 1,
+    "content": "你能向我展示一下，这个宇宙能量具体是怎么表现的吗？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13004,
+    "type": 2,
+    "content": "如果以海洋作为参考，你的能量，比初夏的海洋洁净、清爽，但与此同时，又比冬日的洋流更为灼热、直接。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13005,
+    "type": 2,
+    "content": "如果以我的感受来讲，它更像是晴日的罗勒香气，和水边湿漉漉、正小心翼翼拍打翅膀的白鸭。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13006,
+    "type": 1,
+    "content": "哦哦，这比画在墙上好懂多了。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13007,
+    "type": 1,
+    "content": "听起来还是有点儿抽象，不过，反正就是在说我的能量很漂亮吧，哼哼。",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13008,
+    "type": 2,
+    "content": "但是。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13009,
+    "type": 1,
+    "content": "但是？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13010,
+    "type": 2,
+    "content": "除此之外，我还感受到了……一丝本不该存在于此的涟漪。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13011,
+    "type": 1,
+    "content": "哦？",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13012,
+    "type": 2,
+    "content": "它温柔、安定，它长久地漂浮在海面上，影响着浪花的波动频率。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13013,
+    "type": 2,
+    "content": "不断扩大，再扩大。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13014,
+    "type": 2,
+    "content": "它能够调整洋流的走向，让这抹蓝更加平稳、静谧。",
+    "name": "环状水星",
+    "avatar": "309501",
+    "chessId": 2
+  },
+  {
+    "groupId": 13,
+    "id": 13015,
+    "type": 1,
+    "content": "等等？！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13016,
+    "type": 1,
+    "content": "别……别再说下去了！",
+    "name": "玛蒂尔达",
+    "avatar": "304103",
+    "chessId": 1
+  },
+  {
+    "groupId": 13,
+    "id": 13017,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 14,
+    "id": 14001,
+    "type": 1,
+    "content": "我对此非常抱歉！玛蒂尔达小姐！",
+    "name": "职员菲娜",
+    "avatar": "508601",
+    "chessId": 1
+  },
+  {
+    "groupId": 14,
+    "id": 14002,
+    "type": 1,
+    "content": "都是我的失职，才害得您被安排额外任务！还导致您陷入危险之中……",
+    "name": "职员菲娜",
+    "avatar": "508601",
+    "chessId": 1
+  },
+  {
+    "groupId": 14,
+    "id": 14003,
+    "type": 2,
+    "content": "这没什么，我可是优秀的特派调查员玛蒂尔达，助人为乐是我应做的。",
+    "name": "玛蒂尔达",
+    "avatar": "304101",
+    "chessId": 2
+  },
+  {
+    "groupId": 14,
+    "id": 14004,
+    "type": 1,
+    "content": "但我听说您非常期待这次去77号公路的任务……而我害您的任务取消了……",
+    "name": "职员菲娜",
+    "avatar": "508601",
+    "chessId": 1
+  },
+  {
+    "groupId": 14,
+    "id": 14005,
+    "type": 2,
+    "content": "没有关系，我是个心胸开阔的人，换成任何人去执行任务都不会影响到我的心情。",
+    "name": "玛蒂尔达",
+    "avatar": "304101",
+    "chessId": 2
+  },
+  {
+    "groupId": 14,
+    "id": 14006,
+    "type": 2,
+    "content": "反而是我的继任者，他们应该担心能否顺利完成曾属于特派调查员玛蒂尔达的任务！",
+    "name": "玛蒂尔达",
+    "avatar": "304101",
+    "chessId": 2
+  },
+  {
+    "groupId": 14,
+    "id": 14007,
+    "type": 1,
+    "content": "这方面请不用担心，您的任务已经被委派给了司辰去执行，我想可以说是万无一失。",
+    "name": "职员菲娜",
+    "avatar": "508601",
+    "chessId": 1
+  },
+  {
+    "groupId": 14,
+    "id": 14008,
+    "type": 2,
+    "content": "什么？！",
+    "name": "玛蒂尔达",
+    "avatar": "304101",
+    "chessId": 2
+  },
+  {
+    "groupId": 14,
+    "id": 14009,
+    "type": 1,
+    "content": "具体来说，关于77号公路的任务已经被委派给了司辰和红弩箭女士，非常稳妥的两人组合，我想您大可放心。",
+    "name": "职员菲娜",
+    "avatar": "508601",
+    "chessId": 1
+  },
+  {
+    "groupId": 14,
+    "id": 14010,
+    "type": 2,
+    "content": "噢……哼！那当然，虽然不如我，但维尔汀处理一个寻人任务还是没问题的！",
+    "name": "玛蒂尔达",
+    "avatar": "304101",
+    "chessId": 2
+  },
+  {
+    "groupId": 14,
+    "id": 14011,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 15,
+    "id": 15001,
+    "type": 1,
+    "content": "*咀嚼声*，墨西哥卷的味道没变，我爱这旧金山。",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15002,
+    "type": 2,
+    "content": "你难得回一趟旧金山，要做的第一件事就是拉上我来吃墨西哥卷？",
+    "name": "杰克",
+    "avatar": "513801",
+    "chessId": 2
+  },
+  {
+    "groupId": 15,
+    "id": 15003,
+    "type": 1,
+    "content": "是你在信上说这家店换了主人，才害我怎么也坐不住。",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15004,
+    "type": 1,
+    "content": "不过现在我放心了，J干得还不错。",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15005,
+    "type": 2,
+    "content": "J也不在了，现在的头是莱格斯了。",
+    "name": "杰克",
+    "avatar": "513801",
+    "chessId": 2
+  },
+  {
+    "groupId": 15,
+    "id": 15006,
+    "type": 1,
+    "content": "这些当头头的换得可真是勤快*咀嚼声*",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15007,
+    "type": 1,
+    "content": "那么后巷那面墙呢？它还在么？",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15008,
+    "type": 2,
+    "content": "在，只是你我当年留的涂鸦早就被盖过去了。",
+    "name": "杰克",
+    "avatar": "625201",
+    "chessId": 2
+  },
+  {
+    "groupId": 15,
+    "id": 15009,
+    "type": 2,
+    "content": "现在只剩年轻人留下的杰作了。",
+    "name": "杰克",
+    "avatar": "513801",
+    "chessId": 2
+  },
+  {
+    "groupId": 15,
+    "id": 15010,
+    "type": 1,
+    "content": "*吞咽声*走走走，带我去看看，要是画得不好看我就给他们都刮了。",
+    "name": "汤姆",
+    "avatar": "625201",
+    "chessId": 1
+  },
+  {
+    "groupId": 15,
+    "id": 15011,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 16,
+    "id": 16001,
+    "type": 1,
+    "content": "哦！圣保罗，我可爱的城市。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16002,
+    "type": 1,
+    "content": "在湿热的雨林冒险花了太多时间，我的帆索快长出蘑菇来了。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16003,
+    "type": 1,
+    "content": "老规矩，靠港的第一件事，先补足淡水和食物。如何，船长？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16004,
+    "type": 1,
+    "content": "……啊哈。我总是忘记，你不再需要它们了，亲爱的。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16005,
+    "type": 1,
+    "content": "但这里有个开阔明亮的院落，正适合除锈和补漆，要是能弄到一些桐油就更好了。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16006,
+    "type": 2,
+    "content": "站住，入侵者！把手举起来。",
+    "name": "芝诺精锐",
+    "avatar": "518301",
+    "chessId": 2
+  },
+  {
+    "groupId": 16,
+    "id": 16007,
+    "type": 1,
+    "content": "喔，老天。猜猜我闯到什么地方了。一个海盗把自己送到了官兵手上！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16008,
+    "type": 1,
+    "content": "您是指这只手吗？她是我的朋友，要我“举手”得问问她本人的意思。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16009,
+    "type": 2,
+    "content": "无论你是什么，表明你的身份！",
+    "name": "芝诺精锐",
+    "avatar": "518301",
+    "chessId": 2
+  },
+  {
+    "groupId": 16,
+    "id": 16010,
+    "type": 1,
+    "content": "别着急，我马上就告诉你。立刻就说，没错，就是现在——跑！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16011,
+    "type": 1,
+    "content": "……糟糕，别这样，该死的警报铃。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 16,
+    "id": 16012,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 17,
+    "id": 17001,
+    "type": 1,
+    "content": "不过是个小小的方形院子，拿骚港的码头浮桥都要比这大些。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 17,
+    "id": 17002,
+    "type": 1,
+    "content": "迷路？简直是天方夜谭。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 17,
+    "id": 17003,
+    "type": 1,
+    "content": "只要看一眼罗盘上那根跳动的可爱指针，一切就都搞定了。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 17,
+    "id": 17004,
+    "type": 1,
+    "content": "所以……",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 17,
+    "id": 17005,
+    "type": 1,
+    "content": "为什么这条也是死路！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 17,
+    "id": 17006,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 18,
+    "id": 18001,
+    "type": 1,
+    "content": "咱们还是进来了。武器、压缩饼干、崭新的罗盘，还有酒。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 18,
+    "id": 18002,
+    "type": 1,
+    "content": "哦，老安妮准没见过这个：航空燃料！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 18,
+    "id": 18003,
+    "type": 1,
+    "content": "20世纪的船，已经可以在天上飞了。那会是什么感觉？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 18,
+    "id": 18004,
+    "type": 1,
+    "content": "嘘——进来了个小毛贼。他可没有咱们这样的好运和伪装。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 18,
+    "id": 18005,
+    "type": 2,
+    "content": "关于天使兄弟会的提议，那位大人考虑得如何了？",
+    "name": "兄弟会信徒",
+    "avatar": "503201",
+    "chessId": 2
+  },
+  {
+    "groupId": 18,
+    "id": 18006,
+    "type": 2,
+    "content": "你不妨保持乐观，事情安排得很顺利。但我暂时不会给你准确的答复。",
+    "name": "芝诺军官",
+    "avatar": "519501",
+    "chessId": 3
+  },
+  {
+    "groupId": 18,
+    "id": 18007,
+    "type": 1,
+    "content": "真过分，原来他们不是对每一位访客都那么粗鲁。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 18,
+    "id": 18008,
+    "type": 2,
+    "content": "你先将东西拿回……等等。",
+    "name": "芝诺军官",
+    "avatar": "519501",
+    "chessId": 3
+  },
+  {
+    "groupId": 18,
+    "id": 18009,
+    "type": 2,
+    "content": "此前交换的信物里，有这个瓶子吗？",
+    "name": "芝诺军官",
+    "avatar": "519501",
+    "chessId": 3
+  },
+  {
+    "groupId": 18,
+    "id": 18010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 19,
+    "id": 19001,
+    "type": 1,
+    "content": "小姐，停一下，停一下！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 19,
+    "id": 19002,
+    "type": 1,
+    "content": "我不是个玩具，只是误入了仓库。您将我颠来倒去，弄得船舱都要进水啦。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 19,
+    "id": 19003,
+    "type": 2,
+    "content": "噢！意识唤醒者……是哪一部分，瓶子？骨头？还是海盗船？",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19004,
+    "type": 1,
+    "content": "不不不！您可以叫我安妮兄弟，或者渡渡公爵，随您喜欢。但我不是海盗船。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 19,
+    "id": 19005,
+    "type": 2,
+    "content": "是吗？真遗憾，安妮兄弟。",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19006,
+    "type": 2,
+    "content": "我还指望你教我几句海盗的黑话，好让我在圣像游行上耍帅呢。",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19007,
+    "type": 1,
+    "content": "咳咳……！如果你想听的话，我倒是有很多海盗故事可讲。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 19,
+    "id": 19008,
+    "type": 2,
+    "content": "那太好了。",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19009,
+    "type": 2,
+    "content": "可惜现在不是听故事的时候，我还有任务在身。",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19010,
+    "type": 2,
+    "content": "不如你跟我一块儿去吧！咱们可以路上聊。",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 19,
+    "id": 19011,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 20,
+    "id": 20001,
+    "type": 2,
+    "content": "顺利返航！",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 20,
+    "id": 20002,
+    "type": 1,
+    "content": "哦呼——！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 20,
+    "id": 20003,
+    "type": 2,
+    "content": "安妮兄弟，这次多亏你帮了大忙。等我跟老爹打个招呼，就送你回……",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 20,
+    "id": 20004,
+    "type": 2,
+    "content": "洛佩拉。",
+    "name": "伊戈尔",
+    "avatar": "516401",
+    "chessId": 3
+  },
+  {
+    "groupId": 20,
+    "id": 20005,
+    "type": 2,
+    "content": "抓住那艘小船。",
+    "name": "伊戈尔",
+    "avatar": "516401",
+    "chessId": 3
+  },
+  {
+    "groupId": 20,
+    "id": 20006,
+    "type": 2,
+    "content": "将、将军！",
+    "name": "洛佩拉",
+    "avatar": "310201",
+    "chessId": 2
+  },
+  {
+    "groupId": 20,
+    "id": 20007,
+    "type": 2,
+    "content": "我已经看了报告。一艘溜进仓库的玩具船。",
+    "name": "伊戈尔",
+    "avatar": "516401",
+    "chessId": 3
+  },
+  {
+    "groupId": 20,
+    "id": 20008,
+    "type": 2,
+    "content": "孩子，你与小贩、盲流和混混相处得很开心，这次又是一个小偷？",
+    "name": "伊戈尔",
+    "avatar": "516401",
+    "chessId": 3
+  },
+  {
+    "groupId": 20,
+    "id": 20009,
+    "type": 1,
+    "content": "呃，老安妮，我们又摊上麻烦了。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 20,
+    "id": 20010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 21,
+    "id": 21001,
+    "type": 1,
+    "content": "那位将军的脸真是够臭的，还好让我跑回来了。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 21,
+    "id": 21002,
+    "type": 1,
+    "content": "瞧那些亲爱的河流和彩色房屋，那些栈桥上的钓鱼佬，这才是适合一艘大船的落脚之处！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 21,
+    "id": 21003,
+    "type": 1,
+    "content": "……好吧，更适合四人划艇和独木舟。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 21,
+    "id": 21004,
+    "type": 2,
+    "content": "嗨！白朗姆！",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 21,
+    "id": 21005,
+    "type": 1,
+    "content": "老邓肯！现在不是钓鱼时间吗，怎么这么匆忙？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 21,
+    "id": 21006,
+    "type": 2,
+    "content": "白朗姆，那边那边！帮我抓住那边的滑头小子！",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 21,
+    "id": 21007,
+    "type": 1,
+    "content": "这不是常在街口卖香蕉的那孩子吗，他干什么蠢事啦？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 21,
+    "id": 21008,
+    "type": 2,
+    "content": "最近这条街总有人溜门撬锁，终于让我逮了个现行。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 21,
+    "id": 21009,
+    "type": 2,
+    "content": "来，替他的爸妈教他学学好！",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 21,
+    "id": 21010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 22,
+    "id": 22001,
+    "type": 1,
+    "content": "啊哈！棋子全部离盘，我又拿下一局。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 22,
+    "id": 22002,
+    "type": 1,
+    "content": "怎么样？用来打发海上平静时光的可不止骰子和酒。“红手”爱德华活着的时候可爱玩这个啦，但他总赢不过老安妮。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 22,
+    "id": 22003,
+    "type": 2,
+    "content": "嗯。今天幸运女神站在你那边，小船儿。",
+    "name": "荣军院老人",
+    "avatar": "519901",
+    "chessId": 2
+  },
+  {
+    "groupId": 22,
+    "id": 22004,
+    "type": 2,
+    "content": "一、二、三……等等，你离盘的棋子怎么只有14颗？一定是算错啦。我还有机会！",
+    "name": "荣军院老人",
+    "avatar": "519901",
+    "chessId": 2
+  },
+  {
+    "groupId": 22,
+    "id": 22005,
+    "type": 1,
+    "content": "再数数，一定没错。我去帮你把老花镜拿来。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 22,
+    "id": 22006,
+    "type": 2,
+    "content": "老花镜可不够用，恐怕得拿上扫把，甚至手枪——你们没看见吗？有颗棋子叫那群卡邦克鲁给叼走啦！",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 22,
+    "id": 22007,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 23,
+    "id": 23001,
+    "type": 1,
+    "content": "瞧，这儿有位落单的小小姐。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23002,
+    "type": 1,
+    "content": "一般说来，这个时候邀请她上船，载她一程，就会有一些开心事儿发生。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23003,
+    "type": 1,
+    "content": "小姐！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23004,
+    "type": 2,
+    "content": "嘘——你瞧！",
+    "name": "苏芙比",
+    "avatar": "300901",
+    "chessId": 2
+  },
+  {
+    "groupId": 23,
+    "id": 23005,
+    "type": 2,
+    "content": "这儿有几只萨尔玛提克蜗！有了它们，就能帮大家做出丛林迷彩变色药剂啦。",
+    "name": "苏芙比",
+    "avatar": "300901",
+    "chessId": 2
+  },
+  {
+    "groupId": 23,
+    "id": 23006,
+    "type": 1,
+    "content": "如果你要的是它们含硫的黏液，那还是劝你放弃吧，大西洋的变种提炼不出那个。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23007,
+    "type": 1,
+    "content": "它与萨尔玛提克蜗太过相似，可让一些博物学家伤透了脑筋，哈哈！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23008,
+    "type": 1,
+    "content": "另外小姐，穿着这样一身华贵的裙子，待在贫民区的木头栈桥上可不是安全之举。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23009,
+    "type": 1,
+    "content": "快跟我来，如果你还想保住钱包的话。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 23,
+    "id": 23010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 24,
+    "id": 24001,
+    "type": 1,
+    "content": "那天，我送了小小姐一程。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 24,
+    "id": 24002,
+    "type": 1,
+    "content": "你猜她要去哪儿？嘿，竟然是芝诺的基地。真是哪壶不开提哪壶。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 24,
+    "id": 24003,
+    "type": 2,
+    "content": "哈哈！你怎么对付的？",
+    "name": "荣军院老人",
+    "avatar": "519901",
+    "chessId": 2
+  },
+  {
+    "groupId": 24,
+    "id": 24004,
+    "type": 1,
+    "content": "还好在半道儿上碰到了那位洛佩拉。在我坦白之前，她还一直管我叫安妮兄弟呢！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 24,
+    "id": 24005,
+    "type": 2,
+    "content": "小船儿，小船儿！",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 24,
+    "id": 24006,
+    "type": 2,
+    "content": "卖报的刚刚跟我说，老邓肯和人动起手来啦。",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 24,
+    "id": 24007,
+    "type": 1,
+    "content": "谁会跟老邓肯动手？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 24,
+    "id": 24008,
+    "type": 2,
+    "content": "还记得常在鱼市上吹牛的纳西布吗？他家的混小子偷走了全部家当，跟天使兄弟会混去啦。",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 24,
+    "id": 24009,
+    "type": 2,
+    "content": "老邓肯听了，立马丢下鱼竿追那小子去了。",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 24,
+    "id": 24010,
+    "type": 1,
+    "content": "噢，这可不妙。最近来到圣保罗的新面孔有点多，难说哪些是他们的人。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 24,
+    "id": 24011,
+    "type": 2,
+    "content": "小船儿，你赶紧带点帮手过去吧，赶紧！",
+    "name": "玛丽安娜奶奶",
+    "avatar": "518401",
+    "chessId": 3
+  },
+  {
+    "groupId": 24,
+    "id": 24012,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 25,
+    "id": 25001,
+    "type": 2,
+    "content": "平和的日子就是长久不了，最近圣保罗的生面孔实在有点多。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25002,
+    "type": 2,
+    "content": "先是可疑的重塑之手，又是黑帮倾巢出动，然后是基金会的司辰，像一只落水的小鸟儿。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25003,
+    "type": 2,
+    "content": "还好，维尔汀，你们不追捕海盗。我已经编不出新名字啦。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25004,
+    "type": 1,
+    "content": "我想……20世纪末的官方，已经不太关心私掠许可证的事了。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 0
+  },
+  {
+    "groupId": 25,
+    "id": 25005,
+    "type": 1,
+    "content": "当然，谨慎是个好习惯。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 0
+  },
+  {
+    "groupId": 25,
+    "id": 25006,
+    "type": 2,
+    "content": "你知道吗？你拥有一个船长需要的气质。冷静，勇敢，还看得见藏在水下的暗礁。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25007,
+    "type": 2,
+    "content": "哈，虽然你和老安妮一点儿也不一样！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25008,
+    "type": 2,
+    "content": "接下来咱们还要面对很多敌人，我真想酣畅淋漓地开上几炮。这样吧，指挥权就交给你了！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 25,
+    "id": 25009,
+    "type": 1,
+    "content": "感谢你的信任。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 0
+  },
+  {
+    "groupId": 25,
+    "id": 25010,
+    "type": 1,
+    "content": "目前，只需些许调整，我们便能取得有利的局面。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 0
+  },
+  {
+    "groupId": 25,
+    "id": 25011,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 26,
+    "id": 26001,
+    "type": 1,
+    "content": "嗨，老安妮。你还记得那次大战“金鸸鹋”号的事儿吗？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26002,
+    "type": 1,
+    "content": "咱们明明大获全胜，结果舵手杰克在庆功宴上喝了个烂醉，开进了风暴里。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26003,
+    "type": 1,
+    "content": "——就像现在这样！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26004,
+    "type": 1,
+    "content": "一夜之间，什么也不剩。就连那该死的芝诺基地也变成了一座坟墓。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26005,
+    "type": 2,
+    "content": "白朗姆！",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 26,
+    "id": 26006,
+    "type": 2,
+    "content": "你在那儿叹什么气呢？快过来，咱们正需要一艘足够大的航船。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 26,
+    "id": 26007,
+    "type": 1,
+    "content": "老邓肯！你从哪儿找来这么多人？！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26008,
+    "type": 2,
+    "content": "就在圣保罗。这些正义的小伙子们本来就生活在这儿，未来也不会离开。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 26,
+    "id": 26009,
+    "type": 2,
+    "content": "总得有人站出来，给天使兄弟会那些蠢蠢欲动的恶棍一个教训。",
+    "name": "加莱亚诺",
+    "avatar": "518101",
+    "chessId": 3
+  },
+  {
+    "groupId": 26,
+    "id": 26010,
+    "type": 1,
+    "content": "噢……亲爱的邓肯先生。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26011,
+    "type": 1,
+    "content": "我从未如此希望，这条水路能再宽阔些。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 26,
+    "id": 26012,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 27,
+    "id": 27001,
+    "type": 1,
+    "content": "之前你就是在这儿营救的医生？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 27,
+    "id": 27002,
+    "type": 2,
+    "content": "就是这儿。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 27,
+    "id": 27003,
+    "type": 2,
+    "content": "这次我们带上了更多勇敢的小伙子，他们都想用圣保罗的方式捍卫家园的秩序。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 27,
+    "id": 27004,
+    "type": 2,
+    "content": "邓肯先生，咱们都听你的指挥。",
+    "name": "加莱亚诺",
+    "avatar": "518101",
+    "chessId": 3
+  },
+  {
+    "groupId": 27,
+    "id": 27005,
+    "type": 1,
+    "content": "可天使兄弟会从哪儿找的这些人？遮着脑袋的、滴着黑油的，还有许多咱们从没见过的外地面孔。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 27,
+    "id": 27006,
+    "type": 2,
+    "content": "该死，上次我和洛佩拉来的时候，这儿可没那么多人。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 27,
+    "id": 27007,
+    "type": 2,
+    "content": "记得别跟他们硬碰硬，把你们的机灵劲儿都用上！",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 27,
+    "id": 27008,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 28,
+    "id": 28001,
+    "type": 1,
+    "content": "你听见他们的布道了吗？",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 28,
+    "id": 28002,
+    "type": 1,
+    "content": "关于试炼、恩典，还说有什么要吞没世界……",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 28,
+    "id": 28003,
+    "type": 1,
+    "content": "老天爷，为什么政府不逮捕他们而老针对我们海盗呢？海盗可不想毁灭世界！",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 28,
+    "id": 28004,
+    "type": 2,
+    "content": "原来就是这样的鬼话，将圣保罗的年轻人骗得团团转。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 28,
+    "id": 28005,
+    "type": 2,
+    "content": "可惜对于我这样没几年奔头的老头子来说……",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 28,
+    "id": 28006,
+    "type": 2,
+    "content": "如果世界要被一场大洪水冲刷干净，那我只想坐在吱吱喳喳的浮桥上，那个我钓鱼的地方。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 28,
+    "id": 28007,
+    "type": 2,
+    "content": "和大伙儿一起，看看圣保罗最后的模样。",
+    "name": "邓肯先生",
+    "avatar": "310301",
+    "chessId": 2
+  },
+  {
+    "groupId": 28,
+    "id": 28008,
+    "type": 1,
+    "content": "说真的，要是幸存的代价就是变成一个新的流油脑袋，或者流油瓶子……",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 28,
+    "id": 28009,
+    "type": 1,
+    "content": "那我宁愿掉进加勒比海的风暴眼里。",
+    "name": "白朗姆",
+    "avatar": "310101",
+    "chessId": 1
+  },
+  {
+    "groupId": 28,
+    "id": 28010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 29,
+    "id": 29001,
+    "type": 1,
+    "content": "我会想你们的，可燃点、爱兹拉、沙丝绒小姐——还有这片热情的红土地，以及我的假期！",
+    "name": "星锑",
+    "avatar": "302510",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29002,
+    "type": 2,
+    "content": "我也会想你们的！来个告别的拥抱，朋友们！",
+    "name": "可燃点",
+    "avatar": "307311",
+    "chessId": 2
+  },
+  {
+    "groupId": 29,
+    "id": 29003,
+    "type": 1,
+    "content": "朋友！",
+    "name": "星锑",
+    "avatar": "302510",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29004,
+    "type": 2,
+    "content": "都轻点、轻点！这个造型还得维持到我卖完最后一份《乌卢鲁往事大揭秘》《如何抢到最前排门票》呢……",
+    "name": "沙丝绒",
+    "avatar": "307515",
+    "chessId": 4
+  },
+  {
+    "groupId": 29,
+    "id": 29005,
+    "type": 1,
+    "content": "船长，请照顾好自己。",
+    "name": "APPLe",
+    "avatar": "302801",
+    "chessId": 0
+  },
+  {
+    "groupId": 29,
+    "id": 29006,
+    "type": 1,
+    "content": "但愿在你回来以前，APPLe某已经从事务繁重的光学实验室里解脱出来了。",
+    "name": "APPLe",
+    "avatar": "302801",
+    "chessId": 0
+  },
+  {
+    "groupId": 29,
+    "id": 29007,
+    "type": 1,
+    "content": "这都是为了援助经费！大副，我们不得不忍痛说再见了……",
+    "name": "星锑",
+    "avatar": "302510",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29008,
+    "type": 2,
+    "content": "没必要太过伤感，各位很快就会再见面的。科算中心的各个分部每年都有不少交流学习的机会。",
+    "name": "爱兹拉",
+    "avatar": "307411",
+    "chessId": 3
+  },
+  {
+    "groupId": 29,
+    "id": 29009,
+    "type": 1,
+    "content": "是吗……？",
+    "name": "星锑",
+    "avatar": "302510",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29010,
+    "type": 2,
+    "content": "当然。所有的正式员工都能在内部论坛的[部门之声]版面里下载一份申请表，经由组长审批后，它会进入人事部门的登记队列，之后只需要……",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 3
+  },
+  {
+    "groupId": 29,
+    "id": 29011,
+    "type": 1,
+    "content": "停、停停——！我不想把工作内容刻在告别回忆里！",
+    "name": "星锑",
+    "avatar": "302513",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29012,
+    "type": 2,
+    "content": "你说得对，以及我还有一个提议。",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 3
+  },
+  {
+    "groupId": 29,
+    "id": 29013,
+    "type": 1,
+    "content": "什么？",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 1
+  },
+  {
+    "groupId": 29,
+    "id": 29014,
+    "type": 2,
+    "content": "我想我们应该分开了，在公众场合拥抱太久容易吸引人们围观从而导致交通堵塞。",
+    "name": "爱兹拉",
+    "avatar": "307401",
+    "chessId": 3
+  },
+  {
+    "groupId": 29,
+    "id": 29015,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 30,
+    "id": 30001,
+    "type": 1,
+    "content": "很遗憾，芭卡洛儿小姐。恐怕我不能允许这位女士登船。",
+    "name": "船长",
+    "avatar": "624911",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30002,
+    "type": 2,
+    "content": "……为什么？！",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30003,
+    "type": 2,
+    "content": "所有游客应该都支付了一切船旅费用，而且职业与出海理由也完全符合规定。",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30004,
+    "type": 1,
+    "content": "不是所有人的职业都符合规定，听听这位星锑女士的自我介绍吧。",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30005,
+    "type": 1,
+    "content": "“一位来自知名科研机构拉普拉斯的炼金术学者！”",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30006,
+    "type": 1,
+    "content": "“一位摇滚精神的传承人！！”",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30007,
+    "type": 1,
+    "content": "“一位曾占领泰晤士河与伦敦沿岸所有电台频率的海盗！！！”",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30008,
+    "type": 2,
+    "content": "……",
+    "name": "芭卡洛儿",
+    "avatar": "310813",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30009,
+    "type": 1,
+    "content": "芭卡洛儿小姐，你可能并不了解，在遥远的60年代，有一位摇滚海盗同样有着相同的名字，她在泰晤士河进行非法广播，热衷于同英国广播台与唱片公司为敌，最后，她被英国政府颁布新法取缔了。",
+    "name": "船长",
+    "avatar": "624910",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30010,
+    "type": 1,
+    "content": "虽然英国政府的通缉已经取消了，但让这种人登船可能会影响“自由海风号”的声誉。",
+    "name": "船长",
+    "avatar": "624910",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30011,
+    "type": 2,
+    "content": "这不可能，我亲自见过这位星锑，以她的年龄，她不可能经历过60年代。",
+    "name": "芭卡洛儿",
+    "avatar": "310817",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30012,
+    "type": 1,
+    "content": "年轻的模仿犯一样危险，如果她效仿自己的偶像在公海上做出出格举动的话怎么办？",
+    "name": "船长",
+    "avatar": "624910",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30013,
+    "type": 2,
+    "content": "我相信她不会做出这种事！",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30014,
+    "type": 1,
+    "content": "摇滚海盗最常做的事就是在未经授权的情况下广播其他人的音乐，他们对版权的独到理解足以令他们被视为音乐家的敌人了，你为什么这么替她说话？",
+    "name": "船长",
+    "avatar": "624910",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30015,
+    "type": 2,
+    "content": "我确认过她对音乐的热爱，这样的人不该被视为音乐家的敌人，而且只以名字和自称判断一个人的品德是不正确的。",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30016,
+    "type": 2,
+    "content": "如果船长您还是放心不下……我可以亲自监督她，防止她进入广播室之类的地方乱来。",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30017,
+    "type": 2,
+    "content": "她若是真的做出有损“自由海风号”名誉的行为——我、我愿意与她和啪唧匣子一同被扔下船！",
+    "name": "芭卡洛儿",
+    "avatar": "310811",
+    "chessId": 2
+  },
+  {
+    "groupId": 30,
+    "id": 30018,
+    "type": 1,
+    "content": "呵呵，放轻松，我的女士，这只是一次例行审查。既然你如此信任她，我就不再多问什么了。",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30019,
+    "type": 1,
+    "content": "也不用担心广播室了，我相信它会非常安全的。",
+    "name": "船长",
+    "avatar": "624901",
+    "chessId": 1
+  },
+  {
+    "groupId": 30,
+    "id": 30020,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 31,
+    "id": 31001,
+    "type": 1,
+    "content": "这是？",
+    "name": "哑谜",
+    "avatar": "512911",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31002,
+    "type": 2,
+    "content": "“混沌吼叫匣”。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31003,
+    "type": 2,
+    "content": "洛伦兹蝴蝶随信附上了这台吼叫仪。其中采用了大量的神秘学素材，却不涉及任何现存的科学技术。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31004,
+    "type": 1,
+    "content": "就用这个？一个长满突触的黑眼球，还有一张嘴巴？",
+    "name": "哑谜",
+    "avatar": "512911",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31005,
+    "type": 1,
+    "content": "我猜猜，它是不是启动条件苛刻、实验结果难以复现，而且运行方式相当出格？",
+    "name": "哑谜",
+    "avatar": "512911",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31006,
+    "type": 2,
+    "content": "粗略来说，是的。将它唤醒后，它会通过某种特殊的交感，或者说“灵知”，感受四周，发出吼叫。不同的分贝指示着超自然现象的不同可能性。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31007,
+    "type": 1,
+    "content": "符合他们的风格。",
+    "name": "哑谜",
+    "avatar": "512901",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31008,
+    "type": 2,
+    "content": "我们对“暴雨”的认知仍然很浅薄。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31009,
+    "type": 2,
+    "content": "洛伦兹研究所提供了一个看待问题的全新角度：“暴雨”并非一种现象，而是混沌能量的消长。他们所熟知的“灵性”确实是一种合适的理解方式。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31010,
+    "type": 1,
+    "content": "看来你们在骚扰信里聊得还挺投机，你们是不是就要联合提交一篇新的论文了？",
+    "name": "哑谜",
+    "avatar": "512901",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31011,
+    "type": 1,
+    "content": "例如，给非对称核素R换个名头，就叫它“混沌分子”，于是这个月部门的科研指标就有着落了。",
+    "name": "哑谜",
+    "avatar": "512901",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31012,
+    "type": 2,
+    "content": "……我们必须得承认，洛伦兹研究所的成果能够对“人工暴雨”研究产生莫大的帮助。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31013,
+    "type": 2,
+    "content": "在第三、第六以及第七次暴雨来临前，洛伦兹蝴蝶都在信中预言了若干个可能出现超自然现象反应的高频坐标。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31014,
+    "type": 2,
+    "content": "在委外合约人才管理组织成员的协助下，我确认了示意区域的状态，尽管与“暴雨”的核心区域不完全吻合，但那些坐标区域确实出现了超自然现象的并发现象。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31015,
+    "type": 2,
+    "content": "我们都是研究人员，站在他人的肩膀上并不是什么值得羞愧的事。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31016,
+    "type": 1,
+    "content": "是的，但对于研究人员来说，“不完全”和“出现了”还不能构成一篇可信的报告。",
+    "name": "哑谜",
+    "avatar": "512901",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31017,
+    "type": 2,
+    "content": "如果你想要数据的话，P值低达0.012，相关性是显著的。这个“黑箱”的输入和结果经得起验证。",
+    "name": "乌尔里希",
+    "avatar": "515601",
+    "chessId": 2
+  },
+  {
+    "groupId": 31,
+    "id": 31018,
+    "type": 1,
+    "content": "很好，很好。",
+    "name": "哑谜",
+    "avatar": "512910",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31019,
+    "type": 1,
+    "content": "马上整个洛伦兹研究所都会知道，我们的智商倒退得比时间快多了。",
+    "name": "哑谜",
+    "avatar": "512901",
+    "chessId": 1
+  },
+  {
+    "groupId": 31,
+    "id": 31020,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 32,
+    "id": 32001,
+    "type": 2,
+    "content": "既然我是你的教官，就得保证你不会在外面丢我的脸。",
+    "name": "波蒂埃",
+    "avatar": "630401",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32002,
+    "type": 2,
+    "content": "洛杉矶神秘学警察的基本行动指导，你上任前看了么？",
+    "name": "波蒂埃",
+    "avatar": "630401",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32003,
+    "type": 1,
+    "content": "是！首先，所有警务行动都应当且必须被限制在洛杉矶行政区划内。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32004,
+    "type": 1,
+    "content": "其次，应当制定合理且优异的计划、程序与战术战略，从而减少神秘学犯罪和神秘学犯罪倾向，提高市民生活质量，保证人类与神秘学家的关系融洽并不断优化……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32005,
+    "type": 2,
+    "content": "……",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32006,
+    "type": 1,
+    "content": "行政程序311-09，当遭遇涉及神秘学的民事纠纷时，应以调节为主，努力排除过程中的神秘学因素影响，为市民提供合理的专家建议，极力回避一切可能激化矛盾的行为……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32007,
+    "type": 2,
+    "content": "……天呐，优等生。",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32008,
+    "type": 1,
+    "content": "行政程序320-05，当发生涉及神秘学的刑事案件时，除收到案情报告而出警的警员外，在附近的神秘学警察应尽可能给予支援，努力将市民受到的损害最小化……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32009,
+    "type": 2,
+    "content": "……你干脆去督察组报道吧！",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32010,
+    "type": 2,
+    "content": "总之记好不管大事小事，和神秘学沾上边就会轮到我们这群“神秘学条子”出动就行了。",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32011,
+    "type": 2,
+    "content": "不过也别太紧张，小事还是比大事多得多的。",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32012,
+    "type": 1,
+    "content": "好的，波蒂埃教官，剩下的部分不用背了吗？",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32013,
+    "type": 2,
+    "content": "剩下的部分？最后一节的内容我还是记得住的，应该没……",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32014,
+    "type": 1,
+    "content": "还有因公受伤及殉职的补偿部分……",
+    "name": "梁月",
+    "avatar": "311014",
+    "chessId": 1
+  },
+  {
+    "groupId": 32,
+    "id": 32015,
+    "type": 2,
+    "content": "不用了！",
+    "name": "波蒂埃",
+    "avatar": "630407",
+    "chessId": 2
+  },
+  {
+    "groupId": 32,
+    "id": 32016,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 33,
+    "id": 33001,
+    "type": 2,
+    "content": "菜鸟，你的变色龙通信器呢？弄丢了？",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33002,
+    "type": 1,
+    "content": "我想它应该还在……你看，就在这儿，只是隐身了。",
+    "name": "梁月",
+    "avatar": "311010",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33003,
+    "type": 1,
+    "content": "或许是强梁现身吓到了它，所以躲起来了。",
+    "name": "梁月",
+    "avatar": "311010",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33004,
+    "type": 2,
+    "content": "强梁就是刚才那只电老虎？它住在你的电话里？",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33005,
+    "type": 1,
+    "content": "这只大哥大是我第一次召唤强梁时用的祭器，也就成了我和强梁之间的信物。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33006,
+    "type": 1,
+    "content": "只有我用这大哥大呼叫强梁，强梁才会回应。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33007,
+    "type": 2,
+    "content": "酷哎，和我在电视上看到的一模一样。",
+    "name": "波蒂埃",
+    "avatar": "630405",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33008,
+    "type": 2,
+    "content": "不过你们居然用电话进行仪式，我还以为你们东方的仪式会更加……",
+    "name": "波蒂埃",
+    "avatar": "630403",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33009,
+    "type": 2,
+    "content": "古典？就像那种在布后面操控小人跳舞的感觉？",
+    "name": "波蒂埃",
+    "avatar": "630410",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33010,
+    "type": 1,
+    "content": "你没有说错，百年前的上一代传人确实是用皮影戏召唤的强梁。",
+    "name": "梁月",
+    "avatar": "311015",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33011,
+    "type": 2,
+    "content": "噢？所以你还是个百年一遇的奇才咯？",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33012,
+    "type": 1,
+    "content": "……这算不上什么奇才，我运气好而已。",
+    "name": "梁月",
+    "avatar": "311010",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33013,
+    "type": 2,
+    "content": "又来了，东方人特有的谦虚……",
+    "name": "波蒂埃",
+    "avatar": "630410",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33014,
+    "type": 2,
+    "content": "你能把那个强梁再召唤出来么？刚才多亏它帮忙，我该和它说声谢谢。",
+    "name": "波蒂埃",
+    "avatar": "630405",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33015,
+    "type": 1,
+    "content": "我不建议这么做，随便拨号吵醒强梁会惹它生气，而且……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33016,
+    "type": 2,
+    "content": "而且？",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 33,
+    "id": 33017,
+    "type": 1,
+    "content": "而且打给强梁的话费很贵。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 33,
+    "id": 33018,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 34,
+    "id": 34001,
+    "type": 2,
+    "content": "这下算是走进死胡同了，究竟还有什么是我们漏掉的线索？",
+    "name": "波蒂埃",
+    "avatar": "630406",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34002,
+    "type": 1,
+    "content": "长官，也许我们应该重新复查一下空脑袋包里的物品。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34003,
+    "type": 2,
+    "content": "那个空脑袋真是……背了那么多胶卷，唯独缺了最重要的一盘！",
+    "name": "波蒂埃",
+    "avatar": "630413",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34004,
+    "type": 2,
+    "content": "看看，她是打算开录像店吗？这么多电影胶卷！",
+    "name": "波蒂埃",
+    "avatar": "630413",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34005,
+    "type": 2,
+    "content": "嘿梁，你看看这上面是中文？",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34006,
+    "type": 1,
+    "content": "……长官，这是《奇门遁甲》，这一盘是《僵尸女士》，还有《阿癫正传》。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34007,
+    "type": 1,
+    "content": "都是香港知名的电影，只是不知道是空脑袋原本的收藏，还是来自菲林士多女士的礼物。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34008,
+    "type": 2,
+    "content": "老天，难不成我们得把这些都看一遍？时间可没有那么充裕了。",
+    "name": "波蒂埃",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34009,
+    "type": 1,
+    "content": "不，我想不必，这只是普通的电影胶卷，而且这些电影的情节与我们调查的事件无关。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34010,
+    "type": 2,
+    "content": "哈，差点忘了你也是会背着父母偷看电影的主，你的涉猎范围比我想象中大。",
+    "name": "波蒂埃",
+    "avatar": "630405",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34011,
+    "type": 2,
+    "content": "说说，除了C07外，这里面你最喜欢哪一部？",
+    "name": "波蒂埃",
+    "avatar": "630405",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34012,
+    "type": 1,
+    "content": "长官，时间不等人。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34013,
+    "type": 2,
+    "content": "无聊的回答，我就知道。",
+    "name": "波蒂埃",
+    "avatar": "630406",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34014,
+    "type": 1,
+    "content": "不过……如果事情了结了，也许您可以看看《僵尸女士》，这是香港神秘学电影的代表之作。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34015,
+    "type": 2,
+    "content": "噢……？好，我会记着的。",
+    "name": "波蒂诶",
+    "avatar": "630408",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34016,
+    "type": 2,
+    "content": "搜查结束，那盘胶片确实不在这里。",
+    "name": "波蒂诶",
+    "avatar": "630406",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34017,
+    "type": 1,
+    "content": "看来，我们是时候该进行另一个尝试了。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 34,
+    "id": 34018,
+    "type": 2,
+    "content": "是啊，直接去听听我们的大导演会有怎样的说法吧。",
+    "name": "波蒂埃",
+    "avatar": "630406",
+    "chessId": 2
+  },
+  {
+    "groupId": 34,
+    "id": 34019,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 35,
+    "id": 35001,
+    "type": 2,
+    "content": "所以后来发生了什么？在我倒下后，你们是怎样赶跑那个“针人”的？",
+    "name": "波蒂埃",
+    "avatar": "630412",
+    "chessId": 2
+  },
+  {
+    "groupId": 35,
+    "id": 35002,
+    "type": 1,
+    "content": "……她并不是被我赶走的，而是听到了您呼叫的增援赶来时呼啸的警笛声，于是便撤离了。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35003,
+    "type": 1,
+    "content": "来的是埃尔登警长，菲林士多导演用神秘术操控人偶为他们指引了方向，急救人员因此也及时赶到，将您和斯考特小姐送往了医院。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35004,
+    "type": 2,
+    "content": "那看来我们还得谢谢她。",
+    "name": "波蒂埃",
+    "avatar": "630401",
+    "chessId": 2
+  },
+  {
+    "groupId": 35,
+    "id": 35005,
+    "type": 1,
+    "content": "……抱歉，波蒂埃长官。我没能阻止奇星小姐，《三燕归巢》也被她夺走了……",
+    "name": "梁月",
+    "avatar": "311013",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35006,
+    "type": 1,
+    "content": "这是我的失职。",
+    "name": "梁月",
+    "avatar": "311013",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35007,
+    "type": 2,
+    "content": "别太苛责自己了，谁也没想到那个“针人”会突然出现。",
+    "name": "波蒂埃",
+    "avatar": "630401",
+    "chessId": 2
+  },
+  {
+    "groupId": 35,
+    "id": 35008,
+    "type": 2,
+    "content": "斯考特和癞皮狗现在怎么样了？",
+    "name": "波蒂埃",
+    "avatar": "630412",
+    "chessId": 2
+  },
+  {
+    "groupId": 35,
+    "id": 35009,
+    "type": 1,
+    "content": "癞皮狗已经被抓住并且成功收监，斯考特小姐经过抢救已经脱离了生命危险，但目前仍没有恢复意识。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35010,
+    "type": 1,
+    "content": "医生认为她昏迷不醒的原因和其他受害者一致，是受到了《三燕归巢》的影响。现在警局已经派人对斯考特小姐进行监视和保护，但恐怕在事件得到解决前，都很难指望她为我们提供更多的线索。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35011,
+    "type": 1,
+    "content": "至于菲林士多导演……抱歉长官，我没有来得及事前告诉您。是她告知了我关于那场非法神秘学物品交易的信息。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35012,
+    "type": 1,
+    "content": "尽管她同样是交易的参与者，但鉴于她的坦诚和协助，也鉴于她那位知名律师的努力……局里最终决定暂时对她意图非法购入神秘学物品的行为不予追究。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35013,
+    "type": 2,
+    "content": "啧，这就是大导演的力气和手段么，从罪犯到警方的帮手只要稍微动动嘴就好。",
+    "name": "波蒂埃",
+    "avatar": "630412",
+    "chessId": 2
+  },
+  {
+    "groupId": 35,
+    "id": 35014,
+    "type": 1,
+    "content": "我想我们应该找机会再和她谈谈，关于奇星小姐、关于那张胶片……也许还有什么事是她还没有告诉我们的。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 35,
+    "id": 35015,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 36,
+    "id": 36001,
+    "type": 2,
+    "content": "我跟你说了这么多故事，你也总得说些故事给我听听吧。",
+    "name": "菲林士多",
+    "avatar": "311111",
+    "chessId": 2
+  },
+  {
+    "groupId": 36,
+    "id": 36002,
+    "type": 2,
+    "content": "电影导演可不会轻易放手收集素材的机会，我对你的过去很好奇。",
+    "name": "菲林士多",
+    "avatar": "311111",
+    "chessId": 2
+  },
+  {
+    "groupId": 36,
+    "id": 36003,
+    "type": 2,
+    "content": "我听说你是不世出的天才，成功召唤出了三百年都未曾回应梁家祭祀的险道兽强梁。",
+    "name": "菲林士多",
+    "avatar": "311111",
+    "chessId": 2
+  },
+  {
+    "groupId": 36,
+    "id": 36004,
+    "type": 1,
+    "content": "……那不过是个误会。",
+    "name": "梁月",
+    "avatar": "311010",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36005,
+    "type": 2,
+    "content": "哦？",
+    "name": "菲林士多",
+    "avatar": "311112",
+    "chessId": 2
+  },
+  {
+    "groupId": 36,
+    "id": 36006,
+    "type": 1,
+    "content": "召唤出强梁的那一天，我不仅知道了它的名字，也看到了它的记忆。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36007,
+    "type": 1,
+    "content": "数百年前，强梁最后一次被召唤出来后，身负重伤。这些年来它一直都在休养，因此才迟迟没有回应梁家的召唤。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36008,
+    "type": 1,
+    "content": "我恰好是在它痊愈后第一个召唤的人。家里人以为是强梁选中了我，都对我寄予厚望。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36009,
+    "type": 1,
+    "content": "……但我从来不是什么天选之人，我只是运气好。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36010,
+    "type": 2,
+    "content": "梁家其他人知道这件事吗？",
+    "name": "菲林士多",
+    "avatar": "311112",
+    "chessId": 2
+  },
+  {
+    "groupId": 36,
+    "id": 36011,
+    "type": 1,
+    "content": "不，我没有说过。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36012,
+    "type": 1,
+    "content": "……我不想让他们失望。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 36,
+    "id": 36013,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 37,
+    "id": 37001,
+    "type": 1,
+    "content": "“在那个清晨，我们躺在废墟上，大姐递给我一瓶酒。我忽然想通了。我早就拥有了整个世界，只是没有去看。”",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37002,
+    "type": 1,
+    "content": "……你说得对，除掉胶片乱吃的那些段落，这的确会是一部好片子。",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37003,
+    "type": 2,
+    "content": "这台词是泰瑞莎的风格。房子可以重建，朋友之间的隔阂可以消弭。她一直热爱生活。",
+    "name": "菲林士多",
+    "avatar": "311111",
+    "chessId": 3
+  },
+  {
+    "groupId": 37,
+    "id": 37004,
+    "type": 2,
+    "content": "你也应该承认，这样的泰瑞莎不会自杀。",
+    "name": "菲林士多",
+    "avatar": "311111",
+    "chessId": 3
+  },
+  {
+    "groupId": 37,
+    "id": 37005,
+    "type": 1,
+    "content": "……你说得对。",
+    "name": "奇星",
+    "avatar": "630614",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37006,
+    "type": 1,
+    "content": "执夜人小姐，多谢。她的作品能以原本的样子重见天日，我很高兴，这都多亏了你和你的伙伴。",
+    "name": "奇星",
+    "avatar": "630613",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37007,
+    "type": 1,
+    "content": "关于强梁的事……我很抱歉。这并不是我原本的打算，但终究是我自我满足的任性行为导致了它的发生。",
+    "name": "奇星",
+    "avatar": "630612",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37008,
+    "type": 1,
+    "content": "如果有什么方法让我能够弥补这一切……",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37009,
+    "type": 1,
+    "content": "请不必介怀，奇星小姐。驱逐鬼疫原本就是我与强梁的使命。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37010,
+    "type": 1,
+    "content": "我听说你曾很喜欢那部电影，作为C07的演员……我一定让你失望了。",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37011,
+    "type": 1,
+    "content": "……我的确有些失望。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37012,
+    "type": 1,
+    "content": "但无论如何，C07仍然是我最喜欢的角色，这一点并不会改变。",
+    "name": "梁月",
+    "avatar": "311001",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37013,
+    "type": 1,
+    "content": "……谢谢你。",
+    "name": "奇星",
+    "avatar": "630611",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37014,
+    "type": 2,
+    "content": "稍等，阿星。在你和那几位警官离开之前，我和梁小姐还想向你确认一件事。",
+    "name": "菲林士多",
+    "avatar": "311101",
+    "chessId": 3
+  },
+  {
+    "groupId": 37,
+    "id": 37015,
+    "type": 1,
+    "content": "您的供词中……有一些地方令我十分在意。请别误会，我并不认为您在说谎，来自夜巡特遣的审讯专家也确认了这一点。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37016,
+    "type": 1,
+    "content": "但也许您自身也已经察觉到了，在您成为“针人”、夺取胶片并在随后于唐人街引发事件的这一系列过程中，您的动机的变动有些……蹊跷，就像是缺失了什么推动它们的关键碎片。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37017,
+    "type": 1,
+    "content": "这种缺失的情况和发生在斯考特小姐身上的记忆障碍十分相似。但您在神秘术上的造诣更胜一筹，也许您还能够从脑海中发掘出什么线索。",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37018,
+    "type": 1,
+    "content": "抱歉，我真的不记得了……",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37019,
+    "type": 1,
+    "content": "我只记得一切的起因，是我得到消息说本应早已纳入基金会管理下的《三燕归巢》流入了黑市。我参与了那个中间人组织的秘密竞拍，但遗憾落败。",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37020,
+    "type": 1,
+    "content": "除我之外还有谁会对那盘胶片如此执着？答案显而易见。",
+    "name": "奇星",
+    "avatar": "630612",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37021,
+    "type": 2,
+    "content": "我。",
+    "name": "菲林士多",
+    "avatar": "311110",
+    "chessId": 3
+  },
+  {
+    "groupId": 37,
+    "id": 37022,
+    "type": 1,
+    "content": "没错。你的行踪不难掌握，大导演去到哪里都万众瞩目，于是我跟着你来到了洛杉矶，并找到了那个中间人癞皮狗，几把钞票就从他那里拿到了你们交易的时间与地点。",
+    "name": "奇星",
+    "avatar": "630610",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37023,
+    "type": 2,
+    "content": "原来如此，所以那时候癞皮狗附送的“友情建议”果然是指你，真是个没有职业操守的家伙。",
+    "name": "菲林士多",
+    "avatar": "311110",
+    "chessId": 3
+  },
+  {
+    "groupId": 37,
+    "id": 37024,
+    "type": 1,
+    "content": "那一晚我的目的只是劫走胶片，对于究竟是谁从基金会窃出胶片的这个问题，我本并不该在意。但……",
+    "name": "奇星",
+    "avatar": "630610",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37025,
+    "type": 1,
+    "content": "最后关头复苏的一丝理性，让我险之又险地好歹收住了手……我想，有一瞬间我是打算杀了那个叫做“斯考特”的职员的。",
+    "name": "奇星",
+    "avatar": "630610",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37026,
+    "type": 1,
+    "content": "……但我并不明白这究竟是为什么。后来的事情，你们也知道了。",
+    "name": "奇星",
+    "avatar": "630615",
+    "chessId": 2
+  },
+  {
+    "groupId": 37,
+    "id": 37027,
+    "type": 1,
+    "content": "……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37028,
+    "type": 1,
+    "content": "执棋人……",
+    "name": "梁月",
+    "avatar": "311016",
+    "chessId": 1
+  },
+  {
+    "groupId": 37,
+    "id": 37029,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  }
+]

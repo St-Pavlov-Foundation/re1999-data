@@ -1,0 +1,37 @@
+[
+  {
+    "activityId": 11509,
+    "recordId": 1,
+    "name": "失踪调查",
+    "unLockDesc": "失踪调查Ⅰ|失踪调查Ⅱ|失踪调查Ⅲ|失踪调查Ⅳ",
+    "eventIds": "1005|1006|1017|1013"
+  },
+  {
+    "activityId": 11509,
+    "recordId": 2,
+    "name": "高山牧童",
+    "unLockDesc": "高山牧童Ⅰ|高山牧童Ⅱ|高山牧童Ⅲ",
+    "eventIds": "1007|1008|1009"
+  },
+  {
+    "activityId": 11509,
+    "recordId": 3,
+    "name": "外派研究员",
+    "unLockDesc": "外派研究员Ⅰ|外派研究员Ⅱ",
+    "eventIds": "1010|1012"
+  },
+  {
+    "activityId": 11509,
+    "recordId": 4,
+    "name": "蒙面的猎人",
+    "unLockDesc": "蒙面的猎人Ⅰ|蒙面的猎人Ⅱ|蒙面的猎人Ⅲ",
+    "eventIds": "1011|1015|1016"
+  },
+  {
+    "activityId": 11509,
+    "recordId": 5,
+    "name": "其他",
+    "unLockDesc": "其他Ⅰ|其他Ⅱ|其他Ⅲ|其他Ⅳ",
+    "eventIds": "1001|1002#1003|1004|1014"
+  }
+]

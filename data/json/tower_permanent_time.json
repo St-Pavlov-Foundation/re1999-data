@@ -1,0 +1,26 @@
+[
+  {
+    "stageId": 1,
+    "time": "",
+    "name": "透光层",
+    "nameEn": "Euphotic Zone"
+  },
+  {
+    "stageId": 2,
+    "time": "",
+    "name": "朦胧层",
+    "nameEn": "Mesophotic Zone"
+  },
+  {
+    "stageId": 3,
+    "time": "2024-11-21",
+    "name": "微光层",
+    "nameEn": "Bathyal Zone"
+  },
+  {
+    "stageId": 4,
+    "time": "2025-01-20",
+    "name": "晦暗层",
+    "nameEn": "Abyssal Zone"
+  }
+]

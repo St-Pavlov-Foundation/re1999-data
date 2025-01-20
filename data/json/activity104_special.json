@@ -1,0 +1,352 @@
+[
+  {
+    "activityId": 11100,
+    "layer": 1,
+    "episodeId": 1101131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "06",
+    "level": 120,
+    "desc": ""
+  },
+  {
+    "activityId": 11100,
+    "layer": 2,
+    "episodeId": 1101132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "06",
+    "level": 120,
+    "desc": ""
+  },
+  {
+    "activityId": 11100,
+    "layer": 3,
+    "episodeId": 1101133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "06",
+    "level": 120,
+    "desc": ""
+  },
+  {
+    "activityId": 11100,
+    "layer": 4,
+    "episodeId": 1101134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "06",
+    "level": 120,
+    "desc": ""
+  },
+  {
+    "activityId": 11100,
+    "layer": 5,
+    "episodeId": 1101135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "06",
+    "level": 120,
+    "desc": ""
+  },
+  {
+    "activityId": 11200,
+    "layer": 1,
+    "episodeId": 1201131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "那颗泥土做成的心。它究竟，究竟如何来到这个世界上？"
+  },
+  {
+    "activityId": 11200,
+    "layer": 2,
+    "episodeId": 1201132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "在墓园起舞，以腿骨敲响脊柱。"
+  },
+  {
+    "activityId": 11200,
+    "layer": 3,
+    "episodeId": 1201133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 140,
+    "desc": "“送给你，这湖底最漂亮的鹅卵石。”\n是的，它光滑，就像一枚子弹。"
+  },
+  {
+    "activityId": 11200,
+    "layer": 4,
+    "episodeId": 1201134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "不——那并非日食。而是乌鸦遮蔽了太阳。"
+  },
+  {
+    "activityId": 11200,
+    "layer": 5,
+    "episodeId": 1201135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“知道吗，只有握在手里的砍刀，和眼前破裂的血管，才最靠得住。”"
+  },
+  {
+    "activityId": 11300,
+    "layer": 1,
+    "episodeId": 1301131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "湿婆的神弓于选婿大会上破裂，而罗摩与悉多的爱意弥坚。"
+  },
+  {
+    "activityId": 11300,
+    "layer": 2,
+    "episodeId": 1301132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "王国被拱手相让，或是失去，或是无力守护。继位者婆罗多不愿为王，取长兄罗摩的鞋子为证，待其归来。"
+  },
+  {
+    "activityId": 11300,
+    "layer": 3,
+    "episodeId": 1301133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 140,
+    "desc": "魔王罗波那派手下化身金鹿，引开罗摩，他便趁机劫走了悉多。"
+  },
+  {
+    "activityId": 11300,
+    "layer": 4,
+    "episodeId": 1301134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "背叛与失信化作灭国之火，须羯哩婆听了妻子陀罗一席言说，终使良心不昧。"
+  },
+  {
+    "activityId": 11300,
+    "layer": 5,
+    "episodeId": 1301135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "神猴大闹魔国，被捕仍威胁罗波那放走悉多。\n愤怒的魔王点燃了神猴的尾巴，神猴飞出牢笼，带着火势一路烧毁魔国的城市，返回到罗摩身旁。"
+  },
+  {
+    "activityId": 11400,
+    "layer": 1,
+    "episodeId": 1401131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "囿于感官的人，囿于无知。"
+  },
+  {
+    "activityId": 11400,
+    "layer": 2,
+    "episodeId": 1401132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "在一抹光来临前，智慧先行叩门；\n在一只锁解开前，意志先行挣脱。"
+  },
+  {
+    "activityId": 11400,
+    "layer": 3,
+    "episodeId": 1401133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 140,
+    "desc": "寻臣服的王冠，箍住头脑；供瞻仰的雕塑，坐落而起。"
+  },
+  {
+    "activityId": 11400,
+    "layer": 4,
+    "episodeId": 1401134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“可孰弱孰优？”\n他们共处一厅，分庭抗礼。"
+  },
+  {
+    "activityId": 11400,
+    "layer": 5,
+    "episodeId": 1401135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "繁星拥有了荣名。无垠之中，人们终于放下了船锚。"
+  },
+  {
+    "activityId": 11500,
+    "layer": 1,
+    "episodeId": 1501131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "迈动双足，为我尚不知的终点，我在懵懂之中已瞧见它的轮廓。"
+  },
+  {
+    "activityId": 11500,
+    "layer": 2,
+    "episodeId": 1501132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "一个梦就此发端，当你站得更高，就看得更远。"
+  },
+  {
+    "activityId": 11500,
+    "layer": 3,
+    "episodeId": 1501133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 140,
+    "desc": "与自然敌对的一课就此落幕。不被吞噬者，是浪涛的主人。"
+  },
+  {
+    "activityId": 11500,
+    "layer": 4,
+    "episodeId": 1501134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "经由双手，飞吧，飞吧。撕裂血肉与革皮，越过蓝天与红土，替我接触我所渴望的一切。                  "
+  },
+  {
+    "activityId": 11500,
+    "layer": 5,
+    "episodeId": 1501135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "就像是语言，也像是目光，来与往，总是如此简单。"
+  },
+  {
+    "activityId": 11600,
+    "layer": 1,
+    "episodeId": 1601131,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "“虽然有俚语‘一屋不扫何以扫天下’，但扫帚的地位显然与剑完全不等同。”\n<i>注：我们仍在努力寻找“剑器驾驶指南”的相关古籍。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 2,
+    "episodeId": 1601132,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "“符咒纸与术杖效用相近，多普及于民间宅邸，用以驱避不洁的生物与魔精。”\n<i>注：符咒的图案仅在部分神秘学家间秘传。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 3,
+    "episodeId": 1601133,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 140,
+    "desc": "“通晓炼丹的神秘学家往往受雇于宫廷，另有一些则行脚于民间。”\n<i>注：其中一部分身兼厨师、医师数职。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 4,
+    "episodeId": 1601134,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“因此常有身死却不自知的魂魄，游离于世间，叨扰生者的门扉。”"
+  },
+  {
+    "activityId": 11600,
+    "layer": 5,
+    "episodeId": 1601135,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“酒坊别有风味，其酿造技艺另有诀窍，回味无穷。”\n<i>注：别小看那些米粒。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 6,
+    "episodeId": 1601136,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“由栖息环境所影响，魔精在东方亦另有一番样貌。”\n<i>生物进化论仍然不过时。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 7,
+    "episodeId": 1601137,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“有名为饕餮者，其形状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿。”\n<i>这是撒旦在世的有力佐证！</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 8,
+    "episodeId": 1601138,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“有名为孰湖者，其状马身而鸟翼，人面蛇尾，是好举人。”\n<i>大陆板块漂移前，美杜莎或曾在各地繁衍生息。</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 9,
+    "episodeId": 1601139,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“有名为穷奇者，状如牛，蝟毛，音如嗥狗。”\n<i>狼与牛的生殖隔离有待商榷，这是生物学领域的新突破！</i>"
+  },
+  {
+    "activityId": 11600,
+    "layer": 10,
+    "episodeId": 1601140,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 150,
+    "desc": "“有名为驳者，状如白马，锯牙，食虎豹。有素兽焉。”\n<i>我们猜测这是东方谚语“白马非马”的现实依据。</i>"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 101,
+    "turnbackId": 1,
+    "name": "归途七日",
+    "nameEn": "A 7-Day Trip Back",
+    "actDesc": "这是签到页描述",
+    "showInPopup": 1,
+    "jumpId": "",
+    "reddotId": 1092
+  },
+  {
+    "id": 102,
+    "turnbackId": 1,
+    "name": "新篇之始",
+    "nameEn": "The Beginning of A New Story",
+    "actDesc": "<color=#FFDD8A>新篇第一页，为伟大的船长收集更多更多的亮晶晶宝贝儿。</color>\n“箱中归客”活动期间，完成每日计划与总计划可收集奖励及[新程票]。累计足量[新程票]即可收集更加丰厚的阶段奖励。",
+    "showInPopup": 1,
+    "jumpId": "",
+    "reddotId": 1093
+  },
+  {
+    "id": 103,
+    "turnbackId": 1,
+    "name": "重登新程",
+    "nameEn": "A Fresh Start",
+    "actDesc": "筹备新程尚需时间，好在友人们乐于襄助。\n8日筹备期间，铸币美学、尘埃运动及洞悉之门副本每日可获得4次启程助力，助力次数内资源双倍掉落。|每日前4次启程助力关卡收益+100%",
+    "showInPopup": 1,
+    "jumpId": "52",
+    "reddotId": 1094
+  },
+  {
+    "id": 104,
+    "turnbackId": 1,
+    "name": "重聚的喜悦",
+    "nameEn": "Rejoice At the Reunion",
+    "actDesc": "伙伴们对你的回忆与思念栖居于此，重聚时分，它们长久的等待与盼望终于有了意义。收下吧，它们理应属于你。",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 1091
+  },
+  {
+    "id": 105,
+    "turnbackId": 1,
+    "name": "归途一瞥",
+    "nameEn": "Recommend",
+    "actDesc": "一段思绪，一份记忆，一篇报道，一个不该被遗忘的故事，它们翘首以盼，它们在等着你。",
+    "showInPopup": 1,
+    "jumpId": "",
+    "reddotId": 1094
+  },
+  {
+    "id": 106,
+    "turnbackId": 2,
+    "name": "归途七日",
+    "nameEn": "A 7-Day Trip Back",
+    "actDesc": "一段思绪，一份记忆，一篇报道，一个不该被遗忘的故事，它们翘首以盼，它们在等着你。",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 1092
+  },
+  {
+    "id": 107,
+    "turnbackId": 2,
+    "name": "箱中再会",
+    "nameEn": "Reunion in the Suitcase",
+    "actDesc": "“箱中归客”活动期间，完成每日计划与累计计划可收集奖励及[新程票]，累计足量[新程票]，就能拜访箱中角色，获得更加丰厚的阶段奖励。",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 1093
+  },
+  {
+    "id": 108,
+    "turnbackId": 2,
+    "name": "归途礼遇",
+    "nameEn": "Returning Gifts",
+    "actDesc": "",
+    "showInPopup": 0,
+    "jumpId": "10170#52",
+    "reddotId": 2411
+  },
+  {
+    "id": 109,
+    "turnbackId": 2,
+    "name": "雨的归处",
+    "nameEn": "Where the Drops Go",
+    "actDesc": "点此前往收集雨滴",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 0
+  }
+]

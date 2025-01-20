@@ -1,0 +1,298 @@
+[
+  {
+    "id": 1,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "不，有些事儿不对劲。"
+  },
+  {
+    "id": 2,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "瞧瞧这个。"
+  },
+  {
+    "id": 2,
+    "stepId": 2,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "别再狡辩了，老实交代对我们来说都是件好事。"
+  },
+  {
+    "id": 3,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "那句话好像并没有值得深挖的信息了。"
+  },
+  {
+    "id": 4,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "断墙？它为何出现在那里？"
+  },
+  {
+    "id": 4,
+    "stepId": 2,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "曾经位于那里的房屋已经倒塌很久了。都说它原本是几个世纪前，第一批来到这里的西班牙人留下的遗址。"
+  },
+  {
+    "id": 5,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "为什么会是红墙？"
+  },
+  {
+    "id": 5,
+    "stepId": 2,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "或许因为僻静少人的环境正适合抛尸。"
+  },
+  {
+    "id": 6,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "我早知道这个。"
+  },
+  {
+    "id": 6,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "可恶的雇佣兵，你的鬼把戏骗不了我！"
+  },
+  {
+    "id": 6,
+    "stepId": 3,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "得再想想。"
+  },
+  {
+    "id": 7,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "或许我就是个难得友好的雇佣兵。"
+  },
+  {
+    "id": 7,
+    "stepId": 2,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "我宁可相信没有这种人。"
+  },
+  {
+    "id": 8,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "所以你终于打算告诉我“红墙”的由来了？"
+  },
+  {
+    "id": 8,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "啧。"
+  },
+  {
+    "id": 8,
+    "stepId": 3,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "……"
+  },
+  {
+    "id": 9,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "我手里还有些信息，能用来抓住事情的关键。"
+  },
+  {
+    "id": 10,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "得告诉他我的神秘术让他知道我有追凶的能力。"
+  },
+  {
+    "id": 11,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "这就好办了，继续问下去。"
+  },
+  {
+    "id": 12,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "看来他们并不清楚动物皮毛与祭祀的事。"
+  },
+  {
+    "id": 13,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "没人愿意去？但或许有人有必须要去的理由。"
+  },
+  {
+    "id": 14,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "一切的关键就在这里！"
+  },
+  {
+    "id": 14,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "女士，我不清楚你说是什么意思。"
+  },
+  {
+    "id": 14,
+    "stepId": 3,
+    "nextStep": 4,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "不过我愈发确信你不过就是想为你的雇佣兵同胞洗刷罪名。"
+  },
+  {
+    "id": 14,
+    "stepId": 4,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "唔……关键的时刻，必须要仔细考虑再提出推论"
+  },
+  {
+    "id": 15,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "好了，女士，你已经不用再狡辩了。"
+  },
+  {
+    "id": 15,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "从刚刚的对话中，我大致清楚了一件事。"
+  },
+  {
+    "id": 15,
+    "stepId": 3,
+    "nextStep": 4,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "那就是你并不值得我信任。"
+  },
+  {
+    "id": 15,
+    "stepId": 4,
+    "nextStep": 5,
+    "bubbleType": 1,
+    "direction": 2,
+    "content": "……"
+  },
+  {
+    "id": 15,
+    "stepId": 5,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "现在你需要对自己的暴力行为负责了！"
+  },
+  {
+    "id": 16,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "够了！"
+  },
+  {
+    "id": 16,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "疯子，你和你说的话，没有一点值得我信任！"
+  },
+  {
+    "id": 16,
+    "stepId": 3,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "滚吧，不然我不介意用枪指着你的脑袋逼你滚！"
+  },
+  {
+    "id": 17,
+    "stepId": 1,
+    "nextStep": 2,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "侦探游戏就是侦探游戏。"
+  },
+  {
+    "id": 17,
+    "stepId": 2,
+    "nextStep": 3,
+    "bubbleType": 1,
+    "direction": 1,
+    "content": "装得再怎么像模像样也不过如此。"
+  },
+  {
+    "id": 17,
+    "stepId": 3,
+    "nextStep": 0,
+    "bubbleType": 1,
+    "direction": 0,
+    "content": "行了，女士，不要为你的前辈们洗刷罪名了，赶紧去找你要找的小姑娘吧。"
+  },
+  {
+    "id": 18,
+    "stepId": 1,
+    "nextStep": 0,
+    "bubbleType": 2,
+    "direction": 2,
+    "content": "**，谁会为了找一面破墙来这里，得把我原本来这的目的告诉他才行！"
+  }
+]

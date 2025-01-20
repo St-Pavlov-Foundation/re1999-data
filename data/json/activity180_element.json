@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "信号源",
+    "desc": "信号的来源，可以朝固定方向发射信号波。",
+    "episodeId": 2,
+    "sequence": 1
+  },
+  {
+    "id": 2,
+    "name": "破解装置",
+    "desc": "信号的来源，可以朝固定方向发射密钥。",
+    "episodeId": 6,
+    "sequence": 3
+  },
+  {
+    "id": 3,
+    "name": "信号接收器",
+    "desc": "接收到信号波后，该装置会被激活。",
+    "episodeId": 2,
+    "sequence": 2
+  },
+  {
+    "id": 4,
+    "name": "干扰",
+    "desc": "干扰会阻碍所有信号的传播。",
+    "episodeId": 2,
+    "sequence": 4
+  },
+  {
+    "id": 5,
+    "name": "偏转板",
+    "desc": "可以偏转所有信号的方向。",
+    "episodeId": 2,
+    "sequence": 5
+  },
+  {
+    "id": 6,
+    "name": "信号增强器",
+    "desc": "可以增幅所有信号，增加信号的数量。",
+    "episodeId": 4,
+    "sequence": 6
+  },
+  {
+    "id": 7,
+    "name": "屏蔽装置",
+    "desc": "生效时，会阻拦所有信号的传播。\n被屏蔽开关关闭时，允许所有信号通过。",
+    "episodeId": 6,
+    "sequence": 7
+  },
+  {
+    "id": 8,
+    "name": "屏蔽开关",
+    "desc": "接收到密钥后，该开关会被关闭。\n关闭后，屏蔽装置失效。",
+    "episodeId": 6,
+    "sequence": 8
+  }
+]

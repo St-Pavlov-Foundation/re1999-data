@@ -1,0 +1,551 @@
+[
+  {
+    "activityId": 11509,
+    "eventId": 1001,
+    "optionIds": "100101|100102|100103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你在山麓地带遇到了一位下山的登山客。\n一场暴风雪几乎夺走了他的生命。他的物资已不足以支撑他到达下一处营地。",
+    "name": "偶遇登山客",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1002,
+    "optionIds": "100201|100202|100203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你找到了登山客提到的缆车站，这里已经被废弃许久。",
+    "name": "废弃缆车站",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1003,
+    "optionIds": "100301|100302|100303",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "一个人倒在了雪地中。当你走近时，你认出了这个熟悉的背影。",
+    "name": "倒在雪地中的登山客",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1004,
+    "optionIds": "100401|100402|100403",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一团缓慢移动的绒毛吸引了你的注意。那是一只灰白的雪兔。它的后腿内侧被尖锐的植物戳伤，在冰原上拖拽出一条淡淡的血痕。",
+    "name": "受伤的雪兔",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1005,
+    "optionIds": "100501|100502",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你遇到了一位年迈的旅行家。他热情地向你打招呼，但你听不懂对方的语言，那似乎是德语。",
+    "name": "等待救援的旅行家",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1006,
+    "optionIds": "100601|100602",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你遇见了一位身着基金会外勤工作服的女士。",
+    "name": "基金会外勤人员",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1007,
+    "optionIds": "100701|100702|100703",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "当你听到弓弦的声音时，箭矢已经从朝你飞来。幸运的是，箭矢落在了脚边，你并未受伤。\n你望向箭矢的源头，灌木丛中有一双警觉的眼睛。",
+    "name": "灌木丛中的箭矢",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1008,
+    "optionIds": "100801|100802|100803",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一头山羊的残骸，已经被啃食一半。刺鼻的血腥味揭露了山羊死去的大致时段，这起悲剧发生于三天内。",
+    "name": "山羊的残骸",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1009,
+    "optionIds": "100901|100902",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "稚嫩的呼喊声从身后传来。你认出了他的身影，那位躲在灌木丛里的持弓牧童，你曾给予他面包。",
+    "name": "持弓的牧童",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1010,
+    "optionIds": "101001|101002|101003",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你遇到了一位拉普拉斯研究员。她已经于雪山上驻扎了一段时日。当她得知你是新任的馆长后，她表现得很兴奋。",
+    "name": "拉普拉斯研究员",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1011,
+    "optionIds": "101101|101102",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "在山路的转角处，你遇到了一位蒙面的猎人，他全身都被破旧的兽皮与布条包裹着。好在，他对你似乎并无恶意。",
+    "name": "蒙面的猎人",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1012,
+    "optionIds": "101201|101202",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你途径了一处山谷，道路两旁零星分布着几棵蛇麻草树。",
+    "name": "蛇麻草树",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1013,
+    "optionIds": "101301|101302",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "山洞内的一处临时营地，篝火刚熄灭不久，登山者们在此度过了相对温暖的一夜。",
+    "name": "临时的营地",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1014,
+    "optionIds": "101401|101402",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你遇见了四位结伴而行的旅者，四位已经达成本次攀登目标的旅者。他们今早从登山者栖所出发，开始下山的历程。",
+    "name": "结伴而行的旅者",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1015,
+    "optionIds": "101501|101502",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "一位蒙面的猎人虚弱地坐在雪地上。兽皮与布条将他包裹得严严实实。血迹浸染了布条，他的左肩正负伤出血。",
+    "name": "受伤的猎人",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1016,
+    "optionIds": "101601|101602",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "一位蒙面的猎人仰面躺着，怀中抱着一柄铜制手斧。胸膛并无起伏，可以确定的是，他咽下了最后一口气。",
+    "name": "倒下的猎人",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 1017,
+    "optionIds": "101701|101702|101703",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一处基金会设立的研究据点。食物、植物还是情报，你的选择并不少。\n",
+    "name": "驻扎据点",
+    "eventType": 1
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9102,
+    "optionIds": "910201|910202|910203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "走过山路的拐角，你发现了冰川融水形成的一汪湖泊。",
+    "name": "冰川湖泊",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9103,
+    "optionIds": "910301|910302",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你看到了一间废弃的登山小屋，这或许是一处临时的避难所。",
+    "name": "登山小屋",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9109,
+    "optionIds": "910901|910902",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "路边丢弃着一盏登山瓦斯炉，所剩不多的燃料仍能令它维持燃烧一阵子。",
+    "name": "登山瓦斯炉",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9110,
+    "optionIds": "911001|911002|911003",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你发现了前方的一处山洞，一处躲避风雪的天然掩体。洞内传来野兽的声响，但你已感到疲惫不堪。",
+    "name": "山洞",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9111,
+    "optionIds": "911101|911102|911103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "山崖间的断裂索桥拦住了你的前路。",
+    "name": "断裂的索桥",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9112,
+    "optionIds": "911201|911202|911203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "你发现了一处冰雪融化形成的隧道，并不知道它将通向何处。",
+    "name": "冰雪隧道",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9113,
+    "optionIds": "911301|911302|911303",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "你在雪地上发现了动物的足迹。",
+    "name": "雪地的足迹",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9107,
+    "optionIds": "910701|910702|910703",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你途径了一片高山牧场，你的出现引起了牛群的警觉，你进入了它们的活动区域。",
+    "name": "牧场的牛群",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9108,
+    "optionIds": "910801|910802|910803",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "一群欧亚猞猁挡住了你的去路，它们翘首以盼，等来了理想的猎物。",
+    "name": "拦路的掠食者",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9114,
+    "optionIds": "911401|911402|911403",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "风雪愈演愈烈，一场暴风雪很快就将来临。",
+    "name": "临近的暴风雪",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9115,
+    "optionIds": "911501|911502|911503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一条溪流挡住了你的去路，溪流较宽，但水流并不湍急。",
+    "name": "跨越溪流",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9202,
+    "optionIds": "920201|920202|920203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "一名登山者在距你不远处休息。他与你分享了自己的见闻。据称，在前方的悬崖之上，有一株奇特的植物。",
+    "name": "稀有植物",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9203,
+    "optionIds": "920301|920302",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一匹狼躺在你前进的道路上。它毛发灰暗，后腿被捕兽夹夹住，无法动弹。",
+    "name": "受伤的孤狼",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9209,
+    "optionIds": "920901|920902",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "你听见冰层破裂的声音，经验告诉你，雪崩即将来临。",
+    "name": "雪崩的预兆",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9210,
+    "optionIds": "921001|921002|921003",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "一位登山者与你迎面相遇。他告诉你，他找到了一株珍贵植物，希望能与你交换物资。",
+    "name": "真假植物",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9211,
+    "optionIds": "921101|921102|921103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你途经一处悬崖，发现崖边凸出的石块适于站立，可在此眺望风景。",
+    "name": "高山美景",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9212,
+    "optionIds": "921201|921202|921203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "你在途中休息时，一群羚羊从远处慌乱地奔来。",
+    "name": "慌乱的奔逃",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9213,
+    "optionIds": "921301|921302|921303",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "你发现了一些埋在雪中的登山装备，看上去有些破损，但勉强还能使用。",
+    "name": "埋藏的装备",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9207,
+    "optionIds": "920701|920702|920703",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "这块滑雪板倒在路旁，半埋于积雪中。尽管有些陈旧，但看起来还能使用。",
+    "name": "简陋的滑雪板",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9208,
+    "optionIds": "920801|920802|920803",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "在前进中，你发现路旁的灌木遮掩下隐约可见一条小路。显然踏上这条道路的人并不多。",
+    "name": "未知的路",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9214,
+    "optionIds": "921401|921402|921403",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你发现前方的小补给点，一群陌生的登山者正聚集在一起有说有笑。",
+    "name": "短暂的聚会",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9215,
+    "optionIds": "921501|921502|921503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你来到一个三岔路口前。左侧的坡度较缓，但看上去参差不齐的岩石较多，中间是陡坡，离目标点最近，右侧有一段靠近悬崖的小路。",
+    "name": "三岔路口",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9301,
+    "optionIds": "930101|930102|930103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "你在崎岖的山路边发现了一簇紫红色的浆果，那是你曾在肥沃的平原地区采摘过的品种。",
+    "name": "路边的浆果",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9303,
+    "optionIds": "930301|930302",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "前面的湖泊已经结冰，冰层看上去不算太厚，但踏上冰面仍有一定风险。",
+    "name": "冰湖",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9306,
+    "optionIds": "930601|930602|930603",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "风雪平息后，阳光穿过云层映照在雪地之上。抬头能够望见高远澄澈的天空。",
+    "name": "晴空",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9309,
+    "optionIds": "930901|930902",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "路边丢弃着一盏登山瓦斯炉，所剩不多的燃料仍能令它维持燃烧一阵子。",
+    "name": "登山瓦斯炉",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9310,
+    "optionIds": "931001|931002|931003",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "你在登顶的路上遇到了一位装束独特的登山者。他说他是附近的山民，对附近的登顶之路都无比熟悉。",
+    "name": "真正的向导",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9311,
+    "optionIds": "931101|931102|931103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一只欧亚猞猁出现在不远处，警惕地注视着你。",
+    "name": "偶然的伙伴",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9312,
+    "optionIds": "931201|931202|931203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "你选好地点，正准备扎营休息时，大风夹杂着雪粒吹拂而来。",
+    "name": "风暴",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9313,
+    "optionIds": "931301|931302|931303",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "你在雪地中前行，被某样事物绊住了脚步。刨开雪堆后，一具遗骸显露出来。",
+    "name": "危险的旅途",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9305,
+    "optionIds": "930501|930502|930503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "头晕、呼吸困难。你的身体正向你发出警报，他渴望更多的氧气。",
+    "name": "高山症候",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9308,
+    "optionIds": "930801|930802|930803",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "一群欧亚猞猁挡住了你的去路，它们翘首以盼，等来了理想的猎物。",
+    "name": "拦路的掠食者",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9314,
+    "optionIds": "931401|931402|931403",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "风雪愈演愈烈，一场暴风雪很快就将来临。",
+    "name": "临近的暴风雪",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9315,
+    "optionIds": "931501|931502|931503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "一条溪流挡住了你的去路，溪流较宽，但水流并不湍急。",
+    "name": "跨越溪流",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9403,
+    "optionIds": "940301|940302",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你看到了一间废弃的登山小屋，这或许是一处临时的避难所。",
+    "name": "登山小屋",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9406,
+    "optionIds": "940601|940602|940603",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "走过山隘，你在一处冰层裂缝处发现了一支精美的登山杖，可它的主人已经不见了踪影。",
+    "name": "遗失的登山杖",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9409,
+    "optionIds": "940901|940902",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "路边丢弃着一盏登山瓦斯炉，所剩不多的燃料仍能令它维持燃烧一阵子。",
+    "name": "登山瓦斯炉",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9411,
+    "optionIds": "941101|941102|941103",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "你在大型补给点略作休息。在这样高的地方，群星似乎触手可及。",
+    "name": "星空",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9412,
+    "optionIds": "941201|941202|941203",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_4",
+    "desc": "离山顶越来越近，遇到的冰坡也越发陡峭。你眼前的这面冰坡就是一个严峻的挑战。",
+    "name": "大冰坡",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9413,
+    "optionIds": "941301|941302|941303",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "你在雪地上发现了动物的足迹。",
+    "name": "雪地的足迹",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9404,
+    "optionIds": "940401|940402",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "冰川轰然倒塌，阻挡了你前进的道路。",
+    "name": "冰川塌方",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9405,
+    "optionIds": "940501|940502|940503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_1",
+    "desc": "越接近山顶，氧气越是稀薄。你感到呼吸越发困难。",
+    "name": "缺氧",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9414,
+    "optionIds": "941401|941402|941403",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
+    "desc": "长时间的攀登使你的登山镐不堪重负。",
+    "name": "工具破损",
+    "eventType": 0
+  },
+  {
+    "activityId": 11509,
+    "eventId": 9415,
+    "optionIds": "941501|941502|941503",
+    "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
+    "desc": "雪线之上，天气的变化越发不稳定，突然降临的大雨阻碍了你前行的脚步。",
+    "name": "大雨",
+    "eventType": 0
+  }
+]

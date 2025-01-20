@@ -1,0 +1,82 @@
+[
+  {
+    "activityId": 12504,
+    "rankId": 1,
+    "icon": "v2a5_autochess_badgeicon_1",
+    "name": "业余爱好",
+    "protection": true,
+    "score": 200,
+    "round2Score": "0|10|20|30|40|50|60|70|80|90|100|115|130",
+    "reward": 0
+  },
+  {
+    "activityId": 12504,
+    "rankId": 2,
+    "icon": "v2a5_autochess_badgeicon_2",
+    "name": "入门学徒",
+    "protection": true,
+    "score": 500,
+    "round2Score": "0|0|5|10|20|30|40|50|60|70|80|95|110",
+    "reward": 25901111
+  },
+  {
+    "activityId": 12504,
+    "rankId": 3,
+    "icon": "v2a5_autochess_badgeicon_3",
+    "name": "棋坛新锐",
+    "protection": true,
+    "score": 800,
+    "round2Score": "0|0|0|5|10|15|20|30|40|50|60|75|90",
+    "reward": 25901112
+  },
+  {
+    "activityId": 12504,
+    "rankId": 4,
+    "icon": "v2a5_autochess_badgeicon_4",
+    "name": "荣誉棋手",
+    "protection": true,
+    "score": 1200,
+    "round2Score": "0|0|0|0|5|10|15|25|35|45|55|70|85",
+    "reward": 25901113
+  },
+  {
+    "activityId": 12504,
+    "rankId": 5,
+    "icon": "v2a5_autochess_badgeicon_5",
+    "name": "翻斗棋专家",
+    "protection": true,
+    "score": 1800,
+    "round2Score": "0|0|0|0|0|5|10|20|30|40|50|65|80",
+    "reward": 25901114
+  },
+  {
+    "activityId": 12504,
+    "rankId": 6,
+    "icon": "v2a5_autochess_badgeicon_6",
+    "name": "棋局终结者",
+    "protection": false,
+    "score": 2400,
+    "round2Score": "-10|-10|-10|-5|-5|0|5|15|25|35|45|60|75",
+    "reward": 25901115
+  },
+  {
+    "activityId": 12504,
+    "rankId": 7,
+    "icon": "v2a5_autochess_badgeicon_7",
+    "name": "巅峰棋师",
+    "protection": false,
+    "score": 3000,
+    "round2Score": "-20|-20|-20|-15|-10|-5|0|10|20|30|40|55|70",
+    "reward": 25901116
+  },
+  {
+    "activityId": 12504,
+    "rankId": 8,
+    "icon": "v2a5_autochess_badgeicon_8",
+    "name": "棋艺人生",
+    "protection": false,
+    "score": 0,
+    "round2Score": "-30|-30|-30|-25|-20|-15|-10|-5|0|10|20|35|50",
+    "reward": 25901117
+  }
+]

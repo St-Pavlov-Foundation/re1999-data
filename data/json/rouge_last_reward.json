@@ -1,0 +1,209 @@
+[
+  {
+    "season": 1,
+    "id": 21,
+    "version": "",
+    "type": "drop",
+    "title": "金雀子儿",
+    "desc": "获得50金雀子儿",
+    "iconName": "rouge_collection_bufficon_4"
+  },
+  {
+    "season": 1,
+    "id": 22,
+    "version": "",
+    "type": "drop",
+    "title": "发条",
+    "desc": "获得1个<color=#8D6993>七日发条</color>",
+    "iconName": "8130804"
+  },
+  {
+    "season": 1,
+    "id": 23,
+    "version": "",
+    "type": "drop",
+    "title": "造物",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>造物",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 24,
+    "version": "",
+    "type": "drop",
+    "title": "药剂",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>『药剂』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 25,
+    "version": "",
+    "type": "drop",
+    "title": "软盘",
+    "desc": "获得随机2个『软盘』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 31,
+    "version": "",
+    "type": "drop",
+    "title": "金雀子儿",
+    "desc": "获得50金雀子儿",
+    "iconName": "rouge_collection_bufficon_4"
+  },
+  {
+    "season": 1,
+    "id": 32,
+    "version": "",
+    "type": "drop",
+    "title": "发条",
+    "desc": "获得1个<color=#8D6993>七日发条</color>",
+    "iconName": "8130804"
+  },
+  {
+    "season": 1,
+    "id": 33,
+    "version": "",
+    "type": "drop",
+    "title": "造物",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>造物",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 34,
+    "version": "",
+    "type": "drop",
+    "title": "药剂",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>『药剂』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 35,
+    "version": "",
+    "type": "drop",
+    "title": "软盘",
+    "desc": "获得随机2个『软盘』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 36,
+    "version": "",
+    "type": "drop",
+    "title": "媒介上限",
+    "desc": "媒介上限+10",
+    "iconName": "rouge_collection_bufficon_1"
+  },
+  {
+    "season": 1,
+    "id": 41,
+    "version": "",
+    "type": "drop",
+    "title": "金雀子儿",
+    "desc": "获得50金雀子儿",
+    "iconName": "rouge_collection_bufficon_4"
+  },
+  {
+    "season": 1,
+    "id": 42,
+    "version": "",
+    "type": "drop",
+    "title": "发条",
+    "desc": "获得1个<color=#8D6993>七日发条</color>",
+    "iconName": "8130804"
+  },
+  {
+    "season": 1,
+    "id": 43,
+    "version": "",
+    "type": "drop",
+    "title": "造物",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>造物",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 44,
+    "version": "",
+    "type": "drop",
+    "title": "药剂",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>『药剂』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 45,
+    "version": "",
+    "type": "drop",
+    "title": "软盘",
+    "desc": "获得随机2个『软盘』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 46,
+    "version": "",
+    "type": "drop",
+    "title": "媒介上限",
+    "desc": "媒介上限+10",
+    "iconName": "rouge_collection_bufficon_1"
+  },
+  {
+    "season": 1,
+    "id": 51,
+    "version": "",
+    "type": "drop",
+    "title": "金雀子儿",
+    "desc": "获得50金雀子儿",
+    "iconName": "rouge_collection_bufficon_4"
+  },
+  {
+    "season": 1,
+    "id": 52,
+    "version": "",
+    "type": "drop",
+    "title": "发条",
+    "desc": "获得1个<color=#8D6993>七日发条</color>",
+    "iconName": "8130804"
+  },
+  {
+    "season": 1,
+    "id": 53,
+    "version": "",
+    "type": "drop",
+    "title": "造物",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>造物",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 54,
+    "version": "",
+    "type": "drop",
+    "title": "药剂",
+    "desc": "获得1个随机<color=#587FA1>寻常</color>『药剂』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 55,
+    "version": "",
+    "type": "drop",
+    "title": "软盘",
+    "desc": "获得随机2个『软盘』",
+    "iconName": "rouge_collection_unknown"
+  },
+  {
+    "season": 1,
+    "id": 56,
+    "version": "",
+    "type": "drop",
+    "title": "媒介上限",
+    "desc": "媒介上限+10",
+    "iconName": "rouge_collection_bufficon_1"
+  }
+]

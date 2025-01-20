@@ -1,0 +1,592 @@
+[
+  {
+    "id": 14111,
+    "stepId": 1,
+    "type": "tips",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "步入黑夜"
+  },
+  {
+    "id": 14112,
+    "stepId": 1,
+    "type": "tips",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "面对恐惧"
+  },
+  {
+    "id": 14121,
+    "stepId": 1,
+    "type": "title",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "探索"
+  },
+  {
+    "id": 14122,
+    "stepId": 1,
+    "type": "title",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "挑战"
+  },
+  {
+    "id": 14101,
+    "stepId": 1,
+    "type": "talk",
+    "param": "513101#610011608",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "黑暗不值得畏惧，那其中并没有危险。"
+  },
+  {
+    "id": 14101,
+    "stepId": 2,
+    "type": "talk",
+    "param": "513101#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "那些本不存在的怪物只存在于分不清想象和现实的孩子心里……"
+  },
+  {
+    "id": 14101,
+    "stepId": 3,
+    "type": "talk",
+    "param": "513101#610011609",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "我不是这样的孩子……对吗？"
+  },
+  {
+    "id": 14102,
+    "stepId": 5,
+    "type": "talk",
+    "param": "513101#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "呼……"
+  },
+  {
+    "id": 14102,
+    "stepId": 6,
+    "type": "talk",
+    "param": "513101#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "还好，它们并不危险。我该回家去了……"
+  },
+  {
+    "id": 14211,
+    "stepId": 1,
+    "type": "tips",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "沿海而行"
+  },
+  {
+    "id": 14212,
+    "stepId": 1,
+    "type": "tips",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "叩问"
+  },
+  {
+    "id": 14213,
+    "stepId": 1,
+    "type": "tips",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "第一页"
+  },
+  {
+    "id": 14221,
+    "stepId": 1,
+    "type": "title",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "成长"
+  },
+  {
+    "id": 14222,
+    "stepId": 1,
+    "type": "title",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "准备"
+  },
+  {
+    "id": 14201,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "自那之后，我疏远了我的朋友们。"
+  },
+  {
+    "id": 14201,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "这样，即使我最终变得和艾尔玛一样，他们也不会为我感到伤心。"
+  },
+  {
+    "id": 14201,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "直至少年，我都在寂静和怀疑中独自行走。"
+  },
+  {
+    "id": 14201,
+    "stepId": 4,
+    "type": "talk",
+    "param": "512702#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "知识会让我们成为毛虫与蝴蝶吗？还是蛇与蛇蜕？"
+  },
+  {
+    "id": 14201,
+    "stepId": 5,
+    "type": "talk",
+    "param": "512702#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "6在成为6之后，是被改变的，还是被丢弃的？抑或是两者皆是？"
+  },
+  {
+    "id": 14201,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "这是一条漫长的沙滩，恰好沿着海的边缘存在，我被放置在这里，寻找问题的答案。"
+  },
+  {
+    "id": 14201,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "那是一段难熬的日子。"
+  },
+  {
+    "id": 14202,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "我开始翻开第一本书——书很厚重，以至于书页显得如此轻盈。"
+  },
+  {
+    "id": 14203,
+    "stepId": 1,
+    "type": "talk",
+    "param": "512701#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "<i>《无穷分析引论》</i>……唔，不对，我应该错过了它之前的……"
+  },
+  {
+    "id": 14204,
+    "stepId": 1,
+    "type": "talk",
+    "param": "512701#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "<i>“Je pense, donc je suis.”</i>……？这是我不懂的语言……"
+  },
+  {
+    "id": 14204,
+    "stepId": 2,
+    "type": "talk",
+    "param": "512701#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "哦！没错，是的，就是这样，这样就得出了最优解，我记得之前那本书上写到了……"
+  },
+  {
+    "id": 14204,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "向后展望，在某个阶段之内，刚刚进入闭关的我是幸福的。"
+  },
+  {
+    "id": 14204,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "知识逐渐充实着我，我自由地在海岸上行走，拾起脚边的贝壳，将它装入口袋，继续前行。"
+  },
+  {
+    "id": 14204,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "比起个人的去向，我开始更多地思考那些更高、更远的问题。"
+  },
+  {
+    "id": 14204,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "那是一场启明般的拯救，沉浸的感受，我确信，真正解决问题的答案就在眼前。"
+  },
+  {
+    "id": 14204,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "在它的帮助下，我终于不再每日徘徊于那条黑暗而潮湿的海岸，身体变得轻盈，够得到天边的云彩。"
+  },
+  {
+    "id": 14205,
+    "stepId": 1,
+    "type": "talk",
+    "param": "307912#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "<i>“……现在神明送我来这里，让我继续遭不幸，我的苦难犹未了，神明们还会给我降下灾祸无穷尽……”</i>"
+  },
+  {
+    "id": 14205,
+    "stepId": 2,
+    "type": "talk",
+    "param": "307912#6207914",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "……"
+  },
+  {
+    "id": 14206,
+    "stepId": 1,
+    "type": "talk",
+    "param": "307911#6207916",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "<i>“马还没牵来，她就站在那里。再见已经说过，彼此再无话可说。”</i>"
+  },
+  {
+    "id": 14206,
+    "stepId": 2,
+    "type": "talk",
+    "param": "307911#6207914",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "……"
+  },
+  {
+    "id": 14207,
+    "stepId": 1,
+    "type": "talk",
+    "param": "307913#6207915",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "<i>“常常谈论自己的人，往往只是为了隐藏自己。”</i>"
+  },
+  {
+    "id": 14207,
+    "stepId": 2,
+    "type": "talk",
+    "param": "307913#6207901",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "啊……"
+  },
+  {
+    "id": 14311,
+    "stepId": 1,
+    "type": "",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "再会"
+  },
+  {
+    "id": 14312,
+    "stepId": 1,
+    "type": "",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "驻足"
+  },
+  {
+    "id": 14321,
+    "stepId": 1,
+    "type": "title",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "启明"
+  },
+  {
+    "id": 14301,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "那天夜里，风很轻柔。我一直站在沙滩上，任由黑夜变成黎明，金光在海上升起。"
+  },
+  {
+    "id": 14301,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "浪花向前扑着，停驻在我足尖。我想起艾尔玛，想起那之后的那段短暂的、不孤独的日子。"
+  },
+  {
+    "id": 14301,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "额头的金属有着微凉触感——那是苏菲亚和37送我的礼物，据说其中还有210的功劳。"
+  },
+  {
+    "id": 14301,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "苏菲亚呢？唔，她站在岸边，左右犹疑，她或许是在寻找木头，好做一弯小舟，追在他们的后头。"
+  },
+  {
+    "id": 14301,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "他们都是那样美丽的、有着柔软弧度的线。我知道了，我看见了。人们的命运铺陈开来，如沙滩上的漫漫行迹。"
+  },
+  {
+    "id": 14301,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "可是，仅仅如此。"
+  },
+  {
+    "id": 14301,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "我并不了解她们的心情，不懂得她们的境遇，不清楚她们在何种情况下做出的这一选择。"
+  },
+  {
+    "id": 14301,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "我只是知道了，可是我并不懂得——正如我自己的命运。"
+  },
+  {
+    "id": 14301,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "没由来地，我感到海潮的湿润覆上了我的眼眶。"
+  },
+  {
+    "id": 14301,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "视线逐渐模糊，海平面在我的眼中变得遥远。阳光照耀其上，那粼光如此柔和。"
+  },
+  {
+    "id": 14301,
+    "stepId": 11,
+    "type": "talk",
+    "param": "307901#0",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "啊。"
+  },
+  {
+    "id": 14301,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "<i>“……一峰灰蓝色的海浪，托起洁白的水沫，牵动底下的一片深蓝……”</i>"
+  },
+  {
+    "id": 14301,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "<i>“……海水具有恒定性，在潮汐与环流……”</i>"
+  },
+  {
+    "id": 14301,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "我踉跄了一下，足尖踏入浪花间。冰凉覆盖其上，冲刷了一切与之有关的知识和字句。"
+  },
+  {
+    "id": 14301,
+    "stepId": 15,
+    "type": "talk",
+    "param": "307910#6207912",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "……哈哈哈！"
+  },
+  {
+    "id": 14301,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "是的，这就是我缺失的东西。"
+  },
+  {
+    "id": 14301,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "知道不是懂得。经验不是体验。我自以为“知道”的一切都不如足尖的这片冰凉来得更为真实。"
+  },
+  {
+    "id": 14301,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "在那份“启示”真正到达之前，我永远无法断言自己已懂得了命运。"
+  },
+  {
+    "id": 14301,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "option_param": "",
+    "single": 0,
+    "speaker": "",
+    "content": "我合上了手里的绘本，感受它粗砺的封面和坚实的质感。"
+  },
+  {
+    "id": 14301,
+    "stepId": 20,
+    "type": "talk",
+    "param": "307910#6207907",
+    "option_param": "",
+    "single": 0,
+    "speaker": "亚齐",
+    "content": "……那么，我不再需要其他书了。"
+  }
+]

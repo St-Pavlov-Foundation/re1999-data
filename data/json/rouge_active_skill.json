@@ -1,0 +1,242 @@
+[
+  {
+    "id": 800000001,
+    "version": "",
+    "powerCost": 3,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "保留当前所有咒语的阶次，并将它们随机改变为新的咒语。",
+    "icon": "rouge_faction_smallicon_1"
+  },
+  {
+    "id": 800000002,
+    "version": "",
+    "powerCost": 5,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成一张特殊咒语，该咒语可以与任何1阶咒语融合升阶。",
+    "icon": "rouge_faction_smallicon_2"
+  },
+  {
+    "id": 800010001,
+    "version": "",
+    "powerCost": 5,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成目标的1张2阶预备协同咒语",
+    "icon": "rouge_faction_smallicon_3"
+  },
+  {
+    "id": 800010002,
+    "version": "",
+    "powerCost": 10,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "使激情未满的目标激情恢复到最大值，同时生成目标的协同仪式",
+    "icon": "rouge_faction_smallicon_7"
+  },
+  {
+    "id": 800020001,
+    "version": "",
+    "powerCost": 4,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "使目标激情+1",
+    "icon": "rouge_faction_smallicon_1"
+  },
+  {
+    "id": 800020002,
+    "version": "",
+    "powerCost": 30,
+    "coinCost": 0,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "使己方全体角色激情恢复到最大值，同时生成协同仪式",
+    "icon": "rouge_faction_smallicon_14"
+  },
+  {
+    "id": 800030001,
+    "version": "",
+    "powerCost": 5,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成一张特殊咒语，该咒语可以与任何1阶咒语融合升阶。",
+    "icon": "rouge_faction_smallicon_6"
+  },
+  {
+    "id": 800030002,
+    "version": "",
+    "powerCost": 16,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成目标的2张3阶预备咒语",
+    "icon": "rouge_faction_smallicon_15"
+  },
+  {
+    "id": 800040001,
+    "version": "",
+    "powerCost": 5,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成目标的2张1阶预备咒语",
+    "icon": "rouge_faction_smallicon_8"
+  },
+  {
+    "id": 800040002,
+    "version": "",
+    "powerCost": 9,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "若本回合激活任意种类的咒语同频，使它们的同频等级+1",
+    "icon": "rouge_faction_smallicon_9"
+  },
+  {
+    "id": 800050001,
+    "version": "",
+    "powerCost": 5,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成目标的2张1阶预备咒语",
+    "icon": "rouge_faction_smallicon_8"
+  },
+  {
+    "id": 800050002,
+    "version": "",
+    "powerCost": 6,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "若本回合激活咒语共鸣，咒语共鸣等级+1",
+    "icon": "rouge_faction_smallicon_1"
+  },
+  {
+    "id": 800060001,
+    "version": "",
+    "powerCost": 0,
+    "coinCost": 100,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "消耗100金雀子儿，使敌方全体陷入【眩晕】状态1回合",
+    "icon": "rouge_faction_smallicon_10"
+  },
+  {
+    "id": 800060002,
+    "version": "",
+    "powerCost": 0,
+    "coinCost": 200,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "消耗200金雀子儿，生成1张预备特殊咒语【黄金湮灭】，消灭低血量敌人",
+    "icon": "rouge_faction_smallicon_13"
+  },
+  {
+    "id": 800070001,
+    "version": "",
+    "powerCost": 6,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "生成目标的1张1阶预备协同咒语，布设中每有3个<color=#C8A25A>妙想</color>品质造物，这个效果额外触发1次",
+    "icon": "rouge_faction_smallicon_4"
+  },
+  {
+    "id": 800070002,
+    "version": "",
+    "powerCost": 40,
+    "coinCost": 0,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "生成1张预备特殊咒语【狂想曲】，使敌方全体失去最大生命",
+    "icon": "rouge_faction_smallicon_11"
+  },
+  {
+    "id": 800080001,
+    "version": "",
+    "powerCost": 8,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "布设中每有5个『软盘』，生成目标的1张1阶预备协同咒语",
+    "icon": "rouge_faction_smallicon_5"
+  },
+  {
+    "id": 800080002,
+    "version": "",
+    "powerCost": 25,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "布设中每有1个『软盘』，随机赋予己方全体【永久增益集合】中的1种效果",
+    "icon": "rouge_faction_smallicon_12"
+  },
+  {
+    "id": 800010003,
+    "version": "101",
+    "powerCost": 10,
+    "coinCost": 0,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "本回合内每使用1张协同咒语，己方全体应激-1",
+    "icon": "rouge_faction_smallicon_16"
+  },
+  {
+    "id": 800080003,
+    "version": "101",
+    "powerCost": 15,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "布设中每有1个『软盘』，使目标应激-1",
+    "icon": "rouge_faction_smallicon_22"
+  },
+  {
+    "id": 800040003,
+    "version": "101",
+    "powerCost": 30,
+    "coinCost": 0,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "本回合激活的咒语同频等级+1，每级咒语同频，全场单位应激-1（不超过9）",
+    "icon": "rouge_faction_smallicon_21"
+  },
+  {
+    "id": 800050003,
+    "version": "101",
+    "powerCost": 20,
+    "coinCost": 0,
+    "roundLimit": 1,
+    "allLimit": 0,
+    "desc": "本回合激活的咒语共鸣等级+1，每级咒语共鸣，全场单位应激-1（不超过9）",
+    "icon": "rouge_faction_smallicon_20"
+  },
+  {
+    "id": 800110001,
+    "version": "101",
+    "powerCost": 10,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "使目标敌人应激-10",
+    "icon": "rouge_faction_smallicon_17"
+  },
+  {
+    "id": 800110002,
+    "version": "101",
+    "powerCost": 20,
+    "coinCost": 0,
+    "roundLimit": 0,
+    "allLimit": 0,
+    "desc": "使目标角色本回合专注概率+100%，随后应激提升至最大值",
+    "icon": "rouge_faction_smallicon_18"
+  }
+]

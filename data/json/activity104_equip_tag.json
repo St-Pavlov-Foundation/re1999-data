@@ -1,0 +1,394 @@
+[
+  {
+    "activityId": 11100,
+    "id": 1,
+    "desc": "仪式循环",
+    "name": "仪式循环",
+    "order": 1
+  },
+  {
+    "activityId": 11100,
+    "id": 2,
+    "desc": "高阶咒语",
+    "name": "高阶咒语",
+    "order": 2
+  },
+  {
+    "activityId": 11100,
+    "id": 3,
+    "desc": "仪式爆发",
+    "name": "仪式爆发",
+    "order": 3
+  },
+  {
+    "activityId": 11100,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 4
+  },
+  {
+    "activityId": 11100,
+    "id": 5,
+    "desc": "综合能力",
+    "name": "综合能力",
+    "order": 5
+  },
+  {
+    "activityId": 11200,
+    "id": 7,
+    "desc": "捉鬼装置",
+    "name": "捉鬼装置",
+    "order": 1
+  },
+  {
+    "activityId": 11200,
+    "id": 8,
+    "desc": "毒瘴幕布",
+    "name": "毒瘴幕布",
+    "order": 2
+  },
+  {
+    "activityId": 11200,
+    "id": 6,
+    "desc": "错位技巧",
+    "name": "错位技巧",
+    "order": 3
+  },
+  {
+    "activityId": 11200,
+    "id": 9,
+    "desc": "暴烈艺术",
+    "name": "暴烈艺术",
+    "order": 4
+  },
+  {
+    "activityId": 11200,
+    "id": 3,
+    "desc": "至终仪式",
+    "name": "至终仪式",
+    "order": 5
+  },
+  {
+    "activityId": 11200,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 6
+  },
+  {
+    "activityId": 11200,
+    "id": 2,
+    "desc": "高阶咒语",
+    "name": "高阶咒语",
+    "order": 7
+  },
+  {
+    "activityId": 11200,
+    "id": 5,
+    "desc": "综合能力",
+    "name": "综合能力",
+    "order": 8
+  },
+  {
+    "activityId": 11300,
+    "id": 10,
+    "desc": "额外行动",
+    "name": "额外行动",
+    "order": 1
+  },
+  {
+    "activityId": 11300,
+    "id": 11,
+    "desc": "占卜理论",
+    "name": "占卜理论",
+    "order": 2
+  },
+  {
+    "activityId": 11300,
+    "id": 12,
+    "desc": "幻境之力",
+    "name": "幻境之力",
+    "order": 3
+  },
+  {
+    "activityId": 11300,
+    "id": 6,
+    "desc": "错位技巧",
+    "name": "错位技巧",
+    "order": 4
+  },
+  {
+    "activityId": 11300,
+    "id": 9,
+    "desc": "暴烈艺术",
+    "name": "暴烈艺术",
+    "order": 5
+  },
+  {
+    "activityId": 11300,
+    "id": 2,
+    "desc": "高阶咒语",
+    "name": "高阶咒语",
+    "order": 6
+  },
+  {
+    "activityId": 11300,
+    "id": 3,
+    "desc": "至终仪式",
+    "name": "至终仪式",
+    "order": 7
+  },
+  {
+    "activityId": 11300,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 8
+  },
+  {
+    "activityId": 11300,
+    "id": 5,
+    "desc": "综合能力",
+    "name": "综合能力",
+    "order": 9
+  },
+  {
+    "activityId": 11400,
+    "id": 13,
+    "desc": "返璞归真",
+    "name": "返璞归真",
+    "order": 1
+  },
+  {
+    "activityId": 11400,
+    "id": 14,
+    "desc": "物的本质",
+    "name": "物的本质",
+    "order": 2
+  },
+  {
+    "activityId": 11400,
+    "id": 15,
+    "desc": "咒语交错",
+    "name": "咒语交错",
+    "order": 3
+  },
+  {
+    "activityId": 11400,
+    "id": 10,
+    "desc": "额外行动",
+    "name": "额外行动",
+    "order": 4
+  },
+  {
+    "activityId": 11400,
+    "id": 11,
+    "desc": "占卜理论",
+    "name": "占卜理论",
+    "order": 5
+  },
+  {
+    "activityId": 11400,
+    "id": 9,
+    "desc": "暴烈艺术",
+    "name": "暴烈艺术",
+    "order": 6
+  },
+  {
+    "activityId": 11400,
+    "id": 3,
+    "desc": "至终仪式",
+    "name": "至终仪式",
+    "order": 7
+  },
+  {
+    "activityId": 11400,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 8
+  },
+  {
+    "activityId": 11400,
+    "id": 5,
+    "desc": "综合能力",
+    "name": "综合能力",
+    "order": 9
+  },
+  {
+    "activityId": 11500,
+    "id": 16,
+    "desc": "灵感特化",
+    "name": "灵感特化",
+    "order": 1
+  },
+  {
+    "activityId": 11500,
+    "id": 17,
+    "desc": "坚守技艺",
+    "name": "坚守技艺",
+    "order": 2
+  },
+  {
+    "activityId": 11500,
+    "id": 18,
+    "desc": "火之薪柴",
+    "name": "火之薪柴",
+    "order": 3
+  },
+  {
+    "activityId": 11500,
+    "id": 19,
+    "desc": "专属之力",
+    "name": "专属之力",
+    "order": 4
+  },
+  {
+    "activityId": 11500,
+    "id": 10,
+    "desc": "额外行动",
+    "name": "额外行动",
+    "order": 5
+  },
+  {
+    "activityId": 11500,
+    "id": 15,
+    "desc": "咒语交错",
+    "name": "咒语交错",
+    "order": 6
+  },
+  {
+    "activityId": 11500,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 7
+  },
+  {
+    "activityId": 11500,
+    "id": 9,
+    "desc": "暴烈艺术",
+    "name": "暴烈艺术",
+    "order": 8
+  },
+  {
+    "activityId": 11500,
+    "id": 3,
+    "desc": "至终仪式",
+    "name": "至终仪式",
+    "order": 9
+  },
+  {
+    "activityId": 11500,
+    "id": 2,
+    "desc": "高阶咒语",
+    "name": "高阶咒语",
+    "order": 10
+  },
+  {
+    "activityId": 11600,
+    "id": 2,
+    "desc": "高阶咒语",
+    "name": "高阶咒语",
+    "order": 2
+  },
+  {
+    "activityId": 11600,
+    "id": 3,
+    "desc": "至终仪式",
+    "name": "至终仪式",
+    "order": 3
+  },
+  {
+    "activityId": 11600,
+    "id": 4,
+    "desc": "多次行动",
+    "name": "多次行动",
+    "order": 11
+  },
+  {
+    "activityId": 11600,
+    "id": 5,
+    "desc": "综合能力",
+    "name": "综合能力",
+    "order": 10
+  },
+  {
+    "activityId": 11600,
+    "id": 6,
+    "desc": "错位技巧",
+    "name": "错位技巧",
+    "order": 14
+  },
+  {
+    "activityId": 11600,
+    "id": 7,
+    "desc": "捉鬼装置",
+    "name": "捉鬼装置",
+    "order": 15
+  },
+  {
+    "activityId": 11600,
+    "id": 8,
+    "desc": "毒瘴幕布",
+    "name": "毒瘴幕布",
+    "order": 13
+  },
+  {
+    "activityId": 11600,
+    "id": 9,
+    "desc": "暴烈艺术",
+    "name": "暴烈艺术",
+    "order": 9
+  },
+  {
+    "activityId": 11600,
+    "id": 10,
+    "desc": "额外行动",
+    "name": "额外行动",
+    "order": 4
+  },
+  {
+    "activityId": 11600,
+    "id": 13,
+    "desc": "返璞归真",
+    "name": "返璞归真",
+    "order": 12
+  },
+  {
+    "activityId": 11600,
+    "id": 14,
+    "desc": "物的本质",
+    "name": "物的本质",
+    "order": 5
+  },
+  {
+    "activityId": 11600,
+    "id": 15,
+    "desc": "咒语交错",
+    "name": "咒语交错",
+    "order": 6
+  },
+  {
+    "activityId": 11600,
+    "id": 16,
+    "desc": "灵感特化",
+    "name": "灵感特化",
+    "order": 1
+  },
+  {
+    "activityId": 11600,
+    "id": 17,
+    "desc": "坚守技艺",
+    "name": "坚守技艺",
+    "order": 7
+  },
+  {
+    "activityId": 11600,
+    "id": 19,
+    "desc": "专属之力",
+    "name": "专属之力",
+    "order": 8
+  }
+]

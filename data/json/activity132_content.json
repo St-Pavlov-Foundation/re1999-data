@@ -1,0 +1,380 @@
+[
+  {
+    "activityId": 11409,
+    "contentId": 1,
+    "content": "这是本船长崭新的APPLe Ⅱ号……的遗照。",
+    "condition": "2#110301",
+    "unlockDesc": "完成修习目标<color=#CC6600><完成故事5TH-02></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 2,
+    "content": "感谢你的赞助，苏芙比小姐。",
+    "condition": "1#11408,3",
+    "unlockDesc": "完成<color=#CC6600>3</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 3,
+    "content": "但很遗憾，APPLe Ⅱ号的沉没远在我的意料之外。",
+    "condition": "1#11408,4",
+    "unlockDesc": "完成<color=#CC6600>4</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 4,
+    "content": "为了向全力支持APPLeⅡ号的你表示感谢，我将你的玩偶绘制在了船舱上！",
+    "condition": "1#11408,5",
+    "unlockDesc": "完成<color=#CC6600>5</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 5,
+    "content": "我在这次的旅行之中收集了不少新奇的炼金术材料。",
+    "condition": "1#11408,6",
+    "unlockDesc": "完成<color=#CC6600>6</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 6,
+    "content": "相信我，你会对这些炼金材料和全新的APPLeⅢ号设计图感到万分惊奇的！",
+    "condition": "1#11408,7",
+    "unlockDesc": "完成<color=#CC6600>7</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 7,
+    "content": "戈尔贡海怪能够轻而易举地掀起数米高的巨浪，将吨位不足的小船掀翻。",
+    "condition": "1#11408,8",
+    "unlockDesc": "完成<color=#CC6600>8</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 8,
+    "content": "但我必须得说，它的体型根本不符合生物学结构，它到底是怎么在海里游泳的？",
+    "condition": "1#11408,9",
+    "unlockDesc": "完成<color=#CC6600>9</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 9,
+    "content": "噢，好吧。我想这就是“了不起的神秘学”吧。",
+    "condition": "2#110305",
+    "unlockDesc": "完成修习目标<color=#CC6600><完成故事5TH-20></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 10,
+    "content": "海鸥是岛屿上最为常见的鸟类。",
+    "condition": "2#110306",
+    "unlockDesc": "完成修习目标<color=#CC6600><在“猜想的黑箱”中消耗20000个尤里卡></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 11,
+    "content": "与岛上的神秘学家一样，海鸥们也从来不吃豆子。",
+    "condition": "1#11408,12",
+    "unlockDesc": "完成<color=#CC6600>12</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 12,
+    "content": "不要在它们的面前吃薯条，别问我是怎么知道的。",
+    "condition": "1#11408,13",
+    "unlockDesc": "完成<color=#CC6600>13</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 13,
+    "content": "岛屿的周边生活着大量的海豚。",
+    "condition": "1#11408,14",
+    "unlockDesc": "完成<color=#CC6600>14</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 14,
+    "content": "海豚们非常不友好，总是喜欢喷我一脸水！",
+    "condition": "1#11408,15",
+    "unlockDesc": "完成<color=#CC6600>15</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 15,
+    "content": "但在沙滩的那场摇滚派对之后，它们就变得友好了起来。",
+    "condition": "1#11408,16",
+    "unlockDesc": "完成<color=#CC6600>16</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 16,
+    "content": "岛屿上有着三片不连续的沙滩，这是其中一处。",
+    "condition": "1#11408,17",
+    "unlockDesc": "完成<color=#CC6600>17</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 17,
+    "content": "沙滩的沙子细腻，适合在上面赤脚漫步。",
+    "condition": "1#11408,18",
+    "unlockDesc": "完成<color=#CC6600>18</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 18,
+    "content": "我在沙滩找到了螃蟹、贝壳、魔精食物罐头……柠檬蜜饼口味的。",
+    "condition": "2#110310",
+    "unlockDesc": "完成修习目标<color=#CC6600><在“猜想的黑箱”中消耗60000个尤里卡></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 19,
+    "content": "岛上有着复杂的地下洞穴，它们联通着岛屿的各个地点。",
+    "condition": "2#110311",
+    "unlockDesc": "完成修习目标<color=#CC6600><消耗240点细胞活性></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 20,
+    "content": "岛屿的地牢位于西南角，向东走可以抵达地下储物间和食堂。",
+    "condition": "1#11408,23",
+    "unlockDesc": "完成<color=#CC6600>23</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 21,
+    "content": "地下生长着不少的荧光小菇以及其他各类蘑菇，它们是优质的炼金材料，我为你采集了不少。",
+    "condition": "1#11408,24",
+    "unlockDesc": "完成<color=#CC6600>24</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 22,
+    "content": "违反了教派规矩的人会被关入监牢。",
+    "condition": "1#11408,25",
+    "unlockDesc": "完成<color=#CC6600>25</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 23,
+    "content": "传说中，教派会把解不出数学题的人关进牢房。",
+    "condition": "1#11408,26",
+    "unlockDesc": "完成<color=#CC6600>26</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 24,
+    "content": "我认为这是某种谣言……因为维尔汀没有被关进去。",
+    "condition": "1#11408,27",
+    "unlockDesc": "完成<color=#CC6600>27</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 25,
+    "content": "——反倒是本船长遭到奸诈小人的陷害，被不讲道理地关进了监牢里面……",
+    "condition": "1#11408,28",
+    "unlockDesc": "完成<color=#CC6600>28</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 26,
+    "content": "这里的环境太差了！甚至连黄豆罐头都不提供！",
+    "condition": "1#11408,29",
+    "unlockDesc": "完成<color=#CC6600>29</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 27,
+    "content": "跟这儿比起来，伦敦的教管所都是天堂了！",
+    "condition": "2#110315",
+    "unlockDesc": "完成修习目标<color=#CC6600><消耗1200点细胞活性></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 28,
+    "content": "岛屿的植被由灌木丛与少量树木组成。",
+    "condition": "2#110316",
+    "unlockDesc": "完成修习目标<color=#CC6600><在故事中累计获得200星></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 29,
+    "content": "岛内的时间流动与岛外并不一致，我们离开基金会的时候还是冬天，但岛上已经是春天了。",
+    "condition": "1#11408,32",
+    "unlockDesc": "完成<color=#CC6600>32</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 30,
+    "content": "岛屿中最为常见的树种是橄榄树、无花果树、苦目树。",
+    "condition": "1#11408,33",
+    "unlockDesc": "完成<color=#CC6600>33</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 31,
+    "content": "苦目树的成活条件相当苛刻，只在特定的地点成长，拉普拉斯的那群家伙，应该对此会很感兴趣。",
+    "condition": "1#11408,34",
+    "unlockDesc": "完成<color=#CC6600>34</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 32,
+    "content": "在岛屿的空旷位置，能够看到高空飞过的阿其翁们。",
+    "condition": "1#11408,35",
+    "unlockDesc": "完成<color=#CC6600>35</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 33,
+    "content": "阿其翁是岛上戒律的维护者，一旦违反戒律，它们就会像看见了微尘的卡邦克鲁一样一拥而上。",
+    "condition": "1#11408,36",
+    "unlockDesc": "完成<color=#CC6600>36</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 34,
+    "content": "我很好奇它们是怎么排泄的……",
+    "condition": "1#11408,37",
+    "unlockDesc": "完成<color=#CC6600>37</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 35,
+    "content": "教派经常会在传道者之厅里举行传道活动。",
+    "condition": "1#11408,38",
+    "unlockDesc": "完成<color=#CC6600>38</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 36,
+    "content": "传道者之厅禁止无理数与不懂几何者入内。",
+    "condition": "1#11408,39",
+    "unlockDesc": "完成<color=#CC6600>39</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 37,
+    "content": "但实际上，只要趁他们不注意，用力推门就可以偷偷溜进去。",
+    "condition": "2#110318",
+    "unlockDesc": "完成修习目标<color=#CC6600><在故事中累计获得220星>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 38,
+    "content": "我果然成功进来了！",
+    "condition": "2#110325",
+    "unlockDesc": "完成教派试炼<color=#CC6600><完成故事5TH-02[厄险]难度>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 39,
+    "content": "我猜这儿就是开会时演讲的地点。",
+    "condition": "1#11408,42",
+    "unlockDesc": "完成<color=#CC6600>42</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 40,
+    "content": "这儿一定很适合开摇滚演唱会，太酷了！",
+    "condition": "1#11408,43",
+    "unlockDesc": "完成<color=#CC6600>43</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 41,
+    "content": "传道者之厅足以容纳五百人，是这座岛屿上最大的建筑物。",
+    "condition": "1#11408,44",
+    "unlockDesc": "完成<color=#CC6600>44</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 42,
+    "content": "很显然，这儿的椅子不够舒适，不适合久坐。",
+    "condition": "1#11408,45",
+    "unlockDesc": "完成<color=#CC6600>45</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 43,
+    "content": "听说它的设计概念来自于“肥波拉”……这名字看上去像是某种魔精。",
+    "condition": "1#11408,46",
+    "unlockDesc": "完成<color=#CC6600>46</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 44,
+    "content": "传道者之厅内有着众多雕塑，APPLe先生推测它们是阿派朗学派历代的领导者们。",
+    "condition": "1#11408,47",
+    "unlockDesc": "完成<color=#CC6600>47</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 45,
+    "content": "我将雕像们分为了三类——",
+    "condition": "1#11408,48",
+    "unlockDesc": "完成<color=#CC6600>48</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 46,
+    "content": "认真的、严肃的以及谢顶的。",
+    "condition": "2#110338",
+    "unlockDesc": "完成教派试炼<color=#CC6600><完成故事5TH-20[厄险]难度></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 47,
+    "content": "她是37，一个无知的、没礼貌的愚蠢小屁孩。",
+    "condition": "2#110342",
+    "unlockDesc": "完成岛上工作清单<color=#CC6600><在故事中获得280行迹点>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 48,
+    "content": "37的意思是，她只会做37以内的加减法。",
+    "condition": "1#11408,52",
+    "unlockDesc": "完成<color=#CC6600>52</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 49,
+    "content": "苏菲亚，这个岛上为数不多的还有常识的人，也是岛上唯一的“除错师”。",
+    "condition": "1#11408,53",
+    "unlockDesc": "完成<color=#CC6600>53</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 50,
+    "content": "简单来说，她的工作就是验算其他人的计算是否正确……就像一个把衬衫一遍遍烫平的可怜女佣。",
+    "condition": "1#11408,54",
+    "unlockDesc": "完成<color=#CC6600>54</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 51,
+    "content": "210，一个夸夸其谈的讨厌家伙。",
+    "condition": "1#11408,55",
+    "unlockDesc": "完成<color=#CC6600>55</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 52,
+    "content": "很显然，他的数学要比37好，他能够熟练掌握210以内的加减乘除。",
+    "condition": "2#110347,110349,110351",
+    "unlockDesc": "完成岛上工作清单<color=#CC6600><在“鬃毛邮报”中，全部讨伐委托评估达到C级></color>后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 53,
+    "content": "这是6，阿派朗学派的领导者。",
+    "condition": "1#11408,57",
+    "unlockDesc": "完成<color=#CC6600>57</color>个浮点任务后揭示"
+  },
+  {
+    "activityId": 11409,
+    "contentId": 54,
+    "content": "从他的发型来看，我猜他私底下也很喜欢摇滚！",
+    "condition": "1#11408,58",
+    "unlockDesc": "完成<color=#CC6600>58</color>个浮点任务后揭示"
+  }
+]

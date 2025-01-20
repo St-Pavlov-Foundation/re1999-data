@@ -1,0 +1,80 @@
+[
+  {
+    "id": 190001,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-2【海滩漫步】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "2",
+    "maxProgress": 1,
+    "episodeId": 2,
+    "jumpId": 10502,
+    "bonus": "2#2#40|9#1003#4|2#3#10000"
+  },
+  {
+    "id": 190002,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-3【漂流的答案】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "3",
+    "maxProgress": 1,
+    "episodeId": 3,
+    "jumpId": 10503,
+    "bonus": "2#2#40|1#110603#1|2#5#10000"
+  },
+  {
+    "id": 190003,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-4【谜题深处】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "4",
+    "maxProgress": 1,
+    "episodeId": 4,
+    "jumpId": 10504,
+    "bonus": "2#2#40|9#1003#4|2#3#10000"
+  },
+  {
+    "id": 190004,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-5【言辞之外】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "5",
+    "maxProgress": 1,
+    "episodeId": 5,
+    "jumpId": 10505,
+    "bonus": "2#2#40|1#111012#1|2#5#10000"
+  },
+  {
+    "id": 190005,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-6【纯粹的数】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "6",
+    "maxProgress": 1,
+    "episodeId": 6,
+    "jumpId": 10506,
+    "bonus": "2#2#40|9#1003#4|2#3#10000"
+  },
+  {
+    "id": 190006,
+    "activityId": 11402,
+    "isOnline": 1,
+    "loopType": "3",
+    "name": "完成章节<color=#AC5320>AR-7【沙粒与黄金】</color>及其谜题",
+    "listenerType": "Act130Episode",
+    "listenerParam": "7",
+    "maxProgress": 1,
+    "episodeId": 7,
+    "jumpId": 10507,
+    "bonus": "2#2#40|1#110403#2|1#110602#4"
+  }
+]
