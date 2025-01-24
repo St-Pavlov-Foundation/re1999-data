@@ -196,8 +196,6 @@ function slot0.onUpdateMO(slot0, slot1)
 		slot0._txtremiantime.text = luaLang("not_enough_one_hour")
 	end
 
-	gohelper.setActive(slot0._gonewtag, false)
-
 	if tonumber(slot1:getDiscount()) and slot7 > 0 then
 		slot0.hasTag = true
 
@@ -209,6 +207,8 @@ function slot0.onUpdateMO(slot0, slot1)
 
 		gohelper.setActive(slot0._gotag, false)
 	end
+
+	gohelper.setActive(slot0._gonewtag, slot1:needShowNew())
 
 	slot0._hascloth = slot0._mo:alreadyHas()
 

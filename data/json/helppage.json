@@ -3945,7 +3945,7 @@
     "type": 2,
     "text": "小怪物翻斗棋指引",
     "icon": "v2a5_autochess_help_2",
-    "iconText": "v2a5_autochess_help_1",
+    "iconText": "v2a5_autochess_help_2",
     "unlockGuideId": 25403,
     "isCn": 1
   },
@@ -3955,7 +3955,7 @@
     "type": 2,
     "text": "小怪物翻斗棋指引",
     "icon": "v2a5_autochess_help_3",
-    "iconText": "v2a5_autochess_help_1",
+    "iconText": "v2a5_autochess_help_3",
     "unlockGuideId": 25406,
     "isCn": 1
   },
@@ -3965,8 +3965,8 @@
     "type": 2,
     "text": "小怪物翻斗棋指引",
     "icon": "v2a5_autochess_help_4",
-    "iconText": "v2a5_autochess_help_1",
-    "unlockGuideId": 0,
+    "iconText": "v2a5_autochess_help_4",
+    "unlockGuideId": 25407,
     "isCn": 1
   },
   {
@@ -3975,7 +3975,7 @@
     "type": 2,
     "text": "小怪物翻斗棋指引",
     "icon": "v2a5_autochess_help_5",
-    "iconText": "v2a5_autochess_help_1",
+    "iconText": "v2a5_autochess_help_5",
     "unlockGuideId": 0,
     "isCn": 1
   }

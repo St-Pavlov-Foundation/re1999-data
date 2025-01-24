@@ -72,26 +72,27 @@ function slot0.refreshAllSubEpisodeItems(slot0)
 end
 
 function slot0.refreshSingleSubEpisodeItem(slot0, slot1, slot2, slot3)
-	slot6 = gohelper.findChildText(slot1, "txt_badgenum")
-	slot14 = slot2:getRuleStatus(1)
-	slot15 = slot2:getRuleStatus(2)
-	slot17 = slot2:getUseBadgeNum()
+	slot7 = gohelper.findChildText(slot1, "txt_badgenum")
+	slot15 = slot2:getRuleStatus(1)
+	slot16 = slot2:getRuleStatus(2)
+	slot18 = slot2:getUseBadgeNum()
 
 	UISpriteSetMgr.instance:setChallengeSprite(gohelper.findChildImage(slot1, "image_index"), "v2a5_challenge_result_level_" .. slot2:getPassOrder())
 
-	slot6.text = slot17
+	slot7.text = slot18
 
-	gohelper.setActive(slot6.gameObject, slot17 > 0)
+	gohelper.setActive(slot7.gameObject, slot18 > 0)
+	gohelper.setActive(gohelper.findChild(slot1, "mask"), slot18 > 0)
 
-	slot18 = slot2:getEpisodeId()
+	slot19 = slot2:getEpisodeId()
 
-	Act183Helper.setRuleIcon(slot18, 1, gohelper.findChildImage(slot1, "rules/go_rule1/image_icon"))
-	Act183Helper.setRuleIcon(slot18, 2, gohelper.findChildImage(slot1, "rules/go_rule2/image_icon"))
-	Act183Helper.setSubEpisodeResultIcon(slot18, gohelper.findChildImage(slot1, "image_episode"))
-	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule1/go_repress"), slot14 == Act183Enum.RuleStatus.Repress)
-	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule2/go_repress"), slot15 == Act183Enum.RuleStatus.Repress)
-	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule1/go_escape"), slot14 == Act183Enum.RuleStatus.Escape)
-	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule2/go_escape"), slot15 == Act183Enum.RuleStatus.Escape)
+	Act183Helper.setRuleIcon(slot19, 1, gohelper.findChildImage(slot1, "rules/go_rule1/image_icon"))
+	Act183Helper.setRuleIcon(slot19, 2, gohelper.findChildImage(slot1, "rules/go_rule2/image_icon"))
+	Act183Helper.setSubEpisodeResultIcon(slot19, gohelper.findChildImage(slot1, "image_episode"))
+	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule1/go_repress"), slot15 == Act183Enum.RuleStatus.Repress)
+	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule2/go_repress"), slot16 == Act183Enum.RuleStatus.Repress)
+	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule1/go_escape"), slot15 == Act183Enum.RuleStatus.Escape)
+	gohelper.setActive(gohelper.findChild(slot1, "rules/go_rule2/go_escape"), slot16 == Act183Enum.RuleStatus.Escape)
 	UISpriteSetMgr.instance:setChallengeSprite(gohelper.findChildImage(slot1, "image_star"), slot2:isAllConditionPass() and "v2a5_challenge_dungeon_reward_star_01" or "v2a5_challenge_dungeon_reward_star_02")
 	slot0:refreshSubEpisodeHeros(slot1, slot2:getHeroMos())
 end

@@ -67,8 +67,9 @@ end
 function slot0._editableInitView(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.LY_HadRedAndBluePointChange, slot0.onLY_HadRedAndBluePointChange, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.LY_PointAreaSizeChange, slot0.refreshLYCard, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnResetCard, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
-	slot0:addEventCb(FightController.instance, FightEvent.PlayCardFlayFinish, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
+	slot0:addEventCb(FightController.instance, FightEvent.SetBlockCardOperate, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
+	slot0:addEventCb(FightController.instance, FightEvent.OnPlayCardFlowDone, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
+	slot0:addEventCb(FightController.instance, FightEvent.OnPlayAssistBossCardFlowDone, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
 	slot0:addEventCb(FightController.instance, FightEvent.StageChanged, slot0.onStageChange, slot0, LuaEventSystem.Low)
 	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0.refreshLYCard, slot0, LuaEventSystem.Low)
 end

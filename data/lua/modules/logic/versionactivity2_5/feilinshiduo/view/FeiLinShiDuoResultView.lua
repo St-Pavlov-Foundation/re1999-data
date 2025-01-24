@@ -37,6 +37,7 @@ function slot0._btnquitgameOnClick(slot0)
 end
 
 function slot0._btnrestartOnClick(slot0)
+	FeiLinShiDuoStatHelper.instance:initGameStartTime()
 	FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.ResultResetGame)
 	slot0:closeThis()
 end

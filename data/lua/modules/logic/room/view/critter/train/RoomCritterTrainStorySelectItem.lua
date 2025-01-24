@@ -65,22 +65,11 @@ function slot0._btnselectOnClick(slot0)
 
 	gohelper.setActive(slot0._goselect, true)
 	TaskDispatcher.runDelay(slot0._playSelectFinished, slot0, 0.34)
-
-	slot3 = string.splitToNumber(CritterConfig.instance:getCritterTrainEventCfg(slot0._eventId).cost, "#")
-
-	if CurrencyModel.instance:getCurrency(slot3[2]).quantity < RoomTrainCritterModel.instance:getSelectOptionTotalCount() * slot3[3] then
-		GameFacade.showMessageBox(MessageBoxIdDefine.RoomCritterTrainCurrencyInsufficiency, MsgBoxEnum.BoxType.Yes_No, slot0._onSelectFinished, nil, , slot0, nil, , CurrencyConfig.instance:getCurrencyCo(slot3[2]).name)
-	else
-		slot0:_onSelectFinished()
-	end
+	RoomController.instance:dispatchEvent(RoomEvent.CritterTrainAttributeSelected, slot0._attributeCo.id, slot0._optionId)
 end
 
 function slot0._playSelectFinished(slot0)
 	gohelper.setActive(slot0._goselect, false)
-end
-
-function slot0._onSelectFinished(slot0)
-	RoomController.instance:dispatchEvent(RoomEvent.CritterTrainAttributeSelected, slot0._attributeCo.id, slot0._optionId)
 end
 
 function slot0._refreshItem(slot0)

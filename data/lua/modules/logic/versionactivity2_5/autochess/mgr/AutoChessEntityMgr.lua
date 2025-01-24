@@ -37,17 +37,19 @@ function slot0.removeEntity(slot0, slot1)
 		gohelper.destroy(slot2.go)
 
 		slot0._entityDic[slot1] = nil
-	else
-		logError("移除了不存在的棋子UID" .. slot1)
 	end
 end
 
-function slot0.addLeaderEntity(slot0, slot1)
+function slot0.addLeaderEntity(slot0, slot1, slot2)
 	if not slot0.scene then
 		return
 	end
 
 	slot0._leaderEntityDic[slot1.uid] = slot0.scene:createLeaderEntity(slot1)
+
+	if slot2 then
+		slot3:showEnergy()
+	end
 end
 
 function slot0.cacheAllEntity(slot0)
@@ -87,7 +89,7 @@ end
 
 function slot0.getEntity(slot0, slot1)
 	if not slot0._entityDic[slot1] then
-		logError("不存在棋子UID" .. slot1)
+		logError(string.format("异常:不存在棋子UID%s", slot1))
 	end
 
 	return slot2
@@ -108,8 +110,10 @@ function slot0.dispose(slot0)
 end
 
 function slot0.flyStarByTeam(slot0, slot1)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_star_collect)
+
 	for slot5, slot6 in pairs(slot0._entityDic) do
-		if slot6.teamType == slot1 then
+		if slot6.teamType == slot1 and slot6.config.type == AutoChessStrEnum.ChessType.Attack then
 			slot6:flyStar()
 		end
 	end

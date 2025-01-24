@@ -103,7 +103,7 @@ function slot0.setData(slot0, slot1, slot2, slot3)
 
 			slot0:refreshLvup()
 		else
-			logError(string.format("不存棋子配置 ID:%s 星级:%s", slot5.id, slot5.star))
+			logError(string.format("异常:不存在棋子配置ID:%s星级:%s", slot5.id, slot5.star))
 		end
 
 		slot0:setLock(slot2.freeze)
@@ -196,6 +196,18 @@ function slot0.checkBuy(slot0, slot1)
 			else
 				AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_purchase)
 			end
+
+			if slot0.isFree and AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableDragFreeChess) then
+				ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
+
+				return
+			end
+
+			if not slot0.isFree and AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableDragChess) then
+				ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
+
+				return
+			end
 		else
 			if not AutoChessHelper.hasUniversalBuff(slot0.data.chess.buffContainer.buffs) and (slot0.config.type == AutoChessStrEnum.ChessType.Attack and slot3 == AutoChessEnum.WarZone.Two or slot0.config.type == AutoChessStrEnum.ChessType.Support and slot3 ~= AutoChessEnum.WarZone.Two) then
 				GameFacade.showToast(ToastEnum.AutoChessBuyWarZoneError)
@@ -204,15 +216,17 @@ function slot0.checkBuy(slot0, slot1)
 				return
 			end
 
-			if slot8.chess.id == slot0.data.chess.id or slot9 then
-				slot11 = slot8.chess
+			slot11 = string.format("%s_%s", slot8.chess.exp, slot0.data.chess.exp)
 
-				if slot11.exp == slot11.maxExpLimit then
+			if slot8.chess.id == slot0.data.chess.id or slot9 then
+				slot12 = slot8.chess
+
+				if slot12.exp == slot12.maxExpLimit then
 					GameFacade.showToast(ToastEnum.AutoChessExpMax)
 					ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
 
 					return
-				elseif AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableExchangeEXP, slot0.data.chess.star) then
+				elseif AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableExchangeEXP, slot11) then
 					ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
 
 					return
@@ -228,23 +242,11 @@ function slot0.checkBuy(slot0, slot1)
 			end
 		end
 
-		if slot0.isFree and AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableDragFreeChess) then
-			ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
-
-			return
-		end
-
-		if slot0.isFree == false and AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableDragChess) then
-			ZProj.TweenHelper.DOAnchorPos(slot0.transform, slot0.startX, slot0.startY, 0.2)
-
-			return
-		end
-
 		gohelper.setActive(slot0.go, false)
 		recthelper.setAnchor(slot0.transform, slot0.startX, slot0.startY)
 		AutoChessRpc.instance:sendAutoChessBuyChessRequest(AutoChessModel.instance:getCurModuleId(), slot0.mallId, slot0.data.uid, slot3, slot4 - 1)
 		AutoChessController.instance:dispatchEvent(AutoChessEvent.ZBuyChess, slot0.data.chess.id)
-		AutoChessController.instance:dispatchEvent(AutoChessEvent.ZDrayChessToPos, string.format("%d_%d", 11001, slot3))
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.ZDrayChessToPos, string.format("%d_%d", slot0.data.chess.id, slot3))
 
 		if slot0.isFree then
 			AutoChessController.instance:dispatchEvent(AutoChessEvent.ZDragFreeChess)
@@ -273,7 +275,7 @@ function slot0.refreshLvup(slot0)
 		return
 	end
 
-	if AutoChessModel.instance:getChessMo().svrFight:hasChessById(slot0.config.id) then
+	if AutoChessModel.instance:getChessMo().svrFight:hasUpgradeableChess(slot0.config.id) then
 		gohelper.setActive(slot0.golvup, true)
 	else
 		gohelper.setActive(slot0.golvup, false)

@@ -32,14 +32,14 @@ function slot0.onInitView(slot0)
 	slot0._goFreeFrame = gohelper.findChild(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#go_ChargeFrame/#go_FreeFrame")
 	slot0._btnFresh = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#btn_Fresh")
 	slot0._txtFreshCost = gohelper.findChildText(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#btn_Fresh/#txt_FreshCost")
-	slot0._btnLock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#btn_Lock")
-	slot0._btnUnlock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#btn_Unlock")
+	slot0._goLockBtns = gohelper.findChild(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#go_LockBtns")
+	slot0._btnLock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#go_LockBtns/#btn_Lock")
+	slot0._btnUnlock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#go_LockBtns/#btn_Unlock")
 	slot0._goChargeContent = gohelper.findChild(slot0.viewGO, "#go_ViewSelf/Bottom/#go_ChargeRoot/#go_ChargeContent")
 	slot0._goCheckSell = gohelper.findChild(slot0.viewGO, "#go_ViewSelf/#go_CheckSell")
 	slot0._txtSellPrice = gohelper.findChildText(slot0.viewGO, "#go_ViewSelf/#go_CheckSell/cost/#txt_SellPrice")
 	slot0._goChessAvatar = gohelper.findChild(slot0.viewGO, "#go_ViewSelf/#go_ChessAvatar")
 	slot0._goViewEnemy = gohelper.findChild(slot0.viewGO, "#go_ViewEnemy")
-	slot0._txtGoal = gohelper.findChildText(slot0.viewGO, "#go_ViewEnemy/ScoreTarget/tips/#txt_Goal")
 	slot0._btnBack = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ViewEnemy/#btn_Back")
 	slot0._goLeaderEnergyE = gohelper.findChild(slot0.viewGO, "#go_ViewEnemy/#go_LeaderEnergyE")
 	slot0._txtLeaderEnergyE = gohelper.findChildText(slot0.viewGO, "#go_ViewEnemy/#go_LeaderEnergyE/#txt_LeaderEnergyE")
@@ -86,9 +86,9 @@ function slot0._btnBackPickOnClick(slot0)
 	gohelper.setActive(slot0._btnStartFight, true)
 	gohelper.setActive(slot0._goRound, true)
 	gohelper.setActive(slot0._btnFresh, true)
-	gohelper.setActive(slot0._btnLock, true)
+	gohelper.setActive(slot0._goLockBtns, true)
 	gohelper.setActive(slot0._goPickView, false)
-	slot0:checkForcePick()
+	ViewMgr.instance:openView(ViewName.AutoChessForcePickView, slot0.freeMall)
 end
 
 function slot0._btnCheckEnemyOnClick(slot0)
@@ -111,6 +111,7 @@ function slot0._btnLederSkillOnClick(slot0)
 	end
 
 	if slot0:checkCanUseLeaderSkill(true) then
+		slot0.animBtnSkill:Play("click", 0, 0)
 		AutoChessRpc.instance:sendAutoChessUseMasterSkillRequest(slot0.moduleId, slot0.chessMo.svrFight.mySideMaster.skill.id)
 	end
 end
@@ -123,6 +124,7 @@ function slot0._btnBackOnClick(slot0)
 	slot0.checkingEnemy = false
 
 	slot0.animSwitch:Play("story", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_pkls_game_reopen)
 	TaskDispatcher.runDelay(slot0.delaySwitch, slot0, 0.35)
 end
 
@@ -131,6 +133,7 @@ function slot0.previewCallback(slot0, slot1, slot2)
 		slot0.checkingEnemy = true
 
 		slot0.animSwitch:Play("hard", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_pkls_game_reopen)
 		TaskDispatcher.runDelay(slot0.delaySwitch, slot0, 0.35)
 	end
 end
@@ -156,9 +159,13 @@ function slot0._btnFreshOnClick(slot0)
 	end
 
 	if slot0.freshCost <= tonumber(slot0.chessMo.svrMall.coin) then
+		AutoChessHelper.lockScreen("AutoChessMallViewFreshStore", true)
+		AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_mln_details_open)
+		gohelper.addChildPosStay(slot0._goChargeRoot, slot0.freeItem.go)
 		slot0.animBtnFresh:Play("click", 0, 0)
 		slot0.animBottom:Play("flushed", 0, 0)
 		TaskDispatcher.runDelay(slot0.delayRefreshStore, slot0, 0.16)
+		TaskDispatcher.runDelay(slot0.delaySetFreeItem, slot0, 0.4)
 	else
 		GameFacade.showToast(ToastEnum.AutoChessCoinNotEnough)
 	end
@@ -168,11 +175,17 @@ function slot0.delayRefreshStore(slot0)
 	AutoChessRpc.instance:sendAutoChessRefreshMallRequest(slot0.moduleId)
 end
 
+function slot0.delaySetFreeItem(slot0)
+	gohelper.addChildPosStay(slot0._goChargeContent, slot0.freeItem.go)
+	AutoChessHelper.lockScreen("AutoChessMallViewFreshStore", false)
+end
+
 function slot0._btnLockOnClick(slot0)
 	if AutoChessController.instance:isClickDisable() then
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_lock)
 	AutoChessRpc.instance:sendAutoChessFreezeItemRequest(slot0.moduleId, slot0.chargeMall.mallId, 0, AutoChessEnum.FreeZeType.Freeze, slot0.freezeReply, slot0)
 end
 
@@ -200,10 +213,14 @@ function slot0._fightYesCallback(slot0)
 	AutoChessRpc.instance:sendAutoChessEnterFightRequest(slot0.moduleId)
 end
 
-function slot0._onEscapeBtnClick(slot0)
-	if not slot0._goPickView.activeInHierarchy then
-		AutoChessController.instance:exitGame()
+function slot0._overrideClose(slot0)
+	if slot0._btnBack.gameObject.activeInHierarchy then
+		slot0:_btnBackOnClick()
+
+		return
 	end
+
+	AutoChessController.instance:exitGame()
 end
 
 function slot0._editableInitView(slot0)
@@ -213,8 +230,8 @@ function slot0._editableInitView(slot0)
 	slot0.animSwitch = slot0._goexcessive:GetComponent(gohelper.Type_Animator)
 	slot0.animCoin = slot0._txtCoin.gameObject:GetComponent(gohelper.Type_Animator)
 	slot0.animStarProgress = slot0._goStarProgress:GetComponent(gohelper.Type_Animator)
+	slot0.animBtnSkill = slot0._btnLederSkill.gameObject:GetComponent(gohelper.Type_Animator)
 
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscapeBtnClick, slot0)
 	slot0:initMallItemList()
 end
 
@@ -224,21 +241,30 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMallData, slot0.refreshUI, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntity, slot0.onDragChess, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntityEnd, slot0.onDragChessEnd, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.onCloseView, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.MallCoinChange, slot0.refreshCoinRelative, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.ForcePickViewBoard, slot0.onViewBoard, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.ForcePickReply, slot0.onForcePickReply, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMallRegion, slot0.onMallRegionChange, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMasterSkill, slot0.refreshLeaderSkillRelative, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateLeaderEnergy, slot0.refreshLeaderEnergy, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItem, slot0.onDragMallItem, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItemEnd, slot0.onDragMallItemEnd, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.BuyChessReply, slot0.onBuyReply, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.BuildReply, slot0.onBuildReply, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.StartBuyStepFinih, slot0.onStartBuyFinish, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.onCloseView, slot0)
 	AutoChessGameModel.instance:setChessAvatar(slot0._goChessAvatar)
 
 	slot0.moduleId = AutoChessModel.instance:getCurModuleId()
 	slot0.chessMo = AutoChessModel.instance:getChessMo()
 
+	if slot0.viewParam and slot0.viewParam.firstOpen then
+		slot0.startBuyEnd = true
+	end
+
 	slot0:refreshUI()
-	slot0:refreshMallLock()
+	slot0:checkStartProgressAnim()
+	slot0:setGuideButtonStatus()
 end
 
 function slot0.onClose(slot0)
@@ -252,21 +278,20 @@ function slot0.onDestroyView(slot0)
 		slot0._tweenId = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0.checkPopUp, slot0)
+	TaskDispatcher.cancelTask(slot0.delaySetFreeItem, slot0)
+	TaskDispatcher.cancelTask(slot0.checkForcePick, slot0)
+	TaskDispatcher.cancelTask(slot0.starProgressFinish, slot0)
 	TaskDispatcher.cancelTask(slot0.recordItemPos, slot0)
 	TaskDispatcher.cancelTask(slot0.delaySwitch, slot0)
 end
 
 function slot0.initMallItemList(slot0)
-	slot0.freeFrameList = slot0:getUserDataTb_()
 	slot0.chargeFrameList = slot0:getUserDataTb_()
-	slot0.freeItemList = {}
 	slot0.chargeItemList = {}
 
 	for slot4 = 1, 7 do
 		if slot4 == 1 then
-			slot0.freeFrameList[slot4] = slot0._goFreeFrame.transform
-			slot0.freeItemList[slot4] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot0._goMallItem, slot0._goChargeContent, "freeItem" .. slot4), AutoChessMallItem, slot0)
+			slot0.freeItem = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot0._goMallItem, slot0._goChargeContent, "freeItem" .. slot4), AutoChessMallItem, slot0)
 		end
 
 		slot0.chargeFrameList[slot4] = gohelper.clone(slot0._goFrame, slot0._goChargeFrame, "chargeFrame" .. slot4).transform
@@ -283,7 +308,7 @@ function slot0.recordItemPos(slot0)
 		if slot4 == 1 then
 			slot5, slot6 = recthelper.getAnchor(slot0._goFreeFrame.transform)
 
-			slot0.freeItemList[slot4]:setPos(slot5, slot6)
+			slot0.freeItem:setPos(slot5, slot6)
 		end
 
 		slot5, slot6 = recthelper.getAnchor(slot0.chargeFrameList[slot4])
@@ -309,30 +334,34 @@ function slot0.refreshUI(slot0)
 	slot0:refreshCoinRelative()
 	slot0:refreshRoundRelative()
 	slot0:refreshLeaderSkillRelative()
+	slot0:refreshMallLock()
+end
 
+function slot0.checkStartProgressAnim(slot0)
 	slot0.maxStarCnt = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.RewardMaxStar].value)
 
 	if slot0:playStartProgressAnim() == 0 then
 		slot0:refreshStarProgress()
+
+		slot0.starProgressEnd = true
+
 		slot0:checkPopUp()
 	else
-		TaskDispatcher.runDelay(slot0.checkPopUp, slot0, slot7)
+		TaskDispatcher.runDelay(slot0.starProgressFinish, slot0, slot2)
 	end
 end
 
 function slot0.refreshRoundRelative(slot0)
-	slot3 = lua_auto_chess_round.configDict[Activity182Model.instance:getCurActId()][slot0.chessMo.sceneRound]
+	slot1 = slot0.chessMo.sceneRound
 
 	if slot0.chessMo.svrMall.freeRefreshCount > 0 then
 		slot0.freshCost = 0
 	else
-		slot0.freshCost = tonumber(lua_auto_chess_mall_refresh.configDict[slot2].cost)
+		slot0.freshCost = tonumber(lua_auto_chess_mall_refresh.configDict[slot1].cost)
 	end
 
 	slot0._txtFreshCost.text = slot0.freshCost
-	slot0._txtRound.text = string.format("%d/%d", slot2, lua_auto_chess_episode.configDict[AutoChessModel.instance.episodeId].maxRound)
-	slot6 = string.split(slot3.assess, "#")
-	slot0._txtGoal.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_gameview_startarget"), string.format("%s/%s/%s", slot6[1], slot6[2], slot6[3]))
+	slot0._txtRound.text = string.format("%d/%d", slot1, lua_auto_chess_episode.configDict[AutoChessModel.instance.episodeId].maxRound)
 end
 
 function slot0.refreshMallLock(slot0)
@@ -362,7 +391,7 @@ function slot0.refreshLeaderEnergy(slot0)
 
 		UISpriteSetMgr.instance:setAutoChessSprite(slot0._imageLeaderSkillCost, "v2a5_autochess_cost" .. slot6[1])
 
-		slot0._txtLeaderSkillCost.text = slot6[2] ~= 0 and slot6[2] or luaLang("autochess_mallview_nocost")
+		slot0._txtLeaderSkillCost.text = tonumber(slot6[2]) ~= 0 and slot6[2] or luaLang("autochess_mallview_nocost")
 	else
 		slot0._txtLeaderSkillCost.text = luaLang("autochess_mallview_nocost")
 	end
@@ -403,12 +432,28 @@ function slot0.refreshMallItem(slot0, slot1)
 		else
 			slot0.freeMall = slot6
 
-			slot0.freeItemList[1]:setData(slot6.mallId, slot6.items[1], true)
+			slot0.freeItem:setData(slot6.mallId, slot6.items[1], true)
 		end
 	end
 end
 
+function slot0.onStartBuyFinish(slot0)
+	slot0.startBuyEnd = true
+
+	slot0:checkPopUp()
+end
+
+function slot0.starProgressFinish(slot0)
+	slot0.starProgressEnd = true
+
+	slot0:checkPopUp()
+end
+
 function slot0.checkPopUp(slot0)
+	if not slot0.starProgressEnd or not slot0.startBuyEnd then
+		return
+	end
+
 	if slot0.chessMo.mallUpgrade then
 		ViewMgr.instance:openView(ViewName.AutoChessMallLevelUpView)
 
@@ -448,15 +493,23 @@ function slot0.onViewBoard(slot0)
 	gohelper.setActive(slot0._btnStartFight, false)
 	gohelper.setActive(slot0._goRound, false)
 	gohelper.setActive(slot0._btnFresh, false)
-	gohelper.setActive(slot0._btnLock, false)
+	gohelper.setActive(slot0._goLockBtns, false)
 	gohelper.setActive(slot0._goPickView, true)
 end
 
 function slot0.onForcePickReply(slot0, slot1)
 	if not slot1 then
 		slot0.animFreeFrame:Play("open", 0, 0)
-		slot0:refreshUI()
+		slot0:refreshMallItem(slot0.chessMo.svrMall)
+		slot0:checkForcePick()
 	end
+end
+
+function slot0.onMallRegionChange(slot0)
+	slot0.freeMall = AutoChessHelper.getMallRegionByType(slot0.chessMo.svrMall.regions, AutoChessEnum.MallType.Free)
+
+	slot0.freeItem:setData(slot0.freeMall.mallId, slot0.freeMall.items[1], true)
+	slot0:checkForcePick()
 end
 
 function slot0.onDragMallItem(slot0, slot1, slot2)
@@ -471,6 +524,26 @@ function slot0.onDragMallItemEnd(slot0)
 	slot0._txtCoin.text = slot0.chessMo.svrMall.coin
 
 	slot0.animCoin:Play("idle", 0, 0)
+end
+
+function slot0.onBuyReply(slot0)
+	slot0:refreshUI()
+
+	if #slot0.freeMall.selectItems > 0 then
+		TaskDispatcher.runDelay(slot0.checkForcePick, slot0, 1.5)
+	else
+		slot0:checkForcePick()
+	end
+end
+
+function slot0.onBuildReply(slot0)
+	slot0:refreshUI()
+
+	if #slot0.freeMall.selectItems > 0 then
+		TaskDispatcher.runDelay(slot0.checkForcePick, slot0, 1.5)
+	else
+		slot0:checkForcePick()
+	end
 end
 
 function slot0.freezeReply(slot0, slot1, slot2, slot3)
@@ -600,6 +673,17 @@ end
 
 function slot0._tweenFinish(slot0)
 	slot0:refreshStarProgress()
+end
+
+function slot0.setGuideButtonStatus(slot0)
+	gohelper.setActive(slot0._btnCheckEnemy, GuideModel.instance:isGuideFinish(25403))
+	gohelper.setActive(slot0._goLockBtns, GuideModel.instance:isGuideFinish(25404))
+
+	slot1 = GuideModel.instance:isGuideFinish(25406)
+
+	gohelper.setActive(slot0._goStarProgress, slot1)
+	gohelper.setActive(slot0._btnFresh, slot1)
+	gohelper.setActive(slot0._btnLederSkill, slot1)
 end
 
 return slot0

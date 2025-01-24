@@ -55,7 +55,7 @@ function slot0.recursion(slot0, slot1)
 			if slot7.effectType == AutoChessEnum.EffectType.ChessMove then
 				slot2:addWork(AutoChessEffectWork.New(slot7))
 			else
-				logError("棋子移动Action下面不该有其他类型Effect")
+				logError("异常:棋子移动Action下面不该有其他类型Effect")
 			end
 		end
 
@@ -66,7 +66,7 @@ function slot0.recursion(slot0, slot1)
 		if slot1.actionType == AutoChessEnum.ActionType.ChessSkill then
 			slot0.seqFlow:addWork(AutoChessSkillWork.New(slot1))
 
-			if not string.nilorempty(lua_auto_chess_skill.configDict[tonumber(slot1.reasonId)].skilleffID) then
+			if lua_auto_chess_skill.configDict[tonumber(slot1.reasonId)] and not string.nilorempty(slot4.skilleffID) then
 				slot2 = string.splitToNumber(slot5, "#")
 			end
 		end

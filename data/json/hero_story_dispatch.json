@@ -214,7 +214,7 @@
     "count": 4,
     "scoreReward": 1000,
     "time": 36000,
-    "effectCondition": "1|1|3023#3041",
+    "effectCondition": "1|1|3023#3041#3057",
     "effect": "7200_1",
     "effectDesc": "任意1名第一防线学校优秀毕业生参与追溯，可缩短追溯时间。",
     "unlockEpisodeId": 0,

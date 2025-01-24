@@ -128,4 +128,11 @@ function slot0._replaceDescTagFunc(slot0)
 	return string.format("<b><u><link=%s>%s</link></u></b>", slot1.id, slot0)
 end
 
+function slot0.buildEmptyChess()
+	return {
+		uid = 0,
+		id = 0
+	}
+end
+
 return slot0

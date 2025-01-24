@@ -47,7 +47,7 @@ function slot0.onLoadCallback(slot0, slot1)
 			tabletool.clear(slot0.path2PointListDic[slot2])
 		end
 	else
-		logError("自走棋特效加载失败" .. slot2)
+		logError(string.format("异常:自走棋特效加载失败%s", slot2))
 	end
 end
 

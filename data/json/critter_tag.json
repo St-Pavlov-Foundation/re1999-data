@@ -9,7 +9,9 @@
     "name": "效率Ⅰ",
     "desc": "魔精基础效率提升至100。",
     "effects": "baseEfficiency_lv1_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseEfficiency_lv2",
@@ -21,7 +23,9 @@
     "name": "效率Ⅱ",
     "desc": "魔精基础效率提升至120。",
     "effects": "baseEfficiency_lv2_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseEfficiency_lv3",
@@ -33,7 +37,9 @@
     "name": "效率Ⅲ",
     "desc": "魔精基础效率提升至130。",
     "effects": "baseEfficiency_lv3_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseEfficiency_lv4",
@@ -45,7 +51,9 @@
     "name": "效率Ⅳ",
     "desc": "魔精基础效率提升至140。",
     "effects": "baseEfficiency_lv4_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseEfficiency_lv5",
@@ -57,7 +65,9 @@
     "name": "效率Ⅴ",
     "desc": "魔精基础效率提升至150。",
     "effects": "baseEfficiency_lv5_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "basePatience_lv1",
@@ -69,7 +79,9 @@
     "name": "耐性Ⅰ",
     "desc": "魔精基础心情消耗速度不变。",
     "effects": "basePatience_lv1_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "basePatience_lv2",
@@ -81,7 +93,9 @@
     "name": "耐性Ⅱ",
     "desc": "魔精基础心情消耗降低10%。",
     "effects": "basePatience_lv2_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "basePatience_lv3",
@@ -93,7 +107,9 @@
     "name": "耐性Ⅲ",
     "desc": "魔精基础心情消耗降低15%。",
     "effects": "basePatience_lv3_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "basePatience_lv4",
@@ -105,7 +121,9 @@
     "name": "耐性Ⅳ",
     "desc": "魔精基础心情消耗降低20%。",
     "effects": "basePatience_lv4_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "basePatience_lv5",
@@ -117,7 +135,9 @@
     "name": "耐性Ⅴ",
     "desc": "魔精基础心情消耗降低25%。",
     "effects": "basePatience_lv5_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseIdea_lv1",
@@ -129,7 +149,9 @@
     "name": "专长Ⅰ",
     "desc": "自身不会在荒原生产中累计获得额外产品的概率（不会影响其他累计概率）。",
     "effects": "baseIdea_lv1_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseIdea_lv2",
@@ -141,7 +163,9 @@
     "name": "专长Ⅱ",
     "desc": "在荒原每次生产中可以随工作时间累计5%的概率获得额外产品。",
     "effects": "baseIdea_lv2_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseIdea_lv3",
@@ -153,7 +177,9 @@
     "name": "专长Ⅲ",
     "desc": "在荒原每次生产中可以随工作时间累计10%的概率获得额外产品。",
     "effects": "baseIdea_lv3_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseIdea_lv4",
@@ -165,7 +191,9 @@
     "name": "专长Ⅳ",
     "desc": "在荒原每次生产中可以随工作时间累计12%的概率获得额外产品。",
     "effects": "baseIdea_lv4_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "baseIdea_lv5",
@@ -177,7 +205,9 @@
     "name": "专长Ⅴ",
     "desc": "在荒原每次生产中可以随工作时间累计15%的概率获得额外产品。",
     "effects": "baseIdea_lv5_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "titekele",
@@ -189,7 +219,9 @@
     "name": "种族天赋",
     "desc": "该魔精效率提升25%。",
     "effects": "titekele",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "abangaku",
@@ -201,7 +233,9 @@
     "name": "种族天赋",
     "desc": "与该魔精在同一建筑内进行生产的所有魔精，心情消耗降低10%。",
     "effects": "abangaku",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "telibodeluo",
@@ -213,7 +247,9 @@
     "name": "种族天赋",
     "desc": "获得额外产品的概率提升10%；\n同一建筑内【鸟目】魔精获得额外产品的概率再提升5%。",
     "effects": "telibodeluo_01|telibodeluo_02|telibodeluo_03|telibodeluo_04|telibodeluo_05|telibodeluo_06|telibodeluo_07|telibodeluo_08|telibodeluo_09|telibodeluo_10",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "fengbaobaomao",
@@ -225,7 +261,9 @@
     "name": "种族天赋",
     "desc": "在【制造厂】进行生产时，若当前建筑内未分派其他魔精，则自身效率提升50%，心情消耗增加30%。",
     "effects": "fengbaobaomao_01|fengbaobaomao_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "shengshikabang",
@@ -237,7 +275,9 @@
     "name": "种族天赋",
     "desc": "位于【魔精居所】时，该建筑内所有心情值低于30的魔精心情恢复速度提升10%，心情值不低于30的魔精心情恢复速度提升5%。",
     "effects": "shengshikabang_01|shengshikabang_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "xianjingdudu",
@@ -249,7 +289,9 @@
     "name": "种族天赋",
     "desc": "在任意建筑进行工作时，每分派一只【鸟目】魔精至该建筑，全体【鸟目】魔精的效率提升15%。",
     "effects": "xianjingdudu_01",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "fubingliequan",
@@ -261,7 +303,9 @@
     "name": "种族天赋",
     "desc": "在【原料站-原料集散地】中采集【树汁】时，该魔精效率提升20%。",
     "effects": "fubingliequan",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 2,
+    "luckyItemIds": "250003"
   },
   {
     "id": "ganjukabang",
@@ -273,7 +317,9 @@
     "name": "种族天赋",
     "desc": "位于【魔精居所】时，居所内魔精心情恢复速度提升5%。",
     "effects": "ganjukabang",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "jianfengzuanzi",
@@ -285,7 +331,9 @@
     "name": "种族天赋",
     "desc": "在荒原生产中获得额外产品的概率提升7.5%。",
     "effects": "jianfengzuanzi",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "kabangkelu",
@@ -297,7 +345,9 @@
     "name": "种族天赋",
     "desc": "该魔精效率提升15%。",
     "effects": "kabangkelu",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "maoyu",
@@ -309,7 +359,9 @@
     "name": "种族天赋",
     "desc": "在【加工间Ⅲ-暖风温室】工作时，该魔精效率提升15%，心情消耗降低5%。",
     "effects": "maoyu_01|maoyu_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "saermati",
@@ -321,7 +373,9 @@
     "name": "种族天赋",
     "desc": "该魔精效率降低5%，心情消耗降低10%。",
     "effects": "saermati_01|saermati_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "shouhuakabang",
@@ -333,7 +387,9 @@
     "name": "种族天赋",
     "desc": "该魔精心情不低于50时，自身效率提升20%，心情低于50时，自身效率降低10%。",
     "effects": "shouhuakabang_01|shouhuakabang_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "yuexiangzhaochao",
@@ -345,7 +401,9 @@
     "name": "种族天赋",
     "desc": "该魔精心情消耗降低5%。",
     "effects": "yuexiangzhaochao",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "zhixiangkabang",
@@ -357,7 +415,9 @@
     "name": "种族天赋",
     "desc": "该魔精心情低于10时，自身效率降低50%，且该魔精心情不会降至1以下。",
     "effects": "zhixiangkabang_01|zhixiangkabang_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_rest_1",
@@ -369,7 +429,9 @@
     "name": "休憩加成①",
     "desc": "位于【魔精居所】时，该魔精心情恢复速度提升10%。",
     "effects": "normal_rest_1",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_mix_1",
@@ -381,7 +443,9 @@
     "name": "效率加成⑨",
     "desc": "该魔精效率提升20%，但心情消耗增加20%。",
     "effects": "normal_mix_1_01|normal_mix_1_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_mix_2",
@@ -393,7 +457,9 @@
     "name": "耐性加成⑨",
     "desc": "该魔精心情消耗降低10%，但效率降低10%。",
     "effects": "normal_mix_2_01|normal_mix_2_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_mix_3",
@@ -405,7 +471,9 @@
     "name": "专长加成⑨",
     "desc": "该魔精进行生产时，获得额外产品概率提升10%，但心情消耗增加20%。",
     "effects": "normal_mix_3_01|normal_mix_3_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_mix_4",
@@ -417,7 +485,9 @@
     "name": "专长加成⑩",
     "desc": "该魔精进行生产时，获得额外产品概率提升10%，但自身效率降低20%。",
     "effects": "normal_mix_4_01|normal_mix_4_02",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_1",
@@ -429,7 +499,9 @@
     "name": "效率加成①",
     "desc": "该魔精效率提升15%。",
     "effects": "normal_efficiency_1",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_2",
@@ -441,7 +513,9 @@
     "name": "效率加成②",
     "desc": "在【原料站-原料集散地】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_2",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_3",
@@ -453,7 +527,9 @@
     "name": "效率加成③",
     "desc": "在【加工中心-绿鸟笼工作室】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_3",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_4",
@@ -465,7 +541,9 @@
     "name": "效率加成④",
     "desc": "在【加工间Ⅱ-无“人”车间】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_4",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_5",
@@ -477,7 +555,9 @@
     "name": "效率加成⑤",
     "desc": "在【加工间Ⅲ-暖风温室】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_5",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_6",
@@ -489,7 +569,9 @@
     "name": "效率加成⑥",
     "desc": "在【制造中心-“原点”工厂】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_6",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_7",
@@ -501,7 +583,9 @@
     "name": "效率加成⑦",
     "desc": "在【制造厂Ⅱ-火花儿作坊】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_7",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_efficiency_8",
@@ -513,7 +597,9 @@
     "name": "效率加成⑧",
     "desc": "在【制造厂Ⅲ-点金之家】进行生产时，该魔精效率提升20%。",
     "effects": "normal_efficiency_8",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_1",
@@ -525,7 +611,9 @@
     "name": "耐性加成①",
     "desc": "该魔精心情消耗降低5%。",
     "effects": "normal_patience_1",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_2",
@@ -537,7 +625,9 @@
     "name": "耐性加成②",
     "desc": "在【原料站-原料集散地】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_2",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_3",
@@ -549,7 +639,9 @@
     "name": "耐性加成③",
     "desc": "在【加工中心-绿鸟笼工作室】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_3",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_4",
@@ -561,7 +653,9 @@
     "name": "耐性加成④",
     "desc": "在【加工间Ⅱ-无“人”车间】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_4",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_5",
@@ -573,7 +667,9 @@
     "name": "耐性加成⑤",
     "desc": "在【加工间Ⅲ-暖风温室】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_5",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_6",
@@ -585,7 +681,9 @@
     "name": "耐性加成⑥",
     "desc": "在【制造中心-“原点”工厂】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_6",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_7",
@@ -597,7 +695,9 @@
     "name": "耐性加成⑦",
     "desc": "在【制造厂Ⅱ-火花儿作坊】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_7",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_patience_8",
@@ -609,7 +709,9 @@
     "name": "耐性加成⑧",
     "desc": "在【制造厂Ⅲ-点金之家】进行生产时，该魔精心情消耗降低10%。",
     "effects": "normal_patience_8",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_1",
@@ -621,7 +723,9 @@
     "name": "专长加成①",
     "desc": "该魔精获得额外产品的概率提升7.5%。",
     "effects": "normal_idea_1",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_2",
@@ -633,7 +737,9 @@
     "name": "专长加成②",
     "desc": "在【原料站-原料集散地】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_2",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_3",
@@ -645,7 +751,9 @@
     "name": "专长加成③",
     "desc": "在【加工中心-绿鸟笼工作室】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_3",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_4",
@@ -657,7 +765,9 @@
     "name": "专长加成④",
     "desc": "在【加工间Ⅱ-无“人”车间】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_4",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_5",
@@ -669,7 +779,9 @@
     "name": "专长加成⑤",
     "desc": "在【加工间Ⅲ-暖风温室】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_5",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_6",
@@ -681,7 +793,9 @@
     "name": "专长加成⑥",
     "desc": "在【制造中心-“原点”工厂】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_6",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_7",
@@ -693,7 +807,9 @@
     "name": "专长加成⑦",
     "desc": "在【制造厂Ⅱ-火花儿作坊】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_7",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_idea_8",
@@ -705,7 +821,9 @@
     "name": "专长加成⑧",
     "desc": "在【制造厂Ⅲ-点金之家】进行生产时，该魔精获得额外产品的概率提升12.5%。",
     "effects": "normal_idea_8",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 1,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_reproduction_1",
@@ -717,7 +835,9 @@
     "name": "培育加成①",
     "desc": "该魔精参与混合获得的新魔精，在培训中获得效率时，将额外提升5%对应属性。",
     "effects": "normal_reproduction_1",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_reproduction_2",
@@ -729,7 +849,9 @@
     "name": "培育加成②",
     "desc": "该魔精参与混合获得的新魔精，在培训中获得耐性时，将额外提升5%对应属性。",
     "effects": "normal_reproduction_2",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "normal_reproduction_3",
@@ -741,7 +863,9 @@
     "name": "培育加成③",
     "desc": "该魔精参与混合获得的新魔精，在培训中获得专长时，将额外提升5%对应属性。",
     "effects": "normal_reproduction_3",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   },
   {
     "id": "sikuiyinke",
@@ -753,6 +877,8 @@
     "name": "种族天赋",
     "desc": "在加工区工作时，魔精自身工作效率增加35%。",
     "effects": "sikuiyinke",
-    "inheritance": false
+    "inheritance": false,
+    "luckyItemType": 0,
+    "luckyItemIds": ""
   }
 ]

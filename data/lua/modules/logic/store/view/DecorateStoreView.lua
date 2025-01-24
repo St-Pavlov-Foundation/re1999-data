@@ -107,10 +107,13 @@ end
 function slot0._btnhideOnClick(slot0)
 	slot0._viewAnim:Play("hide", 0, 0)
 	StoreController.instance:dispatchEvent(StoreEvent.PlayHideStoreAnim)
+	UIBlockMgr.instance:startBlock("decoratehide")
 	TaskDispatcher.runDelay(slot0._startDefaultShowView, slot0, 0.34)
 end
 
 function slot0._startDefaultShowView(slot0)
+	UIBlockMgr.instance:endBlock("decoratehide")
+
 	slot0._viewAnim.enabled = false
 
 	if DecorateStoreModel.getItemType(slot0._selectSecondTabId) == DecorateStoreEnum.DecorateItemType.MainScene then
@@ -205,10 +208,12 @@ function slot0._onGoodItemClick(slot0)
 	end
 
 	slot0._viewAnim:Play("out", 0, 0)
+	UIBlockMgr.instance:startBlock("decorateswitch")
 	TaskDispatcher.runDelay(slot0._startGoodIn, slot0, 0.17)
 end
 
 function slot0._startGoodIn(slot0)
+	UIBlockMgr.instance:endBlock("decorateswitch")
 	slot0._viewAnim:Play("in", 0, 0)
 	slot0:_refreshGood(true)
 end
@@ -282,6 +287,7 @@ function slot0._refreshTabs(slot0, slot1, slot2, slot3)
 			slot12:playOut()
 		end
 
+		UIBlockMgr.instance:startBlock("decorateswitch")
 		TaskDispatcher.runDelay(slot0._switchTabRefresh, slot0, 0.17)
 	else
 		slot0._viewAnim:Play("in", 0, 0)
@@ -290,6 +296,8 @@ function slot0._refreshTabs(slot0, slot1, slot2, slot3)
 end
 
 function slot0._switchTabRefresh(slot0)
+	UIBlockMgr.instance:endBlock("decorateswitch")
+
 	slot1, slot2 = transformhelper.getLocalPos(slot0._goContent1.transform)
 
 	transformhelper.setLocalPos(slot0._goContent1.transform, 0, slot2, 0)
@@ -850,15 +858,17 @@ function slot0._updateDecorateBuildingVideo(slot0)
 end
 
 function slot0.onClose(slot0)
+	UIBlockMgr.instance:endBlock("decorateswitch")
+	UIBlockMgr.instance:endBlock("decoratehide")
+	TaskDispatcher.cancelTask(slot0._switchTabRefresh, slot0)
+	TaskDispatcher.cancelTask(slot0._startDefaultShowView, slot0)
+	TaskDispatcher.cancelTask(slot0._startGoodIn, slot0)
 	slot0:_removeEvents()
 	slot0:_hideMainScene()
 end
 
 function slot0.onDestroyView(slot0)
 	MainSceneSwitchCameraController.instance:clear()
-	TaskDispatcher.cancelTask(slot0._startDefaultShowView, slot0)
-	TaskDispatcher.cancelTask(slot0._startGoodIn, slot0)
-	TaskDispatcher.cancelTask(slot0._switchTabRefresh, slot0)
 
 	if slot0._goodItems then
 		for slot4, slot5 in pairs(slot0._goodItems) do

@@ -7729,7 +7729,7 @@
   },
   {
     "id": 250006,
-    "tips": "当前关卡未解锁",
+    "tips": "通关前一关卡解锁",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -7785,7 +7785,71 @@
   },
   {
     "id": 250013,
-    "tips": "通关微尘计划▩1%s后解锁",
+    "tips": "通关微尘计划【▩1%s】解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250014,
+    "tips": "拖动粘贴处的方兵棋子到<color=#cc492f>第一行</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250015,
+    "tips": "拖动奖励区的方兵棋子到<color=#cc492f>对战区</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250016,
+    "tips": "拖动粘贴处的方兵棋子到<color=#cc492f>第三行</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250017,
+    "tips": "拖动粘贴处的方兵棋子到<color=#cc492f>第三行</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250018,
+    "tips": "出售<color=#cc492f>绿湖卡邦克鲁</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250019,
+    "tips": "购买棋子并且<color=#cc492f>叠放到同名棋子</color>中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250020,
+    "tips": "指引流程中无法刷新",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250021,
+    "tips": "指引流程中无法出售",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

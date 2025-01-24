@@ -3,6 +3,11 @@ module("modules.logic.versionactivity2_5.autochess.controller.AutoChessControlle
 slot0 = class("AutoChessController", BaseController)
 
 function slot0.onInit(slot0)
+	slot0:reInit()
+end
+
+function slot0.reInit(slot0)
+	slot0.cachePopupViewList = {}
 end
 
 function slot0.addConstEvents(slot0)
@@ -10,8 +15,8 @@ function slot0.addConstEvents(slot0)
 	slot0:addEventCb(uv0.instance, AutoChessEvent.SkipFight, slot0.recordSkipFight, slot0)
 end
 
-function slot0.openMainView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.AutoChessMainView, slot1)
+function slot0.openMainView(slot0)
+	ViewMgr.instance:openView(ViewName.AutoChessMainView)
 end
 
 function slot0.openLeaderView(slot0, slot1)
@@ -22,8 +27,8 @@ function slot0.openGameView(slot0)
 	ViewMgr.instance:openView(ViewName.AutoChessGameView)
 end
 
-function slot0.openMallView(slot0)
-	ViewMgr.instance:openView(ViewName.AutoChessMallView)
+function slot0.openMallView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.AutoChessMallView, slot1)
 
 	slot0.startBuyTime = ServerTime.now()
 end
@@ -89,7 +94,9 @@ end
 function slot0.enterGame(slot0, slot1)
 	AutoChessModel.instance:setEpisodeId(slot1)
 	slot0:openGameView()
-	slot0:openMallView()
+	slot0:openMallView({
+		firstOpen = true
+	})
 
 	slot0.startGameTime = ServerTime.now()
 end
@@ -101,6 +108,7 @@ function slot0.exitGame(slot0)
 
 	ViewMgr.instance:closeView(ViewName.AutoChessMallView)
 	ViewMgr.instance:closeView(ViewName.AutoChessGameView)
+	Activity182Rpc.instance:sendGetAct182InfoRequest(Activity182Model.instance:getCurActId())
 end
 
 function slot0.onResultViewClose(slot0)
@@ -130,6 +138,12 @@ function slot0.onSettleViewClose(slot0)
 	end
 end
 
+function slot0.checkRankUp(slot0)
+	if Activity182Model.instance:getActMo() and slot1.isRankUp then
+		ViewMgr.instance:openView(ViewName.AutoChessRankUpView)
+	end
+end
+
 function slot0.onSettleViewClose(slot0)
 	AutoChessModel.instance.settleData = nil
 
@@ -142,8 +156,8 @@ function slot0.isClickDisable(slot0, slot1)
 	return not slot0:isOperationEnable(slot1)
 end
 
-function slot0.isDragDisable(slot0, slot1, slot2)
-	return not slot0:isOperationEnable(slot1, slot2)
+function slot0.isDragDisable(slot0, slot1, slot2, slot3)
+	return not slot0:isOperationEnable(slot1, slot2, slot3)
 end
 
 function slot0.isRowIndexEnable(slot0, slot1)
@@ -152,54 +166,74 @@ function slot0.isRowIndexEnable(slot0, slot1)
 	end
 
 	if slot2 == slot1 == false then
-		GameFacade.showToastString("请放置在指定行")
+		if GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessToast) then
+			slot4 = GuideModel.instance:getFlagValue(GuideModel.instance.GuideFlag.AutoChessToast)
+			slot5 = tonumber(slot4)
+
+			if slot4 ~= nil and slot5 ~= nil then
+				GameFacade.showToast(slot5)
+			else
+				logError("自走棋引导没有配置限定操作飘字id 弹出保底飘字")
+				slot0:showGuideToast()
+			end
+		else
+			logError("自走棋引导没有配置限定操作飘字id 弹出保底飘字")
+			slot0:showGuideToast()
+		end
 	end
 
 	return slot3
 end
 
-function slot0.isOperationEnable(slot0, slot1, slot2)
+function slot0.isOperationEnable(slot0, slot1, slot2, slot3)
 	if slot1 == nil then
 		logNormal(string.format("当前是否允许操作：%s", not GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessBanAllOper)))
 	else
 		if slot2 ~= nil then
-			slot5 = tonumber(GuideModel.instance:getFlagValue(slot1))
+			slot2 = tostring(slot2)
+			slot6 = tostring(GuideModel.instance:getFlagValue(slot1))
 
-			logNormal(string.format("当前 操作id:%s 参数：%s 是否允许操作：%s", slot1, slot2, GuideModel.instance:isFlagEnable(slot1) and slot5 ~= nil and slot5 == slot2))
+			logNormal(string.format("当前 操作id:%s 参数：%s 是否允许操作：%s", slot1, slot2, GuideModel.instance:isFlagEnable(slot1) and slot6 ~= nil and slot6 == slot2))
 		else
-			logNormal(string.format("当前 操作id: %s 是否允许操作：%s", slot1, slot4))
+			logNormal(string.format("当前 操作id: %s 是否允许操作：%s", slot1, slot5))
 		end
 
-		slot3 = slot3 or slot4
+		slot4 = slot4 or slot5
 	end
 
-	if slot3 == false then
-		slot0:showGuideToast()
+	if slot4 == false then
+		if GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessToast) then
+			slot5 = GuideModel.instance:getFlagValue(GuideModel.instance.GuideFlag.AutoChessToast)
+			slot6 = tonumber(slot5)
+
+			if slot5 ~= nil and slot6 ~= nil then
+				GameFacade.showToast(slot6)
+			else
+				logError("自走棋引导没有配置限定操作飘字id 弹出保底飘字")
+				slot0:showGuideToast()
+			end
+		else
+			slot0:showGuideToast()
+		end
 	end
 
-	return slot3
+	return slot4
 end
 
 function slot0.showGuideToast(slot0)
 	if GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnableDragFreeChess) then
-		GameFacade.showToastString("请拖拽奖励棋子上场")
+		GameFacade.showToast(ToastEnum.AutoChessDragFree)
 	elseif GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnableExchangeEXP) then
-		GameFacade.showToastString("请拖拽棋子合成")
+		GameFacade.showToast(ToastEnum.AutoChessExchangeExp)
 	elseif GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnableSale) then
-		GameFacade.showToastString("请出售棋子")
-	elseif GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnablePreviewEnemy) then
-		GameFacade.showToastString("请查看敌人详情")
-	elseif GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnableDragChess) then
-		GameFacade.showToastString("请拖拽棋子上场")
-	elseif GuideModel.instance:isFlagEnable(GuideModel.instance.GuideFlag.AutoChessEnableUseSkill) then
-		GameFacade.showToastString("请释放角色技能")
+		GameFacade.showToast(ToastEnum.AutoChessExchangeExp)
 	else
 		logError("未指定任何操作")
 	end
 end
 
 function slot0.isEnableSale(slot0)
-	if not GuideModel.instance:isStepFinish(25406, 1) then
+	if not GuideModel.instance:isStepFinish(25405, 13) then
 		if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.AutoChessEnableSale) then
 			return true
 		end
@@ -207,14 +241,14 @@ function slot0.isEnableSale(slot0)
 		return true
 	end
 
-	GameFacade.showToastString("暂时不允许购买")
+	GameFacade.showToast(ToastEnum.AutoChessSaleLock)
 
 	return false
 end
 
 function slot0.isEnableRefresh(slot0)
-	if not GuideModel.instance:isStepFinish(25409, 2) then
-		GameFacade.showToastString("暂时不允许刷新")
+	if not GuideModel.instance:isStepFinish(25409, 3) then
+		GameFacade.showToast(ToastEnum.AutoChessRefreshLock)
 
 		return false
 	end
@@ -260,6 +294,25 @@ function slot0.statFightEnd(slot0, slot1)
 	})
 
 	slot0.skipFight = nil
+end
+
+function slot0.addPopupView(slot0, slot1, slot2)
+	table.insert(slot0.cachePopupViewList, 1, {
+		viewName = slot1,
+		param = slot2
+	})
+end
+
+function slot0.popupRewardView(slot0)
+	for slot4, slot5 in ipairs(slot0.cachePopupViewList) do
+		if slot5.viewName == ViewName.CommonPropView then
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, slot5.viewName, slot5.param)
+		else
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.GainSkinView, slot5.viewName, slot5.param)
+		end
+	end
+
+	tabletool.clear(slot0.cachePopupViewList)
 end
 
 slot0.instance = slot0.New()

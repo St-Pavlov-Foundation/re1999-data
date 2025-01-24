@@ -207,7 +207,6 @@ end
 
 function slot0._onDailyRefresh(slot0)
 	slot0:updateAct101Infos()
-	slot0:requestAct186Info()
 end
 
 function slot0._getLatestVersion(slot0, slot1)

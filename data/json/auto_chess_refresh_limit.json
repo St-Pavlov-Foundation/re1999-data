@@ -97,7 +97,7 @@
   },
   {
     "id": 13001,
-    "maxRefreshLimit": 15
+    "maxRefreshLimit": 5
   },
   {
     "id": 13002,
@@ -113,15 +113,15 @@
   },
   {
     "id": 13005,
-    "maxRefreshLimit": 9
+    "maxRefreshLimit": 13
   },
   {
     "id": 13006,
-    "maxRefreshLimit": 15
+    "maxRefreshLimit": 16
   },
   {
     "id": 13007,
-    "maxRefreshLimit": 15
+    "maxRefreshLimit": 16
   },
   {
     "id": 13008,
@@ -305,10 +305,18 @@
   },
   {
     "id": 31001,
-    "maxRefreshLimit": 16
+    "maxRefreshLimit": 2
   },
   {
     "id": 31002,
     "maxRefreshLimit": 15
+  },
+  {
+    "id": 31003,
+    "maxRefreshLimit": 1
+  },
+  {
+    "id": 31004,
+    "maxRefreshLimit": 1
   }
 ]

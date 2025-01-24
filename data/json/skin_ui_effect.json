@@ -448,5 +448,14 @@
     "delayVisible": 0,
     "frameVisible": 1,
     "realtime": ""
+  },
+  {
+    "id": 308202,
+    "effect": "Drawables/bone/effect-Bone/roleeffect_xyns_yushui",
+    "scale": 1.0,
+    "changeVisible": 0,
+    "delayVisible": 0,
+    "frameVisible": 1,
+    "realtime": ""
   }
 ]

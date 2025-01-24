@@ -10,8 +10,6 @@ function slot0.onBuffStart(slot0, slot1, slot2)
 end
 
 function slot0.clear(slot0)
-	FightModel.instance:setRoundOffset(0)
-	FightController.instance:dispatchEvent(FightEvent.RefreshUIRound)
 end
 
 function slot0.onBuffEnd(slot0)

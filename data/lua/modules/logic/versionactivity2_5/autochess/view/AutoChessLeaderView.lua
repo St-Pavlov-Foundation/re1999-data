@@ -25,6 +25,11 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btnFreshOnClick(slot0)
+	slot0.anim:Play("switch", 0, 0)
+	TaskDispatcher.runDelay(slot0._delayRefresh, slot0, 0.16)
+end
+
+function slot0._delayRefresh(slot0)
 	Activity182Rpc.instance:sendAct182RefreshMasterRequest(slot0.actId, slot0.refreshBack, slot0)
 end
 
@@ -50,6 +55,7 @@ function slot0._btnStartOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	slot0.anim = slot0.viewGO:GetComponent(gohelper.Type_Animator)
 	slot0.actId = Activity182Model.instance:getCurActId()
 	slot0.moduleId = AutoChessEnum.ModuleId.PVP
 	slot0.leaderItemList = {}
@@ -68,8 +74,6 @@ function slot0.onOpen(slot0)
 
 	if slot0.viewParam then
 		slot0:refreshUI()
-	else
-		logError("please open with episodeId")
 	end
 end
 
@@ -77,6 +81,7 @@ function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0._delayRefresh, slot0)
 	TaskDispatcher.cancelTask(slot0.delayShowLeader, slot0)
 end
 

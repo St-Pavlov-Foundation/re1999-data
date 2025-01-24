@@ -18,10 +18,11 @@ slot0.RoleResPath = "roles/v2a5_act185/act185_ui.prefab"
 slot0.PlayerScale = 0.3
 slot0.startMoveAddSpeed = 0.5
 slot0.endMoveAddSpeed = 1
-slot0.touchCheckRange = 2
+slot0.touchCheckRange = 4
 slot0.touchElementRange = 20
 slot0.doorTouchCheckRang = 15
 slot0.stairsTouchCheckRange = 40
+slot0.BlindnessModeKey = "FeiLinShiDuoBlindnessMode"
 slot0.checkDir = {
 	Top = 2,
 	Right = 3,
@@ -115,7 +116,7 @@ slot0.GuideDataList = {
 				id = 3,
 				posY = -400,
 				rangeY = 10,
-				posX = 610
+				posX = 612
 			}
 		}
 	},

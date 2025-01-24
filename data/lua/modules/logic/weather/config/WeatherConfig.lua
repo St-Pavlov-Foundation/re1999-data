@@ -108,16 +108,10 @@ function slot0.getReportList(slot0, slot1, slot2)
 	return slot3
 end
 
-function slot0.getRandomReport(slot0, slot1)
-	slot2 = {}
+function slot0.getRandomReport(slot0, slot1, slot2)
+	slot3 = slot0:getReportList(slot1, slot2)
 
-	for slot6, slot7 in ipairs(lua_weather_report.configList) do
-		if slot7.lightMode == slot1 then
-			table.insert(slot2, slot7)
-		end
-	end
-
-	return slot2[math.random(#slot2)]
+	return slot3[math.random(#slot3)]
 end
 
 function slot0.getSkinWeatherParam(slot0, slot1)

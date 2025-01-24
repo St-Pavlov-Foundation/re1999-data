@@ -11,6 +11,7 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
+	slot0:addEventCb(Activity186Controller.instance, Activity186Event.UpdateInfo, slot0.onUpdateInfo, slot0)
 	slot0:addEventCb(Activity186Controller.instance, Activity186Event.UpdateTask, slot0.refreshTask, slot0)
 	slot0:addEventCb(Activity186Controller.instance, Activity186Event.FinishTask, slot0.onFinishTask, slot0)
 	slot0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, slot0.refreshTask, slot0)
@@ -23,6 +24,10 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._editableInitView(slot0)
+end
+
+function slot0.onUpdateInfo(slot0)
+	slot0:refreshView()
 end
 
 function slot0.onFinishTask(slot0)

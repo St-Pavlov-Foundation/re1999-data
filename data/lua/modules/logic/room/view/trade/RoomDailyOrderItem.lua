@@ -176,6 +176,7 @@ function slot0.onUpdateMo(slot0, slot1)
 	slot0._mo = slot1
 	slot0.isWrong = false
 	slot0.wrongBuildingUid = nil
+	slot0.refreshTime = slot0._mo:getRefreshTime()
 
 	if slot1.isFinish then
 		slot0:playFinishAnim()

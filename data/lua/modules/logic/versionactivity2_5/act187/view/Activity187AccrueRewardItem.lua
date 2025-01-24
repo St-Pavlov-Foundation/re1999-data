@@ -16,6 +16,7 @@ function slot0._editableInitView(slot0)
 	slot0._simagereward = gohelper.findChildSingleImage(slot0.go, "#go_item/#simage_reward")
 	slot0._imagecircle = gohelper.findChildImage(slot0.go, "#go_item/image_circle")
 	slot0._txtrewardcount = gohelper.findChildText(slot0.go, "#go_item/#txt_rewardcount")
+	slot0._deadline1 = gohelper.findChild(slot0.go, "#go_item/deadline1")
 	slot0._gohasget = gohelper.findChild(slot0.go, "#go_status/#go_hasget")
 	slot0._gocanget = gohelper.findChild(slot0.go, "#go_status/#go_canget")
 	slot0._btnget = gohelper.findChildClickWithDefaultAudio(slot0.go, "#go_status/#go_canget/#btn_get")
@@ -74,6 +75,13 @@ function slot0.setItem(slot0)
 
 	slot0._txtrewardcount.text = string.format("%s%s", luaLang("multiple"), slot0.data.quantity)
 	slot0._txtpointvalue.text = formatLuaLang("times2", slot0.id)
+	slot3 = false
+
+	if slot0.data.materilType == MaterialEnum.MaterialType.PowerPotion then
+		slot3 = slot1.expireType ~= 0 and not string.nilorempty(slot1.expireTime)
+	end
+
+	gohelper.setActive(slot0._deadline1, slot3)
 end
 
 function slot0.refreshStatus(slot0, slot1)

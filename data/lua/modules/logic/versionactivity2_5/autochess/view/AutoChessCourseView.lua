@@ -34,7 +34,7 @@ function slot0.onOpen(slot0)
 
 	slot1 = slot0.actMo.historyInfo
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadge), AutoChessBadgeItem, slot0):setData(slot1.maxRank, 9999, true, false, false)
+	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadge), AutoChessBadgeItem, slot0):setData(slot1.maxRank, 99999, AutoChessBadgeItem.ShowType.CourseView)
 
 	slot0._txtAllWinCnt.text = slot1.winCount
 	slot0._txtPlayRound.text = slot1.survivalTotalRound

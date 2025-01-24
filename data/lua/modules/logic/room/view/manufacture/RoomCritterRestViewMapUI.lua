@@ -15,6 +15,8 @@ function slot0._editableInitView(slot0)
 	slot0._critterMoodShowDict = {}
 	slot0._gomapTrs = slot0._gomap.transform
 	slot0._offX, slot0._offY = recthelper.getAnchor(slot0._gomood.transform)
+
+	gohelper.setActive(slot0._gomood, false)
 end
 
 function slot0.onUpdateParam(slot0)
@@ -116,17 +118,10 @@ function slot0._refreshMood(slot0)
 		end
 	end
 
-	slot6 = nil
-	slot7, slot8 = ManufactureModel.instance:getSelectedCritterSeatSlot()
+	for slot9 = 1, #slot0._moodItemCompList do
+		slot10 = slot0._moodItemCompList[slot9]
 
-	if slot7 == slot3 then
-		slot6 = slot4:getRestingCritter(slot8)
-	end
-
-	for slot12 = 1, #slot0._moodItemCompList do
-		slot13 = slot0._moodItemCompList[slot12]
-
-		gohelper.setActive(slot13.go, slot0._critterMoodShowDict[slot13.critterUid] and slot12 <= slot2 and slot14 ~= slot6)
+		gohelper.setActive(slot10.go, slot0._critterMoodShowDict[slot10.critterUid] and slot9 <= slot2)
 	end
 
 	return slot5

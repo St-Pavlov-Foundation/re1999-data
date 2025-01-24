@@ -21,6 +21,7 @@ function slot0.resetData(slot0)
 	slot0.isTopBox = false
 	slot0.topBoxOffset = -10000
 	slot0.topBoxDeltaMove = slot0.deltaMoveX
+	slot0.bottomBoxMap = {}
 end
 
 function slot0.initData(slot0, slot1, slot2)
@@ -31,10 +32,18 @@ end
 
 function slot0.addEventListeners(slot0)
 	FeiLinShiDuoGameController.instance:registerCallback(FeiLinShiDuoEvent.resetGame, slot0.resetData, slot0)
+	FeiLinShiDuoGameController.instance:registerCallback(FeiLinShiDuoEvent.CleanTopBoxBottomInfo, slot0.cleanTopBoxBottomInfo, slot0)
 end
 
 function slot0.removeEventListeners(slot0)
 	FeiLinShiDuoGameController.instance:unregisterCallback(FeiLinShiDuoEvent.resetGame, slot0.resetData, slot0)
+	FeiLinShiDuoGameController.instance:unregisterCallback(FeiLinShiDuoEvent.CleanTopBoxBottomInfo, slot0.cleanTopBoxBottomInfo, slot0)
+end
+
+function slot0.cleanTopBoxBottomInfo(slot0)
+	if slot0.isTopBox then
+		slot0.bottomBoxMap = {}
+	end
 end
 
 function slot0.onTick(slot0)
@@ -54,7 +63,8 @@ end
 function slot0.checkBoxFall(slot0, slot1)
 	if slot0.deltaMoveX and slot0.itemInfo or slot0.isTopBox then
 		if #FeiLinShiDuoGameModel.instance:checkItemTouchElemenet(slot0.boxTrans.localPosition.x, slot0.boxTrans.localPosition.y, slot0.itemInfo, FeiLinShiDuoEnum.checkDir.Bottom, nil, {
-			FeiLinShiDuoEnum.ObjectType.Option
+			FeiLinShiDuoEnum.ObjectType.Option,
+			FeiLinShiDuoEnum.ObjectType.Start
 		}) == 0 then
 			slot0.isGround = false
 			slot0.fallYSpeed = slot0.fallYSpeed + slot0.fallAddSpeed
@@ -81,6 +91,7 @@ function slot0.checkBoxFall(slot0, slot1)
 				slot0.boxTrans.localPosition = slot0:fixStandPos(slot2)
 
 				AudioMgr.instance:trigger(AudioEnum.FeiLinShiDuo.play_ui_activity_organ_open)
+				FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.CleanTopBoxBottomInfo)
 			end
 
 			slot0.isGround = true
@@ -93,9 +104,14 @@ function slot0.checkBoxFall(slot0, slot1)
 					slot0.isTopBox = true
 					slot0.topBoxOffset = slot7.pos[1] - slot0.boxTrans.localPosition.x
 					slot0.bottomBoxItemInfo = slot7
+					slot0.bottomBoxMap[slot0.bottomBoxItemInfo.id] = slot0.topBoxOffset
 
 					break
 				end
+			end
+
+			if not slot0.isTopBox then
+				slot0.bottomBoxMap = {}
 			end
 		end
 
@@ -135,7 +151,14 @@ function slot0.setMove(slot0, slot1, slot2, slot3, slot4)
 			if slot0.isTopBox then
 				slot0.bottomBoxTrans = slot1
 				slot0.bottomBoxItemInfo = slot3.itemInfo
-				slot0.topBoxOffset = slot0.topBoxOffset == -10000 and slot0.bottomBoxItemInfo.pos[1] - slot0.boxTrans.localPosition.x or slot0.topBoxOffset
+
+				if not slot0.bottomBoxMap[slot0.bottomBoxItemInfo.id] or slot0.topBoxOffset == -10000 then
+					slot0.topBoxOffset = slot0.bottomBoxItemInfo.pos[1] - slot0.boxTrans.localPosition.x
+					slot0.bottomBoxMap[slot0.bottomBoxItemInfo.id] = slot0.topBoxOffset
+					slot12 = slot0.topBoxOffset
+				end
+
+				slot0.topBoxOffset = slot12
 
 				transformhelper.setLocalPosXY(slot0.boxTrans, slot0.bottomBoxItemInfo.pos[1] - slot0.topBoxOffset, slot0.boxTrans.localPosition.y)
 			else

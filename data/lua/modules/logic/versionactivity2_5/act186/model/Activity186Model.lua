@@ -169,13 +169,17 @@ function slot0.checkReadTask(slot0, slot1)
 end
 
 function slot0.isShowSignRed(slot0)
-	slot1 = false
-
-	if slot0:getById(slot0:getActId()) then
-		slot1 = slot3.spBonusStage == 1
+	if ActivityHelper.getActivityStatus(ActivityEnum.Activity.V2a5_Act186Sign) ~= ActivityEnum.ActivityStatus.Normal then
+		return false
 	end
 
-	return slot1 or ActivityType101Model.instance:isType101RewardCouldGetAnyOne(ActivityEnum.Activity.V2a5_Act186Sign)
+	slot3 = false
+
+	if slot0:getById(slot0:getActId()) then
+		slot3 = slot5.spBonusStage == 1
+	end
+
+	return slot3 or ActivityType101Model.instance:isType101RewardCouldGetAnyOne(slot1)
 end
 
 slot0.instance = slot0.New()

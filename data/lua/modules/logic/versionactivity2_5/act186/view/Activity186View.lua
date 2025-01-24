@@ -11,10 +11,14 @@ function slot0.onInitView(slot0)
 	slot0.goNewYearFinish = gohelper.findChild(slot0.viewGO, "root/btnNewYear/finish")
 	slot0.goNewYearLock = gohelper.findChild(slot0.viewGO, "root/btnNewYear/lock")
 	slot0.txtNewYearLock = gohelper.findChildTextMesh(slot0.viewGO, "root/btnNewYear/lock/txt")
+	slot0.goNewYearTime = gohelper.findChild(slot0.viewGO, "root/btnNewYear/time")
+	slot0.txtNewYearTime = gohelper.findChildTextMesh(slot0.viewGO, "root/btnNewYear/time/txt")
 	slot0.btnYuanxiao = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btnYuanxiao")
 	slot0.goYuanxiaoFinish = gohelper.findChild(slot0.viewGO, "root/btnYuanxiao/finish")
 	slot0.goYuanxiaoLock = gohelper.findChild(slot0.viewGO, "root/btnYuanxiao/lock")
 	slot0.txtYuanxiaoLock = gohelper.findChildTextMesh(slot0.viewGO, "root/btnYuanxiao/lock/txt")
+	slot0.goYuanxiaoTime = gohelper.findChild(slot0.viewGO, "root/btnYuanxiao/time")
+	slot0.txtYuanxiaoTime = gohelper.findChildTextMesh(slot0.viewGO, "root/btnYuanxiao/time/txt")
 	slot0.btnMainActivity = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btnMainActivity")
 	slot0.btnGame = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btnGame")
 	slot0.btnAvg = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btnAvg")
@@ -210,9 +214,9 @@ end
 function slot0._refreshShopTime(slot0)
 	slot2 = false
 
-	if RedDotModel.instance:getRedDotInfo(RedDotEnum.DotNode.V1a6FurnaceTreasure) then
-		for slot6, slot7 in pairs(slot1.infos) do
-			if slot7.value > 0 then
+	if ActivityHelper.getActivityStatus(ActivityEnum.Activity.V2a5_FurnaceTreasure) == ActivityEnum.ActivityStatus.Normal and RedDotModel.instance:getRedDotInfo(RedDotEnum.DotNode.V1a6FurnaceTreasure) then
+		for slot7, slot8 in pairs(slot3.infos) do
+			if slot8.value > 0 then
 				slot2 = true
 
 				break
@@ -234,9 +238,18 @@ function slot0._refreshNewYearTime(slot0)
 
 		gohelper.setActive(slot0.goNewYearLock, true)
 		gohelper.setActive(slot0.goNewYearFinish, false)
+		gohelper.setActive(slot0.goNewYearTime, false)
 	else
 		gohelper.setActive(slot0.goNewYearLock, false)
-		gohelper.setActive(slot0.goNewYearFinish, ActivityModel.instance:getActEndTime(ActivityEnum.Activity.V2a5_Act186Sign) * 0.001 - ServerTime.now() <= 0)
+
+		slot4 = ActivityModel.instance:getActEndTime(ActivityEnum.Activity.V2a5_Act186Sign) * 0.001 - ServerTime.now() <= 0
+
+		gohelper.setActive(slot0.goNewYearFinish, slot4)
+		gohelper.setActive(slot0.goNewYearTime, not slot4)
+
+		if not slot4 then
+			slot0.txtNewYearTime.text = ActivityHelper.getActivityRemainTimeStr(ActivityEnum.Activity.V2a5_Act186Sign, true)
+		end
 	end
 end
 
@@ -246,9 +259,18 @@ function slot0._refreshYuanxiaoTime(slot0)
 
 		gohelper.setActive(slot0.goYuanxiaoLock, true)
 		gohelper.setActive(slot0.goYuanxiaoFinish, false)
+		gohelper.setActive(slot0.goYuanxiaoTime, false)
 	else
 		gohelper.setActive(slot0.goYuanxiaoLock, false)
-		gohelper.setActive(slot0.goYuanxiaoFinish, ActivityModel.instance:getActEndTime(slot1) * 0.001 - ServerTime.now() <= 0)
+
+		slot5 = ActivityModel.instance:getActEndTime(slot1) * 0.001 - ServerTime.now() <= 0
+
+		gohelper.setActive(slot0.goYuanxiaoFinish, slot5)
+		gohelper.setActive(slot0.goYuanxiaoTime, not slot5)
+
+		if not slot5 then
+			slot0.txtYuanxiaoTime.text = ActivityHelper.getActivityRemainTimeStr(slot1, true)
+		end
 	end
 end
 

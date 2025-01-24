@@ -52,10 +52,10 @@ function slot0.getChessCoByItemId(slot0, slot1)
 		if lua_auto_chess.configDict[slot3[1]][slot3[2]] then
 			return slot4
 		else
-			logError("dont exist chessCo" .. tostring(slot3[1]) .. tostring(slot3[2]))
+			logError(string.format("异常:不存在棋子配置ID%s星级%s", slot3[1], slot3[2]))
 		end
 	else
-		logError("dont exist itemCo" .. tostring(slot1))
+		logError(string.format("异常:不存在商品ID%s", slot1))
 	end
 end
 
@@ -73,7 +73,7 @@ end
 
 function slot0.getSkillEffectDesc(slot0, slot1)
 	if not slot0.skillEffectDescConfig.configDict[slot1] then
-		logError(string.format("技能概要 '%s' 不存在!!!", tostring(slot1)))
+		logError(string.format("异常:技能概要ID '%s' 不存在!!!", slot1))
 	end
 
 	return slot2
@@ -89,7 +89,7 @@ function slot0.getSkillEffectDescCoByName(slot0, slot1)
 	end
 
 	if not slot0.skillBuffDescConfigByName[slot1] then
-		logError(string.format("技能概要 '%s' 不存在!!!", tostring(slot1)))
+		logError(string.format("异常:技能概要名称 '%s' 不存在!!!", tostring(slot1)))
 	end
 
 	return slot2

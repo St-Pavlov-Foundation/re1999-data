@@ -5565,7 +5565,7 @@
   },
   {
     "id": "autochess_gameview_startarget",
-    "lang": "缪斯的OK：令敌对棋手丧失<color=#FBAE7A>▩1%s</color>点斗志"
+    "lang": "缪斯的OK：削弱对手<color=#FBAE7A>▩1%s</color>点斗志"
   },
   {
     "id": "material_packageskin_rate_desc",
@@ -5645,7 +5645,7 @@
   },
   {
     "id": "autochess_resultview_damage",
-    "lang": "对手丧失▩1%s点斗志"
+    "lang": "削弱对手▩1%s点斗志"
   },
   {
     "id": "act186_signview_day1",
@@ -5741,6 +5741,10 @@
   },
   {
     "id": "autochess_pvesettleview_tips3",
-    "lang": "解锁刷新棋手功能"
+    "lang": "解锁棋手刷新功能"
+  },
+  {
+    "id": "autochess_gameview_damagelimit",
+    "lang": "我方斗志减少上限为▩1%s点。削弱斗志点为粘贴处等级与剩余方兵棋子品质之和"
   }
 ]

@@ -17137,11 +17137,11 @@
   },
   {
     "id": "p_autochesspvpsettleview_txt_dec1",
-    "lang": "回合数"
+    "lang": "存活回合数"
   },
   {
     "id": "p_autochesspvpsettleview_txt_dec2",
-    "lang": "敌方丧失斗志"
+    "lang": "削弱对手斗志"
   },
   {
     "id": "p_autochesspvpsettleview_txt_dec3",
@@ -17241,7 +17241,7 @@
   },
   {
     "id": "p_autochessleadergetview_txt_title",
-    "lang": "通关获得"
+    "lang": "通关奖励"
   },
   {
     "id": "p_v2a5_challenge_mainview_normalmaintitle",
@@ -17333,23 +17333,23 @@
   },
   {
     "id": "p_autochessbadgeview_txt_title",
-    "lang": "我的荣誉"
+    "lang": "当前评级"
   },
   {
     "id": "p_autochesscourseview_txt_title",
-    "lang": "最高荣誉"
+    "lang": "最高评级"
   },
   {
     "id": "p_autochesscourseview_txt_dec1",
-    "lang": "10胜次数"
+    "lang": "通关次数合计"
   },
   {
     "id": "p_autochesscourseview_txt_dec2",
-    "lang": "坚持回合数"
+    "lang": "坚持轮数合计"
   },
   {
     "id": "p_autochesscourseview_txt_dec3",
-    "lang": "对手斗志降低合计"
+    "lang": "削弱对手斗志合计"
   },
   {
     "id": "p_autochesscourseview_txt_dec4",
@@ -17365,7 +17365,7 @@
   },
   {
     "id": "p_autochessleaderview_txt_dec2",
-    "lang": "开始组建队伍"
+    "lang": "组建队伍"
   },
   {
     "id": "p_autochessleaderview_txt_dec3",
@@ -17377,7 +17377,7 @@
   },
   {
     "id": "p_autochessmallview_txt_dec1",
-    "lang": "拖动至此处可卖出"
+    "lang": "拖动至此处卖出"
   },
   {
     "id": "p_autochessmallview_txt_dec2",
@@ -17394,10 +17394,6 @@
   {
     "id": "p_autochesspvefirstsettleview_txt_dec1",
     "lang": "首通奖励"
-  },
-  {
-    "id": "p_autochesspvefirstsettleview_txt_dec2",
-    "lang": "解锁第三领队位置"
   },
   {
     "id": "p_autochesspvesettleview_txt_dec1",
@@ -17425,7 +17421,7 @@
   },
   {
     "id": "p_autochessresultview_txt_dec3",
-    "lang": "对手斗志丧失"
+    "lang": "削弱对手斗志"
   },
   {
     "id": "p_v2a5_challenge_settlementview_txt_dec1",
@@ -17801,11 +17797,11 @@
   },
   {
     "id": "p_v2a5_autochess_help_1_txt_2",
-    "lang": "<#FF906A>【微尘计划】</color>一共分为六个关卡，通关计划A~B后可以开展<#FF906A>【箱中对决】</color>，通关计划E~F能够额外获得<#FF906A>【箱中对决】</color>的“棋手选择”次数和“更换棋手”功能"
+    "lang": "<#FF906A>【微尘计划】</color>一共分为六个关卡，通关计划B后可以开展<#FF906A>【箱中对决】</color>，通关计划E与计划F能够额外获得<#FF906A>【箱中对决】</color>的“棋手选择”机会和“更换棋手”功能"
   },
   {
     "id": "p_v2a5_autochess_help_2_txt_1",
-    "lang": "消耗3穆斯币购买棋子并放置到棋盘中。\n奖励区的棋子可以免费购买。\n\n不同类型的棋子需要放置到相应的格子中。"
+    "lang": "消耗3缪斯币购买棋子并放置到棋盘中。\n奖励区的棋子可以免费购买。\n\n<#FF906A>圆盾棋子</color>需要放置到第二行。\n<#FF906A>方兵棋子</color>需要放置到第一、三行。"
   },
   {
     "id": "p_v2a5_autochess_help_2_txt_2",
@@ -17817,11 +17813,11 @@
   },
   {
     "id": "p_v2a5_autochess_help_3_txt_1",
-    "lang": "叠放同名的棋子可以提升棋子的等级，此时可以提升棋子的属性和触发选择奖励。"
+    "lang": "叠放同名的棋子可以提升棋子的等级，从而提升棋子的属性和触发探查奖励。"
   },
   {
     "id": "p_v2a5_autochess_help_4_txt_1",
-    "lang": "不同的棋手和棋子拥有不同的能力，合理利用棋手的能力配合棋子可以更简单地击败敌人"
+    "lang": "棋手和棋子拥有不同的能力，合理利用棋手的能力配合棋子可以更加轻易地击败敌人。"
   },
   {
     "id": "p_v2a5_autochess_help_5_txt_1",

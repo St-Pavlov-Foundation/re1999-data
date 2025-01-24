@@ -33,7 +33,7 @@ function slot0.getChessMo(slot0, slot1, slot2)
 	end
 
 	if not slot2 then
-		logError("dont exist chessMo" .. tostring(slot1))
+		logError(string.format("异常:不存在游戏数据%s", slot1))
 	end
 end
 
@@ -42,7 +42,19 @@ function slot0.svrResultData(slot0, slot1)
 end
 
 function slot0.svrSettleData(slot0, slot1)
-	slot0.settleData = slot1
+	slot0.settleData = {
+		remainingHp = slot1.remainingHp,
+		totalInjury = slot1.totalInjury,
+		isFirstPass = slot1.isFirstPass,
+		moduleId = slot1.moduleId,
+		rank = slot1.rank,
+		score = slot1.score,
+		chessIds = slot1.chessIds,
+		episodeId = slot1.episodeId,
+		masterId = slot1.masterId,
+		round = slot1.round,
+		changeScore = slot1.score - Activity182Model.instance:getActMo().score
+	}
 end
 
 slot0.instance = slot0.New()

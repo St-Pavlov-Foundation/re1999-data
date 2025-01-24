@@ -27,7 +27,7 @@ function slot0.onUpdateView(slot0)
 		slot0._anim:Play("close", 0, 0)
 	end
 
-	gohelper.setActive(slot0.goEnd, slot1)
+	gohelper.setActive(slot0.goEnd, slot1 or slot3)
 	gohelper.setActive(slot0.goContinued, not slot1 and not slot2)
 
 	slot0._audioId = slot0:getAudioId(tonumber(slot0.data))

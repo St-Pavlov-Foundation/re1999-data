@@ -50,7 +50,7 @@ end
 function slot0.delayInit(slot0)
 	slot0.curIndex = slot0.curIndex + 1
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadgeContent), AutoChessBadgeItem):setData(slot0.rankCoList[slot0.curIndex].rankId, slot0.actMo.score)
+	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadgeContent), AutoChessBadgeItem):setData(slot0.rankCoList[slot0.curIndex].rankId, slot0.actMo.score, AutoChessBadgeItem.ShowType.BadgeView)
 
 	if slot0.curIndex >= #slot0.rankCoList then
 		TaskDispatcher.cancelTask(slot0.delayInit, slot0)

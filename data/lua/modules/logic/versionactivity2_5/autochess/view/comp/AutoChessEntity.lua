@@ -27,6 +27,7 @@ function slot0.init(slot0, slot1)
 	slot0.anim = gohelper.findChild(slot1, "ani"):GetComponent(gohelper.Type_Animator)
 	slot0.goHpFloat = gohelper.findChild(slot0.goBar, "go_HpFloat")
 	slot0.meshComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.goMesh, AutoChessMeshComp)
+	slot0.effectComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.goEntity, AutoChessEffectComp)
 	slot0.floatItemList = {}
 	slot0.floatItemCacheList = {}
 	slot0.animStar1 = slot0.goStar1:GetComponent(gohelper.Type_Animator)
@@ -34,10 +35,10 @@ function slot0.init(slot0, slot1)
 	slot0.animStar3 = slot0.goStar3:GetComponent(gohelper.Type_Animator)
 	slot0.goFlyStar = gohelper.findChild(slot1, "ani/go_FlyStar")
 	slot0.goFlyStar1 = gohelper.findChild(slot1, "ani/go_FlyStar/star1")
-	slot0.goFlyStar2 = gohelper.findChild(slot1, "ani/go_FlyStar/star1")
-	slot0.goFlyStar3 = gohelper.findChild(slot1, "ani/go_FlyStar/star1")
-	slot0.goFlyStar4 = gohelper.findChild(slot1, "ani/go_FlyStar/star1")
-	slot0.goFlyStar5 = gohelper.findChild(slot1, "ani/go_FlyStar/star1")
+	slot0.goFlyStar2 = gohelper.findChild(slot1, "ani/go_FlyStar/star2")
+	slot0.goFlyStar3 = gohelper.findChild(slot1, "ani/go_FlyStar/star3")
+	slot0.goFlyStar4 = gohelper.findChild(slot1, "ani/go_FlyStar/star4")
+	slot0.goFlyStar5 = gohelper.findChild(slot1, "ani/go_FlyStar/star5")
 
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntity, slot0.onDragChess, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntityEnd, slot0.onDragChessEnd, slot0)
@@ -70,10 +71,6 @@ end
 
 function slot0.setData(slot0, slot1, slot2, slot3)
 	slot0:initChessData(slot1)
-
-	if not slot0.effectComp then
-		slot0.effectComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.goEntity, AutoChessEffectComp, slot0.data.uid)
-	end
 
 	slot0.warZone = slot2
 	slot0.index = slot3
@@ -131,6 +128,7 @@ function slot0.move(slot0, slot1)
 	slot0.pos = AutoChessGameModel.instance:getChessLocation(slot0.warZone, tonumber(slot1) + 1)
 
 	ZProj.TweenHelper.DOAnchorPosX(slot0.transform, slot0.pos.x, AutoChessEnum.ChessAniTime.Jump)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_move)
 	slot0.anim:Play("jump", 0, 0)
 end
 
@@ -210,7 +208,7 @@ function slot0.delBuff(slot0, slot1)
 
 		table.remove(slot2, slot3)
 	else
-		logError("未找到buffUid" .. slot1)
+		logError(string.format("异常:未找到buffUid%s", slot1))
 	end
 end
 
@@ -291,9 +289,8 @@ end
 function slot0.updateStar(slot0, slot1)
 	slot0:initChessData(slot1)
 	slot0:refreshUI()
-	slot0.effectComp:playEffect(50001)
 
-	return 1
+	return slot0.effectComp:playEffect(50001)
 end
 
 function slot0.refreshUI(slot0)
@@ -355,7 +352,7 @@ function slot0.checkHpFloat(slot0)
 end
 
 function slot0.flyStar(slot0)
-	for slot5 = 1, slot0.data.star + slot0.config.levelFromMall < 5 and slot1 or 5 do
+	for slot5 = 1, slot0.config.levelFromMall < 5 and slot1 or 5 do
 		gohelper.setActive(slot0["goFlyStar" .. slot5], true)
 	end
 
@@ -371,7 +368,7 @@ function slot0.delayFly(slot0)
 		slot4, slot5, slot6 = transformhelper.getPos(slot3.go.transform)
 		slot7 = recthelper.rectToRelativeAnchorPos(Vector3(slot4, slot5, slot6), slot0.goFlyStar.transform)
 
-		for slot12 = 1, slot0.data.star + slot0.config.levelFromMall < 5 and slot8 or 5 do
+		for slot12 = 1, slot0.config.levelFromMall < 5 and slot8 or 5 do
 			ZProj.TweenHelper.DOAnchorPos(slot0["goFlyStar" .. slot12].transform, slot7.x, slot7.y, 0.5)
 		end
 	end

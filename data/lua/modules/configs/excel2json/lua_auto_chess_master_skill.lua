@@ -2,13 +2,13 @@ module("modules.configs.excel2json.lua_auto_chess_master_skill", package.seeall)
 
 slot1 = {
 	cost = 2,
+	abilities = 6,
 	type = 3,
-	skillIndex = 9,
 	activeChessSkill = 5,
 	passiveChessSkills = 4,
+	skillIndex = 9,
 	skillaction = 7,
-	skilleffID = 8,
-	abilities = 6,
+	useeffect = 8,
 	id = 1
 }
 slot2 = {

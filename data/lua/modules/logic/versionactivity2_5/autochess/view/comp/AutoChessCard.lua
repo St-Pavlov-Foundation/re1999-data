@@ -21,7 +21,7 @@ function slot0.init(slot0, slot1)
 	slot0._goLevel = gohelper.findChild(slot1, "#go_Level")
 	slot0._imageLevel = gohelper.findChildImage(slot1, "#go_Level/#image_Level")
 	slot0._txtLevel = gohelper.findChildText(slot1, "#go_Level/#txt_Level")
-	slot0._goStar = gohelper.findChild(slot1, "#go_Level/#go_Star/#go_Star1")
+	slot0._goStar = gohelper.findChild(slot1, "#go_Level/#go_Star")
 	slot0._goStar1 = gohelper.findChild(slot1, "#go_Level/#go_Star/#go_Star1")
 	slot0._goLight1 = gohelper.findChildImage(slot1, "#go_Level/#go_Star/#go_Star1/#go_Light1")
 	slot0._goStar2 = gohelper.findChild(slot1, "#go_Level/#go_Star/#go_Star2")
@@ -70,23 +70,21 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0._btnSellOnClick(slot0)
-	if AutoChessController.instance:isClickDisable(GuideModel.GuideFlag.AutoChessEnableSale) then
+	slot1 = AutoChessModel.instance:getCurModuleId()
+	slot2 = slot0.param.entity
+	slot3 = slot2.warZone
+
+	if AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableSale, slot2.data.id) then
 		return
 	end
 
-	slot2 = slot0.param.entity
-
-	AutoChessRpc.instance:sendAutoChessBuildRequest(AutoChessModel.instance:getCurModuleId(), AutoChessEnum.BuildType.Sell, slot2.warZone, slot2.index, slot2.data.uid)
+	AutoChessRpc.instance:sendAutoChessBuildRequest(slot1, AutoChessEnum.BuildType.Sell, slot3, slot2.index, slot2.data.uid)
 end
 
 function slot0._btnBuyOnClick(slot0)
 	slot1 = AutoChessModel.instance:getCurModuleId()
 
-	if not slot0.isFree and AutoChessController.instance:isClickDisable(GuideModel.GuideFlag.AutoChessEnableDragChess) then
-		return
-	end
-
-	if slot0.isFree and AutoChessController.instance:isClickDisable(GuideModel.GuideFlag.AutoChessEnableDragFreeChess) then
+	if AutoChessController.instance:isClickDisable() then
 		return
 	end
 
@@ -121,6 +119,7 @@ function slot0._btnFullOnClick(slot0)
 end
 
 function slot0._btnSelectOnClick(slot0)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_award_get)
 	AutoChessRpc.instance:sendAutoChessMallRegionSelectItemRequest(AutoChessModel.instance:getCurModuleId(), slot0.param.itemId)
 end
 
@@ -182,7 +181,7 @@ end
 
 function slot0.refreshBuy(slot0)
 	slot0.itemData = slot0.param.data
-	slot0.config = AutoChessConfig.instance:getChessCoByItemId(slot0.itemData.id)
+	slot0.config = lua_auto_chess.configDict[slot0.itemData.chess.id][slot0.itemData.chess.star]
 
 	slot0.meshComp:setData(slot0.config.image)
 
@@ -215,9 +214,16 @@ function slot0.refreshBuy(slot0)
 		gohelper.setActive(slot0._btnFree, slot0.isFree)
 		gohelper.setActive(slot0._btnBuy, not slot0.isFree)
 	else
-		UISpriteSetMgr.instance:setAutoChessSprite(slot0._imageBuyCost1, slot6)
+		if slot0.isFree then
+			slot0._txtBuyCost1.text = luaLang("p_autochesscard_txt_free")
 
-		slot0._txtBuyCost1.text = slot5
+			gohelper.setActive(slot0._imageBuyCost1, false)
+		else
+			UISpriteSetMgr.instance:setAutoChessSprite(slot0._imageBuyCost1, slot6)
+			gohelper.setActive(slot0._imageBuyCost1, true)
+
+			slot0._txtBuyCost1.text = slot5
+		end
 
 		gohelper.setActive(slot0._btnFull, true)
 		gohelper.setActive(slot0._btnFree, false)

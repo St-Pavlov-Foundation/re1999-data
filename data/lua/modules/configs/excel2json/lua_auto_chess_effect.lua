@@ -11,6 +11,7 @@ slot1 = {
 	duration = 12,
 	loop = 8,
 	playertype = 7,
+	soundId = 13,
 	id = 1,
 	position = 10
 }

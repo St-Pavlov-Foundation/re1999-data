@@ -122,6 +122,7 @@ end
 function slot0._toggleBlindnessOnClick(slot0, slot1, slot2)
 	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
 	FeiLinShiDuoGameModel.instance:setBlindnessModeState(slot2)
+	GameUtil.playerPrefsSetNumberByUserId(FeiLinShiDuoEnum.BlindnessModeKey, slot2 and 1 or 0)
 	slot0:refreshBlindnessModeUI()
 end
 
@@ -266,6 +267,16 @@ function slot0._editableInitView(slot0)
 	slot0.isColorBtnAniming = false
 
 	slot0:initColorPlaneData()
+	slot0:initBlindnessMode()
+	FeiLinShiDuoStatHelper.instance:initGameStartTime()
+	FeiLinShiDuoStatHelper.instance:initResetStartTime()
+end
+
+function slot0.initBlindnessMode(slot0)
+	slot2 = GameUtil.playerPrefsGetNumberByUserId(FeiLinShiDuoEnum.BlindnessModeKey, 0) == 1
+	slot0._toggleBlindness.isOn = slot2
+
+	FeiLinShiDuoGameModel.instance:setBlindnessModeState(slot2)
 end
 
 function slot0.initColorPlaneData(slot0)
@@ -319,6 +330,7 @@ function slot0.refreshBlindnessModeUI(slot0)
 
 	if FeiLinShiDuoGameModel.instance:getCurColor() == FeiLinShiDuoEnum.ColorType.Red or slot2 == FeiLinShiDuoEnum.ColorType.Yellow then
 		SLFramework.UGUI.GuiHelper.SetColor(slot0._imagecolorBg, slot1 and FeiLinShiDuoEnum.ColorStr[FeiLinShiDuoEnum.ColorType.Yellow] or FeiLinShiDuoEnum.ColorStr[FeiLinShiDuoEnum.ColorType.Red])
+		FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.changePlayerColor, slot1 and FeiLinShiDuoEnum.ColorType.Yellow or FeiLinShiDuoEnum.ColorType.Red)
 	end
 
 	for slot6 = 1, 4 do
@@ -493,6 +505,7 @@ function slot0.resetGame(slot0)
 	FeiLinShiDuoGameModel.instance:showAllElementState()
 
 	if slot0.sceneview then
+		FeiLinShiDuoStatHelper.instance:sendResetGameMap(slot0.sceneview:getPlayerGO())
 		slot0.sceneview:resetData()
 	end
 
@@ -521,6 +534,7 @@ function slot0.openGameResultView(slot0)
 	FeiLinShiDuoGameController.instance:openGameResultView({
 		isSuccess = false
 	})
+	FeiLinShiDuoStatHelper.instance:sendExitGameMap(slot0.sceneview:getPlayerGO())
 end
 
 function slot0.showDeadEffect(slot0)

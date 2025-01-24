@@ -25,6 +25,7 @@ function slot0.updateSvrMall(slot0, slot1, slot2)
 	end
 
 	slot0.svrMall = slot1
+	slot0.svrMall.coin = tonumber(slot1.coin)
 
 	if slot2 then
 		AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMallData)
@@ -32,7 +33,7 @@ function slot0.updateSvrMall(slot0, slot1, slot2)
 end
 
 function slot0.updateSvrMallCoin(slot0, slot1)
-	slot0.svrMall.coin = slot0.svrMall.coin + tonumber(slot1)
+	slot0.svrMall.coin = tonumber(slot1)
 
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.MallCoinChange)
 end
@@ -47,7 +48,7 @@ function slot0.updateSvrMallRegion(slot0, slot1, slot2)
 	end
 
 	if slot2 then
-		AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMallData)
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMallRegion)
 	end
 end
 
@@ -68,12 +69,8 @@ function slot0.analyzeStepList(slot0, slot1)
 			slot0.endBuyEffectList = slot6.effect
 		elseif slot6.actionType == AutoChessEnum.ActionType.Immediately then
 			AutoChessController.instance:dispatchEvent(AutoChessEvent.PlayStepList, slot6.effect)
-		elseif slot6.actionType == AutoChessEnum.ActionType.FightData then
-			if slot6.effect[1] and slot7.effectType == AutoChessEnum.EffectType.FightUpdate then
-				slot0:updateSvrFight(slot7.fight)
-			else
-				logError("actionType 10 no svrFight")
-			end
+		elseif slot6.actionType == AutoChessEnum.ActionType.FightData and slot6.effect[1] and slot7.effectType == AutoChessEnum.EffectType.FightUpdate then
+			slot0:updateSvrFight(slot7.fight)
 		end
 	end
 end
@@ -124,7 +121,19 @@ function slot0.getChessPosition(slot0, slot1, slot2, slot3)
 		end
 	end
 
-	logError(string.format("dont exist chessPos %s %s"), slot1, slot2)
+	logError(string.format("异常:不存在战区%s站位%s的ChessPos数据"), slot1, slot2)
+end
+
+function slot0.getChessPosition1(slot0, slot1, slot2)
+	for slot6, slot7 in ipairs((slot2 or slot0.svrFight).warZones) do
+		for slot11, slot12 in ipairs(slot7.positions) do
+			if slot12.chess.uid == slot1 then
+				return slot12
+			end
+		end
+	end
+
+	logError(string.format("异常:不存在包含棋子%s的ChessPos数据", slot1))
 end
 
 function slot0.getEmptyPos(slot0, slot1)

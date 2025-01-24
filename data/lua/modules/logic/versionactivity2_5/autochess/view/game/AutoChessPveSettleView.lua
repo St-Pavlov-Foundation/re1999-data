@@ -27,9 +27,8 @@ function slot0._onEscBtnClick(slot0)
 end
 
 function slot0._btnRestartOnClick(slot0)
-	slot2 = AutoChessModel.instance.episodeId
+	slot0.restart = true
 
-	AutoChessRpc.instance:sendAutoChessEnterSceneRequest(AutoChessEnum.ModuleId.PVE, slot2, lua_auto_chess_episode.configDict[slot2].masterId)
 	slot0:closeThis()
 end
 
@@ -52,7 +51,13 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
+	slot1 = AutoChessModel.instance.episodeId
+
 	AutoChessController.instance:onSettleViewClose()
+
+	if slot0.restart then
+		AutoChessRpc.instance:sendAutoChessEnterSceneRequest(AutoChessEnum.ModuleId.PVE, slot1, lua_auto_chess_episode.configDict[slot1].masterId)
+	end
 end
 
 function slot0.onDestroyView(slot0)

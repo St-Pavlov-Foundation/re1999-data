@@ -1,7 +1,8 @@
 module("modules.logic.versionactivity2_5.act187.view.Activity187View", package.seeall)
 
 slot0 = class("Activity187View", BaseView)
-slot1 = 1
+slot1 = 0.5
+slot2 = 1
 
 function slot0.onInitView(slot0)
 	slot0._txtremainTime = gohelper.findChildText(slot0.viewGO, "#go_title/image_TimeBG/#txt_remainTime")
@@ -9,6 +10,7 @@ function slot0.onInitView(slot0)
 	slot0._btnleft = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "#go_lantern/#btn_left")
 	slot0._golowribbon = gohelper.findChild(slot0.viewGO, "#go_lantern/#go_decorationLower")
 	slot0._simagelantern = gohelper.findChildSingleImage(slot0.viewGO, "#go_lantern/#simage_lantern/#simage_lantern1")
+	slot0._btnlantern = gohelper.findChildClick(slot0.viewGO, "#go_lantern/#simage_lantern/#btn_click")
 	slot0._goupribbon = gohelper.findChild(slot0.viewGO, "#go_lantern/#go_decorationUpper")
 	slot0._simagepicture = gohelper.findChildSingleImage(slot0.viewGO, "#go_lantern/#simage_lantern/#simage_picture")
 	slot0._gotail = gohelper.findChild(slot0.viewGO, "#go_lantern/#simage_lantern/#go_tail")
@@ -38,6 +40,7 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnleft:AddClickListener(slot0._btnleftOnClick, slot0)
+	slot0._btnlantern:AddClickListener(slot0._btnlanternOnClick, slot0)
 	slot0._btnshowRiddles:AddClickListener(slot0._btnshowRiddlesOnClick, slot0)
 	slot0._btncloseRiddles:AddClickListener(slot0._btncloseRiddlesOnClick, slot0)
 	slot0._btnright:AddClickListener(slot0._btnrightOnClick, slot0)
@@ -48,12 +51,14 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(Activity187Controller.instance, Activity187Event.GetAct187Info, slot0.onGetActInfo, slot0)
 	slot0:addEventCb(Activity187Controller.instance, Activity187Event.FinishPainting, slot0.onFinishPainting, slot0)
 	slot0:addEventCb(Activity187Controller.instance, Activity187Event.GetAccrueReward, slot0.onGetAccrueReward, slot0)
+	slot0:addEventCb(Activity187Controller.instance, Activity187Event.RefreshAccrueReward, slot0.onRefreshAccrueReward, slot0)
 	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, slot0.checkActivityInfo, slot0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0.checkActivityInfo, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnleft:RemoveClickListener()
+	slot0._btnlantern:RemoveClickListener()
 	slot0._btnshowRiddles:RemoveClickListener()
 	slot0._btncloseRiddles:RemoveClickListener()
 	slot0._btnright:RemoveClickListener()
@@ -62,6 +67,7 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(Activity187Controller.instance, Activity187Event.GetAct187Info, slot0.onGetActInfo, slot0)
 	slot0:removeEventCb(Activity187Controller.instance, Activity187Event.FinishPainting, slot0.onFinishPainting, slot0)
 	slot0:removeEventCb(Activity187Controller.instance, Activity187Event.GetAccrueReward, slot0.onGetAccrueReward, slot0)
+	slot0:removeEventCb(Activity187Controller.instance, Activity187Event.RefreshAccrueReward, slot0.onRefreshAccrueReward, slot0)
 	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshActivityState, slot0.checkActivityInfo, slot0)
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0.checkActivityInfo, slot0)
 end
@@ -76,14 +82,23 @@ function slot0._btnleftOnClick(slot0)
 	slot0._curIndex = slot0._curIndex - 1
 
 	slot0._lanternAnimator:Play("left", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum.Act187.play_ui_yuanxiao_switch)
 end
 
 function slot0._onLeftRefresh(slot0)
 	slot0:refreshLanternIndex()
 end
 
+function slot0._btnlanternOnClick(slot0)
+	if Activity187Model.instance:getFinishPaintingIndex() < slot0._curIndex and not Activity187Model.instance:getPaintingRewardId(slot0._curIndex) then
+		slot0:_btnpaintOnClick()
+		AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
+	end
+end
+
 function slot0._btnshowRiddlesOnClick(slot0)
 	slot0:setRiddlesShow(true)
+	AudioMgr.instance:trigger(AudioEnum.Act187.play_ui_mln_page_turn)
 end
 
 function slot0._btncloseRiddlesOnClick(slot0)
@@ -100,6 +115,7 @@ function slot0._btnrightOnClick(slot0)
 	slot0._curIndex = slot0._curIndex + 1
 
 	slot0._lanternAnimator:Play("right", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum.Act187.play_ui_yuanxiao_switch)
 end
 
 function slot0._onRightRefresh(slot0)
@@ -122,7 +138,7 @@ function slot0._btnpaintOnClick(slot0)
 end
 
 function slot0.onBtnEsc(slot0)
-	if slot0._isShowPaintView then
+	if slot0.isShowPaintView then
 		slot0:setPaintingViewDisplay(false)
 	else
 		slot0:closeThis()
@@ -143,11 +159,19 @@ function slot0.onFinishPainting(slot0, slot1)
 end
 
 function slot0.onGetAccrueReward(slot0, slot1)
-	slot0:refreshAccrueProgress()
-
 	slot0._rewardsMaterials = slot1
 
 	slot0:refreshAccrueRewardItem(true)
+end
+
+function slot0.onRefreshAccrueReward(slot0)
+	slot0:refreshAccrueProgress()
+
+	if slot0._accrueRewardItemList then
+		for slot4, slot5 in ipairs(slot0._accrueRewardItemList) do
+			slot5:refreshStatus()
+		end
+	end
 end
 
 function slot0.checkActivityInfo(slot0, slot1)
@@ -178,7 +202,7 @@ function slot0._editableInitView(slot0)
 	gohelper.setActive(slot0._goriddlesRewardItem, false)
 
 	slot0.animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._isShowPaintView = false
+	slot0.isShowPaintView = false
 end
 
 function slot0._fillRibbonDict(slot0, slot1, slot2)
@@ -198,20 +222,25 @@ function slot0.onOpen(slot0)
 	TaskDispatcher.cancelTask(slot0.refreshRemainTime, slot0)
 	TaskDispatcher.runRepeat(slot0.refreshRemainTime, slot0, TimeUtil.OneMinuteSecond)
 	RedDotController.instance:addRedDot(slot0._gopaintreddot, RedDotEnum.DotNode.V2a5_Act187CanPaint)
+	AudioMgr.instance:trigger(AudioEnum.Act187.play_ui_tangren_yuanxiao_open)
 end
 
 function slot0.setLanternIndex(slot0, slot1)
-	slot3 = Activity187Model.instance:getFinishPaintingIndex() + 1
+	slot3 = Activity187Model.instance:getFinishPaintingIndex()
 
-	if (tonumber(Activity187Config.instance:getAct187Const(Activity187Enum.ConstId.MaxLanternCount)) or 0) < 0 then
-		slot4 = slot3
+	if (Activity187Model.instance:getRemainPaintingCount() or 0) > 0 then
+		slot3 = slot2 + 1
 	end
 
-	slot0._maxIndex = math.min(slot3, slot4)
+	if (tonumber(Activity187Config.instance:getAct187Const(Activity187Enum.ConstId.MaxLanternCount)) or 0) < 0 then
+		slot5 = slot3
+	end
+
+	slot0._maxIndex = math.min(slot3, slot5)
 	slot0._curIndex = slot1 or slot0._maxIndex
 end
 
-function slot2(slot0, slot1)
+function slot3(slot0, slot1)
 	return slot0 < slot1
 end
 
@@ -242,18 +271,27 @@ function slot0.setRiddlesShow(slot0, slot1)
 end
 
 function slot0.setPaintingViewDisplay(slot0, slot1)
-	if slot0._isShowPaintView == slot1 then
+	if slot0.isShowPaintView == slot1 then
 		return
 	end
 
-	slot0._isShowPaintView = slot1
+	slot0.isShowPaintView = slot1
 
-	if slot0._isShowPaintView then
-		slot0.viewContainer:ready2Paint(slot0._maxIndex)
+	if slot0.isShowPaintView then
 		slot0.animator:Play("MainToDraw", 0, 0)
 	else
 		slot0.animator:Play("DrawToMain", 0, 0)
 	end
+
+	AudioMgr.instance:trigger(AudioEnum.Act187.play_ui_tangren_yuanxiao_pop)
+	UIBlockMgr.instance:startBlock(Activity187Enum.BlockKey.SwitchView)
+	TaskDispatcher.cancelTask(slot0._endBlock, slot0)
+	TaskDispatcher.runDelay(slot0._endBlock, slot0, uv0)
+	Activity187Controller.instance:dispatchEvent(Activity187Event.PaintViewDisplayChange, slot0.isShowPaintView, slot0._maxIndex)
+end
+
+function slot0._endBlock(slot0)
+	UIBlockMgr.instance:endBlock(Activity187Enum.BlockKey.SwitchView)
 end
 
 function slot0.refresh(slot0)
@@ -328,6 +366,9 @@ function slot0.getRiddlesRewardItem(slot0, slot1)
 		slot2 = slot0:getUserDataTb_()
 		slot2.go = gohelper.clone(slot0._goriddlesRewardItem, slot0._goriddlesRewards, slot1)
 		slot2.itemIcon = IconMgr.instance:getCommonItemIcon(gohelper.findChild(slot2.go, "#go_item"))
+
+		slot2.itemIcon:setCountFontSize(40)
+
 		slot0._riddlesRewardItemList[slot1] = slot2
 	end
 
@@ -397,7 +438,10 @@ end
 function slot0.onClose(slot0)
 	slot0._simagepicture:UnLoadImage()
 	slot0._simagelantern:UnLoadImage()
+	TaskDispatcher.cancelTask(slot0._endBlock, slot0)
+	TaskDispatcher.cancelTask(slot0._showMaterials, slot0)
 	TaskDispatcher.cancelTask(slot0.refreshRemainTime, slot0)
+	UIBlockMgr.instance:endBlock(Activity187Enum.BlockKey.SwitchView)
 	UIBlockMgr.instance:endBlock(Activity187Enum.BlockKey.GetAccrueReward)
 
 	slot0._rewardsMaterials = nil

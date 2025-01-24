@@ -10429,7 +10429,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "对敌方全体造成100%伤害，每消耗一个【能量】伤害提升50%，若本次消耗不少于6个【能量】则再释放一次相同威力的【星体坍塌】"
+    "desc": "对敌方全体造成100%现实伤害，每消耗一个【能量】伤害提升50%，若本次消耗不少于6个【能量】则再释放一次相同威力的【星体坍塌】"
   },
   {
     "id": 4700201,
@@ -13190,5 +13190,77 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "最大生命+25%，最终增伤+10%（可以叠加，不可驱散）"
+  },
+  {
+    "id": 6255586,
+    "name": "状态异常集合<id:1>",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "共有6种效果：【伤口】，【污染】，【中毒】，【腐蚀】，【致盲】，【失准】（优先赋予未拥有的效果）"
+  },
+  {
+    "id": 251300011,
+    "name": "顽固的住民",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300021,
+    "name": "传闻中的女士",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300022,
+    "name": "传闻中的恶魔",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300023,
+    "name": "传闻中的魔女",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251320011,
+    "name": "议论与注目",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300301,
+    "name": "目击证人",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300302,
+    "name": "狡黠的证词",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 251300304,
+    "name": "费解的证词",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
   }
 ]

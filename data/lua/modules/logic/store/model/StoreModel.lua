@@ -524,8 +524,16 @@ function slot0.getFirstTabs(slot0, slot1, slot2)
 	slot3 = {}
 
 	for slot7, slot8 in ipairs(lua_store_entrance.configList) do
-		if not StoreConfig.instance:hasTab(slot8.belongFirstTab) and not StoreConfig.instance:hasTab(slot8.belongSecondTab) and not LuaUtil.tableContains(StoreEnum.BossRushStore, slot8.id) and (not slot1 or slot0:isTabOpen(slot8.id)) then
-			table.insert(slot3, slot8)
+		if not StoreConfig.instance:hasTab(slot8.belongFirstTab) and not StoreConfig.instance:hasTab(slot8.belongSecondTab) then
+			slot9 = LuaUtil.tableContains(StoreEnum.BossRushStore, slot8.id)
+
+			if slot8.id == StoreEnum.StoreId.DecorateStore and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) == 0 and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.OldDecorateStore) == 0 then
+				slot9 = true
+			end
+
+			if not slot9 and (not slot1 or slot0:isTabOpen(slot8.id)) then
+				table.insert(slot3, slot8)
+			end
 		end
 	end
 
@@ -664,6 +672,16 @@ function slot0.jumpTabIdToSelectTabId(slot0, slot1)
 		if slot2 == StoreEnum.StoreId.Package then
 			for slot10 = 1, #slot6 do
 				if #slot0:getPackageGoodValidList(slot6[slot10].id) > 0 then
+					slot3 = slot6[slot10].id
+
+					break
+				end
+			end
+
+			slot4 = 0
+		elseif slot2 == StoreEnum.StoreId.DecorateStore then
+			for slot10 = 1, #slot6 do
+				if #DecorateStoreModel.instance:getDecorateGoodList(slot6[slot10].id) > 0 then
 					slot3 = slot6[slot10].id
 
 					break

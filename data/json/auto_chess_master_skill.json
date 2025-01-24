@@ -7,7 +7,7 @@
     "activeChessSkill": "3000102",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
@@ -18,29 +18,29 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
     "id": 3000301,
-    "cost": "coin#3",
+    "cost": "coin#2",
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "3000302",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
     "id": 3000401,
-    "cost": "coin#1",
+    "cost": "coin#0",
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "3000401",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
@@ -51,7 +51,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -62,7 +62,7 @@
     "activeChessSkill": "3000601",
     "abilities": "StoreLevelLimitations#4",
     "skillaction": "jump",
-    "skilleffID": "30007",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
@@ -71,9 +71,9 @@
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "",
-    "abilities": "DigTreasure#4#3",
+    "abilities": "DigTreasure#3#3",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -84,7 +84,7 @@
     "activeChessSkill": "",
     "abilities": "InitialFollower#21001#1",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -95,29 +95,29 @@
     "activeChessSkill": "3000901",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
     "id": 3001001,
-    "cost": "coin#8",
+    "cost": "coin#6",
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "3001001",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
     "id": 3001101,
-    "cost": "coin#4",
+    "cost": "coin#3",
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "",
     "abilities": "RefreshNextLevel#1",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -125,10 +125,10 @@
     "cost": "",
     "type": "passive",
     "passiveChessSkills": "",
-    "activeChessSkill": "",
-    "abilities": "ExploreCostDecrease#4",
+    "activeChessSkill": "3001201",
+    "abilities": "ExploreCostDecrease#3",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -139,7 +139,7 @@
     "activeChessSkill": "",
     "abilities": "ChessReplace#16013#1#312#3004#1#-1",
     "skillaction": "jump",
-    "skilleffID": "30010",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -150,7 +150,7 @@
     "activeChessSkill": "",
     "abilities": "RefreshReplaceChess#Supernatural",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -161,7 +161,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -172,7 +172,7 @@
     "activeChessSkill": "3001601",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 2
   },
   {
@@ -183,7 +183,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -194,7 +194,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -203,9 +203,9 @@
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "",
-    "abilities": "LoanCoin#5#5",
+    "abilities": "LoanCoin#6#6",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -216,7 +216,7 @@
     "activeChessSkill": "",
     "abilities": "PrimeNumber#1",
     "skillaction": "",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 3
   },
   {
@@ -227,7 +227,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -238,7 +238,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "",
+    "useeffect": 0,
     "skillIndex": 1
   },
   {
@@ -249,7 +249,7 @@
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
-    "skilleffID": "30010",
+    "useeffect": 0,
     "skillIndex": 1
   }
 ]

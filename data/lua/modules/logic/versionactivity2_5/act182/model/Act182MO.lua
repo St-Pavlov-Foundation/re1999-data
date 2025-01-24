@@ -19,15 +19,19 @@ function slot0.init(slot0, slot1)
 
 	slot0.historyInfo = slot1.historyInfo
 	slot0.doubleScoreTimes = slot1.doubleScoreTimes
+	slot0.gainRewardRank = slot1.gainRewardRank
 end
 
 function slot0.update(slot0, slot1)
-	slot0.passEpisodeIds = slot1.passEpisodeIds
-
 	if slot1.rank - slot0.rank > 0 then
 		slot0.isRankUp = true
+
+		if slot0.historyInfo.maxRank < slot1.rank then
+			slot0.newRankUp = true
+		end
 	end
 
+	slot0.passEpisodeIds = slot1.passEpisodeIds
 	slot0.rank = slot1.rank
 	slot0.score = slot1.score
 
@@ -36,6 +40,8 @@ function slot0.update(slot0, slot1)
 	end
 
 	slot0.historyInfo = slot1.historyInfo
+	slot0.doubleScoreTimes = slot1.doubleScoreTimes
+	slot0.gainRewardRank = slot1.gainRewardRank
 end
 
 function slot0.updateMasterIdBox(slot0, slot1, slot2)
@@ -63,6 +69,11 @@ function slot0.isEpisodeUnlock(slot0, slot1)
 	end
 
 	return false
+end
+
+function slot0.clearRankUpMark(slot0)
+	slot0.isRankUp = false
+	slot0.newRankUp = false
 end
 
 return slot0

@@ -24,6 +24,18 @@ function slot0.buildViews(slot0)
 	return slot1
 end
 
+function slot0.playOpenTransition(slot0)
+	slot1 = "open"
+
+	if ManufactureModel.instance:getRecordOneKeyType() == RoomManufactureEnum.OneKeyType.Customize then
+		slot1 = "open2"
+	end
+
+	uv0.super.playOpenTransition(slot0, {
+		anim = slot1
+	})
+end
+
 function slot0.oneKeyViewSetAddPopActive(slot0, slot1)
 	slot0.oneKeyView:setAddPopActive(slot1)
 end

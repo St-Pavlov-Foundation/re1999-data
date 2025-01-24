@@ -385,7 +385,7 @@ function slot0._getWelcomeReport(slot0)
 		return
 	end
 
-	return WeatherConfig.instance:getRandomReport(tonumber(string.split(string.split(slot3.time, "#")[1], ":")[1]) < 12 and WeatherEnum.LightModeDuring or WeatherEnum.LightModeDusk)
+	return WeatherConfig.instance:getRandomReport(tonumber(string.split(string.split(slot3.time, "#")[1], ":")[1]) < 12 and WeatherEnum.LightModeDuring or WeatherEnum.LightModeDusk, slot0._sceneId)
 end
 
 function slot0._checkReport(slot0)
@@ -393,7 +393,7 @@ function slot0._checkReport(slot0)
 		return
 	end
 
-	if slot0._reportEndTime and slot0._reportEndTime <= os.time() then
+	if not slot0._isSceneHide and slot0._reportEndTime and slot0._reportEndTime <= os.time() then
 		slot0:updateReport(true)
 	end
 end
@@ -1253,6 +1253,7 @@ function slot0.onSceneClose(slot0)
 	slot0._weatherEffectGo = nil
 	slot0._startTime = nil
 	slot0._effectStartTime = nil
+	slot0._reportEndTime = nil
 
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseFullView, slot0._onCloseFullView, slot0)
 	MainController.instance:unregisterCallback(MainEvent.OnShowSceneNewbieOpen, slot0._OnShowSceneNewbieOpen, slot0)

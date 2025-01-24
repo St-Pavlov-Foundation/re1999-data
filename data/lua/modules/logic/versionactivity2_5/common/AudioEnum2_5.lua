@@ -9,10 +9,16 @@ slot0.AutoChess = {
 	play_ui_tangren_battle_enter = 20250408,
 	play_ui_tangren_toycar_standby_loop = 20250404,
 	play_ui_tangren_chess_purchase = 20250407,
+	play_ui_tangren_copy_enter = 20250410,
 	play_ui_tangren_shopping_enter = 20250406,
+	play_ui_tangren_chess_death = 20250412,
+	play_ui_tangren_star_collect = 20250418,
 	play_ui_tangren_toycar_appear = 20250403,
+	play_ui_mln_details_open = 20250421,
+	play_ui_tangren_chess_lock = 20250422,
 	play_ui_tangren_store_upgrade = 20250409,
-	play_ui_tangren_copy_enter = 20250410
+	play_ui_tangren_award_get = 20250423,
+	play_ui_tangren_chess_move = 20250424
 }
 slot0.GoldenMillet = {
 	play_ui_tangren_songpifu_loop = 25251201,
@@ -84,6 +90,15 @@ slot0.Act186 = {
 	play_ui_tangren_cloud = 25251407,
 	play_ui_tangren_firework = 25251408,
 	play_ui_mln_page_turn = 25251404
+}
+slot0.Act187 = {
+	play_ui_tangren_yuanxiao_pop = 25251502,
+	play_ui_tangren_yuanxiao_open = 25251501,
+	play_ui_tangren_yuanxiao_draw_loop = 25251504,
+	play_ui_yuanxiao_switch = 25251503,
+	stop_ui_tangren_yuanxiao_draw_loop = 25251505,
+	play_ui_shuori_dreamsong_open = 25251506,
+	play_ui_mln_page_turn = 25251507
 }
 
 for slot6, slot7 in pairs({

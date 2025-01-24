@@ -21966,6 +21966,9 @@
   "singlebg/store/package/detail_v2a5_13.png.dat": [
     "Assets/ZResourcesLib/singlebg/store/package/detail_v2a5_13.png"
   ],
+  "singlebg/store/package/detail_v2a5_14.png.dat": [
+    "Assets/ZResourcesLib/singlebg/store/package/detail_v2a5_14.png"
+  ],
   "singlebg/store/package/v2a5_01.png.dat": [
     "Assets/ZResourcesLib/singlebg/store/package/v2a5_01.png"
   ],
@@ -22001,6 +22004,9 @@
   ],
   "singlebg/store/package/v2a5_13.png.dat": [
     "Assets/ZResourcesLib/singlebg/store/package/v2a5_13.png"
+  ],
+  "singlebg/store/package/v2a5_14.png.dat": [
+    "Assets/ZResourcesLib/singlebg/store/package/v2a5_14.png"
   ],
   "singlebg/storybg/item/2_5_baodao1.png.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/item/2_5_baodao1.png"
@@ -22077,6 +22083,15 @@
   "singlebg/storybg/smallbg/story_atcg/2_5/2_5_at_ys_lily.jpg.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/smallbg/story_atcg/2_5/2_5_at_ys_lily.jpg"
   ],
+  "singlebg/storybg/story_atcg/1.4/1_4_cg_chouxiangwangguo1.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/story_atcg/1.4/1_4_cg_chouxiangwangguo1.jpg"
+  ],
+  "singlebg/storybg/story_atcg/1_7/1_7_at_kanbaozhi.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/story_atcg/1_7/1_7_at_kanbaozhi.jpg"
+  ],
+  "singlebg/storybg/story_atcg/2_2/2_2_at_xianliao11.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/story_atcg/2_2/2_2_at_xianliao11.jpg"
+  ],
   "singlebg/storybg/story_atcg/2_5/2_5_at_juezhan.jpg.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/story_atcg/2_5/2_5_at_juezhan.jpg"
   ],
@@ -22103,6 +22118,9 @@
   ],
   "singlebg/storybg/story_bg/2_5/2_5_bg_guangzhoufandian.jpg.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/story_bg/2_5/2_5_bg_guangzhoufandian.jpg"
+  ],
+  "singlebg/storybg/story_bg/bg/cg_guanshangdedianti.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/story_bg/bg/cg_guanshangdedianti.jpg"
   ],
   "singlebg/summon/banner/v2a5_quniang.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/v2a5_quniang.png"

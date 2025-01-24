@@ -21006,5 +21006,9 @@
   {
     "id": 502204,
     "type": "ActiveUseSkill"
+  },
+  {
+    "id": 5012081,
+    "type": "UseHurtSkill"
   }
 ]

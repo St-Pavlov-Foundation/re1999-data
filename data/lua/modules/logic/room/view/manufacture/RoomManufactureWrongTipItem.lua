@@ -29,7 +29,10 @@ function slot0.onWrongItemJumpClick(slot0, slot1)
 		return
 	end
 
-	ManufactureController.instance:clickWrongJump(slot2.data.wrongType, slot2.data.manufactureItemId, slot2.data.buildingType, slot0.isOverView)
+	ManufactureController.instance:clickWrongJump(slot2.data.wrongType, slot2.data.manufactureItemId, slot2.data.buildingType, {
+		isOverView = slot0.isOverView,
+		pathToType = slot0.buildingType
+	})
 end
 
 function slot0.setData(slot0, slot1, slot2, slot3, slot4)

@@ -75,7 +75,7 @@ function slot0.onReceiveAutoChessBuyChessReply(slot0, slot1, slot2)
 	slot3 = AutoChessModel.instance:getChessMo(slot2.moduleId)
 
 	slot3:updateSvrTurn(slot2.turn)
-	slot3:updateSvrMall(slot2.mall, true)
+	slot3:updateSvrMall(slot2.mall)
 	slot3:updateSvrBaseInfo(slot2.baseInfo)
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.BuyChessReply)
 end
@@ -107,7 +107,7 @@ function slot0.onReceiveAutoChessBuildReply(slot0, slot1, slot2)
 	slot3 = AutoChessModel.instance:getChessMo(slot2.moduleId)
 
 	slot3:updateSvrTurn(slot2.turn)
-	slot3:updateSvrMall(slot2.mall, true)
+	slot3:updateSvrMall(slot2.mall)
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.BuildReply)
 end
 
@@ -206,7 +206,7 @@ function slot0.onReceiveAutoChessPreviewFightReply(slot0, slot1, slot2)
 	slot3.preview = true
 
 	if slot3.previewCoin ~= 0 then
-		slot3:updateSvrMallCoin(-slot3.previewCoin)
+		slot3:updateSvrMallCoin(slot3.svrMall.coin - slot3.previewCoin)
 	end
 end
 

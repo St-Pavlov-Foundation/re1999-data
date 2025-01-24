@@ -537,5 +537,12 @@
     "parentId": 133380,
     "name": "风暴猫属",
     "baseCard": "room_handbook_cardbg_1"
+  },
+  {
+    "id": 133383,
+    "type": 6,
+    "parentId": 133380,
+    "name": "斯奎因克属",
+    "baseCard": "room_handbook_cardbg_1"
   }
 ]

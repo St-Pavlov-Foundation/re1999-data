@@ -48,7 +48,7 @@ function slot0.onOpen(slot0)
 				gohelper.setActive(slot0["_goTarStar" .. slot14], slot14 <= slot3.star)
 			end
 		else
-			logError(string.format("不存在自走棋轮数配置actId:%s round:%s", slot5, slot6))
+			logError(string.format("异常:不存在轮数配置actId:%sround:%s", slot5, slot6))
 		end
 
 		AutoChessController.instance:statFightEnd(tonumber(slot3.remainingHp))

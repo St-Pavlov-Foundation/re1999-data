@@ -74,8 +74,6 @@ function slot0.setData(slot0, slot1)
 	slot0.co = slot1
 
 	if slot1 then
-		slot0.actMo = Activity182Model.instance:getActMo()
-
 		slot0:refreshSpecialUnlockTips()
 		slot0:refreshUI()
 
@@ -94,8 +92,12 @@ function slot0.setData(slot0, slot1)
 end
 
 function slot0.refreshUI(slot0)
+	slot0.actMo = Activity182Model.instance:getActMo()
+
 	slot0:refreshLock()
 	slot0:refreshSelect()
+	slot0:refreshFinish()
+	slot0:refreshBtnSate()
 
 	if slot0.unlock and slot0.isSelect then
 		slot0.anim:Play("challenge", 0, 0)
@@ -115,7 +117,6 @@ end
 
 function slot0.refreshLock(slot0)
 	slot0.unlock = slot0.actMo:isEpisodeUnlock(slot0.co.id)
-	slot0.isPass = slot0.actMo:isEpisodePass(slot0.co.id)
 
 	gohelper.setActive(slot0._goLock, not slot0.unlock)
 	gohelper.setActive(slot0._goUnlock, slot0.unlock)
@@ -129,6 +130,7 @@ function slot0.refreshLock(slot0)
 		if AutoChessHelper.getPlayerPrefs(uv0.UnlockPrefsKey .. slot0.co.id, 0) == 0 then
 			gohelper.setActive(slot0._goLock, true)
 			slot0.anim:Play("unlock", 0, 0)
+			AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_unlock)
 			AutoChessHelper.setPlayerPrefs(slot1, 1)
 		end
 	else
@@ -136,11 +138,18 @@ function slot0.refreshLock(slot0)
 
 		UISpriteSetMgr.instance:setAutoChessSprite(slot0._imageNameL, slot0.co.image)
 	end
+end
 
-	if slot0.isPass and AutoChessHelper.getPlayerPrefs(uv0.FinishPrefsKey .. slot0.co.id, 0) == 0 then
-		slot0.anim:Play("finish", 0, 0)
+function slot0.refreshFinish(slot0)
+	slot0.isPass = slot0.actMo:isEpisodePass(slot0.co.id)
+
+	if slot0.isPass then
 		gohelper.setActive(slot0._goHasGet, true)
-		AutoChessHelper.setPlayerPrefs(slot1, 1)
+
+		if AutoChessHelper.getPlayerPrefs(uv0.FinishPrefsKey .. slot0.co.id, 0) == 0 then
+			slot0.anim:Play("finish", 0, 0)
+			AutoChessHelper.setPlayerPrefs(slot1, 1)
+		end
 	end
 end
 
@@ -159,6 +168,10 @@ function slot0.refreshSpecialUnlockTips(slot0)
 		gohelper.setActive(slot0._goTipsBg, false)
 		gohelper.setActive(slot0._goSpecialDesc, false)
 	end
+end
+
+function slot0.refreshBtnSate(slot0)
+	gohelper.setActive(slot0._btnGiveUp, GuideModel.instance:isGuideFinish(25406))
 end
 
 function slot0.openReward(slot0)

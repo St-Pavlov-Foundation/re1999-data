@@ -156,6 +156,7 @@ slot0.ActEffectWorkCls = {
 	[FightEnum.EffectType.REDORBLUECOUNTCHANGE] = FightWorkRedOrBlueCountChange,
 	[FightEnum.EffectType.REDORBLUECOUNTEXSKILL] = FightWorkRedOrBlueCountExSkill,
 	[FightEnum.EffectType.TOCARDAREAREDORBLUE] = FightWorkToCardAreaRedOrBlue,
+	[FightEnum.EffectType.REDORBLUECHANGETRIGGER] = FightWorkRedOrBlueChangeTrigger,
 	[FightEnum.EffectType.SAVEFIGHTRECORDUPDATE] = FightWorkSaveFightRecordUpdate,
 	[FightEnum.EffectType.ROUNDOFFSET] = FightWorkRoundOffset
 }

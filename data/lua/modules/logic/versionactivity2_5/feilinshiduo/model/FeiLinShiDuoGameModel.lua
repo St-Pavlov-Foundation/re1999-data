@@ -173,7 +173,7 @@ function slot0.checkItemTouchElemenet(slot0, slot1, slot2, slot3, slot4, slot5, 
 				slot15 = true
 			end
 
-			if slot14.type == FeiLinShiDuoEnum.ObjectType.Stairs and slot14.pos[1] <= slot1 and slot1 <= slot14.pos[1] + slot14.width and slot14.pos[2] < slot2 and slot2 < slot14.pos[2] + slot14.height - FeiLinShiDuoEnum.HalfSlotWidth / 2 then
+			if slot14.type == FeiLinShiDuoEnum.ObjectType.Stairs and Mathf.Abs(slot3.pos[1] + slot3.width / 2 - (slot14.pos[1] - slot14.width / 2)) < slot3.width / 2 + slot14.width / 2 and slot14.pos[2] < slot2 and slot2 <= slot14.pos[2] + slot14.height - FeiLinShiDuoEnum.HalfSlotWidth / 2 then
 				slot15 = false
 			end
 

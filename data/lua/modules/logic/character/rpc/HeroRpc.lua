@@ -96,6 +96,8 @@ function slot0.onReceiveHeroSkinGainPush(slot0, slot1, slot2)
 
 	if slot2.getApproach == MaterialEnum.GetApproach.Task or slot2.getApproach == MaterialEnum.GetApproach.TaskAct then
 		TaskController.instance:getRewardByLine(slot2.getApproach, ViewName.CharacterSkinGainView, slot3)
+	elseif slot2.getApproach == MaterialEnum.GetApproach.AutoChessRankReward then
+		AutoChessController.instance:addPopupView(ViewName.CharacterSkinGainView, slot3)
 	elseif slot2.getApproach ~= MaterialEnum.GetApproach.NoviceStageReward then
 		PopupController.instance:addPopupView(PopupEnum.PriorityType.GainSkinView, ViewName.CharacterSkinGainView, slot3)
 	else

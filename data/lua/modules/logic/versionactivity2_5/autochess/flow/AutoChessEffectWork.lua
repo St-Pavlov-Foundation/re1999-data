@@ -8,7 +8,7 @@ function slot0.ctor(slot0, slot1)
 	slot0.chessMo = AutoChessModel.instance:getChessMo()
 
 	if slot0.effect.effectType == AutoChessEnum.EffectType.NextFightStep then
-		logError("NextFightStep数据不该进来")
+		logError("异常:NextFightStep类型的数据不该出现在这里")
 	end
 end
 

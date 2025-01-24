@@ -2,10 +2,6 @@ module("modules.logic.versionactivity2_5.autochess.view.comp.AutoChessEffectComp
 
 slot0 = class("AutoChessEffectComp", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0.uid = slot1
-end
-
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
 	slot0.goEffPointU = gohelper.findChild(slot1, "eff_up")
@@ -15,6 +11,10 @@ end
 
 function slot0.playEffect(slot0, slot1)
 	if lua_auto_chess_effect.configDict[slot1] then
+		if slot2.soundId ~= 0 then
+			AudioMgr.instance:trigger(slot2.soundId)
+		end
+
 		if not string.nilorempty(slot2.offset) then
 			slot3 = AutoChessEnum.EffectPos[slot2.position] - string.splitToVector2(slot2.offset, ",")
 		end
@@ -71,7 +71,7 @@ function slot0.moveEffect(slot0, slot1, slot2, slot3)
 	if slot4 then
 		ZProj.TweenHelper.DOAnchorPos(slot4.transform, slot2.x, slot2.y, slot3, nil, , , EaseType.Linear)
 	else
-		logError("未加载特效" .. slot1)
+		logError(string.format("异常:未加载特效%s", slot1))
 	end
 end
 

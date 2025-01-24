@@ -30,6 +30,8 @@ function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onOpen(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Rewards)
+
 	slot0.config = lua_auto_chess_episode.configDict[AutoChessModel.instance.episodeId]
 
 	if GameUtil.splitString2(slot0.config.firstBounds, true) then
@@ -51,6 +53,7 @@ end
 
 function slot0.onClose(slot0)
 	AutoChessController.instance:onSettleViewClose()
+	AutoChessController.instance:popupRewardView()
 end
 
 function slot0.onDestroyView(slot0)

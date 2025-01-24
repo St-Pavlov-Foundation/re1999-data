@@ -63,6 +63,19 @@ end
 
 function slot0._handleChessMove(slot0)
 	if slot0.mgr:getEntity(slot0.effect.targetId) then
+		if slot0.context == AutoChessEnum.ContextType.EndBuy or slot0.context == AutoChessEnum.ContextType.Fight then
+			fightData = slot0.chessMo.lastSvrFight
+		else
+			fightData = slot0.chessMo.svrFight
+		end
+
+		slot3 = slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.effectNum) + 1, fightData)
+
+		if slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.fromId) + 1, fightData) and slot3 then
+			slot3.chess = slot2.chess
+			slot2.chess = AutoChessHelper.buildEmptyChess()
+		end
+
 		slot1:move(slot0.effect.effectNum)
 	end
 
@@ -70,6 +83,8 @@ function slot0._handleChessMove(slot0)
 end
 
 function slot0._handleChessDie(slot0)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_death)
+
 	slot1, slot2 = nil
 
 	if slot0.context == AutoChessEnum.ContextType.EndBuy or slot0.context == AutoChessEnum.ContextType.Fight then
@@ -80,26 +95,17 @@ function slot0._handleChessDie(slot0)
 		slot2 = false
 	end
 
-	slot3 = AutoChessEnum.ChessAniTime.Die
-	slot5 = nil
-
 	if slot0.mgr:getEntity(slot0.effect.targetId) then
 		if slot4.go.activeInHierarchy then
-			slot6 = 0
-
 			if slot4:die(slot2) then
-				slot6 = lua_auto_chess_effect.configDict[slot5].duration
+				slot3 = math.max(AutoChessEnum.ChessAniTime.Die, lua_auto_chess_effect.configDict[slot5].duration)
 			end
-
-			slot3 = math.max(slot3, slot6)
 		else
 			slot3 = 0
 		end
 	end
 
-	slot6 = slot0.chessMo:getChessPosition(tonumber(slot0.effect.fromId), tonumber(slot0.effect.effectNum) + 1, slot1)
-	slot6.chess.uid = 0
-	slot6.chess.id = 0
+	slot0.chessMo:getChessPosition(tonumber(slot0.effect.fromId), tonumber(slot0.effect.effectNum) + 1, slot1).chess = AutoChessHelper.buildEmptyChess()
 
 	TaskDispatcher.runDelay(slot0.finishWork, slot0, slot3)
 end
@@ -129,10 +135,7 @@ function slot0._handleDelBuff(slot0)
 end
 
 function slot0._handleCoinChange(slot0)
-	if slot0.context == AutoChessEnum.ContextType.Immediately then
-		slot0.chessMo:updateSvrMallCoin(slot0.effect.effectNum)
-	end
-
+	slot0.chessMo:updateSvrMallCoin(slot0.effect.effectNum)
 	slot0:finishWork()
 end
 
@@ -145,8 +148,10 @@ function slot0._handleExpChange(slot0)
 end
 
 function slot0._handleStarChange(slot0)
+	slot0.chessMo:getChessPosition1(slot0.effect.chess.uid).chess = slot0.effect.chess
+
 	if slot0.mgr:getEntity(slot0.effect.chess.uid) then
-		TaskDispatcher.runDelay(slot0.finishWork, slot0, slot1:updateStar(slot0.effect.chess))
+		TaskDispatcher.runDelay(slot0.finishWork, slot0, slot2:updateStar(slot0.effect.chess))
 	else
 		slot0:finishWork()
 	end
@@ -169,7 +174,7 @@ function slot0._handleSummon(slot0)
 		slot0.chessMo:getChessPosition(tonumber(slot0.effect.targetId), tonumber(slot0.effect.effectNum) + 1).chess = slot0.effect.chess
 	end
 
-	slot0:finishWork()
+	TaskDispatcher.runDelay(slot0.finishWork, slot0, 0.2)
 end
 
 function slot0._handlePlayAttack(slot0)
@@ -209,13 +214,11 @@ function slot0._handleLeaderSkillUpdate(slot0)
 end
 
 function slot0._handleLeaderChange(slot0)
-	slot1 = slot0.effect.master
-	slot0.chessMo.svrFight.mySideMaster = slot1
-
-	if slot0.mgr:getLeaderEntity(slot1.uid) then
-		slot2:setData(slot1)
+	if slot0.mgr:getLeaderEntity(slot0.chessMo.svrFight.mySideMaster.uid) then
+		slot1:setData(slot0.effect.master)
 	end
 
+	slot0.chessMo.svrFight:updateMaster(slot0.effect.master)
 	slot0:finishWork()
 end
 

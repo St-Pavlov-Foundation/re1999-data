@@ -101,4 +101,10 @@ function slot0.jumpTo12513(slot0, slot1)
 	return JumpEnum.JumpResult.Success
 end
 
+function slot0.jumpTo12520(slot0, slot1)
+	Activity187Controller.instance:openAct187View()
+
+	return JumpEnum.JumpResult.Success
+end
+
 return slot0

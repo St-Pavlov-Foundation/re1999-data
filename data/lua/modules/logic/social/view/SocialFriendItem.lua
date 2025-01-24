@@ -108,16 +108,14 @@ end
 function slot0._onLoadFinish(slot0)
 	slot0._goskinEffect = gohelper.clone(slot0._loader:getAssetItem(slot0._skinPath):GetResource(slot0._skinPath), slot0._goskinbg)
 	slot0.lastskinId = slot0._mo.bg
-
-	slot0:setBgState(slot0._goskinEffect)
 end
 
 function slot0.setBgState(slot0, slot1)
 	if not slot0._isplaycard then
-		slot5 = slot0._mo.userId == SocialModel.instance:getSelectFriend()
+		slot4 = slot0:_isSelectFriend()
 
-		gohelper.setActive(gohelper.findChild(slot1, "offline"), not slot5)
-		gohelper.setActive(gohelper.findChild(slot1, "online"), slot5)
+		gohelper.setActive(gohelper.findChild(slot1, "offline"), not slot4)
+		gohelper.setActive(gohelper.findChild(slot1, "online"), slot4)
 	else
 		gohelper.setActive(slot3, false)
 		gohelper.setActive(slot2, true)
@@ -177,6 +175,7 @@ function slot0._onFriendSelect(slot0)
 	gohelper.setActive(slot0._goarrow, slot2)
 	slot0._playericon:isSelectInFriend(slot0:_isSelectFriend())
 	slot0:updateName()
+	slot0:setBgState(slot0._goskinEffect)
 end
 
 function slot0._isSelectFriend(slot0)

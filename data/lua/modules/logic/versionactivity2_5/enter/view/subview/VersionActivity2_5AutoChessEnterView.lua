@@ -26,13 +26,11 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btnEnterOnClick(slot0)
-	if not slot0.actMo then
+	if not Activity182Model.instance:getActMo() then
 		return
 	end
 
-	AutoChessController.instance:openMainView({
-		actId = slot0.actId
-	})
+	AutoChessController.instance:openMainView()
 end
 
 function slot0._btnAchievementOnClick(slot0)
@@ -46,13 +44,14 @@ function slot0._editableInitView(slot0)
 end
 
 function slot0.onOpen(slot0)
+	slot0:addEventCb(Activity182Controller.instance, Activity182Event.UpdateInfo, slot0.refreshUI, slot0)
 	slot0.animComp:playOpenAnim()
 
 	slot0._txtDesc.text = slot0.config.actDesc
 
 	slot0:_showLeftTime()
 	TaskDispatcher.runRepeat(slot0._showLeftTime, slot0, 1)
-	Activity182Rpc.instance:sendGetAct182InfoRequest(slot0.actId, slot0.refreshUI, slot0)
+	Activity182Rpc.instance:sendGetAct182InfoRequest(slot0.actId)
 end
 
 function slot0.onDestroyView(slot0)
@@ -60,17 +59,12 @@ function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0._showLeftTime, slot0)
 end
 
-function slot0.refreshUI(slot0, slot1, slot2)
-	if slot2 ~= 0 then
-		return
-	end
+function slot0.refreshUI(slot0)
+	slot2 = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.DoubleScoreRank].value)
+	slot4 = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.DoubleScoreCnt].value)
 
-	slot0.actMo = Activity182Model.instance:getActMo()
-	slot3 = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.DoubleScoreRank].value)
-	slot5 = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.DoubleScoreCnt].value)
-
-	if slot0.actMo.rank <= slot3 then
-		slot0._txtTip.text = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("autochess_mainview_tips1"), lua_auto_chess_rank.configDict[slot0.actId][slot3].name, slot5, string.format("（%d/%d）", slot0.actMo.doubleScoreTimes, slot5))
+	if Activity182Model.instance:getActMo().rank <= slot2 then
+		slot0._txtTip.text = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("autochess_mainview_tips1"), lua_auto_chess_rank.configDict[slot0.actId][slot2].name, slot4, string.format("（%d/%d）", slot1.doubleScoreTimes, slot4))
 
 		gohelper.setActive(slot0._goTip, true)
 	else

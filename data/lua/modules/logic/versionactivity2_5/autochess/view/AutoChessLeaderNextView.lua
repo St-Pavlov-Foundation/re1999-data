@@ -31,8 +31,6 @@ function slot0.onOpen(slot0)
 	if slot0.viewParam and slot0.viewParam.leaderId then
 		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.LeaderItemPath, slot0._goLeaderRoot), AutoChessLeaderItem):setData(slot0.viewParam.leaderId)
 		TaskDispatcher.runDelay(slot0.closeThis, slot0, 2)
-	else
-		logError("please open with leaderId")
 	end
 end
 

@@ -77,7 +77,7 @@ function slot0._btnPVPOnClick(slot0)
 	slot1 = AutoChessEnum.PvpEpisodeId
 
 	if not slot0.actMo:isEpisodeUnlock(slot1) then
-		GameFacade.showToast(ToastEnum.AutoChessPvpLock, lua_auto_chess_episode.configDict[slot1].name)
+		GameFacade.showToast(ToastEnum.AutoChessPvpLock, lua_auto_chess_episode.configDict[lua_auto_chess_episode.configDict[slot1].preEpisode].name)
 
 		return
 	end
@@ -94,9 +94,11 @@ function slot0._btnTaskOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	RedDotController.instance:addRedDot(gohelper.findChild(slot0._btnTask.gameObject, "go_reddot"), RedDotEnum.DotNode.V2a5_AutoChess)
+
 	slot0._uiSpine = GuiSpine.Create(slot0._goSpine, true)
 
-	slot0._uiSpine:setResPath(uv0, slot0._onSpineLoaded, slot0)
+	slot0._uiSpine:setResPath(uv0, slot0._onSpineLoaded, slot0, true)
 end
 
 function slot0._onSpineLoaded(slot0)
@@ -127,26 +129,27 @@ function slot0.onSettlPush(slot0)
 		slot2 = slot1.moduleId
 
 		if slot2 == AutoChessEnum.ModuleId.PVP then
-			if Activity182Model.instance:getActMo().gameMoDic[slot2].episodeId ~= 0 then
-				ViewMgr.instance:openView(ViewName.AutoChessPvpSettleView)
-			else
-				slot0.badgeItem:playProgressAnim(slot1.rank, slot1.score)
-			end
-		end
+			if Activity182Model.instance:getActMo().gameMoDic[slot2].episodeId == 0 then
+				slot0.badgeItem:playProgressAnim(slot1.rank, slot1.score, slot1.changeScore)
 
-		AutoChessModel.instance.resultData = nil
+				AutoChessModel.instance.settleData = nil
+			else
+				ViewMgr.instance:openView(ViewName.AutoChessPvpSettleView)
+			end
+		else
+			AutoChessModel.instance.settleData = nil
+		end
 	end
 end
 
 function slot0.onOpen(slot0)
-	slot0.actId = slot0.viewParam.actId
+	slot0.actId = Activity182Model.instance:getCurActId()
 
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.onExitGame, slot0)
 	slot0:addEventCb(Activity182Controller.instance, Activity182Event.UpdateInfo, slot0.refreshUI, slot0)
 	slot0:addEventCb(Activity182Controller.instance, Activity182Event.RandomMasterReply, slot0.onRandomMasterReply, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.SettlePush, slot0.onSettlPush, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, slot0.checkStopAudio, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0.checkStartLoopSpine, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0.checkStopAudio, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.checkStartLoopSpine, slot0)
 	slot0:refreshUI()
 end
 
@@ -162,6 +165,7 @@ end
 function slot0.refreshUI(slot0)
 	slot0.actMo = Activity182Model.instance:getActMo()
 
+	gohelper.setActive(slot0._goFinishPVE, slot0.actMo:isEpisodePass(11006))
 	ZProj.UGUIHelper.SetGrayscale(slot0._btnPVP.gameObject, not slot0.actMo:isEpisodeUnlock(AutoChessEnum.PvpEpisodeId))
 	slot0:refreshLeftTime()
 	TaskDispatcher.runRepeat(slot0.refreshLeftTime, slot0, TimeUtil.OneSecond)
@@ -170,21 +174,14 @@ function slot0.refreshUI(slot0)
 		slot0.badgeItem = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadgeContent), AutoChessBadgeItem)
 	end
 
-	slot0.badgeItem:setData(slot0.actMo.rank, slot0.actMo.score, true, true, true)
+	slot0.badgeItem:setData(slot0.actMo.rank, slot0.actMo.score, AutoChessBadgeItem.ShowType.MainView)
 	slot0:refreshBtnStatus()
-
-	if slot0.actMo.isRankUp then
-		slot0.actMo.isRankUp = nil
-
-		ViewMgr.instance:openView(ViewName.AutoChessRankUpView)
-	end
-
 	slot0:refreshDoubleRankTip()
 end
 
 function slot0.refreshBtnStatus(slot0)
 	gohelper.setActive(slot0._goRoundE, slot0.actMo.gameMoDic[AutoChessEnum.ModuleId.PVE].episodeId ~= 0)
-	gohelper.setActive(slot0._btnGiveUpE, slot1.start)
+	gohelper.setActive(slot0._btnGiveUpE, slot1.start and GuideModel.instance:isGuideFinish(25406))
 
 	if slot2 ~= 0 then
 		slot0._txtRoundE.text = string.format("%d/%d", slot1.currRound, lua_auto_chess_episode.configDict[slot2].maxRound)
@@ -215,17 +212,9 @@ function slot0.refreshDoubleRankTip(slot0)
 	end
 end
 
-function slot0.onExitGame(slot0, slot1)
-	if slot1 == ViewName.AutoChessGameView then
-		Activity182Rpc.instance:sendGetAct182InfoRequest(slot0.actId)
-	end
-end
-
-function slot0.checkStopAudio(slot0)
-	if slot0.playingId then
+function slot0.checkStopAudio(slot0, slot1)
+	if slot1 ~= slot0.viewName then
 		AudioMgr.instance:trigger(AudioEnum.UI.Stop_UI_Bus)
-
-		slot0.playingId = nil
 	end
 end
 
@@ -234,10 +223,7 @@ function slot0.checkStartLoopSpine(slot0)
 
 	if slot1[#slot1] == slot0.viewName then
 		slot0._uiSpine:play(SpineAnimState.idle1, true)
-
-		if not slot0.playingId then
-			slot0.playingId = AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_toycar_standby_loop)
-		end
+		AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_toycar_standby_loop)
 	end
 end
 

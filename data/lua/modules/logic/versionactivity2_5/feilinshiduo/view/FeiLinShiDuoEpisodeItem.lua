@@ -78,6 +78,7 @@ function slot0._btnclickOnClick(slot0)
 
 	FeiLinShiDuoModel.instance:setCurEpisodeId(slot0.episodeId)
 	FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.SelectEpisode, slot0.index, slot0.episodeId, false)
+	FeiLinShiDuoStatHelper.instance:initEpisodeStartTime(slot0.episodeId)
 end
 
 function slot0._btnGameClickOnClick(slot0)

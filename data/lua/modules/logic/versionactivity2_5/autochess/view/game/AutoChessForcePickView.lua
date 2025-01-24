@@ -49,8 +49,6 @@ end
 
 function slot0.onOpen(slot0)
 	if not slot0.viewParam then
-		logError("please open with mallIds")
-
 		return
 	end
 

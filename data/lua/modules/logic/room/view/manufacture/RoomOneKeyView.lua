@@ -37,13 +37,27 @@ function slot0._btnclickOnClick(slot0, slot1)
 		return
 	end
 
-	slot0:setAddPopActive(slot1 == RoomManufactureEnum.OneKeyType.Customize)
+	slot2 = nil
+
+	if slot0.curOneKeyType and slot1 == RoomManufactureEnum.OneKeyType.Customize then
+		slot2 = "left"
+	elseif slot0.curOneKeyType == RoomManufactureEnum.OneKeyType.Customize then
+		slot2 = "back"
+	end
+
+	if slot0._viewAnimator and not string.nilorempty(slot2) then
+		slot0._viewAnimator.enabled = true
+
+		slot0._viewAnimator:Play(slot2, 0, 0)
+	end
+
+	slot0:setAddPopActive(slot3)
 
 	slot0.curOneKeyType = slot1
 
 	if slot0.optionItemDict then
-		for slot5, slot6 in pairs(slot0.optionItemDict) do
-			gohelper.setActive(slot6.goselected, slot5 == slot1)
+		for slot7, slot8 in pairs(slot0.optionItemDict) do
+			gohelper.setActive(slot8.goselected, slot7 == slot1)
 		end
 	end
 end
@@ -53,6 +67,9 @@ function slot0.onClickModalMask(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	slot4 = UnityEngine.Animator
+	slot0._viewAnimator = slot0.viewGO:GetComponent(typeof(slot4))
+
 	slot0:clearOptionItem()
 
 	for slot4, slot5 in pairs(RoomManufactureEnum.OneKeyType) do

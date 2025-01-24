@@ -21,6 +21,7 @@ function slot0.init(slot0, slot1)
 	slot0.deltaMoveX = 0
 	slot0.tempClickDeltaMoveX = 0
 	slot0.curCheckPosIndex = 1
+	slot0.canShowOption = false
 end
 
 function slot0.setScene(slot0, slot1, slot2)
@@ -57,6 +58,7 @@ function slot0.resetData(slot0)
 	slot0.curStandWallItem = nil
 	slot0.isInTarget = false
 	slot0.tempClickDeltaMoveX = 0
+	slot0.canShowOption = false
 end
 
 function slot0.setUIClickRightDown(slot0)
@@ -91,6 +93,7 @@ function slot0.playerMove(slot0)
 		return false
 	end
 
+	slot1 = ViewMgr.instance:isOpen(ViewName.GuideView)
 	slot0.deltaMoveX = 0
 
 	if slot0.isGround and (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftArrow) or UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) or slot0.clickLeftDown) then
@@ -99,6 +102,8 @@ function slot0.playerMove(slot0)
 		FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.OnClickGuideRightMoveBtn)
 
 		slot0.deltaMoveX = 1
+	elseif slot0.isGround and UnityEngine.Input.GetKey(UnityEngine.KeyCode.Space) and slot0.canShowOption and not slot1 then
+		slot0:startClimbStairs()
 	end
 
 	if slot0.tempClickDeltaMoveX ~= slot0.deltaMoveX then
@@ -116,7 +121,7 @@ function slot0.playerMove(slot0)
 		end
 	end
 
-	if ViewMgr.instance:isOpen(ViewName.GuideView) then
+	if slot1 then
 		if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.FeiLinShiDuoBanOper) and slot0.deltaMoveX == -1 then
 			slot0.deltaMoveX = 0
 		elseif not slot2 then
@@ -128,7 +133,7 @@ function slot0.playerMove(slot0)
 		slot0.deltaMoveX = 0
 	end
 
-	if slot0.deltaMoveX ~= 0 and slot0:checkPlayerInNoneColorElement(slot0.playerTrans.localPosition.x, slot0.playerTrans.localPosition.y) then
+	if slot0.deltaMoveX ~= 0 and slot0:checkPlayerInNoneColorElement(slot0.playerTrans.localPosition.x, slot0.playerTrans.localPosition.y) and not slot0.isDying then
 		GameFacade.showToast(ToastEnum.Act185TrapTip)
 
 		return false
@@ -278,6 +283,7 @@ function slot0.playerTouchElement(slot0)
 					slot0.isInTarget = true
 
 					slot0.playerAnimComp:playIdleAnim()
+					FeiLinShiDuoStatHelper.instance:sendMapFinish(slot0.playerGO)
 				end
 			end
 		end
@@ -385,11 +391,16 @@ function slot0.checkClimbStairs(slot0)
 
 		slot0.gameUIView:showOptionState(slot0.curStairsItem ~= nil)
 
+		slot0.canShowOption = slot0.curStairsItem ~= nil
+
 		if slot0.curStairsItem then
 			slot0.gameUIView:showOptionCanDoState(slot0:checkStairsCanClimb())
 		end
 	elseif slot0.isClimbing and slot0.startClimbing then
 		slot0.gameUIView:showOptionState(false)
+
+		slot0.canShowOption = false
+
 		slot0.playerAnimComp:playStartClimbAnim()
 
 		if slot0.isTopStairs then
@@ -460,6 +471,8 @@ function slot0.playerReborn(slot0)
 	end
 
 	UIBlockHelper.instance:startBlock("FeiLinShiDuoPlayerComp_playerReborn", 0.4, ViewName.FeiLinShiDuoGameView)
+	slot0.gameUIView:_onLeftClickUp()
+	slot0.gameUIView:_onRightClickUp()
 end
 
 function slot0.checkForwardCanMove(slot0, slot1, slot2, slot3, slot4, slot5)

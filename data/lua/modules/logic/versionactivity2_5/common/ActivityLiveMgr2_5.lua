@@ -38,7 +38,11 @@ function slot0.getActId2ViewList(slot0)
 			ViewName.TowerMainEntryView
 		},
 		[VersionActivity2_5Enum.ActivityId.Act186] = {
-			ViewName.Activity186View
+			ViewName.Activity186View,
+			ViewName.Activity186TaskView
+		},
+		[VersionActivity2_5Enum.ActivityId.Act186Sign] = {
+			ViewName.Activity186SignView
 		}
 	}
 end

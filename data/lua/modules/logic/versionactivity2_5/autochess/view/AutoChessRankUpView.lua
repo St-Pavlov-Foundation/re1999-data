@@ -29,26 +29,34 @@ function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onOpen(slot0)
-	slot1 = Activity182Model.instance:getActMo()
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Rewards)
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadgeRoot), AutoChessBadgeItem):setData(slot1.rank, slot1.score, true)
+	slot0.actMo = Activity182Model.instance:getActMo()
 
-	if lua_auto_chess_rank.configDict[slot1.activityId][slot1.rank] then
-		for slot9, slot10 in ipairs(DungeonConfig.instance:getRewardItems(slot4.reward)) do
-			slot12 = IconMgr.instance:getCommonItemIcon(gohelper.cloneInPlace(slot0._goRewardItem, slot9))
+	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(AutoChessEnum.BadgeItemPath, slot0._goBadgeRoot), AutoChessBadgeItem):setData(slot0.actMo.rank, slot0.actMo.score, AutoChessBadgeItem.ShowType.RankUpView)
 
-			gohelper.setAsFirstSibling(slot12.go)
-			slot12:setMOValue(slot10[1], slot10[2], slot10[3], nil, true)
-			slot12:setCountFontSize(32)
+	if slot0.actMo.newRankUp then
+		if lua_auto_chess_rank.configDict[slot0.actMo.activityId][slot0.actMo.rank] then
+			for slot8, slot9 in ipairs(DungeonConfig.instance:getRewardItems(slot3.reward)) do
+				slot11 = IconMgr.instance:getCommonItemIcon(gohelper.cloneInPlace(slot0._goRewardItem, slot8))
+
+				gohelper.setAsFirstSibling(slot11.go)
+				slot11:setMOValue(slot9[1], slot9[2], slot9[3], nil, true)
+				slot11:setCountFontSize(32)
+			end
+
+			gohelper.setActive(slot0.goReward, #slot4 ~= 0)
 		end
-
-		gohelper.setActive(slot0.goReward, #slot5 ~= 0)
+	else
+		gohelper.setActive(slot0.goReward, false)
 	end
 
 	gohelper.setActive(slot0._goRewardItem, false)
 end
 
 function slot0.onClose(slot0)
+	slot0.actMo:clearRankUpMark()
+	AutoChessController.instance:popupRewardView()
 end
 
 function slot0.onDestroyView(slot0)

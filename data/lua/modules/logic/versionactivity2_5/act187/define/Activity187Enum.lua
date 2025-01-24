@@ -10,7 +10,9 @@ slot0.PaintStatus = {
 	Painting = 2
 }
 slot0.BlockKey = {
-	GetAccrueReward = "v2a5_lantern_festival_get_accrue_reward_block"
+	GetPaintingReward = "v2a5_lantern_festival_get_painting_reward_block",
+	GetAccrueReward = "v2a5_lantern_festival_get_accrue_reward_block",
+	SwitchView = "v2a5_lantern_festival_switch_view"
 }
 slot0.EmptyLantern = "v2a5_lanternfestival_lantern1"
 

@@ -3025,7 +3025,7 @@
     "prefabPath": "version_2_5/v2a5_versionsummonqunianghalfview",
     "customClz": "SummonCharacterProbUpVer253",
     "cost1": "1#140001#1",
-    "cost10": "1#140002#1|1#140001#10",
+    "cost10": "1#140018#1|1#140002#1|1#140001#10",
     "discountTime10": 0,
     "discountCost10": "",
     "initWeight": "5#150|4#850|3#4000|2#4500|1#500",

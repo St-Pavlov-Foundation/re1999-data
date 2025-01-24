@@ -18561,13 +18561,6 @@ slot0.AutoChessGameView = {
 	mainRes = "ui/viewres/versionactivity_2_5/autochess/game/autochessgameview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
-	tabRes = {
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		}
-	},
 	otherRes = {
 		AutoChessEnum.ChessEntityPath,
 		AutoChessEnum.ChessLeaderEntityPath
@@ -18589,7 +18582,14 @@ slot0.AutoChessMallView = {
 	container = "AutoChessMallViewContainer",
 	mainRes = "ui/viewres/versionactivity_2_5/autochess/game/autochessmallview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
 }
 slot0.AutoChessMallInfoView = {
 	destroy = 0,

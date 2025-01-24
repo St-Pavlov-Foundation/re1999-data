@@ -19,8 +19,8 @@
   },
   {
     "activityId": 12520,
-    "bonus": "1#491004",
-    "lantern": "v2a5_lanternfestival_lantern2",
+    "bonus": "1#491007",
+    "lantern": "v2a5_lanternfestival_lantern3",
     "lanternRibbon": "2",
     "lanternImg": "v2a5_lanternfestival_pic4",
     "lanternImgBg": "v2a5_lanternfestival_picshadow4",
@@ -28,8 +28,8 @@
   },
   {
     "activityId": 12520,
-    "bonus": "1#491007",
-    "lantern": "v2a5_lanternfestival_lantern3",
+    "bonus": "1#110504",
+    "lantern": "v2a5_lanternfestival_lantern2",
     "lanternRibbon": "3",
     "lanternImg": "v2a5_lanternfestival_pic5",
     "lanternImgBg": "v2a5_lanternfestival_picshadow5",
@@ -37,7 +37,7 @@
   },
   {
     "activityId": 12520,
-    "bonus": "1#110504",
+    "bonus": "1#491004",
     "lantern": "v2a5_lanternfestival_lantern1",
     "lanternRibbon": "1",
     "lanternImg": "v2a5_lanternfestival_pic2",

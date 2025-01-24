@@ -13,19 +13,21 @@ function slot0.onStart(slot0, slot1)
 		return
 	end
 
+	slot4 = nil
 	slot5 = 0
-
-	if not string.nilorempty(lua_auto_chess_skill.configDict[tonumber(slot0.step.reasonId)].skillaction) then
-		slot5 = slot3:skillAnim(slot4.skillaction)
-	end
-
 	slot6 = 0
 
-	if slot4.useeffect ~= 0 then
-		slot7 = lua_auto_chess_effect.configDict[slot4.useeffect]
-		slot6 = slot7.duration
+	if (not slot3.warZone or lua_auto_chess_skill.configDict[tonumber(slot0.step.reasonId)]) and lua_auto_chess_master_skill.configDict[tonumber(slot0.step.reasonId)] then
+		if not string.nilorempty(slot4.skillaction) then
+			slot5 = slot3:skillAnim(slot4.skillaction)
+		end
 
-		slot3.effectComp:playEffect(slot7.id)
+		if slot4.useeffect ~= 0 then
+			slot7 = lua_auto_chess_effect.configDict[slot4.useeffect]
+			slot6 = slot7.duration
+
+			slot3.effectComp:playEffect(slot7.id)
+		end
 	end
 
 	if math.max(slot5, slot6) == 0 then

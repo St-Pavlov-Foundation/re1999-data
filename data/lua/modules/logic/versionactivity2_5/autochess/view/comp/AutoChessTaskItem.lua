@@ -54,7 +54,7 @@ function slot0._delayFinish(slot0)
 end
 
 function slot0._delayFinishAll(slot0)
-	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.Activity178)
+	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.AutoChess)
 end
 
 function slot0._editableInitView(slot0)

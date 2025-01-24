@@ -9,6 +9,9 @@ function slot0.onInitView(slot0)
 	slot0.layerChess = gohelper.findChild(slot0.viewGO, "Scene/ChessLayer")
 	slot0.goBoarder = gohelper.findChild(slot0.viewGO, "Scene/BoardLayer/Boader")
 	slot0.goChess = gohelper.findChild(slot0.viewGO, "Scene/ChessLayer/Chess")
+	slot0.goGlow1 = gohelper.findChild(slot0.viewGO, "Scene/BgLayerGlow/go_Glow1")
+	slot0.goGlow2 = gohelper.findChild(slot0.viewGO, "Scene/BgLayerGlow/go_Glow2")
+	slot0.goGlow3 = gohelper.findChild(slot0.viewGO, "Scene/BgLayerGlow/go_Glow3")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -35,7 +38,6 @@ function slot0._editableInitView(slot0)
 end
 
 function slot0.onOpen(slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, slot0.onOpenViewFinish, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0.onCloseViewFinish, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.PlayStepList, slot0.startImmediatelyFlow, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.EnterFightReply, slot0.onEnterFightReply, slot0)
@@ -43,6 +45,8 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.SkipFight, slot0.onSkipFight, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.NextRound, slot0.onNextRound, slot0)
 	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.CheckEnemyTeam, slot0.onCheckEnemy, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItem, slot0.activeGlow, slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItemEnd, slot0.inactiveGlow, slot0)
 	AutoChessEntityMgr.instance:init(slot0)
 	AutoChessEffectMgr.instance:init()
 	slot0:changeScene(AutoChessEnum.ViewType.Player)
@@ -50,9 +54,19 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
+	if slot0.fightFlow then
+		slot0.fightFlow:stop()
+		slot0.fightFlow:unregisterDoneListener(slot0.fightFlowDone, slot0)
+		slot0.fightFlow:destroy()
+
+		slot0.fightFlow = nil
+	end
+
+	AutoChessHelper.lockScreen("AutoChessGameScene", false)
 end
 
 function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0.delayEnterFightScene, slot0)
 	TaskDispatcher.cancelTask(slot0.delayAddEnemy, slot0)
 	TaskDispatcher.cancelTask(slot0.startFightFlow, slot0)
 	CommonDragHelper.instance:unregisterDragObj(slot0.gotouch)
@@ -73,7 +87,6 @@ function slot0.changeScene(slot0, slot1, slot2)
 	end
 
 	AutoChessEntityMgr.instance:cacheAllEntity()
-	slot0:initTile()
 
 	if not slot2 then
 		slot0:initEntity()
@@ -147,20 +160,17 @@ function slot0.createEntity(slot0, slot1, slot2, slot3)
 	return slot5
 end
 
-function slot0.onOpenViewFinish(slot0, slot1)
-	if slot1 == ViewName.AutoChessStartFightView then
-		slot0:changeScene(AutoChessEnum.ViewType.All, true)
-	end
-end
-
 function slot0.onCloseViewFinish(slot0, slot1)
 	if slot1 == ViewName.AutoChessStartFightView then
-		AutoChessHelper.lockScreen("AutoChessGameStartFight", true)
+		AutoChessHelper.lockScreen("AutoChessGameScene", true)
 
 		slot2 = slot0.chessMo.lastSvrFight
 
-		AutoChessEntityMgr.instance:addLeaderEntity(slot2.mySideMaster)
-		AutoChessEntityMgr.instance:addLeaderEntity(slot2.enemyMaster)
+		AutoChessEntityMgr.instance:addLeaderEntity(slot2.mySideMaster, true)
+
+		slot6 = true
+
+		AutoChessEntityMgr.instance:addLeaderEntity(slot2.enemyMaster, slot6)
 
 		for slot6, slot7 in ipairs(slot2.warZones) do
 			for slot12 = 1, #slot7.positions do
@@ -215,6 +225,21 @@ function slot0.onCheckEnemy(slot0, slot1)
 	end
 end
 
+function slot0.activeGlow(slot0, slot1)
+	if lua_auto_chess.configDict[slot1][1].type == AutoChessStrEnum.ChessType.Attack then
+		gohelper.setActive(slot0.goGlow1, true)
+		gohelper.setActive(slot0.goGlow3, true)
+	else
+		gohelper.setActive(slot0.goGlow2, true)
+	end
+end
+
+function slot0.inactiveGlow(slot0)
+	gohelper.setActive(slot0.goGlow1, false)
+	gohelper.setActive(slot0.goGlow2, false)
+	gohelper.setActive(slot0.goGlow3, false)
+end
+
 function slot0.onClickScene(slot0)
 	if slot0.isDraging then
 		return
@@ -237,7 +262,7 @@ function slot0.onClickScene(slot0)
 		return
 	end
 
-	if AutoChessGameModel.instance:getNearestLeader(slot2) and lua_auto_chess_master.configDict[slot5.id].isSelf then
+	if AutoChessGameModel.instance:getNearestLeader(slot2) and lua_auto_chess_master.configDict[slot5.id].skillId ~= 0 then
 		ViewMgr.instance:openView(ViewName.AutoChessLeaderShowView, {
 			leader = slot5
 		})
@@ -249,30 +274,35 @@ function slot0._beginDrag(slot0, slot1, slot2)
 	slot3 = recthelper.screenPosToAnchorPos(slot2.position, slot0._tfTouch)
 	slot4, slot5 = AutoChessGameModel.instance:getNearestTileXY(slot3.x, slot3.y)
 
-	if slot4 and tonumber(slot0.chessMo:getChessPosition(slot4, slot5).chess.uid) ~= 0 and AutoChessEntityMgr.instance:getEntity(slot7).teamType == AutoChessEnum.TeamType.Player then
-		slot0.chessAvatar = AutoChessGameModel.instance.avatar
+	if slot4 and tonumber(slot0.chessMo:getChessPosition(slot4, slot5).chess.uid) ~= 0 then
+		slot8 = slot6.chess.id
 
-		if slot0.chessAvatar then
-			slot0.selectChess = slot8
+		if AutoChessEntityMgr.instance:getEntity(slot7).teamType == AutoChessEnum.TeamType.Player then
+			slot0.chessAvatar = AutoChessGameModel.instance.avatar
 
-			slot0.selectChess:hide()
+			if slot0.chessAvatar then
+				slot0.selectChess = slot9
 
-			slot10 = slot8.meshComp
-			slot11 = gohelper.findChildUIMesh(slot0.chessAvatar)
-			slot11.material = slot10.uiMesh.material
-			slot11.mesh = slot10.uiMesh.mesh
+				slot0.selectChess:hide()
 
-			slot11:SetVerticesDirty()
-			slot11:SetMaterialDirty()
-			recthelper.setAnchor(slot0.chessAvatar.transform, slot3.x, slot3.y)
-			transformhelper.setLocalScale(slot0.chessAvatar.transform, transformhelper.getLocalScale(slot8.dirTrs), 1, 1)
+				slot11 = slot9.meshComp
+				slot12 = gohelper.findChildUIMesh(slot0.chessAvatar)
+				slot12.material = slot11.uiMesh.material
+				slot12.mesh = slot11.uiMesh.mesh
 
-			slot12 = gohelper.findChildImage(slot0.chessAvatar, "role")
-			slot12.sprite = slot10.imageRole.sprite
+				slot12:SetVerticesDirty()
+				slot12:SetMaterialDirty()
+				recthelper.setAnchor(slot0.chessAvatar.transform, slot3.x, slot3.y)
+				transformhelper.setLocalScale(slot0.chessAvatar.transform, transformhelper.getLocalScale(slot9.dirTrs), 1, 1)
 
-			slot12:SetNativeSize()
-			gohelper.setActive(slot0.chessAvatar, true)
-			AutoChessController.instance:dispatchEvent(AutoChessEvent.DragChessEntity, slot6.chess.id)
+				slot13 = gohelper.findChildImage(slot0.chessAvatar, "role")
+				slot13.sprite = slot11.imageRole.sprite
+
+				slot13:SetNativeSize()
+				gohelper.setActive(slot0.chessAvatar, true)
+				AutoChessController.instance:dispatchEvent(AutoChessEvent.DragChessEntity, slot8)
+				slot0:activeGlow(slot8)
+			end
 		end
 	end
 end
@@ -300,19 +330,25 @@ function slot0._endDrag(slot0, slot1, slot2)
 				if AutoChessController.instance:isDragDisable() then
 					slot0.selectChess:show()
 				elseif slot12 or AutoChessHelper.sameWarZoneType(slot4, slot8) then
-					AudioMgr.instance:trigger(AudioEnum.UI.play_ui_lvhu_building_click)
+					if slot11.data.id == slot0.selectChess.data.id then
+						AudioMgr.instance:trigger(AudioEnum.UI.play_ui_lvhu_building_click)
+					else
+						AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_purchase)
+					end
+
 					AutoChessRpc.instance:sendAutoChessBuildRequest(slot0.moduleId, AutoChessEnum.BuildType.Exchange, slot4, slot5, slot3, slot8, slot9 - 1, slot11.data.uid)
 				else
 					GameFacade.showToast(ToastEnum.AutoChessExchangeError)
 					slot0.selectChess:show()
 				end
 			elseif AutoChessHelper.sameWarZoneType(slot4, slot8) then
+				AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_purchase)
 				AutoChessRpc.instance:sendAutoChessBuildRequest(slot0.moduleId, AutoChessEnum.BuildType.Exchange, slot4, slot5, slot3, slot8, slot9 - 1, 0)
 			else
 				GameFacade.showToast(ToastEnum.AutoChessExchangeError)
 				slot0.selectChess:show()
 			end
-		elseif slot2.pointerEnter and slot10.name == "#go_CheckSell" and AutoChessController.instance:isEnableSale() and not AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableSale) then
+		elseif slot2.pointerEnter and slot10.name == "#go_CheckSell" and AutoChessController.instance:isEnableSale() and not AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableSale, slot0.selectChess.data.id) then
 			AutoChessRpc.instance:sendAutoChessBuildRequest(slot0.moduleId, AutoChessEnum.BuildType.Sell, slot4, slot5, slot3)
 		else
 			slot0.selectChess:show()
@@ -324,6 +360,7 @@ function slot0._endDrag(slot0, slot1, slot2)
 		slot0.selectChess = nil
 
 		AutoChessController.instance:dispatchEvent(AutoChessEvent.DragChessEntityEnd)
+		slot0:inactiveGlow()
 	end
 end
 
@@ -350,14 +387,27 @@ function slot0._moveToPos(slot0, slot1, slot2)
 end
 
 function slot0.startImmediatelyFlow(slot0, slot1)
-	slot2 = FlowSequence.New()
+	slot0.immediatelyFlow = FlowSequence.New()
 
-	slot2:addWork(AutoChessSideWork.New(slot1))
-	slot2:start(AutoChessEnum.ContextType.Immediately)
+	slot0.immediatelyFlow:addWork(AutoChessSideWork.New(slot1))
+	slot0.immediatelyFlow:registerDoneListener(slot0.immediatelyFlowDone, slot0)
+	AutoChessHelper.lockScreen("AutoChessGameScene", true)
+	slot0.immediatelyFlow:start(AutoChessEnum.ContextType.Immediately)
+end
+
+function slot0.immediatelyFlowDone(slot0)
+	if slot0.immediatelyFlow then
+		slot0.immediatelyFlow:unregisterDoneListener(slot0.immediatelyFlowDone, slot0)
+		slot0.immediatelyFlow:destroy()
+
+		slot0.immediatelyFlow = nil
+	end
+
+	AutoChessHelper.lockScreen("AutoChessGameScene", false)
 end
 
 function slot0.startFightFlow(slot0)
-	AutoChessHelper.lockScreen("AutoChessGameStartFight", false)
+	AutoChessHelper.lockScreen("AutoChessGameScene", false)
 
 	if slot0.chessMo.fightEffectList then
 		slot0.fightFlow = FlowSequence.New()
@@ -368,17 +418,19 @@ function slot0.startFightFlow(slot0)
 
 		slot0.chessMo.fightEffectList = nil
 	else
-		AutoChessController.instance:openResultView()
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.EndFight)
 	end
 end
 
 function slot0.fightFlowDone(slot0)
-	slot0.fightFlow:unregisterDoneListener(slot0.fightFlowDone, slot0)
-	slot0.fightFlow:destroy()
+	if slot0.fightFlow then
+		slot0.fightFlow:unregisterDoneListener(slot0.fightFlowDone, slot0)
+		slot0.fightFlow:destroy()
 
-	slot0.fightFlow = nil
+		slot0.fightFlow = nil
+	end
 
-	AutoChessController.instance:openResultView()
+	AutoChessController.instance:dispatchEvent(AutoChessEvent.EndFight)
 end
 
 function slot0.checkBeforeBuy(slot0)
@@ -391,6 +443,8 @@ function slot0.checkBeforeBuy(slot0)
 		slot0.beforeBuyFlow:start(AutoChessEnum.ContextType.StartBuy)
 
 		slot0.chessMo.startBuyEffectList = nil
+	else
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.StartBuyStepFinih)
 	end
 end
 
@@ -401,15 +455,17 @@ function slot0.beforeBuyFlowDone(slot0)
 	slot0.beforeBuyFlow = nil
 
 	AutoChessHelper.lockScreen("AutoChessGameScene", false)
+	AutoChessController.instance:dispatchEvent(AutoChessEvent.StartBuyStepFinih)
 end
 
 function slot0.checkAfterBuy(slot0)
+	AutoChessHelper.lockScreen("AutoChessGameScene", true)
+
 	if slot0.chessMo.endBuyEffectList then
 		slot0.afterBuyFlow = FlowSequence.New()
 
 		slot0.afterBuyFlow:addWork(AutoChessSideWork.New(slot1))
 		slot0.afterBuyFlow:registerDoneListener(slot0.afterBuyFlowDone, slot0)
-		AutoChessHelper.lockScreen("AutoChessGameScene", true)
 		slot0.afterBuyFlow:start(AutoChessEnum.ContextType.EndBuy)
 
 		slot0.chessMo.endBuyEffectList = nil
@@ -424,11 +480,15 @@ function slot0.afterBuyFlowDone(slot0)
 		slot0.afterBuyFlow:destroy()
 
 		slot0.afterBuyFlow = nil
-
-		AutoChessHelper.lockScreen("AutoChessGameScene", false)
 	end
 
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.StartFight)
+	TaskDispatcher.runDelay(slot0.delayEnterFightScene, slot0, 0.5)
+	AutoChessHelper.lockScreen("AutoChessGameScene", false)
+end
+
+function slot0.delayEnterFightScene(slot0)
+	slot0:changeScene(AutoChessEnum.ViewType.All, true)
 end
 
 return slot0

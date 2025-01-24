@@ -138,6 +138,8 @@ function slot0._onReceiveMaterialChangePush(slot0, slot1, slot2, slot3, slot4, s
 		return
 	elseif slot6 == MaterialEnum.GetApproach.LifeCircleSign then
 		LifeCircleController.instance:openLifeCircleRewardView(slot2)
+	elseif slot6 == MaterialEnum.GetApproach.AutoChessRankReward or slot6 == MaterialEnum.GetApproach.AutoChessPveReward then
+		AutoChessController.instance:addPopupView(ViewName.CommonPropView, slot2)
 	else
 		slot0:_onReceiveMaterialChangePush_default(slot1, slot2, slot3, slot4, slot5)
 	end

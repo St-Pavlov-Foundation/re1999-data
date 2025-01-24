@@ -38,8 +38,8 @@ function slot0.setPaintingViewDisplay(slot0, slot1)
 	slot0._act187View:setPaintingViewDisplay(slot1)
 end
 
-function slot0.ready2Paint(slot0, slot1)
-	slot0._act187PaintView:ready2Paint(slot1)
+function slot0.isShowPaintView(slot0)
+	return slot0._act187View.isShowPaintView
 end
 
 return slot0

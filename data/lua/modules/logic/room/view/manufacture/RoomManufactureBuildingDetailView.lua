@@ -135,7 +135,7 @@ function slot0._updateParam(slot0)
 		table.insert(slot0._attrInfoMOList, slot0:_getArrtInfoMOByType(slot5))
 	end
 
-	slot0._manufactureItemIdList = ManufactureHelper.findItemIdListByBUid(slot0._buildingUid)
+	slot0._manufactureItemIdList = ManufactureHelper.findLuckyItemIdListByBUid(slot0._buildingUid)
 end
 
 function slot0._getArrtInfoMOByType(slot0, slot1)

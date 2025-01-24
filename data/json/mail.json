@@ -3585,5 +3585,22 @@
     "jump": "SoJump#https://survey.bluepoch.com/vm/tUmvxFZ.aspx?#297790216",
     "image": "",
     "senderType": 2
+  },
+  {
+    "id": 1134,
+    "type": 1,
+    "sender": "LEee·bUPd电台",
+    "title": "“尽杯酌”结束通知",
+    "content": "   “尽杯酌”即将结束，十全调·【尽杯酌】将同步过期，请及时使用。\n    一切都将归于湖中，归于平静。离开前，别忘了那些特别的小兔子，尽管不能与你一同登程，但它们一定做好了跃入湖中的准备。\n    也但愿你不曾遗漏那些珍贵而又转瞬即逝的秘闻，倾听它们，或是期待同样特立独行的下一段。\n    更值得庆贺的是，在这段短促而美好的日子里，你已结识了新的同伴，也准备好奔赴新的旅程。\n    祝，新程愉快。",
+    "attachment": "2#3#1000",
+    "needShowToast": 1,
+    "addressee": "",
+    "copy": "",
+    "icon": "",
+    "specialTag": 0,
+    "jumpTitle": "",
+    "jump": "",
+    "image": "",
+    "senderType": 2
   }
 ]

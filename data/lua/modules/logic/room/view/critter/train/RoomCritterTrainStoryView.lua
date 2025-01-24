@@ -60,6 +60,14 @@ function slot0._btnaddOnClick(slot0)
 end
 
 function slot0._btntrainstartOnClick(slot0)
+	slot2 = string.splitToNumber(CritterConfig.instance:getCritterTrainEventCfg(slot0.viewParam.eventId).cost, "#")
+
+	if math.floor(ItemModel.instance:getItemQuantity(slot2[1], slot2[2]) / slot2[3]) < RoomTrainCritterModel.instance:getSelectOptionTotalCount() then
+		GameFacade.showToast(ToastEnum.RoomCritterTrainCountNotEnoughCurrency, ItemModel.instance:getItemConfig(slot2[1], slot2[2]).name)
+
+		return
+	end
+
 	CritterRpc.instance:sendSelectMultiEventOptionRequest(slot0.viewParam.critterUid, slot0.viewParam.eventId, RoomTrainCritterModel.instance:getSelectOptionInfos(), slot0._attributeSelected, slot0)
 end
 
@@ -313,7 +321,7 @@ function slot0._playConversation(slot0)
 	slot0._txtnameen.text = slot1.nameEn
 	slot0._txtnamecn.text = slot1.name
 	slot2 = CritterConfig.instance:getCritterTrainEventCfg(slot0.viewParam.eventId)
-	slot0._txtcontent.text = string.format(slot2.content, RoomTrainCritterModel.instance:getSelectOptionLimitCount(), string.format("%s <sprite=0>", string.splitToNumber(slot2.cost, "#")[3]))
+	slot0._txtcontent.text = string.format(slot2.content, slot0._critterMO.trainInfo:getEvents(slot0.viewParam.eventId).remainCount, string.format("%s <sprite=0>", string.splitToNumber(slot2.cost, "#")[3]))
 
 	slot0:_showEnterBtn(true)
 end
@@ -380,7 +388,7 @@ function slot0._startShowResult(slot0)
 	for slot4, slot5 in pairs(slot0._optionInfos) do
 		slot6 = slot5.optionId
 		slot7 = slot0._critterMO.trainInfo:getEventOptionMOByOptionId(slot0.viewParam.eventId, slot6).addAttriButes
-		slot0._resultAttributeMOs[slot6] = slot7[1]
+		slot0._resultAttributeMOs[slot6] = LuaUtil.deepCopy(slot7[1])
 		slot0._resultAttributeMOs[slot6].value = slot5.count * slot7[1].value
 	end
 
@@ -414,12 +422,6 @@ end
 slot3 = 2223
 
 function slot0.onOpen(slot0)
-	slot2 = string.splitToNumber(CritterConfig.instance:getCritterTrainEventCfg(slot0.viewParam.eventId).cost, "#")
-
-	if math.floor(ItemModel.instance:getItemQuantity(slot2[1], slot2[2]) / slot2[3]) < RoomTrainCritterModel.instance:getOptionsSelectTotalCount() then
-		RoomTrainCritterModel.instance:setOptionsSelectTotalCount(slot3)
-	end
-
 	slot0._critterMO = CritterModel.instance:getCritterMOByUid(slot0.viewParam.critterUid)
 
 	StoryModel.instance:setReplaceHero(uv0, ResUrl.getSpineUIPrefab(CritterConfig.instance:getCritterSkinCfg(slot0._critterMO:getSkinId()).spine))
@@ -435,6 +437,9 @@ function slot0.onOpen(slot0)
 	end
 
 	CritterController.instance:dispatchEvent(CritterEvent.CritterTrainStarted)
+end
+
+function slot0._onCurrencyChanged(slot0)
 end
 
 function slot0.onClose(slot0)

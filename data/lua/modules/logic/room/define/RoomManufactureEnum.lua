@@ -88,5 +88,9 @@ slot0.RareImageMap = {
 slot0.TradeLevelUnlock = {
 	Trade = 2
 }
+slot0.LuckyItemType = {
+	All = 1,
+	ItemId = 2
+}
 
 return slot0

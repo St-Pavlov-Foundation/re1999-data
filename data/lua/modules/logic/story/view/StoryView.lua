@@ -53,7 +53,7 @@ function slot0._btnnextOnClick(slot0)
 		return
 	end
 
-	if not slot0._stepCo or slot0._stepCo.conversation.type == StoryEnum.ConversationType.None or slot0._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract then
+	if not slot0._stepCo or slot0._stepCo.conversation.type == StoryEnum.ConversationType.None or slot0._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract or slot0._stepCo.conversation.type == StoryEnum.ConversationType.ScreenDialog or slot0._stepCo.conversation.type == StoryEnum.ConversationType.IrregularShake then
 		return
 	end
 

@@ -128,7 +128,7 @@ function slot0._updateParam(slot0)
 		table.insert(slot0._attrInfoMOList, CritterHelper.sumArrtInfoMOByAttrId(slot5, slot0._critterMOList))
 	end
 
-	slot0._manufactureItemIdList = ManufactureHelper.findItemIdListByBUid(slot0._buildingUid)
+	slot0._manufactureItemIdList = ManufactureHelper.findLuckyItemIdListByBUid(slot0._buildingUid)
 
 	gohelper.setActive(slot0._btndetail, #slot0._critterUidList > 0)
 end

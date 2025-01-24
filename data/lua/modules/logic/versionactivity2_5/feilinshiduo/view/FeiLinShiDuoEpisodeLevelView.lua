@@ -268,13 +268,17 @@ end
 
 function slot0.onCloseViewFinish(slot0, slot1)
 	if slot1 == ViewName.FeiLinShiDuoResultView or slot1 == ViewName.StoryFrontView then
-		slot0:onEpisodeFinish()
+		slot0:onEpisodeFinish(slot1)
 	end
 end
 
-function slot0.onEpisodeFinish(slot0)
-	if FeiLinShiDuoModel.instance:getCurFinishEpisodeId() and slot1 > 0 then
-		FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.EpisodeItemPlayFinishAnim, slot1)
+function slot0.onEpisodeFinish(slot0, slot1)
+	if slot1 == ViewName.StoryFrontView then
+		FeiLinShiDuoStatHelper.instance:sendDungeonFinish()
+	end
+
+	if FeiLinShiDuoModel.instance:getCurFinishEpisodeId() and slot2 > 0 then
+		FeiLinShiDuoGameController.instance:dispatchEvent(FeiLinShiDuoEvent.EpisodeItemPlayFinishAnim, slot2)
 	end
 
 	FeiLinShiDuoModel.instance:setCurFinishEpisodeId(0)

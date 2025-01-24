@@ -60,10 +60,16 @@ function slot0.unlockMasterSkill(slot0, slot1)
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMasterSkill)
 end
 
-function slot0.hasChessById(slot0, slot1)
+function slot0.updateMaster(slot0, slot1)
+	slot0.mySideMaster = uv0.copyMaster(slot1)
+
+	AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMasterSkill)
+end
+
+function slot0.hasUpgradeableChess(slot0, slot1)
 	for slot5, slot6 in ipairs(slot0.warZones) do
 		for slot10, slot11 in ipairs(slot6.positions) do
-			if slot11.index < AutoChessEnum.BoardSize.Column and slot11.chess.id == slot1 then
+			if slot11.index < AutoChessEnum.BoardSize.Column and slot11.chess.id == slot1 and slot11.chess.maxExpLimit ~= 0 then
 				return true
 			end
 		end

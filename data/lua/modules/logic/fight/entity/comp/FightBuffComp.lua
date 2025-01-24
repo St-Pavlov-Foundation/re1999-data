@@ -442,6 +442,10 @@ slot4 = {
 }
 
 function slot0.delBuff(slot0, slot1, slot2)
+	if not slot0._buffDic then
+		return
+	end
+
 	if not slot0._buffDic[slot1] then
 		return
 	end

@@ -2,11 +2,11 @@ module("modules.logic.versionactivity2_5.act182.rpc.Activity182Rpc", package.see
 
 slot0 = class("Activity182Rpc", BaseRpc)
 
-function slot0.sendGetAct182InfoRequest(slot0, slot1, slot2, slot3)
-	slot4 = Activity182Module_pb.GetAct182InfoRequest()
-	slot4.activityId = slot1
+function slot0.sendGetAct182InfoRequest(slot0, slot1)
+	slot2 = Activity182Module_pb.GetAct182InfoRequest()
+	slot2.activityId = slot1
 
-	slot0:sendMsg(slot4, slot2, slot3)
+	slot0:sendMsg(slot2)
 end
 
 function slot0.onReceiveGetAct182InfoReply(slot0, slot1, slot2)

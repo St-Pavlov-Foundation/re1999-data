@@ -516,24 +516,25 @@ end
 
 function slot0._addPreMat(slot0, slot1, slot2, slot3)
 	slot4 = nil
+	slot5 = slot3.isOverView
 
-	if RoomMapBuildingModel.instance:getBuildingListByType(slot2, true) and #slot6 > 0 then
+	if RoomMapBuildingModel.instance:getBuildingListByType(slot2, true) and #slot7 > 0 then
 		if slot2 == RoomBuildingEnum.BuildingType.Collect then
-			for slot10, slot11 in ipairs(slot6) do
-				if slot0:getNextEmptySlot(slot11.id) then
-					slot4 = slot11
+			for slot11, slot12 in ipairs(slot7) do
+				if slot0:getNextEmptySlot(slot12.id) then
+					slot4 = slot12
 
 					break
 				end
 			end
 
 			if not slot4 then
-				slot4 = slot6[1]
+				slot4 = slot7[1]
 			end
 		else
-			for slot10, slot11 in ipairs(slot6) do
-				if ManufactureConfig.instance:isManufactureItemBelongBuilding(slot11.buildingId, slot1) then
-					slot4 = slot11
+			for slot11, slot12 in ipairs(slot7) do
+				if ManufactureConfig.instance:isManufactureItemBelongBuilding(slot12.buildingId, slot1) then
+					slot4 = slot12
 
 					break
 				end
@@ -545,7 +546,7 @@ function slot0._addPreMat(slot0, slot1, slot2, slot3)
 		return false
 	end
 
-	if slot3 then
+	if slot5 then
 		slot0:dispatchEvent(ManufactureEvent.ManufactureOverViewFocusAddPop, slot4.id, slot1)
 	else
 		slot0:openManufactureBuildingViewByBuilding(slot4, true, false, slot1)
@@ -582,7 +583,22 @@ end
 
 function slot0._linPath(slot0, slot1, slot2, slot3)
 	if ManufactureConfig.instance:getUnlockSystemTradeLevel(RoomTradeEnum.LevelUnlock.TransportSystemOpen) <= ManufactureModel.instance:getTradeLevel() then
-		RoomJumpController.instance:jumpToTransportSiteView()
+		if RoomMapTransportPathModel.instance:getTransportPathMOBy2Type(slot2, slot3.pathToType) and slot7:isLinkFinish() and not (slot7 and slot7:hasCritterWorking()) then
+			slot0:closeWrongTipView()
+			ViewMgr.instance:closeView(ViewName.RoomOverView, true)
+			RoomTransportController.instance:openTransportSiteView(RoomTransportHelper.fromTo2SiteType(slot2, slot3.pathToType), RoomEnum.CameraState.Overlook)
+
+			if ViewMgr.instance:isOpen(ViewName.RoomCritterBuildingView) then
+				slot0:closeCritterBuildingView(true)
+			end
+
+			if ViewMgr.instance:isOpen(ViewName.RoomManufactureBuildingView) then
+				ViewMgr.instance:closeView(ViewName.RoomManufactureBuildingView)
+				ManufactureModel.instance:setCameraRecord()
+			end
+		else
+			RoomJumpController.instance:jumpToTransportSiteView()
+		end
 	else
 		GameFacade.showToast(RoomEnum.Toast.RoomTradeLowLevel)
 	end

@@ -64,6 +64,7 @@ function slot0.onReceiveAct187AcceptRewardReply(slot0, slot1, slot2)
 		dataList = slot2.fixBonusList
 	}))
 	Activity187Model.instance:setAccrueRewardIndex(slot2.acceptRewardGameCount)
+	Activity187Controller.instance:dispatchEvent(Activity187Event.RefreshAccrueReward)
 end
 
 slot0.instance = slot0.New()
