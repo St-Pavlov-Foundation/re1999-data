@@ -119,18 +119,13 @@ function slot0.onClick(slot0)
 	ViewMgr.instance:openView(ViewName.AutoChessBadgeView)
 end
 
-function slot0.playProgressAnim(slot0, slot1, slot2, slot3)
-	if slot3 == 0 then
+function slot0.playProgressAnim(slot0, slot1)
+	if slot1 == 0 then
 		return
 	end
 
-	slot0.config = lua_auto_chess_rank.configDict[slot0.actId][slot1]
-	slot0.curScore = slot2
-
-	slot0:refreshNormal()
-
-	slot0.changeScore = slot3
-	slot0.tweenId = ZProj.TweenHelper.DOTweenFloat(slot2 - slot3, slot2, 1, slot0.frameCallback, slot0.finishCallback, slot0, nil, EaseType.Linear)
+	slot0.changeScore = slot1
+	slot0.tweenId = ZProj.TweenHelper.DOTweenFloat(slot0.curScore - slot1, slot0.curScore, 1, slot0.frameCallback, slot0.finishCallback, slot0, nil, EaseType.Linear)
 end
 
 function slot0.frameCallback(slot0, slot1)

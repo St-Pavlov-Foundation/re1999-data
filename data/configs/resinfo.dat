@@ -21964,9 +21964,9 @@
         "v": "cf56a0fdfc01abdcaef8538ad18c8264"
       },
       "bundles/1aa355706e1767666124331a716c7890.dat": {
-        "md5": "b048901e74a97c196a6d2e7b1f263f7f",
-        "size": 910527,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "078c4cef112666b421527cb0aa595d4b",
+        "size": 910479,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "bundles/1aa5ac27099827796c98476627135673.dat": {
         "md5": "ad92e2dcd149626bae3f28b48e8bbb05",
@@ -85829,34 +85829,34 @@
         "v": "cf56a0fdfc01abdcaef8538ad18c8264"
       },
       "configs/allmanifest.dat": {
-        "md5": "7fe8a4a5b746521204769907de2e78aa",
+        "md5": "b8ca879087c899d1c72cdbf6b69e3fb4",
         "size": 204299,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/datacfg_1.dat": {
-        "md5": "5584b09cf270dccd06f200917dcd4466",
-        "size": 9113040,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "b01e0b2dd815f2682a5861ed5ccd8543",
+        "size": 9113072,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/datacfg_2.dat": {
-        "md5": "9358862c966be05d00b29e33d24941ff",
-        "size": 7775104,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "3c3dbe88b18153fbf4811a94d781f6ad",
+        "size": 7775248,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/datacfg_3.dat": {
-        "md5": "b29007515e8d5bed51c8b80dee726f04",
-        "size": 8554880,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "fabe3e0d29cc61a0323b0ebf97db0fed",
+        "size": 8553328,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/datacfg_4.dat": {
-        "md5": "07a78620aeef6b98eb94eebfb14c17f5",
-        "size": 9093504,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "cb45b22f107f1c3d92af068253e0ad50",
+        "size": 9093584,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/datacfg_5.dat": {
-        "md5": "8fbf129b486b52ebd5bfa4ca0b723587",
-        "size": 9062400,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "6d617a189988b03afd429549d6a62de0",
+        "size": 9063904,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/langcfg.dat": {
         "md5": "e5a904a9d3ca30475f58814f75b4d9bf",
@@ -85864,14 +85864,14 @@
         "v": "cf56a0fdfc01abdcaef8538ad18c8264"
       },
       "configs/metainfo.dat": {
-        "md5": "478fd20e5085124567cfdf3d063421fa",
-        "size": 595905,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "md5": "ed5e667d8cd85fa666dc3ff0369f513b",
+        "size": 595909,
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "configs/singlebgabtab.dat": {
-        "md5": "0f9938d2ca05213cf3407cc3c790d12b",
+        "md5": "cb77401f7b8a8c748fdb9cb92e461fc6",
         "size": 90731,
-        "v": "ba392b87ccf348e50885fdcc9e6a88cb"
+        "v": "babb4316128de33463100b5ab2b21982"
       },
       "videos/1_4_chapter5_01.mp4": {
         "md5": "ae315407dc21a5e04d17a0d62e44eb9b",

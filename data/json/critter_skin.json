@@ -214,13 +214,13 @@
     "headIcon": "500016",
     "largeIcon": "500016",
     "spine": "v2a5_500016_skyk/500016_skyk",
-    "handEffects": "special2|skyk_taming2;;"
+    "handEffects": ""
   },
   {
     "id": 50001602,
     "headIcon": "510016",
     "largeIcon": "510016",
     "spine": "v2a5_510016_skyk/510016_skyk",
-    "handEffects": "special2|skyk_taming2;;"
+    "handEffects": ""
   }
 ]

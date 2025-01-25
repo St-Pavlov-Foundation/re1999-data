@@ -41,33 +41,33 @@ function slot0.onOpen(slot0)
 	slot0.settleData = AutoChessModel.instance.settleData
 
 	if slot0.settleData then
-		slot0.badgeItem:setData(slot0.settleData.rank, slot0.settleData.score - slot0.settleData.changeScore, AutoChessBadgeItem.ShowType.PvpSettleView)
-		slot0.badgeItem:playProgressAnim(slot0.settleData.rank, slot0.settleData.score, slot0.settleData.changeScore)
+		slot0.badgeItem:setData(slot0.settleData.rank, Activity182Model.instance:getActMo().score, AutoChessBadgeItem.ShowType.PvpSettleView)
+		slot0.badgeItem:playProgressAnim(slot0.settleData.score)
 
 		slot0._txtRound.text = string.format("%d/%d", slot0.settleData.round, lua_auto_chess_episode.configDict[slot0.settleData.episodeId].maxRound)
-		slot2 = tonumber(slot0.settleData.remainingHp)
-		slot0._txtHp.text = slot2
+		slot3 = tonumber(slot0.settleData.remainingHp)
+		slot0._txtHp.text = slot3
 
-		gohelper.setActive(slot0._goHp, slot2 ~= 0)
+		gohelper.setActive(slot0._goHp, slot3 ~= 0)
 
 		slot0._txtDamage.text = slot0.settleData.totalInjury
 
 		if lua_auto_chess_master.configDict[slot0.settleData.masterId] then
-			MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goLeaderMesh, AutoChessMeshComp):setData(slot3.image, false, true)
+			MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goLeaderMesh, AutoChessMeshComp):setData(slot4.image, false, true)
 		end
 
-		for slot7, slot8 in ipairs(slot0.settleData.chessIds) do
-			if lua_auto_chess.configDict[slot8][1].type == AutoChessStrEnum.ChessType.Attack then
-				UISpriteSetMgr.instance:setAutoChessSprite(gohelper.findChildImage(gohelper.cloneInPlace(slot0._goChess, slot8), "image_bg"), "v2a5_autochess_quality1_" .. slot9.levelFromMall)
+		for slot8, slot9 in ipairs(slot0.settleData.chessIds) do
+			if lua_auto_chess.configDict[slot9][1].type == AutoChessStrEnum.ChessType.Attack then
+				UISpriteSetMgr.instance:setAutoChessSprite(gohelper.findChildImage(gohelper.cloneInPlace(slot0._goChess, slot9), "image_bg"), "v2a5_autochess_quality1_" .. slot10.levelFromMall)
 			else
-				UISpriteSetMgr.instance:setAutoChessSprite(slot11, "v2a5_autochess_quality2_" .. slot9.levelFromMall)
+				UISpriteSetMgr.instance:setAutoChessSprite(slot12, "v2a5_autochess_quality2_" .. slot10.levelFromMall)
 			end
 
-			MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot10, "Mesh"), AutoChessMeshComp):setData(slot9.image)
+			MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot11, "Mesh"), AutoChessMeshComp):setData(slot10.image)
 		end
 
-		gohelper.setActive(slot0._goWin, slot0.settleData.round == slot1)
-		gohelper.setActive(slot0._goLose, slot0.settleData.round ~= slot1)
+		gohelper.setActive(slot0._goWin, slot0.settleData.round == slot2)
+		gohelper.setActive(slot0._goLose, slot0.settleData.round ~= slot2)
 		gohelper.setActive(slot0._goChess, false)
 	end
 end

@@ -644,5 +644,43 @@
     "maxCount": 1,
     "cost": "",
     "content": ""
+  },
+  {
+    "id": 125307731,
+    "type": 3,
+    "name": "特殊事件",
+    "condition": "1#72000",
+    "addAttribute": 0,
+    "preferenceAttribute": "2#35|3#15",
+    "initStoryId": 0,
+    "desc": "",
+    "effectAttribute": "",
+    "normalStoryId": 0,
+    "skilledStoryId": 0,
+    "roomDialogId": 125307731,
+    "computeIncrRate": false,
+    "autoFinish": false,
+    "maxCount": 1,
+    "cost": "",
+    "content": ""
+  },
+  {
+    "id": 125310431,
+    "type": 3,
+    "name": "特殊事件",
+    "condition": "1#72000",
+    "addAttribute": 0,
+    "preferenceAttribute": "3#50",
+    "initStoryId": 0,
+    "desc": "",
+    "effectAttribute": "",
+    "normalStoryId": 0,
+    "skilledStoryId": 0,
+    "roomDialogId": 125310431,
+    "computeIncrRate": false,
+    "autoFinish": false,
+    "maxCount": 1,
+    "cost": "",
+    "content": ""
   }
 ]

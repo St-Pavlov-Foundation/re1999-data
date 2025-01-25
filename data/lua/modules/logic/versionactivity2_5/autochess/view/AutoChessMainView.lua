@@ -126,11 +126,9 @@ end
 
 function slot0.onSettlPush(slot0)
 	if not ViewMgr.instance:isOpen(ViewName.AutoChessGameView) and AutoChessModel.instance.settleData then
-		slot2 = slot1.moduleId
-
-		if slot2 == AutoChessEnum.ModuleId.PVP then
-			if Activity182Model.instance:getActMo().gameMoDic[slot2].episodeId == 0 then
-				slot0.badgeItem:playProgressAnim(slot1.rank, slot1.score, slot1.changeScore)
+		if slot1.moduleId == AutoChessEnum.ModuleId.PVP then
+			if slot1.episodeId == 0 then
+				slot0.badgeItem:playProgressAnim(slot1.score)
 
 				AutoChessModel.instance.settleData = nil
 			else
