@@ -163,7 +163,6 @@ end
 function slot0.refreshUI(slot0)
 	slot0.actMo = Activity182Model.instance:getActMo()
 
-	gohelper.setActive(slot0._goFinishPVE, slot0.actMo:isEpisodePass(11006))
 	ZProj.UGUIHelper.SetGrayscale(slot0._btnPVP.gameObject, not slot0.actMo:isEpisodeUnlock(AutoChessEnum.PvpEpisodeId))
 	slot0:refreshLeftTime()
 	TaskDispatcher.runRepeat(slot0.refreshLeftTime, slot0, TimeUtil.OneSecond)
@@ -178,18 +177,31 @@ function slot0.refreshUI(slot0)
 end
 
 function slot0.refreshBtnStatus(slot0)
-	gohelper.setActive(slot0._goRoundE, slot0.actMo.gameMoDic[AutoChessEnum.ModuleId.PVE].episodeId ~= 0)
-	gohelper.setActive(slot0._btnGiveUpE, slot1.start and GuideModel.instance:isGuideFinish(25406))
+	gohelper.setActive(slot0._goFinishPVE, slot0.actMo:isEpisodePass(11006))
 
-	if slot2 ~= 0 then
-		slot0._txtRoundE.text = string.format("%d/%d", slot1.currRound, lua_auto_chess_episode.configDict[slot2].maxRound)
+	slot2 = slot0.actMo.gameMoDic[AutoChessEnum.ModuleId.PVE]
+	slot3 = slot2.episodeId
+
+	gohelper.setActive(slot0._btnGiveUpE, slot2.start and GuideModel.instance:isGuideFinish(25406) and not slot1)
+
+	if not slot1 and slot3 ~= 0 then
+		slot0._txtRoundE.text = string.format("%d/%d", slot2.currRound, lua_auto_chess_episode.configDict[slot3].maxRound)
+
+		gohelper.setActive(slot0._goRoundE, true)
+	else
+		gohelper.setActive(slot0._goRoundE, false)
 	end
 
-	gohelper.setActive(slot0._goRoundP, slot0.actMo.gameMoDic[AutoChessEnum.ModuleId.PVP].episodeId ~= 0)
-	gohelper.setActive(slot0._btnGiveUpP, slot1.start)
+	slot2 = slot0.actMo.gameMoDic[AutoChessEnum.ModuleId.PVP]
 
-	if slot2 ~= 0 then
-		slot0._txtRoundP.text = string.format("%d/%d", slot1.currRound, lua_auto_chess_episode.configDict[slot2].maxRound)
+	gohelper.setActive(slot0._btnGiveUpP, slot2.start)
+
+	if slot2.episodeId ~= 0 then
+		slot0._txtRoundP.text = string.format("%d/%d", slot2.currRound, lua_auto_chess_episode.configDict[slot3].maxRound)
+
+		gohelper.setActive(slot0._goRoundP, true)
+	else
+		gohelper.setActive(slot0._goRoundP, false)
 	end
 end
 

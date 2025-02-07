@@ -33,6 +33,12 @@ function slot0.checkManufactureInfoUpdate(slot0)
 	end
 end
 
+function slot0.updateTraceNeedItemDict(slot0)
+	if RoomController.instance:isRoomScene() and RoomTradeModel.instance:isGetOrderInfo() then
+		RoomTradeModel.instance:calTracedItemDict()
+	end
+end
+
 function slot0.getManufactureServerInfo(slot0)
 	if not ManufactureModel.instance:isManufactureUnlock() then
 		return

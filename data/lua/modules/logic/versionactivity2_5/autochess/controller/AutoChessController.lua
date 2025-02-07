@@ -233,7 +233,7 @@ function slot0.showGuideToast(slot0)
 end
 
 function slot0.isEnableSale(slot0)
-	if not GuideModel.instance:isStepFinish(25405, 13) then
+	if not (GuideModel.instance:isStepFinish(25405, 13) or GuideModel.instance:isGuideFinish(25406)) then
 		if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.AutoChessEnableSale) then
 			return true
 		end
@@ -254,6 +254,16 @@ function slot0.isEnableRefresh(slot0)
 	end
 
 	return true
+end
+
+function slot0.setGuideEventFlag(slot0, slot1)
+	slot0._curRpcType = slot1
+end
+
+function slot0.checkGuideEventFlag(slot0)
+	if slot0._curRpcType and slot0._curRpcType == AutoChessEnum.BuildType.Sell then
+		slot0:dispatchEvent(AutoChessEvent.ZSaleChess)
+	end
 end
 
 function slot0.onStartFight(slot0)

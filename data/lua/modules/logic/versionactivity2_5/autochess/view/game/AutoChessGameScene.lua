@@ -348,7 +348,7 @@ function slot0._endDrag(slot0, slot1, slot2)
 				GameFacade.showToast(ToastEnum.AutoChessExchangeError)
 				slot0.selectChess:show()
 			end
-		elseif slot2.pointerEnter and slot10.name == "#go_CheckSell" and AutoChessController.instance:isEnableSale() and not AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableSale, slot0.selectChess.data.id) then
+		elseif slot2.pointerEnter and slot10.name == "#go_CheckSell" and not AutoChessController.instance:isDragDisable(GuideModel.GuideFlag.AutoChessEnableSale, slot0.selectChess.data.id) then
 			AutoChessRpc.instance:sendAutoChessBuildRequest(slot0.moduleId, AutoChessEnum.BuildType.Sell, slot4, slot5, slot3)
 		else
 			slot0.selectChess:show()

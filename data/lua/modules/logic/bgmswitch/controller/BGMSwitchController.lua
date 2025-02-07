@@ -127,6 +127,7 @@ end
 
 function slot0.startAllOnLogin(slot0)
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Main then
+		BGMSwitchModel.instance:setMechineGear(BGMSwitchModel.instance:getRecordInfoByType(BGMSwitchEnum.RecordInfoType.BGMSwitchGear))
 		slot0:checkStartMainBGM(true)
 		WeatherController.instance:playWeatherAudio()
 		AudioMgr.instance:trigger(AudioEnum.UI.Play_Replay_Noise_Daytime)

@@ -223,5 +223,8 @@ slot0.PoolId = {
 	Normal = 2,
 	QuNiang = 16111
 }
+slot0.ChooseNeedFirstHeroIds = {
+	3025
+}
 
 return slot0

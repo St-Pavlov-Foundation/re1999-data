@@ -61,6 +61,7 @@ function slot0.clear(slot0)
 	slot0.canContractList = nil
 	slot0.contractEntityUid = nil
 	slot0.beContractEntityUid = nil
+	slot0.roundOffset = 0
 end
 
 function slot0.onRestart(slot0)

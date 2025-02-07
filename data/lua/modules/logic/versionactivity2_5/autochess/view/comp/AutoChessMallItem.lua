@@ -38,6 +38,10 @@ function slot0.init(slot0, slot1)
 	slot0.effectComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.goEntity, AutoChessEffectComp)
 end
 
+function slot0.addEventListeners(slot0)
+	slot0:addEventCb(AutoChessController.instance, AutoChessEvent.StartBuyStepFinih, slot0.refreshLvup, slot0)
+end
+
 function slot0.onDestroy(slot0)
 	CommonDragHelper.instance:unregisterDragObj(slot0.go)
 

@@ -7833,7 +7833,7 @@
   },
   {
     "id": 250019,
-    "tips": "购买棋子并且<color=#cc492f>叠放到同名棋子</color>中",
+    "tips": "<color=#cc492f>拖动到同名棋子</color>上叠放",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

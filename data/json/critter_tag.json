@@ -872,7 +872,7 @@
     "type": 3,
     "group": 0,
     "needAttributeLevel": 0,
-    "skillIcon": "critter_manufacture_skillicon_1",
+    "skillIcon": "critter_manufacture_skillicon_4",
     "filterTag": "201",
     "name": "种族天赋",
     "desc": "在加工区工作时，魔精自身工作效率增加35%。",

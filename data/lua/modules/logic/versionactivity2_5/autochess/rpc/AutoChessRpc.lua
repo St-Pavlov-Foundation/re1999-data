@@ -81,9 +81,7 @@ function slot0.onReceiveAutoChessBuyChessReply(slot0, slot1, slot2)
 end
 
 function slot0.sendAutoChessBuildRequest(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9)
-	if slot2 == AutoChessEnum.BuildType.Sell then
-		AutoChessController.instance:dispatchEvent(AutoChessEvent.ZSaleChess)
-	end
+	AutoChessController.instance:setGuideEventFlag(slot2)
 
 	slot10 = AutoChessModule_pb.AutoChessBuildRequest()
 	slot10.moduleId = slot1
@@ -103,6 +101,8 @@ function slot0.onReceiveAutoChessBuildReply(slot0, slot1, slot2)
 	if slot1 ~= 0 then
 		return
 	end
+
+	AutoChessController.instance:checkGuideEventFlag()
 
 	slot3 = AutoChessModel.instance:getChessMo(slot2.moduleId)
 

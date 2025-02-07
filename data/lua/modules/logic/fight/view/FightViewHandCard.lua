@@ -226,7 +226,7 @@ function slot0._onHandCardFlowCreate(slot0, slot1)
 end
 
 function slot0._onHandCardFlowEnd(slot0, slot1)
-	if slot1 == slot0._cardLongPressEndFlow then
+	if slot1 == slot0._cardLongPressEndFlow or slot1 == slot0._cardDragEndFlow then
 		slot0.longPressing = false
 	end
 
