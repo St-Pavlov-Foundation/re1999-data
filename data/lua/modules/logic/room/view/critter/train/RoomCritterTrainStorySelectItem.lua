@@ -7,20 +7,22 @@ function slot0.init(slot0, slot1, slot2)
 
 	gohelper.setActive(slot0.go, false)
 
+	slot0._btnselect = gohelper.findChildButtonWithAudio(slot0.go, "btnselect")
+	slot0._goselectlight = gohelper.findChild(slot0.go, "btnselect/light")
 	slot0._gobgdark = gohelper.findChild(slot0.go, "bgdark")
 	slot0._imageicon = gohelper.findChildImage(slot0.go, "bgdark/icon")
 	slot0._txtcontentdark = gohelper.findChildText(slot0.go, "bgdark/txtcontentdark")
 	slot0._txtnum = gohelper.findChildText(slot0.go, "bgdark/#txt_num")
-	slot0._btnselect = gohelper.findChildButtonWithAudio(slot0.go, "btnselect")
 	slot0._golvup = gohelper.findChild(slot0.go, "go_lvup")
 	slot0._txtlvup = gohelper.findChildText(slot0.go, "go_lvup/txt_lvup")
 	slot0._goup = gohelper.findChild(slot0.go, "go_up")
+	slot0._gonum = gohelper.findChild(slot0.go, "go_num")
 	slot0._txtcountnum = gohelper.findChildText(slot0.go, "go_num/#txt_num")
 	slot0._btncancel = gohelper.findChildButtonWithAudio(slot0.go, "btncancel")
-	slot0._goselect = gohelper.findChild(slot0.go, "#selecteff")
+	slot0._goselecteff = gohelper.findChild(slot0.go, "#selecteff")
 
 	gohelper.setActive(slot0._golvup, false)
-	gohelper.setActive(slot0._goselect, false)
+	gohelper.setActive(slot0._goselecteff, false)
 	slot0:_addEvents()
 end
 
@@ -56,23 +58,28 @@ function slot0._btncancelOnClick(slot0)
 end
 
 function slot0._btnselectOnClick(slot0)
-	gohelper.setActive(slot0._goselect, false)
+	gohelper.setActive(slot0._goselecteff, false)
 	TaskDispatcher.cancelTask(slot0._playSelectFinished, slot0)
 
 	if RoomTrainCritterModel.instance:getSelectOptionLimitCount() <= 0 then
 		return
 	end
 
-	gohelper.setActive(slot0._goselect, true)
-	TaskDispatcher.runDelay(slot0._playSelectFinished, slot0, 0.34)
+	if slot0._count and slot0._count < 1 then
+		gohelper.setActive(slot0._goselecteff, true)
+		TaskDispatcher.runDelay(slot0._playSelectFinished, slot0, 0.34)
+	end
+
 	RoomController.instance:dispatchEvent(RoomEvent.CritterTrainAttributeSelected, slot0._attributeCo.id, slot0._optionId)
 end
 
 function slot0._playSelectFinished(slot0)
-	gohelper.setActive(slot0._goselect, false)
+	gohelper.setActive(slot0._goselecteff, false)
 end
 
 function slot0._refreshItem(slot0)
+	gohelper.setActive(slot0._goselectlight, slot0._count and slot0._count > 0)
+	gohelper.setActive(slot0._btncancel.gameObject, slot0._count and slot0._count > 0)
 	ZProj.TweenHelper.KillByObj(slot0.go)
 
 	if not slot0.go.activeSelf then
@@ -85,6 +92,9 @@ function slot0._refreshItem(slot0)
 	UISpriteSetMgr.instance:setCritterSprite(slot0._imageicon, slot0._attributeCo.icon)
 
 	slot0._txtnum.text = string.format("+%.02f", slot0._attributeMO.value)
+
+	gohelper.setActive(slot0._gonum, slot0._count and slot0._count > 0)
+
 	slot0._txtcountnum.text = slot0._count or 0
 	slot1 = false
 

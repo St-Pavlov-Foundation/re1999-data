@@ -154,10 +154,6 @@ function slot0.delaySwitch(slot0)
 end
 
 function slot0._btnFreshOnClick(slot0)
-	if not AutoChessController.instance:isEnableRefresh() or AutoChessController.instance:isClickDisable() then
-		return
-	end
-
 	if slot0.freshCost <= tonumber(slot0.chessMo.svrMall.coin) then
 		AutoChessHelper.lockScreen("AutoChessMallViewFreshStore", true)
 		AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_mln_details_open)

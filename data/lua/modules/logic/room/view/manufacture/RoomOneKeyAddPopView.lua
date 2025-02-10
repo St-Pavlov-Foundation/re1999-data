@@ -27,6 +27,7 @@ function slot0.addEvents(slot0)
 	slot0._btnadd:AddClickListener(slot0._btnaddOnClick, slot0)
 	slot0._btnmax:AddClickListener(slot0._btnmaxOnClick, slot0)
 	slot0:addEventCb(ManufactureController.instance, ManufactureEvent.OneKeySelectCustomManufactureItem, slot0.refreshCount, slot0)
+	slot0:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0, LuaEventSystem.High)
 end
 
 function slot0.removeEvents(slot0)
@@ -37,6 +38,7 @@ function slot0.removeEvents(slot0)
 	slot0._btnadd:RemoveClickListener()
 	slot0._btnmax:RemoveClickListener()
 	slot0:removeEventCb(ManufactureController.instance, ManufactureEvent.OneKeySelectCustomManufactureItem, slot0.refreshCount, slot0)
+	slot0:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
 
 	if slot0.tabItemList then
 		for slot4, slot5 in ipairs(slot0.tabItemList) do
@@ -108,8 +110,13 @@ function slot0.changeCount(slot0, slot1)
 	ManufactureController.instance:oneKeySelectCustomManufactureItem(slot2, Mathf.Clamp(slot1 or OneKeyAddPopListModel.MINI_COUNT, OneKeyAddPopListModel.MINI_COUNT, ManufactureModel.instance:getMaxCanProductCount(slot2)), true)
 end
 
+function slot0._onItemChanged(slot0)
+	ManufactureController.instance:updateTraceNeedItemDict()
+end
+
 function slot0._editableInitView(slot0)
 	gohelper.setActive(slot0._btncloseAdd, false)
+	ManufactureController.instance:updateTraceNeedItemDict()
 end
 
 function slot0.onUpdateParam(slot0)

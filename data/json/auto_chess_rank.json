@@ -54,7 +54,7 @@
     "rankId": 6,
     "icon": "v2a5_autochess_badgeicon_6",
     "name": "棋局终结者",
-    "protection": false,
+    "protection": true,
     "score": 2000,
     "round2Score": "-45|-45|-45|-40|-35|-30|-20|-10|0|10|30|50|70",
     "reward": 25901115
@@ -64,7 +64,7 @@
     "rankId": 7,
     "icon": "v2a5_autochess_badgeicon_7",
     "name": "巅峰棋师",
-    "protection": false,
+    "protection": true,
     "score": 2400,
     "round2Score": "-50|-50|-50|-45|-40|-35|-25|-15|-5|5|20|40|60",
     "reward": 25901116
@@ -76,7 +76,7 @@
     "name": "棋艺人生",
     "protection": false,
     "score": 99999,
-    "round2Score": "-55|-55|-55|-50|-45|-40|-30|-20|-10|-5|5|15|30",
+    "round2Score": "-55|-55|-55|-50|-45|-40|-30|-20|-10|0|10|25|40",
     "reward": 25901117
   }
 ]

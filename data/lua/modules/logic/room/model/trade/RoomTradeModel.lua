@@ -111,8 +111,9 @@ function slot0.calTracedItemDict(slot0)
 		if slot6.isTraced then
 			for slot10, slot11 in ipairs(slot6:getGoodsInfo()) do
 				slot0._traceItemDict[slot12] = (slot0._traceItemDict[ManufactureConfig.instance:getItemId(slot11.productionId)] or 0) + slot11.quantity
+				slot13, slot14 = ManufactureModel.instance:getManufactureItemCount(slot11.productionId, true, true)
 
-				slot0:_addMatTracedCount(slot11.productionId, slot11.quantity)
+				slot0:_addMatTracedCount(slot11.productionId, slot11.quantity - (slot13 + slot14))
 			end
 		end
 	end
@@ -124,10 +125,11 @@ function slot0._addMatTracedCount(slot0, slot1, slot2)
 	end
 
 	for slot7, slot8 in ipairs(slot3) do
-		slot10 = slot8.quantity * slot2
+		slot10 = slot8.quantity * math.max(0, slot2)
 		slot0._traceChildItemDict[slot9] = (slot0._traceChildItemDict[ManufactureConfig.instance:getItemId(slot8.id)] or 0) + slot10
+		slot11, slot12 = ManufactureModel.instance:getManufactureItemCount(slot8.id, true, true)
 
-		slot0:_addMatTracedCount(slot8.id, slot10)
+		slot0:_addMatTracedCount(slot8.id, slot10 - (slot11 + slot12))
 	end
 end
 
@@ -137,7 +139,7 @@ function slot0.isTracedGoods(slot0, slot1)
 
 	if slot3 < slot4 then
 		slot5 = ManufactureConfig.instance:getItemId(slot1)
-		slot2 = (slot0._traceItemDict and slot0._traceItemDict[slot5] or 0) ~= 0 or (slot0._traceChildItemDict and slot0._traceChildItemDict[slot5] or 0) ~= 0
+		slot2 = slot0._traceItemDict and slot0._traceItemDict[slot5] or slot0._traceChildItemDict and slot0._traceChildItemDict[slot5]
 	end
 
 	return slot2
