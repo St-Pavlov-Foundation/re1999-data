@@ -18,6 +18,7 @@ function slot0.onInitView(slot0)
 	slot0._gopaintTips = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/#go_paintTips")
 	slot0._gopaintingArea = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/#go_paintingArea")
 	slot0._gofinishVx = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/vx_finish")
+	slot0._rawimage = slot0._gopaintingArea:GetComponent(gohelper.Type_RawImage)
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -150,7 +151,11 @@ function slot0.ready2Paint(slot0, slot1)
 	slot0._curIndex = slot1
 
 	slot0._writingBrush:OnMouseUp()
-	slot0._writingBrush:Clear()
+
+	if slot0._rawimage.texture then
+		slot0._writingBrush:Clear()
+	end
+
 	slot0:setPaintStatus(Activity187Enum.PaintStatus.Ready)
 	slot0._paintAreaAnimator:Play("idle", 0, 0)
 end

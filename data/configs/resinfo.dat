@@ -85829,9 +85829,9 @@
         "v": "cf56a0fdfc01abdcaef8538ad18c8264"
       },
       "configs/allmanifest.dat": {
-        "md5": "9f37378d8cd51286da95895248f4a2ab",
+        "md5": "41eab53135e9298b04f49bc3e0655f1f",
         "size": 204299,
-        "v": "24df9ea458bbd013e57fce47c12fe4f0"
+        "v": "f6df47f54d090dd5746cd1a77c815e6d"
       },
       "configs/datacfg_1.dat": {
         "md5": "b631e385693dcbaa618d187a8fcc3d24",
@@ -85864,14 +85864,14 @@
         "v": "cf56a0fdfc01abdcaef8538ad18c8264"
       },
       "configs/metainfo.dat": {
-        "md5": "775ecfd518f746fe22f829fea7be23bc",
+        "md5": "d97f6f66df23ea5a852405d404c2bfcc",
         "size": 595914,
-        "v": "24df9ea458bbd013e57fce47c12fe4f0"
+        "v": "f6df47f54d090dd5746cd1a77c815e6d"
       },
       "configs/singlebgabtab.dat": {
-        "md5": "2da872d532a2769f6ded3417cec0394f",
+        "md5": "6fa36366b1fd4ed7126954c6650adbb2",
         "size": 90731,
-        "v": "24df9ea458bbd013e57fce47c12fe4f0"
+        "v": "f6df47f54d090dd5746cd1a77c815e6d"
       },
       "videos/1_4_chapter5_01.mp4": {
         "md5": "ae315407dc21a5e04d17a0d62e44eb9b",
