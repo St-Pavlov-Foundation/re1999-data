@@ -732,8 +732,8 @@
     "id": "sikuiyinke",
     "target": 0,
     "catalogue": 0,
-    "condition": "buildingType==1",
-    "previewCondition": "buildingType==1",
+    "condition": "buildingType==2",
+    "previewCondition": "buildingType==2",
     "type": 0,
     "parameter": "rateEfficiency#3500"
   }
