@@ -39,8 +39,9 @@ function slot0.onHitExit(slot0, slot1)
 
 	if slot0._statu == uv1.Hit then
 		slot0._statu = uv1.Done
+		slot5 = AudioEnum.Act178.act178_audio17
 
-		AudioMgr.instance:trigger(AudioEnum.Act178.act178_audio17)
+		AudioMgr.instance:trigger(slot5)
 
 		for slot5 = 1, slot0.effectNum - 1 do
 			slot6 = math.random(0, 360)

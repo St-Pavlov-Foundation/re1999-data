@@ -184,7 +184,9 @@ function slot0._playShrinkFlow(slot0)
 end
 
 function slot0._startShrinkFlow(slot0)
-	FlowSequence.New():addWork(WorkWaitSeconds.New(slot0._dt * 2))
+	slot7 = slot0._dt * 2
+
+	FlowSequence.New():addWork(WorkWaitSeconds.New(slot7))
 
 	slot2 = FlowParallel.New()
 	slot0._tweenParamList = {}

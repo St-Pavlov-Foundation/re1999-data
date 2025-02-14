@@ -13,7 +13,8 @@ function slot0.init(slot0, slot1)
 	slot0._gosingle = gohelper.findChild(slot1, "single")
 	slot0._imagesinglerolebg = gohelper.findChildImage(slot0._gosingle, "bg")
 	slot0._simagesingleicon = gohelper.findChildSingleImage(slot0._gosingle, "icon")
-	slot0._gomultiple = gohelper.findChild(slot1, "multiple")
+	slot5 = "multiple"
+	slot0._gomultiple = gohelper.findChild(slot1, slot5)
 	slot0._goroles = {}
 	slot0._imagerolesbg = {}
 	slot0._simagemultiroleicons = {}

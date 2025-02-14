@@ -48,7 +48,9 @@ function slot0._refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	ActivityModel.instance:removeFinishedWelfare(slot1)
+	slot5 = slot1
+
+	ActivityModel.instance:removeFinishedWelfare(slot5)
 
 	slot0.data = {}
 

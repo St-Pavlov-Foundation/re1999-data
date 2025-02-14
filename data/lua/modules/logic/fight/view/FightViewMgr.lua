@@ -192,9 +192,8 @@ function slot0._onBtnLoaded(slot0, slot1, slot2)
 
 	slot4 = gohelper.clone(slot2:GetResource(), slot0._topRightBtnRoot, "cardBox")
 	slot0.goDeckBtn = slot4
-	slot9 = slot0
 
-	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot4), slot0._onCardBoxClick, slot9)
+	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot4), slot0._onCardBoxClick, slot0)
 	gohelper.setAsFirstSibling(slot4)
 
 	slot0._deckCardAnimator = gohelper.onceAddComponent(slot4, typeof(UnityEngine.Animator))
@@ -209,7 +208,8 @@ function slot0._onBtnLoaded(slot0, slot1, slot2)
 	gohelper.setActive(slot0.deckContainer, true)
 
 	slot0.deckAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0.deckContainer)
-	slot0.goDeckActive = gohelper.findChild(slot0.deckContainer, "active")
+	slot9 = "active"
+	slot0.goDeckActive = gohelper.findChild(slot0.deckContainer, slot9)
 
 	slot0:hideDeckActiveGo()
 

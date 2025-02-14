@@ -25,7 +25,8 @@ function slot0._btnCloseOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot0.maxHp = tonumber(lua_activity174_const.configDict[Activity174Enum.ConstKey.InitHealth].value)
+	slot4 = Activity174Enum.ConstKey.InitHealth
+	slot0.maxHp = tonumber(lua_activity174_const.configDict[slot4].value)
 	slot0.hpEffList = slot0:getUserDataTb_()
 
 	for slot4 = 1, slot0.maxHp do

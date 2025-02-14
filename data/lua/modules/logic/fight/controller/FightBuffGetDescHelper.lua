@@ -76,8 +76,9 @@ function slot0.getFixAttrTeamEnergyDesc(slot0, slot1, slot2, slot3)
 	end
 
 	slot5 = 0
+	slot10 = true
 
-	for slot10, slot11 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot4, true)) do
+	for slot10, slot11 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot4, slot10)) do
 		if slot11[1] == slot2.id then
 			slot5 = slot11[3] + slot11[4] * tonumber(slot3[2])
 

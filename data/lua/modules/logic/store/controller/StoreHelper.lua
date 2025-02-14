@@ -197,7 +197,7 @@ function slot0.getRemainExpireTimeDeep(slot0)
 	if uv0.getRemainExpireTime(slot0) == 0 then
 		slot6 = true
 
-		for slot6 = 1, #StoreModel.instance:getSecondTabs(slot0.id, true, slot6) do
+		for slot6 = 1, #StoreModel.instance:getSecondTabs(slot0.id, slot6, true) do
 			if uv0.getRemainExpireTime(slot2[slot6]) > 0 then
 				slot1 = math.max(slot7, slot1)
 			end

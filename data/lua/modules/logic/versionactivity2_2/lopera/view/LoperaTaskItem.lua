@@ -153,7 +153,9 @@ function slot0._refreshUI(slot0)
 		slot4 = {}
 
 		if tonumber(slot1.config.bonus) then
-			for slot9, slot10 in ipairs(DungeonConfig.instance:getRewardItems(tonumber(slot1.config.bonus))) do
+			slot10 = slot1.config.bonus
+
+			for slot9, slot10 in ipairs(DungeonConfig.instance:getRewardItems(tonumber(slot10))) do
 				slot4[slot9] = {
 					isIcon = true,
 					materilType = slot10[1],

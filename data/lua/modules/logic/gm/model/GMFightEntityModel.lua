@@ -40,15 +40,18 @@ function slot0.onOpen(slot0)
 end
 
 function slot0._addList(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot2:getList()) do
+	slot7 = slot2
+
+	for slot6, slot7 in ipairs(slot2.getList(slot7)) do
 		table.insert(slot1, slot7)
 	end
 end
 
 function slot0.setEntityMO(slot0, slot1)
 	slot0.entityMO = slot1
+	slot7 = slot1
 
-	slot0.buffModel:setList(slot1:getBuffList())
+	slot0.buffModel:setList(slot1.getBuffList(slot7))
 
 	slot2 = {}
 

@@ -29,9 +29,9 @@ function slot0.updateInfo(slot0, slot1, slot2, slot3)
 
 	if not slot0.heroMo then
 		slot0.heroMo = HeroMo.New()
-		slot8 = HeroConfig.instance:getHeroCO(slot0._heroId)
+		slot8 = {}
 
-		slot0.heroMo:init({}, slot8)
+		slot0.heroMo:init(slot8, HeroConfig.instance:getHeroCO(slot0._heroId))
 
 		slot0.heroMo.passiveSkillLevel = {}
 

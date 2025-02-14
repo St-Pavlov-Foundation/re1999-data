@@ -49,7 +49,9 @@ function slot0.refreshParam(slot0)
 end
 
 function slot0.refreshView(slot0)
-	AudioMgr.instance:trigger(AudioEnum.Act186.stop_ui_bus)
+	slot4 = AudioEnum.Act186.stop_ui_bus
+
+	AudioMgr.instance:trigger(slot4)
 
 	for slot4, slot5 in ipairs(slot0.effectList) do
 		gohelper.setActive(slot5, false)

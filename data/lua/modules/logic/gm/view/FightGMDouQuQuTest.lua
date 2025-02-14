@@ -47,11 +47,11 @@ function slot0.onOpen(slot0)
 
 	slot0._enemySelectedList:setFuncNameOfRefreshItemData("refreshItemData")
 
-	slot4 = FightGMDouQuQuTestSelectItem
-	slot5 = slot0._playerSelectedItemContent
-	slot0._playerSelectedList = slot0:com_registViewItemList(slot0._selectItem, slot4, slot5)
+	slot5 = FightGMDouQuQuTestSelectItem
+	slot0._playerSelectedList = slot0:com_registViewItemList(slot0._selectItem, slot5, slot0._playerSelectedItemContent)
+	slot4 = "refreshItemData"
 
-	slot0._playerSelectedList:setFuncNameOfRefreshItemData("refreshItemData")
+	slot0._playerSelectedList:setFuncNameOfRefreshItemData(slot4)
 
 	slot0._enemySelectList.listType = "_enemySelectList"
 	slot0._playerSelectList.listType = "_playerSelectList"

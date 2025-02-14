@@ -74,11 +74,12 @@ function slot0._editableInitView(slot0)
 	uv0.super._editableInitView(slot0)
 
 	slot0._btnLongPress = uv1.Get(slot0._btnclick.gameObject)
-
-	slot0._btnLongPress:SetLongPressTime({
+	slot4 = {
 		0.5,
 		99999
-	})
+	}
+
+	slot0._btnLongPress:SetLongPressTime(slot4)
 
 	slot0._goranks = slot0:getUserDataTb_()
 

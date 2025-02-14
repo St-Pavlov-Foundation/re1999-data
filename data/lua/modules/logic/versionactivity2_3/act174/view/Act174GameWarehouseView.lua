@@ -149,7 +149,8 @@ function slot0.refreshWareItem(slot0, slot1)
 		slot2 = slot0.wareHouseMo:getItemData()
 	end
 
-	slot0.curPageWareDatas = slot0:calculateCurPage(slot2)
+	slot6 = slot2
+	slot0.curPageWareDatas = slot0:calculateCurPage(slot6)
 
 	for slot6 = 1, slot0.maxWareCnt do
 		slot0.wareItemList[slot6]:setData(slot0.curPageWareDatas[slot6], slot0.wareType)

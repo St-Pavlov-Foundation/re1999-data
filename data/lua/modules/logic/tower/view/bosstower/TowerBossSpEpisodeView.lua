@@ -178,9 +178,10 @@ function slot0.refreshRewards(slot0, slot1)
 		slot0.rewardItems = {}
 	end
 
-	slot6 = #(GameUtil.splitString2(slot1, true) or {})
+	slot2 = GameUtil.splitString2(slot1, true) or {}
+	slot6 = #slot0.rewardItems
 
-	for slot6 = 1, math.max(#slot0.rewardItems, slot6) do
+	for slot6 = 1, math.max(slot6, #slot2) do
 		if not slot0.rewardItems[slot6] then
 			slot7 = slot0:getUserDataTb_()
 			slot7.go = gohelper.cloneInPlace(slot0.goItem)

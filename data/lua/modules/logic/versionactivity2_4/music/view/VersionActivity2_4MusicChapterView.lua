@@ -54,8 +54,10 @@ end
 
 function slot0._initChapterList(slot0)
 	slot0._itemList = slot0:getUserDataTb_()
+	slot4 = Activity179Model.instance
+	slot6 = slot4
 
-	for slot5, slot6 in ipairs(Activity179Config.instance:getEpisodeCfgList(Activity179Model.instance:getActivityId())) do
+	for slot5, slot6 in ipairs(Activity179Config.instance:getEpisodeCfgList(slot4.getActivityId(slot6))) do
 		if slot6.episodeType ~= VersionActivity2_4MusicEnum.EpisodeType.Free then
 			slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(slot0.viewContainer:getSetting().otherRes[1], slot0._gocontent), VersionActivity2_4MusicChapterItem)
 
@@ -85,7 +87,10 @@ function slot0._getSelectedEpisodeIndex(slot0)
 	end
 
 	Activity179Model.instance:clearSelectedEpisodeId()
-	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Version2_4MusicSelectEpisode, VersionActivity2_4MusicEnum.FirstEpisodeId)
+
+	slot5 = VersionActivity2_4MusicEnum.FirstEpisodeId
+
+	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Version2_4MusicSelectEpisode, slot5)
 
 	for slot5, slot6 in ipairs(slot0._itemList) do
 		slot6:updateSelectedFlag()

@@ -43,10 +43,10 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TurnbackController.instance, TurnbackEvent.RefreshView, slot0.refreshUI, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseViewFinish, slot0)
 
-	slot4 = slot0.refreshUI
-	slot5 = slot0
+	slot4 = TimeDispatcher.OnDailyRefresh
+	slot5 = slot0.refreshUI
 
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot4, slot5)
+	TimeDispatcher.instance:unregisterCallback(slot4, slot5, slot0)
 
 	for slot4, slot5 in ipairs(slot0._searchItemList) do
 		slot5.btnclick:RemoveClickListener()

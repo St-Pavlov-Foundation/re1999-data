@@ -142,7 +142,10 @@ function slot0.jumpToDungeonViewWithEpisode(slot0, slot1)
 	table.insert(slot0.closeViewNames, ViewName.StoryView)
 	table.insert(slot0.closeViewNames, ViewName.DungeonPuzzleChangeColorView)
 	table.insert(slot0.closeViewNames, ViewName.InvestigateOpinionView)
-	table.insert(slot0.closeViewNames, ViewName.InvestigateView)
+
+	slot6 = ViewName.InvestigateView
+
+	table.insert(slot0.closeViewNames, slot6)
 
 	for slot6 in pairs(ActivityHelper.getJumpNeedCloseViewDict()) do
 		table.insert(slot0.closeViewNames, slot6)

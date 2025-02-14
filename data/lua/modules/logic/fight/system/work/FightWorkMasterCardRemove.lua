@@ -17,7 +17,8 @@ function slot0.onStart(slot0)
 		AudioMgr.instance:trigger(20190020)
 		table.sort(slot1, FightWorkCardRemove2.sort)
 
-		slot3 = FightCardDataHelper.calcRemoveCardTime(tabletool.copy(FightCardModel.instance:getHandCards()), slot1, 0.7)
+		slot7 = 0.7
+		slot3 = FightCardDataHelper.calcRemoveCardTime(tabletool.copy(FightCardModel.instance:getHandCards()), slot1, slot7)
 
 		for slot7, slot8 in ipairs(slot1) do
 			table.remove(slot2, slot8)

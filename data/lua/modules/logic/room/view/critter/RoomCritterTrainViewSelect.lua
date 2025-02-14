@@ -72,7 +72,8 @@ function slot0._editableInitView(slot0)
 	slot0._attributeItems = {}
 	slot0._goCritterAttrContent = gohelper.findChild(slot0._gotrainselect, "#go_critter_info/#scroll_critterarr/viewport/content")
 	slot0._gopreferenceitem = gohelper.findChild(slot0._gotrainselect, "#go_hero_info/#scroll_heroarr/viewport/content/go_preferenceitem")
-	slot0._referenceCanvasGroup = gohelper.onceAddComponent(slot0._gopreferenceitem, typeof(UnityEngine.CanvasGroup))
+	slot6 = UnityEngine.CanvasGroup
+	slot0._referenceCanvasGroup = gohelper.onceAddComponent(slot0._gopreferenceitem, typeof(slot6))
 
 	gohelper.setActive(slot0._gobaseitem, false)
 

@@ -110,7 +110,9 @@ end
 
 function slot0.urlParse(slot0)
 	if string.split(slot0, "?") and slot1[2] then
-		for slot6, slot7 in string.gmatch(slot1[2], "([^&=]+)=([^&=]*)") do
+		slot6 = "([^&=]+)=([^&=]*)"
+
+		for slot6, slot7 in string.gmatch(slot1[2], slot6) do
 			-- Nothing
 		end
 

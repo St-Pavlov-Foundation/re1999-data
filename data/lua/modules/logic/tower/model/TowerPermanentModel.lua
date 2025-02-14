@@ -84,7 +84,9 @@ function slot0.checkhasLockTip(slot0)
 end
 
 function slot0.InitData(slot0)
-	slot0:initDefaultSelectStage(TowerModel.instance:getCurPermanentMo())
+	slot5 = TowerModel.instance:getCurPermanentMo()
+
+	slot0:initDefaultSelectStage(slot5)
 
 	slot0.permanentMoList = {}
 

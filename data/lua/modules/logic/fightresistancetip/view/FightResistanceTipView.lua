@@ -91,10 +91,12 @@ function slot0.buildResistanceListByReToughness(slot0, slot1, slot2)
 	tabletool.clear(slot0.tempResistanceList)
 
 	if slot0:getResistanceValue(slot1, slot2) and slot4 > 0 then
-		table.insert(slot0.resistanceList, {
+		slot8 = {
 			resistanceId = slot2,
 			value = slot4
-		})
+		}
+
+		table.insert(slot0.resistanceList, slot8)
 
 		slot0.resistanceDict[slot2] = true
 
@@ -107,7 +109,9 @@ function slot0.buildResistanceListByReToughness(slot0, slot1, slot2)
 			slot0.resistanceDict[slot9] = true
 		end
 
-		table.sort(slot0.tempResistanceList, uv0.sortResistance)
+		slot8 = uv0.sortResistance
+
+		table.sort(slot0.tempResistanceList, slot8)
 
 		for slot8, slot9 in ipairs(slot0.tempResistanceList) do
 			table.insert(slot0.resistanceList, slot9)
@@ -132,7 +136,9 @@ function slot0.buildResistanceListByResistanceDict(slot0, slot1)
 	end
 
 	if #slot0.tempResistanceList > 0 then
-		table.sort(slot0.tempResistanceList, uv0.sortResistance)
+		slot5 = uv0.sortResistance
+
+		table.sort(slot0.tempResistanceList, slot5)
 
 		for slot5, slot6 in ipairs(slot0.tempResistanceList) do
 			table.insert(slot0.resistanceList, slot6)

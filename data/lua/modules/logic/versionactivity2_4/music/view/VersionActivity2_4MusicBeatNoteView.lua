@@ -100,8 +100,9 @@ end
 
 function slot0._initPosList(slot0)
 	slot0._posGoList = slot0:getUserDataTb_()
+	slot4 = slot0._gobeatitem
 
-	table.insert(slot0._posGoList, slot0._gobeatitem)
+	table.insert(slot0._posGoList, slot4)
 
 	for slot4 = 1, 29 do
 		table.insert(slot0._posGoList, gohelper.cloneInPlace(slot0._gobeatitem))

@@ -76,9 +76,9 @@ end
 
 function slot0.refreshSignList(slot0)
 	slot0._waitRefresh = false
-	slot5 = #slot0.signList
+	slot5 = #ActivityConfig.instance:getNorSignActivityCos(slot0.signActId)
 
-	for slot5 = 1, math.max(#ActivityConfig.instance:getNorSignActivityCos(slot0.signActId), slot5) do
+	for slot5 = 1, math.max(slot5, #slot0.signList) do
 		slot0:getOrCreateItem(slot5):onUpdateMO(slot1[slot5])
 	end
 end

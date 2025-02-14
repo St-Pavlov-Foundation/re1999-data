@@ -321,17 +321,18 @@ function slot0.refreshLantern(slot0)
 
 		slot0._simagepicture:LoadImage(ResUrl.getAct184LanternIcon(Activity187Config.instance:getLanternImg(slot4, slot3)))
 
-		slot10 = slot3
-		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot4, slot10)
+		slot10 = slot4
+		slot11 = slot3
+		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot10, slot11)
 
 		for slot10, slot11 in ipairs(Activity187Model.instance:getPaintingRewardList(slot0._curIndex)) do
 			slot0:getRiddlesRewardItem(slot10).itemIcon:onUpdateMO(slot11)
 		end
 	end
 
-	slot7 = slot1
+	slot7 = ResUrl.getAct184LanternIcon
 
-	slot0._simagelantern:LoadImage(ResUrl.getAct184LanternIcon(slot7))
+	slot0._simagelantern:LoadImage(slot7(slot1))
 
 	for slot7, slot8 in pairs(slot0._lowRibbonDict) do
 		gohelper.setActive(slot8, slot7 == slot2)

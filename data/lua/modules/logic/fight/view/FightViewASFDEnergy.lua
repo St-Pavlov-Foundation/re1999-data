@@ -82,7 +82,9 @@ function slot0.onFlyDone(slot0)
 		return
 	end
 
-	AudioMgr.instance:trigger(20248002)
+	slot4 = 20248002
+
+	AudioMgr.instance:trigger(slot4)
 	tabletool.clear(slot0.tweenIdList)
 
 	for slot4, slot5 in ipairs(slot0.flyItemList) do

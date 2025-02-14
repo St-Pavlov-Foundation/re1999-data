@@ -86,9 +86,10 @@ function slot0.frameTick(slot0)
 	end
 
 	slot1 = 3
+	slot6 = 0.1
 
 	for slot6 = 1, slot1 do
-		slot0:_tickDt(Mathf.Clamp(UnityEngine.Time.deltaTime, 0.01, 0.1) / slot1)
+		slot0:_tickDt(Mathf.Clamp(UnityEngine.Time.deltaTime, 0.01, slot6) / slot1)
 	end
 end
 
@@ -200,7 +201,9 @@ function slot0.checkGMKey(slot0)
 end
 
 function slot0.clear(slot0)
-	TaskDispatcher.cancelTask(slot0.frameTick, slot0)
+	slot4 = slot0
+
+	TaskDispatcher.cancelTask(slot0.frameTick, slot4)
 
 	for slot4, slot5 in pairs(slot0._entitys) do
 		slot5:dispose()

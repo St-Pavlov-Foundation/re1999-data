@@ -65,7 +65,9 @@ function slot0.showStylePercentList(slot0)
 		table.insert(slot2, slot7)
 	end
 
-	table.sort(slot2, TalentStyleModel.sortUnlockPercent)
+	slot6 = TalentStyleModel.sortUnlockPercent
+
+	table.sort(slot2, slot6)
 
 	for slot6, slot7 in ipairs(slot2) do
 		slot0:getItem(slot6):onRefreshMo(slot7)
