@@ -70,6 +70,7 @@ slot0.Activity = {
 	RoomSign = 12239,
 	V2a5_DecorateStore = 12523,
 	V2a5_Act186Sign = 12519,
+	V2a5_WarmUp = 12525,
 	LanternFestival = 11710,
 	V2a5_TurnBack_H5 = 12506,
 	V2a5_Act186 = 12518,

@@ -31,7 +31,9 @@ end
 function slot0.parseCharacterCo(slot0)
 	for slot4, slot5 in ipairs(lua_character.configList) do
 		if not string.nilorempty(slot5.skill) then
-			for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot6, true)) do
+			slot11 = true
+
+			for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot6, slot11)) do
 				slot13 = slot12[2]
 				slot14 = slot12[3]
 				slot15 = slot12[4]
@@ -56,14 +58,18 @@ function slot0.parseSkillExLevelCo(slot0)
 		slot6 = slot5.heroId
 
 		if not string.nilorempty(slot5.skillGroup1) then
-			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot7, "|")) do
+			slot12 = "|"
+
+			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot7, slot12)) do
 				slot0._skillHeroIdDict[slot13] = slot6
 				slot0._skillCurrCardLvDict[slot13] = slot12
 			end
 		end
 
 		if not string.nilorempty(slot5.skillGroup2) then
-			for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot8, "|")) do
+			slot13 = "|"
+
+			for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot8, slot13)) do
 				slot0._skillHeroIdDict[slot14] = slot6
 				slot0._skillCurrCardLvDict[slot14] = slot13
 			end

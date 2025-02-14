@@ -197,7 +197,10 @@ function slot0._editableInitView(slot0)
 	end
 
 	gohelper.setActive(slot0._goruleitem, false)
-	gohelper.setActive(slot0._goadditiondetail, false)
+
+	slot5 = false
+
+	gohelper.setActive(slot0._goadditiondetail, slot5)
 
 	slot0._ruleItemsImage = slot0:getUserDataTb_()
 	slot0._ruleItemsDescImage = slot0:getUserDataTb_()

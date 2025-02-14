@@ -80,9 +80,10 @@ function slot0._initWeatherDayNew(slot0)
 
 	for slot4, slot5 in ipairs(lua_weather_day_new.configList) do
 		slot0._sceneReportDict[slot5.sceneId] = slot0._sceneReportDict[slot5.sceneId] or {}
-		slot11 = "#"
+		slot11 = "|"
+		slot12 = "#"
 
-		for slot11, slot12 in ipairs(GameUtil.splitString2(slot5.reportList, false, "|", slot11)) do
+		for slot11, slot12 in ipairs(GameUtil.splitString2(slot5.reportList, false, slot11, slot12)) do
 			slot0._sceneReportDict[slot5.sceneId][tonumber(slot12[2])] = true
 		end
 	end

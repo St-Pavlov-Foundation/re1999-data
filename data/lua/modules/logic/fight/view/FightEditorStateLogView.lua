@@ -215,8 +215,9 @@ function slot0.typeExplain(slot0)
 	slot6 = {
 		[slot10] = slot11
 	}
+	slot10 = "=.-([-%d]+).-%-%-(.-)\n"
 
-	for slot10, slot11 in string.gmatch(string.gsub(string.sub(slot3, slot4, slot5), "FightEnum.EffectType =", ""), "=.-([-%d]+).-%-%-(.-)\n") do
+	for slot10, slot11 in string.gmatch(string.gsub(string.sub(slot3, slot4, slot5), "FightEnum.EffectType =", ""), slot10) do
 		-- Nothing
 	end
 

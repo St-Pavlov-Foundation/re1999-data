@@ -417,9 +417,11 @@ function slot0.refreshMallItem(slot0, slot1)
 		if lua_auto_chess_mall.configDict[slot6.mallId].type == AutoChessEnum.MallType.Normal then
 			slot0.chargeMall = slot6
 
-			table.sort(slot6.items, function (slot0, slot1)
+			function slot11(slot0, slot1)
 				return lua_auto_chess_mall_item.configDict[slot0.id].order < lua_auto_chess_mall_item.configDict[slot1.id].order
-			end)
+			end
+
+			table.sort(slot6.items, slot11)
 
 			for slot11 = 1, 7 do
 				slot0.chargeItemList[slot11]:setData(slot6.mallId, slot6.items[slot11])
@@ -675,7 +677,7 @@ function slot0.setGuideButtonStatus(slot0)
 	gohelper.setActive(slot0._btnCheckEnemy, GuideModel.instance:isGuideFinish(25403))
 	gohelper.setActive(slot0._goLockBtns, GuideModel.instance:isGuideFinish(25404))
 
-	slot1 = GuideModel.instance:isGuideFinish(25406)
+	slot1 = GuideModel.instance:isGuideFinish(25406) or GuideModel.instance:isGuideFinish(25407)
 
 	gohelper.setActive(slot0._goStarProgress, slot1)
 	gohelper.setActive(slot0._btnFresh, slot1)

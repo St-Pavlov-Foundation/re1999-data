@@ -36,7 +36,9 @@ function StoryTool.getMarkTextIndexs(slot0)
 		return {}
 	end
 
-	table.insert({}, GameUtil.utf8len(slot2[1]))
+	slot8 = GameUtil.utf8len(slot2[1])
+
+	table.insert({}, slot8)
 
 	for slot8 = 2, #slot2 do
 		slot9 = string.split(slot2[slot8], "</em>")
@@ -57,7 +59,9 @@ end
 
 function StoryTool.getMarkTopTextList(slot0)
 	if slot0 and slot0 ~= "" then
-		for slot4, slot5 in string.gmatch(slot0, "<marktop=(%S+)>(%S+)</marktop>") do
+		slot4 = "<marktop=(%S+)>(%S+)</marktop>"
+
+		for slot4, slot5 in string.gmatch(slot0, slot4) do
 			return slot4, slot5
 		end
 	end

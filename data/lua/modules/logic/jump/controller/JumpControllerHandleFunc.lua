@@ -142,7 +142,10 @@ function slot0.jumpToDungeonViewWithEpisode(slot0, slot1)
 	table.insert(slot0.closeViewNames, ViewName.StoryView)
 	table.insert(slot0.closeViewNames, ViewName.DungeonPuzzleChangeColorView)
 	table.insert(slot0.closeViewNames, ViewName.InvestigateOpinionView)
-	table.insert(slot0.closeViewNames, ViewName.InvestigateView)
+
+	slot6 = ViewName.InvestigateView
+
+	table.insert(slot0.closeViewNames, slot6)
 
 	for slot6 in pairs(ActivityHelper.getJumpNeedCloseViewDict()) do
 		table.insert(slot0.closeViewNames, slot6)
@@ -548,7 +551,7 @@ function slot0.jumpToActivityView(slot0, slot1)
 		table.insert(slot0.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		ActivityModel.instance:setTargetActivityCategoryId(slot3)
 		ActivityController.instance:openActivityBeginnerView()
-	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp then
+	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp or slot3 == ActivityEnum.Activity.V2a5_WarmUp then
 		if ActivityHelper.getActivityStatus(slot3, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
 		end

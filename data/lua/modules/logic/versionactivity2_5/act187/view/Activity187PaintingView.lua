@@ -174,9 +174,9 @@ function slot0._onOpenView(slot0, slot1)
 		slot3 = Activity187Config.instance:getLanternRibbon(slot5, slot4)
 	end
 
-	slot8 = slot2
+	slot8 = ResUrl.getAct184LanternIcon
 
-	slot0._simagelantern:LoadImage(ResUrl.getAct184LanternIcon(slot8))
+	slot0._simagelantern:LoadImage(slot8(slot2))
 
 	for slot8, slot9 in pairs(slot0._lowRibbonDict) do
 		gohelper.setActive(slot9, slot8 == slot3)
@@ -249,17 +249,18 @@ function slot0.setPaintStatus(slot0, slot1)
 		slot0._simagepicture:LoadImage(ResUrl.getAct184LanternIcon(Activity187Config.instance:getLanternImg(slot5, slot4)))
 		slot0._simagepicturebg:LoadImage(ResUrl.getAct184LanternIcon(Activity187Config.instance:getLanternImgBg(slot5, slot4)))
 
-		slot12 = slot4
-		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot5, slot12)
+		slot12 = slot5
+		slot13 = slot4
+		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot12, slot13)
 
 		for slot12, slot13 in ipairs(Activity187Model.instance:getPaintingRewardList(slot0._curIndex)) do
 			slot0:getRiddlesRewardItem(slot12).itemIcon:onUpdateMO(slot13)
 		end
 	end
 
-	slot7 = Activity187Enum.EmptyLantern
+	slot7 = ResUrl.getAct184LanternIcon
 
-	slot0._simagelantern:LoadImage(ResUrl.getAct184LanternIcon(slot7))
+	slot0._simagelantern:LoadImage(slot7(Activity187Enum.EmptyLantern))
 
 	for slot7, slot8 in pairs(slot0._lowRibbonDict) do
 		gohelper.setActive(slot8, false)

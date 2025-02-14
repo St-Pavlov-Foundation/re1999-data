@@ -70,10 +70,10 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TurnbackController.instance, TurnbackEvent.RefreshView, slot0._refreshUI, slot0)
 	slot0:addEventCb(TurnbackController.instance, TurnbackEvent.AfterBuyDoubleReward, slot0.succbuydoublereward, slot0)
 
-	slot4 = ViewEvent.OnCloseView
-	slot5 = slot0._onCloseViewFinish
+	slot4 = ViewMgr.instance
+	slot5 = ViewEvent.OnCloseView
 
-	slot0:removeEventCb(ViewMgr.instance, slot4, slot5, slot0)
+	slot0:removeEventCb(slot4, slot5, slot0._onCloseViewFinish, slot0)
 
 	for slot4, slot5 in ipairs(slot0._rewardNodeList) do
 		slot5.btnclick:RemoveClickListener()

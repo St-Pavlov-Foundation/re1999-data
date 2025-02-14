@@ -274,7 +274,10 @@ function slot0._refreshProgress(slot0, slot1)
 				slot11 = PlayerCardConfig.instance:getCardProgressById(slot8)
 
 				gohelper.setActive(slot10.gofull, true)
-				gohelper.setActive(slot10.goempty, false)
+
+				slot15 = false
+
+				gohelper.setActive(slot10.goempty, slot15)
 
 				for slot15, slot16 in pairs(PlayerCardEnum.ProgressShowType) do
 					gohelper.setActive(gohelper.findChild(slot10.gofull, "type" .. slot16), false)
@@ -361,7 +364,10 @@ function slot0._refreshBaseInfo(slot0, slot1)
 				slot11 = PlayerCardConfig.instance:getCardBaseInfoById(slot9)
 
 				gohelper.setActive(slot10.gofull, true)
-				gohelper.setActive(slot10.goempty, false)
+
+				slot15 = false
+
+				gohelper.setActive(slot10.goempty, slot15)
 
 				for slot15, slot16 in pairs(PlayerCardEnum.BaseInfoType) do
 					gohelper.setActive(gohelper.findChild(slot10.gofull, "type" .. slot16), false)

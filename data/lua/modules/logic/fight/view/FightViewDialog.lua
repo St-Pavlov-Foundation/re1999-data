@@ -336,14 +336,18 @@ function slot0._beforeDeadEffect1(slot0, slot1)
 			break
 		end
 
-		for slot16, slot17 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot10].monster, "#")) do
+		slot16 = "#"
+
+		for slot16, slot17 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot10].monster, slot16)) do
 			if slot17 == tonumber(slot2.modelId) then
 				return
 			end
 		end
 
 		if not string.nilorempty(slot11.spMonster) then
-			for slot17, slot18 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot11.spMonster, "#")) do
+			slot17 = "#"
+
+			for slot17, slot18 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot11.spMonster, slot17)) do
 				if slot18 == tonumber(slot2.modelId) then
 					return
 				end
@@ -352,8 +356,10 @@ function slot0._beforeDeadEffect1(slot0, slot1)
 	end
 
 	slot6 = {}
+	slot9 = FightDataHelper.entityMgr
+	slot11 = slot9
 
-	for slot10, slot11 in ipairs(FightDataHelper.entityMgr:getEnemyNormalList()) do
+	for slot10, slot11 in ipairs(slot9.getEnemyNormalList(slot11)) do
 		if slot11:isStatusDead() then
 			table.insert(slot6, slot11)
 		end
@@ -407,14 +413,18 @@ function slot0._onStartFightPlayBornNormal(slot0, slot1)
 			break
 		end
 
-		for slot16, slot17 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot10].monster, "#")) do
+		slot16 = "#"
+
+		for slot16, slot17 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot10].monster, slot16)) do
 			if slot17 == tonumber(slot2.modelId) then
 				return
 			end
 		end
 
 		if not string.nilorempty(slot11.spMonster) then
-			for slot17, slot18 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot11.spMonster, "#")) do
+			slot17 = "#"
+
+			for slot17, slot18 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot11.spMonster, slot17)) do
 				if slot18 == tonumber(slot2.modelId) then
 					return
 				end
@@ -423,9 +433,10 @@ function slot0._onStartFightPlayBornNormal(slot0, slot1)
 	end
 
 	slot6 = {}
-	slot11 = true
+	slot11 = nil
+	slot12 = true
 
-	for slot11, slot12 in ipairs(FightDataHelper.entityMgr:getNormalList(FightEnum.EntitySide.EnemySide, nil, slot11)) do
+	for slot11, slot12 in ipairs(FightDataHelper.entityMgr:getNormalList(FightEnum.EntitySide.EnemySide, slot11, slot12)) do
 		table.insert(slot6, slot12)
 	end
 
@@ -777,7 +788,9 @@ function slot0._checkMonsterWaveEndAndCheckBuffId(slot0)
 end
 
 function slot0._detectMonsterDie(slot0)
-	for slot5 = 2, #FightStrUtil.instance:getSplitToNumberCache(slot0.dialogConfig.param, "#") do
+	slot5 = "#"
+
+	for slot5 = 2, #FightStrUtil.instance:getSplitToNumberCache(slot0.dialogConfig.param, slot5) do
 		if uv0 == slot1[slot5] then
 			return true
 		end

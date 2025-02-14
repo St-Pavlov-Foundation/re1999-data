@@ -19,7 +19,9 @@ function slot0.onStart(slot0)
 	slot0._cacheEntityIds = {}
 
 	if #string.split(slot0._actEffectMO.reserveStr, "|") > 0 then
-		AudioMgr.instance:trigger(410000090)
+		slot5 = 410000090
+
+		AudioMgr.instance:trigger(slot5)
 
 		for slot5, slot6 in ipairs(slot1) do
 			if FightDataHelper.entityMgr:getById(string.split(slot6, "#")[1]) and FightHelper.getEntity(slot8) and slot10.mover then

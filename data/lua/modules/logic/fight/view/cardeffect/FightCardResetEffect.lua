@@ -99,8 +99,9 @@ function slot0._buildHandCardMove(slot0)
 	slot2 = {
 		[slot11] = true
 	}
+	slot9 = FlowParallel.New()
 
-	FlowSequence.New():addWork(FlowParallel.New())
+	FlowSequence.New():addWork(slot9)
 
 	for slot9 = 1, #slot0.context.view.viewContainer.fightViewHandCard._handCardItemList do
 		if slot1[slot9] and slot1[slot9].origin then
@@ -115,11 +116,11 @@ function slot0._buildHandCardMove(slot0)
 	end
 
 	slot3:addWork(FunctionWork.New(function ()
-		slot3 = FightCardModel.instance
-		slot4 = slot3
-		slot3 = slot3.getHandCards
+		slot3 = FightEvent.UpdateHandCards
+		slot4 = FightCardModel.instance
+		slot4 = slot4.getHandCards
 
-		FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, slot3(slot4))
+		FightController.instance:dispatchEvent(slot3, slot4(slot4))
 
 		for slot3, slot4 in ipairs(uv0) do
 			if not uv1[slot3] then

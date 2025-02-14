@@ -130,9 +130,10 @@ function slot0.refreshRewards(slot0, slot1, slot2)
 		slot0.rewardItems = {}
 	end
 
-	slot7 = #(FightResultModel.instance:getMaterialDataList() or {})
+	slot3 = FightResultModel.instance:getMaterialDataList() or {}
+	slot7 = #slot0.rewardItems
 
-	for slot7 = 1, math.max(#slot0.rewardItems, slot7) do
+	for slot7 = 1, math.max(slot7, #slot3) do
 		slot9 = slot3[slot7]
 
 		if not slot0.rewardItems[slot7] then
@@ -172,9 +173,10 @@ function slot0.refreshAttr(slot0)
 
 	slot3 = TowerConfig.instance:getAssistDevelopConfig(slot0.towerConfig.bossId, slot0.layerConfig.bossLevel) and slot2.talentPoint
 	slot0.txtLev.text = tostring(slot1)
-	slot8 = #(GameUtil.splitString2(slot2 and slot2.attribute, true) or {})
+	slot4 = GameUtil.splitString2(slot2 and slot2.attribute, true) or {}
+	slot8 = #slot0.attrItems
 
-	for slot8 = 1, math.max(#slot0.attrItems, slot8) do
+	for slot8 = 1, math.max(slot8, #slot4) do
 		if not slot0.attrItems[slot8] then
 			slot0.attrItems[slot8] = slot0:createAttrItem(slot8)
 		end

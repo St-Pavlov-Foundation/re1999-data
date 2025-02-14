@@ -102,9 +102,9 @@ function slot0.refreshView(slot0)
 end
 
 function slot0.refreshReward(slot0, slot1)
-	slot6 = #slot0.rewardList
+	slot6 = #GameUtil.splitString2(slot0._mo.bonus, true)
 
-	for slot6 = 1, math.max(#GameUtil.splitString2(slot0._mo.bonus, true), slot6) do
+	for slot6 = 1, math.max(slot6, #slot0.rewardList) do
 		slot0:updateRewardItem(slot0:getOrCreateRewardItem(slot6), slot2[slot6], slot1)
 	end
 end

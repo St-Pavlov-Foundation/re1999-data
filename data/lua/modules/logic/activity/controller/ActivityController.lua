@@ -118,7 +118,8 @@ slot3 = {
 	ActivityEnum.Activity.RoomSign,
 	ActivityEnum.Activity.V2a2_WarmUp,
 	ActivityEnum.Activity.V2a3_WarmUp,
-	ActivityEnum.Activity.V2a4_WarmUp
+	ActivityEnum.Activity.V2a4_WarmUp,
+	ActivityEnum.Activity.V2a5_WarmUp
 }
 
 function slot0.checkGetActivityInfo(slot0)

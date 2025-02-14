@@ -177,7 +177,7 @@ function slot0.setCardsUniversalMatch(slot0, slot1, slot2, slot3, slot4, slot5)
 		end
 	end
 
-	FightCardModel.instance:setUniversalCombine(nil, )
+	FightCardModel.instance:setUniversalCombine(nil, slot16)
 
 	slot12 = nil
 

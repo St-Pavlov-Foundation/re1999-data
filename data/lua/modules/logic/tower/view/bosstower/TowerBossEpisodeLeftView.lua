@@ -7,7 +7,8 @@ function slot0.onInitView(slot0)
 	slot0.goUp = gohelper.findChild(slot0.viewGO, "root/Left/#btn_HandBook/#go_up")
 	slot0.bossIcon = gohelper.findChildSingleImage(slot0.viewGO, "root/Left/Pass/Head/Mask/image_bossIcon")
 	slot0.btnTask = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/Left/Pass")
-	slot0.txtPassLev = gohelper.findChildTextMesh(slot0.viewGO, "root/Left/Pass/#txt_PassLevel")
+	slot4 = "root/Left/Pass/#txt_PassLevel"
+	slot0.txtPassLev = gohelper.findChildTextMesh(slot0.viewGO, slot4)
 	slot0.taskList = {}
 
 	for slot4 = 1, 4 do

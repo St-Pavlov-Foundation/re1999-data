@@ -99,10 +99,10 @@ function slot0.initResolutionRationDataList(slot0)
 		return
 	end
 
-	slot7 = math.floor(slot2 / slot0._curRate)
-	slot8 = true
+	slot7 = slot2
+	slot8 = math.floor(slot2 / slot0._curRate)
 
-	slot0:_appendResolutionData(slot2, slot7, slot8)
+	slot0:_appendResolutionData(slot7, slot8, true)
 
 	for slot7, slot8 in ipairs(uv0.ResolutionRatioWidthList) do
 		if slot8 <= slot0._systemScreenWidth and slot8 <= slot2 then

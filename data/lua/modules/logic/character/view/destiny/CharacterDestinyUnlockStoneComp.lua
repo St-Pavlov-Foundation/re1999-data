@@ -34,7 +34,8 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot0._goeffect = gohelper.findChild(slot0.viewGO, "effectItem")
+	slot4 = "effectItem"
+	slot0._goeffect = gohelper.findChild(slot0.viewGO, slot4)
 	slot0._effectItems = slot0:getUserDataTb_()
 
 	for slot4 = 1, CharacterDestinyEnum.EffectItemCount do
@@ -160,9 +161,9 @@ function slot0.onUpdateMo(slot0, slot1, slot2)
 	slot0._isSuccessUnlock = {}
 	slot0.heroId = slot1
 	slot0.stoneId = slot2
-	slot7 = CharacterDestinyConfig.instance:getDestinyFacetConsumeCo(slot2).icon
+	slot7 = ResUrl.getDestinyIcon
 
-	slot0._simagestone:LoadImage(ResUrl.getDestinyIcon(slot7))
+	slot0._simagestone:LoadImage(slot7(CharacterDestinyConfig.instance:getDestinyFacetConsumeCo(slot2).icon))
 
 	for slot7 = 1, CharacterDestinyEnum.EffectItemCount do
 		slot8 = slot0:getEffectItem(slot7)

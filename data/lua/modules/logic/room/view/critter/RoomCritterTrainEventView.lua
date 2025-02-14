@@ -101,9 +101,9 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
-	slot4 = slot0._refreshCurrency
+	slot4 = CurrencyEvent.CurrencyChange
 
-	CurrencyController.instance:unregisterCallback(CurrencyEvent.CurrencyChange, slot4, slot0)
+	CurrencyController.instance:unregisterCallback(slot4, slot0._refreshCurrency, slot0)
 
 	for slot4 = 1, #slot0._eventTbList do
 		slot0._eventTbList[slot4]._btnevent:RemoveClickListener()

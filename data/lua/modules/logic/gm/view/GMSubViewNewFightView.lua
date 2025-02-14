@@ -137,8 +137,9 @@ end
 function slot0.getEntityNameList(slot0)
 	slot0.entityNameList = {}
 	slot0.entityList = {}
+	slot4 = slot0.entityList
 
-	FightDataHelper.entityMgr:getAllEntityList(slot0.entityList)
+	FightDataHelper.entityMgr:getAllEntityList(slot4)
 
 	for slot4, slot5 in ipairs(slot0.entityList) do
 		table.insert(slot0.entityNameList, slot5:getCO() and slot6.name or slot5.id)

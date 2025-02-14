@@ -4190,7 +4190,7 @@ slot0.InformPlayerTipView = {
 slot0.PlayerInfoView = {
 	destroy = 0,
 	container = "PlayerInfoViewContainer",
-	mainRes = "ui/viewres/social/playerinfoview.prefab",
+	mainRes = "ui/viewres/social/playerinfoview2.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default,
@@ -19467,6 +19467,15 @@ slot0.V2a5_GoldenMilletPresentFullView = {
 	mainRes = "ui/viewres/versionactivity_2_5/v2a5_goldenmilletpresentfull.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
+}
+slot0.V2a5_WarmUp = {
+	destroy = 0,
+	container = "V2a5_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/v2a5_warmup/v2a5_warmup.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
 }
 slot1 = {}
 

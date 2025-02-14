@@ -115,7 +115,10 @@ function slot0.getRateIndex(slot0, slot1)
 
 		uv2("[SimpleRandomModel - getRateIndex] =========== begin")
 		uv2("tot: " .. slot3)
-		uv2("result index: " .. slot2)
+
+		slot9 = slot2
+
+		uv2("result index: " .. slot9)
 
 		for slot9, slot10 in ipairs(slot1) do
 			uv2(uv3("\t[%s]: %s", slot9, slot10))

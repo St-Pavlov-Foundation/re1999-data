@@ -255,7 +255,10 @@ function slot0._editableInitView(slot0)
 	slot0.blindnessColorCanvasGroup.alpha = 1
 
 	ZProj.UGUIHelper.SetColorAlpha(slot0.imageMoveLeftBtn, 0.5)
-	ZProj.UGUIHelper.SetColorAlpha(slot0.imageMoveRightBtn, 0.5)
+
+	slot4 = 0.5
+
+	ZProj.UGUIHelper.SetColorAlpha(slot0.imageMoveRightBtn, slot4)
 
 	for slot4 = 1, 4 do
 		gohelper.setActive(slot0["_gocolor" .. slot4 .. "selected"], false)
@@ -283,9 +286,9 @@ function slot0.initColorPlaneData(slot0)
 	slot0.isOpenColorPlane = false
 	slot0.originTrans = gohelper.findChild(slot0.viewGO, "#go_colorPlane/#go_originPos").transform
 	slot0.startPosTrans = gohelper.findChild(slot0.viewGO, "#go_colorPlane/#go_startPos").transform
-	slot6 = 0
-	slot0.startVector = Vector3(slot0.startPosTrans.localPosition.x - slot0.originTrans.localPosition.x, slot0.startPosTrans.localPosition.y - slot0.originTrans.localPosition.y, slot6)
-	slot0.colorPlaneRect = slot0._gocolorPlane:GetComponent(gohelper.Type_RectTransform)
+	slot0.startVector = Vector3(slot0.startPosTrans.localPosition.x - slot0.originTrans.localPosition.x, slot0.startPosTrans.localPosition.y - slot0.originTrans.localPosition.y, 0)
+	slot6 = gohelper.Type_RectTransform
+	slot0.colorPlaneRect = slot0._gocolorPlane:GetComponent(slot6)
 	slot0.mouseCheckRadius = 270
 	slot0.colorPlaneImageMap = slot0:getUserDataTb_()
 

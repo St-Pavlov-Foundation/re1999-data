@@ -124,12 +124,14 @@ function slot0._setScale(slot0, slot1)
 	slot0._targetPos.x = slot0._targetPos.x / slot0._scale * slot1
 	slot0._targetPos.y = slot0._targetPos.y / slot0._scale * slot1
 	slot0._scale = slot1
-	slot5 = slot0._scale
-	slot6 = 1
+	slot6 = slot0._scale
 
-	transformhelper.setLocalScale(slot0._sceneTrans, slot0._scale, slot5, slot6)
+	transformhelper.setLocalScale(slot0._sceneTrans, slot0._scale, slot6, 1)
 	slot0:calcSceneBoard()
-	slot0:setScenePosSafety(slot0._targetPos)
+
+	slot5 = slot0._targetPos
+
+	slot0:setScenePosSafety(slot5)
 
 	for slot5, slot6 in pairs(slot0._buildings) do
 		slot6:setUIScale(slot0._scale)

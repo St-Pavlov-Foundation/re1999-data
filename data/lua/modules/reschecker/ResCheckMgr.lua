@@ -95,8 +95,9 @@ function slot0._getAllLocalLang(slot0)
 
 	slot2 = {}
 	slot3 = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+	slot8 = "HD"
 
-	table.insert(slot3, "HD")
+	table.insert(slot3, slot8)
 
 	for slot8 = 1, #slot3 do
 		if slot3[slot8] == GameConfig:GetDefaultVoiceShortcut() or not string.nilorempty(slot1:GetLocalVersion(slot9)) or not BootVoiceView.instance:isFirstDownloadDone() then
@@ -113,11 +114,10 @@ function slot0._getDLCInfo(slot0, slot1)
 	for slot7, slot8 in ipairs(HotUpdateOptionPackageMgr.instance:getPackageNameList()) do
 		table.insert(slot3, HotUpdateOptionPackageMgr.instance:formatLangPackName("res", slot8))
 
-		slot11 = HotUpdateOptionPackageMgr.instance
-		slot12 = slot11
-		slot13 = "media"
+		slot12 = HotUpdateOptionPackageMgr.instance
+		slot12 = slot12.formatLangPackName
 
-		table.insert(slot3, slot11.formatLangPackName(slot12, slot13, slot8))
+		table.insert(slot3, slot12(slot12, "media", slot8))
 
 		for slot12, slot13 in ipairs(slot1) do
 			table.insert(slot3, HotUpdateOptionPackageMgr.instance:formatLangPackName(slot13, slot8))

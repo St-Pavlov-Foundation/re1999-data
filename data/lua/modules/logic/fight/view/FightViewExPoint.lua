@@ -148,7 +148,9 @@ function slot0._respBeginRound(slot0)
 		slot6:applyMoveCardExPoint()
 	end
 
-	for slot5, slot6 in ipairs(FightHelper.getSideEntitys(FightEnum.EntitySide.MySide, false)) do
+	slot5 = false
+
+	for slot5, slot6 in ipairs(FightHelper.getSideEntitys(FightEnum.EntitySide.MySide, slot5)) do
 		FightController.instance:dispatchEvent(FightEvent.UpdateExPoint, slot6.id)
 	end
 end

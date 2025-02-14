@@ -96,8 +96,8 @@ function slot0.LoadEffect(slot0)
 
 	slot0:isShowQuality(slot0._showQuality)
 
-	slot5 = "itemEffect"
-	slot0._effect = gohelper.clone(slot0._effectLoader:getFirstAssetItem():GetResource(), slot0._imagerare.gameObject, slot5)
+	slot5 = slot0._imagerare.gameObject
+	slot0._effect = gohelper.clone(slot0._effectLoader:getFirstAssetItem():GetResource(), slot5, "itemEffect")
 
 	for slot5 = uv0, uv1 do
 		slot0._effectGos[slot5] = gohelper.findChild(slot0._effect, "effect" .. tostring(slot5))

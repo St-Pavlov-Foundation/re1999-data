@@ -176,7 +176,9 @@ function slot0.refreshRewardItems(slot0)
 	slot2 = {}
 
 	if tonumber(slot1) then
-		for slot7, slot8 in ipairs(DungeonConfig.instance:getRewardItems(tonumber(slot1))) do
+		slot8 = slot1
+
+		for slot7, slot8 in ipairs(DungeonConfig.instance:getRewardItems(tonumber(slot8))) do
 			slot2[slot7] = {
 				slot8[1],
 				slot8[2],

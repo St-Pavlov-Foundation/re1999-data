@@ -211,9 +211,9 @@ function slot0._refresh(slot0)
 end
 
 function slot0._refreshRightView(slot0)
-	slot1, slot2, slot3, slot4 = slot0.viewContainer:getRLOCCur()
+	slot1, slot2, slot3, slot8 = slot0.viewContainer:getRLOCCur()
 
-	gohelper.setActive(slot0._btngetrewardGo, slot4)
+	gohelper.setActive(slot0._btngetrewardGo, slot8)
 
 	for slot8, slot9 in ipairs(slot0._rewardItemList) do
 		slot9:refresh()
@@ -335,9 +335,6 @@ function slot0.openDesc(slot0, slot1, slot2)
 	end
 
 	slot0:_resetTweenDescPos()
-
-	slot7 = slot0.viewContainer:getEpisodeConfigCur().time or 0
-
 	gohelper.setActive(slot0._goWrongChannel, false)
 	gohelper.setActive(slot0._scroll_TaskDescGo, true)
 
@@ -349,7 +346,7 @@ function slot0.openDesc(slot0, slot1, slot2)
 
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_tweenId")
 
-	slot0._tweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, math.max(slot7, 1), slot0._tweenDescUpdateCb, function ()
+	slot0._tweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, math.max(slot0.viewContainer:getEpisodeConfigCur().time or 0, 1), slot0._tweenDescUpdateCb, function ()
 		uv0:_tweenDescEndCb(uv1, uv2)
 	end, slot0)
 end

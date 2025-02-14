@@ -168,8 +168,6 @@ function slot0.isStageOpen(slot0, slot1)
 end
 
 function slot0.setNextUnlockStage(slot0)
-	slot0.nextstage = 1
-
 	for slot5, slot6 in ipairs(RougeRewardConfig.instance:getBigRewardToStage()) do
 		for slot10, slot11 in ipairs(slot6) do
 			if not slot0:isStageOpen(slot11.stage) then

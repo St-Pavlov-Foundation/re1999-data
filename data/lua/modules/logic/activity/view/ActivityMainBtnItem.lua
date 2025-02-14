@@ -191,7 +191,7 @@ function slot0._checkIsShowRed_ActivityBeginner(slot0, slot1, slot2)
 			return true
 		end
 
-		if (slot8 == ActivityEnum.Activity.Activity1_9WarmUp or slot8 == ActivityEnum.Activity.V2a0_WarmUp or slot8 == ActivityEnum.Activity.V2a1_WarmUp or slot8 == ActivityEnum.Activity.V2a2_WarmUp or slot8 == ActivityEnum.Activity.V2a3_WarmUp) and Activity125Controller.instance:checkActRed2(slot8) then
+		if (slot8 == ActivityEnum.Activity.Activity1_9WarmUp or slot8 == ActivityEnum.Activity.V2a0_WarmUp or slot8 == ActivityEnum.Activity.V2a1_WarmUp or slot8 == ActivityEnum.Activity.V2a2_WarmUp or slot8 == ActivityEnum.Activity.V2a3_WarmUp or slot8 == ActivityEnum.Activity.V2a5_WarmUp) and Activity125Controller.instance:checkActRed2(slot8) then
 			return true
 		end
 
@@ -248,7 +248,7 @@ function slot0._checkActivityShowRedDotData(slot0, slot1)
 				return
 			end
 
-			if (slot7 == ActivityEnum.Activity.Activity1_9WarmUp or slot7 == ActivityEnum.Activity.V2a0_WarmUp or slot7 == ActivityEnum.Activity.V2a1_WarmUp or slot7 == ActivityEnum.Activity.V2a2_WarmUp or slot7 == ActivityEnum.Activity.V2a3_WarmUp) and Activity125Controller.instance:checkActRed2(slot7) then
+			if (slot7 == ActivityEnum.Activity.Activity1_9WarmUp or slot7 == ActivityEnum.Activity.V2a0_WarmUp or slot7 == ActivityEnum.Activity.V2a1_WarmUp or slot7 == ActivityEnum.Activity.V2a2_WarmUp or slot7 == ActivityEnum.Activity.V2a3_WarmUp or slot7 == ActivityEnum.Activity.V2a5_WarmUp) and Activity125Controller.instance:checkActRed2(slot7) then
 				slot0:_showRedDotType(slot1, slot7)
 
 				return

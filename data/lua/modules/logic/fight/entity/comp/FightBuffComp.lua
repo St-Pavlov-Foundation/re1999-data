@@ -42,8 +42,9 @@ end
 function slot0.dealStartBuff(slot0)
 	if slot0._entity:getMO() then
 		slot0.filter_start_buff_stacked = {}
+		slot6 = slot1
 
-		for slot5, slot6 in pairs(slot1:getBuffDic()) do
+		for slot5, slot6 in pairs(slot1.getBuffDic(slot6)) do
 			slot0:addBuff(slot6, true)
 		end
 
@@ -584,7 +585,9 @@ end
 
 function slot0.beforeDestroy(slot0)
 	if slot0._entity:getMO() then
-		for slot5, slot6 in pairs(slot1:getBuffDic()) do
+		slot6 = slot1
+
+		for slot5, slot6 in pairs(slot1.getBuffDic(slot6)) do
 			slot0:delBuff(slot6.uid)
 		end
 	end
@@ -594,7 +597,10 @@ end
 
 function slot0.onDestroy(slot0)
 	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveEffect, slot0)
-	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveDelBuffEffect, slot0)
+
+	slot4 = slot0
+
+	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveDelBuffEffect, slot4)
 
 	for slot4, slot5 in pairs(slot0._buffHandlerDict) do
 		FightBuffHandlerPool.putHandlerInst(slot5)

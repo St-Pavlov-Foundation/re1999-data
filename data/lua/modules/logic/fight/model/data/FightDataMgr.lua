@@ -49,9 +49,10 @@ end
 
 function slot0.enterStage(slot0, slot1, slot2)
 	slot3 = slot0.stageMgr:getCurStage()
-	slot7 = slot2
+	slot7 = slot1
+	slot8 = slot2
 
-	slot0.stageMgr:enterStage(slot1, slot7)
+	slot0.stageMgr:enterStage(slot7, slot8)
 
 	for slot7, slot8 in ipairs(slot0.mgrList) do
 		if slot8.onEnterStage then
@@ -65,7 +66,9 @@ function slot0.enterStage(slot0, slot1, slot2)
 end
 
 function slot0.exitStage(slot0, slot1)
-	slot0.stageMgr:exitStage(slot1)
+	slot5 = slot1
+
+	slot0.stageMgr:exitStage(slot5)
 
 	for slot5, slot6 in ipairs(slot0.mgrList) do
 		if slot6.onExitStage then

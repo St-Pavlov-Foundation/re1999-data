@@ -193,14 +193,14 @@ function slot0._editableInitView(slot0)
 
 	gohelper.setActive(slot0._godetailView, false)
 	slot0:initScrollEnemyNode()
-
-	slot4 = "fightfocus/full/bg_bossjieshao_mengban.png"
-
-	slot0._simagebg:LoadImage(ResUrl.getFightImage(slot4))
+	slot0._simagebg:LoadImage(ResUrl.getFightImage("fightfocus/full/bg_bossjieshao_mengban.png"))
 	gohelper.setActive(slot0._goenemypassiveitem, false)
 	gohelper.setActive(slot0._goexitem, false)
 	gohelper.setActive(slot0._gobuffitem, false)
-	gohelper.setActive(slot0._godetailpassiveitem, false)
+
+	slot4 = false
+
+	gohelper.setActive(slot0._godetailpassiveitem, slot4)
 
 	slot0._passiveSkillGOs = {}
 	slot0._exItemTables = {}
@@ -484,7 +484,8 @@ function slot0._refreshInfo(slot0, slot1)
 	slot10, slot11 = nil
 
 	for slot15, slot16 in pairs(slot5) do
-		slot10 = string.splitToNumber(slot16, "#")
+		slot20 = "#"
+		slot10 = string.splitToNumber(slot16, slot20)
 
 		for slot20 = 2, #slot10 do
 			table.insert(slot9[slot11], slot10[slot20])
@@ -748,9 +749,9 @@ end
 function slot0._getMontBaseAttr(slot0, slot1)
 	slot2 = lua_monster_skill_template.configDict[slot1.skillTemplate]
 	slot3 = CharacterDataConfig.instance:getMonsterAttributeScoreList(slot1.id)
-	slot9 = 4
+	slot10 = slot3
 
-	table.insert(slot3, 2, table.remove(slot3, slot9))
+	table.insert(slot3, 2, table.remove(slot10, 4))
 
 	slot5 = {}
 
@@ -850,7 +851,9 @@ function slot0.getPassiveSkillList(slot0, slot1)
 			table.insert(slot2, slot10)
 		end
 	else
-		for slot11, slot12 in ipairs(SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(slot1:getCO().id, slot1.exSkillLevel)) do
+		slot11 = slot1.exSkillLevel
+
+		for slot11, slot12 in ipairs(SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(slot1:getCO().id, slot11)) do
 			table.insert(slot2, slot12.skillPassive)
 		end
 	end
@@ -972,9 +975,9 @@ end
 
 function slot0._refreshEnemyPassiveSkill(slot0, slot1)
 	slot0._bossSkillInfos = {}
-	slot6 = true
+	slot6 = FightConfig.instance:getPassiveSkillsAfterUIFilter(slot1.id)
 
-	for slot6 = 1, #FightConfig.instance:_filterSpeicalSkillIds(FightConfig.instance:getPassiveSkillsAfterUIFilter(slot1.id), slot6) do
+	for slot6 = 1, #FightConfig.instance:_filterSpeicalSkillIds(slot6, true) do
 		if lua_skill_specialbuff.configDict[slot2[slot6]] then
 			if not slot0._enemypassiveiconGOs[slot6] then
 				slot9 = slot0:getUserDataTb_()
@@ -1277,7 +1280,8 @@ function slot0._hideDetail(slot0)
 end
 
 function slot0._refreshPassiveDetail(slot0)
-	slot1 = slot0:_checkDestinyEffect(slot0._passiveSkillIds)
+	slot6 = slot0._passiveSkillIds
+	slot1 = slot0:_checkDestinyEffect(slot6)
 
 	for slot6 = 1, #slot1 do
 		if lua_skill.configDict[tonumber(slot1[slot6])] then
@@ -1392,7 +1396,7 @@ end
 function slot0.onDestroyView(slot0)
 	slot4 = 1
 
-	FightWorkFocusMonster.setVirtualCameDamping(1, 1, slot4)
+	FightWorkFocusMonster.setVirtualCameDamping(1, slot4, 1)
 	slot0._simagebg:UnLoadImage()
 
 	for slot4 = 1, #slot0._skillGOs do

@@ -30,8 +30,9 @@ function slot0._editableInitView(slot0)
 
 	slot0._scrollbigType = gohelper.findChildScrollRect(slot0.viewGO, "scroll_bigType")
 	slot0._tabsContainer = {}
+	slot5 = true
 
-	for slot5 = 1, #StoreModel.instance:getFirstTabs(true, true) do
+	for slot5 = 1, #StoreModel.instance:getFirstTabs(true, slot5) do
 		slot6 = slot0:getUserDataTb_()
 		slot6.go = gohelper.cloneInPlace(slot0._gobigTypeItem, "bigTypeItem" .. slot5)
 		slot6.reddot = gohelper.findChild(slot6.go, "go_tabreddot")
@@ -116,9 +117,9 @@ function slot0._refreshTabs(slot0, slot1, slot2)
 
 	if slot3 and #slot3 > 0 then
 		slot0._needCountdown = false
-		slot10 = #slot0._tabsContainer
+		slot10 = #slot3
 
-		for slot10 = 1, math.min(#slot3, slot10) do
+		for slot10 = 1, math.min(slot10, #slot0._tabsContainer) do
 			slot12 = slot0._tabsContainer[slot10]
 
 			if slot3[slot10].id == StoreEnum.DefaultTabId then
@@ -225,7 +226,7 @@ function slot0.onOpen(slot0)
 	slot0:_onRefreshRedDot()
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._OnDailyRefresh, slot0)
 	slot0:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, slot0._onRefreshRedDot, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onRefreshRedDot, slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onStoreInfoChanged, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, slot0._onRefreshRedDot, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, slot0._onPlayStoreInAnim, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, slot0._onPlayStoreOutAnim, slot0)
@@ -261,6 +262,18 @@ function slot0._OnDailyRefresh(slot0)
 	StoreRpc.instance:sendGetStoreInfosRequest(nil, slot0._handleDailyRefreshReceive, slot0)
 end
 
+function slot0._onStoreInfoChanged(slot0)
+	slot0:_onRefreshRedDot()
+
+	slot2 = #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0
+
+	if slot0._hasDecorateGoods and slot2 then
+		slot0:closeThis()
+	end
+
+	slot0._hasDecorateGoods = not slot2
+end
+
 function slot0._handleDailyRefreshReceive(slot0)
 	slot0:_refreshTabs(slot0._selectFirstTabId)
 	slot0:_onRefreshRedDot()
@@ -293,7 +306,7 @@ end
 function slot0.onClose(slot0)
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0._OnDailyRefresh, slot0)
 	slot0:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, slot0._onRefreshRedDot, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onRefreshRedDot, slot0)
+	slot0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onStoreInfoChanged, slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, slot0._onRefreshRedDot, slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, slot0._onPlayStoreInAnim, slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, slot0._onPlayStoreOutAnim, slot0)

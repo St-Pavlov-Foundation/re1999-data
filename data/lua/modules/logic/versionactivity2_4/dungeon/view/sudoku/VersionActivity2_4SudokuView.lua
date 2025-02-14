@@ -139,7 +139,8 @@ function slot0._createNumItems(slot0)
 	slot0._emptyItem2Vaild = {}
 	slot0._sameNumItems = {}
 	slot0._conflictItems = {}
-	slot0._sudukuCfg = VersionActivity2_4SudokuModel.instance:getSudokuCfg(uv0)
+	slot4 = uv0
+	slot0._sudukuCfg = VersionActivity2_4SudokuModel.instance:getSudokuCfg(slot4)
 
 	for slot4, slot5 in ipairs(slot0._sudukuCfg) do
 		for slot9, slot10 in ipairs(slot5) do
@@ -332,7 +333,8 @@ function slot0._onSelectedNumItem(slot0, slot1)
 			end
 		end
 
-		slot0._sameNumItems = slot0:_getSameNumItems(slot1)
+		slot7 = slot1
+		slot0._sameNumItems = slot0:_getSameNumItems(slot7)
 
 		for slot7, slot8 in pairs(slot0._sameNumItems) do
 			slot8:refreshSameNumView(slot0._conflictItems[slot7] == nil)
@@ -398,12 +400,12 @@ function slot0._doSudokuCmd(slot0, slot1)
 			slot13:refreshValidView(false, true, slot6)
 		end
 
-		slot12 = false
-		slot13 = true
+		slot13 = false
 
-		slot0:_resetItemState(slot8, slot12, slot13, slot6)
+		slot0:_resetItemState(slot8, slot13, true, slot6)
 
-		slot0._sameNumItems = slot0:_getSameNumItems(slot2)
+		slot12 = slot2
+		slot0._sameNumItems = slot0:_getSameNumItems(slot12)
 
 		for slot12, slot13 in pairs(slot0._sameNumItems) do
 			slot13:refreshSameNumView(slot0._conflictItems[slot12] == nil, slot6)

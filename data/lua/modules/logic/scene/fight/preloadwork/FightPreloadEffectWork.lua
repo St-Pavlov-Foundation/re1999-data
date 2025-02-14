@@ -23,7 +23,10 @@ function slot0.onStart(slot0, slot1)
 	slot0:_addPreloadEffect(FightHelper.getEffectUrlWithLod(uv0.buff_siwang))
 	slot0:_addPreloadEffect(FightHelper.getEffectUrlWithLod(uv0.buff_siwang_monster))
 	slot0:_addPreloadEffect(FightHelper.getEffectUrlWithLod(uv0.buff_zhunbeigongji))
-	slot0:_addPreloadEffect(FightHelper.getEffectUrlWithLod(uv0.scene_mask_default))
+
+	slot7 = uv0.scene_mask_default
+
+	slot0:_addPreloadEffect(FightHelper.getEffectUrlWithLod(slot7))
 
 	for slot6, slot7 in ipairs(FightDataHelper.entityMgr:getMyNormalList()) do
 		if slot7.skin and lua_skin_spine_action.configDict[slot8] and slot9[SpineAnimState.born] and not string.nilorempty(slot10.effect) then

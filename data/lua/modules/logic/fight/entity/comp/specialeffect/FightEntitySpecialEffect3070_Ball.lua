@@ -200,7 +200,7 @@ function slot0._createNewBallLine(slot0)
 			if slot5 == 1 then
 				FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot7)
 			else
-				FightRenderOrderMgr.instance:setEffectOrder(slot7, 0)
+				slot7:setRenderOrder(FightRenderOrderMgr.MinSpecialOrder * FightEnum.OrderRegion + 9)
 			end
 
 			if slot9 then
@@ -285,10 +285,7 @@ function slot0._onBuffUpdate(slot0, slot1, slot2, slot3, slot4)
 			slot0._aniFlow:addWork(WorkWaitSeconds.New(uv3 / FightModel.instance:getSpeed()))
 			slot0._aniFlow:addWork(FunctionWork.New(slot0._ballShowEffect, slot0))
 			slot0._aniFlow:addWork(FunctionWork.New(slot0._showNewball, slot0))
-
-			slot12 = FightModel.instance:getSpeed()
-
-			slot0._aniFlow:addWork(WorkWaitSeconds.New(uv4 / slot12))
+			slot0._aniFlow:addWork(WorkWaitSeconds.New(uv4 / FightModel.instance:getSpeed()))
 
 			slot8 = FlowParallel.New()
 
@@ -372,7 +369,7 @@ function slot0._refreshBallOrder(slot0, slot1)
 	if slot1[2] <= 2 then
 		FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot2)
 	else
-		FightRenderOrderMgr.instance:setEffectOrder(slot2, 0)
+		slot2:setRenderOrder(FightRenderOrderMgr.MinSpecialOrder * FightEnum.OrderRegion + 10)
 	end
 end
 

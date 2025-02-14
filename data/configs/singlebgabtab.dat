@@ -21384,6 +21384,9 @@
   "singlebg/headicon_small/630201.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/630201.png"
   ],
+  "singlebg/headicon_small/6303019.png.dat": [
+    "Assets/ZResourcesLib/singlebg/headicon_small/6303019.png"
+  ],
   "singlebg/headicon_small/630320.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/630320.png"
   ],
@@ -22395,6 +22398,33 @@
   "singlebg/v2a5_versionsummon_singlebg/v2a5_versionsummon_panelrole.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a5_versionsummon_singlebg/v2a5_versionsummon_panelrole.png"
   ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_fullbg.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_1.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_1_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_1_1.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_2.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_3.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_4.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_5.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_6.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_6.png"
+  ],
+  "singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_7.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a5_warmup_singlebg/v2a5_warmup_pic_7.png"
+  ],
   "singlebg/versionactivityhelp/v2a5_challenge_help_2.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionactivityhelp/v2a5_challenge_help_2.png"
   ],
@@ -22622,6 +22652,9 @@
   ],
   "singlebg_lang/txt_v2a5_versionsummon_singlebg/v2a5_versionsummon_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a5_versionsummon_singlebg/v2a5_versionsummon_title.png"
+  ],
+  "singlebg_lang/txt_v2a5_warmup_singlebg/v2a5_warmup_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a5_warmup_singlebg/v2a5_warmup_title.png"
   ],
   "singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png"

@@ -4,7 +4,8 @@ slot0 = class("FightNameUIOperationItem", FightBaseView)
 
 function slot0.onInitView(slot0)
 	slot0._imgMat = gohelper.findChildImage(slot0.viewGO, "imgMat")
-	slot0._imgTag = gohelper.findChildImage(slot0.viewGO, "imgTag")
+	slot4 = "imgTag"
+	slot0._imgTag = gohelper.findChildImage(slot0.viewGO, slot4)
 	slot0._imgBgs = slot0:newUserDataTable()
 	slot0._imgBgGos = slot0:newUserDataTable()
 
@@ -49,10 +50,10 @@ function slot0.refreshItemData(slot0, slot1)
 		slot5 = 1
 	end
 
-	slot10 = slot2.showTag
-	slot9 = "jnk_gj" .. slot10
+	slot9 = slot0._imgTag
+	slot10 = "jnk_gj" .. slot2.showTag
 
-	UISpriteSetMgr.instance:setFightSprite(slot0._imgTag, slot9)
+	UISpriteSetMgr.instance:setFightSprite(slot9, slot10)
 
 	for slot9, slot10 in ipairs(slot0._imgBgs) do
 		gohelper.setActive(slot10.gameObject, slot9 == slot5)

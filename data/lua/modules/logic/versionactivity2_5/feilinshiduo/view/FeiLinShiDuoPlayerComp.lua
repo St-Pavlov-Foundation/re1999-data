@@ -363,8 +363,9 @@ end
 
 function slot0.checkClimbStairs(slot0)
 	if slot0.isGround and not slot0.isClimbing then
-		slot6 = FeiLinShiDuoEnum.HalfSlotWidth / 4
-		slot2 = FeiLinShiDuoGameModel.instance:checkTouchElement(slot0.playerTrans.localPosition.x, slot0.playerTrans.localPosition.y - slot6)
+		slot7 = FeiLinShiDuoEnum.HalfSlotWidth / 4
+		slot6 = slot0.playerTrans.localPosition.y - slot7
+		slot2 = FeiLinShiDuoGameModel.instance:checkTouchElement(slot0.playerTrans.localPosition.x, slot6)
 		slot0.curStairsItem = nil
 
 		for slot6, slot7 in pairs(FeiLinShiDuoGameModel.instance:checkTouchElement(slot0.playerTrans.localPosition.x, slot0.playerTrans.localPosition.y + FeiLinShiDuoEnum.HalfSlotWidth / 4)) do

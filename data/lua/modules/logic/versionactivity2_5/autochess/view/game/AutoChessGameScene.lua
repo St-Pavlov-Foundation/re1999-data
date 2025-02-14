@@ -168,9 +168,10 @@ function slot0.onCloseViewFinish(slot0, slot1)
 
 		AutoChessEntityMgr.instance:addLeaderEntity(slot2.mySideMaster, true)
 
-		slot6 = true
+		slot6 = slot2.enemyMaster
+		slot7 = true
 
-		AutoChessEntityMgr.instance:addLeaderEntity(slot2.enemyMaster, slot6)
+		AutoChessEntityMgr.instance:addLeaderEntity(slot6, slot7)
 
 		for slot6, slot7 in ipairs(slot2.warZones) do
 			for slot12 = 1, #slot7.positions do

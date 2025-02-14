@@ -219,6 +219,10 @@ function slot0._startGoodIn(slot0)
 end
 
 function slot0._onGoodsChanged(slot0)
+	if #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0 then
+		return
+	end
+
 	slot0:_onRefreshRedDot()
 	slot0:_refreshGood()
 end
@@ -278,12 +282,13 @@ function slot0._refreshTabs(slot0, slot1, slot2, slot3)
 	end
 
 	if slot4 and slot0._goodItems[slot4] then
-		slot11 = 0
 		slot12 = 0
 
-		slot0._viewAnim:Play("out", slot11, slot12)
+		slot0._viewAnim:Play("out", slot12, 0)
 
-		for slot11, slot12 in pairs(slot0._goodItems[slot4][DecorateStoreEnum.DecorateViewType.Fold]) do
+		slot11 = DecorateStoreEnum.DecorateViewType.Fold
+
+		for slot11, slot12 in pairs(slot0._goodItems[slot4][slot11]) do
 			slot12:playOut()
 		end
 

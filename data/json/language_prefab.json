@@ -17838,5 +17838,13 @@
   {
     "id": "p_roomcritterexchangeview_txt_title",
     "lang": "兑换微尘跳跳糖"
+  },
+  {
+    "id": "p_v2a5_warmup_txt_tips",
+    "lang": "顺着剪刀方向划过"
+  },
+  {
+    "id": "p_v2a5_warmup_txt_WrongChannel",
+    "lang": "剪裁杂乱无章的电报，解读那些在遥远极夜中发生的故事"
   }
 ]

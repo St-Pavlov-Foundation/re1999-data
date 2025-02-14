@@ -191,10 +191,10 @@ function slot0.onClose(slot0)
 	slot0:removeEventCb(PCInputController.instance, PCInputEvent.NotifyBattleMoveCardEnd, slot0.onControlRelease, slot0)
 	slot0:removeEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelectLeft, slot0.selectLeftCard, slot0)
 
-	slot4 = PCInputEvent.NotifyBattleSelectRight
-	slot5 = slot0.selectRightCard
+	slot4 = PCInputController.instance
+	slot5 = PCInputEvent.NotifyBattleSelectRight
 
-	slot0:removeEventCb(PCInputController.instance, slot4, slot5, slot0)
+	slot0:removeEventCb(slot4, slot5, slot0.selectRightCard, slot0)
 
 	for slot4, slot5 in ipairs(slot0._handCardItemList) do
 		slot5:releaseSelf()
@@ -481,9 +481,10 @@ function slot0._refreshPrecisionShow(slot0)
 
 		FightDataHelper.entityMgr:getNormalList(FightEnum.EntitySide.MySide, slot1)
 
-		slot5 = slot1
+		slot5 = FightEnum.EntitySide.MySide
+		slot6 = slot1
 
-		FightDataHelper.entityMgr:getSubList(FightEnum.EntitySide.MySide, slot5)
+		FightDataHelper.entityMgr:getSubList(slot5, slot6)
 
 		for slot5, slot6 in ipairs(slot1) do
 			if slot6:hasBuffFeature(FightEnum.BuffFeature.PrecisionRegion) then
@@ -880,7 +881,8 @@ end
 
 function slot0._onChangeOrRedealCardDone(slot0, slot1)
 	if slot1 then
-		slot2 = slot0:_filterInvalidCard(FightCardModel.instance:getHandCards())
+		slot6 = FightCardModel.instance:getHandCards()
+		slot2 = slot0:_filterInvalidCard(slot6)
 
 		for slot6, slot7 in ipairs(slot1) do
 			slot9 = slot7.cardInfo
@@ -1154,7 +1156,10 @@ function slot0._combineCards(slot0, slot1, slot2, slot3)
 			if FightCardModel.instance:getDistributeQueueLen() > 0 then
 				slot0:_nextDistributeCards(#slot1)
 			else
-				gohelper.destroy(gohelper.findChild(slot0._handCardGO, "CombineEffect"))
+				slot9 = slot0._handCardGO
+				slot10 = "CombineEffect"
+
+				gohelper.destroy(gohelper.findChild(slot9, slot10))
 
 				for slot9, slot10 in ipairs(slot1) do
 					table.insert({}, slot10.skillId)
@@ -1517,7 +1522,10 @@ function slot0.OnkeyLongPress(slot0, slot1)
 	end
 
 	slot0:_longPressHandCardEnd()
-	FightController.instance:dispatchEvent(FightEvent.HideCardSkillTips)
+
+	slot5 = FightEvent.HideCardSkillTips
+
+	FightController.instance:dispatchEvent(slot5)
 
 	for slot5, slot6 in pairs(slot0._handCardItemList) do
 		if slot6.index == slot1 and slot6.go.activeInHierarchy then

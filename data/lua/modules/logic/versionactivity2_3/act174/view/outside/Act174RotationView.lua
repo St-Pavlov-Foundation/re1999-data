@@ -79,8 +79,9 @@ end
 function slot0.initCharacterItem(slot0)
 	slot0.characterItemList = {}
 	slot1 = slot0.actInfo:getRuleHeroCoList()
+	slot5 = Activity174Helper.sortActivity174RoleCo
 
-	table.sort(slot1, Activity174Helper.sortActivity174RoleCo)
+	table.sort(slot1, slot5)
 
 	for slot5, slot6 in ipairs(slot1) do
 		slot7 = slot0:getUserDataTb_()

@@ -27,23 +27,24 @@ function slot0._changeEntity(slot0)
 
 	for slot7, slot8 in ipairs(FightDataHelper.entityMgr:getMyNormalList()) do
 		slot0._existBuffUidDict[slot8.id] = {}
+		slot13 = slot8
 
-		for slot12, slot13 in pairs(slot8:getBuffDic()) do
+		for slot12, slot13 in pairs(slot8.getBuffDic(slot13)) do
 			slot0._existBuffUidDict[slot8.id][slot13.id] = slot13
 		end
 	end
 
 	slot0._myStancePos2EntityId = {}
 	slot0._enemyStancePos2EntityId = {}
-	slot7 = SceneTag.UnitPlayer
+	slot8 = slot0
 
-	for slot7, slot8 in pairs(slot0:getTagUnitDict(slot7)) do
+	for slot7, slot8 in pairs(slot0.getTagUnitDict(slot8, SceneTag.UnitPlayer)) do
 		slot0._myStancePos2EntityId[slot8:getMO().position] = slot8.id
 	end
 
-	slot7 = SceneTag.UnitMonster
+	slot8 = slot0
 
-	for slot7, slot8 in pairs(slot0:getTagUnitDict(slot7)) do
+	for slot7, slot8 in pairs(slot0.getTagUnitDict(slot8, SceneTag.UnitMonster)) do
 		slot0._enemyStancePos2EntityId[slot8:getMO().position] = slot8.id
 	end
 

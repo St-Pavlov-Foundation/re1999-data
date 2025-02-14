@@ -18,7 +18,8 @@ function slot0.onInitView(slot0)
 	slot0.goLimitDetail = gohelper.findChild(slot0.viewGO, "go_Result/LimitDetail")
 	slot0.simageStageDetail = gohelper.findChildSingleImage(slot0.viewGO, "go_Result/LimitDetail/imgStage")
 	slot0.simageWaveDetail = gohelper.findChildSingleImage(slot0.viewGO, "go_Result/LimitDetail/wavebg")
-	slot0.txtTower = gohelper.findChildTextMesh(slot0.viewGO, "go_Result/LimitDetail/image_NameBG/txtTower")
+	slot4 = "go_Result/LimitDetail/image_NameBG/txtTower"
+	slot0.txtTower = gohelper.findChildTextMesh(slot0.viewGO, slot4)
 	slot0.difficultyItems = slot0:getUserDataTb_()
 
 	for slot4 = 1, 3 do
@@ -154,10 +155,9 @@ function slot0.refreshResult(slot0)
 
 		slot0.simageStageDetail:LoadImage(string.format("singlebg/tower_singlebg/level/tower_level_stage_%s.png", slot0.layerConfig.entrance))
 
-		slot4 = "singlebg/tower_singlebg/level/tower_level_stage_%s_2.png"
-		slot5 = slot0.layerConfig.entrance
+		slot4 = string.format
 
-		slot0.simageWaveDetail:LoadImage(string.format(slot4, slot5))
+		slot0.simageWaveDetail:LoadImage(slot4("singlebg/tower_singlebg/level/tower_level_stage_%s_2.png", slot0.layerConfig.entrance))
 
 		slot0.txtTower.text = slot0.episodeConfig.name
 
@@ -197,9 +197,10 @@ function slot0.refreshRewards(slot0, slot1, slot2)
 		slot0.rewardItems = {}
 	end
 
-	slot7 = #(FightResultModel.instance:getMaterialDataList() or {})
+	slot3 = FightResultModel.instance:getMaterialDataList() or {}
+	slot7 = #slot0.rewardItems
 
-	for slot7 = 1, math.max(#slot0.rewardItems, slot7) do
+	for slot7 = 1, math.max(slot7, #slot3) do
 		slot9 = slot3[slot7]
 
 		if not slot0.rewardItems[slot7] then

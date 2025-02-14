@@ -41,7 +41,9 @@ function slot0.initBKLERandomList(slot0, slot1)
 
 	tabletool.clear(slot0.BKLEEffectList)
 
-	for slot7, slot8 in pairs(FightStrUtil.instance:getSplitCache(lua_fight_sp_effect_bkle.configDict[slot1].path, "|")) do
+	slot7 = "|"
+
+	for slot7, slot8 in pairs(FightStrUtil.instance:getSplitCache(lua_fight_sp_effect_bkle.configDict[slot1].path, slot7)) do
 		slot0.BKLEEffectList[slot7] = slot8
 	end
 end

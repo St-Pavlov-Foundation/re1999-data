@@ -433,7 +433,10 @@ end
 
 function slot0._delayShow(slot0)
 	slot0._conMark:SetMarks(slot0._markIndexs)
-	slot0._conMark:SetMarksTop(slot0._markTop, slot0._markContent)
+
+	slot5 = slot0._markContent
+
+	slot0._conMark:SetMarksTop(slot0._markTop, slot5)
 
 	slot0._textInfo = slot0._txtcontentcn:GetTextInfo(slot0._subemtext)
 	slot0._lineInfoList = {}
@@ -569,12 +572,14 @@ function slot0._onTextFinished(slot0)
 
 	transformhelper.setLocalPos(slot0._txtcontentmagic.transform, slot4, slot5, 0)
 
-	slot10 = slot5
-	slot11 = 0
+	slot11 = slot5
 
-	transformhelper.setLocalPos(slot0._txtcontentreshapemagic.transform, slot4, slot10, slot11)
+	transformhelper.setLocalPos(slot0._txtcontentreshapemagic.transform, slot4, slot11, 0)
 	slot0._conMat:DisableKeyword("_GRADUAL_ON")
-	slot0._markTopMat:DisableKeyword("_GRADUAL_ON")
+
+	slot10 = "_GRADUAL_ON"
+
+	slot0._markTopMat:DisableKeyword(slot10)
 
 	for slot10, slot11 in pairs(slot0._subMeshs) do
 		if slot11.materialForRendering then
@@ -650,7 +655,8 @@ function slot0._conUpdate(slot0, slot1)
 		if slot10[2] <= slot1 and slot1 <= slot13 then
 			slot14 = slot0._textInfo.characterInfo
 			slot16 = slot14[slot11.lastVisibleCharacterIndex]
-			slot17 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot14[slot11.firstVisibleCharacterIndex].bottomLeft))
+			slot23 = slot14[slot11.firstVisibleCharacterIndex].bottomLeft
+			slot17 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot23))
 			slot18 = slot17
 
 			for slot23 = slot11.firstVisibleCharacterIndex, slot11.lastVisibleCharacterIndex do
@@ -660,7 +666,8 @@ function slot0._conUpdate(slot0, slot1)
 			end
 
 			slot18.y = slot19
-			slot20 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot15.topLeft))
+			slot26 = slot15.topLeft
+			slot20 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot26))
 			slot21 = slot20
 
 			for slot26 = slot11.firstVisibleCharacterIndex, slot11.lastVisibleCharacterIndex do
@@ -677,9 +684,10 @@ function slot0._conUpdate(slot0, slot1)
 				slot0._conMat:SetFloat(slot0._LineMaxYId, slot21.y + 10)
 				slot0._markTopMat:SetFloat(slot0._LineMinYId, slot18.y - 100)
 
-				slot27 = slot21.y - 90
+				slot27 = slot0._LineMaxYId
+				slot28 = slot21.y - 90
 
-				slot0._markTopMat:SetFloat(slot0._LineMaxYId, slot27)
+				slot0._markTopMat:SetFloat(slot27, slot28)
 
 				for slot27, slot28 in pairs(slot0._subMeshs) do
 					if slot28.materialForRendering then
@@ -696,9 +704,10 @@ function slot0._conUpdate(slot0, slot1)
 				slot0._conMat:SetFloat(slot0._LineMaxYId, slot21.y)
 				slot0._markTopMat:SetFloat(slot0._LineMinYId, slot18.y)
 
-				slot27 = slot21.y
+				slot27 = slot0._LineMaxYId
+				slot28 = slot21.y
 
-				slot0._markTopMat:SetFloat(slot0._LineMaxYId, slot27)
+				slot0._markTopMat:SetFloat(slot27, slot28)
 
 				for slot27, slot28 in pairs(slot0._subMeshs) do
 					if slot28.materialForRendering then

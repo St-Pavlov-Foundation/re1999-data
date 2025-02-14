@@ -24,7 +24,9 @@ function slot0.onStart(slot0)
 						slot16 = slot18[1]
 					end
 
-					for slot23, slot24 in ipairs(SkillEditorStepBuilder.buildStepMOs(slot14, slot15, slot16)) do
+					slot23 = slot16
+
+					for slot23, slot24 in ipairs(SkillEditorStepBuilder.buildStepMOs(slot14, slot15, slot23)) do
 						slot0.flow:addWork(FunctionWork.New(function ()
 							SkillEditorMgr.instance:dispatchEvent(SkillEditorMgr._onSwitchEnityOrSkill, {
 								skillstr = uv0 .. "\n" .. string.format("当前技能\n%s\n剩余技能%s/%s", lua_skill.configDict[uv0].name, #uv1 - uv2, #uv1)

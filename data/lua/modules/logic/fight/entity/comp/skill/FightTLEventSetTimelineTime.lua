@@ -7,7 +7,9 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 
 	if FightDataHelper.entityMgr:getById(slot1.fromId) and #string.splitToNumber(slot3[2], "#") > 0 then
 		for slot11, slot12 in ipairs(slot7) do
-			for slot16, slot17 in pairs(slot6:getBuffDic()) do
+			slot17 = slot6
+
+			for slot16, slot17 in pairs(slot6.getBuffDic(slot17)) do
 				if slot17.buffId == slot12 then
 					slot5 = false
 

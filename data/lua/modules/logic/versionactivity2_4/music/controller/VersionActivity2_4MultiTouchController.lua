@@ -64,7 +64,9 @@ function slot0._frameHandler(slot0)
 		return
 	end
 
-	for slot6 = 1, math.min(UnityEngine.Input.touchCount, slot0._touchCount) do
+	slot6 = slot0._touchCount
+
+	for slot6 = 1, math.min(UnityEngine.Input.touchCount, slot6) do
 		if UnityEngine.Input.GetTouch(slot6 - 1).phase == TouchPhase.Began then
 			if true and not ViewHelper.instance:checkViewOnTheTop(slot0._viewName) then
 				return

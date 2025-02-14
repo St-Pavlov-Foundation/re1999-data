@@ -1531,7 +1531,9 @@ function slot0.playChangeHero(slot0, slot1)
 		end
 	end
 
-	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot4)) do
+	slot9 = slot4
+
+	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot9)) do
 		if slot10.uid == slot1.fromId then
 			table.remove(slot5, slot9)
 

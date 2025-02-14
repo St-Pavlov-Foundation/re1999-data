@@ -14,7 +14,8 @@ function slot0.onInitView(slot0)
 	slot0.imgCareer = gohelper.findChildImage(slot0.viewGO, "root/right/info/career")
 	slot0.txtName = gohelper.findChildTextMesh(slot0.viewGO, "root/right/info/name")
 	slot0.btnTalent = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/btnTalent")
-	slot0.txtPassiveName = gohelper.findChildTextMesh(slot0.viewGO, "root/right/info/passiveskill/bg/#txt_passivename")
+	slot4 = "root/right/info/passiveskill/bg/#txt_passivename"
+	slot0.txtPassiveName = gohelper.findChildTextMesh(slot0.viewGO, slot4)
 	slot0.passiveSkillItems = {}
 
 	for slot4 = 1, 3 do

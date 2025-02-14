@@ -40,9 +40,10 @@ function slot0.onStart(slot0, slot1)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 5)
 
 	slot0._count = 0
-	slot6 = slot0
+	slot6 = slot0._onCountEntityInfoReply
+	slot7 = slot0
 
-	FightController.instance:registerCallback(FightEvent.CountEntityInfoReply, slot0._onCountEntityInfoReply, slot6)
+	FightController.instance:registerCallback(FightEvent.CountEntityInfoReply, slot6, slot7)
 
 	for slot6, slot7 in pairs(FightLocalDataMgr.instance.entityMgr:getAllEntityMO()) do
 		if not slot7:isStatusDead() then

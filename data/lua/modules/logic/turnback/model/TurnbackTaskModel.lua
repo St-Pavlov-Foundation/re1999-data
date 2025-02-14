@@ -101,7 +101,10 @@ function slot0.checkTaskLoopTypeDotState(slot0)
 		slot0.taskLoopTypeDotDict[slot4] = false
 	end
 
-	for slot4, slot5 in ipairs(slot0.tempTaskModel:getList()) do
+	slot3 = slot0.tempTaskModel
+	slot5 = slot3
+
+	for slot4, slot5 in ipairs(slot3.getList(slot5)) do
 		if slot5.config.maxProgress <= slot5.progress and slot5.finishCount == 0 then
 			slot0.taskLoopTypeDotDict[slot5.config.loopType] = true
 		end
@@ -114,8 +117,10 @@ end
 
 function slot0.refreshListNewTaskList(slot0)
 	slot1 = {}
+	slot4 = slot0.tempTaskModel
+	slot6 = slot4
 
-	for slot5, slot6 in ipairs(slot0.tempTaskModel:getList()) do
+	for slot5, slot6 in ipairs(slot4.getList(slot6)) do
 		if slot6.config.turnbackId == TurnbackModel.instance:getCurTurnbackId() and ServerTime.now() >= TurnbackModel.instance:getCurTurnbackMo().startTime + (slot6.config.unlockDay - 1) * TimeUtil.OneDaySecond then
 			table.insert(slot1, slot6)
 		end
@@ -126,8 +131,10 @@ end
 
 function slot0.refreshList(slot0, slot1)
 	slot2 = {}
+	slot5 = slot0.tempTaskModel
+	slot7 = slot5
 
-	for slot6, slot7 in ipairs(slot0.tempTaskModel:getList()) do
+	for slot6, slot7 in ipairs(slot5.getList(slot7)) do
 		if slot7.config.loopType == slot1 and slot7.config.turnbackId == TurnbackModel.instance:getCurTurnbackId() then
 			slot0.curTaskLoopType = slot1
 
@@ -144,7 +151,10 @@ function slot0.getCurTaskLoopType(slot0)
 end
 
 function slot0.haveTaskItemReward(slot0)
-	for slot4, slot5 in ipairs(slot0.tempTaskModel:getList()) do
+	slot3 = slot0.tempTaskModel
+	slot5 = slot3
+
+	for slot4, slot5 in ipairs(slot3.getList(slot5)) do
 		if slot5.config.maxProgress <= slot5.progress and slot5.finishCount == 0 then
 			return true
 		end

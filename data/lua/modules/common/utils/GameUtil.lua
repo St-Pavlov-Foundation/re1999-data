@@ -437,7 +437,9 @@ function slot0.utf8isnum(slot0)
 		return false
 	end
 
-	for slot4 = 1, string.len(slot0) do
+	slot4 = slot0
+
+	for slot4 = 1, string.len(slot4) do
 		if not string.byte(slot0, slot4) then
 			return false
 		end
@@ -985,8 +987,9 @@ function slot0.logTab(slot0, slot1)
 	end
 
 	slot3 = string.rep("\t", slot1)
+	slot9 = " {"
 
-	table.insert({}, string.format(" {"))
+	table.insert({}, string.format(slot9))
 
 	for slot8, slot9 in pairs(slot0) do
 		if type(slot9) == "table" then

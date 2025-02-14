@@ -9,7 +9,8 @@ end
 
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
-	slot0._canvasGroup = slot1:GetComponent(gohelper.Type_CanvasGroup)
+	slot5 = gohelper.Type_CanvasGroup
+	slot0._canvasGroup = slot1:GetComponent(slot5)
 	slot0.tr = slot1.transform
 	slot0._lvGOs = slot0:getUserDataTb_()
 	slot0._lvImgIcons = slot0:getUserDataTb_()
@@ -43,8 +44,8 @@ function slot0.init(slot0, slot1)
 	slot0._tag = gohelper.findChildSingleImage(slot1, "tag/tag/tagIcon")
 	slot0._txt = gohelper.findChildText(slot1, "Text")
 	slot0._starGO = gohelper.findChild(slot1, "star")
-	slot5 = UnityEngine.CanvasGroup
-	slot0._starCanvas = gohelper.onceAddComponent(slot0._starGO, typeof(slot5))
+	slot5 = typeof
+	slot0._starCanvas = gohelper.onceAddComponent(slot0._starGO, slot5(UnityEngine.CanvasGroup))
 	slot0._innerStartGOs = slot0:getUserDataTb_()
 
 	for slot5 = 1, FightEnum.MaxSkillCardLv do
@@ -59,10 +60,10 @@ function slot0.init(slot0, slot1)
 	gohelper.setActive(slot0._layout, true)
 
 	slot0._predisplay = gohelper.findChild(slot1, "layout/predisplay")
-	slot5 = UnityEngine.Animator
-	slot0._cardAni = gohelper.onceAddComponent(slot1, typeof(slot5))
+	slot0._cardAni = gohelper.onceAddComponent(slot1, typeof(UnityEngine.Animator))
 	slot0._cardAppearEffectRoot = gohelper.findChild(slot1, "cardAppearEffectRoot")
-	slot0._cardMask = gohelper.findChild(slot1, "cardmask")
+	slot5 = "cardmask"
+	slot0._cardMask = gohelper.findChild(slot1, slot5)
 	slot0._maskList = slot0:getUserDataTb_()
 
 	for slot5 = 1, 4 do
@@ -199,10 +200,11 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 	slot0:_hideAniEffect()
 
 	slot4 = lua_skill.configDict[slot2]
+	slot9 = slot2
 
 	for slot9, slot10 in ipairs(slot0._lvGOs) do
 		gohelper.setActive(slot10, true)
-		gohelper.setActiveCanvasGroup(slot10, FightCardModel.instance:getSkillLv(slot1, slot2) == slot9)
+		gohelper.setActiveCanvasGroup(slot10, FightCardModel.instance:getSkillLv(slot1, slot9) == slot9)
 	end
 
 	for slot9, slot10 in ipairs(slot0._lvImgIcons) do
@@ -505,11 +507,11 @@ function slot0._onEnchantEffectsLoaded(slot0)
 			slot7 = slot6:GetResource()
 
 			if slot0._lvGOs then
-				slot0._enchantsEffect[slot4] = slot0:getUserDataTb_()
+				slot11 = slot0
+				slot0._enchantsEffect[slot4] = slot0.getUserDataTb_(slot11)
 
 				for slot11, slot12 in ipairs(slot0._lvGOs) do
-					slot17 = "#cardeffect"
-					slot13 = gohelper.clone(slot7, gohelper.findChild(slot12, slot17))
+					slot13 = gohelper.clone(slot7, gohelper.findChild(slot12, "#cardeffect"))
 
 					for slot17 = 1, 4 do
 						gohelper.setActive(gohelper.findChild(slot13, "lv" .. slot17), slot17 == slot11)
@@ -562,8 +564,7 @@ function slot0._onUpgradeEffectLoaded(slot0, slot1, slot2)
 
 	if slot0._lvGOs and slot2:GetResource() then
 		for slot7, slot8 in ipairs(slot0._lvGOs) do
-			slot13 = "#cardeffect"
-			slot9 = gohelper.clone(slot3, gohelper.findChild(slot8, slot13))
+			slot9 = gohelper.clone(slot3, gohelper.findChild(slot8, "#cardeffect"))
 
 			for slot13 = 1, 4 do
 				gohelper.setActive(gohelper.findChild(slot9, "lv" .. slot13), slot13 == slot7)
@@ -742,7 +743,8 @@ function slot0._refreshGray(slot0)
 
 		slot1 = slot0._cardInfoMO.uid
 		slot2 = slot0._cardInfoMO.skillId
-		slot4 = FightCardModel.instance:isUniqueSkill(slot1, slot2)
+		slot8 = slot2
+		slot4 = FightCardModel.instance:isUniqueSkill(slot1, slot8)
 
 		for slot8, slot9 in ipairs(slot0._maskList) do
 			if slot8 < 4 then

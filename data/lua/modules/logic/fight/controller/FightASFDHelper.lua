@@ -57,7 +57,9 @@ function slot0.mathReplyRule(slot0, slot1)
 		return true
 	end
 
-	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, true)) do
+	slot7 = true
+
+	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, slot7)) do
 		if slot8[1] == FightEnum.ASFDReplyRule.HasSkin then
 			if not uv0.checkHasSkinRule(slot8, slot0) then
 				return false
@@ -224,7 +226,9 @@ function slot0._checkHasHeroId()
 
 	tabletool.clear(slot1)
 
-	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot1)) do
+	slot5 = slot1
+
+	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot5)) do
 		if slot6:isCharacter() and slot6.modelId == 3041 then
 			return true
 		end

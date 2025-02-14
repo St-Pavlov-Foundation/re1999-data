@@ -5,8 +5,7 @@ slot0 = class("Season166_2_4InformationAnalyView", BaseView)
 function slot0.onInitView(slot0)
 	slot0.simageReportPic = gohelper.findChildSingleImage(slot0.viewGO, "Report/image_Line/image_ReportPic")
 	slot0.goLockedPic = gohelper.findChild(slot0.viewGO, "Report/image_Line/#go_Locked/image_ReportLockedPic")
-	slot4 = ZProj.MaterialPropsCtrl
-	slot0.lockedCtrl = slot0.goLockedPic:GetComponent(typeof(slot4))
+	slot0.lockedCtrl = slot0.goLockedPic:GetComponent(typeof(ZProj.MaterialPropsCtrl))
 	slot0.simageLockedPic = gohelper.findChildSingleImage(slot0.viewGO, "Report/image_Line/#go_Locked/image_ReportLockedPic")
 	slot0.btnLeft = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Left")
 	slot0.btnRight = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Right")
@@ -25,7 +24,8 @@ function slot0.onInitView(slot0)
 	slot0.goDesc = gohelper.findChild(slot0.viewGO, "Detail/#scorll_Details/Viewport/Content/#go_Descr")
 	slot0.goRevealTips = gohelper.findChild(slot0.viewGO, "Detail/#scorll_Details/Viewport/Content/#go_RevealTips")
 	slot0.goLockInfo = gohelper.findChild(slot0.viewGO, "LockInfo")
-	slot0.txtLockInfo = gohelper.findChildTextMesh(slot0.viewGO, "LockInfo/#txt_lockInfo")
+	slot4 = "LockInfo/#txt_lockInfo"
+	slot0.txtLockInfo = gohelper.findChildTextMesh(slot0.viewGO, slot4)
 	slot0.detailItems = {}
 	slot0.recycleItemsDict = {}
 	slot0.itemClsDict = {

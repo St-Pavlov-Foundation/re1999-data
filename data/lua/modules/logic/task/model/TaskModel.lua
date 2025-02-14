@@ -231,7 +231,9 @@ function slot0.getNoviceTaskMaxUnlockStage(slot0)
 	slot1 = 0
 
 	if slot0._taskMODict[TaskEnum.TaskType.Novice] then
-		for slot5, slot6 in pairs(slot0._taskMODict[TaskEnum.TaskType.Novice]) do
+		slot5 = TaskEnum.TaskType.Novice
+
+		for slot5, slot6 in pairs(slot0._taskMODict[slot5]) do
 			if slot6.config.minTypeId == TaskEnum.TaskMinType.Novice and slot1 < TaskConfig.instance:gettaskNoviceConfig(slot6.id).stage and slot6.config.chapter == 0 then
 				slot1 = slot7
 			end

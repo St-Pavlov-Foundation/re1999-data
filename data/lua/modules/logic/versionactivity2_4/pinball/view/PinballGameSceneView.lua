@@ -13,7 +13,10 @@ function slot0.onOpen(slot0)
 	PinballStatHelper.instance:resetGameDt()
 	gohelper.setActive(slot0._goitem, false)
 	gohelper.setActive(slot0._gotopitem, false)
-	gohelper.setActive(slot0._gonumitem, false)
+
+	slot4 = false
+
+	gohelper.setActive(slot0._gonumitem, slot4)
 
 	slot0._layers = slot0:getUserDataTb_()
 

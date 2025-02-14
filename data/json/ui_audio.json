@@ -10018,5 +10018,20 @@
     "id": 25251507,
     "eventName": "play_ui_mln_page_turn",
     "bankName": "ui_activity"
+  },
+  {
+    "id": 25251415,
+    "eventName": "play_ui_tangren_scissors_cut",
+    "bankName": "ui_activity_2_5_tangren"
+  },
+  {
+    "id": 25251416,
+    "eventName": "play_ui_tangren_telegram",
+    "bankName": "ui_activity_2_5_tangren"
+  },
+  {
+    "id": 25251417,
+    "eventName": "stop_ui_tangren_telegram",
+    "bankName": "ui_activity_2_5_tangren"
   }
 ]

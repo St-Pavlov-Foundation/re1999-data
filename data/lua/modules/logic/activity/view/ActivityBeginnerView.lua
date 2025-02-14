@@ -94,7 +94,8 @@ slot1 = {
 	[ActivityEnum.Activity.V2a5_TurnBack_H5] = ViewName.TurnBackInvitationMainView,
 	[ActivityEnum.Activity.V2a5_DecaLogPresent] = ViewName.V2a5DecalogPresentFullView,
 	[ActivityEnum.Activity.V2a5_DecorateStore] = ViewName.V2a5_DecorateStoreFullView,
-	[ActivityEnum.Activity.V2a5_GoldenMilletPresent] = ViewName.V2a5_GoldenMilletPresentFullView
+	[ActivityEnum.Activity.V2a5_GoldenMilletPresent] = ViewName.V2a5_GoldenMilletPresentFullView,
+	[ActivityEnum.Activity.V2a5_WarmUp] = ViewName.V2a5_WarmUp
 }
 slot2 = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -125,7 +126,9 @@ function slot0._refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	ActivityModel.instance:removeFinishedCategory(slot1)
+	slot5 = slot1
+
+	ActivityModel.instance:removeFinishedCategory(slot5)
 
 	slot0.data = {}
 

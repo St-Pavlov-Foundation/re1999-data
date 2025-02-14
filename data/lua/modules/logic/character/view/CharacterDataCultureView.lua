@@ -61,12 +61,10 @@ function slot0._editableInitView(slot0)
 	slot0._simagelefticon:LoadImage(ResUrl.getCommonIcon("bg_leftdown"))
 	slot0._simagerighticon:LoadImage(ResUrl.getCommonIcon("bg_rightdown"))
 	slot0._simagerighticon2:LoadImage(ResUrl.getCommonIcon("bg_rightup"))
+	slot0._simagemask:LoadImage(ResUrl.getCommonIcon("full/bg_noise2"))
 
-	slot4 = "full/bg_noise2"
-
-	slot0._simagemask:LoadImage(ResUrl.getCommonIcon(slot4))
-
-	slot0._scrollcontent = gohelper.findChild(slot0._scrollview.gameObject, "viewport/content")
+	slot4 = "viewport/content"
+	slot0._scrollcontent = gohelper.findChild(slot0._scrollview.gameObject, slot4)
 	slot0._items = {}
 
 	for slot4 = 1, 3 do
@@ -373,9 +371,9 @@ end
 function slot0._getAfterContent(slot0, slot1)
 	slot2 = {}
 	slot3 = nil
-	slot7 = "\n"
+	slot8 = string.gsub(slot1, "：", ":")
 
-	for slot7, slot8 in ipairs(string.split(string.gsub(slot1, "：", ":"), slot7)) do
+	for slot7, slot8 in ipairs(string.split(slot8, "\n")) do
 		if string.split(slot8, ":") and #slot3 >= 2 and not tabletool.indexOf(slot2, slot3[1]) then
 			table.insert(slot2, slot3[1])
 		end
@@ -390,13 +388,13 @@ function slot0._getAfterContent(slot0, slot1)
 	end
 
 	slot6 = HeroConfig.instance:getHeroCO(slot0._heroId)
+	slot14 = ":"
 
-	table.insert({}, slot6.name .. ":")
+	table.insert({}, slot6.name .. slot14)
 
-	slot13 = "<indent=0%%%%><color=#943308><b>%s</b></color>：</indent><indent=%d%%%%>"
-	slot14 = slot6.name
+	slot13 = string.format
 
-	table.insert({}, string.format(slot13, slot14, math.max(slot4, SLFramework.UGUI.GuiHelper.GetPreferredWidth(slot0._txtindenthelper, slot6.name)) / 28 * 5 + 3))
+	table.insert({}, slot13("<indent=0%%%%><color=#943308><b>%s</b></color>：</indent><indent=%d%%%%>", slot6.name, math.max(slot4, SLFramework.UGUI.GuiHelper.GetPreferredWidth(slot0._txtindenthelper, slot6.name)) / 28 * 5 + 3))
 
 	for slot13, slot14 in ipairs(slot2) do
 		table.insert(slot8, slot14 .. ":")

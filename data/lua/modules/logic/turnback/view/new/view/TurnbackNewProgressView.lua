@@ -82,8 +82,9 @@ end
 
 function slot0.refreshProgressItem(slot0)
 	slot1, slot2 = TurnbackModel.instance:getDropInfoList()
+	slot8 = TurnbackModel.instance:getDropInfoByType(TurnbackEnum.DropInfoEnum.MainEpisode)
 
-	slot0._progressItems[TurnbackEnum.DropInfoEnum.MainEpisode].cls:refreshItem(TurnbackModel.instance:getDropInfoByType(TurnbackEnum.DropInfoEnum.MainEpisode))
+	slot0._progressItems[TurnbackEnum.DropInfoEnum.MainEpisode].cls:refreshItem(slot8)
 
 	for slot8, slot9 in ipairs(slot1) do
 		if slot0._progressItems[slot8 + 2] then
@@ -96,7 +97,10 @@ end
 
 function slot0.onOpen(slot0)
 	TurnbackRpc.instance:sendGetTurnbackInfoRequest()
-	gohelper.addChild(slot0.viewParam.parent, slot0.viewGO)
+
+	slot5 = slot0.viewGO
+
+	gohelper.addChild(slot0.viewParam.parent, slot5)
 
 	slot0._progressItems = {}
 

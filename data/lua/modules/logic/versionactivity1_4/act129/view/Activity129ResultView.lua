@@ -57,9 +57,9 @@ function slot0.showReward(slot0, slot1)
 	gohelper.setActive(slot0.smallList.go, false)
 	gohelper.setActive((#slot1 > 8 and slot0.bigList or slot0.smallList).go, true)
 
-	slot7 = #slot0.rewardItems
+	slot7 = slot2
 
-	for slot7 = 1, math.max(slot2, slot7) do
+	for slot7 = 1, math.max(slot7, #slot0.rewardItems) do
 		if not slot0.rewardItems[slot7] then
 			slot0.rewardItems[slot7] = IconMgr.instance:getCommonPropItemIcon(slot3.goContent)
 		end

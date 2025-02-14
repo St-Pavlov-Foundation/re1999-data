@@ -279,7 +279,9 @@ function slot0._initSkinUiEffectGo(slot0, slot1, slot2, slot3)
 		gohelper.setActive(slot4.gameObject, true)
 	end
 
-	for slot10 = 0, slot4.gameObject:GetComponentsInChildren(typeof(UnityEngine.UI.MaskableGraphic), true).Length - 1 do
+	slot10 = true
+
+	for slot10 = 0, slot4.gameObject:GetComponentsInChildren(typeof(UnityEngine.UI.MaskableGraphic), slot10).Length - 1 do
 		slot11 = slot6[slot10]
 		slot11.enabled = true
 

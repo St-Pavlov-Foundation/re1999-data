@@ -15,15 +15,16 @@ function slot0.getMoListString(slot0, slot1, slot2, slot3, slot4)
 		return string.format("%s %s : []", slot5, slot2)
 	end
 
-	slot10 = slot4
-	slot11 = slot2
+	slot11 = slot4
 
 	uv0.addStack({
 		string.format("%s %s : [", slot5, slot2)
-	}, uv0.getPrefix(slot3 + 1), slot10, slot11)
+	}, uv0.getPrefix(slot3 + 1), slot11, slot2)
+
+	slot10 = slot2
 
 	for slot10, slot11 in ipairs(slot0) do
-		table.insert(slot6, slot1(slot11, slot3 + 1, slot10, uv0.getStack(slot4, slot2)))
+		table.insert(slot6, slot1(slot11, slot3 + 1, slot10, uv0.getStack(slot4, slot10)))
 	end
 
 	table.insert(slot6, slot5 .. "]")

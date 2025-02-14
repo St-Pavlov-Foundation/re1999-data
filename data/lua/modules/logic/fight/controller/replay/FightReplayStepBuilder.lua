@@ -6,22 +6,21 @@ function slot0.buildReplaySequence()
 	slot0 = FlowSequence.New()
 
 	for slot5, slot6 in ipairs(FightReplayModel.instance:getList()) do
-		slot0:addWork(FightReplayWorkWaitCardStage.New())
+		slot10 = FightReplayWorkWaitCardStage.New
+
+		slot0:addWork(slot10())
 
 		for slot10, slot11 in ipairs(slot6.clothSkillOpers) do
 			slot0:addWork(FightReplayWorkClothSkill.New(slot11))
 		end
 
-		slot10 = FightModel.instance
-		slot11 = slot10
+		slot0:addWork(WorkWaitSeconds.New(0.1 / FightModel.instance:getSpeed()))
 
-		slot0:addWork(WorkWaitSeconds.New(0.1 / slot10.getSpeed(slot11)))
+		slot10 = FunctionWork.New
 
-		function slot10()
+		slot0:addWork(slot10(function ()
 			FightController.instance:setCurStage(FightEnum.Stage.Card)
-		end
-
-		slot0:addWork(FunctionWork.New(slot10))
+		end))
 
 		for slot10, slot11 in ipairs(slot6.opers) do
 			if slot11:isMoveCard() then

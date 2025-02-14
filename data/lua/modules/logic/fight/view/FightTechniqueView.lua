@@ -277,7 +277,9 @@ end
 
 function slot0._detectSubBtnState(slot0)
 	if slot0.btn_sub_list then
-		for slot4, slot5 in ipairs(slot0.btn_sub_list[slot0.cur_select_main_index]) do
+		slot4 = slot0.cur_select_main_index
+
+		for slot4, slot5 in ipairs(slot0.btn_sub_list[slot4]) do
 			slot6 = slot5 == slot0.btn_sub_list[slot0.cur_select_main_index][slot0.cur_select_sub_index]
 			slot7 = slot5.transform
 

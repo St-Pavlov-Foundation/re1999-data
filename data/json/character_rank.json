@@ -2377,7 +2377,7 @@
     "rank": 1,
     "consume": "",
     "requirement": "",
-    "effect": "1#30"
+    "effect": "1#30|5#31050160"
   },
   {
     "heroId": 3105,

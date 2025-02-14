@@ -142,9 +142,10 @@ slot0 = {
 	findDiff = function (slot0, slot1, slot2, slot3)
 		uv0.findDiffList = {}
 		uv0.findDiffPath = {}
-		slot8 = slot3
+		slot8 = slot2
+		slot9 = slot3
 
-		uv0.doFindDiff(slot0, slot1, slot2, slot8)
+		uv0.doFindDiff(slot0, slot1, slot8, slot9)
 
 		slot4 = {}
 
@@ -163,9 +164,10 @@ slot0 = {
 			return
 		end
 
-		slot8 = slot2
+		slot8 = slot1
+		slot9 = slot2
 
-		uv0.doCheckMissing(slot0, slot1, slot8)
+		uv0.doCheckMissing(slot0, slot8, slot9)
 
 		for slot8, slot9 in pairs(slot0) do
 			slot10 = false
@@ -195,7 +197,9 @@ slot0 = {
 
 			return
 		elseif type(slot0) == "table" then
-			uv0.doCheckMissing(slot0, slot1)
+			slot5 = slot1
+
+			uv0.doCheckMissing(slot0, slot5)
 
 			for slot5, slot6 in pairs(slot0) do
 				if slot1[slot5] ~= nil then
