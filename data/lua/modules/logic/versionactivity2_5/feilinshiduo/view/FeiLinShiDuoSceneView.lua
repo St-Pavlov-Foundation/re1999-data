@@ -102,16 +102,14 @@ function slot0.createMapElement(slot0)
 
 		transformhelper.setLocalScale(slot9, 1, 1, 1)
 		slot8.transform:SetParent(gohelper.findChild(slot0.sceneGO, FeiLinShiDuoEnum.GroupName[slot7.type]).transform)
+		transformhelper.setLocalScale(slot8.transform, 1, 1, 1)
 
-		slot15 = 1
+		slot15 = slot7.pos[2]
 
-		transformhelper.setLocalScale(slot8.transform, 1, 1, slot15)
+		recthelper.setAnchor(slot9, slot7.pos[1], slot15)
 
-		slot14 = slot7.pos[2]
-
-		recthelper.setAnchor(slot9, slot7.pos[1], slot14)
-
-		slot9.pivot = Vector2(0, 0)
+		slot14 = 0
+		slot9.pivot = Vector2(0, slot14)
 		slot0.elementGOMap[slot7.id] = {
 			elementGO = slot8,
 			subGOList = {}
@@ -123,9 +121,9 @@ function slot0.createMapElement(slot0)
 			slot16.transform:SetParent(slot8.transform, false)
 			recthelper.setAnchor(slot16.transform, tonumber(slot15[1]), tonumber(slot15[2]))
 
-			slot21 = slot7.scale[2]
+			slot21 = slot7.scale[1]
 
-			transformhelper.setLocalScale(gohelper.findChild(slot16, "scale").transform, slot7.scale[1], slot21, 1)
+			transformhelper.setLocalScale(gohelper.findChild(slot16, "scale").transform, slot21, slot7.scale[2], 1)
 
 			for slot21 = 0, 4 do
 				if gohelper.findChild(slot16, "scale/type" .. slot21) then
@@ -163,7 +161,9 @@ function slot0.createMapElement(slot0)
 				slot0.jumpAnimMap[slot7.id] = {}
 			end
 
-			for slot14, slot15 in pairs(slot0.elementGOMap[slot7.id].subGOList) do
+			slot14 = slot7.id
+
+			for slot14, slot15 in pairs(slot0.elementGOMap[slot14].subGOList) do
 				for slot19 = 0, 4 do
 					slot0.jumpAnimMap[slot7.id][slot19] = gohelper.findChild(slot15, "scale/type" .. slot19):GetComponent(gohelper.Type_Animator)
 				end
@@ -277,7 +277,9 @@ function slot0.refreshBlindnessMode(slot0)
 	slot1 = FeiLinShiDuoGameModel.instance:getBlindnessModeState()
 
 	for slot6, slot7 in pairs(FeiLinShiDuoGameModel.instance:getInterElementMap()) do
-		for slot11, slot12 in pairs(slot0.elementGOMap[slot7.id].subGOList) do
+		slot11 = slot7.id
+
+		for slot11, slot12 in pairs(slot0.elementGOMap[slot11].subGOList) do
 			if slot7.color == FeiLinShiDuoEnum.ColorType.Red then
 				slot14 = gohelper.findChild(slot12, "scale/type" .. 4)
 

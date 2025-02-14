@@ -68,7 +68,8 @@ function slot0.refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	slot0.allActivityTab = TurnbackModel.instance:removeUnExitCategory(slot0.allActivityTab)
+	slot4 = slot0.allActivityTab
+	slot0.allActivityTab = TurnbackModel.instance:removeUnExitCategory(slot4)
 	slot0.subViewTab = {}
 
 	for slot4, slot5 in pairs(slot0.allActivityTab) do

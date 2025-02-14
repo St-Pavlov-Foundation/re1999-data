@@ -41,7 +41,9 @@ end
 function slot6._make_Info(slot0, slot1)
 	assert(slot1, uv0)
 
-	for slot8, slot9 in pairs(assert(slot0._cCfg.instance:getAct125Config(slot1), uv0 .. slot1)) do
+	slot8 = slot1
+
+	for slot8, slot9 in pairs(assert(slot0._cCfg.instance:getAct125Config(slot8), uv0 .. slot1)) do
 		slot10 = slot9.id
 	end
 

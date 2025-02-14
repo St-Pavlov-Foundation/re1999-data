@@ -307,7 +307,9 @@ end
 function slot0.checkSpineBornPath(slot0)
 	for slot4, slot5 in ipairs(lua_skin_spine_action.configList) do
 		if slot5.actionName == SpineAnimState.born and not string.nilorempty(slot5.effect) then
-			for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitCache(slot6, "#")) do
+			slot11 = "#"
+
+			for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitCache(slot6, slot11)) do
 				if not string.match(slot12, "^buff/") then
 					logError(string.format("皮肤表, 战斗动作表现表 id ： %s, born 特效 配置不在buff目录下. effect : %s", slot5.id, slot5.effect))
 
@@ -498,7 +500,9 @@ function slot0._checkSkill(slot0)
 
 	for slot4, slot5 in ipairs(lua_character.configList) do
 		if not string.nilorempty(slot5.skill) then
-			for slot10, slot11 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot5.skill, true)) do
+			slot10 = true
+
+			for slot10, slot11 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot5.skill, slot10)) do
 				slot12 = slot11[2]
 				slot13 = slot11[3]
 				slot14 = slot11[4]
@@ -521,14 +525,18 @@ function slot0._checkSkill(slot0)
 		slot6 = slot5.heroId
 
 		if not string.nilorempty(slot5.skillGroup1) then
-			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot7, "|")) do
+			slot12 = "|"
+
+			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot7, slot12)) do
 				slot0._skillHeroIdDict[slot13] = slot6
 				slot0._skillCurrCardLvDict[slot13] = slot12
 			end
 		end
 
 		if not string.nilorempty(slot5.skillGroup2) then
-			for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot8, "|")) do
+			slot13 = "|"
+
+			for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot8, slot13)) do
 				slot0._skillHeroIdDict[slot14] = slot6
 				slot0._skillCurrCardLvDict[slot14] = slot13
 			end
@@ -576,10 +584,10 @@ end
 function slot0._doCheckskinSkill(slot0, slot1)
 	for slot5, slot6 in ipairs(slot1) do
 		if not string.nilorempty(slot6.skills) then
-			slot12 = "|"
-			slot13 = "#"
+			slot12 = false
+			slot13 = "|"
 
-			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot6.skills, false, slot12, slot13)) do
+			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot6.skills, slot12, slot13, "#")) do
 				if tonumber(slot13[1]) and slot13[2] then
 					-- Nothing
 				end
@@ -606,9 +614,7 @@ function slot0.getPassiveSkills(slot0, slot1)
 			slot4 = "#"
 		end
 
-		slot8 = slot3.passiveSkill
-
-		for slot8 = #tabletool.copy(FightStrUtil.instance:getSplitToNumberCache(slot8, slot4)), slot3.passiveSkillCount + 1, -1 do
+		for slot8 = #tabletool.copy(FightStrUtil.instance:getSplitToNumberCache(slot3.passiveSkill, slot4)), slot3.passiveSkillCount + 1, -1 do
 			slot2[slot8] = nil
 		end
 	end
@@ -620,7 +626,9 @@ function slot0.getPassiveSkills(slot0, slot1)
 			slot4 = "#"
 		end
 
-		for slot9, slot10 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot3.passiveSkillsEx, slot4)) do
+		slot9 = slot4
+
+		for slot9, slot10 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot3.passiveSkillsEx, slot9)) do
 			table.insert(slot2 or {}, slot10)
 		end
 	end
@@ -630,8 +638,9 @@ end
 
 function slot0.getPassiveSkillsAfterUIFilter(slot0, slot1)
 	slot3 = uv0.instance:getPassiveSkills(slot1)
+	slot8 = "|"
 
-	for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster.configDict[slot1].uiFilterSkill, "|")) do
+	for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster.configDict[slot1].uiFilterSkill, slot8)) do
 		if tabletool.indexOf(slot3, slot9) then
 			table.remove(slot3, slot10)
 		end

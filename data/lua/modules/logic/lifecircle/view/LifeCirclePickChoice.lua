@@ -124,9 +124,11 @@ end
 
 function slot0.onOpen(slot0)
 	slot0._txtTitle.text = slot0:_title()
-	slot0._btn_confirmTxt.text = slot0:_confirmDesc()
+	slot4 = slot0
+	slot0._btn_confirmTxt.text = slot0._confirmDesc(slot4)
+	slot5 = slot0
 
-	for slot4, slot5 in ipairs(slot0:_heroIdList()) do
+	for slot4, slot5 in ipairs(slot0._heroIdList(slot5)) do
 		slot6 = SummonCustomPickChoiceMO.New()
 
 		slot6:init(slot5)

@@ -18,6 +18,7 @@ function slot0.onInitView(slot0)
 	slot0._gopaintTips = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/#go_paintTips")
 	slot0._gopaintingArea = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/#go_paintingArea")
 	slot0._gofinishVx = gohelper.findChild(slot0.viewGO, "v2a5_lanternfestivalpainting/vx_finish")
+	slot0._rawimage = slot0._gopaintingArea:GetComponent(gohelper.Type_RawImage)
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -150,7 +151,11 @@ function slot0.ready2Paint(slot0, slot1)
 	slot0._curIndex = slot1
 
 	slot0._writingBrush:OnMouseUp()
-	slot0._writingBrush:Clear()
+
+	if slot0._rawimage.texture then
+		slot0._writingBrush:Clear()
+	end
+
 	slot0:setPaintStatus(Activity187Enum.PaintStatus.Ready)
 	slot0._paintAreaAnimator:Play("idle", 0, 0)
 end
@@ -169,9 +174,9 @@ function slot0._onOpenView(slot0, slot1)
 		slot3 = Activity187Config.instance:getLanternRibbon(slot5, slot4)
 	end
 
-	slot8 = slot2
+	slot8 = ResUrl.getAct184LanternIcon
 
-	slot0._simagelantern:LoadImage(ResUrl.getAct184LanternIcon(slot8))
+	slot0._simagelantern:LoadImage(slot8(slot2))
 
 	for slot8, slot9 in pairs(slot0._lowRibbonDict) do
 		gohelper.setActive(slot9, slot8 == slot3)
@@ -244,17 +249,18 @@ function slot0.setPaintStatus(slot0, slot1)
 		slot0._simagepicture:LoadImage(ResUrl.getAct184LanternIcon(Activity187Config.instance:getLanternImg(slot5, slot4)))
 		slot0._simagepicturebg:LoadImage(ResUrl.getAct184LanternIcon(Activity187Config.instance:getLanternImgBg(slot5, slot4)))
 
-		slot12 = slot4
-		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot5, slot12)
+		slot12 = slot5
+		slot13 = slot4
+		slot0._txtriddles.text = Activity187Config.instance:getBlessing(slot12, slot13)
 
 		for slot12, slot13 in ipairs(Activity187Model.instance:getPaintingRewardList(slot0._curIndex)) do
 			slot0:getRiddlesRewardItem(slot12).itemIcon:onUpdateMO(slot13)
 		end
 	end
 
-	slot7 = Activity187Enum.EmptyLantern
+	slot7 = ResUrl.getAct184LanternIcon
 
-	slot0._simagelantern:LoadImage(ResUrl.getAct184LanternIcon(slot7))
+	slot0._simagelantern:LoadImage(slot7(Activity187Enum.EmptyLantern))
 
 	for slot7, slot8 in pairs(slot0._lowRibbonDict) do
 		gohelper.setActive(slot8, false)

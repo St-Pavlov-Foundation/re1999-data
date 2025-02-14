@@ -119,9 +119,11 @@ function slot0.initDungeonInfoList(slot0, slot1)
 	slot0.dungeonInfoCacheList = {}
 	slot0.dungeonInfoCount = 0
 
-	table.sort(slot1, function (slot0, slot1)
+	function slot7(slot0, slot1)
 		return slot0.chapterId < slot1.chapterId
-	end)
+	end
+
+	table.sort(slot1, slot7)
 
 	for slot7, slot8 in ipairs(slot1) do
 		slot0:updateDungeonInfo(slot8)
@@ -599,7 +601,9 @@ function slot0._getEpisodeBonusByType(slot0, slot1, slot2)
 end
 
 function slot0.getEpisodeReward(slot0, slot1)
-	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot0:isPermanentEpisode(slot1) and "permanentReward" or slot0:isReactivityEpisode(slot1) and "retroReward" or "reward")) do
+	slot9 = slot0:isPermanentEpisode(slot1) and "permanentReward" or slot0:isReactivityEpisode(slot1) and "retroReward" or "reward"
+
+	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot9)) do
 		slot10.starType = DungeonEnum.StarType.Normal
 	end
 
@@ -607,7 +611,9 @@ function slot0.getEpisodeReward(slot0, slot1)
 end
 
 function slot0.getEpisodeFirstBonus(slot0, slot1)
-	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot0:isPermanentEpisode(slot1) and "permanentFirstBonus" or slot0:isReactivityEpisode(slot1) and "retroFirstBonus" or "firstBonus")) do
+	slot9 = slot0:isPermanentEpisode(slot1) and "permanentFirstBonus" or slot0:isReactivityEpisode(slot1) and "retroFirstBonus" or "firstBonus"
+
+	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot9)) do
 		slot10.starType = DungeonEnum.StarType.Normal
 	end
 
@@ -615,7 +621,9 @@ function slot0.getEpisodeFirstBonus(slot0, slot1)
 end
 
 function slot0.getEpisodeAdvancedBonus(slot0, slot1)
-	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot0:isPermanentEpisode(slot1) and "permanentAdvancedBonus" or slot0:isReactivityEpisode(slot1) and "retroAdvancedBonus" or "advancedBonus")) do
+	slot9 = slot0:isPermanentEpisode(slot1) and "permanentAdvancedBonus" or slot0:isReactivityEpisode(slot1) and "retroAdvancedBonus" or "advancedBonus"
+
+	for slot9, slot10 in pairs(slot0:_getEpisodeBonusByType(slot1, slot9)) do
 		slot10.starType = DungeonEnum.StarType.Advanced
 	end
 
@@ -668,9 +676,9 @@ end
 
 function slot0.getMonsterDisplayList(slot0, slot1)
 	slot2 = {}
-	slot6 = "#"
+	slot7 = slot1
 
-	for slot6, slot7 in ipairs(string.splitToNumber(slot1, slot6)) do
+	for slot6, slot7 in ipairs(string.splitToNumber(slot7, "#")) do
 		table.insert(slot2, lua_monster.configDict[slot7])
 	end
 
@@ -754,9 +762,10 @@ function slot0.getChapterOpenTimeValid(slot0, slot1)
 	end
 
 	slot2 = ServerTime.weekDayInServerLocal()
-	slot7 = "#"
+	slot7 = "|"
+	slot8 = "#"
 
-	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1.openDay, true, "|", slot7)) do
+	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1.openDay, true, slot7, slot8)) do
 		for slot12, slot13 in ipairs(slot8) do
 			if tonumber(slot13) == slot2 then
 				return true

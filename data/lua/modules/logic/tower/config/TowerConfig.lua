@@ -294,7 +294,9 @@ function slot0.getTowerLimitedTimeCoList(slot0, slot1, slot2)
 end
 
 function slot0.getTowerLimitedTimeCoByEpisodeId(slot0, slot1, slot2, slot3)
-	for slot8, slot9 in ipairs(slot0:getTowerLimitedTimeCoList(slot1, slot2)) do
+	slot8 = slot2
+
+	for slot8, slot9 in ipairs(slot0:getTowerLimitedTimeCoList(slot1, slot8)) do
 		if slot9.episodeId == slot3 then
 			return slot9
 		end
@@ -302,7 +304,9 @@ function slot0.getTowerLimitedTimeCoByEpisodeId(slot0, slot1, slot2, slot3)
 end
 
 function slot0.getTowerLimitedTimeCoByDifficulty(slot0, slot1, slot2, slot3)
-	for slot8, slot9 in ipairs(slot0:getTowerLimitedTimeCoList(slot1, slot2)) do
+	slot8 = slot2
+
+	for slot8, slot9 in ipairs(slot0:getTowerLimitedTimeCoList(slot1, slot8)) do
 		if slot9.difficulty == slot3 then
 			return slot9
 		end

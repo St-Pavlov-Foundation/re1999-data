@@ -4,8 +4,9 @@ slot0 = class("Act183ReportViewContainer", BaseViewContainer)
 
 function slot0.buildViews(slot0)
 	slot1 = {}
+	slot7 = 1
 
-	table.insert(slot1, TabViewGroup.New(1, "root/#go_topleft"))
+	table.insert(slot1, TabViewGroup.New(slot7, "root/#go_topleft"))
 	table.insert(slot1, Act183ReportView.New())
 
 	slot2 = ListScrollParam.New()

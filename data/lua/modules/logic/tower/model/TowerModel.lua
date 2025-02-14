@@ -46,7 +46,10 @@ function slot0.onReceiveGetTowerInfoReply(slot0, slot1)
 	TowerAssistBossModel.instance:clear()
 	slot0:setTowerOpenInfo(slot1)
 	slot0:setTowerInfo(slot1)
-	slot0:updateMopUpTimes(slot1.mopUpTimes)
+
+	slot5 = slot1.mopUpTimes
+
+	slot0:updateMopUpTimes(slot5)
 
 	for slot5 = 1, #slot1.assistBosses do
 		TowerAssistBossModel.instance:updateAssistBossInfo(slot1.assistBosses[slot5])
@@ -345,8 +348,9 @@ end
 
 function slot0.hasNewBossOpen(slot0)
 	slot1 = false
+	slot6 = TowerEnum.TowerStatus.Open
 
-	for slot6, slot7 in ipairs(uv0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)) do
+	for slot6, slot7 in ipairs(uv0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, slot6)) do
 		if uv0.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewBossOpen, slot7.towerId, slot7, TowerEnum.LockKey) == TowerEnum.LockKey and TowerEnum.UnlockKey == TowerEnum.UnlockKey then
 			slot1 = true
 

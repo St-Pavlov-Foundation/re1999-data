@@ -169,7 +169,9 @@ function slot0.checkTalentRed(slot0)
 				end
 			end
 
-			for slot13, slot14 in pairs(PinballConfig.instance:getTalentCoByRoot(VersionActivity2_4Enum.ActivityId.Pinball, slot7)) do
+			slot13 = slot7
+
+			for slot13, slot14 in pairs(PinballConfig.instance:getTalentCoByRoot(VersionActivity2_4Enum.ActivityId.Pinball, slot13)) do
 				if not slot0:getTalentMo(slot14.id) and slot14.needLv <= slot6 then
 					slot17 = true
 

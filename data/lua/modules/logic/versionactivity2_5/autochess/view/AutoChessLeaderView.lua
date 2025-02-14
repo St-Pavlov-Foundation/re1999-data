@@ -55,7 +55,8 @@ function slot0._btnStartOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot0.anim = slot0.viewGO:GetComponent(gohelper.Type_Animator)
+	slot4 = gohelper.Type_Animator
+	slot0.anim = slot0.viewGO:GetComponent(slot4)
 	slot0.actId = Activity182Model.instance:getCurActId()
 	slot0.moduleId = AutoChessEnum.ModuleId.PVP
 	slot0.leaderItemList = {}

@@ -49,8 +49,9 @@ function slot0._refreshUI(slot0)
 
 	if not string.nilorempty(slot3.sourcesType) then
 		slot4 = string.splitToNumber(slot3.sourcesType, "#")
+		slot8 = slot4
 
-		slot0:_sortSource(slot4)
+		slot0:_sortSource(slot8)
 
 		for slot8, slot9 in pairs(slot4) do
 			if RoomConfig.instance:getSourcesTypeConfig(slot9) and (not slot10.showType or not slot0._hideSourcesShowTypeMap[slot10.showType]) then

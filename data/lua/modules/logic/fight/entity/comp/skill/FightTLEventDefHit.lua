@@ -59,8 +59,9 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 
 	if not string.nilorempty(slot0._paramsArr[13]) then
 		slot0._skinId2OffetPos = {}
+		slot12 = "|"
 
-		for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitCache(slot0._paramsArr[13], "|")) do
+		for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitCache(slot0._paramsArr[13], slot12)) do
 			slot14 = FightStrUtil.instance:getSplitCache(slot13, "#")
 			slot16 = FightStrUtil.instance:getSplitToNumberCache(slot14[2], ",")
 			slot0._skinId2OffetPos[tonumber(slot14[1])] = {
@@ -207,7 +208,9 @@ function slot0._buildSkillEffect(slot0, slot1, slot2, slot3)
 			slot0._behaviorTypeDict[slot8] = true
 		end
 	else
-		for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot3, "#")) do
+		slot8 = "#"
+
+		for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot3, slot8)) do
 			if lua_skill_effect.configDict[slot9] then
 				for slot14 = 1, FightEnum.MaxBehavior do
 					slot16 = FightStrUtil.instance:getSplitToNumberCache(slot10["behavior" .. slot14], "#")
@@ -487,7 +490,9 @@ function slot0._statisticAndFloat(slot0)
 			end
 		end
 
-		table.sort(slot7.list, uv0._sortByFloatType)
+		slot12 = uv0._sortByFloatType
+
+		table.sort(slot7.list, slot12)
 
 		for slot12, slot13 in pairs(slot7.list) do
 			slot14 = slot13.floatType

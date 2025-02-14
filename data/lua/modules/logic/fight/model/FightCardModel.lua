@@ -188,9 +188,11 @@ function slot0.getSelectEnemyPosLOrR(slot0, slot1)
 	end
 
 	if #slot2 > 0 then
-		table.sort(slot2, function (slot0, slot1)
+		function slot6(slot0, slot1)
 			return slot0.position < slot1.position
-		end)
+		end
+
+		table.sort(slot2, slot6)
 
 		for slot6 = 1, #slot2 do
 			if slot2[slot6].id == slot0.curSelectEntityId then

@@ -202,7 +202,9 @@ function slot0.isSub(slot0, slot1)
 end
 
 function slot0.isMySub(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][uv0.sub]) do
+	slot5 = uv0.sub
+
+	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][slot5]) do
 		if slot6.id == slot1 then
 			return true
 		end
@@ -224,7 +226,9 @@ function slot0.isAssistBoss(slot0, slot1)
 end
 
 function slot0.isMySp(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][uv0.sp]) do
+	slot5 = uv0.sp
+
+	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][slot5]) do
 		if slot6.id == slot1 then
 			return true
 		end

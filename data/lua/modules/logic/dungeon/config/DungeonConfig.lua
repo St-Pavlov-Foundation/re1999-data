@@ -316,7 +316,9 @@ function slot0.getNormalEpisodeId(slot0, slot1)
 	if slot0:getChapterCO(slot0:getEpisodeCO(slot1).chapterId).type == DungeonEnum.ChapterType.Simple then
 		return slot2.normalEpisodeId
 	else
-		slot0:getHardEpisode(slot1)
+		slot7 = slot1
+
+		slot0:getHardEpisode(slot7)
 
 		for slot7, slot8 in pairs(slot0._normalHardMap) do
 			if slot8.id == slot1 then
@@ -342,8 +344,9 @@ function slot0.getChapterCOListByType(slot0, slot1)
 	end
 
 	slot2 = {}
+	slot7 = slot0
 
-	for slot6, slot7 in ipairs(slot0:getChapterCOList()) do
+	for slot6, slot7 in ipairs(slot0.getChapterCOList(slot7)) do
 		if slot7.type == slot1 then
 			table.insert(slot2, slot7)
 		end
@@ -1087,9 +1090,12 @@ function slot0.getCareersFromBattle(slot0, slot1)
 		table.sort(slot7, function (slot0, slot1)
 			return slot0.level < slot1.level
 		end)
-		table.sort(slot8, function (slot0, slot1)
+
+		function slot12(slot0, slot1)
 			return slot0.level < slot1.level
-		end)
+		end
+
+		table.sort(slot8, slot12)
 
 		for slot12, slot13 in ipairs(slot7) do
 			slot3 = slot3 + 1
@@ -1169,9 +1175,11 @@ function slot0.getBattleDisplayMonsterIds(slot0, slot1)
 			end
 		end
 
-		table.sort(slot14, function (slot0, slot1)
+		function slot18(slot0, slot1)
 			return slot0.distance < slot1.distance
-		end)
+		end
+
+		table.sort(slot14, slot18)
 
 		for slot18, slot19 in ipairs(slot14) do
 			if not slot3[slot19.id] then
@@ -1223,9 +1231,10 @@ function slot0.getEpisodeWinConditionTextList(slot0, slot1)
 	end
 
 	slot3 = {}
-	slot8 = "#"
+	slot8 = "|"
+	slot9 = "#"
 
-	for slot8, slot9 in ipairs(GameUtil.splitString2(slot2, false, "|", slot8)) do
+	for slot8, slot9 in ipairs(GameUtil.splitString2(slot2, false, slot8, slot9)) do
 		table.insert(slot3, slot0:getWinConditionText(slot9) or "winCondition error:" .. slot2)
 	end
 
@@ -1324,9 +1333,10 @@ function slot0.getEndBattleCost(slot0, slot1, slot2)
 end
 
 function slot0.getDungeonEveryDayCount(slot0, slot1)
+	slot8 = "#"
 	slot4 = 0
 
-	for slot8, slot9 in ipairs(GameUtil.splitString2(CommonConfig.instance:getConstStr(ConstEnum.DungeonMaxCount), true, "|", "#")) do
+	for slot8, slot9 in ipairs(GameUtil.splitString2(CommonConfig.instance:getConstStr(ConstEnum.DungeonMaxCount), true, "|", slot8)) do
 		if slot9[1] == slot1 then
 			slot4 = slot9[2]
 
@@ -1338,9 +1348,10 @@ function slot0.getDungeonEveryDayCount(slot0, slot1)
 end
 
 function slot0.getDungeonEveryDayItem(slot0, slot1)
+	slot8 = "#"
 	slot4 = 0
 
-	for slot8, slot9 in ipairs(GameUtil.splitString2(CommonConfig.instance:getConstStr(ConstEnum.DungeonItem), true, "|", "#")) do
+	for slot8, slot9 in ipairs(GameUtil.splitString2(CommonConfig.instance:getConstStr(ConstEnum.DungeonItem), true, "|", slot8)) do
 		if slot9[1] == slot1 then
 			slot4 = slot9[2]
 

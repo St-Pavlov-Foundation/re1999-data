@@ -28,7 +28,9 @@ function slot1(slot0, slot1)
 			table.insert(slot3.passiveSkillLevel, slot0.passiveSkillLevel[slot11])
 		end
 	else
-		for slot12 = 1, SkillConfig.instance:getHeroExSkillLevelByLevel(slot0.heroId, slot4) do
+		slot12 = slot4
+
+		for slot12 = 1, SkillConfig.instance:getHeroExSkillLevelByLevel(slot0.heroId, slot12) do
 			table.insert(slot3.passiveSkillLevel, slot12)
 		end
 	end

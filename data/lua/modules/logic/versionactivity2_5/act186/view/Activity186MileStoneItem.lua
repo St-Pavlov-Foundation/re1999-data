@@ -6,7 +6,8 @@ function slot0.onInitView(slot0)
 	slot0.transform = slot0.viewGO.transform
 	slot0.txtValue = gohelper.findChildTextMesh(slot0.viewGO, "txt_pointvalue")
 	slot0.goStatus = gohelper.findChild(slot0.viewGO, "#image_status")
-	slot0.goStatusGrey = gohelper.findChild(slot0.viewGO, "#image_statusgrey")
+	slot4 = "#image_statusgrey"
+	slot0.goStatusGrey = gohelper.findChild(slot0.viewGO, slot4)
 	slot0.rewardList = {}
 
 	for slot4 = 1, 2 do
@@ -62,9 +63,9 @@ end
 function slot0.refreshReward(slot0)
 	slot1 = GameUtil.splitString2(slot0._mo.bonus, true)
 	slot2 = #slot1
-	slot7 = #slot0.rewardList
+	slot7 = #slot1
 
-	for slot7 = 1, math.max(#slot1, slot7) do
+	for slot7 = 1, math.max(slot7, #slot0.rewardList) do
 		slot0:updateRewardItem(slot0:getOrCreateRewardItem(slot7), slot1[slot7], slot0.actMo:getMilestoneRewardStatus(slot0._mo.rewardId))
 	end
 

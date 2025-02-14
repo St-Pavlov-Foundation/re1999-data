@@ -330,7 +330,10 @@ end
 function slot0._buildingUpdate(slot0, slot1)
 	if slot1 == slot0.viewParam.index then
 		gohelper.setActive(slot0._goeffect, false)
-		gohelper.setActive(slot0._goeffect, true)
+
+		slot5 = true
+
+		gohelper.setActive(slot0._goeffect, slot5)
 
 		for slot5, slot6 in pairs(slot0._goeffects) do
 			gohelper.setActive(slot6, false)
