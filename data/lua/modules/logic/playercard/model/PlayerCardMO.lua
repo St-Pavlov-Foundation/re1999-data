@@ -32,6 +32,7 @@ function slot0.updateInfo(slot0, slot1, slot2)
 	slot0.towerLayer = slot1.towerLayer
 	slot0.towerBossPassCount = slot1.towerBossPassCount
 	slot0.maxLevelHero = slot1.heroMaxLevelCount
+	slot0.weekwalkVer2PlatinumCup = slot1.weekwalkVer2PlatinumCup
 end
 
 function slot0.updateThemeId(slot0, slot1)
@@ -275,6 +276,12 @@ function slot0.getProgressByIndex(slot0, slot1)
 	elseif slot1 == PlayerCardEnum.LeftContent.TowerBossPassCount then
 		if slot0.towerBossPassCount > 0 then
 			return luaLang("playercard_towerbosspasscount") .. slot0.towerBossPassCount
+		else
+			return -1
+		end
+	elseif slot1 == PlayerCardEnum.LeftContent.WeekwalkVer2PlatinumCup then
+		if slot0.weekwalkVer2PlatinumCup >= 0 then
+			return luaLang("playercard_weekwalkVer2PlatinumCup") .. slot0.weekwalkVer2PlatinumCup
 		else
 			return -1
 		end

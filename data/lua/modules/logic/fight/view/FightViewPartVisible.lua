@@ -7,6 +7,12 @@ slot3 = false
 slot4 = false
 slot5 = false
 
+function slot0.setWaitAreaActive(slot0)
+	uv0 = slot0
+
+	FightController.instance:dispatchEvent(FightEvent.UpdateUIPartVisible)
+end
+
 function slot0.set(slot0, slot1, slot2, slot3, slot4)
 	uv0 = slot0
 	uv1 = slot1
@@ -162,7 +168,7 @@ function slot0._updateUI(slot0)
 end
 
 function slot0.setActiveCanvasGroup(slot0, slot1, slot2)
-	gohelper.onceAddComponent(slot1, gohelper.Type_CanvasGroup).alpha = slot2 and 1 or 0
+	gohelper.setActiveCanvasGroupNoAnchor(gohelper.onceAddComponent(slot1, gohelper.Type_CanvasGroup), slot2)
 end
 
 function slot0.onCameraFocusChanged(slot0, slot1)

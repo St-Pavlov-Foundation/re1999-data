@@ -472,4 +472,8 @@ function slot0.onDestroyView(slot0)
 	slot0._simageicon:UnLoadImage()
 end
 
+function slot0.isExpiredItem(slot0)
+	return false
+end
+
 return slot0

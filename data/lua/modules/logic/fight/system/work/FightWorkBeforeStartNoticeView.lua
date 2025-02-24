@@ -56,6 +56,10 @@ function slot0.canShowTips()
 		slot1 = slot7 and #slot7 > 0
 	end
 
+	if FightDataHelper.fieldMgr.customData and slot5[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot6).ruleMap then
+		slot1 = true
+	end
+
 	if slot1 and (not GuideModel.instance:isDoingFirstGuide() or GuideController.instance:isForbidGuides()) and not FightReplayModel.instance:isReplay() then
 		return true
 	else

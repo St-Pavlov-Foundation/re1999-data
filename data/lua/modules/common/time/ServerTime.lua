@@ -74,6 +74,18 @@ function slot0.getDstOffset()
 	return os.date("*t", os.time()).isdst and -3600 or 0
 end
 
+function slot0.timestampToString(slot0)
+	return os.date("%Y-%m-%d %H:%M:%S", slot0 + uv0 + uv1.getDstOffset())
+end
+
+function slot0.ReplaceUTCStr(slot0)
+	if slot0 then
+		return string.gsub(slot0, "UTC%+8", uv0.GetUTCOffsetStr())
+	else
+		return ""
+	end
+end
+
 function slot0.getServerTimeToday(slot0)
 	if slot0 then
 		slot1 = uv0.nowInLocal() - TimeDispatcher.DailyRefreshTime * TimeUtil.OneHourSecond

@@ -21,27 +21,21 @@ end
 function slot0.enterActivity11605(slot0, slot1)
 	DungeonModel.instance:resetSendChapterEpisodeId()
 	MainController.instance:enterMainScene(slot0)
-	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity1_6EnterView)
-		VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function ()
-			ActQuNiangController.instance:openLevelView({
-				needShowFight = true
-			})
-		end, nil, ActQuNiangEnum.ActivityId)
-	end)
+	GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity1_6EnterView)
+	PermanentController.instance:jump2Activity(VersionActivity1_6Enum.ActivityId.EnterView)
+	ActQuNiangController.instance:openLevelView({
+		needShowFight = true
+	})
 end
 
 function slot0.enterActivity11606(slot0, slot1)
 	DungeonModel.instance:resetSendChapterEpisodeId()
 	MainController.instance:enterMainScene(slot0)
-	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity1_6EnterView)
-		VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function ()
-			ActGeTianController.instance:openLevelView({
-				needShowFight = true
-			})
-		end, nil, ActGeTianEnum.ActivityId)
-	end)
+	GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity1_6EnterView)
+	PermanentController.instance:jump2Activity(VersionActivity1_6Enum.ActivityId.EnterView)
+	ActGeTianController.instance:openLevelView({
+		needShowFight = true
+	})
 end
 
 function slot0.enterActivity11602(slot0, slot1)

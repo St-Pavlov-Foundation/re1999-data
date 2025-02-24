@@ -232,4 +232,24 @@ function slot0.isUnlockEpisode(slot0)
 	return LiangYueModel.instance:isEpisodeFinish(LiangYueModel.instance:getCurActId(), slot0) == tonumber(slot0)
 end
 
+function slot0.commonCheck(slot0)
+	if not slot0 then
+		return false
+	end
+
+	if not _G[string.split(slot0, "_")[1]] then
+		return false
+	end
+
+	if not slot2[slot1[2]] then
+		return false
+	end
+
+	if slot2.instance then
+		return slot3(slot2.instance, unpack(slot1, 3))
+	else
+		return slot3(unpack(slot1, 3))
+	end
+end
+
 return slot0

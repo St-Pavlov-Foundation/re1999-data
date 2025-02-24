@@ -94,36 +94,7 @@ function slot0._onFrame(slot0)
 		slot0:getCurrency()
 	end
 
-	slot1 = UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftShift)
-
-	if UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftControl) and UnityEngine.Input.GetKey(UnityEngine.KeyCode.Q) then
-		if ViewMgr.instance:isOpen(ViewName.V2a4_WarmUp_DialogueView) then
-			V2a4_WarmUpController.instance:log()
-		else
-			slot3 = 12436
-
-			ActivityModel.instance:setActivityInfo({
-				activityInfos = {
-					{
-						currentStage = 0,
-						isUnlock = true,
-						endTime = 1735678800000.0,
-						online = true,
-						isReceiveAllBonus = false,
-						isNewStage = false,
-						startTime = 1733000400000.0,
-						id = slot3
-					}
-				}
-			})
-			Activity125Testing.instance:_test()
-			Activity125Model.instance:setSelectEpisodeId(slot3, 1)
-			ActivityModel.instance:setTargetActivityCategoryId(slot3)
-			ViewMgr.instance:openView(ViewName.ActivityBeginnerView)
-		end
-	end
-
-	if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) and slot1 and slot2 or UnityEngine.Input.touchCount >= 5) and isDebugBuild and (SLFramework.FrameworkSettings.IsEditor or GameConfig.OpenGm) then
+	if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) and UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftShift) and UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftControl) or UnityEngine.Input.touchCount >= 5) and isDebugBuild and (SLFramework.FrameworkSettings.IsEditor or GameConfig.OpenGm) then
 		if ViewMgr.instance:isOpen(ViewName.LoadingView) then
 			slot0._lastTime = Time.time
 
@@ -152,6 +123,19 @@ function slot0._onFrame(slot0)
 
 	if slot2 and UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) then
 		GMRpc.instance:sendGMRequest("set fight 1")
+
+		if ViewMgr.instance:isOpen(ViewName.DiceHeroGameView) then
+			GMRpc.instance:sendGMRequest("diceFightWin")
+			TaskDispatcher.runDelay(function ()
+				if DiceHeroFightModel.instance.finishResult ~= DiceHeroEnum.GameStatu.None then
+					ViewMgr.instance:openView(ViewName.DiceHeroResultView, {
+						status = DiceHeroFightModel.instance.finishResult
+					})
+
+					DiceHeroFightModel.instance.finishResult = DiceHeroEnum.GameStatu.None
+				end
+			end, slot0, 0.5)
+		end
 
 		return
 	end
@@ -508,7 +492,7 @@ function slot0.initProfilerCmdFileCheck(slot0)
 	slot0._initProfiler = true
 	slot0._profilerCmdFilePath = System.IO.Path.Combine(System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, "profiler"), "profilerCmd.json")
 
-	logNormal("initProfilerCmdFileCheck")
+	slot0:_checkProfilerCmdFile()
 	TaskDispatcher.runRepeat(slot0._checkProfilerCmdFile, slot0, 10)
 end
 
@@ -518,7 +502,7 @@ function slot0._checkProfilerCmdFile(slot0)
 			return
 		end
 
-		logNormal("profilerCmd.json: " .. slot1)
+		BenchmarkApi.AndroidLog("profilerCmd.json: " .. slot1)
 		PerformanceRecorder.instance:doProfilerCmdAction(cjson.decode(slot1).cmds)
 		SLFramework.FileHelper.WriteTextToPath(slot0._profilerCmdFilePath, "")
 	end

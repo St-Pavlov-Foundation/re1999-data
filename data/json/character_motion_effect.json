@@ -579,5 +579,26 @@
     "motion": "b_bianshen",
     "node": "Drawables/bone/effect-Bone/roleeffect_wu",
     "everNode": ""
+  },
+  {
+    "heroResName": "311301_alf",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_touzi2",
+    "node": "Drawables/bone/effect-Bone/roleeffect_alf_touzi1_1",
+    "everNode": ""
+  },
+  {
+    "heroResName": "311302_alf",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_touzi2",
+    "node": "Drawables/bone/effect-Bone/roleeffect_alf_touzi1_1",
+    "everNode": ""
+  },
+  {
+    "heroResName": "310403_ddg",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_idle|b_huahuo",
+    "node": "Drawables/bone/effect-Bone/roleeffect_ddg_idle1|Drawables/bone/effect-Bone/roleeffect_ddg_hh1",
+    "everNode": ""
   }
 ]

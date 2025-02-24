@@ -98,5 +98,15 @@
     "levelIdDict": "",
     "name": "拥抱虚像",
     "desc": ""
+  },
+  {
+    "season": 1,
+    "id": 11,
+    "storyIdList": "600908#600909",
+    "stageId": 8,
+    "image": "singlebg/rouge/review/rouge_review_chapter_10.png",
+    "levelIdDict": "",
+    "name": "喜极之处",
+    "desc": ""
   }
 ]

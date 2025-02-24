@@ -19,6 +19,7 @@ function slot0.init(slot0, slot1)
 	slot0._txtunselectunequipen = gohelper.findChildText(slot0.viewGO, "go_info/go_unselect_unequip/en")
 	slot0._golater = gohelper.findChild(slot0.viewGO, "go_later")
 	slot0._goequipedeffect = gohelper.findChild(slot0.viewGO, "go_info/go_selected_equip/click")
+	slot0._goreddot = gohelper.findChild(slot0.viewGO, "go_info/go_reddot")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -62,6 +63,7 @@ function slot0.refreshUI(slot0)
 
 	slot0:setSelectUI()
 	slot0:setLaterFlagVisible()
+	RedDotController.instance:addRedDot(slot0._goreddot, RedDotEnum.DotNode.RougeDLCNew, slot0._mo.id)
 end
 
 function slot0._onSelectDLC(slot0, slot1)
@@ -91,6 +93,11 @@ function slot0.setSelectUI(slot0)
 	slot0:setTabIcon(slot0._gounselectunequip, false, false)
 
 	slot0._isEquiped = slot1
+
+	if slot0._isSelect then
+		RougeOutsideController.instance:saveNewReadDLCInLocal(slot0._mo.id)
+		RougeOutsideController.instance:initDLCReddotInfo()
+	end
 end
 
 function slot0.setTabIcon(slot0, slot1, slot2, slot3)
@@ -104,7 +111,7 @@ function slot0.setTabIcon(slot0, slot1, slot2, slot3)
 end
 
 function slot0.setLaterFlagVisible(slot0)
-	gohelper.setActive(slot0._golater, RougeDLCSelectListModel.instance:getCount() <= slot0._index)
+	gohelper.setActive(slot0._golater, false)
 end
 
 function slot0.onDestroyView(slot0)

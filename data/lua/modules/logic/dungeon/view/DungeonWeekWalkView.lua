@@ -139,8 +139,7 @@ function slot0._showProgress(slot0)
 	slot8 = 10
 
 	if not slot5 then
-		slot7 = 11
-		slot8 = 16
+		slot8 = 11 + #WeekWalkConfig.instance:getDeepLayer(WeekWalkModel.instance:getInfo().issueId) - 1
 	end
 
 	for slot12, slot13 in pairs(slot0._mapFinishItemTab) do

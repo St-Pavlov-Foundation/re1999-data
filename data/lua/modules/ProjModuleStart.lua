@@ -23,6 +23,9 @@ end
 function slot0.resCheck(slot0)
 	setNeedLoadModule("modules.reschecker.MassHotUpdateMgr", "MassHotUpdateMgr")
 	setNeedLoadModule("modules.reschecker.ResCheckMgr", "ResCheckMgr")
+	setNeedLoadModule("modules.common.others.SDKDataTrackExt", "SDKDataTrackExt")
+	setNeedLoadModule("modules.logic.defines.PlayerPrefsKey", "PlayerPrefsKey")
+	SDKDataTrackExt.activateExtend()
 	ResCheckMgr.instance:startCheck(slot0.onResCheckFinish, slot0)
 end
 
@@ -80,6 +83,7 @@ function slot0.initFramework(slot0)
 end
 
 function slot0.initModuleLogic(slot0)
+	GameBranchMgr.instance:init()
 	ModuleMgr.instance:init(addGlobalModule("modules.setting.module_mvc", "module_mvc"), slot0._onModuleIniFinish, slot0)
 end
 
@@ -210,6 +214,7 @@ function slot0.startLogic(slot0)
 	BootLoadingView.instance:addEventListeners()
 	SDKDataTrackMgr.instance:trackResourceLoadFinishEvent(SDKDataTrackMgr.Result.success)
 	StatViewController.instance:init()
+	GameBranchMgr.instance:inject()
 	BootLoadingView.instance:playClose()
 	TaskDispatcher.runDelay(function ()
 		LoginController.instance:login()

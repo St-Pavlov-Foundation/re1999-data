@@ -115,6 +115,7 @@ end
 
 function slot0.refreshOrder(slot0)
 	slot0.getRewardOrder = slot0.getReward and 0 or 1
+	slot0.getUnlockOrder = slot0.hasUnlock and 0 or 1
 end
 
 function slot0.caleMaxProgress(slot0)

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 2001,
+    "name": "激情的汇流",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "每消耗一点激情，增加5%唤醒值",
+    "rules": "1#9260017"
+  },
+  {
+    "id": 2002,
+    "name": "灵光的挥洒",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "每消耗一点灵光，增加3%唤醒值",
+    "rules": "1#9260018"
+  },
+  {
+    "id": 2003,
+    "name": "倍速激增",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "唤醒阈中，回合开始时回复2点激情",
+    "rules": "1#9260019"
+  },
+  {
+    "id": 2004,
+    "name": "咒语回响",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "唤醒阈中，2/3阶咒语有50%/100%概率额外释放一次",
+    "rules": "1#9260020"
+  },
+  {
+    "id": 2005,
+    "name": "灵光满溢",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "唤醒阈中，我方角色主动行动后，全队回复2点灵光",
+    "rules": "1#9260021"
+  },
+  {
+    "id": 2006,
+    "name": "狂热暗示",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "唤醒阈中，我方回合开始获得攻击力+15%，持续1回合",
+    "rules": "1#9260022"
+  },
+  {
+    "id": 2007,
+    "name": "递升嘉许",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "2/3阶咒语伤害提升30%",
+    "rules": "1#9260023"
+  },
+  {
+    "id": 2008,
+    "name": "噩梦转赠",
+    "icon": "weekwalkheart_buff_001",
+    "desc": "攻击时，若敌方有至少3种【状态异常】，则伤害增加40%",
+    "rules": "1#9260024"
+  }
+]

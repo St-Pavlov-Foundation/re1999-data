@@ -28,7 +28,8 @@ slot1 = {
 	[TurnbackEnum.ActivityId.NewSignIn] = ViewName.TurnbackNewSignInView,
 	[TurnbackEnum.ActivityId.NewTaskView] = ViewName.TurnbackNewTaskView,
 	[TurnbackEnum.ActivityId.NewBenfitView] = ViewName.TurnbackNewBenfitView,
-	[TurnbackEnum.ActivityId.NewProgressView] = ViewName.TurnbackNewProgressView
+	[TurnbackEnum.ActivityId.NewProgressView] = ViewName.TurnbackNewProgressView,
+	[TurnbackEnum.ActivityId.ReviewView] = ViewName.TurnbackReviewView
 }
 
 function slot0._editableInitView(slot0)

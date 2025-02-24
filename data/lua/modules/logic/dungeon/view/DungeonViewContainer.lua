@@ -8,15 +8,17 @@ function slot0.buildViews(slot0)
 
 	slot2:stopOpenDefaultTab(true)
 	slot2:setDynamicNodeContainers({
-		"#go_weekwalk",
-		"#go_explore",
-		"#go_permanent"
+		[DungeonEnum.DungeonViewTabEnum.WeekWalk] = "#go_weekwalk",
+		[DungeonEnum.DungeonViewTabEnum.Explore] = "#go_explore",
+		[DungeonEnum.DungeonViewTabEnum.Permanent] = "#go_permanent",
+		[DungeonEnum.DungeonViewTabEnum.WeekWalk_2] = "#go_weekwalk"
 	})
 	slot2:setDynamicNodeResHandlers({
-		[2] = uv0._getExploreRes
+		[DungeonEnum.DungeonViewTabEnum.Explore] = uv0._getExploreRes
 	})
 	table.insert(slot1, slot2)
 
+	slot0._dynamicGroup = slot2
 	slot0._dungeonViewAudio = DungeonViewAudio.New()
 
 	table.insert(slot1, slot0._dungeonViewAudio)
@@ -95,9 +97,10 @@ function slot0.buildTabViews(slot0, slot1)
 		slot0._exploreView = DungeonExploreView.New()
 
 		return {
-			DungeonWeekWalkView.New(),
-			slot0._exploreView,
-			PermanentMainView.New()
+			[DungeonEnum.DungeonViewTabEnum.WeekWalk] = DungeonWeekWalkView.New(),
+			[DungeonEnum.DungeonViewTabEnum.Explore] = slot0._exploreView,
+			[DungeonEnum.DungeonViewTabEnum.Permanent] = PermanentMainView.New(),
+			[DungeonEnum.DungeonViewTabEnum.WeekWalk_2] = DungeonWeekWalk_2View.New()
 		}
 	end
 end
@@ -108,6 +111,10 @@ end
 
 function slot0.switchTab(slot0, slot1)
 	slot0:dispatchEvent(ViewEvent.ToSwitchTab, 2, slot1)
+end
+
+function slot0.destoryTab(slot0, slot1)
+	slot0._dynamicGroup:destoryTab(slot1)
 end
 
 function slot0.onContainerOpenFinish(slot0)

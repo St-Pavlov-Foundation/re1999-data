@@ -4849,5 +4849,95 @@
     "name": "",
     "avatar": "",
     "chessId": 0
+  },
+  {
+    "groupId": 38,
+    "id": 38001,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "阿莱夫",
+    "avatar": "311301",
+    "chessId": 1
+  },
+  {
+    "groupId": 38,
+    "id": 38002,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 39,
+    "id": 39001,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "阿莱夫",
+    "avatar": "311301",
+    "chessId": 1
+  },
+  {
+    "groupId": 39,
+    "id": 39002,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 40,
+    "id": 40001,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "阿莱夫",
+    "avatar": "311301",
+    "chessId": 1
+  },
+  {
+    "groupId": 40,
+    "id": 40002,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 41,
+    "id": 41001,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "阿莱夫",
+    "avatar": "311301",
+    "chessId": 1
+  },
+  {
+    "groupId": 41,
+    "id": 41002,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 42,
+    "id": 42001,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "阿莱夫",
+    "avatar": "311301",
+    "chessId": 1
+  },
+  {
+    "groupId": 42,
+    "id": 42002,
+    "type": 1,
+    "content": "【临时文本】2.6棋子对话",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
   }
 ]

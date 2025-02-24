@@ -29,6 +29,16 @@ slot0.shortCut2LangIdxTab = {
 	fr = slot0.fr,
 	thai = slot0.thai
 }
+slot0.aihelpKey = {
+	[slot0.zh] = "zh-CN",
+	[slot0.tw] = "zh-TW",
+	[slot0.en] = "en",
+	[slot0.kr] = "ko",
+	[slot0.jp] = "ja",
+	[slot0.de] = "de",
+	[slot0.fr] = "fr",
+	[slot0.thai] = "th"
+}
 slot0._captionsSetting = {
 	[slot0.zh] = true,
 	[slot0.tw] = true,
@@ -192,6 +202,38 @@ end
 
 function formatLuaLang(...)
 	return uv0.instance:_formatLuaLang(...)
+end
+
+function slot0.isZh(slot0)
+	return slot0:getCurLang() == uv0.zh
+end
+
+function slot0.isTw(slot0)
+	return slot0:getCurLang() == uv0.tw
+end
+
+function slot0.isEn(slot0)
+	return slot0:getCurLang() == uv0.en
+end
+
+function slot0.isKr(slot0)
+	return slot0:getCurLang() == uv0.kr
+end
+
+function slot0.isJp(slot0)
+	return slot0:getCurLang() == uv0.jp
+end
+
+function slot0.isDe(slot0)
+	return slot0:getCurLang() == uv0.de
+end
+
+function slot0.isFr(slot0)
+	return slot0:getCurLang() == uv0.fr
+end
+
+function slot0.isThai(slot0)
+	return slot0:getCurLang() == uv0.thai
 end
 
 function langVideoUrl(slot0)

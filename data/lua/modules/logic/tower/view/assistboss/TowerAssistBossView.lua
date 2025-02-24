@@ -60,7 +60,16 @@ end
 function slot0.refreshView(slot0)
 	TowerAssistBossListModel.instance:refreshList(slot0.viewParam)
 
-	for slot8 = 1, math.max(#TowerAssistBossListModel.instance:getList(), #slot0.items) do
+	slot2 = #TowerAssistBossListModel.instance:getList()
+	slot4 = math.max(slot2, #slot0.items)
+
+	if slot2 <= 3 then
+		slot0.content.transform.pivot = Vector2(0.5, 1)
+	else
+		slot0.content.transform.pivot = Vector2(0, 1)
+	end
+
+	for slot8 = 1, slot4 do
 		if not slot0.items[slot8] then
 			slot0.items[slot8] = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.viewContainer:getResInst(slot0.viewContainer:getSetting().otherRes.itemRes, slot0.content, tostring(slot8)), TowerAssistBossItem)
 		end

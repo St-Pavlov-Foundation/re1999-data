@@ -43,31 +43,38 @@ function slot0.copyQuickEditCardList(slot0)
 	end
 
 	slot6 = slot0.isTowerBattle
+	slot7 = slot0.isWeekWalk_2
 
-	for slot11, slot12 in ipairs(slot1) do
-		if not slot3[slot12.uid] then
-			slot3[slot12.uid] = true
+	for slot12, slot13 in ipairs(slot1) do
+		if not slot3[slot13.uid] then
+			slot3[slot13.uid] = true
 
 			if slot0.adventure then
-				if WeekWalkModel.instance:getCurMapHeroCd(slot12.heroId) > 0 then
-					table.insert({}, slot12)
+				if WeekWalkModel.instance:getCurMapHeroCd(slot13.heroId) > 0 then
+					table.insert({}, slot13)
 				else
-					table.insert(slot2, slot12)
+					table.insert(slot2, slot13)
+				end
+			elseif slot7 then
+				if WeekWalk_2Model.instance:getCurMapHeroCd(slot13.heroId) > 0 then
+					table.insert(slot8, slot13)
+				else
+					table.insert(slot2, slot13)
 				end
 			elseif slot6 then
-				if TowerModel.instance:isHeroBan(slot12.heroId) then
-					table.insert(slot7, slot12)
+				if TowerModel.instance:isHeroBan(slot13.heroId) then
+					table.insert(slot8, slot13)
 				else
-					table.insert(slot2, slot12)
+					table.insert(slot2, slot13)
 				end
 			else
-				table.insert(slot2, slot12)
+				table.insert(slot2, slot13)
 			end
 		end
 	end
 
-	if slot0.adventure or slot6 then
-		tabletool.addValues(slot2, slot7)
+	if slot0.adventure or slot6 or slot7 then
+		tabletool.addValues(slot2, slot8)
 	end
 
 	slot0:setList(slot2)
@@ -225,6 +232,10 @@ function slot0.checkHeroIsError(slot0, slot1)
 		if WeekWalkModel.instance:getCurMapHeroCd(slot2.heroId) > 0 then
 			return true
 		end
+	elseif slot0.isWeekWalk_2 then
+		if WeekWalk_2Model.instance:getCurMapHeroCd(slot2.heroId) > 0 then
+			return true
+		end
 	elseif slot0.isTowerBattle and TowerModel.instance:isHeroBan(slot2.heroId) then
 		return true
 	end
@@ -246,9 +257,11 @@ function slot0.cancelAllErrorSelected(slot0)
 	end
 end
 
-function slot0.setParam(slot0, slot1, slot2)
+function slot0.setParam(slot0, slot1, slot2, slot3)
 	slot0.adventure = slot1
 	slot0.isTowerBattle = slot2
+	slot0._groupType = slot3
+	slot0.isWeekWalk_2 = slot3 == HeroGroupEnum.GroupType.WeekWalk_2
 end
 
 function slot0.clear(slot0)

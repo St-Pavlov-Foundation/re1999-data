@@ -136,6 +136,7 @@ end
 
 function slot0.clickCompositeItemCallBack(slot0, slot1)
 	RougeController.instance:openRougeCollectionTipView({
+		interactable = false,
 		collectionCfgId = slot1,
 		viewPosition = RougeEnum.CollectionTipPos.HandBook
 	})

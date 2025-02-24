@@ -55,16 +55,26 @@ for slot4 = 1, slot0.SIMAGE_COUNT do
 	table.insert(slot0.preloadList, ResUrl.getSummonHeroIcon("role" .. slot4))
 end
 
+function slot0.initCharacterItemCount(slot0)
+	slot3 = ""
+
+	if SummonConfig.instance:getSummonPool(SummonMainModel.instance:getCurId()) then
+		slot3 = slot2.customClz
+	end
+
+	slot0._characterItemCount = SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(slot3)
+end
+
 function slot0._editableInitView(slot0)
 	slot0._characteritems = {}
 	slot0._pageitems = {}
-	slot0._animRoot = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	slot4 = typeof
+	slot0._animRoot = slot0.viewGO:GetComponent(slot4(UnityEngine.Animator))
 
 	slot0:refreshSingleImage()
+	slot0:initCharacterItemCount()
 
-	slot0._charaterItemCount = slot0._charaterItemCount or uv0.DETAIL_COUNT
-
-	for slot4 = 1, slot0._charaterItemCount do
+	for slot4 = 1, slot0._characterItemCount do
 		slot5 = slot0:getUserDataTb_()
 		slot5.go = gohelper.findChild(slot0.viewGO, "#go_ui/current/right/#go_characteritem" .. slot4)
 		slot5.imagecareer = gohelper.findChildImage(slot5.go, "image_career")
@@ -80,6 +90,14 @@ function slot0._editableInitView(slot0)
 		table.insert(slot0._characteritems, slot5)
 		slot5.btndetail:AddClickListener(uv0._onClickDetailByIndex, slot0, slot4)
 	end
+
+	slot0._goShop = gohelper.findChild(slot0.viewGO, "#go_ui/#go_shop")
+	slot0._txtticket = gohelper.findChildText(slot0.viewGO, "#go_ui/#go_shop/#txt_num")
+	slot0._btnshop = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ui/#go_shop/#btn_shop")
+
+	if slot0._btnshop then
+		slot0._btnshop:AddClickListener(slot0._btnshopOnClick, slot0)
+	end
 end
 
 function slot0.onDestroyView(slot0)
@@ -94,34 +112,18 @@ function slot0.onDestroyView(slot0)
 	end
 
 	slot0:unloadSingleImage()
+
+	if slot0._btnshop then
+		slot0._btnshop:RemoveClickListener()
+	end
 end
 
 function slot0.refreshSingleImage(slot0)
-	slot0._simagebg:LoadImage(ResUrl.getSummonHeroIcon("full/bg111"))
-	slot0._simagefrontbg:LoadImage(ResUrl.getSummonHeroIcon("bg_role_3"))
-
-	slot4 = ResUrl.getSummonHeroIcon
-
-	slot0._simageline:LoadImage(slot4("title_img_deco"))
-
-	for slot4 = 1, uv0.SIMAGE_COUNT do
-		slot0["_simagead" .. slot4]:LoadImage(ResUrl.getSummonHeroIcon("role" .. slot4), slot0._adLoaded, slot0)
-	end
-
-	slot0._simagesignature1:LoadImage(ResUrl.getSignature("3009"))
+	slot0._simageline:LoadImage(ResUrl.getSummonHeroIcon("title_img_deco"))
 end
 
 function slot0.unloadSingleImage(slot0)
-	for slot4 = 1, uv0.SIMAGE_COUNT do
-		slot0["_simagead" .. slot4]:UnLoadImage()
-	end
-
-	slot0._simagebg:UnLoadImage()
-	slot0._simagefrontbg:UnLoadImage()
 	slot0._simageline:UnLoadImage()
-	slot0._simagesignature1:UnLoadImage()
-	slot0._simagecurrency1:UnLoadImage()
-	slot0._simagecurrency10:UnLoadImage()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -278,6 +280,7 @@ function slot0._refreshView(slot0)
 	end
 
 	slot0:_refreshPoolUI()
+	slot0:_refreshTicket()
 end
 
 function slot0._refreshPoolUI(slot0)
@@ -404,6 +407,29 @@ function slot0.onItemChanged(slot0)
 	end
 
 	slot0:_refreshCost()
+	slot0:_refreshTicket()
+end
+
+function slot0._refreshTicket(slot0)
+	if slot0._txtticket == nil then
+		return
+	end
+
+	if not SummonMainModel.instance:getCurPool() then
+		return
+	end
+
+	slot2 = 0
+
+	if slot1.ticketId ~= 0 then
+		slot0._txtticket.text = tostring(ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Item, slot1.ticketId))
+	end
+
+	gohelper.setActive(slot0._goShop, slot1.ticketId ~= 0)
+end
+
+function slot0._btnshopOnClick(slot0)
+	StoreController.instance:checkAndOpenStoreView(StoreEnum.StoreId.LimitStore)
 end
 
 return slot0

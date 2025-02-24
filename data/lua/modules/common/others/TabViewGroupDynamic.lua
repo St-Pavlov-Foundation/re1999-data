@@ -93,6 +93,21 @@ function slot0.removeEvents(slot0)
 	end
 end
 
+function slot0.destoryTab(slot0, slot1)
+	if slot0._tabViews and slot0._tabAbLoaders[slot1] then
+		if not slot2.isLoading and slot0._tabViews[slot1] then
+			slot3:removeEventsInternal()
+			slot3:onDestroyViewInternal()
+			slot3:__onDispose()
+			gohelper.destroy(slot3.viewGO)
+		end
+
+		slot2:dispose()
+
+		slot0._tabAbLoaders[slot1] = nil
+	end
+end
+
 function slot0.onDestroyView(slot0)
 	if slot0._tabViews then
 		for slot4, slot5 in pairs(slot0._tabViews) do

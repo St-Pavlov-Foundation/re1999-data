@@ -12,8 +12,29 @@ end
 
 function slot0.init(slot0, slot1)
 	uv0.super.init(slot0, slot1)
+	slot0:reInitDefaultAnimState()
 	FightController.instance:registerCallback(FightEvent.OnBuffUpdate, slot0._onBuffUpdate, slot0)
 	FightController.instance:registerCallback(FightEvent.SkillEditorRefreshBuff, slot0.detectRefreshAct, slot0)
+end
+
+function slot0.reInitDefaultAnimState(slot0)
+	if not slot0.unitSpawn:getMO() then
+		return
+	end
+
+	if not slot1:isMonster() then
+		return
+	end
+
+	if not slot1:getSpineSkinCO() then
+		return
+	end
+
+	if not lua_fight_monster_skin_idle_map.configDict[slot2.id] then
+		return
+	end
+
+	slot0._defaultAnimState = slot3.idleAnimName
 end
 
 function slot0.play(slot0, slot1, slot2, slot3, slot4, slot5)
@@ -23,6 +44,10 @@ function slot0.play(slot0, slot1, slot2, slot3, slot4, slot5)
 
 	if not slot4 then
 		slot1 = FightHelper.processEntityActionName(slot0.unitSpawn, slot1, slot5)
+	end
+
+	if slot1 == SpineAnimState.idle1 then
+		slot1 = slot0._defaultAnimState
 	end
 
 	if slot0:_cannotPlay(slot1) then

@@ -6,7 +6,7 @@ slot1 = 1
 function slot0.buildViews(slot0)
 	return {
 		RougeMainView.New(),
-		RougeBaseDLCViewComp.New(true),
+		RougeBaseDLCViewComp.New(),
 		TabViewGroup.New(uv0, "#go_lefttop")
 	}
 end

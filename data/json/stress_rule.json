@@ -4138,5 +4138,14 @@
     "param": "924103001",
     "isNoShow": 0,
     "desc": "行动后，失去10%当前生命，自身应激+10"
+  },
+  {
+    "id": 9260210,
+    "type": "triggerSkill",
+    "target": 103,
+    "targetLimit": 0,
+    "param": "9260210",
+    "isNoShow": 0,
+    "desc": "当自身应激到达50时，自身转变为戴面具的努库泰澳人"
   }
 ]

@@ -209,10 +209,12 @@ function slot0._editableInitView(slot0)
 		table.insert(slot0._characteritem.rares, gohelper.findChild(slot0._characteritem.go, "rare/go_rare" .. slot4))
 	end
 
-	slot0._characteritem.btndetail:AddClickListener(slot0._onClickDetail, slot0)
-end
+	slot0._btncheck1 = gohelper.findChildButton(slot0.viewGO, "#go_ui/current/#go_unselected/#btn_check_1")
+	slot0._btncheck2 = gohelper.findChildButton(slot0.viewGO, "#go_ui/current/#go_selected/#btn_check_2")
 
-function slot0.onUpdateParam(slot0)
+	slot0._btncheck1:AddClickListener(slot0._btnOpenOnClick1, slot0)
+	slot0._btncheck2:AddClickListener(slot0._btnOpenOnClick2, slot0)
+	slot0._characteritem.btndetail:AddClickListener(slot0._onClickDetail, slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -245,6 +247,9 @@ function slot0.onDestroyView(slot0)
 
 		slot0._characteritem = nil
 	end
+
+	slot0._btncheck1:RemoveClickListener()
+	slot0._btncheck2:RemoveClickListener()
 end
 
 function slot0.refreshFreeSummonButton(slot0, slot1)
@@ -487,6 +492,20 @@ end
 
 function slot0.onSummonReply(slot0)
 	slot0.summonSuccess = true
+end
+
+function slot0._btnOpenOnClick1(slot0)
+	ViewMgr.instance:openView(ViewName.VersionActivity2_3NewCultivationDetailView, {
+		showType = VersionActivity2_3NewCultivationDetailView.DISPLAY_TYPE.Effect,
+		heroId = SummonConfig.instance:getStrongCustomChoiceIds(SummonMainModel.instance:getCurPool().id)
+	})
+end
+
+function slot0._btnOpenOnClick2(slot0)
+	ViewMgr.instance:openView(ViewName.VersionActivity2_3NewCultivationDetailView, {
+		showType = VersionActivity2_3NewCultivationDetailView.DISPLAY_TYPE.Effect,
+		heroId = slot0:getPickHeroIds(SummonMainModel.instance:getCurPool())
+	})
 end
 
 return slot0

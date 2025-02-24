@@ -522,6 +522,7 @@ slot1 = {
 	[DungeonEnum.EpisodeType.Equip] = true,
 	[DungeonEnum.EpisodeType.SpecialEquip] = true,
 	[DungeonEnum.EpisodeType.WeekWalk] = true,
+	[DungeonEnum.EpisodeType.WeekWalk_2] = true,
 	[DungeonEnum.EpisodeType.Season] = true,
 	[DungeonEnum.EpisodeType.SeasonRetail] = true,
 	[DungeonEnum.EpisodeType.SeasonSpecial] = true,
@@ -700,7 +701,9 @@ function slot0.chapterListIsBreakType(slot0, slot1)
 end
 
 function slot0.chapterListIsWeekWalkType(slot0, slot1)
-	return (slot1 or slot0.curChapterType) == DungeonEnum.ChapterType.WeekWalk
+	slot2 = slot1 or slot0.curChapterType
+
+	return slot2 == DungeonEnum.ChapterType.WeekWalk or slot2 == DungeonEnum.ChapterType.WeekWalk_2
 end
 
 function slot0.chapterListIsSeasonType(slot0, slot1)

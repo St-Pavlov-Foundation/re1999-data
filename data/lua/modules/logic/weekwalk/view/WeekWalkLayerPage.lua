@@ -215,7 +215,7 @@ function slot0.onOpen(slot0)
 	slot0._layerList = slot0.viewParam[3]
 	slot0._itemList = slot0:getUserDataTb_()
 
-	slot0:_addItems()
+	slot0:_initItems()
 
 	if WeekWalkLayerView.isShallowPage(slot0._pageIndex) then
 		if slot0._pageIndex <= 1 then
@@ -235,34 +235,49 @@ function slot0.onOpen(slot0)
 	slot0:_setEdgFadeStrengthen()
 end
 
-function slot0._addItems(slot0)
+function slot0.updateLayerList(slot0, slot1)
+	slot0._layerList = slot1
+
+	slot0:_initItems()
+end
+
+function slot0._initItems(slot0)
 	gohelper.setActive(slot0._gopos3, false)
 	gohelper.setActive(slot0._gopos5, false)
 
-	slot2 = #slot0._layerList == 6 and slot0._gopos3 or slot0._gopos5
+	slot1 = #slot0._layerList ~= WeekWalkEnum.ShallowLayerMaxNum
+	slot2 = slot0._gopos5
+	slot3 = #slot0._layerList == WeekWalkEnum.NewDeepLayerMaxNum
 
 	gohelper.setActive(slot2, true)
 
-	for slot7, slot8 in ipairs(slot0._layerList) do
-		slot0:_addItem(slot2.transform:GetChild(slot7 - 1).gameObject, slot8)
+	for slot8, slot9 in ipairs(slot0._layerList) do
+		slot0:_addItem(slot2.transform:GetChild(slot8 - 1).gameObject, slot9, slot8)
 	end
 
 	if slot1 then
-		recthelper.setWidth(slot0._gocontent.transform, 3400)
+		if slot3 then
+			recthelper.setWidth(slot0._gocontent.transform, 3932)
+		else
+			recthelper.setWidth(slot0._gocontent.transform, 3400)
+		end
 	end
 end
 
-function slot0._addItem(slot0, slot1, slot2)
-	slot4 = slot0._layerView.viewContainer:getResInst(slot0._layerView.viewContainer:getSetting().otherRes[2], slot1)
-	slot4.name = "weekwalklayerpageitem" .. slot2.layer
-	slot5 = MonoHelper.addLuaComOnceToGo(slot4, WeekWalkLayerPageItem, {
+function slot0._addItem(slot0, slot1, slot2, slot3)
+	if slot0._itemList[slot3] then
+		return
+	end
+
+	slot5 = slot0._layerView.viewContainer:getResInst(slot0._layerView.viewContainer:getSetting().otherRes[2], slot1)
+	slot5.name = "weekwalklayerpageitem" .. slot2.layer
+	slot6 = MonoHelper.addLuaComOnceToGo(slot5, WeekWalkLayerPageItem, {
 		slot2,
 		slot0._pageIndex,
 		slot0
 	})
-	slot5._relativeAnchorPos = recthelper.rectToRelativeAnchorPos(slot4.transform.position, slot0._gocontent.transform)
-
-	table.insert(slot0._itemList, slot5)
+	slot6._relativeAnchorPos = recthelper.rectToRelativeAnchorPos(slot5.transform.position, slot0._gocontent.transform)
+	slot0._itemList[slot3] = slot6
 end
 
 function slot0._setEdgFadeStrengthen(slot0, slot1, slot2)

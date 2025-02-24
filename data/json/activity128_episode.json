@@ -1366,5 +1366,113 @@
     "recommendLevelDesc": "？？？",
     "openDay": 15,
     "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 12617,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500101,
+    "desc": "拟态类，属别不明，存于口述记录资料。\n传言有黄金假面，佩戴者“举目皆金”。\n<i>尽管从未有人现身证实传闻，但总有人趋之若鹜。朋友，这可是黄金！</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 1,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500102,
+    "desc": "“某地质学家在某次洞窟勘测中听闻恸哭\n的声响。搜救队闻讯而来，失踪一人。”\n<i>编者建议：深入途中，请勿忽视可能的异常响声。当然，只是建议。</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 1,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500201,
+    "desc": "“洞窟现已封堵，并派以专人驻守，擅闯者将处以长期拘役。”\n<i>编者附言：本报从未接到过任何一位擅闯者的受罚举证。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 1,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 12617,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500103,
+    "desc": "拟态类，偶现于矿脉地区，伴随大型地裂现象。\n“理所当然地，贪婪驱使着人们举起了矿锄，不眠不休，直至它从愠怒中醒来。”\n<i>起初，人们以为那只是普通的矿脉塌陷。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 2,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500104,
+    "desc": "“警戒线内，国家勘察队宣布接管矿区，对其声称的‘大型自然奇迹’进行深入勘探。”\n<i>海量新发现冲昏了他们的头脑——连经验最为丰富的学者都逐渐丧失了敬畏之心。</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 2,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500202,
+    "desc": "“史无前例的地幔振动之后，地域遭到封锁，没有哪位幸存者愿意向媒体透露那场灾难。”\n<i>与存在数亿年之久的地幔相比，人类如此渺小。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 8,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 12617,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500105,
+    "desc": "非现实属类，疑似噩梦的集体恐惧现象。\n“某探险家坚称于昨夜受袭并患轻度癫痫。据家属作证，受害者正于家中酣睡。”\n<i>不排除沽名钓誉者及其他模仿犯的可能。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 3,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500106,
+    "desc": "“数名失踪者于野外获寻。遗憾的是——最好的医生也无法唤醒‘不愿醒来’的人。”\n<i>编者重申：不要轻信未刊登的传闻并贸然做梦。</i> ",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 12617,
+    "stage": 3,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500203,
+    "desc": "“据报道，多个脑科学研究所正全力研发造梦区域的活性抑制药物。”\n<i>据称脑部药物具有多类副作用——无论如何，那总比做梦要仁慈得多。</i> ",
+    "recommendLevelDesc": "？？？",
+    "openDay": 15,
+    "evaluate": "10101#10201#10301#10401"
   }
 ]

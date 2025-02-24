@@ -451,4 +451,14 @@ function slot0.setCanShowDeadLine(slot0, slot1)
 	end
 end
 
+function slot0.isExpiredItem(slot0)
+	if slot0._itemIcon then
+		return slot0._itemIcon:isExpiredItem()
+	end
+
+	if slot0._equipIcon then
+		return slot0._equipIcon:isExpiredItem()
+	end
+end
+
 return slot0

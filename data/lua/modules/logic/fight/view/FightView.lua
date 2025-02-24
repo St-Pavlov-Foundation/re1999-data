@@ -26,6 +26,7 @@ function slot0.onInitView(slot0)
 	slot0.enemyActionSelect = gohelper.findChild(slot0.viewGO, "root/topLeftContent/enemyaction/selected")
 	slot0.enemyActionLocked = gohelper.findChild(slot0.viewGO, "root/topLeftContent/enemyaction/locked")
 	slot0.btnEnemyAction = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/topLeftContent/enemyaction/#btn_enemyaction")
+	slot0.btnCheckSub = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "root/enemynum/btn_checkSub")
 end
 
 function slot0.addEvents(slot0)
@@ -39,6 +40,7 @@ function slot0.addEvents(slot0)
 	slot0._btnSpecialTip:AddClickListener(slot0._onClickBtnSpecialTip, slot0)
 	slot0._btnCareerRestrain:AddClickListener(slot0._onClickCareerRestrain, slot0)
 	slot0.btnEnemyAction:AddClickListener(slot0.onClickEnemyAction, slot0)
+	slot0:addClickCb(slot0.btnCheckSub, slot0.onBtnCheckSub, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, slot0._checkStartAutoCards, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._checkStartAutoCards, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnClothSkillRoundSequenceFinish, slot0._onClothSkillRoundSequenceFinish, slot0)
@@ -58,6 +60,8 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnStageChange, slot0.onStageChange, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.RefreshUIRound, slot0._onRefreshUIRound, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.AddSubEntity, slot0._onAddSubEntity, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.ClearMonsterSub, slot0._onClearMonsterSub, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.RefreshMonsterSubCount, slot0._onRefreshMonsterSubCount, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ChangeRound, slot0._onChangeRound, slot0)
@@ -210,11 +214,33 @@ function slot0._checkStartReplay(slot0)
 end
 
 function slot0._setIsShowUI(slot0, slot1)
-	if not slot0._canvasGroup then
-		slot0._canvasGroup = gohelper.onceAddComponent(slot0._rootGO, typeof(UnityEngine.CanvasGroup))
+	slot0:_initRootChildCanvas()
+
+	if slot0.rootChildCanvasList then
+		for slot5, slot6 in ipairs(slot0.rootChildCanvasList) do
+			if not gohelper.isNil(slot6) then
+				gohelper.setActiveCanvasGroupNoAnchor(slot6, slot1)
+			end
+		end
+	end
+end
+
+function slot0._initRootChildCanvas(slot0)
+	if slot0.rootChildCanvasList then
+		return
 	end
 
-	gohelper.setActiveCanvasGroup(slot0._canvasGroup, slot1)
+	if not (slot0._rootGO and slot0._rootGO.transform) then
+		return
+	end
+
+	slot0.rootChildCanvasList = slot0:getUserDataTb_()
+
+	for slot5 = 1, slot1.childCount do
+		if slot1:GetChild(slot5 - 1) and gohelper.onceAddComponent(slot6.gameObject, gohelper.Type_CanvasGroup) then
+			table.insert(slot0.rootChildCanvasList, slot7)
+		end
+	end
 end
 
 function slot0._onGuideStopAutoFight(slot0)
@@ -388,6 +414,20 @@ function slot0._showEnemySubHeroCount(slot0)
 	if #slot1 > 0 then
 		FightController.instance:dispatchEvent(FightEvent.OnGuideShowEnemyNum)
 	end
+
+	if FightDataHelper.fieldMgr.customData and slot2[FightCustomData.CustomDataType.WeekwalkVer2] then
+		slot0._txtEnemyNum.text = "∞"
+	end
+end
+
+function slot0.onBtnCheckSub(slot0)
+	if not FightDataHelper.stageMgr:isFree() then
+		return
+	end
+
+	if FightDataHelper.fieldMgr.customData and slot1[FightCustomData.CustomDataType.WeekwalkVer2] then
+		ViewMgr.instance:openView(ViewName.FightWeekWalkEnemyTipsView)
+	end
 end
 
 function slot0._showEnemySubCount(slot0)
@@ -396,6 +436,14 @@ end
 
 function slot0._onAddSubEntity(slot0)
 	slot0:_showEnemySubCount()
+	slot0:_showEnemySubHeroCount()
+end
+
+function slot0._onClearMonsterSub(slot0)
+	slot0:_showEnemySubHeroCount()
+end
+
+function slot0._onRefreshMonsterSubCount(slot0)
 	slot0:_showEnemySubHeroCount()
 end
 

@@ -27,15 +27,30 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._itemOnClick(slot0)
-	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._mo.id) then
+	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._audioId) then
 		return
 	end
 
-	if CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._mo.id) then
-		CharacterController.instance:dispatchEvent(CharacterEvent.StopVoice, slot0._mo.id)
+	if CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._audioId) then
+		CharacterController.instance:dispatchEvent(CharacterEvent.StopVoice, slot0._audioId)
 	else
-		CharacterController.instance:dispatchEvent(CharacterEvent.PlayVoice, slot0._mo.id)
+		slot0:_setRandomVoiceId()
+		CharacterController.instance:dispatchEvent(CharacterEvent.PlayVoice, slot0._audioId)
 	end
+end
+
+function slot0._setRandomVoiceId(slot0)
+	if not slot0._multiVoiceList then
+		slot0._multiVoiceList = CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot0._mo.heroId, CharacterEnum.VoiceType.MultiVoice, SkinConfig.instance:getSkinCo(HeroModel.instance:getByHeroId(slot0._mo.heroId).skin).id)
+	end
+
+	slot1 = nil
+
+	if #slot0._multiVoiceList > 0 and math.random() > 0.5 then
+		slot1 = slot0._multiVoiceList[math.random(#slot0._multiVoiceList)] and slot2.audio
+	end
+
+	slot0._audioId = slot1 or slot0._defaultAudioId
 end
 
 function slot0._editableInitView(slot0)
@@ -43,6 +58,8 @@ end
 
 function slot0.onUpdateMO(slot0, slot1)
 	slot0._mo = slot1
+	slot0._defaultAudioId = slot0._mo.id
+	slot0._audioId = slot0._mo.id
 
 	transformhelper.setLocalScale(slot0._gostopicon.transform, 1, 1, 1)
 	slot0:_refreshItem()
@@ -51,7 +68,7 @@ end
 function slot0._refreshItem(slot0)
 	slot0._itemAnimator.enabled = CharacterVoiceModel.instance:isNeedItemAni()
 
-	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._mo.id) then
+	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._audioId) then
 		gohelper.setActive(slot0._golockicon, true)
 		gohelper.setActive(slot0._goplayicon, false)
 		gohelper.setActive(slot0._gostopicon, false)
@@ -61,7 +78,7 @@ function slot0._refreshItem(slot0)
 		slot1 = HeroModel.instance:getByHeroId(slot0._mo.heroId)
 		slot0._txtvoicename.text = CharacterDataConfig.instance:getConditionStringName(slot0._mo)
 	else
-		slot1 = CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._mo.id)
+		slot1 = CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._audioId)
 
 		gohelper.setActive(slot0._golockicon, false)
 		gohelper.setActive(slot0._goplayicon, not slot1)

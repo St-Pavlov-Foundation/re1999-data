@@ -7,6 +7,8 @@ function slot0.onInitView(slot0)
 	slot0._goline = gohelper.findChild(slot0.viewGO, "#scroll_storylist/viewport/content/linelayout/#go_line")
 	slot0._btnswitch = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_switch")
 	slot0._gochapteritem = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content/#go_chapteritem")
+	slot0._scrollchapterlist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_chapterlist")
+	slot0._transcontentchapterlist = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content").transform
 	slot0._scrollstorylist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_storylist")
 	slot0._anim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
@@ -54,6 +56,27 @@ function slot0.onOpen(slot0)
 	slot0._playLineAnim = true
 
 	slot0:_refreshUI()
+
+	if slot0.viewParam then
+		slot0._selectChapter = slot0.viewParam
+
+		slot0:_openselectItem()
+		slot0:_focusItem()
+	end
+end
+
+function slot0._openselectItem(slot0)
+	slot0:_btnclickOnClick(slot0._chapterItemList[slot0._selectChapter])
+end
+
+function slot0._focusItem(slot0)
+	slot3 = 120
+
+	if (#slot0._chapterItemList - 1) * slot3 + 150 - recthelper.getHeight(slot0._scrollchapterlist.transform) >= (slot0._selectChapter - 1) * slot3 then
+		recthelper.setAnchorY(slot0._transcontentchapterlist, (slot0._selectChapter - 1) * slot3)
+	else
+		recthelper.setAnchorY(slot0._transcontentchapterlist, slot6)
+	end
 end
 
 function slot0._getStoryItemPrefab(slot0)

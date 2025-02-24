@@ -58,8 +58,17 @@ function slot0._getBuffTriggerParam(slot0, slot1, slot2)
 	slot5 = slot1 and slot1.triggerAudio
 
 	if (string.nilorempty(slot1 and slot1.triggerEffect) or slot3 == "0") and lua_buff_act.configDict[slot0._actEffectMO.buffActId] and not string.nilorempty(slot6.effect) then
-		if slot6.effect ~= "0" and not string.nilorempty(slot7) then
-			return slot7, slot6.effectHangPoint, slot6.audioId
+		slot10 = slot2 and FightDataHelper.entityMgr:getById(slot2.id)
+		slot11 = slot10 and lua_fight_replace_buff_act_effect.configDict[slot10.skin]
+
+		if slot11 and slot11[slot6.id] then
+			slot7 = string.nilorempty(slot11.effect) and slot6.effect or slot11.effect
+			slot8 = string.nilorempty(slot11.effectHangPoint) and slot6.effectHangPoint or slot11.effectHangPoint
+			slot9 = slot11.audioId == 0 and slot6.audioId or slot11.audioId
+		end
+
+		if slot7 ~= "0" and not string.nilorempty(slot7) then
+			return slot7, slot8, slot9
 		end
 	end
 

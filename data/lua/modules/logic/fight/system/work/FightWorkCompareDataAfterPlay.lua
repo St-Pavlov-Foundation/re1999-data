@@ -17,6 +17,7 @@ end
 
 function slot0._registRefreshPerformance(slot0)
 	slot0._flow:registWork(FightWorkRefreshPerformanceEntityData)
+	slot0._flow:registWork(FightWorkRefreshPerformanceTaskData)
 end
 
 function slot0._onFlowFinish(slot0)

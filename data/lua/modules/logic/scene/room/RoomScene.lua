@@ -51,10 +51,40 @@ function slot0.onStart(slot0, slot1, slot2)
 
 	CameraMgr.instance:setSceneCameraActive(false, uv0.UnitCameraKey)
 	uv0.super.onStart(slot0, slot1, slot2)
+	slot0:initPPVolume()
+	GameGlobalMgr.instance:registerCallback(GameStateEvent.OnQualityChange, slot0.updatePPLevel, slot0)
+end
 
-	if gohelper.findChild(CameraMgr.instance:getUnitCameraGO(), "PPVolume") then
-		slot0._goPPVolume = gohelper.clone(slot4, CameraMgr.instance:getMainCameraGO(), "PPVolume")
+function slot0.initPPVolume(slot0)
+	if slot0._ppVolumeGo then
+		return
 	end
+
+	slot0._highProfile = ConstAbCache.instance:getRes(RoomResourceEnum.PPVolume.High)
+	slot0._middleProfile = ConstAbCache.instance:getRes(RoomResourceEnum.PPVolume.Middle)
+	slot0._lowProfile = ConstAbCache.instance:getRes(RoomResourceEnum.PPVolume.Low)
+	slot0._ppVolumeGo = gohelper.create3d(CameraMgr.instance:getMainCameraGO(), "PPVolume")
+	slot0._ppVolumeWrap = gohelper.onceAddComponent(slot0._ppVolumeGo, PostProcessingMgr.PPVolumeWrapType)
+
+	slot0:updatePPLevel()
+end
+
+function slot0.updatePPLevel(slot0)
+	if not slot0._ppVolumeWrap then
+		return
+	end
+
+	slot2 = slot0._highProfile
+
+	if GameGlobalMgr.instance:getScreenState():getLocalQuality() == ModuleEnum.Performance.High then
+		slot2 = slot0._highProfile
+	elseif slot1 == ModuleEnum.Performance.Middle then
+		slot2 = slot0._middleProfile
+	elseif slot1 == ModuleEnum.Performance.Low then
+		slot2 = slot0._lowProfile
+	end
+
+	slot0._ppVolumeWrap:SetProfile(slot2)
 end
 
 function slot0.onClose(slot0)
@@ -62,12 +92,8 @@ function slot0.onClose(slot0)
 	GameGlobalMgr.instance:getScreenState():resetMaxFileLoadingCount()
 	CameraMgr.instance:setSceneCameraActive(true, uv0.UnitCameraKey)
 	uv0.super.onClose(slot0)
-
-	if slot0._goPPVolume then
-		gohelper.destroy(slot0._goPPVolume)
-
-		slot0._goPPVolume = nil
-	end
+	GameGlobalMgr.instance:unregisterCallback(GameStateEvent.OnQualityChange, slot0.updatePPLevel, slot0)
+	slot0:destroyPPVolume()
 
 	if slot0._mainFarClipValue then
 		slot2 = CameraMgr.instance:getMainCamera()
@@ -76,6 +102,20 @@ function slot0.onClose(slot0)
 		slot0._mainFarClipValue = nil
 		slot0._mainNearClipValue = nil
 	end
+end
+
+function slot0.destroyPPVolume(slot0)
+	if not slot0._ppVolumeGo then
+		return
+	end
+
+	gohelper.destroy(slot0._ppVolumeGo)
+
+	slot0._ppVolumeGo = nil
+	slot0._ppVolumeWrap = nil
+	slot0._highProfile = nil
+	slot0._middleProfile = nil
+	slot0._lowProfile = nil
 end
 
 return slot0

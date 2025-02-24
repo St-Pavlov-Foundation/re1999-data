@@ -1,14 +1,16 @@
 module("modules.configs.excel2json.lua_main_act_atmosphere", package.seeall)
 
 slot1 = {
-	isShowLogo = 6,
-	mainView = 3,
-	mainViewActBtn = 4,
-	mainViewActBtnPrefix = 5,
 	id = 1,
+	mainView = 3,
 	isShowActBg = 7,
+	isShowLogo = 6,
+	mainViewActBtn = 4,
+	mainThumbnailViewActBg = 10,
+	effectDuration = 2,
+	mainViewActBtnPrefix = 5,
 	mainThumbnailView = 8,
-	effectDuration = 2
+	isShowfx = 9
 }
 slot2 = {
 	"id"

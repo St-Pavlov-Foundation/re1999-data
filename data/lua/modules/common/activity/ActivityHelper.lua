@@ -30,6 +30,10 @@ function slot0.getActivityStatus(slot0, slot1)
 	return ActivityEnum.ActivityStatus.Normal
 end
 
+function slot0.isOpen(slot0)
+	return uv0.getActivityStatus(slot0, true) == ActivityEnum.ActivityStatus.Normal
+end
+
 function slot0.getActivityStatusAndToast(slot0, slot1)
 	if not ActivityModel.instance:getActivityInfo()[slot0] then
 		if not slot1 then

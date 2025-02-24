@@ -545,7 +545,7 @@ function slot0.getEpisodeBattleId(slot0, slot1)
 	end
 
 	if FightModel.instance:getFightParam() then
-		if slot2.type == DungeonEnum.EpisodeType.WeekWalk then
+		if slot2.type == DungeonEnum.EpisodeType.WeekWalk or slot2.type == DungeonEnum.EpisodeType.WeekWalk_2 then
 			return FightModel.instance:getFightParam().battleId
 		elseif slot2.type == DungeonEnum.EpisodeType.Meilanni then
 			return FightModel.instance:getFightParam().battleId
@@ -746,6 +746,10 @@ function slot0._rebuildEpisodeConfigs(slot0)
 	slot0._backwardChainDict = {
 		[slot11.id] = slot11.chainEpisode
 	}
+end
+
+function slot0.getChainEpisodeDict(slot0)
+	return slot0._chainEpisodeDict
 end
 
 function slot0._initEpisodeList(slot0)

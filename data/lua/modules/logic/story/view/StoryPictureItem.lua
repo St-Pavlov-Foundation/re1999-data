@@ -60,20 +60,23 @@ function slot0._onPicPrefabLoaded(slot0)
 	if slot0._picCo.picType == StoryEnum.PictureType.PicTxt then
 		gohelper.setActive(slot0._simg.gameObject, false)
 
-		slot4 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(string.split(slot0._picCo.picture, "#")[1]))
+		slot4 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(string.splitToNumber(slot0._picCo.picture, "#")[1]))
 		slot5 = GameLanguageMgr.instance:getShortCutByStoryIndex(GameLanguageMgr.instance:getLanguageTypeStoryIndex()) == LangSettings.shortcutTab[LangSettings.zh] and slot4.fontType == 1
 
 		gohelper.setActive(slot0._txtImg.gameObject, slot5)
 		gohelper.setActive(slot0._txtEnImg.gameObject, not slot5)
 
-		if slot5 then
-			slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtImg, slot6, 0.1 * LuaUtil.getStrLen(slot4[slot2]) * slot3[2], nil, , , EaseType.Linear)
-		else
-			slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtEnImg, slot6, slot7, nil, , , EaseType.Linear)
+		if slot0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn then
+			if slot5 then
+				slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtImg, slot6, 0.1 * LuaUtil.getStrLen(slot4[slot2]) * slot3[2], nil, , , EaseType.Linear)
+			else
+				slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtEnImg, slot6, slot7, nil, , , EaseType.Linear)
+			end
 		end
 
-		if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn then
+		if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn or slot0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn then
 			slot0._txtImg.text = slot6
+			slot0._txtEnImg.text = slot6
 
 			ZProj.TweenHelper.DOFadeCanvasGroup(slot0._picGo, 0, 1, slot0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, , , EaseType.Linear)
 		else

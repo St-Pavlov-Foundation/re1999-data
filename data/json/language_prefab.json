@@ -14241,7 +14241,7 @@
   },
   {
     "id": "p_season166infoanalyze_rewardview_txt_desc2",
-    "lang": "完全解析3份情报可领取<color=#eb893e>红斗篷衣着</color>"
+    "lang": "完全解析3份情报可领取<color=#eb893e>埃里克衣着</color>"
   },
   {
     "id": "p_roomcritterincubateview_txt_overview",
@@ -17838,5 +17838,321 @@
   {
     "id": "p_roomcritterexchangeview_txt_title",
     "lang": "兑换微尘跳跳糖"
+  },
+  {
+    "id": "playercard_weekwalkVer2PlatinumCup",
+    "lang": "S级认证："
+  },
+  {
+    "id": "p_versionactivity_2_6_enterview_dec",
+    "lang": "一部无人能懂的小说\n一个人梦中所产生的幻影\n一种无名的勇气、无用的举动\n一类镜中的晦暗、破碎的无限"
+  },
+  {
+    "id": "p_v2a6_dungeonmapview_shop",
+    "lang": "铁窗文学会"
+  },
+  {
+    "id": "a6_reappear_mainactivity_txt_EntranceRole1",
+    "lang": "曲香蒙求"
+  },
+  {
+    "id": "a6_reappear_mainactivity_txt_EntranceRole2",
+    "lang": "天下有风"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_tips",
+    "lang": "选择需要重投的骰子或确认结果"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_reroll",
+    "lang": "重新投掷"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_confirm",
+    "lang": "确认骰子"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_skip",
+    "lang": "跳过战斗"
+  },
+  {
+    "id": "p_v2a6_dicehero_dungeon_txt",
+    "lang": "<size=42>答</size>录机 蝴蝶 <nobr>文学评论家</nobr>"
+  },
+  {
+    "id": "p_v2a6_rouge_enterview_txt_dlc",
+    "lang": "浮沫休止符"
+  },
+  {
+    "id": "p_socialfriendsview_txt_option1",
+    "lang": "显示我的背景"
+  },
+  {
+    "id": "p_socialfriendsview_txt_option2",
+    "lang": "显示对方的背景"
+  },
+  {
+    "id": "p_rougemainview_txt_dlctips",
+    "lang": "沿途信札："
+  },
+  {
+    "id": "p_rougemainview_txt_dlctips2",
+    "lang": "沿途信札"
+  },
+  {
+    "id": "p_rougedistortruleview_txt_title",
+    "lang": "扭曲机制"
+  },
+  {
+    "id": "p_rougedistortruleview_txt_title2",
+    "lang": "敌方属性继承"
+  },
+  {
+    "id": "p_rougemapbaseinheritview_txt_inherit",
+    "lang": "敌方属性"
+  },
+  {
+    "id": "p_dungeonweekwalkdeepview_txt_sleep",
+    "lang": "<size=79>深</size>眠域"
+  },
+  {
+    "id": "p_dungeonweekwalkdeepview_txt_heart",
+    "lang": "<size=79>醒</size>梦域"
+  },
+  {
+    "id": "p_weekwalkheartlayerview_txt_review",
+    "lang": "关卡回顾"
+  },
+  {
+    "id": "p_weekwalkheart_deeplayernoticeview_txt_reset",
+    "lang": "本期增益已重置"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Remain",
+    "lang": "剩余次数："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Pairs",
+    "lang": "成对："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Warehouse",
+    "lang": "牌库剩余"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Turn",
+    "lang": "我方回合"
+  },
+  {
+    "id": "p_weekwalkheart_buffitem_txt_equiped",
+    "lang": "装备中"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_attack",
+    "lang": "最佳输出位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data1",
+    "lang": "出战次数："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data2",
+    "lang": "累计输出量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data3",
+    "lang": "最强一击："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_health",
+    "lang": "最佳治疗位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data4",
+    "lang": "累计治疗量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_defence",
+    "lang": "最佳承伤位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data5",
+    "lang": "累计承伤量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_title",
+    "lang": "认证数据"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_title",
+    "lang": "欢迎来到新世代，志愿者招募已开放"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_time",
+    "lang": "训练减负公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_timedec",
+    "lang": "本期深眠域满星通关后，下期深眠域可从“深眠片段·Ⅳ”开始挑战；本期醒梦域获得16个A级认证后，下期醒梦域可从“醒梦片段·Ⅲ”开始挑战。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward1",
+    "lang": "共鸣晶体套组 ×1"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward2",
+    "lang": "完成\"醒梦域-01\"即可获得"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward3",
+    "lang": "洞见之声 ×1"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reduce",
+    "lang": "实验酬劳公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reducedec",
+    "lang": "每期醒梦域累计可得的实验酬劳为纯雨滴×700、梦境流体×2160、利齿子儿×35000；首次完成“顺利苏醒认证”收集任务可获取300×纯雨滴实验酬劳。每期深眠域累计可得的实验酬劳，将调整为与醒梦域一致。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward",
+    "lang": "装置重启时间公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_rewarddec",
+    "lang": "深眠域、醒梦域均为30天重启一次；醒梦域重启时间为每月1号，深眠域重启时间为每月16号。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_title2",
+    "lang": "志愿者招募中，参与可领特别补助"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_btn_goto",
+    "lang": "前往人工梦游"
+  },
+  {
+    "id": "p_shortenact_txt_rewardname1",
+    "lang": "版本赠礼"
+  },
+  {
+    "id": "p_shortenact_txt_rewardname2",
+    "lang": "吼吼点唱机加速点播"
+  },
+  {
+    "id": "shortenact_txt1",
+    "lang": "糖果、秘物、妙想……下一幕提前上映时，它们总会派上用场。"
+  },
+  {
+    "id": "shortenact_txt2",
+    "lang": "版本赠礼"
+  },
+  {
+    "id": "shortenact_txt3",
+    "lang": "吼吼点唱机加速点播"
+  },
+  {
+    "id": "shortenact_txt4",
+    "lang": "完成任务获取奖励"
+  },
+  {
+    "id": "p_weekwalkheartlayerview_txt_buff",
+    "lang": "强化增益"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_deeptip2",
+    "lang": "醒梦域试验酬劳每月1号凌晨5点刷新！"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_title",
+    "lang": "醒梦域首通试验酬劳"
+  },
+  {
+    "id": "p_v2a6_xugouji_levelview_txt_Challenge",
+    "lang": "无限挑战"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn1",
+    "lang": "诗社的赠礼"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn2",
+    "lang": "文学的纪念"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn1",
+    "lang": "狱友的赠礼"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn2",
+    "lang": "成像研究"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn3",
+    "lang": "诗社的赠礼"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_deeptip3",
+    "lang": "深眠试验酬劳每月1号凌晨5点刷新！"
+  },
+  {
+    "id": "p_bppropview2_txt_title2",
+    "lang": "解锁<#FD7536>【典藏吼吼光碟】</color>立即获得！"
+  },
+  {
+    "id": "p_v2a6_enterview_txt_tab_unselected_name",
+    "lang": "疯癫与文明"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_1",
+    "lang": "我方技能"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_2",
+    "lang": "敌方技能"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_3",
+    "lang": "牌库剩余"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_4",
+    "lang": "攻击牌"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_5",
+    "lang": "功能牌"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_6",
+    "lang": "即时牌"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_7",
+    "lang": "剩余次数："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_8",
+    "lang": "成对："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_9",
+    "lang": "我方回合"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_End_UseCard",
+    "lang": "出牌"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_End_Skip",
+    "lang": "结束回合"
+  },
+  {
+    "id": "p_v2a6_versionsummonxugoujihalfview_txt_chance",
+    "lang": "以上角色出现概率UP!!"
   }
 ]

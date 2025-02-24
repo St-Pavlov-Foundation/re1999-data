@@ -1,7 +1,7 @@
 module("modules.logic.versionactivity1_6.dungeon.view.boss.VersionActivity1_6DungeonBossView", package.seeall)
 
 slot0 = class("VersionActivity1_6DungeonBossView", BaseView)
-slot1 = 5
+slot1 = 8
 slot2 = VersionActivity1_6DungeonEnum.bossMaxOrder
 slot3 = VersionActivity1_6Enum.ActivityId.DungeonBossRush .. "UnlockBossEpisode_"
 slot4 = VersionActivity1_6Enum.ActivityId.DungeonBossRush .. "GotMaxScore_"
@@ -191,7 +191,7 @@ function slot0._refreshScoreArea(slot0)
 	slot1 = VersionActivity1_6DungeonBossModel.instance:getCurMaxScore()
 	slot0._txtScoreNum.text = slot1
 
-	gohelper.setActive(slot0._goBtnReward, not slot1 or slot1 == 0)
+	gohelper.setActive(slot0._goBtnReward, false)
 	gohelper.setActive(slot0._goMaxScoreTips, slot1 == Activity149Config.instance:getEpisodeMaxScore(slot0._curBossCfg.id, VersionActivity1_6Enum.ActivityId.DungeonBossRush))
 end
 

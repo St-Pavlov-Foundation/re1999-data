@@ -65,6 +65,10 @@ function slot0._onConfirm(slot0)
 		WeekWalkModel.instance:setCurMapId(slot1.layerId)
 		WeekWalkModel.instance:setBattleElementId(slot1.elementId)
 		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
+	elseif slot3.type == DungeonEnum.EpisodeType.WeekWalk_2 then
+		WeekWalk_2Model.instance:setCurMapId(slot1.layerId)
+		WeekWalk_2Model.instance:setBattleElementId(slot1.elementId)
+		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
 	elseif slot3.type == DungeonEnum.EpisodeType.Meilanni then
 		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
 

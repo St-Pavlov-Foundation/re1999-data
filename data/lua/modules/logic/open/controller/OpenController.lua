@@ -43,6 +43,7 @@ function slot0._delayCheckFuncUnlock(slot0)
 			TaskEnum.TaskType.Weekly,
 			TaskEnum.TaskType.Novice,
 			TaskEnum.TaskType.WeekWalk,
+			TaskEnum.TaskType.WeekWalk_2,
 			TaskEnum.TaskType.ActivityShow
 		})
 	end
@@ -81,6 +82,7 @@ function slot0._newFuncUnlock(slot0, slot1)
 			HeroRpc.instance:sendHeroInfoListRequest(slot0._heroInfoUpdate, slot0)
 		elseif slot6 == OpenEnum.UnlockFunc.WeekWalk then
 			WeekwalkRpc.instance:sendGetWeekwalkInfoRequest()
+			Weekwalk_2Rpc.instance:sendWeekwalkVer2GetInfoRequest()
 		elseif slot6 == OpenEnum.UnlockFunc.Explore then
 			ExploreRpc.instance:sendGetExploreSimpleInfoRequest()
 		end

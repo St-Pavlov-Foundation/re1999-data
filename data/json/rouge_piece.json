@@ -70,6 +70,16 @@
     "bossEffect": 0
   },
   {
+    "id": 1540101,
+    "version": "",
+    "entrustType": 1,
+    "pieceRes": "",
+    "title": "窗与扉",
+    "desc": "窗与扉",
+    "talkId": 1540101,
+    "bossEffect": 0
+  },
+  {
     "id": 1110201,
     "version": "",
     "entrustType": 2,
@@ -457,6 +467,16 @@
     "title": "结局boss3",
     "desc": "结局boss3",
     "talkId": 1510503,
+    "bossEffect": 1
+  },
+  {
+    "id": 1510504,
+    "version": "",
+    "entrustType": 5,
+    "pieceRes": "",
+    "title": "结局boss4",
+    "desc": "结局boss4",
+    "talkId": 1510504,
     "bossEffect": 1
   },
   {

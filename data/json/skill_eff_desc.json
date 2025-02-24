@@ -8709,7 +8709,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "若回合结束时，仍处于该吟唱状态，则释放一次【找准靶心<id:1>】（若释放后燃烧子弹数量为0，则解除该状态）"
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:1>】（若释放后燃烧子弹数量为0，则解除该状态）"
   },
   {
     "id": 31020122,
@@ -8717,7 +8717,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "若回合结束时，仍处于该吟唱状态，则释放一次【找准靶心<id:2>】（若释放后燃烧子弹数量为0，则解除该状态）"
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:2>】（若释放后燃烧子弹数量为0，则解除该状态）"
   },
   {
     "id": 31020123,
@@ -8725,7 +8725,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "若回合结束时，仍处于该吟唱状态，则释放一次【找准靶心<id:3>】（若释放后燃烧子弹数量为0，则解除该状态）"
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:3>】（若释放后燃烧子弹数量为0，则解除该状态）"
   },
   {
     "id": 31020131,
@@ -13262,5 +13262,373 @@
     "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": ""
+  },
+  {
+    "id": 1261001,
+    "name": "追随神迹",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害降低30%.回合开始时,获得5层[神迹];回合结束时,释放咒语[荆棘与虔诚之路]"
+  },
+  {
+    "id": 12610011,
+    "name": "荆棘与虔诚之路",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击,对敌方全体造成100%精神创伤,本次攻击附加目标攻击*25%及当前生命*5%的本源创伤"
+  },
+  {
+    "id": 1261002,
+    "name": "呆滞",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动,无法获得激情"
+  },
+  {
+    "id": 1261003,
+    "name": "神迹",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "达到10/20/30层后,获得[启程][旅途][权柄](不可驱散)"
+  },
+  {
+    "id": 1261004,
+    "name": "启程",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+1.回合开始时驱散自身负面状态;其他友方濒死时,使其回复50%最大生命,之后失去3层[神迹]"
+  },
+  {
+    "id": 1261005,
+    "name": "旅途",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+1.攻击时,每层[神迹]提升1%攻击;被攻击时,每层[神迹]提升2%受创减免"
+  },
+  {
+    "id": 1261006,
+    "name": "权柄",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时,消耗5层[神迹],驱散敌方全体正面状态,并使其失去30%最大生命"
+  },
+  {
+    "id": 1261007,
+    "name": "变大",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最大生命提升1%(可以叠加)"
+  },
+  {
+    "id": 1261008,
+    "name": "迟钝",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害降低50%,受到额外行动伤害提升100%"
+  },
+  {
+    "id": 1261009,
+    "name": "正义",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成+10%,驱散并免疫所有负面状态(可以叠加,被攻击后扣除1层)"
+  },
+  {
+    "id": 1261010,
+    "name": "异化鸩羽",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害降低15%;赋予的[中毒]状态回合+1(最多叠加3层;被攻击后扣除1层)"
+  },
+  {
+    "id": 1261011,
+    "name": "坚若磐石",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击+15%,再生率+30%;被攻击后本次伤害的30%反弹给攻击方"
+  },
+  {
+    "id": 1261012,
+    "name": "冬藏",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+100%,闪避普通咒语(行动后扣除)"
+  },
+  {
+    "id": 1261013,
+    "name": "天有四时",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术阵:再生率+20%,攻击力+10%,穿透率+20%,暴击创伤+30%;回合结束时获得1层[四季流转];回合开始时若拥有4层[四季流转],则全部消耗并立刻释放至终的仪式"
+  },
+  {
+    "id": 1261014,
+    "name": "形意兼备Ⅱ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成+20%,受创减免+20%,免疫[控制]状态;被攻击后对攻方释放游丝飞针进行反击"
+  },
+  {
+    "id": 1261015,
+    "name": "等量代换",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术阵:己方攻击视为克制"
+  },
+  {
+    "id": 1261016,
+    "name": "警戒",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害降低30%,被攻击后激情+1"
+  },
+  {
+    "id": 1261017,
+    "name": "四季流转",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "叠加至4层后,回合开始释放至终的仪式"
+  },
+  {
+    "id": 81801010,
+    "name": "终极易伤",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终免伤-100%，不可驱散"
+  },
+  {
+    "id": 81801021,
+    "name": "咒语干扰",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终增伤-50%，不可驱散"
+  },
+  {
+    "id": 81801031,
+    "name": "连动干扰",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终增伤-20%，最多叠加4层，不可驱散"
+  },
+  {
+    "id": 81801110,
+    "name": "薄弱收集",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终免伤降低10%，不可驱散"
+  },
+  {
+    "id": 81801051,
+    "name": "一之无力",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "咒语1造成伤害时，最终增伤-20%"
+  },
+  {
+    "id": 81801052,
+    "name": "二之无力",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "咒语2造成伤害时，最终增伤-20%"
+  },
+  {
+    "id": 81801053,
+    "name": "三之无力",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "至终的仪式造成伤害时，最终增伤-20%"
+  },
+  {
+    "id": 81802110,
+    "name": "强手收集",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终免伤提升5%，不可驱散"
+  },
+  {
+    "id": 81802051,
+    "name": "一之强力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "咒语1造成伤害时，最终增伤5%"
+  },
+  {
+    "id": 81802052,
+    "name": "二之强力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "咒语2造成伤害时，最终增伤5%"
+  },
+  {
+    "id": 81802053,
+    "name": "三之强力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "至终的仪式造成伤害时，最终增伤5%"
+  },
+  {
+    "id": 81802054,
+    "name": "生气！",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "过于愤怒的卡邦克鲁会变得狂暴化！"
+  },
+  {
+    "id": 81802055,
+    "name": "火力支援",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时若持有此状态，将自动释放1次至终的仪式"
+  },
+  {
+    "id": 81802056,
+    "name": "坚毅姿态",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到非克制伤害降低80%"
+  },
+  {
+    "id": 81802057,
+    "name": "抵抗姿态",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法获得【属性削弱】【状态异常】【控制】效果"
+  },
+  {
+    "id": 81802058,
+    "name": "昂扬姿态",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升100%，攻击时附带1回合【眩晕】"
+  },
+  {
+    "id": 31140001,
+    "name": "独白",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放至终的仪式时消耗全部层数，每层对主目标额外造成30%现实创伤，最多叠加20层（效果可叠加）"
+  },
+  {
+    "id": 31140002,
+    "name": "群像",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放至终的仪式时消耗全部层数，每层对所有目标额外造成15%现实创伤，最多叠加20层（效果可叠加）"
+  },
+  {
+    "id": 31140003,
+    "name": "独白<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放至终的仪式时消耗全部层数，每层对主目标额外造成40%现实创伤，最多叠加20层（效果可叠加）"
+  },
+  {
+    "id": 31140004,
+    "name": "群像<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放至终的仪式时消耗全部层数，每层对所有目标额外造成20%现实创伤，最多叠加20层（效果可叠加）"
+  },
+  {
+    "id": 31140005,
+    "name": "筹备·虚构集",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时，生成1张【预备咒语】-【虚构故事集】"
+  },
+  {
+    "id": 31140006,
+    "name": "虚构故事集",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "使激情最高的己方角色消耗当前全部激情释放至终的仪式，并回复其消耗的激情\n（本次咒语不视为额外行动，消耗并回复的激情总量不超过该至终的仪式所需的激情总量）"
+  },
+  {
+    "id": 30620111,
+    "name": "激情萃取",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击后，攻击者获得1点激情（生效后减少1层）"
+  },
+  {
+    "id": 30620112,
+    "name": "既定计划<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升12%；至终的仪式暴击率提升6%，暴击创伤提升6%（最多叠加6层，不可驱散）"
+  },
+  {
+    "id": 926000001,
+    "name": "理性狂热",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动力+1，每次行动会受到1%最大生命伤害，可叠加"
+  },
+  {
+    "id": 926000002,
+    "name": "激情皈依",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免和受创回复增加10%，但每回合最多行动1次，叠加超过5层后无法行动"
+  },
+  {
+    "id": 926000003,
+    "name": "术前准备",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时触发1次426000311，只有在该状态下可以释放至终的仪式"
+  },
+  {
+    "id": 926000004,
+    "name": "理智阻断",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动力+1，每次行动会受到1%最大生命伤害，伤害可叠加"
   }
 ]

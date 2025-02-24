@@ -15,19 +15,27 @@ function slot0.setAtkStatInfo(slot0, slot1)
 	slot2 = {}
 
 	for slot6, slot7 in ipairs(slot1) do
-		if not slot0:checkShield(slot7) and (slot7.entityMO or FightDataHelper.entityMgr:getById(slot7.heroUid)) then
-			slot9 = FightStatMO.New()
+		if not slot0:checkShield(slot7) then
+			slot8 = slot7.entityMO or FightDataHelper.entityMgr:getById(slot7.heroUid)
 
-			slot9:init(slot7)
+			if slot7.heroUid == FightASFDDataMgr.EmitterId then
+				slot8 = FightDataHelper.ASFDDataMgr:getEmitterEmitterMo()
+			end
 
-			slot9.entityMO = slot7.entityMO
-			slot9.fromOtherFight = slot7.entityMO and true or false
+			if slot8 then
+				slot9 = FightStatMO.New()
 
-			table.insert(slot2, slot9)
+				slot9:init(slot7)
 
-			slot0._totalHarm = slot0._totalHarm + slot9.harm
-			slot0._totalHurt = slot0._totalHurt + slot9.hurt
-			slot0._totalHeal = slot0._totalHeal + slot9.heal
+				slot9.entityMO = slot7.entityMO
+				slot9.fromOtherFight = slot7.entityMO and true or false
+
+				table.insert(slot2, slot9)
+
+				slot0._totalHarm = slot0._totalHarm + slot9.harm
+				slot0._totalHurt = slot0._totalHurt + slot9.hurt
+				slot0._totalHeal = slot0._totalHeal + slot9.heal
+			end
 		end
 	end
 

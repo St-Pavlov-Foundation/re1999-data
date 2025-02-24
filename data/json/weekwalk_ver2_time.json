@@ -1,0 +1,26 @@
+[
+  {
+    "timeId": 1,
+    "issueId": 1,
+    "optionalSkills": "2001#2002#2004#2006#2003#2005",
+    "ruleIcon": "shen_guize_04",
+    "ruleFront": "3#9260102",
+    "ruleRear": "3#9260103"
+  },
+  {
+    "timeId": 2,
+    "issueId": 2,
+    "optionalSkills": "2001#2002#2004#2006#2003#2005",
+    "ruleIcon": "shen_guize_04",
+    "ruleFront": "3#9260102",
+    "ruleRear": "3#9260103"
+  },
+  {
+    "timeId": 3,
+    "issueId": 3,
+    "optionalSkills": "2001#2002#2004#2006#2003#2005",
+    "ruleIcon": "shen_guize_04",
+    "ruleFront": "3#9260102",
+    "ruleRear": "3#9260103"
+  }
+]
