@@ -10018,5 +10018,35 @@
     "id": 25251507,
     "eventName": "play_ui_mln_page_turn",
     "bankName": "ui_activity"
+  },
+  {
+    "id": 20260001,
+    "eventName": "play_ui_wenming_open1",
+    "bankName": "ui_activity_2_6_wenming"
+  },
+  {
+    "id": 20260002,
+    "eventName": "play_ui_wenming_open2",
+    "bankName": "ui_activity_2_6_wenming"
+  },
+  {
+    "id": 20260901,
+    "eventName": "play_ui_mln_page_turn",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 20260011,
+    "eventName": "play_replay_music_theme_2_6",
+    "bankName": "ui_replay_mainmusic2_6"
+  },
+  {
+    "id": 20260012,
+    "eventName": "play_replay_music_fictionalheart_2_6",
+    "bankName": "ui_replay_mainmusic2_6"
+  },
+  {
+    "id": 20260013,
+    "eventName": "play_replay_music_argentinedream_2_6",
+    "bankName": "ui_replay_mainmusic2_6"
   }
 ]

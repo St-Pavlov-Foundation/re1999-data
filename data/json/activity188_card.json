@@ -1,0 +1,110 @@
+[
+  {
+    "activityId": 12605,
+    "cardId": 100,
+    "type": 0,
+    "skillId": 100,
+    "name": "批判",
+    "desc": "额外造成1点创伤，重复2次。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard01.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 101,
+    "type": 0,
+    "skillId": 101,
+    "name": "批判",
+    "desc": "额外造成1点创伤，恢复自身1点生命",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard02.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 102,
+    "type": 0,
+    "skillId": 102,
+    "name": "批判",
+    "desc": "额外造成3点创伤。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard03.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 103,
+    "type": 0,
+    "skillId": 103,
+    "name": "批判",
+    "desc": "下回合额外造成5点创伤。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard04.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 104,
+    "type": 1,
+    "skillId": 104,
+    "name": "剖析",
+    "desc": "恢复2点血量。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard05.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 105,
+    "type": 1,
+    "skillId": 105,
+    "name": "剖析",
+    "desc": "缴械对方1回合。（缴械：只有1次获得文学象征的机会）",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard06.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 106,
+    "type": 1,
+    "skillId": 106,
+    "name": "剖析",
+    "desc": "使对面下回合获得1回合的创伤加深。（创伤加深：造成的直接创伤加倍）",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard07.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 107,
+    "type": 1,
+    "skillId": 107,
+    "name": "剖析",
+    "desc": "获得1层护盾。（护盾：抵挡1次受到的直接创伤）",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard08.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 108,
+    "type": 2,
+    "skillId": 108,
+    "name": "自发",
+    "desc": "额外获得1次获得文学象征的机会",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard09.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 109,
+    "type": 2,
+    "skillId": 109,
+    "name": "自发",
+    "desc": "获得文学象征时，会随机获得2种相邻的文学象征。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard10.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 110,
+    "type": 2,
+    "skillId": 110,
+    "name": "自发",
+    "desc": "随机窥视2种文学象征。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard11.png"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 111,
+    "type": 2,
+    "skillId": 111,
+    "name": "自发",
+    "desc": "受到2点创伤。",
+    "resource": "atlassrc/ui_spriteset/v2a6_xugouji_spriteset/v2a6_xugouji_skillcard12.png"
+  }
+]

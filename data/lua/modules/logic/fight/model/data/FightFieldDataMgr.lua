@@ -32,6 +32,7 @@ function slot0.updateData(slot0, slot1)
 	slot0.indicatorDict = slot0:buildIndicators(slot1)
 	slot0.playerFinisherInfo = slot0:buildPlayerFinisherInfo(slot1)
 	slot0.customData = FightDataHelper.coverData(FightCustomData.New(slot1.customData), slot0.customData)
+	slot0.fightTaskBox = FightDataHelper.coverData(FightTaskBoxData.New(slot1.fightTaskBox), slot0.fightTaskBox)
 end
 
 function slot0.buildIndicators(slot0, slot1)

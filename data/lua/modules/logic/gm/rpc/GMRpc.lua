@@ -66,6 +66,14 @@ function slot0.onReceiveFightTipsMessagePush(slot0, slot1, slot2)
 	logError("FightTipsMessagePush: " .. slot2.msg)
 end
 
+function slot0.onReceiveServerErrorInfoPush(slot0, slot1, slot2)
+	if not SLFramework.FrameworkSettings.IsEditor then
+		return
+	end
+
+	logError("服务器报错了: " .. slot2.msg)
+end
+
 slot0.instance = slot0.New()
 
 return slot0

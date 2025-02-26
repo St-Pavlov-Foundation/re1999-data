@@ -2,7 +2,7 @@ module("modules.logic.playercard.view.StorePlayerCardView", package.seeall)
 
 slot0 = class("StorePlayerCardView", NewPlayerCardView)
 
-function slot0.onOpen(slot0, slot1)
+function slot0.onOpen(slot0, slot1, slot2)
 	slot0._achievementCls = slot0._achievementCls or MonoHelper.addNoUpdateLuaComOnceToGo(slot0.viewGO, PlayerCardAchievement)
 	slot0._achievementCls.viewParam = slot0.viewParam
 	slot0._achievementCls.viewContainer = slot0.viewContainer
@@ -16,7 +16,7 @@ function slot0.onOpen(slot0, slot1)
 
 	slot0._loader = slot0._loader or MultiAbLoader.New()
 	slot0._socialitemPath = "ui/viewres/social/socialfrienditem.prefab"
-	slot0._skinId = slot1
+	slot0._skinId = slot2
 
 	if not slot0._socialitem then
 		slot0._loader:addPath(slot0._socialitemPath)
@@ -38,18 +38,14 @@ function slot0._onOpen(slot0, slot1)
 	end
 
 	slot0.playercardinfo = PlayerCardModel.instance:getCardInfo(slot0.userId)
+	slot2, slot3, slot4, slot5 = slot0.playercardinfo:getMainHero()
 
-	if (slot1 or slot0.playercardinfo:getThemeId()) == 0 or string.nilorempty(slot2) then
-		slot2 = nil
+	if slot1 and slot1 > 0 then
+		slot3 = slot1
 	end
 
-	slot0.themeId = slot2
-
 	slot0:_creatBgEffect()
-
-	slot3, slot4, slot5, slot6 = slot0.playercardinfo:getMainHero()
-
-	slot0:_updateHero(slot3, slot4)
+	slot0:_updateHero(SkinConfig.instance:getSkinCo(slot3).characterId, slot3)
 	slot0:_refreshProgress()
 	slot0:_refreshBaseInfo()
 	slot0:_initCritter()

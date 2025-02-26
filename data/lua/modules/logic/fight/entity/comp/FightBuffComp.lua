@@ -12,7 +12,8 @@ slot2 = {
 	[FightEnum.BuffType_CardAreaRedOrBlue] = FightBuffCardAreaRedOrBlueBuff,
 	[FightEnum.BuffType_RedOrBlueCount] = FightBuffRedOrBlueCountBuff,
 	[FightEnum.BuffType_RedOrBlueChangeTrigger] = FightBuffRedOrBlueChangeTriggerBuff,
-	[FightEnum.BuffType_SaveFightRecord] = FightBuffSaveFightRecord
+	[FightEnum.BuffType_SaveFightRecord] = FightBuffSaveFightRecord,
+	[FightEnum.BuffType_SubBuff] = FightBuffSubBuff
 }
 slot3 = {
 	[31080132] = FightBuffAddBKLESpBuff,
@@ -264,6 +265,10 @@ function slot0._removeBuffHandler(slot0, slot1)
 end
 
 function slot0.updateBuff(slot0, slot1, slot2, slot3)
+	if slot0._buffHandlerDict[slot1.uid] and slot4.onBuffUpdate then
+		slot4:onBuffUpdate(slot1)
+	end
+
 	if slot1.type == FightEnum.BuffType.LayerSalveHalo then
 		return
 	end

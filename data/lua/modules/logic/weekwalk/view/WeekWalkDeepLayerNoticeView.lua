@@ -39,6 +39,8 @@ function slot0._btncloseOnClick(slot0)
 end
 
 function slot0._btnstartOnClick(slot0)
+	slot0._clickStart = true
+
 	slot0:openWeekWalkView()
 end
 
@@ -180,6 +182,12 @@ end
 function slot0.onClose(slot0)
 	slot0._simageruledescicon:UnLoadImage()
 	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_ui_artificial_settlement_close)
+end
+
+function slot0.onCloseFinish(slot0)
+	if not slot0._clickStart then
+		WeekWalk_2Controller.instance:checkOpenWeekWalk_2DeepLayerNoticeView()
+	end
 end
 
 function slot0.onDestroyView(slot0)

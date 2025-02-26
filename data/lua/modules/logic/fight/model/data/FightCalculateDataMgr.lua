@@ -1469,6 +1469,29 @@ function slot0.playEffect320(slot0, slot1)
 	table.insert(slot0:getHandCard(), FightCardData.New(slot1.cardInfo))
 end
 
+function slot0.playEffect322(slot0, slot1)
+	if slot0.dataMgr.entityMgr:getOriginSubList(slot1.teamType) then
+		for slot7, slot8 in ipairs(slot3) do
+			slot2.entityDataDic[slot8.uid] = nil
+		end
+
+		tabletool.clear(slot3)
+	end
+end
+
+function slot0.playEffect323(slot0, slot1)
+	slot3 = slot0.dataMgr.fieldMgr.fightTaskBox.tasks
+
+	for slot7, slot8 in ipairs(slot1.fightTasks) do
+		slot9 = slot8.taskId
+		slot3[slot9] = FightDataHelper.coverData(slot2:newTask(slot8), slot3[slot9])
+	end
+end
+
+function slot0.playEffect325(slot0, slot1)
+	slot0.dataMgr.entityMgr:removeEntity(slot1.targetId)
+end
+
 function slot0.playUndefineEffect(slot0)
 end
 

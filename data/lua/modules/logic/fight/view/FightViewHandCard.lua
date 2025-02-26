@@ -1201,6 +1201,14 @@ function slot0._resetCard(slot0, slot1)
 	if slot0._cardPlayFlow.status == WorkStatus.Running then
 		slot0._cardPlayFlow:stop()
 	end
+
+	if slot0._autoPlayCardFlow then
+		slot0._autoPlayCardFlow:stop()
+	end
+
+	if FightModel.instance:getCurStage() == FightEnum.Stage.AutoCard and not FightModel.instance:isAuto() then
+		FightController.instance:setCurStage(FightEnum.Stage.Card)
+	end
 end
 
 function slot0._updateNow(slot0)

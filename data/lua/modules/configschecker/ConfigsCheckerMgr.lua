@@ -2,6 +2,11 @@ module("modules.configschecker.ConfigsCheckerMgr", package.seeall)
 
 slot0 = class("ConfigsCheckerMgr")
 
+function slot0.ctor(slot0)
+	slot0._strBufListIndex = 0
+	slot0._strBufList = {}
+end
+
 function slot0.checkConfigAll()
 	uv0.checkVoiceEndTime()
 	uv0.checkCachotConfig()
@@ -172,6 +177,19 @@ function slot0.checkCachotConfig()
 	end
 
 	print("===结束检查肉鸽配置了结束时间===")
+end
+
+function slot0.createStrBuf(slot0, slot1)
+	slot2 = slot0._strBufListIndex + 1
+	slot3 = ConfigsCheckerStrBuf.New(slot1)
+	slot0._strBufList[slot2] = slot3
+	slot0._strBufListIndex = slot2
+
+	return slot3, slot2
+end
+
+function slot0.getStrBuf(slot0, slot1)
+	return slot0._strBufList[slot1]
 end
 
 slot0.instance = slot0.New()

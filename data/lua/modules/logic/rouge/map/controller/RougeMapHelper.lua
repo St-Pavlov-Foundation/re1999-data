@@ -50,7 +50,7 @@ function slot0.retain2decimals(slot0)
 end
 
 function slot0.getEpisodePosX(slot0)
-	return RougeMapEnum.MapStartOffsetX + (slot0 - 1) * RougeMapModel.instance:getMapEpisodeIntervalX()
+	return RougeMapModel.instance:getMapStartOffsetX() + (slot0 - 1) * RougeMapModel.instance:getMapEpisodeIntervalX()
 end
 
 function slot0.getNodeLocalPos(slot0, slot1)

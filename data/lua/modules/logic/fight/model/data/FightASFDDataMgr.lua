@@ -104,4 +104,36 @@ function slot0.setEmitterInfo(slot0, slot1, slot2)
 	end
 end
 
+slot0.EmitterId = "99998"
+
+function slot0.setEmitterEntityMo(slot0, slot1)
+	slot0.emitterMo = slot1
+end
+
+function slot0.getEmitterEmitterMo(slot0)
+	return slot0.emitterMo
+end
+
+function slot0.addEntityResidualData(slot0, slot1, slot2)
+	slot0.alfResidualDataDict = slot0.alfResidualDataDict or {}
+
+	if not slot0.alfResidualDataDict[slot1] then
+		slot0.alfResidualDataDict[slot1] = {}
+	end
+
+	table.insert(slot3, slot2)
+end
+
+function slot0.popEntityResidualData(slot0, slot1)
+	if not slot0.alfResidualDataDict then
+		return
+	end
+
+	if not slot0.alfResidualDataDict[slot1] then
+		return
+	end
+
+	return table.remove(slot2, 1)
+end
+
 return slot0

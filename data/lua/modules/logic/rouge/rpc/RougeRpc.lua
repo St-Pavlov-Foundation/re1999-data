@@ -1008,6 +1008,38 @@ function slot0.onReceiveRougeSelectCollectionLevelUpReply(slot0, slot1, slot2)
 	RougeMapModel.instance:updateMapInfo(slot2.map)
 end
 
+function slot0.sendRougeRefreshMapRuleRequest(slot0, slot1, slot2)
+	slot3 = RougeModule_pb.RougeRefreshMapRuleRequest()
+	slot3.season = slot1
+	slot3.layer = slot2
+
+	slot0:sendMsg(slot3)
+end
+
+function slot0.onReceiveRougeRefreshMapRuleReply(slot0, slot1, slot2)
+	if slot1 ~= 0 then
+		return
+	end
+
+	RougeMapModel.instance:updateMapInfo(slot2.map)
+end
+
+function slot0.sendRougeRefreshMonsterRuleRequest(slot0, slot1, slot2)
+	slot3 = RougeModule_pb.RougeRefreshMonsterRuleRequest()
+	slot3.season = slot1
+	slot3.index = slot2
+
+	slot0:sendMsg(slot3)
+end
+
+function slot0.onReceiveRougeRefreshMonsterRuleReply(slot0, slot1, slot2)
+	if slot1 ~= 0 then
+		return
+	end
+
+	RougeMapModel.instance:updateMapInfo(slot2.map)
+end
+
 slot0.instance = slot0.New()
 
 return slot0

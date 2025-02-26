@@ -1,6 +1,6 @@
 module("modules.logic.fight.flow.FightViewHandCardParallelFlow", package.seeall)
 
-slot0 = class("FlowSequence", FlowParallel)
+slot0 = class("FightViewHandCardParallelFlow", FlowParallel)
 
 function slot0.ctor(slot0, ...)
 	uv0.super.ctor(slot0, ...)

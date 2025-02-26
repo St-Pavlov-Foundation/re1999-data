@@ -9,6 +9,7 @@ function slot0.initMap(slot0, slot1)
 	slot0.curNodeId = slot1.curNode
 
 	slot0:initNodeInfo(slot1.nodeInfo)
+	slot0:initLayerChoiceInfo(slot1.layerChoiceInfo)
 end
 
 function slot0.updateMapInfo(slot0, slot1)
@@ -16,6 +17,7 @@ function slot0.updateMapInfo(slot0, slot1)
 	slot0.curNodeId = slot1.curNode
 
 	slot0:updateNodeInfo(slot1.nodeInfo)
+	slot0:updateLayerChoiceInfo(slot1.layerChoiceInfo)
 end
 
 function slot0.updateSimpleMapInfo(slot0, slot1)
@@ -185,6 +187,26 @@ end
 
 function slot0.isHoleNode(slot0, slot1)
 	return slot0._holeNodeMap and slot0._holeNodeMap[slot1] ~= nil
+end
+
+function slot0.initLayerChoiceInfo(slot0, slot1)
+	slot0.layerChoiceInfo = RougeLayerChoiceInfoMO.New()
+
+	slot0.layerChoiceInfo:init(slot1)
+end
+
+function slot0.updateLayerChoiceInfo(slot0, slot1)
+	if not slot0.layerChoiceInfo then
+		slot0.layerChoiceInfo = RougeLayerChoiceInfoMO.New()
+	end
+
+	slot0.layerChoiceInfo:init(slot1)
+end
+
+function slot0.getLayerChoiceInfo(slot0, slot1)
+	if slot0.layerId == slot1 then
+		return slot0.layerChoiceInfo
+	end
 end
 
 function slot0.clear(slot0)

@@ -104,6 +104,11 @@ function slot0._showFinishAnim(slot0)
 	end
 
 	WeekwalkRpc.instance:sendMarkShowFinishedRequest()
+
+	if slot0._mapInfo:getLayer() == WeekWalkEnum.LastShallowLayer then
+		WeekWalkController.instance:dispatchEvent(WeekWalkEvent.OnAllShallowLayerFinish)
+	end
+
 	UIBlockMgrExtend.setNeedCircleMv(false)
 	UIBlockMgr.instance:startBlock("showFinishAnim")
 	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_challenge_success)

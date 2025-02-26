@@ -57,7 +57,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		slot9 = -slot9
 	end
 
-	slot17 = slot0:_getHangPointGO(slot1, slot15)
+	slot17 = slot0:_getHangPointGO(slot1, slot15, slot3[7])
 	slot18 = 0
 	slot18 = slot12 == -1 and (FightRenderOrderMgr.instance:getOrder(slot1.fromId) or 0) / FightEnum.OrderRegion * FightEnum.OrderRegion + 1 or slot12 == -2 and (FightRenderOrderMgr.instance:getOrder(slot1.toId) or 0) / FightEnum.OrderRegion * FightEnum.OrderRegion + (tonumber(slot3[13]) or 0) or slot12 * FightEnum.OrderRegion
 	slot19 = {}
@@ -151,13 +151,17 @@ function slot0._createSpine(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slo
 	table.insert(slot0._spineEntityList, slot13)
 end
 
-function slot0._getHangPointGO(slot0, slot1, slot2)
+function slot0._getHangPointGO(slot0, slot1, slot2, slot3)
+	if not tonumber(slot3) and not string.nilorempty(slot3) then
+		return gohelper.findChild(CameraMgr.instance:getCameraRootGO(), slot3)
+	end
+
 	if slot2 == 2 then
 		return CameraMgr.instance:getCameraTraceGO()
 	elseif slot2 == 3 then
-		return FightHelper.getEntity(slot1.fromId) and slot3.go
+		return FightHelper.getEntity(slot1.fromId) and slot4.go
 	elseif slot2 == 4 then
-		return FightHelper.getEntity(slot1.toId) and slot3.go
+		return FightHelper.getEntity(slot1.toId) and slot4.go
 	end
 end
 

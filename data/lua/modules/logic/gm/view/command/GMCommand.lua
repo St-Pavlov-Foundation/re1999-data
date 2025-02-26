@@ -57,6 +57,17 @@ function slot0.weekwalksettlement(slot0)
 
 		WeekWalkController.instance:openWeekWalkShallowSettlementView()
 	end
+
+	if slot1 == 4 then
+		WeekWalk_2Controller.instance:openWeekWalk_2DeepLayerNoticeView()
+	end
+
+	if slot1 == 5 then
+		WeekWalkModel.instance:getInfo().isPopDeepSettle = true
+		WeekWalk_2Model.instance:getInfo().isPopSettle = true
+
+		WeekWalkController.instance:openWeekWalkShallowSettlementView()
+	end
 end
 
 function slot0.finishLayer(slot0, slot1)

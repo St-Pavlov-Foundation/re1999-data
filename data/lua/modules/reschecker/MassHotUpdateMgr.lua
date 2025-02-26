@@ -22,6 +22,14 @@ function slot0.loadUnmatchRes(slot0, slot1, slot2)
 	slot0.eventDispatcher:AddListener(slot0.eventDispatcher.MassHotUpdate_Progress, slot0.onDownloadProgress, slot0)
 	slot0.eventDispatcher:AddListener(slot0.eventDispatcher.MassHotUpdate_NotEnoughDiskSpace, slot0._onDiskSpaceNotEnough, slot0)
 
+	slot0._fixResEntrance = UnityEngine.PlayerPrefs.GetFloat(PlayerPrefsKey.Manual_FixRes) == 1 and "主动修复" or "自动修复"
+
+	SDKDataTrackMgr.instance:trackResourceFixup({
+		count = 0,
+		status = "start",
+		entrance = slot0._fixResEntrance
+	})
+
 	slot0._lastRecvSize = 0
 	slot0._allSize = 0
 
@@ -93,6 +101,8 @@ function slot0.onDownloadFinish(slot0, slot1, slot2, slot3, slot4)
 
 		if BootNativeUtil.getPackageName() ~= "com.shenlan.m.reverse1999.nearme.gamecenter" and SDKMgr.instance:isIgnoreFileMissing() then
 			if slot9 == true then
+				slot0._lastFailedFileCount = slot1
+
 				slot0:_skip()
 			else
 				slot0:retryFailedFiles()
@@ -168,7 +178,14 @@ function slot0.doCallBack(slot0, slot1)
 
 	if slot1 ~= true then
 		ResCheckMgr.instance:markLastCheckAppVersion()
+		UnityEngine.PlayerPrefs.DeleteKey(PlayerPrefsKey.Manual_FixRes)
 	end
+
+	SDKDataTrackMgr.instance:trackResourceFixup({
+		status = slot1 and "fail" or "success",
+		count = slot0._lastFailedFileCount,
+		entrance = slot0._fixResEntrance
+	})
 
 	if slot0.cb then
 		slot0.cb(slot0.cbObj)

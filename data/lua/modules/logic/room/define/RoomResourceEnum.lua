@@ -84,6 +84,11 @@ slot0.ResourceAudioPriority = {
 	[slot0.ResourceId.Plant] = 3,
 	[slot0.ResourceId.River] = 4
 }
+slot0.PPVolume = {
+	High = "ppassets/profiles/room_profile_high.asset",
+	Middle = "ppassets/profiles/room_profile_middle.asset",
+	Low = "ppassets/profiles/room_profile_low.asset"
+}
 
 for slot4, slot5 in pairs(slot0.ResourceId) do
 	if slot5 ~= slot0.ResourceId.Empty then

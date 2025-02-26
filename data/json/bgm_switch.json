@@ -628,5 +628,23 @@
     "audioLength": 198.75,
     "audioEvaluates": "梁月#我还是更喜欢……有圆满结局的故事。",
     "isNonLoop": 1
+  },
+  {
+    "id": 1022601,
+    "audio": 20250101,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221161,
+    "defaultUnlock": 0,
+    "audioName": "疯癫与文明",
+    "audioNameEn": "Folie et Déraison",
+    "audioIntroduce": "诗社很好，囚犯很好，一切都很好。啊，我们早已来到心目中的乌托邦。",
+    "audioBg": "1022501_1",
+    "audioicon": "1022501_2",
+    "sort": 22601,
+    "audioType": 17,
+    "audioLength": 198.75,
+    "audioEvaluates": "虚构集#这是一个旧故事的结局，也是一个全新故事的隆重开篇。我很庆幸有过这段如此奇妙的经历。",
+    "isNonLoop": 0
   }
 ]

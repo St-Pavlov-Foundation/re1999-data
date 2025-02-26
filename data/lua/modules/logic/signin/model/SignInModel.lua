@@ -476,7 +476,7 @@ function slot0.getShowMonthItemCo(slot0)
 end
 
 function slot0.checkFestivalDecorationUnlock()
-	if ActivityModel.instance:isActOnLine(ActivityController.instance:Vxax_ActId("Calendar_Decoration", ActivityEnum.Activity.V2a2_Calendar_Decoration)) == nil or slot1 == false then
+	if ActivityModel.instance:isActOnLine(GameBranchMgr.instance:Vxax_ActId("Calendar_Decoration", ActivityEnum.Activity.V2a2_Calendar_Decoration)) == nil or slot1 == false then
 		return false
 	end
 

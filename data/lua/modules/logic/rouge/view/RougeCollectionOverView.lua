@@ -18,7 +18,6 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	uv0.super._editableInitView(slot0)
 	slot0:addEventCb(RougeController.instance, RougeEvent.SwitchCollectionInfoType, slot0._onSwitchCollectionInfoType, slot0)
 end
 

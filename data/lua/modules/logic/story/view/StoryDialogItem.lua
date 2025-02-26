@@ -51,10 +51,12 @@ end
 function slot0._loadRes(slot0)
 	slot0._magicFirePath = ResUrl.getEffect("story/story_magicfont_particle")
 	slot0._reshapeMagicFirePath = ResUrl.getEffect("story/story_magicfont_particle_dark")
+	slot0._glitchPath = ResUrl.getEffect("story/v2a6_fontglitch")
 	slot0._effLoader = MultiAbLoader.New()
 
 	slot0._effLoader:addPath(slot0._magicFirePath)
 	slot0._effLoader:addPath(slot0._reshapeMagicFirePath)
+	slot0._effLoader:addPath(slot0._glitchPath)
 	slot0._effLoader:startLoad(slot0._magicFireEffectLoaded, slot0)
 end
 
@@ -69,6 +71,9 @@ function slot0._magicFireEffectLoaded(slot0, slot1)
 	gohelper.setActive(slot0._reshapeMagicFireGo, false)
 
 	slot0._reshapeMagicFireAnim = slot0._reshapeMagicFireGo:GetComponent(typeof(UnityEngine.Animator))
+	slot0._glitchGo = gohelper.clone(slot1:getAssetItem(slot0._glitchPath):GetResource(slot0._glitchPath), slot0._norDiaGO)
+
+	gohelper.setActive(slot0._glitchGo, false)
 end
 
 function slot0._addEvent(slot0)
@@ -355,10 +360,60 @@ function slot0.playNormalText(slot0, slot1, slot2, slot3)
 		transformhelper.setLocalPosXY(slot0._norDiaGO.transform, 550, 0)
 	end
 
+	slot0:_checkPlayGlitch(slot0._subemtext)
+
+	slot0._subemtext = string.gsub(slot0._subemtext, "<glitch>", "")
+	slot0._subemtext = string.gsub(slot0._subemtext, "</glitch>", "")
+
 	if slot0._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Hard then
 		slot0:_playHardIn()
 	else
 		slot0:_playGradualIn()
+	end
+end
+
+function slot0._checkPlayGlitch(slot0, slot1)
+	slot2 = string.match(slot1, "<glitch>")
+
+	gohelper.setActive(slot0._glitchGo, slot2)
+
+	if not slot2 then
+		return
+	end
+
+	StoryTool.enablePostProcess(true)
+
+	slot5 = {}
+
+	table.insert(slot5, gohelper.findChild(slot0._glitchGo, "part_up"):GetComponent(typeof(UnityEngine.ParticleSystem)))
+
+	slot7 = gohelper.findChild(slot0._glitchGo, "part_down")
+
+	table.insert(slot5, slot7:GetComponent(typeof(UnityEngine.ParticleSystem)))
+	gohelper.setActive(slot7, slot0._txtcontentcn:GetTextInfo(string.gsub(string.gsub(slot1, "<glitch>", ""), "</glitch>", "")).lineCount > 1)
+
+	slot9 = CameraMgr.instance:getUICamera()
+	slot10 = slot4.characterInfo
+	slot11 = recthelper.getWidth(slot0._txtcontentcn.transform)
+
+	for slot15 = 1, slot4.lineCount do
+		slot16 = slot4.lineInfo[slot15 - 1]
+		slot17 = slot10[slot16.firstVisibleCharacterIndex]
+		slot20 = string.find(slot1, "<glitch>") <= 1 and "" or utf8.sub(slot3, slot16.firstVisibleCharacterIndex + 1, slot16.lastVisibleCharacterIndex + 1):sub(1, slot19 - 1)
+		slot21 = 0
+		slot22 = ""
+
+		if slot19 < slot16.lastVisibleCharacterIndex + 1 then
+			slot22 = string.find(string.gsub(slot1, "<glitch>", ""), "</glitch>") and slot18:sub(1, slot21 - 1) or slot18
+		end
+
+		slot28 = slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot10[utf8.len(slot20)].bottomRight))
+		slot29 = slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot10[utf8.len(slot22)].bottomRight))
+		slot33, slot34, slot35 = transformhelper.getLocalPos(slot5[slot15].transform)
+
+		transformhelper.setLocalPos(slot5[slot15].transform, 627 * (2 * (slot28.x - slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot17.bottomLeft)).x) / slot11 + (slot29.x - slot28.x) / slot11), slot34, slot35)
+
+		slot5[slot15].shape.scale = Vector3(11.7 * (slot29.x - slot28.x) / slot11, 0.4, 0)
 	end
 end
 

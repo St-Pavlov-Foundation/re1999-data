@@ -1377,6 +1377,26 @@ function slot0.jumpToInvestigateOpinionTabView(slot0, slot1)
 	return JumpEnum.JumpResult.Success
 end
 
+function slot0.jumpToDiceHeroLevelView(slot0, slot1)
+	if not DiceHeroModel.instance.unlockChapterIds[string.splitToNumber(slot1, "#")[2]] then
+		GameFacade.showToast(ToastEnum.DiceHeroLockChapter)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	if not DiceHeroConfig.instance:getLevelCo(slot3, 1) then
+		return JumpEnum.JumpResult.Fail
+	end
+
+	table.insert(slot0.waitOpenViewNames, ViewName.DiceHeroLevelView)
+	ViewMgr.instance:openView(ViewName.DiceHeroLevelView, {
+		chapterId = slot3,
+		isInfinite = slot4.mode == 2
+	})
+
+	return JumpEnum.JumpResult.Success
+end
+
 function slot0.jumpToTowerView(slot0, slot1)
 	slot2 = string.splitToNumber(slot1, "#")
 
@@ -1433,7 +1453,8 @@ slot0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.RougeRewardView] = slot0.jumpToRougeRewardView,
 	[JumpEnum.JumpView.PermanentMainView] = slot0.jumpToPermanentMainView,
 	[JumpEnum.JumpView.InvestigateView] = slot0.jumpToInvestigateView,
-	[JumpEnum.JumpView.InvestigateOpinionTabView] = slot0.jumpToInvestigateOpinionTabView
+	[JumpEnum.JumpView.InvestigateOpinionTabView] = slot0.jumpToInvestigateOpinionTabView,
+	[JumpEnum.JumpView.DiceHero] = slot0.jumpToDiceHeroLevelView
 }
 slot0.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = slot0.jumpToAct117,

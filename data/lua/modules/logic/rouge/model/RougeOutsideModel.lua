@@ -375,6 +375,10 @@ function slot0.getStartViewAllInfo(slot0, slot1)
 	return slot4
 end
 
+function slot0.getCurExtraPoint(slot0)
+	return slot0._rougeInfo and slot0._rougeInfo.curExtraPoint or 0
+end
+
 slot0.instance = slot0.New()
 
 return slot0

@@ -68,7 +68,7 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TurnbackController.instance, TurnbackEvent.OnTaskRewardGetFinish, slot0._playGetRewardFinishAnim, slot0)
 	slot0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.onCurrencyChange, slot0)
 	slot0:removeEventCb(TurnbackController.instance, TurnbackEvent.RefreshView, slot0._refreshUI, slot0)
-	slot0:addEventCb(TurnbackController.instance, TurnbackEvent.AfterBuyDoubleReward, slot0.succbuydoublereward, slot0)
+	slot0:removeEventCb(TurnbackController.instance, TurnbackEvent.AfterBuyDoubleReward, slot0.succbuydoublereward, slot0)
 
 	slot4 = ViewMgr.instance
 	slot5 = ViewEvent.OnCloseView

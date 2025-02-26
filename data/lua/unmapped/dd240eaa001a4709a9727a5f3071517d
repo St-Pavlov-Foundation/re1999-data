@@ -32,6 +32,9 @@ return {
 
 		uv0._startLoad(slot1, slot0)
 	end,
+	WeekWalk_2HeartLayerViewPreload = function (slot0)
+		uv0._startLoad(uv0._getResPathList(ViewName.WeekWalk_2HeartLayerView), slot0)
+	end,
 	StoreViewPreload = function (slot0)
 		slot1 = {}
 

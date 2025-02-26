@@ -1,0 +1,354 @@
+[
+  {
+    "id": 1001,
+    "rare": 1,
+    "addCollection": "8180101",
+    "desc": "<前排破防>我方1号位获得【终极易伤】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1002,
+    "rare": 1,
+    "addCollection": "8180102",
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1003,
+    "rare": 1,
+    "addCollection": "8180103",
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1004,
+    "rare": 1,
+    "addCollection": "8180104",
+    "desc": "<群体强化>敌方的群体技能最终增伤提升50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1005,
+    "rare": 1,
+    "addCollection": "8180105",
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【一之无力】/【二之无力】/【三之无力】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1006,
+    "rare": 1,
+    "addCollection": "8180106",
+    "desc": "<合卡禁止>咒语合成时，阶次-1",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1007,
+    "rare": 1,
+    "addCollection": "8180107",
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出背包的噪点",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1008,
+    "rare": 1,
+    "addCollection": "8180109",
+    "desc": "<贫困处境>获得金雀子儿的数量降低50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1009,
+    "rare": 1,
+    "addCollection": "8180110",
+    "desc": "<愈合困难>受到治疗效果降低80%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1010,
+    "rare": 1,
+    "addCollection": "8180111",
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【薄弱收集】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 1011,
+    "rare": 1,
+    "addCollection": "8180112",
+    "desc": "<腐化造物>进入间隙层时，随机失去布设或仓库中的3个造物",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2001,
+    "rare": 2,
+    "addCollection": "8180101",
+    "desc": "<前排破防>我方1号位获得【终极易伤】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2002,
+    "rare": 2,
+    "addCollection": "8180102",
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2003,
+    "rare": 2,
+    "addCollection": "8180103",
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2004,
+    "rare": 2,
+    "addCollection": "8180104",
+    "desc": "<群体强化>敌方的群体技能最终增伤提升50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2005,
+    "rare": 2,
+    "addCollection": "8180105",
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【一之无力】/【二之无力】/【三之无力】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2006,
+    "rare": 2,
+    "addCollection": "8180106",
+    "desc": "<合卡禁止>咒语合成时，阶次-1",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2007,
+    "rare": 2,
+    "addCollection": "8180107",
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出背包的噪点",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2008,
+    "rare": 2,
+    "addCollection": "8180109",
+    "desc": "<贫困处境>获得金雀子儿的数量降低50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2009,
+    "rare": 2,
+    "addCollection": "8180110",
+    "desc": "<愈合困难>受到治疗效果降低80%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2010,
+    "rare": 2,
+    "addCollection": "8180111",
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【薄弱收集】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 2011,
+    "rare": 2,
+    "addCollection": "8180112",
+    "desc": "<腐化造物>进入间隙层时，随机失去布设或仓库中的3个造物",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3001,
+    "rare": 3,
+    "addCollection": "8180101",
+    "desc": "<前排破防>我方1号位获得【终极易伤】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3002,
+    "rare": 3,
+    "addCollection": "8180102",
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3003,
+    "rare": 3,
+    "addCollection": "8180103",
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3004,
+    "rare": 3,
+    "addCollection": "8180104",
+    "desc": "<群体强化>敌方的群体技能最终增伤提升50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3005,
+    "rare": 3,
+    "addCollection": "8180105",
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【一之无力】/【二之无力】/【三之无力】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3006,
+    "rare": 3,
+    "addCollection": "8180106",
+    "desc": "<合卡禁止>咒语合成时，阶次-1",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3007,
+    "rare": 3,
+    "addCollection": "8180107",
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出背包的噪点",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3008,
+    "rare": 3,
+    "addCollection": "8180109",
+    "desc": "<贫困处境>获得金雀子儿的数量降低50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3009,
+    "rare": 3,
+    "addCollection": "8180110",
+    "desc": "<愈合困难>受到治疗效果降低80%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3010,
+    "rare": 3,
+    "addCollection": "8180111",
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【薄弱收集】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 3011,
+    "rare": 3,
+    "addCollection": "8180112",
+    "desc": "<腐化造物>进入间隙层时，随机失去布设或仓库中的3个造物",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4001,
+    "rare": 4,
+    "addCollection": "8180101",
+    "desc": "<前排破防>我方1号位获得【终极易伤】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4002,
+    "rare": 4,
+    "addCollection": "8180102",
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4003,
+    "rare": 4,
+    "addCollection": "8180103",
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4004,
+    "rare": 4,
+    "addCollection": "8180104",
+    "desc": "<群体强化>敌方的群体技能最终增伤提升50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4005,
+    "rare": 4,
+    "addCollection": "8180105",
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【一之无力】/【二之无力】/【三之无力】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4006,
+    "rare": 4,
+    "addCollection": "8180106",
+    "desc": "<合卡禁止>咒语合成时，阶次-1",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4007,
+    "rare": 4,
+    "addCollection": "8180107",
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出背包的噪点",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4008,
+    "rare": 4,
+    "addCollection": "8180109",
+    "desc": "<贫困处境>获得金雀子儿的数量降低50%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4009,
+    "rare": 4,
+    "addCollection": "8180110",
+    "desc": "<愈合困难>受到治疗效果降低80%",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4010,
+    "rare": 4,
+    "addCollection": "8180111",
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【薄弱收集】",
+    "unlockType": 0,
+    "unlockParam": ""
+  },
+  {
+    "id": 4011,
+    "rare": 4,
+    "addCollection": "8180112",
+    "desc": "<腐化造物>进入间隙层时，随机失去布设或仓库中的3个造物",
+    "unlockType": 0,
+    "unlockParam": ""
+  }
+]

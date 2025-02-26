@@ -1,0 +1,79 @@
+[
+  {
+    "activityId": 12605,
+    "abilityId": 100,
+    "effectTime": 0,
+    "skillId": 112,
+    "desc": "每回合随机窥视2种文学象征。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 101,
+    "effectTime": 0,
+    "skillId": 113,
+    "desc": "运用文学象征释放神秘术造成的创伤额外增加1点。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 102,
+    "effectTime": 0,
+    "skillId": 114,
+    "desc": "每隔2回合，运用文学象征释放神秘术造成的创伤额外增加1点。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 103,
+    "effectTime": 0,
+    "skillId": 115,
+    "desc": "每回合首次获得的文学象征不消失，并锁定两回合（锁定：对方不可再获得该文学象征）"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 104,
+    "effectTime": 1,
+    "skillId": 116,
+    "desc": "奇数回合使对方获得文学象征机会减少1。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 105,
+    "effectTime": 1,
+    "skillId": 122,
+    "desc": "奇数回合获得1层护盾。（护盾：抵挡1次受到的直接创伤）"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 106,
+    "effectTime": 0,
+    "skillId": 117,
+    "desc": "运用文学象征释放神秘术造成的创伤固定为1，每次造成创伤叠加1层流血（流血：每回合结束时，失去1点血量）"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 107,
+    "effectTime": 0,
+    "skillId": 118,
+    "desc": "每造成3点创伤，获得文学象征机会增加1，每回合最多触发3次。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 108,
+    "effectTime": 0,
+    "skillId": 119,
+    "desc": "对方每次获得文学象征时受到1点伤害。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 109,
+    "effectTime": 0,
+    "skillId": 120,
+    "desc": "额外获得1次获得文学象征的机会。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 110,
+    "effectTime": 0,
+    "skillId": 121,
+    "desc": "对方无法获得治疗。"
+  }
+]

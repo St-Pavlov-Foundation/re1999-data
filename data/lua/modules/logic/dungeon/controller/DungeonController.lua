@@ -364,6 +364,10 @@ function slot0.openDungeonChapterView(slot0, slot1, slot2)
 		WeekWalkController.instance:openWeekWalkView(slot1, slot2)
 
 		return ViewName.WeekWalkView
+	elseif slot3.type == DungeonEnum.ChapterType.WeekWalk_2 then
+		WeekWalk_2Controller.instance:openWeekWalk_2HeartView(slot1, slot2)
+
+		return ViewName.WeekWalk_2HeartView
 	elseif slot3.type == DungeonEnum.ChapterType.Season or slot3.type == DungeonEnum.ChapterType.SeasonRetail or slot3.type == DungeonEnum.ChapterType.SeasonSpecial then
 		Activity104Controller.instance:openSeasonMainView()
 
@@ -722,7 +726,7 @@ function slot0.showDungeonView(slot0)
 end
 
 function slot0._showLevelView(slot0, slot1)
-	return slot1 ~= DungeonEnum.ChapterType.WeekWalk and slot1 ~= DungeonEnum.ChapterType.Season
+	return slot1 ~= DungeonEnum.ChapterType.WeekWalk and slot1 ~= DungeonEnum.ChapterType.Season and slot1 ~= DungeonEnum.ChapterType.WeekWalk_2
 end
 
 function slot0.onReceiveEndDungeonReply(slot0, slot1, slot2)

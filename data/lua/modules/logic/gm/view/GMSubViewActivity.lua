@@ -76,6 +76,8 @@ function slot0.initViewContent(slot0)
 	slot0._act178EpisodeId = slot0:addInputText("L8", nil, "关卡ID")
 
 	slot0:addButton("L8", "直接进入弹珠游戏", slot0._enterAct178Game, slot0)
+	slot0:addLabel("L9", "2.6 活动")
+	slot0:addButton("L9", "虚构集卡牌ID开关", slot0._setXugoujiDebugMode, slot0)
 	slot0:initActivityDrop()
 
 	slot0._inited = true
@@ -264,6 +266,14 @@ function slot0._douQuQuTestForceIndexRound(slot0)
 	end
 
 	slot0:closeThis()
+end
+
+function slot0._setXugoujiDebugMode(slot0)
+	slot1 = XugoujiController.instance:isDebugMode()
+
+	XugoujiController.instance:setDebugMode(not slot1)
+	PlayerPrefsHelper.setNumber("XugoujiDebugMode", slot1 and 0 or 1)
+	XugoujiController.instance:dispatchEvent(XugoujiEvent.TurnChanged)
 end
 
 function slot0.copyConfig(slot0)

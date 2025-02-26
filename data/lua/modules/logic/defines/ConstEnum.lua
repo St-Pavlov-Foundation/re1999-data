@@ -113,5 +113,6 @@ slot0.V2a4_WarmUp_btnplay_openTs = 2499
 slot0.RoomCritterNameLimit = 2503
 slot0.SeasonCardTipsDesc = 2505
 slot0.MainSceneChangeCD = 2506
+slot0.BpShowBonusLvs = 2601
 
 return slot0

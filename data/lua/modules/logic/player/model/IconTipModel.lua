@@ -32,11 +32,17 @@ function slot0.setIconList(slot0, slot1)
 				slot5[slot11.effect] = slot13
 			end
 
-			for slot18 = #slot13, 1, -1 do
-				if false then
-					slot3[slot13[slot18]] = true
-				elseif slot13[slot18] == slot11.id then
-					slot14 = true
+			if #slot13 > 0 then
+				slot12.effectPortraitDic = {}
+
+				for slot19 = slot14, 1, -1 do
+					slot12.effectPortraitDic[slot13[slot19]] = true
+
+					if false then
+						slot3[slot20] = true
+					elseif slot20 == slot11.id then
+						slot15 = true
+					end
 				end
 			end
 

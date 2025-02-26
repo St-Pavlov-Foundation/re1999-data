@@ -8118,5 +8118,93 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 260004,
+    "tips": "【临时文本】没有选择骰子",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260005,
+    "tips": "【临时文本】阿莱夫当前章节未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260006,
+    "tips": "【临时文本】阿莱夫当前关卡未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260007,
+    "tips": "【临时文本】阿莱夫当前关卡已通关（无尽）",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260008,
+    "tips": "【临时文本】阿莱夫当前没有骰子重置次数",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260009,
+    "tips": "【临时文本】阿莱夫不满足出牌条件",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -315,
+    "tips": "零售订单每日刷新次数已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -319,
+    "tips": "前置关卡未通关",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260010,
+    "tips": "【临时文本】阿莱夫无尽重置成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260011,
+    "tips": "【临时文本】当前骰子数量已达上限12",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 90221,
+    "tips": "次数耗尽",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

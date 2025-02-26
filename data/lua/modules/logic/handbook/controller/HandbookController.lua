@@ -37,7 +37,12 @@ function slot0.jumpView(slot0, slot1)
 		slot0:openEquipView()
 		table.insert(slot2, HandbookEquipView)
 	elseif slot3 == JumpEnum.HandbookType.Story then
-		slot0:openStoryView()
+		if tonumber(slot1[3]) then
+			slot0:openStoryView(slot4)
+		else
+			slot0:openStoryView()
+		end
+
 		table.insert(slot2, HandbookStoryView)
 	elseif slot3 == JumpEnum.HandbookType.CG then
 		slot0:openCGView()

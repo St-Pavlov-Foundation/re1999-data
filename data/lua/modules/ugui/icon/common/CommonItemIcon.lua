@@ -246,7 +246,7 @@ function slot0.showNormalDeadline(slot0)
 	gohelper.setActive(slot0._deadline, false)
 
 	if slot0.canShowDeadLine then
-		gohelper.setActive(slot0._deadline1, slot0:_isItemHasDeadline() or slot0:_isLimitPowerPotion())
+		gohelper.setActive(slot0._deadline1, slot0:isExpiredItem())
 	else
 		gohelper.setActive(slot0._deadline1, false)
 	end
@@ -732,6 +732,10 @@ function slot0._onClick(slot0)
 	MaterialTipController.instance:showMaterialInfo(slot0._itemType, slot0._itemId, slot0._inPack, slot0._itemUid, slot0._cantJump, slot0._recordFarmItem, nil, slot0._itemQuantity, slot0._isConsume, slot0.jumpFinishCallback, slot0.jumpFinishCallbackObj, slot0.jumpFinishCallbackParam, {
 		roomBuildingLevel = slot0._roomBuildingLevel
 	})
+end
+
+function slot0.isExpiredItem(slot0)
+	return slot0:_isItemHasDeadline() or slot0:_isLimitPowerPotion()
 end
 
 return slot0

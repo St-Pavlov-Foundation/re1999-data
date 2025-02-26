@@ -910,5 +910,43 @@
     "rare": 5,
     "useDesc": "解锁如愿甘泉中对应配方",
     "desc": "这座雕塑中储藏着万物的匮乏与希望，它象征着枯槁，也蕴藏着生息，它的神秘近在咫尺，却难以摸索。"
+  },
+  {
+    "id": 3001093,
+    "type": 2,
+    "showType": 301,
+    "name": "红漆泥板造形",
+    "costMaterial": "1#110902#3|1#110702#1",
+    "costScore": "2#3#300",
+    "costTime": 0,
+    "produce": "1#110903#1",
+    "costReserve": 0,
+    "order": 110301,
+    "needRoomLevel": 0,
+    "needProductionLevel": 2,
+    "needEpisodeId": 0,
+    "icon": "icon_shensuixiaxiang",
+    "rare": 3,
+    "useDesc": "解锁如愿甘泉中对应配方",
+    "desc": "这座雕塑中储藏着万物的匮乏与希望，它象征着枯槁，也蕴藏着生息，它的神秘近在咫尺，却难以摸索。"
+  },
+  {
+    "id": 3001094,
+    "type": 2,
+    "showType": 301,
+    "name": "翡翠石板造形",
+    "costMaterial": "1#110903#3|1#110603#2",
+    "costScore": "2#3#500",
+    "costTime": 0,
+    "produce": "1#110904#1",
+    "costReserve": 0,
+    "order": 110401,
+    "needRoomLevel": 0,
+    "needProductionLevel": 4,
+    "needEpisodeId": 20407,
+    "icon": "icon_shensuixiaxiang",
+    "rare": 4,
+    "useDesc": "解锁如愿甘泉中对应配方",
+    "desc": "这座雕塑中储藏着万物的匮乏与希望，它象征着枯槁，也蕴藏着生息，它的神秘近在咫尺，却难以摸索。"
   }
 ]

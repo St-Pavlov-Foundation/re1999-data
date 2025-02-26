@@ -3,9 +3,9 @@ module("modules.logic.fight.fightcomponent.FightObjItemListItem", package.seeall
 slot0 = class("FightObjItemListItem", FightBaseClass)
 
 function slot0.onConstructor(slot0, slot1, slot2, slot3)
-	slot0.autoSetSibling = true
+	slot0.autoSetSibling = false
 	slot0.siblingOffset = 0
-	slot0.recycle = true
+	slot0.recycle = false
 	slot0.dataList = {}
 	slot0._modelGameObject = slot1
 	slot0._class = slot2

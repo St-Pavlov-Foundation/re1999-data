@@ -1,0 +1,26 @@
+module("modules.logic.versionactivity2_6.xugouji.define.XugoujiEvent", package.seeall)
+
+slot0 = _M
+slot1 = GameUtil.getUniqueTb()
+slot0.BeforeEnterEpisode = slot1()
+slot0.EnterEpisode = slot1()
+slot0.EpisodeUpdate = slot1()
+slot0.EpisodeFinish = slot1()
+slot0.OneClickClaimReward = slot1()
+slot0.ExitGame = slot1()
+slot0.OperateCard = slot1()
+slot0.GameStateChanged = slot1()
+slot0.CardStatusUpdated = slot1()
+slot0.CardEffectStatusUpdated = slot1()
+slot0.CardPairStatusUpdated = slot1()
+slot0.HpUpdated = slot1()
+slot0.BuffUpdated = slot1()
+slot0.TurnChanged = slot1()
+slot0.GotCardPair = slot1()
+slot0.NewCards = slot1()
+slot0.OperateTimeUpdated = slot1()
+slot0.GameResult = slot1()
+slot0.GameRestart = slot1()
+slot0.CloseCardInfoView = slot1()
+
+return slot0

@@ -25,6 +25,14 @@ function slot0.openWeekWalkEnemyInfoView(slot0, slot1, slot2)
 	})
 end
 
+function slot0.openWeekWalk_2EnemyInfoView(slot0, slot1, slot2)
+	ViewMgr.instance:openView(ViewName.WeekWalk_2EnemyInfoView, {
+		mapId = slot1,
+		selectBattleId = slot2,
+		tabEnum = EnemyInfoEnum.TabEnum.WeekWalk_2
+	})
+end
+
 function slot0.openSeason123EnemyInfoView(slot0, slot1, slot2, slot3)
 	ViewMgr.instance:openView(ViewName.BaseEnemyInfoView, {
 		showLeftTab = true,

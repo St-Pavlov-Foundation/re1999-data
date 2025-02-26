@@ -9,7 +9,8 @@ function slot0.reqConfigNames(slot0)
 	return {
 		"fight_asfd",
 		"fight_asfd_emitter_position",
-		"fight_asfd_const"
+		"fight_asfd_const",
+		"fight_asfd_fly_path"
 	}
 end
 
@@ -18,6 +19,8 @@ function slot0.onConfigLoaded(slot0, slot1, slot2)
 		slot0:buildFightASFDConfig(slot2)
 	elseif slot1 == "fight_asfd_const" then
 		slot0:buildFightASFDConstConfig(slot2)
+	elseif slot1 == "fight_asfd_fly_path" then
+		slot0:buildFightASFDFlyPathConfig(slot2)
 	end
 end
 
@@ -90,6 +93,18 @@ function slot0.buildASFDEmitterConfig(slot0, slot1)
 	}
 end
 
+function slot0.buildFightASFDFlyPathConfig(slot0, slot1)
+	slot0.defaultFlyPath = slot1.configDict[1]
+end
+
+function slot0.getFlyPathCo(slot0, slot1)
+	if not lua_fight_asfd_fly_path.configDict[slot1] then
+		return slot0.defaultFlyPath
+	end
+
+	return slot2
+end
+
 function slot0.getASFDEmitterConfig(slot0, slot1)
 	return slot1 == FightEnum.EntitySide.EnemySide and slot0.enemyASFDConfig or slot0.myASFDConfig
 end
@@ -102,8 +117,8 @@ function slot0.getMissileInterval(slot0, slot1)
 	return math.max(slot0.minMissileInterval, slot0.missileInterval - (slot1 - 1) * slot0.missileReduceInterval)
 end
 
-function slot0.getFlyDuration(slot0, slot1)
-	return math.max(slot0.minFlyDuration, slot0.flyDuration - (slot1 - 1) * slot0.flyReduceInterval)
+function slot0.getFlyDuration(slot0, slot1, slot2)
+	return math.max(slot0.minFlyDuration, slot1 - (slot2 - 1) * slot0.flyReduceInterval)
 end
 
 function slot0.getSkillCo(slot0)
@@ -112,6 +127,28 @@ function slot0.getSkillCo(slot0)
 	end
 
 	return slot0.skillCo
+end
+
+function slot0.getASFDCoRes(slot0, slot1)
+	if not slot1 then
+		return
+	end
+
+	if not string.find(slot1.res, "|") then
+		return slot2
+	end
+
+	slot0.tempResDict = slot0.tempResDict or {}
+
+	if not slot0.tempResDict[slot2] or #slot3 < 1 then
+		slot0.tempResDict[slot2] = tabletool.copy(FightStrUtil.instance:getSplitCache(slot2, "|"))
+	end
+
+	if #slot3 == 1 then
+		return table.remove(slot3)
+	end
+
+	return table.remove(slot3, math.random(slot4))
 end
 
 slot0.instance = slot0.New()

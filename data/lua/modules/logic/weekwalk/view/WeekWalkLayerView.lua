@@ -60,9 +60,19 @@ function slot0._editableInitView(slot0)
 
 	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "top_left")
+
+	slot0:addEventCb(WeekWalkController.instance, WeekWalkEvent.OnGetInfo, slot0._OnGetInfo, slot0)
 end
 
-function slot0._initPages(slot0)
+function slot0._OnGetInfo(slot0)
+	slot0:_initPageList()
+
+	for slot4, slot5 in ipairs(slot0._layerPageList) do
+		slot5:updateLayerList(slot0._pageList[slot4])
+	end
+end
+
+function slot0._initPageList(slot0)
 	slot1 = {}
 	slot2 = {}
 
@@ -91,6 +101,11 @@ function slot0._initPages(slot0)
 	end
 
 	slot0._pageList = slot1
+end
+
+function slot0._initPages(slot0)
+	slot0:_initPageList()
+
 	slot0._layerPageList = slot0:getUserDataTb_()
 	slot0._pageIndex = 1
 	slot0._maxPageIndex = 1

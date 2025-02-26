@@ -834,7 +834,7 @@ function slot0._onCardLoadFinish(slot0)
 	}
 	slot0._viewCls.viewContainer = slot0.viewContainer
 
-	slot0._viewCls:onOpen(string.splitToNumber(StoreModel.instance:getGoodsMO(DecorateStoreModel.instance:getCurGood(slot0._selectSecondTabId)).config.product, "#")[2])
+	slot0._viewCls:onOpen(DecorateStoreConfig.instance:getDecorateConfig(slot1).showskinId, string.splitToNumber(StoreModel.instance:getGoodsMO(DecorateStoreModel.instance:getCurGood(slot0._selectSecondTabId)).config.product, "#")[2])
 	slot0._viewCls:backBottomView()
 end
 

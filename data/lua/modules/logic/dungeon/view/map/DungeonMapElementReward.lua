@@ -76,6 +76,14 @@ function slot0._OnRemoveElement(slot0, slot1)
 		})
 	end
 
+	if slot2.type == DungeonEnum.ElementType.EnterDialogue then
+		slot0._lastViewName = ViewName.DialogueView
+	end
+
+	if slot2.type == DungeonEnum.ElementType.SpStory then
+		slot0._lastViewName = ViewName.StoryView
+	end
+
 	if slot0._lastViewName then
 		DungeonController.instance:dispatchEvent(DungeonEvent.BeginShowRewardView)
 	end

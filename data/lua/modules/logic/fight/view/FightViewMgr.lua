@@ -86,7 +86,17 @@ function slot0._showFightProgress(slot0)
 
 		gohelper.setActive(slot0._progressRoot, true)
 
-		slot0._progressView = slot0:com_openSubView(FightCommonalitySlider, FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 1 and "ui/viewres/fight/commonalityslider1.prefab" or "ui/viewres/fight/commonalityslider.prefab", slot0._progressRoot)
+		slot3 = "ui/viewres/fight/commonalityslider.prefab"
+		slot4 = FightCommonalitySlider
+
+		if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 1 then
+			slot3 = "ui/viewres/fight/commonalityslider1.prefab"
+		elseif slot2 == 2 then
+			slot3 = "ui/viewres/fight/commonalityslider2.prefab"
+			slot4 = FightCommonalitySlider2
+		end
+
+		slot0._progressView = slot0:com_openSubView(slot4, slot3, slot0._progressRoot)
 	end
 end
 

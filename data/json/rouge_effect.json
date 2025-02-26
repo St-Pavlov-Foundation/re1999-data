@@ -721,6 +721,13 @@
     "typeParam": "1#1#180"
   },
   {
+    "id": 2168,
+    "tips": "失去全部金雀子儿",
+    "version": "",
+    "type": 1,
+    "typeParam": "1#1#999999"
+  },
+  {
     "id": 2201,
     "tips": "失去了30媒介",
     "version": "",
@@ -950,6 +957,13 @@
     "version": "",
     "type": 1,
     "typeParam": "3#99#900"
+  },
+  {
+    "id": 2320,
+    "tips": "全队失去了99%生命",
+    "version": "",
+    "type": 1,
+    "typeParam": "3#99#990"
   },
   {
     "id": 2401,
@@ -2910,5 +2924,12 @@
     "version": "102",
     "type": 242,
     "typeParam": "5#101132"
+  },
+  {
+    "id": 59999,
+    "tips": "",
+    "version": "",
+    "type": 401,
+    "typeParam": "306104"
   }
 ]

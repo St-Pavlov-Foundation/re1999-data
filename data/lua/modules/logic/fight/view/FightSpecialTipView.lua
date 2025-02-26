@@ -137,6 +137,22 @@ function slot0.onOpen(slot0)
 		end
 	end
 
+	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot8).ruleMap then
+		slot6 = slot6 or {}
+
+		if slot10.defaultRule then
+			for slot14, slot15 in ipairs(slot10.defaultRule) do
+				tabletool.addValues(slot6, GameUtil.splitString2(slot15, true, "|", "#"))
+			end
+		end
+
+		if slot10.chooseSkill then
+			for slot14, slot15 in ipairs(slot10.chooseSkill) do
+				tabletool.addValues(slot6, GameUtil.splitString2(slot15, true, "|", "#"))
+			end
+		end
+	end
+
 	if slot6 and #slot6 > 0 then
 		slot3 = FightEnum.FightSpecialTipsType.Addition
 

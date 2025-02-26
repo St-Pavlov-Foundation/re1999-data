@@ -1,37 +1,20 @@
 module("modules.logic.activity.view.ActivityMainBtnItem", package.seeall)
 
-slot0 = class("ActivityMainBtnItem", LuaCompBase)
+slot0 = class("ActivityMainBtnItem", ActCenterItemBase)
 
 function slot0.init(slot0, slot1, slot2)
-	slot0:__onInit()
-
 	slot0._centerId = slot1
 	slot0._centerCo = ActivityConfig.instance:getActivityCenterCo(slot1)
-	slot0.go = gohelper.cloneInPlace(slot2)
 
-	gohelper.setActive(slot0.go, true)
+	uv0.super.init(slot0, gohelper.cloneInPlace(slot2))
+end
 
-	slot0._imgGo = gohelper.findChild(slot0.go, "bg")
-	slot0._imgitem = gohelper.findChildImage(slot0.go, "bg")
-	slot0._btnitem = gohelper.getClick(slot0._imgGo)
-
-	slot0:_initReddotitem(slot0.go)
-
-	slot0._reddotitem = gohelper.findChild(slot0.go, "go_activityreddot")
-
-	slot0:addEvent()
+function slot0.onInit(slot0, slot1)
+	slot0:_initReddotitem()
 	slot0:_refreshItem()
 end
 
-function slot0.addEvent(slot0)
-	slot0._btnitem:AddClickListener(slot0._onItemClick, slot0)
-end
-
-function slot0.removeEvent(slot0)
-	slot0._btnitem:RemoveClickListener()
-end
-
-function slot0._onItemClick(slot0)
+function slot0.onClick(slot0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Activity) then
 		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.Activity))
 
@@ -75,12 +58,6 @@ function slot0.getActivityShowRedDotData(slot0, slot1)
 	return PlayerPrefsHelper.getString(PlayerPrefsKey.FirstEnterActivityShow .. "#" .. tostring(slot1) .. "#" .. tostring(PlayerModel.instance:getPlayinfo().userId), "")
 end
 
-function slot0.destroy(slot0)
-	slot0:removeEvent()
-	gohelper.destroy(slot0.go)
-	slot0:__onDispose()
-end
-
 function slot0.getSortPriority(slot0)
 	return slot0._centerCo.sortPriority
 end
@@ -89,9 +66,9 @@ function slot0.isShowRedDot(slot0)
 	return slot0._redDot.show
 end
 
-function slot0._initReddotitem(slot0, slot1)
+function slot0._initReddotitem(slot0)
 	if slot0._centerCo.id == ActivityEnum.ActivityType.Welfare then
-		slot0._redDot = RedDotController.instance:addRedDot(gohelper.findChild(slot1, "go_activityreddot"), tonumber(RedDotConfig.instance:getRedDotCO(slot0._centerCo.reddotid).parent), false, slot0._onRefreshDot_Welfare, slot0)
+		slot0._redDot = RedDotController.instance:addRedDot(gohelper.findChild(slot0.go, "go_activityreddot"), tonumber(RedDotConfig.instance:getRedDotCO(slot0._centerCo.reddotid).parent), false, slot0._onRefreshDot_Welfare, slot0)
 	else
 		slot0._redDot = RedDotController.instance:addRedDot(slot2, slot3, false, slot0._onRefreshDot_ActivityBeginner, slot0)
 	end

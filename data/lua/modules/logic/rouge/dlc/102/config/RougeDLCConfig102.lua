@@ -48,21 +48,6 @@ function slot0.getCollectionLevelUpCo(slot0, slot1)
 	return slot0._levelConfigTab and slot0._levelConfigTab.configDict[slot1]
 end
 
-function slot0.getCollectionLevelUpConditions(slot0, slot1)
-	return {
-		{
-			index = 1,
-			id = 8110021,
-			content = "测试1"
-		},
-		{
-			index = 2,
-			id = 8110021,
-			content = "测试2"
-		}
-	}
-end
-
 function slot0.getAllCollectionTrammelCo(slot0)
 	return slot0._trammelConfigTab and slot0._trammelConfigTab.configList
 end

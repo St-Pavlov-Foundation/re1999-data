@@ -11,6 +11,9 @@ function slot0.ctor(slot0)
 		ExploreScenePPVolume.ExploreHighProfilePath,
 		ExploreScenePPVolume.ExploreMiddleProfilePath,
 		ExploreScenePPVolume.ExploreLowProfilePath,
+		RoomResourceEnum.PPVolume.High,
+		RoomResourceEnum.PPVolume.Middle,
+		RoomResourceEnum.PPVolume.Low,
 		PostProcessingMgr.CaptureResPath
 	}
 	slot0._pathResTab = {}

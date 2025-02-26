@@ -1422,5 +1422,37 @@
     "dayRecoverNum": 0,
     "maxLimit": 0,
     "sources": ""
+  },
+  {
+    "id": 2601,
+    "name": "万能指示物",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2601",
+    "smallIcon": "",
+    "useDesc": "文明社会的价值象征，如今唯一的功能是记录数字变动。可用于特别柜台兑换。",
+    "desc": "接下来你要掷一次骰子来决定你拥有多少财富……五点，拿着这枚硬币，它代表了五财富。单位？没有单位。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
+  },
+  {
+    "id": 2602,
+    "name": "谍报秘钥",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2203",
+    "smallIcon": "2203_1",
+    "useDesc": "用于在[影中谍报]中解析情报。\n仅限[趋光性研究-尽头之后]活动举办期间使用。",
+    "desc": "丝一般的思维末端，摆动于无风的黑夜，以此捕捉光芒。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
   }
 ]

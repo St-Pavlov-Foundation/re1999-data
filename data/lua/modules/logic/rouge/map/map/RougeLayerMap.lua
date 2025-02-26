@@ -16,7 +16,7 @@ end
 function slot0.updateMapXRange(slot0)
 	slot3 = RougeMapHelper.getUIRoot().transform:GetWorldCorners()
 	slot9 = (slot3[3].x - slot3[1].x) * RougeMapModel.instance:getCameraSize() / CameraMgr.instance:getUICamera().orthographicSize
-	slot12 = -slot9 / 2
+	slot12 = -slot9 / 2 - RougeMapModel.instance:getMapStartOffsetX() + RougeMapEnum.MapStartOffsetX
 	slot13 = nil
 
 	RougeMapModel.instance:setMapXRange(RougeMapModel.instance:getMapSize().x <= slot9 and slot12 or slot12 - (slot11 - slot9), slot12)

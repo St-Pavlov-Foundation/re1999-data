@@ -54,11 +54,9 @@ slot0.FrameEventHandlerCls = {
 	FightTLEventLYSpecialSpinePlayAniName,
 	FightTLEventInvokeSummon,
 	FightTLEventInvokeLookBack,
-	[1000] = FightTLEventChangeHero,
-	[1001] = FightTLEventObjFly,
-	[1002] = FightTLEventEntityQuit,
-	[1003] = FightTLEventEntityEnter,
-	[1004] = FightTLEventSubEntityEnter
+	FightTLEventSetFightViewPartVisible,
+	FightTLEventALFCardEffect,
+	[1001] = FightTLEventObjFly
 }
 
 function slot0.ctor(slot0, slot1)

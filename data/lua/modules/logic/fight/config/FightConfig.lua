@@ -97,7 +97,11 @@ function slot0.reqConfigNames(slot0)
 		"monster_level",
 		"monster_job",
 		"card_heat",
-		"fight_float_effect"
+		"fight_float_effect",
+		"fight_task",
+		"fight_monster_skin_idle_map",
+		"fight_replace_buff_act_effect",
+		"fight_replace_skill_behavior_effect"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

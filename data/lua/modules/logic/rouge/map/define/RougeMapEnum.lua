@@ -193,6 +193,8 @@ slot0.Scale = {
 	NodeBg = 1.3
 }
 slot0.MapStartOffsetX = 2.5
+slot0.MapEndOffsetX = 2.5
+slot0.MaxMapEpisodeIntervalX = 6
 slot0.NodeLocalPosXRange = 1
 slot0.NodeLocalPosY = {
 	{
@@ -284,7 +286,7 @@ slot0.DialogueInterval = 0.05
 slot0.InteractType = {
 	Recruit = 5,
 	LossCollection = 2,
-	ReturnBlood = 3,
+	DropBossCollection = 15,
 	Drop = 1,
 	DropGroup = 6,
 	LossAndCopy = 7,
@@ -295,6 +297,7 @@ slot0.InteractType = {
 	AdvanceDrop = 12,
 	Resurgence = 4,
 	StorageCollection = 10,
+	ReturnBlood = 3,
 	LossAssignCollection = 8
 }
 slot0.ReturnBloodEnum = {

@@ -118,7 +118,11 @@ slot0.ChineseViewName = {
 	[ViewName.FeiLinShiDuoEpisodeLevelView] = "菲林士多角色活动",
 	[ViewName.FeiLinShiDuoTaskView] = "菲林士多角色任务",
 	[ViewName.Act183MainView] = "挑战玩法",
-	[ViewName.AutoChessMainView] = "魔精自走棋"
+	[ViewName.AutoChessMainView] = "魔精自走棋",
+	[ViewName.VersionActivity2_6EnterView] = "2.5版本活动页",
+	[ViewName.VersionActivity2_6DungeonMapView] = "副本地图-唐人街影话",
+	[ViewName.VersionActivity2_6StoreView] = "2.5副本商店",
+	[ViewName.Permanent1_6EnterView] = "1.6活动常驻"
 }
 slot0.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
