@@ -14,7 +14,9 @@ slot1 = {
 slot2 = {
 	"id"
 }
-slot3 = {}
+slot3 = {
+	skillAttrDesc = 1
+}
 
 return {
 	onLoad = function (slot0)

@@ -44,14 +44,6 @@ function slot0.getChooseSkillId(slot0)
 	return slot0.chooseSkillIds[1]
 end
 
-function slot0.setChooseSkillId(slot0, slot1)
-	slot0.chooseSkillIds = {}
-
-	for slot5, slot6 in ipairs(slot1) do
-		table.insert(slot0.chooseSkillIds, slot6)
-	end
-end
-
 function slot0.setIndex(slot0, slot1)
 	slot0.index = slot1
 end

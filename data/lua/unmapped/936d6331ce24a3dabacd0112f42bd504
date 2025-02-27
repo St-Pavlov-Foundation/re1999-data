@@ -2498,5 +2498,14 @@ return {
 		rpc = {
 			"Activity189Rpc"
 		}
+	},
+	VersionActivity2_6Dungeon = {
+		model = {
+			"VersionActivity2_6StoreListModel",
+			"VersionActivity2_6TaskListModel"
+		},
+		controller = {
+			"VersionActivity2_6DungeonController"
+		}
 	}
 }

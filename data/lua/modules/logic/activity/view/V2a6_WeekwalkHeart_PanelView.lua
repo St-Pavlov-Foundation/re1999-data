@@ -76,9 +76,9 @@ function slot0._initTip(slot0)
 	slot1.btnlikeclick:AddClickListener(function ()
 		if not uv0.isUnLike then
 			if uv0.isLike then
-				uv0.likenum = uv0.likenum + 1
-			else
 				uv0.likenum = uv0.likenum - 1
+			else
+				uv0.likenum = uv0.likenum + 1
 			end
 
 			uv0.isLike = not uv0.isLike

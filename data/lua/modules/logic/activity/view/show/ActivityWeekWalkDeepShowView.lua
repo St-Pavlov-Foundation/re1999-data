@@ -109,28 +109,44 @@ end
 slot0.ShowCount = 1
 
 function slot0._refreshRewards(slot0)
-	for slot5 = 1, #string.split(slot0._config.showBonus, "|") do
-		if not slot0._rewardItems[slot5] then
-			slot6 = slot0:getUserDataTb_()
-			slot6.go = gohelper.clone(slot0._gorewarditem, slot0._gorewardContent, "rewarditem" .. slot5)
-			slot6.item = IconMgr.instance:getCommonPropItemIcon(slot6.go)
+	slot2 = nil
 
-			table.insert(slot0._rewardItems, slot6)
+	for slot6, slot7 in ipairs(WeekWalkDeepLayerNoticeView._getRewardList()) do
+		slot9 = slot7[2]
+
+		if slot7[1] == 2 and slot9 == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
+			slot2 = string.format("%s#%s#%s#1", slot8, slot9, slot7[3])
+
+			break
 		end
-
-		gohelper.setActive(slot0._rewardItems[slot5].go, true)
-
-		slot7 = string.splitToNumber(slot1[slot5], "#")
-
-		slot0._rewardItems[slot5].item:setMOValue(slot7[1], slot7[2], slot7[3])
-		slot0._rewardItems[slot5].item:isShowCount(slot7[4] == uv0.ShowCount)
-		slot0._rewardItems[slot5].item:setCountFontSize(35)
-		slot0._rewardItems[slot5].item:setHideLvAndBreakFlag(true)
-		slot0._rewardItems[slot5].item:hideEquipLvAndBreak(true)
 	end
 
-	for slot5 = #slot1 + 1, #slot0._rewardItems do
-		gohelper.setActive(slot0._rewardItems[slot5].go, false)
+	if slot2 then
+		slot3 = string.format("%s|%s", slot2, slot0._config.showBonus)
+	end
+
+	for slot8 = 1, #string.split(slot3, "|") do
+		if not slot0._rewardItems[slot8] then
+			slot9 = slot0:getUserDataTb_()
+			slot9.go = gohelper.clone(slot0._gorewarditem, slot0._gorewardContent, "rewarditem" .. slot8)
+			slot9.item = IconMgr.instance:getCommonPropItemIcon(slot9.go)
+
+			table.insert(slot0._rewardItems, slot9)
+		end
+
+		gohelper.setActive(slot0._rewardItems[slot8].go, true)
+
+		slot10 = string.splitToNumber(slot4[slot8], "#")
+
+		slot0._rewardItems[slot8].item:setMOValue(slot10[1], slot10[2], slot10[3])
+		slot0._rewardItems[slot8].item:isShowCount(slot10[4] == uv0.ShowCount)
+		slot0._rewardItems[slot8].item:setCountFontSize(35)
+		slot0._rewardItems[slot8].item:setHideLvAndBreakFlag(true)
+		slot0._rewardItems[slot8].item:hideEquipLvAndBreak(true)
+	end
+
+	for slot8 = #slot4 + 1, #slot0._rewardItems do
+		gohelper.setActive(slot0._rewardItems[slot8].go, false)
 	end
 end
 

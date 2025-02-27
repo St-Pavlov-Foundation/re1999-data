@@ -32,16 +32,22 @@ function slot0.clearGameInfo(slot0)
 	slot0._enenyHP = 0
 	slot0._curPairCount = 0
 	slot0._enenyPairCount = 0
+	slot0._playerAbilityIds = {}
+	slot0._enemyAbilityIds = {}
 	slot0._curTurnOperateTime = 0
 	slot0._enemyOperateTimeLeft = 0
 	slot0._curCardUid = 0
 	slot0._cardsInfo = {}
 	slot0._cardsInfoList = {}
 	slot0._cardsEffect = {}
+	slot0._cardItemState = {}
 	slot0._lastCardStatus = 0
 	slot0._lastCardId = 0
+	slot0._lastCardInfoUId = 0
 	slot0._playerBuffs = {}
 	slot0._enemyBuffs = {}
+	slot0._guideMode = false
+	slot0._isHpZero = false
 end
 
 function slot0.onAct188GameInfoUpdate(slot0, slot1)
@@ -58,6 +64,10 @@ function slot0.onAct188GameInfoUpdate(slot0, slot1)
 		slot0:setInitialHP(slot1.team.hp, slot1.bossTeam.hp)
 		slot0:_setCurPairCount(slot1.team.pairCount)
 		slot0:_setEnemyPairCount(slot1.bossTeam.pairCount)
+		slot0:setPlayerAbilityIds(slot1.team.abilityIds)
+		slot0:setEnemyAbilityIds(slot1.bossTeam.abilityIds)
+		slot0:setCurTurnOperateTime(slot1.team.maxReverseCount)
+		slot0:setCurTurnOperateTime(slot1.bossTeam.maxReverseCount, true)
 	end
 end
 
@@ -95,6 +105,7 @@ function slot0.clearCardsInfo(slot0)
 	slot0._cardsInfo = {}
 	slot0._cardsInfoList = {}
 	slot0._cardsEffect = {}
+	slot0._cardItemState = {}
 end
 
 function slot0.getCardsInfo(slot0)
@@ -135,15 +146,17 @@ function slot0.getCardEffect(slot0, slot1)
 	return slot0._cardsEffect[slot1]
 end
 
-function slot0.setLastCardPair(slot0, slot1, slot2)
-	slot0._lastCardPair = {
-		slot1,
-		slot2
-	}
+function slot0.addOpenedCard(slot0, slot1)
+	slot0._openedCardList = slot0._openedCardList and slot0._openedCardList or {}
+	slot0._openedCardList[#slot0._openedCardList + 1] = slot1
 end
 
 function slot0.getLastCardPair(slot0)
-	return slot0._lastCardPair
+	if not slot0._openedCardList or #slot0._openedCardList < 2 then
+		return nil
+	end
+
+	return slot0._openedCardList[#slot0._openedCardList], slot0._openedCardList[#slot0._openedCardList - 1]
 end
 
 function slot0.getLastCardUid(slot0)
@@ -156,6 +169,14 @@ end
 
 function slot0.getLastCardId(slot0)
 	return slot0._lastCardId
+end
+
+function slot0.setLastCardInfoUId(slot0, slot1)
+	slot0._lastCardInfoUId = slot1
+end
+
+function slot0.getLastCardInfoUId(slot0)
+	return slot0._lastCardInfoUId
 end
 
 function slot0.setCurCardUid(slot0, slot1)
@@ -233,7 +254,6 @@ end
 function slot0.setTurn(slot0, slot1)
 	if slot0._isMyTurn == false and slot1 then
 		slot0:setRound(slot0:getRound() + 1)
-		slot0:setCurTurnOperateTime(XugoujiEnum.DefaultOperateTime)
 	end
 
 	slot0._isMyTurn = slot1
@@ -245,6 +265,16 @@ function slot0.updateHp(slot0, slot1, slot2)
 	else
 		slot0._enenyHP = slot0._enenyHP + slot3
 	end
+end
+
+function slot0.checkHpZero(slot0, slot1)
+	slot0._isHpZero = slot0._curHP + tonumber(slot1) <= 0
+
+	return slot0._isHpZero
+end
+
+function slot0.isHpZero(slot0)
+	return slot0._isHpZero
 end
 
 function slot0._setCurHP(slot0, slot1)
@@ -300,6 +330,22 @@ function slot0.getEnemyPairCount(slot0)
 	return slot0._enenyPairCount
 end
 
+function slot0.setPlayerAbilityIds(slot0, slot1)
+	slot0._playerAbilityIds = slot1
+end
+
+function slot0.getPlayerAbilityIds(slot0)
+	return slot0._playerAbilityIds
+end
+
+function slot0.setEnemyAbilityIds(slot0, slot1)
+	slot0._enemyAbilityIds = slot1
+end
+
+function slot0.getEnemyAbilityIds(slot0)
+	return slot0._enemyAbilityIds
+end
+
 function slot0.setBuffs(slot0, slot1, slot2)
 	if slot2 then
 		slot0._playerBuffs = slot1
@@ -328,6 +374,22 @@ function slot0.getGameViewState(slot0)
 	return slot0._gameViewState
 end
 
+function slot0.setCardItemStatue(slot0, slot1, slot2)
+	slot0._cardItemState[slot1] = slot2
+end
+
+function slot0.getCardItemStatue(slot0, slot1)
+	return slot0._cardItemState[slot1]
+end
+
+function slot0.setGameGuideMode(slot0, slot1)
+	slot0._guideMode = slot1 and tonumber(slot1) == 1
+end
+
+function slot0.isGameGuideMode(slot0)
+	return slot0._guideMode
+end
+
 function slot0.onGetActInfoReply(slot0, slot1)
 	slot0._unLockCount = 0
 	slot0._finishedCount = 0
@@ -346,14 +408,14 @@ function slot0.onGetActInfoReply(slot0, slot1)
 end
 
 function slot0.onEpisodeInfoUpdate(slot0, slot1, slot2)
-	if not slot0._passEpisodes[slot1] and slot2 then
-		slot0._passEpisodes[slot1] = true
-		slot0._finishedCount = slot0._finishedCount + 1
-	end
-
-	if Activity188Config.instance:getEpisodeCfgByPreEpisodeId(slot1) and not slot0._unlockEpisodes[slot3.episodeId] then
-		slot0._unlockEpisodes[slot3.episodeId] = true
+	if Activity188Config.instance:getEpisodeCfgByEpisodeId(slot1) and not slot0._unlockEpisodes[slot1] then
+		slot0._unlockEpisodes[slot1] = true
 		slot0._unLockCount = slot0._unLockCount + 1
+
+		if not slot0._passEpisodes[slot3.preEpisodeId] then
+			slot0._passEpisodes[slot4] = true
+			slot0._finishedCount = slot0._finishedCount + 1
+		end
 	end
 end
 

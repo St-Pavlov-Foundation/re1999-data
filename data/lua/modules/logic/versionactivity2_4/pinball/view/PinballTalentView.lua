@@ -122,9 +122,7 @@ function slot0.initNodeAndLine(slot0)
 end
 
 function slot0.initTalent(slot0)
-	slot5 = slot0._selectData.type
-
-	for slot5, slot6 in pairs(PinballConfig.instance:getTalentCoByRoot(VersionActivity2_4Enum.ActivityId.Pinball, slot5)) do
+	for slot5, slot6 in pairs(PinballConfig.instance:getTalentCoByRoot(VersionActivity2_4Enum.ActivityId.Pinball, slot0._selectData.type)) do
 		if slot0._nodes[slot6.point] then
 			slot0._nodes[slot6.point]:setData(slot6, slot0._selectData.co)
 		end
@@ -165,10 +163,7 @@ function slot0._selectTalent(slot0, slot1)
 	end
 
 	gohelper.setActive(slot0._godetail, true)
-
-	slot5 = false
-
-	gohelper.setActive(slot0._gobtns, slot5)
+	gohelper.setActive(slot0._gobtns, false)
 
 	for slot5, slot6 in pairs(slot0._nodes) do
 		slot6:setSelect(slot1 == slot5)
@@ -235,10 +230,7 @@ end
 
 function slot0._cancelSelect(slot0)
 	gohelper.setActive(slot0._godetail, false)
-
-	slot4 = true
-
-	gohelper.setActive(slot0._gobtns, slot4)
+	gohelper.setActive(slot0._gobtns, true)
 
 	for slot4, slot5 in pairs(slot0._nodes) do
 		slot5:setSelect(false)

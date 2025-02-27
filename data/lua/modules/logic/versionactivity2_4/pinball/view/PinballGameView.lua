@@ -112,9 +112,8 @@ function slot0.initMarbles(slot0)
 	slot0._canPlaceNum = slot2
 	slot0._curBagDict = slot1
 	slot0._curUseList = {}
-	slot11 = slot0._curUseList
 
-	PinballStatHelper.instance:setCurUseBallList(slot11)
+	PinballStatHelper.instance:setCurUseBallList(slot0._curUseList)
 
 	slot0._curPlaceList = {}
 
@@ -147,9 +146,7 @@ function slot0.initMarbles(slot0)
 	}, nil, slot0._bagItem, PinballBagItem)
 
 	if GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.Version2_4_Act178HoleNum, PinballConfig.instance:getConstValue(VersionActivity2_4Enum.ActivityId.Pinball, PinballEnum.ConstId.DefaultMarblesHoleNum)) < slot2 then
-		slot14 = slot2
-
-		GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Version2_4_Act178HoleNum, slot14)
+		GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Version2_4_Act178HoleNum, slot2)
 
 		for slot14 = slot10 + 1, slot2 do
 		end

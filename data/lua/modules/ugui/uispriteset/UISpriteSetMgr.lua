@@ -138,6 +138,7 @@ function slot0.ctor(slot0)
 	slot0._v2a5_liangyue_sprite = slot0:newSpriteSetUnit("ui/spriteassets/v2a5_liangyue_spriteset.asset")
 	slot0._socialskin = slot0:newSpriteSetUnit("ui/spriteassets/social_1.asset")
 	slot0._v2a6dicehero = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_dicehero_spriteset.asset")
+	slot0._v2a6_xugouji = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_xugouji_spriteset.asset")
 	slot0._v2a6_main_activity = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_mainactivity_spriteset.asset")
 end
 
@@ -696,6 +697,10 @@ end
 
 function slot0.setDiceHeroSprite(slot0, slot1, slot2, slot3)
 	slot0._v2a6dicehero:setSprite(slot1, slot2, slot3)
+end
+
+function slot0.setXugoujiSprite(slot0, slot1, slot2, slot3)
+	slot0._v2a6_xugouji:setSprite(slot1, slot2, slot3)
 end
 
 function slot0.tryDispose(slot0)

@@ -5165,6 +5165,51 @@
     "bankName": "prologuechapter_9_part04"
   },
   {
+    "id": 26500128,
+    "eventName": "play_chap9_shake",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500129,
+    "eventName": "play_chap9_thought_current",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500130,
+    "eventName": "play_chap9_violent_letter",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500131,
+    "eventName": "play_chap9_yishi_huilong",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500132,
+    "eventName": "play_chap9_closeup_lightning",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500133,
+    "eventName": "play_chap9_mysticism_daoguang",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500134,
+    "eventName": "play_chap9_mysticism_bullet",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500135,
+    "eventName": "play_chap9_film_play_loop",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
+    "id": 26500136,
+    "eventName": "play_chap9_crystal_vision_loop",
+    "bankName": "prologuechapter_9_fuyong"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -5312,6 +5357,11 @@
   {
     "id": 26530003,
     "eventName": "play_activitymusic_argentinedream_2_6",
+    "bankName": "activity2_6_music"
+  },
+  {
+    "id": 26530004,
+    "eventName": "play_activitymusic_tango_interlude_2_6",
     "bankName": "activity2_6_music"
   },
   {
@@ -5561,27 +5611,42 @@
   },
   {
     "id": 26520002,
-    "eventName": "",
-    "bankName": ""
+    "eventName": "play_plotpvsfx_suoxiao_touzi_chap9",
+    "bankName": "prologuechapter_9_cutscene"
   },
   {
     "id": 26520003,
-    "eventName": "",
-    "bankName": ""
+    "eventName": "play_plotpvsfx_xugouji_sishu_chap9",
+    "bankName": "prologuechapter_9_cutscene"
   },
   {
     "id": 26520004,
-    "eventName": "",
-    "bankName": ""
+    "eventName": "play_plotpvsfx_fictional_revival_chap9",
+    "bankName": "prologuechapter_9_cutscene"
   },
   {
     "id": 26520005,
-    "eventName": "",
-    "bankName": ""
+    "eventName": "play_plotpvsfx_prison_fire_chap9",
+    "bankName": "prologuechapter_9_cutscene"
   },
   {
     "id": 26520006,
-    "eventName": "",
-    "bankName": ""
+    "eventName": "play_wenming2_6_pv_sfx_vo_music",
+    "bankName": "wenming2_6_cutscene_sfx_vo"
+  },
+  {
+    "id": 26520007,
+    "eventName": "play_chap9_freedom_chorus_1",
+    "bankName": "prologuechapter_9_part05"
+  },
+  {
+    "id": 26520008,
+    "eventName": "play_chap9_freedom_chorus_2",
+    "bankName": "prologuechapter_9_part05"
+  },
+  {
+    "id": 26520009,
+    "eventName": "play_chap9_freedom_chorus_3",
+    "bankName": "prologuechapter_9_part05"
   }
 ]

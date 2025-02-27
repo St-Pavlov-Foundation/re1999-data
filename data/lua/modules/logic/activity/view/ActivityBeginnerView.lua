@@ -95,8 +95,10 @@ slot1 = {
 	[ActivityEnum.Activity.V2a5_DecaLogPresent] = ViewName.V2a5DecalogPresentFullView,
 	[ActivityEnum.Activity.V2a5_DecorateStore] = ViewName.V2a5_DecorateStoreFullView,
 	[ActivityEnum.Activity.V2a5_GoldenMilletPresent] = ViewName.V2a5_GoldenMilletPresentFullView,
+	[ActivityEnum.Activity.V2a5_WarmUp] = ViewName.V2a5_WarmUp,
 	[slot2:getActivityId()] = ViewName.ShortenAct_FullView,
-	[ActivityEnum.Activity.V2a6_WeekwalkHeart] = ViewName.V2a6_WeekwalkHeart_FullView
+	[ActivityEnum.Activity.V2a6_WeekwalkHeart] = ViewName.V2a6_WeekwalkHeart_FullView,
+	[ActivityEnum.Activity.V2a6_WarmUp] = ViewName.V2a6_WarmUp
 }
 slot2 = ShortenActConfig.instance
 slot2 = {
@@ -129,9 +131,7 @@ function slot0._refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	slot5 = slot1
-
-	ActivityModel.instance:removeFinishedCategory(slot5)
+	ActivityModel.instance:removeFinishedCategory(slot1)
 
 	slot0.data = {}
 

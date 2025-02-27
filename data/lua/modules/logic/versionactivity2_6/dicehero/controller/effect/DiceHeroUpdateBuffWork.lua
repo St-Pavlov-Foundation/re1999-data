@@ -12,8 +12,10 @@ function slot0.onStart(slot0, slot1)
 
 		if slot0._effectMo.buff.co.visible == 1 and slot3:getHeroMo():isAddLayer(slot0._effectMo.buff) then
 			if slot0._effectMo.buff.co.tag == 1 then
+				AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_buff)
 				slot3:showEffect(1)
 			else
+				AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_debuff)
 				slot3:showEffect(2)
 			end
 

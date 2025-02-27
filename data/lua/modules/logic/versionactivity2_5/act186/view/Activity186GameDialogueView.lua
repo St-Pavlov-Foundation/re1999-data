@@ -213,9 +213,7 @@ function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._onRefreshDeadline, slot4)
+	TaskDispatcher.cancelTask(slot0._onRefreshDeadline, slot0)
 
 	for slot4, slot5 in ipairs(slot0.options) do
 		slot5.btn:RemoveClickListener()

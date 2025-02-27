@@ -34,16 +34,36 @@ function slot0._overrideCloseAction(slot0)
 end
 
 function slot0._overrideClickHome(slot0)
-	NavigateButtonsView.homeClick()
+	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, slot0._playAniAndGoHome, nil, , slot0)
 end
 
 function slot0._playAniAndClose(slot0)
+	if slot0._isClosing then
+		return
+	end
+
 	if not slot0._anim then
 		slot0._anim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	end
 
 	slot0._anim:Play("out", 0, 0)
-	TaskDispatcher.runDelay(slot0.closeThis, slot0, uv0)
+	XugoujiController.instance:manualExitGame()
+
+	slot0._isClosing = true
+
+	TaskDispatcher.runDelay(slot0._closeAction, slot0, uv0)
+end
+
+function slot0._closeAction(slot0)
+	XugoujiController.instance:manualExitGame()
+	XugoujiController.instance:sendExitGameStat()
+	slot0:closeThis()
+end
+
+function slot0._playAniAndGoHome(slot0)
+	XugoujiController.instance:manualExitGame()
+	XugoujiController.instance:sendExitGameStat()
+	NavigateButtonsView.homeClick()
 end
 
 function slot0.defaultOverrideCloseCheck(slot0, slot1, slot2)

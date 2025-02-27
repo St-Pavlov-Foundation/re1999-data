@@ -35,12 +35,10 @@ function slot0._onItemShow(slot0, slot1, slot2, slot3)
 	end
 
 	gohelper.findChildText(slot1, "#txt_name").text = slot2:getEntityName()
-	gohelper.findChildText(slot1, "#txt_level").text = "Lv." .. slot2.level
+	gohelper.findChildText(slot1, "#txt_level").text = HeroConfig.instance:getLevelDisplayVariant(slot2.level)
+	gohelper.findChildText(slot1, "hp/hp_label/image_HPFrame/#txt_hp").text = slot2.currentHp
 
-	gohelper.setActive(gohelper.findChild(slot1, "hp/hp_label/image_HPFrame"), false)
-
-	gohelper.findChildText(slot1, "hp/hp_label").text = "Hp." .. slot2.attrMO.hp
-
+	gohelper.setActive(gohelper.findChild(slot1, "hp/hp_label/image_HPFrame/#go_multihp"), false)
 	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot1, "head/#image_career"), "lssx_" .. slot2.career)
 
 	if slot2:getSpineSkinCO() then

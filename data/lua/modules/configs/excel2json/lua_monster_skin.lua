@@ -32,8 +32,7 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	des = 2,
-	name = 1
+	des = 1
 }
 
 return {

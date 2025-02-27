@@ -925,6 +925,136 @@
     "bankName": "hero3111_level_tangren2_5"
   },
   {
+    "id": 926015001,
+    "eventName": "play_level_chap9_npc522501_1",
+    "bankName": "npc522501_level_wenming2_6"
+  },
+  {
+    "id": 926015002,
+    "eventName": "play_level_chap9_npc522101_2",
+    "bankName": "npc522101_level_wenming2_6"
+  },
+  {
+    "id": 926015003,
+    "eventName": "play_level_chap9_npc522501_3",
+    "bankName": "npc522201_level_wenming2_6"
+  },
+  {
+    "id": 926015004,
+    "eventName": "play_level_chap9_npc522101_4",
+    "bankName": "npc522101_level_wenming2_6"
+  },
+  {
+    "id": 926015005,
+    "eventName": "play_level_chap9_hero3023_5",
+    "bankName": "hero3023_level_wenming2_6"
+  },
+  {
+    "id": 926015006,
+    "eventName": "play_level_chap9_npc522201_6",
+    "bankName": "npc522201_level_wenming2_6"
+  },
+  {
+    "id": 926015007,
+    "eventName": "play_level_chap9_npc522101_7",
+    "bankName": "npc522101_level_wenming2_6"
+  },
+  {
+    "id": 926015008,
+    "eventName": "play_level_chap9_hero5043_8",
+    "bankName": "hero5043_level_wenming2_6"
+  },
+  {
+    "id": 926015009,
+    "eventName": "play_level_chap9_hero311302_9",
+    "bankName": "hero311302_level_wenming2_6"
+  },
+  {
+    "id": 926015010,
+    "eventName": "play_level_chap9_hero311301_10",
+    "bankName": "hero311301_level_wenming2_6"
+  },
+  {
+    "id": 926015011,
+    "eventName": "play_level_chap9_hero311301_11",
+    "bankName": "hero311301_level_wenming2_6"
+  },
+  {
+    "id": 926015012,
+    "eventName": "play_level_chap9_hero311301_12",
+    "bankName": "hero311301_level_wenming2_6"
+  },
+  {
+    "id": 926015013,
+    "eventName": "play_level_chap9_hero311302_13",
+    "bankName": "hero311302_level_wenming2_6"
+  },
+  {
+    "id": 926015014,
+    "eventName": "play_level_chap9_hero311302_14",
+    "bankName": "hero311302_level_wenming2_6"
+  },
+  {
+    "id": 926015015,
+    "eventName": "play_level_chap9_npc513901_15",
+    "bankName": "npc513901_level_wenming2_6"
+  },
+  {
+    "id": 926015016,
+    "eventName": "play_level_chap9_npc513901_16",
+    "bankName": "npc513901_level_wenming2_6"
+  },
+  {
+    "id": 926015017,
+    "eventName": "play_level_chap9_npc512601_17",
+    "bankName": "npc512601_level_wenming2_6"
+  },
+  {
+    "id": 926015018,
+    "eventName": "play_level_chap9_npc512601_18",
+    "bankName": "npc512601_level_wenming2_6"
+  },
+  {
+    "id": 926015019,
+    "eventName": "play_level_chap9_npc618801_19",
+    "bankName": "npc618801_level_wenming2_6"
+  },
+  {
+    "id": 926015020,
+    "eventName": "play_level_chap9_npc618801_20",
+    "bankName": "npc618801_level_wenming2_6"
+  },
+  {
+    "id": 926015021,
+    "eventName": "play_battle_chap9_npc522101_1",
+    "bankName": "npc522101_level_wenming2_6"
+  },
+  {
+    "id": 926015022,
+    "eventName": "play_battle_chap9_npc522101_2",
+    "bankName": "npc522101_level_wenming2_6"
+  },
+  {
+    "id": 926015023,
+    "eventName": "play_battle_chap9_hero311301_3",
+    "bankName": "hero311301_level_wenming2_6"
+  },
+  {
+    "id": 926015024,
+    "eventName": "play_battle_chap9_hero311301_4",
+    "bankName": "hero311301_level_wenming2_6"
+  },
+  {
+    "id": 926015025,
+    "eventName": "play_battle_chap9_hero311302_5",
+    "bankName": "hero311302_level_wenming2_6"
+  },
+  {
+    "id": 926015026,
+    "eventName": "play_battle_chap9_hero311302_6",
+    "bankName": "hero311302_level_wenming2_6"
+  },
+  {
     "id": 922600001,
     "eventName": "play_guide507801_systemvoc_1083",
     "bankName": "guide507801_systemvoc_part23"

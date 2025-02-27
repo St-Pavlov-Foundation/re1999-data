@@ -29,9 +29,7 @@ function slot0.critterInfoPush(slot0, slot1)
 		CritterModel.instance:addCritter(slot7)
 	end
 
-	slot6 = CritterEvent.CritterInfoPushReply
-
-	slot0:dispatchEvent(slot6)
+	slot0:dispatchEvent(CritterEvent.CritterInfoPushReply)
 
 	slot0.tempCritterMoList = {}
 

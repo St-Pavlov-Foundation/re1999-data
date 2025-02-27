@@ -265,6 +265,7 @@ function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onClose(slot0)
+	CharacterDataModel.instance:setPlayingInfo(nil, )
 	CharacterVoiceModel.instance:setNeedItemAni(true)
 	UIBlockMgr.instance:endBlock(uv0)
 

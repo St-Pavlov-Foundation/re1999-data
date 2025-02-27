@@ -29,7 +29,7 @@ slot0.TalkTxtShowDuration = 6
 slot0.TextSpawnInterval = 0.06
 slot0.ChessJumpAnimDuration = 1.167
 slot0.ChessOpenAnimDuration = 1.5
-slot0.ScrollTalkMargin = 40
+slot0.ScrollTalkMargin = 60
 slot0.TextMaxHeight = 99999
 slot0.TipHeight = 10
 slot0.SplitChar = "|"
@@ -153,6 +153,17 @@ function slot0._tickContent(slot0)
 
 	slot0.lastSpawnTime = Time.time
 	slot0.currentCharIndex = slot0.currentCharIndex + 1
+
+	if utf8.sub(slot0.content, slot0.currentCharIndex - 1, slot0.currentCharIndex) == "<" then
+		if utf8.sub(slot0.content, slot0.currentCharIndex - 1, slot0.currentCharIndex + 2) == "<i>" then
+			slot0.currentCharIndex = slot0.currentCharIndex + 3
+		end
+
+		if utf8.sub(slot0.content, slot0.currentCharIndex - 1, slot0.currentCharIndex + 3) == "</i>" then
+			slot0.currentCharIndex = slot0.currentCharIndex + 4
+		end
+	end
+
 	slot0._txttalk.text = utf8.sub(slot0.content, 1, slot0.currentCharIndex)
 	slot0.isDirty = true
 
@@ -256,9 +267,10 @@ end
 
 function slot0.initGroupCo(slot0)
 	slot1 = ActivityStoreConfig.instance:getUnlockGroupList(slot0.actId)
-	slot8 = PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.Version2_6PlayedStoreGroupIdKey), "")
+	slot8 = ""
+	slot7 = uv0.SplitChar
 
-	for slot7, slot8 in ipairs(string.split(slot8, uv0.SplitChar)) do
+	for slot7, slot8 in ipairs(string.split(PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.Version2_6PlayedStoreGroupIdKey), slot8), slot7)) do
 		table.insert({}, tonumber(slot8))
 	end
 

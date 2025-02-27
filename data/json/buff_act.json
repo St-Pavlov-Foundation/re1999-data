@@ -2665,7 +2665,7 @@
   },
   {
     "id": 923,
-    "type": "AddCardContinueChannel",
+    "type": "AddCardCastChannel",
     "effectTime": 1062,
     "effectCondition": 0,
     "effect": "",

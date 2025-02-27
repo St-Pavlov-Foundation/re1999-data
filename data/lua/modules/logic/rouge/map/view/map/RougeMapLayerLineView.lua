@@ -36,6 +36,7 @@ function slot0._editableInitView(slot0)
 	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onSelectLayerChange, slot0.onSelectLayerChange, slot0)
 	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onPathSelectMapFocusDone, slot0.onPathSelectMapFocusDone, slot0)
 	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onChangeMapInfo, slot0.onChangeMapInfo, slot0)
+	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onUpdateMapInfo, slot0.onUpdateMapInfo, slot0)
 end
 
 function slot0.onChangeMapInfo(slot0)
@@ -46,6 +47,16 @@ function slot0.onChangeMapInfo(slot0)
 	end
 
 	slot0:initData()
+end
+
+function slot0.onUpdateMapInfo(slot0)
+	if not RougeMapModel.instance:isPathSelect() then
+		slot0:hide()
+
+		return
+	end
+
+	slot0:refreshLayer()
 end
 
 function slot0.onSelectLayerChange(slot0, slot1)
@@ -80,9 +91,9 @@ function slot0.refreshLayer(slot0)
 
 	recthelper.setAnchor(slot0.rectTrStart, slot1, slot2)
 
-	slot3, slot7 = RougeMapHelper.getPos(slot0.pathSelectCo.endPos)
+	slot3, slot4 = RougeMapHelper.getPos(slot0.pathSelectCo.endPos)
 
-	recthelper.setAnchor(slot0.rectTrEnd, slot3, slot7)
+	recthelper.setAnchor(slot0.rectTrEnd, slot3, slot4)
 
 	slot3 = RougeDLCHelper.isUsingTargetDLC(RougeDLCEnum.DLCEnum.DLC_103)
 

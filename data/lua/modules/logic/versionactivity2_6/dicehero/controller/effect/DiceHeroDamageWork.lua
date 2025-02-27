@@ -16,11 +16,13 @@ function slot0.onStart(slot0, slot1)
 		slot0._effectItem = DiceHeroHelper.instance:doEffect(slot0._isByHero and 2 or 3, slot3:getPos(), slot0._targetPos)
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_shot)
 	TaskDispatcher.runDelay(slot0._delayShowDamage, slot0, 0.5)
 end
 
 function slot0._delayShowDamage(slot0)
 	DiceHeroController.instance:dispatchEvent(DiceHeroEvent.OnDamage, slot0._isByHero)
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_shotimp)
 	slot0._targetItem:showEffect(4)
 	TaskDispatcher.runDelay(slot0._delayShowNum, slot0, 0.5)
 	TaskDispatcher.runDelay(slot0._delayFinish, slot0, 1)

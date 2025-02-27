@@ -315,10 +315,9 @@ function slot0.onReceiveGetRealCritterAttributeReply(slot0, slot1, slot2)
 		return
 	end
 
-	slot7 = slot2.buildingId
-	slot8 = slot2.isPreview
+	slot7 = slot2.isPreview
 
-	ManufactureCritterListModel.instance:setAttrPreview(slot2.attributeInfos, slot7, slot8)
+	ManufactureCritterListModel.instance:setAttrPreview(slot2.attributeInfos, slot2.buildingId, slot7)
 
 	for slot7, slot8 in ipairs(slot2.attributeInfos) do
 		-- Nothing
@@ -331,10 +330,9 @@ end
 
 function slot0.onReceiveRealCritterAttributePush(slot0, slot1, slot2)
 	if slot1 == 0 then
-		slot7 = slot2.buildingId
-		slot8 = slot2.isPreview
+		slot7 = slot2.isPreview
 
-		ManufactureCritterListModel.instance:setAttrPreview(slot2.attributeInfos, slot7, slot8)
+		ManufactureCritterListModel.instance:setAttrPreview(slot2.attributeInfos, slot2.buildingId, slot7)
 
 		for slot7, slot8 in ipairs(slot2.attributeInfos) do
 			-- Nothing

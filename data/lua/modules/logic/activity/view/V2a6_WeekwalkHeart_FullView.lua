@@ -25,6 +25,7 @@ function slot0.addEvents(slot0)
 	TaskController.instance:registerCallback(TaskEvent.onReceiveFinishReadTaskReply, slot0._onFinishReadTask, slot0)
 	TaskController.instance:registerCallback(TaskEvent.OnFinishTask, slot0._onGetReward, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseViewFinish, slot0)
+	slot0:addEventCb(TimeDispatcher.instance, TimeDispatcher.OnDailyRefresh, slot0._refresh, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -32,10 +33,12 @@ function slot0.removeEvents(slot0)
 	TaskController.instance:unregisterCallback(TaskEvent.onReceiveFinishReadTaskReply, slot0._onFinishReadTask, slot0)
 	TaskController.instance:unregisterCallback(TaskEvent.OnFinishTask, slot0._onGetReward, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseViewFinish, slot0)
+	slot0:removeEventCb(TimeDispatcher.instance, TimeDispatcher.OnDailyRefresh, slot0._refresh, slot0)
 end
 
 function slot0._btngotoOnClick(slot0)
 	GameFacade.jump(JumpEnum.JumpView.WeekWalk)
+	slot0:_trySendReadTask()
 end
 
 function slot0._onFinishReadTask(slot0)
@@ -174,9 +177,9 @@ function slot0._refresh(slot0)
 end
 
 function slot0._updateRewardState(slot0)
-	slot5 = slot0.actId
+	slot5 = slot0
 
-	for slot5, slot6 in ipairs(TaskModel.instance:getTaskMoList(TaskEnum.TaskType.Activity189, slot5(slot0))) do
+	for slot5, slot6 in ipairs(TaskModel.instance:getTaskMoList(TaskEnum.TaskType.Activity189, slot0.actId(slot5))) do
 		for slot10, slot11 in ipairs(slot0._rewardItemList) do
 			if slot11.co.id == slot6.id then
 				slot11.mo = slot6
@@ -214,15 +217,14 @@ function slot0.onOpen(slot0)
 
 	slot0._txtLimitTime.text = slot0:getRemainTimeStr()
 
-	AudioMgr.instance:trigger(AudioEnum.NewTurnabck.play_ui_call_back_Interface_entry_03)
-	slot0:_trySendReadTask()
-	slot0:_updateRewardState()
+	AudioMgr.instance:trigger(AudioEnum.AudioEnum2_6.WeekwalkHeart.play_ui_wenming_popup)
+	Activity189Controller.instance:sendGetTaskInfoRequest(slot0._refresh, slot0)
 end
 
 function slot0._trySendReadTask(slot0)
-	slot5 = slot0.actId
+	slot5 = slot0
 
-	for slot5, slot6 in ipairs(TaskModel.instance:getTaskMoList(TaskEnum.TaskType.Activity189, slot5(slot0))) do
+	for slot5, slot6 in ipairs(TaskModel.instance:getTaskMoList(TaskEnum.TaskType.Activity189, slot0.actId(slot5))) do
 		if slot6.id == uv0.ReadTaskId and not slot6.hasFinished and slot6.finishCount <= 0 then
 			TaskRpc.instance:sendFinishReadTaskRequest(uv0.ReadTaskId)
 		end
@@ -238,6 +240,8 @@ function slot0.onClose(slot0)
 		slot5.btnlikeclick:RemoveClickListener()
 		slot5.btnunlikeclick:RemoveClickListener()
 	end
+
+	TaskDispatcher.cancelTask(slot0._cb, slot0)
 end
 
 function slot0.onDestroyView(slot0)

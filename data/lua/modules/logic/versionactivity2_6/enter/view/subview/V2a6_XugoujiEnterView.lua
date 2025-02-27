@@ -34,7 +34,7 @@ end
 
 function slot0.onOpen(slot0)
 	uv0.super.onOpen(slot0)
-	RedDotController.instance:addRedDot(slot0._gored, RedDotEnum.DotNode.LoperaTaksReword)
+	RedDotController.instance:addRedDot(slot0._gored, RedDotEnum.DotNode.V2a6XugoujiTask)
 	slot0:_refreshTime()
 end
 

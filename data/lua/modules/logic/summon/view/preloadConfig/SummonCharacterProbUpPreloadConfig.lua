@@ -12,7 +12,20 @@ function slot0.getCharacterItemCountByName(slot0)
 	return uv0.characterItemCounts[slot0] or 1
 end
 
+slot0.preloadLists.SummonCharacterProbUpVer263 = {
+	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_dec2.png",
+	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_dec1.png",
+	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_role.png",
+	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_fullbg.png"
+}
+slot0.preloadLists.SummonCharacterProbUpVer262 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role4.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_fullbg.png"
+}
 slot0.preloadLists.SummonCharacterProbUpVer261 = {
+	"singlebg/summon/heroversion_2_6/xugouji/v2a6_xugouji_fontbg2.png",
+	"singlebg/summon/heroversion_2_6/xugouji/v2a6_xugouji_role.png",
 	"singlebg/summon/heroversion_2_6/xugouji/v2a6_xugouji_fullbg.png"
 }
 slot0.preloadLists.SummonStrongOneCustomPick24 = {

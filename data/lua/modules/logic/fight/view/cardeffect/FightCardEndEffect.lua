@@ -155,9 +155,7 @@ function slot0._playCardFlow(slot0)
 		end
 	end
 
-	slot14 = #slot0._playCardItemGOs
-
-	FightController.instance:dispatchEvent(FightEvent.FixWaitingAreaItemCount, slot14)
+	FightController.instance:dispatchEvent(FightEvent.FixWaitingAreaItemCount, #slot0._playCardItemGOs)
 
 	for slot14, slot15 in ipairs(slot0._playCardItemGOs) do
 		slot16 = slot0._cloneItemGOs[slot14].transform
@@ -243,9 +241,10 @@ function slot0._onWorkDone(slot0)
 		gohelper.onceAddComponent(slot0.context.playCardContainer, typeof(UnityEngine.CanvasGroup)).alpha = 1
 	end
 
-	if slot0._playCardCount > 0 then
-		FightViewPartVisible.set(false, false, false, false, true)
-	end
+	slot4 = false
+	slot5 = false
+
+	FightViewPartVisible.set(false, false, slot4, slot5, true)
 
 	for slot4, slot5 in ipairs(slot0._handCardItemGOs) do
 		recthelper.setAnchorY(slot5.transform, 0)

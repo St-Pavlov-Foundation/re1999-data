@@ -140,6 +140,7 @@ function slot0.onOpen(slot0)
 	slot0:_refreshTabs(slot0.viewContainer:getJumpTabId(), true)
 	slot0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0._updateInfo, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._updateInfo, slot0)
+	slot0:addEventCb(PayController.instance, PayEvent.PayInfoChanged, slot0._updateInfo, slot0)
 end
 
 function slot0._updateInfo(slot0)
@@ -149,6 +150,7 @@ end
 function slot0.onClose(slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0._updateInfo, slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._updateInfo, slot0)
+	slot0:removeEventCb(PayController.instance, PayEvent.PayInfoChanged, slot0._updateInfo, slot0)
 end
 
 function slot0.onUpdateParam(slot0)

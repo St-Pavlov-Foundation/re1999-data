@@ -4,6 +4,7 @@ slot0 = class("DiceHeroFightModel", BaseModel)
 
 function slot0.onInit(slot0)
 	slot0.finishResult = DiceHeroEnum.GameStatu.None
+	slot0.tempRoundEnd = false
 end
 
 function slot0.reInit(slot0)
@@ -16,6 +17,8 @@ function slot0.setGameData(slot0, slot1)
 	else
 		slot0._gameData:init(slot1)
 	end
+
+	slot0._gameData.initHp = slot0._gameData.allyHero and slot0._gameData.allyHero.hp or 0
 end
 
 function slot0.getGameData(slot0)

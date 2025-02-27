@@ -203,12 +203,12 @@ function slot0.calculateMonsterHpNewFunc(slot0, slot1)
 			return
 		end
 
-		if not lua_monster_job.configDict[slot3[slot4.job]] then
+		if not lua_monster_job.configDict[slot4.job] then
 			return
 		end
 
 		if slot3.multiHp > 1 then
-			slot7 = math.floor(slot4.life * (slot6.life_base * slot5.base + slot6.life_equip_base * slot5.equip_base) * slot3.life / 100000000) / slot3.multiHp
+			slot7 = math.floor(slot4.life / 10000 * (slot6.life_base * slot5.base + slot6.life_equip_base * slot5.equip_base) / 10000 * slot3.life / 10000) / slot3.multiHp
 		end
 
 		return slot7

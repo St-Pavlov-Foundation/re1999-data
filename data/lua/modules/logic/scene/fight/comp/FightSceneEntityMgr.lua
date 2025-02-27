@@ -150,21 +150,21 @@ function slot0._getCameraPos(slot0)
 end
 
 function slot0._onUpdateSpeed(slot0)
-	slot6 = slot0
+	slot5 = SceneTag.UnitPlayer
 
-	for slot5, slot6 in pairs(slot0.getTagUnitDict(slot6, SceneTag.UnitPlayer)) do
+	for slot5, slot6 in pairs(slot0:getTagUnitDict(slot5)) do
 		slot6:setSpeed(FightModel.instance:getSpeed())
 	end
 
-	slot6 = slot0
+	slot5 = SceneTag.UnitMonster
 
-	for slot5, slot6 in pairs(slot0.getTagUnitDict(slot6, SceneTag.UnitMonster)) do
+	for slot5, slot6 in pairs(slot0:getTagUnitDict(slot5)) do
 		slot6:setSpeed(slot1)
 	end
 
-	slot6 = slot0
+	slot5 = SceneTag.UnitNpc
 
-	for slot5, slot6 in pairs(slot0.getTagUnitDict(slot6, SceneTag.UnitNpc)) do
+	for slot5, slot6 in pairs(slot0:getTagUnitDict(slot5)) do
 		slot6:setSpeed(slot1)
 	end
 
@@ -177,34 +177,32 @@ function slot0.compareUpdate(slot0, slot1, slot2)
 
 	for slot7, slot8 in ipairs(FightDataHelper.entityMgr:getMyNormalList()) do
 		slot0._existBuffUidDict[slot8.id] = {}
-		slot13 = slot8
 
-		for slot12, slot13 in pairs(slot8.getBuffDic(slot13)) do
+		for slot12, slot13 in pairs(slot8:getBuffDic()) do
 			slot0._existBuffUidDict[slot8.id][slot13.id] = slot13
 		end
 	end
 
 	slot0._myStancePos2EntityId = {}
 	slot0._enemyStancePos2EntityId = {}
-	slot8 = slot0
+	slot7 = SceneTag.UnitPlayer
 
-	for slot7, slot8 in pairs(slot0.getTagUnitDict(slot8, SceneTag.UnitPlayer)) do
+	for slot7, slot8 in pairs(slot0:getTagUnitDict(slot7)) do
 		slot0._myStancePos2EntityId[slot8:getMO().position] = slot8.id
 	end
 
-	slot8 = slot0
+	slot7 = SceneTag.UnitMonster
 
-	for slot7, slot8 in pairs(slot0.getTagUnitDict(slot8, SceneTag.UnitMonster)) do
+	for slot7, slot8 in pairs(slot0:getTagUnitDict(slot7)) do
 		slot0._enemyStancePos2EntityId[slot8:getMO().position] = slot8.id
 	end
 
 	FightModel.instance:updateFight(slot1, slot2)
 	slot0:_rebuildEntity(SceneTag.UnitPlayer, slot0._myStancePos2EntityId)
 
-	slot7 = SceneTag.UnitMonster
-	slot8 = slot0._enemyStancePos2EntityId
+	slot7 = slot0._enemyStancePos2EntityId
 
-	slot0:_rebuildEntity(slot7, slot8)
+	slot0:_rebuildEntity(SceneTag.UnitMonster, slot7)
 
 	for slot7, slot8 in ipairs(FightDataHelper.entityMgr:getMyNormalList()) do
 		slot9 = slot0._existBuffUidDict[slot8.id]
@@ -216,9 +214,7 @@ function slot0.compareUpdate(slot0, slot1, slot2)
 				end
 			end
 
-			slot15 = slot8
-
-			for slot14, slot15 in ipairs(slot8.getBuffList(slot15)) do
+			for slot14, slot15 in ipairs(slot8:getBuffList()) do
 				if not slot9[slot15.id] then
 					slot10.buff:addBuff(slot15, true)
 				end
@@ -376,39 +372,46 @@ function slot0.showSubEntity(slot0)
 	slot0._showSubWork:start()
 end
 
-function slot0.buildTempSpineByName(slot0, slot1, slot2, slot3, slot4, slot5)
+function slot0.buildTempSpineByName(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 	if string.nilorempty(tostring(slot2)) then
-		slot6 = slot1 or slot6
+		slot7 = slot1 or slot7
 	end
 
-	if slot0:getEntity(slot6) then
-		slot6 = slot6 .. "_1"
+	if slot0:getEntity(slot7) then
+		slot7 = slot7 .. "_1"
 	end
 
-	slot8 = MonoHelper.addLuaComOnceToGo(gohelper.create3d(slot0._containerGO, slot6), FightEntityTemp, slot6)
+	slot9 = MonoHelper.addLuaComOnceToGo(gohelper.create3d(slot0._containerGO, slot7), FightEntityTemp, slot7)
 
-	slot8.spine:changeLookDir(slot4 and slot3 and FightHelper.getSpineLookDir(slot3) or SpineLookDir.Left)
-	slot8:setSide(slot3)
+	if slot6 and slot6.ingoreRainEffect then
+		slot9.ingoreRainEffect = true
+	end
 
-	slot8.needLookCamera = false
+	slot9.spine:changeLookDir(slot4 and slot3 and FightHelper.getSpineLookDir(slot3) or SpineLookDir.Left)
+	slot9:setSide(slot3)
 
-	slot0:addUnit(slot8)
+	slot9.needLookCamera = false
+
+	slot0:addUnit(slot9)
 
 	if slot5 then
-		slot8:loadSpineBySkin(slot5, slot0._onTempSpineLoaded, slot0)
+		slot9:loadSpineBySkin(slot5, slot0._onTempSpineLoaded, slot0)
 	else
-		slot8:loadSpine(slot1, slot0._onTempSpineLoaded, slot0)
+		slot9:loadSpine(slot1, slot0._onTempSpineLoaded, slot0)
 	end
 
-	slot8:setSpeed(FightModel.instance:getSpeed())
+	slot9:setSpeed(FightModel.instance:getSpeed())
 
-	return slot8
+	return slot9
 end
 
-function slot0.buildTempSpine(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = slot1
-	slot7 = FightStrUtil.split(slot1, "/")
-	MonoHelper.addLuaComOnceToGo(gohelper.create3d(slot0._containerGO, slot7[#slot7]), slot5 or FightEntityTemp, slot2).needLookCamera = false
+function slot0.buildTempSpine(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
+	if not slot6 then
+		slot8 = FightStrUtil.split(slot1, "/")
+		slot7 = slot8[#slot8]
+	end
+
+	MonoHelper.addLuaComOnceToGo(gohelper.create3d(slot0._containerGO, slot7), slot5 or FightEntityTemp, slot2).needLookCamera = false
 
 	if slot4 then
 		slot9.spine:setLayer(slot4, true)

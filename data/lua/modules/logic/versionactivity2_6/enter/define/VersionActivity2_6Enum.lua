@@ -28,7 +28,8 @@ slot0.EnterViewActSetting = {
 	{
 		actId = slot0.ActivityId.Xugouji,
 		actLevel = VersionActivityEnterViewEnum.ActLevel.Second,
-		actType = VersionActivityEnterViewEnum.ActType.Single
+		actType = VersionActivityEnterViewEnum.ActType.Single,
+		redDotUid = slot0.ActivityId.Xugouji
 	},
 	{
 		actId = slot0.ActivityId.Rouge,
@@ -71,7 +72,8 @@ slot0.EnterViewActSetting = {
 	}
 }
 slot0.EnterViewActIdListWithRedDot = {
-	slot0.ActivityId.Dungeon
+	slot0.ActivityId.Dungeon,
+	slot0.ActivityId.Xugouji
 }
 slot0.TabSetting = {
 	select = {

@@ -40,11 +40,12 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	logoName = 4,
-	name = 1,
-	actDesc = 2,
-	actTip = 3,
-	desc = 5
+	logoName = 5,
+	name = 2,
+	actDesc = 3,
+	tabName = 1,
+	actTip = 4,
+	desc = 6
 }
 
 return {

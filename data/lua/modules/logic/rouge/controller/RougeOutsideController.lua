@@ -9,34 +9,36 @@ end
 function slot0.addConstEvents(slot0)
 	OpenController.instance:registerCallback(OpenEvent.GetOpenInfoSuccess, slot0._onGetOpenInfoSuccess, slot0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0)
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
 end
 
 function slot0.reInit(slot0)
-	RedDotController.instance:unregisterCallback(RedDotEvent.RefreshClientCharacterDot, slot0._refreshClientCharacterDot, slot0)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
+	TaskDispatcher.cancelTask(slot0.initDLCReddotInfo, slot0)
 end
 
 function slot0._onGetOpenInfoSuccess(slot0)
 	if OpenModel.instance:isFunctionUnlock(slot0._model:config():openUnlockId()) then
-		slot0:sendRpcToGetOutsideInfo()
-		slot0:initDLCReddotInfo()
-		RedDotController.instance:registerCallback(RedDotEvent.RefreshClientCharacterDot, slot0._refreshClientCharacterDot, slot0)
-
 		return
 	end
 
 	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, slot0._onNewFuncUnlock, slot0)
 end
 
-function slot0._refreshClientCharacterDot(slot0)
-	if not OpenModel.instance:isFunctionUnlock(slot0._model:config():openUnlockId()) then
+function slot0._updateRelateDotInfo(slot0, slot1)
+	if not slot0:isOpen() or not slot1 or not slot1[RedDotEnum.DotNode.RougeDLCNew] then
 		return
 	end
 
-	RedDotController.instance:unregisterCallback(RedDotEvent.RefreshClientCharacterDot, slot0._refreshClientCharacterDot, slot0)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
 	slot0:initDLCReddotInfo()
 end
 
 function slot0._onDailyRefresh(slot0)
+	if not slot0:isOpen() then
+		return
+	end
+
 	slot0:sendRpcToGetOutsideInfo()
 end
 
@@ -64,8 +66,7 @@ function slot0._onNewFuncUnlock(slot0, slot1)
 
 	slot0._model:setIsNewUnlockDifficulty(1, true)
 	slot0:sendRpcToGetOutsideInfo()
-	slot0:initDLCReddotInfo()
-	RedDotController.instance:registerCallback(RedDotEvent.RefreshClientCharacterDot, slot0._refreshClientCharacterDot, slot0)
+	slot0:delayInitDLCReddotInfo()
 end
 
 function slot0.isOpen(slot0)
@@ -81,6 +82,11 @@ function slot0.initDLCReddotInfo(slot0)
 			slot1
 		})
 	}, true)
+end
+
+function slot0.delayInitDLCReddotInfo(slot0)
+	TaskDispatcher.cancelTask(slot0.initDLCReddotInfo, slot0)
+	TaskDispatcher.runDelay(slot0.initDLCReddotInfo, slot0, 0.8)
 end
 
 function slot0._createDLCReddotInfo(slot0, slot1)

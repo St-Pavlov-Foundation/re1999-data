@@ -25,24 +25,23 @@ function slot0.init(slot0, slot1)
 	slot0._golock = gohelper.findChild(slot1, "#go_limitlock")
 	slot0._golight = gohelper.findChild(slot1, "#go_light")
 	slot0._gogray = gohelper.findChild(slot1, "#go_gray")
-	slot5 = "touzi_ani/touzi"
-	slot0._diceRoot = gohelper.findChild(slot1, slot5).transform
+	slot0._diceRoot = gohelper.findChild(slot1, "touzi_ani/touzi").transform
 	slot0._uimeshes = slot0:getUserDataTb_()
 
 	for slot5 = 0, slot0._diceRoot.childCount - 1 do
 		slot0._uimeshes[tonumber(slot0._diceRoot:GetChild(slot5).gameObject.name) or 1] = slot6:GetComponent(typeof(UIMesh))
 	end
 
-	slot0:_refresh()
+	slot0:_refresh(true)
 end
 
-function slot0.onStepEnd(slot0)
-	slot0:_refresh()
+function slot0.onStepEnd(slot0, slot1)
+	slot0:_refresh(slot1)
 end
 
-function slot0._refresh(slot0)
-	if DiceHeroFightModel.instance:getGameData().diceBox.dices[slot0._index] and not slot1.deleted then
-		slot0:updateInfo(slot1)
+function slot0._refresh(slot0, slot1)
+	if DiceHeroFightModel.instance:getGameData().diceBox.dices[slot0._index] and not slot2.deleted then
+		slot0:updateInfo(slot2, slot1)
 	elseif slot0.diceMo then
 		slot0.diceMo = nil
 
@@ -52,9 +51,10 @@ function slot0._refresh(slot0)
 	end
 end
 
-function slot0.updateInfo(slot0, slot1)
-	if not slot0.diceMo or slot0.diceMo.deleted or slot0.diceMo.uid ~= slot1.uid then
+function slot0.updateInfo(slot0, slot1, slot2)
+	if (not slot0.diceMo or slot0.diceMo.deleted or slot0.diceMo.uid ~= slot1.uid) and not DiceHeroFightModel.instance.tempRoundEnd and not slot2 then
 		slot0._anim:Play("in", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
 	end
 
 	if slot0.diceMo then
@@ -66,15 +66,15 @@ function slot0.updateInfo(slot0, slot1)
 	slot0.diceMo = slot1
 
 	if uv0[slot1.num] then
-		transformhelper.setLocalRotation(slot0._diceRoot, slot2.x, slot2.y, slot2.z)
+		transformhelper.setLocalRotation(slot0._diceRoot, slot3.x, slot3.y, slot3.z)
 	end
 
 	if lua_dice.configDict[slot1.diceId] then
-		for slot8, slot9 in pairs(slot0._uimeshes) do
-			if lua_dice_suit.configDict[string.splitToNumber(slot3.suitList, "#")[slot8]] and DiceHeroHelper.instance:getDiceTexture(slot10.icon) then
-				slot9.texture = slot11
+		for slot9, slot10 in pairs(slot0._uimeshes) do
+			if lua_dice_suit.configDict[string.splitToNumber(slot4.suitList, "#")[slot9]] and DiceHeroHelper.instance:getDiceTexture(slot11.icon) then
+				slot10.texture = slot12
 
-				slot9:SetMaterialDirty()
+				slot10:SetMaterialDirty()
 			end
 		end
 	end
@@ -114,6 +114,7 @@ end
 function slot0.playRefresh(slot0, slot1)
 	slot0.diceMo = slot1
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
 	slot0._anim:Play("refresh", 0, 0)
 
 	slot2, slot3, slot4 = transformhelper.getLocalRotation(slot0._diceRoot)
@@ -142,6 +143,7 @@ function slot0.startRoll(slot0)
 	end
 
 	slot0._anim:Play("in", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
 end
 
 function slot0.onDestroy(slot0)

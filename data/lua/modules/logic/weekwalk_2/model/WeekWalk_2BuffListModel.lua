@@ -2,6 +2,18 @@ module("modules.logic.weekwalk_2.model.WeekWalk_2BuffListModel", package.seeall)
 
 slot0 = class("WeekWalk_2BuffListModel", ListScrollModel)
 
+function slot0.getPrevBattleSkillId()
+	slot0 = WeekWalk_2Model.instance:getCurMapInfo()
+
+	return slot0:getBattleInfo(slot0:getBattleInfoByBattleId(HeroGroupModel.instance.battleId).index - 1) and slot3:getChooseSkillId()
+end
+
+function slot0.getCurHeroGroupSkillId()
+	slot1 = WeekWalk_2Model.instance:getInfo() and slot0:getHeroGroupSkill(HeroGroupModel.instance.curGroupSelectIndex)
+
+	return slot1 ~= uv0.getPrevBattleSkillId() and slot1 or nil
+end
+
 function slot0.initBuffList(slot0, slot1)
 	slot5 = #string.split(lua_weekwalk_ver2_time.configDict[WeekWalk_2Model.instance:getTimeId()].optionalSkills, "#")
 
@@ -24,25 +36,23 @@ function slot0.initBuffList(slot0, slot1)
 	slot7 = 1
 
 	if slot1 then
-		slot8 = WeekWalk_2Model.instance:getCurMapInfo()
-		slot10 = slot8:getBattleInfoByBattleId(HeroGroupModel.instance.battleId)
-		slot11 = slot10:getChooseSkillId()
-		slot0.prevBattleSkillId = slot8:getBattleInfo(slot10.index - 1) and slot12:getChooseSkillId()
+		slot0.prevBattleSkillId = uv0.getPrevBattleSkillId()
+		slot8 = uv0.getCurHeroGroupSkillId()
 
 		if slot0.prevBattleSkillId then
-			for slot16, slot17 in ipairs(slot6) do
-				if slot0.prevBattleSkillId == slot17.id then
-					table.remove(slot6, slot16)
-					table.insert(slot6, slot17)
+			for slot12, slot13 in ipairs(slot6) do
+				if slot0.prevBattleSkillId == slot13.id then
+					table.remove(slot6, slot12)
+					table.insert(slot6, slot13)
 
 					break
 				end
 			end
 		end
 
-		for slot16, slot17 in ipairs(slot6) do
-			if slot11 == slot17.id then
-				slot7 = slot16
+		for slot12, slot13 in ipairs(slot6) do
+			if slot8 == slot13.id then
+				slot7 = slot12
 
 				break
 			end

@@ -102,9 +102,8 @@ function slot0.onLoadLYCardDone(slot0, slot1)
 	slot2 = slot0.LYLoader:getInstGO()
 	slot0.LY_instanceGo = slot2
 	slot0.LY_goCardBack = gohelper.findChild(slot2, "current/back")
-	slot6 = false
 
-	gohelper.setActive(slot0.LY_goCardBack, slot6)
+	gohelper.setActive(slot0.LY_goCardBack, false)
 
 	slot0.LY_pointItemList = {}
 

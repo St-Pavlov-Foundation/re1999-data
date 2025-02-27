@@ -6,9 +6,7 @@ function slot0.ctor(slot0)
 end
 
 function slot0.onSceneHide(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._switchEgg, slot4)
+	TaskDispatcher.cancelTask(slot0._switchEgg, slot0)
 
 	for slot4, slot5 in ipairs(slot0._serialEggList) do
 		slot5:onDisable()
@@ -122,9 +120,7 @@ function slot0.initSceneGo(slot0, slot1)
 end
 
 function slot0.onSceneClose(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._switchEgg, slot4)
+	TaskDispatcher.cancelTask(slot0._switchEgg, slot0)
 
 	for slot4, slot5 in ipairs(slot0._serialEggList) do
 		slot5:onSceneClose()

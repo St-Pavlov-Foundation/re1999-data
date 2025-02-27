@@ -817,7 +817,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040004,
@@ -827,7 +827,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040007,
@@ -837,7 +837,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040008,
@@ -847,7 +847,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040011,
@@ -857,7 +857,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040012,
@@ -867,7 +867,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040014,
@@ -877,7 +877,7 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   },
   {
     "buffId": 31040015,
@@ -887,6 +887,6 @@
     "effectPath": "v2a6_ddg/ddg_innate_01",
     "triggerEffect": "",
     "delEffect": "",
-    "audio": 0
+    "audio": 431040351
   }
 ]

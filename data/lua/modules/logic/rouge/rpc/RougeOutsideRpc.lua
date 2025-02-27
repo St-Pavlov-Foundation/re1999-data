@@ -6,7 +6,7 @@ function slot0.sendGetRougeOutSideInfoRequest(slot0, slot1, slot2, slot3)
 	slot4 = RougeOutsideModule_pb.GetRougeOutsideInfoRequest()
 	slot4.season = slot1
 
-	slot0:sendMsg(slot4, slot2, slot3)
+	return slot0:sendMsg(slot4, slot2, slot3)
 end
 
 function slot0.onReceiveGetRougeOutsideInfoReply(slot0, slot1, slot2)

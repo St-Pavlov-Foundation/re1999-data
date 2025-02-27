@@ -44,7 +44,8 @@ function slot0._delayCheckFuncUnlock(slot0)
 			TaskEnum.TaskType.Novice,
 			TaskEnum.TaskType.WeekWalk,
 			TaskEnum.TaskType.WeekWalk_2,
-			TaskEnum.TaskType.ActivityShow
+			TaskEnum.TaskType.ActivityShow,
+			TaskEnum.TaskType.Activity189
 		})
 	end
 

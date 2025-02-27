@@ -91,6 +91,7 @@ function slot0._initBgmDatas(slot0)
 	slot0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_4WuErLiXiGame, AudioEnum.WuErLiXi.bgm_wuerliximapgame, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	slot0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_5Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	slot0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_6_DiceHero, AudioEnum2_6.DiceHero.Bgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	slot0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_6_DiceHero_Game, AudioEnum2_6.DiceHero.Bgm_Game, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function slot0._initBgmUsage(slot0)
@@ -266,7 +267,8 @@ function slot0._initBgmUsage(slot0)
 	slot0:_addBgmUsage({
 		AudioBgmEnum.Layer.RoleStoryActivity
 	}, AudioBgmEnum.UsageType.View, {
-		ViewName.RoleStoryActivityMainView
+		ViewName.RoleStoryActivityMainView,
+		ViewName.RoleStoryDispatchMainView
 	})
 	slot0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity1_4Main
@@ -511,6 +513,11 @@ function slot0._initBgmUsage(slot0)
 		AudioBgmEnum.Layer.VersionActivity2_6_DiceHero
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.DiceHeroMainView
+	}, nil, , true)
+	slot0:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity2_6_DiceHero_Game
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.DiceHeroGameView
 	}, nil, , true)
 end
 

@@ -3,7 +3,7 @@ module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroStageItem", packa
 slot0 = class("DiceHeroStageItem", LuaCompBase)
 
 function slot0.init(slot0, slot1)
-	slot0._btnClick = gohelper.findChildButtonWithAudio(slot1, "")
+	slot0._btnClick = gohelper.findChildButton(slot1, "")
 	slot0.viewGo = gohelper.findChild(slot1, "#go_levelitem")
 	slot0._gonormal = gohelper.findChild(slot0.viewGo, "#go_normal")
 	slot0._golock = gohelper.findChild(slot0.viewGo, "#go_lock")
@@ -45,25 +45,26 @@ function slot0._onCloseViewFinish(slot0)
 	slot0:_onInfoUpdate()
 
 	if slot0._showUnlockAnim then
-		slot0._showUnlockAnim = false
-
 		gohelper.setActive(slot0._lockAnim, true)
 		slot0._lockAnim:Play("unlock", 0, 0)
-		TaskDispatcher.runDelay(slot0._hideLock, slot0, 2)
+		TaskDispatcher.runDelay(slot0._hideLock, slot0, 2.4)
 		UIBlockMgrExtend.setNeedCircleMv(false)
 		UIBlockHelper.instance:startBlock("DiceHeroStageItem_Unlock", 2)
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_unclockglass)
 	end
 
 	if slot0._showPassAnim then
 		slot0._showPassAnim = false
 
-		slot0._completedAnim:Play("completed", 0, 0)
+		slot0._completedAnim:Play("completeglow", 0, 0)
 	end
 end
 
 function slot0._hideLock(slot0)
 	UIBlockMgrExtend.setNeedCircleMv(true)
 	gohelper.setActive(slot0._lockAnim, false)
+
+	slot0._showUnlockAnim = false
 end
 
 function slot0._onInfoUpdate(slot0)
@@ -102,6 +103,8 @@ function slot0._onClickStage(slot0)
 			return
 		end
 
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_glassclick)
+
 		if slot0._co.type == DiceHeroEnum.LevelType.Story then
 			ViewMgr.instance:openView(ViewName.DiceHeroTalkView, {
 				co = slot0._co
@@ -116,6 +119,8 @@ function slot0._onClickStage(slot0)
 
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_glassclick)
 
 	if slot0._co.type == DiceHeroEnum.LevelType.Story then
 		if DiceHeroModel.instance:hasReward(slot0._co.chapter) or slot0._co.rewardSelectType == DiceHeroEnum.GetRewardType.None then

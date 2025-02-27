@@ -57,9 +57,8 @@ end
 function slot0.onOpen(slot0)
 	slot0._titlecn.text = slot0:_title()
 	slot0._titleen.text = slot0:_titleEn()
-	slot5 = slot0
 
-	for slot5 = 1, #uv0(slot0._ruleDesc(slot5), "|"), 2 do
+	for slot5 = 1, #uv0(slot0:_ruleDesc(), "|"), 2 do
 		slot6 = gohelper.cloneInPlace(slot0._goinfoitem, "infoitem")
 
 		gohelper.setActive(slot6, true)

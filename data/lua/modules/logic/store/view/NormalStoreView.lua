@@ -79,9 +79,7 @@ function slot0._refreshTabs(slot0, slot1, slot2)
 			gohelper.setActive(slot0._categoryItemContainer[slot11].go, true)
 		end
 
-		slot11 = false
-
-		gohelper.setActive(slot0._categoryItemContainer[#slot7].go_line, slot11)
+		gohelper.setActive(slot0._categoryItemContainer[#slot7].go_line, false)
 
 		for slot11 = #slot7 + 1, #slot0._categoryItemContainer do
 			gohelper.setActive(slot0._categoryItemContainer[slot11].go, false)

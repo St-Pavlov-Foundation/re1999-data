@@ -45,11 +45,11 @@ function slot0.updateInfo(slot0, slot1)
 end
 
 function slot0.initInfo(slot0, slot1)
-	slot2 = WeekwalkVer2InfoMO.New()
+	callWithCatch(function ()
+		uv0:init(uv1)
+	end)
 
-	slot2:init(slot1)
-
-	slot0._weekWalkInfo = slot2
+	slot0._weekWalkInfo = WeekwalkVer2InfoMO.New()
 end
 
 function slot0.getInfo(slot0)
@@ -113,9 +113,16 @@ function slot0.getHeroCd(slot0, slot1, slot2)
 end
 
 function slot0.getFightParam(slot0)
+	if WeekWalk_2BuffListModel.getCurHeroGroupSkillId() then
+		-- Nothing
+	end
+
 	return cjson.encode({
 		elementId = slot0:getBattleElementId(),
-		layerId = slot0:getCurMapId()
+		layerId = slot0:getCurMapId(),
+		chooseSkillIds = {
+			slot4
+		}
 	})
 end
 

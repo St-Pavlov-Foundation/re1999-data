@@ -17,6 +17,7 @@ function slot0.init(slot0, slot1)
 	end
 
 	slot0.isPopSettle = slot0.prevSettle and slot0.prevSettle.show
+	slot0.snapshotInfos = GameUtil.rpcInfosToMap(slot1.snapshotInfos or {}, WeekwalkVer2SnapshotInfoMO, "no")
 	slot0._layerInfosMap = {}
 
 	for slot5, slot6 in pairs(slot0.layerInfos) do
@@ -28,6 +29,20 @@ function slot0.init(slot0, slot1)
 	if not slot0.issueId then
 		logError("WeekwalkVer2InfoMO weekwalk_ver2_time configDict not find timeId:" .. tostring(slot0.timeId))
 	end
+end
+
+function slot0.getHeroGroupSkill(slot0, slot1)
+	return slot0.snapshotInfos[slot1] and slot2:getChooseSkillId()
+end
+
+function slot0.setHeroGroupSkill(slot0, slot1, slot2)
+	if not slot0.snapshotInfos[slot1] then
+		slot3 = WeekwalkVer2SnapshotInfoMO.New()
+		slot3.no = slot1
+		slot0.snapshotInfos[slot1] = slot3
+	end
+
+	slot3:setChooseSkillId(slot2)
 end
 
 function slot0.isOpen(slot0)

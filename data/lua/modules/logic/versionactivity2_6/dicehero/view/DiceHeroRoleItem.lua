@@ -69,9 +69,9 @@ function slot0.updateInfo(slot0)
 
 	gohelper.CreateObjList(slot0, slot0._createRelicItem, slot3, nil, slot0._relicItem)
 
-	slot9 = slot4
+	slot9 = nil
 
-	gohelper.CreateObjList(nil, , slot9, nil, slot0._emptyRelicItem)
+	gohelper.CreateObjList(nil, , slot4, slot9, slot0._emptyRelicItem)
 
 	for slot9 = 1, slot2.maxPower do
 	end
@@ -112,14 +112,24 @@ function slot0._showSkill(slot0)
 
 	gohelper.setActive(slot0._gozaowutip, false)
 
-	if not lua_dice_card.configDict[DiceHeroModel.instance:getGameInfo(slot0.chapter).heroBaseInfo.co.powerSkill] then
+	slot1 = DiceHeroModel.instance:getGameInfo(slot0.chapter)
+	slot5 = {
+		lua_dice_card.configDict[slot1.heroBaseInfo.co.powerSkill]
+	}
+
+	for slot9, slot10 in ipairs(slot1.heroBaseInfo.relicIds) do
+		if lua_dice_relic.configDict[slot10].effect == "skill" and lua_dice_card.configDict[tonumber(slot11.param)] and slot12.type == DiceHeroEnum.CardType.Hero then
+			table.insert(slot5, slot12)
+		end
+	end
+
+	if not slot5[1] then
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	gohelper.setActive(slot0._goskilltips, true)
-	gohelper.CreateObjList(slot0, slot0._createSkillItem, {
-		slot3
-	}, nil, slot0._goskillitem)
+	gohelper.CreateObjList(slot0, slot0._createSkillItem, slot5, nil, slot0._goskillitem)
 end
 
 function slot0._createSkillItem(slot0, slot1, slot2, slot3)
@@ -146,6 +156,7 @@ function slot0._showRelic(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	gohelper.setActive(slot0._gozaowutip, true)
 	gohelper.CreateObjList(slot0, slot0._createZaowuItem, slot3, nil, slot0._gozaowuitem)
 end

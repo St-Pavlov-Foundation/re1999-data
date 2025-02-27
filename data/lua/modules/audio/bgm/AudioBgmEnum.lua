@@ -73,6 +73,7 @@ slot0.Layer = {
 	VersionActivity2_4WuErLiXiGame = 2406,
 	DungeonAmbientSound = 3,
 	HeroGroupCharacter = 20,
+	VersionActivity2_6_DiceHero_Game = 2603,
 	BossBattleV2_2 = 2204,
 	RougeFavorite = 906,
 	RougeMain = 907,

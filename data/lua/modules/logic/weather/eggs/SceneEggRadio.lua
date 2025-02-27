@@ -8,6 +8,7 @@ function slot0._onInit(slot0)
 
 	if slot0._isMainScene then
 		CharacterController.instance:registerCallback(CharacterEvent.ChangeMainHero, slot0._onChangeMainHero, slot0)
+		CharacterController.instance:registerCallback(CharacterEvent.RandomMainHero, slot0._onRandomMainHero, slot0)
 	end
 
 	slot0:_onChangeMainHero()
@@ -23,9 +24,20 @@ function slot0._onChangeMainHero(slot0)
 	slot0:setGoListVisible(slot0._heroId ~= CharacterSwitchListModel.instance:getMainHero())
 end
 
+function slot0._onRandomMainHero(slot0, slot1)
+	if not slot0._isMainScene then
+		slot0:setGoListVisible(true)
+
+		return
+	end
+
+	slot0:setGoListVisible(slot0._heroId ~= slot1)
+end
+
 function slot0._onSceneClose(slot0)
 	if slot0._isMainScene then
 		CharacterController.instance:unregisterCallback(CharacterEvent.ChangeMainHero, slot0._onChangeMainHero, slot0)
+		CharacterController.instance:unregisterCallback(CharacterEvent.RandomMainHero, slot0._onRandomMainHero, slot0)
 	end
 end
 

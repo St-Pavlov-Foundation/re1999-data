@@ -197,10 +197,7 @@ function slot0._editableInitView(slot0)
 	end
 
 	gohelper.setActive(slot0._goruleitem, false)
-
-	slot5 = false
-
-	gohelper.setActive(slot0._goadditiondetail, slot5)
+	gohelper.setActive(slot0._goadditiondetail, false)
 
 	slot0._ruleItemsImage = slot0:getUserDataTb_()
 	slot0._ruleItemsDescImage = slot0:getUserDataTb_()
@@ -527,9 +524,7 @@ function slot0._refreshWeekwalkVer2Condition(slot0)
 		table.insert(slot2, slot7)
 	end
 
-	slot6 = uv0.sortWeekWalkVer2Task
-
-	table.sort(slot2, slot6)
+	table.sort(slot2, uv0.sortWeekWalkVer2Task)
 
 	for slot6, slot7 in ipairs(slot2) do
 		slot0:_showWeekWalkVer2OneTaskGroup(gohelper.clone(slot0._goconditionitemdesc, slot0._goconditionitem, "platnumdesc"), slot7, slot6)
@@ -626,10 +621,9 @@ function slot0._getWeekWalkVer2CupProgressDesc(slot0, slot1)
 	end
 
 	slot10 = {}
-	slot15 = "_"
-	slot16 = "&"
+	slot15 = "&"
 
-	for slot15, slot16 in ipairs(GameUtil.splitString2(slot7[2], true, slot15, slot16)) do
+	for slot15, slot16 in ipairs(GameUtil.splitString2(slot7[2], true, "_", slot15)) do
 		if FightDataHelper.fieldMgr.fightTaskBox.tasks[slot16[1]] then
 			for slot22, slot23 in ipairs(slot18.values) do
 				if slot23.index == slot16[2] then

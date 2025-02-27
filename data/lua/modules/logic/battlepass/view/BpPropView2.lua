@@ -68,14 +68,46 @@ function slot0.onOpen(slot0)
 		slot0:_calcBonus({}, slot3, BpConfig.instance:getBonusCO(BpModel.instance.id, slot7).payBonus)
 	end
 
-	CommonPropListModel.instance:_sortList(slot3)
+	slot0:_sortList(slot3)
 	gohelper.CreateObjList(slot0, slot0._createItem, slot3, slot0._scrollContent2, slot0._item)
 end
 
-function slot0._calcBonus(slot0, slot1, slot2, slot3)
-	slot8 = slot3
+function slot0._sortList(slot0, slot1)
+	table.sort(slot1, function (slot0, slot1)
+		if uv0:getIsSkin(slot0) ~= uv0:getIsSkin(slot1) then
+			return uv0:getIsSkin(slot0)
+		elseif uv0:getIsSummon(slot0) ~= uv0:getIsSummon(slot1) then
+			return uv0:getIsSummon(slot0)
+		elseif uv0:getIsEquip(slot0) ~= uv0:getIsEquip(slot1) then
+			return uv0:getIsEquip(slot0)
+		elseif CommonPropListModel.instance:_getQuality(slot0) ~= CommonPropListModel.instance:_getQuality(slot1) then
+			return CommonPropListModel.instance:_getQuality(slot1) < CommonPropListModel.instance:_getQuality(slot0)
+		elseif slot0.materilType ~= slot1.materilType then
+			return slot1.materilType < slot0.materilType
+		elseif slot0.materilType == MaterialEnum.MaterialType.Item and slot1.materilType == MaterialEnum.MaterialType.Item and CommonPropListModel.instance:_getSubType(slot0) ~= CommonPropListModel.instance:_getSubType(slot1) then
+			return CommonPropListModel.instance:_getSubType(slot0) < CommonPropListModel.instance:_getSubType(slot1)
+		elseif slot0.materilId ~= slot1.materilId then
+			return slot1.materilId < slot0.materilId
+		end
+	end)
+end
 
-	for slot7, slot8 in pairs(string.split(slot8, "|")) do
+function slot0.getIsSkin(slot0, slot1)
+	return slot1.materilType == MaterialEnum.MaterialType.HeroSkin
+end
+
+function slot0.getIsEquip(slot0, slot1)
+	return slot1.materilType == MaterialEnum.MaterialType.Equip and slot1.materilId == 1000
+end
+
+function slot0.getIsSummon(slot0, slot1)
+	return slot1.materilType == MaterialEnum.MaterialType.Item and slot1.materilId == 140001
+end
+
+function slot0._calcBonus(slot0, slot1, slot2, slot3)
+	slot7 = "|"
+
+	for slot7, slot8 in pairs(string.split(slot3, slot7)) do
 		slot9 = string.splitToNumber(slot8, "#")
 		slot11 = slot9[3]
 
@@ -103,6 +135,10 @@ function slot0._createItem(slot0, slot1, slot2, slot3)
 	IconMgr.instance:getCommonPropItemIcon(gohelper.findChild(slot1, "#go_item")):setMOValue(slot2.materilType, slot2.materilId, slot9, nil, true)
 
 	slot11 = slot9 and slot9 ~= 0
+
+	if slot0:getIsSkin(slot2) then
+		slot11 = false
+	end
 
 	slot10:isShowEquipAndItemCount(slot11)
 

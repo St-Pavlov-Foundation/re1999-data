@@ -27,6 +27,8 @@ function slot0.init(slot0, slot1)
 	slot0._gostar2Nno = gohelper.findChild(slot0.viewGO, "#go_UnSelected/info/#go_star/star2/no")
 	slot0._gostar1Sno = gohelper.findChild(slot0.viewGO, "#go_Selected/info/#txt_stagename/star1/no")
 	slot0._gostar2Sno = gohelper.findChild(slot0.viewGO, "#go_Selected/info/#txt_stagename/star2/no")
+
+	gohelper.setActive(slot0._goSelected, false)
 end
 
 function slot0.addEventListeners(slot0)

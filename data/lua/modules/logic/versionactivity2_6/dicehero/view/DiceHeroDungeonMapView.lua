@@ -4,7 +4,7 @@ slot0 = class("DiceHeroDungeonMapView", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._goroot = gohelper.findChild(slot0.viewGO, "#go_act/#go_dicebtn")
-	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_act/#go_dicebtn/#btn_enter")
+	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_act/#go_dicebtn/#btn_enter", AudioEnum2_6.DiceHero.play_ui_wenming_alaifugameplay)
 	slot0._gored = gohelper.findChild(slot0.viewGO, "#go_act/#go_dicebtn/#btn_enter/#go_reddot")
 	slot0._anim = gohelper.findChildAnim(slot0.viewGO, "#go_act/#go_dicebtn/#btn_enter")
 end

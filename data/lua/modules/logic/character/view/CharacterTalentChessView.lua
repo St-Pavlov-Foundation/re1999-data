@@ -699,9 +699,9 @@ function slot0._refreshAttrItem(slot0, slot1, slot2)
 	slot6 = slot0._cubeRoot[slot1].anim
 	slot7 = slot0.hero_mo_data:getCurTalentLevelConfig(slot1)
 	slot8 = {}
-	slot13 = slot8
+	slot13, slot14 = nil
 
-	slot0.hero_mo_data:getTalentStyleCubeAttr(slot1, slot13, slot14, nil, slot2)
+	slot0.hero_mo_data:getTalentStyleCubeAttr(slot1, slot8, slot13, slot14, slot2)
 
 	slot9 = {}
 
@@ -880,9 +880,7 @@ function slot0._detectDragResult(slot0)
 	for slot4, slot5 in ipairs(slot0._rabbet_cell_list) do
 		slot5:SetNormal()
 
-		slot10 = slot0.drag_data.drag_id
-
-		for slot10, slot11 in ipairs(slot0.drag_cube_child_list[slot10]) do
+		for slot10, slot11 in ipairs(slot0.drag_cube_child_list[slot0.drag_data.drag_id]) do
 			slot12 = slot11.transform
 			slot13 = recthelper.getAnchorX(slot12)
 			slot14 = recthelper.getAnchorY(slot12)

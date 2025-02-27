@@ -30,6 +30,24 @@ function slot0.insertStep(slot0, slot1)
 	end
 end
 
+function slot0.insertStepListClient(slot0, slot1, slot2)
+	for slot7 = 1, #slot1 do
+		if slot0:buildStepClient(slot1[slot7]) then
+			slot0._stepList = slot0._stepList or {}
+
+			if slot2 then
+				table.insert(slot0._stepList, slot7, slot8)
+			else
+				table.insert(slot0._stepList, slot8)
+			end
+		end
+
+		if slot0._curStep == nil then
+			slot0:nextStep()
+		end
+	end
+end
+
 slot0.StepClzMap = {
 	[XugoujiEnum.GameStepType.HpUpdate] = XugoujiGameStepHpUpdate,
 	[XugoujiEnum.GameStepType.UpdateCardStatus] = XugoujiGameStepCardUpdate,
@@ -39,18 +57,20 @@ slot0.StepClzMap = {
 	[XugoujiEnum.GameStepType.GotCardPair] = XugoujiGameStepPairsUpdate,
 	[XugoujiEnum.GameStepType.OperateNumUpdate] = XugoujiGameStepOperateNumUpdate,
 	[XugoujiEnum.GameStepType.BuffUpdate] = XugoujiGameStepBuffUpdate,
-	[XugoujiEnum.GameStepType.UpdateCardEffectStatus] = XugoujiGameStepCardEffectStatue
+	[XugoujiEnum.GameStepType.UpdateCardEffectStatus] = XugoujiGameStepCardEffectStatue,
+	[XugoujiEnum.GameStepType.WaitGameStart] = XugoujiGameStepWaitGameStart,
+	[XugoujiEnum.GameStepType.UpdateInitialCard] = XugoujiGameStepInitialCard,
+	[XugoujiEnum.GameStepType.GameReStart] = XugoujiGameStepGameReStart
 }
 
 function slot0.buildStep(slot0, slot1)
-	slot2 = cjson.decode(slot1.param)
-	slot3 = uv0.StepClzMap[slot2.stepType]
-
-	if slot2.stepType == XugoujiEnum.GameStepType.NextMap then
-		logNormal("stepClz actId = " .. uv1)
+	if cjson.decode(slot1.param).stepType == XugoujiEnum.GameStepType.HpUpdate then
+		if slot2.isSelf then
+			Activity188Model.instance:checkHpZero(slot2.hpChange)
+		end
 	end
 
-	if slot3 then
+	if uv0.StepClzMap[slot2.stepType] then
 		slot4 = nil
 		slot0._stepPool = slot0._stepPool or {}
 
@@ -68,10 +88,29 @@ function slot0.buildStep(slot0, slot1)
 	end
 end
 
+function slot0.buildStepClient(slot0, slot1)
+	if uv0.StepClzMap[slot1.stepType] then
+		slot3 = nil
+		slot0._stepPool = slot0._stepPool or {}
+
+		if slot0._stepPool[slot2] ~= nil and #slot0._stepPool[slot2] >= 1 then
+			slot4 = #slot0._stepPool[slot2]
+			slot3 = slot0._stepPool[slot2][slot4]
+			slot0._stepPool[slot2][slot4] = nil
+		else
+			slot3 = slot2.New()
+		end
+
+		slot3:init(slot1)
+
+		return slot3
+	end
+end
+
 function slot0.nextStep(slot0)
 	slot0:recycleCurStep()
 
-	slot0._doingStepAction = #slot0._stepList > 0
+	slot0._doingStepAction = slot0._stepList and #slot0._stepList > 0
 
 	if not slot0._doingStepAction then
 		Activity188Model.instance:setGameState(XugoujiEnum.GameStatus.Operatable)
@@ -80,7 +119,7 @@ function slot0.nextStep(slot0)
 	if not slot0._isStepStarting then
 		slot0._isStepStarting = true
 
-		while slot0._stepList and #slot0._stepList > 0 and slot0._curStep == nil do
+		while slot0._curStep == nil and slot0._stepList and #slot0._stepList > 0 do
 			slot0._curStep = slot0._stepList[1]
 
 			table.remove(slot0._stepList, 1)

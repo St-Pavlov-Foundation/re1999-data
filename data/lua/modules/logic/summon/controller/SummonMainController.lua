@@ -147,9 +147,8 @@ end
 function slot0.pickAllUIPreloadRes(slot0)
 	slot1 = {}
 	slot2 = {}
-	slot7 = SummonMainModel.getValidPools()
 
-	for slot7 = 1, tabletool.len(slot7) do
+	for slot7 = 1, tabletool.len(SummonMainModel.getValidPools()) do
 		if not string.nilorempty(slot3[slot7].customClz) then
 			if SummonCharacterProbUpPreloadConfig.getPreLoadListByName(slot9) == nil and SummonMainModel.instance:getADPageTabIndexForUI(slot8) then
 				slot10 = SummonMainModel.instance:getUIClassDef(slot11).preloadList

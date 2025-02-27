@@ -7,10 +7,6 @@ function slot0.start(slot0)
 end
 
 function slot0.finish(slot0)
-	if XugoujiGameStepController.instance then
-		-- Nothing
-	end
-
 	Activity188Model.instance:setHp(slot0.originData.hp)
 	XugoujiController.instance:dispatchEvent(Va3ChessEvent.CurrentHpUpdate)
 	uv0.super.finish(slot0)

@@ -42,9 +42,7 @@ function slot0.removeBuilding(slot0, slot1)
 		return
 	end
 
-	slot7 = 0
-
-	GameUtil.setDefaultValue({}, slot7)
+	GameUtil.setDefaultValue({}, 0)
 
 	for slot7 = 1, slot2.level do
 		if lua_activity178_building.configDict[VersionActivity2_4Enum.ActivityId.Pinball][slot2.configId][slot7] and not string.nilorempty(slot8.cost) then

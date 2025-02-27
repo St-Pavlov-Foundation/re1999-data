@@ -139,30 +139,49 @@ function slot0.isMatchMin(slot0, slot1)
 
 	if slot6[1] then
 		if slot6[2] then
-			slot7 = 1
-			slot8 = -1
-			slot9 = 0
-			slot10 = DiceHeroFightModel.instance:getGameData().diceBox.dicesByUid
+			slot7 = DiceHeroFightModel.instance:getGameData().diceBox.dicesByUid
+
+			if slot0.skillId == 19 then
+				slot8 = 1
+				slot9 = math.huge
+
+				for slot13, slot14 in ipairs(slot6) do
+					for slot19, slot20 in ipairs(slot14) do
+						slot15 = 0 + slot7[slot20].num
+					end
+
+					if slot15 < slot9 then
+						slot8 = slot13
+						slot9 = slot15
+					end
+				end
+
+				return true, slot6[slot8]
+			end
+
+			slot8 = 1
+			slot9 = -1
+			slot10 = 0
 
 			for slot14, slot15 in ipairs(slot6) do
 				slot17 = 0
 
 				for slot21, slot22 in ipairs(slot15) do
-					if DiceHeroEnum.BaseDiceSuitDict[slot0.matchDiceRules[slot21][1]] and DiceHeroEnum.BaseDiceSuitDict[slot10[slot22].suitId] then
+					if DiceHeroEnum.BaseDiceSuitDict[slot0.matchDiceRules[slot21][1]] and DiceHeroEnum.BaseDiceSuitDict[slot7[slot22].suitId] then
 						slot16 = 0 + 1
 					end
 
-					slot17 = slot17 + slot10[slot22].num
+					slot17 = slot17 + slot7[slot22].num
 				end
 
-				if slot8 < slot16 or slot16 == slot8 and slot9 < slot17 then
-					slot7 = slot14
-					slot8 = slot16
-					slot9 = slot17
+				if slot9 < slot16 or slot16 == slot9 and slot10 < slot17 then
+					slot8 = slot14
+					slot9 = slot16
+					slot10 = slot17
 				end
 			end
 
-			return true, slot6[slot7]
+			return true, slot6[slot8]
 		else
 			return true, slot6[1]
 		end

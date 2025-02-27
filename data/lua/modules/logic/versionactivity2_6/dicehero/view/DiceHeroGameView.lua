@@ -58,7 +58,7 @@ function slot0.onUpdateParam(slot0)
 	end
 
 	slot0._anim:Play("open", 0, 0)
-	slot0._diceBox:onStepEnd()
+	slot0._diceBox:onStepEnd(true)
 	slot0._hero:refreshAll()
 	slot0:refreshCards()
 	slot0:refreshEnemys()
@@ -79,13 +79,10 @@ function slot0.beginRound(slot0)
 end
 
 function slot0._hideDiceAndShowEnemyBehavior(slot0)
-	slot5 = 1
+	slot4 = 1
 
-	UIBlockHelper.instance:startBlock("DiceHeroGameView_RoundStart", slot5)
-
-	slot4 = false
-
-	gohelper.setActive(slot0._godice, slot4)
+	UIBlockHelper.instance:startBlock("DiceHeroGameView_RoundStart", slot4)
+	gohelper.setActive(slot0._godice, false)
 
 	for slot4, slot5 in pairs(slot0._enemys) do
 		slot5:refreshAll()
@@ -103,13 +100,16 @@ end
 function slot0.onDamageEffect(slot0, slot1)
 	gohelper.setActive(slot0._damageEffectHero, slot1)
 	gohelper.setActive(slot0._damageEffectEnemy, not slot1)
-	slot0._anim:Play("damage", 0, 0)
+
+	if DiceHeroFightModel.instance:getGameData().confirmed then
+		slot0._anim:Play("damage", 0, 0)
+	else
+		slot0._anim:Play("damage1", 0, 0)
+	end
 end
 
 function slot0._showDiceAndHideEnemyBehavior(slot0)
-	slot4 = true
-
-	gohelper.setActive(slot0._godice, slot4)
+	gohelper.setActive(slot0._godice, true)
 	slot0._diceBox:startRoll()
 
 	for slot4, slot5 in pairs(slot0._enemys) do

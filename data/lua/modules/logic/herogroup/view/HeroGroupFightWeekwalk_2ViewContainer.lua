@@ -28,6 +28,15 @@ end
 function slot0.addLastViews(slot0, slot1)
 	table.insert(slot1, HeroGroupFightWeekWalk_2View.New())
 	table.insert(slot1, WeekWalk_2HeroGroupBuffView.New())
+
+	slot0.helpView = HelpShowView.New()
+
+	slot0.helpView:setHelpId(HelpEnum.HelpId.WeekWalk_2HeroGroup)
+	table.insert(slot1, slot0.helpView)
+end
+
+function slot0.getHelpId(slot0)
+	return HelpEnum.HelpId.WeekWalk_2HeroGroup
 end
 
 return slot0

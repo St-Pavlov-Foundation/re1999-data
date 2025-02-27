@@ -69,6 +69,17 @@ function slot0.onOpen(slot0)
 		RedDotController.instance:addRedDot(slot0._goReddot2, slot2.redDotId, VersionActivity1_6Enum.ActivityId.Role2)
 	end
 
+	RedDotController.instance:addMultiRedDot(slot0._goReddot3, {
+		{
+			id = RedDotEnum.DotNode.V1a6DungeonTask
+		},
+		{
+			id = RedDotEnum.DotNode.V1a6DungeonSkillPoint
+		},
+		{
+			id = RedDotEnum.DotNode.V1a6DungeonBossReward
+		}
+	})
 	slot0:modifyBgm()
 end
 

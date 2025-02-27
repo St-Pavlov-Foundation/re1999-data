@@ -115,10 +115,6 @@ function slot0._showSuccView(slot0)
 			ViewMgr.instance:openView(ViewName.RoleStoryFightSuccView)
 
 			return
-		elseif slot1.type == DungeonEnum.EpisodeType.WeekWalk_2 and WeekWalk_2Model.instance:getSettleInfo() then
-			WeekWalk_2Controller.instance:openWeekWalk_2HeartResultView()
-
-			return
 		elseif slot1.type == DungeonEnum.EpisodeType.Act1_6DungeonBoss then
 			ViewMgr.instance:openView(ViewName.VersionActivity1_6BossFightSuccView)
 

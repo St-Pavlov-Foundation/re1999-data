@@ -6044,7 +6044,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 464013392,
+    "audioId": 464013292,
     "dieAnim": ""
   },
   {
@@ -6053,7 +6053,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 464013592,
+    "audioId": 464013192,
     "dieAnim": ""
   },
   {
@@ -6062,7 +6062,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 464013692,
+    "audioId": 464013192,
     "dieAnim": ""
   },
   {
@@ -6131,8 +6131,8 @@
   {
     "skinId": 306204,
     "actionName": "born",
-    "effect": "",
-    "effectHangPoint": "",
+    "effect": "buff/born/pre_v2a6_mln_born",
+    "effectHangPoint": "mountroot",
     "effectRemoveTime": 0.0,
     "audioId": 430620491,
     "dieAnim": ""
@@ -6180,6 +6180,42 @@
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
     "audioId": 431130192,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 690131,
+    "actionName": "die",
+    "effect": "v2a6_lyhpp/lyhpp_die",
+    "effectHangPoint": "mountroot",
+    "effectRemoveTime": 0.0,
+    "audioId": 469010192,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 630306,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 463030692,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 311401,
+    "actionName": "born",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431140291,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 311401,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431140292,
     "dieAnim": ""
   }
 ]

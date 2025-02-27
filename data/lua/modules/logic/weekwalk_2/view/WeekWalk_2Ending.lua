@@ -6,6 +6,7 @@ function slot0.onInitView(slot0)
 	slot0._gofinish = gohelper.findChild(slot0.viewGO, "#go_finish")
 	slot0._scrollnull = gohelper.findChildScrollRect(slot0.viewGO, "#go_finish/weekwalkending/#scroll_null")
 	slot0._gostartemplate = gohelper.findChild(slot0.viewGO, "#go_finish/weekwalkending/#scroll_null/starlist/#go_star_template")
+	slot0._gostartemplate2 = gohelper.findChild(slot0.viewGO, "#go_finish/weekwalkending/#scroll_null/starlist2/#go_star_template2")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -25,6 +26,8 @@ function slot0._editableInitView(slot0)
 	slot0._animEventWrap = slot0._gofinish:GetComponent(typeof(ZProj.AnimationEventWrap))
 
 	slot0._animEventWrap:AddEventListener("star", slot0._startShowStars, slot0)
+
+	slot0._time2 = 0.2
 end
 
 function slot0._startShowStars(slot0)
@@ -45,7 +48,7 @@ end
 function slot0._oneStarAppear(slot0)
 	gohelper.setActive(slot0._starList[slot0._curAppearIndex], true)
 	gohelper.setActive(slot0._starList[slot0._curAppearIndex + slot0._maxGroupNnum], true)
-	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_challenge_success_star)
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_LuckDraw_Hero_Stars)
 
 	slot0._curAppearIndex = slot0._curAppearIndex + 1
 
@@ -59,21 +62,22 @@ function slot0._addStarList(slot0)
 	slot2 = WeekWalk_2Model.instance:getBattleInfoByIdAndIndex(slot0._mapId, WeekWalk_2Enum.BattleIndex.Second)
 
 	for slot7 = 1, slot0._maxNum do
-		slot8 = gohelper.cloneInPlace(slot0._gostartemplate)
+		slot8 = slot7 <= WeekWalk_2Enum.MaxStar
+		slot9 = slot8 and gohelper.cloneInPlace(slot0._gostartemplate) or gohelper.cloneInPlace(slot0._gostartemplate2)
 
-		gohelper.setActive(slot8, true)
-		gohelper.setActive(gohelper.findChild(slot8, "star"), false)
+		gohelper.setActive(slot9, true)
+		gohelper.setActive(gohelper.findChild(slot9, "star"), false)
 
-		slot10 = gohelper.findChildImage(slot8, "star/xingxing")
-		slot10.enabled = false
+		slot11 = gohelper.findChildImage(slot9, "star/xingxing")
+		slot11.enabled = false
 
-		if slot7 <= WeekWalk_2Enum.MaxStar then
-			WeekWalk_2Helper.setCupEffect(slot0.viewContainer:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot10.gameObject), WeekWalk_2Model.instance:getBattleInfoByIdAndIndex(slot0._mapId, WeekWalk_2Enum.BattleIndex.First):getCupInfo(slot7))
+		if slot8 then
+			WeekWalk_2Helper.setCupEffect(slot0.viewContainer:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot11.gameObject), WeekWalk_2Model.instance:getBattleInfoByIdAndIndex(slot0._mapId, WeekWalk_2Enum.BattleIndex.First):getCupInfo(slot7))
 		else
-			WeekWalk_2Helper.setCupEffect(slot11, slot2:getCupInfo(slot7 - WeekWalk_2Enum.MaxStar))
+			WeekWalk_2Helper.setCupEffect(slot12, slot2:getCupInfo(slot7 - WeekWalk_2Enum.MaxStar))
 		end
 
-		table.insert(slot0._starList, slot9)
+		table.insert(slot0._starList, slot10)
 	end
 end
 
@@ -107,6 +111,7 @@ function slot0._showFinishAnim(slot0)
 		return
 	end
 
+	TaskDispatcher.runDelay(slot0._playPadAudio, slot0, slot0._time2)
 	slot0:_addStarList()
 
 	if not slot0._mapInfo.showFinished then
@@ -119,16 +124,14 @@ function slot0._showFinishAnim(slot0)
 
 	UIBlockMgrExtend.setNeedCircleMv(false)
 	UIBlockMgr.instance:startBlock("showFinishAnim")
-	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_challenge_success)
 	gohelper.setActive(slot0._gofinish, true)
 
 	slot0._viewAnim.enabled = true
+	slot1 = 3.7
 
 	if slot0._curNum == slot0._maxNum then
 		slot0._animator:Play("ending2")
 		slot0._viewAnim:Play("finish_map2")
-
-		slot1 = 2.83 + 2
 	else
 		slot0._animator:Play("ending1")
 		slot0._viewAnim:Play("finish_map1")
@@ -139,6 +142,10 @@ function slot0._showFinishAnim(slot0)
 	slot0._isPlayMapFinishClip = nil
 
 	TaskDispatcher.runRepeat(slot0._checkAnimClip, slot0, 0)
+end
+
+function slot0._playPadAudio(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_6.WeekWalk_2.play_ui_fight_artificial_stars_pad)
 end
 
 function slot0._checkAnimClip(slot0)
@@ -177,6 +184,7 @@ end
 
 function slot0.onClose(slot0)
 	gohelper.setActive(slot0._gofinish, false)
+	TaskDispatcher.cancelTask(slot0._playPadAudio, slot0)
 end
 
 function slot0.onDestroyView(slot0)

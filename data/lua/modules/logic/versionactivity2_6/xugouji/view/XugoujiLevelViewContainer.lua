@@ -49,6 +49,10 @@ function slot0.setVisibleInternal(slot0, slot1)
 	if slot1 then
 		slot0._anim:Play(UIAnimationName.Open, 0, 0)
 	end
+
+	if slot1 then
+		slot0._mainView:doEpisodeFinishedDisplay()
+	end
 end
 
 function slot0._overrideCloseFunc(slot0)

@@ -30,6 +30,12 @@ function slot0.init(slot0, slot1)
 	slot0._goshieldeffect = gohelper.findChild(slot1, "root/#go_shield")
 	slot0._godamageeffect = gohelper.findChild(slot1, "root/#go_damage")
 	slot0._godeadeffect = gohelper.findChild(slot1, "root/#go_died")
+	slot0._gobehaviorbuff = gohelper.findChild(slot1, "tips/#go_fighttip/#go_buff")
+	slot0._behaviorbufftitle = gohelper.findChildTextMesh(slot0._gobehaviorbuff, "name/#txt_name")
+	slot0._behaviorbuffimage = gohelper.findChildImage(slot0._gobehaviorbuff, "name/#simage_icon")
+	slot0._behaviorbuffdesc = gohelper.findChildTextMesh(slot0._gobehaviorbuff, "#txt_desc")
+	slot0._behaviorbufftag = gohelper.findChild(slot0._gobehaviorbuff, "name/#txt_name/#go_tag")
+	slot0._behaviorbufftagName = gohelper.findChildTextMesh(slot0._gobehaviorbuff, "name/#txt_name/#go_tag/#txt_name")
 
 	gohelper.setActive(slot0._goselect, false)
 end
@@ -41,6 +47,7 @@ function slot0.addEventListeners(slot0)
 	slot0:addEventCb(GameStateMgr.instance, GameStateEvent.OnTouchScreen, slot0.onTouchScreen, slot0)
 	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, slot0._onSkillCardSelectChange, slot0)
 	DiceHeroController.instance:registerCallback(DiceHeroEvent.EnemySelectChange, slot0._onSkillCardSelectChange, slot0)
+	gohelper.onceAddComponent(slot0._behaviordesc.gameObject, typeof(ZProj.TMPHyperLinkClick)):SetClickListener(slot0._onLinkClick, slot0)
 end
 
 function slot0.removeEventListeners(slot0)
@@ -79,10 +86,10 @@ function slot0.updateBehavior(slot0)
 			slot0._behaviordesc.text = slot0:getBehaviorText(slot1)
 		else
 			slot4 = {
-				slot0:getBehaviorText(slot8)
+				slot0:getBehaviorText(slot1)
 			}
 
-			for slot1, slot9 in ipairs(slot1.exList) do
+			for slot8, slot9 in ipairs(slot1.exList) do
 				table.insert(slot4, slot0:getBehaviorText(slot9))
 			end
 
@@ -94,7 +101,12 @@ function slot0.updateBehavior(slot0)
 	elseif slot1.type == 2 then
 		slot0._txtbehavior.text = ""
 
-		if slot1.isToFriend then
+		if slot1.isToAll then
+			slot0._behaviortitle.text = luaLang("dicehero_behavior_buff_title")
+
+			UISpriteSetMgr.instance:setFightSprite(slot0._iconbehavior, "jnk_gj4")
+			UISpriteSetMgr.instance:setFightSprite(slot0._behavioricon, "jnk_gj4")
+		elseif slot1.isToFriend then
 			slot0._behaviortitle.text = luaLang("dicehero_behavior_buff_title")
 
 			UISpriteSetMgr.instance:setFightSprite(slot0._iconbehavior, "jnk_gj4")
@@ -110,10 +122,10 @@ function slot0.updateBehavior(slot0)
 			slot0._behaviordesc.text = slot0:getBehaviorText(slot1)
 		else
 			slot2 = {
-				slot0:getBehaviorText(slot6)
+				slot0:getBehaviorText(slot1)
 			}
 
-			for slot1, slot7 in ipairs(slot1.exList) do
+			for slot6, slot7 in ipairs(slot1.exList) do
 				table.insert(slot2, slot0:getBehaviorText(slot7))
 			end
 
@@ -126,10 +138,10 @@ function slot0.updateBehavior(slot0)
 			slot0._behaviordesc.text = slot0:getBehaviorText(slot1)
 		else
 			slot2 = {
-				slot0:getBehaviorText(slot6)
+				slot0:getBehaviorText(slot1)
 			}
 
-			for slot1, slot7 in ipairs(slot1.exList) do
+			for slot6, slot7 in ipairs(slot1.exList) do
 				table.insert(slot2, slot0:getBehaviorText(slot7))
 			end
 
@@ -161,14 +173,16 @@ function slot0.getBehaviorText(slot0, slot1)
 
 		return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_atk"), slot2)
 	elseif slot1.type == 2 then
-		if slot1.isToFriend then
-			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_def_friend"), slot1.value[1] or 0)
+		if slot1.isToAll then
+			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_def_all"), slot1.value[1] or 0)
+		elseif slot1.isToFriend then
+			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_def_friend"), slot2)
 		else
 			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_def"), slot2)
 		end
 	elseif slot1.type == 3 then
 		if lua_dice_buff.configDict[tonumber(slot1.value[1]) or 0] then
-			slot2 = slot3.name
+			slot2 = string.format("<u><color=#4e6698><link=\"%s\">%s</link></color></u>", slot2, slot3.name)
 		end
 
 		if slot1.isToSelf then
@@ -178,6 +192,30 @@ function slot0.getBehaviorText(slot0, slot1)
 		else
 			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("dicehero_behavior_debuff"), slot2)
 		end
+	end
+end
+
+function slot0._onLinkClick(slot0, slot1)
+	if not lua_dice_buff.configDict[tonumber(slot1)] then
+		return
+	end
+
+	gohelper.setActive(slot0._gobehaviorbuff, true)
+	UISpriteSetMgr.instance:setBuffSprite(slot0._behaviorbuffimage, slot2.icon)
+
+	slot0._behaviorbufftitle.text = slot2.name
+	slot0._behaviorbuffdesc.text = slot2.desc
+
+	if slot2.tag == 1 then
+		gohelper.setActive(slot0._behaviorbufftag, true)
+
+		slot0._behaviorbufftagName.text = luaLang("dicehero_buff")
+	elseif slot2.tag == 2 then
+		gohelper.setActive(slot0._behaviorbufftag, true)
+
+		slot0._behaviorbufftagName.text = luaLang("dicehero_debuff")
+	else
+		gohelper.setActive(slot0._behaviorbufftag, false)
 	end
 end
 
@@ -193,6 +231,14 @@ function slot0.refreshBuff(slot0)
 	end
 
 	gohelper.CreateObjList(slot0, slot0._createBuff, slot1, nil, slot0._buffItem)
+
+	if slot0._gozaowutip.activeSelf then
+		if #slot1 > 0 then
+			gohelper.CreateObjList(slot0, slot0._createSkillItem, slot1, nil, slot0._gozaowuitem)
+		else
+			gohelper.setActive(slot0._gozaowutip, false)
+		end
+	end
 end
 
 function slot0._createBuff(slot0, slot1, slot2, slot3)
@@ -268,6 +314,7 @@ function slot0._showBuff(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	gohelper.setActive(slot0._gozaowutip, true)
 	gohelper.CreateObjList(slot0, slot0._createSkillItem, slot1, nil, slot0._gozaowuitem)
 end
@@ -285,7 +332,9 @@ function slot0.showBehavior(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	gohelper.setActive(slot0._gofighttips, true)
+	gohelper.setActive(slot0._gobehaviorbuff, false)
 end
 
 function slot0.hideBehavior(slot0)
@@ -340,7 +389,11 @@ function slot0.onTouchScreen(slot0)
 	end
 end
 
-function slot0.getPos(slot0)
+function slot0.getPos(slot0, slot1)
+	if slot1 == 1 then
+		return slot0._shieldSlider.transform.position
+	end
+
 	return slot0._headbgTrans.position
 end
 

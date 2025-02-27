@@ -67,9 +67,9 @@ function slot0._enterActivity11602(slot0, slot1)
 	slot5 = FlowSequence.New()
 
 	slot5:addWork(OpenViewWork.New({
-		openFunction = uv0.open2_5ReactivityEnterView,
-		openFunctionObj = (slot6 and slot6.isRetroAcitivity == 1 and VersionActivity2_5EnterController or VersionActivity1_6EnterController).instance,
-		waitOpenViewName = ActivityConfig.instance:getActivityCo(VersionActivity1_6Enum.ActivityId.Dungeon) and slot6.isRetroAcitivity == 1 and ViewName.VersionActivity2_5EnterView or ViewName.VersionActivity1_6EnterView
+		openFunction = uv0._openEnterView,
+		openFunctionObj = VersionActivity1_6EnterController.instance,
+		waitOpenViewName = ViewName.VersionActivity1_6EnterView
 	}))
 	slot5:registerDoneListener(function ()
 		if uv0 then
@@ -87,8 +87,8 @@ function slot0._enterActivity11602(slot0, slot1)
 	uv0.sequence = slot5
 end
 
-function slot0.open2_5ReactivityEnterView()
-	VersionActivity2_5EnterController.instance:directOpenVersionActivityEnterView(VersionActivity2_5Enum.ActivityId.Reactivity)
+function slot0._openEnterView()
+	PermanentController.instance:jump2Activity(VersionActivity1_6Enum.ActivityId.EnterView)
 end
 
 function slot0.enterActivity11609(slot0, slot1)
@@ -98,13 +98,7 @@ function slot0.enterActivity11609(slot0, slot1)
 	MainController.instance:enterMainScene(slot0)
 	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity1_6DungeonBossView)
-
-		if ActivityConfig.instance:getActivityCo(VersionActivity1_6Enum.ActivityId.DungeonBossRush) and slot0.isRetroAcitivity == 1 then
-			VersionActivity2_5EnterController.instance:openVersionActivityEnterViewIfNotOpened()
-		else
-			VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened()
-		end
-
+		PermanentController.instance:jump2Activity(VersionActivity1_6Enum.ActivityId.EnterView)
 		VersionActivity1_6DungeonController.instance:openVersionActivityDungeonMapView(nil, VersionActivity1_6DungeonEnum.DungeonBossEpisodeId, function ()
 			VersionActivity1_6DungeonController.instance:openDungeonBossView(true)
 		end, nil)

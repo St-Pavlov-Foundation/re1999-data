@@ -34,15 +34,13 @@ function slot0._editableInitView(slot0)
 	slot0:createHeroItem(slot0._goheroleftitem, VersionActivity1_5DungeonEnum.MapDir.Left)
 	slot0:createHeroItem(slot0._goherotopitem, VersionActivity1_5DungeonEnum.MapDir.Top)
 
-	slot4 = slot0._goherobottomitem
+	slot4 = VersionActivity1_5DungeonEnum.MapDir.Bottom
 
-	slot0:createHeroItem(slot4, VersionActivity1_5DungeonEnum.MapDir.Bottom)
+	slot0:createHeroItem(slot0._goherobottomitem, slot4)
 
 	slot0.taskMoList = {}
-	slot3 = VersionActivity1_5RevivalTaskModel.instance
-	slot5 = slot3
 
-	for slot4, slot5 in ipairs(slot3.getTaskMoList(slot5)) do
+	for slot4, slot5 in ipairs(VersionActivity1_5RevivalTaskModel.instance:getTaskMoList()) do
 		if not slot5:isExploreTask() then
 			table.insert(slot0.taskMoList, slot5)
 		end
@@ -213,10 +211,7 @@ function slot0.refreshHeroIcon(slot0)
 
 		if slot6 then
 			gohelper.setActive(slot0.heroItemDict[slot4].goHeroIcon1, false)
-
-			slot10 = false
-
-			gohelper.setActive(slot0.heroItemDict[slot4].goHeroIcon2, slot10)
+			gohelper.setActive(slot0.heroItemDict[slot4].goHeroIcon2, false)
 
 			for slot10, slot11 in ipairs(slot5) do
 				slot0:refreshHeroItemPos(slot4, slot10, slot11)

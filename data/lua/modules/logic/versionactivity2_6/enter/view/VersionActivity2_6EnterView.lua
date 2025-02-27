@@ -81,6 +81,13 @@ end
 function slot0.onOpen(slot0)
 	uv0.super.onOpen(slot0)
 
+	if slot0.curActId == ActivityEnum.Activity.WeekWalkHeartShow then
+		slot0.viewAnim:Play(UIAnimationName.Open, 0, 0)
+		slot0.viewContainer:markPlayedSubViewAnim()
+
+		return
+	end
+
 	if slot0.curActId ~= VersionActivity2_6Enum.ActivityId.Season then
 		slot0.viewAnim:Play("open1", 0, 0)
 	else

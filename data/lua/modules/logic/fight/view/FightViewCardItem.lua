@@ -9,8 +9,7 @@ end
 
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
-	slot5 = gohelper.Type_CanvasGroup
-	slot0._canvasGroup = slot1:GetComponent(slot5)
+	slot0._canvasGroup = slot1:GetComponent(gohelper.Type_CanvasGroup)
 	slot0.tr = slot1.transform
 	slot0._lvGOs = slot0:getUserDataTb_()
 	slot0._lvImgIcons = slot0:getUserDataTb_()
@@ -44,8 +43,8 @@ function slot0.init(slot0, slot1)
 	slot0._tag = gohelper.findChildSingleImage(slot1, "tag/tag/tagIcon")
 	slot0._txt = gohelper.findChildText(slot1, "Text")
 	slot0._starGO = gohelper.findChild(slot1, "star")
-	slot5 = typeof
-	slot0._starCanvas = gohelper.onceAddComponent(slot0._starGO, slot5(UnityEngine.CanvasGroup))
+	slot5 = UnityEngine.CanvasGroup
+	slot0._starCanvas = gohelper.onceAddComponent(slot0._starGO, typeof(slot5))
 	slot0._innerStartGOs = slot0:getUserDataTb_()
 
 	for slot5 = 1, FightEnum.MaxSkillCardLv do
@@ -60,10 +59,10 @@ function slot0.init(slot0, slot1)
 	gohelper.setActive(slot0._layout, true)
 
 	slot0._predisplay = gohelper.findChild(slot1, "layout/predisplay")
-	slot0._cardAni = gohelper.onceAddComponent(slot1, typeof(UnityEngine.Animator))
+	slot5 = UnityEngine.Animator
+	slot0._cardAni = gohelper.onceAddComponent(slot1, typeof(slot5))
 	slot0._cardAppearEffectRoot = gohelper.findChild(slot1, "cardAppearEffectRoot")
-	slot5 = "cardmask"
-	slot0._cardMask = gohelper.findChild(slot1, slot5)
+	slot0._cardMask = gohelper.findChild(slot1, "cardmask")
 	slot0._maskList = slot0:getUserDataTb_()
 
 	for slot5 = 1, 4 do
@@ -125,6 +124,7 @@ function slot0.init(slot0, slot1)
 	slot0:resetRedAndBlue()
 
 	slot0._heatRoot = gohelper.findChild(slot1, "#go_heat")
+	slot0.alfLoadStatus = uv0.AlfLoadStatus.None
 end
 
 function slot0.resetPreDelete(slot0)
@@ -200,11 +200,10 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 	slot0:_hideAniEffect()
 
 	slot4 = lua_skill.configDict[slot2]
-	slot9 = slot2
 
 	for slot9, slot10 in ipairs(slot0._lvGOs) do
 		gohelper.setActive(slot10, true)
-		gohelper.setActiveCanvasGroup(slot10, FightCardModel.instance:getSkillLv(slot1, slot9) == slot9)
+		gohelper.setActiveCanvasGroup(slot10, FightCardModel.instance:getSkillLv(slot1, slot2) == slot9)
 	end
 
 	for slot9, slot10 in ipairs(slot0._lvImgIcons) do
@@ -507,11 +506,11 @@ function slot0._onEnchantEffectsLoaded(slot0)
 			slot7 = slot6:GetResource()
 
 			if slot0._lvGOs then
-				slot11 = slot0
-				slot0._enchantsEffect[slot4] = slot0.getUserDataTb_(slot11)
+				slot0._enchantsEffect[slot4] = slot0:getUserDataTb_()
 
 				for slot11, slot12 in ipairs(slot0._lvGOs) do
-					slot13 = gohelper.clone(slot7, gohelper.findChild(slot12, "#cardeffect"))
+					slot17 = "#cardeffect"
+					slot13 = gohelper.clone(slot7, gohelper.findChild(slot12, slot17))
 
 					for slot17 = 1, 4 do
 						gohelper.setActive(gohelper.findChild(slot13, "lv" .. slot17), slot17 == slot11)
@@ -564,7 +563,8 @@ function slot0._onUpgradeEffectLoaded(slot0, slot1, slot2)
 
 	if slot0._lvGOs and slot2:GetResource() then
 		for slot7, slot8 in ipairs(slot0._lvGOs) do
-			slot9 = gohelper.clone(slot3, gohelper.findChild(slot8, "#cardeffect"))
+			slot13 = "#cardeffect"
+			slot9 = gohelper.clone(slot3, gohelper.findChild(slot8, slot13))
 
 			for slot13 = 1, 4 do
 				gohelper.setActive(gohelper.findChild(slot9, "lv" .. slot13), slot13 == slot7)
@@ -587,7 +587,7 @@ function slot0.changeToTempCard(slot0)
 	gohelper.setActive(slot0._predisplay, true)
 end
 
-function slot0.dissolveCard(slot0, slot1)
+function slot0.dissolveCard(slot0, slot1, slot2)
 	if not slot0.go.activeInHierarchy then
 		return
 	end
@@ -603,13 +603,13 @@ function slot0.dissolveCard(slot0, slot1)
 	slot0:setASFDActive(false)
 	slot0:revertASFDSkillAnimator()
 
-	slot2 = slot0:getUserDataTb_()
-	slot2.dissolveScale = slot1 or 1
 	slot3 = slot0:getUserDataTb_()
+	slot3.dissolveScale = slot1 or 1
+	slot4 = slot0:getUserDataTb_()
 
-	table.insert(slot3, slot0.go)
+	table.insert(slot4, slot2 or slot0.go)
 
-	slot2.dissolveSkillItemGOs = slot3
+	slot3.dissolveSkillItemGOs = slot4
 
 	if not slot0._dissolveFlow then
 		slot0._dissolveFlow = FlowSequence.New()
@@ -620,7 +620,7 @@ function slot0.dissolveCard(slot0, slot1)
 	end
 
 	slot0:_hideAllEffect()
-	slot0._dissolveFlow:start(slot2)
+	slot0._dissolveFlow:start(slot3)
 end
 
 function slot0.disappearCard(slot0)
@@ -743,8 +743,7 @@ function slot0._refreshGray(slot0)
 
 		slot1 = slot0._cardInfoMO.uid
 		slot2 = slot0._cardInfoMO.skillId
-		slot8 = slot2
-		slot4 = FightCardModel.instance:isUniqueSkill(slot1, slot8)
+		slot4 = FightCardModel.instance:isUniqueSkill(slot1, slot2)
 
 		for slot8, slot9 in ipairs(slot0._maskList) do
 			if slot8 < 4 then
@@ -961,6 +960,7 @@ function slot0.onDestroy(slot0)
 	end
 
 	slot0._tag:UnLoadImage()
+	slot0:clearAlfEffect()
 end
 
 function slot0._hideAllEffect(slot0)
@@ -971,6 +971,82 @@ end
 
 function slot0.IsUniqueSkill(slot0)
 	return FightEnum.UniqueSkillCardLv <= FightCardModel.instance:getSkillLv(slot0.entityId, slot0.skillId)
+end
+
+slot0.AlfLoadStatus = {
+	Loaded = 3,
+	Loading = 2,
+	None = 1
+}
+
+function slot0.tryPlayAlfEffect(slot0)
+	if not slot0._cardInfoMO then
+		return
+	end
+
+	if not FightHeroALFComp.ALFSkillDict[slot0._cardInfoMO.custom_fromSkillId] then
+		return
+	end
+
+	if slot0.alfLoadStatus == uv0.AlfLoadStatus.Loaded then
+		slot0:_tryPlayAlfEffect()
+	elseif slot0.alfLoadStatus ~= uv0.AlfLoadStatus.Loading then
+		slot0.alfLoadStatus = uv0.AlfLoadStatus.Loading
+		slot0.alfLoader = PrefabInstantiate.Create(slot0.tr.parent.gameObject)
+
+		slot0.alfLoader:startLoad(FightHeroALFComp.CardAddEffect, slot0.onLoadedAlfEffect, slot0)
+	end
+end
+
+function slot0.onLoadedAlfEffect(slot0)
+	slot0.goAlfAddCardEffect = slot0.alfLoader:getInstGO()
+	slot0.goAlfAddCardAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0.goAlfAddCardEffect)
+	slot0.alfLoadStatus = uv0.AlfLoadStatus.Loaded
+
+	slot0:_tryPlayAlfEffect()
+end
+
+function slot0._tryPlayAlfEffect(slot0)
+	if not slot0.goAlfAddCardAnimatorPlayer then
+		return
+	end
+
+	gohelper.setActive(slot0.go, false)
+	gohelper.setActive(slot0.goAlfAddCardEffect, true)
+	slot0.goAlfAddCardAnimatorPlayer:Play("open", slot0.playAlfCloseAnim, slot0)
+end
+
+function slot0.playAlfCloseAnim(slot0)
+	slot0.goAlfAddCardAnimatorPlayer:Play("close", slot0.playAlfCloseAnimDone, slot0)
+	TaskDispatcher.runDelay(slot0.showCardGo, slot0, 0.2 / FightModel.instance:getUISpeed())
+end
+
+function slot0.showCardGo(slot0)
+	gohelper.setActive(slot0.go, true)
+	slot0:playCardAni(ViewAnim.FightCardAppear, "fightcard_apper")
+end
+
+function slot0.playAlfCloseAnimDone(slot0)
+	gohelper.setActive(slot0.goAlfAddCardEffect, false)
+end
+
+function slot0.clearAlfEffect(slot0)
+	if slot0.alfLoader then
+		slot0.alfLoader:dispose()
+
+		slot0.alfLoader = nil
+	end
+
+	slot0.alfLoadStatus = uv0.AlfLoadStatus.None
+	slot0.goAlfAddCardEffect = nil
+
+	if slot0.goAlfAddCardAnimatorPlayer then
+		slot0.goAlfAddCardAnimatorPlayer:Stop()
+
+		slot0.goAlfAddCardAnimatorPlayer = nil
+	end
+
+	TaskDispatcher.cancelTask(slot0.showCardGo, slot0)
 end
 
 return slot0

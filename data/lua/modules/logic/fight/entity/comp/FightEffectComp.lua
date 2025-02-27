@@ -63,6 +63,10 @@ function slot0._onSpineLoaded(slot0, slot1)
 	end
 end
 
+function slot0.playingEffect(slot0, slot1)
+	return slot0._playingEffectDict and slot0._playingEffectDict[slot1]
+end
+
 function slot0.addHangEffect(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 	slot9 = FightEffectPool.getEffect(FightHelper.getEffectUrlWithLod(slot1), slot3 or slot0.entity:getSide(), slot0._onEffectLoaded, slot0, slot0.entity:getHangPoint(slot2, slot6))
 	slot0._playingEffectDict[slot9.uniqueId] = slot9
@@ -361,10 +365,10 @@ function slot0.beforeDestroy(slot0)
 	end
 
 	slot0._specialEffectClass = nil
-	slot4 = FightEvent.OnSpineLoaded
-	slot5 = slot0._onSpineLoaded
+	slot4 = slot0._onSpineLoaded
+	slot5 = slot0
 
-	FightController.instance:unregisterCallback(slot4, slot5, slot0)
+	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot4, slot5)
 	slot0:_dealTimeEffect()
 
 	for slot4, slot5 in pairs(slot0._playingEffectDict) do

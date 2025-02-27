@@ -35,6 +35,8 @@ function slot0._btnfreshOnClick(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.UI.RefreshRougeMapRule)
+
 	slot1 = slot0._layerChoiceInfo and slot0._layerChoiceInfo:getMapRuleCo()
 	slot2 = slot1 and slot1.type
 

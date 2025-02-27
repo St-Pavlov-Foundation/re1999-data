@@ -27,7 +27,7 @@ function slot0.init(slot0, slot1)
 			index = slot6
 		})
 
-		slot0:addClickCb(gohelper.findChildButtonWithAudio(slot7, ""), slot0._onDiceClick, slot0, slot6)
+		slot0:addClickCb(gohelper.findChildButton(slot7, ""), slot0._onDiceClick, slot0, slot6)
 	end
 
 	if lua_dice_level.configDict[DiceHeroModel.instance.lastEnterLevelId] then
@@ -68,14 +68,18 @@ function slot0.removeEventListeners(slot0)
 	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, slot0.updateUseCardStatu, slot0)
 end
 
-function slot0.onStepEnd(slot0)
-	for slot4 = 1, 12 do
-		slot0._dices[slot4]:onStepEnd()
+function slot0.onStepEnd(slot0, slot1)
+	for slot5 = 1, 12 do
+		slot0._dices[slot5]:onStepEnd(slot1)
 	end
 
 	slot0:onProgressUpdate()
 	slot0:updateRollNum()
 	slot0:checkEndEffect()
+
+	if DiceHeroFightModel.instance:getGameData().diceBox.resetTimes <= 0 and not slot2.confirmed and DiceHeroFightModel.instance.finishResult == DiceHeroEnum.GameStatu.None then
+		slot0:_onClickConfirm()
+	end
 end
 
 function slot0.startRoll(slot0)
@@ -122,6 +126,10 @@ function slot0.checkEndEffect(slot0)
 end
 
 function slot0._onDiceClick(slot0, slot1)
+	if DiceHeroHelper.instance:isInFlow() then
+		return
+	end
+
 	if not slot0._dices[slot1].diceMo or slot2.deleted then
 		return
 	end
@@ -138,10 +146,12 @@ function slot0._onDiceClick(slot0, slot1)
 			slot0._selectDict[slot1] = nil
 
 			slot0._dices[slot1]:setSelect(false)
+			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardunready)
 		else
 			slot0._selectDict[slot1] = true
 
 			slot0._dices[slot1]:setSelect(true)
+			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardready)
 		end
 	else
 		if not slot4 then
@@ -160,8 +170,12 @@ function slot0._onDiceClick(slot0, slot1)
 
 		if slot0._selectDict[slot1] then
 			slot0._selectDict[slot1] = nil
+
+			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardunready)
 		else
 			slot0._selectDict[slot1] = true
+
+			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardready)
 		end
 
 		slot5 = slot4:getCanUseDiceUidDict()
@@ -319,9 +333,9 @@ function slot0._onReroll(slot0, slot1, slot2, slot3)
 	DiceHeroFightModel.instance:getGameData():onStepEnd()
 	slot0:updateRollNum()
 
-	slot7 = "DiceHeroDiceBoxItem_reroll"
+	slot7 = 0.6
 
-	UIBlockHelper.instance:startBlock(slot7, 0.6)
+	UIBlockHelper.instance:startBlock("DiceHeroDiceBoxItem_reroll", slot7)
 
 	for slot7 = 1, 12 do
 		slot0._dices[slot7]:setSelect(false)

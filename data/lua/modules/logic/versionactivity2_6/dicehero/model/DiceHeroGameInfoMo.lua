@@ -5,9 +5,8 @@ slot0 = pureTable("DiceHeroGameInfoMo")
 function slot0.init(slot0, slot1)
 	slot0.chapter = slot1.chapter
 	slot0.heroBaseInfo = DiceHeroHeroBaseInfoMo.New()
-	slot5 = slot1.heroBaseInfo
 
-	slot0.heroBaseInfo:init(slot5)
+	slot0.heroBaseInfo:init(slot1.heroBaseInfo)
 
 	slot0.rewardItems = {}
 

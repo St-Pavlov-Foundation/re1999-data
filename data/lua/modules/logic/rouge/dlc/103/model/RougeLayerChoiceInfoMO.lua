@@ -6,7 +6,10 @@ function slot0.init(slot0, slot1)
 	slot0.layerId = slot1.layerId
 	slot0.mapRuleId = slot1.mapRuleId
 	slot0.mapRuleCo = RougeDLCConfig103.instance:getMapRuleConfig(slot0.mapRuleId)
-	slot0.curLayerCollection = slot1.curLayerCollection
+	slot0.curLayerCollection = {}
+
+	tabletool.addValues(slot0.curLayerCollection, slot1.curLayerCollection)
+
 	slot0.mapRuleCanFreshNum = slot1.mapRuleCanFreshNum
 end
 

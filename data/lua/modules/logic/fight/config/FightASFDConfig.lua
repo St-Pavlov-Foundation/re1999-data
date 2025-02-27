@@ -77,6 +77,7 @@ function slot0.buildFightASFDConstConfig(slot0, slot1)
 	slot0.headIcon = slot2[22].value
 	slot0.sampleXRate = tonumber(slot2[23].value)
 	slot0.lineType = tonumber(slot2[24].value)
+	slot0.alfMaxShowEffectCount = tonumber(slot2[26].value)
 	slot0.emitterCenterOffset = Vector2(0, 0)
 	slot0.myASFDConfig = slot0:buildASFDEmitterConfig("法术飞弹-我方")
 	slot0.enemyASFDConfig = slot0:buildASFDEmitterConfig("法术飞弹-敌方")

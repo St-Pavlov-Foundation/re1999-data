@@ -13,12 +13,15 @@ function slot0.onInitView(slot0)
 	slot0._simageicon = gohelper.findChildSingleImage(slot0.viewGO, "bottom_left/#go_heart/#btn_reward/#go_bubble/#simage_icon")
 	slot0._goruleIcon = gohelper.findChild(slot0.viewGO, "#go_ruleIcon")
 	slot0._btnruleIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ruleIcon/#btn_ruleIcon")
+	slot0._gorulenew = gohelper.findChild(slot0.viewGO, "#go_ruleIcon/#go_rulenew")
 	slot0._gobuffIcon = gohelper.findChild(slot0.viewGO, "#go_buffIcon")
 	slot0._btnbuffIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_buffIcon/#btn_buffIcon")
+	slot0._gobuffnew = gohelper.findChild(slot0.viewGO, "#go_buffIcon/#go_buffnew")
 	slot0._goreviewIcon = gohelper.findChild(slot0.viewGO, "#go_reviewIcon")
 	slot0._btnreviewIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_reviewIcon/#btn_reviewIcon")
 	slot0._txtdetaildesc = gohelper.findChildText(slot0.viewGO, "bottom_right/#txt_detaildesc")
 	slot0._goitem = gohelper.findChild(slot0.viewGO, "bottom_right/badgelist/#go_item")
+	slot0._simagebgimgnext = gohelper.findChildSingleImage(slot0.viewGO, "transition/ani/#simage_bgimg_next")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -58,6 +61,8 @@ function slot0._btnbuffIconOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	slot0._rewardAnimator = slot0._btnreward.gameObject:GetComponent(typeof(UnityEngine.Animator))
+
 	gohelper.setActive(slot0._goitem, false)
 	slot0:_initPage()
 end
@@ -98,11 +103,11 @@ function slot0._updateItemList(slot0)
 		slot10 = slot8:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second)
 
 		if slot8:getBattleInfo(WeekWalk_2Enum.BattleIndex.First) then
-			WeekWalk_2Helper.setCupEffectByResult(slot5.icon1Effect, slot9:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None)
+			WeekWalk_2Helper.setCupEffectByResult(slot5.icon1Effect, slot9:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2)
 		end
 
 		if slot10 then
-			WeekWalk_2Helper.setCupEffectByResult(slot7, slot10:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None)
+			WeekWalk_2Helper.setCupEffectByResult(slot7, slot10:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2)
 		end
 	end
 end
@@ -118,9 +123,40 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnGetInfo, slot0._onGetInfo, slot0)
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, slot0._onChangeInfo, slot0)
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, slot0._onWeekwalk_2TaskUpdate, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
 	slot0:_showDeadline()
 	slot0:_initItemList()
 	slot0:_onWeekwalk_2TaskUpdate()
+	slot0:_updateNewFlag()
+end
+
+function slot0.onOpenFinish(slot0)
+	if not not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, slot0._info.timeId) then
+		return
+	end
+
+	WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, slot1)
+
+	if slot0._goreviewIcon:GetComponent(typeof(UnityEngine.Animator)) then
+		slot3:Play("open", 0, 0)
+	end
+end
+
+function slot0._updateNewFlag(slot0)
+	slot1 = slot0._info.timeId
+
+	gohelper.setActive(slot0._gorulenew, not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, slot1))
+	gohelper.setActive(slot0._gobuffnew, not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, slot1))
+end
+
+function slot0._onOpenView(slot0, slot1)
+	if slot1 == ViewName.WeekWalk_2HeartBuffView then
+		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, slot0._info.timeId)
+		slot0:_updateNewFlag()
+	elseif slot1 == ViewName.WeekWalk_2RuleView then
+		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, slot0._info.timeId)
+		slot0:_updateNewFlag()
+	end
 end
 
 function slot0._onWeekwalk_2TaskUpdate(slot0)
@@ -131,6 +167,10 @@ function slot0._onWeekwalk_2TaskUpdate(slot0)
 	slot0._gobubbleReddot = slot0._gobubbleReddot or gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart/#btn_reward/reddot")
 
 	gohelper.setActive(slot0._gobubbleReddot, slot2 > 0)
+
+	if slot0._rewardAnimator then
+		slot0._rewardAnimator:Play(slot4 and "reward" or "idle")
+	end
 
 	if slot2 == 0 and slot3 == 0 then
 		gohelper.setActive(slot0._btnreward, false)

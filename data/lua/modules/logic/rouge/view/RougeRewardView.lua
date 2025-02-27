@@ -306,24 +306,24 @@ function slot0._initRewardSign(slot0)
 end
 
 function slot0._initBigRewardNode(slot0)
-	for slot4 = 1, 5 do
+	for slot4 = 1, 6 do
 		slot5 = slot0:getUserDataTb_()
 		slot5.go = gohelper.findChild(slot0.viewGO, "Right/RewardNode/#go_Reward" .. slot4)
 		slot5.bg = gohelper.findChildSingleImage(slot5.go, "bg")
 
-		if slot4 == RougeEnum.BigRewardType.Multi then
+		if slot4 == RougeEnum.BigRewardType.Double or slot4 == RougeEnum.BigRewardType.Triple then
 			slot5.nodeList = {}
 
-			for slot9 = 1, 2 do
-				slot10 = {
-					go = gohelper.findChild(slot5.go, "reward" .. slot9)
+			for slot10 = 1, slot4 == RougeEnum.BigRewardType.Double and 2 or 3 do
+				slot11 = {
+					go = gohelper.findChild(slot5.go, "reward" .. slot10)
 				}
-				slot10.simge = gohelper.findChildSingleImage(slot10.go, "img_reward")
-				slot10.img = gohelper.findChildImage(slot10.go, "img_reward")
-				slot10.txt = gohelper.findChildText(slot10.go, "txt_reward")
-				slot10.defultposx, slot10.defultposy = recthelper.getAnchor(slot10.txt.transform)
+				slot11.simge = gohelper.findChildSingleImage(slot11.go, "img_reward")
+				slot11.img = gohelper.findChildImage(slot11.go, "img_reward")
+				slot11.txt = gohelper.findChildText(slot11.go, "txt_reward")
+				slot11.defultposx, slot11.defultposy = recthelper.getAnchor(slot11.txt.transform)
 
-				table.insert(slot5.nodeList, slot10)
+				table.insert(slot5.nodeList, slot11)
 			end
 		else
 			slot5.name = gohelper.findChildText(slot5.go, "name")
@@ -385,7 +385,7 @@ function slot0.refreshBigReward(slot0)
 		uv0.bg.gameObject:GetComponent(gohelper.Type_Image):SetNativeSize()
 	end, slot0)
 
-	if slot2 == RougeEnum.BigRewardType.Multi then
+	if slot2 == RougeEnum.BigRewardType.Double or slot2 == RougeEnum.BigRewardType.Triple then
 		slot6 = string.split(slot1.value, "|")
 		slot7 = string.split(slot1.rewardName, "|")
 		slot8 = nil
@@ -419,7 +419,7 @@ function slot0.refreshBigReward(slot0)
 			if slot16 == MaterialEnum.MaterialType.Equip then
 				slot21 = false
 
-				if slot9[slot13].icon then
+				if not string.nilorempty(slot9[slot13].icon) then
 					slot21 = true
 				end
 

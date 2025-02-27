@@ -87,10 +87,7 @@ end
 
 function slot0.setDataList(slot0, slot1)
 	tabletool.clear(slot0.dataList)
-
-	slot5 = slot1
-
-	tabletool.addValues(slot0.dataList, slot5)
+	tabletool.addValues(slot0.dataList, slot1)
 
 	for slot5, slot6 in ipairs(slot0.dataList) do
 		if not slot0[slot5] then

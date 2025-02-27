@@ -32,10 +32,10 @@ function slot0._btngetallOnClick(slot0)
 
 	slot0:setBlock(true)
 
-	slot4 = "finish"
-	slot5 = slot0._sendRpcToFinishTask
+	slot4 = slot0._sendRpcToFinishTask
+	slot5 = slot0
 
-	slot0._animatorPlayer:Play(slot4, slot5, slot0)
+	slot0._animatorPlayer:Play("finish", slot4, slot5)
 
 	slot0._canGetRewardTaskIds = {}
 

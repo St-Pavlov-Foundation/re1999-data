@@ -25,12 +25,14 @@ function slot0.addEvents(slot0)
 	slot0._btnadditionRuleclick:AddClickListener(slot0._btnadditionRuleOnClick, slot0)
 	slot0:addEventCb(slot0.viewContainer, HeroGroupEvent.SwitchBalance, slot0._refreshUI, slot0)
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnBuffSetupReply, slot0._refreshUI, slot0)
+	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, slot0._onModifyGroupSelectIndex, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnadditionRuleclick:RemoveClickListener()
 	slot0:removeEventCb(slot0.viewContainer, HeroGroupEvent.SwitchBalance, slot0._refreshUI, slot0)
 	slot0:removeEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnBuffSetupReply, slot0._refreshUI, slot0)
+	slot0:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, slot0._onModifyGroupSelectIndex, slot0)
 end
 
 function slot0._btncloseruleOnClick(slot0)
@@ -63,13 +65,18 @@ function slot0.onOpen(slot0)
 	slot0:_refreshUI()
 end
 
+function slot0._onModifyGroupSelectIndex(slot0)
+	if slot0._additionRule ~= slot0:_getAdditionRule() then
+		slot0:_refreshUI()
+	end
+end
+
 function slot0._getAdditionRule(slot0)
 	slot1 = ""
-	slot4 = WeekWalk_2Model.instance:getCurMapInfo() and slot2:getBattleInfoByBattleId(HeroGroupModel.instance.battleId)
-	slot5 = slot4 and slot4:getChooseSkillId()
+	slot5 = WeekWalk_2BuffListModel.getCurHeroGroupSkillId()
 	slot7 = lua_weekwalk_ver2_time.configDict[WeekWalk_2Model.instance:getInfo().issueId]
 
-	if slot4 then
+	if WeekWalk_2Model.instance:getCurMapInfo() and slot2:getBattleInfoByBattleId(HeroGroupModel.instance.battleId) then
 		slot1 = (slot4.index ~= WeekWalk_2Enum.BattleIndex.First or slot7.ruleFront) and slot7.ruleRear
 	end
 
@@ -106,9 +113,11 @@ function slot0._refreshUI(slot0)
 	end
 
 	slot7 = lua_battle.configDict[slot0._battleId]
+	slot8 = slot0:_getAdditionRule()
+	slot0._additionRule = slot8
 
 	if slot1.type == DungeonEnum.EpisodeType.Meilanni then
-		slot9 = uv0.meilanniExcludeRules(FightStrUtil.instance:getSplitString2Cache(slot0:_getAdditionRule(), true, "|", "#"))
+		slot9 = uv0.meilanniExcludeRules(FightStrUtil.instance:getSplitString2Cache(slot8, true, "|", "#"))
 	end
 
 	if not slot9 or #slot9 == 0 then

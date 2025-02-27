@@ -23,13 +23,11 @@ function slot0.initEpisodeStartTime(slot0, slot1)
 end
 
 function slot0.setSceneInfo(slot0, slot1)
-	slot9 = {
+	table.insert({}, {
 		id = 0,
 		x = slot1.transform.localPosition.x,
 		y = slot1.transform.localPosition.y
-	}
-
-	table.insert({}, slot9)
+	})
 
 	for slot9, slot10 in pairs(FeiLinShiDuoGameModel.instance:getElementMap()[FeiLinShiDuoEnum.ObjectType.Box]) do
 		table.insert(slot2, {

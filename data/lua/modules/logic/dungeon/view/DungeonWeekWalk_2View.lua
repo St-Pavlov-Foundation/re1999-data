@@ -180,9 +180,7 @@ function slot0._showProgress2(slot0)
 end
 
 function slot0._showBattleInfo(slot0, slot1, slot2, slot3)
-	slot7 = false
-
-	gohelper.setActive(slot2, slot7)
+	gohelper.setActive(slot2, false)
 
 	for slot7 = 1, WeekWalk_2Enum.MaxStar do
 		if not slot1[slot7] then
@@ -268,10 +266,9 @@ function slot0.getWeekTaskProgress()
 
 	for slot7, slot8 in ipairs(WeekWalkTaskListModel.instance:getList()) do
 		if WeekWalkTaskListModel.instance:getTaskMo(slot8.id) and (slot9.finishCount > 0 or slot9.hasFinished) then
-			slot14 = "|"
-			slot15 = "#"
+			slot14 = "#"
 
-			for slot14, slot15 in ipairs(GameUtil.splitString2(slot8.bonus, true, slot14, slot15)) do
+			for slot14, slot15 in ipairs(GameUtil.splitString2(slot8.bonus, true, "|", slot14)) do
 				slot18 = slot15[3]
 
 				if not slot2[string.format("%s_%s", slot15[1], slot15[2])] then
@@ -465,6 +462,12 @@ function slot0._onWeekwalk_2TaskUpdate(slot0)
 
 	gohelper.setActive(slot0._gobubbleReddot, slot2 > 0)
 
+	slot0._rewardAnimator = slot0._rewardAnimator or slot0._btnreward2.gameObject:GetComponent(typeof(UnityEngine.Animator))
+
+	if slot0._rewardAnimator then
+		slot0._rewardAnimator:Play(slot4 and "reward" or "idle")
+	end
+
 	if slot2 == 0 and slot3 == 0 then
 		gohelper.setActive(slot0._btnreward2, false)
 	end
@@ -518,6 +521,10 @@ function slot0._onOpenView(slot0, slot1)
 
 	if slot1 == ViewName.WeekWalkLayerView or slot1 == ViewName.WeekWalk_2HeartLayerView or slot1 == ViewName.StoreView then
 		if slot1 == ViewName.WeekWalk_2HeartLayerView then
+			if ViewMgr.instance:isOpen(ViewName.WeekWalk_2HeartView) then
+				return
+			end
+
 			slot0._viewAnim:Play("dungeonweekwalk_out2", 0, 0)
 		else
 			slot0._viewAnim:Play("dungeonweekwalk_out", 0, 0)

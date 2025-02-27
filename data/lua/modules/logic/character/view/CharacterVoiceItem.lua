@@ -35,13 +35,21 @@ function slot0._itemOnClick(slot0)
 		CharacterController.instance:dispatchEvent(CharacterEvent.StopVoice, slot0._audioId)
 	else
 		slot0:_setRandomVoiceId()
+		CharacterDataModel.instance:setPlayingInfo(slot0._audioId, slot0._defaultAudioId)
 		CharacterController.instance:dispatchEvent(CharacterEvent.PlayVoice, slot0._audioId)
 	end
 end
 
 function slot0._setRandomVoiceId(slot0)
 	if not slot0._multiVoiceList then
-		slot0._multiVoiceList = CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot0._mo.heroId, CharacterEnum.VoiceType.MultiVoice, SkinConfig.instance:getSkinCo(HeroModel.instance:getByHeroId(slot0._mo.heroId).skin).id)
+		slot7 = SkinConfig.instance:getSkinCo(HeroModel.instance:getByHeroId(slot0._mo.heroId).skin).id
+		slot0._multiVoiceList = {}
+
+		for slot7, slot8 in ipairs(CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot0._mo.heroId, CharacterEnum.VoiceType.MultiVoice, slot7)) do
+			if tonumber(slot8.param) == slot0._defaultAudioId then
+				table.insert(slot0._multiVoiceList, slot8)
+			end
+		end
 	end
 
 	slot1 = nil
@@ -58,8 +66,9 @@ end
 
 function slot0.onUpdateMO(slot0, slot1)
 	slot0._mo = slot1
+	slot0._multiVoiceList = nil
 	slot0._defaultAudioId = slot0._mo.id
-	slot0._audioId = slot0._mo.id
+	slot0._audioId = CharacterDataModel.instance:getPlayingAudioId(slot0._defaultAudioId) or slot0._defaultAudioId
 
 	transformhelper.setLocalScale(slot0._gostopicon.transform, 1, 1, 1)
 	slot0:_refreshItem()

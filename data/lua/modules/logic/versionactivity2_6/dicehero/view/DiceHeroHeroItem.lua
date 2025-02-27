@@ -41,10 +41,13 @@ function slot0.init(slot0, slot1)
 	slot0._goshieldeffect = gohelper.findChild(slot1, "root/#go_shield")
 	slot0._godamageeffect = gohelper.findChild(slot1, "root/#go_damage")
 	slot0._godeadeffect = gohelper.findChild(slot1, "root/#go_died")
+	slot0._shieldEffectAnim = gohelper.findChildAnim(slot1, "root/#simage_shieldbg")
 	slot0._gobigskilleffect = gohelper.findChild(slot1, "root/headbg/#go_bigskilltip")
 	slot0._gopassiveeffect = gohelper.findChild(slot1, "root/headbg/#go_passivetip")
 
 	recthelper.setHeight(slot0._gobufftip.transform, 275)
+	recthelper.setHeight(slot0._goskilltips.transform, 300)
+	recthelper.setHeight(slot0._gozaowutip.transform, 300)
 	slot0:refreshRelic()
 	slot0:refreshAll()
 	slot0._headicon:LoadImage(ResUrl.getHeadIconSmall(slot0:getHeroMo().co.icon))
@@ -84,6 +87,7 @@ function slot0._onClickHero(slot0)
 			return
 		end
 
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 		slot0:setActiveTips(slot0._goskilltips)
 		gohelper.CreateObjList(slot0, slot0._createSkillItem, slot3, nil, slot0._goskillitem)
 	else
@@ -110,6 +114,7 @@ function slot0._onLongClickHero(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	slot0:setActiveTips(slot0._goskilltips)
 	gohelper.CreateObjList(slot0, slot0._createSkillItem, slot3, nil, slot0._goskillitem)
 end
@@ -130,6 +135,7 @@ function slot0._showBuff(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	slot0:setActiveTips(slot0._gobufftip)
 	gohelper.CreateObjList(slot0, slot0._createBuffItem, slot2, nil, slot0._gobuffitem)
 end
@@ -181,6 +187,7 @@ function slot0._showRelic(slot0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_activity_open)
 	slot0:setActiveTips(slot0._gozaowutip)
 	gohelper.CreateObjList(slot0, slot0._createZaowuItem, slot3, nil, slot0._gozaowuitem)
 end
@@ -247,6 +254,14 @@ end
 function slot0.refreshBuff(slot0)
 	gohelper.CreateObjList(slot0, slot0._createBuff, slot0:getHeroMo().buffs, nil, slot0._buffItem)
 	slot0:refreshCanUseHeroSkill()
+
+	if slot0._gobufftip.activeSelf then
+		if #slot1 > 0 then
+			gohelper.CreateObjList(slot0, slot0._createBuffItem, slot1, nil, slot0._gobuffitem)
+		else
+			gohelper.setActive(slot0._gobufftip, false)
+		end
+	end
 end
 
 function slot0._createBuff(slot0, slot1, slot2, slot3)
@@ -292,6 +307,10 @@ function slot0.addShield(slot0, slot1)
 end
 
 function slot0.addPower(slot0, slot1)
+	if slot1 ~= 0 then
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_ideachange)
+	end
+
 	slot2 = slot0:getHeroMo()
 	slot2.power = slot2.power + slot1
 
@@ -313,6 +332,10 @@ function slot0.addPower(slot0, slot1)
 end
 
 function slot0.addMaxPower(slot0, slot1)
+	if slot1 ~= 0 then
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_ideachange)
+	end
+
 	slot2 = slot0:getHeroMo()
 	slot2.maxPower = slot2.maxPower + slot1
 
@@ -355,7 +378,13 @@ function slot0.refreshCanUseHeroSkill(slot0)
 	gohelper.setActive(slot0._gopassiveeffect, slot1:canUsePassiveSkill())
 end
 
-function slot0.getPos(slot0)
+function slot0.getPos(slot0, slot1)
+	if slot1 == 1 then
+		return slot0._shieldSlider.transform.position
+	elseif slot1 == 2 then
+		return slot0._powerItem.transform.parent.position
+	end
+
 	return slot0._headbgTrans.position
 end
 
@@ -372,6 +401,10 @@ function slot0.showEffect(slot0, slot1)
 	gohelper.setActive(slot0._godebuffeffect, slot1 == 2)
 	gohelper.setActive(slot0._goshieldeffect, slot1 == 3)
 	gohelper.setActive(slot0._godamageeffect, slot1 == 4)
+
+	if slot1 == 3 then
+		slot0._shieldEffectAnim:Play("light", 0, 0)
+	end
 end
 
 function slot0.onDestroy(slot0)

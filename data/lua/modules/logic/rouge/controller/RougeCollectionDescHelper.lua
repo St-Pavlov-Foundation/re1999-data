@@ -7,9 +7,6 @@ function slot0.setCollectionDescInfos(slot0, slot1, slot2, slot3, slot4)
 	slot4 = slot4 or uv0.getDefaultExtraParams_HasInst()
 
 	uv0._showCollectionDescs(slot1, slot2, slot3, uv0.buildCollectionInfos(slot3, slot0, nil, , slot4), slot4)
-	ZProj.UGUIHelper.RebuildLayout(slot1.transform)
-	gohelper.setActive(slot1, false)
-	gohelper.setActive(slot1, true)
 end
 
 function slot0.setCollectionDescInfos2(slot0, slot1, slot2, slot3, slot4, slot5)

@@ -7310,8 +7310,8 @@
   {
     "id": 8261004,
     "trialTemplate": 0,
-    "heroId": 3009,
-    "skin": 300902,
+    "heroId": 3047,
+    "skin": 304702,
     "trialType": 1,
     "level": 180,
     "exSkillLv": 2,
@@ -7322,14 +7322,14 @@
     "act104EquipId1": 0,
     "act104EquipId2": 0,
     "attrId": 0,
-    "facetsId": 300901,
+    "facetsId": 304701,
     "facetslevel": 4
   },
   {
     "id": 2261001,
     "trialTemplate": 0,
     "heroId": 3113,
-    "skin": 304102,
+    "skin": 311302,
     "trialType": 1,
     "level": 180,
     "exSkillLv": 2,

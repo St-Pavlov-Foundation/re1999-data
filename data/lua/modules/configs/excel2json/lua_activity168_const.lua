@@ -12,7 +12,8 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	mlValue = 1
+	value2 = 1,
+	mlValue = 2
 }
 
 return {

@@ -5,11 +5,10 @@ slot0 = class("DiceHeroMainView", BaseView)
 function slot0.onInitView(slot0)
 	slot0._btnTask = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Task")
 	slot0._gotaskred = gohelper.findChild(slot0.viewGO, "#btn_Task/#go_reddot")
-	slot4 = "#btn_Task/ani"
-	slot0._taskAnimator = gohelper.findChildAnim(slot0.viewGO, slot4)
+	slot0._taskAnimator = gohelper.findChildAnim(slot0.viewGO, "#btn_Task/ani")
 
 	for slot4 = 1, 5 do
-		slot0["_btnstage" .. slot4] = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_stage" .. slot4)
+		slot0["_btnstage" .. slot4] = gohelper.findChildButton(slot0.viewGO, "#btn_stage" .. slot4)
 		slot0["_lockAnim" .. slot4] = gohelper.findChildAnim(slot0.viewGO, "#btn_stage" .. slot4 .. "/lock")
 	end
 
@@ -17,9 +16,9 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot4 = slot0._onClickTask
+	slot4 = slot0
 
-	slot0._btnTask:AddClickListener(slot4, slot0)
+	slot0._btnTask:AddClickListener(slot0._onClickTask, slot4)
 
 	for slot4 = 1, 5 do
 		slot0["_btnstage" .. slot4]:AddClickListener(slot0._onClickStage, slot0, slot4)
@@ -65,6 +64,8 @@ end
 
 function slot0._onCloseViewFinish(slot0, slot1)
 	if slot1 == ViewName.DiceHeroLevelView and DiceHeroModel.instance.isUnlockNewChapter then
+		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_unclockchapter)
+
 		DiceHeroModel.instance.isUnlockNewChapter = false
 
 		slot0:_onInfoUpdate()

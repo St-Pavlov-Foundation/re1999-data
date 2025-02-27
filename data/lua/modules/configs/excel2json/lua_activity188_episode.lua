@@ -5,6 +5,7 @@ slot1 = {
 	preEpisodeId = 3,
 	gameId = 6,
 	storyId = 5,
+	resource = 7,
 	activityId = 1,
 	episodeId = 2
 }

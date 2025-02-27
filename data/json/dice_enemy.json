@@ -57,19 +57,19 @@
     "id": 10,
     "icon": 680401,
     "bufflist": "",
-    "hp": 32
+    "hp": 16
   },
   {
     "id": 11,
     "icon": 680402,
     "bufflist": "",
-    "hp": 32
+    "hp": 18
   },
   {
     "id": 12,
     "icon": 680403,
     "bufflist": "",
-    "hp": 40
+    "hp": 20
   },
   {
     "id": 13,
@@ -81,43 +81,43 @@
     "id": 14,
     "icon": 610205,
     "bufflist": "21",
-    "hp": 42
+    "hp": 21
   },
   {
     "id": 15,
     "icon": 610209,
     "bufflist": "",
-    "hp": 38
+    "hp": 19
   },
   {
     "id": 16,
     "icon": 610209,
     "bufflist": "",
-    "hp": 38
+    "hp": 19
   },
   {
     "id": 17,
     "icon": 610213,
     "bufflist": "",
-    "hp": 95
+    "hp": 60
   },
   {
     "id": 18,
     "icon": 690115,
     "bufflist": "",
-    "hp": 52
+    "hp": 26
   },
   {
     "id": 19,
     "icon": 690114,
     "bufflist": "",
-    "hp": 52
+    "hp": 26
   },
   {
     "id": 20,
     "icon": 630112,
     "bufflist": "",
-    "hp": 150
+    "hp": 70
   },
   {
     "id": 21,

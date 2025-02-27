@@ -27,6 +27,7 @@ function slot0._onSendReset(slot0)
 end
 
 function slot0.onOpen(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_alaifuchapter)
 	gohelper.setActive(slot0._gonormal, not slot0.viewParam.isInfinite)
 	gohelper.setActive(slot0._goinfinite, slot0.viewParam.isInfinite)
 	gohelper.setActive(slot0._btnReset, slot0.viewParam.isInfinite)

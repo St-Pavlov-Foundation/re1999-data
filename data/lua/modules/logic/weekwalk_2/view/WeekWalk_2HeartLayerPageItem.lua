@@ -81,9 +81,7 @@ function slot0._initChildNodes(slot0, slot1)
 end
 
 function slot0._initStarsList(slot0, slot1, slot2)
-	slot6 = false
-
-	gohelper.setActive(slot2, slot6)
+	gohelper.setActive(slot2, false)
 
 	for slot6 = 1, WeekWalk_2Enum.MaxStar do
 		slot7 = gohelper.cloneInPlace(slot2)
@@ -126,6 +124,7 @@ function slot0.playUnlockAnim(slot0)
 	gohelper.setActive(slot0._golock, true)
 	slot0._animator:Play("unlock", 0, 0)
 	TaskDispatcher.runDelay(slot0._unlockAnimDone, slot0, 1.5)
+	AudioMgr.instance:trigger(AudioEnum2_6.WeekWalk_2.play_ui_fight_artificial_unlock)
 end
 
 function slot0._unlockAnimDone(slot0)

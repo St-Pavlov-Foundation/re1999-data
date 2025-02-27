@@ -34,6 +34,8 @@ function slot0._onCacheFightProto(slot0, slot1, slot2)
 
 		if slot1 == FightEnum.CacheProtoType.Round then
 			slot0._lastRoundProto = slot3
+
+			ZProj.GameHelper.SetSystemBuffer(FightLogProtobufHelper.getFightRoundString(slot0._lastRoundProto.proto))
 		end
 	end
 end

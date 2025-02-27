@@ -127,10 +127,10 @@ function slot0.refreshEffect(slot0, slot1)
 end
 
 function slot0.refreshPointActive(slot0)
-	slot1, slot6 = FightDataHelper.paTaMgr:getAssistBossServerPower()
+	slot1, slot2 = FightDataHelper.paTaMgr:getAssistBossServerPower()
 
 	for slot6, slot7 in ipairs(slot0.pointList) do
-		gohelper.setActive(slot7.go, slot6 <= math.min(uv0.MaxPower, slot6))
+		gohelper.setActive(slot7.go, slot6 <= math.min(uv0.MaxPower, slot2))
 	end
 end
 

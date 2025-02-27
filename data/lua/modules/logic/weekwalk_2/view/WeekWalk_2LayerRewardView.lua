@@ -71,13 +71,22 @@ function slot0._showBattleInfo(slot0)
 end
 
 function slot0._showBattle(slot0, slot1, slot2)
-	slot3 = gohelper.findChild(slot1, "icon")
+	gohelper.setActive(gohelper.findChild(slot1, "icon"), false)
 
 	for slot7 = 1, WeekWalk_2Enum.MaxStar do
-		slot9 = gohelper.findChildImage(slot7 == 1 and slot3 or gohelper.cloneInPlace(slot3), "icon")
-		slot9.enabled = false
+		slot8 = gohelper.cloneInPlace(slot3)
 
-		WeekWalk_2Helper.setCupEffect(slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot9.gameObject), slot2:getCupInfo(slot7))
+		gohelper.setActive(slot8, true)
+
+		slot9 = gohelper.findChildImage(slot8, "icon")
+		slot9.enabled = false
+		slot10 = slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot9.gameObject)
+
+		if (slot2:getCupInfo(slot7) and slot11.result or WeekWalk_2Enum.CupType.None) == WeekWalk_2Enum.CupType.None then
+			slot12 = WeekWalk_2Enum.CupType.None2
+		end
+
+		WeekWalk_2Helper.setCupEffectByResult(slot10, slot12)
 	end
 
 	slot6 = slot2.status == WeekWalk_2Enum.BattleStatus.Finished

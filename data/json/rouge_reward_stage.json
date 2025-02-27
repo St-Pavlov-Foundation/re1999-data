@@ -154,5 +154,17 @@
     "jump": "",
     "openTime": "2025-2-1 05:00:00",
     "pointLimit": 208
+  },
+  {
+    "season": 1,
+    "stage": 14,
+    "preStage": 13,
+    "bigRewardId": 9,
+    "icon": "rouge_reward_reward9",
+    "name": "寻声黄昏",
+    "lockName": "",
+    "jump": "",
+    "openTime": "2025-2-27 05:00:00",
+    "pointLimit": 224
   }
 ]

@@ -22,10 +22,9 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	audioName = 1,
-	audioEvaluates = 4,
-	audioNameEn = 2,
-	audioIntroduce = 3
+	audioIntroduce = 2,
+	audioEvaluates = 3,
+	audioName = 1
 }
 
 return {

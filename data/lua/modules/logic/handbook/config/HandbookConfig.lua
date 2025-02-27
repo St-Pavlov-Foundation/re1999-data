@@ -41,7 +41,7 @@ function slot0._initCGConfig(slot0)
 		table.insert(slot0._cgList, slot5)
 	end
 
-	function slot4(slot0, slot1)
+	table.sort(slot0._cgList, function (slot0, slot1)
 		if slot0.storyChapterId ~= slot1.storyChapterId then
 			return uv0._sortBystoryChapterId(slot0.storyChapterId, slot1.storyChapterId)
 		end
@@ -51,9 +51,7 @@ function slot0._initCGConfig(slot0)
 		end
 
 		return slot0.id < slot1.id
-	end
-
-	table.sort(slot0._cgList, slot4)
+	end)
 
 	for slot4, slot5 in pairs(slot0._cgList) do
 		if string.len(tostring(slot5.storyChapterId)) >= 4 then

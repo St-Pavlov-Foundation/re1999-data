@@ -8,6 +8,7 @@ function slot0.ctor(slot0)
 	slot0.custom_playedCard = nil
 	slot0.custom_handCardIndex = nil
 	slot0.custom_color = FightEnum.CardColor.None
+	slot0.custom_fromSkillId = 0
 end
 
 function slot0.init(slot0, slot1)

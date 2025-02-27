@@ -135,7 +135,7 @@ function slot0.removeBuff(slot0, slot1)
 end
 
 function slot0.canUseHeroSkill(slot0)
-	if slot0.power ~= slot0.maxPower then
+	if slot0.power < slot0.maxPower then
 		return false
 	end
 
@@ -171,6 +171,16 @@ function slot0.canUsePassiveSkill(slot0)
 
 	for slot4, slot5 in ipairs(slot0.skills) do
 		if slot5.co.spiritskilltype == DiceHeroEnum.HeroCardType.PassiveSkill then
+			return true
+		end
+	end
+
+	return false
+end
+
+function slot0.haveBuff2(slot0)
+	for slot4, slot5 in pairs(slot0.buffsByUid) do
+		if slot5.co.id == 2 then
 			return true
 		end
 	end

@@ -88,9 +88,7 @@ function slot0.isPrimeNumber(slot0)
 	elseif slot0 == 1 or slot0 % 2 == 0 then
 		return false
 	else
-		slot5 = slot0
-
-		for slot5 = 3, math.floor(math.sqrt(slot5)) + 1, 2 do
+		for slot5 = 3, math.floor(math.sqrt(slot0)) + 1, 2 do
 			if slot0 % slot5 == 0 then
 				return false
 			end

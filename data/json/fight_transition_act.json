@@ -952,5 +952,29 @@
     "fromAct": "skill2",
     "endAct": "posture",
     "transitionAct": "channel_idle"
+  },
+  {
+    "id": 311301,
+    "fromAct": "idle",
+    "endAct": "posture",
+    "transitionAct": "change"
+  },
+  {
+    "id": 311302,
+    "fromAct": "idle",
+    "endAct": "posture",
+    "transitionAct": "change"
+  },
+  {
+    "id": 311301,
+    "fromAct": "posture",
+    "endAct": "idle",
+    "transitionAct": "change2"
+  },
+  {
+    "id": 311302,
+    "fromAct": "posture",
+    "endAct": "idle",
+    "transitionAct": "change2"
   }
 ]
