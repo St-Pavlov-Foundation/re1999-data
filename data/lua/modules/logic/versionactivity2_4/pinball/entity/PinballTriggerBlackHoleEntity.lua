@@ -21,10 +21,8 @@ function slot0.onHitEnter(slot0, slot1, slot2, slot3, slot4)
 	end
 
 	slot6 = nil
-	slot9 = PinballEntityMgr.instance
-	slot11 = slot9
 
-	for slot10, slot11 in pairs(slot9.getAllEntity(slot11)) do
+	for slot10, slot11 in pairs(PinballEntityMgr.instance:getAllEntity()) do
 		if slot11 ~= slot0 and slot11.unitType == slot0.unitType and slot11.groupId == slot0.groupId then
 			slot6 = slot11
 

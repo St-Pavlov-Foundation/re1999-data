@@ -5,15 +5,12 @@ slot0 = class("XugoujiGameStepHpUpdate", XugoujiGameStepBase)
 function slot0.start(slot0)
 	Activity188Model.instance:updateHp(slot0._stepData.isSelf, slot0._stepData.hpChange)
 	XugoujiController.instance:dispatchEvent(XugoujiEvent.HpUpdated)
-	TaskDispatcher.runDelay(slot0.finish, slot0, 0.5)
+	slot0:finish()
 end
 
-function slot0.finish(slot0)
-	if XugoujiGameStepController.instance then
-		-- Nothing
-	end
-
-	uv0.super.finish(slot0)
+function slot0.dispose(slot0)
+	TaskDispatcher.cancelTask(slot0.finish, slot0)
+	XugoujiGameStepBase.dispose(slot0)
 end
 
 return slot0

@@ -156,11 +156,15 @@ end
 
 function slot0._btnclickOnClick(slot0, slot1)
 	if slot1.dialogIdList then
-		ViewMgr.instance:openView(ViewName.DungeonFragmentInfoView, {
-			isFromHandbook = true,
-			fragmentId = slot1.fragmentId,
-			dialogIdList = slot1.dialogIdList
-		})
+		if lua_chapter_map_fragment.configDict[slot1.fragmentId].type == DungeonEnum.FragmentType.AvgStory then
+			StoryController.instance:playStory(tonumber(DungeonConfig.instance:getMapElementByFragmentId(slot2).param))
+		else
+			ViewMgr.instance:openView(ViewName.DungeonFragmentInfoView, {
+				fragmentId = slot2,
+				dialogIdList = slot1.dialogIdList,
+				isFromHandbook = true
+			})
+		end
 	else
 		GameFacade.showToast(ToastEnum.HandBook2)
 	end

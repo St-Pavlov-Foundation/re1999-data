@@ -1572,7 +1572,7 @@
     "sortId": 1,
     "bonus": "2#2#20",
     "bonusMail": 2001,
-    "periods": "16#999"
+    "periods": "43#999"
   },
   {
     "id": 72126,
@@ -1587,7 +1587,7 @@
     "sortId": 2,
     "bonus": "2#2#20",
     "bonusMail": 2001,
-    "periods": "16#999"
+    "periods": "43#999"
   },
   {
     "id": 72127,
@@ -1602,7 +1602,7 @@
     "sortId": 3,
     "bonus": "2#2#30",
     "bonusMail": 2001,
-    "periods": "16#999"
+    "periods": "43#999"
   },
   {
     "id": 72128,
@@ -1617,6 +1617,6 @@
     "sortId": 4,
     "bonus": "2#2#30|2#3#5000",
     "bonusMail": 2001,
-    "periods": "16#999"
+    "periods": "43#999"
   }
 ]

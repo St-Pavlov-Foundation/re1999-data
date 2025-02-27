@@ -49,6 +49,7 @@ function slot0.addEvents(slot0)
 	slot0._btnnext:AddClickListener(slot0._btnnextOnClick, slot0)
 	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot0)
 	slot0._btnpage:AddClickListener(slot0._btnpageOnClick, slot0)
+	slot0:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, slot0.onDungeonUpdate, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -56,6 +57,7 @@ function slot0.removeEvents(slot0)
 	slot0._btnnext:RemoveClickListener()
 	slot0._btngoto:RemoveClickListener()
 	slot0._btnpage:RemoveClickListener()
+	slot0:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, slot0.onDungeonUpdate, slot0)
 end
 
 function slot0._btnpageOnClick(slot0)
@@ -65,8 +67,9 @@ function slot0._btnpageOnClick(slot0)
 end
 
 function slot0._btngotoOnClick(slot0)
-	if not string.nilorempty(slot0._lastEpisodeId) then
-		JumpController.instance:jumpTo(JumpEnum.JumpView.DungeonViewWithEpisode .. "#" .. slot0._lastEpisodeId)
+	if not string.nilorempty(slot0._jumpEpisodeId) then
+		JumpController.instance:jumpTo(JumpEnum.JumpView.DungeonViewWithEpisode .. "#" .. slot0._jumpEpisodeId)
+		TaskDispatcher.cancelTask(slot0.autoSwitch, slot0)
 	end
 end
 
@@ -95,30 +98,36 @@ end
 
 function slot0._onDragEnd(slot0, slot1, slot2)
 	if slot0._startPos < slot2.position.x and slot3 - slot0._startPos >= 100 then
-		slot0:_btnnextOnClick()
+		slot0:_btnprevOnClick(true)
 	elseif slot3 < slot0._startPos and slot0._startPos - slot3 >= 100 then
-		slot0:_btnprevOnClick()
+		slot0:_btnnextOnClick(true)
 	end
 end
 
 function slot0._focusItem(slot0)
-	slot2 = 428
+	if #slot0._topItemList * 428 - recthelper.getWidth(slot0._scrollTabList.transform) < 0 then
+		return
+	end
 
-	if #slot0._topItemList * slot2 - recthelper.getWidth(slot0._scrollTabList.transform) >= (slot0._selectChapter - 1) * slot2 then
+	if slot5 >= (slot0._selectChapter - 1) * slot2 then
 		ZProj.TweenHelper.DOAnchorPosX(slot0._trstabitemContent, -(slot0._selectChapter - 1) * slot2, 0.26)
 	else
 		ZProj.TweenHelper.DOAnchorPosX(slot0._trstabitemContent, -slot5, 0.26)
 	end
 end
 
-function slot0._btnprevOnClick(slot0)
-	slot1, slot2 = slot0:getFirstCGIdAndEpisodeId(slot0._selectChapter)
+function slot0._btnprevOnClick(slot0, slot1)
+	slot2, slot3 = slot0:getFirstCGIdAndEpisodeId(slot0._selectChapter)
 
-	if slot1 == slot0._cgId and slot0._selectChapter ~= slot0._unlockChapterList[1] then
-		slot0._selectChapter = slot0._selectChapter - 1
-
-		if slot0._selectChapter == 7 then
+	if slot2 == slot0._cgId then
+		if slot0._selectChapter ~= slot0._unlockChapterList[1] then
 			slot0._selectChapter = slot0._selectChapter - 1
+
+			if slot0._selectChapter == 7 then
+				slot0._selectChapter = slot0._selectChapter - 1
+			end
+		else
+			slot0._selectChapter = slot0._unlockChapterList[#slot0._unlockChapterList]
 		end
 
 		slot0:_focusItem()
@@ -128,15 +137,21 @@ function slot0._btnprevOnClick(slot0)
 		return
 	end
 
-	slot0._cgId = slot3.id
-	slot0._episodeId = slot3.episodeId
+	slot0._cgId = slot4.id
+	slot0._episodeId = slot4.episodeId
 	slot0._cimagecg.enabled = false
 	slot0._cimagecgold.enabled = false
 
 	gohelper.setActive(slot0._gomasknode, false)
 	gohelper.setActive(slot0._gomasknodeold, false)
 	slot0:_refreshTop()
-	slot0._animator:Play("switch_left", 0, 0)
+
+	if slot1 then
+		slot0._animator:Play("switch_right", 0, 0)
+	else
+		slot0._animator:Play("switch_left", 0, 0)
+	end
+
 	TaskDispatcher.runDelay(slot0._afterPlayAnim, slot0, 0.16)
 end
 
@@ -153,12 +168,12 @@ function slot0._afterPlayAnim(slot0)
 	slot0:autoMoveBanner()
 end
 
-function slot0._btnnextOnClick(slot0)
-	slot1 = HandbookConfig.instance:getCGDictByChapter(slot0._selectChapter)
-	slot3 = false
+function slot0._btnnextOnClick(slot0, slot1)
+	slot2 = HandbookConfig.instance:getCGDictByChapter(slot0._selectChapter)
+	slot4 = false
 
 	if slot0._selectChapter ~= slot0._unlockChapterList[#slot0._unlockChapterList] then
-		if slot1[#slot1].id == slot0._cgId then
+		if slot2[#slot2].id == slot0._cgId then
 			slot0._selectChapter = slot0._selectChapter + 1
 
 			if slot0._selectChapter == 7 then
@@ -167,33 +182,39 @@ function slot0._btnnextOnClick(slot0)
 
 			slot0:_focusItem()
 		end
-	elseif slot2 == slot0._cgId then
-		slot3 = true
+	elseif HandbookModel.instance:getCGUnlockCount(slot0._selectChapter, slot0._cgType) == HandbookModel.instance:getCGUnlockIndexInChapter(slot0._selectChapter, slot0._cgId, slot0._cgType) then
+		slot4 = true
 		slot0._selectChapter = 1
 		slot0._cgId = HandbookConfig.instance:getCGDictByChapter(slot0._selectChapter)[1].id
 
 		slot0:_focusItem()
 	end
 
-	slot4 = HandbookModel.instance:getNextCG(slot0._cgId, slot0._cgType)
+	slot5 = HandbookModel.instance:getNextCG(slot0._cgId, slot0._cgType)
 
-	if slot3 then
-		slot4 = HandbookConfig.instance:getCGConfig(slot0._cgId)
+	if slot4 then
+		slot5 = HandbookConfig.instance:getCGConfig(slot0._cgId)
 	end
 
-	if not slot4 then
+	if not slot5 then
 		return
 	end
 
-	slot0._cgId = slot4.id
-	slot0._episodeId = slot4.episodeId
+	slot0._cgId = slot5.id
+	slot0._episodeId = slot5.episodeId
 	slot0._cimagecg.enabled = false
 	slot0._cimagecgold.enabled = false
 
 	gohelper.setActive(slot0._gomasknode, false)
 	gohelper.setActive(slot0._gomasknodeold, false)
 	slot0:_refreshTop()
-	slot0._animator:Play("switch_right", 0, 0)
+
+	if slot1 then
+		slot0._animator:Play("switch_left", 0, 0)
+	else
+		slot0._animator:Play("switch_right", 0, 0)
+	end
+
 	TaskDispatcher.runDelay(slot0._afterPlayAnim, slot0, 0.16)
 end
 
@@ -214,32 +235,33 @@ function slot0._initTop(slot0)
 		end
 	end
 
-	for slot4, slot5 in pairs(slot0._dungeonChapterDict) do
-		table.insert(slot0._dungeonChapterList, HandbookConfig.instance:getStoryChapterConfig(slot4))
+	for slot4, slot5 in pairs(slot0._unlockChapterList) do
+		table.insert(slot0._dungeonChapterList, HandbookConfig.instance:getStoryChapterConfig(slot5))
 	end
 
 	slot0._selectChapter = slot0._unlockChapterList[#slot0._unlockChapterList]
-	slot4 = slot0._selectChapter
-	slot0._cgId, slot0._episodeId = slot0:getFirstCGIdAndEpisodeId(slot4)
+	slot0._cgId, slot0._episodeId = slot0:getFirstCGIdAndEpisodeId(slot0._selectChapter)
 
 	for slot4, slot5 in ipairs(slot0._dungeonChapterList) do
-		slot6 = slot0:getUserDataTb_()
-		slot6.go = gohelper.cloneInPlace(slot0._gotabitem, "chapter" .. slot5.id)
+		if not slot0._topItemList[slot4] then
+			slot6 = slot0:getUserDataTb_()
+			slot6.go = gohelper.cloneInPlace(slot0._gotabitem, "chapter" .. slot5.id)
 
-		gohelper.setActive(slot6.go, true)
+			gohelper.setActive(slot6.go, true)
 
-		slot6.config = slot5
-		slot6.chapterId = slot5.id
-		slot6.golock = gohelper.findChild(slot6.go, "Locked")
-		slot6.txtlockname = gohelper.findChildText(slot6.go, "Locked/#txt_lockedtab")
-		slot6.gounlock = gohelper.findChild(slot6.go, "Unlock")
-		slot6.goselected = gohelper.findChild(slot6.go, "Unlock/image_Selected")
-		slot6.gonormal = gohelper.findChild(slot6.go, "Unlock/image_Normal")
-		slot6.txtunlockname = gohelper.findChildText(slot6.go, "Unlock/#txt_unlocktab")
-		slot6.btn = gohelper.findChildButton(slot6.go, "btn_click")
+			slot6.config = slot5
+			slot6.chapterId = slot5.id
+			slot6.golock = gohelper.findChild(slot6.go, "Locked")
+			slot6.txtlockname = gohelper.findChildText(slot6.go, "Locked/#txt_lockedtab")
+			slot6.gounlock = gohelper.findChild(slot6.go, "Unlock")
+			slot6.goselected = gohelper.findChild(slot6.go, "Unlock/image_Selected")
+			slot6.gonormal = gohelper.findChild(slot6.go, "Unlock/image_Normal")
+			slot6.txtunlockname = gohelper.findChildText(slot6.go, "Unlock/#txt_unlocktab")
+			slot6.btn = gohelper.findChildButton(slot6.go, "btn_click")
 
-		slot6.btn:AddClickListener(slot0._btnTopOnClick, slot0, slot6)
-		table.insert(slot0._topItemList, slot6)
+			slot6.btn:AddClickListener(slot0._btnTopOnClick, slot0, slot6)
+			table.insert(slot0._topItemList, slot6)
+		end
 
 		slot6.txtlockname.text = slot5.name
 		slot6.txtunlockname.text = slot5.name
@@ -283,9 +305,16 @@ function slot0.getEpisodeName(slot0, slot1)
 		end
 	end
 
+	slot5 = slot3.chapterIndex
 	slot6, slot7 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(slot3.id, slot2.id)
 
-	return string.format("%s-%s %s", slot3.chapterIndex, slot6, slot2.name)
+	if not slot0._jumpEpisodeId then
+		slot0._jumpEpisodeId = slot2.id
+	else
+		slot0._jumpEpisodeId = slot0._lastEpisodeId
+	end
+
+	return string.format("%s-%s %s", slot5, slot6, slot2.name)
 end
 
 function slot0.getFirstCGIdAndEpisodeId(slot0, slot1)
@@ -320,9 +349,11 @@ function slot0.onOpen(slot0)
 	slot0:_initRightBtn()
 	slot0:_focusItem()
 	slot0:autoMoveBanner()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_paiqian_open)
 end
 
 function slot0._initRightBtn(slot0)
+	slot0._jumpEpisodeId = nil
 	slot0.playerInfo = PlayerModel.instance:getPlayinfo()
 	slot0._lastEpisodeId = slot0.playerInfo.lastEpisodeId
 	slot0._txtcurchapter.text = slot0:getEpisodeName(slot0._lastEpisodeId)
@@ -444,10 +475,16 @@ function slot0.autoSwitch(slot0)
 	slot0:_btnnextOnClick()
 end
 
-function slot0.onClose(slot0)
-	slot4 = "loadZone"
+function slot0.onDungeonUpdate(slot0)
+	slot0:_initTop()
+	slot0:_refreshUI()
+	slot0:_initRightBtn()
+	slot0:_focusItem()
+	slot0:autoMoveBanner()
+end
 
-	UIBlockMgr.instance:endBlock(slot4)
+function slot0.onClose(slot0)
+	UIBlockMgr.instance:endBlock("loadZone")
 	slot0._drag:RemoveDragBeginListener()
 	slot0._drag:RemoveDragEndListener()
 

@@ -275,9 +275,8 @@ function slot0._editableInitView(slot0)
 	gohelper.addUIClickAudio(slot0._btnReplay.gameObject, AudioEnum.UI.Play_UI_Player_Interface_Close)
 
 	slot0._iconGO = slot0:getResInst(slot0.viewContainer:getSetting().otherRes[1], slot0._btncloth.gameObject)
-	slot5 = 1
 
-	recthelper.setAnchor(slot0._iconGO.transform, -100, slot5)
+	recthelper.setAnchor(slot0._iconGO.transform, -100, 1)
 
 	slot0._tweeningId = 0
 	slot0._replayMode = false
@@ -880,7 +879,7 @@ function slot0._checkEnterFight(slot0)
 		return
 	end
 
-	if not WeekWalk_2Model.instance:getCurMapInfo():getBattleInfoByBattleId(HeroGroupModel.instance.battleId):getChooseSkillId() then
+	if not WeekWalk_2BuffListModel.getCurHeroGroupSkillId() then
 		MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.WeekWalk_2NoBuff, MsgBoxEnum.BoxType.Yes_No, slot0._enterFight, nil, , slot0)
 
 		return

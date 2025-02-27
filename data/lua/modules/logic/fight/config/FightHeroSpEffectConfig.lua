@@ -12,7 +12,10 @@ function slot0.reqConfigNames(slot0)
 		"fight_sp_effect_kkny_bear_damage_hit",
 		"fight_sp_effect_bkle",
 		"fight_sp_effect_ly",
-		"fight_sp_effect_alf"
+		"fight_sp_effect_alf",
+		"fight_sp_effect_alf_timeline",
+		"fight_sp_effect_alf_add_card",
+		"fight_sp_effect_ddg"
 	}
 end
 
@@ -42,9 +45,7 @@ function slot0.initBKLERandomList(slot0, slot1)
 
 	tabletool.clear(slot0.BKLEEffectList)
 
-	slot7 = "|"
-
-	for slot7, slot8 in pairs(FightStrUtil.instance:getSplitCache(lua_fight_sp_effect_bkle.configDict[slot1].path, slot7)) do
+	for slot7, slot8 in pairs(FightStrUtil.instance:getSplitCache(lua_fight_sp_effect_bkle.configDict[slot1].path, "|")) do
 		slot0.BKLEEffectList[slot7] = slot8
 	end
 end

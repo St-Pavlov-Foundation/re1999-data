@@ -3,7 +3,7 @@ module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroEnterView", packa
 slot0 = class("DiceHeroEnterView", VersionActivityEnterBaseSubView)
 
 function slot0.onInitView(slot0)
-	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Enter")
+	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Enter", AudioEnum2_6.DiceHero.play_ui_wenming_alaifugameplay)
 	slot0._btnLocked = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Locked")
 	slot0._txtLimitTime = gohelper.findChildText(slot0.viewGO, "Right/image_LimitTimeBG/#txt_LimitTime")
 	slot0._txtLockTxt = gohelper.findChildTextMesh(slot0.viewGO, "Right/#btn_Locked/#txt_UnLocked")

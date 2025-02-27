@@ -43,9 +43,7 @@ function slot0.mathReplyRule(slot0, slot1)
 		return true
 	end
 
-	slot7 = true
-
-	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, slot7)) do
+	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, true)) do
 		if slot8[1] == FightEnum.ASFDReplyRule.HasSkin then
 			if not uv0.checkHasSkinRule(slot8, slot0) then
 				return false
@@ -138,12 +136,14 @@ function slot0.getStartPos(slot0)
 	return Vector3(slot0 == FightEnum.EntitySide.MySide and slot4 - slot6.x or slot4 + slot6.x, slot5 + slot6.y, slot3)
 end
 
-function slot0.getEndPos(slot0)
+function slot0.getEndPos(slot0, slot1)
+	slot1 = slot1 or FightASFDConfig.instance.hitHangPoint
+
 	if not FightHelper.getEntity(slot0):getHangPoint(FightASFDConfig.instance.hitHangPoint) then
 		return Vector3(0, 0, 0)
 	end
 
-	return slot2.transform.position
+	return slot3.transform.position
 end
 
 function slot0.getRandomValue()
@@ -230,9 +230,7 @@ function slot0._checkHasHeroId()
 
 	tabletool.clear(slot1)
 
-	slot5 = slot1
-
-	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot5)) do
+	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot1)) do
 		if slot6:isCharacter() and slot6.modelId == 3041 then
 			return true
 		end

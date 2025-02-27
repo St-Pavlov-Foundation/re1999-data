@@ -201,6 +201,7 @@ function slot0.refreshExtraPoint(slot0, slot1)
 	gohelper.setActive(slot0._txtextrapoint.gameObject, slot0._targetExtraAddPoint > 0)
 
 	if slot0._targetExtraAddPoint > 0 then
+		AudioMgr.instance:trigger(AudioEnum.UI.RougeAddExtraPoint)
 		slot0:frameExtraPointFunc(slot0._originExtraAddPoint)
 		TaskDispatcher.cancelTask(slot0.tweenExtraPoint, slot0)
 		TaskDispatcher.runDelay(slot0.tweenExtraPoint, slot0, uv0)

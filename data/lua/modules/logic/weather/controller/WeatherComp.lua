@@ -340,9 +340,10 @@ end
 
 function slot0.updateReport(slot0, slot1)
 	slot2, slot3 = WeatherModel.instance:getReport()
+	slot4, slot5 = xpcall(slot0._getWelcomeReport, __G__TRACKBACK__, slot0)
 
-	if slot0:_getWelcomeReport() then
-		slot2 = slot4
+	if slot4 and slot5 then
+		slot2 = slot5
 		slot3 = 3600
 	end
 

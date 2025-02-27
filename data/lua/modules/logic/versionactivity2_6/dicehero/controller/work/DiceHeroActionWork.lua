@@ -15,6 +15,7 @@ function slot0.onStart(slot0, slot1)
 		slot2:playHitAnim()
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardrelease)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 1)
 end
 

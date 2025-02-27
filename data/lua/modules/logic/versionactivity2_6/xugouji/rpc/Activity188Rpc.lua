@@ -39,7 +39,9 @@ end
 
 function slot0.onReceiveAct188EpisodePush(slot0, slot1, slot2)
 	if slot1 == 0 then
-		Activity188Model.instance:onEpisodeInfoUpdate(slot2.episodeId, slot2.isFinished)
+		for slot7, slot8 in ipairs(slot2.episodes) do
+			Activity188Model.instance:onEpisodeInfoUpdate(slot8.episodeId, slot8.isFinished)
+		end
 
 		if slot0._episodePushCb then
 			slot0._episodePushCb(slot0._episodePushCbObj)
@@ -61,31 +63,6 @@ function slot0.onReceiveAct188StoryReply(slot0, slot1, slot2)
 	end
 end
 
-function slot0.sendStartAct168BattleRequest(slot0, slot1, slot2, slot3)
-	slot4 = Activity188Module_pb.StartAct168BattleRequest()
-	slot4.activityId = slot1
-	slot5 = FightModel.instance:getFightParam()
-
-	DungeonRpc.instance:packStartDungeonRequest(slot4.startDungeonRequest, slot5.chapterId, slot5.episodeId, slot5, slot5.multiplication, nil, , false)
-	slot0:sendMsg(slot4, slot2, slot3)
-end
-
-function slot0.onReceiveStartAct188BattleReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		slot4 = Season166HeroGroupModel.instance:getEpisodeConfigId(Activity188Model.instance:getCurBattleEpisodeId())
-
-		if DungeonConfig.instance:getEpisodeCO(DungeonModel.instance.curSendEpisodeId) and DungeonModel.isBattleEpisode(slot5) then
-			DungeonFightController.instance:onReceiveStartDungeonReply(slot1, slot2.startDungeonReply)
-		end
-	end
-end
-
-function slot0.onReceiveAct168BattleFinishPush(slot0, slot1, slot2)
-	if slot1 == 0 and Activity168Config.instance:getEpisodeCfg(Activity188Model.instance:getCurActId(), Activity188Model.instance:getCurEpisodeId()).storyClear ~= 0 then
-		slot0:sendAct168StoryRequest(slot4)
-	end
-end
-
 function slot0.sendAct188ReverseCardRequest(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot6 = Activity188Module_pb.Act188ReverseCardRequest()
 	slot6.activityId = slot1
@@ -104,40 +81,6 @@ end
 function slot0.onReceiveAct188StepPush(slot0, slot1, slot2)
 	if slot1 == 0 then
 		XugoujiGameStepController.instance:insertStepList(slot2.steps)
-	end
-end
-
-function slot0.sendAct168GameSettleRequest(slot0, slot1, slot2, slot3)
-	slot4 = Activity188Module_pb.Act168GameSettleRequest()
-	slot4.activityId = slot1
-
-	slot0:sendMsg(slot4, slot2, slot3)
-end
-
-function slot0.onReceiveAct168GameSettleReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		-- Nothing
-	end
-end
-
-function slot0.SetGameSettlePushCallback(slot0, slot1, slot2)
-	slot0._onGameSettlePush = slot1
-	slot0._settlePushCallbackObj = slot2
-end
-
-function slot0.onReceiveAct168GameSettlePush(slot0, slot1, slot2)
-	if slot1 == 0 then
-		Activity188Model.instance:setCurActionPoint(slot2.power)
-
-		if slot0._onGameSettlePush then
-			slot0._onGameSettlePush(slot0._settlePushCallbackObj, {
-				settleReason = slot2.settleReason,
-				episodeId = slot2.episodeId,
-				power = slot2.power,
-				cellCount = slot2.cellCount,
-				totalItems = slot2.totalAct168Items
-			})
-		end
 	end
 end
 

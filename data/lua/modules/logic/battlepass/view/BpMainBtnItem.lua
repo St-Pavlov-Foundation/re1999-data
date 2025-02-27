@@ -7,7 +7,7 @@ function slot0.init(slot0, slot1)
 end
 
 function slot0.onInit(slot0, slot1)
-	slot0._btnitem = gohelper.getClickWithAudio(slot0._imgGo, AudioEnum.UI.play_ui_role_pieces_open)
+	slot0._btnitem = gohelper.getClickWithAudio(slot0._imgGo, AudioEnum2_6.BP.MainBtn)
 
 	if BpConfig.instance:getBpCO(BpModel.instance.id) and slot2.isSp then
 		gohelper.setActive(gohelper.findChild(slot0.go, "link"), true)
@@ -58,7 +58,7 @@ function slot0._initReddotitem(slot0)
 
 	slot5 = gohelper.findChild(slot2, "#go_bp_red")
 	slot0._redDot = RedDotController.instance:addRedDotTag(slot5, RedDotEnum.DotNode.BattlePass, false, slot0._onRefreshDot, slot0)
-	slot0._btnitem2 = gohelper.getClickWithAudio(slot5, AudioEnum.UI.play_ui_role_pieces_open)
+	slot0._btnitem2 = gohelper.getClickWithAudio(slot5, AudioEnum2_6.BP.MainBtn)
 end
 
 function slot0._onRefreshDot(slot0, slot1)

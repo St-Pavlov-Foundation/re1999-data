@@ -238,7 +238,7 @@ function slot0.onUpdateMO(slot0, slot1, slot2)
 		end
 
 		slot0._audioId = slot3.audios[1] or 0
-		slot0._txtcontent.text = StoryTool.filterSpTag(StoryModel.instance:getStoryTxtByVoiceType(StoryTool.getFilterDia(slot4), slot0._audioId))
+		slot0._txtcontent.text = StoryTool.filterSpTag(string.gsub(string.gsub(StoryModel.instance:getStoryTxtByVoiceType(StoryTool.getFilterDia(slot4), slot0._audioId), "<glitch>", "<i><b>"), "</glitch>", "</i></b>"))
 
 		if slot3.type ~= StoryEnum.ConversationType.Aside then
 			gohelper.setActive(slot0._gonorole, false)
@@ -378,10 +378,10 @@ function slot0.onDestroy(slot0)
 	slot0._btnstop:RemoveClickListener()
 	StoryController.instance:unregisterCallback(StoryEvent.LogSelected, slot0._onItemSelected, slot0)
 
-	slot4 = StoryEvent.LogAudioFinished
-	slot5 = slot0._onItemAudioFinished
+	slot4 = slot0._onItemAudioFinished
+	slot5 = slot0
 
-	StoryController.instance:unregisterCallback(slot4, slot5, slot0)
+	StoryController.instance:unregisterCallback(StoryEvent.LogAudioFinished, slot4, slot5)
 
 	for slot4, slot5 in ipairs(slot0._simagebranchs) do
 		slot0._simagebranchs[slot4]:UnLoadImage()

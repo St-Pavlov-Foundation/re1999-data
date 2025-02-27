@@ -26,8 +26,8 @@ end
 function slot0.initConfigData(slot0, slot1)
 	slot0:reInit()
 
-	slot5 = tostring(slot1)
-	slot0.mapConfigData = addGlobalModule("modules.configs.feilinshiduo.lua_feilinshiduo_map_" .. slot5)
+	slot5 = slot1
+	slot0.mapConfigData = addGlobalModule("modules.configs.feilinshiduo.lua_feilinshiduo_map_" .. tostring(slot5))
 	slot0.mapConfig = slot0.mapConfigData.mapConfig
 
 	for slot5, slot6 in ipairs(slot0.mapConfig) do

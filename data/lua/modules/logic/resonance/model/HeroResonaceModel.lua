@@ -32,9 +32,8 @@ function slot0.decodeLayoutShareCode(slot0, slot1)
 	slot2 = Base64Util.decode(slot1)
 	slot3 = {}
 	slot4 = string.byte(slot2, 1)
-	slot8 = slot2
 
-	for slot8 = 1, string.len(slot8) / 2 do
+	for slot8 = 1, string.len(slot2) / 2 do
 		if not string.byte(slot2, slot8 * 2) or not string.byte(slot2, slot8 * 2 + 1) then
 			return
 		end
@@ -67,17 +66,14 @@ function slot0.canUseLayoutShareCode(slot0, slot1, slot2)
 		return
 	end
 
-	slot9 = slot1.heroId
-	slot10 = slot1.talent
-	slot4 = string.splitToNumber(HeroResonanceConfig.instance:getTalentAllShape(slot9, slot10), ",")
+	slot4 = string.splitToNumber(HeroResonanceConfig.instance:getTalentAllShape(slot1.heroId, slot1.talent), ",")
 	slot5 = {}
 
 	for slot9, slot10 in ipairs(slot3) do
 		if HeroResonanceConfig.instance:getCubeConfigNotError(slot10.cubeId) then
-			slot17 = ","
 			slot13 = {}
 
-			for slot17 = 1, #GameUtil.splitString2(slot11.shape, true, "#", slot17) do
+			for slot17 = 1, #GameUtil.splitString2(slot11.shape, true, "#", ",") do
 				for slot21 = 1, #slot12[slot17] do
 					if not slot13[slot17 - 1] then
 						slot13[slot17 - 1] = {}
@@ -121,12 +117,8 @@ function slot0.getMatrixRange(slot0, slot1, slot2)
 	slot4 = 0
 
 	if slot1 then
-		slot8 = slot1
-
-		for slot8 = 0, GameUtil.getTabLen(slot8) - 1 do
-			slot13 = slot1[slot8]
-
-			for slot13 = 0, GameUtil.getTabLen(slot13) - 1 do
+		for slot8 = 0, GameUtil.getTabLen(slot1) - 1 do
+			for slot13 = 0, GameUtil.getTabLen(slot1[slot8]) - 1 do
 				if slot9[slot13] == 1 then
 					if slot3 < slot13 then
 						slot3 = slot13

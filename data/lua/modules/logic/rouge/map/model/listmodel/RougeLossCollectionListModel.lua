@@ -19,9 +19,7 @@ function slot0.initList(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot0.extraTagFilterMap = slot4
 
 	for slot9, slot10 in ipairs(slot2) do
-		slot16 = slot5
-
-		slot0:addCollection(slot10.id, slot10.cfgId, slot16)
+		slot0:addCollection(slot10.id, slot10.cfgId, slot5)
 
 		for slot16, slot17 in ipairs(slot10:getAllEnchantId()) do
 			slot0:addCollection(slot17, slot10:getAllEnchantCfgId()[slot16], slot5)

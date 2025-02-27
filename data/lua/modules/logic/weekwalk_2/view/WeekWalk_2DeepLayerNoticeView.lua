@@ -8,12 +8,14 @@ function slot0.onInitView(slot0)
 	slot0._simagemask = gohelper.findChildSingleImage(slot0.viewGO, "#simage_mask")
 	slot0._simagebg2 = gohelper.findChildSingleImage(slot0.viewGO, "#simage_bg2")
 	slot0._txtlastprogress = gohelper.findChildText(slot0.viewGO, "rule/#txt_lastprogress")
+	slot0._txtlastprogress2 = gohelper.findChildText(slot0.viewGO, "rule/#txt_lastprogress2")
 	slot0._imageruleicon = gohelper.findChildImage(slot0.viewGO, "rule/ruleinfo/#image_ruleicon")
 	slot0._imageruletag = gohelper.findChildImage(slot0.viewGO, "rule/ruleinfo/#image_ruletag")
 	slot0._txtruledesc = gohelper.findChildText(slot0.viewGO, "rule/ruleinfo/#txt_ruledesc")
 	slot0._simageruledescicon = gohelper.findChildSingleImage(slot0.viewGO, "rule/ruleinfo/mask/#simage_ruledescicon")
 	slot0._scrollrewards = gohelper.findChildScrollRect(slot0.viewGO, "rewards/#scroll_rewards")
 	slot0._gorewarditem = gohelper.findChild(slot0.viewGO, "rewards/#scroll_rewards/Viewport/Content/#go_rewarditem")
+	slot0._goruleitem = gohelper.findChild(slot0.viewGO, "rule/ruleinfo/ScrollView/Viewport/Content/#go_ruleitem")
 	slot0._btnstart = gohelper.findChildButtonWithAudio(slot0.viewGO, "rewards/#btn_start")
 	slot0._btnruledetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "rule/ruleinfo/#btn_ruledetail")
 
@@ -74,40 +76,39 @@ end
 function slot0.onUpdateParam(slot0)
 end
 
-function slot0._getRewardList(slot0)
-	slot1 = {}
+function slot0._getRewardList()
+	slot0 = {}
 
-	for slot5, slot6 in ipairs(lua_task_weekwalk.configList) do
-		if slot6.minTypeId == 4 and WeekWalkTaskListModel.instance:checkPeriods(slot6) then
-			slot11 = "|"
-			slot12 = "#"
+	for slot4, slot5 in ipairs(lua_task_weekwalk_ver2.configList) do
+		if slot5.minTypeId == WeekWalk_2Enum.TaskType.Season and WeekWalk_2TaskListModel.instance:checkPeriods(slot5) then
+			slot10 = "#"
 
-			for slot11, slot12 in ipairs(GameUtil.splitString2(slot6.bonus, true, slot11, slot12)) do
-				slot15 = slot12[3]
+			for slot10, slot11 in ipairs(GameUtil.splitString2(slot5.bonus, true, "|", slot10)) do
+				slot14 = slot11[3]
 
-				if not slot1[string.format("%s_%s", slot12[1], slot12[2])] then
-					slot1[slot16] = slot12
+				if not slot0[string.format("%s_%s", slot11[1], slot11[2])] then
+					slot0[slot15] = slot11
 				else
-					slot17[3] = slot17[3] + slot15
-					slot1[slot16] = slot17
+					slot16[3] = slot16[3] + slot14
+					slot0[slot15] = slot16
 				end
 			end
 		end
 	end
 
-	slot2 = {}
+	slot1 = {}
 
-	for slot6, slot7 in pairs(slot1) do
-		table.insert(slot2, slot7)
+	for slot5, slot6 in pairs(slot0) do
+		table.insert(slot1, slot6)
 	end
 
-	table.sort(slot2, DungeonWeekWalkView._sort)
+	table.sort(slot1, DungeonWeekWalkView._sort)
 
-	return slot2
+	return slot1
 end
 
 function slot0._showRewardList(slot0)
-	for slot5, slot6 in ipairs(slot0:_getRewardList()) do
+	for slot5, slot6 in ipairs(uv0._getRewardList()) do
 		slot7 = gohelper.cloneInPlace(slot0._gorewarditem)
 
 		gohelper.setActive(slot7, true)
@@ -128,37 +129,38 @@ function slot0.onOpen(slot0)
 		gohelper.setActive(slot0._txtlastprogress, false)
 	end
 
-	slot3 = string.splitToNumber(slot0._info.deepProgress, "#")
-	slot5 = slot3[2]
+	slot3 = slot0._info.prevSettle and slot2.maxLayerId
+	slot4 = slot2 and slot2.maxBattleIndex
 
-	if slot3[1] and slot5 then
+	if slot3 and lua_weekwalk_ver2.configDict[slot3] and slot4 then
 		slot0._txtlastprogress.text = GameUtil.getSubPlaceholderLuaLang(luaLang("weekwalkdeeplayernoticeview_lastprogress"), {
-			lua_weekwalk_scene.configDict[lua_weekwalk.configDict[slot4].sceneId].name,
-			"0" .. (slot5 or 1)
+			lua_weekwalk_ver2_scene.configDict[slot5.sceneId].name,
+			"0" .. (slot4 or 1)
 		})
 	else
 		slot0._txtlastprogress.text = luaLang("weekwalkdeeplayernoticeview_noprogress")
 	end
 
+	slot0._txtlastprogress2.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("weekwalk_2resulttxt1"), slot2 and slot2:getTotalPlatinumCupNum() or 0)
+
 	slot0:_showRewardList()
 
-	slot9 = nil
+	slot10 = nil
 
-	slot0._simageruledescicon:LoadImage((not (lua_weekwalk_rule.configDict[slot0._info.issueId].isCn == 1) or ResUrl.getWeekWalkIconLangPath(slot7.icon)) and ResUrl.getWeekWalkBg("rule/" .. slot7.icon .. ".png"))
+	slot0._simageruledescicon:LoadImage((not (lua_weekwalk_ver2_time.configDict[slot0._info.issueId].isCn == 1) or ResUrl.getWeekWalkIconLangPath(slot8.ruleIcon)) and ResUrl.getWeekWalkBg("rule/" .. slot8.ruleIcon .. ".png"))
 
-	if string.nilorempty(slot7.additionRule) then
-		return
+	if not string.nilorempty(slot8.ruleFront) then
+		tabletool.addValues({}, GameUtil.splitString2(slot8.ruleFront, true, "|", "#"))
 	end
 
-	slot15 = "|"
-	slot16 = "#"
-	slot11 = GameUtil.splitString2(slot10, true, slot15, slot16)
+	if not string.nilorempty(slot8.ruleRear) then
+		tabletool.addValues(slot11, GameUtil.splitString2(slot8.ruleRear, true, "|", "#"))
+	end
+
 	slot0._ruleList = slot11
 
 	for slot15, slot16 in ipairs(slot11) do
 		slot0:_setRuleDescItem(lua_rule.configDict[slot16[2]], slot16[1])
-
-		break
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_ui_artificial_installation_open)
@@ -170,11 +172,16 @@ function slot0._setRuleDescItem(slot0, slot1, slot2)
 		"#D05B4C",
 		"#C7b376"
 	}
+	slot4 = gohelper.cloneInPlace(slot0._goruleitem)
 
-	UISpriteSetMgr.instance:setDungeonLevelRuleSprite(slot0._imageruleicon, slot1.icon)
-	UISpriteSetMgr.instance:setCommonSprite(slot0._imageruletag, "wz_" .. slot2)
+	gohelper.setActive(slot4, true)
+	UISpriteSetMgr.instance:setDungeonLevelRuleSprite(gohelper.findChildImage(slot4, "icon"), slot1.icon)
 
-	slot0._txtruledesc.text = formatLuaLang("fight_rule_desc", slot3[slot2], luaLang("dungeon_add_rule_target_" .. slot2), string.gsub(slot1.desc, "%【(.-)%】", "<color=#FF906A>[%1]</color>") .. ("\n" .. HeroSkillModel.instance:getEffectTagDescFromDescRecursion(slot1.desc, slot3[1])))
+	slot6 = gohelper.findChild(slot4, "line")
+
+	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot4, "tag"), "wz_" .. slot2)
+
+	gohelper.findChildText(slot4, "desc").text = string.format("<color=%s>[%s]</color>%s%s", slot3[slot2], luaLang("dungeon_add_rule_target_" .. slot2), string.gsub(slot1.desc, "%【(.-)%】", "<color=#FF906A>[%1]</color>"), "\n" .. HeroSkillModel.instance:getEffectTagDescFromDescRecursion(slot1.desc, slot3[1]))
 end
 
 function slot0.onClose(slot0)

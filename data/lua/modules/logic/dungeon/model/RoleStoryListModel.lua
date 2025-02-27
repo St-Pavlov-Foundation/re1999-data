@@ -35,6 +35,7 @@ function slot0.refreshList(slot0)
 	table.sort(slot2, SortUtil.tableKeyUpper({
 		"getUnlockOrder",
 		"unlockOrder",
+		"hasRewardUnget",
 		"getRewardOrder",
 		"order"
 	}))

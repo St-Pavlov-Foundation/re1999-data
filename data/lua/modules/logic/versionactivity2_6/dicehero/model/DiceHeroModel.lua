@@ -8,6 +8,8 @@ function slot0.onInit(slot0)
 	slot0.guideChapter = 0
 	slot0.guideLevel = 0
 	slot0.isUnlockNewChapter = false
+	slot0.talkId = 0
+	slot0.stepId = 0
 end
 
 function slot0.reInit(slot0)

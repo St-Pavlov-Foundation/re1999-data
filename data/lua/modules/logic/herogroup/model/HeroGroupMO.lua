@@ -342,9 +342,9 @@ function slot0.setTrials(slot0, slot1)
 	end
 
 	if not slot1 and not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Equip) and not string.nilorempty(slot3.trialEquips) then
-		slot10 = #string.splitToNumber(slot3.trialEquips, "|")
+		slot10 = ModuleEnum.MaxHeroCountInGroup
 
-		for slot10 = 1, math.min(slot10, ModuleEnum.MaxHeroCountInGroup) do
+		for slot10 = 1, math.min(#string.splitToNumber(slot3.trialEquips, "|"), slot10) do
 			slot0:updatePosEquips({
 				index = slot10 - 1,
 				equipUid = {
@@ -817,12 +817,14 @@ end
 
 function slot0.replaceTowerHeroList(slot0, slot1)
 	slot2 = {
-		[slot1[slot9]] = slot9
+		[slot10] = slot1[slot9].equipUid
 	}
 
 	for slot9 = 1, slot1 and #slot1 or 0 do
-		if slot1[slot9] ~= tostring(0) then
-			table.insert({}, slot1[slot9])
+		slot10 = slot1[slot9].heroUid
+
+		if slot10 ~= tostring(0) then
+			table.insert({}, slot10)
 		end
 	end
 
@@ -853,6 +855,20 @@ function slot0.replaceTowerHeroList(slot0, slot1)
 
 	for slot11, slot12 in ipairs(slot3) do
 		slot0.heroList[slot7[slot11]] = slot12
+	end
+
+	slot0.equips = {}
+
+	for slot11 = 1, ModuleEnum.MaxHeroCountInGroup do
+		if slot2[slot0.heroList[slot11] or slot4] then
+			slot14 = slot11 - 1
+			slot0.equips[slot14] = HeroGroupEquipMO.New()
+
+			slot0.equips[slot14]:init({
+				index = slot14,
+				equipUid = slot13
+			})
+		end
 	end
 end
 

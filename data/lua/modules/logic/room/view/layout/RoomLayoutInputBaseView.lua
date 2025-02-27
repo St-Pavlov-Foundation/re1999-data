@@ -54,7 +54,9 @@ function slot0._onInputNameEndEdit(slot0)
 end
 
 function slot0._onInputNameValueChange(slot0)
-	slot0:_checkLimit()
+	if not BootNativeUtil.isIOS() then
+		slot0:_checkLimit()
+	end
 end
 
 function slot0._checkLimit(slot0)

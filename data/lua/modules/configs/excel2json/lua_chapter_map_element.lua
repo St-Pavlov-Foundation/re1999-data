@@ -39,6 +39,7 @@ slot3 = {
 	acceptText = 6,
 	finishText = 7,
 	title = 3,
+	dispatchingText = 8,
 	paramLang = 2
 }
 

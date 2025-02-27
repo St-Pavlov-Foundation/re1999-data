@@ -11,27 +11,27 @@ function slot0.ctor(slot0, slot1, slot2, slot3)
 end
 
 function slot0.createNormalSeq(slot0)
-	stepMo = slot0.stepMo
+	slot1 = slot0.stepMo
 	slot0._sequence = FlowSequence.New()
 
-	slot0._sequence:addWork(FightWorkCreateASFDEmitter.New(stepMo))
-	FlowSequence.New():addWork(FightWorkMissileASFD.New(stepMo, slot0.asfdContext))
+	slot0._sequence:addWork(FightWorkCreateASFDEmitter.New(slot1))
+	FlowSequence.New():addWork(FightWorkMissileASFD.New(slot1, slot0.asfdContext))
 
-	slot2 = FlowParallel.New()
+	slot3 = FlowParallel.New()
 
 	if slot0:checkNeedAddWaitDoneWork(slot0.nextStepMo) then
-		slot1:addWork(FightWorkMissileASFDDone.New(stepMo))
-		slot2:addWork(FightWorkWaitASFDArrivedDone.New(stepMo))
+		slot2:addWork(FightWorkMissileASFDDone.New(slot1))
+		slot3:addWork(FightWorkWaitASFDArrivedDone.New(slot1))
 	end
 
-	slot2:addWork(slot1)
-	slot0._sequence:addWork(slot2)
-	slot0._sequence:addWork(FightWorkASFDEffectFlow.New(stepMo))
+	slot3:addWork(slot2)
+	slot0._sequence:addWork(slot3)
+	slot0._sequence:addWork(FightWorkASFDEffectFlow.New(slot1))
 
-	if slot3 then
-		slot0._sequence:addWork(FightWorkASFDDone.New(stepMo))
+	if slot4 then
+		slot0._sequence:addWork(FightWorkASFDDone.New(slot1))
 	else
-		slot0._sequence:addWork(FightWorkASFDContinueDone.New(stepMo))
+		slot0._sequence:addWork(FightWorkASFDContinueDone.New(slot1))
 	end
 end
 

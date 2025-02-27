@@ -25,9 +25,10 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	line = 2,
-	story = 3,
-	desc = 1
+	line = 3,
+	name = 1,
+	story = 4,
+	desc = 2
 }
 
 return {

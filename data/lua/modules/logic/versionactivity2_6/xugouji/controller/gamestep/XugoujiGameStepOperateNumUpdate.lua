@@ -18,12 +18,4 @@ function slot0.start(slot0)
 	slot0:finish()
 end
 
-function slot0.finish(slot0)
-	if XugoujiGameStepController.instance then
-		-- Nothing
-	end
-
-	uv0.super.finish(slot0)
-end
-
 return slot0

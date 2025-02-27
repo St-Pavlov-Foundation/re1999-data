@@ -78,8 +78,9 @@ slot0.OutsideConst = {
 	StartNode = 101
 }
 slot0.BigRewardType = {
-	Multi = 4,
+	Triple = 6,
 	RoomItem = 2,
+	Double = 4,
 	Role = 1,
 	Skin = 5,
 	Artifice = 3

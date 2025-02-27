@@ -14,18 +14,13 @@ function slot0.ctor(slot0)
 end
 
 function slot0.buildFlow(slot0, slot1)
-	slot6 = DiceHeroFirstStepWork.New
-
-	FlowSequence.New():addWork(slot6())
+	FlowSequence.New():addWork(DiceHeroFirstStepWork.New())
 
 	for slot6, slot7 in ipairs(slot1) do
 		slot8 = DiceHeroFightStepMo.New()
 
 		slot8:init(slot7)
-
-		slot15 = slot8
-
-		FlowParallel.New():addWork(DiceHeroActionWork.New(slot15))
+		FlowParallel.New():addWork(DiceHeroActionWork.New(slot8))
 
 		slot10 = FlowSequence.New()
 
@@ -63,6 +58,7 @@ function slot0.flowDone(slot0)
 		ViewMgr.instance:openView(ViewName.DiceHeroResultView, {
 			status = DiceHeroFightModel.instance.finishResult
 		})
+		DiceHeroStatHelper.instance:sendFightEnd(DiceHeroFightModel.instance.finishResult, DiceHeroFightModel.instance.isFirstWin)
 
 		DiceHeroFightModel.instance.finishResult = DiceHeroEnum.GameStatu.None
 	end
@@ -70,6 +66,10 @@ end
 
 function slot0.isInFlow(slot0)
 	return slot0.flow ~= nil
+end
+
+function slot0.isNotInFlow(slot0)
+	return not slot0:isInFlow()
 end
 
 function slot0.isShowCarNum(slot0, slot1)

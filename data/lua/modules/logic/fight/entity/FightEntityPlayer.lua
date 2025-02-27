@@ -13,6 +13,7 @@ function slot0.initComponents(slot0)
 	slot0:addComp("entityVisible", FightEntityVisibleComp)
 	slot0:addComp("nameUIVisible", FightNameUIVisibleComp)
 	slot0:addComp("variantHeart", FightVariantHeartComp)
+	slot0:addComp("heroCustomComp", FightHeroCustomComp)
 end
 
 return slot0

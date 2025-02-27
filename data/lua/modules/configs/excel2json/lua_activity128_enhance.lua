@@ -11,7 +11,9 @@ slot2 = {
 	"activityId",
 	"characterId"
 }
-slot3 = {}
+slot3 = {
+	desc = 1
+}
 
 return {
 	onLoad = function (slot0)

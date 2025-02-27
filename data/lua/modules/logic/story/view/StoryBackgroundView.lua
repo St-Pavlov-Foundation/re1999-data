@@ -430,6 +430,8 @@ end
 function slot0._loadTopBg(slot0)
 	gohelper.setActive(slot0._simagebgimgtop.gameObject, false)
 
+	slot0._cimagebgimg.enabled = true
+
 	if StoryBgZoneModel.instance:getBgZoneByPath(slot0._bgCo.bgImg) then
 		if slot0._simagebgimgtop.curImageUrl == ResUrl.getStoryRes(slot1.path) then
 			slot0:_onNewBgImgTopLoaded()

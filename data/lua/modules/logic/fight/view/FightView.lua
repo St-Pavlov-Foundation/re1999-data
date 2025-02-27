@@ -26,7 +26,8 @@ function slot0.onInitView(slot0)
 	slot0.enemyActionSelect = gohelper.findChild(slot0.viewGO, "root/topLeftContent/enemyaction/selected")
 	slot0.enemyActionLocked = gohelper.findChild(slot0.viewGO, "root/topLeftContent/enemyaction/locked")
 	slot0.btnEnemyAction = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/topLeftContent/enemyaction/#btn_enemyaction")
-	slot0.btnCheckSub = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "root/enemynum/btn_checkSub")
+	slot0.weeklyWalkSubEnemy = gohelper.findChild(slot0.viewGO, "root/enemyweekwalkheart")
+	slot0.btnCheckSub = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "root/enemyweekwalkheart/btn_checkSub")
 end
 
 function slot0.addEvents(slot0)
@@ -214,33 +215,11 @@ function slot0._checkStartReplay(slot0)
 end
 
 function slot0._setIsShowUI(slot0, slot1)
-	slot0:_initRootChildCanvas()
-
-	if slot0.rootChildCanvasList then
-		for slot5, slot6 in ipairs(slot0.rootChildCanvasList) do
-			if not gohelper.isNil(slot6) then
-				gohelper.setActiveCanvasGroupNoAnchor(slot6, slot1)
-			end
-		end
-	end
-end
-
-function slot0._initRootChildCanvas(slot0)
-	if slot0.rootChildCanvasList then
-		return
+	if not slot0._canvasGroup then
+		slot0._canvasGroup = gohelper.onceAddComponent(slot0._rootGO, typeof(UnityEngine.CanvasGroup))
 	end
 
-	if not (slot0._rootGO and slot0._rootGO.transform) then
-		return
-	end
-
-	slot0.rootChildCanvasList = slot0:getUserDataTb_()
-
-	for slot5 = 1, slot1.childCount do
-		if slot1:GetChild(slot5 - 1) and gohelper.onceAddComponent(slot6.gameObject, gohelper.Type_CanvasGroup) then
-			table.insert(slot0.rootChildCanvasList, slot7)
-		end
-	end
+	gohelper.setActiveCanvasGroup(slot0._canvasGroup, slot1)
 end
 
 function slot0._onGuideStopAutoFight(slot0)
@@ -432,6 +411,12 @@ end
 
 function slot0._showEnemySubCount(slot0)
 	gohelper.setActive(slot0._goEnemyNum, #FightDataHelper.entityMgr:getEnemySubList() > 0 and GMFightShowState.leftMonster)
+	gohelper.setActive(slot0.weeklyWalkSubEnemy, false)
+
+	if FightDataHelper.fieldMgr.customData and slot3[FightCustomData.CustomDataType.WeekwalkVer2] then
+		gohelper.setActive(slot0._goEnemyNum, false)
+		gohelper.setActive(slot0.weeklyWalkSubEnemy, true)
+	end
 end
 
 function slot0._onAddSubEntity(slot0)

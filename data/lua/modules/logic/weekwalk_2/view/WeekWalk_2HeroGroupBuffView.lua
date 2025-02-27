@@ -11,8 +11,10 @@ end
 function slot0.addEvents(slot0)
 	slot0:addEventCb(slot0.viewContainer, HeroGroupEvent.SwitchBalance, slot0._onSwitchBalance, slot0)
 	slot0:addEventCb(slot0.viewContainer, HeroGroupEvent.BeforeEnterFight, slot0.beforeEnterFight, slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnBuffSetup, slot0._onBuffSetup, slot0)
+	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnBuffSetupReply, slot0._onBuffSetupReply, slot0)
 	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.SwitchReplay, slot0._switchReplay, slot0)
+	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, slot0._onModifyGroupSelectIndex, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -47,6 +49,7 @@ function slot0._effectLoaded(slot0, slot1)
 
 	slot5 = gohelper.clone(slot1:getAssetItem(slot0._effectUrl):GetResource(slot0._effectUrl), slot2)
 	slot0._animator = slot5:GetComponent(typeof(UnityEngine.Animator))
+	slot0._goBuffNew = gohelper.findChild(slot5, "#go_weekwalkheart/#go_new")
 	slot0._goNoBuff = gohelper.findChild(slot5, "#go_weekwalkheart/#go_NoBuff")
 	slot0._goHasBuff = gohelper.findChild(slot5, "#go_weekwalkheart/#go_HasBuff")
 	slot0._buffName = gohelper.findChildText(slot5, "#go_weekwalkheart/#go_HasBuff/cardnamebg/#txt_buffname")
@@ -55,13 +58,43 @@ function slot0._effectLoaded(slot0, slot1)
 
 	slot0._btnclick:AddClickListener(slot0._btnclickOnClick, slot0)
 	slot0:_initBuff()
+	slot0:_updateBuffNewFlag()
+end
+
+function slot0._updateBuffNewFlag(slot0)
+	if not WeekWalk_2Model.instance:getCurMapId() then
+		return
+	end
+
+	if WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.FightBuffNew, slot1) then
+		return
+	end
+
+	if not (WeekWalk_2Model.instance:getCurMapInfo().config.preId and WeekWalk_2Model.instance:getLayerInfo(slot3)) then
+		return
+	end
+
+	slot5 = slot2.config.chooseSkillNum ~= slot4.config.chooseSkillNum
+
+	gohelper.setActive(slot0._goBuffNew, slot5)
+
+	slot0._showBuffNewFlag = slot5
+end
+
+function slot0._onOpenView(slot0, slot1)
+	if slot0._showBuffNewFlag and slot1 == ViewName.WeekWalk_2HeartBuffView then
+		slot0._showBuffNewFlag = false
+
+		gohelper.setActive(slot0._goBuffNew, false)
+		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.FightBuffNew, WeekWalk_2Model.instance:getCurMapId())
+	end
 end
 
 function slot0._initBuff(slot0)
-	slot3 = WeekWalk_2Model.instance:getCurMapInfo() and slot1:getBattleInfoByBattleId(HeroGroupModel.instance.battleId)
+	slot0._buffConfig = nil
 
-	if slot3 and slot3:getChooseSkillId() then
-		slot0._buffConfig = lua_weekwalk_ver2_skill.configDict[slot4]
+	if WeekWalk_2BuffListModel.getCurHeroGroupSkillId() then
+		slot0._buffConfig = lua_weekwalk_ver2_skill.configDict[slot1]
 	end
 
 	slot0:_updateDreamLandCardInfo()
@@ -112,10 +145,12 @@ function slot0._doSwitchReplay(slot0)
 	end
 end
 
-function slot0._onBuffSetup(slot0, slot1)
-	slot0._buffConfig = slot1
+function slot0._onModifyGroupSelectIndex(slot0)
+	slot0:_initBuff()
+end
 
-	slot0:_updateDreamLandCardInfo()
+function slot0._onBuffSetupReply(slot0)
+	slot0:_initBuff()
 end
 
 function slot0._updateDreamLandCardInfo(slot0)

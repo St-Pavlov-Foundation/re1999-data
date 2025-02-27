@@ -32,9 +32,9 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btndistortruleOnClick(slot0)
-	slot0:setTipVisible(true)
 	slot0._tipAnimatorPlayer:Play("open", function ()
 	end, slot0)
+	slot0:setTipVisible(true)
 end
 
 function slot0._btncloseOnClick(slot0)
@@ -48,8 +48,13 @@ function slot0._editableInitView(slot0)
 
 	slot0._tipAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0._gotips)
 	slot0._canvasgroup = gohelper.onceAddComponent(slot0.viewGO, gohelper.Type_CanvasGroup)
+	slot0._scrollViewTran = slot0._scrolloverview.transform
+	slot0._scrollWidth = recthelper.getWidth(slot0._scrollViewTran)
+	slot0._scrollScreenPos = recthelper.uiPosToScreenPos(slot0._scrollViewTran)
+	slot0._effectTipViewPosX = recthelper.screenPosToAnchorPos2(slot0._scrollScreenPos, slot0.PARENT_VIEW.viewGO.transform) + slot0._scrollWidth
 
-	SkillHelper.addHyperLinkClick(slot0._txtdec1)
+	SkillHelper.addHyperLinkClick(slot0._txtdec1, slot0.clcikHyperLink, slot0)
+	gohelper.fitScreenOffset(slot0._scrollViewTran)
 	slot0:initInfo()
 	slot0:setTipVisible(false)
 	slot0:checkAndSetIconVisible()
@@ -91,7 +96,6 @@ function slot0.setTipVisible(slot0, slot1)
 
 	slot0:refreshMapRule()
 	slot0:refreshMonsterRules()
-	gohelper.fitScreenOffset(slot0._scrolloverview.transform)
 end
 
 function slot0.closeTips(slot0)
@@ -109,7 +113,16 @@ function slot0.refreshMapRule(slot0)
 	gohelper.setActive(slot0._txttitle1, true)
 	gohelper.setActive(slot0._txtdec1, true)
 
-	slot0._txtdec1.text = SkillHelper.addLink(slot0._ruleCo and slot0._ruleCo.desc or "")
+	slot0._txtdec1.text = SkillHelper.buildDesc(slot0._ruleCo and slot0._ruleCo.desc or "")
+end
+
+function slot0.clcikHyperLink(slot0, slot1, slot2)
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPosCallback(slot1, function (slot0, slot1, slot2)
+		slot2.pivot = GameUtil.checkClickPositionInRight(uv0) and CommonBuffTipEnum.Pivot.Right or CommonBuffTipEnum.Pivot.Left
+		slot4, slot5 = recthelper.screenPosToAnchorPos2(uv0, slot1)
+
+		recthelper.setAnchor(slot2, uv1._effectTipViewPosX, slot5 + CommonBuffTipEnum.DefaultInterval)
+	end)
 end
 
 function slot0.refreshMonsterRules(slot0)
@@ -139,7 +152,7 @@ function slot0._getOrCreateMonsterRuleItem(slot0, slot1)
 		slot2.viewGO = gohelper.cloneInPlace(slot0._txtdec2.gameObject, "debuff_" .. slot1)
 		slot2.txtdec = gohelper.onceAddComponent(slot2.viewGO, gohelper.Type_TextMesh)
 
-		SkillHelper.addHyperLinkClick(slot2.txtdec)
+		SkillHelper.addHyperLinkClick(slot2.txtdec, slot0.clcikHyperLink, slot0)
 
 		slot0._monsterRuleItemTab[slot1] = slot2
 	end

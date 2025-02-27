@@ -11,6 +11,7 @@ function slot0.onReceiveGetChargeInfoReply(slot0, slot1, slot2)
 		PayModel.instance:setSandboxInfo(slot2.sandboxEnable, slot2.sandboxBalance)
 		PayModel.instance:setChargeInfo(slot2.infos)
 		StoreModel.instance:initChargeInfo(slot2.infos)
+		PayController.instance:dispatchEvent(PayEvent.PayInfoChanged)
 	end
 end
 

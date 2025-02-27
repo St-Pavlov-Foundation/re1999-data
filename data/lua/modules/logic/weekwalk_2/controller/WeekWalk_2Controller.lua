@@ -18,6 +18,24 @@ function slot0.addConstEvents(slot0)
 	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, slot0._refreshTaskData, slot0)
 	uv0.instance:registerCallback(WeekWalk_2Event.OnGetInfo, slot0.startCheckTime, slot0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0, LuaEventSystem.Low)
+	ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, slot0._onCloseView, slot0)
+	FightController.instance:registerCallback(FightEvent.OnBreakResultViewClose, slot0._onBreakResultViewClose, slot0)
+end
+
+function slot0._onBreakResultViewClose(slot0, slot1)
+	if DungeonModel.instance.curSendEpisodeId and DungeonConfig.instance:getEpisodeCO(slot2) and slot3.type == DungeonEnum.EpisodeType.WeekWalk_2 and WeekWalk_2Model.instance:getSettleInfo() then
+		slot1.isBreak = true
+	end
+end
+
+function slot0._onCloseView(slot0, slot1)
+	if slot1 ~= ViewName.FightSuccView then
+		return
+	end
+
+	if DungeonModel.instance.curSendEpisodeId and DungeonConfig.instance:getEpisodeCO(slot2) and slot3.type == DungeonEnum.EpisodeType.WeekWalk_2 and WeekWalk_2Model.instance:getSettleInfo() then
+		uv0.instance:openWeekWalk_2HeartResultView()
+	end
 end
 
 function slot0._onDailyRefresh(slot0)

@@ -73,6 +73,7 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onExitGame(slot0)
+	XugoujiController.instance:getStatMo():sendDungeonFinishStatData()
 	slot0:closeThis()
 end
 

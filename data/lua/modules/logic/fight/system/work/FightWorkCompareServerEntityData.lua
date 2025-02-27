@@ -31,9 +31,8 @@ function slot0.onStart(slot0, slot1)
 		slot0:com_registTimer(slot0._delayDone, 5)
 
 		slot0._count = 0
-		slot6 = slot0._onCountEntityInfoReply
 
-		slot0:com_registFightEvent(FightEvent.CountEntityInfoReply, slot6)
+		slot0:com_registFightEvent(FightEvent.CountEntityInfoReply, slot0._onCountEntityInfoReply)
 
 		for slot6, slot7 in pairs(FightLocalDataMgr.instance.entityMgr:getAllEntityMO()) do
 			if not slot7:isStatusDead() then

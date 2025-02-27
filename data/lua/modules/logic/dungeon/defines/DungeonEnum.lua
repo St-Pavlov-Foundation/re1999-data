@@ -115,7 +115,6 @@ slot0.ChapterType = {
 	RoleStory = 19,
 	Rouge = 29
 }
-slot4 = slot0.EpisodeType.RoleStoryChallenge
 slot0.ChapterContainEpisodeType = {
 	[slot0.ChapterType.Normal] = {
 		slot0.EpisodeType.Normal,
@@ -157,7 +156,7 @@ slot0.ChapterContainEpisodeType = {
 		slot0.EpisodeType.Season
 	},
 	[slot0.ChapterType.RoleStoryChallenge] = {
-		slot4
+		slot0.EpisodeType.RoleStoryChallenge
 	}
 }
 slot0.ChapterListType = {
@@ -257,9 +256,10 @@ slot0.ElementType = {
 	DailyEpisode = 16
 }
 slot0.FragmentType = {
-	OptionsText = 2,
 	LeiMiTeBeiNew = 101,
 	PlainText = 3,
+	OptionsText = 2,
+	AvgStory = 2601,
 	Normal = 1
 }
 slot0.ElementTypeIconIndex = {
@@ -354,50 +354,6 @@ slot0.AssistType = {
 	Normal = PickAssistEnum.Type.Normal,
 	Season123 = PickAssistEnum.Type.Activity123
 }
-slot0.MapIdGroupDef = {
-	{
-		10701,
-		10702,
-		10703,
-		10704,
-		10707,
-		10708,
-		10709,
-		10711,
-		10712,
-		10713,
-		10718,
-		10719,
-		10720,
-		10721,
-		10722,
-		10723,
-		10724,
-		10727,
-		10728
-	},
-	{
-		10705,
-		10706,
-		10710,
-		10714,
-		10715,
-		10716,
-		10717,
-		10725,
-		10726,
-		10729,
-		10730
-	}
-}
-slot0.MapIdGroup = {}
-
-for slot4, slot5 in pairs(slot0.MapIdGroupDef) do
-	for slot9, slot10 in pairs(slot5) do
-		slot0.MapIdGroup[slot10] = slot4
-	end
-end
-
 slot0.ElementExEffectPath = {
 	[100702.0] = "scenes/v1a9_m_s08_hddt/vx/prefab/vx_boss_effect1.prefab",
 	[100709.0] = "scenes/v1a9_m_s08_hddt/vx/prefab/vx_boss_effect2.prefab"

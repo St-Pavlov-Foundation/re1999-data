@@ -86,6 +86,8 @@ function slot0._showSpCollectionDescInfo(slot0, slot1)
 	ZProj.UGUIHelper.SetColorAlpha(slot2, slot5 and uv2 or uv3)
 	UISpriteSetMgr.instance:setRougeSprite(gohelper.findChildImage(slot0, "txt_desc/image_point"), slot5 and "rouge_collection_point1" or "rouge_collection_point2")
 	SkillHelper.addHyperLinkClick(slot2)
+	RougeCollectionDescHelper.addFixTmpBreakLine(slot2)
+	LuaUtil.updateTMPRectHeight_LayoutElement(slot2)
 
 	slot7 = slot1.isConditionVisible
 

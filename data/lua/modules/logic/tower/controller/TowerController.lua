@@ -93,7 +93,11 @@ function slot0.openBossTowerEpisodeView(slot0, slot1, slot2, slot3)
 			else
 				slot10.episodeConfig = slot4:getEpisodeConfig(slot2, slot7)
 
-				ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
+				if slot10.episodeConfig.openRound > 0 then
+					ViewMgr.instance:openView(ViewName.TowerBossSpEpisodeView, slot10)
+				else
+					ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
+				end
 			end
 		else
 			ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
@@ -289,9 +293,8 @@ function slot0.checkReddotHasNewUpdateTower(slot0)
 	slot4 = slot1 and slot2 and (not slot3 or slot3 == TowerEnum.LockKey)
 	slot5 = slot0:isBossTowerOpen()
 	slot6 = false
-	slot11 = TowerEnum.TowerStatus.Open
 
-	for slot11, slot12 in ipairs(TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, slot11)) do
+	for slot11, slot12 in ipairs(TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)) do
 		if TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewBossOpen, slot12.towerId, slot12, TowerEnum.LockKey) == TowerEnum.LockKey and TowerEnum.UnlockKey == TowerEnum.UnlockKey then
 			slot6 = true
 

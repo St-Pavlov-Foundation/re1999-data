@@ -20,8 +20,8 @@ function slot0.init(slot0, slot1, slot2)
 	slot0.entityId = slot2.uid
 	slot0.entityMo = FightDataHelper.entityMgr:getById(slot0.entityId)
 	slot0.skillCo = lua_skill.configDict[slot0.skillId]
-	slot6 = slot0.entityId
-	slot0.skillCardLv = FightCardModel.instance:getSkillLv(slot6, slot0.skillId)
+	slot6 = slot0.skillId
+	slot0.skillCardLv = FightCardModel.instance:getSkillLv(slot0.entityId, slot6)
 	slot0.lvGoList = slot0:getUserDataTb_()
 	slot0.lvImgIconList = slot0:getUserDataTb_()
 	slot0.lvImgCompList = slot0:getUserDataTb_()
@@ -36,8 +36,7 @@ function slot0.init(slot0, slot1, slot2)
 		table.insert(slot0.lvImgCompList, gohelper.findChildImage(slot7, "imgIcon"))
 	end
 
-	slot6 = "tag"
-	slot0.goTag = gohelper.findChild(slot0.goCard, slot6)
+	slot0.goTag = gohelper.findChild(slot0.goCard, "tag")
 	slot0.tagPosList = {}
 
 	for slot6 = 1, 4 do
@@ -51,8 +50,8 @@ function slot0.init(slot0, slot1, slot2)
 	slot0.tagRootTr = gohelper.findChild(slot0.goCard, "tag/tag").transform
 	slot0.tagIcon = gohelper.findChildSingleImage(slot0.goCard, "tag/tag/tagIcon")
 	slot0.starGo = gohelper.findChild(slot0.goCard, "star")
-	slot6 = typeof
-	slot0.starCanvas = gohelper.onceAddComponent(slot0.starGo, slot6(UnityEngine.CanvasGroup))
+	slot6 = UnityEngine.CanvasGroup
+	slot0.starCanvas = gohelper.onceAddComponent(slot0.starGo, typeof(slot6))
 	slot0.innerStartGoList = slot0:getUserDataTb_()
 	slot0.innerStartCanvasList = slot0:getUserDataTb_()
 

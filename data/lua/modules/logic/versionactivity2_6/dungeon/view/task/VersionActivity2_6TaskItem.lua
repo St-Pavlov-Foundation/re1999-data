@@ -34,12 +34,14 @@ function slot0.addEventListeners(slot0)
 	slot0.btnNotFinish:AddClickListener(slot0._btnNotFinishOnClick, slot0)
 	slot0.btnFinish:AddClickListener(slot0._btnFinishOnClick, slot0)
 	slot0.btnFinishAll:AddClickListener(slot0._btnFinishAllOnClick, slot0)
+	VersionActivity2_6DungeonController.instance:registerCallback(VersionActivity2_6DungeonEvent.OnClickAllTaskFinish, slot0._OnClickAllTaskFinish, slot0)
 end
 
 function slot0.removeEventListeners(slot0)
 	slot0.btnNotFinish:RemoveClickListener()
 	slot0.btnFinish:RemoveClickListener()
 	slot0.btnFinishAll:RemoveClickListener()
+	VersionActivity2_6DungeonController.instance:unregisterCallback(VersionActivity2_6DungeonEvent.OnClickAllTaskFinish, slot0._OnClickAllTaskFinish, slot0)
 end
 
 function slot0._btnNotFinishOnClick(slot0)
@@ -53,7 +55,17 @@ function slot0._btnNotFinishOnClick(slot0)
 end
 
 function slot0._btnFinishAllOnClick(slot0)
-	slot0:_btnFinishOnClick()
+	VersionActivity2_6DungeonController.instance:dispatchEvent(VersionActivity2_6DungeonEvent.OnClickAllTaskFinish)
+end
+
+function slot0._OnClickAllTaskFinish(slot0)
+	if slot0.taskMo then
+		if slot0.taskMo.getAll then
+			slot0:_btnFinishOnClick()
+		elseif slot0.taskMo.finishCount < slot0.co.maxFinishCount and slot0.taskMo.hasFinished then
+			slot0:getAnimator():Play(UIAnimationName.Finish, 0, 0)
+		end
+	end
 end
 
 slot0.FinishKey = "VersionActivity2_6TaskItem FinishKey"

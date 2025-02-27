@@ -67,7 +67,7 @@ function slot0._checkEquiped(slot0)
 		return
 	end
 
-	gohelper.setActive(slot0._goEquiped, WeekWalk_2Model.instance:getCurMapInfo():getBattleInfoByBattleId(HeroGroupModel.instance.battleId):getChooseSkillId() == slot0._config.id)
+	gohelper.setActive(slot0._goEquiped, WeekWalk_2BuffListModel.getCurHeroGroupSkillId() == slot0._config.id)
 end
 
 function slot0.onDestroyView(slot0)

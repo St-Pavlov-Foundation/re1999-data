@@ -31,8 +31,11 @@ slot0.resultStatUse = {
 	"回合耗尽"
 }
 slot0.GameStepType = {
-	HpUpdate = 2,
+	UpdateInitialCard = 102,
 	UpdateCardEffectStatus = 9,
+	WaitGameStart = 101,
+	HpUpdate = 2,
+	GameReStart = 103,
 	OperateNumUpdate = 7,
 	NewCards = 4,
 	BuffUpdate = 8,
@@ -67,7 +70,6 @@ slot0.BuffType = {
 	None = 0
 }
 slot0.ChallengeEpisodeId = 20013
-slot0.DemoMode = false
 slot0.TaskMOAllFinishId = -100
 
 return slot0

@@ -7402,7 +7402,7 @@
     "group": "jg_xgj_2",
     "materialType": 2,
     "materialId": 2,
-    "count": "30",
+    "count": "20",
     "label": "guding",
     "shownum": 1
   },
@@ -7456,7 +7456,7 @@
     "group": "jg_xgj_4",
     "materialType": 2,
     "materialId": 2,
-    "count": "30",
+    "count": "20",
     "label": "guding",
     "shownum": 1
   },
@@ -7628,8 +7628,8 @@
     "materialType": 2,
     "materialId": 5,
     "count": "10000",
-    "label": "",
-    "shownum": 0
+    "label": "guding",
+    "shownum": 1
   },
   {
     "id": 2600066,
@@ -8026,5 +8026,68 @@
     "count": "1",
     "label": "gailv",
     "shownum": 0
+  },
+  {
+    "id": 2600110,
+    "group": "random_backage_4",
+    "materialType": 1,
+    "materialId": 110904,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2600111,
+    "group": "normal_mid_6",
+    "materialType": 1,
+    "materialId": 110902,
+    "count": "1",
+    "label": "gailv",
+    "shownum": 0
+  },
+  {
+    "id": 2600112,
+    "group": "normal_mid_4",
+    "materialType": 1,
+    "materialId": 110902,
+    "count": "1",
+    "label": "gailv",
+    "shownum": 0
+  },
+  {
+    "id": 2600113,
+    "group": "normal_mid_2",
+    "materialType": 1,
+    "materialId": 110902,
+    "count": "1",
+    "label": "gailv",
+    "shownum": 0
+  },
+  {
+    "id": 2600114,
+    "group": "jg_xgj_11",
+    "materialType": 2,
+    "materialId": 2,
+    "count": "20",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2600115,
+    "group": "jg_xgj_11",
+    "materialType": 9,
+    "materialId": 1003,
+    "count": "4",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2600116,
+    "group": "jg_xgj_11",
+    "materialType": 2,
+    "materialId": 3,
+    "count": "5000",
+    "label": "guding",
+    "shownum": 1
   }
 ]

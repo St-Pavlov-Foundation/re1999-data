@@ -26,11 +26,11 @@ function slot0.onLoadLYCardDone(slot0, slot1)
 	slot0.loaded = true
 	slot0.LY_instanceGo = slot0.LYLoader:getInstGO()
 	slot0.rectTr = slot0.LY_instanceGo:GetComponent(gohelper.Type_RectTransform)
-	slot0.animator = gohelper.findChildComponent(slot0.LY_instanceGo, "current", gohelper.Type_Animator)
+	slot5 = gohelper.Type_Animator
+	slot0.animator = gohelper.findChildComponent(slot0.LY_instanceGo, "current", slot5)
 	slot0.LY_goCardBack = gohelper.findChild(slot0.LY_instanceGo, "current/back")
-	slot5 = true
 
-	gohelper.setActive(slot0.LY_goCardBack, slot5)
+	gohelper.setActive(slot0.LY_goCardBack, true)
 
 	slot0.goSkillList = slot0:getUserDataTb_()
 

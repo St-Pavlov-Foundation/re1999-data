@@ -168,7 +168,7 @@ function slot0._updateUI(slot0)
 end
 
 function slot0.setActiveCanvasGroup(slot0, slot1, slot2)
-	gohelper.setActiveCanvasGroupNoAnchor(gohelper.onceAddComponent(slot1, gohelper.Type_CanvasGroup), slot2)
+	gohelper.onceAddComponent(slot1, gohelper.Type_CanvasGroup).alpha = slot2 and 1 or 0
 end
 
 function slot0.onCameraFocusChanged(slot0, slot1)

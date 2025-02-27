@@ -21598,5 +21598,53 @@
   {
     "id": 720402,
     "type": "TeammateUseExSkill"
+  },
+  {
+    "id": 681016,
+    "type": "OwnerPerPowerChange"
+  },
+  {
+    "id": 252011,
+    "type": "UseExSkill"
+  },
+  {
+    "id": 721017,
+    "type": "CurEntityPowerDel"
+  },
+  {
+    "id": 12301,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12302,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12303,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12304,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12305,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12306,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 12307,
+    "type": "LostLifePer"
+  },
+  {
+    "id": 57002,
+    "type": "NoBuffId"
+  },
+  {
+    "id": 6392011,
+    "type": "PerPower"
   }
 ]

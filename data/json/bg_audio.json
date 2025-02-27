@@ -1721,27 +1721,27 @@
   },
   {
     "id": 3260021,
-    "eventName": "play_ui_checkpoint_noise_",
+    "eventName": "play_ui_checkpoint_noise_responsive",
     "bankName": "activtiy_wenming_combataudio_noise"
   },
   {
     "id": 3260022,
-    "eventName": "play_ui_checkpoint_noise_",
+    "eventName": "play_ui_checkpoint_noise_prison",
     "bankName": "activtiy_wenming_combataudio_noise"
   },
   {
     "id": 3260023,
-    "eventName": "play_ui_checkpoint_noise_",
+    "eventName": "play_ui_checkpoint_noise_gallery",
     "bankName": "activtiy_wenming_combataudio_noise"
   },
   {
     "id": 3260024,
-    "eventName": "play_ui_checkpoint_noise_",
+    "eventName": "play_ui_checkpoint_noise_prison_hall",
     "bankName": "activtiy_wenming_combataudio_noise"
   },
   {
     "id": 3260025,
-    "eventName": "play_ui_checkpoint_noise_",
+    "eventName": "play_ui_checkpoint_noise_prison_out",
     "bankName": "activtiy_wenming_combataudio_noise"
   }
 ]

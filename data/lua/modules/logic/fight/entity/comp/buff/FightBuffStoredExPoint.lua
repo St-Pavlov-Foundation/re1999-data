@@ -27,6 +27,10 @@ function slot0.onBuffEnd(slot0)
 	if slot0.entity:getMO() then
 		slot1:setStoredExPoint(0)
 		FightController.instance:dispatchEvent(FightEvent.OnStoreExPointChange, slot1.id, slot1:getStoredExPoint())
+
+		if FightLocalDataMgr.instance.entityMgr:getById(slot0.entity.id) then
+			slot3:setStoredExPoint(0)
+		end
 	end
 end
 

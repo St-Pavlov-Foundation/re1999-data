@@ -131,6 +131,7 @@ function slot0._onFrame(slot0)
 					ViewMgr.instance:openView(ViewName.DiceHeroResultView, {
 						status = DiceHeroFightModel.instance.finishResult
 					})
+					DiceHeroStatHelper.instance:sendFightEnd(DiceHeroFightModel.instance.finishResult, DiceHeroFightModel.instance.isFirstWin)
 
 					DiceHeroFightModel.instance.finishResult = DiceHeroEnum.GameStatu.None
 				end

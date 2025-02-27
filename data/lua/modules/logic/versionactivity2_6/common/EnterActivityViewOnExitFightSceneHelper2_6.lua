@@ -20,6 +20,17 @@ function slot0.enterActivity12606(slot0, slot1)
 	end)
 end
 
+function slot0.enterActivity12605(slot0, slot1)
+	DungeonModel.instance.lastSendEpisodeId = DungeonModel.instance.curSendEpisodeId
+	DungeonModel.instance.curSendEpisodeId = nil
+
+	MainController.instance:enterMainScene(slot0)
+	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
+		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity2_6EnterView)
+		VersionActivity2_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, , VersionActivity2_6Enum.ActivityId.Xugouji, true)
+	end)
+end
+
 function slot0.enterActivity12617(slot0, slot1)
 	slot3, slot4 = BossRushConfig.instance:tryGetStageAndLayerByEpisodeId(DungeonModel.instance.curSendEpisodeId)
 	DungeonModel.instance.curSendEpisodeId = nil

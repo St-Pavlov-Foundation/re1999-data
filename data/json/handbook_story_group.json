@@ -2771,7 +2771,7 @@
     "year": "",
     "storyIdList": "100906",
     "levelIdDict": "",
-    "fragmentIdList": "136",
+    "fragmentIdList": "136#152",
     "image": "story_atcg/2_6/2_6_at_buxing.jpg"
   },
   {
@@ -2786,7 +2786,7 @@
     "year": "",
     "storyIdList": "100907",
     "levelIdDict": "",
-    "fragmentIdList": "137",
+    "fragmentIdList": "137#153",
     "image": "story_atcg/2_6/2_6_at_lixiangjia.jpg"
   },
   {
@@ -2801,7 +2801,7 @@
     "year": "",
     "storyIdList": "100908#100909",
     "levelIdDict": "",
-    "fragmentIdList": "138",
+    "fragmentIdList": "138#154",
     "image": "story_bg/2_6/2_6_bg_zhanting.jpg"
   },
   {
@@ -2816,7 +2816,7 @@
     "year": "",
     "storyIdList": "100910#100911",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "155",
     "image": "story_atcg/2_6/2_6_at_zhenbigaohu.jpg"
   },
   {
@@ -2876,7 +2876,7 @@
     "year": "",
     "storyIdList": "100915#100916",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "156",
     "image": "story_atcg/2_6/2_6_at_renqunzhong.jpg"
   },
   {

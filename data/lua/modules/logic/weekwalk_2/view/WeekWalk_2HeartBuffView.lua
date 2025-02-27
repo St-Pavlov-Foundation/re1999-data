@@ -6,7 +6,7 @@ function slot0.onInitView(slot0)
 	slot0._btnMask = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Mask")
 	slot0._simageTipsBG = gohelper.findChildSingleImage(slot0.viewGO, "Root/#simage_TipsBG")
 	slot0._txtBuffName = gohelper.findChildText(slot0.viewGO, "Root/Right/#txt_BuffName")
-	slot0._simageBuffIcon = gohelper.findChildSingleImage(slot0.viewGO, "Root/Right/#simage_BuffIcon")
+	slot0._imageBuffIcon = gohelper.findChildImage(slot0.viewGO, "Root/Right/#image_BuffIcon")
 	slot0._txtEffectDesc = gohelper.findChildText(slot0.viewGO, "Root/Right/Scroll View/Viewport/#txt_EffectDesc")
 	slot0._btnEquip = gohelper.findChildButtonWithAudio(slot0.viewGO, "Root/Right/#btn_Equip")
 	slot0._btnUnLoad = gohelper.findChildButtonWithAudio(slot0.viewGO, "Root/Right/#btn_UnLoad")
@@ -37,8 +37,8 @@ function slot0._btnUnLoadOnClick(slot0)
 	slot0:_updateBuffStatus()
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnBuffSetup)
 
-	if slot0._layerId and slot0._battleId then
-		Weekwalk_2Rpc.instance:sendWeekwalkVer2ChooseSkillRequest(slot0._layerId, slot0._battleId)
+	if HeroGroupModel.instance.curGroupSelectIndex then
+		Weekwalk_2Rpc.instance:sendWeekwalkVer2ChooseSkillRequest(HeroGroupModel.instance.curGroupSelectIndex)
 	end
 end
 
@@ -47,15 +47,20 @@ function slot0._btnMaskOnClick(slot0)
 end
 
 function slot0._btnEquipOnClick(slot0)
+	if slot0._isPrevBattleSkill then
+		GameFacade.showToast(ToastEnum.WeekWalk_2BuffCannotSetup)
+
+		return
+	end
+
 	slot0._selectedSkillId = slot0._buffConfig.id
 
-	slot0:_updateBuffStatus()
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnBuffSetup, slot0._buffConfig)
 
-	if slot0._layerId and slot0._battleId then
-		Weekwalk_2Rpc.instance:sendWeekwalkVer2ChooseSkillRequest(slot0._layerId, slot0._battleId, {
+	if HeroGroupModel.instance.curGroupSelectIndex then
+		Weekwalk_2Rpc.instance:sendWeekwalkVer2ChooseSkillRequest(HeroGroupModel.instance.curGroupSelectIndex, {
 			slot0._selectedSkillId
-		})
+		}, slot0._onBuffSetupReply, slot0)
 	end
 end
 
@@ -69,6 +74,8 @@ function slot0._editableInitView(slot0)
 
 	gohelper.setActive(slot0._btnEquip, false)
 	gohelper.setActive(slot0._btnUnLoad, false)
+	gohelper.addUIClickAudio(slot0._btnEquip.gameObject, AudioEnum2_6.WeekWalk_2.play_ui_fight_artificial_equip)
+	gohelper.addUIClickAudio(slot0._btnUnLoad.gameObject, AudioEnum2_6.WeekWalk_2.play_ui_fight_artificial_unequip)
 end
 
 function slot0._onBuffSelectedChange(slot0, slot1)
@@ -80,10 +87,17 @@ end
 function slot0._updateBuffStatus(slot0)
 	slot0._txtBuffName.text = slot0._buffConfig.name
 	slot0._txtEffectDesc.text = slot0._buffConfig.desc
-	slot2 = WeekWalk_2BuffListModel.instance.prevBattleSkillId == slot0._buffConfig.id
+	slot0._isPrevBattleSkill = WeekWalk_2BuffListModel.instance.prevBattleSkillId == slot0._buffConfig.id
+	slot2 = slot0._isBattle and slot0._selectedSkillId ~= slot0._buffConfig.id
 
-	gohelper.setActive(slot0._btnEquip, slot0._isBattle and slot0._selectedSkillId ~= slot0._buffConfig.id and not slot2)
-	gohelper.setActive(slot0._btnUnLoad, slot0._isBattle and slot0._selectedSkillId == slot0._buffConfig.id and not slot2)
+	gohelper.setActive(slot0._btnEquip, slot2)
+	gohelper.setActive(slot0._btnUnLoad, slot0._isBattle and slot0._selectedSkillId == slot0._buffConfig.id and not slot0._isPrevBattleSkill)
+
+	if slot2 then
+		ZProj.UGUIHelper.SetGrayscale(slot0._btnEquip.gameObject, slot0._isPrevBattleSkill)
+	end
+
+	UISpriteSetMgr.instance:setWeekWalkSprite(slot0._imageBuffIcon, slot0._buffConfig.icon)
 end
 
 function slot0.onUpdateParam(slot0)
@@ -93,15 +107,17 @@ function slot0.onOpen(slot0)
 	slot0._isBattle = slot0.viewParam and slot0.viewParam.isBattle
 
 	if slot0._isBattle then
-		slot1 = WeekWalk_2Model.instance:getCurMapInfo()
-		slot2 = HeroGroupModel.instance.battleId
-		slot0._battleInfo = slot1:getBattleInfoByBattleId(slot2)
-		slot0._battleId = slot2
-		slot0._layerId = slot1.id
-		slot0._selectedSkillId = slot0._battleInfo:getChooseSkillId()
+		slot0._battleId = HeroGroupModel.instance.battleId
+		slot0._layerId = WeekWalk_2Model.instance:getCurMapInfo().id
+		slot0._selectedSkillId = WeekWalk_2BuffListModel.getCurHeroGroupSkillId()
 	end
 
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnBuffSelectedChange, slot0._onBuffSelectedChange, slot0)
+end
+
+function slot0._onBuffSetupReply(slot0)
+	slot0:closeThis()
+	GameFacade.showToast(ToastEnum.WeekWalk_2BuffSetup)
 end
 
 function slot0.onClose(slot0)

@@ -10,9 +10,8 @@ function slot0.init(slot0, slot1)
 	slot0.unlock = slot1.unlock
 	slot0.showFinished = slot1.showFinished
 	slot0.battleInfos, slot0.battleInfoElementMap = GameUtil.rpcInfosToListAndMap(slot1.battleInfos, WeekwalkVer2BattleInfoMO, "elementId")
-	slot5 = WeekwalkVer2ElementInfoMO
-	slot6 = "index"
-	slot0.elementInfos = GameUtil.rpcInfosToMap(slot1.elementInfos, slot5, slot6)
+	slot5 = "index"
+	slot0.elementInfos = GameUtil.rpcInfosToMap(slot1.elementInfos, WeekwalkVer2ElementInfoMO, slot5)
 	slot0.battleIds = {}
 	slot0.battleIndex = {}
 

@@ -81,7 +81,7 @@ function slot0.reduceSoldCount(slot0, slot1)
 end
 
 function slot0.setSoldCount(slot0, slot1)
-	slot0.soldCount = GameUtil.clamp(slot1, 0, slot0:getMaxCount())
+	slot0.soldCount = GameUtil.clamp(slot1 or 0, 0, slot0:getMaxCount())
 end
 
 return slot0

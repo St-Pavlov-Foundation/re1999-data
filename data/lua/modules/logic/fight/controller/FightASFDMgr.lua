@@ -48,41 +48,49 @@ function slot0.onAfterPlayUniqueSkill(slot0)
 	end
 end
 
+function slot0.getASFDEntityMo(slot0, slot1)
+	if not slot1 then
+		return
+	end
+
+	if not FightPlayCardModel.instance:getUsedCards() then
+		return
+	end
+
+	for slot6, slot7 in ipairs(slot1) do
+		if slot2[slot7] and FightDataHelper.entityMgr:getById(slot8.uid) and slot10:isASFDEmitter() then
+			return slot10
+		end
+	end
+end
+
 function slot0.onAddUseCard(slot0, slot1)
-	if not (FightPlayCardModel.instance:getUsedCards() and slot2[slot1]) then
+	if not slot0:getASFDEntityMo(slot1) then
 		return
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot3.uid) then
-		return
-	end
-
-	if not slot5:isASFDEmitter() then
-		return
-	end
-
-	if not (slot4 and FightHelper.getEntity(slot4)) then
-		logError("没有找到发射奥术飞弹的实体" .. tostring(slot4))
+	if not FightHelper.getEntity(slot2.id) then
+		logError("没有找到发射奥术飞弹的实体" .. tostring(slot3))
 
 		return
 	end
 
-	slot7 = FightASFDHelper.getBornCo(slot4)
-	slot0.curBornCo = slot7
-	slot0.bornEntity = slot6
-	slot0.bornEffectWrap = slot6.effect:addGlobalEffect(FightASFDConfig.instance:getASFDCoRes(slot7))
+	slot5 = FightASFDHelper.getBornCo(slot3)
+	slot0.curBornCo = slot5
+	slot0.bornEntity = slot4
+	slot0.bornEffectWrap = slot4.effect:addGlobalEffect(FightASFDConfig.instance:getASFDCoRes(slot5))
 
-	FightRenderOrderMgr.instance:addEffectWrapByOrder(slot4, slot0.bornEffectWrap, FightRenderOrderMgr.MaxOrder)
-	slot0.bornEffectWrap:setLocalPos(FightASFDHelper.getEmitterPos(slot5.side))
+	FightRenderOrderMgr.instance:addEffectWrapByOrder(slot3, slot0.bornEffectWrap, FightRenderOrderMgr.MaxOrder)
+	slot0.bornEffectWrap:setLocalPos(FightASFDHelper.getEmitterPos(slot2.side))
 
-	if slot7.scale == 0 then
-		slot9 = 1
+	if slot5.scale == 0 then
+		slot7 = 1
 	end
 
-	slot0.bornEffectWrap:setEffectScale(slot9)
-	slot0:playAudio(slot7.audio)
+	slot0.bornEffectWrap:setEffectScale(slot7)
+	slot0:playAudio(slot5.audio)
 
-	slot0.effectWrap2EntityIdDict[slot0.bornEffectWrap] = slot4
+	slot0.effectWrap2EntityIdDict[slot0.bornEffectWrap] = slot3
 end
 
 function slot0.onMySideRoundEnd(slot0)
@@ -276,6 +284,7 @@ function slot0.onArrived(slot0, slot1)
 	slot0:tryAddALFResidualEffectData(slot1.missileRes, slot1)
 	slot0:createExplosionEffect(slot2, slot1.toId, slot1.asfdContext)
 	slot0:playHitAction(slot1.toId)
+	slot0:floatDamage(slot1.stepMo, slot1.toId)
 	slot0:clearMover(slot1)
 
 	if slot5[1] <= slot5[2] then
@@ -350,6 +359,33 @@ function slot0._onAnimEvent(slot0, slot1, slot2, slot3, slot4)
 	if slot2 == SpineAnimEvent.ActionComplete and slot1 == slot4[2] then
 		slot5.spine:removeAnimEventCallback(slot0._onAnimEvent, slot0)
 		slot5:resetAnimState()
+	end
+end
+
+function slot0.floatDamage(slot0, slot1, slot2)
+	slot3 = FightWorkFlowSequence.New(slot1)
+
+	slot0:addDamageWork(slot3, slot1, slot2)
+
+	slot4 = FightStepEffectWork.New()
+
+	slot4:setFlow(slot3)
+	slot4:onStartInternal()
+end
+
+function slot0.addDamageWork(slot0, slot1, slot2, slot3)
+	if not (slot2 and slot2.actEffectMOs) then
+		return
+	end
+
+	for slot8, slot9 in ipairs(slot4) do
+		if FightASFDHelper.isDamageEffect(slot9.effectType) and slot9.targetId == slot3 then
+			if FightStepBuilder.ActEffectWorkCls[slot10] then
+				slot1:registWork(slot11, slot2, slot9)
+			end
+		elseif slot10 == FightEnum.EffectType.FIGHTSTEP then
+			slot0:addDamageWork(slot1, slot9.cus_stepMO, slot3)
+		end
 	end
 end
 

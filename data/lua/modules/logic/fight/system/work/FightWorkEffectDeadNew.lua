@@ -116,9 +116,7 @@ function slot0._playDeadWork(slot0)
 		slot0._deadEntity.spine:play(slot2, false, false)
 	end
 
-	slot7 = slot1
-
-	for slot6, slot7 in pairs(slot1.getBuffDic(slot7)) do
+	for slot6, slot7 in pairs(slot1:getBuffDic()) do
 		slot0._deadEntity.buff:delBuff(slot7.uid, true)
 	end
 
@@ -166,7 +164,7 @@ function slot0._deadContinue(slot0)
 		slot0:_delayNoDeadEffectDone()
 	else
 		if gohelper.isNil(slot0._deadEntity.spine:getSkeletonAnim()) then
-			logError("skeleton anim is nil " .. slot0._deadEntity.id)
+			-- Nothing
 		end
 
 		slot4 = slot3 and slot3:GetCurAnimDuration() or 0.01

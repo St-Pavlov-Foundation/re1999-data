@@ -6,13 +6,21 @@ slot2 = {
 	EPISODENO_MSG = slot1.Descriptor(),
 	EPISODENOEPISODEIDFIELD = slot1.FieldDescriptor(),
 	EPISODENOSTATUSFIELD = slot1.FieldDescriptor(),
-	EPISODENOHEROIDSFIELD = slot1.FieldDescriptor(),
+	EPISODENOHEROSFIELD = slot1.FieldDescriptor(),
 	EPISODENOASSISTBOSSIDFIELD = slot1.FieldDescriptor(),
+	ASSISTBOSSNO_MSG = slot1.Descriptor(),
+	ASSISTBOSSNOIDFIELD = slot1.FieldDescriptor(),
+	ASSISTBOSSNOLEVELFIELD = slot1.FieldDescriptor(),
+	ASSISTBOSSNOTALENTPOINTFIELD = slot1.FieldDescriptor(),
+	ASSISTBOSSNOTALENTIDSFIELD = slot1.FieldDescriptor(),
 	LAYERNO_MSG = slot1.Descriptor(),
 	LAYERNOLAYERIDFIELD = slot1.FieldDescriptor(),
 	LAYERNOCURRHIGHSCOREFIELD = slot1.FieldDescriptor(),
 	LAYERNOHISTORYHIGHSCOREFIELD = slot1.FieldDescriptor(),
 	LAYERNOEPISODENOSFIELD = slot1.FieldDescriptor(),
+	HERONO_MSG = slot1.Descriptor(),
+	HERONOHEROIDFIELD = slot1.FieldDescriptor(),
+	HERONOEQUIPUIDFIELD = slot1.FieldDescriptor(),
 	TOWERNO_MSG = slot1.Descriptor(),
 	TOWERNOTYPEFIELD = slot1.FieldDescriptor(),
 	TOWERNOTOWERIDFIELD = slot1.FieldDescriptor(),
@@ -26,12 +34,7 @@ slot2 = {
 	TOWEROPENNOTOWERIDFIELD = slot1.FieldDescriptor(),
 	TOWEROPENNOSTATUSFIELD = slot1.FieldDescriptor(),
 	TOWEROPENNOROUNDFIELD = slot1.FieldDescriptor(),
-	TOWEROPENNONEXTTIMEFIELD = slot1.FieldDescriptor(),
-	ASSISTBOSSNO_MSG = slot1.Descriptor(),
-	ASSISTBOSSNOIDFIELD = slot1.FieldDescriptor(),
-	ASSISTBOSSNOLEVELFIELD = slot1.FieldDescriptor(),
-	ASSISTBOSSNOTALENTPOINTFIELD = slot1.FieldDescriptor(),
-	ASSISTBOSSNOTALENTIDSFIELD = slot1.FieldDescriptor()
+	TOWEROPENNONEXTTIMEFIELD = slot1.FieldDescriptor()
 }
 slot2.EPISODENOEPISODEIDFIELD.name = "episodeId"
 slot2.EPISODENOEPISODEIDFIELD.full_name = ".EpisodeNO.episodeId"
@@ -51,15 +54,16 @@ slot2.EPISODENOSTATUSFIELD.has_default_value = false
 slot2.EPISODENOSTATUSFIELD.default_value = 0
 slot2.EPISODENOSTATUSFIELD.type = 5
 slot2.EPISODENOSTATUSFIELD.cpp_type = 1
-slot2.EPISODENOHEROIDSFIELD.name = "heroIds"
-slot2.EPISODENOHEROIDSFIELD.full_name = ".EpisodeNO.heroIds"
-slot2.EPISODENOHEROIDSFIELD.number = 3
-slot2.EPISODENOHEROIDSFIELD.index = 2
-slot2.EPISODENOHEROIDSFIELD.label = 3
-slot2.EPISODENOHEROIDSFIELD.has_default_value = false
-slot2.EPISODENOHEROIDSFIELD.default_value = {}
-slot2.EPISODENOHEROIDSFIELD.type = 5
-slot2.EPISODENOHEROIDSFIELD.cpp_type = 1
+slot2.EPISODENOHEROSFIELD.name = "heros"
+slot2.EPISODENOHEROSFIELD.full_name = ".EpisodeNO.heros"
+slot2.EPISODENOHEROSFIELD.number = 3
+slot2.EPISODENOHEROSFIELD.index = 2
+slot2.EPISODENOHEROSFIELD.label = 3
+slot2.EPISODENOHEROSFIELD.has_default_value = false
+slot2.EPISODENOHEROSFIELD.default_value = {}
+slot2.EPISODENOHEROSFIELD.message_type = slot2.HERONO_MSG
+slot2.EPISODENOHEROSFIELD.type = 11
+slot2.EPISODENOHEROSFIELD.cpp_type = 10
 slot2.EPISODENOASSISTBOSSIDFIELD.name = "assistBossId"
 slot2.EPISODENOASSISTBOSSIDFIELD.full_name = ".EpisodeNO.assistBossId"
 slot2.EPISODENOASSISTBOSSIDFIELD.number = 4
@@ -76,11 +80,59 @@ slot2.EPISODENO_MSG.enum_types = {}
 slot2.EPISODENO_MSG.fields = {
 	slot2.EPISODENOEPISODEIDFIELD,
 	slot2.EPISODENOSTATUSFIELD,
-	slot2.EPISODENOHEROIDSFIELD,
+	slot2.EPISODENOHEROSFIELD,
 	slot2.EPISODENOASSISTBOSSIDFIELD
 }
 slot2.EPISODENO_MSG.is_extendable = false
 slot2.EPISODENO_MSG.extensions = {}
+slot2.ASSISTBOSSNOIDFIELD.name = "id"
+slot2.ASSISTBOSSNOIDFIELD.full_name = ".AssistBossNO.id"
+slot2.ASSISTBOSSNOIDFIELD.number = 1
+slot2.ASSISTBOSSNOIDFIELD.index = 0
+slot2.ASSISTBOSSNOIDFIELD.label = 1
+slot2.ASSISTBOSSNOIDFIELD.has_default_value = false
+slot2.ASSISTBOSSNOIDFIELD.default_value = 0
+slot2.ASSISTBOSSNOIDFIELD.type = 5
+slot2.ASSISTBOSSNOIDFIELD.cpp_type = 1
+slot2.ASSISTBOSSNOLEVELFIELD.name = "level"
+slot2.ASSISTBOSSNOLEVELFIELD.full_name = ".AssistBossNO.level"
+slot2.ASSISTBOSSNOLEVELFIELD.number = 2
+slot2.ASSISTBOSSNOLEVELFIELD.index = 1
+slot2.ASSISTBOSSNOLEVELFIELD.label = 1
+slot2.ASSISTBOSSNOLEVELFIELD.has_default_value = false
+slot2.ASSISTBOSSNOLEVELFIELD.default_value = 0
+slot2.ASSISTBOSSNOLEVELFIELD.type = 5
+slot2.ASSISTBOSSNOLEVELFIELD.cpp_type = 1
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.name = "talentPoint"
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.full_name = ".AssistBossNO.talentPoint"
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.number = 3
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.index = 2
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.label = 1
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.has_default_value = false
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.default_value = 0
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.type = 5
+slot2.ASSISTBOSSNOTALENTPOINTFIELD.cpp_type = 1
+slot2.ASSISTBOSSNOTALENTIDSFIELD.name = "talentIds"
+slot2.ASSISTBOSSNOTALENTIDSFIELD.full_name = ".AssistBossNO.talentIds"
+slot2.ASSISTBOSSNOTALENTIDSFIELD.number = 4
+slot2.ASSISTBOSSNOTALENTIDSFIELD.index = 3
+slot2.ASSISTBOSSNOTALENTIDSFIELD.label = 3
+slot2.ASSISTBOSSNOTALENTIDSFIELD.has_default_value = false
+slot2.ASSISTBOSSNOTALENTIDSFIELD.default_value = {}
+slot2.ASSISTBOSSNOTALENTIDSFIELD.type = 5
+slot2.ASSISTBOSSNOTALENTIDSFIELD.cpp_type = 1
+slot2.ASSISTBOSSNO_MSG.name = "AssistBossNO"
+slot2.ASSISTBOSSNO_MSG.full_name = ".AssistBossNO"
+slot2.ASSISTBOSSNO_MSG.nested_types = {}
+slot2.ASSISTBOSSNO_MSG.enum_types = {}
+slot2.ASSISTBOSSNO_MSG.fields = {
+	slot2.ASSISTBOSSNOIDFIELD,
+	slot2.ASSISTBOSSNOLEVELFIELD,
+	slot2.ASSISTBOSSNOTALENTPOINTFIELD,
+	slot2.ASSISTBOSSNOTALENTIDSFIELD
+}
+slot2.ASSISTBOSSNO_MSG.is_extendable = false
+slot2.ASSISTBOSSNO_MSG.extensions = {}
 slot2.LAYERNOLAYERIDFIELD.name = "layerId"
 slot2.LAYERNOLAYERIDFIELD.full_name = ".LayerNO.layerId"
 slot2.LAYERNOLAYERIDFIELD.number = 1
@@ -130,6 +182,34 @@ slot2.LAYERNO_MSG.fields = {
 }
 slot2.LAYERNO_MSG.is_extendable = false
 slot2.LAYERNO_MSG.extensions = {}
+slot2.HERONOHEROIDFIELD.name = "heroId"
+slot2.HERONOHEROIDFIELD.full_name = ".HeroNO.heroId"
+slot2.HERONOHEROIDFIELD.number = 1
+slot2.HERONOHEROIDFIELD.index = 0
+slot2.HERONOHEROIDFIELD.label = 1
+slot2.HERONOHEROIDFIELD.has_default_value = false
+slot2.HERONOHEROIDFIELD.default_value = 0
+slot2.HERONOHEROIDFIELD.type = 5
+slot2.HERONOHEROIDFIELD.cpp_type = 1
+slot2.HERONOEQUIPUIDFIELD.name = "equipUid"
+slot2.HERONOEQUIPUIDFIELD.full_name = ".HeroNO.equipUid"
+slot2.HERONOEQUIPUIDFIELD.number = 2
+slot2.HERONOEQUIPUIDFIELD.index = 1
+slot2.HERONOEQUIPUIDFIELD.label = 3
+slot2.HERONOEQUIPUIDFIELD.has_default_value = false
+slot2.HERONOEQUIPUIDFIELD.default_value = {}
+slot2.HERONOEQUIPUIDFIELD.type = 3
+slot2.HERONOEQUIPUIDFIELD.cpp_type = 2
+slot2.HERONO_MSG.name = "HeroNO"
+slot2.HERONO_MSG.full_name = ".HeroNO"
+slot2.HERONO_MSG.nested_types = {}
+slot2.HERONO_MSG.enum_types = {}
+slot2.HERONO_MSG.fields = {
+	slot2.HERONOHEROIDFIELD,
+	slot2.HERONOEQUIPUIDFIELD
+}
+slot2.HERONO_MSG.is_extendable = false
+slot2.HERONO_MSG.extensions = {}
 slot2.TOWERNOTYPEFIELD.name = "type"
 slot2.TOWERNOTYPEFIELD.full_name = ".TowerNO.type"
 slot2.TOWERNOTYPEFIELD.number = 1
@@ -267,56 +347,9 @@ slot2.TOWEROPENNO_MSG.fields = {
 }
 slot2.TOWEROPENNO_MSG.is_extendable = false
 slot2.TOWEROPENNO_MSG.extensions = {}
-slot2.ASSISTBOSSNOIDFIELD.name = "id"
-slot2.ASSISTBOSSNOIDFIELD.full_name = ".AssistBossNO.id"
-slot2.ASSISTBOSSNOIDFIELD.number = 1
-slot2.ASSISTBOSSNOIDFIELD.index = 0
-slot2.ASSISTBOSSNOIDFIELD.label = 1
-slot2.ASSISTBOSSNOIDFIELD.has_default_value = false
-slot2.ASSISTBOSSNOIDFIELD.default_value = 0
-slot2.ASSISTBOSSNOIDFIELD.type = 5
-slot2.ASSISTBOSSNOIDFIELD.cpp_type = 1
-slot2.ASSISTBOSSNOLEVELFIELD.name = "level"
-slot2.ASSISTBOSSNOLEVELFIELD.full_name = ".AssistBossNO.level"
-slot2.ASSISTBOSSNOLEVELFIELD.number = 2
-slot2.ASSISTBOSSNOLEVELFIELD.index = 1
-slot2.ASSISTBOSSNOLEVELFIELD.label = 1
-slot2.ASSISTBOSSNOLEVELFIELD.has_default_value = false
-slot2.ASSISTBOSSNOLEVELFIELD.default_value = 0
-slot2.ASSISTBOSSNOLEVELFIELD.type = 5
-slot2.ASSISTBOSSNOLEVELFIELD.cpp_type = 1
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.name = "talentPoint"
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.full_name = ".AssistBossNO.talentPoint"
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.number = 3
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.index = 2
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.label = 1
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.has_default_value = false
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.default_value = 0
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.type = 5
-slot2.ASSISTBOSSNOTALENTPOINTFIELD.cpp_type = 1
-slot2.ASSISTBOSSNOTALENTIDSFIELD.name = "talentIds"
-slot2.ASSISTBOSSNOTALENTIDSFIELD.full_name = ".AssistBossNO.talentIds"
-slot2.ASSISTBOSSNOTALENTIDSFIELD.number = 4
-slot2.ASSISTBOSSNOTALENTIDSFIELD.index = 3
-slot2.ASSISTBOSSNOTALENTIDSFIELD.label = 3
-slot2.ASSISTBOSSNOTALENTIDSFIELD.has_default_value = false
-slot2.ASSISTBOSSNOTALENTIDSFIELD.default_value = {}
-slot2.ASSISTBOSSNOTALENTIDSFIELD.type = 5
-slot2.ASSISTBOSSNOTALENTIDSFIELD.cpp_type = 1
-slot2.ASSISTBOSSNO_MSG.name = "AssistBossNO"
-slot2.ASSISTBOSSNO_MSG.full_name = ".AssistBossNO"
-slot2.ASSISTBOSSNO_MSG.nested_types = {}
-slot2.ASSISTBOSSNO_MSG.enum_types = {}
-slot2.ASSISTBOSSNO_MSG.fields = {
-	slot2.ASSISTBOSSNOIDFIELD,
-	slot2.ASSISTBOSSNOLEVELFIELD,
-	slot2.ASSISTBOSSNOTALENTPOINTFIELD,
-	slot2.ASSISTBOSSNOTALENTIDSFIELD
-}
-slot2.ASSISTBOSSNO_MSG.is_extendable = false
-slot2.ASSISTBOSSNO_MSG.extensions = {}
 slot2.AssistBossNO = slot1.Message(slot2.ASSISTBOSSNO_MSG)
 slot2.EpisodeNO = slot1.Message(slot2.EPISODENO_MSG)
+slot2.HeroNO = slot1.Message(slot2.HERONO_MSG)
 slot2.LayerNO = slot1.Message(slot2.LAYERNO_MSG)
 slot2.TowerNO = slot1.Message(slot2.TOWERNO_MSG)
 slot2.TowerOpenNO = slot1.Message(slot2.TOWEROPENNO_MSG)

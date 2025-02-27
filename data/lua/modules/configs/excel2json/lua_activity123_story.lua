@@ -16,10 +16,11 @@ slot2 = {
 	"storyId"
 }
 slot3 = {
-	subContent = 3,
+	subTitle = 3,
+	titleEn = 2,
+	subContent = 4,
 	title = 1,
-	content = 4,
-	titleEn = 2
+	content = 5
 }
 
 return {

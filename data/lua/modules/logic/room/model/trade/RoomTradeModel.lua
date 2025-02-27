@@ -109,9 +109,7 @@ function slot0.calTracedItemDict(slot0)
 
 	for slot5, slot6 in ipairs(slot0:getDailyOrders()) do
 		if slot6.isTraced then
-			slot11 = slot6
-
-			for slot10, slot11 in ipairs(slot6.getGoodsInfo(slot11)) do
+			for slot10, slot11 in ipairs(slot6:getGoodsInfo()) do
 				slot0._traceItemDict[slot12] = (slot0._traceItemDict[ManufactureConfig.instance:getItemId(slot11.productionId)] or 0) + slot11.quantity
 				slot13, slot14 = ManufactureModel.instance:getManufactureItemCount(slot11.productionId, true, true)
 
@@ -126,10 +124,8 @@ function slot0._addMatTracedCount(slot0, slot1, slot2)
 		return
 	end
 
-	slot7 = slot2
-
 	for slot7, slot8 in ipairs(slot3) do
-		slot10 = slot8.quantity * math.max(0, slot7)
+		slot10 = slot8.quantity * math.max(0, slot2)
 		slot0._traceChildItemDict[slot9] = (slot0._traceChildItemDict[ManufactureConfig.instance:getItemId(slot8.id)] or 0) + slot10
 		slot11, slot12 = ManufactureModel.instance:getManufactureItemCount(slot8.id, true, true)
 

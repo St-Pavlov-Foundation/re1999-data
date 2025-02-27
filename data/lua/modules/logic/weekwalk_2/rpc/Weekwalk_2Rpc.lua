@@ -70,18 +70,16 @@ function slot0.onReceiveWeekwalkVer2ChangeHeroGroupSelectReply(slot0, slot1, slo
 	end
 end
 
-function slot0.sendWeekwalkVer2ChooseSkillRequest(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = WeekwalkVer2Module_pb.WeekwalkVer2ChooseSkillRequest()
-	slot6.layerId = slot1
-	slot6.battleId = slot2
+function slot0.sendWeekwalkVer2ChooseSkillRequest(slot0, slot1, slot2, slot3, slot4)
+	WeekwalkVer2Module_pb.WeekwalkVer2ChooseSkillRequest().no = slot1
 
-	if slot3 then
-		for slot10, slot11 in ipairs(slot3) do
-			table.insert(slot6.skillIds, slot11)
+	if slot2 then
+		for slot9, slot10 in ipairs(slot2) do
+			table.insert(slot5.skillIds, slot10)
 		end
 	end
 
-	slot0:sendMsg(slot6, slot4, slot5)
+	slot0:sendMsg(slot5, slot3, slot4)
 end
 
 function slot0.onReceiveWeekwalkVer2ChooseSkillReply(slot0, slot1, slot2)
@@ -89,8 +87,8 @@ function slot0.onReceiveWeekwalkVer2ChooseSkillReply(slot0, slot1, slot2)
 		return
 	end
 
-	if WeekWalk_2Model.instance:getBattleInfo(slot2.layerId, slot2.battleId) then
-		slot6:setChooseSkillId(slot2.skillIds)
+	if WeekWalk_2Model.instance:getInfo() then
+		slot5:setHeroGroupSkill(slot2.no, slot2.skillIds)
 		WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnBuffSetupReply)
 	end
 end

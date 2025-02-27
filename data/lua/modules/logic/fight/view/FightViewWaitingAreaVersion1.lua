@@ -70,9 +70,16 @@ function slot0.onDestroyView(slot0)
 end
 
 function slot0._onAddUseCard(slot0, slot1)
-	if FightPlayCardModel.instance:getUsedCards()[slot1] then
-		slot3.CUSTOMADDUSECARD = true
+	slot3 = false
 
+	for slot7, slot8 in ipairs(slot1) do
+		if FightPlayCardModel.instance:getUsedCards()[slot8] then
+			slot9.CUSTOMADDUSECARD = true
+			slot3 = true
+		end
+	end
+
+	if slot3 then
 		if not slot0._addUseCardFlow then
 			slot0._addUseCardFlow = FlowSequence.New()
 
@@ -108,9 +115,8 @@ end
 
 function slot0._onSetUseCards(slot0)
 	slot1 = FightPlayCardModel.instance:getUsedCards()
-	slot5 = #slot1
 
-	slot0:_fixWaitingAreaItemCount(slot5)
+	slot0:_fixWaitingAreaItemCount(#slot1)
 	slot0:_updateView()
 
 	for slot5, slot6 in ipairs(slot1) do
@@ -120,19 +126,16 @@ end
 
 function slot0._onShowSimulateClientUsedCard(slot0)
 	slot1 = {}
-	slot4 = FightCardModel.instance
-	slot6 = slot4
 
-	for slot5, slot6 in ipairs(slot4.getPlayCardOpList(slot6)) do
+	for slot5, slot6 in ipairs(FightCardModel.instance:getPlayCardOpList()) do
 		table.insert(slot1, slot6.cardInfoMO)
 	end
 
 	slot0:_fixWaitingAreaItemCount(#slot1)
 
-	slot5 = slot1
-	slot6 = 0
+	slot5 = 0
 
-	slot0:_updateView(slot5, slot6)
+	slot0:_updateView(slot1, slot5)
 
 	for slot5, slot6 in ipairs(slot1) do
 		slot6.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, gohelper.findChild(slot0._cardItemList[slot5].tr.parent.gameObject, "lock"), false)

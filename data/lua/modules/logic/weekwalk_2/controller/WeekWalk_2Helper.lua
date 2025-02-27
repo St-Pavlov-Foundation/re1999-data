@@ -11,7 +11,7 @@ function slot0.setCupEffect(slot0, slot1)
 		return
 	end
 
-	uv0.setCupEffectByResult(slot0, slot1 and slot1.result or 0)
+	uv0.setCupEffectByResult(slot0, slot1 and slot1.result or WeekWalk_2Enum.CupType.None)
 end
 
 function slot0.setCupEffectByResult(slot0, slot1)

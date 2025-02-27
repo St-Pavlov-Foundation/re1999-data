@@ -261,9 +261,7 @@ function slot0._onCubeItemShow(slot0, slot1, slot2, slot3, slot4)
 		recthelper.setAnchor(slot5, slot16.go.transform.anchoredPosition.x + (slot21 and slot19 or slot20) / 2 - slot0._defaultWidth / 2, slot16.go.transform.anchoredPosition.y + -(slot21 and slot20 or slot19) / 2 + slot0._defaultWidth / 2)
 	end
 
-	slot21 = slot2.direction
-
-	for slot21, slot22 in pairs(HeroResonaceModel.instance:rotationMatrix(slot13, slot21)) do
+	for slot21, slot22 in pairs(HeroResonaceModel.instance:rotationMatrix(slot13, slot2.direction)) do
 		for slot26, slot27 in pairs(slot22) do
 			if slot27 == 1 and slot11[slot2.posY + slot21] and slot11[slot2.posY + slot21][slot2.posX + slot26] then
 				slot28.data = slot2

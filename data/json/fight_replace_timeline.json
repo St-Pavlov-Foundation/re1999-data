@@ -29,7 +29,7 @@
     "priority": 3,
     "target": 1,
     "simulate": 0,
-    "condition": "4#30870131#30870132"
+    "condition": "4#30870131#30870132#81800061"
   },
   {
     "id": "weila_308701_skill2",
@@ -37,7 +37,7 @@
     "priority": 3,
     "target": 1,
     "simulate": 0,
-    "condition": "4#30870131#30870132"
+    "condition": "4#30870131#30870132#81800061"
   },
   {
     "id": "weila_308701_innate",
@@ -45,7 +45,7 @@
     "priority": 3,
     "target": 1,
     "simulate": 0,
-    "condition": "4#30870131#30870132"
+    "condition": "4#30870131#30870132#81800061"
   },
   {
     "id": "670211_skill1",

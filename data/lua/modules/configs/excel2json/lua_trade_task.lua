@@ -21,8 +21,7 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	speaker = 2,
-	minType = 3,
+	minType = 2,
 	desc = 1
 }
 

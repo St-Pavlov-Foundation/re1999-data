@@ -24,6 +24,7 @@ slot0.BattleStatus = {
 	UnFinished = 0
 }
 slot0.CupType = {
+	None2 = 5,
 	Platinum = 4,
 	Copper = 1,
 	Gold = 3,
@@ -37,6 +38,10 @@ slot0.LineValue = {
 	0
 }
 slot0.OnceAnimType = {
+	FightBuffNew = 5,
+	RuleNew = 2,
+	BuffNew = 3,
+	ResultReview = 4,
 	UnlockEpisode = 1
 }
 slot0.ResultAnimIndex = {

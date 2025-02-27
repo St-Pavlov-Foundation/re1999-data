@@ -24,7 +24,11 @@ slot1 = {
 slot2 = {
 	"id"
 }
-slot3 = {}
+slot3 = {
+	extraWinConditionDesc = 2,
+	winConditionDesc = 1,
+	failConditionDesc = 3
+}
 
 return {
 	onLoad = function (slot0)

@@ -37,13 +37,13 @@ function slot0._overrideClose(slot0)
 end
 
 function slot0._doClose(slot0)
-	slot0:closeThis()
-
 	if not ViewMgr.instance:isOpen(ViewName.WeekWalk_2HeartLayerView) then
 		WeekWalk_2Controller.instance:openWeekWalk_2HeartLayerView({
 			mapId = WeekWalk_2Model.instance:getCurMapId()
 		})
 	end
+
+	slot0:closeThis()
 end
 
 function slot0.onContainerDestroy(slot0)

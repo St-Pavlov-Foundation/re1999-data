@@ -12,7 +12,8 @@ function slot0.reqConfigNames(slot0)
 		"weekwalk_ver2_cup",
 		"weekwalk_ver2_skill",
 		"weekwalk_ver2_time",
-		"task_weekwalk_ver2"
+		"task_weekwalk_ver2",
+		"weekwalk_ver2_element_res"
 	}
 end
 

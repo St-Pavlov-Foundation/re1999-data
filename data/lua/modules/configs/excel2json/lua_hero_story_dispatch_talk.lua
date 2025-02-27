@@ -12,7 +12,8 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	content = 1
+	content = 1,
+	speaker = 2
 }
 
 return {

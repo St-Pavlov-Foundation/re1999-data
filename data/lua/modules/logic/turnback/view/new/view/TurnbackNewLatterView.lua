@@ -76,14 +76,13 @@ function slot0.refreshFirst(slot0)
 	slot0._gorewardicon = gohelper.findChild(slot0.viewGO, "first/simage_page2/go_reward/rewardicon")
 	slot0._goallrewardicon = gohelper.findChild(slot0.viewGO, "first/simage_page3/#scroll_reward/Viewport/Content/rewardicon")
 	slot0._btngoto = gohelper.findChildButton(slot0.viewGO, "first/simage_page3/#btn_goto")
-	slot7 = "new/letter/turnback_new_letter_role" .. slot0.day
+	slot6 = slot0.day
 
-	slot0._simagerole:LoadImage(ResUrl.getTurnbackIcon(slot7))
+	slot0._simagerole:LoadImage(ResUrl.getTurnbackIcon("new/letter/turnback_new_letter_role" .. slot6))
 
 	slot0._txtdec.text = slot0.config.content
-	slot6 = slot0
 
-	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot6)
+	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot0)
 	gohelper.setActive(slot0._btngoto.gameObject, not slot0.notfirst)
 
 	slot0.toprewardList = {}

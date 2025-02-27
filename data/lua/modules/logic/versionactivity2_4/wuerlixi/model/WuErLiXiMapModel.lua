@@ -263,10 +263,9 @@ function slot0.setMapSignalData(slot0, slot1, slot2)
 		return
 	end
 
-	slot10 = slot2
-	slot11 = slot4
+	slot10 = slot4
 
-	slot0:setUnitActive(slot1, true, slot10, slot11)
+	slot0:setUnitActive(slot1, true, slot2, slot10)
 
 	for slot10, slot11 in pairs(slot3:getUnitSignals(slot4)) do
 		slot0:fillNodeRay(slot0:getMapNodes()[slot11[2]][slot11[1]], slot2, slot3:getUnitSignalOutDir())
@@ -290,10 +289,10 @@ function slot0.fillNodeRay(slot0, slot1, slot2, slot3, slot4, slot5)
 						slot0:setUnitActive(slot6[slot12][slot1.x], true, slot2, slot3)
 
 						if slot6[slot12][slot1.x]:isUnitActive(slot3) then
-							slot20 = slot2
-							slot21 = slot3
+							slot20 = slot3
+							slot21 = slot5
 
-							slot6[slot12][slot1.x]:setNodeRay(slot1.id, slot20, slot21, slot5)
+							slot6[slot12][slot1.x]:setNodeRay(slot1.id, slot2, slot20, slot21)
 							slot6[slot12][slot1.x]:setUnitOutDirByRayDir(slot3)
 
 							for slot20, slot21 in pairs(slot14:getUnitSignals(slot3)) do
@@ -354,10 +353,10 @@ function slot0.fillNodeRay(slot0, slot1, slot2, slot3, slot4, slot5)
 					slot0:setUnitActive(slot6[slot12][slot1.x], true, slot2, slot3)
 
 					if slot6[slot12][slot1.x]:isUnitActive(slot3) then
-						slot20 = slot2
-						slot21 = slot3
+						slot20 = slot3
+						slot21 = slot5
 
-						slot6[slot12][slot1.x]:setNodeRay(slot1.id, slot20, slot21, slot5)
+						slot6[slot12][slot1.x]:setNodeRay(slot1.id, slot2, slot20, slot21)
 						slot6[slot12][slot1.x]:setUnitOutDirByRayDir(slot3)
 
 						for slot20, slot21 in pairs(slot14:getUnitSignals(slot3)) do
@@ -415,10 +414,10 @@ function slot0.fillNodeRay(slot0, slot1, slot2, slot3, slot4, slot5)
 					slot0:setUnitActive(slot6[slot1.y][slot12], true, slot2, slot3)
 
 					if slot6[slot1.y][slot12]:isUnitActive(slot3) then
-						slot20 = slot2
-						slot21 = slot3
+						slot20 = slot3
+						slot21 = slot5
 
-						slot6[slot1.y][slot12]:setNodeRay(slot1.id, slot20, slot21, slot5)
+						slot6[slot1.y][slot12]:setNodeRay(slot1.id, slot2, slot20, slot21)
 						slot6[slot1.y][slot12]:setUnitOutDirByRayDir(slot3)
 
 						for slot20, slot21 in pairs(slot14:getUnitSignals(slot3)) do
@@ -481,10 +480,10 @@ function slot0.fillNodeRay(slot0, slot1, slot2, slot3, slot4, slot5)
 				slot0:setUnitActive(slot6[slot1.y][slot12], true, slot2, slot3)
 
 				if slot6[slot1.y][slot12]:isUnitActive(slot3) then
-					slot20 = slot2
-					slot21 = slot3
+					slot20 = slot3
+					slot21 = slot5
 
-					slot6[slot1.y][slot12]:setNodeRay(slot1.id, slot20, slot21, slot5)
+					slot6[slot1.y][slot12]:setNodeRay(slot1.id, slot2, slot20, slot21)
 					slot6[slot1.y][slot12]:setUnitOutDirByRayDir(slot3)
 
 					for slot20, slot21 in pairs(slot14:getUnitSignals(slot3)) do
@@ -1084,16 +1083,12 @@ function slot0.hasInteractActive(slot0, slot1, slot2)
 		return false
 	end
 
-	slot11 = slot2
-
-	for slot11, slot12 in pairs(slot0:getIgnoreUnits(slot0:getMapNodes()[slot3.rayId % 100][math.floor(slot3.rayId / 100)], slot11)) do
+	for slot11, slot12 in pairs(slot0:getIgnoreUnits(slot0:getMapNodes()[slot3.rayId % 100][math.floor(slot3.rayId / 100)], slot2)) do
 		if not slot0:getKeyNodeByUnitId(slot12):getNodeRay() then
 			return false
 		end
 
-		slot21 = slot13
-
-		for slot21, slot22 in pairs(slot0:getIgnoreUnits(slot4[slot14.rayId % 100][math.floor(slot14.rayId / 100)], slot21)) do
+		for slot21, slot22 in pairs(slot0:getIgnoreUnits(slot4[slot14.rayId % 100][math.floor(slot14.rayId / 100)], slot13)) do
 			if slot22 == slot1 then
 				return true
 			end

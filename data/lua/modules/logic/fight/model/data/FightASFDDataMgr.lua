@@ -136,4 +136,34 @@ function slot0.popEntityResidualData(slot0, slot1)
 	return table.remove(slot2, 1)
 end
 
+function slot0.checkCanAddALFResidual(slot0, slot1)
+	slot0:initALFResidualCountDict()
+
+	return (slot0.alfResidualCountDict[slot1] or 0) < FightASFDConfig.instance.alfMaxShowEffectCount
+end
+
+function slot0.addALFResidual(slot0, slot1, slot2)
+	if slot2 < 1 then
+		return
+	end
+
+	slot0:initALFResidualCountDict()
+
+	slot0.alfResidualCountDict[slot1] = math.min(FightASFDConfig.instance.alfMaxShowEffectCount, (slot0.alfResidualCountDict[slot1] or 0) + slot2)
+end
+
+function slot0.removeALFResidual(slot0, slot1, slot2)
+	if slot2 < 1 then
+		return
+	end
+
+	slot0:initALFResidualCountDict()
+
+	slot0.alfResidualCountDict[slot1] = math.max(0, (slot0.alfResidualCountDict[slot1] or 0) - slot2)
+end
+
+function slot0.initALFResidualCountDict(slot0)
+	slot0.alfResidualCountDict = slot0.alfResidualCountDict or {}
+end
+
 return slot0

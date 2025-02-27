@@ -26,9 +26,7 @@ function slot0._onGetGroupListInfo(slot0, slot1)
 		table.insert(slot0._groupTypeMap[slot9], slot7)
 	end
 
-	slot5 = slot0._sortGroupMoById
-
-	table.sort(slot0._groupList, slot5)
+	table.sort(slot0._groupList, slot0._sortGroupMoById)
 
 	for slot5, slot6 in pairs(slot0._groupTypeMap) do
 		table.sort(slot6, slot0._sortGroupMoById)

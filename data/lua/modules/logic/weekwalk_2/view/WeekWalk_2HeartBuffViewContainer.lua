@@ -24,4 +24,8 @@ function slot0.onContainerOpen(slot0)
 	WeekWalk_2BuffListModel.instance:initBuffList(slot0.viewParam and slot0.viewParam.isBattle)
 end
 
+function slot0.onContainerClickModalMask(slot0)
+	slot0:closeThis()
+end
+
 return slot0

@@ -12,6 +12,7 @@ function slot0.onInitView(slot0)
 	slot0._txtUnlockedTips = gohelper.findChildText(slot0.viewGO, "Right/#btn_locked/#txt_UnLockedTips")
 	slot0._btndlc = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_dlc")
 	slot0._gostartreddot = gohelper.findChild(slot0.viewGO, "Right/#btn_start/#go_startreddot")
+	slot0._goclosetipseffect = gohelper.findChild(slot0.viewGO, "Right/vx_glow")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -24,6 +25,7 @@ function slot0.addEvents(slot0)
 	slot0._btnlock:AddClickListener(slot0._btnLockOnClick, slot0)
 	slot0._btndlc:AddClickListener(slot0._btndlcOnClick, slot0)
 	slot0:addEventCb(RougeController.instance, RougeEvent.OnUpdateRougeRewardInfo, slot0.refreshReward, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinishCallback, slot0)
 	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, slot0.refreshLock, slot0)
 end
 
@@ -58,6 +60,7 @@ function slot0._btndlcOnClick(slot0)
 	ViewMgr.instance:openView(ViewName.RougeDLCTipsView, {
 		dlcId = uv0
 	})
+	gohelper.setActive(slot0._goclosetipseffect, false)
 end
 
 function slot0._editableInitView(slot0)
@@ -111,6 +114,14 @@ function slot0.checkOpenDLCTipsView(slot0)
 		})
 		PlayerPrefsHelper.setString(slot1, "true")
 	end
+end
+
+function slot0._onCloseViewFinishCallback(slot0, slot1)
+	if slot1 ~= ViewName.RougeDLCTipsView then
+		return
+	end
+
+	gohelper.setActive(slot0._goclosetipseffect, true)
 end
 
 function slot0.onDestroyView(slot0)

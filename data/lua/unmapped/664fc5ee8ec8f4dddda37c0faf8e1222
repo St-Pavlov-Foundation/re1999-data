@@ -3856,6 +3856,10 @@ slot0 = {
 		"Room",
 		"RestBuildingInfoPush"
 	},
+	[22400] = {
+		"Room",
+		"RoadInfoPush"
+	},
 	[-23690] = {
 		"Room",
 		"GetOrderInfoRequest",

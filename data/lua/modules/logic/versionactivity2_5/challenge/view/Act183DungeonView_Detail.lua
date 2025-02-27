@@ -421,9 +421,8 @@ function slot0.refreshFightRewards(slot0)
 	slot2 = {
 		[slot8] = true
 	}
-	slot6 = slot0._activityId
-	slot7 = slot0._groupId
-	slot0._subEpisodeConditions = Act183Config.instance:getGroupSubEpisodeConditions(slot6, slot7)
+	slot6 = slot0._groupId
+	slot0._subEpisodeConditions = Act183Config.instance:getGroupSubEpisodeConditions(slot0._activityId, slot6)
 
 	for slot6, slot7 in ipairs(slot0._subEpisodeConditions) do
 		slot0:refreshSingleReward(slot0:_getOrCreateRewardItem(slot6), slot7, slot6)

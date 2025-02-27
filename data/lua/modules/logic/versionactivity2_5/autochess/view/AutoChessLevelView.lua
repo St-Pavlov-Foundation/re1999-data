@@ -15,9 +15,7 @@ function slot0._editableInitView(slot0)
 end
 
 function slot0.onOpen(slot0)
-	slot4 = AudioEnum.AutoChess.play_ui_tangren_copy_enter
-
-	AudioMgr.instance:trigger(slot4)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_copy_enter)
 
 	slot0.levelItemDic = slot0:getUserDataTb_()
 

@@ -156,8 +156,16 @@ function slot0.getVoiceConfig(slot0, slot1, slot2, slot3, slot4)
 	slot7 = {}
 
 	for slot11, slot12 in pairs(slot6) do
-		if slot12.type == slot2 and (not slot3 or slot3(slot12)) then
-			table.insert(slot7, slot12)
+		if slot12.type == slot2 then
+			if not slot3 then
+				table.insert(slot7, slot12)
+			else
+				slot13, slot14 = xpcall(slot3, __G__TRACKBACK__, slot12)
+
+				if slot13 and slot14 then
+					table.insert(slot7, slot12)
+				end
+			end
 		end
 	end
 

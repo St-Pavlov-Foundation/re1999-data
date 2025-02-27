@@ -3,6 +3,7 @@ module("modules.logic.weekwalk_2.view.WeekWalk_2HeartResultView", package.seeall
 slot0 = class("WeekWalk_2HeartResultView", BaseView)
 
 function slot0.onInitView(slot0)
+	slot0._simagefullbg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_fullbg")
 	slot0._simagePanelBG1 = gohelper.findChildSingleImage(slot0.viewGO, "#simage_PanelBG1")
 	slot0._simagePanelBG2 = gohelper.findChildSingleImage(slot0.viewGO, "#simage_PanelBG1/#simage_PanelBG2")
 	slot0._goPanel = gohelper.findChild(slot0.viewGO, "#go_Panel")
@@ -19,18 +20,20 @@ function slot0.onInitView(slot0)
 	slot0._txtdefenceNum1 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_Defence/LayoutGroup/Data1/#txt_defenceNum1")
 	slot0._txtdefenceNum2 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_Defence/LayoutGroup/Data2/#txt_defenceNum2")
 	slot0._goRoleData = gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData")
-	slot0._simageRoleattack = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Attack/#simage_Roleattack")
+	slot0._simageRoleattack = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Attack/skinnode/node/#simage_Roleattack")
 	slot0._txtNumattack1 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Attack/LayoutGroup/Data1/#txt_Numattack1")
 	slot0._txtNumattack2 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Attack/LayoutGroup/Data2/#txt_Numattack2")
 	slot0._txtNumattack3 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Attack/LayoutGroup/Data3/#txt_Numattack3")
-	slot0._simageRolehealth = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Health/#simage_Rolehealth")
+	slot0._simageRolehealth = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Health/skinnode/node/#simage_Rolehealth")
 	slot0._txtNumhealth1 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Health/LayoutGroup/Data1/#txt_Numhealth1")
 	slot0._txtNumhealth2 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Health/LayoutGroup/Data2/#txt_Numhealth2")
-	slot0._simageRoledefence = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Defence/#simage_Roledefence")
+	slot0._simageRoledefence = gohelper.findChildSingleImage(slot0.viewGO, "#go_Panel/#go_RoleData/Defence/skinnode/node/#simage_Roledefence")
 	slot0._txtNumdefence1 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Defence/LayoutGroup/Data1/#txt_Numdefence1")
 	slot0._txtNumdefence2 = gohelper.findChildText(slot0.viewGO, "#go_Panel/#go_RoleData/Defence/LayoutGroup/Data2/#txt_Numdefence2")
 	slot0._goCupData = gohelper.findChild(slot0.viewGO, "#go_Panel/#go_CupData")
 	slot0._btnclick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Panel/#btn_click")
+	slot0._btnskip = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_skip")
+	slot0._imageskip = gohelper.findChildImage(slot0.viewGO, "#btn_skip/#image_skip")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -39,10 +42,18 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnclick:AddClickListener(slot0._btnclickOnClick, slot0)
+	slot0._btnskip:AddClickListener(slot0._btnskipOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnclick:RemoveClickListener()
+	slot0._btnskip:RemoveClickListener()
+end
+
+function slot0._btnskipOnClick(slot0)
+	slot0._index = WeekWalk_2Enum.ResultAnimIndex.CupData
+
+	slot0:_updateStatus()
 end
 
 function slot0._btnclickOnClick(slot0)
@@ -120,9 +131,6 @@ function slot0._showSpine(slot0, slot1)
 	slot0._uiSpine:setImgPos(0)
 	slot0._uiSpine:setResPath(slot3, function ()
 		uv0._spineLoaded = true
-
-		uv0._uiSpine:setUIMask(true)
-		uv0:_playSpineVoice()
 	end, slot0)
 
 	slot4, slot5 = SkinConfig.instance:getSkinOffset(slot3.fightSuccViewOffset)
@@ -150,18 +158,31 @@ function slot0._updateStatus(slot0)
 	gohelper.setActive(slot0._goDefence, true)
 	gohelper.setActive(slot0._goRoleData, true)
 	gohelper.setActive(slot0._goCupData, true)
+	gohelper.setActive(slot0._btnskip, slot0._index ~= WeekWalk_2Enum.ResultAnimIndex.CupData)
 
 	slot2 = slot0._showHandler[slot0._index](slot0)
 	slot0._showStatusInfo[slot0._index] = slot2
 
 	if not slot2 then
+		if slot0._index ~= WeekWalk_2Enum.ResultAnimIndex.Attack then
+			AudioMgr.instance:trigger(AudioEnum.UI.play_ui_leimi_theft_open)
+		end
+
 		if slot0._index == WeekWalk_2Enum.ResultAnimIndex.Defence and slot0._showStatusInfo[WeekWalk_2Enum.ResultAnimIndex.Health] then
 			slot0._animator:Play("go_" .. slot0._animName[slot0._index] .. "2", 0, 0)
 
 			return
 		end
 
+		if slot0._index == WeekWalk_2Enum.ResultAnimIndex.CupData and slot0._prevIndex ~= WeekWalk_2Enum.ResultAnimIndex.RoleData then
+			slot0._animator:Play("cupdata2", 0, 0)
+
+			return
+		end
+
 		slot0._animator:Play("go_" .. slot0._animName[slot0._index], 0, 0)
+
+		slot0._prevIndex = slot0._index
 	else
 		slot0:_showNext()
 	end
@@ -178,6 +199,8 @@ function slot0._showAttack(slot0)
 	slot0:_showSpine(slot1.heroId)
 end
 
+slot1 = 0.2
+
 function slot0._showHealth(slot0)
 	gohelper.setActive(slot0._goHealth, true)
 
@@ -187,8 +210,10 @@ function slot0._showHealth(slot0)
 
 	slot0._txthealthNum1.text = slot1.battleNum
 	slot0._txthealthNum2.text = slot1.allHeal
+	slot0._spineHeroId = slot1.heroId
 
-	slot0:_showSpine(slot1.heroId)
+	TaskDispatcher.cancelTask(slot0._delayShowSpine, slot0)
+	TaskDispatcher.runDelay(slot0._delayShowSpine, slot0, uv0)
 end
 
 function slot0._showDefence(slot0)
@@ -197,8 +222,18 @@ function slot0._showDefence(slot0)
 	slot1 = slot0._info.hurtHero
 	slot0._txtdefenceNum1.text = slot1.battleNum
 	slot0._txtdefenceNum2.text = slot1.allHurt
+	slot0._spineHeroId = slot1.heroId
 
-	slot0:_showSpine(slot1.heroId)
+	TaskDispatcher.cancelTask(slot0._delayShowSpine, slot0)
+	TaskDispatcher.runDelay(slot0._delayShowSpine, slot0, uv0)
+end
+
+function slot0._delayShowSpine(slot0)
+	if slot0._uiSpine then
+		gohelper.setActive(slot0._uiSpine:getSpineGo(), false)
+	end
+
+	slot0:_showSpine(slot0._spineHeroId)
 end
 
 function slot0._showRoleData(slot0)
@@ -216,28 +251,53 @@ function slot0._showRoleData(slot0)
 
 	if tonumber(slot2.allHeal) <= 0 then
 		gohelper.setActive(gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData/Health"), false)
+
+		slot5 = gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData/Attack")
+		slot6 = gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData/Defence")
+
+		gohelper.addChild(gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData/2/Attack"), slot5)
+		gohelper.addChild(gohelper.findChild(slot0.viewGO, "#go_Panel/#go_RoleData/2/Defence"), slot6)
+		recthelper.setAnchor(slot5.transform, 0, 0)
+		recthelper.setAnchor(slot6.transform, 0, 0)
 	end
 
 	slot0._txtNumdefence1.text = slot3.battleNum
 	slot0._txtNumdefence2.text = slot3.allHurt
 
 	if HeroModel.instance:getByHeroId(slot1.heroId) then
-		slot0._simageRoleattack:LoadImage(ResUrl.getHandbookheroIcon(slot4.skin))
+		slot0:_loadRoleImage(slot0._simageRoleattack, slot4.skin)
 	end
 
 	gohelper.setActive(slot0._simageRoleattack, slot4 ~= nil)
 
 	if HeroModel.instance:getByHeroId(slot2.heroId) then
-		slot0._simageRolehealth:LoadImage(ResUrl.getHandbookheroIcon(slot5.skin))
+		slot0:_loadRoleImage(slot0._simageRolehealth, slot5.skin)
 	end
 
 	gohelper.setActive(slot0._simageRolehealth, slot5 ~= nil)
 
 	if HeroModel.instance:getByHeroId(slot3.heroId) then
-		slot0._simageRoledefence:LoadImage(ResUrl.getHandbookheroIcon(slot6.skin))
+		slot0:_loadRoleImage(slot0._simageRoledefence, slot6.skin)
 	end
 
 	gohelper.setActive(slot0._simageRoledefence, slot6 ~= nil)
+end
+
+function slot0._loadRoleImage(slot0, slot1, slot2)
+	slot1:LoadImage(ResUrl.getHeadIconImg(slot2), function ()
+		ZProj.UGUIHelper.SetImageSize(uv1.gameObject)
+
+		if string.nilorempty(SkinConfig.instance:getSkinCo(uv0).playercardViewImgOffset) then
+			slot1 = slot0.characterViewImgOffset
+		end
+
+		if not string.nilorempty(slot1) then
+			slot2 = string.splitToNumber(slot1, "#")
+
+			recthelper.setAnchor(uv1.transform, tonumber(slot2[1]), tonumber(slot2[2]))
+			transformhelper.setLocalScale(uv1.transform, tonumber(slot2[3]), tonumber(slot2[3]), tonumber(slot2[3]))
+		end
+	end)
 end
 
 function slot0._showCupData(slot0)
@@ -318,6 +378,7 @@ function slot0.onClose(slot0)
 	end
 
 	WeekWalk_2Model.instance:clearSettleInfo()
+	TaskDispatcher.cancelTask(slot0._delayShowSpine, slot0)
 end
 
 function slot0.onDestroyView(slot0)

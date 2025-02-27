@@ -405,11 +405,11 @@ end
 function slot0._showWeekWalkEffect(slot0)
 	slot2 = WeekWalkModel.instance:getInfo()
 	slot3 = WeekWalkTaskListModel.instance:canGetReward(WeekWalkEnum.TaskType.Week) or slot2 and slot2.isPopShallowSettle
-	slot4 = slot2 and slot2.isPopDeepSettle
+	slot7 = slot2 and slot2.isPopDeepSettle or WeekWalk_2Model.instance:getInfo() and slot5.isPopSettle
 
 	gohelper.setActive(slot0._goweekwalkreward1, slot3)
-	gohelper.setActive(slot0._goweekwalkreward2, not slot3 and slot4)
-	gohelper.setActive(slot0._goweekwalkicon, not slot3 and not slot4)
+	gohelper.setActive(slot0._goweekwalkreward2, not slot3 and slot7)
+	gohelper.setActive(slot0._goweekwalkicon, not slot3 and not slot7)
 end
 
 function slot0._showGoldEffect(slot0)

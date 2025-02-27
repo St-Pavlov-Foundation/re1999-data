@@ -53,8 +53,7 @@ function slot0.frameCallback(slot0, slot1)
 		if slot8[2] <= slot1 and slot1 <= slot11 then
 			slot12 = slot0.textInfo.characterInfo
 			slot14 = slot12[slot9.lastVisibleCharacterIndex]
-			slot21 = slot12[slot9.firstVisibleCharacterIndex].bottomLeft
-			slot15 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot21))
+			slot15 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot12[slot9.firstVisibleCharacterIndex].bottomLeft))
 			slot16 = slot15
 
 			for slot21 = slot9.firstVisibleCharacterIndex, slot9.lastVisibleCharacterIndex do
@@ -64,8 +63,7 @@ function slot0.frameCallback(slot0, slot1)
 			end
 
 			slot16.y = slot17
-			slot24 = slot13.topLeft
-			slot18 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot24))
+			slot18 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot13.topLeft))
 			slot19 = slot18
 
 			for slot24 = slot9.firstVisibleCharacterIndex, slot9.lastVisibleCharacterIndex do
@@ -80,10 +78,9 @@ function slot0.frameCallback(slot0, slot1)
 			if slot7 == 1 then
 				slot0._conMat:SetFloat(slot0._LineMinYId, slot16.y)
 
-				slot25 = slot0._LineMaxYId
-				slot26 = slot19.y + 10
+				slot25 = slot19.y + 10
 
-				slot0._conMat:SetFloat(slot25, slot26)
+				slot0._conMat:SetFloat(slot0._LineMaxYId, slot25)
 
 				for slot25, slot26 in pairs(slot0._subMeshs) do
 					if slot26.materialForRendering then
@@ -95,10 +92,9 @@ function slot0.frameCallback(slot0, slot1)
 			else
 				slot0._conMat:SetFloat(slot0._LineMinYId, slot16.y)
 
-				slot25 = slot0._LineMaxYId
-				slot26 = slot19.y
+				slot25 = slot19.y
 
-				slot0._conMat:SetFloat(slot25, slot26)
+				slot0._conMat:SetFloat(slot0._LineMaxYId, slot25)
 
 				for slot25, slot26 in pairs(slot0._subMeshs) do
 					if slot26.materialForRendering then
@@ -121,13 +117,11 @@ end
 function slot0.onTextFinished(slot0)
 	slot0:killTween()
 
-	slot1, slot8, slot3 = transformhelper.getLocalPos(slot0.transform)
+	slot1, slot7, slot3 = transformhelper.getLocalPos(slot0.transform)
+	slot8 = 0
 
-	transformhelper.setLocalPos(slot0.transform, slot1, slot8, 0)
-
-	slot7 = "_GRADUAL_ON"
-
-	slot0._conMat:DisableKeyword(slot7)
+	transformhelper.setLocalPos(slot0.transform, slot1, slot7, slot8)
+	slot0._conMat:DisableKeyword("_GRADUAL_ON")
 
 	for slot7, slot8 in pairs(slot0._subMeshs) do
 		if slot8.materialForRendering then

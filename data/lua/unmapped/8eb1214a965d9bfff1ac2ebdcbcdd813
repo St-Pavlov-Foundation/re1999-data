@@ -4346,7 +4346,7 @@ slot0.InformPlayerTipView = {
 slot0.PlayerInfoView = {
 	destroy = 0,
 	container = "PlayerInfoViewContainer",
-	mainRes = "ui/viewres/social/playerinfoview.prefab",
+	mainRes = "ui/viewres/social/playerinfoview2.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default,
@@ -6776,8 +6776,9 @@ slot0.BpPropView = {
 	}
 }
 slot0.BpPropView2 = {
-	destroy = 0,
+	bgBlur = 1,
 	container = "BpPropView2Container",
+	destroy = 0,
 	mainRes = "ui/viewres/battlepass/bppropview2.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
@@ -19683,6 +19684,15 @@ slot0.V2a5_GoldenMilletPresentFullView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
 }
+slot0.V2a5_WarmUp = {
+	destroy = 0,
+	container = "V2a5_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/v2a5_warmup/v2a5_warmup.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
 slot0.VersionActivity2_6EnterView = {
 	destroy = 0,
 	container = "VersionActivity2_6EnterViewContainer",
@@ -19764,45 +19774,6 @@ slot0.VersionActivity2_6TaskView = {
 	},
 	otherRes = {
 		"ui/viewres/versionactivity_2_6/v2a6_dungeon/v2a6_taskitem.prefab"
-	}
-}
-slot0.VersionActivity2_6DungeonMapView = {
-	destroy = 0,
-	container = "VersionActivity2_6DungeonMapViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_6/v2a6_dungeon/v2a6_dungeonmapview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
-	anim = ViewAnim.Default,
-	otherRes = {
-		"ui/viewres/versionactivity_2_6/v2a6_dungeon/v2a6_mapepisodeitem.prefab",
-		"ui/viewres/dungeon/chaptermap/chaptermaplayout.prefab",
-		"ui/viewres/versionactivity_2_6/v2a6_dungeon/v2a6_dungeonmap_direction.prefab"
-	},
-	tabRes = {
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		}
-	}
-}
-slot0.VersionActivity2_6DungeonMapLevelView = {
-	destroy = 0,
-	container = "VersionActivity2_6DungeonMapLevelViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_6/v2a6_dungeon/v2a6_dungeonmaplevelview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	tabRes = {
-		{
-			{
-				CurrencyView.prefabPath
-			}
-		},
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		}
 	}
 }
 
@@ -19922,7 +19893,7 @@ slot0.V2a6_WeekwalkHeart_PanelView = {
 	bgBlur = 1,
 	mainRes = "ui/viewres/activity/v2a6_weekwalkheart_panelview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Modal,
+	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
 slot0.ActivityInsightShowView_2_6 = {
@@ -19930,6 +19901,15 @@ slot0.ActivityInsightShowView_2_6 = {
 	container = "ActivityInsightShowView_2_6Container",
 	bgBlur = 0,
 	mainRes = "ui/viewres/versionactivity_2_6/v2a6_newinsight/v2a6_activityinsightshowview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+slot0.V2a6_WarmUp = {
+	destroy = 0,
+	container = "V2a6_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/v2a6_warmup/v2a6_warmup.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default

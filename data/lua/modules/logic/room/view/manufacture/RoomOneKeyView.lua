@@ -67,8 +67,8 @@ function slot0.onClickModalMask(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot4 = typeof
-	slot0._viewAnimator = slot0.viewGO:GetComponent(slot4(UnityEngine.Animator))
+	slot4 = UnityEngine.Animator
+	slot0._viewAnimator = slot0.viewGO:GetComponent(typeof(slot4))
 
 	slot0:clearOptionItem()
 

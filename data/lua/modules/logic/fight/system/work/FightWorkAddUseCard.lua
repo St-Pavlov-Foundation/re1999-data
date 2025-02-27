@@ -14,9 +14,17 @@ function slot0.onStart(slot0)
 	end
 
 	FightViewPartVisible.set(false, false, false, false, true)
-	FightPlayCardModel.instance:addUseCard(slot1, slot0._actEffectMO.cardInfo)
+	FightPlayCardModel.instance:addUseCard(slot1, slot0._actEffectMO.cardInfo, slot0._actEffectMO.effectNum1)
 	FightController.instance:dispatchEvent(FightEvent.AddUseCard, slot1)
-	slot0:com_registTimer(slot0._delayAfterPerformance, 0.5 / FightModel.instance:getUISpeed())
+	slot0:com_registTimer(slot0._delayAfterPerformance, slot0:getWaitTime() / FightModel.instance:getUISpeed())
+end
+
+function slot0.getWaitTime(slot0)
+	if FightHeroALFComp.ALFSkillDict[slot0._actEffectMO.effectNum1] then
+		return 1.8
+	end
+
+	return 0.5
 end
 
 function slot0.clearWork(slot0)

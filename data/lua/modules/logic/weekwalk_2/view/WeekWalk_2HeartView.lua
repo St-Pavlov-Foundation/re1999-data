@@ -102,6 +102,21 @@ function slot0._editableInitView(slot0)
 	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, slot0._onWeekwalkTaskUpdate, slot0)
 end
 
+function slot0._updateChess(slot0, slot1, slot2)
+	slot0._chess1 = slot0._chess1 or gohelper.findChildImage(slot0._gochapter1, "chess")
+	slot0._chess2 = slot0._chess2 or gohelper.findChildImage(slot0._gochapter2, "chess")
+	slot3 = lua_weekwalk_ver2.configDict[slot0._mapId]
+	slot7 = lua_weekwalk_ver2_element_res.configDict[slot3.resIdRear]
+
+	if lua_weekwalk_ver2_element_res.configDict[slot3.resIdFront] then
+		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess1, slot6.res .. (slot1 and "_1" or "_0"))
+	end
+
+	if slot7 then
+		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess2, slot7.res .. (slot2 and "_1" or "_0"))
+	end
+end
+
 function slot0._onWeekwalkTaskUpdate(slot0)
 	slot0:_updateReward()
 end
@@ -146,6 +161,8 @@ function slot0._updateBattleStatus(slot0)
 	if slot0._battle1Finished then
 		slot0:_updateStarList(WeekWalk_2Enum.BattleIndex.Second)
 	end
+
+	slot0:_updateChess(slot0._battle1Finished, slot0._battle2Finished)
 end
 
 function slot0._updateStarList(slot0, slot1)

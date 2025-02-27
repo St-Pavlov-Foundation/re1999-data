@@ -62,27 +62,29 @@ end
 
 function slot0.onResLoaded(slot0, slot1)
 	slot0.loaded = true
-	slot2 = slot0.entity:getSide()
-	slot0.spine1 = slot0.sceneEntityMgr:buildTempSpine(slot0.spine1Res, slot0.entity.id .. "_1", slot2, UnityLayer.EffectMask, FightEntityLyTemp)
-	slot0.spine2 = slot0.sceneEntityMgr:buildTempSpine(slot0.spine2Res, slot0.entity.id .. "_2", slot2, UnityLayer.EffectMask, FightEntityLyTemp)
+	slot3 = "LY_Spine_" .. (slot0.entity:getSide() == FightEnum.EntitySide.MySide and "R" or "L")
+	slot0.spine1 = slot0.sceneEntityMgr:buildTempSpine(slot0.spine1Res, slot0.entity.id .. "_1", slot2, UnityLayer.EffectMask, FightEntityLyTemp, slot3 .. "_1")
+	slot0.spine2 = slot0.sceneEntityMgr:buildTempSpine(slot0.spine2Res, slot0.entity.id .. "_2", slot2, UnityLayer.EffectMask, FightEntityLyTemp, slot3 .. "_2")
 
+	slot0.spine1.spine:changeLookDir(SpineLookDir.Left)
+	slot0.spine2.spine:changeLookDir(SpineLookDir.Left)
 	slot0:hideEntity()
 
 	slot0.spine1Effect = slot0.spine1.effect:addHangEffect(slot0.spine1EffectRes, ModuleEnum.SpineHangPointRoot)
 	slot0.spine2Effect = slot0.spine2.effect:addHangEffect(slot0.spine2EffectRes, ModuleEnum.SpineHangPointRoot)
 	slot0.effectWrap = slot0.entity.effect:addGlobalEffect(slot0.buffRes)
-	slot3 = FightRenderOrderMgr.LYEffect * FightEnum.OrderRegion
+	slot4 = FightRenderOrderMgr.LYEffect * FightEnum.OrderRegion
 
-	slot0.spine1Effect:setRenderOrder(slot3)
-	slot0.spine2Effect:setRenderOrder(slot3)
-	slot0.effectWrap:setRenderOrder(slot3)
+	slot0.spine1Effect:setRenderOrder(slot4)
+	slot0.spine2Effect:setRenderOrder(slot4)
+	slot0.effectWrap:setRenderOrder(slot4)
 
-	slot4 = slot0.spine1Effect.effectGO and gohelper.findChild(slot0.spine1Effect.effectGO, "root")
-	slot0.spine1EffectAnimator = slot4 and ZProj.ProjAnimatorPlayer.Get(slot4)
-	slot5 = slot0.spine2Effect.effectGO and gohelper.findChild(slot0.spine2Effect.effectGO, "root")
-	slot0.spine2EffectAnimator = slot5 and ZProj.ProjAnimatorPlayer.Get(slot5)
-	slot6 = slot0.effectWrap.effectGO and gohelper.findChild(slot0.effectWrap.effectGO, "root")
-	slot0.effectAnimator = slot6 and ZProj.ProjAnimatorPlayer.Get(slot6)
+	slot5 = slot0.spine1Effect.effectGO and gohelper.findChild(slot0.spine1Effect.effectGO, "root")
+	slot0.spine1EffectAnimator = slot5 and ZProj.ProjAnimatorPlayer.Get(slot5)
+	slot6 = slot0.spine2Effect.effectGO and gohelper.findChild(slot0.spine2Effect.effectGO, "root")
+	slot0.spine2EffectAnimator = slot6 and ZProj.ProjAnimatorPlayer.Get(slot6)
+	slot7 = slot0.effectWrap.effectGO and gohelper.findChild(slot0.effectWrap.effectGO, "root")
+	slot0.effectAnimator = slot7 and ZProj.ProjAnimatorPlayer.Get(slot7)
 
 	slot0.effectWrap:setWorldPos(slot0:getEffectPos(slot2))
 	slot0:addEffect(slot0.spine1, slot0.spine1Effect, slot2)

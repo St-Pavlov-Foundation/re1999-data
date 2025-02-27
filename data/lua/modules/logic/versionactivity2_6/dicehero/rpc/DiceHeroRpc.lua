@@ -107,6 +107,8 @@ end
 function slot0.onReceiveDiceHeroUseSkillReply(slot0, slot1, slot2)
 	if slot1 == 0 then
 		for slot7, slot8 in ipairs(slot2.skillId) do
+			DiceHeroStatHelper.instance:addUseCard(slot8)
+
 			if DiceHeroFightModel.instance:getGameData().skillCardsBySkillId[slot8] then
 				slot9.curRoundUse = slot9.curRoundUse + 1
 			end
@@ -149,6 +151,7 @@ end
 
 function slot0.onReceiveDiceGiveUpReply(slot0, slot1, slot2)
 	if slot1 == 0 then
+		DiceHeroStatHelper.instance:sendReset()
 		GameFacade.showToast(ToastEnum.DiceHeroDiceResetSuccess)
 		DiceHeroModel.instance:initInfo(slot2.info)
 	end
@@ -156,9 +159,16 @@ end
 
 function slot0.onReceiveDiceFightSettlePush(slot0, slot1, slot2)
 	if slot1 == 0 then
+		slot3 = false
+
+		if slot2.status == DiceHeroEnum.GameStatu.Win and lua_dice_level.configDict[DiceHeroModel.instance.lastEnterLevelId] and DiceHeroModel.instance:getGameInfo(slot5.chapter).currLevel == slot4 and not slot6.allPass then
+			slot3 = true
+		end
+
 		DiceHeroModel.instance:initInfo(slot2.info)
 
 		DiceHeroFightModel.instance.finishResult = slot2.status
+		DiceHeroFightModel.instance.isFirstWin = slot3
 	end
 end
 

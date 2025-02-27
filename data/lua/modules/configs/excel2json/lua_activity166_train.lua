@@ -18,7 +18,12 @@ slot2 = {
 	"activityId",
 	"trainId"
 }
-slot3 = {}
+slot3 = {
+	strategy = 3,
+	name = 1,
+	winDesc = 4,
+	desc = 2
+}
 
 return {
 	onLoad = function (slot0)

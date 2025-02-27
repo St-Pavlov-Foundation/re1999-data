@@ -571,9 +571,7 @@ function slot0._markNote(slot0)
 							recthelper.setAnchorY(slot19, slot24.baseLine - recthelper.getHeight(slot13.transform) / 2 - 10)
 
 							if slot13.textInfo.characterInfo[GameUtil.utf8len("") + slot21 - 1].bottomRight.x < slot25.x then
-								slot34 = slot22 - slot26
-
-								recthelper.setWidth(slot19, slot34)
+								recthelper.setWidth(slot19, slot22 - slot26)
 
 								for slot34 = slot21, slot28 do
 									slot36 = slot13.textInfo.characterInfo[slot34 + 1]
@@ -624,19 +622,14 @@ function slot0._playMarkClueAni(slot0)
 	slot0._aniFlow = FlowSequence.New()
 	slot1 = slot0._gocollectNote.transform
 
-	function slot7()
+	slot0._aniFlow:addWork(FunctionWork.New(function ()
 		gohelper.setActive(uv0._gocollectFinish, false)
-
-		slot3 = true
-
-		gohelper.setActive(uv0._gocollectNote, slot3)
+		gohelper.setActive(uv0._gocollectNote, true)
 
 		for slot3 = 0, uv1.childCount - 1 do
 			gohelper.setActive(uv1:GetChild(slot3).gameObject, false)
 		end
-	end
-
-	slot0._aniFlow:addWork(FunctionWork.New(slot7))
+	end))
 
 	for slot6, slot7 in ipairs(string.splitToNumber(slot0._selectConfig.clueIds, "|")) do
 		if slot0._signObjDic[slot7] then
@@ -675,10 +668,10 @@ end
 
 function slot0._onCloseView(slot0, slot1)
 	if slot1 == ViewName.CommonPropView then
-		slot6 = ViewEvent.OnCloseViewFinish
-		slot7 = slot0._onCloseView
+		slot6 = slot0._onCloseView
+		slot7 = slot0
 
-		slot0:removeEventCb(ViewMgr.instance, slot6, slot7, slot0)
+		slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot6, slot7)
 
 		slot2 = true
 
@@ -711,10 +704,7 @@ function slot0._playLastShowFlow(slot0)
 
 				uv1:_onBtnClick(uv0)
 			end))
-
-			slot12 = 1
-
-			slot0._lastShowFlow:addWork(WorkWaitSeconds.New(slot12))
+			slot0._lastShowFlow:addWork(WorkWaitSeconds.New(1))
 
 			for slot11, slot12 in ipairs(string.splitToNumber(slot6.clueIds, "|")) do
 				if lua_activity121_clue.configDict[slot12][slot0._activityId].storyTag == 1 then
@@ -784,10 +774,7 @@ function slot0.getStoryRedPoint(slot0)
 end
 
 function slot0.getRedPoint()
-	slot2 = VersionActivity1_2NoteConfig.instance
-	slot4 = slot2
-
-	for slot3, slot4 in ipairs(slot2.getStoryList(slot4)) do
+	for slot3, slot4 in ipairs(VersionActivity1_2NoteConfig.instance:getStoryList()) do
 		if uv0.getStoryRedPoint(slot4.id) then
 			return true
 		end
@@ -819,10 +806,7 @@ function slot0._markingKeyWordInStory(slot0, slot1)
 	slot0._guideMarkingStoryFlow:addWork(FunctionWork.New(function ()
 		uv0:_onBtnClick(uv1)
 	end))
-
-	slot9 = 1
-
-	slot0._guideMarkingStoryFlow:addWork(WorkWaitSeconds.New(slot9))
+	slot0._guideMarkingStoryFlow:addWork(WorkWaitSeconds.New(1))
 
 	for slot8, slot9 in ipairs(string.splitToNumber(slot0._storyList[slot2].clueIds, "|")) do
 		if lua_activity121_clue.configDict[slot9][slot0._activityId].storyTag == 1 then

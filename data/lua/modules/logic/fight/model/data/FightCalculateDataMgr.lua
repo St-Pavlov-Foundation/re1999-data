@@ -1427,6 +1427,18 @@ function slot0.playEffect295(slot0, slot1)
 	slot2:refreshPowerInfo(slot1.powerInfo)
 end
 
+function slot0.playEffect306(slot0, slot1)
+	if not slot0:getTarEntityMO(slot1) then
+		return
+	end
+
+	if not slot1.buff then
+		return
+	end
+
+	slot2:updateBuff(slot3)
+end
+
 function slot0.playEffect308(slot0, slot1)
 	slot2 = slot0.dataMgr.teamDataMgr[slot1.teamType]
 	slot3 = slot1.cardHeatValue.id
@@ -1492,6 +1504,18 @@ function slot0.playEffect325(slot0, slot1)
 	slot0.dataMgr.entityMgr:removeEntity(slot1.targetId)
 end
 
+function slot0.playEffect326(slot0, slot1)
+	if not slot0:getTarEntityMO(slot1) then
+		return
+	end
+
+	if not slot1.buff then
+		return
+	end
+
+	slot2:updateBuff(slot3)
+end
+
 function slot0.playUndefineEffect(slot0)
 end
 
@@ -1554,9 +1578,7 @@ function slot0.playChangeHero(slot0, slot1)
 		end
 	end
 
-	slot9 = slot4
-
-	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot9)) do
+	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot4)) do
 		if slot10.uid == slot1.fromId then
 			table.remove(slot5, slot9)
 

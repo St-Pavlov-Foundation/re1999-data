@@ -27,10 +27,10 @@ function slot0.onOpen(slot0, slot1, slot2)
 
 	slot0.viewAnim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
-	slot0:_onOpen(slot1)
+	slot0:_onOpen(slot1, slot2)
 end
 
-function slot0._onOpen(slot0, slot1)
+function slot0._onOpen(slot0, slot1, slot2)
 	slot0._animator.enabled = true
 
 	if slot0.viewParam and slot0.viewParam.userId then
@@ -38,14 +38,20 @@ function slot0._onOpen(slot0, slot1)
 	end
 
 	slot0.playercardinfo = PlayerCardModel.instance:getCardInfo(slot0.userId)
-	slot2, slot3, slot4, slot5 = slot0.playercardinfo:getMainHero()
+
+	if (slot2 or slot0.playercardinfo:getThemeId()) == 0 or string.nilorempty(slot3) then
+		slot3 = nil
+	end
+
+	slot0.themeId = slot3
+	slot4, slot5, slot6, slot7 = slot0.playercardinfo:getMainHero()
 
 	if slot1 and slot1 > 0 then
-		slot3 = slot1
+		slot5 = slot1
 	end
 
 	slot0:_creatBgEffect()
-	slot0:_updateHero(SkinConfig.instance:getSkinCo(slot3).characterId, slot3)
+	slot0:_updateHero(SkinConfig.instance:getSkinCo(slot5).characterId, slot5)
 	slot0:_refreshProgress()
 	slot0:_refreshBaseInfo()
 	slot0:_initCritter()

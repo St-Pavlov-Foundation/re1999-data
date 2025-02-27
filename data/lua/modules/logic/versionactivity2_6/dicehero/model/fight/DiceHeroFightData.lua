@@ -55,9 +55,8 @@ function slot0.init(slot0, slot1)
 	slot0.allyHero:setSkills(slot0.heroSkillCards)
 
 	slot0.diceBox = DiceHeroFightDiceBoxMo.New()
-	slot5 = slot1.diceBox
 
-	slot0.diceBox:init(slot5)
+	slot0.diceBox:init(slot1.diceBox)
 
 	slot0.confirmed = slot1.confirmed
 
