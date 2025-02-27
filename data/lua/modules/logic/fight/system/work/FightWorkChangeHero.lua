@@ -19,6 +19,9 @@ function slot0.onStart(slot0)
 
 	slot0._entityMgr = GameSceneMgr.instance:getCurScene().entityMgr
 	slot0._targetId = slot0._actEffectMO.targetId
+
+	FightRenderOrderMgr.instance:unregister(slot0._targetId)
+
 	slot0._targetEntity = FightHelper.getEntity(slot0._targetId)
 
 	if FightEntityDataHelper.isPlayerUid(slot0._targetId) then

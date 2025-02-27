@@ -45,9 +45,8 @@ function slot0.updateInfo(slot0, slot1)
 	slot0.getReward = slot1.getReward
 	slot0.hasUnlock = slot1.unlock
 	slot0.getScoreBonus = {}
-	slot5 = slot1.getScoreBonus
 
-	slot0:addScoreBonus(slot5)
+	slot0:addScoreBonus(slot1.getScoreBonus)
 
 	slot0.score = slot1.score
 	slot0.wave = slot1.challengeWave
@@ -78,9 +77,7 @@ function slot0.updateDispatchTime(slot0, slot1)
 		return
 	end
 
-	slot7 = slot1
-
-	slot0:getDispatchMo(slot1.dispatchId):updateTime(slot7)
+	slot0:getDispatchMo(slot1.dispatchId):updateTime(slot1)
 
 	for slot7 = 1, #slot1.dispatchInfos do
 		slot0:updateDispatch(slot1.dispatchInfos[slot7])
@@ -115,6 +112,8 @@ end
 
 function slot0.refreshOrder(slot0)
 	slot0.getRewardOrder = slot0.getReward and 0 or 1
+	slot0.getUnlockOrder = slot0.hasUnlock and 0 or 1
+	slot0.hasRewardUnget = slot0:canGetReward() and 1 or 0
 end
 
 function slot0.caleMaxProgress(slot0)

@@ -27,7 +27,19 @@ function slot0.calculateMapEpisodeIntervalX(slot0)
 		return
 	end
 
-	slot0.mapEpisodeIntervalX = RougeMapHelper.retain2decimals((slot0.mapSize.x - RougeMapEnum.MapStartOffsetX * 2) / (#slot0:getEpisodeList() - 1))
+	slot0.mapStartOffsetX = RougeMapEnum.MapStartOffsetX
+
+	if RougeMapEnum.MaxMapEpisodeIntervalX < (slot0.mapSize.x - RougeMapEnum.MapStartOffsetX - RougeMapEnum.MapEndOffsetX) / (#slot0:getEpisodeList() - 1) then
+		slot5 = RougeMapEnum.MaxMapEpisodeIntervalX * slot3 + RougeMapEnum.MapStartOffsetX + RougeMapEnum.MapEndOffsetX
+		slot0.mapStartOffsetX = (slot0.mapSize.x - slot5) / 2 + RougeMapEnum.MapStartOffsetX
+		slot0.mapSize.x = slot5
+	end
+
+	slot0.mapEpisodeIntervalX = RougeMapHelper.retain2decimals(slot4)
+end
+
+function slot0.getMapStartOffsetX(slot0)
+	return slot0.mapStartOffsetX or RougeMapEnum.MapStartOffsetX
 end
 
 function slot0.getMapEpisodeIntervalX(slot0)
@@ -189,6 +201,7 @@ function slot0._initMapInfo(slot0, slot1)
 	slot0:setMapEntrustInfo(slot1)
 	slot0:initMapInteractive(slot1)
 	slot0:setMapSkillInfo(slot1)
+	slot0:setDLCInfo_103(slot1)
 	RougeMapController.instance:dispatchEvent(RougeMapEvent.onInitMapInfoDone)
 end
 
@@ -202,6 +215,7 @@ function slot0._updateMapInfo(slot0, slot1)
 	slot0:setMapEntrustInfo(slot1)
 	slot0:setMapCurInteractive(slot1)
 	slot0:setMapSkillInfo(slot1)
+	slot0:setDLCInfo_103(slot1)
 	RougeMapController.instance:dispatchEvent(RougeMapEvent.onUpdateMapInfo)
 end
 
@@ -379,6 +393,21 @@ function slot0.setMapSkillInfo(slot0, slot1)
 
 		table.insert(slot0._mapSkills, slot7)
 	end
+end
+
+function slot0.setDLCInfo_103(slot0, slot1)
+	slot0.monsterRuleFreshNum = slot1.monsterRuleFreshNum or 0
+	slot0.monsterRuleCanFreshNum = slot1.monsterRuleCanFreshNum or 0
+	slot0.choiceCollection = slot1.choiceCollection or 0
+	slot0.monsterRuleRemainCanFreshNum = slot0.monsterRuleCanFreshNum - slot0.monsterRuleFreshNum
+end
+
+function slot0.getMonsterRuleRemainCanFreshNum(slot0)
+	return slot0.monsterRuleRemainCanFreshNum or 0
+end
+
+function slot0.getChoiceCollection(slot0)
+	return slot0.choiceCollection
 end
 
 function slot0.clearMapSkillInfo(slot0)
@@ -670,6 +699,12 @@ end
 
 function slot0.getFirstEnterMapFlag(slot0)
 	return slot0.firstEnterMapFlag
+end
+
+function slot0.getLayerChoiceInfo(slot0, slot1)
+	if slot0.mapModel and slot0.mapModel.getLayerChoiceInfo then
+		return slot0.mapModel:getLayerChoiceInfo(slot1)
+	end
 end
 
 slot0.instance = slot0.New()

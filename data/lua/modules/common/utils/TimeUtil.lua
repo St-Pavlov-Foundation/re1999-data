@@ -32,6 +32,10 @@ slot0 = {
 		return math.floor(slot0 / 86400), math.floor(slot0 % 86400 / 3600), math.floor(slot0 % 3600 / 60), math.floor(slot0 % 60)
 	end,
 	stringToTimestamp = function (slot0)
+		if string.nilorempty(slot0) then
+			return 0
+		end
+
 		slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8 = string.find(slot0, "(%d+)-(%d+)-(%d+)%s*(%d+):(%d+):(%d+)")
 
 		if not slot3 or not slot4 or not slot5 or not slot6 or not slot7 or not slot8 then
@@ -71,6 +75,13 @@ slot0 = {
 	timestampToString = function (slot0)
 		return os.date("%Y-%m-%d %H:%M:%S", slot0)
 	end,
+	langTimestampToString = function (slot0)
+		if LangSettings.instance:getCurLangShortcut() == "en" then
+			return os.date("%m/%d/%Y %H:%M:%S", slot0)
+		else
+			return os.date("%Y-%m-%d %H:%M:%S", slot0)
+		end
+	end,
 	timestampToString1 = function (slot0)
 		return os.date("%Y-%m-%d", slot0)
 	end,
@@ -79,6 +90,13 @@ slot0 = {
 	end,
 	timestampToString3 = function (slot0)
 		return os.date("%Y.%m.%d", slot0)
+	end,
+	langTimestampToString3 = function (slot0)
+		if LangSettings.instance:getCurLangShortcut() == "en" then
+			return os.date("%m/%d/%Y", slot0)
+		else
+			return os.date("%Y.%m.%d", slot0)
+		end
 	end,
 	timestampToString4 = function (slot0)
 		return os.date("%H:%M", slot0)
@@ -276,19 +294,23 @@ slot0 = {
 		if math.floor(math.floor(slot0) / 31536000) > 0 then
 			slot5 = math.floor(slot0 % slot3 / uv0.OneDaySecond)
 
-			return slot1 and slot4 .. uv0.DateEnFormat.Year .. slot5 .. uv0.DateEnFormat.Day or slot4 .. luaLang("time_year") .. slot5 .. luaLang("time_day")
+			return LangSettings.instance:isEn() and (slot1 and slot4 .. uv0.DateEnFormat.Year .. " " .. slot5 .. uv0.DateEnFormat.Day or slot4 .. luaLang("time_year") .. " " .. slot5 .. luaLang("time_day")) or slot1 and slot4 .. uv0.DateEnFormat.Year .. slot5 .. uv0.DateEnFormat.Day or slot4 .. luaLang("time_year") .. slot5 .. luaLang("time_day")
 		end
 
 		if math.floor(slot0 / uv0.OneDaySecond) > 0 then
 			slot6 = math.floor(slot0 % uv0.OneDaySecond / uv0.OneHourSecond)
 
-			return slot1 and slot5 .. uv0.DateEnFormat.Day .. slot6 .. uv0.DateEnFormat.Hour or slot5 .. luaLang("time_day") .. slot6 .. luaLang("time_hour")
+			return LangSettings.instance:isEn() and (slot1 and slot5 .. uv0.DateEnFormat.Day .. " " .. slot6 .. uv0.DateEnFormat.Hour or slot5 .. luaLang("time_day") .. " " .. slot6 .. luaLang("time_hour")) or slot1 and slot5 .. uv0.DateEnFormat.Day .. slot6 .. uv0.DateEnFormat.Hour or slot5 .. luaLang("time_day") .. slot6 .. luaLang("time_hour")
 		end
 
 		if math.floor(slot0 / uv0.OneHourSecond) > 0 then
 			slot7 = math.floor(slot0 % uv0.OneHourSecond / uv0.OneMinuteSecond)
 
-			return slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
+			if LangSettings.instance:isEn() then
+				slot2 = slot1 and slot6 .. uv0.DateEnFormat.Hour .. " " .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. " " .. slot7 .. luaLang("time_minute2")
+			else
+				slot2 = slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
+			end
 		else
 			slot6 = 0
 
@@ -296,8 +318,10 @@ slot0 = {
 				slot7 = 1
 			end
 
-			return slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
+			slot2 = LangSettings.instance:isEn() and (slot1 and slot6 .. uv0.DateEnFormat.Hour .. " " .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. " " .. slot7 .. luaLang("time_minute2")) or slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
 		end
+
+		return slot2
 	end
 }
 slot0.maxDateTimeStamp = slot0.dtTableToTimeStamp({
@@ -329,6 +353,44 @@ end
 
 function slot0.isDstTime(slot0)
 	return os.date("*t", slot0).isdst
+end
+
+slot1 = 31536000
+
+function slot0.getFormatTime(slot0)
+	if not slot0 or slot0 <= 0 then
+		return "<1" .. luaLang("time_minute2")
+	end
+
+	if math.floor(slot0 / uv0) > 0 then
+		slot3 = math.floor(slot0 % uv0 / uv1.OneDaySecond)
+
+		if LangSettings.instance:isEn() then
+			slot2 = luaLang("time_year") .. " "
+		end
+
+		return slot1 .. slot2 .. slot3 .. luaLang("time_day")
+	end
+
+	slot2, slot3, slot4, slot5 = uv1.secondsToDDHHMMSS(slot0)
+
+	if slot2 > 0 then
+		if LangSettings.instance:isEn() then
+			slot6 = luaLang("time_day") .. " "
+		end
+
+		return slot2 .. slot6 .. slot3 .. luaLang("time_hour2")
+	elseif slot3 > 0 then
+		if LangSettings.instance:isEn() then
+			slot6 = luaLang("time_hour2") .. " "
+		end
+
+		return slot3 .. slot6 .. slot4 .. luaLang("time_minute2")
+	elseif slot4 > 0 then
+		return slot4 .. luaLang("time_minute2")
+	end
+
+	return "<1" .. luaLang("time_minute2")
 end
 
 return slot0

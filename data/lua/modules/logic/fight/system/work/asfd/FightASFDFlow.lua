@@ -6,27 +6,58 @@ slot0.DelayWaitTime = 61
 function slot0.ctor(slot0, slot1, slot2, slot3)
 	slot0.stepMo = slot1
 	slot0.curIndex = slot3
+	slot0.asfdContext = slot0:getContext(slot1)
+	slot0.nextStepMo = slot2
+end
+
+function slot0.createNormalSeq(slot0)
+	slot1 = slot0.stepMo
 	slot0._sequence = FlowSequence.New()
 
 	slot0._sequence:addWork(FightWorkCreateASFDEmitter.New(slot1))
-	FlowSequence.New():addWork(FightWorkMissileASFD.New(slot1, slot0.curIndex))
+	FlowSequence.New():addWork(FightWorkMissileASFD.New(slot1, slot0.asfdContext))
 
-	slot5 = FlowParallel.New()
+	slot3 = FlowParallel.New()
 
-	if slot0:checkNeedAddWaitDoneWork(slot2) then
-		slot4:addWork(FightWorkMissileASFDDone.New(slot1))
-		slot5:addWork(FightWorkWaitASFDArrivedDone.New(slot1))
+	if slot0:checkNeedAddWaitDoneWork(slot0.nextStepMo) then
+		slot2:addWork(FightWorkMissileASFDDone.New(slot1))
+		slot3:addWork(FightWorkWaitASFDArrivedDone.New(slot1))
 	end
 
-	slot5:addWork(slot4)
-	slot0._sequence:addWork(slot5)
+	slot3:addWork(slot2)
+	slot0._sequence:addWork(slot3)
 	slot0._sequence:addWork(FightWorkASFDEffectFlow.New(slot1))
 
-	if slot6 then
+	if slot4 then
 		slot0._sequence:addWork(FightWorkASFDDone.New(slot1))
 	else
 		slot0._sequence:addWork(FightWorkASFDContinueDone.New(slot1))
 	end
+end
+
+function slot0.createPullOutSeq(slot0)
+	slot0._sequence = FlowSequence.New()
+	slot1 = FlowParallel.New()
+
+	slot1:addWork(FightWorkASFDClearEmitter.New(slot0.stepMo))
+	slot1:addWork(FightWorkASFDPullOut.New(slot0.stepMo))
+	slot1:addWork(FightWorkASFDEffectFlow.New(slot0.stepMo))
+	slot0._sequence:addWork(slot1)
+	slot0._sequence:addWork(FightWorkASFDDone.New(slot0.stepMo))
+end
+
+function slot0.getContext(slot0, slot1)
+	if FightASFDHelper.getStepContext(slot1) then
+		return slot2
+	end
+
+	logError("not found EMITTER FIGHT NOTIFY !!!")
+
+	return {
+		splitNum = 0,
+		emitterAttackNum = 1,
+		emitterAttackMaxNum = 2
+	}
 end
 
 function slot0.checkNeedAddWaitDoneWork(slot0, slot1)
@@ -35,6 +66,10 @@ function slot0.checkNeedAddWaitDoneWork(slot0, slot1)
 	end
 
 	if not slot1 then
+		return true
+	end
+
+	if FightASFDHelper.isALFPullOutStep(slot1) then
 		return true
 	end
 
@@ -64,6 +99,12 @@ function slot0.checkHasMonsterChangeEffectType(slot0, slot1)
 end
 
 function slot0.onStart(slot0)
+	if FightASFDHelper.isALFPullOutStep(slot0.stepMo) then
+		slot0:createPullOutSeq()
+	else
+		slot0:createNormalSeq()
+	end
+
 	slot0._sequence:registerDoneListener(slot0._flowDone, slot0)
 	slot0._sequence:start()
 end

@@ -118,5 +118,65 @@
     "reportRes": "season_infoanalyze_reportpic_5",
     "reportPic": "season_infoanalyze_detailpic_05",
     "initContent": "本次诱蛾实验对精神的影响主要表现为强烈的思乡情绪，为了结束本人不受控制的哭泣与抑郁症状，决定此次趋光性研究暂告一段落，开始照常进行总结性报告。"
+  },
+  {
+    "activityId": 12618,
+    "infoId": 1,
+    "unlockType": 1,
+    "unlockParam": "1",
+    "unlockDes": "进入监狱派对解锁",
+    "name": "簇拥之声",
+    "nameEn": "Noise of the Foolish",
+    "reportRes": "season_infoanalyze_reportpic_1",
+    "reportPic": "season_infoanalyze_detailpic_02",
+    "initContent": "早上好，我的精神缺陷朋友们，今天我难得在一片安宁中醒来。不得不说，这里比外界舒适太多了，要来块馅饼么？"
+  },
+  {
+    "activityId": 12618,
+    "infoId": 2,
+    "unlockType": 1,
+    "unlockParam": "2",
+    "unlockDes": "进入无穷尽见闻解锁",
+    "name": "酸痛的双腿",
+    "nameEn": "Sore Legs",
+    "reportRes": "season_infoanalyze_reportpic_2",
+    "reportPic": "season_infoanalyze_detailpic_03",
+    "initContent": "我不行了……我的腿……就快没感觉了，它们已经肿成了两个硬块！我加入启明会不是为了遭这个罪的！"
+  },
+  {
+    "activityId": 12618,
+    "infoId": 3,
+    "unlockType": 1,
+    "unlockParam": "3",
+    "unlockDes": "进入自言自语解锁",
+    "name": "谁在说话？",
+    "nameEn": "Who's Speaking?",
+    "reportRes": "season_infoanalyze_reportpic_3",
+    "reportPic": "season_infoanalyze_detailpic_04",
+    "initContent": "“感谢你们将兀尔德女士送来，我代表重塑之手感谢你们的协助。几位在南极的落脚点也已经准备好了，我可以在此保证，几位享用的茶水会是与勿忘我先生一个档次的珍品”"
+  },
+  {
+    "activityId": 12618,
+    "infoId": 4,
+    "unlockType": 2,
+    "unlockParam": "1#2#3",
+    "unlockDes": "前3份情报解析完成解锁",
+    "name": "匿名信",
+    "nameEn": "Anonymous Letter",
+    "reportRes": "season_infoanalyze_reportpic_4",
+    "reportPic": "season_infoanalyze_detailpic_01",
+    "initContent": "在典狱长达尔杜夫先生调任后，官方就再也没有联系过科马拉监狱。自从重塑之手接触科马拉，这里的管理工作就暂由梅林代理。欢迎来到科马拉监狱，如果你有任何问题需要咨询，请在门口信箱中留下信件，亦或拨打下列号码。"
+  },
+  {
+    "activityId": 12618,
+    "infoId": 5,
+    "unlockType": 2,
+    "unlockParam": "4",
+    "unlockDes": "情报4解析完成解锁",
+    "name": "尽头之后的阶段性报告",
+    "nameEn": "Interim Report: Beyond the Boundaries",
+    "reportRes": "season_infoanalyze_reportpic_5",
+    "reportPic": "season_infoanalyze_detailpic_05",
+    "initContent": "本次诱蛾实验圆满结束，并未产生严重的精神异常，推测是本人已经习惯了工作环境，接下来开始照常进行总结性报告。"
   }
 ]

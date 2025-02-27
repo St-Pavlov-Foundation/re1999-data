@@ -44,6 +44,8 @@ function slot0._btncategoryOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	gohelper.addUIClickAudio(slot0._btntip.gameObject, AudioEnum.UI.Play_UI_Copies)
+
 	slot0._click = SLFramework.UGUI.UIClickListener.Get(slot0.viewGO)
 	slot0._anim = SLFramework.AnimatorPlayer.Get(gohelper.findChild(slot0.viewGO, "anim"))
 	slot0._simagechapterIcon0 = gohelper.findChildSingleImage(slot0.viewGO, "anim/#simage_chapterIcon/font")

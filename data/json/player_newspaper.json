@@ -47,5 +47,12 @@
     "name": "回声屿穿行",
     "nameEn": "Isle of Echoes Visits",
     "displayPriority": 7
+  },
+  {
+    "id": 8,
+    "type": 1,
+    "name": "醒梦域进度",
+    "nameEn": "Lucidscape",
+    "displayPriority": 8
   }
 ]

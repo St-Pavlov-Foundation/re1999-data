@@ -82,6 +82,11 @@ function slot0._onAct182Click(slot0)
 	slot0:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, , slot0._act182ActId)
 end
 
+function slot0._onWeekWalkHeartClick(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
+	slot0:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, , ActivityEnum.Activity.WeekWalkHeartShow)
+end
+
 function slot0._getEnterController(slot0)
 	return slot0.viewContainer:getMainActivityEnterView():getCurEnterController()
 end
@@ -109,18 +114,21 @@ function slot0._initActs(slot0)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.DouQuQu, slot0._getDouQuQuStatus, slot0._getDouQuQuStartTime)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.Act178, slot0._getAct178Status, slot0._getAct178StartTime)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.Act182, slot0._getAct182Status, slot0._getAct182StartTime)
+	slot0:_addActHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0._getWeekWalkHeartStatus, slot0._getWeekWalkHeartStartTime)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.RoleStoryActivity, slot0._onRoleStoryClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.SeasonActivity, slot0._onSeasonClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Rouge, slot0._onRougeClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.DouQuQu, slot0._onDouQuQuClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Act178, slot0._onAct178Click)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Act182, slot0._onAct182Click)
+	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0._onWeekWalkHeartClick)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.RoleStoryActivity, slot0.refreshRoleStoryBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.SeasonActivity, slot0.refreshSeasonBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Rouge, slot0.refreshRougeBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.DouQuQu, slot0.refreshDouQuQuBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Act178, slot0.refreshAct178Btn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Act182, slot0.refreshAct182Btn)
+	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0.refreshWeekWalkHeartBtn)
 end
 
 function slot0._addRefreshBtnHandler(slot0, slot1, slot2)
@@ -200,6 +208,14 @@ function slot0._getAct182StartTime(slot0)
 	return ActivityModel.instance:getActMO(slot0._act182ActId) and slot2:getRealStartTimeStamp() * 1000
 end
 
+function slot0._getWeekWalkHeartStatus(slot0)
+	return (slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.WeekWalkHeart) and ActivityHelper.getActivityStatus(slot1)) == ActivityEnum.ActivityStatus.Normal
+end
+
+function slot0._getWeekWalkHeartStartTime(slot0)
+	return ActivityModel.instance:getActMO(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.WeekWalkHeart)) and slot2:getRealStartTimeStamp() * 1000
+end
+
 function slot0._onStoryChange(slot0)
 	slot0:onRefreshActivityState()
 end
@@ -244,6 +260,13 @@ function slot0.refreshAct182Btn(slot0)
 	slot0:_roleStoryLoadImage(ActivityConfig.instance:getActivityCo(slot0._act182ActId).extraDisplayIcon, slot0.onLoadImage, slot0)
 
 	slot0._txtrolestory.text = ""
+end
+
+function slot0.refreshWeekWalkHeartBtn(slot0)
+	gohelper.setActive(slot0._btnrolestory, true)
+	slot0:_roleStoryLoadImage(ActivityConfig.instance:getActivityCo(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.WeekWalkHeart)).extraDisplayIcon, slot0.onLoadImage, slot0)
+
+	slot0._txtrolestory.text = ActivityConfig.instance:getActivityCo(ActivityEnum.Activity.WeekWalkHeartShow).name
 end
 
 function slot0.onLoadImage(slot0)
@@ -350,6 +373,18 @@ function slot0.checkShowActivityEnter(slot0)
 	slot0.activityShowState = slot1
 
 	recthelper.setAnchorY(slot0._goright.transform, slot0.activityShowState == ActivityEnum.MainViewActivityState.None and 0 or -40)
+
+	if SLFramework.FrameworkSettings.IsEditor then
+		logNormal("MainActExtraDisplay:checkShowActivityEnter showState:" .. tostring(slot1))
+	end
+end
+
+function slot0._getCurBindActivityId(slot0)
+	return slot0:_getBindActivityId(slot0.activityShowState)
+end
+
+function slot0._getBindActivityId(slot0, slot1)
+	return ActivityConfig.instance:getActivityByExtraDisplayId(slot1) and slot2.id
 end
 
 function slot0.onRefreshActivityState(slot0)

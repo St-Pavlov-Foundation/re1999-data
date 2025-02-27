@@ -8,7 +8,7 @@ return {
 		RewardShowView = 104,
 		NewProgressView = 109,
 		RecommendView = 105,
-		NewRecommendView = 110,
+		ReviewView = 110,
 		NewBenfitView = 108,
 		NewTaskView = 107,
 		TaskView = 102

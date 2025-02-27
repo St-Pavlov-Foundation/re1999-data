@@ -106,6 +106,12 @@ function slot0._onReceiveMaterialChangePush(slot0, slot1, slot2, slot3, slot4, s
 			return
 		end
 
+		if ViewMgr.instance:isOpen(ViewName.WeekWalk_2LayerRewardView) then
+			WeekWalk_2TaskListModel.instance:setTaskRewardList(slot2)
+
+			return
+		end
+
 		TaskController.instance:getRewardByLine(slot6, ViewName.CommonPropView, slot2)
 
 		if #slot4 > 0 then

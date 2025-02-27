@@ -18,7 +18,7 @@ function slot0._parseData(slot0)
 		return
 	end
 
-	if DungeonConfig.instance:getEpisodeCO(slot0.episodeId).type == DungeonEnum.EpisodeType.WeekWalk then
+	if DungeonConfig.instance:getEpisodeCO(slot0.episodeId).type == DungeonEnum.EpisodeType.WeekWalk or slot1.type == DungeonEnum.EpisodeType.WeekWalk_2 then
 		slot2 = string.splitToNumber(slot0.data, "#")
 		slot0.layerId = slot2[2]
 		slot0.elementId = slot2[3]

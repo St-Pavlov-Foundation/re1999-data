@@ -12,7 +12,11 @@ function slot0.onStart(slot0)
 	FightController.instance:registerCallback(FightEvent.ASFD_OnASFDArrivedDone, slot0.onASFDArrivedDone, slot0)
 end
 
-function slot0.onASFDArrivedDone(slot0)
+function slot0.onASFDArrivedDone(slot0, slot1)
+	if slot1 ~= slot0.stepMo then
+		return
+	end
+
 	return slot0:onDone(true)
 end
 

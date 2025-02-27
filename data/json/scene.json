@@ -3421,5 +3421,93 @@
     "levels": [
       15701
     ]
+  },
+  {
+    "id": 17603,
+    "name": "乌斯怀亚·街道",
+    "nameen": "Street, Ushuaia",
+    "levels": [
+      17603
+    ]
+  },
+  {
+    "id": 25002,
+    "name": "阿马尔菲塔诺",
+    "nameen": "Amalfitano",
+    "levels": [
+      25002
+    ]
+  },
+  {
+    "id": 17503,
+    "name": "权力的牢狱",
+    "nameen": "The Prison of Power",
+    "levels": [
+      17503
+    ]
+  },
+  {
+    "id": 287,
+    "name": "有求必应房间",
+    "nameen": "Room of Desire",
+    "levels": [
+      28701
+    ]
+  },
+  {
+    "id": 289,
+    "name": "科马拉监狱·囚室",
+    "nameen": "Cell, Comala Prison",
+    "levels": [
+      28901
+    ]
+  },
+  {
+    "id": 290,
+    "name": "无人能懂展厅",
+    "nameen": "Gallery of Bewilderment",
+    "levels": [
+      29001
+    ]
+  },
+  {
+    "id": 291,
+    "name": "触发事件大厅",
+    "nameen": "Hall of New Encounters",
+    "levels": [
+      29101
+    ]
+  },
+  {
+    "id": 292,
+    "name": "科马拉监狱·外围",
+    "nameen": "Comala Prison Perimeter",
+    "levels": [
+      29201
+    ]
+  },
+  {
+    "id": 26202,
+    "name": "夜幕之外",
+    "nameen": "Besides the Eclipse",
+    "levels": [
+      26202
+    ]
+  },
+  {
+    "id": 28702,
+    "name": "有求必应房间",
+    "nameen": "Room of Desire",
+    "levels": [
+      28702
+    ]
+  },
+  {
+    "id": 120031,
+    "name": "韦耶豪瑟森林",
+    "nameen": "Weyerhaeuser Forest",
+    "levels": [
+      120031
+    ]
   }
 ]

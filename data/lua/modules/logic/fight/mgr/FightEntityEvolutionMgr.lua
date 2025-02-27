@@ -22,9 +22,7 @@ end
 
 function slot0._onBeforeDestroyEntity(slot0, slot1)
 	if slot0._entityDic[slot1.id] == slot1 then
-		slot5 = slot1
-
-		slot0:_releaseEntity(slot5)
+		slot0:_releaseEntity(slot1)
 
 		for slot5, slot6 in ipairs(slot0._delayReleaseEntity) do
 			if slot6.entity == slot1 then
@@ -59,9 +57,7 @@ end
 
 function slot0._onSpineLoadFinish(slot0, slot1)
 	if slot1.unitSpawn and slot2:getMO() and slot0._skinId2Entity[slot3.skin] then
-		slot7 = slot3.skin
-
-		for slot7, slot8 in ipairs(slot0._skinId2Entity[slot7]) do
+		for slot7, slot8 in ipairs(slot0._skinId2Entity[slot3.skin]) do
 			if slot8.spine and slot9._skeletonAnim and slot9._skeletonAnim.state:GetCurrent(0) and slot1._skeletonAnim then
 				slot1._skeletonAnim:Jump2Time(slot10.TrackTime)
 			end

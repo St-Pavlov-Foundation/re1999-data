@@ -10,7 +10,7 @@ end
 function slot0.registWork(slot0, slot1, ...)
 	slot2 = slot0:newClass(slot1, ...)
 
-	table.insert(slot0._workList, slot2)
+	slot0:addWork(slot2)
 
 	return slot2
 end
@@ -20,6 +20,7 @@ function slot0.addWork(slot0, slot1)
 		return
 	end
 
+	slot1:registFinishCallback(slot0.onWorkItemDone, slot0, slot1)
 	table.insert(slot0._workList, slot1)
 end
 
@@ -37,7 +38,6 @@ function slot0.onStart(slot0)
 			if slot5.WORKFINISHED or slot5.IS_DISPOSED then
 				slot0._finishCount = slot0._finishCount + 1
 			elseif not slot5.STARTED then
-				slot5:registFinishCallback(slot0.onWorkItemDone, slot0, slot5)
 				slot5:start(slot0.context)
 			end
 		end

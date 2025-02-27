@@ -28,7 +28,8 @@ slot1 = {
 	[TurnbackEnum.ActivityId.NewSignIn] = ViewName.TurnbackNewSignInView,
 	[TurnbackEnum.ActivityId.NewTaskView] = ViewName.TurnbackNewTaskView,
 	[TurnbackEnum.ActivityId.NewBenfitView] = ViewName.TurnbackNewBenfitView,
-	[TurnbackEnum.ActivityId.NewProgressView] = ViewName.TurnbackNewProgressView
+	[TurnbackEnum.ActivityId.NewProgressView] = ViewName.TurnbackNewProgressView,
+	[TurnbackEnum.ActivityId.ReviewView] = ViewName.TurnbackReviewView
 }
 
 function slot0._editableInitView(slot0)
@@ -50,8 +51,7 @@ function slot0.refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	slot4 = slot0.allActivityTab
-	slot0.allActivityTab = TurnbackModel.instance:removeUnExitCategory(slot4)
+	slot0.allActivityTab = TurnbackModel.instance:removeUnExitCategory(slot0.allActivityTab)
 	slot0.subViewTab = {}
 
 	for slot4, slot5 in pairs(slot0.allActivityTab) do

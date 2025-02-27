@@ -380,6 +380,8 @@ function slot0._getProfilerAciton(slot0, slot1)
 			GetTextureMemory = slot0.recordTextureMemory,
 			WaitSceond = nil,
 			GetLuaMemory = slot0.recordLuaMemory,
+			LogMonoMemory = slot0.logMonoMemory,
+			LogMonoGCInfo = slot0.logMonoGCInfo,
 			LogLuaMemory = slot0.logLuaMemory,
 			LogRenderData = slot0.logRenderDataAction,
 			LogTextureMemory = slot0.logTextureMemory
@@ -392,7 +394,8 @@ end
 function slot0._getStopProfilerAciton(slot0, slot1)
 	if slot0._stopActionDict == nil then
 		slot0._stopActionDict = {
-			GetRenderData = slot0.stopLogRenderDataAction
+			GetRenderData = slot0.stopLogRenderDataAction,
+			LogMonoGCInfo = slot0.stopLogMonoGCInfoAction
 		}
 	end
 
@@ -486,7 +489,33 @@ function slot0.recordLuaMemory(slot0, slot1)
 end
 
 function slot0.logLuaMemory(slot0)
-	BenchmarkApi.AndroidLog(string.format("luaMemory:%.2f MB", slot0:getLuaMemory()))
+	BenchmarkApi.AndroidLog(string.format("LuaMemory:%.2f MB", slot0:getLuaMemory()))
+end
+
+function slot0.logMonoMemory(slot0)
+	BenchmarkApi.AndroidLog(string.format("MonoMemory:%.2f MB", Bitwise[">>"](ZProj.ProfilerHelper.GetGCAllocated(), 10) / 1024))
+end
+
+function slot0.logMonoGCInfo(slot0)
+	slot1 = ZProj.ProfilerHelper.GetGCCount()
+
+	if not slot0._gcCount then
+		slot0._gcCount = slot1
+	end
+
+	if slot0._gcCount < slot1 then
+		BenchmarkApi.AndroidLog(string.format("GCCount:%d", slot1 - slot0._gcCount))
+
+		slot0._gcCount = slot1
+	end
+end
+
+function slot0.logUnuseMemory(slot0)
+	BenchmarkApi.AndroidLog(string.format("Unuse Memory:%f MB", ZProj.ProfilerHelper.GetGCAllocated()))
+end
+
+function slot0.logTotalMemory(slot0)
+	BenchmarkApi.AndroidLog(string.format("Total:%.2f / %.2f MB", ZProj.ProfilerHelper.GetTotalAllocatedMemory(), ZProj.ProfilerHelper.GetTotalReservedMemory()))
 end
 
 function slot0.logRenderDataAction(slot0)
@@ -500,6 +529,10 @@ function slot0.logRenderDataAction(slot0)
 		slot0._benchMarkInited = BenchmarkApi.init()
 	end
 
+	if not slot0._benchMarkInited then
+		return
+	end
+
 	if not slot0._benchMarkInlineHooked then
 		BenchmarkApi.hook()
 
@@ -509,7 +542,7 @@ function slot0.logRenderDataAction(slot0)
 	if slot0._catchedFrameData then
 		slot0._catchedFrameData = false
 
-		BenchmarkApi.AndroidLog(string.format("drawCall:%s|vertCount:%s|triCount:%s", slot0:getReadableNum(BenchmarkApi.pop_draw_num()), slot0:getReadableNum(BenchmarkApi.pop_num_vertices()), slot0:getReadableNum(BenchmarkApi.pop_num_triangles())))
+		BenchmarkApi.AndroidLog(string.format("DrawCall:%s|VertCount:%s|TriCount:%s", slot0:getReadableNum(BenchmarkApi.pop_draw_num()), slot0:getReadableNum(BenchmarkApi.pop_num_vertices()), slot0:getReadableNum(BenchmarkApi.pop_num_triangles())))
 	end
 
 	if not slot0._catchedFrameData then
@@ -521,7 +554,7 @@ function slot0.logRenderDataAction(slot0)
 end
 
 function slot0.logTextureMemory(slot0)
-	BenchmarkApi.AndroidLog(string.format("textrueMemory:%.0f MB", slot0:getTextureMemory()))
+	BenchmarkApi.AndroidLog(string.format("TextrueMemory:%.0f MB", slot0:getTextureMemory()))
 end
 
 function slot0.stopLogRenderDataAction(slot0)
@@ -535,6 +568,10 @@ function slot0.stopLogRenderDataAction(slot0)
 	end
 
 	slot0._catchedFrameData = false
+end
+
+function slot0.stopLogMonoGCInfoAction(slot0)
+	slot0._gcCount = nil
 end
 
 function slot0.getReadableNum(slot0, slot1)

@@ -20,8 +20,7 @@ slot2 = {
 	"id"
 }
 slot3 = {
-	bossDesc = 2,
-	title = 1
+	bossDesc = 1
 }
 
 return {

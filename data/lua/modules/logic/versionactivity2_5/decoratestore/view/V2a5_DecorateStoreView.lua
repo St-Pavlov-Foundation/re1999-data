@@ -73,7 +73,8 @@ end
 function slot0.getOrCreateItem(slot0, slot1)
 	if not slot0.items[slot1] then
 		slot2 = slot0:getUserDataTb_()
-		slot2.go = gohelper.findChild(slot0.viewGO, string.format("Root/Right/Day/go_day%s", slot1))
+		slot7 = slot1
+		slot2.go = gohelper.findChild(slot0.viewGO, string.format("Root/Right/Day/go_day%s", slot7))
 		slot2.rewards = {}
 
 		for slot7 = 1, 3 do
@@ -90,9 +91,9 @@ end
 function slot0.updateItem(slot0, slot1, slot2)
 	slot3 = slot2.id
 	slot6 = ActivityType101Model.instance:getType101LoginCount(slot0.actId)
-	slot11 = #slot1.rewards
+	slot11 = #GameUtil.splitString2(slot2.bonus, true)
 
-	for slot11 = 1, math.max(slot11, #GameUtil.splitString2(slot2.bonus, true)) do
+	for slot11 = 1, math.max(#slot1.rewards, slot11) do
 		slot0:updateReward(slot1.rewards[slot11], slot7[slot11], {
 			actId = slot0.actId,
 			index = slot3,

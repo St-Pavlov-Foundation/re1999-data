@@ -103,8 +103,14 @@ function slot0._processBonus(slot0, slot1, slot2)
 	for slot7, slot8 in pairs(GameUtil.splitString2(slot2, true)) do
 		if slot8[1] == MaterialEnum.MaterialType.HeroSkin then
 			slot0._skinDict[slot1] = slot8[2]
-		elseif slot8[1] == MaterialEnum.MaterialType.Item and lua_item.configDict[slot8[2]].subType == ItemEnum.SubType.Portrait then
-			slot0._headDict[slot1] = slot8[2]
+		elseif slot8[1] == MaterialEnum.MaterialType.Item then
+			if not lua_item.configDict[slot8[2]] then
+				logError("道具配置不存在" .. tostring(slot8[2]))
+			end
+
+			if slot9 and slot9.subType == ItemEnum.SubType.Portrait then
+				slot0._headDict[slot1] = slot8[2]
+			end
 		end
 
 		if slot8[5] == 1 then

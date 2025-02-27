@@ -44,6 +44,46 @@ function slot0.onClick(slot0)
 end
 
 function slot0.onMoveDone(slot0)
+	if slot0:_checkIsSelectEndingFourth() then
+		slot2, slot3 = slot0:_getNeedPlayEndingFourthStories()
+
+		if slot3 then
+			StoryController.instance:playStories(slot2, nil, slot0._sendMoveRpc, slot0)
+
+			return
+		end
+	end
+
+	slot0:_sendMoveRpc()
+end
+
+function slot0._checkIsSelectEndingFourth(slot0)
+	slot1 = RougeMapModel.instance:getPieceList()
+
+	if string.splitToNumber(lua_rouge_const.configDict[RougeEnum.Const.FourthEndingChoiceIds].value, "#") and slot1 then
+		for slot7, slot8 in ipairs(slot1) do
+			if slot8.finish and slot8.selectId and tabletool.indexOf(slot3, slot8.selectId) then
+				return true
+			end
+		end
+	end
+end
+
+function slot0._getNeedPlayEndingFourthStories(slot0)
+	slot2 = {}
+
+	for slot6, slot7 in ipairs(string.splitToNumber(lua_rouge_const.configDict[RougeEnum.Const.FourthEndingStoryId].value2, "#")) do
+		if not StoryModel.instance:isStoryFinished(slot7) then
+			slot2 = slot1
+
+			break
+		end
+	end
+
+	return slot2, slot2 and #slot2 > 0
+end
+
+function slot0._sendMoveRpc(slot0)
 	RougeRpc.instance:sendRougePieceMoveRequest(RougeMapEnum.PathSelectIndex)
 end
 

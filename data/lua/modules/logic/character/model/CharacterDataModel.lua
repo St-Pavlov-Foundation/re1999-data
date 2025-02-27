@@ -66,6 +66,10 @@ function slot0._checkShow(slot0, slot1, slot2)
 end
 
 function slot0._checkSpecialType(slot0, slot1)
+	if slot1.type == CharacterEnum.VoiceType.MultiVoice then
+		return true
+	end
+
 	return CharacterEnum.VoiceType.SpecialIdle1 <= slot1.type and slot1.type <= CharacterEnum.VoiceType.SpecialIdle2
 end
 
@@ -81,6 +85,21 @@ function slot0.isCurHeroAudioPlaying(slot0, slot1)
 	end
 
 	return false
+end
+
+function slot0.setPlayingInfo(slot0, slot1, slot2)
+	slot0._curAudioId = slot1
+	slot0._defaultAudioId = slot2
+end
+
+function slot0.getPlayingAudioId(slot0, slot1)
+	if slot0._defaultAudioId ~= slot1 then
+		return
+	end
+
+	if slot0:isCurHeroAudioPlaying(slot0._curAudioId) then
+		return slot0._curAudioId
+	end
 end
 
 function slot0.setCurHeroAudioPlaying(slot0, slot1)

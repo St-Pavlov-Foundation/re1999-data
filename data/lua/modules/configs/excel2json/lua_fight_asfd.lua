@@ -2,13 +2,14 @@ module("modules.configs.excel2json.lua_fight_asfd", package.seeall)
 
 slot1 = {
 	replaceRule = 3,
-	res = 4,
+	priority = 9,
 	sampleMinHeight = 7,
 	audio = 5,
+	res = 4,
 	id = 1,
 	unit = 2,
 	scale = 6,
-	priority = 8
+	flyPath = 8
 }
 slot2 = {
 	"id"

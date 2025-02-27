@@ -268,6 +268,14 @@ function slot0.getSeasonConstStr(slot0, slot1, slot2)
 	return slot0._constConfig.configDict[slot1][slot2].value2
 end
 
+function slot0.getSeasonConstLangStr(slot0, slot1, slot2)
+	if not slot0._constConfig.configDict[slot1] or not slot0._constConfig.configDict[slot1][slot2] then
+		return nil
+	end
+
+	return slot0._constConfig.configDict[slot1][slot2].value3
+end
+
 function slot0.getAllStoryCo(slot0, slot1)
 	return slot0._storyConfig.configDict[slot1]
 end

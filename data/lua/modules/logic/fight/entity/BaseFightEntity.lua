@@ -34,6 +34,7 @@ function slot0.initComponents(slot0)
 	slot0:addComp("skinSpineAction", FightSkinSpineAction)
 	slot0:addComp("skinSpineEffect", FightSkinSpineEffect)
 	slot0:addComp("totalDamage", FightTotalDamageComp)
+	slot0:addComp("uniqueEffect", FightUniqueEffectComp)
 
 	slot1 = slot0:getMO()
 

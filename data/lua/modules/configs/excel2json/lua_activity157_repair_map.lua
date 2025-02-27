@@ -15,7 +15,8 @@ slot2 = {
 	"componentId"
 }
 slot3 = {
-	desc = 1
+	titleTip = 1,
+	desc = 2
 }
 
 return {

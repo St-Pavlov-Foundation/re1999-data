@@ -256,9 +256,16 @@ function slot0.onEpisodeFinish(slot0, slot1, slot2)
 	slot0._finishEpisodeId = slot2
 	slot3 = LiangYueConfig.instance:getEpisodeConfigByActAndId(slot1, slot2)
 	slot0._finishEpisodeConfig = slot3
-	slot0._listenView = slot3.puzzleId == 0 and ViewName.StoryView or ViewName.LiangYueGameView
 
-	ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, slot0.onCloseViewFinish, slot0)
+	if not (slot3.puzzleId == 0) then
+		slot0._listenView = ViewName.LiangYueGameView
+
+		ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, slot0.onCloseViewFinish, slot0)
+	else
+		slot0:_lockScreen(true)
+		TaskDispatcher.runDelay(slot0.forceCloseMask, slot0, 10)
+		TaskDispatcher.runDelay(slot0.onPlayFinishAnim, slot0, 1.93)
+	end
 end
 
 function slot0.onCloseViewFinish(slot0, slot1)
@@ -268,8 +275,8 @@ function slot0.onCloseViewFinish(slot0, slot1)
 
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, slot0.onCloseViewFinish, slot0)
 	slot0:_lockScreen(true)
-	TaskDispatcher.runDelay(slot0.onPlayFinishAnim, slot0, 0.73)
 	TaskDispatcher.runDelay(slot0.forceCloseMask, slot0, 10)
+	TaskDispatcher.runDelay(slot0.onPlayFinishAnim, slot0, 0.73)
 end
 
 function slot0.onPlayFinishAnim(slot0)
@@ -277,34 +284,37 @@ function slot0.onPlayFinishAnim(slot0)
 
 	slot1 = slot0._finishEpisodeId
 	slot2 = nil
+	slot3 = LiangYueConfig.instance:getNoGameEpisodeList(slot0._actId)
 
-	for slot6, slot7 in ipairs(slot0._levelItemList) do
-		slot7:refreshUI()
+	for slot7, slot8 in ipairs(slot0._levelItemList) do
+		if slot8.episodeId == slot1 or slot8.gameEpisodeId == slot1 then
+			slot8:refreshUI()
 
-		if slot7.episodeId == slot1 or slot7.gameEpisodeId == slot1 then
-			slot0._temptIndex = math.min(slot6 + 1, #slot0._levelItemList)
+			slot0._temptIndex = math.min(slot7 + 1, #slot0._levelItemList)
 
-			if slot7.episodeId == slot1 then
-				slot7:refreshStoryState(false)
-				slot7:playEpisodeAnim(LiangYueEnum.EpisodeAnim.Finish, 0)
+			if slot8.episodeId == slot1 then
+				slot8:refreshStoryState(false)
+				slot8:playEpisodeAnim(LiangYueEnum.EpisodeAnim.Finish, 0)
 				AudioMgr.instance:trigger(AudioEnum.LiangYueAudio.play_ui_wulu_lucky_bag_prize)
 
 				slot2 = LiangYueEnum.FinishStoryAnimDelayTime
 
-				if slot7.gameEpisodeId then
-					slot0._temptIndex = slot6
+				if slot8.gameEpisodeId then
+					slot0._temptIndex = slot7
 				end
 
 				break
 			end
 
-			slot7:refreshGameState(false)
-			slot7:playGameEpisodeAnim(LiangYueEnum.EpisodeGameAnim.FinishIdle, 0)
-			slot7:playGameEpisodeRewardAnim(LiangYueEnum.EpisodeGameFinishAnim.Open, 0)
+			slot8:refreshGameState(false)
+			slot8:playGameEpisodeAnim(LiangYueEnum.EpisodeGameAnim.FinishIdle, 0)
+			slot8:playGameEpisodeRewardAnim(LiangYueEnum.EpisodeGameFinishAnim.Open, 0)
 
 			slot2 = LiangYueEnum.FinishGameAnimDelayTime
 
 			break
+		else
+			slot8:setInfo(slot7, slot3[slot7])
 		end
 	end
 

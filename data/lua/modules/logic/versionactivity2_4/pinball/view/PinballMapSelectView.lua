@@ -82,10 +82,7 @@ slot1 = {
 
 function slot0.onClickSelect(slot0, slot1)
 	gohelper.setActive(slot0._goitem, false)
-
-	slot5 = true
-
-	gohelper.setActive(slot0._goitem, slot5)
+	gohelper.setActive(slot0._goitem, true)
 
 	slot0._curIndex = slot1
 

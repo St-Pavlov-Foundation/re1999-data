@@ -70,6 +70,7 @@ slot2("OnSelectDLC")
 slot2("UpdateRougeVersion")
 slot2("OnGetVersionInfo")
 slot2("UpdateUnlockSkill")
+slot2("ShowMonsterRuleDesc")
 slot2("OnSwitchHeroGroupEditMode")
 
 return _M

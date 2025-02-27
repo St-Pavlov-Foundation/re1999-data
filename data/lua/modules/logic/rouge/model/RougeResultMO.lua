@@ -43,6 +43,8 @@ function slot0.init(slot0, slot1)
 	slot0.preRemainScore2GeniusPoint = tonumber(slot1.preRemainScore2GeniusPoint)
 
 	slot0:updateLimiterResult(slot1)
+
+	slot0.extraAddPoint = tonumber(slot1.extraAddPoint)
 end
 
 function slot0.updateReviewInfo(slot0, slot1)

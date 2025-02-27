@@ -35,7 +35,7 @@ function slot0.openVersionActivityEnterView(slot0, slot1, slot2, slot3, slot4)
 	slot0.openedCallbackObj = slot2
 	slot0.actId = slot3
 
-	slot0:_enterVersionActivityView(ViewName.VersionActivity2_5EnterView, VersionActivity2_5Enum.ActivityId.EnterView, slot0._openVersionActivityEnterView, slot0, {
+	slot0:_enterVersionActivityView(ViewName.VersionActivity1_6EnterView, VersionActivity1_6Enum.ActivityId.EnterView, slot0._openVersionActivityEnterView, slot0, {
 		jumpActId = slot3,
 		enterVideo = slot4
 	})
@@ -65,10 +65,11 @@ function slot0._openVersionActivityEnterView(slot0, slot1, slot2, slot3)
 	end
 
 	ViewMgr.instance:openView(ViewName.VersionActivity1_6EnterView, {
-		activityIdList = VersionActivity1_6Enum.EnterViewActIdList,
-		actId = slot0.actId,
-		jumpActId = slot3 and slot3.jumpActId,
-		enterVideo = slot3 and slot3.enterVideo
+		actId = VersionActivity1_6Enum.ActivityId.EnterView,
+		activityIdListWithGroup = VersionActivity1_6Enum.EnterViewActIdListWithGroup,
+		mainActIdList = VersionActivity1_6Enum.EnterViewMainActIdList,
+		actId2AmbientDict = VersionActivity1_6Enum.ActId2Ambient,
+		actId2OpenAudioDict = VersionActivity1_6Enum.ActId2OpenAudio
 	})
 
 	if slot0.openedCallback then

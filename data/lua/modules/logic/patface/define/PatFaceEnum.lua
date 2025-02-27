@@ -31,15 +31,19 @@ slot0.patFace = {
 	V2a3_Special_PanelsView = 20304,
 	V2a2_NeWCultivationGift_PanelView = 20300,
 	BPSPView = 20203,
+	V2a6_Role_PanelSignView_Part1 = 20600,
 	V2a5_DecorateStoreView = 20504,
+	V2a6_Role_PanelSignView_Part2 = 20601,
 	V1a9_Matildagift = 10902,
 	SpringSign = 7,
+	ShortenAct_PanelView = 20602,
 	V2a2_RedLeafFestival_PanelView = 20204,
 	TurnBackStory = 1,
 	NewYearEve = 8,
 	DecalogPresent = 4,
 	Activity136 = 3,
 	V2a2_LimitDecorate_PanelView = 20205,
+	WeekwalkHeart_PanelView = 20603,
 	PanelSign = 6,
 	V2a0_SummerSign_PanelView = 20000,
 	V2a1_MoonFestival_PanelView = 20102,
@@ -105,7 +109,11 @@ slot0.patFaceCustomWork = {
 	[slot0.patFace.V2a4_Role_PanelSignView_Part2] = Activity101SignPatFaceWork,
 	[slot0.patFace.V2a5_Role_PanelSignView_Part1] = Activity101SignPatFaceWork,
 	[slot0.patFace.V2a5_Role_PanelSignView_Part2] = Activity101SignPatFaceWork,
-	[slot0.patFace.V2a5_DecorateStoreView] = Activity101SignPatFaceWork
+	[slot0.patFace.V2a5_DecorateStoreView] = Activity101SignPatFaceWork,
+	[slot0.patFace.V2a6_Role_PanelSignView_Part1] = Activity101SignPatFaceWork,
+	[slot0.patFace.V2a6_Role_PanelSignView_Part2] = Activity101SignPatFaceWork,
+	[slot0.patFace.ShortenAct_PanelView] = ShortenAct_PanelViewPatFaceWork,
+	[slot0.patFace.WeekwalkHeart_PanelView] = WeekwalkHeart_PanelViewPatFaceWork
 }
 
 return slot0

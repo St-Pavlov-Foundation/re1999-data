@@ -34,4 +34,8 @@ function slot0._checkLimit(slot0)
 	end
 end
 
+function slot0._onInputNameValueChange(slot0)
+	slot0:_checkLimit()
+end
+
 return slot0

@@ -74,9 +74,8 @@ function slot0.refreshUI(slot0, slot1)
 	slot0:_clear()
 	gohelper.setActive(slot0._goadditionRule, true)
 
-	slot7 = "|"
-	slot8 = "#"
-	slot3 = GameUtil.splitString2(slot2, true, slot7, slot8)
+	slot7 = "#"
+	slot3 = GameUtil.splitString2(slot2, true, "|", slot7)
 	slot0._ruleList = slot3
 
 	for slot7, slot8 in ipairs(slot3) do

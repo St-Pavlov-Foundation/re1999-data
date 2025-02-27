@@ -45,10 +45,9 @@ function slot0._OnRemoveElement(slot0, slot1)
 	slot0._rewardPoint = nil
 
 	if not string.nilorempty(DungeonModel.instance:getMapElementReward(slot1)) then
-		slot9 = "#"
 		slot5 = {}
 
-		for slot9, slot10 in ipairs(GameUtil.splitString2(slot3, false, "|", slot9)) do
+		for slot9, slot10 in ipairs(GameUtil.splitString2(slot3, false, "|", "#")) do
 			slot11 = MaterialDataMO.New()
 
 			slot11:initValue(slot10[1], slot10[2], slot10[3])
@@ -63,6 +62,10 @@ function slot0._OnRemoveElement(slot0, slot1)
 	if slot2.fragment > 0 then
 		if lua_chapter_map_fragment.configDict[slot2.fragment] and slot4.type == DungeonEnum.FragmentType.LeiMiTeBeiNew then
 			slot0._lastViewName = ViewName.VersionActivityNewsView
+		elseif slot2.type == DungeonEnum.ElementType.SpStory then
+			if slot4 and slot4.type == DungeonEnum.FragmentType.AvgStory then
+				slot0._lastViewName = ViewName.StoryView
+			end
 		elseif slot2.type == DungeonEnum.ElementType.Investigate then
 			slot0._lastViewName = ViewName.InvestigateTipsView
 		else
@@ -74,6 +77,10 @@ function slot0._OnRemoveElement(slot0, slot1)
 			fragmentId = slot2.fragment,
 			notShowToast = slot0.notShowToast
 		})
+	end
+
+	if slot2.type == DungeonEnum.ElementType.EnterDialogue then
+		slot0._lastViewName = ViewName.DialogueView
 	end
 
 	if slot0._lastViewName then

@@ -164,6 +164,8 @@ function slot0.loadSceneFinish(slot0, slot1)
 		return
 	end
 
+	gohelper.setLayer(slot3, UnityLayer.Scene, true)
+
 	slot0.sceneWorldPosX, slot0.sceneWorldPosY = transformhelper.getLocalPos(slot0.sceneTrans)
 	slot5 = string.splitToNumber(slot0.mapCfg.initPos, "#")
 	slot0.defaultSceneWorldPosY = slot5[2]

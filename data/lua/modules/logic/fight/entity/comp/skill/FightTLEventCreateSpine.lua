@@ -57,7 +57,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		slot9 = -slot9
 	end
 
-	slot17 = slot0:_getHangPointGO(slot1, slot15)
+	slot17 = slot0:_getHangPointGO(slot1, slot15, slot3)
 	slot18 = 0
 	slot18 = slot12 == -1 and (FightRenderOrderMgr.instance:getOrder(slot1.fromId) or 0) / FightEnum.OrderRegion * FightEnum.OrderRegion + 1 or slot12 == -2 and (FightRenderOrderMgr.instance:getOrder(slot1.toId) or 0) / FightEnum.OrderRegion * FightEnum.OrderRegion + (tonumber(slot3[13]) or 0) or slot12 * FightEnum.OrderRegion
 	slot19 = {}
@@ -113,51 +113,67 @@ function slot0._onTickLookAtCamera(slot0)
 end
 
 function slot0._createSpine(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10)
-	slot13 = GameSceneMgr.instance:getCurScene().entityMgr:buildTempSpineByName(slot1, slot2, slot0._attacker:getSide(), slot3 == 1)
+	slot11 = GameSceneMgr.instance:getCurScene().entityMgr
+	slot12 = slot0._attacker:getSide()
+	slot13 = {}
 
-	slot13.variantHeart:setEntity(slot0._attacker)
-	slot13:setScale(slot4)
+	if slot0._paramsArr[17] == "1" then
+		slot13 = {
+			ingoreRainEffect = true
+		}
+	end
+
+	slot14 = slot11:buildTempSpineByName(slot1, slot2, slot12, slot3 == 1, nil, slot13)
+
+	slot14.variantHeart:setEntity(slot0._attacker)
+	slot14:setScale(slot4)
 
 	if slot8 then
-		gohelper.addChild(slot8, slot13.go)
+		gohelper.addChild(slot8, slot14.go)
 	end
 
 	if slot0._paramsArr[7] == "3" or slot0._paramsArr[7] == "4" then
-		transformhelper.setPos(slot13.go.transform, slot5, slot6, slot7)
+		transformhelper.setPos(slot14.go.transform, slot5, slot6, slot7)
 	else
-		transformhelper.setLocalPos(slot13.go.transform, slot5, slot6, slot7)
+		transformhelper.setLocalPos(slot14.go.transform, slot5, slot6, slot7)
 	end
 
-	slot13:setRenderOrder(slot9)
+	slot14:setRenderOrder(slot9)
 
 	if not string.nilorempty(slot10) then
-		slot13.spine:play(slot10)
+		slot14.spine:play(slot10)
 
 		if slot0._attacker and slot0._attacker.skill and slot0._attacker.skill:sameSkillPlaying() and not string.nilorempty(slot0._paramsArr[12]) then
-			slot13.spine._skeletonAnim:Jump2Time(tonumber(slot0._paramsArr[12]))
+			slot14.spine._skeletonAnim:Jump2Time(tonumber(slot0._paramsArr[12]))
 		end
 	end
 
 	if slot0._paramsArr[14] == "1" then
-		FightController.instance:dispatchEvent(FightEvent.EntrustTempEntity, slot13)
+		FightController.instance:dispatchEvent(FightEvent.EntrustTempEntity, slot14)
 	end
 
 	if not string.nilorempty(slot0._paramsArr[15]) then
-		GameSceneMgr.instance:getCurScene().entityMgr:removeUnitData(slot13:getTag(), slot13.id)
-		FightMsgMgr.sendMsg(FightMsgId.SetBossEvolution, slot13, tonumber(slot0._paramsArr[15]))
-		FightController.instance:dispatchEvent(FightEvent.SetBossEvolution, slot13, tonumber(slot0._paramsArr[15]))
+		GameSceneMgr.instance:getCurScene().entityMgr:removeUnitData(slot14:getTag(), slot14.id)
+		FightMsgMgr.sendMsg(FightMsgId.SetBossEvolution, slot14, tonumber(slot0._paramsArr[15]))
+		FightController.instance:dispatchEvent(FightEvent.SetBossEvolution, slot14, tonumber(slot0._paramsArr[15]))
 	end
 
-	table.insert(slot0._spineEntityList, slot13)
+	table.insert(slot0._spineEntityList, slot14)
 end
 
-function slot0._getHangPointGO(slot0, slot1, slot2)
+function slot0._getHangPointGO(slot0, slot1, slot2, slot3)
+	if not string.nilorempty(slot3[16]) then
+		if (string.split(slot4, "#")[slot0._attacker:getSide()] or slot6[1]) and gohelper.findChild(CameraMgr.instance:getCameraRootGO(), slot8) then
+			return slot9
+		end
+	end
+
 	if slot2 == 2 then
 		return CameraMgr.instance:getCameraTraceGO()
 	elseif slot2 == 3 then
-		return FightHelper.getEntity(slot1.fromId) and slot3.go
+		return FightHelper.getEntity(slot1.fromId) and slot5.go
 	elseif slot2 == 4 then
-		return FightHelper.getEntity(slot1.toId) and slot3.go
+		return FightHelper.getEntity(slot1.toId) and slot5.go
 	end
 end
 

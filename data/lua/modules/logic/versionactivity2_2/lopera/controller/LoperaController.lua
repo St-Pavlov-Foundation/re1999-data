@@ -171,7 +171,7 @@ function slot0._onGameResultPush(slot0, slot1)
 		end
 	end
 
-	slot0:fillStatInfo(slot2, slot5, slot0._moveTime, slot0._finishEventNum, slot3, slot4, slot7, slot8)
+	slot0:fillStatInfo(slot0._curEnterEpisode)
 	slot0:sendStat()
 end
 

@@ -104,9 +104,7 @@ function slot0.onEpisodeFinish(slot0, slot1, slot2)
 end
 
 function slot0.delayFinishAnim(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0.delayFinishAnim, slot4)
+	TaskDispatcher.cancelTask(slot0.delayFinishAnim, slot0)
 
 	for slot4, slot5 in pairs(slot0._usedDragItemDic) do
 		slot5:setAttributeState(false)
@@ -186,9 +184,7 @@ function slot0._afterAttributeChanged(slot0)
 end
 
 function slot0._resetAttributeState(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._resetAttributeState, slot4)
+	TaskDispatcher.cancelTask(slot0._resetAttributeState, slot0)
 
 	for slot4, slot5 in ipairs(slot0._attributeAnimList) do
 		if slot5.gameObject.activeSelf == true then

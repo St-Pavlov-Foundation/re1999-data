@@ -100,9 +100,7 @@ function slot0.isGoodRead(slot0, slot1)
 end
 
 function slot0.initDecorateReadState(slot0)
-	slot6 = PlayerPrefsKey.DecorateStoreReadGoods
-
-	for slot6, slot7 in pairs(string.splitToNumber(PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(slot6), ""), "#")) do
+	for slot6, slot7 in pairs(string.splitToNumber(PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.DecorateStoreReadGoods), ""), "#")) do
 		slot0._readGoodList[slot7] = true
 	end
 end

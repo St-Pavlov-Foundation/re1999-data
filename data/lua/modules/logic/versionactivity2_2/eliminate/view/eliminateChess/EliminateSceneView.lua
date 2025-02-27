@@ -3,10 +3,14 @@ module("modules.logic.versionactivity2_2.eliminate.view.eliminateChess.Eliminate
 slot0 = class("EliminateSceneView", BaseView)
 
 function slot0.onOpen(slot0)
+	slot1 = CameraMgr.instance:getSceneRoot()
+
+	transformhelper.setLocalPos(slot1.transform, 0, 0, 0)
+
 	slot0._sceneRoot = UnityEngine.GameObject.New(slot0.__cname)
 
 	slot0:beforeLoadScene()
-	gohelper.addChild(CameraMgr.instance:getSceneRoot(), slot0._sceneRoot)
+	gohelper.addChild(slot1, slot0._sceneRoot)
 	transformhelper.setLocalPos(slot0._sceneRoot.transform, 0, 5, 0)
 	MainCameraMgr.instance:addView(slot0.viewName, slot0._initCamera, nil, slot0)
 
@@ -68,8 +72,10 @@ end
 
 function slot0._initCamera(slot0)
 	slot1 = CameraMgr.instance:getMainCamera()
+	slot2 = CameraMgr.instance:getMainCameraTrs()
 
-	transformhelper.setLocalPos(slot1.transform, 0, 0, 0)
+	transformhelper.setLocalRotation(slot2, 0, 0, 0)
+	transformhelper.setLocalPos(slot2, 0, 0, 0)
 
 	slot1.orthographic = true
 	slot1.orthographicSize = 5 * GameUtil.getAdapterScale(true)

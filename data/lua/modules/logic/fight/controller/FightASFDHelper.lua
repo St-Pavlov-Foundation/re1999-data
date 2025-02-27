@@ -38,28 +38,12 @@ function slot0.getASFDType(slot0)
 	return FightEnum.ASFDType.Normal
 end
 
-function slot0.hasASFDFissionEffect(slot0)
-	if not slot0 then
-		return false
-	end
-
-	for slot4, slot5 in ipairs(slot0.actEffectMOs) do
-		if slot5.effectType == FightEnum.EffectType.EMITTERSPLITNUM and not string.nilorempty(slot5.reserveStr) then
-			return cjson.decode(slot6).splitNum and slot7.splitNum > 0
-		end
-	end
-
-	return false
-end
-
 function slot0.mathReplyRule(slot0, slot1)
 	if string.nilorempty(slot1.replaceRule) then
 		return true
 	end
 
-	slot7 = true
-
-	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, slot7)) do
+	for slot7, slot8 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot2, true)) do
 		if slot8[1] == FightEnum.ASFDReplyRule.HasSkin then
 			if not uv0.checkHasSkinRule(slot8, slot0) then
 				return false
@@ -88,18 +72,32 @@ function slot0.checkHasBuffActIdRule(slot0, slot1)
 	return slot2 and slot2:hasBuffActId(slot0[2])
 end
 
+function slot0.sortASFDCo(slot0, slot1)
+	return slot1.priority < slot0.priority
+end
+
+slot0.tempCoList = {}
+
 function slot0.getASFDCo(slot0, slot1, slot2)
 	if not FightASFDConfig.instance:getUnitList(slot1) then
 		return slot2
 	end
 
+	tabletool.clear(uv0.tempCoList)
+
 	for slot7, slot8 in ipairs(slot3) do
 		if uv0.mathReplyRule(slot0, slot8) then
-			return slot8
+			table.insert(uv0.tempCoList, slot8)
 		end
 	end
 
-	return slot2
+	if #uv0.tempCoList < 1 then
+		return slot2
+	end
+
+	table.sort(uv0.tempCoList, uv0.sortASFDCo)
+
+	return uv0.tempCoList[1]
 end
 
 function slot0.getBornCo(slot0)
@@ -118,6 +116,10 @@ function slot0.getExplosionCo(slot0)
 	return uv0.getASFDCo(slot0, FightEnum.ASFDUnit.Explosion, FightASFDConfig.instance.defaultExplosionCo)
 end
 
+function slot0.getLastExplosionCo(slot0)
+	return uv0.getASFDCo(slot0, FightEnum.ASFDUnit.LastExplosion, FightASFDConfig.instance.defaultExplosionCo)
+end
+
 function slot0.getEmitterPos(slot0)
 	slot1 = FightModel.instance:getFightParam()
 	slot4 = lua_fight_asfd_emitter_position.configDict[slot1 and slot1:getScene(FightModel.instance:getCurWaveId() or 1) or 1] or lua_fight_asfd_emitter_position.configDict[1]
@@ -134,12 +136,14 @@ function slot0.getStartPos(slot0)
 	return Vector3(slot0 == FightEnum.EntitySide.MySide and slot4 - slot6.x or slot4 + slot6.x, slot5 + slot6.y, slot3)
 end
 
-function slot0.getEndPos(slot0)
+function slot0.getEndPos(slot0, slot1)
+	slot1 = slot1 or FightASFDConfig.instance.hitHangPoint
+
 	if not FightHelper.getEntity(slot0):getHangPoint(FightASFDConfig.instance.hitHangPoint) then
 		return Vector3(0, 0, 0)
 	end
 
-	return slot2.transform.position
+	return slot3.transform.position
 end
 
 function slot0.getRandomValue()
@@ -226,9 +230,7 @@ function slot0._checkHasHeroId()
 
 	tabletool.clear(slot1)
 
-	slot5 = slot1
-
-	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot5)) do
+	for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot1)) do
 		if slot6:isCharacter() and slot6.modelId == 3041 then
 			return true
 		end
@@ -253,6 +255,45 @@ function slot0._checkTriggerMustCrit(slot0, slot1)
 	end
 
 	return false
+end
+
+function slot0.getStepContext(slot0)
+	if slot0 then
+		for slot4, slot5 in ipairs(slot0.actEffectMOs) do
+			if slot5.effectType == FightEnum.EffectType.EMITTERFIGHTNOTIFY then
+				slot6 = nil
+
+				if not string.nilorempty(slot5.reserveStr) then
+					slot6 = cjson.decode(slot5.reserveStr)
+				end
+
+				return slot6
+			end
+		end
+	end
+end
+
+function slot0.isALFPullOutStep(slot0)
+	if not uv0.getStepContext(slot0) then
+		return false
+	end
+
+	if slot1.emitterAttackNum < slot1.emitterAttackMaxNum then
+		return false
+	end
+
+	slot3 = slot0.fromId and FightDataHelper.entityMgr:getById(slot2)
+
+	return slot3 and slot3:hasBuffActId(924)
+end
+
+slot0.tempVector2_A = Vector2(-1, 0)
+slot0.tempVector2_B = Vector2()
+
+function slot0.getZRotation(slot0, slot1, slot2, slot3)
+	uv0.tempVector2_B:Set(slot2 - slot0, slot3 - slot1)
+
+	return Vector2.Angle(uv0.tempVector2_A, uv0.tempVector2_B) * Mathf.Sign(uv0.tempVector2_A.x * uv0.tempVector2_B.y - uv0.tempVector2_A.y * uv0.tempVector2_B.x)
 end
 
 return slot0

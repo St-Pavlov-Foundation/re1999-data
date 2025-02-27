@@ -8,7 +8,9 @@ slot1 = {
 slot2 = {
 	"id"
 }
-slot3 = {}
+slot3 = {
+	desc = 1
+}
 
 return {
 	onLoad = function (slot0)

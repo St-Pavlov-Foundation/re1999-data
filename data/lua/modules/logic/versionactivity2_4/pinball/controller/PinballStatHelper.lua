@@ -65,11 +65,10 @@ function slot0._getCityInfo(slot0)
 		food = PinballModel.instance:getResNum(PinballEnum.ResType.Food),
 		play = PinballModel.instance:getResNum(PinballEnum.ResType.Play),
 		complaint = PinballModel.instance:getResNum(PinballEnum.ResType.Complaint),
-		score = PinballModel.instance:getResNum(slot5),
+		score = PinballModel.instance:getResNum(PinballEnum.ResType.Score),
 		day = PinballModel.instance.day,
 		building_list = {}
 	}
-	slot5 = PinballEnum.ResType.Score
 
 	for slot5, slot6 in pairs(PinballModel.instance._buildingInfo) do
 		table.insert(slot1.building_list, string.format("%d_%d", slot6.baseCo.id, slot6.level))

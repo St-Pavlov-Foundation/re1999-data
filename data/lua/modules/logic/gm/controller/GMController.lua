@@ -124,6 +124,20 @@ function slot0._onFrame(slot0)
 	if slot2 and UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) then
 		GMRpc.instance:sendGMRequest("set fight 1")
 
+		if ViewMgr.instance:isOpen(ViewName.DiceHeroGameView) then
+			GMRpc.instance:sendGMRequest("diceFightWin")
+			TaskDispatcher.runDelay(function ()
+				if DiceHeroFightModel.instance.finishResult ~= DiceHeroEnum.GameStatu.None then
+					ViewMgr.instance:openView(ViewName.DiceHeroResultView, {
+						status = DiceHeroFightModel.instance.finishResult
+					})
+					DiceHeroStatHelper.instance:sendFightEnd(DiceHeroFightModel.instance.finishResult, DiceHeroFightModel.instance.isFirstWin)
+
+					DiceHeroFightModel.instance.finishResult = DiceHeroEnum.GameStatu.None
+				end
+			end, slot0, 0.5)
+		end
+
 		return
 	end
 
@@ -479,7 +493,7 @@ function slot0.initProfilerCmdFileCheck(slot0)
 	slot0._initProfiler = true
 	slot0._profilerCmdFilePath = System.IO.Path.Combine(System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, "profiler"), "profilerCmd.json")
 
-	logNormal("initProfilerCmdFileCheck")
+	slot0:_checkProfilerCmdFile()
 	TaskDispatcher.runRepeat(slot0._checkProfilerCmdFile, slot0, 10)
 end
 
@@ -489,7 +503,7 @@ function slot0._checkProfilerCmdFile(slot0)
 			return
 		end
 
-		logNormal("profilerCmd.json: " .. slot1)
+		BenchmarkApi.AndroidLog("profilerCmd.json: " .. slot1)
 		PerformanceRecorder.instance:doProfilerCmdAction(cjson.decode(slot1).cmds)
 		SLFramework.FileHelper.WriteTextToPath(slot0._profilerCmdFilePath, "")
 	end

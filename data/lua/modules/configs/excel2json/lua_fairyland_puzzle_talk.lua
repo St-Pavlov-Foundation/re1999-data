@@ -14,7 +14,10 @@ slot2 = {
 	"id",
 	"step"
 }
-slot3 = {}
+slot3 = {
+	speaker = 1,
+	content = 2
+}
 
 return {
 	onLoad = function (slot0)

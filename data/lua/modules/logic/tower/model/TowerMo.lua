@@ -243,7 +243,7 @@ function slot0.isHeroGroupLock(slot0, slot1, slot2)
 			for slot8, slot9 in pairs(slot3) do
 				if slot9.episodeId == slot2 then
 					if slot9.status == 1 then
-						return true, slot9.heroIds, slot9.assistBossId
+						return true, slot9
 					else
 						return false
 					end
@@ -257,7 +257,7 @@ function slot0.isHeroGroupLock(slot0, slot1, slot2)
 	if slot3 then
 		for slot7, slot8 in pairs(slot3) do
 			if slot8.status == 1 then
-				return true, slot8.heroIds, slot8.assistBossId
+				return true, slot8
 			end
 		end
 	end

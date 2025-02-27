@@ -47,6 +47,16 @@ function slot0._refreshData(slot0)
 	ZProj.TweenHelper.DOFillAmount(slot0._slider, slot6, 0.2 / FightModel.instance:getUISpeed())
 
 	slot0._lastMax = slot5
+
+	if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 2 and FightDataHelper.entityMgr:getEnemyVertin() then
+		for slot13, slot14 in pairs(slot8.buffDic) do
+			if slot14.buffId == 9260101 then
+				slot0._sliderText.text = slot14.duration
+
+				break
+			end
+		end
+	end
 end
 
 function slot0.onClose(slot0)

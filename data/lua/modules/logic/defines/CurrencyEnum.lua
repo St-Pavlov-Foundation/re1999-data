@@ -22,6 +22,7 @@ slot0.CurrencyType = {
 	V2a4Dungeon = 2401,
 	BlueSoul = 10,
 	V2a5Dungeon = 2501,
+	V2a6Dungeon = 2601,
 	ReactivityCurrency = 25,
 	Competition = 6,
 	OldTravelTicket = 27,

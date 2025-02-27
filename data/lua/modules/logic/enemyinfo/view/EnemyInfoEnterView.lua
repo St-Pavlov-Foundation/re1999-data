@@ -19,8 +19,8 @@ function slot0._editableInitView(slot0)
 
 	slot0.simageRightBg:LoadImage("singlebg/dungeon/bg_battledetail.png")
 
-	slot4 = "#go_tab_container"
-	slot0.trTabContainer = gohelper.findChildComponent(slot0.viewGO, slot4, gohelper.Type_Transform)
+	slot4 = gohelper.Type_Transform
+	slot0.trTabContainer = gohelper.findChildComponent(slot0.viewGO, "#go_tab_container", slot4)
 
 	for slot4 = 0, slot0.trTabContainer.childCount - 1 do
 		gohelper.setActive(slot0.trTabContainer:GetChild(slot4).gameObject, false)
@@ -35,6 +35,7 @@ function slot0.initHandleDict(slot0)
 	slot0.tabEnum2HandleFunc = {
 		[EnemyInfoEnum.TabEnum.Normal] = slot0.refreshNormal,
 		[EnemyInfoEnum.TabEnum.WeekWalk] = slot0.refreshWeekWalk,
+		[EnemyInfoEnum.TabEnum.WeekWalk_2] = slot0.refreshWeekWalk_2,
 		[EnemyInfoEnum.TabEnum.Season123] = slot0.refreshSeason,
 		[EnemyInfoEnum.TabEnum.BossRush] = slot0.refreshBossRush
 	}
@@ -57,6 +58,12 @@ end
 
 function slot0.refreshWeekWalk(slot0)
 	slot0.tabView = slot0:createTabView(EnemyInfoWeekWalkTabView)
+
+	slot0.tabView:onOpen()
+end
+
+function slot0.refreshWeekWalk_2(slot0)
+	slot0.tabView = slot0:createTabView(EnemyInfoWeekWalk_2TabView)
 
 	slot0.tabView:onOpen()
 end
@@ -88,6 +95,7 @@ function slot0.createTabView(slot0, slot1)
 
 	slot2.viewGO = slot0.viewGO
 	slot2.viewContainer = slot0.viewContainer
+	slot2.tabParentView = slot0
 	slot2.viewName = slot0.viewName
 
 	slot2:onInitView()

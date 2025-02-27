@@ -215,5 +215,19 @@
     "name": "鬼马探灵记",
     "nameEn": "The Ghost Master",
     "year": ""
+  },
+  {
+    "id": 11,
+    "order": 0,
+    "name": "疯癫与文明",
+    "nameEn": "Folie et Déraison",
+    "year": "1990"
+  },
+  {
+    "id": 1022,
+    "order": 0,
+    "name": "最后的电影",
+    "nameEn": "The Last Film",
+    "year": ""
   }
 ]

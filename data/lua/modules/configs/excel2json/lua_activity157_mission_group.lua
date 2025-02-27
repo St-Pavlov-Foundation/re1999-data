@@ -10,7 +10,9 @@ slot2 = {
 	"activityId",
 	"missionGroupId"
 }
-slot3 = {}
+slot3 = {
+	mapName = 1
+}
 
 return {
 	onLoad = function (slot0)

@@ -1,6 +1,6 @@
 module("modules.logic.fight.FightBaseClass", package.seeall)
 
-slot0 = class("FightBaseClass", FightBaseCoreClass)
+slot0 = class("FightBaseClass", FightObject)
 
 function slot0.onConstructor(slot0)
 	slot0.USER_DATA_LIST = {}

@@ -1,29 +1,18 @@
 module("modules.logic.battlepass.view.BpSPMainBtnItem", package.seeall)
 
-slot0 = class("BpSPMainBtnItem", LuaCompBase)
+slot0 = class("BpSPMainBtnItem", ActCenterItemBase)
 
 function slot0.init(slot0, slot1)
-	slot0.go = gohelper.cloneInPlace(slot1)
+	uv0.super.init(slot0, gohelper.cloneInPlace(slot1))
+end
 
-	gohelper.setActive(slot0.go, true)
-
-	slot0._imgitem = gohelper.findChildImage(slot0.go, "bg")
-	slot0._btnitem = gohelper.getClickWithAudio(gohelper.findChild(slot0.go, "bg"), AudioEnum.UI.play_ui_role_pieces_open)
-	slot0._reddotitem = gohelper.findChild(slot0.go, "go_activityreddot")
+function slot0.onInit(slot0, slot1)
+	slot0._btnitem = gohelper.getClickWithAudio(slot0._imgGo, AudioEnum.UI.play_ui_role_pieces_open)
 
 	slot0:_refreshItem()
-	slot0:addEvent()
 end
 
-function slot0.addEvent(slot0)
-	slot0._btnitem:AddClickListener(slot0._onItemClick, slot0)
-end
-
-function slot0.removeEvent(slot0)
-	slot0._btnitem:RemoveClickListener()
-end
-
-function slot0._onItemClick(slot0)
+function slot0.onClick(slot0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.BP) then
 		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.BP))
 
@@ -44,17 +33,7 @@ function slot0._refreshItem(slot0)
 		end
 	end
 
-	slot0._redDot = RedDotController.instance:addRedDot(slot0._reddotitem, RedDotEnum.DotNode.BattlePassSPMain)
-end
-
-function slot0.destroy(slot0)
-	slot0:removeEvent()
-	gohelper.destroy(slot0.go)
-
-	slot0.go = nil
-	slot0._imgitem = nil
-	slot0._btnitem = nil
-	slot0._reddotitem = nil
+	slot0._redDot = RedDotController.instance:addRedDot(slot0._goactivityreddot, RedDotEnum.DotNode.BattlePassSPMain)
 end
 
 function slot0.isShowRedDot(slot0)

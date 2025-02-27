@@ -30,13 +30,7 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0.onDestroy(slot0)
-	if slot0._effectWrapDict then
-		for slot4, slot5 in pairs(slot0._effectWrapDict) do
-			slot0.entity.effect:removeEffect(slot5)
-		end
-
-		slot0._effectWrapDict = nil
-	end
+	slot0._effectWrapDict = nil
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)

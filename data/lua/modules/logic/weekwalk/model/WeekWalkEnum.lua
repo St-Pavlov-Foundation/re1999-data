@@ -45,5 +45,9 @@ slot0.SevenDaySec = 604800
 slot0.orthographicSize = 5
 slot0.FirstDeepLayer = 11
 slot0.OneDeepLayerFirstBattle = 1
+slot0.LastShallowLayer = 10
+slot0.NewDeepLayerMaxNum = 7
+slot0.ShallowLayerMaxNum = 10
+slot0.HardDeepLayerId = 17
 
 return slot0

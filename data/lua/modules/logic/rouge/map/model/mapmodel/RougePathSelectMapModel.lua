@@ -11,6 +11,7 @@ function slot0.initMap(slot0, slot1)
 	slot0:initPieceInfo(slot1.pieceInfo)
 	slot0:initNextLayerList()
 	slot0:initPathSelectCo()
+	slot0:initLayerChoiceInfo(slot1.layerChoiceInfo)
 end
 
 function slot0.initPieceInfo(slot0, slot1)
@@ -49,6 +50,7 @@ function slot0.initPathSelectCo(slot0)
 end
 
 function slot0.updateMapInfo(slot0, slot1)
+	slot0:initLayerChoiceInfo(slot1.layerChoiceInfo)
 end
 
 function slot0.updateSimpleMapInfo(slot0, slot1)
@@ -99,6 +101,18 @@ end
 
 function slot0.getNextLayerList(slot0)
 	return slot0.nextLayerList
+end
+
+function slot0.initLayerChoiceInfo(slot0, slot1)
+	slot0._layerChoiceInfoMap = {}
+
+	if slot1 then
+		slot0._layerChoiceInfoMap = GameUtil.rpcInfosToMap(slot1, RougeLayerChoiceInfoMO, "layerId")
+	end
+end
+
+function slot0.getLayerChoiceInfo(slot0, slot1)
+	return slot0._layerChoiceInfoMap and slot0._layerChoiceInfoMap[slot1]
 end
 
 function slot0.clear(slot0)

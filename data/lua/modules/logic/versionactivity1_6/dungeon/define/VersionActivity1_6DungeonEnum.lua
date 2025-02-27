@@ -65,6 +65,6 @@ slot0.SkillKeyPointIdxs = {
 	nil,
 	true
 }
-slot0.bossMaxOrder = 5
+slot0.bossMaxOrder = 8
 
 return slot0

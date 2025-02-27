@@ -8,12 +8,23 @@ function slot0.onInitView(slot0)
 	slot0._simagecharbg = gohelper.findChildSingleImage(slot0.viewGO, "#go_has/right/#simage_chartbg")
 	slot0._goSkinbg = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_skinbg")
 	slot0._gomessage = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_message")
+	slot0._btnselect = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click")
+	slot0._goselect = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click/selected")
+	slot0._gounselect = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click/unselect")
+	slot0._gotips = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips")
+	slot0._btnclosetips = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips/#btn_close")
 	slot0._inputsend = gohelper.findChildTextMeshInputField(slot0.viewGO, "#go_has/right/#go_message/send/#input_send")
 	slot0._scrollmessage = gohelper.findChildScrollRect(slot0.viewGO, "#go_has/right/#go_message/#scroll_message")
 	slot0._gocontent = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_message/#scroll_message/viewport/#go_content")
 	slot0._btnsend = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_message/send/#btn_send")
 	slot0._txtcd = gohelper.findChildText(slot0.viewGO, "#go_has/right/#go_message/send/#btn_send/#txt_cd")
 	slot0._txtname = gohelper.findChildText(slot0.viewGO, "#go_has/right/#txt_name")
+	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	slot0._isSelectBtn = false
+	slot0._isSelfBg = true
+	slot0._isopen = false
+	slot0._selectitemList = {}
+	slot0._currentselectbg = nil
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -22,10 +33,14 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnsend:AddClickListener(slot0._btnsendOnClick, slot0)
+	slot0._btnselect:AddClickListener(slot0._btnselectOnClick, slot0)
+	slot0._btnclosetips:AddClickListener(slot0._btnclosetipsOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnsend:RemoveClickListener()
+	slot0._btnselect:RemoveClickListener()
+	slot0._btnclosetips:RemoveClickListener()
 end
 
 function slot0._editableInitView(slot0)
@@ -33,11 +48,67 @@ function slot0._editableInitView(slot0)
 	slot0._txtcd.text = luaLang("social_chat_send")
 
 	slot0._simagecharbg:LoadImage(ResUrl.getSocialIcon("img_chat_bg.png"))
-	slot0:_loadBg()
+
+	slot0.skinkey = PlayerPrefsKey.SocialFriendsViewSelectOwnSkin .. tostring(PlayerModel.instance:getPlayinfo().userId)
+	slot0._isSelfBg = PlayerPrefsHelper.getNumber(slot0.skinkey, SocialEnum.SelectEnum.Self) == SocialEnum.SelectEnum.Self
+
+	slot0:_refreshSelect()
+
+	for slot4 = 1, 2 do
+		slot5 = slot0:getUserDataTb_()
+		slot5.go = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips/bg/item" .. slot4)
+		slot5.btn = gohelper.findChildButton(slot5.go, "#btn_option")
+		slot5.goselect = gohelper.findChild(slot5.go, "txt_option/selected")
+		slot5.gounselect = gohelper.findChild(slot5.go, "txt_option/unselect")
+		slot5.isSelf = slot4 == SocialEnum.SelectEnum.Self
+
+		slot5.btn:AddClickListener(slot0.selectUseSkin, slot0, slot5.isSelf)
+		table.insert(slot0._selectitemList, slot5)
+		gohelper.setActive(slot5.goselect, slot5.isSelf == slot0._isSelfBg)
+		gohelper.setActive(slot5.gounselect, slot5.isSelf ~= slot0._isSelfBg)
+	end
+end
+
+function slot0._btnselectOnClick(slot0)
+	slot0._isSelectBtn = not slot0._isSelectBtn
+
+	slot0:_refreshSelect()
+end
+
+function slot0._btnclosetipsOnClick(slot0)
+	slot0._isSelectBtn = false
+
+	slot0:_refreshSelect()
+end
+
+function slot0._refreshSelect(slot0)
+	gohelper.setActive(slot0._goselect, slot0._isSelectBtn)
+	gohelper.setActive(slot0._gounselect, not slot0._isSelectBtn)
+	gohelper.setActive(slot0._gotips, slot0._isSelectBtn)
 end
 
 function slot0._loadBg(slot0)
-	if PlayerCardModel.instance:getPlayerCardSkinId() and slot1 ~= 0 then
+	slot1 = PlayerCardModel.instance:getPlayerCardSkinId()
+
+	if not slot0._isSelfBg then
+		if not slot0._selectFriend then
+			return
+		end
+
+		slot1 = SocialModel.instance:getPlayerMO(slot0._selectFriend).bg
+	end
+
+	if slot1 == slot0._currentselectbg then
+		return
+	end
+
+	if slot0._goskinEffect then
+		gohelper.destroy(slot0._goskinEffect)
+
+		slot0._goskinEffect = nil
+	end
+
+	if slot1 and slot1 ~= 0 then
 		slot0._hasSkin = true
 		slot0._skinPath = string.format("ui/viewres/player/playercard/playercardskinpreview_%s.prefab", slot1)
 		slot0._loader = MultiAbLoader.New()
@@ -50,10 +121,21 @@ function slot0._loadBg(slot0)
 
 	gohelper.setActive(slot0._goSkinbg, slot0._hasSkin)
 	gohelper.setActive(slot0._simagecharbg.gameObject, not slot0._hasSkin)
+
+	if slot0._isopen and not slot0._hasSkin then
+		slot0._animator.enabled = true
+
+		slot0._animator:Play("open", 0, 0)
+	end
+
+	slot0._currentselectbg = slot1
 end
 
 function slot0._onLoadFinish(slot0)
 	slot0._goskinEffect = gohelper.clone(slot0._loader:getAssetItem(slot0._skinPath):GetResource(slot0._skinPath), slot0._goSkinbg)
+	slot0._animator.enabled = true
+
+	slot0._animator:Play("open", 0, 0)
 end
 
 function slot0._btnsendOnClick(slot0)
@@ -145,6 +227,29 @@ function slot0.onOpen(slot0)
 
 		slot0._inputsend:SetText(slot0._preSendInfo.content)
 	end
+
+	slot0:_loadBg()
+
+	slot0._isopen = true
+end
+
+function slot0.selectUseSkin(slot0, slot1)
+	if slot1 then
+		slot0._isSelfBg = true
+
+		PlayerPrefsHelper.setNumber(slot0.skinkey, SocialEnum.SelectEnum.Self)
+	else
+		slot0._isSelfBg = false
+
+		PlayerPrefsHelper.setNumber(slot0.skinkey, SocialEnum.SelectEnum.Friend)
+	end
+
+	slot0:_loadBg()
+
+	for slot5, slot6 in ipairs(slot0._selectitemList) do
+		gohelper.setActive(slot6.goselect, slot6.isSelf == slot0._isSelfBg)
+		gohelper.setActive(slot6.gounselect, slot6.isSelf ~= slot0._isSelfBg)
+	end
 end
 
 function slot0._onAddUnknownFriend(slot0)
@@ -208,6 +313,8 @@ function slot0._refreshMessageView(slot0)
 	if slot2 then
 		slot0._scrollmessage.verticalNormalizedPosition = 0
 	end
+
+	slot0:selectUseSkin(slot0._isSelfBg)
 end
 
 function slot0._ondescChange(slot0, slot1)
@@ -234,6 +341,10 @@ function slot0.onDestroyView(slot0)
 		slot0._loader:dispose()
 
 		slot0._loader = nil
+	end
+
+	for slot4, slot5 in ipairs(slot0._selectitemList) do
+		slot5.btn:RemoveClickListener()
 	end
 
 	slot0._simagecharbg:UnLoadImage()

@@ -504,6 +504,54 @@
     "dlc": 0
   },
   {
+    "season": 1,
+    "id": 43,
+    "order": 1,
+    "name": "发狂的贵族",
+    "nameEn": "A Frantic Noble",
+    "desc": "“快拿走吧，拿走吧！你们拿走这些钱，我就会变得快乐！”",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_64.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_64.png",
+    "eventId": "106151|1061511",
+    "dlc": 0
+  },
+  {
+    "season": 1,
+    "id": 44,
+    "order": 1,
+    "name": "暴动的军队",
+    "nameEn": "Rioting Troops",
+    "desc": "回报根本就配不上风险，你明白的。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_65.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_65.png",
+    "eventId": "106152|1061521",
+    "dlc": 0
+  },
+  {
+    "season": 1,
+    "id": 45,
+    "order": 1,
+    "name": "主人不在家",
+    "nameEn": "Empty Studio",
+    "desc": "塞梅尔维斯不会认错桌上的玫瑰，上面残余的神秘术波动她已经非常熟悉。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_57.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_57.png",
+    "eventId": "106153",
+    "dlc": 0
+  },
+  {
+    "season": 1,
+    "id": 46,
+    "order": 1,
+    "name": "命运的上游",
+    "nameEn": "At the Source of Fate",
+    "desc": "海螺的歌声在莱茵河上游愈发清晰。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_63.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_63.png",
+    "eventId": "106154|1061541|1061542",
+    "dlc": 0
+  },
+  {
     "season": 2,
     "id": 10101,
     "order": 9999,
@@ -633,6 +681,66 @@
     "image": "singlebg/rouge/illustration/rouge_illustration_item_56.png",
     "fullImage": "singlebg/rouge/episode/rouge_episode_cg_56.png",
     "eventId": "306103",
+    "dlc": 1
+  },
+  {
+    "season": 4,
+    "id": 10301,
+    "order": 7999,
+    "name": "往日肖像",
+    "nameEn": "Old Portraits",
+    "desc": "这是谁的恶作剧？",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_58.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_58.png",
+    "eventId": "410101",
+    "dlc": 1
+  },
+  {
+    "season": 4,
+    "id": 10302,
+    "order": 7998,
+    "name": "户外剧场",
+    "nameEn": "Outdoor Theater",
+    "desc": "一出平凡的戏剧。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_59.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_59.png",
+    "eventId": "410102|4101021",
+    "dlc": 1
+  },
+  {
+    "season": 4,
+    "id": 10303,
+    "order": 7997,
+    "name": "成功者肖像",
+    "nameEn": "A Portrait of Success",
+    "desc": "塞梅尔维斯看到了获得巨大成就的自己。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_60.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_60.png",
+    "eventId": "410103",
+    "dlc": 1
+  },
+  {
+    "season": 4,
+    "id": 10304,
+    "order": 7996,
+    "name": "底比斯女士",
+    "nameEn": "Madam Thèbes",
+    "desc": "你的命运不属于这里。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_61.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_61.png",
+    "eventId": "410104",
+    "dlc": 1
+  },
+  {
+    "season": 4,
+    "id": 10305,
+    "order": 7995,
+    "name": "休憩点？",
+    "nameEn": "Rest Site?",
+    "desc": "这一片宁静更像是专给避难者的陷阱。",
+    "image": "singlebg/rouge/illustration/rouge_illustration_item_62.png",
+    "fullImage": "singlebg/rouge/episode/rouge_episode_cg_62.png",
+    "eventId": "410105",
     "dlc": 1
   }
 ]

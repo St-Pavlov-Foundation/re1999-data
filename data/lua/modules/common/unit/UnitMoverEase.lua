@@ -44,6 +44,16 @@ function slot0.simpleMove(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7
 		y = slot5 - slot2,
 		z = slot6 - slot3
 	}
+	slot0._lastStartPos = slot0._wayPointBegin
+	slot0._lastEndPos = slot0._wayPointEnd
+end
+
+function slot0.getLastStartPos(slot0)
+	return slot0._lastStartPos
+end
+
+function slot0.getLastEndPos(slot0)
+	return slot0._lastEndPos
 end
 
 function slot0.setPosDirectly(slot0, slot1, slot2, slot3)

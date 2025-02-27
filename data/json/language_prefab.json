@@ -3573,7 +3573,7 @@
   },
   {
     "id": "p_helpcontentitem_50110_3",
-    "lang": "1.人工梦游由<#ff906a>浅眠域</color>和<#ff906a>深眠域</color>构成，每个眠域包含多个梦境；\n2.通过探索人工梦游中的梦境，获得星数，根据总星数可在<#ff906a>测验任务</color>中获取丰厚的酬劳；\n3.测验任务的进度将于<#ff906a>每周</color>重置，但不会重置总星数。"
+    "lang": "1.人工梦游由<#ff906a>浅眠域</color>，<#ff906a>深眠域</color>和<#ff906a>醒梦域</color>构成，每个都包含多个梦境；\n2.通过探索人工梦游中的梦境，获得星数，根据总星数可在<#ff906a>测验任务</color>中获取丰厚的酬劳；\n3.测验任务的进度将于<#ff906a>每周</color>重置，但不会重置总星数。"
   },
   {
     "id": "p_helpcontentitem_50110_4",
@@ -3589,7 +3589,7 @@
   },
   {
     "id": "p_helpcontentitem_50110_7",
-    "lang": "1.深眠域在活动时间开启。深眠域开启后会周期刷新梦境，刷新时间为每月<#ff906a>1日</color>与<#ff906a>16日</color>的<#ff906a>凌晨5时（UTC+8）</color>；\n2.完成梦境挑战后，可领取<#ff906a>深眠试验</color>的酬劳。深眠域的深眠试验酬劳，会随周期刷新而重置；\n3.在同一周期下，深眠域梦境将受同一关卡规则影响。"
+    "lang": "1.深眠域在活动时间开启。深眠域开启后会周期刷新梦境，刷新时间为每月<#ff906a>16日</color>凌晨5时（UTC+8）</color>；\n2.完成梦境挑战后，可领取<#ff906a>深眠试验</color>的酬劳。深眠域的深眠试验酬劳，会随周期刷新而重置；\n3.在同一周期下，深眠域梦境将受同一关卡规则影响。"
   },
   {
     "id": "p_helpcontentitem_50111_1",
@@ -14241,7 +14241,7 @@
   },
   {
     "id": "p_season166infoanalyze_rewardview_txt_desc2",
-    "lang": "完全解析3份情报可领取<color=#eb893e>红斗篷衣着</color>"
+    "lang": "完全解析3份情报可领取<color=#eb893e>埃里克衣着</color>"
   },
   {
     "id": "p_roomcritterincubateview_txt_overview",
@@ -17846,5 +17846,457 @@
   {
     "id": "p_v2a5_warmup_txt_WrongChannel",
     "lang": "剪裁杂乱无章的电报，解读那些在遥远极夜中发生的故事"
+  },
+  {
+    "id": "playercard_weekwalkVer2PlatinumCup",
+    "lang": "累计S级认证："
+  },
+  {
+    "id": "p_versionactivity_2_6_enterview_dec",
+    "lang": "一部无人能懂的小说\n一个人梦中所产生的幻影\n一种无名的勇气、无用的举动\n一类镜中的晦暗、破碎的无限"
+  },
+  {
+    "id": "p_v2a6_dungeonmapview_shop",
+    "lang": "铁窗文学会"
+  },
+  {
+    "id": "a6_reappear_mainactivity_txt_EntranceRole1",
+    "lang": "曲香蒙求"
+  },
+  {
+    "id": "a6_reappear_mainactivity_txt_EntranceRole2",
+    "lang": "天下有风"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_tips",
+    "lang": "选择需要重投的骰子或确认结果"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_reroll",
+    "lang": "重新投掷"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_confirm",
+    "lang": "确认骰子"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_skip",
+    "lang": "跳过战斗"
+  },
+  {
+    "id": "p_v2a6_dicehero_dungeon_txt",
+    "lang": "<size=42>答</size>录机 蝴蝶 <nobr>文学评论家</nobr>"
+  },
+  {
+    "id": "p_v2a6_rouge_enterview_txt_dlc",
+    "lang": "浮沫休止符"
+  },
+  {
+    "id": "p_socialfriendsview_txt_option1",
+    "lang": "显示我的背景"
+  },
+  {
+    "id": "p_socialfriendsview_txt_option2",
+    "lang": "显示对方的背景"
+  },
+  {
+    "id": "p_rougemainview_txt_dlctips",
+    "lang": "金匠预言："
+  },
+  {
+    "id": "p_rougemainview_txt_dlctips2",
+    "lang": "金匠预言"
+  },
+  {
+    "id": "p_rougedistortruleview_txt_title",
+    "lang": "抉择"
+  },
+  {
+    "id": "p_rougedistortruleview_txt_title2",
+    "lang": "代价"
+  },
+  {
+    "id": "p_rougemapbaseinheritview_txt_inherit",
+    "lang": "代价显示"
+  },
+  {
+    "id": "p_dungeonweekwalkdeepview_txt_sleep",
+    "lang": "<size=79>深</size>眠域"
+  },
+  {
+    "id": "p_dungeonweekwalkdeepview_txt_heart",
+    "lang": "<size=79>醒</size>梦域"
+  },
+  {
+    "id": "p_weekwalkheartlayerview_txt_review",
+    "lang": "关卡回顾"
+  },
+  {
+    "id": "p_weekwalkheart_deeplayernoticeview_txt_reset",
+    "lang": "本期增益已重置"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Remain",
+    "lang": "翻页次数："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Pairs",
+    "lang": "书页成对："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Warehouse",
+    "lang": "书页剩余"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_Turn",
+    "lang": "我方回合"
+  },
+  {
+    "id": "p_weekwalkheart_buffitem_txt_equiped",
+    "lang": "装备中"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_attack",
+    "lang": "最佳输出位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data1",
+    "lang": "出战次数："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data2",
+    "lang": "累计输出量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data3",
+    "lang": "最强一击："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_health",
+    "lang": "最佳治疗位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data4",
+    "lang": "累计治疗量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_defence",
+    "lang": "最佳承伤位"
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_data5",
+    "lang": "累计承伤量："
+  },
+  {
+    "id": "p_weekwalkheart_resultview_txt_title",
+    "lang": "认证数据"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_title",
+    "lang": "欢迎来到新世代，志愿者招募已开放"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_time",
+    "lang": "训练减负公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_timedec",
+    "lang": "本期深眠域满星通关后，下期深眠域可从“深眠片段Ⅴ”开始挑战；本期醒梦域获得全部A级认证后，下期醒梦域可从“醒梦片段Ⅲ”开始挑战。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward1",
+    "lang": "共鸣晶体套组 ×1"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward2",
+    "lang": "参与活动即可获得"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward3",
+    "lang": "洞见之声 ×1"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reduce",
+    "lang": "实验酬劳公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reducedec",
+    "lang": "每期醒梦域累计可得的实验酬劳为纯雨滴×700、梦境流体×2160、利齿子儿×40000；首次完成“顺利苏醒认证”全部收集任务可获取纯雨滴×300。每期深眠域累计可得的纯雨滴，将调整为与醒梦域一致。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_reward",
+    "lang": "装置重启时间公示"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_rewarddec",
+    "lang": "深眠域、醒梦域均为30天重启一次；醒梦域重启时间为每月1号，深眠域重启时间为每月16号。"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_title2",
+    "lang": "志愿者招募中，参与可领特别补助"
+  },
+  {
+    "id": "p_v2a6_weekwalkheart_panelview_btn_goto",
+    "lang": "前往人工梦游"
+  },
+  {
+    "id": "p_shortenact_txt_rewardname1",
+    "lang": "版本赠礼"
+  },
+  {
+    "id": "p_shortenact_txt_rewardname2",
+    "lang": "吼吼点唱机加速点播"
+  },
+  {
+    "id": "shortenact_txt1",
+    "lang": "糖果、秘物、妙想……下一幕提前上映时，它们总会派上用场。"
+  },
+  {
+    "id": "shortenact_txt2",
+    "lang": "版本赠礼"
+  },
+  {
+    "id": "shortenact_txt3",
+    "lang": "吼吼点唱机加速点播"
+  },
+  {
+    "id": "shortenact_txt4",
+    "lang": "完成任务获取奖励"
+  },
+  {
+    "id": "p_weekwalkheartlayerview_txt_buff",
+    "lang": "梦境增益"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_deeptip2",
+    "lang": "醒梦域试验酬劳每月1号凌晨5点刷新！"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_title",
+    "lang": "醒梦域首通试验酬劳"
+  },
+  {
+    "id": "p_v2a6_xugouji_levelview_txt_Challenge",
+    "lang": "无尽象征"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn1",
+    "lang": "诗社的赠礼"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn2",
+    "lang": "文学的纪念"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn1",
+    "lang": "狱友的赠礼"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn2",
+    "lang": "成像研究"
+  },
+  {
+    "id": "p_v2a6_giftrecommendview2_txt_shopnamecn3",
+    "lang": "诗社的赠礼"
+  },
+  {
+    "id": "p_weekwalklayerrewardview_deeptip3",
+    "lang": "深眠试验酬劳每月16号凌晨5点刷新！"
+  },
+  {
+    "id": "p_bppropview2_txt_title2",
+    "lang": "解锁<#FD7536>【典藏吼吼光碟】</color>后立即获得"
+  },
+  {
+    "id": "p_v2a6_enterview_txt_tab_unselected_name",
+    "lang": "疯癫与文明"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_1",
+    "lang": "字与词的魔法"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_2",
+    "lang": "文学恶魔"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_3",
+    "lang": "书页剩余"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_4",
+    "lang": "批判页"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_5",
+    "lang": "剖析页"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_6",
+    "lang": "草稿页"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_7",
+    "lang": "翻页次数："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_8",
+    "lang": "书页成对："
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_9",
+    "lang": "我方回合"
+  },
+  {
+    "id": "p_v2a6_xugouji_gameview_txt_10",
+    "lang": "敌方回合"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_End_UseCard",
+    "lang": "出牌"
+  },
+  {
+    "id": "p_v2a6_dicehero_gameview_txt_End_Skip",
+    "lang": "结束回合"
+  },
+  {
+    "id": "p_v2a6_versionsummonxugoujihalfview_txt_chance",
+    "lang": "以上角色出现概率UP!!"
+  },
+  {
+    "id": "p_helpcontentitem_50112_1",
+    "lang": "醒梦域玩法说明"
+  },
+  {
+    "id": "p_helpcontentitem_50112_2",
+    "lang": "醒梦域"
+  },
+  {
+    "id": "p_helpcontentitem_50112_3",
+    "lang": "1.<#ff906a>醒梦域</color>在活动时间开启。醒梦域开启后会周期刷新梦境，刷新时间为每月<#ff906a>1日</color>的<#ff906a>凌晨5时（UTC+8）</color>；\n2.完成梦境挑战获取认证等级后，可以领取醒梦试验的酬劳。醒梦域的醒梦试验酬劳，会随<#ff906a>周期刷新而重置</color>；\n3.醒梦域中引入了新的战斗机制——<#ff906a>唤醒阈</color>。并且当普通敌人退场后，首领敌人会失去一定生命；\n4.醒梦域的关卡内可以给小队装备梦境增益。随着层数的推进，可选梦境增益种类将会增多。"
+  },
+  {
+    "id": "p_helpcontentitem_50112_4",
+    "lang": "唤醒规则"
+  },
+  {
+    "id": "p_helpcontentitem_50112_5",
+    "lang": "1.敌我双方在战斗内满足一定条件时，将会积累<#ff906a>唤醒值</color>。当唤醒值积攒满后，战场将会处于唤醒阈中；\n2.当战场处于唤醒阈时，我方会获得战斗加成并持续一定回合数，唤醒阈结束后唤醒值清空并重新开始累计；\n3.在同一周期下，醒梦域的梦境上下半层分别受两种<#ff906a>唤醒规则</color>的影响。"
+  },
+  {
+    "id": "p_helpcontentitem_50112_6",
+    "lang": "跳层规则"
+  },
+  {
+    "id": "p_helpcontentitem_50112_7",
+    "lang": "1.当期深眠域满星通关后，下期深眠域可以从<#ff906a>“深眠片段Ⅴ”</color>开始进行挑战。\n2.当期醒梦域获得全部的<#ff906a>A级认证</color>后，下期醒梦域可以从<#ff906a>“醒梦片段Ⅲ”</color>开始进行挑战。"
+  },
+  {
+    "id": "p_helpcontentitem_50113_1",
+    "lang": "C级认证"
+  },
+  {
+    "id": "p_helpcontentitem_50113_2",
+    "lang": "B级认证"
+  },
+  {
+    "id": "p_helpcontentitem_50113_3",
+    "lang": "A级认证"
+  },
+  {
+    "id": "p_helpcontentitem_50113_4",
+    "lang": "S级认证"
+  },
+  {
+    "id": "p_helpcontentitem_50113_5",
+    "lang": "醒梦域的战斗中可以获得4种<#ff906a>等级认证</color>。\n在单个<#ff906a>梦境片段</color>内获得3个A到C级认证时，将会开放下一个梦境片段的入口。"
+  },
+  {
+    "id": "p_helpcontentitem_50113_6",
+    "lang": "根据获得认证的数量可以领取对应的<#ff906a>醒梦试验</color>的酬劳"
+  },
+  {
+    "id": "p_helpcontentitem_50114_1",
+    "lang": "可查看当前推荐阵容"
+  },
+  {
+    "id": "p_helpcontentitem_50114_2",
+    "lang": "获得等级认证需要达成的条件，\nC级到A级只要完成对应内容即可提升认证等级"
+  },
+  {
+    "id": "p_helpcontentitem_50114_3",
+    "lang": "可以给小队装备梦境增益，同一梦境片段内上半层使用过的增益，下半层将无法再次使用\n随着层数的推进可选梦境增益种类将会增多"
+  },
+  {
+    "id": "p_helpcontentitem_50114_4",
+    "lang": "此处为限时挑战详情\n点击放大镜可查看详细信息"
+  },
+  {
+    "id": "p_helpcontentitem_50115_1",
+    "lang": "醒梦域的战斗内普通敌人是无限替补，\n点击可查看替补顺序"
+  },
+  {
+    "id": "p_helpcontentitem_50115_2",
+    "lang": "点击可查看唤醒规则和选择的梦境增益"
+  },
+  {
+    "id": "p_helpcontentitem_50115_3",
+    "lang": "唤醒阈的激活条，当唤醒值充满时，\n全场会处于唤醒阈中并持续一定回合数。"
+  },
+  {
+    "id": "p_bpfaceview_txt_open",
+    "lang": "点击揭开奥秘"
+  },
+  {
+    "id": "p_rouge_help_26_txt_1",
+    "lang": "1.通过勾选/取消操作，在代价和造物属性的显示中切换"
+  },
+  {
+    "id": "p_rouge_help_26_txt_2",
+    "lang": "2.存在刷新次数的情况下，可以点击造物代价下的刷新按钮，刷新造物的代价，此刷新无法改变造物"
+  },
+  {
+    "id": "p_v2a6_storeblockpackageview_name",
+    "lang": "「虚假的梦」"
+  },
+  {
+    "id": "p_v2a6_storeblockpackageview_dec",
+    "lang": "*集齐当期<color=#BD8557>活动兑换</color>及<color=#BD8557>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_v2a6_storeroleskinview_roletxt2",
+    "lang": "第二枚预兆"
+  },
+  {
+    "id": "p_v2a6_storeroleskinview_rolename2",
+    "lang": "笃笃骨"
+  },
+  {
+    "id": "p_v2a6_storeroleskinview_roletxt1",
+    "lang": "与风暴同行"
+  },
+  {
+    "id": "p_v2a6_storeroleskinview_rolename1",
+    "lang": "洛佩拉"
+  },
+  {
+    "id": "p_v2a6_warmup_txt_tips",
+    "lang": ""
+  },
+  {
+    "id": "p_v2a6_warmup_txt_WrongChannel",
+    "lang": ""
+  },
+  {
+    "id": "p_v2a6_warmup_txt_Reward",
+    "lang": ""
+  },
+  {
+    "id": "p_v2a6_warmup_txt_goto",
+    "lang": ""
   }
 ]

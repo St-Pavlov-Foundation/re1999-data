@@ -14,20 +14,23 @@ end
 function slot0.checkReplaceHeroList(slot0)
 	if TowerModel.instance:getRecordFightParam().isHeroGroupLock then
 		slot2 = slot1.heros or {}
-		slot3 = slot1.assistBoss
-		slot4 = {}
+		slot4 = slot1.assistBoss
+		slot5 = {}
 
-		for slot8 = 1, #slot2 do
-			if HeroModel.instance:getByHeroId(slot2[slot8] or 0) then
-				table.insert(slot4, slot9.uid)
+		for slot9 = 1, #slot2 do
+			if HeroModel.instance:getByHeroId(slot2[slot9] or 0) then
+				table.insert(slot5, {
+					heroUid = slot10.uid,
+					equipUid = (slot1.equipUids or {})[slot9]
+				})
 			end
 		end
 
-		slot5 = HeroGroupModel.instance:getCurGroupMO()
+		slot6 = HeroGroupModel.instance:getCurGroupMO()
 
-		slot5:replaceTowerHeroList(slot4)
-		slot5:setAssistBossId(slot3)
-		HeroSingleGroupModel.instance:setSingleGroup(slot5)
+		slot6:replaceTowerHeroList(slot5)
+		slot6:setAssistBossId(slot4)
+		HeroSingleGroupModel.instance:setSingleGroup(slot6)
 	end
 end
 

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 41,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_d_p.prefab",
+    "mapId": 41,
+    "buffId": 0,
+    "typeName": "醒梦域",
+    "name": "EX-1",
+    "icon": "stage_1",
+    "battleName": "醒梦片段·Ⅰ",
+    "name_en": "Lucidscape Stage Ⅰ"
+  },
+  {
+    "id": 42,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_d_p.prefab",
+    "mapId": 42,
+    "buffId": 0,
+    "typeName": "醒梦域",
+    "name": "EX-2",
+    "icon": "stage_2",
+    "battleName": "醒梦片段·Ⅱ",
+    "name_en": "Lucidscape Stage Ⅱ"
+  },
+  {
+    "id": 43,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_d_p.prefab",
+    "mapId": 43,
+    "buffId": 0,
+    "typeName": "醒梦域",
+    "name": "EX-3",
+    "icon": "stage_3",
+    "battleName": "醒梦片段·Ⅲ",
+    "name_en": "Lucidscape Stage Ⅲ"
+  },
+  {
+    "id": 44,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_d_p.prefab",
+    "mapId": 44,
+    "buffId": 0,
+    "typeName": "醒梦域",
+    "name": "EX-4",
+    "icon": "stage_4",
+    "battleName": "醒梦片段·Ⅳ",
+    "name_en": "Lucidscape Stage Ⅳ"
+  }
+]

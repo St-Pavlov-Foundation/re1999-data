@@ -1,0 +1,110 @@
+[
+  {
+    "activityId": 12605,
+    "cardId": 100,
+    "type": 0,
+    "skillId": 100,
+    "name": "批判页",
+    "desc": "造成1点创伤，重复2次。",
+    "resource": "v2a6_xugouji_skillcard01"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 101,
+    "type": 0,
+    "skillId": 101,
+    "name": "批判页",
+    "desc": "造成1点创伤，恢复自身1点生命",
+    "resource": "v2a6_xugouji_skillcard02"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 102,
+    "type": 0,
+    "skillId": 102,
+    "name": "批判页",
+    "desc": "造成2点创伤。",
+    "resource": "v2a6_xugouji_skillcard03"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 103,
+    "type": 0,
+    "skillId": 103,
+    "name": "批判页",
+    "desc": "下回合开始造成3点创伤。",
+    "resource": "v2a6_xugouji_skillcard04"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 104,
+    "type": 1,
+    "skillId": 104,
+    "name": "剖析页",
+    "desc": "恢复2点生命。",
+    "resource": "v2a6_xugouji_skillcard05"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 105,
+    "type": 1,
+    "skillId": 105,
+    "name": "剖析页",
+    "desc": "缴械对方1回合。（缴械：只有1次翻页的次数）",
+    "resource": "v2a6_xugouji_skillcard06"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 106,
+    "type": 1,
+    "skillId": 106,
+    "name": "剖析页",
+    "desc": "使对面下回合获得1回合的创伤加深。（创伤加深：受到的直接创伤加倍）",
+    "resource": "v2a6_xugouji_skillcard07"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 107,
+    "type": 1,
+    "skillId": 107,
+    "name": "剖析页",
+    "desc": "获得1层护盾。（护盾：抵挡1次受到的直接创伤）",
+    "resource": "v2a6_xugouji_skillcard08"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 108,
+    "type": 2,
+    "skillId": 108,
+    "name": "草稿页",
+    "desc": "额外获得2次翻页的次数",
+    "resource": "v2a6_xugouji_skillcard09"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 109,
+    "type": 2,
+    "skillId": 109,
+    "name": "草稿页",
+    "desc": "下次翻页时，会随机翻开2张相邻的书页。",
+    "resource": "v2a6_xugouji_skillcard10"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 110,
+    "type": 2,
+    "skillId": 110,
+    "name": "草稿页",
+    "desc": "随机透视2张书页。",
+    "resource": "v2a6_xugouji_skillcard11"
+  },
+  {
+    "activityId": 12605,
+    "cardId": 111,
+    "type": 2,
+    "skillId": 111,
+    "name": "草稿页",
+    "desc": "受到2点创伤。",
+    "resource": "v2a6_xugouji_skillcard12"
+  }
+]

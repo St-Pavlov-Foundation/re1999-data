@@ -368,12 +368,14 @@ function slot0.setBtnStatus(slot0)
 		DungeonController.instance:dispatchEvent(DungeonEvent.OnShowResourceView)
 	end
 
+	slot0._isWeekWalkType = slot4
+
 	if slot4 then
-		slot0.viewContainer:switchTab(1)
+		slot0:_switchWeekWalkTab()
 	elseif slot6 then
-		slot0.viewContainer:switchTab(2)
+		slot0.viewContainer:switchTab(DungeonEnum.DungeonViewTabEnum.Explore)
 	elseif slot8 then
-		slot0.viewContainer:switchTab(3)
+		slot0.viewContainer:switchTab(DungeonEnum.DungeonViewTabEnum.Permanent)
 	else
 		slot0.viewContainer:switchTab()
 	end
@@ -390,14 +392,24 @@ function slot0.setBtnStatus(slot0)
 	AudioBgmManager.instance:checkBgm()
 end
 
+function slot0._switchWeekWalkTab(slot0)
+	if WeekWalkModel.instance:getInfo():getNotFinishedMap() and WeekWalkModel.isShallowMap(slot2.sceneId) then
+		slot0.viewContainer:switchTab(DungeonEnum.DungeonViewTabEnum.WeekWalk)
+	elseif WeekWalk_2Model.instance:getInfo() and slot4:isOpen() then
+		slot0.viewContainer:switchTab(DungeonEnum.DungeonViewTabEnum.WeekWalk_2)
+	else
+		slot0.viewContainer:switchTab(DungeonEnum.DungeonViewTabEnum.WeekWalk)
+	end
+end
+
 function slot0._showWeekWalkEffect(slot0)
 	slot2 = WeekWalkModel.instance:getInfo()
 	slot3 = WeekWalkTaskListModel.instance:canGetReward(WeekWalkEnum.TaskType.Week) or slot2 and slot2.isPopShallowSettle
-	slot4 = slot2 and slot2.isPopDeepSettle
+	slot7 = slot2 and slot2.isPopDeepSettle or WeekWalk_2Model.instance:getInfo() and slot5.isPopSettle
 
 	gohelper.setActive(slot0._goweekwalkreward1, slot3)
-	gohelper.setActive(slot0._goweekwalkreward2, not slot3 and slot4)
-	gohelper.setActive(slot0._goweekwalkicon, not slot3 and not slot4)
+	gohelper.setActive(slot0._goweekwalkreward2, not slot3 and slot7)
+	gohelper.setActive(slot0._goweekwalkicon, not slot3 and not slot7)
 end
 
 function slot0._showGoldEffect(slot0)
@@ -433,6 +445,7 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, slot0._refreshBtnUnlock, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.DestroyViewFinish, slot0._onDestroyViewFinish, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
+	slot0:addEventCb(WeekWalkController.instance, WeekWalkEvent.OnAllShallowLayerFinish, slot0._onAllShallowLayerFinish, slot0)
 	slot0:addEventCb(DungeonController.instance, DungeonEvent.OnDramaRewardStatusChange, slot0._refreshDramaBtnStatus, slot0)
 	slot0:_refreshDramaBtnStatus()
 	slot0:_moveChapter()
@@ -458,6 +471,12 @@ end
 function slot0._onCloseView(slot0, slot1)
 	if slot1 == ViewName.DungeonMapView and DungeonModel.instance.chapterTriggerNewChapter then
 		slot0:_focusNormalChapter(DungeonModel.instance.unlockNewChapterId)
+	end
+end
+
+function slot0._onAllShallowLayerFinish(slot0)
+	if slot0._isWeekWalkType then
+		slot0:_switchWeekWalkTab()
 	end
 end
 

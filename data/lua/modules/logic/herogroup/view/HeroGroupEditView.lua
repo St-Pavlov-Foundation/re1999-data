@@ -230,6 +230,14 @@ function slot0._btnconfirmOnClick(slot0)
 						return
 					end
 				end
+			elseif slot0._isWeekWalk_2 then
+				for slot5, slot6 in pairs(slot1) do
+					if HeroModel.instance:getById(slot6) and WeekWalk_2Model.instance:getCurMapHeroCd(slot7.heroId) > 0 then
+						GameFacade.showToast(ToastEnum.HeroGroupEdit)
+
+						return
+					end
+				end
 			elseif slot0._isTowerBattle then
 				for slot5, slot6 in pairs(slot1) do
 					if HeroModel.instance:getById(slot6) and TowerModel.instance:isHeroBan(slot7.heroId) then
@@ -262,6 +270,12 @@ function slot0._btnconfirmOnClick(slot0)
 	if slot0._heroMO then
 		if slot0._adventure then
 			if WeekWalkModel.instance:getCurMapHeroCd(slot0._heroMO.heroId) > 0 then
+				GameFacade.showToast(ToastEnum.HeroGroupEdit)
+
+				return
+			end
+		elseif slot0._isWeekWalk_2 then
+			if WeekWalk_2Model.instance:getCurMapHeroCd(slot0._heroMO.heroId) > 0 then
 				GameFacade.showToast(ToastEnum.HeroGroupEdit)
 
 				return
@@ -813,10 +827,7 @@ function slot0._saveQuickGroupInfo(slot0)
 
 		slot0:replaceQuickGroupHeroDefaultEquip(HeroGroupQuickEditListModel.instance:getHeroUids())
 
-		slot4 = HeroGroupModel.instance
-		slot6 = slot4
-
-		for slot6 = 1, slot4.getBattleRoleNum(slot6) do
+		for slot6 = 1, HeroGroupModel.instance:getBattleRoleNum() do
 			if slot1[slot6] ~= nil then
 				HeroSingleGroupModel.instance:addTo(slot7, slot6)
 
@@ -910,9 +921,9 @@ function slot0._editableInitView(slot0)
 
 	slot0._imgBg:LoadImage(ResUrl.getCommonViewBg("full/biandui_di"))
 
-	slot4 = ResUrl.getHeroGroupBg
+	slot4 = "guang_027"
 
-	slot0._simageredlight:LoadImage(slot4("guang_027"))
+	slot0._simageredlight:LoadImage(ResUrl.getHeroGroupBg(slot4))
 
 	slot0._lvBtns = slot0:getUserDataTb_()
 	slot0._lvArrow = slot0:getUserDataTb_()
@@ -965,8 +976,7 @@ function slot0._editableInitView(slot0)
 	end
 
 	slot0._goBtnEditQuickMode = gohelper.findChild(slot0._btnquickedit.gameObject, "btn2")
-	slot4 = "btn1"
-	slot0._goBtnEditNormalMode = gohelper.findChild(slot0._btnquickedit.gameObject, slot4)
+	slot0._goBtnEditNormalMode = gohelper.findChild(slot0._btnquickedit.gameObject, "btn1")
 	slot0._attributevalues = {}
 
 	for slot4 = 1, 5 do
@@ -996,6 +1006,14 @@ function slot0._editableInitView(slot0)
 	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 end
 
+function slot0._getGroupType(slot0)
+	slot2 = HeroGroupModel.instance.episodeId and lua_episode.configDict[slot1]
+
+	if (slot2 and slot2.type) == DungeonEnum.EpisodeType.WeekWalk_2 then
+		return HeroGroupEnum.GroupType.WeekWalk_2
+	end
+end
+
 function slot0.onOpen(slot0)
 	slot0._isShowQuickEdit = false
 	slot0._scrollcard.verticalNormalizedPosition = 1
@@ -1005,6 +1023,8 @@ function slot0.onOpen(slot0)
 	slot0._adventure = slot0.viewParam.adventure
 	slot0._equips = slot0.viewParam.equips
 	slot0._isTowerBattle = TowerModel.instance:isInTowerBattle()
+	slot0._groupType = slot0:_getGroupType()
+	slot0._isWeekWalk_2 = slot0._groupType == HeroGroupEnum.GroupType.WeekWalk_2
 
 	for slot4 = 1, 2 do
 		slot0._selectDmgs[slot4] = false
@@ -1019,8 +1039,8 @@ function slot0.onOpen(slot0)
 	end
 
 	CharacterModel.instance:setCharacterList(false, CharacterEnum.FilterType.HeroGroup)
-	HeroGroupEditListModel.instance:setParam(slot0._originalHeroUid, slot0._adventure, slot0._isTowerBattle)
-	HeroGroupQuickEditListModel.instance:setParam(slot0._adventure, slot0._isTowerBattle)
+	HeroGroupEditListModel.instance:setParam(slot0._originalHeroUid, slot0._adventure, slot0._isTowerBattle, slot0._groupType)
+	HeroGroupQuickEditListModel.instance:setParam(slot0._adventure, slot0._isTowerBattle, slot0._groupType)
 
 	slot0._heroMO = HeroGroupEditListModel.instance:copyCharacterCardList(true)
 

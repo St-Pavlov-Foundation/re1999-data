@@ -215,7 +215,7 @@ function slot0.openDungeonBossView(slot0, slot1)
 end
 
 function slot0._onReceiveAct149InfoReply(slot0)
-	VersionActivity1_6DungeonRpc.instance:sendAct149GainDailyBonusRequest(slot0._afterDailyBonusOpenDungeonBossView, slot0)
+	slot0:_afterDailyBonusOpenDungeonBossView()
 end
 
 function slot0._afterDailyBonusOpenDungeonBossView(slot0)

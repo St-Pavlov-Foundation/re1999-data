@@ -86,7 +86,17 @@ function slot0._showFightProgress(slot0)
 
 		gohelper.setActive(slot0._progressRoot, true)
 
-		slot0._progressView = slot0:com_openSubView(FightCommonalitySlider, FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 1 and "ui/viewres/fight/commonalityslider1.prefab" or "ui/viewres/fight/commonalityslider.prefab", slot0._progressRoot)
+		slot3 = "ui/viewres/fight/commonalityslider.prefab"
+		slot4 = FightCommonalitySlider
+
+		if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 1 then
+			slot3 = "ui/viewres/fight/commonalityslider1.prefab"
+		elseif slot2 == 2 then
+			slot3 = "ui/viewres/fight/commonalityslider2.prefab"
+			slot4 = FightCommonalitySlider2
+		end
+
+		slot0._progressView = slot0:com_openSubView(slot4, slot3, slot0._progressRoot, slot0._goRoot)
 	end
 end
 
@@ -192,8 +202,9 @@ function slot0._onBtnLoaded(slot0, slot1, slot2)
 
 	slot4 = gohelper.clone(slot2:GetResource(), slot0._topRightBtnRoot, "cardBox")
 	slot0.goDeckBtn = slot4
+	slot9 = slot0
 
-	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot4), slot0._onCardBoxClick, slot0)
+	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot4), slot0._onCardBoxClick, slot9)
 	gohelper.setAsFirstSibling(slot4)
 
 	slot0._deckCardAnimator = gohelper.onceAddComponent(slot4, typeof(UnityEngine.Animator))
@@ -208,8 +219,7 @@ function slot0._onBtnLoaded(slot0, slot1, slot2)
 	gohelper.setActive(slot0.deckContainer, true)
 
 	slot0.deckAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0.deckContainer)
-	slot9 = "active"
-	slot0.goDeckActive = gohelper.findChild(slot0.deckContainer, slot9)
+	slot0.goDeckActive = gohelper.findChild(slot0.deckContainer, "active")
 
 	slot0:hideDeckActiveGo()
 

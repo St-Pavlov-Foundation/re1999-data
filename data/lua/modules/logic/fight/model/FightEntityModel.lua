@@ -77,9 +77,9 @@ function slot0._setEntityMOList(slot0, slot1, slot2, slot3)
 
 	slot1:setList(slot4)
 
-	slot8 = slot1.getList
+	slot8 = slot1
 
-	slot0:addList(slot8(slot1))
+	slot0:addList(slot1.getList(slot8))
 
 	for slot8, slot9 in ipairs(slot2) do
 		if slot9.currentHp <= 0 then
@@ -237,16 +237,16 @@ function slot0.getDeadById(slot0, slot1)
 end
 
 function slot0.addDeadUid(slot0, slot1)
-	slot0._deadUids = slot0._deadUids or {}
-	slot0._deadUids[slot1] = true
+	slot0.deadUids = slot0.deadUids or {}
+	slot0.deadUids[slot1] = true
 end
 
 function slot0.isDeadUid(slot0, slot1)
-	return slot0._deadUids and slot0._deadUids[slot1]
+	return slot0.deadUids and slot0.deadUids[slot1]
 end
 
 function slot0.clearDeadUids(slot0)
-	slot0._deadUids = {}
+	slot0.deadUids = {}
 end
 
 function slot0.sortSubEntityList(slot0, slot1)

@@ -15,6 +15,8 @@ slot0.Type_TMP_SubMeshUI = typeof(TMPro.TMP_SubMeshUI)
 slot0.Type_RectMask2D = typeof(UnityEngine.UI.RectMask2D)
 slot0.Type_GridLayoutGroup = typeof(UnityEngine.UI.GridLayoutGroup)
 slot0.Type_ContentSizeFitter = typeof(UnityEngine.UI.ContentSizeFitter)
+slot0.Type_MeshRender = typeof(UnityEngine.MeshRenderer)
+slot0.Type_Render = typeof(UnityEngine.Renderer)
 slot1 = SLFramework.UGUI.ButtonWrap
 slot2 = SLFramework.UGUI.UIClickListener
 slot3 = ZProj.GameHelper
@@ -99,6 +101,16 @@ function slot0.setActiveCanvasGroup(slot0, slot1)
 	uv0.SetActiveCanvasGroup(slot0, slot1)
 end
 
+function slot0.setActiveCanvasGroupNoAnchor(slot0, slot1)
+	if uv0.isNil(slot0) then
+		return
+	end
+
+	slot0.alpha = slot1 and 1 or 0
+	slot0.interactable = slot1 and true or false
+	slot0.blocksRaycasts = slot1 and true or false
+end
+
 function slot0.getRichColorText(slot0, slot1)
 	return string.format("<color=%s>%s</color>", slot1, slot0)
 end
@@ -110,25 +122,25 @@ end
 function slot0.activateExtend()
 end
 
-function slot0.CreateObjList(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
+function slot0.CreateObjList(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8)
 	if uv0.isNil(slot3) and not uv0.isNil(slot4) then
 		slot3 = slot4.transform.parent.gameObject
 	end
 
-	slot8 = nil
-	slot10 = slot3.transform
+	slot9 = nil
+	slot11 = slot3.transform
 	slot7 = slot7 or #slot2
-	slot11 = 0
+	slot8 = slot8 or 0
 
 	if (slot6 or 1) > 1 then
 		for slot15 = 1, slot6 - 1 do
 			slot16 = nil
 
-			if slot2[slot15] and (slot10.childCount >= slot15 + slot11 and slot10:GetChild(slot15 - 1 + slot11).gameObject) == slot4 then
+			if slot2[slot15] and (slot11.childCount >= slot15 + slot8 and slot11:GetChild(slot15 - 1 + slot8).gameObject) == slot4 then
 				uv0.setActive(slot16, false)
 
-				slot11 = slot11 + 1
-				slot8 = slot16
+				slot8 = slot8 + 1
+				slot9 = slot16
 
 				break
 			end
@@ -139,11 +151,11 @@ function slot0.CreateObjList(slot0, slot1, slot2, slot3, slot4, slot5, slot6, sl
 		slot16 = nil
 
 		if slot2[slot15] then
-			if (slot10.childCount >= slot15 + slot11 and slot10:GetChild(slot15 - 1 + slot11).gameObject or uv0.clone(slot4, slot3, slot15)) == slot4 then
+			if (slot11.childCount >= slot15 + slot8 and slot11:GetChild(slot15 - 1 + slot8).gameObject or uv0.clone(slot4, slot3, slot15)) == slot4 then
 				uv0.setActive(slot16, false)
 
-				slot8 = slot16
-				slot16 = slot10.childCount >= slot15 + slot11 + 1 and slot10:GetChild(slot15 - 1 + slot11).gameObject or uv0.clone(slot4, slot3, slot15)
+				slot9 = slot16
+				slot16 = slot11.childCount >= slot15 + slot8 + 1 and slot11:GetChild(slot15 - 1 + slot8).gameObject or uv0.clone(slot4, slot3, slot15)
 			end
 
 			uv0.setActive(slot16, true)
@@ -162,18 +174,18 @@ function slot0.CreateObjList(slot0, slot1, slot2, slot3, slot4, slot5, slot6, sl
 		end
 	end
 
-	if slot7 + 1 + slot11 < 1 then
+	if slot7 + 1 + slot8 < 1 then
 		slot6 = 1
 	end
 
-	for slot15 = slot6, slot10.childCount do
-		if slot10:GetChild(slot15 - 1) and slot16.gameObject then
+	for slot15 = slot6, slot11.childCount do
+		if slot11:GetChild(slot15 - 1) and slot16.gameObject then
 			uv0.setActive(slot17, false)
 		end
 	end
 
-	if slot8 then
-		slot8.transform:SetSiblingIndex(slot10.childCount - 1)
+	if slot9 then
+		slot9.transform:SetSiblingIndex(slot11.childCount - 1)
 	end
 end
 
@@ -355,7 +367,7 @@ function slot0.isMouseOverGo(slot0, slot1)
 	slot2 = slot0.transform
 	slot4 = recthelper.getHeight(slot2)
 
-	if recthelper.screenPosToAnchorPos(slot1 or GamepadController.instance:getMousePosition(), slot2).x >= -recthelper.getWidth(slot2) * slot2.pivot.x and slot5.x <= slot3 * (1 - slot6.x) and slot5.y <= slot4 * slot6.x and slot5.y >= -slot4 * (1 - slot6.x) then
+	if recthelper.screenPosToAnchorPos(slot1 or GamepadController.instance:getMousePosition(), slot2).x >= -recthelper.getWidth(slot2) * slot2.pivot.x and slot5.x <= slot3 * (1 - slot6.x) and slot5.y <= slot4 * (1 - slot6.y) and slot5.y >= -slot4 * slot6.y then
 		return true
 	end
 

@@ -70,5 +70,11 @@
     "name": "第三扇门",
     "chapterIds": "1401#1402#1403",
     "saveGroup": 1
+  },
+  {
+    "id": 12,
+    "name": "新深眠域",
+    "chapterIds": "26001",
+    "saveGroup": 0
   }
 ]

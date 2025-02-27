@@ -8,10 +8,8 @@ function slot0.refreshList(slot0)
 	end
 
 	slot1 = {}
-	slot4 = PlayerCardConfig.instance
-	slot6 = slot4
 
-	for slot5, slot6 in ipairs(slot4.getCardProgressList(slot6)) do
+	for slot5, slot6 in ipairs(PlayerCardConfig.instance:getCardProgressList()) do
 		table.insert(slot1, {
 			index = slot5,
 			config = slot6,

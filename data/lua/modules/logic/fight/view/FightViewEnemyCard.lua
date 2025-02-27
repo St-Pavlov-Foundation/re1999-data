@@ -138,7 +138,11 @@ end
 function slot0._onEntityDead(slot0, slot1)
 	slot0._minusCount = slot0._minusCount or 0
 
-	if FightDataHelper.entityMgr:getById(slot1).side == FightEnum.EntitySide.MySide then
+	if not FightDataHelper.entityMgr:getById(slot1) then
+		return
+	end
+
+	if slot2.side == FightEnum.EntitySide.MySide then
 		slot0._mySideDead = true
 	elseif slot2.side == FightEnum.EntitySide.EnemySide then
 		slot0._enemySideDead = true

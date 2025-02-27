@@ -137,6 +137,10 @@ slot0.ActEffectWorkCls = {
 	[FightEnum.EffectType.CARDHEATVALUECHANGE] = FightWorkCardHeatValueChange,
 	[FightEnum.EffectType.ENCHANTDEPRESSEDAMAGE] = FightWorkEnchantDepresseDamage314,
 	[FightEnum.EffectType.ADDSPHANDCARD] = FightWorkAddSpHandCard320,
+	[FightEnum.EffectType.CLEARMONSTERSUB] = FightWorkClearMonsterSub322,
+	[FightEnum.EffectType.FIGHTTASKUPDATE] = FightWorkFightTaskUpdate323,
+	[FightEnum.EffectType.REMOVEMONSTERSUB] = FightWorkRemoveMonsterSub325,
+	[FightEnum.EffectType.ADDCARDRECORDBYROUND] = FightWorkAddRecordCard,
 	[FightEnum.EffectType.CURE] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.DOT] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.REBOUND] = FightBuffTriggerEffect,
@@ -214,9 +218,10 @@ function slot0.buildStepWorkList(slot0)
 				slot1 = uv0._buildSkillWork(slot0, slot8, slot1, slot0[slot7 + 1], slot2, slot3)
 			end
 		elseif slot8.actType == FightEnum.ActType.EFFECT then
-			slot12 = uv0._buildEffectWorks
+			slot12 = slot8
+			slot13 = nil
 
-			tabletool.addValues(slot2, slot12(slot8, nil))
+			tabletool.addValues(slot2, uv0._buildEffectWorks(slot12, slot13))
 
 			for slot12, slot13 in ipairs(slot8.actEffectMOs) do
 				if slot13.effectType == FightEnum.EffectType.DEALCARD1 or slot13.effectType == FightEnum.EffectType.DEALCARD2 or slot13.effectType == FightEnum.EffectType.ROUNDEND then

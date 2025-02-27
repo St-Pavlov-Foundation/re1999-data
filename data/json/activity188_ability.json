@@ -1,0 +1,79 @@
+[
+  {
+    "activityId": 12605,
+    "abilityId": 100,
+    "effectTime": 0,
+    "skillId": 112,
+    "desc": "每回合随机透视2张书页。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 101,
+    "effectTime": 0,
+    "skillId": 113,
+    "desc": "书页成对造成的创伤增加1点。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 102,
+    "effectTime": 0,
+    "skillId": 114,
+    "desc": "每隔2回合，书页成对造成的创伤增加1点。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 103,
+    "effectTime": 0,
+    "skillId": 115,
+    "desc": "每回合首次翻开的书页不翻回，并锁定两回合（锁定：对方不可使用该书页获取文学象征）。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 104,
+    "effectTime": 1,
+    "skillId": 116,
+    "desc": "奇数回合使对方翻页的次数减少1。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 105,
+    "effectTime": 1,
+    "skillId": 122,
+    "desc": "奇数回合获得1层护盾。（护盾：抵挡1次受到的直接创伤）"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 106,
+    "effectTime": 0,
+    "skillId": 117,
+    "desc": "运用文学象征造成的创伤固定为1，敌方每次受到文学象征攻击叠加1层流血（流血：每回合结束时，失去1点生命）"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 107,
+    "effectTime": 0,
+    "skillId": 118,
+    "desc": "每造成3点创伤，翻页次数增加1，每回合最多触发3次。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 108,
+    "effectTime": 0,
+    "skillId": 119,
+    "desc": "对方每次书页成对时受到1点伤害。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 109,
+    "effectTime": 0,
+    "skillId": 120,
+    "desc": "额外获得1次翻页的次数。"
+  },
+  {
+    "activityId": 12605,
+    "abilityId": 110,
+    "effectTime": 0,
+    "skillId": 121,
+    "desc": "对方无法获得治疗。"
+  }
+]

@@ -63,17 +63,13 @@ end
 
 function slot0._handleChessMove(slot0)
 	if slot0.mgr:getEntity(slot0.effect.targetId) then
-		if slot0.context == AutoChessEnum.ContextType.EndBuy or slot0.context == AutoChessEnum.ContextType.Fight then
-			fightData = slot0.chessMo.lastSvrFight
-		else
-			fightData = slot0.chessMo.svrFight
-		end
+		slot2 = nil
+		slot2 = (slot0.context ~= AutoChessEnum.ContextType.EndBuy and slot0.context ~= AutoChessEnum.ContextType.Fight or slot0.chessMo.lastSvrFight) and slot0.chessMo.svrFight
+		slot4 = slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.effectNum) + 1, slot2)
 
-		slot3 = slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.effectNum) + 1, fightData)
-
-		if slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.fromId) + 1, fightData) and slot3 then
-			slot3.chess = slot2.chess
-			slot2.chess = AutoChessHelper.buildEmptyChess()
+		if slot0.chessMo:getChessPosition(slot1.warZone, tonumber(slot0.effect.fromId) + 1, slot2) and slot4 then
+			slot4.chess = slot3.chess
+			slot3.chess = AutoChessHelper.buildEmptyChess()
 		end
 
 		slot1:move(slot0.effect.effectNum)

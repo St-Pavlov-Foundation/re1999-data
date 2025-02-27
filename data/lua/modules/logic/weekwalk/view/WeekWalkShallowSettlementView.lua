@@ -155,7 +155,11 @@ end
 function slot0.onCloseFinish(slot0)
 	if slot0._info.isPopDeepSettle then
 		WeekWalkController.instance:checkOpenWeekWalkDeepLayerNoticeView()
+
+		return
 	end
+
+	WeekWalk_2Controller.instance:checkOpenWeekWalk_2DeepLayerNoticeView()
 end
 
 function slot0.onDestroyView(slot0)

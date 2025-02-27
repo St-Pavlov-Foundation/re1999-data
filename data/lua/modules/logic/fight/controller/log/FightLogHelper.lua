@@ -16,10 +16,9 @@ function slot0.getMoListString(slot0, slot1, slot2, slot3)
 	end
 
 	slot5 = {
-		string.format("%s %s : [", slot9, slot10)
+		string.format("%s %s : [", slot4, slot9)
 	}
-	slot9 = slot4
-	slot10 = slot2
+	slot9 = slot2
 
 	for slot9, slot10 in ipairs(slot0) do
 		table.insert(slot5, slot1(slot10, slot3 + 1, slot9))
@@ -39,16 +38,15 @@ function slot0.getMoDictString(slot0, slot1, slot2, slot3, slot4)
 		return string.format("%s %s : []", slot5, slot2)
 	end
 
-	slot11 = slot4
+	slot10 = slot4
+	slot11 = slot2
 
 	uv0.addStack({
 		string.format("%s %s : [", slot5, slot2)
-	}, uv0.getPrefix(slot3 + 1), slot11, slot2)
-
-	slot10 = slot2
+	}, uv0.getPrefix(slot3 + 1), slot10, slot11)
 
 	for slot10, slot11 in pairs(slot0) do
-		table.insert(slot6, slot1(slot11, slot3 + 1, tostring(slot10), uv0.getStack(slot4, slot10)))
+		table.insert(slot6, slot1(slot11, slot3 + 1, tostring(slot10), uv0.getStack(slot4, slot2)))
 	end
 
 	table.insert(slot6, slot5 .. "]")
@@ -116,6 +114,7 @@ function slot0.getFightStepString(slot0, slot1, slot2)
 
 	table.insert(slot5, string.format("%s cardIndex : %s", slot7, slot0.cardIndex))
 	table.insert(slot5, string.format("%s supportHeroId : %s", slot7, slot0.supportHeroId))
+	table.insert(slot5, string.format("%s fakeTimeline : %s", slot7, slot0.fakeTimeline))
 	table.insert(slot5, uv0.getFightActEffectListString(slot0.actEffectMOs, slot1, "actEffectMOs"))
 	table.insert(slot5, slot3 .. "}")
 
@@ -153,6 +152,7 @@ function slot0.getFightActEffectString(slot0, slot1, slot2)
 	table.insert(slot5, string.format("%s buffActId : %s", slot6, slot0.buffActId))
 	table.insert(slot5, string.format("%s reserveId : %s", slot6, slot0.reserveId))
 	table.insert(slot5, string.format("%s reserveStr : %s", slot6, slot0.reserveStr))
+	table.insert(slot5, string.format("%s teamType : %s", slot6, slot0.teamType))
 	table.insert(slot5, uv0.getAssistBossInfoString(slot0.assistBossInfo, slot1))
 
 	if slot0.cus_stepMO then
@@ -704,7 +704,7 @@ slot0.EffectTypeNameDict = {
 	[FightEnum.EffectType.EMITTERMAINTARGET] = " 奥术飞弹优先攻击目标",
 	[FightEnum.EffectType.CONDITIONSPLITEMITTERNUM] = " 奥术飞弹条件分裂",
 	[FightEnum.EffectType.ADDSPLITEMITTERNUM] = " 奥术飞弹额外分裂",
-	[FightEnum.EffectType.EMITTERSPLITNUM] = " 奥术飞弹分裂通知",
+	[FightEnum.EffectType.EMITTERFIGHTNOTIFY] = "  奥术飞弹放技能前通知",
 	[FightEnum.EffectType.MUSTCRITBUFF] = " 必定暴击buff",
 	[FightEnum.EffectType.MUSTCRIT] = " 触发必定暴击",
 	[FightEnum.EffectType.CARDAREAREDORBLUE] = " (梁月大)手牌红蓝分区Buff",
@@ -725,6 +725,12 @@ slot0.EffectTypeNameDict = {
 	[FightEnum.EffectType.ROUNDOFFSET] = " 回合数偏移",
 	[FightEnum.EffectType.SAVEFIGHTRECORD] = " 战场回溯buff",
 	[FightEnum.EffectType.ADDSPHANDCARD] = " 添加SP手牌 78有问题 没有完整cardInfo 少用 ",
+	[FightEnum.EffectType.NONCAREERRESTRAINT] = " 非克制伤害",
+	[FightEnum.EffectType.CLEARMONSTERSUB] = " 清空怪物候场",
+	[FightEnum.EffectType.FIGHTTASKUPDATE] = " 战斗任务更新",
+	[FightEnum.EffectType.RETAINSLEEP] = " 攻击噩梦单位不解除噩梦",
+	[FightEnum.EffectType.REMOVEMONSTERSUB] = " 移除怪物候场",
+	[FightEnum.EffectType.ADDCARDRECORDBYROUND] = " 回合记忆卡牌数据更新",
 	[FightEnum.EffectType.TRIGGER] = "触发器"
 }
 

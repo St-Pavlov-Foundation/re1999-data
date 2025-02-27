@@ -520,6 +520,19 @@
     "display": 0
   },
   {
+    "id": 1510504,
+    "unlockType": 0,
+    "unlockParam": "",
+    "activeType": 0,
+    "activeParam": "",
+    "title": "出声干涉",
+    "content": "进入战斗",
+    "talkDesc": "塞梅尔维斯成为了乐章中的不和谐音，齐颂因她有了一瞬停顿。",
+    "triggerType": 6,
+    "triggerParam": "2902323#104#1006",
+    "display": 0
+  },
+  {
     "id": 1410201,
     "unlockType": 0,
     "unlockParam": "",
@@ -549,11 +562,24 @@
     "id": 1410301,
     "unlockType": 1,
     "unlockParam": "8320907",
-    "activeType": 0,
+    "activeType": 12,
     "activeParam": "",
     "title": "握住瓦伦缇娜的手",
     "content": "通向结局-<color=#FFB052>拥抱虚像</color>",
     "talkDesc": "此刻，塞梅尔维斯比任何人都要清楚，自己究竟该握住哪一双手。",
+    "triggerType": 0,
+    "triggerParam": "",
+    "display": 0
+  },
+  {
+    "id": 1410302,
+    "unlockType": 1,
+    "unlockParam": "8180501",
+    "activeType": 12,
+    "activeParam": "",
+    "title": "与两人同行",
+    "content": "通向结局-<color=#FFB052>喜极之处</color>",
+    "talkDesc": "塞梅尔维斯甚至不需要多编一条借口，两边同时下注自然是最稳妥且有效的投资方式。",
     "triggerType": 0,
     "triggerParam": "",
     "display": 0

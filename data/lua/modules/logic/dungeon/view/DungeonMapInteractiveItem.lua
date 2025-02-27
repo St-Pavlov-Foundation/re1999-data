@@ -4,7 +4,12 @@ slot0 = class("DungeonMapInteractiveItem", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._btnclose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_close")
+	slot0._goclosenormal = gohelper.findChild(slot0.viewGO, "#btn_close/image")
+	slot0._goclosesp = gohelper.findChild(slot0.viewGO, "#btn_close/v2a6_closeicon")
 	slot0._btnfightuiuse = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_fight_ui_use")
+	slot0._gonormalbg = gohelper.findChild(slot0.viewGO, "rotate/bg/bgimag")
+	slot0._gomain1_9bg = gohelper.findChild(slot0.viewGO, "rotate/bg/v2a6_descbg")
+	slot0._gospbg = gohelper.findChild(slot0.viewGO, "rotate/bg/v2a6_descbg2")
 	slot0._txtinfo = gohelper.findChildText(slot0.viewGO, "rotate/bg/#txt_info")
 	slot0._gomask = gohelper.findChild(slot0.viewGO, "rotate/bg/#go_mask")
 	slot0._goscroll = gohelper.findChild(slot0.viewGO, "rotate/bg/#go_mask/#go_scroll")
@@ -75,14 +80,23 @@ function slot0.onInitView(slot0)
 	slot0._btnouijagame = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op15/#go_ouija_game/#btn_ouija_game")
 	slot0._goouijagamefinish = gohelper.findChild(slot0.viewGO, "rotate/#go_op15/#go_ouija_game_finish")
 	slot0._btnouijagamefinish = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op15/#go_ouija_game_finish/#btn_ouija_game_finish")
+	slot0._goop18 = gohelper.findChild(slot0.viewGO, "rotate/#go_op18")
+	slot0._txtdodialog = gohelper.findChildText(slot0.viewGO, "rotate/#go_op18/bg/#txt_dodialog")
+	slot0._btndodialog = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op18/bg/#btn_dodialog")
 	slot0._goop101 = gohelper.findChild(slot0.viewGO, "rotate/#go_op101")
 	slot0._goop101puzzle = gohelper.findChild(slot0.viewGO, "rotate/#go_op101/#go_versionactivity_puzzle")
 	slot0._txt101puzzle = gohelper.findChildText(slot0.viewGO, "rotate/#go_op101/#go_versionactivity_puzzle/#txt_puzzle")
 	slot0._btn101puzzle = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op101/#go_versionactivity_puzzle/#btn_puzzle")
 	slot0._goop101puzzlefinish = gohelper.findChild(slot0.viewGO, "rotate/#go_op101/#go_versionactivity_puzzle_finish")
 	slot0._btn101puzzlefinish = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op101/#go_versionactivity_puzzle_finish/#btn_puzzle_finish")
+	slot0._goop102 = gohelper.findChild(slot0.viewGO, "rotate/#go_op102")
+	slot0._txt102ok = gohelper.findChildText(slot0.viewGO, "rotate/#go_op102/go_102ok/#txt_102")
+	slot0._btn102ok = gohelper.findChildButtonWithAudio(slot0.viewGO, "rotate/#go_op102/go_102ok/#btn_102ok")
 	slot0._gorewarditem = gohelper.findChild(slot0.viewGO, "rotate/layout/top/reward/#go_rewarditem")
+	slot0._gonormaltitle = gohelper.findChild(slot0.viewGO, "rotate/layout/top/title")
 	slot0._txttitle = gohelper.findChildText(slot0.viewGO, "rotate/layout/top/title/#txt_title")
+	slot0._gosptitle = gohelper.findChild(slot0.viewGO, "rotate/layout/top/v2a6_title")
+	slot0._txtsptitle = gohelper.findChildText(slot0.viewGO, "rotate/layout/top/v2a6_title/#txt_title")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -113,8 +127,10 @@ function slot0.addEvents(slot0)
 	slot0._btnouijagame:AddClickListener(slot0._btnOuijagameOnClick, slot0)
 	slot0._btnouijagamefinish:AddClickListener(slot0._btnOuijaGameFinishOnClick, slot0)
 	slot0._inputanswer:AddOnEndEdit(slot0._onInputAnswerEndEdit, slot0)
+	slot0._btndodialog:AddClickListener(slot0._btndodialogOnClick, slot0)
 	slot0._btn101puzzle:AddClickListener(slot0._btn101PuzzleGameOnClick, slot0)
 	slot0._btn101puzzlefinish:AddClickListener(slot0._btn101PuzzleGameFinishOnClick, slot0)
+	slot0._btn102ok:AddClickListener(slot0._btn102okOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -141,8 +157,10 @@ function slot0.removeEvents(slot0)
 	slot0._btnouijagame:RemoveClickListener()
 	slot0._btnouijagamefinish:RemoveClickListener()
 	slot0._inputanswer:RemoveOnEndEdit()
+	slot0._btndodialog:RemoveClickListener()
 	slot0._btn101puzzle:RemoveClickListener()
 	slot0._btn101puzzlefinish:RemoveClickListener()
+	slot0._btn102ok:RemoveClickListener()
 end
 
 function slot0._btnfightuiuseOnClick(slot0)
@@ -191,6 +209,20 @@ function slot0._btndoitOnClick(slot0)
 	slot0:_onHide()
 	DungeonRpc.instance:sendMapElementRequest(slot0._config.id)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
+end
+
+function slot0._btndodialogOnClick(slot0)
+	slot0:_onHide()
+	DialogueController.instance:enterDialogue(tonumber(slot0._config.param), slot0._onPlayDialogFinished, slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
+end
+
+function slot0._onPlayDialogFinished(slot0)
+	if not DialogueModel.instance:isFinishDialogue(tonumber(slot0._config.param)) then
+		return
+	end
+
+	DungeonRpc.instance:sendMapElementRequest(slot0._config.id)
 end
 
 function slot0._btnfightOnClick(slot0)
@@ -257,6 +289,16 @@ function slot0._btnpuzzlepipeOnClick(slot0)
 
 	slot0:_asynHide(ViewName.DungeonPuzzlePipeView)
 	DungeonPuzzlePipeController.instance:openGame(slot0._config)
+end
+
+function slot0._btn102okOnClick(slot0)
+	slot0:_onHide()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
+	StoryController.instance:playStories(string.splitToNumber(slot0._config.param, "#"), nil, slot0._onPlayStoryFinished, slot0)
+end
+
+function slot0._onPlayStoryFinished(slot0)
+	DungeonRpc.instance:sendMapElementRequest(slot0._config.id)
 end
 
 function slot0._btnpipefinishOnClick(slot0)
@@ -503,12 +545,27 @@ function slot0._editableAddEvents(slot0)
 		[DungeonEnum.ElementType.PutCubeGame] = slot0._showPutCubeGame,
 		[DungeonEnum.ElementType.CircuitGame] = slot0._showPuzzlePipeGame,
 		[DungeonEnum.ElementType.OuijaGame] = slot0._showOuijaGame,
-		[DungeonEnum.ElementType.PuzzleGame] = slot0._showPuzzleGame
+		[DungeonEnum.ElementType.PuzzleGame] = slot0._showPuzzleGame,
+		[DungeonEnum.ElementType.SpStory] = slot0._showSpStory,
+		[DungeonEnum.ElementType.EnterDialogue] = slot0._showEnterDialog
 	}
 end
 
 function slot0._showElementTitle(slot0)
 	slot0._txttitle.text = slot0._config.title
+	slot0._txtsptitle.text = slot0._config.title
+
+	SLFramework.UGUI.GuiHelper.SetColor(slot0._txtsptitle, slot0._config.type == DungeonEnum.ElementType.SpStory and "#C5B291" or "#a28682")
+end
+
+function slot0._refreshType(slot0)
+	gohelper.setActive(slot0._goclosenormal, lua_chapter_map.configDict[slot0._config.mapId].chapterId ~= DungeonEnum.ChapterId.Main1_9)
+	gohelper.setActive(slot0._goclosesp, slot1 == DungeonEnum.ChapterId.Main1_9)
+	gohelper.setActive(slot0._gonormalbg, slot1 ~= DungeonEnum.ChapterId.Main1_9 and slot0._config.type ~= DungeonEnum.ElementType.SpStory)
+	gohelper.setActive(slot0._gomain1_9bg, slot1 == DungeonEnum.ChapterId.Main1_9 and slot0._config.type ~= DungeonEnum.ElementType.SpStory)
+	gohelper.setActive(slot0._gospbg, slot0._config.type == DungeonEnum.ElementType.SpStory)
+	gohelper.setActive(slot0._gonormaltitle, slot1 ~= DungeonEnum.ChapterId.Main1_9)
+	gohelper.setActive(slot0._gosptitle, slot1 == DungeonEnum.ChapterId.Main1_9)
 end
 
 function slot0._OnClickElement(slot0, slot1)
@@ -526,6 +583,7 @@ function slot0._OnClickElement(slot0, slot1)
 	slot0._elementGo = slot0._mapElement._go
 
 	slot0:_showElementTitle()
+	slot0:_refreshType()
 
 	slot0._elementX, slot0._elementY, slot0._elementZ = transformhelper.getPos(slot0._elementGo.transform)
 
@@ -577,9 +635,7 @@ function slot0._showRewards(slot0)
 		return
 	end
 
-	slot7 = true
-
-	gohelper.setActive(slot1, slot7)
+	gohelper.setActive(slot1, true)
 
 	for slot7, slot8 in ipairs(slot3) do
 		gohelper.setActive(gohelper.cloneInPlace(slot0._gorewarditem), true)
@@ -707,6 +763,20 @@ function slot0._showPuzzleGame(slot0)
 
 	slot0._goop101puzzle:SetActive(not slot1)
 	slot0._goop101puzzlefinish:SetActive(slot1)
+end
+
+function slot0._showEnterDialog(slot0)
+	slot0._txtinfo.text = slot0._config.desc
+	slot0._txtdodialog.text = slot0._config.acceptText
+end
+
+function slot0._showSpStory(slot0)
+	gohelper.setActive(slot0._goop102, true)
+
+	slot0._txtinfo.text = slot0._config.desc
+	slot0._txt102ok.text = slot0._config.acceptText
+
+	SLFramework.UGUI.GuiHelper.SetColor(slot0._txtinfo, slot0._config.type == DungeonEnum.ElementType.SpStory and "#272525" or "#FEF7EE")
 end
 
 function slot0._directlyComplete(slot0)

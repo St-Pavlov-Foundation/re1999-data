@@ -39,6 +39,8 @@ function slot0._btncloseOnClick(slot0)
 end
 
 function slot0._btnstartOnClick(slot0)
+	slot0._clickStart = true
+
 	slot0:openWeekWalkView()
 end
 
@@ -74,40 +76,39 @@ end
 function slot0.onUpdateParam(slot0)
 end
 
-function slot0._getRewardList(slot0)
-	slot1 = {}
+function slot0._getRewardList()
+	slot0 = {}
 
-	for slot5, slot6 in ipairs(lua_task_weekwalk.configList) do
-		if slot6.minTypeId == 4 and WeekWalkTaskListModel.instance:checkPeriods(slot6) then
-			slot11 = "|"
-			slot12 = "#"
+	for slot4, slot5 in ipairs(lua_task_weekwalk.configList) do
+		if slot5.minTypeId == 4 and WeekWalkTaskListModel.instance:checkPeriods(slot5) then
+			slot10 = "#"
 
-			for slot11, slot12 in ipairs(GameUtil.splitString2(slot6.bonus, true, slot11, slot12)) do
-				slot15 = slot12[3]
+			for slot10, slot11 in ipairs(GameUtil.splitString2(slot5.bonus, true, "|", slot10)) do
+				slot14 = slot11[3]
 
-				if not slot1[string.format("%s_%s", slot12[1], slot12[2])] then
-					slot1[slot16] = slot12
+				if not slot0[string.format("%s_%s", slot11[1], slot11[2])] then
+					slot0[slot15] = slot11
 				else
-					slot17[3] = slot17[3] + slot15
-					slot1[slot16] = slot17
+					slot16[3] = slot16[3] + slot14
+					slot0[slot15] = slot16
 				end
 			end
 		end
 	end
 
-	slot2 = {}
+	slot1 = {}
 
-	for slot6, slot7 in pairs(slot1) do
-		table.insert(slot2, slot7)
+	for slot5, slot6 in pairs(slot0) do
+		table.insert(slot1, slot6)
 	end
 
-	table.sort(slot2, DungeonWeekWalkView._sort)
+	table.sort(slot1, DungeonWeekWalkView._sort)
 
-	return slot2
+	return slot1
 end
 
 function slot0._showRewardList(slot0)
-	for slot5, slot6 in ipairs(slot0:_getRewardList()) do
+	for slot5, slot6 in ipairs(uv0._getRewardList()) do
 		slot7 = gohelper.cloneInPlace(slot0._gorewarditem)
 
 		gohelper.setActive(slot7, true)
@@ -150,9 +151,8 @@ function slot0.onOpen(slot0)
 		return
 	end
 
-	slot15 = "|"
-	slot16 = "#"
-	slot11 = GameUtil.splitString2(slot10, true, slot15, slot16)
+	slot15 = "#"
+	slot11 = GameUtil.splitString2(slot10, true, "|", slot15)
 	slot0._ruleList = slot11
 
 	for slot15, slot16 in ipairs(slot11) do
@@ -180,6 +180,12 @@ end
 function slot0.onClose(slot0)
 	slot0._simageruledescicon:UnLoadImage()
 	AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_ui_artificial_settlement_close)
+end
+
+function slot0.onCloseFinish(slot0)
+	if not slot0._clickStart then
+		WeekWalk_2Controller.instance:checkOpenWeekWalk_2DeepLayerNoticeView()
+	end
 end
 
 function slot0.onDestroyView(slot0)

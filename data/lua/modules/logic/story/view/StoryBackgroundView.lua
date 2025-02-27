@@ -14,6 +14,7 @@ function slot0.onInitView(slot0)
 	slot0._upbgspine = gohelper.findChild(slot0.viewGO, "#go_upbg/#go_upbgspine")
 	slot0._gosideways = gohelper.findChild(slot0.viewGO, "#go_sideways")
 	slot0._goblur = gohelper.findChild(slot0.viewGO, "#go_upbg/#simage_bgimg/#go_blur")
+	slot0._gobliteff = gohelper.findChild(slot0.viewGO, "#go_blitbg")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -38,6 +39,7 @@ function slot0._editableInitView(slot0)
 	slot0._bgAnimator = slot0._gofront.gameObject:GetComponent(typeof(UnityEngine.Animator))
 	slot0._bgBlur = slot0._simagebgimg.gameObject:GetComponent(typeof(UrpCustom.UIGaussianEffect))
 	slot0._borderCanvas = slot0._goblack:GetComponent(typeof(UnityEngine.CanvasGroup))
+	slot0._blitEff = slot0._gobliteff:GetComponent(typeof(UrpCustom.UIBlitEffect))
 
 	slot0:_loadRes()
 	slot0:_initData()
@@ -87,7 +89,8 @@ function slot0._loadRes(slot0)
 		[StoryEnum.BgTransType.Dissolve] = slot0._dissolveTrans,
 		[StoryEnum.BgTransType.LeftDarkFade] = slot0._leftDarkTrans,
 		[StoryEnum.BgTransType.MovieChangeStart] = slot0._movieChangeStartTrans,
-		[StoryEnum.BgTransType.MovieChangeSwitch] = slot0._movieChangeSwitchTrans
+		[StoryEnum.BgTransType.MovieChangeSwitch] = slot0._movieChangeSwitchTrans,
+		[StoryEnum.BgTransType.TurnPage3] = slot0._turnPageTrans
 	}
 end
 
@@ -427,6 +430,8 @@ end
 function slot0._loadTopBg(slot0)
 	gohelper.setActive(slot0._simagebgimgtop.gameObject, false)
 
+	slot0._cimagebgimg.enabled = true
+
 	if StoryBgZoneModel.instance:getBgZoneByPath(slot0._bgCo.bgImg) then
 		if slot0._simagebgimgtop.curImageUrl == ResUrl.getStoryRes(slot1.path) then
 			slot0:_onNewBgImgTopLoaded()
@@ -561,6 +566,18 @@ function slot0._checkPlayEffect(slot0)
 		slot0._lastBgSubGo = nil
 	end
 
+	if slot0._bgCo.effType ~= StoryEnum.BgEffectType.Interfere then
+		slot0:_resetInterfere()
+	end
+
+	if slot0._bgCo.effType ~= StoryEnum.BgEffectType.Sketch then
+		slot0:_resetSketch()
+	end
+
+	if slot0._bgCo.effType ~= StoryEnum.BgEffectType.BlindFilter then
+		slot0:_resetBlindFilter()
+	end
+
 	slot0:_actFullGrayUpdate(0.5)
 	slot0:_actBgGrayUpdate(0)
 
@@ -578,6 +595,12 @@ function slot0._checkPlayEffect(slot0)
 		slot0:_actBgGray()
 	elseif slot0._bgCo.effType == StoryEnum.BgEffectType.FullGray then
 		slot0:_actFullGray()
+	elseif slot0._bgCo.effType == StoryEnum.BgEffectType.Interfere then
+		slot0:_showInterfere()
+	elseif slot0._bgCo.effType == StoryEnum.BgEffectType.Sketch then
+		slot0:_showSketch()
+	elseif slot0._bgCo.effType == StoryEnum.BgEffectType.BlindFilter then
+		slot0:_showBlindFilter()
 	end
 
 	slot0._bgBlur.blurWeight = 0
@@ -834,6 +857,45 @@ function slot0._setMovieNowBg(slot0)
 	slot0._simageMovieCurBg:LoadImage(ResUrl.getStoryRes(slot0._bgCo.bgImg))
 end
 
+function slot0._turnPageTrans(slot0)
+	slot0._curTransType = StoryEnum.BgTransType.TurnPage3
+	slot2 = {}
+
+	if not slot0._turnPageGo then
+		slot0._turnPagePrefabPath = ResUrl.getStoryBgEffect(StoryBgEffectTransModel.instance:getStoryBgEffectTransByType(slot0._curTransType).prefab)
+
+		table.insert(slot2, slot0._turnPagePrefabPath)
+	end
+
+	slot0:loadRes(slot2, slot0._onTurnPageBgResLoaded, slot0)
+end
+
+function slot0._onTurnPageBgResLoaded(slot0)
+	if not slot0._turnPageGo and slot0._turnPagePrefabPath then
+		slot0._turnPageGo = gohelper.clone(slot0._loader:getAssetItem(slot0._turnPagePrefabPath):GetResource(), slot0._imagebg.gameObject)
+		slot0._turnPageAnim = slot0._turnPageGo:GetComponent(typeof(UnityEngine.Animation))
+	end
+
+	gohelper.setActive(slot0._turnPageGo, true)
+	StoryTool.enablePostProcess(true)
+
+	slot0._imgAnim = gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, "#go_middle/#go_img2"):GetComponent(typeof(UnityEngine.Animation))
+
+	slot0._imgAnim:Play()
+	slot0._turnPageAnim:Play()
+	TaskDispatcher.runDelay(slot0._onTurnPageFinished, slot0, 0.67)
+end
+
+function slot0._onTurnPageFinished(slot0)
+	if slot0._turnPageGo then
+		gohelper.destroy(slot0._turnPageGo)
+
+		slot0._turnPageGo = nil
+	end
+
+	slot0._imgAnim:GetComponent(gohelper.Type_RectMask2D).padding = Vector4(0, 0, 0, 0)
+end
+
 function slot0._dissolveTrans(slot0)
 	if slot0._bgCo.bgType == StoryEnum.BgType.Picture then
 		slot0:_showBgBottom(true)
@@ -1080,6 +1142,219 @@ function slot0._actFullGrayUpdate(slot0, slot1)
 	PostProcessingMgr.instance:setUIPPValue("Saturation", slot1)
 end
 
+function slot0._resetInterfere(slot0)
+	if slot0._interfereGo then
+		gohelper.destroy(slot0._interfereGo)
+
+		slot0._interfereGo = nil
+	end
+
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UISecond, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UIThird, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UI, true)
+end
+
+function slot0._showInterfere(slot0)
+	if slot0._interfereGo then
+		slot0:_setInterfere()
+	else
+		slot0._interfereEffPrefPath = ResUrl.getStoryBgEffect("glitch_common")
+		slot1 = {}
+
+		table.insert(slot1, slot0._interfereEffPrefPath)
+		slot0:loadRes(slot1, slot0._onInterfereResLoaded, slot0)
+	end
+end
+
+function slot0._onInterfereResLoaded(slot0)
+	if slot0._interfereEffPrefPath then
+		slot0._interfereGo = gohelper.clone(slot0._loader:getAssetItem(slot0._interfereEffPrefPath):GetResource(), ViewMgr.instance:getContainer(ViewName.StoryFrontView).viewGO)
+
+		slot0:_setInterfere()
+	end
+end
+
+function slot0._setInterfere(slot0)
+	StoryTool.enablePostProcess(true)
+	gohelper.setAsFirstSibling(slot0._interfereGo)
+	slot0._interfereGo:GetComponent(typeof(UnityEngine.UI.Image)).material:SetTexture("_MainTex", slot0._blitEff.capturedTexture)
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UITop, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UITop, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UISecond, true)
+end
+
+function slot0._resetSketch(slot0)
+	if slot0._bgSketchId then
+		ZProj.TweenHelper.KillById(slot0._bgSketchId)
+
+		slot0._bgSketchId = nil
+	end
+
+	if slot0._sketchGo then
+		gohelper.destroy(slot0._sketchGo)
+
+		slot0._sketchGo = nil
+	end
+
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UISecond, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UIThird, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UI, true)
+end
+
+function slot0._showSketch(slot0)
+	if slot0._bgSketchId then
+		ZProj.TweenHelper.KillById(slot0._bgSketchId)
+
+		slot0._bgSketchId = nil
+	end
+
+	if slot0._bgCo.effDegree == 0 and not slot0._sketchGo then
+		return
+	end
+
+	if slot0._sketchGo then
+		slot0:_setSketch()
+	else
+		slot0._sketchEffPrefPath = ResUrl.getStoryBgEffect("storybg_sketch")
+		slot1 = {}
+
+		table.insert(slot1, slot0._sketchEffPrefPath)
+		slot0:loadRes(slot1, slot0._onSketchResLoaded, slot0)
+	end
+end
+
+slot1 = {
+	1,
+	0.4,
+	0.2,
+	0
+}
+
+function slot0._onSketchResLoaded(slot0)
+	if slot0._sketchEffPrefPath then
+		slot0._sketchGo = gohelper.clone(slot0._loader:getAssetItem(slot0._sketchEffPrefPath):GetResource(), ViewMgr.instance:getContainer(ViewName.StoryFrontView).viewGO)
+
+		slot0:_setSketch()
+	end
+end
+
+function slot0._setSketch(slot0)
+	StoryTool.enablePostProcess(true)
+	gohelper.setAsFirstSibling(slot0._sketchGo)
+
+	slot0._imgSketch = slot0._sketchGo:GetComponent(typeof(UnityEngine.UI.Image))
+
+	slot0._imgSketch.material:SetTexture("_MainTex", slot0._blitEff.capturedTexture)
+
+	if slot0._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		slot0:_sketchUpdate(uv0[slot0._bgCo.effDegree + 1])
+	else
+		slot0._bgSketchId = ZProj.TweenHelper.DOTweenFloat(slot0._bgCo.effDegree > 0 and 1 or slot0._imgSketch.material:GetFloat("_SourceColLerp"), uv0[slot0._bgCo.effDegree + 1], slot0._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], slot0._sketchUpdate, slot0._sketchFinished, slot0)
+	end
+
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UITop, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UITop, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UISecond, true)
+end
+
+function slot0._sketchUpdate(slot0, slot1)
+	slot0._imgSketch.material:SetFloat("_SourceColLerp", slot1)
+end
+
+function slot0._sketchFinished(slot0)
+	if slot0._bgSketchId then
+		ZProj.TweenHelper.KillById(slot0._bgSketchId)
+
+		slot0._bgSketchId = nil
+	end
+end
+
+function slot0._resetBlindFilter(slot0)
+	if slot0._bgFilterId then
+		ZProj.TweenHelper.KillById(slot0._bgFilterId)
+
+		slot0._bgFilterId = nil
+	end
+
+	if slot0._filterGo then
+		gohelper.destroy(slot0._filterGo)
+
+		slot0._filterGo = nil
+	end
+
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UISecond, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UIThird, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UI, true)
+end
+
+function slot0._showBlindFilter(slot0)
+	if slot0._bgFilterId then
+		ZProj.TweenHelper.KillById(slot0._bgFilterId)
+
+		slot0._bgFilterId = nil
+	end
+
+	if slot0._bgCo.effDegree == 0 and not slot0._filterGo then
+		return
+	end
+
+	if slot0._filterGo then
+		slot0:_setBlindFilter()
+	else
+		slot0._filterEffPrefPath = ResUrl.getStoryBgEffect("storybg_blinder")
+		slot1 = {}
+
+		table.insert(slot1, slot0._filterEffPrefPath)
+		slot0:loadRes(slot1, slot0._onFilterResLoaded, slot0)
+	end
+end
+
+function slot0._onFilterResLoaded(slot0)
+	if slot0._filterEffPrefPath then
+		slot0._filterGo = gohelper.clone(slot0._loader:getAssetItem(slot0._filterEffPrefPath):GetResource(), ViewMgr.instance:getContainer(ViewName.StoryFrontView).viewGO)
+
+		slot0:_setBlindFilter()
+	end
+end
+
+slot2 = {
+	1,
+	0.4,
+	0.2,
+	0
+}
+
+function slot0._setBlindFilter(slot0)
+	StoryTool.enablePostProcess(true)
+	gohelper.setAsFirstSibling(slot0._filterGo)
+
+	slot0._imgFilter = slot0._filterGo:GetComponent(typeof(UnityEngine.UI.Image))
+
+	slot0._imgFilter.material:SetTexture("_MainTex", slot0._blitEff.capturedTexture)
+
+	if slot0._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		slot0:_filterUpdate(uv0[slot0._bgCo.effDegree + 1])
+	else
+		slot0._bgFilterId = ZProj.TweenHelper.DOTweenFloat(slot0._bgCo.effDegree > 0 and 1 or slot0._imgFilter.material:GetFloat("_SourceColLerp"), uv0[slot0._bgCo.effDegree + 1], slot0._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], slot0._filterUpdate, slot0._filterFinished, slot0)
+	end
+
+	gohelper.setLayer(ViewMgr.instance:getContainer(ViewName.StoryView).viewGO, UnityLayer.UITop, true)
+	gohelper.setLayer(gohelper.findChild(ViewMgr.instance:getContainer(ViewName.StoryLeadRoleSpineView).viewGO, "#go_spineroot"), UnityLayer.UITop, true)
+	gohelper.setLayer(slot0._gobliteff, UnityLayer.UISecond, true)
+end
+
+function slot0._filterUpdate(slot0, slot1)
+	slot0._imgFilter.material:SetFloat("_SourceColLerp", slot1)
+end
+
+function slot0._filterFinished(slot0)
+	if slot0._bgFilterId then
+		ZProj.TweenHelper.KillById(slot0._bgFilterId)
+
+		slot0._bgFilterId = nil
+	end
+end
+
 function slot0.loadRes(slot0, slot1, slot2, slot3)
 	if slot0._loader then
 		slot0._loader:dispose()
@@ -1140,6 +1415,13 @@ function slot0._clearBg(slot0)
 		slot0._bgGrayId = nil
 	end
 
+	if slot0._bgSketchId then
+		ZProj.TweenHelper.KillById(slot0._bgSketchId)
+
+		slot0._bgSketchId = nil
+	end
+
+	TaskDispatcher.cancelTask(slot0._onTurnPageFinished, slot0)
 	TaskDispatcher.cancelTask(slot0._changeRightDark, slot0)
 	TaskDispatcher.cancelTask(slot0._enterChange, slot0)
 	TaskDispatcher.cancelTask(slot0._startShake, slot0)

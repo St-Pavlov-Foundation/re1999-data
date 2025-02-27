@@ -133,6 +133,12 @@ function slot0._initInfo(slot0)
 			"sendGetWeekwalkInfoRequest",
 			false
 		})
+		table.insert(slot0.GetInfoFuncList, {
+			Weekwalk_2Rpc.sendWeekwalkVer2GetInfoRequest,
+			Weekwalk_2Rpc.instance,
+			"sendWeekwalkVer2GetInfoRequest",
+			false
+		})
 	end
 
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Explore) then
@@ -162,6 +168,16 @@ function slot0._initInfo(slot0)
 		})
 	end
 
+	if RougeOutsideController.instance:isOpen() then
+		table.insert(slot0.GetInfoFuncList, {
+			RougeOutsideRpc.sendGetRougeOutSideInfoRequest,
+			RougeOutsideRpc.instance,
+			"sendGetRougeOutSideInfoRequest",
+			false,
+			RougeOutsideModel.instance:season()
+		})
+	end
+
 	slot0._callbackIdDict = {}
 end
 
@@ -171,10 +187,10 @@ function slot0.onStart(slot0, slot1)
 	slot0._leftInfoCount = #slot0.GetInfoFuncList
 	slot0._waitCount = 0
 	slot0._waitCount = slot0._waitCount + 1
-	slot5 = DungeonEvent.OnUpdateDungeonInfo
-	slot6 = slot0._onDungeonInfoUpdateAll
+	slot5 = slot0._onDungeonInfoUpdateAll
+	slot6 = slot0
 
-	DungeonController.instance:registerCallback(slot5, slot6, slot0)
+	DungeonController.instance:registerCallback(DungeonEvent.OnUpdateDungeonInfo, slot5, slot6)
 
 	for slot5, slot6 in ipairs(slot0.GetInfoFuncList) do
 		slot7 = slot6[1]
@@ -184,7 +200,7 @@ function slot0.onStart(slot0, slot1)
 
 		function slot12(slot0, slot1, slot2)
 			if not uv0 and slot1 ~= 0 then
-				logWarn((uv1.__cname or "nil") .. " " .. uv2 .. " 服务端报错了 resultCode = " .. slot1)
+				logError((uv1.__cname or "nil") .. " " .. uv2 .. " 服务端报错了 resultCode = " .. slot1)
 			end
 
 			uv3:_onGetInfo(uv4)
@@ -195,7 +211,7 @@ function slot0.onStart(slot0, slot1)
 		if (slot6[5] == nil or slot7(slot8, slot11, slot12)) and slot7(slot8, slot12) then
 			slot0._callbackIdDict[slot5] = slot13
 		else
-			logWarn((slot8.__cname or "nil") .. " " .. slot9 .. " 不支持callback")
+			logError((slot8.__cname or "nil") .. " " .. slot9 .. " 不支持callback")
 			slot0:_onGetInfo(slot5)
 		end
 	end

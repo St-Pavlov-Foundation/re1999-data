@@ -88,9 +88,7 @@ function slot0._refreshView(slot0)
 			return
 		end
 
-		slot6 = 1
-
-		HelpModel.instance:setTargetPageIndex(slot6)
+		HelpModel.instance:setTargetPageIndex(1)
 
 		for slot6 = 1, #slot2 do
 			table.insert(slot0._pagesCo, HelpConfig.instance:getHelpPageCo(tonumber(slot2[slot6])))

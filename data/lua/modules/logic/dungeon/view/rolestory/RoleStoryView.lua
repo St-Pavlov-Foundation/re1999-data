@@ -40,6 +40,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0._onCurrencyChange, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenFullViewFinish, slot0._onFullViewOpenOrClose, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, slot0._onFullViewOpenOrClose, slot0)
+	slot0:addEventCb(RoleStoryController.instance, RoleStoryEvent.UpdateInfo, slot0._onUpdateInfo, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -49,6 +50,11 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0._onCurrencyChange, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenFullViewFinish, slot0._onFullViewOpenOrClose, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, slot0._onFullViewOpenOrClose, slot0)
+	slot0:removeEventCb(RoleStoryController.instance, RoleStoryEvent.UpdateInfo, slot0._onUpdateInfo, slot0)
+end
+
+function slot0._onUpdateInfo(slot0)
+	slot0:onShow()
 end
 
 function slot0._onFullViewOpenOrClose(slot0)
@@ -141,9 +147,9 @@ function slot0.showReward(slot0, slot1, slot2, slot3, slot4)
 	transformhelper.setPos(slot0.goNode.transform, slot2, slot3, slot4)
 	gohelper.setActive(slot0.goRewardPanel, true)
 
-	slot9 = #slot1.rewards
+	slot9 = #slot0.rewardItems
 
-	for slot9 = 1, math.max(slot9, #slot0.rewardItems) do
+	for slot9 = 1, math.max(#slot1.rewards, slot9) do
 		slot11 = slot5[slot9]
 
 		if not slot0.rewardItems[slot9] then

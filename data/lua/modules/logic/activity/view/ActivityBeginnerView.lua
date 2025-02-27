@@ -95,8 +95,12 @@ slot1 = {
 	[ActivityEnum.Activity.V2a5_DecaLogPresent] = ViewName.V2a5DecalogPresentFullView,
 	[ActivityEnum.Activity.V2a5_DecorateStore] = ViewName.V2a5_DecorateStoreFullView,
 	[ActivityEnum.Activity.V2a5_GoldenMilletPresent] = ViewName.V2a5_GoldenMilletPresentFullView,
-	[ActivityEnum.Activity.V2a5_WarmUp] = ViewName.V2a5_WarmUp
+	[ActivityEnum.Activity.V2a5_WarmUp] = ViewName.V2a5_WarmUp,
+	[slot2:getActivityId()] = ViewName.ShortenAct_FullView,
+	[ActivityEnum.Activity.V2a6_WeekwalkHeart] = ViewName.V2a6_WeekwalkHeart_FullView,
+	[ActivityEnum.Activity.V2a6_WarmUp] = ViewName.V2a6_WarmUp
 }
+slot2 = ShortenActConfig.instance
 slot2 = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
 	[ActivityEnum.ActivityTypeID.DoubleDrop] = ViewName.V1a7_DoubleDropView
@@ -113,6 +117,7 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonShowExitAnim, slot0.startExitLoading, slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonCloseBlackScreen, slot0.onReceiveCloseBlackScreen, slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonMainCloseImmediately, slot0.closeThis, slot0)
+	slot0:_initRoleSignView()
 
 	slot0._needSetSortInfos = true
 
@@ -126,9 +131,7 @@ function slot0._refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	slot5 = slot1
-
-	ActivityModel.instance:removeFinishedCategory(slot5)
+	ActivityModel.instance:removeFinishedCategory(slot1)
 
 	slot0.data = {}
 
@@ -267,6 +270,18 @@ function slot0.startExitLoading(slot0)
 end
 
 function slot0.onDestroyView(slot0)
+end
+
+slot3 = false
+
+function slot0._initRoleSignView(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+	uv1[GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part1", ActivityEnum.Activity.V2a6_Role_SignView_Part1)] = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part1", ViewName.V2a5_Role_FullSignView_Part1)
+	uv1[GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part2", ActivityEnum.Activity.V2a6_Role_SignView_Part2)] = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part2", ViewName.V2a5_Role_FullSignView_Part2)
 end
 
 return slot0

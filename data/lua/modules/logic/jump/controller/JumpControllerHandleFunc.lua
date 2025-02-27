@@ -142,10 +142,7 @@ function slot0.jumpToDungeonViewWithEpisode(slot0, slot1)
 	table.insert(slot0.closeViewNames, ViewName.StoryView)
 	table.insert(slot0.closeViewNames, ViewName.DungeonPuzzleChangeColorView)
 	table.insert(slot0.closeViewNames, ViewName.InvestigateOpinionView)
-
-	slot6 = ViewName.InvestigateView
-
-	table.insert(slot0.closeViewNames, slot6)
+	table.insert(slot0.closeViewNames, ViewName.InvestigateView)
 
 	for slot6 in pairs(ActivityHelper.getJumpNeedCloseViewDict()) do
 		table.insert(slot0.closeViewNames, slot6)
@@ -551,7 +548,7 @@ function slot0.jumpToActivityView(slot0, slot1)
 		table.insert(slot0.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		ActivityModel.instance:setTargetActivityCategoryId(slot3)
 		ActivityController.instance:openActivityBeginnerView()
-	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp or slot3 == ActivityEnum.Activity.V2a5_WarmUp then
+	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp then
 		if ActivityHelper.getActivityStatus(slot3, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
 		end
@@ -1377,6 +1374,26 @@ function slot0.jumpToInvestigateOpinionTabView(slot0, slot1)
 	return JumpEnum.JumpResult.Success
 end
 
+function slot0.jumpToDiceHeroLevelView(slot0, slot1)
+	if not DiceHeroModel.instance.unlockChapterIds[string.splitToNumber(slot1, "#")[2]] then
+		GameFacade.showToast(ToastEnum.DiceHeroLockChapter)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	if not DiceHeroConfig.instance:getLevelCo(slot3, 1) then
+		return JumpEnum.JumpResult.Fail
+	end
+
+	table.insert(slot0.waitOpenViewNames, ViewName.DiceHeroLevelView)
+	ViewMgr.instance:openView(ViewName.DiceHeroLevelView, {
+		chapterId = slot3,
+		isInfinite = slot4.mode == 2
+	})
+
+	return JumpEnum.JumpResult.Success
+end
+
 function slot0.jumpToTowerView(slot0, slot1)
 	slot2 = string.splitToNumber(slot1, "#")
 
@@ -1433,7 +1450,8 @@ slot0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.RougeRewardView] = slot0.jumpToRougeRewardView,
 	[JumpEnum.JumpView.PermanentMainView] = slot0.jumpToPermanentMainView,
 	[JumpEnum.JumpView.InvestigateView] = slot0.jumpToInvestigateView,
-	[JumpEnum.JumpView.InvestigateOpinionTabView] = slot0.jumpToInvestigateOpinionTabView
+	[JumpEnum.JumpView.InvestigateOpinionTabView] = slot0.jumpToInvestigateOpinionTabView,
+	[JumpEnum.JumpView.DiceHero] = slot0.jumpToDiceHeroLevelView
 }
 slot0.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = slot0.jumpToAct117,

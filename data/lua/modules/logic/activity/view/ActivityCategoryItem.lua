@@ -49,35 +49,46 @@ end
 
 function slot0._refreshItem(slot0)
 	slot1, slot2 = nil
+	slot4 = ActivityConfig.instance:getActivityCo(slot0._mo.id)
+	slot5 = slot4.redDotId
+	slot6 = slot4.typeId
+	slot0._txtnamecn.text = slot4.name
+	slot0._txtnameen.text = slot4.nameEn
+	slot0._txtunselectnamecn.text = slot4.name
+	slot0._txtunselectnameen.text = slot4.nameEn
 
 	if slot0._mo.type == ActivityEnum.ActivityType.Normal then
-		slot2 = ActivityConfig.instance:getActivityCenterCo(ActivityConfig.instance:getActivityCo(ActivityEnum.Activity.NorSign).showCenter).reddotid
+		slot1 = ActivityConfig.instance:getActivityCo(ActivityEnum.Activity.NorSign).showCenter
+		slot2 = ActivityConfig.instance:getActivityCenterCo(slot1).reddotid
+		slot0._selected = slot3 == ActivityModel.instance:getTargetActivityCategoryId(slot1)
 
-		if slot0._mo.id == ActivityEnum.Activity.NoviceInsight then
+		if slot3 == ActivityEnum.Activity.NoviceInsight then
 			RedDotController.instance:addRedDot(slot0._goreddot, RedDotEnum.DotNode.ActivityNoviceInsight)
-		else
-			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot0._mo.id)
-		end
 
-		slot0._selected = slot0._mo.id == ActivityModel.instance:getTargetActivityCategoryId(slot1)
+			if slot0._selected then
+				RedDotRpc.instance:sendShowRedDotRequest(RedDotEnum.DotNode.ActivityNoviceInsight, false)
+			end
+		else
+			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot3)
+		end
 	elseif slot0._mo.type == ActivityEnum.ActivityType.Beginner then
-		slot0._selected = slot0._mo.id == ActivityModel.instance:getTargetActivityCategoryId(ActivityEnum.ActivityType.Beginner)
+		slot0._selected = slot3 == ActivityModel.instance:getTargetActivityCategoryId(ActivityEnum.ActivityType.Beginner)
 		slot2 = ActivityConfig.instance:getActivityCenterCo(ActivityEnum.ActivityType.Beginner).reddotid
 
-		if slot0._mo.id == ActivityEnum.Activity.DreamShow then
-			RedDotController.instance:addRedDot(slot0._goreddot, ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId, nil, slot0.checkActivityShowFirstEnter, slot0)
-		elseif slot0._mo.id == DoubleDropModel.instance:getActId() then
-			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot0._mo.id, slot0.checkActivityShowFirstEnter, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.Activity1_7WarmUp then
+		if slot3 == ActivityEnum.Activity.DreamShow then
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkActivityShowFirstEnter, slot0)
+		elseif slot3 == DoubleDropModel.instance:getActId() then
+			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot3, slot0.checkActivityShowFirstEnter, slot0)
+		elseif slot3 == ActivityEnum.Activity.Activity1_7WarmUp then
 			if slot0._selected then
-				Activity125Controller.instance:saveEnterActDateInfo(slot0._mo.id)
+				Activity125Controller.instance:saveEnterActDateInfo(slot3)
 				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
 					[tonumber(RedDotConfig.instance:getRedDotCO(slot2).parent)] = true
 				})
 			end
 
-			RedDotController.instance:addRedDot(slot0._goreddot, ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId, nil, slot0.checkIsV1A7WarmupRed, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.Activity1_5WarmUp then
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkIsV1A7WarmupRed, slot0)
+		elseif slot3 == ActivityEnum.Activity.Activity1_5WarmUp then
 			if slot0._selected then
 				Activity146Controller.instance:saveEnterActDateInfo()
 				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
@@ -85,23 +96,8 @@ function slot0._refreshItem(slot0)
 				})
 			end
 
-			RedDotController.instance:addRedDot(slot0._goreddot, ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId, nil, slot0.checkIsAct146NeedReddot, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.Activity1_8WarmUp then
-			if slot0._selected then
-				Activity125Controller.instance:saveEnterActDateInfo(slot0._mo.id)
-				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
-					[tonumber(RedDotConfig.instance:getRedDotCO(slot2).parent)] = true
-				})
-			end
-
-			RedDotController.instance:addRedDot(slot0._goreddot, ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId, nil, slot0.checkIsV1A8WarmupRed, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.V2a2_TurnBack_H5 then
-			RedDotController.instance:addRedDot(slot0._goreddot, ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId, nil, slot0.checkActivityShowFirstEnter, slot0)
-		elseif slot0._mo.id == VersionActivity2_2Enum.ActivityId.LimitDecorate then
-			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot0._mo.id, slot0.checkActivityShowFirstEnter, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.Activity1_9WarmUp or slot0._mo.id == ActivityEnum.Activity.V2a0_WarmUp or slot0._mo.id == ActivityEnum.Activity.V2a1_WarmUp or slot0._mo.id == ActivityEnum.Activity.V2a2_WarmUp or slot0._mo.id == ActivityEnum.Activity.V2a3_WarmUp or slot0._mo.id == ActivityEnum.Activity.RoomSign or slot0._mo.id == ActivityEnum.Activity.V2a5_WarmUp then
-			slot4 = ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId
-
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkIsAct146NeedReddot, slot0)
+		elseif slot3 == ActivityEnum.Activity.Activity1_8WarmUp then
 			if slot0._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(slot3)
 				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
@@ -109,12 +105,12 @@ function slot0._refreshItem(slot0)
 				})
 			end
 
-			RedDotController.instance:addRedDot(slot0._goreddot, slot4, nil, slot0.checkIsV1A9WarmupRed, slot0)
-		elseif slot0._mo.id == ActivityEnum.Activity.V2a4_WarmUp then
-			if ActivityConfig.instance:getActivityCo(slot0._mo.id).redDotId == 0 then
-				slot4 = RedDotEnum.DotNode.Activity125Task
-			end
-
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkIsV1A8WarmupRed, slot0)
+		elseif slot3 == ActivityEnum.Activity.V2a2_TurnBack_H5 then
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkActivityShowFirstEnter, slot0)
+		elseif slot3 == VersionActivity2_2Enum.ActivityId.LimitDecorate then
+			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot3, slot0.checkActivityShowFirstEnter, slot0)
+		elseif slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.RoomSign or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp then
 			if slot0._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(slot3)
 				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
@@ -122,20 +118,34 @@ function slot0._refreshItem(slot0)
 				})
 			end
 
-			RedDotController.instance:addRedDot(slot0._goreddot, slot4, nil, slot0._checkIsV2a4WarmupRed, slot0)
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkIsV1A9WarmupRed, slot0)
+		elseif slot3 == ActivityEnum.Activity.V2a4_WarmUp then
+			if slot0._selected then
+				Activity125Controller.instance:saveEnterActDateInfo(slot3)
+				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
+					[tonumber(RedDotConfig.instance:getRedDotCO(slot2).parent)] = true
+				})
+			end
+
+			RedDotController.instance:addRedDot(slot0._goreddot, slot5 ~= 0 and slot5 or RedDotEnum.DotNode.Activity125Task, nil, slot0._checkIsV2a4WarmupRed, slot0)
+		elseif slot6 == ActivityEnum.ActivityTypeID.Act189 then
+			RedDotController.instance:addMultiRedDot(slot0._goreddot, {
+				{
+					id = slot5,
+					uid = slot3
+				},
+				{
+					id = RedDotEnum.DotNode.Activity189Task,
+					uid = slot3
+				},
+				{
+					id = RedDotEnum.DotNode.Activity189OnceReward,
+					uid = slot3
+				}
+			})
 		else
 			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot0._mo.id)
 		end
-	end
-
-	slot3 = ActivityConfig.instance:getActivityCo(slot0._mo.id)
-	slot0._txtnamecn.text = slot3.name
-	slot0._txtnameen.text = slot3.nameEn
-	slot0._txtunselectnamecn.text = slot3.name
-	slot0._txtunselectnameen.text = slot3.nameEn
-
-	if slot0._selected and slot0._mo.id == ActivityEnum.Activity.NoviceInsight then
-		RedDotRpc.instance:sendShowRedDotRequest(RedDotEnum.DotNode.ActivityNoviceInsight, false)
 	end
 
 	gohelper.setActive(slot0._goselect, slot0._selected)

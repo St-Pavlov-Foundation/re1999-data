@@ -12,7 +12,8 @@ slot2 = {
 	"activityId"
 }
 slot3 = {
-	descList = 1
+	descList = 1,
+	dialogs = 2
 }
 
 return {

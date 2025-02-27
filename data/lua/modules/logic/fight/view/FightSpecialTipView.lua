@@ -3,6 +3,7 @@ module("modules.logic.fight.view.FightSpecialTipView", package.seeall)
 slot0 = class("FightSpecialTipView", BaseView)
 
 function slot0.onInitView(slot0)
+	slot0.goSimageBg = gohelper.findChild(slot0.viewGO, "content/#simage_bg")
 	slot0._simagebg = gohelper.findChildSingleImage(slot0.viewGO, "content/#simage_bg")
 	slot0._goBossRushLayer4 = gohelper.findChild(slot0.viewGO, "content/#simage_bg/#go_BossRushLayer4")
 	slot0._gospecialTip = gohelper.findChild(slot0.viewGO, "content/#go_specialTip")
@@ -21,6 +22,12 @@ function slot0.onInitView(slot0)
 	slot0.goLayoutContent = gohelper.findChild(slot0.viewGO, "content/layout/#go_additionTip/Viewport/#go_layoutContent")
 	slot0.layoutContentTrans = slot0.goLayoutContent:GetComponent(gohelper.Type_RectTransform)
 	slot0.layoutContentSizeFilter = slot0.goLayoutContent:GetComponent(typeof(UnityEngine.UI.ContentSizeFitter))
+	slot0._go_weekwalkheart = gohelper.findChild(slot0.viewGO, "content/#go_weekwalkheart")
+
+	gohelper.setActive(slot0._go_weekwalkheart, false)
+
+	slot0._weekwalkTagText = gohelper.findChildText(slot0.viewGO, "content/#go_weekwalkheart/#go_ruleitem/scroll_tag/Viewport/Content/tag")
+	slot0._weekwalkTagIcon = gohelper.findChildImage(slot0.viewGO, "content/#go_weekwalkheart/#go_ruleitem/scroll_tag/Viewport/Content/tag/icon")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -134,6 +141,36 @@ function slot0.onOpen(slot0)
 			for slot12, slot13 in ipairs(slot8.transferRules) do
 				tabletool.addValues(slot6 or {}, GameUtil.splitString2(slot13, true, "|", "#"))
 			end
+		end
+	end
+
+	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot8).ruleMap then
+		slot6 = slot6 or {}
+
+		if slot10.chooseSkill then
+			gohelper.setActive(slot0.goSimageBg, #slot10.chooseSkill > 0)
+
+			for slot14, slot15 in ipairs(slot10.chooseSkill) do
+				tabletool.addValues(slot6, GameUtil.splitString2(slot15, true, "|", "#"))
+			end
+		else
+			gohelper.setActive(slot0.goSimageBg, false)
+		end
+
+		if slot10.defaultRule then
+			gohelper.setActive(slot0._go_weekwalkheart, true)
+
+			slot11 = GameUtil.splitString2(slot10.defaultRule[1], true, "|", "#")[1]
+			slot13 = lua_rule.configDict[slot11[2]]
+			slot14 = slot11[1]
+			slot0._weekwalkTagText.text = string.format("<color=%s>[%s]</color>%s", ({
+				"#5283ca",
+				"#de4d4d",
+				"#dd9446",
+				"#ff0000"
+			})[slot14], luaLang("dungeon_add_rule_target_" .. slot14), SkillHelper.buildDesc(slot13.desc, nil, "#5283ca"))
+
+			UISpriteSetMgr.instance:setDungeonLevelRuleSprite(slot0._weekwalkTagIcon, slot13.icon, true)
 		end
 	end
 

@@ -17,6 +17,12 @@ end
 
 function slot0._registRefreshPerformance(slot0)
 	slot0._flow:registWork(FightWorkRefreshPerformanceEntityData)
+	slot0._flow:registWork(FightWorkFunction, slot0.refreshPerformanceData, slot0)
+end
+
+function slot0.refreshPerformanceData(slot0)
+	FightDataHelper.coverData(FightLocalDataMgr.instance.fieldMgr.param, FightDataMgr.instance.fieldMgr.param)
+	FightDataHelper.coverData(FightLocalDataMgr.instance.fieldMgr.fightTaskBox, FightDataMgr.instance.fieldMgr.fightTaskBox)
 end
 
 function slot0._onFlowFinish(slot0)

@@ -51,10 +51,12 @@ end
 function slot0._loadRes(slot0)
 	slot0._magicFirePath = ResUrl.getEffect("story/story_magicfont_particle")
 	slot0._reshapeMagicFirePath = ResUrl.getEffect("story/story_magicfont_particle_dark")
+	slot0._glitchPath = ResUrl.getEffect("story/v2a6_fontglitch")
 	slot0._effLoader = MultiAbLoader.New()
 
 	slot0._effLoader:addPath(slot0._magicFirePath)
 	slot0._effLoader:addPath(slot0._reshapeMagicFirePath)
+	slot0._effLoader:addPath(slot0._glitchPath)
 	slot0._effLoader:startLoad(slot0._magicFireEffectLoaded, slot0)
 end
 
@@ -69,6 +71,9 @@ function slot0._magicFireEffectLoaded(slot0, slot1)
 	gohelper.setActive(slot0._reshapeMagicFireGo, false)
 
 	slot0._reshapeMagicFireAnim = slot0._reshapeMagicFireGo:GetComponent(typeof(UnityEngine.Animator))
+	slot0._glitchGo = gohelper.clone(slot1:getAssetItem(slot0._glitchPath):GetResource(slot0._glitchPath), slot0._norDiaGO)
+
+	gohelper.setActive(slot0._glitchGo, false)
 end
 
 function slot0._addEvent(slot0)
@@ -355,10 +360,107 @@ function slot0.playNormalText(slot0, slot1, slot2, slot3)
 		transformhelper.setLocalPosXY(slot0._norDiaGO.transform, 550, 0)
 	end
 
+	slot0:_checkPlayGlitch(slot0._subemtext)
+
+	slot0._subemtext = string.gsub(slot0._subemtext, "<glitch>", "<i><b>")
+	slot0._subemtext = string.gsub(slot0._subemtext, "</glitch>", "</i></b>")
+
 	if slot0._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Hard then
 		slot0:_playHardIn()
 	else
 		slot0:_playGradualIn()
+	end
+end
+
+function slot0._checkPlayGlitch(slot0, slot1)
+	slot2 = string.match(slot1, "<glitch>")
+
+	gohelper.setActive(slot0._glitchGo, slot2)
+
+	if not slot2 then
+		return
+	end
+
+	StoryTool.enablePostProcess(true)
+
+	slot5 = {}
+
+	table.insert(slot5, gohelper.findChild(slot0._glitchGo, "part_up"):GetComponent(typeof(UnityEngine.ParticleSystem)))
+
+	slot7 = gohelper.findChild(slot0._glitchGo, "part_down")
+
+	table.insert(slot5, slot7:GetComponent(typeof(UnityEngine.ParticleSystem)))
+	gohelper.setActive(slot7, slot0._txtcontentcn:GetTextInfo(string.gsub(string.gsub(slot1, "<glitch>", ""), "</glitch>", "")).lineCount > 1)
+
+	slot9 = CameraMgr.instance:getUICamera()
+	slot10 = slot4.characterInfo
+	slot11 = recthelper.getWidth(slot0._txtcontentcn.transform) + 121.8684
+	slot12 = {}
+
+	if #string.split(slot1, "\n") > 1 then
+		for slot17 = 1, #slot13 do
+			slot18 = slot13[slot17]
+			slot19 = string.find(slot18, "<glitch>")
+
+			if not string.find(slot18, "<glitch>") then
+				table.insert(slot12, {
+					hasGlitch = false
+				})
+			else
+				slot23 = string.gsub(slot18, "<glitch>", "")
+				slot21.hasGlitch = true
+				slot21.firstCharacterIndex = slot4.lineInfo[slot17 - 1].firstCharacterIndex
+				slot21.startIndex = utf8.len(string.sub(slot18, 1, slot19 - 1))
+				slot21.endIndex = utf8.len(string.sub(slot23, 1, string.find(slot23, "</glitch>") - 1))
+				slot21.lineTxt = string.gsub(slot23, "</glitch>", "")
+				slot21.glitchTxt = slot18
+
+				table.insert(slot12, slot21)
+			end
+		end
+	else
+		for slot17 = 1, slot4.lineCount do
+			slot18 = slot4.lineInfo[slot17 - 1]
+			slot19 = LuaUtil.subString(slot3, slot18.firstCharacterIndex + 1, slot18.firstCharacterIndex + slot18.characterCount + 1)
+			slot20 = slot17 > 1 and slot12[slot17 - 1].endIndex + 1 or 0
+			slot26 = string.find(slot17 > 1 and string.gsub(slot1, slot12[slot17 - 1].glitchTxt, "") or string.sub(slot1, slot20, string.find(slot17 > 1 and string.gsub(slot1, slot12[slot17 - 1].glitchTxt, "") or string.sub(slot1, slot20, string.len(slot19) + string.len("<glitch>")), "<glitch>") and string.len(slot19) + string.len("<glitch>") + string.len("</glitch>") or string.len(slot19)), "<glitch>")
+
+			if not slot23 then
+				table.insert(slot12, {
+					hasGlitch = false
+				})
+			else
+				slot29 = string.gsub(slot25, "<glitch>", "")
+				slot27.hasGlitch = true
+				slot27.firstCharacterIndex = slot18.firstCharacterIndex
+				slot27.startIndex = utf8.len(string.sub(slot25, 1, slot26 - 1))
+				slot27.endIndex = utf8.len(string.sub(slot29, 1, string.find(slot29, "</glitch>") - 1))
+				slot27.lineTxt = slot19
+				slot27.glitchTxt = slot25
+
+				table.insert(slot12, slot27)
+			end
+		end
+	end
+
+	for slot17 = 1, #slot12 do
+		slot18, slot19, slot20 = transformhelper.getLocalPos(slot5[slot17].transform)
+
+		if not slot12[slot17].hasGlitch then
+			transformhelper.setLocalPos(slot5[slot17].transform, -10000, slot19, slot20)
+		else
+			slot25 = slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot10[slot12[slot17].startIndex].bottomLeft))
+			slot28 = UnityEngine.Screen.height
+			slot29 = math.min(1, 0.9 * UnityEngine.Screen.width / (1.6 * slot28))
+			slot33 = 1144.8 * (slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot10[slot12[slot17].endIndex - 1].bottomRight)).x - slot25.x) / (slot28 * slot29) / slot11
+			slot35, slot36, slot37 = transformhelper.getLocalPos(slot5[slot17].transform)
+
+			transformhelper.setLocalPos(slot5[slot17].transform, 647 * (2 * 1080 * (slot25.x - slot9:WorldToScreenPoint(slot0._txtcontentcn.transform:TransformPoint(slot10[0].bottomLeft)).x) / (slot28 * slot29) / slot11 + slot33), slot36, slot37)
+
+			slot5[slot17].shape.scale = Vector3(12 * slot33 * slot29, 0.4 * slot29, 0)
+
+			ZProj.ParticleSystemHelper.SetMaxParticles(slot5[slot17], math.floor(30 * slot33))
+		end
 	end
 end
 
@@ -433,10 +535,7 @@ end
 
 function slot0._delayShow(slot0)
 	slot0._conMark:SetMarks(slot0._markIndexs)
-
-	slot5 = slot0._markContent
-
-	slot0._conMark:SetMarksTop(slot0._markTop, slot5)
+	slot0._conMark:SetMarksTop(slot0._markTop, slot0._markContent)
 
 	slot0._textInfo = slot0._txtcontentcn:GetTextInfo(slot0._subemtext)
 	slot0._lineInfoList = {}
@@ -572,14 +671,12 @@ function slot0._onTextFinished(slot0)
 
 	transformhelper.setLocalPos(slot0._txtcontentmagic.transform, slot4, slot5, 0)
 
-	slot11 = slot5
+	slot10 = slot5
+	slot11 = 0
 
-	transformhelper.setLocalPos(slot0._txtcontentreshapemagic.transform, slot4, slot11, 0)
+	transformhelper.setLocalPos(slot0._txtcontentreshapemagic.transform, slot4, slot10, slot11)
 	slot0._conMat:DisableKeyword("_GRADUAL_ON")
-
-	slot10 = "_GRADUAL_ON"
-
-	slot0._markTopMat:DisableKeyword(slot10)
+	slot0._markTopMat:DisableKeyword("_GRADUAL_ON")
 
 	for slot10, slot11 in pairs(slot0._subMeshs) do
 		if slot11.materialForRendering then
@@ -655,8 +752,7 @@ function slot0._conUpdate(slot0, slot1)
 		if slot10[2] <= slot1 and slot1 <= slot13 then
 			slot14 = slot0._textInfo.characterInfo
 			slot16 = slot14[slot11.lastVisibleCharacterIndex]
-			slot23 = slot14[slot11.firstVisibleCharacterIndex].bottomLeft
-			slot17 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot23))
+			slot17 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot14[slot11.firstVisibleCharacterIndex].bottomLeft))
 			slot18 = slot17
 
 			for slot23 = slot11.firstVisibleCharacterIndex, slot11.lastVisibleCharacterIndex do
@@ -666,8 +762,7 @@ function slot0._conUpdate(slot0, slot1)
 			end
 
 			slot18.y = slot19
-			slot26 = slot15.topLeft
-			slot20 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot26))
+			slot20 = slot4:WorldToScreenPoint(slot3:TransformPoint(slot15.topLeft))
 			slot21 = slot20
 
 			for slot26 = slot11.firstVisibleCharacterIndex, slot11.lastVisibleCharacterIndex do
@@ -684,10 +779,9 @@ function slot0._conUpdate(slot0, slot1)
 				slot0._conMat:SetFloat(slot0._LineMaxYId, slot21.y + 10)
 				slot0._markTopMat:SetFloat(slot0._LineMinYId, slot18.y - 100)
 
-				slot27 = slot0._LineMaxYId
-				slot28 = slot21.y - 90
+				slot27 = slot21.y - 90
 
-				slot0._markTopMat:SetFloat(slot27, slot28)
+				slot0._markTopMat:SetFloat(slot0._LineMaxYId, slot27)
 
 				for slot27, slot28 in pairs(slot0._subMeshs) do
 					if slot28.materialForRendering then
@@ -704,10 +798,9 @@ function slot0._conUpdate(slot0, slot1)
 				slot0._conMat:SetFloat(slot0._LineMaxYId, slot21.y)
 				slot0._markTopMat:SetFloat(slot0._LineMinYId, slot18.y)
 
-				slot27 = slot0._LineMaxYId
-				slot28 = slot21.y
+				slot27 = slot21.y
 
-				slot0._markTopMat:SetFloat(slot27, slot28)
+				slot0._markTopMat:SetFloat(slot0._LineMaxYId, slot27)
 
 				for slot27, slot28 in pairs(slot0._subMeshs) do
 					if slot28.materialForRendering then

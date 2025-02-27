@@ -8126,5 +8126,101 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 260004,
+    "tips": "未选择记忆骰",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260005,
+    "tips": "章节未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260006,
+    "tips": "关卡未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260007,
+    "tips": "关卡已通关",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260008,
+    "tips": "无重掷次数",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260009,
+    "tips": "应对卡不满足释放条件",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -315,
+    "tips": "零售订单每日刷新次数已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260010,
+    "tips": "巴别图书馆重置成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 260011,
+    "tips": "记忆骰已达上限12",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 90221,
+    "tips": "次数耗尽",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 202,
+    "tips": "梦境增益已激活",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 203,
+    "tips": "梦境增益已被锁定",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

@@ -12,6 +12,7 @@ slot2 = {
 	"id"
 }
 slot3 = {
+	tabName = 2,
 	name = 1
 }
 

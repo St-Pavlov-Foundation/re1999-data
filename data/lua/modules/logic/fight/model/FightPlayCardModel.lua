@@ -34,12 +34,13 @@ function slot0.setUsedCard(slot0, slot1)
 	end
 end
 
-function slot0.addUseCard(slot0, slot1, slot2)
+function slot0.addUseCard(slot0, slot1, slot2, slot3)
 	if slot0._usedCards then
-		slot3 = FightCardInfoMO.New()
+		FightCardInfoMO.New():init(slot2)
 
-		slot3:init(slot2)
-		table.insert(slot0._usedCards, slot1, slot3)
+		slot4.custom_fromSkillId = slot3 or 0
+
+		table.insert(slot0._usedCards, slot1, slot4)
 	end
 end
 

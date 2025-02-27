@@ -28,6 +28,7 @@ slot0.OnSelectLevel = 201
 slot0.OnGetInfo = 202
 slot0.OnQuestionReply = 203
 slot0.OnSelectNotCdHeroReply = 204
+slot0.OnAllShallowLayerFinish = 205
 slot0.GuideClickElement = 301
 slot0.GuideShowResetBtn = 302
 slot0.GuideChangeToLayerPage3 = 303

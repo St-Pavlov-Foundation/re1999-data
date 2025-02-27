@@ -75,9 +75,7 @@ function slot0.refresh(slot0)
 	gohelper.setActive(slot0._gohasget, slot0._hasGet)
 
 	if not string.nilorempty(slot0._config.bonus) then
-		slot7 = slot0:_generateBadgeItemConfig()
-
-		table.insert({}, slot7)
+		table.insert({}, slot0:_generateBadgeItemConfig())
 
 		for slot7, slot8 in ipairs(DungeonConfig.instance:getRewardItems(tonumber(slot0._config.bonus))) do
 			table.insert(slot2, {

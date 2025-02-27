@@ -295,6 +295,14 @@ function slot0.checkIsShowActBgVisible()
 	return slot0.isShowActBg or false
 end
 
+function slot0.checkIsShowFxVisible()
+	if not ActivityConfig.instance:getMainActAtmosphereConfig() then
+		return false
+	end
+
+	return slot0.isShowFx or false
+end
+
 function slot0.showActivityEffect()
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FastDungeon) then
 		return false

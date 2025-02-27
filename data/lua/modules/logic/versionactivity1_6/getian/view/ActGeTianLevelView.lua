@@ -120,6 +120,7 @@ function slot0._editableInitView(slot0)
 	slot0.enterConfig = RoleActivityConfig.instance:getActivityEnterInfo(ActGeTianEnum.ActivityId)
 	slot0.actConfig = ActivityConfig.instance:getActivityCo(ActGeTianEnum.ActivityId)
 
+	gohelper.setActive(slot0._gotime, false)
 	gohelper.setActive(slot0._btnPlayBtn, slot0.actConfig.storyId > 0)
 end
 
@@ -131,17 +132,17 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(DungeonController.instance, DungeonEvent.OnEndDungeonPush, slot0.OnEndDungeonPush, slot0)
 	slot0:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, slot0.OnDotChange, slot0)
 	slot0:addEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, slot0.OnCheckActEnd, slot0)
-	RedDotController.instance:addRedDot(gohelper.findChild(slot0._btnTask.gameObject, "#go_reddot"), RedDotEnum.DotNode.V1a6RoleActivityTask, ActGeTianEnum.ActivityId)
+	RedDotController.instance:addRedDot(gohelper.findChild(slot0._btnTask.gameObject, "#go_reddot"), ActivityConfig.instance:getActivityCo(VersionActivity1_6Enum.ActivityId.Role2).redDotId, VersionActivity1_6Enum.ActivityId.Role2)
 	slot0:OnDotChange()
 	slot0:_showLeftTime()
 	TaskDispatcher.runRepeat(slot0._showLeftTime, slot0, 1)
 
 	if slot0.viewParam and slot0.viewParam.needShowFight then
 		if ActGeTianModel.instance:getEnterFightIndex() then
-			slot0.latestfightItem = slot2
+			slot0.latestfightItem = slot3
 
-			for slot6, slot7 in ipairs(slot0.fightItemList) do
-				slot7:refreshSelect(slot2)
+			for slot7, slot8 in ipairs(slot0.fightItemList) do
+				slot8:refreshSelect(slot3)
 			end
 		end
 
@@ -203,9 +204,8 @@ function slot0.OnFightItemClick(slot0, slot1)
 	end
 
 	slot0.latestfightItem = slot1
-	slot5 = AudioEnum.UI.play_ui_shuori_story_click
 
-	AudioMgr.instance:trigger(slot5)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_shuori_story_click)
 
 	for slot5, slot6 in ipairs(slot0.fightItemList) do
 		slot6:refreshSelect(slot1)

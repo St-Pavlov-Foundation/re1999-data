@@ -29,6 +29,9 @@ function slot0.onInitView(slot0)
 	slot0._goPlatCondition = gohelper.findChild(slot0.viewGO, "goalcontent/goallist/platinum")
 	slot0._goPlatCondition2 = gohelper.findChild(slot0.viewGO, "goalcontent/goallist/platinum2")
 	slot0._goPlatConditionMaterial = gohelper.findChild(slot0.viewGO, "goalcontent/goallist/platinumMaterial")
+	slot0._goalcontent = gohelper.findChild(slot0.viewGO, "goalcontent")
+	slot0._goweekwalkgoalcontent = gohelper.findChild(slot0.viewGO, "weekwalkgoalcontent")
+	slot0._goweekwalkcontentitem = gohelper.findChild(slot0.viewGO, "weekwalkgoalcontent/goallist/goalitem")
 	slot0._bonusItemContainer = gohelper.findChild(slot0.viewGO, "scroll/viewport/content")
 	slot0._goscroll = gohelper.findChild(slot0.viewGO, "scroll")
 	slot0._bonusItemGo = gohelper.findChild(slot0.viewGO, "scroll/item")
@@ -157,6 +160,7 @@ function slot0.onOpen(slot0)
 	slot0:showUnLockCurrentEpisodeNewMode()
 	slot0:_show1_2DailyEpisodeEndNotice()
 	slot0:_show1_6EpisodeMaterial()
+	slot0:_showWeekWalk_2Condition()
 end
 
 function slot0._showPlatCondition(slot0, slot1, slot2, slot3, slot4)
@@ -257,10 +261,7 @@ function slot0._getRandomEntityMO(slot0)
 
 	tabletool.addValues(slot4, FightDataHelper.entityMgr:getMyNormalList())
 	tabletool.addValues(slot4, FightDataHelper.entityMgr:getMySubList())
-
-	slot8 = FightDataHelper.entityMgr:getMyDeadList()
-
-	tabletool.addValues(slot4, slot8)
+	tabletool.addValues(slot4, FightDataHelper.entityMgr:getMyDeadList())
 
 	for slot8 = #slot4, 1, -1 do
 		if not slot0:_getSkin(slot4[slot8]) then
@@ -269,9 +270,8 @@ function slot0._getRandomEntityMO(slot0)
 	end
 
 	slot5 = {}
-	slot9 = slot4
 
-	tabletool.addValues(slot5, slot9)
+	tabletool.addValues(slot5, slot4)
 
 	for slot9 = #slot5, 1, -1 do
 		if FightAudioMgr.instance:_getHeroVoiceCOs(slot4[slot9].modelId, CharacterEnum.VoiceType.FightResult) and #slot11 > 0 then
@@ -352,6 +352,13 @@ function slot0._setEpisodeName(slot0, slot1, slot2, slot3)
 
 		if slot8 then
 			slot0._txtEpisodeIndex.text = slot8
+
+			return
+		end
+	elseif slot1.type == DungeonEnum.EpisodeType.WeekWalk_2 then
+		if WeekWalk_2Model.instance:getCurMapInfo() then
+			slot0._txtFbName.text = slot4.sceneConfig.battleName
+			slot0._txtFbNameEn.text = slot4.sceneConfig.name_en
 
 			return
 		end
@@ -468,9 +475,7 @@ function slot0._playSpineVoice(slot0)
 end
 
 function slot0._getSayContent(slot0, slot1)
-	slot7 = "#"
-
-	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1, false, "|", slot7)) do
+	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1, false, "|", "#")) do
 		slot3 = "" .. slot8[1]
 	end
 
@@ -598,6 +603,8 @@ function slot0._loadBonusItems(slot0)
 				slot0:_addFirstItem(slot9, slot0.onRefreshToughBattle)
 			elseif slot9.materilType == MaterialEnum.MaterialType.Currency and slot9.materilId == CurrencyEnum.CurrencyType.V2a2Dungeon then
 				slot0:_addFirstItem(slot9, slot0.onRefreshV2a2Dungeon)
+			elseif slot9.materilType == MaterialEnum.MaterialType.Currency and slot9.materilId == CurrencyEnum.CurrencyType.V2a6Dungeon then
+				slot0:_addFirstItem(slot9, slot0.onRefreshV2a6Dungeon)
 			else
 				slot0:_addFirstItem(slot9)
 			end
@@ -631,11 +638,7 @@ function slot0._loadBonusItems(slot0)
 	end
 
 	if FightModel.instance:isEnterUseFreeLimit() and FightResultModel.instance:getExtraMaterialDataList() then
-		slot7 = ItemModel.instance
-		slot9 = slot7
-		slot10 = slot4
-
-		for slot9, slot10 in ipairs(LuaUtil.deepCopy(slot7.processRPCItemList(slot9, slot10))) do
+		for slot9, slot10 in ipairs(LuaUtil.deepCopy(ItemModel.instance:processRPCItemList(slot4))) do
 			slot10.bonusTag = FightEnum.FightBonusTag.EquipDailyFreeBonus
 
 			slot0:_addExtraItem(slot10)
@@ -762,12 +765,10 @@ function slot0.applyBonusVfx(slot0, slot1, slot2)
 		gohelper.setActive(gohelper.findChild(slot2, "vx/" .. slot8), slot8 == slot4)
 	end
 
-	slot9 = slot4
-
 	for slot9 = 4, 5 do
 		slot10 = gohelper.findChild(slot2, "vx/" .. slot9 .. "/#teshudaoju")
 
-		if slot9 == slot4 and ItemModel.canShowVfx(slot1.materilType, slot3, slot9) then
+		if slot9 == slot4 and ItemModel.canShowVfx(slot1.materilType, slot3, slot4) then
 			gohelper.setActive(slot10, false)
 			gohelper.setActive(slot10, true)
 		else
@@ -803,6 +804,16 @@ function slot0.onRefreshToughBattle(slot0, slot1)
 end
 
 function slot0.onRefreshV2a2Dungeon(slot0, slot1)
+	slot2 = slot1._itemIcon
+
+	slot2:setCanShowDeadLine(false)
+
+	slot2._gov1a7act = slot2._gov1a7act or gohelper.findChild(slot2.go, "act")
+
+	gohelper.setActive(slot2._gov1a7act, true)
+end
+
+function slot0.onRefreshV2a6Dungeon(slot0, slot1)
 	slot2 = slot1._itemIcon
 
 	slot2:setCanShowDeadLine(false)
@@ -856,10 +867,7 @@ function slot0.checkRecordFarmItem(slot0, slot1)
 		return slot1.checkFunc(slot1.checkFuncObj)
 	end
 
-	slot5 = FightResultModel.instance
-	slot7 = slot5
-
-	for slot6, slot7 in ipairs(ItemModel.instance:processRPCItemList(slot5.getMaterialDataList(slot7))) do
+	for slot6, slot7 in ipairs(ItemModel.instance:processRPCItemList(FightResultModel.instance:getMaterialDataList())) do
 		if slot7.materilType == slot1.type and slot7.materilId == slot1.id then
 			return true
 		end
@@ -1016,6 +1024,32 @@ function slot0._show1_2DailyEpisodeEndNotice(slot0)
 	if lua_activity116_episode_sp.configDict[slot0._curEpisodeId] then
 		ToastController.instance:showToastWithString(slot1.endShow)
 	end
+end
+
+function slot0._showWeekWalk_2Condition(slot0)
+	if not (lua_episode.configDict[slot0._curEpisodeId] and slot1.type == DungeonEnum.EpisodeType.WeekWalk_2) then
+		return
+	end
+
+	if not WeekWalk_2Model.instance:getResultCupInfos() then
+		return
+	end
+
+	for slot7, slot8 in ipairs(slot3) do
+		slot0:_showWeekWalkVer2OneTaskGroup(gohelper.cloneInPlace(slot0._goweekwalkcontentitem), slot8, slot7)
+	end
+
+	gohelper.setActive(slot0._goalcontent, false)
+	gohelper.setActive(slot0._goweekwalkgoalcontent, true)
+end
+
+function slot0._showWeekWalkVer2OneTaskGroup(slot0, slot1, slot2, slot3)
+	gohelper.findChildText(slot1, "condition").text = slot2.config["desc" .. slot2.result] or slot4.desc1
+	slot6 = gohelper.findChildImage(slot1, "star")
+	slot6.enabled = false
+
+	WeekWalk_2Helper.setCupEffect(slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot6.gameObject), slot2)
+	gohelper.setActive(slot1, true)
 end
 
 function slot0._show1_6EpisodeMaterial(slot0)

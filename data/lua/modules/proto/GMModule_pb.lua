@@ -22,6 +22,8 @@ slot2 = {
 	GMREPLYRESULTENUMFAILEDENUM = slot1.EnumValueDescriptor(),
 	GMREPLYRESULTENUMUNKNOWN_CMDENUM = slot1.EnumValueDescriptor(),
 	GMREPLYRESULTFIELD = slot1.FieldDescriptor(),
+	SERVERERRORINFOPUSH_MSG = slot1.Descriptor(),
+	SERVERERRORINFOPUSHMSGFIELD = slot1.FieldDescriptor(),
 	FIGHTTIPSMESSAGEPUSH_MSG = slot1.Descriptor(),
 	FIGHTTIPSMESSAGEPUSHMSGFIELD = slot1.FieldDescriptor(),
 	GPUCPULOGREPLY_MSG = slot1.Descriptor(),
@@ -189,6 +191,24 @@ slot2.GMREPLY_MSG.fields = {
 }
 slot2.GMREPLY_MSG.is_extendable = false
 slot2.GMREPLY_MSG.extensions = {}
+slot2.SERVERERRORINFOPUSHMSGFIELD.name = "msg"
+slot2.SERVERERRORINFOPUSHMSGFIELD.full_name = ".ServerErrorInfoPush.msg"
+slot2.SERVERERRORINFOPUSHMSGFIELD.number = 1
+slot2.SERVERERRORINFOPUSHMSGFIELD.index = 0
+slot2.SERVERERRORINFOPUSHMSGFIELD.label = 1
+slot2.SERVERERRORINFOPUSHMSGFIELD.has_default_value = false
+slot2.SERVERERRORINFOPUSHMSGFIELD.default_value = ""
+slot2.SERVERERRORINFOPUSHMSGFIELD.type = 9
+slot2.SERVERERRORINFOPUSHMSGFIELD.cpp_type = 9
+slot2.SERVERERRORINFOPUSH_MSG.name = "ServerErrorInfoPush"
+slot2.SERVERERRORINFOPUSH_MSG.full_name = ".ServerErrorInfoPush"
+slot2.SERVERERRORINFOPUSH_MSG.nested_types = {}
+slot2.SERVERERRORINFOPUSH_MSG.enum_types = {}
+slot2.SERVERERRORINFOPUSH_MSG.fields = {
+	slot2.SERVERERRORINFOPUSHMSGFIELD
+}
+slot2.SERVERERRORINFOPUSH_MSG.is_extendable = false
+slot2.SERVERERRORINFOPUSH_MSG.extensions = {}
 slot2.FIGHTTIPSMESSAGEPUSHMSGFIELD.name = "msg"
 slot2.FIGHTTIPSMESSAGEPUSHMSGFIELD.full_name = ".FightTipsMessagePush.msg"
 slot2.FIGHTTIPSMESSAGEPUSHMSGFIELD.number = 1
@@ -238,6 +258,7 @@ slot2.GMRequest = slot1.Message(slot2.GMREQUEST_MSG)
 slot2.GMSummonResultPush = slot1.Message(slot2.GMSUMMONRESULTPUSH_MSG)
 slot2.GpuCpuLogReply = slot1.Message(slot2.GPUCPULOGREPLY_MSG)
 slot2.GpuCpuLogRequest = slot1.Message(slot2.GPUCPULOGREQUEST_MSG)
+slot2.ServerErrorInfoPush = slot1.Message(slot2.SERVERERRORINFOPUSH_MSG)
 slot2.TestGMTextReply = slot1.Message(slot2.TESTGMTEXTREPLY_MSG)
 
 return slot2

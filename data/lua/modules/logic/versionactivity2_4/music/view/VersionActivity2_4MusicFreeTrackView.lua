@@ -62,9 +62,7 @@ function slot0._onClickTrackItem(slot0, slot1)
 end
 
 function slot0._selectedTrackItem(slot0, slot1)
-	slot5 = slot1
-
-	VersionActivity2_4MusicFreeModel.instance:setSelectedTrackIndex(slot5)
+	VersionActivity2_4MusicFreeModel.instance:setSelectedTrackIndex(slot1)
 
 	for slot5, slot6 in pairs(slot0._trackList) do
 		slot6:updateSelected()

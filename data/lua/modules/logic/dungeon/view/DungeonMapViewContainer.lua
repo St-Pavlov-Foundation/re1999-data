@@ -23,6 +23,7 @@ function slot0.buildViews(slot0)
 	table.insert(slot1, DungeonMapToughBattleActView.New())
 	table.insert(slot1, BalanceUmbrellaDungeonMapView.New())
 	table.insert(slot1, InvestigateDungeonMapView.New())
+	table.insert(slot1, DiceHeroDungeonMapView.New())
 
 	return slot1
 end

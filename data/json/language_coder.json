@@ -5746,5 +5746,121 @@
   {
     "id": "autochess_gameview_damagelimit",
     "lang": "我方斗志减少上限为▩1%s点。削弱斗志点为粘贴处等级与剩余方兵棋子品质之和"
+  },
+  {
+    "id": "dicehero_behavior_atk",
+    "lang": "对敌人造成▩1%s伤害"
+  },
+  {
+    "id": "dicehero_behavior_def",
+    "lang": "获得▩1%s护甲"
+  },
+  {
+    "id": "dicehero_behavior_buff",
+    "lang": "获取▩1%sbuff"
+  },
+  {
+    "id": "dicehero_behavior_debuff",
+    "lang": "对敌人施加▩1%sdebuff"
+  },
+  {
+    "id": "dicehero_behavior_def_friend",
+    "lang": "使随机友方获得▩1%s护甲"
+  },
+  {
+    "id": "dicehero_behavior_def_all",
+    "lang": "使全体友方获得▩1%s护甲"
+  },
+  {
+    "id": "dicehero_behavior_buff_all",
+    "lang": "使友方全体获得▩1%sbuff"
+  },
+  {
+    "id": "dicehero_behavior_atk_title",
+    "lang": "攻击："
+  },
+  {
+    "id": "dicehero_behavior_def_title",
+    "lang": "防御："
+  },
+  {
+    "id": "dicehero_behavior_buff_title",
+    "lang": "强化："
+  },
+  {
+    "id": "dicehero_behavior_debuff_title",
+    "lang": "妨害："
+  },
+  {
+    "id": "dicehero_buff",
+    "lang": "状态增益"
+  },
+  {
+    "id": "dicehero_debuff",
+    "lang": "状态异常"
+  },
+  {
+    "id": "dicehero_card_nocount",
+    "lang": "无释放次数"
+  },
+  {
+    "id": "dicehero_card_banskill",
+    "lang": "锁定"
+  },
+  {
+    "id": "dicehero_card_nodice",
+    "lang": "骰子不足"
+  },
+  {
+    "id": "dicehero_buff_0",
+    "lang": "▩1%s层"
+  },
+  {
+    "id": "dicehero_buff_1",
+    "lang": "▩1%s层"
+  },
+  {
+    "id": "dicehero_buff_2",
+    "lang": "▩1%s层"
+  },
+  {
+    "id": "dicehero_buff_3",
+    "lang": "▩1%s回合"
+  },
+  {
+    "id": "dicehero_buff_4",
+    "lang": "回合后移除"
+  },
+  {
+    "id": "dicehero_target",
+    "lang": "击败所有敌人"
+  },
+  {
+    "id": "rougemainview_extrapointtips",
+    "lang": "幕终寻获时，根据行进路线数量1/2/3/4/5，自动消耗2/3/4/6/8个金匠预言，额外获得等量信物。|每周一5：00登陆后可自动恢复▩1%s个金匠预言，获取上限为▩2%s个"
+  },
+  {
+    "id": "rougebosscollectionselectview_refresh",
+    "lang": "代价刷新次数：▩1%s"
+  },
+  {
+    "id": "xugouji_round_target",
+    "lang": "▩1%s回合内完成"
+  },
+  {
+    "id": "ShortenAct_TaskItem_remain_open",
+    "lang": "剩余 %s 开启"
+  },
+  {
+    "id": "rougebosscollectionselectview_txt_title",
+    "lang": "代价造物"
+  },
+  {
+    "id": "rougebosscollectionselectview_txt_tips",
+    "lang": "选择▩1%s个代价造物"
+  },
+  {
+    "id": "weekwalk_2resulttxt1",
+    "lang": "上期白金奖杯获得数：▩1%s"
   }
 ]

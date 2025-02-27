@@ -1,6 +1,9 @@
 module("modules.logic.rouge.view.RougeSettlementView", package.seeall)
 
 slot0 = class("RougeSettlementView", BaseView)
+slot1 = 1
+slot2 = 1
+slot3 = 1
 
 function slot0.onInitView(slot0)
 	slot0._simagefullbg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_fullbg")
@@ -43,6 +46,7 @@ function slot0.onInitView(slot0)
 	slot0._txtmultiple = gohelper.findChildText(slot0.viewGO, "#go_score/#txt_multiple")
 	slot0._txttotal = gohelper.findChildText(slot0.viewGO, "#go_score/#txt_total")
 	slot0._txtaddpoint = gohelper.findChildText(slot0.viewGO, "#go_score/score/#txt_addpoint")
+	slot0._txtextrapoint = gohelper.findChildText(slot0.viewGO, "#go_score/score/#txt_extrapoint")
 	slot0._sliderprogress = gohelper.findChildSlider(slot0.viewGO, "#go_score/score/#slider_progress")
 	slot0._simageicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_score/collection/#simage_icon")
 	slot0._txtaddgenius = gohelper.findChildText(slot0.viewGO, "#go_score/collection/#txt_addgenius")
@@ -134,6 +138,7 @@ end
 slot0.FinalScoreDuration = 2
 slot0.RewardPointDuration = 2
 slot0.TalentPointDuration = 2
+slot0.ExtraPointDuration = 2
 slot0.RewardPointProgressDuration = 2
 slot0.TalentPointProgressDuration = 2
 slot0.MaxProgressValue = 1
@@ -161,17 +166,24 @@ function slot0.changeScoreDone(slot0)
 end
 
 function slot0.refreshRewardPoint(slot0, slot1)
+	slot0:refreshAddPoint(slot1)
+	slot0:refreshExtraPoint(slot1)
+	slot0:refreshRewardProgress(slot1)
+end
+
+function slot0.refreshAddPoint(slot0, slot1)
+	slot0._targetAddPoint = slot1.addPoint or 0
+	slot0._originRewardPoint = 0
+
+	slot0:frameRewardPointFunc(slot0._originRewardPoint)
+	TaskDispatcher.cancelTask(slot0.tweenRewardPoint, slot0)
+	TaskDispatcher.runDelay(slot0.tweenRewardPoint, slot0, uv0)
+end
+
+function slot0.tweenRewardPoint(slot0)
 	slot0:killTween("_rewardPointTweenId")
 
-	slot0._rewardPointTweenId = ZProj.TweenHelper.DOTweenFloat(0, slot1.addPoint or 0, uv0.RewardPointDuration, slot0.frameRewardPointFunc, slot0.rewardPointDone, slot0)
-
-	if slot1.remainScore2Point / tonumber(lua_rouge_const.configDict[RougeEnum.Const.RewardTranslation].value) < (slot1.preRemainScore2Point or 0) / slot5 then
-		slot6 = slot6 + uv0.MaxProgressValue
-	end
-
-	slot0:killTween("_rewardPointProgressTweenId")
-
-	slot0._rewardPointProgressTweenId = ZProj.TweenHelper.DOTweenFloat(slot8, slot6, uv0.RewardPointProgressDuration, slot0.frameRewardPointProgressFunc, slot0.rewardPointProgressDone, slot0)
+	slot0._rewardPointTweenId = ZProj.TweenHelper.DOTweenFloat(slot0._originRewardPoint, slot0._targetAddPoint, uv0.RewardPointDuration, slot0.frameRewardPointFunc, slot0.rewardPointDone, slot0)
 end
 
 function slot0.frameRewardPointFunc(slot0, slot1)
@@ -180,6 +192,53 @@ end
 
 function slot0.rewardPointDone(slot0)
 	slot0._rewardPointTweenId = nil
+end
+
+function slot0.refreshExtraPoint(slot0, slot1)
+	slot0._targetExtraAddPoint = slot1.extraAddPoint or 0
+	slot0._originExtraAddPoint = 0
+
+	gohelper.setActive(slot0._txtextrapoint.gameObject, slot0._targetExtraAddPoint > 0)
+
+	if slot0._targetExtraAddPoint > 0 then
+		AudioMgr.instance:trigger(AudioEnum.UI.RougeAddExtraPoint)
+		slot0:frameExtraPointFunc(slot0._originExtraAddPoint)
+		TaskDispatcher.cancelTask(slot0.tweenExtraPoint, slot0)
+		TaskDispatcher.runDelay(slot0.tweenExtraPoint, slot0, uv0)
+	end
+end
+
+function slot0.tweenExtraPoint(slot0)
+	slot0:killTween("_extraPointTweenId")
+
+	slot0._extraPointTweenId = ZProj.TweenHelper.DOTweenFloat(slot0._originExtraAddPoint, slot0._targetExtraAddPoint, uv0.ExtraPointDuration, slot0.frameExtraPointFunc, slot0.extraPointDone, slot0)
+end
+
+function slot0.frameExtraPointFunc(slot0, slot1)
+	slot0._txtextrapoint.text = string.format("+%s", math.ceil(slot1))
+end
+
+function slot0.extraPointDone(slot0)
+	slot0._extraPointTweenId = nil
+end
+
+function slot0.refreshRewardProgress(slot0, slot1)
+	slot0._targetRewardPointProgress = slot1.remainScore2Point / tonumber(lua_rouge_const.configDict[RougeEnum.Const.RewardTranslation].value)
+	slot0._preRemainScoreProgress = (slot1.preRemainScore2Point or 0) / slot3
+
+	if slot0._targetRewardPointProgress < slot0._preRemainScoreProgress then
+		slot0._targetRewardPointProgress = slot0._targetRewardPointProgress + uv0.MaxProgressValue
+	end
+
+	slot0:frameRewardPointProgressFunc(slot0._preRemainScoreProgress)
+	TaskDispatcher.cancelTask(slot0.tweenRewardProgress, slot0)
+	TaskDispatcher.runDelay(slot0.tweenRewardProgress, slot0, uv1)
+end
+
+function slot0.tweenRewardProgress(slot0)
+	slot0:killTween("_rewardPointProgressTweenId")
+
+	slot0._rewardPointProgressTweenId = ZProj.TweenHelper.DOTweenFloat(slot0._preRemainScoreProgress, slot0._targetRewardPointProgress, uv0.RewardPointProgressDuration, slot0.frameRewardPointProgressFunc, slot0.rewardPointProgressDone, slot0)
 end
 
 function slot0.frameRewardPointProgressFunc(slot0, slot1)
@@ -228,7 +287,7 @@ function slot0.killTween(slot0, slot1)
 	end
 end
 
-slot1 = 8
+slot4 = 8
 
 function slot0.updateBadgeList(slot0, slot1)
 	if not slot1 then
@@ -341,11 +400,15 @@ function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0.tweenRewardPoint, slot0)
+	TaskDispatcher.cancelTask(slot0.tweenExtraPoint, slot0)
+	TaskDispatcher.cancelTask(slot0.tweenRewardProgress, slot0)
 	slot0:killTween("_totalScoreTweenId")
 	slot0:killTween("_rewardPointTweenId")
 	slot0:killTween("_talentPointTweenId")
 	slot0:killTween("_rewardPointProgressTweenId")
 	slot0:killTween("_talentPointProgressTweenId")
+	slot0:killTween("_extraPointTweenId")
 	slot0:releaseAllBadgeItems()
 end
 

@@ -124,7 +124,7 @@ function slot0.getAnyOnlineRareCharacterCount(slot0, slot1)
 		if slot7.rare == slot1 then
 			if slot7.isOnline == "1" then
 				slot2 = 0 + 1
-			elseif slot7.isOnline ~= "0" and TimeUtil.stringToTimestamp(slot7.isOnline) + ServerTime.clientToServerOffset() < ServerTime.Now() then
+			elseif slot7.isOnline ~= "0" and TimeUtil.stringToTimestamp(slot7.isOnline) + ServerTime.clientToServerOffset() < ServerTime.now() then
 				slot2 = slot2 + 1
 			end
 		end
@@ -330,10 +330,8 @@ function slot0.sortAttrForEquipView(slot0, slot1)
 end
 
 function slot0.getHeroAttrRate(slot0, slot1, slot2)
-	slot7 = 1
-
 	for slot7, slot8 in ipairs(lua_character_grow.configList) do
-		if SkillConfig.instance:getherolevelCO(slot1, slot7)[slot2] < slot8[slot2] then
+		if SkillConfig.instance:getherolevelCO(slot1, 1)[slot2] < slot8[slot2] then
 			return slot8.id - 1 == 0 and 1 or slot8.id - 1
 		end
 	end

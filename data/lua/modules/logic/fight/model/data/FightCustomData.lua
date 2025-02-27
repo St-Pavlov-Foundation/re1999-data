@@ -2,7 +2,8 @@ module("modules.logic.fight.model.data.FightCustomData", package.seeall)
 
 slot0 = FightDataClass("FightCustomData")
 slot0.CustomDataType = {
-	Act183 = 1
+	Act183 = 1,
+	WeekwalkVer2 = 2
 }
 
 function slot0.onConstructor(slot0, slot1)

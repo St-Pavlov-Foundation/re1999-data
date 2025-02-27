@@ -1483,7 +1483,7 @@
     "id": 8220214,
     "name": "魔术斗篷",
     "effectId": 0,
-    "desc": "己方角色受到攻击后，若自身激情不少于5点，25%概率直接释放至终的仪式",
+    "desc": "己方角色受到攻击后，若自身激情不少于5点，{25+count2*1}%概率直接释放至终的仪式",
     "descType": 0,
     "descExtra": "",
     "descSimply": "受到攻击后，若自身激情不少于5点，概率直接释放至终的仪式",
@@ -2773,7 +2773,7 @@
     "id": 8330020,
     "name": "“心”",
     "effectId": 0,
-    "desc": "己方全体造成的本源创伤提升100%；\n回合开始时，随机赋予敌方全体【状态异常集合】中的2种，持续2回合",
+    "desc": "己方全体造成的本源创伤提升{100+count2*1}%；\n回合开始时，随机赋予敌方全体【状态异常集合】中的2种，持续2回合",
     "descType": 0,
     "descExtra": "",
     "descSimply": "己方全体造成的本源创伤提升\n回合开始时，随机赋予敌方全体【状态异常集合】中的几种",
@@ -2823,10 +2823,10 @@
     "id": 8330112,
     "name": "管廊焚毁者",
     "effectId": 0,
-    "desc": "己方角色使用协同咒语时，随机驱散己方全体1种【状态异常】；\n己方角色使用协同咒语时，随机赋予己方全体【永久增益集合】中的1种",
+    "desc": "己方角色使用协同咒语时，随机驱散己方全体1种【状态异常】；\n己方角色使用协同咒语时，随机赋予己方全体【永久增益集合】中的{count2+1}种",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "使用协同咒语时，驱散己方全体随机异常状态；\n使用协同咒语时，己方全体获得【永久增益集合】中的1种",
+    "descSimply": "使用协同咒语时，驱散己方全体随机异常状态；\n使用协同咒语时，己方全体获得【永久增益集合】中的{count2+1}种",
     "descExtraSimply": ""
   },
   {
@@ -4436,7 +4436,7 @@
     "desc": "应激度增加时，己方角色均有{20+count2*1}%概率恢复2%最大生命\n进入休整地域时，吞噬库藏中所有普通品质造物\n每吞噬5个，额外判定1次该回复效果\n（当前吞噬数量：{count1*1}）",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "应激降低时，己方均有概率恢复最大生命\n进入休整地域时，吞噬仓库中所有普通品质造物\n每吞噬一定数量，回复效果触发次数增加\n（当前吞噬数量：{count1*1}）",
+    "descSimply": "应激降低时，己方均有概率恢复最大生命\n进入休整地域时，吞噬库藏中所有普通品质造物\n每吞噬一定数量，回复效果触发次数增加\n（当前吞噬数量：{count1*1}）",
     "descExtraSimply": ""
   },
   {
@@ -4456,7 +4456,7 @@
     "desc": "库藏中造物数量>20时，负面效果概率降低至0",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "仓库中造物数量>20时，去除该造物的负面效果",
+    "descSimply": "库藏中造物数量>20时，去除该造物的负面效果",
     "descExtraSimply": ""
   },
   {
@@ -4476,7 +4476,7 @@
     "desc": "库藏中造物数量>20时，负面效果概率降低至0",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "仓库中造物数量>20时，去除该造物的负面效果",
+    "descSimply": "库藏中造物数量>20时，去除该造物的负面效果",
     "descExtraSimply": ""
   },
   {
@@ -4496,7 +4496,7 @@
     "desc": "库藏中造物数量>40时，效果翻倍",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "仓库中造物数量>40时，效果翻倍",
+    "descSimply": "库藏中造物数量>40时，效果翻倍",
     "descExtraSimply": ""
   },
   {
@@ -4663,10 +4663,10 @@
     "id": 8161008,
     "name": "亡者钥匙",
     "effectId": 0,
-    "desc": "每次进入休整地域时，开启1个背包或库藏中的『尘封木箱』『尘封皮箱』『尘封宝箱』，随后移除自身",
+    "desc": "每次进入休整地域时，开启1个布设或库藏中的『尘封木箱』『尘封皮箱』『尘封宝箱』，随后移除自身",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "进入休整地域时，开启背包或仓库中的1个箱子，随后移除自身",
+    "descSimply": "进入休整地域时，开启布设或库藏中的1个箱子，随后移除自身",
     "descExtraSimply": ""
   },
   {
@@ -4866,7 +4866,7 @@
     "desc": "库藏中造物数量>20时，负面效果概率降低至0",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "仓库中造物数量>20时，去除该造物的负面效果",
+    "descSimply": "库藏中造物数量>20时，去除该造物的负面效果",
     "descExtraSimply": ""
   },
   {
@@ -4886,7 +4886,7 @@
     "desc": "库藏中造物数量>20时，负面效果概率降低至0",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "仓库中造物数量>20时，去除该造物的负面效果",
+    "descSimply": "库藏中造物数量>20时，去除该造物的负面效果",
     "descExtraSimply": ""
   },
   {
@@ -4983,10 +4983,10 @@
     "id": 8170008,
     "name": "柔软的平静",
     "effectId": 1,
-    "desc": "罗雷莱上阵时生效：\n回合开始时，多抽10张卡\n己方全体攻击时己方咒语区每存在1张指定类型咒语，本次攻击获得加成\n攻击类咒语：额外造成20%现实/精神创伤\n增益类咒语：暴击率提高10%\n减益类咒语：穿透率提高20%\n特殊类咒语：攻击力提升10%",
+    "desc": "罗蕾莱上阵时生效：\n回合开始时，多抽10张卡\n己方全体攻击时己方咒语区每存在1张指定类型咒语，本次攻击获得加成\n攻击类咒语：额外造成20%现实/精神创伤\n增益类咒语：暴击率提高10%\n减益类咒语：穿透率提高20%\n特殊类咒语：攻击力提升10%",
     "descType": 0,
     "descExtra": "",
-    "descSimply": "罗雷莱上阵时生效：\n回合开始时，额外抽出大量咒语\n己方全体攻击时己方咒语区每存在1张指定类型咒语，本次攻击获得加成",
+    "descSimply": "罗蕾莱上阵时生效：\n回合开始时，额外抽出大量咒语\n己方全体攻击时己方咒语区每存在1张指定类型咒语，本次攻击获得加成",
     "descExtraSimply": ""
   },
   {
@@ -5217,6 +5217,876 @@
     "descType": 0,
     "descExtra": "",
     "descSimply": "回合开始时，删除咒语盒中的1张厄运咒语",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180001,
+    "name": "手术工具",
+    "effectId": 1,
+    "desc": "阿莱夫上阵时生效：进入战斗时，自身激情+5",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "阿莱夫上阵时生效：进入战斗时，自身激情增加",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180002,
+    "name": "桌上的演绎",
+    "effectId": 1,
+    "desc": "虚构集同行时生效：获得2个『浮夸假面』和1个『舞会假面』（最多触发1次）",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "虚构集同行时生效：获得2个『浮夸假面』和1个『舞会假面』（最多触发1次）",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180003,
+    "name": "移动电话",
+    "effectId": 1,
+    "desc": "梁月上阵时生效：自身额外行动后，自身激情+1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "梁月上阵时生效：额外行动后，获得激情",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180004,
+    "name": "情节的起点",
+    "effectId": 1,
+    "desc": "菲林士多同行时生效：获得1个『古董银剑』（最多触发1次）",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "菲林士多同行时生效：获得1个『古董银剑』（最多触发1次）",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180005,
+    "name": "沙龙邀请函",
+    "effectId": 1,
+    "desc": "卡卡尼亚同行时生效：每完成1个路径点，全队回复30%最大生命，全队应激-10",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "卡卡尼亚同行时生效：每完成1个路径点，全队回复最大生命，全队应激降低",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180006,
+    "name": "稚嫩艺术",
+    "effectId": 1,
+    "desc": "维拉上阵时生效：回合结束时，使我方全体回复1点灵光，1点激情",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "维拉上阵时生效：回合结束时，使我方全体回复灵光、激情",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180007,
+    "name": "新艺术灵摆",
+    "effectId": 1,
+    "desc": "环状水星同行时：每进入1次步入未知，额外获得金币+100，每进入1次行至途中，额外获得1个随机造物",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "环状水星同行时：每进入1次步入未知，额外获得金币，每进入1次行至途中，额外获得随机造物",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180008,
+    "name": "张力与秩序",
+    "effectId": 1,
+    "desc": "牙仙上阵时生效：进入战斗时，布设中每有1个『药剂』，己方全体暴击率+10%，自身攻击+10%\n获得『仙子的祝福』时，额外获得3个『药剂』",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "牙仙上阵时生效：进入战斗时，布设中每有1个『药剂』，己方全体暴击率提升，自身攻击提升\n获得『仙子的祝福』时，额外获得3个『药剂』",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180009,
+    "name": "剧院门票",
+    "effectId": 1,
+    "desc": "伊索尔德上阵时生效：进入战斗时，自身获得40层【热度】；自身术法威力+50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "伊索尔德上阵时生效：进入战斗时，自身获得大量【热度】；自身术法威力提升",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180010,
+    "name": "女仆头巾",
+    "effectId": 1,
+    "desc": "蓝手帕上阵时生效：释放至终的仪式后会使敌方全体陷入【噩梦】3回合，己方攻击具有【噩梦】状态的敌方单位不会解除【噩梦】状态",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "蓝手帕上阵时生效：至终的仪式会使敌方全体陷入【噩梦】3回合，且己方全体攻击不会打破敌方的【噩梦】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180011,
+    "name": "均衡维度",
+    "effectId": 1,
+    "desc": "6上阵时生效：回合开始时，随机赋予敌方全体【减益集合】中的2种效果；回合结束时，本回合自身每消耗2点灵光，自身激情+1；回合开始时，自身灵光+2",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "6上阵时生效：回合开始时，随机赋予敌方全体【减益集合】中的2种效果；回合结束时，本回合自身每消耗2点灵光，自身激情+1；回合开始时，自身灵光+2",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180012,
+    "name": "手持式标尺",
+    "effectId": 1,
+    "desc": "北方哨歌同行时生效：购物契机内总是会刷出当前队伍内角色未拥有的声像造物",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "北方哨歌同行时生效：购物契机内总是会刷出当前队伍内角色未拥有的声像造物",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180013,
+    "name": "久远小舟",
+    "effectId": 1,
+    "desc": "图图石子上阵时生效：进入战斗时，自身额外获得20层【象形贝壳】；回合开始时，对随机1名敌人布设自身所有【象形贝壳】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "图图石子上阵时生效：进入战斗时，自身额外获得20层【象形贝壳】；回合开始时，对随机1名敌人布设自身所有【象形贝壳】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180014,
+    "name": "羽梢的眼睛",
+    "effectId": 1,
+    "desc": "阿尔古斯同行时生效：进入新的地区时，随机2个非BOSS、藏宝地、藏金窟路径点替换成藏宝地或藏金窟，点亮迷雾中的藏宝地和藏金窟;",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "阿尔古斯同行时生效：进入新的地区时，随机2个非BOSS、藏宝地、藏金窟路径点替换成藏宝地或藏金窟，点亮迷雾中的藏宝地和藏金窟;",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180015,
+    "name": "灯塔日志",
+    "effectId": 1,
+    "desc": "马库斯上阵时生效：回合开始时，自身获得【精读】并赋予敌方全体【标注】；自身攻击时若处于【精读】，则造成的伤害提高50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "马库斯上阵时生效：回合开始时，自身获得【精读】并赋予敌方全体【标注】；自身攻击时若处于【精读】，则造成的伤害提高50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180016,
+    "name": "小鹿玩偶",
+    "effectId": 1,
+    "desc": "洁西卡上阵时生效：自身使用普通咒语攻击后，赋予目标3个【中毒】，持续3回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "洁西卡上阵时生效：自身使用普通咒语攻击后，赋予目标3个【中毒】，持续3回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180017,
+    "name": "实用真菌学",
+    "effectId": 1,
+    "desc": "爱兹拉上阵时生效：回合开始时，每有1株蘑菇，自身失去10%当前生命，回复己方全体15%已损失生命，该效果可以暴击",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "爱兹拉上阵时生效：回合开始时，每有1株蘑菇，自身失去10%当前生命，回复己方全体15%已损失生命，该效果可以暴击",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180018,
+    "name": "骨笛",
+    "effectId": 1,
+    "desc": "葛天上阵时生效：回合开始时，自身灵光+3；己方全体主动使用咒语后，葛天对随机1名敌方造成1次【引雷】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "葛天上阵时生效：回合开始时，自身灵光+3；己方全体主动使用咒语后，葛天对随机1名敌方造成1次【引雷】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180019,
+    "name": "系铃手鼓",
+    "effectId": 1,
+    "desc": "鬃毛沙砾上阵时生效：进入战斗时，获得5点激情；回合开始时，获得5层【自然的庇护】；\n己方角色行动后，鬃毛沙砾将获得1层【自然的庇护】；自身仪式威力+100%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "鬃毛沙砾上阵时生效：进入战斗时，获得5点激情；回合开始时，获得5层【自然的庇护】；\n己方角色行动后，鬃毛沙砾将获得1层【自然的庇护】；自身仪式威力+100%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180020,
+    "name": "星的回转",
+    "effectId": 1,
+    "desc": "伽菈波那上阵时生效：【行星】被移除时，根据类型使己方全体获得【序·土星占卜】【序·火星占卜】【序·盈月占卜】中的1种效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "伽菈波那上阵时生效：【行星】被移除时，根据类型使己方全体获得【序·土星占卜】【序·火星占卜】【序·盈月占卜】中的1种效果",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180021,
+    "name": "河的讯息",
+    "effectId": 1,
+    "desc": "小叶尼塞上阵时生效：进入战斗时，获得50%最大生命上限；至终的仪式施加的【免疫】延长1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "小叶尼塞上阵时生效：进入战斗时，获得50%最大生命上限；至终的仪式施加的【免疫】延长1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180022,
+    "name": "悼词与肃立",
+    "effectId": 1,
+    "desc": "讣告人同行时生效：己方任意角色陷入迷失后，立即使其苏醒并回复其50%最大生命（初始次数:1次，到达间隙层时次数+1）",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "讣告人同行时生效：己方任意角色陷入迷失后，立即使其苏醒并回复其50%最大生命（初始次数:1次，到达间隙层时次数+1）",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180023,
+    "name": "蓝色矢车菊",
+    "effectId": 1,
+    "desc": "柏林以东协同时生效：每2回合开始时使敌方全体现实防御降低25%，受到的伤害提高25%，持续2回合；当敌方处于负面效果时，己方对其造成伤害提升50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "柏林以东协同时生效：每2回合开始时使敌方全体现实防御降低25%，受到的伤害提高25%，持续2回合；当敌方处于负面效果时，己方对其造成伤害提升50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180024,
+    "name": "精密设计",
+    "effectId": 1,
+    "desc": "X同行时生效：造物典契不再有负面效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "X同行时生效：造物典契不再有负面效果",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180201,
+    "name": "铜纽扣",
+    "effectId": 0,
+    "desc": "首回合开始时，1号位失去1层【前锋凋零】，且最大生命提升20%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "首回合开始时，1号位失去1层【前锋凋零】，且最大生命提升20%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180202,
+    "name": "魔精扑克",
+    "effectId": 0,
+    "desc": "持有1/2/3个本造物时，每3/2/1回合免疫【咒语干扰】，且每主动使用1次咒语，最终增伤提升10%，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "持有1/2/3个本造物时，每3/2/1回合免疫【咒语干扰】，且每主动使用1次咒语，最终增伤提升10%，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180203,
+    "name": "储物手镯",
+    "effectId": 0,
+    "desc": "持有1/2/3个本造物时，每3/2/1回合免疫【连动干扰】，且额外行动1次，己方全体最终增伤提升5%，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "持有1/2/3个本造物时，每3/2/1回合免疫【连动干扰】，且额外行动1次，己方全体最终增伤提升5%，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180204,
+    "name": "贝壳纽扣",
+    "effectId": 0,
+    "desc": "受到群体攻击前，回复自身50%攻击力生命；每持有1个代价<群体强化>，提升己方5%最终免伤，最多提升50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "受到群体攻击前，回复自身50%攻击力生命；每持有1个代价<群体强化>，提升己方5%最终免伤，最多提升50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180205,
+    "name": "钟摆",
+    "effectId": 0,
+    "desc": "行动后，移除1层【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每移除1层对应状态，提升自身2%最终增伤，最多提升至50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "行动后，移除1层【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每移除1层对应状态，提升自身2%最终增伤，最多提升至50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180206,
+    "name": "梅林肖像护符",
+    "effectId": 0,
+    "desc": "主动使用咒语时，创伤加成提升5%；持有3个本造物时，无视代价<合卡禁止>，且合成咒语后必定为3阶咒语",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "主动使用咒语时，创伤加成提升5%；持有3个本造物时，无视代价<合卡禁止>，且合成咒语后必定为3阶咒语",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180207,
+    "name": "断铅笔",
+    "effectId": 0,
+    "desc": "每持有1个【铅笔刀】，创伤加成提升10%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "每持有1个【铅笔刀】，创伤加成提升10%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180208,
+    "name": "铅笔刀",
+    "effectId": 0,
+    "desc": "此造物无法被主动移出布设",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "此造物无法被主动移出布设",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180209,
+    "name": "空钱夹",
+    "effectId": 0,
+    "desc": "入场时，获得5层【幸运】，每持有20金币，失去1层【幸运】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "入场时，获得5层【幸运】，每持有20金币，失去1层【幸运】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180210,
+    "name": "结晶心",
+    "effectId": 0,
+    "desc": "血量每降低10%，最终伤害、最终减免提升2%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "血量每降低10%，最终伤害、最终减免提升2%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180211,
+    "name": "露珠手串",
+    "effectId": 0,
+    "desc": "每持有1种造物标签，获得1层【万象解析】；持有3个本造物时，免疫代价<抵制收集>",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "每持有1种造物标签，获得1层【万象解析】；持有3个本造物时，免疫代价<抵制收集>",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180212,
+    "name": "新艺术帽针",
+    "effectId": 0,
+    "desc": "进入间隙层时随机获得1个妙想造物；持有3个本造物时，免疫代价<超额支付>",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "进入间隙层时随机获得1个妙想造物；持有3个本造物时，免疫代价<超额支付>",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180501,
+    "name": "小螺号",
+    "effectId": 0,
+    "desc": "回合开始时，获得200%攻击力的护盾",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "回合开始时，获得200%攻击力的护盾",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180502,
+    "name": "河的回声",
+    "effectId": 0,
+    "desc": "最终战斗时，行动点+1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "最终战斗时，行动点提升",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 8180503,
+    "name": "她的致意",
+    "effectId": 0,
+    "desc": "最终战斗时，击杀敌人时全体获得20%最大生命值的护盾",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "最终战斗时，击杀敌人时全体获得最大生命值的护盾",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1000,
+    "name": "",
+    "effectId": 0,
+    "desc": "无负面效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "无负面效果",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1001,
+    "name": "",
+    "effectId": 0,
+    "desc": "<前排破防>我方1号位获得【前锋凋零】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<前排破防>我方1号位获得【前锋凋零】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1002,
+    "name": "",
+    "effectId": 0,
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1003,
+    "name": "",
+    "effectId": 0,
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1004,
+    "name": "",
+    "effectId": 0,
+    "desc": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1005,
+    "name": "",
+    "effectId": 0,
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1006,
+    "name": "",
+    "effectId": 0,
+    "desc": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1007,
+    "name": "",
+    "effectId": 0,
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1008,
+    "name": "",
+    "effectId": 0,
+    "desc": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1009,
+    "name": "",
+    "effectId": 0,
+    "desc": "<愈合困难>受到治疗效果降低30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<愈合困难>受到治疗效果降低30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1010,
+    "name": "",
+    "effectId": 0,
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 1011,
+    "name": "",
+    "effectId": 0,
+    "desc": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2001,
+    "name": "",
+    "effectId": 0,
+    "desc": "<前排破防>我方1号位获得【前锋凋零】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<前排破防>我方1号位获得【前锋凋零】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2002,
+    "name": "",
+    "effectId": 0,
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2003,
+    "name": "",
+    "effectId": 0,
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2004,
+    "name": "",
+    "effectId": 0,
+    "desc": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2005,
+    "name": "",
+    "effectId": 0,
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2006,
+    "name": "",
+    "effectId": 0,
+    "desc": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2007,
+    "name": "",
+    "effectId": 0,
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2008,
+    "name": "",
+    "effectId": 0,
+    "desc": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2009,
+    "name": "",
+    "effectId": 0,
+    "desc": "<愈合困难>受到治疗效果降低30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<愈合困难>受到治疗效果降低30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2010,
+    "name": "",
+    "effectId": 0,
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 2011,
+    "name": "",
+    "effectId": 0,
+    "desc": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3001,
+    "name": "",
+    "effectId": 0,
+    "desc": "<前排破防>我方1号位获得【前锋凋零】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<前排破防>我方1号位获得【前锋凋零】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3002,
+    "name": "",
+    "effectId": 0,
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3003,
+    "name": "",
+    "effectId": 0,
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3004,
+    "name": "",
+    "effectId": 0,
+    "desc": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3005,
+    "name": "",
+    "effectId": 0,
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3006,
+    "name": "",
+    "effectId": 0,
+    "desc": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3007,
+    "name": "",
+    "effectId": 0,
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3008,
+    "name": "",
+    "effectId": 0,
+    "desc": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3009,
+    "name": "",
+    "effectId": 0,
+    "desc": "<愈合困难>受到治疗效果降低30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<愈合困难>受到治疗效果降低30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3010,
+    "name": "",
+    "effectId": 0,
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 3011,
+    "name": "",
+    "effectId": 0,
+    "desc": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4001,
+    "name": "",
+    "effectId": 0,
+    "desc": "<前排破防>我方1号位获得【前锋凋零】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<前排破防>我方1号位获得【前锋凋零】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4002,
+    "name": "",
+    "effectId": 0,
+    "desc": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<咒语干扰>角色每主动使用1次咒语，获得1层【咒语干扰】，持续1回合",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4003,
+    "name": "",
+    "effectId": 0,
+    "desc": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<连动干扰>每进行1次额外行动，获得1层【连动干扰】，持续整场战斗",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4004,
+    "name": "",
+    "effectId": 0,
+    "desc": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<群体强化>敌方的群体技能创伤加成提升15%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4005,
+    "name": "",
+    "effectId": 0,
+    "desc": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<同类限制>角色每使用1次咒语1/咒语2/至终的仪式，获得【熵蚀Ⅰ型】/【熵蚀Ⅱ型】/【熵蚀终型】；每使用1张不同咒语，其他类型咒语伤害降低效果失去1层",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4006,
+    "name": "",
+    "effectId": 0,
+    "desc": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<合卡禁止>使用1阶咒语时，创伤加成降低10%；咒语合成时，阶次-1",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4007,
+    "name": "",
+    "effectId": 0,
+    "desc": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<噪点骤现>经过战斗事件后，获得1个无法移出布设的噪点",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4008,
+    "name": "",
+    "effectId": 0,
+    "desc": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<贫困处境>战斗外获得金雀子儿的数量降低50%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4009,
+    "name": "",
+    "effectId": 0,
+    "desc": "<愈合困难>受到治疗效果降低30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<愈合困难>受到治疗效果降低30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4010,
+    "name": "",
+    "effectId": 0,
+    "desc": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<抵制收集>每持有1种造物标签，获得1层【万象禁锢】",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4011,
+    "name": "",
+    "effectId": 0,
+    "desc": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "<超额支付>无法获得购物契机折扣，并且随机4个商品价格上涨30%",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4012,
+    "name": "",
+    "effectId": 0,
+    "desc": "无负面效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "无负面效果",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4013,
+    "name": "",
+    "effectId": 0,
+    "desc": "无负面效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "无负面效果",
+    "descExtraSimply": ""
+  },
+  {
+    "id": 4014,
+    "name": "",
+    "effectId": 0,
+    "desc": "无负面效果",
+    "descType": 0,
+    "descExtra": "",
+    "descSimply": "无负面效果",
     "descExtraSimply": ""
   }
 ]

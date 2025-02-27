@@ -11,11 +11,10 @@ function slot0.onAwake(slot0, slot1, ...)
 end
 
 function slot0.onStart(slot0)
-	slot0:cancelFightWorkSafeTimer()
-
 	slot0._work = slot0._class.New(unpack(slot0._param, 1, slot0._paramCount))
 
 	slot0._work:registerDoneListener(slot0.onWorkItemDone, slot0)
+	slot0:cancelFightWorkSafeTimer()
 
 	return slot0._work:onStartInternal(slot0.context)
 end

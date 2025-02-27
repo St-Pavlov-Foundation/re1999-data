@@ -50,7 +50,7 @@ function slot0.retain2decimals(slot0)
 end
 
 function slot0.getEpisodePosX(slot0)
-	return RougeMapEnum.MapStartOffsetX + (slot0 - 1) * RougeMapModel.instance:getMapEpisodeIntervalX()
+	return RougeMapModel.instance:getMapStartOffsetX() + (slot0 - 1) * RougeMapModel.instance:getMapEpisodeIntervalX()
 end
 
 function slot0.getNodeLocalPos(slot0, slot1)
@@ -107,9 +107,7 @@ function slot0.addMapOtherRes(slot0, slot1)
 		slot1:addPath(RougeMapEnum.LineResPath)
 		slot1:addPath(RougeMapEnum.MiddleLayerLeavePath)
 	elseif slot0 == RougeMapEnum.MapType.Normal then
-		slot5 = RougeMapEnum.LinePrefabRes
-
-		slot1:addPath(slot5)
+		slot1:addPath(RougeMapEnum.LinePrefabRes)
 
 		for slot5, slot6 in pairs(RougeMapEnum.LineIconRes) do
 			slot1:addPath(slot6)

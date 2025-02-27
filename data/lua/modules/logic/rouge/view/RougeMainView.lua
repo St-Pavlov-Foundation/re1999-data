@@ -11,6 +11,7 @@ function slot0.onInitView(slot0)
 	slot0._goRewardNew = gohelper.findChild(slot0.viewGO, "Left/#btn_reward/#go_new")
 	slot0._txtRewardNum = gohelper.findChildText(slot0.viewGO, "Left/#btn_reward/#txt_RewardNum")
 	slot0._btndlc = gohelper.findChildButtonWithAudio(slot0.viewGO, "Left/#btn_dlc")
+	slot0._godlcreddot = gohelper.findChild(slot0.viewGO, "Left/#btn_dlc/#go_dlcreddot")
 	slot0._btnexchange = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_exchange")
 	slot0._btnachievement = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_achievement")
 	slot0._btnstart = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_start")
@@ -28,6 +29,12 @@ function slot0.onInitView(slot0)
 	slot0._gotitle = gohelper.findChild(slot0.viewGO, "title")
 	slot0._gonormaltitle = gohelper.findChild(slot0.viewGO, "title/normal")
 	slot0._godlctitles = gohelper.findChild(slot0.viewGO, "title/#go_dlctitles")
+	slot0._txttoken = gohelper.findChildText(slot0.viewGO, "Right/#go_token/#txt_token")
+	slot0._gotips = gohelper.findChild(slot0.viewGO, "Right/#go_token/#go_tips")
+	slot0._txttoken2 = gohelper.findChildText(slot0.viewGO, "Right/#go_token/#go_tips/txt_title/#txt_token2")
+	slot0._btnopentips = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#go_token/#btn_opentips")
+	slot0._btnclosetips = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#go_token/#go_tips/#btn_closetips")
+	slot0._txttips = gohelper.findChildText(slot0.viewGO, "Right/#go_token/#go_tips/TipsView/Viewport/Content/#txt_tips")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -43,6 +50,8 @@ function slot0.addEvents(slot0)
 	slot0._btnachievement:AddClickListener(slot0._btnachievementOnClick, slot0)
 	slot0._btnstart:AddClickListener(slot0._btnstartOnClick, slot0)
 	slot0._btnend:AddClickListener(slot0._btnendOnClick, slot0)
+	slot0._btnopentips:AddClickListener(slot0._btnopentipsOnClick, slot0)
+	slot0._btnclosetips:AddClickListener(slot0._btnclosetipsOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -54,6 +63,8 @@ function slot0.removeEvents(slot0)
 	slot0._btnachievement:RemoveClickListener()
 	slot0._btnstart:RemoveClickListener()
 	slot0._btnend:RemoveClickListener()
+	slot0._btnopentips:RemoveClickListener()
+	slot0._btnclosetips:RemoveClickListener()
 end
 
 function slot0._btnfavoriteOnClick(slot0)
@@ -87,10 +98,21 @@ function slot0._btnendOnClick(slot0)
 	slot0:_end()
 end
 
+function slot0._btnopentipsOnClick(slot0)
+	slot0:_refreshExtraPointTips(true)
+	slot0._tipAnimatorPlayer:Play("open", function ()
+	end, slot0)
+end
+
+function slot0._btnclosetipsOnClick(slot0)
+	slot0._tipAnimatorPlayer:Play("close", slot0._closeExtraPointTips, slot0)
+end
+
 function slot0._editableInitView(slot0)
 	slot0._btnstartCanvasGroup = slot0._btnstart.gameObject:GetComponent(gohelper.Type_CanvasGroup)
 	slot0._btnEndGo = slot0._btnend.gameObject
 	slot0._gotitleeffect = gohelper.findChild(slot0.viewGO, "title/eff_switch")
+	slot0._gotipscontent = gohelper.findChild(slot0.viewGO, "Right/#go_token/#go_tips/TipsView/Viewport/Content")
 
 	gohelper.setActive(slot0._goimage_start, false)
 	gohelper.setActive(slot0._goimage_start2, false)
@@ -103,6 +125,9 @@ function slot0._editableInitView(slot0)
 	slot0._txtRewardNum.text = "0"
 	slot0._txttime.text = ""
 	slot0._originVersionStr = RougeDLCHelper.getCurVersionString()
+	slot0._tipAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0._gotips)
+
+	slot0:_refreshExtraPointTips(false)
 end
 
 function slot0.onUpdateParam(slot0)
@@ -111,6 +136,7 @@ end
 
 function slot0.onOpen(slot0)
 	slot0:onUpdateParam()
+	RedDotController.instance:addRedDot(slot0._godlcreddot, RedDotEnum.DotNode.RougeDLCNew)
 	RougeController.instance:registerCallback(RougeEvent.OnUpdateRougeInfo, slot0._onUpdateRougeInfo, slot0)
 	RougeOutsideController.instance:registerCallback(RougeEvent.OnUpdateRougeOutsideInfo, slot0._onUpdateRougeOutsideInfo, slot0)
 	slot0:addEventCb(RougeController.instance, RougeEvent.OnUpdateFavoriteReddot, slot0._updateFavoriteNew, slot0)
@@ -167,6 +193,7 @@ function slot0._refresh(slot0)
 	slot0:_refreshRewardBtn()
 	slot0:_refreshExchangeBtn()
 	slot0:_refreshTitle()
+	slot0:_refreshExtraPoints()
 end
 
 function slot0._refreshTalentBtn(slot0)
@@ -355,6 +382,33 @@ function slot0._refreshDLCTitle(slot0)
 	gohelper.setActive(slot0._gotitleeffect, false)
 
 	slot0._originVersionStr = slot1
+end
+
+function slot0._refreshExtraPoints(slot0)
+	slot0._maxExtraPoint = tonumber(lua_rouge_const.configDict[RougeEnum.Const.MaxExtraPoint].value)
+	slot0._recoverExtraPoint = tonumber(lua_rouge_const.configDict[RougeEnum.Const.RecoverExtraPoint].value)
+	slot0._curExtraPoint = RougeOutsideModel.instance:getCurExtraPoint()
+	slot1 = string.format("%s/%s", slot0._curExtraPoint, slot0._maxExtraPoint)
+	slot0._txttoken.text = slot1
+	slot0._txttoken2.text = slot1
+end
+
+function slot0._refreshExtraPointTips(slot0, slot1)
+	gohelper.setActive(slot0._gotips, slot1)
+
+	if not slot1 then
+		return
+	end
+
+	gohelper.CreateObjList(slot0, slot0._refreshSingleExtraPointTip, string.split(GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("rougemainview_extrapointtips"), slot0._recoverExtraPoint, slot0._maxExtraPoint) or "", "|"), slot0._gotipscontent, slot0._txttips.gameObject)
+end
+
+function slot0._closeExtraPointTips(slot0)
+	slot0:_refreshExtraPointTips(false)
+end
+
+function slot0._refreshSingleExtraPointTip(slot0, slot1, slot2, slot3)
+	gohelper.onceAddComponent(slot1, gohelper.Type_TextMesh).text = slot2
 end
 
 function slot0._onUpdateVersion(slot0)

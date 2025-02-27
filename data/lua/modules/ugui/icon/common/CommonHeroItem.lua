@@ -81,10 +81,7 @@ function slot0._initObj(slot0)
 
 	table.insert(slot0._rareEffectGOs, slot0._gorareEffect1)
 	table.insert(slot0._rareEffectGOs, slot0._gorareEffect2)
-
-	slot4 = slot0._gorareEffect3
-
-	table.insert(slot0._rareEffectGOs, slot4)
+	table.insert(slot0._rareEffectGOs, slot0._gorareEffect3)
 
 	for slot4, slot5 in ipairs(slot0._rareEffectGOs) do
 		gohelper.setActive(slot5, false)
@@ -257,14 +254,6 @@ function slot0.onUpdateMO(slot0, slot1)
 end
 
 function slot0.setAdventureBuff(slot0, slot1)
-	gohelper.setActive(slot0._gobuff, slot1 and slot1 > 0)
-
-	if slot1 and slot1 > 0 then
-		slot2 = lua_adventure_buff.configDict[slot1]
-
-		UISpriteSetMgr.instance:setCommonSprite(slot0._imagebuff, "bgbuffdi" .. tostring(slot2.rare))
-		slot0._simagebufftuan:LoadImage(ResUrl.getAdventureTarotSmallIcon(tostring(slot2.icon)))
-	end
 end
 
 function slot0.setHeroGroupType(slot0)

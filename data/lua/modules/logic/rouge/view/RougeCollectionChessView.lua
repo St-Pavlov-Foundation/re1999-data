@@ -65,7 +65,6 @@ function slot0._btnhandbookOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	uv0.super._editableInitView(slot0)
 	slot0:initAllContainerPosition()
 	slot0:checkAndSetHandBookIconVisible()
 end

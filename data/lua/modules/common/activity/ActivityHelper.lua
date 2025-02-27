@@ -30,6 +30,10 @@ function slot0.getActivityStatus(slot0, slot1)
 	return ActivityEnum.ActivityStatus.Normal
 end
 
+function slot0.isOpen(slot0)
+	return uv0.getActivityStatus(slot0, true) == ActivityEnum.ActivityStatus.Normal
+end
+
 function slot0.getActivityStatusAndToast(slot0, slot1)
 	if not ActivityModel.instance:getActivityInfo()[slot0] then
 		if not slot1 then
@@ -99,10 +103,8 @@ function slot0.initActivityVersion()
 				end
 
 				if slot10.ActivityId then
-					slot15 = slot8
-
 					for slot15, slot16 in pairs(slot10.ActivityId) do
-						uv0[slot16] = string.format("%d_%d", slot4, slot15)
+						uv0[slot16] = string.format("%d_%d", slot4, slot8)
 					end
 				end
 

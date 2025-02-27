@@ -186,10 +186,15 @@ function slot0.playAddPointEffect(slot0, slot1, slot2)
 	end
 
 	if FightBuffHelper.checkPlayDuDuGuAddExPointEffect(slot0.mgr.entity) then
-		slot4 = slot3.effect:addHangEffect("v2a3_ddg/ddg_innate_03", ModuleEnum.SpineHangPointRoot, nil, 1)
+		slot7 = "v2a3_ddg/ddg_innate_03"
+		slot8 = ModuleEnum.SpineHangPointRoot
 
-		slot4:setLocalPos(0, 0, 0)
-		FightRenderOrderMgr.instance:onAddEffectWrap(slot3.id, slot4)
+		if lua_fight_sp_effect_ddg.configDict[slot3:getMO().skin] then
+			slot7 = slot6.addExPointEffect
+			slot8 = slot6.addExPointHang
+		end
+
+		slot3.uniqueEffect:addHangEffect(slot7, slot8, nil, 1):setLocalPos(0, 0, 0)
 	end
 end
 

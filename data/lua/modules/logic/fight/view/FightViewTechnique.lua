@@ -80,9 +80,11 @@ function slot0.onStartAllocateCardEnergy(slot0)
 end
 
 function slot0.AddUseCard(slot0, slot1)
-	if FightPlayCardModel.instance:getUsedCards()[slot1] and FightHelper.isASFDSkill(slot3.skillId) then
-		for slot7, slot8 in ipairs(uv0) do
-			slot0:_checkAdd(slot8)
+	for slot6, slot7 in ipairs(slot1) do
+		if FightPlayCardModel.instance:getUsedCards()[slot7] and FightHelper.isASFDSkill(slot8.skillId) then
+			for slot12, slot13 in ipairs(uv0) do
+				slot0:_checkAdd(slot13)
+			end
 		end
 	end
 end
@@ -201,10 +203,8 @@ end
 
 function slot0._udpateAnchorY(slot0)
 	slot1 = {}
-	slot4 = FightViewTechniqueModel.instance
-	slot6 = slot4
 
-	for slot5, slot6 in ipairs(slot4.getList(slot6)) do
+	for slot5, slot6 in ipairs(FightViewTechniqueModel.instance:getList()) do
 		if lua_fight_technique.configDict[slot6.id] and slot7.iconShow == "1" then
 			table.insert(slot1, slot6)
 

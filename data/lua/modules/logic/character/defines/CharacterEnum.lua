@@ -18,6 +18,7 @@ slot0.VoiceType = {
 	GetSkin = 9,
 	SpecialIdle2 = 21,
 	FightResult = 7,
+	MultiVoice = 26,
 	MainViewSpecialInteraction = 23,
 	WeatherChange = 14,
 	MainViewNormalTouch = 13,

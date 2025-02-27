@@ -68,7 +68,10 @@ function slot0._setAllSpineWeatherEffect(slot0)
 end
 
 function slot0._setSpineWeatherEffect(slot0, slot1)
-	slot2 = slot1.unitSpawn
+	if slot1.unitSpawn.ingoreRainEffect then
+		return
+	end
+
 	slot3 = slot2.id
 
 	if not slot2.effect or slot1._spineGo:GetComponent(typeof(UnityEngine.Renderer)) == nil then

@@ -31,16 +31,17 @@ function slot0.onConfigLoaded(slot0, slot1, slot2)
 	end
 end
 
-function slot0._initCGList(slot0)
+function slot0._initCGConfig(slot0)
 	slot0._cgList = {}
 	slot0._cgDungeonList = {}
+	slot0._cgDungeonDict = {}
 	slot0._cgRoleList = {}
 
 	for slot4, slot5 in pairs(slot0._cgConfig.configDict) do
 		table.insert(slot0._cgList, slot5)
 	end
 
-	function slot4(slot0, slot1)
+	table.sort(slot0._cgList, function (slot0, slot1)
 		if slot0.storyChapterId ~= slot1.storyChapterId then
 			return uv0._sortBystoryChapterId(slot0.storyChapterId, slot1.storyChapterId)
 		end
@@ -50,22 +51,38 @@ function slot0._initCGList(slot0)
 		end
 
 		return slot0.id < slot1.id
-	end
-
-	table.sort(slot0._cgList, slot4)
+	end)
 
 	for slot4, slot5 in pairs(slot0._cgList) do
 		if string.len(tostring(slot5.storyChapterId)) >= 4 then
 			table.insert(slot0._cgRoleList, slot5)
 		else
+			slot0._cgDungeonDict[slot5.storyChapterId] = slot0._cgDungeonDict[slot5.storyChapterId] or {}
+
+			table.insert(slot0._cgDungeonDict[slot5.storyChapterId], slot5)
 			table.insert(slot0._cgDungeonList, slot5)
+		end
+	end
+end
+
+function slot0._initDungeonChapterList(slot0)
+	slot0._dungeonChapterList = {}
+	slot1 = {}
+
+	for slot5, slot6 in pairs(slot0._storyChapterConfig.configDict) do
+		table.insert(slot1, slot6)
+	end
+
+	for slot5, slot6 in pairs(slot1) do
+		if string.len(tostring(slot6.id)) < 4 then
+			table.insert(slot0._dungeonChapterList, slot6)
 		end
 	end
 end
 
 function slot0.getCGList(slot0, slot1)
 	if not slot0._cgList then
-		slot0:_initCGList()
+		slot0:_initCGConfig()
 	end
 
 	if slot1 == HandbookEnum.CGType.Dungeon then
@@ -79,7 +96,7 @@ end
 
 function slot0.getDungeonCGList(slot0)
 	if not slot0._cgList then
-		slot0:_initCGList()
+		slot0:_initCGConfig()
 	end
 
 	return slot0._cgDungeonList
@@ -87,7 +104,7 @@ end
 
 function slot0.getRoleCGList(slot0)
 	if not slot0._cgList then
-		slot0:_initCGList()
+		slot0:_initCGConfig()
 	end
 
 	return slot0._cgRoleList
@@ -95,7 +112,7 @@ end
 
 function slot0.getCGCount(slot0)
 	if not slot0._cgList then
-		slot0:_initCGList()
+		slot0:_initCGConfig()
 	end
 
 	return slot0._cgList and #slot0._cgList or 0
@@ -121,6 +138,30 @@ function slot0.getCGIndex(slot0, slot1, slot2)
 	end
 
 	return 0
+end
+
+function slot0.getDungeonChapterList(slot0)
+	if not slot0._dungeonChapterList then
+		slot0:_initDungeonChapterList()
+	end
+
+	return slot0._dungeonChapterList
+end
+
+function slot0.getCGDictByChapter(slot0, slot1)
+	if not slot0._cgDungeonDict then
+		slot0:_initCGConfig()
+	end
+
+	return slot0._cgDungeonDict[slot1]
+end
+
+function slot0.getCGDict(slot0)
+	if not slot0._cgDungeonDict then
+		slot0:_initCGConfig()
+	end
+
+	return slot0._cgDungeonDict
 end
 
 function slot0._initStoryGroupList(slot0)

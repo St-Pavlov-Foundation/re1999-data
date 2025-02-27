@@ -177,10 +177,9 @@ function slot0._refreshBaseRuleTipContents(slot0)
 	end
 
 	slot0._gobaseruletipitem = gohelper.cloneInPlace(slot0._gochallengetipitem, "baseruleitem")
-	slot4 = slot0._gobaseruletipitem
-	slot5 = "p_v2a5_challenge_herogroupview_basictxt"
+	slot4 = "p_v2a5_challenge_herogroupview_basictxt"
 
-	slot0:_refreshTipTitle(slot4, slot5)
+	slot0:_refreshTipTitle(slot0._gobaseruletipitem, slot4)
 
 	for slot4, slot5 in ipairs(slot0._baseRuleDescList) do
 		slot6 = gohelper.clone(slot0._gochallengedescitem, slot0._gobaseruletipitem, "item_" .. slot4)
@@ -201,10 +200,9 @@ function slot0._refreshEscapeRuleTipContents(slot0)
 	end
 
 	slot0._goescaperuletipitem = gohelper.cloneInPlace(slot0._gochallengetipitem, "escaperuleitem")
-	slot4 = slot0._goescaperuletipitem
-	slot5 = "p_v2a5_challenge_herogroupview_escapetxt"
+	slot4 = "p_v2a5_challenge_herogroupview_escapetxt"
 
-	slot0:_refreshTipTitle(slot4, slot5)
+	slot0:_refreshTipTitle(slot0._goescaperuletipitem, slot4)
 
 	for slot4, slot5 in ipairs(slot0._escapeRules) do
 		slot6 = gohelper.clone(slot0._gochallengedescitem, slot0._goescaperuletipitem, "item_" .. slot4)

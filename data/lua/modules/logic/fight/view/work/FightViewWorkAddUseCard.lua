@@ -48,11 +48,12 @@ function slot0.onStart(slot0)
 			if slot13._cardInfoMO.CUSTOMADDUSECARD then
 				gohelper.onceAddComponent(slot13.go, gohelper.Type_CanvasGroup).alpha = 0
 
-				if not FightHelper.isASFDSkill(slot14.skillId) then
+				if slot0:checkCanPlayAppearEffect(slot14) then
 					slot13:playAppearEffect()
 				end
 
 				slot13:playCardAni(ViewAnim.FightCardAppear, "fightcard_apper")
+				slot13:tryPlayAlfEffect()
 
 				slot15 = FlowSequence.New()
 
@@ -76,6 +77,18 @@ function slot0.onStart(slot0)
 	slot0._flow:addWork(FunctionWork.New(slot0._clearSign, slot0))
 	AudioMgr.instance:trigger(20211406)
 	slot0._flow:start()
+end
+
+function slot0.checkCanPlayAppearEffect(slot0, slot1)
+	if FightHelper.isASFDSkill(slot1.skillId) then
+		return false
+	end
+
+	if slot1.custom_fromSkillId and FightHeroALFComp.ALFSkillDict[slot1.custom_fromSkillId] then
+		return false
+	end
+
+	return true
 end
 
 function slot0._clearSign(slot0)

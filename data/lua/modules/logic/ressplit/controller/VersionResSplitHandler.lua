@@ -99,9 +99,7 @@ function slot1._generateResSplitCfg(slot0)
 		end
 
 		for slot23, slot24 in ipairs(slot13.uiFolder) do
-			slot29 = ""
-
-			for slot29, slot30 in ipairs(uv0._getFolderPrefabs(string.gsub(slot24, SLFramework.FrameworkSettings.ResourcesLibName .. "/", slot29))) do
+			for slot29, slot30 in ipairs(uv0._getFolderPrefabs(string.gsub(slot24, SLFramework.FrameworkSettings.ResourcesLibName .. "/", ""))) do
 				slot0:_fillUIRes(slot30, slot14)
 			end
 		end
@@ -255,9 +253,8 @@ end
 
 function slot1._ExportSplitResult(slot0)
 	slot2 = io.open(ResSplitEnum.VersionResSplitCfgPath, "w")
-	slot8 = string.gsub(cjson.encode(slot0:_mergeSplitResult()), "\\/", "/")
 
-	slot2:write(tostring(slot8))
+	slot2:write(tostring(string.gsub(cjson.encode(slot0:_mergeSplitResult()), "\\/", "/")))
 	slot2:close()
 
 	for slot7, slot8 in pairs(slot0._versionSplitData) do
@@ -310,9 +307,8 @@ function slot1._InitAudioInfoXml(slot0)
 	slot2:close()
 
 	slot4 = ResSplitXmlTree:new()
-	slot9 = slot2:read("*a")
 
-	ResSplitXml2lua.parser(slot4):parse(slot9)
+	ResSplitXml2lua.parser(slot4):parse(slot2:read("*a"))
 
 	slot0._bnk2wenDic = {}
 	slot0.bankEvent2wenDic = {}
@@ -484,6 +480,10 @@ function slot1._fillStoryRes(slot0, slot1, slot2)
 	for slot11, slot12 in ipairs(StoryStepModel.instance:getStepList()) do
 		if not string.nilorempty(slot12.bg.bgImg) then
 			slot2:addResSplitInfo(ResSplitEnum.Path, uv0.StoryBg, ResUrl.getStoryBg(slot12.bg.bgImg))
+
+			if StoryBgZoneModel.instance:getBgZoneByPath(slot12.bg.bgImg) then
+				slot2:addResSplitInfo(ResSplitEnum.Path, uv0.StoryBg, ResUrl.getStoryRes(slot14.sourcePath))
+			end
 		end
 
 		for slot16, slot17 in pairs(slot12.videoList) do
@@ -545,9 +545,9 @@ end
 
 function slot1._fillUIRes(slot0, slot1, slot2)
 	slot4 = string.sub(slot1, string.find(slot1, "Assets"), string.len(slot1))
-	slot10 = ResSplitEnum.Path
+	slot10 = uv0.UIPrefab
 
-	slot2:addResSplitInfo(slot10, uv0.UIPrefab, string.gsub(slot4, SLFramework.FrameworkSettings.AssetRootDir .. "/", ""))
+	slot2:addResSplitInfo(ResSplitEnum.Path, slot10, string.gsub(slot4, SLFramework.FrameworkSettings.AssetRootDir .. "/", ""))
 
 	for slot10 = 0, ZProj.AssetDatabaseHelper.GetDependencies(slot4, true).Length - 1 do
 		slot11 = slot6[slot10]

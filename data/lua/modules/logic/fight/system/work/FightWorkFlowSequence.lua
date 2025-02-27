@@ -16,7 +16,7 @@ end
 function slot0.registWorkAtIndex(slot0, slot1, slot2, ...)
 	slot3 = slot0:newClass(slot2, ...)
 
-	table.insert(slot0._workList, slot1, slot3)
+	slot0:addWorkAtIndex(slot1, slot3)
 
 	return slot3
 end
@@ -34,6 +34,7 @@ function slot0.addWorkAtIndex(slot0, slot1, slot2)
 		return
 	end
 
+	slot2:registFinishCallback(slot0.onWorkItemDone, slot0, slot2)
 	table.insert(slot0._workList, slot1, slot2)
 end
 
@@ -66,7 +67,6 @@ function slot0._playNext(slot0)
 				while slot0._playStartCount ~= 0 do
 					slot2 = slot0._workList[slot0._startIndex]
 
-					slot2:registFinishCallback(slot0.onWorkItemDone, slot0, slot2)
 					xpcall(slot2.start, __G__TRACKBACK__, slot2, slot0.context)
 
 					slot0._playStartCount = slot0._playStartCount - 1

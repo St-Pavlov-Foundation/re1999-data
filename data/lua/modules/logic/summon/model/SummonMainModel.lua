@@ -151,39 +151,41 @@ slot0.defaultUIClzMap = {
 	SummonMainCharacterProbUp,
 	SummonMainEquipProbUp
 }
+slot0.defaultUIClzMapByType = {
+	[SummonEnum.Type.ProbUp] = SummonMainCharacterProbUp,
+	[SummonEnum.Type.Limit] = SummonMainCharacterProbUp,
+	[SummonEnum.Type.StrongCustomOnePick] = SummonStrongOneCustomPickView
+}
 
 function slot0.resetTabResSettings(slot0)
 	slot1 = tabletool.copy(uv0.defaultSettings)
 	slot2 = tabletool.copy(uv0.defaultUIClzMap)
-	slot4 = {}
-	slot5 = {}
 	slot0._poolIDTabMap = {}
 
-	for slot9, slot10 in ipairs(SummonConfig.instance:getValidPoolList()) do
-		slot12 = uv0.defaultUIClzMap[uv0.getADPageTabIndex(slot10)]
+	for slot7, slot8 in ipairs(SummonConfig.instance:getValidPoolList()) do
+		slot11 = uv0.defaultUIClzMap[uv0.getADPageTabIndex(slot8)]
+
+		if uv0.defaultUIClzMapByType[slot8.type] == nil and not string.nilorempty(slot8.customClz) then
+			slot9 = _G[slot8.customClz]
+		end
+
+		slot9 = slot9 or slot11
+		slot12 = uv0.defaultSettings[slot10][1]
 		slot13 = nil
 
-		if not string.nilorempty(slot10.customClz) then
-			slot13 = _G[slot10.customClz]
+		if not string.nilorempty(slot8.prefabPath) then
+			slot13 = string.format("ui/viewres/summon/%s.prefab", slot8.prefabPath)
 		end
 
 		slot13 = slot13 or slot12
-		slot14 = uv0.defaultSettings[slot11][1]
-		slot15 = nil
 
-		if not string.nilorempty(slot10.prefabPath) then
-			slot15 = string.format("ui/viewres/summon/%s.prefab", slot10.prefabPath)
-		end
-
-		slot15 = slot15 or slot14
-
-		if slot13 ~= slot12 or slot15 ~= slot14 then
+		if slot9 ~= slot11 or slot13 ~= slot12 then
 			table.insert(slot1, {
-				slot15
+				slot13
 			})
-			table.insert(slot2, slot13)
+			table.insert(slot2, slot9)
 
-			slot0._poolIDTabMap[slot10.id] = #slot1
+			slot0._poolIDTabMap[slot8.id] = #slot1
 		end
 	end
 

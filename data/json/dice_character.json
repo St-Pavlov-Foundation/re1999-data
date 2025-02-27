@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "狱医",
+    "desc": "各项属性十分均衡的角色，可以灵活选用应对卡伤害敌人并强化自身。",
+    "icon": 311301,
+    "dicelist": "1#1#1#1#1#1",
+    "skilllist": "1#2#3",
+    "relicIds": "1",
+    "resetTimes": 3,
+    "hp": 200,
+    "power": 5,
+    "powerSkill": 1001
+  },
+  {
+    "id": 2,
+    "name": "阿莱夫",
+    "desc": "强调技能回转的角色，可以刷新自己的记忆骰和应对卡。",
+    "icon": 311312,
+    "dicelist": "1#1#1#1#1",
+    "skilllist": "6#7#8",
+    "relicIds": "2",
+    "resetTimes": 3,
+    "hp": 200,
+    "power": 5,
+    "powerSkill": 1002
+  },
+  {
+    "id": 3,
+    "name": "理想家",
+    "desc": "强调灵光控制的角色，可以通过变化自己的灵光造成伤害。",
+    "icon": 522101,
+    "dicelist": "1#1#1#1#1",
+    "skilllist": "11#12#13",
+    "relicIds": "3",
+    "resetTimes": 3,
+    "hp": 200,
+    "power": 5,
+    "powerSkill": 1003
+  },
+  {
+    "id": 4,
+    "name": "扎依尔",
+    "desc": "强调记忆骰点数的角色，可以通过记忆骰点数增加应对卡效果。",
+    "icon": 631801,
+    "dicelist": "1#1#1#1#1",
+    "skilllist": "16#17#18",
+    "relicIds": "4",
+    "resetTimes": 3,
+    "hp": 200,
+    "power": 5,
+    "powerSkill": 1004
+  }
+]

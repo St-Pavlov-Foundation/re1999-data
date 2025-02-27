@@ -29,7 +29,8 @@ slot1 = {
 	[ActivityEnum.Activity.NewInsight] = ViewName.ActivityInsightShowView,
 	[ActivityEnum.Activity.V2a3_NewInsight] = ViewName.ActivityInsightShowView_2_3,
 	[ActivityEnum.Activity.V2a4_NewInsight] = ViewName.ActivityInsightShowView_2_4,
-	[ActivityEnum.Activity.V2a5_NewInsight] = ViewName.ActivityInsightShowView_2_5
+	[ActivityEnum.Activity.V2a5_NewInsight] = ViewName.ActivityInsightShowView_2_5,
+	[ActivityEnum.Activity.V2a6_NewInsight] = ViewName.ActivityInsightShowView_2_6
 }
 
 function slot0.onUpdateParam(slot0)
@@ -48,9 +49,7 @@ function slot0._refreshView(slot0)
 		slot0:closeThis()
 	end
 
-	slot5 = slot1
-
-	ActivityModel.instance:removeFinishedWelfare(slot5)
+	ActivityModel.instance:removeFinishedWelfare(slot1)
 
 	slot0.data = {}
 

@@ -417,11 +417,9 @@ function slot0.refreshMallItem(slot0, slot1)
 		if lua_auto_chess_mall.configDict[slot6.mallId].type == AutoChessEnum.MallType.Normal then
 			slot0.chargeMall = slot6
 
-			function slot11(slot0, slot1)
+			table.sort(slot6.items, function (slot0, slot1)
 				return lua_auto_chess_mall_item.configDict[slot0.id].order < lua_auto_chess_mall_item.configDict[slot1.id].order
-			end
-
-			table.sort(slot6.items, slot11)
+			end)
 
 			for slot11 = 1, 7 do
 				slot0.chargeItemList[slot11]:setData(slot6.mallId, slot6.items[slot11])

@@ -88,5 +88,15 @@
     "showInPopup": 0,
     "jumpId": "",
     "reddotId": 0
+  },
+  {
+    "id": 110,
+    "turnbackId": 2,
+    "name": "剧集回顾",
+    "nameEn": "Story Review",
+    "actDesc": "",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 0
   }
 ]

@@ -1,39 +1,20 @@
 module("modules.logic.turnback.view.TurnbackMainBtnItem", package.seeall)
 
-slot0 = class("TurnbackMainBtnItem", LuaCompBase)
+slot0 = class("TurnbackMainBtnItem", ActCenterItemBase)
 
 function slot0.init(slot0, slot1, slot2)
-	slot0:__onInit()
-
 	slot0.turnbackId = slot2
-	slot0.go = gohelper.cloneInPlace(slot1)
-
-	gohelper.setActive(slot0.go, true)
-
-	slot0._imgGo = gohelper.findChild(slot0.go, "bg")
-	slot0._imgitem = gohelper.findChildImage(slot0._imgGo, "")
-	slot0._btnitem = gohelper.getClick(slot0._imgGo)
-
-	slot0:_initReddotitem(slot0.go)
-
-	slot0._txttheme = gohelper.findChildText(slot0.go, "txt_theme")
-	slot0._godeadline = gohelper.findChild(slot0.go, "#go_deadline")
-	slot0._txttime = gohelper.findChildText(slot0.go, "#go_deadline/#txt_time")
 	slot0._hasSetRefreshTime = false
 
-	slot0:addEvent()
+	BpMainBtnItem.super.init(slot0, gohelper.cloneInPlace(slot1))
+end
+
+function slot0.onInit(slot0, slot1)
+	slot0:_initReddotitem()
 	slot0:_refreshItem()
 end
 
-function slot0.addEvent(slot0)
-	slot0._btnitem:AddClickListener(slot0._onItemClick, slot0)
-end
-
-function slot0.removeEvent(slot0)
-	slot0._btnitem:RemoveClickListener()
-end
-
-function slot0._onItemClick(slot0)
+function slot0.onClick(slot0)
 	TurnbackController.instance:openTurnbackBeginnerView({
 		turnbackId = slot0.turnbackId
 	})
@@ -110,21 +91,20 @@ function slot0._refreshRemainTime(slot0)
 	TurnbackController.instance:dispatchEvent(TurnbackEvent.RefreshRemainTime)
 end
 
-function slot0.destroy(slot0)
-	slot0:removeEvent()
+function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0._refreshRemainTime, slot0)
 	TaskDispatcher.cancelTask(slot0._delayUpdateView, slot0)
-	gohelper.destroy(slot0.go)
-	slot0:__onDispose()
+	uv0.super.onDestroyView(slot0)
 end
 
 function slot0.isShowRedDot(slot0)
 	return slot0._redDot.show
 end
 
-function slot0._initReddotitem(slot0, slot1)
-	slot8 = nil
-	slot0._redDot = RedDotController.instance:addRedDot(gohelper.findChild(slot1, "go_activityreddot"), RedDotEnum.DotNode.TurnbackEntre, slot8, slot0._checkCustomShowRedDotData, slot0)
+function slot0._initReddotitem(slot0)
+	slot1 = slot0.go
+	slot8 = slot0._checkCustomShowRedDotData
+	slot0._redDot = RedDotController.instance:addRedDot(gohelper.findChild(slot1, "go_activityreddot"), RedDotEnum.DotNode.TurnbackEntre, nil, slot8, slot0)
 
 	return
 

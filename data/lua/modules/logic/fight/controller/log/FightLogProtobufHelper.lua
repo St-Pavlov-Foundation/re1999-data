@@ -15,16 +15,15 @@ function slot0.getMoListString(slot0, slot1, slot2, slot3, slot4)
 		return string.format("%s %s : []", slot5, slot2)
 	end
 
-	slot11 = slot4
+	slot10 = slot4
+	slot11 = slot2
 
 	uv0.addStack({
 		string.format("%s %s : [", slot5, slot2)
-	}, uv0.getPrefix(slot3 + 1), slot11, slot2)
-
-	slot10 = slot2
+	}, uv0.getPrefix(slot3 + 1), slot10, slot11)
 
 	for slot10, slot11 in ipairs(slot0) do
-		table.insert(slot6, slot1(slot11, slot3 + 1, slot10, uv0.getStack(slot4, slot10)))
+		table.insert(slot6, slot1(slot11, slot3 + 1, slot10, uv0.getStack(slot4, slot2)))
 	end
 
 	table.insert(slot6, slot5 .. "]")
@@ -97,6 +96,7 @@ function slot0.getFightStepString(slot0, slot1, slot2, slot3)
 
 	table.insert(slot6, string.format("%s cardIndex : %s", slot8, slot0.cardIndex))
 	table.insert(slot6, string.format("%s supportHeroId : %s", slot8, slot0.supportHeroId))
+	table.insert(slot6, string.format("%s fakeTimeline : %s", slot8, slot0.fakeTimeline))
 	table.insert(slot6, uv0.getFightActEffectListString(slot0.actEffect, slot1, "actEffect", uv0.getStack(slot3, slot5)))
 	table.insert(slot6, slot4 .. "}")
 
@@ -130,7 +130,7 @@ function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
 		table.insert(slot6, uv0.getFightBuffString(slot0.buff, slot1))
 	end
 
-	if slot0:HasField("entity") then
+	if slot0:HasField("entity") and slot0.entity.uid ~= 0 then
 		table.insert(slot6, uv0.getEntityMoString(slot0.entity, slot1))
 	end
 
@@ -140,17 +140,17 @@ function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
 	table.insert(slot6, string.format("%s reserveStr : %s", slot7, slot0.reserveStr))
 	table.insert(slot6, string.format("%s teamType : %s", slot7, slot0.teamType))
 
-	if slot0:HasField("cardInfo") then
+	if slot0:HasField("cardInfo") and slot0.cardInfo.uid ~= 0 then
 		table.insert(slot6, uv0.getCardInfoString(slot0.cardInfo, slot1))
 	end
 
 	table.insert(slot6, uv0.getCardInfoListString(slot0.cardInfoList, slot1, "cardInfoList", uv0.getStack(slot3, slot5)))
 
-	if slot0:HasField("fightStep") then
+	if slot0:HasField("fightStep") and slot0.fightStep.actType then
 		table.insert(slot6, uv0.getFightStepString(slot0.fightStep, slot1, nil, slot3))
 	end
 
-	if slot0:HasField("assistBossInfo") then
+	if slot0:HasField("assistBossInfo") and slot0.assistBossInfo.formId ~= 0 then
 		table.insert(slot6, uv0.getAssistBossInfoString(slot0.assistBossInfo, slot1))
 	end
 

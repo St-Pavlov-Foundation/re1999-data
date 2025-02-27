@@ -14,7 +14,9 @@ slot2 = {
 	"baseId",
 	"targetId"
 }
-slot3 = {}
+slot3 = {
+	targetDesc = 1
+}
 
 return {
 	onLoad = function (slot0)

@@ -282,13 +282,12 @@ function slot0._refreshTabs(slot0, slot1, slot2, slot3)
 	end
 
 	if slot4 and slot0._goodItems[slot4] then
+		slot11 = 0
 		slot12 = 0
 
-		slot0._viewAnim:Play("out", slot12, 0)
+		slot0._viewAnim:Play("out", slot11, slot12)
 
-		slot11 = DecorateStoreEnum.DecorateViewType.Fold
-
-		for slot11, slot12 in pairs(slot0._goodItems[slot4][slot11]) do
+		for slot11, slot12 in pairs(slot0._goodItems[slot4][DecorateStoreEnum.DecorateViewType.Fold]) do
 			slot12:playOut()
 		end
 
@@ -838,7 +837,7 @@ function slot0._onCardLoadFinish(slot0)
 	}
 	slot0._viewCls.viewContainer = slot0.viewContainer
 
-	slot0._viewCls:onOpen(string.splitToNumber(StoreModel.instance:getGoodsMO(DecorateStoreModel.instance:getCurGood(slot0._selectSecondTabId)).config.product, "#")[2])
+	slot0._viewCls:onOpen(DecorateStoreConfig.instance:getDecorateConfig(slot1).showskinId, string.splitToNumber(StoreModel.instance:getGoodsMO(DecorateStoreModel.instance:getCurGood(slot0._selectSecondTabId)).config.product, "#")[2])
 	slot0._viewCls:backBottomView()
 end
 

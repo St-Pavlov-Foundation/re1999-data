@@ -5,6 +5,10 @@ slot0.MaxSaveMessageCount = 200
 slot0.ChannelType = {
 	Friend = 1
 }
+slot0.SelectEnum = {
+	Friend = 2,
+	Self = 1
+}
 slot0.Type = {
 	Search = 2,
 	Recommend = 5,

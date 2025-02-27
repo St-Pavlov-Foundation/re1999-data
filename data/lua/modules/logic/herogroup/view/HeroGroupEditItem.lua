@@ -52,6 +52,9 @@ function slot0.updateLimitStatus(slot0)
 	if HeroGroupQuickEditListModel.instance.adventure then
 		gohelper.setActive(slot0._gohp, false)
 		slot0._heroItem:setInjury(WeekWalkModel.instance:getCurMapHeroCd(slot0._mo.config.id) > 0)
+	elseif HeroGroupQuickEditListModel.instance.isWeekWalk_2 then
+		gohelper.setActive(slot0._gohp, false)
+		slot0._heroItem:setInjury(WeekWalk_2Model.instance:getCurMapHeroCd(slot0._mo.config.id) > 0)
 	elseif HeroGroupQuickEditListModel.instance.isTowerBattle then
 		gohelper.setActive(slot0._gohp, false)
 		slot0._heroItem:setLost(TowerModel.instance:isHeroBan(slot0._mo.config.id))

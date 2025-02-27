@@ -208,10 +208,10 @@ function slot0._changeMap(slot0, slot1, slot2)
 	slot0._showSceneChangeAnimState = uv0.None
 
 	if slot0._mapCfg then
-		slot3 = DungeonEnum.MapIdGroup[slot0._mapCfg.id]
-		slot4 = DungeonEnum.MapIdGroup[slot1.id]
+		slot3 = slot0._mapCfg.mapIdGroup
+		slot4 = slot1.mapIdGroup
 
-		if ToughBattleModel.instance:getIsJumpActElement() or slot3 and slot4 and slot4 ~= slot3 then
+		if ToughBattleModel.instance:getIsJumpActElement() or slot3 and slot3 > 0 and slot4 and slot4 ~= slot3 then
 			slot0._showSceneChangeAnimState = uv0.NoStart
 		end
 	end

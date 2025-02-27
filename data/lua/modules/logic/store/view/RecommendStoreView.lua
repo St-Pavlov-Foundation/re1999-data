@@ -224,9 +224,7 @@ function slot0._refreshTabsItem(slot0)
 		gohelper.setActive(slot0._categoryItemContainer[slot7].sliderGo, true)
 	end
 
-	slot7 = false
-
-	gohelper.setActive(slot0._categoryItemContainer[#slot1].go_line, slot7)
+	gohelper.setActive(slot0._categoryItemContainer[#slot1].go_line, false)
 
 	for slot7 = #slot1 + 1, #slot0._categoryItemContainer do
 		slot0._categoryItemContainer[slot7].btn:RemoveClickListener()

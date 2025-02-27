@@ -66,10 +66,12 @@ end
 
 function slot0._doSkillBehaviorEffect(slot0, slot1, slot2, slot3, slot4)
 	slot5 = FightHelper.getEntity(slot2.targetId) or slot2.entityMO and FightHelper.getEntity(slot2.entityMO.id)
-	slot6 = slot3.effect
-	slot7 = slot3.effectHangPoint
-	slot8 = slot3.audioId
-	slot9 = FightDataHelper.entityMgr:getById(slot1.fromId)
+
+	if FightDataHelper.entityMgr:getById(slot1.fromId) and lua_fight_replace_skill_behavior_effect.configDict[slot9.skin] and slot10[slot3.id] then
+		slot6 = string.nilorempty(slot10.effect) and slot3.effect or slot10.effect
+		slot7 = string.nilorempty(slot10.effectHangPoint) and slot3.effectHangPoint or slot10.effectHangPoint
+		slot8 = slot10.audioId == 0 and slot3.audioId or slot10.audioId
+	end
 
 	if slot3.id == 60052 and slot9 and lua_fight_sp_effect_kkny_bear_damage_hit.configDict[slot9.skin] then
 		slot6 = slot10.path

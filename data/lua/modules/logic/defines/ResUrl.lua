@@ -1436,4 +1436,8 @@ function slot0.getV2a5LiangYueImg(slot0)
 	return string.format("singlebg_lang/txt_v2a5_liangyue_singlebg/%s.png", tostring(slot0))
 end
 
+function slot0.getShortenActSingleBg(slot0)
+	return string.format("singlebg/shortenact_singlebg/%s.png", slot0)
+end
+
 return slot0

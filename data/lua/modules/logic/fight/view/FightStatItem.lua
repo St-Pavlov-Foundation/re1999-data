@@ -9,8 +9,7 @@ function slot0.init(slot0, slot1)
 	slot0.goLayout = gohelper.findChild(slot1, "heroinfo/layout")
 	slot0.goRare = gohelper.findChild(slot1, "heroinfo/rare")
 	slot0.goCareer = gohelper.findChild(slot1, "heroinfo/career")
-	slot5 = "heroinfo/layout/rankobj"
-	slot0._gorankobj = gohelper.findChild(slot1, slot5)
+	slot0._gorankobj = gohelper.findChild(slot1, "heroinfo/layout/rankobj")
 	slot0._rankGOs = slot0:getUserDataTb_()
 
 	for slot5 = 1, 3 do
@@ -53,6 +52,11 @@ end
 function slot0.onUpdateMO(slot0, slot1)
 	slot0._mo = slot1
 	slot0.entityMO = slot1.entityMO or FightDataHelper.entityMgr:getById(slot1.entityId)
+
+	if slot1.entityId == FightASFDDataMgr.EmitterId then
+		slot0.entityMO = FightDataHelper.ASFDDataMgr:getEmitterEmitterMo()
+	end
+
 	slot2 = ViewMgr.instance:isOpen(ViewName.Act174FightResultView)
 	slot3 = slot0._mo.fromOtherFight
 	slot4 = lua_character.configDict[slot0.entityMO.modelId]
@@ -188,8 +192,8 @@ function slot0._refreshInfoUI(slot0, slot1)
 		for slot9, slot10 in ipairs(slot0._mo.cards) do
 			if not slot0._skillItems[slot9] then
 				slot11 = slot0:getUserDataTb_()
-				slot15 = slot0._goskillContent
-				slot11.go = gohelper.clone(slot0._goskillItem, slot15, "skillitem" .. slot9)
+				slot15 = "skillitem" .. slot9
+				slot11.go = gohelper.clone(slot0._goskillItem, slot0._goskillContent, slot15)
 				slot11.skillIconGo = slot0:getUserDataTb_()
 
 				for slot15 = 1, 4 do

@@ -1956,5 +1956,49 @@
     "icon": "3045",
     "battleName": "深眠片段·Ⅵ",
     "name_en": "Limbo Stage Ⅵ"
+  },
+  {
+    "id": 17,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_a_p.prefab",
+    "mapId": 17,
+    "buffId": 0,
+    "typeName": "深眠域",
+    "name": "EX-7",
+    "icon": "205",
+    "battleName": "深眠片段·Ⅶ",
+    "name_en": "Limbo Stage Ⅶ"
+  },
+  {
+    "id": 27,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_b_p.prefab",
+    "mapId": 27,
+    "buffId": 0,
+    "typeName": "深眠域",
+    "name": "EX-7",
+    "icon": "205",
+    "battleName": "深眠片段·Ⅶ",
+    "name_en": "Limbo Stage Ⅶ"
+  },
+  {
+    "id": 37,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_c_p.prefab",
+    "mapId": 37,
+    "buffId": 0,
+    "typeName": "深眠域",
+    "name": "EX-7",
+    "icon": "205",
+    "battleName": "深眠片段·Ⅶ",
+    "name_en": "Limbo Stage Ⅶ"
+  },
+  {
+    "id": 47,
+    "map": "scenes/m_s09_rgmy/scene_prefab/m_s09_rgmy_d_p.prefab",
+    "mapId": 47,
+    "buffId": 0,
+    "typeName": "深眠域",
+    "name": "EX-7",
+    "icon": "205",
+    "battleName": "深眠片段·Ⅶ",
+    "name_en": "Limbo Stage Ⅶ"
   }
 ]

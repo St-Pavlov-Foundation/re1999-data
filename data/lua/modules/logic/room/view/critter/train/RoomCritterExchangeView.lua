@@ -104,13 +104,19 @@ function slot0.onClickModalMask(slot0)
 end
 
 function slot0._onInputCountValueChanged(slot0)
-	slot0._buyCount = slot0._maxBuyCount < tonumber(slot0._inputvalue:GetText()) and slot0._maxBuyCount or tonumber(slot0._inputvalue:GetText())
-
-	slot0:_refreshUI()
+	slot0:_checkRefreshInputAmount()
 end
 
 function slot0._onInputCountEndEdit(slot0)
-	slot0._buyCount = slot0._maxBuyCount < tonumber(slot0._inputvalue:GetText()) and slot0._maxBuyCount or tonumber(slot0._inputvalue:GetText())
+	slot0:_checkRefreshInputAmount()
+end
+
+function slot0._checkRefreshInputAmount(slot0)
+	if slot0._maxBuyCount < (tonumber(slot0._inputvalue:GetText()) or 0) then
+		slot1 = slot0._maxBuyCount or slot1
+	end
+
+	slot0._buyCount = slot1
 
 	slot0:_refreshUI()
 end

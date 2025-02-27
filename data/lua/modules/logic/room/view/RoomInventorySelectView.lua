@@ -303,6 +303,10 @@ function slot0._onResItemOnClick(slot0, slot1)
 end
 
 function slot0._setSelectResData(slot0, slot1)
+	if slot0._curSelectResData ~= slot1 then
+		GameSceneMgr.instance:getCurScene().fsm:triggerEvent(RoomSceneEvent.CancelPlaceBlock)
+	end
+
 	slot0._curSelectResData = slot1
 
 	for slot5 = 1, #slot0._resItemList do

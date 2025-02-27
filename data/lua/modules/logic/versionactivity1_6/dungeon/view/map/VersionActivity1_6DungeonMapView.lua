@@ -79,6 +79,8 @@ function slot0._editableInitView(slot0)
 	slot0:addEventCb(VersionActivity1_6DungeonController.instance, VersionActivity1_6DungeonEvent.SetBossBtnActive, slot0.SetBossBtnActive, slot0)
 	slot0:addEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, slot0.onFunUnlockRefreshUI, slot0)
 	TaskDispatcher.runRepeat(slot0._everyMinuteCall, slot0, TimeUtil.OneMinuteSecond)
+	gohelper.setActive(slot0._btnactivitystore.gameObject, false)
+	gohelper.setActive(slot0._btnactivitytask.gameObject, false)
 end
 
 function slot0.onUpdateParam(slot0)

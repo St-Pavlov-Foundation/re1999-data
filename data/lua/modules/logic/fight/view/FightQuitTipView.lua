@@ -197,10 +197,7 @@ function slot0._editableInitView(slot0)
 	end
 
 	gohelper.setActive(slot0._goruleitem, false)
-
-	slot5 = false
-
-	gohelper.setActive(slot0._goadditiondetail, slot5)
+	gohelper.setActive(slot0._goadditiondetail, false)
 
 	slot0._ruleItemsImage = slot0:getUserDataTb_()
 	slot0._ruleItemsDescImage = slot0:getUserDataTb_()
@@ -271,6 +268,12 @@ function slot0._refreshUI(slot0)
 end
 
 function slot0._loadCondition(slot0)
+	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.WeekwalkVer2] then
+		slot0:_refreshWeekwalkVer2Condition()
+
+		return
+	end
+
 	slot1 = DungeonModel.instance:getEpisodeInfo(slot0._episodeId)
 
 	if DungeonConfig.instance:getEpisodeCO(slot0._episodeId) then
@@ -504,6 +507,147 @@ end
 
 function slot0._ruleListClickFunc(slot0)
 	gohelper.setActive(slot0._goadditiondetail, true)
+end
+
+function slot0._refreshWeekwalkVer2Condition(slot0)
+	if not (FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot1)) then
+		return
+	end
+
+	if not slot1.cupIds then
+		return
+	end
+
+	slot2 = {}
+
+	for slot6, slot7 in ipairs(slot1.cupIds) do
+		table.insert(slot2, slot7)
+	end
+
+	table.sort(slot2, uv0.sortWeekWalkVer2Task)
+
+	for slot6, slot7 in ipairs(slot2) do
+		slot0:_showWeekWalkVer2OneTaskGroup(gohelper.clone(slot0._goconditionitemdesc, slot0._goconditionitem, "platnumdesc"), slot7, slot6)
+	end
+
+	gohelper.setActive(slot0._goconditionitemdesc, false)
+end
+
+function slot0._showWeekWalkVer2OneTaskGroup(slot0, slot1, slot2, slot3)
+	slot5 = gohelper.findChildText(slot1, "")
+	slot6 = GameUtil.splitString2(lua_weekwalk_ver2_cup.configDict[slot2].cupTask, true)
+
+	table.sort(slot6, uv0.sortWeekWalkVer2CupList)
+
+	slot7, slot8 = nil
+	slot10 = FightDataHelper.fieldMgr.fightTaskBox.tasks
+
+	for slot14, slot15 in ipairs(slot6) do
+		slot16 = 0
+
+		for slot20 = 2, #slot15 do
+			if slot10[slot15[slot20]] then
+				if slot22.status ~= FightTaskBoxData.TaskStatus.Finished then
+					slot7 = slot15[1]
+
+					break
+				end
+
+				if slot22.status == FightTaskBoxData.TaskStatus.Finished then
+					slot16 = slot16 + 1
+				end
+			end
+		end
+
+		if slot16 == #slot15 - 1 then
+			slot8 = slot15[1]
+		end
+
+		if slot7 then
+			break
+		end
+	end
+
+	slot5.text = slot4.desc .. (uv0._getWeekWalkVer2CupProgressDesc(slot7, slot4) or "")
+
+	gohelper.setActive(gohelper.findChild(slot1, "star"), false)
+	gohelper.setActive(gohelper.findChild(slot1, "star_weekwalkheart"), true)
+
+	slot13 = gohelper.findChildImage(slot1, "star_weekwalkheart")
+	slot13.enabled = false
+
+	WeekWalk_2Helper.setCupEffectByResult(slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot13.gameObject), slot8 or 0)
+end
+
+function slot0._getWeekWalkVer2CupProgressDesc(slot0, slot1)
+	if not slot0 then
+		return
+	end
+
+	if string.nilorempty(slot1.progressDesc) then
+		return
+	end
+
+	slot4 = nil
+
+	for slot8, slot9 in ipairs(GameUtil.splitString2(slot2)) do
+		if tonumber(slot9[1]) == slot0 then
+			slot4 = slot9[2]
+
+			break
+		end
+	end
+
+	if not slot4 then
+		return
+	end
+
+	if string.nilorempty(slot1.paramOfProgressDesc) then
+		return
+	end
+
+	slot7 = nil
+
+	for slot11, slot12 in ipairs(GameUtil.splitString2(slot5)) do
+		if tonumber(slot12[1]) == slot0 then
+			slot7 = slot12
+
+			break
+		end
+	end
+
+	if not slot7 then
+		return
+	end
+
+	slot10 = {}
+	slot15 = "&"
+
+	for slot15, slot16 in ipairs(GameUtil.splitString2(slot7[2], true, "_", slot15)) do
+		if FightDataHelper.fieldMgr.fightTaskBox.tasks[slot16[1]] then
+			for slot22, slot23 in ipairs(slot18.values) do
+				if slot23.index == slot16[2] then
+					if slot16[3] == 1 then
+						table.insert(slot10, math.ceil(slot23.progress / slot23.maxProgress * 100) .. "%")
+					elseif slot16[3] == 2 then
+						table.insert(slot10, math.floor(slot23.progress / slot23.maxProgress * 100) .. "%")
+					else
+						table.insert(slot10, slot23.progress)
+					end
+				end
+			end
+		end
+	end
+
+	return GameUtil.getSubPlaceholderLuaLang(slot4, slot10)
+end
+
+function slot0.sortWeekWalkVer2CupList(slot0, slot1)
+	return slot0[1] < slot1[1]
+end
+
+function slot0.sortWeekWalkVer2Task(slot0, slot1)
+	return lua_weekwalk_ver2_cup.configDict[slot0].cupNo < lua_weekwalk_ver2_cup.configDict[slot1].cupNo
 end
 
 function slot0.onClose(slot0)

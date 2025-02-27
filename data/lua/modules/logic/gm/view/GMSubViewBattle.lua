@@ -31,6 +31,7 @@ function slot0.initViewContent(slot0)
 
 	slot0:addButton("L6", "复制最后一回合处理后的数据_前端用", slot0.onClickCopyLatRoundDataForClient, slot0)
 	slot0:addButton("L7", "复制最后一回合处理前的数据_前端用", slot0.onClickCopyLatRoundProtoDataForClient, slot0)
+	slot0:addButton("L7", "复制最后一回合protobuff数据", slot0.onClickCopyLastSrcRoundProtoData, slot0)
 	slot0:addLabel("L8", "设定战斗版本号(本次登录有效)")
 	slot0:addInputText("L8", FightModel.GMForceVersion or "版本号", nil, slot0._onVersionChange, slot0)
 	slot0:addButton("L9", "使用新卡牌代码逻辑", slot0.onClickUseNewCardScript, slot0)
@@ -42,6 +43,20 @@ end
 function slot0.onClickCopyLatRoundDataForClient(slot0)
 	FightLogFilterHelper.setFilterEffectList(slot0.effectTypeInput:GetText())
 	ZProj.GameHelper.SetSystemBuffer(FightLogHelper.getFightRoundString(FightModel.instance:getCurRoundMO()))
+end
+
+function slot0.onClickCopyLastSrcRoundProtoData(slot0)
+	if not GameSceneMgr.instance:getCurScene().fightLog then
+		return
+	end
+
+	if not (slot1:getLastRoundProto() and slot2.proto) then
+		ZProj.GameHelper.SetSystemBuffer("nil")
+
+		return
+	end
+
+	ZProj.GameHelper.SetSystemBuffer(tostring(slot3))
 end
 
 function slot0.onClickCopyLatRoundProtoDataForClient(slot0)

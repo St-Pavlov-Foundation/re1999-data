@@ -4,7 +4,7 @@ slot0 = class("PlayerInfoView", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._goplayericon = gohelper.findChild(slot0.viewGO, "Scroll_view/Viewport/Content/playerinfo/#go_playericon")
-	slot0._imagebg = gohelper.findChildImage(slot0.viewGO, "Scroll_view/Viewport/Content/bg/normal")
+	slot0._goimagebg = gohelper.findChild(slot0.viewGO, "Scroll_view/Viewport/Content/bg/normal2")
 	slot0._goskinbg = gohelper.findChild(slot0.viewGO, "Scroll_view/Viewport/Content/bg/actskin")
 	slot0._txtname = gohelper.findChildText(slot0.viewGO, "Scroll_view/Viewport/Content/playerinfo/#txt_name")
 	slot0._txtlevel = gohelper.findChildText(slot0.viewGO, "Scroll_view/Viewport/Content/playerinfo/level/#txt_level")
@@ -144,7 +144,7 @@ function slot0._refreshUI(slot0)
 		slot0._loader:startLoad(slot0._onLoadFinish, slot0)
 	end
 
-	gohelper.setActive(slot0._imagebg.gameObject, not slot0._hasSkin)
+	gohelper.setActive(slot0._goimagebg, not slot0._hasSkin)
 	gohelper.setActive(slot0._goskinbg, slot0._hasSkin)
 	slot0._playericon:onUpdateMO(slot0._mo)
 	slot0._playericon:setShowLevel(false)

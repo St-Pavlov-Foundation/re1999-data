@@ -10,6 +10,7 @@ function slot0.activateExtend()
 	uv0.EventName.voice_pack_delete = "voice_pack_delete"
 	uv0.EventName.resources_downloading = "resources_downloading"
 	uv0.EventName.main_hero_interaction = "main_hero_interaction"
+	uv0.EventName.resource_fixup = "resource_fixup"
 	uv0.EventProperties.current_language = "current_language"
 	uv0.EventProperties.entrance = "entrance"
 	uv0.EventProperties.current_voice_pack_list = "current_voice_pack_list"
@@ -23,6 +24,8 @@ function slot0.activateExtend()
 	uv0.EventProperties.main_hero_interaction_skin_id = "skinid"
 	uv0.EventProperties.main_hero_interaction_area_id = "area_id"
 	uv0.EventProperties.main_hero_interaction_voice_id = "voiceid"
+	uv0.EventProperties.resource_fixup_status = "status"
+	uv0.EventProperties.resource_fixup_count = "resource_count"
 	uv0.PropertyTypes[uv0.EventProperties.current_language] = "string"
 	uv0.PropertyTypes[uv0.EventProperties.entrance] = "string"
 	uv0.PropertyTypes[uv0.EventProperties.current_voice_pack_list] = "list"
@@ -36,6 +39,8 @@ function slot0.activateExtend()
 	uv0.PropertyTypes[uv0.EventProperties.main_hero_interaction_skin_id] = "number"
 	uv0.PropertyTypes[uv0.EventProperties.main_hero_interaction_area_id] = "number"
 	uv0.PropertyTypes[uv0.EventProperties.main_hero_interaction_voice_id] = "string"
+	uv0.PropertyTypes[uv0.EventProperties.resource_fixup_status] = "string"
+	uv0.PropertyTypes[uv0.EventProperties.resource_fixup_count] = "number"
 end
 
 function slot0.trackVoicePackDownloadConfirm(slot0, slot1)
@@ -99,6 +104,14 @@ function slot0.trackMainHeroInteraction(slot0, slot1)
 		[uv0.EventProperties.main_hero_interaction_skin_id] = slot1.main_hero_interaction_skin_id or -1,
 		[uv0.EventProperties.main_hero_interaction_area_id] = slot1.main_hero_interaction_area_id or -1,
 		[uv0.EventProperties.main_hero_interaction_voice_id] = slot1.main_hero_interaction_voice_id or ""
+	})
+end
+
+function slot0.trackResourceFixup(slot0, slot1)
+	uv0.instance:track(uv0.EventName.resource_fixup, {
+		[uv0.EventProperties.resource_fixup_status] = slot1.status or "",
+		[uv0.EventProperties.resource_fixup_count] = slot1.count or 0,
+		[uv0.EventProperties.entrance] = slot1.entrance or ""
 	})
 end
 

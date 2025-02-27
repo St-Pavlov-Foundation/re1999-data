@@ -3,9 +3,10 @@ module("modules.logic.enemyinfo.define.EnemyInfoEnum", package.seeall)
 slot0 = _M
 slot0.TabEnum = {
 	Season123 = 3,
-	WeekWalk = 2,
+	WeekWalk_2 = 6,
 	Rouge = 5,
 	BossRush = 4,
+	WeekWalk = 2,
 	Normal = 1
 }
 slot0.TabWidth = 252

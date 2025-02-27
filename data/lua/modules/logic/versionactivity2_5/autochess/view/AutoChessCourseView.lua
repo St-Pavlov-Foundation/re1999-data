@@ -41,11 +41,9 @@ function slot0.onOpen(slot0)
 	slot0._txtAllDamage.text = slot1.totalHurt
 
 	if GameUtil.splitString2(slot1.autoChessCount, true) then
-		function slot8(slot0, slot1)
+		table.sort(slot4, function (slot0, slot1)
 			return slot1[2] < slot0[2]
-		end
-
-		table.sort(slot4, slot8)
+		end)
 
 		for slot8, slot9 in ipairs(slot4) do
 			if lua_auto_chess.configDict[slot9[1]][1].type == AutoChessStrEnum.ChessType.Support then

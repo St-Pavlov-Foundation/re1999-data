@@ -245,9 +245,9 @@ function slot0._charTypeBtnOnClick(slot0, slot1)
 end
 
 function slot0.onOpen(slot0)
-	slot4 = SettingsRoleVoiceController.instance
+	slot4 = SettingsEvent.OnCharVoiceTypeChanged
 
-	slot0:addEventCb(slot4, SettingsEvent.OnCharVoiceTypeChanged, slot0._onCharVoiceTypeChanged, slot0)
+	slot0:addEventCb(SettingsRoleVoiceController.instance, slot4, slot0._onCharVoiceTypeChanged, slot0)
 
 	slot0._selectAttrs = {}
 	slot0._selectCharTypes = {}

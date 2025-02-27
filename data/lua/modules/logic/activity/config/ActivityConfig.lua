@@ -76,18 +76,21 @@ function slot0._initMainActExtraDisplay(slot0)
 
 	slot0._seasonActivityConfig = nil
 	slot0._rougeActivityConfig = nil
+	slot0._displayBindActivityList = {}
+	slot1 = 100
 
-	for slot4 = #lua_activity.configList, 1, -1 do
-		if lua_activity.configList[slot4].extraDisplayId == ActivityEnum.MainViewActivityState.SeasonActivity and not slot0._seasonActivityConfig then
-			slot0._seasonActivityConfig = slot5
-		elseif slot5.extraDisplayId == ActivityEnum.MainViewActivityState.Rouge and not slot0._rougeActivityConfig then
-			slot0._rougeActivityConfig = slot5
+	for slot6 = #lua_activity.configList, 1, -1 do
+		if lua_activity.configList[slot6].extraDisplayId > 0 and not slot0._displayBindActivityList[slot7.extraDisplayId] then
+			slot0._displayBindActivityList[slot7.extraDisplayId] = slot7
 		end
 
-		if slot0._seasonActivityConfig and slot0._rougeActivityConfig then
+		if slot1 < slot2 - slot6 then
 			break
 		end
 	end
+
+	slot0._seasonActivityConfig = slot0._displayBindActivityList[ActivityEnum.MainViewActivityState.SeasonActivity]
+	slot0._rougeActivityConfig = slot0._displayBindActivityList[ActivityEnum.MainViewActivityState.Rouge]
 
 	if not slot0._seasonActivityConfig then
 		logError("ActivityConfig:_initMainActExtraDisplay seasonActivityConfig is nil")
@@ -100,6 +103,10 @@ function slot0._initMainActExtraDisplay(slot0)
 
 		return
 	end
+end
+
+function slot0.getActivityByExtraDisplayId(slot0, slot1)
+	return slot1 and slot0._displayBindActivityList[slot1]
 end
 
 function slot0.getSesonActivityConfig(slot0)

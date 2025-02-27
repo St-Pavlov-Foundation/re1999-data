@@ -188,11 +188,9 @@ function slot0.getSelectEnemyPosLOrR(slot0, slot1)
 	end
 
 	if #slot2 > 0 then
-		function slot6(slot0, slot1)
+		table.sort(slot2, function (slot0, slot1)
 			return slot0.position < slot1.position
-		end
-
-		table.sort(slot2, slot6)
+		end)
 
 		for slot6 = 1, #slot2 do
 			if slot2[slot6].id == slot0.curSelectEntityId then
@@ -491,7 +489,40 @@ function slot0.getCombineSkillId(slot0, slot1, slot2)
 		end
 	end
 
-	return uv0.instance:getSkillNextLvId(slot3, slot4)
+	slot5 = uv0.instance:getSkillNextLvId(slot3, slot4)
+
+	if not FightEnum.UniversalCard[slot0.skillId] and not FightEnum.UniversalCard[slot1.skillId] then
+		slot6 = FightEnum.BuffFeature.ChangeComposeCardSkill
+		slot7 = {}
+
+		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMyPlayerList())
+		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMyNormalList())
+		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMySpList())
+
+		slot8 = 0
+
+		for slot12, slot13 in ipairs(slot7) do
+			for slot18, slot19 in pairs(slot13.buffDic) do
+				if FightConfig.instance:hasBuffFeature(slot19.buffId, slot6) and string.splitToNumber(slot20.featureStr, "#")[2] then
+					slot8 = slot8 + slot21[2]
+				end
+			end
+		end
+
+		if slot8 == 0 then
+			return slot5
+		elseif slot8 > 0 then
+			for slot12 = 1, slot8 do
+				slot5 = uv0.instance:getSkillNextLvId(slot3, slot5) or slot5
+			end
+		else
+			for slot12 = 1, math.abs(slot8) do
+				slot5 = uv0.instance:getSkillPrevLvId(slot3, slot5) or slot5
+			end
+		end
+	end
+
+	return slot5
 end
 
 function slot0.moveOnly(slot0, slot1, slot2)

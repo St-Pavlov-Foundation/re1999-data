@@ -75,8 +75,7 @@ function slot0.initSceneGo(slot0, slot1, slot2)
 	slot3 = slot0:getSceneNode("s01_obj_a/Anim/Effect")
 	slot0._effectRoot = slot3.transform
 	slot0._effectLightPs = gohelper.findChildComponent(slot3, "m_s01_effect_light", WeatherComp.TypeOfParticleSystem)
-	slot8 = WeatherComp.TypeOfParticleSystem
-	slot0._effectAirPs = gohelper.findChildComponent(slot3, "m_s01_effect_air", slot8)
+	slot0._effectAirPs = gohelper.findChildComponent(slot3, "m_s01_effect_air", WeatherComp.TypeOfParticleSystem)
 	slot0._lightSwitch = slot1:GetComponent(WeatherComp.TypeOfLightSwitch)
 	slot0._lightMats = {}
 	slot0._matsMap = {}

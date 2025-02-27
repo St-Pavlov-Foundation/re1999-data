@@ -53,32 +53,40 @@ function slot0._onPicPrefabLoaded(slot0)
 	slot0._simg = gohelper.findChildSingleImage(slot0._picGo, "result")
 	slot0._txtImg = gohelper.findChildText(slot0._picGo, "txt")
 	slot0._txtEnImg = gohelper.findChildText(slot0._picGo, "txten")
+	slot0._txtTmp = gohelper.findChildText(slot0._picGo, "txt_tmp")
 
 	transformhelper.setLocalPosXY(slot0._txtEnImg.transform, 0, 0)
 	transformhelper.setLocalPosXY(slot0._txtImg.transform, 0, 0)
+	transformhelper.setLocalPosXY(slot0._txtTmp.transform, 0, 0)
 
 	if slot0._picCo.picType == StoryEnum.PictureType.PicTxt then
 		gohelper.setActive(slot0._simg.gameObject, false)
 
-		slot4 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(string.split(slot0._picCo.picture, "#")[1]))
+		slot4 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(string.splitToNumber(slot0._picCo.picture, "#")[1]))
 		slot5 = GameLanguageMgr.instance:getShortCutByStoryIndex(GameLanguageMgr.instance:getLanguageTypeStoryIndex()) == LangSettings.shortcutTab[LangSettings.zh] and slot4.fontType == 1
 
-		gohelper.setActive(slot0._txtImg.gameObject, slot5)
 		gohelper.setActive(slot0._txtEnImg.gameObject, not slot5)
+		gohelper.setActive(slot0._txtImg.gameObject, slot5 and slot0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn)
+		gohelper.setActive(slot0._txtTmp.gameObject, slot5 and slot0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn)
 
-		if slot5 then
-			slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtImg, slot6, 0.1 * LuaUtil.getStrLen(slot4[slot2]) * slot3[2], nil, , , EaseType.Linear)
-		else
-			slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtEnImg, slot6, slot7, nil, , , EaseType.Linear)
+		if slot0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn then
+			if slot5 then
+				slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtImg, slot6, 0.1 * LuaUtil.getStrLen(slot4[slot2]) * slot3[2], nil, , , EaseType.Linear)
+			else
+				slot0.tweenId = ZProj.TweenHelper.DOText(slot0._txtEnImg, slot6, slot7, nil, , , EaseType.Linear)
+			end
 		end
 
-		if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn then
+		if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn or slot0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn then
 			slot0._txtImg.text = slot6
+			slot0._txtEnImg.text = slot6
+			slot0._txtTmp.text = slot6
 
 			ZProj.TweenHelper.DOFadeCanvasGroup(slot0._picGo, 0, 1, slot0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, , , EaseType.Linear)
 		else
 			slot0._txtImg.color.a = 1
 			slot0._txtEnImg.color.a = 1
+			slot0._txtTmp.color.a = 1
 		end
 
 		if slot0._picCo.effType == StoryEnum.PictureEffectType.Shake then
@@ -88,6 +96,7 @@ function slot0._onPicPrefabLoaded(slot0)
 
 			transformhelper.setLocalPosXY(slot0._txtEnImg.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
 			transformhelper.setLocalPosXY(slot0._txtImg.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
+			transformhelper.setLocalPosXY(slot0._txtTmp.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
 
 			if slot0._picCo.effDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 				slot0:_playShake()
@@ -97,6 +106,7 @@ function slot0._onPicPrefabLoaded(slot0)
 		elseif slot0._picCo.effType == StoryEnum.PictureEffectType.Scale then
 			transformhelper.setLocalPosXY(slot0._txtEnImg.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
 			transformhelper.setLocalPosXY(slot0._txtImg.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
+			transformhelper.setLocalPosXY(slot0._txtTmp.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
 
 			if slot0._picCo.effDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 				slot0:_playScale()
@@ -112,6 +122,7 @@ function slot0._onPicPrefabLoaded(slot0)
 
 	gohelper.setActive(slot0._simg.gameObject, true)
 	gohelper.setActive(slot0._txtImg.gameObject, false)
+	gohelper.setActive(slot0._txtTmp.gameObject, false)
 	gohelper.setActive(slot0._txtEnImg.gameObject, false)
 	slot0._simg:LoadImage(ResUrl.getStoryItem(slot0._picCo.picture), slot0._onPicImageLoaded, slot0)
 end

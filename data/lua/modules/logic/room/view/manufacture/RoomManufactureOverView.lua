@@ -180,9 +180,7 @@ function slot0.closePopView(slot0)
 end
 
 function slot0.refreshPopBlock(slot0)
-	slot4 = false
-
-	gohelper.setActive(slot0._btnpopBlock, slot4)
+	gohelper.setActive(slot0._btnpopBlock, false)
 
 	for slot4, slot5 in ipairs(uv0) do
 		if ViewMgr.instance:isOpen(slot5) then

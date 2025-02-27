@@ -255,6 +255,8 @@ function slot0.jumpTo(slot0, slot1, slot2, slot3, slot4)
 		return false
 	end
 
+	slot0:_notAllowJumpViewNames_RoleSignPanelView()
+
 	for slot10, slot11 in ipairs(uv0) do
 		if ViewMgr.instance:isOpen(ViewName[slot11]) then
 			GameFacade.showToast(ToastEnum.MaterialTipJump)
@@ -464,10 +466,8 @@ function slot0.getCurrentOpenedView(slot0, slot1)
 
 	slot2 = {}
 	slot3, slot4 = nil
-	slot7 = ViewMgr.instance
-	slot9 = slot7
 
-	for slot8, slot9 in ipairs(slot7.getOpenViewNameList(slot9)) do
+	for slot8, slot9 in ipairs(ViewMgr.instance:getOpenViewNameList()) do
 		if slot9 ~= slot1 and not slot0.ignoreViewName[slot9] then
 			table.insert(slot2, {
 				viewName = slot9,
@@ -487,6 +487,19 @@ function slot0.commonIconBeforeClickSetRecordItem(slot0, slot1, slot2)
 		sceneType = GameSceneMgr.instance:getCurSceneType(),
 		openedViewNameList = uv0.instance:getCurrentOpenedView()
 	})
+end
+
+slot2 = false
+
+function slot0._notAllowJumpViewNames_RoleSignPanelView(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+
+	table.insert(uv1, GameBranchMgr.instance:Vxax_ViewName("Role_PanelSignView_Part1", ViewName.V2a5_Role_PanelSignView_Part1))
+	table.insert(uv1, GameBranchMgr.instance:Vxax_ViewName("Role_PanelSignView_Part2", ViewName.V2a5_Role_PanelSignView_Part2))
 end
 
 slot0.instance = slot0.New()

@@ -69,17 +69,26 @@ function slot0.lastGameEndTimestamp(slot0)
 end
 
 function slot0.isSelectDLC(slot0, slot1)
-	return slot0.versionIds and slot0.versionIds[slot1] ~= nil
+	return slot0.versionIdMap and slot0.versionIdMap[slot1] ~= nil
 end
 
 function slot0._updateVersionIds(slot0, slot1)
-	slot0.versionIds = slot0:_listToMap(slot1)
+	slot0.versionIds = {}
+	slot0.versionIdMap = {}
+
+	if slot1 then
+		for slot5, slot6 in ipairs(slot1) do
+			table.insert(slot0.versionIds, slot6)
+
+			slot0.versionIdMap[slot6] = slot6
+		end
+	end
 end
 
 function slot0.getVersionIds(slot0)
 	slot1 = {}
 
-	for slot5, slot6 in pairs(slot0.versionIds) do
+	for slot5, slot6 in ipairs(slot0.versionIds) do
 		table.insert(slot1, slot6)
 	end
 

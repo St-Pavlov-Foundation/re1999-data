@@ -9,7 +9,9 @@ slot2 = {
 	"id",
 	"step"
 }
-slot3 = {}
+slot3 = {
+	content = 1
+}
 
 return {
 	onLoad = function (slot0)

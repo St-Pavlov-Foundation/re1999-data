@@ -55,24 +55,31 @@ slot0.BgTransType = {
 	LeftDarkFade = 16,
 	Dissolve = 8,
 	XiQuKeKe1 = 17,
+	HotPixel1 = 21,
 	MovieChangeStart = 19,
-	HotPixel = 21,
 	XiQuKeKe2 = 18,
+	HotPixel2 = 22,
 	ChangeScene1 = 14,
 	RightDarkFade = 6,
+	KaleidoscopeIn = 23,
+	TurnPage3 = 25,
 	MovieChangeSwitch = 20,
+	KaleidoscopeOut = 24,
 	Fragmentate = 7,
 	TransparencyFade = 2,
 	Hard = 1
 }
 slot0.BgEffectType = {
-	BgBlur = 1,
-	FishEye = 2,
-	FullGray = 6,
-	Shake = 3,
 	BgGray = 5,
+	BgBlur = 1,
+	FullGray = 6,
+	FishEye = 2,
+	Sketch = 9,
+	BlindFilter = 10,
 	FullBlur = 4,
 	MoveCurve = 7,
+	Shake = 3,
+	Interfere = 8,
 	None = 0
 }
 slot0.AudioOrderType = {
@@ -116,6 +123,7 @@ slot0.PictureOrderType = {
 }
 slot0.PictureInType = {
 	FadeIn = 1,
+	TxtFadeIn = 2,
 	Hard = 0
 }
 slot0.PictureOutType = {

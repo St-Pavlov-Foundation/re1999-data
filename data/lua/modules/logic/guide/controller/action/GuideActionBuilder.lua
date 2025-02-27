@@ -103,6 +103,7 @@ function slot0.ctor(slot0)
 	slot0._ActionType2Impl[317] = WaitGuideActionFightEndPause_sp
 	slot0._ActionType2Impl[318] = WaitGuideActionPauseGeneral
 	slot0._ActionType2Impl[319] = WaitGuideActionFightGetSpecificCard
+	slot0._ActionType2Impl[320] = WaitGuideActionAnyEventWithCondition
 	slot0._ActionType2Impl[401] = WaitGuideActionSpecialEvent
 	slot0._ActionType2Impl[402] = GuideActionPreloadFirstFight
 	slot0._ActionType2Impl[998] = GuideActionAppendStep

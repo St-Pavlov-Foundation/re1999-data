@@ -14,7 +14,8 @@ slot2 = {
 	"stepId"
 }
 slot3 = {
-	content = 1
+	speaker = 1,
+	content = 2
 }
 
 return {

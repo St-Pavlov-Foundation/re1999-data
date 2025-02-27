@@ -46,10 +46,7 @@ function slot0.onReceiveGetTowerInfoReply(slot0, slot1)
 	TowerAssistBossModel.instance:clear()
 	slot0:setTowerOpenInfo(slot1)
 	slot0:setTowerInfo(slot1)
-
-	slot5 = slot1.mopUpTimes
-
-	slot0:updateMopUpTimes(slot5)
+	slot0:updateMopUpTimes(slot1.mopUpTimes)
 
 	for slot5 = 1, #slot1.assistBosses do
 		TowerAssistBossModel.instance:updateAssistBossInfo(slot1.assistBosses[slot5])
@@ -229,27 +226,36 @@ end
 
 function slot0.refreshHeroGroupInfo(slot0)
 	slot3 = slot0.fightParam.layerId
+	slot4 = slot0.fightParam.difficulty
 	slot5 = slot0.fightParam.episodeId
-	slot7, slot8, slot9, slot10, slot11 = nil
+	slot7, slot8, slot9, slot10, slot11, slot12 = nil
 
 	if slot0:getTowerInfoById(slot0.fightParam.towerType, slot0.fightParam.towerId) then
-		slot7, slot8, slot9 = slot6:isHeroGroupLock(slot3, slot5)
-		slot10, slot11 = slot6:getBanHeroAndBoss(slot3, slot0.fightParam.difficulty, slot5)
+		slot7, slot14 = slot6:isHeroGroupLock(slot3, slot5)
+
+		if slot14 then
+			slot8 = slot14.heroIds
+			slot9 = slot14.assistBossId
+			slot10 = slot14.equipUids
+		end
+
+		slot11, slot12 = slot6:getBanHeroAndBoss(slot3, slot4, slot5)
 	end
 
 	slot0.fightParam.isHeroGroupLock = slot7
 	slot0.fightParam.heros = slot8
+	slot0.fightParam.equipUids = slot10
 	slot0.fightParam.herosDict = {}
 
 	if slot8 then
-		for slot15 = 1, #slot8 do
-			slot0.fightParam.herosDict[slot8[slot15]] = 1
+		for slot16 = 1, #slot8 do
+			slot0.fightParam.herosDict[slot8[slot16]] = 1
 		end
 	end
 
 	slot0.fightParam.assistBoss = slot9
-	slot0.fightParam.banHeroDict = slot10
-	slot0.fightParam.banAssistBossDict = slot11
+	slot0.fightParam.banHeroDict = slot11
+	slot0.fightParam.banAssistBossDict = slot12
 end
 
 function slot0.getRecordFightParam(slot0)
@@ -348,9 +354,8 @@ end
 
 function slot0.hasNewBossOpen(slot0)
 	slot1 = false
-	slot6 = TowerEnum.TowerStatus.Open
 
-	for slot6, slot7 in ipairs(uv0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, slot6)) do
+	for slot6, slot7 in ipairs(uv0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)) do
 		if uv0.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewBossOpen, slot7.towerId, slot7, TowerEnum.LockKey) == TowerEnum.LockKey and TowerEnum.UnlockKey == TowerEnum.UnlockKey then
 			slot1 = true
 

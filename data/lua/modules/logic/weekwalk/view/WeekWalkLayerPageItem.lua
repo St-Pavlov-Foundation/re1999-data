@@ -13,9 +13,11 @@ function slot0.onInitView(slot0)
 	slot0._btnclick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_unlock/#btn_click")
 	slot0._simagemapicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_unlock/#btn_click/#simage_mapicon")
 	slot0._simageicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_unlock/#btn_click/#simage_icon")
+	slot0._gohardmode = gohelper.findChild(slot0.viewGO, "#go_unlock/#btn_click/#go_hardmode")
 	slot0._golock = gohelper.findChild(slot0.viewGO, "#go_lock")
 	slot0._btnlock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_lock/#btn_lock")
 	slot0._simagelockicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_lock/#btn_lock/#simage_lockicon")
+	slot0._golockhardmode = gohelper.findChildSingleImage(slot0.viewGO, "#go_lock/#btn_lock/#go_hardmode")
 	slot0._gomapfinish = gohelper.findChild(slot0.viewGO, "#go_mapfinish")
 	slot0._btnreward = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_reward")
 	slot0._gorewardIcon = gohelper.findChild(slot0.viewGO, "#btn_reward/#go_rewardIcon")
@@ -87,8 +89,17 @@ function slot0._editableInitView(slot0)
 		slot0._simageicon:LoadImage(ResUrl.getWeekWalkLayerIcon("shallow"))
 		slot0._simagelockicon:LoadImage(ResUrl.getWeekWalkLayerIcon("shallow_unknown"))
 	else
-		slot0._simageicon:LoadImage(ResUrl.getWeekWalkLayerIcon("deep"))
-		slot0._simagelockicon:LoadImage(ResUrl.getWeekWalkLayerIcon("deep_unknown"))
+		slot1 = slot0._config.layer == WeekWalkEnum.HardDeepLayerId
+
+		gohelper.setActive(slot0._gohardmode, slot1)
+		gohelper.setActive(slot0._simageicon, not slot1)
+		gohelper.setActive(slot0._golockhardmode, slot1)
+		gohelper.setActive(slot0._simagelockicon, not slot1)
+
+		if not slot1 then
+			slot0._simageicon:LoadImage(ResUrl.getWeekWalkLayerIcon("deep"))
+			slot0._simagelockicon:LoadImage(ResUrl.getWeekWalkLayerIcon("deep_unknown"))
+		end
 	end
 
 	gohelper.setActive(slot0._btndetail.gameObject, false)

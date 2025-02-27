@@ -405,16 +405,23 @@ function slot0._waitHeroSpineLoaded(slot0)
 	slot0:_grayUpdate(0)
 	TaskDispatcher.cancelTask(slot0._waitHeroSpineLoaded, slot0)
 
-	if not string.match(slot0._heroSpineGo.name, "305301_yaxian") or slot0._heroSpine._curBodyName ~= "b_idle2" then
+	slot3 = not string.match(slot0._heroSpineGo.name, "305301_yaxian") or slot0._heroSpine._curBodyName ~= "b_idle2"
+
+	if string.find(slot0._heroCo.anims[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], "flag_skipvoicestop|") then
+		slot3 = false
+		slot2 = string.gsub(slot2, slot4, "")
+	end
+
+	if slot3 then
 		slot0._heroSpine:stopVoice()
 	end
 
-	slot3 = slot0._heroSpine:getSpineVoice()
+	slot6 = slot0._heroSpine:getSpineVoice()
 
-	slot3:setDiffFaceBiYan(true)
-	slot3:setInStory()
+	slot6:setDiffFaceBiYan(true)
+	slot6:setInStory()
 	slot0._heroSpine:playVoice({
-		motion = slot0._heroCo.anims[GameLanguageMgr.instance:getVoiceTypeStoryIndex()],
+		motion = slot2,
 		face = slot0._heroCo.expressions[GameLanguageMgr.instance:getVoiceTypeStoryIndex()],
 		mouth = slot0._heroCo.mouses[GameLanguageMgr.instance:getVoiceTypeStoryIndex()],
 		storyAudioId = slot0._conAudioId,

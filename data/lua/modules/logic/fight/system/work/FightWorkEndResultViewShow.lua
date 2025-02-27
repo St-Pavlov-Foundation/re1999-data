@@ -26,7 +26,15 @@ function slot0.onStart(slot0)
 		FightController.instance:dispatchEvent(FightEvent.ReleaseAllEntrustedEntity)
 	end
 
-	slot7 = FightModel.instance:getRecordMO().fightResult
+	slot8 = nil
+
+	if slot2 and slot2.type == DungeonEnum.EpisodeType.WeekWalk_2 then
+		slot8 = WeekWalk_2Model.instance:isWin()
+
+		if FightModel.instance:getRecordMO().fightResult == FightEnum.FightResult.Succ then
+			slot7 = FightEnum.FightResult.Fail
+		end
+	end
 
 	if FightModel.instance:isShowSettlement() == false then
 		slot0:_done()
@@ -41,6 +49,8 @@ function slot0.onStart(slot0)
 				fight_result = slot7
 			})
 		elseif slot2 and slot2.type == DungeonEnum.EpisodeType.TowerLimited then
+			slot0:showSuccView()
+		elseif slot8 then
 			slot0:showSuccView()
 		else
 			if slot7 == FightEnum.FightResult.OutOfRoundFail then

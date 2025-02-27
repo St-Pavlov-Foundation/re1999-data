@@ -26,14 +26,14 @@ function slot0._editableInitView(slot0)
 	slot0._bpItem = nil
 	slot0._bpSpItem = nil
 	slot0._turnbackItem = nil
-	slot0._activityImg = gohelper.findChildImage(slot0.viewGO, "left/#go_activity")
+	slot0._goactivity = gohelper.findChild(slot0.viewGO, "left/#go_activity")
 	slot0._activityLogo = gohelper.findChild(slot0.viewGO, "left/#go_activity/actlogo")
 	slot0._goactbg = gohelper.findChild(slot0.viewGO, "left/#go_activity/scroll_view/#go_actbg")
 	slot0._goactbgTrans = slot0._goactbg.transform
 	slot0._goactbgOffsetX = recthelper.getAnchorX(slot0._goactbgTrans)
 
 	if gohelper.findChildClickWithAudio(slot0.viewGO, "left/#go_activity/actlogo/click") then
-		slot0._activityAnimator = slot0._activityImg:GetComponent("Animator")
+		slot0._activityAnimator = slot0._goactivity:GetComponent(gohelper.Type_Animator)
 
 		slot0:addClickCb(slot1, slot0._logoClickHandler, slot0)
 	end
@@ -202,15 +202,13 @@ function slot0._sortBtns(slot0)
 		end
 	end
 
-	function slot5(slot0, slot1)
+	table.sort(slot1, function (slot0, slot1)
 		if (uv0._sortBtnList[slot0]:isShowRedDot() and 1 or 0) ~= (uv0._sortBtnList[slot1]:isShowRedDot() and 1 or 0) then
 			return slot5 < slot4
 		end
 
 		return (ActivityEnum.ActivitySortWeight[slot0] or 100) < (ActivityEnum.ActivitySortWeight[slot1] or 100)
-	end
-
-	table.sort(slot1, slot5)
+	end)
 
 	slot0._index2Id = slot1
 
@@ -261,17 +259,8 @@ end
 
 function slot0._checkBpBtn(slot0)
 	if BpModel.instance:isEnd() then
-		if slot0._bpItem then
-			slot0._bpItem:destroy()
-
-			slot0._bpItem = nil
-		end
-
-		if slot0._bpSpItem then
-			slot0._bpSpItem:destroy()
-
-			slot0._bpSpItem = nil
-		end
+		GameUtil.onDestroyViewMember(slot0, "_bpItem")
+		GameUtil.onDestroyViewMember(slot0, "_bpSpItem")
 
 		return
 	end
@@ -302,15 +291,11 @@ function slot0._refreshActCenter(slot0)
 		return
 	end
 
-	slot1 = ActivityModel.instance:getActivityCenter()
-
-	for slot5, slot6 in pairs(slot0._centerItems) do
-		slot6:destroy()
-	end
+	GameUtil.onDestroyViewMemberList(slot0, "_centerItems")
 
 	slot0._centerItems = slot0:getUserDataTb_()
 
-	for slot5, slot6 in pairs(slot1) do
+	for slot5, slot6 in pairs(ActivityModel.instance:getActivityCenter()) do
 		if slot5 == ActivityEnum.ActivityType.Beginner then
 			ActivityModel.instance:removeFinishedCategory(slot6)
 			ActivityModel.instance:removeUnExitAct(slot6)
@@ -334,11 +319,7 @@ end
 
 function slot0._checkTurnbackBtn(slot0)
 	if not TurnbackModel.instance:isInOpenTime() or not TurnbackModel.instance:getCurTurnbackMo() then
-		if slot0._turnbackItem then
-			slot0._turnbackItem:destroy()
-
-			slot0._turnbackItem = nil
-		end
+		GameUtil.onDestroyViewMember(slot0, "_turnbackItem")
 
 		return
 	end
@@ -357,11 +338,7 @@ end
 
 function slot0._checkTestTaskBtn(slot0)
 	if not OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.TestTask) then
-		if slot0._testTaskItem then
-			slot0._testTaskItem:destroy()
-
-			slot0._testTaskItem = nil
-		end
+		GameUtil.onDestroyViewMember(slot0, "_testTaskItem")
 
 		return
 	end
@@ -379,18 +356,18 @@ function slot0._checkTestTaskBtn(slot0)
 end
 
 function slot0._checkSelfSelectCharacterBtn(slot0)
-	if Activity136Model.instance:isActivity136InOpen() then
-		if slot0._selfSelectCharacterBtn then
-			slot0._selfSelectCharacterBtn:refreshRedDot()
-		else
-			slot0._selfSelectCharacterBtn = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0._itemGo), Activity136MainBtnItem)
+	if not Activity136Model.instance:isActivity136InOpen() then
+		GameUtil.onDestroyViewMember(slot0, "_selfSelectCharacterBtn")
 
-			slot0:_addSortBtn(Activity136Model.instance:getCurActivity136Id(), slot0._selfSelectCharacterBtn)
-		end
-	elseif slot0._selfSelectCharacterBtn then
-		slot0._selfSelectCharacterBtn:destroy()
+		return
+	end
 
-		slot0._selfSelectCharacterBtn = nil
+	if slot0._selfSelectCharacterBtn then
+		slot0._selfSelectCharacterBtn:refresh()
+	else
+		slot0._selfSelectCharacterBtn = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0._itemGo), Activity136MainBtnItem)
+
+		slot0:_addSortBtn(Activity136Model.instance:getCurActivity136Id(), slot0._selfSelectCharacterBtn)
 	end
 end
 
@@ -491,11 +468,7 @@ end
 
 function slot0._checkActivity186Btn(slot0)
 	if not Activity186Model.instance:isActivityOnline() then
-		if slot0._act186Item then
-			slot0._act186Item:onDestroyView()
-
-			slot0._act186Item = nil
-		end
+		GameUtil.onDestroyViewMember(slot0, "_act186Item")
 
 		return
 	end
@@ -521,46 +494,13 @@ function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
-	for slot4, slot5 in pairs(slot0._centerItems) do
-		slot5:destroy()
-	end
-
-	if slot0._bpItem then
-		slot0._bpItem:destroy()
-
-		slot0._bpItem = nil
-	end
-
-	if slot0._bpSpItem then
-		slot0._bpSpItem:destroy()
-
-		slot0._bpSpItem = nil
-	end
-
-	if slot0._testTaskItem then
-		slot0._testTaskItem:destroy()
-
-		slot0._testTaskItem = nil
-	end
-
-	if slot0._turnbackItem then
-		slot0._turnbackItem:destroy()
-
-		slot0._turnbackItem = nil
-	end
-
-	if slot0._selfSelectCharacterBtn then
-		slot0._selfSelectCharacterBtn:destroy()
-
-		slot0._selfSelectCharacterBtn = nil
-	end
-
-	if slot0._act186Item then
-		slot0._act186Item:onDestroyView()
-
-		slot0._act186Item = nil
-	end
-
+	GameUtil.onDestroyViewMemberList(slot0, "_centerItems")
+	GameUtil.onDestroyViewMember(slot0, "_bpItem")
+	GameUtil.onDestroyViewMember(slot0, "_bpSpItem")
+	GameUtil.onDestroyViewMember(slot0, "_testTaskItem")
+	GameUtil.onDestroyViewMember(slot0, "_turnbackItem")
+	GameUtil.onDestroyViewMember(slot0, "_selfSelectCharacterBtn")
+	GameUtil.onDestroyViewMember(slot0, "_act186Item")
 	GameUtil.onDestroyViewMember(slot0, "_roleSignViewBtn")
 	GameUtil.onDestroyViewMember(slot0, "_springSignViewBtn")
 	slot0:removeEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, slot0._freshBtns, slot0)
@@ -592,19 +532,28 @@ end
 slot2 = 840.4
 
 function slot0._refreshActBgWidth(slot0)
-	slot1 = 0
+	slot1 = ActivityModel.checkIsShowLogoVisible()
+	slot2 = 0
 
 	if slot0._sortBtnList then
-		for slot5, slot6 in pairs(slot0._sortBtnList) do
-			slot1 = slot1 + 1
+		for slot6, slot7 in pairs(slot0._sortBtnList) do
+			slot2 = slot2 + 1
 		end
 	end
 
 	if slot0._centerItems then
-		slot1 = slot1 + #slot0._centerItems
+		slot2 = slot2 + #slot0._centerItems
 	end
 
-	recthelper.setWidth(slot0._goactbgTrans, GameUtil.clamp(slot1 * slot0._itemSize + slot0._horizontalLeft + (slot1 - 1) * slot0._horizontal.spacing + -math.min(0, slot0._goactbgOffsetX) * 2, 0, uv0))
+	slot4 = (slot2 - 1) * slot0._horizontal.spacing
+	slot5 = slot2 * slot0._itemSize + slot0._horizontalLeft
+	slot6 = 0
+
+	if not slot1 then
+		slot6 = -math.min(0, slot0._goactbgOffsetX) * 2
+	end
+
+	recthelper.setWidth(slot0._goactbgTrans, GameUtil.clamp(slot5 + slot6, 0, uv0))
 end
 
 return slot0

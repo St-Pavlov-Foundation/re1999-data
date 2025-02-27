@@ -37,9 +37,7 @@ function slot0.onDeleteCard(slot0, slot1)
 		gohelper.setActive(slot6.go, false)
 	end
 
-	slot5 = true
-
-	gohelper.setActive(slot0.cardContainer, slot5)
+	gohelper.setActive(slot0.cardContainer, true)
 
 	for slot5, slot6 in ipairs(slot1) do
 		slot7 = slot0:getCardItem(slot5)

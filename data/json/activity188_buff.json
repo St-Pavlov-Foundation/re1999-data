@@ -1,0 +1,38 @@
+[
+  {
+    "activityId": 12605,
+    "buffId": 100,
+    "laminate": 2,
+    "maxLayer": 10,
+    "name": "缴械",
+    "desc": "只有1次翻页的次数",
+    "icon": "3205"
+  },
+  {
+    "activityId": 12605,
+    "buffId": 101,
+    "laminate": 0,
+    "maxLayer": 10,
+    "name": "创伤加深",
+    "desc": "受到的直接创伤加倍",
+    "icon": "4201"
+  },
+  {
+    "activityId": 12605,
+    "buffId": 102,
+    "laminate": 1,
+    "maxLayer": 10,
+    "name": "护盾",
+    "desc": "抵挡1次受到的直接创伤",
+    "icon": "4102"
+  },
+  {
+    "activityId": 12605,
+    "buffId": 103,
+    "laminate": 1,
+    "maxLayer": 10,
+    "name": "流血",
+    "desc": "每回合结束时失去1点生命",
+    "icon": "5304"
+  }
+]

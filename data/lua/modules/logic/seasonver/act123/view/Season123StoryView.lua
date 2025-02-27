@@ -102,8 +102,8 @@ end
 function slot0.initCoverPageUI(slot0)
 	slot0._simageCover:LoadImage(string.format("singlebg/%s", Season123Config.instance:getSeasonConstStr(slot0.actId, Activity123Enum.Const.StoryCoverIconUrl)))
 
-	slot0._txttitleDesc.text = Season123Config.instance:getSeasonConstStr(slot0.actId, Activity123Enum.Const.StoryCoverDesc)
-	slot0._txtcoverTitle.text = Season123Config.instance:getSeasonConstStr(slot0.actId, Activity123Enum.Const.StoryCoverTitle)
+	slot0._txttitleDesc.text = Season123Config.instance:getSeasonConstLangStr(slot0.actId, Activity123Enum.Const.StoryCoverDesc)
+	slot0._txtcoverTitle.text = Season123Config.instance:getSeasonConstLangStr(slot0.actId, Activity123Enum.Const.StoryCoverTitle)
 end
 
 function slot0.refreshDetailPageUI(slot0)

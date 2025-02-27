@@ -9,7 +9,17 @@ function slot0.ctor(slot0)
 end
 
 function slot0.init(slot0, slot1, slot2)
-	ActivityHelper.activateClass("AudioEnum%d_%d", 1, 5)
+	AudioEnum1_5.activate()
+	AudioEnum1_6.activate()
+	AudioEnum1_7.activate()
+	AudioEnum1_8.activate()
+	AudioEnum1_9.activate()
+	AudioEnum2_0.activate()
+	AudioEnum2_1.activate()
+	AudioEnum2_2.activate()
+	AudioEnum2_3.activate()
+	AudioEnum2_4.activate()
+	AudioEnum2_5.activate()
 
 	slot0._onInited = slot1
 	slot0._onInitedObj = slot2

@@ -12,6 +12,7 @@ return {
 	TakeoffAllTalentCube = 9,
 	OnGuideAttenuation = 10,
 	ChangeMainHero = 11,
+	RandomMainHero = 12,
 	HeroInfoListReply = 1001,
 	HeroUpdatePush = 1002,
 	successHeroRankUp = 1003,

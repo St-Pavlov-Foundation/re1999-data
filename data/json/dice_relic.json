@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "“帮助”",
+    "desc": "额外获得1颗记忆骰",
+    "icon": "dicehero_collection_1",
+    "effect": "dice",
+    "param": "1#1"
+  },
+  {
+    "id": 2,
+    "name": "命运的礼物",
+    "desc": "回合开始时：获得1层[联想]\n[联想]：打出应对卡时，投出1颗短时记忆骰",
+    "icon": "dicehero_collection_2",
+    "effect": "buff",
+    "param": "12"
+  },
+  {
+    "id": 3,
+    "name": "巴别塔语言",
+    "desc": "将1颗记忆骰替换为1个花色通用的记忆骰",
+    "icon": "dicehero_collection_3",
+    "effect": "dice",
+    "param": "2#2"
+  },
+  {
+    "id": 4,
+    "name": "“表象”",
+    "desc": "灵光花色可被视为攻击或防御花色",
+    "icon": "dicehero_collection_4",
+    "effect": "buff",
+    "param": "13"
+  },
+  {
+    "id": 5,
+    "name": "手握的权柄",
+    "desc": "额外解锁狱医的灵光技能\n消耗所有灵光，获得1层[深刻]\n[深刻]：伤害提升100%",
+    "icon": "dicehero_collection_5",
+    "effect": "skill",
+    "param": "1001"
+  },
+  {
+    "id": 6,
+    "name": "“真理的途径”",
+    "desc": "额外解锁阿莱夫的灵光技能\n消耗所有灵光，刷新所有应对卡的使用次数",
+    "icon": "dicehero_collection_6",
+    "effect": "skill",
+    "param": "1002"
+  },
+  {
+    "id": 7,
+    "name": "“主义”的载体",
+    "desc": "额外解锁理想家的灵光技能\n回合结束时：随机对一名敌人造成3点伤害，重复X次，X=当前灵光值\n回合结束时：灵光-1，灵光溢出时：每溢出1点灵光，随机对一名敌人造成8点伤害",
+    "icon": "dicehero_collection_7",
+    "effect": "skill",
+    "param": "1003"
+  },
+  {
+    "id": 8,
+    "name": "二十分硬币",
+    "desc": "额外解锁扎伊尔的灵光技能\n消耗记忆骰点数的应对卡计算时：额外计入当前灵光值\n打出应对卡时：灵光-1",
+    "icon": "dicehero_collection_8",
+    "effect": "skill",
+    "param": "1004"
+  }
+]

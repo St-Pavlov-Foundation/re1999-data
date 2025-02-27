@@ -1,16 +1,19 @@
 module("modules.configs.excel2json.lua_activity123_const", package.seeall)
 
 slot1 = {
-	id = 2,
-	value1 = 3,
 	activityId = 1,
+	value1 = 3,
+	id = 2,
+	value3 = 5,
 	value2 = 4
 }
 slot2 = {
 	"activityId",
 	"id"
 }
-slot3 = {}
+slot3 = {
+	value3 = 1
+}
 
 return {
 	onLoad = function (slot0)

@@ -15,6 +15,9 @@ function slot0.onInitView(slot0)
 	slot0._skillTipsGO = slot0._txtskilldesc.gameObject
 	slot0._goattrbg = gohelper.findChild(slot0.viewGO, "root/tips/#go_skilltip/#go_attrbg")
 	slot0._gobuffinfocontainer = gohelper.findChild(slot0.viewGO, "root/#go_buffinfocontainer")
+
+	gohelper.setActive(slot0._gobuffinfocontainer, false)
+
 	slot0._gobuffinfowrapper = gohelper.findChild(slot0.viewGO, "root/#go_buffinfocontainer/buff")
 	slot0._gobuffitem = gohelper.findChild(slot0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content/#go_buffitem")
 	slot0._scrollbuff = gohelper.findChildScrollRect(slot0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff")
@@ -144,6 +147,7 @@ end
 function slot0._onCloseBuffInfoContainer(slot0)
 	gohelper.setActive(slot0._gobuffinfocontainer, false)
 	ViewMgr.instance:closeView(ViewName.CommonBuffTipView)
+	ViewMgr.instance:closeView(ViewName.FightBuffTipsView)
 end
 
 function slot0.onOpen(slot0)
@@ -252,21 +256,8 @@ function slot0._buildLinkTag(slot0, slot1)
 	return string.gsub(string.gsub(slot1, "%[(.-)%]", "<link=\"%1\">[%1]</link>"), "%【(.-)%】", "<link=\"%1\">【%1】</link>")
 end
 
-slot0.Interval = 10
-
-function slot0.getCommonBuffTipScrollAnchor(slot0, slot1, slot2)
-	slot5 = slot0.rectTrScrollBuff
-	slot7, slot8 = recthelper.uiPosToScreenPos2(slot5)
-	slot9, slot10 = SLFramework.UGUI.RectTrHelper.ScreenPosXYToAnchorPosXY(slot7, slot8, slot1, CameraMgr.instance:getUICamera(), nil, )
-	slot2.pivot = CommonBuffTipEnum.Pivot.Right
-	slot15 = slot9
-
-	recthelper.setAnchor(slot2, recthelper.getWidth(slot2) <= GameUtil.getViewSize() / 2 + slot9 - recthelper.getWidth(slot5) / 2 - uv0.Interval and slot15 - slot11 - uv0.Interval or slot15 + slot11 + uv0.Interval + slot13, slot10 + math.min(recthelper.getHeight(slot5), recthelper.getHeight(slot0.rectTrBuffContent)) / 2)
-end
-
 function slot0._updateBuffs(slot0, slot1)
-	gohelper.setActive(slot0._gobuffinfocontainer, true)
-	FightBuffTipsView.updateBuffDesc(slot1, slot0._buffItemList, slot0._gobuffitem, slot0, slot0.getCommonBuffTipScrollAnchor)
+	gohelper.setActive(slot0._gobuffinfocontainer, false)
 end
 
 function slot0._hideTips(slot0)
@@ -339,9 +330,8 @@ function slot0._onBuffClick(slot0, slot1, slot2, slot3, slot4)
 
 	if isDebugBuild then
 		slot6 = {}
-		slot11 = slot5
 
-		for slot10, slot11 in pairs(slot5.getBuffDic(slot11)) do
+		for slot10, slot11 in pairs(slot5:getBuffDic()) do
 			table.insert(slot6, string.format("id=%d count=%d duration=%d name=%s desc=%s %s %s", slot11.buffId, slot11.count, slot11.duration, slot12.name, slot12.desc, slot12.isGoodBuff == 1 and "good" or "bad", lua_skill_buff.configDict[slot11.buffId].isNoShow == 0 and "show" or "noShow"))
 		end
 
@@ -362,7 +352,13 @@ function slot0._onBuffClick(slot0, slot1, slot2, slot3, slot4)
 		return
 	end
 
-	slot0:_updateBuffs(slot5)
+	ViewMgr.instance:openView(ViewName.FightBuffTipsView, {
+		entityId = slot1,
+		iconPos = slot2.position,
+		offsetX = slot3,
+		offsetY = slot4,
+		viewname = slot0.viewName
+	})
 	slot0:_hideTips()
 
 	slot9 = recthelper.rectToRelativeAnchorPos(slot2.position, slot0._gobuffinfowrapper.transform.parent)

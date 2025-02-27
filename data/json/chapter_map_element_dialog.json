@@ -14380,5 +14380,1409 @@
     "audio": 0,
     "speaker": "",
     "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600001,
+    "speaker": "？？？",
+    "content": "一场战争开启之时，世界便开始了原地踏步。"
+  },
+  {
+    "id": 41,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600002,
+    "speaker": "？？？",
+    "content": "前进，撤退，冲锋，溃败，活在战场上不需要理解其他规则。"
+  },
+  {
+    "id": 41,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600003,
+    "speaker": "？？？",
+    "content": "这份报告上甚至没有写它是何时开始的，也没有陈述战争的诉求。"
+  },
+  {
+    "id": 41,
+    "stepId": 4,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "战争还未开始#词句是文学的战场"
+  },
+  {
+    "id": 41,
+    "stepId": 5,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600004,
+    "speaker": "？？？",
+    "content": "当然，你可以这样说。土地的疮痍总是触目惊心，灵魂的徘徊只能让人后知后觉。"
+  },
+  {
+    "id": 41,
+    "stepId": 7,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600005,
+    "speaker": "？？？",
+    "content": "作家施加在音节与词语上的暴力，不亚于一道非人性的军令。"
+  },
+  {
+    "id": 41,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600006,
+    "speaker": "？？？",
+    "content": "士兵必须按照军令行事，文字也得跟随作家的意愿排列。"
+  },
+  {
+    "id": 41,
+    "stepId": 10,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 11,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "这与现在发生的又有什么关系"
+  },
+  {
+    "id": 41,
+    "stepId": 12,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600007,
+    "speaker": "？？？",
+    "content": "这是一场看不到结局的流浪，年轻的作家可用的道标并不多。"
+  },
+  {
+    "id": 41,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600008,
+    "speaker": "？？？",
+    "content": "正如在厮杀的间隙，一些战士会捧出宗教的箴言，另一些则会流连来自亲友的书信。"
+  },
+  {
+    "id": 41,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600009,
+    "speaker": "？？？",
+    "content": "他们通常将这称为归宿，靠它盖过炮弹的轰鸣声，来提醒自己保持人性。"
+  },
+  {
+    "id": 41,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600010,
+    "speaker": "？？？",
+    "content": "但他们总会意识到自己很可能回不了家，迟早带着思乡病死在战场上。"
+  },
+  {
+    "id": 41,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 18,
+    "type": "options",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": "一场梦会是最好的良药"
+  },
+  {
+    "id": 41,
+    "stepId": 19,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 41,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600011,
+    "speaker": "？？？",
+    "content": "当然，梦会带你去往任何地方，不管是老家的街景，还是趴在桌上写书的下午。"
+  },
+  {
+    "id": 41,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600012,
+    "speaker": "？？？",
+    "content": "直到你分不清梦和现实，最后忘了如何醒来。"
+  },
+  {
+    "id": 41,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600013,
+    "speaker": "？？？",
+    "content": "士兵将在烂泥巴战壕里徘徊一生，士官长将一遍遍地发出送死的军令。"
+  },
+  {
+    "id": 41,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600014,
+    "speaker": "？？？",
+    "content": "而词句将永远逡巡于诗篇的结构里，诗篇永恒复苏在预言的律令下……"
+  },
+  {
+    "id": 41,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600015,
+    "speaker": "？？？",
+    "content": "诗人说话真是拗口。"
+  },
+  {
+    "id": 41,
+    "stepId": 25,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600016,
+    "speaker": "？？？",
+    "content": "那么长官，是时候总结一下这番长篇大论的演讲，以便隔绝激情与狂想对你的毒害。"
+  },
+  {
+    "id": 42,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600017,
+    "speaker": "？？？",
+    "content": "从纷繁的情报里提炼关键词，有助于你在战场上更有效率地做出战术抉择。"
+  },
+  {
+    "id": 42,
+    "stepId": 3,
+    "type": "options",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "文学大爆炸"
+  },
+  {
+    "id": 42,
+    "stepId": 4,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600018,
+    "speaker": "？？？",
+    "content": "一种暴力的军事遗产，在约莫30年前移植进入这片文学界，突然具有了与毁灭相对的含义——生机。"
+  },
+  {
+    "id": 42,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600019,
+    "speaker": "？？？",
+    "content": "自然，在虚构的世界里，你不用担心自己患上“弹震症”。"
+  },
+  {
+    "id": 42,
+    "stepId": 7,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 8,
+    "type": "options",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": "你还懂文学？"
+  },
+  {
+    "id": 42,
+    "stepId": 9,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600020,
+    "speaker": "？？？",
+    "content": "是个士兵都该能做这样的汇报，除非你是动员兵。现在让我们看向地图。"
+  },
+  {
+    "id": 42,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600021,
+    "speaker": "？？？",
+    "content": "消费社会与出版社已经为西班牙铸好了再次发现新大陆的船只。"
+  },
+  {
+    "id": 42,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600022,
+    "speaker": "？？？",
+    "content": "而他们的“哥伦布”也已向时代的码头行军。"
+  },
+  {
+    "id": 42,
+    "stepId": 13,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 14,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "新的“哥伦布”是谁？"
+  },
+  {
+    "id": 42,
+    "stepId": 15,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600023,
+    "speaker": "？？？",
+    "content": "卡门与卡洛斯，加泰罗尼亚与拉丁美洲之间这场文学盛宴的策划者。"
+  },
+  {
+    "id": 42,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600024,
+    "speaker": "？？？",
+    "content": "前者的慧眼识出了拉丁美洲的硕果，严苛而又仁慈地为作家的心血赢得一份回报颇丰的合同。"
+  },
+  {
+    "id": 42,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600025,
+    "speaker": "？？？",
+    "content": "后者精通工业社会的运作模式，以诱人的奖金为西班牙语新美洲文学买好了登陆欧洲的船票。"
+  },
+  {
+    "id": 42,
+    "stepId": 19,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 20,
+    "type": "options",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": "然后呢？"
+  },
+  {
+    "id": 42,
+    "stepId": 21,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600026,
+    "speaker": "？？？",
+    "content": "那之后的故事由一场军事学院的丑闻拉开序幕，猪尾巴男孩将飓风吹向了世界。"
+  },
+  {
+    "id": 42,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600027,
+    "speaker": "？？？",
+    "content": "当然，不能忘记那位文学的外交官富恩特斯，和总“像孩子一样讲话”的科塔萨尔。"
+  },
+  {
+    "id": 42,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600028,
+    "speaker": "？？？",
+    "content": "可谁都不能质疑，马里奥与加博是领军人，历史总会优先铭记一场大捷里关键的战略指挥家。"
+  },
+  {
+    "id": 42,
+    "stepId": 25,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600029,
+    "speaker": "？？？",
+    "content": "他们互通书信，钦赞彼此的才华，甚至慷慨地将对方的前半生写入博士论文。"
+  },
+  {
+    "id": 42,
+    "stepId": 26,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600030,
+    "speaker": "？？？",
+    "content": "呵，友谊。"
+  },
+  {
+    "id": 42,
+    "stepId": 27,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 28,
+    "type": "options",
+    "param": "5",
+    "audio": 0,
+    "speaker": "",
+    "content": "友谊也是光辉的见证"
+  },
+  {
+    "id": 42,
+    "stepId": 29,
+    "type": "selector",
+    "param": "5",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 42,
+    "stepId": 30,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600031,
+    "speaker": "？？？",
+    "content": "他们确实以此为傲。"
+  },
+  {
+    "id": 42,
+    "stepId": 31,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600032,
+    "speaker": "？？？",
+    "content": "但这一切都逃不过“爆炸”早已预示的落幕命运。"
+  },
+  {
+    "id": 42,
+    "stepId": 32,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600033,
+    "speaker": "？？？",
+    "content": "一位古巴诗人的二次入狱与自我反省，加之一记再无解释的拳头——爆炸之后安静得令人心生恐惧。"
+  },
+  {
+    "id": 42,
+    "stepId": 33,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600034,
+    "speaker": "？？？",
+    "content": "接着，军政府的独裁扼紧了后爆炸时代的咽喉，“哥伦布”们还是没能到达预期的目的地。"
+  },
+  {
+    "id": 42,
+    "stepId": 34,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600035,
+    "speaker": "？？？",
+    "content": "年轻一代无法与上一代和解，后者成了前者眼中的老古董。"
+  },
+  {
+    "id": 42,
+    "stepId": 35,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600036,
+    "speaker": "？？？",
+    "content": "他们再一次找寻全新的写作方式，试图表达独属于他们这一代的恐怖现实。"
+  },
+  {
+    "id": 42,
+    "stepId": 36,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600037,
+    "speaker": "？？？",
+    "content": "现在则到处打着游击战。"
+  },
+  {
+    "id": 42,
+    "stepId": 37,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600038,
+    "speaker": "？？？",
+    "content": "没什么人愿意听一枚骰子的指挥，指挥官不应该用运气下命令。"
+  },
+  {
+    "id": 43,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600039,
+    "speaker": "？？？",
+    "content": "每天的行军路程得是一个简单明了的数字，而不是两个数字中间夹着一个“D”，这会引起哗变的。"
+  },
+  {
+    "id": 43,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600040,
+    "speaker": "？？？",
+    "content": "当然，若有一枚骰子，可提前为士兵宣告命运的选择——"
+  },
+  {
+    "id": 43,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600041,
+    "speaker": "？？？",
+    "content": "我想他应该会把命交给骰子，专心等待它落下。"
+  },
+  {
+    "id": 43,
+    "stepId": 5,
+    "type": "options",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "不会次次都有好运的"
+  },
+  {
+    "id": 43,
+    "stepId": 6,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600042,
+    "speaker": "？？？",
+    "content": "而幸福正好需要厄运作伴，运气好和运气坏加起来就足以概括任何人的人生。"
+  },
+  {
+    "id": 43,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600043,
+    "speaker": "？？？",
+    "content": "不论生存还是死亡，骰子可以无数次地滚落。当然，也不止骰子……"
+  },
+  {
+    "id": 43,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600044,
+    "speaker": "？？？",
+    "content": "一枚硬币，一只贝壳，或者一张彩票，娱乐命运的手段要多少有多少。"
+  },
+  {
+    "id": 43,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600045,
+    "speaker": "？？？",
+    "content": "一个巴比伦人可以在十天前成为总督，更可以在二十天后变为奴隶。"
+  },
+  {
+    "id": 43,
+    "stepId": 11,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 12,
+    "type": "options",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": "有些事本可以避免"
+  },
+  {
+    "id": 43,
+    "stepId": 13,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600046,
+    "speaker": "？？？",
+    "content": "这就是历史学家的工作了。"
+  },
+  {
+    "id": 43,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600047,
+    "speaker": "？？？",
+    "content": "让他们在书上删减几笔，增添几笔，骰子的结果便有了合理性。"
+  },
+  {
+    "id": 43,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600048,
+    "speaker": "？？？",
+    "content": "“不该如此”就变成了“这很合理”以及“本应如此”。"
+  },
+  {
+    "id": 43,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 18,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "毕竟骰子公平公正，充满机会"
+  },
+  {
+    "id": 43,
+    "stepId": 19,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600049,
+    "speaker": "？？？",
+    "content": "你已初步洞察了赌徒的心理。"
+  },
+  {
+    "id": 43,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600050,
+    "speaker": "？？？",
+    "content": "不过输多了或者赢多了的家伙都会觉得自己看穿了骰子之上的伟大规律。"
+  },
+  {
+    "id": 43,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600051,
+    "speaker": "？？？",
+    "content": "巫师装神弄鬼换取幸运，数学家在纸上倒腾可能性，赌博游戏成为了著作的养料。"
+  },
+  {
+    "id": 43,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600052,
+    "speaker": "？？？",
+    "content": "或者单纯怀疑有人出老千。"
+  },
+  {
+    "id": 43,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600053,
+    "speaker": "？？？",
+    "content": "但愿这群人能走到一起，然后找出那个真正掌握了宇宙万物过去未来所有规律的恶魔，再赏它一耳光说辛苦了。"
+  },
+  {
+    "id": 43,
+    "stepId": 25,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 26,
+    "type": "options",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": "你今天说话真是混乱不堪"
+  },
+  {
+    "id": 43,
+    "stepId": 27,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 43,
+    "stepId": 28,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600054,
+    "speaker": "？？？",
+    "content": "我想我一贯如此，只是今天骰子给出了一个独特的数字。"
+  },
+  {
+    "id": 43,
+    "stepId": 29,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600055,
+    "speaker": "？？？",
+    "content": "不过话说回来，其实我更喜欢另一种指挥官。"
+  },
+  {
+    "id": 43,
+    "stepId": 30,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600056,
+    "speaker": "？？？",
+    "content": "骰子已经掷下了，但别管是几，该过河了。"
+  },
+  {
+    "id": 43,
+    "stepId": 31,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600057,
+    "speaker": "？？？",
+    "content": "咳咳……喘口气，配给品的香烟已经抽完了，故事马上迎来结局，这场“战役”也要结束了。"
+  },
+  {
+    "id": 44,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600058,
+    "speaker": "？？？",
+    "content": "一位作家终于离开了自己的疆域，只留下一地的创作物，就像那些战壕里留下的绷带和半颗脑袋。"
+  },
+  {
+    "id": 44,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600059,
+    "speaker": "？？？",
+    "content": "读下来很够呛。"
+  },
+  {
+    "id": 44,
+    "stepId": 4,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "我读不懂哪怕一点#我想我读懂了"
+  },
+  {
+    "id": 44,
+    "stepId": 5,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600060,
+    "speaker": "？？？",
+    "content": "我们达成了共识。我也庆幸自己的司令从来不是文学家，否则在我解读完一首诗的指令前，就要被炸得稀巴烂了。"
+  },
+  {
+    "id": 44,
+    "stepId": 7,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600061,
+    "speaker": "？？？",
+    "content": "那太好了，建议你兼任“文学加密通话组”的组长，并为你配给一本字典，用以对抗11.43毫米马克沁机枪。"
+  },
+  {
+    "id": 44,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600062,
+    "speaker": "？？？",
+    "content": "相信在子弹穿过你的眉心之前，你朗诵的诗歌就能让敌人脑袋开花。"
+  },
+  {
+    "id": 44,
+    "stepId": 10,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 11,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "你似乎变幽默了"
+  },
+  {
+    "id": 44,
+    "stepId": 12,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600063,
+    "speaker": "？？？",
+    "content": "多亏这位贯彻诗人式流浪生活的作家，从智利到布宜诺斯艾利斯，她用她宝贵的、罕有的，洗碗工与露营地保管员的兼职经验折服了我。"
+  },
+  {
+    "id": 44,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600064,
+    "speaker": "？？？",
+    "content": "她对文学的严肃性让我的幽默感死而复生。你如果在战友墓碑前听过冷笑话，或许就能明白我说的。"
+  },
+  {
+    "id": 44,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600065,
+    "speaker": "？？？",
+    "content": "总而言之，她从自己为数不多的流浪与革命经历中掏自肺腑，试图将“文学”作以社会变革的伟大手段，一位意见领袖，一位精英知识分子。"
+  },
+  {
+    "id": 44,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600066,
+    "speaker": "？？？",
+    "content": "有人会说，她是拉丁美洲的角斗士，而每个文字都是一颗子弹，一篇诗歌就是一架战术轰炸机。"
+  },
+  {
+    "id": 44,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 18,
+    "type": "options",
+    "param": "4#5",
+    "audio": 0,
+    "speaker": "",
+    "content": "我不相信那些关于文学的话#我相信那些话是事实"
+  },
+  {
+    "id": 44,
+    "stepId": 19,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600067,
+    "speaker": "？？？",
+    "content": "很多人与你想法一样，我也不例外。"
+  },
+  {
+    "id": 44,
+    "stepId": 21,
+    "type": "selector",
+    "param": "5",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600068,
+    "speaker": "？？？",
+    "content": "你从不将信将疑，还对一切充满信任。这也许是好事。将军总得相信自己的士兵，不然早该投降了。"
+  },
+  {
+    "id": 44,
+    "stepId": 23,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 44,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600069,
+    "speaker": "？？？",
+    "content": "来吧，还是让我跟你汇报个机密……"
+  },
+  {
+    "id": 44,
+    "stepId": 25,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600070,
+    "speaker": "？？？",
+    "content": "很多人、不计其数的人，以为拉下闸刀的是刽子手，击发子弹的是火药。"
+  },
+  {
+    "id": 44,
+    "stepId": 26,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600071,
+    "speaker": "？？？",
+    "content": "可他们只说对了一半。战壕上的坑洞，只是一场场思想与意识撞击后的残骸。早在火药燃烧之前，思想就钻进了枪膛。"
+  },
+  {
+    "id": 44,
+    "stepId": 27,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600072,
+    "speaker": "？？？",
+    "content": "而至于文学……"
+  },
+  {
+    "id": 44,
+    "stepId": 28,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600073,
+    "speaker": "？？？",
+    "content": "确实没必要相信那场始自于拉美的大爆炸，之前的报告你听过就算了。"
+  },
+  {
+    "id": 44,
+    "stepId": 29,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600074,
+    "speaker": "？？？",
+    "content": "但至少……听我说，至少你可以笃信一点。"
+  },
+  {
+    "id": 44,
+    "stepId": 30,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600075,
+    "speaker": "？？？",
+    "content": "书翻太快也会割到手。"
+  },
+  {
+    "id": 45,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600076,
+    "speaker": "？？？",
+    "content": "该撤退了，这艘船就要沉了。散落的破木板上挂着尸骸，逃亡的囚徒已经争相游向海岸。"
+  },
+  {
+    "id": 45,
+    "stepId": 2,
+    "type": "options",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "什么船"
+  },
+  {
+    "id": 45,
+    "stepId": 3,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600077,
+    "speaker": "？？？",
+    "content": "一艘被光辉靓丽的文明世界驱逐到无人之海的船。"
+  },
+  {
+    "id": 45,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600078,
+    "speaker": "？？？",
+    "content": "既用作监狱，也用作病院，上面有你的熟人么？接下来的报告会很冒犯。"
+  },
+  {
+    "id": 45,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600079,
+    "speaker": "？？？",
+    "content": "社会的毒瘤、渣滓……文明人有很多词形容船上的乘客。"
+  },
+  {
+    "id": 45,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600080,
+    "speaker": "？？？",
+    "content": "这很中肯，他们确实缺乏纪律性和独立能力。"
+  },
+  {
+    "id": 45,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600081,
+    "speaker": "？？？",
+    "content": "可对于他们来说，或许只是涉入了过多痛苦导致的应激反应。"
+  },
+  {
+    "id": 45,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600082,
+    "speaker": "？？？",
+    "content": "理论学家也曾跳出来澄清，也有人说他们只是理性与非理性之间的囚徒，在历史中被不断重复定义的无辜者。"
+  },
+  {
+    "id": 45,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600083,
+    "speaker": "？？？",
+    "content": "以上都是无意义的观念冲突，你可以只听我的总结——疯子，名为“疯癫”的枷锁已在他们的脖颈留下了一道道不褪的伤痕。"
+  },
+  {
+    "id": 45,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600084,
+    "speaker": "？？？",
+    "content": "现在，疯子们正在抢滩登陆。"
+  },
+  {
+    "id": 45,
+    "stepId": 12,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 13,
+    "type": "options",
+    "param": "2#3",
+    "audio": 0,
+    "speaker": "",
+    "content": "这是一件好事#这是在散播疫病"
+  },
+  {
+    "id": 45,
+    "stepId": 14,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600085,
+    "speaker": "？？？",
+    "content": "那些游向彼岸的人欣喜若狂的表情清晰可见，还有他们在海滩上畅快奔跑留下的足印。"
+  },
+  {
+    "id": 45,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600086,
+    "speaker": "？？？",
+    "content": "自由，是的，这是一件好事。我们自此拥有作践自己的生命，糟蹋他人的尊严，以及选择拥抱荒诞和无意义的自由。"
+  },
+  {
+    "id": 45,
+    "stepId": 17,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600087,
+    "speaker": "？？？",
+    "content": "预先并可控地感染疾病也可以当作疫苗用。"
+  },
+  {
+    "id": 45,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600088,
+    "speaker": "？？？",
+    "content": "可要是有哪位无知的上将，为了新鲜的知识而将流浪的疯子捧为神，那就得戒备了。"
+  },
+  {
+    "id": 45,
+    "stepId": 20,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600089,
+    "speaker": "？？？",
+    "content": "再让我们深究一下——就像在战场的烂肉堆里捡狗牌一样。这些人生来就带疯病吗？"
+  },
+  {
+    "id": 45,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600090,
+    "speaker": "？？？",
+    "content": "在看过那么多彼此倾轧的战争后，我的个人理解是：只有知识会让人发疯，无知不会。"
+  },
+  {
+    "id": 45,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600091,
+    "speaker": "？？？",
+    "content": "疯癫，只是“知识”这一镇定剂的副作用。只要陆地上的人还食用着知识，这艘船的兵源，就不会断。"
+  },
+  {
+    "id": 45,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600092,
+    "speaker": "？？？",
+    "content": "这就是战争，文明人和疯子之间的战争，互相把对方打为异类，然后互相沾上对方的血，互相倾轧……"
+  },
+  {
+    "id": 45,
+    "stepId": 25,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600093,
+    "speaker": "？？？",
+    "content": "直到所有人都跳进战壕里，杀作一团分不清来源的肉球。仅少数人能回避这命运。"
+  },
+  {
+    "id": 45,
+    "stepId": 26,
+    "type": "options",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": "比如谁？"
+  },
+  {
+    "id": 45,
+    "stepId": 27,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 45,
+    "stepId": 28,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600094,
+    "speaker": "？？？",
+    "content": "你后面，六点钟方向。"
+  },
+  {
+    "id": 45,
+    "stepId": 29,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600095,
+    "speaker": "？？？",
+    "content": "那位倚靠在沉船上，既不挣扎，也不哀嚎的“加西亚”。"
+  },
+  {
+    "id": 45,
+    "stepId": 30,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600096,
+    "speaker": "？？？",
+    "content": "海水已经侵入他的气管，呛得他眼珠红肿，而他望向陆地，就这么干巴巴地望着……"
+  },
+  {
+    "id": 45,
+    "stepId": 31,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600097,
+    "speaker": "？？？",
+    "content": "他已经身处自己的指挥部，毫不期盼敌人的原谅。他一人成军，为自己而战。"
+  },
+  {
+    "id": 45,
+    "stepId": 32,
+    "type": "dialog",
+    "param": "",
+    "audio": 922600098,
+    "speaker": "？？？",
+    "content": "然后，请你再原地转体一周，一个回头的功夫，当你再看向他，他已经全军覆没了。"
+  },
+  {
+    "id": 45,
+    "stepId": 33,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
   }
 ]

@@ -7,6 +7,12 @@ slot3 = false
 slot4 = false
 slot5 = false
 
+function slot0.setWaitAreaActive(slot0)
+	uv0 = slot0
+
+	FightController.instance:dispatchEvent(FightEvent.UpdateUIPartVisible)
+end
+
 function slot0.set(slot0, slot1, slot2, slot3, slot4)
 	uv0 = slot0
 	uv1 = slot1

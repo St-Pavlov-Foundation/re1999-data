@@ -22,7 +22,9 @@ function slot0.showBodyEffect(slot0, slot1, slot2, slot3)
 	if not slot0._firstShow then
 		slot0._firstShow = true
 
-		slot0:showEverNodes(true)
+		slot0:showEverNodes(false)
+		TaskDispatcher.cancelTask(slot0._delayShowEverNodes, slot0)
+		TaskDispatcher.runDelay(slot0._delayShowEverNodes, slot0, 0.2)
 	end
 
 	if slot2 and slot3 then
@@ -30,18 +32,26 @@ function slot0.showBodyEffect(slot0, slot1, slot2, slot3)
 	end
 end
 
+function slot0._delayShowEverNodes(slot0)
+	slot0:showEverNodes(true)
+end
+
 function slot0.showEverNodes(slot0, slot1)
-	if string.nilorempty(slot0._roleEffectConfig.everNode) then
+	if string.nilorempty(slot0._roleEffectConfig.everNode) or not slot0._spineGo then
 		return
 	end
 
-	for slot6, slot7 in ipairs(string.split(slot0._roleEffectConfig.everNode, "#")) do
-		slot8 = gohelper.findChild(slot0._spineGo, slot7)
+	if slot0._spine._resPath and not string.find(slot2, slot0._roleEffectConfig.heroResName .. ".prefab") then
+		return
+	end
 
-		gohelper.setActive(slot8, slot1)
+	for slot7, slot8 in ipairs(string.split(slot0._roleEffectConfig.everNode, "#")) do
+		slot9 = gohelper.findChild(slot0._spineGo, slot8)
 
-		if not slot8 and SLFramework.FrameworkSettings.IsEditor then
-			logError(string.format("找不到特效节点：%s,请检查路径", slot7))
+		gohelper.setActive(slot9, slot1)
+
+		if not slot9 and SLFramework.FrameworkSettings.IsEditor then
+			logError(string.format("%s找不到特效节点：%s,请检查路径", slot2, slot8))
 		end
 	end
 end
@@ -57,7 +67,7 @@ function slot0._setNodeVisible(slot0, slot1, slot2)
 		gohelper.setActive(slot9, slot2)
 
 		if not slot9 and SLFramework.FrameworkSettings.IsEditor then
-			logError(string.format("找不到特效节点：%s,请检查路径", slot8))
+			logError(string.format("%s找不到特效节点：%s,请检查路径", slot0._spine._resPath, slot8))
 		end
 
 		if slot2 then
@@ -71,6 +81,8 @@ end
 
 function slot0.onDestroy(slot0)
 	slot0._spineGo = nil
+
+	TaskDispatcher.cancelTask(slot0._delayShowEverNodes, slot0)
 end
 
 return slot0

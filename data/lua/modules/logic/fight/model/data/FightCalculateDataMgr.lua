@@ -1427,6 +1427,18 @@ function slot0.playEffect295(slot0, slot1)
 	slot2:refreshPowerInfo(slot1.powerInfo)
 end
 
+function slot0.playEffect306(slot0, slot1)
+	if not slot0:getTarEntityMO(slot1) then
+		return
+	end
+
+	if not slot1.buff then
+		return
+	end
+
+	slot2:updateBuff(slot3)
+end
+
 function slot0.playEffect308(slot0, slot1)
 	slot2 = slot0.dataMgr.teamDataMgr[slot1.teamType]
 	slot3 = slot1.cardHeatValue.id
@@ -1467,6 +1479,41 @@ function slot0.playEffect320(slot0, slot1)
 	end
 
 	table.insert(slot0:getHandCard(), FightCardData.New(slot1.cardInfo))
+end
+
+function slot0.playEffect322(slot0, slot1)
+	if slot0.dataMgr.entityMgr:getOriginSubList(slot1.teamType) then
+		for slot7, slot8 in ipairs(slot3) do
+			slot2.entityDataDic[slot8.uid] = nil
+		end
+
+		tabletool.clear(slot3)
+	end
+end
+
+function slot0.playEffect323(slot0, slot1)
+	slot3 = slot0.dataMgr.fieldMgr.fightTaskBox.tasks
+
+	for slot7, slot8 in ipairs(slot1.fightTasks) do
+		slot9 = slot8.taskId
+		slot3[slot9] = FightDataHelper.coverData(slot2:newTask(slot8), slot3[slot9])
+	end
+end
+
+function slot0.playEffect325(slot0, slot1)
+	slot0.dataMgr.entityMgr:removeEntity(slot1.targetId)
+end
+
+function slot0.playEffect326(slot0, slot1)
+	if not slot0:getTarEntityMO(slot1) then
+		return
+	end
+
+	if not slot1.buff then
+		return
+	end
+
+	slot2:updateBuff(slot3)
 end
 
 function slot0.playUndefineEffect(slot0)
@@ -1531,9 +1578,7 @@ function slot0.playChangeHero(slot0, slot1)
 		end
 	end
 
-	slot9 = slot4
-
-	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot9)) do
+	for slot9, slot10 in ipairs(slot0.dataMgr.entityMgr:getOriginSubList(slot4)) do
 		if slot10.uid == slot1.fromId then
 			table.remove(slot5, slot9)
 

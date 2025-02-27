@@ -87,6 +87,8 @@ function slot0._editableInitView(slot0)
 
 	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	slot0._cameraAnimator = CameraMgr.instance:getCameraRootAnimator()
+	slot0._simagelogoGo = gohelper.findChild(slot0.viewGO, "#simage_logo")
+	slot0._simageactbgGo = gohelper.findChild(slot0.viewGO, "#simage_actbg")
 
 	slot0:RefreshSignature()
 	gohelper.addUIClickAudio(slot0._btndetail.gameObject, AudioEnum.UI.Play_UI_Magazines)
@@ -148,6 +150,8 @@ function slot0._checkActivityImgVisible(slot0)
 	end
 
 	gohelper.setActive(slot0._simageleftbg, slot3)
+	gohelper.setActive(slot0._simagelogoGo, slot1 and slot2.isShowLogo or false)
+	gohelper.setActive(slot0._simageactbgGo, slot1 and slot2.mainThumbnailViewActBg or false)
 end
 
 function slot0.refreshRedDot(slot0)

@@ -7,6 +7,8 @@ function slot0.onInitView(slot0)
 	slot0._goline = gohelper.findChild(slot0.viewGO, "#scroll_storylist/viewport/content/linelayout/#go_line")
 	slot0._btnswitch = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_switch")
 	slot0._gochapteritem = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content/#go_chapteritem")
+	slot0._scrollchapterlist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_chapterlist")
+	slot0._transcontentchapterlist = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content").transform
 	slot0._scrollstorylist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_storylist")
 	slot0._anim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
@@ -54,6 +56,27 @@ function slot0.onOpen(slot0)
 	slot0._playLineAnim = true
 
 	slot0:_refreshUI()
+
+	if slot0.viewParam then
+		slot0._selectChapter = slot0.viewParam
+
+		slot0:_openselectItem()
+		slot0:_focusItem()
+	end
+end
+
+function slot0._openselectItem(slot0)
+	slot0:_btnclickOnClick(slot0._chapterItemList[slot0._selectChapter])
+end
+
+function slot0._focusItem(slot0)
+	slot3 = 120
+
+	if (#slot0._chapterItemList - 1) * slot3 + 150 - recthelper.getHeight(slot0._scrollchapterlist.transform) >= (slot0._selectChapter - 1) * slot3 then
+		recthelper.setAnchorY(slot0._transcontentchapterlist, (slot0._selectChapter - 1) * slot3)
+	else
+		recthelper.setAnchorY(slot0._transcontentchapterlist, slot6)
+	end
 end
 
 function slot0._getStoryItemPrefab(slot0)
@@ -147,10 +170,9 @@ function slot0._refreshUI(slot0)
 end
 
 function slot0._btnclickOnClick(slot0, slot1)
-	slot7 = HandbookConfig.instance:getStoryGroupList()
-	slot8 = slot1.storyChapterId
+	slot7 = slot1.storyChapterId
 
-	HandbookStoryListModel.instance:setStoryList(slot7, slot8)
+	HandbookStoryListModel.instance:setStoryList(HandbookConfig.instance:getStoryGroupList(), slot7)
 
 	for slot7, slot8 in ipairs(slot0._chapterItemList) do
 		gohelper.setActive(slot8.gobeselected, slot2 == slot8.storyChapterId)
@@ -193,9 +215,7 @@ function slot0._cloneStoryItem(slot0)
 end
 
 function slot0._stopStoryItemEnterAnim(slot0)
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._showStoryItemEnterAnim, slot4)
+	TaskDispatcher.cancelTask(slot0._showStoryItemEnterAnim, slot0)
 
 	for slot4, slot5 in ipairs(slot0._storyItemList) do
 		slot5.anim.enabled = false

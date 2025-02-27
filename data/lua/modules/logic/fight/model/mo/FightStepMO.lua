@@ -29,6 +29,7 @@ function slot0.init(slot0, slot1, slot2)
 
 	slot0.cardIndex = slot1.cardIndex
 	slot0.supportHeroId = slot1.supportHeroId
+	slot0.fakeTimeline = slot1.fakeTimeline
 end
 
 function slot0._buildActEffect(slot0, slot1, slot2)
@@ -47,7 +48,7 @@ function slot0._buildActEffect(slot0, slot1, slot2)
 		slot11 = false
 
 		if slot10.effectType == FightEnum.EffectType.FIGHTSTEP then
-			if FightHelper.isTimelineStep(slot10.fightStep) then
+			if slot10.fightStep.fakeTimeline or FightHelper.isTimelineStep(slot12) then
 				slot11 = true
 			end
 		elseif slot10.effectType == FightEnum.EffectType.ATTR then

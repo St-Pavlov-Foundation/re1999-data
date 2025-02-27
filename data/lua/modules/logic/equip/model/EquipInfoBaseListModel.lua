@@ -25,9 +25,8 @@ end
 function slot0.initEquipList(slot0, slot1)
 	slot0.equipMoList = {}
 	slot0.recommendEquip = slot0.heroMo and slot0.heroMo:getRecommendEquip() or {}
-	slot8 = EquipModel.instance
 
-	for slot7, slot8 in ipairs(slot6.getEquips(slot8)) do
+	for slot7, slot8 in ipairs(EquipModel.instance:getEquips()) do
 		if EquipHelper.isNormalEquip(slot8.config) then
 			if slot1:isFiltering() then
 				if slot1:checkIsIncludeTag(slot8.config) then
@@ -224,10 +223,7 @@ function slot0.clearRecommend(slot0)
 		return
 	end
 
-	slot3 = EquipModel.instance
-	slot5 = slot3
-
-	for slot4, slot5 in ipairs(slot3.getEquips(slot5)) do
+	for slot4, slot5 in ipairs(EquipModel.instance:getEquips()) do
 		slot5:clearRecommend()
 	end
 end

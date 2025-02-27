@@ -41,12 +41,18 @@ end
 
 function slot0._updateNames(slot0)
 	slot0._txttipname.text = slot0._curSelectedSectionItem:getSectionName()
-	slot0._txttipnameen.text = slot0._curSelectedSectionItem:getSectionNameEn()
+
+	if slot0._txttipnameen then
+		slot0._txttipnameen.text = slot0._curSelectedSectionItem:getSectionNameEn()
+	end
 end
 
 function slot0._editableInitView(slot0)
+	gohelper.addUIClickAudio(slot0._btntip.gameObject, AudioEnum.UI.Play_UI_Copies)
+
 	slot0._sectionList = slot0:getUserDataTb_()
 	slot0._chapterList = slot0:getUserDataTb_()
+	slot0._chapterPosMap = {}
 	slot0._curSelectedSectionItem = nil
 	slot0._showChapterItemList = slot0:getUserDataTb_()
 	slot0._posX = 0
@@ -109,6 +115,12 @@ function slot0.onOpen(slot0)
 end
 
 function slot0._onOnFocusNormalChapter(slot0, slot1)
+	if (slot1 and DungeonConfig.instance:getChapterDivideSectionId(slot1)) == slot0._targetSectionId and slot1 and slot0._chapterPosMap[slot1] then
+		slot0:_moveToChapterPos(slot4)
+
+		return
+	end
+
 	slot0:_beFocusChapter(slot1)
 end
 
@@ -175,7 +187,6 @@ end
 
 function slot0._focusNormalChapter(slot0, slot1)
 	slot0._curFocusChapterId = nil
-	slot0._curFocusChapterPosX = nil
 
 	if slot1 and DungeonConfig.instance:getChapterDivideSectionId(slot1) then
 		DungeonMainStoryModel.instance:setSectionSelected(slot2)
@@ -184,18 +195,20 @@ function slot0._focusNormalChapter(slot0, slot1)
 	end
 
 	slot0:_showAllChapterList()
-
-	if slot0._curFocusChapterPosX then
-		slot0._scrollchapter.movementType = 2
-
-		recthelper.setAnchorX(slot0._gocontent.transform, -(slot0._curFocusChapterPosX - recthelper.getWidth(slot0._scrollchapter.transform) / 2))
-		TaskDispatcher.cancelTask(slot0._resetMovementType, slot0)
-		TaskDispatcher.runDelay(slot0._resetMovementType, slot0, 0)
-	end
-
+	slot0:_moveToChapterPos(slot0._curFocusChapterId and slot0._chapterPosMap[slot0._curFocusChapterId])
 	TaskDispatcher.cancelTask(slot0.onScrollChange, slot0)
 	TaskDispatcher.runDelay(slot0.onScrollChange, slot0, 0)
 	slot0:onScrollChange()
+end
+
+function slot0._moveToChapterPos(slot0, slot1)
+	if slot1 then
+		slot0._scrollchapter.movementType = 2
+
+		recthelper.setAnchorX(slot0._gocontent.transform, -(slot1 - recthelper.getWidth(slot0._scrollchapter.transform) / 2))
+		TaskDispatcher.cancelTask(slot0._resetMovementType, slot0)
+		TaskDispatcher.runDelay(slot0._resetMovementType, slot0, 0)
+	end
 end
 
 slot1 = "DungeonViewMainStoryBlock"
@@ -224,6 +237,7 @@ end
 
 function slot0._showAllChapterList(slot0)
 	tabletool.clear(slot0._showChapterItemList)
+	tabletool.clear(slot0._chapterPosMap)
 	slot0:_setSelectedSectionItem(nil)
 
 	slot0._startPosX = 147.5
@@ -344,9 +358,7 @@ function slot0._showOneSectionChapterList(slot0, slot1, slot2, slot3)
 			slot10:playIdleAnim()
 		end
 
-		if slot8.id == slot0._curFocusChapterId then
-			slot0._curFocusChapterPosX = slot0._posX
-		end
+		slot0._chapterPosMap[slot8.id] = slot0._posX
 
 		if slot9 then
 			recthelper.setAnchor(slot10.viewGO.transform.parent, slot11, DungeonMainStoryEnum.ChapterPosY.Special)

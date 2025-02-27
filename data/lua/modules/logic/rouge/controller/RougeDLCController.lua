@@ -43,7 +43,9 @@ function slot0._getTargetDLCs(slot0, slot1, slot2)
 		tabletool.removeValue(slot3, slot1)
 	end
 
-	table.sort(slot3)
+	table.sort(slot3, function (slot0, slot1)
+		return slot0 < slot1
+	end)
 
 	return slot3
 end

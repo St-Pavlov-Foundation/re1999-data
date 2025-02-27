@@ -12,7 +12,10 @@ slot2 = {
 	[FightEnum.BuffType_CardAreaRedOrBlue] = FightBuffCardAreaRedOrBlueBuff,
 	[FightEnum.BuffType_RedOrBlueCount] = FightBuffRedOrBlueCountBuff,
 	[FightEnum.BuffType_RedOrBlueChangeTrigger] = FightBuffRedOrBlueChangeTriggerBuff,
-	[FightEnum.BuffType_SaveFightRecord] = FightBuffSaveFightRecord
+	[FightEnum.BuffType_SaveFightRecord] = FightBuffSaveFightRecord,
+	[FightEnum.BuffType_SubBuff] = FightBuffSubBuff,
+	[FightEnum.BuffType_AddCardRecordByRound] = FightBuffRecordByRound,
+	[FightEnum.BuffType_AddCardCastChannel] = FightBuffAddCardContinueChannel
 }
 slot3 = {
 	[31080132] = FightBuffAddBKLESpBuff,
@@ -42,9 +45,8 @@ end
 function slot0.dealStartBuff(slot0)
 	if slot0._entity:getMO() then
 		slot0.filter_start_buff_stacked = {}
-		slot6 = slot1
 
-		for slot5, slot6 in pairs(slot1.getBuffDic(slot6)) do
+		for slot5, slot6 in pairs(slot1:getBuffDic()) do
 			slot0:addBuff(slot6, true)
 		end
 
@@ -216,9 +218,23 @@ function slot0.addBuff(slot0, slot1, slot2, slot3)
 	FightController.instance:dispatchEvent(FightEvent.AddEntityBuff, slot0._entity.id, slot1)
 end
 
-function slot0.setBuffEffectDict(slot0, slot1, slot2)
+function slot0.addLoopBuff(slot0, slot1)
+	if not slot1 then
+		return
+	end
+
 	if slot0._loopBuffEffectWrapDict then
-		slot0._loopBuffEffectWrapDict[slot1] = slot2
+		slot0._loopBuffEffectWrapDict[slot1.uniqueId] = slot1
+	end
+end
+
+function slot0.removeLoopBuff(slot0, slot1)
+	if not slot1 then
+		return
+	end
+
+	if slot0._loopBuffEffectWrapDict then
+		slot0._loopBuffEffectWrapDict[slot1.uniqueId] = nil
 	end
 end
 
@@ -264,6 +280,10 @@ function slot0._removeBuffHandler(slot0, slot1)
 end
 
 function slot0.updateBuff(slot0, slot1, slot2, slot3)
+	if slot0._buffHandlerDict[slot1.uid] and slot4.onBuffUpdate then
+		slot4:onBuffUpdate(slot1)
+	end
+
 	if slot1.type == FightEnum.BuffType.LayerSalveHalo then
 		return
 	end
@@ -585,9 +605,7 @@ end
 
 function slot0.beforeDestroy(slot0)
 	if slot0._entity:getMO() then
-		slot6 = slot1
-
-		for slot5, slot6 in pairs(slot1.getBuffDic(slot6)) do
+		for slot5, slot6 in pairs(slot1:getBuffDic()) do
 			slot0:delBuff(slot6.uid)
 		end
 	end
@@ -597,10 +615,7 @@ end
 
 function slot0.onDestroy(slot0)
 	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveEffect, slot0)
-
-	slot4 = slot0
-
-	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveDelBuffEffect, slot4)
+	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveDelBuffEffect, slot0)
 
 	for slot4, slot5 in pairs(slot0._buffHandlerDict) do
 		FightBuffHandlerPool.putHandlerInst(slot5)

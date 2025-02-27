@@ -26,6 +26,12 @@ function slot0.onOpen(slot0)
 
 	slot0:initScrollDragListener(slot0._dragResource, slot0._scrollchapterresource)
 	slot0:addEventCb(DungeonController.instance, DungeonEvent.OnChangeChapterList, slot0._onChangeChapterList, slot0)
+	slot0:addEventCb(DungeonController.instance, DungeonEvent.SelectMainStorySection, slot0._onSelectMainStorySection, slot0)
+end
+
+function slot0._onSelectMainStorySection(slot0)
+	slot0._silentTime = Time.time
+	slot0._silentCD = 0.5
 end
 
 function slot0._onChangeChapterList(slot0)
@@ -63,7 +69,9 @@ function slot0._onScrollValueChanged(slot0, slot1, slot2)
 
 		slot0._curNormalizedPos = slot3
 
-		DungeonAudio.instance:cardPass()
+		if not slot0._silentTime or slot0._silentCD <= Time.time - slot0._silentTime then
+			DungeonAudio.instance:cardPass()
+		end
 	end
 end
 
@@ -111,8 +119,10 @@ function slot0._onDrag(slot0, slot1, slot2)
 
 	if slot0._beginDragScrollNormalizePos then
 		if slot1.horizontalNormalizedPosition == slot0._beginDragScrollNormalizePos then
-			DungeonAudio.instance:chapterListBoundary()
-		elseif slot3 > 0 and slot4 <= 0 or slot3 < 0 and slot4 >= 1 then
+			if not slot0._silentTime or slot0._silentCD <= Time.time - slot0._silentTime then
+				DungeonAudio.instance:chapterListBoundary()
+			end
+		elseif (slot3 > 0 and slot4 <= 0 or slot3 < 0 and slot4 >= 1) and (not slot0._silentTime or slot0._silentCD <= Time.time - slot0._silentTime) then
 			DungeonAudio.instance:chapterListBoundary()
 		end
 

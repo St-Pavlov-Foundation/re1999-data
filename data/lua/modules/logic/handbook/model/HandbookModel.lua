@@ -98,6 +98,18 @@ function slot0.getCGUnlockIndex(slot0, slot1, slot2)
 	end
 end
 
+function slot0.getCGUnlockIndexInChapter(slot0, slot1, slot2, slot3)
+	for slot9, slot10 in ipairs(HandbookConfig.instance:getCGDictByChapter(slot1)) do
+		if slot10.id == slot2 then
+			return 1
+		end
+
+		if uv0.instance:isCGUnlock(slot10.id) then
+			slot4 = slot4 + 1
+		end
+	end
+end
+
 function slot0.getNextCG(slot0, slot1, slot2)
 	for slot8 = HandbookConfig.instance:getCGIndex(slot1, slot2) + 1, #HandbookConfig.instance:getCGList(slot2) do
 		if slot0:isCGUnlock(slot4[slot8].id) then

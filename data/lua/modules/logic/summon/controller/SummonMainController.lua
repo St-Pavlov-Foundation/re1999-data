@@ -148,13 +148,19 @@ function slot0.pickAllUIPreloadRes(slot0)
 	slot1 = {}
 	slot2 = {}
 
-	for slot7, slot8 in ipairs(SummonMainModel.getValidPools()) do
-		if SummonMainModel.instance:getADPageTabIndexForUI(slot8) and SummonMainModel.instance:getUIClassDef(slot9) and slot10.preloadList then
-			for slot14, slot15 in ipairs(slot10.preloadList) do
-				if not slot1[slot15] then
-					table.insert(slot2, slot15)
+	for slot7 = 1, tabletool.len(SummonMainModel.getValidPools()) do
+		if not string.nilorempty(slot3[slot7].customClz) then
+			if SummonCharacterProbUpPreloadConfig.getPreLoadListByName(slot9) == nil and SummonMainModel.instance:getADPageTabIndexForUI(slot8) then
+				slot10 = SummonMainModel.instance:getUIClassDef(slot11).preloadList
+			end
 
-					slot1[slot15] = true
+			if slot10 ~= nil then
+				for slot14, slot15 in ipairs(slot10) do
+					if not slot1[slot15] then
+						table.insert(slot2, slot15)
+
+						slot1[slot15] = true
+					end
 				end
 			end
 		end
@@ -167,20 +173,24 @@ function slot0.getCurPoolPreloadRes(slot0)
 	slot1 = {}
 	slot2 = {}
 
-	if SummonConfig.instance:getSummonPool(SummonMainModel.instance:getCurId()) then
-		slot6 = SummonMainModel.defaultUIClzMap[SummonMainModel.getADPageTabIndex(slot4)]
-		slot7 = nil
+	if SummonConfig.instance:getSummonPool(SummonMainModel.instance:getCurId()) and not string.nilorempty(slot4.customClz) then
+		if SummonCharacterProbUpPreloadConfig.getPreLoadListByName(slot5) == nil then
+			slot8 = SummonMainModel.defaultUIClzMap[SummonMainModel.getADPageTabIndex(slot4)]
+			slot9 = nil
 
-		if not string.nilorempty(slot4.customClz) then
-			slot7 = _G[slot4.customClz]
+			if not string.nilorempty(slot4.customClz) then
+				slot9 = _G[slot4.customClz]
+			end
+
+			slot6 = (slot9 or slot8).preloadList
 		end
 
-		if (slot7 or slot6) and slot7.preloadList then
-			for slot11, slot12 in ipairs(slot7.preloadList) do
-				if not slot1[slot12] then
-					table.insert(slot2, slot12)
+		if slot6 ~= nil then
+			for slot10, slot11 in ipairs(slot6) do
+				if not slot1[slot11] then
+					table.insert(slot2, slot11)
 
-					slot1[slot12] = true
+					slot1[slot11] = true
 				end
 			end
 		end

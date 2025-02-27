@@ -28,10 +28,11 @@ function slot0.onStart(slot0)
 					FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot8, -slot15)
 
 					if slot14[2] and not uv0.existWrapDict[slot6] then
-						slot17 = slot8.effect:addHangEffect("v2a3_ddg/ddg_innate_02", ModuleEnum.SpineHangPointRoot, nil, 1)
+						slot17, slot18 = slot0:getEffectRes()
+						slot19 = slot8.effect:addHangEffect(slot17, slot18, nil, 1)
 
-						FightRenderOrderMgr.instance:onAddEffectWrap(slot6, slot17)
-						slot17:setLocalPos(0, 0, 0)
+						FightRenderOrderMgr.instance:onAddEffectWrap(slot6, slot19)
+						slot19:setLocalPos(0, 0, 0)
 
 						uv0.existWrapDict[slot6] = true
 					end
@@ -41,6 +42,20 @@ function slot0.onStart(slot0)
 	end
 
 	slot0:onDone(true)
+end
+
+function slot0.getEffectRes(slot0)
+	slot2 = slot0._fightStepMO.fromId and FightDataHelper.entityMgr:getById(slot1)
+	slot3 = slot2 and slot2.skin
+	slot5 = "v2a3_ddg/ddg_innate_02"
+	slot6 = ModuleEnum.SpineHangPointRoot
+
+	if slot3 and lua_fight_sp_effect_ddg.configDict[slot3] then
+		slot5 = slot4.posionEffect
+		slot6 = slot4.posionHang
+	end
+
+	return slot5, slot6
 end
 
 function slot0.addEffectMo(slot0, slot1)

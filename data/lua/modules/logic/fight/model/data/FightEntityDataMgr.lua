@@ -11,21 +11,21 @@ slot1 = {
 }
 
 function slot0.onConstructor(slot0)
-	slot0._entityDataDic = {}
-	slot0._sideDic = {}
+	slot0.entityDataDic = {}
+	slot0.sideDic = {}
 
 	for slot5, slot6 in ipairs({
 		FightEnum.EntitySide.MySide,
 		FightEnum.EntitySide.EnemySide
 	}) do
-		slot0._sideDic[slot6] = {}
+		slot0.sideDic[slot6] = {}
 
 		for slot10, slot11 in pairs(uv0) do
-			slot0._sideDic[slot6][slot11] = {}
+			slot0.sideDic[slot6][slot11] = {}
 		end
 	end
 
-	slot0._deadUids = {}
+	slot0.deadUids = {}
 end
 
 function slot0.getAllEntityList(slot0, slot1, slot2)
@@ -93,8 +93,8 @@ function slot0.getMySubList(slot0, slot1, slot2)
 	return slot0:getList(FightEnum.EntitySide.MySide, uv0.sub, slot1, slot2)
 end
 
-function slot0.getEnemySubList(slot0, slot1, slot2, slot3)
-	return slot0:getList(FightEnum.EntitySide.EnemySide, uv0.sub, slot2, slot3)
+function slot0.getEnemySubList(slot0, slot1, slot2)
+	return slot0:getList(FightEnum.EntitySide.EnemySide, uv0.sub, slot1, slot2)
 end
 
 function slot0.getSpList(slot0, slot1, slot2, slot3)
@@ -110,11 +110,11 @@ function slot0.getEnemySpList(slot0, slot1, slot2)
 end
 
 function slot0.getAssistBoss(slot0)
-	return slot0._sideDic[FightEnum.EntitySide.MySide][uv0.assistBoss][1]
+	return slot0.sideDic[FightEnum.EntitySide.MySide][uv0.assistBoss][1]
 end
 
 function slot0.getASFDEntityMo(slot0, slot1)
-	slot3 = slot0._sideDic[slot1] and slot2[uv0.ASFD_emitter]
+	slot3 = slot0.sideDic[slot1] and slot2[uv0.ASFD_emitter]
 
 	return slot3 and slot3[1]
 end
@@ -122,7 +122,7 @@ end
 function slot0.getDeadList(slot0, slot1, slot2)
 	slot3 = slot2 or {}
 
-	for slot7, slot8 in pairs(slot0._entityDataDic) do
+	for slot7, slot8 in pairs(slot0.entityDataDic) do
 		if slot8.side == slot1 and slot8:isStatusDead() then
 			table.insert(slot3, slot8)
 		end
@@ -142,7 +142,7 @@ end
 function slot0.getList(slot0, slot1, slot2, slot3, slot4)
 	slot5 = slot3 or {}
 
-	for slot9, slot10 in ipairs(slot0._sideDic[slot1][slot2]) do
+	for slot9, slot10 in ipairs(slot0.sideDic[slot1][slot2]) do
 		slot11 = false
 
 		if slot10:isStatusDead() and not slot4 then
@@ -158,28 +158,28 @@ function slot0.getList(slot0, slot1, slot2, slot3, slot4)
 end
 
 function slot0.getOriginSide(slot0, slot1)
-	return slot0._sideDic[slot1]
+	return slot0.sideDic[slot1]
 end
 
 function slot0.getOriginNormalList(slot0, slot1)
-	return slot0._sideDic[slot1][uv0.normal]
+	return slot0.sideDic[slot1][uv0.normal]
 end
 
 function slot0.getOriginSubList(slot0, slot1)
-	return slot0._sideDic[slot1][uv0.sub]
+	return slot0.sideDic[slot1][uv0.sub]
 end
 
 function slot0.getOriginSpList(slot0, slot1)
-	return slot0._sideDic[slot1][uv0.sp]
+	return slot0.sideDic[slot1][uv0.sp]
 end
 
 function slot0.getOriginASFDEmitterList(slot0, slot1)
-	return slot0._sideDic[slot1][uv0.ASFD_emitter]
+	return slot0.sideDic[slot1][uv0.ASFD_emitter]
 end
 
 function slot0.getOriginListById(slot0, slot1)
 	if slot0:getById(slot1) then
-		for slot8, slot9 in pairs(slot0._sideDic[slot2.side]) do
+		for slot8, slot9 in pairs(slot0.sideDic[slot2.side]) do
 			for slot13, slot14 in ipairs(slot9) do
 				if slot14.uid == slot2.uid then
 					return slot9
@@ -192,7 +192,7 @@ function slot0.getOriginListById(slot0, slot1)
 end
 
 function slot0.isSub(slot0, slot1)
-	for slot5, slot6 in pairs(slot0._sideDic) do
+	for slot5, slot6 in pairs(slot0.sideDic) do
 		for slot10, slot11 in ipairs(slot6[uv0.sub]) do
 			if slot11.id == slot1 then
 				return true
@@ -202,9 +202,7 @@ function slot0.isSub(slot0, slot1)
 end
 
 function slot0.isMySub(slot0, slot1)
-	slot5 = uv0.sub
-
-	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][slot5]) do
+	for slot5, slot6 in ipairs(slot0.sideDic[FightEnum.EntitySide.MySide][uv0.sub]) do
 		if slot6.id == slot1 then
 			return true
 		end
@@ -212,7 +210,7 @@ function slot0.isMySub(slot0, slot1)
 end
 
 function slot0.isSp(slot0, slot1)
-	for slot5, slot6 in pairs(slot0._sideDic) do
+	for slot5, slot6 in pairs(slot0.sideDic) do
 		for slot10, slot11 in ipairs(slot6[uv0.sp]) do
 			if slot11.id == slot1 then
 				return true
@@ -226,9 +224,7 @@ function slot0.isAssistBoss(slot0, slot1)
 end
 
 function slot0.isMySp(slot0, slot1)
-	slot5 = uv0.sp
-
-	for slot5, slot6 in ipairs(slot0._sideDic[FightEnum.EntitySide.MySide][slot5]) do
+	for slot5, slot6 in ipairs(slot0.sideDic[FightEnum.EntitySide.MySide][uv0.sp]) do
 		if slot6.id == slot1 then
 			return true
 		end
@@ -236,11 +232,11 @@ function slot0.isMySp(slot0, slot1)
 end
 
 function slot0.addDeadUid(slot0, slot1)
-	slot0._deadUids[slot1] = true
+	slot0.deadUids[slot1] = true
 end
 
 function slot0.isDeadUid(slot0, slot1)
-	return slot0._deadUids[slot1]
+	return slot0.deadUids[slot1]
 end
 
 function slot0.removeEntity(slot0, slot1)
@@ -248,13 +244,13 @@ function slot0.removeEntity(slot0, slot1)
 		return
 	end
 
-	if not slot0._entityDataDic[slot1] then
+	if not slot0.entityDataDic[slot1] then
 		return
 	end
 
-	slot0._entityDataDic[slot1] = nil
+	slot0.entityDataDic[slot1] = nil
 
-	for slot6, slot7 in pairs(slot0._sideDic) do
+	for slot6, slot7 in pairs(slot0.sideDic) do
 		for slot11, slot12 in pairs(slot7) do
 			for slot16, slot17 in ipairs(slot12) do
 				if slot17.id == slot2.id then
@@ -270,11 +266,11 @@ function slot0.removeEntity(slot0, slot1)
 end
 
 function slot0.getById(slot0, slot1)
-	return slot0._entityDataDic[slot1]
+	return slot0.entityDataDic[slot1]
 end
 
 function slot0.getByPosId(slot0, slot1, slot2)
-	for slot6, slot7 in pairs(slot0._sideDic[slot1]) do
+	for slot6, slot7 in pairs(slot0.sideDic[slot1]) do
 		for slot11, slot12 in ipairs(slot7) do
 			if not slot12:isStatusDead() and slot12.position == slot2 then
 				return slot12
@@ -292,11 +288,11 @@ function slot0.getOldEntityMO(slot0, slot1)
 end
 
 function slot0.getAllEntityData(slot0)
-	return slot0._entityDataDic
+	return slot0.entityDataDic
 end
 
 function slot0.getAllEntityMO(slot0)
-	return slot0._entityDataDic
+	return slot0.entityDataDic
 end
 
 function slot0.addEntityMO(slot0, slot1)
@@ -308,12 +304,16 @@ function slot0.replaceEntityMO(slot0, slot1)
 end
 
 function slot0.refreshEntityByEntityMO(slot0, slot1)
-	if not slot0._entityDataDic[slot1.id] then
-		slot0._entityDataDic[slot1.id] = FightEntityMO.New()
+	if not slot0.entityDataDic[slot1.id] then
+		slot0.entityDataDic[slot1.id] = FightEntityMO.New()
 	end
 
 	FightEntityDataHelper.copyEntityMO(slot1, slot2)
 	slot0.dataMgr.entityExMgr:setEXDataAfterAddEntityMO(slot1)
+
+	if slot2:isASFDEmitter() then
+		FightDataHelper.ASFDDataMgr:setEmitterEntityMo(slot2)
+	end
 
 	return slot2
 end
@@ -347,8 +347,8 @@ function slot0.initOneEntityListByProto(slot0, slot1, slot2, slot3)
 end
 
 function slot0.updateData(slot0, slot1)
-	slot2 = slot0._sideDic[FightEnum.EntitySide.MySide]
-	slot3 = slot0._sideDic[FightEnum.EntitySide.EnemySide]
+	slot2 = slot0.sideDic[FightEnum.EntitySide.MySide]
+	slot3 = slot0.sideDic[FightEnum.EntitySide.EnemySide]
 
 	if slot1.attacker:HasField("playerEntity") then
 		slot0:initOneEntityListByProto(slot1.attacker.playerEntity, FightEnum.EntitySide.MySide, slot2[uv0.player])
@@ -385,7 +385,7 @@ function slot0.clientTestSetEntity(slot0, slot1, slot2, slot3)
 end
 
 function slot0.clientSetEntityList(slot0, slot1, slot2, slot3)
-	tabletool.clear(slot0._sideDic[slot1][slot2])
+	tabletool.clear(slot0.sideDic[slot1][slot2])
 
 	for slot8, slot9 in ipairs(slot3) do
 		table.insert(slot4, slot0:addEntityMO(slot9))

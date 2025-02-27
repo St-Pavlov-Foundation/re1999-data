@@ -18,7 +18,8 @@ slot2 = {
 }
 slot3 = {
 	name = 2,
-	minType = 1
+	minType = 1,
+	taskDesc = 3
 }
 
 return {

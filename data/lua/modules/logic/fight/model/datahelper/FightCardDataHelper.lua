@@ -91,6 +91,13 @@ return {
 	canCombineCardForPerformance = function (slot0, slot1)
 		return uv0.canCombineCard(slot0, slot1, FightDataMgr.instance)
 	end,
+	canCombineCardListForPerformance = function (slot0)
+		for slot4 = 1, #slot0 - 1 do
+			if uv0.canCombineCardForPerformance(slot0[slot4], slot0[slot4 + 1]) then
+				return true
+			end
+		end
+	end,
 	canCombineCard = function (slot0, slot1, slot2)
 		if not slot2 then
 			logError("调用检测是否可以合牌方法,但是没有传入entityDataMgr,请检查代码")

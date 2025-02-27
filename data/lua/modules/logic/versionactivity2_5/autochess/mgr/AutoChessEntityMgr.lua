@@ -110,9 +110,7 @@ function slot0.dispose(slot0)
 end
 
 function slot0.flyStarByTeam(slot0, slot1)
-	slot5 = AudioEnum.AutoChess.play_ui_tangren_star_collect
-
-	AudioMgr.instance:trigger(slot5)
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_star_collect)
 
 	for slot5, slot6 in pairs(slot0._entityDic) do
 		if slot6.teamType == slot1 and slot6.config.type == AutoChessStrEnum.ChessType.Attack then
