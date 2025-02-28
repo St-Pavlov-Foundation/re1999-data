@@ -250,6 +250,8 @@ function slot0.selectUseSkin(slot0, slot1)
 		gohelper.setActive(slot6.goselect, slot6.isSelf == slot0._isSelfBg)
 		gohelper.setActive(slot6.gounselect, slot6.isSelf ~= slot0._isSelfBg)
 	end
+
+	slot0:_btnclosetipsOnClick()
 end
 
 function slot0._onAddUnknownFriend(slot0)
