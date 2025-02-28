@@ -257,34 +257,46 @@ function slot0._checkTriggerMustCrit(slot0, slot1)
 	return false
 end
 
-function slot0.getStepContext(slot0)
+function slot0.getStepContext(slot0, slot1)
 	if slot0 then
-		for slot4, slot5 in ipairs(slot0.actEffectMOs) do
-			if slot5.effectType == FightEnum.EffectType.EMITTERFIGHTNOTIFY then
-				slot6 = nil
+		for slot5, slot6 in ipairs(slot0.actEffectMOs) do
+			if slot6.effectType == FightEnum.EffectType.EMITTERFIGHTNOTIFY then
+				slot7 = nil
 
-				if not string.nilorempty(slot5.reserveStr) then
-					slot6 = cjson.decode(slot5.reserveStr)
+				if not string.nilorempty(slot6.reserveStr) then
+					slot7 = cjson.decode(slot6.reserveStr)
 				end
 
-				return slot6
+				if not slot7.emitterAttackNum then
+					slot7.emitterAttackNum = slot1
+				end
+
+				if not slot7.emitterAttackMaxNum then
+					slot7.emitterAttackMaxNum = slot1
+				end
+
+				return slot7
 			end
 		end
 	end
 end
 
-function slot0.isALFPullOutStep(slot0)
-	if not uv0.getStepContext(slot0) then
+function slot0.isALFPullOutStep(slot0, slot1)
+	if not uv0.getStepContext(slot0, slot1) then
 		return false
 	end
 
-	if slot1.emitterAttackNum < slot1.emitterAttackMaxNum then
+	if not slot2.emitterAttackNum or not slot2.emitterAttackMaxNum then
 		return false
 	end
 
-	slot3 = slot0.fromId and FightDataHelper.entityMgr:getById(slot2)
+	if slot2.emitterAttackNum < slot2.emitterAttackMaxNum then
+		return false
+	end
 
-	return slot3 and slot3:hasBuffActId(924)
+	slot4 = slot0.fromId and FightDataHelper.entityMgr:getById(slot3)
+
+	return slot4 and slot4:hasBuffActId(924)
 end
 
 slot0.tempVector2_A = Vector2(-1, 0)

@@ -5862,5 +5862,9 @@
   {
     "id": "weekwalk_2resulttxt1",
     "lang": "上期白金奖杯获得数：▩1%s"
+  },
+  {
+    "id": "mainview_rougeactextradisplay",
+    "lang": "<voffset=13><size=30>▩1%s</size></voffset>"
   }
 ]

@@ -236,9 +236,12 @@ end
 
 function slot0.refreshRougeBtn(slot0)
 	gohelper.setActive(slot0._btnrolestory, true)
-	slot0:_roleStoryLoadImage(ActivityConfig.instance:getRougeActivityConfig().extraDisplayIcon, slot0.onLoadImage, slot0)
 
-	slot0._txtrolestory.text = ""
+	slot1 = ActivityConfig.instance:getRougeActivityConfig()
+
+	slot0:_roleStoryLoadImage(slot1.extraDisplayIcon, slot0.onLoadImage, slot0)
+
+	slot0._txtrolestory.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("mainview_rougeactextradisplay"), slot1.tabName)
 end
 
 function slot0.refreshDouQuQuBtn(slot0)

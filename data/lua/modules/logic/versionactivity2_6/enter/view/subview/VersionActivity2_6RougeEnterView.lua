@@ -64,6 +64,8 @@ function slot0._btndlcOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	RougeOutsideController.instance:initDLCReddotInfo()
+
 	slot0.animComp = VersionActivitySubAnimatorComp.get(slot0.viewGO, slot0)
 
 	RedDotController.instance:addRedDot(slot0._gostartreddot, RedDotEnum.DotNode.RougeDLCNew)

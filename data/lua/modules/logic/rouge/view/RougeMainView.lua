@@ -109,6 +109,8 @@ function slot0._btnclosetipsOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	RougeOutsideController.instance:initDLCReddotInfo()
+
 	slot0._btnstartCanvasGroup = slot0._btnstart.gameObject:GetComponent(gohelper.Type_CanvasGroup)
 	slot0._btnEndGo = slot0._btnend.gameObject
 	slot0._gotitleeffect = gohelper.findChild(slot0.viewGO, "title/eff_switch")

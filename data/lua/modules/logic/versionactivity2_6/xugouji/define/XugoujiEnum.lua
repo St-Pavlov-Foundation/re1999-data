@@ -69,6 +69,7 @@ slot0.BuffType = {
 	Layer = 1,
 	None = 0
 }
+slot0.FirstEpisodeId = 20002
 slot0.ChallengeEpisodeId = 20013
 slot0.TaskMOAllFinishId = -100
 

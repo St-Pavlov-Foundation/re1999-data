@@ -119771,7 +119771,7 @@
   {
     "id": 1910,
     "monsterGroupIds": "191001",
-    "sceneIds": "250",
+    "sceneIds": "25002",
     "focusMonsterId": "",
     "previewSkinId": 0,
     "roleNum": 4,
@@ -120005,7 +120005,7 @@
   {
     "id": 2910,
     "monsterGroupIds": "291001",
-    "sceneIds": "250",
+    "sceneIds": "25002",
     "focusMonsterId": "",
     "previewSkinId": 0,
     "roleNum": 4,
@@ -120239,7 +120239,7 @@
   {
     "id": 3910,
     "monsterGroupIds": "391001",
-    "sceneIds": "250",
+    "sceneIds": "25002",
     "focusMonsterId": "",
     "previewSkinId": 0,
     "roleNum": 4,

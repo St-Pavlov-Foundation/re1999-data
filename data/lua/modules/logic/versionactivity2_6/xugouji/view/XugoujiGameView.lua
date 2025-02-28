@@ -78,6 +78,10 @@ function slot0.onTaskPanelCloseAniFinish(slot0)
 end
 
 function slot0._btnCardBoxOnClick(slot0)
+	if Activity188Model.instance:isGameGuideMode() then
+		return
+	end
+
 	gohelper.setActive(slot0._goWarehouseInfo, true)
 	gohelper.setActive(slot0._btnCardBoxHide.gameObject, true)
 	AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.cardBoxOpen)

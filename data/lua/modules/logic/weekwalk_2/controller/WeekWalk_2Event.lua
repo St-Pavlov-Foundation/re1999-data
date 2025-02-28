@@ -11,5 +11,6 @@ slot0.OnBuffSetup = slot1()
 slot0.OnBuffSetupReply = slot1()
 slot0.OnWeekwalkTaskUpdate = slot1()
 slot0.OnGetTaskReward = slot1()
+slot0.OnShowSkin = slot1()
 
 return slot0

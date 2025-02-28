@@ -13894,5 +13894,13 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "使用增益/吟诵类咒语后，使罗蕾莱获得1层【癫狂<id:804830101>】，持续1回合"
+  },
+  {
+    "id": 804830105,
+    "name": "铅笔刀",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "此造物无法被主动移出布设"
   }
 ]

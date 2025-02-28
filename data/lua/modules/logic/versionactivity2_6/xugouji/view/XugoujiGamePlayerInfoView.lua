@@ -200,7 +200,7 @@ function slot0._refreshPlayerHP(slot0)
 		gohelper.setActive(slot0._goDamageEffect, false)
 		gohelper.setActive(slot0._goDamageEffect, true)
 		AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.playerDamage)
-		slot0._viewAnimator:Play("damage", nil, )
+		slot0._viewAnimator:Play("damage1", nil, )
 	end
 
 	slot0._txtPlayerHP.text = slot2

@@ -14,7 +14,6 @@ end
 
 function slot0.reInit(slot0)
 	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
-	TaskDispatcher.cancelTask(slot0.initDLCReddotInfo, slot0)
 end
 
 function slot0._onGetOpenInfoSuccess(slot0)
@@ -66,7 +65,7 @@ function slot0._onNewFuncUnlock(slot0, slot1)
 
 	slot0._model:setIsNewUnlockDifficulty(1, true)
 	slot0:sendRpcToGetOutsideInfo()
-	slot0:delayInitDLCReddotInfo()
+	slot0:initDLCReddotInfo()
 end
 
 function slot0.isOpen(slot0)
@@ -82,11 +81,6 @@ function slot0.initDLCReddotInfo(slot0)
 			slot1
 		})
 	}, true)
-end
-
-function slot0.delayInitDLCReddotInfo(slot0)
-	TaskDispatcher.cancelTask(slot0.initDLCReddotInfo, slot0)
-	TaskDispatcher.runDelay(slot0.initDLCReddotInfo, slot0, 0.8)
 end
 
 function slot0._createDLCReddotInfo(slot0, slot1)
