@@ -287,7 +287,11 @@ function slot0._loadRoleImage(slot0, slot1, slot2)
 	slot1:LoadImage(ResUrl.getHeadIconImg(slot2), function ()
 		ZProj.UGUIHelper.SetImageSize(uv1.gameObject)
 
-		if string.nilorempty(SkinConfig.instance:getSkinCo(uv0).playercardViewImgOffset) then
+		if string.nilorempty(SkinConfig.instance:getSkinCo(uv0).lucidescapeViewImgOffset) then
+			slot1 = slot0.playercardViewImgOffset
+		end
+
+		if string.nilorempty(slot1) then
 			slot1 = slot0.characterViewImgOffset
 		end
 
@@ -351,6 +355,11 @@ function slot0.onOpen(slot0)
 	slot0._info = WeekWalk_2Model.instance:getSettleInfo()
 
 	slot0:_showEndingAnim()
+	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnShowSkin, slot0._onShowSkin, slot0)
+end
+
+function slot0._onShowSkin(slot0, slot1)
+	slot0:_loadRoleImage(slot0._simageRoledefence, slot1)
 end
 
 function slot0._showEndingAnim(slot0)

@@ -47,7 +47,7 @@ function slot0.createPullOutSeq(slot0)
 end
 
 function slot0.getContext(slot0, slot1)
-	if FightASFDHelper.getStepContext(slot1) then
+	if FightASFDHelper.getStepContext(slot1, slot0.curIndex) then
 		return slot2
 	end
 
@@ -69,7 +69,7 @@ function slot0.checkNeedAddWaitDoneWork(slot0, slot1)
 		return true
 	end
 
-	if FightASFDHelper.isALFPullOutStep(slot1) then
+	if FightASFDHelper.isALFPullOutStep(slot1, slot0.curIndex) then
 		return true
 	end
 
@@ -99,7 +99,7 @@ function slot0.checkHasMonsterChangeEffectType(slot0, slot1)
 end
 
 function slot0.onStart(slot0)
-	if FightASFDHelper.isALFPullOutStep(slot0.stepMo) then
+	if FightASFDHelper.isALFPullOutStep(slot0.stepMo, slot0.curIndex) then
 		slot0:createPullOutSeq()
 	else
 		slot0:createNormalSeq()

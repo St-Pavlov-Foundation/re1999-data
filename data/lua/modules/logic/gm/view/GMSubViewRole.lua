@@ -25,10 +25,51 @@ function slot0.initViewContent(slot0)
 	slot0._playVoiceToggle = slot0:addToggle("L1", "播放语音")
 
 	slot0:addButton("L2", "停止测试皮肤", slot0._onStopShowAllSkins, slot0)
+	slot0:addButton("L3", "梦游结算界面测试皮肤", slot0._onClickShowWeekWalk_2AllSkins, slot0)
 end
 
 function slot0._onStopShowAllSkins(slot0)
 	TaskDispatcher.cancelTask(slot0._checkSkinAndVoice, slot0)
+	TaskDispatcher.cancelTask(slot0._checkWeekWalk_2Skin, slot0)
+end
+
+function slot0._onClickShowWeekWalk_2AllSkins(slot0)
+	print(string.format("====开始播放,间隔为：%ss====", tonumber(slot0._inpDuration:GetText()) or 1.5))
+	gohelper.setActive(slot0._subViewGo, false)
+
+	slot0._index = 1
+	slot0._skinList = {}
+
+	if not slot0:_initInputSkins() then
+		for slot5, slot6 in ipairs(lua_skin.configList) do
+			if HeroConfig.instance:getHeroCO(slot6.characterId) then
+				table.insert(slot0._skinList, slot6)
+			end
+		end
+	end
+
+	slot0._skinNum = #slot0._skinList
+
+	TaskDispatcher.cancelTask(slot0._checkWeekWalk_2Skin, slot0)
+	TaskDispatcher.runRepeat(slot0._checkWeekWalk_2Skin, slot0, slot1)
+end
+
+function slot0._checkWeekWalk_2Skin(slot0)
+	if slot0._skinNum < slot0._index then
+		print("====结束播放====")
+		gohelper.setActive(slot0._subViewGo, true)
+		TaskDispatcher.cancelTask(slot0._checkWeekWalk_2Skin, slot0)
+
+		return
+	end
+
+	slot1 = slot0._skinList[slot0._index]
+
+	print(string.format("==========================================auto showSkin %s skinId:%s progress:%s/%s", slot1.name, slot1.id, slot0._index, slot0._skinNum))
+
+	slot0._index = slot0._index + 1
+
+	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnShowSkin, slot1.id, true)
 end
 
 function slot0._onClickShowAllSkins(slot0)
@@ -145,6 +186,7 @@ end
 
 function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0._checkSkinAndVoice, slot0)
+	TaskDispatcher.cancelTask(slot0._checkWeekWalk_2Skin, slot0)
 end
 
 return slot0
