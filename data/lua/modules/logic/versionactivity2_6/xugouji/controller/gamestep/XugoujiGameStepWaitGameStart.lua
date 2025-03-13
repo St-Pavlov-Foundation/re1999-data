@@ -17,6 +17,8 @@ function slot0._showGameTargetTips(slot0)
 	if not Activity188Model.instance:isGameGuideMode() then
 		TaskDispatcher.runDelay(slot0._autoCloseTargetTips, slot0, tonumber(Activity188Config.instance:getConstCfg(uv0, 4).value2))
 		TaskDispatcher.runDelay(slot0._showSkillTips, slot0, tonumber(Activity188Config.instance:getConstCfg(uv0, 5).value2))
+	elseif Activity188Model.instance:getCurEpisodeId() ~= XugoujiEnum.FirstEpisodeId then
+		TaskDispatcher.runDelay(slot0._autoCloseTargetTips, slot0, slot4)
 	end
 
 	XugoujiController.instance:dispatchEvent(XugoujiEvent.AutoShowTargetTips)

@@ -30,10 +30,18 @@ function slot0.buildTabViews(slot0, slot1)
 end
 
 function slot0._overrideCloseAction(slot0)
+	if Activity188Model.instance:isGameGuideMode() then
+		return
+	end
+
 	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, slot0._playAniAndClose, nil, , slot0)
 end
 
 function slot0._overrideClickHome(slot0)
+	if Activity188Model.instance:isGameGuideMode() then
+		return
+	end
+
 	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, slot0._playAniAndGoHome, nil, , slot0)
 end
 
