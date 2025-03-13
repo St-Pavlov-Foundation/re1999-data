@@ -259,7 +259,7 @@
     "id": 1001,
     "step": 33,
     "speaker": "<b><color=#D84165>理想家：</color></b>",
-    "desc": "他想：<b><i>“真理不会进入拒绝理解的心灵”</b></i>，我会找到它的，它唾手可得——",
+    "desc": "他想：我会找到真理的，它唾手可得——",
     "line": 0,
     "type": 2
   },
@@ -547,7 +547,7 @@
     "id": 1003,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -563,7 +563,7 @@
     "id": 1004,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -987,7 +987,7 @@
     "id": 2002,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -1275,7 +1275,7 @@
     "id": 2004,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -1883,7 +1883,7 @@
     "id": 3002,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -2051,7 +2051,7 @@
     "id": 3004,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -2451,7 +2451,7 @@
     "id": 4002,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -2659,7 +2659,7 @@
     "id": 4004,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },
@@ -2987,7 +2987,7 @@
     "id": 5001,
     "step": 2,
     "speaker": "",
-    "desc": "<align=\"center\"><b>点击领取战利品</b></align>",
+    "desc": "<align=\"center\"><b>点击领取奖励</b></align>",
     "line": 0,
     "type": 3
   },

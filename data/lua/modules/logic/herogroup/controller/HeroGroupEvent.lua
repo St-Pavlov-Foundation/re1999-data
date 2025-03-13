@@ -36,6 +36,7 @@ slot0.ShowEnemyInfoViewByGuide = 55
 slot0.OpenHeroGroupFinishWithEpisodeId = 56
 slot0.OpenHeroGroupFinishWithChapterId = 57
 slot0.OpenHeroGroupFinishWithEpisodeType = 58
+slot0.OnUseRecommendGroupFinish = 60
 slot0.OnCloseEquipTeamShowView = 61
 slot0.OnCompareEquip = 62
 slot0.OnSnapshotSaveSucc = 71

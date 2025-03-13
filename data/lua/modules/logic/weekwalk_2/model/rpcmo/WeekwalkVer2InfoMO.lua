@@ -31,6 +31,17 @@ function slot0.init(slot0, slot1)
 	end
 end
 
+function slot0.getOptionSkills(slot0)
+	if slot0._skillList and slot0._skillList._timeId == slot0.timeId then
+		return slot0._skillList
+	end
+
+	slot0._skillList = string.splitToNumber(lua_weekwalk_ver2_time.configDict[slot0.timeId].optionalSkills, "#")
+	slot0._skillList._timeId = slot0.timeId
+
+	return slot0._skillList
+end
+
 function slot0.getHeroGroupSkill(slot0, slot1)
 	return slot0.snapshotInfos[slot1] and slot2:getChooseSkillId()
 end

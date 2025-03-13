@@ -6273,5 +6273,30 @@
     "bgm": 3200002,
     "ambientSound": 0,
     "sceneEffects": ""
+  },
+  {
+    "id": 140011,
+    "resName": "m_s143_jjhgc_ground",
+    "sceneType": 1,
+    "sceneId": 140,
+    "cameraId": 2,
+    "cameraOffset": "",
+    "cardCamera": "",
+    "useBloom": 1,
+    "spineR": 1.0,
+    "spineG": 1.0,
+    "spineB": 1.0,
+    "bloomR": 0.6705,
+    "bloomG": 0.587,
+    "bloomB": 0.25,
+    "bloomA": 0.0,
+    "flickerSceneFactor": 0.29,
+    "bloomEffect": "",
+    "weatherEffect": 0,
+    "flyEffect": "",
+    "wadeEffect": "",
+    "bgm": 3200024,
+    "ambientSound": 0,
+    "sceneEffects": ""
   }
 ]

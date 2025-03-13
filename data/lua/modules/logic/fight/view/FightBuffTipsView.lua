@@ -49,8 +49,8 @@ end
 function slot0._setPos(slot0, slot1)
 	slot0.enemyBuffTipPosY = 80
 	slot5 = recthelper.rectToRelativeAnchorPos(slot0.viewParam.iconPos, slot0._gobuffinfocontainer.transform.parent)
-	slot6 = recthelper.getWidth(slot0._scrollbuff.transform)
-	slot7 = recthelper.getHeight(slot0._scrollbuff.transform)
+	slot6 = recthelper.getWidth(slot0.rectTrScrollBuff)
+	slot7 = recthelper.getHeight(slot0.rectTrScrollBuff)
 	slot8 = 0
 	slot9 = 0
 
@@ -179,6 +179,9 @@ function slot0.updateBuffDesc(slot0, slot1, slot2, slot3, slot4, slot5)
 			end
 		end
 	end
+
+	recthelper.setWidth(slot0.rectTrScrollBuff, slot11)
+	recthelper.setWidth(slot0.rectTrBuffContent, slot11)
 
 	if #slot12 > 0 then
 		for slot16 = 0, #slot12 - 1, 5 do

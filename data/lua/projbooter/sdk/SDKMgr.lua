@@ -427,6 +427,13 @@ end
 
 function slot0._handleReadNfcCalled(slot0, slot1, slot2)
 	logNormal(string.format("_handleReadNfcCalled code = [%s], msg = [%s]", slot1, slot2))
+
+	if NFCController == nil or NFCController.instance == nil then
+		logNormal("NFCController is nil")
+
+		return
+	end
+
 	NFCController.instance:onNFCRead(slot2)
 end
 
