@@ -124,6 +124,7 @@ function slot0._btnuseOnClick(slot0)
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 	HeroGroupModel.instance:saveCurGroupData()
 	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
+	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupFinish)
 end
 
 function slot0.onTowerUse(slot0, slot1, slot2, ...)

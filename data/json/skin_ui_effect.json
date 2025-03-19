@@ -456,7 +456,7 @@
     "changeVisible": 0,
     "delayVisible": 0,
     "frameVisible": 1,
-    "realtime": ""
+    "realtime": "1"
   },
   {
     "id": 311302,
@@ -492,6 +492,6 @@
     "changeVisible": 0,
     "delayVisible": 1,
     "frameVisible": 1,
-    "realtime": ""
+    "realtime": "1"
   }
 ]

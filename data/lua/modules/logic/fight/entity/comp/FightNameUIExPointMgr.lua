@@ -540,7 +540,7 @@ function slot0.onExPointChange(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	slot0:log("激情点改变")
+	slot0:log(string.format("激情点改变 oldNum : %s, newNUm : %s", slot2, slot3))
 
 	if slot2 < slot3 then
 		slot0:playAddPointEffect(slot2, slot3)
@@ -588,7 +588,7 @@ end
 function slot0.playRemovePointEffect(slot0, slot1, slot2)
 	if slot0.entity:getMO():getMaxExPoint() <= slot1 then
 		for slot6, slot7 in ipairs(slot0.pointItemList) do
-			slot7:directSetState(FightEnum.ExPointState.Server)
+			slot7:updateExPoint()
 		end
 	end
 

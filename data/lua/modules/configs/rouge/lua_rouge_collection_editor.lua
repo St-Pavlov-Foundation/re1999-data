@@ -8854,6 +8854,34 @@ return {
 	},
 	{
 		ownerId = 0,
+		type = 0,
+		holeNum = 0,
+		showRare = 0,
+		interactable = false,
+		iconPath = "",
+		unremovable = false,
+		rare = 0,
+		id = 8180604,
+		isUnique = false,
+		versions = {},
+		seasons = {},
+		tags = {},
+		shapeParam = {
+			shapeArea = {},
+			effectArea = {},
+			dragPos = Vector2(5, 5),
+			iconOffset = Vector2(0, 0),
+			shapeSize = Vector2(0, 0),
+			leftTopPos = Vector2(0, 0),
+			shapeMatrix = {
+				{
+					0
+				}
+			}
+		}
+	},
+	{
+		ownerId = 0,
 		type = 103,
 		holeNum = 1,
 		showRare = 2,
@@ -25179,34 +25207,6 @@ return {
 			shapeArea = {},
 			effectArea = {},
 			dragPos = Vector2(0, 0),
-			iconOffset = Vector2(0, 0),
-			shapeSize = Vector2(0, 0),
-			leftTopPos = Vector2(0, 0),
-			shapeMatrix = {
-				{
-					0
-				}
-			}
-		}
-	},
-	{
-		ownerId = 0,
-		type = 0,
-		holeNum = 0,
-		showRare = 0,
-		interactable = false,
-		iconPath = "",
-		unremovable = false,
-		rare = 0,
-		id = 8180604,
-		isUnique = false,
-		versions = {},
-		seasons = {},
-		tags = {},
-		shapeParam = {
-			shapeArea = {},
-			effectArea = {},
-			dragPos = Vector2(5, 5),
 			iconOffset = Vector2(0, 0),
 			shapeSize = Vector2(0, 0),
 			leftTopPos = Vector2(0, 0),

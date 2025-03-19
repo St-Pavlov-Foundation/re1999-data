@@ -18,6 +18,7 @@ end
 function slot0._onLoaded(slot0)
 	if slot0._entity then
 		slot0._entity:initHangPointDict()
+		FightRenderOrderMgr.instance:_resetRenderOrder(slot0._entity.id)
 
 		if slot0._entity.effect:getHangEffect() then
 			for slot5, slot6 in pairs(slot1) do

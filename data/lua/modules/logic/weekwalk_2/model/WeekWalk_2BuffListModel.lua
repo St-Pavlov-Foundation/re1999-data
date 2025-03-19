@@ -9,6 +9,16 @@ function slot0.getPrevBattleSkillId()
 end
 
 function slot0.getCurHeroGroupSkillId()
+	if uv0._getCurHeroGroupSkillId() then
+		if not tabletool.indexOf(WeekWalk_2Model.instance:getInfo():getOptionSkills(), slot0) or WeekWalk_2Model.instance:getCurMapInfo():getChooseSkillNum() < slot5 then
+			slot0 = nil
+		end
+	end
+
+	return slot0
+end
+
+function slot0._getCurHeroGroupSkillId()
 	slot1 = WeekWalk_2Model.instance:getInfo() and slot0:getHeroGroupSkill(HeroGroupModel.instance.curGroupSelectIndex)
 
 	return slot1 ~= uv0.getPrevBattleSkillId() and slot1 or nil
