@@ -988,6 +988,10 @@ function slot0.tryPlayAlfEffect(slot0)
 		return
 	end
 
+	slot0.showAlfEffectIng = true
+
+	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectAppear, slot0)
+
 	if slot0.alfLoadStatus == uv0.AlfLoadStatus.Loaded then
 		slot0:_tryPlayAlfEffect()
 	elseif slot0.alfLoadStatus ~= uv0.AlfLoadStatus.Loading then
@@ -1028,6 +1032,10 @@ end
 
 function slot0.playAlfCloseAnimDone(slot0)
 	gohelper.setActive(slot0.goAlfAddCardEffect, false)
+
+	slot0.showAlfEffectIng = false
+
+	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectEnd, slot0)
 end
 
 function slot0.clearAlfEffect(slot0)

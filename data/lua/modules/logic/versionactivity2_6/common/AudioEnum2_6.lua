@@ -71,5 +71,9 @@ slot0.BP = {
 slot0.WeekwalkHeart = {
 	play_ui_wenming_popup = 20260902
 }
+slot0.WarmUp = {
+	play_ui_wenming_cut_20260903 = 20260903,
+	play_ui_wenming_page_20260904 = 20260904
+}
 
 return slot0

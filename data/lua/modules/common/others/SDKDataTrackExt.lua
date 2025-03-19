@@ -11,6 +11,7 @@ function slot0.activateExtend()
 	uv0.EventName.resources_downloading = "resources_downloading"
 	uv0.EventName.main_hero_interaction = "main_hero_interaction"
 	uv0.EventName.resource_fixup = "resource_fixup"
+	uv0.EventName.click_activity_jump_button = "click_activity_jump_button"
 	uv0.EventProperties.current_language = "current_language"
 	uv0.EventProperties.entrance = "entrance"
 	uv0.EventProperties.current_voice_pack_list = "current_voice_pack_list"
@@ -113,6 +114,10 @@ function slot0.trackResourceFixup(slot0, slot1)
 		[uv0.EventProperties.resource_fixup_count] = slot1.count or 0,
 		[uv0.EventProperties.entrance] = slot1.entrance or ""
 	})
+end
+
+function slot0.trackClickActivityJumpButton(slot0)
+	StatController.instance:track(uv0.EventName.click_activity_jump_button, {})
 end
 
 return slot0

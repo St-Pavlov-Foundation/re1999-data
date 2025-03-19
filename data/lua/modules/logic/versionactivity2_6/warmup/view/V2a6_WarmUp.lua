@@ -4,10 +4,7 @@ slot0 = class("V2a6_WarmUp", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._simagefullbg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_fullbg")
-	slot0._simageboxunopen = gohelper.findChildSingleImage(slot0.viewGO, "Middle/#simage_box_unopen")
-	slot0._simageboxopen = gohelper.findChildSingleImage(slot0.viewGO, "Middle/#simage_box_open")
-	slot0._simagelight = gohelper.findChildSingleImage(slot0.viewGO, "Middle/#simage_light")
-	slot0._imageicon = gohelper.findChildImage(slot0.viewGO, "Middle/#image_icon")
+	slot0._btngoto = gohelper.findChildButtonWithAudio(slot0.viewGO, "Middle/#btn_goto")
 	slot0._simageTitle = gohelper.findChildSingleImage(slot0.viewGO, "Right/#simage_Title")
 	slot0._txtLimitTime = gohelper.findChildText(slot0.viewGO, "Right/LimitTime/#txt_LimitTime")
 	slot0._scrollTaskTabList = gohelper.findChildScrollRect(slot0.viewGO, "Right/TaskTab/#scroll_TaskTabList")
@@ -28,10 +25,12 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
+	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot0)
 	slot0._btngetreward:AddClickListener(slot0._btngetrewardOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
+	slot0._btngoto:RemoveClickListener()
 	slot0._btngetreward:RemoveClickListener()
 end
 
@@ -52,6 +51,17 @@ function slot0._btngetrewardOnClick(slot0)
 	slot0.viewContainer:sendFinishAct125EpisodeRequest()
 end
 
+function slot0._btngotoOnClick(slot0)
+	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
+	WebViewController.instance:simpleOpenWebView(slot0.viewContainer:getH5BaseUrl(), false, slot0._onWebViewCb, slot0)
+end
+
+function slot0._onWebViewCb(slot0, slot1, slot2)
+	if slot1 == WebViewEnum.WebViewCBType.Cb and string.split(slot2, "#")[1] == "webClose" then
+		ViewMgr.instance:closeView(ViewName.WebView)
+	end
+end
+
 function slot0._editableInitView(slot0)
 	slot1 = slot0._scrollTaskDesc.gameObject
 	slot3 = gohelper.findChild(slot0.viewGO, "Right/TaskTab/#scroll_TaskTabList")
@@ -69,6 +79,10 @@ function slot0._editableInitView(slot0)
 	slot0._animEvent = gohelper.onceAddComponent(slot0.viewGO, gohelper.Type_AnimationEventWrap)
 
 	slot0._animEvent:AddEventListener(uv1, slot0._onSwitch, slot0)
+
+	slot0._btngotoGo = slot0._btngoto.gameObject
+
+	slot0:_refreshActive_btngoto()
 	slot0:_resetTaskContentPos()
 	slot0:_setActive_goWrongChannel(false)
 
@@ -103,6 +117,7 @@ function slot0.onOpen(slot0)
 	slot0._lastSelectedIndex = nil
 
 	gohelper.addChild(slot0.viewParam.parent, slot0.viewGO)
+	AudioMgr.instance:trigger(AudioEnum2_6.WarmUp.play_ui_wenming_cut_20260903)
 end
 
 function slot0.onClose(slot0)
@@ -147,7 +162,7 @@ end
 
 function slot0._setActive_goWrongChannel(slot0, slot1)
 	gohelper.setActive(slot0._goWrongChannel, slot1)
-	gohelper.setActive(slot0._scroll_TaskDescGo, not slot1)
+	slot0:_setActive_scroll_TaskDescGo(not slot1)
 
 	if slot1 then
 		slot0:_setMaskPaddingBottom(slot0._taskDescViewportHeight)
@@ -163,7 +178,6 @@ function slot0._refreshData(slot0)
 
 	slot0._txtTaskTitle.text = slot1.name
 	slot0._txtTaskContent.text = slot1.text
-	slot0._descHeight = slot0._txtTaskContent.preferredHeight
 end
 
 function slot0._showDeadline(slot0)
@@ -268,9 +282,12 @@ function slot0.openDesc(slot0, slot1, slot2)
 	slot7 = slot0.viewContainer:getEpisodeConfigCur().time or 0
 
 	gohelper.setActive(slot0._goWrongChannel, false)
-	gohelper.setActive(slot0._scroll_TaskDescGo, true)
+	slot0:_setActive_scroll_TaskDescGo(true)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_loop)
 
 	function slot7()
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_stop)
+
 		if uv0 then
 			uv0(uv1)
 		end
@@ -357,6 +374,7 @@ end
 function slot0._resetTweenDescPos(slot0)
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_tweenId")
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_stop)
 	slot0:_resetTaskContentPos()
 end
 
@@ -387,6 +405,32 @@ end
 
 function slot0.setBlock_scroll(slot0, slot1)
 	slot0._scrollCanvasGroup.blocksRaycasts = not slot1
+end
+
+function slot0._refreshActive_btngoto(slot0)
+	if string.nilorempty(CommonConfig.instance:getConstStr(ConstEnum.V2a4_WarmUp_btnplay_openTs)) then
+		gohelper.setActive(slot0._btnplayGo, true)
+
+		return
+	end
+
+	gohelper.setActive(slot0._btngotoGo, TimeUtil.stringToTimestamp(slot1) <= ServerTime.now() and not string.nilorempty(slot0.viewContainer:getH5BaseUrl()))
+end
+
+function slot0._refreshTxtTaskContentHeight(slot0)
+	ZProj.UGUIHelper.RebuildLayout(slot0._txtTaskContentTran)
+
+	slot0._descHeight = slot0._txtTaskContent.preferredHeight
+end
+
+function slot0._setActive_scroll_TaskDescGo(slot0, slot1)
+	gohelper.setActive(slot0._scroll_TaskDescGo, slot1)
+
+	if slot1 then
+		ZProj.UGUIHelper.RebuildLayout(slot0._txtTaskContentTran)
+
+		slot0._descHeight = slot0._txtTaskContent.preferredHeight
+	end
 end
 
 return slot0

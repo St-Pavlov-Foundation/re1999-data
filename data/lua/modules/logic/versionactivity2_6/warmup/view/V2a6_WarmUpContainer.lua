@@ -8,9 +8,11 @@ slot1 = {
 
 function slot0.buildViews(slot0)
 	slot0._warmUp = V2a6_WarmUp.New()
+	slot0._warmUpLeftView = V2a6_WarmUpLeftView.New()
 
 	return {
-		slot0._warmUp
+		slot0._warmUp,
+		slot0._warmUpLeftView
 	}
 end
 
@@ -37,14 +39,17 @@ function slot0.onContainerClose(slot0)
 end
 
 function slot0.onContainerCloseFinish(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_stop)
 end
 
 function slot0.onDataUpdateFirst(slot0)
 	slot0._warmUp:onDataUpdateFirst()
+	slot0._warmUpLeftView:onDataUpdateFirst()
 end
 
 function slot0.onDataUpdate(slot0)
 	slot0._warmUp:onDataUpdate()
+	slot0._warmUpLeftView:onDataUpdate()
 end
 
 function slot0.onDataUpdateDoneFirst(slot0)
@@ -54,8 +59,10 @@ end
 function slot0.onSwitchEpisode(slot0)
 	slot0.__isWaitingPlayHasGetAnim = false
 
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_stop)
 	slot0._warmUp:setBlock_scroll(false)
 	slot0._warmUp:onSwitchEpisode()
+	slot0._warmUpLeftView:onSwitchEpisode()
 end
 
 function slot0.episode2Index(slot0, slot1)

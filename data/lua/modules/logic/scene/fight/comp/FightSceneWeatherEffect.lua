@@ -7,6 +7,7 @@ function slot0.onSceneStart(slot0, slot1, slot2)
 	FightController.instance:registerCallback(FightEvent.SetEntityWeatherEffectVisible, slot0._setEntityWeatherEffectVisible, slot0)
 	FightController.instance:registerCallback(FightEvent.OnSpineLoaded, slot0._onSpineLoaded, slot0)
 	FightController.instance:registerCallback(FightEvent.OnRestartStageBefore, slot0._releaseAllEntityEffect, slot0)
+	FightController.instance:registerCallback(FightEvent.SetEntityAlpha, slot0._onSetEntityAlpha, slot0)
 end
 
 function slot0.onScenePrepared(slot0, slot1, slot2)
@@ -19,6 +20,7 @@ function slot0.onSceneClose(slot0)
 	FightController.instance:unregisterCallback(FightEvent.SetEntityWeatherEffectVisible, slot0._setEntityWeatherEffectVisible, slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onSpineLoaded, slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnRestartStageBefore, slot0._releaseAllEntityEffect, slot0)
+	FightController.instance:unregisterCallback(FightEvent.SetEntityAlpha, slot0._onSetEntityAlpha, slot0)
 	slot0:getCurScene().level:unregisterCallback(CommonSceneLevelComp.OnLevelLoaded, slot0._onLevelLoaded, slot0)
 	slot0:_releaseWeatherEffect()
 end
@@ -94,6 +96,12 @@ function slot0._setSpineWeatherEffect(slot0, slot1)
 	slot0.weather_effect[slot3]:setLocalPos(0, 0, 0)
 	slot0.weather_effect[slot3]:setActive(false)
 	slot0.weather_effect[slot3]:setActive(true)
+end
+
+function slot0._onSetEntityAlpha(slot0, slot1, slot2)
+	if FightHelper.getEntity(slot1) then
+		slot0:_setEntityWeatherEffectVisible(slot3, slot2)
+	end
 end
 
 function slot0._setEntityWeatherEffectVisible(slot0, slot1, slot2)

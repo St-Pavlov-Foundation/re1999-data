@@ -44,6 +44,16 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.AddUseCard, slot0._onAddUseCard, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.PlayChangeRankFail, slot0._onPlayChangeRankFail, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.CardLevelChangeDone, slot0._onCardLevelChangeDone, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.ALF_AddCardEffectAppear, slot0._onAlfAddCardEffectAppear, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.ALF_AddCardEffectEnd, slot0._onAlfAddCardEffectEnd, slot0)
+end
+
+function slot0._onAlfAddCardEffectAppear(slot0)
+	slot0:updateCardLockObj()
+end
+
+function slot0._onAlfAddCardEffectEnd(slot0)
+	slot0:updateCardLockObj()
 end
 
 function slot0.onClose(slot0)
@@ -114,13 +124,20 @@ function slot0.getCardPos(slot0, slot1)
 end
 
 function slot0._onSetUseCards(slot0)
-	slot1 = FightPlayCardModel.instance:getUsedCards()
-
-	slot0:_fixWaitingAreaItemCount(#slot1)
+	slot0:_fixWaitingAreaItemCount(#FightPlayCardModel.instance:getUsedCards())
 	slot0:_updateView()
+	slot0:updateCardLockObj()
+end
 
-	for slot5, slot6 in ipairs(slot1) do
-		slot6.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, gohelper.findChild(slot0._cardItemList[slot5].tr.parent.gameObject, "lock"), false)
+function slot0.updateCardLockObj(slot0)
+	for slot5, slot6 in ipairs(FightPlayCardModel.instance:getUsedCards()) do
+		slot7 = slot0._cardItemList[slot5]
+
+		if slot7.showAlfEffectIng then
+			gohelper.setActive(gohelper.findChild(slot7.tr.parent.gameObject, "lock"), false)
+		else
+			slot6.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, slot8, false)
+		end
 	end
 end
 

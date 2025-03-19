@@ -116,24 +116,21 @@ function slot0.getExplosionCo(slot0)
 	return uv0.getASFDCo(slot0, FightEnum.ASFDUnit.Explosion, FightASFDConfig.instance.defaultExplosionCo)
 end
 
-function slot0.getLastExplosionCo(slot0)
-	return uv0.getASFDCo(slot0, FightEnum.ASFDUnit.LastExplosion, FightASFDConfig.instance.defaultExplosionCo)
+function slot0.getEmitterPos(slot0, slot1)
+	slot2 = FightModel.instance:getFightParam()
+	slot5 = lua_fight_asfd_emitter_position.configDict[slot2 and slot2:getScene(FightModel.instance:getCurWaveId() or 1) or 1] or lua_fight_asfd_emitter_position.configDict[1]
+	slot6 = slot1 and slot5[slot1] or slot5[1]
+	slot7 = slot0 == FightEnum.EntitySide.MySide and slot6.mySidePos or slot6.enemySidePos
+
+	return slot7[1], slot7[2], slot7[3]
 end
 
-function slot0.getEmitterPos(slot0)
-	slot1 = FightModel.instance:getFightParam()
-	slot4 = lua_fight_asfd_emitter_position.configDict[slot1 and slot1:getScene(FightModel.instance:getCurWaveId() or 1) or 1] or lua_fight_asfd_emitter_position.configDict[1]
-	slot5 = slot0 == FightEnum.EntitySide.MySide and slot4.mySidePos or slot4.enemySidePos
+function slot0.getStartPos(slot0, slot1)
+	slot2, slot3, slot4 = uv0.getEmitterPos(slot0, slot1)
+	slot5, slot6 = GameUtil.getRandomPosInCircle(slot2, slot3, FightASFDConfig.instance.randomRadius)
+	slot7 = FightASFDConfig.instance.emitterCenterOffset
 
-	return slot5[1], slot5[2], slot5[3]
-end
-
-function slot0.getStartPos(slot0)
-	slot1, slot2, slot3 = uv0.getEmitterPos(slot0)
-	slot4, slot5 = GameUtil.getRandomPosInCircle(slot1, slot2, FightASFDConfig.instance.randomRadius)
-	slot6 = FightASFDConfig.instance.emitterCenterOffset
-
-	return Vector3(slot0 == FightEnum.EntitySide.MySide and slot4 - slot6.x or slot4 + slot6.x, slot5 + slot6.y, slot3)
+	return Vector3(slot0 == FightEnum.EntitySide.MySide and slot5 - slot7.x or slot5 + slot7.x, slot6 + slot7.y, slot4)
 end
 
 function slot0.getEndPos(slot0, slot1)

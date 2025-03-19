@@ -966,12 +966,6 @@
     "transitionAct": "change"
   },
   {
-    "id": 311301,
-    "fromAct": "posture",
-    "endAct": "idle",
-    "transitionAct": "change2"
-  },
-  {
     "id": 311302,
     "fromAct": "posture",
     "endAct": "idle",

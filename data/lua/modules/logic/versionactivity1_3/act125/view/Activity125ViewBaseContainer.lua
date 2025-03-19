@@ -27,6 +27,10 @@ function slot0.hasEpisodeCanCheck(slot0)
 	return Activity125Model.instance:hasEpisodeCanCheck(slot0:actId())
 end
 
+function slot0.getH5BaseUrl(slot0)
+	return Activity125Config.instance:getH5BaseUrl(slot0:actId())
+end
+
 function slot0.setCurSelectEpisodeIdSlient(slot0, slot1)
 	if slot0:getCurSelectedEpisode() == slot1 then
 		return

@@ -602,6 +602,68 @@ function slot0.setModelTargetFrameRate(slot0, slot1)
 	end
 end
 
+function slot0.isNatives(slot0)
+	return not slot0:isOverseas()
+end
+
+function slot0.isOverseas(slot0)
+	if slot0.__isOverseas == nil then
+		if tostring(SDKMgr.instance:getGameId()) == "50001" then
+			slot0.__isOverseas = false
+		else
+			slot0.__isOverseas = true
+		end
+	end
+
+	return slot0.__isOverseas
+end
+
+function slot0.getRegion(slot0)
+	if slot0:isNatives() then
+		return RegionEnum.zh
+	else
+		return GameConfig:GetCurRegionType()
+	end
+end
+
+function slot0.isZhRegion(slot0)
+	return slot0:getRegion() == RegionEnum.zh
+end
+
+function slot0.isJpRegion(slot0)
+	return slot0:getRegion() == RegionEnum.jp
+end
+
+function slot0.isEnRegion(slot0)
+	return slot0:getRegion() == RegionEnum.en
+end
+
+function slot0.isTwRegion(slot0)
+	return slot0:getRegion() == RegionEnum.tw
+end
+
+function slot0.isKrRegion(slot0)
+	return slot0:getRegion() == RegionEnum.ko
+end
+
+function slot0.getRegionShortcut(slot0)
+	return RegionEnum.shortcutTab[slot0:getRegion()] or "en"
+end
+
+function slot0.extractByRegion(slot0, slot1)
+	if string.nilorempty(slot1) then
+		return slot1
+	end
+
+	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1, false)) do
+		if slot8[1] == slot0:getRegionShortcut() then
+			return slot8[2]
+		end
+	end
+
+	return slot1
+end
+
 slot0.instance = slot0.New()
 
 return slot0

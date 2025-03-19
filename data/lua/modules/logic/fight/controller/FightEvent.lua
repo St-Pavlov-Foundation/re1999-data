@@ -401,5 +401,7 @@ slot0.LY_HadRedAndBluePointChange = GameUtil.getEventId()
 slot0.LY_TriggerCountSkill = GameUtil.getEventId()
 slot0.ALF_AddRecordCardData = GameUtil.getEventId()
 slot0.ALF_AddRecordCardUI = GameUtil.getEventId()
+slot0.ALF_AddCardEffectAppear = GameUtil.getEventId()
+slot0.ALF_AddCardEffectEnd = GameUtil.getEventId()
 
 return slot0

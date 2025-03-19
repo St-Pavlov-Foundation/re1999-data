@@ -297,7 +297,7 @@
     "typeId": 100,
     "logoType": 0,
     "logoName": "",
-    "joinCondition": "OpenFunction=28 and WeekwalkLayer>=10 and WeekwalkLayer<16",
+    "joinCondition": "OpenFunction=28 and WeekwalkLayer>=10 and WeekwalkLayer<17",
     "confirmCondition": "",
     "displayPriority": 6,
     "banner": "",

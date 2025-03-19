@@ -11,7 +11,7 @@ function slot0.defaultFlyMover(slot0, slot1, slot2, slot3, slot4, slot5, slot6, 
 	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverBezier3):registerCallback(UnitMoveEvent.Arrive, slot6, slot7)
 	FightASFDHelper.changeRandomArea()
 
-	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide)
+	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide, slot2.sceneEmitterId)
 	slot11 = FightASFDHelper.getEndPos(slot4)
 	slot13 = FightASFDHelper.getRandomPos(slot10, slot11, slot2)
 
@@ -29,7 +29,7 @@ function slot0.straightLineFlyMover(slot0, slot1, slot2, slot3, slot4, slot5, sl
 	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverHandler)
 	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverEase):registerCallback(UnitMoveEvent.Arrive, slot6, slot7)
 
-	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide)
+	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide, slot2.sceneEmitterId)
 	slot11 = FightASFDHelper.getEndPos(slot4, ModuleEnum.SpineHangPoint.mountbody)
 
 	slot3:setWorldPos(slot10.x, slot10.y, slot10.z)

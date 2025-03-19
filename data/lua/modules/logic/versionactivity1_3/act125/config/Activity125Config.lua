@@ -11,7 +11,8 @@ end
 function slot0.reqConfigNames(slot0)
 	return {
 		"activity125",
-		"activity125_task"
+		"activity125_task",
+		"activity125_link"
 	}
 end
 
@@ -169,6 +170,18 @@ end
 
 function slot0.getTaskCO_ReadTask_Tag_TaskId(slot0, slot1, slot2, slot3)
 	return slot0:getTaskCO_ReadTask_Tag(slot1, slot2)[slot3]
+end
+
+function slot0.getLinkCO(slot0, slot1)
+	return lua_activity125_link.configDict[slot1]
+end
+
+function slot0.getH5BaseUrl(slot0, slot1)
+	if not slot0:getLinkCO(slot1) then
+		return
+	end
+
+	return SettingsModel.instance:extractByRegion(slot2.link)
 end
 
 slot0.instance = slot0.New()
