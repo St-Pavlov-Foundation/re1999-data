@@ -8,6 +8,12 @@ function slot0.init(slot0, slot1)
 	slot0._motionList = string.split(slot1.motion, "|")
 	slot0._nodeList = GameUtil.splitString2(slot1.node, false, "|", "#")
 	slot0._firstShow = false
+	slot0._showEverEffect = false
+	slot0._effectVisible = false
+end
+
+function slot0.isShowEverEffect(slot0)
+	return slot0._showEverEffect
 end
 
 function slot0.showBodyEffect(slot0, slot1, slot2, slot3)
@@ -24,11 +30,11 @@ function slot0.showBodyEffect(slot0, slot1, slot2, slot3)
 
 		slot0:showEverNodes(false)
 		TaskDispatcher.cancelTask(slot0._delayShowEverNodes, slot0)
-		TaskDispatcher.runDelay(slot0._delayShowEverNodes, slot0, 0.2)
+		TaskDispatcher.runDelay(slot0._delayShowEverNodes, slot0, 0.3)
 	end
 
 	if slot2 and slot3 then
-		slot2(slot3, slot0._effectVisible)
+		slot2(slot3, slot0._effectVisible or slot0._showEverEffect)
 	end
 end
 
@@ -49,6 +55,8 @@ function slot0.showEverNodes(slot0, slot1)
 		slot9 = gohelper.findChild(slot0._spineGo, slot8)
 
 		gohelper.setActive(slot9, slot1)
+
+		slot0._showEverEffect = true
 
 		if not slot9 and SLFramework.FrameworkSettings.IsEditor then
 			logError(string.format("%s找不到特效节点：%s,请检查路径", slot2, slot8))

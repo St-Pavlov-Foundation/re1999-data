@@ -43,7 +43,7 @@ function slot0.playOpenTransition(slot0)
 		slot1 = "switch"
 	end
 
-	if TimeUtil.getDayFirstLoginRed("BpViewOpenAnim") then
+	if BpModel.instance.payStatus == BpEnum.PayStatus.NotPay and TimeUtil.getWeekFirstLoginRed("BpViewOpenAnim") and TimeUtil.getDayFirstLoginRed("BpViewOpenAnim") then
 		if not slot0.viewParam or slot0.viewParam.isPlayDayFirstAnim then
 			AudioMgr.instance:trigger(AudioEnum2_6.BP.BpDayFirstAnim)
 			UIBlockMgrExtend.setNeedCircleMv(false)
@@ -51,7 +51,7 @@ function slot0.playOpenTransition(slot0)
 			slot1 = "tarotopen1"
 			slot2 = 3
 
-			TimeUtil.setDayFirstLoginRed("BpViewOpenAnim")
+			TimeUtil.setWeekFirstLoginRed("BpViewOpenAnim")
 		else
 			ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, slot0._checkPlayDayAnim, slot0)
 		end

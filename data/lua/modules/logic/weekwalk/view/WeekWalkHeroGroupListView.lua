@@ -2,6 +2,11 @@ module("modules.logic.weekwalk.view.WeekWalkHeroGroupListView", package.seeall)
 
 slot0 = class("WeekWalkHeroGroupListView", HeroGroupListView)
 
+function slot0.addEvents(slot0)
+	uv0.super.addEvents(slot0)
+	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnUseRecommendGroupFinish, slot0._checkRestrictHero, slot0)
+end
+
 function slot0._getHeroItemCls(slot0)
 	return WeekWalkHeroGroupHeroItem
 end

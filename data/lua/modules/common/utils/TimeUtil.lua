@@ -241,6 +241,12 @@ slot0 = {
 	getDayFirstLoginRed = function (slot0)
 		return PlayerPrefsHelper.getString(PlayerModel.instance:getPlayinfo().userId .. "_" .. PlayerPrefsKey.FirstLoginTodayRed .. "_" .. slot0) ~= uv0.timestampToString1(ServerTime.now() - 18000)
 	end,
+	setWeekFirstLoginRed = function (slot0)
+		PlayerPrefsHelper.setNumber(PlayerModel.instance:getPlayinfo().userId .. "_" .. PlayerPrefsKey.FirstLoginWeekRed .. "_" .. slot0, math.floor(ServerTime.getWeekEndTimeStamp(true) / 3600))
+	end,
+	getWeekFirstLoginRed = function (slot0)
+		return PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayinfo().userId .. "_" .. PlayerPrefsKey.FirstLoginWeekRed .. "_" .. slot0, 0) ~= math.floor(ServerTime.getWeekEndTimeStamp(true) / 3600)
+	end,
 	getTodayWeedDay = function (slot0)
 		if slot0.wday == 1 then
 			return 7

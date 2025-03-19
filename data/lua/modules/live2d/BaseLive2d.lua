@@ -256,6 +256,10 @@ function slot0.showEverNodes(slot0, slot1)
 	end
 end
 
+function slot0.hasEverNodes(slot0)
+	return slot0._roleEffectComp and slot0._roleEffectComp.isShowEverEffect and slot0._roleEffectComp:isShowEverEffect()
+end
+
 function slot0._showFaceEffect(slot0, slot1)
 	if slot0._faceEffectComp then
 		slot0._faceEffectComp:showFaceEffect(slot1)

@@ -146,7 +146,7 @@
     "loopType": 3,
     "minType": "深眠改版运营活动",
     "name": "活动任务",
-    "desc": "登陆游戏",
+    "desc": "登录游戏",
     "bonusMail": 0,
     "openLimit": "",
     "listenerType": "LoginDays",

@@ -226,6 +226,10 @@ function slot0._doProcessEffect(slot0)
 			end
 		end
 	end
+
+	if slot0:hasEverNodes() then
+		slot0:_startRealtimeAdjustPos()
+	end
 end
 
 function slot0._onBodyEffectShow(slot0, slot1)
@@ -233,9 +237,15 @@ function slot0._onBodyEffectShow(slot0, slot1)
 		slot0:_doProcessEffect()
 	end
 
+	slot0._isShowBodyEffect = slot1
+
+	slot0:_startRealtimeAdjustPos()
+end
+
+function slot0._startRealtimeAdjustPos(slot0)
 	TaskDispatcher.cancelTask(slot0._realtimeAdjustPos, slot0)
 
-	if slot1 and slot0._uiEffectGosClone and next(slot0._uiEffectGosClone) then
+	if slot0._isShowBodyEffect and slot0._uiEffectGosClone and next(slot0._uiEffectGosClone) then
 		TaskDispatcher.runRepeat(slot0._realtimeAdjustPos, slot0, 0.1)
 	end
 end
@@ -245,7 +255,7 @@ function slot0._realtimeAdjustPos(slot0)
 
 	if slot0._uiEffectGos then
 		for slot5, slot6 in ipairs(slot0._uiEffectGos) do
-			if slot0._uiEffectGosClone[slot5] and slot6.activeSelf then
+			if not gohelper.isNil(slot0._uiEffectGosClone[slot5]) and not gohelper.isNil(slot6) and slot6.activeSelf then
 				slot1 = true
 
 				slot0:_adjustPos(slot7, slot6)

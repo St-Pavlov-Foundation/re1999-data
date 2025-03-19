@@ -137,6 +137,7 @@ function slot0.onOpen(slot0)
 	slot0._index = slot0._layerInfo:getLayer()
 	slot0._txtindex.text = tostring(slot0._index)
 	slot0._txtbattlename.text = slot0._layerSceneConfig.battleName
+	slot0._txtnameen.text = slot0._layerSceneConfig.name_en
 
 	slot0._simagestage:LoadImage(ResUrl.getWeekWalkLayerIcon(string.format("weekwalkheart_stage%s", slot0._layerInfo.config.layer)))
 	slot0:_updateBattleStatus()
