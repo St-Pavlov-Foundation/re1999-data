@@ -69,7 +69,7 @@ function slot0.pullOutAllEffect(slot0, slot1)
 		FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0.entityId, slot7)
 
 		if slot8 then
-			slot10 = slot0.entity.effect:addHangEffect(slot8.pullOutRes, ModuleEnum.SpineHangPoint.mountbody, nil, 1)
+			slot10 = slot0.entity.effect:addHangEffect(slot8.pullOutRes, ModuleEnum.SpineHangPoint.mountmiddle, nil, 1)
 
 			slot10:setLocalPos(0, 0, 0)
 			FightRenderOrderMgr.instance:addEffectWrapByOrder(slot0.entityId, slot10, FightRenderOrderMgr.MaxOrder)

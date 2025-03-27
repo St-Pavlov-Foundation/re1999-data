@@ -151,8 +151,9 @@ function slot0.refreshRedAndBlueArea(slot0)
 
 	slot1 = slot0.fightBeginRoundOp and slot0.fightBeginRoundOp.cardColor
 
-	slot0._cardItem:setActiveRed(slot1 == FightEnum.CardColor.Both or slot1 == FightEnum.CardColor.Red)
-	slot0._cardItem:setActiveBlue(slot1 == FightEnum.CardColor.Both or slot1 == FightEnum.CardColor.Blue)
+	slot0._cardItem:setActiveRed(slot1 == FightEnum.CardColor.Red)
+	slot0._cardItem:setActiveBlue(slot1 == FightEnum.CardColor.Blue)
+	slot0._cardItem:setActiveBoth(slot1 == FightEnum.CardColor.Both)
 end
 
 function slot0.refreshASFDEnergy(slot0)
