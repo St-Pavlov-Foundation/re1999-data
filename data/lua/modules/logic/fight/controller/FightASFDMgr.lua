@@ -430,7 +430,7 @@ function slot0.createBornRemoveEffect(slot0)
 		slot2 = slot0.bornEntity.effect:addGlobalEffect(FightASFDHelper.getASFDBornRemoveRes(slot0.curBornCo), nil, 1)
 
 		FightRenderOrderMgr.instance:addEffectWrapByOrder(slot0.bornEntity.id, slot2, FightRenderOrderMgr.MaxOrder)
-		slot2:setLocalPos(FightASFDHelper.getEmitterPos(slot0.bornEntity:getMO().side), slot0.curBornCo.sceneEmitterId)
+		slot2:setLocalPos(FightASFDHelper.getEmitterPos(slot0.bornEntity:getMO().side, slot0.curBornCo.sceneEmitterId))
 
 		if slot0.curBornCo.scale == 0 then
 			slot4 = 1

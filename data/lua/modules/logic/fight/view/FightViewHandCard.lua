@@ -582,6 +582,12 @@ end
 
 function slot0._toAutoPlayCard(slot0)
 	if #FightModel.instance.autoPlayCardList > 0 then
+		if slot0._autoPlayCardFlow then
+			slot0._autoPlayCardFlow:stop()
+
+			slot0._autoPlayCardFlow = nil
+		end
+
 		slot0._autoPlayCardFlow = FlowSequence.New()
 
 		slot0._autoPlayCardFlow:addWork(FightAutoBindContractWork.New())

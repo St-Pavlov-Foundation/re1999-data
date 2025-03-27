@@ -69,6 +69,7 @@ function slot0.onChangeAnalyInfo(slot0, slot1)
 	slot0.infoId = slot1
 	slot0._imgValue = nil
 
+	Season166Controller.instance:enterReportItem(slot0.actId, slot0.infoId)
 	slot0:refreshUI()
 end
 
@@ -141,6 +142,7 @@ function slot0.onOpen(slot0)
 	slot0.infoId = slot0.viewParam.infoId
 
 	AudioMgr.instance:trigger(AudioEnum.Season166.play_ui_wulu_aizila_forward_paper)
+	Season166Controller.instance:enterReportItem(slot0.actId, slot0.infoId)
 	slot0:refreshUI()
 end
 

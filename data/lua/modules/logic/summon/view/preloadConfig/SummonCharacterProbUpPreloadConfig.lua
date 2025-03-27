@@ -12,6 +12,11 @@ function slot0.getCharacterItemCountByName(slot0)
 	return uv0.characterItemCounts[slot0] or 1
 end
 
+slot0.preloadLists.SummonCharacterProbUpVer265 = {
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_dec4.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
+}
 slot0.preloadLists.SummonCharacterProbUpVer264 = {
 	"singlebg/summon/heroversion_2_2/v2a2_luopeila/v2a2_luopeila_decbg.png",
 	"singlebg/summon/heroversion_2_2/v2a2_luopeila/v2a2_luopeila_rolebg.png",

@@ -109,11 +109,11 @@ function slot0._updateChess(slot0, slot1, slot2)
 	slot7 = lua_weekwalk_ver2_element_res.configDict[slot3.resIdRear]
 
 	if lua_weekwalk_ver2_element_res.configDict[slot3.resIdFront] then
-		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess1, slot6.res .. (slot1 and "_1" or "_0"))
+		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess1, slot6.res .. (not slot1 and "_1" or "_0"))
 	end
 
 	if slot7 then
-		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess2, slot7.res .. (slot2 and "_1" or "_0"))
+		UISpriteSetMgr.instance:setWeekWalkSprite(slot0._chess2, slot7.res .. (not slot2 and "_1" or "_0"))
 	end
 end
 

@@ -73,11 +73,13 @@ end
 
 function slot0._onBeforeChangeSubHero(slot0, slot1, slot2)
 	if slot2 == slot0._entityId then
-		if slot1 == "0" then
+		if FightDataHelper.entityMgr:getById(slot1) and slot3:isStatusDead() then
 			slot0.PARENT_VIEW:onOpen()
-		else
-			slot0:refreshData(slot1)
+
+			return
 		end
+
+		slot0:refreshData(slot1)
 	end
 end
 

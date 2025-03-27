@@ -34,6 +34,12 @@ function slot0.init(slot0, slot1)
 		end
 	end
 
+	slot0.enemyHerosByUid = {}
+
+	for slot5, slot6 in pairs(slot0.enemyHeros) do
+		slot0.enemyHerosByUid[slot6.uid] = slot6
+	end
+
 	slot0.skillCards = {}
 	slot0.heroSkillCards = {}
 	slot0.skillCardsBySkillId = slot0.skillCardsBySkillId or {}
@@ -50,6 +56,16 @@ function slot0.init(slot0, slot1)
 		else
 			table.insert(slot0.skillCards, slot7)
 		end
+	end
+
+	slot0.skillCardsBySkillId = {}
+
+	for slot5, slot6 in pairs(slot0.skillCards) do
+		slot0.skillCardsBySkillId[slot6.skillId] = slot6
+	end
+
+	for slot5, slot6 in pairs(slot0.heroSkillCards) do
+		slot0.skillCardsBySkillId[slot6.skillId] = slot6
 	end
 
 	slot0.allyHero:setSkills(slot0.heroSkillCards)

@@ -3,6 +3,7 @@ module("modules.configs.excel2json.lua_dice_level", package.seeall)
 slot1 = {
 	chapter = 3,
 	enemyType = 6,
+	isSkip = 10,
 	type = 5,
 	rewardSelectType = 8,
 	mode = 7,

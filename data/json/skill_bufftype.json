@@ -45895,7 +45895,7 @@
     "excludeTypes": "",
     "takeStage": -1,
     "takeAct": "",
-    "cannotRemove": false,
+    "cannotRemove": true,
     "dontShowFloat": 1,
     "removeNum": 0,
     "skipDelay": 0,

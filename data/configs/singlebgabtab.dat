@@ -23346,6 +23346,12 @@
   "singlebg/summon/heroversion_2_6/luopeila/v2a6_summon_luopeila_role2.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_6/luopeila/v2a6_summon_luopeila_role2.png"
   ],
+  "singlebg/summon/heroversion_2_6/v2a6_zhixinquaner/v2a6_summon_zhixinquaner_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_6/v2a6_zhixinquaner/v2a6_summon_zhixinquaner_role1.png"
+  ],
+  "singlebg/summon/heroversion_2_6/v2a6_zhixinquaner/v2a6_summon_zhixinquaner_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_6/v2a6_zhixinquaner/v2a6_summon_zhixinquaner_role2.png"
+  ],
   "singlebg/summon/heroversion_2_6/xugouji/v2a6_summon_xugouji_chancebg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_6/xugouji/v2a6_summon_xugouji_chancebg.png"
   ],
@@ -23574,6 +23580,36 @@
   "singlebg/v2a6_sign_singlebg/v2a6_sign_panelbg2.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a6_sign_singlebg/v2a6_sign_panelbg2.png"
   ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg2.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg3.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_bookbg4.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_fullbg.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_1.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_2.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_3.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_4.png"
+  ],
+  "singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a6_warmup_singlebg/v2a6_warmup_pic_5.png"
+  ],
   "singlebg/v2a6_weekwalkheart_singlebg/v2a6_weekwalkheart_framebg1.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a6_weekwalkheart_singlebg/v2a6_weekwalkheart_framebg1.png"
   ],
@@ -23781,6 +23817,9 @@
   "singlebg_lang/txt_adventuretask/v2a6_summon_xugouji.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v2a6_summon_xugouji.png"
   ],
+  "singlebg_lang/txt_adventuretask/v2a6_zhoubian1.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v2a6_zhoubian1.png"
+  ],
   "singlebg_lang/txt_battlepass/battlepass_logo_1.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_battlepass/battlepass_logo_1.png"
   ],
@@ -23954,6 +23993,9 @@
   ],
   "singlebg_lang/txt_v2a6_sign_singlebg/v2a6_sign_title_2.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a6_sign_singlebg/v2a6_sign_title_2.png"
+  ],
+  "singlebg_lang/txt_v2a6_warmup_singlebg/v2a6_warmup_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a6_warmup_singlebg/v2a6_warmup_title.png"
   ],
   "singlebg_lang/txt_v2a6_weekwalkheart_singlebg/v2a6_weekwalkheart_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a6_weekwalkheart_singlebg/v2a6_weekwalkheart_title.png"

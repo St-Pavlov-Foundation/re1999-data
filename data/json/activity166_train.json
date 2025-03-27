@@ -178,7 +178,7 @@
     "nameEn": "Imagination Palace",
     "desc": "国王，乞丐，学术顾问，我有很多身份。",
     "level": 150,
-    "strategy": "采取精神创伤突破能避免自身受伤",
+    "strategy": "使用精神创伤攻击能避免自身受伤",
     "winDesc": "击败全部敌人"
   },
   {

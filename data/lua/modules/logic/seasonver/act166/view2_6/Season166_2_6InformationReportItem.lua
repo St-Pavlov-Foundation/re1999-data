@@ -32,6 +32,15 @@ end
 function slot0.addEventListeners(slot0)
 	slot0.btnClick:AddClickListener(slot0.onClickItem, slot0)
 	Season166Controller.instance:registerCallback(Season166Event.OnAnalyInfoSuccess, slot0.refreshReddot, slot0)
+	Season166Controller.instance:registerCallback(Season166Event.ClickInfoReportItem, slot0.onClickInfoReportItem, slot0)
+end
+
+function slot0.onClickInfoReportItem(slot0, slot1)
+	if not slot1 or slot1.infoId ~= slot0.infoId then
+		return
+	end
+
+	slot0:refreshUnlockState(slot1.unlockState)
 end
 
 function slot0.onClickItem(slot0)
@@ -39,18 +48,10 @@ function slot0.onClickItem(slot0)
 		return
 	end
 
-	slot3 = {
+	ViewMgr.instance:openView(ViewName.Season166InformationAnalyView, {
 		actId = slot0.activityId,
-		infoId = slot0.infoId,
-		unlockState = slot4
-	}
-
-	ViewMgr.instance:openView(ViewName.Season166InformationAnalyView, slot3)
-
-	slot0.canShowNew = false
-
-	Season166Controller.instance:dispatchEvent(Season166Event.ClickInfoReportItem, slot3)
-	slot0:refreshUnlockState(Season166Model.instance:getActInfo(slot0.activityId) and slot1:getInformationMO(slot0.infoId) and Season166Enum.UnlockState or Season166Enum.LockState)
+		infoId = slot0.infoId
+	})
 end
 
 function slot0.refreshUI(slot0, slot1)
@@ -213,6 +214,7 @@ end
 function slot0.removeEventListeners(slot0)
 	slot0.btnClick:RemoveClickListener()
 	Season166Controller.instance:unregisterCallback(Season166Event.OnAnalyInfoSuccess, slot0.refreshReddot, slot0)
+	Season166Controller.instance:unregisterCallback(Season166Event.ClickInfoReportItem, slot0.onClickInfoReportItem, slot0)
 end
 
 function slot0.onDestroy(slot0)

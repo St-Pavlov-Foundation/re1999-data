@@ -157,6 +157,10 @@ function slot0.onOpen(slot0)
 	gohelper.setActive(slot0._goarrow, true)
 	slot0:nextStep()
 	TaskDispatcher.runRepeat(slot0._autoSpeak, slot0, 0.02)
+
+	if slot0._rewardItem and slot1.isSkip == 1 then
+		slot0:_realSkipStory()
+	end
 end
 
 function slot0.onTouchDown(slot0)
