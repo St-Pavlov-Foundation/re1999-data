@@ -10055,6 +10055,16 @@
     "bankName": "ui_activity_2_6_wenming"
   },
   {
+    "id": 20260903,
+    "eventName": "play_ui_wenming_cut",
+    "bankName": "ui_activity_2_6_wenming"
+  },
+  {
+    "id": 20260904,
+    "eventName": "play_ui_wenming_page",
+    "bankName": "ui_activity_2_6_wenming"
+  },
+  {
     "id": 20260011,
     "eventName": "play_replay_music_theme_2_6",
     "bankName": "ui_replay_mainmusic2_6"

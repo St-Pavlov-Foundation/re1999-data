@@ -81,7 +81,7 @@ function slot0.onAddUseCard(slot0, slot1)
 	slot0.bornEffectWrap = slot4.effect:addGlobalEffect(FightASFDConfig.instance:getASFDCoRes(slot5))
 
 	FightRenderOrderMgr.instance:addEffectWrapByOrder(slot3, slot0.bornEffectWrap, FightRenderOrderMgr.MaxOrder)
-	slot0.bornEffectWrap:setLocalPos(FightASFDHelper.getEmitterPos(slot2.side))
+	slot0.bornEffectWrap:setLocalPos(FightASFDHelper.getEmitterPos(slot2.side, slot5.sceneEmitterId))
 
 	if slot5.scale == 0 then
 		slot7 = 1
@@ -125,7 +125,7 @@ function slot0.createEmitterWrap(slot0, slot1)
 	slot7 = slot4.effect:addGlobalEffect(FightASFDConfig.instance:getASFDCoRes(slot5))
 
 	FightRenderOrderMgr.instance:addEffectWrapByOrder(slot2, slot7, FightRenderOrderMgr.MaxOrder)
-	slot7:setLocalPos(FightASFDHelper.getEmitterPos(slot3.side))
+	slot7:setLocalPos(FightASFDHelper.getEmitterPos(slot3.side, slot5.sceneEmitterId))
 
 	if slot5.scale == 0 then
 		slot8 = 1
@@ -430,7 +430,7 @@ function slot0.createBornRemoveEffect(slot0)
 		slot2 = slot0.bornEntity.effect:addGlobalEffect(FightASFDHelper.getASFDBornRemoveRes(slot0.curBornCo), nil, 1)
 
 		FightRenderOrderMgr.instance:addEffectWrapByOrder(slot0.bornEntity.id, slot2, FightRenderOrderMgr.MaxOrder)
-		slot2:setLocalPos(FightASFDHelper.getEmitterPos(slot0.bornEntity:getMO().side))
+		slot2:setLocalPos(FightASFDHelper.getEmitterPos(slot0.bornEntity:getMO().side), slot0.curBornCo.sceneEmitterId)
 
 		if slot0.curBornCo.scale == 0 then
 			slot4 = 1
@@ -469,7 +469,7 @@ function slot0.createRemoveEmitterEffect(slot0, slot1)
 	slot7 = slot4.effect:addGlobalEffect(FightASFDHelper.getASFDEmitterRemoveRes(slot5), nil, 1)
 
 	FightRenderOrderMgr.instance:addEffectWrapByOrder(slot2, slot7, FightRenderOrderMgr.MaxOrder)
-	slot7:setLocalPos(FightASFDHelper.getEmitterPos(slot3.side))
+	slot7:setLocalPos(FightASFDHelper.getEmitterPos(slot3.side, slot5.sceneEmitterId))
 
 	if slot5.scale == 0 then
 		slot8 = 1
