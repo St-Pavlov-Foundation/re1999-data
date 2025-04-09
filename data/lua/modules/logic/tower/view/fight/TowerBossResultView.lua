@@ -24,6 +24,7 @@ function slot0.onInitView(slot0)
 	slot0.simageSpBoss = gohelper.findChildSingleImage(slot0.viewGO, "goSpResult/goBoss/imgBoss")
 	slot0.txtSpTower = gohelper.findChildTextMesh(slot0.viewGO, "goSpResult/goBoss/txtTower")
 	slot0.txtSpIndex = gohelper.findChildTextMesh(slot0.viewGO, "goSpResult/goBoss/episodeItem/goOpen/txtCurEpisode")
+	slot0.goEpisodeItem = gohelper.findChild(slot0.viewGO, "goSpResult/goBoss/episodeItem")
 	slot0.goSpRewards = gohelper.findChild(slot0.viewGO, "goSpResult/goReward")
 	slot0.goSpReward = gohelper.findChild(slot0.viewGO, "goSpResult/goReward/scroll_reward/Viewport/#go_rewards")
 	slot0.btnRank = gohelper.findChildButtonWithAudio(slot0.viewGO, "goResult/#btn_Rank")
@@ -91,6 +92,7 @@ function slot0.refreshParam(slot0)
 	slot0.episodeMo = TowerModel.instance:getEpisodeMoByTowerType(slot0.towerType)
 	slot0.layerConfig = slot0.episodeMo:getEpisodeConfig(slot0.towerId, slot0.layerId)
 	slot0.bossConfig = TowerConfig.instance:getAssistBossConfig(slot0.towerConfig.bossId)
+	slot0.isTeach = slot0.towerType == TowerEnum.TowerType.Boss and slot0.layerId == 0
 end
 
 function slot0.refreshView(slot0)
@@ -98,14 +100,14 @@ function slot0.refreshView(slot0)
 
 	slot0.simageBoss:LoadImage(slot0.bossConfig.bossPic)
 
-	if slot0.layerConfig.openRound > 0 then
+	if slot0.layerConfig and slot0.layerConfig.openRound > 0 or slot0.isTeach then
 		slot0:refreshSp()
 	else
 		slot0:refreshAttr()
 	end
 
 	slot0:refreshLev()
-	slot0:refreshRewards(slot1 and slot0.goSpReward or slot0.goReward, slot1 and slot0.goSpRewards or slot0.goRewards)
+	slot0:refreshRewards((slot1 or slot0.isTeach) and slot0.goSpReward or slot0.goReward, (slot1 or slot0.isTeach) and slot0.goSpRewards or slot0.goRewards)
 	slot0:startFlow(slot1)
 end
 
@@ -120,7 +122,7 @@ function slot0.startFlow(slot0, slot1)
 
 	slot0.popupFlow:addWork(TowerBossResultShowFinishWork.New(slot0.goFinish, AudioEnum.Tower.play_ui_fight_explore))
 	slot0.popupFlow:addWork(TowerBossResultShowLevChangeWork.New(slot0.goBossLevChange, slot0.goBoss, slot0.isBossLevChange))
-	slot0.popupFlow:addWork(TowerBossResultShowResultWork.New(slot1 and slot0.goSpResult or slot0.goResult, AudioEnum.Tower.play_ui_fight_explore))
+	slot0.popupFlow:addWork(TowerBossResultShowResultWork.New((slot1 or slot0.isTeach) and slot0.goSpResult or slot0.goResult, AudioEnum.Tower.play_ui_fight_explore))
 	slot0.popupFlow:registerDoneListener(slot0._onAllFinish, slot0)
 	slot0.popupFlow:start()
 end
@@ -152,6 +154,12 @@ function slot0.refreshRewards(slot0, slot1, slot2)
 end
 
 function slot0.refreshLev(slot0)
+	if slot0.isTeach then
+		slot0.isBossLevChange = false
+
+		return
+	end
+
 	slot1 = slot0.towerConfig.bossId
 	slot0.isBossLevChange = slot0.layerConfig.bossLevel ~= (slot0.episodeMo:getEpisodeConfig(slot0.towerId, slot0.layerConfig.preLayerId) and slot3.bossLevel or 0)
 
@@ -220,8 +228,12 @@ function slot0.refreshSp(slot0)
 	slot0.simageSpBoss:LoadImage(slot0.bossConfig.bossPic)
 
 	slot0.txtSpTower.text = slot0.towerConfig.name
-	slot0.txtSpIndex.text = slot0.episodeMo:getEpisodeIndex(slot0.towerId, slot0.layerId)
 
+	if not slot0.isTeach then
+		slot0.txtSpIndex.text = slot0.episodeMo:getEpisodeIndex(slot0.towerId, slot0.layerId)
+	end
+
+	gohelper.setActive(slot0.goEpisodeItem, not slot0.isTeach)
 	slot0:refreshHeroGroup()
 end
 
@@ -233,7 +245,7 @@ function slot0.refreshHeroGroup(slot0)
 	for slot6 = 1, 4 do
 		slot7 = slot0.heroItemList[slot6]
 
-		if FightModel.instance:getFightParam():getHeroEquipMoList()[slot6] then
+		if FightModel.instance:getFightParam():getHeroEquipAndTrialMoList(true)[slot6] then
 			if slot7 == nil then
 				slot0.heroItemList[slot6] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.viewGO, string.format("goSpResult/goGroup/Group/heroitem%s", slot6)), TowerBossResultHeroItem)
 			end

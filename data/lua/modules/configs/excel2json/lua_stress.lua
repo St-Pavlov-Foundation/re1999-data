@@ -13,9 +13,7 @@ slot1 = {
 slot2 = {
 	"id"
 }
-slot3 = {
-	title = 1
-}
+slot3 = {}
 
 return {
 	onLoad = function (slot0)

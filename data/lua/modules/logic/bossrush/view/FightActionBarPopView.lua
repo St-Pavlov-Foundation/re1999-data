@@ -139,7 +139,7 @@ function slot0._onCardClick(slot0, slot1)
 	slot3 = lua_skill.configDict[slot2]
 
 	for slot7, slot8 in ipairs(slot0._cardObjList) do
-		slot9 = FightConfig.instance:isUniqueSkill(slot2)
+		slot9 = FightCardDataHelper.isBigSkill(slot2)
 
 		gohelper.setActive(gohelper.findChild(slot8, "select"), slot1 == slot8 and not slot9)
 		gohelper.setActive(gohelper.findChild(slot8, "uniqueSelect"), slot1 == slot8 and slot9)

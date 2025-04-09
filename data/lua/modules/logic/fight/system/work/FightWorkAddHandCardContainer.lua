@@ -13,7 +13,7 @@ function slot0.onStart(slot0)
 		slot11 = slot2:registWork(FightWorkFlowSequence)
 
 		slot11:registWork(FightWorkDelayTimer, 0.05 * (0 + 1))
-		slot11:registWork(FightStepBuilder.ActEffectWorkCls[slot8.effect.effectType], slot8.stepMO, slot8.effect)
+		slot11:registWork(FightStepBuilder.ActEffectWorkCls[slot8.actEffectData.effectType], slot8.fightStepData, slot8.actEffectData)
 	end
 
 	slot2:start()

@@ -30,63 +30,130 @@ function slot0.initViewContent(slot0)
 	})
 
 	slot0:addButton("L6", "复制最后一回合处理后的数据_前端用", slot0.onClickCopyLatRoundDataForClient, slot0)
-	slot0:addButton("L7", "复制最后一回合处理前的数据_前端用", slot0.onClickCopyLatRoundProtoDataForClient, slot0)
+	slot0:addButton("L7", "复制最后一回合处理前的数据_前端用", slot0.onClickCopyLastOriginRoundDataForClient, slot0)
 	slot0:addButton("L7", "复制最后一回合protobuff数据", slot0.onClickCopyLastSrcRoundProtoData, slot0)
 	slot0:addLabel("L8", "设定战斗版本号(本次登录有效)")
 	slot0:addInputText("L8", FightModel.GMForceVersion or "版本号", nil, slot0._onVersionChange, slot0)
 	slot0:addButton("L9", "使用新卡牌代码逻辑", slot0.onClickUseNewCardScript, slot0)
 	slot0:addButton("L9", "使用旧卡牌代码逻辑", slot0.onClickUseOldCardScript, slot0)
 
+	slot0.rightTopElementsInput = slot0:addInputText("L10", "", "显示右边上层UI", nil, , {
+		w = 600
+	})
+
+	slot0:addButton("L10", "显示右边上层UI", slot0.onClickShowRightElements, slot0)
+
+	slot1 = {}
+
+	for slot5, slot6 in pairs(FightRightElementEnum.Elements) do
+		table.insert(slot1, slot6)
+	end
+
+	slot0.rightTopElementsInput:SetText(table.concat(slot1, ","))
+
+	slot0.rightBottomElementsInput = slot0:addInputText("L11", "", "显示右边低层UI", nil, , {
+		w = 600
+	})
+	slot5 = "显示所有底层UI"
+	slot6 = slot0.onClickShowRightBottomElements
+
+	slot0:addButton("L11", slot5, slot6, slot0)
+
+	slot1 = {}
+
+	for slot5, slot6 in pairs(FightRightBottomElementEnum.Elements) do
+		table.insert(slot1, slot6)
+	end
+
+	slot0.rightBottomElementsInput:SetText(table.concat(slot1, ","))
+
 	slot0._isInit = true
 end
 
+function slot0.onClickShowRightElements(slot0)
+	if not ViewMgr.instance:getContainer(ViewName.FightView) then
+		return
+	end
+
+	if string.nilorempty(slot0.rightTopElementsInput:GetText()) then
+		for slot6, slot7 in pairs(FightRightElementEnum.Elements) do
+			FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, slot7)
+		end
+
+		return
+	end
+
+	for slot7, slot8 in pairs(FightRightElementEnum.Elements) do
+		if tabletool.indexOf(string.splitToNumber(slot2, ","), slot8) then
+			FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, slot8)
+		else
+			FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, slot8)
+		end
+	end
+end
+
+function slot0.onClickShowRightBottomElements(slot0)
+	if not ViewMgr.instance:getContainer(ViewName.FightView) then
+		return
+	end
+
+	if string.nilorempty(slot0.rightBottomElementsInput:GetText()) then
+		for slot6, slot7 in pairs(FightRightBottomElementEnum.Elements) do
+			FightController.instance:dispatchEvent(FightEvent.RightBottomElements_HideElement, slot7)
+		end
+
+		return
+	end
+
+	for slot7, slot8 in pairs(FightRightBottomElementEnum.Elements) do
+		if tabletool.indexOf(string.splitToNumber(slot2, ","), slot8) then
+			FightController.instance:dispatchEvent(FightEvent.RightBottomElements_ShowElement, slot8)
+		else
+			FightController.instance:dispatchEvent(FightEvent.RightBottomElements_HideElement, slot8)
+		end
+	end
+end
+
 function slot0.onClickCopyLatRoundDataForClient(slot0)
+	if not FightDataHelper.roundMgr:getRoundData() then
+		return
+	end
+
 	FightLogFilterHelper.setFilterEffectList(slot0.effectTypeInput:GetText())
-	ZProj.GameHelper.SetSystemBuffer(FightLogHelper.getFightRoundString(FightModel.instance:getCurRoundMO()))
+	ZProj.GameHelper.SetSystemBuffer(FightLogHelper.getFightRoundString(slot1))
+end
+
+function slot0.onClickCopyLastOriginRoundDataForClient(slot0)
+	if not FightDataHelper.roundMgr:getOriginRoundData() then
+		return
+	end
+
+	FightLogFilterHelper.setFilterEffectList()
+	ZProj.GameHelper.SetSystemBuffer(FightLogProtobufHelper.getFightRoundString(slot1))
 end
 
 function slot0.onClickCopyLastSrcRoundProtoData(slot0)
-	if not GameSceneMgr.instance:getCurScene().fightLog then
-		return
-	end
-
-	if not (slot1:getLastRoundProto() and slot2.proto) then
+	if not FightDataHelper.protoCacheMgr:getLastRoundProto() then
 		ZProj.GameHelper.SetSystemBuffer("nil")
 
 		return
 	end
 
-	ZProj.GameHelper.SetSystemBuffer(tostring(slot3))
-end
-
-function slot0.onClickCopyLatRoundProtoDataForClient(slot0)
-	if not GameSceneMgr.instance:getCurScene().fightLog then
-		return
-	end
-
-	if not (slot1:getLastRoundProto() and slot2.proto) then
-		ZProj.GameHelper.SetSystemBuffer("nil")
-
-		return
-	end
-
-	ZProj.GameHelper.SetSystemBuffer(FightLogProtobufHelper.getFightRoundString(slot3))
+	ZProj.GameHelper.SetSystemBuffer(tostring(slot1))
 end
 
 function slot0.onClickCopyLatRoundProtoDataNormal(slot0)
-	if not GameSceneMgr.instance:getCurScene().fightLog then
+	if not FightDataHelper.protoCacheMgr:getLastRoundProto() then
 		ZProj.UGUIHelper.CopyText("没有数据")
 
 		return
 	end
 
-	if not slot1:getLastRoundProto() then
-		ZProj.UGUIHelper.CopyText("没有数据")
-
-		return
+	if FightDataHelper.protoCacheMgr:getLastRoundNum() then
+		slot2 = "" .. "回合" .. slot3 .. "\n"
 	end
 
-	ZProj.UGUIHelper.CopyText("回合" .. slot2.round .. "\n" .. FightEditorStateLogView.processStr(tostring(slot2.proto)))
+	ZProj.UGUIHelper.CopyText(slot2 .. FightEditorStateLogView.processStr(tostring(slot1)))
 end
 
 function slot0._onLastBattleIdYiPaiYiDongChange(slot0, slot1)

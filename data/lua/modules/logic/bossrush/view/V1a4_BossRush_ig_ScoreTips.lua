@@ -22,7 +22,10 @@ end
 
 function slot0._initView(slot0)
 	slot1 = BossRushEnum.ResPath.v1a4_bossrush_ig_scoretips
-	slot0._go = gohelper.clone(slot0._abLoader:getAssetItem(slot1):GetResource(slot1), slot0.goIndicatorRoot, "v1a4_bossrush_ig_scoretips")
+
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.BossRush)
+
+	slot0._go = gohelper.clone(slot0._abLoader:getAssetItem(slot1):GetResource(slot1), slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.BossRush), "v1a4_bossrush_ig_scoretips")
 	slot0._txtScoreNum = gohelper.findChildText(slot0._go, "Tips/#txt_ScoreNum")
 	slot0._txtScoreNum1 = gohelper.findChildText(slot0._go, "Tips/#txt_ScoreNum/#txt_ScoreNum1")
 	slot0._goAssessIcon = gohelper.findChild(slot0._go, "Tips/#go_AssessIcon")

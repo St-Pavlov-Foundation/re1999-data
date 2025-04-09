@@ -155,28 +155,27 @@ end
 
 function slot0.onOpen(slot0)
 	slot0._type2FuncName = {}
-
-	if not GameSceneMgr.instance:getCurScene().fightLog then
-		return
-	end
-
 	slot0._strList = {}
 
-	for slot6, slot7 in ipairs(slot1:getProtoList()) do
-		if slot7.protoType == FightEnum.CacheProtoType.Round then
-			slot0:addLog("回合" .. slot7.round)
-			slot0:addLog(tostring(slot7.proto))
-		elseif slot7.protoType == FightEnum.CacheProtoType.Fight then
-			slot0:addLog("更新战场")
-			slot0:addLog(tostring(slot7.proto))
+	slot0:addLog("入场数据")
+
+	slot5 = FightDataHelper.roundMgr.enterData
+
+	slot0:addLog(FightHelper.logStr(slot5))
+
+	for slot5, slot6 in ipairs(FightDataHelper.protoCacheMgr.roundProtoList) do
+		if slot1[slot5 - 1] then
+			slot0:addLog("回合" .. slot7.curRound)
 		end
+
+		slot0:addLog(tostring(slot6))
 	end
 
-	for slot7, slot8 in ipairs(slot0._strList) do
-		slot3 = "" .. slot8 .. "\n"
+	for slot6, slot7 in ipairs(slot0._strList) do
+		slot2 = "" .. slot7 .. "\n"
 	end
 
-	slot0._logText.text = uv0.processStr(slot3)
+	slot0._logText.text = uv0.processStr(slot2)
 
 	slot0:com_createObjList(slot0._onBtnItemShow, {
 		{

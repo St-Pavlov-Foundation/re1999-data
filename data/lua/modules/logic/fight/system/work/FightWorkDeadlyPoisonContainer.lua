@@ -7,9 +7,9 @@ slot0.targetDict = {}
 function slot0.onStart(slot0)
 	slot0.targetDict = {}
 
-	for slot6, slot7 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot6, slot7 in ipairs(slot0.fightStepData.actEffect) do
 		if not slot7:isDone() and slot0:getEffectType() == slot7.effectType then
-			slot0:addEffectMo(slot7)
+			slot0:addActEffectData(slot7)
 		end
 	end
 
@@ -45,7 +45,7 @@ function slot0.onStart(slot0)
 end
 
 function slot0.getEffectRes(slot0)
-	slot2 = slot0._fightStepMO.fromId and FightDataHelper.entityMgr:getById(slot1)
+	slot2 = slot0.fightStepData.fromId and FightDataHelper.entityMgr:getById(slot1)
 	slot3 = slot2 and slot2.skin
 	slot5 = "v2a3_ddg/ddg_innate_02"
 	slot6 = ModuleEnum.SpineHangPointRoot
@@ -58,7 +58,7 @@ function slot0.getEffectRes(slot0)
 	return slot5, slot6
 end
 
-function slot0.addEffectMo(slot0, slot1)
+function slot0.addActEffectData(slot0, slot1)
 	if not slot0.targetDict[slot1.targetId] then
 		slot0.targetDict[slot2] = {}
 	end

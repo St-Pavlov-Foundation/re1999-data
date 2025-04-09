@@ -84,7 +84,7 @@ function slot0.checkCanPlayAppearEffect(slot0, slot1)
 		return false
 	end
 
-	if slot1.custom_fromSkillId and FightHeroALFComp.ALFSkillDict[slot1.custom_fromSkillId] then
+	if slot1.clientData.custom_fromSkillId and FightHeroALFComp.ALFSkillDict[slot1.clientData.custom_fromSkillId] then
 		return false
 	end
 

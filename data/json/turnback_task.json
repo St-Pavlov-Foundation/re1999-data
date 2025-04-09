@@ -402,7 +402,7 @@
     "loopType": 3,
     "minType": "累计计划",
     "name": "累积任务",
-    "desc": "活动期间，在【人工梦游】中获得1星",
+    "desc": "活动期间，在【人工梦游·深眠域】中获得1星",
     "listenerType": "WeekwalkStarTotalIncrOnly",
     "listenerParam": "1#2#3",
     "maxProgress": 1,

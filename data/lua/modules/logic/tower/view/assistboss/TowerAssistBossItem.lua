@@ -14,6 +14,9 @@ function slot0.onInitView(slot0)
 	slot0.goLevel = gohelper.findChild(slot0.viewGO, "root/level")
 	slot0.txtLevel = gohelper.findChildTextMesh(slot0.viewGO, "root/level/#txt_level")
 	slot0.goArrow = gohelper.findChild(slot0.viewGO, "root/level/#go_Arrow")
+	slot0.goTrial = gohelper.findChild(slot0.viewGO, "root/go_trial")
+	slot0.goTrialEffect = gohelper.findChild(slot0.viewGO, "root/#saoguang")
+	slot0.hasPlayTrialEffect = false
 	slot0.itemList = {}
 
 	slot0:createItem(slot0.goOpen)
@@ -56,7 +59,7 @@ function slot0.onBtnSure(slot0)
 		return
 	end
 
-	if slot0._mo.isLock == 1 then
+	if slot0._mo.isLock == 1 and not slot0.isLimitedTrial then
 		GameFacade.showToast(ToastEnum.TowerAssistBossLock)
 
 		return
@@ -111,7 +114,7 @@ function slot0.onBtnClick(slot0)
 		return
 	end
 
-	if slot0._mo.isLock == 1 then
+	if slot0._mo.isLock == 1 and not slot0.isLimitedTrial then
 		GameFacade.showToast(ToastEnum.TowerAssistBossLock)
 
 		return
@@ -135,40 +138,69 @@ end
 
 function slot0.onUpdateMO(slot0, slot1)
 	slot0._mo = slot1
-	slot3 = slot0.goOpen
+	slot5 = slot0.goOpen
 
 	if slot1.isFromHeroGroup then
-		slot3 = slot1.isSelect and slot0.goSelected or slot0.goUnSelect
+		slot5 = slot1.isSelect and slot0.goSelected or slot0.goUnSelect
 
 		gohelper.setActive(slot0.btnSure, not slot1.isSelect)
 		gohelper.setActive(slot0.btnCancel, slot1.isSelect)
-		ZProj.UGUIHelper.SetGrayscale(slot0.goSureBg, slot1.isBanOrder == 1 or slot1.isLock == 1)
+		ZProj.UGUIHelper.SetGrayscale(slot0.goSureBg, slot1.isBanOrder == 1 or slot1.isLock == 1 and not (TowerModel.instance:getCurTowerType() == TowerEnum.TowerType.Limited))
 	else
 		gohelper.setActive(slot0.btnSure, false)
 		gohelper.setActive(slot0.btnCancel, false)
 	end
 
-	if slot2 then
-		slot3 = slot0.goLock
-	end
-
-	for slot7, slot8 in pairs(slot0.itemList) do
-		slot0:updateItem(slot8, slot3)
-	end
-
-	slot4 = not slot2
-
-	gohelper.setActive(slot0.goLevel, slot4)
-
 	if slot4 then
-		slot0.txtLevel.text = tostring(slot0._mo.bossInfo.level)
+		slot5 = slot0.goLock
 	end
+
+	for slot9, slot10 in pairs(slot0.itemList) do
+		slot0:updateItem(slot10, slot5)
+	end
+
+	slot6 = not slot4
+
+	gohelper.setActive(slot0.goLevel, slot6)
+
+	if slot6 then
+		slot7 = 1
+
+		if slot0._mo.bossInfo and not slot0._mo.bossInfo:getTempState() then
+			slot0.isLimitedTrial = slot3 and slot0._mo.bossInfo.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+
+			if slot0.isLimitedTrial then
+				slot7 = slot8
+
+				TowerAssistBossModel.instance:setLimitedTrialBossInfo(slot0._mo.bossInfo)
+			else
+				slot0._mo.bossInfo:setTrialInfo(0, 0)
+				slot0._mo.bossInfo:refreshTalent()
+			end
+		else
+			slot7 = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+
+			TowerAssistBossModel.instance:getTempUnlockTrialBossMO(slot0._mo.id)
+
+			slot0.isLimitedTrial = true
+		end
+
+		slot0.txtLevel.text = tostring(slot7)
+
+		SLFramework.UGUI.GuiHelper.SetColor(slot0.txtLevel, slot0.isLimitedTrial and "#81A8DC" or "#DCAE70")
+	end
+
+	gohelper.setActive(slot0.goTrial, slot0.isLimitedTrial)
+	gohelper.setActive(slot0.goTrialEffect, false)
+	gohelper.setActive(slot0.goTrialEffect, slot0.isLimitedTrial and not slot0.hasPlayTrialEffect)
+
+	slot0.hasPlayTrialEffect = true
 
 	slot0:refreshTalent()
 end
 
 function slot0.refreshTalent(slot0)
-	gohelper.setActive(slot0.goArrow, slot0._mo.bossInfo and slot0._mo.bossInfo:hasTalentCanActive() or false)
+	gohelper.setActive(slot0.goArrow, slot0._mo.bossInfo and slot0._mo.bossInfo:hasTalentCanActive() and not slot0.isLimitedTrial or false)
 end
 
 function slot0.updateItem(slot0, slot1, slot2)
@@ -184,7 +216,7 @@ function slot0.updateItem(slot0, slot1, slot2)
 
 	UISpriteSetMgr.instance:setCommonSprite(slot1.imgCareer, string.format("lssx_%s", slot0._mo.config.career))
 	slot1.simageBoss:LoadImage(slot0._mo.config.bossPic)
-	gohelper.setActive(slot1.goTxtOpen, slot0._mo.isTowerOpen and not slot0._mo.isFromHeroGroup)
+	gohelper.setActive(slot1.goTxtOpen, false)
 end
 
 function slot0.onDestroyView(slot0)

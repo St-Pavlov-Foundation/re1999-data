@@ -12,7 +12,7 @@ function slot0.onStart(slot0)
 	slot3 = 0.5
 
 	for slot7, slot8 in ipairs(slot1) do
-		if slot8.effect.effectNum - 1 > #FightPlayCardModel.instance:getUsedCards() then
+		if slot8.actEffectData.effectNum - 1 > #FightPlayCardModel.instance:getUsedCards() then
 			slot10 = #slot11 + 1
 		end
 
@@ -25,13 +25,13 @@ function slot0.onStart(slot0)
 	end
 
 	FightController.instance:dispatchEvent(FightEvent.AddUseCard, slot2)
-	FightController.instance:dispatchEvent(FightEvent.AfterAddUseCardContainer, slot0._fightStepMO)
+	FightController.instance:dispatchEvent(FightEvent.AfterAddUseCardContainer, slot0.fightStepData)
 	slot0:com_registTimer(slot0._delayAfterPerformance, slot3 / FightModel.instance:getUISpeed())
 end
 
 function slot0.customPlayEffectData(slot0, slot1)
 	for slot5, slot6 in ipairs(slot1) do
-		FightDataHelper.playEffectData(slot6.effect)
+		FightDataHelper.playEffectData(slot6.actEffectData)
 	end
 end
 

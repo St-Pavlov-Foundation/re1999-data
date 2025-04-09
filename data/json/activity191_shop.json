@@ -1,0 +1,152 @@
+[
+  {
+    "activityId": 12701,
+    "id": 1,
+    "type": "mixtureShop",
+    "level": 1,
+    "stage": 101,
+    "position": 8,
+    "name": "赛后补给间I",
+    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+  },
+  {
+    "activityId": 12701,
+    "id": 2,
+    "type": "roleShop",
+    "level": 1,
+    "stage": 101,
+    "position": 8,
+    "name": "赛后补给间I",
+    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+  },
+  {
+    "activityId": 12701,
+    "id": 3,
+    "type": "collectionShop",
+    "level": 1,
+    "stage": 101,
+    "position": 8,
+    "name": "赛后补给间I",
+    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 4,
+    "type": "mixtureShop",
+    "level": 2,
+    "stage": 102,
+    "position": 8,
+    "name": "赛后补给间II",
+    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+  },
+  {
+    "activityId": 12701,
+    "id": 5,
+    "type": "roleShop",
+    "level": 2,
+    "stage": 102,
+    "position": 8,
+    "name": "赛后补给间II",
+    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+  },
+  {
+    "activityId": 12701,
+    "id": 6,
+    "type": "collectionShop",
+    "level": 2,
+    "stage": 102,
+    "position": 8,
+    "name": "赛后补给间II",
+    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 7,
+    "type": "tagShop1",
+    "level": 2,
+    "stage": 102,
+    "position": 4,
+    "name": "赛后补给间II",
+    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 8,
+    "type": "mixtureShop",
+    "level": 3,
+    "stage": 103,
+    "position": 8,
+    "name": "赛后补给间III",
+    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+  },
+  {
+    "activityId": 12701,
+    "id": 9,
+    "type": "roleShop",
+    "level": 3,
+    "stage": 103,
+    "position": 8,
+    "name": "赛后补给间III",
+    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+  },
+  {
+    "activityId": 12701,
+    "id": 10,
+    "type": "collectionShop",
+    "level": 3,
+    "stage": 103,
+    "position": 8,
+    "name": "赛后补给间III",
+    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 11,
+    "type": "tagShop1",
+    "level": 3,
+    "stage": 103,
+    "position": 4,
+    "name": "赛后补给间III",
+    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 12,
+    "type": "mixtureShop",
+    "level": 4,
+    "stage": 104,
+    "position": 8,
+    "name": "赛后补给间IV",
+    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+  },
+  {
+    "activityId": 12701,
+    "id": 13,
+    "type": "roleShop",
+    "level": 4,
+    "stage": 104,
+    "position": 8,
+    "name": "赛后补给间IV",
+    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+  },
+  {
+    "activityId": 12701,
+    "id": 14,
+    "type": "collectionShop",
+    "level": 4,
+    "stage": 104,
+    "position": 8,
+    "name": "赛后补给间IV",
+    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+  },
+  {
+    "activityId": 12701,
+    "id": 15,
+    "type": "tagShop1",
+    "level": 4,
+    "stage": 104,
+    "position": 4,
+    "name": "赛后补给间IV",
+    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
+  }
+]

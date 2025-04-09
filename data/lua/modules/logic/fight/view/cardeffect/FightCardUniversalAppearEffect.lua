@@ -9,7 +9,7 @@ function slot0.onStart(slot0, slot1)
 	slot0._forAnimGO = gohelper.findChild(slot4.go, "foranim")
 	slot0._canvasGroup = gohelper.onceAddComponent(slot0._forAnimGO, typeof(UnityEngine.CanvasGroup))
 	slot0._canvasGroup.alpha = 0
-	slot0._downEffectLoader = PrefabInstantiate.Create(gohelper.findChild(slot1.handCardItemList[#FightCardModel.instance:getHandCards()].go, "downEffect") or gohelper.create2d(slot4.go, "downEffect"))
+	slot0._downEffectLoader = PrefabInstantiate.Create(gohelper.findChild(slot1.handCardItemList[#FightDataHelper.handCardMgr.handCard].go, "downEffect") or gohelper.create2d(slot4.go, "downEffect"))
 
 	slot0._downEffectLoader:startLoad(uv1, function (slot0)
 		uv0._tweenId = ZProj.TweenHelper.DOFadeCanvasGroup(uv0._forAnimGO, 0, 1, uv1)

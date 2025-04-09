@@ -17,7 +17,6 @@ function slot0.onStart(slot0)
 end
 
 function slot0._onFightAct174Reply(slot0, slot1)
-	FightCardModel.instance:clearCardOps()
 	FightDataHelper.paTaMgr:resetOp()
 	slot0:com_registFightEvent(FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish)
 	FightModel.instance:updateFightRound(slot1.fightRound)

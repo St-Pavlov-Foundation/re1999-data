@@ -259,7 +259,7 @@ function slot0.onStart(slot0, slot1)
 	}))
 	slot0._sequence:addWork(slot6)
 
-	slot2[slot3] = FightCardModel.combineTwoCard(slot2[slot3], slot2[slot3 + 1], FightCardModel.instance:getBeCombineCardMO())
+	slot2[slot3] = FightCardDataHelper.combineCardForPerformance(slot2[slot3], slot2[slot3 + 1])
 	slot2[slot3].combineCanAddExpoint = FightCardDataHelper.combineCanAddExpoint(slot2, slot2[slot3], slot2[slot3 + 1])
 
 	table.remove(slot2, slot3 + 1)
@@ -277,7 +277,7 @@ function slot0.onStart(slot0, slot1)
 		gohelper.setActive(gohelper.findChild(uv1.handCardItemList[uv3].go, "foranim/cardeffect"), true)
 	end))
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Distribute and slot25 ~= FightEnum.Stage.FillCard or FightCardModel.getCombineIndexOnce(slot2) then
+	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Distribute and slot24 ~= FightEnum.Stage.FillCard or FightCardDataHelper.canCombineCardListForPerformance(slot2) then
 		slot0._sequence:addWork(uv1.buildCombineEndFlow(slot3, slot3, #slot2, slot1.handCardItemList))
 	end
 
@@ -415,7 +415,7 @@ function slot0._createUniversalCombineEffect(slot0)
 		slot2 = slot0:getInstGO()
 
 		gohelper.onceAddComponent(slot2, typeof(ZProj.EffectTimeScale)):SetTimeScale(FightModel.instance:getUISpeed())
-		gohelper.setActive(gohelper.findChild(slot2, "ani/star02"), FightCardModel.instance:getSkillLv(uv0.cardInfoMO.uid, uv0.cardInfoMO.skillId) >= 2)
+		gohelper.setActive(gohelper.findChild(slot2, "ani/star02"), FightCardDataHelper.getSkillLv(uv0.cardInfoMO.uid, uv0.cardInfoMO.skillId) >= 2)
 		gohelper.setActive(gohelper.findChild(slot2, "ani/star03"), slot1 >= 3)
 	end)
 	TaskDispatcher.runDelay(slot0._combineUpEffectDone, slot0, 0.5 / FightModel.instance:getUISpeed())

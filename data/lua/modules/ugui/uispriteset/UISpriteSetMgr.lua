@@ -140,6 +140,10 @@ function slot0.ctor(slot0)
 	slot0._v2a6dicehero = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_dicehero_spriteset.asset")
 	slot0._v2a6_xugouji = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_xugouji_spriteset.asset")
 	slot0._v2a6_main_activity = slot0:newSpriteSetUnit("ui/spriteassets/v2a6_mainactivity_spriteset.asset")
+	slot0._v2a7_main_activity = slot0:newSpriteSetUnit("ui/spriteassets/v2a7_mainactivity_spriteset.asset")
+	slot0._v2a7_dungeon_sprite = slot0:newSpriteSetUnit("ui/spriteassets/v2a7_dungeon.asset")
+	slot0._v2a7_coopergarland_sprite = slot0:newSpriteSetUnit("ui/spriteassets/v2a7_coopergarland_spriteset.asset")
+	slot0._v2a7_hissabeth_sprite = slot0:newSpriteSetUnit("ui/spriteassets/v2a7_hissabeth_spriteset.asset")
 end
 
 function slot0.newSpriteSetUnit(slot0, slot1)
@@ -691,6 +695,18 @@ function slot0.setV2a6MainActivitySprite(slot0, slot1, slot2, slot3)
 	slot0._v2a6_main_activity:setSprite(slot1, slot2, slot3)
 end
 
+function slot0.setV2a7MainActivitySprite(slot0, slot1, slot2, slot3)
+	slot0._v2a7_main_activity:setSprite(slot1, slot2, slot3)
+end
+
+function slot0.setV2a7DungeonSprite(slot0, slot1, slot2, slot3)
+	slot0._v2a7_dungeon_sprite:setSprite(slot1, slot2, slot3)
+end
+
+function slot0.setV2a7CooperGarlandSprite(slot0, slot1, slot2, slot3)
+	slot0._v2a7_coopergarland_sprite:setSprite(slot1, slot2, slot3)
+end
+
 function slot0.setSocialSkinSprite(slot0, slot1, slot2, slot3)
 	slot0._socialskin:setSprite(slot1, slot2, slot3)
 end
@@ -701,6 +717,10 @@ end
 
 function slot0.setXugoujiSprite(slot0, slot1, slot2, slot3)
 	slot0._v2a6_xugouji:setSprite(slot1, slot2, slot3)
+end
+
+function slot0.setHisSaBethSprite(slot0, slot1, slot2, slot3)
+	slot0._v2a7_hissabeth_sprite:setSprite(slot1, slot2, slot3)
 end
 
 function slot0.tryDispose(slot0)

@@ -382,6 +382,12 @@ function slot0.checkShowActivityEnter(slot0)
 	end
 end
 
+function slot0.check2_0DungeonReddot(slot0)
+	if ActivityHelper.getActivityStatus(VersionActivity2_0Enum.ActivityId.Dungeon) == ActivityEnum.ActivityStatus.Normal then
+		Activity161Controller.instance:checkHasUnDoElement()
+	end
+end
+
 function slot0._getCurBindActivityId(slot0)
 	return slot0:_getBindActivityId(slot0.activityShowState)
 end
@@ -394,6 +400,7 @@ function slot0.onRefreshActivityState(slot0)
 	slot0:checkShowActivityEnter()
 	slot0:refreshReactivityBtn()
 	slot0:_refreshBtns()
+	slot0:check2_0DungeonReddot()
 end
 
 function slot0._refreshBtns(slot0)

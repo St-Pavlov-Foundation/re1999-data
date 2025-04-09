@@ -20,6 +20,8 @@ function slot0.onInitView(slot0)
 		slot0.passiveSkillItems[slot4] = slot5
 	end
 
+	slot0.goTeachSkills = gohelper.findChild(slot0.viewGO, "root/right/info/passiveskill/#go_teachskills")
+	slot0.canvasGroupTeachSkills = slot0.goTeachSkills:GetComponent(gohelper.Type_CanvasGroup)
 	slot0.btnSkill = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/info/#go_skill/line/go_skills/skillicon")
 	slot0.skillIcon = gohelper.findChildSingleImage(slot0.viewGO, "root/right/info/#go_skill/line/go_skills/skillicon/imgIcon")
 	slot0.skillTagIcon = gohelper.findChildSingleImage(slot0.viewGO, "root/right/info/#go_skill/line/go_skills/skillicon/tagIcon")
@@ -45,6 +47,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.TowerUpdate, slot0._onTowerUpdate, slot0)
+	slot0:addEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshTalent, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -56,6 +59,7 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerUpdate, slot0._onTowerUpdate, slot0)
+	slot0:removeEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshTalent, slot0)
 end
 
 function slot0._editableInitView(slot0)
@@ -100,7 +104,8 @@ function slot0.onBtnTalentClick(slot0)
 	end
 
 	ViewMgr.instance:openView(ViewName.TowerAssistBossTalentView, {
-		bossId = slot0.bossId
+		bossId = slot0.bossId,
+		isFromHeroGroup = slot0.isFromHeroGroup
 	})
 end
 
@@ -135,10 +140,32 @@ function slot0.refreshParam(slot0)
 	slot0.bossMo = TowerAssistBossModel.instance:getById(slot0.bossId)
 	slot0.config = TowerConfig.instance:getAssistBossConfig(slot0.bossId)
 	slot0.isFromHeroGroup = slot0.viewParam.isFromHeroGroup and true or false
+	slot0.isBlanced = TowerModel.instance:getCurTowerType() == TowerEnum.TowerType.Limited and slot0.bossMo.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+
+	if slot0.isFromHeroGroup then
+		if tabletool.len(TowerModel.instance:getRecordFightParam()) > 0 then
+			slot0.isTeach = slot3.towerType == TowerEnum.TowerType.Boss and slot3.layerId == 0
+
+			if slot0.isTeach then
+				slot0.bossMo:setTrialInfo(tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TeachBossLevel)), TowerConfig.instance:getBossTeachConfig(slot3.towerId, slot3.difficulty).planId)
+				slot0.bossMo:refreshTalent()
+			elseif slot0.isBlanced then
+				TowerAssistBossModel.instance:setLimitedTrialBossInfo(slot0.bossMo)
+			else
+				slot0.bossMo:setTrialInfo(0, 0)
+				slot0.bossMo:refreshTalent()
+			end
+		end
+	elseif slot1 and slot1 == TowerEnum.TowerType.Limited and slot0.isBlanced then
+		TowerAssistBossModel.instance:setLimitedTrialBossInfo(slot0.bossMo)
+	else
+		slot0.bossMo:setTrialInfo(0, 0)
+		slot0.bossMo:refreshTalent()
+	end
 end
 
 function slot0.refreshView(slot0)
-	slot1 = slot0.bossMo and slot0.bossMo.level or 1
+	slot1 = slot0.bossMo and slot0.bossMo.trialLevel > 0 and slot0.bossMo.trialLevel or slot0.bossMo and slot0.bossMo.level > 0 and slot0.bossMo.level or 1
 	slot0.txtLev.text = tostring(slot1)
 	slot0.txtName.text = slot0.config.name
 
@@ -148,6 +175,7 @@ function slot0.refreshView(slot0)
 	gohelper.setActive(slot0.btnBase, #TowerConfig.instance:getHeroGroupAddAttr(slot0.bossId, 0, slot1) > 0)
 	slot0:refreshPassiveSkill()
 	slot0:refreshActiveSkill()
+	slot0:refreshTeachSkill()
 	slot0:refreshTalent()
 	slot0:refreshTags()
 end
@@ -157,7 +185,7 @@ function slot0.refreshTalent(slot0)
 		slot1, slot2 = slot0.bossMo:getTalentActiveCount()
 		slot0.txtNum.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towertalent_already_light"), slot1, slot1 + slot2)
 
-		gohelper.setActive(slot0.goCanLight, slot0.bossMo:hasTalentCanActive())
+		gohelper.setActive(slot0.goCanLight, slot0.bossMo:hasTalentCanActive() and not slot0.isBlanced and not slot0.isTeach)
 	else
 		slot0.txtNum.text = ""
 
@@ -171,7 +199,7 @@ function slot0.refreshPassiveSkill(slot0)
 	for slot6, slot7 in ipairs(slot0.passiveSkillItems) do
 		if TowerConfig.instance:getPassiveSKills(slot0.bossId)[slot6] then
 			gohelper.setActive(slot7.go, true)
-			gohelper.setActive(slot7.goOn, TowerConfig.instance:isSkillActive(slot0.bossId, slot8[1], slot0.bossMo and slot0.bossMo.level or 1))
+			gohelper.setActive(slot7.goOn, TowerConfig.instance:isSkillActive(slot0.bossId, slot8[1], slot0.bossMo and slot0.bossMo.trialLevel > 0 and slot0.bossMo.trialLevel or slot0.bossMo and slot0.bossMo.level or 1))
 		else
 			gohelper.setActive(slot7.go, false)
 		end
@@ -212,6 +240,12 @@ function slot0.refreshTags(slot0)
 
 		gohelper.setActive(slot8.go, slot1[slot7] ~= nil)
 	end
+end
+
+function slot0.refreshTeachSkill(slot0)
+	gohelper.setActive(slot0.goTeachSkills, #(string.splitToNumber(slot0.config.teachSkills, "#") or {}) > 0)
+
+	slot0.canvasGroupTeachSkills.alpha = TowerBossTeachModel.instance:isAllEpisodeFinish(slot0.bossId) and 1 or 0.5
 end
 
 function slot0.onClose(slot0)

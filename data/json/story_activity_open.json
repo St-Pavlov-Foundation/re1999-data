@@ -3118,5 +3118,293 @@
     "titleEn": "Waking of Insects",
     "labelRes": "8",
     "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 1,
+    "title": "避雨指南",
+    "titleEn": "How to Find Shelter",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 2,
+    "title": "旅行者们",
+    "titleEn": "The Voyagers",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 3,
+    "title": "意义的意义",
+    "titleEn": "The Meaning of Meaning",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 4,
+    "title": "崭新的，美丽的",
+    "titleEn": "Beautiful New Things",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 5,
+    "title": "时间简谱",
+    "titleEn": "A Score of Time",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 6,
+    "title": "比旅程更险恶的",
+    "titleEn": "What's Worse Than the Journey",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 7,
+    "title": "园圃与花园",
+    "titleEn": "The Wilds and the Garden",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 8,
+    "title": "当日子往前",
+    "titleEn": "When We Move Forward",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 9,
+    "title": "致陌生人",
+    "titleEn": "To Former Strangers",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 10,
+    "title": "冻雨天",
+    "titleEn": "A Freezing Rain",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 11,
+    "title": "偶然的诗",
+    "titleEn": "Poems Come By Chance",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 12,
+    "title": "《协奏曲》",
+    "titleEn": "Concerto",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 13,
+    "title": "永恒春天的地方",
+    "titleEn": "Where Ever Spring Stays",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 14,
+    "title": "追星星的人",
+    "titleEn": "We Who Chase the Stars",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 15,
+    "title": "告别时刻",
+    "titleEn": "Time to Say Goodbye",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 16,
+    "title": "奶油饺子汤",
+    "titleEn": "What's About Time",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 17,
+    "title": "蛇靠星星证明",
+    "titleEn": "The Measure of a Melusine",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 18,
+    "title": "墓志铭",
+    "titleEn": "Epitaph",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 19,
+    "title": "你并不孤单",
+    "titleEn": "You Are Not Alone",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 20,
+    "title": "宇宙无事发生",
+    "titleEn": "As If Nothing Happened Up There",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 21,
+    "title": "着陆",
+    "titleEn": "Earthbound",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 22,
+    "title": "漫长的冬季",
+    "titleEn": "A Long Winter",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 23,
+    "title": "末日",
+    "titleEn": "Doomsday",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 24,
+    "title": "北方乐土",
+    "titleEn": "A Warm Place in the North",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 25,
+    "title": "往昔",
+    "titleEn": "Days of Yore",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 26,
+    "title": "风雪中",
+    "titleEn": "Between the Wind and Snow",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 27,
+    "title": "远方的消息",
+    "titleEn": "Message from Afar",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 28,
+    "title": "末日之后",
+    "titleEn": "The Days After",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 29,
+    "title": "不速之客",
+    "titleEn": "An Unexpected Visitor",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 30,
+    "title": "亲密朋友",
+    "titleEn": "A Close Friend",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 31,
+    "title": "度假胜地",
+    "titleEn": "Resort",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 32,
+    "title": "睡蛇说",
+    "titleEn": "What the Snake Said",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 33,
+    "title": "实证精神",
+    "titleEn": "The Proof in the Pudding",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 34,
+    "title": "失重的荒野",
+    "titleEn": "Weightless Wasteland",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 35,
+    "title": "认知偏差",
+    "titleEn": "Cognitive Bias",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 27,
+    "part": 36,
+    "title": "再会，朋友",
+    "titleEn": "Au revoir, chers amis",
+    "labelRes": "8",
+    "storyBg": ""
   }
 ]

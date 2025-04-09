@@ -242,6 +242,15 @@ function slot0.initSpeedConfig(slot0)
 			slot2[1][2],
 			slot2[2][2]
 		}
+		slot2 = GameUtil.splitString2(lua_activity191_const.configDict[Activity191Enum.ConstKey.FightSpeed].value, true)
+		slot0._douQuQu191Speed = {
+			slot2[1][1],
+			slot2[2][1]
+		}
+		slot0._douQuQu191UISpeed = {
+			slot2[1][2],
+			slot2[2][2]
+		}
 	end
 end
 
@@ -254,6 +263,10 @@ function slot0.getSpeed(slot0)
 
 	if FightDataHelper.fieldMgr:isDouQuQu() then
 		return slot0._douQuQuSpeed[slot0._userSpeed] or 1
+	end
+
+	if FightDataHelper.fieldMgr:is191DouQuQu() then
+		return slot0._douQuQu191Speed[slot0._userSpeed] or 1
 	end
 
 	if FightReplayModel.instance:isReplay() then
@@ -288,6 +301,10 @@ function slot0.getUISpeed(slot0)
 
 	if FightDataHelper.fieldMgr:isDouQuQu() then
 		return slot0._douQuQuUISpeed[slot0._userSpeed] or 1
+	end
+
+	if FightDataHelper.fieldMgr:is191DouQuQu() then
+		return slot0._douQuQu191UISpeed[slot0._userSpeed] or 1
 	end
 
 	if FightReplayModel.instance:isReplay() then
@@ -338,8 +355,8 @@ function slot0.setAuto(slot0, slot1)
 	if not slot1 and slot0._isAuto then
 		slot0._isAuto = slot1
 
-		FightCardModel.instance:setCurSelectEntityId(0)
-		FightCardModel.instance:resetCurSelectEntityIdDefault()
+		FightDataHelper.operationDataMgr:setCurSelectEntityId(0)
+		FightDataHelper.operationDataMgr:resetCurSelectEntityIdDefault()
 	end
 
 	slot0._isAuto = slot1
@@ -394,7 +411,11 @@ end
 
 function slot0.updateFight(slot0, slot1, slot2)
 	slot0._version = uv0.GMForceVersion or slot1.version or 0
-	slot0._isRecord = slot1.isRecord
+
+	if not slot2 then
+		slot0._isRecord = slot1.isRecord
+	end
+
 	slot0._fightActType = slot1.fightActType or FightEnum.FightActType.Normal
 
 	if slot0._fightActType == 0 then
@@ -425,44 +446,37 @@ function slot0.updateFight(slot0, slot1, slot2)
 	slot0._battleId = slot1.battleId
 	slot0.exTeamStr = slot1.attacker.exTeamStr
 
-	if slot1:HasField("attacker") and #slot1.attacker.skillInfos > 0 then
+	if slot1.attacker and #slot1.attacker.skillInfos > 0 then
 		slot0:_updatePlayerSkillInfo(slot1.attacker.skillInfos)
 	end
 
-	if slot1:HasField("magicCircle") then
+	if slot1.magicCircle then
 		slot0:getMagicCircleInfo():refreshData(slot1.magicCircle)
 	end
 end
 
 function slot0.updateFightRound(slot0, slot1)
 	FightController.instance:dispatchEvent(FightEvent.CacheFightProto, FightEnum.CacheProtoType.Round, slot1)
-	FightLocalDataMgr.instance:beforePlayRoundProto(slot1)
-	FightDataMgr.instance:beforePlayRoundProto(slot1)
-	xpcall(FightDataMgr.dealRoundProto, __G__TRACKBACK__, FightLocalDataMgr.instance, slot1)
-	FightLocalDataMgr.instance:afterPlayRoundProto(slot1)
+	FightDataHelper.setRoundDataByProto(slot1)
 
-	slot0._curRoundMO = slot0._curRoundMO or FightRoundMO.New()
+	slot2 = FightDataHelper.roundMgr:getRoundData()
 
-	slot0._curRoundMO:init(slot1)
-	slot0:updateSpAttributeMo(slot1.heroSpAttributes)
+	FightLocalDataMgr.instance:beforePlayRoundData(slot2)
+	xpcall(FightDataMgr.dealRoundData, __G__TRACKBACK__, FightLocalDataMgr.instance, slot2)
+	FightLocalDataMgr.instance:afterPlayRoundData(slot2)
+	slot2:processRoundData()
+	FightDataMgr.instance:beforePlayRoundData(slot2)
+	slot0:updateSpAttributeMo(slot2.heroSpAttributes)
 
-	slot0._isFinish = slot0._curRoundMO.isFinish
-	slot0.power = slot0._curRoundMO.power
+	slot0._isFinish = slot2.isFinish
+	slot0.power = slot2.power
 
-	if slot1:HasField("actPoint") then
-		FightCardModel.instance.nextRoundActPoint = slot0._curRoundMO.actPoint
-	end
-
-	if slot1:HasField("moveNum") then
-		FightCardModel.instance.nextRoundMoveNum = slot0._curRoundMO.moveNum
-	end
-
-	if #slot1.skillInfos > 0 then
-		slot0:_updatePlayerSkillInfo(slot1.skillInfos)
+	if #slot2.skillInfos > 0 then
+		slot0:_updatePlayerSkillInfo(slot2.skillInfos)
 	end
 
 	if slot0:getVersion() < 1 then
-		FightPlayCardModel.instance:updateFightRound(slot0._curRoundMO)
+		FightPlayCardModel.instance:updateFightRound(slot2)
 	end
 
 	slot0.autoPlayCardList = {}
@@ -489,29 +503,26 @@ function slot0.getSpAttributeMo(slot0, slot1)
 end
 
 function slot0.updateClothSkillRound(slot0, slot1)
+	if slot0:getVersion() < 5 then
+		slot1.actPoint = FightDataHelper.operationDataMgr.actPoint
+	end
+
 	FightController.instance:dispatchEvent(FightEvent.CacheFightProto, FightEnum.CacheProtoType.Round, slot1)
-	FightLocalDataMgr.instance:beforePlayRoundProto(slot1)
-	FightDataMgr.instance:beforePlayRoundProto(slot1)
-	xpcall(FightDataMgr.dealRoundProto, __G__TRACKBACK__, FightLocalDataMgr.instance, slot1)
-	FightLocalDataMgr.instance:afterPlayRoundProto(slot1)
+	FightDataHelper.setRoundDataByProto(slot1)
 
-	slot0._curRoundMO = slot0._curRoundMO or FightRoundMO.New()
+	slot3 = FightDataHelper.roundMgr:getRoundData()
 
-	slot0._curRoundMO:updateClothSkillRound(slot1)
+	FightLocalDataMgr.instance:beforePlayRoundData(slot3)
+	xpcall(FightDataMgr.dealRoundData, __G__TRACKBACK__, FightLocalDataMgr.instance, slot3)
+	FightLocalDataMgr.instance:afterPlayRoundData(slot3)
+	slot3:processRoundData()
+	FightDataMgr.instance:beforePlayRoundData(slot3)
 
-	slot0._isFinish = slot0._curRoundMO.isFinish
-	slot0.power = slot0._curRoundMO.power
+	slot0._isFinish = slot3.isFinish
+	slot0.power = slot3.power
 
-	if slot1:HasField("actPoint") then
-		FightCardModel.instance.nextRoundActPoint = slot0._curRoundMO.actPoint
-	end
-
-	if slot1:HasField("moveNum") then
-		FightCardModel.instance.nextRoundMoveNum = slot0._curRoundMO.moveNum
-	end
-
-	if #slot1.skillInfos > 0 then
-		slot0:_updatePlayerSkillInfo(slot1.skillInfos)
+	if #slot3.skillInfos > 0 then
+		slot0:_updatePlayerSkillInfo(slot3.skillInfos)
 	end
 end
 
@@ -557,8 +568,6 @@ function slot0.onEndRound(slot0)
 
 	slot0._roundInc = 1
 	slot0.hasNextWave = false
-	slot0._nextWaveMsg = nil
-	slot0.cacheWaveMsg = nil
 
 	slot0:clearStressBehaviour()
 end
@@ -580,9 +589,7 @@ function slot0.onEndFight(slot0)
 	slot0._curRoundMO = nil
 	slot0._clothSkillList = nil
 	slot0._clothSkillDict = nil
-	slot0._nextWaveMsg = nil
 	slot0.hasNextWave = false
-	slot0.cacheWaveMsg = nil
 end
 
 function slot0.updateFightReason(slot0, slot1)
@@ -592,28 +599,8 @@ function slot0.updateFightReason(slot0, slot1)
 end
 
 function slot0.setNextWaveMsg(slot0, slot1)
-	slot0._nextWaveMsg = slot0._nextWaveMsg or {}
-
-	table.insert(slot0._nextWaveMsg, slot1)
-
-	slot0.cacheWaveMsg = slot0.cacheWaveMsg or {}
-
-	table.insert(slot0.cacheWaveMsg, slot1)
-
 	slot0._roundInc = 0
 	slot0.hasNextWave = true
-end
-
-function slot0.getNextWaveMsg(slot0)
-	return slot0._nextWaveMsg and slot0._nextWaveMsg[1]
-end
-
-function slot0.getAndRemoveNextWaveMsg(slot0)
-	return slot0._nextWaveMsg and table.remove(slot0._nextWaveMsg, 1)
-end
-
-function slot0.getAndRemoveCacheWaveMsg(slot0)
-	return slot0.cacheWaveMsg and table.remove(slot0.cacheWaveMsg, 1)
 end
 
 function slot0.getClothSkillList(slot0)

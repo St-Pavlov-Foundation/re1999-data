@@ -39,7 +39,7 @@ function slot0.onAfterAddUseCardOnContainer(slot0, slot1)
 
 	slot4 = 0
 
-	for slot8, slot9 in ipairs(slot1.actEffectMOs) do
+	for slot8, slot9 in ipairs(slot1.actEffect) do
 		if slot9.effectType == FightEnum.EffectType.ADDUSECARD and uv0.ALFSkillDict[slot9.effectNum1] then
 			slot2 = 0 + 1
 			slot4 = slot9.effectNum1

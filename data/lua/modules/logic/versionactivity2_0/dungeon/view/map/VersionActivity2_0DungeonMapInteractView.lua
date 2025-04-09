@@ -190,7 +190,7 @@ function slot0.refreshUI(slot0)
 end
 
 function slot0.refreshRewards(slot0)
-	if string.nilorempty(slot0._config.reward) then
+	if string.nilorempty(slot0._config.retroReward) then
 		gohelper.setActive(slot0.goRewardContainer, false)
 
 		return

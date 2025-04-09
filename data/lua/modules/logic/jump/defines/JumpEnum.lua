@@ -44,6 +44,7 @@ slot0.JumpView = {
 	DiceHero = 108,
 	DungeonViewWithEpisode = 4,
 	StoryHandBook = 173,
+	Challenge = 183,
 	RoomProductLineView = 15,
 	LeiMiTeBeiDungeonView = 101,
 	Act1_3DungeonView = 103,

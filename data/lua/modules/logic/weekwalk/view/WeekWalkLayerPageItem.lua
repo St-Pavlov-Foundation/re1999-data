@@ -280,8 +280,11 @@ function slot0._updateStatus(slot0)
 
 	if slot0._layerPage:getVisible() and slot2 and slot2 < slot0._config.id or slot0._showUnlockAnim then
 		WeekWalkModel.instance:setFinishMapId(nil)
-		slot0:_playAnim("weekwalklayerpageitem_unlock_in")
-		AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_unlockdream)
+
+		if slot0._mapInfo.isFinish ~= 1 then
+			slot0:_playAnim("weekwalklayerpageitem_unlock_in")
+			AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_unlockdream)
+		end
 	else
 		slot4 = slot0._mapInfo
 

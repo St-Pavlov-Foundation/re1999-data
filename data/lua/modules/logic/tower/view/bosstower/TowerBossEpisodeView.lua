@@ -5,6 +5,9 @@ slot0 = class("TowerBossEpisodeView", BaseView)
 function slot0.onInitView(slot0)
 	slot0.txtName = gohelper.findChildTextMesh(slot0.viewGO, "root/episodeNode/nameBg/txtName")
 	slot0.btnStart = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/Right/btnStart")
+	slot0.btnTeach = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/Right/btnTeach")
+	slot0.goTeachFinish = gohelper.findChild(slot0.viewGO, "root/Right/btnTeach/go_teachFinish")
+	slot0.animTeachFinishEffect = gohelper.findChild(slot0.viewGO, "root/Right/btnTeach/go_teachFinish/go_hasget"):GetComponent(gohelper.Type_Animator)
 	slot0.goRewards = gohelper.findChild(slot0.viewGO, "root/Right/Reward/scroll_reward/Viewport/#go_rewards")
 	slot0.goAttrInfo = gohelper.findChild(slot0.viewGO, "root/Right/attrInfo")
 	slot0.goLevItem = gohelper.findChild(slot0.viewGO, "root/Right/attrInfo/levItem")
@@ -37,10 +40,12 @@ end
 
 function slot0.addEvents(slot0)
 	slot0:addClickCb(slot0.btnStart, slot0._onBtnStartClick, slot0)
+	slot0:addClickCb(slot0.btnTeach, slot0._onBtnTeachClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0:removeClickCb(slot0.btnStart)
+	slot0:removeClickCb(slot0.btnTeach)
 end
 
 function slot0._editableInitView(slot0)
@@ -57,6 +62,16 @@ function slot0._onBtnStartClick(slot0)
 		layerId = slot0.episodeConfig.layerId,
 		episodeId = slot0.episodeConfig.episodeId
 	})
+end
+
+function slot0._onBtnTeachClick(slot0)
+	TowerController.instance:openTowerBossTeachView({
+		towerType = slot0.towerType,
+		towerId = slot0.towerId,
+		lastFightTeachId = slot0.viewParam.lastFightTeachId
+	})
+
+	slot0.viewParam.lastFightTeachId = 0
 end
 
 function slot0._onMove(slot0)
@@ -96,6 +111,10 @@ function slot0.refreshParam(slot0)
 	slot0.towerInfo = TowerModel.instance:getTowerInfoById(slot0.towerType, slot0.towerId)
 
 	slot0:refreshCurLayerId()
+
+	if slot0.viewParam.isTeach then
+		slot0:_onBtnTeachClick()
+	end
 end
 
 function slot0.refreshCurLayerId(slot0)
@@ -130,6 +149,19 @@ function slot0.refreshLayerInfo(slot0)
 		slot0:refreshAttr()
 	else
 		slot0.txtMaxLevel.text = tostring(slot0.episodeMo:getEpisodeIndex(slot0.towerId, slot0.curLayer))
+	end
+
+	slot0:refreshTeachUI()
+end
+
+function slot0.refreshTeachUI(slot0)
+	gohelper.setActive(slot0.goTeachFinish, TowerBossTeachModel.instance:isAllEpisodeFinish(slot0.towerConfig.bossId))
+
+	if TowerController.instance:getPlayerPrefs(TowerBossTeachModel.instance:getTeachFinishEffectSaveKey(slot0.towerConfig.bossId), 0) == 0 and slot1 then
+		slot0.animTeachFinishEffect:Play("go_hasget_in", 0, 0)
+		TowerController.instance:setPlayerPrefs(slot2, 1)
+	else
+		slot0.animTeachFinishEffect:Play("go_hasget_idle", 0, 0)
 	end
 end
 

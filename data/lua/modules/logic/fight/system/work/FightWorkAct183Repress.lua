@@ -9,7 +9,7 @@ function slot0.onStart(slot0, slot1)
 		return
 	end
 
-	if not Act183Model.instance:getBattleFinishedInfo() then
+	if not Act183Model.instance:getBattleFinishedInfo() or not slot3.win then
 		slot0:onDone(true)
 
 		return
@@ -21,12 +21,14 @@ function slot0.onStart(slot0, slot1)
 		return
 	end
 
-	if slot3.win and (slot3.episodeMo and slot6:getEpisodeType() == Act183Enum.EpisodeType.Sub) and not Act183Helper.isLastPassEpisodeInType(slot6) then
+	if not Act183Helper.isLastPassEpisodeInGroup(slot3.episodeMo) then
 		ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, slot0._onCloseViewFinish, slot0)
 		Act183Controller.instance:openAct183RepressView(slot3)
-	else
-		slot0:onDone(true)
+
+		return
 	end
+
+	slot0:onDone(true)
 end
 
 function slot0._onCloseViewFinish(slot0, slot1)

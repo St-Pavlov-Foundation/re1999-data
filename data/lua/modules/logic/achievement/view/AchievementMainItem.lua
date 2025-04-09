@@ -5,10 +5,16 @@ slot0 = class("AchievementMainItem", ListScrollCellExtend)
 function slot0.onInitView(slot0)
 	slot0._gosingle = gohelper.findChild(slot0.viewGO, "#go_single")
 	slot0._gogroup = gohelper.findChild(slot0.viewGO, "#go_group")
+	slot0._gogroup2 = gohelper.findChild(slot0.viewGO, "#go_group2")
 	slot0._simagebg = gohelper.findChildSingleImage(slot0.viewGO, "#go_group/#image_bg")
 	slot0._gogroupcontainer = gohelper.findChild(slot0.viewGO, "#go_group/#go_groupcontainer")
 	slot0._goupgrade = gohelper.findChild(slot0.viewGO, "#go_group/#go_upgrade")
 	slot0._goallcollect = gohelper.findChild(slot0.viewGO, "#go_group/#go_allcollect")
+	slot0._gotop2 = gohelper.findChild(slot0.viewGO, "#go_group2/go_top2")
+	slot0._simageAchievementGroupBG = gohelper.findChildSingleImage(slot0.viewGO, "#go_group2/go_top2/#simage_AchievementGroupBG")
+	slot0._txtachievementgroupname = gohelper.findChildText(slot0.viewGO, "#go_group2/go_top2/#simage_AchievementGroupBG/#txt_achievementgroupname")
+	slot0._golayout = gohelper.findChild(slot0.viewGO, "#go_group2/#go_layout")
+	slot0._btnpopup = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_group2/go_top2/#btn_popup")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -21,24 +27,23 @@ end
 function slot0.removeEvents(slot0)
 end
 
+function slot0._btnpopupOnClick(slot0)
+	AchievementMainController.instance:dispatchEvent(AchievementEvent.OnClickGroupFoldBtn, slot0._mo.groupId, not slot0._mo:getIsFold())
+end
+
 function slot0._editableInitView(slot0)
 	slot0._animator = gohelper.onceAddComponent(slot0.viewGO, typeof(UnityEngine.Animator))
 	slot0._groupBgImage = gohelper.findChildImage(slot0.viewGO, "#go_group/#image_bg")
+	slot0._iconItems = slot0:getUserDataTb_()
 
 	slot0:addEventCb(AchievementController.instance, AchievementEvent.OnGroupUpGrade, slot0._onGroupUpGrade, slot0)
 	slot0:addEventCb(AchievementMainController.instance, AchievementEvent.OnFocusAchievementFinished, slot0._onFocusFinished, slot0)
 end
 
 function slot0.onDestroy(slot0)
-	if slot0._iconItems then
-		for slot4, slot5 in pairs(slot0._iconItems) do
-			slot5:dispose()
-		end
-
-		slot0._iconItems = nil
-	end
-
+	slot0:recycleIcons()
 	slot0._simagebg:UnLoadImage()
+	slot0._simageAchievementGroupBG:UnLoadImage()
 	TaskDispatcher.cancelTask(slot0.playItemOpenAim, slot0)
 	TaskDispatcher.cancelTask(slot0.playAchievementUnlockAnim, slot0)
 end
@@ -54,15 +59,18 @@ function slot0.onUpdateMO(slot0, slot1)
 end
 
 function slot0.refreshUI(slot0)
-	slot1 = slot0._mo.groupId ~= 0
+	slot2 = AchievementUtils.isGamePlayGroup(slot0._mo.firstAchievementCo.id)
 
-	gohelper.setActive(slot0._gosingle, not slot1)
+	gohelper.setActive(slot0._gosingle, not AchievementUtils.isActivityGroup(slot0._mo.firstAchievementCo.id) and not slot2)
 	gohelper.setActive(slot0._gogroup, slot1)
+	gohelper.setActive(slot0._gogroup2, slot2)
 
 	if slot1 then
 		slot0:refreshGroup()
+	elseif slot2 then
+		slot0:refreshGroup2()
 	else
-		slot0:refreshSingle()
+		slot0:refreshSingle(slot0._gosingle, 1, slot0._mo.count)
 	end
 
 	slot0:playAchievementAnim()
@@ -75,33 +83,33 @@ slot0.UnLockedNameAlpha = 1
 slot0.LockedGroupBgColor = "#808080"
 slot0.UnLockedGroupBgColor = "#FFFFFF"
 
-function slot0.refreshSingle(slot0)
-	slot1 = AchievementEnum.MainListLineCount
-	slot5 = slot0._gosingle
+function slot0.refreshSingle(slot0, slot1, slot2, slot3)
+	slot7 = slot1
 
-	slot0:checkInitIcon(slot1, slot5)
+	slot0:checkInitIcon(slot3, slot7)
 
-	for slot5 = 1, slot1 do
-		slot6 = slot0._iconItems[slot5]
+	for slot7 = 1, slot3 do
+		slot8 = slot0._iconItems[slot7]
+		slot11 = slot2 + slot7 - 1
 
-		recthelper.setAnchor(slot6.viewGO.transform, uv0.IconStartX + (slot5 - 1) * uv0.IconIntervalX, 0)
-		slot6:setClickCall(slot0.onClickSingleIcon, slot0, slot5)
-		gohelper.setActive(slot6.viewGO, slot0._mo.achievementCfgs[slot5] ~= nil)
+		recthelper.setAnchor(slot8.viewGO.transform, uv0.IconStartX + (slot7 - 1) * uv0.IconIntervalX, 0)
+		slot8:setClickCall(slot0.onClickSingleIcon, slot0, slot11)
+		gohelper.setActive(slot8.viewGO, slot0._mo.achievementCfgs[slot11] ~= nil)
 
-		if slot9 then
-			if AchievementController.instance:getMaxLevelFinishTask(slot9.id) then
-				slot6:setData(slot11)
+		if slot12 then
+			if AchievementController.instance:getMaxLevelFinishTask(slot12.id) then
+				slot8:setData(slot14)
 
-				slot12 = AchievementModel.instance:achievementHasLocked(slot10)
+				slot15 = AchievementModel.instance:achievementHasLocked(slot13)
 
-				slot6:setIsLocked(slot12)
-				slot6:setIconColor(slot12 and uv0.LockedIconColor or uv0.UnLockedIconColor)
-				slot6:setNameTxtAlpha(slot12 and uv0.LockedNameAlpha or uv0.UnLockedNameAlpha)
-				slot6:setNameTxtVisible(true)
-				slot6:setSelectIconVisible(false)
-				slot6:setBgVisible(true)
+				slot8:setIsLocked(slot15)
+				slot8:setIconColor(slot15 and uv0.LockedIconColor or uv0.UnLockedIconColor)
+				slot8:setNameTxtAlpha(slot15 and uv0.LockedNameAlpha or uv0.UnLockedNameAlpha)
+				slot8:setNameTxtVisible(true)
+				slot8:setSelectIconVisible(false)
+				slot8:setBgVisible(true)
 			else
-				gohelper.setActive(slot6.viewGO, false)
+				gohelper.setActive(slot8.viewGO, false)
 			end
 		end
 	end
@@ -113,6 +121,18 @@ function slot0.refreshGroup(slot0)
 		slot0:refreshGroupBg(slot1)
 		slot0:refreshSingleInGroup()
 	end
+end
+
+function slot0.refreshGroup2(slot0)
+	slot0._txtachievementgroupname.text = AchievementConfig.instance:getGroupName(slot0._mo.groupId)
+
+	slot0._simageAchievementGroupBG:LoadImage(ResUrl.getAchievementIcon(string.format("grouptitle/%s", slot0._mo.groupId)))
+	slot0:refreshSingle(slot0._golayout, 1, slot0._mo.count)
+	gohelper.setActive(slot0._gotop2, slot0._mo.isGroupTop)
+
+	slot0._foldAnimComp = AchievementItemFoldAnimComp.Get(slot0._btnpopup.gameObject, slot0._golayout)
+
+	slot0._foldAnimComp:onUpdateMO(slot0._mo)
 end
 
 function slot0.refreshGroupBg(slot0, slot1)
@@ -165,7 +185,7 @@ slot0.IconStartX = -535
 slot0.IconIntervalX = 262
 
 function slot0.checkInitIcon(slot0, slot1, slot2)
-	if slot0._iconItems and #slot0._iconItems == slot1 then
+	if #slot0._iconItems == slot1 then
 		return
 	end
 
@@ -174,8 +194,6 @@ function slot0.checkInitIcon(slot0, slot1, slot2)
 	if slot0._view and slot0._view.viewContainer and not slot0._view.viewContainer:getPoolView() then
 		return
 	end
-
-	slot0._iconItems = slot0._iconItems or {}
 
 	for slot7 = 1, slot1 do
 		slot8 = slot3:getIcon(slot2)

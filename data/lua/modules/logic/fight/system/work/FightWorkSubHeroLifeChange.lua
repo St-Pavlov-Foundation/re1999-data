@@ -3,9 +3,9 @@ module("modules.logic.fight.system.work.FightWorkSubHeroLifeChange", package.see
 slot0 = class("FightWorkSubHeroLifeChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	slot0._entityId = slot0._actEffectMO.targetId
+	slot0._entityId = slot0.actEffectData.targetId
 
-	FightController.instance:dispatchEvent(FightEvent.ChangeSubEntityHp, slot0._entityId, slot0._actEffectMO.effectNum)
+	FightController.instance:dispatchEvent(FightEvent.ChangeSubEntityHp, slot0._entityId, slot0.actEffectData.effectNum)
 	slot0:onDone(true)
 end
 

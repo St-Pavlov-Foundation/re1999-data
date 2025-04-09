@@ -1,6 +1,6 @@
 module("modules.logic.bossrush.view.FightViewBossHpBossRushActionOpItem", package.seeall)
 
-slot0 = class("FightViewBossHpBossRushActionOpItem", BaseViewExtended)
+slot0 = class("FightViewBossHpBossRushActionOpItem", FightBaseView)
 
 function slot0.onInitView(slot0)
 	if slot0._editableInitView then
@@ -9,7 +9,7 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ForbidBossRushHpChannelSkillOpItem, slot0._onForbidBossRushHpChannelSkillOpItem, slot0)
+	slot0:com_registFightEvent(FightEvent.ForbidBossRushHpChannelSkillOpItem, slot0._onForbidBossRushHpChannelSkillOpItem)
 end
 
 function slot0.removeEvents(slot0)

@@ -46,13 +46,17 @@ function slot0._editableInitView(slot0)
 
 	slot0.nextStepClick:AddClickListener(slot0.onClickNextStep, slot0)
 
-	slot0.leftBlankClick = gohelper.getClickWithDefaultAudio(slot0._goleftblank)
+	if slot0._goleftblank then
+		slot0.leftBlankClick = gohelper.getClickWithDefaultAudio(slot0._goleftblank)
 
-	slot0.leftBlankClick:AddClickListener(slot0._clickBlank, slot0)
+		slot0.leftBlankClick:AddClickListener(slot0._clickBlank, slot0)
+	end
 
-	slot0.rightBlankClick = gohelper.getClickWithDefaultAudio(slot0._gorightblank)
+	if slot0._gorightblank then
+		slot0.rightBlankClick = gohelper.getClickWithDefaultAudio(slot0._gorightblank)
 
-	slot0.rightBlankClick:AddClickListener(slot0._clickBlank, slot0)
+		slot0.rightBlankClick:AddClickListener(slot0._clickBlank, slot0)
+	end
 
 	slot0.drag = SLFramework.UGUI.UIDragListener.Get(slot0.scrollContent.gameObject)
 
@@ -239,8 +243,15 @@ function slot0.onDestroyView(slot0)
 	slot0._simagefullbg:UnLoadImage()
 	slot0.nextStepClick:RemoveClickListener()
 	slot0.nextStepClick2:RemoveClickListener()
-	slot0.leftBlankClick:RemoveClickListener()
-	slot0.rightBlankClick:RemoveClickListener()
+
+	if slot0.leftBlankClick then
+		slot0.leftBlankClick:RemoveClickListener()
+	end
+
+	if slot0.rightBlankClick then
+		slot0.rightBlankClick:RemoveClickListener()
+	end
+
 	slot0.scrollContent:RemoveOnValueChanged()
 	slot0.drag:RemoveDragBeginListener()
 	slot0.drag:RemoveDragEndListener()

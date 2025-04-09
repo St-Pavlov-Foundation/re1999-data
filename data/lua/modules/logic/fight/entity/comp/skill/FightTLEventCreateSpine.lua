@@ -1,10 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventCreateSpine", package.seeall)
 
-slot0 = class("FightTLEventCreateSpine")
-
-function slot0.ctor(slot0)
-	slot0._spineGO = nil
-end
+slot0 = class("FightTLEventCreateSpine", FightTimelineTrackItem)
 
 function slot0.getSkinSpineName(slot0, slot1)
 	if string.nilorempty(slot0) or slot1 == 0 then
@@ -32,7 +28,7 @@ function slot0.getSkinSpineName(slot0, slot1)
 	return slot3
 end
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._paramsArr = slot3
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 	slot4 = string.split(slot3[1], "#")
@@ -96,7 +92,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot0:_setupEntityLookAt(slot3[11])
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_clear()
 end
 
@@ -177,11 +173,7 @@ function slot0._getHangPointGO(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_clear()
 end
 

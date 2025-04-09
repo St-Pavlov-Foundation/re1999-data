@@ -9,10 +9,12 @@ function slot0.updateInfo(slot0, slot1)
 	slot0.assistBossId = slot1.assistBossId
 	slot0.heroIds = {}
 	slot0.equipUids = {}
+	slot0.trialHeroIds = {}
 
 	if slot0.heros then
 		for slot5 = 1, #slot0.heros do
 			slot0.heroIds[slot5] = slot0.heros[slot5] and slot6.heroId or 0
+			slot0.trialHeroIds[slot5] = slot6 and slot6.trialId or 0
 
 			if slot6 and slot6.equipUid and #slot6.equipUid > 0 then
 				slot0.equipUids[slot5] = {}
@@ -36,6 +38,14 @@ end
 function slot0.getAssistBossId(slot0, slot1)
 	if slot0.status == 1 and slot0.assistBossId then
 		slot1[slot0.assistBossId] = 1
+	end
+end
+
+function slot0.getTrialHeros(slot0, slot1)
+	if slot0.status == 1 and slot0.trialHeroIds then
+		for slot5 = 1, #slot0.trialHeroIds do
+			slot1[slot0.trialHeroIds[slot5]] = 1
+		end
 	end
 end
 

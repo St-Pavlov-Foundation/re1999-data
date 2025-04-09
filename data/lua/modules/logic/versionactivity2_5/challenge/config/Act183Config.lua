@@ -58,6 +58,10 @@ function slot0.getEpisodeCosByGroupId(slot0, slot1, slot2)
 	return slot4
 end
 
+function slot0.isGroupExist(slot0, slot1, slot2)
+	return slot0:getEpisodeCosByGroupId(slot1, slot2) and #slot3 > 0
+end
+
 function slot0.getEpisodeAllRuleDesc(slot0, slot1)
 	slot4 = slot0:getEpisodeRuleDesc(slot1, 2)
 
@@ -190,17 +194,20 @@ function slot0._onSingleTaskConfigLoaded(slot0, slot1)
 
 	table.insert(slot6, slot1)
 
-	slot0._taskGroupMap[slot7] = slot0._taskGroupMap[slot1.groupId] or {}
+	slot0._taskGroupMap[slot7] = slot0._taskGroupMap[slot1.activityId] or {}
+	slot0._taskGroupMap[slot7][slot8] = slot0._taskGroupMap[slot7][slot1.groupId] or {}
 
-	table.insert(slot0._taskGroupMap[slot7], slot1)
+	table.insert(slot0._taskGroupMap[slot7][slot8], slot1)
 end
 
 function slot0.getAllOnlineTypeTasks(slot0, slot1, slot2)
 	return slot0._taskTypeMap[slot1] and slot3[slot2]
 end
 
-function slot0.getAllOnlineGroupTasks(slot0, slot1)
-	return slot0._taskGroupMap and slot0._taskGroupMap[slot1]
+function slot0.getAllOnlineGroupTasks(slot0, slot1, slot2)
+	slot3 = slot0._taskGroupMap and slot0._taskGroupMap[slot1]
+
+	return slot3 and slot3[slot2]
 end
 
 function slot0.getTaskConfig(slot0, slot1)
@@ -215,6 +222,14 @@ function slot0.getPreEpisodeIds(slot0, slot1, slot2)
 	if slot0:getEpisodeCo(slot1, slot2) and string.nilorempty(slot3.preEpisodeIds) then
 		return string.splitToNumber(slot3.preEpisodeIds, "#")
 	end
+end
+
+function slot0.getLeaderSkillDesc(slot0, slot1)
+	return slot0:getEpisodeCo(slot1) and slot2.skillDesc
+end
+
+function slot0.getEpisodeLeaderPosition(slot0, slot1)
+	return slot0:getEpisodeCo(slot1) and slot2.leaderPosition or 0
 end
 
 slot0.instance = slot0.New()

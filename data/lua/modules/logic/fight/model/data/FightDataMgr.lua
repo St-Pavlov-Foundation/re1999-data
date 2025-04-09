@@ -20,7 +20,9 @@ end
 
 function slot0.initTrueDataMgr(slot0)
 	slot0.calMgr = slot0:registMgr(FightCalculateDataMgr)
+	slot0.roundMgr = slot0:registMgr(FightRoundDataMgr)
 	slot0.cacheFightMgr = slot0:registMgr(FightCacheFightDataMgr)
+	slot0.protoCacheMgr = slot0:registMgr(FightProtoCacheDataMgr)
 	slot0.entityMgr = slot0:registMgr(FightEntityDataMgr)
 	slot0.entityExMgr = slot0:registMgr(FightEntityEXDataMgr)
 	slot0.handCardMgr = slot0:registMgr(FightHandCardDataMgr)
@@ -33,34 +35,28 @@ end
 
 function slot0.initTempDataMgr(slot0)
 	slot0.stageMgr = slot0:registMgr(FightStageMgr)
-	slot0.operationMgr = slot0:registMgr(FightOperationDataMgr)
+	slot0.operationDataMgr = slot0:registMgr(FightOperationDataMgr)
+	slot0.operationStateMgr = slot0:registMgr(FightOperationStateMgr)
 	slot0.simulationMgr = slot0:registMgr(FightSimulationDataMgr)
 	slot0.tempMgr = slot0:registMgr(FightTempDataMgr)
 	slot0.LYDataMgr = slot0:registMgr(FightLYDataMgr)
+	slot0.bloodPoolDataMgr = slot0:registMgr(FightBloodPoolDataMgr)
 end
 
 function slot0.cancelOperation(slot0)
 	for slot4, slot5 in ipairs(slot0.mgrList) do
-		if slot5.onCancelOperation then
-			slot5:onCancelOperation()
-		end
+		slot5:onCancelOperation()
 	end
 end
 
 function slot0.enterStage(slot0, slot1, slot2)
-	slot3 = slot0.stageMgr:getCurStage()
 	slot7 = slot2
 
 	slot0.stageMgr:enterStage(slot1, slot7)
 
 	for slot7, slot8 in ipairs(slot0.mgrList) do
-		if slot8.onEnterStage then
-			slot8:onEnterStage(slot1)
-		end
-
-		if slot8.onStageChanged then
-			slot8:onStageChanged(slot1, slot3)
-		end
+		slot8:onEnterStage(slot1)
+		slot8:onStageChanged(slot1, slot0.stageMgr:getCurStage())
 	end
 end
 
@@ -68,13 +64,8 @@ function slot0.exitStage(slot0, slot1)
 	slot0.stageMgr:exitStage(slot1)
 
 	for slot5, slot6 in ipairs(slot0.mgrList) do
-		if slot6.onExitStage then
-			slot6:onExitStage(slot1)
-		end
-
-		if slot6.onStageChanged then
-			slot6:onStageChanged(slot0.stageMgr:getCurStage(), slot1)
-		end
+		slot6:onExitStage(slot1)
+		slot6:onStageChanged(slot0.stageMgr:getCurStage(), slot1)
 	end
 end
 
@@ -86,19 +77,17 @@ function slot0.getEntityById(slot0, slot1)
 	return slot0.entityMgr:getById(slot1)
 end
 
-function slot0.beforePlayRoundProto(slot0, slot1)
-	FightDataModel.instance.cacheRoundProto = slot1
-
-	slot0.calMgr:beforePlayRoundProto(slot1)
+function slot0.beforePlayRoundData(slot0, slot1)
+	slot0.calMgr:beforePlayRoundData(slot1)
 end
 
-function slot0.afterPlayRoundProto(slot0, slot1)
-	slot0.calMgr:afterPlayRoundProto(slot1)
+function slot0.afterPlayRoundData(slot0, slot1)
+	slot0.calMgr:afterPlayRoundData(slot1)
 end
 
-function slot0.dealRoundProto(slot0, slot1)
-	slot0.calMgr:playStepProto(slot1.fightStep)
-	slot0.calMgr:playStepProto(slot1.nextRoundBeginStep)
+function slot0.dealRoundData(slot0, slot1)
+	slot0.calMgr:playStepDataList(slot1.fightStep)
+	slot0.calMgr:playStepDataList(slot1.nextRoundBeginStep)
 	slot0.calMgr:dealExPointInfo(slot1.exPointInfo)
 end
 

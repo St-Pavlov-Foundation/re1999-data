@@ -5,9 +5,9 @@ slot0 = class("FightWorkInjuryBankHeal", FightEffectBase)
 function slot0.onStart(slot0)
 	slot1 = 2 / FightModel.instance:getSpeed()
 
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) then
 		if slot2.nameUI then
-			slot3 = slot0._actEffectMO.effectNum
+			slot3 = slot0.actEffectData.effectNum
 
 			FightFloatMgr.instance:float(slot2.id, FightEnum.FloatType.heal, slot3)
 			slot2.nameUI:addHp(slot3)

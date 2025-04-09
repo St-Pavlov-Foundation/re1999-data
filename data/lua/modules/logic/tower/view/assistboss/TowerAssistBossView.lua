@@ -5,6 +5,8 @@ slot0 = class("TowerAssistBossView", BaseView)
 function slot0.onInitView(slot0)
 	slot0.txtTitle = gohelper.findChildTextMesh(slot0.viewGO, "bg/txtTitle")
 	slot0.content = gohelper.findChild(slot0.viewGO, "root/bosscontainer/Scroll/Viewport/Content")
+	slot0.gotips = gohelper.findChild(slot0.viewGO, "title/tips")
+	slot0.txttips = gohelper.findChildTextMesh(slot0.viewGO, "title/tips/txt_tips")
 	slot0.items = {}
 
 	if slot0._editableInitView then
@@ -14,10 +16,12 @@ end
 
 function slot0.addEvents(slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.TowerUpdate, slot0.onTowerUpdate, slot0)
+	slot0:addEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshView, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerUpdate, slot0.onTowerUpdate, slot0)
+	slot0:removeEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshView, slot0)
 end
 
 function slot0._editableInitView(slot0)
@@ -80,6 +84,10 @@ function slot0.refreshView(slot0)
 			slot9:onUpdateMO(slot10)
 		end
 	end
+
+	gohelper.setActive(slot0.gotips, TowerModel.instance:getCurTowerType() == TowerEnum.TowerType.Limited)
+
+	slot0.txttips.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("towerassistbossviewtips"), tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)))
 end
 
 function slot0.addHeroGroupEvent(slot0)

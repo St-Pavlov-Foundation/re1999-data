@@ -14,6 +14,7 @@ slot0.SimpleProperty = {
 	MainHero = 2,
 	Weather = 1,
 	MainSceneSkin = 13,
+	V2a7_BossRushCurrencyNum = 16,
 	FightTechnique = 4,
 	ShowHelpIds = 6
 }

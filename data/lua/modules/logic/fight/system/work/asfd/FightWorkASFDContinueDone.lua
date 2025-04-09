@@ -3,18 +3,17 @@ module("modules.logic.fight.system.work.asfd.FightWorkASFDContinueDone", package
 slot0 = class("FightWorkASFDContinueDone", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0.stepMo = slot1
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 3)
 
 	if FightHelper.getASFDMgr() then
-		slot1:onContinueASFDFlowDone(slot0.stepMo)
+		slot1:onContinueASFDFlowDone(slot0.fightStepData)
 	end
 
-	FightController.instance:dispatchEvent(FightEvent.ASFD_OnDone, slot0.stepMo and slot0.stepMo.cardIndex)
+	FightController.instance:dispatchEvent(FightEvent.ASFD_OnDone, slot0.fightStepData and slot0.fightStepData.cardIndex)
 
 	return slot0:onDone(true)
 end

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1001,
+    "name": "人格1（临时）",
+    "icon": 0,
+    "hp": 100,
+    "skill": 0,
+    "specialAttr1": ""
+  },
+  {
+    "id": 1002,
+    "name": "人格2（临时）",
+    "icon": 0,
+    "hp": 100,
+    "skill": 1006,
+    "specialAttr1": ""
+  },
+  {
+    "id": 1003,
+    "name": "人格3（临时）",
+    "icon": 0,
+    "hp": 100,
+    "skill": 1007,
+    "specialAttr1": ""
+  },
+  {
+    "id": 1004,
+    "name": "人格4（临时）",
+    "icon": 0,
+    "hp": 100,
+    "skill": 1005,
+    "specialAttr1": ""
+  },
+  {
+    "id": 1009,
+    "name": "人格9（临时）",
+    "icon": 0,
+    "hp": 100,
+    "skill": 0,
+    "specialAttr1": ""
+  }
+]

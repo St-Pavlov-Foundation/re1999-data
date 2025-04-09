@@ -6,6 +6,7 @@ function slot0.onInitView(slot0)
 	slot0._gonormal = gohelper.findChild(slot0.viewGO, "#go_normal")
 	slot0._golight = gohelper.findChild(slot0.viewGO, "#go_normal/progress/#go_light")
 	slot0._txttaskdes = gohelper.findChildText(slot0.viewGO, "#go_normal/#txt_taskdes")
+	slot0._goStar = gohelper.findChild(slot0.viewGO, "#go_normal/#txt_taskdes/#go_star")
 	slot0._goscrollRewards = gohelper.findChild(slot0.viewGO, "#go_normal/#scroll_rewards")
 	slot0._gorewardContent = gohelper.findChild(slot0.viewGO, "#go_normal/#scroll_rewards/Viewport/#go_rewardContent")
 	slot0._btnnormal = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_normal/#btn_normal")
@@ -120,7 +121,14 @@ function slot0.refreshNormal(slot0)
 	slot0.taskId = slot0.mo.id
 	slot0.config = slot0.mo.config
 	slot0.jumpId = slot0.config.jumpId
-	slot0._txttaskdes.text = slot0.config.desc
+
+	if string.find(slot0.config.desc, "%$") then
+		slot1 = string.gsub(slot1, "%$", "")
+	end
+
+	gohelper.setActive(slot0._goStar, slot2)
+
+	slot0._txttaskdes.text = slot1
 
 	slot0:refreshReward()
 	slot0:refreshState()

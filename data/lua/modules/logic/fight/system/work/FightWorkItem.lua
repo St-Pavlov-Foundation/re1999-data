@@ -59,8 +59,18 @@ function slot0.finishWork(slot0)
 	return slot0:onDone(true)
 end
 
+function slot0.playWorkAndDone(slot0, slot1)
+	if not slot1 then
+		return slot0:onDone(true)
+	end
+
+	slot1:registFinishCallback(slot0.finishWork, slot0)
+	slot0:cancelFightWorkSafeTimer()
+	slot1:start()
+end
+
 function slot0.com_registTimer(slot0, slot1, slot2, slot3)
-	if slot1 == slot0._delayDone or slot1 == slot0._delayAfterPerformance then
+	if slot1 == slot0._delayDone or slot1 == slot0._delayAfterPerformance or slot1 == slot0.finishWork then
 		slot0:releaseExclusiveTimer()
 
 		slot4 = uv0.super.com_registTimer(slot0, slot1, slot2, slot3)

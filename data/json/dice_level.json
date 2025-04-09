@@ -8,7 +8,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 1001
+    "dialog": 1001,
+    "isSkip": 0
   },
   {
     "id": 12,
@@ -19,7 +20,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 1,
-    "dialog": 1002
+    "dialog": 1002,
+    "isSkip": 0
   },
   {
     "id": 13,
@@ -30,7 +32,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 1003
+    "dialog": 1003,
+    "isSkip": 1
   },
   {
     "id": 14,
@@ -41,7 +44,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 1004
+    "dialog": 1004,
+    "isSkip": 1
   },
   {
     "id": 15,
@@ -52,7 +56,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 1005
+    "dialog": 1005,
+    "isSkip": 0
   },
   {
     "id": 16,
@@ -63,7 +68,8 @@
     "enemyType": 2,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 0
+    "dialog": 0,
+    "isSkip": 0
   },
   {
     "id": 21,
@@ -74,7 +80,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 1,
-    "dialog": 2001
+    "dialog": 2001,
+    "isSkip": 0
   },
   {
     "id": 22,
@@ -85,7 +92,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 2002
+    "dialog": 2002,
+    "isSkip": 1
   },
   {
     "id": 23,
@@ -96,7 +104,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 2003
+    "dialog": 2003,
+    "isSkip": 0
   },
   {
     "id": 24,
@@ -107,7 +116,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 2004
+    "dialog": 2004,
+    "isSkip": 1
   },
   {
     "id": 25,
@@ -118,7 +128,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 2005
+    "dialog": 2005,
+    "isSkip": 0
   },
   {
     "id": 26,
@@ -129,7 +140,8 @@
     "enemyType": 2,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 0
+    "dialog": 0,
+    "isSkip": 0
   },
   {
     "id": 31,
@@ -140,7 +152,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 1,
-    "dialog": 3001
+    "dialog": 3001,
+    "isSkip": 0
   },
   {
     "id": 32,
@@ -151,7 +164,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 3002
+    "dialog": 3002,
+    "isSkip": 1
   },
   {
     "id": 33,
@@ -162,7 +176,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 3003
+    "dialog": 3003,
+    "isSkip": 0
   },
   {
     "id": 34,
@@ -173,7 +188,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 3004
+    "dialog": 3004,
+    "isSkip": 1
   },
   {
     "id": 35,
@@ -184,7 +200,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 3005
+    "dialog": 3005,
+    "isSkip": 0
   },
   {
     "id": 36,
@@ -195,7 +212,8 @@
     "enemyType": 2,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 0
+    "dialog": 0,
+    "isSkip": 0
   },
   {
     "id": 41,
@@ -206,7 +224,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 1,
-    "dialog": 4001
+    "dialog": 4001,
+    "isSkip": 0
   },
   {
     "id": 42,
@@ -217,7 +236,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 4002
+    "dialog": 4002,
+    "isSkip": 1
   },
   {
     "id": 43,
@@ -228,7 +248,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 4003
+    "dialog": 4003,
+    "isSkip": 0
   },
   {
     "id": 44,
@@ -239,7 +260,8 @@
     "enemyType": 1,
     "mode": 1,
     "rewardSelectType": 2,
-    "dialog": 4004
+    "dialog": 4004,
+    "isSkip": 1
   },
   {
     "id": 45,
@@ -250,7 +272,8 @@
     "enemyType": 2,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 0
+    "dialog": 0,
+    "isSkip": 0
   },
   {
     "id": 46,
@@ -261,7 +284,8 @@
     "enemyType": 0,
     "mode": 1,
     "rewardSelectType": 0,
-    "dialog": 4005
+    "dialog": 4005,
+    "isSkip": 0
   },
   {
     "id": 51,
@@ -272,7 +296,8 @@
     "enemyType": 0,
     "mode": 2,
     "rewardSelectType": 2,
-    "dialog": 5001
+    "dialog": 5001,
+    "isSkip": 1
   },
   {
     "id": 52,
@@ -283,7 +308,8 @@
     "enemyType": 1,
     "mode": 2,
     "rewardSelectType": 2,
-    "dialog": 5001
+    "dialog": 5001,
+    "isSkip": 1
   },
   {
     "id": 53,
@@ -294,7 +320,8 @@
     "enemyType": 1,
     "mode": 2,
     "rewardSelectType": 2,
-    "dialog": 5001
+    "dialog": 5001,
+    "isSkip": 1
   },
   {
     "id": 54,
@@ -305,7 +332,8 @@
     "enemyType": 2,
     "mode": 2,
     "rewardSelectType": 2,
-    "dialog": 5001
+    "dialog": 5001,
+    "isSkip": 1
   },
   {
     "id": 55,
@@ -316,7 +344,8 @@
     "enemyType": 2,
     "mode": 2,
     "rewardSelectType": 2,
-    "dialog": 5001
+    "dialog": 5001,
+    "isSkip": 1
   },
   {
     "id": 56,
@@ -327,6 +356,7 @@
     "enemyType": 2,
     "mode": 2,
     "rewardSelectType": 0,
-    "dialog": 5002
+    "dialog": 5002,
+    "isSkip": 0
   }
 ]

@@ -15537,7 +15537,7 @@
   },
   {
     "id": "p_act174ruledetailview_txt_rule3",
-    "lang": "每隔两周，角斗场中的赛程将进行一次更迭，偶人、造物和变局规则将替换为新的内容"
+    "lang": "本次赛程中，偶人、造物和变局规则不会更迭，在此处可以查看当前赛程中所有的偶人及其附带的【芯灵感应】。"
   },
   {
     "id": "p_act174ruledetailview_txt_role",
@@ -16205,7 +16205,7 @@
   },
   {
     "id": "p_act174gameview_txt_shoptip",
-    "lang": "每完成3场角斗，赛后补给间都将迎来升级，刷新高稀有度物品的概率提升。"
+    "lang": "每个阶段赛后补给间都将迎来升级，刷新高稀有度物品的概率提升。"
   },
   {
     "id": "p_act174forcepickview_txt_title",
@@ -17849,7 +17849,7 @@
   },
   {
     "id": "playercard_weekwalkVer2PlatinumCup",
-    "lang": "累计S级认证："
+    "lang": "累计S级认证：▩1%s"
   },
   {
     "id": "p_versionactivity_2_6_enterview_dec",
@@ -18285,18 +18285,462 @@
   },
   {
     "id": "p_v2a6_warmup_txt_tips",
-    "lang": ""
+    "lang": "划动翻开实验记录本"
   },
   {
     "id": "p_v2a6_warmup_txt_WrongChannel",
-    "lang": ""
+    "lang": "小心辐射，小心污染，不要用手套触碰门把手，每日完成实验记录。"
   },
   {
     "id": "p_v2a6_warmup_txt_Reward",
-    "lang": ""
+    "lang": "完成后领取"
   },
   {
     "id": "p_v2a6_warmup_txt_goto",
-    "lang": ""
+    "lang": "探索星际"
+  },
+  {
+    "id": "p_packagestoregoodsitem_txt_discover",
+    "lang": "联动"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn1",
+    "lang": "恒星的赠礼"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn2",
+    "lang": "寰宇的收获"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn1",
+    "lang": "行星的赠礼"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn2",
+    "lang": "成像研究"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn3",
+    "lang": "恒星的赠礼"
+  },
+  {
+    "id": "p_towermainview_txt_bossHandbook2",
+    "lang": "<size=48>迷</size>思原型"
+  },
+  {
+    "id": "p_towerassistbosstview_txt_tips",
+    "lang": "翻覆之舟中，迷思原型将默认解锁并自动提升为10级"
+  },
+  {
+    "id": "p_towerbossepisodeview_txt_teach",
+    "lang": "第一道回声"
+  },
+  {
+    "id": "p_towerbossteachview_txt_check",
+    "lang": "通关全部第一道回声解锁<color=#EDAC5F>被动Ⅳ</color>"
+  },
+  {
+    "id": "p_towerbossteachview_txt_start",
+    "lang": "开始教学"
+  },
+  {
+    "id": "p_towerbosstipview_txt_unlock",
+    "lang": "通关全部第一道回声"
+  },
+  {
+    "id": "p_towerherogroupview_txt_Buff2",
+    "lang": "默认蓝图方案"
+  },
+  {
+    "id": "p_towerassistbossitem_txt_try",
+    "lang": "试用"
+  },
+  {
+    "id": "p_towerstoreview_txt_title1",
+    "lang": "红帆陈列馆"
+  },
+  {
+    "id": "p_towerstoreview_txt_title2",
+    "lang": "深潜纪念室"
+  },
+  {
+    "id": "p_towerstoreview_txt_task",
+    "lang": "迷思海拾遗"
+  },
+  {
+    "id": "p_towermainview_txt_store",
+    "lang": "回声港湾"
+  },
+  {
+    "id": "p_towermainview_txt_task",
+    "lang": "<size=44>迷</size>思海拾遗"
+  },
+  {
+    "id": "p_towermainview_txt_hero",
+    "lang": "狂想角色助战"
+  },
+  {
+    "id": "p_towerherotrialview_txt_title",
+    "lang": "狂想角色助战一览"
+  },
+  {
+    "id": "p_towerherotrialview_txt_ruletitle",
+    "lang": "狂想角色助战规则"
+  },
+  {
+    "id": "p_towertalentview_txt_talentPlanTip",
+    "lang": "预设方案不可更改，迷思原型等级提升时自动加点"
+  },
+  {
+    "id": "p_v2a5_challenge_txt_LeaderTips",
+    "lang": "带有<color=#d9b982>队长袖标</color>的角色释放1技能时，会额外获得1点激情"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn1",
+    "lang": "五月印象"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn2",
+    "lang": "辛勤特惠"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn3",
+    "lang": "辛勤酬宾"
+  },
+  {
+    "id": "p_turnbacknewtaskview_txt_replay2",
+    "lang": "重逢一刻·尾声"
+  },
+  {
+    "id": "p_turnbacknewtaskview_txt_newtips",
+    "lang": "<#cb7a53>双倍领取：</color>消耗300粹雨滴开启，开启后，已领取的阶段奖励的双倍部分将直接发放；未领取的奖励在收集足够新程票时将会以双倍的形式获取。"
+  },
+  {
+    "id": "p_playercardcontentview_txt_get",
+    "lang": "获取"
+  },
+  {
+    "id": "p_playercardmainview_txt_limitsale",
+    "lang": "限时售卖"
+  },
+  {
+    "id": "p_fight_act191collectionview_txt_collection",
+    "lang": "造物"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title1",
+    "lang": "寄往故乡"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title2",
+    "lang": "寄往明天"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title3",
+    "lang": "寄往太空"
+  },
+  {
+    "id": "p_v2a7_dungeonmapview_txt_shop",
+    "lang": "银色邮局"
+  },
+  {
+    "id": "p_v2a7_act191enterview_txt_dec",
+    "lang": "临时文本临时文本临时文本p_v2a7_act191enterview_txt_dec"
+  },
+  {
+    "id": "p_act191herogroupview_txt_level",
+    "lang": "敌人评级："
+  },
+  {
+    "id": "p_act191herogroupview_txt_autofight",
+    "lang": "角斗模式"
+  },
+  {
+    "id": "p_act191herogroupview_txt_subteam",
+    "lang": "候场选手"
+  },
+  {
+    "id": "p_act191shopherogroupview_txt_title",
+    "lang": "<size=40>阵</size>容编队"
+  },
+  {
+    "id": "p_act191enemyinfoview_txt_main",
+    "lang": "主"
+  },
+  {
+    "id": "p_act191enemyinfoview_txt_sub",
+    "lang": "备"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_tips",
+    "lang": "选择想要屏蔽的干扰"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_Joystick",
+    "lang": "摇杆模式"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_Gyroscope",
+    "lang": "陀螺仪模式"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_target",
+    "lang": "使小球到达目的地"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_light",
+    "lang": "极光"
+  },
+  {
+    "id": "p_act191fightsuccview_txt_fail",
+    "lang": "战斗失败"
+  },
+  {
+    "id": "p_act191herogroupview_txt_startautofight",
+    "lang": "自动角斗"
+  },
+  {
+    "id": "p_act174settlementview_txt_fight2",
+    "lang": "最终战斗"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt1",
+    "lang": "星间追猎秀"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename1",
+    "lang": "阿尔古斯"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt2",
+    "lang": "飞越行星带"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename2",
+    "lang": "芭卡洛儿"
+  },
+  {
+    "id": "p_v2a7_dungeonenterview_txt_unlock",
+    "lang": "探索模式开启"
+  },
+  {
+    "id": "p_v2a7_abandon_help_1_txt_1",
+    "lang": "使用<#FF906A>【弃置】</color>咒语时，需要额外选择1张手牌丢弃"
+  },
+  {
+    "id": "p_v2a7_abandon_help_2_txt_1",
+    "lang": "<#FF906A>【精准】</color>咒语将带有标识边框，咒语区中存在相应的特殊区域<#FF906A>【精准位置】</color>"
+  },
+  {
+    "id": "p_v2a7_abandon_help_4_txt_1",
+    "lang": "<#FF906A>【封锁】</color>咒语必须位于咒语区的最左侧或最右侧才能释放，否则将无法使用"
+  },
+  {
+    "id": "p_v2a7_abandon_help_5_txt_1",
+    "lang": "现在，可以打出位于咒语区最左侧的<#FF906A>【封锁】</color>咒语了"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips1",
+    "lang": "送角色自选！"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips2",
+    "lang": "即刻获取6星自选道具，完成任务有更多的角色选择"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips3",
+    "lang": "<#FFA044>六星</color>自选"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips4",
+    "lang": "领取可自选六星角色"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips5",
+    "lang": "立即使用"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips1",
+    "lang": "即刻获取6星自选道具，完成任务有更多的角色选择，更有价值66次征集的奖励"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips2",
+    "lang": "66次征集+六星角色自选！"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips3",
+    "lang": "<size=64><#FFA044>66</color></size>次征集"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title1",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>1ST-04</color></size>"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title2",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>1ST-16</color></size>"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title3",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>2ND-15</color></size>"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_pickchoiceview_txt_tips1",
+    "lang": "选择1名6星角色进入箱中"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_pickchoiceview_txt_tips2",
+    "lang": "本次可选6星"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_check",
+    "lang": "查看闪念效果"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward",
+    "lang": "活动任务奖励"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips1",
+    "lang": "狂想角色<#ffac5a>试用助战</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips2",
+    "lang": "迷思<#ffac5a>原型强化</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips3",
+    "lang": "翻覆之舟迷思原型<#ffac5a>自动满级</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips4",
+    "lang": "原型蓝图<#ffac5a>方案切换</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward1",
+    "lang": "养成材料"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward2",
+    "lang": "迷思之茧"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_dec",
+    "lang": "完成10个限时任务获取"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_goto",
+    "lang": "前往任务"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_canget",
+    "lang": "立刻领取"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_finished",
+    "lang": "已完成任务"
+  },
+  {
+    "id": "p_v2a7_tower_panelview_txt_goto",
+    "lang": "完成任务获得狂想直升道具"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_tips",
+    "lang": "确认选择后可再度变更"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_confirm",
+    "lang": "查看狂想"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_cancel",
+    "lang": "以后再说"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_title",
+    "lang": "选择1位角色狂想直升"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_oncefull",
+    "lang": "一键狂想"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_oncefulltips",
+    "lang": "消耗狂想券，将狂想并解锁所有词条"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_hasoncefull",
+    "lang": "已一键狂想"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_1",
+    "lang": "第一列第一句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_2",
+    "lang": "第一列第二句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_3",
+    "lang": "第一列第三句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_4",
+    "lang": "第一列第四句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_5",
+    "lang": "第二列第一句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_6",
+    "lang": "第二列第二句话"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_7",
+    "lang": "第二列第三句话"
+  },
+  {
+    "id": "p_act191_autofight_tip",
+    "lang": "开启自动站会获得额外奖励"
+  },
+  {
+    "id": "p_v2a7_warmup_txt_WrongChannel",
+    "lang": "临时文本p_v2a7_warmup_txt_WrongChannel"
+  },
+  {
+    "id": "p_v2a7_warmup_txt_tips",
+    "lang": "拿起传真机话筒"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec1",
+    "lang": "敌方"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec2",
+    "lang": "通关目标"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec3",
+    "lang": "我方"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec4",
+    "lang": "技能"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec5",
+    "lang": "选择主动技能"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec6",
+    "lang": "使用技能"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec7",
+    "lang": "可以开始更换技能"
   }
 ]

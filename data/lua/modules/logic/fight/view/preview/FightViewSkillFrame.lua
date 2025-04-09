@@ -125,8 +125,10 @@ function slot0._setFrameText(slot0)
 		return
 	end
 
-	if slot0._entity and slot0._entity.skill and slot0._entity.skill:getBinder() and slot0._entity.skill:getCurFrame() > 0 then
-		slot0._text.text = "技能预览\n" .. slot1
+	slot1 = slot0._entity.skill:getBinder()
+
+	if slot0._entity and slot0._entity.skill and slot1 and slot1.CurFrame > 0 then
+		slot0._text.text = "技能预览\n" .. slot2
 	end
 end
 

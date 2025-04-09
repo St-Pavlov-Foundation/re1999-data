@@ -12,11 +12,13 @@
     "coldTime": 0,
     "activeSkills": "370001001#100#0#100",
     "passiveSkills": "370001010#370001003",
+    "teachSkills": "12720011#12720012",
     "passiveSkillName": "木魅山鬼",
     "resInitVal": 50,
     "resMaxVal": 100,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_1.png",
-    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow1.png"
+    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow1.png",
+    "bossDesc": "木魅山鬼是木灵感迷思原型，适合搭配升阶、石化、本源创伤类角色出战"
   },
   {
     "bossId": 2,
@@ -31,11 +33,13 @@
     "coldTime": 2,
     "activeSkills": "4700101#0#0#6",
     "passiveSkills": "4700104#4700106",
+    "teachSkills": "12720021#12720022",
     "passiveSkillName": "星体灾兆",
     "resInitVal": 0,
     "resMaxVal": 6,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_2.png",
-    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow2.png"
+    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow2.png",
+    "bossDesc": "星体灾兆是星灵感迷思原型，适合搭配暴击、灵光、本源创伤、额外行动类角色出战"
   },
   {
     "bossId": 3,
@@ -50,11 +54,13 @@
     "coldTime": 3,
     "activeSkills": "12310011#25#25#49|12310012#50#50#99|12310013#100#100#999",
     "passiveSkills": "12310014#12310015",
+    "teachSkills": "12720031#12720032",
     "passiveSkillName": "戏剧的折射",
     "resInitVal": 0,
     "resMaxVal": 100,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_3.png",
-    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow3.png"
+    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow3.png",
+    "bossDesc": "戏剧的折射是兽灵感迷思原型，适合搭配燃烧、激情、额外行动类角色出战"
   },
   {
     "bossId": 4,
@@ -69,11 +75,13 @@
     "coldTime": 0,
     "activeSkills": "12410010#50#0#100",
     "passiveSkills": "12410021",
+    "teachSkills": "12720041#12720042",
     "passiveSkillName": "骨炭狼烟",
     "resInitVal": 0,
     "resMaxVal": 100,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_4.png",
-    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow4.png"
+    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow4.png",
+    "bossDesc": "骨炭狼烟是岩灵感迷思原型，适合搭配血、额外行动、增益类角色出战"
   },
   {
     "bossId": 5,
@@ -88,10 +96,12 @@
     "coldTime": 4,
     "activeSkills": "1251001#3#0#5",
     "passiveSkills": "1251002",
+    "teachSkills": "12720051#12720052",
     "passiveSkillName": "原始欢乐",
     "resInitVal": 0,
     "resMaxVal": 5,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_5.png",
-    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow5.png"
+    "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow5.png",
+    "bossDesc": "原始欢乐是灵灵感迷思原型，适合搭配仪式输出角色出战"
   }
 ]

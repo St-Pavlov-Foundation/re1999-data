@@ -96,7 +96,8 @@ slot1 = {
 	ActivityEnum.Activity.V2a5_Role_SignView_Part1,
 	ActivityEnum.Activity.V2a5_Role_SignView_Part2,
 	ActivityEnum.Activity.V2a5_DecorateStore,
-	ActivityEnum.Activity.V2a5_Act186Sign
+	ActivityEnum.Activity.V2a5_Act186Sign,
+	ActivityEnum.Activity.V2a7_Labor_Sign
 }
 slot2 = {
 	ActivityEnum.Activity.VersionActivity1_3Radio,
@@ -110,7 +111,8 @@ slot2 = {
 	ActivityEnum.Activity.V2a2_WarmUp,
 	ActivityEnum.Activity.V2a3_WarmUp,
 	ActivityEnum.Activity.V2a4_WarmUp,
-	ActivityEnum.Activity.V2a5_WarmUp
+	ActivityEnum.Activity.V2a5_WarmUp,
+	ActivityEnum.Activity.V2a7_WarmUp
 }
 
 function slot0.checkGetActivityInfo(slot0)
@@ -142,24 +144,8 @@ function slot0.checkGetActivityInfo(slot0)
 		Activity160Rpc.instance:sendGetAct160InfoRequest(ActivityEnum.Activity.NewWelfare)
 	end
 
-	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.NewInsight) then
-		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.NewInsight)
-	end
-
-	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a3_NewInsight) then
-		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a3_NewInsight)
-	end
-
-	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a4_NewInsight) then
-		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a4_NewInsight)
-	end
-
-	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a5_NewInsight) then
-		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a5_NewInsight)
-	end
-
-	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a6_NewInsight) then
-		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a6_NewInsight)
+	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a7_NewInsight) then
+		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a7_NewInsight)
 	end
 
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Tower) then
@@ -183,6 +169,8 @@ end
 
 function slot0.updateAct101Infos(slot0, slot1)
 	slot0:_initRoleSign_kAct101RedList()
+	slot0:_initSpecialSign_kAct101RedList()
+	slot0:_initLinkageActivity_kAct101RedList()
 
 	if not slot1 then
 		for slot5, slot6 in ipairs(uv0) do
@@ -222,6 +210,30 @@ end
 
 function slot0.onModuleViews(slot0, slot1, slot2)
 	ActivityType101Model.instance:onModuleViews(slot1, slot2)
+end
+
+slot4 = false
+
+function slot0._initSpecialSign_kAct101RedList(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+
+	table.insert(uv1, GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special))
+end
+
+slot5 = false
+
+function slot0._initLinkageActivity_kAct101RedList(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+
+	table.insert(uv1, GameBranchMgr.instance:Vxax_ActId("LinkageActivity", ActivityEnum.Activity.LinkageActivity_FullView))
 end
 
 slot0.instance = slot0.New()

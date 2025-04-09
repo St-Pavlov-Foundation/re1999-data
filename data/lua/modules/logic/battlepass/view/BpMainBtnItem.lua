@@ -9,6 +9,8 @@ end
 function slot0.onInit(slot0, slot1)
 	slot0._btnitem = gohelper.getClickWithAudio(slot0._imgGo, AudioEnum2_6.BP.MainBtn)
 
+	gohelper.setActive(slot0._goexpup, BpModel.instance:isShowExpUp())
+
 	if BpConfig.instance:getBpCO(BpModel.instance.id) and slot2.isSp then
 		gohelper.setActive(gohelper.findChild(slot0.go, "link"), true)
 	end

@@ -3,19 +3,19 @@ module("modules.logic.fight.system.work.FightWorkCardInvalid", package.seeall)
 slot0 = class("FightWorkCardInvalid", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if FightModel.instance:getVersion() >= 1 and slot0._actEffectMO.teamType ~= FightEnum.TeamType.MySide then
-		if FightModel.instance:getCurRoundMO() and slot2:getAILastUseCard()[slot0._actEffectMO.effectNum] then
+	if FightModel.instance:getVersion() >= 1 and slot0.actEffectData.teamType ~= FightEnum.TeamType.MySide then
+		if FightDataHelper.roundMgr:getPreRoundData() and slot2:getAIUseCardMOList()[slot0.actEffectData.effectNum] then
 			slot4.custom_done = true
 		end
 
-		FightController.instance:dispatchEvent(FightEvent.InvalidEnemyUsedCard, slot0._actEffectMO.effectNum)
+		FightController.instance:dispatchEvent(FightEvent.InvalidEnemyUsedCard, slot0.actEffectData.effectNum)
 		slot0:onDone(true)
 
 		return
 	end
 
-	FightPlayCardModel.instance:playCard(slot0._actEffectMO.effectNum)
-	FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, slot0._actEffectMO.effectNum, slot0._actEffectMO.configEffect)
+	FightPlayCardModel.instance:playCard(slot0.actEffectData.effectNum)
+	FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, slot0.actEffectData.effectNum, slot0.actEffectData.configEffect)
 	slot0:com_registTimer(slot0._delayDone, 1 / FightModel.instance:getUISpeed())
 end
 

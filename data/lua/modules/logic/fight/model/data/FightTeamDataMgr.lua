@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightTeamDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightTeamDataMgr")
+slot0 = FightDataClass("FightTeamDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 	slot0.myData = {}
@@ -28,7 +28,19 @@ function slot0.updateData(slot0, slot1)
 end
 
 function slot0.refreshTeamDataByProto(slot0, slot1, slot2)
-	slot2.cardHeat = FightDataHelper.coverData(FightDataCardHeatInfo.New(slot1.cardHeat), slot2.cardHeat)
+	slot2.cardHeat = FightDataUtil.coverData(slot1.cardHeat, slot2.cardHeat)
+
+	if slot1.bloodPool then
+		slot2.bloodPool = FightDataUtil.coverData(slot1.bloodPool, slot2.bloodPool)
+	end
+end
+
+function slot0.checkBloodPoolExist(slot0, slot1)
+	if slot0[slot1].bloodPool then
+		return
+	end
+
+	slot2.bloodPool = FightDataBloodPool.New()
 end
 
 return slot0

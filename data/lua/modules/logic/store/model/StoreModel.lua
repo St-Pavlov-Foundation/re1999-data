@@ -33,7 +33,7 @@ function slot0.getStoreInfosReply(slot0, slot1)
 
 			slot0._storeMODict[slot8.id] = slot8
 
-			if StoreConfig.instance:getTabConfig(slot8.id) and slot9.belongFirstTab == StoreEnum.StoreId.Package then
+			if StoreConfig.instance:isPackageStore(slot8.id) then
 				if slot0:getCurPackageStore() ~= 0 and slot10 == slot8.id then
 					slot0:updatePackageStoreList(slot8.id)
 				end
@@ -225,6 +225,16 @@ function slot0.isStoreSkinChargePackageValid(slot0, slot1)
 	slot2 = false
 
 	if slot0._skinChargeDict and slot0._skinChargeDict[StoreConfig.instance:getSkinChargeGoodsId(slot1)] then
+		slot2 = true
+	end
+
+	return slot2
+end
+
+function slot0.isStoreDecorateGoodsValid(slot0, slot1)
+	slot2 = false
+
+	if slot0:getGoodsMO(StoreConfig.instance:getDecorateGoodsIdById(slot1)) then
 		slot2 = true
 	end
 
@@ -520,12 +530,27 @@ function slot0.isStoreTabLock(slot0, slot1)
 	return false
 end
 
+slot0.ignoreStoreTab = {
+	StoreEnum.BossRushStore,
+	StoreEnum.TowerStore
+}
+
+function slot0.checkContainIgnoreStoreTab(slot0, slot1)
+	for slot5, slot6 in pairs(slot0.ignoreStoreTab) do
+		if LuaUtil.tableContains(slot6, slot1) then
+			return true
+		end
+	end
+
+	return false
+end
+
 function slot0.getFirstTabs(slot0, slot1, slot2)
 	slot3 = {}
 
 	for slot7, slot8 in ipairs(lua_store_entrance.configList) do
 		if not StoreConfig.instance:hasTab(slot8.belongFirstTab) and not StoreConfig.instance:hasTab(slot8.belongSecondTab) then
-			slot9 = LuaUtil.tableContains(StoreEnum.BossRushStore, slot8.id)
+			slot9 = slot0:checkContainIgnoreStoreTab(slot8.id)
 
 			if slot8.id == StoreEnum.StoreId.DecorateStore and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) == 0 and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.OldDecorateStore) == 0 then
 				slot9 = true

@@ -15,7 +15,7 @@ end
 
 function slot0._onRoundStart(slot0)
 	if FightModel.instance:getCurStage() == FightEnum.Stage.Card or slot1 == FightEnum.Stage.AutoCard then
-		for slot6, slot7 in ipairs(FightCardModel.instance:getHandCards()) do
+		for slot6, slot7 in ipairs(FightDataHelper.handCardMgr.handCard) do
 			if slot0._cardSkillId == slot7.skillId then
 				if slot1 == FightEnum.Stage.AutoCard then
 					FightController.instance:dispatchEvent(FightEvent.OnGuideStopAutoFight)
@@ -32,7 +32,7 @@ end
 function slot0._onDistributeCardDone(slot0)
 	slot1 = FightModel.instance:getCurStage()
 
-	for slot6, slot7 in ipairs(FightCardModel.instance:getHandCards()) do
+	for slot6, slot7 in ipairs(FightDataHelper.handCardMgr.handCard) do
 		if slot0._cardSkillId == slot7.skillId then
 			if FightModel.instance:isAuto() then
 				FightController.instance:dispatchEvent(FightEvent.OnGuideStopAutoFight)

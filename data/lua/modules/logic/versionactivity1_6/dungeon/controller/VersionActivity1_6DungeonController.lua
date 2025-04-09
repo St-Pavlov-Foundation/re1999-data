@@ -26,11 +26,11 @@ function slot0._respBeginFight(slot0)
 end
 
 function slot0._respBeginRound(slot0)
-	if not FightModel.instance:getCurRoundMO() then
+	if not FightDataHelper.roundMgr:getRoundData() then
 		return
 	end
 
-	if not slot1.fightStepMOs or not next(slot2) then
+	if not slot1.fightStep or not next(slot2) then
 		return
 	end
 
@@ -40,7 +40,7 @@ function slot0._respBeginRound(slot0)
 	slot6 = 0
 
 	for slot10 = #slot2, 1, -1 do
-		slot12 = slot2[slot10].actEffectMOs or {}
+		slot12 = slot2[slot10].actEffect or {}
 
 		for slot16 = #slot12, 1, -1 do
 			slot17 = slot12[slot16]

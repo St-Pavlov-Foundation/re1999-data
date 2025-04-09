@@ -31,9 +31,13 @@ return {
 
 		return false
 	end,
-	updateGame = function ()
+	updateGame = function (slot0)
 		if BootNativeUtil.isAndroid() then
-			SLFramework.NativeUtil.BoolCallNative(uv0.nativeClsName, "updateGame", "")
+			if VersionUtil.isVersionLargeEqual("2.7.0") then
+				SLFramework.NativeUtil.VoidCallNative(uv0.nativeClsName, "updateGame", slot0)
+			else
+				SLFramework.NativeUtil.BoolCallNative(uv0.nativeClsName, "updateGame", "")
+			end
 		end
 	end,
 	openCostumerService = function ()

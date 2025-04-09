@@ -45,44 +45,44 @@ function slot0._btnuseOnClick(slot0)
 
 	slot6 = {}
 
-	if not string.nilorempty(slot4.trialHeros) then
-		slot6 = GameUtil.splitString2(slot4.trialHeros, true)
+	if not string.nilorempty(HeroGroupHandler.getTrialHeros(HeroGroupModel.instance.episodeId)) then
+		slot6 = GameUtil.splitString2(slot7, true)
 	end
 
-	slot7 = {
-		[lua_hero_trial.configDict[slot12[1]][slot12[2]].heroId] = true
+	slot8 = {
+		[lua_hero_trial.configDict[slot13[1]][slot13[2]].heroId] = true
 	}
 
-	for slot11, slot12 in pairs(slot6) do
-		if slot12[3] then
+	for slot12, slot13 in pairs(slot6) do
+		if slot13[3] then
 			-- Nothing
 		end
 	end
 
-	for slot11 = 1, #slot1 do
-		if slot1[slot11].heroId and slot12 > 0 then
-			slot13 = HeroModel.instance:getByHeroId(slot12)
+	for slot12 = 1, #slot1 do
+		if slot1[slot12].heroId and slot13 > 0 then
+			slot14 = HeroModel.instance:getByHeroId(slot13)
 
 			if HeroGroupModel.instance:isAdventureOrWeekWalk() then
-				if WeekWalkModel.instance:getCurMapHeroCd(slot12) > 0 then
+				if WeekWalkModel.instance:getCurMapHeroCd(slot13) > 0 then
 					GameFacade.showToast(ToastEnum.HeroGroupEdit)
 
-					slot13 = nil
+					slot14 = nil
 				end
-			elseif slot13 and HeroGroupModel.instance:isRestrict(slot13.uid) then
-				if not string.nilorempty(HeroGroupModel.instance:getCurrentBattleConfig() and slot14.restrictReason) then
-					ToastController.instance:showToastWithString(slot15)
+			elseif slot14 and HeroGroupModel.instance:isRestrict(slot14.uid) then
+				if not string.nilorempty(HeroGroupModel.instance:getCurrentBattleConfig() and slot15.restrictReason) then
+					ToastController.instance:showToastWithString(slot16)
 				end
 
-				slot13 = nil
+				slot14 = nil
 			end
 
-			if slot7[slot12] then
-				slot13 = nil
+			if slot8[slot13] then
+				slot14 = nil
 			end
 
-			if slot13 then
-				table.insert(slot2, slot13.uid)
+			if slot14 then
+				table.insert(slot2, slot14.uid)
 			else
 				table.insert(slot2, "0")
 			end
@@ -91,36 +91,36 @@ function slot0._btnuseOnClick(slot0)
 		end
 	end
 
-	slot8 = HeroGroupModel.instance:getCurGroupMO()
-	slot9 = 0
+	slot9 = HeroGroupModel.instance:getCurGroupMO()
+	slot10 = 0
 
 	if slot0._mo.cloth and slot0._mo.cloth ~= 0 and PlayerClothModel.instance:canUse(slot0._mo.cloth) then
-		slot9 = slot0._mo.cloth
+		slot10 = slot0._mo.cloth
 	elseif OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.LeadRoleSkill) then
-		for slot14, slot15 in ipairs(PlayerClothModel.instance:getList()) do
-			if PlayerClothModel.instance:hasCloth(slot15.id) then
-				slot9 = slot15.id
+		for slot15, slot16 in ipairs(PlayerClothModel.instance:getList()) do
+			if PlayerClothModel.instance:hasCloth(slot16.id) then
+				slot10 = slot16.id
 
 				break
 			end
 		end
 	end
 
-	slot10 = {
-		groupId = slot8.id,
-		name = slot8.name,
-		clothId = slot9,
+	slot11 = {
+		groupId = slot9.id,
+		name = slot9.name,
+		clothId = slot10,
 		heroList = slot2
 	}
 
 	if TowerModel.instance:isInTowerBattle() then
-		slot0:onTowerUse(slot10, slot8, slot5, slot4.roleNum, slot4.playerMax, true, slot6)
+		slot0:onTowerUse(slot11, slot9, slot5, slot4.roleNum, slot4.playerMax, true, slot6)
 
 		return
 	end
 
-	slot8:initWithBattle(slot10, slot5, slot4.roleNum, slot4.playerMax, true, slot6)
-	HeroSingleGroupModel.instance:setSingleGroup(slot8, true)
+	slot9:initWithBattle(slot11, slot5, slot4.roleNum, slot4.playerMax, true, slot6)
+	HeroSingleGroupModel.instance:setSingleGroup(slot9, true)
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 	HeroGroupModel.instance:saveCurGroupData()
 	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)

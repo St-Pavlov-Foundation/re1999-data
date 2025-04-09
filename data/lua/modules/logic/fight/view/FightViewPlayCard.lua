@@ -177,14 +177,14 @@ function slot0._onAddPlayOperationData(slot0, slot1)
 end
 
 function slot0.getMaxItemCount()
-	slot2 = FightCardModel.instance:getCardMO().actPoint
+	slot2 = FightDataHelper.operationDataMgr.actPoint
 	slot3 = 0
 
-	if FightCardModel.instance:getCardMO().extraMoveAct > 0 then
+	if FightDataHelper.operationDataMgr.extraMoveAct > 0 then
 		slot2 = slot1 + slot0
 	end
 
-	for slot8, slot9 in ipairs(FightCardModel.instance:getShowOpActList()) do
+	for slot8, slot9 in ipairs(FightDataHelper.operationDataMgr:getShowOpActList()) do
 		if slot9:isPlayCard() and slot9.costActPoint == 0 then
 			slot2 = slot2 + 1
 			slot3 = slot3 + 1
@@ -204,26 +204,27 @@ function slot0.getMaxItemCount()
 			slot2 = slot2 + 1
 			slot3 = slot3 + 1
 		end
+
+		if slot9:isBloodPoolSkill() then
+			slot2 = slot2 + 1
+			slot3 = slot3 + 1
+		end
 	end
 
 	return slot2, slot3
 end
 
 function slot0._refreshAllItemData(slot0)
-	if not FightCardModel.instance:getCardMO() then
-		return
-	end
-
 	slot0:_clearAllItemData()
 
-	slot2 = slot0:_onCorrectPlayCardObjList()
+	slot1 = slot0:_onCorrectPlayCardObjList()
 
-	for slot7, slot8 in ipairs(FightCardModel.instance:getShowOpActList()) do
-		slot0:recordPlayData(slot8)
-		slot0:_refreshPlayOperationData(slot8)
+	for slot6, slot7 in ipairs(FightDataHelper.operationDataMgr:getShowOpActList()) do
+		slot0:recordPlayData(slot7)
+		slot0:_refreshPlayOperationData(slot7)
 	end
 
-	slot0:_onCorrectPlayCardVisible(slot2)
+	slot0:_onCorrectPlayCardVisible(slot1)
 	slot0:_refreshSeasonArrowShow()
 end
 
@@ -240,14 +241,14 @@ function slot0.recordPlayData(slot0, slot1)
 		return
 	end
 
-	if not FightCardModel.instance:canShowOpAct(slot1) then
+	if not FightDataHelper.operationDataMgr:canShowOpAct(slot1) then
 		return
 	end
 
-	if slot1:isPlayCard() or slot1:isAssistBossPlayCard() or slot1:isPlayerFinisherSkill() then
+	if FightCardDataHelper.checkOpAsPlayCardHandle(slot1) then
 		table.insert(slot0._begin_round_ops, slot1)
 	elseif slot1:isMoveCard() then
-		if FightCardModel.instance:getCardMO().extraMoveAct > 0 and slot2 > #slot0._extra_move_round_ops then
+		if FightDataHelper.operationDataMgr.extraMoveAct > 0 and slot2 > #slot0._extra_move_round_ops then
 			table.insert(slot0._extra_move_round_ops, slot1)
 		else
 			table.insert(slot0._begin_round_ops, slot1)
@@ -291,7 +292,7 @@ function slot0._refreshSeasonArrowShow(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -330,7 +331,7 @@ function slot0.getShowIndex(slot0, slot1)
 	end
 
 	if not slot2 and tabletool.indexOf(slot0._extra_move_round_ops, slot1) then
-		slot2 = uv0.getMaxItemCount() - FightCardModel.instance:getCardMO().extraMoveAct + slot3
+		slot2 = uv0.getMaxItemCount() - FightDataHelper.operationDataMgr.extraMoveAct + slot3
 	end
 
 	return slot2
@@ -369,7 +370,7 @@ end
 function slot0._refreshItemAni(slot0, slot1, slot2)
 	slot4, slot5 = uv0.getMaxItemCount()
 
-	if slot1 > slot4 - FightCardModel.instance:getCardMO().extraMoveAct then
+	if slot1 > slot4 - FightDataHelper.operationDataMgr.extraMoveAct then
 		if slot2 then
 			slot0._playCardItemList[slot1]:showExtMoveEndEffect()
 		else

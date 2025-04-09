@@ -18,7 +18,7 @@ function slot0.onStart(slot0)
 	slot0._flow = FlowParallel.New()
 	slot0._cacheEntityIds = {}
 
-	if FightDataHelper.entityMgr:getById(slot0._actEffectMO.targetId) and FightHelper.getEntity(slot1) then
+	if FightDataHelper.entityMgr:getById(slot0.actEffectData.targetId) and FightHelper.getEntity(slot1) then
 		slot4 = slot2
 
 		if slot3.mover then
@@ -60,7 +60,7 @@ function slot0.onStart(slot0)
 		end
 	end
 
-	if #string.split(slot0._actEffectMO.reserveStr, "|") > 0 then
+	if #string.split(slot0.actEffectData.reserveStr, "|") > 0 then
 		for slot7, slot8 in ipairs(slot3) do
 			if FightDataHelper.entityMgr:getById(string.split(slot8, "#")[1]) and FightHelper.getEntity(slot10) then
 				slot13 = FlowSequence.New()

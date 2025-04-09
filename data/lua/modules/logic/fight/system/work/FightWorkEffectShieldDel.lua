@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkEffectShieldDel", package.seeal
 slot0 = class("FightWorkEffectShieldDel", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) and slot1.nameUI then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) and slot1.nameUI then
 		slot1.nameUI:setShield(0)
 		FightController.instance:dispatchEvent(FightEvent.OnShieldChange, slot1, 0)
 	end

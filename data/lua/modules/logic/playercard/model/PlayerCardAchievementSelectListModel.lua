@@ -194,7 +194,7 @@ function slot0.buildGroupMOList(slot0, slot1)
 	slot5 = 0
 
 	for slot9, slot10 in ipairs(slot4) do
-		if slot10.groupId ~= 0 then
+		if AchievementUtils.isActivityGroup(slot10.id) then
 			if slot5 ~= slot10.groupId then
 				if slot5 == 0 then
 					slot5 = slot10.groupId

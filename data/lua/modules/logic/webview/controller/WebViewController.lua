@@ -12,7 +12,7 @@ function slot3.openWebView(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot
 			slot1 = slot0:getRecordUserUrl(slot1)
 		end
 
-		UnityEngine.Application.OpenURL(slot1)
+		GameUtil.openURL(slot1)
 
 		return
 	end

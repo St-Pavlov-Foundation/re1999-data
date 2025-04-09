@@ -2,7 +2,9 @@
   {
     "hud": 1,
     "name": "主界面",
-    "blockkey": []
+    "blockkey": [
+      "Escape"
+    ]
   },
   {
     "hud": 2,
@@ -16,7 +18,8 @@
       "Alpha6",
       "Alpha7",
       "Alpha8",
-      "Alpha9"
+      "Alpha9",
+      "Escape"
     ]
   },
   {
@@ -31,12 +34,15 @@
       "Alpha6",
       "Alpha7",
       "Alpha8",
-      "Alpha9"
+      "Alpha9",
+      "Escape"
     ]
   },
   {
     "hud": 4,
     "name": "不休荒原",
-    "blockkey": []
+    "blockkey": [
+      "Escape"
+    ]
   }
 ]

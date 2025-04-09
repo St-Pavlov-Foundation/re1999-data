@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventAtkFullEffect", package.seeall)
 
-slot0 = class("FightTLEventAtkFullEffect")
+slot0 = class("FightTLEventAtkFullEffect", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if not FightHelper.detectTimelinePlayEffectCondition(slot1, slot3[4]) then
 		return
 	end
@@ -111,15 +111,11 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_removeEffect()
 end
 
-function slot0.reset(slot0)
-	slot0:_removeEffect()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_removeEffect()
 end
 

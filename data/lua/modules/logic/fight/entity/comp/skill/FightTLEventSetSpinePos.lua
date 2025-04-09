@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventSetSpinePos", package.seeall)
 
-slot0 = class("FightTLEventSetSpinePos")
+slot0 = class("FightTLEventSetSpinePos", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot5 = nil
 
 	if slot3[1] == "1" then
@@ -47,13 +47,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
-end
-
-function slot0.reset(slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
 return slot0

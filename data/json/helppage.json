@@ -4028,5 +4028,15 @@
     "iconText": "rouge_help_26",
     "unlockGuideId": 0,
     "isCn": 0
+  },
+  {
+    "id": 2500200,
+    "title": "",
+    "type": 2,
+    "text": "冷周六活动指引",
+    "icon": "v2a7_hissabeth_help_1",
+    "iconText": "v2a7_hissabeth_help_1",
+    "unlockGuideId": 27201,
+    "isCn": 0
   }
 ]

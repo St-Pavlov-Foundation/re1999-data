@@ -3,16 +3,16 @@ module("modules.logic.fight.system.work.FightWorkTriggerStress", package.seeall)
 slot0 = class("FightWorkTriggerStress", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightDataHelper.entityMgr:getById(slot0._actEffectMO.targetId) then
+	if not FightDataHelper.entityMgr:getById(slot0.actEffectData.targetId) then
 		return slot0:onDone(true)
 	end
 
-	if not (FightEnum.StressBehaviourConstId[slot0._actEffectMO.effectNum] and lua_stress_const.configDict[slot4]) then
+	if not (FightEnum.StressBehaviourConstId[slot0.actEffectData.effectNum] and lua_stress_const.configDict[slot4]) then
 		return slot0:onDone(true)
 	end
 
-	if slot0:checkNeedWaitTimeLineHandle(slot0._actEffectMO) then
-		FightModel.instance:recordDelayHandleStressBehaviour(slot0._actEffectMO)
+	if slot0:checkNeedWaitTimeLineHandle(slot0.actEffectData) then
+		FightModel.instance:recordDelayHandleStressBehaviour(slot0.actEffectData)
 	else
 		FightFloatMgr.instance:float(slot1, FightEnum.FloatType.stress, slot5.value2, tonumber(slot5.value))
 		FightController.instance:dispatchEvent(FightEvent.TriggerStressBehaviour, slot1, slot3)

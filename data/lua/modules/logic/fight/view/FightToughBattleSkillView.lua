@@ -18,10 +18,12 @@ end
 
 function slot0._onRoundSequenceStart(slot0)
 	gohelper.setActive(slot0.viewGO, false)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, FightRightElementEnum.Elements.CharSupport)
 end
 
 function slot0._onRoundSequenceFinish(slot0)
 	gohelper.setActive(slot0.viewGO, true)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.CharSupport, slot0.height)
 end
 
 function slot0.onOpen(slot0)
@@ -40,6 +42,8 @@ end
 
 function slot0.refreshView(slot0)
 	if not slot0:getInfo() then
+		FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, FightRightElementEnum.Elements.CharSupport)
+
 		return
 	end
 
@@ -67,7 +71,10 @@ function slot0.refreshView(slot0)
 		end
 	end
 
+	slot0.height = #slot3 * FightRightElementEnum.ElementsSizeDict[FightRightElementEnum.Elements.CharSupport].y
+
 	gohelper.CreateObjList(slot0, slot0.createItem, slot3, slot0._item.transform.parent.gameObject, slot0._item, FightToughBattleSkillItem)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.CharSupport, slot0.height)
 end
 
 function slot0.addHeroId(slot0, slot1, slot2, slot3)

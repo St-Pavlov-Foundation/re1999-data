@@ -216,9 +216,8 @@ function slot0.setParam(slot0, slot1, slot2, slot3, slot4)
 
 		slot13 = slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id) or slot0._commonGroups[1]
 
-		slot13:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_name"), {
-			slot8.name,
-			luaLang("hero_group")
+		slot13:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_groupName"), {
+			slot8.name
 		}))
 		table.insert(slot0._heroGroupList, slot13)
 	elseif slot11 then
@@ -300,9 +299,8 @@ function slot0.generateTempGroup(slot0, slot1, slot2, slot3)
 		slot4:initWithBattle(slot1 or Season166HeroGroupMO.New(), slot6, slot2 or slot5.roleNum, slot5.playerMax, nil, slot7)
 
 		if slot0.adventure and slot0.episodeId and lua_episode.configDict[slot0.episodeId] then
-			slot4:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_name"), {
-				slot9.name,
-				luaLang("hero_group")
+			slot4:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_groupName"), {
+				slot9.name
 			}))
 		end
 	else

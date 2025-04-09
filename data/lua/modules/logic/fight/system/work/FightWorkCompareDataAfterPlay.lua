@@ -21,8 +21,8 @@ function slot0._registRefreshPerformance(slot0)
 end
 
 function slot0.refreshPerformanceData(slot0)
-	FightDataHelper.coverData(FightLocalDataMgr.instance.fieldMgr.param, FightDataMgr.instance.fieldMgr.param)
-	FightDataHelper.coverData(FightLocalDataMgr.instance.fieldMgr.fightTaskBox, FightDataMgr.instance.fieldMgr.fightTaskBox)
+	FightDataUtil.coverData(FightLocalDataMgr.instance.fieldMgr.param, FightDataMgr.instance.fieldMgr.param)
+	FightDataUtil.coverData(FightLocalDataMgr.instance.fieldMgr.fightTaskBox, FightDataMgr.instance.fieldMgr.fightTaskBox)
 end
 
 function slot0._onFlowFinish(slot0)

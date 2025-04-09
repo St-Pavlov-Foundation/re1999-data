@@ -1,0 +1,292 @@
+[
+  {
+    "id": 101,
+    "desc": "消除该强化珠子，伤害+10",
+    "type": "passive",
+    "icon": "",
+    "cd": 0,
+    "triggerPoint": 101,
+    "condition": "",
+    "effect": "DamageUpByIntensified#beast#10"
+  },
+  {
+    "id": 102,
+    "desc": "消除该强化珠子，治疗量+10",
+    "type": "passive",
+    "icon": "",
+    "cd": 0,
+    "triggerPoint": 101,
+    "condition": "",
+    "effect": "HealUpByIntensified#tree#10"
+  },
+  {
+    "id": 103,
+    "desc": "消除后CD最长的技能CD-1",
+    "type": "passive",
+    "icon": "",
+    "cd": 0,
+    "triggerPoint": 108,
+    "condition": "",
+    "effect": "EliminationDecreaseCd#star#1"
+  },
+  {
+    "id": 104,
+    "desc": "消除该强化珠子，+1层攻击BUFF",
+    "type": "passive",
+    "icon": "",
+    "cd": 0,
+    "triggerPoint": 108,
+    "condition": "",
+    "effect": "AddBuffByIntensified#cliff#1003#1#1"
+  },
+  {
+    "id": 1001,
+    "desc": "提高兽珠子出现权重，四连/五连消除伤害+100%，十字消除伤害+300%",
+    "type": "passive",
+    "icon": "singlebg/fight/skill/760011.png",
+    "cd": 0,
+    "triggerPoint": 101,
+    "condition": "",
+    "effect": "DamageUpByType#Four,Cross,Five#1000,3000,1000"
+  },
+  {
+    "id": 1002,
+    "desc": "提高星珠子出现权重，每连续消除1次，伤害+50%，无限叠加",
+    "type": "passive",
+    "icon": "singlebg/fight/skill/760092.png",
+    "cd": 0,
+    "triggerPoint": 101,
+    "condition": "",
+    "effect": "SuccessiveElimination#500"
+  },
+  {
+    "id": 1003,
+    "desc": "提高岩珠子出现权重，消除一轮完时随机1个岩珠变为强化珠",
+    "type": "passive",
+    "icon": "singlebg/fight/skill/760001.png",
+    "cd": 0,
+    "triggerPoint": 208,
+    "condition": "",
+    "effect": "EliminationLevelUp#cliff#1"
+  },
+  {
+    "id": 1004,
+    "desc": "提高木珠子出现权重，消除木强化珠子，敌方+3中毒",
+    "type": "passive",
+    "icon": "singlebg/fight/skill/760041.png",
+    "cd": 0,
+    "triggerPoint": 109,
+    "condition": "",
+    "effect": "AddBuffByIntensified#tree#1001#3#2"
+  },
+  {
+    "id": 1005,
+    "desc": "立刻消除选中目标同排同列的所有消除块，可以烧毁范围内的冰块",
+    "type": "active",
+    "icon": "singlebg/fight/skill/760061.png",
+    "cd": 5,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "EliminationCross"
+  },
+  {
+    "id": 1006,
+    "desc": "下一次消除攻击会触发2次",
+    "type": "active",
+    "icon": "singlebg/fight/skill/760071.png",
+    "cd": 3,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "EliminationDoubleAttack"
+  },
+  {
+    "id": 1007,
+    "desc": "消除选中目标3*3范围内的所有消除块，可以击碎范围内的岩石",
+    "type": "active",
+    "icon": "singlebg/fight/skill/1704.png",
+    "cd": 4,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "EliminationRange"
+  },
+  {
+    "id": 1008,
+    "desc": "石化敌人",
+    "type": "active",
+    "icon": "singlebg/fight/skill/1703.png",
+    "cd": 4,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "AddBuff#1002#5"
+  },
+  {
+    "id": 2011,
+    "desc": "对玩家造成10点伤害",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1201.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "DealsDamage#10"
+  },
+  {
+    "id": 2012,
+    "desc": "对玩家造成15点伤害",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1201.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "DealsDamage#15"
+  },
+  {
+    "id": 2013,
+    "desc": "对玩家造成30点伤害",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1201.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "DealsDamage#30"
+  },
+  {
+    "id": 2014,
+    "desc": "对玩家造成50点伤害",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1201.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "DealsDamage#50"
+  },
+  {
+    "id": 2021,
+    "desc": "回复10点生命",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/2308.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Heal#10"
+  },
+  {
+    "id": 2022,
+    "desc": "回复20点生命",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/2308.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Heal#20"
+  },
+  {
+    "id": 2023,
+    "desc": "回复40点生命",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/2308.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Heal#40"
+  },
+  {
+    "id": 2041,
+    "desc": "洗牌棋盘",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/103005.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Shuffle"
+  },
+  {
+    "id": 2051,
+    "desc": "污染玩家的棋盘位置3个",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Contaminate#3"
+  },
+  {
+    "id": 2052,
+    "desc": "污染玩家的棋盘位置6个",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Contaminate#6"
+  },
+  {
+    "id": 2053,
+    "desc": "污染玩家的棋盘位置12个",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "Contaminate#12"
+  },
+  {
+    "id": 2061,
+    "desc": "使玩家棋盘随机2个消除块冰冻",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "FreezeEliminationBlock#2"
+  },
+  {
+    "id": 2062,
+    "desc": "使玩家棋盘随机4个消除块冰冻",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "FreezeEliminationBlock#4"
+  },
+  {
+    "id": 2063,
+    "desc": "使玩家棋盘随机6个消除块冰冻",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "FreezeEliminationBlock#6"
+  },
+  {
+    "id": 2071,
+    "desc": "使玩家棋盘随机2个消除块石化",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "PetrifyEliminationBlock#2"
+  },
+  {
+    "id": 2072,
+    "desc": "使玩家棋盘随机4个消除块石化",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "PetrifyEliminationBlock#4"
+  },
+  {
+    "id": 2073,
+    "desc": "使玩家棋盘随机6个消除块石化",
+    "type": "enemyActive",
+    "icon": "singlebg/fight/skill/1304.png",
+    "cd": 0,
+    "triggerPoint": 0,
+    "condition": "",
+    "effect": "PetrifyEliminationBlock#6"
+  }
+]

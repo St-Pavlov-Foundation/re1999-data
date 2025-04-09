@@ -1,13 +1,13 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventTargetEffect", package.seeall)
 
-slot0 = class("FightTLEventTargetEffect")
+slot0 = class("FightTLEventTargetEffect", FightTimelineTrackItem)
 slot1 = {
 	[FightEnum.EffectType.EXPOINTCHANGE] = true,
 	[FightEnum.EffectType.FIGHTSTEP] = true
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
-	slot0._fightStepMO = slot1
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+	slot0.fightStepData = slot1
 	slot0._delayReleaseEffect = not string.nilorempty(slot3[8]) and tonumber(slot3[8])
 
 	if slot0._delayReleaseEffect then
@@ -54,9 +54,9 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 			-- Nothing
 		end
 
-		for slot17, slot18 in ipairs(slot1.actEffectMOs) do
+		for slot17, slot18 in ipairs(slot1.actEffect) do
 			if slot13[slot18.effectType] and FightHelper.getEntity(slot18.targetId) then
-				slot20 = FightHelper.getEntity(slot0._fightStepMO.fromId)
+				slot20 = FightHelper.getEntity(slot0.fightStepData.fromId)
 				slot21 = false
 
 				if slot3[6] == "2" then
@@ -73,7 +73,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 			end
 		end
 	else
-		for slot15, slot16 in ipairs(slot1.actEffectMOs) do
+		for slot15, slot16 in ipairs(slot1.actEffect) do
 			slot17 = false
 
 			if slot16.effectType == FightEnum.EffectType.SHIELD and not FightHelper.checkShieldHit(slot18) then
@@ -81,7 +81,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 			end
 
 			if not slot17 and not uv0[slot16.effectType] and FightHelper.getEntity(slot16.targetId) then
-				slot20 = FightHelper.getEntity(slot0._fightStepMO.fromId)
+				slot20 = FightHelper.getEntity(slot0.fightStepData.fromId)
 				slot21 = false
 
 				if slot3[6] == "2" then
@@ -120,7 +120,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_removeEffect()
 end
 
@@ -128,7 +128,7 @@ function slot0._createEffect(slot0, slot1, slot2, slot3, slot4, slot5, slot6, sl
 	slot9 = nil
 
 	if not string.nilorempty(slot3) then
-		slot1.effect:addHangEffect(slot2, slot3, FightHelper.getEntity(slot0._fightStepMO.fromId):getSide(), slot0._delayReleaseEffect):setLocalPos(slot5, slot6, slot7)
+		slot1.effect:addHangEffect(slot2, slot3, FightHelper.getEntity(slot0.fightStepData.fromId):getSide(), slot0._delayReleaseEffect):setLocalPos(slot5, slot6, slot7)
 	else
 		slot9 = slot1.effect:addGlobalEffect(slot2, slot8:getSide(), slot0._delayReleaseEffect)
 		slot10, slot11, slot12 = nil
@@ -164,11 +164,7 @@ function slot0._setRenderOrder(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_removeEffect()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_removeEffect()
 end
 

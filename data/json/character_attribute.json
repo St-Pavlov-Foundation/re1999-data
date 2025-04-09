@@ -609,5 +609,57 @@
     "showcolor": 0,
     "icon": "",
     "sortId": 0
+  },
+  {
+    "id": 605,
+    "attrType": "hp_percent",
+    "type": 4,
+    "name": "生命",
+    "desc": "角色的生存状态，降为0时退出战斗。",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
+  },
+  {
+    "id": 606,
+    "attrType": "attack_percent",
+    "type": 4,
+    "name": "攻击",
+    "desc": "提升攻击造成创伤的基础值。",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
+  },
+  {
+    "id": 607,
+    "attrType": "defense_percent",
+    "type": 4,
+    "name": "现实防御",
+    "desc": "降低受到现实创伤的基础值。",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
+  },
+  {
+    "id": 608,
+    "attrType": "mdefense_percent",
+    "type": 4,
+    "name": "精神防御",
+    "desc": "降低受到精神创伤的基础值。",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
   }
 ]

@@ -1,19 +1,19 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventAtkEffect", package.seeall)
 
-slot0 = class("FightTLEventAtkEffect")
+slot0 = class("FightTLEventAtkEffect", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if not FightHelper.detectTimelinePlayEffectCondition(slot1, slot3[10]) then
 		return
 	end
 
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 
-	if slot0._attacker.skill and slot0._attacker.skill:atkEffectNeedFilter(slot3[1]) then
+	if slot0._attacker.skill and slot0._attacker.skill:atkEffectNeedFilter(slot3[1], slot1) then
 		return
 	end
 
-	slot0.fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0.duration = slot2
 	slot0.paramsArr = slot3
 	slot0.release_time = not string.nilorempty(slot3[9]) and slot3[9] ~= "0" and tonumber(slot3[9])
@@ -90,11 +90,29 @@ function slot0._bootLogic(slot0, slot1, slot2, slot3)
 			if slot7 then
 				TaskDispatcher.runRepeat(slot0._onFrameUpdateEffectRotation, slot0, 0.01)
 			end
+
+			if not string.nilorempty(slot3[13]) then
+				slot8 = string.split(slot3[13], "#")
+				slot12 = FightHelper.getEntity(slot1.toId)
+
+				if FightHelper.getEntity(slot1.fromId) and slot12 then
+					slot13, slot14, slot15 = transformhelper.getLocalPos(slot11.go.transform)
+					slot16, slot17, slot18 = transformhelper.getLocalPos(slot12.go.transform)
+
+					if slot0._effectWrap.containerTr then
+						slot21, slot22, slot23 = transformhelper.getLocalPos(slot0._effectWrap.containerTr)
+						slot24, slot25, slot26 = transformhelper.getLocalScale(slot0._effectWrap.containerTr)
+
+						transformhelper.setLocalScale(slot0._effectWrap.containerTr, (math.abs(slot13 - slot16) + slot10) / (slot8[1] + slot8[2]), slot25, slot26)
+						transformhelper.setLocalPos(slot0._effectWrap.containerTr, slot21, slot22, slot23)
+					end
+				end
+			end
 		end
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_removeEffect()
 end
 
@@ -190,18 +208,11 @@ function slot0._onSpineLoaded(slot0, slot1)
 		slot0._targetEntity = slot1.unitSpawn
 
 		FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onSpineLoaded, slot0)
-		slot0:_bootLogic(slot0.fightStepMO, slot0.duration, slot0.paramsArr)
+		slot0:_bootLogic(slot0.fightStepData, slot0.duration, slot0.paramsArr)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_removeEffect()
-	TaskDispatcher.cancelTask(slot0._onFrameUpdateEffectPos, slot0)
-	TaskDispatcher.cancelTask(slot0._onFrameUpdateEffectRotation, slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onSpineLoaded, slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_removeEffect()
 	TaskDispatcher.cancelTask(slot0._onFrameUpdateEffectPos, slot0)
 	TaskDispatcher.cancelTask(slot0._onFrameUpdateEffectRotation, slot0)

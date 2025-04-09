@@ -111,7 +111,9 @@ function slot0.killAllSubMonster(slot0)
 			slot8:setDead()
 			FightDataHelper.entityMgr:addDeadUid(slot8.id)
 
-			slot0._alphaDic[slot7.id] = nil
+			if slot0._alphaDic then
+				slot0._alphaDic[slot7.id] = nil
+			end
 		end
 	end
 end

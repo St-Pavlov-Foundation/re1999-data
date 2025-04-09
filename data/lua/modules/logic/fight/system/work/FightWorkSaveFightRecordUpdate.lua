@@ -3,14 +3,14 @@ module("modules.logic.fight.system.work.FightWorkSaveFightRecordUpdate", package
 slot0 = class("FightWorkSaveFightRecordUpdate", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot1 = slot0._actEffectMO.entityMO and slot0._actEffectMO.entityMO.uid
+	slot1 = slot0.actEffectData.entity and slot0.actEffectData.entity.uid
 	slot2 = slot1 and FightHelper.getEntity(slot1)
 	slot3 = slot2 and slot2:getMO()
 	slot0.beforeHp = slot3 and slot3.currentHp or 0
 end
 
 function slot0.onStart(slot0)
-	slot1 = slot0._actEffectMO.entityMO and slot0._actEffectMO.entityMO.uid
+	slot1 = slot0.actEffectData.entity and slot0.actEffectData.entity.uid
 
 	if not (slot1 and FightHelper.getEntity(slot1)) then
 		return

@@ -1,9 +1,9 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventFloatBuffBySkillEffect", package.seeall)
 
-slot0 = class("FightTLEventFloatBuffBySkillEffect")
+slot0 = class("FightTLEventFloatBuffBySkillEffect", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
-	slot0.fightStepMO = slot1
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+	slot0.fightStepData = slot1
 	slot0.buffId = FightTLHelper.getNumberParam(slot3[1])
 	slot5 = slot1.actId and lua_skill.configDict[slot4]
 
@@ -43,9 +43,9 @@ function slot0.getHandle(slot0, slot1)
 end
 
 function slot0.floatBuff(slot0, slot1)
-	for slot8, slot9 in ipairs(slot0.fightStepMO.actEffectMOs) do
-		if not slot9:isDone() and slot0.fightStepMO.toId == slot9.targetId and slot9.effectType == FightEnum.EffectType.BUFFADD and slot9.effectNum == slot0.buffId then
-			FightSkillBuffMgr.instance:playSkillBuff(slot0.fightStepMO, slot9)
+	for slot8, slot9 in ipairs(slot0.fightStepData.actEffect) do
+		if not slot9:isDone() and slot0.fightStepData.toId == slot9.targetId and slot9.effectType == FightEnum.EffectType.BUFFADD and slot9.effectNum == slot0.buffId then
+			FightSkillBuffMgr.instance:playSkillBuff(slot0.fightStepData, slot9)
 			FightDataHelper.playEffectData(slot9)
 
 			if slot1 <= 0 + 1 then
@@ -59,16 +59,10 @@ function slot0.getAddBuffFloatCount(slot0, slot1)
 	return slot1 and slot1[3] or 1
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.onSkillEnd(slot0)
-end
-
-function slot0.clear(slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 end
 
 return slot0

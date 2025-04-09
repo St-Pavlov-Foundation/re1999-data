@@ -91,7 +91,23 @@ end
 
 function slot0._playActionAudio(slot0, slot1)
 	if slot1.audioId and slot1.audioId > 0 then
-		FightAudioMgr.instance:playAudio(slot1.audioId)
+		if not slot0.entity:getMO() then
+			return
+		end
+
+		slot3 = nil
+
+		if not slot0.entity:getMO().modelId then
+			return
+		end
+
+		slot5, slot6, slot7 = SettingsRoleVoiceModel.instance:getCharVoiceLangPrefValue(slot4)
+
+		if not string.nilorempty(LangSettings.shortcutTab[slot5]) and not slot7 then
+			slot3 = slot8
+		end
+
+		FightAudioMgr.instance:playAudioWithLang(slot1.audioId, slot3)
 	end
 end
 

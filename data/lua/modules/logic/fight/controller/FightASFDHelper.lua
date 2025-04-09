@@ -7,8 +7,8 @@ function slot0.getMissileTargetId(slot0)
 		return
 	end
 
-	if slot0.actEffectMOs then
-		for slot4, slot5 in ipairs(slot0.actEffectMOs) do
+	if slot0.actEffect then
+		for slot4, slot5 in ipairs(slot0.actEffect) do
 			if uv0.isDamageEffect(slot5.effectType) then
 				return slot5.targetId
 			end
@@ -241,7 +241,7 @@ function slot0._checkTriggerMustCrit(slot0, slot1)
 		return false
 	end
 
-	if not slot0.actEffectMOs then
+	if not slot0.actEffect then
 		return false
 	end
 
@@ -256,7 +256,7 @@ end
 
 function slot0.getStepContext(slot0, slot1)
 	if slot0 then
-		for slot5, slot6 in ipairs(slot0.actEffectMOs) do
+		for slot5, slot6 in ipairs(slot0.actEffect) do
 			if slot6.effectType == FightEnum.EffectType.EMITTERFIGHTNOTIFY then
 				slot7 = nil
 

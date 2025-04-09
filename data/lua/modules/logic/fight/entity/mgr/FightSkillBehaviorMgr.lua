@@ -44,7 +44,7 @@ function slot0.playSkillBehavior(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	for slot9, slot10 in ipairs(slot1.actEffectMOs) do
+	for slot9, slot10 in ipairs(slot1.actEffect) do
 		if slot10.configEffect and slot11 > 0 then
 			slot12 = slot2 and slot2[slot11]
 			slot13 = slot10.targetId .. ":" .. slot11
@@ -65,7 +65,7 @@ function slot0.playSkillBehavior(slot0, slot1, slot2, slot3)
 end
 
 function slot0._doSkillBehaviorEffect(slot0, slot1, slot2, slot3, slot4)
-	slot5 = FightHelper.getEntity(slot2.targetId) or slot2.entityMO and FightHelper.getEntity(slot2.entityMO.id)
+	slot5 = FightHelper.getEntity(slot2.targetId) or slot2.entity and FightHelper.getEntity(slot2.entity.id)
 
 	if FightDataHelper.entityMgr:getById(slot1.fromId) and lua_fight_replace_skill_behavior_effect.configDict[slot9.skin] and slot10[slot3.id] then
 		slot6 = string.nilorempty(slot10.effect) and slot3.effect or slot10.effect
@@ -108,7 +108,7 @@ function slot0._doSkillBehaviorEffect(slot0, slot1, slot2, slot3, slot4)
 		slot10 = slot2.targetId
 
 		if slot2.effectType == FightEnum.EffectType.CARDLEVELCHANGE then
-			slot10 = slot2.entityMO and slot2.entityMO.uid or slot1.fromId
+			slot10 = slot2.entity and slot2.entity.uid or slot1.fromId
 		end
 
 		FightFloatMgr.instance:float(slot10, FightEnum.FloatType.buff, slot3.dec, slot3.dec_Type)

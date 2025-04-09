@@ -354,9 +354,12 @@ function slot0.playNormalText(slot0, slot1, slot2, slot3)
 		slot0._txtcontentcn.fontSharedMaterial:SetFloat("_BloomFactor", 0)
 		PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
 		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 7)
-		gohelper.setActive(slot0._goline, true)
-		gohelper.setActive(slot0._goblackbottom, true)
-		gohelper.setActive(slot0._gonexticon, true)
+
+		slot4 = slot0._stepCo.conversation.type ~= StoryEnum.ConversationType.IrregularShake
+
+		gohelper.setActive(slot0._goline, slot4)
+		gohelper.setActive(slot0._goblackbottom, slot4)
+		gohelper.setActive(slot0._gonexticon, slot4)
 		transformhelper.setLocalPosXY(slot0._norDiaGO.transform, 550, 0)
 	end
 

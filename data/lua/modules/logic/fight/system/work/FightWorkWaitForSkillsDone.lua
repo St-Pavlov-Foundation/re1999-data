@@ -25,7 +25,7 @@ function slot0._timeOut(slot0)
 	if slot0._skillFlowList then
 		for slot4, slot5 in ipairs(slot0._skillFlowList) do
 			if not slot5:hasDone() then
-				logError("检测回合技能完成超时，技能id = " .. slot5._fightStepMO.actId)
+				logError("检测回合技能完成超时，技能id = " .. slot5.fightStepData.actId)
 			end
 		end
 	end

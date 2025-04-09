@@ -667,7 +667,6 @@ function slot0.clearFightData(slot0)
 
 	FightModel.instance:onEndFight()
 	FightSystem.instance:dispose()
-	FightCardModel.instance:clear()
 	FightModel.instance:clearRecordMO()
 end
 

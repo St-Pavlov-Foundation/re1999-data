@@ -87,6 +87,8 @@ function slot0.onPointChange(slot0, slot1, slot2)
 			slot11.animator:Play("empty", 0, 0)
 		end
 	end
+
+	slot0.animator:Play("rotate_02", 0, 1)
 end
 
 function slot0.resetAllPoint(slot0)

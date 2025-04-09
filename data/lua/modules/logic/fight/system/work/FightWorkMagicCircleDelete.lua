@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkMagicCircleDelete", package.see
 slot0 = class("FightWorkMagicCircleDelete", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if FightModel.instance:getMagicCircleInfo() and slot1:deleteData(tonumber(slot0._actEffectMO.reserveId)) then
+	if FightModel.instance:getMagicCircleInfo() and slot1:deleteData(tonumber(slot0.actEffectData.reserveId)) then
 		if lua_magic_circle.configDict[slot2] then
 			slot0:com_registTimer(slot0._delayDone, math.max(slot3.closeTime / 1000, 0.3) / FightModel.instance:getSpeed())
 			FightController.instance:dispatchEvent(FightEvent.DeleteMagicCircile, slot2)

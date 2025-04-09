@@ -6,7 +6,6 @@ function slot0.onInitView(slot0)
 	slot0._heroSkillGO = gohelper.findChild(slot0.viewGO, "root/heroSkill")
 	slot0._goSimple = gohelper.findChild(slot0._heroSkillGO, "#go_simple")
 	slot0._rogueSkillRoot = gohelper.findChild(slot0.viewGO, "root/rogueSkillRoot")
-	slot0._toughbattleRoot = gohelper.findChild(slot0.viewGO, "root/#go_charsupport")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -51,7 +50,8 @@ function slot0._onBeforeEnterStepBehaviour(slot0)
 	end
 
 	if slot1 == DungeonEnum.ChapterType.ToughBattle then
-		slot0:openSubView(FightToughBattleSkillView, "ui/viewres/fight/charsupportlist.prefab", slot0._toughbattleRoot)
+		slot0:openSubView(FightToughBattleSkillView, "ui/viewres/fight/charsupportlist.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.CharSupport))
+		slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.CharSupport)
 	end
 
 	slot0:openSubView(FightViewClothSkill, slot0.viewGO)

@@ -42,6 +42,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish, slot0, LuaEventSystem.Low)
 	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceStart, slot0._onRoundSequenceStart, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.PushFightWave, slot0._onPushFightWave, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.HaveNextWave, slot0.onHaveNextWave, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.BeforeDeadEffect, slot0._onEntityDead, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnSummon, slot0._onSummon, slot0)
 end
@@ -51,6 +52,7 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.OnRoundSequenceStart, slot0._onRoundSequenceStart, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.PushFightWave, slot0._onPushFightWave, slot0)
+	slot0:removeEventCb(FightController.instance, FightEvent.HaveNextWave, slot0.onHaveNextWave, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.BeforeDeadEffect, slot0._onEntityDead, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.OnSummon, slot0._onSummon, slot0)
@@ -60,8 +62,8 @@ end
 function slot0._onStartSequenceFinish(slot0)
 	slot0:_updateEnemyCardItems()
 
-	slot0._myActPoint = FightCardModel.instance:getCardMO().actPoint
-	slot0._enemyCurrActPoint = FightModel.instance:getCurRoundMO() and slot1:getEnemyActPoint() or 0
+	slot0._myActPoint = FightDataHelper.operationDataMgr.actPoint
+	slot0._enemyCurrActPoint = FightDataHelper.roundMgr:getRoundData() and slot1:getEnemyActPoint() or 0
 	slot0._enemyNextActPoint = slot0._enemyCurrActPoint
 
 	if ViewMgr.instance:isOpen(ViewName.FightSpecialTipView) then
@@ -86,8 +88,8 @@ function slot0._onRoundSequenceFinish(slot0)
 
 	slot0:_updateEnemyCardItems()
 
-	slot2 = FightCardModel.instance:getCardMO().actPoint
-	slot3 = FightModel.instance:getCurRoundMO() and slot1:getEnemyActPoint() or 0
+	slot2 = FightDataHelper.operationDataMgr.actPoint
+	slot3 = FightDataHelper.roundMgr:getRoundData() and slot1:getEnemyActPoint() or 0
 	slot0._enemyCurrActPoint = slot3
 	slot0._enemyNextActPoint = slot3
 
@@ -112,13 +114,17 @@ function slot0._playEffect(slot0, slot1)
 end
 
 function slot0._onRoundSequenceStart(slot0)
-	slot0._enemyNextActPoint = FightModel.instance:getCurRoundMO() and slot1:getEnemyActPoint() or 0
+	slot0._enemyNextActPoint = FightDataHelper.roundMgr:getRoundData() and slot1:getEnemyActPoint() or 0
 
 	gohelper.setActive(slot0._opItemContainer, false)
 end
 
+function slot0.onHaveNextWave(slot0)
+	slot0._enemyNextActPoint = 0
+end
+
 function slot0._onPushFightWave(slot0)
-	if FightModel.instance:getNextWaveMsg() then
+	if FightDataHelper.cacheFightMgr:getNextFightData() then
 		slot0._enemyNextActPoint = 0
 	end
 end
@@ -235,7 +241,7 @@ function slot0._onEnemyActBreakDone(slot0)
 end
 
 function slot0._updateEnemyCardItems(slot0)
-	if not FightModel.instance:getCurRoundMO() then
+	if not FightDataHelper.roundMgr:getRoundData() then
 		return
 	end
 
@@ -270,7 +276,7 @@ function slot0._updateEnemyCardItems(slot0)
 end
 
 function slot0._showEnemyCardTip(slot0)
-	slot3 = FightModel.instance:getCurRoundMO():getAIUseCardMOList() and #slot2 or 0
+	slot3 = FightDataHelper.roundMgr:getRoundData():getAIUseCardMOList() and #slot2 or 0
 
 	recthelper.setAnchor(slot0._enemyCardTip.transform, recthelper.getAnchorX(slot0._opItemList[slot3].go.transform.parent) + 31, recthelper.getAnchorY(slot0._opItemList[slot3].go.transform.parent) + 7.5)
 

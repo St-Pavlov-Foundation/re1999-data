@@ -135,18 +135,20 @@ function slot0._buildAniFlow_2_1(slot0)
 		FightController.instance:dispatchEvent(FightEvent.OnPlayHandCard, uv0._card_mo, uv0._waitRemoveCard)
 
 		if GMFightShowState.cards then
-			slot2 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_01)
+			slot0 = FightDataHelper.entityMgr:getById(uv0._card_mo.uid)
+			slot1 = FightCardDataHelper.isBigSkill(uv0._card_mo.skillId)
+			slot3 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_01)
 
-			gohelper.clone(FightHelper.getPreloadAssetItem(slot2):GetResource(slot2), uv0._card_transform.gameObject)
+			gohelper.clone(FightHelper.getPreloadAssetItem(slot3):GetResource(slot3), uv0._card_transform.gameObject)
 
-			if not (FightDataHelper.entityMgr:getById(uv0._card_mo.uid) and FightCardModel.instance:isUniqueSkill(slot0.id, uv0._card_mo.skillId)) then
-				slot2 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_02)
+			if FightConfig.instance:getSkillLv(uv0._card_mo.skillId) < FightEnum.UniqueSkillCardLv then
+				slot3 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_02)
 
-				gohelper.clone(FightHelper.getPreloadAssetItem(slot2):GetResource(slot2), uv0._card_transform.gameObject)
+				gohelper.clone(FightHelper.getPreloadAssetItem(slot3):GetResource(slot3), uv0._card_transform.gameObject)
 			else
-				slot2 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03)
+				slot3 = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03)
 
-				gohelper.clone(FightHelper.getPreloadAssetItem(slot2):GetResource(slot2), uv0._card_transform.gameObject)
+				gohelper.clone(FightHelper.getPreloadAssetItem(slot3):GetResource(slot3), uv0._card_transform.gameObject)
 			end
 
 			FightController.instance:dispatchEvent(FightEvent.ShowPlayCardEffect, uv0._card_mo, uv0._show_index)

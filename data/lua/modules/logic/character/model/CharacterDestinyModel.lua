@@ -115,6 +115,20 @@ function slot0.__isHadAttr(slot0, slot1, slot2)
 	end
 end
 
+function slot0.destinyUpBaseReverseParseAttr(slot0, slot1)
+	if not slot0._reverseParseBaseAttrList then
+		slot0._reverseParseBaseAttrList = {}
+
+		for slot5, slot6 in pairs(CharacterDestinyEnum.DestinyUpBaseParseAttr) do
+			for slot10, slot11 in ipairs(slot6) do
+				slot0._reverseParseBaseAttrList[slot11] = slot5
+			end
+		end
+	end
+
+	return slot0._reverseParseBaseAttrList[slot1]
+end
+
 slot0.instance = slot0.New()
 
 return slot0

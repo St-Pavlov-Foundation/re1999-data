@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventJoinSameSkillStart", package.seeall)
 
-slot0 = class("FightTLEventJoinSameSkillStart")
+slot0 = class("FightTLEventJoinSameSkillStart", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if not FightModel.instance:canParallelSkill(slot1) then
 		return
 	end
@@ -10,14 +10,8 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 
 	if slot0._attacker and slot0._attacker.skill then
-		slot0._attacker.skill:recordSameSkillStartParam(slot3)
+		slot0._attacker.skill:recordSameSkillStartParam(slot1, slot3)
 	end
-end
-
-function slot0.reset(slot0)
-end
-
-function slot0.dispose(slot0)
 end
 
 return slot0

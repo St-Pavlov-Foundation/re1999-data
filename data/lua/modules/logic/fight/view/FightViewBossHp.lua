@@ -1,6 +1,6 @@
 module("modules.logic.fight.view.FightViewBossHp", package.seeall)
 
-slot0 = class("FightViewBossHp", BaseViewExtended)
+slot0 = class("FightViewBossHp", FightBaseView)
 slot0.VariantIdToMaterialPath = {
 	"ui/materials/dynamic/ui_headicon_stylization_1.mat",
 	"ui/materials/dynamic/ui_headicon_stylization_2.mat",
@@ -51,57 +51,37 @@ end
 
 function slot0.onOpen(slot0)
 	slot0._btnpassiveSkill:AddClickListener(slot0._onClickPassiveSkill, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RespBeginRound, slot0._checkBossAndUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnChangeEntity, slot0._checkBossAndUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnEntityDead, slot0._onEntityDead, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnBeginWave, slot0._onBeginWave, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.UpdateExPoint, slot0._updateExPoint, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnHpChange, slot0._onHpChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnShieldChange, slot0._onShieldChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnMonsterChange, slot0._onMonsterChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnRestartStageBefore, slot0._onRestartStage, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.GMHideFightView, slot0._checkBossAndUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnMaxHpChange, slot0._onMaxHpChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnCurrentHpChange, slot0._onCurrentHpChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, slot0._onBuffUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.MultiHpChange, slot0._onMultiHpChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.BeforeDeadEffect, slot0._onBeforeDeadEffect, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.PushTeamInfo, slot0._onMonsterChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnSummon, slot0._checkBossAndUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ChangeCareer, slot0._onChangeCareer, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ChangeShield, slot0._onChangeShield, slot0)
+	slot0:com_registFightEvent(FightEvent.RespBeginRound, slot0._checkBossAndUpdate)
+	slot0:com_registFightEvent(FightEvent.OnChangeEntity, slot0._checkBossAndUpdate)
+	slot0:com_registFightEvent(FightEvent.OnEntityDead, slot0._onEntityDead)
+	slot0:com_registFightEvent(FightEvent.OnBeginWave, slot0._onBeginWave)
+	slot0:com_registFightEvent(FightEvent.UpdateExPoint, slot0._updateExPoint)
+	slot0:com_registFightEvent(FightEvent.OnHpChange, slot0._onHpChange)
+	slot0:com_registFightEvent(FightEvent.OnShieldChange, slot0._onShieldChange)
+	slot0:com_registFightEvent(FightEvent.OnMonsterChange, slot0._onMonsterChange)
+	slot0:com_registFightEvent(FightEvent.OnRestartStageBefore, slot0._onRestartStage)
+	slot0:com_registFightEvent(FightEvent.GMHideFightView, slot0._checkBossAndUpdate)
+	slot0:com_registFightEvent(FightEvent.OnMaxHpChange, slot0._onMaxHpChange)
+	slot0:com_registFightEvent(FightEvent.OnCurrentHpChange, slot0._onCurrentHpChange)
+	slot0:com_registFightEvent(FightEvent.OnBuffUpdate, slot0._onBuffUpdate)
+	slot0:com_registFightEvent(FightEvent.MultiHpChange, slot0._onMultiHpChange)
+	slot0:com_registFightEvent(FightEvent.BeforeDeadEffect, slot0._onBeforeDeadEffect)
+	slot0:com_registFightEvent(FightEvent.PushTeamInfo, slot0._onMonsterChange)
+	slot0:com_registFightEvent(FightEvent.OnSummon, slot0._checkBossAndUpdate)
+	slot0:com_registFightEvent(FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData)
+	slot0:com_registFightEvent(FightEvent.ChangeCareer, slot0._onChangeCareer)
+	slot0:com_registFightEvent(FightEvent.ChangeShield, slot0._onChangeShield)
 
 	slot0.sheildWidth = recthelper.getWidth(slot0._goHpShield.transform)
 
 	slot0:_checkBossAndUpdate()
 
 	if BossRushController.instance:isInBossRushFight(true) then
-		slot0:openSubView(FightViewBossHpBossRushAction, "ui/viewres/fight/fightviewbosshpbossrushaction.prefab", slot0._bossActionRoot)
+		slot0:com_openSubView(FightViewBossHpBossRushAction, "ui/viewres/fight/fightviewbosshpbossrushaction.prefab", slot0._bossActionRoot)
 	end
 end
 
 function slot0.onClose(slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.RespBeginRound, slot0._checkBossAndUpdate, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnChangeEntity, slot0._checkBossAndUpdate, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnEntityDead, slot0._onEntityDead, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnBeginWave, slot0._onBeginWave, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.UpdateExPoint, slot0._updateExPoint, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnHpChange, slot0._onHpChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnShieldChange, slot0._onShieldChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnMonsterChange, slot0._onMonsterChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnRestartStageBefore, slot0._onRestartStage, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.GMHideFightView, slot0._checkBossAndUpdate, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnMaxHpChange, slot0._onMaxHpChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnCurrentHpChange, slot0._onCurrentHpChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnBuffUpdate, slot0._onBuffUpdate, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.MultiHpChange, slot0._onMultiHpChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.BeforeDeadEffect, slot0._onBeforeDeadEffect, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.PushTeamInfo, slot0._onMonsterChange, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.OnSummon, slot0._checkBossAndUpdate, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.ChangeCareer, slot0._onChangeCareer, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.ChangeShield, slot0._onChangeShield, slot0)
 	slot0._btnpassiveSkill:RemoveClickListener()
 end
 
@@ -156,7 +136,7 @@ function slot0._checkBossAndUpdate(slot0)
 
 	if slot0._bossEntityMO and slot0._bossEntityMO:getPowerInfo(FightEnum.PowerType.Energy) then
 		if not slot0._bossEnergyView then
-			slot0._bossEnergyView = slot0:openSubView(FightViewBossEnergy, "ui/viewres/fight/assisthpbar.prefab", slot0._bossEnergyRoot, slot0._bossEntityMO)
+			slot0._bossEnergyView = slot0:com_openSubView(FightViewBossEnergy, "ui/viewres/fight/assisthpbar.prefab", slot0._bossEnergyRoot, slot0._bossEntityMO)
 		end
 
 		gohelper.setActive(slot0._bossEnergyRoot, true)

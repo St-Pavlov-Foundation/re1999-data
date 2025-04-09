@@ -1,6 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventDefEffect", package.seeall)
 
-slot0 = class("FightTLEventDefEffect")
+slot0 = class("FightTLEventDefEffect", FightTimelineTrackItem)
 slot3 = {
 	[8] = {
 		[FightEnum.EffectType.MISS] = true,
@@ -14,12 +14,12 @@ slot3 = {
 	}
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if slot0.type == uv0 and not FightHelper.detectTimelinePlayEffectCondition(slot1, slot3[8]) then
 		return
 	end
 
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 
 	if string.nilorempty(slot3[1]) then
 		logError("受击特效名字为空，检查一下技能的timeline：" .. (FightConfig.instance:getSkinSkillTimeline(nil, slot1.actId) or "nil"))
@@ -27,7 +27,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	if not string.nilorempty(slot3[10]) and FightHelper.getEntity(slot0._fightStepMO.fromId):getMO() and slot6.skin then
+	if not string.nilorempty(slot3[10]) and FightHelper.getEntity(slot0.fightStepData.fromId):getMO() and slot6.skin then
 		for slot12, slot13 in ipairs(string.split(slot3[10], "|")) do
 			if tonumber(string.split(slot13, "#")[1]) == slot7 then
 				slot4 = slot14[2]
@@ -59,10 +59,10 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot10 = tonumber(slot3[5]) or -1
 	slot0._act_on_index_entity = slot3[6] and tonumber(slot3[6])
 	slot11 = slot3[7]
-	slot12 = slot0._fightStepMO.actEffectMOs
+	slot12 = slot0.fightStepData.actEffect
 
 	if slot0._act_on_index_entity then
-		slot12 = FightHelper.dealDirectActEffectData(slot0._fightStepMO.actEffectMOs, slot0._act_on_index_entity, uv1[slot0.type])
+		slot12 = FightHelper.dealDirectActEffectData(slot0.fightStepData.actEffect, slot0._act_on_index_entity, uv1[slot0.type])
 	end
 
 	slot13 = uv1[slot0.type]
@@ -144,7 +144,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_removeEffect()
 end
 
@@ -152,7 +152,7 @@ function slot0._createHitEffect(slot0, slot1, slot2, slot3, slot4, slot5, slot6,
 	slot9 = nil
 
 	if not string.nilorempty(slot3) then
-		slot1.effect:addHangEffect(slot2, slot3, FightHelper.getEntity(slot0._fightStepMO.fromId):getSide()):setLocalPos(slot5, slot6, slot7)
+		slot1.effect:addHangEffect(slot2, slot3, FightHelper.getEntity(slot0.fightStepData.fromId):getSide()):setLocalPos(slot5, slot6, slot7)
 	else
 		slot9 = slot1.effect:addGlobalEffect(slot2, slot8:getSide())
 		slot10, slot11, slot12 = nil
@@ -188,11 +188,7 @@ function slot0._setRenderOrder(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_removeEffect()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_removeEffect()
 end
 

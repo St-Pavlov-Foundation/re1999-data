@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkMultiHpChange", package.seeall)
 slot0 = class("FightWorkMultiHpChange", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0._entityId = slot0._actEffectMO.targetId
+	slot0._entityId = slot0.actEffectData.targetId
 	slot0._oldEntityMO = FightDataHelper.entityMgr:getOldEntityMO(slot0._entityId)
 end
 

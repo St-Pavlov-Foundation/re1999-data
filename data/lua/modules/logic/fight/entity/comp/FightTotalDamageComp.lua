@@ -65,13 +65,13 @@ function slot0._showTotalFloat(slot0)
 			slot6 = false
 			slot7 = 0
 
-			for slot11, slot12 in ipairs(slot4.actEffectMOs) do
+			for slot11, slot12 in ipairs(slot4.actEffect) do
 				if slot12.targetId == slot0.entity.id and FightTLEventDefHit.originHitEffectType[slot12.effectType] then
 					slot6 = true
 				end
 			end
 
-			for slot11, slot12 in ipairs(slot4.actEffectMOs) do
+			for slot11, slot12 in ipairs(slot4.actEffect) do
 				if slot12.targetId == slot0.entity.id then
 					if uv0[slot12.effectType] then
 						slot7 = slot7 + slot12.effectNum

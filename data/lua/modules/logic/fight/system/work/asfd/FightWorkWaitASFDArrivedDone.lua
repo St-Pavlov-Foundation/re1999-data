@@ -3,8 +3,7 @@ module("modules.logic.fight.system.work.asfd.FightWorkWaitASFDArrivedDone", pack
 slot0 = class("FightWorkWaitASFDArrivedDone", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0.stepMo = slot1
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
@@ -13,7 +12,7 @@ function slot0.onStart(slot0)
 end
 
 function slot0.onASFDArrivedDone(slot0, slot1)
-	if slot1 ~= slot0.stepMo then
+	if slot1 ~= slot0.fightStepData then
 		return
 	end
 

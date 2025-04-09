@@ -245,7 +245,7 @@ function slot0.refreshBaseAttrItem(slot0, slot1, slot2)
 	for slot12, slot13 in ipairs(CharacterEnum.BaseAttrIdList) do
 		slot14 = HeroConfig.instance:getHeroAttributeCO(slot13)
 		slot0._attnormalitems[slot12].value.text = slot3[slot13]
-		slot0._attnormalitems[slot12].addValue.text = slot0:getEquipAddBaseValues(slot1, slot0:getBaseAttrValueList(slot2))[slot13] + (slot5[slot13] and slot5[slot13].value or 0) + (slot7 and slot7:getAddValueByAttrId(slot7 and slot7:getAddAttrValues(), slot13) or 0) == 0 and "" or "+" .. slot16
+		slot0._attnormalitems[slot12].addValue.text = slot0:getEquipAddBaseValues(slot1, slot0:getBaseAttrValueList(slot2))[slot13] + (slot5[slot13] and slot5[slot13].value or 0) + (slot7 and slot7:getAddValueByAttrId(slot7 and slot7:getAddAttrValues(), slot13, slot6) or 0) == 0 and "" or "+" .. slot16
 		slot0._attnormalitems[slot12].name.text = slot14.name
 
 		CharacterController.instance:SetAttriIcon(slot0._attnormalitems[slot12].icon, slot13, GameUtil.parseColor("#323c34"))
@@ -282,7 +282,7 @@ function slot0.refreshUpAttrItem(slot0, slot1, slot2)
 		gohelper.setActive(slot0._attrupperitems[slot16].go, true)
 
 		slot18 = HeroConfig.instance:getHeroAttributeCO(slot17)
-		slot20 = slot0:getEquipBreakAddAttrValues(slot1)[slot17] + (slot6[slot17] and slot6[slot17].value or 0) + (slot8 and slot8:getAddValueByAttrId(slot8 and slot8:getAddAttrValues(), slot17) or 0)
+		slot20 = slot0:getEquipBreakAddAttrValues(slot1)[slot17] + (slot6[slot17] and slot6[slot17].value or 0) + (slot8 and slot8:getAddValueByAttrId(slot8 and slot8:getAddAttrValues(), slot17, slot7) or 0)
 
 		if slot17 == CharacterEnum.AttrId.Cri then
 			slot21 = (slot0:_getTotalUpAttributes(slot2)[slot17] or 0) / 10 + slot10
@@ -316,7 +316,7 @@ function slot0.refreshUpAttrItem(slot0, slot1, slot2)
 	end
 
 	for slot16, slot17 in ipairs(CharacterDestinyEnum.DestinyUpSpecialAttr) do
-		if (slot8 and slot8:getAddValueByAttrId(slot9, slot17) or 0) ~= 0 then
+		if (slot8 and slot8:getAddValueByAttrId(slot9, slot17, slot7) or 0) ~= 0 then
 			slot19 = slot0:_getAttrUpperItem(slot12)
 
 			gohelper.setActive(slot19.go, true)

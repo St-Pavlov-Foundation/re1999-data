@@ -70,7 +70,7 @@ function slot0.updateByCardInfo(slot0, slot1)
 		return slot0:hideResistanceGo()
 	end
 
-	if FightCardModel.instance.curSelectEntityId == 0 then
+	if FightDataHelper.operationDataMgr.curSelectEntityId == 0 then
 		return slot0:hideResistanceGo()
 	end
 

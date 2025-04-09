@@ -43,7 +43,7 @@ function slot0.onBuffUpdate(slot0, slot1, slot2, slot3, slot4)
 
 	slot0:removeEffect()
 
-	slot0.curEffectWrap = slot0.entity.effect:addHangEffect(slot7.effect, slot7.effectRoot, slot7.duration)
+	slot0.curEffectWrap = slot0.entity.effect:addHangEffect(slot7.effect, slot7.effectRoot, nil, slot7.duration)
 
 	slot0.curEffectWrap:setLocalPos(0, 0, 0)
 	FightRenderOrderMgr.instance:onAddEffectWrap(slot1, slot0.curEffectWrap)
@@ -57,6 +57,8 @@ function slot0.removeEffect(slot0)
 	if slot0.curEffectWrap then
 		slot0.entity.effect:removeEffect(slot0.curEffectWrap)
 		FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0.entityId, slot0.curEffectWrap)
+
+		slot0.curEffectWrap = nil
 	end
 end
 

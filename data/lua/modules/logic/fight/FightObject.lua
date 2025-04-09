@@ -3,8 +3,6 @@ module("modules.logic.fight.FightObject", package.seeall)
 slot0 = class("FightObject")
 
 function slot0.onConstructor(slot0)
-	slot0.INSTANTIATE_CLASS_LIST = {}
-	slot0.COMPONENT_LIST = {}
 end
 
 function slot0.onAwake(slot0, ...)
@@ -14,10 +12,13 @@ function slot0.releaseSelf(slot0)
 end
 
 function slot0.onDestructor(slot0)
-	slot0:disposeClassList(slot0.COMPONENT_LIST)
+	if slot0.COMPONENT_LIST then
+		slot0:disposeObjectList(slot0.COMPONENT_LIST)
+
+		slot0.COMPONENT_LIST = nil
+	end
 
 	slot0.INSTANTIATE_CLASS_LIST = nil
-	slot0.COMPONENT_LIST = nil
 end
 
 function slot0.onDestructorFinish(slot0)
@@ -26,6 +27,10 @@ end
 function slot0.newClass(slot0, slot1, ...)
 	if slot0.IS_DISPOSED or slot0.IS_RELEASING then
 		logError("生命周期已经结束了,但是又调用注册类的方法,请检查代码,类名:" .. slot0.__cname)
+	end
+
+	if not slot0.INSTANTIATE_CLASS_LIST then
+		slot0.INSTANTIATE_CLASS_LIST = {}
 	end
 
 	slot2 = slot1.New(...)
@@ -39,6 +44,10 @@ end
 function slot0.addComponent(slot0, slot1)
 	if slot0.IS_DISPOSED then
 		logError("生命周期已经结束了,但是又调用了添加组件的方法,请检查代码,类名:" .. slot0.__cname)
+	end
+
+	if not slot0.COMPONENT_LIST then
+		slot0.COMPONENT_LIST = {}
 	end
 
 	slot2 = slot1.New()
@@ -122,9 +131,11 @@ function slot0.internalClearDeadInstantiatedClass(slot0)
 
 	slot0.CLEARTIMER = nil
 
-	for slot4 = #slot0.INSTANTIATE_CLASS_LIST, 1, -1 do
-		if slot0.INSTANTIATE_CLASS_LIST[slot4].IS_DISPOSED then
-			table.remove(slot0.INSTANTIATE_CLASS_LIST, slot4)
+	if slot0.INSTANTIATE_CLASS_LIST then
+		for slot5 = #slot1, 1, -1 do
+			if slot1[slot5].IS_DISPOSED then
+				table.remove(slot1, slot5)
+			end
 		end
 	end
 end
@@ -139,7 +150,7 @@ function slot0.markReleasing(slot0)
 			slot1.IS_RELEASING = 0
 		end
 
-		if not slot2[slot1.IS_RELEASING + 1] then
+		if not (slot2 and slot2[slot1.IS_RELEASING + 1]) then
 			if slot1 == slot0 then
 				return
 			end
@@ -162,10 +173,10 @@ function slot0.releaseChildRoot(slot0)
 		slot2 = slot1.INSTANTIATE_CLASS_LIST
 
 		if not slot1.DISPOSEINDEX then
-			slot1.DISPOSEINDEX = #slot2 + 1
+			slot1.DISPOSEINDEX = slot2 and #slot2 + 1 or 1
 		end
 
-		if not slot2[slot1.DISPOSEINDEX - 1] then
+		if not (slot2 and slot2[slot1.DISPOSEINDEX - 1]) then
 			if slot1 == slot0 then
 				return
 			end
@@ -195,7 +206,7 @@ function slot0.destructorInternal(slot0, slot1, slot2)
 	end
 end
 
-function slot0.disposeClassList(slot0, slot1)
+function slot0.disposeObjectList(slot0, slot1)
 	for slot5 = #slot1, 1, -1 do
 		if not slot1[slot5].IS_DISPOSED then
 			slot6:disposeSelf()

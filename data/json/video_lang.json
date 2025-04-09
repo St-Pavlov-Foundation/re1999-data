@@ -120,6 +120,14 @@
     ]
   },
   {
+    "name": "2_0_pv",
+    "supportLang": [
+      "en",
+      "zh",
+      "jp"
+    ]
+  },
+  {
     "name": "2_2_chapter8_01",
     "supportLang": [
       "en",

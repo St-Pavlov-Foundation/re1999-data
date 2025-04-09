@@ -33,10 +33,10 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btnconvertStoreOnClick(slot0)
-	slot2 = StoreEnum.SummonExchange
+	slot2 = StoreEnum.StoreId.SummonExchange
 
 	if SummonMainModel.instance:getCurPool() and SummonMainModel.getResultType(slot1) == SummonEnum.ResultType.Equip then
-		slot2 = StoreEnum.SummonEquipExchange
+		slot2 = StoreEnum.StoreId.SummonEquipExchange
 	end
 
 	StoreController.instance:checkAndOpenStoreView(slot2)

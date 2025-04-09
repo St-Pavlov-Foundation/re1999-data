@@ -245,6 +245,22 @@ function slot0.getHeadName(slot0)
 	return lua_item.configDict[PlayerModel.instance:getPlayinfo().portrait].name
 end
 
+function slot0.ShowChangeBgSkin(slot0, slot1)
+	GameFacade.showMessageBox(MessageBoxIdDefine.PlayerCardChangeSkinTips, MsgBoxEnum.BoxType.Yes_No, function ()
+		PlayerCardRpc.instance:sendSetPlayerCardThemeRequest(uv0)
+	end)
+	slot0:setBgSkinRed(slot1, true)
+	PlayerCardModel.instance:setShowRed()
+end
+
+function slot0.getBgSkinRed(slot0, slot1)
+	return PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.PlayerCardNewBgSkinRed) .. slot1, 0)
+end
+
+function slot0.setBgSkinRed(slot0, slot1, slot2)
+	PlayerPrefsHelper.setNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.PlayerCardNewBgSkinRed) .. slot1, slot2 and 1 or 0)
+end
+
 slot0.instance = slot0.New()
 
 return slot0

@@ -153,7 +153,7 @@ function slot0.initCategoryItemTable(slot0, slot1)
 	slot2.btn:AddClickListener(function (slot0)
 		slot1 = slot0.tabId
 
-		if slot0.tabId == StoreEnum.SubRoomOld then
+		if slot0.tabId == StoreEnum.StoreId.OldRoomStore then
 			StoreModel.instance:setNewRedDotKey(slot0.tabId)
 		end
 
@@ -458,7 +458,7 @@ function slot0._onRefreshRedDot(slot0)
 		slot6, slot7 = StoreModel.instance:isTabFirstRedDotShow(slot5.tabId)
 		slot8 = false
 
-		if slot5.tabId == StoreEnum.SubRoomOld then
+		if slot5.tabId == StoreEnum.StoreId.OldRoomStore then
 			slot8 = StoreModel.instance:checkShowNewRedDot(slot5.tabId)
 		end
 

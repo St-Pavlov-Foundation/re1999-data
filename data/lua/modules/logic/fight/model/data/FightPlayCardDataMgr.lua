@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightPlayCardDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightPlayCardDataMgr")
+slot0 = FightDataClass("FightPlayCardDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 	slot0.playCard = {}
@@ -9,7 +9,7 @@ function slot0.onConstructor(slot0)
 end
 
 function slot0.setAct174EnemyCard(slot0, slot1)
-	FightDataHelper.coverData(FightCardDataHelper.newPlayCardList(slot1), slot0.enemyAct174PlayCard)
+	FightDataUtil.coverData(FightCardDataHelper.newPlayCardList(slot1), slot0.enemyAct174PlayCard)
 end
 
 return slot0

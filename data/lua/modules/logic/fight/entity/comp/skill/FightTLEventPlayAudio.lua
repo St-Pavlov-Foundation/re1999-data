@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventPlayAudio", package.seeall)
 
-slot0 = class("FightTLEventPlayAudio")
+slot0 = class("FightTLEventPlayAudio", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if FightWorkBFSGSkillStart.BeiFangShaoGeUniqueSkill and slot3[2] == "1" then
 		if FightWorkBFSGSkillStart.BeiFangShaoGeUniqueSkill <= 0 then
 			return

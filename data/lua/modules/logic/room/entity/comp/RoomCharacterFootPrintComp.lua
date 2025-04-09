@@ -40,6 +40,10 @@ function slot0._updateMovingLookDir(slot0)
 		return
 	end
 
+	if slot1.roomCharacterConfig.hideFootprint ~= 0 then
+		return
+	end
+
 	if slot1:getMoveState() ~= RoomCharacterEnum.CharacterMoveState.Move then
 		slot0._needFootPrint = true
 

@@ -13,11 +13,13 @@ slot1 = {
 	chargeId1to2 = 4,
 	bpviewpos = 14,
 	showBonus = 15,
+	weekLimitTimes = 18,
 	bpSkinDesc = 10,
 	bpSkinNametxt = 11,
 	expLevelUp = 9,
 	payStatus1Bonus = 5,
-	payStatus2AddLevel = 8
+	payStatus2AddLevel = 8,
+	expUpShow = 19
 }
 slot2 = {
 	"bpId"

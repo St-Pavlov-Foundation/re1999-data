@@ -1440,4 +1440,8 @@ function slot0.getShortenActSingleBg(slot0)
 	return string.format("singlebg/shortenact_singlebg/%s.png", slot0)
 end
 
+function slot0.getAct191SingleBg(slot0)
+	return string.format("singlebg/act191/%s.png", slot0)
+end
+
 return slot0

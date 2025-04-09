@@ -375,17 +375,14 @@ function slot0.onClickSendASFDBtn(slot0)
 	end
 
 	for slot11 = 1, slot1 do
-		slot12 = FightStepMO.New()
-
-		slot12:init({
+		table.insert({}, FightStepData.New({
 			cardIndex = 1,
 			actType = 1,
 			fromId = (FightDataHelper.entityMgr:getASFDEntityMo(slot3) or slot0:createASFDEmitter(slot3)).id,
 			toId = slot4,
 			actId = FightASFDConfig.instance.skillId,
 			actEffect = {}
-		})
-		table.insert({}, slot12)
+		}))
 	end
 
 	if slot0.asfdSequence then

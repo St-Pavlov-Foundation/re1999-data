@@ -8,6 +8,7 @@ function slot0.onInitView(slot0)
 	slot0._goTaskPointContent = gohelper.findChild(slot0.viewGO, "score/#go_taskPointContent")
 	slot0._goTaskPointItem = gohelper.findChild(slot0.viewGO, "score/#go_taskPointContent/#go_taskPointItem")
 	slot0._txtscore = gohelper.findChildText(slot0.viewGO, "score/#txt_score")
+	slot0._txtTaskNum = gohelper.findChildText(slot0.viewGO, "score/#txt_taskNum")
 	slot0._btntaskClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "score/#btn_taskClick")
 	slot0._goBoss = gohelper.findChild(slot0.viewGO, "root/main/boss")
 	slot0._btnbossClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/main/boss/#btn_bossClick")
@@ -135,6 +136,11 @@ function slot0.initEpisodeItem(slot0)
 		slot5.goHeroContent = gohelper.findChild(slot5.go, "go_finish/group/hero")
 		slot5.goHeroItem = gohelper.findChild(slot5.go, "go_finish/group/hero/heroItem")
 		slot5.txtScore = gohelper.findChildText(slot5.go, "go_finish/score/txt_score")
+		slot5.goScore = gohelper.findChild(slot5.go, "go_finish/score")
+		slot5.goPointContent = gohelper.findChild(slot5.go, "go_finish/score/go_PointContent")
+		slot5.goPointItem = gohelper.findChild(slot5.go, "go_finish/score/go_PointContent/go_PointItem")
+		slot5.goPointItemLight = gohelper.findChild(slot5.go, "go_finish/score/go_PointContent/go_PointItem/ani")
+		slot5.goPointItemGrey = gohelper.findChild(slot5.go, "go_finish/score/go_PointContent/go_PointItem/grey")
 		slot5.btnClick = gohelper.findChildButtonWithAudio(slot5.go, "click")
 
 		slot5.btnClick:AddClickListener(slot0._btnEpisodeItemClick, slot0, slot5)
@@ -186,43 +192,63 @@ function slot0.refreshEpisode(slot0)
 
 	for slot5, slot6 in ipairs(slot0.episodeTab) do
 		slot8 = TowerConfig.instance:getTowerLimitedTimeCoList(slot0.seasonId, slot5)[1].layerId
-		slot11 = slot1:getLayerSubEpisodeList(slot8) and slot10[1].assistBossId or 0
+		slot9 = slot1:getLayerScore(slot8)
 		slot12 = slot10 and slot10[1].heroIds or {}
 
 		gohelper.setActive(slot6.goSelect, TowerTimeLimitLevelModel.instance.curSelectEntrance == slot5)
 		gohelper.setActive(slot6.goFinish, slot12 and #slot12 > 0)
-		gohelper.setActive(slot6.goEnemy, slot11 > 0)
+		gohelper.setActive(slot6.goEnemy, (slot1:getLayerSubEpisodeList(slot8) and slot10[1].assistBossId or 0) > 0)
 		gohelper.setActive(slot6.goHeroContent, slot12 and #slot12 > 0)
 
-		slot6.txtScore.text = slot1:getLayerScore(slot8)
+		slot6.txtScore.text = slot9
+		slot14 = TowerConfig.instance:getScoreToStarConfig(slot9)
+
+		gohelper.setActive(slot6.goScore, slot9 > 0)
+		gohelper.setActive(slot6.goPointItemLight, slot14 > 0)
+		gohelper.setActive(slot6.goPointItemGrey, slot14 == 0)
+
+		if slot14 > 0 then
+			slot15 = {}
+			slot19 = TowerEnum.MaxShowStarNum
+
+			for slot19 = 1, Mathf.Min(slot14, slot19) do
+				table.insert(slot15, slot19)
+			end
+
+			gohelper.CreateObjList(slot0, slot0.scoreStarShow, slot15, slot6.goPointContent, slot6.goPointItem)
+		end
 
 		if slot11 > 0 then
 			slot6.simageEnemy:LoadImage(ResUrl.monsterHeadIcon(FightConfig.instance:getSkinCO(TowerConfig.instance:getAssistBossConfig(slot11).skinId).headIcon))
 		end
 
-		for slot17, slot18 in ipairs(slot12) do
-			if not slot6.heroItemTab[slot17] then
-				slot6.heroItemTab[slot17] = {
-					go = gohelper.clone(slot6.goHeroItem, slot6.goHeroContent, "heroItem" .. slot17)
+		for slot18, slot19 in ipairs(slot12) do
+			if not slot6.heroItemTab[slot18] then
+				slot6.heroItemTab[slot18] = {
+					go = gohelper.clone(slot6.goHeroItem, slot6.goHeroContent, "heroItem" .. slot18)
 				}
-				slot6.heroItemTab[slot17].simageHero = gohelper.findChildSingleImage(slot6.heroItemTab[slot17].go, "simage_hero")
+				slot6.heroItemTab[slot18].simageHero = gohelper.findChildSingleImage(slot6.heroItemTab[slot18].go, "simage_hero")
 			end
 
-			gohelper.setActive(slot6.heroItemTab[slot17].go, true)
+			gohelper.setActive(slot6.heroItemTab[slot18].go, true)
 
-			if HeroModel.instance:getByHeroId(slot18) then
-				slot6.heroItemTab[slot17].simageHero:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot19.skin).retangleIcon))
+			if HeroModel.instance:getByHeroId(slot19) then
+				slot6.heroItemTab[slot18].simageHero:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot20.skin).retangleIcon))
 			else
-				logError(slot18 .. " 对应的heroMO不存在，请检查")
+				slot6.heroItemTab[slot18].simageHero:LoadImage(ResUrl.getHeadIconSmall(SkinConfig.instance:getSkinCo(HeroConfig.instance:getHeroCO(slot19).skinId).retangleIcon))
 			end
 		end
 
-		for slot17 = #slot12 + 1, #slot6.heroItemTab do
-			gohelper.setActive(slot6.heroItemTab[slot17].go, false)
+		for slot18 = #slot12 + 1, #slot6.heroItemTab do
+			gohelper.setActive(slot6.heroItemTab[slot18].go, false)
 		end
 
 		slot0.totalScore = slot0.totalScore + slot9
 	end
+end
+
+function slot0.scoreStarShow(slot0, slot1, slot2, slot3)
+	gohelper.setActive(slot1, slot3 <= slot2)
 end
 
 function slot0.refreshTotalScore(slot0)
@@ -234,6 +260,8 @@ function slot0.refreshTotalScore(slot0)
 	slot0._txtscore.text = GameUtil.getSubPlaceholderLuaLang(luaLang("towertimelimit_curtotalscore"), {
 		slot0.totalScore
 	})
+	slot2 = TowerTaskModel.instance:getCurTaskList(TowerEnum.TowerType.Limited)
+	slot0._txtTaskNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot2), #slot2)
 end
 
 function slot0.taskProgressShow(slot0, slot1, slot2, slot3)
@@ -378,6 +406,8 @@ function slot0.onClose(slot0)
 			ZProj.TweenHelper.KillById(slot0["itemTweenId" .. slot4])
 		end
 	end
+
+	TowerModel.instance:cleanTrialData()
 end
 
 function slot0.onDestroyView(slot0)

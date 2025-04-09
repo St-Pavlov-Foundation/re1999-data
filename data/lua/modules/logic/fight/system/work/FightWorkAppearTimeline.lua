@@ -117,18 +117,18 @@ function slot0._playTimeline(slot0)
 	FightController.instance:registerCallback(FightEvent.SkipAppearTimeline, slot0._skipAppearTimeline, slot0)
 	ViewMgr.instance:openView(ViewName.FightSkipTimelineView, slot0._timeline)
 
-	slot1 = FightStepMO.New()
-
-	slot1:init({
+	slot2 = FightStepData.New({
 		actType = FightEnum.ActType.SKILL,
 		fromId = slot0._targetEntity.id,
 		toId = slot0._targetEntity.id,
 		actId = FightEnum.AppearTimelineSkillId,
 		actEffect = {}
 	})
+	slot2.isFakeStep = true
+
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 25)
 	FightController.instance:registerCallback(FightEvent.OnSkillPlayFinish, slot0._onSkillEnd, slot0, LuaEventSystem.Low)
-	slot0._targetEntity.skill:playTimeline(slot0._timeline, slot1)
+	slot0._targetEntity.skill:playTimeline(slot0._timeline, slot2)
 end
 
 function slot0._skipAppearTimeline(slot0)

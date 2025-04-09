@@ -218,7 +218,7 @@ function slot0.alreadyHas(slot0)
 	slot4 = slot2[1][2]
 	slot5 = false
 
-	if slot0.belongStoreId == StoreEnum.SubRoomNew or slot0.belongStoreId == StoreEnum.SubRoomOld then
+	if slot0.belongStoreId == StoreEnum.StoreId.NewRoomStore or slot0.belongStoreId == StoreEnum.StoreId.OldRoomStore then
 		slot5 = true
 
 		for slot9, slot10 in ipairs(slot2) do
@@ -349,7 +349,7 @@ end
 function slot0.checkShowNewRedDot(slot0)
 	slot2 = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.StoreRoomTreeItemShowNew .. slot0.goodsId, nil)
 
-	if slot0.belongStoreId ~= StoreEnum.SubRoomNew then
+	if slot0.belongStoreId ~= StoreEnum.StoreId.NewRoomStore then
 		return false
 	end
 

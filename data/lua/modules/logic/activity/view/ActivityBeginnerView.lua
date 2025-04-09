@@ -98,7 +98,11 @@ slot1 = {
 	[ActivityEnum.Activity.V2a5_WarmUp] = ViewName.V2a5_WarmUp,
 	[slot2:getActivityId()] = ViewName.ShortenAct_FullView,
 	[ActivityEnum.Activity.V2a6_WeekwalkHeart] = ViewName.V2a6_WeekwalkHeart_FullView,
-	[ActivityEnum.Activity.V2a6_WarmUp] = ViewName.V2a6_WarmUp
+	[ActivityEnum.Activity.V2a6_WarmUp] = ViewName.V2a6_WarmUp,
+	[ActivityEnum.Activity.V2a7_Labor_Sign] = ViewName.V2a7_Labor_FullSignView,
+	[ActivityEnum.Activity.V2a7_WarmUp] = ViewName.V2a7_WarmUp,
+	[ActivityEnum.Activity.V2a7_SelfSelectSix1] = ViewName.V2a7_SelfSelectSix_FullView,
+	[ActivityEnum.Activity.V2a7_TowerGift] = ViewName.TowerGiftFullView
 }
 slot2 = ShortenActConfig.instance
 slot2 = {
@@ -117,7 +121,9 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonShowExitAnim, slot0.startExitLoading, slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonCloseBlackScreen, slot0.onReceiveCloseBlackScreen, slot0)
 	slot0:addEventCb(SummonController.instance, SummonEvent.summonMainCloseImmediately, slot0.closeThis, slot0)
-	slot0:_initRoleSignView()
+	slot0:_initRole_FullSignView()
+	slot0:_initSpecial_FullSignView()
+	slot0:_initLinkageActivity_FullView()
 
 	slot0._needSetSortInfos = true
 
@@ -274,7 +280,7 @@ end
 
 slot3 = false
 
-function slot0._initRoleSignView(slot0)
+function slot0._initRole_FullSignView(slot0)
 	if uv0 then
 		return
 	end
@@ -282,6 +288,28 @@ function slot0._initRoleSignView(slot0)
 	uv0 = true
 	uv1[GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part1", ActivityEnum.Activity.V2a6_Role_SignView_Part1)] = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part1", ViewName.V2a5_Role_FullSignView_Part1)
 	uv1[GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part2", ActivityEnum.Activity.V2a6_Role_SignView_Part2)] = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part2", ViewName.V2a5_Role_FullSignView_Part2)
+end
+
+slot4 = false
+
+function slot0._initSpecial_FullSignView(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+	uv1[GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special)] = GameBranchMgr.instance:Vxax_ViewName("Special_FullSignView", ViewName.V2a3_Special_FullSignView)
+end
+
+slot5 = false
+
+function slot0._initLinkageActivity_FullView(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+	uv1[GameBranchMgr.instance:Vxax_ActId("LinkageActivity", ActivityEnum.Activity.LinkageActivity_FullView)] = GameBranchMgr.instance:Vxax_ViewName("LinkageActivity_FullView", ViewName.LinkageActivity_FullView)
 end
 
 return slot0

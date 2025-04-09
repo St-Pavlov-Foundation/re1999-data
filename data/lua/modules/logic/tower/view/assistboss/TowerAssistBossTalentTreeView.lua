@@ -18,12 +18,14 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.SelectTalentItem, slot0._onSelectTalentItem, slot0)
+	slot0:addEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0._onRefreshTalent, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.SelectTalentItem, slot0._onSelectTalentItem, slot0)
+	slot0:removeEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0._onRefreshTalent, slot0)
 end
 
 function slot0._editableInitView(slot0)
@@ -41,6 +43,11 @@ function slot0._onSelectTalentItem(slot0)
 	for slot4, slot5 in pairs(slot0.nodeItems) do
 		slot5:refreshSelect()
 	end
+end
+
+function slot0._onRefreshTalent(slot0)
+	slot0:refreshParam()
+	slot0:refreshView()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -94,7 +101,7 @@ function slot0.updateLineItem(slot0, slot1, slot2)
 	slot3 = slot0:getLineItem(slot1, slot2)
 	slot4 = slot0.talentTree:getNode(slot1)
 
-	if not slot4:isActiveTalent() and not slot4:isActiveGroup() and slot4:isParentActive() and slot0.talentTree:getNode(slot2):isActiveTalent() then
+	if not slot4:isActiveTalent() and not slot4:isActiveGroup() and slot4:isParentActive() and slot0.talentTree:getNode(slot2):isActiveTalent() and not slot0.talentTree:isSelectedSystemTalentPlan() then
 		if slot3.isGray then
 			slot3.anim:Play("tocanlight")
 		else
@@ -106,7 +113,7 @@ function slot0.updateLineItem(slot0, slot1, slot2)
 		slot3.anim:Play("gray")
 	end
 
-	slot3.isGray = not slot10 and not slot6 and not slot8
+	slot3.isGray = not slot11 and not slot6 and not slot8
 	slot3.isActive = slot6 and slot8
 
 	slot0:updateLineItemPos(slot3, slot1, slot2)

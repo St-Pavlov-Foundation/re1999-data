@@ -138,13 +138,18 @@ function slot0.setCardLock(slot0, slot1, slot2, slot3, slot4)
 
 	if not slot5 then
 		slot7 = lua_skill.configDict[slot1].isBigSkill == 1 and true or false
-		slot8 = FightCardModel.instance:getSkillLv(slot0, slot1)
+
+		if lua_skill_next.configDict[slot1] then
+			slot7 = false
+		end
+
+		slot8 = FightCardDataHelper.getSkillLv(slot0, slot1)
 		slot9 = uv0._getCardLockReason(slot0, slot1, slot4)
 
 		gohelper.setActive(gohelper.findChild(slot2, "normal"), not slot7)
 		gohelper.setActive(gohelper.findChild(slot2, "bigskill"), slot7)
 
-		for slot15 = 1, 4 do
+		for slot15 = 0, 4 do
 			gohelper.setActive(gohelper.findChild(slot15 == FightEnum.UniqueSkillCardLv and slot11 or slot10, tostring(slot15)), slot15 == slot8)
 
 			if slot15 == slot8 then
@@ -188,13 +193,13 @@ function slot0._setCardPreRemove(slot0, slot1, slot2)
 end
 
 function slot0.setCardPreRemove(slot0, slot1, slot2, slot3)
-	slot4 = FightCardModel.instance:isUniqueSkill(slot0, slot1)
-	slot5 = FightCardModel.instance:getSkillLv(slot0, slot1)
+	slot4 = FightCardDataHelper.isBigSkill(slot1)
+	slot5 = FightCardDataHelper.getSkillLv(slot0, slot1)
 
 	gohelper.setActive(gohelper.findChild(slot2, "normal"), not slot4)
 	gohelper.setActive(gohelper.findChild(slot2, "bigskill"), slot4)
 
-	for slot11 = 1, 4 do
+	for slot11 = 0, 4 do
 		gohelper.setActive(gohelper.findChild(slot11 == FightEnum.UniqueSkillCardLv and slot7 or slot6, tostring(slot11)), slot11 == slot5)
 
 		if slot11 == slot5 then
@@ -208,12 +213,12 @@ end
 
 function slot0.setCardUnLock(slot0, slot1, slot2)
 	slot4 = lua_skill.configDict[slot1].isBigSkill == 1 and true or false
-	slot5 = FightCardModel.instance:getSkillLv(slot0, slot1)
+	slot5 = FightCardDataHelper.getSkillLv(slot0, slot1)
 
 	gohelper.setActive(gohelper.findChild(slot2, "normal"), not slot4)
 	gohelper.setActive(gohelper.findChild(slot2, "bigskill"), slot4)
 
-	for slot11 = 1, 4 do
+	for slot11 = 0, 4 do
 		gohelper.setActive(gohelper.findChild(slot11 == FightEnum.UniqueSkillCardLv and slot7 or slot6, tostring(slot11)), slot11 == slot5)
 
 		if slot11 == slot5 then
@@ -244,11 +249,11 @@ function slot0.canPreRemove(slot0, slot1, slot2, slot3)
 		return false
 	end
 
-	if FightBuffHelper.hasFeature(slot4, slot3, FightEnum.BuffFeature.Dream) and not FightCardModel.instance:isUniqueSkill(slot0, slot1) then
+	if FightBuffHelper.hasFeature(slot4, slot3, FightEnum.BuffFeature.Dream) and not FightCardDataHelper.isBigSkill(slot1) then
 		return false
 	end
 
-	for slot9, slot10 in ipairs(FightCardModel.instance:getCardOps()) do
+	for slot9, slot10 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
 		if slot10 == slot2 then
 			return false
 		end
@@ -359,8 +364,14 @@ function slot0.isLockByLockBuffType(slot0, slot1, slot2)
 					return true
 				end
 			end
-		elseif slot5[slot1.effectTag] == true and slot5.bigSkill == slot3 then
-			return true
+		else
+			if slot3 and slot5.bigSkill then
+				return true
+			end
+
+			if slot5[slot1.effectTag] == true and slot5.bigSkill == slot3 then
+				return true
+			end
 		end
 	end
 end

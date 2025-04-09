@@ -635,7 +635,7 @@ function slot0._onClickEquip(slot0)
 		}
 
 		if slot0.trialCO then
-			slot0._viewParam.heroMo = HeroGroupTrialModel.instance:getHeroMo(slot0.trialCO.heroId)
+			slot0._viewParam.heroMo = HeroGroupTrialModel.instance:getHeroMo(slot0.trialCO)
 
 			if slot0.trialCO.equipId > 0 then
 				slot0._viewParam.equipMo = slot0._viewParam.heroMo.trialEquipMo

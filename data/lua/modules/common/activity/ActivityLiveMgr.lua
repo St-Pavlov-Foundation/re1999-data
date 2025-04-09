@@ -15,7 +15,7 @@ end
 
 function slot0.initActivityMgrList(slot0)
 	slot0.actMgrInstanceList = {
-		ActivityLiveMgr2_6.instance
+		ActivityLiveMgr2_7.instance
 	}
 	slot0.actId2ViewList = {}
 

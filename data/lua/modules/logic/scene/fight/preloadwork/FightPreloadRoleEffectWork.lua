@@ -87,7 +87,7 @@ function slot0._analyseEffectUrlList(slot0)
 	slot4 = {}
 
 	if FightModel.instance:getFightParam().isReplay then
-		slot6 = FightCardModel.instance:getHandCards()
+		slot6 = FightDataHelper.handCardMgr.handCard
 
 		if FightReplayModel.instance:getList() and slot7[1] then
 			for slot12, slot13 in ipairs(slot8.opers) do

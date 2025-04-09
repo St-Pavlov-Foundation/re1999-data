@@ -5,8 +5,7 @@ slot0 = class("FightWorkMissileASFD", BaseWork)
 function slot0.ctor(slot0, slot1, slot2)
 	uv0.super.ctor(slot0, slot1)
 
-	slot0.stepMo = slot1
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0.asfdContext = slot2
 end
 
@@ -17,7 +16,7 @@ function slot0.onStart(slot0)
 		return slot0:onDone(true)
 	end
 
-	slot1:emitMissile(slot0.stepMo, slot0.asfdContext)
+	slot1:emitMissile(slot0.fightStepData, slot0.asfdContext)
 	TaskDispatcher.runDelay(slot0.waitDone, slot0, FightASFDConfig.instance:getMissileInterval(slot0.asfdContext.emitterAttackNum) / FightModel.instance:getUISpeed())
 end
 

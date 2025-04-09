@@ -11,6 +11,7 @@ function slot0.onInit(slot0)
 	slot0._signature = ""
 	slot0._birthday = ""
 	slot0._showHeros = {}
+	slot0._simpleProperties = {}
 	slot0._registerTime = 0
 	slot0._lastLoginTime = 0
 	slot0._lastLogoutTime = 0
@@ -358,6 +359,14 @@ end
 
 function slot0.setMainThumbnail(slot0, slot1)
 	slot0._mainThumbnail = slot1
+end
+
+function slot0.GMSetMainThumbnail(slot0)
+	if isDebugBuild and PlayerPrefsHelper.getNumber(PlayerPrefsKey.GMToolViewOpenMainThumbnail, 0) == 1 then
+		slot0._mainThumbnail = false
+
+		logError("GM设置了登录开启缩略页，请知悉！")
+	end
 end
 
 function slot0.getMainThumbnail(slot0)

@@ -11,6 +11,7 @@ slot1 = {
 	waterDistance = 11,
 	specialRate = 3,
 	roleVoice = 12,
+	hideFootprint = 13,
 	moveRate = 5,
 	moveInterval = 4
 }

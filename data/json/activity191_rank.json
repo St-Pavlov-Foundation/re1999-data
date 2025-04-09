@@ -1,0 +1,30 @@
+[
+  {
+    "rank": 1,
+    "fightLevel": "D"
+  },
+  {
+    "rank": 2,
+    "fightLevel": "C"
+  },
+  {
+    "rank": 3,
+    "fightLevel": "B"
+  },
+  {
+    "rank": 4,
+    "fightLevel": "A"
+  },
+  {
+    "rank": 5,
+    "fightLevel": "S"
+  },
+  {
+    "rank": 6,
+    "fightLevel": "SS"
+  },
+  {
+    "rank": 7,
+    "fightLevel": "SSS"
+  }
+]

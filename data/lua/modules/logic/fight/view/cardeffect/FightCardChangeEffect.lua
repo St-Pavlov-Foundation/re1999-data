@@ -47,7 +47,14 @@ function slot0._onLvEffectLoaded(slot0, slot1)
 	gohelper.onceAddComponent(slot1:getInstGO(), typeof(ZProj.EffectTimeScale)):SetTimeScale(FightModel.instance:getUISpeed())
 
 	slot2 = slot0._paramDict[slot1]
-	slot5 = FightCardModel.instance:isUniqueSkill(slot0._entityId, slot0._skillId)
+	slot3 = slot2.newCardLevel
+	slot4 = slot2.oldCardLv
+	slot5 = FightCardDataHelper.isBigSkill(slot0._skillId)
+
+	if lua_skill_next.configDict[slot0._skillId] then
+		slot5 = false
+	end
+
 	slot6 = slot1:getInstGO()
 
 	gohelper.setActive(gohelper.findChild(slot6, "#card/normal_effect"), not slot5)
@@ -55,7 +62,7 @@ function slot0._onLvEffectLoaded(slot0, slot1)
 
 	for slot15 = 0, gohelper.findChild(slot6, "#star").transform.childCount - 1 do
 		if slot9:GetChild(slot15) then
-			gohelper.setActive(slot16.gameObject, slot16.name == slot2.oldCardLv .. "_" .. slot2.newCardLevel)
+			gohelper.setActive(slot16.gameObject, slot16.name == slot4 .. "_" .. slot3)
 		end
 	end
 end

@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventAtkSpineLookDir", package.seeall)
 
-slot0 = class("FightTLEventAtkSpineLookDir")
+slot0 = class("FightTLEventAtkSpineLookDir", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot8 = FightHelper.getEntity(slot1.fromId).spine:getLookDir()
 
 	for slot12, slot13 in ipairs(slot0._getEntitys(slot1, string.nilorempty(slot3[2]) and "1" or slot3[2])) do
@@ -38,7 +38,7 @@ function slot0._getEntitys(slot0, slot1)
 	elseif slot1 == "2" then
 		slot5 = {}
 
-		for slot9, slot10 in ipairs(slot0.actEffectMOs) do
+		for slot9, slot10 in ipairs(slot0.actEffect) do
 			if FightHelper.getEntity(slot10.targetId) and slot11:getSide() ~= slot3:getSide() and not slot5[slot10.targetId] then
 				table.insert(slot2, slot11)
 

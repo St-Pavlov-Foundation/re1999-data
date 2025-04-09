@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightStageMgr", package.seeall)
 
-slot0 = FightDataClass("FightStageMgr")
+slot0 = FightDataClass("FightStageMgr", FightDataMgrBase)
 slot0.StageType = {
 	Normal = GameUtil.getEnumId(),
 	Play = GameUtil.getEnumId(),
@@ -236,7 +236,7 @@ function slot0.isFree(slot0, slot1, slot2)
 		return
 	end
 
-	if #slot0.dataMgr.operationMgr.operationStates > 0 then
+	if #slot0.dataMgr.operationStateMgr.operationStates > 0 then
 		return
 	end
 

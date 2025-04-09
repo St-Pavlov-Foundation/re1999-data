@@ -15,7 +15,7 @@ function slot0.onStart(slot0, slot1)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 10)
 
 	if slot0._beginRoundOp then
-		FightController.instance:dispatchEvent(FightEvent.PlayHandCard, FightCardModel.instance:getHandCards()[slot0._beginRoundOp.param1] and slot2 or 1, slot0._beginRoundOp.toId, slot0._beginRoundOp.param2)
+		FightController.instance:dispatchEvent(FightEvent.PlayHandCard, FightDataHelper.handCardMgr.handCard[slot0._beginRoundOp.param1] and slot2 or 1, slot0._beginRoundOp.toId, slot0._beginRoundOp.param2)
 	end
 end
 

@@ -3,9 +3,9 @@ module("modules.logic.fight.system.work.FightParallelPlayNextSkillStep", package
 slot0 = class("FightParallelPlayNextSkillStep", BaseWork)
 
 function slot0.ctor(slot0, slot1, slot2, slot3)
-	slot0.stepMO = slot1
-	slot0.prevStepMO = slot2
-	slot0.fightStepMOs = slot3
+	slot0.fightStepData = slot1
+	slot0.preStepData = slot2
+	slot0.fightStepDataList = slot3
 
 	FightController.instance:registerCallback(FightEvent.ParallelPlayNextSkillCheck, slot0._parallelPlayNextSkillCheck, slot0)
 end
@@ -15,42 +15,42 @@ function slot0.onStart(slot0)
 end
 
 function slot0._parallelPlayNextSkillCheck(slot0, slot1)
-	if slot1 ~= slot0.prevStepMO then
+	if slot1 ~= slot0.preStepData then
 		return
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot0.prevStepMO.fromId) then
+	if not FightDataHelper.entityMgr:getById(slot0.preStepData.fromId) then
 		return
 	end
 
-	if FightCardModel.instance:isUniqueSkill(slot2.fromId, slot0.prevStepMO.actId) then
+	if FightCardDataHelper.isBigSkill(slot0.preStepData.actId) then
 		return
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot0.stepMO.fromId) then
+	if not FightDataHelper.entityMgr:getById(slot0.fightStepData.fromId) then
 		return
 	end
 
-	if FightCardModel.instance:isUniqueSkill(slot0.stepMO.fromId, slot0.stepMO.actId) then
+	if FightCardDataHelper.isBigSkill(slot0.fightStepData.actId) then
 		return
 	end
 
-	if FightSkillMgr.instance:isEntityPlayingTimeline(slot0.stepMO.fromId) then
+	if FightSkillMgr.instance:isEntityPlayingTimeline(slot0.fightStepData.fromId) then
 		return
 	end
 
-	if slot0.stepMO.fromId == slot0.prevStepMO.fromId then
+	if slot0.fightStepData.fromId == slot0.preStepData.fromId then
 		return
 	end
 
-	if FightDataHelper.entityMgr:getById(slot0.stepMO.fromId).side ~= FightDataHelper.entityMgr:getById(slot0.prevStepMO.fromId).side then
+	if FightDataHelper.entityMgr:getById(slot0.fightStepData.fromId).side ~= FightDataHelper.entityMgr:getById(slot0.preStepData.fromId).side then
 		return
 	end
 
-	if slot0.fightStepMOs then
-		for slot10 = (tabletool.indexOf(slot0.fightStepMOs, slot1) or #slot0.fightStepMOs) + 1, #slot0.fightStepMOs do
-			if slot0.fightStepMOs[slot10].actType == FightEnum.ActType.EFFECT then
-				for slot15, slot16 in ipairs(slot11.actEffectMOs) do
+	if slot0.fightStepDataList then
+		for slot10 = (tabletool.indexOf(slot0.fightStepDataList, slot1) or #slot0.fightStepDataList) + 1, #slot0.fightStepDataList do
+			if slot0.fightStepDataList[slot10].actType == FightEnum.ActType.EFFECT then
+				for slot15, slot16 in ipairs(slot11.actEffect) do
 					if slot16.effectType == FightEnum.EffectType.DEAD and slot1.fromId == slot16.targetId then
 						return
 					end
@@ -61,7 +61,7 @@ function slot0._parallelPlayNextSkillCheck(slot0, slot1)
 
 	FightController.instance:unregisterCallback(FightEvent.ParallelPlayNextSkillCheck, slot0._parallelPlayNextSkillCheck, slot0)
 
-	slot0.stepMO.isParallelStep = true
+	slot0.fightStepData.isParallelStep = true
 
 	FightController.instance:dispatchEvent(FightEvent.ParallelPlayNextSkillDoneThis, slot1)
 end
