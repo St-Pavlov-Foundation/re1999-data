@@ -125,7 +125,7 @@ function slot0._onPlayHandCard(slot0, slot1, slot2)
 end
 
 function slot0._tweenHandCardContainerScale(slot0)
-	slot2 = FightCardModel.instance:getHandCardContainerScale(slot0._clothSkillExpand)
+	slot2 = FightCardDataHelper.getHandCardContainerScale(slot0._clothSkillExpand)
 	slot0._scaleTweenId = ZProj.TweenHelper.DOScale(slot0._handCardGO.transform, slot2, slot2, slot2, FightWorkEffectDistributeCard.getHandCardScaleTime())
 end
 

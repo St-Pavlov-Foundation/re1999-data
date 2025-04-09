@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1001,
+    "triggerPoint": 910,
+    "effect": "poison",
+    "cover": "InfiniteOverlays",
+    "limit": 50
+  },
+  {
+    "id": 1002,
+    "triggerPoint": 900,
+    "effect": "petrify",
+    "cover": "InfiniteOverlays",
+    "limit": 50
+  },
+  {
+    "id": 1003,
+    "triggerPoint": 101,
+    "effect": "damageUp",
+    "cover": "InfiniteOverlays",
+    "limit": 50
+  }
+]

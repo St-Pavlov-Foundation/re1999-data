@@ -31,8 +31,8 @@ function slot0._onPlayHandCard(slot0, slot1)
 		return
 	end
 
-	if #FightCardModel.instance:getEntityOps(slot1.uid, FightEnum.CardOpType.PlayCard) > 0 and not slot0._readyAttackWork then
-		slot4 = FightDataHelper.entityMgr:getById(slot1.uid) and FightCardModel.instance:getCardOps()
+	if #FightDataHelper.operationDataMgr:getEntityOps(slot1.uid, FightEnum.CardOpType.PlayCard) > 0 and not slot0._readyAttackWork then
+		slot4 = FightDataHelper.entityMgr:getById(slot1.uid) and FightDataHelper.operationDataMgr:getOpList()
 
 		if FightViewHandCardItemLock.canUseCardSkill(slot1.uid, slot1.skillId, slot4 and FightBuffHelper.simulateBuffList(slot3, slot4[#slot4])) then
 			slot0._readyAttackWork = FightReadyAttackWork.New()
@@ -47,7 +47,7 @@ function slot0._onRevertCard(slot0, slot1)
 		return
 	end
 
-	if slot1:isPlayCard() and (not FightCardModel.instance:getEntityOps(slot0.entity.id) or #slot2 == 0) and slot0._readyAttackWork then
+	if slot1:isPlayCard() and (not FightDataHelper.operationDataMgr:getEntityOps(slot0.entity.id) or #slot2 == 0) and slot0._readyAttackWork then
 		slot0.entity:resetAnimState()
 		slot0:_clearReadyAttackWork()
 	end

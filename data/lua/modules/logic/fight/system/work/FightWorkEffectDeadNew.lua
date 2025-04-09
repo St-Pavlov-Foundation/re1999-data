@@ -9,13 +9,13 @@ slot5 = 0.1
 slot6 = 0.6
 
 function slot0.ctor(slot0, slot1, slot2, slot3)
-	slot0._fightStepMO = slot1
-	slot0._actEffectMO = slot2
+	slot0.fightStepData = slot1
+	slot0.actEffectData = slot2
 	slot0._waitForLastHit = slot3
 end
 
 function slot0.onStart(slot0)
-	slot0._deadEntity = FightHelper.getEntity(slot0._actEffectMO.targetId)
+	slot0._deadEntity = FightHelper.getEntity(slot0.actEffectData.targetId)
 
 	if slot0._deadEntity and not slot0._deadEntity.isDead then
 		slot0._deadEntity.isDead = true
@@ -34,12 +34,12 @@ function slot0.onStart(slot0)
 
 		FightController.instance:dispatchEvent(FightEvent.OnStartEntityDead, slot0._deadEntity.id)
 
-		if slot0._fightStepMO.actType == FightEnum.ActType.SKILL then
-			slot0._deadEntity.deadBySkillId = slot0._fightStepMO.actId
+		if slot0.fightStepData.actType == FightEnum.ActType.SKILL then
+			slot0._deadEntity.deadBySkillId = slot0.fightStepData.actId
 		end
 
 		if slot0._waitForLastHit then
-			if not FightHelper.getEntity(slot0._fightStepMO.fromId) then
+			if not FightHelper.getEntity(slot0.fightStepData.fromId) then
 				slot0:_playDeadWork()
 
 				return
@@ -63,8 +63,8 @@ function slot0._invokeEntityDeadImmediately(slot0, slot1, slot2)
 end
 
 function slot0._onLastHit(slot0, slot1, slot2)
-	if slot0._fightStepMO == slot2 then
-		if slot2.actId ~= slot0._fightStepMO.actId then
+	if slot0.fightStepData == slot2 then
+		if slot2.actId ~= slot0.fightStepData.actId then
 			return
 		end
 
@@ -92,7 +92,7 @@ function slot0._onLastHit(slot0, slot1, slot2)
 end
 
 function slot0._playSameSKillOneDone(slot0, slot1)
-	if slot0._fightStepMO == slot1 then
+	if slot0.fightStepData == slot1 then
 		FightController.instance:unregisterCallback(FightEvent.OnSkillLastHit, slot0._onLastHit, slot0)
 		FightController.instance:unregisterCallback(FightEvent.OnSkillPlayFinish, slot0._onSkillPlayFinish, slot0)
 		FightController.instance:unregisterCallback(FightEvent.PlaySameSkillOneDone, slot0._playSameSKillOneDone, slot0)
@@ -101,7 +101,7 @@ function slot0._playSameSKillOneDone(slot0, slot1)
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot0._fightStepMO == slot3 then
+	if slot0.fightStepData == slot3 then
 		FightController.instance:unregisterCallback(FightEvent.OnSkillLastHit, slot0._onLastHit, slot0)
 		FightController.instance:unregisterCallback(FightEvent.OnSkillPlayFinish, slot0._onSkillPlayFinish, slot0)
 		FightController.instance:unregisterCallback(FightEvent.PlaySameSkillOneDone, slot0._playSameSKillOneDone, slot0)
@@ -252,7 +252,7 @@ function slot0._delayNoDeadEffectDone(slot0)
 end
 
 function slot0._delayDone(slot0)
-	logError("dead step play timeout, targetId = " .. slot0._actEffectMO.targetId)
+	logError("dead step play timeout, targetId = " .. slot0.actEffectData.targetId)
 	slot0:_doneAndRemoveEntity()
 end
 
@@ -346,8 +346,8 @@ function slot0.clearWork(slot0)
 	TaskDispatcher.cancelTask(slot0._deadComplete, slot0)
 	TaskDispatcher.cancelTask(slot0._delayNoDeadEffectDone, slot0)
 
-	slot0._fightStepMO = nil
-	slot0._actEffectMO = nil
+	slot0.fightStepData = nil
+	slot0.actEffectData = nil
 end
 
 function slot0.onResume(slot0)

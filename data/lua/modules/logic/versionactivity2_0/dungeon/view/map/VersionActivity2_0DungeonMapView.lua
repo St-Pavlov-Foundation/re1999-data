@@ -80,11 +80,11 @@ function slot0._btncloseviewOnClick(slot0)
 end
 
 function slot0._btnactivitystoreOnClick(slot0)
-	VersionActivity2_0DungeonController.instance:openStoreView()
+	ReactivityController.instance:openReactivityStoreView(VersionActivity2_7Enum.ActivityId.Reactivity)
 end
 
 function slot0._btnactivitytaskOnClick(slot0)
-	VersionActivity2_0DungeonController.instance:openTaskView()
+	ReactivityController.instance:openReactivityTaskView(VersionActivity2_7Enum.ActivityId.Reactivity)
 end
 
 function slot0._btngraffitiOnClick(slot0)
@@ -312,7 +312,7 @@ function slot0.refreshMask(slot0)
 end
 
 function slot0.refreshStoreRemainTime(slot0)
-	if TimeUtil.OneDaySecond < ActivityModel.instance:getActMO(VersionActivity2_0Enum.ActivityId.DungeonStore):getRealEndTimeStamp() - ServerTime.now() then
+	if TimeUtil.OneDaySecond < ActivityModel.instance:getActMO(VersionActivity2_7Enum.ActivityId.ReactivityStore):getRealEndTimeStamp() - ServerTime.now() then
 		slot0._txtStoreRemainTime.text = Mathf.Floor(slot4 / TimeUtil.OneDaySecond) .. "d"
 
 		return

@@ -105,6 +105,18 @@ function slot0._btnsummon1OnClick(slot0)
 		return
 	end
 
+	if SummonModel.instance:getSummonFullExSkillHero(slot1.id, slot0:getPickHeroIds(slot1)) == nil then
+		slot0:_btnsummon1OnClick_2()
+	else
+		GameFacade.showOptionAndParamsMessageBox(MessageBoxIdDefine.SummonHeroExFull, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, slot1.id, slot0._btnsummon1OnClick_2, nil, , slot0, nil, , HeroConfig.instance:getHeroCO(slot3).name)
+	end
+end
+
+function slot0._btnsummon1OnClick_2(slot0)
+	if not SummonMainModel.instance:getCurPool() then
+		return
+	end
+
 	slot2, slot3, slot4 = SummonMainModel.getCostByConfig(slot1.cost1)
 
 	if not (slot4 <= ItemModel.instance:getItemQuantity(slot2, slot3)) and SummonMainModel.instance:getOwnCostCurrencyNum() < SummonMainModel.instance.everyCostCount then
@@ -137,6 +149,18 @@ function slot0._btnsummon1OnClick(slot0)
 end
 
 function slot0._btnsummon10OnClick(slot0)
+	if not SummonMainModel.instance:getCurPool() then
+		return
+	end
+
+	if SummonModel.instance:getSummonFullExSkillHero(slot1.id, slot0:getPickHeroIds(slot1)) == nil then
+		slot0:_btnsummon10OnClick_2()
+	else
+		GameFacade.showOptionAndParamsMessageBox(MessageBoxIdDefine.SummonHeroExFull, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, slot1.id, slot0._btnsummon10OnClick_2, nil, , slot0, nil, , HeroConfig.instance:getHeroCO(slot3).name)
+	end
+end
+
+function slot0._btnsummon10OnClick_2(slot0)
 	if not SummonMainModel.instance:getCurPool() then
 		return
 	end
@@ -502,9 +526,25 @@ function slot0._btnOpenOnClick1(slot0)
 end
 
 function slot0._btnOpenOnClick2(slot0)
+	slot1 = SummonMainModel.instance:getCurPool()
+	slot4 = nil
+
+	for slot8, slot9 in ipairs(SummonConfig.instance:getStrongCustomChoiceIds(slot1.id)) do
+		if slot9 == slot0:getPickHeroIds(slot1)[1] then
+			slot4 = slot8
+
+			break
+		end
+	end
+
+	if slot4 then
+		table.remove(slot2, slot4)
+		table.insert(slot2, 1, slot3)
+	end
+
 	ViewMgr.instance:openView(ViewName.VersionActivity2_3NewCultivationDetailView, {
 		showType = VersionActivity2_3NewCultivationDetailView.DISPLAY_TYPE.Effect,
-		heroId = slot0:getPickHeroIds(SummonMainModel.instance:getCurPool())
+		heroId = slot2
 	})
 end
 

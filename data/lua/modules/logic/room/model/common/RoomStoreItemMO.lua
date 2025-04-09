@@ -70,7 +70,7 @@ function slot0.getStoreGoodsMO(slot0)
 end
 
 function slot0.checkShowTicket(slot0)
-	if slot0.storeGoodsMO.belongStoreId == StoreEnum.SubRoomOld or slot0.storeGoodsMO.belongStoreId == StoreEnum.SubRoomNew then
+	if slot0.storeGoodsMO.belongStoreId == StoreEnum.StoreId.OldRoomStore or slot0.storeGoodsMO.belongStoreId == StoreEnum.StoreId.NewRoomStore then
 		if slot0.materialType ~= MaterialEnum.MaterialType.BlockPackage and slot0.materialType ~= MaterialEnum.MaterialType.Building then
 			return false
 		end

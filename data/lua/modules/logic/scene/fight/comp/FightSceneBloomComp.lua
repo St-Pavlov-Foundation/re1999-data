@@ -175,7 +175,7 @@ function slot0._checkOneCameraPPVolume(slot0, slot1)
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2)
-	if slot1:getMO() and slot3:isUniqueSkill(slot2) then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
 		for slot8, slot9 in ipairs(FightHelper.getSideEntitys(slot3.side)) do
 			GameSceneMgr.instance:getCurScene().bloom:setSingleEntityPass(uv0.Bloom_invisible, false, slot9, "buff_bloom")
 		end
@@ -183,7 +183,7 @@ function slot0._onSkillPlayStart(slot0, slot1, slot2)
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2)
-	if slot1:getMO() and slot3:isUniqueSkill(slot2) then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
 		for slot8, slot9 in ipairs(FightHelper.getSideEntitys(slot3.side)) do
 			if slot9.buff then
 				slot9.buff:_udpateBuffVariant()

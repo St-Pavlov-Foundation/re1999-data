@@ -83,11 +83,7 @@ function slot0._onGetFightCardDeckInfoReply(slot0, slot1)
 	slot2 = {}
 
 	for slot6, slot7 in ipairs(slot1.deckInfos) do
-		slot8 = FightCardInfoMO.New()
-
-		slot8:init(slot7)
-
-		if not slot2[slot8.uid] then
+		if not slot2[FightCardInfoData.New(slot7).uid] then
 			slot2[slot9] = {}
 		end
 

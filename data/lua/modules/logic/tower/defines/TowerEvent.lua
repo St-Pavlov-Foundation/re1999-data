@@ -19,5 +19,10 @@ slot0.ActiveTalent = 10102
 slot0.LocalKeyChange = 10103
 slot0.RefreshTowerReddot = 10104
 slot0.TowerUpdate = 10105
+slot0.RefreshTalent = 10106
+slot0.ChangeTalentPlan = 10107
+slot0.RenameTalentPlan = 10108
+slot0.OnHandleInStoreView = 10109
+slot0.OnEnterStoreView = 10110
 
 return slot0

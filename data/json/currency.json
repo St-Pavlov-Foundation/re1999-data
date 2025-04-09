@@ -1454,5 +1454,53 @@
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
     "sources": ""
+  },
+  {
+    "id": 28,
+    "name": "迷思沉淀",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "228",
+    "smallIcon": "228_1",
+    "useDesc": "自迷思海中凝结而成的晶体固化物。可用于在回声港湾商店中兑换。",
+    "desc": "“在拥有意识的遗迹群落中时常能捡到那些漂亮的小石子，它们反射的日光甚至可以照亮回声屿的深处”。知道真相的人会告诉你，这个传闻并不虚假。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
+  },
+  {
+    "id": 2701,
+    "name": "宇宙玻片",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2701",
+    "smallIcon": "",
+    "useDesc": "自无垠处寄往渺小星球的一封信，作为“远方”存在的证明，被珍重地收藏在此。可用于特别柜台兑换。",
+    "desc": "遥远的星群寻索着注目它们的眼睛。在一无所有的暗处，人群辨识出那片光晕，永恒的河流尽头才亮起了仙后座星云。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
+  },
+  {
+    "id": 2702,
+    "name": "木偶之芯",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2302",
+    "smallIcon": "2302_1",
+    "useDesc": "极具价值的小玩意儿。作为“新巴别塔”魔精公司发行的专属货币，用以购置与魔精相关的一切。",
+    "desc": "亮闪闪的小玩意儿总引得卡邦克鲁们蹦跳得更高，连仪态良好的绅士也不例外。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
   }
 ]

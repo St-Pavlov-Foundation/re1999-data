@@ -42,8 +42,17 @@ function slot0.copyQuickEditCardList(slot0)
 		end
 	end
 
-	slot6 = slot0.isTowerBattle
 	slot7 = slot0.isWeekWalk_2
+	slot8 = {}
+
+	if slot0.isTowerBattle then
+		for slot12 = #slot2, 1, -1 do
+			if TowerModel.instance:isHeroBan(slot2[slot12].heroId) then
+				table.insert(slot8, slot2[slot12])
+				table.remove(slot2, slot12)
+			end
+		end
+	end
 
 	for slot12, slot13 in ipairs(slot1) do
 		if not slot3[slot13.uid] then
@@ -51,7 +60,7 @@ function slot0.copyQuickEditCardList(slot0)
 
 			if slot0.adventure then
 				if WeekWalkModel.instance:getCurMapHeroCd(slot13.heroId) > 0 then
-					table.insert({}, slot13)
+					table.insert(slot8, slot13)
 				else
 					table.insert(slot2, slot13)
 				end

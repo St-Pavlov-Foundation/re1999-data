@@ -1,6 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventDefFreeze", package.seeall)
 
-slot0 = class("FightTLEventDefFreeze")
+slot0 = class("FightTLEventDefFreeze", FightTimelineTrackItem)
 slot1 = {
 	[FightEnum.EffectType.MISS] = true,
 	[FightEnum.EffectType.DAMAGE] = true,
@@ -12,7 +12,7 @@ slot1 = {
 	[FightEnum.EffectType.SHIELD] = true
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot4 = slot2 * FightModel.instance:getSpeed()
 	slot0._action = slot3[1]
 	slot5 = tonumber(slot3[2]) or 0
@@ -35,7 +35,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_onDurationEnd()
 end
 
@@ -49,7 +49,7 @@ function slot0._getDefenders(slot0, slot1, slot2)
 
 	slot5 = {}
 
-	for slot9, slot10 in ipairs(slot1.actEffectMOs) do
+	for slot9, slot10 in ipairs(slot1.actEffect) do
 		if uv0[slot10.effectType] then
 			if slot3 == 1 then
 				slot11 = FightHelper.getEntity(slot1.fromId)
@@ -106,10 +106,10 @@ function slot0._onDurationEnd(slot0)
 		end
 	end
 
-	slot0:reset()
+	slot0:onDestructor()
 end
 
-function slot0.reset(slot0)
+function slot0.onDestructor(slot0)
 	if slot0._defenders then
 		for slot4, slot5 in ipairs(slot0._defenders) do
 			slot5.spine:setFreeze(false)
@@ -119,10 +119,6 @@ function slot0.reset(slot0)
 	slot0._defenders = nil
 
 	TaskDispatcher.cancelTask(slot0._startFreeze, slot0)
-end
-
-function slot0.dispose(slot0)
-	slot0:reset()
 end
 
 return slot0

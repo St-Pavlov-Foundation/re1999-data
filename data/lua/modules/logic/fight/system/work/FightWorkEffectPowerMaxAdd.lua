@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkEffectPowerMaxAdd", package.see
 slot0 = class("FightWorkEffectPowerMaxAdd", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:onDone(true)
 
 		return
@@ -15,8 +15,8 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	if slot3:getPowerInfo(slot0._actEffectMO.configEffect) then
-		FightController.instance:dispatchEvent(FightEvent.PowerMaxChange, slot1, slot4, slot0._actEffectMO.effectNum)
+	if slot3:getPowerInfo(slot0.actEffectData.configEffect) then
+		FightController.instance:dispatchEvent(FightEvent.PowerMaxChange, slot1, slot4, slot0.actEffectData.effectNum)
 	end
 
 	slot0:onDone(true)

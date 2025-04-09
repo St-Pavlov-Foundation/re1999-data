@@ -8,6 +8,7 @@ function slot0.ctor(slot0, slot1)
 	slot0.curUseStoneId = 0
 	slot0.unlockStoneIds = nil
 	slot0.stoneMoList = nil
+	slot0.upStoneId = nil
 	slot0.heroId = slot1
 	slot0.maxRank = 0
 	slot0.maxLevel = {}
@@ -41,6 +42,36 @@ function slot0.isSlotMaxLevel(slot0)
 	return not slot0:getNextDestinySlotCo()
 end
 
+function slot0.isAllFacetUnlock(slot0)
+	if not slot0.stoneMoList then
+		return false
+	end
+
+	for slot4, slot5 in pairs(slot0.stoneMoList) do
+		if not slot5.isUnlock then
+			return false
+		end
+	end
+
+	return true
+end
+
+function slot0.setUpStoneId(slot0, slot1)
+	slot0.upStoneId = slot1
+end
+
+function slot0.getUpStoneId(slot0)
+	return slot0.upStoneId
+end
+
+function slot0.clearUpStoneId(slot0)
+	slot0.upStoneId = nil
+end
+
+function slot0.checkAllUnlock(slot0)
+	return slot0:isSlotMaxLevel() and slot0:isAllFacetUnlock()
+end
+
 function slot0.setStoneMo(slot0)
 	slot1 = CharacterDestinyConfig.instance:getFacetIdsByHeroId(slot0.heroId)
 
@@ -62,6 +93,10 @@ function slot0.setStoneMo(slot0)
 			slot7:refreshUse(slot6 == slot0.curUseStoneId)
 		end
 	end
+end
+
+function slot0.getStoneMoList(slot0)
+	return slot0.stoneMoList and slot0.stoneMoList
 end
 
 function slot0.getStoneMo(slot0, slot1)
@@ -88,16 +123,26 @@ function slot0.getAddAttrValueByLevel(slot0, slot1, slot2)
 	return CharacterDestinyConfig.instance:getCurDestinySlotAddAttr(slot0.heroId, slot1, slot2)
 end
 
-function slot0.getAddValueByAttrId(slot0, slot1, slot2)
+function slot0.getAddValueByAttrId(slot0, slot1, slot2, slot3)
 	if not (slot1 or slot0:getAddAttrValues())[slot2] then
-		if CharacterDestinyEnum.DestinyUpBaseParseAttr[slot2] then
-			return slot1[slot2] or 0
+		if CharacterDestinyEnum.DestinyUpBaseParseAttr[slot2] and slot5[1] then
+			return (slot1[slot6] or 0) + (slot0:getPercentAddValueByAttrId(slot1, slot2, slot3) or 0)
 		end
 	else
-		return slot3
+		return slot4
 	end
 
 	return 0
+end
+
+function slot0.getPercentAddValueByAttrId(slot0, slot1, slot2, slot3)
+	slot1 = slot1 or slot0:getAddAttrValues()
+
+	if not slot3 and not HeroModel.instance:getById(slot0.heroId) then
+		return 0
+	end
+
+	return math.floor((slot3:getHeroBaseAttrDict()[slot2] or 0) * (slot1[CharacterDestinyEnum.DestinyUpBaseParseAttr[slot2] and slot6[2]] or 0) * 0.01)
 end
 
 function slot0.getRankLevelCount(slot0)

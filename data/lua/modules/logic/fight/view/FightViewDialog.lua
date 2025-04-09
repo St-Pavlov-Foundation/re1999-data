@@ -562,7 +562,7 @@ function slot0._onFightDialogCheck(slot0, slot1, slot2, slot3, slot4)
 end
 
 function slot0._haveSkillCard(slot0, slot1)
-	for slot6, slot7 in ipairs(FightCardModel.instance:getCardOps()) do
+	for slot6, slot7 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
 		if slot7:isPlayCard() and slot1 == slot7.skillId then
 			return true
 		end
@@ -602,7 +602,7 @@ function slot0._detectStepIsDamgeSkill(slot0, slot1)
 			return true
 		end
 
-		if slot0:_haveDamageSkillActEffectMOS(slot1.actEffectMOs) then
+		if slot0:_haveDamageSkillactEffect(slot1.actEffect) then
 			return true
 		end
 	end
@@ -616,9 +616,9 @@ function slot0._haveDamageSkill(slot0, slot1)
 	end
 end
 
-function slot0._haveDamageSkillActEffectMOS(slot0, slot1)
+function slot0._haveDamageSkillactEffect(slot0, slot1)
 	for slot5, slot6 in ipairs(slot1) do
-		if slot6.cus_stepMO and slot0:_detectStepIsDamgeSkill(slot7) then
+		if slot6.fightStep and slot0:_detectStepIsDamgeSkill(slot7) then
 			return
 		end
 	end
@@ -648,7 +648,7 @@ function slot0._onHaveBuffAndHaveDamageSkill_onlyCheckOnce(slot0)
 				if slot15.side == FightEnum.EntitySide.EnemySide then
 					for slot21, slot22 in pairs(slot15:getBuffDic()) do
 						if slot22.buffId == slot9 then
-							if slot0:_haveDamageSkill(FightModel.instance:getCurRoundMO().fightStepMOs) then
+							if FightDataHelper.roundMgr:getRoundData() and slot0:_haveDamageSkill(slot23.fightStep) then
 								slot0:_checkShowDialog(slot5.type, slot9)
 							else
 								slot0:_checkShowDialog(uv0.Type.DetectFail31, slot9)

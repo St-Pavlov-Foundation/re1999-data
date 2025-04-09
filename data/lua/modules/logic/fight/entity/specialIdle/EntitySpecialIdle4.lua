@@ -14,7 +14,7 @@ function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	for slot7, slot8 in ipairs(slot3.actEffectMOs) do
+	for slot7, slot8 in ipairs(slot3.actEffect) do
 		if slot8.effectType == FightEnum.EffectType.EXPOINTCHANGE and slot8.configEffect ~= 0 then
 			FightController.instance:dispatchEvent(FightEvent.PlaySpecialIdle, slot1.id)
 

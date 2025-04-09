@@ -167,7 +167,7 @@ function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
 		[slot10.buff.buffId] = true
 	}
 
-	for slot9, slot10 in ipairs(slot3.actEffectMOs) do
+	for slot9, slot10 in ipairs(slot3.actEffect) do
 		if (slot10.effectType == FightEnum.EffectType.BUFFADD or slot10.effectType == FightEnum.EffectType.BUFFUPDATE) and slot10.buff then
 			-- Nothing
 		end

@@ -3,8 +3,8 @@ module("modules.logic.fight.system.work.FightWorkDamageFromAbsorb", package.seea
 slot0 = class("FightWorkDamageFromAbsorb", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) then
-		if slot0._actEffectMO.effectNum > 0 then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) then
+		if slot0.actEffectData.effectNum > 0 then
 			FightFloatMgr.instance:float(slot1.id, FightEnum.FloatType.damage, slot1:isMySide() and -slot2 or slot2)
 
 			if slot1.nameUI then

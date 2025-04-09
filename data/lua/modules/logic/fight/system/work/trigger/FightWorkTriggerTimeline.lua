@@ -3,12 +3,12 @@ module("modules.logic.fight.system.work.trigger.FightWorkTriggerTimeline", packa
 slot0 = class("FightWorkTriggerTimeline", BaseWork)
 
 function slot0.ctor(slot0, slot1, slot2)
-	slot0._fightStepMO = slot1
-	slot0._actEffectMO = slot2
+	slot0.fightStepData = slot1
+	slot0.actEffectData = slot2
 end
 
 function slot0.onStart(slot0)
-	slot0._config = lua_trigger_action.configDict[slot0._actEffectMO.effectNum]
+	slot0._config = lua_trigger_action.configDict[slot0.actEffectData.effectNum]
 	slot1 = tonumber(slot0._config.param1)
 	slot2 = FightHelper.getEnemyEntityByMonsterId(slot1)
 
@@ -24,14 +24,13 @@ function slot0.onStart(slot0)
 		slot2.skill:playTimeline(slot0._config.param2, {
 			actId = 0,
 			stepUid = 0,
-			actEffectMOs = {
+			actEffect = {
 				{
 					targetId = slot0._entityId
 				}
 			},
-			actEffect = {},
 			fromId = slot0._entityId,
-			toId = slot0._fightStepMO.toId,
+			toId = slot0.fightStepData.toId,
 			actType = FightEnum.ActType.SKILL
 		})
 

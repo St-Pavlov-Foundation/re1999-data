@@ -107,14 +107,14 @@ function slot0.refreshRewardItems(slot0)
 			slot11 = IconMgr.instance:getCommonPropItemIcon(slot0._goRewardContent)
 
 			slot11:setMOValue(slot7[1], slot7[2], slot7[3], nil, true)
-			slot11:setCountFontSize(40)
-			slot11:showStackableNum2()
-			slot11:isShowEffect(true)
 			table.insert(slot0.rewardItemList, slot11)
 		else
 			slot11:setMOValue(slot8, slot9, slot10, nil, true)
 		end
 
+		slot11:setCountFontSize(40)
+		slot11:showStackableNum2()
+		slot11:isShowEffect(true)
 		gohelper.setActive(slot11.go, true)
 	end
 

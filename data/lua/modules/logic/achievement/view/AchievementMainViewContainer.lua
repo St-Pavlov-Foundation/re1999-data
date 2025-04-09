@@ -14,7 +14,8 @@ function slot0.buildViews(slot0)
 		slot0._scrollListView,
 		slot0._poolView,
 		AchievementMainViewFocus.New(),
-		AchievementMainTopView.New()
+		AchievementMainTopView.New(),
+		AchievementMainViewFold.New()
 	}
 end
 
@@ -39,7 +40,7 @@ function slot0.getMixContentParam(slot0)
 	slot1.prefabUrl = slot0._viewSetting.otherRes[1]
 	slot1.cellClass = AchievementMainItem
 	slot1.scrollDir = ScrollEnum.ScrollDirV
-	slot1.startSpace = -20
+	slot1.startSpace = 0
 	slot1.endSpace = 50
 
 	return slot1
@@ -52,6 +53,8 @@ function slot0.getListContentParam(slot0)
 	slot1.prefabUrl = "#go_container/#scroll_list/Viewport/content/#go_listitem"
 	slot1.cellClass = AchievementMainListItem
 	slot1.scrollDir = ScrollEnum.ScrollDirV
+	slot1.startSpace = 0
+	slot1.endSpace = 50
 
 	return slot1
 end

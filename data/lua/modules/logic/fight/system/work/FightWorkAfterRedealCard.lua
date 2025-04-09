@@ -2,6 +2,10 @@ module("modules.logic.fight.system.work.FightWorkAfterRedealCard", package.seeal
 
 slot0 = class("FightWorkAfterRedealCard", FightEffectBase)
 
+function slot0.beforePlayEffectData(slot0)
+	slot0.oldCardList = FightDataUtil.copyData(FightDataHelper.handCardMgr.handCard)
+end
+
 function slot0.onStart(slot0)
 	if FightModel.instance:getVersion() < 5 then
 		slot0:onDone(true)
@@ -10,12 +14,8 @@ function slot0.onStart(slot0)
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_ui_shuffle_allcard)
-
-	slot3 = FightHelper.buildInfoMOs(slot0._actEffectMO.cardInfoList, FightCardInfoMO)
-
-	FightCardModel.instance:coverCard(slot3)
 	slot0:com_registTimer(slot0._delayAfterPerformance, 1.5 / FightModel.instance:getUISpeed())
-	FightController.instance:dispatchEvent(FightEvent.PlayRedealCardEffect, FightDataHelper.coverData(FightCardModel.instance:getHandCards()), slot3)
+	FightController.instance:dispatchEvent(FightEvent.PlayRedealCardEffect, slot0.oldCardList, FightDataHelper.handCardMgr.handCard)
 end
 
 return slot0

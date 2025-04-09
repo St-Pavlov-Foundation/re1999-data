@@ -46,6 +46,22 @@ function slot0.isUnLock(slot0)
 	return ItemModel.instance:getItemCount(slot0.id) > 0
 end
 
+function slot0.canBuyInStore(slot0)
+	if not StoreConfig.instance:getDecorateGoodsIdById(slot0.id) then
+		return false
+	end
+
+	return true
+end
+
+function slot0.isStoreDecorateGoodsValid(slot0)
+	return StoreModel.instance:isStoreDecorateGoodsValid(slot0.id)
+end
+
+function slot0.getSources(slot0)
+	return slot0._config.sources
+end
+
 function slot0.checkIsUse(slot0)
 	if PlayerCardModel.instance:getPlayerCardSkinId() and slot1 ~= 0 then
 		return slot1 == slot0.id

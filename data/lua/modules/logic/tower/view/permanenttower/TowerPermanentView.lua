@@ -496,6 +496,7 @@ function slot0.onDestroyView(slot0)
 	TowerPermanentModel.instance:cleanData()
 	slot0._simageEnterBg:UnLoadImage()
 	slot0._animEventWrap:RemoveAllEventListener()
+	TowerModel.instance:cleanTrialData()
 end
 
 return slot0

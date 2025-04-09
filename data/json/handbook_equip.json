@@ -622,5 +622,17 @@
     "order": 0,
     "equipId": 1439,
     "desc": ""
+  },
+  {
+    "id": 5046,
+    "order": 0,
+    "equipId": 1546,
+    "desc": ""
+  },
+  {
+    "id": 4040,
+    "order": 0,
+    "equipId": 1440,
+    "desc": ""
   }
 ]

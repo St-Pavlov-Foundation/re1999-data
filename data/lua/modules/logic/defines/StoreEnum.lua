@@ -33,34 +33,32 @@ slot0.ChargeRefreshTime = {
 	None = 0
 }
 slot0.LittleMonthCardGoodsId = 811450
-slot0.WeekWalkTabId = 160
-slot0.SummonExchange = 110
-slot0.SummonEquipExchange = 150
-slot0.SummonCost = 118
-slot0.Room = 170
-slot0.SubRoomNew = 171
-slot0.SubRoomOld = 172
-slot0.RecommendStore = 700
-slot0.DefaultTabId = slot0.RecommendStore
 slot0.StoreId = {
-	DecorateStore = 800,
-	OldRoomStore = 172,
-	NewRoomStore = 171,
-	CritterStore = 173,
 	Charge = 410,
+	PubbleCharge = 411,
+	LimitStore = 112,
+	CritterStore = 173,
+	SummonExchange = 110,
 	OneTimePackage = 613,
+	OldRoomStore = 172,
+	WeekWalk = 160,
+	DecorateStore = 800,
 	RecommendPackage = 611,
 	Summon = 130,
+	RoomStore = 170,
 	VersionPackage = 612,
-	LimitStore = 112,
+	SummonCost = 118,
+	SummonEquipExchange = 150,
 	Package = 610,
+	RecommendStore = 700,
 	NormalPackage = 614,
 	NewDecorateStore = 801,
-	PubbleCharge = 411,
+	NewRoomStore = 171,
 	OldDecorateStore = 802,
 	Skin = 510,
 	GlowCharge = 412
 }
+slot0.DefaultTabId = slot0.StoreId.RecommendStore
 slot0.RecommendSubStoreId = {
 	StoreRoleSkinView = 801,
 	GiftrecommendView1 = 803,
@@ -119,6 +117,11 @@ slot0.BossRushStore = {
 	NormalStore = 901,
 	ManeTrust = 900,
 	UpdateStore = 902
+}
+slot0.TowerStore = {
+	UpdateStore = 302,
+	NormalStore = 301,
+	MainStore = 300
 }
 
 return slot0

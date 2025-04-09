@@ -634,11 +634,54 @@ function slot0._btnuseOnClick(slot0)
 		slot0:_tryUseSummonSimulation(slot0._config.activityId)
 
 		return
+	elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+		if string.nilorempty(slot0._config.effect) then
+			return
+		end
+
+		V2a7_SelfSelectSix_PickChoiceController.instance:openCustomPickChoiceView(string.split(slot0._config.effect, "|"), MaterialTipController.onUseSelfSelectSixHeroGift, MaterialTipController, {
+			id = slot0._config.id,
+			quantity = slot2
+		})
+	elseif slot0._config.subType == ItemEnum.SubType.DestinyStoneUp then
+		if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone) then
+			if not DungeonModel.instance:hasPassLevel(lua_open.configDict[OpenEnum.UnlockFunc.DestinyStone].episodeId) then
+				GameFacade.showToast(ToastEnum.DungeonMapLevel, DungeonConfig.instance:getEpisodeDisplay(slot3))
+			end
+
+			return
+		end
+
+		slot4 = {}
+
+		for slot8, slot9 in pairs(HeroModel.instance:getAllHero()) do
+			if slot9 and slot0:checkHeroOpenDestinyStone(slot9) and not slot9.destinyStoneMo:checkAllUnlock() then
+				table.insert(slot4, slot9)
+			end
+		end
+
+		if #slot4 > 0 then
+			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView)
+		else
+			GameFacade.showToast(ToastEnum.DungeonMapLevel)
+		end
 	else
 		ItemRpc.instance:simpleSendUseItemRequest(slot1, slot2)
 	end
 
 	slot0:closeThis()
+end
+
+function slot0.checkHeroOpenDestinyStone(slot0, slot1)
+	if not slot1:isHasDestinySystem() then
+		return false
+	end
+
+	if tonumber(CommonConfig.instance:getConstStr(CharacterDestinyEnum.DestinyStoneOpenLevelConstId[slot1.config.rare or 5])) <= slot1.level then
+		return true
+	end
+
+	return false
 end
 
 function slot0._useRoomTicket(slot0)
@@ -1206,7 +1249,7 @@ function slot0._getPackageSkinDesc(slot0)
 		}))
 	end
 
-	return luaLang("MaterialTipViewPackageSkinDesc") .. table.concat(slot2, "\n")
+	return formatLuaLang("MaterialTipViewPackageSkinDescFmt", table.concat(slot2, "\n"))
 end
 
 function slot0._getPackageSkinIncludeItems(slot0)

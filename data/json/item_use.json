@@ -106,5 +106,17 @@
     "name": "商品折扣券",
     "useType": 2,
     "use_max": 1
+  },
+  {
+    "id": 64,
+    "name": "狂想直升券",
+    "useType": 6,
+    "use_max": 1
+  },
+  {
+    "id": 65,
+    "name": "范围内六星自选",
+    "useType": 6,
+    "use_max": 1
   }
 ]

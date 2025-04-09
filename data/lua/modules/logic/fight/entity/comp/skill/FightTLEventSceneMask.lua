@@ -1,12 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventSceneMask", package.seeall)
 
-slot0 = class("FightTLEventSceneMask")
+slot0 = class("FightTLEventSceneMask", FightTimelineTrackItem)
 
-function slot0.ctor(slot0)
-	slot0._effectWrap = nil
-end
-
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot4 = ResUrl.getEffect(slot3[1])
 	slot0._colorStr = slot3[2]
 
@@ -31,7 +27,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot0._effectWrap:setLayer(UnityLayer.Unit)
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_clear()
 end
 
@@ -49,11 +45,7 @@ function slot0._tweenFrameCb(slot0, slot1)
 	slot0:_setMaskColor()
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_clear()
 end
 

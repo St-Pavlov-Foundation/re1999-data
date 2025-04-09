@@ -1,9 +1,10 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventUniqueCameraNew", package.seeall)
 
-slot0 = class("FightTLEventUniqueCameraNew")
+slot0 = class("FightTLEventUniqueCameraNew", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
-	slot0._fightStepMO = slot1
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+	slot0.paramsArr = slot3
+	slot0.fightStepData = slot1
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 	slot0._cameraResName = slot3[1]
 
@@ -21,12 +22,13 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	FightController.instance:registerCallback(FightEvent.ParallelPlayNextSkillDoneThis, slot0._parallelSkillDoneThis, slot0)
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_onFinish()
+	slot0:dealFinalValue(slot0.paramsArr[4])
 end
 
 function slot0._onLoaded(slot0, slot1)
-	slot0._fightStepMO.hasPlayTimelineCamera = true
+	slot0.fightStepData.hasPlayTimelineCamera = true
 	slot2 = GameSceneMgr.instance:getCurScene().camera
 	slot3 = slot2:getCurVirtualCamera(1)
 	slot4 = slot2:getCurVirtualCamera(2)
@@ -38,7 +40,7 @@ function slot0._onLoaded(slot0, slot1)
 	slot12 = slot4.transform.parent.gameObject
 	slot13 = nil
 
-	if slot0._fightStepMO.isParallelStep or GameSceneMgr.instance:getCurScene().cardCamera:isPlaying() then
+	if slot0.fightStepData.isParallelStep or GameSceneMgr.instance:getCurScene().cardCamera:isPlaying() then
 		GameSceneMgr.instance:getCurScene().camera:enablePostProcessSmooth(true)
 
 		slot13 = {
@@ -77,7 +79,7 @@ function slot0._onLoaded(slot0, slot1)
 	slot0._animationIndex = 1
 	slot0._animationName = slot0._animComp:GetCurrentAnimatorStateInfo(0) and slot16.shortNameHash
 
-	if slot0._fightStepMO.isParallelStep or slot14:isPlaying() then
+	if slot0.fightStepData.isParallelStep or slot14:isPlaying() then
 		if slot14:isPlaying() then
 			slot14:stop()
 		end
@@ -160,11 +162,7 @@ function slot0._onFinish(slot0)
 	slot0:_clear()
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_clear()
 end
 
@@ -194,6 +192,29 @@ function slot0._clear(slot0)
 	slot0._loader = nil
 	slot0._animComp = nil
 	slot0._animatorInst = nil
+end
+
+function slot0.dealFinalValue(slot0, slot1)
+	if string.nilorempty(slot1) then
+		return
+	end
+
+	slot6 = "#"
+
+	for slot6, slot7 in ipairs(GameUtil.splitString2(slot1, false, ",", slot6)) do
+		if FightHelper.detectTimelinePlayEffectCondition(slot0.fightStepData, string.format("%s#%s", slot7[1], slot7[2])) then
+			if slot7[3] == "1" then
+				slot11 = gohelper.findChild(CameraMgr.instance:getCameraRootGO(), "main/VirtualCameras/light/direct"):GetComponent(typeof(UnityEngine.Light))
+				slot12 = slot11.color
+				slot11.color = Color.New(slot12.r, slot12.g, slot12.b, tonumber(slot7[4]))
+			elseif slot8 == "2" then
+				slot12 = GameSceneMgr.instance:getCurScene().camera:getCurActiveVirtualCame().transform.parent
+				slot13 = slot12.localPosition
+
+				transformhelper.setLocalPos(slot12, slot13.x, slot13.y, tonumber(slot9))
+			end
+		end
+	end
 end
 
 return slot0

@@ -4,21 +4,8 @@ slot0 = class("FightCardResetEffect", BaseWork)
 slot2 = 1 * 0.033
 
 function slot0.onStart(slot0, slot1)
-	uv0.super.onStart(slot0, slot1)
-
-	slot0._dt = uv1 / FightModel.instance:getUISpeed()
-
-	FightController.instance:dispatchEvent(FightEvent.CorrectPlayCardVisible)
-
-	slot0._flow = FlowParallel.New()
-	slot2 = FlowSequence.New()
-
-	slot2:addWork(slot0:_buildPlayCardFadeOut())
-	slot2:addWork(slot0:_buildPlayCardMove())
-	slot0._flow:addWork(slot2)
-	slot0._flow:addWork(slot0:_buildHandCardMove())
-	slot0._flow:registerDoneListener(slot0._onWorkDone, slot0)
-	slot0._flow:start()
+	FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, FightDataHelper.handCardMgr.handCard)
+	slot0:onDone(true)
 end
 
 function slot0._buildPlayCardFadeOut(slot0)
@@ -47,6 +34,8 @@ function slot0._buildPlayCardFadeOut(slot0)
 			gohelper.setActive(gohelper.findChild(slot7, "imgEmpty"), false)
 		elseif slot12 and slot12:isPlayerFinisherSkill() then
 			gohelper.setActive(slot8, false)
+		elseif slot12 and slot12:isBloodPoolSkill() then
+			gohelper.setActive(slot8, false)
 		elseif slot12 then
 			gohelper.setActive(slot8, not slot12:isPlayCard() or slot12.costActPoint >= 1)
 		else
@@ -60,9 +49,9 @@ function slot0._buildPlayCardFadeOut(slot0)
 end
 
 function slot0._buildPlayCardMove(slot0)
-	slot1 = FightCardModel.instance:getCardMO().actPoint
+	slot1 = FightDataHelper.operationDataMgr.actPoint
 
-	if FightCardModel.instance:getCardMO().extraMoveAct == -1 then
+	if FightDataHelper.operationDataMgr.extraMoveAct == -1 then
 		slot2 = 0
 	end
 
@@ -76,7 +65,9 @@ function slot0._buildPlayCardMove(slot0)
 			-- Nothing
 		elseif slot11 and slot11:isAssistBossPlayCard() then
 			-- Nothing
-		elseif not slot11 or not slot11:isPlayerFinisherSkill() then
+		elseif slot11 and slot11:isPlayerFinisherSkill() then
+			-- Nothing
+		elseif not slot11 or not slot11:isBloodPoolSkill() then
 			slot12, slot13 = FightViewPlayCard.calcCardPosX(slot3, slot1 + slot2)
 
 			slot4:addWork(TweenWork.New({
@@ -115,11 +106,9 @@ function slot0._buildHandCardMove(slot0)
 	end
 
 	slot3:addWork(FunctionWork.New(function ()
-		slot3 = FightCardModel.instance
-		slot4 = slot3
-		slot3 = slot3.getHandCards
+		slot3 = FightDataHelper.handCardMgr.handCard
 
-		FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, slot3(slot4))
+		FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, slot3)
 
 		for slot3, slot4 in ipairs(uv0) do
 			if not uv1[slot3] then
@@ -139,7 +128,7 @@ function slot0._buildHandCardMove(slot0)
 end
 
 function slot0._buildCardRelation(slot0)
-	for slot5, slot6 in ipairs(FightCardModel.instance:getHandCards()) do
+	for slot5, slot6 in ipairs(tabletool.copy(FightDataHelper.handCardMgr.handCard)) do
 		slot1[slot5] = slot6:clone()
 		slot1[slot5].origin = slot5
 	end
@@ -149,11 +138,11 @@ function slot0._buildCardRelation(slot0)
 			table.remove(slot1, slot6.param1)
 			slot0:_dealCombineRelation(slot1)
 		elseif slot6:isMoveCard() then
-			FightCardModel.moveOnly(slot1, slot6.param1, slot6.param2)
+			FightCardDataHelper.moveOnly(slot1, slot6.param1, slot6.param2)
 			slot0:_dealCombineRelation(slot1)
 		elseif slot6:isMoveUniversal() then
 			slot8 = slot1[slot6.param2]
-			slot8.skillId = FightCardModel.getCombineSkillId(slot1[slot6.param1], slot8, slot8)
+			slot8.skillId = FightCardDataHelper.getCombineCardSkillId(slot1[slot6.param1], slot8)
 
 			table.remove(slot1, slot6.param1)
 			slot0:_dealCombineRelation(slot1)
@@ -164,14 +153,14 @@ function slot0._buildCardRelation(slot0)
 end
 
 function slot0._dealCombineRelation(slot0, slot1)
-	slot2 = FightCardModel.getCombineIndexOnce(slot1)
+	slot2 = FightCardDataHelper.canCombineCardListForPerformance(slot1)
 
 	while #slot1 >= 2 and slot2 do
-		slot1[slot2].skillId = FightCardModel.getCombineSkillId(slot1[slot2], slot1[slot2 + 1])
+		slot1[slot2].skillId = FightCardDataHelper.getCombineCardSkillId(slot1[slot2], slot1[slot2 + 1])
 
 		table.remove(slot1, slot2 + 1)
 
-		slot2 = FightCardModel.getCombineIndexOnce(slot1)
+		slot2 = FightCardDataHelper.canCombineCardListForPerformance(slot1)
 	end
 end
 
@@ -188,10 +177,10 @@ function slot0._matchSkill(slot0, slot1, slot2)
 		return true
 	end
 
-	if FightCardModel.instance:getSkillPrevLvId(slot1.uid, slot1.skillId) then
+	if FightCardDataHelper.getSkillPrevLvId(slot1.uid, slot1.skillId) then
 		if slot3 == slot2.skillId then
 			return true
-		elseif FightCardModel.instance:getSkillPrevLvId(slot1.uid, slot3) and slot4 == slot2.skillId then
+		elseif FightCardDataHelper.getSkillPrevLvId(slot1.uid, slot3) and slot4 == slot2.skillId then
 			return true
 		end
 	end

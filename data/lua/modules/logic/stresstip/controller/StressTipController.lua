@@ -18,6 +18,14 @@ function slot0.openHeroStressTip(slot0, slot1, slot2)
 	})
 end
 
+function slot0.openAct183StressTip(slot0, slot1, slot2)
+	ViewMgr.instance:openView(ViewName.StressTipView, {
+		openEnum = StressTipView.OpenEnum.Act183,
+		identityIdList = slot1,
+		clickPosition = slot2 or UnityEngine.Input.mousePosition
+	})
+end
+
 slot0.instance = slot0.New()
 
 return slot0

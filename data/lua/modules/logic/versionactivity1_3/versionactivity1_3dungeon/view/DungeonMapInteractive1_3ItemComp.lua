@@ -634,9 +634,9 @@ function slot0._showTask(slot0)
 	gohelper.setActive(slot0._gounfinishtask, not slot0._finishTask)
 
 	if slot0._finishTask then
-		slot0._txtfinishtask.text = string.format("%s%s<color=#00ff00>%s</color>/%s", luaLang("dungeon_map_submit"), ItemModel.instance:getItemConfig(slot2[1], slot2[2]).name, slot5, slot3)
+		slot0._txtfinishtask.text = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("dungeon_map_submit_new"), ItemModel.instance:getItemConfig(slot2[1], slot2[2]).name, slot5, slot3)
 	else
-		slot0._txtunfinishtask.text = string.format("%s%s<color=#ff0000>%s</color>/%s", luaLang("dungeon_map_submit"), slot4.name, slot5, slot3)
+		slot0._txtunfinishtask.text = GameUtil.getSubPlaceholderLuaLangThreeParam(slot6, slot4.name, slot5, slot3)
 	end
 end
 

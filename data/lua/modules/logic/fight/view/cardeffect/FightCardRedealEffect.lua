@@ -7,7 +7,7 @@ slot2 = "ui/materials/dynamic/kapairongjie.mat"
 function slot0.onStart(slot0, slot1)
 	uv0.super.onStart(slot0, slot1)
 
-	if slot0.context.newCards and #slot0.context.newCards > 0 then
+	if slot0.context.oldCards and #slot0.context.oldCards > 0 then
 		slot0._paramDict = {}
 		slot0._loadingDissolveMat = true
 
@@ -37,7 +37,7 @@ function slot0._playEffects(slot0)
 	slot0._effectLoaderList = {}
 	slot1 = slot0.context.oldCards
 
-	for slot5, slot6 in ipairs(slot0.context.newCards) do
+	for slot5, slot6 in ipairs(slot0.context.oldCards) do
 		if not slot0.context.handCardItemList[slot5].go.activeInHierarchy then
 			slot0:onDone(true)
 
@@ -45,12 +45,12 @@ function slot0._playEffects(slot0)
 		end
 	end
 
-	for slot5, slot6 in ipairs(slot0.context.newCards) do
+	for slot5, slot6 in ipairs(slot0.context.oldCards) do
 		slot8 = slot1[slot5]
 		slot10 = gohelper.findChild(slot0.context.handCardItemList[slot5].go, "changeEffect") or gohelper.create2d(slot7.go, "changeEffect")
 		slot11 = PrefabInstantiate.Create(slot10)
 		slot0._paramDict[slot11] = {
-			oldCardLv = FightCardModel.instance:getSkillLv(slot8.uid, slot8.skillId)
+			oldCardLv = FightCardDataHelper.getSkillLv(slot8.uid, slot8.skillId)
 		}
 
 		slot11:startLoad(FightPreloadOthersWork.ClothSkillEffectPath, slot0._onClothSkillEffectLoaded, slot0)
@@ -70,7 +70,7 @@ function slot0._setupDissolveMat(slot0)
 	slot0._imgMaskMatDict = {}
 	slot0._imgMaskCloneDict = {}
 
-	for slot4, slot5 in ipairs(slot0.context.newCards) do
+	for slot4, slot5 in ipairs(slot0.context.oldCards) do
 		slot8 = {}
 
 		uv0._getChildActiveImage(gohelper.findChild(slot0.context.handCardItemList[slot4].go, "foranim"), slot8)
@@ -122,8 +122,12 @@ function slot0._playDissolveMat(slot0)
 			end
 		end
 	end, function ()
-		for slot3, slot4 in ipairs(uv0.context.newCards) do
-			uv0.context.handCardItemList[slot3]:updateItem(slot3, slot4)
+		if uv0.context.newCards then
+			for slot3, slot4 in ipairs(uv0.context.newCards) do
+				if uv0.context.handCardItemList[slot3] then
+					slot5:updateItem(slot3, slot4)
+				end
+			end
 		end
 
 		uv0._tweenId = ZProj.TweenHelper.DOTweenFloat(1.7526, 0.07, 0.6, function (slot0)

@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventBloomMaterial", package.seeall)
 
-slot0 = class("FightTLEventBloomMaterial")
+slot0 = class("FightTLEventBloomMaterial", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot4 = slot3[1]
 
 	if string.nilorempty(slot3[2]) then
@@ -29,7 +29,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot0:_setPassEnable(true)
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_clear()
 end
 
@@ -45,18 +45,14 @@ function slot0._setPassEnable(slot0, slot1)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
-	slot0:_clear()
-end
-
 function slot0._clear(slot0)
 	slot0:_setPassEnable(false)
 
 	slot0._targetEntitys = nil
+end
+
+function slot0.onDestructor(slot0)
+	slot0:_clear()
 end
 
 return slot0

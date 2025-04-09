@@ -204,6 +204,14 @@ function slot0.showToast(slot0, slot1)
 	})
 end
 
+function slot0.enterReportItem(slot0, slot1, slot2)
+	uv0.instance:dispatchEvent(Season166Event.ClickInfoReportItem, {
+		actId = slot1,
+		infoId = slot2,
+		unlockState = Season166Model.instance:getActInfo(slot1) and slot3:getInformationMO(slot2) and Season166Enum.UnlockState or Season166Enum.LockState
+	})
+end
+
 slot0.instance = slot0.New()
 
 return slot0

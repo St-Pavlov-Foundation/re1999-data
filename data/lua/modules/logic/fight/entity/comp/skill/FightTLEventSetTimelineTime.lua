@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventSetTimelineTime", package.seeall)
 
-slot0 = class("FightTLEventSetTimelineTime")
+slot0 = class("FightTLEventSetTimelineTime", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot5 = tonumber(slot3[1])
 
 	if FightDataHelper.entityMgr:getById(slot1.fromId) and #string.splitToNumber(slot3[2], "#") > 0 then
@@ -36,17 +36,14 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 
 	if slot5 then
-		slot0._binder:SetTime(slot4)
+		slot0.binder:SetTime(slot4)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.reset(slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 end
 
 return slot0

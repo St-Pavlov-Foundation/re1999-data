@@ -3,14 +3,14 @@ module("modules.logic.fight.system.work.FightWorkPlayAroundUpRank", package.seea
 slot0 = class("FightWorkPlayAroundUpRank", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0._actEffectMO) then
+	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	if FightPlayCardModel.instance:getUsedCards()[slot0._actEffectMO.effectNum] then
-		slot3:init(slot0._actEffectMO.cardInfo)
+	if FightPlayCardModel.instance:getUsedCards()[slot0.actEffectData.effectNum] then
+		FightDataUtil.coverData(slot0.actEffectData.cardInfo, slot3)
 		slot0:com_sendFightEvent(FightEvent.PlayCardAroundUpRank, slot1, slot3.skillId)
 	end
 

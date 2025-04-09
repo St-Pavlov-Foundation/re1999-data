@@ -82,7 +82,7 @@ function slot0.checkGroupUnlocked(slot0, slot1)
 	slot2 = false
 	slot5 = AchievementConfig.instance:getAchievement(slot1.achievementId) and slot4.groupId
 
-	if AchievementModel.instance:isAchievementTaskFinished(slot1.id) and slot5 and slot5 ~= 0 and not slot0._groupUnlockToastMap[slot5] and (AchievementModel.instance:getGroupFinishTaskList(slot5) and #slot6 or 0) <= 1 then
+	if AchievementModel.instance:isAchievementTaskFinished(slot1.id) and AchievementUtils.isActivityGroup(slot1.achievementId) and not slot0._groupUnlockToastMap[slot5] and (AchievementModel.instance:getGroupFinishTaskList(slot5) and #slot6 or 0) <= 1 then
 		slot2 = true
 		slot0._groupUnlockToastMap[slot5] = true
 	end
@@ -93,7 +93,7 @@ end
 function slot0.checkGroupUpgrade(slot0, slot1)
 	slot3 = false
 
-	if AchievementConfig.instance:getAchievement(slot1.achievementId) and slot2.groupId ~= 0 then
+	if AchievementConfig.instance:getAchievement(slot1.achievementId) and AchievementUtils.isActivityGroup(slot1.achievementId) then
 		slot3 = AchievementConfig.instance:getGroup(slot2.groupId) and slot4.unLockAchievement == slot1.id
 	end
 
@@ -102,8 +102,9 @@ end
 
 function slot0.checkIsGroupFinished(slot0, slot1)
 	slot3 = false
+	slot4 = AchievementConfig.instance:getAchievement(slot1.achievementId) and slot2.groupId
 
-	if AchievementConfig.instance:getAchievement(slot1.achievementId) and slot2.groupId and slot4 ~= 0 and not slot0._groupFinishedToastMap[slot4] and AchievementModel.instance:isGroupFinished(slot2.groupId) then
+	if AchievementUtils.isActivityGroup(slot1.achievementId) and not slot0._groupFinishedToastMap[slot4] and AchievementModel.instance:isGroupFinished(slot2.groupId) then
 		slot0._groupFinishedToastMap[slot4] = true
 	end
 

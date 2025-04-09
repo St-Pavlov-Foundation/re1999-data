@@ -9,6 +9,7 @@ function slot0.onInitView(slot0)
 	slot0._gomonthcard = gohelper.findChild(slot0.viewGO, "subViewContainer/#go_monthcard")
 	slot0._gostorecategoryitem = gohelper.findChild(slot0.viewGO, "top/scroll_category/viewport/categorycontent/#go_storecategoryitem")
 	slot0._categorycontentTrans = gohelper.findChild(slot0.viewGO, "top/scroll_category/viewport/categorycontent").transform
+	slot0._categoryscroll = gohelper.findChild(slot0.viewGO, "top/scroll_category")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()

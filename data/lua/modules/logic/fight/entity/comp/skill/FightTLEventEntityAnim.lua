@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventEntityAnim", package.seeall)
 
-slot0 = class("FightTLEventEntityAnim")
+slot0 = class("FightTLEventEntityAnim", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._targetEntitys = nil
 
 	if slot3[1] == "1" then
@@ -61,8 +61,8 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
-	slot0:_onFinish()
+function slot0.onTrackEnd(slot0)
+	slot0:onDestructor()
 end
 
 function slot0._onLoaded(slot0, slot1)
@@ -159,15 +159,7 @@ function slot0._onUpdateSpeed(slot0)
 	end
 end
 
-function slot0._onFinish(slot0)
-	slot0:dispose()
-end
-
-function slot0.reset(slot0)
-	slot0:dispose()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnUpdateSpeed, slot0._onUpdateSpeed, slot0)
 	slot0:_clearLoader()
 	slot0:_clearAnim()

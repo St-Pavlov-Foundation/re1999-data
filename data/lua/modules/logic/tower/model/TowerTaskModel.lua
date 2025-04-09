@@ -20,6 +20,8 @@ function slot0.reInit(slot0)
 	slot0.limitTimeTaskList = {}
 	slot0.bossTaskMap = {}
 	slot0.bossTaskList = {}
+	slot0.actTaskMap = {}
+	slot0.actTaskList = {}
 	slot0.reddotShowMap = {}
 	slot0._itemStartAnimTime = nil
 
@@ -63,7 +65,7 @@ function slot0.initTaskMap(slot0, slot1)
 	slot2 = slot1.config.taskGroupId
 	slot4 = TowerConfig.instance:getTowerLimitedCoByTaskGroupId(slot2)
 
-	if TowerConfig.instance:getTowerBossTimeCoByTaskGroupId(slot2) then
+	if TowerConfig.instance:getTowerBossTimeCoByTaskGroupId(slot2) and slot1.config.activityId == 0 then
 		if not slot0.bossTaskMap[slot3.towerId] then
 			slot0.bossTaskMap[slot3.towerId] = {}
 		end
@@ -71,6 +73,8 @@ function slot0.initTaskMap(slot0, slot1)
 		slot0.bossTaskMap[slot3.towerId][slot1.id] = slot1
 	elseif slot4 then
 		slot0.limitTimeTaskMap[slot1.id] = slot1
+	elseif slot2 == 0 and slot1.config.activityId > 0 and slot1.config.isKeyReward ~= 1 then
+		slot0.actTaskMap[slot1.id] = slot1
 	end
 end
 
@@ -90,6 +94,12 @@ function slot0.initTaskList(slot0)
 			table.insert(slot0.bossTaskList[slot4], slot10)
 		end
 	end
+
+	slot0.actTaskList = {}
+
+	for slot4, slot5 in pairs(slot0.actTaskMap) do
+		table.insert(slot0.actTaskList, slot5)
+	end
 end
 
 function slot0.sortList(slot0)
@@ -101,6 +111,10 @@ function slot0.sortList(slot0)
 		for slot4, slot5 in ipairs(slot0.bossTaskList) do
 			table.sort(slot5, uv0.bossSortFunc)
 		end
+	end
+
+	if #slot0.actTaskList > 0 then
+		table.sort(slot0.actTaskList, uv0.actSortFunc)
 	end
 end
 
@@ -114,6 +128,14 @@ end
 
 function slot0.limitTimeSortFunc(slot0, slot1)
 	if (slot0.finishCount >= 1 and slot0.config.maxProgress <= slot0.progress and 3 or slot0.hasFinished and 1 or 2) ~= (slot1.finishCount >= 1 and slot1.config.maxProgress <= slot1.progress and 3 or slot1.hasFinished and 1 or 2) then
+		return slot2 < slot3
+	else
+		return slot0.config.id < slot1.config.id
+	end
+end
+
+function slot0.actSortFunc(slot0, slot1)
+	if (slot0.config.maxProgress <= slot0.finishCount and 3 or slot0.hasFinished and 1 or 2) ~= (slot1.config.maxProgress <= slot1.finishCount and 3 or slot1.hasFinished and 1 or 2) then
 		return slot2 < slot3
 	else
 		return slot0.config.id < slot1.config.id
@@ -170,10 +192,20 @@ function slot0.checkRedDot(slot0)
 			slot0.reddotShowMap[TowerEnum.TowerType.Boss][slot4] = slot0:getTaskItemCanGetCount(slot5) > 0
 		end
 	end
+
+	if tabletool.len(slot0.actTaskList) > 0 then
+		if slot0:getActRewardTask() and slot2.config.maxProgress <= slot2.progress and slot2.finishCount == 0 then
+			slot1 = slot0:getTaskItemCanGetCount(slot0.actTaskList) + 1
+		end
+
+		slot0.reddotShowMap[TowerEnum.ActTaskType] = slot1 > 0
+	end
 end
 
 function slot0.canShowReddot(slot0, slot1, slot2)
 	if slot1 == TowerEnum.TowerType.Limited then
+		return slot0.reddotShowMap[slot1]
+	elseif slot1 == TowerEnum.ActTaskType then
 		return slot0.reddotShowMap[slot1]
 	else
 		return slot0.reddotShowMap[slot1][slot2]
@@ -218,6 +250,8 @@ function slot0.getCurTaskList(slot0, slot1)
 		slot2 = slot0.limitTimeTaskList
 	elseif slot0.curSelectTowerType == TowerEnum.TowerType.Boss then
 		slot2 = slot0.bossTaskList[slot0.curSelectToweId]
+	elseif slot0.curSelectTowerType == TowerEnum.ActTaskType then
+		slot2 = slot0.actTaskList
 	end
 
 	return slot2
@@ -295,6 +329,18 @@ function slot0.checkHasBossTask(slot0)
 	end
 
 	return false
+end
+
+function slot0.getActRewardTask(slot0)
+	for slot5, slot6 in ipairs(slot0.tempTaskModel:getList()) do
+		if slot6.config.isKeyReward == 1 and slot6.config.activityId > 0 then
+			return slot6
+		end
+	end
+end
+
+function slot0.getBossTaskList(slot0, slot1)
+	return slot0.bossTaskList[slot1]
 end
 
 slot0.instance = slot0.New()

@@ -34,10 +34,15 @@ end
 function slot0.setCurSceneId(slot0, slot1)
 	slot0._sceneId = slot1
 	slot0._sceneConfig = lua_scene_switch.configDict[slot0._sceneId]
+
+	if not slot0._sceneConfig then
+		slot0._sceneId = MainSceneSwitchConfig.instance:getDefaultSceneId()
+		slot0._sceneConfig = lua_scene_switch.configDict[slot0._sceneId]
+	end
 end
 
 function slot0.getCurSceneResName(slot0)
-	return slot0._sceneConfig.resName
+	return slot0._sceneConfig and slot0._sceneConfig.resName
 end
 
 function slot0.getSceneStatus(slot0)

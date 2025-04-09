@@ -7,6 +7,7 @@ function slot0.buildViews(slot0)
 
 	table.insert(slot1, TowerAssistBossTalentView.New())
 	table.insert(slot1, TowerAssistBossTalentTreeView.New())
+	table.insert(slot1, TowerAssistBossTalentPlanModifyView.New())
 	table.insert(slot1, TabViewGroup.New(1, "#go_lefttop"))
 
 	return slot1

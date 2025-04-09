@@ -68,7 +68,9 @@ function slot0.getGroupEpisodeMos(slot0, slot1)
 end
 
 function slot0.getGroupEpisodeMo(slot0, slot1)
-	return slot0._groupMap and slot0._groupMap[slot1]
+	if slot1 then
+		return slot0._groupMap and slot0._groupMap[slot1]
+	end
 end
 
 function slot0.getUnlockSupportHeros(slot0)

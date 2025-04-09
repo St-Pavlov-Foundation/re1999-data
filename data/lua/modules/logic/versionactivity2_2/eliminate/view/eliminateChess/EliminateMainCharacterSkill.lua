@@ -31,6 +31,7 @@ function slot0._editableInitView(slot0)
 	slot0._rectMaskClick = uv1.Get(slot0._gorectMask)
 
 	slot0._rectMaskClick:AddClickListener(slot0.onClick, slot0)
+	slot0:setCanvas()
 end
 
 function slot0.onClick(slot0)
@@ -109,11 +110,11 @@ function slot0.setTargetTrAndHoleSize(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot0._rectMaskHole:SetTarget(slot1, slot7, slot7, nil)
 end
 
-function slot0.setCanvas(slot0, slot1)
-	slot0._rectMaskHole.mainCanvas = slot1
-	slot2 = CameraMgr.instance:getMainCamera()
-	slot0._rectMaskHole.mainCamera = slot2
-	slot0._rectMaskHole.uiCamera = slot2
+function slot0.setCanvas(slot0)
+	slot0._rectMaskHole.mainCanvas = ViewMgr.instance:getUICanvas()
+	slot1 = CameraMgr.instance:getUICamera()
+	slot0._rectMaskHole.mainCamera = slot1
+	slot0._rectMaskHole.uiCamera = slot1
 end
 
 function slot0.setClickCb(slot0, slot1, slot2)

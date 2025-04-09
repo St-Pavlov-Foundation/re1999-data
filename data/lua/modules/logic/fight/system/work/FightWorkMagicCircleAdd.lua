@@ -4,9 +4,9 @@ slot0 = class("FightWorkMagicCircleAdd", FightEffectBase)
 
 function slot0.onStart(slot0)
 	if FightModel.instance:getMagicCircleInfo() then
-		slot1:refreshData(slot0._actEffectMO.magicCircle)
+		slot1:refreshData(slot0.actEffectData.magicCircle)
 
-		if lua_magic_circle.configDict[slot0._actEffectMO.magicCircle.magicCircleId] then
+		if lua_magic_circle.configDict[slot0.actEffectData.magicCircle.magicCircleId] then
 			slot0:com_registTimer(slot0._delayDone, math.max(slot3.enterTime / 1000, 0.7) / FightModel.instance:getSpeed())
 			FightController.instance:dispatchEvent(FightEvent.AddMagicCircile, slot2)
 

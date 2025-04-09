@@ -30,6 +30,13 @@ function slot0.onInitView(slot0)
 	slot0._txtlockTip = gohelper.findChildText(slot0.viewGO, "#btn_Lock/#txt_lockTip")
 	slot0._goreddot = gohelper.findChild(slot0.viewGO, "#btn_Start/#go_reddot")
 	slot0._goupdateReddot = gohelper.findChild(slot0.viewGO, "black/#go_updateReddot")
+	slot0._gostore = gohelper.findChild(slot0.viewGO, "store")
+	slot0._gostoreTime = gohelper.findChild(slot0.viewGO, "store/time")
+	slot0._txtstoreTime = gohelper.findChildText(slot0.viewGO, "store/time/#txt_storeTime")
+	slot0._txtstoreName = gohelper.findChildText(slot0.viewGO, "store/#txt_storeName")
+	slot0._txtcoinNum = gohelper.findChildText(slot0.viewGO, "store/#txt_coinNum")
+	slot0._imagecoin = gohelper.findChildImage(slot0.viewGO, "store/#txt_coinNum/#image_coin")
+	slot0._btnstore = gohelper.findChildButtonWithAudio(slot0.viewGO, "store/#btn_store")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -40,9 +47,12 @@ function slot0.addEvents(slot0)
 	slot0._btnlimitTime:AddClickListener(slot0._btnlimitTimeOnClick, slot0)
 	slot0._btnboss:AddClickListener(slot0._btnbossOnClick, slot0)
 	slot0._btnStart:AddClickListener(slot0._btnStartOnClick, slot0)
+	slot0._btnstore:AddClickListener(slot0._btnstoreOnClick, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0, LuaEventSystem.Low)
 	slot0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshTaskInfo, slot0)
+	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRequestData, slot0)
 end
 
@@ -50,9 +60,12 @@ function slot0.removeEvents(slot0)
 	slot0._btnlimitTime:RemoveClickListener()
 	slot0._btnboss:RemoveClickListener()
 	slot0._btnStart:RemoveClickListener()
+	slot0._btnstore:RemoveClickListener()
 	slot0:removeEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0, LuaEventSystem.Low)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshTaskInfo, slot0)
+	slot0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
+	slot0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRequestData, slot0)
 	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
 end
@@ -81,6 +94,10 @@ end
 
 function slot0._btnStartOnClick(slot0)
 	TowerController.instance:openMainView()
+end
+
+function slot0._btnstoreOnClick(slot0)
+	TowerController.instance:openTowerStoreView()
 end
 
 function slot0.onLocalKeyChange(slot0)
@@ -147,6 +164,7 @@ function slot0.refreshUI(slot0)
 		slot0:refreshBossNewTag()
 		slot0:refreshTowerState()
 		slot0:refreshTaskInfo()
+		slot0:refreshStore()
 		TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
 		TaskDispatcher.runRepeat(slot0.refreshTowerState, slot0, 1)
 	else
@@ -178,19 +196,39 @@ function slot0.refreshTaskInfo(slot0)
 		slot0._txttimeLimitNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot1), #slot1)
 	end
 
-	if not TowerTaskModel.instance:getCurTaskList(TowerEnum.TowerType.Boss) or #slot2 == 0 then
+	if not TowerTaskModel.instance.bossTaskList or #slot2 == 0 then
 		gohelper.setActive(slot0._gobossTaskInfo, false)
 	else
 		gohelper.setActive(slot0._gobossTaskInfo, true)
 
-		slot0._txtbossNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot2), #slot2)
+		slot3 = {}
+
+		for slot7, slot8 in pairs(slot2) do
+			for slot12 = 1, #slot8 do
+				table.insert(slot3, slot8[slot12])
+			end
+		end
+
+		slot0._txtbossNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot3), #slot3)
 	end
 end
 
 function slot0.refreshBossInfo(slot0)
+	slot2 = {}
+
+	if #TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open) > 0 then
+		table.sort(slot1, TowerAssistBossModel.sortBossList)
+
+		for slot6 = 1, 3 do
+			if slot1[slot6] then
+				table.insert(slot2, slot1[slot6])
+			end
+		end
+	end
+
 	slot0.bossEpisodeMo = TowerModel.instance:getEpisodeMoByTowerType(TowerEnum.TowerType.Boss)
 
-	gohelper.CreateObjList(slot0, slot0.bossItemShow, TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open), slot0._gobossContent, slot0._gobossItem)
+	gohelper.CreateObjList(slot0, slot0.bossItemShow, slot2, slot0._gobossContent, slot0._gobossItem)
 end
 
 function slot0.refreshBossNewTag(slot0)
@@ -291,6 +329,29 @@ function slot0.refreshTowerState(slot0)
 		gohelper.setActive(slot0._gobossHasNew, false)
 		gohelper.setActive(slot0._gobossUpdateTime, true)
 	end
+
+	slot0:refreshStoreTime()
+end
+
+function slot0.refreshStore(slot0)
+	gohelper.setActive(slot0._gostore, TowerController.instance:isTowerStoreOpen())
+	UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imagecoin, TowerStoreModel.instance:getCurrencyIcon())
+
+	slot0._txtcoinNum.text = TowerStoreModel.instance:getCurrencyCount()
+
+	slot0:refreshStoreTime()
+end
+
+function slot0.refreshStoreTime(slot0)
+	slot1 = TowerStoreModel.instance:isUpdateStoreEmpty()
+
+	gohelper.setActive(slot0._gostoreTime, not slot1)
+
+	if slot1 then
+		return
+	end
+
+	slot0._txtstoreTime.text = TowerStoreModel.instance:getUpdateStoreRemainTime()
 end
 
 function slot0.onClose(slot0)

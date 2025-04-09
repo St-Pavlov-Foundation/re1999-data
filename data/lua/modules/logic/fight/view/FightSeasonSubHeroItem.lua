@@ -38,8 +38,7 @@ end
 
 function slot0._onExPointChange(slot0, slot1, slot2, slot3)
 	if slot1 == slot0._entityId then
-		slot0._hideInfoTimer = slot0:com_registSingleTimer(slot0._hideInfoTimer, slot0._delayHideInfo, 0.6)
-
+		slot0:com_registSingleTimer(slot0._delayHideInfo, 0.6)
 		slot0:_refreshExpoint(true, slot2, slot3)
 
 		if slot0:_canUse() then
@@ -73,11 +72,13 @@ end
 
 function slot0._onBeforeChangeSubHero(slot0, slot1, slot2)
 	if slot2 == slot0._entityId then
-		if slot1 == "0" then
+		if FightDataHelper.entityMgr:getById(slot1) and slot3:isStatusDead() then
 			slot0.PARENT_VIEW:onOpen()
-		else
-			slot0:refreshData(slot1)
+
+			return
 		end
+
+		slot0:refreshData(slot1)
 	end
 end
 
@@ -86,8 +87,7 @@ function slot0._onChangeSubEntityHp(slot0, slot1, slot2)
 		slot0:_refreshHp(true)
 
 		if slot2 > 0 then
-			slot0._hideInfoTimer = slot0:com_registSingleTimer(slot0._hideInfoTimer, slot0._delayHideInfo, 0.6)
-
+			slot0:com_registSingleTimer(slot0._delayHideInfo, 0.6)
 			gohelper.setActive(slot0._effectHeal, true)
 		end
 	end

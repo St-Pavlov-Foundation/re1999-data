@@ -59,6 +59,7 @@ function slot0.createBehaviour(slot0, slot1, slot2)
 
 	if uv0.IndicatorId2Behaviour[slot1] then
 		slot4 = slot3.New()
+		slot4.viewContainer = slot0.viewContainer
 
 		slot4:initView(slot0, slot1, slot2)
 		slot4:startLoadPrefab()

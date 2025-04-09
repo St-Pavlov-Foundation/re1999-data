@@ -23,6 +23,7 @@ function slot0.init(slot0, slot1)
 	slot0._config = Act183Config.instance:getEpisodeCo(slot0._episodeId)
 	slot0._groupId = slot0._config and slot0._config.groupId
 	slot0._params = slot1.params
+	slot0._star = slot1.star
 
 	slot0:_buildEscapeRules()
 end

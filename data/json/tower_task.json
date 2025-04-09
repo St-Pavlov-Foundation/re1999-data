@@ -2,6 +2,7 @@
   {
     "id": 91000101,
     "taskGroupId": 910001,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -12,11 +13,13 @@
     "listenerParam": "1",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000102,
     "taskGroupId": 910001,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -27,11 +30,13 @@
     "listenerParam": "1",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000103,
     "taskGroupId": 910001,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -42,11 +47,13 @@
     "listenerParam": "1",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000104,
     "taskGroupId": 910001,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -57,11 +64,13 @@
     "listenerParam": "1",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000105,
     "taskGroupId": 910001,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -72,11 +81,13 @@
     "listenerParam": "1",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000201,
     "taskGroupId": 910002,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -87,11 +98,13 @@
     "listenerParam": "2",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000202,
     "taskGroupId": 910002,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -102,11 +115,13 @@
     "listenerParam": "2",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000203,
     "taskGroupId": 910002,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -117,11 +132,13 @@
     "listenerParam": "2",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000204,
     "taskGroupId": 910002,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -132,11 +149,13 @@
     "listenerParam": "2",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000205,
     "taskGroupId": 910002,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -147,11 +166,13 @@
     "listenerParam": "2",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000301,
     "taskGroupId": 910003,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -162,11 +183,13 @@
     "listenerParam": "3",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000302,
     "taskGroupId": 910003,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -177,11 +200,13 @@
     "listenerParam": "3",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000303,
     "taskGroupId": 910003,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -192,11 +217,13 @@
     "listenerParam": "3",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000304,
     "taskGroupId": 910003,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -207,11 +234,13 @@
     "listenerParam": "3",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000305,
     "taskGroupId": 910003,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -222,11 +251,13 @@
     "listenerParam": "3",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000401,
     "taskGroupId": 910004,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -237,11 +268,13 @@
     "listenerParam": "4",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000402,
     "taskGroupId": 910004,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -252,11 +285,13 @@
     "listenerParam": "4",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000403,
     "taskGroupId": 910004,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -267,11 +302,13 @@
     "listenerParam": "4",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000404,
     "taskGroupId": 910004,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -282,11 +319,13 @@
     "listenerParam": "4",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000405,
     "taskGroupId": 910004,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -297,11 +336,13 @@
     "listenerParam": "4",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000501,
     "taskGroupId": 910005,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -312,11 +353,13 @@
     "listenerParam": "5",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000502,
     "taskGroupId": 910005,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -327,11 +370,13 @@
     "listenerParam": "5",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000503,
     "taskGroupId": 910005,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -342,11 +387,13 @@
     "listenerParam": "5",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000504,
     "taskGroupId": 910005,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -357,11 +404,13 @@
     "listenerParam": "5",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000505,
     "taskGroupId": 910005,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -372,11 +421,13 @@
     "listenerParam": "5",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000601,
     "taskGroupId": 910006,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -387,11 +438,13 @@
     "listenerParam": "6",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000602,
     "taskGroupId": 910006,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -402,11 +455,13 @@
     "listenerParam": "6",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000603,
     "taskGroupId": 910006,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -417,11 +472,13 @@
     "listenerParam": "6",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000604,
     "taskGroupId": 910006,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -432,11 +489,13 @@
     "listenerParam": "6",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000605,
     "taskGroupId": 910006,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -447,11 +506,13 @@
     "listenerParam": "6",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90010201,
     "taskGroupId": 900102,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -462,11 +523,13 @@
     "listenerParam": "2#1#11",
     "maxProgress": 1,
     "jumpId": 42350001,
-    "bonus": "1#110503#2|2#3#20000"
+    "bonus": "1#110503#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90020201,
     "taskGroupId": 900202,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -477,11 +540,13 @@
     "listenerParam": "2#2#11",
     "maxProgress": 1,
     "jumpId": 42350002,
-    "bonus": "1#110603#2|2#3#20000"
+    "bonus": "1#110603#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000701,
     "taskGroupId": 910007,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -492,11 +557,13 @@
     "listenerParam": "7",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000702,
     "taskGroupId": 910007,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -507,11 +574,13 @@
     "listenerParam": "7",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000703,
     "taskGroupId": 910007,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -522,11 +591,13 @@
     "listenerParam": "7",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000704,
     "taskGroupId": 910007,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -537,11 +608,13 @@
     "listenerParam": "7",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000705,
     "taskGroupId": 910007,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -552,11 +625,13 @@
     "listenerParam": "7",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000801,
     "taskGroupId": 910008,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -567,11 +642,13 @@
     "listenerParam": "8",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000802,
     "taskGroupId": 910008,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -582,11 +659,13 @@
     "listenerParam": "8",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000803,
     "taskGroupId": 910008,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -597,11 +676,13 @@
     "listenerParam": "8",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000804,
     "taskGroupId": 910008,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -612,11 +693,13 @@
     "listenerParam": "8",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000805,
     "taskGroupId": 910008,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -627,11 +710,13 @@
     "listenerParam": "8",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91000901,
     "taskGroupId": 910009,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -642,11 +727,13 @@
     "listenerParam": "9",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000902,
     "taskGroupId": 910009,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -657,11 +744,13 @@
     "listenerParam": "9",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91000903,
     "taskGroupId": 910009,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -672,11 +761,13 @@
     "listenerParam": "9",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000904,
     "taskGroupId": 910009,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -687,11 +778,13 @@
     "listenerParam": "9",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91000905,
     "taskGroupId": 910009,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -702,11 +795,13 @@
     "listenerParam": "9",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90030201,
     "taskGroupId": 900302,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -717,11 +812,13 @@
     "listenerParam": "2#3#11",
     "maxProgress": 1,
     "jumpId": 42350003,
-    "bonus": "1#110703#2|2#3#20000"
+    "bonus": "1#110703#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90040201,
     "taskGroupId": 900402,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -732,11 +829,13 @@
     "listenerParam": "2#4#11",
     "maxProgress": 1,
     "jumpId": 42350104,
-    "bonus": "1#110803#2|2#3#20000"
+    "bonus": "1#110803#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90010301,
     "taskGroupId": 900103,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -747,11 +846,13 @@
     "listenerParam": "2#1#12",
     "maxProgress": 1,
     "jumpId": 42350001,
-    "bonus": "1#110103#2|2#3#20000"
+    "bonus": "1#110103#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90020301,
     "taskGroupId": 900203,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -762,11 +863,13 @@
     "listenerParam": "2#2#12",
     "maxProgress": 1,
     "jumpId": 42350002,
-    "bonus": "1#110203#2|2#3#20000"
+    "bonus": "1#110203#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 90050201,
     "taskGroupId": 900502,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -777,11 +880,13 @@
     "listenerParam": "2#5#11",
     "maxProgress": 1,
     "jumpId": 42350005,
-    "bonus": "1#110303#2|2#3#20000"
+    "bonus": "1#110303#2|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91001001,
     "taskGroupId": 910010,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -792,11 +897,13 @@
     "listenerParam": "10",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001002,
     "taskGroupId": 910010,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -807,11 +914,13 @@
     "listenerParam": "10",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001003,
     "taskGroupId": 910010,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -822,11 +931,13 @@
     "listenerParam": "10",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001004,
     "taskGroupId": 910010,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -837,11 +948,13 @@
     "listenerParam": "10",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001005,
     "taskGroupId": 910010,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -852,11 +965,13 @@
     "listenerParam": "10",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91001101,
     "taskGroupId": 910011,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -867,11 +982,13 @@
     "listenerParam": "11",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001102,
     "taskGroupId": 910011,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -882,11 +999,13 @@
     "listenerParam": "11",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001103,
     "taskGroupId": 910011,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -897,11 +1016,13 @@
     "listenerParam": "11",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001104,
     "taskGroupId": 910011,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -912,11 +1033,13 @@
     "listenerParam": "11",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001105,
     "taskGroupId": 910011,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -927,11 +1050,13 @@
     "listenerParam": "11",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
   },
   {
     "id": 91001201,
     "taskGroupId": 910012,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -942,11 +1067,13 @@
     "listenerParam": "12",
     "maxProgress": 30000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001202,
     "taskGroupId": 910012,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -957,11 +1084,13 @@
     "listenerParam": "12",
     "maxProgress": 40000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#80"
+    "bonus": "1#620103#1|1#620102#4|1#620101#80",
+    "isKeyReward": 0
   },
   {
     "id": 91001203,
     "taskGroupId": 910012,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -972,11 +1101,13 @@
     "listenerParam": "12",
     "maxProgress": 50000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#4|1#620101#70"
+    "bonus": "1#620103#1|1#620102#4|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001204,
     "taskGroupId": 910012,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -987,11 +1118,13 @@
     "listenerParam": "12",
     "maxProgress": 60000,
     "jumpId": 42350004,
-    "bonus": "1#620103#1|1#620102#3|1#620101#70"
+    "bonus": "1#620103#1|1#620102#3|1#620101#70",
+    "isKeyReward": 0
   },
   {
     "id": 91001205,
     "taskGroupId": 910012,
+    "activityId": 0,
     "isOnline": 1,
     "minType": "爬塔玩法",
     "name": "",
@@ -1002,6 +1135,585 @@
     "listenerParam": "12",
     "maxProgress": 80000,
     "jumpId": 42350004,
-    "bonus": "1#491004#4|2#3#20000"
+    "bonus": "1#491004#4|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 90030301,
+    "taskGroupId": 900303,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "戏剧的折射提升至10级并通关原型剖析2",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "2#3#12",
+    "maxProgress": 1,
+    "jumpId": 42350001,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 90040301,
+    "taskGroupId": 900403,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "骨炭狼烟提升至10级并通关原型剖析2",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "2#4#12",
+    "maxProgress": 1,
+    "jumpId": 42350002,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001301,
+    "taskGroupId": 910013,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得3$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "13",
+    "maxProgress": 30000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001302,
+    "taskGroupId": 910013,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得4$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "13",
+    "maxProgress": 40000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001303,
+    "taskGroupId": 910013,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得5$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "13",
+    "maxProgress": 50000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001304,
+    "taskGroupId": 910013,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得6$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "13",
+    "maxProgress": 60000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001305,
+    "taskGroupId": 910013,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得8$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "13",
+    "maxProgress": 80000,
+    "jumpId": 42350004,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001401,
+    "taskGroupId": 910014,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得3$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "14",
+    "maxProgress": 30000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001402,
+    "taskGroupId": 910014,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得4$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "14",
+    "maxProgress": 40000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001403,
+    "taskGroupId": 910014,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得5$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "14",
+    "maxProgress": 50000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001404,
+    "taskGroupId": 910014,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得6$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "14",
+    "maxProgress": 60000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001405,
+    "taskGroupId": 910014,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分获得8$",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "14",
+    "maxProgress": 80000,
+    "jumpId": 42350004,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 90010302,
+    "taskGroupId": 900103,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "木魅山鬼提升至10级并通关原型剖析2",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "2#1#12",
+    "maxProgress": 1,
+    "jumpId": 42350001,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 90020302,
+    "taskGroupId": 900203,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "星体灾兆提升至10级并通关原型剖析2",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "2#2#12",
+    "maxProgress": 1,
+    "jumpId": 42350002,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 90050202,
+    "taskGroupId": 900502,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "原始欢乐提升至10级并通关原型剖析1",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "2#5#11",
+    "maxProgress": 1,
+    "jumpId": 42350005,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001206,
+    "taskGroupId": 910012,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分总和达到30000",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "12",
+    "maxProgress": 30000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001207,
+    "taskGroupId": 910012,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分总和达到40000",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "12",
+    "maxProgress": 40000,
+    "jumpId": 42350004,
+    "bonus": "2#28#800",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001208,
+    "taskGroupId": 910012,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分总和达到50000",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "12",
+    "maxProgress": 50000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001209,
+    "taskGroupId": 910012,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分总和达到60000",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "12",
+    "maxProgress": 60000,
+    "jumpId": 42350004,
+    "bonus": "2#28#600",
+    "isKeyReward": 0
+  },
+  {
+    "id": 91001210,
+    "taskGroupId": 910012,
+    "activityId": 0,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "翻覆之舟积分总和达到80000",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerLimitedHighScore",
+    "listenerParam": "12",
+    "maxProgress": 80000,
+    "jumpId": 42350004,
+    "bonus": "2#28#300",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001001,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关50M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#5",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110204#1|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001002,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关100M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#10",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110404#1|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001003,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关150M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#15",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#111003#1|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001004,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关200M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#20",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110103#3|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001005,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关230M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#23",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110303#3|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001006,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关250M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#25",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110503#3|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001007,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关280M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#28",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110603#3|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001008,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "迷思海通关300M",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassLayer",
+    "listenerParam": "1#0#30",
+    "maxProgress": 1,
+    "jumpId": 42350000,
+    "bonus": "1#110903#3|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001009,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "通关木魅山鬼的全部教学关卡",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassAllBossTeach",
+    "listenerParam": "1",
+    "maxProgress": 1,
+    "jumpId": 42350001,
+    "bonus": "1#110104#1|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001010,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "通关星体灾兆的全部教学关卡",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassAllBossTeach",
+    "listenerParam": "2",
+    "maxProgress": 1,
+    "jumpId": 42350002,
+    "bonus": "1#110304#1|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001011,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "通关戏剧的折射的全部教学关卡",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassAllBossTeach",
+    "listenerParam": "3",
+    "maxProgress": 1,
+    "jumpId": 42350003,
+    "bonus": "1#110504#1|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001012,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "通关骨炭狼烟的全部教学关卡",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassAllBossTeach",
+    "listenerParam": "4",
+    "maxProgress": 1,
+    "jumpId": 42350004,
+    "bonus": "1#110704#1|2#5#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001013,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "通关原始欢乐的全部教学关卡",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerPassAllBossTeach",
+    "listenerParam": "5",
+    "maxProgress": 1,
+    "jumpId": 42350005,
+    "bonus": "1#110804#1|2#3#20000",
+    "isKeyReward": 0
+  },
+  {
+    "id": 92001014,
+    "taskGroupId": 0,
+    "activityId": 12712,
+    "isOnline": 1,
+    "minType": "爬塔玩法",
+    "name": "",
+    "desc": "完成8个普通任务",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "TowerFinishActivityTaskCount",
+    "listenerParam": "12712",
+    "maxProgress": 8,
+    "jumpId": 42350004,
+    "bonus": "1#640001#1",
+    "isKeyReward": 1
   }
 ]

@@ -28,6 +28,10 @@ function slot0.onLoadCallback(slot0, slot1)
 
 		slot0.txtScore = gohelper.findChildText(slot0.instanceGo, "Score/#txt_num")
 		slot0.txtScore1 = gohelper.findChildText(slot0.instanceGo, "Score/#txt_num/#txt_num1")
+		slot0.imageScoreIcon = gohelper.findChildImage(slot0.instanceGo, "Score/#image_ScoreIcon")
+		slot0.canvasGroupScoreIcon = slot0.imageScoreIcon.gameObject:GetComponent(typeof(UnityEngine.CanvasGroup))
+		slot0._animLevelUp = gohelper.findChild(slot0.instanceGo, "Score/#ani_levelup"):GetComponent(gohelper.Type_Animator)
+		slot0.lastLevel = 0
 
 		slot0:refreshScore()
 
@@ -43,6 +47,8 @@ function slot0.refreshScore(slot0)
 	slot1 = FightDataHelper.fieldMgr:getIndicatorNum(slot0.indicatorId)
 	slot0.txtScore.text = slot1
 	slot0.txtScore1.text = slot1
+
+	slot0:refreshScoreStar(slot1)
 end
 
 slot0.Duration = 0.5
@@ -63,6 +69,20 @@ function slot0.onFrameCallback(slot0, slot1)
 	slot1 = math.floor(slot1)
 	slot0.txtScore.text = slot1
 	slot0.txtScore1.text = slot1
+
+	slot0:refreshScoreStar(slot1)
+end
+
+function slot0.refreshScoreStar(slot0, slot1)
+	if TowerConfig.instance:getScoreToStarConfig(slot1) ~= slot0.lastLevel then
+		slot0._animLevelUp:Play("levelup", 0, 0)
+
+		slot0.lastLevel = slot2
+	end
+
+	UISpriteSetMgr.instance:setTowerSprite(slot0.imageScoreIcon, slot2 > 0 and "tower_assist_point" .. Mathf.Min(slot2, TowerEnum.MaxShowStarNum) or "tower_assist_point1")
+
+	slot0.canvasGroupScoreIcon.alpha = slot2 > 0 and 1 or 0.3
 end
 
 function slot0.killTween(slot0)

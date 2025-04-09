@@ -19,6 +19,7 @@ function slot0.clearTowerData(slot0)
 	slot0.towerOpenList = {}
 	slot0.towerInfoMap = {}
 	slot0.towerInfoList = {}
+	slot0.curTowerType = nil
 end
 
 function slot0.onReceiveTowerBattleFinishPush(slot0, slot1)
@@ -47,6 +48,7 @@ function slot0.onReceiveGetTowerInfoReply(slot0, slot1)
 	slot0:setTowerOpenInfo(slot1)
 	slot0:setTowerInfo(slot1)
 	slot0:updateMopUpTimes(slot1.mopUpTimes)
+	slot0:updateTrialHeroSeason(slot1.trialHeroSeason)
 
 	for slot5 = 1, #slot1.assistBosses do
 		TowerAssistBossModel.instance:updateAssistBossInfo(slot1.assistBosses[slot5])
@@ -228,34 +230,37 @@ function slot0.refreshHeroGroupInfo(slot0)
 	slot3 = slot0.fightParam.layerId
 	slot4 = slot0.fightParam.difficulty
 	slot5 = slot0.fightParam.episodeId
-	slot7, slot8, slot9, slot10, slot11, slot12 = nil
+	slot7, slot8, slot9, slot10, slot11, slot12, slot13, slot14 = nil
 
 	if slot0:getTowerInfoById(slot0.fightParam.towerType, slot0.fightParam.towerId) then
-		slot7, slot14 = slot6:isHeroGroupLock(slot3, slot5)
+		slot7, slot16 = slot6:isHeroGroupLock(slot3, slot5)
 
-		if slot14 then
-			slot8 = slot14.heroIds
-			slot9 = slot14.assistBossId
-			slot10 = slot14.equipUids
+		if slot16 then
+			slot8 = slot16.heroIds
+			slot9 = slot16.assistBossId
+			slot10 = slot16.equipUids
+			slot14 = slot16.trialHeroIds
 		end
 
-		slot11, slot12 = slot6:getBanHeroAndBoss(slot3, slot4, slot5)
+		slot11, slot12, slot13 = slot6:getBanHeroAndBoss(slot3, slot4, slot5)
 	end
 
 	slot0.fightParam.isHeroGroupLock = slot7
 	slot0.fightParam.heros = slot8
 	slot0.fightParam.equipUids = slot10
+	slot0.fightParam.trialHeros = slot14
 	slot0.fightParam.herosDict = {}
 
 	if slot8 then
-		for slot16 = 1, #slot8 do
-			slot0.fightParam.herosDict[slot8[slot16]] = 1
+		for slot18 = 1, #slot8 do
+			slot0.fightParam.herosDict[slot8[slot18]] = 1
 		end
 	end
 
 	slot0.fightParam.assistBoss = slot9
 	slot0.fightParam.banHeroDict = slot11
 	slot0.fightParam.banAssistBossDict = slot12
+	slot0.fightParam.banTrialDict = slot13
 end
 
 function slot0.getRecordFightParam(slot0)
@@ -268,6 +273,14 @@ end
 
 function slot0.getMopUpTimes(slot0)
 	return slot0.mopUpTimes
+end
+
+function slot0.updateTrialHeroSeason(slot0, slot1)
+	slot0.trialHeroSeason = slot1
+end
+
+function slot0.getTrialHeroSeason(slot0)
+	return slot0.trialHeroSeason
 end
 
 function slot0.resetTowerSubEpisode(slot0, slot1)
@@ -382,6 +395,10 @@ function slot0.isBossBan(slot0, slot1)
 	return slot0:getRecordFightParam().banAssistBossDict and slot3[slot1] ~= nil
 end
 
+function slot0.isTrialHeroBan(slot0, slot1)
+	return slot0:getRecordFightParam().banTrialDict and slot3[slot1] ~= nil
+end
+
 function slot0.isLimitTowerBossBan(slot0, slot1, slot2, slot3)
 	if slot1 == TowerEnum.TowerType.Limited then
 		if TowerConfig.instance:getTowerLimitedTimeCo(slot2) then
@@ -407,7 +424,8 @@ function slot0.isTowerEpisode(slot0, slot1)
 		slot0._towerEpisodeTypeDefine = {
 			[DungeonEnum.EpisodeType.TowerPermanent] = 1,
 			[DungeonEnum.EpisodeType.TowerBoss] = 1,
-			[DungeonEnum.EpisodeType.TowerLimited] = 1
+			[DungeonEnum.EpisodeType.TowerLimited] = 1,
+			[DungeonEnum.EpisodeType.TowerBossTeach] = 1
 		}
 	end
 
@@ -454,6 +472,19 @@ function slot0.isBossOpen(slot0, slot1)
 	end
 
 	return TimeUtil.stringToTimestamp(string.format("%s 5:0:0", slot4.startTime)) <= ServerTime.now()
+end
+
+function slot0.setCurTowerType(slot0, slot1)
+	slot0.curTowerType = slot1
+end
+
+function slot0.getCurTowerType(slot0)
+	return slot0.curTowerType
+end
+
+function slot0.cleanTrialData(slot0)
+	TowerAssistBossModel.instance:cleanTrialLevel()
+	slot0:setCurTowerType(nil)
 end
 
 slot0.instance = slot0.New()

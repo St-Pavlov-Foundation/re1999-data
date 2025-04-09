@@ -57,6 +57,14 @@ function slot0.playCard(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 		end
 	end
 
+	if FightCardDataHelper.isSkill3(slot5) then
+		slot0.costActPoint = 0
+	end
+
+	if not FightCardDataHelper.checkIsBigSkillCostActPoint(slot4, slot3) then
+		slot0.costActPoint = 0
+	end
+
 	slot0.clientSimulateCanPlayCard = FightViewHandCardItemLock.canUseCardSkill(slot0.belongToEntityId, slot0.skillId, FightBuffHelper.simulateBuffList(FightDataHelper.entityMgr:getById(slot0.belongToEntityId)))
 	slot0.cardInfoMO = FightCardInfoMO.New()
 
@@ -77,6 +85,15 @@ function slot0.playPlayerFinisherSkill(slot0, slot1, slot2)
 	slot0.param1 = slot1
 	slot0.toId = slot2
 	slot0.skillId = slot1
+	slot0.costActPoint = 0
+end
+
+function slot0.playBloodPoolCard(slot0, slot1, slot2)
+	slot0.operType = FightEnum.CardOpType.BloodPool
+	slot0.param1 = slot1
+	slot0.toId = slot2 or 0
+	slot0.skillId = slot1
+	slot0.belongToEntityId = FightEntityScene.MySideId
 	slot0.costActPoint = 0
 end
 
@@ -108,6 +125,10 @@ end
 
 function slot0.isPlayerFinisherSkill(slot0)
 	return slot0.operType == FightEnum.CardOpType.PlayerFinisherSkill
+end
+
+function slot0.isBloodPoolSkill(slot0)
+	return slot0.operType == FightEnum.CardOpType.BloodPool
 end
 
 function slot0.isSeason2ChangeHero(slot0)

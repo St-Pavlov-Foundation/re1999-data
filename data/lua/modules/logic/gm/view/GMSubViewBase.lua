@@ -331,17 +331,19 @@ function slot0.addSlider(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot0._setGraphicsColor(slot8, slot5)
 	slot0._setRectTransSize(slot7, slot5, 600, 80)
 
-	slot9 = SLFramework.UGUI.SliderWrap.GetWithPath(slot7, "Slider")
+	slot9 = gohelper.findChildText(slot7, "Slider/ValueTxt")
+	slot10 = SLFramework.UGUI.SliderWrap.GetWithPath(slot7, "Slider")
 
 	if slot3 and slot4 then
-		slot9:AddOnValueChanged(slot3, slot4)
+		slot10:AddOnValueChanged(slot3, slot4)
 	end
 
-	slot0._sliders[#slot0._sliders + 1] = slot9
+	slot0._sliders[#slot0._sliders + 1] = slot10
 
 	return {
-		slot9,
-		slot8
+		slot10,
+		slot8,
+		slot9
 	}
 end
 
@@ -362,7 +364,14 @@ function slot0.addDropDown(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 	slot0._setRectTransSize(slot8, slot6, slot6 and slot6.total_w or slot9.preferredWidth + 300, 90)
 	slot0._setRectTransSize(slot9, slot6, slot6 and slot6.label_w or slot9.preferredWidth + 300, 90)
 	slot0._setRectTransSize(gohelper.findChild(slot8, "Dropdown"), slot6, slot6 and slot6.drop_w or slot9.preferredWidth + 150, 90)
-	slot0._setOffset(gohelper.findChildComponent(slot8, "Dropdown/Template", gohelper.Type_RectTransform), slot6)
+
+	slot11 = gohelper.findChildComponent(slot8, "Dropdown/Template", gohelper.Type_RectTransform)
+
+	if slot6 and slot6.tempH then
+		recthelper.setHeight(slot11, slot6.tempH)
+	end
+
+	slot0._setOffset(slot11, slot6)
 
 	slot12 = gohelper.findChildDropdown(slot8, "Dropdown")
 

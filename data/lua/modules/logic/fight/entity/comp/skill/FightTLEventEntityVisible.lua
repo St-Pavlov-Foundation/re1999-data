@@ -1,6 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventEntityVisible", package.seeall)
 
-slot0 = class("FightTLEventEntityVisible")
+slot0 = class("FightTLEventEntityVisible", FightTimelineTrackItem)
 slot1 = nil
 slot2 = {
 	[FightEnum.EffectType.DAMAGEFROMABSORB] = true,
@@ -9,15 +9,18 @@ slot2 = {
 	[FightEnum.EffectType.SHAREHURT] = true
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if FightHelper.getEntity(slot1.fromId) and slot4.skill and slot4.skill:sameSkillPlaying() then
 		-- Nothing
 	elseif uv0 and slot1.stepUid < uv0 then
 		return
 	end
 
-	uv0 = slot1.stepUid
-	uv1.latestStepUid = uv0
+	if not slot1.isFakeStep then
+		uv0 = slot1.stepUid
+		uv1.latestStepUid = uv0
+	end
+
 	slot8 = tonumber(slot3[3]) or 0.2
 	slot11 = GameSceneMgr.instance:getCurScene().entityMgr
 	slot12 = slot11:getTagUnitDict(SceneTag.UnitPlayer)

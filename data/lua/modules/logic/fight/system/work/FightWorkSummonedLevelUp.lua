@@ -3,8 +3,8 @@ module("modules.logic.fight.system.work.FightWorkSummonedLevelUp", package.seeal
 slot0 = class("FightWorkSummonedLevelUp", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0._entityId = slot0._actEffectMO.targetId
-	slot0._uid = slot0._actEffectMO.reserveId
+	slot0._entityId = slot0.actEffectData.targetId
+	slot0._uid = slot0.actEffectData.reserveId
 	slot0._entityMO = FightDataHelper.entityMgr:getById(slot0._entityId)
 	slot1 = slot0._entityMO and slot0._entityMO:getSummonedInfo()
 	slot0._summonedData = slot1 and slot1:getData(slot0._uid)

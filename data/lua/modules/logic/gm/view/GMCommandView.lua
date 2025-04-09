@@ -1,4 +1,5 @@
 module("modules.logic.gm.view.GMCommandView", package.seeall)
+require("modules/logic/gm/view/GMToolCommands")
 
 slot0 = class("GMCommandView", BaseView)
 slot0.OpenCommand = 1910

@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkEntitySync", package.seeall)
 slot0 = class("FightWorkEntitySync", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if slot0._actEffectMO.entityMO then
+	if slot0.actEffectData.entity then
 		slot0:com_sendFightEvent(FightEvent.EntitySync, slot1.id)
 	end
 

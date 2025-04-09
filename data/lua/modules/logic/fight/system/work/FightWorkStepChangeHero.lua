@@ -3,24 +3,24 @@ module("modules.logic.fight.system.work.FightWorkStepChangeHero", package.seeall
 slot0 = class("FightWorkStepChangeHero", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.isMySide(slot0)
-	if FightDataHelper.entityMgr:getById(slot0._fightStepMO.fromId) then
+	if FightDataHelper.entityMgr:getById(slot0.fightStepData.fromId) then
 		return slot1.side == FightEnum.EntitySide.MySide
 	end
 
-	return tonumber(slot0._fightStepMO.fromId) > 0
+	return tonumber(slot0.fightStepData.fromId) > 0
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 5)
 
-	slot0.from_id = slot0._fightStepMO.fromId
-	slot0.to_id = slot0._fightStepMO.toId
+	slot0.from_id = slot0.fightStepData.fromId
+	slot0.to_id = slot0.fightStepData.toId
 
-	FightDataHelper.calMgr:playChangeHero(slot0._fightStepMO)
+	FightDataHelper.calMgr:playChangeHero(slot0.fightStepData)
 
 	slot0._changedEntityMO = FightDataHelper.entityMgr:getById(slot0.from_id)
 	slot0.entityMgr = GameSceneMgr.instance:getCurScene().entityMgr
@@ -109,12 +109,11 @@ function slot0._playJumpTimeline(slot0)
 	slot1 = {
 		actId = 0,
 		customType = "change_hero",
-		actEffectMOs = {
+		actEffect = {
 			{
 				targetId = slot0.to_id
 			}
 		},
-		actEffect = {},
 		fromId = slot0.from_id,
 		toId = slot0.to_id,
 		actType = FightEnum.ActType.SKILL,
@@ -218,7 +217,7 @@ function slot0._onSubSpineLoaded(slot0, slot1)
 end
 
 function slot0._delayDone(slot0)
-	logError("change entity step timeout, targetId = " .. slot0._fightStepMO.fromId .. " -> " .. slot0._fightStepMO.toId)
+	logError("change entity step timeout, targetId = " .. slot0.fightStepData.fromId .. " -> " .. slot0.fightStepData.toId)
 	slot0:onDone(true)
 end
 
@@ -246,7 +245,7 @@ function slot0.clearWork(slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onNextSubSpineLoaded, slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onEnterEntitySpineLoadFinish, slot0)
 
-	slot0._fightStepMO = nil
+	slot0.fightStepData = nil
 
 	if slot0._work then
 		slot0._work:unregisterDoneListener(slot0._onEntityBornDone, slot0)

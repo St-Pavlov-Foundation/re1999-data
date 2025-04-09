@@ -58,17 +58,14 @@ end
 
 function slot0.onUpdateBaseAttrMO(slot0, slot1, slot2, slot3, slot4)
 	slot7 = slot2.curNum or 0
+	slot8 = slot2.nextNum or 0
 	slot0._txtunlockname.text = HeroConfig.instance:getHeroAttributeCO(slot2.attrId).name
 	slot0._txtunlockcur.text = slot0:_showAttrValue(slot7, slot5.showType)
-	slot0._txtunlocknext.text = slot0:_showAttrValue(slot7 + (slot2.nextNum or 0), slot5.showType)
+	slot0._txtunlocknext.text = slot0:_showAttrValue(slot7 + slot8, slot5.showType)
 	slot9 = slot2.attrId
 	slot0.attrId = slot9
 
-	if CharacterDestinyEnum.DestinyUpBaseParseOffAttr[slot9] then
-		slot9 = CharacterDestinyEnum.DestinyUpBaseParseOffAttr[slot9]
-	end
-
-	CharacterController.instance:SetAttriIcon(slot0._imageunlockicon, slot9)
+	CharacterController.instance:SetAttriIcon(slot0._imageunlockicon, CharacterDestinyModel.instance:destinyUpBaseReverseParseAttr(slot9) or slot2.attrId)
 	gohelper.setActive(slot0._gounlockarrow, slot8 > 0)
 	gohelper.setActive(slot0._txtunlocknext.gameObject, slot8 > 0)
 	gohelper.setActive(slot0._gounlock, true)
@@ -103,11 +100,7 @@ function slot0.onUpdateLockSpecialAttrMO(slot0, slot1, slot2, slot3)
 					slot5 = slot4
 				end
 
-				if CharacterDestinyEnum.DestinyUpBaseParseOffAttr[slot15] then
-					slot15 = CharacterDestinyEnum.DestinyUpBaseParseOffAttr[slot15]
-				end
-
-				CharacterController.instance:SetAttriIcon(slot14.iconImage, slot15)
+				CharacterController.instance:SetAttriIcon(slot14.iconImage, CharacterDestinyModel.instance:destinyUpBaseReverseParseAttr(slot15) or slot10.attrId)
 			end
 
 			slot4 = slot4 + 1

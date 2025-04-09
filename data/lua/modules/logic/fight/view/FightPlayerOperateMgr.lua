@@ -76,7 +76,7 @@ function slot0._checkHeroUpgrade(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -93,7 +93,7 @@ function slot0._checkHeroUpgrade(slot0)
 		end
 
 		if #slot1 > 0 then
-			slot0._upgradeDatas = slot1
+			slot0._upgradeDataList = slot1
 
 			ViewMgr.instance:openView(ViewName.FightSkillStrengthenView, slot1)
 		end
@@ -158,7 +158,7 @@ function slot0._checkChangeHeroNeedUseSkill(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -166,7 +166,7 @@ function slot0._checkChangeHeroNeedUseSkill(slot0)
 		return
 	end
 
-	if not FightModel.instance:getCurRoundMO() then
+	if not FightDataHelper.roundMgr:getRoundData() then
 		return
 	end
 
@@ -207,7 +207,7 @@ function slot0._checkBindContract(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 

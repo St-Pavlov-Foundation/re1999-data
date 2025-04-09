@@ -17,6 +17,7 @@ function slot0.onInitView(slot0)
 	slot0._gochat = gohelper.findChild(slot0.viewGO, "#go_chat")
 	slot0._btnclose = gohelper.findChildButton(slot0.viewGO, "#go_chat/#btn_close")
 	slot0._simagebg = gohelper.findChildSingleImage(slot0.viewGO, "#go_chat/#simage_chatbg")
+	slot0._gobg = gohelper.findChild(slot0.viewGO, "#go_chat/#simage_chatbg")
 	slot0._goSkinbg = gohelper.findChild(slot0.viewGO, "#go_chat/#go_skinbg")
 
 	gohelper.setActive(slot0._gochat, slot0._isopen)
@@ -55,7 +56,7 @@ function slot0.initView(slot0)
 	end
 
 	gohelper.setActive(slot0._goSkinbg, slot0._hasSkin)
-	gohelper.setActive(slot0._simagebg.gameObject, not slot0._hasSkin)
+	gohelper.setActive(slot0._gobg, not slot0._hasSkin)
 	slot0._loader:addPath(slot0._itemPath)
 	slot0._loader:startLoad(slot0._onLoadFinish, slot0)
 
@@ -76,7 +77,7 @@ function slot0.switchSkin(slot0, slot1)
 		slot0._hasSkin = false
 	end
 
-	gohelper.setActive(slot0._simagebg.gameObject, not slot0._hasSkin)
+	gohelper.setActive(slot0._gobg, not slot0._hasSkin)
 	gohelper.setActive(slot0._goSkinbg, slot0._hasSkin)
 	gohelper.setActive(slot0._gosocialfrienditem, false)
 	slot0._switchskinloader:addPath(slot0._skinPath)
@@ -121,7 +122,7 @@ function slot0.onSwitchView(slot0, slot1)
 
 	if slot0._selectMo.id ~= 0 then
 		gohelper.setActive(slot0._goSkinbg, true)
-		gohelper.setActive(slot0._simagebg.gameObject, false)
+		gohelper.setActive(slot0._gobg, false)
 
 		if slot0._selectMo.id ~= slot0._skinId then
 			slot0._skinId = slot0._selectMo.id
@@ -131,7 +132,7 @@ function slot0.onSwitchView(slot0, slot1)
 		end
 	else
 		gohelper.setActive(slot0._goSkinbg, false)
-		gohelper.setActive(slot0._simagebg.gameObject, true)
+		gohelper.setActive(slot0._gobg, true)
 		slot0._socialfrienditemcls:selectSkin(slot0._selectMo.id)
 
 		slot0._skinId = slot0._selectMo.id
@@ -139,8 +140,11 @@ function slot0.onSwitchView(slot0, slot1)
 end
 
 function slot0.onHide(slot0)
-	slot1 = PlayerCardModel.instance:getPlayerCardSkinId()
-	slot0._skinId = slot1
+	if slot0._skinId ~= PlayerCardModel.instance:getPlayerCardSkinId() then
+		slot0:switchSkin(slot1)
+
+		slot0._skinId = slot1
+	end
 
 	slot0._socialfrienditemcls:selectSkin(slot1)
 end

@@ -6,15 +6,15 @@ slot1 = nil
 function slot0.onStart(slot0)
 	if uv0 then
 		table.insert(uv0, {
-			slot0._fightStepMO,
-			slot0._actEffectMO
+			slot0.fightStepData,
+			slot0.actEffectData
 		})
 	else
 		uv0 = {}
 
 		table.insert(uv0, {
-			slot0._fightStepMO,
-			slot0._actEffectMO
+			slot0.fightStepData,
+			slot0.actEffectData
 		})
 		TaskDispatcher.runDelay(slot0._delayStart, slot0, 0.01)
 	end

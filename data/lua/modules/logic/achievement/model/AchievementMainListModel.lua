@@ -131,21 +131,22 @@ end
 function slot0.sortAchievementByRareDown(slot0, slot1)
 	slot2 = slot0 and slot0.id
 	slot3 = slot1 and slot1.id
+	slot5 = slot1 and slot1.groupId
 
-	if slot0.groupId ~= 0 and slot1.groupId ~= 0 then
-		slot5 = AchievementConfig.instance:getGroup(slot1.groupId)
+	if (slot0 and slot0.groupId) ~= 0 and slot5 ~= 0 then
+		slot7 = AchievementConfig.instance:getGroup(slot5)
 
-		if (AchievementConfig.instance:getGroup(slot0.groupId) and slot4.order or 0) ~= (slot5 and slot5.order or 0) then
-			return slot6 < slot7
+		if (AchievementConfig.instance:getGroup(slot4) and slot6.order or 0) ~= (slot7 and slot7.order or 0) then
+			return slot8 < slot9
 		end
 
-		if slot0.groupId ~= slot1.groupId then
-			return slot1.groupId < slot0.groupId
+		if slot4 ~= slot5 then
+			return slot4 < slot5
 		end
 	end
 
 	if AchievementModel.instance:achievementHasLocked(slot2) ~= AchievementModel.instance:achievementHasLocked(slot3) then
-		return not slot4
+		return not slot6
 	end
 
 	return slot2 < slot3
@@ -211,18 +212,18 @@ function slot0.getAchievementIndexAndScrollPixel(slot0, slot1, slot2)
 	return slot3, slot4, slot5
 end
 
-function slot0.getGroupMOList(slot0, slot1)
-	slot4 = slot0._moGroupMap[AchievementMainCommonModel.instance:getCurrentFilterType()] and slot0._moGroupMap[slot2][AchievementMainCommonModel.instance:getCurrentSortType()]
-
-	return slot4 and slot4[slot1]
-end
-
 function slot0.isCurTaskNeedPlayIdleAnim(slot0)
 	return slot0._isCurTaskNeedPlayIdleAnim
 end
 
 function slot0.setIsCurTaskNeedPlayIdleAnim(slot0, slot1)
 	slot0._isCurTaskNeedPlayIdleAnim = slot1
+end
+
+function slot0.getCurGroupMoList(slot0, slot1)
+	slot4 = slot0._moGroupMap[AchievementMainCommonModel.instance:getCurrentFilterType()] and slot0._moGroupMap[slot2][AchievementMainCommonModel.instance:getCurrentSortType()]
+
+	return slot4 and slot4[slot1]
 end
 
 slot0.instance = slot0.New()

@@ -835,6 +835,13 @@ function slot0.enterTowerView(slot0, slot1)
 		}
 	end
 
+	if slot2.type == DungeonEnum.EpisodeType.TowerBossTeach then
+		slot3 = {
+			jumpId = TowerEnum.JumpId.TowerBossTeach,
+			towerId = TowerModel.instance:getRecordFightParam() and slot4.towerId
+		}
+	end
+
 	if slot3 then
 		TowerModel.instance:clearFightFinishParam()
 		DungeonModel.instance:changeCategory(DungeonEnum.ChapterType.Normal)

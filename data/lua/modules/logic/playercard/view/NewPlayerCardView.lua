@@ -259,47 +259,71 @@ function slot0._onRefreshSwitchView(slot0, slot1)
 end
 
 function slot0._refreshProgress(slot0, slot1)
-	if (slot1 or slot0.playercardinfo:getProgressSetting()) and #slot2 > 0 then
-		for slot6, slot7 in ipairs(slot2) do
-			slot8 = slot7[2]
+	slot2 = slot1 or slot0.playercardinfo:getProgressSetting()
+	slot4 = nil
 
-			if slot0._progressItemList[slot7[1]] then
-				if not slot10.isload then
-					slot10.anim:Update(0)
-					slot10.anim:Play("open")
+	if ItemConfig.instance:getItemCo(slot0.themeId) and not string.nilorempty(slot3.effect) then
+		slot4 = string.split(slot3.effect, "#")
+	end
 
-					slot10.isload = true
+	if slot2 and #slot2 > 0 then
+		for slot8, slot9 in ipairs(slot2) do
+			slot10 = slot9[2]
+
+			if slot0._progressItemList[slot9[1]] then
+				if not slot12.isload then
+					slot12.anim:Update(0)
+					slot12.anim:Play("open")
+
+					slot12.isload = true
 				end
 
-				slot11 = PlayerCardConfig.instance:getCardProgressById(slot8)
+				slot13 = PlayerCardConfig.instance:getCardProgressById(slot10)
 
-				gohelper.setActive(slot10.gofull, true)
-				gohelper.setActive(slot10.goempty, false)
+				gohelper.setActive(slot12.gofull, true)
+				gohelper.setActive(slot12.goempty, false)
 
-				for slot15, slot16 in pairs(PlayerCardEnum.ProgressShowType) do
-					gohelper.setActive(gohelper.findChild(slot10.gofull, "type" .. slot16), false)
+				for slot17, slot18 in pairs(PlayerCardEnum.ProgressShowType) do
+					gohelper.setActive(gohelper.findChild(slot12.gofull, "type" .. slot18), false)
 				end
 
-				slot12 = slot11.type
-				slot10.txtname.text = slot11.name
-				slot10.gotype = gohelper.findChild(slot10.gofull, "type" .. slot12)
+				slot14 = slot13.type
+				slot12.txtname.text = slot13.name
+				slot12.gotype = gohelper.findChild(slot12.gofull, "type" .. slot14)
 
-				gohelper.setActive(slot10.gotype, true)
-				slot0:setProgressType(slot10.gotype, slot12, slot8)
-				UISpriteSetMgr.instance:setPlayerCardSprite(slot10.imgpic, "playercard_main_img_" .. slot8)
-				UISpriteSetMgr.instance:setPlayerCardSprite(slot10.imgicon, "playercard_main_icon_" .. slot8)
+				gohelper.setActive(slot12.gotype, true)
+				slot0:setProgressType(slot12.gotype, slot14, slot10)
+
+				if slot4 then
+					slot16 = slot4[2]
+
+					if not string.nilorempty(slot4[1]) then
+						UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgicon, "playercard_progress_icon_" .. slot10 .. "_" .. slot15)
+					else
+						UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgicon, "playercard_main_icon_" .. slot10)
+					end
+
+					if not string.nilorempty(slot16) then
+						UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgpic, "playercard_main_img_" .. slot10 .. "_" .. slot16)
+					else
+						UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgpic, "playercard_main_img_" .. slot10)
+					end
+				else
+					UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgpic, "playercard_main_img_" .. slot10)
+					UISpriteSetMgr.instance:setPlayerCardSprite(slot12.imgicon, "playercard_main_icon_" .. slot10)
+				end
 			end
 		end
 	end
 
-	for slot7, slot8 in ipairs(slot0.progressopen and PlayerCardProgressModel.instance:getEmptyPosList() or slot0.playercardinfo:getEmptyPosList()) do
-		if slot8 then
-			slot9 = slot0._progressItemList[slot7]
+	for slot9, slot10 in ipairs(slot0.progressopen and PlayerCardProgressModel.instance:getEmptyPosList() or slot0.playercardinfo:getEmptyPosList()) do
+		if slot10 then
+			slot11 = slot0._progressItemList[slot9]
 
-			gohelper.setActive(slot9.gofull, false)
-			gohelper.setActive(slot9.goempty, true)
+			gohelper.setActive(slot11.gofull, false)
+			gohelper.setActive(slot11.goempty, true)
 
-			slot9.isload = false
+			slot11.isload = false
 		end
 	end
 end

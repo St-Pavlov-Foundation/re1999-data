@@ -280,7 +280,7 @@ function slot0._showCardSkillTips(slot0, slot1, slot2, slot3)
 	slot0:_setSkillTip(slot1, slot2, slot3)
 
 	if PCInputController.instance:getIsUse() and PlayerPrefsHelper.getNumber("keyTips", 0) ~= 0 then
-		if FightConfig.instance:isUniqueSkill(slot1) then
+		if FightCardDataHelper.isBigSkill(slot1) then
 			recthelper.setAnchor(slot0._goskilltip.transform, slot0._originSkillPosX, uv0.OnKeyTipsUniquePosY)
 		else
 			recthelper.setAnchor(slot4, slot0._originSkillPosX, uv0.OnKeyTipsPosY)

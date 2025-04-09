@@ -66,7 +66,6 @@ function slot0.addEventListeners(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.SimulatePlayHandCard, slot0._simulatePlayHandCard, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.StartReplay, slot0._checkStartReplay, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.RefreshOneHandCard, slot0._onRefreshOneHandCard, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RefreshHandCardMO, slot0._onRefreshHandCardMO, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.CardLevelChangeDone, slot0._onCardLevelChangeDone, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.GMForceRefreshNameUIBuff, slot0._onGMForceRefreshNameUIBuff, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.SeasonSelectChangeHeroTarget, slot0._onSeasonSelectChangeHeroTarget, slot0)
@@ -98,7 +97,6 @@ function slot0.removeEventListeners(slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.SimulatePlayHandCard, slot0._simulatePlayHandCard, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.StartReplay, slot0._checkStartReplay, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.RefreshOneHandCard, slot0._onRefreshOneHandCard, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.RefreshHandCardMO, slot0._onRefreshHandCardMO, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.CardLevelChangeDone, slot0._onCardLevelChangeDone, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.GMForceRefreshNameUIBuff, slot0._onGMForceRefreshNameUIBuff, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.SeasonSelectChangeHeroTarget, slot0._onSeasonSelectChangeHeroTarget, slot0)
@@ -112,6 +110,12 @@ end
 function slot0._allocateEnergyDone(slot0)
 	if slot0._cardItem then
 		slot0._cardItem:_allocateEnergyDone()
+	end
+end
+
+function slot0.changeEnergy(slot0)
+	if slot0._cardItem then
+		slot0._cardItem:changeEnergy()
 	end
 end
 
@@ -189,7 +193,7 @@ function slot0.updateItem(slot0, slot1, slot2)
 
 	if slot2 then
 		slot0.cardInfoMO = slot2
-		slot2.custom_handCardIndex = slot0.index
+		slot2.clientData.custom_handCardIndex = slot0.index
 
 		if not lua_skill.configDict[slot2.skillId] then
 			logError("skill not exist: " .. slot2.skillId)
@@ -223,7 +227,7 @@ end
 function slot0.showKeytips(slot0)
 	slot1 = gohelper.findChild(slot0.go, "foranim/card/#go_pcbtn")
 
-	if #FightCardModel.instance:getHandCards() == 0 then
+	if #FightDataHelper.handCardMgr.handCard == 0 then
 		return
 	end
 
@@ -238,7 +242,7 @@ function slot0.showKeytips(slot0)
 			return
 		end
 
-		if slot0._cardItem and slot0._cardItem:IsUniqueSkill() then
+		if slot0._cardItem and slot0.cardInfoMO and FightCardDataHelper.isBigSkill(slot0.cardInfoMO.skillId) then
 			recthelper.setAnchorY(slot0._pcTips._go.transform, 200)
 		else
 			recthelper.setAnchorY(slot0._pcTips._go.transform, 150)
@@ -253,10 +257,6 @@ end
 function slot0.refreshCardMO(slot0, slot1, slot2)
 	slot0.index = slot1
 	slot0.cardInfoMO = slot2
-end
-
-function slot0._onRefreshHandCardMO(slot0, slot1, slot2)
-	slot0:refreshCardMO(slot1, slot2)
 end
 
 function slot0.onLongPressEnd(slot0)
@@ -287,7 +287,7 @@ function slot0._refreshBlueStar(slot0)
 	slot1 = slot0.cardInfoMO and slot0.cardInfoMO.uid
 	slot2 = slot0.cardInfoMO and slot0.cardInfoMO.skillId
 
-	slot0._cardItem:showBlueStar(slot1 and slot2 and FightCardModel.instance:getSkillLv(slot1, slot2))
+	slot0._cardItem:showBlueStar(slot1 and slot2 and FightCardDataHelper.getSkillLv(slot1, slot2))
 end
 
 function slot0._onDragHandCardBegin(slot0, slot1, slot2, slot3)
@@ -299,7 +299,7 @@ function slot0._onDragHandCardBegin(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	if FightCardModel.instance:getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId) <= FightCardModel.instance:getSkillLv(slot3.uid, slot3.skillId) then
+	if FightCardDataHelper.getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId) <= FightCardDataHelper.getSkillLv(slot3.uid, slot3.skillId) then
 		return
 	end
 
@@ -363,7 +363,7 @@ function slot0._getConditionTargetUid(slot0, slot1)
 	if slot1 == 103 then
 		return slot0.cardInfoMO.uid
 	elseif slot1 == 0 then
-		return FightCardModel.instance.curSelectEntityId
+		return FightDataHelper.operationDataMgr.curSelectEntityId
 	elseif slot1 == 202 then
 		for slot5, slot6 in ipairs(FightDataHelper.entityMgr:getEnemyNormalList()) do
 			return slot6.id
@@ -378,7 +378,7 @@ function slot0._getConditionTargetUids(slot0, slot1)
 		}
 	elseif slot1 == 0 then
 		return {
-			FightCardModel.instance.curSelectEntityId
+			FightDataHelper.operationDataMgr.curSelectEntityId
 		}
 	elseif slot1 == 202 then
 		slot2 = {}
@@ -643,7 +643,7 @@ end
 function slot0._simulateBuffList(slot0, slot1)
 	slot2 = slot1:getBuffList()
 
-	for slot7, slot8 in ipairs(FightCardModel.instance:getCardOps()) do
+	for slot7, slot8 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
 		if slot8:isPlayCard() then
 			slot9 = lua_skill.configDict[slot8.skillId]
 
@@ -817,7 +817,7 @@ function slot0._onClickThis(slot0)
 	end
 
 	if FightDataHelper.stageMgr:getCurOperateState() == FightStageMgr.OperateStateType.Discard then
-		if FightDataHelper.entityMgr:getById(slot0.cardInfoMO.uid) and slot1:isUniqueSkill(slot0.cardInfoMO.skillId) then
+		if FightDataHelper.entityMgr:getById(slot0.cardInfoMO.uid) and FightCardDataHelper.isBigSkill(slot0.cardInfoMO.skillId) then
 			return
 		end
 
@@ -857,11 +857,11 @@ function slot0._onClickThis(slot0)
 		return
 	end
 
-	for slot6, slot7 in ipairs(FightCardModel.instance:getPlayCardOpList()) do
+	for slot6, slot7 in ipairs(FightDataHelper.operationDataMgr:getPlayCardOpList()) do
 		slot2 = 0 + slot7.costActPoint
 	end
 
-	if FightCardModel.instance:getCardMO().actPoint <= slot2 then
+	if FightDataHelper.operationDataMgr.actPoint <= slot2 then
 		return
 	end
 
@@ -1144,7 +1144,7 @@ function slot0.playDistribute(slot0)
 	end
 
 	slot1 = slot0:getUserDataTb_()
-	slot1.cards = tabletool.copy(FightCardModel.instance:getHandCards())
+	slot1.cards = tabletool.copy(FightDataHelper.handCardMgr.handCard)
 	slot1.handCardItemList = slot0._subViewInst._handCardItemList
 	slot1.preCardCount = #slot1.cards - 1
 	slot1.newCardCount = 1
@@ -1233,7 +1233,7 @@ function slot0.moveSelfPos(slot0, slot1, slot2)
 	slot0._moveCardFlow:start()
 end
 
-function slot0.playCardLevelChange(slot0, slot1, slot2)
+function slot0.playCardLevelChange(slot0, slot1)
 	if not slot0.cardInfoMO then
 		return
 	end
@@ -1243,10 +1243,7 @@ function slot0.playCardLevelChange(slot0, slot1, slot2)
 	end
 
 	gohelper.setActive(slot0._lockGO, false)
-
-	slot0.cardInfoMO = slot1
-
-	slot0._cardItem:playCardLevelChange(slot1, slot2)
+	slot0._cardItem:playCardLevelChange(slot0.cardInfoMO, slot1)
 end
 
 function slot0._onCardLevelChangeDone(slot0, slot1)
@@ -1268,7 +1265,7 @@ function slot0.playCardAConvertCardB(slot0)
 		slot2 = slot0._convertEffect.transform.childCount
 		slot4 = nil
 
-		if FightCardModel.instance:isUniqueSkill(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId) then
+		if FightCardDataHelper.isBigSkill(slot0.cardInfoMO.skillId) then
 			for slot8 = 0, slot2 - 1 do
 				slot9 = slot1:GetChild(slot8).gameObject
 
@@ -1284,7 +1281,7 @@ function slot0.playCardAConvertCardB(slot0)
 			for slot9 = 0, slot2 - 1 do
 				slot10 = slot1:GetChild(slot9).gameObject
 
-				if slot9 + 1 == FightCardModel.instance:getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId) then
+				if slot9 + 1 == FightCardDataHelper.getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId) then
 					gohelper.setActive(slot10, true)
 
 					slot4 = gohelper.onceAddComponent(slot10, typeof(UnityEngine.Animation))

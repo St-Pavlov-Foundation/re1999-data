@@ -55,7 +55,7 @@ function slot0.setActivityId(slot0, slot1)
 end
 
 function slot0.getActivityId(slot0)
-	return slot0._activityId or VersionActivity2_5Enum.ActivityId.Challenge
+	return slot0._activityId
 end
 
 function slot0.getBadgeNum(slot0)
@@ -112,7 +112,7 @@ function slot0.isHeroRepressInEpisode(slot0, slot1, slot2)
 end
 
 function slot0.isHeroRepressInPreEpisode(slot0, slot1, slot2)
-	return slot0:getGroupEpisodeMo(Act183Config.instance:getEpisodeCo(slot1) and slot3.groupId):isHeroRepressInPreEpisode(slot1, slot2)
+	return slot0:getGroupEpisodeMo(Act183Config.instance:getEpisodeCo(slot1) and slot3.groupId) and slot5:isHeroRepressInPreEpisode(slot1, slot2)
 end
 
 function slot0.recordEpisodeSelectConditions(slot0, slot1)

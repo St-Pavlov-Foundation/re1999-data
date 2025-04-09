@@ -3,7 +3,7 @@ module("modules.logic.fight.system.flow.FightSkillFlow", package.seeall)
 slot0 = class("FightSkillFlow", BaseFlow)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._sequence = FlowSequence.New()
 
 	slot0._sequence:addWork(FightWorkSkillSwitchSpine.New(slot1))
@@ -15,7 +15,7 @@ function slot0.ctor(slot0, slot1)
 
 	slot3 = nil
 
-	for slot7, slot8 in ipairs(slot1.actEffectMOs) do
+	for slot7, slot8 in ipairs(slot1.actEffect) do
 		if slot8.effectType == FightEnum.EffectType.DEAD then
 			(slot3 or FlowParallel.New()):addWork(FightWork2Work.New(FightWorkEffectDeadPerformance, slot1, slot8, true))
 		end
@@ -27,13 +27,13 @@ function slot0.ctor(slot0, slot1)
 
 	slot4 = nil
 
-	for slot8, slot9 in ipairs(slot1.actEffectMOs) do
+	for slot8, slot9 in ipairs(slot1.actEffect) do
 		if (slot9.effectType == FightEnum.EffectType.HEAL or slot9.effectType == FightEnum.EffectType.HEALCRIT) and slot9.effectNum > 0 then
 			if not slot4 then
 				slot2:addWork(FightWorkSkillFinallyHeal.New(slot1))
 			end
 
-			slot4:addActEffectMO(slot9)
+			slot4:addActEffectData(slot9)
 		end
 	end
 end
@@ -47,7 +47,7 @@ function slot0.onStart(slot0)
 end
 
 function slot0._onFightWorkStepSkillTimeout(slot0, slot1)
-	if slot1 == slot0._fightStepMO then
+	if slot1 == slot0.fightStepData then
 		if slot0._sequence then
 			slot0._sequence:stop()
 		end
@@ -57,7 +57,7 @@ function slot0._onFightWorkStepSkillTimeout(slot0, slot1)
 end
 
 function slot0.clearWork(slot0)
-	FightController.instance:dispatchEvent(FightEvent.OnSkillTimeLineDone, slot0._fightStepMO)
+	FightController.instance:dispatchEvent(FightEvent.OnSkillTimeLineDone, slot0.fightStepData)
 	FightController.instance:unregisterCallback(FightEvent.ParallelPlayNextSkillDoneThis, slot0._parallelDoneThis, slot0)
 	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, slot0._forceEndSkillStep, slot0)
 	FightController.instance:unregisterCallback(FightEvent.FightWorkStepSkillTimeout, slot0._onFightWorkStepSkillTimeout, slot0)
@@ -75,7 +75,7 @@ function slot0.onDestroy(slot0)
 end
 
 function slot0.addAfterSkillEffects(slot0, slot1)
-	slot5 = slot0._fightStepMO
+	slot5 = slot0.fightStepData
 
 	slot0._sequence:addWork(FightWorkSkillSwitchSpineEnd.New(slot5))
 
@@ -118,7 +118,7 @@ function slot0._skillFlowDone(slot0)
 end
 
 function slot0._parallelDoneThis(slot0, slot1)
-	if slot0._fightStepMO == slot1 then
+	if slot0.fightStepData == slot1 then
 		slot0._parallelDone = true
 
 		slot0:onDone(true)
@@ -126,7 +126,7 @@ function slot0._parallelDoneThis(slot0, slot1)
 end
 
 function slot0._forceEndSkillStep(slot0, slot1)
-	if slot1 == slot0._fightStepMO then
+	if slot1 == slot0.fightStepData then
 		slot0._forceEndDone = true
 
 		slot0:onDone(true)

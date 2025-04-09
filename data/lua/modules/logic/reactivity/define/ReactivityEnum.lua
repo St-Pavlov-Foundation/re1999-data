@@ -5,6 +5,10 @@ slot0.ActivityDefine = {
 	[VersionActivity2_5Enum.ActivityId.Reactivity] = {
 		storeCurrency = CurrencyEnum.CurrencyType.V1a6Dungeon,
 		storeActId = VersionActivity2_5Enum.ActivityId.ReactivityStore
+	},
+	[VersionActivity2_7Enum.ActivityId.Reactivity] = {
+		storeCurrency = CurrencyEnum.CurrencyType.V2a0Dungeon,
+		storeActId = VersionActivity2_7Enum.ActivityId.ReactivityStore
 	}
 }
 

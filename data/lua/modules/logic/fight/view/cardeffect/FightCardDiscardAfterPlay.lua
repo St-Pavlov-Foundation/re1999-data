@@ -14,9 +14,9 @@ function slot0.onStart(slot0, slot1)
 	elseif slot1.needDiscard then
 		slot5 = false
 
-		for slot9, slot10 in ipairs(FightCardModel.instance:getHandCards()) do
+		for slot9, slot10 in ipairs(FightDataHelper.handCardMgr.handCard) do
 			if FightDataHelper.entityMgr:getById(slot10.uid) then
-				if not slot11:isUniqueSkill(slot10.skillId) then
+				if not FightCardDataHelper.isBigSkill(slot10.skillId) then
 					slot5 = true
 
 					break

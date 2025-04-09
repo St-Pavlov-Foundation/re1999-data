@@ -261,7 +261,7 @@ function slot0.getProgressByIndex(slot0, slot1)
 		return slot0.exploreCollection
 	elseif slot1 == PlayerCardEnum.LeftContent.Act148SSSCount then
 		if slot0.act128SSSCount > 0 then
-			return luaLang("playercard_act128SSSCount") .. slot0.act128SSSCount
+			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("playercard_act128SSSCount"), slot0.act128SSSCount)
 		else
 			return -1
 		end
@@ -275,13 +275,13 @@ function slot0.getProgressByIndex(slot0, slot1)
 		return -1
 	elseif slot1 == PlayerCardEnum.LeftContent.TowerBossPassCount then
 		if slot0.towerBossPassCount > 0 then
-			return luaLang("playercard_towerbosspasscount") .. slot0.towerBossPassCount
+			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("playercard_towerbosspasscount"), slot0.towerBossPassCount)
 		else
 			return -1
 		end
 	elseif slot1 == PlayerCardEnum.LeftContent.WeekwalkVer2PlatinumCup then
 		if slot0.weekwalkVer2PlatinumCup >= 0 then
-			return luaLang("playercard_weekwalkVer2PlatinumCup") .. slot0.weekwalkVer2PlatinumCup
+			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("playercard_weekwalkVer2PlatinumCup"), slot0.weekwalkVer2PlatinumCup)
 		else
 			return -1
 		end

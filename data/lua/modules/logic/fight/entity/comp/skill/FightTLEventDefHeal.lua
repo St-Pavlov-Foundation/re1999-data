@@ -1,6 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventDefHeal", package.seeall)
 
-slot0 = class("FightTLEventDefHeal")
+slot0 = class("FightTLEventDefHeal", FightTimelineTrackItem)
 slot1 = {
 	[FightEnum.EffectType.HEAL] = true,
 	[FightEnum.EffectType.HEALCRIT] = true,
@@ -11,12 +11,12 @@ function slot0.setContext(slot0, slot1)
 	slot0._context = slot1
 end
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
-	slot0._fightStepMO = slot1
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+	slot0.fightStepData = slot1
 	slot0._hasRatio = not string.nilorempty(slot3[1])
 	slot0._ratio = tonumber(slot3[1]) or 0
 
-	for slot7, slot8 in ipairs(slot1.actEffectMOs) do
+	for slot7, slot8 in ipairs(slot1.actEffect) do
 		if FightHelper.getEntity(slot8.targetId) then
 			if uv0[slot8.effectType] then
 				slot0:_playDefHeal(slot9, slot8)
@@ -99,13 +99,7 @@ function slot0._playSkillBehavior(slot0)
 		return
 	end
 
-	FightSkillBehaviorMgr.instance:playSkillBehavior(slot0._fightStepMO, slot0._behaviorTypeDict, true)
-end
-
-function slot0.reset(slot0)
-end
-
-function slot0.dispose(slot0)
+	FightSkillBehaviorMgr.instance:playSkillBehavior(slot0.fightStepData, slot0._behaviorTypeDict, true)
 end
 
 return slot0

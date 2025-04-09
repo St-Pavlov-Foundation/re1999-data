@@ -57,6 +57,10 @@ function slot0._editableInitView(slot0)
 end
 
 function slot0._handleMouseInput(slot0)
+	if not PCInputController.instance:getIsUse() then
+		return
+	end
+
 	if UnityEngine.Input.mouseScrollDelta and slot1.y ~= 0 then
 		slot0:_btnrotateOnClick()
 	end

@@ -1,0 +1,37 @@
+[
+  {
+    "type": "playerBattle1",
+    "rewardView": "1009#50",
+    "autoRewardView": "1009#50"
+  },
+  {
+    "type": "playerBattle2",
+    "rewardView": "1009#60",
+    "autoRewardView": "1009#60"
+  },
+  {
+    "type": "playerBattle3",
+    "rewardView": "1009#70",
+    "autoRewardView": "1009#70"
+  },
+  {
+    "type": "playerBattle4",
+    "rewardView": "1009#80",
+    "autoRewardView": "1009#80"
+  },
+  {
+    "type": "playerBattle5",
+    "rewardView": "1009#90",
+    "autoRewardView": "1009#90"
+  },
+  {
+    "type": "playerBattle6",
+    "rewardView": "1009#95",
+    "autoRewardView": "1009#95"
+  },
+  {
+    "type": "playerBattle7",
+    "rewardView": "1009#100",
+    "autoRewardView": "1009#100"
+  }
+]

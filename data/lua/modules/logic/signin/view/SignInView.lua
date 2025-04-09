@@ -1257,7 +1257,6 @@ function slot0._setPropItems(slot0)
 end
 
 function slot0._setMonthItems(slot0)
-	gohelper.setActive(slot0._gomonth, true)
 	slot0:_onCloneSigninMonthItem(SignInModel.instance:getShowMonthItemCo())
 end
 
@@ -1480,6 +1479,8 @@ function slot0._btnchangeOnClick(slot0)
 end
 
 function slot0._setActive_LifeCicle(slot0, slot1)
+	gohelper.setActive(slot0._gomonth, not slot1)
+
 	if slot0._isActiveLifeCircle == slot1 then
 		return
 	end

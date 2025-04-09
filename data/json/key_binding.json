@@ -359,21 +359,21 @@
   {
     "hud": 3,
     "id": 20,
-    "description": "打开/关闭律的调教",
+    "description": "打开/关闭律的调校",
     "key": "LeftControl",
     "editable": 1
   },
   {
     "hud": 3,
     "id": 21,
-    "description": "使用律的调教1技能",
+    "description": "使用律的调校1技能",
     "key": "W",
     "editable": 1
   },
   {
     "hud": 3,
     "id": 22,
-    "description": "向下律的调教2技能",
+    "description": "使用律的调校2技能",
     "key": "S",
     "editable": 1
   },

@@ -2,6 +2,10 @@ module("modules.logic.fight.system.work.FightWorkStepChangeWave", package.seeall
 
 slot0 = class("FightWorkStepChangeWave", BaseWork)
 
+function slot0.ctor(slot0, slot1)
+	slot0.nextWaveData = slot1
+end
+
 function slot0.onStart(slot0, slot1)
 	slot0._flow = FlowSequence.New()
 
@@ -26,7 +30,7 @@ function slot0._startChangeWave(slot0)
 		slot0.context.oldEntityIdDict[slot6.id] = true
 	end
 
-	if FightModel.instance:getAndRemoveNextWaveMsg() then
+	if slot0.nextWaveData or FightDataHelper.cacheFightMgr:getNextFightData() then
 		slot0:_changeWave(slot2)
 	else
 		logNormal("还没收到FightWavePush，继续等待")
@@ -37,7 +41,7 @@ end
 function slot0._onPushFightWave(slot0)
 	FightController.instance:unregisterCallback(FightEvent.PushFightWave, slot0._onPushFightWave, slot0)
 
-	if FightModel.instance:getAndRemoveNextWaveMsg() then
+	if slot0.nextWaveData or FightDataHelper.cacheFightMgr:getNextFightData() then
 		logNormal("终于等待换波次的信息了")
 		slot0:_changeWave(slot1)
 		slot0:onDone(true)
@@ -50,7 +54,7 @@ end
 function slot0._changeWave(slot0, slot1)
 	FightDataHelper.calMgr:playChangeWave()
 
-	slot0._nextWaveMsg = slot1
+	slot0.fightData = slot1
 	slot2 = FightModel.instance:getFightParam()
 	slot3 = FightModel.instance:getCurWaveId()
 
@@ -68,7 +72,7 @@ end
 
 function slot0._changeEntity(slot0)
 	logNormal("结束中准备下一波怪")
-	GameSceneMgr.instance:getScene(SceneType.Fight).entityMgr:changeWave(slot0._nextWaveMsg.fight)
+	GameSceneMgr.instance:getScene(SceneType.Fight).entityMgr:changeWave(slot0.fightData)
 
 	FightModel.instance.power = FightModel.instance.power
 

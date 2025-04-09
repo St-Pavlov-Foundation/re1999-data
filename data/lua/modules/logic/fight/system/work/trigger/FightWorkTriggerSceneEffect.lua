@@ -3,12 +3,12 @@ module("modules.logic.fight.system.work.trigger.FightWorkTriggerSceneEffect", pa
 slot0 = class("FightWorkTriggerSceneEffect", BaseWork)
 
 function slot0.ctor(slot0, slot1, slot2)
-	slot0._fightStepMO = slot1
-	slot0._actEffectMO = slot2
+	slot0.fightStepData = slot1
+	slot0.actEffectData = slot2
 end
 
 function slot0.onStart(slot0)
-	slot0._config = lua_trigger_action.configDict[slot0._actEffectMO.effectNum]
+	slot0._config = lua_trigger_action.configDict[slot0.actEffectData.effectNum]
 
 	if GameSceneMgr.instance:getCurScene() and slot1.level:getSceneGo() and FightHelper.getEntity(FightEntityScene.MySideId) then
 		if slot0._config.param2 == 0 then

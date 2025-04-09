@@ -37,7 +37,8 @@ function slot0.initHandleDict(slot0)
 		[EnemyInfoEnum.TabEnum.WeekWalk] = slot0.refreshWeekWalk,
 		[EnemyInfoEnum.TabEnum.WeekWalk_2] = slot0.refreshWeekWalk_2,
 		[EnemyInfoEnum.TabEnum.Season123] = slot0.refreshSeason,
-		[EnemyInfoEnum.TabEnum.BossRush] = slot0.refreshBossRush
+		[EnemyInfoEnum.TabEnum.BossRush] = slot0.refreshBossRush,
+		[EnemyInfoEnum.TabEnum.Act191] = slot0.refreshNormal
 	}
 end
 

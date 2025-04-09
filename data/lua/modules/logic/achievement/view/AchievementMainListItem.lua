@@ -11,8 +11,6 @@ function slot0.onInitView(slot0)
 	slot0._golayout = gohelper.findChild(slot0.viewGO, "go_layout")
 	slot0._gotaskitem = gohelper.findChild(slot0.viewGO, "go_layout/go_taskitem")
 	slot0._btnpopup = gohelper.findChildButtonWithAudio(slot0.viewGO, "go_top2/#btn_popup")
-	slot0._gooff = gohelper.findChild(slot0.viewGO, "go_top2/#btn_popup/#go_off")
-	slot0._goon = gohelper.findChild(slot0.viewGO, "go_top2/#btn_popup/#go_on")
 	slot0._goallcollect = gohelper.findChild(slot0.viewGO, "go_top2/#simage_AchievementGroupBG/#txt_achievementgroupname/#go_allcollect")
 
 	if slot0._editableInitView then
@@ -21,47 +19,16 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0._btnpopup:AddClickListener(slot0._btnpopupOnClick, slot0)
-	slot0:addEventCb(AchievementMainController.instance, AchievementEvent.OnPlayGroupFadeAnim, slot0._onPlayGroupFadeAnimation, slot0)
 	slot0:addEventCb(AchievementMainController.instance, AchievementEvent.OnFocusAchievementFinished, slot0._onFocusFinished, slot0)
 end
 
 function slot0.removeEvents(slot0)
-	slot0._btnpopup:RemoveClickListener()
-end
-
-function slot0._btnpopupOnClick(slot0)
-	AchievementMainController.instance:dispatchEvent(AchievementEvent.OnClickGroupFoldBtn, AchievementConfig.instance:getAchievement(slot0._mo.id).groupId, not slot0._mo:getIsFold())
-end
-
-function slot0._onPlayGroupFadeAnimation(slot0, slot1)
-	if not slot1 or not slot1.achievementId or slot2 ~= slot0._mo.id then
-		return
-	end
-
-	slot0._isFold = slot1.isFold
-
-	if not slot0._isFold then
-		slot0._mo:setIsFold(slot0._isFold)
-	end
-
-	slot0._openAnimTweenId = ZProj.TweenHelper.DOTweenFloat(slot1.orginLineHeight, slot1.targetLineHeight, slot1.duration, slot0._onOpenTweenFrameCallback, slot0._onOpenTweenFinishCallback, slot0, nil)
-end
-
-function slot0._onOpenTweenFrameCallback(slot0, slot1)
-	slot0._mo:overrideLineHeight(slot1)
-	AchievementMainListModel.instance:onModelUpdate()
-end
-
-function slot0._onOpenTweenFinishCallback(slot0)
-	slot0._mo:clearOverrideLineHeight()
-	slot0._mo:setIsFold(slot0._isFold)
-	AchievementMainListModel.instance:onModelUpdate()
 end
 
 function slot0._editableInitView(slot0)
 	slot0._taskItemTab = slot0:getUserDataTb_()
 	slot0._topAnimator = gohelper.onceAddComponent(slot0._gotop1, gohelper.Type_Animator)
+	slot0._foldAnimComp = AchievementItemFoldAnimComp.Get(slot0._btnpopup.gameObject, slot0._gotop1)
 end
 
 function slot0.onDestroy(slot0)
@@ -70,12 +37,6 @@ function slot0.onDestroy(slot0)
 end
 
 function slot0.onUpdateMO(slot0, slot1)
-	if slot0._mo and slot0._mo ~= slot1 and slot0._openAnimTweenId then
-		ZProj.TweenHelper.KillById(slot0._openAnimTweenId)
-
-		slot0._openAnimTweenId = nil
-	end
-
 	slot0._mo = slot1
 
 	slot0:refreshUI()
@@ -87,6 +48,7 @@ function slot0.refreshUI(slot0)
 
 		slot0:refreshTaskList(slot0._mo:getFilterTaskList(AchievementMainCommonModel.instance:getCurrentSortType(), AchievementMainCommonModel.instance:getCurrentFilterType()))
 		slot0:refreshTopUI(slot1)
+		slot0._foldAnimComp:onUpdateMO(slot0._mo)
 	end
 end
 
@@ -102,8 +64,6 @@ function slot0.refreshTaskList(slot0, slot1)
 	slot3 = slot0._mo:getIsFold()
 
 	gohelper.setActive(slot0._golayout, not slot3)
-	gohelper.setActive(slot0._goon, not slot3)
-	gohelper.setActive(slot0._gooff, slot3)
 
 	slot0._hasTaskFinished = false
 
@@ -245,7 +205,7 @@ end
 
 function slot0.refreshTopUI(slot0, slot1)
 	if slot1 and slot1.groupId ~= 0 and slot0._mo.isGroupTop then
-		slot0:refreshGroupTopUI(AchievementConfig.instance:getGroup(slot1.groupId))
+		slot0:refreshGroupTopUI(slot1.groupId)
 	end
 
 	if not slot0._mo:getIsFold() then
@@ -284,13 +244,18 @@ function slot0.refreshSingleTopUI(slot0, slot1)
 end
 
 function slot0.refreshGroupTopUI(slot0, slot1)
-	if slot1 then
-		slot0._txtachievementgroupname.text = slot1.name
+	slot0._txtachievementgroupname.text = AchievementConfig.instance:getGroupName(slot1)
 
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtachievementgroupname, AchievementConfig.instance:getGroupTitleColorConfig(slot1.id, AchievementEnum.GroupParamType.Player))
-		slot0._simageAchievementGroupBG:LoadImage(ResUrl.getAchievementIcon(string.format("grouptitle/%s", slot1.id)))
-		gohelper.setActive(slot0._goallcollect, AchievementModel.instance:isGroupFinished(slot1.id))
+	gohelper.setActive(slot0._goallcollect, slot1 > 100 and AchievementModel.instance:isGroupFinished(slot1))
+
+	slot3 = "#F4FFBD"
+
+	if slot1 > 100 then
+		slot3 = AchievementConfig.instance:getGroupTitleColorConfig(slot1, AchievementEnum.GroupParamType.Player)
 	end
+
+	SLFramework.UGUI.GuiHelper.SetColor(slot0._txtachievementgroupname, slot3)
+	slot0._simageAchievementGroupBG:LoadImage(ResUrl.getAchievementIcon(string.format("grouptitle/%s", slot1)))
 end
 
 function slot0.recycleAchievementMainIcon(slot0)

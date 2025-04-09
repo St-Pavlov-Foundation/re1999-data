@@ -156,11 +156,11 @@ function slot0._playMouthActionList(slot0, slot1)
 
 				if SLFramework.FrameworkSettings.IsEditor then
 					if slot14 < slot13 then
-						logError(string.format("SpineVoiceMouth mouth配置后面的时间比前面的时间还小, mouthStart:%s > mouthEnd:%s", slot13, slot14))
+						logError(string.format("SpineVoiceMouth audio:%s mouth配置后面的时间比前面的时间还小, mouthStart:%s > mouthEnd:%s", slot0._voiceConfig.audio, slot13, slot14))
 					end
 
 					if slot13 < slot4 then
-						logError(string.format("SpineVoiceMouth mouth配置后面的时间比前面的时间还小, mouthStart:%s < lastMouthEnd:%s", slot13, slot4))
+						logError(string.format("SpineVoiceMouth audio:%s mouth配置后面的时间比前面的时间还小, mouthStart:%s < lastMouthEnd:%s", slot0._voiceConfig.audio, slot13, slot4))
 					end
 				end
 

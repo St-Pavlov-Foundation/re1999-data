@@ -1,23 +1,27 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventAtkFlyEffect", package.seeall)
 
-slot0 = class("FightTLEventAtkFlyEffect")
+slot0 = class("FightTLEventAtkFlyEffect", FightTimelineTrackItem)
 slot1 = {
+	[-666.0] = true,
 	[FightEnum.EffectType.MISS] = true,
 	[FightEnum.EffectType.DAMAGE] = true,
-	[FightEnum.EffectType.CRIT] = true
+	[FightEnum.EffectType.CRIT] = true,
+	[FightEnum.EffectType.COLDSATURDAYHURT] = true
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 
-	if slot0._attacker.skill:flyEffectNeedFilter(slot3[1]) then
+	if slot0._attacker.skill:flyEffectNeedFilter(slot3[1], slot1) then
 		return
 	end
 
 	slot0._paramsArr = slot3
 	slot0._effectName = slot3[1]
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._duration = slot2
+	slot0._releaseTime = tonumber(slot3[22])
+	slot0._tokenRelease = not string.nilorempty(slot0._paramsArr[23])
 
 	if string.nilorempty(slot0._effectName) then
 		logError("atk effect name is nil")
@@ -41,6 +45,12 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		if slot8[3] then
 			slot7 = tonumber(slot8[3]) or slot7
 		end
+	end
+
+	if not string.nilorempty(slot3[21]) and #GameUtil.splitString2(slot3[21], true, "#", ",") > 0 then
+		slot5 = slot8[math.random(1, #slot8)][1] or slot5
+		slot6 = slot8[2] or slot6
+		slot7 = slot8[3] or slot7
 	end
 
 	slot9 = 0
@@ -82,9 +92,9 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 
 	if slot0._act_on_index_entity then
-		slot0._actEffectMOs_list = FightHelper.dealDirectActEffectData(slot0._fightStepMO.actEffectMOs, slot0._act_on_index_entity, uv0)
+		slot0._actEffect_list = FightHelper.dealDirectActEffectData(slot0.fightStepData.actEffect, slot0._act_on_index_entity, uv0)
 	else
-		slot0._actEffectMOs_list = slot0._fightStepMO.actEffectMOs
+		slot0._actEffect_list = slot0.fightStepData.actEffect
 	end
 
 	if string.nilorempty(slot3[16]) then
@@ -105,8 +115,8 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		slot11, slot12, slot13 = transformhelper.getPos(FightHelper.getEntity(slot1.toId).go.transform)
 	elseif slot3[17] == "2" then
 		slot11, slot12, slot13 = FightHelper.getProcessEntityStancePos(slot0._attacker:getMO())
-	elseif slot3[17] == "3" then
-		slot11, slot12, slot13 = FightHelper.getEntityWorldCenterPos(FightHelper.getEntity(slot1.toId))
+	elseif slot3[17] == "3" and FightHelper.getEntity(slot1.toId) then
+		slot11, slot12, slot13 = FightHelper.getEntityWorldCenterPos(slot14)
 	end
 
 	slot14 = slot11 + slot5
@@ -144,13 +154,13 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		slot0:_flyEffectTarget(slot14, slot15, slot16, slot8, slot9, slot10, FightHelper.getEntityHangPointPos, slot3[2])
 	end
 
-	slot0._totalFrame = slot0._binder:GetFrameFloatByTime(slot0._duration * FightModel.instance:getSpeed()) - slot0._previousFrame - slot0._afterFrame
-	slot0._startFrame = slot0._binder.CurFrameFloat + 1
+	slot0._totalFrame = slot0.binder:GetFrameFloatByTime(slot0._duration * FightModel.instance:getSpeed()) - slot0._previousFrame - slot0._afterFrame
+	slot0._startFrame = slot0.binder.CurFrameFloat + 1
 
 	slot0:_startFly()
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	if slot0._paramsArr and slot0._paramsArr[18] ~= "1" then
 		slot0:_removeEffect()
 		slot0:_removeMover()
@@ -166,18 +176,18 @@ function slot0._flyEffectAbsolutely(slot0, slot1, slot2, slot3, slot4, slot5, sl
 end
 
 function slot0._flyEffectSingle(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
-	for slot11, slot12 in ipairs(slot0._actEffectMOs_list) do
+	for slot11, slot12 in ipairs(slot0._actEffect_list) do
 		if not uv0[slot12.effectType] and slot12.effectType ~= FightEnum.EffectType.EXPOINTCHANGE and slot12.effectType ~= FightEnum.EffectType.FIGHTSTEP and slot0._act_entity_finished and not slot0._act_entity_finished[slot12.targetId] then
 			slot13 = true
 		end
 
 		slot14 = FightHelper.getEntity(slot12.targetId)
 
-		if slot7 and FightHelper.getEntity(slot0._fightStepMO.fromId) and slot14 and slot15:getSide() == slot14:getSide() then
+		if slot7 and FightHelper.getEntity(slot0.fightStepData.fromId) and slot14 and slot15:getSide() == slot14:getSide() then
 			slot13 = false
 		end
 
-		if slot0._onlyActOnToId and slot12.targetId ~= slot0._fightStepMO.toId then
+		if slot0._onlyActOnToId and slot12.targetId ~= slot0.fightStepData.toId then
 			slot13 = false
 		end
 
@@ -202,12 +212,12 @@ function slot0._flyEffectSingle(slot0, slot1, slot2, slot3, slot4, slot5, slot6,
 end
 
 function slot0._flyEffectTarget(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8)
-	for slot13, slot14 in ipairs(slot0._actEffectMOs_list) do
+	for slot13, slot14 in ipairs(slot0._actEffect_list) do
 		if not uv0[slot14.effectType] and slot0._act_entity_finished and not slot0._act_entity_finished[slot14.targetId] then
 			slot15 = true
 		end
 
-		if slot0._onlyActOnToId and slot14.targetId ~= slot0._fightStepMO.toId then
+		if slot0._onlyActOnToId and slot14.targetId ~= slot0.fightStepData.toId then
 			slot15 = false
 		end
 
@@ -234,7 +244,13 @@ function slot0._flyEffectTarget(slot0, slot1, slot2, slot3, slot4, slot5, slot6,
 end
 
 function slot0._addFlyEffect(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
-	slot0._attacker.effect:addGlobalEffect(slot0._effectName):setWorldPos(slot1, slot2, slot3)
+	slot7 = slot0._attacker.effect:addGlobalEffect(slot0._effectName, nil, slot0._releaseTime)
+
+	if slot0._tokenRelease then
+		slot0._attacker.effect:addTokenRelease(slot0._paramsArr[23], slot7)
+	end
+
+	slot7:setWorldPos(slot1, slot2, slot3)
 
 	slot0._flyParamDict = slot0._flyParamDict or {}
 	slot0._flyParamDict[slot7.uniqueId] = {
@@ -423,7 +439,11 @@ function slot0.getTimeFunction(slot0)
 		return 1000
 	end
 
-	if slot0._attacker.skill:getCurFrameFloat() + 1 - slot0._startFrame <= slot0._previousFrame then
+	if not slot0._attacker.skill:getCurFrameFloat() then
+		return 1000
+	end
+
+	if slot1 + 1 - slot0._startFrame <= slot0._previousFrame then
 		return 0
 	end
 
@@ -431,7 +451,7 @@ function slot0.getTimeFunction(slot0)
 		return slot0._duration
 	end
 
-	return (slot1 - slot0._previousFrame) / slot0._totalFrame * slot0._duration
+	return (slot2 - slot0._previousFrame) / slot0._totalFrame * slot0._duration
 end
 
 function slot0.getFrameFunction(slot0)
@@ -439,10 +459,14 @@ function slot0.getFrameFunction(slot0)
 		return 1000, 1, 1
 	end
 
-	return slot0._attacker.skill:getCurFrameFloat() + 1 - slot0._startFrame, slot0._previousFrame, slot0._totalFrame
+	if not slot0._attacker.skill:getCurFrameFloat() then
+		return 1000, 1, 1
+	end
+
+	return slot1 + 1 - slot0._startFrame, slot0._previousFrame, slot0._totalFrame
 end
 
-function slot0.reset(slot0)
+function slot0.onDestructor(slot0)
 	if slot0._moverParamDict then
 		for slot4, slot5 in pairs(slot0._moverParamDict) do
 			slot4:unregisterCallback(UnitMoveEvent.PosChanged, slot0._onPosChange, slot0)
@@ -451,11 +475,6 @@ function slot0.reset(slot0)
 
 	slot0._moverParamDict = nil
 
-	slot0:_removeEffect()
-	slot0:_removeMover()
-end
-
-function slot0.dispose(slot0)
 	slot0:_removeEffect()
 	slot0:_removeMover()
 end
@@ -472,18 +491,35 @@ function slot0._removeMover(slot0)
 
 		slot0._mover = nil
 	end
-end
 
-function slot0._removeEffect(slot0)
 	if slot0._attackEffectWrapList then
 		for slot4, slot5 in ipairs(slot0._attackEffectWrapList) do
-			FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0._attacker.id, slot5)
-			slot0._attacker.effect:removeEffect(slot5)
 			MonoHelper.removeLuaComFromGo(slot5.containerGO, UnitMoverEase)
 			MonoHelper.removeLuaComFromGo(slot5.containerGO, UnitMoverParabola)
 			MonoHelper.removeLuaComFromGo(slot5.containerGO, UnitMoverBezier)
 			MonoHelper.removeLuaComFromGo(slot5.containerGO, UnitMoverCurve)
 			MonoHelper.removeLuaComFromGo(slot5.containerGO, UnitMoverHandler)
+		end
+	end
+end
+
+function slot0._removeEffect(slot0)
+	slot1 = true
+
+	if slot0._releaseTime then
+		slot1 = false
+	end
+
+	if slot0._tokenRelease then
+		slot1 = false
+	end
+
+	if slot0._attackEffectWrapList then
+		for slot5, slot6 in ipairs(slot0._attackEffectWrapList) do
+			if slot1 then
+				FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0._attacker.id, slot6)
+				slot0._attacker.effect:removeEffect(slot6)
+			end
 		end
 
 		slot0._attackEffectWrapList = nil

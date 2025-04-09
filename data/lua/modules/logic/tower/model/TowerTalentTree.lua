@@ -67,6 +67,10 @@ function slot0.isActiveTalent(slot0, slot1)
 	return slot0.bossMo:isActiveTalent(slot1)
 end
 
+function slot0.isSelectedSystemTalentPlan(slot0)
+	return slot0.bossMo:isSelectedSystemTalentPlan()
+end
+
 function slot0.isActiveGroup(slot0, slot1)
 	slot3 = false
 	slot4 = nil

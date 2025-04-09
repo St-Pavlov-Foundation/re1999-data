@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkRougePowerChange", package.seea
 slot0 = class("FightWorkRougePowerChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	FightModel.instance:setRougeExData(FightEnum.ExIndexForRouge.Magic, FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.Magic) + slot0._actEffectMO.effectNum)
+	FightModel.instance:setRougeExData(FightEnum.ExIndexForRouge.Magic, FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.Magic) + slot0.actEffectData.effectNum)
 	FightController.instance:dispatchEvent(FightEvent.RougeMagicChange)
 	slot0:onDone(true)
 end

@@ -54,36 +54,37 @@ end
 
 function slot0.compareAttrMO(slot0, slot1, slot2, slot3)
 	if slot0.hp ~= slot1.hp then
-		FightDataHelper.addDiff("hp", FightDataHelper.diffType.difference)
+		FightDataUtil.addDiff("hp", FightDataUtil.diffType.difference)
 	end
 
 	if slot0.multiHpNum ~= slot1.multiHpNum then
-		FightDataHelper.addDiff("multiHpNum", FightDataHelper.diffType.difference)
+		FightDataUtil.addDiff("multiHpNum", FightDataUtil.diffType.difference)
 	end
 end
 
 function slot0.comparSummonedOneData(slot0, slot1)
-	FightDataHelper.doFindDiff(slot0, slot1, {
+	FightDataUtil.doFindDiff(slot0, slot1, {
 		stanceIndex = true
 	})
 end
 
 function slot0.compareSummonedInfo(slot0, slot1, slot2, slot3)
-	FightDataHelper.addPathkey("dataDic")
-	FightDataHelper.doFindDiff(slot0.dataDic, slot1.dataDic, nil, , uv0.comparSummonedOneData)
-	FightDataHelper.removePathKey()
+	FightDataUtil.addPathkey("dataDic")
+	FightDataUtil.doFindDiff(slot0.dataDic, slot1.dataDic, nil, , uv0.comparSummonedOneData)
+	FightDataUtil.removePathKey()
 end
 
 slot1 = {
-	[FightDataHelper.diffType.missingSource] = "服务器数据不存在",
-	[FightDataHelper.diffType.missingTarget] = "本地数据不存在",
-	[FightDataHelper.diffType.difference] = "数据不一致"
+	[FightDataUtil.diffType.missingSource] = "服务器数据不存在",
+	[FightDataUtil.diffType.missingTarget] = "本地数据不存在",
+	[FightDataUtil.diffType.difference] = "数据不一致"
 }
 slot2 = {
 	buffFeaturesSplit = true,
 	playCardExPoint = true,
 	resistanceDict = true,
 	_playCardAddExpoint = true,
+	configMaxExPoint = true,
 	moveCardExPoint = true,
 	passiveSkillDic = true,
 	_combineCardAddExpoint = true,
@@ -104,7 +105,7 @@ function slot0._onCountEntityInfoReply(slot0, slot1, slot2)
 
 			slot5:init(slot2.entityInfo, slot3.side)
 
-			slot6, slot7 = FightDataHelper.findDiff(slot5, slot3, uv0, uv1)
+			slot6, slot7 = FightDataUtil.findDiff(slot5, slot3, uv0, uv1)
 
 			if slot6 then
 				slot9 = string.format("前后端entity数据不一致,entityId:%s, 角色名称:%s \n", slot3.id, slot3:getCO() and slot8.name or "")
@@ -113,8 +114,8 @@ function slot0._onCountEntityInfoReply(slot0, slot1, slot2)
 					for slot18, slot19 in ipairs(slot14) do
 						slot20 = " "
 
-						if slot19.diffType == FightDataHelper.diffType.difference then
-							slot21, slot22 = FightDataHelper.getDiffValue(slot5, slot3, slot19)
+						if slot19.diffType == FightDataUtil.diffType.difference then
+							slot21, slot22 = FightDataUtil.getDiffValue(slot5, slot3, slot19)
 							slot20 = string.format("    服务器数据:%s, 本地数据:%s", slot21, slot22)
 						end
 

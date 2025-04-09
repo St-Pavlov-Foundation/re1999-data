@@ -99,6 +99,21 @@ function slot0.onUseOptionalHeroGift(slot0, slot1, slot2)
 	CustomPickChoiceController.instance:dispatchEvent(CustomPickChoiceEvent.onCustomPickComplete)
 end
 
+function slot0.onUseSelfSelectSixHeroGift(slot0, slot1, slot2)
+	if not slot2 or #slot2 < 0 then
+		return
+	end
+
+	slot3 = {}
+
+	table.insert(slot3, {
+		materialId = slot1.id,
+		quantity = slot1.quantity
+	})
+	ItemRpc.instance:sendUseItemRequest(slot3, slot2[1])
+	V2a7_SelfSelectSix_PickChoiceController.instance:dispatchEvent(V2a7_SelfSelectSix_PickChoiceEvent.onCustomPickComplete)
+end
+
 function slot0.openView_LifeCirclePickChoice(slot0, slot1, slot2, slot3)
 	slot0:_openView_LifeCirclePickChoice(ItemConfig.instance:getItemConfig(slot1, slot2), slot3)
 end

@@ -1,8 +1,9 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventDefHit", package.seeall)
 
-slot0 = class("FightTLEventDefHit")
+slot0 = class("FightTLEventDefHit", FightTimelineTrackItem)
 slot1 = {}
 slot0.directCharacterHitEffectType = {
+	[-666.0] = true,
 	[FightEnum.EffectType.MISS] = true,
 	[FightEnum.EffectType.DAMAGE] = true,
 	[FightEnum.EffectType.CRIT] = true,
@@ -22,9 +23,9 @@ function slot0.setContext(slot0, slot1)
 	slot0._context = slot1
 end
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._paramsArr = slot3
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._duration = slot2
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 	slot0._defeAction = slot3[1]
@@ -79,9 +80,9 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	slot0._hitActionDefenders = {}
 	slot8 = {}
 
-	slot0:_preProcessShieldData(slot1, slot0._fightStepMO.actEffectMOs)
+	slot0:_preProcessShieldData(slot1, slot0.fightStepData.actEffect)
 
-	for slot12, slot13 in ipairs((not slot0._act_on_index_entity or slot0:_directCharacterDataFilter()) and slot0._fightStepMO.actEffectMOs) do
+	for slot12, slot13 in ipairs((not slot0._act_on_index_entity or slot0:_directCharacterDataFilter()) and slot0.fightStepData.actEffect) do
 		if not slot0:needFilter(slot13) then
 			slot14 = slot13.effectType
 			slot15 = FightHelper.getEntity(slot13.targetId)
@@ -108,7 +109,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 
 			if slot0._isLastHit and (slot14 == FightEnum.EffectType.GUARDCHANGE or slot14 == FightEnum.EffectType.GUARDBREAK) then
 				slot0._guardEffectList = slot0._guardEffectList or {}
-				slot16 = FightStepBuilder.ActEffectWorkCls[slot14].New(slot0._fightStepMO, slot13)
+				slot16 = FightStepBuilder.ActEffectWorkCls[slot14].New(slot0.fightStepData, slot13)
 
 				slot16:start()
 				table.insert(slot0._guardEffectList, slot16)
@@ -144,7 +145,7 @@ function slot0.needFilter(slot0, slot1)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	if slot0._defenders and #slot0._defenders > 0 then
 		slot0:_onDelayActionFinish()
 	end
@@ -230,8 +231,11 @@ end
 function slot0._playDefHit(slot0, slot1, slot2)
 	FightDataHelper.playEffectData(slot2)
 
-	slot4 = slot1:getMO()
-	slot5 = slot0._attacker:getMO() and slot3:getCO()
+	slot3 = slot0._attacker:getMO()
+
+	slot0:com_sendFightEvent(FightEvent.PlayTimelineHit, slot0.fightStepData, slot1:getMO(), slot3)
+
+	slot5 = slot3 and slot3:getCO()
 	slot6 = slot4 and slot4:getCO()
 	slot7 = slot5 and slot5.career or 0
 	slot8 = slot6 and slot6.career or 0
@@ -258,7 +262,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 		slot12 = slot0._floatFixedPosArr[slot0._floatTotalIndex] or slot0._floatFixedPosArr[#slot0._floatFixedPosArr]
 	end
 
-	if slot2.effectType == FightEnum.EffectType.DAMAGE then
+	if slot2.effectType == FightEnum.EffectType.DAMAGE or slot2.effectType == -666 then
 		slot13 = slot0:_calcNum(slot2.clientId, slot2.targetId, slot2.effectNum, slot0._ratio)
 
 		if slot1.nameUI then
@@ -279,7 +283,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 		slot0:_playHitVoice(slot1)
 		slot0:_playDefRestrain(slot1, slot10)
 		FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot1, -slot13)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0._fightStepMO, slot2, slot1, slot15, slot0._isLastHit, slot12)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0.fightStepData, slot2, slot1, slot15, slot0._isLastHit, slot12)
 	elseif slot2.effectType == FightEnum.EffectType.CRIT then
 		slot13 = slot0:_calcNum(slot2.clientId, slot2.targetId, slot2.effectNum, slot0._ratio)
 
@@ -301,7 +305,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 		slot0:_playHitVoice(slot1)
 		slot0:_playDefRestrain(slot1, slot10)
 		FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot1, -slot13)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0._fightStepMO, slot2, slot1, slot15, slot0._isLastHit, slot12)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0.fightStepData, slot2, slot1, slot15, slot0._isLastHit, slot12)
 	elseif slot2.effectType == FightEnum.EffectType.MISS then
 		if slot0._ratio > 0 then
 			slot0:_checkPlayAction(slot1, slot0._missAction, slot2)
@@ -351,7 +355,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 		end
 
 		FightController.instance:dispatchEvent(FightEvent.OnShieldChange, slot1, slot14 * slot2.sign)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0._fightStepMO, slot2, slot1, slot15, slot0._isLastHit, slot12)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0.fightStepData, slot2, slot1, slot15, slot0._isLastHit, slot12)
 	elseif uv0[slot2.effectType] then
 		slot14 = slot2.effectType == FightEnum.EffectType.ORIGINCRIT
 
@@ -377,7 +381,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 
 		if slot13 > 0 then
 			FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot1, -slot13)
-			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0._fightStepMO, slot2, slot1, slot16, slot0._isLastHit, slot12)
+			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0.fightStepData, slot2, slot1, slot16, slot0._isLastHit, slot12)
 		end
 
 		if slot0._forcePlayHitForOrigin then
@@ -411,7 +415,7 @@ function slot0._playDefHit(slot0, slot1, slot2)
 
 		if slot13 > 0 then
 			FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot1, -slot13)
-			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0._fightStepMO, slot2, slot1, slot16, slot0._isLastHit, slot12)
+			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, slot0.fightStepData, slot2, slot1, slot16, slot0._isLastHit, slot12)
 		end
 	end
 
@@ -516,7 +520,7 @@ function slot0._statisticAndFloat(slot0)
 				end
 
 				FightFloatMgr.instance:float(slot6, slot14, slot15, slot16)
-				FightController.instance:dispatchEvent(FightEvent.OnDamageTotal, slot0._fightStepMO, slot17, slot15, slot0._isLastHit)
+				FightController.instance:dispatchEvent(FightEvent.OnDamageTotal, slot0.fightStepData, slot17, slot15, slot0._isLastHit)
 			end
 		end
 	end
@@ -540,8 +544,8 @@ end
 function slot0._playHitAudio(slot0, slot1, slot2)
 	if slot0._audioId > 0 then
 		FightAudioMgr.instance:playHit(slot0._audioId, slot1:getMO().skin, slot2)
-	elseif slot0._ratio > 0 and slot0._fightStepMO.atkAudioId and slot0._fightStepMO.atkAudioId > 0 then
-		FightAudioMgr.instance:playHitByAtkAudioId(slot0._fightStepMO.atkAudioId, slot1:getMO().skin, slot2)
+	elseif slot0._ratio > 0 and slot0.fightStepData.atkAudioId and slot0.fightStepData.atkAudioId > 0 then
+		FightAudioMgr.instance:playHitByAtkAudioId(slot0.fightStepData.atkAudioId, slot1:getMO().skin, slot2)
 	end
 end
 
@@ -590,21 +594,21 @@ function slot0._checkPlayAction(slot0, slot1, slot2, slot3)
 	slot4 = slot1.spine:getAnimState()
 	slot5 = nil
 
-	for slot9, slot10 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot9, slot10 in ipairs(slot0.fightStepData.actEffect) do
 		if slot10.effectType == FightEnum.EffectType.DEAD and slot10.targetId == slot1.id then
 			slot5 = true
 		end
 	end
 
 	if slot0._isLastHit then
-		if slot5 and slot0._fightStepMO.actId == slot1.deadBySkillId and slot0:_canPlayDead(slot3) then
+		if slot5 and slot0.fightStepData.actId == slot1.deadBySkillId and slot0:_canPlayDead(slot3) then
 			if slot1:getSide() ~= slot0._attacker:getSide() then
-				FightController.instance:dispatchEvent(FightEvent.OnSkillLastHit, slot1.id, slot0._fightStepMO)
+				FightController.instance:dispatchEvent(FightEvent.OnSkillLastHit, slot1.id, slot0.fightStepData)
 			end
 		elseif slot4 ~= SpineAnimState.freeze then
 			slot0:_playAction(slot1, slot2)
 		end
-	elseif slot5 and slot0._fightStepMO.actId == slot1.deadBySkillId then
+	elseif slot5 and slot0.fightStepData.actId == slot1.deadBySkillId then
 		if slot4 ~= SpineAnimState.freeze and slot4 ~= SpineAnimState.die then
 			slot0:_playAction(slot1, slot2)
 		end
@@ -618,7 +622,7 @@ function slot0._playAction(slot0, slot1, slot2)
 		return
 	end
 
-	slot2 = FightHelper.processEntityActionName(slot1, slot2, slot0._fightStepMO)
+	slot2 = FightHelper.processEntityActionName(slot1, slot2, slot0.fightStepData)
 
 	slot1.spine:play(slot2, false, true, true)
 	slot1.spine:addAnimEventCallback(slot0._onAnimEvent, slot0, {
@@ -655,18 +659,6 @@ function slot0._onDelayActionFinish(slot0)
 	end
 end
 
-function slot0.onSkillEnd(slot0)
-	slot0:_onDelayActionFinish()
-
-	if slot0._guardEffectList then
-		for slot4, slot5 in ipairs(slot0._guardEffectList) do
-			slot5:disposeSelf()
-		end
-
-		slot0._guardEffectList = nil
-	end
-end
-
 function slot0._playSkillBuff(slot0, slot1)
 	if GameUtil.tabletool_dictIsEmpty(slot0._buffIdDict) then
 		return
@@ -674,7 +666,7 @@ function slot0._playSkillBuff(slot0, slot1)
 
 	for slot5, slot6 in ipairs(slot1) do
 		if FightHelper.getEntity(slot6.targetId) and FightEnum.BuffEffectType[slot6.effectType] and slot0._buffIdDict and slot0._buffIdDict[slot6.buff.buffId] then
-			FightSkillBuffMgr.instance:playSkillBuff(slot0._fightStepMO, slot6)
+			FightSkillBuffMgr.instance:playSkillBuff(slot0.fightStepData, slot6)
 		end
 	end
 end
@@ -684,7 +676,7 @@ function slot0._playSkillBehavior(slot0)
 		return
 	end
 
-	FightSkillBehaviorMgr.instance:playSkillBehavior(slot0._fightStepMO, slot0._behaviorTypeDict, true)
+	FightSkillBehaviorMgr.instance:playSkillBehavior(slot0.fightStepData, slot0._behaviorTypeDict, true)
 end
 
 function slot0._trySetKillTimeScale(slot0, slot1, slot2)
@@ -702,13 +694,13 @@ function slot0._trySetKillTimeScale(slot0, slot1, slot2)
 		return
 	end
 
-	if not FightConfig:isUniqueSkill(slot1.actId, slot5.modelId) then
+	if not FightCardDataHelper.isBigSkill(slot1.actId) then
 		return
 	end
 
 	slot7 = false
 
-	for slot11, slot12 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot11, slot12 in ipairs(slot0.fightStepData.actEffect) do
 		if slot12.effectType == FightEnum.EffectType.DEAD then
 			slot7 = true
 
@@ -745,7 +737,7 @@ function slot0._directCharacterDataFilter(slot0)
 		slot2[slot6] = slot7
 	end
 
-	slot3 = FightHelper.filterActEffect(slot0._fightStepMO.actEffectMOs, slot2)
+	slot3 = FightHelper.filterActEffect(slot0.fightStepData.actEffect, slot2)
 	slot4, slot5 = LuaUtil.float2Fraction(slot0._ratio)
 	slot6 = #slot3
 	slot7, slot8 = nil
@@ -763,7 +755,7 @@ function slot0._directCharacterDataFilter(slot0)
 		slot0._ratio = slot0._ratio / (slot0._act_on_entity_count - slot6 + 1)
 	end
 
-	for slot12, slot13 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot12, slot13 in ipairs(slot0.fightStepData.actEffect) do
 		if slot13.targetId == slot8 then
 			table.insert(slot1, slot13)
 		end
@@ -822,15 +814,17 @@ function slot0._revertKillTimeScale(slot0)
 	GameTimeMgr.instance:setTimeScale(GameTimeMgr.TimeScaleType.FightKillEnemy, 1)
 end
 
-function slot0.reset(slot0)
-	slot0:_revertKillTimeScale()
-	TaskDispatcher.cancelTask(slot0._revertKillTimeScale, slot0)
+function slot0.onDestructor(slot0)
+	slot0:_onDelayActionFinish()
 
-	slot0._defenders = nil
-	slot0._attacker = nil
-end
+	if slot0._guardEffectList then
+		for slot4, slot5 in ipairs(slot0._guardEffectList) do
+			slot5:disposeSelf()
+		end
 
-function slot0.dispose(slot0)
+		slot0._guardEffectList = nil
+	end
+
 	slot0:_revertKillTimeScale()
 	TaskDispatcher.cancelTask(slot0._revertKillTimeScale, slot0)
 

@@ -112,6 +112,14 @@ function slot0.getGroup(slot0, slot1)
 	return slot0._achievementGroupConfig.configDict[slot1]
 end
 
+function slot0.getGroupName(slot0, slot1)
+	if not uv0.instance:getGroup(slot1) then
+		return luaLang(AchievementEnum.SpGroupNameLangId[slot1])
+	end
+
+	return slot2 and slot2.name
+end
+
 function slot0.getAchievementFirstTask(slot0, slot1)
 	return slot0._taskFirstLevelDict[slot1]
 end

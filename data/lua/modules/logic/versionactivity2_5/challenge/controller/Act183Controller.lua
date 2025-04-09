@@ -68,6 +68,14 @@ function slot0.openAct183RepressView(slot0, slot1)
 	ViewMgr.instance:openView(ViewName.Act183RepressView, slot1)
 end
 
+function slot0.openAct183StoreView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.V1a6_BossRush_StoreView, slot1)
+end
+
+function slot0.openAct183CurrencyReplaceTipsView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act183CurrencyReplaceTipsView, slot1)
+end
+
 function slot0.resetGroupEpisode(slot0, slot1, slot2)
 	if slot1 and slot1 ~= 0 and slot2 and slot2 ~= 0 then
 		slot0:_clearGroupEpisodeRefreshAnimRecord(slot2)
@@ -116,8 +124,12 @@ function slot0.updateChooseRepressInfo(slot0, slot1, slot2)
 	uv0.instance:dispatchEvent(Act183Event.OnUpdateRepressInfo, slot1, slot6)
 end
 
+function slot0.onReconnectFight(slot0, slot1)
+	Act183Model.instance:setActivityId(Act183Config.instance:getEpisodeCo(slot1) and slot2.activityId)
+end
+
 slot0.instance = slot0.New()
 
-LuaEventSystem.addEventMechanism(slot0.instance)
+Act183JumpHelper.activate()
 
 return slot0

@@ -8,10 +8,10 @@ slot2 = {
 }
 
 function slot0.onStart(slot0)
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) and slot1.skill then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) and slot1.skill then
 		if slot0:_isBossRushBossShieldBroken(slot1) then
 			FightController.instance:registerCallback(FightEvent.OnSkillPlayFinish, slot0._onSkillEnd, slot0, LuaEventSystem.Low)
-			slot1.skill:playTimeline(uv0, slot0._fightStepMO)
+			slot1.skill:playTimeline(uv0, slot0.fightStepData)
 			slot0:com_registTimer(slot0._delayDone, 10)
 		else
 			slot0:onDone(true)

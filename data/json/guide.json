@@ -5861,5 +5861,170 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 27001,
+    "desc": "临时剧情交互指引",
+    "isOnline": 1,
+    "trigger": "StoryStep",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27101,
+    "desc": "库珀花环活动头像对话1",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27102,
+    "desc": "库珀花环活动头像对话2",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27103,
+    "desc": "库珀花环活动头像对话3",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27104,
+    "desc": "库珀花环活动头像对话4",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27105,
+    "desc": "库珀花环活动引导1",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27106,
+    "desc": "库珀花环活动引导2",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27107,
+    "desc": "库珀花环活动引导3",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27108,
+    "desc": "库珀花环活动引导4",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27109,
+    "desc": "库珀花环活动引导5",
+    "isOnline": 1,
+    "trigger": "OpenView#CooperGarlandLevelView",
+    "invalid": "ActivityEnd#12703",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27201,
+    "desc": "冷周六第一关引导",
+    "isOnline": 1,
+    "trigger": "OpenView#LengZhou6GameView",
+    "invalid": "ActivityEnd#12702",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27202,
+    "desc": "冷周六第三关引导",
+    "isOnline": 1,
+    "trigger": "OpenView#LengZhou6GameView",
+    "invalid": "ActivityEnd#12702",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27203,
+    "desc": "冷周六第四关引导",
+    "isOnline": 1,
+    "trigger": "OpenView#LengZhou6GameView",
+    "invalid": "ActivityEnd#12702",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27204,
+    "desc": "冷周六无尽模式指引_1",
+    "isOnline": 1,
+    "trigger": "OpenView#LengZhou6GameView",
+    "invalid": "ActivityEnd#12702",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 27205,
+    "desc": "冷周六无尽模式指引_2",
+    "isOnline": 1,
+    "trigger": "OpenView#LengZhou6GameView",
+    "invalid": "ActivityEnd#12702",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

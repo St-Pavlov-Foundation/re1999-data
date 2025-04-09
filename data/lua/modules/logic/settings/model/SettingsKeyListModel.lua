@@ -13,9 +13,9 @@ function slot0.SetActivity(slot0, slot1)
 		slot3 = {}
 
 		for slot7, slot8 in ipairs(slot2) do
-			if slot8[PCInputModel.Configfield.editable] == 1 then
+			if slot8.editable == 1 then
 				table.insert(slot3, {
-					id = slot8[PCInputModel.Configfield.id],
+					id = slot8.id,
 					value = slot8
 				})
 			end
@@ -43,7 +43,7 @@ function slot0.modifyKey(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	slot4[slot2][PCInputModel.Configfield.key] = slot3
+	slot4[slot2].key = slot3
 
 	slot0:SetActivity(slot1)
 	slot0:saveKeyMap()
@@ -58,7 +58,7 @@ function slot0.checkDunplicateKey(slot0, slot1, slot2)
 	end
 
 	for slot7, slot8 in pairs(slot3) do
-		if slot8[PCInputModel.Configfield.key] == slot2 then
+		if slot8.key == slot2 then
 			return slot8
 		end
 	end

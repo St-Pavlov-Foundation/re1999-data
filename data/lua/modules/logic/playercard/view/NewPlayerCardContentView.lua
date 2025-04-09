@@ -10,6 +10,8 @@ function slot0.onInitView(slot0)
 	slot0._btnbottomclose = gohelper.findChildButton(slot0.viewGO, "bottom/#btn_bottomclose")
 	slot0._goskinpreviewnode = gohelper.findChild(slot0.viewGO, "bottom/#go_skinpreview")
 	slot0._btnswitchskin = gohelper.findChildButton(slot0.viewGO, "#btn_switch")
+	slot0._goswitchskinreddot = gohelper.findChild(slot0.viewGO, "#btn_switch/#go_reddot")
+	slot0._bgreddot = RedDotController.instance:addNotEventRedDot(slot0._goswitchskinreddot, slot0._isShowRedDot, slot0)
 	slot0._openswitchskin = false
 	slot0._firstopen = true
 	slot0._bottomAnimator = slot0._goBottom:GetComponent(typeof(UnityEngine.Animator))
@@ -37,6 +39,10 @@ function slot0._editableInitView(slot0)
 end
 
 function slot0.onUpdateParam(slot0)
+end
+
+function slot0._isShowRedDot(slot0)
+	return PlayerCardModel.instance:getShowRed()
 end
 
 function slot0.onOpen(slot0)
@@ -175,6 +181,7 @@ function slot0.SwitchTheme(slot0, slot1)
 	gohelper.setActive(slot0._goLoading, true)
 	UIBlockMgr.instance:startBlock("NewPlayerCardContentView")
 	TaskDispatcher.runDelay(slot0.afterOpenLoad, slot0, 0.3)
+	gohelper.setActive(slot0._goswitchskinreddot, slot0:_isShowRedDot())
 end
 
 function slot0.afterOpenLoad(slot0)

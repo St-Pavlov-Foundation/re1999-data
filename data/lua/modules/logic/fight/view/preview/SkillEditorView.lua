@@ -58,6 +58,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnSkillEditorSceneChange, slot0._showSceneDissolveBtn, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.SetSkillEditorViewVisible, slot0._onSetSkillEditorViewVisible, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnBuffClick, slot0._onBuffClick, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.SetGMViewVisible, slot0.onSetGMViewVisible, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -226,6 +227,10 @@ function slot0._onBuffClick(slot0, slot1, slot2, slot3, slot4)
 
 		logNormal(string.format("buff list %d :\n%s", #slot6, table.concat(slot6, "\n")))
 	end
+end
+
+function slot0.onSetGMViewVisible(slot0, slot1)
+	gohelper.setActive(slot0.viewGO, slot1)
 end
 
 return slot0

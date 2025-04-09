@@ -6,7 +6,7 @@ function slot0.getRecommendStoreSecondTabConfig()
 	slot1 = {}
 	slot2 = {}
 
-	if StoreModel.instance:getRecommendSecondTabs(StoreEnum.RecommendStore, true) and #slot0 > 0 then
+	if StoreModel.instance:getRecommendSecondTabs(StoreEnum.StoreId.RecommendStore, true) and #slot0 > 0 then
 		slot4 = {
 			[slot9.id] = slot9
 		}
@@ -201,6 +201,31 @@ function slot0.getRemainExpireTimeDeep(slot0)
 			if uv0.getRemainExpireTime(slot2[slot6]) > 0 then
 				slot1 = math.max(slot7, slot1)
 			end
+		end
+	end
+
+	return slot1
+end
+
+function slot0.getRemainExpireTimeByStoreId(slot0)
+	slot1 = 0
+
+	for slot7, slot8 in pairs(StoreModel.instance:getStoreMO(slot0):getGoodsList()) do
+		if not string.nilorempty(slot8.config.offlineTime) and type(slot8.config.offlineTime) == "string" and TimeUtil.stringToTimestamp(slot8.config.offlineTime) - ServerTime.now() > 0 then
+			slot1 = slot1 == 0 and slot9 or math.min(slot9, slot1)
+		end
+	end
+
+	return slot1
+end
+
+function slot0.getRemainExpireTimeDeepByStoreId(slot0)
+	slot1 = 0
+	slot6 = true
+
+	for slot6 = 1, #StoreModel.instance:getSecondTabs(slot0, true, slot6) do
+		if uv0.getRemainExpireTimeByStoreId(slot2[slot6].id) > 0 then
+			slot1 = slot1 == 0 and slot7 or math.min(slot7, slot1)
 		end
 	end
 

@@ -212,10 +212,13 @@ function slot0.isAidConflict(slot0, slot1)
 end
 
 function slot0.getTeamLevel(slot0)
-	for slot7, slot8 in ipairs(slot0:getHeroUids()) do
-		if HeroModel.instance:getById(slot8) then
-			slot2 = 0 + slot9.level
+	for slot7, slot8 in ipairs(slot0:getList()) do
+		if tonumber(slot8.heroUid) < 0 and slot8.trial > 0 then
+			slot2 = 0 + (lua_hero_trial.configDict[slot8.trial] and lua_hero_trial.configDict[slot8.trial][0]).level
 			slot3 = 0 + 1
+		elseif HeroModel.instance:getById(slot8.heroUid) then
+			slot2 = slot2 + slot9.level
+			slot3 = slot3 + 1
 		end
 	end
 

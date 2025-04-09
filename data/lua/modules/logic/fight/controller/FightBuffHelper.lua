@@ -45,7 +45,7 @@ function slot0.canPlayDormantBuffAni(slot0, slot1)
 
 	slot6 = slot4
 
-	for slot10, slot11 in ipairs(slot1.actEffectMOs) do
+	for slot10, slot11 in ipairs(slot1.actEffect) do
 		if slot11.buff and uv0.isDormantBuff(slot11.buff.buffId) then
 			if slot11.effectType == FightEnum.EffectType.BUFFADD then
 				slot4 = slot4 + 1
@@ -69,7 +69,7 @@ function slot0.simulateBuffList(slot0, slot1)
 
 	slot2 = slot0 and slot0:getBuffList()
 
-	for slot7, slot8 in ipairs(FightCardModel.instance:getCardOps()) do
+	for slot7, slot8 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
 		if slot8:isPlayCard() then
 			if slot1 and slot1 == slot8 then
 				break
@@ -246,7 +246,7 @@ function slot0.checkSkillCanPurifyBySkill(slot0, slot1, slot2, slot3, slot4)
 		return false
 	end
 
-	if uv0.hasFeature(slot6, slot3, FightEnum.BuffFeature.Dream) and not FightCardModel.instance:isUniqueSkill(slot0, slot1) then
+	if uv0.hasFeature(slot6, slot3, FightEnum.BuffFeature.Dream) and not FightCardDataHelper.isBigSkill(slot1) then
 		return false
 	end
 
@@ -272,7 +272,7 @@ function slot0.checkSkillCanPurifyByBehaviour(slot0, slot1, slot2, slot3)
 		return false
 	end
 
-	if uv0.hasFeature(slot4, slot3, FightEnum.BuffFeature.Dream) and not FightCardModel.instance:isUniqueSkill(slot0, slot1) then
+	if uv0.hasFeature(slot4, slot3, FightEnum.BuffFeature.Dream) and not FightCardDataHelper.isBigSkill(slot1) then
 		return false
 	end
 

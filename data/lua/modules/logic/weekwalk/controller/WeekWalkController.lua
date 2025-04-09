@@ -49,9 +49,30 @@ function slot0._checkTime(slot0)
 			WeekWalkModel.instance:addOldInfo()
 		end
 
+		slot0:_recordRequestTimes()
+
+		if slot0._maxRequestTimes < slot0._requestTimes then
+			logError("sendGetWeekwalkInfoRequest too many times")
+
+			return
+		end
+
 		slot0:requestTask(true)
 		WeekwalkRpc.instance:sendGetWeekwalkInfoRequest()
+
+		return
 	end
+
+	slot0:_clearRequestTimes()
+end
+
+function slot0._recordRequestTimes(slot0)
+	slot0._requestTimes = slot0._requestTimes or 0
+	slot0._requestTimes = slot0._requestTimes + 1
+end
+
+function slot0._clearRequestTimes(slot0)
+	slot0._requestTimes = 0
 end
 
 function slot0.reInit(slot0)
@@ -60,6 +81,8 @@ end
 
 function slot0.clear(slot0)
 	slot0._requestTask = false
+	slot0._requestTimes = 0
+	slot0._maxRequestTimes = 3
 end
 
 function slot0._refreshTaskData(slot0)

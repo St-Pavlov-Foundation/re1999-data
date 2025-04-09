@@ -12,7 +12,7 @@ function slot0.onStart(slot0)
 	slot3 = {}
 
 	for slot7, slot8 in ipairs(slot0:getAdjacentSameEffectList(uv0, true)) do
-		if slot8.effect.buff then
+		if slot8.actEffectData.buff then
 			slot11 = lua_skill_buff.configDict[slot10.buffId]
 
 			if slot11 and lua_skill_bufftype.configDict[slot11.typeId] then
@@ -29,8 +29,8 @@ function slot0.onStart(slot0)
 
 	for slot8, slot9 in pairs(slot3) do
 		for slot13, slot14 in ipairs(slot9) do
-			slot15 = slot14.stepMO
-			slot16 = slot14.effect
+			slot15 = slot14.fightStepData
+			slot16 = slot14.actEffectData
 			slot19 = lua_skill_bufftype.configDict[lua_skill_buff.configDict[slot16.buff.buffId].typeId]
 
 			if not slot4[slot16.targetId] then

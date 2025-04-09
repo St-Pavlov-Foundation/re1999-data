@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkDamageShareHp", package.seeall)
 slot0 = class("FightWorkDamageShareHp", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) and slot0._actEffectMO.effectNum > 0 then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) and slot0.actEffectData.effectNum > 0 then
 		slot3 = slot1:isMySide() and -slot2 or slot2
 
 		if slot1.nameUI then

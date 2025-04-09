@@ -178,7 +178,9 @@ function slot0.showHeroGroupItem(slot0, slot1, slot2, slot3)
 	if slot2.isAssistBoss then
 		slot7:LoadImage(ResUrl.monsterHeadIcon(FightConfig.instance:getSkinCO(TowerConfig.instance:getAssistBossConfig(slot2.id).skinId).headIcon))
 	else
-		slot6:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(HeroModel.instance:getByHeroId(slot2.id).skin).retangleIcon))
+		slot10 = {}
+
+		slot6:LoadImage(ResUrl.getHeadIconSmall(((HeroModel.instance:getByHeroId(slot2.id) or SkinConfig.instance:getSkinCo(HeroConfig.instance:getHeroCO(slot2.id).skinId)) and FightConfig.instance:getSkinCO(slot9.skin)).retangleIcon))
 	end
 
 	slot0.simageHeroGroupTab[slot3] = slot8

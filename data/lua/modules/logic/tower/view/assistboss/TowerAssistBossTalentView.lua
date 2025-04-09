@@ -24,8 +24,8 @@ function slot0.onInitView(slot0)
 
 	slot0.descFixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.txtDesc.gameObject, FixTmpBreakLine)
 	slot0.bossIcon = gohelper.findChildSingleImage(slot0.viewGO, "BOSS/Head/Mask/image_bossIcon")
-	slot0.txtActiveCount = gohelper.findChildTextMesh(slot0.viewGO, "BOSS/#txt_PassLevel")
-	slot0.btnResetAll = gohelper.findChildButtonWithAudio(slot0.viewGO, "BOSS/btn_reset")
+	slot0.txtActiveCount = gohelper.findChildTextMesh(slot0.viewGO, "BOSS/layout/#txt_PassLevel")
+	slot0.btnResetAll = gohelper.findChildButtonWithAudio(slot0.viewGO, "BOSS/layout/btn_reset")
 	slot0.txtPoint = gohelper.findChildTextMesh(slot0.viewGO, "Tips/txt_point")
 	slot0.btnAttr = gohelper.findChildButtonWithAudio(slot0.viewGO, "btn_Attr")
 	slot0.isBottomVisible = false
@@ -48,6 +48,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.SelectTalentItem, slot0._onSelectTalentItem, slot0)
+	slot0:addEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshView, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -63,6 +64,7 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ResetTalent, slot0._onResetTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.ActiveTalent, slot0._onActiveTalent, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.SelectTalentItem, slot0._onSelectTalentItem, slot0)
+	slot0:removeEventCb(TowerController.instance, TowerEvent.RefreshTalent, slot0.refreshView, slot0)
 end
 
 function slot0._editableInitView(slot0)
@@ -107,12 +109,22 @@ function slot0.onBtnCloseTips(slot0)
 end
 
 function slot0.onBtnReset(slot0)
+	if TowerAssistBossTalentListModel.instance:getAutoTalentState() then
+		GameFacade.showToast(ToastEnum.TowerBossTalentPlanCantModify)
+
+		return
+	end
+
 	if TowerAssistBossTalentListModel.instance:isTalentCanReset(TowerAssistBossTalentListModel.instance:getSelectTalent(), true) then
 		TowerRpc.instance:sendTowerResetTalentRequest(slot0.bossId, slot1)
 	end
 end
 
 function slot0.onBtnResetAll(slot0)
+	if TowerAssistBossTalentListModel.instance:getAutoTalentState() then
+		return
+	end
+
 	GameFacade.showMessageBox(MessageBoxIdDefine.TowerTalentReset, MsgBoxEnum.BoxType.Yes_No, slot0._sendTowerResetAllTalentRequest, nil, , slot0)
 end
 
@@ -126,6 +138,12 @@ function slot0.onBtnSure(slot0)
 	end
 
 	if not (slot0.bossMo:getTalentTree() and slot2:getNode(slot1)) then
+		return
+	end
+
+	if TowerAssistBossTalentListModel.instance:getAutoTalentState() then
+		GameFacade.showToast(ToastEnum.TowerBossTalentPlanCantModify)
+
 		return
 	end
 
@@ -229,7 +247,7 @@ function slot0.refreshBoss(slot0)
 	slot0.txtActiveCount.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towertalent_already_light"), slot1, slot1 + slot2)
 
 	slot0.bossIcon:LoadImage(ResUrl.monsterHeadIcon(FightConfig.instance:getSkinCO(TowerConfig.instance:getAssistBossConfig(slot0.bossId).skinId) and slot5.headIcon))
-	gohelper.setActive(slot0.btnResetAll, TowerAssistBossModel.instance:getById(slot0.bossId) ~= nil)
+	gohelper.setActive(slot0.btnResetAll, TowerAssistBossModel.instance:getById(slot0.bossId) ~= nil and not TowerAssistBossTalentListModel.instance:getAutoTalentState())
 end
 
 function slot0.refreshBottom(slot0)

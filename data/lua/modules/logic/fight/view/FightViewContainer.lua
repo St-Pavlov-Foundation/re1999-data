@@ -29,7 +29,11 @@ function slot0.buildViews(slot0)
 		slot0.waitingArea = FightViewWaitingArea.New()
 	end
 
+	slot0.rightElementLayoutView = FightViewRightElementsLayout.New()
+	slot0.rightBottomElementLayoutView = FightViewRightBottomElementsLayout.New()
 	slot3 = {
+		slot0.rightElementLayoutView,
+		slot0.rightBottomElementLayoutView,
 		slot0.fightView,
 		FightViewPartVisible.New(),
 		slot0.fightViewHandCard,

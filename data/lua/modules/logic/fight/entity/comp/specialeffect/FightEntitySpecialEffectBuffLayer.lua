@@ -42,13 +42,13 @@ function slot0._onSetBuffEffectVisible(slot0, slot1, slot2, slot3)
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4.id == slot0._entity.id and slot4:isUniqueSkill(slot2) then
+	if slot1:getMO() and slot4.id == slot0._entity.id and FightCardDataHelper.isBigSkill(slot2) then
 		slot0:_onSetBuffEffectVisible(slot4.id, false, "FightEntitySpecialEffectBuffLayer_onSkillPlayStart")
 	end
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4.id == slot0._entity.id and slot4:isUniqueSkill(slot2) then
+	if slot1:getMO() and slot4.id == slot0._entity.id and FightCardDataHelper.isBigSkill(slot2) then
 		slot0:_onSetBuffEffectVisible(slot4.id, true, "FightEntitySpecialEffectBuffLayer_onSkillPlayStart")
 	end
 end
@@ -167,13 +167,17 @@ function slot0._refreshEffect(slot0, slot1, slot2, slot3, slot4)
 	end
 
 	if slot9 then
+		if slot0._effectWraps[slot1] and slot0._effectWraps[slot1][slot7] then
+			slot10:setActive(false, "FightEntitySpecialEffectBuffLayer_newEffect")
+		end
+
 		slot0:_hideEffect(slot1)
 
 		if not string.nilorempty(slot6.createEffect) then
-			slot11 = slot0._entity.effect:addHangEffect(slot6.createEffect, slot6.createEffectRoot, nil, (slot6.releaseCreateEffectTime > 0 and slot6.releaseCreateEffectTime or uv0) / 1000)
+			slot12 = slot0._entity.effect:addHangEffect(slot6.createEffect, slot6.createEffectRoot, nil, (slot6.releaseCreateEffectTime > 0 and slot6.releaseCreateEffectTime or uv0) / 1000)
 
-			slot11:setLocalPos(0, 0, 0)
-			FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot11)
+			slot12:setLocalPos(0, 0, 0)
+			FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot12)
 
 			if slot6.createAudio > 0 then
 				AudioMgr.instance:trigger(slot6.createAudio)
@@ -182,29 +186,39 @@ function slot0._refreshEffect(slot0, slot1, slot2, slot3, slot4)
 
 		if slot6.delayTimeBeforeLoop > 0 then
 			TaskDispatcher.runDelay(function ()
-				uv0:_refreshEffectState(uv1)
+				if uv0 then
+					uv0:setActive(true, "FightEntitySpecialEffectBuffLayer_newEffect")
+				end
+
+				uv1:_refreshEffectState(uv2)
 			end, slot0, slot6.delayTimeBeforeLoop / 1000)
 		else
+			if slot10 then
+				slot10:setActive(true, "FightEntitySpecialEffectBuffLayer_newEffect")
+			end
+
 			slot0:_refreshEffectState(slot1)
 		end
-	else
-		if slot6.loopEffectAudio > 0 then
-			AudioMgr.instance:trigger(slot6.loopEffectAudio)
+
+		return
+	end
+
+	if slot6.loopEffectAudio > 0 then
+		AudioMgr.instance:trigger(slot6.loopEffectAudio)
+	end
+
+	slot0:_refreshEffectState(slot1)
+
+	if slot4 == FightEnum.EffectType.BUFFUPDATE and slot5 < slot3 then
+		if not string.nilorempty(slot6.addLayerEffect) then
+			slot11 = slot0._entity.effect:addHangEffect(slot6.addLayerEffect, slot6.addLayerEffectRoot, nil, (slot6.releaseAddLayerEffectTime > 0 and slot6.releaseAddLayerEffectTime or uv0) / 1000)
+
+			slot11:setLocalPos(0, 0, 0)
+			FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot11)
 		end
 
-		slot0:_refreshEffectState(slot1)
-
-		if slot4 == FightEnum.EffectType.BUFFUPDATE and slot5 < slot3 then
-			if not string.nilorempty(slot6.addLayerEffect) then
-				slot11 = slot0._entity.effect:addHangEffect(slot6.addLayerEffect, slot6.addLayerEffectRoot, nil, (slot6.releaseAddLayerEffectTime > 0 and slot6.releaseAddLayerEffectTime or uv0) / 1000)
-
-				slot11:setLocalPos(0, 0, 0)
-				FightRenderOrderMgr.instance:onAddEffectWrap(slot0._entity.id, slot11)
-			end
-
-			if slot6.addLayerAudio > 0 then
-				AudioMgr.instance:trigger(slot6.addLayerAudio)
-			end
+		if slot6.addLayerAudio > 0 then
+			AudioMgr.instance:trigger(slot6.addLayerAudio)
 		end
 	end
 end

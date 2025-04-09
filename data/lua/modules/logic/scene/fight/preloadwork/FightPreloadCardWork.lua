@@ -19,7 +19,7 @@ slot1 = {
 function slot0.onStart(slot0, slot1)
 	slot2 = {}
 
-	if FightModel.instance:getCurRoundMO() and slot3.teamACards1 then
+	if FightDataHelper.roundMgr:getRoundData() and slot3.teamACards1 then
 		for slot7, slot8 in ipairs(slot3.teamACards1) do
 			if not tabletool.indexOf(slot2, ResUrl.getSkillIcon(lua_skill.configDict[slot8.skillId].icon)) then
 				table.insert(slot2, slot10)

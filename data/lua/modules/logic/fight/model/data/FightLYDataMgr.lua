@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightLYDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightLYDataMgr")
+slot0 = FightDataClass("FightLYDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 	slot0.LYCardAreaSize = 0

@@ -21,6 +21,7 @@ function slot0.onInitView(slot0)
 	slot0._gotaglimit = gohelper.findChild(slot0.viewGO, "Tag2/#go_taglimit")
 	slot0._txtlimit = gohelper.findChildText(slot0.viewGO, "Tag2/#go_taglimit/#txt_limit")
 	slot0._txtTagName = gohelper.findChildText(slot0.viewGO, "Tag2/txt_tagName")
+	slot0._btnreplacetips = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_righttop/#btn_replacetips")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -30,6 +31,7 @@ end
 function slot0.addEvents(slot0)
 	slot0._btnTips:AddClickListener(slot0._btnTipsOnClick, slot0)
 	slot0._btnclosetip:AddClickListener(slot0._btnclosetipOnClick, slot0)
+	slot0._btnreplacetips:AddClickListener(slot0._btnreplacetipOnClick, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStoreContent, slot0)
 	slot0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0.refreshStoreContent, slot0)
 	slot0:addEventCb(BossRushController.instance, BossRushEvent.OnHandleInStoreView, slot0._OnHandleInStoreView, slot0)
@@ -38,6 +40,7 @@ end
 function slot0.removeEvents(slot0)
 	slot0._btnTips:RemoveClickListener()
 	slot0._btnclosetip:RemoveClickListener()
+	slot0._btnreplacetips:RemoveClickListener()
 	slot0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStoreContent, slot0)
 	slot0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0.refreshStoreContent, slot0)
 	slot0:removeEventCb(BossRushController.instance, BossRushEvent.OnHandleInStoreView, slot0._OnHandleInStoreView, slot0)
@@ -47,6 +50,10 @@ function slot0._btnclosetipOnClick(slot0)
 end
 
 function slot0._btnTipsOnClick(slot0)
+end
+
+function slot0._btnreplacetipOnClick(slot0)
+	Act183Controller.instance:openAct183CurrencyReplaceTipsView(Act183Helper.generateBossRush_ChallengeCurrencyReplaceViewParams())
 end
 
 function slot0._btntagOnClick(slot0, slot1)
@@ -129,6 +136,8 @@ function slot0.onOpen(slot0)
 	slot0:refreshTime()
 	slot0:refreshStoreContent()
 	slot0:_onScrollValueChanged()
+	slot0:checkOpenCurrencyReplaceTips()
+	slot0:checkCurrencyReplaceTipsBtn()
 	V1a6_BossRush_StoreModel.instance:setNotNewStoreGoods()
 	BossRushController.instance:dispatchEvent(BossRushEvent.OnEnterStoreView)
 end
@@ -308,6 +317,22 @@ end
 
 function slot0.getFirstEnterOneDayPrefKey(slot0)
 	return "BossRush_StoreView_FirstEnterOneDay_" .. (PlayerModel.instance:getPlayinfo() and slot1.userId or 1999)
+end
+
+function slot0.checkOpenCurrencyReplaceTips(slot0)
+	if not VersionActivityFixedHelper.isTargetVersion(2, 7) then
+		return
+	end
+
+	if Act183Helper.isOpenCurrencyReplaceTipsViewInLocal() then
+		return
+	end
+
+	Act183Controller.instance:openAct183CurrencyReplaceTipsView(Act183Helper.generateBossRush_ChallengeCurrencyReplaceViewParams())
+end
+
+function slot0.checkCurrencyReplaceTipsBtn(slot0)
+	gohelper.setActive(slot0._btnreplacetips.gameObject, VersionActivityFixedHelper.isTargetVersion(2, 7))
 end
 
 return slot0

@@ -5,7 +5,7 @@ slot0 = pureTable("StoryStepPictureMo")
 function slot0.ctor(slot0)
 	slot0.picType = 0
 	slot0.cirRadius = 0
-	slot0.picColor = "#000000"
+	slot0.picColor = "#ffffffff"
 	slot0.picture = ""
 	slot0.delayTimes = {
 		0,

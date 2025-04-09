@@ -39,7 +39,7 @@ function slot0.onUpdateMO(slot0, slot1)
 
 	if slot2:isPassiveSkill(slot0._skillCO.id) then
 		slot0._level.text = "被动"
-	elseif slot2:isUniqueSkill(slot0._skillCO.id) then
+	elseif FightCardDataHelper.isBigSkill(slot0._skillCO.id) then
 		slot0._level.text = "大招"
 	else
 		slot0._level.text = slot2:getSkillLv(slot0._skillCO.id)

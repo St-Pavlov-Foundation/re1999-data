@@ -88,7 +88,7 @@ end
 
 function slot0.onDestructor(slot0)
 	if slot0.INVOKED_OPEN_VIEW and not slot0.INVOKED_DESTROY_VIEW then
-		slot0:killMyComponent(FightViewComponent)
+		slot0:killComponent(FightViewComponent)
 		slot0:inner_destroyView()
 	end
 end
@@ -136,6 +136,42 @@ end
 
 function slot0.closeThis(slot0)
 	ViewMgr.instance:closeView(slot0.viewName, nil, true)
+end
+
+function slot0.tryCallMethodName(slot0, slot1)
+	if slot1 == "__onDispose" then
+		slot0:__onDispose()
+	end
+end
+
+function slot0.isHasTryCallFail(slot0)
+	return false
+end
+
+function slot0.com_createObjList(slot0, slot1, slot2, slot3, slot4)
+	if type(slot2) == "number" then
+		slot2 = {}
+
+		for slot9 = 1, slot2 do
+			table.insert(slot2, slot9)
+		end
+	end
+
+	gohelper.CreateObjList(slot0, slot1, slot2, slot3, slot4)
+end
+
+function slot0.addEventCb(slot0, slot1, slot2, slot3, slot4, slot5)
+	slot0:getComponent(FightEventComponent):registEvent(slot1, slot2, slot3, slot4, slot5)
+end
+
+function slot0.removeEventCb(slot0, slot1, slot2, slot3, slot4)
+	if not slot1 or not slot2 or not slot3 then
+		logError("UserDataDispose:removeEventCb ctrlInstance or evtName or callback is null!")
+
+		return
+	end
+
+	slot0:getComponent(FightEventComponent):cancelEvent(slot1, slot2, slot3, slot4)
 end
 
 function slot0.com_registViewItemList(slot0, slot1, slot2, slot3)
@@ -208,6 +244,10 @@ end
 
 function slot0.com_KillTweenByObj(slot0, slot1, slot2)
 	return slot0:getComponent(FightTweenComponent):KillTweenByObj(slot1, slot2)
+end
+
+function slot0.com_scrollNumTween(slot0, slot1, slot2, slot3, slot4, slot5)
+	return slot0:getComponent(FightTweenComponent):scrollNumTween(slot1, slot2, slot3, slot4, slot5)
 end
 
 return slot0

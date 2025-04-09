@@ -104,7 +104,7 @@ function slot0.getFightStepString(slot0, slot1, slot2, slot3)
 end
 
 function slot0.getFightStepListString(slot0, slot1, slot2, slot3)
-	return uv0.getMoListString(slot0, uv0.getFightStepString, slot2 or "stepMoList", slot1, slot3)
+	return uv0.getMoListString(slot0, uv0.getFightStepString, slot2 or "fightStepDataList", slot1, slot3)
 end
 
 function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
@@ -126,11 +126,11 @@ function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
 	table.insert(slot6, string.format("%s effectNum : %s", slot7, slot0.effectNum))
 	table.insert(slot6, string.format("%s effectNum1 : %s", slot7, slot0.effectNum1))
 
-	if slot0:HasField("buff") then
+	if slot0.buff then
 		table.insert(slot6, uv0.getFightBuffString(slot0.buff, slot1))
 	end
 
-	if slot0:HasField("entity") and slot0.entity.uid ~= 0 then
+	if slot0.entity then
 		table.insert(slot6, uv0.getEntityMoString(slot0.entity, slot1))
 	end
 
@@ -140,23 +140,50 @@ function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
 	table.insert(slot6, string.format("%s reserveStr : %s", slot7, slot0.reserveStr))
 	table.insert(slot6, string.format("%s teamType : %s", slot7, slot0.teamType))
 
-	if slot0:HasField("cardInfo") and slot0.cardInfo.uid ~= 0 then
+	if slot0.cardInfo then
 		table.insert(slot6, uv0.getCardInfoString(slot0.cardInfo, slot1))
 	end
 
 	table.insert(slot6, uv0.getCardInfoListString(slot0.cardInfoList, slot1, "cardInfoList", uv0.getStack(slot3, slot5)))
 
-	if slot0:HasField("fightStep") and slot0.fightStep.actType then
+	if slot0.fightStep then
 		table.insert(slot6, uv0.getFightStepString(slot0.fightStep, slot1, nil, slot3))
 	end
 
-	if slot0:HasField("assistBossInfo") and slot0.assistBossInfo.formId ~= 0 then
+	if slot0.assistBossInfo then
 		table.insert(slot6, uv0.getAssistBossInfoString(slot0.assistBossInfo, slot1))
+	end
+
+	if slot0.magicCircle then
+		table.insert(slot6, uv0.getMagicCircleInfoString(slot0.magicCircle, slot1))
 	end
 
 	table.insert(slot6, slot4 .. "}")
 
 	return table.concat(slot6, "\n")
+end
+
+function slot0.getMagicCircleInfoString(slot0, slot1)
+	slot2 = FightLogHelper.getPrefix(slot1 or 0)
+	slot3 = FightLogHelper.buildClassNameByIndex("FightMagicCircleInfoData")
+
+	if not slot0 then
+		return string.format("%s %s : nil", slot2, slot3)
+	end
+
+	slot4 = {
+		string.format("%s %s {", slot2, slot3)
+	}
+	slot5 = FightLogHelper.getPrefix(slot1 + 1)
+
+	table.insert(slot4, string.format("%s magicCircleId : %s", slot5, slot0.magicCircleId))
+	table.insert(slot4, string.format("%s round : %s", slot5, slot0.round))
+	table.insert(slot4, string.format("%s createUid : %s %s", slot5, slot0.createUid, uv0.getEntityName(slot0.createUid)))
+	table.insert(slot4, string.format("%s electricLevel : %s", slot5, slot0.electricLevel))
+	table.insert(slot4, string.format("%s electricProgress : %s", slot5, slot0.electricProgress))
+	table.insert(slot4, slot2 .. "}")
+
+	return table.concat(slot4, "\n")
 end
 
 function slot0.getAssistBossInfoString(slot0, slot1, slot2)
@@ -209,7 +236,7 @@ function slot0.getFightAssistBossSkillListString(slot0, slot1, slot2)
 end
 
 function slot0.getFightActEffectListString(slot0, slot1, slot2, slot3)
-	return uv0.getMoListString(slot0, uv0.getFightActEffectString, slot2 or "actEffectMoList", slot1, slot3)
+	return uv0.getMoListString(slot0, uv0.getFightActEffectString, slot2 or "effectDataList", slot1, slot3)
 end
 
 function slot0.getFightBuffString(slot0, slot1, slot2)

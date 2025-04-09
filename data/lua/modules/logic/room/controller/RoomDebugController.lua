@@ -625,13 +625,13 @@ function slot0.saveInitMapParam(slot0, slot1, slot2)
 	logNormal("导出完成 记得提交前后端配置文件")
 end
 
-function slot0.getDebugPackageInfo(slot0, slot1, slot2)
+function slot0.getDebugPackageInfo(slot0, slot1, slot2, slot3)
 	if slot0._tempPackageConfig then
 		if slot1 then
 			if slot2 then
-				slot1(slot2, slot0._tempPackageConfig)
+				slot1(slot2, slot0._tempPackageConfig, slot3)
 			else
-				slot1(slot0._tempPackageConfig)
+				slot1(slot0._tempPackageConfig, slot3)
 			end
 		end
 
@@ -641,10 +641,10 @@ function slot0.getDebugPackageInfo(slot0, slot1, slot2)
 	MultiAbLoader.New():addPath(RoomEnum.BlockPackageMapPath)
 
 	if SLFramework.FrameworkSettings.IsEditor then
-		slot3:addPath(RoomEnum.BlockPackageDataPath)
+		slot4:addPath(RoomEnum.BlockPackageDataPath)
 	end
 
-	slot3:startLoad(function ()
+	slot4:startLoad(function ()
 		slot4 = cjson.decode(uv0:getAssetItemDict()[RoomEnum.BlockPackageMapPath]:GetResource(RoomEnum.BlockPackageMapPath).text)
 
 		if SLFramework.FrameworkSettings.IsEditor then
@@ -657,9 +657,9 @@ function slot0.getDebugPackageInfo(slot0, slot1, slot2)
 
 		if uv2 then
 			if uv3 then
-				uv2(uv3, slot4)
+				uv2(uv3, slot4, uv4)
 			else
-				uv2(slot4)
+				uv2(slot4, uv4)
 			end
 		end
 

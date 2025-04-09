@@ -79,6 +79,10 @@ function slot0.onConfigLoaded(slot0, slot1, slot2)
 		end
 	elseif slot1 == "character_voice" then
 		slot0._voiceConfig = slot2
+
+		if SLFramework.FrameworkSettings.IsEditor then
+			CharacterVoiceConfigChecker.instance:checkConfig()
+		end
 	elseif slot1 == "episode" then
 		slot0._episodeConfig = slot2
 	elseif slot1 == "character_shop_voice" then

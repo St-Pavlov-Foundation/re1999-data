@@ -131,20 +131,14 @@ end
 
 function slot0.updateCardLockObj(slot0)
 	for slot5, slot6 in ipairs(FightPlayCardModel.instance:getUsedCards()) do
-		slot7 = slot0._cardItemList[slot5]
-
-		if slot7.showAlfEffectIng then
-			gohelper.setActive(gohelper.findChild(slot7.tr.parent.gameObject, "lock"), false)
-		else
-			slot6.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, slot8, false)
-		end
+		slot6.clientData.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, gohelper.findChild(slot0._cardItemList[slot5].tr.parent.gameObject, "lock"), false)
 	end
 end
 
 function slot0._onShowSimulateClientUsedCard(slot0)
 	slot1 = {}
 
-	for slot5, slot6 in ipairs(FightCardModel.instance:getPlayCardOpList()) do
+	for slot5, slot6 in ipairs(FightDataHelper.operationDataMgr:getPlayCardOpList()) do
 		table.insert(slot1, slot6.cardInfoMO)
 	end
 
@@ -155,7 +149,7 @@ function slot0._onShowSimulateClientUsedCard(slot0)
 	slot0:_updateView(slot1, slot5)
 
 	for slot5, slot6 in ipairs(slot1) do
-		slot6.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, gohelper.findChild(slot0._cardItemList[slot5].tr.parent.gameObject, "lock"), false)
+		slot6.clientData.custom_lock = FightViewHandCardItemLock.setCardLock(slot6.uid, slot6.skillId, gohelper.findChild(slot0._cardItemList[slot5].tr.parent.gameObject, "lock"), false)
 	end
 
 	if slot0.LYCard then
@@ -299,8 +293,8 @@ function slot0._onBuffUpdate(slot0, slot1, slot2, slot3)
 		if slot0._cardItemList[slot11] then
 			slot13 = slot5[slot11]
 
-			if slot13.custom_lock ~= not FightViewHandCardItemLock.canUseCardSkill(slot13.uid, slot13.skillId) then
-				slot13.custom_lock = slot15
+			if slot13.clientData.custom_lock ~= not FightViewHandCardItemLock.canUseCardSkill(slot13.uid, slot13.skillId) then
+				slot13.clientData.custom_lock = slot15
 
 				if slot15 then
 					FightViewHandCardItemLock.setCardLock(slot13.uid, slot13.skillId, gohelper.findChild(slot12.tr.parent.gameObject, "lock"), false)
@@ -346,7 +340,7 @@ function slot0._updateView(slot0, slot1, slot2)
 
 		gohelper.setActive(slot13.go, true)
 
-		slot10.custom_playedCard = true
+		slot10.clientData.custom_playedCard = true
 
 		slot13:updateItem(slot11, slot12, slot10)
 		slot13:detectShowBlueStar()

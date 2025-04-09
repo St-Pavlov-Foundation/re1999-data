@@ -1,18 +1,18 @@
 module("modules.logic.fight.model.data.FightASFDDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightASFDDataMgr")
+slot0 = FightDataClass("FightASFDDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 end
 
 function slot0.updateData(slot0, slot1)
-	if slot1.attacker:HasField("emitterInfo") then
+	if slot1.attacker.emitterInfo then
 		slot0.attackerEmitterInfo = FightASFDEmitterInfoMO.New()
 
 		slot0.attackerEmitterInfo:init(slot1.attacker.emitterInfo)
 	end
 
-	if slot1.defender:HasField("emitterInfo") then
+	if slot1.defender.emitterInfo then
 		slot0.defenderEmitterInfo = FightASFDEmitterInfoMO.New()
 
 		slot0.defenderEmitterInfo:init(slot1.defender.emitterInfo)

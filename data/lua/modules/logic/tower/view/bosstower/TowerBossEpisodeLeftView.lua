@@ -8,6 +8,7 @@ function slot0.onInitView(slot0)
 	slot0.bossIcon = gohelper.findChildSingleImage(slot0.viewGO, "root/Left/Pass/Head/Mask/image_bossIcon")
 	slot0.btnTask = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/Left/Pass")
 	slot0.txtPassLev = gohelper.findChildTextMesh(slot0.viewGO, "root/Left/Pass/#txt_PassLevel")
+	slot0.txtTaskNum = gohelper.findChildTextMesh(slot0.viewGO, "root/Left/Pass/#txt_taskNum")
 	slot0.taskList = {}
 
 	for slot4 = 1, 4 do
@@ -18,6 +19,8 @@ function slot0.onInitView(slot0)
 	end
 
 	slot0._goTaskReddot = gohelper.findChild(slot0.viewGO, "root/Left/Pass/#go_RedPoint")
+	slot0._goTaskTime = gohelper.findChild(slot0.viewGO, "root/Left/Pass/time")
+	slot0._txtTaskTime = gohelper.findChildTextMesh(slot0.viewGO, "root/Left/Pass/time/#txt_taskTime")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -58,9 +61,10 @@ end
 
 function slot0._onBtnHandBookClick(slot0)
 	if TowerAssistBossModel.instance:getById(slot0.towerConfig.bossId) == nil then
-		TowerController.instance:openAssistBossView()
+		slot4 = TowerAssistBossModel.instance:getTempUnlockTrialBossMO(slot1)
 
-		return
+		slot4:setTrialInfo(0, 0)
+		slot4:refreshTalent()
 	end
 
 	ViewMgr.instance:openView(ViewName.TowerAssistBossDetailView, {
@@ -106,6 +110,7 @@ function slot0.refreshView(slot0)
 	slot0:refreshPassLayer()
 	slot0:refreshTask()
 	slot0:refreshTalent()
+	slot0:refreshTaskTime()
 end
 
 function slot0.refreshPassLayer(slot0)
@@ -113,32 +118,67 @@ function slot0.refreshPassLayer(slot0)
 end
 
 function slot0.refreshTask(slot0)
-	gohelper.setActive(slot0.btnTask, slot0.towerInfo:getTaskGroupId() ~= 0)
+	slot3 = TowerTaskModel.instance:getBossTaskList(slot0.towerId) and #slot2 > 0 and slot0.towerInfo:getTaskGroupId() ~= 0
 
-	if slot1 == 0 then
+	gohelper.setActive(slot0.btnTask, slot3)
+
+	if not slot3 then
 		return
 	end
 
-	slot3 = 0
+	slot5 = 0
 
 	if TowerConfig.instance:getTaskListByGroupId(slot1) then
-		for slot7, slot8 in pairs(slot2) do
-			if TowerTaskModel.instance:isTaskFinishedById(slot8) then
-				slot3 = slot3 + 1
+		for slot9, slot10 in pairs(slot4) do
+			if TowerTaskModel.instance:isTaskFinishedById(slot10) then
+				slot5 = slot5 + 1
 			end
 		end
 	end
 
-	for slot8 = 1, #slot0.taskList do
-		slot9 = slot0.taskList[slot8]
+	slot6 = slot4 and #slot4 or 0
 
-		if slot8 <= (slot2 and #slot2 or 0) then
-			gohelper.setActive(slot9.go, true)
-			gohelper.setActive(slot9.goLight, slot8 <= slot3)
+	for slot10 = 1, #slot0.taskList do
+		slot11 = slot0.taskList[slot10]
+
+		if slot10 <= slot6 then
+			gohelper.setActive(slot11.go, true)
+			gohelper.setActive(slot11.goLight, slot10 <= slot5)
 		else
-			gohelper.setActive(slot9.go, false)
+			gohelper.setActive(slot11.go, false)
 		end
 	end
+
+	slot0.txtTaskNum.text = string.format("%s/%s", slot5, slot6)
+end
+
+function slot0.refreshTaskTime(slot0)
+	slot0.towerOpenMo = TowerModel.instance:getTowerOpenInfo(slot0.towerType, slot0.towerId)
+
+	if TowerConfig.instance:getBossTimeTowerConfig(slot0.towerId, slot0.towerOpenMo.round) and slot1.taskGroupId > 0 and slot0.towerOpenMo.taskEndTime > 0 then
+		slot0:_refreshTaskTime()
+		TaskDispatcher.cancelTask(slot0._refreshTaskTime, slot0)
+		TaskDispatcher.runRepeat(slot0._refreshTaskTime, slot0, 1)
+	else
+		slot0:clearTime()
+	end
+end
+
+function slot0._refreshTaskTime(slot0)
+	gohelper.setActive(slot0._goTaskTime, true)
+
+	slot1, slot2 = slot0.towerOpenMo:getTaskRemainTime(true)
+
+	if slot1 then
+		slot0._txtTaskTime.text = slot1 .. slot2
+	else
+		slot0:clearTime()
+	end
+end
+
+function slot0.clearTime(slot0)
+	gohelper.setActive(slot0._goTaskTime, false)
+	TaskDispatcher.cancelTask(slot0._refreshTaskTime, slot0)
 end
 
 function slot0.refreshTalent(slot0)
@@ -154,6 +194,7 @@ end
 
 function slot0.onDestroyView(slot0)
 	slot0.bossIcon:UnLoadImage()
+	TaskDispatcher.cancelTask(slot0._refreshTaskTime, slot0)
 end
 
 return slot0

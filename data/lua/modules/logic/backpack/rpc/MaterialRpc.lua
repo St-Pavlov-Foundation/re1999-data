@@ -184,6 +184,14 @@ function slot0._onReceiveMaterialChangePush_default(slot0, slot1, slot2, slot3, 
 		end
 	end
 
+	if ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg) and #slot8 > 0 then
+		for slot12, slot13 in ipairs(slot8) do
+			if slot13.id == slot2[1].materilId then
+				PlayerCardController.instance:ShowChangeBgSkin(slot13.id)
+			end
+		end
+	end
+
 	slot0:simpleShowView(slot2)
 end
 

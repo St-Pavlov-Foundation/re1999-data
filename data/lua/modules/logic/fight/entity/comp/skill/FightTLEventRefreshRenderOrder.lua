@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventRefreshRenderOrder", package.seeall)
 
-slot0 = class("FightTLEventRefreshRenderOrder")
+slot0 = class("FightTLEventRefreshRenderOrder", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot6 = FightHelper.getDefenders(slot1, true)
 
 	for slot10, slot11 in ipairs(FightHelper.getSideEntitys(FightHelper.getEntity(slot1.fromId):getSide(), true)) do
@@ -26,20 +26,14 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0._keepOrderPriorityDict = nil
-
-	TaskDispatcher.cancelTask(slot0._refreshOrder, slot0)
-end
-
-function slot0.dispose(slot0)
-	slot0._keepOrderPriorityDict = nil
-
-	TaskDispatcher.cancelTask(slot0._refreshOrder, slot0)
-end
-
 function slot0._refreshOrder(slot0)
 	FightRenderOrderMgr.instance:refreshRenderOrder(slot0._keepOrderPriorityDict)
+end
+
+function slot0.onDestructor(slot0)
+	slot0._keepOrderPriorityDict = nil
+
+	TaskDispatcher.cancelTask(slot0._refreshOrder, slot0)
 end
 
 return slot0

@@ -16,5 +16,14 @@ slot0.PlayType = {
 slot0.UIBloomView = {
 	CharacterDataView = "view_CharacterDataView"
 }
+slot0.RTShareType = {
+	BloomClose = 2,
+	BloomOpen = 3,
+	BloomAuto = 100,
+	FullScreen = 4,
+	Normal = 1
+}
+slot0.FullScreenEffectCameraSize = 13
+slot0.DelayFrame = 5
 
 return slot0

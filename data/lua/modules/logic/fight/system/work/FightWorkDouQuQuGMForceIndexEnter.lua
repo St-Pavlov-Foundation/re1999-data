@@ -28,7 +28,7 @@ function slot0._onClearFinish(slot0)
 end
 
 function slot0._onFightAct174Reply(slot0, slot1)
-	slot2 = slot1.fight
+	slot2 = FightData.New(slot1.fight)
 
 	FightMgr.instance:startFight(slot2)
 	FightModel.instance:updateFight(slot2)
@@ -59,23 +59,21 @@ end
 function slot0._onFightAct174ReplyRound(slot0, slot1)
 	slot0._endRound = slot0._endRound - 1
 
-	FightCardModel.instance:clearCardOps()
 	FightDataHelper.paTaMgr:resetOp()
 	FightModel.instance:updateFightRound(slot1.fightRound)
 
 	if slot0._endRound == 0 then
-		FightDataHelper.coverData(FightLocalDataMgr.instance, FightDataMgr.instance, {
+		FightDataUtil.coverData(FightLocalDataMgr.instance, FightDataMgr.instance, {
 			dataMgr = true,
 			cacheFightMgr = true,
 			class = true
 		})
-		FightCardModel.instance:coverCard(FightDataHelper.handCardMgr.handCard)
 
 		FightModel.instance._curRoundId = FightDataModel.instance.douQuQuMgr.isGMStartRound
 
 		slot0:com_sendFightEvent(FightEvent.ChangeRound)
 
-		FightModel.instance:getCurRoundMO().fightStepMOs = nil
+		FightDataHelper.roundMgr:getRoundData().fightStep = nil
 
 		GameSceneMgr.instance:getCurScene().director:registRespBeginFight()
 		FightController.instance:dispatchEvent(FightEvent.RespBeginFight)

@@ -5,13 +5,13 @@ slot1 = 2
 slot2 = 2
 
 function slot0.onStart(slot0)
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	if lua_skill_buff.configDict[slot0._actEffectMO.effectNum] and FightHelper.shouUIPoisoningEffect(slot2.id) and slot1.nameUI and slot1.nameUI.showPoisoningEffect then
+	if lua_skill_buff.configDict[slot0.actEffectData.effectNum] and FightHelper.shouUIPoisoningEffect(slot2.id) and slot1.nameUI and slot1.nameUI.showPoisoningEffect then
 		slot1.nameUI:showPoisoningEffect(slot2)
 	end
 
@@ -57,7 +57,7 @@ function slot0._getBuffTriggerParam(slot0, slot1, slot2)
 	slot4 = slot1 and slot1.triggerEffectHangPoint
 	slot5 = slot1 and slot1.triggerAudio
 
-	if (string.nilorempty(slot1 and slot1.triggerEffect) or slot3 == "0") and lua_buff_act.configDict[slot0._actEffectMO.buffActId] and not string.nilorempty(slot6.effect) then
+	if (string.nilorempty(slot1 and slot1.triggerEffect) or slot3 == "0") and lua_buff_act.configDict[slot0.actEffectData.buffActId] and not string.nilorempty(slot6.effect) then
 		slot10 = slot2 and FightDataHelper.entityMgr:getById(slot2.id)
 		slot11 = slot10 and lua_fight_replace_buff_act_effect.configDict[slot10.skin]
 
@@ -80,7 +80,7 @@ function slot0._getBuffTriggerParam(slot0, slot1, slot2)
 end
 
 function slot0._onAnimEvent(slot0, slot1, slot2, slot3)
-	if slot1 == slot0._animationName and slot2 == SpineAnimEvent.ActionComplete and FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if slot1 == slot0._animationName and slot2 == SpineAnimEvent.ActionComplete and FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot4.spine:removeAnimEventCallback(slot0._onAnimEvent, slot0)
 
 		if not FightSkillMgr.instance:isEntityPlayingTimeline(slot4.id) then
@@ -94,7 +94,7 @@ function slot0._onTickCheckRemoveEffect(slot0)
 		return
 	end
 
-	slot1 = FightHelper.getEntity(slot0._actEffectMO.targetId)
+	slot1 = FightHelper.getEntity(slot0.actEffectData.targetId)
 
 	if slot0._effectWrap and slot1 then
 		slot1.effect:removeEffect(slot0._effectWrap)
@@ -108,7 +108,7 @@ function slot0._onTickCheckRemoveAnim(slot0)
 		return
 	end
 
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot1.spine:removeAnimEventCallback(slot0._onAnimEvent, slot0)
 	end
 end
@@ -117,7 +117,7 @@ function slot0.onDestroy(slot0)
 	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveEffect, slot0)
 	TaskDispatcher.cancelTask(slot0._onTickCheckRemoveAnim, slot0)
 
-	if slot0._hasPlayAnim and FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if slot0._hasPlayAnim and FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot1.spine:removeAnimEventCallback(slot0._onAnimEvent, slot0)
 	end
 

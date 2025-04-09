@@ -29,12 +29,11 @@ function slot0._playTimeline(slot0)
 		TaskDispatcher.runDelay(slot0._delayDone, slot0, 30)
 		slot0._entity.skill:playTimeline(slot0._timeline, {
 			actId = 0,
-			actEffectMOs = {
+			actEffect = {
 				{
 					targetId = slot0._entityId
 				}
 			},
-			actEffect = {},
 			fromId = slot0._entityId,
 			toId = slot0._entityId,
 			actType = FightEnum.ActType.SKILL,

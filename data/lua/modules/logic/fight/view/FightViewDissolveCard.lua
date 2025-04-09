@@ -45,7 +45,7 @@ function slot0.onDeleteCard(slot0, slot1)
 		gohelper.setActive(slot7.innerCardGo, true)
 		slot7.innerCardItem:updateItem(slot6.uid, slot6.skillId, slot6)
 
-		slot8 = FightCardModel.instance:isUniqueSkill(slot6.uid, slot6.skillId)
+		slot8 = FightCardDataHelper.isBigSkill(slot6.skillId)
 
 		gohelper.setActive(slot7.goPlaySkillEffect, not slot8)
 		gohelper.setActive(slot7.goPlayBigSkillEffect, slot8)

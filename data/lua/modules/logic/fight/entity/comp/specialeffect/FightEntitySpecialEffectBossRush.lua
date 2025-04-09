@@ -34,7 +34,7 @@ function slot0.ctor(slot0, slot1)
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3, slot4)
-	if slot1 and slot0._entity ~= slot1 and slot1:getMO() and slot1:getMO():isUniqueSkill(slot2) then
+	if slot1 and slot0._entity ~= slot1 and slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
 		slot0._uniqueSkill = slot2
 
 		slot0:hideSpecialEffects("UniqueSkill")

@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventMove", package.seeall)
 
-slot0 = class("FightTLEventMove")
+slot0 = class("FightTLEventMove", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot2 = slot2 * FightModel.instance:getSpeed()
 	slot0._paramsArr = slot3
 	slot4 = slot3[1]
@@ -207,7 +207,7 @@ function slot0._getMoveEntitys(slot0, slot1)
 	elseif slot1 == "2" then
 		slot5 = {}
 
-		for slot9, slot10 in ipairs(slot0.actEffectMOs) do
+		for slot9, slot10 in ipairs(slot0.actEffect) do
 			if not FightHelper.getEntity(slot10.targetId) and slot10.effectType ~= FightEnum.EffectType.INDICATORCHANGE then
 				-- Nothing
 			end
@@ -270,7 +270,7 @@ function slot0._setCombinativeEntitysPos(slot0)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	TaskDispatcher.cancelTask(slot0._setCombinativeEntitysPos, slot0)
 end
 

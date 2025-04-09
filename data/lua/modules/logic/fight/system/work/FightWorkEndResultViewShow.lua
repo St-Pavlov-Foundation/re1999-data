@@ -133,7 +133,7 @@ function slot0._showSuccView(slot0)
 			Season166Controller.instance:openResultPanel()
 
 			return
-		elseif slot1.type == DungeonEnum.EpisodeType.TowerBoss then
+		elseif slot1.type == DungeonEnum.EpisodeType.TowerBoss or slot1.type == DungeonEnum.EpisodeType.TowerBossTeach then
 			ViewMgr.instance:openView(ViewName.TowerBossResultView)
 
 			return
@@ -143,6 +143,10 @@ function slot0._showSuccView(slot0)
 			return
 		elseif slot1.type == DungeonEnum.EpisodeType.Act183 then
 			ViewMgr.instance:openView(ViewName.Act183FightSuccView)
+
+			return
+		elseif slot1.type == DungeonEnum.EpisodeType.Act191 then
+			Activity191Controller.instance:openResultPanel(true)
 
 			return
 		end
@@ -176,6 +180,10 @@ function slot0.showFailView(slot0)
 			return
 		elseif slot1.type == DungeonEnum.EpisodeType.Season166Base then
 			Season166Controller.instance:openResultPanel()
+
+			return
+		elseif slot1.type == DungeonEnum.EpisodeType.Act191 then
+			Activity191Controller.instance:openResultPanel(false)
 
 			return
 		end

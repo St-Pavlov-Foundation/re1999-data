@@ -10,9 +10,9 @@ function slot0.init(slot0, slot1)
 	slot0._imgBgs = slot0:getUserDataTb_()
 	slot0._imgBgGos = slot0:getUserDataTb_()
 
-	for slot5 = 1, 4 do
-		table.insert(slot0._imgBgs, gohelper.findChildImage(slot1, "imgBg/" .. slot5))
-		table.insert(slot0._imgBgGos, gohelper.findChild(slot1, "imgBg/" .. slot5))
+	for slot5 = 0, 4 do
+		slot0._imgBgs[slot5] = gohelper.findChildImage(slot1, "imgBg/" .. slot5)
+		slot0._imgBgGos[slot5] = gohelper.findChild(slot1, "imgBg/" .. slot5)
 	end
 
 	slot0._imgBg2 = gohelper.findChildImage(slot1, "forbid/mask")
@@ -42,7 +42,7 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0.onSelectMonsterCardMo(slot0, slot1)
-	slot3 = FightCardModel.instance:isUniqueSkill(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId)
+	slot3 = FightCardDataHelper.isBigSkill(slot0.cardInfoMO.skillId)
 
 	gohelper.setActive(slot0.goEmitNormal, FightHelper.isSameCardMo(slot1, slot0.cardInfoMO) and not slot3)
 	gohelper.setActive(slot0.goEmitUitimate, slot2 and slot3)
@@ -72,7 +72,7 @@ function slot0.updateCardInfoMO(slot0, slot1)
 
 	slot4 = FightDataHelper.entityMgr:getById(slot1.uid)
 
-	if (not FightCardModel.instance:isUniqueSkill(slot1.uid, slot1.skillId) or not FightEnum.UniqueSkillCardLv) and FightCardModel.instance:getSkillLv(slot1.uid, slot1.skillId) == FightEnum.UniqueSkillCardLv then
+	if (not FightCardDataHelper.isBigSkill(slot1.skillId) or not FightEnum.UniqueSkillCardLv) and FightCardDataHelper.getSkillLv(slot1.uid, slot1.skillId) == FightEnum.UniqueSkillCardLv then
 		slot3 = 1
 	end
 
@@ -81,7 +81,7 @@ function slot0.updateCardInfoMO(slot0, slot1)
 
 	UISpriteSetMgr.instance:setFightSprite(slot0._imgTag, slot9)
 
-	for slot9, slot10 in ipairs(slot0._imgBgs) do
+	for slot9, slot10 in pairs(slot0._imgBgs) do
 		gohelper.setActive(slot10.gameObject, slot9 == slot3)
 	end
 
@@ -93,7 +93,7 @@ function slot0.updateCardInfoMO(slot0, slot1)
 end
 
 function slot0.showOpForbid(slot0)
-	if slot0._imgBgGos[FightCardModel.instance:getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId)] then
+	if slot0._imgBgGos[FightCardDataHelper.getSkillLv(slot0.cardInfoMO.uid, slot0.cardInfoMO.skillId)] then
 		gohelper.onceAddComponent(slot2, typeof(ZProj.EffectTimeScale)):SetTimeScale(FightModel.instance:getUISpeed())
 
 		if slot2:GetComponent(typeof(UnityEngine.Animation)) then
@@ -105,7 +105,7 @@ function slot0.showOpForbid(slot0)
 end
 
 function slot0.cancelOpForbid(slot0)
-	for slot4, slot5 in ipairs(slot0._imgBgs) do
+	for slot4, slot5 in pairs(slot0._imgBgs) do
 		slot5.material = nil
 	end
 end

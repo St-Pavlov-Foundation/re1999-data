@@ -1,6 +1,6 @@
 module("modules.logic.bossrush.view.FightViewBossHpBossRushAction", package.seeall)
 
-slot0 = class("FightViewBossHpBossRushAction", BaseViewExtended)
+slot0 = class("FightViewBossHpBossRushAction", FightBaseView)
 
 function slot0.onInitView(slot0)
 	slot0._moveRoot = gohelper.findChild(slot0.viewGO, "mask/moveRoot/moveRootScript").transform
@@ -15,11 +15,11 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnMonsterChange, slot0._onMonsterChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnEntityDead, slot0._onEntityDead, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, slot0._onBuffUpdate, slot0)
-	slot0:addClickCb(slot0._btn, slot0._ontBtnClick, slot0)
+	slot0:com_registFightEvent(FightEvent.OnMonsterChange, slot0._onMonsterChange)
+	slot0:com_registFightEvent(FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish)
+	slot0:com_registFightEvent(FightEvent.OnEntityDead, slot0._onEntityDead)
+	slot0:com_registFightEvent(FightEvent.OnBuffUpdate, slot0._onBuffUpdate)
+	slot0:com_registClick(slot0._btn, slot0._ontBtnClick)
 end
 
 function slot0.removeEvents(slot0)
@@ -241,7 +241,7 @@ function slot0._onOpSkillShow(slot0, slot1, slot2, slot3)
 	end
 
 	if not slot0._opItemClassDic[slot0._cardCount] then
-		slot0._opItemClassDic[slot0._cardCount] = slot0:openSubView(FightViewBossHpBossRushActionOpItem)
+		slot0._opItemClassDic[slot0._cardCount] = slot0:com_openSubView(FightViewBossHpBossRushActionOpItem)
 	end
 
 	slot0._opItemClassDic[slot0._cardCount]:refreshUI(slot1, slot2)

@@ -3,11 +3,11 @@ module("modules.logic.fight.view.FightViewASFDEnergy", package.seeall)
 slot0 = class("FightViewASFDEnergy", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0.goASFD = gohelper.findChild(slot0.viewGO, "root/asfd_icon")
-	slot0.txtASFDEnergy = gohelper.findChildText(slot0.viewGO, "root/asfd_icon/#txt_Num")
-	slot0.goClick = gohelper.findChild(slot0.viewGO, "root/asfd_icon/#click")
-	slot0.goFlyContainer = gohelper.findChild(slot0.viewGO, "root/asfd_icon/#go_fly_container")
-	slot0.goFlyItem = gohelper.findChild(slot0.viewGO, "root/asfd_icon/#go_fly_container/#go_fly_item")
+	slot0.goASFD = gohelper.findChild(slot0.viewGO, "root/asfd_container")
+	slot0.txtASFDEnergy = gohelper.findChildText(slot0.viewGO, "root/asfd_container/asfd_icon/#txt_Num")
+	slot0.goClick = gohelper.findChild(slot0.viewGO, "root/asfd_container/asfd_icon/#click")
+	slot0.goFlyContainer = gohelper.findChild(slot0.viewGO, "root/asfd_container/asfd_icon/#go_fly_container")
+	slot0.goFlyItem = gohelper.findChild(slot0.viewGO, "root/asfd_container/asfd_icon/#go_fly_container/#go_fly_item")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -21,6 +21,9 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	gohelper.addChild(slot0.viewContainer.rightBottomElementLayoutView:getElementContainer(FightRightBottomElementEnum.Elements.ASFD), slot0.goASFD)
+	recthelper.setAnchor(slot0.goASFD:GetComponent(gohelper.Type_RectTransform), 0, 0)
+
 	slot0.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0.goASFD)
 
 	slot0:_hideASFD()
@@ -53,7 +56,7 @@ function slot0.startAllocateCardEnergy(slot0)
 
 	gohelper.setActive(slot0.goFlyContainer, true)
 
-	for slot5, slot6 in ipairs(FightCardModel.instance:getHandCardData()) do
+	for slot5, slot6 in ipairs(FightDataHelper.handCardMgr.handCard) do
 		if slot6.energy and slot6.energy > 0 and slot0.handCardView:getHandCardItem(slot5) then
 			slot0.flyCount = slot0.flyCount + 1
 			slot8, slot9 = slot7:getASFDScreenPos()
@@ -64,7 +67,7 @@ function slot0.startAllocateCardEnergy(slot0)
 			slot12 = slot0:getFlyItem(slot0.flyCount)
 
 			recthelper.setAnchor(slot12.rectTr, 0, 0)
-			table.insert(slot0.tweenIdList, ZProj.TweenHelper.DOAnchorPos(slot12.rectTr, slot10, slot11, uv0.FlyDuration, slot0.onFlyDone, slot0))
+			table.insert(slot0.tweenIdList, ZProj.TweenHelper.DOAnchorPos(slot12.rectTr, slot10, slot11, uv0.FlyDuration / FightModel.instance:getUISpeed(), slot0.onFlyDone, slot0))
 		end
 	end
 
@@ -127,10 +130,12 @@ end
 
 function slot0._hideASFD(slot0)
 	gohelper.setActive(slot0.goASFD, false)
+	FightController.instance:dispatchEvent(FightEvent.RightBottomElements_HideElement, FightRightBottomElementEnum.Elements.ASFD)
 end
 
 function slot0.showASFD(slot0)
 	gohelper.setActive(slot0.goASFD, true)
+	FightController.instance:dispatchEvent(FightEvent.RightBottomElements_ShowElement, FightRightBottomElementEnum.Elements.ASFD)
 end
 
 function slot0.stageChange(slot0)

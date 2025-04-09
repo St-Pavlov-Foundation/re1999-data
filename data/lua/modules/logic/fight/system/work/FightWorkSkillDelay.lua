@@ -3,11 +3,11 @@ module("modules.logic.fight.system.work.FightWorkSkillDelay", package.seeall)
 slot0 = class("FightWorkSkillDelay", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
-	if lua_fight_skill_delay.configDict[slot0._fightStepMO.actId] then
+	if lua_fight_skill_delay.configDict[slot0.fightStepData.actId] then
 		if FightReplayModel.instance:isReplay() then
 			slot0:onDone(true)
 		else

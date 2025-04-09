@@ -18,9 +18,9 @@ function slot0.init(slot0, slot1)
 	end
 
 	for slot5, slot6 in ipairs(slot1.opers) do
-		slot7 = FightBeginRoundOp.New()
+		slot7 = FightOperationItemData.New()
 
-		slot7:init(slot6)
+		slot7:setByProto(slot6)
 		table.insert(slot0.opers, slot7)
 	end
 end

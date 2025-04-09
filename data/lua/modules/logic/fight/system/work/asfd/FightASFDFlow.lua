@@ -4,14 +4,14 @@ slot0 = class("FightASFDFlow", BaseFlow)
 slot0.DelayWaitTime = 61
 
 function slot0.ctor(slot0, slot1, slot2, slot3)
-	slot0.stepMo = slot1
+	slot0.fightStepData = slot1
 	slot0.curIndex = slot3
 	slot0.asfdContext = slot0:getContext(slot1)
-	slot0.nextStepMo = slot2
+	slot0.nextStepData = slot2
 end
 
 function slot0.createNormalSeq(slot0)
-	slot1 = slot0.stepMo
+	slot1 = slot0.fightStepData
 	slot0._sequence = FlowSequence.New()
 
 	slot0._sequence:addWork(FightWorkCreateASFDEmitter.New(slot1))
@@ -19,7 +19,7 @@ function slot0.createNormalSeq(slot0)
 
 	slot3 = FlowParallel.New()
 
-	if slot0:checkNeedAddWaitDoneWork(slot0.nextStepMo) then
+	if slot0:checkNeedAddWaitDoneWork(slot0.nextStepData) then
 		slot2:addWork(FightWorkMissileASFDDone.New(slot1))
 		slot3:addWork(FightWorkWaitASFDArrivedDone.New(slot1))
 	end
@@ -39,11 +39,11 @@ function slot0.createPullOutSeq(slot0)
 	slot0._sequence = FlowSequence.New()
 	slot1 = FlowParallel.New()
 
-	slot1:addWork(FightWorkASFDClearEmitter.New(slot0.stepMo))
-	slot1:addWork(FightWorkASFDPullOut.New(slot0.stepMo))
-	slot1:addWork(FightWorkASFDEffectFlow.New(slot0.stepMo))
+	slot1:addWork(FightWorkASFDClearEmitter.New(slot0.fightStepData))
+	slot1:addWork(FightWorkASFDPullOut.New(slot0.fightStepData))
+	slot1:addWork(FightWorkASFDEffectFlow.New(slot0.fightStepData))
 	slot0._sequence:addWork(slot1)
-	slot0._sequence:addWork(FightWorkASFDDone.New(slot0.stepMo))
+	slot0._sequence:addWork(FightWorkASFDDone.New(slot0.fightStepData))
 end
 
 function slot0.getContext(slot0, slot1)
@@ -61,7 +61,7 @@ function slot0.getContext(slot0, slot1)
 end
 
 function slot0.checkNeedAddWaitDoneWork(slot0, slot1)
-	if slot0:checkHasMonsterChangeEffectType(slot0.stepMo) then
+	if slot0:checkHasMonsterChangeEffectType(slot0.fightStepData) then
 		return true
 	end
 
@@ -85,12 +85,12 @@ function slot0.checkHasMonsterChangeEffectType(slot0, slot1)
 		return false
 	end
 
-	for slot5, slot6 in ipairs(slot1.actEffectMOs) do
+	for slot5, slot6 in ipairs(slot1.actEffect) do
 		if slot6.effectType == FightEnum.EffectType.MONSTERCHANGE then
 			return true
 		end
 
-		if slot6.effectType == FightEnum.EffectType.FIGHTSTEP and slot0:checkHasMonsterChangeEffectType(slot6.cus_stepMO) then
+		if slot6.effectType == FightEnum.EffectType.FIGHTSTEP and slot0:checkHasMonsterChangeEffectType(slot6.fightStepData) then
 			return true
 		end
 	end

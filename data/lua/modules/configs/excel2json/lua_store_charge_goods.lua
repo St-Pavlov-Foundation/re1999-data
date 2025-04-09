@@ -16,6 +16,7 @@ slot1 = {
 	notShowInRecommend = 24,
 	price = 14,
 	order = 4,
+	showLinkageTag = 27,
 	isOnline = 11,
 	item = 19,
 	offTag = 10,

@@ -12,7 +12,7 @@ return {
 		return slot0 ~= FightEntityScene.MySideId and slot0 ~= FightEntityScene.EnemySideId
 	end,
 	copyEntityMO = function (slot0, slot1)
-		FightDataHelper.coverData(slot0, slot1, uv0)
+		FightDataUtil.coverData(slot0, slot1, uv0)
 	end,
 	sortSubEntityList = function (slot0, slot1)
 		return slot1.position < slot0.position

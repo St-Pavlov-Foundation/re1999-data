@@ -33,9 +33,9 @@ function slot0.onInitView(slot0)
 	slot0._simageenemyresultbg:LoadImage(ResUrl.getFightQuitResultIcon("zhandou_icon_di"))
 	slot0._simagefriendresultbg:LoadImage(ResUrl.getFightQuitResultIcon("zhandou_icon_di"))
 
-	slot0._firstRoundAnimation = gohelper.onceAddComponent(slot0.viewGO, typeof(UnityEngine.Animation))
-	slot0._resultEnemyAnimation = gohelper.onceAddComponent(gohelper.findChild(slot0.viewGO, "diceresult/#go_enemy"), typeof(UnityEngine.Animation))
-	slot0._resultFriendAnimation = gohelper.onceAddComponent(gohelper.findChild(slot0.viewGO, "diceresult/#go_friend"), typeof(UnityEngine.Animation))
+	slot0._firstRoundAnimation = slot0._movieGO:GetComponent(gohelper.Type_Animation)
+	slot0.enemyAnimator = slot0._resultEnemyGO:GetComponent(gohelper.Type_Animator)
+	slot0.friendAnimator = slot0._resultFriendGO:GetComponent(gohelper.Type_Animator)
 end
 
 function slot0.addEvents(slot0)
@@ -54,31 +54,40 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
 end
 
+function slot0.showDice(slot0)
+	gohelper.setActiveCanvasGroup(slot0._movieGO, true)
+	gohelper.setActiveCanvasGroup(slot0._resultGO, true)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.Dice)
+end
+
+function slot0.hideDice(slot0)
+	gohelper.setActiveCanvasGroup(slot0._movieGO, false)
+	gohelper.setActiveCanvasGroup(slot0._resultGO, false)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, FightRightElementEnum.Elements.Dice)
+end
+
 function slot0._onOpenView(slot0, slot1)
 	if slot1 == ViewName.FightFocusView then
-		gohelper.setActiveCanvasGroup(slot0._movieGO, false)
-		gohelper.setActiveCanvasGroup(slot0._resultGO, false)
+		slot0:hideDice()
 	end
 end
 
 function slot0._onCloseView(slot0, slot1)
 	if slot1 == ViewName.FightFocusView then
-		gohelper.setActiveCanvasGroup(slot0._movieGO, true)
-		gohelper.setActiveCanvasGroup(slot0._resultGO, true)
+		slot0:showDice()
 	end
 end
 
 function slot0._onRoundSequenceStart(slot0)
-	gohelper.setActive(slot0._movieGO, false)
-	gohelper.setActive(slot0._resultGO, false)
+	slot0:hideDice()
 end
 
 function slot0._setIsShowUI(slot0, slot1)
-	if not slot0._canvasGroup then
-		slot0._canvasGroup = gohelper.onceAddComponent(slot0.viewGO, typeof(UnityEngine.CanvasGroup))
+	if slot1 then
+		slot0:showDice()
+	else
+		slot0:hideDice()
 	end
-
-	gohelper.setActiveCanvasGroup(slot0._canvasGroup, slot1)
 end
 
 function slot0._onEndFight(slot0)
@@ -136,17 +145,20 @@ function slot0._checkPlayDice(slot0)
 	if not FightModel.instance:isStartFinish() then
 		gohelper.setActive(slot0._movieGO, true)
 		gohelper.setActive(slot0._resultGO, true)
+		slot0:moveFriendGo()
 		slot0._firstRoundAnimation:Play()
+		slot0.enemyAnimator:Play("enemy_open")
+		slot0.friendAnimator:Play("friend_open")
 		gohelper.onceAddComponent(slot0._firstRoundAnimation.gameObject, typeof(ZProj.EffectTimeScale)):SetTimeScale(slot1)
 		TaskDispatcher.runDelay(slot0._delayFirstRoundDone, slot0, uv0 / slot1)
 		AudioMgr.instance:trigger(AudioEnum.WeekWalk.play_artificial_ui_luckydice01)
 	else
 		gohelper.setActive(slot0._movieGO, false)
 		gohelper.setActive(slot0._resultGO, true)
-		slot0._resultEnemyAnimation:Play()
-		slot0._resultFriendAnimation:Play()
-		gohelper.onceAddComponent(slot0._resultEnemyAnimation.gameObject, typeof(ZProj.EffectTimeScale)):SetTimeScale(slot1)
-		gohelper.onceAddComponent(slot0._resultFriendAnimation.gameObject, typeof(ZProj.EffectTimeScale)):SetTimeScale(slot1)
+		slot0.enemyAnimator:Play("enemy_in")
+		slot0.friendAnimator:Play("friend_in")
+		gohelper.onceAddComponent(slot0.enemyAnimator.gameObject, typeof(ZProj.EffectTimeScale)):SetTimeScale(slot1)
+		gohelper.onceAddComponent(slot0.friendAnimator.gameObject, typeof(ZProj.EffectTimeScale)):SetTimeScale(slot1)
 		TaskDispatcher.runDelay(slot0._delayNotFirstRoundDone, slot0, uv1 / slot1)
 		gohelper.setActiveCanvasGroup(slot0._resultGO, false)
 		TaskDispatcher.runDelay(slot0._nextFrameShow, slot0, 0.01)
@@ -158,9 +170,22 @@ function slot0._nextFrameShow(slot0)
 	gohelper.setActiveCanvasGroup(slot0._resultGO, true)
 end
 
+function slot0.moveFriendGo(slot0)
+	gohelper.addChild(ViewMgr.instance:getContainer(ViewName.FightView).rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.Dice), slot0._resultFriendGO)
+
+	slot4 = slot0._resultFriendGO:GetComponent(gohelper.Type_RectTransform)
+	slot4.pivot = Vector2(1, 1)
+	slot4.anchorMin = Vector2(1, 1)
+	slot4.anchorMax = Vector2(1, 1)
+
+	recthelper.setAnchor(slot4, -40, 0)
+	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.Dice)
+end
+
 function slot0._delayFirstRoundDone(slot0)
 	TaskDispatcher.cancelTask(slot0._delayFirstRoundDone, slot0)
 	FightController.instance:dispatchEvent(FightEvent.OnDiceEnd)
+	gohelper.setActive(slot0._movieGO, false)
 end
 
 function slot0._delayNotFirstRoundDone(slot0)

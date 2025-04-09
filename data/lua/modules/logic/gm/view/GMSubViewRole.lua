@@ -13,6 +13,11 @@ function slot0.initViewContent(slot0)
 
 	GMSubViewBase.initViewContent(slot0)
 
+	slot0._loginOpenMainThumbnail = slot0:addToggle("L0", "登录打开缩略页")
+	slot0._loginOpenMainThumbnail.isOn = PlayerPrefsHelper.getNumber(PlayerPrefsKey.GMToolViewOpenMainThumbnail, 0) == 1
+
+	slot0._loginOpenMainThumbnail:AddOnValueChanged(slot0._onMainThumbnailToggleChanged, slot0)
+
 	slot0._inpDuration = slot0:addInputText("L1", "", "刷新间隔", nil, , {
 		w = 200
 	})
@@ -26,6 +31,13 @@ function slot0.initViewContent(slot0)
 
 	slot0:addButton("L2", "停止测试皮肤", slot0._onStopShowAllSkins, slot0)
 	slot0:addButton("L3", "梦游结算界面测试皮肤", slot0._onClickShowWeekWalk_2AllSkins, slot0)
+end
+
+function slot0._onMainThumbnailToggleChanged(slot0)
+	slot1 = slot0._loginOpenMainThumbnail.isOn and 1 or 0
+
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewOpenMainThumbnail, slot1)
+	GameFacade.showToast(2674, slot1 == 1 and "设置登录打开缩略页开启" or "设置登录打开缩略页关闭")
 end
 
 function slot0._onStopShowAllSkins(slot0)
