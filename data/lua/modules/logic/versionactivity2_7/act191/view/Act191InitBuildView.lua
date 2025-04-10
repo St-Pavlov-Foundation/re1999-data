@@ -17,34 +17,25 @@ end
 function slot0.removeEvents(slot0)
 end
 
-function slot0._onEscBtnClick(slot0)
-	slot0:closeThis()
-end
-
 function slot0._editableInitView(slot0)
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
-
 	slot0.actId = Activity191Model.instance:getCurActId()
-end
-
-function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
-	slot0:refrshUI()
+	slot0:refreshUI()
 end
 
 function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0.nextStep, slot0)
 	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
 end
 
 function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0.nextStep, slot0)
 	slot0:clearIconList()
 end
 
-function slot0.refrshUI(slot0)
+function slot0.refreshUI(slot0)
 	slot0:initBuildSelectItem()
 
 	slot0._scrollbuild.horizontalNormalizedPosition = 0
@@ -100,12 +91,12 @@ function slot0._onInitBuildItem(slot0, slot1, slot2, slot3)
 end
 
 function slot0.selectInitBuild(slot0, slot1)
-	Activity191Rpc.instance:sendSelect191InitBuildRequest(slot0.actId, slot0.buildCoList[slot1].style, slot0.forcePickReply, slot0)
+	Activity191Rpc.instance:sendSelect191InitBuildRequest(slot0.actId, slot0.buildCoList[slot1].style, slot0.buildReply, slot0)
 
 	slot0.selectIndex = slot1
 end
 
-function slot0.forcePickReply(slot0, slot1, slot2)
+function slot0.buildReply(slot0, slot1, slot2)
 	if slot2 == 0 then
 		if slot0.selectIndex and slot0.bagAnimList[slot3] then
 			slot0.bagAnimList[slot3]:Play(UIAnimationName.Close)
@@ -115,18 +106,20 @@ function slot0.forcePickReply(slot0, slot1, slot2)
 		TaskDispatcher.runDelay(slot0.nextStep, slot0, 0.67)
 
 		slot0.selectIndex = nil
+
+		Activity191Helper.setPlayerPrefs(-999, "Act191GameCostTime", Activity191Helper.getPlayerPrefs(-999, "Act191GameCostTime", 0) + 1)
 	end
 end
 
 function slot0.clickCollection(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.Act191ItemTipView, {
+	Activity191Controller.instance:openCollectionTipView({
 		itemId = slot1
 	})
 end
 
 function slot0.nextStep(slot0)
 	Activity191Controller.instance:enterGame()
-	slot0:closeThis()
+	ViewMgr.instance:closeView(slot0.viewName)
 end
 
 return slot0

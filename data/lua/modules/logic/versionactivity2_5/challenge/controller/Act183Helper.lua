@@ -533,4 +533,20 @@ function slot0.generateBossRush_ChallengeCurrencyReplaceViewParams()
 	}
 end
 
+function slot0.calcEpisodeTotalConditionCount(slot0)
+	slot2 = 0
+
+	if not string.nilorempty(DungeonConfig.instance:getEpisodeAdvancedCondition(slot0)) then
+		slot2 = string.splitToNumber(slot1, "|") and #slot3 or 0
+	end
+
+	slot4 = 0
+
+	if not string.nilorempty(DungeonConfig.instance:getEpisodeCondition(slot0)) then
+		slot4 = GameUtil.splitString2(slot3, false, "|", "#") and #slot5 or 0
+	end
+
+	return slot2 + slot4, slot4, slot2
+end
+
 return slot0

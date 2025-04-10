@@ -1,12 +1,5 @@
 [
   {
-    "id": 10101,
-    "coin": 4,
-    "num": 1,
-    "type": "mixtureShop",
-    "groupType": "role"
-  },
-  {
     "id": 10102,
     "coin": 5,
     "num": 1,
@@ -47,13 +40,6 @@
     "num": 1,
     "type": "mixtureShop",
     "groupType": "collection"
-  },
-  {
-    "id": 10201,
-    "coin": 4,
-    "num": 1,
-    "type": "roleShop",
-    "groupType": "role"
   },
   {
     "id": 10202,
@@ -190,135 +176,30 @@
   },
   {
     "id": 10401,
-    "coin": 8,
+    "coin": 6,
     "num": 1,
-    "type": "tagShop1",
+    "type": "tagShop",
     "groupType": "role"
   },
   {
     "id": 10402,
-    "coin": 10,
+    "coin": 8,
     "num": 1,
-    "type": "tagShop1",
+    "type": "tagShop",
     "groupType": "role"
   },
   {
     "id": 10403,
-    "coin": 15,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "collection"
-  },
-  {
-    "id": 10411,
-    "coin": 5,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10412,
-    "coin": 6,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10413,
-    "coin": 8,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10414,
     "coin": 10,
     "num": 1,
-    "type": "tagShop1",
+    "type": "tagShop",
     "groupType": "role"
   },
   {
-    "id": 10415,
+    "id": 10404,
     "coin": 15,
     "num": 1,
-    "type": "tagShop1",
-    "groupType": "collection"
-  },
-  {
-    "id": 10421,
-    "coin": 6,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10422,
-    "coin": 8,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10423,
-    "coin": 10,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10424,
-    "coin": 15,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "collection"
-  },
-  {
-    "id": 10431,
-    "coin": 5,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10432,
-    "coin": 6,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10433,
-    "coin": 8,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10441,
-    "coin": 6,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10442,
-    "coin": 8,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10443,
-    "coin": 10,
-    "num": 1,
-    "type": "tagShop1",
-    "groupType": "role"
-  },
-  {
-    "id": 10444,
-    "coin": 15,
-    "num": 1,
-    "type": "tagShop1",
+    "type": "tagShop",
     "groupType": "collection"
   }
 ]

@@ -44,9 +44,23 @@ function slot0.refreshUI(slot0)
 		slot6.buffIcon:LoadImage(ResUrl.getAct174BuffIcon(slot7.icon))
 
 		slot6.txtName.text = slot7.title
-		slot6.txtDesc.text = SkillHelper.buildDesc(slot7.desc)
 
-		SkillHelper.addHyperLinkClick(slot6.txtDesc)
+		if lua_activity191_effect.configDict[tonumber(slot7.effects)] then
+			if slot10.type == Activity191Enum.EffectType.EnhanceHero then
+				slot6.txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot7.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot10.typeParam)
+
+				SkillHelper.addHyperLinkClick(slot6.txtDesc, Activity191Helper.clickHyperLinkDestiny)
+			elseif slot10.type == Activity191Enum.EffectType.EnhanceItem then
+				slot6.txtDesc.text = Activity191Helper.buildDesc(slot8, Activity191Enum.HyperLinkPattern.EnhanceItem, slot10.typeParam .. "#")
+
+				SkillHelper.addHyperLinkClick(slot6.txtDesc, Activity191Helper.clickHyperLinkItem)
+			else
+				slot6.txtDesc.text = slot8
+			end
+		else
+			slot6.txtDesc.text = slot8
+		end
+
 		gohelper.setActive(slot6.btnFresh, (slot0.nodeDetailMo.enhanceNumList[slot4] or 0) < slot0.maxFreshNum)
 	end
 end

@@ -27,6 +27,31 @@ function slot0.onGetAct192Info(slot0, slot1)
 	slot0:dispatchEvent(CooperGarlandEvent.OnAct192InfoUpdate)
 end
 
+function slot0.saveGameProgress(slot0, slot1, slot2, slot3)
+	if not CooperGarlandModel.instance:isAct192Open(slot3) then
+		return
+	end
+
+	if not CooperGarlandModel.instance:isUnlockEpisode(CooperGarlandModel.instance:getAct192Id(), slot1) then
+		GameFacade.showToast(ToastEnum.Activity142PreEpisodeNotClear)
+
+		return
+	end
+
+	Activity192Rpc.instance:sendAct192FinishEpisodeRequest(slot5, slot1, tostring(slot2), slot0._onSaveGameProgress, slot0)
+end
+
+function slot0._onSaveGameProgress(slot0, slot1, slot2, slot3)
+	if slot2 ~= 0 then
+		return
+	end
+
+	slot4 = slot3.activityId
+	slot5 = slot3.episodeId
+
+	CooperGarlandModel.instance:updateAct192Episode(slot4, slot5, CooperGarlandModel.instance:isFinishedEpisode(slot4, slot5), slot3.progress)
+end
+
 function slot0.finishEpisode(slot0, slot1, slot2)
 	if not CooperGarlandModel.instance:isAct192Open(slot2) then
 		return
@@ -40,25 +65,29 @@ function slot0.finishEpisode(slot0, slot1, slot2)
 
 	if CooperGarlandModel.instance:isFinishedEpisode(slot4, slot1) then
 		slot0:_playStoryClear(slot1)
+
+		if CooperGarlandConfig.instance:isExtraEpisode(slot4, slot1) then
+			slot0:saveGameProgress(slot1, CooperGarlandEnum.Const.DefaultGameProgress, true)
+		end
 	else
-		Activity192Rpc.instance:sendAct192FinishEpisodeRequest(slot4, slot1)
+		Activity192Rpc.instance:sendAct192FinishEpisodeRequest(slot4, slot1, nil, slot0.onFinishEpisode, slot0)
 	end
 end
 
-function slot0.onFinishEpisode(slot0, slot1)
-	if not slot1 then
+function slot0.onFinishEpisode(slot0, slot1, slot2, slot3)
+	if slot2 ~= 0 then
 		return
 	end
 
-	slot2 = slot1.activityId
+	slot4 = slot3.activityId
 
-	CooperGarlandModel.instance:updateAct192Episode(slot2, slot1.episodeId, true)
+	CooperGarlandModel.instance:updateAct192Episode(slot4, slot3.episodeId, true, slot3.progress)
 
-	if slot2 == CooperGarlandModel.instance:getAct192Id() then
-		slot0:_playStoryClear(slot3)
+	if slot4 == CooperGarlandModel.instance:getAct192Id() then
+		slot0:_playStoryClear(slot5)
 	end
 
-	slot0:dispatchEvent(CooperGarlandEvent.FirstFinishEpisode, slot2, slot3)
+	slot0:dispatchEvent(CooperGarlandEvent.FirstFinishEpisode, slot4, slot5)
 end
 
 function slot0._playStoryClear(slot0, slot1)
@@ -200,7 +229,7 @@ end
 function slot0.changeControlMode(slot0)
 	slot0:resetJoystick()
 	slot0:resetPanelBalance(0, true)
-	CooperGarlandGameModel.instance:setIsJoystick(not CooperGarlandGameModel.instance:getIsJoystick())
+	CooperGarlandGameModel.instance:setControlMode(CooperGarlandGameModel.instance:getControlMode() % CooperGarlandEnum.Const.JoystickModeLeft + 1)
 	slot0:dispatchEvent(CooperGarlandEvent.OnChangeControlMode)
 end
 
@@ -221,9 +250,14 @@ function slot0.removeComponent(slot0, slot1, slot2)
 end
 
 function slot0.enterNextRound(slot0)
-	CooperGarlandGameModel.instance:changeRound(CooperGarlandGameModel.instance:getGameRound() + 1)
+	slot2 = CooperGarlandGameModel.instance:getGameRound() + 1
+
+	if CooperGarlandConfig.instance:isExtraEpisode(CooperGarlandModel.instance:getAct192Id(), CooperGarlandGameModel.instance:getEpisodeId()) then
+		slot0:saveGameProgress(slot4, slot2, true)
+	end
+
+	CooperGarlandGameModel.instance:changeRound(slot2)
 	CooperGarlandGameEntityMgr.instance:changeMap()
-	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_level_next)
 	slot0:dispatchEvent(CooperGarlandEvent.OnEnterNextRound)
 end
 
@@ -317,7 +351,7 @@ function slot0._triggerStory(slot0, slot1)
 		return
 	end
 
-	if GuideModel.instance:isGuideFinish(slot2) then
+	if not GuideModel.instance:isGuideRunning(slot2) or GuideController.instance:isForbidGuides() then
 		return
 	end
 

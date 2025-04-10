@@ -35,7 +35,19 @@ function slot0.getCardColor(slot0, slot1, slot2)
 	return FightEnum.CardColor.None
 end
 
+function slot0.checkIsMySideBuff(slot0, slot1)
+	if not slot1 then
+		return true
+	end
+
+	return FightDataHelper.entityMgr:getById(slot1.entityId).side == FightEnum.EntitySide.MySide
+end
+
 function slot0.setLYCountBuff(slot0, slot1)
+	if not slot0:checkIsMySideBuff(slot1) then
+		return
+	end
+
 	slot0.countBuff = slot1
 
 	slot0:refreshPointList()
@@ -43,6 +55,10 @@ function slot0.setLYCountBuff(slot0, slot1)
 end
 
 function slot0.setLYChangeTriggerBuff(slot0, slot1)
+	if not slot0:checkIsMySideBuff(slot1) then
+		return
+	end
+
 	slot0.changeTriggerBuff = slot1
 
 	slot0:refreshShowAreaSize()

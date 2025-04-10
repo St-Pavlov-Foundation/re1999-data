@@ -624,9 +624,9 @@
   },
   {
     "heroResName": "307904_6",
-    "effectCompName": "CommonRoleEffect",
-    "motion": "b_idle|b_gaoju|b_chuimie",
-    "node": "Drawables/bone1/effect-Bone/roleeffect_6_idle1|Drawables/bone1/effect-Bone/roleeffect_6_gj1|Drawables/bone1/effect-Bone/roleeffect_6_cm1",
+    "effectCompName": "RoleEffect307904_6",
+    "motion": "b_idle|b_gaoju|b_chuimie|b_shishu",
+    "node": "Drawables/bone1/effect-Bone/roleeffect_6_idle1|Drawables/bone1/effect-Bone/roleeffect_6_gj1|Drawables/bone1/effect-Bone/roleeffect_6_cm1|Drawables/bone1/effect-Bone/roleeffect_6_gj1#Drawables/bone1/effect-Bone/roleeffect_6_ss1",
     "everNode": ""
   },
   {

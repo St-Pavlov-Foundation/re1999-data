@@ -23,9 +23,9 @@ function slot0.initData(slot0)
 		slot0.moList[#slot0.moList + 1] = slot7
 	end
 
-	slot5 = slot0.moList
+	slot5 = Activity191Enum.SortRule.Down
 
-	slot0:sortData(Activity191Enum.SortRule.Down, slot5)
+	slot0:filterData(nil, slot5)
 
 	for slot5, slot6 in ipairs(slot0._scrollViews) do
 		slot6:selectCell(1, false)
@@ -64,10 +64,22 @@ function slot0.findEmptyPos(slot0)
 	return 0
 end
 
-function slot0.sortData(slot0, slot1, slot2)
-	slot2 = slot2 or slot0:getList()
+function slot0.filterData(slot0, slot1, slot2)
+	slot3 = nil
 
-	table.sort(slot2, function (slot0, slot1)
+	if slot1 then
+		slot3 = {}
+
+		for slot7, slot8 in ipairs(slot0.moList) do
+			if tabletool.indexOf(string.split(slot8.config.tag, "#"), slot1) then
+				slot3[#slot3 + 1] = slot8
+			end
+		end
+	else
+		slot3 = tabletool.copy(slot0.moList)
+	end
+
+	table.sort(slot3, function (slot0, slot1)
 		if uv0:getHeroTeamPos(slot0.heroId) == 0 then
 			slot2 = 999
 		end
@@ -77,7 +89,13 @@ function slot0.sortData(slot0, slot1, slot2)
 		end
 
 		if slot2 == slot3 then
-			if uv1 == Activity191Enum.SortRule.Down then
+			if slot0.config.quality == slot1.config.quality then
+				if slot0.config.exLevel == slot1.config.exLevel then
+					return slot0.config.id < slot1.config.id
+				else
+					return slot1.config.exLevel < slot0.config.exLevel
+				end
+			elseif uv1 == Activity191Enum.SortRule.Down then
 				return slot1.config.quality < slot0.config.quality
 			else
 				return slot0.config.quality < slot1.config.quality
@@ -86,7 +104,7 @@ function slot0.sortData(slot0, slot1, slot2)
 			return slot2 < slot3
 		end
 	end)
-	slot0:setList(slot2)
+	slot0:setList(slot3)
 end
 
 function slot0.getHeroIdMap(slot0)

@@ -15,6 +15,12 @@ end
 function slot0._onStep(slot0, slot1)
 	if slot0.storyId and slot0.stepId and slot0.storyId == slot1.storyId and slot0.stepId == slot1.stepId then
 		StoryController.instance:unregisterCallback(StoryEvent.RefreshStep, slot0._onStep, slot0)
+
+		if StoryModel.instance:isStoryAuto() then
+			StoryModel.instance:setStoryAuto(false)
+			StoryController.instance:dispatchEvent(StoryEvent.Auto)
+		end
+
 		slot0:onDone(true)
 	end
 end

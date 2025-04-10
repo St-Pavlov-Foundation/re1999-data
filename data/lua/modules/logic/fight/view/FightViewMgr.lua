@@ -43,9 +43,9 @@ function slot0.onBloodPoolCreate(slot0, slot1)
 end
 
 function slot0._showSimplePolarizationLevel(slot0)
-	for slot5, slot6 in pairs(FightDataHelper.entityMgr:getAllEntityData()) do
-		for slot11, slot12 in ipairs(slot6:getBuffList()) do
-			if slot12.buffId == 6240501 then
+	if FightDataHelper.entityMgr:getMyVertin() then
+		for slot6, slot7 in ipairs(slot1:getBuffList()) do
+			if slot7.buffId == 6240501 then
 				slot0:_onRefreshSimplePolarizationLevel()
 
 				return
@@ -55,7 +55,7 @@ function slot0._showSimplePolarizationLevel(slot0)
 end
 
 function slot0._onBuffUpdate(slot0, slot1, slot2, slot3, slot4)
-	if slot3 == 6240501 then
+	if slot3 == 6240501 and slot1 == FightEntityScene.MySideId then
 		slot0:_onRefreshSimplePolarizationLevel()
 	end
 end
@@ -65,9 +65,9 @@ function slot0._onRefreshSimplePolarizationLevel(slot0)
 		return
 	end
 
-	slot0._simplePolarizationLevel = slot0:com_openSubView(FightSimplePolarizationLevelView, "ui/viewres/fight/fightsimplepolarizationlevelview.prefab", gohelper.findChild(slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.Melody), "level"))
+	slot0._simplePolarizationLevel = slot0:com_openSubView(FightSimplePolarizationLevelView, "ui/viewres/fight/fightsimplepolarizationlevelview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.MelodyLevel))
 
-	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.Melody)
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.MelodyLevel)
 end
 
 function slot0._onRefreshPlayerFinisherSkill(slot0)
@@ -75,9 +75,9 @@ function slot0._onRefreshPlayerFinisherSkill(slot0)
 		return
 	end
 
-	slot0._playerFinisherSkill = slot0:com_openSubView(FightPlayerFinisherSkillView, "ui/viewres/fight/fightplayerfinisherskillview.prefab", gohelper.findChild(slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.Melody), "skill"))
+	slot0._playerFinisherSkill = slot0:com_openSubView(FightPlayerFinisherSkillView, "ui/viewres/fight/fightplayerfinisherskillview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.MelodySkill))
 
-	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.Melody)
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.MelodySkill)
 end
 
 function slot0._onShowDouQuQuXianHouShou(slot0, slot1)

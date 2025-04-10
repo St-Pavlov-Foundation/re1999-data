@@ -184,6 +184,12 @@ function slot0.refreshStoreContent(slot0)
 			end
 
 			slot9:updateInfo(slot6, slot8)
+		elseif slot0.storeItemList[slot7] then
+			slot0.storeItemList[slot7]:hideStoreItem()
+			slot0.storeItemList[slot7]:onClose()
+			slot0.storeItemList[slot7]:onDestroy()
+
+			slot0.storeItemList[slot7] = nil
 		end
 	end
 
@@ -230,6 +236,8 @@ function slot0.refreshTime(slot0)
 		if slot3 > 0 then
 			slot0._txtTime.text = string.format(luaLang("v1a4_bossrush_scoreview_txt_closetime"), TimeUtil.SecondToActivityTimeFormat(slot3))
 		end
+	else
+		gohelper.setActive(slot0._txtTime.gameObject, false)
 	end
 end
 
@@ -278,6 +286,10 @@ function slot0.checkEnableTag(slot0)
 		end
 
 		return
+	end
+
+	for slot4, slot5 in pairs(slot0._tagList) do
+		gohelper.setActive(slot5.go, slot0.itemNormalized[slot4])
 	end
 
 	for slot4, slot5 in ipairs(slot0.showTagIndex) do

@@ -23,6 +23,7 @@ function slot0.onInit(slot0)
 	slot0._rigidBody.angularDrag = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.BallAngularDrag, true)
 
 	slot0:setVisible()
+	AudioMgr.instance:setRTPCValue(AudioEnum2_7.CooperGarlandBallRTPC, 0)
 	slot0:playLoopAudio(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
 end
 
@@ -51,21 +52,21 @@ function slot0.refreshKeyStatus(slot0)
 	slot0:playLoopAudio(slot1 and AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_fire_loop or AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
 end
 
-function slot0.setVisible(slot0, slot1)
-	slot2 = {
+function slot0.setVisible(slot0, slot1, slot2)
+	slot3 = {
 		z = 0,
 		x = 0,
 		y = 0
 	}
 
 	if slot1 then
-		slot2 = slot0.ballRoot.parent:InverseTransformPoint(slot1)
+		slot3 = slot0.ballRoot.parent:InverseTransformPoint(slot1)
 		slot0._showWorldPos = slot1
 	end
 
-	slot2.z = CooperGarlandGameEntityMgr.instance:getBallPosZ()
+	slot3.z = CooperGarlandGameEntityMgr.instance:getBallPosZ()
 
-	transformhelper.setLocalPos(slot0.ballRoot, slot2.x, slot2.y, slot2.z)
+	transformhelper.setLocalPos(slot0.ballRoot, slot3.x, slot3.y, slot3.z)
 	transformhelper.setLocalPos(slot0.trans, 0, 0, 0)
 
 	slot0._isVisible = slot1 and true or false
@@ -74,7 +75,7 @@ function slot0.setVisible(slot0, slot1)
 	slot0:checkFreeze()
 
 	if slot0._isVisible then
-		slot0:playBornVx()
+		slot0:playBornVx(slot2)
 		slot0:refreshKeyStatus()
 	end
 end
@@ -118,7 +119,7 @@ function slot0.reset(slot0)
 	slot0._recordSpeed = nil
 
 	slot0:refreshKeyStatus()
-	slot0:setVisible(slot0._showWorldPos)
+	slot0:setVisible(slot0._showWorldPos, true)
 end
 
 function slot0.isCanTriggerComp(slot0)
@@ -129,10 +130,13 @@ function slot0.getVelocity(slot0)
 	return slot0._rigidBody and slot0._rigidBody.velocity or Vector3.zero
 end
 
-function slot0.playBornVx(slot0)
+function slot0.playBornVx(slot0, slot1)
 	gohelper.setActive(slot0._goBornVx, false)
 	gohelper.setActive(slot0._goBornVx, true)
-	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_reset)
+
+	if slot1 then
+		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_reset)
+	end
 end
 
 function slot0.playDieVx(slot0)

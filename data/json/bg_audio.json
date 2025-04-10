@@ -1783,5 +1783,25 @@
     "id": 3270023,
     "eventName": "play_ui_checkpoint_noise_cosmic",
     "bankName": "activtiy_yuzhou_combataudio_noise"
+  },
+  {
+    "id": 3270031,
+    "eventName": "play_2_7_yuzhou_ui_checkpoint_amb_space",
+    "bankName": "ui_checkpoint_2_7_yuzhou_amb"
+  },
+  {
+    "id": 3270032,
+    "eventName": "stop_2_7_yuzhou_ui_checkpoint_amb_space",
+    "bankName": "ui_checkpoint_2_7_yuzhou_amb"
+  },
+  {
+    "id": 3270033,
+    "eventName": "play_2_7_yuzhou_ui_checkinspace",
+    "bankName": "ui_checkpoint_2_7_yuzhou_amb"
+  },
+  {
+    "id": 3270034,
+    "eventName": "play_2_7_yuzhou_ui_checkoutspace",
+    "bankName": "ui_checkpoint_2_7_yuzhou_amb"
   }
 ]

@@ -133,7 +133,7 @@ function slot0.initHeroList(slot0)
 		table.insert(slot0._heroItemPosList, slot8.go.transform)
 		slot8:setParent(slot0.heroPosTrList[slot4])
 		CommonDragHelper.instance:registerDragObj(slot8.go, slot0._onBeginDrag, nil, slot0._onEndDrag, slot0._checkCanDrag, slot0, slot4)
-		gohelper.setActive(gohelper.findChild(slot5, "go_leaderframe"), Act183Helper.isTeamLeader(slot0._episodeId, slot4))
+		slot8:setBgLeaderTran(gohelper.findChild(slot5, "go_leader").transform)
 	end
 end
 

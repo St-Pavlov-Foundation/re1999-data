@@ -1,6 +1,7 @@
 module("modules.configs.excel2json.lua_activity191_item", package.seeall)
 
 slot1 = {
+	rare = 6,
 	name = 3,
 	id = 1,
 	icon = 5,

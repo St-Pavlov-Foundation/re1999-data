@@ -60,10 +60,6 @@ function slot0.getSnapShot(slot0)
 end
 
 function slot0.getTowerTrialHeros(slot0)
-	if TowerConfig.instance:checkIsPermanentFinalStageEpisode(slot0) then
-		return ""
-	end
-
 	return TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason()) and slot2.heroIds
 end
 
@@ -91,29 +87,21 @@ function slot0.setTowerHeroListData(slot0)
 					slot7 = slot8.trialCo.id
 				end
 
-				slot11 = tabletool.indexOf(string.splitToNumber(TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason()).heroIds, "|"), slot7) and tonumber(slot7) > 0
-				slot12 = slot11 and lua_hero_trial.configDict[slot7][0] or {}
-				slot13 = slot11 and tostring(tonumber(slot12.id .. "." .. slot12.trialTemplate) - 1099511627776.0) or "0"
+				slot9 = TowerModel.instance:getTrialHeroSeason() > 0
+				slot12 = slot9 and tabletool.indexOf(slot9 and string.splitToNumber(TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason()).heroIds, "|") or {}, slot7) and tonumber(slot7) > 0
+				slot13 = slot12 and lua_hero_trial.configDict[slot7][0] or {}
+				slot1.heroList[slot5] = slot12 and tostring(tonumber(slot13.id .. "." .. slot13.trialTemplate) - 1099511627776.0) or "0"
 
-				if TowerConfig.instance:checkIsPermanentFinalStageEpisode(slot0) then
-					slot1.heroList[slot5] = "0"
-					slot1.trialDict = {}
-
-					HeroGroupTrialModel.instance:clear()
-				else
-					slot1.heroList[slot5] = slot13
-
-					if slot11 then
-						if not slot1.trialDict then
-							slot1.trialDict = {}
-						end
-
-						if not slot1.trialDict[slot5] then
-							slot1.trialDict[slot5] = {}
-						end
-
-						slot1.trialDict[slot5][1] = slot12.id
+				if slot12 then
+					if not slot1.trialDict then
+						slot1.trialDict = {}
 					end
+
+					if not slot1.trialDict[slot5] then
+						slot1.trialDict[slot5] = {}
+					end
+
+					slot1.trialDict[slot5][1] = slot13.id
 				end
 			end
 		end

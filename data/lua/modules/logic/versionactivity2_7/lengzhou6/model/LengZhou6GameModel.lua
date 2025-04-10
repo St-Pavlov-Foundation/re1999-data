@@ -74,12 +74,12 @@ function slot0.initByServerData(slot0)
 		slot0._playerEntity = PlayerEntity.New()
 
 		if slot1.playerId then
-			slot6 = slot1.playerSkillList
+			slot0:initPlayer(slot2, slot1.playerSkillList)
 
-			slot0:initPlayer(slot2, slot6)
-
-			for slot6 = 1, #slot1.playerSkillList do
-				slot0:setPlayerSelectSkillId(slot6, slot1.playerSkillList[slot6])
+			if slot1.playerSkillList ~= nil then
+				for slot6 = 1, #slot1.playerSkillList do
+					slot0:setPlayerSelectSkillId(slot6, slot1.playerSkillList[slot6])
+				end
 			end
 
 			slot0._playerEntity:setHp(slot1.playerHp)
@@ -101,7 +101,9 @@ function slot0.initByServerData(slot0)
 		slot0:setEndLessModelLayer(slot1.endLessLayer)
 		slot0:setEndLessBattleProgress(slot1.endLessBattleProgress)
 
-		slot0._isFirstEnterLayer = false
+		if slot1.endLessBattleProgress == LengZhou6Enum.BattleProgress.selectFinish or slot1.round ~= LengZhou6Enum.DefaultEndLessBeginRound then
+			slot0._isFirstEnterLayer = false
+		end
 	end
 end
 
@@ -164,7 +166,7 @@ function slot0.playerIsWin(slot0)
 		return false
 	end
 
-	return slot0._enemyEntity:getHp() <= 0
+	return slot0._enemyEntity:getHp() <= 0 and slot0._playerEntity:getHp() > 0 and slot0._round > 0
 end
 
 function slot0.enemySettle(slot0)
@@ -297,6 +299,7 @@ end
 
 function slot0.clear(slot0)
 	slot0._endLessModelLayer = nil
+	slot0._isFirstEnterLayer = true
 	slot0._episodeConfig = nil
 	slot0._playerEntity = nil
 	slot0._enemyEntity = nil
@@ -307,6 +310,8 @@ function slot0.clear(slot0)
 	slot0._recordServerData = nil
 	slot0._recordLayerId = nil
 	slot0._playerSelectSkillIds = nil
+
+	LengZhou6Config.instance:clearLevelCache()
 end
 
 function slot0.setEndLessModelLayer(slot0, slot1)
@@ -328,12 +333,16 @@ function slot0.getEndLessBattleProgress(slot0)
 end
 
 function slot0.calEnemyId(slot0)
-	if (slot0:getEndLessModelLayer() or 1) <= LengZhou6Config.instance:getEliminateBattleCost(9) and LengZhou6Config.instance:getEnemyRandomIdsConfig(slot1) then
-		slot4 = slot3[math.random(1, #slot3)]
+	if (slot0:getEndLessModelLayer() or 1) <= LengZhou6Config.instance:getEliminateBattleCost(9) then
+		if LengZhou6Config.instance:getEnemyRandomIdsConfig(slot1) then
+			slot4 = slot3[math.random(1, #slot3)]
 
-		LengZhou6Config.instance:setSelectEnemyRandomId(slot1, slot4)
+			LengZhou6Config.instance:setSelectEnemyRandomId(slot1, slot4)
 
-		return slot4
+			return slot4
+		else
+			return LengZhou6Enum.defaultEnemy
+		end
 	end
 
 	slot3 = slot1 - slot2
@@ -371,7 +380,24 @@ function slot0.getSelectSkillId(slot0)
 	return slot0._playerSelectSkillIds
 end
 
+function slot0.isSelectSkill(slot0, slot1)
+	if slot0._playerSelectSkillIds == nil then
+		return false
+	end
+
+	for slot5, slot6 in pairs(slot0._playerSelectSkillIds) do
+		if slot6 == slot1 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function slot0.resetSelectSkillId(slot0)
+	if slot0._playerSelectSkillIds then
+		tabletool.clear(slot0._playerSelectSkillIds)
+	end
 end
 
 function slot0.setPlayerSelectSkillId(slot0, slot1, slot2)
@@ -380,20 +406,6 @@ function slot0.setPlayerSelectSkillId(slot0, slot1, slot2)
 	end
 
 	slot0._playerSelectSkillIds[slot1] = slot2
-end
-
-function slot0.playerSkillIsSelect(slot0, slot1)
-	if slot0._playerSelectSkillIds == nil then
-		return false
-	end
-
-	for slot5 = 1, #slot0._playerSelectSkillIds do
-		if slot0._playerSelectSkillIds[slot5] == slot1 then
-			return true
-		end
-	end
-
-	return false
 end
 
 function slot0.calRound(slot0)
@@ -415,7 +427,7 @@ function slot0.getSkillEffectUp(slot0, slot1)
 		return 0
 	end
 
-	return LengZhou6Config.instance:getEliminateBattleEndlessMode(math.min(slot0:getEndLessModelLayer() or 1, LengZhou6Config.instance:getEliminateBattleCost(9))) and slot5[slot1] and slot5[slot1] or 0
+	return LengZhou6Config.instance:getEliminateBattleEndlessMode(math.min(slot0:getEndLessModelLayer() or 1, LengZhou6Config.instance:getEliminateBattleCost(9))) and slot5[slot1] or 0
 end
 
 function slot0.calEnemyHpUp(slot0)

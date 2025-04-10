@@ -6296,7 +6296,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 465010892,
+    "audioId": 464020892,
     "dieAnim": ""
   },
   {
@@ -6305,7 +6305,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 465010992,
+    "audioId": 464030192,
     "dieAnim": ""
   },
   {
@@ -6314,7 +6314,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 467013892,
+    "audioId": 462013292,
     "dieAnim": ""
   },
   {
@@ -6323,7 +6323,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 467013992,
+    "audioId": 467010692,
     "dieAnim": ""
   },
   {
@@ -6332,7 +6332,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 469012892,
+    "audioId": 469020192,
     "dieAnim": ""
   },
   {
@@ -6417,6 +6417,15 @@
     "dieAnim": ""
   },
   {
+    "skinId": 311702,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431170193,
+    "dieAnim": ""
+  },
+  {
     "skinId": 310803,
     "actionName": "born",
     "effect": "buff/born/pre_v2a7_bkle_born",
@@ -6432,6 +6441,42 @@
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
     "audioId": 431080392,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 311601,
+    "actionName": "born",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431160191,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 311601,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431160192,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 6103011,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 461030192,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 4131011,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 441310192,
     "dieAnim": ""
   }
 ]

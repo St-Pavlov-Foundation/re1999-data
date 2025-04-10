@@ -1356,8 +1356,8 @@ function slot0._refreshPassiveDetail(slot0)
 end
 
 function slot0._checkDestinyEffect(slot0, slot1)
-	if slot1 and slot0._entityMO and HeroModel.instance:getByHeroId(slot0._entityMO:getCO().id) and slot3.destinyStoneMo then
-		slot1 = slot3.destinyStoneMo:_replaceSkill(slot1)
+	if slot1 and slot0._entityMO and slot0._entityMO:getHeroDestinyStoneMo() then
+		slot1 = slot2:_replaceSkill(slot1)
 	end
 
 	return slot1

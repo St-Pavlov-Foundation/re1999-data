@@ -26,4 +26,11 @@ function slot0.getKey(slot0, slot1)
 	return slot0[slot1]
 end
 
+function slot0.isInit(slot0, slot1)
+	return slot0.initDict[slot1]
+end
+
+function slot0.setInit(slot0, slot1)
+end
+
 return slot0

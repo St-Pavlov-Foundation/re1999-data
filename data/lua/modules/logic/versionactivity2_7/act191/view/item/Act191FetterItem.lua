@@ -36,7 +36,7 @@ function slot0.setData(slot0, slot1, slot2)
 	end
 
 	ZProj.UGUIHelper.SetGrayscale(slot0.imageIcon.gameObject, slot1.level == 0)
-	Activity191Helper.setFetterIcon(slot0.imageIcon, slot3.icon)
+	Activity191Helper.setFetterIcon(slot0.imageIcon, slot0.config.icon)
 end
 
 function slot0.onClick(slot0)

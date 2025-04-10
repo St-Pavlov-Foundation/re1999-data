@@ -42,7 +42,7 @@ slot0.PlayerPrefsKey = {
 	ActivityDungeonSpecialEpisodeLastSelectMode = "ActivityDungeonSpecialEpisodeLastSelectMode"
 }
 slot0.SceneRootName = "VersionActivity2_7DungeonMapScene"
-slot0.EpisodeItemMinWidth = 300
+slot0.EpisodeItemMinWidth = 250
 slot0.DungeonMapCameraSize = 5
 slot0.MaxHoleNum = 5
 slot0.HoleHalfWidth = 3.5

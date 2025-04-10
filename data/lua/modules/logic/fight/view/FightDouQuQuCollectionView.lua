@@ -76,8 +76,19 @@ function slot0.refreshCollection(slot0)
 end
 
 function slot0.onItemClick(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.Act191ItemTipView, {
-		itemId = slot1
+	slot2 = false
+
+	for slot6, slot7 in ipairs(slot0.customData.updataCollectionIds) do
+		if slot7 == slot1 then
+			slot2 = true
+
+			break
+		end
+	end
+
+	Activity191Controller.instance:openCollectionTipView({
+		itemId = slot1,
+		enhance = slot2
 	})
 end
 

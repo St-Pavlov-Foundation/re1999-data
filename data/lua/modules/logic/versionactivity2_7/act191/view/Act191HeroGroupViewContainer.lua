@@ -37,10 +37,7 @@ function slot0._closeCallback(slot0)
 	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity2_7EnterView)
 		VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(function ()
-			Activity191Controller.instance:openMainView({
-				exitFromFight = false,
-				actId = VersionActivity2_7Enum.ActivityId.Act191
-			})
+			Activity191Controller.instance:openMainView()
 		end, nil, VersionActivity2_7Enum.ActivityId.Act191, true)
 	end)
 end

@@ -17,7 +17,7 @@ function slot0.onClickStress(slot0)
 		return
 	end
 
-	if not string.nilorempty(FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183]) and cjson.decode(slot2).stressIdentity[slot0.entityId] then
+	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183] and slot2.stressIdentity[slot0.entityId] then
 		StressTipController.instance:openAct183StressTip(slot3)
 
 		return

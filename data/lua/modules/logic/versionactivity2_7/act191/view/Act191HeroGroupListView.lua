@@ -3,7 +3,7 @@ module("modules.logic.versionactivity2_7.act191.view.Act191HeroGroupListView", p
 slot0 = class("Act191HeroGroupListView", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0.txtTeamLvlM = gohelper.findChildText(slot0.viewGO, "herogroupcontain/mainTitle/txt_TeamLvlM")
+	slot0.imageLevel = gohelper.findChildImage(slot0.viewGO, "herogroupcontain/mainTitle/image_Level")
 	slot0.heroContainer = gohelper.findChild(slot0.viewGO, "herogroupcontain/heroContainer")
 	slot0.scrollFetter = gohelper.findChildScrollRect(slot0.viewGO, "herogroupcontain/scroll_Fetter")
 	slot0.goFetterContent = gohelper.findChild(slot0.viewGO, "herogroupcontain/scroll_Fetter/Viewport/go_FetterContent")
@@ -21,19 +21,12 @@ end
 function slot0.removeEvents(slot0)
 end
 
-function slot0.onUpdateParam(slot0)
-end
-
 function slot0.onOpen(slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateTeamInfo, slot0.refreshTeam, slot0)
-	slot0:addEventCb(Activity191Controller.instance, Activity191Event.SwitchCurTeam, slot0.onSwitchTeam, slot0)
 
 	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 
 	slot0:refreshTeam()
-end
-
-function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
@@ -50,23 +43,16 @@ end
 
 function slot0.initHeroInfoItem(slot0)
 	slot0.heroInfoItemList = {}
-	slot1 = gohelper.findChild(slot0.heroContainer, "go_HeroInfo")
 
-	for slot5 = 1, 4 do
-		slot6 = slot0:getUserDataTb_()
-		slot7 = gohelper.findChild(slot0.heroContainer, "bg" .. slot5)
-		slot8 = gohelper.clone(slot1, slot7, "heroInfo" .. slot5)
-		slot6.goIndex = gohelper.findChild(slot7, "Index")
-		slot6.go = slot8
-		slot6.txtName = gohelper.findChildText(slot8, "txt_Name")
-		slot6.imageExSkill = gohelper.findChildImage(slot8, "exskill/image_ExSkill")
-		slot6.imageStar1 = gohelper.findChildImage(slot8, "hp/bg/1")
-		slot6.imageStar2 = gohelper.findChildImage(slot8, "hp/bg/2")
-		slot6.imageStar3 = gohelper.findChildImage(slot8, "hp/bg/3")
-		slot0.heroInfoItemList[slot5] = slot6
+	for slot4 = 1, 4 do
+		slot5 = slot0:getUserDataTb_()
+		slot6 = gohelper.findChild(slot0.heroContainer, "bg" .. slot4)
+		slot5.goIndex = gohelper.findChild(slot6, "Index")
+		slot5.txtName = gohelper.findChildText(slot6, "Name")
+		slot0.heroInfoItemList[slot4] = slot5
 	end
 
-	gohelper.setActive(slot1, false)
+	gohelper.setActive(goHeroInfo, false)
 end
 
 function slot0.initHeroAndEquipItem(slot0)
@@ -76,7 +62,10 @@ function slot0.initHeroAndEquipItem(slot0)
 
 	for slot5 = 1, 8 do
 		slot0.heroPosTrList[slot5] = gohelper.findChild(slot1, "heroPos" .. slot5).transform
-		slot0.equipPosTrList[slot5] = gohelper.findChild(slot1, "equipPos" .. slot5).transform
+
+		if slot5 <= 4 then
+			slot0.equipPosTrList[slot5] = gohelper.findChild(slot1, "equipPos" .. slot5).transform
+		end
 	end
 
 	slot2 = gohelper.findChild(slot0.heroContainer, "go_HeroItem")
@@ -93,13 +82,15 @@ function slot0.initHeroAndEquipItem(slot0)
 
 		CommonDragHelper.instance:registerDragObj(slot9.go, slot0._onBeginDrag, nil, slot0._onEndDrag, slot0._checkDrag, slot0, slot7)
 
-		slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
+		if slot7 <= 4 then
+			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
 
-		slot10:setIndex(slot7)
+			slot10:setIndex(slot7)
 
-		slot0.equipItemList[slot7] = slot10
+			slot0.equipItemList[slot7] = slot10
 
-		CommonDragHelper.instance:registerDragObj(slot10.go, slot0._onBeginDrag1, nil, slot0._onEndDrag1, slot0._checkDrag1, slot0, slot7)
+			CommonDragHelper.instance:registerDragObj(slot10.go, slot0._onBeginDrag1, nil, slot0._onEndDrag1, slot0._checkDrag1, slot0, slot7)
+		end
 	end
 
 	gohelper.setActive(slot2, false)
@@ -107,61 +98,47 @@ function slot0.initHeroAndEquipItem(slot0)
 end
 
 function slot0.refreshTeam(slot0)
-	slot0.txtTeamLvlM.text = formatLuaLang("act191_herogroupview_mainteam", slot0.gameInfo.rank ~= 0 and lua_activity191_rank.configDict[slot1].fightLevel or "")
+	slot6 = "act191_level_" .. string.lower(lua_activity191_rank.configDict[slot0.gameInfo.rank].fightLevel)
+
+	UISpriteSetMgr.instance:setAct174Sprite(slot0.imageLevel, slot6)
 
 	for slot6 = 1, 8 do
 		slot0:_setHeroItemPos(slot0.heroItemList[slot6], slot6)
-		slot0:_setEquipItemPos(slot0.equipItemList[slot6], slot6)
+
+		if slot6 <= 4 then
+			slot0:_setEquipItemPos(slot0.equipItemList[slot6], slot6)
+		end
 	end
 
 	slot3 = slot0.gameInfo:getTeamInfo()
 
 	for slot7 = 1, 4 do
-		slot9, slot10, slot11 = nil
+		slot9, slot10 = nil
 
-		if Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, "index", slot7) then
+		if Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, slot7) then
 			slot9 = slot8.heroId
 			slot10 = slot8.itemUid1
-			slot11 = slot8.itemUid2
 		end
 
 		slot0.heroItemList[slot7]:setData(slot9)
+		slot0.equipItemList[slot7]:setData(slot10)
 
-		slot12 = (slot7 - 1) * 2
-
-		slot0.equipItemList[slot12 + 1]:setData(slot10)
-		slot0.equipItemList[slot12 + 2]:setData(slot11)
-
-		slot13 = slot0.heroInfoItemList[slot7]
+		slot11 = slot0.heroInfoItemList[slot7]
 
 		if slot9 and slot9 ~= 0 then
-			slot15 = Activity191Config.instance:getRoleCoByNativeId(slot9, slot0.gameInfo:getHeroInfoInWarehouse(slot9).star)
-			slot13.txtName.text = slot15.name
-			slot13.imageExSkill.fillAmount = slot15.exLevel / CharacterEnum.MaxSkillExLevel
+			slot11.txtName.text = Activity191Config.instance:getRoleCoByNativeId(slot9, slot0.gameInfo:getHeroInfoInWarehouse(slot9).star).name
 
-			for slot19 = 1, Activity191Enum.CharacterMaxStar do
-				gohelper.setActive(slot13["imageStar" .. slot19], slot19 <= slot15.star)
-			end
-
-			gohelper.setActive(slot13.goIndex, false)
-			gohelper.setActive(slot13.go, true)
+			gohelper.setActive(slot11.goIndex, false)
+			gohelper.setActive(slot11.txtName, true)
 		else
-			gohelper.setActive(slot13.goIndex, true)
-			gohelper.setActive(slot13.go, false)
+			gohelper.setActive(slot11.goIndex, true)
+			gohelper.setActive(slot11.txtName, false)
 		end
 
-		slot0.heroItemList[slot7 + 4]:setData(Activity191Helper.matchKeyInArray(slot3.subHeroInfo, "index", slot7) and slot15.heroId or 0)
+		slot0.heroItemList[slot7 + 4]:setData(Activity191Helper.matchKeyInArray(slot3.subHeroInfo, slot7) and slot13.heroId or 0)
 	end
 
 	slot0:refreshFetter()
-end
-
-function slot0.onSwitchTeam(slot0)
-	if slot0.animSwitch then
-		slot0.animSwitch:Play("switch", 0, 0)
-	end
-
-	TaskDispatcher.runDelay(slot0.refreshTeam, slot0, 0.16)
 end
 
 function slot0._checkDrag(slot0, slot1)

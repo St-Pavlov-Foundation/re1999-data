@@ -7,7 +7,9 @@ function slot0.onConstructor(slot0, slot1)
 end
 
 function slot0.onInitView(slot0)
+	slot0.goPreTxt = gohelper.findChild(slot0.viewGO, "root/num/bottom/txt_preparation")
 	slot0.bottomNumTxt = gohelper.findChildText(slot0.viewGO, "root/num/bottom/#txt_num")
+	slot0.bottomPreNumTxt = gohelper.findChildText(slot0.viewGO, "root/num/bottom/txt_preparation/#txt_preparation")
 	slot0.bottomNumAnimator = gohelper.findChildComponent(slot0.viewGO, "root/num/bottom", gohelper.Type_Animator)
 	slot0.goLeft = gohelper.findChild(slot0.viewGO, "root/num/left")
 	slot0.leftMaxTxt = gohelper.findChildText(slot0.viewGO, "root/num/left/#txt_num1")
@@ -29,6 +31,8 @@ function slot0.onInitView(slot0)
 
 	slot0.preCostBloodValue = 0
 	slot0.bloodPoolSkillId = FightHelper.getBloodPoolSkillId()
+
+	gohelper.setActive(slot0.goPreTxt, false)
 end
 
 slot0.HeartTweenDuration = 0.5
@@ -39,7 +43,7 @@ function slot0.addEvents(slot0)
 	slot0:com_registFightEvent(FightEvent.BloodPool_OnPlayCard, slot0.onPlayBloodCard)
 	slot0:com_registFightEvent(FightEvent.BloodPool_OnCancelPlayCard, slot0.onCancelPlayBloodCard)
 	slot0:com_registFightEvent(FightEvent.RespBeginRound, slot0.onRespBeginRound)
-	slot0:com_registFightEvent(FightEvent.PlayHandCard, slot0.onPlayHandCard)
+	slot0:com_registFightEvent(FightEvent.BeforePlayHandCard, slot0.onPlayHandCard)
 	slot0.longPress:AddClickListener(slot0.onClickBlood, slot0)
 	slot0.longPress:AddLongPressListener(slot0.onLongPressBlood, slot0)
 end
@@ -78,12 +82,19 @@ end
 function slot0.refreshPreCostBloodValue(slot0)
 	slot1 = FightDataHelper.getBloodPool(slot0.teamType)
 	slot2 = slot1.max
-	slot3 = math.min(slot2, slot1.value + slot0.preCostBloodValue)
-	slot0.bottomNumTxt.text = string.format("%s/%s", slot3, slot2)
+	slot3 = math.max(math.min(slot2, slot1.value + slot0.preCostBloodValue), 0)
+	slot4 = string.format("%s/%s", slot3, slot2)
+	slot0.bottomNumTxt.text = slot4
+	slot0.bottomPreNumTxt.text = slot4
 	slot0.leftCurTxt.text = slot3
 	slot0.leftEffCurTxt.text = slot3
 
 	slot0.imageHeartPreMat:SetFloat(slot0.heightPropertyId, slot3 / slot2)
+	slot0:refreshPreTxtActive()
+end
+
+function slot0.refreshPreTxtActive(slot0)
+	gohelper.setActive(slot0.goPreTxt, slot0.preCostBloodValue ~= 0)
 end
 
 function slot0.onPlayBloodCard(slot0)
@@ -126,6 +137,8 @@ function slot0.onClickBlood(slot0)
 	end
 
 	if slot1.value < 1 then
+		GameFacade.showToast(ToastEnum.NotEnoughBlood)
+
 		return
 	end
 
@@ -250,15 +263,18 @@ function slot0.directSetBloodValue(slot0)
 end
 
 function slot0.setNumAndImage(slot0, slot1, slot2)
-	slot0.bottomNumTxt.text = string.format("%s/%s", slot1, slot2)
+	slot3 = string.format("%s/%s", slot1, slot2)
+	slot0.bottomNumTxt.text = slot3
+	slot0.bottomPreNumTxt.text = slot3
 	slot0.leftMaxTxt.text = slot2
 	slot0.leftCurTxt.text = slot1
 	slot0.leftEffMaxTxt.text = slot2
 	slot0.leftEffCurTxt.text = slot1
-	slot3 = slot1 / slot2
+	slot4 = slot1 / slot2
 
-	slot0.imageHeartMat:SetFloat(slot0.heightPropertyId, slot3)
-	slot0.imageHeartPreMat:SetFloat(slot0.heightPropertyId, slot3)
+	slot0.imageHeartMat:SetFloat(slot0.heightPropertyId, slot4)
+	slot0.imageHeartPreMat:SetFloat(slot0.heightPropertyId, slot4)
+	slot0:refreshPreTxtActive()
 end
 
 function slot0.onDestroyView(slot0)

@@ -2,9 +2,9 @@
   {
     "ruleId": 1011,
     "node": 1,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
+    "random": 0,
+    "selectNum": 1,
+    "desc": "偶人静待邀约"
   },
   {
     "ruleId": 1011,
@@ -21,32 +21,25 @@
     "desc": "赢得偶人角斗拿走更多补给"
   },
   {
-    "ruleId": 1012,
-    "node": 1,
+    "ruleId": 1011,
+    "node": 4,
     "random": 1,
     "selectNum": 3,
-    "desc": ""
+    "desc": "补给按需挑选"
   },
   {
-    "ruleId": 1012,
-    "node": 2,
-    "random": 1,
-    "selectNum": 3,
-    "desc": ""
-  },
-  {
-    "ruleId": 1012,
-    "node": 3,
+    "ruleId": 1011,
+    "node": 5,
     "random": 0,
     "selectNum": 3,
-    "desc": "赢得偶人角斗拿走更多补给"
+    "desc": "击败偶人专家夺得角斗荣誉"
   },
   {
     "ruleId": 1021,
     "node": 1,
     "random": 0,
     "selectNum": 1,
-    "desc": "圣火让比赛白热化"
+    "desc": "芯灵感应定制服务"
   },
   {
     "ruleId": 1021,
@@ -58,27 +51,20 @@
   {
     "ruleId": 1021,
     "node": 3,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
-  },
-  {
-    "ruleId": 1021,
-    "node": 4,
     "random": 0,
     "selectNum": 3,
     "desc": "赢得偶人角斗拿走更多补给"
   },
   {
     "ruleId": 1021,
-    "node": 5,
+    "node": 4,
     "random": 1,
     "selectNum": 3,
-    "desc": "赛事节点由你决定"
+    "desc": "补给按需挑选"
   },
   {
     "ruleId": 1021,
-    "node": 6,
+    "node": 5,
     "random": 0,
     "selectNum": 3,
     "desc": "击败偶人专家夺得角斗荣誉"
@@ -88,7 +74,7 @@
     "node": 1,
     "random": 0,
     "selectNum": 1,
-    "desc": "圣火让比赛白热化"
+    "desc": "芯灵感应定制服务"
   },
   {
     "ruleId": 1031,
@@ -100,69 +86,20 @@
   {
     "ruleId": 1031,
     "node": 3,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
-  },
-  {
-    "ruleId": 1031,
-    "node": 4,
     "random": 0,
     "selectNum": 3,
     "desc": "赢得偶人角斗拿走更多补给"
   },
   {
     "ruleId": 1031,
-    "node": 5,
+    "node": 4,
     "random": 1,
     "selectNum": 3,
-    "desc": "赛事节点由你决定"
+    "desc": "补给按需挑选"
   },
   {
     "ruleId": 1031,
-    "node": 6,
-    "random": 0,
-    "selectNum": 3,
-    "desc": "击败偶人专家夺得角斗荣誉"
-  },
-  {
-    "ruleId": 1041,
-    "node": 1,
-    "random": 0,
-    "selectNum": 1,
-    "desc": "圣火让比赛白热化"
-  },
-  {
-    "ruleId": 1041,
-    "node": 2,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
-  },
-  {
-    "ruleId": 1041,
-    "node": 3,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
-  },
-  {
-    "ruleId": 1041,
-    "node": 4,
-    "random": 0,
-    "selectNum": 3,
-    "desc": "赢得偶人角斗拿走更多补给"
-  },
-  {
-    "ruleId": 1041,
     "node": 5,
-    "random": 1,
-    "selectNum": 3,
-    "desc": "赛事节点由你决定"
-  },
-  {
-    "ruleId": 1041,
-    "node": 6,
     "random": 0,
     "selectNum": 3,
     "desc": "击败偶人专家夺得角斗荣誉"

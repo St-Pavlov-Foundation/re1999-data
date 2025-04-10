@@ -26,6 +26,7 @@ function slot0.refreshPerformanceData(slot0)
 end
 
 function slot0._onFlowFinish(slot0)
+	FightController.instance:dispatchEvent(FightEvent.AfterCorrectData)
 	slot0:onDone(true)
 end
 

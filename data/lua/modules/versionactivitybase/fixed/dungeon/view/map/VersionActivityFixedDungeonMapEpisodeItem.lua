@@ -334,7 +334,10 @@ function slot0.endShowRewardView(slot0)
 end
 
 function slot0.calculatePosInContent(slot0)
-	slot0._maxWidth = math.max(math.max(recthelper.getAnchorX(slot0._txtsectionname.transform) + slot0._txtsectionname.preferredWidth, recthelper.getAnchorX(slot0._txtnameen.transform) + slot0._txtsectionname.preferredWidth) * 2, VersionActivityFixedHelper.getVersionActivityDungeonEnum().EpisodeItemMinWidth) + 30
+	slot3 = slot0._txtsectionname.preferredWidth
+	slot5 = slot0.elementItemList and #slot0.elementItemList * 20 or 0
+	slot6 = recthelper.getAnchorX(slot0._txtsectionname.transform) + slot3 + slot5
+	slot0._maxWidth = (math.max((slot0.starItemList and #slot0.starItemList or 1) * 70 + 80 - slot3 - slot5, recthelper.getAnchorX(slot0._txtnameen.transform) + slot0._txtnameen.preferredWidth - slot3 * 0.5 - slot5) > 0 and slot6 + slot10 or slot6) + VersionActivityFixedHelper.getVersionActivityDungeonEnum().EpisodeItemMinWidth
 
 	recthelper.setWidth(slot0._goclickarea.transform, slot0._maxWidth)
 	recthelper.setWidth(slot0._goraycast.transform, slot0._maxWidth + slot0._layout._constDungeonNormalDeltaX)

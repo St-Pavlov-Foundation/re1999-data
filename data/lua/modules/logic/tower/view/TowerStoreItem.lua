@@ -136,6 +136,10 @@ function slot0.getHeight(slot0)
 	return recthelper.getHeight(slot0.go.transform)
 end
 
+function slot0.hideStoreItem(slot0)
+	gohelper.setActive(slot0.go, false)
+end
+
 function slot0.onDestroy(slot0)
 	for slot4, slot5 in ipairs(slot0.goodsItemList) do
 		slot5:onDestroy()

@@ -3,7 +3,7 @@ module("modules.logic.versionactivity2_7.act191.define.Activity191Helper", packa
 slot0 = class("Activity191Helper")
 
 function slot0.setFetterIcon(slot0, slot1)
-	UISpriteSetMgr.instance:setBuffSprite(slot0, slot1)
+	UISpriteSetMgr.instance:setAct174Sprite(slot0, slot1)
 end
 
 function slot0.getHeadIconSmall(slot0)
@@ -42,12 +42,12 @@ function slot0.lockScreen(slot0, slot1)
 	end
 end
 
-function slot0.getPlayerPrefs(slot0, slot1)
-	return PlayerPrefsHelper.getNumber(PlayerModel.instance:getMyUserId() .. Activity191Model.instance:getCurActId() .. slot0, slot1)
+function slot0.getPlayerPrefs(slot0, slot1, slot2)
+	return PlayerPrefsHelper.getNumber(PlayerModel.instance:getMyUserId() .. slot0 .. slot1, slot2)
 end
 
-function slot0.setPlayerPrefs(slot0, slot1)
-	PlayerPrefsHelper.setNumber(PlayerModel.instance:getMyUserId() .. Activity191Model.instance:getCurActId() .. slot0, slot1)
+function slot0.setPlayerPrefs(slot0, slot1, slot2)
+	PlayerPrefsHelper.setNumber(PlayerModel.instance:getMyUserId() .. slot0 .. slot1, slot2)
 end
 
 function slot0.calcIndex(slot0, slot1)
@@ -60,40 +60,16 @@ end
 
 function slot0.matchKeyInArray(slot0, slot1, slot2)
 	if not slot0 then
+		logError("array is nil")
+
 		return
 	end
 
 	for slot6, slot7 in ipairs(slot0) do
-		if slot7[slot1] == slot2 then
+		if slot7[slot2 or "index"] == slot1 then
 			return slot7
 		end
 	end
-end
-
-function slot0.getWithBuildBattleHeroInfo(slot0, slot1)
-	if not uv0.matchKeyInArray(slot0, "index", slot1) then
-		slot2 = Activity191Module_pb.Act191BattleHeroInfo()
-		slot2.index = slot1
-		slot2.heroId = 0
-		slot2.itemUid1 = 0
-		slot2.itemUid2 = 0
-
-		table.insert(slot0, slot2)
-	end
-
-	return slot2
-end
-
-function slot0.getWithBuildSubHeroInfo(slot0, slot1)
-	if not uv0.matchKeyInArray(slot0, "index", slot1) then
-		slot2 = Activity191Module_pb.Act191SubHeroInfo()
-		slot2.index = slot1
-		slot2.heroId = 0
-
-		table.insert(slot0, slot2)
-	end
-
-	return slot2
 end
 
 function slot0.isPveBattle(slot0)
@@ -118,14 +94,16 @@ function slot0.getActiveFetterInfoList(slot0)
 	slot1 = {}
 
 	for slot5, slot6 in pairs(slot0) do
-		for slot11 = #Activity191Config.instance:getRelationCoList(slot5), 0, -1 do
-			if slot7[slot11].activeNum <= slot6 then
-				slot1[#slot1 + 1] = {
-					config = slot12,
-					count = slot6
-				}
+		if Activity191Config.instance:getRelationCoList(slot5) then
+			for slot11 = #slot7, 0, -1 do
+				if slot7[slot11].activeNum <= slot6 then
+					slot1[#slot1 + 1] = {
+						config = slot12,
+						count = slot6
+					}
 
-				break
+					break
+				end
 			end
 		end
 	end
@@ -163,6 +141,84 @@ function slot0.sortFetterHeroList(slot0, slot1)
 	else
 		return slot0.transfer < slot1.transfer
 	end
+end
+
+function slot0.getWithBuildBattleHeroInfo(slot0, slot1)
+	if not uv0.matchKeyInArray(slot0, slot1) then
+		slot2 = Activity191Module_pb.Act191BattleHeroInfo()
+		slot2.index = slot1
+		slot2.heroId = 0
+		slot2.itemUid1 = 0
+		slot2.itemUid2 = 0
+
+		table.insert(slot0, slot2)
+	end
+
+	return slot2
+end
+
+function slot0.getWithBuildSubHeroInfo(slot0, slot1)
+	if not uv0.matchKeyInArray(slot0, slot1) then
+		slot2 = Activity191Module_pb.Act191SubHeroInfo()
+		slot2.index = slot1
+		slot2.heroId = 0
+
+		table.insert(slot0, slot2)
+	end
+
+	return slot2
+end
+
+function slot0.replaceSkill(slot0, slot1)
+	if slot1 and CharacterDestinyConfig.instance:getDestinyFacets(slot0, 4) and not string.nilorempty(slot2.exchangeSkills) then
+		slot4 = GameUtil.splitString2(slot3, true)
+
+		for slot8 = 1, #slot1 do
+			for slot12, slot13 in ipairs(slot4) do
+				if slot1[slot8] == slot13[1] then
+					slot1[slot8] = slot13[2]
+				end
+			end
+		end
+	end
+
+	return slot1
+end
+
+function slot0.buildDesc(slot0, slot1, slot2)
+	return uv0.addColor(string.gsub(slot0, slot1, string.format("【<u><link=%s>%s</link></u>】", slot2, "%1")))
+end
+
+function slot0.addColor(slot0)
+	slot2 = string.format("<color=%s>%s</color>", "#C66030", "%1")
+
+	return string.gsub(string.gsub(string.gsub(slot0, "【.-】", string.format("<color=%s>%s</color>", "#4e6698", "%1")), "[+-]?%d+%.%d+%%", slot2), "[+-]?%d+%%", slot2)
+end
+
+function slot0.clickHyperLinkDestiny(slot0)
+	slot1 = string.splitToNumber(slot0, "#")
+
+	ViewMgr.instance:openView(ViewName.Act191CharacterDestinyView, {
+		config = Activity191Config.instance:getRoleCoByNativeId(slot1[1], 1),
+		stoneId = slot1[2]
+	})
+end
+
+function slot0.clickHyperLinkItem(slot0, slot1)
+	if string.find(slot0, "#") then
+		Activity191Controller.instance:openCollectionTipView({
+			itemId = string.splitToNumber(slot0, "#")[1]
+		})
+	else
+		SkillHelper.defaultClick(slot0, slot1)
+	end
+end
+
+function slot0.clickHyperLinkSkill(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act191BuffTipView, {
+		effId = slot0,
+		clickPosition = slot1
+	})
 end
 
 return slot0

@@ -357,6 +357,7 @@ end
 function slot0.refreshBloodPoolSkill(slot0, slot1, slot2, slot3)
 	gohelper.setActive(slot0.goBloodPool, true)
 	gohelper.setActive(slot0.goTag, true)
+	gohelper.setActive(slot0._tag.gameObject, true)
 
 	slot0.bloodPoolAnimator = slot0.bloodPoolAnimator or slot0.goBloodPool:GetComponent(gohelper.Type_Animator)
 
@@ -377,6 +378,7 @@ end
 function slot0.refreshASFDSkill(slot0, slot1, slot2, slot3)
 	gohelper.setActive(slot0.goASFDSkill, true)
 	gohelper.setActive(slot0.goTag, true)
+	gohelper.setActive(slot0._tag.gameObject, true)
 	slot0.asfdSkillSimage:LoadImage(ResUrl.getSkillIcon(FightASFDConfig.instance.normalSkillIcon))
 
 	slot0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)

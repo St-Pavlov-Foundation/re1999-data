@@ -23,7 +23,8 @@ function slot0.reqConfigNames(slot0)
 		"activity191_effect",
 		"activity191_item",
 		"activity191_ex_level",
-		"activity191_eff_desc"
+		"activity191_eff_desc",
+		"activity191_relation_select"
 	}
 end
 
@@ -78,7 +79,7 @@ function slot0.getShowRoleCoList(slot0)
 	slot1 = {}
 
 	for slot5, slot6 in ipairs(slot0._roleConfig.configList) do
-		if not Activity191Helper.matchKeyInArray(slot1, "roleId", slot6.roleId) then
+		if not Activity191Helper.matchKeyInArray(slot1, slot6.roleId, "roleId") then
 			slot1[#slot1 + 1] = slot6
 		end
 	end
@@ -123,11 +124,13 @@ function slot0.getRelationCoList(slot0, slot1)
 end
 
 function slot0.getRelationCo(slot0, slot1, slot2)
-	if not slot0._relationLvlConfigDic[slot1][slot2 or 0] then
+	slot2 = slot2 or 0
+
+	if slot0._relationLvlConfigDic[slot1] and slot0._relationLvlConfigDic[slot1][slot2] then
+		return slot0._relationLvlConfigDic[slot1][slot2]
+	else
 		logError(string.format("relationTag : %s, level : %s config not found", slot1, slot2))
 	end
-
-	return slot3
 end
 
 function slot0.getRelationMaxCo(slot0, slot1)
@@ -240,6 +243,13 @@ function slot0.getFetterHeroList(slot0, slot1)
 	return slot2
 end
 
+slot0.AttrIdToFieldName = {
+	[CharacterEnum.AttrId.Attack] = "attack",
+	[CharacterEnum.AttrId.Defense] = "defense",
+	[CharacterEnum.AttrId.Technic] = "technic",
+	[CharacterEnum.AttrId.Hp] = "life",
+	[CharacterEnum.AttrId.Mdefense] = "mdefense"
+}
 slot0.instance = slot0.New()
 
 return slot0

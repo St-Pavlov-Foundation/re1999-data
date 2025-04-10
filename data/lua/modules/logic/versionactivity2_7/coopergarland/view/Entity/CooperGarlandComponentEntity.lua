@@ -87,6 +87,10 @@ function slot0._onClick(slot0)
 		return
 	end
 
+	if GuideModel.instance:getFlagValue(GuideModel.GuideFlag.CooperGarlandForceRemove) and slot0.componentId ~= tonumber(slot1) then
+		return
+	end
+
 	CooperGarlandController.instance:removeComponent(slot0.mapId, slot0.componentId)
 end
 

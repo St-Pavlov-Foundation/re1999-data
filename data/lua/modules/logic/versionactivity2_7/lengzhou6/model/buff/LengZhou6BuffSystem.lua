@@ -20,6 +20,8 @@ function slot0.addBuffToPlayer(slot0, slot1)
 			slot2:addBuff(slot4)
 		end
 	end
+
+	LengZhou6GameController.instance:dispatchEvent(LengZhou6Event.RefreshBuffItem)
 end
 
 function slot0.addBuffToEnemy(slot0, slot1)
@@ -33,6 +35,8 @@ function slot0.addBuffToEnemy(slot0, slot1)
 			slot2:addBuff(slot4)
 		end
 	end
+
+	LengZhou6GameController.instance:dispatchEvent(LengZhou6Event.RefreshBuffItem)
 end
 
 slot0.instance = slot0.New()

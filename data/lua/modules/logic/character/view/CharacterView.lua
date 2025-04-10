@@ -92,6 +92,8 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(CharacterController.instance, CharacterEvent.onUseTalentStyleReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:addEventCb(CharacterController.instance, CharacterEvent.UseTalentTemplateReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:addEventCb(HeroResonanceController.instance, HeroResonanceEvent.UseShareCode, slot0._onRefreshStyleIcon, slot0)
+	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUseStoneReply, slot0._onRefreshDestiny, slot0)
+	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnRankUpReply, slot0._onRefreshDestiny, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -114,6 +116,8 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(CharacterController.instance, CharacterEvent.UseTalentTemplateReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:removeEventCb(CharacterController.instance, CharacterEvent.OnMarkFavorSuccess, slot0._markFavorSuccess, slot0)
 	slot0:removeEventCb(HeroResonanceController.instance, HeroResonanceEvent.UseShareCode, slot0._onRefreshStyleIcon, slot0)
+	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUseStoneReply, slot0._onRefreshDestiny, slot0)
+	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnRankUpReply, slot0._onRefreshDestiny, slot0)
 end
 
 slot0.HpAttrId = 101
@@ -1231,6 +1235,10 @@ end
 
 function slot0._refreshSkill(slot0)
 	slot0._skillContainer:onUpdateMO(slot0._heroMO.heroId, nil, slot0._heroMO)
+end
+
+function slot0._onRefreshDestiny(slot0, slot1, slot2)
+	slot0:_refreshSkill()
 end
 
 function slot0._refreshPassiveSkill(slot0)

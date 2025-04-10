@@ -47,10 +47,7 @@ function slot0.onSelect(slot0, slot1)
 end
 
 function slot0._onItemClick(slot0)
-	if slot0.isSelect then
-		slot0._view:selectCell(slot0._index, false)
-		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickCollectionGroupItem)
-	else
+	if not slot0.isSelect then
 		slot0._view:selectCell(slot0._index, true)
 	end
 end

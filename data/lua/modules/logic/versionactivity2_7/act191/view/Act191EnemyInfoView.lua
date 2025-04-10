@@ -3,8 +3,7 @@ module("modules.logic.versionactivity2_7.act191.view.Act191EnemyInfoView", packa
 slot0 = class("Act191EnemyInfoView", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0._txtTitle = gohelper.findChildText(slot0.viewGO, "left_container/Title/#txt_Title")
-	slot0._txtLevel = gohelper.findChildText(slot0.viewGO, "left_container/Title/#txt_Level")
+	slot0._imageLevel = gohelper.findChildImage(slot0.viewGO, "left_container/Title/#image_Level")
 	slot0._scrollteam = gohelper.findChildScrollRect(slot0.viewGO, "left_container/#scroll_team")
 	slot0._goHeroItem = gohelper.findChild(slot0.viewGO, "left_container/#scroll_team/viewport/content/#go_HeroItem")
 	slot0._goMain = gohelper.findChild(slot0.viewGO, "left_container/#scroll_team/viewport/content/#go_Main")
@@ -21,10 +20,6 @@ function slot0.onInitView(slot0)
 	slot0._goCollection1 = gohelper.findChild(slot0.viewGO, "#go_RightContainer/Collection1/#go_Collection1")
 	slot0._imageCRare1 = gohelper.findChildImage(slot0.viewGO, "#go_RightContainer/Collection1/#go_Collection1/#image_CRare1")
 	slot0._simageCIcon1 = gohelper.findChildSingleImage(slot0.viewGO, "#go_RightContainer/Collection1/#go_Collection1/#simage_CIcon1")
-	slot0._goCEmpty2 = gohelper.findChild(slot0.viewGO, "#go_RightContainer/Collection2/#go_CEmpty2")
-	slot0._goCollection2 = gohelper.findChild(slot0.viewGO, "#go_RightContainer/Collection2/#go_Collection2")
-	slot0._imageCRare2 = gohelper.findChildImage(slot0.viewGO, "#go_RightContainer/Collection2/#go_Collection2/#image_CRare2")
-	slot0._simageCIcon2 = gohelper.findChildSingleImage(slot0.viewGO, "#go_RightContainer/Collection2/#go_Collection2/#simage_CIcon2")
 	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
 
 	if slot0._editableInitView then
@@ -43,11 +38,11 @@ function slot0.onClickModalMask(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot0:addClickCb(gohelper.findButtonWithAudio(slot0._goCollection1), slot0.onClickCollection, slot0, 1)
-	slot0:addClickCb(gohelper.findButtonWithAudio(slot0._goCollection2), slot0.onClickCollection, slot0, 2)
+	slot0:addClickCb(gohelper.findButtonWithAudio(slot0._goCollection1), slot0.onClickCollection, slot0)
 
 	slot0._fetterItemList = {}
 	slot0.characterItem = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goRightContainer, Act191CharacterInfo)
+	slot0._fetterIconItemList = {}
 end
 
 function slot0.onUpdateParam(slot0)
@@ -56,9 +51,11 @@ end
 function slot0.onOpen(slot0)
 	slot0.nodeDetailMo = slot0.viewParam
 	slot0.matchMo = slot0.nodeDetailMo.matchInfo
-	slot5 = 100
-	slot0._txtTitle.text = GameUtil.setFirstStrSize(lua_activity191_const.configDict[Activity191Enum.ConstKey.PvpEpisodeName].value2, slot5)
-	slot0._txtLevel.text = lua_activity191_match_rank.configDict[slot0.matchMo.rank].fightLevel
+	slot6 = string.lower(lua_activity191_match_rank.configDict[slot0.matchMo.rank].fightLevel)
+	slot5 = "act191_level_" .. slot6
+
+	UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, slot5)
+
 	slot0.heroItemDic = {}
 
 	for slot5, slot6 in pairs(slot0.matchMo.heroMap) do
@@ -108,10 +105,17 @@ function slot0.refreshCharacter(slot0, slot1)
 	slot0.characterItem:setData(slot2)
 
 	for slot8, slot9 in ipairs(string.split(slot2.tag, "#")) do
-		slot11 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0._goFetterIcon), Act191FetterIconItem)
+		if not slot0._fetterIconItemList[slot8] then
+			slot0._fetterIconItemList[slot8] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0._goFetterIcon), Act191FetterIconItem)
+		end
 
-		slot11:setData(slot9)
-		slot11:setEnemyView()
+		slot10:setData(slot9)
+		slot10:setEnemyView()
+		gohelper.setActive(slot0._fetterIconItemList[slot8].go, true)
+	end
+
+	for slot8 = #slot4 + 1, #slot0._fetterIconItemList do
+		gohelper.setActive(slot0._fetterIconItemList[slot8].go, false)
 	end
 
 	gohelper.setActive(slot0._goFetterIcon, false)
@@ -152,21 +156,19 @@ function slot0.onClickHero(slot0, slot1, slot2)
 		slot7:setActivation(false)
 	end
 
-	slot0:refreshCharacter(slot0.matchMo.heroMap[slot1].heroId)
+	slot3 = slot0.matchMo.heroMap[slot1]
 
-	for slot7 = 1, 2 do
-		if slot3["itemUid" .. slot7] ~= 0 then
-			slot9 = slot0.matchMo:getItemCo(slot8)
+	slot0:refreshCharacter(slot3.heroId)
 
-			slot0["_simageCIcon" .. slot7]:LoadImage(ResUrl.getRougeSingleBgCollection(slot9.icon))
-			UISpriteSetMgr.instance:setAct174Sprite(slot0["_imageCRare" .. slot7], "act174_propitembg_" .. slot9.rare)
-		end
+	if slot3.itemUid1 ~= 0 then
+		slot4 = slot0.matchMo:getItemCo(slot3.itemUid1)
+
+		slot0._simageCIcon1:LoadImage(ResUrl.getRougeSingleBgCollection(slot4.icon))
+		UISpriteSetMgr.instance:setAct174Sprite(slot0._imageCRare1, "act174_propitembg_" .. slot4.rare)
 	end
 
 	gohelper.setActive(slot0._goCEmpty1, slot3.itemUid1 == 0)
-	gohelper.setActive(slot0._goCEmpty2, slot3.itemUid2 == 0)
 	gohelper.setActive(slot0._goCollection1, slot3.itemUid1 ~= 0)
-	gohelper.setActive(slot0._goCollection2, slot3.itemUid2 ~= 0)
 end
 
 function slot0.onClickSubHero(slot0, slot1)
@@ -187,15 +189,13 @@ function slot0.onClickSubHero(slot0, slot1)
 
 	slot0:refreshCharacter(slot0.matchMo.subHeroMap[slot1])
 	gohelper.setActive(slot0._goCEmpty1, true)
-	gohelper.setActive(slot0._goCEmpty2, true)
 	gohelper.setActive(slot0._goCollection1, false)
-	gohelper.setActive(slot0._goCollection2, false)
 end
 
-function slot0.onClickCollection(slot0, slot1)
-	if slot0.selectMain and slot0.matchMo.heroMap[slot1]["itemUid" .. slot1] ~= 0 then
-		ViewMgr.instance:openView(ViewName.Act191ItemTipView, {
-			itemId = slot0.matchMo:getItemCo(slot3).id
+function slot0.onClickCollection(slot0)
+	if slot0.selectMain and slot0.matchMo.heroMap[slot0.selectMain].itemUid1 ~= 0 then
+		Activity191Controller.instance:openCollectionTipView({
+			itemId = slot0.matchMo:getItemCo(slot2).id
 		})
 	end
 end

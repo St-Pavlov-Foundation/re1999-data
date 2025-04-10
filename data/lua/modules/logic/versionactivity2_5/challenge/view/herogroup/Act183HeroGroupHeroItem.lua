@@ -4,6 +4,12 @@ slot0 = class("Act183HeroGroupHeroItem", HeroGroupHeroItem)
 
 function slot0.init(slot0, slot1)
 	uv0.super.init(slot0, slot1)
+
+	slot0._goleader = gohelper.findChild(slot0.go, "heroitemani/hero/go_leader")
+	slot0._goleaderframe = gohelper.findChild(slot0.go, "heroitemani/hero/go_leader/go_leaderframe")
+	slot0._goleadereffect = gohelper.findChild(slot0.go, "heroitemani/hero/go_leader/go_leaderframe/#fit")
+	slot0._leaderTran = slot0._goleader.transform
+	slot0._leaderFrameTran = slot0._goleaderframe.transform
 end
 
 function slot0.onUpdateMO(slot0, slot1)
@@ -168,6 +174,13 @@ function slot0.onUpdateMO(slot0, slot1)
 	end
 
 	slot0:_showMojingTip()
+
+	slot7 = Act183Helper.isTeamLeader(slot2, slot0._index)
+	slot8 = slot0:hasHero()
+
+	gohelper.setActive(slot0._goleaderframe, slot7)
+	gohelper.setActive(slot0._goleadereffect, slot7 and slot8)
+	slot0:_setLeaderParent(slot8 and slot0._leaderTran or slot0._bgLeaderTran)
 end
 
 function slot0.selfIsLock(slot0)
@@ -182,9 +195,39 @@ function slot0.setScale(slot0, slot1, slot2, slot3)
 	transformhelper.setLocalScale(slot0.go.transform, slot0._scaleX, slot0._scaleY, slot0._scaleZ)
 end
 
+function slot0.onItemBeginDrag(slot0, slot1)
+	uv0.super.onItemBeginDrag(slot0, slot1)
+
+	if slot1 == slot0._index then
+		slot0:_setLeaderParent(slot0._bgLeaderTran)
+	end
+end
+
 function slot0.onItemEndDrag(slot0, slot1, slot2)
-	ZProj.TweenHelper.DOScale(slot0.go.transform, slot0._scaleX, slot0._scaleY, slot0._scaleZ, 0.2, nil, , , EaseType.Linear)
+	if slot1 == slot0.index or slot2 == slot0._index then
+		slot0:_setLeaderParent(slot0._bgLeaderTran)
+	end
+
+	ZProj.TweenHelper.DOScale(slot0.go.transform, slot0._scaleX, slot0._scaleY, slot0._scaleZ, 0.2, function ()
+		uv0:_setLeaderParent(uv0:hasHero() and uv0._leaderTran or uv0._bgLeaderTran)
+	end, nil, , EaseType.Linear)
 	slot0:_setHeroItemPressState(false)
+end
+
+function slot0.hasHero(slot0)
+	return slot0._heroMO ~= nil or slot0.monsterCO ~= nil or slot0.trialCO ~= nil
+end
+
+function slot0.setBgLeaderTran(slot0, slot1)
+	slot0._bgLeaderTran = slot1
+end
+
+function slot0._setLeaderParent(slot0, slot1)
+	if gohelper.isNil(slot1) then
+		return
+	end
+
+	slot0._leaderFrameTran:SetParent(slot1, false)
 end
 
 return slot0

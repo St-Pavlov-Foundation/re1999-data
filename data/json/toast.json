@@ -8265,7 +8265,7 @@
   },
   {
     "id": 270101,
-    "tips": "已成功购买，添加在仓库/编队列表",
+    "tips": "已成功购买",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -8281,7 +8281,47 @@
   },
   {
     "id": 270103,
-    "tips": "狂想未解锁",
+    "tips": "狂想或解构未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270104,
+    "tips": "当前没有满足条件的角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270105,
+    "tips": "请选中任一已解锁角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270106,
+    "tips": "薪血不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270107,
+    "tips": "请选中任一角色闪念",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270108,
+    "tips": "▩1%s能力提升",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

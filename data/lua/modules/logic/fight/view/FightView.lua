@@ -145,7 +145,7 @@ function slot0.onOpen(slot0)
 		gohelper.setActive(slot0._btnAuto.gameObject, false)
 	else
 		gohelper.setActive(slot0._btnAuto.gameObject, DungeonModel.instance:hasPassLevelAndStory(10101))
-		gohelper.setActive(slot0._btnAutoLockObj, FightDataHelper.fieldMgr:isDouQuQu())
+		gohelper.setActive(slot0._btnAutoLockObj, slot0.forceAuto or FightDataHelper.fieldMgr:isDouQuQu())
 	end
 
 	gohelper.setActive(slot0._btnSpecialTip.gameObject, uv0.canShowSpecialBtn())
@@ -179,6 +179,10 @@ function slot0.onOpen(slot0)
 	slot0:_showEnemySubCount()
 	slot0:initEnemyActionStatus()
 	slot0:_refreshDouQuQu()
+
+	if FightDataHelper.fieldMgr:is191DouQuQu() then
+		gohelper.setActive(slot0._enemyinfoRoot, false)
+	end
 end
 
 function slot0._refreshDouQuQu(slot0)
@@ -673,7 +677,7 @@ function slot0._onSetStateForDialogBeforeStartFight(slot0, slot1)
 	gohelper.setActive(slot0._topRightBtnRoot, not slot1)
 	gohelper.setActive(slot0._roundGO, not slot1)
 
-	if FightDataHelper.fieldMgr:isDouQuQu() then
+	if FightDataHelper.fieldMgr:isDouQuQu() or FightDataHelper.fieldMgr:is191DouQuQu() then
 		gohelper.setActive(slot0._enemyinfoRoot, false)
 	else
 		gohelper.setActive(slot0._enemyinfoRoot, not slot1)

@@ -5873,19 +5873,19 @@
   },
   {
     "id": "towerbossteachtitle",
-    "lang": "▩1%s教学"
+    "lang": "▩1%s第一道回声"
   },
   {
     "id": "towerbossteachstart",
-    "lang": "开始教学"
+    "lang": "驶入回声"
   },
   {
     "id": "towerbossteachpass",
-    "lang": "再次教学"
+    "lang": "再入回声"
   },
   {
     "id": "towerassistbossviewtips",
-    "lang": "翻覆之舟中，自动解锁协战Boss并提升至▩1%s级"
+    "lang": "翻覆之舟中，迷思原型将默认解锁并自动提升为▩1%s级"
   },
   {
     "id": "achievementmainview_spgroup_journey",
@@ -5961,7 +5961,7 @@
   },
   {
     "id": "lengZhou6_enemy_skill_title",
-    "lang": "▩1%s回合后技能释放"
+    "lang": "▩1%s回合后进行反驳"
   },
   {
     "id": "lengZhou6_skill_round",
@@ -5973,7 +5973,7 @@
   },
   {
     "id": "lengZhou6_enemy_skill_title_2",
-    "lang": "本次回合技能释放"
+    "lang": "本次回合进行反驳"
   },
   {
     "id": "warmup_radiotaskitem_day",
@@ -5981,7 +5981,7 @@
   },
   {
     "id": "v2a5_challenge_currencyreplacetipsview_desc1",
-    "lang": "鬃毛信托已升级为鬃毛基金，使用新的货币【基金会代币】，过去鬃毛信托的货币将1：1全部转换为新货币"
+    "lang": "欢迎加入“安保小队”。为了避免不可知的情况，我们会收走你们身上的“外物”，比如这些信托票据。\n但是请放心，我们会为你们准备与您认知相通的等价物。"
   },
   {
     "id": "act191_herogroupview_mainteam",
@@ -6000,16 +6000,20 @@
     "lang": "干扰已屏蔽"
   },
   {
+    "id": "v2a7_coopergarland_right_joystick",
+    "lang": "摇杆模式（右手）"
+  },
+  {
+    "id": "v2a7_coopergarland_left_joystick",
+    "lang": "摇杆模式（左手）"
+  },
+  {
     "id": "towertask_currenthighscore_level",
     "lang": "总计获得：▩1%s"
   },
   {
     "id": "towerboss_teachskill_unlock",
-    "lang": "[通关全部教学关卡解锁]"
-  },
-  {
-    "id": "act191stageview_rank",
-    "lang": "阵容评估：▩1%s"
+    "lang": "[通关全部第一道回声解锁]"
   },
   {
     "id": "activitymap_hardmode_reward_count",
@@ -6058,5 +6062,33 @@
   {
     "id": "dungeon_map_submit_new",
     "lang": "提交▩1%s<color=#ff0000>▩2%s</color>/▩3%s"
+  },
+  {
+    "id": "multiple_1",
+    "lang": "×▩1%s"
+  },
+  {
+    "id": "item_characterdestinystone_second_confirm",
+    "lang": "使用后，将唤起当前闪念（若未唤起），并直升该闪念角色的狂想/解构等级至MAX"
+  },
+  {
+    "id": "summon_pool_exchange",
+    "lang": "「▩1%s」▩2%s"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_item",
+    "lang": "通过故事章节<#FFA044>▩1%s</color>解锁"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_eventiterface",
+    "lang": "通过故事章节<#FFA044>▩1%s</color>解锁更多"
+  },
+  {
+    "id": "v2a7_newbie_rewardclaim_texts",
+    "lang": "已解锁所有角色，请完成自选"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_item_finish",
+    "lang": "角色<#FFA044>已解锁</color>（故事章节▩1%s已通过）"
   }
 ]

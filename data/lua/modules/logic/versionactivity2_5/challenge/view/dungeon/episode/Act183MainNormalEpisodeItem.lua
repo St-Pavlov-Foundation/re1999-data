@@ -1,96 +1,6 @@
 module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183MainNormalEpisodeItem", package.seeall)
 
 slot0 = class("Act183MainNormalEpisodeItem", Act183BaseEpisodeItem)
-slot1 = {
-	{
-		-8.76,
-		-77.2,
-		0,
-		0,
-		0
-	},
-	{
-		-36.5,
-		-136.6,
-		0,
-		0,
-		0
-	},
-	{
-		45.9,
-		-107.4,
-		0,
-		0,
-		-8.29
-	},
-	{
-		-63.7,
-		-111.71,
-		0,
-		0,
-		0
-	}
-}
-slot2 = {
-	{
-		-229.5,
-		40.9,
-		9.9,
-		0,
-		0
-	},
-	{
-		-229.4,
-		23.2,
-		0,
-		0,
-		0
-	},
-	{
-		-191.5,
-		57.2,
-		0,
-		0,
-		-9.27
-	},
-	{
-		-245,
-		5,
-		0,
-		0,
-		0
-	}
-}
-slot3 = {
-	{
-		-3.6,
-		42.4,
-		0,
-		0,
-		0
-	},
-	{
-		47.4,
-		34.2,
-		0,
-		0,
-		0
-	},
-	{
-		31,
-		13.8,
-		0,
-		0,
-		0
-	},
-	{
-		4.4,
-		-7.3,
-		0,
-		0,
-		0
-	}
-}
 
 function slot0.getItemParentPath(slot0)
 	return "root/middle/#go_episodecontainer/go_point" .. slot0
@@ -112,6 +22,8 @@ function slot0.init(slot0, slot1)
 	slot0._imagecondition = gohelper.findChildImage(slot0.go, "Info/image_condition")
 	slot0._goescape1 = gohelper.findChild(slot0.go, "Info/rules/image_rule1/go_repressbutterfly1")
 	slot0._goescape2 = gohelper.findChild(slot0.go, "Info/rules/image_rule2/go_repressbutterfly2")
+	slot0._gostars = gohelper.findChild(slot0.go, "go_finish/go_stars")
+	slot0._gostaritem = gohelper.findChild(slot0.go, "go_finish/go_stars/stars/go_staritem")
 	slot0._animrepress1 = gohelper.onceAddComponent(slot0._gorepress1, gohelper.Type_Animator)
 	slot0._animrepress2 = gohelper.onceAddComponent(slot0._gorepress2, gohelper.Type_Animator)
 	slot0._animescape1 = gohelper.onceAddComponent(slot0._goescape1, gohelper.Type_Animator)
@@ -150,8 +62,7 @@ function slot0.onUpdateMo(slot0, slot1)
 
 	slot0._animcondition:Play(slot0._isAllConditionPass and "lighted" or "gray", 0, 0)
 	slot0:refreshRules()
-	slot0:setInfoPositionAndRotation()
-	slot0:setIndexPositionAndRotation()
+	slot0:refreshPassStarList(slot0._gostaritem)
 end
 
 function slot0.refreshRules(slot0)
@@ -167,18 +78,11 @@ function slot0.refreshRules(slot0)
 	gohelper.setActive(slot0._goescape2, slot0._rule2status == Act183Enum.RuleStatus.Escape)
 end
 
-function slot0.setInfoPositionAndRotation(slot0)
-	Act183Helper.setTranPositionAndRotation(slot0._episodeId, slot0:getConfigOrder(), uv0, slot0._goinfo.transform)
-end
-
-function slot0.setIndexPositionAndRotation(slot0)
-	Act183Helper.setTranPositionAndRotation(slot0._episodeId, slot0:getConfigOrder(), uv0, slot0._imageindex.transform)
-end
-
 function slot0.playFinishAnim(slot0)
 	uv0.super.playFinishAnim(slot0)
 	slot0:playRepressAnim()
 	slot0:playAllConditionPassAnim()
+	AudioMgr.instance:trigger(AudioEnum.UI.Act183_EpisodeFinished_Star)
 end
 
 function slot0.playRepressAnim(slot0)
@@ -199,10 +103,6 @@ function slot0.playAllConditionPassAnim(slot0)
 	if slot0._isAllConditionPass then
 		slot0._animcondition:Play("light", 0, 0)
 	end
-end
-
-function slot0._getCheckIconPosAndRotConfig(slot0, slot1)
-	return uv0 and uv0[slot1]
 end
 
 return slot0

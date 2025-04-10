@@ -351,7 +351,7 @@ function slot0.sendAutoRoundRequest(slot0, slot1)
 		table.insert(slot2.opers, slot8)
 	end
 
-	slot2.toId = FightDataHelper.operationDataMgr.curSelectEntityId == 0 and "0" or "0"
+	slot2.toId = FightDataHelper.operationDataMgr.curSelectEntityId == 0 and "0" or slot3
 
 	slot0:sendMsg(slot2)
 end

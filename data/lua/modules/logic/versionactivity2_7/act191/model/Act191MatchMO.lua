@@ -10,27 +10,25 @@ function slot0.init(slot0, slot1)
 	slot0.heroMap = slot1.heroMap
 	slot0.subHeroMap = slot1.subHeroMap
 	slot0.enhanceSet = slot1.enhanceSet
-	slot0.wareHouseInfo = slot1.wareHouseInfo
+	slot0.wareHouseInfo = slot1.warehouseInfo
 end
 
 function slot0.getRoleCo(slot0, slot1)
 	if slot0.robot then
 		return Activity191Config.instance:getRoleCo(slot1)
-	else
-		return Activity191Config.instance:getRoleCoByNativeId(slot1, slot0:getHeroInfo(slot1, true).star)
+	elseif slot0:getHeroInfo(slot1, true) then
+		return Activity191Config.instance:getRoleCoByNativeId(slot1, slot2.star)
 	end
 end
 
 function slot0.getHeroInfo(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot0.wareHouseInfo.hero) do
-		if slot7.heroId == slot1 then
-			return slot7
-		end
-	end
+	slot3 = slot0.wareHouseInfo.heroInfoMap[tostring(slot1)]
 
-	if slot2 then
+	if slot2 and not slot3 then
 		logError("enemyHeroInfo not found" .. slot1)
 	end
+
+	return slot3
 end
 
 function slot0.getItemCo(slot0, slot1)
@@ -40,10 +38,10 @@ function slot0.getItemCo(slot0, slot1)
 end
 
 function slot0.getItemInfo(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0.wareHouseInfo.item) do
-		if slot6.uid == slot1 then
-			return slot6
-		end
+	if slot0.wareHouseInfo.itemInfoMap[tostring(slot1)] then
+		return slot2
+	else
+		logError("enemyItemInfo not found" .. slot1)
 	end
 end
 
@@ -58,11 +56,9 @@ function slot0.getTeamFetterCntDic(slot0)
 				slot7[slot14] = 1
 			end
 
-			for slot13 = 1, 2 do
-				if slot6["itemUid" .. slot13] ~= 0 and not string.nilorempty(slot0:getItemCo(slot14).tag) then
-					for slot20, slot21 in ipairs(string.split(slot15.tag, "#")) do
-						slot7[slot21] = 1
-					end
+			if slot6.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot6.itemUid1).tag) then
+				for slot14, slot15 in ipairs(string.split(slot10.tag, "#")) do
+					slot7[slot15] = 1
 				end
 			end
 		end
@@ -109,25 +105,12 @@ function slot0.getFetterHeroList(slot0, slot1)
 					inBag = slot10,
 					transfer = slot9
 				}
-			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) then
-				slot13 = false
-
-				if slot12.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot12.itemUid1).tag) and tabletool.indexOf(string.split(slot14.tag, "#"), slot1) then
-					slot2[#slot2 + 1] = {
-						inBag = 2,
-						transfer = 1,
-						config = slot8
-					}
-					slot13 = true
-				end
-
-				if not slot13 and slot12.itemUid2 ~= 0 and not string.nilorempty(slot0:getItemCo(slot12.itemUid2).tag) and tabletool.indexOf(string.split(slot14.tag, "#"), slot1) then
-					slot2[#slot2 + 1] = {
-						inBag = 2,
-						transfer = 1,
-						config = slot8
-					}
-				end
+			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) and slot12.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot12.itemUid1).tag) and tabletool.indexOf(string.split(slot13.tag, "#"), slot1) then
+				slot2[#slot2 + 1] = {
+					inBag = 2,
+					transfer = 1,
+					config = slot8
+				}
 			end
 		end
 	end

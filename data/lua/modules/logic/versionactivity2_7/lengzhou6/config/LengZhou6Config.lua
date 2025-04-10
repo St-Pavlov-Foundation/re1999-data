@@ -144,6 +144,10 @@ function slot0.recordEnemyLastRandomId(slot0, slot1)
 end
 
 function slot0.setSelectEnemyRandomId(slot0, slot1, slot2)
+	if slot2 == nil then
+		return
+	end
+
 	if slot0._selectEnemyIds == nil then
 		slot0._selectEnemyIds = {}
 	end
@@ -151,15 +155,19 @@ function slot0.setSelectEnemyRandomId(slot0, slot1, slot2)
 	slot0._selectEnemyIds[slot2] = (slot0._selectEnemyIds[slot2] or 0) + 1
 
 	if slot0._selectEnemyIds[slot2] == 2 then
-		for slot9 = 1, #slot0._enemyRandomIdsConfig[slot0:getEnemyRandomRealIndex(slot1)] do
-			if slot5[slot9] == slot2 then
-				table.remove(slot5, slot9)
+		slot4 = slot0:getEnemyRandomRealIndex(slot1)
 
-				break
+		if slot0._enemyRandomIdsConfig ~= nil then
+			for slot9 = 1, #slot0._enemyRandomIdsConfig[slot4] do
+				if slot5[slot9] == slot2 then
+					table.remove(slot5, slot9)
+
+					break
+				end
 			end
-		end
 
-		slot0._enemyRandomIdsConfig[slot4] = slot5
+			slot0._enemyRandomIdsConfig[slot4] = slot5
+		end
 	end
 end
 
@@ -271,6 +279,12 @@ function slot0.getHealValue(slot0, slot1, slot2)
 	end
 
 	return slot0._eliminateBattleHeal[slot1][slot2][1] or 0, slot3[2] or 0
+end
+
+function slot0.clearLevelCache(slot0)
+	slot0._enemyRandomIdsConfig = nil
+	slot0._enemyEndlessLibraryRound = nil
+	slot0._selectEnemyIds = nil
 end
 
 slot0.instance = slot0.New()

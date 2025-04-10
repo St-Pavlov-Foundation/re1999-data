@@ -1,56 +1,47 @@
 [
   {
-    "id": 1,
     "activityId": 12701,
     "tag": "extraAction",
-    "name": "额外行动"
+    "sortIndex": 1
   },
   {
-    "id": 2,
     "activityId": 12701,
     "tag": "rite",
-    "name": "仪式"
+    "sortIndex": 2
   },
   {
-    "id": 3,
     "activityId": 12701,
     "tag": "enlightenment",
-    "name": "启示"
+    "sortIndex": 3
   },
   {
-    "id": 4,
     "activityId": 12701,
     "tag": "lossLife",
-    "name": "燃血"
+    "sortIndex": 4
   },
   {
-    "id": 5,
     "activityId": 12701,
     "tag": "electricity",
-    "name": "电能"
+    "sortIndex": 5
   },
   {
-    "id": 6,
     "activityId": 12701,
     "tag": "upgrade",
-    "name": "升阶"
+    "sortIndex": 6
   },
   {
-    "id": 7,
     "activityId": 12701,
     "tag": "oldMoney",
-    "name": "oldMoney"
+    "sortIndex": 7
   },
   {
-    "id": 8,
     "activityId": 12701,
     "tag": "employe",
-    "name": "雇员"
+    "sortIndex": 8
   },
   {
-    "id": 9,
     "activityId": 12701,
     "tag": "cure",
-    "name": "治疗"
+    "sortIndex": 9
   }
 ]

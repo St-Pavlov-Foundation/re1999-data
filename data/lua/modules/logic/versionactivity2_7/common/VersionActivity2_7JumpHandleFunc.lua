@@ -58,9 +58,7 @@ end
 
 function slot0.jumpTo12701(slot0)
 	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterView(function ()
-		Activity191Controller.instance:openMainView({
-			actId = uv0
-		})
+		Activity191Controller.instance:openMainView()
 	end, nil, VersionActivity2_7Enum.ActivityId.Act191, true)
 
 	return JumpEnum.JumpResult.Success
@@ -97,8 +95,34 @@ function slot0.jumpTo12707(slot0, slot1)
 	return JumpEnum.JumpResult.Success
 end
 
-function VersionActivity2_5JumpHandleFunc.enterRoleActivity(slot0)
+function slot0.jumpTo12714(slot0, slot1)
+	slot2 = slot1[2]
+
+	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(uv0.enterRoleActivity, slot2, slot2)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function slot0.enterRoleActivity(slot0)
 	RoleActivityController.instance:enterActivity(slot0)
+end
+
+function slot0.jumpTo12702(slot0, slot1)
+	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(nil, , slot1[2])
+
+	return JumpEnum.JumpResult.Success
+end
+
+function slot0.jumpTo12703(slot0, slot1)
+	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(nil, , slot1[2])
+
+	return JumpEnum.JumpResult.Success
+end
+
+function slot0.jumpTo12704(slot0, slot1)
+	VersionActivityFixedHelper.getVersionActivityEnterController():openVersionActivityEnterView(nil, , slot1[2])
+
+	return JumpEnum.JumpResult.Success
 end
 
 return slot0

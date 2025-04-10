@@ -24,14 +24,14 @@ function slot0.updateAct192Info(slot0, slot1)
 
 	if slot1.episodes then
 		for slot7, slot8 in ipairs(slot3) do
-			slot0:updateAct192Episode(slot2, slot8.episodeId, slot8.isFinished)
+			slot0:updateAct192Episode(slot2, slot8.episodeId, slot8.isFinished, slot8.progress)
 		end
 	end
 
 	slot0:updateNewestEpisode(slot2)
 end
 
-function slot0.updateAct192Episode(slot0, slot1, slot2, slot3)
+function slot0.updateAct192Episode(slot0, slot1, slot2, slot3, slot4)
 	if not slot1 or not slot2 then
 		return
 	end
@@ -40,11 +40,12 @@ function slot0.updateAct192Episode(slot0, slot1, slot2, slot3)
 		slot0._actInfoDic[slot1] = {}
 	end
 
-	if not slot4[slot2] then
-		slot4[slot2] = {}
+	if not slot5[slot2] then
+		slot5[slot2] = {}
 	end
 
-	slot5.isFinished = slot3
+	slot6.isFinished = slot3
+	slot6.progress = slot4
 end
 
 function slot0.updateNewestEpisode(slot0, slot1)
@@ -107,6 +108,14 @@ end
 
 function slot0.isFinishedEpisode(slot0, slot1, slot2)
 	return slot0:getEpisodeInfo(slot1, slot2) and slot3.isFinished
+end
+
+function slot0.getEpisodeProgress(slot0, slot1, slot2)
+	if string.nilorempty(slot0:getEpisodeInfo(slot1, slot2) and slot3.progress) then
+		slot4 = CooperGarlandEnum.Const.DefaultGameProgress
+	end
+
+	return tonumber(slot4)
 end
 
 function slot0.getNewestEpisodeId(slot0, slot1)

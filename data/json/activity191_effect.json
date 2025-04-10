@@ -302,13 +302,13 @@
   {
     "id": 234,
     "type": 4,
-    "typeParam": "1#3#0#0#1",
+    "typeParam": "1#4#0#0#1",
     "itemParam": ""
   },
   {
     "id": 235,
     "type": 4,
-    "typeParam": "1#4#0#0#1",
+    "typeParam": "2#4#1#999#1",
     "itemParam": ""
   },
   {
@@ -484,12 +484,6 @@
     "type": 9,
     "typeParam": "20008",
     "itemParam": ""
-  },
-  {
-    "id": 501,
-    "type": 3,
-    "typeParam": "1#2#1#100#1",
-    "itemParam": "1002#1"
   },
   {
     "id": 502,

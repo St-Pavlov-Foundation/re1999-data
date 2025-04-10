@@ -110,7 +110,7 @@
   {
     "heroId": 3097,
     "skinId": 1,
-    "motion": "baqiang1|baqiang2|baqiang3",
+    "motion": "baqiang1|baqiang2|baqiang3|mingqiang",
     "onlyStopCut": 1
   },
   {
@@ -183,6 +183,12 @@
     "heroId": 3117,
     "skinId": 1,
     "motion": "beishou|shizhi|shizhi2",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3108,
+    "skinId": 310803,
+    "motion": "biaoyan",
     "onlyStopCut": 1
   }
 ]

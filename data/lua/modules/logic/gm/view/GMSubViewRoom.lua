@@ -152,6 +152,7 @@ function slot0._initL4(slot0)
 	end
 
 	slot0:addDropDown(slot1, "小屋角色交互", slot2, slot0._onRoomInteractionSelectChanged, slot0, {
+		tempH = 450,
 		total_w = 650,
 		drop_w = 415
 	})

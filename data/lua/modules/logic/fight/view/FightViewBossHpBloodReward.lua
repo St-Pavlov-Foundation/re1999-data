@@ -14,6 +14,7 @@ end
 function slot0.addEvents(slot0)
 	slot0:com_registFightEvent(FightEvent.UpdateFightParam, slot0.onUpdateFightParam)
 	slot0:com_registFightEvent(FightEvent.PlayTimelineHit, slot0.onPlayTimelineHit)
+	slot0:com_registFightEvent(FightEvent.AfterCorrectData, slot0.onAfterCorrectData)
 end
 
 function slot0.onConstructor(slot0, slot1)
@@ -28,6 +29,11 @@ function slot0.onOpen(slot0)
 
 	slot0:refreshItems()
 	slot0:refreshHp()
+end
+
+function slot0.onAfterCorrectData(slot0)
+	slot0:refreshItems()
+	slot0:com_playTween(FightTweenType.DOFillAmount, slot0.hpImg, (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
 end
 
 function slot0.onPlayTimelineHit(slot0, slot1, slot2)

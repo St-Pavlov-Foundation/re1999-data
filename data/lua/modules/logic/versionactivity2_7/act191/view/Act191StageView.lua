@@ -4,10 +4,13 @@ slot0 = class("Act191StageView", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._goNodeList = gohelper.findChild(slot0.viewGO, "#go_NodeList")
-	slot0._goFightStage = gohelper.findChild(slot0.viewGO, "#go_FightStage")
 	slot0._goNormalStage = gohelper.findChild(slot0.viewGO, "#go_NormalStage")
+	slot0._goFightStage = gohelper.findChild(slot0.viewGO, "#go_FightStage")
+	slot0._goTeam = gohelper.findChild(slot0.viewGO, "#go_Team")
 	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Enter")
 	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
+	slot0._txtCoin = gohelper.findChildText(slot0.viewGO, "go_topright/Coin/#txt_Coin")
+	slot0._txtScore = gohelper.findChildText(slot0.viewGO, "go_topright/Score/#txt_Score")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -34,9 +37,7 @@ function slot0._editableInitView(slot0)
 	slot0.actId = Activity191Model.instance:getCurActId()
 
 	gohelper.setActive(slot0._btnEnter, false)
-end
-
-function slot0.onUpdateParam(slot0)
+	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.TeamComp, slot0._goTeam), Act191TeamComp, slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -44,7 +45,9 @@ function slot0.onOpen(slot0)
 	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
 
 	slot2 = Activity191Model.instance:getActInfo():getGameInfo()
-	slot4 = #Activity191Helper.matchKeyInArray(slot2.nodeInfo, "nodeId", slot2.curNode).selectNodeStr
+	slot0._txtScore.text = slot2.score
+	slot0._txtCoin.text = slot2.coin
+	slot4 = #Activity191Helper.matchKeyInArray(slot2.nodeInfo, slot2.curNode, "nodeId").selectNodeStr
 	slot0.stageItemList = {}
 	slot0.nodeDetailMoList = slot0:getUserDataTb_()
 
@@ -70,35 +73,52 @@ function slot0.onOpen(slot0)
 				gohelper.setActive(slot17, slot13)
 
 				slot0:getUserDataTb_().goSelect = gohelper.findChild(slot15, "go_Select")
-				slot24 = gohelper.findChild(slot15, "reward")
+				slot23 = gohelper.findChild(slot15, "reward")
 
 				gohelper.setActive(gohelper.findChild(slot15, "stage/go_Spine"), slot13)
 				gohelper.setActive(gohelper.findChild(slot15, "stage/go_Unknown"), slot14)
-				gohelper.findChildSingleImage(slot15, "simage_ModeBg"):LoadImage(ResUrl.getAct191SingleBg("stage/act191_stage_fightmode_" .. slot8))
 				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot15, "image_NodeNum"), "act174_stage_num_0" .. slot8)
 
-				slot26 = nil
+				slot24 = nil
 
 				if slot13 then
-					slot27 = lua_activity191_fight_event.configDict[slot11.fightEventId]
-					gohelper.findChildText(slot15, "info/txt_Level").text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("act191stageview_rank"), slot27.fightLevel)
-					gohelper.findChildText(slot15, "info/txt_Name").text = slot27.title
+					slot25 = lua_activity191_fight_event.configDict[slot11.fightEventId]
 
-					slot0:createSpine(slot19, slot27)
+					UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot15, "info/image_Level"), "act191_level_" .. string.lower(slot25.fightLevel))
+					slot0:createSpine(slot18, slot25)
 
-					slot26 = GameUtil.splitString2(slot27.rewardView, true)
+					slot24 = GameUtil.splitString2(slot25.rewardView, true)
+
+					gohelper.setActive(gohelper.findChild(slot15, "info/go_attribute"), false)
 				else
-					slot22.text = GameUtil.getSubPlaceholderLuaLangOneParam(slot25, lua_activity191_match_rank.configDict[slot11.matchInfo.rank].fightLevel)
-					slot23.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.PvpEpisodeName].value2
-					slot26 = GameUtil.splitString2(lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot11.type]].rewardView, true)
+					UISpriteSetMgr.instance:setAct174Sprite(slot21, "act191_level_" .. string.lower(lua_activity191_match_rank.configDict[slot11.matchInfo.rank].fightLevel))
+
+					slot27 = lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot11.type]]
+					slot24 = GameUtil.splitString2(slot27.rewardView, true)
+
+					if GameUtil.splitString2(slot27.attribute, true) then
+						for slot32 = 1, 2 do
+							slot33 = gohelper.findChild(slot22, slot32)
+
+							if slot28[slot32] then
+								UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot33, "icon"), "icon_att_" .. slot28[slot32][1])
+
+								gohelper.findChildText(slot33, "txt_attribute").text = (slot28[slot32][2] <= 0 or string.format("+%s%%", slot35 / 10)) and string.format("%s%%", slot35 / 10)
+							end
+
+							gohelper.setActive(slot33, slot28[slot32])
+						end
+					end
+
+					gohelper.setActive(slot22, slot28)
 				end
 
-				for slot30, slot31 in ipairs(slot26) do
-					slot33 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot24), Act191RewardItem)
+				for slot28, slot29 in ipairs(slot24) do
+					slot31 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot23), Act191RewardItem)
 
-					slot33:setData(slot31[1], slot31[2])
-					slot33:setExtraParam({
-						index = slot30,
+					slot31:setData(slot29[1], slot29[2])
+					slot31:setExtraParam({
+						index = slot28,
 						fromView = slot0.viewName
 					})
 				end
@@ -162,9 +182,6 @@ function slot0.onClose(slot0)
 	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
 end
 
-function slot0.onDestroyView(slot0)
-end
-
 function slot0.clickStage(slot0, slot1)
 	if not slot0.selectIndex then
 		gohelper.setActive(slot0._btnEnter, true)
@@ -187,7 +204,7 @@ end
 function slot0.onSelectNode(slot0, slot1, slot2)
 	if slot2 == 0 then
 		Activity191Controller.instance:nextStep()
-		slot0:closeThis()
+		ViewMgr.instance:closeView(slot0.viewName)
 	end
 end
 

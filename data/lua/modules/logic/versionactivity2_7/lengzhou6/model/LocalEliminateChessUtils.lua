@@ -186,7 +186,7 @@ function slot0.checkWithDirection(slot0, slot1, slot2, slot3, slot4, slot5)
 						slot20 = slot1 + (slot16 ~= 0 and slot16 / 2 or slot16)
 					end
 
-					if slot19 >= 1 and slot20 >= 1 and slot19 <= slot3 and slot20 <= slot4 and slot5[slot19][slot20] ~= nil and not slot21:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot19, slot20) == nil then
+					if slot19 >= 1 and slot20 >= 1 and slot19 <= slot3 and slot20 <= slot4 and slot5[slot19][slot20] ~= nil and not slot21:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot19, slot20) == nil and slot21.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone and slot21.id ~= EliminateEnum_2_7.InvalidId then
 						table.insert(slot6, {
 							x = slot17,
 							y = slot18
@@ -207,7 +207,7 @@ function slot0._findTypeXY(slot0, slot1, slot2, slot3, slot4)
 
 	for slot8 = 1, slot1 do
 		for slot12 = 1, slot2 do
-			if slot0[slot8][slot12].id == slot3 and not slot13:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot8, slot12) == nil then
+			if slot0[slot8][slot12].id == slot3 and not slot13:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot8, slot12) == nil and slot13.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
 				slot14 = true
 
 				if slot4 ~= nil then
@@ -231,14 +231,14 @@ function slot0._findTypeXY(slot0, slot1, slot2, slot3, slot4)
 end
 
 slot5 = {
+	8,
 	7,
-	9,
 	6,
+	8,
 	7,
-	9,
 	6,
+	8,
 	7,
-	9,
 	6
 }
 
@@ -248,6 +248,10 @@ function slot0.getFixDropId()
 	end
 
 	return table.remove(uv0, 1)
+end
+
+function slot0.getChessPos(slot0, slot1)
+	return (slot0 - 1) * EliminateEnum_2_7.ChessWidth + EliminateEnum_2_7.ChessIntervalX * (slot0 - 1), (slot1 - 1) * EliminateEnum_2_7.ChessHeight + EliminateEnum_2_7.ChessIntervalY * (slot1 - 1)
 end
 
 slot0.instance = slot0.New()

@@ -39,6 +39,8 @@ function slot0.realJumpTowerView(slot0, slot1)
 		slot0:openBossTowerEpisodeView(slot2, slot1.towerId)
 	elseif slot2 == TowerEnum.TowerType.Limited then
 		slot0:openTowerTimeLimitLevelView()
+	elseif slot2 == TowerEnum.TowerType.Normal then
+		slot0:openTowerPermanentView()
 	end
 
 	if slot0.jumpFlow then
@@ -359,6 +361,7 @@ function slot0.towerTaskDataRequest(slot0)
 end
 
 function slot0.dailyRefresh(slot0)
+	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore)
 	uv0.instance:dispatchEvent(TowerEvent.DailyReresh)
 end
 

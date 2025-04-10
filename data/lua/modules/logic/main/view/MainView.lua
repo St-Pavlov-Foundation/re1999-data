@@ -499,8 +499,8 @@ function slot0.storeRedDotRefreshFunc(slot0, slot1)
 			slot0:showBankNewEffect(true)
 		end
 
-		slot0:showStoreDeadline(false)
-		slot0:registStoreDeadlineCall(false)
+		slot0:showStoreDeadline(not slot4 and not slot1.show)
+		slot0:registStoreDeadlineCall(not slot4 and not slot1.show)
 
 		return
 	end

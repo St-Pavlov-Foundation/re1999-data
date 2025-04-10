@@ -38,6 +38,22 @@ function slot0.openSettlementView(slot0)
 	ViewMgr.instance:openView(ViewName.Act191SettlementView)
 end
 
+function slot0.openHeroTipView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act191HeroTipView, slot1)
+end
+
+function slot0.openCollectionTipView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act191CollectionTipView, slot1)
+end
+
+function slot0.openEnhanceTipView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act191EnhanceTipView, slot1)
+end
+
+function slot0.openItemView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.Act191ItemView, slot1)
+end
+
 function slot0._openStoreViewAfterRpc(slot0, slot1, slot2)
 	if slot2 == 0 then
 		ViewMgr.instance:openView(ViewName.Act191StoreView)
@@ -59,11 +75,11 @@ end
 function slot0.nextStep(slot0)
 	slot1 = Activity191Model.instance:getActInfo():getGameInfo()
 
-	if string.nilorempty(Activity191Helper.matchKeyInArray(slot1.nodeInfo, "nodeId", slot1.curNode).nodeStr) then
+	if string.nilorempty(Activity191Helper.matchKeyInArray(slot1.nodeInfo, slot1.curNode, "nodeId").nodeStr) then
+		ViewMgr.instance:openView(ViewName.Act191StageView)
+
 		if slot1.nodeChange then
 			ViewMgr.instance:openView(ViewName.Act191SwitchView)
-		else
-			ViewMgr.instance:openView(ViewName.Act191StageView)
 		end
 	else
 		slot3 = Act191NodeDetailMO.New()
@@ -114,6 +130,14 @@ function slot0.startFight(slot0)
 
 	FightController.instance:setFightParamByEpisodeAndBattle(slot2, slot3.battleId):setDungeon(slot3.chapterId, slot2)
 	DungeonRpc.instance:sendStartDungeonRequest(slot3.chapterId, slot2)
+end
+
+function slot0.checkOpenGetView(slot0)
+	if #Activity191Model.instance:getActInfo().triggerParams ~= 0 then
+		ViewMgr.instance:openView(ViewName.Act191GetView, slot1.triggerParams)
+
+		return true
+	end
 end
 
 slot0.instance = slot0.New()

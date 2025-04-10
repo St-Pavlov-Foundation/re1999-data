@@ -10,5 +10,17 @@
     "item2": "11#12321",
     "desc1": "[入埃及记]&[光辉庙宇]彩蛋预览",
     "desc2": "[妖精蹈足于晨]&[石之奇迹]彩蛋预览"
+  },
+  {
+    "activityId": 12721,
+    "showOnlineTime": "2025-04-17 05:00:00",
+    "showOfflineTime": "2025-05-15 04:59:59",
+    "res_video1": "tutushizi_discovery",
+    "res_video2": "6_discovery",
+    "systemJumpCode": "10173",
+    "item1": "11#12724",
+    "item2": "11#12723",
+    "desc1": "[曲线的居所]&[波浪之家]彩蛋预览",
+    "desc2": "[于火中得见]&[以三语行颂]彩蛋预览"
   }
 ]

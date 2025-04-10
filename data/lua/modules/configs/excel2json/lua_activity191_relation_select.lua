@@ -1,17 +1,15 @@
 module("modules.configs.excel2json.lua_activity191_relation_select", package.seeall)
 
 slot1 = {
-	id = 1,
-	name = 4,
-	activityId = 2,
-	tag = 3
+	tag = 2,
+	sortIndex = 3,
+	activityId = 1
 }
 slot2 = {
-	"id"
+	"activityId",
+	"tag"
 }
-slot3 = {
-	name = 1
-}
+slot3 = {}
 
 return {
 	onLoad = function (slot0)

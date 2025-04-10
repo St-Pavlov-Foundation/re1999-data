@@ -134,7 +134,8 @@ slot0.ChineseViewName = {
 	[ViewName.LengZhou6TaskView] = "冷周六角色任务",
 	[ViewName.CooperGarlandLevelView] = "库珀花环角色活动",
 	[ViewName.CooperGarlandTaskView] = "库珀花环角色任务",
-	[ViewName.TowerHeroTrialView] = "爬塔运营活动"
+	[ViewName.TowerGiftFullView] = "爬塔运营活动",
+	[ViewName.Act191MainView] = "匣中交流赛"
 }
 slot0.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -251,7 +252,8 @@ slot0.NeedTrackViewDict = {
 	[ViewName.LengZhou6TaskView] = true,
 	[ViewName.CooperGarlandLevelView] = true,
 	[ViewName.CooperGarlandTaskView] = true,
-	[ViewName.TowerHeroTrialView] = true
+	[ViewName.TowerGiftFullView] = true,
+	[ViewName.Act191MainView] = true
 }
 slot0.NeedListenTabSwitchList = {
 	ViewName.VersionActivity1_8EnterView,

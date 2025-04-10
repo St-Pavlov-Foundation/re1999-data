@@ -640,8 +640,8 @@ function slot0._btnuseOnClick(slot0)
 		end
 
 		V2a7_SelfSelectSix_PickChoiceController.instance:openCustomPickChoiceView(string.split(slot0._config.effect, "|"), MaterialTipController.onUseSelfSelectSixHeroGift, MaterialTipController, {
-			id = slot0._config.id,
-			quantity = slot2
+			quantity = 1,
+			id = slot0._config.id
 		})
 	elseif slot0._config.subType == ItemEnum.SubType.DestinyStoneUp then
 		if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone) then
@@ -663,7 +663,7 @@ function slot0._btnuseOnClick(slot0)
 		if #slot4 > 0 then
 			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView)
 		else
-			GameFacade.showToast(ToastEnum.DungeonMapLevel)
+			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
 		end
 	else
 		ItemRpc.instance:simpleSendUseItemRequest(slot1, slot2)
@@ -852,6 +852,10 @@ function slot0._refreshUI(slot0)
 			slot1 = false
 		elseif slot0.viewParam.type == MaterialEnum.MaterialType.NewInsight then
 			slot1 = false
+		elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+			slot1 = false
+
+			recthelper.setAnchorY(slot0._btnuse.transform, -190)
 		end
 
 		gohelper.setActive(slot0._gouseDetail, slot1)
@@ -1054,6 +1058,10 @@ end
 function slot0._refreshInclude(slot0)
 	slot1 = (MaterialEnum.SubTypePackages[slot0._config.subType] == true or slot0:_isPackageSkin()) and slot0.viewParam.inpack ~= true
 
+	if slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+		slot1 = true
+	end
+
 	gohelper.setActive(slot0._goinclude, slot1)
 
 	slot2 = 0
@@ -1077,6 +1085,22 @@ function slot0._refreshInclude(slot0)
 
 			for slot9, slot10 in ipairs(string.splitToNumber(slot0._config.effect, "#")) do
 				-- Nothing
+			end
+		elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+			slot4 = {}
+
+			for slot9, slot10 in ipairs(string.split(slot0._config.effect, "|")) do
+				slot12 = {}
+
+				if string.split(slot10, ":")[2] and #slot11[2] > 0 and #string.splitToNumber(slot11[2], ",") > 0 then
+					for slot16, slot17 in ipairs(slot12) do
+						table.insert(slot4, {
+							MaterialEnum.MaterialType.Hero,
+							slot17,
+							1
+						})
+					end
+				end
 			end
 		else
 			slot4 = GameUtil.splitString2(slot0._config.effect, true)

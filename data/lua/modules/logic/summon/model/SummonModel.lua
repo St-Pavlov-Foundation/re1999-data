@@ -360,18 +360,22 @@ function slot0.getSummonFullExSkillHero(slot0, slot1, slot2)
 	end
 
 	for slot8 = 1, #slot4 do
-		slot12, slot13 = nil
+		if HeroModel.instance:getByHeroId(slot4[slot8]) and slot10.exSkillLevel >= 5 then
+			return slot9
+		end
 
-		for slot17 = 1, #SkillConfig.instance:getheroexskillco(slot4[slot8]) do
-			if slot10[slot17] then
-				slot19 = string.splitToNumber(slot18.consume, "#")
-				slot13 = slot19[1]
-				slot12 = slot19[2]
-				slot11 = slot19[3] + 0
+		slot13, slot14 = nil
+
+		for slot18 = 1, #SkillConfig.instance:getheroexskillco(slot9) do
+			if slot11[slot18] then
+				slot20 = string.splitToNumber(slot19.consume, "#")
+				slot14 = slot20[1]
+				slot13 = slot20[2]
+				slot12 = slot20[3] + 0
 			end
 		end
 
-		if slot12 and slot13 and slot11 <= ItemModel.instance:getItemQuantity(slot13, slot12) then
+		if slot13 and slot14 and slot12 <= ItemModel.instance:getItemQuantity(slot14, slot13) then
 			return slot9
 		end
 	end

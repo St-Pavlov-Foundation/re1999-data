@@ -207,10 +207,11 @@ slot0.MainViewActivityState = {
 	WeekWalkHeart = 9,
 	Rouge = 4,
 	SeasonActivity = 3,
-	RoleStoryActivity = 1,
+	Act191 = 10,
 	Act182 = 8,
 	Reactivity = 2,
 	Act178 = 7,
+	RoleStoryActivity = 1,
 	DouQuQu = 6,
 	None = 0
 }

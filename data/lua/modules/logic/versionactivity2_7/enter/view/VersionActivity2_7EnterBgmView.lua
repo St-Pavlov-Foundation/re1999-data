@@ -11,4 +11,9 @@ function slot0.initActHandle(slot0)
 	end
 end
 
+function slot0.defaultBgmHandle(slot0, slot1)
+	uv0.super.defaultBgmHandle(slot0, slot1)
+	VersionActivityFixedDungeonController.instance:dispatchEvent(VersionActivityFixedDungeonEvent.SwitchBGM, slot1)
+end
+
 return slot0

@@ -114,6 +114,9 @@ function slot0.resetCurEliminateCount(slot0)
 	slot0._eliminateCount = 0
 end
 
+function slot0.setDieType(slot0)
+end
+
 function slot0.handleEliminate(slot0)
 	slot1 = LocalEliminateChessModel.instance:getEliminateRecordShowData()
 	slot3 = slot1:getEliminate()
@@ -135,6 +138,21 @@ function slot0.handleEliminate(slot0)
 		}))
 	end
 
+	slot9 = AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_boom
+
+	if LocalEliminateChessModel.instance:getEliminateDieEffect() and slot8 == LengZhou6Enum.SkillEffect.EliminationRange then
+		slot9 = AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_explosion
+
+		LocalEliminateChessModel.instance:setEliminateDieEffect(nil)
+	end
+
+	if slot8 and slot8 == LengZhou6Enum.SkillEffect.EliminationCross then
+		slot9 = AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_combustion
+
+		LocalEliminateChessModel.instance:setEliminateDieEffect(nil)
+	end
+
+	slot5:addWork(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.PlayAudio, slot9))
 	slot0:buildSeqFlow(slot4)
 	slot0:buildSeqFlow(slot5)
 end
@@ -266,7 +284,7 @@ function slot0.createInitMoveStep(slot0)
 
 	for slot6, slot7 in ipairs(LengZhou6EliminateChessItemController.instance:getChess()) do
 		for slot11, slot12 in pairs(slot7) do
-			slot2:addWork(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.Move, EliminateStepUtil.createOrGetMoveStepTable(slot12, EliminateEnum.AniTime.InitDrop, EliminateEnum.AnimType.init)))
+			slot2:addWork(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.Move, EliminateStepUtil.createOrGetMoveStepTable(slot12, EliminateEnum_2_7.InitDropTime * slot11, EliminateEnum.AnimType.init)))
 		end
 	end
 

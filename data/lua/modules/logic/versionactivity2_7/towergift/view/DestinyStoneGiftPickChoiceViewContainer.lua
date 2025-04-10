@@ -15,7 +15,8 @@ function slot0.buildViews(slot0)
 	slot2.cellHeight = 208
 	slot2.cellSpaceH = 16
 	slot2.cellSpaceV = 16
-	slot2.startSpace = 0
+	slot2.startSpace = 10
+	slot2.endSpace = 30
 
 	table.insert(slot1, LuaListScrollView.New(DestinyStoneGiftPickChoiceListModel.instance, slot2))
 	table.insert(slot1, DestinyStoneGiftPickChoiceView.New())

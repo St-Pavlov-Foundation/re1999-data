@@ -29,29 +29,22 @@ function slot0._btnShopOnClick(slot0)
 end
 
 function slot0._btnEnterOnClick(slot0)
-	Activity191Controller.instance:openMainView({
-		actId = VersionActivity2_7Enum.ActivityId.Act191
-	})
+	Activity191Controller.instance:openMainView()
 end
 
 function slot0._editableInitView(slot0)
-	slot0.animComp = VersionActivitySubAnimatorComp.get(slot0.viewGO, slot0)
-	slot0.actId = VersionActivity2_3Enum.ActivityId.Act174
+	slot0.actId = VersionActivity2_7Enum.ActivityId.Act191
 	slot0._txtdesc.text = ActivityConfig.instance:getActivityCo(slot0.actId).actDesc
 end
 
 function slot0.onOpen(slot0)
+	uv0.super.onOpen(slot0)
 	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshCurrency, slot0)
-	slot0.animComp:playOpenAnim()
+	Activity191Rpc.instance:sendGetAct191InfoRequest(slot0.actId)
 	slot0:refreshCurrency()
-	slot0:refreshLeftTime()
 end
 
 function slot0.everySecondCall(slot0)
-	slot0:refreshLeftTime()
-end
-
-function slot0.refreshLeftTime(slot0)
 	slot0._txttime.text = ActivityHelper.getActivityRemainTimeStr(slot0.actId)
 end
 

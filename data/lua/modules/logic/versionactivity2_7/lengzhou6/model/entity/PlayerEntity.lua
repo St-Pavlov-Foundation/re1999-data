@@ -32,6 +32,7 @@ function slot0.getRealConfigHp(slot0)
 end
 
 function slot0.changeHp(slot0, slot1)
+	slot0._hpDiff = slot1
 	slot0._hp = math.max(0, math.min(slot0._hp + slot1, slot0:getRealConfigHp()))
 end
 

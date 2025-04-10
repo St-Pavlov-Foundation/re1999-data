@@ -6,8 +6,6 @@ slot0.UpdateGameInfo = slot1()
 slot0.UpdateBadgeMo = slot1()
 slot0.EndGame = slot1()
 slot0.UpdateTeamInfo = slot1()
-slot0.ModifyTeamName = slot1()
-slot0.SwitchCurTeam = slot1()
 slot0.OnClickHeroEditItem = slot1()
 slot0.OnClickCollectionGroupItem = slot1()
 

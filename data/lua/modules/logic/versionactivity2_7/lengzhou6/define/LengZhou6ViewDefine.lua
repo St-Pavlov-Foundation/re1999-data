@@ -35,7 +35,9 @@ function slot0.init(slot0)
 		},
 		otherRes = {
 			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_skillitem.prefab",
-			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_selectskillitem.prefab"
+			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_selectskillitem.prefab",
+			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_buffitem.prefab",
+			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_effectitem.prefab"
 		}
 	}
 	slot0.LengZhou6GameResult = {

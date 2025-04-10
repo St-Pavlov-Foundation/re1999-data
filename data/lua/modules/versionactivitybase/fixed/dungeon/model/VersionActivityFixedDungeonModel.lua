@@ -142,6 +142,10 @@ end
 
 function slot0.setTipHardModeUnlockOpen(slot0)
 	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:savePlayerPrefs(VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.OpenHardModeUnlockTip, uv0)
+	slot0:refreshVersionActivityEnterRedDot()
+end
+
+function slot0.refreshVersionActivityEnterRedDot(slot0)
 	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
 		[RedDotEnum.DotNode.VersionActivityEnterRedDot] = true
 	})

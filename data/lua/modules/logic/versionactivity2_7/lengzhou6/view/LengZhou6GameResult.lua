@@ -64,6 +64,7 @@ function slot0.onOpen(slot0)
 
 	slot0:initInfo()
 	slot0:initResult()
+	LengZhou6StatHelper.instance:sendGameExit()
 end
 
 function slot0.initInfo(slot0)
@@ -78,6 +79,7 @@ function slot0.initResult(slot0)
 	gohelper.setActive(slot0._gofail, not slot1)
 	gohelper.setActive(slot0._gosuccess, slot1)
 	gohelper.setActive(slot0._gobtn, not slot1)
+	AudioMgr.instance:trigger(slot1 and AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_success or AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_fail)
 	LengZhou6StatHelper.instance:setGameResult(slot1 and LengZhou6Enum.GameResult.win or LengZhou6Enum.GameResult.lose)
 end
 

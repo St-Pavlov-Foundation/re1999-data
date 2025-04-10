@@ -13,6 +13,7 @@ function slot0.onStart(slot0, slot1)
 	slot3 = table.remove(slot1.handCardItemList, slot1.from)
 
 	table.insert(slot1.handCardItemList, slot3)
+	FightViewHandCard.refreshCardIndex(slot1.handCardItemList)
 	slot3:setASFDActive(false)
 
 	if slot3._cardItem then
@@ -23,6 +24,7 @@ function slot0.onStart(slot0, slot1)
 	slot0._clonePlayCardGO = gohelper.cloneInPlace(slot3.go)
 
 	gohelper.setActive(slot3.go, false)
+	slot3:updateItem(#slot1.handCardItemList, nil)
 	slot0:_addTrailEffect(slot0._clonePlayCardGO.transform)
 
 	slot5 = true
@@ -124,8 +126,6 @@ end
 function slot0._onPlayCardDone(slot0)
 	slot0._main_flow:unregisterDoneListener(slot0._onPlayCardDone, slot0)
 	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-	slot0.context.view:_playCardItemInList(slot0.context.from)
-	slot0.context.view:_updateHandCards()
 	slot0:_checkDone()
 end
 

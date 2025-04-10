@@ -8,6 +8,8 @@ function slot0.initClass(slot0)
 	slot0._buffId2Config = {}
 	slot0._oldLayer = {}
 	slot0._buffType = {}
+	slot0.playCount = 0
+	slot0.hideWhenPlayTimeline = {}
 
 	slot0:addEventCb(FightController.instance, FightEvent.SetBuffEffectVisible, slot0._onSetBuffEffectVisible, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, slot0._onBuffUpdate, slot0)
@@ -16,6 +18,27 @@ function slot0.initClass(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.SkillEditorRefreshBuff, slot0._onSkillEditorRefreshBuff, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnSkillPlayStart, slot0._onSkillPlayStart, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnSkillPlayFinish, slot0._onSkillPlayFinish, slot0, LuaEventSystem.High)
+	slot0:addEventCb(FightController.instance, FightEvent.BeforePlayTimeline, slot0.onBeforePlayTimeline, slot0)
+end
+
+function slot0.onBeforePlayTimeline(slot0, slot1)
+	if slot0._entity.id == slot1 then
+		slot0.playCount = slot0.playCount + 1
+
+		for slot5, slot6 in ipairs(slot0.hideWhenPlayTimeline) do
+			slot6:setActive(false, "FightEntitySpecialEffectBuffLayerEnemySkin_onBeforePlayTimeline")
+		end
+	end
+end
+
+function slot0.afterPlayTimeline(slot0)
+	slot0.playCount = slot0.playCount - 1
+
+	if slot0.playCount == 0 then
+		for slot4, slot5 in ipairs(slot0.hideWhenPlayTimeline) do
+			slot5:setActive(true, "FightEntitySpecialEffectBuffLayerEnemySkin_afterPlayTimeline")
+		end
+	end
 end
 
 function slot0._onBeforeEnterStepBehaviour(slot0)
@@ -48,8 +71,12 @@ function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4.id == slot0._entity.id and FightCardDataHelper.isBigSkill(slot2) then
-		slot0:_onSetBuffEffectVisible(slot4.id, true, "FightEntitySpecialEffectBuffLayerEnemySkin_onSkillPlayStart")
+	if slot1:getMO() and slot4.id == slot0._entity.id then
+		if FightCardDataHelper.isBigSkill(slot2) then
+			slot0:_onSetBuffEffectVisible(slot4.id, true, "FightEntitySpecialEffectBuffLayerEnemySkin_onSkillPlayStart")
+		end
+
+		slot0:afterPlayTimeline()
 	end
 end
 
@@ -179,6 +206,10 @@ function slot0._refreshEffect(slot0, slot1, slot2, slot3, slot4)
 		slot0._effectWraps[slot1][slot7] = slot10
 
 		slot10:setActive(false)
+
+		if slot6.hideWhenPlayTimeline == 1 then
+			table.insert(slot0.hideWhenPlayTimeline, slot10)
+		end
 	end
 
 	if slot9 then
@@ -265,6 +296,14 @@ function slot0._releaseBuffIdEffect(slot0, slot1)
 end
 
 function slot0._releaseEffect(slot0, slot1)
+	for slot5, slot6 in ipairs(slot0.hideWhenPlayTimeline) do
+		if slot6 == slot1 then
+			table.remove(slot0.hideWhenPlayTimeline, slot5)
+
+			break
+		end
+	end
+
 	slot0._entity.effect:removeEffect(slot1)
 	FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0._entity.id, slot1)
 end

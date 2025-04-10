@@ -73,7 +73,7 @@ function slot0.openLengZhou6LevelView(slot0)
 end
 
 function slot0.finishLevel(slot0, slot1, slot2)
-	if LengZhou6Model.instance:getEpisodeInfoMo(slot1) ~= nil and slot3:isEndlessEpisode() or not slot3.isFinish then
+	if LengZhou6Model.instance:getEpisodeInfoMo(slot1) ~= nil then
 		LengZhou6Rpc.instance:sendAct190FinishEpisodeRequest(slot1, slot2)
 	end
 
@@ -103,12 +103,18 @@ function slot0._playStoryClear(slot0, slot1)
 
 	slot4 = LengZhou6Model.instance:getCurEpisodeId()
 
-	if LengZhou6Model.instance:getCurActId() == nil or slot4 == nil then
+	if LengZhou6Model.instance:getCurActId() == nil then
 		return
 	end
 
-	if LengZhou6Config.instance:getEpisodeConfig(slot3, slot4).storyClear ~= 0 then
-		StoryController.instance:playStory(slot6, nil, slot0.showFinishEffect, slot0)
+	slot5 = 0
+
+	if slot4 ~= nil then
+		slot5 = LengZhou6Config.instance:getEpisodeConfig(slot3, slot4).storyClear
+	end
+
+	if slot5 ~= 0 then
+		StoryController.instance:playStory(slot5, nil, slot0.showFinishEffect, slot0)
 	else
 		slot0:showFinishEffect()
 	end

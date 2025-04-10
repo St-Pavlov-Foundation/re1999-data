@@ -2,6 +2,18 @@ module("modules.logic.versionactivity2_7.towergift.model.DestinyStoneGiftPickCho
 
 slot0 = class("DestinyStoneGiftPickChoiceListModel", ListScrollModel)
 
+function slot1(slot0, slot1)
+	if (slot0.heroMo.destinyStoneMo:isUnlockSlot() and 1 or 2) ~= (slot1.heroMo.destinyStoneMo:isUnlockSlot() and 1 or 2) then
+		return slot5 < slot4
+	end
+
+	if slot2.rank ~= slot3.rank then
+		return slot6 < slot7
+	end
+
+	return slot1.heroId < slot0.heroId
+end
+
 function slot0.initList(slot0)
 	slot0._moList = {}
 
@@ -11,25 +23,23 @@ function slot0.initList(slot0)
 			slot8 = slot7:getStoneMoList()
 
 			if slot7:isSlotMaxLevel() then
-				if slot8 and #slot8 > 0 then
-					for slot13, slot14 in pairs(slot8) do
-						if not slot14.isUnLock then
-							table.insert(slot0._moList, {
-								heroMo = slot6,
-								heroId = slot6.config.id,
-								stoneMo = slot14,
-								stoneId = slot14.stoneId,
-								isUnLock = false
-							})
-						end
+				for slot13, slot14 in pairs(slot8) do
+					if not slot14.isUnlock then
+						table.insert(slot0._moList, {
+							heroMo = slot6,
+							heroId = slot6.config.id,
+							stoneMo = slot14,
+							stoneId = slot14.stoneId,
+							isUnLock = false
+						})
 					end
 				end
 			else
 				for slot13, slot14 in pairs(slot8) do
 					if ({
-						isUnLock = slot14.isUnLock
+						isUnLock = slot14.isUnlock
 					}).isUnLock then
-						slot15.stonelevel = slot7.level
+						slot15.stonelevel = slot7.rank
 					end
 
 					slot15.heroMo = slot6
@@ -43,6 +53,7 @@ function slot0.initList(slot0)
 		end
 	end
 
+	table.sort(slot0._moList, uv0)
 	slot0:setList(slot0._moList)
 end
 

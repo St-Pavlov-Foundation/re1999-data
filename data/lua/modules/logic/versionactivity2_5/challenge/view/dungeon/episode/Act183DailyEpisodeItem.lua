@@ -1,98 +1,6 @@
 module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183DailyEpisodeItem", package.seeall)
 
 slot0 = class("Act183DailyEpisodeItem", Act183BaseEpisodeItem)
-slot1 = {
-	{
-		-1.9,
-		0,
-		0,
-		0,
-		6.53
-	},
-	{
-		0,
-		0,
-		0,
-		0,
-		0
-	},
-	{
-		0,
-		0,
-		0,
-		0,
-		0
-	}
-}
-slot2 = {
-	{
-		-8.76,
-		-77.2,
-		0,
-		0,
-		0
-	},
-	{
-		112.7,
-		-119.5,
-		0,
-		0,
-		0
-	},
-	{
-		124.6,
-		-126.3,
-		0,
-		0,
-		0
-	}
-}
-slot3 = {
-	{
-		-163.3,
-		79.5,
-		0,
-		0,
-		10.13
-	},
-	{
-		-173.3,
-		100.8,
-		0,
-		0,
-		5.01
-	},
-	{
-		-166.4,
-		92.9,
-		0,
-		0,
-		1.42
-	}
-}
-slot4 = {
-	{
-		122.1,
-		110,
-		0,
-		0,
-		0
-	},
-	{
-		169.7,
-		98.1,
-		0,
-		0,
-		0
-	},
-	{
-		153.1,
-		110,
-		0,
-		0,
-		0
-	}
-}
 
 function slot0.getItemParentPath(slot0)
 	return "root/middle/#go_episodecontainer/go_dailypoint" .. slot0
@@ -144,9 +52,6 @@ function slot0.onUpdateMo(slot0, slot1)
 	end
 
 	slot0:refreshRules()
-	slot0:setIconPositionAndRotation()
-	slot0:setInfoPositionAndRotation()
-	slot0:setIndexPositionAndRotation()
 end
 
 function slot0.refreshRules(slot0)
@@ -179,22 +84,6 @@ function slot0.playRepressAnim(slot0)
 	else
 		slot0._animescape2:Play("in", 0, 0)
 	end
-end
-
-function slot0.setIconPositionAndRotation(slot0)
-	Act183Helper.setTranPositionAndRotation(slot0._episodeId, slot0:getConfigOrder(), uv0, slot0._simageicon.transform)
-end
-
-function slot0.setInfoPositionAndRotation(slot0)
-	Act183Helper.setTranPositionAndRotation(slot0._episodeId, slot0:getConfigOrder(), uv0, slot0._goinfo.transform)
-end
-
-function slot0.setIndexPositionAndRotation(slot0)
-	Act183Helper.setTranPositionAndRotation(slot0._episodeId, slot0:getConfigOrder(), uv0, slot0._imageindex.transform)
-end
-
-function slot0._getCheckIconPosAndRotConfig(slot0, slot1)
-	return uv0 and uv0[slot1]
 end
 
 return slot0

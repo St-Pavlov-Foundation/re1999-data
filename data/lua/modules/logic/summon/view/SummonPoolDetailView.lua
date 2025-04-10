@@ -61,10 +61,10 @@ function slot0._refreshTitle(slot0, slot1)
 		slot0._txtspecialtitlecn.text = string.format("<size=60>%s</size>%s", slot6, slot7)
 	end
 
-	slot0._txttitlecn.text = string.format("「%s」%s", slot3, luaLang("ruledetail"))
+	slot0._txttitlecn.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("summon_pool_exchange"), slot3, luaLang("ruledetail"))
 
 	if slot5 then
-		slot0._txttitleen.text = string.format("「%s」%s", slot4, "Rules")
+		slot0._txttitleen.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("summon_pool_exchange"), slot4, "Rules")
 	end
 
 	gohelper.setActive(slot0._gotitleline, slot5)

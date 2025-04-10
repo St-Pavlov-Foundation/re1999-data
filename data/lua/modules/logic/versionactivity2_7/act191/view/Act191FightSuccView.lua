@@ -3,22 +3,24 @@ module("modules.logic.versionactivity2_7.act191.view.Act191FightSuccView", packa
 slot0 = class("Act191FightSuccView", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0._simagecharacterbg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_characterbg")
-	slot0._goFail = gohelper.findChild(slot0.viewGO, "#go_Fail")
-	slot0._goWin = gohelper.findChild(slot0.viewGO, "#go_Win")
-	slot0._goSpine = gohelper.findChild(slot0.viewGO, "spineContainer/#go_Spine")
-	slot0._simagemaskImage = gohelper.findChildSingleImage(slot0.viewGO, "#simage_maskImage")
-	slot0._txtSayCn = gohelper.findChildText(slot0.viewGO, "#txt_SayCn")
-	slot0._txtSayEn = gohelper.findChildText(slot0.viewGO, "SayEn/#txt_SayEn")
-	slot0._goReward = gohelper.findChild(slot0.viewGO, "#go_Reward")
-	slot0._txtStage = gohelper.findChildText(slot0.viewGO, "Stage/#txt_Stage")
-	slot0._goPvp = gohelper.findChild(slot0.viewGO, "Stage/#go_Pvp")
-	slot0._goHeroItem = gohelper.findChild(slot0.viewGO, "Stage/#go_Pvp/role/layout/#go_HeroItem")
-	slot0._goPve = gohelper.findChild(slot0.viewGO, "Stage/#go_Pve")
-	slot0._gobossHpRoot = gohelper.findChild(slot0.viewGO, "Stage/#go_Pve/#go_bossHpRoot")
-	slot0._gounlimited = gohelper.findChild(slot0.viewGO, "Stage/#go_Pve/#go_bossHpRoot/fight_act191bosshpview/Root/bossHp/Alpha/bossHp/mask/container/imgHp/#go_unlimited")
-	slot0._txtEpisodeName = gohelper.findChildText(slot0.viewGO, "Level/#txt_EpisodeName")
-	slot0._btnData = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Data")
+	slot0._goLeft = gohelper.findChild(slot0.viewGO, "#go_Left")
+	slot0._simagecharacterbg = gohelper.findChildSingleImage(slot0.viewGO, "#go_Left/#simage_characterbg")
+	slot0._goSpine = gohelper.findChild(slot0.viewGO, "#go_Left/spineContainer/#go_Spine")
+	slot0._simagemaskImage = gohelper.findChildSingleImage(slot0.viewGO, "#go_Left/#simage_maskImage")
+	slot0._txtSayCn = gohelper.findChildText(slot0.viewGO, "#go_Left/#txt_SayCn")
+	slot0._txtSayEn = gohelper.findChildText(slot0.viewGO, "#go_Left/SayEn/#txt_SayEn")
+	slot0._goRight = gohelper.findChild(slot0.viewGO, "#go_Right")
+	slot0._goWin = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Win")
+	slot0._goFail = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Fail")
+	slot0._goReward = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Reward")
+	slot0._txtStage = gohelper.findChildText(slot0.viewGO, "#go_Right/Stage/#txt_Stage")
+	slot0._goPvp = gohelper.findChild(slot0.viewGO, "#go_Right/Stage/#go_Pvp")
+	slot0._goHeroItem = gohelper.findChild(slot0.viewGO, "#go_Right/Stage/#go_Pvp/role/layout/#go_HeroItem")
+	slot0._goPve = gohelper.findChild(slot0.viewGO, "#go_Right/Stage/#go_Pve")
+	slot0._gobossHpRoot = gohelper.findChild(slot0.viewGO, "#go_Right/Stage/#go_Pve/#go_bossHpRoot")
+	slot0._gounlimited = gohelper.findChild(slot0.viewGO, "#go_Right/Stage/#go_Pve/#go_bossHpRoot/fight_act191bosshpview/Root/bossHp/Alpha/bossHp/mask/container/imgHp/#go_unlimited")
+	slot0._imageLevel = gohelper.findChildImage(slot0.viewGO, "#go_Right/Level/mainTitle/TeamLvl/#image_Level")
+	slot0._btnData = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Right/#btn_Data")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -55,7 +57,13 @@ end
 function slot0.onOpen(slot0)
 	slot0.actInfo = Activity191Model.instance:getActInfo()
 	slot0.gameInfo = slot0.actInfo:getGameInfo()
-	slot0.curNode = slot0.gameInfo.curNode - 1
+
+	if slot0.gameInfo.state == Activity191Enum.GameState.End then
+		slot0.curNode = slot0.gameInfo.curNode
+	else
+		slot0.curNode = slot0.gameInfo.curNode - 1
+	end
+
 	slot0.nodeInfo = slot0.gameInfo:getNodeInfoById(slot0.curNode)
 	slot0.isWin = slot0.viewParam
 
@@ -65,9 +73,17 @@ function slot0.onOpen(slot0)
 	slot0._simagemaskImage:LoadImage(ResUrl.getFightResultcIcon("bg_zhezhao"))
 
 	slot0.mySideMoList = FightDataHelper.entityMgr:getMyNormalList(nil, true)
+	slot0.enemyMoList = FightDataHelper.entityMgr:getEnemyNormalList(nil, true)
 	slot0._randomEntityMO = slot0:_getRandomEntityMO()
 
-	slot0:_setSpineVoice()
+	if slot0._randomEntityMO then
+		slot0:_setSpineVoice()
+		gohelper.setActive(slot0._goLeft, true)
+		recthelper.setAnchorX(slot0._goRight.transform, 0)
+	else
+		gohelper.setActive(slot0._goLeft, false)
+		recthelper.setAnchorX(slot0._goRight.transform, -413)
+	end
 
 	slot0._canPlayVoice = false
 
@@ -84,11 +100,13 @@ function slot0.onOpen(slot0)
 	slot0.isPve = Activity191Helper.isPveBattle(slot0.nodeDetailMo.type)
 
 	if slot0.isPvp then
-		slot7 = GameUtil.setFirstStrSize(lua_activity191_const.configDict[Activity191Enum.ConstKey.PvpEpisodeName].value2, 70)
-		slot8 = lua_activity191_match_rank.configDict[slot0.nodeDetailMo.matchInfo.rank].fightLevel
-		slot0._txtEpisodeName.text = string.format("%s %s", slot7, slot8)
+		slot2 = GameUtil.setFirstStrSize(lua_activity191_const.configDict[Activity191Enum.ConstKey.PvpEpisodeName].value2, 70)
+		slot8 = string.lower(lua_activity191_match_rank.configDict[slot0.nodeDetailMo.matchInfo.rank].fightLevel)
+		slot7 = "act191_level_" .. slot8
 
-		for slot7, slot8 in ipairs(slot0.mySideMoList) do
+		UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, slot7)
+
+		for slot7, slot8 in ipairs(slot0.enemyMoList) do
 			if slot8.entityType == FightEnum.EntityType.Monster then
 				gohelper.findChildSingleImage(gohelper.cloneInPlace(slot0._goHeroItem), "hero/simage_rolehead"):LoadImage(ResUrl.monsterHeadIcon(slot8.skin))
 			else
@@ -100,9 +118,7 @@ function slot0.onOpen(slot0)
 
 		gohelper.setActive(slot0._goHeroItem, false)
 	else
-		slot2 = lua_activity191_fight_event.configDict[slot0.nodeDetailMo.fightEventId]
-		slot0._txtEpisodeName.text = string.format("%s %s", GameUtil.setFirstStrSize(slot2.title, 70), slot2.fightLevel)
-
+		UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, "act191_level_" .. string.lower(lua_activity191_fight_event.configDict[slot0.nodeDetailMo.fightEventId].fightLevel))
 		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.BossHpItem, slot0._gobossHpRoot), Act191BossHpItem)
 	end
 
@@ -119,6 +135,7 @@ function slot0.onClose(slot0)
 	TaskDispatcher.cancelTask(slot0._setCanPlayVoice, slot0)
 	gohelper.setActive(slot0._goSpine, false)
 	FightController.onResultViewClose()
+	Act191StatController.instance:statGameTime(slot0.viewName)
 end
 
 function slot0.onDestroyView(slot0)
@@ -149,8 +166,6 @@ function slot0._getRandomEntityMO(slot0)
 		return slot2[math.random(#slot2)]
 	elseif #slot1 > 0 then
 		return slot1[math.random(#slot1)]
-	else
-		logError("没有角色")
 	end
 end
 
@@ -161,10 +176,6 @@ function slot0._setCanPlayVoice(slot0)
 end
 
 function slot0._setSpineVoice(slot0)
-	if not slot0._randomEntityMO then
-		return
-	end
-
 	if slot0:_getSkin(slot0._randomEntityMO) then
 		slot0._spineLoaded = false
 
@@ -229,7 +240,7 @@ function slot0.refreshReward(slot0)
 			end
 		end
 	else
-		for slot6, slot7 in ipairs(slot0.actInfo:getTriggerEffectList()) do
+		for slot6, slot7 in ipairs(slot0.actInfo.triggerEffectIds) do
 			if not string.nilorempty(lua_activity191_effect.configDict[slot7].itemParam) then
 				for slot13, slot14 in ipairs(GameUtil.splitString2(slot8.itemParam, true)) do
 					if not slot1[slot14[1]] then
@@ -245,6 +256,8 @@ function slot0.refreshReward(slot0)
 	for slot5, slot6 in pairs(slot1) do
 		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot0._goReward), Act191RewardItem):setData(slot5, slot6)
 	end
+
+	gohelper.setActive(slot0._goReward, tabletool.len(slot1) ~= 0)
 end
 
 return slot0

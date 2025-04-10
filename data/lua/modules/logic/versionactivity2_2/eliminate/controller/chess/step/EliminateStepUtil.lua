@@ -97,6 +97,10 @@ function slot0.createStep(slot0, slot1)
 		slot2 = EliminateCheckAndRefreshStep.New()
 	end
 
+	if slot0 == EliminateEnum.StepWorkType.PlayAudio then
+		slot2 = EliminatePlayAudioStep.New()
+	end
+
 	if slot2 then
 		slot2:initData(slot1)
 	else

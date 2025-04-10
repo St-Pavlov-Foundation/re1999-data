@@ -18,6 +18,7 @@ function slot0.onInitView(slot0)
 	slot0._goFetterIcon = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/fetters/Viewport/Content/#go_FetterIcon")
 	slot0._goDestiny = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/#go_Destiny")
 	slot0._goDestinyLock = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/#go_Destiny/stone/#go_DestinyLock")
+	slot0._goDestinyUnLock = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/#go_Destiny/stone/#go_DestinyUnLock")
 	slot0._btnDestiny = gohelper.findChildButtonWithAudio(slot0.viewGO, "characterinfo/#go_characterinfo/#go_Destiny/#btn_Destiny")
 	slot0._gorolecontainer = gohelper.findChild(slot0.viewGO, "#go_rolecontainer")
 	slot0._gorolesort = gohelper.findChild(slot0.viewGO, "#go_rolecontainer/#go_rolesort")
@@ -56,8 +57,6 @@ function slot0.addEvents(slot0)
 	slot0._btnconfirm:AddClickListener(slot0._btnconfirmOnClick, slot0)
 	slot0._btncancel:AddClickListener(slot0._btncancelOnClick, slot0)
 	slot0._btnclosefilterview:AddClickListener(slot0._btnclosefilterviewOnClick, slot0)
-	slot0._btnok:AddClickListener(slot0._btnokOnClick, slot0)
-	slot0._btnreset:AddClickListener(slot0._btnresetOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -71,8 +70,6 @@ function slot0.removeEvents(slot0)
 	slot0._btnconfirm:RemoveClickListener()
 	slot0._btncancel:RemoveClickListener()
 	slot0._btnclosefilterview:RemoveClickListener()
-	slot0._btnok:RemoveClickListener()
-	slot0._btnreset:RemoveClickListener()
 end
 
 function slot0._btnDestinyOnClick(slot0)
@@ -110,15 +107,6 @@ end
 
 function slot0._btnclassifyOnClick(slot0)
 	gohelper.setActive(slot0._gosearchfilter, true)
-	slot0:_refreshFilterView()
-end
-
-function slot0._btnresetOnClick(slot0)
-	slot0:_refreshFilterView()
-end
-
-function slot0._btnokOnClick(slot0)
-	gohelper.setActive(slot0._gosearchfilter, false)
 end
 
 function slot0._btnpassiveskillOnClick(slot0)
@@ -134,7 +122,8 @@ function slot0._btnpassiveskillOnClick(slot0)
 			anchorParams = {
 				Vector2.New(0, 0.5),
 				Vector2.New(0, 0.5)
-			}
+			},
+			stoneId = slot0.stoneId
 		})
 	else
 		slot0:refreshPassiveDetail()
@@ -180,7 +169,7 @@ function slot0._btnconfirmOnClick(slot0)
 		slot0.gameInfo:saveQuickGroupInfo(Act191HeroQuickEditListModel.instance:getHeroIdMap())
 	elseif slot0._heroMo then
 		if slot0._heroMo.heroId ~= Act191HeroEditListModel.instance.specialHero then
-			Activity191Model.instance:getActInfo():getGameInfo():repleaceHeroInTeam(slot0._heroMo.heroId, slot0.curSlotIndex)
+			Activity191Model.instance:getActInfo():getGameInfo():replaceHeroInTeam(slot0._heroMo.heroId, slot0.curSlotIndex)
 		end
 	elseif slot1 then
 		slot2:removeHeroInTeam(slot1)
@@ -194,31 +183,29 @@ function slot0._btncancelOnClick(slot0)
 end
 
 function slot0._btnrarerankOnClick(slot0)
-	if slot0.sortRule == Activity191Enum.SortRule.Down then
-		slot0.sortRule = Activity191Enum.SortRule.Up
-	else
-		slot0.sortRule = Activity191Enum.SortRule.Down
-	end
+	slot0.sortRule = math.abs(slot0.sortRule - 3)
 
 	slot0:refreshBtnRare()
 
 	if slot0._isShowQuickEdit then
-		Act191HeroQuickEditListModel.instance:sortData(slot0.sortRule)
+		Act191HeroQuickEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
 	else
-		Act191HeroEditListModel.instance:sortData(slot0.sortRule)
+		Act191HeroEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
 	end
 end
 
 function slot0._btnquickeditOnClick(slot0)
 	slot0._isShowQuickEdit = not slot0._isShowQuickEdit
 
+	slot0:_refreshEditMode()
+
 	if slot0._isShowQuickEdit then
+		Act191HeroQuickEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
 		slot0:_onHeroItemClick(slot0._quickHeroMo)
 	else
+		Act191HeroEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
 		slot0:_onHeroItemClick(slot0._normalHeroMo)
 	end
-
-	slot0:_refreshEditMode()
 end
 
 function slot0._editableInitView(slot0)
@@ -249,29 +236,13 @@ function slot0._editableInitView(slot0)
 
 	for slot4 = 1, 3 do
 		slot0["goPassiveSkill" .. slot4] = gohelper.findChild(slot0._gopassiveskills, "passiveskill" .. tostring(slot4))
-		slot0["goStar" .. slot4] = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/quality/mask/bg/" .. slot4)
 	end
 
 	slot0._skillContainer = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goskill, Act191SkillContainer)
-	slot0.upLevelExpArr = GameUtil.splitString2(lua_activity191_const.configDict[Activity191Enum.ConstKey.CharacterUpExp].value, true)
-	slot0.expItemList = {}
-	slot0.goExp = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/quality/go_exp")
-	slot0.goExpMax = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/quality/go_max")
-	slot1 = gohelper.findChild(slot0.goExp, "expitem")
-
-	for slot6 = 1, slot0.upLevelExpArr[Activity191Enum.CharacterMaxStar - 1][2] do
-		slot7 = slot0:getUserDataTb_()
-		slot7.go = gohelper.cloneInPlace(slot1)
-		slot7.light = gohelper.findChild(slot7.go, "light")
-		slot0.expItemList[slot6] = slot7
-	end
-
-	gohelper.setActive(slot1, false)
-
 	slot0.exGoList = slot0:getUserDataTb_()
 
-	for slot6 = 1, 5 do
-		slot0.exGoList[slot6] = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/quality/exSkill/go_ex" .. slot6)
+	for slot4 = 1, 5 do
+		slot0.exGoList[slot4] = gohelper.findChild(slot0.viewGO, "characterinfo/#go_characterinfo/quality/exSkill/go_ex" .. slot4)
 	end
 
 	slot0.fetterIconItemList = {}
@@ -280,6 +251,7 @@ function slot0._editableInitView(slot0)
 
 	gohelper.setActive(slot0._gononecharacter, true)
 	gohelper.setActive(slot0._gocharacterinfo, false)
+	slot0:_initFilterView()
 end
 
 function slot0.onOpen(slot0)
@@ -301,6 +273,7 @@ function slot0.onOpen(slot0)
 	gohelper.addUIClickAudio(slot0._btnpassiveskill.gameObject, AudioEnum.UI.UI_Common_Click)
 	slot0:refreshFetter()
 	slot0:refreshBtnRare()
+	slot0:refreshBtnClassify()
 end
 
 function slot0.onClose(slot0)
@@ -320,12 +293,18 @@ function slot0.refreshBtnRare(slot0)
 	transformhelper.setLocalRotation(slot0._goRareArrow.transform, 1, 1, slot0.sortRule == Activity191Enum.SortRule.Down and 0 or 180)
 end
 
+function slot0.refreshBtnClassify(slot0)
+	gohelper.setActive(slot0._classifyBtns[1], not slot0.filterTag)
+	gohelper.setActive(slot0._classifyBtns[2], slot0.filterTag)
+end
+
 function slot0.refreshDestiny(slot0)
 	slot0.hasDestiny = CharacterDestinyConfig.instance:hasDestinyHero(slot0.config.roleId)
 
 	if slot0.hasDestiny then
 		slot0.destinyUnlock, slot0.stoneId = slot0.gameInfo:isHeroDestinyUnlock(slot0.config.roleId)
 
+		gohelper.setActive(slot0._goDestinyUnLock, slot0.destinyUnlock)
 		gohelper.setActive(slot0._goDestinyLock, not slot0.destinyUnlock)
 	end
 
@@ -382,29 +361,8 @@ function slot0._refreshCharacterInfo(slot0)
 			gohelper.setActive(slot0["goPassiveSkill" .. slot6], slot6 <= (slot0.config.type == Activity191Enum.CharacterType.Hero and #SkillConfig.instance:getheroranksCO(slot0.config.roleId) - 1 or 0))
 		end
 
-		for slot6 = 1, Activity191Enum.CharacterMaxStar do
-			gohelper.setActive(slot0["goStar" .. slot6], slot6 <= slot0.config.star)
-		end
-
-		slot3 = nil
-
-		if slot0._heroMo.star == Activity191Enum.CharacterMaxStar then
-			slot3 = slot0.upLevelExpArr[slot0._heroMo.star - 1][2]
-
-			gohelper.setActive(slot0.goExpMax, true)
-		else
-			slot3 = slot0.upLevelExpArr[slot0._heroMo.star][2]
-
-			gohelper.setActive(slot0.goExpMax, false)
-		end
-
-		for slot7, slot8 in ipairs(slot0.expItemList) do
-			gohelper.setActive(slot8.go, slot7 <= slot3)
-			gohelper.setActive(slot8.light, slot7 <= slot0._heroMo.exp)
-		end
-
-		for slot7, slot8 in ipairs(slot0.exGoList) do
-			gohelper.setActive(slot8, slot7 <= slot0.config.exLevel)
+		for slot6, slot7 in ipairs(slot0.exGoList) do
+			gohelper.setActive(slot7, slot6 <= slot0.config.exLevel)
 		end
 
 		slot0:refreshFetterIcon()
@@ -431,25 +389,59 @@ function slot0.refreshFetterIcon(slot0)
 	end
 end
 
-function slot0._refreshFilterView(slot0)
+function slot0._initFilterView(slot0)
+	slot0.filterItemMap = {}
+	slot1 = gohelper.findChild(slot0._gosearchfilter, "container/ScrollView/Viewport/Content/attrContainer/go_attr")
+	slot2 = lua_activity191_relation_select.configDict[slot0.actId]
+
+	table.sort(slot2, function (slot0, slot1)
+		return slot0.sortIndex < slot1.sortIndex
+	end)
+
+	for slot6, slot7 in pairs(slot2) do
+		slot8 = Activity191Config.instance:getRelationCo(slot7.tag)
+		slot9 = slot0:getUserDataTb_()
+		slot10 = gohelper.cloneInPlace(slot1, slot7.tag)
+		slot9.goUnselect = gohelper.findChild(slot10, "unselected")
+		slot9.goSelect = gohelper.findChild(slot10, "selected")
+		gohelper.findChildText(slot10, "unselected/info1").text = slot8.name
+
+		Activity191Helper.setFetterIcon(gohelper.findChildImage(slot10, "unselected/attrIcon1"), slot8.icon)
+
+		gohelper.findChildText(slot10, "selected/info2").text = slot8.name
+
+		Activity191Helper.setFetterIcon(gohelper.findChildImage(slot10, "selected/attrIcon2"), slot8.icon)
+		slot0:addClickCb(gohelper.findChildButtonWithAudio(slot10, "click"), slot0._filterItemClick, slot0, slot7.tag)
+
+		slot0.filterItemMap[slot7.tag] = slot9
+	end
+
+	gohelper.setActive(slot1, false)
 end
 
-function slot0.replaceQuickGroupHeroDefaultEquip(slot0, slot1)
-	slot3 = HeroGroupModel.instance:getCurGroupMO().equips
-	slot4 = nil
+function slot0._filterItemClick(slot0, slot1)
+	if slot0.filterTag == slot1 then
+		slot0.filterTag = nil
+	else
+		slot0.filterTag = slot1
+	end
 
-	for slot8, slot9 in ipairs(slot1) do
-		if HeroModel.instance:getById(slot9) and slot4:hasDefaultEquip() then
-			for slot13, slot14 in pairs(slot3) do
-				if slot14.equipUid[1] == slot4.defaultEquipUid then
-					slot14.equipUid[1] = "0"
+	slot0:_refreshFilterView()
+	slot0:refreshBtnClassify()
 
-					break
-				end
-			end
+	if slot0._isShowQuickEdit then
+		Act191HeroQuickEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
+	else
+		Act191HeroEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
+	end
+end
 
-			slot3[slot8 - 1].equipUid[1] = slot4.defaultEquipUid
-		end
+function slot0._refreshFilterView(slot0, slot1)
+	slot1 = slot1 or slot0.filterTag
+
+	for slot5, slot6 in pairs(slot0.filterItemMap) do
+		gohelper.setActive(slot6.goUnselect, slot5 ~= slot1)
+		gohelper.setActive(slot6.goSelect, slot5 == slot1)
 	end
 end
 

@@ -9,6 +9,10 @@ function slot0.onConstructor(slot0)
 end
 
 function slot0.onStageChanged(slot0, slot1, slot2)
+	for slot6 = 1, #slot0.handCard do
+		slot0.handCard[slot6].originHandCardIndex = slot6
+	end
+
 	FightDataUtil.coverData(slot0.handCard, slot0.originCard)
 end
 

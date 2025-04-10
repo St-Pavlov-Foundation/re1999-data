@@ -27,7 +27,7 @@ slot1 = {
 	[ActivityEnum.Activity.StoryShow] = ViewName.ActivityStoryShowView,
 	[ActivityEnum.Activity.ClassShow] = ViewName.ActivityClassShowView,
 	[ActivityEnum.Activity.V2a7_NewInsight] = ViewName.ActivityInsightShowView_2_7,
-	[ActivityEnum.Activity.V2a7_SelfSelectSix1] = ViewName.V2a7_SelfSelectSix_FullView
+	[ActivityEnum.Activity.V2a7_SelfSelectSix2] = ViewName.V2a7_SelfSelectSix_FullView
 }
 
 function slot0.onUpdateParam(slot0)

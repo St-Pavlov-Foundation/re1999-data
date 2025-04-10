@@ -5,10 +5,9 @@ slot0 = class("FightPlayerFinisherSkillView", FightBaseView)
 function slot0.onInitView(slot0)
 	slot0._click = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "skill/btn_skill")
 	slot0._longPress = SLFramework.UGUI.UILongPressListener.Get(slot0._click.gameObject)
-	slot0.goMelody = slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.Melody)
-	slot0._used = gohelper.findChild(slot0.goMelody, "used")
-	slot0._power = gohelper.findChild(slot0.goMelody, "power")
-	slot0._noPower = gohelper.findChild(slot0.goMelody, "noPower")
+	slot0._used = gohelper.findChild(slot0.viewGO, "used")
+	slot0._power = gohelper.findChild(slot0.viewGO, "power")
+	slot0._noPower = gohelper.findChild(slot0.viewGO, "noPower")
 	slot0._powerList = {}
 	slot0._aniList = {}
 

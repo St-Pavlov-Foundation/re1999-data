@@ -128,16 +128,17 @@ end
 
 function slot0.refreshEpisodeNodes(slot0)
 	slot0._episodeItemDict = slot0:getUserDataTb_()
-	slot1 = 0
 	slot2, slot3 = nil
 
 	for slot8, slot9 in ipairs(DungeonConfig.instance:getChapterEpisodeCOList(slot0.activityDungeonMo.chapterId)) do
 		if slot9 and DungeonModel.instance:getEpisodeInfo(slot9.id) or nil then
-			slot3 = slot0:getEpisodeContainerItem(slot1 + 1)
+			slot1 = 0 + 1
+			slot3 = slot0:getEpisodeContainerItem(slot1)
 			slot0._episodeItemDict[slot9.id] = slot3.episodeItem
 			slot3.containerTr.name = slot9.id
 
 			slot3.episodeItem:refresh(slot9, slot2)
+			slot0:_setEpisodeItemAnchorX(slot1, slot3)
 		end
 	end
 
@@ -163,17 +164,12 @@ function slot0.getEpisodeContainerItem(slot0, slot1)
 		return slot2
 	end
 
+	slot2 = slot0:getUserDataTb_()
 	slot3 = gohelper.cloneInPlace(slot0._gotemplatenormal, tostring(slot1))
 
 	gohelper.setActive(slot3, true)
 
-	slot0:getUserDataTb_().containerTr = slot3.transform
-
-	if slot1 > 1 then
-		recthelper.setAnchorX(slot2.containerTr, (recthelper.getAnchorX(slot0._episodeContainerItemList[slot1 - 1].containerTr) or 0) + slot4.episodeItem:getMaxWidth() + slot0._constDungeonNormalDeltaX)
-	else
-		recthelper.setAnchorX(slot2.containerTr, slot0._constDungeonNormalPosX)
-	end
+	slot2.containerTr = slot3.transform
 
 	recthelper.setAnchorY(slot2.containerTr, slot0._constDungeonNormalPosY)
 
@@ -191,6 +187,14 @@ function slot0.getEpisodeContainerItem(slot0, slot1)
 	table.insert(slot0._episodeContainerItemList, slot2)
 
 	return slot2
+end
+
+function slot0._setEpisodeItemAnchorX(slot0, slot1, slot2)
+	if slot1 > 1 then
+		recthelper.setAnchorX(slot2.containerTr, (recthelper.getAnchorX(slot0._episodeContainerItemList[slot1 - 1].containerTr) or 0) + slot3.episodeItem:getMaxWidth() + slot0._constDungeonNormalDeltaX)
+	else
+		recthelper.setAnchorX(slot2.containerTr, slot0._constDungeonNormalPosX)
+	end
 end
 
 function slot0.setFocusEpisodeId(slot0, slot1, slot2)

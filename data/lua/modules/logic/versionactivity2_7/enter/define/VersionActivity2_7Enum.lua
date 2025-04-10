@@ -38,12 +38,9 @@ slot0.EnterViewActSetting = {
 		actType = VersionActivityEnterViewEnum.ActType.Single
 	},
 	{
-		actId = {
-			slot0.ActivityId.Reactivity,
-			slot0.ActivityId.ReactivityStore
-		},
+		actId = slot0.ActivityId.Reactivity,
 		actLevel = VersionActivityEnterViewEnum.ActLevel.Second,
-		actType = VersionActivityEnterViewEnum.ActType.Multi,
+		actType = VersionActivityEnterViewEnum.ActType.Single,
 		storeId = slot0.ActivityId.ReactivityStore
 	},
 	{

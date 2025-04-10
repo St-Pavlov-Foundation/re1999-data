@@ -5,6 +5,7 @@ slot0 = class("ActivityCategoryItem", ListScrollCell)
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
 	slot0._goselect = gohelper.findChild(slot1, "beselected")
+	slot0._goselectbg = gohelper.findChild(slot1, "beselected/selecticon")
 	slot0._gounselect = gohelper.findChild(slot1, "noselected")
 	slot0._txtnamecn = gohelper.findChildText(slot1, "beselected/activitynamecn")
 	slot0._txtnameen = gohelper.findChildText(slot1, "beselected/activitynamecn/activitynameen")
@@ -12,6 +13,9 @@ function slot0.init(slot0, slot1)
 	slot0._txtunselectnameen = gohelper.findChildText(slot1, "noselected/noactivitynamecn/noactivitynameen")
 	slot0._goreddot = gohelper.findChild(slot1, "#go_reddot")
 	slot0._itemClick = gohelper.getClickWithAudio(slot0.go)
+
+	gohelper.setActive(slot0._goselectbg, false)
+
 	slot0._anim = slot0.go:GetComponent(typeof(UnityEngine.Animator))
 	slot0._openAnimTime = 0.43
 

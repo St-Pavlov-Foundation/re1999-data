@@ -48,6 +48,10 @@ function slot0.onStart(slot0, slot1)
 end
 
 function slot0._onConfirm(slot0)
+	if FightDataHelper.fieldMgr:is191DouQuQu() then
+		Activity191Rpc.instance:sendGetAct191InfoRequest(VersionActivity2_7Enum.ActivityId.Act191)
+	end
+
 	TaskDispatcher.runDelay(slot0._onDelayDone, slot0, 20)
 	GameSceneMgr.instance:registerCallback(SceneType.Fight, slot0._onEnterFightScene, slot0)
 

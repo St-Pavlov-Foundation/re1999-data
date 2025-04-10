@@ -52,6 +52,22 @@ function slot0.onOpen(slot0)
 
 		slot0._txtName.text = slot2.name
 		slot0._txtDesc.text = slot2.desc
+
+		if lua_activity191_effect.configDict[tonumber(slot2.effects)] then
+			if slot5.type == Activity191Enum.EffectType.EnhanceHero then
+				slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot2.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot5.typeParam)
+
+				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkDestiny)
+			elseif slot5.type == Activity191Enum.EffectType.EnhanceItem then
+				slot0._txtDesc.text = Activity191Helper.buildDesc(slot3, Activity191Enum.HyperLinkPattern.EnhanceItem, slot5.typeParam .. "#")
+
+				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkItem)
+			else
+				slot0._txtDesc.text = slot3
+			end
+		else
+			slot0._txtDesc.text = slot3
+		end
 	end
 end
 

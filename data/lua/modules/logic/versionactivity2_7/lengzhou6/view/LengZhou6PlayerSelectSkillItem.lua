@@ -6,7 +6,9 @@ function slot0.onInitView(slot0)
 	slot0._goSelected = gohelper.findChild(slot0.viewGO, "#go_Selected")
 	slot0._txtSkillDescr = gohelper.findChildText(slot0.viewGO, "#txt_SkillDescr")
 	slot0._txtSkillName = gohelper.findChildText(slot0.viewGO, "#txt_SkillDescr/#txt_SkillName")
-	slot0._simageSkillIIcon = gohelper.findChildSingleImage(slot0.viewGO, "#txt_SkillDescr/Skill/SkillIconMask/#simage_SkillIIcon")
+	slot0._imageSkillIIcon = gohelper.findChildImage(slot0.viewGO, "#txt_SkillDescr/Skill/SkillIconMask/#image_SkillIIcon")
+	slot0._imageSkillSmallIcon = gohelper.findChildImage(slot0.viewGO, "#txt_SkillDescr/Skill/#image_SkillSmallIcon")
+	slot0._txtnum = gohelper.findChildText(slot0.viewGO, "#txt_SkillDescr/Skill/#image_SkillSmallIcon/#txt_num")
 	slot0._txtRound = gohelper.findChildText(slot0.viewGO, "#txt_SkillDescr/#txt_Round")
 	slot0._goClick = gohelper.findChild(slot0.viewGO, "#txt_SkillDescr/#go_Click")
 
@@ -43,12 +45,13 @@ function slot0._select(slot0)
 		return
 	end
 
-	if LengZhou6GameModel.instance:playerSkillIsSelect(slot0._skillId) then
+	if LengZhou6GameModel.instance:isSelectSkill(slot0._skillId) then
 		return
 	end
 
 	LengZhou6GameModel.instance:setPlayerSelectSkillId(slot0._selectIndex, slot0._skillId)
 	slot0:refreshSelect()
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_refresh)
 	LengZhou6GameController.instance:dispatchEvent(LengZhou6Event.PlayerSelectFinish, slot0._selectIndex, slot0._skillId)
 end
 
@@ -67,15 +70,7 @@ function slot0.initSelectIndex(slot0, slot1)
 end
 
 function slot0.refreshSelect(slot0)
-	slot2 = false
-
-	for slot6, slot7 in pairs(LengZhou6GameModel.instance:getSelectSkillId()) do
-		if slot0._skillId == slot7 then
-			slot2 = true
-		end
-	end
-
-	gohelper.setActive(slot0._goSelected, slot2)
+	gohelper.setActive(slot0._goSelected, LengZhou6GameModel.instance:isSelectSkill(slot0._skillId))
 end
 
 function slot0.initItem(slot0)
@@ -88,16 +83,26 @@ function slot0.initItem(slot0)
 	slot0._txtSkillDescr.text = slot0._config.desc
 
 	if slot0._config.icon ~= nil then
-		slot0._simageSkillIIcon:LoadImage(slot2)
+		slot3 = string.split(slot2, "#")
+
+		UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageSkillIIcon, slot3[1])
+
+		if slot3[2] ~= nil then
+			UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageSkillSmallIcon, slot3[2])
+		end
+
+		gohelper.setActive(slot0._imageSkillSmallIcon.gameObject, slot4)
 	end
 
-	slot0._txtSkillName.text = slot1 and luaLang("v2a7_lengZhou6_endLess_activeSkill") or luaLang("v2a7_lengZhou6_endLess_unActiveSkill")
-end
+	if slot0._config.effect ~= nil then
+		if string.split(slot3, "#")[1] == LengZhou6Enum.SkillEffect.DealsDamage then
+			slot0._txtnum.text = tonumber(slot4[2])
+		end
 
-function slot0.onUpdateMO(slot0, slot1)
-end
+		gohelper.setActive(slot0._txtnum.gameObject, slot4[1] == LengZhou6Enum.SkillEffect.DealsDamage)
+	end
 
-function slot0.onSelect(slot0, slot1)
+	slot0._txtSkillName.text = slot0._config.name
 end
 
 function slot0.onDestroyView(slot0)

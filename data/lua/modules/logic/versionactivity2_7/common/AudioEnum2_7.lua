@@ -5,6 +5,12 @@ slot0.VersionActivity2_7Enter = {
 	play_ui_yuzhou_open = 20270002,
 	play_ui_qiutu_revelation_open = 20270003
 }
+slot0.VersionActivity2_7SpaceBGM = {
+	play_2_7_yuzhou_ui_checkinspace = 3270033,
+	play_2_7_yuzhou_ui_checkoutspace = 3270034,
+	play_2_7_yuzhou_ui_checkpoint_amb_space = 3270031,
+	stop_2_7_yuzhou_ui_checkpoint_amb_space = 3270032
+}
 slot0.CooperGarlandBallRTPC = "ball_speed"
 slot0.CooperGarland = {
 	play_ui_yuzhou_cube_turn = 20270016,
@@ -26,6 +32,20 @@ slot0.CooperGarland = {
 	play_ui_yuzhou_level_lit = 20270013,
 	play_ui_yuzhou_level_unlock = 20270012,
 	play_ui_yuzhou_ball_reset = 20270020
+}
+slot0.LengZhou6 = {
+	play_ui_yuzhou_lzl_explosion = 20270040,
+	play_ui_yuzhou_lzl_fail = 20270039,
+	play_ui_yuzhou_lzl_loading = 20270033,
+	play_ui_yuzhou_lzl_open = 20270031,
+	play_ui_yuzhou_lzl_click = 20270034,
+	play_ui_yuzhou_lzl_level_open = 20270032,
+	play_ui_yuzhou_lzl_hp = 20260106,
+	play_ui_yuzhou_lzl_result = 20270036,
+	play_ui_yuzhou_lzl_combustion = 20270041,
+	play_ui_yuzhou_lzl_success = 20270038,
+	play_ui_yuzhou_lzl_refresh = 20270037,
+	play_ui_yuzhou_lzl_boom = 20270035
 }
 
 return slot0

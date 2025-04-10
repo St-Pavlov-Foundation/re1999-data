@@ -2,6 +2,11 @@ module("modules.logic.versionactivity2_7.act191.model.Act191MO", package.seeall)
 
 slot0 = pureTable("Act191MO")
 
+function slot0.ctor(slot0)
+	slot0.triggerEffectIds = {}
+	slot0.triggerParams = {}
+end
+
 function slot0.initBadgeInfo(slot0, slot1)
 	slot0.badgeMoDic = {}
 	slot0.badgeScoreChangeDic = {}
@@ -16,8 +21,6 @@ function slot0.initBadgeInfo(slot0, slot1)
 end
 
 function slot0.init(slot0, slot1)
-	slot0.triggerList = {}
-
 	for slot5, slot6 in ipairs(slot1.badgeInfoList) do
 		slot0.badgeMoDic[slot6.id]:update(slot6)
 	end
@@ -37,18 +40,22 @@ function slot0.getGameInfo(slot0)
 	return slot0.gameInfo
 end
 
-function slot0.triggerEffectPush(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		slot0.triggerList[#slot0.triggerList + 1] = slot6
+function slot0.triggerEffectPush(slot0, slot1, slot2)
+	for slot6, slot7 in ipairs(slot1) do
+		slot0.triggerEffectIds[#slot0.triggerEffectIds + 1] = slot7
+	end
+
+	if not string.nilorempty(slot2) then
+		slot0.triggerParams[#slot0.triggerParams + 1] = slot2
 	end
 end
 
-function slot0.getTriggerEffectList(slot0)
-	return slot0.triggerList
+function slot0.cleanTriggerEffect(slot0)
+	tabletool.clear(slot0.triggerEffectIds)
 end
 
-function slot0.cleanTriggerEffect(slot0)
-	tabletool.clear(slot0.triggerList)
+function slot0.cleanTriggerParams(slot0)
+	tabletool.clear(slot0.triggerParams)
 end
 
 function slot0.getGameEndInfo(slot0)

@@ -12,18 +12,18 @@ function slot0.init(slot0, slot1)
 	slot0.rare = gohelper.findChildImage(slot1, "image_rare")
 	slot0.selectframe = gohelper.findChild(slot1, "selectframe")
 	slot0.careerIcon = gohelper.findChildImage(slot1, "career")
-	slot0.goexskill = gohelper.findChild(slot1, "#go_exskill")
-	slot0.imageexskill = gohelper.findChildImage(slot1, "#go_exskill/#image_exskill")
+	slot0.goexskill = gohelper.findChild(slot1, "go_exskill")
+	slot0.imageexskill = gohelper.findChildImage(slot1, "go_exskill/image_exskill")
 	slot0.newTag = gohelper.findChild(slot1, "new")
-	slot0.goStar1 = gohelper.findChild(slot1, "quality/bg/1")
-	slot0.goStar2 = gohelper.findChild(slot1, "quality/bg/2")
-	slot0.goStar3 = gohelper.findChild(slot1, "quality/bg/3")
 	slot0.goFetter = gohelper.findChild(slot1, "fetter/image_Fetter")
 	slot0.goOrderBg = gohelper.findChild(slot1, "go_OrderBg")
 	slot0.imageOrder = gohelper.findChildImage(slot1, "go_OrderBg/image_Order")
 	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "click")
 	slot0.animator = slot0.go:GetComponent(typeof(UnityEngine.Animator))
 	slot0.assist = gohelper.findChild(slot1, "assist")
+	slot0.imageFetterList = slot0:getUserDataTb_()
+
+	gohelper.setActive(slot0.goFetter, false)
 end
 
 function slot0.addEventListeners(slot0)
@@ -40,6 +40,7 @@ function slot0.onUpdateMO(slot0, slot1)
 
 	UISpriteSetMgr.instance:setCommonSprite(slot0.careerIcon, "lssx_" .. tostring(slot0.config.career))
 	UISpriteSetMgr.instance:setAct174Sprite(slot0.rare, "act174_rolefame_" .. tostring(slot0.config.quality))
+	UISpriteSetMgr.instance:setAct174Sprite(slot0.front, "act174_rolebg_" .. tostring(slot0.config.quality))
 
 	if not FightConfig.instance:getSkinCO(slot0.config.skinId) then
 		logError("找不到皮肤配置, id: " .. tostring(slot0.config.skinId))
@@ -48,20 +49,11 @@ function slot0.onUpdateMO(slot0, slot1)
 	end
 
 	slot0.commonHeroCard:onUpdateMO(slot2)
-
-	for slot6 = 1, Activity191Enum.CharacterMaxStar do
-		gohelper.setActive(slot0["goStar" .. slot6], slot6 <= slot0._mo.star)
-	end
-
 	gohelper.setActive(slot0.goexskill, slot0.config.exLevel ~= 0)
 
 	slot0.imageexskill.fillAmount = slot0.config.exLevel / CharacterEnum.MaxSkillExLevel
 
-	for slot7, slot8 in ipairs(string.split(slot0.config.tag, "#")) do
-		Activity191Helper.setFetterIcon(gohelper.findChildImage(gohelper.cloneInPlace(slot0.goFetter), ""), Activity191Config.instance:getRelationCo(slot8).icon)
-	end
-
-	gohelper.setActive(slot0.goFetter, false)
+	slot0:refreshFetterIcon()
 	slot0:refreshSelect()
 
 	slot0._open_ani_finish = true
@@ -110,6 +102,21 @@ end
 
 function slot0.getAnimator(slot0)
 	return slot0.animator
+end
+
+function slot0.refreshFetterIcon(slot0)
+	for slot5, slot6 in ipairs(string.split(slot0.config.tag, "#")) do
+		if not slot0.imageFetterList[slot5] then
+			slot0.imageFetterList[slot5] = gohelper.findChildImage(gohelper.cloneInPlace(slot0.goFetter), "")
+		end
+
+		Activity191Helper.setFetterIcon(slot0.imageFetterList[slot5], Activity191Config.instance:getRelationCo(slot6).icon)
+		gohelper.setActive(slot0.imageFetterList[slot5], true)
+	end
+
+	for slot5 = #slot1 + 1, #slot0.imageFetterList do
+		gohelper.setActive(slot0.imageFetterList[slot5], false)
+	end
 end
 
 return slot0

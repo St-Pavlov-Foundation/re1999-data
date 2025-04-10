@@ -33,6 +33,7 @@ function slot0._overrideClose(slot0)
 
 	LengZhou6GameController.instance:levelGame(true)
 	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.OnClickCloseGameView)
+	LengZhou6StatHelper.instance:sendGameExit()
 end
 
 function slot0.refreshHelpId(slot0)

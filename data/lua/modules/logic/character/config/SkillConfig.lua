@@ -432,14 +432,14 @@ end
 
 function slot0.getHeroBaseSkillIdDictByExSkillLevel(slot0, slot1, slot2, slot3)
 	if slot3 and slot3.trialAttrCo then
-		return slot0:getHeroBaseSkillIdDictByStr(slot3.trialAttrCo.activeSkill, slot3.trialAttrCo.uniqueSkill)
+		return slot0:_checkDestinyEffect(slot0:getHeroBaseSkillIdDictByStr(slot3.trialAttrCo.activeSkill, slot3.trialAttrCo.uniqueSkill), slot3)
 	end
 
 	slot2 = slot2 or CharacterEnum.showAttributeOption.ShowCurrent
 	slot5 = 0
 
 	if ((slot2 ~= CharacterEnum.showAttributeOption.ShowMax or CharacterModel.instance:getMaxexskill(slot1)) and (slot2 == CharacterEnum.showAttributeOption.ShowMin and 0 or (slot3 or HeroModel.instance:getByHeroId(slot1)).exSkillLevel)) < 1 then
-		return slot0:getHeroBaseSkillIdDict(slot1)
+		return slot0:_checkDestinyEffect(slot0:getHeroBaseSkillIdDict(slot1), slot3)
 	end
 
 	slot6 = nil
@@ -458,7 +458,15 @@ function slot0.getHeroBaseSkillIdDictByExSkillLevel(slot0, slot1, slot2, slot3)
 		end
 	end
 
-	return slot4
+	return slot0:_checkDestinyEffect(slot4, slot3)
+end
+
+function slot0._checkDestinyEffect(slot0, slot1, slot2)
+	if slot1 and slot2 and slot2.destinyStoneMo then
+		slot1 = slot2.destinyStoneMo:_replaceSkill(slot1)
+	end
+
+	return slot1
 end
 
 function slot0.getHeroAllSkillIdDictByExSkillLevel(slot0, slot1, slot2, slot3, slot4)
@@ -502,7 +510,7 @@ function slot0.getHeroAllSkillIdDictByExSkillLevel(slot0, slot1, slot2, slot3, s
 		end
 	end
 
-	return slot5
+	return slot0:_checkDestinyEffect(slot5, slot3)
 end
 
 function slot0.getRankLevelByLevel(slot0, slot1, slot2)

@@ -75,7 +75,6 @@ function slot0._initRewardItem(slot0)
 end
 
 function slot0.onOpen(slot0)
-	gohelper.addChild(slot0.viewParam.parent, slot0.viewGO)
 	slot0:addEventCb(Activity160Controller.instance, Activity160Event.InfoUpdate, slot0._onInfoUpdate, slot0)
 	slot0:refreshView()
 end

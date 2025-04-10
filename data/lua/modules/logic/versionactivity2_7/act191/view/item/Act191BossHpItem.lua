@@ -40,6 +40,7 @@ end
 
 function slot0.refreshItems(slot0)
 	gohelper.CreateObjList(slot0, slot0.onItemShow, slot0.itemDataList, slot0.signRoot, slot0.signItem)
+	gohelper.setActive(slot0.signItem, false)
 end
 
 function slot0.onItemShow(slot0, slot1, slot2, slot3)

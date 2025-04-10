@@ -123,6 +123,8 @@ end
 
 function slot0.refreshLYCard(slot0)
 	if slot0.LY_cardLoadStatus ~= uv0.LoadStatus.Loaded then
+		gohelper.setActive(slot0._goLyCardContainer, false)
+
 		return
 	end
 

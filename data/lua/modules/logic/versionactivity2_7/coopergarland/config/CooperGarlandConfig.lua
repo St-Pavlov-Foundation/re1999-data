@@ -123,6 +123,10 @@ function slot0.getExtraEpisode(slot0, slot1, slot2)
 	return slot3
 end
 
+function slot0.isExtraEpisode(slot0, slot1, slot2)
+	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.isExtra
+end
+
 function slot0.getAct192TaskCfg(slot0, slot1, slot2, slot3)
 	slot4 = lua_activity192_task.configDict[slot2]
 

@@ -740,7 +740,7 @@ function slot0._clickDefault(slot0, slot1)
 	end
 
 	if slot0:_getSpecialTouch(CharacterEnum.VoiceType.MainViewSpecialTouch, slot1) and math.random() > 0.5 and slot0._skinInteraction:canPlay(slot3) then
-		slot0:_doClickPlayVoice(slot3, true)
+		slot0:_doClickPlayVoice(uv0.getRandomMultiVoice(slot3, slot0._heroId, slot0._skinId), true)
 
 		return
 	end
@@ -776,28 +776,28 @@ end
 
 function slot0._getNormalTouch(slot0, slot1)
 	if slot0:_checkPosInBound(slot1) then
-		return slot0:_getRandomMultiVoice(uv0.getHeightWeight(HeroModel.instance:getVoiceConfig(slot0._heroId, CharacterEnum.VoiceType.MainViewNormalTouch, function (slot0)
+		return uv0.getRandomMultiVoice(uv0.getHeightWeight(HeroModel.instance:getVoiceConfig(slot0._heroId, CharacterEnum.VoiceType.MainViewNormalTouch, function (slot0)
 			return uv0._clickPlayConfig ~= slot0
-		end, slot0._skinId)))
+		end, slot0._skinId)), slot0._heroId, slot0._skinId)
 	end
 end
 
-function slot0._getRandomMultiVoice(slot0, slot1)
-	if not slot1 then
+function slot0.getRandomMultiVoice(slot0, slot1, slot2)
+	if not slot0 then
 		return
 	end
 
 	if math.random() <= 0.5 then
-		slot7 = slot0._skinId
+		slot8 = slot2
 
-		for slot7, slot8 in ipairs(CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot0._heroId, CharacterEnum.VoiceType.MultiVoice, slot7)) do
-			if tonumber(slot8.param) == slot1.audio then
-				return slot8
+		for slot8, slot9 in ipairs(CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot1, CharacterEnum.VoiceType.MultiVoice, slot8)) do
+			if tonumber(slot9.param) == slot0.audio then
+				return slot9
 			end
 		end
 	end
 
-	return slot1
+	return slot0
 end
 
 function slot0._checkPosInBound(slot0, slot1)

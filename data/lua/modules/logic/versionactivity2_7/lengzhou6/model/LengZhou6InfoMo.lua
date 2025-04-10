@@ -63,6 +63,14 @@ function slot0.getLevel(slot0)
 	return LengZhou6Enum.DefaultEndLessBeginRound
 end
 
+function slot0.getEndLessBattleProgress(slot0)
+	if not string.nilorempty(slot0.progress) then
+		return cjson.decode(slot0.progress).endLessBattleProgress
+	end
+
+	return nil
+end
+
 function slot0.setProgress(slot0, slot1)
 	slot0.progress = slot1
 end
