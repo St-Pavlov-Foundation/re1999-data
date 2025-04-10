@@ -3,7 +3,7 @@ module("modules.logic.fight.view.cardeffect.FigthCardDistributeCorrectScale", pa
 slot0 = class("FigthCardDistributeCorrectScale", BaseWork)
 
 function slot0.onStart(slot0, slot1)
-	if (slot1.oldScale or FightCardModel.instance:getHandCardContainerScale()) ~= (slot1.newScale or FightCardModel.instance:getHandCardContainerScale(nil, slot1.cards)) then
+	if (slot1.oldScale or FightCardDataHelper.getHandCardContainerScale()) ~= (slot1.newScale or FightCardDataHelper.getHandCardContainerScale(nil, slot1.cards)) then
 		slot0:_releaseTween()
 		FightController.instance:dispatchEvent(FightEvent.CancelVisibleViewScaleTween)
 

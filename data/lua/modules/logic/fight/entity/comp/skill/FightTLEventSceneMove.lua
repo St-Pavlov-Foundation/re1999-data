@@ -1,12 +1,12 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventSceneMove", package.seeall)
 
-slot0 = class("FightTLEventSceneMove")
+slot0 = class("FightTLEventSceneMove", FightTimelineTrackItem)
 slot0.MoveType = {
 	Revert = 2,
 	Move = 1
 }
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0.moveType = tonumber(slot3[1])
 	slot0.easeType = tonumber(slot3[3])
 
@@ -66,10 +66,7 @@ function slot0.onRevertCallback(slot0)
 	end
 end
 
-function slot0.onSkillEnd(slot0)
-end
-
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
 function slot0.clearTween(slot0)
@@ -86,12 +83,7 @@ function slot0.clearData(slot0)
 	slot0.easeType = nil
 end
 
-function slot0.reset(slot0)
-	slot0:clearTween()
-	slot0:clearData()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:clearTween()
 	slot0:clearData()
 end

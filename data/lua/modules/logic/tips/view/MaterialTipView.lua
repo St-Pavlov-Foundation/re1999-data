@@ -634,11 +634,54 @@ function slot0._btnuseOnClick(slot0)
 		slot0:_tryUseSummonSimulation(slot0._config.activityId)
 
 		return
+	elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+		if string.nilorempty(slot0._config.effect) then
+			return
+		end
+
+		V2a7_SelfSelectSix_PickChoiceController.instance:openCustomPickChoiceView(string.split(slot0._config.effect, "|"), MaterialTipController.onUseSelfSelectSixHeroGift, MaterialTipController, {
+			quantity = 1,
+			id = slot0._config.id
+		})
+	elseif slot0._config.subType == ItemEnum.SubType.DestinyStoneUp then
+		if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone) then
+			if not DungeonModel.instance:hasPassLevel(lua_open.configDict[OpenEnum.UnlockFunc.DestinyStone].episodeId) then
+				GameFacade.showToast(ToastEnum.DungeonMapLevel, DungeonConfig.instance:getEpisodeDisplay(slot3))
+			end
+
+			return
+		end
+
+		slot4 = {}
+
+		for slot8, slot9 in pairs(HeroModel.instance:getAllHero()) do
+			if slot9 and slot0:checkHeroOpenDestinyStone(slot9) and not slot9.destinyStoneMo:checkAllUnlock() then
+				table.insert(slot4, slot9)
+			end
+		end
+
+		if #slot4 > 0 then
+			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView)
+		else
+			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
+		end
 	else
 		ItemRpc.instance:simpleSendUseItemRequest(slot1, slot2)
 	end
 
 	slot0:closeThis()
+end
+
+function slot0.checkHeroOpenDestinyStone(slot0, slot1)
+	if not slot1:isHasDestinySystem() then
+		return false
+	end
+
+	if tonumber(CommonConfig.instance:getConstStr(CharacterDestinyEnum.DestinyStoneOpenLevelConstId[slot1.config.rare or 5])) <= slot1.level then
+		return true
+	end
+
+	return false
 end
 
 function slot0._useRoomTicket(slot0)
@@ -809,6 +852,10 @@ function slot0._refreshUI(slot0)
 			slot1 = false
 		elseif slot0.viewParam.type == MaterialEnum.MaterialType.NewInsight then
 			slot1 = false
+		elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+			slot1 = false
+
+			recthelper.setAnchorY(slot0._btnuse.transform, -190)
 		end
 
 		gohelper.setActive(slot0._gouseDetail, slot1)
@@ -1011,6 +1058,10 @@ end
 function slot0._refreshInclude(slot0)
 	slot1 = (MaterialEnum.SubTypePackages[slot0._config.subType] == true or slot0:_isPackageSkin()) and slot0.viewParam.inpack ~= true
 
+	if slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+		slot1 = true
+	end
+
 	gohelper.setActive(slot0._goinclude, slot1)
 
 	slot2 = 0
@@ -1034,6 +1085,22 @@ function slot0._refreshInclude(slot0)
 
 			for slot9, slot10 in ipairs(string.splitToNumber(slot0._config.effect, "#")) do
 				-- Nothing
+			end
+		elseif slot0._config.subType == ItemEnum.SubType.SelfSelectSix then
+			slot4 = {}
+
+			for slot9, slot10 in ipairs(string.split(slot0._config.effect, "|")) do
+				slot12 = {}
+
+				if string.split(slot10, ":")[2] and #slot11[2] > 0 and #string.splitToNumber(slot11[2], ",") > 0 then
+					for slot16, slot17 in ipairs(slot12) do
+						table.insert(slot4, {
+							MaterialEnum.MaterialType.Hero,
+							slot17,
+							1
+						})
+					end
+				end
 			end
 		else
 			slot4 = GameUtil.splitString2(slot0._config.effect, true)
@@ -1206,7 +1273,7 @@ function slot0._getPackageSkinDesc(slot0)
 		}))
 	end
 
-	return luaLang("MaterialTipViewPackageSkinDesc") .. table.concat(slot2, "\n")
+	return formatLuaLang("MaterialTipViewPackageSkinDescFmt", table.concat(slot2, "\n"))
 end
 
 function slot0._getPackageSkinIncludeItems(slot0)

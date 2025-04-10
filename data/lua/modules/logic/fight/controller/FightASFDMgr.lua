@@ -10,7 +10,7 @@ slot0.LoadingStatus = {
 function slot0.init(slot0)
 	uv0.super.init(slot0)
 
-	slot0.stepMoArrivedCount = {}
+	slot0.fightStepDataArrivedCount = {}
 	slot0.effectWrap2EntityIdDict = {}
 	slot0.sideEmitterWrap = nil
 	slot0.missileWrapList = {}
@@ -152,8 +152,8 @@ function slot0.emitMissile(slot0, slot1, slot2)
 		return slot0:emitterFail(slot1)
 	end
 
-	slot0.curStepMo = slot1
-	slot0.stepMoArrivedCount[slot1] = {
+	slot0.curStepData = slot1
+	slot0.fightStepDataArrivedCount[slot1] = {
 		0,
 		0
 	}
@@ -170,7 +170,7 @@ function slot0.emitterNormalMissile(slot0, slot1, slot2)
 	end
 
 	if slot0:_emitterOneMissile(slot1, FightASFDHelper.getMissileTargetId(slot1), slot2) then
-		slot0.stepMoArrivedCount[slot1][1] = slot0.stepMoArrivedCount[slot1][1] + 1
+		slot0.fightStepDataArrivedCount[slot1][1] = slot0.fightStepDataArrivedCount[slot1][1] + 1
 
 		return true
 	end
@@ -185,7 +185,7 @@ function slot0.emitterFissionMissile(slot0, slot1, slot2)
 
 	tabletool.clear(slot0.targetDict)
 
-	for slot6, slot7 in ipairs(slot1.actEffectMOs) do
+	for slot6, slot7 in ipairs(slot1.actEffect) do
 		if FightASFDHelper.isDamageEffect(slot7.effectType) then
 			slot0.targetDict[slot7.targetId] = true
 		end
@@ -196,7 +196,7 @@ function slot0.emitterFissionMissile(slot0, slot1, slot2)
 	for slot7, slot8 in pairs(slot0.targetDict) do
 		if slot0:_emitterOneMissile(slot1, slot7, slot2) then
 			slot3 = false
-			slot0.stepMoArrivedCount[slot1][1] = slot0.stepMoArrivedCount[slot1][1] + 1
+			slot0.fightStepDataArrivedCount[slot1][1] = slot0.fightStepDataArrivedCount[slot1][1] + 1
 
 			slot9:setEffectScale(FightASFDConfig.instance.fissionScale)
 		end
@@ -228,7 +228,7 @@ function slot0._emitterOneMissile(slot0, slot1, slot2, slot3)
 
 	slot10 = FightASFDFlyPathHelper.getMissileMover(slot5, slot7, slot9, slot2, slot3, slot0.onArrived, slot0)
 	slot10.missileWrap = slot9
-	slot10.stepMo = slot1
+	slot10.fightStepData = slot1
 	slot10.toId = slot2
 	slot10.asfdContext = slot3
 	slot10.missileRes = slot8
@@ -275,7 +275,7 @@ function slot0.emitterFail(slot0, slot1)
 end
 
 function slot0.onArrived(slot0, slot1)
-	slot5 = slot0.stepMoArrivedCount[slot1.stepMo] or {
+	slot5 = slot0.fightStepDataArrivedCount[slot1.fightStepData] or {
 		1,
 		0
 	}
@@ -284,11 +284,11 @@ function slot0.onArrived(slot0, slot1)
 	slot0:tryAddALFResidualEffectData(slot1.missileRes, slot1)
 	slot0:createExplosionEffect(slot2, slot1.toId, slot1.asfdContext)
 	slot0:playHitAction(slot1.toId)
-	slot0:floatDamage(slot1.stepMo, slot1.toId)
+	slot0:floatDamage(slot1.fightStepData, slot1.toId)
 	slot0:clearMover(slot1)
 
 	if slot5[1] <= slot5[2] then
-		slot0.stepMoArrivedCount[slot2] = nil
+		slot0.fightStepDataArrivedCount[slot2] = nil
 
 		return slot0:onASFDArrived(slot2)
 	end
@@ -374,7 +374,7 @@ function slot0.floatDamage(slot0, slot1, slot2)
 end
 
 function slot0.addDamageWork(slot0, slot1, slot2, slot3)
-	if not (slot2 and slot2.actEffectMOs) then
+	if not (slot2 and slot2.actEffect) then
 		return
 	end
 
@@ -384,19 +384,19 @@ function slot0.addDamageWork(slot0, slot1, slot2, slot3)
 				slot1:registWork(slot11, slot2, slot9)
 			end
 		elseif slot10 == FightEnum.EffectType.FIGHTSTEP then
-			slot0:addDamageWork(slot1, slot9.cus_stepMO, slot3)
+			slot0:addDamageWork(slot1, slot9.fightStep, slot3)
 		end
 	end
 end
 
 function slot0.onContinueASFDFlowDone(slot0)
-	slot0.curStepMo = nil
+	slot0.curStepData = nil
 
 	TaskDispatcher.cancelTask(slot0.onExplosionEffectDone, slot0)
 end
 
 function slot0.onASFDFlowDone(slot0, slot1)
-	slot0.curStepMo = nil
+	slot0.curStepData = nil
 
 	slot0:clearBornEffect(true)
 	slot0:clearEmitterEffect(slot1)
@@ -405,7 +405,7 @@ function slot0.onASFDFlowDone(slot0, slot1)
 	tabletool.clear(slot0.effectWrap2EntityIdDict)
 	TaskDispatcher.cancelTask(slot0.onExplosionEffectDone, slot0)
 	slot0:resetSpineAnim()
-	tabletool.clear(slot0.stepMoArrivedCount)
+	tabletool.clear(slot0.fightStepDataArrivedCount)
 end
 
 function slot0.clearBornEffect(slot0, slot1)
@@ -504,7 +504,7 @@ function slot0.clearMover(slot0, slot1)
 	slot1:unregisterCallback(UnitMoveEvent.Arrive, slot0.onArrived, slot0)
 
 	slot1.missileWrap = nil
-	slot1.stepMo = nil
+	slot1.fightStepData = nil
 	slot1.toId = nil
 	slot1.asfdContext = nil
 	slot1.missileRes = nil

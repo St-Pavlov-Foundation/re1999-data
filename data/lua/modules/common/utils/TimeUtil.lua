@@ -17,19 +17,24 @@ slot0 = {
 		Second = "s",
 		Minute = "m"
 	},
-	second2TimeString = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-
-		if slot1 then
-			return string.format("%02d:%02d:%02d", math.floor(slot0 / 3600), math.floor(slot0 % 3600 / 60), math.floor(slot0 % 60))
-		else
-			return string.format("%02d:%02d", slot3, slot4)
-		end
-	end,
 	secondsToDDHHMMSS = function (slot0)
 		slot0 = math.floor(slot0)
 
 		return math.floor(slot0 / 86400), math.floor(slot0 % 86400 / 3600), math.floor(slot0 % 3600 / 60), math.floor(slot0 % 60)
+	end,
+	secondToHMS = function (slot0)
+		slot1, slot2, slot3, slot4 = uv0.secondsToDDHHMMSS(slot0)
+
+		return slot2, slot3, slot4
+	end,
+	second2TimeString = function (slot0, slot1)
+		slot2, slot3, slot4 = uv0.secondToHMS(slot0)
+
+		if slot1 then
+			return string.format("%02d:%02d:%02d", slot2, slot3, slot4)
+		else
+			return string.format("%02d:%02d", slot3, slot4)
+		end
 	end,
 	stringToTimestamp = function (slot0)
 		if string.nilorempty(slot0) then
@@ -125,63 +130,43 @@ slot0 = {
 		}
 	end,
 	secondToRoughTime = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-		slot3 = math.floor(slot0 % 86400 / 3600)
-		slot4 = math.floor(slot0 % 3600 / 60)
-		slot5, slot6 = nil
-		slot7 = false
+		slot2, slot3, slot4, slot5 = uv0.secondsToDDHHMMSS(slot0)
 
-		if math.floor(slot0 / 86400) > 0 then
-			slot5 = slot2
-			slot6 = slot1 and uv0.DateEnFormat.Day or luaLang("time_day")
-			slot7 = true
-		elseif slot3 > 0 then
-			slot5 = slot3
-			slot6 = slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")
-		else
-			slot5 = slot4 > 0 and slot4 or "<1"
-			slot6 = slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute")
-		end
-
-		return slot5, slot6, slot7
+		return nil, slot2 > 0 and (slot1 and uv0.DateEnFormat.Day or luaLang("time_day")) or slot3 > 0 and (slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")) or slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute"), slot2 > 0
 	end,
 	secondToRoughTime2 = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-		slot3 = math.floor(slot0 % 86400 / 3600)
-		slot4 = math.ceil(slot0 % 3600 / 60)
-		slot5, slot6 = nil
+		slot2, slot3, slot4, slot5 = uv0.secondsToDDHHMMSS(slot0)
+		slot6, slot7 = nil
 
-		if math.floor(slot0 / 86400) > 0 then
-			slot5 = slot2
-			slot6 = slot1 and uv0.DateEnFormat.Day or luaLang("time_day")
+		if slot2 > 0 then
+			slot6 = slot2
+			slot7 = slot1 and uv0.DateEnFormat.Day or luaLang("time_day")
 		elseif slot3 > 0 then
-			slot5 = slot3
-			slot6 = slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")
+			slot6 = slot3
+			slot7 = slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")
 		elseif slot4 >= 60 then
-			slot5 = 1
-			slot6 = slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")
+			slot6 = 1
+			slot7 = slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour")
 		else
-			slot5 = slot4
-			slot6 = slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute")
+			slot6 = slot4
+			slot7 = slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute")
 		end
 
-		return slot5, slot6
+		return slot6, slot7
 	end,
 	secondToRoughTime3 = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-		slot3 = math.floor(slot0 % 86400 / 3600)
-		slot4 = math.floor(slot0 % 3600 / 60)
-		slot5, slot6 = nil
+		slot2, slot3, slot4, slot5 = uv0.secondsToDDHHMMSS(slot0)
+		slot6, slot7, slot8 = uv1(slot1)
 
-		return math.floor(slot0 / 86400) > 0 and (slot1 and " " .. slot2 .. " " .. uv0.DateEnFormat.Day .. " " .. slot3 .. " " .. uv0.DateEnFormat.Hour or " " .. slot2 .. " " .. luaLang("time_day") .. " " .. slot3 .. " " .. luaLang("time_hour")) or slot3 > 0 and (slot1 and " " .. slot3 .. " " .. uv0.DateEnFormat.Hour .. " " .. slot4 .. " " .. uv0.DateEnFormat.Minute or " " .. slot3 .. " " .. luaLang("time_hour") .. " " .. slot4 .. " " .. luaLang("time_minute")) or slot4 > 0 and (slot1 and " " .. slot4 .. " " .. uv0.DateEnFormat.Minute or slot4 .. " " .. luaLang("time_minute")) or slot1 and " <1 " .. uv0.DateEnFormat.Minute or " <1  " .. luaLang("time_minute") or ""
-	end,
-	secondToHMS = function (slot0)
-		slot1 = slot0
-		slot2 = math.floor(slot1 / 60 / 60)
-		slot1 = slot1 - slot2 * 60 * 60
-		slot3 = math.floor(slot1 / 60)
-
-		return slot2, slot3, slot1 - slot3 * 60
+		if slot2 > 0 then
+			return uv2(slot2, slot6, slot3, slot7)
+		elseif slot3 > 0 then
+			return uv2(slot3, slot7, slot4, slot8)
+		elseif slot4 > 0 then
+			return slot1 and " " .. slot4 .. " " .. uv0.DateEnFormat.Minute or slot4 .. " " .. luaLang("time_minute")
+		else
+			return luaLang("summonmain_deadline_time_min")
+		end
 	end,
 	convertWday = function (slot0)
 		if slot0 - 1 <= 0 then
@@ -191,7 +176,7 @@ slot0 = {
 		return slot0
 	end,
 	weekDayToLangStr = function (slot0)
-		return luaLang("dungeon_day_" .. tonumber(slot0))
+		return luaLang(string.format("weekday%s", slot0))
 	end,
 	isSameDay = function (slot0, slot1)
 		if os.date("!*t", slot0 + ServerTime.serverUtcOffset()).year ~= os.date("!*t", slot1 + ServerTime.serverUtcOffset()).year then
@@ -255,81 +240,84 @@ slot0 = {
 		return slot0.wday - 1
 	end,
 	getFormatTime2 = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-		slot2 = math.floor(slot0 / 86400)
-		slot5 = slot0 - slot2 * 86400 - math.floor(slot0 % 86400 / 3600) * 3600 - math.floor(slot0 % 3600 / 60) * 60
+		slot2, slot3, slot4, slot5 = uv0.secondsToDDHHMMSS(slot0)
+		slot6, slot7, slot8, slot9 = uv1(slot1)
 
 		if slot2 > 0 then
-			return string.format("%s%s%s%s", slot2, slot1 and uv0.DateEnFormat.Day or luaLang("time_day"), slot3, slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour2"))
-		end
-
-		if slot3 > 0 then
-			return string.format("%s%s%s%s", slot3, slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour2"), slot4, slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute2"))
-		end
-
-		if slot4 > 0 then
-			return string.format("%s%s%s%s", slot4, slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute2"), slot5, slot1 and uv0.DateEnFormat.Second or luaLang("time_second"))
+			return uv2(slot2, slot6, slot3, slot7)
+		elseif slot3 > 0 then
+			return uv2(slot3, slot7, slot4, slot8)
+		elseif slot4 > 0 then
+			return uv2(slot4, slot8, slot5, slot9)
 		else
-			return string.format("%s%s", slot5, slot6)
+			return string.format("%s%s", slot5, slot9)
 		end
 	end,
 	getFormatTime1 = function (slot0, slot1)
-		slot0 = math.floor(slot0)
-		slot2 = math.floor(slot0 / 86400)
-		slot5 = slot0 - slot2 * 86400 - math.floor(slot0 % 86400 / 3600) * 3600 - math.floor(slot0 % 3600 / 60) * 60
+		slot2, slot3, slot4, slot5 = uv0.secondsToDDHHMMSS(slot0)
+		slot6, slot7, slot8, slot9 = uv1(slot1)
 
 		if slot2 > 0 then
-			return string.format("%s%s", slot2, slot1 and uv0.DateEnFormat.Day or luaLang("time_day"))
-		end
-
-		if slot3 > 0 then
-			return string.format("%s%s", slot3, slot1 and uv0.DateEnFormat.Hour or luaLang("time_hour2"))
-		end
-
-		slot6 = slot1 and uv0.DateEnFormat.Second or luaLang("time_second")
-
-		if slot4 > 0 then
-			return string.format("%s%s", slot4, slot1 and uv0.DateEnFormat.Minute or luaLang("time_minute2"))
+			return string.format("%s%s", slot2, slot6)
+		elseif slot3 > 0 then
+			return string.format("%s%s", slot3, slot7)
+		elseif slot4 > 0 then
+			return string.format("%s%s", slot4, slot8)
 		else
-			return string.format("%s%s", slot5, slot6)
+			return string.format("%s%s", slot5, slot9)
 		end
 	end,
 	SecondToActivityTimeFormat = function (slot0, slot1)
-		slot2 = nil
+		slot3, slot4, slot5, slot6 = uv1.secondsToDDHHMMSS(slot0)
+		slot7, slot8, slot9, slot10, slot11 = uv2(slot1)
 
-		if math.floor(math.floor(slot0) / 31536000) > 0 then
-			slot5 = math.floor(slot0 % slot3 / uv0.OneDaySecond)
-
-			return LangSettings.instance:isEn() and (slot1 and slot4 .. uv0.DateEnFormat.Year .. " " .. slot5 .. uv0.DateEnFormat.Day or slot4 .. luaLang("time_year") .. " " .. slot5 .. luaLang("time_day")) or slot1 and slot4 .. uv0.DateEnFormat.Year .. slot5 .. uv0.DateEnFormat.Day or slot4 .. luaLang("time_year") .. slot5 .. luaLang("time_day")
-		end
-
-		if math.floor(slot0 / uv0.OneDaySecond) > 0 then
-			slot6 = math.floor(slot0 % uv0.OneDaySecond / uv0.OneHourSecond)
-
-			return LangSettings.instance:isEn() and (slot1 and slot5 .. uv0.DateEnFormat.Day .. " " .. slot6 .. uv0.DateEnFormat.Hour or slot5 .. luaLang("time_day") .. " " .. slot6 .. luaLang("time_hour")) or slot1 and slot5 .. uv0.DateEnFormat.Day .. slot6 .. uv0.DateEnFormat.Hour or slot5 .. luaLang("time_day") .. slot6 .. luaLang("time_hour")
-		end
-
-		if math.floor(slot0 / uv0.OneHourSecond) > 0 then
-			slot7 = math.floor(slot0 % uv0.OneHourSecond / uv0.OneMinuteSecond)
-
-			if LangSettings.instance:isEn() then
-				slot2 = slot1 and slot6 .. uv0.DateEnFormat.Hour .. " " .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. " " .. slot7 .. luaLang("time_minute2")
-			else
-				slot2 = slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
-			end
+		if math.floor(slot0 / uv0) > 0 then
+			return uv3(slot2, slot7, slot3, slot8)
+		elseif slot3 > 0 then
+			return uv3(slot3, slot8, slot4, slot9)
+		elseif slot4 > 0 then
+			return uv3(slot4, slot9, slot5, slot10)
 		else
-			slot6 = 0
-
-			if math.floor(slot0 / uv0.OneMinuteSecond) < 1 then
-				slot7 = 1
-			end
-
-			slot2 = LangSettings.instance:isEn() and (slot1 and slot6 .. uv0.DateEnFormat.Hour .. " " .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. " " .. slot7 .. luaLang("time_minute2")) or slot1 and slot6 .. uv0.DateEnFormat.Hour .. slot7 .. uv0.DateEnFormat.Minute or slot6 .. luaLang("time_hour") .. slot7 .. luaLang("time_minute2")
+			return uv3(0, slot9, math.max(1, slot5), slot10)
 		end
-
-		return slot2
 	end
 }
+
+function slot1(slot0, slot1, slot2, slot3)
+	if LangSettings.instance:isEn() then
+		return string.format("%s%s %s%s", slot0, slot1, slot2, slot3)
+	else
+		return string.format("%s%s%s%s", slot0, slot1, slot2, slot3)
+	end
+end
+
+function slot2(slot0, slot1, slot2, slot3, slot4, slot5)
+	return slot0 and uv0.DateEnFormat.Year or luaLang(slot1), slot0 and uv0.DateEnFormat.Day or luaLang(slot2), slot0 and uv0.DateEnFormat.Hour or luaLang(slot3), slot0 and uv0.DateEnFormat.Minute or luaLang(slot4), slot0 and uv0.DateEnFormat.Second or luaLang(slot5)
+end
+
+function slot3(slot0)
+	return uv0(slot0, "time_year", "time_day", "time_hour", "time_minute", "time_second")
+end
+
+function slot4(slot0)
+	return uv0(slot0, "time_year", "time_day", "time_hour2", "time_minute2", "time_second")
+end
+
+function slot5(slot0, slot1, slot2, slot3, slot4)
+	slot5, slot6, slot7, slot8, slot9 = uv0(slot0, "time_year", slot1, slot2, slot3, slot4)
+
+	return slot6, slot7, slot8, slot9
+end
+
+function slot6(slot0)
+	return uv0(slot0, "time_day", "time_hour", "time_minute", "time_second")
+end
+
+function slot7(slot0)
+	return uv0(slot0, "time_day", "time_hour2", "time_minute2", "time_second")
+end
+
+slot8 = 31536000
 slot0.maxDateTimeStamp = slot0.dtTableToTimeStamp({
 	hour = 0,
 	month = 1,
@@ -361,42 +349,25 @@ function slot0.isDstTime(slot0)
 	return os.date("*t", slot0).isdst
 end
 
-slot1 = 31536000
-
 function slot0.getFormatTime(slot0)
 	if not slot0 or slot0 <= 0 then
-		return "<1" .. luaLang("time_minute2")
-	end
-
-	if math.floor(slot0 / uv0) > 0 then
-		slot3 = math.floor(slot0 % uv0 / uv1.OneDaySecond)
-
-		if LangSettings.instance:isEn() then
-			slot2 = luaLang("time_year") .. " "
-		end
-
-		return slot1 .. slot2 .. slot3 .. luaLang("time_day")
+		return luaLang("summonmain_deadline_time_min")
 	end
 
 	slot2, slot3, slot4, slot5 = uv1.secondsToDDHHMMSS(slot0)
+	slot6, slot7, slot8, slot9, slot10 = uv2()
 
-	if slot2 > 0 then
-		if LangSettings.instance:isEn() then
-			slot6 = luaLang("time_day") .. " "
-		end
-
-		return slot2 .. slot6 .. slot3 .. luaLang("time_hour2")
+	if math.floor(slot0 / uv0) > 0 then
+		return uv3(slot1, slot6, slot2, slot7)
+	elseif slot2 > 0 then
+		return uv3(slot2, slot7, slot3, slot8)
 	elseif slot3 > 0 then
-		if LangSettings.instance:isEn() then
-			slot6 = luaLang("time_hour2") .. " "
-		end
-
-		return slot3 .. slot6 .. slot4 .. luaLang("time_minute2")
+		return uv3(slot3, slot8, slot4, slot9)
 	elseif slot4 > 0 then
-		return slot4 .. luaLang("time_minute2")
+		return string.format("%s%s", slot4, slot9)
+	else
+		return luaLang("summonmain_deadline_time_min")
 	end
-
-	return "<1" .. luaLang("time_minute2")
 end
 
 return slot0

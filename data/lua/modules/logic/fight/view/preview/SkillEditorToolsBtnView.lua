@@ -36,6 +36,11 @@ function slot0._editableInitView(slot0)
 	slot0:addToolBtn("角色描边", slot0._onClickOutline)
 	slot0:addToolBtn("开启出牌镜头", slot0._onClickPlayCardCameraAni)
 	slot0:addToolBtn("移除术阵特效", slot0._onClickSuZhenSwitch)
+	slot0:addToolBtn("诺蒂卡衔接测试", slot0._onClickNuoDiKaXianJie)
+end
+
+function slot0._onClickNuoDiKaXianJie(slot0)
+	ViewMgr.instance:openView(ViewName.GMFightNuoDiKaXianJieCeShi)
 end
 
 function slot0._onClickDamage(slot0)

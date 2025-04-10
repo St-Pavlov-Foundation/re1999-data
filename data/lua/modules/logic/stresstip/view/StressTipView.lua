@@ -70,8 +70,9 @@ function slot0.onClickHeroTip(slot0, slot1)
 end
 
 slot0.OpenEnum = {
-	Monster = 1,
-	Hero = 2
+	Act183 = 3,
+	Hero = 2,
+	Monster = 1
 }
 
 function slot0.onOpen(slot0)
@@ -79,8 +80,44 @@ function slot0.onOpen(slot0)
 	slot0.co = slot0.viewParam.co
 	slot0.clickPosition = slot0.viewParam.clickPosition
 
+	if slot0.openEnum == uv0.OpenEnum.Act183 then
+		slot0:refreshAct183UI()
+
+		return
+	end
+
 	slot0:refreshHero()
 	slot0:refreshEnemy()
+end
+
+function slot0.refreshAct183UI(slot0)
+	slot0.identityIdList = slot0.viewParam.identityIdList
+
+	for slot4, slot5 in ipairs(slot0.enemyStressItemList) do
+		gohelper.setActive(slot5.go, false)
+	end
+
+	slot1 = 0
+
+	for slot5, slot6 in ipairs(slot0.identityIdList) do
+		if StressConfig.instance:getStressDict(slot6) then
+			for slot11, slot12 in ipairs(slot0.StressBehaviourList) do
+				if slot7[FightEnum.StressBehaviourString[slot12]] then
+					slot15 = slot0:getEnemyStressItem(slot1 + 1)
+
+					gohelper.setActive(slot15.go, true)
+
+					slot15.txtTitle.text = StressConfig.instance:getStressBehaviourName(slot12)
+
+					slot0:refreshEnemyDesc(slot15, slot14)
+				end
+			end
+		else
+			logError(string.format("压力表，身份类型 ： %s 不存在", slot6))
+		end
+	end
+
+	slot0:setRectTrLayout(slot0.rectTrEnemy)
 end
 
 slot0.StressBehaviourList = {
@@ -99,7 +136,7 @@ function slot0.refreshEnemy(slot0)
 		gohelper.setActive(slot5.go, false)
 	end
 
-	if not StressConfig.instance:getStressDict(slot0.openEnum == uv0.OpenEnum.Monster and lua_monster_skill_template.configDict[slot0.co.skillTemplate] and slot2.identity or 1001) then
+	if not StressConfig.instance:getStressDict(slot0.openEnum == uv0.OpenEnum.Monster and lua_monster_skill_template.configDict[slot0.co.skillTemplate] and slot2.identity or FightNameUIStressMgr.HeroDefaultIdentityId) then
 		logError(string.format("压力表，身份类型 ： %s 不存在", nil))
 
 		return

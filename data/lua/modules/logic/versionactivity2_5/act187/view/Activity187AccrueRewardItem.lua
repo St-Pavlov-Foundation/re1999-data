@@ -73,7 +73,7 @@ function slot0.setItem(slot0)
 	slot0._simagereward:LoadImage(slot2)
 	UISpriteSetMgr.instance:setUiFBSprite(slot0._imagecircle, "bg_pinjidi_lanse_" .. slot1.rare)
 
-	slot0._txtrewardcount.text = string.format("%s%s", luaLang("multiple"), slot0.data.quantity)
+	slot0._txtrewardcount.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("multiple_1"), slot0.data.quantity)
 	slot0._txtpointvalue.text = formatLuaLang("times2", slot0.id)
 	slot3 = false
 

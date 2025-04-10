@@ -88,7 +88,7 @@ function slot0.initByFightGroup(slot0, slot1)
 			slot13 = slot5 - slot13
 		end
 
-		slot14 = tostring(slot12.heroId - 1099511627776.0)
+		slot14 = tostring(tonumber(slot12.id .. "." .. slot12.trialTemplate) - 1099511627776.0)
 		slot2[slot14] = slot13
 		slot0.heroList[slot13] = slot14
 
@@ -241,63 +241,76 @@ function slot0.initByLocalData(slot0, slot1)
 	slot0.isReplay = false
 	slot0.equips = {}
 	slot0.activity104Equips = {}
-	slot4 = {}
+	slot2 = slot1.version or HeroGroupEnum.saveOldVersion
+	slot4 = HeroGroupModel.instance.battleId and lua_battle.configDict[slot3]
+	slot5 = {}
 
-	if not string.nilorempty((HeroGroupModel.instance.battleId and lua_battle.configDict[slot2]).trialHeros) then
-		slot4 = GameUtil.splitString2(slot3.trialHeros, true)
+	if not string.nilorempty(HeroGroupHandler.getTrialHeros(HeroGroupModel.instance.episodeId)) then
+		slot5 = GameUtil.splitString2(slot6, true)
 	end
 
 	if ToughBattleModel.instance:getAddTrialHeros() then
-		for slot9, slot10 in pairs(slot5) do
-			table.insert(slot4, {
-				slot10
+		for slot11, slot12 in pairs(slot7) do
+			table.insert(slot5, {
+				slot12
 			})
 		end
 	end
 
-	for slot9 = 1, ModuleEnum.MaxHeroCountInGroup do
-		slot0.heroList[slot9] = slot1.heroList[slot9] or "0"
-		slot0.equips[slot9 - 1] = HeroGroupEquipMO.New()
+	for slot11 = 1, ModuleEnum.MaxHeroCountInGroup do
+		slot0.heroList[slot11] = slot1.heroList[slot11] or "0"
+		slot0.equips[slot11 - 1] = HeroGroupEquipMO.New()
 
-		slot0.equips[slot9 - 1]:init({
-			index = slot9 - 1,
+		slot0.equips[slot11 - 1]:init({
+			index = slot11 - 1,
 			equipUid = {
-				slot1.equips[slot9] or "0"
+				slot1.equips[slot11] or "0"
 			}
 		})
 		slot0:updateActivity104PosEquips({
-			index = slot9 - 1,
-			equipUid = slot1.activity104Equips and slot1.activity104Equips[slot9] or {}
+			index = slot11 - 1,
+			equipUid = slot1.activity104Equips and slot1.activity104Equips[slot11] or {}
 		})
 
-		if tonumber(slot0.heroList[slot9]) < 0 then
-			slot10 = false
+		if tonumber(slot0.heroList[slot11]) < 0 then
+			slot12 = false
 
-			for slot14, slot15 in pairs(slot4) do
-				if lua_hero_trial.configDict[slot15[1]][slot15[2] or 0].heroId - 1099511627776.0 == tonumber(slot0.heroList[slot9]) then
-					slot0.trialDict[slot9] = slot15
-					slot10 = true
+			for slot16, slot17 in pairs(slot5) do
+				slot18 = lua_hero_trial.configDict[slot17[1]][slot17[2] or 0]
+				slot19 = tonumber(slot18.id .. "." .. slot18.trialTemplate) - 1099511627776.0
+
+				if slot2 == HeroGroupEnum.saveOldVersion then
+					slot19 = slot18.heroId - 1099511627776.0
+				end
+
+				if slot19 == tonumber(slot0.heroList[slot11]) then
+					if slot2 == HeroGroupEnum.saveOldVersion then
+						slot0.heroList[slot11] = tostring(tonumber(slot18.id .. "." .. slot18.trialTemplate) - 1099511627776.0)
+					end
+
+					slot0.trialDict[slot11] = slot17
+					slot12 = true
 
 					break
 				end
 			end
 
-			if not slot10 then
-				slot0.heroList[slot9] = "0"
+			if not slot12 then
+				slot0.heroList[slot11] = "0"
 			end
 		end
 	end
 
 	slot0:updateActivity104PosEquips({
 		index = ModuleEnum.MaxHeroCountInGroup + 1 - 1,
-		equipUid = slot1.activity104Equips and slot1.activity104Equips[slot6] or {}
+		equipUid = slot1.activity104Equips and slot1.activity104Equips[slot8] or {}
 	})
 
-	if Activity104Model.instance:isSeasonChapter() and slot1.battleId ~= slot2 then
-		for slot10, slot11 in ipairs(slot0.heroList) do
-			if tonumber(slot11) < 0 then
-				slot0.heroList[slot10] = tostring(0)
-				slot0.trialDict[slot10] = nil
+	if Activity104Model.instance:isSeasonChapter() and slot1.battleId ~= slot3 then
+		for slot12, slot13 in ipairs(slot0.heroList) do
+			if tonumber(slot13) < 0 then
+				slot0.heroList[slot12] = tostring(0)
+				slot0.trialDict[slot12] = nil
 			end
 		end
 	end
@@ -308,47 +321,48 @@ function slot0.setTrials(slot0, slot1)
 		slot0.trialDict = {}
 	end
 
+	slot3 = HeroGroupModel.instance.battleId and lua_battle.configDict[slot2]
 	slot4 = {}
 
-	if not string.nilorempty((HeroGroupModel.instance.battleId and lua_battle.configDict[slot2]).trialHeros) then
-		slot4 = GameUtil.splitString2(slot3.trialHeros, true)
+	if not string.nilorempty(HeroGroupHandler.getTrialHeros(HeroGroupModel.instance.episodeId)) then
+		slot4 = GameUtil.splitString2(slot5, true)
 	end
 
-	slot5 = {}
+	slot6 = {}
 
-	for slot9, slot10 in pairs(slot4) do
-		if slot10[3] then
-			if slot10[3] < 0 then
-				slot11 = slot0._playerMax - slot11
+	for slot10, slot11 in pairs(slot4) do
+		if slot11[3] then
+			if slot11[3] < 0 then
+				slot12 = slot0._playerMax - slot12
 			end
 
-			slot0.trialDict[slot11] = slot10
-			slot12 = lua_hero_trial.configDict[slot10[1]][slot10[2] or 0]
-			slot0.heroList[slot11] = tostring(slot12.heroId - 1099511627776.0)
-			slot5[slot12.heroId] = true
+			slot0.trialDict[slot12] = slot11
+			slot13 = lua_hero_trial.configDict[slot11[1]][slot11[2] or 0]
+			slot0.heroList[slot12] = tostring(tonumber(slot13.id .. "." .. slot13.trialTemplate) - 1099511627776.0)
+			slot6[slot13.heroId] = true
 
-			if not slot1 and (slot12.act104EquipId1 > 0 or slot12.act104EquipId2 > 0) then
+			if not slot1 and (slot13.act104EquipId1 > 0 or slot13.act104EquipId2 > 0) then
 				slot0:updateActivity104PosEquips({
-					index = slot11 - 1
+					index = slot12 - 1
 				})
 			end
 		end
 	end
 
-	for slot9, slot10 in pairs(slot0.heroList) do
-		if tonumber(slot10) > 0 and HeroModel.instance:getById(slot10) and slot5[slot11.heroId] then
-			slot0.heroList[slot9] = "0"
+	for slot10, slot11 in pairs(slot0.heroList) do
+		if tonumber(slot11) > 0 and HeroModel.instance:getById(slot11) and slot6[slot12.heroId] then
+			slot0.heroList[slot10] = "0"
 		end
 	end
 
 	if not slot1 and not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Equip) and not string.nilorempty(slot3.trialEquips) then
-		slot10 = ModuleEnum.MaxHeroCountInGroup
+		slot11 = ModuleEnum.MaxHeroCountInGroup
 
-		for slot10 = 1, math.min(#string.splitToNumber(slot3.trialEquips, "|"), slot10) do
+		for slot11 = 1, math.min(#string.splitToNumber(slot3.trialEquips, "|"), slot11) do
 			slot0:updatePosEquips({
-				index = slot10 - 1,
+				index = slot11 - 1,
 				equipUid = {
-					tostring(-slot6[slot10])
+					tostring(-slot7[slot11])
 				}
 			})
 		end
@@ -382,6 +396,7 @@ function slot0.saveData(slot0)
 
 	slot2.activity104Equips[slot3] = slot0.activity104Equips[ModuleEnum.MaxHeroCountInGroup + 1 - 1] and slot0.activity104Equips[slot3 - 1].equipUid
 	slot2.battleId = slot1
+	slot2.version = HeroGroupEnum.saveTrialVersion
 	slot4 = nil
 
 	PlayerPrefsHelper.setString((not Activity104Model.instance:isSeasonChapter() or Activity104Model.instance:getSeasonTrialPrefsKey()) and PlayerPrefsKey.HeroGroupTrial .. tostring(PlayerModel.instance:getMyUserId()) .. slot1, cjson.encode(slot2))
@@ -619,7 +634,7 @@ function slot0.initWithBattle(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 					table.insert(slot9, slot0:getPosEquips(slot16 - 1))
 				end
 
-				slot0.heroList[slot16] = tostring(slot17.heroId - 1099511627776.0)
+				slot0.heroList[slot16] = tostring(tonumber(slot17.id .. "." .. slot17.trialTemplate) - 1099511627776.0)
 				slot0.trialDict[slot16] = slot15
 				slot10[slot17.heroId] = true
 			end
@@ -868,6 +883,21 @@ function slot0.replaceTowerHeroList(slot0, slot1)
 				index = slot14,
 				equipUid = slot13
 			})
+		end
+	end
+
+	slot0.trialDict = {}
+
+	for slot11, slot12 in ipairs(slot0.heroList) do
+		if tonumber(slot12) < 0 then
+			if HeroGroupTrialModel.instance:getById(slot12) then
+				slot0.trialDict[slot11] = {
+					slot13.trialCo.id,
+					0
+				}
+			else
+				slot0.heroList[slot11] = "0"
+			end
 		end
 	end
 end

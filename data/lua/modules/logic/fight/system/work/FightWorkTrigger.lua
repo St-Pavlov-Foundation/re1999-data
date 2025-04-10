@@ -3,23 +3,23 @@ module("modules.logic.fight.system.work.FightWorkTrigger", package.seeall)
 slot0 = class("FightWorkTrigger", FightEffectBase)
 
 function slot0.onStart(slot0)
-	slot1 = slot0._actEffectMO.effectNum
+	slot1 = slot0.actEffectData.effectNum
 
-	if slot0._actEffectMO.configEffect == -1 and slot1 == 4150002 then
+	if slot0.actEffectData.configEffect == -1 and slot1 == 4150002 then
 		slot2 = false
 
-		if slot0._fightStepMO.actEffectMOs then
+		if slot0.fightStepData.actEffect then
 			slot3 = false
 
-			for slot7, slot8 in ipairs(slot0._fightStepMO.actEffectMOs) do
-				if slot8 == slot0._actEffectMO then
+			for slot7, slot8 in ipairs(slot0.fightStepData.actEffect) do
+				if slot8 == slot0.actEffectData then
 					slot3 = slot7
 					slot2 = true
 				end
 			end
 
-			for slot7 = slot3 + 1, #slot0._fightStepMO.actEffectMOs do
-				if slot0._fightStepMO.actEffectMOs[slot7].effectType == FightEnum.EffectType.TRIGGER and slot8.configEffect == -1 and slot8.effectNum == 4150002 then
+			for slot7 = slot3 + 1, #slot0.fightStepData.actEffect do
+				if slot0.fightStepData.actEffect[slot7].effectType == FightEnum.EffectType.TRIGGER and slot8.configEffect == -1 and slot8.effectNum == 4150002 then
 					slot2 = false
 				end
 			end
@@ -39,7 +39,7 @@ function slot0.onStart(slot0)
 		if _G["FightWorkTrigger" .. slot2.actionType] then
 			slot0:cancelFightWorkSafeTimer()
 
-			slot0._work = slot3.New(slot0._fightStepMO, slot0._actEffectMO)
+			slot0._work = slot3.New(slot0.fightStepData, slot0.actEffectData)
 
 			slot0._work:registerDoneListener(slot0._onWorkDone, slot0)
 			slot0._work:onStart(slot0.context)

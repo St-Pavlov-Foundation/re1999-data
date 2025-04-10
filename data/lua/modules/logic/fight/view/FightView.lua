@@ -124,37 +124,43 @@ function slot0.onOpen(slot0)
 		FightModel.instance:setAuto(FightController.instance:getPlayerPrefKeyAuto(0))
 	end
 
+	if FightDataHelper.fieldMgr.customData and slot6[FightCustomData.CustomDataType.Act191] and slot7.auto then
+		slot0.forceAuto = true
+
+		FightModel.instance:setAuto(true)
+	end
+
 	slot0:_updateRound()
 	TaskDispatcher.runDelay(slot0._updateAutoAnim, slot0, 1)
 	slot0:_updateReplay()
 
-	slot6 = GuideModel.instance:isDoingFirstGuide()
-	slot7 = GuideController.instance:isForbidGuides()
-	slot9 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightSpeed) and (not slot6 or slot7)
-	slot10 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightProperty)
-	slot11 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightBack) and (not slot6 or slot7)
-	slot8 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightAuto) and (not slot6 or slot7) and slot5
+	slot7 = GuideModel.instance:isDoingFirstGuide()
+	slot8 = GuideController.instance:isForbidGuides()
+	slot10 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightSpeed) and (not slot7 or slot8)
+	slot11 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightProperty)
+	slot12 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightBack) and (not slot7 or slot8)
+	slot9 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.FightAuto) and (not slot7 or slot8) and slot5
 
 	if FightReplayModel.instance:isReplay() then
 		gohelper.setActive(slot0._btnAuto.gameObject, false)
 	else
 		gohelper.setActive(slot0._btnAuto.gameObject, DungeonModel.instance:hasPassLevelAndStory(10101))
-		gohelper.setActive(slot0._btnAutoLockObj, FightDataHelper.fieldMgr:isDouQuQu())
+		gohelper.setActive(slot0._btnAutoLockObj, slot0.forceAuto or FightDataHelper.fieldMgr:isDouQuQu())
 	end
 
 	gohelper.setActive(slot0._btnSpecialTip.gameObject, uv0.canShowSpecialBtn())
 
-	if slot8 then
+	if slot9 then
 		UISpriteSetMgr.instance:setFightSprite(slot0._imageAuto, "bt_zd", true)
 	else
 		UISpriteSetMgr.instance:setFightSprite(slot0._imageAuto, "zd_dis", true)
 	end
 
-	if not slot9 and (slot1 == OpenConfig.instance:getOpenCo(OpenEnum.UnlockFunc.FightSpeed).episodeId or GuideModel.instance:isGuideFinish(110)) then
-		slot9 = true
+	if not slot10 and (slot1 == OpenConfig.instance:getOpenCo(OpenEnum.UnlockFunc.FightSpeed).episodeId or GuideModel.instance:isGuideFinish(110)) then
+		slot10 = true
 	end
 
-	if slot9 then
+	if slot10 then
 		if FightReplayModel.instance:isReplay() then
 			FightModel.instance:setUserSpeed(2)
 		else
@@ -165,14 +171,18 @@ function slot0.onOpen(slot0)
 	end
 
 	slot0:_updateSpeed()
-	gohelper.setActive(slot0._btnSpeed.gameObject, slot9)
+	gohelper.setActive(slot0._btnSpeed.gameObject, slot10)
 	gohelper.setActive(slot0._btnCareerRestrain.gameObject, false)
-	gohelper.setActive(slot0._btnBack.gameObject, slot11)
-	gohelper.setActive(slot0._roundGO, slot11 and GMFightShowState.topRightRound)
+	gohelper.setActive(slot0._btnBack.gameObject, slot12)
+	gohelper.setActive(slot0._roundGO, slot12 and GMFightShowState.topRightRound)
 	NavigateMgr.instance:addEscape(ViewName.FightView, slot0._onEscapeBtnClick, slot0)
 	slot0:_showEnemySubCount()
 	slot0:initEnemyActionStatus()
 	slot0:_refreshDouQuQu()
+
+	if FightDataHelper.fieldMgr:is191DouQuQu() then
+		gohelper.setActive(slot0._enemyinfoRoot, false)
+	end
 end
 
 function slot0._refreshDouQuQu(slot0)
@@ -287,8 +297,8 @@ function slot0._onBlockOperateEnd(slot0)
 end
 
 function slot0._onClothSkillRoundSequenceFinish(slot0)
-	if not FightModel.instance:isFinish() and not FightReplayModel.instance:isReplay() and FightCardModel.instance:isCardOpEnd() and (FightModel.instance:getCurStage() == FightEnum.Stage.Card or slot1 == FightEnum.Stage.AutoCard) then
-		FightRpc.instance:sendBeginRoundRequest(FightCardModel.instance:getCardOps())
+	if not FightModel.instance:isFinish() and not FightReplayModel.instance:isReplay() and FightDataHelper.operationDataMgr:isCardOpEnd() and (FightModel.instance:getCurStage() == FightEnum.Stage.Card or slot1 == FightEnum.Stage.AutoCard) then
+		FightRpc.instance:sendBeginRoundRequest(FightDataHelper.operationDataMgr:getOpList())
 	end
 end
 
@@ -314,9 +324,9 @@ function slot0._delayStartAutoCards(slot0)
 	end
 
 	if not FightModel.instance:isFinish() and not FightReplayModel.instance:isReplay() then
-		if FightCardModel.instance:isCardOpEnd() then
+		if FightDataHelper.operationDataMgr:isCardOpEnd() then
 			if FightModel.instance:getCurStage() == FightEnum.Stage.Card or slot1 == FightEnum.Stage.AutoCard then
-				FightRpc.instance:sendBeginRoundRequest(FightCardModel.instance:getCardOps())
+				FightRpc.instance:sendBeginRoundRequest(FightDataHelper.operationDataMgr:getOpList())
 			end
 		elseif FightModel.instance:isAuto() and FightModel.instance:getCurStage() == FightEnum.Stage.AutoCard then
 			slot0:_autoPlayCard()
@@ -476,6 +486,10 @@ function slot0._onClickBack(slot0)
 end
 
 function slot0._onClickAuto(slot0)
+	if slot0.forceAuto then
+		return
+	end
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.PlaySeasonChangeHero) then
 		return
 	end
@@ -532,7 +546,7 @@ function slot0._checkAutoCard(slot0)
 		FightController.instance:setCurStage(FightEnum.Stage.AutoCard)
 		ViewMgr.instance:closeView(ViewName.FightSkillStrengthenView, true)
 
-		if not FightCardModel.instance:isCardOpEnd() then
+		if not FightDataHelper.operationDataMgr:isCardOpEnd() then
 			TaskDispatcher.cancelTask(slot0._delayStartAutoCards, slot0)
 			UIBlockMgr.instance:endBlock(UIBlockKey.FightAuto)
 			slot0:_autoPlayCard()
@@ -579,12 +593,11 @@ function slot0._autoPlayCard(slot0)
 	end
 
 	if not FightReplayModel.instance:isReplay() then
-		if #FightPlayerOperateMgr.detectUpgrade() > 0 and #FightCardModel.instance:getCardOps() > 0 and not FightCardModel.instance:isCardOpEnd() then
+		if #FightPlayerOperateMgr.detectUpgrade() > 0 and #FightDataHelper.operationDataMgr:getOpList() > 0 and not FightDataHelper.operationDataMgr:isCardOpEnd() then
 			FightRpc.instance:sendResetRoundRequest()
-			FightCardModel.instance:clearCardOps()
 		end
 
-		FightRpc.instance:sendAutoRoundRequest(FightCardModel.instance:getCardOps())
+		FightRpc.instance:sendAutoRoundRequest(FightDataHelper.operationDataMgr:getOpList())
 	end
 end
 
@@ -664,7 +677,7 @@ function slot0._onSetStateForDialogBeforeStartFight(slot0, slot1)
 	gohelper.setActive(slot0._topRightBtnRoot, not slot1)
 	gohelper.setActive(slot0._roundGO, not slot1)
 
-	if FightDataHelper.fieldMgr:isDouQuQu() then
+	if FightDataHelper.fieldMgr:isDouQuQu() or FightDataHelper.fieldMgr:is191DouQuQu() then
 		gohelper.setActive(slot0._enemyinfoRoot, false)
 	else
 		gohelper.setActive(slot0._enemyinfoRoot, not slot1)
@@ -719,7 +732,7 @@ function slot0.onClickEnemyAction(slot0)
 end
 
 function slot0.checkMonsterCardIsEmpty(slot0)
-	if FightModel.instance:getCurRoundMO() and slot1:getAIUseCardMOList() then
+	if FightDataHelper.roundMgr:getRoundData() and slot1:getAIUseCardMOList() then
 		for slot6, slot7 in ipairs(slot2) do
 			if FightDataHelper.entityMgr:getById(slot7.uid) then
 				return false

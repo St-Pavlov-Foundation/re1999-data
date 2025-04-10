@@ -426,7 +426,7 @@ function slot0.buildTimeItem(slot0, slot1, slot2, slot3)
 	if slot0:handleType(slot1, slot2) then
 		slot5 = slot1.go:GetComponent(gohelper.Type_VerticalLayoutGroup)
 		slot1.cscontent = slot5
-		gohelper.findChildText(slot4, "bg/#txt_time").text = string.format(luaLang("weekday"), TimeUtil.weekDayToLangStr(slot2.day))
+		gohelper.findChildText(slot4, "bg/#txt_time").text = luaLang("weekday" .. tonumber(slot2.day))
 
 		ZProj.UGUIHelper.RebuildLayout(slot1.go.transform)
 

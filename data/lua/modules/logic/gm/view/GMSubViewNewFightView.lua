@@ -71,29 +71,6 @@ function slot0.initViewContent(slot0)
 
 	slot0:addButton(slot0:getLineGroup(), "我方牌库", slot0.onClickMyCardDeck, slot0)
 	slot0:addButton(slot0:getLineGroup(), "敌方牌库", slot0.onClickEnemyCardDeck, slot0)
-	slot0:addLineIndex()
-
-	slot0.countASFDInput = slot0:addInputText(slot0:getLineGroup(), "", "奥术飞弹数量...", nil, , {
-		fsize = 30,
-		w = 200
-	})
-	slot0.optionStrList = {
-		"我方",
-		"敌方"
-	}
-	slot0.optionValueList = {
-		FightEnum.EntitySide.MySide,
-		FightEnum.EntitySide.EnemySide
-	}
-	slot0.sideASFDDrop = slot0:addDropDown(slot0:getLineGroup(), "奥术飞弹发射方:", slot0.optionStrList, nil, , {
-		fsize = 25,
-		label_w = 100,
-		total_w = 300,
-		drop_w = 200
-	})
-	slot0.toEntityASFDInput = slot0:addInputText(slot0:getLineGroup(), "", "奥术飞弹目标uid...")
-	slot0.btnSendASFD = slot0:addButton(slot0:getLineGroup(), "发射", slot0.onClickSendASFDBtn, slot0)
-
 	slot0:getEntityNameList()
 	slot0:getMountList()
 	slot0:addLineIndex()
@@ -125,6 +102,55 @@ function slot0.initViewContent(slot0)
 	})
 	slot0.btnMount = slot0:addButton(slot0:getLineGroup(), "挂载", slot0.onClickBtnMount, slot0)
 
+	slot0:addTitleSplitLine("奥术飞弹GM")
+	slot0:addLineIndex()
+
+	slot0.emitterList, slot0.missileList, slot0.explosionList = slot0:getASFDUnitList()
+	slot0.emitterDrop = slot0:addDropDown(slot0:getLineGroup(), "发射器特效配置:", slot0.emitterList, nil, , {
+		fsize = 25,
+		label_w = 100,
+		total_w = 300,
+		drop_w = 200
+	})
+	slot0.missileDrop = slot0:addDropDown(slot0:getLineGroup(), "飞弹特效配置:", slot0.missileList, nil, , {
+		fsize = 25,
+		label_w = 100,
+		total_w = 300,
+		drop_w = 200
+	})
+	slot0.explosionDrop = slot0:addDropDown(slot0:getLineGroup(), "爆点特效配置:", slot0.explosionList, nil, , {
+		fsize = 25,
+		label_w = 100,
+		total_w = 300,
+		drop_w = 200
+	})
+
+	slot0.emitterDrop:SetValue((tabletool.indexOf(slot0.emitterList, GMController.instance.emitterId and tostring(GMController.instance.emitterId) or slot0.emitterList[1]) or 1) - 1)
+	slot0.missileDrop:SetValue((tabletool.indexOf(slot0.missileList, GMController.instance.missileId and tostring(GMController.instance.missileId) or slot0.missileList[1]) or 1) - 1)
+	slot0.explosionDrop:SetValue((tabletool.indexOf(slot0.explosionList, GMController.instance.explosionId and tostring(GMController.instance.explosionId) or slot0.explosionList[1]) or 1) - 1)
+	slot0:addLineIndex()
+
+	slot0.countASFDInput = slot0:addInputText(slot0:getLineGroup(), "", "奥术飞弹数量...", nil, , {
+		fsize = 30,
+		w = 200
+	})
+	slot0.optionStrList = {
+		"我方",
+		"敌方"
+	}
+	slot0.optionValueList = {
+		FightEnum.EntitySide.MySide,
+		FightEnum.EntitySide.EnemySide
+	}
+	slot0.sideASFDDrop = slot0:addDropDown(slot0:getLineGroup(), "奥术飞弹发射方:", slot0.optionStrList, nil, , {
+		fsize = 25,
+		label_w = 100,
+		total_w = 300,
+		drop_w = 200
+	})
+	slot0.toEntityASFDInput = slot0:addInputText(slot0:getLineGroup(), "", "奥术飞弹目标uid...")
+	slot0.btnSendASFD = slot0:addButton(slot0:getLineGroup(), "发射", slot0.onClickSendASFDBtn, slot0)
+
 	slot0:addTitleSplitLine("战中打印")
 	slot0:addLineIndex()
 
@@ -132,6 +158,24 @@ function slot0.initViewContent(slot0)
 	slot0.btnLogAttr = slot0:addButton(slot0:getLineGroup(), "打印当前属性", slot0.onClickLogAttr, slot0)
 	slot0.btnLogBaseAttr = slot0:addButton(slot0:getLineGroup(), "打印基础属性", slot0.onClickLogBaseAttr, slot0)
 	slot0.btnLogLife = slot0:addButton(slot0:getLineGroup(), "打印生命百分比", slot0.onClickLogLife, slot0)
+end
+
+function slot0.getASFDUnitList(slot0)
+	slot1 = {}
+	slot2 = {}
+	slot3 = {}
+
+	for slot7, slot8 in ipairs(lua_fight_asfd.configList) do
+		if slot8.unit == FightEnum.ASFDUnit.Emitter then
+			table.insert(slot1, tostring(slot8.id))
+		elseif slot9 == FightEnum.ASFDUnit.Missile then
+			table.insert(slot2, tostring(slot8.id))
+		elseif slot9 == FightEnum.ASFDUnit.Explosion then
+			table.insert(slot3, tostring(slot8.id))
+		end
+	end
+
+	return slot1, slot2, slot3
 end
 
 function slot0.getEntityNameList(slot0)
@@ -374,79 +418,9 @@ function slot0.onClickSendASFDBtn(slot0)
 		end
 	end
 
-	for slot11 = 1, slot1 do
-		slot12 = FightStepMO.New()
-
-		slot12:init({
-			cardIndex = 1,
-			actType = 1,
-			fromId = (FightDataHelper.entityMgr:getASFDEntityMo(slot3) or slot0:createASFDEmitter(slot3)).id,
-			toId = slot4,
-			actId = FightASFDConfig.instance.skillId,
-			actEffect = {}
-		})
-		table.insert({}, slot12)
-	end
-
-	if slot0.asfdSequence then
-		slot0.asfdSequence:stop()
-	end
-
-	slot0.asfdSequence = FlowSequence.New()
-
-	for slot11, slot12 in ipairs(slot7) do
-		slot0.asfdSequence:addWork(FightASFDFlow.New(slot12, slot7[slot11 + 1], slot11))
-	end
-
-	slot0.asfdSequence:start()
+	GMController.instance:setRecordASFDCo(slot0.emitterList[slot0.emitterDrop:GetValue() + 1], slot0.missileList[slot0.missileDrop:GetValue() + 1], slot0.explosionList[slot0.explosionDrop:GetValue() + 1])
+	GMController.instance:startASFDFlow(slot1, slot3, slot4)
 	slot0:closeThis()
-end
-
-function slot0.createASFDEmitter(slot0, slot1)
-	slot2 = FightEntityMO.New()
-
-	slot2:init({
-		skin = 0,
-		exSkillLevel = 0,
-		userId = 0,
-		career = 0,
-		exSkill = 0,
-		status = 0,
-		position = 0,
-		level = 0,
-		teamType = 0,
-		guard = 0,
-		subCd = 0,
-		exPoint = 0,
-		shieldValue = 0,
-		modelId = 0,
-		uid = slot1 == FightEnum.TeamType.MySide and "99998" or "-99998",
-		entityType = FightEnum.EntityType.ASFDEmitter,
-		side = slot1,
-		attr = {
-			defense = 0,
-			multiHpNum = 0,
-			hp = 0,
-			multiHpIdx = 0,
-			mdefense = 0,
-			technic = 0,
-			attack = 0
-		},
-		buffs = {},
-		skillGroup1 = {},
-		skillGroup2 = {},
-		passiveSkill = {},
-		powerInfos = {},
-		SummonedList = {}
-	})
-
-	slot2.side = slot1
-	slot2 = FightDataHelper.entityMgr:addEntityMO(slot2)
-
-	table.insert(FightDataHelper.entityMgr:getOriginASFDEmitterList(slot2.side), slot2)
-	(GameSceneMgr.instance:getCurScene() and slot4.entityMgr):addASFDUnit()
-
-	return slot2
 end
 
 function slot0.onClickBtnMount(slot0)

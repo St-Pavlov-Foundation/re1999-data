@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkEffectMonsterChange", package.s
 slot0 = class("FightWorkEffectMonsterChange", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0._entityId = slot0._actEffectMO.entityMO.id
+	slot0._entityId = slot0.actEffectData.entity.id
 	slot0._oldEntityMO = FightDataHelper.entityMgr:getOldEntityMO(slot0._entityId)
 end
 
@@ -16,7 +16,7 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:_buildNewEntity()
 		slot0:onDone(true)
 

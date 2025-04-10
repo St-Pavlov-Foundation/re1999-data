@@ -1,0 +1,252 @@
+[
+  {
+    "monsterId": 6270001,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270001,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270001,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270001,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270001,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270002,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270002,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270002,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270002,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270002,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270003,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270003,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270003,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270003,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270003,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270004,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270004,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270004,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270004,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270004,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270005,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270005,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270005,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270005,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270005,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270006,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270006,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270006,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270006,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270006,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270007,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270007,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270007,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270007,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270007,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270008,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270008,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270008,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270008,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270008,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270009,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270009,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270009,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270009,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270009,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  },
+  {
+    "monsterId": 6270010,
+    "skillLevel": 1,
+    "desc": "▩1%s在咒语2/3阶时，造成的精神创伤提升至300/400%"
+  },
+  {
+    "monsterId": 6270010,
+    "skillLevel": 2,
+    "desc": "▩3%s造成的精神创伤提升至450%"
+  },
+  {
+    "monsterId": 6270010,
+    "skillLevel": 3,
+    "desc": "▩2%s在咒语1/2/3阶时，造成的精神创伤提升至135/200/325%"
+  },
+  {
+    "monsterId": 6270010,
+    "skillLevel": 4,
+    "desc": "▩3%s造成的精神创伤提升至500%"
+  },
+  {
+    "monsterId": 6270010,
+    "skillLevel": 5,
+    "desc": "▩2%s穿透率提升的效果变为40%"
+  }
+]

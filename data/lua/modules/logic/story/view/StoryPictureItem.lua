@@ -140,10 +140,17 @@ function slot0._onPicImageLoaded(slot0)
 		transformhelper.setLocalScale(slot0._simg.gameObject.transform, slot1 / 1920, slot2 / 1080, 1)
 	end
 
-	if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn then
-		ZProj.TweenHelper.DOFadeCanvasGroup(slot0._picGo, 0, 1, slot0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, , , EaseType.Linear)
-	else
+	slot3 = SLFramework.UGUI.GuiHelper.ParseColor(slot0._picCo.picColor)
+
+	if slot0._picCo.picType ~= StoryEnum.PictureType.Transparency then
 		slot0._picImg.color.a = 1
+	else
+		slot0._picImg.color = slot3
+		slot4 = slot3.a
+	end
+
+	if slot0._picCo.inType == StoryEnum.PictureInType.FadeIn then
+		ZProj.TweenHelper.DOFadeCanvasGroup(slot0._picGo, 0, slot4, slot0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, , , EaseType.Linear)
 	end
 
 	if slot0._picCo.effType == StoryEnum.PictureEffectType.Shake then
@@ -206,19 +213,55 @@ function slot0._followBg(slot0)
 end
 
 function slot0._playScale(slot0)
+	slot2 = SLFramework.UGUI.GuiHelper.ParseColor(slot0._picCo.picColor)
+
 	if slot0._picCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 		transformhelper.setLocalScale(slot0._picGo.transform, slot0._picCo.effRate, slot0._picCo.effRate, 1)
+		transformhelper.setLocalPosXY(slot0._picGo.transform, slot0._picCo.pos[1], slot0._picCo.pos[2])
+
+		if slot0._picCo.picType ~= StoryEnum.PictureType.Transparency then
+			return
+		end
+
+		slot0._picImg.color = slot2
 
 		return
 	end
 
-	slot0._scaleTweenId = ZProj.TweenHelper.DOScale(slot0._picGo.transform, slot0._picCo.effRate, slot0._picCo.effRate, 1, slot0._picCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	slot0._posTweenId = ZProj.TweenHelper.DOAnchorPos(slot0._picGo.transform, slot0._picCo.pos[1], slot0._picCo.pos[2], slot1, nil, , , slot0._picCo.effDegree)
+	slot0._scaleTweenId = ZProj.TweenHelper.DOScale(slot0._picGo.transform, slot0._picCo.effRate, slot0._picCo.effRate, 1, slot1)
+
+	if slot0._picCo.picType ~= StoryEnum.PictureType.Transparency then
+		return
+	end
+
+	slot0._alphaTweenId = ZProj.TweenHelper.DoFade(slot0._picImg, slot0._picImg.color.a, slot2.a, slot1, nil, , , EaseType.Linear)
 end
 
 function slot0.resetStep(slot0)
 	TaskDispatcher.cancelTask(slot0._playShake, slot0)
 	TaskDispatcher.cancelTask(slot0._shakeStop, slot0)
 	ZProj.TweenHelper.KillByObj(slot0._picGo)
+end
+
+function slot0._killTweenId(slot0)
+	if slot0._posTweenId then
+		ZProj.TweenHelper.KillById(slot0._posTweenId)
+
+		slot0._posTweenId = nil
+	end
+
+	if slot0._scaleTweenId then
+		ZProj.TweenHelper.KillById(slot0._scaleTweenId)
+
+		slot0._scaleTweenId = nil
+	end
+
+	if slot0._alphaTweenId then
+		ZProj.TweenHelper.KillById(slot0._alphaTweenId)
+
+		slot0._alphaTweenId = nil
+	end
 end
 
 function slot0.reset(slot0, slot1, slot2)
@@ -230,6 +273,7 @@ function slot0.reset(slot0, slot1, slot2)
 	slot0._picCo = slot2
 
 	TaskDispatcher.cancelTask(slot0._realDestroy, slot0)
+	slot0:_killTweenId()
 
 	if slot0._picCo.picType == StoryEnum.PictureType.FullScreen then
 		slot0:_setFullPicture()
@@ -267,6 +311,13 @@ end
 function slot0._setNormalPicture(slot0)
 	slot0._simg:UnLoadImage()
 	slot0._simg:LoadImage(ResUrl.getStoryItem(slot0._picCo.picture), slot0._onPictureLoaded, slot0)
+
+	if slot0._picCo.picType ~= StoryEnum.PictureType.Transparency then
+		return
+	end
+
+	slot1 = SLFramework.UGUI.GuiHelper.ParseColor(slot0._picCo.picColor)
+	slot0._picImg.color = Color.New(slot1.r, slot1.g, slot1.b, slot0._picImg.color.a)
 end
 
 function slot0._setFullPicture(slot0)
@@ -370,6 +421,8 @@ function slot0._checkDestroyItem(slot0)
 end
 
 function slot0._realDestroy(slot0)
+	slot0:_killTweenId()
+
 	if not slot0._picLoaded then
 		return
 	end

@@ -211,7 +211,11 @@ function slot0._refreshInfoUI(slot0, slot1)
 			end
 
 			for slot15, slot16 in ipairs(slot11.skillIconGo) do
-				slot16.isUniqueSkill = slot0.entityMO:isUniqueSkill(slot10.skillId)
+				slot16.isBigSkill = FightCardDataHelper.isBigSkill(slot10.skillId)
+
+				if lua_skill_next.configDict[slot10.skillId] then
+					slot16.isBigSkill = false
+				end
 
 				gohelper.setActive(slot16.goStar, true)
 			end
@@ -244,7 +248,7 @@ function slot0._sortCard(slot0)
 			end
 		end
 
-		if slot0.entityMO:isUniqueSkill(slot6.skillId) then
+		if FightCardDataHelper.isBigSkill(slot6.skillId) then
 			slot1[slot6.skillId] = 0
 		end
 	end
@@ -280,7 +284,7 @@ function slot0._setSkillCardInfo(slot0, slot1, slot2)
 		if slot8 == slot3 then
 			slot9.imgIcon:LoadImage(ResUrl.getSkillIcon(slot4.icon))
 
-			if not slot9.isUniqueSkill then
+			if not slot9.isBigSkill then
 				slot9.tag:LoadImage(ResUrl.getAttributeIcon("attribute_" .. slot4.showTag))
 			end
 
@@ -352,7 +356,7 @@ function slot0.onDestroy(slot0)
 			for slot9, slot10 in pairs(slot5.skillIconGo) do
 				slot10.imgIcon:UnLoadImage()
 
-				if not slot10.isUniqueSkill then
+				if not slot10.isBigSkill then
 					slot10.tag:UnLoadImage()
 				end
 			end

@@ -266,6 +266,12 @@ function slot0._onNeedInstallNewPackage(slot0, slot1)
 
 	slot0._appUrl = slot1
 
+	if VersionUtil.isVersionLargeEqual("2.7.0") then
+		-- Nothing
+	else
+		slot2.rightCb = slot0._gotoDownloadPackageLegacy
+	end
+
 	BootMsgBox.instance:show({
 		title = booterLang("hotupdate"),
 		content = booterLang("need_update_package"),
@@ -273,23 +279,53 @@ function slot0._onNeedInstallNewPackage(slot0, slot1)
 		leftCb = slot0._quitGame,
 		leftCbObj = slot0,
 		rightMsg = booterLang("download"),
-		rightCb = slot0._gotoDownloadPackage,
+		rightCb = slot0._gotoDownloadPackageNew,
 		rightCbObj = slot0
 	})
 end
 
-function slot0._taptapUpdateGame()
-	if BootNativeUtil.isAndroid() and tostring(SDKMgr.instance:getSubChannelId()) == "1001" then
-		SDKNativeUtil.updateGame()
+function slot0._gotoDownloadPackageNew(slot0)
+	logNormal("HotUpdateMgr:_gotoDownloadPackageNew, 打开下载Url = " .. slot0._appUrl)
 
-		return true
+	if BootNativeUtil.isAndroid() then
+		SDKNativeUtil.updateGame(slot0._appUrl)
+		Timer.New(function ()
+			uv0:_onNeedInstallNewPackage(uv0._appUrl)
+		end, 0.1):Start()
+
+		return
+	end
+
+	if BootNativeUtil.isIOS() then
+		ZProj.SDKManager.Instance:CallVoidFuncWithParams("openDeepLink", cjson.encode({
+			deepLink = "",
+			url = slot0._appUrl
+		}))
+		Timer.New(function ()
+			uv0:_onNeedInstallNewPackage(uv0._appUrl)
+		end, 0.1):Start()
+
+		return
+	end
+
+	if BootNativeUtil.isWindows() and GameChannelConfig.isBilibili() then
+		SDKMgr.instance:openLauncher()
+
+		return
+	end
+
+	UnityEngine.Application.OpenURL(slot0._appUrl)
+
+	if not BootNativeUtil.isAndroid() then
+		ProjBooter.instance:quitGame()
 	end
 end
 
-function slot0._gotoDownloadPackage(slot0)
-	logNormal("HotUpdateMgr:_gotoDownloadPackage, 打开下载Url = " .. slot0._appUrl)
+function slot0._gotoDownloadPackageLegacy(slot0)
+	logNormal("HotUpdateMgr:_gotoDownloadPackageLegacy, 打开下载Url = " .. slot0._appUrl)
 
-	if uv0._taptapUpdateGame() then
+	if BootNativeUtil.isAndroid() and tostring(SDKMgr.instance:getSubChannelId()) == "1001" then
+		SDKNativeUtil.updateGame(slot0._appUrl)
 		Timer.New(function ()
 			uv0:_onNeedInstallNewPackage(uv0._appUrl)
 		end, 0.1):Start()

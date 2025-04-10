@@ -189,6 +189,8 @@ function slot0.refreshDynamicVertical(slot0)
 	slot0.imageHeight = 1400
 	slot0._uiSpine = GuiModelAgent.Create(slot0.goSpineSkin, true)
 
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.FullScreen)
+
 	if slot0.isLive2D then
 		slot0._uiSpine:setLive2dCameraLoadedCallback(slot0.onLive2dCameraLoadedCallback, slot0)
 	end

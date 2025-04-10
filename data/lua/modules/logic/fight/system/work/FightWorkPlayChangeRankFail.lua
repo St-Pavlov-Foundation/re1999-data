@@ -3,13 +3,13 @@ module("modules.logic.fight.system.work.FightWorkPlayChangeRankFail", package.se
 slot0 = class("FightWorkPlayChangeRankFail", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0._actEffectMO) then
+	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	slot0:com_sendFightEvent(FightEvent.PlayChangeRankFail, slot0._actEffectMO.effectNum, slot0._actEffectMO.reserveStr)
+	slot0:com_sendFightEvent(FightEvent.PlayChangeRankFail, slot0.actEffectData.effectNum, slot0.actEffectData.reserveStr)
 	slot0:com_registTimer(slot0._delayAfterPerformance, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
 end
 

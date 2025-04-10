@@ -69,9 +69,10 @@ function slot0.filterAchievementByAll(slot0, slot1)
 end
 
 function slot0.filterAchievementByUnlocked(slot0, slot1)
+	slot2 = slot1.groupId
 	slot4 = false
 
-	if slot1.groupId and slot2 ~= 0 then
+	if AchievementUtils.isActivityGroup(slot1.id) then
 		if slot0._groupStateMap[slot2] == nil then
 			slot0._groupStateMap[slot2] = AchievementModel.instance:achievementGroupHasLocked(slot2)
 		end
@@ -85,9 +86,10 @@ function slot0.filterAchievementByUnlocked(slot0, slot1)
 end
 
 function slot0.filterAchievementByLocked(slot0, slot1)
+	slot2 = slot1.groupId
 	slot4 = false
 
-	if slot1.groupId and slot2 ~= 0 then
+	if AchievementUtils.isActivityGroup(slot1.id) then
 		if slot0._groupStateMap[slot2] == nil then
 			slot0._groupStateMap[slot2] = AchievementModel.instance:achievementGroupHasLocked(slot2)
 		end
@@ -109,40 +111,42 @@ function slot0.buildAchievementMOList(slot0, slot1)
 	end
 
 	slot4 = 0
+	slot5 = true
 
-	for slot8, slot9 in ipairs(slot1) do
+	for slot9, slot10 in ipairs(slot1) do
 		if slot4 == 0 then
-			if slot9.groupId ~= 0 or AchievementEnum.MainListLineCount <= #slot3 then
+			if slot10.groupId ~= 0 or AchievementEnum.MainListLineCount <= #slot3 then
 				if #slot3 > 0 then
 					slot0:buildMO(slot2, slot3, slot4)
 
 					slot3 = {}
 				end
 
-				slot4 = slot9.groupId
+				slot4 = slot10.groupId
 			end
-		elseif slot9.groupId ~= slot4 then
-			slot0:buildMO(slot2, slot3, slot4)
+		elseif slot10.groupId ~= slot4 or slot10.category == AchievementEnum.Type.GamePlay and AchievementEnum.MainListLineCount <= #slot3 then
+			slot0:buildMO(slot2, slot3, slot4, slot5)
 
-			slot4 = slot9.groupId
+			slot4 = slot10.groupId
 			slot3 = {}
+			slot5 = slot12 and true or false
 		end
 
-		table.insert(slot3, slot9)
+		table.insert(slot3, slot10)
 	end
 
 	if #slot3 > 0 then
-		slot0:buildMO(slot2, slot3, slot4)
+		slot0:buildMO(slot2, slot3, slot4, slot5)
 	end
 
 	return slot2
 end
 
-function slot0.buildMO(slot0, slot1, slot2, slot3)
-	slot4 = AchievementTileMO.New()
+function slot0.buildMO(slot0, slot1, slot2, slot3, slot4)
+	slot5 = AchievementTileMO.New()
 
-	slot4:init(slot2, slot3)
-	table.insert(slot1, slot4)
+	slot5:init(slot2, slot3, slot4)
+	table.insert(slot1, slot5)
 end
 
 function slot0.getSortFunction(slot0, slot1)
@@ -172,14 +176,14 @@ function slot0.sortAchievementByRareDown(slot0, slot1)
 			return slot0.groupId < slot1.groupId
 		end
 
-		return slot0.order < slot1.order
-	else
-		if AchievementModel.instance:achievementHasLocked(slot0.id) ~= AchievementModel.instance:achievementHasLocked(slot1.id) then
-			return not slot6
+		if slot0.order ~= slot1.order then
+			return slot0.order < slot1.order
 		end
-
-		return slot4 < slot5
+	elseif AchievementModel.instance:achievementHasLocked(slot0.id) ~= AchievementModel.instance:achievementHasLocked(slot1.id) then
+		return not slot4
 	end
+
+	return slot0.id < slot1.id
 end
 
 function slot0.sortAchievementByRareUp(slot0, slot1)
@@ -218,7 +222,7 @@ function slot0.getInfoList(slot0, slot1)
 	slot2 = {}
 
 	for slot7, slot8 in ipairs(slot0:getList()) do
-		table.insert(slot2, SLFramework.UGUI.MixCellInfo.New(slot8:getAchievementType(), slot8:getLineHeight(), slot7))
+		table.insert(slot2, SLFramework.UGUI.MixCellInfo.New(slot8:getAchievementType(), slot8:getLineHeight(nil, slot8:getIsFold()), slot7))
 	end
 
 	return slot2
@@ -287,6 +291,22 @@ end
 
 function slot0.resetScrollFocusIndex(slot0)
 	slot0._curScrollFocusIndex = nil
+end
+
+function slot0.getCurGroupMoList(slot0, slot1)
+	slot2 = {}
+
+	for slot6, slot7 in ipairs(slot0:getCurMoList()) do
+		if slot7.groupId == slot1 then
+			table.insert(slot2, slot7)
+		end
+	end
+
+	return slot2
+end
+
+function slot0.getCurMoList(slot0)
+	return slot0:getAchievementMOList(AchievementMainCommonModel.instance:getCurrentCategory(), AchievementMainCommonModel.instance:getCurrentSortType(), AchievementMainCommonModel.instance:getCurrentFilterType())
 end
 
 slot0.instance = slot0.New()

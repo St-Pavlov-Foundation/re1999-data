@@ -63,6 +63,35 @@ function slot0.onReceiveTowerResetTalentReply(slot0, slot1, slot2)
 	end
 end
 
+function slot0.sendTowerRenameTalentPlanRequest(slot0, slot1, slot2, slot3, slot4)
+	slot5 = TowerModule_pb.TowerRenameTalentPlanRequest()
+	slot5.bossId = slot1
+	slot5.planName = slot2
+
+	return slot0:sendMsg(slot5, slot3, slot4)
+end
+
+function slot0.onReceiveTowerRenameTalentPlanReply(slot0, slot1, slot2)
+	if slot1 == 0 then
+		TowerAssistBossModel.instance:onTowerRenameTalentPlan(slot2)
+		TowerController.instance:dispatchEvent(TowerEvent.RenameTalentPlan, slot2.planName)
+	end
+end
+
+function slot0.sendTowerChangeTalentPlanRequest(slot0, slot1, slot2)
+	slot3 = TowerModule_pb.TowerChangeTalentPlanRequest()
+	slot3.bossId = slot1
+	slot3.planId = slot2
+
+	return slot0:sendMsg(slot3)
+end
+
+function slot0.onReceiveTowerChangeTalentPlanReply(slot0, slot1, slot2)
+	if slot1 == 0 then
+		TowerController.instance:dispatchEvent(TowerEvent.ChangeTalentPlan, slot2)
+	end
+end
+
 function slot0.sendTowerResetSubEpisodeRequest(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 	slot7 = TowerModule_pb.TowerResetSubEpisodeRequest()
 	slot7.towerType = slot1
@@ -86,6 +115,7 @@ function slot0.sendStartTowerBattleRequest(slot0, slot1, slot2, slot3)
 	slot4.towerId = slot5.towerId or 0
 	slot4.layerId = slot5.layerId or 0
 	slot4.difficulty = slot5.difficulty or 0
+	slot4.talentPlanId = TowerAssistBossModel.instance:getLimitedTrialBossTalentPlan(slot5)
 
 	slot0:packStartTowerBattleRequest(slot4, slot1)
 

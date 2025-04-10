@@ -208,14 +208,20 @@ function slot0._initIcon(slot0)
 	gohelper.setActive(slot0._simagerightproduct.gameObject, true)
 	slot0._simagerightproduct:LoadImage(slot4)
 
-	slot0._txtrightproductname.text = string.format("%s%s%s", slot3.name, luaLang("multiple"), slot2[3])
+	slot0._txtrightproductname.text = GameUtil.getSubPlaceholderLuaLang(luaLang("room_critter_exchange"), {
+		slot3.name,
+		slot2[3]
+	})
 	slot5 = string.splitToNumber(slot1.config.cost, "#")
 	slot6, slot7 = ItemModel.instance:getItemConfigAndIcon(slot5[1], slot5[2], true)
 
 	gohelper.setActive(slot0._simageleftproduct.gameObject, true)
 	slot0._simageleftproduct:LoadImage(slot7)
 
-	slot0._txtleftproductname.text = string.format("%s%s%s", slot6.name, luaLang("multiple"), slot5[3])
+	slot0._txtleftproductname.text = GameUtil.getSubPlaceholderLuaLang(luaLang("room_critter_exchange"), {
+		slot6.name,
+		slot5[3]
+	})
 
 	slot0._simagecosticon:LoadImage(slot7)
 

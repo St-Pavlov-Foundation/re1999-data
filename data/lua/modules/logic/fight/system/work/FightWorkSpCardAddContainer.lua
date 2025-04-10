@@ -10,14 +10,14 @@ function slot0.onStart(slot0)
 	slot3 = slot0:com_registWorkDoneFlowParallel():registWork(FightWorkFlowSequence)
 
 	for slot8, slot9 in ipairs(slot0:getAdjacentSameEffectList(uv0, true)) do
-		slot10 = slot9.effect.effectType
+		slot10 = slot9.actEffectData.effectType
 		slot11 = FightStepBuilder.ActEffectWorkCls[slot10]
 
 		if slot10 == FightEnum.EffectType.SPCARDADD then
 			slot2:registWork(FightWorkFlowSequence):registWork(FightWorkDelayTimer, 0.1 * (0 + 1))
 		end
 
-		slot3:registWork(slot11, slot9.stepMO, slot9.effect)
+		slot3:registWork(slot11, slot9.fightStepData, slot9.actEffectData)
 	end
 
 	slot2:start()

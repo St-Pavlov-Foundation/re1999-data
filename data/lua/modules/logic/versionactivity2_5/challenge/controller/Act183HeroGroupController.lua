@@ -1,23 +1,19 @@
 module("modules.logic.versionactivity2_5.challenge.controller.Act183HeroGroupController", package.seeall)
 
 slot0 = class("Act183HeroGroupController", BaseController)
-slot1 = {
-	[Act183Enum.EpisodeType.Boss] = ModuleEnum.HeroGroupSnapshotType.Act183Boss,
-	[Act183Enum.EpisodeType.Sub] = ModuleEnum.HeroGroupSnapshotType.Act183Normal
-}
 
 function slot0.enterFight(slot0, slot1, slot2, slot3)
 	slot0._episodeId = slot1
 	slot0._readyUseBadgeNum = slot2
 
-	if not uv0[Act183Helper.getEpisodeType(slot1)] then
-		logError("未处理关卡类型 episodeType = " .. tostring(slot4))
+	if not Act183Helper.getEpisodeSnapShotType(slot1) then
+		logError(string.format("编队快照类型不存在 episodeId = %s", slot1))
 
 		return
 	end
 
 	Act183Model.instance:recordEpisodeSelectConditions(slot3)
-	HeroGroupRpc.instance:sendGetHeroGroupSnapshotListRequest(slot5, slot0._enterFight, slot0)
+	HeroGroupRpc.instance:sendGetHeroGroupSnapshotListRequest(slot4, slot0._enterFight, slot0)
 end
 
 function slot0._enterFight(slot0)
@@ -27,8 +23,8 @@ function slot0._enterFight(slot0)
 		return
 	end
 
-	DungeonFightController.instance:enterFight(slot1.chapterId, slot0._episodeId)
 	Act183Model.instance:recordEpisodeReadyUseBadgeNum(slot0._readyUseBadgeNum)
+	DungeonFightController.instance:enterFight(slot1.chapterId, slot0._episodeId)
 end
 
 function slot0.saveGroupData(slot0, slot1, slot2, slot3, slot4, slot5)

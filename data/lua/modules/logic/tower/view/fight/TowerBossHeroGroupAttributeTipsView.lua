@@ -57,7 +57,7 @@ end
 function slot0.refreshAttr(slot0)
 	slot0.txtTeamLev.text = HeroConfig.instance:getCommonLevelDisplay(HeroSingleGroupModel.instance:getTeamLevel())
 
-	for slot8 = 1, math.max(#TowerConfig.instance:getHeroGroupAddAttr(slot0.bossId, slot1, slot0.bossMo and slot0.bossMo.level or 1), #slot0.items) do
+	for slot8 = 1, math.max(#TowerConfig.instance:getHeroGroupAddAttr(slot0.bossId, slot1, slot0.bossMo and slot0.bossMo.trialLevel > 0 and slot0.bossMo.trialLevel or slot0.bossMo and slot0.bossMo.level or 1), #slot0.items) do
 		slot0:updateAttrItem(slot0:getAttrItem(slot8), slot3[slot8])
 	end
 end

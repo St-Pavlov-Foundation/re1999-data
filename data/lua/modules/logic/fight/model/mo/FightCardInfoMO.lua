@@ -43,8 +43,8 @@ function slot0.init(slot0, slot1)
 	slot0.heatId = slot1.heatId or 0
 end
 
-function slot0.isUniqueSkill(slot0)
-	return FightCardModel.instance:isUniqueSkill(slot0.targetUid, slot0.skillId)
+function slot0.isBigSkill(slot0)
+	return FightCardDataHelper.isBigSkill(slot0.skillId)
 end
 
 function slot0.clone(slot0)

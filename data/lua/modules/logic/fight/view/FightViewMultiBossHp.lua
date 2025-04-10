@@ -10,7 +10,7 @@ function slot0.onInitView(slot0)
 	slot0._ani:Play("idle", nil, )
 end
 
-function slot0.onRefreshViewParam(slot0, slot1)
+function slot0.onConstructor(slot0, slot1)
 	slot0._entityId = slot1
 end
 

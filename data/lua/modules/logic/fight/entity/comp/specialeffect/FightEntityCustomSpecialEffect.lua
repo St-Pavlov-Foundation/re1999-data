@@ -13,9 +13,11 @@ function slot0.initClass(slot0)
 
 	slot0:newClass(FightEntitySpecialEffect3070_Ball)
 	slot0:newClass(FightEntitySpecialEffectBuffLayer)
+	slot0:newClass(FightEntitySpecialEffectBuffLayerEnemySkin)
 	slot0:newClass(FightEntitySpecialEffect3081_Ball)
 	slot0:newClass(FightEntitySpecialEffectSeasonChangeHero)
 	slot0:newClass(FightEntitySpecialEffectBuffLayerNaNa)
+	slot0:newClass(FightEntitySpecialEffectBuffLayerLZL)
 end
 
 return slot0

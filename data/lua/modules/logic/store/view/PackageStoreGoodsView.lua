@@ -223,6 +223,12 @@ function slot0._refreshPriceArea(slot0)
 		slot0._txtprice.text = slot0._mo.config.originalCost
 
 		gohelper.setActive(slot0._imagematerial.gameObject, true)
+
+		if slot0._costQuantity <= ItemModel.instance:getItemQuantity(slot0._costType, slot0._costId) then
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtmaterialNum, "#393939")
+		else
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtmaterialNum, "#bf2e11")
+		end
 	end
 end
 

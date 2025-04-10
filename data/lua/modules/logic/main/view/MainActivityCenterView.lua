@@ -302,6 +302,7 @@ function slot0._refreshActCenter(slot0)
 		elseif slot5 == ActivityEnum.ActivityType.Welfare then
 			ActivityModel.instance:removeFinishedWelfare(slot6)
 			ActivityModel.instance:removeUnExitAct(slot6)
+			ActivityModel.instance:removeSelectSixAfterRemoveFinished(slot6)
 		end
 
 		if GameUtil.getTabLen(slot6) ~= 0 then

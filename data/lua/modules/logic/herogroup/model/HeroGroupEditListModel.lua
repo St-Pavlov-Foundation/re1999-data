@@ -38,67 +38,78 @@ function slot0.copyCharacterCardList(slot0, slot1)
 		end
 	end
 
-	for slot12, slot13 in ipairs(HeroGroupTrialModel.instance:getFilterList()) do
-		if not slot4[slot13.uid] then
-			table.insert(slot3, slot13)
+	HeroGroupTrialModel.instance:sortByLevelAndRare(CharacterModel.instance:getBtnTag(CharacterEnum.FilterType.HeroGroup) == 1, CharacterModel.instance:getRankState()[slot9] == 1)
+
+	for slot14, slot15 in ipairs(HeroGroupTrialModel.instance:getFilterList()) do
+		if not slot4[slot15.uid] then
+			table.insert(slot3, slot15)
 		end
 	end
 
-	for slot12, slot13 in ipairs(slot3) do
-		if slot0._moveHeroId and slot13.heroId == slot0._moveHeroId then
+	for slot14, slot15 in ipairs(slot3) do
+		if slot0._moveHeroId and slot15.heroId == slot0._moveHeroId then
 			slot0._moveHeroId = nil
-			slot0._moveHeroIndex = slot12
+			slot0._moveHeroIndex = slot14
 
 			break
 		end
 	end
 
-	slot9 = #slot3
-	slot10 = slot0.isTowerBattle
-	slot11 = slot0.isWeekWalk_2
+	slot11 = #slot3
+	slot13 = slot0.isWeekWalk_2
+	slot14 = {}
 
-	for slot16, slot17 in ipairs(slot2) do
-		if not slot4[slot17.uid] then
-			slot4[slot17.uid] = true
-
-			if slot0.adventure then
-				if WeekWalkModel.instance:getCurMapHeroCd(slot17.heroId) > 0 then
-					table.insert({}, slot17)
-				else
-					table.insert(slot3, slot17)
-				end
-			elseif slot11 then
-				if WeekWalk_2Model.instance:getCurMapHeroCd(slot17.heroId) > 0 then
-					table.insert(slot12, slot17)
-				else
-					table.insert(slot3, slot17)
-				end
-			elseif slot10 then
-				if TowerModel.instance:isHeroBan(slot17.heroId) then
-					table.insert(slot12, slot17)
-				else
-					table.insert(slot3, slot17)
-				end
-			elseif slot0._moveHeroId and slot17.heroId == slot0._moveHeroId then
-				slot0._moveHeroId = nil
-				slot0._moveHeroIndex = slot9 + 1
-
-				table.insert(slot3, slot0._moveHeroIndex, slot17)
-			else
-				table.insert(slot3, slot17)
+	if slot0.isTowerBattle then
+		for slot18 = #slot3, 1, -1 do
+			if TowerModel.instance:isHeroBan(slot3[slot18].heroId) then
+				table.insert(slot14, slot3[slot18])
+				table.remove(slot3, slot18)
 			end
 		end
 	end
 
-	if slot0.adventure or slot10 or slot11 then
-		tabletool.addValues(slot3, slot12)
+	for slot18, slot19 in ipairs(slot2) do
+		if not slot4[slot19.uid] then
+			slot4[slot19.uid] = true
+
+			if slot0.adventure then
+				if WeekWalkModel.instance:getCurMapHeroCd(slot19.heroId) > 0 then
+					table.insert(slot14, slot19)
+				else
+					table.insert(slot3, slot19)
+				end
+			elseif slot13 then
+				if WeekWalk_2Model.instance:getCurMapHeroCd(slot19.heroId) > 0 then
+					table.insert(slot14, slot19)
+				else
+					table.insert(slot3, slot19)
+				end
+			elseif slot12 then
+				if TowerModel.instance:isHeroBan(slot19.heroId) then
+					table.insert(slot14, slot19)
+				else
+					table.insert(slot3, slot19)
+				end
+			elseif slot0._moveHeroId and slot19.heroId == slot0._moveHeroId then
+				slot0._moveHeroId = nil
+				slot0._moveHeroIndex = slot11 + 1
+
+				table.insert(slot3, slot0._moveHeroIndex, slot19)
+			else
+				table.insert(slot3, slot19)
+			end
+		end
+	end
+
+	if slot0.adventure or slot12 or slot13 then
+		tabletool.addValues(slot3, slot14)
 	end
 
 	slot0:setList(slot3)
 
 	if slot1 and #slot3 > 0 and slot5 > 0 and #slot0._scrollViews > 0 then
-		for slot16, slot17 in ipairs(slot0._scrollViews) do
-			slot17:selectCell(slot5, true)
+		for slot18, slot19 in ipairs(slot0._scrollViews) do
+			slot19:selectCell(slot5, true)
 		end
 
 		if slot3[slot5] then
@@ -113,7 +124,13 @@ function slot0.isRepeatHero(slot0, slot1, slot2)
 	end
 
 	for slot6 in pairs(slot0._inTeamHeroUids) do
-		if slot0:getById(slot6).heroId == slot1 and slot2 ~= slot7.uid then
+		if not slot0:getById(slot6) then
+			logError("heroId:" .. slot1 .. ", " .. "uid:" .. slot2 .. "数据为空")
+
+			return false
+		end
+
+		if slot7.heroId == slot1 and slot2 ~= slot7.uid then
 			return true
 		end
 	end

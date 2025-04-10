@@ -21,6 +21,8 @@ function slot0.init(slot0, slot1)
 
 	slot0._config = Act183Config.instance:getEpisodeCo(slot0._episodeId)
 	slot0._params = slot1.params
+	slot0._star = slot1.star
+	slot0._totalStarCount = Act183Helper.calcEpisodeTotalConditionCount(slot0._episodeId)
 end
 
 function slot0.getConfig(slot0)
@@ -91,6 +93,14 @@ function slot0.getRuleStatus(slot0, slot1)
 	end
 
 	return Act183Enum.RuleStatus.Escape
+end
+
+function slot0.getFinishStarCount(slot0)
+	return slot0._star
+end
+
+function slot0.getTotalStarCount(slot0)
+	return slot0._totalStarCount
 end
 
 return slot0

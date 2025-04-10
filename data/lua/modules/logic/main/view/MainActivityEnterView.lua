@@ -186,7 +186,7 @@ end
 
 function slot0.activityRedDotRefreshFunc(slot0, slot1)
 	if slot0:getEnterViewActIdList() then
-		if ActivityStageHelper.checkActivityStageHasChange(slot2) then
+		if ActivityStageHelper.checkActivityStageHasChange(slot2) or slot0:_isShowHardModeNewTag(slot2) then
 			slot1.show = true
 
 			slot1:showRedDot(RedDotEnum.Style.ObliqueNewTag)
@@ -203,6 +203,19 @@ function slot0.activityRedDotRefreshFunc(slot0, slot1)
 	slot1:defaultRefreshDot()
 end
 
+function slot0._isShowHardModeNewTag(slot0, slot1)
+	if slot1 then
+		for slot5, slot6 in ipairs(slot1) do
+			if VersionActivityFixedDungeonModel.instance:isTipHardModeUnlockOpen(slot6) then
+				return true
+			end
+		end
+	end
+end
+
+function slot0._showNewTag(slot0, slot1)
+end
+
 function slot0.getEnterViewActIdList(slot0)
 	if not slot0.enterActId2ActIdListDict then
 		slot0.enterActId2ActIdListDict = {
@@ -216,7 +229,8 @@ function slot0.getEnterViewActIdList(slot0)
 			[ActivityEnum.VersionActivityIdDict.Activity1_6] = VersionActivity1_6Enum.EnterViewActIdList,
 			[ActivityEnum.VersionActivityIdDict.Activity1_7] = VersionActivity1_7Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity1_8] = VersionActivity1_8Enum.EnterViewActIdListWithRedDot,
-			[ActivityEnum.VersionActivityIdDict.Activity1_9] = VersionActivity1_9Enum.EnterViewActIdListWithRedDot
+			[ActivityEnum.VersionActivityIdDict.Activity1_9] = VersionActivity1_9Enum.EnterViewActIdListWithRedDot,
+			[ActivityEnum.VersionActivityIdDict.Activity2_7] = VersionActivity2_7Enum.EnterViewActIdListWithRedDot
 		}
 	end
 
@@ -278,7 +292,7 @@ function slot0.getActivityEnterHandleFunc(slot0, slot1)
 end
 
 function slot0.getCurEnterController(slot0)
-	return slot0:getActivityEnterHandleFunc(slot0.showActivityId)
+	return slot0:getActivityEnterHandleFunc(slot0.showActivityId) or VersionActivityFixedHelper.getVersionActivityEnterController().instance
 end
 
 function slot0.enterVersionActivity1_1(slot0)

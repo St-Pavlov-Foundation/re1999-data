@@ -93,7 +93,17 @@ function slot0.getMaxLineAndRow(slot0)
 end
 
 function slot0.getChessItem(slot0, slot1, slot2)
-	return slot0._chess[slot1][slot2]
+	slot3 = nil
+
+	if slot0._chess[slot1] ~= nil then
+		slot3 = slot0._chess[slot1][slot2]
+	end
+
+	if slot3 == nil then
+		logNormal("EliminateChessItemController:getChessItem chess is nil x = " .. slot1 .. " y = " .. slot2)
+	end
+
+	return slot3
 end
 
 function slot0.getChess(slot0)
@@ -102,7 +112,10 @@ end
 
 function slot0.updateChessItem(slot0, slot1, slot2, slot3)
 	slot0._chess[slot1][slot2] = slot3
-	slot3._go.name = string.format("chess_%d_%d", slot1, slot2)
+
+	if slot3 ~= nil then
+		slot3._go.name = string.format("chess_%d_%d", slot1, slot2)
+	end
 end
 
 function slot0.getChessBoardItem(slot0, slot1, slot2)

@@ -120,13 +120,13 @@ function slot0._isEffectBuff(slot0, slot1)
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2)
-	if slot1:getMO() and slot3:isUniqueSkill(slot2) and slot0:_detectHaveBuff() and slot0._effectWrap then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) and slot0:_detectHaveBuff() and slot0._effectWrap then
 		slot0:_hideEffect()
 	end
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2)
-	if slot1:getMO() and slot3:isUniqueSkill(slot2) and slot0:_detectHaveBuff() and slot0._effectWrap then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) and slot0:_detectHaveBuff() and slot0._effectWrap then
 		slot0._aniName = uv0
 
 		slot0:_refreshAni()

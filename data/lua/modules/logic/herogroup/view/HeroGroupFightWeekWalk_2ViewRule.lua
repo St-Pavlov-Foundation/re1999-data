@@ -97,8 +97,8 @@ function slot0._refreshUI(slot0)
 		gohelper.setActive(slot0._gobalance, true)
 
 		slot0._txtBalanceRoleLv.text = HeroConfig.instance:getCommonLevelDisplay(slot3)
-		slot0._txtBalanceEquipLv.text = slot5 .. luaLang("level")
-		slot0._txtBalanceTalent.text = slot4 .. luaLang("level")
+		slot0._txtBalanceEquipLv.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("common_format_level"), slot5)
+		slot0._txtBalanceTalent.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("common_format_level"), slot4)
 	else
 		gohelper.setActive(slot0._gobalance, false)
 	end

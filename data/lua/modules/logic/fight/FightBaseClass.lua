@@ -3,8 +3,6 @@ module("modules.logic.fight.FightBaseClass", package.seeall)
 slot0 = class("FightBaseClass", FightObject)
 
 function slot0.onConstructor(slot0)
-	slot0.USER_DATA_LIST = {}
-	slot0.MY_COMPONENT_DIC = {}
 end
 
 function slot0.onAwake(slot0, ...)
@@ -14,22 +12,23 @@ function slot0.releaseSelf(slot0)
 end
 
 function slot0.onDestructor(slot0)
-	for slot5 = #slot0.USER_DATA_LIST, 1, -1 do
-		for slot10 in pairs(slot1[slot5]) do
-			rawset(slot6, slot10, nil)
+	if slot0.USER_DATA_LIST then
+		for slot5 = #slot0.USER_DATA_LIST, 1, -1 do
+			for slot10 in pairs(slot1[slot5]) do
+				rawset(slot6, slot10, nil)
+			end
+
+			rawset(slot1, slot5, nil)
 		end
 
-		rawset(slot1, slot5, nil)
+		slot0.USER_DATA_LIST = nil
 	end
 
-	for slot5, slot6 in pairs(slot0) do
-		if type(slot6) == "userdata" then
-			rawset(slot0, slot5, nil)
+	for slot4, slot5 in pairs(slot0) do
+		if type(slot5) == "userdata" then
+			rawset(slot0, slot4, nil)
 		end
 	end
-
-	slot0.USER_DATA_LIST = nil
-	slot0.MY_COMPONENT_DIC = nil
 end
 
 function slot0.onDestructorFinish(slot0)
@@ -38,6 +37,10 @@ end
 function slot0.newUserDataTable(slot0)
 	if slot0.IS_DISPOSED then
 		logError("生命周期已经结束了,但是又调用注册table的方法,请检查代码,类名:" .. slot0.__cname)
+	end
+
+	if not slot0.USER_DATA_LIST then
+		slot0.USER_DATA_LIST = {}
 	end
 
 	slot1 = {}
@@ -56,25 +59,25 @@ function slot0.getComponent(slot0, slot1)
 		logError("生命周期已经结束了,但是又调用了获取组件的方法,请检查代码,类名:" .. slot0.__cname)
 	end
 
-	if slot0.MY_COMPONENT_DIC[slot1.__cname] then
-		return slot0.MY_COMPONENT_DIC[slot2]
+	if slot0[slot1.__cname] then
+		return slot0[slot2]
 	end
 
 	slot3 = slot0:addComponent(slot1)
-	slot0.MY_COMPONENT_DIC[slot2] = slot3
+	slot0[slot2] = slot3
 
 	return slot3
 end
 
-function slot0.killMyComponent(slot0, slot1)
+function slot0.killComponent(slot0, slot1)
 	if not slot1 then
 		return
 	end
 
-	if slot0.MY_COMPONENT_DIC[slot1.__cname] then
-		slot0.MY_COMPONENT_DIC[slot2]:disposeSelf()
+	if slot0[slot1.__cname] then
+		slot3:disposeSelf()
 
-		slot0.MY_COMPONENT_DIC[slot2] = nil
+		slot0[slot2] = nil
 	end
 end
 
@@ -122,8 +125,8 @@ function slot0.com_registRepeatTimer(slot0, slot1, slot2, slot3, slot4)
 	return slot0:getComponent(FightTimerComponent):registRepeatTimer(slot1, slot0, slot2, slot3, slot4)
 end
 
-function slot0.com_registSingleTimer(slot0, slot1, slot2, slot3, slot4)
-	return slot0:getComponent(FightTimerComponent):registSingleTimer(slot1, slot2, slot0, slot3, 1, slot4)
+function slot0.com_registSingleTimer(slot0, slot1, slot2, slot3)
+	return slot0:getComponent(FightTimerComponent):registSingleTimer(slot1, slot0, slot2, 1, slot3)
 end
 
 function slot0.com_restartTimer(slot0, slot1, slot2, slot3)

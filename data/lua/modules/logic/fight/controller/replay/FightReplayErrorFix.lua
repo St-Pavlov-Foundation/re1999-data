@@ -34,13 +34,6 @@ function slot0._startReplay(slot0)
 	for slot4, slot5 in pairs(FightEvent) do
 		function slot6()
 			uv0._startTime = Time.time
-			slot0 = "nil"
-
-			for slot4, slot5 in pairs(FightEvent) do
-				if slot5 == uv1 then
-					slot0 = slot4
-				end
-			end
 		end
 
 		slot0._callbackDict[slot5] = slot6
@@ -125,8 +118,6 @@ function slot0._fixErrorState(slot0)
 		slot4:doneRunningWork()
 	elseif slot5 == FightEnum.Stage.Card or slot5 == FightEnum.Stage.AutoCard then
 		slot0:_log("行为复现出错，出牌阶段卡住")
-		FightCardModel.instance:setDissolving(false)
-		FightCardModel.instance:setChanging(false)
 		FightReplayController.instance:doneCardStage()
 		FightRpc.instance:sendBeginRoundRequest({})
 	end

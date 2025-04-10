@@ -350,6 +350,39 @@ function slot0.getIsDrawing(slot0)
 	return slot0._isDrawing
 end
 
+function slot0.getSummonFullExSkillHero(slot0, slot1, slot2)
+	if SummonConfig.instance:getSummonPool(slot1) and not string.nilorempty(slot3.upWeight) then
+		table.insert({}, tonumber(string.split(slot3.upWeight, "|")[1]))
+	end
+
+	if slot2 ~= nil and #slot2 > 0 then
+		slot4 = slot2
+	end
+
+	for slot8 = 1, #slot4 do
+		if HeroModel.instance:getByHeroId(slot4[slot8]) and slot10.exSkillLevel >= 5 then
+			return slot9
+		end
+
+		slot13, slot14 = nil
+
+		for slot18 = 1, #SkillConfig.instance:getheroexskillco(slot9) do
+			if slot11[slot18] then
+				slot20 = string.splitToNumber(slot19.consume, "#")
+				slot14 = slot20[1]
+				slot13 = slot20[2]
+				slot12 = slot20[3] + 0
+			end
+		end
+
+		if slot13 and slot14 and slot12 <= ItemModel.instance:getItemQuantity(slot14, slot13) then
+			return slot9
+		end
+	end
+
+	return nil
+end
+
 slot0.instance = slot0.New()
 
 return slot0

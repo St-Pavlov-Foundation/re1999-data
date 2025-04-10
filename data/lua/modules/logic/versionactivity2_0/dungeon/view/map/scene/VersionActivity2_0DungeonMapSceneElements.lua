@@ -174,7 +174,7 @@ function slot0.endShowRewardView(slot0)
 end
 
 function slot0.onRemoveElement(slot0, slot1)
-	if not slot0._showRewardView then
+	if not slot0._showRewardView or DungeonMapModel.instance:elementIsFinished(slot1) then
 		slot0:_removeElement(slot1)
 		slot0:showNewElements()
 	else

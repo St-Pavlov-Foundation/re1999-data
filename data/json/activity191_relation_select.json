@@ -1,0 +1,47 @@
+[
+  {
+    "activityId": 12701,
+    "tag": "extraAction",
+    "sortIndex": 1
+  },
+  {
+    "activityId": 12701,
+    "tag": "rite",
+    "sortIndex": 2
+  },
+  {
+    "activityId": 12701,
+    "tag": "enlightenment",
+    "sortIndex": 3
+  },
+  {
+    "activityId": 12701,
+    "tag": "lossLife",
+    "sortIndex": 4
+  },
+  {
+    "activityId": 12701,
+    "tag": "electricity",
+    "sortIndex": 5
+  },
+  {
+    "activityId": 12701,
+    "tag": "upgrade",
+    "sortIndex": 6
+  },
+  {
+    "activityId": 12701,
+    "tag": "oldMoney",
+    "sortIndex": 7
+  },
+  {
+    "activityId": 12701,
+    "tag": "employe",
+    "sortIndex": 8
+  },
+  {
+    "activityId": 12701,
+    "tag": "cure",
+    "sortIndex": 9
+  }
+]

@@ -158,6 +158,8 @@ function slot0._editableInitView(slot0)
 
 	slot0.resistanceComp:onInitView()
 	slot0.resistanceComp:setParent(slot0.scrollEnemyInfo.gameObject)
+
+	slot0.anim = slot0.viewGO:GetComponent(gohelper.Type_Animator)
 end
 
 function slot0.onSelectMonsterChange(slot0, slot1)
@@ -165,16 +167,32 @@ function slot0.onSelectMonsterChange(slot0, slot1)
 		return
 	end
 
+	slot2 = false
+
+	if slot0.enemyIndex ~= slot1.enemyIndex then
+		if slot0.enemyIndex then
+			slot2 = true
+
+			slot0.anim:Play("switch", 0, 0)
+		end
+
+		slot0.enemyIndex = slot3
+	end
+
 	if slot0.monsterId == slot1.monsterId then
 		return
 	end
 
-	slot0.monsterId = slot2
+	slot0.monsterId = slot4
 	slot0.isBoss = slot1.isBoss
 	slot0.monsterConfig = lua_monster.configDict[slot0.monsterId]
 	slot0.skinConfig = FightConfig.instance:getSkinCO(slot0.monsterConfig.skinId)
 
-	slot0:refreshUI()
+	if slot2 then
+		TaskDispatcher.runDelay(slot0.refreshUI, slot0, 0.16)
+	else
+		slot0:refreshUI()
+	end
 end
 
 function slot0.refreshUI(slot0)
@@ -206,6 +224,9 @@ function slot0.refreshHeader(slot0)
 	UISpriteSetMgr.instance:setEnemyInfoSprite(slot0._imagecareer, "sxy_" .. slot1.career)
 
 	slot0._txtlevel.text = HeroConfig.instance:getLevelDisplayVariant(slot1[slot0.isSimple and "levelEasy" or "level"])
+
+	gohelper.setActive(slot0._txtlevel, slot0.viewParam.tabEnum ~= EnemyInfoEnum.TabEnum.Act191)
+
 	slot0._txtname.text = FightConfig.instance:getMonsterName(slot1)
 
 	if slot0.viewParam.tabEnum == EnemyInfoEnum.TabEnum.Rouge then
@@ -740,6 +761,8 @@ function slot0.onDestroyView(slot0)
 
 	slot0.resistanceComp = nil
 	slot0.stageItemList = nil
+
+	TaskDispatcher.cancelTask(slot0.refreshUI, slot0)
 end
 
 return slot0

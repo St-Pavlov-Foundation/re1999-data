@@ -159,36 +159,44 @@ function slot0.setParam(slot0, slot1, slot2, slot3, slot4)
 		slot12 = string.splitToNumber(slot6.aid, "#")
 	end
 
-	if slot6 and (slot6.trialLimit > 0 or not string.nilorempty(slot6.trialEquips)) or ToughBattleModel.instance:getAddTrialHeros() then
-		slot14 = nil
-		slot14 = (not Activity104Model.instance:isSeasonChapter() or PlayerPrefsHelper.getString(Activity104Model.instance:getSeasonTrialPrefsKey(), "")) and PlayerPrefsHelper.getString(PlayerPrefsKey.HeroGroupTrial .. tostring(PlayerModel.instance:getMyUserId()) .. slot6.id, "")
+	slot13 = HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(slot0.episodeId)
+
+	if slot6 and (slot6.trialLimit > 0 or not string.nilorempty(slot6.trialEquips)) or ToughBattleModel.instance:getAddTrialHeros() or slot13 then
+		slot15 = nil
+		slot15 = (not Activity104Model.instance:isSeasonChapter() or PlayerPrefsHelper.getString(Activity104Model.instance:getSeasonTrialPrefsKey(), "")) and PlayerPrefsHelper.getString(PlayerPrefsKey.HeroGroupTrial .. tostring(PlayerModel.instance:getMyUserId()) .. slot6.id, "")
 		slot0.heroGroupType = ModuleEnum.HeroGroupType.Trial
 		slot0._curGroupId = 1
-		slot15 = nil
+		slot16 = nil
 
 		if slot6.trialLimit > 0 and slot6.onlyTrial == 1 then
-			slot15 = slot0:generateTempGroup(nil, , true)
-		elseif string.nilorempty(slot14) then
+			slot16 = slot0:generateTempGroup(nil, , true)
+		elseif string.nilorempty(slot15) then
 			if slot0.curGroupSelectIndex > 0 then
-				slot15 = slot0:generateTempGroup(slot0._commonGroups[slot0.curGroupSelectIndex], slot9, slot6 and slot6.useTemp == 2)
+				slot16 = slot0:generateTempGroup(slot0._commonGroups[slot0.curGroupSelectIndex], slot9, slot6 and slot6.useTemp == 2)
 			else
-				slot15 = slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id, true) or slot0:generateTempGroup(nil, slot9, slot6 and slot6.useTemp == 2)
+				slot16 = slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id, true) or slot0:generateTempGroup(nil, slot9, slot6 and slot6.useTemp == 2)
 			end
 		else
-			slot16 = cjson.decode(slot14)
+			slot17 = cjson.decode(slot15)
 
-			GameUtil.removeJsonNull(slot16)
-			slot0:generateTempGroup(nil, , true):initByLocalData(slot16)
+			GameUtil.removeJsonNull(slot17)
+			slot0:generateTempGroup(nil, , true):initByLocalData(slot17)
 		end
 
-		slot15:setTrials(slot4)
+		slot16:setTrials(slot4)
 
 		slot0._heroGroupList = {
-			slot15
+			slot16
 		}
+
+		if slot13 then
+			slot0.heroGroupType = ModuleEnum.HeroGroupType.General
+
+			HeroGroupSnapshotModel.instance:setParam(slot0.episodeId)
+		end
 	elseif slot8 and SeasonHeroGroupHandler.checkIsSeasonEpisodeType(slot0._episodeType) then
 		if SeasonHeroGroupHandler.buildSeasonHandleFunc[slot0._episodeType] then
-			slot0.heroGroupType = slot13(slot5)
+			slot0.heroGroupType = slot14(slot5)
 		end
 	elseif HeroGroupHandler.checkIsEpisodeType(slot0._episodeType) then
 		slot0.heroGroupType = ModuleEnum.HeroGroupType.General
@@ -197,13 +205,13 @@ function slot0.setParam(slot0, slot1, slot2, slot3, slot4)
 	elseif slot8 and slot6 and slot6.useTemp ~= 0 or slot9 or #slot12 > 0 or slot6 and ToughBattleModel.instance:getEpisodeId() then
 		slot0.heroGroupType = ModuleEnum.HeroGroupType.Temp
 		slot0._heroGroupList = {}
-		slot13 = nil
+		slot14 = nil
 
 		if slot8 and slot8.saveHeroGroup and (not slot6 or slot6.useTemp ~= 2) then
-			slot13 = (slot0.curGroupSelectIndex <= 0 or slot0:generateTempGroup(slot0._commonGroups[slot0.curGroupSelectIndex], slot9, slot6 and slot6.useTemp == 2)) and (slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id, true) or slot0:generateTempGroup(nil, slot9, slot6 and slot6.useTemp == 2))
+			slot14 = (slot0.curGroupSelectIndex <= 0 or slot0:generateTempGroup(slot0._commonGroups[slot0.curGroupSelectIndex], slot9, slot6 and slot6.useTemp == 2)) and (slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id, true) or slot0:generateTempGroup(nil, slot9, slot6 and slot6.useTemp == 2))
 		end
 
-		table.insert(slot0._heroGroupList, slot0:generateTempGroup(slot13, slot9, slot6 and slot6.useTemp == 2))
+		table.insert(slot0._heroGroupList, slot0:generateTempGroup(slot14, slot9, slot6 and slot6.useTemp == 2))
 
 		slot0._curGroupId = 1
 	elseif not slot11 and slot8 then
@@ -215,20 +223,19 @@ function slot0.setParam(slot0, slot1, slot2, slot3, slot4)
 			slot10 = true
 		end
 
-		slot13 = slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id) or slot0._commonGroups[1]
+		slot14 = slot0.heroGroupTypeCo and slot0:getCustomHeroGroupMo(slot0.heroGroupTypeCo.id) or slot0._commonGroups[1]
 
-		slot13:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_name"), {
-			slot8.name,
-			luaLang("hero_group")
+		slot14:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_groupName"), {
+			slot8.name
 		}))
-		table.insert(slot0._heroGroupList, slot13)
+		table.insert(slot0._heroGroupList, slot14)
 	elseif slot11 then
 		slot0.heroGroupType = ModuleEnum.HeroGroupType.NormalFb
 		slot0._heroGroupList = {}
 		slot0._curGroupId = 1
 
-		if slot0:getCurGroupMO() and slot13.aidDict then
-			slot13.aidDict = nil
+		if slot0:getCurGroupMO() and slot14.aidDict then
+			slot14.aidDict = nil
 		end
 	else
 		slot0.heroGroupType = ModuleEnum.HeroGroupType.Default
@@ -321,16 +328,15 @@ function slot0.generateTempGroup(slot0, slot1, slot2, slot3)
 
 		slot7 = {}
 
-		if not string.nilorempty(slot5.trialHeros) then
-			slot7 = GameUtil.splitString2(slot5.trialHeros, true)
+		if not string.nilorempty(HeroGroupHandler.getTrialHeros(slot0.episodeId)) then
+			slot7 = GameUtil.splitString2(slot8, true)
 		end
 
 		slot4:initWithBattle(slot1 or HeroGroupMO.New(), slot6, slot2 or slot5.roleNum, slot5.playerMax, nil, slot7)
 
 		if slot0.adventure and slot0.episodeId and lua_episode.configDict[slot0.episodeId] then
-			slot4:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_name"), {
-				slot9.name,
-				luaLang("hero_group")
+			slot4:setTempName(GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_groupName"), {
+				slot10.name
 			}))
 		end
 	else
@@ -371,6 +377,7 @@ function slot0._setSingleGroup(slot0)
 	end
 
 	slot1:clearAidHero()
+	HeroGroupHandler.hanldeHeroListData(slot0.episodeId)
 	HeroSingleGroupModel.instance:setSingleGroup(slot1, true)
 end
 
@@ -557,7 +564,11 @@ function slot0.saveCurGroupData(slot0, slot1, slot2, slot3)
 			HeroGroupRpc.instance:sendSetHeroGroupSnapshotRequest(ModuleEnum.HeroGroupSnapshotType.Resources, slot0.heroGroupTypeCo.id, slot6, slot1, slot2)
 		end
 	else
-		FightParam.initFightGroup(HeroGroupModule_pb.SetHeroGroupSnapshotRequest().fightGroup, slot3.clothId, slot3:getMainList(), slot3:getSubList(), slot3:getAllHeroEquips(), slot3:getAllHeroActivity104Equips(), slot3:getAssistBossId())
+		if HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(slot0.episodeId) then
+			FightParam.initTowerFightGroup(HeroGroupModule_pb.SetHeroGroupSnapshotRequest().fightGroup, slot3.clothId, slot3:getMainList(), slot3:getSubList(), slot3:getAllHeroEquips(), slot3:getAllHeroActivity104Equips(), slot3:getAssistBossId())
+		else
+			FightParam.initFightGroup(slot6.fightGroup, slot3.clothId, slot3:getMainList(), slot3:getSubList(), slot3:getAllHeroEquips(), slot3:getAllHeroActivity104Equips(), slot3:getAssistBossId())
+		end
 
 		slot7 = ModuleEnum.HeroGroupSnapshotType.Common
 		slot8 = slot5

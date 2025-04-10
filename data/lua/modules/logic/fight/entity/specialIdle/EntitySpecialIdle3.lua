@@ -14,7 +14,7 @@ function slot0._onSkillPlayFinish(slot0, slot1, slot2)
 		return
 	end
 
-	if slot0._entity:getMO():isUniqueSkill(slot2) then
+	if FightCardDataHelper.isBigSkill(slot2) then
 		FightController.instance:dispatchEvent(FightEvent.PlaySpecialIdle, slot1.id)
 	end
 end

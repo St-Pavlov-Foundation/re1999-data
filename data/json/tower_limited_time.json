@@ -94,5 +94,21 @@
     "bossPool": "1#2#5",
     "taskGroupId": 910012,
     "isOnline": 1
+  },
+  {
+    "season": 13,
+    "startTime": "2025-04-21",
+    "endTime": "2025-05-05",
+    "bossPool": "2#3#5",
+    "taskGroupId": 910013,
+    "isOnline": 1
+  },
+  {
+    "season": 14,
+    "startTime": "2025-05-05",
+    "endTime": "2025-05-19",
+    "bossPool": "3#4#5",
+    "taskGroupId": 910014,
+    "isOnline": 1
   }
 ]

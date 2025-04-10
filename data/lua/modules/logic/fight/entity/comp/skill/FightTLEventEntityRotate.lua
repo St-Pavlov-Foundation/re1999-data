@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventEntityRotate", package.seeall)
 
-slot0 = class("FightTLEventEntityRotate")
+slot0 = class("FightTLEventEntityRotate", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 
 	if not slot0._attacker then
@@ -54,14 +54,6 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
-	slot0:_clear()
-end
-
 function slot0._clear(slot0)
 	if slot0._tweenIdList then
 		for slot4, slot5 in ipairs(slot0._tweenIdList) do
@@ -70,6 +62,10 @@ function slot0._clear(slot0)
 
 		slot0._tweenIdList = nil
 	end
+end
+
+function slot0.onDestructor(slot0)
+	slot0:_clear()
 end
 
 return slot0

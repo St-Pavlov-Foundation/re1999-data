@@ -49,6 +49,58 @@ function slot0.createStep(slot0, slot1)
 		slot2 = EliminateChessRefreshStep.New()
 	end
 
+	if slot0 == EliminateEnum.StepWorkType.Arrange_XY then
+		slot2 = EliminateChessArrange_XYStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.DieEffect then
+		slot2 = EliminateChessDieEffectStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.ChangeState then
+		slot2 = EliminateChessChangeStateStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.CheckEliminate then
+		slot2 = EliminateChessCheckStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.EliminateChessDebug2_7 then
+		slot2 = EliminateChessDebug2_7Step.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.EliminateChessRevert then
+		slot2 = EliminateChessRevertStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.EliminateChessUpdateDamage then
+		slot2 = EliminateChessUpdateDamageStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.EliminateChessUpdateGameInfo then
+		slot2 = EliminateChessUpdateGameInfoStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.LengZhou6EnemyReleaseSkillStep then
+		slot2 = LengZhou6EnemyReleaseSkillStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.ChessItemUpdateInfo then
+		slot2 = EliminateChessItemUpdateInfoStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.LengZhou6EnemyGenerateSkillStep then
+		slot2 = LengZhou6EnemyGenerateSkillStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.EliminateCheckAndRefresh then
+		slot2 = EliminateCheckAndRefreshStep.New()
+	end
+
+	if slot0 == EliminateEnum.StepWorkType.PlayAudio then
+		slot2 = EliminatePlayAudioStep.New()
+	end
+
 	if slot2 then
 		slot2:initData(slot1)
 	else

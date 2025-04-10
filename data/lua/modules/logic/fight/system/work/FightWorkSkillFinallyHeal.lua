@@ -3,22 +3,22 @@ module("modules.logic.fight.system.work.FightWorkSkillFinallyHeal", package.seea
 slot0 = class("FightWorkSkillFinallyHeal", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
-	slot0._actEffectMOs = {}
+	slot0.fightStepData = slot1
+	slot0._actEffect = {}
 end
 
-function slot0.addActEffectMO(slot0, slot1)
-	table.insert(slot0._actEffectMOs, slot1)
+function slot0.addActEffectData(slot0, slot1)
+	table.insert(slot0._actEffect, slot1)
 end
 
 function slot0.onStart(slot0)
-	if not FightHelper.getEntity(slot0._fightStepMO.fromId) then
+	if not FightHelper.getEntity(slot0.fightStepData.fromId) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	if string.nilorempty(FightConfig.instance:getSkinSkillTimeline(slot1:getMO() and slot3.skin, slot0._fightStepMO.actId)) then
+	if string.nilorempty(FightConfig.instance:getSkinSkillTimeline(slot1:getMO() and slot3.skin, slot0.fightStepData.actId)) then
 		slot0:onDone(true)
 
 		return
@@ -34,13 +34,13 @@ function slot0._delayDone(slot0)
 end
 
 function slot0._onSkillEnd(slot0, slot1, slot2, slot3)
-	if slot3 ~= slot0._fightStepMO then
+	if slot3 ~= slot0.fightStepData then
 		return
 	end
 
 	slot0:_removeEvents()
 
-	for slot7, slot8 in ipairs(slot0._actEffectMOs) do
+	for slot7, slot8 in ipairs(slot0._actEffect) do
 		if FightHelper.getEntity(slot8.targetId) and not slot9.isDead then
 			FightDataHelper.playEffectData(slot8)
 
@@ -66,7 +66,7 @@ function slot0._onSkillEnd(slot0, slot1, slot2, slot3)
 end
 
 function slot0._onTimelineHeal(slot0, slot1)
-	tabletool.removeValue(slot0._actEffectMOs, slot1)
+	tabletool.removeValue(slot0._actEffect, slot1)
 end
 
 function slot0._removeEvents(slot0)

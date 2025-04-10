@@ -67,6 +67,9 @@ end
 
 function slot0._onClick(slot0)
 	StoreController.instance:forceReadTab(slot0._mo.belongStoreId)
+	ChargeRpc.instance:sendReadChargeNewRequest({
+		slot0._mo.goodsId
+	}, slot0._onRefreshNew, slot0)
 
 	if not slot0:_isStoreItemUnlock() then
 		GameFacade.showToast(ToastEnum.PackageStoreGoodsUnlock)
@@ -81,6 +84,14 @@ function slot0._onClick(slot0)
 	else
 		StoreController.instance:openPackageStoreGoodsView(slot0._mo)
 	end
+end
+
+function slot0._onRefreshNew(slot0, slot1, slot2, slot3)
+	if slot2 ~= 0 then
+		return
+	end
+
+	gohelper.setActive(slot0._gonewtag, false)
 end
 
 function slot0._onClickCost(slot0)
@@ -303,7 +314,7 @@ function slot0._onUpdateMO_newMatUpTag(slot0, slot1)
 end
 
 function slot0._onUpdateMO_coBrandedTag(slot0, slot1)
-	gohelper.setActive(slot0._gocobranded, StoreHelper.checkIsShowCoBrandedTag(slot1.goodsId))
+	gohelper.setActive(slot0._gocobranded, slot1.config.showLinkageTag or false)
 end
 
 function slot0._showSeasonCardTips(slot0)

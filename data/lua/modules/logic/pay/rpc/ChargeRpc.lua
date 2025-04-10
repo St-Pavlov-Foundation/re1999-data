@@ -97,14 +97,14 @@ function slot0.onReceiveSandboxChargeReply(slot0, slot1, slot2)
 	PayModel.instance:updateSandboxBalance(slot2.sandboxBalance)
 end
 
-function slot0.sendReadChargeNewRequest(slot0, slot1)
-	slot2 = ChargeModule_pb.ReadChargeNewRequest()
+function slot0.sendReadChargeNewRequest(slot0, slot1, slot2, slot3)
+	slot4 = ChargeModule_pb.ReadChargeNewRequest()
 
-	for slot6, slot7 in ipairs(slot1) do
-		table.insert(slot2.goodsIds, slot7)
+	for slot8, slot9 in ipairs(slot1) do
+		table.insert(slot4.goodsIds, slot9)
 	end
 
-	return slot0:sendMsg(slot2)
+	return slot0:sendMsg(slot4, slot2, slot3)
 end
 
 function slot0.onReceiveReadChargeNewReply(slot0, slot1, slot2)

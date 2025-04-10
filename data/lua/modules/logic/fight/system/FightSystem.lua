@@ -19,7 +19,7 @@ function slot0.reconnectFight(slot0)
 	if FightModel.instance:isFinish() then
 		FightRpc.instance:sendEndFightRequest(false)
 	else
-		slot0._reconnectSequence:buildFlow(FightModel.instance:getCurRoundMO())
+		slot0._reconnectSequence:buildFlow(FightDataHelper.roundMgr:getRoundData())
 		slot0._reconnectSequence:start(slot0._onStartFinish, slot0)
 	end
 end
@@ -27,7 +27,7 @@ end
 function slot0.startFight(slot0)
 	FightController.instance:setCurStage(FightEnum.Stage.StartRound)
 	FightController.instance:dispatchEvent(FightEvent.OnStartSequenceStart)
-	slot0._startSequence:buildFlow(FightModel.instance:getCurRoundMO())
+	slot0._startSequence:buildFlow(FightDataHelper.roundMgr:getRoundData())
 	slot0._startSequence:start(slot0._onStartFinish, slot0)
 end
 
@@ -58,11 +58,7 @@ end
 function slot0.startRound(slot0)
 	FightController.instance:setCurStage(FightEnum.Stage.Play)
 	FightController.instance:dispatchEvent(FightEvent.OnRoundSequenceStart)
-
-	slot1 = FightModel.instance:getCurRoundMO()
-
-	slot1:onBeginRound()
-	slot0._roundSequence:buildFlow(slot1)
+	slot0._roundSequence:buildFlow(FightDataHelper.roundMgr:getRoundData())
 	FightMgr.instance:enterStage(FightStageMgr.StageType.Play, FightStageMgr.PlayType.Normal)
 	slot0._roundSequence:start(slot0._onRoundFinish, slot0)
 end
@@ -71,7 +67,7 @@ function slot0.startClothSkillRound(slot0)
 	slot0._beforeClothSkillStage = FightModel.instance:getCurStage()
 
 	FightController.instance:setCurStage(FightEnum.Stage.ClothSkill)
-	slot0._clothSkillSequence:buildFlow(FightModel.instance:getCurRoundMO())
+	slot0._clothSkillSequence:buildFlow(FightDataHelper.roundMgr:getRoundData())
 	FightMgr.instance:enterStage(FightStageMgr.StageType.Play, FightStageMgr.PlayType.ClothSkill)
 	slot0._clothSkillSequence:start(slot0._onClothSkillRoundFinish, slot0)
 end
@@ -189,7 +185,6 @@ function slot0.dispose(slot0)
 	FightPlayCardModel.instance:onEndRound()
 	FightModel.instance:clear()
 	FightModel.instance:setCurStage(nil)
-	FightCardModel.instance:clear()
 end
 
 function slot0.dumpStates(slot0)

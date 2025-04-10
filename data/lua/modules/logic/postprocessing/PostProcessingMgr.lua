@@ -377,7 +377,19 @@ function slot0.setUIBloom(slot0, slot1)
 	slot0._uiBloomActive = slot1
 end
 
+function slot0.setIgnoreUIBlur(slot0, slot1)
+	slot0._isIgnoreUIBlur = slot1
+end
+
+function slot0.getIgnoreUIBlur(slot0)
+	return slot0._isIgnoreUIBlur
+end
+
 function slot0.setUIBlurActive(slot0, slot1, slot2, slot3, slot4)
+	if slot0._isIgnoreUIBlur then
+		return
+	end
+
 	if slot0._uiCamData and slot0._unitCamData and slot0._capture then
 		slot5 = CameraMgr.instance:getMainCamera()
 		slot6 = CameraMgr.instance:getUICamera()

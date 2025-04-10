@@ -31,7 +31,7 @@ function slot0.init(slot0)
 end
 
 function slot0.sort(slot0, slot1)
-	if (slot0:checkIsUse() and 3 or slot0:isEmpty() and 2 or 1) ~= (slot1:checkIsUse() and 3 or slot1:isEmpty() and 2 or 1) then
+	if (slot0:checkIsUse() and 4 or slot0:isUnLock() and 3 or slot0:isEmpty() and 2 or 1) ~= (slot1:checkIsUse() and 4 or slot1:isUnLock() and 3 or slot1:isEmpty() and 2 or 1) then
 		return slot3 < slot2
 	else
 		return slot0.id < slot1.id

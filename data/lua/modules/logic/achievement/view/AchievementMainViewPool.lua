@@ -79,6 +79,12 @@ function slot0.createIconInternal(slot0)
 end
 
 function slot0.recycleIcon(slot0, slot1)
+	if slot0._releaseDone then
+		slot1:dispose()
+
+		return
+	end
+
 	if not gohelper.isNil(slot1.viewGO) then
 		slot1.viewGO.transform:SetParent(slot0._tfpool)
 	end
@@ -100,6 +106,8 @@ function slot0.release(slot0)
 
 		slot0._freeIconList = nil
 	end
+
+	slot0._releaseDone = true
 end
 
 return slot0

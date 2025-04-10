@@ -25,7 +25,11 @@ function slot0._initBuildingCaramer(slot0)
 	slot0._buildingNodeList = {}
 
 	for slot4, slot5 in ipairs(slot0._buildingCameraIds) do
-		if not string.nilorempty(RoomConfig.instance:getCharacterBuildingInteractCameraConfig(slot5).nodesXYZ) then
+		if not RoomConfig.instance:getCharacterBuildingInteractCameraConfig(slot5) then
+			logError(string.format("[export_角色交互]Id:%s,字段\"buildingCameraIds\"配置了[export_角色建筑交互镜头表]中不存在id:%s", slot0.interactionId, slot5))
+		end
+
+		if slot6 and not string.nilorempty(slot6.nodesXYZ) then
 			slot7 = GameUtil.splitString2(slot6.nodesXYZ, true)
 			slot0._buildingNodesDic[slot5] = slot7
 

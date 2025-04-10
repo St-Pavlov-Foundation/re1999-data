@@ -38,5 +38,35 @@
     "heroAnimStr": "idle|idle|idle|idle|idle",
     "buildingAnim": "interact",
     "cameraId": 2521
+  },
+  {
+    "buildingId": 12723,
+    "heroCount": 1,
+    "intervalTime": 30000,
+    "interactType": 1,
+    "showTime": 10000,
+    "heroAnimStr": "idle",
+    "buildingAnim": "interact",
+    "cameraId": 2731
+  },
+  {
+    "buildingId": 12724,
+    "heroCount": 1,
+    "intervalTime": 30000,
+    "interactType": 1,
+    "showTime": 10000,
+    "heroAnimStr": "idle",
+    "buildingAnim": "interact",
+    "cameraId": 2721
+  },
+  {
+    "buildingId": 12701,
+    "heroCount": 1,
+    "intervalTime": 30000,
+    "interactType": 1,
+    "showTime": 10000,
+    "heroAnimStr": "idle",
+    "buildingAnim": "interact",
+    "cameraId": 2711
   }
 ]

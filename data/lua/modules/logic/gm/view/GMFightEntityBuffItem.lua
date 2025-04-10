@@ -59,14 +59,21 @@ function slot0._onClickDel(slot0)
 		slot3.buff:delBuff(slot0._mo.uid)
 	end
 
+	if FightLocalDataMgr.instance.entityMgr:getById(slot2.id) then
+		slot4:delBuff(slot0._mo.uid)
+	end
+
 	FightController.instance:dispatchEvent(FightEvent.OnBuffUpdate, slot2.id, FightEnum.EffectType.BUFFDEL, slot0._mo.buffId, slot0._mo.uid, 0)
 	FightRpc.instance:sendEntityInfoRequest(slot2.id)
 end
 
 function slot0._onAddEditDuration(slot0, slot1)
 	if tonumber(slot1) and (slot2 == -1 or slot2 > 0) then
-		slot3 = GMFightEntityModel.instance.entityMO
 		slot0._mo.duration = slot2
+
+		if FightLocalDataMgr.instance.entityMgr:getById(GMFightEntityModel.instance.entityMO.id) and slot4:getBuffMO(slot0._mo.uid) then
+			slot5.duration = slot2
+		end
 
 		GMRpc.instance:sendGMRequest(string.format("fightChangeBuff %s %s %d %d %d", slot3.id, slot0._mo.id, slot0._mo.count, slot2, slot0._mo.layer))
 		FightController.instance:dispatchEvent(FightEvent.OnBuffUpdate, slot3.id, FightEnum.EffectType.BUFFUPDATE, slot0._mo.buffId, slot0._mo.uid, 0)
@@ -78,8 +85,11 @@ end
 
 function slot0._onAddEditCount(slot0, slot1)
 	if tonumber(slot1) and slot2 > 0 then
-		slot3 = GMFightEntityModel.instance.entityMO
 		slot0._mo.count = slot2
+
+		if FightLocalDataMgr.instance.entityMgr:getById(GMFightEntityModel.instance.entityMO.id) and slot4:getBuffMO(slot0._mo.uid) then
+			slot5.count = slot2
+		end
 
 		GMRpc.instance:sendGMRequest(string.format("fightChangeBuff %s %s %d %d %d", slot3.id, slot0._mo.id, slot2, slot0._mo.duration, slot0._mo.layer))
 		FightController.instance:dispatchEvent(FightEvent.OnBuffUpdate, slot3.id, FightEnum.EffectType.BUFFUPDATE, slot0._mo.buffId, slot0._mo.uid, 0)
@@ -91,8 +101,11 @@ end
 
 function slot0._onAddEditLayer(slot0, slot1)
 	if tonumber(slot1) and slot2 > 0 then
-		slot3 = GMFightEntityModel.instance.entityMO
 		slot0._mo.layer = slot2
+
+		if FightLocalDataMgr.instance.entityMgr:getById(GMFightEntityModel.instance.entityMO.id) and slot4:getBuffMO(slot0._mo.uid) then
+			slot5.layer = slot2
+		end
 
 		GMRpc.instance:sendGMRequest(string.format("fightChangeBuff %s %s %d %d %d", slot3.id, slot0._mo.id, slot0._mo.count, slot0._mo.duration, slot2))
 		FightController.instance:dispatchEvent(FightEvent.OnBuffUpdate, slot3.id, FightEnum.EffectType.BUFFUPDATE, slot0._mo.buffId, slot0._mo.uid, 0)

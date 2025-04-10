@@ -1,10 +1,11 @@
 module("modules.configs.excel2json.lua_tower_boss_time", package.seeall)
 
 slot1 = {
-	startTime = 4,
-	isOnline = 7,
+	taskEndTime = 7,
+	isOnline = 8,
 	isPermanent = 3,
 	endTime = 5,
+	startTime = 4,
 	taskGroupId = 6,
 	round = 2,
 	towerId = 1

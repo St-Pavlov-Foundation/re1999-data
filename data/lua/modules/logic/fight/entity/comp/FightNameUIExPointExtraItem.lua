@@ -2,6 +2,10 @@ module("modules.logic.fight.entity.comp.FightNameUIExPointExtraItem", package.se
 
 slot0 = class("FightNameUIExPointExtraItem", FightNameUIExPointBaseItem)
 
+function slot0.getType(slot0)
+	return FightNameUIExPointBaseItem.ExPointType.Extra
+end
+
 function slot0.GetExtraExPointItem(slot0)
 	slot1 = uv0.New()
 

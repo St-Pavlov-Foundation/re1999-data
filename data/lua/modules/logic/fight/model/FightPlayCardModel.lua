@@ -27,18 +27,13 @@ function slot0.setUsedCard(slot0, slot1)
 	slot0:clearUsedCards()
 
 	for slot5, slot6 in ipairs(slot1) do
-		slot7 = FightCardInfoMO.New()
-
-		slot7:init(slot6)
-		table.insert(slot0._usedCards, slot7)
+		table.insert(slot0._usedCards, FightCardInfoData.New(slot6))
 	end
 end
 
 function slot0.addUseCard(slot0, slot1, slot2, slot3)
 	if slot0._usedCards then
-		FightCardInfoMO.New():init(slot2)
-
-		slot4.custom_fromSkillId = slot3 or 0
+		FightCardInfoData.New(slot2).clientData.custom_fromSkillId = slot3 or 0
 
 		table.insert(slot0._usedCards, slot1, slot4)
 	end
@@ -52,7 +47,7 @@ function slot0.updateClientOps(slot0)
 	slot0._clientSkillOpAll = {}
 	slot0._clientSkillOpList = {}
 
-	for slot5, slot6 in ipairs(FightCardModel.instance:getCardOps()) do
+	for slot5, slot6 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
 		if slot6:isPlayCard() then
 			slot0:buildDisplayMOByOp(slot6)
 
@@ -78,8 +73,8 @@ end
 function slot0.updateFightRound(slot0, slot1)
 	slot0._serverSkillOpList = {}
 
-	for slot5, slot6 in ipairs(slot1.fightStepMOs) do
-		if FightDataHelper.entityMgr:getById(slot6.fromId) and slot7.side == FightEnum.EntitySide.MySide and slot9 and (slot6.actType == FightEnum.ActType.SKILL and FightCardModel.instance:isActiveSkill(slot6.fromId, slot6.actId) or false) then
+	for slot5, slot6 in ipairs(slot1.fightStep) do
+		if FightDataHelper.entityMgr:getById(slot6.fromId) and slot7.side == FightEnum.EntitySide.MySide and slot9 and (slot6.actType == FightEnum.ActType.SKILL and FightCardDataHelper.isActiveSkill(slot6.fromId, slot6.actId) or false) then
 			slot11 = FightSkillDisplayMO.New()
 			slot11.entityId = slot6.fromId
 			slot11.skillId = slot6.actId

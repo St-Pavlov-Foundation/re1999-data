@@ -3,8 +3,7 @@ module("modules.logic.fight.system.work.asfd.FightWorkCreateASFDEmitter", packag
 slot0 = class("FightWorkCreateASFDEmitter", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0.stepMo = slot1
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
@@ -14,7 +13,7 @@ function slot0.onStart(slot0)
 		return slot0:onDone(true)
 	end
 
-	if slot1:createEmitterWrap(slot0.stepMo) then
+	if slot1:createEmitterWrap(slot0.fightStepData) then
 		TaskDispatcher.runDelay(slot0.waitDone, slot0, FightASFDConfig.instance.emitterWaitTime)
 	else
 		return slot0:onDone(true)

@@ -6,11 +6,17 @@ function slot0.onInit(slot0)
 	slot0:clear()
 end
 
+function slot0.reInit(slot0)
+	slot0:clear()
+end
+
 function slot0.onInitFinish(slot0)
 end
 
 function slot0.clear(slot0)
 	slot0._requestTask = false
+	slot0._requestTimes = 0
+	slot0._maxRequestTimes = 3
 end
 
 function slot0.addConstEvents(slot0)
@@ -66,9 +72,30 @@ function slot0._checkTime(slot0)
 
 	if slot1.endTime > 0 and slot2 - ServerTime.now() <= 0 then
 		slot0:stopCheckTime()
+		slot0:_recordRequestTimes()
+
+		if slot0._maxRequestTimes < slot0._requestTimes then
+			logError("sendWeekwalkVer2GetInfoRequest too many times")
+
+			return
+		end
+
 		slot0:requestTask(true)
 		Weekwalk_2Rpc.instance:sendWeekwalkVer2GetInfoRequest()
+
+		return
 	end
+
+	slot0:_clearRequestTimes()
+end
+
+function slot0._recordRequestTimes(slot0)
+	slot0._requestTimes = slot0._requestTimes or 0
+	slot0._requestTimes = slot0._requestTimes + 1
+end
+
+function slot0._clearRequestTimes(slot0)
+	slot0._requestTimes = 0
 end
 
 function slot0.requestTask(slot0, slot1)
@@ -86,9 +113,6 @@ end
 function slot0._refreshTaskData(slot0)
 	WeekWalk_2TaskListModel.instance:updateTaskList()
 	slot0:dispatchEvent(WeekWalk_2Event.OnWeekwalkTaskUpdate)
-end
-
-function slot0.reInit(slot0)
 end
 
 function slot0.enterWeekwalk_2Fight(slot0, slot1, slot2)

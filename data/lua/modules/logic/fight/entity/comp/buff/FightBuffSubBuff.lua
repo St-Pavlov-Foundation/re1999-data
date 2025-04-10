@@ -111,13 +111,13 @@ function slot0.onCloseViewFinish(slot0, slot1)
 end
 
 function slot0.onSkillPlayStart(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4:isUniqueSkill(slot2) then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
 		slot0:setEffectActive(false)
 	end
 end
 
 function slot0.onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4:isUniqueSkill(slot2) then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
 		slot0:setEffectActive(true)
 	end
 end

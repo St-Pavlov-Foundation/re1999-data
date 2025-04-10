@@ -81,11 +81,11 @@ end
 function slot0.setPlayCardInfo(slot0, slot1)
 	slot0.playCardInfoList = {}
 
-	if FightModel.instance:getCurRoundMO() then
+	if FightDataHelper.roundMgr:getRoundData() then
 		if slot1 then
-			tabletool.addValues(slot0.playCardInfoList, slot2:getEntityLastAIUseCard(slot0.entity.id))
+			tabletool.addValues(slot0.playCardInfoList, FightDataHelper.roundMgr:getPreRoundData():getEntityAIUseCardMOList(slot0.entity.id))
 		else
-			tabletool.addValues(slot0.playCardInfoList, slot2:getEntityAIUseCardMOs(slot0.entity.id))
+			tabletool.addValues(slot0.playCardInfoList, slot2:getEntityAIUseCardMOList(slot0.entity.id))
 		end
 	end
 end
@@ -111,11 +111,10 @@ function slot0._playEnemyChangeCardEffect(slot0, slot1)
 
 	for slot5, slot6 in ipairs(slot1) do
 		if slot6.entityId == slot0.entity.id and slot0._opItemList[slot6.cardIndex] then
-			slot8 = FightCardInfoMO.New()
-			slot8.uid = slot6.entityId
-			slot8.skillId = slot6.targetSkillId
-
-			slot7:updateCardInfoMO(slot8)
+			slot7:updateCardInfoMO(FightCardInfoData.New({
+				uid = slot6.entityId,
+				skillId = slot6.targetSkillId
+			}))
 		end
 	end
 end
@@ -180,7 +179,7 @@ function slot0._canUseCardSkill(slot0, slot1, slot2)
 	end
 
 	if slot5 then
-		for slot9 = #FightDataHelper.coverData(slot4), 1, -1 do
+		for slot9 = #FightDataUtil.coverData(slot4), 1, -1 do
 			if slot4[slot9].buffId == 832400103 then
 				table.remove(slot4, slot9)
 			end
@@ -201,16 +200,16 @@ function slot0._playOpInAnim(slot0)
 		gohelper.setActive(slot5.go, true)
 
 		gohelper.onceAddComponent(slot5.go, typeof(UnityEngine.CanvasGroup)).alpha = 0
-		slot0._canUseCard[slot5.cardInfoMO.custom_enemyCardIndex] = slot0:_canUseCardSkill(slot0.entity.id, slot5.cardInfoMO.skillId)
+		slot0._canUseCard[slot5.cardInfoMO.clientData.custom_enemyCardIndex] = slot0:_canUseCardSkill(slot0.entity.id, slot5.cardInfoMO.skillId)
 	end
 end
 
 function slot0._calCanUseCard(slot0)
 	slot0._canUseCard = {}
 
-	if FightModel.instance:getCurRoundMO() then
+	if FightDataHelper.roundMgr:getRoundData() then
 		for slot5, slot6 in ipairs(slot0.playCardInfoList) do
-			slot0._canUseCard[slot6.custom_enemyCardIndex] = slot0:_canUseCardSkill(slot0.entity.id, slot6.skillId)
+			slot0._canUseCard[slot6.clientData.custom_enemyCardIndex] = slot0:_canUseCardSkill(slot0.entity.id, slot6.skillId)
 		end
 	end
 end
@@ -232,9 +231,15 @@ end
 
 function slot0._canUseSkill(slot0, slot1)
 	slot2 = slot0.entity:getMO()
+	slot3 = slot0:_canUseCardSkill(slot0.entity.id, slot1)
+	slot4 = FightCardDataHelper.isBigSkill(slot1)
 
-	if FightCardModel.instance:isUniqueSkill(slot0.entity.id, slot1) then
-		slot3 = slot0:_canUseCardSkill(slot0.entity.id, slot1) and slot2:getUniqueSkillPoint() <= slot2.exPoint
+	if lua_skill_next.configDict[slot1] then
+		slot4 = false
+	end
+
+	if slot4 then
+		slot3 = slot3 and slot2:getUniqueSkillPoint() <= slot2.exPoint
 	end
 
 	return slot3
@@ -250,7 +255,7 @@ end
 
 function slot0._checkPlaySkill(slot0, slot1)
 	for slot5, slot6 in ipairs(slot0._opItemList) do
-		if slot6.cardInfoMO and slot6.cardInfoMO.custom_enemyCardIndex == slot1.cardIndex then
+		if slot6.cardInfoMO and slot6.cardInfoMO.clientData.custom_enemyCardIndex == slot1.cardIndex then
 			slot6.cardInfoMO.custom_done = true
 
 			slot0:_playOpOut(slot6)
@@ -303,7 +308,7 @@ function slot0._checkPlayForbid(slot0)
 	for slot4, slot5 in ipairs(slot0._opItemList) do
 		if slot5.cardInfoMO and not slot6.custom_done then
 			slot8 = slot0:_canUseSkill(slot5.cardInfoMO.skillId)
-			slot10 = slot0._canUseCard[slot5.cardInfoMO.custom_enemyCardIndex]
+			slot10 = slot0._canUseCard[slot5.cardInfoMO.clientData.custom_enemyCardIndex]
 
 			if slot0.forceLockFirst and slot4 == 1 then
 				slot8 = false
@@ -345,7 +350,7 @@ end
 function slot0._onInvalidEnemyUsedCard(slot0, slot1)
 	if slot0._opItemList then
 		for slot5, slot6 in ipairs(slot0._opItemList) do
-			if slot6.cardInfoMO and slot6.cardInfoMO.custom_enemyCardIndex == slot1 then
+			if slot6.cardInfoMO and slot6.cardInfoMO.clientData.custom_enemyCardIndex == slot1 then
 				slot0:_playOpForbidIn(slot6)
 
 				slot6.cardInfoMO.custom_done = true

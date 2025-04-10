@@ -31,28 +31,23 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._onStartSequenceFinish(slot0)
-	FightCardModel.instance:applyNextRoundActPoint()
 end
 
 function slot0._onRoundSequenceFinish(slot0)
-	FightCardModel.instance:applyNextRoundActPoint()
+	FightDataHelper.operationDataMgr:applyNextRoundActPoint()
 end
 
-function slot0._onMoveHandCard(slot0, slot1, slot2, slot3)
-	if slot2 == slot3 then
-		return
-	end
-
+function slot0._onMoveHandCard(slot0, slot1, slot2)
 	if not slot1.moveCanAddExpoint then
 		return
 	end
 
-	if FightCardModel.instance:getCardMO().extraMoveAct > 0 then
-		if slot4 < #FightCardModel.instance:getMoveCardOpCostActList() then
-			slot0:_onMoveOrCombine(slot1.uid, true)
+	if FightDataHelper.operationDataMgr.extraMoveAct > 0 then
+		if slot3 < #FightDataHelper.operationDataMgr:getMoveCardOpCostActList() then
+			slot0:_onMoveOrCombine(slot2.uid, true)
 		end
 	else
-		slot0:_onMoveOrCombine(slot1.uid, true)
+		slot0:_onMoveOrCombine(slot2.uid, true)
 	end
 end
 

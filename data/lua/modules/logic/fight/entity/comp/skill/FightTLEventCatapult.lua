@@ -1,10 +1,10 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventCatapult", package.seeall)
 
-slot0 = class("FightTLEventCatapult")
+slot0 = class("FightTLEventCatapult", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._paramsArr = slot3
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._duration = slot2
 	slot0.index = FightTLHelper.getNumberParam(slot3[1])
 	slot0.effectName = slot3[2]
@@ -66,9 +66,9 @@ function slot0.playAddFirstBuff(slot0)
 		return
 	end
 
-	for slot8, slot9 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot8, slot9 in ipairs(slot0.fightStepData.actEffect) do
 		if not slot9:isDone() and slot0.startEntity.id == slot9.targetId and slot9.effectType == FightEnum.EffectType.BUFFADD and slot0:inCheckNeedPlayBuff(slot9.effectNum) then
-			FightSkillBuffMgr.instance:playSkillBuff(slot0._fightStepMO, slot9)
+			FightSkillBuffMgr.instance:playSkillBuff(slot0.fightStepData, slot9)
 			FightDataHelper.playEffectData(slot9)
 
 			if slot1 <= 0 + 1 then
@@ -79,7 +79,7 @@ function slot0.playAddFirstBuff(slot0)
 end
 
 function slot0.getCatapultBuffCount(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot6, slot7 in ipairs(slot0.fightStepData.actEffect) do
 		if slot7.effectType == FightEnum.EffectType.CATAPULTBUFF and slot7.effectNum == slot1 then
 			return tonumber(slot7.reserveId)
 		end
@@ -105,7 +105,7 @@ function slot0.getEndEntity(slot0)
 end
 
 function slot0.get217EffectEntity(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot6, slot7 in ipairs(slot0.fightStepData.actEffect) do
 		if slot7.effectType == FightEnum.EffectType.CATAPULTBUFF and slot7.effectNum == slot1 then
 			return GameSceneMgr.instance:getCurScene().entityMgr:getEntity(slot7.targetId)
 		end
@@ -164,9 +164,9 @@ function slot0.playAddBuff(slot0)
 end
 
 function slot0._playAddBuff(slot0)
-	for slot7, slot8 in ipairs(slot0._fightStepMO.actEffectMOs) do
+	for slot7, slot8 in ipairs(slot0.fightStepData.actEffect) do
 		if not slot8:isDone() and slot0.endEntity.id == slot8.targetId and slot8.effectType == FightEnum.EffectType.BUFFADD and slot0:inCheckNeedPlayBuff(slot8.effectNum) then
-			FightSkillBuffMgr.instance:playSkillBuff(slot0._fightStepMO, slot8)
+			FightSkillBuffMgr.instance:playSkillBuff(slot0.fightStepData, slot8)
 			FightDataHelper.playEffectData(slot8)
 
 			if slot0.catapultBuffCount <= 0 + 1 then
@@ -206,14 +206,10 @@ function slot0.removeEffectMover(slot0)
 	slot0.effectWrap = nil
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.onSkillEnd(slot0)
-	slot0:clear()
-end
-
-function slot0.clear(slot0)
+function slot0.onDestructor(slot0)
 	slot0:removeEffectMover()
 	TaskDispatcher.cancelTask(slot0._playHitEffect, slot0)
 	TaskDispatcher.cancelTask(slot0._playAddBuff, slot0)
@@ -225,10 +221,6 @@ function slot0.clear(slot0)
 	slot0.skillUserId = nil
 	slot0.startEntity = nil
 	slot0.endEntity = nil
-end
-
-function slot0.dispose(slot0)
-	slot0:clear()
 end
 
 return slot0

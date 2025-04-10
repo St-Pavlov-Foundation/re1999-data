@@ -26,6 +26,7 @@ function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0.triggerAchievementUnLockAduio, slot0)
 	TaskDispatcher.cancelTask(slot0.setHasPlayOpenAnim, slot0)
 	TaskDispatcher.cancelTask(slot0.onFocusNewestUpgradeGroupSucc, slot0)
+	TaskDispatcher.cancelTask(slot0._blockSwtichCategory, slot0)
 
 	if slot0._scrollFocusTweenId then
 		ZProj.TweenHelper.KillById(slot0._scrollFocusTweenId)
@@ -42,6 +43,7 @@ function slot0.onClose(slot0)
 	UIBlockMgrExtend.setNeedCircleMv(true)
 	UIBlockMgr.instance:endBlock("AchievementMainViewFocus_Focus")
 	UIBlockMgr.instance:endBlock("AchievementMainViewFocus_FocusOrigin")
+	UIBlockMgr.instance:endBlock("AchievementMainViewFocus_SwitchCategory")
 end
 
 slot1 = 2
@@ -76,6 +78,15 @@ function slot0.onSwitchCategory(slot0)
 	if not slot0:checkIsNeedFocusNewest() then
 		slot0:resetViewScrollPixel()
 	end
+
+	UIBlockMgr.instance:startBlock("AchievementMainViewFocus_SwitchCategory")
+	UIBlockMgrExtend.setNeedCircleMv(false)
+	TaskDispatcher.runDelay(slot0._blockSwtichCategory, slot0, 0.5)
+end
+
+function slot0._blockSwtichCategory(slot0)
+	UIBlockMgr.instance:endBlock("AchievementMainViewFocus_SwitchCategory")
+	UIBlockMgrExtend.setNeedCircleMv(true)
 end
 
 function slot0.onSwitchViewType(slot0)
@@ -105,6 +116,10 @@ function slot0.scrollView2TargetPixel(slot0, slot1, slot2, slot3)
 	UIBlockMgr.instance:startBlock("AchievementMainViewFocus_Focus")
 	AchievementMainCommonModel.instance:markCurrentScrollFocusing(true)
 
+	if slot0._scrollFocusTweenId then
+		ZProj.TweenHelper.KillById(slot0._scrollFocusTweenId)
+	end
+
 	slot5 = slot0.viewContainer:getScrollView(slot1) and slot4:getCsScroll()
 	slot0._curFocusAchievementIndex = slot3
 	slot6 = 0
@@ -118,10 +133,6 @@ function slot0.scrollView2TargetPixel(slot0, slot1, slot2, slot3)
 			slot0:_onFocusTweenFrameCallback(slot8)
 			slot0:_onFocusTweenFinishCallback()
 		else
-			if slot0._scrollFocusTweenId then
-				ZProj.TweenHelper.KillById(slot0._scrollFocusTweenId)
-			end
-
 			slot0._scrollFocusTweenId = ZProj.TweenHelper.DOTweenFloat(slot7, slot8, slot6, slot0._onFocusTweenFrameCallback, slot0._onFocusTweenFinishCallback, slot0)
 		end
 	end
@@ -184,13 +195,12 @@ function slot0.try2FocusNewestUnlockAchievement(slot0)
 	slot3 = 0
 
 	if slot0:getNewestUnlockAchievement() and slot1 ~= 0 then
-		slot4 = AchievementConfig.instance:getAchievement(slot1)
 		slot6 = AchievementEnum.AchievementType.Single
 		slot7 = slot1
 
-		if AchievementMainCommonModel.instance:getCurrentViewType() == AchievementEnum.ViewType.Tile and slot4.groupId ~= 0 then
+		if AchievementMainCommonModel.instance:getCurrentViewType() == AchievementEnum.ViewType.Tile and AchievementUtils.isActivityGroup(slot1) then
 			slot6 = AchievementEnum.AchievementType.Group
-			slot7 = slot4.groupId
+			slot7 = AchievementConfig.instance:getAchievement(slot1).groupId
 		end
 
 		slot8, slot3 = slot0:try2FocusAchievement(slot6, slot7)

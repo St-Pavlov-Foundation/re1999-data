@@ -38,7 +38,7 @@ function slot0.onReceiveBuyGoodsReply(slot0, slot1, slot2)
 		StoreModel.instance:buyGoodsReply(slot2)
 		table.insert({}, slot2.storeId)
 
-		if slot2.storeId ~= StoreEnum.SubRoomNew and slot2.storeId ~= StoreEnum.SubRoomOld then
+		if slot2.storeId ~= StoreEnum.StoreId.NewRoomStore and slot2.storeId ~= StoreEnum.StoreId.OldRoomStore then
 			uv0.instance:sendGetStoreInfosRequest(slot3)
 		end
 

@@ -3,14 +3,13 @@ module("modules.logic.fight.system.work.FightWorkBFSGConvertCard", package.seeal
 slot0 = class("FightWorkBFSGConvertCard", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0._actEffectMO) then
+	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	if FightCardModel.instance:getHandCards()[slot0._actEffectMO.effectNum] then
-		slot3:init(slot0._actEffectMO.cardInfo)
+	if FightDataHelper.handCardMgr.handCard[slot0.actEffectData.effectNum] then
 		FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, slot2)
 	end
 

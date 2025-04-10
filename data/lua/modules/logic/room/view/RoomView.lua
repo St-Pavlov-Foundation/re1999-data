@@ -191,7 +191,7 @@ function slot0._btnhideOnClick(slot0)
 end
 
 function slot0._btnstoreOnClick(slot0)
-	if StoreController.instance:checkAndOpenStoreView(StoreEnum.Room) then
+	if StoreController.instance:checkAndOpenStoreView(StoreEnum.StoreId.RoomStore) then
 		RoomMapController.instance:dispatchEvent(RoomEvent.BlockAtmosphereEffect)
 	end
 end

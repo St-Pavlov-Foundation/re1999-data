@@ -17,8 +17,9 @@ function slot0.onStart(slot0, slot1)
 
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 3)
 
-	slot2 = FightCardModel.instance:playAssistBossHandCardOp(slot0._beginRoundOp.param1, slot0._beginRoundOp.toId)
+	slot2 = FightDataHelper.operationDataMgr:newOperation()
 
+	slot2:playAssistBossHandCard(slot0._beginRoundOp.param1, slot0._beginRoundOp.toId)
 	FightController.instance:dispatchEvent(FightEvent.AddPlayOperationData, slot2)
 	FightController.instance:dispatchEvent(FightEvent.onNoActCostMoveFlowOver)
 	FightController.instance:dispatchEvent(FightEvent.RefreshPlayCardRoundOp, slot2)

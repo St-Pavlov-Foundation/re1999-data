@@ -103,9 +103,7 @@ function slot0._onClickStart(slot0)
 		FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
 	end
 
-	slot1 = FightRoundMO.New()
-	FightModel.instance._curRoundMO = slot1
-	slot1.fightStepMOs = {}
+	FightDataHelper.roundMgr:setRoundData(FightRoundData.New(FightDef_pb.FightRound()))
 
 	for slot5, slot6 in ipairs(slot0._infos) do
 		slot7 = slot6.skillId
@@ -118,7 +116,7 @@ function slot0._onClickStart(slot0)
 				slot10 = slot13[1]
 			end
 
-			tabletool.addValues(slot1.fightStepMOs, SkillEditorStepBuilder.buildStepMOs(slot7, slot9, slot10))
+			tabletool.addValues(slot1.fightStep, SkillEditorStepBuilder.buildFightStepDataList(slot7, slot9, slot10))
 		end
 	end
 
@@ -129,7 +127,7 @@ function slot0._onClickStart(slot0)
 		slot0._playSkillsFlow:addWork(WorkWaitSeconds.New(slot2))
 	end
 
-	slot3, slot4 = FightStepBuilder.buildStepWorkList(slot1.fightStepMOs)
+	slot3, slot4 = FightStepBuilder.buildStepWorkList(slot1.fightStep)
 
 	for slot8, slot9 in ipairs(slot3) do
 		slot0._playSkillsFlow:addWork(slot9)

@@ -3,11 +3,11 @@ module("modules.logic.fight.system.work.LY.FightWorkRedOrBlueCountExSkill", pack
 slot0 = class("FightWorkRedOrBlueCountExSkill", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightStrUtil.instance:getSplitToNumberCache(slot0._actEffectMO.reserveStr, "#") then
+	if not FightStrUtil.instance:getSplitToNumberCache(slot0.actEffectData.reserveStr, "#") then
 		return slot0:onDone(true)
 	end
 
-	FightController.instance:dispatchEvent(FightEvent.LY_TriggerCountSkill, slot1[1], slot1[2], tonumber(slot0._actEffectMO.reserveId))
+	FightController.instance:dispatchEvent(FightEvent.LY_TriggerCountSkill, slot1[1], slot1[2], tonumber(slot0.actEffectData.reserveId))
 
 	return slot0:onDone(true)
 end

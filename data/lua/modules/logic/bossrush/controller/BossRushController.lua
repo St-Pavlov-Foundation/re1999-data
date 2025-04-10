@@ -19,6 +19,7 @@ function slot0.addConstEvents(slot0)
 	FightController.instance:registerCallback(FightEvent.OnBeginWave, slot0._refreshCurBossHP, slot0)
 	FightController.instance:registerCallback(FightEvent.OnHpChange, slot0._onHpChange, slot0)
 	FightController.instance:registerCallback(FightEvent.OnMonsterChange, slot0._onMonsterChange, slot0)
+	LoginController.instance:registerCallback(LoginEvent.OnGetInfoFinish, slot0._onGetInfoFinish, slot0)
 	RedDotController.instance:registerCallback(RedDotEvent.RefreshClientCharacterDot, slot0._refreshClientCharacterDot, slot0)
 	DungeonController.instance:registerCallback(DungeonEvent.OnEndDungeonPush, slot0._onEndDungeonPush, slot0)
 	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, slot0._refreshActivityState, slot0)
@@ -222,6 +223,19 @@ end
 
 function slot0._onMonsterChange(slot0, slot1, slot2)
 	slot0._model:subBossBlood()
+end
+
+function slot0._onGetInfoFinish(slot0)
+	slot0:_recordBossRushCurrencyNum()
+end
+
+function slot0._recordBossRushCurrencyNum(slot0)
+	if not PlayerModel.instance:getSimpleProperty(PlayerEnum.SimpleProperty.V2a7_BossRushCurrencyNum) then
+		slot2 = V1a6_BossRush_StoreModel.instance:getCurrencyCount()
+
+		PlayerModel.instance:forceSetSimpleProperty(slot1, tostring(slot2))
+		PlayerRpc.instance:sendSetSimplePropertyRequest(slot1, tostring(slot2))
+	end
 end
 
 function slot0.checkBattleChapterType(slot0, slot1, slot2)

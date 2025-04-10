@@ -117,7 +117,7 @@ function slot0.needShowNew(slot0)
 	if slot0:isSoldOut() then
 		return false
 	else
-		return slot0.newStartTime <= ServerTime.now() and slot1 <= slot0.newEndTime
+		return RedDotModel.instance:isDotShow(RedDotEnum.DotNode.StoreChargeGoodsRead, slot0.goodsId) and (slot0.newStartTime <= ServerTime.now() and slot1 <= slot0.newEndTime)
 	end
 end
 

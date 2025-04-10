@@ -11,7 +11,7 @@ end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
 	if FightHelper.getEntity(slot3.toId) and slot4:isMySide() and slot4:getMO() and slot5.modelId == 3025 then
-		for slot9, slot10 in ipairs(slot3.actEffectMOs) do
+		for slot9, slot10 in ipairs(slot3.actEffect) do
 			if slot10.effectType == FightEnum.EffectType.MISS and slot10.targetId == slot4.id then
 				for slot15, slot16 in pairs(slot5:getBuffDic()) do
 					if slot16.buffId == 710601 or slot16.buffId == 710602 then

@@ -11,6 +11,7 @@ function slot0.onReceiveGetPlayerInfoReply(slot0, slot1, slot2)
 		slot3 = slot2.playerInfo
 
 		PlayerModel.instance:setMainThumbnail(slot2.mainThumbnail)
+		PlayerModel.instance:GMSetMainThumbnail()
 		PlayerModel.instance:setCanRename(slot2.canRename)
 		PlayerModel.instance:setExtraRename(slot2.extRename)
 		PlayerModel.instance:setPlayerinfo(slot3)

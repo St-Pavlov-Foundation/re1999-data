@@ -13,6 +13,7 @@ function slot0.ctor(slot0)
 	slot0._storeMonthAddCfg = nil
 	slot0._critterStoreGoods = {}
 	slot0._preGoodsIdDict = nil
+	slot0._decorateProduct2GoodsId = {}
 	slot0._roomProduct2GoodsId = {}
 end
 
@@ -66,7 +67,7 @@ function slot0.initPreGoodsIdDict(slot0, slot1)
 			slot0._preGoodsIdDict[slot6.preGoodsId] = slot5
 		end
 
-		if tonumber(slot6.storeId) == StoreEnum.SubRoomNew or slot7 == StoreEnum.SubRoomOld then
+		if tonumber(slot6.storeId) == StoreEnum.StoreId.NewRoomStore or slot7 == StoreEnum.StoreId.OldRoomStore then
 			slot8, slot9 = nil
 
 			if GameUtil.splitString2(slot6.product, true) and #slot10 == 1 and (slot10[1][1] == MaterialEnum.MaterialType.Building or slot12 == MaterialEnum.MaterialType.BlockPackage) then
@@ -87,6 +88,12 @@ function slot0.initPreGoodsIdDict(slot0, slot1)
 			end
 
 			table.insert(slot0._critterStoreGoods[slot8[2]], slot6)
+		elseif slot7 == StoreEnum.StoreId.NewDecorateStore or slot7 == StoreEnum.StoreId.OldDecorateStore then
+			if not slot0._decorateProduct2GoodsId[string.splitToNumber(slot6.product, "#")[2]] then
+				slot0._decorateProduct2GoodsId[slot8[2]] = {}
+			end
+
+			slot0._decorateProduct2GoodsId[slot8[2]] = slot6
 		end
 	end
 end
@@ -201,6 +208,14 @@ function slot0.getTabHierarchy(slot0, slot1)
 	else
 		return 3
 	end
+end
+
+function slot0.isPackageStore(slot0, slot1)
+	if slot0:getTabConfig(slot1) and slot2.belongFirstTab == StoreEnum.StoreId.Package then
+		return true
+	end
+
+	return false
 end
 
 function slot0.getMonthCardConfig(slot0, slot1)
@@ -347,6 +362,20 @@ end
 
 function slot0.getSeasonCardMultiFactor(slot0)
 	return CommonConfig.instance:getConstNum(2501)
+end
+
+function slot0.getDecorateGoodsCfgById(slot0, slot1)
+	return slot0._decorateProduct2GoodsId[slot1]
+end
+
+function slot0.getDecorateGoodsIdById(slot0, slot1)
+	slot2 = nil
+
+	if slot0:getDecorateGoodsCfgById(slot1) then
+		slot2 = slot3.id
+	end
+
+	return slot2
 end
 
 slot0.instance = slot0.New()

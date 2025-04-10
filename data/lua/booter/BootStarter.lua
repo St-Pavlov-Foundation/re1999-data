@@ -6,6 +6,7 @@ canLogNormal = SLFramework.SLLogger.CanLogNormal
 canLogWarn = SLFramework.SLLogger.CanLogWarn
 canLogError = SLFramework.SLLogger.CanLogError
 isDebugBuild = SLFramework.UnityHelper.IsDebugBuild()
+_xpcall = xpcall
 
 function __G__TRACKBACK__(slot0)
 	if canLogError then
@@ -14,16 +15,10 @@ function __G__TRACKBACK__(slot0)
 end
 
 function callWithCatch(slot0, ...)
-	if ... ~= nil then
-		slot1 = {
-			...
-		}
-
-		return xpcall(function ()
-			uv0(unpack(uv1))
-		end, __G__TRACKBACK__)
+	if (... ~= nil and select("#", ...) or 0) > 0 then
+		return _xpcall(slot0, __G__TRACKBACK__, select(1, ...))
 	else
-		return xpcall(slot0, __G__TRACKBACK__)
+		return _xpcall(slot0, __G__TRACKBACK__)
 	end
 end
 

@@ -3649,7 +3649,7 @@
   },
   {
     "id": 2681,
-    "tips": "【如愿甘泉】未解锁，请扩建古厅解锁后再试",
+    "tips": "【如愿甘泉】未解锁，需扩建古厅至2级",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -8218,6 +8218,110 @@
   {
     "id": 203,
     "tips": "梦境增益已被锁定",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270001,
+    "tips": "预设方案不可更改",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270002,
+    "tips": "方案已切换",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270003,
+    "tips": "本期吼吼点唱机分贝获取增加",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270004,
+    "tips": "次数不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270005,
+    "tips": "▩1%s后可领取",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270101,
+    "tips": "已成功购买",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270102,
+    "tips": "造物装备成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270103,
+    "tips": "狂想或解构未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270104,
+    "tips": "当前没有满足条件的角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270105,
+    "tips": "请选中任一已解锁角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270106,
+    "tips": "薪血不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270107,
+    "tips": "请选中任一角色闪念",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270108,
+    "tips": "▩1%s能力提升",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

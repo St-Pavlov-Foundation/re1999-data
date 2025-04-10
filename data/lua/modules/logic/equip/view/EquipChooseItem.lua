@@ -97,7 +97,9 @@ function slot0.addSelf(slot0)
 		return slot1
 	end
 
-	EquipController.instance:dispatchEvent(EquipEvent.onAddEquipToPlayEffect, slot0._mo.uid)
+	EquipController.instance:dispatchEvent(EquipEvent.onAddEquipToPlayEffect, {
+		slot0._mo.uid
+	})
 
 	return slot1
 end

@@ -61,6 +61,13 @@ function slot0.openBossRushEnemyInfoView(slot0, slot1, slot2, slot3)
 	})
 end
 
+function slot0.openAct191EnemyInfoView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.BaseEnemyInfoView, {
+		battleId = slot1,
+		tabEnum = EnemyInfoEnum.TabEnum.Act191
+	})
+end
+
 slot0.instance = slot0.New()
 
 LuaEventSystem.addEventMechanism(slot0.instance)

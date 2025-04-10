@@ -1,16 +1,20 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventAtkAction", package.seeall)
 
-slot0 = class("FightTLEventAtkAction")
+slot0 = class("FightTLEventAtkAction", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._attacker = FightHelper.getEntity(slot1.fromId)
 	slot0._action = slot3[1]
 	slot0._loop = slot3[2] == "1" and true or false
 	slot0._monsterEvolution = slot3[3] == "1"
 	slot0._detectCanPlay = slot3[4] == "1"
 
-	if slot0._timeline_item._spine_delay_time then
-		TaskDispatcher.runDelay(slot0._playAct, slot0, slot0._timeline_item._spine_delay_time)
+	if slot3[5] == "1" then
+		slot0._attacker = FightHelper.getEntity(slot1.toId)
+	end
+
+	if slot0.timelineItem.spineDelayTime then
+		TaskDispatcher.runDelay(slot0._playAct, slot0, slot0.timelineItem.spineDelayTime)
 	else
 		slot0:_playAct()
 	end
@@ -26,8 +30,8 @@ function slot0._playAct(slot0)
 			slot0._attacker.spine:play(slot0._action, slot0._loop, true)
 		end
 
-		if slot0._timeline_item._spine_start_time then
-			slot0._attacker.spine._skeletonAnim:Jump2Time(slot0._timeline_item._spine_start_time)
+		if slot0.timelineItem.spineStartTime then
+			slot0._attacker.spine._skeletonAnim:Jump2Time(slot0.timelineItem.spineStartTime)
 		end
 
 		if slot0._monsterEvolution then
@@ -40,14 +44,14 @@ function slot0._playAct(slot0)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_onActionFinish()
 end
 
 function slot0._onActionFinish(slot0)
 	slot0._actionFinish = true
 
-	if slot0._attacker.spine:getAnimState() == slot0._action then
+	if slot0._attacker and slot0._attacker.spine:getAnimState() == slot0._action then
 		slot1 = slot0._attacker:getDefaultAnim()
 
 		if slot0._attacker.spine:getSkeletonAnim() and slot2:HasAnimation(slot1) then
@@ -58,7 +62,7 @@ function slot0._onActionFinish(slot0)
 	slot0._attacker = nil
 end
 
-function slot0.reset(slot0)
+function slot0.onDestructor(slot0)
 	if not slot0._actionFinish then
 		slot0:_onActionFinish()
 	end
@@ -67,10 +71,6 @@ function slot0.reset(slot0)
 	slot0._attacker = nil
 
 	TaskDispatcher.cancelTask(slot0._playAct, slot0)
-end
-
-function slot0.dispose(slot0)
-	slot0._attacker = nil
 end
 
 return slot0

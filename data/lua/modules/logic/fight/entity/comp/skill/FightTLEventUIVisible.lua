@@ -1,6 +1,6 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventUIVisible", package.seeall)
 
-slot0 = class("FightTLEventUIVisible")
+slot0 = class("FightTLEventUIVisible", FightTimelineTrackItem)
 slot1 = nil
 slot2 = {
 	[FightEnum.EffectType.DAMAGEFROMABSORB] = true,
@@ -13,13 +13,13 @@ function slot0.resetLatestStepUid()
 	uv0 = nil
 end
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if uv0 and slot1.stepUid < uv0 then
 		return
 	end
 
 	uv0 = slot1.stepUid
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._isShowUI = slot3[1] == "1" and true or false
 	slot0._isShowFloat = slot3[2] == "1" and true or false
 	slot0._isShowNameUI = slot3[3] == "1" and true or false
@@ -50,7 +50,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	FightController.instance:registerCallback(FightEvent.ForceEndSkillStep, slot0._onDoneThis, slot0)
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_removeEvent()
 end
 
@@ -60,39 +60,27 @@ function slot0._setShowUI(slot0)
 
 	if slot0._entitys then
 		for slot4, slot5 in ipairs(slot0._entitys) do
-			FightController.instance:dispatchEvent(FightEvent.SetNameUIVisibleByTimeline, slot5, slot0._fightStepMO, slot0._isShowNameUI)
+			FightController.instance:dispatchEvent(FightEvent.SetNameUIVisibleByTimeline, slot5, slot0.fightStepData, slot0._isShowNameUI)
 		end
 	end
 end
 
 function slot0._onDoneThis(slot0, slot1)
-	if slot1 == slot0._fightStepMO then
+	if slot1 == slot0.fightStepData then
 		slot0:_removeEvent()
 	end
-end
-
-function slot0.onSkillEnd(slot0)
-	slot0._entitys = nil
-
-	slot0:_removeEvent()
-end
-
-function slot0.reset(slot0)
-	slot0._entitys = nil
-
-	slot0:_removeEvent()
-end
-
-function slot0.dispose(slot0)
-	slot0._entitys = nil
-
-	slot0:_removeEvent()
 end
 
 function slot0._removeEvent(slot0)
 	TaskDispatcher.cancelTask(slot0._setShowUI, slot0)
 	FightController.instance:unregisterCallback(FightEvent.ParallelPlayNextSkillDoneThis, slot0._onDoneThis, slot0)
 	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, slot0._onDoneThis, slot0)
+end
+
+function slot0.onDestructor(slot0)
+	slot0._entitys = nil
+
+	slot0:_removeEvent()
 end
 
 return slot0

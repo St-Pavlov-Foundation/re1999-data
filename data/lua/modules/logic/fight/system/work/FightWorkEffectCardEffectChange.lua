@@ -3,16 +3,17 @@ module("modules.logic.fight.system.work.FightWorkEffectCardEffectChange", packag
 slot0 = class("FightWorkEffectCardEffectChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0._actEffectMO) then
+	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
 		slot0:onDone(true)
 
 		return
 	end
 
-	for slot6, slot7 in ipairs(string.splitToNumber(slot0._actEffectMO.reserveStr, "#")) do
-		FightCardModel.instance:getHandCards()[slot7]:init(slot0._actEffectMO.cardInfoList[slot6])
-		FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, slot7)
-		FightController.instance:dispatchEvent(FightEvent.CardEffectChange, slot7)
+	for slot6, slot7 in ipairs(string.splitToNumber(slot0.actEffectData.reserveStr, "#")) do
+		if FightDataHelper.handCardMgr.handCard[slot7] then
+			FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, slot7)
+			FightController.instance:dispatchEvent(FightEvent.CardEffectChange, slot7)
+		end
 	end
 
 	slot0:onDone(true)

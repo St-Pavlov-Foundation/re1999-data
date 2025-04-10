@@ -38,6 +38,7 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btncloseOnClick(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
 	slot0:closeThis()
 end
 
@@ -132,10 +133,10 @@ function slot0._refreshRoleInfo(slot0)
 	if slot0._needShowHeroIds ~= nil then
 		slot2 = {}
 
-		for slot6, slot7 in ipairs(slot1) do
-			for slot11, slot12 in ipairs(slot0._needShowHeroIds) do
-				if slot7.heroId == slot12 then
-					table.insert(slot2, slot7)
+		for slot6, slot7 in ipairs(slot0._needShowHeroIds) do
+			for slot11, slot12 in ipairs(slot1) do
+				if slot12.heroId == slot7 then
+					table.insert(slot2, slot12)
 				end
 			end
 		end

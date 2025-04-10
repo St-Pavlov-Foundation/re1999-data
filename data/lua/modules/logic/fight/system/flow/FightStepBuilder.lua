@@ -57,6 +57,7 @@ slot0.ActEffectWorkCls = {
 	[FightEnum.EffectType.MAGICCIRCLEADD] = FightWorkMagicCircleAdd,
 	[FightEnum.EffectType.MAGICCIRCLEDELETE] = FightWorkMagicCircleDelete,
 	[FightEnum.EffectType.MAGICCIRCLEUPDATE] = FightWorkMagicCircleUpdate,
+	[FightEnum.EffectType.MAGICCIRCLEUPGRADE] = FightWorkMagicCircleUpgrade340,
 	[FightEnum.EffectType.CHANGETOTEMPCARD] = FightWorkChangeToTempCard,
 	[FightEnum.EffectType.MASTERPOWERCHANGE] = FightWorkMasterPowerChange,
 	[FightEnum.EffectType.ADDHANDCARD] = FightWorkAddHandCard,
@@ -141,6 +142,13 @@ slot0.ActEffectWorkCls = {
 	[FightEnum.EffectType.FIGHTTASKUPDATE] = FightWorkFightTaskUpdate323,
 	[FightEnum.EffectType.REMOVEMONSTERSUB] = FightWorkRemoveMonsterSub325,
 	[FightEnum.EffectType.ADDCARDRECORDBYROUND] = FightWorkAddRecordCard,
+	[FightEnum.EffectType.FIGHTPARAMCHANGE] = FightWorkFightParamChange330,
+	[FightEnum.EffectType.BLOODPOOLMAXCREATE] = FightWorkCreateBloodPool333,
+	[FightEnum.EffectType.BLOODPOOLMAXCHANGE] = FightWorkBloodPoolMaxChange334,
+	[FightEnum.EffectType.BLOODPOOLVALUECHANGE] = FightWorkBloodPoolValueChange335,
+	[FightEnum.EffectType.COLDSATURDAYHURT] = FightWorkColdSaturdayHurt336,
+	[FightEnum.EffectType.NEWCHANGEWAVE] = FightWorkNewChangeWave337,
+	[FightEnum.EffectType.CLIENTEFFECT] = FightWorkClientEffect339,
 	[FightEnum.EffectType.CURE] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.DOT] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.REBOUND] = FightBuffTriggerEffect,
@@ -157,6 +165,7 @@ slot0.ActEffectWorkCls = {
 	[FightEnum.EffectType.EMITTERREMOVE] = FightWorkEmitterRemove,
 	[FightEnum.EffectType.TEAMENERGYCHANGE] = FightWorkTeamEnergyChange,
 	[FightEnum.EffectType.ALLOCATECARDENERGY] = FightWorkAllocateCardEnergy,
+	[FightEnum.EffectType.CHANGECARDENERGY] = FightWorkChangeCardEnergy,
 	[FightEnum.EffectType.REDORBLUECOUNTCHANGE] = FightWorkRedOrBlueCountChange,
 	[FightEnum.EffectType.REDORBLUECOUNTEXSKILL] = FightWorkRedOrBlueCountExSkill,
 	[FightEnum.EffectType.TOCARDAREAREDORBLUE] = FightWorkToCardAreaRedOrBlue,
@@ -191,7 +200,8 @@ slot0.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.GUARDBREAK] = FightWorkEffectGuardBreakContainer,
 	[FightEnum.EffectType.ZXQREMOVECARD] = FightWorkZXQRemoveCardContainer,
 	[FightEnum.EffectType.DEADLYPOISONORIGINDAMAGE] = FightWorkDeadlyPoisonContainer,
-	[FightEnum.EffectType.DEADLYPOISONORIGINCRIT] = FightWorkDeadlyPoisonCritContainer
+	[FightEnum.EffectType.DEADLYPOISONORIGINCRIT] = FightWorkDeadlyPoisonCritContainer,
+	[FightEnum.EffectType.COLDSATURDAYHURT] = FightWorkColdSaturdayHurt336Container
 }
 
 setmetatable(slot0.EffectType2FlowOrWork, {
@@ -223,8 +233,14 @@ function slot0.buildStepWorkList(slot0)
 
 			tabletool.addValues(slot2, uv0._buildEffectWorks(slot12, slot13))
 
-			for slot12, slot13 in ipairs(slot8.actEffectMOs) do
-				if slot13.effectType == FightEnum.EffectType.DEALCARD1 or slot13.effectType == FightEnum.EffectType.DEALCARD2 or slot13.effectType == FightEnum.EffectType.ROUNDEND then
+			for slot12, slot13 in ipairs(slot8.actEffect) do
+				if slot13.effectType == FightEnum.EffectType.DEALCARD1 or slot13.effectType == FightEnum.EffectType.DEALCARD2 or slot13.effectType == FightEnum.EffectType.ROUNDEND or slot13.effectType == FightEnum.EffectType.NEWCHANGEWAVE then
+					if slot13.effectType == FightEnum.EffectType.NEWCHANGEWAVE then
+						FightDataHelper.tempMgr.hasNextWave = true
+
+						FightController.instance:dispatchEvent(FightEvent.HaveNextWave)
+					end
+
 					slot1 = nil
 
 					break
@@ -246,7 +262,7 @@ function slot0.buildStepWorkList(slot0)
 			slot1 = nil
 
 			table.insert(slot2, FightWorkWaitForSkillsDone.New(tabletool.copy(slot3)))
-			table.insert(slot2, FightWorkStepChangeWave.New(slot8))
+			table.insert(slot2, FightWorkStepChangeWave.New())
 			table.insert(slot2, FightWorkAppearTimeline.New())
 			table.insert(slot2, FightWorkStartBornEnemy.New())
 			table.insert(slot2, FightWorkFocusMonster.New())
@@ -315,7 +331,7 @@ slot0.lastEffect = nil
 
 function slot0._buildEffectWorks(slot0)
 	uv0.lastEffect = nil
-	slot1 = FightWorkFlowSequence.New(slot0)
+	slot1 = FightWorkFlowSequence.New()
 
 	uv0.addEffectWork(slot1, slot0)
 
@@ -330,7 +346,7 @@ function slot0._buildEffectWorks(slot0)
 end
 
 function slot0.addEffectWork(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1.actEffectMOs) do
+	for slot5, slot6 in ipairs(slot1.actEffect) do
 		slot8 = false
 
 		if slot6.effectType == FightEnum.EffectType.FIGHTSTEP and not slot6.fightStep then
@@ -341,7 +357,7 @@ function slot0.addEffectWork(slot0, slot1)
 			slot10 = slot0:registWork(slot9, slot1, slot6)
 
 			if uv0.lastEffect then
-				uv0.lastEffect.NEXTEFFECT = slot6
+				uv0.lastEffect.nextActEffectData = slot6
 			end
 
 			uv0.lastEffect = slot6
@@ -349,10 +365,10 @@ function slot0.addEffectWork(slot0, slot1)
 			if slot7 == FightEnum.EffectType.FIGHTSTEP then
 				slot11 = FightWorkFlowSequence.New()
 
-				uv0.addEffectWork(slot11, slot6.cus_stepMO)
+				uv0.addEffectWork(slot11, slot6.fightStep)
 				slot10:setFlow(slot11)
 
-				slot6.FIGHTSTEPNEXTEFFECT = slot1.actEffectMOs[slot5 + 1]
+				slot6.fightStepNextActEffectData = slot1.actEffect[slot5 + 1]
 			end
 		end
 	end

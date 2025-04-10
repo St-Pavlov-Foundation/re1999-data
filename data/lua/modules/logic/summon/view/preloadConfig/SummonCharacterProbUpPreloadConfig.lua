@@ -17,10 +17,38 @@ slot0.preloadLists.SummonCharacterProbUpVer265 = {
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
 }
+slot0.preloadLists.SummonCharacterProbUpVer274 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role4.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_fullbg.png"
+}
+slot0.preloadLists.SummonCharacterProbUpVer275 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role4.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_7/v2a7_coopergarland/v2a7_summon_coopergarland_fullbg.png"
+}
 slot0.preloadLists.SummonCharacterProbUpVer264 = {
 	"singlebg/summon/heroversion_2_2/v2a2_luopeila/v2a2_luopeila_decbg.png",
 	"singlebg/summon/heroversion_2_2/v2a2_luopeila/v2a2_luopeila_rolebg.png",
 	"singlebg/summon/heroversion_2_2/v2a2_luopeila/v2a2_luopeila_fullbg.png"
+}
+slot0.preloadLists.SummonCharacterProbUpVer273 = {
+	"singlebg/summon/heroversion_2_1/tuesday/v2a1_tuesday_frontbg1.png",
+	"singlebg/summon/heroversion_2_1/tuesday/v2a1_tuesday_fullbg.png"
+}
+slot0.preloadLists.SummonCharacterProbUpVer271 = {
+	"singlebg/summon/heroversion_2_4/v2a4_bakaluoer/v2a4_summon_bakaluoer_decbg1.png",
+	"singlebg/summon/heroversion_2_4/v2a4_bakaluoer/v2a4_summon_bakaluoer_role1.png",
+	"singlebg/summon/heroversion_2_4/v2a4_bakaluoer/v2a4_summon_bakaluoer_fullbg.png"
+}
+slot0.preloadLists.SummonCharacterProbUpVer272 = {
+	"singlebg/summon/heroversion_2_4/v2a4_tutushizi/v2a4_summon_tutushizi_role1.png",
+	"singlebg/summon/heroversion_2_4/v2a4_tutushizi/v2a4_summon_tutushizi_fullbg.png"
+}
+slot0.preloadLists.SummonStrongOneCustomPick27 = {
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_2_7/v2a7_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
 }
 slot0.preloadLists.SummonCharacterProbUpVer263 = {
 	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_dec2.png",
@@ -416,6 +444,7 @@ slot0.preloadLists.SummonCharacterProbUpVerBeta1 = {
 	ResUrl.getSummonCoverBg("hero/leftdown"),
 	ResUrl.getSummonCoverBg("hero/rightup")
 }
+slot0.characterItemCounts.SummonCharacterProbUpVer274 = 2
 slot0.characterItemCounts.SummonCharacterProbUpVer112 = 2
 slot0.characterItemCounts.SummonCharacterProbUpVer124 = 2
 slot0.characterItemCounts.SummonCharacterProbUpVer125 = 2

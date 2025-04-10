@@ -58,6 +58,14 @@ function slot0.isTalentCanReset(slot0, slot1, slot2)
 	return true
 end
 
+function slot0.setAutoTalentState(slot0, slot1)
+	slot0.isAutoTalent = slot1
+end
+
+function slot0.getAutoTalentState(slot0)
+	return slot0.isAutoTalent
+end
+
 slot0.instance = slot0.New()
 
 return slot0

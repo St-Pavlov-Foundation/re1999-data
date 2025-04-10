@@ -490,33 +490,38 @@ function slot0.getCombineSkillId(slot0, slot1, slot2)
 	end
 
 	slot5 = uv0.instance:getSkillNextLvId(slot3, slot4)
+	slot6 = true
 
-	if not FightEnum.UniversalCard[slot0.skillId] and not FightEnum.UniversalCard[slot1.skillId] then
-		slot6 = FightEnum.BuffFeature.ChangeComposeCardSkill
-		slot7 = {}
+	if FightCardDataHelper.isSkill3(slot0) or FightCardDataHelper.isSkill3(slot1) then
+		slot6 = false
+	end
 
-		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMyPlayerList())
-		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMyNormalList())
-		tabletool.addValues(slot7, FightDataHelper.entityMgr:getMySpList())
+	if slot6 and not FightEnum.UniversalCard[slot0.skillId] and not FightEnum.UniversalCard[slot1.skillId] then
+		slot7 = FightEnum.BuffFeature.ChangeComposeCardSkill
+		slot8 = {}
 
-		slot8 = 0
+		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMyPlayerList())
+		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMyNormalList())
+		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMySpList())
 
-		for slot12, slot13 in ipairs(slot7) do
-			for slot18, slot19 in pairs(slot13.buffDic) do
-				if FightConfig.instance:hasBuffFeature(slot19.buffId, slot6) and string.splitToNumber(slot20.featureStr, "#")[2] then
-					slot8 = slot8 + slot21[2]
+		slot9 = 0
+
+		for slot13, slot14 in ipairs(slot8) do
+			for slot19, slot20 in pairs(slot14.buffDic) do
+				if FightConfig.instance:hasBuffFeature(slot20.buffId, slot7) and string.splitToNumber(slot21.featureStr, "#")[2] then
+					slot9 = slot9 + slot22[2]
 				end
 			end
 		end
 
-		if slot8 == 0 then
+		if slot9 == 0 then
 			return slot5
-		elseif slot8 > 0 then
-			for slot12 = 1, slot8 do
+		elseif slot9 > 0 then
+			for slot13 = 1, slot9 do
 				slot5 = uv0.instance:getSkillNextLvId(slot3, slot5) or slot5
 			end
 		else
-			for slot12 = 1, math.abs(slot8) do
+			for slot13 = 1, math.abs(slot9) do
 				slot5 = uv0.instance:getSkillPrevLvId(slot3, slot5) or slot5
 			end
 		end
@@ -626,6 +631,15 @@ function slot0.playPlayerFinisherSkill(slot0, slot1, slot2)
 	return slot3
 end
 
+function slot0.playBloodPoolCardOp(slot0, slot1, slot2)
+	slot3 = FightBeginRoundOp.New()
+
+	slot3:playBloodPoolCard(slot1, slot2 or slot0.curSelectEntityId)
+	table.insert(slot0._cardOps, slot3)
+
+	return slot3
+end
+
 function slot0.simulateDissolveCard(slot0, slot1)
 	slot2 = FightBeginRoundOp.New()
 
@@ -681,8 +695,12 @@ function slot0.getSkillLv(slot0, slot1, slot2)
 end
 
 function slot0.getSkillNextLvId(slot0, slot1, slot2)
+	if lua_skill_next.configDict[slot2] and slot3.nextId ~= 0 then
+		return slot3.nextId
+	end
+
 	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot3:getSkillNextLvId(slot2)
+		return slot4:getSkillNextLvId(slot2)
 	end
 
 	return FightConfig.instance:getSkillNextLvId(slot2)
@@ -694,14 +712,6 @@ function slot0.getSkillPrevLvId(slot0, slot1, slot2)
 	end
 
 	return FightConfig.instance:getSkillPrevLvId(slot2)
-end
-
-function slot0.isUniqueSkill(slot0, slot1, slot2)
-	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot3:isUniqueSkill(slot2)
-	end
-
-	return FightConfig.instance:isUniqueSkill(slot2)
 end
 
 function slot0.isActiveSkill(slot0, slot1, slot2)

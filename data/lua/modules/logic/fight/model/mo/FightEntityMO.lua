@@ -89,6 +89,7 @@ function slot0.init(slot0, slot1, slot2)
 	slot0.status = slot1.status
 	slot0.guard = slot1.guard
 	slot0.subCd = slot1.subCd
+	slot0.exPointType = slot1.exPointType
 end
 
 function slot0._buildAttr(slot0, slot1)
@@ -190,10 +191,6 @@ function slot0.getSkillPrevLvId(slot0, slot1)
 	return slot0.skillPrevLvId[slot1] or FightConfig.instance:getSkillPrevLvId(slot1)
 end
 
-function slot0.isUniqueSkill(slot0, slot1)
-	return slot0.skillId2Lv[slot1] == FightEnum.UniqueSkillCardLv or FightConfig.instance:isUniqueSkill(slot1)
-end
-
 function slot0.isActiveSkill(slot0, slot1)
 	return slot0.skillId2Lv[slot1] ~= nil or FightConfig.instance:isActiveSkill(slot1)
 end
@@ -250,6 +247,14 @@ end
 
 function slot0.getEntityName(slot0)
 	return slot0:getCO() and slot1.name or "nil"
+end
+
+function slot0.isEnemySide(slot0)
+	return slot0.side == FightEnum.EntitySide.EnemySide
+end
+
+function slot0.isMySide(slot0)
+	return slot0.side == FightEnum.EntitySide.MySide
 end
 
 function slot0.getIdName(slot0)
@@ -328,7 +333,7 @@ function slot0.getMaxExPoint(slot0)
 		return 0
 	end
 
-	return slot1.uniqueSkill_point + slot0:getExpointMaxAddNum()
+	return slot0:getConfigMaxExPoint() + slot0:getExpointMaxAddNum()
 end
 
 function slot0.getExpointMaxAddNum(slot0)
@@ -350,7 +355,7 @@ function slot0.getUniqueSkillPoint(slot0)
 		end
 	end
 
-	return slot0:getCO().uniqueSkill_point + slot0:getExpointCostOffsetNum()
+	return slot0:getConfigMaxExPoint() + slot0:getExpointCostOffsetNum()
 end
 
 function slot0.getExpointCostOffsetNum(slot0)
@@ -362,7 +367,7 @@ function slot0.getPreviewExPoint(slot0)
 end
 
 function slot0.onPlayCardExPoint(slot0, slot1)
-	if not slot0:isUniqueSkill(slot1) and slot0:getPreviewExPoint() < slot0:getMaxExPoint() then
+	if not FightCardDataHelper.isBigSkill(slot1) and slot0:getPreviewExPoint() < slot0:getMaxExPoint() then
 		slot0.playCardExPoint = slot0.playCardExPoint + slot0._playCardAddExpoint
 
 		if slot2 < slot0:getPreviewExPoint() then
@@ -696,6 +701,38 @@ function slot0.getASFDCareer(slot0)
 	end
 
 	return slot0.career
+end
+
+function slot0.getConfigMaxExPoint(slot0)
+	if slot0.configMaxExPoint then
+		return slot0.configMaxExPoint
+	end
+
+	if not slot0:getCO() then
+		return 0
+	end
+
+	if slot1.uniqueSkill_point and type(slot2) == "string" then
+		slot2 = tonumber(string.split(slot2, "#")[2])
+	end
+
+	slot0.configMaxExPoint = slot2
+
+	return slot0.configMaxExPoint
+end
+
+function slot0.getHeroDestinyStoneMo(slot0)
+	if slot0.trialId and slot0.trialId > 0 then
+		if lua_hero_trial.configDict[slot0.trialId][0] then
+			slot0.destinyStoneMo = slot0.destinyStoneMo or HeroDestinyStoneMO.New(slot0.modelId)
+
+			slot0.destinyStoneMo:refreshMo(slot1.facetslevel, 1, slot1.facetsId)
+		end
+	else
+		slot0.destinyStoneMo = HeroModel.instance:getByHeroId(slot0.modelId) and slot1.destinyStoneMo
+	end
+
+	return slot0.destinyStoneMo
 end
 
 return slot0

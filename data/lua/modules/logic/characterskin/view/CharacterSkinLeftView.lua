@@ -190,6 +190,8 @@ function slot0.refreshBigVertical(slot0)
 	if slot0.showDynamicVertical then
 		if slot0.bigSpine == nil then
 			slot0.bigSpine = GuiModelAgent.Create(slot0._gobigspine, true)
+
+			slot0.bigSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
 		end
 
 		slot0.bigSpine:setResPath(slot0.skinCo, slot0.onBigSpineLoaded, slot0)

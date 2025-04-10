@@ -123,6 +123,8 @@ end
 
 function slot0.refreshLYCard(slot0)
 	if slot0.LY_cardLoadStatus ~= uv0.LoadStatus.Loaded then
+		gohelper.setActive(slot0._goLyCardContainer, false)
+
 		return
 	end
 
@@ -133,7 +135,7 @@ function slot0.refreshLYCard(slot0)
 	end
 
 	gohelper.setActive(slot0._goLyCardContainer, true)
-	slot0:getOpRedOrBlueList(FightCardModel.instance:getCardOps())
+	slot0:getOpRedOrBlueList(FightDataHelper.operationDataMgr:getOpList())
 	slot0:resetAllPoint()
 
 	for slot8 = 1, slot3 do

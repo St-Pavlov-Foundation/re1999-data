@@ -17,6 +17,9 @@ end
 function slot0.addEvents(slot0)
 	slot0:com_registFightEvent(FightEvent.BeforeEnterStepBehaviour, slot0._onBeforeEnterStepBehaviour)
 	slot0:com_registFightEvent(FightEvent.OnBuffUpdate, slot0._onBuffUpdate)
+	slot0:com_registFightEvent(FightEvent.BloodPool_OnCreate, slot0.onBloodPoolCreate)
+	slot0:com_registFightEvent(FightEvent.DoomsdayClock_OnValueChange, slot0.onCreateDoomsdayClock)
+	slot0:com_registFightEvent(FightEvent.DoomsdayClock_OnAreaChange, slot0.onCreateDoomsdayClock)
 	slot0:com_registMsg(FightMsgId.FightProgressValueChange, slot0._showFightProgress)
 	slot0:com_registMsg(FightMsgId.FightMaxProgressValueChange, slot0._showFightProgress)
 	slot0:com_registMsg(FightMsgId.ShowDouQuQuXianHouShou, slot0._onShowDouQuQuXianHouShou)
@@ -27,10 +30,22 @@ end
 function slot0.removeEvents(slot0)
 end
 
+function slot0.onCreateDoomsdayClock(slot0)
+	slot0:createDoomsdayClock()
+end
+
+function slot0.onBloodPoolCreate(slot0, slot1)
+	if slot1 ~= FightEnum.TeamType.MySide then
+		return
+	end
+
+	slot0:_createBloodPool(slot1)
+end
+
 function slot0._showSimplePolarizationLevel(slot0)
-	for slot5, slot6 in pairs(FightDataHelper.entityMgr:getAllEntityData()) do
-		for slot11, slot12 in ipairs(slot6:getBuffList()) do
-			if slot12.buffId == 6240501 then
+	if FightDataHelper.entityMgr:getMyVertin() then
+		for slot6, slot7 in ipairs(slot1:getBuffList()) do
+			if slot7.buffId == 6240501 then
 				slot0:_onRefreshSimplePolarizationLevel()
 
 				return
@@ -40,7 +55,7 @@ function slot0._showSimplePolarizationLevel(slot0)
 end
 
 function slot0._onBuffUpdate(slot0, slot1, slot2, slot3, slot4)
-	if slot3 == 6240501 then
+	if slot3 == 6240501 and slot1 == FightEntityScene.MySideId then
 		slot0:_onRefreshSimplePolarizationLevel()
 	end
 end
@@ -50,7 +65,9 @@ function slot0._onRefreshSimplePolarizationLevel(slot0)
 		return
 	end
 
-	slot0._simplePolarizationLevel = slot0:com_openSubView(FightSimplePolarizationLevelView, "ui/viewres/fight/fightsimplepolarizationlevelview.prefab", gohelper.findChild(slot0.viewGO, "root/melody/level"))
+	slot0._simplePolarizationLevel = slot0:com_openSubView(FightSimplePolarizationLevelView, "ui/viewres/fight/fightsimplepolarizationlevelview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.MelodyLevel))
+
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.MelodyLevel)
 end
 
 function slot0._onRefreshPlayerFinisherSkill(slot0)
@@ -58,7 +75,9 @@ function slot0._onRefreshPlayerFinisherSkill(slot0)
 		return
 	end
 
-	slot0._playerFinisherSkill = slot0:com_openSubView(FightPlayerFinisherSkillView, "ui/viewres/fight/fightplayerfinisherskillview.prefab", gohelper.findChild(slot0.viewGO, "root/melody/skill"))
+	slot0._playerFinisherSkill = slot0:com_openSubView(FightPlayerFinisherSkillView, "ui/viewres/fight/fightplayerfinisherskillview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.MelodySkill))
+
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.MelodySkill)
 end
 
 function slot0._onShowDouQuQuXianHouShou(slot0, slot1)
@@ -106,6 +125,76 @@ function slot0.onOpen(slot0)
 	slot0:_showPlayerFinisherSkill()
 	slot0:_showSimplePolarizationLevel()
 	slot0:_showTaskPart()
+	slot0:_showBloodPool()
+	slot0:_showDoomsdayClock()
+	slot0:showDouQuQuCoin()
+	slot0:showDouQuQuHunting()
+end
+
+function slot0.showDouQuQuHunting(slot0)
+	if not FightDataHelper.fieldMgr.customData then
+		return
+	end
+
+	if not FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191] then
+		return
+	end
+
+	if slot1.minNeedHuntValue == -1 then
+		return
+	end
+
+	slot2 = FightRightElementEnum.Elements.DouQuQuHunting
+
+	slot0:com_openSubView(FightDouQuQuHuntingView, "ui/viewres/fight/fight_act191huntview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(slot2))
+	slot0.viewContainer.rightElementLayoutView:showElement(slot2)
+end
+
+function slot0.showDouQuQuCoin(slot0)
+	if not FightDataHelper.fieldMgr.customData then
+		return
+	end
+
+	if not FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191] then
+		return
+	end
+
+	slot2 = FightRightElementEnum.Elements.DouQuQuCoin
+
+	slot0:com_openSubView(FightDouQuQuCoinView, "ui/viewres/fight/fight_act191coinview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(slot2))
+	slot0.viewContainer.rightElementLayoutView:showElement(slot2)
+end
+
+function slot0._showDoomsdayClock(slot0)
+	if FightDataHelper.fieldMgr.param and slot1:getKey(FightParamData.ParamKey.DoomsdayClock_Range4) then
+		slot0:createDoomsdayClock()
+	end
+end
+
+function slot0.createDoomsdayClock(slot0)
+	if slot0.doomsdayClockView then
+		return
+	end
+
+	slot0.doomsdayClockView = slot0:com_openSubView(FightDoomsdayClockView, "ui/viewres/fight/fightclockview.prefab", slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DoomsdayClock))
+
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DoomsdayClock)
+end
+
+function slot0._showBloodPool(slot0)
+	if FightDataHelper.getBloodPool(FightEnum.TeamType.MySide) then
+		slot0:_createBloodPool(FightEnum.TeamType.MySide)
+	end
+end
+
+function slot0._createBloodPool(slot0, slot1)
+	if slot0.bloodPoolView then
+		return
+	end
+
+	slot0.bloodPoolView = slot0:com_openSubView(FightBloodPoolView, "ui/viewres/fight/fightbloodview.prefab", slot0.viewContainer.rightBottomElementLayoutView:getElementContainer(FightRightBottomElementEnum.Elements.BloodPool), slot1)
+
+	slot0.viewContainer.rightBottomElementLayoutView:showElement(FightRightBottomElementEnum.Elements.BloodPool)
 end
 
 function slot0._showPlayerFinisherSkill(slot0)

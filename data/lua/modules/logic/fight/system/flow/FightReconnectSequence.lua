@@ -22,14 +22,14 @@ function slot0.buildFlow(slot0, slot1)
 		FightController.instance:dispatchEvent(FightEvent.BeforeEnterStepBehaviour)
 	end))
 
-	if FightStepBuilder.buildStepWorkList(slot1.fightStepMOs) then
+	if FightStepBuilder.buildStepWorkList(slot1.fightStep) then
 		for slot6, slot7 in ipairs(slot2) do
 			slot0:addWork(slot7)
 		end
 	end
 
 	slot0:addWork(FunctionWork.New(function ()
-		FightDataMgr.instance:afterPlayRoundProto(FightDataModel.instance.cacheRoundProto)
+		FightDataMgr.instance:afterPlayRoundData(FightDataHelper.roundMgr:getRoundData())
 	end))
 	slot0:addWork(FunctionWork.New(function ()
 		FightController.instance:dispatchEvent(FightEvent.AfterEnterStepBehaviour)

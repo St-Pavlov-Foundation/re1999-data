@@ -1,7 +1,7 @@
 module("modules.logic.fight.view.FightViewTechnique", package.seeall)
 
 slot0 = class("FightViewTechnique", BaseView)
-slot1, slot2, slot3, slot4, slot5, slot6 = nil
+slot1, slot2, slot3, slot4, slot5, slot6, slot7 = nil
 
 function slot0.onInitView(slot0)
 	if not uv0 then
@@ -10,6 +10,7 @@ function slot0.onInitView(slot0)
 		uv2 = {}
 		uv3 = {}
 		uv4 = {}
+		uv5 = {}
 
 		for slot4, slot5 in ipairs(lua_fight_technique.configList) do
 			for slot10, slot11 in ipairs(string.split(slot5.condition, "|")) do
@@ -18,13 +19,15 @@ function slot0.onInitView(slot0)
 				elseif slot12[1] == "2" then
 					uv1[tonumber(slot12[2])] = slot5.id
 				elseif slot12[1] == "3" then
-					uv5 = slot5.id
+					uv6 = slot5.id
 				elseif slot12[1] == "4" then
 					table.insert(uv2, slot5.id)
 				elseif slot12[1] == "5" then
 					table.insert(uv3, slot5.id)
 				elseif slot12[1] == "6" then
 					table.insert(uv4, slot5.id)
+				elseif slot12[1] == "7" then
+					table.insert(uv5, slot5.id)
 				end
 			end
 		end
@@ -48,6 +51,7 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.TriggerCardShowResistanceTag, slot0.onTriggerCardShowResistanceTag, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ASFD_StartAllocateCardEnergy, slot0.onStartAllocateCardEnergy, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.AddUseCard, slot0.AddUseCard, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.BloodPool_OnCreate, slot0.onBloodPoolCreate, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -60,11 +64,22 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.TriggerCardShowResistanceTag, slot0.onTriggerCardShowResistanceTag, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.ASFD_StartAllocateCardEnergy, slot0.onStartAllocateCardEnergy, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.AddUseCard, slot0.AddUseCard, slot0)
+	slot0:removeEventCb(FightController.instance, FightEvent.BloodPool_OnCreate, slot0.onBloodPoolCreate, slot0)
 end
 
 function slot0.onOpen(slot0)
 	FightViewTechniqueModel.instance:initFromSimpleProperty()
 	slot0:_udpateAnchorY()
+end
+
+function slot0.onBloodPoolCreate(slot0, slot1)
+	if slot1 ~= FightEnum.TeamType.MySide then
+		return
+	end
+
+	for slot5, slot6 in ipairs(uv0) do
+		slot0:_checkAdd(slot6)
+	end
 end
 
 function slot0.onTriggerCardShowResistanceTag(slot0)
@@ -167,7 +182,7 @@ function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
 		[slot10.buff.buffId] = true
 	}
 
-	for slot9, slot10 in ipairs(slot3.actEffectMOs) do
+	for slot9, slot10 in ipairs(slot3.actEffect) do
 		if (slot10.effectType == FightEnum.EffectType.BUFFADD or slot10.effectType == FightEnum.EffectType.BUFFUPDATE) and slot10.buff then
 			-- Nothing
 		end

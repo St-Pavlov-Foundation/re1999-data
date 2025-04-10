@@ -52,6 +52,12 @@ slot0.preloadList = {
 	ResUrl.getSummonHeroIcon("full/bg000")
 }
 
+if slot0.heroId ~= nil then
+	for slot4 = 1, #slot0.heroId do
+		table.insert(slot0.preloadList, ResUrl.getSummonHeroIcon(slot0.heroId[slot4]))
+	end
+end
+
 function slot0.onUpdateParam(slot0)
 	slot0:_refreshView()
 end

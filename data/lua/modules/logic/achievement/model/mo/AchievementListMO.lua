@@ -114,4 +114,8 @@ function slot0.getAchievementType(slot0)
 	return slot0._achievementType
 end
 
+function slot0.getGroupId(slot0)
+	return AchievementConfig.instance:getAchievement(slot0.id) and slot1.groupId
+end
+
 return slot0

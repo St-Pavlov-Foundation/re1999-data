@@ -64,6 +64,10 @@ function slot0.setReqFightGroup(slot0, slot1)
 		slot2.assistHeroUid = slot3.assistHeroUid
 		slot2.assistUserId = slot3.assistUserId
 
+		if slot3.assistBossId then
+			slot2.assistBossId = slot3.assistBossId
+		end
+
 		return
 	end
 
@@ -433,6 +437,133 @@ function slot0.getHeroEquipMoListWithTrial(slot0)
 	end
 
 	return slot1, slot2
+end
+
+function slot0.initTowerFightGroup(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
+	if slot1 then
+		slot0.clothId = slot1
+	end
+
+	if slot6 then
+		slot0.assistBossId = slot6
+	end
+
+	if slot2 then
+		for slot10, slot11 in ipairs(slot2) do
+			if tonumber(slot11) < 0 then
+				if HeroGroupTrialModel.instance:getById(slot11) then
+					table.insert(slot0.heroList, slot12.trialCo.id > 0 and tostring(-slot12.trialCo.id) or "0")
+				end
+			else
+				table.insert(slot0.heroList, slot11)
+			end
+		end
+	end
+
+	if slot3 then
+		for slot10, slot11 in ipairs(slot3) do
+			if tonumber(slot11) < 0 then
+				if HeroGroupTrialModel.instance:getById(slot11) then
+					table.insert(slot0.subHeroList, slot12.trialCo.id > 0 and tostring(-slot12.trialCo.id) or "0")
+				end
+			else
+				table.insert(slot0.subHeroList, slot11)
+			end
+		end
+	end
+
+	if slot4 then
+		for slot10, slot11 in ipairs(slot4) do
+			if tonumber(slot11.heroUid) < 0 then
+				FightDef_pb.FightEquip().heroUid = HeroGroupTrialModel.instance:getById(slot11.heroUid) and slot13.trialCo.id > 0 and tostring(-slot13.trialCo.id) or "0"
+			else
+				slot12.heroUid = slot11.heroUid
+			end
+
+			for slot16, slot17 in ipairs(slot11.equipUid) do
+				table.insert(slot12.equipUid, slot17)
+			end
+
+			table.insert(slot0.equips, slot12)
+		end
+	end
+
+	if slot5 then
+		for slot10, slot11 in ipairs(slot5) do
+			if tonumber(slot11.heroUid) < 0 then
+				FightDef_pb.FightEquip().heroUid = HeroGroupTrialModel.instance:getById(slot11.heroUid) and slot13.trialCo.id > 0 and tostring(-slot13.trialCo.id) or "0"
+			else
+				slot12.heroUid = slot11.heroUid
+			end
+
+			if slot11.equipUid then
+				for slot16, slot17 in ipairs(slot11.equipUid) do
+					table.insert(slot12.equipUid, slot17)
+				end
+			end
+
+			table.insert(slot0.activity104Equips, slot12)
+		end
+	end
+end
+
+function slot0.getHeroEquipAndTrialMoList(slot0, slot1)
+	slot2 = {}
+	slot3 = {
+		[slot8.heroUid] = EquipModel.instance:getEquip(slot8.equipUid[1])
+	}
+
+	for slot7, slot8 in ipairs(slot0.equips) do
+		-- Nothing
+	end
+
+	for slot7, slot8 in ipairs(slot0.mySideUids) do
+		if HeroModel.instance:getById(slot8) then
+			table.insert(slot2, {
+				heroMo = slot9,
+				equipMo = slot3[slot9.uid]
+			})
+		else
+			table.insert(slot2, {})
+		end
+	end
+
+	for slot7, slot8 in ipairs(slot0.mySideSubUids) do
+		if HeroModel.instance:getById(slot8) then
+			table.insert(slot2, {
+				heroMo = slot9,
+				equipMo = slot3[slot9.uid]
+			})
+		else
+			table.insert(slot2, {})
+		end
+	end
+
+	if slot0.trialHeroList then
+		for slot7, slot8 in ipairs(slot0.trialHeroList) do
+			if lua_hero_trial.configDict[slot8.trialId][0] and slot9.equipId > 0 then
+				slot10 = EquipMO.New()
+
+				slot10:initByTrialCO(slot9)
+
+				slot11 = HeroMo.New()
+
+				slot11:initFromTrial(slot8.trialId)
+				table.insert(slot2, slot8.pos, {
+					heroMo = slot11,
+					equipMo = slot10
+				})
+			end
+		end
+	end
+
+	for slot7 = #slot2, 1, -1 do
+		if slot2[slot7].heroMo == nil and slot1 then
+			table.remove(slot2, slot7)
+		end
+	end
+
+	return slot2
 end
 
 return slot0

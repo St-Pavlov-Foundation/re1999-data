@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightEntityDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightEntityDataMgr")
+slot0 = FightDataClass("FightEntityDataMgr", FightDataMgrBase)
 slot1 = {
 	normal = "normal",
 	assistBoss = "assistBoss",
@@ -282,7 +282,7 @@ end
 function slot0.getOldEntityMO(slot0, slot1)
 	slot2 = FightEntityMO.New()
 
-	FightDataHelper.coverData(slot0:getById(slot1), slot2)
+	FightDataUtil.coverData(slot0:getById(slot1), slot2)
 
 	return slot2
 end
@@ -350,7 +350,7 @@ function slot0.updateData(slot0, slot1)
 	slot2 = slot0.sideDic[FightEnum.EntitySide.MySide]
 	slot3 = slot0.sideDic[FightEnum.EntitySide.EnemySide]
 
-	if slot1.attacker:HasField("playerEntity") then
+	if slot1.attacker.playerEntity then
 		slot0:initOneEntityListByProto(slot1.attacker.playerEntity, FightEnum.EntitySide.MySide, slot2[uv0.player])
 	end
 
@@ -358,15 +358,15 @@ function slot0.updateData(slot0, slot1)
 	slot0:initEntityListByProto(slot1.attacker.subEntitys, FightEnum.EntitySide.MySide, slot2[uv0.sub])
 	slot0:initEntityListByProto(slot1.attacker.spEntitys, FightEnum.EntitySide.MySide, slot2[uv0.sp])
 
-	if slot1.attacker:HasField("assistBoss") then
+	if slot1.attacker.assistBoss then
 		slot0:initOneEntityListByProto(slot1.attacker.assistBoss, FightEnum.EntitySide.MySide, slot2[uv0.assistBoss])
 	end
 
-	if slot1.attacker:HasField("emitter") then
+	if slot1.attacker.emitter then
 		slot0:initOneEntityListByProto(slot1.attacker.emitter, FightEnum.EntitySide.MySide, slot2[uv0.ASFD_emitter])
 	end
 
-	if slot1.defender:HasField("playerEntity") then
+	if slot1.defender.playerEntity then
 		slot0:initOneEntityListByProto(slot1.defender.playerEntity, FightEnum.EntitySide.EnemySide, slot3[uv0.player])
 	end
 
@@ -374,7 +374,7 @@ function slot0.updateData(slot0, slot1)
 	slot0:initEntityListByProto(slot1.defender.subEntitys, FightEnum.EntitySide.EnemySide, slot3[uv0.sub])
 	slot0:initEntityListByProto(slot1.defender.spEntitys, FightEnum.EntitySide.EnemySide, slot3[uv0.sp])
 
-	if slot1.defender:HasField("emitter") then
+	if slot1.defender.emitter then
 		slot0:initOneEntityListByProto(slot1.defender.emitter, FightEnum.EntitySide.EnemySide, slot3[uv0.ASFD_emitter])
 	end
 end

@@ -72,7 +72,7 @@ function slot0.enemyInfoBtnOnClick(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		logNormal("出完牌了不能长按查看详情")
 
 		return

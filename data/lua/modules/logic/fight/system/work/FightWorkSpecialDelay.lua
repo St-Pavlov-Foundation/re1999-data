@@ -3,16 +3,16 @@ module("modules.logic.fight.system.work.FightWorkSpecialDelay", package.seeall)
 slot0 = class("FightWorkSpecialDelay", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 0.5)
 
-	if FightHelper.getEntity(slot0._fightStepMO.fromId) and slot1:getMO() and _G["FightWorkSpecialDelayModelId" .. slot2.modelId] then
+	if FightHelper.getEntity(slot0.fightStepData.fromId) and slot1:getMO() and _G["FightWorkSpecialDelayModelId" .. slot2.modelId] then
 		TaskDispatcher.cancelTask(slot0._delayDone, slot0)
 
-		slot0._delayClass = slot3.New(slot0, slot0._fightStepMO)
+		slot0._delayClass = slot3.New(slot0, slot0.fightStepData)
 
 		return
 	end

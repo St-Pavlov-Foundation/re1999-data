@@ -98,6 +98,10 @@ function slot0.openBloomView(slot0, slot1)
 	slot0._openBloomView = slot1
 end
 
+function slot0.setShareRT(slot0, slot1)
+	slot0._shareRT = slot1
+end
+
 function slot0.setResPath(slot0, slot1, slot2, slot3, slot4)
 	slot5 = slot0._curModel
 	slot6 = slot0._isLive2D
@@ -118,7 +122,18 @@ function slot0.setResPath(slot0, slot1, slot2, slot3, slot4)
 		slot0._curModel:setSkinId(slot1.id)
 		slot0._curModel:openBloomView(slot0._openBloomView)
 		slot0._curModel:showModel()
-		slot0._curModel:setCameraSize(slot4 or slot1.cameraSize)
+		slot0._curModel:setShareRT(slot0._shareRT)
+
+		if slot0._shareRT == CharacterVoiceEnum.RTShareType.BloomAuto then
+			if CharacterVoiceEnum.BloomCameraSize[slot1.characterId] then
+				slot0._curModel:setCameraSize(CharacterVoiceEnum.BloomFullScreenEffectCameraSize)
+			else
+				slot0._curModel:setCameraSize(slot4 or slot1.cameraSize)
+			end
+		else
+			slot0._curModel:setCameraSize(slot4 or slot1.cameraSize)
+		end
+
 		slot0._curModel:setResPath(ResUrl.getLightLive2d(slot1.live2d), slot2, slot3)
 	end
 
@@ -130,6 +145,12 @@ end
 function slot0.setLive2dCameraLoadedCallback(slot0, slot1, slot2)
 	if slot0:_getLive2d() then
 		slot3:setCameraLoadedCallback(slot1, slot2)
+	end
+end
+
+function slot0.setLive2dCameraLoadFinishCallback(slot0, slot1, slot2)
+	if slot0:_getLive2d() then
+		slot3:setCameraLoadFinishCallback(slot1, slot2)
 	end
 end
 
@@ -175,6 +196,12 @@ function slot0.setModelVisible(slot0, slot1)
 		end
 	elseif slot0._curModel.hideModel then
 		slot0._curModel:hideModel()
+	end
+end
+
+function slot0.hideCamera(slot0)
+	if slot0:isLive2D() then
+		slot0._curModel:hideCamera()
 	end
 end
 

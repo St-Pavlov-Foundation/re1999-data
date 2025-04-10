@@ -32,7 +32,7 @@ function slot0._btnRoleStoryOnClick(slot0)
 end
 
 function slot0._btnEquipStoreOnClick(slot0)
-	StoreController.instance:openStoreView(StoreEnum.SummonEquipExchange)
+	StoreController.instance:openStoreView(StoreEnum.StoreId.SummonEquipExchange)
 end
 
 function slot0._editableInitView(slot0)

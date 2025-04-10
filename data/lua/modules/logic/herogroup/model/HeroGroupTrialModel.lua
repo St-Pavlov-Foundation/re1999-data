@@ -24,30 +24,36 @@ function slot0.setTrialByBattleId(slot0, slot1)
 	slot0._trialEquipMo:clear()
 	uv0.super.clear(slot0)
 
-	if not string.nilorempty(slot2.trialHeros) then
-		for slot7, slot8 in pairs(GameUtil.splitString2(slot2.trialHeros, true)) do
-			slot9 = slot8[1]
+	slot3 = slot2.trialHeros
 
-			if lua_hero_trial.configDict[slot9] and lua_hero_trial.configDict[slot9][slot8[2] or 0] then
-				slot12 = HeroMo.New()
+	if HeroGroupModel.instance.episodeId and slot1 == HeroGroupModel.instance.battleId then
+		slot3 = HeroGroupHandler.getTrialHeros(HeroGroupModel.instance.episodeId)
+	end
 
-				slot12:initFromTrial(unpack(slot8))
-				slot0:addAtLast(slot12)
+	if not string.nilorempty(slot3) then
+		for slot8, slot9 in pairs(GameUtil.splitString2(slot3, true)) do
+			slot10 = slot9[1]
+
+			if lua_hero_trial.configDict[slot10] and lua_hero_trial.configDict[slot10][slot9[2] or 0] then
+				slot13 = HeroMo.New()
+
+				slot13:initFromTrial(unpack(slot9))
+				slot0:addAtLast(slot13)
 			else
-				logError(string.format("试用角色配置不存在:%s#%s", slot9, slot10))
+				logError(string.format("试用角色配置不存在:%s#%s", slot10, slot11))
 			end
 		end
 	end
 
 	if not string.nilorempty(slot2.trialEquips) then
-		for slot7, slot8 in pairs(string.splitToNumber(slot2.trialEquips, "|")) do
-			if lua_equip_trial.configDict[slot8] then
-				slot10 = EquipMO.New()
+		for slot8, slot9 in pairs(string.splitToNumber(slot2.trialEquips, "|")) do
+			if lua_equip_trial.configDict[slot9] then
+				slot11 = EquipMO.New()
 
-				slot10:initByTrialEquipCO(slot9)
-				slot0._trialEquipMo:addAtLast(slot10)
+				slot11:initByTrialEquipCO(slot10)
+				slot0._trialEquipMo:addAtLast(slot11)
 			else
-				logError("试用心相配置不存在" .. tostring(slot8))
+				logError("试用心相配置不存在" .. tostring(slot9))
 			end
 		end
 	end
@@ -55,14 +61,14 @@ function slot0.setTrialByBattleId(slot0, slot1)
 	slot0._limitNum = slot2.trialLimit
 
 	if ToughBattleModel.instance:getAddTrialHeros() then
-		slot7 = slot0._limitNum
-		slot0._limitNum = math.min(4, #slot3 + slot7)
+		slot8 = slot0._limitNum
+		slot0._limitNum = math.min(4, #slot4 + slot8)
 
-		for slot7, slot8 in pairs(slot3) do
-			slot9 = HeroMo.New()
+		for slot8, slot9 in pairs(slot4) do
+			slot10 = HeroMo.New()
 
-			slot9:initFromTrial(slot8)
-			slot0:addAtLast(slot9)
+			slot10:initFromTrial(slot9)
+			slot0:addAtLast(slot10)
 		end
 	end
 end
@@ -135,7 +141,7 @@ function slot0.getLimitNum(slot0)
 end
 
 function slot0.getHeroMo(slot0, slot1)
-	return slot0:getById(tostring(slot1 - 1099511627776.0))
+	return slot0:getById(tostring(tonumber(slot1.id .. "." .. slot1.trialTemplate) - 1099511627776.0))
 end
 
 function slot0.getEquipMo(slot0, slot1)

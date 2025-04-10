@@ -332,17 +332,11 @@ function slot0._loadCondition(slot0)
 end
 
 function slot0._getPlatinumProgress7(slot0)
-	slot1 = FightModel.instance:getHistoryRoundMOList() and tabletool.copy(slot1) or {}
-
-	if FightModel.instance:getCurRoundMO() and not tabletool.indexOf(slot1, slot2) then
-		table.insert(slot1, FightModel.instance:getCurRoundMO())
-	end
-
 	slot3 = 0
 
-	for slot7, slot8 in ipairs(slot1) do
-		for slot13, slot14 in ipairs(slot8.fightStepMOs) do
-			if slot14.hasPlay and slot14.actType == FightEnum.ActType.SKILL and FightDataHelper.entityMgr:getById(slot14.fromId) and slot15.side == FightEnum.EntitySide.MySide and slot15:isUniqueSkill(slot14.actId) then
+	for slot7, slot8 in ipairs(FightDataHelper.roundMgr.dataList) do
+		for slot13, slot14 in ipairs(slot8.fightStep) do
+			if slot14.hasPlay and slot14.actType == FightEnum.ActType.SKILL and FightDataHelper.entityMgr:getById(slot14.fromId) and slot15.side == FightEnum.EntitySide.MySide and FightCardDataHelper.isBigSkill(slot14.actId) then
 				slot9 = 0 + 1
 			end
 		end
@@ -361,27 +355,21 @@ slot2 = {
 }
 
 function slot0._getPlatinumProgress8(slot0)
-	slot1 = FightModel.instance:getHistoryRoundMOList() and tabletool.copy(slot1) or {}
-
-	if FightModel.instance:getCurRoundMO() and not tabletool.indexOf(slot1, slot2) then
-		table.insert(slot1, FightModel.instance:getCurRoundMO())
-	end
-
 	slot3 = 0
 
-	for slot7, slot8 in ipairs(slot1) do
-		for slot12, slot13 in ipairs(slot8.fightStepMOs) do
+	for slot7, slot8 in ipairs(FightDataHelper.roundMgr.dataList) do
+		for slot12, slot13 in ipairs(slot8.fightStep) do
 			slot14 = FightDataHelper.entityMgr:getById(slot13.fromId)
 
 			if slot13.hasPlay and slot14 and slot14.side == FightEnum.EntitySide.MySide then
-				for slot19, slot20 in ipairs(slot13.actEffectMOs) do
+				for slot19, slot20 in ipairs(slot13.actEffect) do
 					if FightDataHelper.entityMgr:getById(slot20.targetId) and slot21.side == FightEnum.EntitySide.EnemySide then
 						if uv0[slot20.effectType] then
 							slot15 = 0 + slot20.effectNum
 						elseif slot20.effectType == FightEnum.EffectType.SHIELDDEL then
 							slot15 = slot15 + slot20.effectNum
-						elseif slot20.effectType == FightEnum.EffectType.SHIELD and slot20.entityMO then
-							slot15 = slot15 + slot20.entityMO.shieldValue - slot20.effectNum
+						elseif slot20.effectType == FightEnum.EffectType.SHIELD and slot20.entity then
+							slot15 = slot15 + slot20.entity.shieldValue - slot20.effectNum
 						end
 					end
 				end

@@ -87,6 +87,11 @@ function slot0._onWeekWalkHeartClick(slot0)
 	slot0:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, , ActivityEnum.Activity.WeekWalkHeartShow)
 end
 
+function slot0._onAct191Click(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
+	slot0:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, , slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.Act191))
+end
+
 function slot0._getEnterController(slot0)
 	return slot0.viewContainer:getMainActivityEnterView():getCurEnterController()
 end
@@ -115,6 +120,7 @@ function slot0._initActs(slot0)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.Act178, slot0._getAct178Status, slot0._getAct178StartTime)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.Act182, slot0._getAct182Status, slot0._getAct182StartTime)
 	slot0:_addActHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0._getWeekWalkHeartStatus, slot0._getWeekWalkHeartStartTime)
+	slot0:_addActHandler(ActivityEnum.MainViewActivityState.Act191, slot0._getAct191Status, slot0._getAct191StartTime)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.RoleStoryActivity, slot0._onRoleStoryClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.SeasonActivity, slot0._onSeasonClick)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Rouge, slot0._onRougeClick)
@@ -122,6 +128,7 @@ function slot0._initActs(slot0)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Act178, slot0._onAct178Click)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Act182, slot0._onAct182Click)
 	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0._onWeekWalkHeartClick)
+	slot0:_addClickHandler(ActivityEnum.MainViewActivityState.Act191, slot0._onAct191Click)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.RoleStoryActivity, slot0.refreshRoleStoryBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.SeasonActivity, slot0.refreshSeasonBtn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Rouge, slot0.refreshRougeBtn)
@@ -129,6 +136,7 @@ function slot0._initActs(slot0)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Act178, slot0.refreshAct178Btn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Act182, slot0.refreshAct182Btn)
 	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.WeekWalkHeart, slot0.refreshWeekWalkHeartBtn)
+	slot0:_addRefreshBtnHandler(ActivityEnum.MainViewActivityState.Act191, slot0.refreshAct191Btn)
 end
 
 function slot0._addRefreshBtnHandler(slot0, slot1, slot2)
@@ -216,6 +224,14 @@ function slot0._getWeekWalkHeartStartTime(slot0)
 	return ActivityModel.instance:getActMO(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.WeekWalkHeart)) and slot2:getRealStartTimeStamp() * 1000
 end
 
+function slot0._getAct191Status(slot0)
+	return (slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.Act191) and ActivityHelper.getActivityStatus(slot1)) == ActivityEnum.ActivityStatus.Normal
+end
+
+function slot0._getAct191StartTime(slot0)
+	return ActivityModel.instance:getActMO(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.Act191)) and slot2:getRealStartTimeStamp() * 1000
+end
+
 function slot0._onStoryChange(slot0)
 	slot0:onRefreshActivityState()
 end
@@ -270,6 +286,13 @@ function slot0.refreshWeekWalkHeartBtn(slot0)
 	slot0:_roleStoryLoadImage(ActivityConfig.instance:getActivityCo(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.WeekWalkHeart)).extraDisplayIcon, slot0.onLoadImage, slot0)
 
 	slot0._txtrolestory.text = ActivityConfig.instance:getActivityCo(ActivityEnum.Activity.WeekWalkHeartShow).name
+end
+
+function slot0.refreshAct191Btn(slot0)
+	gohelper.setActive(slot0._btnrolestory, true)
+	slot0:_roleStoryLoadImage(ActivityConfig.instance:getActivityCo(slot0:_getBindActivityId(ActivityEnum.MainViewActivityState.Act191)).extraDisplayIcon, slot0.onLoadImage, slot0)
+
+	slot0._txtrolestory.text = ""
 end
 
 function slot0.onLoadImage(slot0)
@@ -382,6 +405,12 @@ function slot0.checkShowActivityEnter(slot0)
 	end
 end
 
+function slot0.check2_0DungeonReddot(slot0)
+	if ActivityHelper.getActivityStatus(VersionActivity2_0Enum.ActivityId.Dungeon) == ActivityEnum.ActivityStatus.Normal then
+		Activity161Controller.instance:checkHasUnDoElement()
+	end
+end
+
 function slot0._getCurBindActivityId(slot0)
 	return slot0:_getBindActivityId(slot0.activityShowState)
 end
@@ -394,6 +423,7 @@ function slot0.onRefreshActivityState(slot0)
 	slot0:checkShowActivityEnter()
 	slot0:refreshReactivityBtn()
 	slot0:_refreshBtns()
+	slot0:check2_0DungeonReddot()
 end
 
 function slot0._refreshBtns(slot0)

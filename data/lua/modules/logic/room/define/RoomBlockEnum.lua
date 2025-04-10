@@ -28,16 +28,22 @@ slot0.OwnType = {
 	Package = 0
 }
 slot0.BlockType = {
-	Snow2 = 16,
+	Snow4 = 48,
+	Snow5 = 49,
+	Green = 1,
+	Snow3 = 47,
 	Snow = 15,
-	Green = 1
+	Snow2 = 16
 }
 slot0.BlockLinkEffectGOPath = {
 	[slot0.BlockType.Green] = "junsi"
 }
 slot0.FootPrintDict = {
 	[slot0.BlockType.Snow] = true,
-	[slot0.BlockType.Snow2] = true
+	[slot0.BlockType.Snow2] = true,
+	[slot0.BlockType.Snow3] = true,
+	[slot0.BlockType.Snow4] = true,
+	[slot0.BlockType.Snow5] = true
 }
 slot0.EmptyDefineId = 1
 slot0.PlaceEffectAnimatorCloseTime = 0.16666666666666666

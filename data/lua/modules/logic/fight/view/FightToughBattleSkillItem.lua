@@ -4,6 +4,7 @@ slot0 = class("FightToughBattleSkillItem", LuaCompBase)
 
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
+	slot1 = gohelper.findChild(slot1, "anchoroffset")
 	slot0._goselect = gohelper.findChild(slot1, "#go_Selected")
 	slot0._btn = gohelper.getClickWithDefaultAudio(slot1, "btn")
 	slot0._gonum = gohelper.findChild(slot1, "#go_Num")
@@ -160,7 +161,7 @@ function slot0.clickIcon(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -172,7 +173,7 @@ function slot0.clickIcon(slot0)
 		return
 	end
 
-	if #FightCardModel.instance:getCardOps() > 0 then
+	if #FightDataHelper.operationDataMgr:getOpList() > 0 then
 		FightRpc.instance:sendResetRoundRequest()
 	end
 

@@ -204,6 +204,24 @@ function formatLuaLang(...)
 	return uv0.instance:_formatLuaLang(...)
 end
 
+function luaLangUTC(slot0)
+	slot1 = luaLang(slot0)
+
+	return (not uv0.instance:isOverseas() or ServerTime.ReplaceUTCStr(slot1)) and string.gsub(string.gsub(slot1, "%(UTC%+8%)", ""), "（UTC%+8）", "")
+end
+
+function slot0.isOverseas(slot0)
+	if slot0.__isOverseas == nil then
+		if tostring(SDKMgr.instance:getGameId()) == "50001" then
+			slot0.__isOverseas = false
+		else
+			slot0.__isOverseas = true
+		end
+	end
+
+	return slot0.__isOverseas
+end
+
 function slot0.isZh(slot0)
 	return slot0:getCurLang() == uv0.zh
 end
@@ -245,5 +263,6 @@ setGlobal("serverLang", serverLang)
 setGlobal("luaLang", luaLang)
 setGlobal("formatLuaLang", formatLuaLang)
 setGlobal("langVideoUrl", langVideoUrl)
+setGlobal("luaLangUTC", luaLangUTC)
 
 return slot0

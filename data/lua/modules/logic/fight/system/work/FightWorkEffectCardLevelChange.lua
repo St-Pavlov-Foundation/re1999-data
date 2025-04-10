@@ -2,19 +2,24 @@ module("modules.logic.fight.system.work.FightWorkEffectCardLevelChange", package
 
 slot0 = class("FightWorkEffectCardLevelChange", FightEffectBase)
 
+function slot0.beforePlayEffectData(slot0)
+	slot0.cardIndex = tonumber(slot0.actEffectData.targetId)
+	slot0.oldSkillId = FightDataHelper.handCardMgr.handCard[slot0.cardIndex] and slot2.skillId
+end
+
 function slot0.onStart(slot0)
 	slot0:_startChangeCardEffect()
 end
 
 function slot0._startChangeCardEffect(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0._actEffectMO) then
+	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
 		slot0:onDone(true)
 
 		return
 	end
 
 	if FightModel.instance:getVersion() < 1 then
-		if not FightHelper.getEntity(slot0._actEffectMO.entityMO.id) then
+		if not FightHelper.getEntity(slot0.actEffectData.entity.id) then
 			slot0:onDone(true)
 
 			return
@@ -27,9 +32,7 @@ function slot0._startChangeCardEffect(slot0)
 		end
 	end
 
-	slot3 = slot0._actEffectMO.effectNum
-
-	if not FightCardModel.instance:getHandCards()[tonumber(slot0._actEffectMO.targetId)] then
+	if not slot0.oldSkillId then
 		slot0:onDone(true)
 
 		return
@@ -39,14 +42,10 @@ function slot0._startChangeCardEffect(slot0)
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	slot5.uid = slot0._actEffectMO.entityMO.id
-	slot5.skillId = slot3
-
 	if FightModel.instance:getVersion() >= 4 then
-		FightController.instance:dispatchEvent(FightEvent.CardLevelChange, slot5, slot2, slot5.skillId)
+		FightController.instance:dispatchEvent(FightEvent.CardLevelChange, slot0.cardIndex, slot0.oldSkillId)
 		slot0:com_registTimer(slot0._delayDone, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
 	else
-		FightCardModel.instance:coverCard(FightCardModel.calcCardsAfterCombine(slot4))
 		FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
 		slot0:onDone(true)
 	end

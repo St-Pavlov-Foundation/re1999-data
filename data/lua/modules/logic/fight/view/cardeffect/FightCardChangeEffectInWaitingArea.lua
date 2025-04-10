@@ -20,8 +20,8 @@ function slot0._playEffects(slot0)
 
 	for slot6, slot7 in ipairs(slot0.context.changeInfos) do
 		for slot11, slot12 in ipairs(slot0.context.cardItemList) do
-			slot14 = FightCardModel.instance:getSkillPrevLvId(slot12.skillId)
-			slot15 = FightCardModel.instance:getSkillNextLvId(slot12.skillId)
+			slot14 = FightCardDataHelper.getSkillPrevLvId(slot12.entityId, slot12.skillId)
+			slot15 = FightCardDataHelper.getSkillNextLvId(slot12.entityId, slot12.skillId)
 
 			if slot12.go.activeInHierarchy and slot14 and slot14 == slot7.targetSkillId then
 				if not tabletool.indexOf(slot1, slot12) then
@@ -40,7 +40,7 @@ function slot0._playEffects(slot0)
 			slot8 = slot2[slot6]
 			slot14 = PrefabInstantiate.Create(gohelper.findChild(slot7.go, "lvChangeEffect") or gohelper.create2d(slot12, "lvChangeEffect"))
 
-			if FightCardModel.instance:getSkillLv(slot8.entityId, slot8.targetSkillId) ~= FightCardModel.instance:getSkillLv(slot7.entityId, slot7.skillId) then
+			if FightCardDataHelper.getSkillLv(slot8.entityId, slot8.targetSkillId) ~= FightCardDataHelper.getSkillLv(slot7.entityId, slot7.skillId) then
 				slot0._paramDict[slot14] = {
 					newCardLevel = slot15,
 					oldCardLevel = slot11

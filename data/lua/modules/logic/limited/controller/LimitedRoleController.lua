@@ -219,6 +219,10 @@ function slot0._clearActionState(slot0)
 end
 
 function slot0.getNeedPlayLimitedCO(slot0)
+	if VersionValidator.instance:isInReviewing() then
+		return nil
+	end
+
 	slot1, slot2 = CharacterSwitchListModel.instance:getMainHero(false)
 
 	if lua_character_limited.configDict[slot2] and not string.nilorempty(slot3.entranceMv) then

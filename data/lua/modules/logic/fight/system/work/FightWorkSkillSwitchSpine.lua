@@ -3,13 +3,13 @@ module("modules.logic.fight.system.work.FightWorkSkillSwitchSpine", package.seea
 slot0 = class("FightWorkSkillSwitchSpine", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 0.5)
 
-	if not (FightHelper.getEntity(slot0._fightStepMO.fromId) and slot1:getMO()) then
+	if not (FightHelper.getEntity(slot0.fightStepData.fromId) and slot1:getMO()) then
 		slot0:onDone(true)
 
 		return
@@ -21,7 +21,7 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	if not slot0._fightStepMO.supportHeroId then
+	if not slot0.fightStepData.supportHeroId then
 		slot0:onDone(true)
 
 		return
@@ -33,7 +33,7 @@ function slot0.onStart(slot0)
 
 		slot0._flow = FlowSequence.New()
 
-		if not (FightConfig.instance:getSkinCO(FightHelper.processSkinByStepMO(slot0._fightStepMO)) and slot1:getSpineUrl(slot5)) then
+		if not (FightConfig.instance:getSkinCO(FightHelper.processSkinByStepData(slot0.fightStepData)) and slot1:getSpineUrl(slot5)) then
 			logError("释放支援角色技能,但是找不到替换spine的url, heroId:" .. slot2.modelId)
 			slot0:onDone(true)
 

@@ -780,5 +780,39 @@
     "isCn": 0,
     "displayType": "",
     "noDisplayType": ""
+  },
+  {
+    "id": 54,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "7",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "薪血",
+    "title_en": "Bloodtithe",
+    "iconShow": "1",
+    "picture1": "",
+    "picture2": "v2a7_blood_help_1",
+    "content1": "在特定效果下，战斗中将出现【薪之杯】，记录己方角色累计损失生命转化为【薪血】；每回合开始时，根据己方上阵角色最大生命总和更新【薪血】上限|点击【薪之杯】将主动使用咒语【饮尽生者之色】|【饮尽生者之色】：消耗所有【薪血】，每消耗1点【薪血】，则回复己方全体一定百分比的最大生命",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": ""
+  },
+  {
+    "id": 55,
+    "mainTitleId": 1,
+    "subTitleId": 8,
+    "condition": "7",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "薪血",
+    "title_en": "Bloodtithe",
+    "iconShow": "",
+    "picture1": "v2a7_blood_help_2",
+    "picture2": "",
+    "content1": "在特定效果下，战斗中将出现【薪之杯】，记录己方角色累计损失生命转化为【薪血】；每回合开始时，根据己方上阵角色最大生命总和更新【薪血】上限|点击【薪之杯】将主动使用咒语【饮尽生者之色】|【饮尽生者之色】：消耗所有【薪血】，每消耗1点【薪血】，则回复己方全体一定百分比的最大生命",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": ""
   }
 ]

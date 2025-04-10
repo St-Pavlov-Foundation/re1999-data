@@ -16,6 +16,7 @@ function slot0.init(slot0, slot1)
 	slot0._txttime = gohelper.findChildText(slot1, "#go_deadline/#txt_time")
 	slot0._act_iconbgGo = gohelper.findChild(slot1, "act_iconbg")
 	slot0._act_iconbg_effGo = gohelper.findChild(slot1, "act_iconbg_eff")
+	slot0._goexpup = gohelper.findChild(slot0.go, "#go_expup")
 
 	slot0:_initActEff()
 	slot0:onInit(slot1)

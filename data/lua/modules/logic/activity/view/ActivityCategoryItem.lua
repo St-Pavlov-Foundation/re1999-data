@@ -5,6 +5,7 @@ slot0 = class("ActivityCategoryItem", ListScrollCell)
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
 	slot0._goselect = gohelper.findChild(slot1, "beselected")
+	slot0._goselectbg = gohelper.findChild(slot1, "beselected/selecticon")
 	slot0._gounselect = gohelper.findChild(slot1, "noselected")
 	slot0._txtnamecn = gohelper.findChildText(slot1, "beselected/activitynamecn")
 	slot0._txtnameen = gohelper.findChildText(slot1, "beselected/activitynamecn/activitynameen")
@@ -12,6 +13,9 @@ function slot0.init(slot0, slot1)
 	slot0._txtunselectnameen = gohelper.findChildText(slot1, "noselected/noactivitynamecn/noactivitynameen")
 	slot0._goreddot = gohelper.findChild(slot1, "#go_reddot")
 	slot0._itemClick = gohelper.getClickWithAudio(slot0.go)
+
+	gohelper.setActive(slot0._goselectbg, false)
+
 	slot0._anim = slot0.go:GetComponent(typeof(UnityEngine.Animator))
 	slot0._openAnimTime = 0.43
 
@@ -110,7 +114,7 @@ function slot0._refreshItem(slot0)
 			RedDotController.instance:addRedDot(slot0._goreddot, slot5, nil, slot0.checkActivityShowFirstEnter, slot0)
 		elseif slot3 == VersionActivity2_2Enum.ActivityId.LimitDecorate then
 			RedDotController.instance:addRedDot(slot0._goreddot, slot2, slot3, slot0.checkActivityShowFirstEnter, slot0)
-		elseif slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.RoomSign or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp then
+		elseif slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.RoomSign or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp or slot3 == ActivityEnum.Activity.V2a7_WarmUp then
 			if slot0._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(slot3)
 				RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {

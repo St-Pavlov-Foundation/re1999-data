@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightHandCardDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightHandCardDataMgr")
+slot0 = FightDataClass("FightHandCardDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 	slot0.handCard = {}
@@ -8,12 +8,32 @@ function slot0.onConstructor(slot0)
 	slot0.redealCard = {}
 end
 
+function slot0.onStageChanged(slot0, slot1, slot2)
+	for slot6 = 1, #slot0.handCard do
+		slot0.handCard[slot6].originHandCardIndex = slot6
+	end
+
+	FightDataUtil.coverData(slot0.handCard, slot0.originCard)
+end
+
+function slot0.onCancelOperation(slot0)
+	FightDataUtil.coverData(slot0.originCard, slot0.handCard)
+end
+
+function slot0.getHandCard(slot0)
+	return slot0.handCard
+end
+
+function slot0.coverCard(slot0, slot1)
+	FightDataUtil.coverData(slot1, slot0.handCard)
+end
+
 function slot0.setOriginCard(slot0)
-	FightDataHelper.coverData(slot0.handCard, slot0.originCard)
+	FightDataUtil.coverData(slot0.handCard, slot0.originCard)
 end
 
 function slot0.updateHandCardByProto(slot0, slot1)
-	FightDataHelper.coverData(FightCardDataHelper.newCardList(slot1), slot0.handCard)
+	FightDataUtil.coverData(FightCardDataHelper.newCardList(slot1), slot0.handCard)
 end
 
 function slot0.cacheDistributeCard(slot0, slot1)
@@ -31,14 +51,10 @@ function slot0.getRedealCard(slot0)
 	return table.remove(slot0.redealCard, 1)
 end
 
-function slot0.getHandCard(slot0)
-	return slot0.handCard
-end
-
 function slot0.distribute(slot0, slot1, slot2)
-	FightDataHelper.coverData(slot1, slot0.handCard)
-	tabletool.addValues(slot0.handCard, FightDataHelper.coverData(slot2))
-	FightCardDataHelper.combineCardListForLocal(slot0.handCard)
+	FightDataUtil.coverData(slot1, slot0.handCard)
+	tabletool.addValues(slot0.handCard, FightDataUtil.coverData(slot2))
+	FightCardDataHelper.combineCardList(slot0.handCard, slot0.dataMgr.entityMgr)
 end
 
 return slot0

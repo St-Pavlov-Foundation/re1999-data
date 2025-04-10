@@ -15489,7 +15489,7 @@
   },
   {
     "id": "p_act174mainview_txt_rule",
-    "lang": "<size=47>新</size>赛程"
+    "lang": "<size=47>赛</size>事合集"
   },
   {
     "id": "p_characterdestinyslotview_txt_title",
@@ -15537,7 +15537,7 @@
   },
   {
     "id": "p_act174ruledetailview_txt_rule3",
-    "lang": "每隔两周，角斗场中的赛程将进行一次更迭，偶人、造物和变局规则将替换为新的内容"
+    "lang": "本次赛程中，偶人、造物和变局规则不会更迭，在此处可以查看当前赛程中所有的偶人及其附带的【芯灵感应】。"
   },
   {
     "id": "p_act174ruledetailview_txt_role",
@@ -16205,7 +16205,7 @@
   },
   {
     "id": "p_act174gameview_txt_shoptip",
-    "lang": "每完成3场角斗，赛后补给间都将迎来升级，刷新高稀有度物品的概率提升。"
+    "lang": "每个阶段赛后补给间都将迎来升级，刷新高稀有度物品的概率提升。"
   },
   {
     "id": "p_act174forcepickview_txt_title",
@@ -17849,7 +17849,7 @@
   },
   {
     "id": "playercard_weekwalkVer2PlatinumCup",
-    "lang": "累计S级认证："
+    "lang": "累计S级认证：▩1%s"
   },
   {
     "id": "p_versionactivity_2_6_enterview_dec",
@@ -18298,5 +18298,1069 @@
   {
     "id": "p_v2a6_warmup_txt_goto",
     "lang": "探索星际"
+  },
+  {
+    "id": "p_packagestoregoodsitem_txt_discover",
+    "lang": "联动"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn1",
+    "lang": "恒星的赠礼"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn2",
+    "lang": "寰宇的收获"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn1",
+    "lang": "行星的赠礼"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn2",
+    "lang": "成像研究"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview2_txt_shopnamecn3",
+    "lang": "恒星的赠礼"
+  },
+  {
+    "id": "p_towermainview_txt_bossHandbook2",
+    "lang": "<size=48>迷</size>思原型"
+  },
+  {
+    "id": "p_towerassistbosstview_txt_tips",
+    "lang": "翻覆之舟中，迷思原型将默认解锁并自动提升为10级"
+  },
+  {
+    "id": "p_towerbossepisodeview_txt_teach",
+    "lang": "第一道回声"
+  },
+  {
+    "id": "p_towerbossteachview_txt_check",
+    "lang": "通关全部第一道回声解锁<color=#EDAC5F>被动Ⅳ</color>"
+  },
+  {
+    "id": "p_towerbossteachview_txt_start",
+    "lang": "开始教学"
+  },
+  {
+    "id": "p_towerbosstipview_txt_unlock",
+    "lang": "通关全部第一道回声"
+  },
+  {
+    "id": "p_towerherogroupview_txt_Buff2",
+    "lang": "默认蓝图方案"
+  },
+  {
+    "id": "p_towerassistbossitem_txt_try",
+    "lang": "试用"
+  },
+  {
+    "id": "p_towerstoreview_txt_title1",
+    "lang": "红帆陈列馆"
+  },
+  {
+    "id": "p_towerstoreview_txt_title2",
+    "lang": "深潜纪念室"
+  },
+  {
+    "id": "p_towerstoreview_txt_task",
+    "lang": "悬想偶得"
+  },
+  {
+    "id": "p_towermainview_txt_store",
+    "lang": "回声港湾"
+  },
+  {
+    "id": "p_towermainview_txt_task",
+    "lang": "<size=44>迷</size>思海拾遗"
+  },
+  {
+    "id": "p_towermainview_txt_hero",
+    "lang": "狂想角色助战"
+  },
+  {
+    "id": "p_towerherotrialview_txt_title",
+    "lang": "狂想角色助战一览"
+  },
+  {
+    "id": "p_towerherotrialview_txt_ruletitle",
+    "lang": "狂想角色助战规则"
+  },
+  {
+    "id": "p_towertalentview_txt_talentPlanTip",
+    "lang": "预设方案不可更改，迷思原型等级提升时自动加点"
+  },
+  {
+    "id": "p_v2a5_challenge_txt_LeaderTips",
+    "lang": "<color=#d9b982>执勤骨干</color>角色释放1技能时，会额外获得1点激情"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn1",
+    "lang": "五月印象"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn2",
+    "lang": "辛勤特惠"
+  },
+  {
+    "id": "p_v2a7_giftrecommendview3_txt_shopnamecn3",
+    "lang": "辛勤酬宾"
+  },
+  {
+    "id": "p_turnbacknewtaskview_txt_replay2",
+    "lang": "重逢一刻·尾声"
+  },
+  {
+    "id": "p_turnbacknewtaskview_txt_newtips",
+    "lang": "<#cb7a53>双倍领取：</color>消耗300粹雨滴开启，开启后，已领取的阶段奖励的双倍部分将直接发放；未领取的奖励在收集足够新程票时将会以双倍的形式获取。"
+  },
+  {
+    "id": "p_playercardcontentview_txt_get",
+    "lang": "获取"
+  },
+  {
+    "id": "p_playercardmainview_txt_limitsale",
+    "lang": "限时售卖"
+  },
+  {
+    "id": "p_fight_act191collectionview_txt_collection",
+    "lang": "造物"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title1",
+    "lang": "寄往故乡"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title2",
+    "lang": "寄往明天"
+  },
+  {
+    "id": "p_v2a7_storeview_txt_title3",
+    "lang": "寄往太空"
+  },
+  {
+    "id": "p_v2a7_dungeonmapview_txt_shop",
+    "lang": "银色邮局"
+  },
+  {
+    "id": "p_v2a7_act191enterview_txt_dec",
+    "lang": "临时文本临时文本临时文本p_v2a7_act191enterview_txt_dec"
+  },
+  {
+    "id": "p_act191herogroupview_txt_level",
+    "lang": "敌人评级："
+  },
+  {
+    "id": "p_act191herogroupview_txt_autofight",
+    "lang": "角斗模式"
+  },
+  {
+    "id": "p_act191herogroupview_txt_subteam",
+    "lang": "候场选手"
+  },
+  {
+    "id": "p_act191shopherogroupview_txt_title",
+    "lang": "<size=40>阵</size>容编队"
+  },
+  {
+    "id": "p_act191enemyinfoview_txt_main",
+    "lang": "主"
+  },
+  {
+    "id": "p_act191enemyinfoview_txt_sub",
+    "lang": "备"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_tips",
+    "lang": "选择想要屏蔽的干扰"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_Joystick",
+    "lang": "摇杆模式"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_Gyroscope",
+    "lang": "陀螺仪模式"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_target",
+    "lang": "使小球到达目的地"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_light",
+    "lang": "极光"
+  },
+  {
+    "id": "p_act191fightsuccview_txt_fail",
+    "lang": "战斗失败"
+  },
+  {
+    "id": "p_act191herogroupview_txt_startautofight",
+    "lang": "自动角斗"
+  },
+  {
+    "id": "p_act174settlementview_txt_fight2",
+    "lang": "最终战斗"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt1",
+    "lang": "星间追猎秀"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename1",
+    "lang": "阿尔古斯"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt2",
+    "lang": "飞越行星带"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename2",
+    "lang": "芭卡洛儿"
+  },
+  {
+    "id": "p_v2a7_dungeonenterview_txt_unlock",
+    "lang": "探索模式开启"
+  },
+  {
+    "id": "p_v2a7_abandon_help_1_txt_1",
+    "lang": "使用<#FF906A>【弃置】</color>咒语时，需要额外选择1张手牌丢弃"
+  },
+  {
+    "id": "p_v2a7_abandon_help_2_txt_1",
+    "lang": "<#FF906A>【精准】</color>咒语将带有标识边框，咒语区中存在相应的特殊区域<#FF906A>【精准位置】</color>"
+  },
+  {
+    "id": "p_v2a7_abandon_help_4_txt_1",
+    "lang": "<#FF906A>【封锁】</color>咒语必须位于咒语区的最左侧或最右侧才能释放，否则将无法使用"
+  },
+  {
+    "id": "p_v2a7_abandon_help_5_txt_1",
+    "lang": "现在，可以打出位于咒语区最左侧的<#FF906A>【封锁】</color>咒语了"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips1",
+    "lang": "6星角色自选道具！"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips2",
+    "lang": "即刻获取6星自选，通关主线解锁最多12个可选角色"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips3",
+    "lang": "<#FFA044>6星</color>自选"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips4",
+    "lang": "通关故事解锁更多自选角色"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_fullview_txt_tips5",
+    "lang": "立即使用"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips1",
+    "lang": "即刻获取6星自选道具-箱装荐言，通关主线至3RD-16解锁所有可选角色"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips2",
+    "lang": "新人福利：6星角色自选道具+66次征集"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_panelview_txt_tips3",
+    "lang": "<size=64><#FFA044>66</color></size>次征集"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title1",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>1ST-04</color></size>"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title2",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>1ST-16</color></size>"
+  },
+  {
+    "id": "p_newwelfarepanelview_txt_title3",
+    "lang": "<size=46>完</size><size=34>成故事<#DC6C37>2ND-15</color></size>"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_pickchoiceview_txt_tips1",
+    "lang": "通关故事，解锁更多可选角色"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_pickchoiceview_txt_tips2",
+    "lang": "初始可选6星"
+  },
+  {
+    "id": "p_v2a7_selfselectsix_pickchoiceview_txt_tips3",
+    "lang": "自选角色预览"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_check",
+    "lang": "查看闪念效果"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward",
+    "lang": "活动任务奖励"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips1",
+    "lang": "狂想角色<#ffac5a>试用助战</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips2",
+    "lang": "迷思<#ffac5a>原型强化</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips3",
+    "lang": "翻覆之舟迷思原型<#ffac5a>自动满级</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tips4",
+    "lang": "原型蓝图<#ffac5a>方案切换</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward1",
+    "lang": "养成材料"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_reward2",
+    "lang": "迷思之茧"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_dec",
+    "lang": "前往完成8个限时任务获取<#ffac5a>狂想直升道具</color>"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_goto",
+    "lang": "前往任务"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_canget",
+    "lang": "立刻领取"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_finished",
+    "lang": "已完成任务"
+  },
+  {
+    "id": "p_v2a7_tower_panelview_txt_goto",
+    "lang": "完成任务获得狂想直升道具"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_tips",
+    "lang": "确认选择后可再度变更"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_confirm",
+    "lang": "查看狂想"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_cancel",
+    "lang": "以后再说"
+  },
+  {
+    "id": "p_v2a7_tower_pickchoiceview_txt_title",
+    "lang": "选中、唤起闪念（若未唤起），并直升对应角色狂想/解构等级至MAX"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_oncefull",
+    "lang": "一键唤起和直升"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_oncefulltips",
+    "lang": "一键唤起闪念，并直升该角色的狂想/解构等级至MAX"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_hasoncefull",
+    "lang": "已一键直升和唤起"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_title",
+    "lang": "玩法说明"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_1",
+    "lang": "直觉模块：消除掉【灵光一现】的直觉模块使冷周六增加1层【思维敏捷】，使冷周六削减对方信心量提高"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_2",
+    "lang": "理智模块：消除掉【灵光一现】的理智模块可以额外削减对方10点信心"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_3",
+    "lang": "思路混乱：头脑混乱会使思维模块雾化。可以被【发散思考】消除"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_4",
+    "lang": "头脑迟缓：头脑混乱会冰封思维模块，使其无法掉落和移动。可以通过思维相连或使用【触类旁通】消除"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_5",
+    "lang": "感性模块：消除掉【灵光一现】的感性模块可以恢复冷周六10点信心"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_6",
+    "lang": "经验模块：消除掉【灵光一现】的经验模块可以使冷却最高的说服技巧减少1回合冷却"
+  },
+  {
+    "id": "p_v2a7_hissabeth_help_1_txt_7",
+    "lang": "逻辑误区：无法显示逻辑误区下的思维模块。逻辑误区在5次行动后消除，其中的模块可以正常移动"
+  },
+  {
+    "id": "p_act191_autofight_tip",
+    "lang": "自动角斗后无法手动操作，总奖励量提高"
+  },
+  {
+    "id": "p_v2a7_warmup_txt_WrongChannel",
+    "lang": "接收来自远方的传真文件，窥探未被解明的真相"
+  },
+  {
+    "id": "p_v2a7_warmup_txt_tips",
+    "lang": "拿起传真机话筒"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec1",
+    "lang": "对方"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec2",
+    "lang": "通关目标"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec3",
+    "lang": "我方"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec4",
+    "lang": "说服技巧"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec5",
+    "lang": "选择说服技巧"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec6",
+    "lang": "使用技巧"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_dec7",
+    "lang": "选择之后使用的说服技巧"
+  },
+  {
+    "id": "p_v2a7_blood_help_1_txt_1",
+    "lang": "在特定角色效果下，战斗中将出现【薪之杯】，记录己方角色累计损失生命转化为【薪血】；每回合开始时，根据己方上阵角色最大生命总和更新【薪血】上限。"
+  },
+  {
+    "id": "p_v2a7_blood_help_2_txt_1",
+    "lang": "点击【薪之杯】将主动使用咒语【饮尽生者之色】"
+  },
+  {
+    "id": "p_v2a7_blood_help_2_txt_2",
+    "lang": "【饮尽生者之色】：消耗所有【薪血】，每消耗1点【薪血】，则回复己方全体一定百分比的最大生命"
+  },
+  {
+    "id": "p_weekwalkdeeplayernoticeview_title2",
+    "lang": "醒梦域装置提示"
+  },
+  {
+    "id": "p_weekwalkdeeplayernoticeview_resettip2",
+    "lang": "醒梦域已完成重启"
+  },
+  {
+    "id": "p_v2a7_act191heroeditview_filterype",
+    "lang": "羁绊选择"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_tipsforitem",
+    "lang": "完成8个迷思拾遗任务获<#ffac5a>狂想直升道具</color>"
+  },
+  {
+    "id": "p_v2a7_challenge_mainview_store",
+    "lang": "鬃毛避雨所"
+  },
+  {
+    "id": "p_v2a5_challenge_currencyreplacetipsview_txt_title",
+    "lang": "兑换货币"
+  },
+  {
+    "id": "p_act191fightsuccview_txt_dead",
+    "lang": "击败"
+  },
+  {
+    "id": "p_v2a7_tower_help_1_txt_1",
+    "lang": "翻覆之舟玩法说明"
+  },
+  {
+    "id": "p_v2a7_tower_help_1_txt_2",
+    "lang": "每处挑战切换不同的难度，更高难度下会面临更严峻的考验，同时能获得更多积分"
+  },
+  {
+    "id": "p_v2a7_tower_help_1_txt_3",
+    "lang": "已出战的角色和迷思原型无法在其余挑战中出战"
+  },
+  {
+    "id": "p_v2a7_tower_help_2_txt_1",
+    "lang": "每期翻覆之舟会限定3个可选迷思原型"
+  },
+  {
+    "id": "p_v2a7_tower_help_2_txt_2",
+    "lang": "翻覆之舟中包含3处挑战，完成每一处挑战可以获得积分，每达到10000积分会获得1<sprite=1>"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_1",
+    "lang": "骨碳狼烟"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_2",
+    "lang": "天赋方案"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_3",
+    "lang": "核心天赋"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_4",
+    "lang": "净化燃血"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_5",
+    "lang": "沁肺星点"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_6",
+    "lang": "【过热】时，每回合开始驱散己方全体的【属性削弱】"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_7",
+    "lang": "牺牲薪火Ⅰ"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_8",
+    "lang": "释放主动咒语时，所有方失去10%当前生命；本次攻击额外附加己方全体已损失生命*15%的本源创伤"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_9",
+    "lang": "牺牲薪火Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_10",
+    "lang": "岩系角色自身每损失5%生命，攻击时穿透率+3%"
+  },
+  {
+    "id": "p_v2a7_tower_help_3_txt_11",
+    "lang": "骨碳狼烟的蓝图效果可强化主动咒语，释放主动咒语会消耗己方角色的生命附加本源创伤，令岩灵感角色在低血量时穿透率提升，并且可以过热状态下群体驱散己方的属性削弱"
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_1",
+    "lang": "湿漉漉教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_2",
+    "lang": "生命："
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_3",
+    "lang": "浑身湿漉漉的女性，她会拥抱每一个孩子，包括你，也包括我。\n但是不包括烟霾大狗，因为上次拥抱让她满身灰尘，足足清洗了一周。"
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_4",
+    "lang": "指导·净化"
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_5",
+    "lang": "进入战斗及回合结束时，赋予敌方全体<#5574B6>[属性削弱集合]</color>中的随机2种状态，持续3回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_4_txt_6",
+    "lang": "所有教官都有其弱点，虽然<#E99B56>会赋予我方各种属性削弱效果</color>，但本身没有任何直接增伤或减伤的能力"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_1",
+    "lang": "增益多动"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_2",
+    "lang": "可视之风Ⅰ"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_3",
+    "lang": "释放主动技能后，赋予我方全体1层2回合【雾霭沉沉】"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_4",
+    "lang": "可视之风Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_5",
+    "lang": "赋予的【雾霭沉沉】持续回合+10"
+  },
+  {
+    "id": "p_v2a7_tower_help_5_txt_6",
+    "lang": "骨碳狼烟释放主动咒语后会大幅度强化己方角色额外行动的伤害"
+  },
+  {
+    "id": "p_v2a7_tower_help_6_txt_1",
+    "lang": "指导·额外行动"
+  },
+  {
+    "id": "p_v2a7_tower_help_6_txt_2",
+    "lang": "受到伤害降低<#F26E1A>50%</color>，受到额外行动伤害提升<#F26E1A>150%</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_6_txt_3",
+    "lang": "所有教官都有其弱点，虽然常驻高额减伤，<#E99B56>但是受到额外行动的伤害大幅提升！</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_7_txt_1",
+    "lang": "回声屿玩法说明"
+  },
+  {
+    "id": "p_v2a7_tower_help_7_txt_2",
+    "lang": "第一道回声可以了解迷思原型的蓝图加点方案、适合搭配的阵容"
+  },
+  {
+    "id": "p_v2a7_tower_help_7_txt_3",
+    "lang": "通关全部第一道回声，可以解锁额外传承技能"
+  },
+  {
+    "id": "p_v2a7_tower_help_8_txt_1",
+    "lang": "木魅山鬼"
+  },
+  {
+    "id": "p_v2a7_tower_help_8_txt_2",
+    "lang": "升阶"
+  },
+  {
+    "id": "p_v2a7_tower_help_8_txt_3",
+    "lang": "大质量捕获Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_8_txt_4",
+    "lang": "己方木系角色使用2/3阶咒语时，有25%的概率额外释放1次"
+  },
+  {
+    "id": "p_v2a7_tower_help_8_txt_5",
+    "lang": "木魅山鬼的主动咒语可提升队伍的咒语阶次，释放高阶咒语时有概率额外释放"
+  },
+  {
+    "id": "p_v2a7_tower_help_9_txt_1",
+    "lang": "冷冰冰教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_9_txt_2",
+    "lang": "完全无视学生的哀嚎，只会百分百执行教学任务，冰冷、严酷、不近人情的教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_9_txt_3",
+    "lang": "指导·升阶"
+  },
+  {
+    "id": "p_v2a7_tower_help_9_txt_4",
+    "lang": "受到伤害降低<#F26E1A>50%</color>，受到2/3阶咒语伤害提升<#F26E1A>150%</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_9_txt_5",
+    "lang": "所有教官都有其弱点，虽然常驻高额减伤，<#E99B56>但是受到高阶咒语的伤害大幅提升！</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_10_txt_1",
+    "lang": "石化"
+  },
+  {
+    "id": "p_v2a7_tower_help_10_txt_2",
+    "lang": "令行禁止Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_10_txt_3",
+    "lang": "木魅山鬼释放至终的仪式时，主目标获得1回合【石化】"
+  },
+  {
+    "id": "p_v2a7_tower_help_10_txt_4",
+    "lang": "木魅山鬼的蓝图效果可强化主动咒语，赋予主目标石化，可以频繁控制敌人并驱散敌方反制状态！"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_1",
+    "lang": "指导·控制"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_2",
+    "lang": "进入战斗及每3回合开始时，进入<#5E81D0>[机械反制]</color>状态，持续3回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_3",
+    "lang": "所有教官都有其弱点，虽然反制状态很强力，但是<#E99B56>石化等硬控可以直接驱散反制状态！</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_4",
+    "lang": "机械反制"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_5",
+    "lang": "特殊"
+  },
+  {
+    "id": "p_v2a7_tower_help_11_txt_6",
+    "lang": "再生率<#F26E1A>+50%</color>，被攻击后，攻方激情-1，自身激情+1"
+  },
+  {
+    "id": "p_v2a7_tower_help_12_txt_1",
+    "lang": "原型蓝图玩法说明"
+  },
+  {
+    "id": "p_v2a7_tower_help_12_txt_2",
+    "lang": "可以切换保存多套蓝图方案\n带有<sprite=2>的蓝图方案为预设推荐方案，迷思原型升级时自动加点"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_1",
+    "lang": "戏剧的折射"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_2",
+    "lang": "反击续航"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_3",
+    "lang": "和谐音符"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_4",
+    "lang": "己方兽系角色攻击时，目标每拥有1层燃烧，本次攻击吸血率提升0.5%，若本次攻击为额外行动，则吸血率额外提升10%"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_5",
+    "lang": "伴奏者Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_6",
+    "lang": "己方兽系角色额外行动攻击时倍率提升25%"
+  },
+  {
+    "id": "p_v2a7_tower_help_13_txt_7",
+    "lang": "戏剧的折射的蓝图效果可大幅强化兽灵感角色的额外行动，提升其伤害并获得吸血"
+  },
+  {
+    "id": "p_v2a7_tower_help_14_txt_1",
+    "lang": "热腾腾教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_14_txt_2",
+    "lang": "她的热情好似一团熊熊烈火。幸或不幸，对于运动和教学，她一视同仁"
+  },
+  {
+    "id": "p_v2a7_tower_help_14_txt_3",
+    "lang": "指导·多次攻击"
+  },
+  {
+    "id": "p_v2a7_tower_help_14_txt_4",
+    "lang": "被攻击受到伤害降低<#F26E1A>50%</color>，每次被攻击后获得1层<#5E81D0>[伤害积累]</color>，持续3回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_14_txt_5",
+    "lang": "所有教官都有其弱点，虽然初始拥有高额减伤，但是<#E99B56>每次被攻击后会叠加易伤</color>，随着受击次数累加，受到伤害将大幅提升！"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_1",
+    "lang": "燃烧爆发"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_2",
+    "lang": "指挥者Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_3",
+    "lang": "己方兽系角色攻击时，目标每拥有1层燃烧，本次攻击穿透率提升1%"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_4",
+    "lang": "热烈"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_5",
+    "lang": "【和声伴奏】额外赋予目标5层【燃烧】"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_6",
+    "lang": "即兴变调"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_7",
+    "lang": "主动咒语不再赋予【杂音】，转而赋予20层【燃烧】"
+  },
+  {
+    "id": "p_v2a7_tower_help_15_txt_8",
+    "lang": "戏剧的折射可以赋予敌方大量燃烧，同时使兽灵感角色攻击燃烧目标时大幅提升穿透率！"
+  },
+  {
+    "id": "p_v2a7_tower_help_16_txt_1",
+    "lang": "指导·燃烧爆发"
+  },
+  {
+    "id": "p_v2a7_tower_help_16_txt_2",
+    "lang": "现实防御、精神防御提升<#F26E1A>50%</color>；被攻击时，自身每拥有1层<#5E81D0>[燃烧]</color>，攻方穿透率<#F26E1A>+1%</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_16_txt_3",
+    "lang": "所有教官都有其弱点，虽然初始拥有高额防御，但是<#E99B56>被赋予的燃烧层数越高，攻击越能穿透其防御！</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_1",
+    "lang": "星体灾厄"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_2",
+    "lang": "多动暴击"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_3",
+    "lang": "实践课业Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_4",
+    "lang": "己方星系角色额外行动后，获得1点【能量】；回合结束时若本回合额外行动达到2次，额外获得1点能量"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_5",
+    "lang": "尤里卡时刻Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_6",
+    "lang": "星系角色造成暴击时，获得1点【能量】，每人每回合最多触发1次"
+  },
+  {
+    "id": "p_v2a7_tower_help_17_txt_7",
+    "lang": "星体灾厄的主动咒语会根据消耗的能量提升伤害，己方星系角色额外行动和暴击可以加速获得能量"
+  },
+  {
+    "id": "p_v2a7_tower_help_18_txt_1",
+    "lang": "毛绒绒教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_18_txt_2",
+    "lang": "严厉而博学的教官，美中不足是说话口音很重，让人不易听懂。\n“泥萌是窝逮锅最查的一截！”"
+  },
+  {
+    "id": "p_v2a7_tower_help_18_txt_3",
+    "lang": "指导·连续行动"
+  },
+  {
+    "id": "p_v2a7_tower_help_18_txt_4",
+    "lang": "进入战斗及回合结束时，获得3层<#5E81D0>[坚固]</color>；自身处于<#5E81D0>[坚固]</color>状态时，被攻击受到伤害降低<#F26E1A>50%</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_18_txt_5",
+    "lang": "所有教官都有其弱点，虽然处于【坚固】状态时会获得高额减伤，但是<#E99B56>3次攻击破除坚固</color>后，教官受到伤害将大幅提升！"
+  },
+  {
+    "id": "p_v2a7_tower_help_19_txt_1",
+    "lang": "灵光启示"
+  },
+  {
+    "id": "p_v2a7_tower_help_19_txt_2",
+    "lang": "灵光乍现Ⅲ"
+  },
+  {
+    "id": "p_v2a7_tower_help_19_txt_3",
+    "lang": "己方星系角色每消耗1次灵光，获得1点【能量】，每人每回合最多触发1次"
+  },
+  {
+    "id": "p_v2a7_tower_help_19_txt_4",
+    "lang": "星体灾厄的主动咒语会根据消耗的能量提升伤害，己方星系角色消耗灵光时会加速能量获取"
+  },
+  {
+    "id": "p_v2a7_tower_help_20_txt_1",
+    "lang": "指导·多次攻击"
+  },
+  {
+    "id": "p_v2a7_tower_help_20_txt_2",
+    "lang": "被攻击受到伤害降低<#F26E1A>50%</color>，每次被攻击后获得1层<#5E81D0>[伤害积累]</color>，持续3回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_20_txt_3",
+    "lang": "所有教官都有其弱点，虽然初始拥有高额减伤，但是<#E99B56>每次被攻击后会叠加易伤</color>，随着受击次数累加，受到伤害将大幅提升！"
+  },
+  {
+    "id": "p_v2a7_tower_help_20_txt_4",
+    "lang": "伤害积累"
+  },
+  {
+    "id": "p_v2a7_tower_help_20_txt_5",
+    "lang": "受到伤害提升<#F26E1A>5%</color>（可以叠加）"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_1",
+    "lang": "原始欢乐"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_2",
+    "lang": "术阵频次"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_3",
+    "lang": "于溺爱中迷失"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_4",
+    "lang": "仪式威力+20%，能量上限-2，术阵CD-2，持续回合-1，结束时能量+1"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_5",
+    "lang": "入梦"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_6",
+    "lang": "【绯色梦境】开启时，激情最高的敌方激情-1"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_7",
+    "lang": "往日记忆"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_8",
+    "lang": "【于深渊中下坠】精神创伤-50%；术阵结束时立刻回复1点能量"
+  },
+  {
+    "id": "p_v2a7_tower_help_21_txt_9",
+    "lang": "原始欢乐的蓝图效果可以提升主动咒语的释放频率，为主动咒语附加多种额外效果，并造成高额伤害"
+  },
+  {
+    "id": "p_v2a7_tower_help_22_txt_1",
+    "lang": "皮大衣教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_22_txt_2",
+    "lang": "即使富庶如岩城，也因种种原因日渐落魄。为了维持帮会的开销，不得已接受聘请前来任教。\n“除了利齿子儿外，我只有一个要求——不要叠词！那太恶心了！”"
+  },
+  {
+    "id": "p_v2a7_tower_help_22_txt_3",
+    "lang": "指导·仪式"
+  },
+  {
+    "id": "p_v2a7_tower_help_22_txt_4",
+    "lang": "受到伤害降低<#F26E1A>50%</color>，受到至终的仪式伤害提升<#F26E1A>150%</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_22_txt_5",
+    "lang": "所有教官都有其弱点，虽然初始拥有高额减伤，但是<#E99B56>至终的仪式可以对其造成高额伤害</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_1",
+    "lang": "仪式强化"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_2",
+    "lang": "盛宴永无止境"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_3",
+    "lang": "【绯色梦境】期间，至终的仪式激情消耗-1"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_4",
+    "lang": "汲取养分Ⅱ"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_5",
+    "lang": "【绯色梦境】期间，友方释放至终的仪式后，己方激情最低角色激情+1"
+  },
+  {
+    "id": "p_v2a7_tower_help_23_txt_6",
+    "lang": "原始欢乐释放主动咒语会展开术阵，术阵持续期间会极大增强己方角色仪式咒语的伤害和释放频率"
+  },
+  {
+    "id": "p_v2a7_storeblockpackageview_name",
+    "lang": "「小星星跷跷板」"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt3",
+    "lang": "曲线的居所"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename3",
+    "lang": "图图石子"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_roletxt4",
+    "lang": "于火中得见"
+  },
+  {
+    "id": "p_v2a7_storeroleskinview_rolename4",
+    "lang": "6"
+  },
+  {
+    "id": "p_v2a7_coopergarland_levelview_txt_Challenge",
+    "lang": "前行的决心"
+  },
+  {
+    "id": "p_v2a7_hissabeth_gameview_txt_endlesstitle",
+    "lang": "会议纪要"
+  },
+  {
+    "id": "p_v2a7_tower_fullview_txt_lock",
+    "lang": "完成5th-20解锁雨中悬想"
+  },
+  {
+    "id": "p_v2a7_coopergarland_gameview_txt_extratips",
+    "lang": "在春天，最后的寒冷已不足够摇撼花儿生长的决心。"
+  },
+  {
+    "id": "p_act191teamitem_txt_Level",
+    "lang": "队伍评级："
+  },
+  {
+    "id": "p_act191stageview_txt_enemy",
+    "lang": "敌方评级："
+  },
+  {
+    "id": "p_act191getview_txt_title1",
+    "lang": "获得偶人"
+  },
+  {
+    "id": "p_act191getview_txt_title2",
+    "lang": "获得造物拓片"
+  },
+  {
+    "id": "p_v2a7_clock_help_1_txt_1",
+    "lang": "我方咒语命中boss并造成伤害时，时针将会前进一定刻度。每回合结束时，将依据时针所在的【时间区域】结算特殊效果"
+  },
+  {
+    "id": "p_v2a7_clock_help_1_txt_2",
+    "lang": "我方每次主动使用非仪式咒语都需要消耗一层【时间】"
+  },
+  {
+    "id": "p_v2a7_clock_help_2_txt_1",
+    "lang": "【毁灭】橙色：\n减少一定【时间】"
+  },
+  {
+    "id": "p_v2a7_clock_help_2_txt_2",
+    "lang": "【创造】蓝色：\n我方全体获得创伤加成1回合"
+  },
+  {
+    "id": "p_v2a7_clock_help_2_txt_3",
+    "lang": "【静滞】红色：\n减少少量【时间】"
+  },
+  {
+    "id": "p_v2a7_clock_help_2_txt_4",
+    "lang": "【刹那】绿色：\n我方全体激情增加"
+  },
+  {
+    "id": "p_v2a7_clock_help_3_txt_1",
+    "lang": "每回合开始时，表盘上的【时间区域】将会随机转动，请根据时针所在的【时间区域】制定本回合的出牌策略"
+  },
+  {
+    "id": "p_v2a7_clock_help_3_txt_2",
+    "lang": "每当我方攻击导致时针到达刻度XII时，将会增加一定【时间】"
+  },
+  {
+    "id": "p_v2a7_clock_help_3_txt_3",
+    "lang": "回合结束时，若【时间】为零或以下，则战斗失败"
+  },
+  {
+    "id": "p_act191herogroupview_txt_autotips",
+    "lang": "开启后总奖励提高，但战斗中无法取消"
   }
 ]

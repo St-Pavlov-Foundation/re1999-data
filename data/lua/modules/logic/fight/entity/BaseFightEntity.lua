@@ -204,6 +204,10 @@ function slot0.setAlpha(slot0, slot1, slot2)
 end
 
 function slot0.resetEntity(slot0)
+	if gohelper.isNil(slot0.go) then
+		return
+	end
+
 	if slot0:getMO() then
 		if FightEntityDataHelper.isPlayerUid(slot1.id) then
 			return
@@ -257,7 +261,7 @@ function slot0._onChange2AnimEvent(slot0, slot1, slot2, slot3)
 end
 
 function slot0.resetStandPos(slot0)
-	if slot0:getMO() then
+	if slot0:getMO() and not gohelper.isNil(slot0.go) then
 		transformhelper.setLocalPos(slot0.go.transform, FightHelper.getEntityStandPos(slot1))
 	end
 end

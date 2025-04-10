@@ -11,23 +11,10 @@ function slot0.onInitView(slot0)
 	slot0._btnHardware = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item17/btnHardware")
 	slot0._sliderRenderScale = gohelper.findChildSlider(slot0.viewGO, "viewport/content/item19/Slider")
 	slot0._txtRenderScale = gohelper.findChildText(slot0.viewGO, "viewport/content/item19/Text")
-	slot0._btnRoomOb = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item23/btnRoomOb")
-	slot0._btnRoomMap = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item23/btnRoomMap")
-	slot0._btnRoomDebug = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item23/btnRoomDebug")
-	slot0._btnRoomDebugBuildingArea = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item23/btnRoomDebugBuildingArea")
 	slot0._btnForbidFightEffect = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item26/Button1")
 	slot0._btnCancelForbidFightEffect = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item26/Button2")
 	slot0._btnTest1 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item27/Button1")
 	slot0._btnTest2 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item27/Button2")
-	slot0._btnTest3 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/item27/Button3")
-	slot0._sliderRoomRotateSpeed = gohelper.findChildSlider(slot0.viewGO, "viewport/content/item43/Slider")
-	slot0._txtRoomRotateSpeed = gohelper.findChildText(slot0.viewGO, "viewport/content/item43/txtValue")
-	slot0._sliderRoomMoveSpeed = gohelper.findChildSlider(slot0.viewGO, "viewport/content/item44/Slider")
-	slot0._txtRoomMoveSpeed = gohelper.findChildText(slot0.viewGO, "viewport/content/item44/txtValue")
-	slot0._sliderRoomScaleSpeed = gohelper.findChildSlider(slot0.viewGO, "viewport/content/item45/Slider")
-	slot0._txtRoomScaleSpeed = gohelper.findChildText(slot0.viewGO, "viewport/content/item45/txtValue")
-	slot0._silderRoomTouchSpeed = gohelper.findChildSlider(slot0.viewGO, "viewport/content/roomTouchSpeed/Slider")
-	slot0._txtRoomTouchSpeed = gohelper.findChildText(slot0.viewGO, "viewport/content/roomTouchSpeed/txtValue")
 	slot0._textCheckAudio2 = gohelper.findChildText(slot0.viewGO, "viewport/content/item47/btnCheckAudio2/Text")
 	slot0._textCallAudioGCThreshold = gohelper.findChildTextMeshInputField(slot0.viewGO, "viewport/content/item47/InputField")
 	slot0._inpTestAudio = gohelper.findChildInputField(slot0.viewGO, "viewport/content/testAudio1/inpTextAudio")
@@ -35,8 +22,6 @@ function slot0.onInitView(slot0)
 	slot0._inpEndTestAudio = gohelper.findChildInputField(slot0.viewGO, "viewport/content/testAudio1/inpTextAudioEnd")
 	slot0._btnLoadTestAudio = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/testAudio2/btnLoadTestAudio")
 	slot0._btnUnloadTestAudio = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/testAudio2/btnUnloadTestAudio")
-	slot0._dropRoomClock = gohelper.findChildDropdown(slot0.viewGO, "viewport/content/roomclock/Dropdown")
-	slot0._btnRoomBuildingCamera = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/roomclock/btnRoomBuildingCamera")
 	slot0._visualToggle = gohelper.findChildToggle(slot0.viewGO, "viewport/content/item48/visualToggle")
 	slot0._visualToggle.isOn = GMController.instance:getVisualInteractive()
 	slot0._dropActivity = gohelper.findChildDropdown(slot0.viewGO, "viewport/content/versionactivity/activityDropdown")
@@ -64,24 +49,13 @@ function slot0.addEvents(slot0)
 	slot0:_AddClickListener(slot0._btnVersion, slot0._onClickBtnVersion, slot0)
 	slot0:_AddClickListener(slot0._btnHardware, slot0._onClickBtnHardware, slot0)
 	slot0:_AddOnValueChanged(slot0._sliderRenderScale, slot0._onRenderScaleChange, slot0)
-	slot0:_AddClickListener(slot0._btnRoomOb, slot0._onClickBtnRoomOb, slot0)
-	slot0:_AddClickListener(slot0._btnRoomMap, slot0._onClickBtnRoomMap, slot0)
-	slot0:_AddClickListener(slot0._btnRoomDebug, slot0._onClickBtnRoomDebug, slot0)
-	slot0:_AddClickListener(slot0._btnRoomDebugBuildingArea, slot0._onClickRoomDebugBuildingArea, slot0)
 	slot0:_AddClickListener(slot0._btnForbidFightEffect, slot0._onClickForbidFightEffect, slot0)
 	slot0:_AddClickListener(slot0._btnCancelForbidFightEffect, slot0._onClickCancelForbidFightEffect, slot0)
 	slot0:_AddClickListener(slot0._btnTest1, slot0._onClickTest1, slot0)
 	slot0:_AddClickListener(slot0._btnTest2, slot0._onClickTest2, slot0)
-	slot0:_AddClickListener(slot0._btnTest3, slot0._onClickTest3, slot0)
-	slot0:_AddOnValueChanged(slot0._sliderRoomRotateSpeed, slot0._onRoomRotateSpeedChange, slot0)
-	slot0:_AddOnValueChanged(slot0._sliderRoomMoveSpeed, slot0._onRoomMoveSpeedChange, slot0)
-	slot0:_AddOnValueChanged(slot0._sliderRoomScaleSpeed, slot0._onRoomScaleSpeedChange, slot0)
-	slot0:_AddOnValueChanged(slot0._silderRoomTouchSpeed, slot0._onRoomTouchSpeedChange, slot0)
 	slot0:_AddClickListener(slot0._btnLoadTestAudio, slot0._onClickLoadTestAudio, slot0)
 	slot0:_AddClickListener(slot0._btnUnloadTestAudio, slot0._onClickUnloadTestAudio, slot0)
 	slot0:_AddOnValueChanged(slot0._visualToggle, slot0._onVisualToggleValueChange, slot0)
-	slot0:_AddOnValueChanged(slot0._dropRoomClock, slot0._onRoomClockSelectChanged, slot0)
-	slot0:_AddClickListener(slot0._btnRoomBuildingCamera, slot0._onClickRoomBuildingCamera, slot0)
 	slot0:_AddClickListener(slot0._btnChangeActivity, slot0._onClickChangeActivityBtn, slot0)
 	slot0:_AddClickListener(slot0._btnResetActivity, slot0._onClickResetActivityBtn, slot0)
 	slot0:_AddClickListener(slot0._btnEnterActivity, slot0._onClickEnterActivity, slot0)
@@ -101,24 +75,13 @@ function slot0.removeEvents(slot0)
 	slot0:_RemoveClickListener(slot0._btnVersion)
 	slot0:_RemoveClickListener(slot0._btnHardware)
 	slot0:_RemoveOnValueChanged(slot0._sliderRenderScale)
-	slot0:_RemoveClickListener(slot0._btnRoomOb)
-	slot0:_RemoveClickListener(slot0._btnRoomMap)
-	slot0:_RemoveClickListener(slot0._btnRoomDebug)
-	slot0:_RemoveClickListener(slot0._btnRoomDebugBuildingArea)
 	slot0:_RemoveClickListener(slot0._btnForbidFightEffect)
 	slot0:_RemoveClickListener(slot0._btnCancelForbidFightEffect)
 	slot0:_RemoveClickListener(slot0._btnTest1)
 	slot0:_RemoveClickListener(slot0._btnTest2)
-	slot0:_RemoveClickListener(slot0._btnTest3)
-	slot0:_RemoveOnValueChanged(slot0._sliderRoomRotateSpeed)
-	slot0:_RemoveOnValueChanged(slot0._sliderRoomMoveSpeed)
-	slot0:_RemoveOnValueChanged(slot0._sliderRoomScaleSpeed)
-	slot0:_RemoveOnValueChanged(slot0._silderRoomTouchSpeed)
 	slot0:_RemoveClickListener(slot0._btnLoadTestAudio)
 	slot0:_RemoveClickListener(slot0._btnUnloadTestAudio)
 	slot0:_RemoveOnValueChanged(slot0._visualToggle)
-	slot0:_RemoveOnValueChanged(slot0._dropRoomClock)
-	slot0:_RemoveClickListener(slot0._btnRoomBuildingCamera)
 	slot0:_RemoveClickListener(slot0._btnChangeActivity)
 	slot0:_RemoveClickListener(slot0._btnResetActivity)
 	slot0:_RemoveOnValueChanged(slot0._dropActivity)
@@ -164,27 +127,6 @@ function slot0.onOpen(slot0)
 	slot0._sliderRenderScale:SetValue(slot1)
 
 	slot0._txtRenderScale.text = string.format("RenderScale\n%.2f", slot1)
-
-	slot0._sliderRoomRotateSpeed:SetValue((RoomController.instance.rotateSpeed - 0.2) / 1.8)
-	slot0._sliderRoomMoveSpeed:SetValue((RoomController.instance.moveSpeed - 0.2) / 1.8)
-	slot0._sliderRoomScaleSpeed:SetValue((RoomController.instance.scaleSpeed - 0.2) / 1.8)
-
-	if slot0._silderRoomTouchSpeed then
-		slot0._silderRoomTouchSpeed:SetValue((RoomController.instance.touchMoveSpeed - 0.2) / 1.8)
-	end
-
-	if slot0._dropRoomClock then
-		slot2 = {
-			"选择时间"
-		}
-
-		for slot6 = 1, 24 do
-			table.insert(slot2, slot6 .. "时")
-		end
-
-		slot0._dropRoomClock:ClearOptions()
-		slot0._dropRoomClock:AddOptions(slot2)
-	end
 
 	slot0:initActivityDrop()
 	slot0:initActivityEnterFunc()
@@ -488,26 +430,6 @@ function slot0._onRenderScaleChange(slot0, slot1, slot2)
 	slot0._txtRenderScale.text = string.format("RenderScale\n%.2f", slot2)
 end
 
-function slot0._onClickBtnRoomOb(slot0)
-	RoomController.instance:enterRoom(RoomEnum.GameMode.Ob)
-end
-
-function slot0._onClickBtnRoomMap(slot0)
-	RoomController.instance:enterRoom(RoomEnum.GameMode.Edit)
-end
-
-function slot0._onClickBtnRoomDebug(slot0)
-	ViewMgr.instance:openView(ViewName.RoomDebugEntranceView)
-end
-
-function slot0._onClickRoomDebugBuildingArea(slot0)
-	if GameSceneMgr.instance:getCurSceneType() == SceneType.Room then
-		RoomDebugController.instance:openBuildingAreaView()
-	else
-		GameFacade.showToast(94, "GM需要进入小屋后使用。")
-	end
-end
-
 function slot0._onClickForbidFightEffect(slot0)
 	FightEffectPool.isForbidEffect = true
 end
@@ -527,50 +449,6 @@ function slot0._onClickTest2(slot0)
 	System.GC.Collect(2, System.GCCollectionMode.Forced, true, true)
 end
 
-function slot0._onClickTest3(slot0)
-	logError("test3")
-
-	if GameSceneMgr.instance:getCurSceneType() == SceneType.Room and RoomController.instance:isObMode() then
-		slot3 = GameSceneMgr.instance:getCurScene()
-
-		for slot7, slot8 in ipairs(RoomMapVehicleModel.instance:getList()) do
-			if slot3.vehiclemgr:getUnit(RoomMapVehicleEntity:getTag(), slot8.id) then
-				slot3.cameraFollow:setFollowTarget(slot9.cameraFollowTargetComp)
-
-				return
-			end
-		end
-
-		GameFacade.showToast(94, "GM交通工具数量：" .. #slot2)
-	else
-		GameFacade.showToast(94, "GM需要进入小屋后观察模式下使用。")
-	end
-end
-
-function slot0._onRoomRotateSpeedChange(slot0, slot1, slot2)
-	slot3 = 0.2 + 1.8 * slot2
-	RoomController.instance.rotateSpeed = slot3
-	slot0._txtRoomRotateSpeed.text = string.format("%.2f", slot3)
-end
-
-function slot0._onRoomMoveSpeedChange(slot0, slot1, slot2)
-	slot3 = 0.2 + 1.8 * slot2
-	RoomController.instance.moveSpeed = slot3
-	slot0._txtRoomMoveSpeed.text = string.format("%.2f", slot3)
-end
-
-function slot0._onRoomScaleSpeedChange(slot0, slot1, slot2)
-	slot3 = 0.2 + 1.8 * slot2
-	RoomController.instance.scaleSpeed = slot3
-	slot0._txtRoomScaleSpeed.text = string.format("%.2f", slot3)
-end
-
-function slot0._onRoomTouchSpeedChange(slot0, slot1, slot2)
-	slot3 = 0.2 + 1.8 * slot2
-	RoomController.instance.touchMoveSpeed = slot3
-	slot0._txtRoomTouchSpeed.text = string.format("%.2f", slot3)
-end
-
 function slot0._onVisualToggleValueChange(slot0, slot1, slot2)
 	if not slot0.isOpenFinish then
 		return
@@ -582,21 +460,6 @@ function slot0._onVisualToggleValueChange(slot0, slot1, slot2)
 		GMController.instance:getVisualInteractiveMgr():start()
 	else
 		GMController.instance:getVisualInteractiveMgr():stop()
-	end
-end
-
-function slot0._onRoomClockSelectChanged(slot0, slot1)
-	if slot1 >= 1 or slot1 <= 24 then
-		RoomMapController.instance:dispatchEvent(RoomEvent.OnHourReporting, slot1)
-	end
-end
-
-function slot0._onClickRoomBuildingCamera(slot0)
-	if GameSceneMgr.instance:getCurSceneType() == SceneType.Room then
-		RoomDebugController.instance:openBuildingCamerView()
-		slot0:closeThis()
-	else
-		GameFacade.showToast(94, "GM需要进入小屋后使用。")
 	end
 end
 

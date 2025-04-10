@@ -23,6 +23,7 @@ function slot0.init(slot0, slot1)
 	end
 
 	slot0._config = slot0._heroMo and slot0._heroMo.config
+	slot0._type = slot1.type
 end
 
 function slot0.getHeroMo(slot0)
@@ -49,6 +50,10 @@ end
 
 function slot0.getHeroId(slot0)
 	return slot0._heroMo and slot0._heroMo.heroId
+end
+
+function slot0.isTeamLeader(slot0)
+	return slot0._type == 1
 end
 
 return slot0

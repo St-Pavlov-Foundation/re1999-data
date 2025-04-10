@@ -33,4 +33,12 @@ end
 function slot0.encodeShowStr()
 end
 
+function slot0.isActivityGroup(slot0)
+	return AchievementConfig.instance:getAchievement(slot0) and slot1.category == AchievementEnum.Type.Activity
+end
+
+function slot0.isGamePlayGroup(slot0)
+	return AchievementConfig.instance:getAchievement(slot0) and slot1.category == AchievementEnum.Type.GamePlay
+end
+
 return slot0

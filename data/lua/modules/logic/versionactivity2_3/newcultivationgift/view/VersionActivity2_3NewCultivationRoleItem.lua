@@ -43,6 +43,7 @@ function slot0.onClickSelf(slot0)
 	logNormal("onClickChoice id = " .. tostring(slot0._config.heroId))
 
 	if slot0._callBack and slot0._callBackObj then
+		AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
 		slot0._callBack(slot0._callBackObj, slot0._config.heroId)
 	end
 end

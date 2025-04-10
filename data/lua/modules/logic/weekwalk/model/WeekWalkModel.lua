@@ -8,6 +8,7 @@ end
 function slot0.reInit(slot0)
 	slot0._battleElementId = nil
 	slot0._weekWalkInfo = nil
+	slot0._curFinishMapId = nil
 end
 
 function slot0.isShallowLayer(slot0)

@@ -120,6 +120,14 @@
     ]
   },
   {
+    "name": "2_0_pv",
+    "supportLang": [
+      "en",
+      "zh",
+      "jp"
+    ]
+  },
+  {
     "name": "2_2_chapter8_01",
     "supportLang": [
       "en",
@@ -233,6 +241,22 @@
   },
   {
     "name": "2_6_pv",
+    "supportLang": [
+      "en",
+      "zh",
+      "jp"
+    ]
+  },
+  {
+    "name": "2_7_activity_03",
+    "supportLang": [
+      "en",
+      "zh",
+      "jp"
+    ]
+  },
+  {
+    "name": "2_7_pv",
     "supportLang": [
       "en",
       "zh",

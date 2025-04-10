@@ -87,10 +87,6 @@ function slot0._enterFight(slot0)
 end
 
 function slot0._initFightGroupDrop(slot0)
-	if not slot0:_noAidHero() then
-		return
-	end
-
 	if DungeonConfig.instance:getEpisodeCO(HeroGroupModel.instance.episodeId).type == DungeonEnum.EpisodeType.TowerBoss then
 		table.insert({}, HeroGroupModel.instance:getCommonGroupName())
 	else

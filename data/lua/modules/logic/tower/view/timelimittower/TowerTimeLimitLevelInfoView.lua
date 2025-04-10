@@ -35,6 +35,8 @@ function slot0.onInitView(slot0)
 	slot0._gohero = gohelper.findChild(slot0.viewGO, "root/#go_detailInfo/#btn_StartAgain/go_group/hero")
 	slot0._goheroitem = gohelper.findChild(slot0.viewGO, "root/#go_detailInfo/#btn_StartAgain/go_group/hero/heroItem")
 	slot0._goSwitchEfeect = gohelper.findChild(slot0.viewGO, "root/#go_detailInfo/#go_difficulty/index/vx_refresh")
+	slot0._goScore = gohelper.findChild(slot0.viewGO, "root/#go_detailInfo/#go_score")
+	slot0._txtScore = gohelper.findChildText(slot0.viewGO, "root/#go_detailInfo/#go_score/txt_score")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -183,6 +185,7 @@ function slot0.refreshUI(slot0)
 	slot0:refreshRecommend()
 	slot0:refreshAdditionRule()
 	slot0:refreshHeroList()
+	slot0:refreshScore()
 end
 
 function slot0.refreshDifficulty(slot0)
@@ -281,7 +284,18 @@ function slot0._onHeroItemShow(slot0, slot1, slot2, slot3)
 		}
 	end
 
-	slot4.simagehero:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(HeroModel.instance:getByHeroId(slot2).skin).retangleIcon))
+	slot5 = {}
+
+	slot4.simagehero:LoadImage(ResUrl.getHeadIconSmall(((HeroModel.instance:getByHeroId(slot2) or SkinConfig.instance:getSkinCo(HeroConfig.instance:getHeroCO(slot2).skinId)) and FightConfig.instance:getSkinCO(slot6.skin)).retangleIcon))
+end
+
+function slot0.refreshScore(slot0)
+	slot1 = TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Limited, slot0.seasonId)
+	slot4 = slot1:getLayerSubEpisodeList(slot0.layerId) and slot3[1].heroIds or {}
+
+	gohelper.setActive(slot0._goScore, slot4 and #slot4 > 0)
+
+	slot0._txtScore.text = slot1:getLayerScore(slot0.layerId)
 end
 
 function slot0.onClose(slot0)

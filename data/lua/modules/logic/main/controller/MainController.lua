@@ -68,20 +68,37 @@ function slot0._onActivityUpdate(slot0)
 end
 
 function slot0._onCheckAutoPop(slot0, slot1)
+	slot0._isDailyRefresh = slot1
+
+	if slot0._inPopupFlow then
+		slot0:registerCallback(MainEvent.OnMainPopupFlowFinish, slot0._onCheckFlowDone, slot0)
+
+		return
+	end
+
+	slot0:_setDailyRefreshPopUp()
+end
+
+function slot0._onCheckFlowDone(slot0)
+	slot0:unregisterCallback(MainEvent.OnMainPopupFlowFinish, slot0._onCheckFlowDone, slot0)
+	slot0:_setDailyRefreshPopUp()
+end
+
+function slot0._setDailyRefreshPopUp(slot0)
 	slot0:_destroyPopupFlow()
 
 	slot0._popupFlow = FlowSequence.New()
 
 	slot0._popupFlow:addWork(MainSignInWork.New())
 
-	if slot1 then
+	if slot0._isDailyRefresh then
 		slot0._popupFlow:addWork(MainPatFaceWork.New())
 	else
 		slot0._popupFlow:addWork(Activity152PatFaceWork.New())
 	end
 
 	slot0._popupFlow:start({
-		dailyRefresh = slot1
+		dailyRefresh = slot0._isDailyRefresh
 	})
 
 	slot0._inPopupFlow = true

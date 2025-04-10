@@ -16,7 +16,9 @@
     "bpviewpos": "3C2412#C66030#000000#-180.9#-200.5#-664.0176#287.4#1#1#-72.1#57#1#1#1108#1302",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 2,
@@ -35,7 +37,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 3,
@@ -54,7 +58,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 4,
@@ -73,7 +79,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 5,
@@ -92,7 +100,9 @@
     "bpviewpos": "",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 6,
@@ -111,7 +121,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 7,
@@ -130,7 +142,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 8,
@@ -149,7 +163,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 9,
@@ -168,7 +184,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 10,
@@ -187,7 +205,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 11,
@@ -206,7 +226,9 @@
     "bpviewpos": "B3B8B2#A6E6A2#D4C9A0#-208.4#205#-1073.018#167.4#0.86#0.86#63#0#1#1#2592#1312.453",
     "showBonus": "",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 12,
@@ -225,7 +247,9 @@
     "bpviewpos": "",
     "showBonus": "5#308203#1#1|1#140001#5|1#481010#2|9#1000#1|2#21#90|1#120012#25|1#481007#9|1#481006#6|1#120011#20|9#1003#150|2#3#225000|2#5#375000",
     "showBonusDate": "",
-    "isSp": true
+    "isSp": true,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 13,
@@ -244,7 +268,9 @@
     "bpviewpos": "",
     "showBonus": "5#304304#1#1|1#140001#5|1#481010#2|9#1000#1|1#620103#3|1#620102#40|2#21#90|1#120012#25|1#481007#9|1#481006#6|1#120011#20|9#1003#150|2#3#225000|2#5#375000",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 14,
@@ -263,7 +289,9 @@
     "bpviewpos": "",
     "showBonus": "5#309503#1#1|1#140001#5|1#481010#2|9#1000#1|1#620103#3|1#620102#40|2#21#90|1#120012#25|1#481007#9|1#481006#6|1#120011#20|9#1003#150|2#3#225000|2#5#375000",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 15,
@@ -282,7 +310,9 @@
     "bpviewpos": "",
     "showBonus": "5#300306#1#1|1#140001#5|1#481010#2|9#1000#1|1#620103#3|1#620102#40|2#21#90|1#120012#25|1#481007#9|1#481006#6|1#120011#20|9#1003#150|2#3#225000|2#5#375000",
     "showBonusDate": "",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   },
   {
     "bpId": 16,
@@ -301,6 +331,29 @@
     "bpviewpos": "",
     "showBonus": "",
     "showBonusDate": "2025-03-20 05:00:00",
-    "isSp": false
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
+  },
+  {
+    "bpId": 17,
+    "chargeId1": 710001,
+    "chargeId2": 710002,
+    "chargeId1to2": 710003,
+    "payStatus1Bonus": "1#481010#1",
+    "payStatus2Bonus": "2#2#400|1#171702#1|10#21#3|1#120013#5",
+    "name": "",
+    "payStatus2AddLevel": 10,
+    "expLevelUp": 1000,
+    "bpSkinDesc": "群星齐唱时",
+    "bpSkinNametxt": "——远旅",
+    "bpSkinEnNametxt": "Choir<br> of the Stars",
+    "bpviewicon": "",
+    "bpviewpos": "",
+    "showBonus": "",
+    "showBonusDate": "2025-04-24 05:00:00",
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false
   }
 ]

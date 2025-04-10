@@ -19,6 +19,9 @@ function slot0.onInitView(slot0)
 	slot0._txtrecommendlevel = gohelper.findChildText(slot0.goEpisodeInfo, "recommend/#txt_recommendLevel")
 	slot0.btnStart = gohelper.findChildButtonWithAudio(slot0.goEpisodeInfo, "btnStart")
 	slot0.btnReStart = gohelper.findChildButtonWithAudio(slot0.goEpisodeInfo, "btnReStart")
+	slot0.btnTeach = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/episodeInfo/btnTeach")
+	slot0.goTeachFinish = gohelper.findChild(slot0.viewGO, "root/episodeInfo/btnTeach/go_teachFinish")
+	slot0.animTeachFinishEffect = gohelper.findChild(slot0.viewGO, "root/episodeInfo/btnTeach/go_teachFinish/go_hasget"):GetComponent(gohelper.Type_Animator)
 	slot0.goRewards = gohelper.findChild(slot0.goEpisodeInfo, "Reward/scroll_reward/Viewport/#go_rewards")
 	slot0.goItem = gohelper.findChild(slot0.goRewards, "goItem")
 
@@ -30,11 +33,13 @@ end
 function slot0.addEvents(slot0)
 	slot0:addClickCb(slot0.btnStart, slot0._onBtnStartClick, slot0)
 	slot0:addClickCb(slot0.btnReStart, slot0._onBtnStartClick, slot0)
+	slot0:addClickCb(slot0.btnTeach, slot0._onBtnTeachClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0:removeClickCb(slot0.btnStart)
 	slot0:removeClickCb(slot0.btnReStart)
+	slot0:removeClickCb(slot0.btnTeach)
 end
 
 function slot0._editableInitView(slot0)
@@ -50,6 +55,13 @@ function slot0._onBtnStartClick(slot0)
 		towerId = slot0.towerId,
 		layerId = slot0.selectLayerId,
 		episodeId = slot0.episodeMo:getEpisodeConfig(slot0.towerId, slot0.selectLayerId).episodeId
+	})
+end
+
+function slot0._onBtnTeachClick(slot0)
+	TowerController.instance:openTowerBossTeachView({
+		towerType = slot0.towerType,
+		towerId = slot0.towerId
 	})
 end
 
@@ -75,6 +87,10 @@ function slot0.refreshParam(slot0)
 
 	if slot0.selectLayerId == nil then
 		slot0.selectLayerId = slot0.episodeConfig.layerId
+	end
+
+	if slot0.viewParam.isTeach then
+		slot0:_onBtnTeachClick()
 	end
 end
 
@@ -167,6 +183,18 @@ function slot0.refreshEpisodeInfo(slot0)
 	slot0:refreshRewards(slot1.firstReward)
 	gohelper.setActive(slot0.btnReStart, slot0.isPassLayer)
 	gohelper.setActive(slot0.btnStart, not slot0.isPassLayer)
+	slot0:refreshTeachUI()
+end
+
+function slot0.refreshTeachUI(slot0)
+	gohelper.setActive(slot0.goTeachFinish, TowerBossTeachModel.instance:isAllEpisodeFinish(slot0.towerConfig.bossId))
+
+	if TowerController.instance:getPlayerPrefs(TowerBossTeachModel.instance:getTeachFinishEffectSaveKey(slot0.towerConfig.bossId), 0) == 0 and slot1 then
+		slot0.animTeachFinishEffect:Play("go_hasget_in", 0, 0)
+		TowerController.instance:setPlayerPrefs(slot2, 1)
+	else
+		slot0.animTeachFinishEffect:Play("go_hasget_idle", 0, 0)
+	end
 end
 
 function slot0._onRecommendCareerItemShow(slot0, slot1, slot2, slot3)

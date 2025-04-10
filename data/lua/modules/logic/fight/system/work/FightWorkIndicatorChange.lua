@@ -8,7 +8,7 @@ slot0.ConfigEffect = {
 
 function slot0.onStart(slot0)
 	FightModel.instance:setWaitIndicatorAnimation(false)
-	slot0:com_sendFightEvent(FightEvent.OnIndicatorChange, tonumber(slot0._actEffectMO.targetId))
+	slot0:com_sendFightEvent(FightEvent.OnIndicatorChange, tonumber(slot0.actEffectData.targetId), slot0.actEffectData.effectNum)
 
 	if FightModel.instance:isWaitIndicatorAnimation() then
 		slot0:com_registTimer(slot0._delayDone, 3)

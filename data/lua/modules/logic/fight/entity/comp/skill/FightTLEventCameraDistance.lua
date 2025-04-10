@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventCameraDistance", package.seeall)
 
-slot0 = class("FightTLEventCameraDistance")
+slot0 = class("FightTLEventCameraDistance", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot6 = slot3[1]
 
 	if slot3[2] == "1" then
@@ -27,22 +27,15 @@ function slot0._releaseTween(slot0)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.onSkillEnd(slot0)
+function slot0.onDestructor(slot0)
 	if slot0._tween then
 		GameSceneMgr.instance:getCurScene().camera:setSceneCameraOffset()
 	end
 
 	slot0:_releaseTween()
-end
-
-function slot0.reset(slot0)
-	slot0:_releaseTween()
-end
-
-function slot0.dispose(slot0)
 end
 
 return slot0

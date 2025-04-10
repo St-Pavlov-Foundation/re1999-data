@@ -275,7 +275,7 @@ function slot0._onChangeRound(slot0)
 end
 
 function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4:isUniqueSkill(slot2) and slot1.id ~= slot0.entity.id then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) and slot1.id ~= slot0.entity.id then
 		for slot8, slot9 in pairs(slot0._tokenRelease) do
 			for slot13, slot14 in ipairs(slot9) do
 				slot14:setActive(false, "FightEffectTokenRelease" .. slot3.stepUid)
@@ -285,7 +285,7 @@ function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and slot4:isUniqueSkill(slot2) and slot1.id ~= slot0.entity.id then
+	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) and slot1.id ~= slot0.entity.id then
 		for slot8, slot9 in pairs(slot0._tokenRelease) do
 			for slot13, slot14 in ipairs(slot9) do
 				slot14:setActive(true, "FightEffectTokenRelease" .. slot3.stepUid)

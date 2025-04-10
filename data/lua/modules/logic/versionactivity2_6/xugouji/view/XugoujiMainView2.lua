@@ -113,7 +113,7 @@ function slot0._initStages(slot0)
 			break
 		end
 
-		slot14 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(slot1, gohelper.findChild(slot0._gostages, "stage" .. slot10)), XugoujiMainViewStageItem, slot0)
+		slot14 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(slot1, gohelper.findChild(slot0._gostages, "stage" .. slot10)), XugoujiLevelViewStageItem, slot0)
 
 		slot14:refreshItem(slot11, slot10)
 		table.insert(slot0._stageItemList, slot14)

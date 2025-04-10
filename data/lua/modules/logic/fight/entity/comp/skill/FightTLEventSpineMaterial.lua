@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventSpineMaterial", package.seeall)
 
-slot0 = class("FightTLEventSpineMaterial")
+slot0 = class("FightTLEventSpineMaterial", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._matName = slot3[2]
 	slot0._transitName = slot3[3]
 	slot0._transitType = slot3[4]
@@ -70,15 +70,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
-	slot0:_clear()
-end
-
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_clear()
 end
 
@@ -88,6 +80,10 @@ function slot0._clear(slot0)
 
 		slot0._tweenId = nil
 	end
+end
+
+function slot0.onDestructor(slot0)
+	slot0:_clear()
 end
 
 return slot0

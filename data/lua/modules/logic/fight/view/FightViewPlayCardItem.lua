@@ -97,7 +97,7 @@ function slot0.updateItem(slot0, slot1)
 	slot0.fightBeginRoundOp = slot1
 	slot2 = slot1
 	slot4 = slot2 and (slot2:isMoveCard() or slot2:isMoveUniversal())
-	slot5 = slot2 and (slot2:isPlayCard() or slot2:isAssistBossPlayCard() or slot2:isPlayerFinisherSkill())
+	slot5 = FightCardDataHelper.checkOpAsPlayCardHandle(slot2)
 
 	gohelper.setActive(slot0._emtpyGO, not slot2)
 	gohelper.setActive(slot0._moveGO, slot4)
@@ -248,7 +248,7 @@ function slot0._onClickThis(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 

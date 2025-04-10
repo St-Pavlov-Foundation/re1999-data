@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkExPointChange", package.seeall)
 slot0 = class("FightWorkExPointChange", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0._entityId = slot0._actEffectMO.targetId
+	slot0._entityId = slot0.actEffectData.targetId
 	slot0._entityMO = FightDataHelper.entityMgr:getById(slot0._entityId)
 	slot0._oldValue = slot0._entityMO and slot0._entityMO.exPoint
 end
@@ -44,7 +44,7 @@ function slot0._removeCard(slot0, slot1)
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	slot3 = #tabletool.copy(FightCardModel.instance:getHandCards())
+	slot3 = #FightDataHelper.handCardMgr.handCard
 
 	table.sort(slot1, FightWorkCardRemove2.sort)
 
@@ -52,12 +52,9 @@ function slot0._removeCard(slot0, slot1)
 		table.remove(slot2, slot8)
 	end
 
-	FightCardModel.instance:coverCard(slot2)
-
-	slot0._finalCards, slot0._combineCount = FightCardModel.calcCardsAfterCombine(slot2)
 	slot4 = 0.033
 
-	if slot0._combineCount > 0 then
+	if FightCardDataHelper.canCombineCardListForPerformance(slot2) then
 		slot0:com_registTimer(slot0._delayDone, 10)
 		FightController.instance:registerCallback(FightEvent.OnCombineCardEnd, slot0._onCombineDone, slot0)
 		FightController.instance:dispatchEvent(FightEvent.CardRemove, slot1, 1.2 + slot4 * 7 + 3 * slot4 * (slot3 - #slot1), true)
@@ -68,18 +65,10 @@ function slot0._removeCard(slot0, slot1)
 end
 
 function slot0._onCombineDone(slot0)
-	if slot0._finalCards then
-		FightCardModel.instance:coverCard(slot0._finalCards)
-	end
-
 	slot0:onDone(true)
 end
 
 function slot0._delayDone(slot0)
-	if slot0._finalCards then
-		FightCardModel.instance:coverCard(slot0._finalCards)
-	end
-
 	FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
 	slot0:onDone(true)
 end
@@ -91,8 +80,8 @@ end
 function slot0._calcRemoveCard(slot0)
 	slot2 = nil
 
-	for slot6, slot7 in ipairs(FightCardModel.instance:getHandCards()) do
-		if FightDataHelper.entityMgr:getById(slot7.uid) and FightCardModel.instance:isUniqueSkill(slot7.uid, slot7.skillId) and slot8:getExPoint() < (slot8 and slot8:getUniqueSkillPoint() or 5) then
+	for slot6, slot7 in ipairs(FightDataHelper.handCardMgr.handCard) do
+		if FightDataHelper.entityMgr:getById(slot7.uid) and FightCardDataHelper.isBigSkill(slot7.skillId) and slot8:getExPoint() < (slot8 and slot8:getUniqueSkillPoint() or 5) then
 			table.insert(slot2 or {}, slot6)
 		end
 	end

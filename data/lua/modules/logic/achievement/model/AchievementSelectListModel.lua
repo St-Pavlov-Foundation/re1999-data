@@ -62,11 +62,15 @@ function slot0.decodeShowAchievement(slot0)
 	slot0.groupSelectList = {}
 
 	for slot7, slot8 in pairs(slot3) do
-		if AchievementConfig.instance:getTask(slot8) and AchievementConfig.instance:getAchievement(slot9.achievementId).groupId ~= 0 and not slot0.groupSet[slot10.groupId] then
-			slot0.groupSet[slot10.groupId] = true
+		if AchievementConfig.instance:getTask(slot8) then
+			slot10 = AchievementConfig.instance:getAchievement(slot9.achievementId)
 
-			table.insert(slot0.groupSelectList, slot10.groupId)
-			slot0:updateGroupSelectCategoryMap(slot10.groupId, true)
+			if AchievementUtils.isActivityGroup(slot9.achievementId) and not slot0.groupSet[slot10.groupId] then
+				slot0.groupSet[slot10.groupId] = true
+
+				table.insert(slot0.groupSelectList, slot10.groupId)
+				slot0:updateGroupSelectCategoryMap(slot10.groupId, true)
+			end
 		end
 	end
 
@@ -194,7 +198,7 @@ function slot0.buildGroupMOList(slot0, slot1)
 	slot5 = 0
 
 	for slot9, slot10 in ipairs(slot4) do
-		if slot10.groupId ~= 0 then
+		if AchievementUtils.isActivityGroup(slot10.id) then
 			if slot5 ~= slot10.groupId then
 				if slot5 == 0 then
 					slot5 = slot10.groupId

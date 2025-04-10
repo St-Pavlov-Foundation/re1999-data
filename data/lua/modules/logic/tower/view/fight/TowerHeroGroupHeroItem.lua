@@ -21,6 +21,20 @@ function slot0.checkTower(slot0)
 		else
 			slot0._commonHeroCard:setGrayScale(false)
 		end
+	elseif slot0.trialCO ~= nil then
+		if TowerModel.instance:isHeroLocked(slot0.trialCO.heroId) then
+			slot0._commonHeroCard:setGrayScale(false)
+		elseif TowerModel.instance:isHeroBan(slot0.trialCO.heroId) then
+			slot0._playDeathAnim = true
+
+			slot0:playAnim("herogroup_hero_deal")
+
+			slot0.tweenid = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.5, slot0.setGrayFactor, nil, slot0)
+
+			return tostring(tonumber(slot0.trialCO.id .. "." .. slot0.trialCO.trialTemplate) - 1099511627776.0)
+		else
+			slot0._commonHeroCard:setGrayScale(false)
+		end
 	end
 end
 

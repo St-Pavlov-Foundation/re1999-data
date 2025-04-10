@@ -460,45 +460,47 @@ function slot0.storeRedDotRefreshFunc(slot0, slot1)
 	slot1:defaultRefreshDot()
 	slot0:showBankNewEffect(false)
 
-	if not slot1.show then
-		for slot6, slot7 in ipairs(StoreHelper.getRecommendStoreSecondTabConfig()) do
-			if StoreController.instance:isNeedShowRedDotNewTag(slot7) and not StoreController.instance:isEnteredRecommendStore(slot7.id) then
-				slot1.show = true
+	for slot6, slot7 in ipairs(StoreHelper.getRecommendStoreSecondTabConfig()) do
+		if StoreController.instance:isNeedShowRedDotNewTag(slot7) and not StoreController.instance:isEnteredRecommendStore(slot7.id) then
+			slot1.show = true
 
-				slot1:showRedDot(RedDotEnum.Style.NewTag)
-				slot1:SetRedDotTrsWithType(RedDotEnum.Style.NewTag, 9.7, 4.2)
-				slot0:showStoreDeadline(false)
-				slot0:registStoreDeadlineCall(false)
-				slot0:showBankNewEffect(true)
+			slot1:showRedDot(RedDotEnum.Style.NewTag)
+			slot1:SetRedDotTrsWithType(RedDotEnum.Style.NewTag, 9.7, 4.2)
+			slot0:showStoreDeadline(false)
+			slot0:registStoreDeadlineCall(false)
+			slot0:showBankNewEffect(true)
 
-				return
-			end
+			return
 		end
-	else
-		slot2 = false
+	end
 
-		if StoreModel.instance:getAllRedDotInfo() then
-			for slot7, slot8 in pairs(slot3) do
-				if StoreModel.instance:getGoodsMO(slot8.uid) then
-					slot2 = slot9.refreshTime == StoreEnum.ChargeRefreshTime.Week or slot9.refreshTime == StoreEnum.ChargeRefreshTime.Month
-				end
+	if StoreModel.instance:getAllRedDotInfo() then
+		slot4 = false
 
-				if slot2 then
-					break
+		for slot8, slot9 in pairs(slot3) do
+			if StoreModel.instance:getGoodsMO(slot9.uid) then
+				slot4 = slot10.refreshTime == StoreEnum.ChargeRefreshTime.Week or slot10.refreshTime == StoreEnum.ChargeRefreshTime.Month
+
+				if StoreConfig.instance:isPackageStore(slot10.belongStoreId) then
+					slot4 = slot10.newStartTime <= ServerTime.now() and slot14 <= slot10.newEndTime
 				end
 			end
 
-			if slot2 then
-				slot1.show = true
-
-				slot1:showRedDot(RedDotEnum.Style.NewTag)
-				slot1:SetRedDotTrsWithType(RedDotEnum.Style.NewTag, 9.7, 4.2)
-				slot0:showBankNewEffect(true)
+			if slot4 then
+				break
 			end
 		end
 
-		slot0:showStoreDeadline(false)
-		slot0:registStoreDeadlineCall(false)
+		if slot4 then
+			slot1.show = true
+
+			slot1:showRedDot(RedDotEnum.Style.NewTag)
+			slot1:SetRedDotTrsWithType(RedDotEnum.Style.NewTag, 9.7, 4.2)
+			slot0:showBankNewEffect(true)
+		end
+
+		slot0:showStoreDeadline(not slot4 and not slot1.show)
+		slot0:registStoreDeadlineCall(not slot4 and not slot1.show)
 
 		return
 	end
@@ -527,20 +529,29 @@ function slot0.showStoreDeadline(slot0, slot1)
 	slot2 = slot0:getOrCreateStoreDeadline()
 	slot2.needShow = slot1 or slot2.needShow
 
-	if StoreConfig.instance:getTabConfig(StoreEnum.StoreId.LimitStore) and slot2.needShow then
-		slot4 = false
+	if slot2.needShow then
+		slot3 = false
+		slot5 = 0
 
-		if StoreHelper.getRemainExpireTime(slot3) and slot5 > 0 and slot5 <= TimeUtil.OneDaySecond * 7 then
+		if StoreConfig.instance:getTabConfig(StoreEnum.StoreId.LimitStore) and StoreHelper.getRemainExpireTime(slot4) and slot6 > 0 and slot6 <= TimeUtil.OneDaySecond * 7 then
+			slot5 = slot6
+		end
+
+		if StoreHelper.getRemainExpireTimeDeepByStoreId(StoreEnum.StoreId.DecorateStore) > 0 then
+			slot5 = slot5 == 0 and slot6 or Mathf.Min(slot6, slot5)
+		end
+
+		if slot5 > 0 then
 			gohelper.setActive(slot2.godeadline, true)
 			gohelper.setActive(slot2.txttime.gameObject, true)
 
-			slot2.txttime.text, slot2.txtformat.text, slot10 = TimeUtil.secondToRoughTime(math.floor(slot5), true)
+			slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot5), true)
 
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot10 and "daojishi_01" or "daojishi_02")
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot4 and "daojishiicon_01" or "daojishiicon_02")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot4 and "#98D687" or "#E99B56")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot4 and "#98D687" or "#E99B56")
-			gohelper.setActive(slot2.godeadlineEffect, not slot4)
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
+			gohelper.setActive(slot2.godeadlineEffect, not slot3)
 
 			return
 		end

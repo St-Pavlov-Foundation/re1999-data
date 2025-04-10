@@ -16,6 +16,14 @@ slot0.AnimName = {
 slot0.AnimNameDuration = {
 	[slot0.AnimName.Add] = 0.5
 }
+slot0.ExPointType = {
+	Extra = 2,
+	Normal = 1
+}
+
+function slot0.getType(slot0)
+	return uv0.ExPointType.Normal
+end
 
 function slot0.init(slot0, slot1)
 	slot0:__onInit()
@@ -320,6 +328,14 @@ function slot0.switchToStoredState(slot0, slot1)
 	slot0.animator.enabled = true
 
 	slot0.animatorPlayer:Play(uv0.AnimName.StoredAdd)
+end
+
+function slot0.recycle(slot0, slot1)
+	gohelper.addChild(slot1, slot0.exPointGo)
+end
+
+function slot0.getPointGo(slot0)
+	return slot0.exPointGo
 end
 
 function slot0.destroy(slot0)

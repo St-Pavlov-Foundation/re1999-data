@@ -39,6 +39,9 @@ function slot0.onInitView(slot0)
 	slot0.simageWaveEntry = gohelper.findChildSingleImage(slot0.viewGO, "go_Entry/#go_Limit/wavebg")
 	slot0.goEntryPermanent = gohelper.findChild(slot0.viewGO, "go_Entry/#go_Permanent")
 	slot0.imgStage = gohelper.findChildImage(slot0.viewGO, "go_Entry/#go_Permanent/imgStage")
+	slot0.goScoreStar = gohelper.findChild(slot0.viewGO, "go_Result/LimitDetail/#go_scoreStar")
+	slot0.goPointContent = gohelper.findChild(slot0.viewGO, "go_Result/LimitDetail/#go_scoreStar/#go_PointContent")
+	slot0.goPointItem = gohelper.findChild(slot0.viewGO, "go_Result/LimitDetail/#go_scoreStar/#go_PointContent/#go_PointItem")
 
 	gohelper.setActive(slot0.goFinish, false)
 	gohelper.setActive(slot0.goEntry, false)
@@ -148,6 +151,7 @@ end
 function slot0.refreshResult(slot0)
 	gohelper.setActive(slot0.goLimitDetail, slot0.isLimit)
 	gohelper.setActive(slot0.goPermanentDetail, not slot0.isLimit)
+	gohelper.setActive(slot0.goScoreStar, slot0.isLimit)
 
 	if slot0.isLimit then
 		slot0.txtScoreDetail.text = tostring(slot0.score)
@@ -163,6 +167,18 @@ function slot0.refreshResult(slot0)
 
 		for slot4, slot5 in ipairs(slot0.difficultyItems) do
 			gohelper.setActive(slot5, slot4 == slot0.difficulty)
+		end
+
+		gohelper.setActive(slot0.goScoreStar, TowerConfig.instance:getScoreToStarConfig(slot0.score) > 0)
+
+		if slot1 > 0 then
+			slot2 = {}
+
+			for slot6 = 1, slot1 do
+				table.insert(slot2, slot6)
+			end
+
+			gohelper.CreateObjList(slot0, slot0.scoreStarShow, slot2, slot0.goPointContent, slot0.goPointItem)
 		end
 	else
 		UISpriteSetMgr.instance:setTowerPermanentSprite(slot0.imgStageDetail, string.format("towerpermanent_stage_%s_1", tabletool.indexOf(string.splitToNumber(slot0.layerConfig.episodeIds, "|") or {}, slot0.episodeId)))
@@ -190,6 +206,10 @@ function slot0.refreshResult(slot0)
 
 	slot0:refreshHeroGroup()
 	slot0:refreshRewards(slot0.goReward, slot0.goRewards)
+end
+
+function slot0.scoreStarShow(slot0, slot1, slot2, slot3)
+	gohelper.setActive(slot1, slot3 <= slot2)
 end
 
 function slot0.refreshRewards(slot0, slot1, slot2)
@@ -223,7 +243,7 @@ function slot0.refreshHeroGroup(slot0)
 		slot0.heroItemList = slot0:getUserDataTb_()
 	end
 
-	slot2 = FightModel.instance:getFightParam():getHeroEquipMoList()
+	slot2 = FightModel.instance:getFightParam():getHeroEquipAndTrialMoList(true)
 
 	for slot6 = 1, 4 do
 		if slot0.heroItemList[slot6] == nil then

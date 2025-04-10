@@ -6,7 +6,7 @@ slot0.hangPoint = "mountroot"
 slot0.relaseTime = 2
 
 function slot0.onStart(slot0)
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:onDone(true)
 
 		return

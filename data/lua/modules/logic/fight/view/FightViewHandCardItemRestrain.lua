@@ -95,10 +95,10 @@ function slot0._playNonAnimation(slot0)
 end
 
 function slot0.getNewRestrainStatus(slot0, slot1)
-	slot4 = FightHelper.getEntity(FightCardModel.instance.curSelectEntityId)
+	slot4 = FightHelper.getEntity(FightDataHelper.operationDataMgr.curSelectEntityId)
 	slot6 = lua_skill.configDict[slot1] and slot5.showTag
 
-	if (FightModel.instance:getCurStage() == FightEnum.Stage.Distribute or slot2 == FightEnum.Stage.Card) and OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FightRestrainTag) and not FightModel.instance:isAuto() and FightCardModel.instance.curSelectEntityId ~= 0 and slot4 and (slot6 and FightEnum.NeedShowRestrainTag[slot6]) and not GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.FightForbidRestrainTag) then
+	if (FightModel.instance:getCurStage() == FightEnum.Stage.Distribute or slot2 == FightEnum.Stage.Card) and OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FightRestrainTag) and not FightModel.instance:isAuto() and FightDataHelper.operationDataMgr.curSelectEntityId ~= 0 and slot4 and (slot6 and FightEnum.NeedShowRestrainTag[slot6]) and not GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.FightForbidRestrainTag) then
 		if FightBuffHelper.restrainAll(slot0) then
 			return uv0.RestrainMvStatus.Restrain
 		end

@@ -1,0 +1,32 @@
+[
+  {
+    "activityId": 12701,
+    "id": 101,
+    "nextId": 102,
+    "initStage": 1,
+    "rule": "1011",
+    "name": "1",
+    "score": 400,
+    "coin": 50
+  },
+  {
+    "activityId": 12701,
+    "id": 102,
+    "nextId": 103,
+    "initStage": 0,
+    "rule": "1021",
+    "name": "2",
+    "score": 600,
+    "coin": 60
+  },
+  {
+    "activityId": 12701,
+    "id": 103,
+    "nextId": 0,
+    "initStage": 0,
+    "rule": "1031",
+    "name": "3",
+    "score": 800,
+    "coin": 70
+  }
+]

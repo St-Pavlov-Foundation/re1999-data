@@ -220,7 +220,7 @@ function slot0.refreshNormalGoods(slot0)
 
 	if not slot2 then
 		if StoreConfig.instance:getGoodsConfig(slot1.goodsId).needEpisodeId == StoreEnum.Need4RDEpisodeId then
-			slot0._txtlvlimit.text = string.format("%s%s", luaLang("level_limit_4RD_unlock"), luaLang("dungeon_unlock"))
+			slot0._txtlvlimit.text = luaLang("store_decorate_good_unlock")
 		else
 			slot6 = "dungeon_main_unlock"
 			slot0.isHardChapter = false
@@ -472,7 +472,9 @@ function slot0.refreshActGoods(slot0)
 	gohelper.setActive(slot0._goRefreshTime, false)
 	gohelper.setActive(slot0._gonewtag, false)
 
-	slot0._txtremain.text = string.format("%s:%d", luaLang("store_buylimit_day"), FurnaceTreasureModel.instance:getGoodsRemainCount(slot2, slot3))
+	slot0._txtremain.text = GameUtil.getSubPlaceholderLuaLang(luaLang("store_decorate_good_remain"), {
+		FurnaceTreasureModel.instance:getGoodsRemainCount(slot2, slot3)
+	})
 
 	gohelper.setActive(slot0._txtremain.gameObject, true)
 	gohelper.setActive(slot0._gohas, false)
@@ -599,7 +601,7 @@ function slot0.refreshGoUnique(slot0)
 end
 
 function slot0.checkShowTicket(slot0)
-	if slot0._mo.belongStoreId == StoreEnum.SubRoomOld or slot0._mo.belongStoreId == StoreEnum.SubRoomNew then
+	if slot0._mo.belongStoreId == StoreEnum.StoreId.OldRoomStore or slot0._mo.belongStoreId == StoreEnum.StoreId.NewRoomStore then
 		if slot0._itemType ~= MaterialEnum.MaterialType.BlockPackage and slot0._itemType ~= MaterialEnum.MaterialType.Building then
 			return false
 		end

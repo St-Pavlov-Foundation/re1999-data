@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventStressTrigger", package.seeall)
 
-slot0 = class("FightTLEventStressTrigger")
+slot0 = class("FightTLEventStressTrigger", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	if not FightModel.instance:popNoHandledStressBehaviour(slot1.fromId) then
 		logError("压力触发技能动效帧, 但是没找到触发压力的effect")
 
@@ -22,7 +22,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 
 	FightController.instance:dispatchEvent(FightEvent.TriggerStressBehaviour, slot14, slot15)
 
-	for slot14, slot15 in ipairs(slot1.actEffectMOs) do
+	for slot14, slot15 in ipairs(slot1.actEffect) do
 		if slot15.effectType == FightEnum.EffectType.POWERCHANGE and slot15.targetId == slot4 and slot15.configEffect == FightEnum.PowerType.Stress then
 			slot17 = FightDataHelper.entityMgr:getById(slot4) and slot16:getPowerInfo(FightEnum.PowerType.Stress)
 
@@ -39,16 +39,10 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.onSkillEnd(slot0)
-end
-
-function slot0.clear(slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 end
 
 return slot0

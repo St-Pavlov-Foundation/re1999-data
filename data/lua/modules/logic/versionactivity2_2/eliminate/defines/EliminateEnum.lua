@@ -2,21 +2,35 @@ module("modules.logic.versionactivity2_2.eliminate.defines.EliminateEnum", packa
 
 slot0 = class("EliminateEnum")
 slot0.ChessState = {
-	Selected = 1,
-	Die = 2,
-	Normal = 0
+	Frost = 1000,
+	SpecialSkill = 10000,
+	Selected = 10,
+	Die = 100,
+	Normal = 1
 }
 slot0.StepWorkType = {
 	StartShowView = 5,
-	PlayAudio = 9,
+	Arrange_XY = 11,
 	RefreshEliminate = 10,
-	HandleData = 3,
-	Die = 1,
+	PlayAudio = 23,
+	ChangeState = 13,
+	EliminateChessRevert = 16,
+	EliminateChessUpdateGameInfo = 18,
+	LengZhou6EnemyReleaseSkillStep = 19,
 	Arrange = 2,
-	ShowEvaluate = 7,
-	PlayEffect = 8,
+	LengZhou6EnemyGenerateSkillStep = 21,
+	ChessItemUpdateInfo = 20,
 	Debug = 4,
 	EndShowView = 6,
+	EliminateCheckAndRefresh = 22,
+	HandleData = 3,
+	Die = 1,
+	DieEffect = 12,
+	CheckEliminate = 14,
+	ShowEvaluate = 7,
+	PlayEffect = 8,
+	EliminateChessUpdateDamage = 17,
+	EliminateChessDebug2_7 = 15,
 	Move = 0
 }
 slot0.EffectType = {
@@ -84,5 +98,6 @@ slot0.levelTargetTipShowTimeInTeamChess = 0.5
 slot0.dieEffectCacheCount = 30
 slot0.damageCacheCount = 10
 slot0.hpDamageCacheCount = 10
+slot0.InvalidId = -1
 
 return slot0

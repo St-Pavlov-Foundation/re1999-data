@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventEntityScale", package.seeall)
 
-slot0 = class("FightTLEventEntityScale")
+slot0 = class("FightTLEventEntityScale", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._paramsArr = slot3
 	slot0._targetScale = tonumber(slot3[1])
 	slot0._revertScale = slot3[5] == "1"
@@ -16,7 +16,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 	elseif slot4 == "3" then
 		slot6 = FightHelper.getSideEntitys(FightHelper.getEntity(slot1.fromId):getSide(), true)
 	elseif slot4 == "4" then
-		slot6 = FightHelper.getSideEntitys(FightHelper.getEntity(slot1.toId):getSide(), true)
+		slot6 = (not FightHelper.getEntity(slot1.toId) or FightHelper.getSideEntitys(slot7:getSide(), true)) and {}
 	end
 
 	if not string.nilorempty(slot3[4]) then
@@ -68,15 +68,11 @@ function slot0._getScale(slot0, slot1)
 	return slot0._targetScale
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 	slot0:_clear()
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_clear()
 end
 

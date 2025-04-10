@@ -177,8 +177,6 @@ function slot0.setCardsUniversalMatch(slot0, slot1, slot2, slot3, slot4, slot5)
 		end
 	end
 
-	FightCardModel.instance:setUniversalCombine(nil, )
-
 	slot12 = nil
 
 	for slot16 = 1, slot4 do
@@ -187,7 +185,6 @@ function slot0.setCardsUniversalMatch(slot0, slot1, slot2, slot3, slot4, slot5)
 
 			if slot9 and slot16 == slot11 and FightCardDataHelper.canCombineWithUniversalForPerformance(slot6, slot1[slot16]) then
 				slot17:setUniversal(true)
-				FightCardModel.instance:setUniversalCombine(slot6, slot1[slot16])
 
 				slot12 = slot17
 			end
@@ -198,7 +195,7 @@ function slot0.setCardsUniversalMatch(slot0, slot1, slot2, slot3, slot4, slot5)
 		uv0._setUniversalLinkEffect(slot7, slot12)
 	end
 
-	slot0[slot2]:setUniversal(slot9 and FightCardModel.instance:getUniversalCardMO())
+	slot0[slot2]:setUniversal(slot9)
 end
 
 function slot0._setUniversalLinkEffect(slot0, slot1)

@@ -189,7 +189,7 @@ function slot0.refreshUI(slot0)
 
 	if slot4 or slot2 == 1 then
 		if slot4 then
-			slot0._txtEndlessMultiple.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("act174_endless_multiple"), slot1:getBetScore(), string.format("%s%s", luaLang("multiple"), Activity174Config.instance:getTurnCo(slot0.actId, slot2).point / 1000))
+			slot0._txtEndlessMultiple.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("act174_endless_multiple"), slot1:getBetScore(), GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("multiple_1"), Activity174Config.instance:getTurnCo(slot0.actId, slot2).point / 1000))
 
 			gohelper.setActive(slot0._goCoin1, false)
 			gohelper.setActive(slot0._goHp, false)

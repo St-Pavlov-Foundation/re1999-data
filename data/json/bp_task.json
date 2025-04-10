@@ -20,7 +20,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100002,
@@ -43,7 +44,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100003,
@@ -66,7 +68,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100004,
@@ -89,7 +92,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100005,
@@ -112,7 +116,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100006,
@@ -135,7 +140,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100007,
@@ -158,7 +164,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100008,
@@ -181,7 +188,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100009,
@@ -204,7 +212,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100010,
@@ -227,7 +236,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100011,
@@ -250,7 +260,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100012,
@@ -273,7 +284,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100013,
@@ -296,7 +308,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100014,
@@ -319,7 +332,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100015,
@@ -342,7 +356,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100016,
@@ -365,7 +380,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100017,
@@ -388,7 +404,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100018,
@@ -411,7 +428,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100019,
@@ -434,7 +452,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100020,
@@ -457,7 +476,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100021,
@@ -480,7 +500,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100022,
@@ -503,7 +524,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100023,
@@ -526,7 +548,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100024,
@@ -549,7 +572,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100025,
@@ -572,7 +596,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100026,
@@ -595,7 +620,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100027,
@@ -618,7 +644,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100028,
@@ -641,7 +668,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100029,
@@ -664,7 +692,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100030,
@@ -687,7 +716,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100031,
@@ -710,7 +740,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100032,
@@ -733,7 +764,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100033,
@@ -756,7 +788,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100034,
@@ -779,7 +812,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100035,
@@ -802,7 +836,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100036,
@@ -825,7 +860,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100037,
@@ -848,7 +884,8 @@
     "startTime": "2023-6-15 05:00:00",
     "endTime": "2023-7-6 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100038,
@@ -871,7 +908,8 @@
     "startTime": "2023-7-6 05:00:00",
     "endTime": "2023-7-27 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100039,
@@ -894,7 +932,8 @@
     "startTime": "2023-6-29 05:00:00",
     "endTime": "2023-7-8 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100040,
@@ -917,7 +956,8 @@
     "startTime": "2023-7-18 05:00:00",
     "endTime": "2023-7-27 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100041,
@@ -940,7 +980,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100042,
@@ -963,7 +1004,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100043,
@@ -986,7 +1028,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100044,
@@ -1009,7 +1052,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100045,
@@ -1032,7 +1076,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100046,
@@ -1055,7 +1100,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100047,
@@ -1078,7 +1124,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100048,
@@ -1101,7 +1148,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100049,
@@ -1124,7 +1172,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100050,
@@ -1147,7 +1196,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100101,
@@ -1170,7 +1220,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100102,
@@ -1193,7 +1244,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100103,
@@ -1216,7 +1268,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100104,
@@ -1239,7 +1292,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100105,
@@ -1262,7 +1316,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100106,
@@ -1285,7 +1340,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100107,
@@ -1308,7 +1364,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100108,
@@ -1331,7 +1388,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100109,
@@ -1354,7 +1412,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100110,
@@ -1377,7 +1436,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100111,
@@ -1400,7 +1460,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100112,
@@ -1423,7 +1484,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100113,
@@ -1446,7 +1508,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100114,
@@ -1469,7 +1532,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100115,
@@ -1492,7 +1556,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100116,
@@ -1515,7 +1580,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100117,
@@ -1538,7 +1604,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100121,
@@ -1561,7 +1628,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100122,
@@ -1584,7 +1652,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100123,
@@ -1607,7 +1676,8 @@
     "startTime": "2023-7-27 05:00:00",
     "endTime": "2023-8-17 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100124,
@@ -1630,7 +1700,8 @@
     "startTime": "2023-7-27 05:00:00",
     "endTime": "2023-8-17 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100125,
@@ -1653,7 +1724,8 @@
     "startTime": "2023-8-17 05:00:00",
     "endTime": "2023-9-7 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100126,
@@ -1676,7 +1748,8 @@
     "startTime": "2023-8-17 05:00:00",
     "endTime": "2023-8-31 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100127,
@@ -1699,7 +1772,8 @@
     "startTime": "2023-7-27 05:00:00",
     "endTime": "2023-8-10 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100201,
@@ -1722,7 +1796,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100202,
@@ -1745,7 +1820,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100203,
@@ -1768,7 +1844,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100204,
@@ -1791,7 +1868,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100205,
@@ -1814,7 +1892,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100206,
@@ -1837,7 +1916,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100207,
@@ -1860,7 +1940,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100208,
@@ -1883,7 +1964,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100209,
@@ -1906,7 +1988,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100210,
@@ -1929,7 +2012,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100211,
@@ -1952,7 +2036,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100212,
@@ -1975,7 +2060,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100213,
@@ -1998,7 +2084,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100214,
@@ -2021,7 +2108,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100215,
@@ -2044,7 +2132,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100216,
@@ -2067,7 +2156,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100217,
@@ -2090,7 +2180,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100218,
@@ -2113,7 +2204,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100219,
@@ -2136,7 +2228,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100220,
@@ -2159,7 +2252,8 @@
     "startTime": "2023-9-7 05:00:00",
     "endTime": "2023-10-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100221,
@@ -2182,7 +2276,8 @@
     "startTime": "2023-9-7 05:00:00",
     "endTime": "2023-9-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100222,
@@ -2205,7 +2300,8 @@
     "startTime": "2023-9-28 05:00:00",
     "endTime": "2023-10-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100223,
@@ -2228,7 +2324,8 @@
     "startTime": "2023-9-7 05:00:00",
     "endTime": "2023-9-21 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100224,
@@ -2251,7 +2348,8 @@
     "startTime": "2023-9-28 05:00:00",
     "endTime": "2023-10-12 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100301,
@@ -2274,7 +2372,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100302,
@@ -2297,7 +2396,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100303,
@@ -2320,7 +2420,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100304,
@@ -2343,7 +2444,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100305,
@@ -2366,7 +2468,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100306,
@@ -2389,7 +2492,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100307,
@@ -2412,7 +2516,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100308,
@@ -2435,7 +2540,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100309,
@@ -2458,7 +2564,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100310,
@@ -2481,7 +2588,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100311,
@@ -2504,7 +2612,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100312,
@@ -2527,7 +2636,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100313,
@@ -2550,7 +2660,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100314,
@@ -2573,7 +2684,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100315,
@@ -2596,7 +2708,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100316,
@@ -2619,7 +2732,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100317,
@@ -2642,7 +2756,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100318,
@@ -2665,7 +2780,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100319,
@@ -2688,7 +2804,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100320,
@@ -2711,7 +2828,8 @@
     "startTime": "2023-10-19 05:00:00",
     "endTime": "2023-11-27 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100321,
@@ -2734,7 +2852,8 @@
     "startTime": "2023-10-19 05:00:00",
     "endTime": "2023-11-27 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100322,
@@ -2757,7 +2876,8 @@
     "startTime": "2023-10-19 05:00:00",
     "endTime": "2023-11-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100323,
@@ -2780,7 +2900,8 @@
     "startTime": "2023-11-09 05:00:00",
     "endTime": "2023-11-30 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100324,
@@ -2803,7 +2924,8 @@
     "startTime": "2023-10-19 05:00:00",
     "endTime": "2023-11-02 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100325,
@@ -2826,7 +2948,8 @@
     "startTime": "2023-11-09 05:00:00",
     "endTime": "2023-11-23 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100326,
@@ -2849,7 +2972,8 @@
     "startTime": "2023-11-13 05:00:00",
     "endTime": "2023-11-27 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100327,
@@ -2872,7 +2996,8 @@
     "startTime": "2023-10-30 05:00:00",
     "endTime": "2023-11-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100328,
@@ -2895,7 +3020,8 @@
     "startTime": "2023-10-26 05:00:00",
     "endTime": "2023-11-30 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100401,
@@ -2918,7 +3044,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100402,
@@ -2941,7 +3068,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100403,
@@ -2964,7 +3092,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100404,
@@ -2987,7 +3116,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100405,
@@ -3010,7 +3140,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100406,
@@ -3033,7 +3164,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100407,
@@ -3056,7 +3188,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100408,
@@ -3079,7 +3212,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100409,
@@ -3102,7 +3236,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100410,
@@ -3125,7 +3260,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100411,
@@ -3148,7 +3284,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100412,
@@ -3171,7 +3308,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100413,
@@ -3194,7 +3332,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100414,
@@ -3217,7 +3356,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100415,
@@ -3240,7 +3380,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100416,
@@ -3263,7 +3404,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100417,
@@ -3286,7 +3428,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100418,
@@ -3309,7 +3452,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100419,
@@ -3332,7 +3476,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100421,
@@ -3355,7 +3500,8 @@
     "startTime": "2023-11-30 05:00:00",
     "endTime": "2024-01-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100422,
@@ -3378,7 +3524,8 @@
     "startTime": "2023-11-30 05:00:00",
     "endTime": "2023-12-21 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100423,
@@ -3401,7 +3548,8 @@
     "startTime": "2023-12-21 05:00:00",
     "endTime": "2024-01-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100424,
@@ -3424,7 +3572,8 @@
     "startTime": "2023-11-30 05:00:00",
     "endTime": "2023-12-14 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100425,
@@ -3447,7 +3596,8 @@
     "startTime": "2023-12-21 05:00:00",
     "endTime": "2024-01-04 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100426,
@@ -3470,7 +3620,8 @@
     "startTime": "2023-12-11 05:00:00",
     "endTime": "2023-12-25 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100427,
@@ -3493,7 +3644,8 @@
     "startTime": "2023-12-25 05:00:00",
     "endTime": "2024-01-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100428,
@@ -3516,7 +3668,8 @@
     "startTime": "2023-12-07 05:00:00",
     "endTime": "2024-01-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100501,
@@ -3539,7 +3692,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100502,
@@ -3562,7 +3716,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100503,
@@ -3585,7 +3740,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100504,
@@ -3608,7 +3764,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100505,
@@ -3631,7 +3788,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100506,
@@ -3654,7 +3812,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100507,
@@ -3677,7 +3836,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100508,
@@ -3700,7 +3860,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100509,
@@ -3723,7 +3884,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100510,
@@ -3746,7 +3908,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100511,
@@ -3769,7 +3932,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100512,
@@ -3792,7 +3956,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100513,
@@ -3815,7 +3980,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100514,
@@ -3838,7 +4004,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100515,
@@ -3861,7 +4028,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100516,
@@ -3884,7 +4052,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100517,
@@ -3907,7 +4076,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100518,
@@ -3930,7 +4100,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100519,
@@ -3953,7 +4124,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100520,
@@ -3976,7 +4148,8 @@
     "startTime": "2024-01-11 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100521,
@@ -3999,7 +4172,8 @@
     "startTime": "2024-01-11 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100522,
@@ -4022,7 +4196,8 @@
     "startTime": "2024-01-11 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100523,
@@ -4045,7 +4220,8 @@
     "startTime": "2024-02-01 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100526,
@@ -4068,7 +4244,8 @@
     "startTime": "2024-01-22 05:00:00",
     "endTime": "2024-02-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100527,
@@ -4091,7 +4268,8 @@
     "startTime": "2024-02-05 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100528,
@@ -4114,7 +4292,8 @@
     "startTime": "2024-01-18 05:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100529,
@@ -4137,7 +4316,8 @@
     "startTime": "2024-01-25 10:00:00",
     "endTime": "2024-02-19 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100701,
@@ -4160,7 +4340,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100702,
@@ -4183,7 +4364,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100703,
@@ -4206,7 +4388,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100704,
@@ -4229,7 +4412,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100705,
@@ -4252,7 +4436,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100706,
@@ -4275,7 +4460,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100707,
@@ -4298,7 +4484,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100708,
@@ -4321,7 +4508,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100709,
@@ -4344,7 +4532,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100710,
@@ -4367,7 +4556,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100711,
@@ -4390,7 +4580,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100712,
@@ -4413,7 +4604,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100713,
@@ -4436,7 +4628,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100714,
@@ -4459,7 +4652,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100715,
@@ -4482,7 +4676,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100716,
@@ -4505,7 +4700,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100717,
@@ -4528,7 +4724,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100718,
@@ -4551,7 +4748,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100719,
@@ -4574,7 +4772,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100720,
@@ -4597,7 +4796,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100721,
@@ -4620,7 +4820,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100722,
@@ -4643,7 +4844,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100723,
@@ -4666,7 +4868,8 @@
     "startTime": "2024-02-22 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100724,
@@ -4689,7 +4892,8 @@
     "startTime": "2024-02-22 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100725,
@@ -4712,7 +4916,8 @@
     "startTime": "2024-02-22 05:00:00",
     "endTime": "2024-03-21 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100726,
@@ -4735,7 +4940,8 @@
     "startTime": "2024-03-21 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100727,
@@ -4758,7 +4964,8 @@
     "startTime": "2024-03-04 05:00:00",
     "endTime": "2024-03-18 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100728,
@@ -4781,7 +4988,8 @@
     "startTime": "2024-03-25 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100729,
@@ -4804,7 +5012,8 @@
     "startTime": "2024-02-29 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100730,
@@ -4827,7 +5036,8 @@
     "startTime": "2024-03-21 05:00:00",
     "endTime": "2024-04-04 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100731,
@@ -4850,7 +5060,8 @@
     "startTime": "2024-03-28 05:00:00",
     "endTime": "2024-04-04 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100732,
@@ -4873,7 +5084,8 @@
     "startTime": "2024-04-04 05:00:00",
     "endTime": "2024-04-08 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100801,
@@ -4896,7 +5108,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100802,
@@ -4919,7 +5132,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100803,
@@ -4942,7 +5156,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100804,
@@ -4965,7 +5180,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100805,
@@ -4988,7 +5204,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100806,
@@ -5011,7 +5228,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100807,
@@ -5034,7 +5252,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100808,
@@ -5057,7 +5276,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100809,
@@ -5080,7 +5300,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100810,
@@ -5103,7 +5324,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100811,
@@ -5126,7 +5348,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100812,
@@ -5149,7 +5372,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100813,
@@ -5172,7 +5396,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100814,
@@ -5195,7 +5420,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100815,
@@ -5218,7 +5444,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100816,
@@ -5241,7 +5468,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100817,
@@ -5264,7 +5492,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100818,
@@ -5287,7 +5516,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100819,
@@ -5310,7 +5540,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100820,
@@ -5333,7 +5564,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100821,
@@ -5356,7 +5588,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100822,
@@ -5379,7 +5612,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100823,
@@ -5402,7 +5636,8 @@
     "startTime": "2024-04-11 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100824,
@@ -5425,7 +5660,8 @@
     "startTime": "2024-04-11 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100825,
@@ -5448,7 +5684,8 @@
     "startTime": "2024-04-11 05:00:00",
     "endTime": "2024-04-25 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100826,
@@ -5471,7 +5708,8 @@
     "startTime": "2024-04-25 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100827,
@@ -5494,7 +5732,8 @@
     "startTime": "2024-04-15 05:00:00",
     "endTime": "2024-04-29 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100828,
@@ -5517,7 +5756,8 @@
     "startTime": "2024-04-29 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100829,
@@ -5540,7 +5780,8 @@
     "startTime": "2024-04-18 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100830,
@@ -5563,7 +5804,8 @@
     "startTime": "2024-04-25 05:00:00",
     "endTime": "2024-05-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100831,
@@ -5586,7 +5828,8 @@
     "startTime": "2024-05-02 05:00:00",
     "endTime": "2024-05-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100832,
@@ -5609,7 +5852,8 @@
     "startTime": "2024-05-11 05:00:00",
     "endTime": "2024-05-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100901,
@@ -5632,7 +5876,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100902,
@@ -5655,7 +5900,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100903,
@@ -5678,7 +5924,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100904,
@@ -5701,7 +5948,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100905,
@@ -5724,7 +5972,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100906,
@@ -5747,7 +5996,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100907,
@@ -5770,7 +6020,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100908,
@@ -5793,7 +6044,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100909,
@@ -5816,7 +6068,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100910,
@@ -5839,7 +6092,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100911,
@@ -5862,7 +6116,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100912,
@@ -5885,7 +6140,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100913,
@@ -5908,7 +6164,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100914,
@@ -5931,7 +6188,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100915,
@@ -5954,7 +6212,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100916,
@@ -5977,7 +6236,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100917,
@@ -6000,7 +6260,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100918,
@@ -6023,7 +6284,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100919,
@@ -6046,7 +6308,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100920,
@@ -6069,7 +6332,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100921,
@@ -6092,7 +6356,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100922,
@@ -6115,7 +6380,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100923,
@@ -6138,7 +6404,8 @@
     "startTime": "2024-05-16 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100924,
@@ -6161,7 +6428,8 @@
     "startTime": "2024-05-16 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100925,
@@ -6184,7 +6452,8 @@
     "startTime": "2024-05-16 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100926,
@@ -6207,7 +6476,8 @@
     "startTime": "2024-06-06 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100927,
@@ -6230,7 +6500,8 @@
     "startTime": "2024-05-23 05:00:00",
     "endTime": "2024-06-06 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100928,
@@ -6253,7 +6524,8 @@
     "startTime": "2024-06-06 05:00:00",
     "endTime": "2024-06-20 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100929,
@@ -6276,7 +6548,8 @@
     "startTime": "2024-05-20 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100930,
@@ -6299,7 +6572,8 @@
     "startTime": "2024-06-06 05:00:00",
     "endTime": "2024-06-20 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100931,
@@ -6322,7 +6596,8 @@
     "startTime": "2024-06-13 05:00:00",
     "endTime": "2024-06-20 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 100932,
@@ -6345,7 +6620,8 @@
     "startTime": "2024-06-22 05:00:00",
     "endTime": "2024-06-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101001,
@@ -6368,7 +6644,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101002,
@@ -6391,7 +6668,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101003,
@@ -6414,7 +6692,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101004,
@@ -6437,7 +6716,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101005,
@@ -6460,7 +6740,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101006,
@@ -6483,7 +6764,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101007,
@@ -6506,7 +6788,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101008,
@@ -6529,7 +6812,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101009,
@@ -6552,7 +6836,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101010,
@@ -6575,7 +6860,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101011,
@@ -6598,7 +6884,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101012,
@@ -6621,7 +6908,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101013,
@@ -6644,7 +6932,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101014,
@@ -6667,7 +6956,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101015,
@@ -6690,7 +6980,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101016,
@@ -6713,7 +7004,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101017,
@@ -6736,7 +7028,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101018,
@@ -6759,7 +7052,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101019,
@@ -6782,7 +7076,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101020,
@@ -6805,7 +7100,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101021,
@@ -6828,7 +7124,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101022,
@@ -6851,7 +7148,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101023,
@@ -6874,7 +7172,8 @@
     "startTime": "2024-06-27 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101024,
@@ -6897,7 +7196,8 @@
     "startTime": "2024-07-04 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101025,
@@ -6920,7 +7220,8 @@
     "startTime": "2024-06-27 05:00:00",
     "endTime": "2024-07-18 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101026,
@@ -6943,7 +7244,8 @@
     "startTime": "2024-07-18 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101027,
@@ -6966,7 +7268,8 @@
     "startTime": "2024-07-08 05:00:00",
     "endTime": "2024-07-22 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101028,
@@ -6989,7 +7292,8 @@
     "startTime": "2024-07-22 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101029,
@@ -7012,7 +7316,8 @@
     "startTime": "2024-07-04 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101030,
@@ -7035,7 +7340,8 @@
     "startTime": "2024-07-18 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101031,
@@ -7058,7 +7364,8 @@
     "startTime": "2024-07-18 05:00:00",
     "endTime": "2024-08-01 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101032,
@@ -7081,7 +7388,8 @@
     "startTime": "2024-07-25 05:00:00",
     "endTime": "2024-08-01 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101033,
@@ -7104,7 +7412,8 @@
     "startTime": "2024-07-18 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 101034,
@@ -7127,7 +7436,8 @@
     "startTime": "2024-08-03 05:00:00",
     "endTime": "2024-08-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102001,
@@ -7150,7 +7460,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102002,
@@ -7173,7 +7484,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102003,
@@ -7196,7 +7508,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102004,
@@ -7219,7 +7532,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102005,
@@ -7242,7 +7556,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102006,
@@ -7265,7 +7580,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102007,
@@ -7288,7 +7604,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102008,
@@ -7311,7 +7628,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102009,
@@ -7334,7 +7652,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102010,
@@ -7357,7 +7676,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102011,
@@ -7380,7 +7700,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102012,
@@ -7403,7 +7724,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102013,
@@ -7426,7 +7748,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102014,
@@ -7449,7 +7772,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102015,
@@ -7472,7 +7796,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102016,
@@ -7495,7 +7820,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102017,
@@ -7518,7 +7844,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102018,
@@ -7541,7 +7868,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102019,
@@ -7564,7 +7892,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102020,
@@ -7587,7 +7916,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102021,
@@ -7610,7 +7940,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102022,
@@ -7633,7 +7964,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102023,
@@ -7656,7 +7988,8 @@
     "startTime": "2024-08-08 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102024,
@@ -7679,7 +8012,8 @@
     "startTime": "2024-08-15 05:00:00",
     "endTime": "2024-09-16 04:59:60",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102025,
@@ -7702,7 +8036,8 @@
     "startTime": "2024-08-08 05:00:00",
     "endTime": "2024-08-29 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102026,
@@ -7725,7 +8060,8 @@
     "startTime": "2024-08-29 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102027,
@@ -7748,7 +8084,8 @@
     "startTime": "2024-08-19 05:00:00",
     "endTime": "2024-09-02 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102028,
@@ -7771,7 +8108,8 @@
     "startTime": "2024-09-02 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102029,
@@ -7794,7 +8132,8 @@
     "startTime": "2024-08-15 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102030,
@@ -7817,7 +8156,8 @@
     "startTime": "2024-08-29 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102031,
@@ -7840,7 +8180,8 @@
     "startTime": "2024-08-29 05:00:00",
     "endTime": "2024-09-12 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102032,
@@ -7863,7 +8204,8 @@
     "startTime": "2024-09-05 05:00:00",
     "endTime": "2024-09-12 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102033,
@@ -7886,7 +8228,8 @@
     "startTime": "2024-08-29 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102034,
@@ -7909,7 +8252,8 @@
     "startTime": "2024-09-14 05:00:00",
     "endTime": "2024-09-16 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102035,
@@ -7932,7 +8276,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102036,
@@ -7955,7 +8300,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102037,
@@ -7978,7 +8324,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102038,
@@ -8001,7 +8348,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102039,
@@ -8024,7 +8372,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102040,
@@ -8047,7 +8396,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102041,
@@ -8070,7 +8420,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102101,
@@ -8093,7 +8444,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102102,
@@ -8116,7 +8468,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102103,
@@ -8139,7 +8492,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102104,
@@ -8162,7 +8516,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102105,
@@ -8185,7 +8540,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102106,
@@ -8208,7 +8564,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102107,
@@ -8231,7 +8588,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102108,
@@ -8254,7 +8612,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102109,
@@ -8277,7 +8636,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102110,
@@ -8300,7 +8660,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102111,
@@ -8323,7 +8684,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102112,
@@ -8346,7 +8708,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102113,
@@ -8369,7 +8732,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102114,
@@ -8392,7 +8756,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102115,
@@ -8415,7 +8780,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102116,
@@ -8438,7 +8804,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102117,
@@ -8461,7 +8828,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102118,
@@ -8484,7 +8852,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102119,
@@ -8507,7 +8876,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102120,
@@ -8530,7 +8900,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102121,
@@ -8553,7 +8924,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102122,
@@ -8576,7 +8948,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102123,
@@ -8599,7 +8972,8 @@
     "startTime": "2024-09-19 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102124,
@@ -8622,7 +8996,8 @@
     "startTime": "2024-09-19 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102125,
@@ -8645,7 +9020,8 @@
     "startTime": "2024-09-19 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102126,
@@ -8668,7 +9044,8 @@
     "startTime": "2024-10-10 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102127,
@@ -8691,7 +9068,8 @@
     "startTime": "2024-09-30 05:00:00",
     "endTime": "2024-10-14 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102128,
@@ -8714,7 +9092,8 @@
     "startTime": "2024-10-14 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102129,
@@ -8737,7 +9116,8 @@
     "startTime": "2024-09-22 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102130,
@@ -8760,7 +9140,8 @@
     "startTime": "2024-10-06 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102131,
@@ -8783,7 +9164,8 @@
     "startTime": "2024-10-10 05:00:00",
     "endTime": "2024-10-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102132,
@@ -8806,7 +9188,8 @@
     "startTime": "2024-10-17 05:00:00",
     "endTime": "2024-10-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102133,
@@ -8829,7 +9212,8 @@
     "startTime": "2024-10-10 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102134,
@@ -8852,7 +9236,8 @@
     "startTime": "2024-10-26 05:00:00",
     "endTime": "2024-10-28 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102135,
@@ -8875,7 +9260,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102136,
@@ -8898,7 +9284,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102137,
@@ -8921,7 +9308,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102138,
@@ -8944,7 +9332,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102139,
@@ -8967,7 +9356,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102140,
@@ -8990,7 +9380,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102141,
@@ -9013,7 +9404,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102142,
@@ -9036,7 +9428,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102143,
@@ -9059,7 +9452,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102144,
@@ -9082,7 +9476,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102145,
@@ -9105,7 +9500,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102146,
@@ -9128,7 +9524,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102147,
@@ -9151,7 +9548,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102148,
@@ -9174,7 +9572,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102149,
@@ -9197,7 +9596,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102150,
@@ -9220,7 +9620,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102151,
@@ -9243,7 +9644,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102152,
@@ -9266,7 +9668,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102201,
@@ -9289,7 +9692,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102202,
@@ -9312,7 +9716,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102203,
@@ -9335,7 +9740,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102204,
@@ -9358,7 +9764,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102205,
@@ -9381,7 +9788,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102206,
@@ -9404,7 +9812,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102207,
@@ -9427,7 +9836,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102208,
@@ -9450,7 +9860,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102209,
@@ -9473,7 +9884,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102210,
@@ -9496,7 +9908,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102211,
@@ -9519,7 +9932,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102212,
@@ -9542,7 +9956,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102213,
@@ -9565,7 +9980,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102214,
@@ -9588,7 +10004,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102215,
@@ -9611,7 +10028,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102216,
@@ -9634,7 +10052,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102217,
@@ -9657,7 +10076,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102218,
@@ -9680,7 +10100,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102219,
@@ -9703,7 +10124,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102220,
@@ -9726,7 +10148,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102221,
@@ -9749,7 +10172,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102222,
@@ -9772,7 +10196,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102223,
@@ -9795,7 +10220,8 @@
     "startTime": "2024-10-31 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102224,
@@ -9818,7 +10244,8 @@
     "startTime": "2024-11-07 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102225,
@@ -9841,7 +10268,8 @@
     "startTime": "2024-10-31 05:00:00",
     "endTime": "2024-11-21 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102226,
@@ -9864,7 +10292,8 @@
     "startTime": "2024-11-21 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102227,
@@ -9887,7 +10316,8 @@
     "startTime": "2024-11-04 05:00:00",
     "endTime": "2024-11-18 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102229,
@@ -9910,7 +10340,8 @@
     "startTime": "2024-11-07 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102230,
@@ -9933,7 +10364,8 @@
     "startTime": "2024-11-21 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102231,
@@ -9956,7 +10388,8 @@
     "startTime": "2024-11-21 05:00:00",
     "endTime": "2024-12-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102232,
@@ -9979,7 +10412,8 @@
     "startTime": "2024-11-28 05:00:00",
     "endTime": "2024-12-05 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102233,
@@ -10002,7 +10436,8 @@
     "startTime": "2024-11-21 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102234,
@@ -10025,7 +10460,8 @@
     "startTime": "2024-12-07 05:00:00",
     "endTime": "2024-12-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102235,
@@ -10048,7 +10484,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102236,
@@ -10071,7 +10508,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102237,
@@ -10094,7 +10532,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102238,
@@ -10117,7 +10556,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102239,
@@ -10140,7 +10580,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102240,
@@ -10163,7 +10604,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102241,
@@ -10186,7 +10628,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102242,
@@ -10209,7 +10652,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102243,
@@ -10232,7 +10676,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102244,
@@ -10255,7 +10700,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102245,
@@ -10278,7 +10724,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102246,
@@ -10301,7 +10748,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102247,
@@ -10324,7 +10772,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102248,
@@ -10347,7 +10796,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102249,
@@ -10370,7 +10820,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102250,
@@ -10393,7 +10844,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102251,
@@ -10416,7 +10868,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102252,
@@ -10439,7 +10892,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102401,
@@ -10462,7 +10916,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102402,
@@ -10485,7 +10940,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102403,
@@ -10508,7 +10964,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102404,
@@ -10531,7 +10988,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102405,
@@ -10554,7 +11012,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102406,
@@ -10577,7 +11036,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102407,
@@ -10600,7 +11060,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102408,
@@ -10623,7 +11084,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102409,
@@ -10646,7 +11108,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102410,
@@ -10669,7 +11132,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102411,
@@ -10692,7 +11156,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102412,
@@ -10715,7 +11180,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102413,
@@ -10738,7 +11204,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102414,
@@ -10761,7 +11228,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102415,
@@ -10784,7 +11252,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102416,
@@ -10807,7 +11276,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102417,
@@ -10830,7 +11300,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102418,
@@ -10853,7 +11324,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102419,
@@ -10876,7 +11348,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102420,
@@ -10899,7 +11372,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102421,
@@ -10922,7 +11396,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102422,
@@ -10945,7 +11420,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102423,
@@ -10968,7 +11444,8 @@
     "startTime": "2024-12-12 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102424,
@@ -10991,7 +11468,8 @@
     "startTime": "2024-12-19 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102425,
@@ -11014,7 +11492,8 @@
     "startTime": "2024-12-12 05:00:00",
     "endTime": "2024-12-26 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102426,
@@ -11037,7 +11516,8 @@
     "startTime": "2024-12-26 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102427,
@@ -11060,7 +11540,8 @@
     "startTime": "2024-12-12 05:00:00",
     "endTime": "2024-12-26 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102428,
@@ -11083,7 +11564,8 @@
     "startTime": "2024-12-17 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102429,
@@ -11106,7 +11588,8 @@
     "startTime": "2024-12-31 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102430,
@@ -11129,7 +11612,8 @@
     "startTime": "2024-12-26 05:00:00",
     "endTime": "2025-01-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102431,
@@ -11152,7 +11636,8 @@
     "startTime": "2025-01-02 05:00:00",
     "endTime": "2025-01-09 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102432,
@@ -11175,7 +11660,8 @@
     "startTime": "2024-12-26 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102433,
@@ -11198,7 +11684,8 @@
     "startTime": "2025-01-09 05:00:00",
     "endTime": "2025-01-13 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102434,
@@ -11221,7 +11708,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102435,
@@ -11244,7 +11732,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102436,
@@ -11267,7 +11756,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102437,
@@ -11290,7 +11780,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102438,
@@ -11313,7 +11804,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102439,
@@ -11336,7 +11828,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102440,
@@ -11359,7 +11852,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102441,
@@ -11382,7 +11876,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102442,
@@ -11405,7 +11900,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102443,
@@ -11428,7 +11924,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102444,
@@ -11451,7 +11948,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102445,
@@ -11474,7 +11972,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102446,
@@ -11497,7 +11996,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102447,
@@ -11520,7 +12020,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102448,
@@ -11543,7 +12044,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102449,
@@ -11566,7 +12068,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102450,
@@ -11589,7 +12092,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102451,
@@ -11612,7 +12116,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102501,
@@ -11635,7 +12140,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102502,
@@ -11658,7 +12164,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102503,
@@ -11681,7 +12188,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102504,
@@ -11704,7 +12212,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102505,
@@ -11727,7 +12236,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102506,
@@ -11750,7 +12260,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102507,
@@ -11773,7 +12284,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102508,
@@ -11796,7 +12308,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102509,
@@ -11819,7 +12332,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102510,
@@ -11842,7 +12356,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102511,
@@ -11865,7 +12380,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102512,
@@ -11888,7 +12404,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102513,
@@ -11911,7 +12428,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102514,
@@ -11934,7 +12452,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102515,
@@ -11957,7 +12476,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102516,
@@ -11980,7 +12500,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102517,
@@ -12003,7 +12524,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102518,
@@ -12026,7 +12548,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102519,
@@ -12049,7 +12572,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102520,
@@ -12072,7 +12596,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102521,
@@ -12095,7 +12620,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102522,
@@ -12118,7 +12644,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102523,
@@ -12141,7 +12668,8 @@
     "startTime": "2025-01-16 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102524,
@@ -12164,7 +12692,8 @@
     "startTime": "2025-01-23 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102525,
@@ -12187,7 +12716,8 @@
     "startTime": "2025-01-16 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102526,
@@ -12210,7 +12740,8 @@
     "startTime": "2025-02-06 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102527,
@@ -12233,7 +12764,8 @@
     "startTime": "2025-01-16 05:00:00",
     "endTime": "2025-01-30 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102528,
@@ -12256,7 +12788,8 @@
     "startTime": "2025-01-25 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102529,
@@ -12279,7 +12812,8 @@
     "startTime": "2025-02-08 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102530,
@@ -12302,7 +12836,8 @@
     "startTime": "2025-01-16 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102531,
@@ -12325,7 +12860,8 @@
     "startTime": "2025-01-25 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102532,
@@ -12348,7 +12884,8 @@
     "startTime": "2025-02-06 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102533,
@@ -12371,7 +12908,8 @@
     "startTime": "2025-02-22 05:00:00",
     "endTime": "2025-02-24 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102534,
@@ -12394,7 +12932,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102535,
@@ -12417,7 +12956,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102536,
@@ -12440,7 +12980,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102537,
@@ -12463,7 +13004,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102538,
@@ -12486,7 +13028,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102539,
@@ -12509,7 +13052,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102540,
@@ -12532,7 +13076,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102541,
@@ -12555,7 +13100,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102542,
@@ -12578,7 +13124,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102543,
@@ -12601,7 +13148,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102544,
@@ -12624,7 +13172,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102545,
@@ -12647,7 +13196,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102546,
@@ -12670,7 +13220,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102547,
@@ -12693,7 +13244,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102548,
@@ -12716,7 +13268,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102549,
@@ -12739,7 +13292,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102550,
@@ -12762,7 +13316,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102551,
@@ -12785,7 +13340,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102601,
@@ -12808,7 +13364,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102602,
@@ -12831,7 +13388,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102603,
@@ -12854,7 +13412,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102604,
@@ -12877,7 +13436,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102605,
@@ -12900,7 +13460,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102606,
@@ -12923,7 +13484,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102607,
@@ -12946,7 +13508,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102608,
@@ -12969,7 +13532,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102609,
@@ -12992,7 +13556,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102610,
@@ -13015,7 +13580,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102611,
@@ -13038,7 +13604,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102612,
@@ -13061,7 +13628,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102613,
@@ -13084,7 +13652,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102614,
@@ -13107,7 +13676,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102615,
@@ -13130,7 +13700,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102616,
@@ -13153,7 +13724,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102617,
@@ -13176,7 +13748,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102618,
@@ -13199,7 +13772,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102619,
@@ -13222,7 +13796,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102620,
@@ -13245,7 +13820,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102621,
@@ -13268,7 +13844,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102622,
@@ -13291,7 +13868,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102623,
@@ -13314,7 +13892,8 @@
     "startTime": "2025-02-27 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102624,
@@ -13337,7 +13916,8 @@
     "startTime": "2025-02-27 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102625,
@@ -13360,7 +13940,8 @@
     "startTime": "2025-02-27 05:00:00",
     "endTime": "2025-03-20 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102626,
@@ -13383,7 +13964,8 @@
     "startTime": "2025-03-20 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102627,
@@ -13406,7 +13988,8 @@
     "startTime": "2025-03-06 05:00:00",
     "endTime": "2025-03-20 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102628,
@@ -13429,7 +14012,8 @@
     "startTime": "2025-03-06 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102629,
@@ -13452,7 +14036,8 @@
     "startTime": "2025-03-20 04:59:59",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102630,
@@ -13475,7 +14060,8 @@
     "startTime": "2025-03-20 04:59:59",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102631,
@@ -13498,7 +14084,8 @@
     "startTime": "2025-03-27 04:59:59",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102632,
@@ -13521,7 +14108,8 @@
     "startTime": "2025-02-27 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102633,
@@ -13544,7 +14132,8 @@
     "startTime": "2025-04-05 05:00:00",
     "endTime": "2025-04-07 04:59:59",
     "turnbackTask": false,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102634,
@@ -13567,7 +14156,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102635,
@@ -13590,7 +14180,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102636,
@@ -13613,7 +14204,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102637,
@@ -13636,7 +14228,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102638,
@@ -13659,7 +14252,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102639,
@@ -13682,7 +14276,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102640,
@@ -13705,7 +14300,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": true,
-    "newbieTask": false
+    "newbieTask": false,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102641,
@@ -13728,7 +14324,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102642,
@@ -13751,7 +14348,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102643,
@@ -13774,7 +14372,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102644,
@@ -13797,7 +14396,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102645,
@@ -13820,7 +14420,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102646,
@@ -13843,7 +14444,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102647,
@@ -13866,7 +14468,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102648,
@@ -13889,7 +14492,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102649,
@@ -13912,7 +14516,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102650,
@@ -13935,7 +14540,8 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   },
   {
     "id": 102651,
@@ -13958,6 +14564,1183 @@
     "startTime": "",
     "endTime": "",
     "turnbackTask": false,
-    "newbieTask": true
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102701,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 1,
+    "minType": "战令每日",
+    "name": "登录游戏",
+    "desc": "登录游戏",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "sortId": 1,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 150,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102702,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 1,
+    "minType": "战令每日",
+    "name": "消耗体力",
+    "desc": "消耗100点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 100,
+    "sortId": 2,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 200,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102703,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 1,
+    "minType": "战令每日",
+    "name": "参与心相本",
+    "desc": "通关意志解析副本2次",
+    "listenerType": "DungeonPass",
+    "listenerParam": "6",
+    "maxProgress": 2,
+    "sortId": 3,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 200,
+    "jumpId": 3601,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102704,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 1,
+    "minType": "战令每日",
+    "name": "荒原收集",
+    "desc": "在荒原收取生产线资源3次",
+    "listenerType": "ProductionLine",
+    "listenerParam": "1",
+    "maxProgress": 3,
+    "sortId": 4,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 150,
+    "jumpId": 13,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102705,
+    "isOnline": 0,
+    "bpId": 17,
+    "loopType": 1,
+    "minType": "战令每日",
+    "name": "",
+    "desc": "",
+    "listenerType": "",
+    "listenerParam": "",
+    "maxProgress": 0,
+    "sortId": 5,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 0,
+    "jumpId": 0,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102706,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "累计消耗体力Ⅰ",
+    "desc": "累计消耗800点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 800,
+    "sortId": 1,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 400,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102707,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "累计消耗体力Ⅱ",
+    "desc": "累计消耗1200点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 1200,
+    "sortId": 2,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 650,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102708,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "累计消耗利齿子儿",
+    "desc": "累计消耗200000利齿子儿",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "3",
+    "maxProgress": 200000,
+    "sortId": 3,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 650,
+    "jumpId": 11,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102709,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "通关副本Ⅰ",
+    "desc": "完成任意关卡30次",
+    "listenerType": "DoneCount",
+    "listenerParam": "DungeonPass",
+    "maxProgress": 30,
+    "sortId": 4,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 450,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102710,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "通关副本Ⅱ",
+    "desc": "完成任意关卡50次",
+    "listenerType": "DoneCount",
+    "listenerParam": "DungeonPass",
+    "maxProgress": 50,
+    "sortId": 5,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 650,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102711,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "通关心相本",
+    "desc": "通关意志解析副本10次",
+    "listenerType": "DungeonPass",
+    "listenerParam": "6",
+    "maxProgress": 10,
+    "sortId": 6,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 550,
+    "jumpId": 3601,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102712,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "主角技能使用",
+    "desc": "累计使用30次律的调校",
+    "listenerType": "DoneCount",
+    "listenerParam": "UseClothSkill",
+    "maxProgress": 30,
+    "sortId": 7,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 450,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102713,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "消灭BOSS",
+    "desc": "消灭主线首领敌人5次",
+    "listenerType": "DoneCount",
+    "listenerParam": "KillBoss",
+    "maxProgress": 5,
+    "sortId": 8,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 550,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102714,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "累计荒原造型",
+    "desc": "通过如愿甘泉造形10次任意材料",
+    "listenerType": "ProductionLine",
+    "listenerParam": "2",
+    "maxProgress": 10,
+    "sortId": 9,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 650,
+    "jumpId": 15,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102715,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "荒原收集",
+    "desc": "在荒原收取生产线资源10次",
+    "listenerType": "ProductionLine",
+    "listenerParam": "1",
+    "maxProgress": 10,
+    "sortId": 10,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 350,
+    "jumpId": 13,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102716,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "访问任意玩家荒原1次",
+    "desc": "访问任意玩家荒原1次",
+    "listenerType": "DoneCount",
+    "listenerParam": "VisitOtherRoom",
+    "maxProgress": 1,
+    "sortId": 11,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 350,
+    "jumpId": 10011706,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102717,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "完成任意资源&洞悉章节5%",
+    "desc": "完成任意资源&洞悉章节5次",
+    "listenerType": "DungeonPass",
+    "listenerParam": "4#5#7#13#6",
+    "maxProgress": 5,
+    "sortId": 12,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 500,
+    "jumpId": 52,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102718,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "使用至终的仪式20次",
+    "desc": "使用至终的仪式20次",
+    "listenerType": "DoneCount",
+    "listenerParam": "UseBigSkill",
+    "maxProgress": 20,
+    "sortId": 13,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 500,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102719,
+    "isOnline": 0,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "",
+    "name": "",
+    "desc": "",
+    "listenerType": "",
+    "listenerParam": "",
+    "maxProgress": 0,
+    "sortId": 0,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 0,
+    "jumpId": 0,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102720,
+    "isOnline": 0,
+    "bpId": 17,
+    "loopType": 2,
+    "minType": "战令每周",
+    "name": "",
+    "desc": "",
+    "listenerType": "",
+    "listenerParam": "",
+    "maxProgress": 0,
+    "sortId": 12,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 8750,
+    "jumpId": 0,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102721,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 3,
+    "minType": "战令赛季",
+    "name": "进行50次征集",
+    "desc": "进行50次征集",
+    "listenerType": "DoneCount",
+    "listenerParam": "Summon",
+    "maxProgress": 50,
+    "sortId": 4,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2500,
+    "jumpId": 202,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102722,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 3,
+    "minType": "战令赛季",
+    "name": "在人工梦游中累积获得15颗星",
+    "desc": "在人工梦游中累积获得15颗星",
+    "listenerType": "WeekwalkFuncProgressIncrOnly",
+    "listenerParam": "1#2#3",
+    "maxProgress": 15,
+    "sortId": 5,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1650,
+    "jumpId": 3801,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102723,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在“《1987宇宙组曲》”中完成故事难度CO-18",
+    "desc": "在“《1987宇宙组曲》”中完成章节CO-18【故事】难度",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "2710118",
+    "maxProgress": 1,
+    "sortId": 6,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1800,
+    "jumpId": 10012706,
+    "startTime": "2025-04-10 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102724,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在“《1987宇宙组曲》”中完成厄险难度CO-18",
+    "desc": "在“《1987宇宙组曲》”中完成章节CO-18【探索】难度",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "2720118",
+    "maxProgress": 1,
+    "sortId": 7,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 10012706,
+    "startTime": "2025-04-17 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102725,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在“间隔月”中完成STAGE-08",
+    "desc": "在“间隔月”中完成STAGE-08",
+    "listenerType": "Act190",
+    "listenerParam": "1270208#12702",
+    "maxProgress": 1,
+    "sortId": 8,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1800,
+    "jumpId": 10012702,
+    "startTime": "2025-04-10 05:00:00",
+    "endTime": "2025-04-24 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102726,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在“末日与末日之后”完成SPECIAL-08",
+    "desc": "在“末日与末日之后”完成SPECIAL-08",
+    "listenerType": "Act192",
+    "listenerParam": "1270308#12703",
+    "maxProgress": 1,
+    "sortId": 9,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1800,
+    "jumpId": 10012714,
+    "startTime": "2025-04-24 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102727,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在轶事“海风的往事”中阅读所有章节",
+    "desc": "在轶事“海风的往事”中阅读所有章节",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "192308",
+    "maxProgress": 1,
+    "sortId": 10,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1800,
+    "jumpId": 10012715,
+    "startTime": "2025-04-15 05:00:00",
+    "endTime": "2025-04-29 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102728,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处置。",
+    "desc": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处治",
+    "listenerType": "Act183FinishedEpisodeCount",
+    "listenerParam": "12704#2,3",
+    "maxProgress": 2,
+    "sortId": 12,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2300,
+    "jumpId": 10012704,
+    "startTime": "2025-04-24 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102729,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "完成“数星星”中全部1级成就",
+    "desc": "完成“数星星”中全部1级成就",
+    "listenerType": "AchievementTaskFinish",
+    "listenerParam": "41200901",
+    "maxProgress": 1,
+    "sortId": 13,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2100,
+    "jumpId": 10012705,
+    "startTime": "2025-04-10 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102730,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": " 在“和平角斗场——匣中交流赛”中战斗6场",
+    "desc": " 在“和平角斗场——匣中交流赛”中战斗6场",
+    "listenerType": "Act191EndGame",
+    "listenerParam": "12701",
+    "maxProgress": 6,
+    "sortId": 14,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1800,
+    "jumpId": 10012701,
+    "startTime": "2025-04-17 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102731,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": " 在“和平角斗场——匣中交流赛”中战斗10场",
+    "desc": " 在“和平角斗场——匣中交流赛”中战斗10场",
+    "listenerType": "Act191EndGame",
+    "listenerParam": "12701",
+    "maxProgress": 10,
+    "sortId": 15,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2100,
+    "jumpId": 10012701,
+    "startTime": "2025-04-17 05:00:00",
+    "endTime": "2025-05-12 04:59:59",
+    "turnbackTask": false,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102734,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录1天",
+    "desc": "累计登录1天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "sortId": 1,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1000,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102735,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录2天",
+    "desc": "累计登录2天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 2,
+    "sortId": 1,
+    "prepose": "102734",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102736,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录3天",
+    "desc": "累计登录3天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 3,
+    "sortId": 1,
+    "prepose": "102735",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102737,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "箱中角色等级累计提升10级",
+    "desc": "箱中角色等级累计提升10级",
+    "listenerType": "DoneCount",
+    "listenerParam": "HeroLevelUp",
+    "maxProgress": 10,
+    "sortId": 2,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 6,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102738,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "箱中角色等级累计提升20级",
+    "desc": "箱中角色等级累计提升20级",
+    "listenerType": "DoneCount",
+    "listenerParam": "HeroLevelUp",
+    "maxProgress": 20,
+    "sortId": 2,
+    "prepose": "102737",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 6,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102739,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计消耗200点细胞活性",
+    "desc": "累计消耗200点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 200,
+    "sortId": 3,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102740,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计消耗500点细胞活性",
+    "desc": "累计消耗500点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 500,
+    "sortId": 3,
+    "prepose": "102739",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": true,
+    "newbieTask": false,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102741,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录1天",
+    "desc": "累计登录1天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "sortId": 1,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1000,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102742,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录2天",
+    "desc": "累计登录2天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 2,
+    "sortId": 1,
+    "prepose": "102741",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102743,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录3天",
+    "desc": "累计登录3天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 3,
+    "sortId": 1,
+    "prepose": "102742",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102744,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录4天",
+    "desc": "累计登录4天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 4,
+    "sortId": 1,
+    "prepose": "102743",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102745,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计登录5天",
+    "desc": "累计登录5天",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 5,
+    "sortId": 1,
+    "prepose": "102744",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 21,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102746,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "箱中角色等级累计提升10级",
+    "desc": "箱中角色等级累计提升10级",
+    "listenerType": "DoneCount",
+    "listenerParam": "HeroLevelUp",
+    "maxProgress": 10,
+    "sortId": 2,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 6,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102747,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "箱中角色等级累计提升20级",
+    "desc": "箱中角色等级累计提升20级",
+    "listenerType": "DoneCount",
+    "listenerParam": "HeroLevelUp",
+    "maxProgress": 20,
+    "sortId": 2,
+    "prepose": "102746",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 6,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102748,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "箱中角色等级累计提升30级",
+    "desc": "箱中角色等级累计提升30级",
+    "listenerType": "DoneCount",
+    "listenerParam": "HeroLevelUp",
+    "maxProgress": 30,
+    "sortId": 2,
+    "prepose": "102747",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2500,
+    "jumpId": 6,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102749,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计消耗200点细胞活性",
+    "desc": "累计消耗200点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 200,
+    "sortId": 3,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 1500,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102750,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计消耗400点细胞活性",
+    "desc": "累计消耗400点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 400,
+    "sortId": 3,
+    "prepose": "102749",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2000,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
+  },
+  {
+    "id": 102751,
+    "isOnline": 1,
+    "bpId": 17,
+    "loopType": 5,
+    "minType": "战令赛季",
+    "name": "累计消耗600点细胞活性",
+    "desc": "累计消耗600点细胞活性",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 600,
+    "sortId": 3,
+    "prepose": "102750",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonusScore": 2500,
+    "jumpId": 51,
+    "startTime": "",
+    "endTime": "",
+    "turnbackTask": false,
+    "newbieTask": true,
+    "bonusScoreTimes": 0
   }
 ]

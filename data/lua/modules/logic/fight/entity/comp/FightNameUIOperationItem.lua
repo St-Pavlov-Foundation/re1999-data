@@ -8,9 +8,9 @@ function slot0.onInitView(slot0)
 	slot0._imgBgs = slot0:newUserDataTable()
 	slot0._imgBgGos = slot0:newUserDataTable()
 
-	for slot4 = 1, 4 do
-		table.insert(slot0._imgBgs, gohelper.findChildImage(slot0.viewGO, "imgBg/" .. slot4))
-		table.insert(slot0._imgBgGos, gohelper.findChild(slot0.viewGO, "imgBg/" .. slot4))
+	for slot4 = 0, 4 do
+		slot0._imgBgs[slot4] = gohelper.findChildImage(slot0.viewGO, "imgBg/" .. slot4)
+		slot0._imgBgGos[slot4] = gohelper.findChild(slot0.viewGO, "imgBg/" .. slot4)
 	end
 
 	slot0._imgBg2 = gohelper.findChildImage(slot0.viewGO, "forbid/mask")
@@ -43,9 +43,9 @@ function slot0.refreshItemData(slot0, slot1)
 	end
 
 	slot3 = slot0._cardData.skillId
-	slot0._isUnique = FightCardModel.instance:isUniqueSkill(slot0._entityMO.id, slot3)
+	slot0._isBigSkill = FightCardDataHelper.isBigSkill(slot3)
 
-	if (not slot0._isUnique or not FightEnum.UniqueSkillCardLv) and FightCardModel.instance:getSkillLv(slot0._entityMO.uid, slot3) == FightEnum.UniqueSkillCardLv then
+	if (not slot0._isBigSkill or not FightEnum.UniqueSkillCardLv) and FightCardDataHelper.getSkillLv(slot0._entityMO.uid, slot3) == FightEnum.UniqueSkillCardLv then
 		slot5 = 1
 	end
 
@@ -54,7 +54,7 @@ function slot0.refreshItemData(slot0, slot1)
 
 	UISpriteSetMgr.instance:setFightSprite(slot0._imgTag, slot9)
 
-	for slot9, slot10 in ipairs(slot0._imgBgs) do
+	for slot9, slot10 in pairs(slot0._imgBgs) do
 		gohelper.setActive(slot10.gameObject, slot9 == slot5)
 	end
 
@@ -73,7 +73,7 @@ end
 function slot0._refreshAni(slot0)
 	slot0._canUse = FightViewHandCardItemLock.canUseCardSkill(slot0._entityMO.id, slot0._cardData.skillId)
 
-	if slot0._isUnique and slot0._canUse then
+	if slot0._isBigSkill and slot0._canUse then
 		slot0._canUse = slot0._entityMO:getUniqueSkillPoint() <= slot0._entityMO.exPoint
 	end
 
@@ -96,7 +96,7 @@ function slot0._refreshAni(slot0)
 end
 
 function slot0.onSelectMonsterCardMo(slot0, slot1)
-	slot3 = FightCardModel.instance:isUniqueSkill(slot0._cardData.uid, slot0._cardData.skillId)
+	slot3 = FightCardDataHelper.isBigSkill(slot0._cardData.skillId)
 
 	gohelper.setActive(slot0.viewGOEmitNormal, FightHelper.compareData(slot1, slot0._cardData) and not slot3)
 	gohelper.setActive(slot0.viewGOEmitUitimate, slot2 and slot3)
@@ -116,19 +116,19 @@ function slot0._onClickOp(slot0)
 end
 
 function slot0._onExSkillPointChange(slot0, slot1)
-	if slot1 == slot0._entityMO.id and slot0._isUnique then
+	if slot1 == slot0._entityMO.id and slot0._isBigSkill then
 		slot0:_refreshAni()
 	end
 end
 
 function slot0._onExPointChange(slot0, slot1)
-	if slot1 == slot0._entityMO.id and slot0._isUnique then
+	if slot1 == slot0._entityMO.id and slot0._isBigSkill then
 		slot0:_refreshAni()
 	end
 end
 
 function slot0.onDestructor(slot0)
-	for slot4, slot5 in ipairs(slot0._imgBgs) do
+	for slot4, slot5 in pairs(slot0._imgBgs) do
 		slot5.material = nil
 	end
 end

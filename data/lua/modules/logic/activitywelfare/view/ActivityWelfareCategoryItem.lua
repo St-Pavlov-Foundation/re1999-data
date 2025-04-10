@@ -77,7 +77,7 @@ end
 
 function slot0.refreshSelect(slot0)
 	slot0._selected = slot0._mo.id == ActivityModel.instance:getTargetActivityCategoryId(ActivityEnum.ActivityType.Welfare)
-	slot1 = slot0._mo.id == ActivityEnum.Activity.NewWelfare
+	slot1 = false
 
 	gohelper.setActive(slot0._gonewwelfare, slot1)
 	gohelper.setActive(slot0._goselectwelfare, slot1 and slot0._selected)

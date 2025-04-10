@@ -113,24 +113,11 @@ function slot0.onInitView(slot0)
 
 	slot0._inpHeroList:SetText("3039;3052;3017;3010;3015;3013;3031;3006;3040;3012")
 
-	slot0._dropRoomInteraction = gohelper.findChildDropdown(slot0.viewGO, "viewport/content/roomInteraction/Dropdown")
-	slot0._btnRoomInteraction = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/roomInteraction/btnOK")
 	slot0._btnCrash1 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/crash/btnCrash1")
 	slot0._btnCrash2 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/crash/btnCrash2")
 	slot0._btnCrash3 = gohelper.findChildButtonWithAudio(slot0.viewGO, "viewport/content/crash/btnCrash3")
 	slot0._btnEnterView = gohelper.findChildButton(slot0.viewGO, "viewport/content/item50/Button")
 	slot0._inpViewName = gohelper.findChildTextMeshInputField(slot0.viewGO, "viewport/content/item50/InputField (TMP)")
-	slot0._dropRoomWeather, slot0._btnRoomWeather = slot0:_cloneDropdown("小屋天气", false, "roomWeather")
-end
-
-function slot0._cloneDropdown(slot0, slot1, slot2, slot3)
-	slot4 = gohelper.cloneInPlace(gohelper.findChild(slot0.viewGO, "viewport/content/roomInteraction"), slot3)
-	slot6 = gohelper.findChildButtonWithAudio(slot4, "btnOK")
-	gohelper.findChildText(slot4, "text").text = slot1
-
-	gohelper.setActive(slot6, slot2)
-
-	return gohelper.findChildDropdown(slot4, "Dropdown"), slot6
 end
 
 function slot0.addEvents(slot0)
@@ -214,9 +201,6 @@ function slot0.addEvents(slot0)
 		slot0._btnprintallentitybuff:AddClickListener(slot0._onBtnPrintAllEntityBuff, slot0)
 	end
 
-	slot0:_AddOnValueChanged(slot0._dropRoomInteraction, slot0._onRoomInteractionSelectChanged, slot0)
-	slot0:_AddOnValueChanged(slot0._dropRoomWeather, slot0._onRoomWeatherSelectChanged, slot0)
-	slot0:_AddClickListener(slot0._btnRoomInteraction, slot0._onClickRoomInteractionOk, slot0)
 	slot0:_AddClickListener(slot0._btnCrash1, slot0._testJavaCrash, slot0)
 	slot0:_AddClickListener(slot0._btnCrash2, slot0._testOcCrash, slot0)
 	slot0:_AddClickListener(slot0._btnCrash3, slot0._testNativeCrash, slot0)
@@ -305,9 +289,6 @@ function slot0.removeEvents(slot0)
 		slot0._btnprintallentitybuff:RemoveClickListener()
 	end
 
-	slot0:_RemoveOnValueChanged(slot0._dropRoomInteraction)
-	slot0:_RemoveOnValueChanged(slot0._dropRoomWeather)
-	slot0:_RemoveClickListener(slot0._btnRoomInteraction)
 	slot0:_RemoveClickListener(slot0._btnCrash1)
 	slot0:_RemoveClickListener(slot0._btnCrash2)
 	slot0:_RemoveClickListener(slot0._btnCrash3)
@@ -392,8 +373,6 @@ function slot0.onOpen(slot0)
 
 	slot0:_updateFightJoinText()
 	slot0:_updateFightSpeedText()
-	slot0:_initCharacterInteractionSelect()
-	slot0:_initRoomWeatherSelect()
 end
 
 function slot0.onClose(slot0)
@@ -455,6 +434,8 @@ function slot0._sendGM(slot0, slot1)
 
 		return
 	end
+
+	GMCommandHistoryModel.instance:addCommandHistory(slot1)
 
 	if string.find(slot1, "#") == 1 then
 		slot0:_clientGM(string.split(slot1, " "))
@@ -1171,61 +1152,6 @@ function slot0._initHeroLevelSelect(slot0)
 	slot0._dropHeroLevel:AddOptions(slot0.haveHeroList)
 end
 
-function slot0._sortCharacterInteractionFunc(slot0, slot1)
-	if slot0.behaviour ~= slot1.behaviour then
-		return slot0.behaviour < slot1.behaviour
-	end
-end
-
-function slot0._initCharacterInteractionSelect(slot0)
-	if not slot0.characterInteractionList then
-		slot0.characterInteractionList = {}
-
-		for slot4, slot5 in ipairs(lua_room_character_interaction.configList) do
-			if RoomCharacterModel.instance:getCharacterMOById(slot5.heroId) and slot6.characterState == RoomCharacterEnum.CharacterState.Map then
-				table.insert(slot0.characterInteractionList, slot5)
-			end
-		end
-
-		table.sort(slot0.characterInteractionList, uv0._sortCharacterInteractionFunc)
-	end
-
-	slot2 = {
-		[RoomCharacterEnum.InteractionType.Dialog] = "对话",
-		[RoomCharacterEnum.InteractionType.Building] = "建筑"
-	}
-
-	table.insert({}, "英雄-交互#id选择")
-
-	for slot6, slot7 in ipairs(slot0.characterInteractionList) do
-		if slot2[slot7.behaviour] then
-			table.insert(slot1, string.format("%s-%s#%s", HeroConfig.instance:getHeroCO(slot7.heroId).name or slot7.heroId, slot2[slot7.behaviour], slot7.id))
-		end
-	end
-
-	if slot0._dropRoomInteraction then
-		slot0._dropRoomInteraction:ClearOptions()
-		slot0._dropRoomInteraction:AddOptions(slot1)
-	end
-end
-
-function slot0._initRoomWeatherSelect(slot0)
-	slot0.roomWeatherIdList = {}
-
-	for slot5, slot6 in ipairs(RoomConfig.instance:getSceneAmbientConfigList()) do
-		table.insert(slot0.roomWeatherIdList, slot6.id)
-	end
-
-	tabletool.addValues({
-		"请选择天气"
-	}, slot0.roomWeatherIdList)
-
-	if slot0._dropRoomWeather then
-		slot0._dropRoomWeather:ClearOptions()
-		slot0._dropRoomWeather:AddOptions(slot2)
-	end
-end
-
 function slot0._onSkinGetValueChanged(slot0, slot1)
 	if not slot0.haveHeroList then
 		return
@@ -1244,85 +1170,6 @@ function slot0._onSkinGetValueChanged(slot0, slot1)
 		newRank = 3,
 		isRank = true
 	})
-end
-
-function slot0._onRoomWeatherSelectChanged(slot0, slot1)
-	if not slot0.roomWeatherIdList then
-		return
-	end
-
-	if slot1 == 0 then
-		return
-	end
-
-	if GameSceneMgr.instance:getCurSceneType() == SceneType.Room then
-		if GameSceneMgr.instance:getCurScene() and slot2.ambient then
-			slot3 = slot0.roomWeatherIdList[slot1]
-
-			slot2.ambient:tweenToAmbientId(slot3)
-			GameFacade.showToast(94, string.format("GM切换小屋天气:%s", slot3))
-			slot0:closeThis()
-		end
-	else
-		GameFacade.showToast(94, "GM需要进入小屋可使用。")
-	end
-end
-
-function slot0._onRoomInteractionSelectChanged(slot0, slot1)
-	if not slot0.characterInteractionList then
-		return
-	end
-
-	if slot1 == 0 then
-		slot0.selectCharacterInteractionCfg = nil
-
-		return
-	end
-
-	slot0.selectCharacterInteractionCfg = slot0.characterInteractionList[slot1]
-end
-
-function slot0._onClickRoomInteractionOk(slot0)
-	if #slot0.characterInteractionList < 1 then
-		GameFacade.showToast(94, "GM需要进入小屋并放置可交互角色。")
-	end
-
-	if not slot0.selectCharacterInteractionCfg then
-		return
-	end
-
-	if not RoomCharacterModel.instance:getCharacterMOById(slot0.selectCharacterInteractionCfg.heroId) or slot1.characterState ~= RoomCharacterEnum.CharacterState.Map then
-		GameFacade.showToast(94, "GM 需要放置角色后可交互。")
-
-		return
-	end
-
-	if slot0.selectCharacterInteractionCfg.behaviour == RoomCharacterEnum.InteractionType.Dialog then
-		GameFacade.showToast(94, string.format("GM %s 触发交互", slot1.heroConfig.name))
-		slot1:setCurrentInteractionId(slot0.selectCharacterInteractionCfg.id)
-		RoomCharacterController.instance:dispatchEvent(RoomEvent.UpdateCharacterInteractionUI)
-	elseif slot0.selectCharacterInteractionCfg.behaviour == RoomCharacterEnum.InteractionType.Building then
-		if not RoomMapInteractionModel.instance:getBuildingInteractionMO(slot0.selectCharacterInteractionCfg.id) then
-			GameFacade.showToast(94, string.format("GM 场景无【%s】建筑，【%s】无发交互", RoomConfig.instance:getBuildingConfig(slot0.selectCharacterInteractionCfg.buildingId) and slot3.name or slot0.selectCharacterInteractionCfg.buildingId, slot1.heroConfig.name))
-
-			return
-		end
-
-		if not RoomHelper.isFSMState(RoomEnum.FSMObState.Idle) then
-			GameFacade.showToast(94, string.format("GM 当场景状态机非[%s]", RoomEnum.FSMObState.Idle))
-
-			return
-		end
-
-		if not RoomInteractionController.instance:showTimeByInteractionMO(slot2) then
-			GameFacade.showToast(94, string.format("GM【%s】不在【%s】交互点范围内", slot1.heroConfig.name, slot4))
-
-			return
-		end
-
-		slot0:closeThis()
-		logNormal(string.format("GM【%s】【%s】触发角色建筑交互", slot1.heroConfig.name, slot4))
-	end
 end
 
 function slot0._onHeroFaithSelectChanged(slot0, slot1)

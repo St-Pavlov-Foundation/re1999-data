@@ -299,6 +299,11 @@ slot0.EffectType = {
 	BFSGUSECARD = 157,
 	REMOVEMONSTERSUB = 325,
 	DIRECTUSEEXSKILL = 327,
+	FIGHTPARAMCHANGE = 330,
+	BLOODPOOLMAXCREATE = 333,
+	BLOODPOOLMAXCHANGE = 334,
+	BLOODPOOLVALUECHANGE = 335,
+	CLIENTEFFECT = 339,
 	SUMMON = 86,
 	EXTRAMOVEACT = 77,
 	IGNORECOUNTER = 164,
@@ -340,6 +345,7 @@ slot0.EffectType = {
 	POWERCHANGE = 128,
 	DEALCARD1 = 59,
 	CANTCRIT = 45,
+	COLDSATURDAYHURT = 336,
 	BFSGSKILLEND = 158,
 	SPCARDADD = 78,
 	CANTSELECTEX = 105,
@@ -378,6 +384,7 @@ slot0.EffectType = {
 	MOVE = 206,
 	ABSORBHURT = 169,
 	POLARIZATIONEXSKILLADD = 178,
+	CHANGECARDENERGY = 338,
 	POLARIZATIONDECCARD = 176,
 	CONFUSION = 261,
 	DEFENSEALTER = 11,
@@ -410,7 +417,9 @@ slot0.EffectType = {
 	EXPOINTOVERFLOWBANK = 214,
 	TOCARDAREAREDORBLUE = 304,
 	MONSTERCHANGE = 67,
+	MAGICCIRCLEUPGRADE = 340,
 	LAYERHALOSYNC = 234,
+	NEWCHANGEWAVE = 337,
 	CARDHEATINIT = 308,
 	OVERFLOWPOWERADDBUFF = 150,
 	POLARIZATIONADDLIMIT = 175,
@@ -495,6 +504,7 @@ slot0.CardOpType = {
 	SimulateDissolveCard = -99,
 	AssistBoss = 4,
 	PlayCard = 2,
+	BloodPool = 7,
 	PlayerFinisherSkill = 6,
 	MoveUniversal = 3
 }
@@ -627,13 +637,15 @@ slot0.SkillShowTag = {
 	SpiritualDamage = 2,
 	Buff = 4,
 	Debuff = 3,
+	Universal = 11,
 	RealDamage = 1,
 	HealEffect = 6
 }
 slot0.NeedShowRestrainTag = {
 	[slot0.SkillShowTag.RealDamage] = true,
 	[slot0.SkillShowTag.SpiritualDamage] = true,
-	[slot0.SkillShowTag.Debuff] = true
+	[slot0.SkillShowTag.Debuff] = true,
+	[slot0.SkillShowTag.Universal] = true
 }
 slot0.LogicTargetDesc = {}
 slot1 = {
@@ -768,6 +780,7 @@ slot0.BuffType_SaveFightRecord = "SaveFightRecord"
 slot0.BuffType_SubBuff = "SubBuff"
 slot0.BuffType_AddCardRecordByRound = "AddCardRecordByRound"
 slot0.BuffType_AddCardCastChannel = "AddCardCastChannel"
+slot0.BuffType_BigSkillNoUseActPoint = "BigSkillNoUseActPoint"
 slot0.BuffTypeId_CoverPerson = 8398
 slot0.BuffTypeId_CelebrityCharm = 8399
 slot0.BuffFeature = {
@@ -884,6 +897,7 @@ slot0.IndicatorId = {
 	Id6181 = 6181,
 	Id6201 = 6201,
 	Id6202 = 6202,
+	DoomsdayClock = 10001,
 	FightSucc = 2,
 	Id6182 = 6182
 }
@@ -907,6 +921,7 @@ slot0.ClothSkillType = {
 slot0.CardType = {
 	SUPPORT_NORMAL = 2,
 	USE_ACT_POINT = 5,
+	SKILL3 = 6,
 	ROUGE_SP = 1,
 	SUPPORT_EX = 3,
 	NONE = 0
@@ -1128,6 +1143,36 @@ slot0.LYPlayCardAreaOffset = 74
 slot0.LYCardWaitAreaScale = 1.5
 slot0.CardIconId = {
 	PreDelete = 99999999
+}
+slot0.MagicCircleUIType = {
+	Electric = 1,
+	Normal = 0
+}
+slot0.MagicCircleUIType2Name = {
+	[slot0.MagicCircleUIType.Normal] = "shuzhenitem",
+	[slot0.MagicCircleUIType.Electric] = "electricmagiccircle"
+}
+slot0.ExPointType = {
+	Belief = 1,
+	Common = 0,
+	NoExpoint = 999
+}
+slot0.ExPointTypeFeature = {
+	[slot0.ExPointType.Common] = {
+		moveAddExpoint = true,
+		combineAddExpoint = true,
+		playAddExpoint = true
+	},
+	[slot0.ExPointType.Belief] = {
+		moveAddExpoint = false,
+		combineAddExpoint = false,
+		playAddExpoint = false
+	},
+	[slot0.ExPointType.NoExpoint] = {
+		moveAddExpoint = false,
+		combineAddExpoint = false,
+		playAddExpoint = false
+	}
 }
 
 return slot0

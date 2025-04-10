@@ -15,8 +15,12 @@ function slot0._openMainView(slot0, slot1, slot2, slot3)
 		TaskEnum.TaskType.Tower
 	}, function (slot0, slot1, slot2)
 		if slot1 == 0 then
-			ViewMgr.instance:openView(ViewName.TowerMainView)
-			uv0:onDone(true)
+			StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function (slot0, slot1, slot2)
+				if slot2 == 0 then
+					ViewMgr.instance:openView(ViewName.TowerMainView)
+					uv0:onDone(true)
+				end
+			end, uv0)
 		end
 	end)
 end

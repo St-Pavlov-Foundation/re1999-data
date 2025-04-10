@@ -39,6 +39,8 @@ function slot0.realJumpTowerView(slot0, slot1)
 		slot0:openBossTowerEpisodeView(slot2, slot1.towerId)
 	elseif slot2 == TowerEnum.TowerType.Limited then
 		slot0:openTowerTimeLimitLevelView()
+	elseif slot2 == TowerEnum.TowerType.Normal then
+		slot0:openTowerPermanentView()
 	end
 
 	if slot0.jumpFlow then
@@ -65,7 +67,11 @@ function slot0._openMainView(slot0, slot1, slot2, slot3)
 		TaskEnum.TaskType.Tower
 	}, function (slot0, slot1, slot2)
 		if slot1 == 0 then
-			ViewMgr.instance:openView(ViewName.TowerMainView, uv0._mainviewParam)
+			StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function (slot0, slot1, slot2)
+				if slot1 == 0 then
+					ViewMgr.instance:openView(ViewName.TowerMainView, uv0._mainviewParam)
+				end
+			end)
 		end
 	end)
 end
@@ -102,6 +108,8 @@ function slot0.openBossTowerEpisodeView(slot0, slot1, slot2, slot3)
 		else
 			ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
 		end
+
+		TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Boss)
 	end
 end
 
@@ -155,7 +163,8 @@ function slot0.restartStage(slot0)
 		chapterId = slot2.chapterId,
 		episodeId = slot2.episodeId,
 		useRecord = slot2.isReplay,
-		multiplication = slot2.multiplication
+		multiplication = slot2.multiplication,
+		isRestart = true
 	})
 end
 
@@ -177,19 +186,33 @@ function slot0.openTowerPermanentView(slot0, slot1)
 
 	TowerPermanentModel.instance:initStageUnFoldState()
 	ViewMgr.instance:openView(ViewName.TowerPermanentView, slot1)
+	TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Normal)
+end
+
+function slot0.openTowerStoreView(slot0)
+	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function ()
+		ViewMgr.instance:openView(ViewName.TowerStoreView, {})
+	end, slot0)
+end
+
+function slot0.openTowerHeroTrialView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.TowerHeroTrialView, slot1)
+end
+
+function slot0.openTowerBossTeachView(slot0, slot1)
+	ViewMgr.instance:openView(ViewName.TowerBossTeachView, slot1)
 end
 
 function slot0.openTowerTaskView(slot0, slot1)
-	slot4 = {
-		towerType = slot1 and slot1.towerType or TowerEnum.TowerType.Limited,
-		towerId = slot1 and slot1.towerId or (TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() and slot2.towerId or 1)
-	}
+	slot3 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() and slot2.towerId or 1
+	slot4 = slot1 or {}
+	slot4.towerType = slot1 and slot1.towerType
+	slot4.towerId = slot1 and slot1.towerId
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Tower
 	}, function ()
-		TowerTaskModel.instance:setCurSelectTowerTypeAndId(uv0.towerType, uv0.towerId)
-		ViewMgr.instance:openView(ViewName.TowerTaskView, uv1)
+		ViewMgr.instance:openView(ViewName.TowerTaskView, uv0)
 	end)
 end
 
@@ -216,6 +239,7 @@ end
 
 function slot0.openTowerTimeLimitLevelView(slot0, slot1)
 	ViewMgr.instance:openView(ViewName.TowerTimeLimitLevelView, slot1)
+	TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Limited)
 end
 
 function slot0.getRecommendList(slot0, slot1)
@@ -270,6 +294,10 @@ end
 
 function slot0.isTimeLimitTowerOpen(slot0)
 	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TimeLimitOpenLayerNum)) <= (TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0) and slot2.passLayerId or 0)
+end
+
+function slot0.isTowerStoreOpen(slot0)
+	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.StoreOpen)) <= (TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0) and slot2.passLayerId or 0)
 end
 
 function slot0.checkMopUpReddotShow(slot0)
@@ -333,6 +361,7 @@ function slot0.towerTaskDataRequest(slot0)
 end
 
 function slot0.dailyRefresh(slot0)
+	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore)
 	uv0.instance:dispatchEvent(TowerEvent.DailyReresh)
 end
 

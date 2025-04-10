@@ -32,6 +32,7 @@ function slot0.exitStage(slot0, slot1)
 end
 
 function slot0.cancelOperation(slot0)
+	slot0:com_sendFightEvent(FightEvent.BeforeCancelOperation)
 	FightDataMgr.instance:cancelOperation()
 	FightLocalDataMgr.instance:cancelOperation()
 	slot0:com_sendFightEvent(FightEvent.CancelOperation)

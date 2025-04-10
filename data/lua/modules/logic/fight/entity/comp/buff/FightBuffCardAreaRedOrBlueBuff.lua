@@ -26,7 +26,10 @@ function slot0.onBuffStart(slot0, slot1, slot2)
 	slot0.loaded = false
 
 	slot0:startLoadRes()
-	FightDataHelper.LYDataMgr:setLYCardAreaBuff(slot2)
+
+	if slot0.side == FightEnum.EntitySide.MySide then
+		FightDataHelper.LYDataMgr:setLYCardAreaBuff(slot2)
+	end
 end
 
 function slot0.startLoadRes(slot0)
@@ -219,7 +222,10 @@ function slot0.clear(slot0)
 		slot0:clearEffectAndEntity()
 	end
 
-	FightDataHelper.LYDataMgr:setLYCardAreaBuff(nil)
+	if slot0.side == FightEnum.EntitySide.MySide then
+		FightDataHelper.LYDataMgr:setLYCardAreaBuff(nil)
+	end
+
 	FightController.instance:unregisterCallback(FightEvent.TimelineLYSpecialSpinePlayAniName, slot0.playAnim, slot0)
 	FightController.instance:unregisterCallback(FightEvent.BeforePlayUniqueSkill, slot0.onBeforePlayUniqueSkill, slot0)
 	FightController.instance:unregisterCallback(FightEvent.AfterPlayUniqueSkill, slot0.onAfterPlayUniqueSkill, slot0)

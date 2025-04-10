@@ -223,5 +223,50 @@
     "itemId": 0,
     "jumpId": 6,
     "bonus": "1#510010#1"
+  },
+  {
+    "id": 1271601,
+    "activityId": 12716,
+    "isOnline": 1,
+    "minType": "2.7新手洞悉活动",
+    "name": "把任一角色（包含六星）提升至洞悉一-1级",
+    "desc": "箱中1名角色等级提升至洞悉1层1级",
+    "openLimit": "",
+    "listenerType": "HeroRankCount",
+    "listenerParam": "2",
+    "maxProgress": 1,
+    "itemId": 489092,
+    "jumpId": 6,
+    "bonus": "24#489092#1"
+  },
+  {
+    "id": 1271602,
+    "activityId": 12716,
+    "isOnline": 1,
+    "minType": "2.7新手洞悉活动",
+    "name": "把任意2个角色（包含六星）提升至洞悉二-1级",
+    "desc": "箱中2名角色等级提升至洞悉2层1级",
+    "openLimit": "",
+    "listenerType": "HeroRankCount",
+    "listenerParam": "3",
+    "maxProgress": 2,
+    "itemId": 489093,
+    "jumpId": 6,
+    "bonus": "24#489093#1"
+  },
+  {
+    "id": 1271603,
+    "activityId": 12716,
+    "isOnline": 1,
+    "minType": "2.7新手洞悉活动",
+    "name": "把任一角色（包含六星）提升至洞悉三-1级",
+    "desc": "箱中1名角色等级提升至洞悉3层1级",
+    "openLimit": "",
+    "listenerType": "HeroRankCount",
+    "listenerParam": "4",
+    "maxProgress": 1,
+    "itemId": 0,
+    "jumpId": 6,
+    "bonus": "1#510010#1"
   }
 ]

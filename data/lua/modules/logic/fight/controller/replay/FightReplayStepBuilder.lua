@@ -32,6 +32,8 @@ function slot0.buildReplaySequence()
 				slot0:addWork(FightReplayWorkMoveUniversal.New(slot11))
 			elseif slot11:isPlayerFinisherSkill() then
 				slot0:addWork(FightReplyWorkPlayerFinisherSkill.New(slot11))
+			elseif slot11:isBloodPoolSkill() then
+				slot0:addWork(FightReplyWorkPlayerFinisherSkill.New(slot11))
 			end
 		end
 

@@ -41,9 +41,9 @@ function slot0._enterActivity12003(slot0, slot1)
 	slot5 = FlowSequence.New()
 
 	slot5:addWork(OpenViewWork.New({
-		openFunction = VersionActivity2_0EnterController.directOpenVersionActivityEnterView,
-		openFunctionObj = VersionActivity2_0EnterController.instance,
-		waitOpenViewName = ViewName.VersionActivity2_0EnterView
+		openFunction = uv0.open2_7ReactivityEnterView,
+		openFunctionObj = VersionActivityFixedHelper.getVersionActivityEnterController().instance,
+		waitOpenViewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
 	}))
 	slot5:registerDoneListener(function ()
 		if uv0 then
@@ -59,6 +59,10 @@ function slot0._enterActivity12003(slot0, slot1)
 	slot5:start()
 
 	uv0.sequence = slot5
+end
+
+function slot0.open2_7ReactivityEnterView()
+	VersionActivityFixedHelper.getVersionActivityEnterController():directOpenVersionActivityEnterView(VersionActivity2_7Enum.ActivityId.Reactivity)
 end
 
 function slot0.enterActivity12009(slot0, slot1)

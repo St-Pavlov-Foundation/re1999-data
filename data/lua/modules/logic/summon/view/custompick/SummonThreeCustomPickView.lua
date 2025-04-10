@@ -174,6 +174,18 @@ function slot0._btnsummon1OnClick(slot0)
 		return
 	end
 
+	if SummonModel.instance:getSummonFullExSkillHero(slot1.id, slot0:getPickHeroIds(slot1)) == nil then
+		slot0:_btnsummon1OnClick_2()
+	else
+		GameFacade.showOptionAndParamsMessageBox(MessageBoxIdDefine.SummonHeroExFull, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, slot1.id, slot0._btnsummon1OnClick_2, nil, , slot0, nil, , HeroConfig.instance:getHeroCO(slot3).name)
+	end
+end
+
+function slot0._btnsummon1OnClick_2(slot0)
+	if not SummonMainModel.instance:getCurPool() then
+		return
+	end
+
 	slot3, slot4, slot5 = slot1.getCostByConfig(slot2.cost1)
 
 	if not (slot5 <= ItemModel.instance:getItemQuantity(slot3, slot4)) and slot1:getOwnCostCurrencyNum() < slot1.everyCostCount then
@@ -206,6 +218,18 @@ function slot0._btnsummon1OnClick(slot0)
 end
 
 function slot0._btnsummon10OnClick(slot0)
+	if not SummonMainModel.instance:getCurPool() then
+		return
+	end
+
+	if SummonModel.instance:getSummonFullExSkillHero(slot1.id, slot0:getPickHeroIds(slot1)) == nil then
+		slot0:_btnsummon10OnClick_2()
+	else
+		GameFacade.showOptionAndParamsMessageBox(MessageBoxIdDefine.SummonHeroExFull, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, slot1.id, slot0._btnsummon10OnClick_2, nil, , slot0, nil, , HeroConfig.instance:getHeroCO(slot3).name)
+	end
+end
+
+function slot0._btnsummon10OnClick_2(slot0)
 	if not SummonMainModel.instance:getCurPool() then
 		return
 	end

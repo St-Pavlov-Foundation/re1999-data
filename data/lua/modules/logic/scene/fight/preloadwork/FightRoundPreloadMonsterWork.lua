@@ -3,6 +3,14 @@ module("modules.logic.scene.fight.preloadwork.FightRoundPreloadMonsterWork", pac
 slot0 = class("FightRoundPreloadMonsterWork", BaseWork)
 
 function slot0.onStart(slot0, slot1)
+	if FightDataHelper.tempMgr.hasNextWave then
+		slot0:_onFightWavePush()
+
+		FightDataHelper.tempMgr.hasNextWave = false
+
+		return
+	end
+
 	if FightModel.instance.hasNextWave then
 		slot0:_onFightWavePush()
 	else

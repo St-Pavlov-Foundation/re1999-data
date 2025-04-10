@@ -3,13 +3,13 @@ module("modules.logic.fight.system.work.FightWorkDissolveCardForDeadVersion0", p
 slot0 = class("FightWorkDissolveCardForDeadVersion0", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._actEffectMO = slot1
+	slot0.actEffectData = slot1
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 0.5)
 
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:onDone(true)
 
 		return
@@ -30,7 +30,7 @@ function slot0._removeCard(slot0, slot1)
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	slot3 = #tabletool.copy(FightCardModel.instance:getHandCards())
+	slot3 = #FightDataHelper.handCardMgr.handCard
 
 	table.sort(slot1, FightWorkCardRemove2.sort)
 
@@ -38,12 +38,9 @@ function slot0._removeCard(slot0, slot1)
 		table.remove(slot2, slot8)
 	end
 
-	FightCardModel.instance:coverCard(slot2)
-
-	slot0._finalCards, slot0._combineCount = FightCardModel.calcCardsAfterCombine(slot2)
 	slot4 = 0.033
 
-	if slot0._combineCount > 0 then
+	if FightCardDataHelper.canCombineCardListForPerformance(slot2) then
 		TaskDispatcher.cancelTask(slot0._delayDone, slot0)
 		TaskDispatcher.runDelay(slot0._delayDone, slot0, 10)
 		FightController.instance:registerCallback(FightEvent.OnCombineCardEnd, slot0._onCombineDone, slot0)
@@ -55,18 +52,10 @@ function slot0._removeCard(slot0, slot1)
 end
 
 function slot0._onCombineDone(slot0)
-	if slot0._finalCards then
-		FightCardModel.instance:coverCard(slot0._finalCards)
-	end
-
 	slot0:onDone(true)
 end
 
 function slot0._delayDone(slot0)
-	if slot0._finalCards then
-		FightCardModel.instance:coverCard(slot0._finalCards)
-	end
-
 	FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
 	slot0:onDone(true)
 end
@@ -78,7 +67,7 @@ end
 function slot0._calcRemoveCard(slot0, slot1)
 	slot3 = nil
 
-	for slot7 = #FightCardModel.instance:getHandCards(), 1, -1 do
+	for slot7 = #FightDataHelper.handCardMgr.handCard, 1, -1 do
 		if slot2[slot7].uid == slot1 then
 			table.insert(slot3 or {}, slot7)
 		end

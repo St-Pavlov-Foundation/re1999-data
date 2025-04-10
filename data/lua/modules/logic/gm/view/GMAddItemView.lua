@@ -190,6 +190,10 @@ function slot0._hideScroll(slot0)
 end
 
 function slot0._onClickItem(slot0, slot1)
+	if not slot1.type then
+		return
+	end
+
 	if slot1.isRoot == 1 then
 		slot0._rootType = slot1.type
 

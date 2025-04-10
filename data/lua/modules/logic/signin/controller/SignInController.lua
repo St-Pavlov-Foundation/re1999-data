@@ -14,11 +14,6 @@ function slot0.addConstEvents(slot0)
 	MainController.instance:registerCallback(MainEvent.OnFuncUnlockRefresh, slot0._onFuncUnlock, slot0)
 	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, slot0._onCheckSignIn, slot0)
 	GuideController.instance:registerCallback(GuideEvent.FinishGuideLastStep, slot0._onCheckSignIn, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0)
-end
-
-function slot0._onDailyRefresh(slot0)
-	slot0:sendGetSignInInfoRequestIfUnlock()
 end
 
 function slot0._onFuncUnlock(slot0)

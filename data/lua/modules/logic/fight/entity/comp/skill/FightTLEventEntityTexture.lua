@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventEntityTexture", package.seeall)
 
-slot0 = class("FightTLEventEntityTexture")
+slot0 = class("FightTLEventEntityTexture", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0._targetEntitys = nil
 
 	if slot3[1] == "1" then
@@ -54,11 +54,7 @@ function slot0._clear(slot0)
 	end
 end
 
-function slot0.reset(slot0)
-	slot0:_clear()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	slot0:_clear()
 end
 

@@ -603,7 +603,11 @@ function slot0._updateDecorateDefault(slot0)
 
 	gohelper.setActive(slot0._gotypebg7, false)
 	gohelper.setActive(slot0._gotypebg1, true)
-	slot0._simagetypebg1:LoadImage(ResUrl.getDecorateStoreImg(slot2.biglmg))
+	slot0._simagetypebg1:LoadImage(ResUrl.getDecorateStoreImg(slot2.biglmg), slot0._onType1ImageLoaded, slot0)
+end
+
+function slot0._onType1ImageLoaded(slot0)
+	slot0._simagetypebg1.gameObject:GetComponent(gohelper.Type_Image):SetNativeSize()
 end
 
 function slot0._checkEffectBigImg(slot0, slot1)

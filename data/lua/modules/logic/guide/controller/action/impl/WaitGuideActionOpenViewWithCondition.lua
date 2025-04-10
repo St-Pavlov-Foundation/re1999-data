@@ -232,6 +232,32 @@ function slot0.isUnlockEpisode(slot0)
 	return LiangYueModel.instance:isEpisodeFinish(LiangYueModel.instance:getCurActId(), slot0) == tonumber(slot0)
 end
 
+function slot0.checkAct191NodeType(slot0)
+	if Activity191Model.instance:getActInfo() then
+		slot2 = slot1:getGameInfo()
+
+		if #slot2:getNodeInfoById(slot2.curNode).selectNodeStr ~= 0 then
+			Act191NodeDetailMO.New():init(slot3.selectNodeStr[1])
+
+			if tonumber(slot0) == 1 and Activity191Helper.isPveBattle(slot4.type) then
+				return true
+			elseif slot0 == 2 and Activity191Helper.isPvpBattle(slot4.type) then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function slot0.checkAct191Stage(slot0)
+	if Activity191Model.instance:getActInfo() and slot1:getGameInfo() and slot2.curStage == tonumber(slot0) then
+		return true
+	end
+
+	return false
+end
+
 function slot0.commonCheck(slot0)
 	if not slot0 then
 		return false

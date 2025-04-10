@@ -112,6 +112,7 @@ slot0.EffectOutType = {
 	Hard = 0
 }
 slot0.PictureType = {
+	Transparency = 4,
 	PicTxt = 3,
 	Float = 2,
 	FullScreen = 1,

@@ -37,6 +37,10 @@ function slot0.onInitView(slot0)
 	slot0._govx_iconbg = gohelper.findChild(slot0.viewGO, "#go_UniqueSkin/vx_iconbg")
 	slot0._govx_bg = gohelper.findChild(slot0.viewGO, "#go_UniqueSkin/vx_bg")
 	slot0._mask = slot0._goUniqueImageicon2:GetComponent(typeof(UnityEngine.UI.Mask))
+	slot0._goLinkageLetterG = gohelper.findChild(slot0.viewGO, "#go_Linkage/#simage_g")
+	slot0._goLinkageLetterA = gohelper.findChild(slot0.viewGO, "#go_Linkage/#image_A")
+	slot0._goLinkageBgG = gohelper.findChildSingleImage(slot0.viewGO, "#go_Linkage/#simage_bg")
+	slot0._goLinkageBgA = gohelper.findChildSingleImage(slot0.viewGO, "#go_Linkage/#simage_bgA")
 	slot0._simagesign = gohelper.findChildSingleImage(slot0.viewGO, "#simage_sign")
 	slot0._godeduction = gohelper.findChild(slot0.viewGO, "cost/#go_deduction")
 	slot0._txtdeduction = gohelper.findChildTextMesh(slot0.viewGO, "cost/#go_deduction/txt_materialNum")
@@ -75,9 +79,9 @@ function slot0._editableInitView(slot0)
 	slot0._simageg:LoadImage(ResUrl.getCharacterSkinIcon("img_g"))
 
 	slot0._txtmaterialNum = gohelper.findChildText(slot0._goprice, "txt_materialNum")
-	slot0._simagematerial = gohelper.findChildSingleImage(slot0._goprice, "simage_material")
 	slot0._simagematerial = gohelper.findChildImage(slot0._goprice, "simage_material")
 	slot0._goLinkage = gohelper.findChild(slot0.viewGO, "#go_Linkage")
+	slot0._linkage_simageicon = gohelper.findChildSingleImage(slot0._goLinkage, "#simage_icon")
 	slot0._btnGO = gohelper.findChild(slot0.viewGO, "clickArea")
 	slot0._btn = gohelper.getClickWithAudio(slot0._btnGO, AudioEnum.UI.play_ui_rolesopen)
 
@@ -87,12 +91,6 @@ function slot0._editableInitView(slot0)
 	slot0._mask.enabled = false
 end
 
-function slot0._editableAddEvents(slot0)
-end
-
-function slot0._editableRemoveEvents(slot0)
-end
-
 function slot0._onClick(slot0)
 	ViewMgr.instance:openView(ViewName.StoreSkinPreviewView, {
 		goodsMO = slot0._mo
@@ -100,34 +98,34 @@ function slot0._onClick(slot0)
 end
 
 function slot0._onDraggingBegin(slot0)
-	if slot0._mo.config.skinLevel == 2 and slot0._skinSpineGO2 then
+	if slot0:_isUniqueSkin() and slot0._skinSpineGO2 then
 		slot0._mask.enabled = true
 	end
 end
 
 function slot0._onDragging(slot0)
-	if slot0._mo.config.skinLevel == 2 and slot0._skinSpineGO2 then
-		slot2 = slot0.viewGO.transform
-		slot4 = recthelper.getWidth(slot2) * 0.5
+	if slot0:_isUniqueSkin() and slot0._skinSpineGO2 then
+		slot1 = slot0.viewGO.transform
+		slot3 = recthelper.getWidth(slot1) * 0.5
 
-		recthelper.setAnchorX(slot2, -slot4)
-		recthelper.setAnchorX(slot2, slot4)
-		recthelper.setAnchorX(slot2, 0)
+		recthelper.setAnchorX(slot1, -slot3)
+		recthelper.setAnchorX(slot1, slot3)
+		recthelper.setAnchorX(slot1, 0)
 
-		slot0._mask.enabled = not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot2) or not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot2)
+		slot0._mask.enabled = not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot1) or not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot1)
 	end
 end
 
 function slot0._onDraggingEnd(slot0)
-	if slot0._mo.config.skinLevel == 2 and slot0._skinSpineGO2 then
-		slot2 = slot0.viewGO.transform
-		slot4 = recthelper.getWidth(slot2) * 0.5
+	if slot0:_isUniqueSkin() and slot0._skinSpineGO2 then
+		slot1 = slot0.viewGO.transform
+		slot3 = recthelper.getWidth(slot1) * 0.5
 
-		recthelper.setAnchorX(slot2, -slot4)
-		recthelper.setAnchorX(slot2, slot4)
-		recthelper.setAnchorX(slot2, 0)
+		recthelper.setAnchorX(slot1, -slot3)
+		recthelper.setAnchorX(slot1, slot3)
+		recthelper.setAnchorX(slot1, 0)
 
-		slot0._mask.enabled = not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot2) or not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot2)
+		slot0._mask.enabled = not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot1) or not slot0:checkItemInGoodsList(slot0.viewGO.transform.parent.parent.parent, slot1)
 	end
 end
 
@@ -139,136 +137,44 @@ end
 
 function slot0.onUpdateMO(slot0, slot1)
 	slot0._mo = slot1
-	slot2 = slot0._mo.config.product
-	slot3 = slot0._mo.config.isAdvancedSkin or slot0._mo.config.skinLevel == 1
+	slot5 = not slot2 and slot0:_isUniqueSkin()
+	slot6 = uv0
+	slot0.skinCo = SkinConfig.instance:getSkinCo(string.splitToNumber(slot0._mo.config.product, "#")[2])
+	slot10 = HeroConfig.instance:getHeroCO(slot0.skinCo.characterId)
 
-	gohelper.setActive(slot0._goNormalSkin, slot0._mo.config.skinLevel == 0)
-	gohelper.setActive(slot0._goAdvanceSkin, slot0._mo.config.isAdvancedSkin or slot0._mo.config.skinLevel == 1)
-	gohelper.setActive(slot0._goUniqueSkin, slot0._mo.config.skinLevel == 2)
+	slot0:clearSpine()
+	gohelper.setActive(slot0._goNormalSkin, not slot0:_isLinkageSkin() and slot0:_isNormalSkin())
+	gohelper.setActive(slot0._goAdvanceSkin, not slot2 and slot0:_isAdvanceSkin())
+	gohelper.setActive(slot0._goUniqueSkin, slot5)
+	gohelper.setActive(slot0._goLinkage, slot2)
 
-	if slot0._mo.config.skinLevel == 2 then
-		slot0:clearSpine()
-		slot0:addEventCb(StoreController.instance, StoreEvent.DragSkinListBegin, slot0._onDraggingBegin, slot0)
-		slot0:addEventCb(StoreController.instance, StoreEvent.DragSkinListEnd, slot0._onDraggingEnd, slot0)
-		slot0:addEventCb(StoreController.instance, StoreEvent.DraggingSkinList, slot0._onDragging, slot0)
-		gohelper.setAsLastSibling(slot0.viewGO.transform.parent.gameObject)
-
-		slot6 = slot0._mo.config.bigImg
-
-		if not string.nilorempty(slot0._mo.config.spineParams) then
-			slot8 = string.split(slot7, "#")
-			slot10 = slot8[1]
-			slot11 = #slot8 > 1 and slot8[2]
-			slot12 = slot9 > 2 and string.splitToNumber(slot8[3], ",")
-			slot13 = slot9 > 3 and tonumber(slot8[4])
-			slot14 = slot9 > 4 and slot8[5]
-
-			if slot9 > 6 then
-				slot5 = slot8[7] or uv0
-			end
-
-			if slot0._skinSpine then
-				slot0._skinSpine:setResPath(slot10, slot0._onSkinSpineLoaded, slot0, true)
-			else
-				slot0._skinSpineGO = slot0._skinSpineGO or gohelper.create2d(slot0._goUniqueSkinsImage, "uniqueSkinSpine")
-				slot15 = slot0._skinSpineGO.transform
-
-				recthelper.setWidth(slot15, uv1[1])
-				transformhelper.setLocalPos(slot15, slot12[1], slot12[2], 0)
-				transformhelper.setLocalScale(slot15, slot13, slot13, slot13)
-
-				slot0._skinSpine = GuiSpine.Create(slot0._skinSpineGO, false)
-
-				slot0._skinSpine:setResPath(slot10, slot0._onSkinSpineLoaded, slot0, true)
-
-				if not string.nilorempty(slot11) then
-					slot0._skinSpineGO2 = slot0._skinSpineGO2 or gohelper.create2d(slot0._goUniqueImageicon2, "uniqueSkinSpine2")
-					slot16 = slot0._skinSpineGO2.transform
-
-					recthelper.setWidth(slot16, uv1[1])
-					transformhelper.setLocalPos(slot16, slot12[1], slot12[2], 0)
-					transformhelper.setLocalScale(slot16, slot13, slot13, slot13)
-
-					slot0._skinSpine2 = GuiSpine.Create(slot0._skinSpineGO2, false)
-
-					slot0._skinSpine2:setResPath(slot11, slot0._onSkinSpine2Loaded, slot0, true)
-				end
-
-				transformhelper.setLocalPos(slot0._uniqueImageicon.transform, 0, 0, 0)
-
-				slot0._uniqueImageicon.transform.sizeDelta = Vector2.New(uv2[1], uv2[2])
-			end
-
-			gohelper.setActive(slot0._skinSpineGO, true)
-			gohelper.setActive(slot0._goUniqueSkinBubble, false)
-			gohelper.setActive(slot0._govx_iconbg, false)
-			gohelper.setActive(slot0._govx_bg, false)
-
-			if not string.nilorempty(slot14) then
-				slot0._uniqueImagebg:LoadImage(slot14)
-
-				slot0._uniqueImageicon.enabled = true
-
-				slot0._uniqueSingleImageicon:LoadImage(slot14)
-			else
-				gohelper.setActive(slot0._uniqueImagebg.gameObject, false)
-
-				slot0._uniqueImageicon.enabled = false
-			end
-		elseif string.find(slot6, "prefab") then
-			slot8 = string.split(slot6, "#")
-			slot10 = slot8[1]
-			slot11 = slot8[2]
-
-			if #slot8 > 3 then
-				slot5 = slot8[4] or slot5
-			end
-
-			if slot0._skinSpine then
-				slot0._skinSpine:setResPath(slot10, slot0._onSpineLoaded, slot0, true)
-			else
-				slot0._skinSpineGO = slot0._skinSpineGO or gohelper.create2d(slot0._goUniqueSkinsImage, "uniqueSkinSpine")
-
-				transformhelper.setLocalPos(slot0._skinSpineGO.transform, uv3[1], uv3[2], uv3[3])
-
-				slot0._skinSpine = GuiSpine.Create(slot0._skinSpineGO, false)
-
-				slot0._skinSpine:setResPath(slot10, slot0._onSpineLoaded, slot0, true)
-			end
-
-			gohelper.setActive(slot0._skinSpineGO, true)
-
-			if not string.nilorempty(slot11) then
-				slot0._uniqueImagebg:LoadImage(slot11)
-			else
-				slot0._uniqueImagebg:LoadImage(uv4)
-			end
-
-			slot0._uniqueImageicon.enabled = true
-		else
-			slot0._uniqueImageicon.enabled = true
-
-			if not string.nilorempty(slot6) then
-				slot0._uniqueSingleImageicon:LoadImage(slot0._mo.config.bigImg)
-			else
-				slot0._uniqueSingleImageicon:LoadImage(ResUrl.getHeadSkinIconMiddle(303202))
-			end
-		end
+	if slot5 then
+		slot0:_onUpdateMO_uniqueSkin()
 	else
-		slot0:clearSpine()
+		slot11 = nil
+
+		if slot2 then
+			slot11 = slot0._linkage_simageicon
+
+			gohelper.setActive(slot0._goLinkageBgA, slot0:_isAdvanceSkin())
+			gohelper.setActive(slot0._goLinkageBgG, slot0:_isNormalSkin())
+			gohelper.setActive(slot0._goLinkageLetterA, slot0:_isAdvanceSkin())
+			gohelper.setActive(slot0._goLinkageLetterG, slot0:_isNormalSkin())
+		else
+			slot11 = (not slot4 or slot0._advanceImageicon) and slot0._simageicon
+		end
 
 		if string.nilorempty(slot0._mo.config.bigImg) == false then
-			(slot3 and slot0._advanceImageicon or slot0._simageicon):LoadImage(slot0._mo.config.bigImg)
+			slot11:LoadImage(slot0._mo.config.bigImg)
 		else
-			slot6:LoadImage(ResUrl.getHeadSkinIconMiddle(303202))
+			slot11:LoadImage(ResUrl.getHeadSkinIconMiddle(303202))
 		end
 	end
 
-	slot0._simagesign:LoadImage(slot5, slot0._loadedSignImage, slot0)
+	slot0._simagesign:LoadImage(slot6, slot0._loadedSignImage, slot0)
 
-	slot0.skinCo = SkinConfig.instance:getSkinCo(string.splitToNumber(slot2, "#")[2])
 	slot0._txtskinname.text = slot0.skinCo.characterSkin
-	slot0._txtname.text = HeroConfig.instance:getHeroCO(slot0.skinCo.characterId).name
+	slot0._txtname.text = slot10.name
 
 	if slot1:alreadyHas() and not StoreModel.instance:isSkinGoodsCanRepeatBuy(slot1) then
 		gohelper.setActive(slot0._goowned, true)
@@ -278,24 +184,24 @@ function slot0.onUpdateMO(slot0, slot1)
 		gohelper.setActive(slot0._goowned, false)
 		gohelper.setActive(slot0._goprice, true)
 
-		slot10 = 0
+		slot12 = 0
 
 		if not string.nilorempty(slot0._mo.config.deductionItem) then
-			slot11 = GameUtil.splitString2(slot0._mo.config.deductionItem, true)
-			slot10 = ItemModel.instance:getItemCount(slot11[1][2])
-			slot0._txtdeduction.text = -slot11[2][1]
+			slot13 = GameUtil.splitString2(slot0._mo.config.deductionItem, true)
+			slot12 = ItemModel.instance:getItemCount(slot13[1][2])
+			slot0._txtdeduction.text = -slot13[2][1]
 		end
 
-		gohelper.setActive(slot0._godeduction, slot10 > 0)
+		gohelper.setActive(slot0._godeduction, slot12 > 0)
 	end
 
-	slot10 = string.splitToNumber(slot0._mo.config.cost, "#")
-	slot0._costType = slot10[1]
-	slot0._costId = slot10[2]
-	slot0._costQuantity = slot10[3]
-	slot11, slot12 = ItemModel.instance:getItemConfigAndIcon(slot0._costType, slot0._costId)
+	slot12 = string.splitToNumber(slot0._mo.config.cost, "#")
+	slot0._costType = slot12[1]
+	slot0._costId = slot12[2]
+	slot0._costQuantity = slot12[3]
+	slot13, slot14 = ItemModel.instance:getItemConfigAndIcon(slot0._costType, slot0._costId)
 
-	UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._simagematerial, string.format("%s_1", slot11.icon), true)
+	UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._simagematerial, string.format("%s_1", slot13.icon), true)
 
 	slot0._txtmaterialNum.text = slot0._costQuantity
 
@@ -307,19 +213,18 @@ function slot0.onUpdateMO(slot0, slot1)
 
 	gohelper.setActive(slot0._gonewtag, slot1:needShowNew())
 
-	slot16 = slot1:getOfflineTime()
+	slot18 = slot1:getOfflineTime()
 
-	gohelper.setActive(slot0._goremaintime, slot16 > 0 and slot9 == false)
+	gohelper.setActive(slot0._goremaintime, slot18 > 0 and slot11 == false)
 
-	if slot16 - ServerTime.now() > 3600 then
-		slot18, slot19 = TimeUtil.secondToRoughTime(slot17)
-		slot0._txtremaintime.text = formatLuaLang("remain", slot18 .. slot19)
+	if slot18 - ServerTime.now() > 3600 then
+		slot20, slot21 = TimeUtil.secondToRoughTime(slot19)
+		slot0._txtremaintime.text = formatLuaLang("remain", slot20 .. slot21)
 	else
 		slot0._txtremaintime.text = luaLang("not_enough_one_hour")
 	end
 
 	slot0:refreshChargeInfo()
-	slot0:_onUpdateMO_linkage()
 	slot0:refreshSkinTips()
 end
 
@@ -414,17 +319,8 @@ function slot0.refreshSkinTips(slot0)
 end
 
 function slot0.clearSpine(slot0)
-	if slot0._skinSpine then
-		slot0._skinSpine:doClear()
-
-		slot0._skinSpine = nil
-	end
-
-	if slot0._skinSpine2 then
-		slot0._skinSpine2:doClear()
-
-		slot0._skinSpine2 = nil
-	end
+	GameUtil.doClearMember(slot0, "_skinSpine")
+	GameUtil.doClearMember(slot0, "_skinSpine2")
 end
 
 function slot0.onDestroyView(slot0)
@@ -435,28 +331,139 @@ function slot0.onDestroyView(slot0)
 	slot0._simagesign:UnLoadImage()
 	slot0._uniqueSingleImageicon:UnLoadImage()
 	slot0._uniqueImagebg:UnLoadImage()
+	GameUtil.doClearMember(slot0, "_skinSpine")
+	GameUtil.doClearMember(slot0, "_skinSpine2")
 
-	if slot0._skinSpine then
-		slot0._skinSpine:doClear()
-
-		slot0._skinSpine = nil
-	end
-
-	if slot0._skinSpine2 then
-		slot0._skinSpine2:doClear()
-
-		slot0._skinSpine2 = nil
-	end
-
-	if slot0._mo.config.skinLevel == 2 then
+	if slot0:_isUniqueSkin() then
 		slot0:removeEventCb(StoreController.instance, StoreEvent.DragSkinListBegin, slot0._onDraggingBegin, slot0)
 		slot0:removeEventCb(StoreController.instance, StoreEvent.DragSkinListEnd, slot0._onDraggingEnd, slot0)
 		slot0:removeEventCb(StoreController.instance, StoreEvent.DraggingSkinList, slot0._onDragging, slot0)
 	end
 end
 
-function slot0._onUpdateMO_linkage(slot0)
-	gohelper.setActive(slot0._goLinkage, slot0._mo.config.islinkageSkin or false)
+function slot0._onUpdateMO_uniqueSkin(slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.DragSkinListBegin, slot0._onDraggingBegin, slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.DragSkinListEnd, slot0._onDraggingEnd, slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.DraggingSkinList, slot0._onDragging, slot0)
+	gohelper.setAsLastSibling(slot0.viewGO.transform.parent.gameObject)
+
+	slot2 = slot0._mo.config.bigImg
+
+	if not string.nilorempty(slot0._mo.config.spineParams) then
+		slot4 = string.split(slot3, "#")
+		slot6 = slot4[1]
+		slot7 = #slot4 > 1 and slot4[2]
+		slot8 = slot5 > 2 and string.splitToNumber(slot4[3], ",")
+		slot9 = slot5 > 3 and tonumber(slot4[4])
+		slot10 = slot5 > 4 and slot4[5]
+
+		if slot5 > 6 then
+			slot1 = slot4[7] or uv0
+		end
+
+		if slot0._skinSpine then
+			slot0._skinSpine:setResPath(slot6, slot0._onSkinSpineLoaded, slot0, true)
+		else
+			slot0._skinSpineGO = slot0._skinSpineGO or gohelper.create2d(slot0._goUniqueSkinsImage, "uniqueSkinSpine")
+			slot11 = slot0._skinSpineGO.transform
+
+			recthelper.setWidth(slot11, uv1[1])
+			transformhelper.setLocalPos(slot11, slot8[1], slot8[2], 0)
+			transformhelper.setLocalScale(slot11, slot9, slot9, slot9)
+
+			slot0._skinSpine = GuiSpine.Create(slot0._skinSpineGO, false)
+
+			slot0._skinSpine:setResPath(slot6, slot0._onSkinSpineLoaded, slot0, true)
+
+			if not string.nilorempty(slot7) then
+				slot0._skinSpineGO2 = slot0._skinSpineGO2 or gohelper.create2d(slot0._goUniqueImageicon2, "uniqueSkinSpine2")
+				slot12 = slot0._skinSpineGO2.transform
+
+				recthelper.setWidth(slot12, uv1[1])
+				transformhelper.setLocalPos(slot12, slot8[1], slot8[2], 0)
+				transformhelper.setLocalScale(slot12, slot9, slot9, slot9)
+
+				slot0._skinSpine2 = GuiSpine.Create(slot0._skinSpineGO2, false)
+
+				slot0._skinSpine2:setResPath(slot7, slot0._onSkinSpine2Loaded, slot0, true)
+			end
+
+			transformhelper.setLocalPos(slot0._uniqueImageicon.transform, 0, 0, 0)
+
+			slot0._uniqueImageicon.transform.sizeDelta = Vector2.New(uv2[1], uv2[2])
+		end
+
+		gohelper.setActive(slot0._skinSpineGO, true)
+		gohelper.setActive(slot0._goUniqueSkinBubble, false)
+		gohelper.setActive(slot0._govx_iconbg, false)
+		gohelper.setActive(slot0._govx_bg, false)
+
+		if not string.nilorempty(slot10) then
+			slot0._uniqueImagebg:LoadImage(slot10)
+
+			slot0._uniqueImageicon.enabled = true
+
+			slot0._uniqueSingleImageicon:LoadImage(slot10)
+		else
+			gohelper.setActive(slot0._uniqueImagebg.gameObject, false)
+
+			slot0._uniqueImageicon.enabled = false
+		end
+	elseif string.find(slot2, "prefab") then
+		slot4 = string.split(slot2, "#")
+		slot6 = slot4[1]
+		slot7 = slot4[2]
+
+		if #slot4 > 3 then
+			slot1 = slot4[4] or slot1
+		end
+
+		if slot0._skinSpine then
+			slot0._skinSpine:setResPath(slot6, slot0._onSpineLoaded, slot0, true)
+		else
+			slot0._skinSpineGO = slot0._skinSpineGO or gohelper.create2d(slot0._goUniqueSkinsImage, "uniqueSkinSpine")
+
+			transformhelper.setLocalPos(slot0._skinSpineGO.transform, uv3[1], uv3[2], uv3[3])
+
+			slot0._skinSpine = GuiSpine.Create(slot0._skinSpineGO, false)
+
+			slot0._skinSpine:setResPath(slot6, slot0._onSpineLoaded, slot0, true)
+		end
+
+		gohelper.setActive(slot0._skinSpineGO, true)
+
+		if not string.nilorempty(slot7) then
+			slot0._uniqueImagebg:LoadImage(slot7)
+		else
+			slot0._uniqueImagebg:LoadImage(uv4)
+		end
+
+		slot0._uniqueImageicon.enabled = true
+	else
+		slot0._uniqueImageicon.enabled = true
+
+		if not string.nilorempty(slot2) then
+			slot0._uniqueSingleImageicon:LoadImage(slot0._mo.config.bigImg)
+		else
+			slot0._uniqueSingleImageicon:LoadImage(ResUrl.getHeadSkinIconMiddle(303202))
+		end
+	end
+end
+
+function slot0._isNormalSkin(slot0)
+	return slot0._mo.config.skinLevel == 0
+end
+
+function slot0._isAdvanceSkin(slot0)
+	return slot0._mo.config.isAdvancedSkin or slot0._mo.config.skinLevel == 1
+end
+
+function slot0._isUniqueSkin(slot0)
+	return slot0._mo.config.skinLevel == 2
+end
+
+function slot0._isLinkageSkin(slot0)
+	return slot0._mo.config.islinkageSkin or false
 end
 
 return slot0

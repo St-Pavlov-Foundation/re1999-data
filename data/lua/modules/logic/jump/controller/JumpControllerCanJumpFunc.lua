@@ -519,6 +519,7 @@ slot0.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.BossRush] = slot0.canJumpToBossRush,
 	[JumpEnum.JumpView.SeasonMainView] = slot0.canJumpToSeasonMainView,
 	[JumpEnum.JumpView.Tower] = slot0.canJumpToTower,
+	[JumpEnum.JumpView.Challenge] = Act183JumpHelper.canJumpToAct183,
 	[JumpEnum.JumpView.V1a5Dungeon] = slot0.canJumpToAct1_5DungeonView,
 	[JumpEnum.JumpView.V1a6Dungeon] = slot0.canJumpToAct1_6DungeonView,
 	[JumpEnum.JumpView.Season123] = slot0.canJumpToSeason123,

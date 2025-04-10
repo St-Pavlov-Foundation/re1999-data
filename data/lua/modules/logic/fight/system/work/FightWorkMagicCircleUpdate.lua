@@ -4,8 +4,8 @@ slot0 = class("FightWorkMagicCircleUpdate", FightEffectBase)
 
 function slot0.onStart(slot0)
 	if FightModel.instance:getMagicCircleInfo() then
-		if slot1.magicCircleId == slot0._actEffectMO.magicCircle.magicCircleId then
-			slot1:refreshData(slot0._actEffectMO.magicCircle)
+		if slot1.magicCircleId == slot0.actEffectData.magicCircle.magicCircleId then
+			slot1:refreshData(slot0.actEffectData.magicCircle)
 		end
 
 		if lua_magic_circle.configDict[slot2] then

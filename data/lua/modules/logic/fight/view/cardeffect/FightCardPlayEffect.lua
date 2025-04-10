@@ -4,16 +4,16 @@ slot0 = class("FightCardPlayEffect", BaseWork)
 slot1 = 1
 
 function slot0.onStart(slot0, slot1)
-	FightCardModel.instance:setUniversalCombine(nil, )
-
 	slot0._dt = 0.033 * uv0 / FightModel.instance:getUISpeed()
 	slot0._tweenParamList = nil
 
 	uv1.super.onStart(slot0, slot1)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_FightPlayCard)
 
-	slot3 = slot1.handCardItemList[slot1.from]
+	slot3 = table.remove(slot1.handCardItemList, slot1.from)
 
+	table.insert(slot1.handCardItemList, slot3)
+	FightViewHandCard.refreshCardIndex(slot1.handCardItemList)
 	slot3:setASFDActive(false)
 
 	if slot3._cardItem then
@@ -21,39 +21,38 @@ function slot0.onStart(slot0, slot1)
 	end
 
 	slot0._cardInfoMO = slot3.cardInfoMO:clone()
-	slot0._cardInfoMO.playCanAddExpoint = slot1.cards[slot1.from].playCanAddExpoint
 	slot0._clonePlayCardGO = gohelper.cloneInPlace(slot3.go)
 
 	gohelper.setActive(slot3.go, false)
-	table.remove(tabletool.copy(slot0.context.cards), slot0.context.from)
+	slot3:updateItem(#slot1.handCardItemList, nil)
 	slot0:_addTrailEffect(slot0._clonePlayCardGO.transform)
 
-	slot6 = true
-	slot7 = false
+	slot5 = true
+	slot6 = false
 
 	if slot0.context.needDiscard then
-		slot6 = false
+		slot5 = false
+		slot6 = true
+	end
+
+	slot7 = false
+
+	if slot1.dissolveCardIndexsAfterPlay and #slot8 > 0 then
+		slot5 = false
 		slot7 = true
 	end
 
-	slot8 = false
+	slot9 = false
 
-	if slot1.dissolveCardIndexsAfterPlay and #slot9 > 0 then
-		slot6 = false
-		slot8 = true
+	if slot5 then
+		slot9 = FightCardDataHelper.canCombineCardListForPerformance(FightDataHelper.handCardMgr.handCard) or false
 	end
 
-	slot10 = false
-
-	if slot6 then
-		slot10 = FightCardModel.getCombineIndexOnce(slot5) or false
-	end
-
-	if slot10 then
+	if slot9 then
 		slot0._stepCount = 1
-	elseif slot7 or slot8 then
+	elseif slot6 or slot7 then
 		slot0._stepCount = 2
-	elseif FightCardModel.instance:isCardOpEnd() and #FightCardModel.instance:getCardOps() > 0 then
+	elseif FightDataHelper.operationDataMgr:isCardOpEnd() and #FightDataHelper.operationDataMgr:getOpList() > 0 then
 		slot0._stepCount = 2
 	else
 		slot0._stepCount = 1
@@ -66,28 +65,43 @@ function slot0.onStart(slot0, slot1)
 	end
 
 	slot0._main_flow = FlowSequence.New()
-	slot11 = FlowSequence.New()
 
-	slot11:addWork(FunctionWork.New(function ()
+	FlowSequence.New():addWork(FunctionWork.New(function ()
 		FightController.instance:dispatchEvent(FightEvent.ShowPlayCardFlyEffect, uv0._cardInfoMO, uv0._clonePlayCardGO, uv0.context.fightBeginRoundOp)
 	end))
 
+	slot11 = false
+
 	if FightCardDataHelper.isNoCostSpecialCard(slot0._cardInfoMO) then
-		slot11:addWork(slot0:_buildNoActCostMoveFlow())
+		slot11 = true
 	end
 
-	slot11:addWork(WorkWaitSeconds.New(slot0._dt * 1))
+	if FightCardDataHelper.isSkill3(slot0._cardInfoMO) then
+		slot11 = true
+	end
 
-	if slot10 then
-		slot11:addWork(FunctionWork.New(function ()
+	slot12 = slot0.context.fightBeginRoundOp
+
+	if not FightCardDataHelper.checkIsBigSkillCostActPoint(slot12.belongToEntityId, slot12.skillId) then
+		slot11 = true
+	end
+
+	if slot11 then
+		slot10:addWork(slot0:_buildNoActCostMoveFlow())
+	end
+
+	slot10:addWork(WorkWaitSeconds.New(slot0._dt * 1))
+
+	if slot9 then
+		slot10:addWork(FunctionWork.New(function ()
 			uv0:_playShrinkFlow()
 		end))
-		slot11:addWork(WorkWaitSeconds.New(slot0._dt * 6))
+		slot10:addWork(WorkWaitSeconds.New(slot0._dt * 6))
 	else
-		slot11:addWork(slot0:_startShrinkFlow())
+		slot10:addWork(slot0:_startShrinkFlow())
 	end
 
-	slot0._main_flow:addWork(slot11)
+	slot0._main_flow:addWork(slot10)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 10 / FightModel.instance:getUISpeed())
 	slot0._main_flow:registerDoneListener(slot0._onPlayCardDone, slot0)
 	slot0._main_flow:start(slot1)
@@ -111,21 +125,7 @@ end
 
 function slot0._onPlayCardDone(slot0)
 	slot0._main_flow:unregisterDoneListener(slot0._onPlayCardDone, slot0)
-	table.remove(slot0.context.cards, slot0.context.from)
-
-	if slot0._tweenParamList then
-		for slot4, slot5 in ipairs(slot0._tweenParamList) do
-			if slot0.context.from <= slot5.index then
-				slot5.index = slot5.index - 1
-
-				slot0:_tweenCardPosFrameCb(slot5.curPos, slot5)
-			end
-		end
-	end
-
 	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-	slot0.context.view:_playCardItemInList(slot0.context.from)
-	slot0.context.view:_updateHandCards(slot0.context.cards)
 	slot0:_checkDone()
 end
 
@@ -187,49 +187,30 @@ function slot0._startShrinkFlow(slot0)
 	FlowSequence.New():addWork(WorkWaitSeconds.New(slot0._dt * 2))
 
 	slot2 = FlowParallel.New()
-	slot0._tweenParamList = {}
 
-	for slot6, slot7 in ipairs(slot0.context.handCardItemList) do
-		if slot7.go.activeInHierarchy and slot0.context.from < slot6 then
-			slot9 = FightViewHandCard.calcCardPosX(slot6 <= slot0.context.from and slot6 or slot6 - 1)
-			slot10 = FlowSequence.New()
+	for slot7, slot8 in ipairs(slot0.context.handCardItemList) do
+		if slot8.go.activeInHierarchy and slot0.context.from <= slot7 then
+			slot10 = FightViewHandCard.calcCardPosX(slot7)
+			slot11 = FlowSequence.New()
 
-			if (slot6 - slot0.context.from - 1) * slot0._dt > 0 then
-				slot10:addWork(WorkWaitSeconds.New(slot11))
+			if (1 + 1) * slot0._dt > 0 then
+				slot11:addWork(WorkWaitSeconds.New(slot12))
 			end
 
-			slot12 = recthelper.getAnchorX(slot7.tr)
-			slot13 = {
-				index = slot6,
-				curPos = slot12
-			}
-
-			table.insert(slot0._tweenParamList, slot13)
-			slot10:addWork(TweenWork.New({
-				type = "DOTweenFloat",
-				from = slot12,
-				to = slot9,
+			slot11:addWork(TweenWork.New({
+				type = "DOAnchorPosX",
+				tr = slot8.tr,
+				to = slot10,
 				t = slot0._dt * 5,
-				frameCb = slot0._tweenCardPosFrameCb,
-				cbObj = slot0,
-				param = slot13,
 				ease = EaseType.OutQuart
 			}))
-			slot2:addWork(slot10)
+			slot2:addWork(slot11)
 		end
 	end
 
 	slot1:addWork(slot2)
 
 	return slot1
-end
-
-function slot0._tweenCardPosFrameCb(slot0, slot1, slot2)
-	slot2.curPos = slot1
-
-	if not gohelper.isNil(slot0.context.handCardTr) and not gohelper.isNil(gohelper.findChild(slot0.context.handCardTr.gameObject, "cardItem" .. slot2.index)) then
-		recthelper.setAnchorX(slot5.transform, slot1)
-	end
 end
 
 function slot0.clearWork(slot0)

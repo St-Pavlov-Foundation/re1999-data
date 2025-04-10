@@ -3,8 +3,6 @@ module("modules.logic.fight.view.FightViewAssistBoss", package.seeall)
 slot0 = class("FightViewAssistBoss", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0.goAssistBossContainer = gohelper.findChild(slot0.viewGO, "root/assistboss")
-
 	if slot0._editableInitView then
 		slot0:_editableInitView()
 	end
@@ -35,7 +33,6 @@ function slot0.onOpen(slot0)
 		return
 	end
 
-	gohelper.setActive(slot0.goAssistBossContainer, true)
 	slot0:createAssistBossBehaviour()
 	slot0:createAssistBossScore()
 end
@@ -59,7 +56,8 @@ function slot0.createAssistBossBehaviour(slot0)
 
 	slot0.bossBehaviour = slot3.New()
 
-	slot0.bossBehaviour:init(slot0.goAssistBossContainer)
+	slot0.bossBehaviour:init(slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.AssistBoss))
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.AssistBoss)
 end
 
 function slot0.createAssistBossScore(slot0)
@@ -75,7 +73,8 @@ function slot0.createAssistBossScore(slot0)
 
 	slot0.scoreComp = FightAssistBossScoreView.New()
 
-	slot0.scoreComp:init(slot0.goAssistBossContainer)
+	slot0.scoreComp:init(slot0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.AssistBossScore))
+	slot0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.AssistBossScore)
 end
 
 function slot0.onDestroyView(slot0)

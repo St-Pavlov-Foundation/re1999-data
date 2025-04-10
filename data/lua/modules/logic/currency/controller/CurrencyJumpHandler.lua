@@ -20,7 +20,7 @@ function slot0.JumpByCurrency(slot0)
 end
 
 function slot0.handleGold()
-	StoreController.instance:checkAndOpenStoreView(StoreEnum.SummonExchange)
+	StoreController.instance:checkAndOpenStoreView(StoreEnum.StoreId.SummonExchange)
 end
 
 function slot0.handlePower()

@@ -161,6 +161,7 @@ function slot0.onOpen(slot0)
 	slot0:_show1_2DailyEpisodeEndNotice()
 	slot0:_show1_6EpisodeMaterial()
 	slot0:_showWeekWalk_2Condition()
+	slot0:_playVictoryAudio_2_7()
 end
 
 function slot0._showPlatCondition(slot0, slot1, slot2, slot3, slot4)
@@ -191,6 +192,7 @@ function slot0.onClose(slot0)
 	slot0._canPlayVoice = false
 
 	TaskDispatcher.cancelTask(slot0._setCanPlayVoice, slot0)
+	TaskDispatcher.cancelTask(slot0._delayPlayVoice, slot0)
 	gohelper.setActive(slot0._gospine, false)
 
 	if FightResultModel.instance.canUpdateDungeonRecord and not slot0._hasSendCoverRecord then
@@ -409,6 +411,8 @@ function slot0._setEpisodeName(slot0, slot1, slot2, slot3)
 			slot2 = VersionActivity2_4DungeonConfig.instance:getEpisodeIndex(slot1.id)
 		elseif slot5.actId == VersionActivity2_5Enum.ActivityId.Dungeon then
 			slot2 = VersionActivity2_5DungeonConfig.instance:getEpisodeIndex(slot1.id)
+		elseif slot5.actId == VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon then
+			slot2 = VersionActivityFixedDungeonConfig.instance:getEpisodeIndex(slot1.id)
 		end
 	end
 
@@ -469,6 +473,36 @@ function slot0._playSpineVoice(slot0)
 		return
 	end
 
+	if slot0._uiSpine:isLive2D() then
+		slot0._uiSpine:setLive2dCameraLoadFinishCallback(slot0.onLive2dCameraLoadedCallback, slot0)
+
+		return
+	end
+
+	slot0:_playVoice()
+end
+
+function slot0.onLive2dCameraLoadedCallback(slot0)
+	slot0._uiSpine:setLive2dCameraLoadFinishCallback()
+
+	slot0._repeatNum = CharacterVoiceEnum.DelayFrame + 1
+	slot0._repeatCount = 0
+
+	TaskDispatcher.cancelTask(slot0._delayPlayVoice, slot0)
+	TaskDispatcher.runRepeat(slot0._delayPlayVoice, slot0, 0, slot0._repeatNum)
+end
+
+function slot0._delayPlayVoice(slot0)
+	slot0._repeatCount = slot0._repeatCount + 1
+
+	if slot0._repeatCount < slot0._repeatNum then
+		return
+	end
+
+	slot0:_playVoice()
+end
+
+function slot0._playVoice(slot0)
 	if (HeroModel.instance:getVoiceConfig(slot0._randomEntityMO.modelId, CharacterEnum.VoiceType.FightResult, nil, slot0._randomEntityMO.skin) or FightAudioMgr.instance:_getHeroVoiceCOs(slot0._randomEntityMO.modelId, CharacterEnum.VoiceType.FightResult, slot0._randomEntityMO.skin)) and #slot1 > 0 then
 		slot0._uiSpine:playVoice(slot1[1], nil, slot0._txtSayCn, slot0._txtSayEn)
 	end
@@ -1067,6 +1101,12 @@ function slot0._show1_6EpisodeMaterial(slot0)
 
 	gohelper.findChildText(slot0._goPlatConditionMaterial, "value").text = string.format("<color=#EB5F34>%s</color>/%s", VersionActivity1_6DungeonSkillModel.instance:getAllSkillPoint() or 0, Activity148Config.instance:getAct148ConstValue(VersionActivity1_6Enum.ActivityId.DungeonSkillTree, VersionActivity1_6DungeonEnum.DungeonConstId.MaxSkillPointNum))
 	gohelper.findChildText(slot0._goPlatConditionMaterial, "condition").text = luaLang("act1_6dungeonFightResultViewMaterialTitle")
+end
+
+function slot0._playVictoryAudio_2_7(slot0)
+	if LuaUtil.tableContains(VersionActivity2_7DungeonEnum.DungeonChapterId, FightResultModel.instance:getChapterId()) then
+		AudioMgr.instance:setSwitch(AudioMgr.instance:getIdFromString("Checkpointstate"), AudioMgr.instance:getIdFromString("Victory"))
+	end
 end
 
 return slot0

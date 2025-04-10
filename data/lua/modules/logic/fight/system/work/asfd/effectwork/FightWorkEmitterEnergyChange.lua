@@ -3,11 +3,11 @@ module("modules.logic.fight.system.work.asfd.effectwork.FightWorkEmitterEnergyCh
 slot0 = class("FightWorkEmitterEnergyChange", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0.beforeEnergy = FightDataHelper.ASFDDataMgr:getEmitterEnergy(slot0._actEffectMO.effectNum)
+	slot0.beforeEnergy = FightDataHelper.ASFDDataMgr:getEmitterEnergy(slot0.actEffectData.effectNum)
 end
 
 function slot0.onStart(slot0)
-	slot1 = slot0._actEffectMO.effectNum
+	slot1 = slot0.actEffectData.effectNum
 
 	FightController.instance:dispatchEvent(FightEvent.ASFD_EmitterEnergyChange, slot1, slot0.beforeEnergy, FightDataHelper.ASFDDataMgr:getEmitterEnergy(slot1))
 

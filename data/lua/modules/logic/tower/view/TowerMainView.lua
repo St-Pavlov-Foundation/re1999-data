@@ -10,13 +10,9 @@ function slot0.onInitView(slot0)
 	slot0._txtlimitTimeUpdateTime = gohelper.findChildText(slot0.viewGO, "limitTimeEpisode/#go_limitTimeUpdateTime/#txt_limitTimeUpdateTime")
 	slot0._golimitTimeHasNew = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_limitTimeHasNew")
 	slot0._btnlimitTime = gohelper.findChildButtonWithAudio(slot0.viewGO, "limitTimeEpisode/#btn_limitTime")
-	slot0._gobossHandbook = gohelper.findChild(slot0.viewGO, "bossHandbook")
-	slot0._btnbossHandbook = gohelper.findChildButtonWithAudio(slot0.viewGO, "bossHandbook/#btn_bossHandbook")
-	slot0._goreward = gohelper.findChild(slot0.viewGO, "reward")
-	slot0._imagerewardIcon = gohelper.findChildImage(slot0.viewGO, "reward/#image_rewardIcon")
-	slot0._txttotalTaskNum = gohelper.findChildText(slot0.viewGO, "reward/#txt_totalTaskNum")
-	slot0._txtcurTaskNum = gohelper.findChildText(slot0.viewGO, "reward/#txt_totalTaskNum/#txt_curTaskNum")
-	slot0._btnreward = gohelper.findChildButtonWithAudio(slot0.viewGO, "reward/#btn_reward")
+	slot0._btntask = gohelper.findChildButtonWithAudio(slot0.viewGO, "task/#btn_task")
+	slot0._gotaskReddot = gohelper.findChild(slot0.viewGO, "task/#go_taskReddot")
+	slot0._gotaskNew = gohelper.findChild(slot0.viewGO, "task/#go_taskNew")
 	slot0._gobossUpdateTime = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossUpdateTime")
 	slot0._txtbossUpdateTime = gohelper.findChildText(slot0.viewGO, "bossEpisode/#go_bossUpdateTime/#txt_bossUpdateTime")
 	slot0._gobossHasNew = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossHasNew")
@@ -36,8 +32,19 @@ function slot0.onInitView(slot0)
 	slot0._txtlimitTimeLockTips = gohelper.findChildText(slot0.viewGO, "limitTimeEpisode/#go_limitTimeLockTips/#txt_limitTimeLockTips")
 	slot0._gobossLockTips = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossLockTips")
 	slot0._txtbossLockTips = gohelper.findChildText(slot0.viewGO, "bossEpisode/#go_bossLockTips/#txt_bossLockTips")
-	slot0._gopermanentReddot = gohelper.findChild(slot0.viewGO, "permanentEpisode/#go_permanenetReddot")
-	slot0._gotaskReddot = gohelper.findChild(slot0.viewGO, "reward/#go_taskReddot")
+	slot0._gomopUpReddot = gohelper.findChild(slot0.viewGO, "permanentEpisode/ticket/#go_mopupReddot")
+	slot0._btnmopUp = gohelper.findChildButtonWithAudio(slot0.viewGO, "permanentEpisode/ticket/#btn_mopup")
+	slot0._gostore = gohelper.findChild(slot0.viewGO, "store")
+	slot0._gostoreTime = gohelper.findChild(slot0.viewGO, "store/time")
+	slot0._txtstoreTime = gohelper.findChildText(slot0.viewGO, "store/time/#txt_storeTime")
+	slot0._txtstoreName = gohelper.findChildText(slot0.viewGO, "store/#txt_storeName")
+	slot0._txtcoinNum = gohelper.findChildText(slot0.viewGO, "store/#txt_coinNum")
+	slot0._imagecoin = gohelper.findChildImage(slot0.viewGO, "store/#txt_coinNum/#image_coin")
+	slot0._btnstore = gohelper.findChildButtonWithAudio(slot0.viewGO, "store/#btn_store")
+	slot0._goheroTrial = gohelper.findChild(slot0.viewGO, "heroTrial")
+	slot0._btnheroTrial = gohelper.findChildButtonWithAudio(slot0.viewGO, "heroTrial/#btn_heroTrial")
+	slot0._goheroTrialNew = gohelper.findChild(slot0.viewGO, "heroTrial/#go_heroTrialNew")
+	slot0._goheroTrialNewEffect = gohelper.findChild(slot0.viewGO, "heroTrial/#saoguang")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -46,26 +53,34 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnlimitTime:AddClickListener(slot0._btnlimitTimeOnClick, slot0)
-	slot0._btnbossHandbook:AddClickListener(slot0._btnbossHandbookOnClick, slot0)
-	slot0._btnreward:AddClickListener(slot0._btnrewardOnClick, slot0)
+	slot0._btntask:AddClickListener(slot0._btntaskOnClick, slot0)
 	slot0._btnboss:AddClickListener(slot0._btnbossOnClick, slot0)
 	slot0._btnpermanent:AddClickListener(slot0._btnpermanentOnClick, slot0)
+	slot0._btnstore:AddClickListener(slot0._btnstoreOnClick, slot0)
+	slot0._btnheroTrial:AddClickListener(slot0._btnheroTrialOnClick, slot0)
+	slot0._btnmopUp:AddClickListener(slot0._btnmopupOnClick, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.DailyReresh, slot0.onDailyReresh, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshRewardTaskInfo, slot0)
 	slot0:addEventCb(TowerController.instance, TowerEvent.TowerMopUp, slot0.refreshPermanentInfo, slot0)
+	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
+	slot0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnlimitTime:RemoveClickListener()
-	slot0._btnbossHandbook:RemoveClickListener()
-	slot0._btnreward:RemoveClickListener()
+	slot0._btntask:RemoveClickListener()
 	slot0._btnboss:RemoveClickListener()
 	slot0._btnpermanent:RemoveClickListener()
+	slot0._btnstore:RemoveClickListener()
+	slot0._btnheroTrial:RemoveClickListener()
+	slot0._btnmopUp:RemoveClickListener()
 	slot0:removeEventCb(TowerController.instance, TowerEvent.DailyReresh, slot0.onDailyReresh, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshRewardTaskInfo, slot0)
 	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerMopUp, slot0.refreshPermanentInfo, slot0)
+	slot0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
+	slot0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
 	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
 end
 
@@ -83,12 +98,12 @@ function slot0._btnlimitTimeOnClick(slot0)
 	TowerController.instance:openTowerTimeLimitLevelView()
 end
 
-function slot0._btnbossHandbookOnClick(slot0)
-	TowerController.instance:openAssistBossView()
+function slot0._btntaskOnClick(slot0)
+	TowerController.instance:openTowerTaskView()
 end
 
-function slot0._btnrewardOnClick(slot0)
-	TowerController.instance:openTowerTaskView()
+function slot0._btnstoreOnClick(slot0)
+	TowerController.instance:openTowerStoreView()
 end
 
 function slot0._btnbossOnClick(slot0)
@@ -109,8 +124,20 @@ function slot0._btnpermanentOnClick(slot0)
 	TowerController.instance:openTowerPermanentView()
 end
 
+function slot0._btnheroTrialOnClick(slot0)
+	TowerController.instance:openTowerHeroTrialView()
+	slot0:saveHeroTrialNew()
+	gohelper.setActive(slot0._goheroTrialNew, false)
+end
+
+function slot0._btnmopupOnClick(slot0)
+	TowerController.instance:openTowerMopUpView()
+end
+
 function slot0._editableInitView(slot0)
 	slot0.bossItemTab = slot0:getUserDataTb_()
+
+	gohelper.setActive(slot0._goheroTrialNewEffect, false)
 end
 
 function slot0.onDailyReresh(slot0)
@@ -119,6 +146,7 @@ end
 
 function slot0.onLocalKeyChange(slot0)
 	slot0:refreshBossNewTag()
+	slot0:refreshLimitedActTaskNew()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -127,13 +155,19 @@ end
 
 function slot0.onOpen(slot0)
 	AudioMgr.instance:trigger(AudioEnum.Tower.play_ui_leimi_theft_open)
+	TowerModel.instance:cleanTrialData()
 	slot0:checkJump()
 	slot0:refreshUI()
 	slot0:initReddot()
+	TaskDispatcher.runDelay(slot0.checkShowEffect, slot0, 0.6)
+end
+
+function slot0.checkShowEffect(slot0)
+	gohelper.setActive(slot0._goheroTrialNewEffect, TowerController.instance:getPlayerPrefs(TowerEnum.LocalPrefsKey.TowerMainHeroTrialEffect, 0) == 0)
 end
 
 function slot0.initReddot(slot0)
-	RedDotController.instance:addRedDot(slot0._gopermanentReddot, RedDotEnum.DotNode.PermanentTower)
+	RedDotController.instance:addRedDot(slot0._gomopUpReddot, RedDotEnum.DotNode.TowerMopUp)
 	RedDotController.instance:addRedDot(slot0._gotaskReddot, RedDotEnum.DotNode.TowerTask)
 	TowerController.instance:saveNewUpdateTowerReddot()
 	TowerController.instance:dispatchEvent(TowerEvent.RefreshTowerReddot)
@@ -148,6 +182,9 @@ function slot0.refreshUI(slot0)
 	slot0:refreshBossNewTag()
 	slot0:refreshEntranceUI()
 	slot0:refreshTowerState()
+	slot0:refreshStore()
+	slot0:refreshHeroTrialNew()
+	slot0:refreshLimitedActTaskNew()
 	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
 	TaskDispatcher.runRepeat(slot0.refreshTowerState, slot0, 1)
 end
@@ -176,6 +213,12 @@ function slot0.checkJump(slot0)
 		end
 	elseif slot2 == TowerEnum.JumpId.TowerLimited then
 		slot0:_btnlimitTimeOnClick()
+	elseif slot2 == TowerEnum.JumpId.TowerBossTeach then
+		TowerController.instance:openBossTowerEpisodeView(TowerEnum.TowerType.Boss, slot0.viewParam.towerId, {
+			isTeach = true,
+			lastFightTeachId = TowerBossTeachModel.instance:getLastFightTeachId()
+		})
+		TowerBossTeachModel.instance:setLastFightTeachId(0)
 	end
 
 	if slot0.viewParam.jumpId then
@@ -184,9 +227,10 @@ function slot0.checkJump(slot0)
 end
 
 function slot0.refreshEntranceUI(slot0)
-	gohelper.setActive(slot0._gobossHandbook, tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossHandbookOpen)) <= TowerPermanentModel.instance:getCurPermanentPassLayer())
-	gohelper.setActive(slot0._goreward, tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TaskRewardOpen)) <= slot2 and tabletool.len(TowerTaskModel.instance.limitTimeTaskList) + tabletool.len(TowerTaskModel.instance.bossTaskList) > 0)
-	gohelper.setActive(slot0._goticket, tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.MopUpOpenLayerNum)) <= slot2)
+	slot2 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TaskRewardOpen)
+	slot5 = tabletool.len(TowerTaskModel.instance.limitTimeTaskList) + tabletool.len(TowerTaskModel.instance.bossTaskList)
+
+	gohelper.setActive(slot0._goticket, tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.MopUpOpenLayerNum)) <= TowerPermanentModel.instance:getCurPermanentPassLayer())
 end
 
 function slot0.initTaskInfo(slot0)
@@ -228,18 +272,29 @@ function slot0.progressItemShow(slot0, slot1, slot2, slot3)
 end
 
 function slot0.refreshRewardTaskInfo(slot0)
-	slot0._txtcurTaskNum.text, slot0._txttotalTaskNum.text = TowerTaskModel.instance:getTotalTaskRewardCount()
 end
 
 function slot0.refreshBossInfo(slot0)
+	slot2 = {}
+
+	if #TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open) > 0 then
+		table.sort(slot1, TowerAssistBossModel.sortBossList)
+
+		for slot6 = 1, 3 do
+			if slot1[slot6] then
+				table.insert(slot2, slot1[slot6])
+			end
+		end
+	end
+
 	slot0.bossEpisodeMo = TowerModel.instance:getEpisodeMoByTowerType(TowerEnum.TowerType.Boss)
 
-	gohelper.CreateObjList(slot0, slot0.bossItemShow, TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open), slot0._gobossContent, slot0._gobossItem)
+	gohelper.CreateObjList(slot0, slot0.bossItemShow, slot2, slot0._gobossContent, slot0._gobossItem)
 
-	slot2 = TowerController.instance:isBossTowerOpen()
+	slot3 = TowerController.instance:isBossTowerOpen()
 
-	gohelper.setActive(slot0._gobossContent, slot2)
-	gohelper.setActive(slot0._gobossLockTips, not slot2)
+	gohelper.setActive(slot0._gobossContent, slot3)
+	gohelper.setActive(slot0._gobossLockTips, not slot3)
 end
 
 function slot0.refreshBossNewTag(slot0)
@@ -339,11 +394,52 @@ function slot0.refreshTowerState(slot0)
 	end
 
 	gohelper.setActive(slot0._gobossLockTips, not slot9 or not slot8)
+	slot0:refreshStoreTime()
+end
+
+function slot0.refreshStore(slot0)
+	gohelper.setActive(slot0._gostore, TowerController.instance:isTowerStoreOpen())
+	UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imagecoin, TowerStoreModel.instance:getCurrencyIcon())
+
+	slot0._txtcoinNum.text = TowerStoreModel.instance:getCurrencyCount()
+
+	slot0:refreshStoreTime()
+end
+
+function slot0.refreshStoreTime(slot0)
+	slot1 = TowerStoreModel.instance:isUpdateStoreEmpty()
+
+	gohelper.setActive(slot0._gostoreTime, not slot1)
+
+	if slot1 then
+		return
+	end
+
+	slot0._txtstoreTime.text = TowerStoreModel.instance:getUpdateStoreRemainTime()
+end
+
+function slot0.saveHeroTrialNew(slot0)
+	TowerController.instance:setPlayerPrefs(TowerEnum.LocalPrefsKey.ReddotNewHeroTrial, TowerModel.instance:getTrialHeroSeason())
+end
+
+function slot0.refreshHeroTrialNew(slot0)
+	gohelper.setActive(slot0._goheroTrial, TowerModel.instance:getTrialHeroSeason() > 0)
+	gohelper.setActive(slot0._goheroTrialNew, TowerController.instance:getPlayerPrefs(TowerEnum.LocalPrefsKey.ReddotNewHeroTrial, 0) ~= slot2 and slot2 > 0)
+end
+
+function slot0.refreshLimitedActTaskNew(slot0)
+	slot4 = #TowerTaskModel.instance.actTaskList > 0 and slot1[1].config.activityId or 0
+	slot5 = TowerController.instance:getPlayerPrefs(TowerEnum.LocalPrefsKey.ReddotNewLimitedActTask, 0) ~= slot4 and slot4 > 0
+
+	gohelper.setActive(slot0._gotaskNew, slot5)
+	gohelper.setActive(slot0._gotaskReddot, not slot5)
 end
 
 function slot0.onClose(slot0)
 	TowerTaskModel.instance:cleanData()
 	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
+	TaskDispatcher.cancelTask(slot0.checkShowEffect, slot0)
+	TowerController.instance:setPlayerPrefs(TowerEnum.LocalPrefsKey.TowerMainHeroTrialEffect, 1)
 end
 
 function slot0.onDestroyView(slot0)

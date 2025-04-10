@@ -61,7 +61,7 @@ function slot0.onOpen(slot0)
 			slot0:closeThis()
 		end
 	else
-		FightRpc.instance:sendChangeSubHeroExSkillRequest(FightCardModel.instance.curSelectEntityId)
+		FightRpc.instance:sendChangeSubHeroExSkillRequest(FightDataHelper.operationDataMgr.curSelectEntityId)
 	end
 end
 

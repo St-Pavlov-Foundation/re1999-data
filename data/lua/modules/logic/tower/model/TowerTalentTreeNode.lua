@@ -35,6 +35,10 @@ function slot0.isActiveTalent(slot0)
 	return slot0.tree:isActiveTalent(slot0.nodeId)
 end
 
+function slot0.isSelectedSystemTalentPlan(slot0)
+	return slot0.tree:isSelectedSystemTalentPlan()
+end
+
 function slot0.isParentActive(slot0)
 	slot1 = nil
 

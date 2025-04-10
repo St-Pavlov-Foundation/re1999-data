@@ -5,108 +5,69 @@ slot1 = "ui/viewres/fight/ui_effect_dna_d.prefab"
 slot3 = 0.033 * 1
 
 function slot0.onStart(slot0, slot1)
-	slot0._dt = uv0 / FightModel.instance:getUISpeed()
-	slot2 = slot1.cards
-	slot3 = slot1.combineIndex
+	FightDataHelper.tempMgr.combineCount = FightDataHelper.tempMgr.combineCount + 1
+	slot0._dt = uv0 / (FightModel.instance:getUISpeed() + FightDataHelper.tempMgr.combineCount * 0.2)
+	slot3 = slot1.cards
+	slot4 = slot1.combineIndex
 	slot0._sequence = FlowSequence.New()
-	slot4 = slot1.handCardItemList[slot3]
+	slot5 = slot1.handCardItemList[slot4]
 
-	slot4:setASFDActive(false)
-	slot1.handCardItemList[slot3 + 1]:setASFDActive(false)
+	slot5:setASFDActive(false)
+	slot1.handCardItemList[slot4 + 1]:setASFDActive(false)
 
-	slot0._universalCombineId = FightEnum.UniversalCard[slot4.cardInfoMO.skillId] or FightEnum.UniversalCard[slot5.cardInfoMO.skillId]
-	slot6 = nil
-	slot7 = gohelper.create2d(slot4.tr.parent.gameObject, "Combine")
-	slot0._combineContainerGO = slot7
-	slot8, slot9, slot10 = transformhelper.getPos(slot4.tr)
-	slot11, slot12, slot13 = transformhelper.getPos(slot5.tr)
+	slot0._universalCombineId = FightEnum.UniversalCard[slot5.cardInfoMO.skillId] or FightEnum.UniversalCard[slot6.cardInfoMO.skillId]
+	slot7 = nil
+	slot8 = gohelper.create2d(slot5.tr.parent.gameObject, "Combine")
+	slot0._combineContainerGO = slot8
+	slot9, slot10, slot11 = transformhelper.getPos(slot5.tr)
+	slot12, slot13, slot14 = transformhelper.getPos(slot6.tr)
 
-	transformhelper.setPos(slot7.transform, (slot8 + slot11) * 0.5, slot9, slot10)
+	transformhelper.setPos(slot8.transform, (slot9 + slot12) * 0.5, slot10, slot11)
 
-	slot14 = gohelper.create2d(slot7, "CombineMask1")
-	slot15 = gohelper.create2d(slot7, "CombineMask2")
+	slot15 = gohelper.create2d(slot8, "CombineMask1")
+	slot16 = gohelper.create2d(slot8, "CombineMask2")
 
-	transformhelper.setPos(slot14.transform, transformhelper.getPos(slot4.tr))
 	transformhelper.setPos(slot15.transform, transformhelper.getPos(slot5.tr))
-	recthelper.setSize(slot14.transform, 185, 272)
+	transformhelper.setPos(slot16.transform, transformhelper.getPos(slot6.tr))
 	recthelper.setSize(slot15.transform, 185, 272)
-	gohelper.onceAddComponent(slot14, gohelper.Type_Image)
+	recthelper.setSize(slot16.transform, 185, 272)
 	gohelper.onceAddComponent(slot15, gohelper.Type_Image)
+	gohelper.onceAddComponent(slot16, gohelper.Type_Image)
 
-	gohelper.onceAddComponent(slot14, typeof(UnityEngine.UI.Mask)).showMaskGraphic = false
 	gohelper.onceAddComponent(slot15, typeof(UnityEngine.UI.Mask)).showMaskGraphic = false
-	slot16 = gohelper.clone(slot4.go, slot14)
+	gohelper.onceAddComponent(slot16, typeof(UnityEngine.UI.Mask)).showMaskGraphic = false
 	slot17 = gohelper.clone(slot5.go, slot15)
-	slot18 = slot16.transform
+	slot18 = gohelper.clone(slot6.go, slot16)
 	slot19 = slot17.transform
+	slot20 = slot18.transform
 
-	gohelper.setActive(slot4.go, false)
 	gohelper.setActive(slot5.go, false)
+	gohelper.setActive(slot6.go, false)
 
-	slot16.transform.anchorMin = Vector2.New(1, 0.5)
-	slot16.transform.anchorMax = Vector2.New(1, 0.5)
-	slot17.transform.anchorMin = Vector2.New(0, 0.5)
-	slot17.transform.anchorMax = Vector2.New(0, 0.5)
+	slot17.transform.anchorMin = Vector2.New(1, 0.5)
+	slot17.transform.anchorMax = Vector2.New(1, 0.5)
+	slot18.transform.anchorMin = Vector2.New(0, 0.5)
+	slot18.transform.anchorMax = Vector2.New(0, 0.5)
 
-	recthelper.setAnchorX(slot18, -92.5)
-	recthelper.setAnchorX(slot19, 92.5)
-	uv1._resetImages(slot16)
+	recthelper.setAnchorX(slot19, -92.5)
+	recthelper.setAnchorX(slot20, 92.5)
 	uv1._resetImages(slot17)
+	uv1._resetImages(slot18)
 
-	slot0:_createEffect(slot7, FightPreloadViewWork.ui_effect_dna_c).name = "CombineEffect"
+	slot0:_createEffect(slot8, FightPreloadViewWork.ui_effect_dna_c).name = "CombineEffect"
 
-	transformhelper.setPos(slot4.tr, (slot8 + slot11) * 0.5, slot9, slot10)
-	gohelper.setActive(gohelper.findChild(slot16, "foranim/restrain"), false)
+	transformhelper.setPos(slot5.tr, (slot9 + slot12) * 0.5, slot10, slot11)
 	gohelper.setActive(gohelper.findChild(slot17, "foranim/restrain"), false)
-	gohelper.setActive(gohelper.findChild(slot16, "foranim/spEffect"), false)
+	gohelper.setActive(gohelper.findChild(slot18, "foranim/restrain"), false)
 	gohelper.setActive(gohelper.findChild(slot17, "foranim/spEffect"), false)
-	gohelper.setActive(gohelper.findChild(slot16, "foranim/lock"), false)
+	gohelper.setActive(gohelper.findChild(slot18, "foranim/spEffect"), false)
 	gohelper.setActive(gohelper.findChild(slot17, "foranim/lock"), false)
+	gohelper.setActive(gohelper.findChild(slot18, "foranim/lock"), false)
 
-	slot21 = recthelper.getWidth(slot14.transform)
-	slot6 = FlowParallel.New()
+	slot22 = recthelper.getWidth(slot15.transform)
+	slot7 = FlowParallel.New()
 
-	slot6:addWork(TweenWork.New({
-		toz = 5,
-		type = "DORotate",
-		tox = 0,
-		toy = 0,
-		tr = slot18,
-		t = slot0._dt * 2
-	}))
-	slot6:addWork(TweenWork.New({
-		toz = -5,
-		type = "DORotate",
-		tox = 0,
-		toy = 0,
-		tr = slot19,
-		t = slot0._dt * 2
-	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 0.58,
-		t = slot0._dt
-	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot19,
-		to = slot21 * 0.58,
-		t = slot0._dt
-	}))
-	slot0._sequence:addWork(slot6)
-
-	slot6 = FlowParallel.New()
-
-	slot6:addWork(TweenWork.New({
-		toz = -5,
-		type = "DORotate",
-		tox = 0,
-		toy = 0,
-		tr = slot18,
-		t = slot0._dt * 2
-	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
 		toz = 5,
 		type = "DORotate",
 		tox = 0,
@@ -114,31 +75,31 @@ function slot0.onStart(slot0, slot1)
 		tr = slot19,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 0.65,
-		t = slot0._dt
-	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot19,
-		to = slot21 * 0.65,
-		t = slot0._dt
-	}))
-	slot0._sequence:addWork(slot6)
-
-	slot6 = FlowParallel.New()
-
-	slot6:addWork(TweenWork.New({
-		toz = 5,
+	slot7:addWork(TweenWork.New({
+		toz = -5,
 		type = "DORotate",
 		tox = 0,
 		toy = 0,
-		tr = slot18,
+		tr = slot20,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot19,
+		to = -slot22 * 0.58,
+		t = slot0._dt
+	}))
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 0.58,
+		t = slot0._dt
+	}))
+	slot0._sequence:addWork(slot7)
+
+	slot7 = FlowParallel.New()
+
+	slot7:addWork(TweenWork.New({
 		toz = -5,
 		type = "DORotate",
 		tox = 0,
@@ -146,31 +107,31 @@ function slot0.onStart(slot0, slot1)
 		tr = slot19,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 0.68,
-		t = slot0._dt
-	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot19,
-		to = slot21 * 0.68,
-		t = slot0._dt
-	}))
-	slot0._sequence:addWork(slot6)
-
-	slot6 = FlowParallel.New()
-
-	slot6:addWork(TweenWork.New({
-		toz = -5,
+	slot7:addWork(TweenWork.New({
+		toz = 5,
 		type = "DORotate",
 		tox = 0,
 		toy = 0,
-		tr = slot18,
+		tr = slot20,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot19,
+		to = -slot22 * 0.65,
+		t = slot0._dt
+	}))
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 0.65,
+		t = slot0._dt
+	}))
+	slot0._sequence:addWork(slot7)
+
+	slot7 = FlowParallel.New()
+
+	slot7:addWork(TweenWork.New({
 		toz = 5,
 		type = "DORotate",
 		tox = 0,
@@ -178,31 +139,31 @@ function slot0.onStart(slot0, slot1)
 		tr = slot19,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 0.7,
-		t = slot0._dt
-	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot19,
-		to = slot21 * 0.7,
-		t = slot0._dt
-	}))
-	slot0._sequence:addWork(slot6)
-
-	slot6 = FlowParallel.New()
-
-	slot6:addWork(TweenWork.New({
-		toz = 5,
+	slot7:addWork(TweenWork.New({
+		toz = -5,
 		type = "DORotate",
 		tox = 0,
 		toy = 0,
-		tr = slot18,
+		tr = slot20,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot19,
+		to = -slot22 * 0.68,
+		t = slot0._dt
+	}))
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 0.68,
+		t = slot0._dt
+	}))
+	slot0._sequence:addWork(slot7)
+
+	slot7 = FlowParallel.New()
+
+	slot7:addWork(TweenWork.New({
 		toz = -5,
 		type = "DORotate",
 		tox = 0,
@@ -210,46 +171,78 @@ function slot0.onStart(slot0, slot1)
 		tr = slot19,
 		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 0.7,
-		t = slot0._dt
+	slot7:addWork(TweenWork.New({
+		toz = 5,
+		type = "DORotate",
+		tox = 0,
+		toy = 0,
+		tr = slot20,
+		t = slot0._dt * 2
 	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
 		type = "DOAnchorPosX",
 		tr = slot19,
-		to = slot21 * 0.7,
+		to = -slot22 * 0.7,
 		t = slot0._dt
 	}))
-	slot0._sequence:addWork(slot6)
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 0.7,
+		t = slot0._dt
+	}))
+	slot0._sequence:addWork(slot7)
+
+	slot7 = FlowParallel.New()
+
+	slot7:addWork(TweenWork.New({
+		toz = 5,
+		type = "DORotate",
+		tox = 0,
+		toy = 0,
+		tr = slot19,
+		t = slot0._dt * 2
+	}))
+	slot7:addWork(TweenWork.New({
+		toz = -5,
+		type = "DORotate",
+		tox = 0,
+		toy = 0,
+		tr = slot20,
+		t = slot0._dt * 2
+	}))
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot19,
+		to = -slot22 * 0.7,
+		t = slot0._dt
+	}))
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 0.7,
+		t = slot0._dt
+	}))
+	slot0._sequence:addWork(slot7)
 	slot0._sequence:addWork(FunctionWork.New(function ()
 		AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_FigthCombineCard)
 	end))
 
-	slot6 = FlowParallel.New()
+	slot7 = FlowParallel.New()
 
-	slot6:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = slot18,
-		to = -slot21 * 1.5,
-		t = slot0._dt * 5
-	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
 		type = "DOAnchorPosX",
 		tr = slot19,
-		to = slot21 * 1.5,
+		to = -slot22 * 1.5,
 		t = slot0._dt * 5
 	}))
-	slot6:addWork(TweenWork.New({
-		toz = 0,
-		type = "DORotate",
-		tox = 0,
-		toy = 0,
-		tr = slot18,
+	slot7:addWork(TweenWork.New({
+		type = "DOAnchorPosX",
+		tr = slot20,
+		to = slot22 * 1.5,
 		t = slot0._dt * 5
 	}))
-	slot6:addWork(TweenWork.New({
+	slot7:addWork(TweenWork.New({
 		toz = 0,
 		type = "DORotate",
 		tox = 0,
@@ -257,12 +250,20 @@ function slot0.onStart(slot0, slot1)
 		tr = slot19,
 		t = slot0._dt * 5
 	}))
-	slot0._sequence:addWork(slot6)
+	slot7:addWork(TweenWork.New({
+		toz = 0,
+		type = "DORotate",
+		tox = 0,
+		toy = 0,
+		tr = slot20,
+		t = slot0._dt * 5
+	}))
+	slot0._sequence:addWork(slot7)
 
-	slot2[slot3] = FightCardModel.combineTwoCard(slot2[slot3], slot2[slot3 + 1], FightCardModel.instance:getBeCombineCardMO())
-	slot2[slot3].combineCanAddExpoint = FightCardDataHelper.combineCanAddExpoint(slot2, slot2[slot3], slot2[slot3 + 1])
+	slot3[slot4] = FightCardDataHelper.combineCardForPerformance(slot3[slot4], slot3[slot4 + 1])
+	slot3[slot4].combineCanAddExpoint = FightCardDataHelper.combineCanAddExpoint(slot3, slot3[slot4], slot3[slot4 + 1])
 
-	table.remove(slot2, slot3 + 1)
+	table.remove(slot3, slot4 + 1)
 	slot0._sequence:addWork(FunctionWork.New(function ()
 		slot4 = uv2
 
@@ -277,8 +278,8 @@ function slot0.onStart(slot0, slot1)
 		gohelper.setActive(gohelper.findChild(uv1.handCardItemList[uv3].go, "foranim/cardeffect"), true)
 	end))
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Distribute and slot25 ~= FightEnum.Stage.FillCard or FightCardModel.getCombineIndexOnce(slot2) then
-		slot0._sequence:addWork(uv1.buildCombineEndFlow(slot3, slot3, #slot2, slot1.handCardItemList))
+	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Distribute and slot25 ~= FightEnum.Stage.FillCard or FightCardDataHelper.canCombineCardListForPerformance(slot3) then
+		slot0._sequence:addWork(uv1.buildCombineEndFlow(slot4, slot4, #slot3, slot1.handCardItemList))
 	end
 
 	slot0._sequence:registerDoneListener(slot0._onCombineCardDone, slot0)
@@ -415,7 +416,7 @@ function slot0._createUniversalCombineEffect(slot0)
 		slot2 = slot0:getInstGO()
 
 		gohelper.onceAddComponent(slot2, typeof(ZProj.EffectTimeScale)):SetTimeScale(FightModel.instance:getUISpeed())
-		gohelper.setActive(gohelper.findChild(slot2, "ani/star02"), FightCardModel.instance:getSkillLv(uv0.cardInfoMO.uid, uv0.cardInfoMO.skillId) >= 2)
+		gohelper.setActive(gohelper.findChild(slot2, "ani/star02"), FightCardDataHelper.getSkillLv(uv0.cardInfoMO.uid, uv0.cardInfoMO.skillId) >= 2)
 		gohelper.setActive(gohelper.findChild(slot2, "ani/star03"), slot1 >= 3)
 	end)
 	TaskDispatcher.runDelay(slot0._combineUpEffectDone, slot0, 0.5 / FightModel.instance:getUISpeed())

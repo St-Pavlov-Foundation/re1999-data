@@ -310,19 +310,67 @@ slot10._isFullView = false
 slot11._isFullView = false
 slot10._whichPart = 1
 slot11._whichPart = 2
+slot12 = {
+	bgBlur = 0,
+	container = "Vxax_Special_FullSignViewContainer",
+	destroy = 0,
+	_viewContainerName = "V%sa%s_Special_FullSignViewContainer",
+	_isFullView = true,
+	_viewName = "V%sa%s_Special_FullSignView",
+	mainRes = "ui/viewres/activity/v%sa%s_special_fullsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+slot13 = {
+	bgBlur = 1,
+	container = "Vxax_Special_PanelSignViewContainer",
+	destroy = 0,
+	_viewContainerName = "V%sa%s_Special_PanelSignViewContainer",
+	_isFullView = false,
+	_viewName = "V%sa%s_Special_PanelSignView",
+	mainRes = "ui/viewres/activity/v%sa%s_special_panelsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+slot14 = {
+	bgBlur = 0,
+	container = "Vxax_LinkageActivity_FullViewContainer",
+	destroy = 0,
+	_viewContainerName = "V%sa%s_LinkageActivity_FullViewContainer",
+	_isFullView = true,
+	_viewName = "V%sa%s_LinkageActivity_FullView",
+	mainRes = "ui/viewres/activity/v%sa%s_linkageactivity_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+slot15 = {
+	bgBlur = 1,
+	container = "Vxax_LinkageActivity_PanelViewContainer",
+	destroy = 0,
+	_viewContainerName = "V%sa%s_LinkageActivity_PanelViewContainer",
+	_isFullView = false,
+	_viewName = "V%sa%s_LinkageActivity_PanelView",
+	mainRes = "ui/viewres/activity/v%sa%s_linkageactivity_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
 
-function slot12(slot0, slot1, slot2)
+function slot16(slot0, slot1, slot2)
 	function slot3(slot0)
 		slot0.mainRes = uv0(slot0.mainRes, uv1, uv2)
 		slot0.otherRes[1] = uv0(slot0.otherRes[1], uv1, uv2)
 		slot0._viewName = uv0(slot0._viewName, uv1, uv2)
 		slot3 = nil
-		slot4 = class(uv0(slot0._viewContainerName, uv1, uv2), Vxax_Role_SignItem_SignViewContainer)
+		slot4 = _G.class(uv0(slot0._viewContainerName, uv1, uv2), Vxax_Role_SignItem_SignViewContainer)
 
 		if slot0._isFullView then
-			Vxax_Role_SignItem_SignViewContainer.Vxax_Role_FullSignView_PartX(class(slot1, Vxax_Role_FullSignView), uv1, uv2, slot0._whichPart)
+			Vxax_Role_SignItem_SignViewContainer.Vxax_Role_FullSignView_PartX(_G.class(slot1, Vxax_Role_FullSignView), uv1, uv2, slot0._whichPart)
 		else
-			Vxax_Role_SignItem_SignViewContainer.Vxax_Role_PanelSignView_PartX(class(slot1, Vxax_Role_PanelSignView), uv1, uv2, slot0._whichPart)
+			Vxax_Role_SignItem_SignViewContainer.Vxax_Role_PanelSignView_PartX(_G.class(slot1, Vxax_Role_PanelSignView), uv1, uv2, slot0._whichPart)
 		end
 
 		Vxax_Role_SignItem_SignViewContainer.Vxax_Role_xxxSignView_Container(slot4, slot3)
@@ -340,8 +388,65 @@ function slot12(slot0, slot1, slot2)
 	slot3(uv4)
 end
 
+function slot17(slot0, slot1, slot2)
+	function slot3(slot0)
+		slot0.mainRes = uv0(slot0.mainRes, uv1, uv2)
+		slot0._viewName = uv0(slot0._viewName, uv1, uv2)
+		slot3 = nil
+		slot4 = _G.class(uv0(slot0._viewContainerName, uv1, uv2), Vxax_Special_SignItemViewContainer)
+
+		if slot0._isFullView then
+			Vxax_Special_SignItemViewContainer.Vxax_Special_FullSignView(_G.class(slot1, uv3), uv1, uv2)
+		else
+			Vxax_Special_SignItemViewContainer.Vxax_Special_PanelSignView(_G.class(slot1, uv4), uv1, uv2)
+		end
+
+		Vxax_Special_SignItemViewContainer.Vxax_Special_xxxSignView_Container(slot4, slot3)
+
+		uv5[slot1] = slot0
+
+		rawset(_G.ViewName, slot1, slot1)
+		rawset(_G, slot1, slot3)
+		rawset(_G, slot2, slot4)
+	end
+
+	slot3(uv1)
+	slot3(uv2)
+end
+
+function slot18(slot0, slot1, slot2)
+	function slot3(slot0)
+		slot0.mainRes = uv0(slot0.mainRes, uv1, uv2)
+		slot0._viewName = uv0(slot0._viewName, uv1, uv2)
+		slot3 = nil
+		slot4 = _G.class(uv0(slot0._viewContainerName, uv1, uv2), LinkageActivity_BaseViewContainer)
+
+		if slot0._isFullView then
+			LinkageActivity_BaseViewContainer.Vxax_LinkageActivity_FullView(_G.class(slot1, LinkageActivity_FullView), uv1, uv2)
+		else
+			LinkageActivity_BaseViewContainer.Vxax_LinkageActivity_PanelView(_G.class(slot1, LinkageActivity_PanelView), uv1, uv2)
+		end
+
+		LinkageActivity_BaseViewContainer.Vxax_LinkageActivity_xxxView_Container(slot4, slot3)
+
+		uv3[slot1] = slot0
+
+		rawset(_G.ViewName, slot1, slot1)
+		rawset(_G, slot1, slot3)
+		rawset(_G, slot2, slot4)
+	end
+
+	slot3(uv1)
+	slot3(uv2)
+end
+
 function slot1.onModuleViews(slot0, slot1, slot2)
-	uv0(slot1.curV, slot1.curA, slot2)
+	slot3 = slot1.curV
+	slot4 = slot1.curA
+
+	uv0(slot3, slot4, slot2)
+	uv1(slot3, slot4, slot2)
+	uv2(slot3, slot4, slot2)
 end
 
 slot1.instance = slot1.New()

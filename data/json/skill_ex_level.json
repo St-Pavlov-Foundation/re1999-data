@@ -3989,10 +3989,10 @@
     "consume": "1#133074#1",
     "requirement": "",
     "desc": "▩2%s在咒语1/2/3阶时，为己方提供的【护盾】效果提升至自身生命*20%/25%/35%",
-    "skillGroup1": "",
+    "skillGroup1": "30740101|30740102|30740103",
     "skillGroup2": "30740124|30740125|30740126",
-    "skillEx": 0,
-    "passiveSkill": "",
+    "skillEx": 30740134,
+    "passiveSkill": "30740161#30740165|30740141#30740147",
     "consume2": ""
   },
   {
@@ -4220,7 +4220,7 @@
     "skillGroup1": "30830114|30830115|30830116",
     "skillGroup2": "30830124|30830125|30830126",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30830141#30830143",
     "consume2": ""
   },
   {
@@ -4244,7 +4244,7 @@
     "skillGroup1": "30830117|30830118|30830119",
     "skillGroup2": "30830127|30830128|30830129",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30830141#30830144",
     "consume2": ""
   },
   {
@@ -6057,6 +6057,186 @@
     "skillGroup2": "",
     "skillEx": 31130134,
     "passiveSkill": "31130141#31130146",
+    "consume2": ""
+  },
+  {
+    "heroId": 3116,
+    "skillLevel": 1,
+    "consume": "1#133116#1",
+    "requirement": "",
+    "desc": "▩0%s回合开始时，若自身有至少1层【蛇巢】，生成1张1阶【嘶嘶！<id:0>】并扣除1层【蛇巢】，提升至每回合至多触发2次；【嘶嘶！<id:0>】造成的精神创伤提升至75%/150%/375%",
+    "skillGroup1": "",
+    "skillGroup2": "31160124|31160125|31160126",
+    "skillEx": 31160132,
+    "passiveSkill": "31160141#311601411",
+    "consume2": ""
+  },
+  {
+    "heroId": 3116,
+    "skillLevel": 2,
+    "consume": "1#133116#1",
+    "requirement": "",
+    "desc": "▩0%s冷周六攻击具有【石棉鳞片】的敌人，施加【僵硬】并额外回复1点激情，提升至每回合限2次",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31160143#311601431",
+    "consume2": ""
+  },
+  {
+    "heroId": 3116,
+    "skillLevel": 3,
+    "consume": "1#133116#1",
+    "requirement": "",
+    "desc": "▩3%s释放后，此回合结束结算的每层【石棉鳞片】本源创伤提升至100%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31160135,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3116,
+    "skillLevel": 4,
+    "consume": "1#133116#1",
+    "requirement": "",
+    "desc": "▩3%s造成的精神创伤提升至750%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31160133,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3116,
+    "skillLevel": 5,
+    "consume": "1#133116#1",
+    "requirement": "",
+    "desc": "▩3%s释放后，此回合结束结算的每层【石棉鳞片】本源创伤提升至130%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31160134,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3117,
+    "skillLevel": 1,
+    "consume": "1#133117#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31170141#311701411",
+    "consume2": ""
+  },
+  {
+    "heroId": 3117,
+    "skillLevel": 2,
+    "consume": "1#133117#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "31170124|31170125|31170126",
+    "skillEx": 0,
+    "passiveSkill": "31170143#311701431",
+    "consume2": ""
+  },
+  {
+    "heroId": 3117,
+    "skillLevel": 3,
+    "consume": "1#133117#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "31170127|31170128|31170129",
+    "skillEx": 0,
+    "passiveSkill": "31170143#311701432",
+    "consume2": ""
+  },
+  {
+    "heroId": 3117,
+    "skillLevel": 4,
+    "consume": "1#133117#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "311701210|311701211|311701212",
+    "skillEx": 0,
+    "passiveSkill": "31170143#311701433",
+    "consume2": ""
+  },
+  {
+    "heroId": 3117,
+    "skillLevel": 5,
+    "consume": "1#133117#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31170141#311701412",
+    "consume2": ""
+  },
+  {
+    "heroId": 3118,
+    "skillLevel": 1,
+    "consume": "1#133118#1",
+    "requirement": "",
+    "desc": "▩1%s在咒语1/2/3阶时，造成的精神创伤提升至160/240/360%",
+    "skillGroup1": "31180114|31180115|31180116",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3118,
+    "skillLevel": 2,
+    "consume": "1#133118#1",
+    "requirement": "",
+    "desc": "▩2%s在咒语1/2/3阶时，获得的伤害提升及受创回复提升至25/30/40%",
+    "skillGroup1": "",
+    "skillGroup2": "31180124|31180125|31180126",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3118,
+    "skillLevel": 3,
+    "consume": "1#133118#1",
+    "requirement": "",
+    "desc": "▩0%s使自身前方相邻友方获得的【礼仪】提升至3",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31180141#31180142",
+    "consume2": ""
+  },
+  {
+    "heroId": 3118,
+    "skillLevel": 4,
+    "consume": "1#133118#1",
+    "requirement": "",
+    "desc": "▩3%s施加的【名讳】持续回合提升至3",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31180133,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3118,
+    "skillLevel": 5,
+    "consume": "1#133118#1",
+    "requirement": "",
+    "desc": "▩3%s使己方全体至终的仪式伤害提升效果变为65%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31180132,
+    "passiveSkill": "",
     "consume2": ""
   }
 ]

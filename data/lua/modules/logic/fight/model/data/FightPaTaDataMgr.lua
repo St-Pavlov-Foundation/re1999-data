@@ -1,6 +1,6 @@
 module("modules.logic.fight.model.data.FightPaTaDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightPaTaDataMgr")
+slot0 = FightDataClass("FightPaTaDataMgr", FightDataMgrBase)
 
 function slot0.onConstructor(slot0)
 	slot0.bossInfoList = {}
@@ -11,7 +11,7 @@ function slot0.sortSkillInfo(slot0, slot1)
 end
 
 function slot0.updateData(slot0, slot1)
-	if not slot1.attacker:HasField("assistBossInfo") then
+	if not slot1.attacker.assistBossInfo then
 		return
 	end
 

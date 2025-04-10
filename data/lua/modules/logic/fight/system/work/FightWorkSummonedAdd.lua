@@ -3,10 +3,10 @@ module("modules.logic.fight.system.work.FightWorkSummonedAdd", package.seeall)
 slot0 = class("FightWorkSummonedAdd", FightEffectBase)
 
 function slot0.onStart(slot0)
-	slot0._targetId = slot0._actEffectMO.targetId
+	slot0._targetId = slot0.actEffectData.targetId
 
-	if FightDataHelper.entityMgr:getById(slot0._targetId) and slot0._actEffectMO.summoned then
-		slot3 = slot1:getSummonedInfo():getData(slot0._actEffectMO.summoned.uid)
+	if FightDataHelper.entityMgr:getById(slot0._targetId) and slot0.actEffectData.summoned then
+		slot3 = slot1:getSummonedInfo():getData(slot0.actEffectData.summoned.uid)
 
 		if FightConfig.instance:getSummonedConfig(slot3.summonedId, slot3.level) then
 			slot0:com_registTimer(slot0._delayDone, slot4.enterTime / 1000 / FightModel.instance:getSpeed())

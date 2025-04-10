@@ -1,11 +1,9 @@
 module("modules.logic.fight.view.FightViewBossEnergy", package.seeall)
 
-slot0 = class("FightViewBossEnergy", BaseViewExtended)
+slot0 = class("FightViewBossEnergy", FightBaseView)
 
-function slot0.ctor(slot0, slot1)
+function slot0.onConstructor(slot0, slot1)
 	slot0._bossEntityMO = slot1
-
-	uv0.super.ctor(slot0)
 end
 
 function slot0.onInitView(slot0)
@@ -18,11 +16,10 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.PowerChange, slot0._onPowerChange, slot0)
+	slot0:com_registFightEvent(FightEvent.PowerChange, slot0._onPowerChange)
 end
 
 function slot0.removeEvents(slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.PowerChange, slot0._onPowerChange, slot0)
 end
 
 function slot0.onOpen(slot0)

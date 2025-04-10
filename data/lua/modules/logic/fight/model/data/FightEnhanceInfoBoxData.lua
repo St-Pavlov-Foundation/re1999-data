@@ -8,11 +8,11 @@ function slot0.onConstructor(slot0, slot1)
 	slot0.upgradedOptions = {}
 
 	for slot5, slot6 in ipairs(slot1.canUpgradeIds) do
-		slot0.canUpgradeIds[slot6] = slot6
+		table.insert(slot0.canUpgradeIds, slot6)
 	end
 
 	for slot5, slot6 in ipairs(slot1.upgradedOptions) do
-		slot0.upgradedOptions[slot6] = slot6
+		table.insert(slot0.upgradedOptions, slot6)
 	end
 end
 

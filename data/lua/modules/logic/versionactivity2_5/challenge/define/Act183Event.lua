@@ -19,5 +19,8 @@ slot2("RefreshMedalReddot")
 slot2("OnInitDungeonDone")
 slot2("ClickToGetReward")
 slot2("OnGroupAllTaskFinished")
+slot2("OnUpdateSelectBadgeNum")
+slot2("OnUpdateBadgeDetailVisible")
+slot2("EpisodeStartPlayFinishAnim")
 
 return _M

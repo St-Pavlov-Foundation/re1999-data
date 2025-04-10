@@ -93,7 +93,7 @@ function slot0.refreshState(slot0)
 
 	slot1 = slot0._mo
 
-	if not slot1:isActiveTalent() and not slot1:isActiveGroup() and slot1:isParentActive() then
+	if not slot1:isActiveTalent() and not slot1:isActiveGroup() and slot1:isParentActive() and not slot1:isSelectedSystemTalentPlan() then
 		if slot0.isGray then
 			slot0.anim:Play("tocanlight")
 		else

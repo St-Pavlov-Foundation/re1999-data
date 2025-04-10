@@ -18,7 +18,7 @@ function slot0._onOpenViewFinish(slot0, slot1)
 end
 
 function slot0._updateCards(slot0)
-	FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, FightCardModel.instance:getHandCards())
+	FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, FightDataHelper.handCardMgr.handCard)
 
 	slot3 = gohelper.findChild(ViewMgr.instance:getContainer(ViewName.FightView).viewGO, "root/handcards/handcards")
 

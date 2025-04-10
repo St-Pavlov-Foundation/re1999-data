@@ -62,7 +62,10 @@ function slot0.onStart(slot0, slot1)
 		"scenes/v1a5_m_s14_hddt_hd/",
 		"scenes/v1a5_m_s14_hddt_tz/",
 		"scenes/v2a0_m_s14_hddt/",
-		"scenes/v2a0_m_s15_sj/"
+		"scenes/v2a0_m_s15_sj/",
+		"singlebg/storybg/story_atcg/2_7/",
+		"singlebg/storybg/story_atcg/2_6/",
+		"singlebg/dungeon/fragmenticon/"
 	}
 	slot3 = {
 		"1_2lvhuemeng",

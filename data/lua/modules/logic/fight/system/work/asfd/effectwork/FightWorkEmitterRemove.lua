@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.asfd.effectwork.FightWorkEmitterRemove",
 slot0 = class("FightWorkEmitterRemove", FightEffectBase)
 
 function slot0.beforePlayEffectData(slot0)
-	slot0.emitterMo = FightDataHelper.entityMgr:getASFDEntityMo(slot0._actEffectMO.effectNum)
+	slot0.emitterMo = FightDataHelper.entityMgr:getASFDEntityMo(slot0.actEffectData.effectNum)
 end
 
 function slot0.onStart(slot0)

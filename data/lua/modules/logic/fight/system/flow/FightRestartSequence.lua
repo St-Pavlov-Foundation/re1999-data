@@ -2,7 +2,7 @@ module("modules.logic.fight.system.flow.FightRestartSequence", package.seeall)
 
 slot0 = class("FightRestartSequence", BaseFightSequence)
 slot0.RestartType2Type = {
-	[21.0] = 1,
+	[38.0] = 34,
 	[121.0] = 1,
 	[123.0] = 1,
 	[14.0] = 1,
@@ -15,11 +15,12 @@ slot0.RestartType2Type = {
 	[31.0] = 166,
 	[34.0] = 34,
 	[161.0] = 1,
-	[183.0] = 1,
+	[21.0] = 1,
 	[32.0] = 166,
-	[99.0] = 1,
+	[183.0] = 1,
 	[36.0] = 34,
 	[181.0] = 1,
+	[99.0] = 1,
 	[19.0] = 1,
 	[124.0] = 1,
 	[151.0] = 1,

@@ -1,6 +1,6 @@
 module("modules.logic.bossrush.view.FightViewBossHpBossRushActionOpItem", package.seeall)
 
-slot0 = class("FightViewBossHpBossRushActionOpItem", BaseViewExtended)
+slot0 = class("FightViewBossHpBossRushActionOpItem", FightBaseView)
 
 function slot0.onInitView(slot0)
 	if slot0._editableInitView then
@@ -9,16 +9,13 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ForbidBossRushHpChannelSkillOpItem, slot0._onForbidBossRushHpChannelSkillOpItem, slot0)
+	slot0:com_registFightEvent(FightEvent.ForbidBossRushHpChannelSkillOpItem, slot0._onForbidBossRushHpChannelSkillOpItem)
 end
 
 function slot0.removeEvents(slot0)
 end
 
 function slot0._editableInitView(slot0)
-end
-
-function slot0.onRefreshViewParam(slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -47,7 +44,7 @@ function slot0.refreshUI(slot0, slot1, slot2)
 	gohelper.findChildText(slot0.viewGO, "root/act/round/num").text = slot2.round or 0
 
 	MonoHelper.addNoUpdateLuaComOnceToGo(slot4, FightOpItem):updateCardInfoMO({
-		uid = slot0:getParentView()._bossEntityMO.uid,
+		uid = slot0.PARENT_VIEW._bossEntityMO.uid,
 		skillId = slot2.skillId
 	})
 end

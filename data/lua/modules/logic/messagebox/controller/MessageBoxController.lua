@@ -200,24 +200,49 @@ function slot0.showOptionMsgBox(slot0, slot1, slot2, slot3, slot4, slot5, slot6,
 	})
 end
 
-function slot0.canShowMessageOptionBoxView(slot0, slot1, slot2)
-	slot4 = true
+function slot0.showOptionAndParamsMsgBox(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, ...)
+	slot0._isShowSystemMsgBox = false
+
+	ViewMgr.instance:openView(ViewName.MessageOptionBoxView, {
+		msg = MessageBoxConfig.instance:getMessage(slot1),
+		messageBoxId = slot1,
+		msgBoxType = slot2,
+		optionType = slot3,
+		optionExParam = slot4,
+		yesCallback = slot5,
+		noCallback = slot6,
+		openCallback = slot7,
+		yesCallbackObj = slot8,
+		noCallbackObj = slot9,
+		openCallbackObj = slot10,
+		extra = {
+			...
+		}
+	})
+end
+
+function slot0.canShowMessageOptionBoxView(slot0, slot1, slot2, slot3)
+	slot5 = true
 
 	if slot2 == MsgBoxEnum.optionType.Daily then
-		slot4 = TimeUtil.getDayFirstLoginRed(slot0:getOptionLocalKey(slot1, slot2))
+		slot5 = TimeUtil.getDayFirstLoginRed(slot0:getOptionLocalKey(slot1, slot2, slot3))
 	elseif slot2 == MsgBoxEnum.optionType.NotShow then
-		slot4 = string.nilorempty(PlayerPrefsHelper.getString(slot3, ""))
+		slot5 = string.nilorempty(PlayerPrefsHelper.getString(slot4, ""))
 	end
 
-	return slot4
+	return slot5
 end
 
-function slot0.getOptionLocalKey(slot0, slot1, slot2)
-	return string.format("MessageOptionBoxView#%s#%s#%s", slot1, slot2, tostring(PlayerModel.instance:getPlayinfo().userId))
+function slot0.getOptionLocalKey(slot0, slot1, slot2, slot3)
+	if slot3 == nil then
+		return string.format("MessageOptionBoxView#%s#%s#%s", slot1, slot2, tostring(PlayerModel.instance:getPlayinfo().userId))
+	else
+		return string.format("MessageOptionBoxView#%s#%s#%s#%s", slot1, slot2, slot3, tostring(PlayerModel.instance:getPlayinfo().userId))
+	end
 end
 
-function slot0.clearOption(slot0, slot1, slot2)
-	PlayerPrefsHelper.deleteKey(slot0:getOptionLocalKey(slot1, slot2))
+function slot0.clearOption(slot0, slot1, slot2, slot3)
+	PlayerPrefsHelper.deleteKey(slot0:getOptionLocalKey(slot1, slot2, slot3))
 end
 
 slot0.instance = slot0.New()

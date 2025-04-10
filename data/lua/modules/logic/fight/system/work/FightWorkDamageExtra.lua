@@ -6,15 +6,15 @@ function slot0.onStart(slot0)
 	slot0._flow = FlowParallel.New()
 
 	slot0._flow:addWork(FunctionWork.New(slot0._resignDone, slot0))
-	slot0._flow:addWork(FightWork2Work.New(FightWorkEffectDamage, slot0._fightStepMO, slot0._actEffectMO))
+	slot0._flow:addWork(FightWork2Work.New(FightWorkEffectDamage, slot0.fightStepData, slot0.actEffectData))
 	slot0._flow:addWork(FunctionWork.New(slot0._resignDone, slot0))
-	slot0._flow:addWork(FightWork2Work.New(FightBuffTriggerEffect, slot0._fightStepMO, slot0._actEffectMO))
+	slot0._flow:addWork(FightWork2Work.New(FightBuffTriggerEffect, slot0.fightStepData, slot0.actEffectData))
 	slot0._flow:registerDoneListener(slot0._onFlowDone, slot0)
 	slot0._flow:start()
 end
 
 function slot0._resignDone(slot0)
-	slot0._actEffectMO:revertDone()
+	slot0.actEffectData:revertDone()
 end
 
 function slot0._onFlowDone(slot0)

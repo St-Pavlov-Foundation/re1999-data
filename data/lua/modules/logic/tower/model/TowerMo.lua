@@ -15,6 +15,21 @@ function slot0.updateInfo(slot0, slot1)
 	slot0:updateLayerScore(slot1.layerNOs)
 	slot0:updateHistoryHighScore(slot1.historyHighScore)
 	slot0:updateOpenSpLayer(slot1.openSpLayerIds)
+	slot0:updatePassBossTeachIds(slot1.passTeachIds)
+end
+
+function slot0.updatePassBossTeachIds(slot0, slot1)
+	slot0.passBossTeachDict = {}
+
+	if slot1 then
+		for slot5 = 1, #slot1 do
+			slot0.passBossTeachDict[slot1[slot5]] = 1
+		end
+	end
+end
+
+function slot0.isPassBossTeach(slot0, slot1)
+	return slot0.passBossTeachDict[slot1] == 1
 end
 
 function slot0.updateOpenSpLayer(slot0, slot1)
@@ -187,24 +202,26 @@ function slot0.getBanHeroAndBoss(slot0, slot1, slot2, slot3)
 	end
 
 	if not slot0:getLayerSubEpisodeList(slot1, true) then
-		return {}, {}
+		return {}, {}, {}
 	end
 
 	if slot0.type == TowerEnum.TowerType.Normal then
-		if TowerConfig.instance:getPermanentEpisodeCo(slot1) and slot7.isElite == 1 then
-			for slot11, slot12 in pairs(slot6) do
-				slot12:getHeros(slot4)
-				slot12:getAssistBossId(slot5)
+		if TowerConfig.instance:getPermanentEpisodeCo(slot1) and slot8.isElite == 1 then
+			for slot12, slot13 in pairs(slot7) do
+				slot13:getHeros(slot4)
+				slot13:getAssistBossId(slot5)
+				slot13:getTrialHeros(slot6)
 			end
 		end
 	elseif TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() then
-		for slot11 = 1, 3 do
-			if TowerConfig.instance:getTowerLimitedTimeCoList(slot7.towerId, slot11) then
-				for slot16, slot17 in pairs(slot12) do
-					if slot0:getLayerSubEpisodeList(slot17.layerId, true) then
-						for slot21, slot22 in pairs(slot6) do
-							slot22:getHeros(slot4)
-							slot22:getAssistBossId(slot5)
+		for slot12 = 1, 3 do
+			if TowerConfig.instance:getTowerLimitedTimeCoList(slot8.towerId, slot12) then
+				for slot17, slot18 in pairs(slot13) do
+					if slot0:getLayerSubEpisodeList(slot18.layerId, true) then
+						for slot22, slot23 in pairs(slot7) do
+							slot23:getHeros(slot4)
+							slot23:getAssistBossId(slot5)
+							slot23:getTrialHeros(slot6)
 						end
 					end
 				end
@@ -212,7 +229,7 @@ function slot0.getBanHeroAndBoss(slot0, slot1, slot2, slot3)
 		end
 	end
 
-	return slot4, slot5
+	return slot4, slot5, slot6
 end
 
 function slot0.getBanAssistBosss(slot0, slot1)

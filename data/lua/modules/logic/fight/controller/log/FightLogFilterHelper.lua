@@ -24,7 +24,7 @@ function slot0.resetEffectFilter()
 	table.insert(uv0, FightEnum.EffectType.FIGHTSTEP)
 end
 
-function slot0.checkEffectMoIsFilter(slot0)
+function slot0.checkActEffectDataIsFilter(slot0)
 	if not uv0 then
 		return false
 	end

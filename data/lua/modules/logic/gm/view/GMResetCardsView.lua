@@ -20,7 +20,7 @@ end
 function slot0.onOpen(slot0)
 	slot1 = {}
 
-	for slot6, slot7 in ipairs(FightCardModel.instance:getHandCardsByOps({})) do
+	for slot6, slot7 in ipairs(FightDataHelper.handCardMgr.handCard) do
 		table.insert(slot1, {
 			oldEntityId = slot7.uid,
 			oldSkillId = slot7.skillId

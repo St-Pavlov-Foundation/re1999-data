@@ -225,7 +225,7 @@ end
 
 function slot0._onStageChange(slot0)
 	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Normal then
-		slot0:refreshBossFocusIcon(FightModel.instance:getCurRoundMO() and slot2:getAIUseCardMOList())
+		slot0:refreshBossFocusIcon(FightDataHelper.roundMgr:getRoundData() and slot2:getAIUseCardMOList())
 	end
 end
 
@@ -252,7 +252,7 @@ function slot0.refreshBossFocusIcon(slot0, slot1)
 end
 
 function slot0._onSkillPlayFinish(slot0)
-	slot0:refreshBossFocusIcon(FightModel.instance:getCurRoundMO() and slot1:getAILastUseCard())
+	slot0:refreshBossFocusIcon(FightDataHelper.roundMgr:getPreRoundData() and slot2:getAIUseCardMOList())
 end
 
 function slot0._checkCanMark(slot0, slot1)

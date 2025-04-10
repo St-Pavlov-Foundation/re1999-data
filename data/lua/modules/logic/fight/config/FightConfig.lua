@@ -101,7 +101,15 @@ function slot0.reqConfigNames(slot0)
 		"fight_task",
 		"fight_monster_skin_idle_map",
 		"fight_replace_buff_act_effect",
-		"fight_replace_skill_behavior_effect"
+		"fight_replace_skill_behavior_effect",
+		"skill_next",
+		"fight_xcjl_const",
+		"fight_she_fa_ignite",
+		"fight_dnsz",
+		"fight_6_buff_effect",
+		"fight_lzl_buff_float",
+		"fight_buff_layer_effect_enemy_skin",
+		"fight_buff_type_id_2_scene_effect"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then
@@ -360,7 +368,17 @@ end
 function slot0.getSkillLv(slot0, slot1)
 	slot0:_checkSkill()
 
-	if slot0:isUniqueSkill(slot1) then
+	if not lua_skill.configDict[slot1] then
+		logError("技能表找不到id:" .. tostring(slot1))
+
+		return 1
+	end
+
+	if lua_skill_next.configDict[slot1] then
+		return slot2.skillRank
+	end
+
+	if FightCardDataHelper.isBigSkill(slot1) then
 		return FightEnum.UniqueSkillCardLv
 	end
 
@@ -370,17 +388,7 @@ function slot0.getSkillLv(slot0, slot1)
 		return 2
 	end
 
-	if lua_skill.configDict[slot1] then
-		if slot2.skillRank ~= 0 then
-			return slot2.skillRank
-		elseif slot0._skillCurrCardLvDict[slot1] then
-			return slot3
-		end
-	else
-		logError("技能表找不到id:" .. tostring(slot1))
-	end
-
-	return FightEnum.MaxSkillCardLv
+	return slot2.skillRank
 end
 
 function slot0.getSkillNextLvId(slot0, slot1)
@@ -393,10 +401,6 @@ function slot0.getSkillPrevLvId(slot0, slot1)
 	slot0:_checkSkill()
 
 	return slot0._skillPrevCardLvDict[slot1]
-end
-
-function slot0.isUniqueSkill(slot0, slot1)
-	return lua_skill.configDict[slot1] and slot2.isBigSkill and slot2.isBigSkill == 1
 end
 
 function slot0.isActiveSkill(slot0, slot1)

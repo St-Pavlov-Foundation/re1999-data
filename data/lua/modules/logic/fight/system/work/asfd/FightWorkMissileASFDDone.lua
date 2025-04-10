@@ -3,15 +3,14 @@ module("modules.logic.fight.system.work.asfd.FightWorkMissileASFDDone", package.
 slot0 = class("FightWorkMissileASFDDone", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0.stepMo = slot1
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
 	TaskDispatcher.runDelay(slot0._delayDone, slot0, 1)
 
 	if FightHelper.getASFDMgr() then
-		slot1:clearEmitterEffect(slot0.stepMo)
+		slot1:clearEmitterEffect(slot0.fightStepData)
 	end
 
 	return slot0:onDone(true)

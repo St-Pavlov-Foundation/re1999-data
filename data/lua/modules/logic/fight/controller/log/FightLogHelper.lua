@@ -6,27 +6,27 @@ function slot0.getPrefix(slot0)
 	return string.rep("\t", slot0)
 end
 
-function slot0.getMoListString(slot0, slot1, slot2, slot3)
+function slot0.getMoListString(slot0, slot1, slot2, slot3, slot4)
 	if not slot0 then
 		return string.format("%s %s : nil", uv0.getPrefix(slot3 or 0), slot2)
 	end
 
 	if #slot0 == 0 then
-		return string.format("%s %s : []", slot4, slot2)
+		return string.format("%s %s : []", slot5, slot2)
 	end
 
-	slot5 = {
-		string.format("%s %s : [", slot4, slot9)
+	slot6 = {
+		string.format("%s %s : [", slot5, slot10)
 	}
-	slot9 = slot2
+	slot10 = slot2
 
-	for slot9, slot10 in ipairs(slot0) do
-		table.insert(slot5, slot1(slot10, slot3 + 1, slot9))
+	for slot10, slot11 in ipairs(slot0) do
+		table.insert(slot6, slot1(slot11, slot3 + 1, slot10))
 	end
 
-	table.insert(slot5, slot4 .. "]")
+	table.insert(slot6, slot5 .. "]")
 
-	return table.concat(slot5, "\n")
+	return table.concat(slot6, "\n")
 end
 
 function slot0.getMoDictString(slot0, slot1, slot2, slot3, slot4)
@@ -64,7 +64,7 @@ end
 
 function slot0.getFightRoundString(slot0, slot1, slot2)
 	slot3 = uv0.getPrefix(slot1 or 0)
-	slot4 = uv0.buildClassNameByIndex("FightRoundMO", slot2)
+	slot4 = uv0.buildClassNameByIndex("FightRoundData", slot2)
 
 	if not slot0 then
 		return string.format("%s %s : nil", slot3, slot4)
@@ -81,25 +81,24 @@ function slot0.getFightRoundString(slot0, slot1, slot2)
 	table.insert(slot5, string.format("%s isFinish : %s", slot6, slot0.isFinish))
 	table.insert(slot5, string.format("%s moveNum : %s", slot6, slot0.moveNum))
 	table.insert(slot5, string.format("%s power : %s", slot6, slot0.power))
-	table.insert(slot5, uv0.getFightStepListString(slot0.fightStepMOs, slot1, "fightStepMOs"))
-	table.insert(slot5, uv0.getFightStepListString(slot0.nextRoundBeginStepMOs, slot1, "nextRoundBeginStepMOs"))
+	table.insert(slot5, uv0.getFightStepListString(slot0.fightStep, slot1, "fightStep", "FightRound"))
+	table.insert(slot5, uv0.getFightStepListString(slot0.nextRoundBeginStep, slot1, "nextRoundBeginStep", "FightRound"))
 	table.insert(slot5, slot3 .. "}")
 
 	return table.concat(slot5, "\n")
 end
 
 function slot0.getFightStepString(slot0, slot1, slot2)
+	slot3 = uv0.getPrefix(slot1 or 0)
+	slot4 = uv0.buildClassNameByIndex("FightStepData", slot2)
+
 	if not slot0 then
-		return string.format("%s %s : nil", uv0.getPrefix(slot1 or 0), uv0.buildClassNameByIndex("FightStepMo", slot2))
+		return string.format("%s %s : nil", slot3, slot4)
 	end
 
 	slot5 = {}
 
-	if FightHelper.needAddRoundStep(slot0) then
-		slot6 = string.format("%s %s {", slot3, slot4) .. "会被添加为新的步骤"
-	end
-
-	table.insert(slot5, slot6)
+	table.insert(slot5, string.format("%s %s {", slot3, slot4))
 	table.insert(slot5, string.format("%s actType : %s %s", uv0.getPrefix(slot1 + 1), slot0.actType, uv0.getActTypeName(slot0.actType)))
 
 	if slot0.actType == FightEnum.ActType.SKILL then
@@ -115,23 +114,77 @@ function slot0.getFightStepString(slot0, slot1, slot2)
 	table.insert(slot5, string.format("%s cardIndex : %s", slot7, slot0.cardIndex))
 	table.insert(slot5, string.format("%s supportHeroId : %s", slot7, slot0.supportHeroId))
 	table.insert(slot5, string.format("%s fakeTimeline : %s", slot7, slot0.fakeTimeline))
-	table.insert(slot5, uv0.getFightActEffectListString(slot0.actEffectMOs, slot1, "actEffectMOs"))
+	table.insert(slot5, uv0.getFightActEffectListString(slot0.actEffect, slot1, "actEffect"))
 	table.insert(slot5, slot3 .. "}")
 
 	return table.concat(slot5, "\n")
 end
 
-function slot0.getFightStepListString(slot0, slot1, slot2)
-	return uv0.getMoListString(slot0, uv0.getFightStepString, slot2 or "stepMoList", slot1)
+function slot0.getFightStepListString(slot0, slot1, slot2, slot3)
+	return uv0.getMoListString(slot0, uv0.getFightStepString, slot2 or "fightStepDataList", slot1, slot3)
 end
 
-function slot0.getFightActEffectString(slot0, slot1, slot2)
-	if FightLogFilterHelper.checkEffectMoIsFilter(slot0) then
+function slot0.getFightActEffectString(slot0, slot1, slot2, slot3)
+	if FightLogFilterHelper.checkActEffectDataIsFilter(slot0) then
 		return ""
 	end
 
+	slot4 = uv0.getPrefix(slot1 or 0)
+	slot5 = uv0.buildClassNameByIndex("ActEffectData", slot2)
+
+	if not slot0 then
+		return string.format("%s %s : nil", slot4, slot5)
+	end
+
+	slot6 = {
+		string.format("%s %s {", slot4, slot5)
+	}
+	slot1 = slot1 + 1
+	slot7 = uv0.getPrefix(slot1)
+
+	uv0.addStack(slot6, slot7, slot3, slot5)
+	table.insert(slot6, string.format("%s targetId : %s 作用对象:%s", slot7, slot0.targetId, uv0.getEntityName(slot0.targetId)))
+	table.insert(slot6, string.format("%s effectType : %s 效果类型:%s", slot7, slot0.effectType, uv0.getEffectTypeName(slot0.effectType)))
+	table.insert(slot6, string.format("%s effectNum : %s", slot7, slot0.effectNum))
+	table.insert(slot6, string.format("%s effectNum1 : %s", slot7, slot0.effectNum1))
+	table.insert(slot6, string.format("%s fromSide : %s", slot7, slot0.fromSide))
+	table.insert(slot6, string.format("%s configEffect : %s", slot7, slot0.configEffect))
+	table.insert(slot6, string.format("%s buffActId : %s", slot7, slot0.buffActId))
+	table.insert(slot6, string.format("%s reserveId : %s", slot7, slot0.reserveId))
+	table.insert(slot6, string.format("%s reserveStr : %s", slot7, slot0.reserveStr))
+	table.insert(slot6, string.format("%s teamType : %s", slot7, slot0.teamType))
+	table.insert(slot6, string.format("%s cardHeatValue : %s", slot7, slot0.cardHeatValue))
+	table.insert(slot6, uv0.getAssistBossInfoString(slot0.assistBossInfo, slot1))
+	table.insert(slot6, uv0.getCardInfoListString(slot0.cardInfoList, slot1, FightLogProtobufHelper.getStack(slot3, slot5)))
+
+	if slot0.cardInfo then
+		table.insert(slot6, uv0.getCardInfoString(slot0.cardInfo, slot1))
+	end
+
+	if slot0.fightStep then
+		table.insert(slot6, uv0.getFightStepString(slot0.fightStep, slot1))
+	end
+
+	if slot0.buff then
+		table.insert(slot6, uv0.getFightBuffString(slot0.buff, slot1))
+	end
+
+	if slot0.entity then
+		table.insert(slot6, uv0.getEntityMoString(slot0.entity, slot1))
+	end
+
+	if slot0.magicCircle then
+		table.insert(slot6, uv0.getMagicCircleDataString(slot0.magicCircle, slot1))
+	end
+
+	table.insert(slot6, slot4 .. "}")
+
+	return table.concat(slot6, "\n")
+end
+
+function slot0.getMagicCircleDataString(slot0, slot1, slot2)
 	slot3 = uv0.getPrefix(slot1 or 0)
-	slot4 = uv0.buildClassNameByIndex("ActEffectMO", slot2)
+	slot4 = uv0.buildClassNameByIndex("MagicCircle", slot2)
 
 	if not slot0 then
 		return string.format("%s %s : nil", slot3, slot4)
@@ -140,33 +193,13 @@ function slot0.getFightActEffectString(slot0, slot1, slot2)
 	slot5 = {
 		string.format("%s %s {", slot3, slot4)
 	}
-	slot1 = slot1 + 1
-	slot6 = uv0.getPrefix(slot1)
+	slot6 = uv0.getPrefix(slot1 + 1)
 
-	table.insert(slot5, string.format("%s targetId : %s 作用对象:%s", slot6, slot0.targetId, uv0.getEntityName(slot0.targetId)))
-	table.insert(slot5, string.format("%s effectType : %s 效果类型:%s", slot6, slot0.effectType, uv0.getEffectTypeName(slot0.effectType)))
-	table.insert(slot5, string.format("%s effectNum : %s", slot6, slot0.effectNum))
-	table.insert(slot5, string.format("%s effectNum1 : %s", slot6, slot0.effectNum1))
-	table.insert(slot5, string.format("%s fromSide : %s", slot6, slot0.fromSide))
-	table.insert(slot5, string.format("%s configEffect : %s", slot6, slot0.configEffect))
-	table.insert(slot5, string.format("%s buffActId : %s", slot6, slot0.buffActId))
-	table.insert(slot5, string.format("%s reserveId : %s", slot6, slot0.reserveId))
-	table.insert(slot5, string.format("%s reserveStr : %s", slot6, slot0.reserveStr))
-	table.insert(slot5, string.format("%s teamType : %s", slot6, slot0.teamType))
-	table.insert(slot5, uv0.getAssistBossInfoString(slot0.assistBossInfo, slot1))
-
-	if slot0.cus_stepMO then
-		table.insert(slot5, uv0.getFightStepString(slot0.cus_stepMO, slot1))
-	end
-
-	if slot0.buff then
-		table.insert(slot5, uv0.getFightBuffString(slot0.buff, slot1))
-	end
-
-	if slot0.entityMO then
-		table.insert(slot5, uv0.getEntityMoString(slot0.entityMO, slot1))
-	end
-
+	table.insert(slot5, string.format("%s createUid : %s, 创建者: %s", slot6, slot0.createUid, uv0.getEntityName(slot0.createUid)))
+	table.insert(slot5, string.format("%s magicCircleId : %s %s", slot6, slot0.magicCircleId, lua_magic_circle.configDict[slot0.magicCircleId] and slot7.name))
+	table.insert(slot5, string.format("%s round : %s", slot6, slot0.round))
+	table.insert(slot5, string.format("%s electricLevel : %s", slot6, slot0.electricLevel))
+	table.insert(slot5, string.format("%s electricProgress : %s", slot6, slot0.electricProgress))
 	table.insert(slot5, slot3 .. "}")
 
 	return table.concat(slot5, "\n")
@@ -222,7 +255,7 @@ function slot0.getFightAssistBossSkillListString(slot0, slot1, slot2)
 end
 
 function slot0.getFightActEffectListString(slot0, slot1, slot2)
-	return uv0.getMoListString(slot0, uv0.getFightActEffectString, slot2 or "actEffectMoList", slot1)
+	return uv0.getMoListString(slot0, uv0.getFightActEffectString, slot2 or "effectDataList", slot1)
 end
 
 function slot0.getFightBuffString(slot0, slot1, slot2)
@@ -731,6 +764,18 @@ slot0.EffectTypeNameDict = {
 	[FightEnum.EffectType.RETAINSLEEP] = " 攻击噩梦单位不解除噩梦",
 	[FightEnum.EffectType.REMOVEMONSTERSUB] = " 移除怪物候场",
 	[FightEnum.EffectType.ADDCARDRECORDBYROUND] = " 回合记忆卡牌数据更新",
+	[FightEnum.EffectType.DIRECTUSEEXSKILL] = " 直接释放大招",
+	[FightEnum.EffectType.SPLITSTART] = " 分割 开始 目前梦游2换人专用 要用要找皓文大佬说一下 必须要和SPLITEND配套使用",
+	[FightEnum.EffectType.SPLITEND] = " 分割 结束 目前梦游2换人专用 要用要找皓文大佬说一下 必须要和SPLITSTART配套使用",
+	[FightEnum.EffectType.FIGHTPARAMCHANGE] = " FightParam变化",
+	[FightEnum.EffectType.BLOODPOOLMAXCREATE] = " 血池创建",
+	[FightEnum.EffectType.BLOODPOOLMAXCHANGE] = " 血池最大值变化",
+	[FightEnum.EffectType.BLOODPOOLVALUECHANGE] = " 血池当前值变化",
+	[FightEnum.EffectType.COLDSATURDAYHURT] = " 冷周六伤害特效",
+	[FightEnum.EffectType.NEWCHANGEWAVE] = " 新的切波次 原因：以前切波数据拆成两个协议发，很容易导致有问题，加一下新的切波并且将fight加到effect里面",
+	[FightEnum.EffectType.CHANGECARDENERGY] = " 修改卡牌灵能",
+	[FightEnum.EffectType.CLIENTEFFECT] = " 客户端表现",
+	[FightEnum.EffectType.MAGICCIRCLEUPGRADE] = " 法阵升级",
 	[FightEnum.EffectType.TRIGGER] = "触发器"
 }
 

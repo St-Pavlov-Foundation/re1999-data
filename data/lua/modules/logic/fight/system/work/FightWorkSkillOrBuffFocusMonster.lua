@@ -3,11 +3,11 @@ module("modules.logic.fight.system.work.FightWorkSkillOrBuffFocusMonster", packa
 slot0 = class("FightWorkSkillOrBuffFocusMonster", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0)
-	if slot0:isSkillFocus(slot0._fightStepMO) then
+	if slot0:isSkillFocus(slot0.fightStepData) then
 		ViewMgr.instance:openView(ViewName.FightTechniqueGuideView, {
 			entity = FightDataHelper.entityMgr:getById(slot1),
 			config = slot0.monster_guide_focus_config
@@ -49,7 +49,7 @@ function slot0.isSkillFocus(slot0, slot1)
 	end
 
 	if not FightConfig.instance:getMonsterGuideFocusConfig(slot2.episodeId, slot1.actType, slot1.actId, slot3:getMO().modelId) then
-		for slot8, slot9 in ipairs(slot1.actEffectMOs) do
+		for slot8, slot9 in ipairs(slot1.actEffect) do
 			if slot9.effectType == FightEnum.EffectType.BUFFADD and FightDataHelper.entityMgr:getById(slot9.targetId) and FightConfig.instance:getMonsterGuideFocusConfig(slot2.episodeId, FightWorkFocusMonster.invokeType.Buff, slot9.buff.buffId, slot10.modelId) then
 				break
 			end

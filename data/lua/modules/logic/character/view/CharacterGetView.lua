@@ -120,6 +120,9 @@ function slot0._editableInitView(slot0)
 	slot0._simagebgleft:LoadImage(ResUrl.getCharacterGetIcon(slot4))
 
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
+
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+
 	slot0._starList = slot0:getUserDataTb_()
 
 	for slot4 = 1, 6 do

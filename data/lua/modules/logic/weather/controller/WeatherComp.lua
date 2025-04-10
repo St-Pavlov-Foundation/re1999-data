@@ -143,7 +143,7 @@ function slot0.playWeatherVoice(slot0, slot1)
 
 		return uv2
 	end, slot0._skinId) and #slot5 > 0 and (slot1 or false == false and false or math.random() <= 0.3) then
-		slot0._dispatchParam[1] = slot5[1]
+		slot0._dispatchParam[1] = MainHeroView.getRandomMultiVoice(slot5[1], slot0._heroId, slot0._skinId)
 		slot0._dispatchParam[2] = false
 
 		slot0._weatherController:dispatchEvent(WeatherEvent.PlayVoice, slot0._dispatchParam)

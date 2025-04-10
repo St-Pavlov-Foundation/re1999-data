@@ -24,6 +24,23 @@ function slot0.updateCardInfo(slot0, slot1, slot2)
 
 	slot4:updateInfo(slot1, slot2)
 	PlayerCardController.instance:dispatchEvent(PlayerCardEvent.UpdateCardInfo, slot3)
+	slot0:setShowRed()
+end
+
+function slot0.setShowRed(slot0)
+	slot0._showRed = false
+
+	for slot5, slot6 in ipairs(ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg)) do
+		if PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.PlayerCardNewBgSkinRed) .. slot6.id, 0) == 1 then
+			slot0._showRed = true
+
+			break
+		end
+	end
+end
+
+function slot0.getShowRed(slot0)
+	return slot0._showRed
 end
 
 function slot0.updateSetting(slot0, slot1)

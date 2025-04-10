@@ -262,7 +262,7 @@ function slot0._onClickEquip(slot0)
 			equipMo = slot0._equipMO,
 			posIndex = slot0._posIndex,
 			fromView = EquipEnum.FromViewEnum.FromSeasonFightView,
-			heroMo = HeroGroupTrialModel.instance:getHeroMo(slot0.trialCO.heroId)
+			heroMo = HeroGroupTrialModel.instance:getHeroMo(slot0.trialCO)
 		}
 
 		if slot0.trialCO then

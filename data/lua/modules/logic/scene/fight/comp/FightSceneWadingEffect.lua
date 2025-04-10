@@ -182,7 +182,7 @@ function slot0._onSkillPlayStart(slot0, slot1, slot2, slot3)
 		[slot9.targetId] = true
 	}
 
-	for slot8, slot9 in ipairs(slot3.actEffectMOs) do
+	for slot8, slot9 in ipairs(slot3.actEffect) do
 		if uv0[slot9.effectType] then
 			-- Nothing
 		end

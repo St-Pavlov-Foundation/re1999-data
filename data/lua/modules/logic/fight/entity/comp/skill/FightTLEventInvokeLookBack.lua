@@ -1,9 +1,9 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventInvokeLookBack", package.seeall)
 
-slot0 = class("FightTLEventInvokeLookBack")
+slot0 = class("FightTLEventInvokeLookBack", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
-	if not (slot1 and slot1.actEffectMOs) then
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+	if not (slot1 and slot1.actEffect) then
 		return
 	end
 
@@ -24,27 +24,22 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	slot0._flow = FlowParallel.New()
+	slot7 = slot0:com_registFlowParallel()
 
-	for slot10, slot11 in ipairs(slot5) do
-		if FightStepBuilder.ActEffectWorkCls[slot11.effectType] then
-			slot0._flow:addWork(FightWork2Work.New(slot12, slot1, slot11))
+	for slot11, slot12 in ipairs(slot5) do
+		if FightStepBuilder.ActEffectWorkCls[slot12.effectType] then
+			slot7:registWork(slot13, slot1, slot12)
 		end
 	end
 
-	slot0._flow:start()
+	slot0:addWork2TimelineFinishWork(slot7)
+	slot7:start()
 end
 
-function slot0.handleSkillEventEnd(slot0)
+function slot0.onTrackEnd(slot0)
 end
 
-function slot0.onSkillEnd(slot0)
-end
-
-function slot0.clear(slot0)
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 end
 
 return slot0

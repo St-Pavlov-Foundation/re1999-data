@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1001,
+    "triggerPoint": 910,
+    "effect": "poison",
+    "cover": "InfiniteOverlays",
+    "limit": 50,
+    "name": "自我猜疑",
+    "desc": "冷周六行动后，每有1层自我猜疑，信心量-1",
+    "icon": "5201"
+  },
+  {
+    "id": 1002,
+    "triggerPoint": 900,
+    "effect": "petrify",
+    "cover": "InfiniteOverlays",
+    "limit": 50,
+    "name": "暂缓行动",
+    "desc": "每有1层暂缓行动对方的行动会延后1回合",
+    "icon": "3201"
+  },
+  {
+    "id": 1003,
+    "triggerPoint": 101,
+    "effect": "damageUp",
+    "cover": "InfiniteOverlays",
+    "limit": 50,
+    "name": "信心倍增",
+    "desc": "冷周六行动时，每有1层信心倍增，对对方造成的信心削减+1",
+    "icon": "9103"
+  }
+]

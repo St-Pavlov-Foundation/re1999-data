@@ -73,7 +73,7 @@ end
 function slot0.setData(slot0, slot1)
 	slot0._mo = slot1
 	slot2 = slot1
-	slot8 = "Day." .. tostring(slot0:_getEpisodeConfig(slot2).openDay)
+	slot8 = formatLuaLang("warmup_radiotaskitem_day", slot0:_getEpisodeConfig(slot2).openDay)
 	slot0._txtDateUnSelected.text = slot8
 	slot0._txtDateSelected.text = slot8
 

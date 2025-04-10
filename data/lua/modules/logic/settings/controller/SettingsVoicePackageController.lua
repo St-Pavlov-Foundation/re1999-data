@@ -122,15 +122,15 @@ end
 function slot0.RequsetVoiceInfo(slot0, slot1, slot2)
 	if not slot0._httpGetter then
 		slot0._httpGetter = SettingVoiceHttpGetter.New()
-
-		slot0._httpGetter:start(function ()
-			uv0:_onGetVoiceInfo()
-
-			if uv1 then
-				uv1(uv2)
-			end
-		end, slot0)
 	end
+
+	slot0._httpGetter:start(function ()
+		uv0:_onGetVoiceInfo()
+
+		if uv1 then
+			uv1(uv2)
+		end
+	end, slot0)
 end
 
 function slot0.onSettingVoiceDropDown(slot0)

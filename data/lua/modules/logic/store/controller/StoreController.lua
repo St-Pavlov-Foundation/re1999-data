@@ -45,7 +45,7 @@ function slot0.openStoreView(slot0, slot1, slot2)
 end
 
 function slot0.openNormalGoodsView(slot0, slot1)
-	if slot1.belongStoreId == StoreEnum.SubRoomNew or slot1.belongStoreId == StoreEnum.SubRoomOld then
+	if slot1.belongStoreId == StoreEnum.StoreId.NewRoomStore or slot1.belongStoreId == StoreEnum.StoreId.OldRoomStore then
 		RoomController.instance:openStoreGoodsTipView(slot1)
 	else
 		ViewMgr.instance:openView(ViewName.NormalStoreGoodsView, slot1)
@@ -69,7 +69,7 @@ function slot0.openDecorateStoreGoodsView(slot0, slot1)
 end
 
 function slot0.openSummonStoreGoodsView(slot0, slot1)
-	if slot1.belongStoreId == StoreEnum.Room then
+	if slot1.belongStoreId == StoreEnum.StoreId.RoomStore then
 		RoomController.instance:openStoreGoodsTipView(slot1)
 	else
 		ViewMgr.instance:openView(ViewName.SummonStoreGoodsView, slot1)
@@ -117,7 +117,19 @@ function slot0._readTab(slot0, slot1)
 		end
 
 		if #slot4 > 0 then
-			ChargeRpc.instance:sendReadChargeNewRequest(slot4)
+			if not StoreConfig.instance:isPackageStore(slot1) then
+				ChargeRpc.instance:sendReadChargeNewRequest(slot4)
+			else
+				slot6 = {}
+
+				for slot10, slot11 in pairs(slot4) do
+					if not (StoreModel.instance:getGoodsMO(slot11).newStartTime <= ServerTime.now() and slot13 <= slot12.newEndTime) then
+						table.insert(slot6, slot11)
+					end
+				end
+
+				ChargeRpc.instance:sendReadChargeNewRequest(slot6)
+			end
 		end
 	end
 end
@@ -230,7 +242,7 @@ function slot0.statBuyGoods(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = StoreConfig.instance:getGoodsConfig(slot2).product
 	slot8 = nil
 
-	if slot1 == StoreEnum.Room then
+	if slot1 == StoreEnum.StoreId.RoomStore then
 		slot7 = slot0.roomStoreCanBuyGoodsStr
 		slot8 = slot0:_itemsMultipleWithBuyCount(slot0.recordCostItem, slot3, slot4)
 	elseif slot1 == StoreEnum.StoreId.Skin and slot0.exchangeDiamondQuantity and slot0.exchangeDiamondQuantity > 0 then

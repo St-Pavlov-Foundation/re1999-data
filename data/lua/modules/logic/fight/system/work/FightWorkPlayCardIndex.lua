@@ -3,13 +3,13 @@ module("modules.logic.fight.system.work.FightWorkPlayCardIndex", package.seeall)
 slot0 = class("FightWorkPlayCardIndex", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 end
 
 function slot0.onStart(slot0, slot1)
-	if FightHelper.isPlayerCardSkill(slot0._fightStepMO) then
-		FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, slot0._fightStepMO.cardIndex, -1)
-		FightPlayCardModel.instance:playCard(slot0._fightStepMO.cardIndex)
+	if FightHelper.isPlayerCardSkill(slot0.fightStepData) then
+		FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, slot0.fightStepData.cardIndex, -1)
+		FightPlayCardModel.instance:playCard(slot0.fightStepData.cardIndex)
 		TaskDispatcher.runDelay(slot0._delayAfterDissolveCard, slot0, 1 / FightModel.instance:getUISpeed())
 	else
 		slot0:onDone(true)

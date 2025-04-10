@@ -131,7 +131,7 @@ function slot0.onOpen(slot0)
 	FightViewPartVisible.set(false, false, false, false, false)
 	slot0:initBossList()
 
-	slot0.cardList = tabletool.copy(FightModel.instance:getCurRoundMO() and slot1:getAIUseCardMOList() or {})
+	slot0.cardList = tabletool.copy(FightDataHelper.roundMgr:getRoundData() and slot1:getAIUseCardMOList() or {})
 
 	slot0:filterValidCard()
 	slot0:refreshCardList()
@@ -248,7 +248,7 @@ function slot0.refreshSelectStatus(slot0)
 	for slot4, slot5 in ipairs(slot0.cardList) do
 		if slot0.cardItemList[slot4] then
 			if slot5 == slot0.selectCardMo then
-				slot8 = slot5:isUniqueSkill()
+				slot8 = slot5:isBigSkill()
 
 				gohelper.setActive(slot6.goSelectBig, slot8)
 				gohelper.setActive(slot6.goSelectSmall, not slot8)
@@ -561,7 +561,7 @@ function slot0.canUseSkill(slot0, slot1)
 
 	slot4 = slot3:getMO()
 
-	if FightCardModel.instance:isUniqueSkill(slot3.id, slot2) then
+	if FightCardDataHelper.isBigSkill(slot2) then
 		slot5 = FightViewHandCardItemLock.canUseCardSkill(slot3.id, slot2) and slot4:getUniqueSkillPoint() <= slot4.exPoint
 	end
 

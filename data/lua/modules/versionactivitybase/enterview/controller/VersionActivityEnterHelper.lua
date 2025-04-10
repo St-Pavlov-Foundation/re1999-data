@@ -56,19 +56,33 @@ function slot0.getActIdList(slot0)
 	return slot1
 end
 
+function slot1(slot0)
+	return ActivityHelper.getActivityStatus(slot0) == ActivityEnum.ActivityStatus.Expired or slot1 == ActivityEnum.ActivityStatus.NotOnLine
+end
+
 function slot0.isActTabCanRemove(slot0)
 	if not slot0 then
 		return true
 	end
 
 	if slot0.actType == VersionActivityEnterViewEnum.ActType.Single then
-		slot1 = slot0.storeId and ActivityHelper.getActivityStatus(slot0.storeId) or ActivityHelper.getActivityStatus(slot0.actId)
+		if slot0.storeId then
+			if not uv0(slot0.actId) then
+				return false
+			end
 
-		return slot1 == ActivityEnum.ActivityStatus.Expired or slot1 == ActivityEnum.ActivityStatus.NotOnLine
+			if not uv0(slot0.storeId) then
+				return false
+			end
+
+			return true
+		else
+			return uv0(slot0.actId)
+		end
 	end
 
 	for slot4, slot5 in ipairs(slot0.actId) do
-		if ActivityHelper.getActivityStatus(slot5) ~= ActivityEnum.ActivityStatus.Expired and slot6 ~= ActivityEnum.ActivityStatus.NotOnLine then
+		if not uv0(slot5) then
 			return false
 		end
 	end

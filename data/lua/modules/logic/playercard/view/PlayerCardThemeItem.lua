@@ -6,17 +6,19 @@ function slot0.init(slot0, slot1)
 	slot0.viewGO = slot1
 	slot0.simageBg = gohelper.findChildSingleImage(slot0.viewGO, "themeBg")
 	slot0.txtName = gohelper.findChildTextMesh(slot0.viewGO, "#txt_name")
-	slot0.txtEn = gohelper.findChildTextMesh(slot0.viewGO, "#txt_en")
 	slot0.goLocked = gohelper.findChild(slot0.viewGO, "#go_locked")
 	slot0.goSelect = gohelper.findChild(slot0.viewGO, "#go_select")
 	slot0.goUsing = gohelper.findChild(slot0.viewGO, "#go_using")
 	slot0.btnClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "click")
+	slot0._goreddot = gohelper.findChild(slot0.viewGO, "#go_reddot")
 end
 
 function slot0.addEvents(slot0)
 	slot0.btnClick:AddClickListener(slot0._onClick, slot0)
 	PlayerCardController.instance:registerCallback(PlayerCardEvent.SwitchTheme, slot0.refreshUI, slot0)
 	PlayerCardController.instance:registerCallback(PlayerCardEvent.ChangeSkin, slot0.refreshUI, slot0)
+
+	slot0._bgreddot = RedDotController.instance:addNotEventRedDot(slot0._goreddot, slot0._isShowRedDot, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -25,8 +27,19 @@ function slot0.removeEvents(slot0)
 	slot0.btnClick:RemoveClickListener()
 end
 
+function slot0._isShowRedDot(slot0)
+	return PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.PlayerCardNewBgSkinRed) .. slot0._mo.id, 0) == 1
+end
+
 function slot0._onClick(slot0)
 	PlayerCardModel.instance:setSelectSkinMO(slot0._mo)
+
+	if slot0:_isShowRedDot() then
+		PlayerCardController.instance:setBgSkinRed(slot0._mo.id, false)
+		PlayerCardModel.instance:setShowRed()
+		gohelper.setActive(slot0._goreddot, false)
+	end
+
 	PlayerCardController.instance:dispatchEvent(PlayerCardEvent.SwitchTheme, slot0._mo.id)
 end
 
@@ -59,7 +72,6 @@ end
 
 function slot0.refreshItem(slot0)
 	slot0.txtName.text = slot0._config.name
-	slot0.txtEn.text = slot0._config.nameEn
 
 	slot0.simageBg:LoadImage(ResUrl.getPlayerCardIcon("banner/" .. slot0._skinId))
 	gohelper.setActive(slot0.goLocked, not slot0._mo:isUnLock())

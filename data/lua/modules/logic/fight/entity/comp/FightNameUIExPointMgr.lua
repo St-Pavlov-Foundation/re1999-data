@@ -23,18 +23,19 @@ function slot0.initMgr(slot0, slot1, slot2)
 		return
 	end
 
-	slot0.totalMaxExPoint = 0
-	slot0.entityConfig = slot0.entity:getMO():getCO()
+	slot3 = slot0.entity:getMO()
+	slot0.entityConfig = slot3:getCO()
+	slot0.totalMaxExPoint = slot3:getMaxExPoint()
 
 	if not slot0.entityConfig then
 		logError(string.format("entity 找不到配置表: entityType = %s  modelId = %s", slot0.entity:getMO().entityType, slot0.entity:getMO().modelId))
 	end
 
-	slot0.configMaxPoint = slot0.entityConfig and slot0.entityConfig.uniqueSkill_point or 5
-
+	slot0:initGoPointPool()
 	slot0:initExPointLine()
-	slot0:createExPointItemList()
-	slot0:createExtraExPointItemList()
+	slot0:initExPointItemList()
+	slot0:initExtraExPointItemList()
+	slot0:refreshPointItemCount()
 	slot0:addCustomEvents()
 	slot0:updateSelfExPoint()
 end
@@ -61,6 +62,14 @@ function slot0.checkNeedShieldExPoint(slot0)
 	slot5 = slot4 and slot4.bossId
 
 	return BossRushController.instance:isInBossRushFight() and (slot5 and FightHelper.isBossId(slot5, slot2))
+end
+
+function slot0.initGoPointPool(slot0)
+	slot0.exPointItemPool = {}
+	slot0.extraPointItemPool = {}
+	slot0.goPoolContainer = gohelper.create2d(slot0.goExPointContainer, "pointPool")
+
+	gohelper.setActive(slot0.goPoolContainer, false)
 end
 
 function slot0.initExPointLine(slot0)
@@ -103,31 +112,70 @@ function slot0.checkRemoveLineGroup(slot0)
 	end
 end
 
-function slot0.createExPointItemList(slot0)
+function slot0.initExPointItemList(slot0)
 	slot0.exPointItemList = {}
-	slot0.maxExPoint = slot0.configMaxPoint
 	slot0.goPointItem = gohelper.findChild(slot0.goExPointContainer, "empty")
 
 	gohelper.setActive(slot0.goPointItem, false)
+end
 
-	if slot0.maxExPoint <= 0 then
-		return
+function slot0.initExtraExPointItemList(slot0)
+	slot0.extraExPointItemList = {}
+	slot1 = gohelper.findChild(slot0.goExPointContainer, "extra")
+
+	gohelper.setActive(slot1, false)
+
+	slot0.goExtraPointItem = slot1
+end
+
+function slot0.refreshPointItemCount(slot0)
+	slot4 = "prePointCount : %s, exPointCount : %s, extraPointCount : %s"
+	slot5 = #slot0.pointItemList
+
+	slot0:log(string.format(slot4, slot5, #slot0.exPointItemList, #slot0.extraExPointItemList))
+
+	for slot4, slot5 in ipairs(slot0.pointItemList) do
+		if slot5:getType() == FightNameUIExPointBaseItem.ExPointType.Normal then
+			table.insert(slot0.exPointItemPool, slot5)
+		else
+			table.insert(slot0.extraPointItemPool, slot5)
+		end
+
+		slot5:recycle(slot0.goPoolContainer)
 	end
 
-	slot0.totalMaxExPoint = slot0.totalMaxExPoint + slot0.maxExPoint
+	tabletool.clear(slot0.pointItemList)
+	tabletool.clear(slot0.exPointItemList)
+	tabletool.clear(slot0.extraExPointItemList)
 
-	for slot4 = 1, slot0.maxExPoint do
-		slot0:addPointItem()
+	slot1 = slot0:getUniqueSkillNeedExPoint()
+	slot5 = "totalCount : %s, skillNeedPoint : %s, extraPointCount : %s"
+
+	slot0:log(string.format(slot5, slot0.totalMaxExPoint, slot1, slot0.totalMaxExPoint - slot1))
+
+	for slot5 = 1, slot0.totalMaxExPoint do
+		if slot5 <= slot1 then
+			slot0:addPointItem(slot5)
+		else
+			slot0:addExtraPointItem(slot5)
+		end
 	end
 end
 
-function slot0.addPointItem(slot0)
-	slot3 = FightNameUIExPointItem.GetExPointItem(gohelper.clone(slot0.goPointItem, slot0:getLineGroup(#slot0.pointItemList + 1)))
+function slot0.addPointItem(slot0, slot1)
+	slot3 = nil
+
+	if #slot0.exPointItemPool > 0 then
+		gohelper.addChild(slot0:getLineGroup(slot1), table.remove(slot0.exPointItemPool):getPointGo())
+	else
+		slot3 = FightNameUIExPointItem.GetExPointItem(gohelper.clone(slot0.goPointItem, slot2))
+	end
+
 	slot3.entityName = slot0.entity:getMO():getEntityName()
 
 	table.insert(slot0.exPointItemList, slot3)
 	table.insert(slot0.pointItemList, slot3)
-	slot3:setIndex(#slot0.pointItemList)
+	slot3:setIndex(slot1)
 	slot3:setMgr(slot0)
 end
 
@@ -137,46 +185,34 @@ function slot0.removePointItem(slot0)
 	slot0:assetPointItem(slot1)
 
 	if slot1 then
-		slot1:destroy()
+		slot1:recycle(slot0.goPoolContainer)
+		table.insert(slot0.exPointItemPool, slot1)
 	end
 
 	tabletool.removeValue(slot0.pointItemList, slot1)
 	slot0:checkRemoveLineGroup()
 end
 
-function slot0.createExtraExPointItemList(slot0)
-	slot0.extraExPointItemList = {}
-	slot1 = gohelper.findChild(slot0.goExPointContainer, "extra")
-
-	gohelper.setActive(slot1, false)
-
-	slot0.goExtraPointItem = slot1
-	slot0.extraMaxExPoint = slot0.entity:getMO().expointMaxAdd or 0
-
-	if slot0.extraMaxExPoint <= 0 then
-		return
-	end
-
-	slot0.totalMaxExPoint = slot0.totalMaxExPoint + slot0.extraMaxExPoint
-
-	for slot5 = 1, slot0.extraMaxExPoint do
-		slot0:addExtraPointItem()
-	end
-end
-
-function slot0.addExtraPointItem(slot0)
+function slot0.addExtraPointItem(slot0, slot1)
 	if slot0.entity:getMO():hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
-		slot0:addPointItem()
+		slot0:addPointItem(slot1)
 
 		return
 	end
 
-	slot4 = FightNameUIExPointExtraItem.GetExtraExPointItem(gohelper.clone(slot0.goExtraPointItem, slot0:getLineGroup(#slot0.pointItemList + 1)))
+	slot4 = nil
+
+	if #slot0.extraPointItemPool > 0 then
+		gohelper.addChild(slot0:getLineGroup(slot1), table.remove(slot0.extraPointItemPool):getPointGo())
+	else
+		slot4 = FightNameUIExPointExtraItem.GetExtraExPointItem(gohelper.clone(slot0.goExtraPointItem, slot3))
+	end
+
 	slot4.entityName = slot0.entity:getMO():getEntityName()
 
 	table.insert(slot0.extraExPointItemList, slot4)
 	table.insert(slot0.pointItemList, slot4)
-	slot4:setIndex(#slot0.pointItemList)
+	slot4:setIndex(slot1)
 	slot4:setMgr(slot0)
 end
 
@@ -192,7 +228,8 @@ function slot0.removeExtraPointItem(slot0)
 	slot0:assetPointItem(slot2)
 
 	if slot2 then
-		slot2:destroy()
+		slot2:recycle(slot0.goPoolContainer)
+		table.insert(slot0.extraPointItemPool, slot2)
 	end
 
 	tabletool.removeValue(slot0.pointItemList, slot2)
@@ -247,9 +284,11 @@ function slot0.getUsedExPoint(slot0)
 end
 
 function slot0.getUniqueSkillNeedExPoint(slot0)
-	slot0:log("大招需要激情点：" .. slot0.entity:getMO():getUniqueSkillPoint())
+	slot1 = slot0.entity:getMO():getUniqueSkillPoint()
 
-	return slot0.entity:getMO():getUniqueSkillPoint()
+	slot0:log("大招需要激情点：" .. tostring(slot1))
+
+	return slot1
 end
 
 function slot0.getStoredExPoint(slot0)
@@ -478,24 +517,7 @@ function slot0.onExPointMaxAdd(slot0, slot1, slot2)
 
 	slot0.totalMaxExPoint = slot4
 
-	if slot5 < slot4 then
-		for slot9 = slot5 + 1, slot4 do
-			if slot0.configMaxPoint < slot9 then
-				slot0:addExtraPointItem()
-			else
-				slot0:addPointItem()
-			end
-		end
-	else
-		for slot9 = slot5, slot4 + 1, -1 do
-			if slot0.configMaxPoint < slot9 then
-				slot0:removeExtraPointItem()
-			else
-				slot0:removePointItem()
-			end
-		end
-	end
-
+	slot0:refreshPointItemCount()
 	slot0:updateSelfExPoint()
 end
 
@@ -505,27 +527,53 @@ function slot0.onBuffUpdate(slot0, slot1, slot2, slot3)
 	end
 
 	slot0:log("更新buff")
+	slot0:refreshPointLockStatus(slot2, slot3)
+	slot0:checkNeedRefreshPointCount(slot2, slot3)
+end
 
-	slot4 = nil
+function slot0.refreshPointLockStatus(slot0, slot1, slot2)
+	slot3 = nil
 
-	if slot2 == FightEnum.EffectType.BUFFADD then
-		if FightBuffHelper.hasCantAddExPointFeature(slot3) then
-			slot4 = FightEnum.ExPointState.Lock
+	if slot1 == FightEnum.EffectType.BUFFADD then
+		if FightBuffHelper.hasCantAddExPointFeature(slot2) then
+			slot3 = FightEnum.ExPointState.Lock
 		end
-	elseif slot2 == FightEnum.EffectType.BUFFDEL then
-		if FightBuffHelper.hasCantAddExPointFeature(slot3) and FightHelper.canAddPoint(slot0.entity:getMO()) then
-			slot4 = FightEnum.ExPointState.Empty
+	elseif slot1 == FightEnum.EffectType.BUFFDEL then
+		if FightBuffHelper.hasCantAddExPointFeature(slot2) and FightHelper.canAddPoint(slot0.entity:getMO()) then
+			slot3 = FightEnum.ExPointState.Empty
 		end
 	end
 
-	if slot4 then
-		for slot11 = math.max(slot0.entity:getMO().exPoint, slot0:getStoredExPoint()) + 1, slot0.totalMaxExPoint do
-			slot12 = slot0.pointItemList[slot11]
+	if slot3 then
+		for slot10 = math.max(slot0.entity:getMO().exPoint, slot0:getStoredExPoint()) + 1, slot0.totalMaxExPoint do
+			slot11 = slot0.pointItemList[slot10]
 
-			slot0:assetPointItem(slot12)
+			slot0:assetPointItem(slot11)
 
-			if slot12 then
-				slot12:switchToState(slot4)
+			if slot11 then
+				slot11:switchToState(slot3)
+			end
+		end
+	end
+end
+
+function slot0.checkNeedRefreshPointCount(slot0, slot1, slot2)
+	if slot1 == FightEnum.EffectType.BUFFADD and slot0.entity:getMO():getFeaturesSplitInfoByBuffId(slot2) then
+		for slot8, slot9 in ipairs(slot4) do
+			if slot9[1] == FightEnum.BuffActId.ExSkillNoConsumption then
+				slot0:refreshPointItemCount()
+				slot0:updateSelfExPoint()
+
+				return
+			end
+		end
+	end
+
+	if slot1 == FightEnum.EffectType.BUFFDEL and slot3:getFeaturesSplitInfoByBuffId(slot2) then
+		for slot8, slot9 in ipairs(slot4) do
+			if slot9[1] == FightEnum.BuffActId.ExSkillNoConsumption then
+				slot0:refreshPointItemCount()
+				slot0:updateSelfExPoint()
 			end
 		end
 	end
@@ -623,6 +671,7 @@ end
 function slot0.onExSkillPointChange(slot0, slot1, slot2, slot3)
 	if slot0.entity and slot1 == slot0.entity.id then
 		slot0:log("大招需求激情变化")
+		slot0:refreshPointItemCount()
 		slot0:updateSelfExPoint()
 	end
 end
@@ -698,8 +747,19 @@ function slot0.beforeDestroy(slot0)
 		slot5:destroy()
 	end
 
+	for slot4, slot5 in ipairs(slot0.exPointItemPool) do
+		slot5:destroy()
+	end
+
+	for slot4, slot5 in ipairs(slot0.extraPointItemPool) do
+		slot5:destroy()
+	end
+
+	slot0.pointItemList = nil
 	slot0.exPointItemList = nil
 	slot0.extraExPointItemList = nil
+	slot0.exPointItemPool = nil
+	slot0.extraPointItemPool = nil
 
 	slot0:__onDispose()
 end

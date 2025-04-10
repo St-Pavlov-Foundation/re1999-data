@@ -138,7 +138,7 @@ function slot0.onLongPress(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -149,7 +149,7 @@ function slot0.onLongPress(slot0)
 	end
 
 	if not lua_skill.configDict[slot1.skillId] then
-		logError("long press assist boss, skill not exist !!! id : " .. tostring(slot2))
+		logError("long press assist boss, skill not exist !!! id : " .. tostring(slot3))
 
 		return
 	end
@@ -162,13 +162,21 @@ function slot0.onLongPress(slot0)
 
 	tabletool.clear(slot0.tempSkillIdList)
 
-	slot0.tempSkillIdList[1] = slot2
-	slot0.tempInfo.super = slot3.isBigSkill == 1
+	for slot8, slot9 in ipairs(slot2) do
+		table.insert(slot0.tempSkillIdList, slot9.skillId)
+	end
+
+	slot0.tempInfo.super = slot4.isBigSkill == 1
 	slot0.tempInfo.skillIdList = slot0.tempSkillIdList
 	slot0.tempInfo.skillIndex = 1
-	slot0.tempInfo.monsterName = FightDataHelper.entityMgr:getAssistBoss() and slot4:getEntityName() or ""
+	slot0.tempInfo.userSkillId = slot1.skillId
+	slot0.tempInfo.monsterName = FightDataHelper.entityMgr:getAssistBoss() and slot5:getEntityName() or ""
 
-	ViewMgr.instance:openView(ViewName.SkillTipView, slot0.tempInfo)
+	if slot5 and slot0.tempInfo.super then
+		ViewMgr.instance:openView(ViewName.TowerSkillTipView, slot0.tempInfo)
+	else
+		ViewMgr.instance:openView(ViewName.SkillTipView, slot0.tempInfo)
+	end
 end
 
 function slot0.playAssistBossCard(slot0)
@@ -180,7 +188,7 @@ function slot0.playAssistBossCard(slot0)
 		return
 	end
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -188,8 +196,9 @@ function slot0.playAssistBossCard(slot0)
 		return
 	end
 
-	slot2 = FightCardModel.instance:playAssistBossHandCardOp(slot1.skillId)
+	slot2 = FightDataHelper.operationDataMgr:newOperation()
 
+	slot2:playAssistBossHandCard(slot1.skillId)
 	FightController.instance:dispatchEvent(FightEvent.AddPlayOperationData, slot2)
 	FightController.instance:dispatchEvent(FightEvent.onNoActCostMoveFlowOver)
 	FightController.instance:dispatchEvent(FightEvent.RefreshPlayCardRoundOp, slot2)

@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.LY.FightWorkRedOrBlueCountChange", packa
 slot0 = class("FightWorkRedOrBlueCountChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	FightDataHelper.LYDataMgr:setLYCountBuff(slot0._actEffectMO.buff)
+	FightDataHelper.LYDataMgr:setLYCountBuff(slot0.actEffectData.buff)
 
 	return slot0:onDone(true)
 end

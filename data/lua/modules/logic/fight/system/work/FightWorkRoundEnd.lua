@@ -4,7 +4,6 @@ slot0 = class("FightWorkRoundEnd", BaseWork)
 
 function slot0.onStart(slot0, slot1)
 	FightPlayCardModel.instance:onEndRound()
-	FightCardModel.instance:onEndRound()
 
 	for slot6, slot7 in ipairs(FightHelper.getAllEntitys()) do
 		slot7:resetEntity()
@@ -31,7 +30,7 @@ function slot0._playCardExpand(slot0)
 	slot1 = FightViewHandCard.handCardContainer
 
 	if not FightModel.instance:isFinish() and not gohelper.isNil(slot1) then
-		slot3 = FightCardModel.instance:getHandCardContainerScale()
+		slot3 = FightCardDataHelper.getHandCardContainerScale()
 		slot0._tweenId = ZProj.TweenHelper.DOScale(slot1.transform, slot3, slot3, slot3, FightWorkEffectDistributeCard.getHandCardScaleTime(), slot0._onHandCardsExpand, slot0)
 	else
 		slot0:_onHandCardsExpand()

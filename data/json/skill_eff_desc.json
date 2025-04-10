@@ -13346,10 +13346,10 @@
   {
     "id": 1261011,
     "name": "坚若磐石",
-    "color": 0,
+    "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "攻击+15%,再生率+30%;被攻击后本次伤害的15%反弹给攻击方"
+    "desc": "攻击+15%,受创回复+30%;被攻击后本次伤害的15%反弹给攻击方"
   },
   {
     "id": 1261012,
@@ -13362,10 +13362,10 @@
   {
     "id": 1261013,
     "name": "天有四时",
-    "color": 0,
+    "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "术阵:再生率+20%,攻击力+10%,穿透率+20%,暴击创伤+30%;回合结束时获得1层[四季流转];回合开始时若拥有4层[四季流转],则全部消耗并立刻释放至终的仪式"
+    "desc": "术阵:受创回复+20%,攻击力+10%,穿透率+20%,暴击创伤+30%;回合结束时获得1层[四季流转];回合开始时若拥有4层[四季流转],则全部消耗并立刻释放至终的仪式"
   },
   {
     "id": 1261014,
@@ -13990,5 +13990,445 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "此造物无法被主动移出布设"
+  },
+  {
+    "id": 30830171,
+    "name": "酣畅",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力+3%（效果可叠加，最多叠加12层，持续3回合，不可驱散）"
+  },
+  {
+    "id": 1271001,
+    "name": "机械反制",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创回复+50%.被攻击后，攻方激情-1，自身激情+1"
+  },
+  {
+    "id": 1271002,
+    "name": "伤害积累",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害提升5%(可以叠加)"
+  },
+  {
+    "id": 1271003,
+    "name": "御寒绒毛",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "免疫【冰冻】.被攻击时，受创减免+80%（生效后减少1层，不可驱散）"
+  },
+  {
+    "id": 1271004,
+    "name": "极地冻寒",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，抗暴率-30%，受创减免-30%"
+  },
+  {
+    "id": 1271005,
+    "name": "温度失控",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "被至终的仪式攻击时，受到伤害提升10%(可叠加，每层时间独立计算，不可驱散)"
+  },
+  {
+    "id": 1271008,
+    "name": "失礼",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御、精神防御降低60%，免疫【控制】"
+  },
+  {
+    "id": 1271009,
+    "name": "意志继承",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+1，免疫【控制】(不可驱散)"
+  },
+  {
+    "id": 1271011,
+    "name": "第三守则",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "造成伤害降低50%;额外行动不受影响"
+  },
+  {
+    "id": 1271013,
+    "name": "土地庇护",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到伤害降低15%(最多叠加5层，被攻击扣除1层)"
+  },
+  {
+    "id": 1271015,
+    "name": "扎根",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成+3%，受创回复+3%(叠加10层后变为【繁茂】)"
+  },
+  {
+    "id": 1271017,
+    "name": "繁茂",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "免疫【控制】.创伤加成+30%，受创回复+30%，被攻击使攻方受到其自身10%当前生命的本源创伤(不再获得【扎根】)"
+  },
+  {
+    "id": 1271018,
+    "name": "属性削弱集合",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "包含以下属性削弱效果：攻击-15%，现实防御-30%，精神防御-30%，暴击率-30%，抗暴率-30%，暴击创伤-30%，暴击防御-30%，创伤加成-30%，受创减免-30%，仪式威力-30%，术法威力-30%"
+  },
+  {
+    "id": 9270204,
+    "name": "悚惧<id:9270204>",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免-5%，回合结束造成携带者当前生命*3%的本源创伤；成为治疗/增益/反制/吟唱咒语的目标时驱散1层此状态。回合结束时达到10层，追加失去90%当前生命（最多叠加10层）"
+  },
+  {
+    "id": 9270238,
+    "name": "剧毒伤口<id:9270238>",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到本源创伤提升10%；被攻击时，额外受到携带者攻击*10%的本源创伤"
+  },
+  {
+    "id": 9270247,
+    "name": "充能弹幕<id:9270247>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若回合开始时仍处于该吟诵状态，则进行一次强化攻击（受到至终的仪式攻击后解除）"
+  },
+  {
+    "id": 9270251,
+    "name": "相位抵消<id:9270251>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单次受到伤害不超过最大生命*2%（最多可叠加10层，受到攻击后失去1层，无法驱散）"
+  },
+  {
+    "id": 9270231,
+    "name": "无声剥离<id:9270231>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "吟诵3回合，结束后对敌方全体释放【嬗变于无光的黏稠·终】"
+  },
+  {
+    "id": 9270232,
+    "name": "嬗变于无光的黏稠·终",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成50%精神创伤，之后对敌方全体造成目标最大生命*15%的本源创伤"
+  },
+  {
+    "id": 9270303,
+    "name": "历战之躯Ⅲ<id:9270303>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最大生命+25%，最终增伤+5%（可以叠加，不可驱散）"
+  },
+  {
+    "id": 31180132,
+    "name": "名讳",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放至终的仪式时,不消耗行动点"
+  },
+  {
+    "id": 227001,
+    "name": "电涌增幅<id:3074>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "当蘑菇处于【涌动电场lv2】【涌动电场lv3】下，回合开始会立刻生长至成熟"
+  },
+  {
+    "id": 227002,
+    "name": "叠加护盾<id:3074>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "额外使己方全体获得同等于2阶【勉励以精神】赋予的【护盾】，若目标已持有护盾，将【勉励以精神】的护盾值叠加至原护盾上，不超过自身最大生命*60%"
+  },
+  {
+    "id": 227003,
+    "name": "涌动电场lv1",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方角色创伤加成+15%，持续3回合"
+  },
+  {
+    "id": 227004,
+    "name": "涌动电场lv2",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方角色术法威力+25%，创伤加成+15%，持续3回合"
+  },
+  {
+    "id": 227005,
+    "name": "涌动电场lv3",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方角色仪式威力+35%，术法威力+25%，创伤加成+15%，持续2回合"
+  },
+  {
+    "id": 227006,
+    "name": "涌动电场",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，涌动电场根据注入【电能】层数升级：注入【电能】值大于等于50时，术阵升级成【涌动电场lv2】，注入【电能】值大于等于120时，术阵升级成【涌动电场lv3】（当涌动电场消失时，注入【电能】值的将一同清空）"
+  },
+  {
+    "id": 227007,
+    "name": "勉励以精神",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 52711901,
+    "name": "捕食标记",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免-5%，最多叠加5层"
+  },
+  {
+    "id": 52712001,
+    "name": "有限防护",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "可增强太空人单位部分技能，最多叠加10层，受到精神创伤后失去1层，失去全部层数时获得【真空暴露】"
+  },
+  {
+    "id": 52712002,
+    "name": "真空暴露",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每回合损失10%最大生命值，获得【有限防护】时失去此效果"
+  },
+  {
+    "id": 52720201,
+    "name": "引力场",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对目标及周围一个单位持续造成伤害，场上最多存在一个引力场，重复施加会替换之前引力场"
+  },
+  {
+    "id": 52720202,
+    "name": "引力场外围",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "旁边队友获得【引力场】时，自身获得此效果，回合结束时受到伤害，不可驱散"
+  },
+  {
+    "id": 52720311,
+    "name": "天体运动",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "在顺行-近日点-逆行-远日点四个阶段中循环，回合结束时未受仪式伤害向前一个阶段，每次回到顺行时释放一次至终的仪式"
+  },
+  {
+    "id": 52720321,
+    "name": "顺行",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【天体运动】四个阶段之一，可增幅部分技能"
+  },
+  {
+    "id": 52720322,
+    "name": "近日点",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【天体运动】四个阶段之一，可增幅部分技能"
+  },
+  {
+    "id": 52720323,
+    "name": "逆行",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【天体运动】四个阶段之一，可增幅部分技能"
+  },
+  {
+    "id": 52720324,
+    "name": "远日点",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【天体运动】四个阶段之一，可增幅部分技能"
+  },
+  {
+    "id": 52720401,
+    "name": "浩瀚凝视",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对未知彼端造成伤害降低20%，不可驱散"
+  },
+  {
+    "id": 52740101,
+    "name": "提速",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "友方使用技能时使其倒计时-1"
+  },
+  {
+    "id": 52740102,
+    "name": "时空逆转",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时，激情-1，生效后消失，不可驱散"
+  },
+  {
+    "id": 52740103,
+    "name": "时间",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若数量归零，战斗将直接失败；【无数卡伊洛斯】中指针每旋转一圈可获得大量【时间】"
+  },
+  {
+    "id": 52740104,
+    "name": "无数卡伊洛斯",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "战斗开始时悬挂与战场旁，将表盘分为【毁灭】（橙色）、【创造】（蓝色）、【静滞】（红色）、【刹那】（绿色）四个区域，根据指针所处区域会触发不用效果"
+  },
+  {
+    "id": 52740105,
+    "name": "毁灭",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【无数卡伊洛斯】橙色区域，回合结束时指针在此区域则【时间】层数-5，二阶段层数-8"
+  },
+  {
+    "id": 52740106,
+    "name": "创造",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【无数卡伊洛斯】蓝色区域，回合结束时指针在此区域则我方创伤加成+20%，持续1回合"
+  },
+  {
+    "id": 52740107,
+    "name": "静滞",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【无数卡伊洛斯】红色区域，回合结束时指针在此区域则【时间】层数-1"
+  },
+  {
+    "id": 52740108,
+    "name": "刹那",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【无数卡伊洛斯】绿色区域，回合结束时指针在此区域则我方全体激情+1"
+  },
+  {
+    "id": 52740109,
+    "name": "片刻",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "编年体召唤的单位，它是流动的河流，它是旋转的星臂。"
+  },
+  {
+    "id": 52720811,
+    "name": "真空侵蚀",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免-15%，回合结束时受到释放者攻击*150%的本源创伤"
+  },
+  {
+    "id": 31160099,
+    "name": "蛇巢",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "兄弟姐妹同眠之所（可以叠加，最多叠加8层，不可驱散，回合开始时修正自身【蛇巢】层数，使得场上【蛇巢】层数、【石棉鳞片】层数与【嘶嘶！】总和为8）"
+  },
+  {
+    "id": 31160100,
+    "name": "石棉鳞片",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时，受到(50%+20%*层数)*冷周六攻击的本源创伤，能够暴击，受到仪式威力加成，每次触发后减少1层，回收为冷周六的1层【蛇巢】；若自身退场，剩余【石棉鳞片】将转移给攻击最高的友方（可以叠加，最多叠加8层，不可驱散）"
+  },
+  {
+    "id": 31160101,
+    "name": "嘶嘶！<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成50%/100%/250%精神创伤，施加1/2/4层【石棉鳞片】，获得0/1/2点激情（视为仪式，不消耗行动点）"
+  },
+  {
+    "id": 31160102,
+    "name": "嘶嘶！<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成75%/150%/375%精神创伤，施加1/2/4层【石棉鳞片】，获得0/1/2点激情（视为仪式，不消耗行动点）"
+  },
+  {
+    "id": 31160103,
+    "name": "嘶嘶！",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成精神创伤，施加1/2/4层【石棉鳞片】，获得0/1/2点激情（视为仪式，不消耗行动点）"
+  },
+  {
+    "id": 30740203,
+    "name": "薪血",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方队伍每累计损失3000生命，薪血+1（受到攻击损失的生命仅记录30%）"
   }
 ]

@@ -48,6 +48,7 @@ function slot0._editableInitView(slot0)
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
 
 	slot0._uiSpine:openBloomView(CharacterVoiceEnum.UIBloomView.CharacterDataView)
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.BloomAuto)
 	CharacterController.instance:registerCallback(CharacterEvent.PlayVoice, slot0._onPlayVoice, slot0)
 	CharacterController.instance:registerCallback(CharacterEvent.StopVoice, slot0._onStopVoice, slot0)
 
@@ -149,7 +150,7 @@ function slot0._refreshSpine(slot0)
 
 	slot2 = SkinConfig.instance:getSkinCo(HeroModel.instance:getByHeroId(slot0._heroId).skin)
 
-	slot0._uiSpine:setResPath(slot2, slot0._onSpineLoaded, slot0)
+	slot0._uiSpine:setResPath(slot2, slot0._onSpineLoaded, slot0, CharacterVoiceEnum.FullScreenEffectCameraSize)
 
 	slot4 = nil
 	slot4 = (not string.nilorempty(slot2.characterDataVoiceViewOffset) or SkinConfig.instance:getAfterRelativeOffset(502, SkinConfig.instance:getSkinOffset(slot2.characterViewOffset))) and SkinConfig.instance:getSkinOffset(slot3)
@@ -285,6 +286,7 @@ function slot0._setModelVisible(slot0, slot1)
 		slot0._uiSpine:setModelVisible(slot1)
 	else
 		slot0._uiSpine:setLayer(UnityLayer.Water)
+		slot0._uiSpine:hideCamera()
 		TaskDispatcher.runDelay(slot0._delaySetModelHide, slot0, 1)
 	end
 end

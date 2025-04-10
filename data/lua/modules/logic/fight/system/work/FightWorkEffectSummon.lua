@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkEffectSummon", package.seeall)
 slot0 = class("FightWorkEffectSummon", FightEffectBase)
 
 function slot0.onStart(slot0)
-	slot0._entityMO = FightDataHelper.entityMgr:getById(slot0._actEffectMO.entityMO.id)
+	slot0._entityMO = FightDataHelper.entityMgr:getById(slot0.actEffectData.entity.id)
 
 	if slot0._entityMO then
 		if FightDataHelper.entityMgr:isDeadUid(slot0._entityMO.uid) then

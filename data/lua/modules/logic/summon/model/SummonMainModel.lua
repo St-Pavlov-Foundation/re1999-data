@@ -607,7 +607,7 @@ function slot0.getCostCurrencyParam(slot0)
 end
 
 function slot0.jumpToSummonCostShop()
-	StoreController.instance:checkAndOpenStoreView(StoreEnum.SummonCost)
+	StoreController.instance:checkAndOpenStoreView(StoreEnum.StoreId.SummonCost)
 end
 
 function slot0.addCurrencyByCostStr(slot0, slot1, slot2)

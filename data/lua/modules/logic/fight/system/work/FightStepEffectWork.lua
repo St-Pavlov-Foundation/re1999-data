@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightStepEffectWork", package.seeall)
 slot0 = class("FightStepEffectWork", BaseWork)
 
 function slot0.ctor(slot0, slot1)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot0._workFlow = nil
 end
 

@@ -3,7 +3,7 @@ module("modules.logic.fight.system.work.FightWorkRougePowerLimitChange", package
 slot0 = class("FightWorkRougePowerLimitChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	FightModel.instance:setRougeExData(FightEnum.ExIndexForRouge.MagicLimit, FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.MagicLimit) + slot0._actEffectMO.effectNum)
+	FightModel.instance:setRougeExData(FightEnum.ExIndexForRouge.MagicLimit, FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.MagicLimit) + slot0.actEffectData.effectNum)
 	FightController.instance:dispatchEvent(FightEvent.RougeMagicLimitChange)
 	slot0:onDone(true)
 end

@@ -3517,5 +3517,77 @@
     "levels": [
       140011
     ]
+  },
+  {
+    "id": 294,
+    "name": "宇宙的侧面",
+    "nameen": "Illusory Space",
+    "levels": [
+      29401
+    ]
+  },
+  {
+    "id": 295,
+    "name": "旅途雪地",
+    "nameen": "\tSnowy Field",
+    "levels": [
+      29501
+    ]
+  },
+  {
+    "id": 296,
+    "name": "宇宙",
+    "nameen": "Space",
+    "levels": [
+      29601
+    ]
+  },
+  {
+    "id": 29501,
+    "name": "旅途雪地",
+    "nameen": "\tSnowy Field",
+    "levels": [
+      29501
+    ]
+  },
+  {
+    "id": 29502,
+    "name": "米尔内·街道",
+    "nameen": "Street, Mirny",
+    "levels": [
+      29501
+    ]
+  },
+  {
+    "id": 29503,
+    "name": "米尔内·远郊",
+    "nameen": "Suburb, Mirny",
+    "levels": [
+      29501
+    ]
+  },
+  {
+    "id": 29601,
+    "name": "内心的回响",
+    "nameen": "Head Space",
+    "levels": [
+      29601
+    ]
+  },
+  {
+    "id": 29602,
+    "name": "普列谢茨克·模拟训练室",
+    "nameen": "Simulation Room, Plesetsk",
+    "levels": [
+      29601
+    ]
+  },
+  {
+    "id": 29603,
+    "name": "宇宙",
+    "nameen": "Space",
+    "levels": [
+      29601
+    ]
   }
 ]

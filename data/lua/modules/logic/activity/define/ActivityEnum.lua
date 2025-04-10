@@ -7,7 +7,7 @@ slot0.ActivityType = {
 	Normal = 1
 }
 slot0.Activity = {
-	Activity1_5WarmUp = 11511,
+	V2a7_NewInsight = 12716,
 	V1a9_SemmelWeisGift = 11916,
 	NewWelfare = 11924,
 	RoleSignViewPart2_1_7 = 11712,
@@ -52,7 +52,7 @@ slot0.Activity = {
 	RoleSignViewPart2_1_4 = 11426,
 	AnniversarySignView_1_9 = 11919,
 	RoleSignViewPart2_1_9 = 11914,
-	NewYearEve = 11621,
+	V2a7_SelfSelectSix2 = 12733,
 	RoleSignViewPart2_1_6 = 11616,
 	Activity1_7WarmUp = 11720,
 	Activity1_8Double = 11809,
@@ -83,11 +83,19 @@ slot0.Activity = {
 	V2a6_NewInsight = 12622,
 	SummerSignPart1_1_2 = 11211,
 	SelfSelectCharacter = 12238,
+	V2a7_Role_SignView_Part1 = 12708,
 	ClassShow = 10012,
+	V2a7_Role_SignView_Part2 = 12709,
+	V2a7_Labor_Sign = 12710,
+	V2a7_WarmUp = 12711,
 	DoubleFestivalSign_1_5 = 11515,
+	Activity1_5WarmUp = 11511,
+	NewYearEve = 11621,
 	V2a2_TurnBack_H5 = 12222,
+	V2a7_TowerGift = 12720,
 	Jessica = 11202,
 	V2a0_SummerSign = 12020,
+	V2a7_LinkageActivity = 12721,
 	V1a9_Matildagift = 11915,
 	SpringSign = 11618,
 	LinkageActivity_FullView = 12312,
@@ -107,7 +115,8 @@ slot0.Activity = {
 	SummerSignPart2_1_2 = 11212,
 	V2a5_NewInsight = 12511,
 	DailyAllowance = 11423,
-	StarLightSignPart1_1_3 = 11312
+	StarLightSignPart1_1_3 = 11312,
+	V2a7_SelfSelectSix1 = 12722
 }
 slot0.MainActivityCenterViewClientId = {
 	Bp = -3,
@@ -165,10 +174,11 @@ slot0.VersionActivityIdDict = {
 	Activity2_4 = 12401,
 	Activity1_51 = 11501,
 	Activity1_1 = 11101,
-	Activity2_2 = 12201
+	Activity2_2 = 12201,
+	Activity2_7 = 12705
 }
 slot0.VersionActivityIdList = {
-	slot0.VersionActivityIdDict.Activity2_6
+	slot0.VersionActivityIdDict.Activity2_7
 }
 slot0.MainIcon = {
 	[slot0.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -188,7 +198,8 @@ slot0.MainIcon = {
 	[slot0.VersionActivityIdDict.Activity2_3] = "rk_2_3",
 	[slot0.VersionActivityIdDict.Activity2_4] = "rk_2_4",
 	[slot0.VersionActivityIdDict.Activity2_5] = "rk_2_5",
-	[slot0.VersionActivityIdDict.Activity2_6] = "rk_2_6"
+	[slot0.VersionActivityIdDict.Activity2_6] = "rk_2_6",
+	[slot0.VersionActivityIdDict.Activity2_7] = "rk_2_7"
 }
 slot0.ShowVersionActivityEpisode = 10103
 slot0.MainViewActivityState = {
@@ -196,10 +207,11 @@ slot0.MainViewActivityState = {
 	WeekWalkHeart = 9,
 	Rouge = 4,
 	SeasonActivity = 3,
-	RoleStoryActivity = 1,
+	Act191 = 10,
 	Act182 = 8,
 	Reactivity = 2,
 	Act178 = 7,
+	RoleStoryActivity = 1,
 	DouQuQu = 6,
 	None = 0
 }

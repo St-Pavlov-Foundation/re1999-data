@@ -9,7 +9,7 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	if not slot0._actEffectMO.entityMO then
+	if not slot0.actEffectData.entity then
 		slot0:onDone(true)
 
 		return
@@ -18,7 +18,7 @@ function slot0.onStart(slot0)
 	slot0:com_registTimer(slot0._delayDone, 5)
 
 	slot0._entityMgr = GameSceneMgr.instance:getCurScene().entityMgr
-	slot0._targetId = slot0._actEffectMO.targetId
+	slot0._targetId = slot0.actEffectData.targetId
 
 	FightRenderOrderMgr.instance:unregister(slot0._targetId)
 
@@ -28,13 +28,13 @@ function slot0.onStart(slot0)
 		slot0._targetEntity = nil
 	end
 
-	slot0._changedId = slot0._actEffectMO.entityMO.id
+	slot0._changedId = slot0.actEffectData.entity.id
 	slot0._changedSubEntity = FightHelper.getEntity(slot0._changedId)
 	slot0._changedEntityMO = FightDataHelper.entityMgr:getById(slot0._changedId)
 
 	FightController.instance:dispatchEvent(FightEvent.BeforeChangeSubHero, slot0._targetId, slot0._changedId)
 
-	slot0._seasonUseChangeHero = FightModel.instance:isSeason2() and slot0._actEffectMO.configEffect == 1
+	slot0._seasonUseChangeHero = FightModel.instance:isSeason2() and slot0.actEffectData.configEffect == 1
 
 	if slot0._changedEntityMO.side == FightEnum.EntitySide.MySide then
 		if slot0._seasonUseChangeHero then
@@ -65,7 +65,7 @@ function slot0._startChangeHero(slot0)
 			slot2 = "always/ui_renwuxiaoshi"
 			slot3 = nil
 
-			if slot0._actEffectMO.configEffect == 1 then
+			if slot0.actEffectData.configEffect == 1 then
 				slot2 = "buff/buff_huanren"
 				slot3 = ModuleEnum.SpineHangPoint.mountmiddle
 			end
@@ -106,12 +106,11 @@ function slot0._playJumpTimeline(slot0)
 	slot4 = {
 		actId = 0,
 		customType = "change_hero",
-		actEffectMOs = {
+		actEffect = {
 			{
 				targetId = slot0._targetId
 			}
 		},
-		actEffect = {},
 		fromId = slot0._changedId,
 		toId = slot0._targetId,
 		actType = FightEnum.ActType.SKILL,
@@ -190,7 +189,7 @@ function slot0._onEnterEntitySpineLoadFinish(slot0, slot1)
 			slot3 = "always/ui_renwuxiaoshi"
 			slot4 = nil
 
-			if slot0._actEffectMO.configEffect == 1 then
+			if slot0.actEffectData.configEffect == 1 then
 				slot3 = "buff/buff_huanren"
 				slot4 = ModuleEnum.SpineHangPoint.mountmiddle
 			end
@@ -269,7 +268,7 @@ function slot0.clearWork(slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onNextSubSpineLoaded, slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnSpineLoaded, slot0._onEnterEntitySpineLoadFinish, slot0)
 
-	slot0._fightStepMO = nil
+	slot0.fightStepData = nil
 
 	if slot0._work then
 		slot0._work:unregisterDoneListener(slot0._onEntityBornDone, slot0)

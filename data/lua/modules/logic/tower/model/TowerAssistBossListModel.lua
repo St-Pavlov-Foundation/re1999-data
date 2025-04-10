@@ -93,7 +93,7 @@ function slot0.buildBossData(slot0, slot1, slot2)
 	slot2.config = slot1
 	slot2.bossId = slot1.bossId
 	slot2.bossInfo = TowerAssistBossModel.instance:getById(slot1.bossId)
-	slot2.isLock = slot2.bossInfo == nil and 1 or 0
+	slot2.isLock = (slot2.bossInfo == nil or slot2.bossInfo:getTempState()) and 1 or 0
 	slot2.isFromHeroGroup = slot0.isFromHeroGroup
 
 	if slot0.isFromHeroGroup then

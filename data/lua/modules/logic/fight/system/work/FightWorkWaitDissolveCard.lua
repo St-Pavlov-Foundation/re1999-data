@@ -3,8 +3,8 @@ module("modules.logic.fight.system.work.FightWorkWaitDissolveCard", package.seea
 slot0 = class("FightWorkWaitDissolveCard", BaseWork)
 
 function slot0.ctor(slot0, slot1, slot2, slot3)
-	slot0._fightStepMO = slot1
-	slot0._fightActEffectMO = slot2
+	slot0.fightStepData = slot1
+	slot0.actEffectData = slot2
 	slot0._isDeadInSkill = slot3
 end
 
@@ -15,7 +15,7 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot0._fightActEffectMO.targetId) or slot2.side ~= FightEnum.EntitySide.MySide then
+	if not FightDataHelper.entityMgr:getById(slot0.actEffectData.targetId) or slot2.side ~= FightEnum.EntitySide.MySide then
 		slot0:onDone(true)
 
 		return
@@ -29,19 +29,14 @@ function slot0.onStart(slot0)
 end
 
 function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3, slot4)
-	if slot3 == slot0._fightStepMO then
+	if slot3 == slot0.fightStepData then
 		FightController.instance:unregisterCallback(FightEvent.OnSkillPlayFinish, slot0._onSkillPlayFinish, slot0)
 		TaskDispatcher.runDelay(slot0._waitForCardDissolveStart, slot0, 0.5 / Mathf.Clamp(FightModel.instance:getUISpeed(), 0.01, 100))
 	end
 end
 
 function slot0._waitForCardDissolveStart(slot0)
-	if FightCardModel.instance:isDissolving() then
-		FightController.instance:registerCallback(FightEvent.OnCombineCardEnd, slot0._onCombineCardEnd, slot0)
-		TaskDispatcher.runDelay(slot0._timeOut, slot0, 10 / Mathf.Clamp(FightModel.instance:getUISpeed(), 0.01, 100))
-	else
-		slot0:onDone(true)
-	end
+	slot0:onDone(true)
 end
 
 function slot0._onCombineCardEnd(slot0)

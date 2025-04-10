@@ -4,6 +4,10 @@ slot0 = class("TurnbackNewTaskView", BaseView)
 
 function slot0.onInitView(slot0)
 	slot0._btnreplay = gohelper.findChildButton(slot0.viewGO, "top/#btn_replay")
+	slot0._btnreplay2 = gohelper.findChildButton(slot0.viewGO, "top/#btn_replay2")
+	slot0._btntips = gohelper.findChildButton(slot0.viewGO, "top/tips/#btn_tips")
+	slot0._btnclosetips = gohelper.findChildButton(slot0.viewGO, "top/tips/go_tips/#btn_close")
+	slot0._gotips = gohelper.findChild(slot0.viewGO, "top/tips/go_tips")
 	slot0._btnbuy = gohelper.findChildButton(slot0.viewGO, "top/normalbg/#btn_buy")
 	slot0._gotop = gohelper.findChild(slot0.viewGO, "top")
 	slot0._goright = gohelper.findChild(slot0.viewGO, "right")
@@ -32,6 +36,7 @@ function slot0.onInitView(slot0)
 	slot0._heroIndex = 1
 	slot0._isreverse = false
 	slot0._isfinish = false
+	slot0._isopentips = false
 	slot0._topAnimator = slot0._gotop:GetComponent(typeof(UnityEngine.Animator))
 	slot0._rightAnimator = slot0._goright:GetComponent(typeof(UnityEngine.Animator))
 	slot0._rightTextAnim = slot0._goscrolldesc:GetComponent(typeof(UnityEngine.Animation))
@@ -45,6 +50,9 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnreplay:AddClickListener(slot0.onClickReplay, slot0)
+	slot0._btnreplay2:AddClickListener(slot0.onClickReplay2, slot0)
+	slot0._btntips:AddClickListener(slot0.onClickBtnTips, slot0)
+	slot0._btnclosetips:AddClickListener(slot0.onClickBtnCloseTips, slot0)
 	slot0._btnbuy:AddClickListener(slot0.onClickBuy, slot0)
 	slot0._btnleft:AddClickListener(slot0.onClickLeft, slot0)
 	slot0._btnright:AddClickListener(slot0.onClickRight, slot0)
@@ -59,6 +67,9 @@ end
 
 function slot0.removeEvents(slot0)
 	slot0._btnreplay:RemoveClickListener()
+	slot0._btnreplay2:RemoveClickListener()
+	slot0._btntips:RemoveClickListener()
+	slot0._btnclosetips:RemoveClickListener()
 	slot0._btnbuy:RemoveClickListener()
 	slot0._btnleft:RemoveClickListener()
 	slot0._btnright:RemoveClickListener()
@@ -87,10 +98,11 @@ function slot0._editableInitView(slot0)
 	slot0:_initBigRewardNode()
 	slot0:_refreshFill()
 	slot0:refreshTopBg()
+	gohelper.setActive(slot0._btnreplay2.gameObject, TurnbackModel.instance:checkHasGetAllTaskReward())
 
-	slot1 = TurnbackModel.instance:getUnlockHeroList()
-	slot0._heroIndex = #slot1
-	slot0._maxUnlockHeroIndex = #slot1
+	slot2 = TurnbackModel.instance:getUnlockHeroList()
+	slot0._heroIndex = #slot2
+	slot0._maxUnlockHeroIndex = #slot2
 
 	slot0:_refreshHero()
 
@@ -150,7 +162,11 @@ function slot0._refreshUI(slot0)
 		slot0:refreshRewardNode(slot5)
 	end
 
-	if TurnbackModel.instance:checkHasGetAllTaskReward() and TurnbackConfig.instance:getTurnbackCo(slot0._turnbackId) and not StoryModel.instance:isStoryFinished(slot2.endStory) then
+	slot1 = TurnbackModel.instance:checkHasGetAllTaskReward()
+
+	gohelper.setActive(slot0._btnreplay2.gameObject, slot1)
+
+	if slot1 and TurnbackConfig.instance:getTurnbackCo(slot0._turnbackId) and not StoryModel.instance:isStoryFinished(slot2.endStory) then
 		if slot2.endStory then
 			StoryController.instance:playStory(slot4)
 		else
@@ -390,6 +406,26 @@ function slot0.onClickReplay(slot0)
 	else
 		logError(string.format("TurnbackRewardShowView startStoryId is nil", slot2))
 	end
+end
+
+function slot0.onClickReplay2(slot0)
+	if TurnbackModel.instance:getCurTurnbackMo() and slot1.config and slot1.config.endStory then
+		StoryController.instance:playStory(slot2)
+	else
+		logError(string.format("TurnbackRewardShowView startStoryId is nil", slot2))
+	end
+end
+
+function slot0.onClickBtnTips(slot0)
+	slot0._isopentips = not slot0._isopentips
+
+	gohelper.setActive(slot0._gotips, slot0._isopentips)
+end
+
+function slot0.onClickBtnCloseTips(slot0)
+	slot0._isopentips = false
+
+	gohelper.setActive(slot0._gotips, slot0._isopentips)
 end
 
 function slot0.onClickBuy(slot0)

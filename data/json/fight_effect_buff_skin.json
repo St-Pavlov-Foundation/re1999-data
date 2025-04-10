@@ -888,5 +888,45 @@
     "triggerEffect": "",
     "delEffect": "",
     "audio": 431040351
+  },
+  {
+    "buffId": 30790601,
+    "orEnemy": 2,
+    "skinId": 307904,
+    "effectHang": "",
+    "effectPath": "v2a7_6/6_skill2_02",
+    "triggerEffect": "",
+    "delEffect": "",
+    "audio": 430790423
+  },
+  {
+    "buffId": 30790602,
+    "orEnemy": 2,
+    "skinId": 307904,
+    "effectHang": "",
+    "effectPath": "v2a7_6/6_skill2_04",
+    "triggerEffect": "",
+    "delEffect": "",
+    "audio": 430790424
+  },
+  {
+    "buffId": 31080131,
+    "orEnemy": 2,
+    "skinId": 310803,
+    "effectHang": "",
+    "effectPath": "v2a7_bkle/bkle_yanzou",
+    "triggerEffect": "",
+    "delEffect": "",
+    "audio": 431080342
+  },
+  {
+    "buffId": 31080133,
+    "orEnemy": 2,
+    "skinId": 310803,
+    "effectHang": "",
+    "effectPath": "v2a7_bkle/bkle_yanzou",
+    "triggerEffect": "",
+    "delEffect": "",
+    "audio": 431080342
   }
 ]

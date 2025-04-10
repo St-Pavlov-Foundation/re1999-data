@@ -35,9 +35,7 @@ function slot0._btnEnterOnClick(slot0)
 	slot1, slot2, slot3 = ActivityHelper.getActivityStatusAndToast(slot0.actId)
 
 	if slot1 ~= ActivityEnum.ActivityStatus.Normal then
-		if slot1 == ActivityEnum.ActivityStatus.NotUnlock and slot2 then
-			GameFacade.showToastWithTableParam(slot2, slot3)
-		end
+		GameFacade.showToastWithTableParam(slot2, slot3)
 
 		return
 	end
@@ -49,9 +47,7 @@ function slot0._btnRewardOnClick(slot0)
 	slot1, slot2, slot3 = ActivityHelper.getActivityStatusAndToast(slot0.actId)
 
 	if slot1 ~= ActivityEnum.ActivityStatus.Normal then
-		if slot1 == ActivityEnum.ActivityStatus.NotUnlock and slot2 then
-			GameFacade.showToastWithTableParam(slot2, slot3)
-		end
+		GameFacade.showToastWithTableParam(slot2, slot3)
 
 		return
 	end

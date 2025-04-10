@@ -18,8 +18,10 @@ end
 
 function slot0.onReceiveBeginFightReply(slot0, slot1, slot2)
 	if slot1 == 0 then
-		FightMgr.instance:startFight(slot2.fight)
-		FightModel.instance:updateFight(slot2.fight)
+		slot3 = FightData.New(slot2.fight)
+
+		FightMgr.instance:startFight(slot3)
+		FightModel.instance:updateFight(slot3)
 		FightModel.instance:updateFightRound(slot2.round)
 		FightController.instance:dispatchEvent(FightEvent.RespBeginFight)
 	else
@@ -42,9 +44,11 @@ end
 
 function slot0.onReceiveTestFightReply(slot0, slot1, slot2)
 	if slot1 == 0 then
-		FightMgr.instance:startFight(slot2.fight)
-		FightModel.instance:updateFight(slot2.fight)
-		FightModel.instance:refreshBattleId(slot2.fight)
+		slot3 = FightData.New(slot2.fight)
+
+		FightMgr.instance:startFight(slot3)
+		FightModel.instance:updateFight(slot3)
+		FightModel.instance:refreshBattleId(slot3)
 		FightModel.instance:updateFightRound(slot2.round)
 		FightController.instance:dispatchEvent(FightEvent.RespBeginFight)
 	else
@@ -65,8 +69,10 @@ end
 
 function slot0.onReceiveTestFightIdReply(slot0, slot1, slot2)
 	if slot1 == 0 then
-		FightMgr.instance:startFight(slot2.fight)
-		FightModel.instance:updateFight(slot2.fight)
+		slot3 = FightData.New(slot2.fight)
+
+		FightMgr.instance:startFight(slot3)
+		FightModel.instance:updateFight(slot3)
 		FightModel.instance:updateFightRound(slot2.round)
 		FightController.instance:dispatchEvent(FightEvent.RespBeginFight)
 	else
@@ -80,26 +86,8 @@ end
 
 function slot0.onReceiveResetRoundReply(slot0, slot1, slot2)
 	if slot1 == 0 then
-		if slot2:HasField("fight") then
-			FightModel.instance:updateFight(slot2.fight)
-		end
-
-		if slot2:HasField("round") then
-			FightModel.instance:updateFightRound(slot2.round)
-
-			FightCardModel.instance:getCardMO().actPoint = slot2.round.actPoint
-		end
-
-		slot3 = FightCardModel.instance:getCardOps()
-
-		if #slot2.cards > 0 then
-			FightCardModel.instance:clearCardOps()
-			FightCardModel.instance:coverCard(FightHelper.buildInfoMOs(slot2.cards, FightCardInfoMO))
-			FightController.instance:dispatchEvent(FightEvent.UpdateHandCards, FightCardModel.instance:getCardMO().cardGroup)
-		end
-
 		FightMgr.instance:cancelOperation()
-		FightController.instance:dispatchEvent(FightEvent.ResetCard, slot3)
+		FightController.instance:dispatchEvent(FightEvent.ResetCard, FightDataHelper.operationDataMgr:getOpList())
 	end
 end
 
@@ -134,7 +122,6 @@ end
 
 function slot0.onReceiveBeginRoundReply(slot0, slot1, slot2)
 	FightDataHelper.stageMgr:exitOperateState(FightStageMgr.FightStateType.sendOperation2Server)
-	FightCardModel.instance:clearCardOps()
 	FightDataHelper.paTaMgr:resetOp()
 
 	if slot1 == 0 then
@@ -212,8 +199,10 @@ function slot0.onReceiveReconnectFightReply(slot0, slot1, slot2)
 		FightModel.instance.needFightReconnect = slot2:HasField("fight")
 
 		if FightModel.instance.needFightReconnect then
-			FightMgr.instance:startFight(slot2.fight)
-			FightModel.instance:updateFight(slot2.fight)
+			slot3 = FightData.New(slot2.fight)
+
+			FightMgr.instance:startFight(slot3)
+			FightModel.instance:updateFight(slot3)
 			FightModel.instance:updateFightRound(slot2.lastRound)
 			FightModel.instance:updateFightReason(slot2.fightReason)
 			FightModel.instance:recordFightGroup(slot2.fightGroup)
@@ -225,7 +214,7 @@ end
 
 function slot0.onReceiveCardInfoPush(slot0, slot1, slot2)
 	FightLocalDataMgr.instance.handCardMgr:updateHandCardByProto(slot2.cardGroup)
-	FightLocalDataMgr.instance.fieldMgr:dealCardInfoPush(slot2)
+	FightLocalDataMgr.instance.operationDataMgr:dealCardInfoPush(slot2)
 
 	slot0._lastCardInfoPushMsg = slot2
 
@@ -237,8 +226,7 @@ end
 function slot0.dealCardInfoPushData(slot0)
 	if slot0._lastCardInfoPushMsg then
 		FightDataMgr.instance.handCardMgr:updateHandCardByProto(slot0._lastCardInfoPushMsg.cardGroup)
-		FightDataMgr.instance.fieldMgr:dealCardInfoPush(slot0._lastCardInfoPushMsg)
-		FightCardModel.instance:updateCard(slot0._lastCardInfoPushMsg)
+		FightDataMgr.instance.operationDataMgr:dealCardInfoPush(slot0._lastCardInfoPushMsg)
 		FightController.instance:dispatchEvent(FightEvent.PushCardInfo)
 
 		slot0._lastCardInfoPushMsg = nil
@@ -246,13 +234,15 @@ function slot0.dealCardInfoPushData(slot0)
 end
 
 function slot0.onReceiveTeamInfoPush(slot0, slot1, slot2)
-	FightLocalDataMgr.instance:updateFightData(slot2.fight)
-	FightDataMgr.instance:updateFightData(slot2.fight)
+	slot5 = FightData.New(slot2.fight)
+
+	FightLocalDataMgr.instance:updateFightData(slot5)
+	FightDataMgr.instance:updateFightData(slot5)
 
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		GameSceneMgr.instance:getScene(SceneType.Fight).entityMgr:compareUpdate(slot2.fight)
+		GameSceneMgr.instance:getScene(SceneType.Fight).entityMgr:compareUpdate(slot5)
 	else
-		FightModel.instance:updateFight(slot2.fight)
+		FightModel.instance:updateFight(slot5)
 	end
 
 	FightController.instance:dispatchEvent(FightEvent.PushTeamInfo)
@@ -295,13 +285,12 @@ function slot0.onReceiveEndFightPush(slot0, slot1, slot2)
 	FightModel.instance:recordFightGroup(slot2.fightGroupA)
 	FightModel.instance:onEndFight()
 	FightModel.instance:recordPassModel(slot2)
-	FightCardModel.instance:clearCardOps()
 	FightController.instance:dispatchEvent(FightEvent.PushEndFight)
 end
 
 function slot0.onReceiveFightWavePush(slot0, slot1, slot2)
 	if slot1 == 0 then
-		FightDataHelper.cacheFightWavePush(slot2)
+		FightDataHelper.cacheFightWavePush(FightData.New(slot2.fight))
 	end
 
 	FightModel.instance:setNextWaveMsg(slot2)
@@ -362,7 +351,7 @@ function slot0.sendAutoRoundRequest(slot0, slot1)
 		table.insert(slot2.opers, slot8)
 	end
 
-	slot2.toId = FightCardModel.instance.curSelectEntityId or "0"
+	slot2.toId = FightDataHelper.operationDataMgr.curSelectEntityId == 0 and "0" or slot3
 
 	slot0:sendMsg(slot2)
 end
@@ -378,10 +367,6 @@ function slot0.onReceiveRedealCardInfoPush(slot0, slot1, slot2)
 	if slot1 == 0 then
 		FightLocalDataMgr.instance.handCardMgr:cacheRedealCard(slot2)
 		FightDataMgr.instance.handCardMgr:cacheRedealCard(slot2)
-		FightCardModel.instance:clearDistributeQueue()
-
-		FightCardModel.instance.redealCardInfoList = FightHelper.buildInfoMOs(slot2.dealCardGroup, FightCardInfoMO)
-
 		FightController.instance:dispatchEvent(FightEvent.PushRedealCardInfo)
 	end
 end

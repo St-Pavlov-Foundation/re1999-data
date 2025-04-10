@@ -9,7 +9,7 @@ end
 function slot0.onStart(slot0)
 	slot0:com_sendFightEvent(FightEvent.CardBoxNumChange, slot0.beforeNum, FightDataHelper.fieldMgr.deckNum)
 	slot0:com_registFightEvent(FightEvent.CardDeckGenerateDone, slot0._delayDone)
-	slot0:com_sendFightEvent(FightEvent.CardDeckGenerate, slot0._actEffectMO.cardInfoList)
+	slot0:com_sendFightEvent(FightEvent.CardDeckGenerate, slot0.actEffectData.cardInfoList)
 	slot0:onDone(true)
 end
 

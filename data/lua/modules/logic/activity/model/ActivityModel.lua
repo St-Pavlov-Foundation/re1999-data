@@ -213,7 +213,13 @@ end
 
 function slot0.removeFinishedCategory(slot0, slot1)
 	for slot5, slot6 in pairs(slot1) do
-		if slot6 == ActivityEnum.Activity.DreamShow and TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.ActivityShow) and next(slot7) and TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow) and slot8[1].config.maxFinishCount <= slot8[1].finishCount then
+		if slot6 == ActivityEnum.Activity.DreamShow then
+			if TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.ActivityShow) and next(slot7) and TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow) and slot8[1].config.maxFinishCount <= slot8[1].finishCount then
+				slot1[slot5] = nil
+
+				slot0:addFinishActivity(slot6)
+			end
+		elseif slot6 == ActivityEnum.Activity.V2a7_SelfSelectSix1 and ActivityType101Model.instance:isType101RewardGet(slot6, 1) then
 			slot1[slot5] = nil
 
 			slot0:addFinishActivity(slot6)
@@ -225,7 +231,7 @@ function slot0.removeFinishedWelfare(slot0, slot1)
 	slot2 = false
 	slot3 = ActivityType101Model.instance:hasReceiveAllReward(ActivityEnum.Activity.NoviceSign)
 	slot4 = TeachNoteModel.instance:isFinalRewardGet()
-	slot5 = nil
+	slot5 = Activity160Model.instance:allRewardReceive(ActivityEnum.Activity.NewWelfare)
 
 	for slot9, slot10 in pairs(slot1) do
 		if slot10 == ActivityEnum.Activity.StoryShow and TaskModel.instance:isTypeAllTaskFinished(TaskEnum.TaskType.Novice) then
@@ -247,15 +253,19 @@ function slot0.removeFinishedWelfare(slot0, slot1)
 			slot0:addFinishActivity(slot10)
 		end
 
-		if slot10 == ActivityEnum.Activity.NewWelfare then
-			slot5 = slot9
+		if slot10 == ActivityEnum.Activity.NewWelfare and slot5 then
+			slot1[slot9] = nil
+
+			slot0:addFinishActivity(ActivityEnum.Activity.NewWelfare)
 		end
 	end
+end
 
-	if slot5 and not Activity160Model.instance:hasRewardCanGet(ActivityEnum.Activity.NewWelfare) and slot4 and slot2 and slot3 then
-		slot1[slot5] = nil
-
-		slot0:addFinishActivity(ActivityEnum.Activity.NewWelfare)
+function slot0.removeSelectSixAfterRemoveFinished(slot0, slot1)
+	for slot5, slot6 in pairs(slot1) do
+		if slot6 == ActivityEnum.Activity.V2a7_SelfSelectSix2 and ActivityType101Model.instance:isType101RewardGet(slot6, 1) then
+			slot1[slot5] = nil
+		end
 	end
 end
 

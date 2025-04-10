@@ -92,6 +92,8 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(CharacterController.instance, CharacterEvent.onUseTalentStyleReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:addEventCb(CharacterController.instance, CharacterEvent.UseTalentTemplateReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:addEventCb(HeroResonanceController.instance, HeroResonanceEvent.UseShareCode, slot0._onRefreshStyleIcon, slot0)
+	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUseStoneReply, slot0._onRefreshDestiny, slot0)
+	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnRankUpReply, slot0._onRefreshDestiny, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -114,6 +116,8 @@ function slot0.removeEvents(slot0)
 	slot0:removeEventCb(CharacterController.instance, CharacterEvent.UseTalentTemplateReply, slot0._onRefreshStyleIcon, slot0)
 	slot0:removeEventCb(CharacterController.instance, CharacterEvent.OnMarkFavorSuccess, slot0._markFavorSuccess, slot0)
 	slot0:removeEventCb(HeroResonanceController.instance, HeroResonanceEvent.UseShareCode, slot0._onRefreshStyleIcon, slot0)
+	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUseStoneReply, slot0._onRefreshDestiny, slot0)
+	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnRankUpReply, slot0._onRefreshDestiny, slot0)
 end
 
 slot0.HpAttrId = 101
@@ -150,6 +154,9 @@ function slot0._editableInitView(slot0)
 	slot0._simageplayerbg:LoadImage(ResUrl.getCharacterIcon(slot5))
 
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
+
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+
 	slot0._rareStars = slot0:getUserDataTb_()
 
 	for slot5 = 1, 6 do
@@ -923,15 +930,41 @@ function slot0._onSpineLoaded(slot0)
 		end
 
 		if slot0._greetingVoices and #slot0._greetingVoices > 0 then
-			TaskDispatcher.cancelTask(slot0._playSpineVoice, slot0)
-			TaskDispatcher.runDelay(slot0._playSpineVoice, slot0, slot0._delayPlayVoiceTime or 0)
+			slot0._delayTime = slot0._delayPlayVoiceTime or 0
+
+			if slot0._uiSpine:isLive2D() then
+				slot0._uiSpine:setLive2dCameraLoadFinishCallback(slot0.onLive2dCameraLoadedCallback, slot0)
+
+				return
+			end
+
+			slot0:_startDelayPlayVoice(slot0._delayTime)
 
 			slot0._delayPlayVoiceTime = 0
 		end
 	end
 end
 
+function slot0.onLive2dCameraLoadedCallback(slot0)
+	slot0._uiSpine:setLive2dCameraLoadFinishCallback(nil, )
+	slot0:_startDelayPlayVoice(slot0._delayTime)
+end
+
+function slot0._startDelayPlayVoice(slot0, slot1)
+	slot0._repeatNum = math.max((slot1 or 0) * 30, CharacterVoiceEnum.DelayFrame + 1)
+	slot0._repeatCount = 0
+
+	TaskDispatcher.cancelTask(slot0._playSpineVoice, slot0)
+	TaskDispatcher.runRepeat(slot0._playSpineVoice, slot0, 0, slot0._repeatNum)
+end
+
 function slot0._playSpineVoice(slot0)
+	slot0._repeatCount = slot0._repeatCount + 1
+
+	if slot0._repeatCount < slot0._repeatNum then
+		return
+	end
+
 	if not slot0._uiSpine then
 		return
 	end
@@ -1115,7 +1148,7 @@ function slot0._refreshAttribute(slot0, slot1)
 	end
 
 	for slot13, slot14 in ipairs(uv0.AttrIdList) do
-		slot17 = slot3[slot14] + slot7[slot14] + (slot4[slot14] and slot4[slot14].value and math.floor(slot4[slot14].value) or 0) + (slot5 and slot5:getAddValueByAttrId(slot6, slot14) or 0)
+		slot17 = slot3[slot14] + slot7[slot14] + (slot4[slot14] and slot4[slot14].value and math.floor(slot4[slot14].value) or 0) + (slot5 and slot5:getAddValueByAttrId(slot6, slot14, slot2) or 0)
 		slot0._attributevalues[slot13].value.text = slot17
 		slot18 = HeroConfig.instance:getHeroAttributeCO(slot14)
 		slot0._attributevalues[slot13].name.text = slot18.name
@@ -1165,7 +1198,7 @@ function slot0._refreshAttributeTips(slot0, slot1)
 	end
 
 	for slot14, slot15 in ipairs(uv0.AttrIdList) do
-		slot0._levelUpAttributeValues[slot14].newValue.text = slot5[slot15] + slot9[slot15] + (slot6[slot15] and slot6[slot15].value and math.floor(slot6[slot15].value) or 0) + (slot7 and slot7:getAddValueByAttrId(slot8, slot15) or 0)
+		slot0._levelUpAttributeValues[slot14].newValue.text = slot5[slot15] + slot9[slot15] + (slot6[slot15] and slot6[slot15].value and math.floor(slot6[slot15].value) or 0) + (slot7 and slot7:getAddValueByAttrId(slot8, slot15, slot2) or 0)
 		slot21 = slot4 and "#C7C3C0" or "#65B96F"
 		slot20.color = GameUtil.parseColor(slot21)
 		slot19.newValueArrow.color = GameUtil.parseColor(slot21)
@@ -1202,6 +1235,10 @@ end
 
 function slot0._refreshSkill(slot0)
 	slot0._skillContainer:onUpdateMO(slot0._heroMO.heroId, nil, slot0._heroMO)
+end
+
+function slot0._onRefreshDestiny(slot0, slot1, slot2)
+	slot0:_refreshSkill()
 end
 
 function slot0._refreshPassiveSkill(slot0)

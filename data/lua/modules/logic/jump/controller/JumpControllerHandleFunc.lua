@@ -540,7 +540,7 @@ function slot0.jumpToActivityView(slot0, slot1)
 				VersionActivityDungeonController.instance:openVersionActivityDungeonMapView(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)
 			end
 		end, nil, slot3)
-	elseif slot3 == ActivityEnum.Activity.Work_SignView_1_8 or slot3 == ActivityEnum.Activity.V2a0_SummerSign or slot3 == ActivityEnum.Activity.V2a1_MoonFestival or slot3 == ActivityEnum.Activity.V2a2_RedLeafFestival_PanelView or slot3 == VersionActivity2_2Enum.ActivityId.LimitDecorate or slot3 == ActivityEnum.Activity.V2a2_TurnBack_H5 or slot3 == ActivityEnum.Activity.V2a2_SummonCustomPickNew or slot3 == ActivityEnum.Activity.V2a3_NewCultivationGift then
+	elseif slot3 == ActivityEnum.Activity.Work_SignView_1_8 or slot3 == ActivityEnum.Activity.V2a0_SummerSign or slot3 == ActivityEnum.Activity.V2a1_MoonFestival or slot3 == ActivityEnum.Activity.V2a2_RedLeafFestival_PanelView or slot3 == VersionActivity2_2Enum.ActivityId.LimitDecorate or slot3 == ActivityEnum.Activity.V2a2_TurnBack_H5 or slot3 == ActivityEnum.Activity.V2a2_SummonCustomPickNew or slot3 == ActivityEnum.Activity.V2a3_NewCultivationGift or slot3 == ActivityEnum.Activity.V2a7_Labor_Sign then
 		if ActivityHelper.getActivityStatus(slot3, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
 		end
@@ -548,7 +548,7 @@ function slot0.jumpToActivityView(slot0, slot1)
 		table.insert(slot0.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		ActivityModel.instance:setTargetActivityCategoryId(slot3)
 		ActivityController.instance:openActivityBeginnerView()
-	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp then
+	elseif slot3 == ActivityEnum.Activity.VersionActivity1_3Radio or slot3 == ActivityEnum.Activity.Activity1_9WarmUp or slot3 == ActivityEnum.Activity.V2a0_WarmUp or slot3 == ActivityEnum.Activity.V2a1_WarmUp or slot3 == ActivityEnum.Activity.V2a2_WarmUp or slot3 == ActivityEnum.Activity.V2a3_WarmUp or slot3 == ActivityEnum.Activity.V2a4_WarmUp or slot3 == ActivityEnum.Activity.V2a5_WarmUp or slot3 == ActivityEnum.Activity.V2a6_WarmUp or slot3 == ActivityEnum.Activity.V2a7_WarmUp then
 		if ActivityHelper.getActivityStatus(slot3, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
 		end
@@ -1292,7 +1292,7 @@ function slot0.jumpToVersionEnterView(slot0, slot1)
 		return JumpEnum.JumpResult.Fail
 	end
 
-	if _G[string.format("VersionActivity%sEnterController", slot4)] then
+	if _G[string.format("VersionActivity%sEnterController", slot4)] or VersionActivityFixedEnterController then
 		slot6.instance:openVersionActivityEnterView(nil, , slot3)
 
 		return JumpEnum.JumpResult.Success
@@ -1442,6 +1442,7 @@ slot0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.RoleStoryActivity] = slot0.jumpToRoleStoryActivity,
 	[JumpEnum.JumpView.BossRush] = slot0.jumpToBossRush,
 	[JumpEnum.JumpView.Tower] = slot0.jumpToTowerView,
+	[JumpEnum.JumpView.Challenge] = Act183JumpHelper.jumpToAct183,
 	[JumpEnum.JumpView.V1a5Dungeon] = slot0.jumpToAct1_5DungeonView,
 	[JumpEnum.JumpView.V1a6Dungeon] = slot0.jumpToAct1_6DungeonView,
 	[JumpEnum.JumpView.Season123] = slot0.jumpToSeason123,

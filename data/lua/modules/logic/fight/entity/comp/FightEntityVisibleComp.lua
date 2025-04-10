@@ -84,7 +84,7 @@ function slot0._setEntityVisibleByTimeline(slot0, slot1, slot2, slot3, slot4)
 		FightFloatMgr.instance:hideEntityEquipFloat(slot1.id)
 	end
 
-	if not FightSkillMgr.instance:isUniqueSkill(slot1, slot2) then
+	if not FightCardDataHelper.isBigSkill(slot2.actId) then
 		FightController.instance:dispatchEvent(FightEvent.SetEntityFootEffectVisible, slot1.id, slot3)
 	end
 end

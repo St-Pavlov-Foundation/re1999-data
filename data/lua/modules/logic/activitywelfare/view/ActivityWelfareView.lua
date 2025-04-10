@@ -26,11 +26,8 @@ slot1 = {
 	[ActivityEnum.Activity.NoviceSign] = ViewName.ActivityNoviceSignView,
 	[ActivityEnum.Activity.StoryShow] = ViewName.ActivityStoryShowView,
 	[ActivityEnum.Activity.ClassShow] = ViewName.ActivityClassShowView,
-	[ActivityEnum.Activity.NewInsight] = ViewName.ActivityInsightShowView,
-	[ActivityEnum.Activity.V2a3_NewInsight] = ViewName.ActivityInsightShowView_2_3,
-	[ActivityEnum.Activity.V2a4_NewInsight] = ViewName.ActivityInsightShowView_2_4,
-	[ActivityEnum.Activity.V2a5_NewInsight] = ViewName.ActivityInsightShowView_2_5,
-	[ActivityEnum.Activity.V2a6_NewInsight] = ViewName.ActivityInsightShowView_2_6
+	[ActivityEnum.Activity.V2a7_NewInsight] = ViewName.ActivityInsightShowView_2_7,
+	[ActivityEnum.Activity.V2a7_SelfSelectSix2] = ViewName.V2a7_SelfSelectSix_FullView
 }
 
 function slot0.onUpdateParam(slot0)

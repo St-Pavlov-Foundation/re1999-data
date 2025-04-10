@@ -1,8 +1,8 @@
 module("modules.logic.fight.entity.comp.skill.FightTLEventObjFly", package.seeall)
 
-slot0 = class("FightTLEventObjFly")
+slot0 = class("FightTLEventObjFly", FightTimelineTrackItem)
 
-function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
+function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	slot0.fly_obj = nil
 	slot0.entityMgr = GameSceneMgr.instance:getCurScene().entityMgr
 	slot0.from_entity = slot0.entityMgr:getEntity(slot1.fromId)
@@ -16,7 +16,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 		slot0.fly_obj = slot0.entityMgr:getEntity(slot1.fromId).spine:getSpineGO()
 		slot0._attacker = FightHelper.getEntity(FightEntityScene.MySideId)
 
-		slot0._attacker.skill:_cancelSideRenderOrder()
+		slot0.timelineItem.workTimelineItem:_cancelSideRenderOrder()
 	end
 
 	if not slot0.fly_obj then
@@ -27,7 +27,7 @@ function slot0.handleSkillEvent(slot0, slot1, slot2, slot3)
 end
 
 function slot0.calFly(slot0, slot1, slot2)
-	slot0._fightStepMO = slot1
+	slot0.fightStepData = slot1
 	slot4 = 0
 	slot5 = 0
 
@@ -88,8 +88,8 @@ function slot0.calFly(slot0, slot1, slot2)
 		slot16, slot17, slot18 = slot0:calEndPos(slot15, slot6, slot7, slot8)
 	end
 
-	slot0._totalFrame = slot0._binder:GetFrameFloatByTime(slot0._duration * FightModel.instance:getSpeed())
-	slot0._startFrame = slot0._binder.CurFrameFloat + 1
+	slot0._totalFrame = slot0.binder:GetFrameFloatByTime(slot0._duration * FightModel.instance:getSpeed())
+	slot0._startFrame = slot0.binder.CurFrameFloat + 1
 
 	slot0:_startFly(slot12, slot13, slot14, slot16, slot17, slot18)
 end
@@ -162,11 +162,7 @@ function slot0._flyEffectTarget(slot0, slot1, slot2, slot3, slot4, slot5)
 	return slot1, slot2, slot3
 end
 
-function slot0.reset(slot0)
-	slot0:dispose()
-end
-
-function slot0.dispose(slot0)
+function slot0.onDestructor(slot0)
 	if not gohelper.isNil(slot0.fly_obj) then
 		if not slot0.UnitMoverHandler_comp then
 			MonoHelper.removeLuaComFromGo(slot0.fly_obj, UnitMoverHandler)

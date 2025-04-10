@@ -150,7 +150,7 @@ function slot0.initFromTrial(slot0, slot1, slot2, slot3)
 
 	slot5 = HeroConfig.instance:getHeroCO(slot4.heroId)
 	slot6 = HeroDef_pb.HeroInfo()
-	slot6.uid = tostring(slot4.heroId - 1099511627776.0)
+	slot6.uid = tostring(tonumber(slot4.id .. "." .. slot4.trialTemplate) - 1099511627776.0)
 	slot6.level = slot4.level
 	slot6.heroId = slot4.heroId
 	slot6.defaultEquipUid = tostring(-slot4.equipId)
@@ -635,7 +635,7 @@ function slot0.getTotalBaseAttrDict(slot0, slot1, slot2, slot3, slot4, slot5, sl
 	end
 
 	return {
-		[slot21] = slot9[slot21] + slot10[slot21] + (slot12[slot21] and slot12[slot21].value or 0) + (slot0.destinyStoneMo and slot0.destinyStoneMo:getAddValueByAttrId(slot0.destinyStoneMo:getAddAttrValues(), slot21) or 0)
+		[slot21] = slot9[slot21] + slot10[slot21] + (slot12[slot21] and slot12[slot21].value or 0) + (slot0.destinyStoneMo and slot0.destinyStoneMo:getAddValueByAttrId(slot0.destinyStoneMo:getAddAttrValues(), slot21, slot0) or 0)
 	}
 end
 

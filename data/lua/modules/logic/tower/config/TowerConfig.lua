@@ -21,7 +21,11 @@ function slot0.reqConfigNames(slot0)
 		"tower_assist_talent",
 		"tower_assist_boss",
 		"tower_assist_develop",
-		"tower_assist_attribute"
+		"tower_assist_attribute",
+		"tower_talent_plan",
+		"tower_hero_trial",
+		"tower_boss_teach",
+		"tower_score_to_star"
 	}
 end
 
@@ -125,12 +129,34 @@ function slot0.ontower_mop_upLoaded(slot0, slot1)
 	slot0.towerMopUpConfig = slot1
 end
 
+function slot0.ontower_talent_planLoaded(slot0, slot1)
+	slot0.towerTalentPlanConfig = slot1
+end
+
+function slot0.ontower_hero_trialLoaded(slot0, slot1)
+	slot0.heroTrialConfig = slot1
+end
+
+function slot0.ontower_boss_teachLoaded(slot0, slot1)
+	slot0.towerBossTeachConfig = slot1
+
+	slot0:buildBossTeachConfigList()
+end
+
+function slot0.ontower_score_to_starLoaded(slot0, slot1)
+	slot0.scoreToStarConfig = slot1
+end
+
 function slot0.getBossTimeTowerConfig(slot0, slot1, slot2)
 	return slot0.bossTimeConfig.configDict[slot1] and slot3[slot2]
 end
 
 function slot0.getAssistTalentConfig(slot0)
 	return slot0.assistTalentConfig
+end
+
+function slot0.getAssistTalentConfigById(slot0, slot1, slot2)
+	return slot0.assistTalentConfig.configDict[slot1] and slot3[slot2]
 end
 
 function slot0.getBossTowerConfig(slot0, slot1)
@@ -213,6 +239,10 @@ end
 
 function slot0.getTowerConstConfig(slot0, slot1)
 	return slot0.towerConstConfig.configDict[slot1] and slot0.towerConstConfig.configDict[slot1].value
+end
+
+function slot0.getTowerConstLangConfig(slot0, slot1)
+	return slot0.towerConstConfig.configDict[slot1] and slot0.towerConstConfig.configDict[slot1].value2
 end
 
 function slot0.getTowerMopUpCoList(slot0)
@@ -450,6 +480,112 @@ function slot0.setTalentImg(slot0, slot1, slot2, slot3)
 	slot4 = nil
 
 	UISpriteSetMgr.instance:setTowerSprite(slot1, (slot2.isBigNode ~= 1 or string.format("towertalent_branchbigskill_%s", slot2.nodeType)) and string.format("towertalent_branchskill_%s", slot2.nodeType), slot3)
+end
+
+function slot0.getTalentPlanConfig(slot0, slot1, slot2)
+	return slot0.towerTalentPlanConfig.configDict[slot1] and slot3[slot2]
+end
+
+function slot0.getAllTalentPlanConfig(slot0, slot1)
+	if not slot0.towerTalentPlanConfig.configDict[slot1] then
+		logError("bossId: " .. slot1 .. "没有推荐天赋方案")
+
+		return {}
+	end
+
+	for slot7, slot8 in pairs(slot2) do
+		table.insert(slot3, slot8)
+	end
+
+	table.sort(slot3, function (slot0, slot1)
+		return slot0.planId < slot1.planId
+	end)
+
+	return slot3
+end
+
+function slot0.getTalentPlanNodeIds(slot0, slot1, slot2, slot3)
+	if not slot0:getTalentPlanConfig(slot1, slot2) then
+		logError("boss:" .. slot1 .. " 对应的推荐天赋方案: " .. slot2 .. "配置不存在")
+
+		return {}
+	end
+
+	slot5 = {}
+
+	for slot12, slot13 in ipairs(string.splitToNumber(slot4.talentIds, "#")) do
+		if slot0:getAllTalentPoint(slot1, slot3) >= 0 + slot0:getAssistTalentConfigById(slot1, slot13).consume then
+			table.insert(slot5, slot13)
+		else
+			break
+		end
+	end
+
+	return slot5
+end
+
+function slot0.getAllTalentPoint(slot0, slot1, slot2)
+	for slot8, slot9 in pairs(slot0.towerAssistDevelopConfig.configDict[slot1]) do
+		if slot9.level <= slot2 then
+			slot3 = 0 + slot9.talentPoint
+		end
+	end
+
+	return slot3
+end
+
+function slot0.getHeroTrialConfig(slot0, slot1)
+	return slot0.heroTrialConfig.configDict[slot1]
+end
+
+function slot0.getBossTeachConfig(slot0, slot1, slot2)
+	return slot0.towerBossTeachConfig.configDict[slot1] and slot0.towerBossTeachConfig.configDict[slot1][slot2]
+end
+
+function slot0.buildBossTeachConfigList(slot0)
+	if not slot0.bossTeachCoList then
+		slot0.bossTeachCoList = {}
+	end
+
+	for slot4, slot5 in ipairs(slot0.towerBossTeachConfig.configList) do
+		if not slot0.bossTeachCoList[slot5.towerId] then
+			slot0.bossTeachCoList[slot5.towerId] = {}
+		end
+
+		table.insert(slot0.bossTeachCoList[slot5.towerId], slot5)
+	end
+end
+
+function slot0.getAllBossTeachConfigList(slot0, slot1)
+	if slot0.bossTeachCoList[slot1] then
+		return slot0.bossTeachCoList[slot1]
+	else
+		logError("该boss塔没有教学配置: " .. slot1)
+
+		return {}
+	end
+end
+
+function slot0.getScoreToStarConfig(slot0, slot1)
+	slot2 = 0
+
+	for slot6, slot7 in ipairs(slot0.scoreToStarConfig.configList) do
+		if slot7.needScore <= slot1 then
+			slot2 = slot7.level
+		end
+	end
+
+	return slot2
+end
+
+function slot0.checkIsPermanentFinalStageEpisode(slot0, slot1)
+	for slot6, slot7 in ipairs(slot0.permanentEpisodeList[#slot0.permanentEpisodeList]) do
+		if tabletool.indexOf(string.splitToNumber(slot7.episodeIds, "|"), slot1) then
+			return true, slot7
+		end
+	end
+
+	return false
 end
 
 slot0.instance = slot0.New()

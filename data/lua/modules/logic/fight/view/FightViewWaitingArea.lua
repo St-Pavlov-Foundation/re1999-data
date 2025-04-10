@@ -130,7 +130,7 @@ function slot0._saveCantUseStatus(slot0)
 	end
 
 	for slot5, slot6 in ipairs(slot1) do
-		if FightDataHelper.entityMgr:getById(slot6.entityId) and slot7:isStatusDead() or slot7 and FightCardModel.instance:isUniqueSkill(slot6.entityId, slot6.skillId) and (slot7 and slot7.exPoint or 0) < (slot7 and slot7:getUniqueSkillPoint() or 5) or not FightViewHandCardItemLock.canUseCardSkill(slot6.entityId, slot6.skillId) then
+		if FightDataHelper.entityMgr:getById(slot6.entityId) and slot7:isStatusDead() or slot7 and FightCardDataHelper.isBigSkill(slot6.skillId) and (slot7 and slot7.exPoint or 0) < (slot7 and slot7:getUniqueSkillPoint() or 5) or not FightViewHandCardItemLock.canUseCardSkill(slot6.entityId, slot6.skillId) then
 			slot0._cardCantUseDict[slot6] = true
 		end
 	end

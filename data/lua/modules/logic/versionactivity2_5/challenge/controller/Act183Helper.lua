@@ -144,19 +144,19 @@ function slot0.getRoundStage(slot0)
 	return #slot3 + 1
 end
 
-function slot0.getGroupEpisodeTaskProgress(slot0)
-	slot2 = Act183Config.instance:getAllOnlineGroupTasks(slot0) and #slot1 or 0
-	slot3 = 0
+function slot0.getGroupEpisodeTaskProgress(slot0, slot1)
+	slot3 = Act183Config.instance:getAllOnlineGroupTasks(slot0, slot1) and #slot2 or 0
+	slot4 = 0
 
-	if slot1 then
-		for slot7, slot8 in ipairs(slot1) do
-			if uv0.isTaskFinished(slot8.id) then
-				slot3 = slot3 + 1
+	if slot2 then
+		for slot8, slot9 in ipairs(slot2) do
+			if uv0.isTaskFinished(slot9.id) then
+				slot4 = slot4 + 1
 			end
 		end
 	end
 
-	return slot2, slot3
+	return slot3, slot4
 end
 
 function slot0.getUnlockSupportHeroIds(slot0, slot1)
@@ -204,6 +204,12 @@ function slot0.generateDungeonViewParams2(slot0, slot1)
 	slot5.selectEpisodeId = slot1 and slot2.episodeId
 
 	return slot5
+end
+
+function slot0.generateDungeonViewParams3(slot0, slot1)
+	slot3 = Act183Config.instance:getEpisodeCosByGroupId(slot0, slot1) and slot2[1]
+
+	return uv0.generateDungeonViewParams(slot3 and slot3.type, slot3 and slot3.groupId)
 end
 
 function slot0.rpcInfosToList(slot0, slot1, slot2)
@@ -345,6 +351,17 @@ function slot0.isLastPassEpisodeInType(slot0)
 	return slot0:getGroupType() == Act183Enum.GroupType.Daily and Act183Enum.MaxDailySubEpisodesNum <= slot3 or Act183Enum.MaxMainSubEpisodesNum <= slot3
 end
 
+function slot0.isLastPassEpisodeInGroup(slot0)
+	if (slot0 and slot0:getStatus()) ~= Act183Enum.EpisodeStatus.Finished then
+		return
+	end
+
+	slot3 = slot0:getPassOrder()
+	slot4 = false
+
+	return slot0:getGroupType() == Act183Enum.GroupType.Daily and Act183Enum.MaxDailySubEpisodesNum <= slot3 or slot3 >= Act183Enum.MaxMainSubEpisodesNum + Act183Enum.MainGroupBossEpisodeNum
+end
+
 function slot0.getHasReadUnlockSupportHeroIdsInLocal(slot0)
 	return string.splitToNumber(PlayerPrefsHelper.getString(uv0._generateSaveHasReadUnlockSupportHeroIdsKey(slot0), ""), "#")
 end
@@ -404,7 +421,7 @@ function slot0.getTaskCanGetBadgeNums(slot0)
 	return slot1, slot1 >= uv0.getMaxBadgeNum() - Act183Model.instance:getBadgeNum() and slot4 or slot1
 end
 
-function slot0.showToastWhileCanTaskRewards(slot0)
+function slot0.showToastWhileGetTaskRewards(slot0)
 	slot1, slot2 = uv0.getTaskCanGetBadgeNums(slot0)
 	slot3 = uv0.isGetBadgeNumMax()
 
@@ -427,6 +444,109 @@ function slot0.getLimitUsePlayerCloth()
 	if lua_challenge_const.configDict[Act183Enum.Const.PlayerClothIds] and slot0.value then
 		return tonumber(slot1)
 	end
+end
+
+function slot0.getEpisodeClsKey(slot0, slot1)
+	if not slot0 or not slot1 then
+		logError(string.format("配置错误 groupType = %s, episodeType = %s", slot0, slot1))
+	end
+
+	return string.format("%s_%s", slot0, slot1)
+end
+
+function slot0.isTeamLeader(slot0, slot1)
+	slot3 = Act183Config.instance:getEpisodeLeaderPosition(slot0)
+
+	return uv0.isEpisodeHasTeamLeader(slot0) and slot3 ~= 0 and slot1 == slot3
+end
+
+function slot0.getEpisodeBattleNum(slot0)
+	if not DungeonConfig.instance:getEpisodeCO(slot0) then
+		logError(string.format("关卡配置不存在 episodeId = %s", slot0))
+
+		return ModuleEnum.MaxHeroCountInGroup
+	end
+
+	return lua_battle.configDict[slot1.battleId] and slot2.roleNum or ModuleEnum.MaxHeroCountInGroup
+end
+
+function slot0.isEpisodeHasTeamLeader(slot0)
+	if not Act183Config.instance:getEpisodeCo(slot0) then
+		return
+	end
+
+	return slot1 and not string.nilorempty(slot1.skillDesc)
+end
+
+function slot0.setEpisodeConditionStar(slot0, slot1, slot2, slot3)
+	if not slot0 then
+		logError("图片组件为空")
+
+		return
+	end
+
+	slot4 = slot1 and Act183Enum.ConditionStatus.Pass or Act183Enum.ConditionStatus.Unpass
+
+	if slot1 and slot2 ~= nil then
+		slot4 = slot2 and Act183Enum.ConditionStatus.Pass_Select or Act183Enum.ConditionStatus.Pass_Unselect
+	end
+
+	if string.nilorempty(Act183Enum.ConditionStarImgName[slot4]) then
+		logError(string.format("星星图片不存在 isPass = %s, isSelect = %s, status = %s,", slot1, slot2, slot4))
+
+		return
+	end
+
+	UISpriteSetMgr.instance:setChallengeSprite(slot0, slot5, slot3)
+end
+
+function slot0.getEpisodeSnapShotType(slot0)
+	if not Act183Enum.BattleNumToSnapShotType[uv0.getEpisodeBattleNum(slot0)] then
+		logError(string.format("编队快照类型(Act183Enum.BattleNumToSnapShotType)不存在 episodeId = %s, maxBattleNum = %s", slot0, slot1))
+
+		return Act183Enum.BattleNumToSnapShotType.Default
+	end
+
+	return slot2
+end
+
+function slot0.isOpenCurrencyReplaceTipsViewInLocal()
+	return not string.nilorempty(PlayerPrefsHelper.getString(uv0._generateOpenCurrencyReplaceTipsViewKey(), ""))
+end
+
+function slot0.saveOpenCurrencyReplaceTipsViewInLocal()
+	PlayerPrefsHelper.setString(uv0._generateOpenCurrencyReplaceTipsViewKey(), "true")
+end
+
+function slot0._generateOpenCurrencyReplaceTipsViewKey()
+	return string.format("%s#%s", PlayerPrefsKey.Act183OpenCurrencyReplaceTipsView, PlayerModel.instance:getMyUserId())
+end
+
+function slot0.generateBossRush_ChallengeCurrencyReplaceViewParams()
+	return {
+		oldCurrencyId = CurrencyEnum.CurrencyType.BossRushStore,
+		newCurrencyId = CurrencyEnum.CurrencyType.BossRushStore,
+		oldCurrencyIconUrl = ResUrl.getCurrencyItemIcon(100606),
+		oldCurrencyNum = tonumber(PlayerModel.instance:getSimpleProperty(PlayerEnum.SimpleProperty.V2a7_BossRushCurrencyNum)),
+		replaceRate = 1,
+		desc = luaLang("v2a5_challenge_currencyreplacetipsview_desc1")
+	}
+end
+
+function slot0.calcEpisodeTotalConditionCount(slot0)
+	slot2 = 0
+
+	if not string.nilorempty(DungeonConfig.instance:getEpisodeAdvancedCondition(slot0)) then
+		slot2 = string.splitToNumber(slot1, "|") and #slot3 or 0
+	end
+
+	slot4 = 0
+
+	if not string.nilorempty(DungeonConfig.instance:getEpisodeCondition(slot0)) then
+		slot4 = GameUtil.splitString2(slot3, false, "|", "#") and #slot5 or 0
+	end
+
+	return slot2 + slot4, slot4, slot2
 end
 
 return slot0

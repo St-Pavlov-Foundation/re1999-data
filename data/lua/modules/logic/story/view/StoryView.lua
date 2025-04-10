@@ -1072,7 +1072,10 @@ end
 function slot0._destroyPicture(slot0, slot1, slot2, slot3)
 	if not slot0._pictures[slot1] then
 		if slot3 then
-			slot0:_buildPicture(slot1, slot2, slot3)
+			if slot2.orderType == StoryEnum.PictureOrderType.Produce then
+				slot0:_buildPicture(slot1, slot2, slot3)
+			end
+
 			TaskDispatcher.runDelay(function ()
 				slot0 = 0
 
@@ -1080,6 +1083,10 @@ function slot0._destroyPicture(slot0, slot1, slot2, slot3)
 					if slot6.orderType == StoryEnum.VideoOrderType.Produce then
 						slot0 = 0.5
 					end
+				end
+
+				if not uv0._pictures[uv1] then
+					return
 				end
 
 				uv0._pictures[uv1]:destroyPicture(uv2, uv3, slot0)

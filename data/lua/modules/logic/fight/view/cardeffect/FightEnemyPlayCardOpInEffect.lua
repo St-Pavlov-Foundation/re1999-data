@@ -8,7 +8,7 @@ function slot0.onStart(slot0, slot1)
 
 	uv1.super.onStart(slot0, slot1)
 
-	if not FightModel.instance:getCurRoundMO() then
+	if not FightDataHelper.roundMgr:getRoundData() then
 		slot0:onDone(true)
 
 		return

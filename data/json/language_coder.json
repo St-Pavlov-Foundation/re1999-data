@@ -5425,11 +5425,11 @@
   },
   {
     "id": "playercard_act128SSSCount",
-    "lang": "SSS次数："
+    "lang": "SSS次数：▩1%s"
   },
   {
     "id": "playercard_towerbosspasscount",
-    "lang": "迷思满级数："
+    "lang": "迷思满级数：▩1%s"
   },
   {
     "id": "towerbossepisodepasscount",
@@ -5866,5 +5866,229 @@
   {
     "id": "mainview_rougeactextradisplay",
     "lang": "<voffset=13><size=30>▩1%s</size></voffset>"
+  },
+  {
+    "id": "towerbosstalentplan",
+    "lang": "天赋方案▩1%s"
+  },
+  {
+    "id": "towerbossteachtitle",
+    "lang": "▩1%s第一道回声"
+  },
+  {
+    "id": "towerbossteachstart",
+    "lang": "驶入回声"
+  },
+  {
+    "id": "towerbossteachpass",
+    "lang": "再入回声"
+  },
+  {
+    "id": "towerassistbossviewtips",
+    "lang": "翻覆之舟中，迷思原型将默认解锁并自动提升为▩1%s级"
+  },
+  {
+    "id": "achievementmainview_spgroup_journey",
+    "lang": "初入旅途"
+  },
+  {
+    "id": "achievementmainview_spgroup_weekwalk",
+    "lang": "人工梦游"
+  },
+  {
+    "id": "achievementmainview_spgroup_room",
+    "lang": "不休荒原"
+  },
+  {
+    "id": "achievementmainview_spgroup_explore",
+    "lang": "第三扇门"
+  },
+  {
+    "id": "achievementmainview_spgroup_bossrush",
+    "lang": "鬃毛邮报"
+  },
+  {
+    "id": "achievementmainview_spgroup_tower",
+    "lang": "雨中悬想"
+  },
+  {
+    "id": "towertask_act_name",
+    "lang": "迷思海拾遗"
+  },
+  {
+    "id": "towertask_act_nameEn",
+    "lang": "Voyages of Volatility"
+  },
+  {
+    "id": "multi_num",
+    "lang": "×▩1%s"
+  },
+  {
+    "id": "act191adventureview_gainreward",
+    "lang": "领取奖励"
+  },
+  {
+    "id": "act191adventureview_start",
+    "lang": "开启事件"
+  },
+  {
+    "id": "weekday1",
+    "lang": "星期一"
+  },
+  {
+    "id": "weekday2",
+    "lang": "星期二"
+  },
+  {
+    "id": "weekday3",
+    "lang": "星期三"
+  },
+  {
+    "id": "weekday4",
+    "lang": "星期四"
+  },
+  {
+    "id": "weekday5",
+    "lang": "星期五"
+  },
+  {
+    "id": "weekday6",
+    "lang": "星期六"
+  },
+  {
+    "id": "weekday7",
+    "lang": "星期日"
+  },
+  {
+    "id": "lengZhou6_enemy_skill_title",
+    "lang": "▩1%s回合后进行反驳"
+  },
+  {
+    "id": "lengZhou6_skill_round",
+    "lang": "▩1%s 回合"
+  },
+  {
+    "id": "lengZhou6_skill_round_end",
+    "lang": "永久"
+  },
+  {
+    "id": "lengZhou6_enemy_skill_title_2",
+    "lang": "本次回合进行反驳"
+  },
+  {
+    "id": "warmup_radiotaskitem_day",
+    "lang": "Day%s"
+  },
+  {
+    "id": "v2a5_challenge_currencyreplacetipsview_desc1",
+    "lang": "欢迎加入“安保小队”。为了避免不可知的情况，我们会收走你们身上的“外物”，比如这些信托票据。\n但是请放心，我们会为你们准备与您认知相通的等价物。"
+  },
+  {
+    "id": "act191_herogroupview_mainteam",
+    "lang": "阵容评估<size=40> %s"
+  },
+  {
+    "id": "v2a7_coopergarland_change_control_mode1",
+    "lang": "摇杆模式已开启"
+  },
+  {
+    "id": "v2a7_coopergarland_change_control_mode2",
+    "lang": "陀螺仪模式已开启"
+  },
+  {
+    "id": "v2a7_coopergarland_remove_comp",
+    "lang": "干扰已屏蔽"
+  },
+  {
+    "id": "v2a7_coopergarland_right_joystick",
+    "lang": "摇杆模式（右手）"
+  },
+  {
+    "id": "v2a7_coopergarland_left_joystick",
+    "lang": "摇杆模式（左手）"
+  },
+  {
+    "id": "towertask_currenthighscore_level",
+    "lang": "总计获得：▩1%s"
+  },
+  {
+    "id": "towerboss_teachskill_unlock",
+    "lang": "[通关全部第一道回声解锁]"
+  },
+  {
+    "id": "activitymap_hardmode_reward_count",
+    "lang": "▩1%s/▩2%s"
+  },
+  {
+    "id": "v2a7_lengZhou6_endLess_Lv",
+    "lang": "Lv:▩1%s"
+  },
+  {
+    "id": "v2a7_lengZhou6_endLess_activeSkill",
+    "lang": "这是一个主动技能"
+  },
+  {
+    "id": "v2a7_lengZhou6_endLess_unActiveSkill",
+    "lang": "这是一个被动技能"
+  },
+  {
+    "id": "common_format_level",
+    "lang": "▩1%s级"
+  },
+  {
+    "id": "herogroup_groupName",
+    "lang": "▩1%s编队"
+  },
+  {
+    "id": "room_critter_exchange",
+    "lang": "▩1%s×▩2%s"
+  },
+  {
+    "id": "store_decorate_good_remain",
+    "lang": "今日限购:▩1%s"
+  },
+  {
+    "id": "store_decorate_good_unlock",
+    "lang": "故事第四章解锁"
+  },
+  {
+    "id": "MaterialTipViewPackageSkinDescFmt",
+    "lang": "【风尚荐选衣箱规则说明】|该道具使用后可随机获得指定范围内一款衣着。重复获取已拥有衣着将转化为售价对应的粹雨滴。<br>注：<#b95323>风尚荐选衣箱</color>存在使用期限，超出期限但未使用的情况下，该道具将在过期后从仓库内销毁，请务必在使用期限内使用。|【概率详情】|%s"
+  },
+  {
+    "id": "StoreSeasonCardView_not_enough_one_day",
+    "lang": "不足一天 (今日已领取)"
+  },
+  {
+    "id": "dungeon_map_submit_new",
+    "lang": "提交▩1%s<color=#ff0000>▩2%s</color>/▩3%s"
+  },
+  {
+    "id": "multiple_1",
+    "lang": "×▩1%s"
+  },
+  {
+    "id": "item_characterdestinystone_second_confirm",
+    "lang": "使用后，将唤起当前闪念（若未唤起），并直升该闪念角色的狂想/解构等级至MAX"
+  },
+  {
+    "id": "summon_pool_exchange",
+    "lang": "「▩1%s」▩2%s"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_item",
+    "lang": "通过故事章节<#FFA044>▩1%s</color>解锁"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_eventiterface",
+    "lang": "通过故事章节<#FFA044>▩1%s</color>解锁更多"
+  },
+  {
+    "id": "v2a7_newbie_rewardclaim_texts",
+    "lang": "已解锁所有角色，请完成自选"
+  },
+  {
+    "id": "v2a7_newbie_storyprocess_locate_item_finish",
+    "lang": "角色<#FFA044>已解锁</color>（故事章节▩1%s已通过）"
   }
 ]

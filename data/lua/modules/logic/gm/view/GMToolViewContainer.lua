@@ -30,6 +30,7 @@ function slot0.buildViews(slot0)
 		GMToolView.New(),
 		GMToolView2.New(),
 		GMAddItemView.New(),
+		GMCommandHistoryView.New(),
 		GMCommandView.New(),
 		GMToolFightView.New(),
 		GMAudioTool.New(),
@@ -48,7 +49,8 @@ function slot0.buildViews(slot0)
 		GMSubViewRouge.New(),
 		GMSubViewResource.New(),
 		GMSubViewProfiler.New(),
-		GMSubViewRoom.New()
+		GMSubViewRoom.New(),
+		GMSubViewEliminate.New()
 	}
 end
 

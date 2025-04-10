@@ -682,5 +682,23 @@
     "audioLength": 117.818,
     "audioEvaluates": "马库斯#每一本书都是一个完整的世界，而我能够“阅读”每一个世界……我想，这算是一种幸运？",
     "isNonLoop": 1
+  },
+  {
+    "id": 1022701,
+    "audio": 20270011,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221171,
+    "defaultUnlock": 0,
+    "audioName": "1987宇宙组曲",
+    "audioNameEn": "1987 Cosmic Overture",
+    "audioIntroduce": "现在，感受这一切的一切，直到自我消失。",
+    "audioBg": "1022701_1",
+    "audioicon": "1022701_2",
+    "sort": 22701,
+    "audioType": 18,
+    "audioLength": 123.325,
+    "audioEvaluates": "星之眼#坚持每天对一颗星星发射光波，再大喊：“你好！我在这里！”这样你的寂寞就会消失，真的。",
+    "isNonLoop": 1
   }
 ]

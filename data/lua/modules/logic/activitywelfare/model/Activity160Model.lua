@@ -74,6 +74,16 @@ function slot0.hasRewardCanGet(slot0, slot1)
 	return false
 end
 
+function slot0.allRewardReceive(slot0, slot1)
+	for slot6, slot7 in pairs(slot0:getActInfo(slot1)) do
+		if slot7.state ~= 2 then
+			return false
+		end
+	end
+
+	return true
+end
+
 function slot0.isMissionCanGet(slot0, slot1, slot2)
 	return slot0:getActInfo(slot1)[slot2] and slot3[slot2].state == 1
 end

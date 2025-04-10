@@ -3,8 +3,8 @@ module("modules.logic.fight.system.work.trigger.FightWorkTriggerDialog", package
 slot0 = class("FightWorkTriggerDialog", BaseWork)
 
 function slot0.ctor(slot0, slot1, slot2)
-	slot0._fightStepMO = slot1
-	slot0._actEffectMO = slot2
+	slot0.fightStepData = slot1
+	slot0.actEffectData = slot2
 end
 
 function slot0.onStart(slot0)
@@ -14,7 +14,7 @@ function slot0.onStart(slot0)
 		return
 	end
 
-	slot0._config = lua_trigger_action.configDict[slot0._actEffectMO.effectNum]
+	slot0._config = lua_trigger_action.configDict[slot0.actEffectData.effectNum]
 
 	if slot0._config and lua_battle_dialog.configDict[tonumber(slot0._config.param1)] and lua_battle_dialog.configDict[slot1][tonumber(slot0._config.param2)] then
 		FightController.instance:dispatchEvent(FightEvent.FightDialog, FightViewDialog.Type.Trigger, slot3)

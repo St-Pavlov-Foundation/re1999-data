@@ -3,9 +3,9 @@ module("modules.logic.fight.system.work.FightWorkEffectShieldChange", package.se
 slot0 = class("FightWorkEffectShieldChange", FightEffectBase)
 
 function slot0.onStart(slot0)
-	slot2 = slot0._actEffectMO.effectNum
+	slot2 = slot0.actEffectData.effectNum
 
-	if FightHelper.getEntity(slot0._actEffectMO.targetId) and slot1.nameUI and slot2 > 0 then
+	if FightHelper.getEntity(slot0.actEffectData.targetId) and slot1.nameUI and slot2 > 0 then
 		slot1.nameUI:addHp(slot2)
 		slot1.nameUI:setShield(0)
 		FightFloatMgr.instance:float(slot1.id, FightEnum.FloatType.heal, slot2)

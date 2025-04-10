@@ -10,6 +10,10 @@ function slot0.GetExPointItem(slot0)
 	return slot1
 end
 
+function slot0.getType(slot0)
+	return uv0.ExPointType.Normal
+end
+
 function slot0.init(slot0, slot1)
 	uv0.super.init(slot0, slot1)
 

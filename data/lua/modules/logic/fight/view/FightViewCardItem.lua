@@ -16,19 +16,20 @@ function slot0.init(slot0, slot1)
 	slot0._lvImgComps = slot0:getUserDataTb_()
 	slot0._starItemCanvas = slot0:getUserDataTb_()
 
-	for slot5 = 1, 4 do
+	for slot5 = 0, 4 do
 		slot6 = gohelper.findChild(slot1, "lv" .. slot5)
 
 		gohelper.setActive(slot6, true)
-		table.insert(slot0._lvGOs, slot6)
-		table.insert(slot0._lvImgIcons, gohelper.findChildSingleImage(slot6, "imgIcon"))
-		table.insert(slot0._lvImgComps, gohelper.findChildImage(slot6, "imgIcon"))
+
+		slot0._lvGOs[slot5] = slot6
+		slot0._lvImgIcons[slot5] = gohelper.findChildSingleImage(slot6, "imgIcon")
+		slot0._lvImgComps[slot5] = gohelper.findChildImage(slot6, "imgIcon")
 	end
 
 	if not uv0.TagPosForLvs then
 		uv0.TagPosForLvs = {}
 
-		for slot5 = 1, 4 do
+		for slot5 = 0, 4 do
 			slot6, slot7 = recthelper.getAnchor(gohelper.findChild(slot1, "tag/pos" .. slot5).transform)
 			uv0.TagPosForLvs[slot5] = {
 				slot6,
@@ -124,6 +125,7 @@ function slot0.init(slot0, slot1)
 	slot0:resetRedAndBlue()
 
 	slot0._heatRoot = gohelper.findChild(slot1, "#go_heat")
+	slot0.goBloodPool = gohelper.findChild(slot1, "blood_pool")
 	slot0.alfLoadStatus = uv0.AlfLoadStatus.None
 end
 
@@ -189,6 +191,10 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 	slot0._canvasGroup.alpha = 1
 	slot0.tagCanvas.alpha = 1
 
+	if FightHelper.isBloodPoolSkill(slot2) then
+		return slot0:refreshBloodPoolSkill(slot1, slot2, slot3)
+	end
+
 	if FightHelper.isASFDSkill(slot2) then
 		return slot0:refreshASFDSkill(slot1, slot2, slot3)
 	end
@@ -201,12 +207,12 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 
 	slot4 = lua_skill.configDict[slot2]
 
-	for slot9, slot10 in ipairs(slot0._lvGOs) do
+	for slot9, slot10 in pairs(slot0._lvGOs) do
 		gohelper.setActive(slot10, true)
-		gohelper.setActiveCanvasGroup(slot10, FightCardModel.instance:getSkillLv(slot1, slot2) == slot9)
+		gohelper.setActiveCanvasGroup(slot10, FightCardDataHelper.getSkillLv(slot1, slot2) == slot9)
 	end
 
-	for slot9, slot10 in ipairs(slot0._lvImgIcons) do
+	for slot9, slot10 in pairs(slot0._lvImgIcons) do
 		slot11 = ResUrl.getSkillIcon(slot4.icon)
 
 		if gohelper.isNil(slot0._lvImgComps[slot9].sprite) then
@@ -218,15 +224,15 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 		slot10:LoadImage(slot11)
 	end
 
-	gohelper.setActive(slot0._starGO, slot5 < FightEnum.UniqueSkillCardLv)
+	gohelper.setActive(slot0._starGO, slot5 < FightEnum.UniqueSkillCardLv and slot5 > 0)
 
 	slot0._starCanvas.alpha = 1
 
-	for slot9, slot10 in ipairs(slot0._innerStartGOs) do
-		gohelper.setActive(slot10, slot9 == slot5)
+	for slot10, slot11 in ipairs(slot0._innerStartGOs) do
+		gohelper.setActive(slot11, slot10 == slot5)
 
-		if slot0._starItemCanvas[slot9] then
-			slot0._starItemCanvas[slot9].alpha = 1
+		if slot0._starItemCanvas[slot10] then
+			slot0._starItemCanvas[slot10].alpha = 1
 		end
 	end
 
@@ -234,10 +240,10 @@ function slot0.updateItem(slot0, slot1, slot2, slot3)
 
 	slot0._txt.text = slot4.id .. "\nLv." .. slot5
 
-	if FightCardModel.instance:isUniqueSkill(slot0.entityId, slot0.skillId) then
+	if slot5 == FightEnum.UniqueSkillCardLv then
 		if not slot0._uniqueCardEffect then
-			slot6 = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
-			slot0._uniqueCardEffect = gohelper.clone(FightHelper.getPreloadAssetItem(slot6):GetResource(slot6), slot0.go)
+			slot7 = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
+			slot0._uniqueCardEffect = gohelper.clone(FightHelper.getPreloadAssetItem(slot7):GetResource(slot7), slot0.go)
 		end
 
 		gohelper.setActive(slot0._uniqueCardEffect, true)
@@ -257,7 +263,7 @@ end
 function slot0.refreshTag(slot0)
 	slot0._tag:LoadImage(ResUrl.getAttributeIcon("attribute_" .. lua_skill.configDict[slot0.skillId].showTag))
 
-	if uv0.TagPosForLvs[FightCardModel.instance:getSkillLv(slot0.entityId, slot0.skillId)] then
+	if uv0.TagPosForLvs[FightCardDataHelper.getSkillLv(slot0.entityId, slot0.skillId)] then
 		recthelper.setAnchor(slot0._tagRootTr, slot3[1], slot3[2])
 	end
 
@@ -315,14 +321,12 @@ function slot0._refreshPreDeleteArrow(slot0)
 		gohelper.setActive(slot0.goPreDeleteLeft, false)
 		gohelper.setActive(slot0.goPreDeleteRight, false)
 
-		slot2 = slot0._cardInfoMO and slot0._cardInfoMO.skillId
-
-		if slot2 and lua_fight_card_pre_delete.configDict[slot2] then
-			if slot3.left > 0 and slot3.right > 0 then
+		if lua_fight_card_pre_delete.configDict[slot0.skillId] then
+			if slot2.left > 0 and slot2.right > 0 then
 				gohelper.setActive(slot0.goPreDeleteBoth, true)
-			elseif slot4 then
+			elseif slot3 then
 				gohelper.setActive(slot0.goPreDeleteLeft, true)
-			elseif slot5 then
+			elseif slot4 then
 				gohelper.setActive(slot0.goPreDeleteRight, true)
 			end
 
@@ -337,7 +341,7 @@ function slot0._refreshPreDeleteImage(slot0, slot1)
 	gohelper.setActive(slot0.goPreDelete, slot2)
 
 	if slot2 then
-		gohelper.setActive(slot0.goPreDeleteNormal, not FightCardModel.instance:isUniqueSkill(slot0.entityId, slot0.skillId) and slot1)
+		gohelper.setActive(slot0.goPreDeleteNormal, not FightCardDataHelper.isBigSkill(slot0.skillId) and slot1)
 		gohelper.setActive(slot0.goPreDeleteUnique, slot3 and slot1)
 	end
 end
@@ -350,22 +354,40 @@ function slot0.refreshPreDeleteSkill(slot0, slot1, slot2, slot3)
 	slot0:_refreshPreDeleteArrow()
 end
 
-function slot0.refreshASFDSkill(slot0, slot1, slot2, slot3)
-	for slot8 = 1, slot0.tr.childCount do
-		gohelper.setActive(slot0.tr:GetChild(slot8 - 1).gameObject, false)
+function slot0.refreshBloodPoolSkill(slot0, slot1, slot2, slot3)
+	gohelper.setActive(slot0.goBloodPool, true)
+	gohelper.setActive(slot0.goTag, true)
+	gohelper.setActive(slot0._tag.gameObject, true)
+
+	slot0.bloodPoolAnimator = slot0.bloodPoolAnimator or slot0.goBloodPool:GetComponent(gohelper.Type_Animator)
+
+	if slot0.handCardType == FightEnum.CardShowType.Operation then
+		slot0.bloodPoolAnimator:Play("open", 0, 0)
+		AudioMgr.instance:trigger(20270007)
+	else
+		slot0.bloodPoolAnimator:Play("open", 0, 1)
 	end
 
+	slot0._tag:LoadImage(ResUrl.getAttributeIcon("blood_tex2"))
+
+	slot4 = uv0.TagPosForLvs[1]
+
+	recthelper.setAnchor(slot0._tagRootTr, slot4[1], slot4[2])
+end
+
+function slot0.refreshASFDSkill(slot0, slot1, slot2, slot3)
 	gohelper.setActive(slot0.goASFDSkill, true)
 	gohelper.setActive(slot0.goTag, true)
+	gohelper.setActive(slot0._tag.gameObject, true)
 	slot0.asfdSkillSimage:LoadImage(ResUrl.getSkillIcon(FightASFDConfig.instance.normalSkillIcon))
 
 	slot0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)
 
 	slot0._tag:LoadImage(ResUrl.getAttributeIcon("attribute_asfd"))
 
-	slot6 = uv0.TagPosForLvs[1]
+	slot5 = uv0.TagPosForLvs[1]
 
-	recthelper.setAnchor(slot0._tagRootTr, slot6[1], slot6[2])
+	recthelper.setAnchor(slot0._tagRootTr, slot5[1], slot5[2])
 end
 
 function slot0.updateResistanceByCardInfo(slot0, slot1)
@@ -381,7 +403,7 @@ function slot0.updateResistanceBySkillDisplayMo(slot0, slot1)
 end
 
 function slot0.detectShowBlueStar(slot0)
-	slot0:showBlueStar(slot0.entityId and slot0.skillId and FightCardModel.instance:getSkillLv(slot0.entityId, slot0.skillId))
+	slot0:showBlueStar(slot0.entityId and slot0.skillId and FightCardDataHelper.getSkillLv(slot0.entityId, slot0.skillId))
 end
 
 function slot0.showBlueStar(slot0, slot1)
@@ -444,12 +466,12 @@ function slot0._showEnchantsEffect(slot0)
 			if slot6.enchantId == FightEnum.EnchantedType.Discard then
 				gohelper.setActive(slot0._abandon, true)
 			elseif slot6.enchantId == FightEnum.EnchantedType.Blockade then
-				slot7 = FightCardModel.instance:getHandCards()
+				slot7 = FightDataHelper.handCardMgr.handCard
 
-				if slot0._cardInfoMO.custom_playedCard then
+				if slot0._cardInfoMO.clientData.custom_playedCard then
 					gohelper.setActive(slot0._blockadeOne, true)
-				elseif slot0._cardInfoMO.custom_handCardIndex then
-					if slot0._cardInfoMO.custom_handCardIndex == 1 or slot0._cardInfoMO.custom_handCardIndex == #slot7 then
+				elseif slot0._cardInfoMO.clientData.custom_handCardIndex then
+					if slot0._cardInfoMO.clientData.custom_handCardIndex == 1 or slot0._cardInfoMO.clientData.custom_handCardIndex == #slot7 then
 						gohelper.setActive(slot0._blockadeOne, true)
 					else
 						gohelper.setActive(slot0._blockadeTwo, true)
@@ -460,7 +482,7 @@ function slot0._showEnchantsEffect(slot0)
 			elseif slot6.enchantId == FightEnum.EnchantedType.Precision then
 				gohelper.setActive(slot0._precision, true)
 
-				if slot0._cardInfoMO.custom_handCardIndex == 1 then
+				if slot0._cardInfoMO.clientData.custom_handCardIndex == 1 then
 					FightController.instance:dispatchEvent(FightEvent.RefreshHandCardPrecisionEffect)
 				end
 			end
@@ -508,11 +530,11 @@ function slot0._onEnchantEffectsLoaded(slot0)
 			if slot0._lvGOs then
 				slot0._enchantsEffect[slot4] = slot0:getUserDataTb_()
 
-				for slot11, slot12 in ipairs(slot0._lvGOs) do
+				for slot11, slot12 in pairs(slot0._lvGOs) do
 					slot17 = "#cardeffect"
 					slot13 = gohelper.clone(slot7, gohelper.findChild(slot12, slot17))
 
-					for slot17 = 1, 4 do
+					for slot17 = 0, 4 do
 						gohelper.setActive(gohelper.findChild(slot13, "lv" .. slot17), slot17 == slot11)
 					end
 
@@ -562,11 +584,11 @@ function slot0._onUpgradeEffectLoaded(slot0, slot1, slot2)
 	slot0._upgradeEffects = slot0:getUserDataTb_()
 
 	if slot0._lvGOs and slot2:GetResource() then
-		for slot7, slot8 in ipairs(slot0._lvGOs) do
+		for slot7, slot8 in pairs(slot0._lvGOs) do
 			slot13 = "#cardeffect"
 			slot9 = gohelper.clone(slot3, gohelper.findChild(slot8, slot13))
 
-			for slot13 = 1, 4 do
+			for slot13 = 0, 4 do
 				gohelper.setActive(gohelper.findChild(slot9, "lv" .. slot13), slot13 == slot7)
 			end
 
@@ -597,6 +619,10 @@ function slot0.dissolveCard(slot0, slot1, slot2)
 	end
 
 	if FightHelper.isPreDeleteSkill(slot0.skillId) then
+		return slot0:disappearCard()
+	end
+
+	if FightHelper.isBloodPoolSkill(slot0.skillId) then
 		return slot0:disappearCard()
 	end
 
@@ -741,13 +767,12 @@ function slot0._refreshGray(slot0)
 	if slot0._cardInfoMO and slot0._cardInfoMO.status == FightEnum.CardInfoStatus.STATUS_PLAYSETGRAY then
 		gohelper.setActive(slot0._cardMask, true)
 
-		slot1 = slot0._cardInfoMO.uid
 		slot2 = slot0._cardInfoMO.skillId
-		slot4 = FightCardModel.instance:isUniqueSkill(slot1, slot2)
+		slot4 = FightCardDataHelper.isBigSkill(slot2)
 
 		for slot8, slot9 in ipairs(slot0._maskList) do
 			if slot8 < 4 then
-				gohelper.setActive(slot9, slot8 == FightCardModel.instance:getSkillLv(slot1, slot2))
+				gohelper.setActive(slot9, slot8 == FightCardDataHelper.getSkillLv(slot0._cardInfoMO.uid, slot2))
 			else
 				gohelper.setActive(slot9, slot4)
 			end
@@ -780,6 +805,19 @@ function slot0._refreshASFD(slot0)
 
 	if slot1 then
 		slot0.txtASFDEnergy.text = slot0._cardInfoMO.energy
+	end
+end
+
+function slot0.changeEnergy(slot0)
+	slot1 = slot0.showASFD and slot0._cardInfoMO and slot0._cardInfoMO.energy > 0
+
+	gohelper.setActive(slot0.goASFD, slot1)
+
+	if slot1 then
+		slot0.txtASFDEnergy.text = slot0._cardInfoMO.energy
+		slot0.asfdAnimator = slot0.asfdAnimator or slot0.goASFD:GetComponent(gohelper.Type_Animator)
+
+		slot0.asfdAnimator:Play("add", 0, 0)
 	end
 end
 
@@ -874,7 +912,7 @@ function slot0._onAppearEffectLoaded(slot0, slot1, slot2)
 end
 
 function slot0.showAppearEffect(slot0)
-	slot1 = FightCardModel.instance:isUniqueSkill(slot0.entityId, slot0.skillId)
+	slot1 = FightCardDataHelper.isBigSkill(slot0.skillId)
 
 	gohelper.setActive(gohelper.findChild(slot0._appearEffect, "nomal_skill"), not slot1)
 	gohelper.setActive(gohelper.findChild(slot0._appearEffect, "ultimate_skill"), slot1)
@@ -955,7 +993,7 @@ function slot0.onDestroy(slot0)
 
 	slot0:releaseEffectFlow()
 
-	for slot4, slot5 in ipairs(slot0._lvGOs) do
+	for slot4, slot5 in pairs(slot0._lvGOs) do
 		slot0._lvImgIcons[slot4]:UnLoadImage()
 	end
 
@@ -969,10 +1007,6 @@ function slot0._hideAllEffect(slot0)
 	gohelper.setActive(slot0.goPreDelete, false)
 end
 
-function slot0.IsUniqueSkill(slot0)
-	return FightEnum.UniqueSkillCardLv <= FightCardModel.instance:getSkillLv(slot0.entityId, slot0.skillId)
-end
-
 slot0.AlfLoadStatus = {
 	Loaded = 3,
 	Loading = 2,
@@ -984,7 +1018,7 @@ function slot0.tryPlayAlfEffect(slot0)
 		return
 	end
 
-	if not FightHeroALFComp.ALFSkillDict[slot0._cardInfoMO.custom_fromSkillId] then
+	if not FightHeroALFComp.ALFSkillDict[slot0._cardInfoMO.clientData.custom_fromSkillId] then
 		return
 	end
 

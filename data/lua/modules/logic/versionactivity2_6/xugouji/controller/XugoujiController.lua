@@ -44,11 +44,12 @@ function slot0.openTaskView(slot0)
 end
 
 function slot0.openCardInfoView(slot0, slot1)
-	slot0._lastCardInfoUId = cardUid
+	slot1 = slot1 or Activity188Model.instance:getLastCardId()
+	slot0._lastCardInfoUId = slot1
 
 	AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.cardInfo)
 	ViewMgr.instance:openView(ViewName.XugoujiCardInfoView, {
-		cardId = slot1 or Activity188Model.instance:getLastCardId()
+		cardId = slot1
 	})
 end
 

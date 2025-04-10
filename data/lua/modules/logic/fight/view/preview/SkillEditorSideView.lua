@@ -123,17 +123,16 @@ function slot0._onClickFight(slot0)
 	if FightHelper.getEntity(slot4).skill then
 		gohelper.setActive(slot0.viewGO, false)
 
-		slot8 = FightRoundMO.New()
-		FightModel.instance._curRoundMO = slot8
-		slot8.fightStepMOs = {}
+		slot9 = FightRoundData.New(FightDef_pb.FightRound())
 
-		tabletool.addValues(slot8.fightStepMOs, SkillEditorStepBuilder.buildStepMOs(slot1, slot4, slot5))
+		FightDataHelper.roundMgr:setRoundData(slot9)
+		tabletool.addValues(slot9.fightStep, SkillEditorStepBuilder.buildFightStepDataList(slot1, slot4, slot5))
 
-		slot10, slot11 = FightStepBuilder.buildStepWorkList(slot8.fightStepMOs)
+		slot11, slot12 = FightStepBuilder.buildStepWorkList(slot9.fightStep)
 		slot0._playSkillsFlow = FlowSequence.New()
 
-		for slot15, slot16 in ipairs(slot10) do
-			slot0._playSkillsFlow:addWork(slot16)
+		for slot16, slot17 in ipairs(slot11) do
+			slot0._playSkillsFlow:addWork(slot17)
 		end
 
 		slot0._playSkillsFlow:registerDoneListener(slot0._onPlayFinish, slot0)

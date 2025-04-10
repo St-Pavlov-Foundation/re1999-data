@@ -104,12 +104,10 @@ function slot0.replaceAnimState(slot0, slot1)
 		return slot1
 	end
 
-	if slot1 == SpineAnimState.idle1 then
-		return slot4.idleAnimName
-	elseif slot1 == SpineAnimState.hit then
-		return slot4.hitAnimName
-	else
+	if string.nilorempty(slot4[slot1 .. "AnimName"]) then
 		return slot1
+	else
+		return slot5
 	end
 end
 

@@ -7,7 +7,6 @@ function slot0.onAwake(slot0, slot1)
 end
 
 function slot0.onStart(slot0)
-	FightCardModel.instance:clearCardOps()
 	FightDataHelper.paTaMgr:resetOp()
 	slot0:com_registFightEvent(FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish)
 	FightModel.instance:updateFightRound(slot0.proto)

@@ -3,12 +3,12 @@ module("modules.logic.fight.system.work.FightWorkEffectExpointMaxAdd", package.s
 slot0 = class("FightWorkEffectExpointMaxAdd", FightEffectBase)
 
 function slot0.onStart(slot0)
-	FightController.instance:dispatchEvent(FightEvent.OnExpointMaxAdd, slot0._actEffectMO.targetId, slot0._actEffectMO.effectNum)
+	FightController.instance:dispatchEvent(FightEvent.OnExpointMaxAdd, slot0.actEffectData.targetId, slot0.actEffectData.effectNum)
 	slot0:onDone(true)
 end
 
 function slot0._startAddExpointMax(slot0)
-	if not FightHelper.getEntity(slot0._actEffectMO.targetId) then
+	if not FightHelper.getEntity(slot0.actEffectData.targetId) then
 		slot0:onDone(true)
 
 		return
@@ -26,8 +26,8 @@ function slot0._startAddExpointMax(slot0)
 		return
 	end
 
-	slot3:changeExpointMaxAdd(slot0._actEffectMO.effectNum)
-	FightController.instance:dispatchEvent(FightEvent.OnExpointMaxAdd, slot1, slot0._actEffectMO.effectNum)
+	slot3:changeExpointMaxAdd(slot0.actEffectData.effectNum)
+	FightController.instance:dispatchEvent(FightEvent.OnExpointMaxAdd, slot1, slot0.actEffectData.effectNum)
 	slot0:_onDone()
 end
 

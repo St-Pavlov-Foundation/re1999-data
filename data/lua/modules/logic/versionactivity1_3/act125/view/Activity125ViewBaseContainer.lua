@@ -177,6 +177,14 @@ function slot0.getTaskCO_perfect_win(slot0, slot1)
 	return Activity125Config.instance:getTaskCO_ReadTask_Tag_TaskId(slot0:actId(), ActivityWarmUpEnum.Activity125TaskTag.perfect_win, slot1)
 end
 
+function slot0.isTimeToActiveH5Btn(slot0)
+	if string.nilorempty(CommonConfig.instance:getConstStr(ConstEnum.V2a4_WarmUp_btnplay_openTs)) then
+		return true
+	end
+
+	return TimeUtil.stringToTimestamp(SettingsModel.instance:extractByRegion(slot1)) <= ServerTime.now()
+end
+
 function slot0.actId(slot0)
 	assert(false, "please override this function")
 end

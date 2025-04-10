@@ -31,11 +31,7 @@ function slot0.onOpen(slot0)
 		}
 	}, slot0._btnListRoot, slot0._btnModel)
 
-	if not GameSceneMgr.instance:getCurScene().fightLog then
-		return
-	end
-
-	if not slot2:getLastRoundProto() then
+	if not FightDataHelper.protoCacheMgr:getLastRoundProto() then
 		slot0._logText.text = "没有数据"
 
 		return
@@ -43,8 +39,11 @@ function slot0.onOpen(slot0)
 
 	slot0._strList = {}
 
-	slot0:addLog("回合" .. slot3.round)
-	slot0:addLog(tostring(slot3.proto))
+	if FightDataHelper.protoCacheMgr:getLastRoundNum() then
+		slot0:addLog("回合" .. slot3)
+	end
+
+	slot0:addLog(tostring(slot2))
 
 	slot0._logText.text = FightEditorStateLogView.processStr(table.concat(slot0._strList, "\n"))
 end

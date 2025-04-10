@@ -341,5 +341,47 @@
     "patFaceViewName": "V2a6_WeekwalkHeart_PanelView",
     "patFaceStoryId": 0,
     "patFaceOrder": 20603
+  },
+  {
+    "id": 20700,
+    "patFaceActivityId": 12708,
+    "patFaceViewName": "V2a7_Role_PanelSignView_Part1",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 20000
+  },
+  {
+    "id": 20701,
+    "patFaceActivityId": 12709,
+    "patFaceViewName": "V2a7_Role_PanelSignView_Part2",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 20000
+  },
+  {
+    "id": 20702,
+    "patFaceActivityId": 12710,
+    "patFaceViewName": "V2a7_Labor_PanelSignView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 21000
+  },
+  {
+    "id": 20703,
+    "patFaceActivityId": 12721,
+    "patFaceViewName": "V2a7_LinkageActivity_PanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 21111
+  },
+  {
+    "id": 20704,
+    "patFaceActivityId": 12720,
+    "patFaceViewName": "TowerGiftPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 90000
+  },
+  {
+    "id": 20706,
+    "patFaceActivityId": 12733,
+    "patFaceViewName": "V2a7_SelfSelectSix_PanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 20000
   }
 ]

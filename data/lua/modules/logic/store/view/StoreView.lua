@@ -163,39 +163,50 @@ function slot0.refreshTimeDeadline(slot0, slot1, slot2)
 	end
 
 	slot3 = false
-	slot4 = StoreHelper.getRemainExpireTime(slot1)
-	slot5 = StoreModel.instance:isTabMainRedDotShow(slot1.id)
-	slot6 = false
+	slot5 = false
 
-	if StoreEnum.SummonExchange == slot1.id then
-		slot4 = StoreHelper.getRemainExpireTimeDeep(slot1)
-	end
-
-	if StoreEnum.SummonExchange == slot1.id and slot1.id ~= slot0._selectFirstTabId and not slot5 and slot4 and slot4 > 0 and slot4 <= TimeUtil.OneDaySecond * 7 then
-		gohelper.setActive(slot2.godeadline, true)
-		gohelper.setActive(slot2.txttime.gameObject, true)
-
-		slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot4), true)
-
-		UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
-		UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
-		SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
-		SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
-		gohelper.setActive(slot2.godeadlineEffect, not slot3)
-
-		slot6 = true
-	elseif StoreEnum.StoreId.Skin == slot1.storeId then
-		slot4 = 0
-
-		if ItemModel.instance:getItemsBySubType(ItemEnum.SubType.SkinTicket)[1] and ItemModel.instance:getItemConfigAndIcon(MaterialEnum.MaterialType.Item, slot7[1].id) and not string.nilorempty(slot8.expireTime) and math.floor(TimeUtil.stringToTimestamp(slot8.expireTime) - ServerTime.now()) >= 0 and slot10 <= 259200 then
-			slot4 = slot10
-		end
-
-		if slot4 > 0 then
+	if slot1.id == StoreEnum.StoreId.SummonExchange then
+		if slot1.id ~= slot0._selectFirstTabId and not StoreModel.instance:isTabMainRedDotShow(slot1.id) and StoreHelper.getRemainExpireTimeDeep(slot1) and slot6 > 0 and slot6 <= TimeUtil.OneDaySecond * 7 then
 			gohelper.setActive(slot2.godeadline, true)
 			gohelper.setActive(slot2.txttime.gameObject, true)
 
-			slot2.txttime.text, slot2.txtformat.text, slot12 = TimeUtil.secondToRoughTime(math.floor(slot4), true)
+			slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
+
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
+			gohelper.setActive(slot2.godeadlineEffect, not slot3)
+
+			slot5 = true
+		end
+	elseif slot1.id == StoreEnum.StoreId.DecorateStore then
+		if slot1.id ~= slot0._selectFirstTabId and not slot4 and StoreHelper.getRemainExpireTimeDeepByStoreId(slot1.id) and slot6 > 0 then
+			gohelper.setActive(slot2.godeadline, true)
+			gohelper.setActive(slot2.txttime.gameObject, true)
+
+			slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
+
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
+			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
+			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
+			gohelper.setActive(slot2.godeadlineEffect, not slot3)
+
+			slot5 = true
+		end
+	elseif StoreEnum.StoreId.Skin == slot1.storeId then
+		slot6 = 0
+
+		if ItemModel.instance:getItemsBySubType(ItemEnum.SubType.SkinTicket)[1] and ItemModel.instance:getItemConfigAndIcon(MaterialEnum.MaterialType.Item, slot7[1].id) and not string.nilorempty(slot8.expireTime) and math.floor(TimeUtil.stringToTimestamp(slot8.expireTime) - ServerTime.now()) >= 0 and slot10 <= 259200 then
+			slot6 = slot10
+		end
+
+		if slot6 > 0 then
+			gohelper.setActive(slot2.godeadline, true)
+			gohelper.setActive(slot2.txttime.gameObject, true)
+
+			slot2.txttime.text, slot2.txtformat.text, slot12 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
 
 			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot12 and "daojishi_01" or "daojishi_02")
 			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
@@ -203,7 +214,7 @@ function slot0.refreshTimeDeadline(slot0, slot1, slot2)
 			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
 			gohelper.setActive(slot2.godeadlineEffect, not slot3)
 
-			slot6 = true
+			slot5 = true
 		else
 			gohelper.setActive(slot2.godeadline, false)
 			gohelper.setActive(slot2.txttime.gameObject, false)
@@ -213,7 +224,7 @@ function slot0.refreshTimeDeadline(slot0, slot1, slot2)
 		gohelper.setActive(slot2.txttime.gameObject, false)
 	end
 
-	slot0._needCountdown = slot6
+	slot0._needCountdown = slot5
 end
 
 function slot0.onOpen(slot0)

@@ -131,7 +131,7 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._onClick(slot0)
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -298,21 +298,17 @@ function slot0._onPlayHandCard(slot0, slot1)
 	end
 end
 
-function slot0._onMoveHandCard(slot0, slot1, slot2, slot3)
-	if slot2 == slot3 then
-		return
-	end
-
+function slot0._onMoveHandCard(slot0, slot1, slot2)
 	if not slot1.moveCanAddExpoint then
 		return
 	end
 
-	if FightEnum.UniversalCard[slot1.skillId] then
+	if FightEnum.UniversalCard[slot2.skillId] then
 		return
 	end
 
 	if slot0:_getClothLevelCO() then
-		slot0._cardOpAddPower = slot0._cardOpAddPower + slot4.move
+		slot0._cardOpAddPower = slot0._cardOpAddPower + slot3.move
 
 		slot0:_updateUI()
 		slot0:_checkPlayPowerMaxAudio(slot0._cardOpAddPower)
@@ -469,7 +465,7 @@ function slot0._onClickSkillIcon(slot0, slot1)
 	slot0._clothSkillOp = nil
 	slot0._hasClickDetailIcon = true
 
-	if FightCardModel.instance:isCardOpEnd() then
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
 		return
 	end
 
@@ -481,7 +477,7 @@ function slot0._onClickSkillIcon(slot0, slot1)
 		return
 	end
 
-	if #FightCardModel.instance:getCardOps() > 0 then
+	if #FightDataHelper.operationDataMgr:getOpList() > 0 then
 		GameFacade.showToast(ToastEnum.FightCardOps)
 
 		return
@@ -628,7 +624,7 @@ function slot0._sendUseClothSkill(slot0)
 end
 
 function slot0._sendUseClothSkillRequest(slot0)
-	FightRpc.instance:sendUseClothSkillRequest(slot0._toUseSkillId, nil, FightCardModel.instance.curSelectEntityId)
+	FightRpc.instance:sendUseClothSkillRequest(slot0._toUseSkillId, nil, FightDataHelper.operationDataMgr.curSelectEntityId)
 end
 
 function slot0._sendChangeSubEntity(slot0)

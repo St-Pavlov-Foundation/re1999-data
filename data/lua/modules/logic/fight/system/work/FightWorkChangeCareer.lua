@@ -13,7 +13,7 @@ slot1 = {
 function slot0.onStart(slot0)
 	slot1 = slot0:com_registWorkDoneFlowSequence()
 
-	if FightDataHelper.entityMgr:getById(slot0._actEffectMO.targetId) and slot2.career ~= slot0._actEffectMO.effectNum then
+	if FightDataHelper.entityMgr:getById(slot0.actEffectData.targetId) and slot2.career ~= slot0.actEffectData.effectNum then
 		slot1:registWork(FightWorkFunction, slot0._playCareerChange, slot0)
 		slot1:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.ChangeCareer))
 	end
@@ -22,7 +22,7 @@ function slot0.onStart(slot0)
 end
 
 function slot0._playCareerChange(slot0)
-	if FightDataHelper.entityMgr:getById(slot0._actEffectMO.targetId) then
+	if FightDataHelper.entityMgr:getById(slot0.actEffectData.targetId) then
 		FightController.instance:dispatchEvent(FightEvent.ChangeCareer, slot1.id)
 
 		if FightHelper.getEntity(slot1.id) and slot2.effect then

@@ -21,6 +21,7 @@ function slot0.init(slot0, slot1)
 		slot0.spNodeList[slot5] = gohelper.findChild(slot0.viewGO, string.format("root/level/%s", slot5))
 	end
 
+	slot0.goProgress = gohelper.findChild(slot0.viewGO, "root/progress")
 	slot0.taskList = {}
 
 	for slot5 = 1, 4 do
@@ -82,7 +83,7 @@ function slot0.updateItem(slot0, slot1)
 end
 
 function slot0.refreshLev(slot0)
-	if slot0.bossInfo then
+	if slot0.bossInfo and not slot0.bossInfo:getTempState() then
 		gohelper.setActive(slot0.goLev, true)
 
 		slot0.txtLev.text = slot0.bossInfo.level
@@ -102,44 +103,47 @@ function slot0.refreshLev(slot0)
 end
 
 function slot0.refreshTask(slot0)
-	slot3 = 0
+	if TowerTaskModel.instance:getBossTaskList(slot0.towerId) and #slot1 > 0 then
+		gohelper.setActive(slot0.goProgress, true)
 
-	if TowerConfig.instance:getTaskListByGroupId(slot0.towerInfo:getTaskGroupId()) then
-		for slot7, slot8 in pairs(slot2) do
-			if TowerTaskModel.instance:isTaskFinishedById(slot8) then
-				slot3 = slot3 + 1
+		for slot6, slot7 in pairs(slot1) do
+			if TowerTaskModel.instance:isTaskFinishedById(slot7) then
+				slot2 = 0 + 1
 			end
 		end
-	end
 
-	for slot8 = 1, #slot0.taskList do
-		slot9 = slot0.taskList[slot8]
+		for slot7 = 1, #slot0.taskList do
+			slot8 = slot0.taskList[slot7]
 
-		if slot8 <= (slot2 and #slot2 or 0) then
-			gohelper.setActive(slot9.go, true)
-			gohelper.setActive(slot9.goLight, slot8 <= slot3)
-		else
-			gohelper.setActive(slot9.go, false)
+			if slot7 <= (slot1 and #slot1 or 0) then
+				gohelper.setActive(slot8.go, true)
+				gohelper.setActive(slot8.goLight, slot7 <= slot2)
+			else
+				gohelper.setActive(slot8.go, false)
+			end
 		end
+	else
+		gohelper.setActive(slot0.goProgress, false)
 	end
 end
 
-function slot0.refreshTime(slot0, slot1)
-	if slot0.towerId ~= slot1 then
+function slot0.refreshTime(slot0)
+	if TowerConfig.instance:getBossTimeTowerConfig(slot0.towerId, slot0.towerOpenMo.round) and slot1.taskGroupId > 0 and slot0.towerOpenMo.taskEndTime > 0 then
+		slot0:_refreshTime()
+		TaskDispatcher.cancelTask(slot0._refreshTime, slot0)
+		TaskDispatcher.runRepeat(slot0._refreshTime, slot0, 1)
+	else
 		slot0:clearTime()
-
-		return
 	end
-
-	gohelper.setActive(slot0.goTime, true)
-	slot0:_refreshTime()
-	TaskDispatcher.cancelTask(slot0._refreshTime, slot0)
-	TaskDispatcher.runRepeat(slot0._refreshTime, slot0, 1)
 end
 
 function slot0._refreshTime(slot0)
-	if (slot0.towerOpenMo and slot0.towerOpenMo.nextTime or 0) * 0.001 - ServerTime.now() > 0 then
-		slot0.txtTime.text = formatLuaLang("towerboss_nexttime", TimeUtil.getFormatTime1(slot3, true))
+	gohelper.setActive(slot0.goTime, true)
+
+	slot1, slot2 = slot0.towerOpenMo:getTaskRemainTime(true)
+
+	if slot1 then
+		slot0.txtTime.text = slot1 .. slot2
 	else
 		slot0:clearTime()
 	end

@@ -58,5 +58,16 @@ return {
 		end
 
 		MessageBoxController.instance:showOptionMsgBox(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, ...)
+	end,
+	showOptionAndParamsMessageBox = function (slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, ...)
+		if not MessageBoxController.instance:canShowMessageOptionBoxView(slot0, slot2, slot3) then
+			if slot4 then
+				slot4(slot7)
+			end
+
+			return
+		end
+
+		MessageBoxController.instance:showOptionAndParamsMsgBox(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, ...)
 	end
 }

@@ -227,7 +227,8 @@ slot1 = {
 	"V2a4_Role_PanelSignView_Part1",
 	"V2a4_Role_PanelSignView_Part2",
 	"V2a5_Role_PanelSignView_Part1",
-	"V2a5_Role_PanelSignView_Part2"
+	"V2a5_Role_PanelSignView_Part2",
+	"V2a7_Labor_PanelSignView"
 }
 
 function slot0.jumpTo(slot0, slot1, slot2, slot3, slot4)
@@ -256,6 +257,7 @@ function slot0.jumpTo(slot0, slot1, slot2, slot3, slot4)
 	end
 
 	slot0:_notAllowJumpViewNames_RoleSignPanelView()
+	slot0:_notAllowJumpViewNames_SpecialSignPanelView()
 
 	for slot10, slot11 in ipairs(uv0) do
 		if ViewMgr.instance:isOpen(ViewName[slot11]) then
@@ -500,6 +502,18 @@ function slot0._notAllowJumpViewNames_RoleSignPanelView(slot0)
 
 	table.insert(uv1, GameBranchMgr.instance:Vxax_ViewName("Role_PanelSignView_Part1", ViewName.V2a5_Role_PanelSignView_Part1))
 	table.insert(uv1, GameBranchMgr.instance:Vxax_ViewName("Role_PanelSignView_Part2", ViewName.V2a5_Role_PanelSignView_Part2))
+end
+
+slot3 = false
+
+function slot0._notAllowJumpViewNames_SpecialSignPanelView(slot0)
+	if uv0 then
+		return
+	end
+
+	uv0 = true
+
+	table.insert(uv1, GameBranchMgr.instance:Vxax_ViewName("Special_PanelsView", ViewName.V2a3_Special_PanelsView))
 end
 
 slot0.instance = slot0.New()

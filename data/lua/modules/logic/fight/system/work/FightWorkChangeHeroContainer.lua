@@ -6,7 +6,7 @@ function slot0.onStart(slot0)
 	for slot8, slot9 in ipairs(slot0:getAdjacentSameEffectList({
 		[FightEnum.EffectType.CALLMONSTERTOSUB] = true
 	}, true)) do
-		slot0:com_registWorkDoneFlowSequence():registWork(FightWorkFlowParallel):registWork(FightStepBuilder.ActEffectWorkCls[slot9.effect.effectType], slot9.stepMO, slot9.effect)
+		slot0:com_registWorkDoneFlowSequence():registWork(FightWorkFlowParallel):registWork(FightStepBuilder.ActEffectWorkCls[slot9.actEffectData.effectType], slot9.fightStepData, slot9.actEffectData)
 	end
 
 	slot3:registWork(FightWorkFocusMonsterAfterChangeHero)

@@ -2,22 +2,24 @@ module("modules.configs.excel2json.lua_tower_assist_boss", package.seeall)
 
 slot1 = {
 	bossId = 1,
-	passiveSkills = 12,
+	teachSkills = 13,
 	heartVariantId = 9,
 	skinId = 5,
 	name = 3,
 	gender = 6,
 	career = 4,
-	passiveSkillName = 13,
+	passiveSkills = 12,
+	bossPic = 17,
+	bossDesc = 19,
 	dmgType = 7,
 	tag = 8,
 	coldTime = 10,
-	resMaxVal = 15,
-	bossShadowPic = 17,
-	resInitVal = 14,
+	resMaxVal = 16,
+	bossShadowPic = 18,
+	resInitVal = 15,
 	towerId = 2,
 	activeSkills = 11,
-	bossPic = 16
+	passiveSkillName = 14
 }
 slot2 = {
 	"bossId"

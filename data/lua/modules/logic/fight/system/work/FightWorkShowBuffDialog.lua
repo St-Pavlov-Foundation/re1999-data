@@ -51,12 +51,11 @@ function slot0._detectPlayTimeline(slot0)
 		slot3.skill:playTimeline(uv1[uv0.needStopWork.id], {
 			actId = 0,
 			stepUid = 0,
-			actEffectMOs = {
+			actEffect = {
 				{
 					targetId = slot2
 				}
 			},
-			actEffect = {},
 			fromId = slot2,
 			toId = slot2,
 			actType = FightEnum.ActType.SKILL

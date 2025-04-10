@@ -3,6 +3,12 @@ module("modules.logic.character.view.destiny.SkillDescComp", package.seeall)
 slot0 = class("SkillDescComp", LuaCompBase)
 slot1 = "SkillDescComp"
 slot2 = "#7e99d0"
+slot3 = {}
+slot4 = "▩rich_replace▩"
+slot5 = 0
+slot6 = {}
+slot7 = "▩bracket_replace▩"
+slot8 = 0
 
 function slot0.init(slot0, slot1)
 	slot0.viewGO = slot1
@@ -20,7 +26,7 @@ function slot0.updateInfo(slot0, slot1, slot2, slot3)
 
 	slot0._hyperLinkClick:SetClickListener(slot0._onHyperLinkClick, slot0)
 
-	slot0._txtComp.text = slot0:_revertSkillName(slot0:addNumColor(slot0:addLink(slot0:_replaceSkillTag(slot2, "▩(%d)%%s"))), 1)
+	slot0._txtComp.text = slot0:_revertSkillName(slot0:revertBracketText(slot0:addNumColor(slot0:filterBracketText(slot0:addLink(slot0:_replaceSkillTag(slot2, "▩(%d)%%s"))))), 1)
 	slot0._fixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.viewGO.gameObject, FixTmpBreakLine)
 
 	slot0._fixTmpBreakLine:refreshTmpContent(slot0.viewGO)
@@ -88,7 +94,7 @@ function slot0.addLink(slot0, slot1)
 	return string.gsub(string.gsub(slot1, "%[(.-)%]", slot0.addLinkCb1), "【(.-)】", slot0.addLinkCb2)
 end
 
-function slot3(slot0, slot1)
+function slot9(slot0, slot1)
 	slot1 = SkillHelper.removeRichTag(slot1)
 
 	if not SkillConfig.instance:getSkillEffectDescCoByName(slot1) then
@@ -123,34 +129,56 @@ function slot0.replaceColorFunc(slot0)
 	end
 end
 
-slot0.richTextList = {}
-slot0.replaceText = "▩replace▩"
-slot0.replaceIndex = 0
-
 function slot0.filterRichText(slot0, slot1)
-	tabletool.clear(uv0.richTextList)
+	tabletool.clear(uv0)
 
 	return string.gsub(slot1, "(<.->)", slot0._filterRichText)
 end
 
 function slot0._filterRichText(slot0)
-	table.insert(uv0.richTextList, slot0)
+	table.insert(uv0, slot0)
 
-	return uv0.replaceText
+	return uv1
 end
 
 function slot0.revertRichText(slot0, slot1)
-	uv0.replaceIndex = 0
+	uv0 = 0
 
-	tabletool.clear(uv0.richTextList)
+	tabletool.clear(uv2)
 
-	return string.gsub(slot1, uv0.replaceText, slot0._revertRichText)
+	return string.gsub(slot1, uv1, slot0._revertRichText)
 end
 
 function slot0._revertRichText(slot0)
-	uv0.replaceIndex = uv0.replaceIndex + 1
+	uv0 = uv0 + 1
 
-	return uv0.richTextList[uv0.replaceIndex] or ""
+	return uv1[uv0] or ""
+end
+
+function slot0.filterBracketText(slot0, slot1)
+	tabletool.clear(uv0)
+
+	return string.gsub(string.gsub(slot1, "【.-】", slot0._filterBracketText), "%[.-%]", slot0._filterBracketText)
+end
+
+function slot0._filterBracketText(slot0)
+	table.insert(uv0, slot0)
+
+	return uv1
+end
+
+function slot0.revertBracketText(slot0, slot1)
+	uv0 = 0
+
+	tabletool.clear(uv2)
+
+	return string.gsub(slot1, uv1, slot0._reverBracketText)
+end
+
+function slot0._reverBracketText(slot0)
+	uv0 = uv0 + 1
+
+	return uv1[uv0] or ""
 end
 
 function slot0._onHyperLinkClick(slot0, slot1, slot2)

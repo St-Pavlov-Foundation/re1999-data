@@ -31,7 +31,7 @@ function slot0._onClearFinish(slot0)
 end
 
 function slot0._onFightAct174Reply(slot0, slot1)
-	slot2 = slot1.fight
+	slot2 = FightData.New(slot1.fight)
 
 	FightMgr.instance:startFight(slot2)
 	FightModel.instance:updateFight(slot2)

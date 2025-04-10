@@ -1,6 +1,6 @@
 module("modules.logic.tips.view.FightFocusView", package.seeall)
 
-slot0 = class("FightFocusView", BaseViewExtended)
+slot0 = class("FightFocusView", FightBaseView)
 
 function slot0.onInitView(slot0)
 	slot0._btnclose = gohelper.findChildButtonWithAudio(slot0.viewGO, "fightinfocontainer/#btn_close")
@@ -8,6 +8,7 @@ function slot0.onInitView(slot0)
 	slot0._goinfoView = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView")
 	slot0._goinfoViewContent = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/content")
 	slot0._imagecareer = gohelper.findChildImage(slot0.viewGO, "fightinfocontainer/#go_infoView/content/info/#image_career")
+	slot0.levelRoot = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/content/info/levelbg")
 	slot0._txtlevel = gohelper.findChildText(slot0.viewGO, "fightinfocontainer/#go_infoView/content/info/levelbg/#txt_level")
 	slot0._txtname = gohelper.findChildText(slot0.viewGO, "fightinfocontainer/#go_infoView/content/info/#txt_name")
 	slot0._gostress = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/content/info/#go_fightstressitem")
@@ -72,6 +73,9 @@ function slot0.onInitView(slot0)
 	slot0._btnBuffMore = gohelper.getClickWithDefaultAudio(slot0._btnBuffObj)
 	slot0._goAssistBoss = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_assistBoss")
 	slot0._ani = SLFramework.AnimatorPlayer.Get(slot0.viewGO)
+	slot0.go_fetter = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/go_fetter")
+	slot0.go_quality = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/go_quality")
+	slot0.go_collection = gohelper.findChild(slot0.viewGO, "fightinfocontainer/#go_infoView/content/player/#go_collection")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -87,7 +91,7 @@ function slot0.addEvents(slot0)
 	slot0._btnSwitchEnemy:AddClickListener(slot0._onSwitchEnemy, slot0)
 	slot0._btnSwitchMember:AddClickListener(slot0._onSwitchMember, slot0)
 	slot0._btnBuffMore:AddClickListener(slot0._onBtnBuffMore, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.onReceiveEntityInfoReply, slot0._onReceiveEntityInfoReply, slot0)
+	slot0:com_registFightEvent(FightEvent.onReceiveEntityInfoReply, slot0._onReceiveEntityInfoReply)
 end
 
 function slot0.removeEvents(slot0)
@@ -249,10 +253,6 @@ function slot0._editableInitView(slot0)
 	slot0.resistanceComp = FightEntityResistanceComp.New(slot0._goresistance, slot0.viewContainer)
 
 	slot0.resistanceComp:onInitView()
-
-	slot0.stressComp = FightFocusStressComp.New()
-
-	slot0.stressComp:init(slot0._gostress)
 end
 
 function slot0.createSuperItem(slot0)
@@ -428,6 +428,9 @@ function slot0._refreshUI(slot0)
 
 	slot0:setAssistBossStatus(slot2)
 	slot0:refreshScrollEnemySelectStatus()
+	slot0:refreshDouQuQuFetter()
+	slot0:refreshDouQuQuStar()
+	slot0:refreshDouQuQuCollection()
 end
 
 function slot0.setAssistBossStatus(slot0, slot1, slot2)
@@ -497,8 +500,46 @@ function slot0._refreshInfo(slot0, slot1)
 	})
 	slot0:_refreshAttrList(slot0:_getMontBaseAttr(slot1))
 	slot0:_refreshResistance()
-	slot0.stressComp:refreshStress(slot0._entityMO)
+	slot0:refreshStress(slot0._entityMO)
 	gohelper.setActive(slot0._goplayerequipinfo, false)
+end
+
+slot0.StressUiType2Cls = {
+	[FightNameUIStressMgr.UiType.Normal] = FightFocusStressComp,
+	[FightNameUIStressMgr.UiType.Act183] = FightFocusAct183StressComp
+}
+
+function slot0.refreshStress(slot0, slot1)
+	if not slot1 or not slot1:hasStress() then
+		slot0:removeStressComp()
+
+		return
+	end
+
+	slot2 = FightStressHelper.getStressUiType(slot1.id)
+
+	if not slot0.stressComp then
+		slot0:createStressComp(slot2)
+		slot0.stressComp:refreshStress(slot1)
+
+		return
+	end
+
+	if slot0.stressComp:getUiType() == slot2 then
+		slot0.stressComp:refreshStress(slot1)
+
+		return
+	end
+
+	slot0:removeStressComp()
+	slot0:createStressComp(slot2)
+	slot0.stressComp:refreshStress(slot1)
+end
+
+function slot0.createStressComp(slot0, slot1)
+	slot0.stressComp = (uv0.StressUiType2Cls[slot1] or FightFocusStressCompBase).New()
+
+	slot0.stressComp:init(slot0._gostress)
 end
 
 function slot0._refreshResistance(slot0)
@@ -605,7 +646,7 @@ function slot0._refreshCharacterInfo(slot0, slot1)
 	})
 	slot0:_refreshSkill(slot6)
 	slot0:_refreshAttrList(slot0:_getHeroBaseAttr(slot3))
-	slot0.stressComp:refreshStress(slot0._entityMO)
+	slot0:refreshStress(slot0._entityMO)
 end
 
 function slot0._refreshHeroEquipInfo(slot0, slot1)
@@ -1168,12 +1209,15 @@ function slot0.refreshScrollEnemy(slot0)
 		gohelper.setActive(slot1.go, true)
 
 		slot1.entityMo = slot6
-		slot7 = slot6:getCO()
+		slot8 = slot6:getSpineSkinCO()
 
-		gohelper.getSingleImage(slot1.imageIcon.gameObject):LoadImage(ResUrl.monsterHeadIcon(slot6:getSpineSkinCO().headIcon))
-		UISpriteSetMgr.instance:setEnemyInfoSprite(slot1.imageCareer, "sxy_" .. tostring(slot7.career))
+		if slot6:getCO() then
+			UISpriteSetMgr.instance:setEnemyInfoSprite(slot1.imageCareer, "sxy_" .. tostring(slot7.career))
+		end
 
-		if slot7.heartVariantId and slot7.heartVariantId ~= 0 then
+		gohelper.getSingleImage(slot1.imageIcon.gameObject):LoadImage(ResUrl.monsterHeadIcon(slot8.headIcon))
+
+		if slot7 and slot7.heartVariantId and slot7.heartVariantId ~= 0 then
 			IconMaterialMgr.instance:loadMaterialAddSet(IconMaterialMgr.instance:getMaterialPathWithRound(slot7.heartVariantId), slot1.imageIcon)
 		end
 
@@ -1312,8 +1356,8 @@ function slot0._refreshPassiveDetail(slot0)
 end
 
 function slot0._checkDestinyEffect(slot0, slot1)
-	if slot1 and slot0._entityMO and HeroModel.instance:getByHeroId(slot0._entityMO:getCO().id) and slot3.destinyStoneMo then
-		slot1 = slot3.destinyStoneMo:_replaceSkill(slot1)
+	if slot1 and slot0._entityMO and slot0._entityMO:getHeroDestinyStoneMo() then
+		slot1 = slot2:_replaceSkill(slot1)
 	end
 
 	return slot1
@@ -1421,17 +1465,21 @@ function slot0.onDestroyView(slot0)
 
 	slot0.resistanceComp = nil
 
-	slot0.stressComp:destroy()
-
-	slot0.stressComp = nil
+	slot0:removeStressComp()
 
 	if slot0._assistBossView then
 		slot0._assistBossView:destory()
 
 		slot0._assistBossView = nil
 	end
+end
 
-	slot0:__onDispose()
+function slot0.removeStressComp(slot0)
+	if slot0.stressComp then
+		slot0.stressComp:destroy()
+
+		slot0.stressComp = nil
+	end
 end
 
 function slot0._releaseHeadItemList(slot0)
@@ -1571,6 +1619,52 @@ end
 
 function slot0._onBtnBuffMore(slot0)
 	ViewMgr.instance:openView(ViewName.FightBuffTipsView, slot0._curSelectId)
+end
+
+function slot0.refreshDouQuQuFetter(slot0)
+	if not FightDataHelper.fieldMgr.customData then
+		return
+	end
+
+	if slot1[FightCustomData.CustomDataType.Act191] then
+		if slot0.douQuQuFetterView then
+			slot0.douQuQuFetterView:refreshEntityMO(slot0._entityMO)
+		else
+			slot0.douQuQuFetterView = slot0:com_openSubView(FightDouQuQuFetterView, "ui/viewres/fight/fight_act191fetterview.prefab", slot0.go_fetter, slot0._entityMO)
+		end
+	end
+end
+
+function slot0.refreshDouQuQuStar(slot0)
+	if not FightDataHelper.fieldMgr.customData then
+		return
+	end
+
+	if slot1[FightCustomData.CustomDataType.Act191] then
+		gohelper.setActive(slot0.levelRoot, false)
+
+		if slot0.douQuQuStarView then
+			slot0.douQuQuStarView:refreshEntityMO(slot0._entityMO)
+		else
+			slot0.douQuQuStarView = slot0:com_openSubView(FightDouQuQuStarView, "ui/viewres/fight/fight_act191qualityview.prefab", slot0.go_quality, slot0._entityMO)
+		end
+	end
+end
+
+function slot0.refreshDouQuQuCollection(slot0)
+	if not FightDataHelper.fieldMgr.customData then
+		return
+	end
+
+	if slot1[FightCustomData.CustomDataType.Act191] then
+		gohelper.setActive(slot0.go_collection, true)
+
+		if slot0.douQuQuCollectionView then
+			slot0.douQuQuCollectionView:refreshEntityMO(slot0._entityMO)
+		else
+			slot0.douQuQuCollectionView = slot0:com_openSubView(FightDouQuQuCollectionView, "ui/viewres/fight/fight_act191collectionview.prefab", slot0.go_collection, slot0._entityMO)
+		end
+	end
 end
 
 return slot0

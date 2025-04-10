@@ -2,7 +2,7 @@ module("modules.logic.versionactivity2_5.challenge.model.Act183GroupEpisodeRecor
 
 slot0 = pureTable("Act183GroupEpisodeRecordMO")
 
-function slot0.init(slot0, slot1)
+function slot0.init(slot0, slot1, slot2)
 	slot0._playerName = slot1.playerName
 	slot0._portrait = slot1.portrait
 	slot0._groupId = slot1.groupId
@@ -11,6 +11,7 @@ function slot0.init(slot0, slot1)
 	slot0:_onEpisodeListInfoLoaded(slot1.episodeList)
 
 	slot0._finishedTime = slot1.finishedTime
+	slot0._actId = slot2
 end
 
 function slot0._onEpisodeListInfoLoaded(slot0, slot1)
@@ -77,18 +78,27 @@ function slot0.getGroupId(slot0)
 	return slot0._groupId
 end
 
+function slot0.getActivityId(slot0)
+	return slot0._actId
+end
+
 function slot0.getBossEpisodeConditionStatus(slot0)
 	slot1 = {}
 	slot2 = {}
+	slot3 = {}
+	slot4 = {}
 
-	for slot6, slot7 in ipairs(slot0._episodeList) do
-		if slot7:getEpisodeType() ~= Act183Enum.EpisodeType.Boss then
-			tabletool.addValues(slot1, slot7:getConditionIds())
-			tabletool.addValues(slot2, slot7:getPassConditions())
+	for slot8, slot9 in ipairs(slot0._episodeList) do
+		if slot9:getEpisodeType() ~= Act183Enum.EpisodeType.Boss then
+			tabletool.addValues(slot1, slot9:getConditionIds())
+			tabletool.addValues(slot2, slot9:getPassConditions())
+		else
+			slot3 = slot9:getPassConditions()
+			slot4 = slot9:getChooseConditions()
 		end
 	end
 
-	return slot1, slot2, slot0:getBossEpisode() and slot3:getPassConditions(), slot3 and slot3:getChooseConditions()
+	return slot1, slot2, slot3, slot4
 end
 
 return slot0

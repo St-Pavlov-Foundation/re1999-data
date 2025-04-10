@@ -88,9 +88,9 @@ function slot0._clacEditor(slot0)
 end
 
 function slot0._calcFightCards(slot0)
-	slot3 = FightCardModel.instance:getHandCards()
+	slot3 = FightDataHelper.handCardMgr.handCard
 
-	if FightModel.instance:getCurRoundMO() and slot1:getAIUseCardMOList() then
+	if FightDataHelper.roundMgr:getRoundData() and slot1:getAIUseCardMOList() then
 		for slot7, slot8 in ipairs(slot2) do
 			if FightDataHelper.entityMgr:getById(slot8.uid) then
 				slot0:_gatherSkill(FightEnum.EntitySide.EnemySide, slot9.skin, slot8.skillId)
