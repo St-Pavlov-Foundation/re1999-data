@@ -6378,5 +6378,30 @@
     "id": 27520003,
     "eventName": "play_activitysfx_yuzhou_chapter_continue",
     "bankName": "activity_yuzhou2_7_sfx"
+  },
+  {
+    "id": 27520004,
+    "eventName": "play_yuzhou2_7_cutscene_ending",
+    "bankName": "yuzhou2_7_cutscene_sfx_vo"
+  },
+  {
+    "id": 27520005,
+    "eventName": "play_yuzhou2_7_cutscene_opening",
+    "bankName": "yuzhou2_7_cutscene_sfx_vo"
+  },
+  {
+    "id": 27520006,
+    "eventName": "play_yuzhou2_7_cutscene_bossfought_sfx_vo",
+    "bankName": "yuzhou2_7_cutscene_sfx_vo"
+  },
+  {
+    "id": 27520007,
+    "eventName": "play_yuzhou2_7_cutscene_transfer",
+    "bankName": "yuzhou2_7_cutscene_sfx_vo"
+  },
+  {
+    "id": 27520008,
+    "eventName": "play_yuzhou2_7_pv_sfx_vo_music",
+    "bankName": "yuzhou2_7_cutscene_sfx_vo"
   }
 ]

@@ -1506,7 +1506,7 @@
     "count": 4,
     "scoreReward": 1000,
     "time": 36000,
-    "effectCondition": "1|1|3025#3028#3101#3109#3108#3004#3023",
+    "effectCondition": "1|1|3025#3028#3101#3109#3108#3004#3023#3077",
     "effect": "7200_1",
     "effectDesc": "任意1名曾随船航行之人参与追溯，可缩短追溯时间。",
     "unlockEpisodeId": 192301,

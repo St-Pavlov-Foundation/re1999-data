@@ -7,6 +7,7 @@ slot0.CustomDataType = {
 	Act183 = 1
 }
 slot1 = {
+	[slot0.CustomDataType.Act183] = true,
 	[slot0.CustomDataType.Act191] = true
 }
 

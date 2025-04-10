@@ -12,27 +12,40 @@ function slot0.onInitView(slot0)
 	slot0.imageYellow = gohelper.findChildImage(slot0.viewGO, "root/clock/unbroken/#go_area/#image_yellow")
 	slot0.imageRed = gohelper.findChildImage(slot0.viewGO, "root/clock/unbroken/#go_area/#image_red")
 	slot0.imageGreen = gohelper.findChildImage(slot0.viewGO, "root/clock/unbroken/#go_area/#image_green")
+	slot0.btnClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_click")
 	slot0.timeValueAnimator = gohelper.findChildComponent(slot0.viewGO, "root/timevalue", gohelper.Type_Animator)
 	slot0.timeValueBg = gohelper.findChildComponent(slot0.viewGO, "root/timevalue/bg", gohelper.Type_Image)
 	slot0.timeValueBgGlow = gohelper.findChildComponent(slot0.viewGO, "root/timevalue/bg_glow", gohelper.Type_Image)
 	slot4 = gohelper.Type_RectTransform
 	slot0.rectAnimRoot = gohelper.findChildComponent(slot0.viewGO, "root/timevalue/scroll/animroot", slot4)
-	slot0.txtTimeList = slot0:getUserDataTb_()
+	slot0.txtTimeList = {}
 	slot0.goTimeList = slot0:getUserDataTb_()
 
 	for slot4 = 1, 5 do
-		slot5 = gohelper.findChildText(slot0.viewGO, "root/timevalue/scroll/animroot/#txt_time_" .. slot4)
+		slot5 = gohelper.findChild(slot0.viewGO, "root/timevalue/scroll/animroot/#go_time_" .. slot4)
 
-		table.insert(slot0.txtTimeList, slot5)
-		table.insert(slot0.goTimeList, slot5.gameObject)
+		table.insert(slot0.goTimeList, slot5)
+
+		slot6 = slot0:getUserDataTb_()
+		slot0.txtTimeList[slot4] = slot6
+		slot6[FightParamData.ParamKey.DoomsdayClock_Range1] = gohelper.findChildText(slot5, "#txt_time_orange")
+		slot6[FightParamData.ParamKey.DoomsdayClock_Range2] = gohelper.findChildText(slot5, "#txt_time_yellow")
+		slot6[FightParamData.ParamKey.DoomsdayClock_Range3] = gohelper.findChildText(slot5, "#txt_time_red")
+		slot6[FightParamData.ParamKey.DoomsdayClock_Range4] = gohelper.findChildText(slot5, "#txt_time_green")
 	end
 
-	slot0.txtTime = slot0.txtTimeList[3]
 	slot0.key2Image = slot0:getUserDataTb_()
 	slot0.key2Image[FightParamData.ParamKey.DoomsdayClock_Range1] = slot0.imageOrange
 	slot0.key2Image[FightParamData.ParamKey.DoomsdayClock_Range2] = slot0.imageYellow
 	slot0.key2Image[FightParamData.ParamKey.DoomsdayClock_Range3] = slot0.imageRed
 	slot0.key2Image[FightParamData.ParamKey.DoomsdayClock_Range4] = slot0.imageGreen
+	slot0.key2ImageLine = slot0:getUserDataTb_()
+	slot0.key2ImageLine[FightParamData.ParamKey.DoomsdayClock_Range1] = gohelper.findChildComponent(slot0.viewGO, "root/clock/unbroken/#go_area/line1", gohelper.Type_RectTransform)
+	slot0.key2ImageLine[FightParamData.ParamKey.DoomsdayClock_Range2] = gohelper.findChildComponent(slot0.viewGO, "root/clock/unbroken/#go_area/line2", gohelper.Type_RectTransform)
+	slot0.key2ImageLine[FightParamData.ParamKey.DoomsdayClock_Range3] = gohelper.findChildComponent(slot0.viewGO, "root/clock/unbroken/#go_area/line3", gohelper.Type_RectTransform)
+	slot4 = slot0.viewGO
+	slot5 = "root/clock/unbroken/#go_area/line4"
+	slot0.key2ImageLine[FightParamData.ParamKey.DoomsdayClock_Range4] = gohelper.findChildComponent(slot4, slot5, gohelper.Type_RectTransform)
 	slot0.key2Transform = slot0:getUserDataTb_()
 	slot0.key2ImageEffect = slot0:getUserDataTb_()
 
@@ -60,11 +73,10 @@ end
 
 slot0.AreaId2Color = {
 	[FightParamData.ParamKey.DoomsdayClock_Range1] = "#e56745",
-	[FightParamData.ParamKey.DoomsdayClock_Range2] = "#ffd84c",
+	[FightParamData.ParamKey.DoomsdayClock_Range2] = "#4c7bff",
 	[FightParamData.ParamKey.DoomsdayClock_Range3] = "#e54550",
 	[FightParamData.ParamKey.DoomsdayClock_Range4] = "#60cace"
 }
-slot0.MaxArea = 12
 slot0.ZhiZhenTweenDuration = 0.5
 
 function slot0.addEvents(slot0)
@@ -72,13 +84,16 @@ function slot0.addEvents(slot0)
 	slot0:com_registFightEvent(FightEvent.DoomsdayClock_OnAreaChange, slot0.onAreaChange)
 	slot0:com_registFightEvent(FightEvent.DoomsdayClock_OnBroken, slot0.onBroken)
 	slot0:com_registFightEvent(FightEvent.OnIndicatorChange, slot0.onIndicatorChange)
-	slot0:com_registFightEvent(FightEvent.StageChanged, slot0.onStageChanged)
+	slot0:com_registFightEvent(FightEvent.DoomsdayClock_OnClear, slot0.onClear)
+	slot0.btnClick:AddClickListener(slot0.onClickClock, slot0)
 end
 
-function slot0.onStageChanged(slot0, slot1, slot2)
-	if slot1 == FightStageMgr.StageType.Normal then
-		slot0:refreshHighlightArea()
-	end
+function slot0.onClickClock(slot0)
+	HelpController.instance:showHelp(HelpEnum.HelpId.V2A7_boss)
+end
+
+function slot0.onClear(slot0)
+	slot0:refreshHighlightArea()
 end
 
 function slot0.refreshHighlightArea(slot0)
@@ -103,9 +118,15 @@ function slot0.refreshHighlightArea(slot0)
 	end
 
 	SLFramework.UGUI.GuiHelper.SetColor(slot0.timeValueBgGlow, slot4)
+	slot0:refreshTxtColor(slot3)
+	slot0.timeValueAnimator:Play("switch", 0, 0)
+end
 
-	for slot8, slot9 in ipairs(slot0.txtTimeList) do
-		SLFramework.UGUI.GuiHelper.SetColor(slot9, slot4)
+function slot0.refreshTxtColor(slot0, slot1)
+	for slot5, slot6 in ipairs(slot0.txtTimeList) do
+		for slot10, slot11 in pairs(slot6) do
+			gohelper.setActive(slot11.gameObject, slot10 == slot1)
+		end
 	end
 end
 
@@ -125,6 +146,7 @@ end
 
 function slot0.onBroken(slot0)
 	gohelper.setActive(slot0.goBroken, true)
+	AudioMgr.instance:trigger(20270057)
 end
 
 slot0.ItemHeight = 25
@@ -141,13 +163,20 @@ function slot0.onIndicatorChange(slot0, slot1, slot2)
 		return
 	end
 
+	FightModel.instance:setWaitIndicatorAnimation(true)
+
 	slot0.startValue = slot0.indicatorValue
 	slot0.endValue = slot0.indicatorValue + slot2
 	slot0.indicatorValue = slot0.endValue
 	slot0.totalOffset = math.abs(slot2)
 	slot0.offsetSymbol = slot2 / slot0.totalOffset
 	slot0.scrollLen = slot2 * uv0.ItemHeight
-	slot0.speed = slot0.scrollLen / uv0.ScrollDuration
+
+	if math.abs(slot2) <= 2 then
+		slot3 = uv0.ScrollDuration / 2
+	end
+
+	slot0.speed = slot0.scrollLen / slot3
 	slot0.scrolledAnchorY = 0
 	slot0.scrolledOffset = 0
 
@@ -187,7 +216,9 @@ end
 
 function slot0.setTimeValueTxt(slot0, slot1)
 	for slot5, slot6 in ipairs(slot0.txtTimeList) do
-		slot6.text = slot1 - uv0.ScrollCenterCount + slot5
+		for slot10, slot11 in pairs(slot6) do
+			slot11.text = slot1 - uv0.ScrollCenterCount + slot5
+		end
 	end
 end
 
@@ -199,9 +230,10 @@ end
 
 function slot0.onScrollAnimDone(slot0)
 	slot0.startScrollAnim = false
-	slot0.txtTime.text = slot0.indicatorValue
 
+	slot0:setTimeValueTxt(slot0.indicatorValue)
 	slot0:setTimeValueActive(false)
+	FightController.instance:dispatchEvent(FightEvent.OnIndicatorAnimationDone)
 end
 
 function slot0.onValueChange(slot0, slot1, slot2, slot3)
@@ -213,7 +245,6 @@ end
 function slot0.onAreaChange(slot0)
 	slot0:refreshArea()
 	slot0:tweenZhiZhen()
-	slot0.timeValueAnimator:Play("switch", 0, 0)
 end
 
 function slot0.getParamValue(slot0, slot1)
@@ -222,9 +253,8 @@ end
 
 function slot0.onOpen(slot0)
 	slot0.animator:Play("open")
-
-	slot0.txtTime.text = slot0.indicatorValue
-
+	slot0:setTimeValueTxt(slot0.indicatorValue)
+	slot0:refreshHighlightArea()
 	slot0:refreshArea()
 	slot0:directSetZhiZhenPos()
 	slot0:initUpdateBeat()
@@ -247,6 +277,8 @@ function slot0.tweenZhiZhen(slot0, slot1)
 
 	slot2 = slot0:getParamValue(FightParamData.ParamKey.DoomsdayClock_Value)
 	slot0.zhiZhenTweenId = ZProj.TweenHelper.DOTweenFloat(slot2 - slot1, slot2, uv0.ZhiZhenTweenDuration, slot0.tweenFrame, slot0.directSetZhiZhenPos, slot0)
+
+	AudioMgr.instance:trigger(20270055)
 end
 
 function slot0.tweenFrame(slot0, slot1)
@@ -266,13 +298,16 @@ slot0.RotateDuration = 1
 slot0.RotateEaseType = EaseType.OutCirc
 
 function slot0.refreshArea(slot0)
+	slot4 = slot0:getParamValue(FightParamData.ParamKey.DoomsdayClock_Offset) / slot0:getParamValue(FightParamData.ParamKey.DoomsdayClock_Range4) * 360
 	slot5 = 0
 
 	for slot9, slot10 in pairs(slot0.key2Image) do
 		slot11 = slot0:getParamValue(slot9) - slot5
 		slot10.fillAmount = slot11 / slot2
+		slot13 = slot5 / slot2 * 360
 
-		transformhelper.setLocalRotation(slot0.key2Transform[slot9], 0, 0, -(slot5 / slot2 * 360) + slot0:getParamValue(FightParamData.ParamKey.DoomsdayClock_Offset) / slot0:getParamValue(FightParamData.ParamKey.DoomsdayClock_Range4) * 360)
+		transformhelper.setLocalRotation(slot0.key2Transform[slot9], 0, 0, -slot13 + slot4)
+		transformhelper.setLocalRotation(slot0.key2ImageLine[slot9], 0, 0, -slot13 + slot4 - 180)
 
 		slot5 = slot5 + slot11
 	end
@@ -280,6 +315,8 @@ function slot0.refreshArea(slot0)
 	slot0:clearRotationTween()
 
 	slot0.tweenRotationId = ZProj.TweenHelper.DOTweenFloat(0, uv0.RotateCircleAngle, uv0.RotateDuration, slot0.onRotateFrameCallback, slot0.onRotateDoneCallback, slot0, nil, uv0.RotateEaseType)
+
+	AudioMgr.instance:trigger(20270056)
 end
 
 function slot0.onRotateFrameCallback(slot0, slot1)
@@ -333,6 +370,12 @@ end
 function slot0.onDestroyView(slot0)
 	if slot0.updateHandle then
 		UpdateBeat:RemoveListener(slot0.updateHandle)
+	end
+
+	if slot0.btnClick then
+		slot0.btnClick:RemoveClickListener()
+
+		slot0.btnClick = nil
 	end
 
 	slot0:clearZhiZhenTween()

@@ -12,6 +12,7 @@ function slot0.onInitView(slot0)
 	slot0._gohasoncefull = gohelper.findChild(slot0.viewGO, "root/btn/#go_hasoncefull")
 	slot0._gopoint = gohelper.findChild(slot0.viewGO, "root/point/#go_point")
 	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
+	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -20,16 +21,21 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnoncefull:AddClickListener(slot0._btnoncefullOnClick, slot0)
+	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, slot0._onUnlockStoneReply, slot0)
 	slot0:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	slot0._btnoncefull:RemoveClickListener()
-	slot0:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
+	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, slot0._onUnlockStoneReply, slot0)
+	slot0:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
 end
 
 function slot0._btnoncefullOnClick(slot0)
-	GameFacade.showMessageBox(MessageBoxIdDefine.EquipRefineCost, MsgBoxEnum.BoxType.Yes_No, slot0._useStoneUpTicket, nil, , slot0, nil, )
+	GameFacade.showMessageBox(MessageBoxIdDefine.CharacterDestinyStoneUpView, MsgBoxEnum.BoxType.Yes_No, slot0._useStoneUpTicket, nil, , slot0, nil, )
+end
+
+function slot0._useCallback(slot0)
 end
 
 function slot0._useStoneUpTicket(slot0)
@@ -39,13 +45,58 @@ function slot0._useStoneUpTicket(slot0)
 		materialId = TowerGiftEnum.StoneUpTicketId,
 		quantity = 1
 	})
-	ItemRpc.instance:sendUseItemRequest(slot1, slot0._upStoneId)
+	ItemRpc.instance:sendUseItemRequest(slot1, slot0._curStoneMo.stoneId)
 end
 
 function slot0._onItemChanged(slot0)
 	gohelper.setActive(slot0._gooncefull, false)
 	gohelper.setActive(slot0._gohasoncefull, true)
-	slot0:_refreshStoneItem(slot0._selectIndex)
+	slot0:_playAnim()
+	DestinyStoneGiftPickChoiceController.instance:dispatchEvent(DestinyStoneGiftPickChoiceEvent.hadStoneUp)
+end
+
+function slot0._playAnim(slot0)
+	if slot0._isSlotMaxLevel then
+		slot0._animator:Play("allup", 0, 0)
+		slot0:_refreshStoneItem()
+	elseif not slot0._curStoneMo.isUnlock then
+		slot0._animator:Play("allup", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum.CharacterDestinyStone.play_ui_fate_slots_unlock)
+
+		function slot0._cb()
+			TaskDispatcher.cancelTask(uv0._cb, uv0)
+			AudioMgr.instance:trigger(AudioEnum.VersionActivity2_2BPSP.play_ui_checkpoint_doom_disappear)
+		end
+
+		TaskDispatcher.runDelay(slot0._cb, slot0, 2.6)
+		slot0:_refreshStoneItem()
+	else
+		slot0._animator:Play("allup", 0, 0)
+		TaskDispatcher.runDelay(slot0._onPlayAnimBack, slot0, 2.6)
+	end
+end
+
+function slot0._onPlayAnimBack(slot0)
+	TaskDispatcher.cancelTask(slot0._onPlayAnimBack, slot0)
+
+	if slot0._effectItems then
+		for slot4, slot5 in ipairs(slot0._effectItems) do
+			gohelper.setActive(slot5.gounlock, slot0._heroMO.destinyStoneMo:isCanPlayAttrUnlockAnim(slot0._curStoneMo.stoneId, slot4))
+		end
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.VersionActivity2_2BPSP.play_ui_checkpoint_doom_disappear)
+	slot0:_refreshStoneItem()
+end
+
+function slot0._onUnlockStoneReply(slot0, slot1, slot2)
+	if slot0._curStoneMo then
+		slot0._curStoneMo:refresUnlock(true)
+	end
+
+	slot0:_refreshStoneItem()
+	gohelper.setActive(slot0._root, true)
+	gohelper.setActive(slot0._gounlockstone, false)
 end
 
 function slot0._editableInitView(slot0)
@@ -90,89 +141,68 @@ function slot0.onOpen(slot0)
 	end
 
 	slot0._heroMO = slot0.viewParam.heroMo
+	slot0._curStoneMo = slot0.viewParam.stoneMo
 	slot0._destinyStoneMo = slot0._heroMO.destinyStoneMo
-	slot0._upStoneId = slot0._destinyStoneMo:getUpStoneId()
-	slot0._curUseStoneId = slot0._heroMO.destinyStoneMo.curUseStoneId
+	slot0._isSlotMaxLevel = slot0._destinyStoneMo:isSlotMaxLevel()
 
-	if slot0._upStoneId then
-		slot0._upStone = true
-		slot0._curUseStoneId = slot0._upStoneId
-	end
+	if slot0._curStoneMo then
+		if not slot0._unlockStoneView then
+			slot0._unlockStoneView = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._gounlockstone, CharacterDestinyUnlockStoneComp)
 
-	slot0._facetMos = {}
-
-	if slot0._heroMO.destinyStoneMo.stoneMoList then
-		slot2 = 1
-		slot3 = 1
-
-		for slot7, slot8 in pairs(slot1) do
-			if slot8.stoneId == slot0._curUseStoneId then
-				slot3 = slot2
-			end
-
-			slot2 = slot2 + 1
-
-			table.insert(slot0._facetMos, slot8)
+			slot0._unlockStoneView:setStoneView(slot0)
 		end
 
-		slot0:_refreshStoneItem(slot3)
+		slot0._unlockStoneView:onUpdateMo(slot0._heroMO.heroId, slot0._curStoneMo.stoneId)
+		slot0:_refreshStoneItem()
 	end
 
 	gohelper.setActive(slot0._root, true)
 end
 
-function slot0._refreshStoneItem(slot0, slot1)
-	if not slot1 or slot1 == 0 then
-		slot1 = 1
-	end
-
-	slot2 = #slot0._facetMos
-	slot0._selectIndex = slot1
-	slot0._curStoneMo = slot0._facetMos[slot1]
-
+function slot0._refreshStoneItem(slot0)
 	if slot0._curStoneMo then
 		slot0._levelCos = slot0._curStoneMo:getFacetCo()
-		slot3 = slot0._curStoneMo.conusmeCo
+		slot1 = slot0._curStoneMo.conusmeCo
 
 		if slot0._levelCos then
-			for slot7, slot8 in ipairs(slot0._effectItems) do
-				slot8.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(slot8.txt.gameObject, SkillDescComp)
+			for slot5, slot6 in ipairs(slot0._effectItems) do
+				slot6.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(slot6.txt.gameObject, SkillDescComp)
 
-				slot8.skillDesc:updateInfo(slot8.txt, slot0._levelCos[slot7].desc, slot0._heroMO.heroId)
-				slot8.skillDesc:setTipParam(0, Vector2(300, 100))
+				slot6.skillDesc:updateInfo(slot6.txt, slot0._levelCos[slot5].desc, slot0._heroMO.heroId)
+				slot6.skillDesc:setTipParam(0, Vector2(300, 100))
 
-				slot10 = slot0._curStoneMo.isUnlock and slot7 <= slot0._heroMO.destinyStoneMo.rank
-				slot11 = slot8.txt.color
-				slot11.a = slot10 and 1 or 0.43
-				slot8.txt.color = slot11
+				slot8 = slot0._curStoneMo.isUnlock and slot5 <= slot0._heroMO.destinyStoneMo.rank
+				slot9 = slot6.txt.color
+				slot9.a = slot8 and 1 or 0.43
+				slot6.txt.color = slot9
 
-				if slot10 then
-					slot12 = slot8.unlockicon.color
-					slot12.a = slot10 and 1 or 0.43
-					slot8.unlockicon.color = slot12
+				if slot8 then
+					slot10 = slot6.unlockicon.color
+					slot10.a = slot8 and 1 or 0.43
+					slot6.unlockicon.color = slot10
 				else
-					slot12 = slot8.lockicon.color
-					slot12.a = slot10 and 1 or 0.43
-					slot8.lockicon.color = slot12
+					slot10 = slot6.lockicon.color
+					slot10.a = slot8 and 1 or 0.43
+					slot6.lockicon.color = slot10
 				end
 
-				gohelper.setActive(slot8.lockicon.gameObject, not slot10)
-				gohelper.setActive(slot8.unlockicon.gameObject, slot10)
+				gohelper.setActive(slot6.lockicon.gameObject, not slot8)
+				gohelper.setActive(slot6.unlockicon.gameObject, slot8)
 			end
 		end
 
 		gohelper.setActive(slot0._goEquip, slot0._curStoneMo.isUse)
 
-		if slot3 then
-			slot0._txtstonename.text, slot5 = slot0._curStoneMo:getNameAndIcon()
+		if slot1 then
+			slot0._txtstonename.text, slot3 = slot0._curStoneMo:getNameAndIcon()
 
-			slot0._simagestone:LoadImage(slot5)
+			slot0._simagestone:LoadImage(slot3)
 
-			slot6 = CharacterDestinyEnum.SlotTend[slot3.tend]
+			slot4 = CharacterDestinyEnum.SlotTend[slot1.tend]
 
-			UISpriteSetMgr.instance:setUiCharacterSprite(slot0._imageicon, slot6.TitleIconName)
+			UISpriteSetMgr.instance:setUiCharacterSprite(slot0._imageicon, slot4.TitleIconName)
 
-			slot0._txtstonename.color = GameUtil.parseColor(slot6.TitleColor)
+			slot0._txtstonename.color = GameUtil.parseColor(slot4.TitleColor)
 		end
 
 		slot0._imgstone.color = slot0._curStoneMo.isUnlock and Color.white or Color(0.5, 0.5, 0.5, 1)
@@ -180,17 +210,6 @@ function slot0._refreshStoneItem(slot0, slot1)
 
 	if not slot0._pointItems then
 		slot0._pointItems = slot0:getUserDataTb_()
-	end
-
-	if slot2 > 1 then
-		for slot6 = 1, slot2 do
-			gohelper.setActive(slot0:_getPointItem(slot6).select, slot1 == slot6)
-			gohelper.setActive(slot7.go, true)
-		end
-	else
-		for slot6, slot7 in ipairs(slot0._pointItems) do
-			gohelper.setActive(slot7.go, false)
-		end
 	end
 end
 
@@ -208,7 +227,8 @@ function slot0._getPointItem(slot0, slot1)
 end
 
 function slot0.onClose(slot0)
-	slot0._destinyStoneMo:clearUpStoneId()
+	TaskDispatcher.cancelTask(slot0._cb, slot0)
+	TaskDispatcher.cancelTask(slot0._onPlayAnimBack, slot0)
 end
 
 function slot0.onDestroyView(slot0)

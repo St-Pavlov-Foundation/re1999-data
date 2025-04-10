@@ -41,16 +41,27 @@ function slot0.onInitView(slot0)
 		RotateY = slot2,
 		IgnoreUIBlur = PostProcessingMgr.instance:getIgnoreUIBlur()
 	}
+	slot0._isNeedCircleMv = UIBlockMgrExtend.needCircleMv
 end
 
 function slot0.addEvents(slot0)
 	uv0.super.addEvents(slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenFullViewFinish, slot0._onOpenFullViewFinish, slot0, LuaEventSystem.Low)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinish, slot0)
+	slot0:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.SwitchBGM, slot0._switchBGM, slot0)
+	slot0:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OpenFinishMapLevelView, slot0._openFinishMapLevelView, slot0)
 end
 
 function slot0.removeEvents(slot0)
 	uv0.super.removeEvents(slot0)
 	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenFullViewFinish, slot0._onOpenFullViewFinish, slot0, LuaEventSystem.Low)
+	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
+	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0)
+	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinish, slot0)
+	slot0:removeEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.SwitchBGM, slot0._switchBGM, slot0)
+	slot0:removeEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OpenFinishMapLevelView, slot0._openFinishMapLevelView, slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -72,19 +83,73 @@ function slot0._onOpenFullViewFinish(slot0, slot1)
 	end
 end
 
-function slot0.onClose(slot0)
-	uv0.super.onClose(slot0)
+slot3 = {
+	ViewName.VersionActivity2_7StoreView,
+	ViewName.VersionActivity2_7TaskView,
+	ViewName.DungeonRewardView
+}
+
+function slot0._onOpenView(slot0, slot1)
+	if LuaUtil.tableContains(uv0, slot1) then
+		slot0:_resetCameraParam()
+	end
+
+	if slot1 == ViewName.StoryFrontView then
+		slot0:_playSceneBgm(false)
+	end
+end
+
+function slot0._openFinishMapLevelView(slot0, slot1)
+	slot0:_setLoadParent(slot1)
+end
+
+function slot0._onCloseView(slot0, slot1)
+	if LuaUtil.tableContains(uv0, slot1) then
+		slot0:_checkCameraParam()
+	end
+
+	if slot1 == ViewName.VersionActivity2_7DungeonMapLevelView then
+		slot0:_setLoadParent(slot0.viewGO)
+	end
+end
+
+function slot0._onCloseViewFinish(slot0, slot1)
+	if slot1 == ViewName.StoryFrontView then
+		slot0:_switchBGM()
+		slot0:refreshMap()
+	end
+end
+
+function slot0._switchBGM(slot0)
+	slot0:_playSceneBgm(slot0:_isSpaceScene())
+end
+
+function slot0._setLoadParent(slot0, slot1)
+	if slot0._loadObj then
+		slot0._loadObj.transform:SetParent(slot1.transform, true)
+	end
+end
+
+function slot0._cancelTask(slot0)
 	TaskDispatcher.cancelTask(slot0._cutSpaceScene, slot0)
 	TaskDispatcher.cancelTask(slot0._spaceSceneAnimFinish, slot0)
 	TaskDispatcher.cancelTask(slot0._enterOrReturnSpace, slot0)
 	TaskDispatcher.cancelTask(slot0._setMapPos, slot0)
+end
+
+function slot0.onClose(slot0)
+	uv0.super.onClose(slot0)
+	slot0:_cancelTask()
 	slot0:_resetCameraParam()
+	slot0:_playSceneBgm(false)
 
 	if slot0._mainCameraAnim then
 		slot0._mainCameraAnim.runtimeAnimatorController = slot0._cameraParam.runtimeAnimatorController
 	end
 
 	slot0._curEpisodeIndex = nil
+
+	VersionActivity2_7DungeonController.instance:resetLoading()
 end
 
 function slot0.refreshMap(slot0, slot1, slot2)
@@ -134,14 +199,30 @@ function slot0._reallyCutScene(slot0)
 	VersionActivityFixedDungeonModel.instance:setMapNeedTweenState(true)
 end
 
+slot0.UI_CLICK_BLOCK_KEY = "VersionActivity2_7DungeonMapScene_Click"
+
+function slot0._startBlock(slot0)
+	UIBlockMgrExtend.setNeedCircleMv(false)
+	UIBlockMgr.instance:startBlock(uv0.UI_CLICK_BLOCK_KEY)
+end
+
+function slot0._endBlock(slot0)
+	UIBlockMgrExtend.setNeedCircleMv(slot0._isNeedCircleMv)
+	UIBlockMgr.instance:endBlock(uv0.UI_CLICK_BLOCK_KEY)
+end
+
 function slot0._checkGoSpaceOrReturn(slot0)
+	slot0:_cancelTask()
+
 	if slot0._curEpisodeIndex and not slot0:_isSpaceScene(slot2) and slot0:_isSpaceScene(DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(slot0.activityDungeonMo.episodeId)) then
 		slot0._sceneAnimType = VersionActivity2_7DungeonEnum.SceneAnimType.GotoSpace
 
+		slot0:_startBlock()
 		slot0:_tweenPreSpaceScenePos()
 	elseif slot2 and slot0:_isSpaceScene(slot2) and not slot0:_isSpaceScene(slot1) then
 		slot0._sceneAnimType = VersionActivity2_7DungeonEnum.SceneAnimType.ReturnEarth
 
+		slot0:_startBlock()
 		slot0:_enterOrReturnSpace()
 	else
 		slot0._sceneAnimType = VersionActivity2_7DungeonEnum.SceneAnimType.Normal
@@ -163,7 +244,11 @@ function slot0._getEpisodeCoByIndex(slot0, slot1)
 end
 
 function slot0._getPreSpaceScenePos(slot0)
-	return slot0:_getEpisodeCoByIndex(VersionActivity2_7DungeonEnum.SpaceSceneEpisodeIndexs[1] - 1).initPos
+	return slot0:_getEpisodeCoByIndex(slot0:_getFirstSpaceSceneEpisodeIndex() - 1).initPos
+end
+
+function slot0._getFirstSpaceSceneEpisodeIndex(slot0)
+	return VersionActivity2_7DungeonEnum.SpaceSceneEpisodeIndexs[1] or 18
 end
 
 function slot0._tweenPreSpaceScenePos(slot0)
@@ -226,7 +311,7 @@ function slot0._loadSceneFinish(slot0)
 	slot0:_addMapLight()
 	slot0:_initElements()
 	slot0:_addMapAudio()
-	VersionActivity2_7DungeonController.instance:loadingFinish(slot0.activityDungeonMo.episodeId)
+	VersionActivity2_7DungeonController.instance:loadingFinish(slot0.activityDungeonMo.episodeId, slot0._sceneGo)
 end
 
 function slot0._enterOrReturnSpace(slot0)
@@ -237,6 +322,9 @@ function slot0._enterOrReturnSpace(slot0)
 	slot0:_playEnterOrReturnSpaceAnim(slot1, 0)
 
 	slot2 = slot1 and VersionActivity2_7DungeonEnum.GotoSpaceAnimName or VersionActivity2_7DungeonEnum.returnAnimName
+
+	slot0:_playSceneAnimBgm(slot1)
+
 	slot3 = 2.2
 
 	if slot0._animClipTime and slot0._animClipTime[slot2] then
@@ -259,6 +347,24 @@ function slot0._playEnterOrReturnSpaceAnim(slot0, slot1, slot2)
 	if slot0._loadAnim then
 		slot0._loadAnim:Play(slot3, 0, slot2 or 0)
 	end
+
+	if slot2 == 1 then
+		slot0:_playSceneBgm(slot1)
+	else
+		slot0:_playSceneAnimBgm(slot1)
+	end
+end
+
+function slot0._playSceneBgm(slot0, slot1)
+	slot2 = AudioEnum2_7.VersionActivity2_7SpaceBGM
+
+	AudioMgr.instance:trigger(slot1 and slot2.play_2_7_yuzhou_ui_checkpoint_amb_space or slot2.stop_2_7_yuzhou_ui_checkpoint_amb_space)
+end
+
+function slot0._playSceneAnimBgm(slot0, slot1)
+	slot2 = AudioEnum2_7.VersionActivity2_7SpaceBGM
+
+	AudioMgr.instance:trigger(slot1 and slot2.play_2_7_yuzhou_ui_checkinspace or slot2.play_2_7_yuzhou_ui_checkoutspace)
 end
 
 function slot0._cutSpaceScene(slot0)
@@ -270,6 +376,7 @@ function slot0._cutSpaceScene(slot0)
 end
 
 function slot0._spaceSceneAnimFinish(slot0)
+	slot0:_setLoadParent(slot0.viewGO)
 	gohelper.setActive(slot0._loadObj, false)
 
 	if not slot0:_isSpaceScene() then
@@ -280,10 +387,18 @@ function slot0._spaceSceneAnimFinish(slot0)
 		slot0.needTween = true
 
 		TaskDispatcher.cancelTask(slot0._setMapPos, slot0)
-		TaskDispatcher.runDelay(slot0._setMapPos, slot0, uv0)
+
+		if slot0._curEpisodeIndex == slot0:_getFirstSpaceSceneEpisodeIndex() - 1 then
+			slot0:_setMapPos()
+		else
+			TaskDispatcher.runDelay(slot0._setMapPos, slot0, uv0)
+		end
 
 		slot0._sceneAnimType = VersionActivity2_7DungeonEnum.SceneAnimType.Normal
 	end
+
+	slot0:_playSceneBgm(slot1)
+	slot0:_endBlock()
 end
 
 function slot0._onLoadRes(slot0)
@@ -440,6 +555,23 @@ function slot0.directSetCameraRotate(slot0, slot1, slot2, slot3)
 	transformhelper.setLocalRotationLerp(slot0._mainRoot.transform, slot1, slot2, slot3, Time.deltaTime * VersionActivity2_7DungeonEnum.DragSpeed)
 	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:dispatchEvent(VersionActivityFixedDungeonEvent.OnMapPosChanged, slot0._scenePos, slot0.needTween)
 	slot0:_updateElementArrow()
+end
+
+function slot0.onDestroyView(slot0)
+	uv0.super.onDestroyView(slot0)
+
+	if slot0._loader then
+		slot0._loader:dispose()
+
+		slot0._loader = nil
+	end
+
+	if slot0._loadObj then
+		gohelper.destroy(slot0._loadObj)
+
+		slot0._loadObj = nil
+		slot0._loadAnim = nil
+	end
 end
 
 return slot0

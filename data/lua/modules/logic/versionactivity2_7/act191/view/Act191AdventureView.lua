@@ -28,11 +28,6 @@ function slot0.removeEvents(slot0)
 	slot0._btnNext:RemoveClickListener()
 end
 
-function slot0._onEscBtnClick(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, true)
-	slot0:closeThis()
-end
-
 function slot0._btnEnemyInfoOnClick(slot0)
 	if slot0.battleId then
 		EnemyInfoController.instance:openAct191EnemyInfoView(slot0.battleId)
@@ -40,8 +35,6 @@ function slot0._btnEnemyInfoOnClick(slot0)
 end
 
 function slot0._btnNextOnClick(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, false)
-
 	if slot0.nodeDetailMo.type == Activity191Enum.NodeType.RewardEvent then
 		Activity191Rpc.instance:sendGain191RewardEventRequest(Activity191Model.instance:getCurActId(), slot0.onGainRewardReply, slot0)
 	elseif slot0.nodeDetailMo.type == Activity191Enum.NodeType.BattleEvent then
@@ -50,10 +43,6 @@ function slot0._btnNextOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
-end
-
-function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -88,6 +77,10 @@ function slot0.onOpen(slot0)
 			slot2 = string.splitToNumber(slot0.eventCo.offset, "#")
 
 			recthelper.setAnchor(slot0._goLive2d.transform, slot2[1], slot2[2])
+
+			if slot2[3] then
+				transformhelper.setLocalScale(slot0._goLive2d.transform, slot3, slot3, 1)
+			end
 		end
 	end
 
@@ -102,8 +95,11 @@ end
 
 function slot0.onGainRewardReply(slot0, slot1, slot2)
 	if slot2 == 0 then
-		Activity191Controller.instance:nextStep()
-		slot0:closeThis()
+		ViewMgr.instance:closeView(slot0.viewName)
+
+		if not Activity191Controller.instance:checkOpenGetView() then
+			Activity191Controller.instance:nextStep()
+		end
 	end
 end
 

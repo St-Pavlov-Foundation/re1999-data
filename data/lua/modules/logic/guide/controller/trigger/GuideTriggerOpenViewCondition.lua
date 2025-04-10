@@ -40,7 +40,7 @@ function slot0.checkTowerBossOpen()
 end
 
 function slot0.checkTowerLimitOpen()
-	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TimeLimitOpenLayerNum)) <= TowerPermanentModel.instance:getCurPermanentPassLayer() and TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() ~= nil
+	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TimeLimitOpenLayerNum)) <= TowerPermanentModel.instance:getCurPermanentPassLayer() and TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() ~= nil and GuideModel.instance:isGuideFinish(TowerEnum.BossGuideId)
 end
 
 function slot0.checkTowerPermanentElite()

@@ -86,7 +86,7 @@ function slot0.onOpen(slot0)
 	slot0:_freshLockStatus()
 	slot0:_showLeftTime()
 	TaskDispatcher.runRepeat(slot0._showLeftTime, slot0, 1)
-	slot0:openSubView(Act183StoreEntry, Act183Enum.StoreEntryPrefabUrl, slot0._gostore)
+	slot0:openExclusiveView(nil, 1, Act183StoreEntry, Act183Enum.StoreEntryPrefabUrl, slot0._gostore)
 end
 
 function slot0.onDestroyView(slot0)

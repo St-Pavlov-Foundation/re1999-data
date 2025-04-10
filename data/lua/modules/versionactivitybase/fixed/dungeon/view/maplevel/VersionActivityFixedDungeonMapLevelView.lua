@@ -298,6 +298,7 @@ function slot0.onOpen(slot0)
 	slot0:refreshBg()
 	slot0:refreshUI()
 	slot0.animator:Play(UIAnimationName.Open, 0, 0)
+	VersionActivityFixedDungeonController.instance:dispatchEvent(VersionActivityFixedDungeonEvent.OpenFinishMapLevelView, slot0.viewGO)
 end
 
 function slot0.initViewParam(slot0)

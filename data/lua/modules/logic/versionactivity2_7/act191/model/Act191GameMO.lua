@@ -8,7 +8,7 @@ function slot0.init(slot0, slot1)
 	slot0.curStage = slot1.curStage
 	slot0.curNode = slot1.curNode
 	slot0.nodeInfo = slot1.nodeInfo
-	slot0.curTeamIndex = slot1.curTeamIndex ~= 0 and slot1.curTeamIndex or 1
+	slot0.curTeamIndex = 1
 	slot0.teamInfo = slot1.teamInfo
 
 	slot0:updateWareHouseInfo(slot1.warehouseInfo)
@@ -27,27 +27,28 @@ function slot0.update(slot0, slot1)
 	slot0.curStage = slot1.curStage
 	slot0.curNode = slot1.curNode
 	slot0.nodeInfo = slot1.nodeInfo
-	slot0.curTeamIndex = slot1.curTeamIndex
 	slot0.teamInfo = slot1.teamInfo
 
-	slot0:updateWareHouseInfo(slot1.warehouseInfo, true)
+	slot0:updateWareHouseInfo(slot1.warehouseInfo)
 
 	slot0.score = slot1.score
 	slot0.state = slot1.state
 	slot0.rank = slot1.rank
 end
 
-function slot0.updateWareHouseInfo(slot0, slot1, slot2)
-	if not slot2 or slot0.warehouseInfo and #slot0.warehouseInfo.enhanceId ~= #slot1.enhanceId then
+function slot0.updateWareHouseInfo(slot0, slot1)
+	if not slot0.destinyHeroMap or slot0.warehouseInfo and #slot0.warehouseInfo.enhanceId ~= #slot1.enhanceId then
 		slot0.destinyHeroMap = {}
 		slot0.enhanceItemList = {}
 
-		for slot6, slot7 in ipairs(slot1.enhanceId) do
-			if string.nilorempty(Activity191Config.instance:getEnhanceCo(slot0.actId, slot7).relateItem) then
-				slot11 = string.splitToNumber(lua_activity191_effect.configDict[tonumber(slot8.effects)].typeParam, "#")
-				slot0.destinyHeroMap[slot11[1]] = slot11[2]
-			else
-				slot0.enhanceItemList[#slot0.enhanceItemList + 1] = tonumber(slot8.relateItem)
+		for slot5, slot6 in ipairs(slot1.enhanceId) do
+			slot9 = lua_activity191_effect.configDict[tonumber(Activity191Config.instance:getEnhanceCo(slot0.actId, slot6).effects)]
+			slot10 = string.splitToNumber(slot9.typeParam, "#")
+
+			if slot9.type == Activity191Enum.EffectType.EnhanceHero then
+				slot0.destinyHeroMap[slot10[1]] = slot10[2]
+			elseif slot9.type == Activity191Enum.EffectType.EnhanceItem then
+				slot0.enhanceItemList[#slot0.enhanceItemList + 1] = slot10[1]
 			end
 		end
 	end
@@ -106,7 +107,7 @@ function slot0.getNodeInfoById(slot0, slot1)
 end
 
 function slot0.getNodeDetailMo(slot0, slot1, slot2)
-	if not Activity191Helper.matchKeyInArray(slot0.nodeInfo, "nodeId", slot1 or slot0.curNode) or string.nilorempty(slot3.nodeStr) then
+	if not Activity191Helper.matchKeyInArray(slot0.nodeInfo, slot1 or slot0.curNode, "nodeId") or string.nilorempty(slot3.nodeStr) then
 		if slot2 then
 			return
 		end
@@ -123,17 +124,16 @@ function slot0.getNodeDetailMo(slot0, slot1, slot2)
 	return slot4
 end
 
-function slot0.getTeamInfo(slot0, slot1)
-	if not Activity191Helper.matchKeyInArray(slot0.teamInfo, "index", slot1 or slot0.curTeamIndex) then
-		slot2 = Activity191Module_pb.Act191BattleTeamInfo()
-		slot2.index = slot1
-		slot2.name = formatLuaLang("herogroup_common_name", GameUtil.getNum2Chinese(slot1))
-		slot2.auto = false
+function slot0.getTeamInfo(slot0)
+	if not Activity191Helper.matchKeyInArray(slot0.teamInfo, slot0.curTeamIndex) then
+		slot1 = Activity191Module_pb.Act191BattleTeamInfo()
+		slot1.index = slot0.curTeamIndex
+		slot1.auto = false
 
-		table.insert(slot0.teamInfo, slot2)
+		table.insert(slot0.teamInfo, slot1)
 	end
 
-	return slot2
+	return slot1
 end
 
 function slot0.getPreviewFetterCntDic(slot0, slot1)
@@ -149,13 +149,9 @@ function slot0.getPreviewFetterCntDic(slot0, slot1)
 			-- Nothing
 		end
 
-		if slot7 <= 4 and Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, "index", slot7) then
-			for slot17 = 1, 2 do
-				if slot13["itemUid" .. slot17] ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot18).itemId).tag) then
-					for slot24, slot25 in ipairs(string.split(slot20.tag, "#")) do
-						slot9[slot25] = 1
-					end
-				end
+		if slot7 <= 4 and Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, slot7) and slot13.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot14).itemId).tag) then
+			for slot20, slot21 in ipairs(string.split(slot16.tag, "#")) do
+				slot9[slot21] = 1
 			end
 		end
 
@@ -182,11 +178,9 @@ function slot0.getTeamFetterCntDic(slot0)
 				slot8[slot16] = 1
 			end
 
-			for slot15 = 1, 2 do
-				if slot7["itemUid" .. slot15] ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot16).itemId).tag) then
-					for slot23, slot24 in ipairs(string.split(slot18.tag, "#")) do
-						slot8[slot24] = 1
-					end
+			if slot7.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot7.itemUid1).itemId).tag) then
+				for slot17, slot18 in ipairs(string.split(slot13.tag, "#")) do
+					slot8[slot18] = 1
 				end
 			end
 		end
@@ -233,25 +227,12 @@ function slot0.getFetterHeroList(slot0, slot1)
 					inBag = slot10,
 					transfer = slot9
 				}
-			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) then
-				slot13 = false
-
-				if slot12.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot12.itemUid1).itemId).tag) and tabletool.indexOf(string.split(slot15.tag, "#"), slot1) then
-					slot2[#slot2 + 1] = {
-						inBag = 2,
-						transfer = 1,
-						config = slot8
-					}
-					slot13 = true
-				end
-
-				if not slot13 and slot12.itemUid2 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot12.itemUid2).itemId).tag) and tabletool.indexOf(string.split(slot15.tag, "#"), slot1) then
-					slot2[#slot2 + 1] = {
-						inBag = 2,
-						transfer = 1,
-						config = slot8
-					}
-				end
+			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) and slot12.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot12.itemUid1).itemId).tag) and tabletool.indexOf(string.split(slot14.tag, "#"), slot1) then
+				slot2[#slot2 + 1] = {
+					inBag = 2,
+					transfer = 1,
+					config = slot8
+				}
 			end
 		end
 	end
@@ -259,21 +240,6 @@ function slot0.getFetterHeroList(slot0, slot1)
 	table.sort(slot2, Activity191Helper.sortFetterHeroList)
 
 	return slot2
-end
-
-function slot0.setCurTeamIndex(slot0, slot1)
-	if slot0.curTeamIndex == slot1 then
-		return
-	end
-
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot1, slot0:getTeamInfo(slot1), Activity191Enum.OpTeamType.ChangeIndex)
-end
-
-function slot0.setTeamName(slot0, slot1)
-	slot2 = slot0:getTeamInfo()
-	slot2.name = slot1
-
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2, Activity191Enum.OpTeamType.ChangeName)
 end
 
 function slot0.setAutoFight(slot0, slot1)
@@ -339,9 +305,9 @@ function slot0.isHeroInTeam(slot0, slot1, slot2)
 	end
 end
 
-function slot0.teamHasMainHero(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTeamInfo(slot1 or slot0.curTeamIndex).battleHeroInfo) do
-		if slot7.heroId ~= 0 then
+function slot0.teamHasMainHero(slot0)
+	for slot5, slot6 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
+		if slot6.heroId ~= 0 then
 			return true
 		end
 	end
@@ -360,7 +326,7 @@ function slot0.saveQuickGroupInfo(slot0, slot1)
 	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
 end
 
-function slot0.repleaceHeroInTeam(slot0, slot1, slot2)
+function slot0.replaceHeroInTeam(slot0, slot1, slot2)
 	slot0:isHeroInTeam(slot1, true)
 
 	if slot2 <= 4 then
@@ -431,31 +397,23 @@ function slot0.isItemInTeam(slot0, slot1, slot2)
 			end
 
 			return true, slot8.heroId
-		elseif slot8.itemUid2 == slot1 then
-			if slot2 then
-				slot8.itemUid2 = 0
-			end
-
-			return true, slot8.heroId
 		end
 	end
 end
 
-function slot0.repleaceItemInTeam(slot0, slot1, slot2, slot3)
+function slot0.replaceItemInTeam(slot0, slot1, slot2)
 	slot0:isItemInTeam(slot1, true)
 
-	slot4 = slot0:getTeamInfo()
-	Activity191Helper.getWithBuildBattleHeroInfo(slot4.battleHeroInfo, slot2)["itemUid" .. slot3] = slot1
+	slot3 = slot0:getTeamInfo()
+	Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot2).itemUid1 = slot1
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot4)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
 end
 
 function slot0.removeItemInTeam(slot0, slot1)
 	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
 		if slot7.itemUid1 == slot1 then
 			slot7.itemUid1 = 0
-		elseif slot7.itemUid2 == slot1 then
-			slot7.itemUid2 = 0
 		end
 	end
 
@@ -465,12 +423,10 @@ end
 function slot0.exchangeItem(slot0, slot1, slot2)
 	slot3 = slot0:getTeamInfo()
 	slot4, slot5 = nil
-	slot7 = slot1 % 2 == 0 and 2 or 1
-	slot4 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, math.ceil(slot1 / 2))
-	slot5 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, math.ceil(slot2 / 2))
-	slot8 = slot2 % 2 == 0 and 2 or 1
-	slot4["itemUid" .. slot7] = slot5["itemUid" .. slot8]
-	slot5["itemUid" .. slot8] = slot4["itemUid" .. slot7]
+	slot4 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot1)
+	slot5 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot2)
+	slot4.itemUid1 = slot5.itemUid1
+	slot5.itemUid1 = slot4.itemUid1
 
 	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
 end
@@ -492,7 +448,7 @@ function slot0.isItemEnhance(slot0, slot1)
 end
 
 function slot0.autoFill(slot0)
-	slot1 = slot0:getTeamInfo(1)
+	slot1 = slot0:getTeamInfo()
 	slot2 = slot0.warehouseInfo.item
 
 	for slot6, slot7 in ipairs(slot0.warehouseInfo.hero) do
@@ -502,15 +458,19 @@ function slot0.autoFill(slot0)
 			if slot2[slot6] then
 				slot8.itemUid1 = slot2[slot6].uid
 			end
-
-			if slot2[slot6 + 4] then
-				slot8.itemUid2 = slot2[slot6 + 4].uid
-			end
 		elseif slot6 <= 8 then
 			Activity191Helper.getWithBuildSubHeroInfo(slot1.subHeroInfo, slot6 - 4).heroId = slot7.heroId
 		end
+	end
 
-		Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, 1, slot1)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, 1, slot1)
+end
+
+function slot0.getAct191Effect(slot0, slot1)
+	for slot5, slot6 in ipairs(slot0.warehouseInfo.effect) do
+		if slot6.id == slot1 then
+			return slot6
+		end
 	end
 end
 

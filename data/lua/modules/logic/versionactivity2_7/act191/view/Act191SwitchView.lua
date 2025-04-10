@@ -71,10 +71,6 @@ function slot0.onOpen(slot0)
 	TaskDispatcher.runDelay(slot0.closeThis, slot0, 2.3)
 end
 
-function slot0.onClose(slot0)
-	ViewMgr.instance:openView(ViewName.Act191StageView)
-end
-
 function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0.closeThis, slot0)
 end

@@ -1,13 +1,6 @@
 module("modules.logic.versionactivity2_7.act191.view.item.Act191CharacterInfo", package.seeall)
 
 slot0 = class("Act191CharacterInfo", LuaCompBase)
-slot0.AttrIdList = {
-	CharacterEnum.AttrId.Attack,
-	CharacterEnum.AttrId.Defense,
-	CharacterEnum.AttrId.Technic,
-	CharacterEnum.AttrId.Hp,
-	CharacterEnum.AttrId.Mdefense
-}
 
 function slot0.init(slot0, slot1)
 	slot0._go = slot1
@@ -46,22 +39,21 @@ end
 function slot0.setData(slot0, slot1)
 	slot0.config = slot1
 	slot0.passiveSkillIds = Activity191Config.instance:getHeroPassiveSkillIdList(slot1.id)
-	slot2 = lua_activity191_template.configDict[slot1.id]
 
 	for slot6 = 1, 5 do
-		slot0["txtAttrName" .. slot6].text = HeroConfig.instance:getHeroAttributeCO(uv0.AttrIdList[slot6]).name
+		slot7 = Activity191Enum.AttrIdList[slot6]
+		slot0["txtAttrName" .. slot6].text = HeroConfig.instance:getHeroAttributeCO(slot7).name
+		slot0["txtAttr" .. slot6].text = lua_activity191_template.configDict[slot1.id][Activity191Config.AttrIdToFieldName[slot7]]
 	end
 
-	slot0["txtAttr" .. 1].text = slot2.attack
-	slot0["txtAttr" .. 2].text = slot2.defense
-	slot0["txtAttr" .. 3].text = slot2.technic
-	slot0["txtAttr" .. 4].text = slot2.life
-	slot0["txtAttr" .. 5].text = slot2.mdefense
-	slot0.txtPassiveName.text = lua_skill.configDict[slot0.passiveSkillIds[1]].name
-	slot3 = nil
+	if lua_skill.configDict[slot0.passiveSkillIds[1]] then
+		slot0.txtPassiveName.text = slot3.name
+	end
 
-	for slot7 = 1, 3 do
-		gohelper.setActive(slot0["goPassiveSkill" .. slot7], slot7 <= (slot1.type == Activity191Enum.CharacterType.Hero and #SkillConfig.instance:getheroranksCO(slot1.roleId) - 1 or 0))
+	slot4 = nil
+
+	for slot8 = 1, 3 do
+		gohelper.setActive(slot0["goPassiveSkill" .. slot8], slot8 <= (slot1.type == Activity191Enum.CharacterType.Hero and #SkillConfig.instance:getheroranksCO(slot1.roleId) - 1 or 0))
 	end
 
 	slot0._skillContainer:onUpdateMO(slot1)

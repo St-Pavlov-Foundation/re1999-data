@@ -515,17 +515,17 @@
     "cgBg": "310901",
     "order": 23,
     "name": "海风的往事",
-    "nameEn": "T</size>he  <color=#D2CDBC><size=30>Last</size></color> Film<size=140>",
+    "nameEn": "<size=40>T</size>he Sea Breeze<color=#D2CDBC><size=30> Still Whispers</size></color>",
     "episodeId": 0,
     "main_pic": "rolestory_img_23",
     "monster_pic": "",
     "challengeBonus": "",
     "activityId": 12714,
     "activity_pic": "",
-    "cgUnlockEpisodeId": 192307,
-    "cgPos": "305#129",
-    "cgScale": "1",
-    "mainviewName": "最后的<size=34>电影</size>",
+    "cgUnlockEpisodeId": 192306,
+    "cgPos": "306#780",
+    "cgScale": "2",
+    "mainviewName": "海风<size=34>的往事</size>",
     "permanentUnlock": "2#24#1"
   }
 ]

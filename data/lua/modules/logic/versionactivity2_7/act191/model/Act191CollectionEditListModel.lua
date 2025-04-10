@@ -30,9 +30,19 @@ function slot0.initData(slot0, slot1)
 	end)
 	slot0:setList(slot2)
 
-	if #slot0._scrollViews > 0 and slot0.specialItem and slot0.specialItem ~= 0 then
-		for slot7, slot8 in ipairs(slot0._scrollViews) do
-			slot8:selectCell(1, true)
+	if slot0.specialItem and slot0.specialItem ~= 0 then
+		slot0:selectItem(slot0.specialItem, true)
+	end
+end
+
+function slot0.selectItem(slot0, slot1, slot2)
+	for slot7, slot8 in ipairs(slot0:getList()) do
+		if slot8.uid == slot1 then
+			for slot12, slot13 in ipairs(slot0._scrollViews) do
+				slot13:selectCell(slot7, slot2)
+			end
+
+			break
 		end
 	end
 end

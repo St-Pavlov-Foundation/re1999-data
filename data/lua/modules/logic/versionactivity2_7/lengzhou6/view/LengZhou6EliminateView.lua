@@ -14,7 +14,6 @@ function slot0.onInitView(slot0)
 	slot0._gochess = gohelper.findChild(slot0.viewGO, "#go_ChessBG/#go_chess")
 	slot0._btnclick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ChessBG/#go_chess/#btn_click")
 	slot0._goChessEffect = gohelper.findChild(slot0.viewGO, "#go_ChessEffect")
-	slot0._goeffect = gohelper.findChild(slot0.viewGO, "#go_ChessEffect/#go_effect")
 	slot0._goLoading = gohelper.findChild(slot0.viewGO, "#go_Loading")
 	slot0._sliderloading = gohelper.findChildSlider(slot0.viewGO, "#go_Loading/#slider_loading")
 	slot0._goContinue = gohelper.findChild(slot0.viewGO, "#go_Continue")
@@ -56,7 +55,20 @@ function slot0._btnclickOnClick(slot0)
 end
 
 function slot0._btnContinueOnClick(slot0)
+	if #LengZhou6GameModel.instance:getSelectSkillIdList() < LengZhou6Enum.defaultPlayerSkillSelectMax then
+		GameFacade.showMessageBox(MessageBoxIdDefine.LengZhou6EndLessContinue, MsgBoxEnum.BoxType.Yes_No, slot0._continueGame, nil, , slot0)
+	else
+		slot0:_continueGame()
+	end
+end
+
+function slot0._continueGame(slot0)
 	LengZhou6GameModel.instance:enterNextLayer()
+	LengZhou6GameModel.instance:resetSelectSkillId()
+
+	for slot5 = 1, #LengZhou6GameModel.instance:getSelectSkillIdList() do
+		LengZhou6GameModel.instance:setPlayerSelectSkillId(slot5, slot1[slot5])
+	end
 end
 
 function slot0._editableInitView(slot0)
@@ -104,6 +116,8 @@ function slot0.onSelectItem(slot0, slot1, slot2, slot3)
 			return
 		end
 	end
+
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_click)
 
 	if slot0._needReleaseSkill ~= nil then
 		if slot0._lastSelectX and slot0._lastSelectY then
@@ -208,7 +222,6 @@ function slot0.showLoading(slot0, slot1)
 	gohelper.setActive(slot0._goContinue, false)
 	gohelper.setActive(slot0._goChessEffect, false)
 	slot0:setMaskActive(true)
-	LengZhou6EliminateController.instance:createInitMoveStepAndUpdatePos()
 	slot0._sliderloading:SetValue(0)
 
 	if slot1 then
@@ -225,6 +238,8 @@ function slot0._showLoading(slot0)
 		slot0._conTweenId = nil
 	end
 
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_loading)
+
 	slot0._conTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, LengZhou6Enum.LoadingTime, slot0._updateLoading, slot0._finishLoading, slot0, nil, EaseType.Linear)
 end
 
@@ -235,6 +250,7 @@ function slot0._updateLoading(slot0, slot1)
 end
 
 function slot0._finishLoading(slot0)
+	LengZhou6EliminateController.instance:createInitMoveStepAndUpdatePos()
 	gohelper.setActive(slot0._goLoading, false)
 	gohelper.setActive(slot0._goChessBG, true)
 	gohelper.setActive(slot0._goChessEffect, true)
@@ -290,6 +306,7 @@ function slot0.OnShowAssess(slot0, slot1)
 
 	UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageAssess, EliminateEnum_2_7.AssessLevelToImageName[slot1], false)
 	gohelper.setActive(slot0._goAssess, true)
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_result)
 	TaskDispatcher.runDelay(slot0.hideAssess, slot0, EliminateEnum_2_7.AssessShowTime)
 end
 
@@ -313,16 +330,18 @@ function slot0.showEffect(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	slot5 = gohelper.clone(slot0._goeffect, slot0._goChessEffect, "effect_" .. slot0:getEffectIndex(slot1, slot2))
+	slot4 = slot0:getEffectIndex(slot1, slot2)
 
 	if slot0._effectList == nil then
 		slot0._effectList = slot0:getUserDataTb_()
 	end
 
+	if slot0._effectList[slot4] == nil then
+		slot0._effectList[slot4] = slot0:getResInst(slot0.viewContainer:getSetting().otherRes[4], slot0._goChessEffect, "effect_" .. slot4)
+	end
+
 	slot0:updateEffectInfo(slot5, slot1, slot2, slot3)
 	LocalEliminateChessModel.instance:recordSpEffect(slot1, slot2, slot3)
-
-	slot0._effectList[slot4] = slot5
 end
 
 function slot0.hideEffect(slot0, slot1, slot2, slot3)
@@ -330,12 +349,44 @@ function slot0.hideEffect(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	LocalEliminateChessModel.instance:recordSpEffect(slot1, slot2, nil)
+	if LocalEliminateChessModel.instance:getSpEffect(slot1, slot2) and slot3 == slot4 then
+		if slot0._effectList[slot0:getEffectIndex(slot1, slot2)] ~= nil and slot3 == EliminateEnum_2_7.ChessEffect.frost then
+			gohelper.findChild(slot6, "#image_sprite2"):GetComponent(typeof(UnityEngine.Animator)):Play("out", 0, 0)
 
+			if slot0._needHidePos == nil then
+				slot0._needHidePos = {}
+			end
+
+			table.insert(slot0._needHidePos, {
+				slot1,
+				slot2
+			})
+			TaskDispatcher.cancelTask(slot0._delayHideEffect, slot0)
+			TaskDispatcher.runDelay(slot0._delayHideEffect, slot0, 0.5)
+		else
+			slot0:_realHideEffect(slot1, slot2)
+		end
+	end
+end
+
+function slot0._delayHideEffect(slot0)
+	TaskDispatcher.cancelTask(slot0._delayHideEffect, slot0)
+
+	if slot0._needHidePos == nil then
+		return
+	end
+
+	for slot5 = 1, #slot0._needHidePos do
+		slot6 = table.remove(slot0._needHidePos, 1)
+
+		slot0:_realHideEffect(slot6[1], slot6[2])
+	end
+end
+
+function slot0._realHideEffect(slot0, slot1, slot2)
 	if slot0._effectList[slot0:getEffectIndex(slot1, slot2)] ~= nil then
-		gohelper.setActive(slot0._effectList[slot4], false)
-
-		slot0._effectList[slot4] = nil
+		LocalEliminateChessModel.instance:recordSpEffect(slot1, slot2, nil)
+		gohelper.setActive(slot0._effectList[slot3], false)
 	end
 end
 
@@ -349,10 +400,17 @@ function slot0.clearAllEffect(slot0)
 	for slot4, slot5 in pairs(slot0._effectList) do
 		if slot5 ~= nil then
 			gohelper.setActive(slot5, false)
+			gohelper.destroy(slot5)
 		end
 	end
 
-	tabletool.clear(slot0._effectList)
+	if slot0._needHidePos ~= nil then
+		tabletool.clear(slot0._needHidePos)
+	end
+
+	if slot0._effectList ~= nil then
+		tabletool.clear(slot0._effectList)
+	end
 end
 
 function slot0.getEffectIndex(slot0, slot1, slot2)
@@ -368,7 +426,10 @@ function slot0.updateEffectInfo(slot0, slot1, slot2, slot3, slot4)
 
 	gohelper.setActive(gohelper.findChildImage(slot1, "#image_sprite").gameObject, not slot7)
 	gohelper.setActive(gohelper.findChildImage(slot1, "#image_sprite2").gameObject, slot7)
-	transformhelper.setLocalPosXY(slot1.transform, (slot2 - 1) * EliminateEnum.ChessWidth, (slot3 - 1) * EliminateEnum.ChessHeight)
+
+	slot8, slot9 = LocalEliminateChessUtils.instance.getChessPos(slot2, slot3)
+
+	transformhelper.setLocalPosXY(slot1.transform, slot8, slot9)
 	gohelper.setActive(slot1, true)
 end
 
@@ -444,6 +505,9 @@ function slot0.onDestroyView(slot0)
 		slot0._conTweenId = nil
 	end
 
+	slot0._needHidePos = nil
+
+	TaskDispatcher.cancelTask(slot0._delayHideEffect, slot0)
 	TaskDispatcher.cancelTask(slot0._showLoading, slot0)
 	TaskDispatcher.cancelTask(slot0.checkTip, slot0)
 end

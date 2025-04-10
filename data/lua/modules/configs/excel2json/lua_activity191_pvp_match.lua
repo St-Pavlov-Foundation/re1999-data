@@ -2,6 +2,7 @@ module("modules.configs.excel2json.lua_activity191_pvp_match", package.seeall)
 
 slot1 = {
 	rewardView = 2,
+	attribute = 4,
 	autoRewardView = 3,
 	type = 1
 }

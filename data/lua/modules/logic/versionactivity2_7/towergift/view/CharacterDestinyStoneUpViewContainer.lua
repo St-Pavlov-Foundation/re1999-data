@@ -26,16 +26,4 @@ function slot0.buildTabViews(slot0, slot1)
 	end
 end
 
-function slot0.setOpenUnlockStoneView(slot0, slot1)
-	slot0._openUnlockStoneView = slot1
-end
-
-function slot0.overrideCloseFunc(slot0)
-	if slot0._openUnlockStoneView then
-		slot0._stoneView:closeUnlockStoneView()
-	else
-		slot0:closeThis()
-	end
-end
-
 return slot0

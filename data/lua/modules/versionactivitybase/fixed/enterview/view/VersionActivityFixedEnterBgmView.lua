@@ -32,7 +32,9 @@ function slot0.onOpen(slot0)
 	slot1 = slot0.viewParam.activitySettingList or {}
 	slot0._isFirstOpenMainAct = VersionActivityEnterHelper.getActId(slot1[VersionActivityEnterHelper.getTabIndex(slot1, slot0.viewParam.jumpActId)]) == VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
 
-	slot0:modifyBgm(slot4)
+	if not slot0.viewParam.isDirectOpen then
+		slot0:modifyBgm(slot4)
+	end
 
 	slot0._isFirstOpenMainAct = false
 end

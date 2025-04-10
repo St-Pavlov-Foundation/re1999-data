@@ -462,7 +462,7 @@ function slot0._loadL2dResFinish(slot0)
 			slot6:SetNativeSize()
 		end
 
-		Live2dRTShareController.instance:addShareInfo(slot2, slot6, slot0._shareRT)
+		Live2dRTShareController.instance:addShareInfo(slot2, slot6, slot0._shareRT, slot0._heroId, slot0._skinId)
 	end
 
 	slot0._mat = UnityEngine.Object.Instantiate(slot0._guiL2dLoader:getAssetItem(uv3):GetResource())

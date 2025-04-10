@@ -46,7 +46,6 @@ function slot0._editableInitView(slot0)
 	slot0:setActive_goCanGet(false)
 
 	slot0._imageRewardGo = gohelper.findChild(slot0.viewGO, "image_Reward")
-	slot0._imageRewardImg = slot0._imageRewardGo:GetComponent(gohelper.Type_Image)
 	slot0._itemIcon = IconMgr.instance:getCommonPropItemIcon(slot0._imageRewardGo)
 	slot0._imageRewardBG = gohelper.findChildImage(slot0.viewGO, "image_RewardBG")
 	slot0._imageTipsBGGo = gohelper.findChild(slot0.viewGO, "image_TipsBG")
@@ -74,7 +73,7 @@ function slot0.onUpdateMO(slot0, slot1)
 		slot0._itemIcon:setScale(0.8)
 	end
 
-	UIColorHelper.set(slot0._imageRewardImg, slot3)
+	slot0._itemIcon:setItemColor(slot3)
 	UIColorHelper.set(slot0._imageRewardBG, slot3)
 
 	slot0._txtNum.text = luaLang("multiple") .. slot11

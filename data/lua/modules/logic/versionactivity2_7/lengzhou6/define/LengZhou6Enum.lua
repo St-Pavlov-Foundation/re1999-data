@@ -58,6 +58,8 @@ slot0.BattleProgress = {
 	selectSkill = 1
 }
 slot0.EnemySkillTime = 1
+slot0.EnemySkillTime_2 = 0.5
+slot0.EnemyBuffEffectShowTime = 0.5
 slot0.enterGM = false
 slot0.DebugPlayerHp = 10000000
 slot0.PlayerSkillMaxCount = 3
@@ -74,5 +76,7 @@ slot0.GameResult = {
 	infiniteCancel = 4,
 	win = 1
 }
+slot0.defaultEnemy = 227101
+slot0.defaultPlayerSkillSelectMax = 3
 
 return slot0

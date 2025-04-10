@@ -977,6 +977,24 @@ function slot0.hideDefenderBuffEffect(slot0, slot1)
 					end
 				end
 			end
+
+			if slot13.buff and slot13.buff._loopBuffEffectWrapDict then
+				for slot19, slot20 in pairs(slot15) do
+					if slot5 then
+						slot3[slot13.id] = slot13.id
+
+						table.insert(slot4, slot20)
+					else
+						for slot24, slot25 in ipairs(slot6) do
+							if uv0.getEffectUrlWithLod(slot25) == slot20.path then
+								slot3[slot13.id] = slot13.id
+
+								table.insert(slot4, slot20)
+							end
+						end
+					end
+				end
+			end
 		end
 
 		slot10 = {

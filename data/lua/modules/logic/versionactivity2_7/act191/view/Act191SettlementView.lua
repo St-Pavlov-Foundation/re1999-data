@@ -29,14 +29,18 @@ function slot0._btnCloseOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot0.animEvent = slot0.viewGO:GetComponent(gohelper.Type_AnimationEventWrap)
-
-	slot0.animEvent:AddEventListener("PlayBadgeAnim", slot0.playBadgeAnim, slot0)
-
 	slot0.heroContainer = gohelper.findChild(slot0.viewGO, "Left/herogroupcontain/heroContainer")
 
 	slot0:initHeroInfoItem()
 	slot0:initHeroAndEquipItem()
+
+	slot0.animEvent = slot0.viewGO:GetComponent(gohelper.Type_AnimationEventWrap)
+
+	slot0.animEvent:AddEventListener("PlayBadgeAnim", slot0.playBadgeAnim, slot0)
+
+	slot0.actInfo = Activity191Model.instance:getActInfo()
+
+	slot0:initBadge()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -45,7 +49,6 @@ end
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
 
-	slot0.actInfo = Activity191Model.instance:getActInfo()
 	slot0.gameInfo = slot0.actInfo:getGameInfo()
 	slot0.gameEndInfo = slot0.actInfo:getGameEndInfo()
 
@@ -55,12 +58,12 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
-	if slot0.gameEndInfo and slot0.gameEndInfo.gainScore ~= 0 then
-		slot1 = MaterialDataMO.New()
+	if slot0.gameEndInfo and slot0.gameEndInfo.gainScore ~= 0 and CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.Act191).quantity < tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.PlayerMaxScore].value) then
+		slot3 = MaterialDataMO.New()
 
-		slot1:initValue(2, 2302, slot0.gameEndInfo.gainScore)
+		slot3:initValue(MaterialEnum.MaterialType.Currency, CurrencyEnum.CurrencyType.Act191, slot0.gameEndInfo.gainScore)
 		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, {
-			slot1
+			slot3
 		})
 	end
 
@@ -74,23 +77,14 @@ end
 
 function slot0.initHeroInfoItem(slot0)
 	slot0.heroInfoItemList = {}
-	slot1 = gohelper.findChild(slot0.heroContainer, "go_HeroInfo")
 
-	for slot5 = 1, 4 do
-		slot6 = slot0:getUserDataTb_()
-		slot7 = gohelper.findChild(slot0.heroContainer, "bg" .. slot5)
-		slot8 = gohelper.clone(slot1, slot7, "heroInfo" .. slot5)
-		slot6.goIndex = gohelper.findChild(slot7, "Index")
-		slot6.go = slot8
-		slot6.txtName = gohelper.findChildText(slot8, "txt_Name")
-		slot6.imageExSkill = gohelper.findChildImage(slot8, "exskill/image_ExSkill")
-		slot6.goStar1 = gohelper.findChildImage(slot8, "hp/bg/1")
-		slot6.goStar2 = gohelper.findChildImage(slot8, "hp/bg/2")
-		slot6.goStar3 = gohelper.findChildImage(slot8, "hp/bg/3")
-		slot0.heroInfoItemList[slot5] = slot6
+	for slot4 = 1, 4 do
+		slot5 = slot0:getUserDataTb_()
+		slot6 = gohelper.findChild(slot0.heroContainer, "bg" .. slot4)
+		slot5.goIndex = gohelper.findChild(slot6, "Index")
+		slot5.txtName = gohelper.findChildText(slot6, "Name")
+		slot0.heroInfoItemList[slot4] = slot5
 	end
-
-	gohelper.setActive(slot1, false)
 end
 
 function slot0.initHeroAndEquipItem(slot0)
@@ -100,7 +94,10 @@ function slot0.initHeroAndEquipItem(slot0)
 
 	for slot5 = 1, 8 do
 		slot0.heroPosTrList[slot5] = gohelper.findChild(slot1, "heroPos" .. slot5).transform
-		slot0.equipPosTrList[slot5] = gohelper.findChild(slot1, "equipPos" .. slot5).transform
+
+		if slot5 <= 4 then
+			slot0.equipPosTrList[slot5] = gohelper.findChild(slot1, "equipPos" .. slot5).transform
+		end
 	end
 
 	slot2 = gohelper.findChild(slot0.heroContainer, "go_HeroItem")
@@ -109,22 +106,24 @@ function slot0.initHeroAndEquipItem(slot0)
 	slot0.equipItemList = {}
 
 	for slot7 = 1, 8 do
-		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot2, "hero" .. slot7), Act191HeroGroupItem1, slot0)
+		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot2, "hero" .. slot7), Act191HeroGroupItem1)
 
-		slot9.heroHeadItem:setClickEnable(false)
 		slot9:setIndex(slot7)
+		slot9:setClickEnable(false)
 
 		slot0.heroItemList[slot7] = slot9
 
 		slot0:_setHeroItemPos(slot9, slot7)
 
-		slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
+		if slot7 <= 4 then
+			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
 
-		slot10:setIndex(slot7)
+			slot10:setIndex(slot7)
 
-		slot0.equipItemList[slot7] = slot10
+			slot0.equipItemList[slot7] = slot10
 
-		slot0:_setEquipItemPos(slot10, slot7)
+			slot0:_setEquipItemPos(slot10, slot7)
+		end
 	end
 
 	gohelper.setActive(slot2, false)
@@ -136,40 +135,29 @@ function slot0.refreshLeft(slot0)
 	slot4 = slot1:getTeamInfo()
 
 	for slot8 = 1, 4 do
-		slot10, slot11, slot12 = nil
+		slot10, slot11 = nil
 
-		if Activity191Helper.matchKeyInArray(slot4.battleHeroInfo, "index", slot8) then
+		if Activity191Helper.matchKeyInArray(slot4.battleHeroInfo, slot8) then
 			slot10 = slot9.heroId
 			slot11 = slot9.itemUid1
-			slot12 = slot9.itemUid2
 		end
 
 		slot0.heroItemList[slot8]:setData(slot10)
+		slot0.equipItemList[slot8]:setData(slot11)
 
-		slot13 = (slot8 - 1) * 2
-
-		slot0.equipItemList[slot13 + 1]:setData(slot11)
-		slot0.equipItemList[slot13 + 2]:setData(slot12)
-
-		slot14 = slot0.heroInfoItemList[slot8]
+		slot12 = slot0.heroInfoItemList[slot8]
 
 		if slot10 and slot10 ~= 0 then
-			slot16 = Activity191Config.instance:getRoleCoByNativeId(slot10, slot1:getHeroInfoInWarehouse(slot10).star)
-			slot14.txtName.text = slot16.name
-			slot14.imageExSkill.fillAmount = slot16.exLevel / CharacterEnum.MaxSkillExLevel
+			slot12.txtName.text = Activity191Config.instance:getRoleCoByNativeId(slot10, slot1:getHeroInfoInWarehouse(slot10).star).name
 
-			for slot20 = 1, Activity191Enum.CharacterMaxStar do
-				gohelper.setActive(slot14["goStar" .. slot20], slot20 <= slot16.star)
-			end
-
-			gohelper.setActive(slot14.goIndex, false)
-			gohelper.setActive(slot14.go, true)
+			gohelper.setActive(slot12.goIndex, false)
+			gohelper.setActive(slot12.txtName, true)
 		else
-			gohelper.setActive(slot14.goIndex, true)
-			gohelper.setActive(slot14.go, false)
+			gohelper.setActive(slot12.goIndex, true)
+			gohelper.setActive(slot12.txtName, false)
 		end
 
-		slot0.heroItemList[slot8 + 4]:setData(Activity191Helper.matchKeyInArray(slot4.subHeroInfo, "index", slot8) and slot16.heroId or 0)
+		slot0.heroItemList[slot8 + 4]:setData(Activity191Helper.matchKeyInArray(slot4.subHeroInfo, slot8) and slot14.heroId or 0)
 	end
 
 	for slot10, slot11 in ipairs(Activity191Helper.getActiveFetterInfoList(slot1:getTeamFetterCntDic())) do
@@ -220,8 +208,9 @@ function slot0._setEquipItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
 end
 
 function slot0.refreshRight(slot0)
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
-	slot0:initBadge()
+	if slot0.gameInfo.curStage ~= 0 then
+		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
+	end
 
 	slot0._txtScore.text = slot0.gameEndInfo.gainScore
 end

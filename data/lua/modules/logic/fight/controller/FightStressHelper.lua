@@ -3,7 +3,7 @@ module("modules.logic.fight.controller.FightStressHelper", package.seeall)
 slot0 = _M
 
 function slot0.getStressUiType(slot0)
-	if not string.nilorempty(FightDataHelper.fieldMgr.customData and FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183]) and cjson.decode(slot1).stressIdentity[slot0] then
+	if FightDataHelper.fieldMgr.customData and FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183] and slot1.stressIdentity[slot0] then
 		table.sort(slot2, uv0.sortIdentity)
 
 		return uv0.getIdentityUiType(slot2[1])

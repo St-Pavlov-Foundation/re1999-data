@@ -3,13 +3,11 @@ module("modules.logic.versionactivity2_7.act191.view.Act191HeroGroupView", packa
 slot0 = class("Act191HeroGroupView", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0._btnChangeName = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/btnContain/horizontal/#drop_HeroGroup/#btn_ChangeName")
 	slot0._btnStart = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/btnContain/horizontal/#btn_Start")
 	slot0._scrollInfo = gohelper.findChildScrollRect(slot0.viewGO, "container/#scroll_Info")
-	slot0._txtName = gohelper.findChildText(slot0.viewGO, "container/#scroll_Info/infocontain/episodetitle/titlebg/#txt_Name")
+	slot0._imageRank = gohelper.findChildImage(slot0.viewGO, "container/#scroll_Info/infocontain/enemyrank/bg/txt_Name/#image_Rank")
 	slot0._btnEnemy = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/#scroll_Info/infocontain/enemycontain/enemytitle/txten/#btn_Enemy")
 	slot0._goEnemyTeam = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/enemycontain/enemyList/#go_EnemyTeam")
-	slot0._txtRecommendLevel = gohelper.findChildText(slot0.viewGO, "container/#scroll_Info/infocontain/enemycontain/enemyLevel/#txt_RecommendLevel")
 	slot0._goRewardList = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/rewardpreview/#go_RewardList")
 	slot0._goRewardItem = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/rewardpreview/#go_RewardList/#go_RewardItem")
 	slot0._btnDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/#scroll_Info/infocontain/autofight/title/#btn_Detail")
@@ -24,7 +22,6 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
-	slot0._btnChangeName:AddClickListener(slot0._btnChangeNameOnClick, slot0)
 	slot0._btnStart:AddClickListener(slot0._btnStartOnClick, slot0)
 	slot0._btnEnemy:AddClickListener(slot0._btnEnemyOnClick, slot0)
 	slot0._btnDetail:AddClickListener(slot0._btnDetailOnClick, slot0)
@@ -32,7 +29,6 @@ function slot0.addEvents(slot0)
 end
 
 function slot0.removeEvents(slot0)
-	slot0._btnChangeName:RemoveClickListener()
 	slot0._btnStart:RemoveClickListener()
 	slot0._btnEnemy:RemoveClickListener()
 	slot0._btnDetail:RemoveClickListener()
@@ -59,21 +55,14 @@ function slot0._btnEnemyOnClick(slot0)
 	end
 end
 
-function slot0._btnChangeNameOnClick(slot0)
-	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnChangeNameOnClick")
-	ViewMgr.instance:openView(ViewName.Act191ModifyNameView)
-end
-
 function slot0._editableInitView(slot0)
 	slot0.anim = slot0.viewGO:GetComponent(gohelper.Type_Animator)
-	slot0.dropHeroGroup = gohelper.findChildDropdown(slot0.viewGO, "container/btnContain/horizontal/#drop_HeroGroup")
 	slot0._monsterGroupItemList = {}
 	slot0.actId = Activity191Model.instance:getCurActId()
 	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 	slot0._toggleAutoFight.isOn = slot0.gameInfo:getTeamInfo() and slot1.auto or false
 
 	slot0._toggleAutoFight:AddOnValueChanged(slot0.onToggleValueChanged, slot0)
-	slot0:initDrop()
 
 	slot0.goAutoFight = gohelper.findChild(slot0._goRewardList, "mask/#autofight")
 
@@ -87,8 +76,7 @@ end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
-	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnHeroGroupExit, slot0.closeThis, slot0)
-	slot0:addEventCb(Activity191Controller.instance, Activity191Event.ModifyTeamName, slot0.refreshDropValue, slot0)
+	slot0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnHeroGroupExit, slot0.eventClose, slot0)
 
 	slot0.nodeDetailMo = slot0.gameInfo:getNodeDetailMo()
 
@@ -96,19 +84,10 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.refreshUI(slot0)
-	slot0:refreshDropValue()
-
 	slot0.isPvp = Activity191Helper.isPvpBattle(slot0.nodeDetailMo.type)
+	slot1 = nil
 
-	if not slot0.isPvp then
-		slot2 = lua_activity191_fight_event.configDict[slot0.nodeDetailMo.fightEventId]
-		slot0._txtName.text = slot2.title
-		slot0._txtRecommendLevel.text = slot2.fightLevel
-	else
-		slot0._txtName.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.PvpEpisodeName].value2
-		slot0._txtRecommendLevel.text = lua_activity191_match_rank.configDict[slot0.nodeDetailMo.matchInfo.rank].fightLevel
-	end
-
+	UISpriteSetMgr.instance:setAct174Sprite(slot0._imageRank, "act191_level_" .. string.lower((slot0.isPvp or lua_activity191_fight_event.configDict[slot0.nodeDetailMo.fightEventId].fightLevel) and lua_activity191_match_rank.configDict[slot0.nodeDetailMo.matchInfo.rank].fightLevel))
 	slot0:showEnemyList()
 	slot0:refreshReward()
 end
@@ -118,55 +97,7 @@ function slot0.onClose(slot0)
 end
 
 function slot0.onDestroyView(slot0)
-	slot0.dropClick:RemoveClickListener()
 	slot0._toggleAutoFight:RemoveOnValueChanged()
-
-	if slot0.dropExtend then
-		slot0.dropExtend:dispose()
-	end
-end
-
-function slot0.onDropShow(slot0)
-	transformhelper.setLocalScale(slot0.trDropArrow, 1, -1, 1)
-end
-
-function slot0.onDropHide(slot0)
-	transformhelper.setLocalScale(slot0.trDropArrow, 1, 1, 1)
-end
-
-function slot0.onDropValueChanged(slot0, slot1)
-	if not slot0.initDropDone then
-		return
-	end
-
-	slot0.gameInfo:setCurTeamIndex(slot1 + 1)
-	Act191StatController.instance:statButtonClick(slot0.viewName, "onDropValueChanged")
-end
-
-function slot0.initDrop(slot0)
-	slot0.trDropArrow = gohelper.findChildComponent(slot0.dropHeroGroup.gameObject, "arrow", typeof(UnityEngine.Transform))
-	slot0.dropClick = gohelper.getClick(slot0.dropHeroGroup.gameObject)
-
-	slot0.dropClick:AddClickListener(function ()
-		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_click)
-	end, slot0)
-
-	slot0.dropExtend = DropDownExtend.Get(slot0.dropHeroGroup.gameObject)
-
-	slot0.dropExtend:init(slot0.onDropShow, slot0.onDropHide, slot0)
-
-	slot0.initDropDone = true
-end
-
-function slot0.refreshDropValue(slot0)
-	for slot6 = 1, 4 do
-	end
-
-	slot0.dropHeroGroup:ClearOptions()
-	slot0.dropHeroGroup:AddOptions({
-		[slot6] = Activity191Model.instance:getActInfo(slot0.actId):getGameInfo():getTeamInfo(slot6).name
-	})
-	slot0.dropHeroGroup:SetValue(slot0.gameInfo.curTeamIndex - 1)
 end
 
 function slot0.onToggleValueChanged(slot0)
@@ -254,13 +185,22 @@ function slot0.refreshReward(slot0)
 			slot0.rewardItemList[slot6] = slot8
 		end
 
+		slot8.item:showAutoEff(false)
 		slot8.item:setData(slot7[1], slot7[2])
 		slot8.item:setExtraParam({
 			fromView = slot0.viewName,
 			index = slot6
 		})
 		gohelper.setActive(slot8.parent, true)
+
+		if slot0._toggleAutoFight.isOn then
+			slot8.item:showAutoEff(true)
+		end
 	end
+end
+
+function slot0.eventClose(slot0)
+	ViewMgr.instance:closeView(slot0.viewName)
 end
 
 return slot0

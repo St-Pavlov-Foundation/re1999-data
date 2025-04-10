@@ -336,7 +336,13 @@ function slot0._refreshHardModeCurrency(slot0, slot1)
 end
 
 function slot0._refreshHardModeVx(slot0)
-	gohelper.setActive(slot0._hardModeUnlockvx, VersionActivityFixedDungeonModel.instance:isTipHardModeUnlockOpen(VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon))
+	slot2 = VersionActivityFixedDungeonModel.instance:isTipHardModeUnlockOpen(VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon)
+
+	gohelper.setActive(slot0._hardModeUnlockvx, slot2)
+
+	if slot2 then
+		VersionActivityFixedDungeonModel.instance:refreshVersionActivityEnterRedDot()
+	end
 end
 
 function slot0._unlockAniDone(slot0)

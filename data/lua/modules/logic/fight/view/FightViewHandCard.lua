@@ -888,8 +888,15 @@ function slot0._onRemoveEntityCards(slot0, slot1)
 		end
 	end
 
+	uv0.refreshCardIndex(slot0._handCardItemList)
 	TaskDispatcher.cancelTask(slot0._correctActiveCardObjPos, slot0)
 	TaskDispatcher.runDelay(slot0._correctActiveCardObjPos, slot0, 1 / FightModel.instance:getUISpeed())
+end
+
+function slot0.refreshCardIndex(slot0)
+	for slot4, slot5 in ipairs(slot0) do
+		slot5.index = slot4
+	end
 end
 
 function slot0._onCardLevelChange(slot0, slot1, slot2, slot3)
@@ -932,6 +939,7 @@ function slot0._onCardRemove2(slot0, slot1)
 		end
 	end
 
+	uv0.refreshCardIndex(slot0._handCardItemList)
 	TaskDispatcher.cancelTask(slot0._correctActiveCardObjPos, slot0)
 	TaskDispatcher.runDelay(slot0._correctActiveCardObjPos, slot0, 1 / FightModel.instance:getUISpeed())
 end
@@ -992,6 +1000,7 @@ function slot0._onMasterCardRemove(slot0, slot1, slot2, slot3)
 		end
 	end
 
+	uv0.refreshCardIndex(slot0._handCardItemList)
 	TaskDispatcher.cancelTask(slot0._correctActiveCardObjPos, slot0)
 	TaskDispatcher.runDelay(slot0._correctActiveCardObjPos, slot0, 0.7 / FightModel.instance:getUISpeed())
 

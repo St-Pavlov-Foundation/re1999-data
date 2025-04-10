@@ -1,9 +1,11 @@
 module("modules.configs.excel2json.lua_fight_monster_skin_idle_map", package.seeall)
 
 slot1 = {
+	freezeAnimName = 4,
 	idleAnimName = 2,
-	hitAnimName = 3,
-	skinId = 1
+	skinId = 1,
+	sleepAnimName = 5,
+	hitAnimName = 3
 }
 slot2 = {
 	"skinId"

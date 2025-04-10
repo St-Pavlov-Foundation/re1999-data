@@ -19,6 +19,14 @@ function slot0.addEvents(slot0)
 end
 
 function slot0.removeEvents(slot0)
+	if slot0._panelAnimEvent then
+		slot0._panelAnimEvent:RemoveEventListener("panelIn")
+	end
+
+	if slot0._sceneAnimEvent then
+		slot0._sceneAnimEvent:RemoveEventListener("showBall")
+	end
+
 	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.ChangePanelAngle, slot0._onChangePanelAngle, slot0)
 	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, slot0._onPlayEnterNextRoundAnim, slot0)
 	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, slot0._onRemoveModeChange, slot0)
@@ -172,6 +180,10 @@ function slot0._onLoadSceneFinish(slot0)
 
 	slot0._sceneGo = slot0._loader:getInstGO()
 	slot0._sceneAnimator = slot0._sceneGo:GetComponent(typeof(UnityEngine.Animator))
+	slot0._sceneAnimEvent = slot0._sceneGo:GetComponent(gohelper.Type_AnimationEventWrap)
+
+	slot0._sceneAnimEvent:AddEventListener("showBall", slot0._onShowBall, slot0)
+
 	slot0._cubeGo = gohelper.findChild(slot0._sceneGo, "#go_cube")
 	slot0._transCube = slot0._cubeGo.transform
 	slot0._cubeAnimator = slot0._cubeGo:GetComponent(typeof(UnityEngine.Animator))
@@ -203,20 +215,26 @@ function slot0._onLoadSceneFinish(slot0)
 end
 
 function slot0._onInitMap(slot0)
-	slot0._panelCanvas = CooperGarlandGameEntityMgr.instance:getPanelGo() and slot1:GetComponent(typeof(UnityEngine.Canvas))
+	if gohelper.isNil(CooperGarlandGameEntityMgr.instance:getPanelGo()) then
+		return
+	end
+
+	slot0._panelCanvas = slot1:GetComponent(typeof(UnityEngine.Canvas))
 
 	if CameraMgr.instance:getMainCamera() then
 		slot0._panelCanvas.worldCamera = slot2
 	end
 
-	slot0._simgPanel = slot1 and gohelper.findChildSingleImage(slot1, "")
+	slot0._simgPanel = gohelper.findChildSingleImage(slot1, "")
 
 	if slot0._simgPanel then
 		slot0._simgPanel:LoadImage(CooperGarlandConfig.instance:getPanelImage(CooperGarlandGameModel.instance:getGameId()))
 	end
 
-	slot0._goRemoveModeMask = slot1 and gohelper.findChild(slot1, "#go_removeModeMask")
+	slot0._goRemoveModeMask = gohelper.findChild(slot1, "#go_removeModeMask")
+	slot0._panelAnimEvent = slot1:GetComponent(gohelper.Type_AnimationEventWrap)
 
+	slot0._panelAnimEvent:AddEventListener("panelIn", slot0._onPanelIn, slot0)
 	slot0:refresh()
 end
 
@@ -224,6 +242,14 @@ function slot0._playCubeAnimFinished(slot0)
 	if slot0._cubeAnimator then
 		slot0._cubeAnimator.enabled = false
 	end
+end
+
+function slot0._onPanelIn(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_level_next)
+end
+
+function slot0._onShowBall(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_reset)
 end
 
 function slot0.onUpdateParam(slot0)

@@ -9,9 +9,9 @@ end
 function slot0.onCancelOperation(slot0)
 	if slot0.playedSkill then
 		slot0.playedSkill = false
-
-		FightController.instance:dispatchEvent(FightEvent.BloodPool_OnCancelPlayCard)
 	end
+
+	FightController.instance:dispatchEvent(FightEvent.BloodPool_OnCancelPlayCard)
 end
 
 function slot0.playBloodPoolCard(slot0)

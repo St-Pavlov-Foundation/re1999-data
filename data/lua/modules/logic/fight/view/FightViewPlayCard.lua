@@ -33,6 +33,7 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0.onOpen(slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.CancelOperation, slot0._refreshAllItemData, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.DistributeCards, slot0._refreshAllItemData, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._refreshAllItemData, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.PushCardInfo, slot0._refreshAllItemData, slot0)
@@ -57,6 +58,7 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ExitOperateState, slot0._onExitOperateState, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.HidePlayCardAllCard, slot0._onHidePlayCardAllCard, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.EnterStage, slot0._onEnterStage, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.BeforeCancelOperation, slot0.onBeforeCancelOperation, slot0)
 end
 
 function slot0._onEnterStage(slot0, slot1)
@@ -560,6 +562,14 @@ function slot0._clearBeginRoundOps(slot0)
 	slot0._all_recorded_ops = {}
 end
 
+function slot0.onBeforeCancelOperation(slot0)
+	slot0.curIndex2OriginHandCardIndex = {}
+
+	for slot4, slot5 in ipairs(FightDataHelper.handCardMgr.handCard) do
+		slot0.curIndex2OriginHandCardIndex[slot4] = slot5.originHandCardIndex
+	end
+end
+
 function slot0._onResetCard(slot0, slot1)
 	slot0:_releaseAllFlyItems()
 	FightController.instance:dispatchEvent(FightEvent.SetBlockCardOperate, true)
@@ -569,6 +579,8 @@ function slot0._onResetCard(slot0, slot1)
 	slot2.viewGO = slot0.viewGO
 	slot2.playCardItemList = slot0._playCardItemList
 	slot2.oldCardOps = slot1
+	slot2.curIndex2OriginHandCardIndex = slot0.curIndex2OriginHandCardIndex
+	slot0.curIndex2OriginHandCardIndex = nil
 
 	slot0:_hideRankChangeEffect()
 	slot0._resetCardFlow:registerDoneListener(slot0._onResetEffectDone, slot0)

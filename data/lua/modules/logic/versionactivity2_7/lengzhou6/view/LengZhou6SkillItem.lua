@@ -5,9 +5,11 @@ slot0 = class("LengZhou6SkillItem", ListScrollCellExtend)
 function slot0.onInitView(slot0)
 	slot0._goSkillEmpty = gohelper.findChild(slot0.viewGO, "#go_SkillEmpty")
 	slot0._goHaveSkill = gohelper.findChild(slot0.viewGO, "#go_HaveSkill")
-	slot0._simageSkillIIcon = gohelper.findChildSingleImage(slot0.viewGO, "#go_HaveSkill/SkillIconMask/#simage_SkillIIcon")
+	slot0._imageSkillIIcon = gohelper.findChildImage(slot0.viewGO, "#go_HaveSkill/SkillIconMask/#image_SkillIIcon")
 	slot0._imagecd = gohelper.findChildImage(slot0.viewGO, "#go_HaveSkill/SkillIconMask/#image_cd")
 	slot0._txtcd = gohelper.findChildText(slot0.viewGO, "#go_HaveSkill/SkillIconMask/#image_cd/#txt_cd")
+	slot0._imageSkillSmallIcon = gohelper.findChildImage(slot0.viewGO, "#go_HaveSkill/#image_SkillSmallIcon")
+	slot0._txtnum = gohelper.findChildText(slot0.viewGO, "#go_HaveSkill/#image_SkillSmallIcon/#txt_num")
 	slot0._goSkillNeedChange = gohelper.findChild(slot0.viewGO, "#go_SkillNeedChange")
 	slot0._imagechange = gohelper.findChildImage(slot0.viewGO, "#go_SkillNeedChange/#image_change")
 
@@ -26,16 +28,23 @@ slot1 = 0.5
 slot2 = 99999
 
 function slot0._editableInitView(slot0)
-	slot0._skillClick = SLFramework.UGUI.UIClickListener.Get(slot0._simageSkillIIcon.gameObject)
+	slot0._skillClick = SLFramework.UGUI.UIClickListener.Get(slot0._imageSkillIIcon.gameObject)
 
 	slot0._skillClick:AddClickListener(slot0._click, slot0)
 
 	slot0._skillSelectClick = SLFramework.UGUI.UIClickListener.Get(slot0._imagechange.gameObject)
 
 	slot0._skillSelectClick:AddClickListener(slot0._selectClick, slot0)
+
+	slot0._goSelect = gohelper.findChild(slot0.viewGO, "#go_HaveSkill/SkillIconMask/vx_select")
+	slot0._goComing = gohelper.findChild(slot0.viewGO, "#go_HaveSkill/SkillIconMask/vx_coming")
+	slot0._goCanuse = gohelper.findChild(slot0.viewGO, "#go_HaveSkill/SkillIconMask/vx_canuse")
+	slot0._goCanchange = gohelper.findChild(slot0.viewGO, "#go_SkillNeedChange/vx_canchange")
 end
 
 function slot0._click(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
+
 	if slot0._skill == nil then
 		return
 	end
@@ -48,6 +57,8 @@ function slot0._click(slot0)
 end
 
 function slot0._selectClick(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
+
 	if LengZhou6GameModel.instance:getEndLessBattleProgress() == LengZhou6Enum.BattleProgress.selectSkill then
 		LengZhou6GameController.instance:dispatchEvent(LengZhou6Event.ShowSelectView, slot0._index)
 	end
@@ -62,6 +73,11 @@ function slot0.initSkill(slot0, slot1, slot2)
 		slot0._configId = slot0._skill:getConfig().id
 		slot0._skillId = slot0._skill._id
 	end
+
+	gohelper.setActive(slot0._goComing, false)
+	gohelper.setActive(slot0._goSelect, false)
+	gohelper.setActive(slot0._goCanuse, false)
+	gohelper.setActive(slot0._goCanchange, false)
 end
 
 function slot0.initSkillConfigId(slot0, slot1)
@@ -101,6 +117,8 @@ function slot0.refreshState(slot0)
 	else
 		gohelper.setActive(slot0._goSkillNeedChange, false)
 	end
+
+	slot0:updateCanChangeActive()
 end
 
 function slot0.useSkill(slot0, slot1)
@@ -118,20 +136,59 @@ function slot0.initInfo(slot0)
 	end
 
 	if slot1.icon ~= nil then
-		slot0._simageSkillIIcon:LoadImage(slot2)
+		slot3 = string.split(slot2, "#")
+
+		UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageSkillIIcon, slot3[1])
+
+		if slot3[2] ~= nil then
+			UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageSkillSmallIcon, slot3[2])
+		end
+
+		gohelper.setActive(slot0._imageSkillSmallIcon.gameObject, slot4)
+	end
+
+	if slot1.effect ~= nil then
+		if string.split(slot3, "#")[1] == LengZhou6Enum.SkillEffect.DealsDamage then
+			slot0._txtnum.text = tonumber(slot4[2])
+		end
+
+		gohelper.setActive(slot0._txtnum, slot4[1] == LengZhou6Enum.SkillEffect.DealsDamage)
 	end
 end
 
 function slot0.updateSkillInfo(slot0)
-	slot1 = slot0._skill and slot0._skill:getCd() or 0
+	if slot0._configId == nil then
+		return
+	end
 
-	gohelper.setActive(slot0._imagecd.gameObject, slot1 > 0)
+	if slot0._skill ~= nil and slot0._skill:getEffect()[1] == LengZhou6Enum.SkillEffect.DealsDamage then
+		slot0._txtnum.text = slot0._skill:getTotalValue()
+	end
 
-	if slot1 > 0 then
-		slot0._txtcd.text = slot1
+	if LengZhou6Config.instance:getEliminateBattleSkill(slot0._configId) and slot1.type ~= LengZhou6Enum.SkillType.active then
+		gohelper.setActive(slot0._imagecd.gameObject, false)
+
+		return
+	end
+
+	slot3 = (slot0._skill and slot0._skill:getCd() or 0) > 0
+
+	gohelper.setActive(slot0._imagecd.gameObject, slot3)
+
+	if slot3 then
+		slot0._txtcd.text = slot2
 	else
 		LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.PlayerSkillCanUse)
+		gohelper.setActive(slot0._goSelect, true)
+
+		if slot0._lastInCd then
+			AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_refresh)
+		end
 	end
+
+	slot0._lastInCd = slot3
+
+	gohelper.setActive(slot0._goCanuse, slot0._selectIsFinish and not slot3)
 end
 
 function slot0._editableAddEvents(slot0)
@@ -142,6 +199,26 @@ end
 
 function slot0.updateInfo(slot0)
 	slot0:updateSkillInfo()
+end
+
+function slot0.showEnemySkillRound(slot0, slot1)
+	if slot0._goComing then
+		gohelper.setActive(slot0._goComing, slot1)
+	end
+end
+
+function slot0.updateCanChangeActive(slot0)
+	slot1 = true
+
+	if slot0._selectIsFinish then
+		slot1 = false
+	end
+
+	if slot0._configId ~= nil and LengZhou6Config.instance:getEliminateBattleSkill(slot0._configId) and slot2.type == LengZhou6Enum.SkillType.enemyActive then
+		slot1 = false
+	end
+
+	gohelper.setActive(slot0._goCanchange, slot1)
 end
 
 function slot0.onDestroyView(slot0)

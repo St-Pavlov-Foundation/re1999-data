@@ -68,42 +68,54 @@ function slot0._replaceRT(slot0, slot1)
 	end
 end
 
-function slot0._getRT(slot0, slot1, slot2, slot3)
+function slot0._getRT(slot0, slot1, slot2, slot3, slot4, slot5)
 	if slot0:_getRTInfoList(slot3).orthographicSize ~= slot2 then
 		slot0:clearAllRT()
 
-		slot4.orthographicSize = slot2
+		slot6.orthographicSize = slot2
 
 		if slot3 == CharacterVoiceEnum.RTShareType.FullScreen then
-			slot4.rt = slot1.targetTexture
+			slot6.rt = slot1.targetTexture
 
 			if slot0._debugLog then
 				logError(string.format("Live2dRTShareController:_reuseRT orthographicSize:%s shareType:%s", slot2, slot3))
 			end
 		else
-			slot4.rt = slot0:_createRT(slot2, slot3)
+			slot6.rt = slot0:_createRT(slot2, slot3, slot4, slot5)
 		end
 	end
 
-	return slot4.rt
+	return slot6.rt
 end
 
-function slot0._createRT(slot0, slot1, slot2)
-	slot3, slot4 = GuiLive2d.GetScaleByDevice()
+function slot0._getTextureSizeByCameraSize(slot0, slot1)
+	slot2, slot3 = GuiLive2d.GetScaleByDevice()
 
-	if uv0.maxTextureSize < GuiLive2d.getTextureSizeByCameraSize(slot1) * slot4 * slot3 then
-		slot6 = slot7
+	return GuiLive2d.getTextureSizeByCameraSize(slot1) * slot3 * slot2
+end
+
+function slot0._getTextureSize(slot0, slot1, slot2, slot3, slot4)
+	if slot0:_isBloomType(slot2) and CharacterVoiceEnum.BloomCameraSize[slot3] then
+		return slot0:_getTextureSizeByCameraSize(slot5)
+	end
+
+	return slot0:_getTextureSizeByCameraSize(slot1)
+end
+
+function slot0._createRT(slot0, slot1, slot2, slot3, slot4)
+	if uv0.maxTextureSize < slot0:_getTextureSize(slot1, slot2, slot3, slot4) then
+		slot5 = slot6
 	end
 
 	if slot0._debugLog then
-		logError(string.format("Live2dRTShareController:_createRT orthographicSize:%s textureSize:%s shareType:%s", slot1, slot6, slot2))
+		logError(string.format("Live2dRTShareController:_createRT orthographicSize:%s textureSize:%s shareType:%s", slot1, slot5, slot2))
 	end
 
 	if slot2 == CharacterVoiceEnum.RTShareType.BloomOpen then
-		return UnityEngine.RenderTexture.GetTemporary(slot6, slot6, 0, UnityEngine.RenderTextureFormat.ARGBHalf)
+		return UnityEngine.RenderTexture.GetTemporary(slot5, slot5, 0, UnityEngine.RenderTextureFormat.ARGBHalf)
 	end
 
-	return UnityEngine.RenderTexture.GetTemporary(slot6, slot6, 0, UnityEngine.RenderTextureFormat.ARGB32)
+	return UnityEngine.RenderTexture.GetTemporary(slot5, slot5, 0, UnityEngine.RenderTextureFormat.ARGB32)
 end
 
 function slot0._getRTInfoList(slot0, slot1)
@@ -122,9 +134,9 @@ function slot0._getTypeInfoList(slot0, slot1)
 	return slot2
 end
 
-function slot0.addShareInfo(slot0, slot1, slot2, slot3)
-	if not slot1 or not slot2 or not slot3 then
-		logError(string.format("addShareInfo error camera:%s image:%s shareType:%s", slot1, slot2, slot3))
+function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5)
+	if not slot1 or not slot2 or not slot3 or not slot4 or not slot5 then
+		logError(string.format("addShareInfo error camera:%s image:%s shareType:%s heroId:%s skinId:%s", slot1, slot2, slot3, slot4, slot5))
 
 		return
 	end
@@ -135,23 +147,26 @@ function slot0.addShareInfo(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	for slot8, slot9 in ipairs(slot0:_getTypeInfoList(slot3)) do
-		if slot9.camera == slot1 and slot9.image == slot2 then
+	for slot10, slot11 in ipairs(slot0:_getTypeInfoList(slot3)) do
+		if slot11.camera == slot1 and slot11.image == slot2 then
 			logError(string.format("addShareInfo error same camera:%s image:%s shareType:%s", slot1, slot2, slot3))
 
 			return
 		end
 	end
 
-	table.insert(slot4, {
+	table.insert(slot6, {
 		camera = slot1,
 		orthographicSize = slot1.orthographicSize,
+		textureSize = slot0:_getTextureSizeByCameraSize(slot1.orthographicSize),
 		image = slot2,
-		shareType = slot3
+		shareType = slot3,
+		heroId = slot4,
+		skinId = slot5
 	})
 
 	if slot0._debugLog then
-		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s", slot1, slot1.orthographicSize, slot2, slot3, #slot4))
+		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s", slot1, slot1.orthographicSize, slot2, slot3, #slot6))
 	end
 
 	slot0._clearTime = nil
@@ -169,6 +184,10 @@ function slot0._getTopInfoList(slot0)
 	end
 
 	return slot0:_getTypeInfoList(slot0._minType), slot0._minType
+end
+
+function slot0._isBloomType(slot0, slot1)
+	return slot1 == CharacterVoiceEnum.RTShareType.BloomClose or slot1 == CharacterVoiceEnum.RTShareType.BloomOpen
 end
 
 function slot0._checkRT(slot0)
@@ -202,7 +221,7 @@ function slot0._checkRT(slot0)
 		end
 
 		if slot8 and slot2 == CharacterVoiceEnum.RTShareType.Normal then
-			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType)
+			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType, slot8.heroId, slot8.skinId)
 			slot8.camera.targetTexture = slot9
 			slot8.image.texture = slot9
 
@@ -212,11 +231,19 @@ function slot0._checkRT(slot0)
 
 			break
 		elseif slot8 and slot8.image.gameObject.activeInHierarchy then
-			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType)
+			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType, slot8.heroId, slot8.skinId)
 			slot8.camera.targetTexture = slot9
 			slot8.image.texture = slot9
+			slot10 = slot9.width
+			slot11 = slot9.height
 
-			slot8.image:SetNativeSize()
+			if slot0:_isBloomType(slot2) then
+				slot12 = slot8.textureSize
+				slot10 = slot12
+				slot11 = slot12
+			end
+
+			recthelper.setSize(slot8.image.rectTransform, slot10, slot11)
 
 			slot3 = slot8
 

@@ -131,7 +131,7 @@ function slot0.onOpen(slot0)
 	end
 
 	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183] then
-		if cjson.decode(slot7).currRules then
+		if slot7.currRules then
 			for slot12, slot13 in ipairs(slot8.currRules) do
 				tabletool.addValues(slot6 or {}, GameUtil.splitString2(slot13, true, "|", "#"))
 			end

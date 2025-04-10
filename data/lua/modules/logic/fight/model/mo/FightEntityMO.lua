@@ -721,4 +721,18 @@ function slot0.getConfigMaxExPoint(slot0)
 	return slot0.configMaxExPoint
 end
 
+function slot0.getHeroDestinyStoneMo(slot0)
+	if slot0.trialId and slot0.trialId > 0 then
+		if lua_hero_trial.configDict[slot0.trialId][0] then
+			slot0.destinyStoneMo = slot0.destinyStoneMo or HeroDestinyStoneMO.New(slot0.modelId)
+
+			slot0.destinyStoneMo:refreshMo(slot1.facetslevel, 1, slot1.facetsId)
+		end
+	else
+		slot0.destinyStoneMo = HeroModel.instance:getByHeroId(slot0.modelId) and slot1.destinyStoneMo
+	end
+
+	return slot0.destinyStoneMo
+end
+
 return slot0

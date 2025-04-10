@@ -4,62 +4,63 @@
     "activityId": 12701,
     "name": "年轮切片",
     "desc": "",
-    "icon": "act174_endless_icon_0"
-  },
-  {
-    "id": 1002,
-    "activityId": 12701,
-    "name": "随机2星角色",
-    "desc": "",
-    "icon": "act174_store_icon_unknown"
+    "icon": "act174_endless_icon_0",
+    "rare": 0
   },
   {
     "id": 1003,
     "activityId": 12701,
-    "name": "随机3星角色",
+    "name": "随机初级偶人",
     "desc": "",
-    "icon": "act174_store_icon_unknown"
+    "icon": "act174_store_icon_unknown",
+    "rare": 3
   },
   {
     "id": 1004,
     "activityId": 12701,
-    "name": "随机4星角色",
+    "name": "随机中级偶人",
     "desc": "",
-    "icon": "act174_store_icon_unknown"
+    "icon": "act174_store_icon_unknown",
+    "rare": 4
   },
   {
     "id": 1005,
     "activityId": 12701,
-    "name": "随机5星角色",
+    "name": "随机高级偶人",
     "desc": "",
-    "icon": "act174_store_icon_unknown"
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
   },
   {
     "id": 1006,
     "activityId": 12701,
     "name": "随机寻常造物",
     "desc": "",
-    "icon": "act174_shop_icon_randomitem"
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
   },
   {
     "id": 1007,
     "activityId": 12701,
     "name": "随机精巧造物",
     "desc": "",
-    "icon": "act174_shop_icon_randomitem"
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
   },
   {
     "id": 1008,
     "activityId": 12701,
     "name": "随机妙想造物",
     "desc": "",
-    "icon": "act174_shop_icon_randomitem"
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
   },
   {
     "id": 1009,
     "activityId": 12701,
     "name": "局外积分",
     "desc": "",
-    "icon": "act174_endless_icon_1"
+    "icon": "act174_endless_icon_1",
+    "rare": 0
   }
 ]

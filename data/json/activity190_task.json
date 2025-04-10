@@ -133,10 +133,10 @@
     "name": "冷周六角色活动",
     "desc": "完成冷周六的考察关卡",
     "listenerType": "EpisodePassIncr",
-    "listenerParam": "259101",
+    "listenerParam": "2760101",
     "maxProgress": 1,
-    "episodeId": 259101,
-    "jumpId": 10012509,
+    "episodeId": 2760101,
+    "jumpId": 10012717,
     "bonus": "27801120"
   }
 ]

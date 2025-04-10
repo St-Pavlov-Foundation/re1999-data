@@ -162,6 +162,7 @@ function slot0._refreshView(slot0)
 
 	if #slot0._pagesCo < 1 then
 		logError(string.format("help view(helpId : %s) not found can show pages", slot0._helpId))
+		slot0:closeThis()
 
 		return
 	end

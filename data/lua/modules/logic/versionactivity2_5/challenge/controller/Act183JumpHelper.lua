@@ -47,7 +47,7 @@ function slot0.canJumpToAct183(slot0, slot1)
 end
 
 function slot0.jumpToAct183(slot0, slot1)
-	table.insert(slot0.waitOpenViewNames, ViewName.VersionActivity2_5EnterView)
+	table.insert(slot0.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
 	table.insert(slot0.waitOpenViewNames, ViewName.Act183MainView)
 	table.insert(slot0.waitOpenViewNames, ViewName.Act183DungeonView)
 	table.insert(slot0.closeViewNames, ViewName.Act183TaskView)

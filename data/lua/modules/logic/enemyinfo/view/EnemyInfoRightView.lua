@@ -225,7 +225,7 @@ function slot0.refreshHeader(slot0)
 
 	slot0._txtlevel.text = HeroConfig.instance:getLevelDisplayVariant(slot1[slot0.isSimple and "levelEasy" or "level"])
 
-	gohelper.setActive(slot0._txtlevel, slot0.viewParam.tabEnum == EnemyInfoEnum.TabEnum.Act191)
+	gohelper.setActive(slot0._txtlevel, slot0.viewParam.tabEnum ~= EnemyInfoEnum.TabEnum.Act191)
 
 	slot0._txtname.text = FightConfig.instance:getMonsterName(slot1)
 

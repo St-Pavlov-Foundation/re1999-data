@@ -82,6 +82,7 @@ end
 function slot0._editableInitView(slot0)
 	slot0.badgeGoParent = gohelper.findChild(slot0.viewGO, "go_achieve/scroll_achieve/viewport/content")
 	slot0.badgeGo = gohelper.findChild(slot0.viewGO, "go_achieve/scroll_achieve/viewport/content/go_achievementicon")
+	slot0.actId = Activity191Model.instance:getCurActId()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -89,23 +90,12 @@ end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
-
-	slot0.actId = slot0.viewParam.actId
-
-	if slot0.viewParam.exitFromFight then
-		slot0:_onOpen()
-	else
-		Activity191Rpc.instance:sendGetAct191InfoRequest(slot0.actId, slot0._onOpen, slot0)
-	end
-end
-
-function slot0._onOpen(slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, slot0.refreshUI, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateBadgeMo, slot0.refreshBadge, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.EndGame, slot0.checkGameEndInfo, slot0)
 	slot0:refreshUI()
 
-	if slot0.viewParam.exitFromFight then
+	if slot0.viewParam and slot0.viewParam.exitFromFight then
 		slot0:_btnEnterGameOnClick()
 	end
 end
@@ -139,8 +129,6 @@ function slot0.initRule(slot0)
 		gohelper.findChildSingleImage(slot9, "heroicon"):LoadImage(Activity191Helper.getHeadIconSmall(slot8))
 		UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot9, "rare"), "act174_roleframe_" .. tostring(slot8.quality))
 		UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot9, "career"), "lssx_" .. tostring(slot8.career))
-
-		gohelper.findChildText(slot9, "name").text = slot8.name
 	end
 end
 

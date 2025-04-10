@@ -6619,10 +6619,10 @@
     "matId": 2,
     "weatherParam": 100001,
     "topuiOffset": [
-      150,
-      -250,
       0,
-      -9.4
+      0,
+      2,
+      -11
     ],
     "focusOffset": [
       5.5,
@@ -6656,10 +6656,10 @@
     "matId": 2,
     "weatherParam": 100001,
     "topuiOffset": [
-      150,
-      -250,
       0,
-      -9.4
+      0,
+      2,
+      -12
     ],
     "focusOffset": [
       5.5,
@@ -14304,6 +14304,39 @@
     "clickBoxUnlimit": 0
   },
   {
+    "id": 6904011,
+    "name": "宇宙时钟",
+    "nameEng": "",
+    "des": "",
+    "colorbg": 0,
+    "spine": "v2a7_690401_yzsz/690401_yzsz",
+    "fight_special": 0,
+    "flipX": 0,
+    "isFly": 0,
+    "skills": "",
+    "headIcon": "690401",
+    "retangleIcon": "690401",
+    "matId": 1,
+    "weatherParam": 100001,
+    "topuiOffset": [
+      0,
+      0,
+      -0.5,
+      -11.5
+    ],
+    "focusOffset": [],
+    "showTemplate": 690401,
+    "noDeadEffect": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "canHide": 0,
+    "mainBody": 0,
+    "floatOffset": "",
+    "bossSkillSpeed": 0,
+    "outlineWidth": 0.003,
+    "clickBoxUnlimit": 0
+  },
+  {
     "id": 650108,
     "name": "宇航员训练员",
     "nameEng": "",
@@ -14529,6 +14562,68 @@
     "mainBody": 0,
     "floatOffset": "",
     "bossSkillSpeed": 0,
+    "outlineWidth": 0.0,
+    "clickBoxUnlimit": 0
+  },
+  {
+    "id": 6103011,
+    "name": "大型奥利图欧",
+    "nameEng": "",
+    "des": "",
+    "colorbg": 1,
+    "spine": "610301_daxingaolituou",
+    "fight_special": 0,
+    "flipX": 0,
+    "isFly": 1,
+    "skills": "",
+    "headIcon": "6103011",
+    "retangleIcon": "",
+    "matId": 2,
+    "weatherParam": 100001,
+    "topuiOffset": [
+      20,
+      -60
+    ],
+    "focusOffset": [],
+    "showTemplate": 610301,
+    "noDeadEffect": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "canHide": 0,
+    "mainBody": 0,
+    "floatOffset": "",
+    "bossSkillSpeed": 0,
+    "outlineWidth": 0.0,
+    "clickBoxUnlimit": 0
+  },
+  {
+    "id": 4131011,
+    "name": "勿忘我",
+    "nameEng": "Forget Me Not",
+    "des": "渴望着重塑一切的无名之人。\n2滴蛇毒血清、1匙沉默、3克屈辱、2指永不悔过之心、5盎司永不忘怀的昨日。",
+    "colorbg": 1,
+    "spine": "413101_wuwangwo",
+    "fight_special": 0,
+    "flipX": 0,
+    "isFly": 0,
+    "skills": "",
+    "headIcon": "413101",
+    "retangleIcon": "413101",
+    "matId": 3,
+    "weatherParam": 100001,
+    "topuiOffset": [
+      50.5,
+      -18
+    ],
+    "focusOffset": [],
+    "showTemplate": 413101,
+    "noDeadEffect": 1,
+    "effect": "",
+    "effectHangPoint": "",
+    "canHide": 0,
+    "mainBody": 0,
+    "floatOffset": "",
+    "bossSkillSpeed": 1,
     "outlineWidth": 0.0,
     "clickBoxUnlimit": 0
   }

@@ -9,18 +9,24 @@ function slot0.onInitView(slot0)
 	slot0._btnControl = gohelper.findChildButtonWithAudio(slot0.viewGO, "Left/Control/#btn_Control")
 	slot0._animControl = gohelper.findChildAnim(slot0.viewGO, "Left/Control")
 	slot0._goJoystickMode = gohelper.findChild(slot0.viewGO, "Left/Control/#go_Joystick")
+	slot0._txtjoystick = gohelper.findChildText(slot0.viewGO, "Left/Control/#go_Joystick/txt_Joystick")
+	slot0._imgjoystick = gohelper.findChildImage(slot0.viewGO, "Left/Control/#go_Joystick/image_Joystick")
 	slot0._goGyroscopeMode = gohelper.findChild(slot0.viewGO, "Left/Control/#go_Gyroscope")
+	slot0._transJoyLeftPoint = gohelper.findChild(slot0.viewGO, "Left/#go_joyLeftPoint").transform
 	slot0._btnReset = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Reset")
 	slot0._goRemove = gohelper.findChild(slot0.viewGO, "Right/Collect")
 	slot0._animCollect = gohelper.findChildAnim(slot0.viewGO, "Right/Collect")
 	slot0._goIcon1 = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_Icon1")
 	slot0._goIcon2 = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_Icon2")
+	slot0._goselectRemove = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_select")
 	slot0._txtLightNum = gohelper.findChildText(slot0.viewGO, "Right/Collect/#txt_LightNum")
 	slot0._btnRemoveMode = gohelper.findChildClickWithAudio(slot0.viewGO, "Right/Collect/#btn_modeClick")
-	slot0._gojoystick = gohelper.findChild(slot0.viewGO, "#go_joystick")
+	slot0._transJoyRightPoint = gohelper.findChild(slot0.viewGO, "Right/#go_joyRightPoint").transform
+	slot0._gojoystick = gohelper.findChild(slot0.viewGO, "Right/#go_joyRightPoint/#go_joystick")
 	slot0._goTopTips = gohelper.findChild(slot0.viewGO, "#go_TopTips")
 	slot0._goGameTips = gohelper.findChild(slot0.viewGO, "#go_TopTips2")
 	slot0._txtGameTips = gohelper.findChildText(slot0.viewGO, "#go_TopTips2/#txt_Tips")
+	slot0._goExtraTips = gohelper.findChild(slot0.viewGO, "#go_ExtraTips")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -168,27 +174,50 @@ function slot0._editableInitView(slot0)
 	slot0.originalAutoRight = UnityEngine.Screen.autorotateToLandscapeRight
 	UnityEngine.Screen.autorotateToLandscapeLeft = false
 	UnityEngine.Screen.autorotateToLandscapeRight = false
+	slot0._isMobilePlayer = GameUtil.isMobilePlayerAndNotEmulator()
 
-	if GameUtil.isMobilePlayerAndNotEmulator() then
+	if slot0._isMobilePlayer then
 		slot0.gyro = UnityEngine.Input.gyro
 		slot0.originalGyroStatus = slot0.gyro.enabled
 		slot0.gyro.enabled = true
 	end
 
 	slot0:setTargetStar(false)
+	gohelper.setActive(slot0._goExtraTips, CooperGarlandConfig.instance:isExtraEpisode(CooperGarlandModel.instance:getAct192Id(), CooperGarlandGameModel.instance:getEpisodeId()))
 end
 
 slot1 = 3
 
 function slot0._onLateUpdate(slot0)
 	if CooperGarlandGameModel.instance:getIsJoystick() then
-		if slot0.joystick and slot0.joystick:getIsDragging() then
-			slot3 = slot0.joystick:getInputValue()
+		slot2, slot3 = nil
 
-			CooperGarlandController.instance:changePanelBalance(slot3.x, slot3.y)
+		if not slot0._isMobilePlayer then
+			if UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
+				slot2 = 1
+			elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
+				slot2 = -1
+			end
+
+			if UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) then
+				slot3 = 1
+			elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.S) then
+				slot3 = -1
+			end
+		end
+
+		if slot2 or slot3 then
+			slot0.joystick:setInPutValue(slot2, slot3)
+		end
+
+		if slot0.joystick:getIsDragging() or slot2 or slot3 then
+			slot5 = slot0.joystick:getInputValue()
+
+			CooperGarlandController.instance:changePanelBalance(slot5.x, slot5.y)
 
 			slot0._needReset = true
 		elseif slot0._needReset then
+			slot0:_resetJoystick()
 			CooperGarlandController.instance:resetPanelBalance(slot0._cubeResetSpeed)
 
 			slot0._needReset = false
@@ -245,10 +274,26 @@ function slot0.refreshRemoveMode(slot0)
 	gohelper.setActive(slot0._goleft, not slot1)
 	gohelper.setActive(slot0._btnReset, not slot1)
 	gohelper.setActive(slot0._goTopTips, slot1)
+	gohelper.setActive(slot0._goselectRemove, slot1)
 end
 
 function slot0.refreshControlMode(slot0, slot1)
-	slot2 = CooperGarlandGameModel.instance:getIsJoystick()
+	if CooperGarlandGameModel.instance:getIsJoystick() then
+		slot3 = slot0._transJoyRightPoint
+		slot4 = "v2a7_coopergarland_right_joystick"
+		slot5 = "v2a7_coopergarland_game_controlicon1"
+
+		if CooperGarlandGameModel.instance:getControlMode() == CooperGarlandEnum.Const.JoystickModeLeft then
+			slot3 = slot0._transJoyLeftPoint
+			slot4 = "v2a7_coopergarland_left_joystick"
+			slot5 = "v2a7_coopergarland_game_controlicon3"
+		end
+
+		slot0._txtjoystick.text = luaLang(slot4)
+
+		slot0._gojoystick.transform:SetParent(slot3, false)
+		UISpriteSetMgr.instance:setV2a7CooperGarlandSprite(slot0._imgjoystick, slot5)
+	end
 
 	gohelper.setActive(slot0._gojoystick, not CooperGarlandGameModel.instance:getIsRemoveMode() and slot2)
 	gohelper.setActive(slot0._goGyroscopeMode, not slot2)

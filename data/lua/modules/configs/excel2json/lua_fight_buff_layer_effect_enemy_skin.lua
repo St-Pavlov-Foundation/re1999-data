@@ -1,25 +1,26 @@
 module("modules.configs.excel2json.lua_fight_buff_layer_effect_enemy_skin", package.seeall)
 
 slot1 = {
-	addLayerEffect = 8,
-	releaseCreateEffectTime = 14,
+	releaseCreateEffectTime = 15,
+	addLayerEffectRoot = 10,
+	hideWhenPlayTimeline = 6,
+	delayTimeBeforeLoop = 16,
+	releaseDestroyEffectTime = 20,
 	skin = 2,
-	delayTimeBeforeLoop = 15,
-	releaseDestroyEffectTime = 19,
-	addLayerEffectRoot = 9,
-	addLayerAudio = 7,
-	destroyEffectAudio = 18,
-	destroyEffectRoot = 17,
-	destroyEffect = 16,
-	releaseAddLayerEffectTime = 10,
-	loopEffectAudio = 6,
-	createEffect = 11,
+	addLayerAudio = 8,
+	destroyEffect = 17,
+	destroyEffectRoot = 18,
+	addLayerEffect = 9,
+	releaseAddLayerEffectTime = 11,
+	destroyEffectAudio = 19,
+	createEffect = 12,
+	loopEffectAudio = 7,
 	loopEffectRoot = 5,
 	layer = 3,
 	loopEffect = 4,
 	id = 1,
-	createAudio = 13,
-	createEffectRoot = 12
+	createAudio = 14,
+	createEffectRoot = 13
 }
 slot2 = {
 	"id",

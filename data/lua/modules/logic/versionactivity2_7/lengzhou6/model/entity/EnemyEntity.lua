@@ -95,6 +95,18 @@ function slot0.getAction(slot0)
 	return slot0._action
 end
 
+function slot0.havePoisonBuff(slot0)
+	if slot0._buffs then
+		for slot4, slot5 in ipairs(slot0._buffs) do
+			if slot5._configId == 1001 then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
 function slot0.useSkill(slot0, slot1)
 	if slot0._skills[slot1] ~= nil then
 		slot0._skills[slot1]:execute()

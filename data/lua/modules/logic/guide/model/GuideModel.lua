@@ -22,6 +22,7 @@ slot0.GuideFlag = {
 	DontOpenMain = 24,
 	FightBackSkipDungeonView = 9,
 	AutoChessEnableUseSkill = 44,
+	CooperGarlandForceRemove = 46,
 	UseBlock = 17,
 	FightForbidAutoFight = 4,
 	AutoChessEnablePreviewEnemy = 41,

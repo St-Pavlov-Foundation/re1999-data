@@ -213,6 +213,10 @@ function slot0._refreshInfoUI(slot0, slot1)
 			for slot15, slot16 in ipairs(slot11.skillIconGo) do
 				slot16.isBigSkill = FightCardDataHelper.isBigSkill(slot10.skillId)
 
+				if lua_skill_next.configDict[slot10.skillId] then
+					slot16.isBigSkill = false
+				end
+
 				gohelper.setActive(slot16.goStar, true)
 			end
 

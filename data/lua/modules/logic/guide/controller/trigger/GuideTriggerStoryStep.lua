@@ -8,7 +8,13 @@ function slot0.ctor(slot0, slot1)
 end
 
 function slot0.assertGuideSatisfy(slot0, slot1, slot2)
-	if #string.splitToNumber(slot2, "_") == 1 then
+	slot3 = string.splitToNumber(slot2, "_")
+
+	if not slot1 then
+		return false
+	end
+
+	if #slot3 == 1 then
 		return slot3[1] == slot1.storyId
 	elseif #slot3 > 1 then
 		return slot3[1] == slot1.storyId and slot3[2] == slot1.stepId

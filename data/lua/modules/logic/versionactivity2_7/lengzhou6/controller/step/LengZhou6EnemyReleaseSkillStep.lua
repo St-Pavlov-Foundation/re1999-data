@@ -18,13 +18,13 @@ function slot0.onStart(slot0)
 	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.EnemyUseSkill, slot1:getConfigId())
 
 	if slot1:getEffect()[1] == LengZhou6Enum.SkillEffect.DealsDamage or slot4 == LengZhou6Enum.SkillEffect.Heal then
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UpdateGameInfo)
+		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ShowEnemyEffect, slot4)
 		TaskDispatcher.runDelay(slot0._onDone, slot0, LengZhou6Enum.EnemySkillTime)
 
 		return
+	else
+		TaskDispatcher.runDelay(slot0._onDone, slot0, LengZhou6Enum.EnemySkillTime_2)
 	end
-
-	slot0:onDone(true)
 end
 
 return slot0

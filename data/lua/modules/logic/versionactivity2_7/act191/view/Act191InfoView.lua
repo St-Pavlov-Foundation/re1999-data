@@ -76,13 +76,13 @@ function slot0.clickCharacterItem(slot0, slot1)
 		slot0:closeTipView()
 		slot0:refreshSelect()
 	else
-		if slot0.openView and slot0.openView ~= ViewName.Act191HeroTipView then
-			ViewMgr.instance:closeView(slot0.openView, false, true)
+		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191HeroTipView then
+			ViewMgr.instance:closeView(slot0.openViewName, false, true)
 		end
 
-		slot0.openView = ViewName.Act191HeroTipView
+		slot0.openViewName = ViewName.Act191HeroTipView
 
-		ViewMgr.instance:openView(slot0.openView, {
+		Activity191Controller.instance:openHeroTipView({
 			preview = true,
 			notShowBg = true,
 			heroList = {
@@ -126,13 +126,13 @@ function slot0.clickCollectionItem(slot0, slot1)
 		slot0:closeTipView()
 		slot0:refreshSelect()
 	else
-		if slot0.openView and slot0.openView ~= ViewName.Act191ItemTipView then
-			ViewMgr.instance:closeView(slot0.openView, false, true)
+		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191CollectionTipView then
+			ViewMgr.instance:closeView(slot0.openViewName, false, true)
 		end
 
-		slot0.openView = ViewName.Act191ItemTipView
+		slot0.openViewName = ViewName.Act191CollectionTipView
 
-		ViewMgr.instance:openView(slot0.openView, {
+		Activity191Controller.instance:openCollectionTipView({
 			notShowBg = true,
 			itemId = slot2.config.id,
 			pos = Vector2.New(-300, 0)
@@ -170,13 +170,13 @@ function slot0.clickBuffItem(slot0, slot1)
 		slot0:closeTipView()
 		slot0:refreshSelect()
 	else
-		if slot0.openView and slot0.openView ~= ViewName.Act191EnhanceTipView then
-			ViewMgr.instance:closeView(slot0.openView, false, true)
+		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191EnhanceTipView then
+			ViewMgr.instance:closeView(slot0.openViewName, false, true)
 		end
 
-		slot0.openView = ViewName.Act191EnhanceTipView
+		slot0.openViewName = ViewName.Act191EnhanceTipView
 
-		ViewMgr.instance:openView(slot0.openView, {
+		Activity191Controller.instance:openEnhanceTipView({
 			notShowBg = true,
 			co = slot2.config,
 			pos = Vector2.New(-300, 0)
@@ -198,18 +198,18 @@ function slot0.refreshSelect(slot0, slot1)
 end
 
 function slot0.closeTipView(slot0)
-	if ViewMgr.instance:isOpen(slot0.openView) then
-		ViewMgr.instance:closeView(slot0.openView, false, true)
+	if ViewMgr.instance:isOpen(slot0.openViewName) then
+		ViewMgr.instance:closeView(slot0.openViewName, false, true)
 	end
 
-	slot0.openView = nil
+	slot0.openViewName = nil
 end
 
 function slot0.onViewClose(slot0, slot1)
-	if slot0.openView == slot1 then
+	if slot0.openViewName == slot1 then
 		slot0:refreshSelect()
 
-		slot0.openView = nil
+		slot0.openViewName = nil
 	end
 end
 

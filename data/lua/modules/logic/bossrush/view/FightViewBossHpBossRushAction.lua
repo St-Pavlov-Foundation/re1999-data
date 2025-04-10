@@ -48,9 +48,6 @@ function slot0._ontBtnClick(slot0)
 	})
 end
 
-function slot0.onRefreshViewParam(slot0)
-end
-
 function slot0.onOpen(slot0)
 	slot0:_refreshActData()
 	slot0:_refreshRoundShow()
@@ -95,7 +92,7 @@ function slot0._refreshActData(slot0, slot1)
 	slot0._actList = {}
 	slot0._curDataList = {}
 	slot2 = FightModel.instance:getBattleId()
-	slot0._bossEntityMO = slot0:getParentView()._bossEntityMO
+	slot0._bossEntityMO = slot0.PARENT_VIEW._bossEntityMO
 
 	if slot0._bossEntityMO and lua_boss_action.configDict[slot2] and lua_boss_action.configDict[slot2][slot0._bossEntityMO.modelId] and lua_boss_action_list.configDict[slot5.actionId] then
 		slot7 = 0

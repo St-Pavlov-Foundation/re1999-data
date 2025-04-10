@@ -52,12 +52,12 @@ function slot0.initByData(slot0, slot1)
 
 		for slot10 = 1, #slot6 do
 			if slot0.cells[slot5][slot10] == nil then
-				slot11 = slot0:createNewCell(slot5, slot10, EliminateEnum.ChessState.Normal, slot6[slot10])
+				slot11 = slot0:createNewCell(slot5, slot10, EliminateEnum_2_7.ChessState.Normal, slot6[slot10])
 			else
-				slot0:initCell(slot11, slot5, slot10, EliminateEnum.ChessState.Normal, slot12)
+				slot0:initCell(slot11, slot5, slot10, EliminateEnum_2_7.ChessState.Normal, slot12)
 			end
 
-			slot11:setStartXY(slot5, slot10 + 1)
+			slot11:setStartXY(slot5, slot0._col + 1)
 			slot11:setXY(slot5, slot10)
 		end
 	end
@@ -83,6 +83,14 @@ end
 
 function slot0.getCellRowAndCol(slot0)
 	return slot0._row, slot0._col
+end
+
+function slot0.setEliminateDieEffect(slot0, slot1)
+	slot0._dieEffect = slot1
+end
+
+function slot0.getEliminateDieEffect(slot0)
+	return slot0._dieEffect
 end
 
 function slot0.randomCell(slot0)
@@ -157,7 +165,7 @@ function slot0._canEx(slot0, slot1, slot2)
 		return false
 	end
 
-	return slot3.id ~= -1 and not slot3:haveStatus(EliminateEnum.ChessState.Frost) and slot3.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone
+	return slot3.id ~= -1 and not slot3:haveStatus(EliminateEnum_2_7.ChessState.Frost) and slot3.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone
 end
 
 function slot0.resetCreateWeight(slot0)
@@ -203,7 +211,7 @@ function slot0.changeCellId(slot0, slot1, slot2, slot3)
 	slot4 = slot0.cells[slot1][slot2]
 
 	slot4:setChessId(slot3)
-	slot4:setStatus(EliminateEnum.ChessState.Normal)
+	slot4:setStatus(EliminateEnum_2_7.ChessState.Normal)
 
 	if isDebugBuild then
 		slot0:printInfo("改变棋子类型：")
@@ -289,6 +297,8 @@ function slot0.eliminateCross(slot0, slot1, slot2)
 			skillEffect = LengZhou6Enum.SkillEffect.EliminationCross
 		})
 	end
+
+	slot0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationCross)
 end
 
 function slot0.eliminateRange(slot0, slot1, slot2, slot3)
@@ -315,6 +325,8 @@ function slot0.eliminateRange(slot0, slot1, slot2, slot3)
 			end
 		end
 	end
+
+	slot0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationRange)
 end
 
 function slot0.checkEliminate(slot0)
@@ -359,7 +371,7 @@ function slot0.eliminate(slot0)
 		slot12 = slot7.eliminateType
 		slot13 = slot7.skillEffect
 		slot14 = false
-		slot16 = slot0.cells[slot7.eliminateX][slot7.eliminateY]:haveStatus(EliminateEnum.ChessState.SpecialSkill)
+		slot16 = slot0.cells[slot7.eliminateX][slot7.eliminateY]:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
 
 		if slot7.eliminatePoints ~= nil then
 			slot17 = nil
@@ -369,36 +381,36 @@ function slot0.eliminate(slot0)
 				slot26 = slot0.cells[slot7.eliminatePoints[slot23].x][slot7.eliminatePoints[slot23].y]
 				slot17 = slot26:getEliminateID()
 
-				if slot26:haveStatus(EliminateEnum.ChessState.SpecialSkill) then
+				if slot26:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill) then
 					slot19 = 0 + 1
 				end
 
 				slot18 = slot18 + 1
 
-				if not slot26:haveStatus(EliminateEnum.ChessState.Frost) then
+				if not slot26:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
 					slot27 = true
 					slot28 = false
 
-					if slot8 ~= nil and slot8 == EliminateEnum.ChessState.SpecialSkill and (not slot16 or slot9 ~= slot24 or slot25 ~= slot10) and not slot14 then
+					if slot8 ~= nil and slot8 == EliminateEnum_2_7.ChessState.SpecialSkill and (not slot16 or slot9 ~= slot24 or slot25 ~= slot10) and not slot14 then
 						slot28 = true
 						slot27 = false
 					end
 
 					if slot28 and not slot14 then
-						slot26:addStatus(EliminateEnum.ChessState.SpecialSkill)
-						slot2:addChangeType(slot24, slot25, EliminateEnum.ChessState.Normal)
+						slot26:addStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
+						slot2:addChangeType(slot24, slot25, EliminateEnum_2_7.ChessState.Normal)
 
 						slot14 = true
 					end
 
 					if slot27 then
-						slot26:setStatus(EliminateEnum.ChessState.Die)
-						slot26:setChessId(EliminateEnum.InvalidId)
+						slot26:setStatus(EliminateEnum_2_7.ChessState.Die)
+						slot26:setChessId(EliminateEnum_2_7.InvalidId)
 						slot2:addEliminate(slot24, slot25, slot13)
 					end
 				else
-					slot26:setStatus(EliminateEnum.ChessState.Normal)
-					slot2:addChangeType(slot24, slot25, EliminateEnum.ChessState.Frost)
+					slot26:setStatus(EliminateEnum_2_7.ChessState.Normal)
+					slot2:addChangeType(slot24, slot25, EliminateEnum_2_7.ChessState.Frost)
 				end
 			end
 
@@ -416,7 +428,7 @@ function slot0.tidyUp(slot0)
 
 	for slot5 = 1, slot0._row do
 		for slot9 = 1, slot0._col do
-			if slot0.cells[slot5][slot9]:haveStatus(EliminateEnum.ChessState.Die) and slot0:findNextStartIndex(slot9 + 1, slot5, slot0._row) ~= -1 then
+			if slot0.cells[slot5][slot9]:haveStatus(EliminateEnum_2_7.ChessState.Die) and slot0:findNextStartIndex(slot9 + 1, slot5, slot0._row) ~= -1 then
 				slot0:_exchangeCell(slot5, slot9, slot5, slot11)
 				slot0:addChangePoints(slot5, slot9)
 				slot0:addChangePoints(slot5, slot11)
@@ -428,11 +440,11 @@ end
 
 function slot0.findNextStartIndex(slot0, slot1, slot2, slot3)
 	for slot7 = slot1, slot3 do
-		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum.ChessState.Frost) then
+		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
 			break
 		end
 
-		if slot9 and not slot8:haveStatus(EliminateEnum.ChessState.Frost) and not slot8:haveStatus(EliminateEnum.ChessState.Die) then
+		if slot9 and not slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) and not slot8:haveStatus(EliminateEnum_2_7.ChessState.Die) then
 			return slot7
 		end
 	end
@@ -447,8 +459,8 @@ function slot0.fill(slot0)
 		for slot9 = 1, slot0._col do
 			slot11 = slot0.cells[slot5][slot9] and slot10:getStatus()
 
-			if slot10:haveStatus(EliminateEnum.ChessState.Die) and slot0:findNextSpecialIndex(slot9 + 1, slot5, slot0._row) == -1 then
-				slot0:createNewCell(slot5, slot9, EliminateEnum.ChessState.Normal):setStartXY(slot5, slot0._row + 1)
+			if slot10:haveStatus(EliminateEnum_2_7.ChessState.Die) and slot0:findNextSpecialIndex(slot9 + 1, slot5, slot0._row) == -1 then
+				slot0:createNewCell(slot5, slot9, EliminateEnum_2_7.ChessState.Normal):setStartXY(slot5, slot0._row + 1)
 				slot0:addChangePoints(slot5, slot9)
 				slot1:addNew(slot5, slot9)
 			end
@@ -458,7 +470,7 @@ end
 
 function slot0.findNextSpecialIndex(slot0, slot1, slot2, slot3)
 	for slot7 = slot1, slot3 do
-		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum.ChessState.Frost) then
+		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
 			return slot7
 		end
 	end
@@ -569,7 +581,7 @@ function slot0.initCell(slot0, slot1, slot2, slot3, slot4, slot5)
 	end
 
 	slot1:setXY(slot2, slot3)
-	slot1:setStatus(slot4 and slot4 or EliminateEnum.ChessState.Normal)
+	slot1:setStatus(slot4 and slot4 or EliminateEnum_2_7.ChessState.Normal)
 
 	slot0.cells[slot2][slot3] = slot1
 end
@@ -607,16 +619,16 @@ function slot0.checkPoint(slot0, slot1, slot2)
 	slot7 = EliminateEnum_2_7.eliminateType.three
 
 	if #slot0:checkWithDirection(slot1, slot2, uv0, slot0._row, slot0._col) >= 5 or #slot0:checkWithDirection(slot1, slot2, uv1, slot0._row, slot0._col) >= 5 then
-		slot6 = EliminateEnum.ChessState.SpecialSkill
+		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
 		slot7 = EliminateEnum_2_7.eliminateType.five
 	elseif #slot3 >= 3 and #slot4 >= 3 then
-		slot6 = EliminateEnum.ChessState.SpecialSkill
+		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
 		slot7 = EliminateEnum_2_7.eliminateType.cross
 	elseif #slot3 >= 4 then
-		slot6 = EliminateEnum.ChessState.SpecialSkill
+		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
 		slot7 = EliminateEnum_2_7.eliminateType.four
 	elseif #slot4 >= 4 then
-		slot6 = EliminateEnum.ChessState.SpecialSkill
+		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
 		slot7 = EliminateEnum_2_7.eliminateType.four
 	end
 
@@ -662,7 +674,7 @@ function slot0.checkWithDirection(slot0, slot1, slot2, slot3, slot4, slot5)
 				if slot1 + slot3[slot14].x >= 1 and slot4 >= slot15 and slot16 >= 1 and slot5 >= slot16 and not slot7[slot15 + slot16 * slot5] and slot0.cells[slot15] ~= nil then
 					if slot0.cells[slot15][slot16] == nil then
 						-- Nothing
-					elseif slot10.id == slot0.cells[slot15][slot16].id and slot10.id ~= EliminateEnum.InvalidId and slot10.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
+					elseif slot10.id == slot0.cells[slot15][slot16].id and slot10.id ~= EliminateEnum_2_7.InvalidId and slot10.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
 						slot7[slot15 + slot16 * slot5] = true
 
 						table.insert(slot6, {

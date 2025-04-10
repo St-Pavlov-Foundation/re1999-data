@@ -31,14 +31,25 @@ function slot0.initSelectConditionMap(slot0)
 	slot0._fightConditionIdMap = Act183Helper.listToMap(slot0._fightConditionIds)
 	slot0._passFightConditionIdMap = Act183Helper.listToMap(slot0._passFightConditionIds)
 
-	if slot0._episodeType == Act183Enum.EpisodeType.Boss and Act183Helper.getSelectConditionIdsInLocal(slot0._activityId, slot0._episodeId) then
-		for slot6, slot7 in ipairs(slot2) do
-			if slot0._passFightConditionIdMap[slot7] then
-				slot0._selectConditionMap[slot7] = true
+	if slot0._episodeType == Act183Enum.EpisodeType.Boss then
+		slot2 = {}
 
-				table.insert(slot0._selectConditionIds, slot7)
-			else
-				slot1 = true
+		if PlayerPrefsHelper.hasKey(Act183Helper._generateSaveSelectCollectionIdsKey(slot0._activityId, slot0._episodeId)) then
+			slot2 = Act183Helper.getSelectConditionIdsInLocal(slot0._activityId, slot0._episodeId)
+		else
+			slot2 = slot0._passFightConditionIds
+			slot1 = true
+		end
+
+		if slot2 then
+			for slot7, slot8 in ipairs(slot2) do
+				if slot0._passFightConditionIdMap[slot8] then
+					slot0._selectConditionMap[slot8] = true
+
+					table.insert(slot0._selectConditionIds, slot8)
+				else
+					slot1 = true
+				end
 			end
 		end
 	end

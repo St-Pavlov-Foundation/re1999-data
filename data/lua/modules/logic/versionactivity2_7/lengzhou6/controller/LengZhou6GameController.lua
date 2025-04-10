@@ -32,20 +32,23 @@ function slot0.gameUpdateRound(slot0, slot1)
 end
 
 function slot0._damageAndHpSettle(slot0, slot1)
-	for slot6 = 1, LengZhou6GameModel.instance:getEnemySettleCount() do
+	for slot8 = 1, LengZhou6GameModel.instance:getEnemySettleCount() do
 		LengZhou6GameModel.instance:setCurGameStep(LengZhou6Enum.BattleStep.attackBefore)
 
-		slot7, slot8 = LengZhou6GameModel.instance:getTotalPlayerSettle()
+		slot9, slot10 = LengZhou6GameModel.instance:getTotalPlayerSettle()
+		slot3 = 0 + slot9
+		slot4 = 0 + slot10
 
-		LengZhou6GameModel.instance:getEnemy():changeHp(-slot7)
-		LengZhou6GameModel.instance:getPlayer():changeHp(slot8)
 		LengZhou6GameModel.instance:setCurGameStep(LengZhou6Enum.BattleStep.attackAfter)
 		LengZhou6GameModel.instance:setCurGameStep(LengZhou6Enum.BattleStep.attackComplete)
 	end
 
 	LengZhou6GameModel.instance:resetEnemySettleCount()
-	LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateChessUpdateDamage))
-	slot0:_updateRoundAndCD(slot1)
+	LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateChessUpdateDamage, {
+		damage = slot3,
+		hp = slot4,
+		isRound = slot1
+	}))
 end
 
 function slot0._updateRoundAndCD(slot0, slot1)
@@ -55,6 +58,8 @@ function slot0._updateRoundAndCD(slot0, slot1)
 	end
 
 	if LengZhou6GameModel.instance:gameIsOver() then
+		LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateChessUpdateGameInfo))
+
 		return
 	end
 
@@ -80,6 +85,8 @@ function slot0._enemySkillRelease(slot0, slot1)
 
 		LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.LengZhou6EnemyGenerateSkillStep))
 	end
+
+	LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateChessUpdateGameInfo))
 end
 
 function slot0.playerSettle(slot0)
@@ -92,6 +99,7 @@ function slot0.gameEnd(slot0)
 	if LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite and slot2 then
 		if LengZhou6GameModel.instance:canSelectSkill() then
 			LengZhou6GameModel.instance:setEndLessBattleProgress(LengZhou6Enum.BattleProgress.selectSkill)
+			slot0:recordProgress()
 		else
 			LengZhou6GameModel.instance:enterNextLayer()
 		end
@@ -104,29 +112,7 @@ function slot0.gameEnd(slot0)
 end
 
 function slot0.levelGame(slot0, slot1)
-	slot3 = LengZhou6GameModel.instance:getEnemy()
-
-	if LengZhou6GameModel.instance:getPlayer() and slot3 then
-		LengZhou6StatHelper.instance:setPlayerAndEnemyHp(slot2:getHp(), slot3:getHp())
-	end
-
-	if LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite or LengZhou6GameModel.instance:playerIsWin() then
-		slot6 = nil
-
-		if slot5 == LengZhou6Enum.BattleModel.infinite then
-			slot6 = LengZhou6GameModel.instance:getRecordServerData():getRecordData()
-
-			if LengZhou6GameModel.instance:getCurRound() <= 0 or LengZhou6GameModel.instance:getPlayer():getHp() <= 0 then
-				slot6 = ""
-			end
-		end
-
-		if not LengZhou6Enum.enterGM then
-			LengZhou6Controller.instance:finishLevel(LengZhou6Model.instance:getCurEpisodeId(), slot6)
-		end
-	end
-
-	LengZhou6StatHelper.instance:sendGameExit()
+	slot0:recordProgress()
 
 	if slot1 then
 		ViewMgr.instance:closeView(ViewName.LengZhou6GameView)
@@ -134,6 +120,24 @@ function slot0.levelGame(slot0, slot1)
 	end
 
 	LengZhou6GameModel.instance:clear()
+end
+
+function slot0.recordProgress(slot0)
+	if LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite or LengZhou6GameModel.instance:playerIsWin() then
+		slot3 = nil
+
+		if slot2 == LengZhou6Enum.BattleModel.infinite then
+			slot3 = LengZhou6GameModel.instance:getRecordServerData():getRecordData()
+
+			if LengZhou6GameModel.instance:getCurRound() <= 0 or LengZhou6GameModel.instance:getPlayer():getHp() <= 0 then
+				slot3 = ""
+			end
+		end
+
+		if not LengZhou6Enum.enterGM then
+			LengZhou6Controller.instance:finishLevel(LengZhou6Model.instance:getCurEpisodeId(), slot3)
+		end
+	end
 end
 
 slot0.instance = slot0.New()

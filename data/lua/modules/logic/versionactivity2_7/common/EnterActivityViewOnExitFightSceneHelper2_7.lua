@@ -12,8 +12,7 @@ function slot0.enterActivity12701(slot0, slot1)
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.VersionActivity2_7EnterView)
 		VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(function ()
 			Activity191Controller.instance:openMainView({
-				exitFromFight = true,
-				actId = VersionActivity2_7Enum.ActivityId.Act191
+				exitFromFight = true
 			})
 		end, nil, VersionActivity2_7Enum.ActivityId.Act191, true)
 	end)

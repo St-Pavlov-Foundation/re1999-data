@@ -5,26 +5,54 @@
   },
   {
     "rank": 2,
-    "fightLevel": "C"
+    "fightLevel": "D"
   },
   {
     "rank": 3,
-    "fightLevel": "B"
+    "fightLevel": "C"
   },
   {
     "rank": 4,
-    "fightLevel": "A"
+    "fightLevel": "C"
   },
   {
     "rank": 5,
-    "fightLevel": "S"
+    "fightLevel": "B"
   },
   {
     "rank": 6,
-    "fightLevel": "SS"
+    "fightLevel": "B"
   },
   {
     "rank": 7,
+    "fightLevel": "A"
+  },
+  {
+    "rank": 8,
+    "fightLevel": "A"
+  },
+  {
+    "rank": 9,
+    "fightLevel": "S"
+  },
+  {
+    "rank": 10,
+    "fightLevel": "S"
+  },
+  {
+    "rank": 11,
+    "fightLevel": "SS"
+  },
+  {
+    "rank": 12,
+    "fightLevel": "SS"
+  },
+  {
+    "rank": 13,
+    "fightLevel": "SSS"
+  },
+  {
+    "rank": 14,
     "fightLevel": "SSS"
   }
 ]

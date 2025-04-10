@@ -38,6 +38,7 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0._btncloseOnClick(slot0)
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
 	slot0:closeThis()
 end
 

@@ -296,8 +296,13 @@ function slot0._onSetJumpItem(slot0, slot1, slot2, slot3)
 		gohelper.setActive(slot4.jumpHardTagGO, JumpConfig.instance:isJumpHardDungeon(slot8))
 
 		slot9 = slot4.data.probability
-		slot10 = slot8 and slot9 and MaterialEnum.JumpProbabilityDisplay[slot9]
-		slot4.txtProbability.text = slot10 and string.format("%s", luaLang(MaterialEnum.JumpProbabilityDisplay[slot9])) or ""
+		slot11 = ""
+
+		if slot8 and slot9 and MaterialEnum.JumpProbabilityDisplay[slot9] then
+			slot11 = luaLang(MaterialEnum.JumpProbabilityDisplay[slot9])
+		end
+
+		slot4.txtProbability.text = slot9
 
 		gohelper.setActive(slot4.probabilityBg, slot10 and true or false)
 		gohelper.setActive(slot4.hasJump, not JumpController.instance:isOnlyShowJump(slot4.jumpId))

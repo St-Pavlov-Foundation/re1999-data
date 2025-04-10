@@ -41,7 +41,6 @@ function slot0.onReceiveAct190EpisodePush(slot0, slot1, slot2)
 	end
 
 	LengZhou6Model.instance:onPushActInfo(slot2)
-	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.OnReceiveEpisodeInfo)
 end
 
 slot0.instance = slot0.New()

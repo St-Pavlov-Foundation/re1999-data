@@ -167,6 +167,7 @@ function slot0._updateActivityStore(slot0)
 	gohelper.setActive(slot0._gooffTag, false)
 	gohelper.setActive(slot0._gonormaltitle, true)
 	gohelper.setActive(slot0._goadvancedtitle, false)
+	gohelper.setActive(slot0._simagedreesing, false)
 end
 
 function slot0._updateSkinStore(slot0)

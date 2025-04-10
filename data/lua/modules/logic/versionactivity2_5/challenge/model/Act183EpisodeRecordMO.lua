@@ -22,8 +22,7 @@ function slot0.init(slot0, slot1)
 	slot0._config = Act183Config.instance:getEpisodeCo(slot0._episodeId)
 	slot0._params = slot1.params
 	slot0._star = slot1.star
-
-	slot0:_computeTotalStarCount()
+	slot0._totalStarCount = Act183Helper.calcEpisodeTotalConditionCount(slot0._episodeId)
 end
 
 function slot0.getConfig(slot0)
@@ -94,22 +93,6 @@ function slot0.getRuleStatus(slot0, slot1)
 	end
 
 	return Act183Enum.RuleStatus.Escape
-end
-
-function slot0._computeTotalStarCount(slot0)
-	slot2 = 0
-
-	if not string.nilorempty(DungeonConfig.instance:getEpisodeAdvancedCondition(slot0._episodeId)) then
-		slot2 = string.splitToNumber(slot1, "|") and #slot3 or 0
-	end
-
-	slot4 = 0
-
-	if not string.nilorempty(DungeonConfig.instance:getEpisodeCondition(slot0._episodeId)) then
-		slot4 = GameUtil.splitString2(slot3, false, "|", "#") and #slot5 or 0
-	end
-
-	slot0._totalStarCount = slot2 + slot4
 end
 
 function slot0.getFinishStarCount(slot0)

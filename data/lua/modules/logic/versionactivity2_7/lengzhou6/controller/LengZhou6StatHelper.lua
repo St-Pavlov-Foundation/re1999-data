@@ -87,15 +87,21 @@ function slot0.setPlayerAndEnemyHp(slot0, slot1, slot2)
 end
 
 function slot0.sendGameExit(slot0)
-	slot1 = ""
+	slot2 = LengZhou6GameModel.instance:getEnemy()
+
+	if LengZhou6GameModel.instance:getPlayer() and slot2 then
+		slot0:setPlayerAndEnemyHp(slot1:getHp(), slot2:getHp())
+	end
+
+	slot3 = ""
 
 	if slot0._isEndless then
-		slot1 = tostring(LengZhou6GameModel.instance:getEndLessModelLayer())
+		slot3 = tostring(LengZhou6GameModel.instance:getEndLessModelLayer())
 	end
 
 	StatController.instance:track(StatEnum.EventName.ExitHissabethActivity, {
 		[StatEnum.EventProperties.LengZhou6_EpisodeId] = tostring(slot0._episodeId),
-		[StatEnum.EventProperties.LengZhou6_EndlessLibraryRound] = slot1,
+		[StatEnum.EventProperties.LengZhou6_EndlessLibraryRound] = slot3,
 		[StatEnum.EventProperties.LengZhou6_Result] = tostring(slot0._result),
 		[StatEnum.EventProperties.LengZhou6_UseTime] = os.time() - slot0._beginTime,
 		[StatEnum.EventProperties.LengZhou6_TotalRound] = slot0._useRound,

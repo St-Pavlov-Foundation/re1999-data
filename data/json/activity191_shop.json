@@ -5,9 +5,9 @@
     "type": "mixtureShop",
     "level": 1,
     "stage": 101,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间I",
-    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西。"
   },
   {
     "activityId": 12701,
@@ -15,9 +15,9 @@
     "type": "roleShop",
     "level": 1,
     "stage": 101,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间I",
-    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+    "desc": "偶人们在此处聚集，等待你给他们上场角斗的机会。"
   },
   {
     "activityId": 12701,
@@ -25,9 +25,9 @@
     "type": "collectionShop",
     "level": 1,
     "stage": 101,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间I",
-    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+    "desc": "效果各异的造物拓片在专柜中等待挑选。"
   },
   {
     "activityId": 12701,
@@ -35,9 +35,9 @@
     "type": "mixtureShop",
     "level": 2,
     "stage": 102,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间II",
-    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西。"
   },
   {
     "activityId": 12701,
@@ -45,9 +45,9 @@
     "type": "roleShop",
     "level": 2,
     "stage": 102,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间II",
-    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+    "desc": "偶人们在此处聚集，等待你给他们上场角斗的机会。"
   },
   {
     "activityId": 12701,
@@ -55,19 +55,19 @@
     "type": "collectionShop",
     "level": 2,
     "stage": 102,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间II",
-    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+    "desc": "效果各异的造物拓片在专柜中等待挑选。"
   },
   {
     "activityId": 12701,
     "id": 7,
-    "type": "tagShop1",
+    "type": "tagShop",
     "level": 2,
     "stage": 102,
-    "position": 4,
+    "position": 3,
     "name": "赛后补给间II",
-    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
+    "desc": "它能察觉到偶人间的芯灵感应，从而精挑细选一些特定的偶人。"
   },
   {
     "activityId": 12701,
@@ -75,9 +75,9 @@
     "type": "mixtureShop",
     "level": 3,
     "stage": 103,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间III",
-    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西。"
   },
   {
     "activityId": 12701,
@@ -85,9 +85,9 @@
     "type": "roleShop",
     "level": 3,
     "stage": 103,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间III",
-    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
+    "desc": "偶人们在此处聚集，等待你给他们上场角斗的机会。"
   },
   {
     "activityId": 12701,
@@ -95,58 +95,18 @@
     "type": "collectionShop",
     "level": 3,
     "stage": 103,
-    "position": 8,
+    "position": 6,
     "name": "赛后补给间III",
-    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
+    "desc": "效果各异的造物拓片在专柜中等待挑选。"
   },
   {
     "activityId": 12701,
     "id": 11,
-    "type": "tagShop1",
+    "type": "tagShop",
     "level": 3,
     "stage": 103,
-    "position": 4,
+    "position": 3,
     "name": "赛后补给间III",
-    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
-  },
-  {
-    "activityId": 12701,
-    "id": 12,
-    "type": "mixtureShop",
-    "level": 4,
-    "stage": 104,
-    "position": 8,
-    "name": "赛后补给间IV",
-    "desc": "龙鳞怀表与记忆沙漏同列——英镑或灵魂碎片皆可结账。"
-  },
-  {
-    "activityId": 12701,
-    "id": 13,
-    "type": "roleShop",
-    "level": 4,
-    "stage": 104,
-    "position": 8,
-    "name": "赛后补给间IV",
-    "desc": "为桀骜灵魂剪裁躯壳，蒸汽齿轮心脏跳动着定制价码。"
-  },
-  {
-    "activityId": 12701,
-    "id": 14,
-    "type": "collectionShop",
-    "level": 4,
-    "stage": 104,
-    "position": 8,
-    "name": "赛后补给间IV",
-    "desc": "秘银坩埚沸腾弑神配方，淬火星辰与饮下即窥见永恒。"
-  },
-  {
-    "activityId": 12701,
-    "id": 15,
-    "type": "tagShop1",
-    "level": 4,
-    "stage": 104,
-    "position": 4,
-    "name": "赛后补给间IV",
-    "desc": "镌刻灵魂共振的怀表链坠——英镑或共感涟漪皆可赎买永恒。"
+    "desc": "它能察觉到偶人间的芯灵感应，从而精挑细选一些特定的偶人。"
   }
 ]

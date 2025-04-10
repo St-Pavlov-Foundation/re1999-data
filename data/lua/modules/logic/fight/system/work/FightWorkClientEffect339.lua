@@ -24,11 +24,17 @@ function slot0.clientEffect1(slot0)
 	FightController.instance:dispatchEvent(FightEvent.DoomsdayClock_OnBroken)
 end
 
+function slot0.clientEffect2(slot0)
+	FightController.instance:dispatchEvent(FightEvent.DoomsdayClock_OnClear)
+end
+
 slot0.ClientEffectEnum = {
-	DoomsdayClock = 1
+	DoomsdayClock = 1,
+	DoomsdayClockClear = 2
 }
 slot0.ClientEffectWaitTime = {
-	[slot0.ClientEffectEnum.DoomsdayClock] = 0.5
+	[slot0.ClientEffectEnum.DoomsdayClock] = 0.5,
+	[slot0.ClientEffectEnum.DoomsdayClockClear] = 0.2
 }
 
 return slot0

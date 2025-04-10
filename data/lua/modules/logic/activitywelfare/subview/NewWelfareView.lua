@@ -10,6 +10,7 @@ function slot0.onInitView(slot0)
 	slot0._imgfill = gohelper.findChildImage(slot0.viewGO, "Root/Progress/go_fillbg/go_fill")
 	slot0._rewardItemList = {}
 	slot0._progressItemList = {}
+	slot0._isfirstopen = false
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -137,6 +138,8 @@ function slot0.refreshItem(slot0)
 end
 
 function slot0.refreshProgress(slot0)
+	slot0._progress = 0
+
 	for slot5, slot6 in ipairs(slot0._progressItemList) do
 		if Activity160Model.instance:isMissionFinish(slot0.actId, slot6.id) or Activity160Model.instance:isMissionCanGet(slot0.actId, slot6.id) then
 			slot1 = 0 + 1
@@ -146,7 +149,32 @@ function slot0.refreshProgress(slot0)
 		gohelper.setActive(slot6.golight, slot9)
 	end
 
-	slot0._imgfill.fillAmount = slot1 == 1 and uv0.FirstProgress or slot1 == 2 and uv0.SecondProgress or slot1 == 3 and 1
+	if slot1 == 1 then
+		slot0._progress = uv0.FirstProgress
+	elseif slot1 == 2 then
+		slot0._progress = uv0.SecondProgress
+	elseif slot1 == 3 then
+		slot0._progress = 1
+	end
+
+	if not slot0._isfirstopen then
+		slot0._faithTweenId = ZProj.TweenHelper.DOTweenFloat(0, slot0._progress, 0.5, slot0._setFaithPercent, slot0._setFaithValue, slot0, nil, EaseType.Linear)
+		slot0._isfirstopen = true
+	end
+end
+
+function slot0._setFaithPercent(slot0, slot1)
+	slot0._imgfill.fillAmount = slot1
+end
+
+function slot0._setFaithValue(slot0)
+	slot0:_setFaithPercent(slot0._progress)
+
+	if slot0._faithTweenId then
+		ZProj.TweenHelper.KillById(slot0._faithTweenId)
+
+		slot0._faithTweenId = nil
+	end
 end
 
 function slot0.onClose(slot0)

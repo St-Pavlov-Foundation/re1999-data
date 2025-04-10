@@ -73,7 +73,7 @@ function slot0._loadResFinished(slot0)
 
 	slot0._hasLoadedRes = true
 
-	slot0:_initMap()
+	slot0:tryInitMap(slot0._panelRoot, slot0._ballRoot, slot0._initMapCb, slot0._initMapCbObj)
 end
 
 function slot0.tryInitMap(slot0, slot1, slot2, slot3, slot4)

@@ -26,8 +26,8 @@ end
 
 function slot0.setSpEliminateRate(slot0, slot1, slot2, slot3)
 	slot0._FourEliminateDamageRate = slot1 / 1000
-	slot0._FiveEliminateDamageRate = slot2 / 1000
-	slot0._CrossEliminateDamageRate = slot3 / 1000
+	slot0._CrossEliminateDamageRate = slot2 / 1000
+	slot0._FiveEliminateDamageRate = slot3 / 1000
 end
 
 function slot0.setEliminateTypeExDamage(slot0, slot1, slot2)
@@ -46,43 +46,48 @@ slot1 = "\n"
 
 function slot0.damage(slot0, slot1)
 	slot2 = 0
-	slot3 = 0
 
-	for slot8, slot9 in pairs(slot1:getEliminateTypeMap()) do
-		for slot13, slot14 in pairs(slot9) do
-			if not string.nilorempty(slot8) and slot8 ~= EliminateEnum_2_7.ChessType.stone then
+	for slot7, slot8 in pairs(slot1:getEliminateTypeMap()) do
+		slot9 = 0
+
+		for slot13, slot14 in pairs(slot8) do
+			if not string.nilorempty(slot7) and slot7 ~= EliminateEnum_2_7.ChessType.stone then
 				slot17 = slot14.spEliminateCount
-				slot18, slot19 = LengZhou6Config.instance:getDamageValue(slot8, slot14.eliminateType)
+				slot18, slot19 = LengZhou6Config.instance:getDamageValue(slot7, slot14.eliminateType)
+				slot20 = slot0._exDamage
 
 				if slot19 ~= nil and (slot15 == EliminateEnum_2_7.eliminateType.cross or slot15 == EliminateEnum_2_7.eliminateType.five) then
 					slot19 = (slot14.eliminateCount - 5) * slot19
 				end
 
 				if slot15 == EliminateEnum_2_7.eliminateType.four then
-					slot3 = slot0._FourEliminateDamageRate
+					slot9 = slot0._FourEliminateDamageRate
 				end
 
 				if slot15 == EliminateEnum_2_7.eliminateType.five then
-					slot3 = slot0._FiveEliminateDamageRate
+					slot9 = slot0._FiveEliminateDamageRate
 				end
 
 				if slot15 == EliminateEnum_2_7.eliminateType.cross then
-					slot3 = slot0._CrossEliminateDamageRate
+					slot9 = slot0._CrossEliminateDamageRate
 				end
 
 				if slot15 == EliminateEnum_2_7.eliminateType.base then
 					slot18 = slot18 * slot16
+					slot20 = 0
 				end
 
-				if slot17 ~= 0 and slot0._eliminateTypeExDamage[slot8] ~= nil then
-					slot19 = slot19 + slot0._eliminateTypeExDamage[slot8] * slot17
+				if slot17 ~= 0 and slot0._eliminateTypeExDamage[slot7] ~= nil then
+					slot19 = slot19 + slot0._eliminateTypeExDamage[slot7] * slot17
 				end
 
-				if isDebugBuild then
-					uv0 = uv0 .. "eliminateId = " .. slot8 .. " eliminateType = " .. slot15 .. " eliminateCount = " .. slot16 .. " spEliminateCount = " .. slot17 .. " baseDamage = " .. slot18 .. " baseExDamage = " .. slot19 .. " damageRate = " .. slot3 .. "\n"
-				end
+				if slot18 ~= 0 then
+					if isDebugBuild then
+						uv0 = uv0 .. "eliminateId = " .. slot7 .. " eliminateType = " .. slot15 .. " eliminateCount = " .. slot16 .. " spEliminateCount = " .. slot17 .. " baseDamage = " .. slot18 .. " baseExDamage = " .. slot19 .. " exDamage = " .. slot20 .. " damageRate = " .. slot9 .. "\n"
+					end
 
-				slot2 = slot2 + (slot18 + slot19 + slot0._exDamage) * (1 + slot3)
+					slot2 = slot2 + (slot18 + slot19 + slot20) * (1 + slot9)
+				end
 			end
 		end
 	end

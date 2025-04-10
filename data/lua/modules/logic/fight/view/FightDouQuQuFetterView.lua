@@ -56,9 +56,28 @@ function slot0.refreshFetter(slot0)
 			})
 		end
 
+		for slot6, slot7 in ipairs(slot2) do
+			for slot11, slot12 in ipairs(slot0.configDic[slot7.key]) do
+				if slot12.activeNum <= slot7.value then
+					slot7.active = true
+				end
+			end
+		end
+
+		table.sort(slot2, uv0.sortItemListData)
 		slot0:com_createObjList(slot0.onItemShow, slot2, slot0.content, slot0.itemObj)
 	else
 		gohelper.setActive(slot0.viewGO, false)
+	end
+end
+
+function slot0.sortItemListData(slot0, slot1)
+	if slot0.active and not slot1.active then
+		return true
+	elseif not slot2 and slot3 then
+		return false
+	else
+		return false
 	end
 end
 

@@ -66,13 +66,13 @@ function slot0._refreshHeroItem(slot0)
 end
 
 function slot0._refreshStone(slot0)
-	slot1 = slot0._mo.isUnlock
+	slot1 = slot0._mo.isUnLock
 
 	gohelper.setActive(slot0._golocked, not slot1)
-	gohelper.setActive(slot0._gounlock, slot1)
+	gohelper.setActive(slot0._gounlocked, slot1)
 
 	if slot1 then
-		slot0._txtlevel.text = slot0._mo.stonelevel
+		slot0._txtlevel.text = GameUtil.getRomanNums(slot0._mo.stonelevel)
 	else
 		slot0._txtlevel.text = ""
 	end

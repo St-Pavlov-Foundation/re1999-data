@@ -3553,7 +3553,7 @@
   {
     "id": 29502,
     "name": "米尔内·街道",
-    "nameen": "",
+    "nameen": "Street, Mirny",
     "levels": [
       29501
     ]
@@ -3561,7 +3561,7 @@
   {
     "id": 29503,
     "name": "米尔内·远郊",
-    "nameen": "",
+    "nameen": "Suburb, Mirny",
     "levels": [
       29501
     ]
@@ -3569,7 +3569,7 @@
   {
     "id": 29601,
     "name": "内心的回响",
-    "nameen": "",
+    "nameen": "Head Space",
     "levels": [
       29601
     ]
@@ -3577,7 +3577,7 @@
   {
     "id": 29602,
     "name": "普列谢茨克·模拟训练室",
-    "nameen": "",
+    "nameen": "Simulation Room, Plesetsk",
     "levels": [
       29601
     ]

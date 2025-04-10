@@ -11,21 +11,17 @@ slot0.NodeType = {
 	Enhance = 7,
 	CollectionShop = 3,
 	MonsterBattle2 = 9,
-	TagShop4 = 23,
+	MonsterBattle7 = 21,
 	MonsterBattle1 = 8,
-	TagShop2 = 21,
 	MonsterBattle4 = 14,
 	PlayerBattle1 = 11,
 	MonsterBattle3 = 10,
-	TagShop6 = 25,
 	PlayerBattle7 = 20,
-	TagShop3 = 22,
 	MixStore = 1,
 	RewardEvent = 5,
 	PlayerBattle4 = 17,
 	PlayerBattle3 = 13,
 	BattleEvent = 6,
-	TagShop5 = 24,
 	TagShop = 4
 }
 slot0.NodeType2Key = {
@@ -56,7 +52,8 @@ slot0.PveFiled = {
 	10,
 	14,
 	15,
-	16
+	16,
+	21
 }
 slot0.PvpFiled = {
 	11,
@@ -68,12 +65,14 @@ slot0.PvpFiled = {
 	20
 }
 slot0.TagShopField = {
-	4,
-	21,
-	22,
-	23,
-	24,
-	25
+	4
+}
+slot0.AttrIdList = {
+	CharacterEnum.AttrId.Attack,
+	CharacterEnum.AttrId.Defense,
+	CharacterEnum.AttrId.Technic,
+	CharacterEnum.AttrId.Hp,
+	CharacterEnum.AttrId.Mdefense
 }
 slot0.GameState = {
 	Normal = 1,
@@ -82,16 +81,19 @@ slot0.GameState = {
 }
 slot0.ConstKey = {
 	RoleTag = 10,
-	PvpBattleEpisodeId = 6,
+	EnhanceDesc = 9,
 	PvpEpisodeName = 18,
-	MaxFreshNum = 13,
+	PlayerMaxScore = 7,
 	CollectionTag = 11,
 	CharacterUpExp = 4,
-	EnhanceDesc = 9,
+	MaxFreshNum = 13,
 	FightSpeed = 27,
 	FetterTag = 12,
+	TagShopFreshLimit = 29,
 	ShopFreshCost = 1,
-	EnhanceTitle = 8
+	EnhanceTitle = 8,
+	TagShopFreshCost = 28,
+	PvpBattleEpisodeId = 6
 }
 slot0.CharacterType = {
 	Monster = "monster",
@@ -102,7 +104,7 @@ slot0.CollectionColor = {
 	"8D6993",
 	"B8945F"
 }
-slot0.CharacterMaxStar = 3
+slot0.CharacterMaxStar = 6
 slot0.OpTeamType = {
 	ChangeName = 2,
 	ChangeIndex = 3,
@@ -112,6 +114,11 @@ slot0.SortRule = {
 	Down = 2,
 	Up = 1
 }
+slot0.HyperLinkPattern = {
+	EnhanceDestiny = "「(.-)」",
+	SkillDesc = "<(.-)>",
+	EnhanceItem = "『(.-)』"
+}
 slot0.PrefabPath = {
 	HeroHeadItem = "ui/viewres/versionactivity_2_7/act191/item/act191heroheaditem.prefab",
 	FetterItem = "ui/viewres/versionactivity_2_7/act191/item/act191fetteritem.prefab",
@@ -119,6 +126,7 @@ slot0.PrefabPath = {
 	NodeListItem = "ui/viewres/versionactivity_2_7/act191/item/act191nodelistitem.prefab",
 	BossHpItem = "ui/viewres/fight/fight_act191bosshpview.prefab",
 	HeroEditItem = "ui/viewres/versionactivity_2_7/act191/item/act191heroedititem.prefab",
+	TeamComp = "ui/viewres/versionactivity_2_7/act191/item/act191teamitem.prefab",
 	RewardItem = "ui/viewres/versionactivity_2_7/act191/item/act191rewarditem.prefab"
 }
 

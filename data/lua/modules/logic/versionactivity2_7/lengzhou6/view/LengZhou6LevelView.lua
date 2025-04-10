@@ -50,6 +50,8 @@ function slot0._btnTaskOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
+	slot0._taskAnimator = gohelper.findChild(slot0.viewGO, "#btn_Task/ani"):GetComponent(typeof(UnityEngine.Animator))
+
 	RedDotController.instance:addRedDot(slot0._goreddot, RedDotEnum.DotNode.V2a7LengZhou6Task, nil, slot0._refreshRedDot, slot0)
 
 	slot0._drag = SLFramework.UGUI.UIDragListener.Get(slot0._gostoryPath)
@@ -58,9 +60,9 @@ function slot0._editableInitView(slot0)
 	slot0._audioScroll = MonoHelper.addLuaComOnceToGo(slot0._gostoryPath, DungeonMapEpisodeAudio, slot0._scrollStory)
 	slot0._transstoryScroll = slot0._gostoryScroll.transform
 	slot0._ani = slot0.viewGO:GetComponent(gohelper.Type_Animator)
-	slot1 = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)
-	slot0._offsetX = (slot1 - uv0) / 2
-	slot0.minContentAnchorX = -recthelper.getWidth(slot0._transstoryScroll) + slot1
+	slot2 = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)
+	slot0._offsetX = (slot2 - uv0) / 2
+	slot0.minContentAnchorX = -recthelper.getWidth(slot0._transstoryScroll) + slot2
 end
 
 function slot0.onOpen(slot0)
@@ -72,6 +74,7 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(LengZhou6Controller.instance, LengZhou6Event.OnClickCloseGameView, slot0._onClickCloseGameView, slot0)
 	TaskDispatcher.runRepeat(slot0.showLeftTime, slot0, TimeUtil.OneMinuteSecond)
 	slot0:showLeftTime()
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_open)
 	TaskDispatcher.runDelay(slot0.updateStage, slot0, 0.5)
 	slot0:initStage()
 end
@@ -91,11 +94,6 @@ function slot0.initStage(slot0)
 end
 
 function slot0._refreshEpisode(slot0)
-	if slot0._allEpisodeItemList ~= nil then
-		for slot4, slot5 in pairs(slot0._allEpisodeItemList) do
-			slot5:updateInfo(false)
-		end
-	end
 end
 
 function slot0.updateStage(slot0)
@@ -119,6 +117,7 @@ end
 
 function slot0._refreshRedDot(slot0, slot1)
 	slot1:defaultRefreshDot()
+	slot0._taskAnimator:Play(slot1.show and "loop" or "idle")
 end
 
 function slot0._onDragBegin(slot0)
@@ -147,6 +146,7 @@ end
 
 function slot0.playOpen1Ani(slot0)
 	if slot0._ani then
+		AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_open)
 		slot0._ani:Play("open1", 0, 0)
 	end
 end
@@ -205,8 +205,14 @@ function slot0.playEpisodeFinishAnim(slot0)
 		if slot5._episodeId == slot0._waitFinishAnimEpisode then
 			slot0._finishEpisodeIndex = slot4
 
-			slot5:updateInfo(true)
-			TaskDispatcher.runDelay(slot0._playEpisodeUnlockAnim, slot0, uv0)
+			if not slot5:finishStateEnd() then
+				slot5:updateInfo(true)
+				TaskDispatcher.runDelay(slot0._playEpisodeUnlockAnim, slot0, uv0)
+			else
+				slot5:updateInfo(false)
+
+				slot0._finishEpisodeIndex = nil
+			end
 		end
 	end
 

@@ -1,21 +1,23 @@
 module("modules.configs.excel2json.lua_eliminate_battle_skill", package.seeall)
 
 slot1 = {
-	triggerPoint = 6,
-	effect = 8,
-	cd = 5,
-	type = 3,
+	triggerPoint = 7,
+	name = 2,
+	cd = 6,
+	type = 4,
+	effect = 9,
+	condition = 8,
+	desc = 3,
 	id = 1,
-	icon = 4,
-	condition = 7,
-	desc = 2
+	icon = 5
 }
 slot2 = {
 	"id"
 }
 slot3 = {
-	type = 2,
-	desc = 1
+	type = 3,
+	name = 1,
+	desc = 2
 }
 
 return {

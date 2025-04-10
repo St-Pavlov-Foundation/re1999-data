@@ -889,11 +889,15 @@ function slot0.replaceTowerHeroList(slot0, slot1)
 	slot0.trialDict = {}
 
 	for slot11, slot12 in ipairs(slot0.heroList) do
-		if tonumber(slot12) < 0 and HeroGroupTrialModel.instance:getById(slot12) then
-			slot0.trialDict[slot11] = {
-				slot13.trialCo.id,
-				0
-			}
+		if tonumber(slot12) < 0 then
+			if HeroGroupTrialModel.instance:getById(slot12) then
+				slot0.trialDict[slot11] = {
+					slot13.trialCo.id,
+					0
+				}
+			else
+				slot0.heroList[slot11] = "0"
+			end
 		end
 	end
 end

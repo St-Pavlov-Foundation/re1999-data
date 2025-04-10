@@ -7,7 +7,8 @@ slot1 = {
 	nextId = 3,
 	id = 2,
 	initStage = 4,
-	activityId = 1
+	activityId = 1,
+	coin = 8
 }
 slot2 = {
 	"activityId",

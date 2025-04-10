@@ -309,7 +309,7 @@ function slot0._refreshCost(slot0)
 		slot8 = 100
 	end
 
-	slot9 = string.split(slot0._goodConfig.cost, "#")
+	slot9 = string.splitToNumber(slot0._goodConfig.cost, "#")
 
 	if string.nilorempty(slot0._mo.config.cost2) then
 		gohelper.setActive(slot0._gocost, false)
@@ -318,6 +318,12 @@ function slot0._refreshCost(slot0)
 		slot10, slot11 = ItemModel.instance:getItemConfigAndIcon(slot9[1], slot9[2])
 
 		UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imageiconsingle, slot10.icon .. "_1", true)
+
+		if slot9[3] <= ItemModel.instance:getItemQuantity(slot9[1], slot9[2]) then
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpricesingle, "#393939")
+		else
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpricesingle, "#bf2e11")
+		end
 
 		slot0._txtcurpricesingle.text = 0.01 * slot8 * slot9[3]
 
@@ -335,6 +341,14 @@ function slot0._refreshCost(slot0)
 		slot10, slot11 = ItemModel.instance:getItemConfigAndIcon(slot9[1], slot9[2])
 		slot0._txtcurpriceunselect1.text = 0.01 * slot8 * slot9[3]
 		slot0._txtcurpriceselect1.text = 0.01 * slot8 * slot9[3]
+
+		if slot9[3] <= ItemModel.instance:getItemQuantity(slot9[1], slot9[2]) then
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceunselect1, "#393939")
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceselect1, "#ffffff")
+		else
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceunselect1, "#bf2e11")
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceselect1, "#bf2e11")
+		end
 
 		if slot2.originalCost1 > 0 then
 			gohelper.setActive(slot0._txtoriginalpriceselect1.gameObject, true)
@@ -359,10 +373,18 @@ function slot0._refreshCost(slot0)
 			return
 		end
 
-		slot12 = string.split(slot0._goodConfig.cost2, "#")
-		slot13, slot14 = ItemModel.instance:getItemConfigAndIcon(slot12[1], slot12[2])
-		slot0._txtcurpriceunselect2.text = 0.01 * slot8 * slot12[3]
-		slot0._txtcurpriceselect2.text = 0.01 * slot8 * slot12[3]
+		slot13 = string.splitToNumber(slot0._goodConfig.cost2, "#")
+		slot14, slot15 = ItemModel.instance:getItemConfigAndIcon(slot13[1], slot13[2])
+		slot0._txtcurpriceunselect2.text = 0.01 * slot8 * slot13[3]
+		slot0._txtcurpriceselect2.text = 0.01 * slot8 * slot13[3]
+
+		if slot13[3] <= ItemModel.instance:getItemQuantity(slot13[1], slot13[2]) then
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceunselect2, "#393939")
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceselect2, "#ffffff")
+		else
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceunselect2, "#bf2e11")
+			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtcurpriceselect2, "#bf2e11")
+		end
 
 		if slot2.originalCost2 > 0 then
 			gohelper.setActive(slot0._txtoriginalpriceselect2.gameObject, true)
@@ -375,8 +397,8 @@ function slot0._refreshCost(slot0)
 			gohelper.setActive(slot0._txtoriginalpriceunselect2.gameObject, false)
 		end
 
-		UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imageiconselect2, slot13.icon .. "_1", true)
-		UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imageiconunselect2, slot13.icon .. "_1", true)
+		UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imageiconselect2, slot14.icon .. "_1", true)
+		UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imageiconunselect2, slot14.icon .. "_1", true)
 		gohelper.setActive(slot0._goselect2, slot1 == 2)
 		gohelper.setActive(slot0._gounselect2, slot1 ~= 2)
 	end

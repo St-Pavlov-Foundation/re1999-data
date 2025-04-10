@@ -3772,5 +3772,22 @@
     "jump": "",
     "image": "",
     "senderType": 2
+  },
+  {
+    "id": 1136,
+    "type": 1,
+    "sender": "LEee·bUPd电台",
+    "title": "迷思之茧过期通知",
+    "content": "    你已持有【迷思之茧】许久，【迷思之茧】逾期后将无法使用，请及时使用。",
+    "attachment": "",
+    "needShowToast": 1,
+    "addressee": "",
+    "copy": "",
+    "icon": "",
+    "specialTag": 0,
+    "jumpTitle": "",
+    "jump": "",
+    "image": "",
+    "senderType": 2
   }
 ]

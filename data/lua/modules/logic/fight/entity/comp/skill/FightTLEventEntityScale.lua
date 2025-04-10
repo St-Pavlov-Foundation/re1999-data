@@ -16,7 +16,7 @@ function slot0.onTrackStart(slot0, slot1, slot2, slot3)
 	elseif slot4 == "3" then
 		slot6 = FightHelper.getSideEntitys(FightHelper.getEntity(slot1.fromId):getSide(), true)
 	elseif slot4 == "4" then
-		slot6 = FightHelper.getSideEntitys(FightHelper.getEntity(slot1.toId):getSide(), true)
+		slot6 = (not FightHelper.getEntity(slot1.toId) or FightHelper.getSideEntitys(slot7:getSide(), true)) and {}
 	end
 
 	if not string.nilorempty(slot3[4]) then

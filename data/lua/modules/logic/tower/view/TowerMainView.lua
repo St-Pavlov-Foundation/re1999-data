@@ -41,6 +41,7 @@ function slot0.onInitView(slot0)
 	slot0._txtcoinNum = gohelper.findChildText(slot0.viewGO, "store/#txt_coinNum")
 	slot0._imagecoin = gohelper.findChildImage(slot0.viewGO, "store/#txt_coinNum/#image_coin")
 	slot0._btnstore = gohelper.findChildButtonWithAudio(slot0.viewGO, "store/#btn_store")
+	slot0._goheroTrial = gohelper.findChild(slot0.viewGO, "heroTrial")
 	slot0._btnheroTrial = gohelper.findChildButtonWithAudio(slot0.viewGO, "heroTrial/#btn_heroTrial")
 	slot0._goheroTrialNew = gohelper.findChild(slot0.viewGO, "heroTrial/#go_heroTrialNew")
 	slot0._goheroTrialNewEffect = gohelper.findChild(slot0.viewGO, "heroTrial/#saoguang")
@@ -422,7 +423,8 @@ function slot0.saveHeroTrialNew(slot0)
 end
 
 function slot0.refreshHeroTrialNew(slot0)
-	gohelper.setActive(slot0._goheroTrialNew, TowerController.instance:getPlayerPrefs(TowerEnum.LocalPrefsKey.ReddotNewHeroTrial, 0) ~= TowerModel.instance:getTrialHeroSeason() and slot2 > 0)
+	gohelper.setActive(slot0._goheroTrial, TowerModel.instance:getTrialHeroSeason() > 0)
+	gohelper.setActive(slot0._goheroTrialNew, TowerController.instance:getPlayerPrefs(TowerEnum.LocalPrefsKey.ReddotNewHeroTrial, 0) ~= slot2 and slot2 > 0)
 end
 
 function slot0.refreshLimitedActTaskNew(slot0)

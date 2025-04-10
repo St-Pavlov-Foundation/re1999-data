@@ -29,9 +29,9 @@ end
 function slot0.setVisibleInternal(slot0, slot1)
 	uv0.super.setVisibleInternal(slot0, slot1)
 
-	if slot1 then
-		slot0._levelView.openAnimComplete = false
+	slot0._levelView.openAnimComplete = false
 
+	if slot1 then
 		slot0:playAnim(UIAnimationName.Open, slot0._playOpenAnimFinish, slot0)
 	end
 end

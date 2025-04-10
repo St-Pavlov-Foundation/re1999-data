@@ -53,4 +53,16 @@ function slot0.isBossId(slot0, slot1)
 	end
 end
 
+function slot0.getEpisodeName(slot0)
+	slot2 = DungeonConfig.instance:getEpisodeCO(slot0) and DungeonConfig.instance:getChapterCO(slot1.chapterId)
+
+	if not slot1 or not slot2 then
+		return nil
+	end
+
+	slot4, slot5 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(slot2.id, slot1.id)
+
+	return string.format("%s-%s", slot2.chapterIndex, slot4)
+end
+
 return slot0

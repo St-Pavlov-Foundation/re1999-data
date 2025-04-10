@@ -63,7 +63,7 @@ function slot0.onOpen(slot0)
 	slot1 = slot0.viewParam
 	slot0.config = Activity191Config.instance:getRoleCo(slot1.id)
 
-	slot0:_setPassiveSkill(slot1.id, slot1.showAttributeOption, slot1.anchorParams, slot1.tipPos)
+	slot0:_setPassiveSkill(slot1.anchorParams, slot1.tipPos)
 end
 
 function slot0.onClose(slot0)
@@ -72,73 +72,66 @@ end
 function slot0.onDestroyView(slot0)
 end
 
-function slot0._setPassiveSkill(slot0, slot1, slot2, slot3, slot4)
+function slot0._setPassiveSkill(slot0, slot1, slot2)
 	slot0._matchSkillNames = {}
-	slot5 = Activity191Config.instance:getHeroPassiveSkillIdList(slot0.config.id)
-	slot0._txtpassivename.text = lua_skill.configDict[slot5[1]].name
-	slot8 = {}
 
-	for slot12 = 1, #slot5 do
-		table.insert(slot8, FightConfig.instance:getSkillEffectDesc(slot0.config.name, lua_skill.configDict[slot6[slot12]]))
+	if slot0.viewParam.stoneId then
+		slot3 = Activity191Helper.replaceSkill(slot0.viewParam.stoneId, Activity191Config.instance:getHeroPassiveSkillIdList(slot0.config.id))
 	end
 
-	slot9 = HeroSkillModel.instance:getSkillEffectTagIdsFormDescTabRecursion(slot8)
-	slot10 = {}
-	slot11 = {}
+	slot4 = #slot3 <= 3 and #slot3 or 3
+	slot0._txtpassivename.text = lua_skill.configDict[slot3[1]].name
+	slot6 = {}
 
-	for slot15 = 1, #slot6 do
-		slot17 = true
+	for slot10 = 1, slot4 do
+		table.insert(slot6, FightConfig.instance:getSkillEffectDesc(slot0.config.name, lua_skill.configDict[slot3[slot10]]))
+	end
 
-		for slot23, slot24 in ipairs(slot9[slot15]) do
-			if HeroSkillModel.instance:canShowSkillTag(SkillConfig.instance:getSkillEffectDescCo(slot24).name, true) and not slot10[slot26] then
-				slot10[slot26] = true
+	slot7 = HeroSkillModel.instance:getSkillEffectTagIdsFormDescTabRecursion(slot6)
+	slot8 = {}
+	slot9 = {}
 
-				if slot25.isSpecialCharacter == 1 then
-					slot19 = string.format("%s", FightConfig.instance:getSkillEffectDesc(slot0.config.name, lua_skill.configDict[slot6[slot15]]))
+	for slot13 = 1, slot4 do
+		slot15 = true
 
-					table.insert(slot11, {
-						desc = SkillHelper.buildDesc(slot25.desc),
-						title = slot25.name
+		for slot21, slot22 in ipairs(slot7[slot13]) do
+			if HeroSkillModel.instance:canShowSkillTag(SkillConfig.instance:getSkillEffectDescCo(slot22).name, true) and not slot8[slot24] then
+				slot8[slot24] = true
+
+				if slot23.isSpecialCharacter == 1 then
+					slot17 = string.format("%s", FightConfig.instance:getSkillEffectDesc(slot0.config.name, lua_skill.configDict[slot3[slot13]]))
+
+					table.insert(slot9, {
+						desc = SkillHelper.buildDesc(slot23.desc),
+						title = slot23.name
 					})
 				end
 			end
 		end
 
-		slot0._passiveskillitems[slot15].unlocktxt.text = string.format(luaLang("character_passive_unlock"), GameUtil.getRomanNums(slot0:_getTargetRankByEffect(slot0.config.roleId, slot15)))
+		slot0._passiveskillitems[slot13].unlocktxt.text = string.format(luaLang("character_passive_unlock"), GameUtil.getRomanNums(slot0:_getTargetRankByEffect(slot0.config.roleId, slot13)))
 
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._passiveskillitems[slot15].unlocktxt, "#313B33")
+		SLFramework.UGUI.GuiHelper.SetColor(slot0._passiveskillitems[slot13].unlocktxt, "#313B33")
 
-		slot0._passiveskillitems[slot15].canvasgroup.alpha = slot17 and 1 or 0.83
+		slot0._passiveskillitems[slot13].canvasgroup.alpha = slot15 and 1 or 0.83
 
-		gohelper.setActive(slot0._passiveskillitems[slot15].on, slot17)
+		gohelper.setActive(slot0._passiveskillitems[slot13].on, slot15)
 
-		slot0._passiveskillitems[slot15].desc.text = SkillHelper.buildDesc(slot19)
+		slot0._passiveskillitems[slot13].desc.text = SkillHelper.buildDesc(slot17)
 
-		slot0._passiveskillitems[slot15].fixTmpBreakLine:refreshTmpContent(slot0._passiveskillitems[slot15].desc)
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._passiveskillitems[slot15].desc, slot17 and "#272525" or "#3A3A3A")
-		gohelper.setActive(slot0._passiveskillitems[slot15].go, true)
-		gohelper.setActive(slot0._passiveskillitems[slot15].connectline, slot15 ~= #slot5)
+		slot0._passiveskillitems[slot13].fixTmpBreakLine:refreshTmpContent(slot0._passiveskillitems[slot13].desc)
+		SLFramework.UGUI.GuiHelper.SetColor(slot0._passiveskillitems[slot13].desc, slot15 and "#272525" or "#3A3A3A")
+		gohelper.setActive(slot0._passiveskillitems[slot13].go, true)
+		gohelper.setActive(slot0._passiveskillitems[slot13].connectline, slot13 ~= slot4)
 	end
 
-	for slot15 = #slot5 + 1, #slot0._passiveskillitems do
-		gohelper.setActive(slot0._passiveskillitems[slot15].go, false)
+	for slot13 = slot4 + 1, #slot0._passiveskillitems do
+		gohelper.setActive(slot0._passiveskillitems[slot13].go, false)
 	end
 
-	slot0:_showSkillEffectDesc(slot11)
+	slot0:_showSkillEffectDesc(slot9)
 	slot0:_refreshPassiveSkillScroll()
-	slot0:_setTipPos(slot0._gopassiveskilltip.transform, slot4, slot3)
-end
-
-function slot0._checkDestinyEffect(slot0, slot1)
-	slot2 = {}
-
-	if slot1 then
-		for slot6 = 1, #slot1 do
-			table.insert(slot2, slot1[slot6].skillPassive)
-		end
-	end
-
-	return slot2
+	slot0:_setTipPos(slot0._gopassiveskilltip.transform, slot2, slot1)
 end
 
 function slot0._getTargetRankByEffect(slot0, slot1, slot2)

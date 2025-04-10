@@ -259,7 +259,7 @@ function slot0.isEpisodeCanReRepress(slot0, slot1)
 		return
 	end
 
-	return slot2:isFinished() and slot2:getPassOrder() == slot0:findMaxPassOrder() and not Act183Helper.isLastPassEpisodeInType(slot2)
+	return slot2:isFinished() and slot2:getPassOrder() == slot0:findMaxPassOrder() and not Act183Helper.isLastPassEpisodeInGroup(slot2)
 end
 
 function slot0.isHeroRepress(slot0, slot1, slot2)

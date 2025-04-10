@@ -124,8 +124,12 @@ function slot0.setResPath(slot0, slot1, slot2, slot3, slot4)
 		slot0._curModel:showModel()
 		slot0._curModel:setShareRT(slot0._shareRT)
 
-		if slot0._shareRT == CharacterVoiceEnum.RTShareType.Normal or slot0._shareRT == CharacterVoiceEnum.RTShareType.BloomAuto then
-			slot0._curModel:setCameraSize(CharacterVoiceEnum.FullScreenEffectCameraSize)
+		if slot0._shareRT == CharacterVoiceEnum.RTShareType.BloomAuto then
+			if CharacterVoiceEnum.BloomCameraSize[slot1.characterId] then
+				slot0._curModel:setCameraSize(CharacterVoiceEnum.BloomFullScreenEffectCameraSize)
+			else
+				slot0._curModel:setCameraSize(slot4 or slot1.cameraSize)
+			end
 		else
 			slot0._curModel:setCameraSize(slot4 or slot1.cameraSize)
 		end

@@ -23,8 +23,8 @@ function slot0._enterFight(slot0)
 		return
 	end
 
-	DungeonFightController.instance:enterFight(slot1.chapterId, slot0._episodeId)
 	Act183Model.instance:recordEpisodeReadyUseBadgeNum(slot0._readyUseBadgeNum)
+	DungeonFightController.instance:enterFight(slot1.chapterId, slot0._episodeId)
 end
 
 function slot0.saveGroupData(slot0, slot1, slot2, slot3, slot4, slot5)

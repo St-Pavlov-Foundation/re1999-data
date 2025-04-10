@@ -200,7 +200,8 @@ slot0.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.GUARDBREAK] = FightWorkEffectGuardBreakContainer,
 	[FightEnum.EffectType.ZXQREMOVECARD] = FightWorkZXQRemoveCardContainer,
 	[FightEnum.EffectType.DEADLYPOISONORIGINDAMAGE] = FightWorkDeadlyPoisonContainer,
-	[FightEnum.EffectType.DEADLYPOISONORIGINCRIT] = FightWorkDeadlyPoisonCritContainer
+	[FightEnum.EffectType.DEADLYPOISONORIGINCRIT] = FightWorkDeadlyPoisonCritContainer,
+	[FightEnum.EffectType.COLDSATURDAYHURT] = FightWorkColdSaturdayHurt336Container
 }
 
 setmetatable(slot0.EffectType2FlowOrWork, {

@@ -56,8 +56,20 @@ function slot0.canShowTips()
 		slot1 = slot7 and #slot7 > 0
 	end
 
-	if FightDataHelper.fieldMgr.customData and slot5[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot6).ruleMap then
-		slot1 = true
+	if FightDataHelper.fieldMgr.customData then
+		if slot5[FightCustomData.CustomDataType.WeekwalkVer2] and cjson.decode(slot6).ruleMap then
+			slot1 = true
+		end
+
+		if slot5[FightCustomData.CustomDataType.Act183] then
+			if slot7.currRules and #slot7.currRules > 0 then
+				slot1 = true
+			end
+
+			if slot7.transferRules and #slot7.transferRules > 0 then
+				slot1 = true
+			end
+		end
 	end
 
 	if slot1 and (not GuideModel.instance:isDoingFirstGuide() or GuideController.instance:isForbidGuides()) and not FightReplayModel.instance:isReplay() then

@@ -30,6 +30,9 @@ function slot0.onTowerResetTalent(slot0, slot1)
 
 	if slot1.talentId == 0 then
 		slot0:initTalentIds()
+
+		slot0.talentPlanDict[slot0.useTalentPlan].talentIds = slot0.talentIdList
+		slot0.talentPlanDict[slot0.useTalentPlan].talentPoint = slot0.talentPoint
 	else
 		slot0:removeTalentId(slot1.talentId)
 	end
@@ -147,14 +150,16 @@ function slot0.initTalentPlanInfos(slot0, slot1)
 
 	for slot6 = 1, TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount) do
 		if not slot1[slot6] then
-			slot7 = {}
+			slot7 = {
+				talentIds = {}
+			}
 
-			logError("天赋方案数据为空" .. slot6)
+			logWarn("boss" .. slot0.id .. "天赋方案数据为空" .. slot6)
 		end
 
 		slot8 = {
 			planId = slot7.planId or slot6,
-			talentPoint = slot7.talentPoint or 0,
+			talentPoint = slot7.talentPoint or TowerConfig.instance:getAllTalentPoint(slot0.id, slot0.trialLevel > 0 and slot0.trialLevel or slot0.level),
 			planName = string.nilorempty(slot7.planName) and GameUtil.getSubPlaceholderLuaLang(luaLang("towerbosstalentplan"), {
 				slot6
 			}) or slot7.planName,

@@ -21,13 +21,13 @@ function slot0.clearAllData(slot0)
 	slot0:setIsStopGame(false)
 end
 
-slot1 = 1
-
 function slot0.enterGameInitData(slot0, slot1)
 	slot0:setEpisodeId(slot1)
-	slot0:setGameId(CooperGarlandConfig.instance:getGameId(CooperGarlandModel.instance:getAct192Id(), slot1))
-	slot0:changeRound(uv0)
-	slot0:setIsJoystick(GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, CooperGarlandEnum.Const.JoystickMode) == CooperGarlandEnum.Const.JoystickMode)
+
+	slot2 = CooperGarlandModel.instance:getAct192Id()
+
+	slot0:setGameId(CooperGarlandConfig.instance:getGameId(slot2, slot1))
+	slot0:changeRound(CooperGarlandModel.instance:getEpisodeProgress(slot2, slot1))
 end
 
 function slot0.changeRound(slot0, slot1)
@@ -75,10 +75,10 @@ function slot0.setBallHasKey(slot0, slot1)
 	slot0._hasKey = slot1
 end
 
-function slot0.setIsJoystick(slot0, slot1)
-	slot0._isJoystick = slot1
+function slot0.setControlMode(slot0, slot1)
+	slot0._controlMode = slot1
 
-	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, slot0._isJoystick and CooperGarlandEnum.Const.JoystickMode or CooperGarlandEnum.Const.GyroscopeMode)
+	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, slot1)
 end
 
 function slot0.setIsStopGame(slot0, slot1)
@@ -113,8 +113,16 @@ function slot0.getBallHasKey(slot0)
 	return slot0._hasKey
 end
 
+function slot0.getControlMode(slot0)
+	if not slot0._controlMode then
+		slot0._controlMode = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, CooperGarlandEnum.Const.JoystickModeRight)
+	end
+
+	return slot0._controlMode
+end
+
 function slot0.getIsJoystick(slot0)
-	return slot0._isJoystick
+	return slot0:getControlMode() == CooperGarlandEnum.Const.JoystickModeRight or slot1 == CooperGarlandEnum.Const.JoystickModeLeft
 end
 
 function slot0.isFinishedStoryComponent(slot0, slot1, slot2)

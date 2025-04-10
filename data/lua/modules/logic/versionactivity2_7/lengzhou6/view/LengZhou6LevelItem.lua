@@ -62,7 +62,13 @@ function slot0._editableRemoveEvents(slot0)
 end
 
 function slot0._onClick(slot0)
-	if slot0._episodeId == nil or not slot0._episode:unLock() then
+	if slot0._episodeId == nil then
+		return
+	end
+
+	if not slot0._episode:unLock() then
+		ToastController.instance:showToast(23)
+
 		return
 	end
 
@@ -123,10 +129,26 @@ function slot0.refreshState(slot0)
 		gohelper.setActive(slot0._goType1, not slot5)
 		gohelper.setActive(slot0._goType2, slot5)
 	else
-		slot0._txtLv.text = string.format("Lv.%s", slot0._episode:getLevel())
+		slot7 = false
 
-		gohelper.setActive(slot0._btnreset.gameObject, not string.nilorempty(slot0._episode.progress))
+		if not string.nilorempty(slot0._episode.progress) then
+			if slot0._episode:getEndLessBattleProgress() and slot8 == LengZhou6Enum.BattleProgress.selectFinish or slot0._episode:getLevel() ~= 1 then
+				slot7 = true
+			end
+		end
+
+		if slot7 then
+			slot0._txtLv.text = string.format("Lv.%s", slot0._episode:getLevel())
+		else
+			slot0._txtLv.text = ""
+		end
+
+		gohelper.setActive(slot0._btnreset.gameObject, slot7)
 	end
+end
+
+function slot0.finishStateEnd(slot0)
+	return slot0._aniName == "finish"
 end
 
 function slot0.updateInfo(slot0, slot1)

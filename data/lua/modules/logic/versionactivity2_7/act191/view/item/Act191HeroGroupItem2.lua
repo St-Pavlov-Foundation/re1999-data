@@ -8,11 +8,11 @@ end
 
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "")
 	slot0.goEmpty = gohelper.findChild(slot1, "go_Empty")
 	slot0.goCollection = gohelper.findChild(slot1, "go_Collection")
 	slot0.imageRare = gohelper.findChildImage(slot1, "go_Collection/image_Rare")
 	slot0.simageIcon = gohelper.findChildSingleImage(slot1, "go_Collection/simage_Icon")
+	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "btn_Click")
 end
 
 function slot0.addEventListeners(slot0)
@@ -42,7 +42,7 @@ function slot0.setIndex(slot0, slot1)
 end
 
 function slot0.onClick(slot0)
-	if slot0.handleView._nowDragingIndex then
+	if slot0.handleView and slot0.handleView._nowDragingIndex then
 		return
 	end
 

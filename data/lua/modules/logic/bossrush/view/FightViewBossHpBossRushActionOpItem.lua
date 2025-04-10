@@ -18,9 +18,6 @@ end
 function slot0._editableInitView(slot0)
 end
 
-function slot0.onRefreshViewParam(slot0)
-end
-
 function slot0.onOpen(slot0)
 end
 
@@ -47,7 +44,7 @@ function slot0.refreshUI(slot0, slot1, slot2)
 	gohelper.findChildText(slot0.viewGO, "root/act/round/num").text = slot2.round or 0
 
 	MonoHelper.addNoUpdateLuaComOnceToGo(slot4, FightOpItem):updateCardInfoMO({
-		uid = slot0:getParentView()._bossEntityMO.uid,
+		uid = slot0.PARENT_VIEW._bossEntityMO.uid,
 		skillId = slot2.skillId
 	})
 end

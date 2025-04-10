@@ -22846,5 +22846,13 @@
   {
     "id": 734402,
     "type": "Act191CoinNum"
+  },
+  {
+    "id": 73003,
+    "type": "TeammateAliveNum"
+  },
+  {
+    "id": 42101,
+    "type": "HasTypeBuffMoreThan"
   }
 ]

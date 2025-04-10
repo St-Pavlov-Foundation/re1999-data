@@ -47,8 +47,10 @@ slot0.AllChessID = {
 	8,
 	9
 }
-slot0.ChessWidth = 122
+slot0.ChessWidth = 120
 slot0.ChessHeight = 122
+slot0.ChessIntervalX = 2
+slot0.ChessIntervalY = 2
 slot0.MaxRow = 6
 slot0.MaxCol = 6
 slot0.AssessShowTime = LengZhou6Config.instance:getEliminateBattleCost(26) / 1000
@@ -82,5 +84,6 @@ slot0.SpecialChessAni = {
 	frost = "freeze",
 	pollution = "glitch"
 }
+slot0.InitDropTime = 0.1
 
 return slot0

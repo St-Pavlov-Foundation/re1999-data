@@ -20,7 +20,7 @@ function slot0.init(slot0, slot1)
 	slot0._transhandle.anchorMax.y = uv0
 	slot0._transhandle.pivot.x = uv0
 	slot0._transhandle.pivot.y = uv0
-	slot0._input = Vector2.New(uv1, uv1)
+	slot0._input = Vector2.zero
 	slot0._click = SLFramework.UGUI.UIClickListener.Get(slot0.go)
 	slot0._drag = SLFramework.UGUI.UIDragListener.Get(slot0.go)
 end
@@ -57,14 +57,8 @@ end
 
 function slot0._handleInput(slot0, slot1)
 	slot2, slot3 = recthelper.screenPosToAnchorPos2(slot1, slot0._transbg)
-	slot0._input.x = (slot2 - uv0) / slot0._radius
-	slot0._input.y = (slot3 - uv0) / slot0._radius
 
-	if uv1 < slot0._input.magnitude then
-		slot0._input = slot0._input.normalized
-	end
-
-	slot0:_setHandlePos(slot0._input.x * slot0._radius, slot0._input.y * slot0._radius)
+	slot0:setInPutValue((slot2 - uv0) / slot0._radius, (slot3 - uv0) / slot0._radius)
 end
 
 function slot0._onClickUp(slot0, slot1, slot2, slot3)
@@ -72,16 +66,22 @@ function slot0._onClickUp(slot0, slot1, slot2, slot3)
 		return
 	end
 
-	slot0._input.x = uv0
-	slot0._input.y = uv0
-
-	slot0:_setHandlePos()
-
-	slot0._dragging = false
+	slot0:reset()
 end
 
-function slot0._setHandlePos(slot0, slot1, slot2)
-	transformhelper.setLocalPosXY(slot0._transhandle, GameUtil.clamp(slot1 or uv0, -slot0._radius, slot0._radius), GameUtil.clamp(slot2 or uv0, -slot0._radius, slot0._radius))
+function slot0.setInPutValue(slot0, slot1, slot2)
+	slot0._input.x = slot1 or uv0
+	slot0._input.y = slot2 or uv0
+
+	if uv1 < slot0._input.magnitude then
+		slot0._input = slot0._input.normalized
+	end
+
+	slot0:refreshHandlePos()
+end
+
+function slot0.refreshHandlePos(slot0)
+	transformhelper.setLocalPosXY(slot0._transhandle, GameUtil.clamp(slot0._input.x * slot0._radius, -slot0._radius, slot0._radius), GameUtil.clamp(slot0._input.y * slot0._radius, -slot0._radius, slot0._radius))
 end
 
 function slot0.getIsDragging(slot0)
@@ -93,7 +93,9 @@ function slot0.getInputValue(slot0)
 end
 
 function slot0.reset(slot0)
-	slot0:_onClickUp()
+	slot0:setInPutValue()
+
+	slot0._dragging = false
 end
 
 function slot0.onDestroy(slot0)

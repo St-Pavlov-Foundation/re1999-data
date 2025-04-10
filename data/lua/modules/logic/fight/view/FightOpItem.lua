@@ -42,9 +42,14 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0.onSelectMonsterCardMo(slot0, slot1)
+	slot2 = FightHelper.isSameCardMo(slot1, slot0.cardInfoMO)
 	slot3 = FightCardDataHelper.isBigSkill(slot0.cardInfoMO.skillId)
 
-	gohelper.setActive(slot0.goEmitNormal, FightHelper.isSameCardMo(slot1, slot0.cardInfoMO) and not slot3)
+	if lua_skill_next.configDict[slot0.cardInfoMO.skillId] then
+		slot3 = false
+	end
+
+	gohelper.setActive(slot0.goEmitNormal, slot2 and not slot3)
 	gohelper.setActive(slot0.goEmitUitimate, slot2 and slot3)
 end
 
@@ -70,9 +75,15 @@ function slot0.updateCardInfoMO(slot0, slot1)
 		return
 	end
 
+	slot3 = FightCardDataHelper.getSkillLv(slot1.uid, slot1.skillId)
 	slot4 = FightDataHelper.entityMgr:getById(slot1.uid)
+	slot5 = FightCardDataHelper.isBigSkill(slot1.skillId)
 
-	if (not FightCardDataHelper.isBigSkill(slot1.skillId) or not FightEnum.UniqueSkillCardLv) and FightCardDataHelper.getSkillLv(slot1.uid, slot1.skillId) == FightEnum.UniqueSkillCardLv then
+	if lua_skill_next.configDict[slot1.skillId] then
+		slot5 = false
+	end
+
+	if (not slot5 or not FightEnum.UniqueSkillCardLv) and slot3 == FightEnum.UniqueSkillCardLv then
 		slot3 = 1
 	end
 

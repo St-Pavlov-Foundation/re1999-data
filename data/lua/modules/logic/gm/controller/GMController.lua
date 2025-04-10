@@ -509,6 +509,128 @@ function slot0._checkProfilerCmdFile(slot0)
 	end
 end
 
+function slot0.setRecordASFDCo(slot0, slot1, slot2, slot3)
+	slot0.emitterId = tonumber(slot1)
+	slot0.missileId = tonumber(slot2)
+	slot0.explosionId = tonumber(slot3)
+end
+
+function slot0.tempHasField(slot0, slot1)
+	return false
+end
+
+function slot0.startASFDFlow(slot0, slot1, slot2, slot3)
+	if slot0.asfdSequence then
+		return
+	end
+
+	slot5 = {}
+
+	for slot9 = 1, slot1 do
+		table.insert(slot5, FightStepData.New({
+			cardIndex = 1,
+			actType = 1,
+			fromId = (FightDataHelper.entityMgr:getASFDEntityMo(slot2) or slot0:createASFDEmitter(slot2)).id,
+			toId = slot3,
+			actId = FightASFDConfig.instance.skillId,
+			actEffect = {
+				{
+					targetId = slot3,
+					effectType = FightEnum.EffectType.EMITTERFIGHTNOTIFY,
+					reserveStr = cjson.encode({
+						splitNum = 0,
+						emitterAttackNum = slot9,
+						emitterAttackMaxNum = slot1
+					}),
+					HasField = uv0.tempHasField,
+					cardInfoList = {},
+					fightTasks = {}
+				}
+			}
+		}))
+	end
+
+	slot0.asfdSequence = FlowSequence.New()
+
+	for slot9, slot10 in ipairs(slot5) do
+		slot0.asfdSequence:addWork(FightASFDFlow.New(slot10, slot5[slot9 + 1], slot9))
+	end
+
+	TaskDispatcher.runDelay(slot0.delayStartASFDFlow, slot0, 1)
+end
+
+function slot0.delayStartASFDFlow(slot0)
+	uv0.srcGetASFDCoFunc = FightASFDHelper.getASFDCo
+	FightASFDHelper.getASFDCo = uv0.tempGetASFDCo
+
+	slot0.asfdSequence:registerDoneListener(slot0.onASFDDone, slot0)
+	slot0.asfdSequence:start()
+end
+
+function slot0.tempGetASFDCo(slot0, slot1, slot2)
+	if slot1 == FightEnum.ASFDUnit.Emitter then
+		return lua_fight_asfd.configDict[uv0.instance.emitterId] or slot2
+	elseif slot1 == FightEnum.ASFDUnit.Missile then
+		return lua_fight_asfd.configDict[uv0.instance.missileId] or slot2
+	elseif slot1 == FightEnum.ASFDUnit.Explosion then
+		return lua_fight_asfd.configDict[uv0.instance.explosionId] or slot2
+	else
+		return slot2
+	end
+end
+
+function slot0.onASFDDone(slot0)
+	FightASFDHelper.getASFDCo = uv0.srcGetASFDCoFunc
+	slot0.asfdSequence = nil
+end
+
+function slot0.createASFDEmitter(slot0, slot1)
+	slot2 = FightEntityMO.New()
+
+	slot2:init({
+		skin = 0,
+		exSkillLevel = 0,
+		userId = 0,
+		career = 0,
+		exSkill = 0,
+		status = 0,
+		position = 0,
+		level = 0,
+		teamType = 0,
+		guard = 0,
+		subCd = 0,
+		exPoint = 0,
+		shieldValue = 0,
+		modelId = 0,
+		uid = slot1 == FightEnum.TeamType.MySide and "99998" or "-99998",
+		entityType = FightEnum.EntityType.ASFDEmitter,
+		side = slot1,
+		attr = {
+			defense = 0,
+			multiHpNum = 0,
+			hp = 0,
+			multiHpIdx = 0,
+			mdefense = 0,
+			technic = 0,
+			attack = 0
+		},
+		buffs = {},
+		skillGroup1 = {},
+		skillGroup2 = {},
+		passiveSkill = {},
+		powerInfos = {},
+		SummonedList = {}
+	})
+
+	slot2.side = slot1
+	slot2 = FightDataHelper.entityMgr:addEntityMO(slot2)
+
+	table.insert(FightDataHelper.entityMgr:getOriginASFDEmitterList(slot2.side), slot2)
+	(GameSceneMgr.instance:getCurScene() and slot4.entityMgr):addASFDUnit()
+
+	return slot2
+end
+
 slot0.instance = slot0.New()
 
 return slot0

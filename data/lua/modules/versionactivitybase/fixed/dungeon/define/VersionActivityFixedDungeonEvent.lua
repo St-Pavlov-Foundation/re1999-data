@@ -10,6 +10,8 @@ slot0.OnRemoveElement = 6
 slot0.OnRecycleAllElement = 7
 slot0.ManualClickElement = 8
 slot0.GuideShowElement = 9
-slot0.OnClickAllTaskFinish = 101
+slot0.OnClickAllTaskFinish = 98.3
+slot0.SwitchBGM = 2701
+slot0.OpenFinishMapLevelView = 2702
 
 return slot0

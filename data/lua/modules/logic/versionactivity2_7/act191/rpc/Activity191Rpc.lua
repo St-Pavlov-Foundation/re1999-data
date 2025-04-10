@@ -2,11 +2,11 @@ module("modules.logic.versionactivity2_7.act191.rpc.Activity191Rpc", package.see
 
 slot0 = class("Activity191Rpc", BaseRpc)
 
-function slot0.sendGetAct191InfoRequest(slot0, slot1, slot2, slot3)
-	slot4 = Activity191Module_pb.GetAct191InfoRequest()
-	slot4.activityId = slot1
+function slot0.sendGetAct191InfoRequest(slot0, slot1)
+	slot2 = Activity191Module_pb.GetAct191InfoRequest()
+	slot2.activityId = slot1
 
-	slot0:sendMsg(slot4, slot2, slot3)
+	slot0:sendMsg(slot2)
 end
 
 function slot0.onReceiveGetAct191InfoReply(slot0, slot1, slot2)
@@ -163,29 +163,28 @@ function slot0.onReceiveGain191RewardEventReply(slot0, slot1, slot2)
 	Activity191Model.instance:getActInfo(slot2.activityId):updateGameInfo(slot2.gameInfo)
 end
 
-function slot0.sendChangeAct191TeamRequest(slot0, slot1, slot2, slot3, slot4)
-	slot5 = Activity191Module_pb.ChangeAct191TeamRequest()
-	slot5.activityId = slot1
-	slot5.curTeamIndex = slot2
-	slot5.teamInfo.index = slot3.index
-	slot5.teamInfo.name = slot3.name
+function slot0.sendChangeAct191TeamRequest(slot0, slot1, slot2, slot3)
+	slot4 = Activity191Module_pb.ChangeAct191TeamRequest()
+	slot4.activityId = slot1
+	slot4.curTeamIndex = slot2
+	slot4.teamInfo.index = slot3.index
+	slot4.teamInfo.name = slot3.name
 
-	for slot9, slot10 in ipairs(slot3.battleHeroInfo) do
-		if slot10.heroId ~= 0 or slot10.itemUid1 ~= 0 or slot10.itemUid2 ~= 0 then
-			table.insert(slot5.teamInfo.battleHeroInfo, slot10)
+	for slot8, slot9 in ipairs(slot3.battleHeroInfo) do
+		if slot9.heroId ~= 0 or slot9.itemUid1 ~= 0 then
+			table.insert(slot4.teamInfo.battleHeroInfo, slot9)
 		end
 	end
 
-	for slot9, slot10 in ipairs(slot3.subHeroInfo) do
-		if slot10.heroId ~= 0 then
-			table.insert(slot5.teamInfo.subHeroInfo, slot10)
+	for slot8, slot9 in ipairs(slot3.subHeroInfo) do
+		if slot9.heroId ~= 0 then
+			table.insert(slot4.teamInfo.subHeroInfo, slot9)
 		end
 	end
 
-	slot5.teamInfo.auto = slot3.auto
-	slot5.opType = slot4 or Activity191Enum.OpTeamType.Normal
+	slot4.teamInfo.auto = slot3.auto
 
-	slot0:sendMsg(slot5)
+	slot0:sendMsg(slot4)
 end
 
 function slot0.onReceiveChangeAct191TeamReply(slot0, slot1, slot2)
@@ -193,18 +192,11 @@ function slot0.onReceiveChangeAct191TeamReply(slot0, slot1, slot2)
 		return
 	end
 
-	slot8 = Activity191Model.instance:getActInfo(slot2.activityId):getGameInfo()
-	slot8.rank = slot2.rank
+	slot7 = Activity191Model.instance:getActInfo(slot2.activityId):getGameInfo()
+	slot7.rank = slot2.rank
 
-	slot8:updateTeamInfo(slot2.curTeamIndex, slot2.teamInfo)
-
-	if slot2.opType == Activity191Enum.OpTeamType.Normal then
-		Activity191Controller.instance:dispatchEvent(Activity191Event.UpdateTeamInfo)
-	elseif slot7 == Activity191Enum.OpTeamType.ChangeName then
-		Activity191Controller.instance:dispatchEvent(Activity191Event.ModifyTeamName)
-	else
-		Activity191Controller.instance:dispatchEvent(Activity191Event.SwitchCurTeam)
-	end
+	slot7:updateTeamInfo(slot2.curTeamIndex, slot2.teamInfo)
+	Activity191Controller.instance:dispatchEvent(Activity191Event.UpdateTeamInfo)
 end
 
 function slot0.sendEndAct191GameRequest(slot0, slot1, slot2, slot3)
@@ -239,7 +231,7 @@ function slot0.onReceiveAct191TriggerEffectPush(slot0, slot1, slot2)
 		return
 	end
 
-	Activity191Model.instance:getActInfo(slot2.activityId):triggerEffectPush(slot2.effectId)
+	Activity191Model.instance:getActInfo(slot2.activityId):triggerEffectPush(slot2.effectId, slot2.param)
 end
 
 slot0.instance = slot0.New()

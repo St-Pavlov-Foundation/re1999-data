@@ -637,13 +637,15 @@ slot0.SkillShowTag = {
 	SpiritualDamage = 2,
 	Buff = 4,
 	Debuff = 3,
+	Universal = 11,
 	RealDamage = 1,
 	HealEffect = 6
 }
 slot0.NeedShowRestrainTag = {
 	[slot0.SkillShowTag.RealDamage] = true,
 	[slot0.SkillShowTag.SpiritualDamage] = true,
-	[slot0.SkillShowTag.Debuff] = true
+	[slot0.SkillShowTag.Debuff] = true,
+	[slot0.SkillShowTag.Universal] = true
 }
 slot0.LogicTargetDesc = {}
 slot1 = {
@@ -1156,17 +1158,17 @@ slot0.ExPointType = {
 	NoExpoint = 999
 }
 slot0.ExPointTypeFeature = {
-	[0] = {
+	[slot0.ExPointType.Common] = {
 		moveAddExpoint = true,
 		combineAddExpoint = true,
 		playAddExpoint = true
 	},
-	{
+	[slot0.ExPointType.Belief] = {
 		moveAddExpoint = false,
 		combineAddExpoint = false,
 		playAddExpoint = false
 	},
-	[999] = {
+	[slot0.ExPointType.NoExpoint] = {
 		moveAddExpoint = false,
 		combineAddExpoint = false,
 		playAddExpoint = false

@@ -104,7 +104,7 @@ function slot0._btnresetbadgeOnClick(slot0)
 end
 
 function slot0._btnclosebadgeOnClick(slot0)
-	Act183Controller.instance:dispatchEvent(Act183Event.OnUpdateBadgeDetailVisible, false)
+	Act183Controller.instance:dispatchEvent(Act183Event.OnUpdateBadgeDetailVisible, false, slot0._readyUseBadgeNum)
 end
 
 function slot0._onUpdateSelectBadgeNum(slot0, slot1, slot2)

@@ -58,6 +58,10 @@ function slot0.updateInfo(slot0)
 end
 
 function slot0.setNormalAnimation(slot0)
+	if slot0._data == nil then
+		return
+	end
+
 	if slot0._data:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
 		slot0:playAnimation(uv0.idle)
 	else
@@ -67,7 +71,9 @@ end
 
 function slot0.updatePos(slot0)
 	if slot0._data then
-		transformhelper.setLocalPosXY(slot0._tr, (slot0._data.startX - 1) * EliminateEnum.ChessWidth, (slot0._data.startY - 1) * EliminateEnum.ChessHeight)
+		slot1, slot2 = LocalEliminateChessUtils.instance.getChessPos(slot0._data.startX, slot0._data.startY)
+
+		transformhelper.setLocalPosXY(slot0._tr, slot1, slot2)
 	end
 end
 
@@ -112,7 +118,9 @@ function slot0.toMove(slot0, slot1, slot2, slot3, slot4)
 		logNormal("EliminateChessItem2_7:toMove self._data == nil" .. slot0._go.name)
 	end
 
-	uv0.DOLocalMove(slot0._tr, (slot0._data.x - 1) * EliminateEnum.ChessWidth, (slot0._data.y - 1) * EliminateEnum.ChessHeight, 0, slot1, slot0._onMoveEnd, slot0, {
+	slot5, slot6 = LocalEliminateChessUtils.instance.getChessPos(slot0._data.x, slot0._data.y)
+
+	uv0.DOLocalMove(slot0._tr, slot5, slot6, 0, slot1, slot0._onMoveEnd, slot0, {
 		cb = slot3,
 		cbTarget = slot4,
 		animType = slot2
@@ -158,13 +166,7 @@ function slot0.changeState(slot0, slot1, slot2, slot3)
 end
 
 function slot0._checkFrostState(slot0, slot1, slot2, slot3)
-	if slot0._data:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ShowEffect, slot2, slot3, EliminateEnum_2_7.ChessEffect.frost)
-	end
-
-	if slot1 == EliminateEnum_2_7.ChessState.Frost and slot0._data:haveStatus(EliminateEnum_2_7.ChessState.Normal) then
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.HideEffect, slot2, slot3, EliminateEnum_2_7.ChessEffect.frost)
-	end
+	LengZhou6EliminateController.instance:dispatchEvent(slot0._data:haveStatus(EliminateEnum_2_7.ChessState.Frost) and LengZhou6Event.ShowEffect or LengZhou6Event.HideEffect, slot2, slot3, EliminateEnum_2_7.ChessEffect.frost)
 end
 
 function slot0._checkSpecialSkillState(slot0)

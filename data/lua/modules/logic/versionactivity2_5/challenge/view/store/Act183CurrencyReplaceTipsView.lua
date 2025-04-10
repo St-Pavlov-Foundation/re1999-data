@@ -59,8 +59,8 @@ function slot0.refresh(slot0)
 	end
 
 	slot0._newCurrencyNum = slot0._oldCurrencyNum * slot0._replaceRate
-	slot0._txtoldcount.text = slot0._oldCurrencyNum
-	slot0._txtnewcount.text = slot0._newCurrencyNum
+	slot0._txtoldcount.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("multi_num"), slot0._oldCurrencyNum)
+	slot0._txtnewcount.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("multi_num"), slot0._newCurrencyNum)
 	slot0._txtdesc.text = slot0.viewParam and slot0.viewParam.desc or ""
 end
 

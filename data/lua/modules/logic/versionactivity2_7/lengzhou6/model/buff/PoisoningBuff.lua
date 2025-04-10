@@ -9,6 +9,8 @@ function slot0.execute(slot0)
 		if isDebugBuild then
 			logNormal("中毒伤害：" .. slot0._layerCount * 1)
 		end
+
+		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ShowEnemyEffect, LengZhou6Enum.BuffEffect.poison)
 	end
 end
 
