@@ -394,8 +394,9 @@ function slot0.openBloomView(slot0, slot1)
 	slot0._openBloomView = slot1
 end
 
-function slot0.setShareRT(slot0, slot1)
+function slot0.setShareRT(slot0, slot1, slot2)
 	slot0._shareRT = slot1
+	slot0._rtPriority = slot2
 end
 
 function slot0.getTextureSizeByCameraSize(slot0)
@@ -462,7 +463,7 @@ function slot0._loadL2dResFinish(slot0)
 			slot6:SetNativeSize()
 		end
 
-		Live2dRTShareController.instance:addShareInfo(slot2, slot6, slot0._shareRT, slot0._heroId, slot0._skinId)
+		Live2dRTShareController.instance:addShareInfo(slot2, slot6, slot0._shareRT, slot0._heroId, slot0._skinId, slot0._rtPriority)
 	end
 
 	slot0._mat = UnityEngine.Object.Instantiate(slot0._guiL2dLoader:getAssetItem(uv3):GetResource())

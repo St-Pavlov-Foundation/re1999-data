@@ -113,14 +113,12 @@ end
 function slot0._editableInitView(slot0)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseView, slot0, LuaEventSystem.Low)
 	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0, LuaEventSystem.High)
-
-	slot4 = "guang_005"
-
-	slot0._simagecenterbg:LoadImage(ResUrl.getCharacterIcon(slot4))
+	slot0._simagecenterbg:LoadImage(ResUrl.getCharacterIcon("guang_005"))
 
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
+	slot4 = CharacterVoiceEnum.NormalPriority.CharacterRankUpView
 
-	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, slot4)
 	slot0._uiSpine:useRT()
 
 	slot0._items = {}

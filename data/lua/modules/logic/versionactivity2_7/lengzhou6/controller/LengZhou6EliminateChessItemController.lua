@@ -3,7 +3,11 @@ module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6Eliminate
 slot0 = class("LengZhou6EliminateChessItemController", EliminateChessItemController)
 
 function slot0.InitChess(slot0)
-	for slot5 = 1, #LocalEliminateChessModel.instance:getAllCell() do
+	if LocalEliminateChessModel.instance:getAllCell() == nil then
+		return
+	end
+
+	for slot5 = 1, #slot1 do
 		if slot0._chess[slot5] == nil then
 			slot0._chess[slot5] = {}
 		end

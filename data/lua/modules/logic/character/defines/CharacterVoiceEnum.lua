@@ -23,6 +23,11 @@ slot0.RTShareType = {
 	FullScreen = 4,
 	Normal = 1
 }
+slot0.NormalPriority = {
+	CharacterGetView = 14,
+	CharacterRankUpResultView = 12,
+	CharacterRankUpView = 10
+}
 slot0.BloomCameraSize = {
 	[3116.0] = 10,
 	[3108.0] = 10

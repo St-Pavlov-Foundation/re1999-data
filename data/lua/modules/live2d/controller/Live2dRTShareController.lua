@@ -134,7 +134,7 @@ function slot0._getTypeInfoList(slot0, slot1)
 	return slot2
 end
 
-function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5)
+function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
 	if not slot1 or not slot2 or not slot3 or not slot4 or not slot5 then
 		logError(string.format("addShareInfo error camera:%s image:%s shareType:%s heroId:%s skinId:%s", slot1, slot2, slot3, slot4, slot5))
 
@@ -147,26 +147,33 @@ function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5)
 		return
 	end
 
-	for slot10, slot11 in ipairs(slot0:_getTypeInfoList(slot3)) do
-		if slot11.camera == slot1 and slot11.image == slot2 then
+	slot6 = slot6 or 0
+
+	for slot11, slot12 in ipairs(slot0:_getTypeInfoList(slot3)) do
+		if slot12.camera == slot1 and slot12.image == slot2 then
 			logError(string.format("addShareInfo error same camera:%s image:%s shareType:%s", slot1, slot2, slot3))
 
 			return
 		end
 	end
 
-	table.insert(slot6, {
+	table.insert(slot7, {
 		camera = slot1,
 		orthographicSize = slot1.orthographicSize,
 		textureSize = slot0:_getTextureSizeByCameraSize(slot1.orthographicSize),
 		image = slot2,
 		shareType = slot3,
 		heroId = slot4,
-		skinId = slot5
+		skinId = slot5,
+		priority = slot6
 	})
 
+	if slot3 == CharacterVoiceEnum.RTShareType.Normal then
+		slot0:_sortNormalList(slot7)
+	end
+
 	if slot0._debugLog then
-		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s", slot1, slot1.orthographicSize, slot2, slot3, #slot6))
+		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s priority:%s", slot1, slot1.orthographicSize, slot2, slot3, #slot7, slot6))
 	end
 
 	slot0._clearTime = nil
@@ -174,6 +181,22 @@ function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot0:_checkRT()
 	TaskDispatcher.cancelTask(slot0._checkRT, slot0)
 	TaskDispatcher.runRepeat(slot0._checkRT, slot0, 0)
+end
+
+function slot0._sortNormalList(slot0, slot1)
+	slot3 = 0
+
+	for slot7, slot8 in ipairs(slot1) do
+		if 0 <= slot8.priority then
+			slot2 = slot8.priority
+			slot3 = slot7
+		end
+	end
+
+	if slot2 > 0 then
+		table.remove(slot1, slot3)
+		table.insert(slot1, slot1[slot3])
+	end
 end
 
 function slot0._getTopInfoList(slot0)
