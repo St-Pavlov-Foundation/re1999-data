@@ -98,8 +98,9 @@ function slot0.openBloomView(slot0, slot1)
 	slot0._openBloomView = slot1
 end
 
-function slot0.setShareRT(slot0, slot1)
+function slot0.setShareRT(slot0, slot1, slot2)
 	slot0._shareRT = slot1
+	slot0._rtPriority = slot2
 end
 
 function slot0.setResPath(slot0, slot1, slot2, slot3, slot4)
@@ -122,7 +123,7 @@ function slot0.setResPath(slot0, slot1, slot2, slot3, slot4)
 		slot0._curModel:setSkinId(slot1.id)
 		slot0._curModel:openBloomView(slot0._openBloomView)
 		slot0._curModel:showModel()
-		slot0._curModel:setShareRT(slot0._shareRT)
+		slot0._curModel:setShareRT(slot0._shareRT, slot0._rtPriority)
 
 		if slot0._shareRT == CharacterVoiceEnum.RTShareType.BloomAuto then
 			if CharacterVoiceEnum.BloomCameraSize[slot1.characterId] then

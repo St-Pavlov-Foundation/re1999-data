@@ -119,8 +119,7 @@ function slot0.toMove(slot0, slot1, slot2, slot3, slot4)
 	end
 
 	slot5, slot6 = LocalEliminateChessUtils.instance.getChessPos(slot0._data.x, slot0._data.y)
-
-	uv0.DOLocalMove(slot0._tr, slot5, slot6, 0, slot1, slot0._onMoveEnd, slot0, {
+	slot0._tweenId = uv0.DOLocalMove(slot0._tr, slot5, slot6, 0, slot1, slot0._onMoveEnd, slot0, {
 		cb = slot3,
 		cbTarget = slot4,
 		animType = slot2
@@ -128,7 +127,9 @@ function slot0.toMove(slot0, slot1, slot2, slot3, slot4)
 end
 
 function slot0._onMoveEnd(slot0, slot1)
-	slot2 = slot1.animType
+	if slot0._data == nil then
+		return
+	end
 
 	slot0._data:setStartXY(slot0._data.x, slot0._data.y)
 
@@ -177,6 +178,12 @@ end
 
 function slot0.onDestroy(slot0, slot1)
 	TaskDispatcher.cancelTask(slot0.onDestroy, slot0)
+
+	if slot0._tweenId then
+		ZProj.TweenHelper.KillById(slot0._tweenId)
+
+		slot0._tweenId = nil
+	end
 
 	if slot0._btnClick then
 		slot0._btnClick:RemoveClickListener()
