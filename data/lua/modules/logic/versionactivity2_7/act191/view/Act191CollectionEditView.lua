@@ -101,6 +101,7 @@ function slot0.refreshSlotItem(slot0)
 			slot5.simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(slot8.icon))
 
 			if slot0.equipping and slot4 == slot0.curSlotIndex then
+				AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_equip_creation)
 				gohelper.setActive(slot5.goCollection, false)
 				gohelper.setActive(slot5.goCollection, true)
 			else
@@ -122,7 +123,11 @@ function slot0.onSlotClick(slot0, slot1)
 		gohelper.setActive(slot0.slotItemList[slot5].goSelect, slot5 == slot1)
 	end
 
-	slot0:refreshBtnStatus()
+	if slot0.itemUidDic[slot0.curSlotIndex] == 0 then
+		slot0:refreshBtnStatus()
+	else
+		Act191CollectionEditListModel.instance:selectItem(slot2, true)
+	end
 end
 
 function slot0._onItemClick(slot0, slot1)

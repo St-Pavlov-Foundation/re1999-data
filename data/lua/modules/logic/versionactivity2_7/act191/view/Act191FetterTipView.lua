@@ -23,6 +23,7 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0.onClickModalMask(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_panel_close)
 	slot0:closeThis()
 end
 

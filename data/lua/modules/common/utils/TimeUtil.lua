@@ -25,6 +25,10 @@ slot0 = {
 	secondToHMS = function (slot0)
 		slot1, slot2, slot3, slot4 = uv0.secondsToDDHHMMSS(slot0)
 
+		if slot1 > 0 then
+			slot2 = slot2 + slot1 * 24
+		end
+
 		return slot2, slot3, slot4
 	end,
 	second2TimeString = function (slot0, slot1)

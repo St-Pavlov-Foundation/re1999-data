@@ -3,11 +3,12 @@ module("modules.logic.versionactivity2_7.coopergarland.define.CooperGarlandEnum"
 slot0 = _M
 slot0.Const = {
 	TaskMOAllFinishId = -99999,
+	BallPosOffset = -0.09,
 	SpikeMoveDirX = 1,
-	DefaultGameProgress = "1",
 	PanelPosZ = -0.6,
 	JoystickModeLeft = 3,
 	JoystickModeRight = 1,
+	DefaultGameProgress = "1",
 	SpikeMoveDirY = 2,
 	CameraMaxFov = 120,
 	GyroscopeMode = 2

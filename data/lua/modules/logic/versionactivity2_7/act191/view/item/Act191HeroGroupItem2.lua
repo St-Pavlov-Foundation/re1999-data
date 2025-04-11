@@ -25,13 +25,17 @@ function slot0.setData(slot0, slot1)
 	slot0.itemUid = slot1
 
 	if slot1 and slot1 ~= 0 then
-		slot4 = Activity191Config.instance:getCollectionCo(Activity191Model.instance:getActInfo():getGameInfo():getItemInfoInWarehouse(slot1).itemId)
+		slot3 = Activity191Model.instance:getActInfo():getGameInfo():getItemInfoInWarehouse(slot1)
+		slot0.itemId = slot3.itemId
+		slot4 = Activity191Config.instance:getCollectionCo(slot3.itemId)
 
 		UISpriteSetMgr.instance:setAct174Sprite(slot0.imageRare, "act174_propitembg_" .. slot4.rare)
 		slot0.simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(slot4.icon))
 		gohelper.setActive(slot0.goCollection, true)
 		gohelper.setActive(slot0.goEmpty, false)
 	else
+		slot0.itemId = 0
+
 		gohelper.setActive(slot0.goCollection, false)
 		gohelper.setActive(slot0.goEmpty, true)
 	end
@@ -46,9 +50,17 @@ function slot0.onClick(slot0)
 		return
 	end
 
+	if slot0.param then
+		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("itemClick_%s_%s_%s", slot0.param.type, slot0._index, slot0.itemId))
+	end
+
 	ViewMgr.instance:openView(ViewName.Act191CollectionEditView, {
 		index = slot0._index
 	})
+end
+
+function slot0.setExtraParam(slot0, slot1)
+	slot0.param = slot1
 end
 
 return slot0

@@ -256,7 +256,7 @@ function slot0.eliminateCross(slot0, slot1, slot2)
 	slot4 = true
 
 	for slot9 = 1, slot0._row do
-		if slot0.cells[slot9][slot2]:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
+		if slot0.cells[slot9][slot2].id ~= EliminateEnum_2_7.InvalidId and slot10:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
 			function (slot0, slot1)
 				uv0 = true
 
@@ -277,7 +277,7 @@ function slot0.eliminateCross(slot0, slot1, slot2)
 	end
 
 	for slot9 = 1, slot0._col do
-		if slot0.cells[slot1][slot9]:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
+		if slot0.cells[slot1][slot9].id ~= EliminateEnum_2_7.InvalidId and slot10:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
 			slot5(slot1, slot9)
 		end
 	end
@@ -308,15 +308,15 @@ function slot0.eliminateRange(slot0, slot1, slot2, slot3)
 		for slot11 = -slot3, slot3 do
 			slot13 = slot2 + slot11
 
-			if slot1 + slot7 > 0 and slot12 <= slot0._row and slot13 > 0 and slot13 <= slot0._col then
-				slot14 = {}
+			if slot1 + slot7 > 0 and slot12 <= slot0._row and slot13 > 0 and slot13 <= slot0._col and slot0.cells[slot1][slot2].id ~= EliminateEnum_2_7.InvalidId then
+				slot15 = {}
 
-				table.insert(slot14, {
+				table.insert(slot15, {
 					x = slot12,
 					y = slot13
 				})
 				table.insert(slot0._tempEliminateCheckResults, {
-					eliminatePoints = slot14,
+					eliminatePoints = slot15,
 					eliminateType = EliminateEnum_2_7.eliminateType.base,
 					eliminateX = slot1,
 					eliminateY = slot2,
@@ -602,6 +602,10 @@ function slot0.getRandomId(slot0)
 end
 
 function slot0._exchangeCell(slot0, slot1, slot2, slot3, slot4)
+	if slot0.cells == nil or slot0.cells[slot1] == nil or slot0.cells[slot3] == nil then
+		return
+	end
+
 	slot0.cells[slot1][slot2] = slot0.cells[slot3][slot4]
 
 	slot0.cells[slot1][slot2]:setXY(slot1, slot2)

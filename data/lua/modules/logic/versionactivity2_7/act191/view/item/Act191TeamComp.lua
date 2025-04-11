@@ -4,6 +4,7 @@ slot0 = class("Act191TeamComp", LuaCompBase)
 
 function slot0.ctor(slot0, slot1)
 	slot0.handleView = slot1
+	slot0.handleViewName = slot1.viewName
 end
 
 function slot0.init(slot0, slot1)
@@ -27,15 +28,28 @@ function slot0.init(slot0, slot1)
 		slot0.groupItem1List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.goHeroTeam, "hero" .. slot5), Act191HeroGroupItem1)
 
 		slot0.groupItem1List[slot5]:setIndex(slot5)
+		slot0.groupItem1List[slot5]:setExtraParam({
+			type = "justHero",
+			fromView = slot0.handleViewName
+		})
 
 		if slot5 <= 4 then
 			slot0.subGroupItem1List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.goCollectionTeam, "hero" .. slot5), Act191HeroGroupItem1)
 
 			slot0.subGroupItem1List[slot5]:setIndex(slot5)
+			slot0.subGroupItem1List[slot5]:setClickEnable(false)
+			slot0.subGroupItem1List[slot5]:setExtraParam({
+				type = "heroItem",
+				fromView = slot0.handleViewName
+			})
 
 			slot0.groupItem2List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.goCollectionTeam, "collection" .. slot5), Act191HeroGroupItem2)
 
 			slot0.groupItem2List[slot5]:setIndex(slot5)
+			slot0.groupItem2List[slot5]:setExtraParam({
+				type = "heroItem",
+				fromView = slot0.handleViewName
+			})
 		end
 	end
 
@@ -87,6 +101,10 @@ function slot0.onClickSwitch(slot0, slot1)
 	else
 		slot0._anim:Play("switch", 0, 0)
 		TaskDispatcher.runDelay(slot0.refreshStatus, slot0, 0.16)
+	end
+
+	if not slot1 then
+		Act191StatController.instance:statButtonClick(slot0.handleView.viewName, string.format("onClickSwitch_%s", slot0.editCollection and "Collection" or "Hero"))
 	end
 end
 

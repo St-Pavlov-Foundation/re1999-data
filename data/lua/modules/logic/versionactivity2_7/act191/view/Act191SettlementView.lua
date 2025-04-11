@@ -58,15 +58,6 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
-	if slot0.gameEndInfo and slot0.gameEndInfo.gainScore ~= 0 and CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.Act191).quantity < tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.PlayerMaxScore].value) then
-		slot3 = MaterialDataMO.New()
-
-		slot3:initValue(MaterialEnum.MaterialType.Currency, CurrencyEnum.CurrencyType.Act191, slot0.gameEndInfo.gainScore)
-		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, {
-			slot3
-		})
-	end
-
 	slot0.actInfo:clearEndInfo()
 	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
 end
@@ -209,7 +200,7 @@ end
 
 function slot0.refreshRight(slot0)
 	if slot0.gameInfo.curStage ~= 0 then
-		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
+		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem):setClickEnable(false)
 	end
 
 	slot0._txtScore.text = slot0.gameEndInfo.gainScore

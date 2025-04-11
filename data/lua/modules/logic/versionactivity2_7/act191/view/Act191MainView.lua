@@ -95,7 +95,7 @@ function slot0.onOpen(slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.EndGame, slot0.checkGameEndInfo, slot0)
 	slot0:refreshUI()
 
-	if slot0.viewParam and slot0.viewParam.exitFromFight then
+	if slot0.viewParam and slot0.viewParam.exitFromFight and not Activity191Controller.instance:checkOpenGetView() then
 		slot0:_btnEnterGameOnClick()
 	end
 end

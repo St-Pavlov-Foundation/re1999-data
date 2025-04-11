@@ -2,11 +2,11 @@ module("modules.logic.versionactivity2_7.act191.rpc.Activity191Rpc", package.see
 
 slot0 = class("Activity191Rpc", BaseRpc)
 
-function slot0.sendGetAct191InfoRequest(slot0, slot1)
-	slot2 = Activity191Module_pb.GetAct191InfoRequest()
-	slot2.activityId = slot1
+function slot0.sendGetAct191InfoRequest(slot0, slot1, slot2, slot3)
+	slot4 = Activity191Module_pb.GetAct191InfoRequest()
+	slot4.activityId = slot1
 
-	slot0:sendMsg(slot2)
+	slot0:sendMsg(slot4, slot2, slot3)
 end
 
 function slot0.onReceiveGetAct191InfoReply(slot0, slot1, slot2)
@@ -231,7 +231,7 @@ function slot0.onReceiveAct191TriggerEffectPush(slot0, slot1, slot2)
 		return
 	end
 
-	Activity191Model.instance:getActInfo(slot2.activityId):triggerEffectPush(slot2.effectId, slot2.param)
+	Activity191Model.instance:getActInfo(slot2.activityId):triggerEffectPush(slot2)
 end
 
 slot0.instance = slot0.New()

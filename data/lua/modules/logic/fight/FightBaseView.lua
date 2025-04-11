@@ -230,10 +230,6 @@ function slot0.com_registHover(slot0, slot1, slot2)
 	return slot0:getComponent(FightLongPressComponent):registHover(slot1, slot2, slot0)
 end
 
-function slot0.com_playTween(slot0, slot1, ...)
-	return slot0:getComponent(FightTweenComponent):playTween(slot1, ...)
-end
-
 function slot0.com_killTween(slot0, slot1)
 	if not slot1 then
 		return

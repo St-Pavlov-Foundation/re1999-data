@@ -3,8 +3,7 @@ module("modules.logic.versionactivity2_7.act191.model.Act191MO", package.seeall)
 slot0 = pureTable("Act191MO")
 
 function slot0.ctor(slot0)
-	slot0.triggerEffectIds = {}
-	slot0.triggerParams = {}
+	slot0.triggerEffectPushList = {}
 end
 
 function slot0.initBadgeInfo(slot0, slot1)
@@ -40,22 +39,12 @@ function slot0.getGameInfo(slot0)
 	return slot0.gameInfo
 end
 
-function slot0.triggerEffectPush(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot1) do
-		slot0.triggerEffectIds[#slot0.triggerEffectIds + 1] = slot7
-	end
-
-	if not string.nilorempty(slot2) then
-		slot0.triggerParams[#slot0.triggerParams + 1] = slot2
-	end
+function slot0.triggerEffectPush(slot0, slot1)
+	slot0.triggerEffectPushList[#slot0.triggerEffectPushList + 1] = slot1
 end
 
-function slot0.cleanTriggerEffect(slot0)
-	tabletool.clear(slot0.triggerEffectIds)
-end
-
-function slot0.cleanTriggerParams(slot0)
-	tabletool.clear(slot0.triggerParams)
+function slot0.clearTriggerEffectPush(slot0)
+	tabletool.clear(slot0.triggerEffectPushList)
 end
 
 function slot0.getGameEndInfo(slot0)
@@ -83,7 +72,7 @@ function slot0.clearEndInfo(slot0)
 	slot0.gameEndInfo = nil
 
 	tabletool.clear(slot0.badgeScoreChangeDic)
-	slot0:cleanTriggerEffect()
+	slot0:clearTriggerEffectPush()
 end
 
 function slot0.getBadgeMoList(slot0)

@@ -81,7 +81,7 @@
     "resMaxVal": 100,
     "bossPic": "singlebg/tower_singlebg/boss/tower_boss_4.png",
     "bossShadowPic": "singlebg/tower_singlebg/boss/tower_boss_shadow4.png",
-    "bossDesc": "骨炭狼烟是岩灵感迷思原型，适合搭配血、额外行动、增益类角色出战"
+    "bossDesc": "骨炭狼烟是岩灵感迷思原型，适合搭配燃血、额外行动、增益类角色出战"
   },
   {
     "bossId": 5,

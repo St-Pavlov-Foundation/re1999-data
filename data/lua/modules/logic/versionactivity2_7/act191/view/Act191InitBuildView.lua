@@ -107,7 +107,7 @@ function slot0.buildReply(slot0, slot1, slot2)
 
 		slot0.selectIndex = nil
 
-		Activity191Helper.setPlayerPrefs(-999, "Act191GameCostTime", Activity191Helper.getPlayerPrefs(-999, "Act191GameCostTime", 0) + 1)
+		Activity191Helper.setPlayerPrefs(slot0.actId, "Act191GameCostTime", Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 0) + 1)
 	end
 end
 

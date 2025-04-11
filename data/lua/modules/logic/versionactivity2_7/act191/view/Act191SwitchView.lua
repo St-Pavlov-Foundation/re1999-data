@@ -57,10 +57,12 @@ function slot0.onOpen(slot0)
 			slot0._txtTips.text = slot9.desc
 
 			gohelper.setActive(slot8.goSelect, true)
+			TaskDispatcher.runDelay(slot0.delayAudio, slot0, 1)
 			slot8.animSwitch:Play("switch_open")
 			gohelper.setActive(slot0._txtTips, true)
 		elseif slot7.nodeId == slot0.gameInfo.curNode - 1 then
 			gohelper.setActive(slot8.goSelect, true)
+			AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_01)
 			slot8.animSwitch:Play("switch_close")
 		else
 			gohelper.setActive(slot8.goSelect, false)
@@ -73,6 +75,7 @@ end
 
 function slot0.onDestroyView(slot0)
 	TaskDispatcher.cancelTask(slot0.closeThis, slot0)
+	TaskDispatcher.cancelTask(slot0.delayAudio, slot0)
 end
 
 function slot0.creatNodeItem(slot0, slot1)
@@ -85,6 +88,10 @@ function slot0.creatNodeItem(slot0, slot1)
 	slot0.nodeItemList[slot1] = slot2
 
 	return slot2
+end
+
+function slot0.delayAudio(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_02)
 end
 
 return slot0

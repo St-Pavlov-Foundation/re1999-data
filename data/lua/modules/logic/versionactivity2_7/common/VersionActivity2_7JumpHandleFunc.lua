@@ -58,7 +58,7 @@ end
 
 function slot0.jumpTo12701(slot0)
 	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterView(function ()
-		Activity191Controller.instance:openMainView()
+		Activity191Controller.instance:enterActivity(uv0)
 	end, nil, VersionActivity2_7Enum.ActivityId.Act191, true)
 
 	return JumpEnum.JumpResult.Success

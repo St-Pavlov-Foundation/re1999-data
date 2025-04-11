@@ -19,6 +19,7 @@ end
 
 function slot0.addEvents(slot0)
 	slot0._btnEnter:AddClickListener(slot0._btnEnterOnClick, slot0)
+	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0.onCloseView, slot0)
 end
 
 function slot0.removeEvents(slot0)
@@ -42,7 +43,10 @@ end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
+
+	slot0.nodeListComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
+
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_unfold)
 
 	slot2 = Activity191Model.instance:getActInfo():getGameInfo()
 	slot0._txtScore.text = slot2.score
@@ -65,7 +69,7 @@ function slot0.onOpen(slot0)
 			if Activity191Helper.isPveBattle(slot11.type) or slot14 then
 				slot15 = gohelper.clone(slot0._goFightStage, slot10, "Item")
 
-				slot0:addClickCb(gohelper.findChildButtonWithAudio(slot15, ""), slot0.clickStage, slot0, slot8)
+				slot0:addClickCb(gohelper.findChildButton(slot15, ""), slot0.clickStage, slot0, slot8)
 
 				slot17 = gohelper.findChildButtonWithAudio(slot15, "btn_Check")
 
@@ -125,7 +129,7 @@ function slot0.onOpen(slot0)
 			else
 				slot15 = gohelper.clone(slot0._goNormalStage, slot10)
 
-				slot0:addClickCb(gohelper.findChildButtonWithAudio(slot15, ""), slot0.clickStage, slot0, slot8)
+				slot0:addClickCb(gohelper.findChildButton(slot15, ""), slot0.clickStage, slot0, slot8)
 
 				slot17 = gohelper.findChildSingleImage(slot15, "stage/simage_Stage")
 				slot12.goSelect = gohelper.findChild(slot15, "go_Select")
@@ -182,10 +186,20 @@ function slot0.onClose(slot0)
 	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
 end
 
+function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0.playSalaryAnim, slot0)
+end
+
 function slot0.clickStage(slot0, slot1)
 	if not slot0.selectIndex then
 		gohelper.setActive(slot0._btnEnter, true)
 	end
+
+	if slot0.selectIndex == slot1 then
+		return
+	end
+
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_fire_interface)
 
 	slot0.selectIndex = slot1
 
@@ -220,6 +234,17 @@ function slot0.createSpine(slot0, slot1, slot2)
 			transformhelper.setLocalScale(slot1.transform, slot5[3], slot5[3], 1)
 		end
 	end
+end
+
+function slot0.onCloseView(slot0, slot1)
+	if slot1 == ViewName.Act191SwitchView and slot0.nodeListComp.firstNode then
+		slot0.nodeListComp:showSalary()
+		TaskDispatcher.runDelay(slot0.playSalaryAnim, slot0, 0.5)
+	end
+end
+
+function slot0.playSalaryAnim(slot0)
+	slot0.nodeListComp:playSalaryAnim(slot0._txtCoin.gameObject, slot0._txtScore.gameObject)
 end
 
 return slot0

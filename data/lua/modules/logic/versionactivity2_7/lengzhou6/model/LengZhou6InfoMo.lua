@@ -27,6 +27,10 @@ function slot0.updateIsFinish(slot0, slot1)
 	slot0.isFinish = slot1
 end
 
+function slot0.updateProgress(slot0, slot1)
+	slot0.progress = slot1
+end
+
 function slot0.isEndlessEpisode(slot0)
 	return LengZhou6Model.instance:getEpisodeIsEndLess(slot0._config)
 end

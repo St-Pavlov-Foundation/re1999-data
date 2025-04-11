@@ -127,11 +127,9 @@ function slot0.toMove(slot0, slot1, slot2, slot3, slot4)
 end
 
 function slot0._onMoveEnd(slot0, slot1)
-	if slot0._data == nil then
-		return
+	if slot0._data ~= nil then
+		slot0._data:setStartXY(slot0._data.x, slot0._data.y)
 	end
-
-	slot0._data:setStartXY(slot0._data.x, slot0._data.y)
 
 	if slot1.cb then
 		slot1.cb(slot1.cbTarget)
@@ -176,9 +174,7 @@ function slot0._checkSpecialSkillState(slot0)
 	end
 end
 
-function slot0.onDestroy(slot0, slot1)
-	TaskDispatcher.cancelTask(slot0.onDestroy, slot0)
-
+function slot0.onDestroy(slot0)
 	if slot0._tweenId then
 		ZProj.TweenHelper.KillById(slot0._tweenId)
 
@@ -194,11 +190,6 @@ function slot0.onDestroy(slot0, slot1)
 	end
 
 	slot0:clear()
-
-	if slot1 and slot1.cb then
-		slot1.cb(slot1.cbTarget)
-	end
-
 	uv0.super.onDestroy(slot0)
 end
 

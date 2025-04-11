@@ -107,7 +107,7 @@ function slot0.refreshTask(slot0)
 		gohelper.setActive(slot0.goProgress, true)
 
 		for slot6, slot7 in pairs(slot1) do
-			if TowerTaskModel.instance:isTaskFinishedById(slot7) then
+			if TowerTaskModel.instance:isTaskFinishedById(slot7.id) then
 				slot2 = 0 + 1
 			end
 		end

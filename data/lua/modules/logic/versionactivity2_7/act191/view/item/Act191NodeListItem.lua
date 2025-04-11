@@ -2,6 +2,10 @@ module("modules.logic.versionactivity2_7.act191.view.item.Act191NodeListItem", p
 
 slot0 = class("Act191NodeListItem", LuaCompBase)
 
+function slot0.ctor(slot0, slot1)
+	slot0.handleView = slot1
+end
+
 function slot0.init(slot0, slot1)
 	slot0.go = slot1
 	slot0.txtStage = gohelper.findChildText(slot1, "bg/stage/#txt_Stage")
@@ -11,14 +15,21 @@ function slot0.init(slot0, slot1)
 	slot0.txtCoin2 = gohelper.findChildText(slot1, "#go_Salary/Coin2/#txt_Coin2")
 	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "#btn_Click")
 	slot0.nodeItemList = {}
+	slot0.goFly1 = gohelper.findChild(slot1, "#go_Salary/Coin1/#fly")
+	slot0.goFly2 = gohelper.findChild(slot1, "#go_Salary/Coin2/#fly")
 end
 
 function slot0.addEventListeners(slot0)
-	slot0:addClickCb(slot0.btnClick, slot0.showSalary, slot0)
+	slot0:addClickCb(slot0.btnClick, slot0.onClick, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, slot0.refreshUI, slot0)
 end
 
 function slot0.removeEventListeners(slot0)
+end
+
+function slot0.onClick(slot0)
+	Act191StatController.instance:statButtonClick(slot0.handleView.viewName, string.format("showSalary_%s", slot0.goSalary.activeInHierarchy and "false" or "true"))
+	slot0:showSalary()
 end
 
 function slot0.onStart(slot0)
@@ -28,7 +39,9 @@ function slot0.onStart(slot0)
 end
 
 function slot0.onDestroy(slot0)
+	TaskDispatcher.cancelTask(slot0.playSalaryAnim, slot0)
 	TaskDispatcher.cancelTask(slot0.hideSalary, slot0)
+	TaskDispatcher.cancelTask(slot0.hideFly, slot0)
 end
 
 function slot0.refreshUI(slot0)
@@ -58,6 +71,10 @@ function slot0.refreshUI(slot0)
 		UISpriteSetMgr.instance:setAct174Sprite(slot8.imageNodeS, slot10 .. "_light")
 
 		if slot7.nodeId == slot0.gameInfo.curNode then
+			if slot6 == 1 and slot0.gameInfo.curNode ~= 1 then
+				slot0.firstNode = true
+			end
+
 			slot0.txtStage.text = string.format("<#FAB459>%s</color>-%d", slot1.name, slot6)
 
 			gohelper.setActive(slot8.goSelect, true)
@@ -94,6 +111,30 @@ end
 
 function slot0.hideSalary(slot0)
 	gohelper.setActive(slot0.goSalary, false)
+end
+
+function slot0.setClickEnable(slot0, slot1)
+	gohelper.setActive(slot0.btnClick, slot1)
+end
+
+function slot0.playSalaryAnim(slot0, slot1, slot2)
+	gohelper.setActive(slot0.goFly1, true)
+	gohelper.setActive(slot0.goFly2, true)
+
+	slot3 = recthelper.rectToRelativeAnchorPos(slot1.transform.position, slot0.goFly1.transform.parent)
+
+	ZProj.TweenHelper.DOAnchorPos(slot0.goFly1.transform, slot3.x, slot3.y, 0.45)
+
+	slot3 = recthelper.rectToRelativeAnchorPos(slot2.transform.position, slot0.goFly2.transform.parent)
+
+	ZProj.TweenHelper.DOAnchorPos(slot0.goFly2.transform, slot3.x, slot3.y, 0.45)
+	TaskDispatcher.runDelay(slot0.hideFly, slot0, 0.45)
+end
+
+function slot0.hideFly(slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_earn_gold)
+	gohelper.setActive(slot0.goFly1, false)
+	gohelper.setActive(slot0.goFly2, false)
 end
 
 return slot0

@@ -42,6 +42,19 @@ function slot0.onGetActInfo(slot0, slot1)
 	slot0:updateNewestEpisode()
 end
 
+function slot0.onFinishActInfo(slot0, slot1)
+	slot0._activityId = slot1.activityId
+
+	if slot1.episodeId == nil then
+		return
+	end
+
+	if slot0._actInfoMap ~= nil and slot0._actInfoMap[slot2] then
+		slot3:updateIsFinish(true)
+		slot3:updateProgress(slot1.progress)
+	end
+end
+
 function slot0.onPushActInfo(slot0, slot1)
 	slot0._activityId = slot1.activityId
 

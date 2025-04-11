@@ -117,8 +117,6 @@ function slot0.onSelectItem(slot0, slot1, slot2, slot3)
 		end
 	end
 
-	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_click)
-
 	if slot0._needReleaseSkill ~= nil then
 		if slot0._lastSelectX and slot0._lastSelectY then
 			slot0:setSelect(false, slot0._lastSelectX, slot0._lastSelectY)
@@ -129,6 +127,8 @@ function slot0.onSelectItem(slot0, slot1, slot2, slot3)
 
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_click)
 
 	if slot0._lastSelectX and slot0._lastSelectY then
 		if slot0._lastSelectX ~= slot1 or slot0._lastSelectY ~= slot2 then
@@ -345,7 +345,7 @@ function slot0.showEffect(slot0, slot1, slot2, slot3)
 end
 
 function slot0.hideEffect(slot0, slot1, slot2, slot3)
-	if slot1 == nil or slot2 == nil or slot3 == nil then
+	if slot1 == nil or slot2 == nil or slot3 == nil or slot0._effectList == nil then
 		return
 	end
 
@@ -384,6 +384,10 @@ function slot0._delayHideEffect(slot0)
 end
 
 function slot0._realHideEffect(slot0, slot1, slot2)
+	if slot0._effectList == nil then
+		return
+	end
+
 	if slot0._effectList[slot0:getEffectIndex(slot1, slot2)] ~= nil then
 		LocalEliminateChessModel.instance:recordSpEffect(slot1, slot2, nil)
 		gohelper.setActive(slot0._effectList[slot3], false)

@@ -28,7 +28,9 @@ function slot0.onOpen(slot0)
 	for slot5, slot6 in pairs(lua_activity191_relation.configDict) do
 		slot1[slot7] = slot1[slot6.tag] or {}
 
-		table.insert(slot1[slot7], slot6)
+		if slot6.activeNum > 0 then
+			table.insert(slot1[slot7], slot6)
+		end
 	end
 
 	for slot5, slot6 in pairs(slot1) do

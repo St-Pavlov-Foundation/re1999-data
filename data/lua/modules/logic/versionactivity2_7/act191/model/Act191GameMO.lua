@@ -474,4 +474,10 @@ function slot0.getAct191Effect(slot0, slot1)
 	end
 end
 
+function slot0.getBestFetterTag(slot0)
+	if next(Activity191Helper.getActiveFetterInfoList(slot0:getTeamFetterCntDic())) then
+		return slot2[1].config.tag
+	end
+end
+
 return slot0

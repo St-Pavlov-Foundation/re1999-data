@@ -47,5 +47,15 @@ slot0.LengZhou6 = {
 	play_ui_yuzhou_lzl_refresh = 20270037,
 	play_ui_yuzhou_lzl_boom = 20270035
 }
+slot0.Act191 = {
+	play_ui_yuzhou_dqq_earn_gold = 20270046,
+	play_ui_yuzhou_dqq_pmgressbar_02 = 20270043,
+	play_ui_yuzhou_dqq_panel_close = 20270047,
+	play_ui_yuzhou_dqq_fire_interface = 20270044,
+	play_ui_yuzhou_dqq_reward_increase = 20270048,
+	play_ui_yuzhou_dqq_pmgressbar_unfold = 20270045,
+	play_ui_yuzhou_dqq_pmgressbar_01 = 20270042,
+	play_ui_yuzhou_dqq_equip_creation = 20270049
+}
 
 return slot0

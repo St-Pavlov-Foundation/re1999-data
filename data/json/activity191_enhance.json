@@ -36,7 +36,7 @@
     "desc": "苏芙比启悟狂想「幻梦少许，天真足量」",
     "relateHero": "3009",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
+    "icon": "act174_pick_bufficon_6",
     "effects": "404"
   },
   {
@@ -46,7 +46,7 @@
     "desc": "温妮弗雷德启悟狂想「再度饮下，蓝色浪潮」",
     "relateHero": "3051",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
+    "icon": "act174_pick_bufficon_6",
     "effects": "405"
   },
   {
@@ -106,7 +106,7 @@
     "desc": "玛蒂尔达启悟狂想「明日澄如水晶」",
     "relateHero": "3041",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
+    "icon": "act174_pick_bufficon_6",
     "effects": "411"
   },
   {
@@ -116,8 +116,8 @@
     "desc": "泥鯭的士启悟狂想「科学地处理不科学」",
     "relateHero": "3039",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
-    "effects": "413"
+    "icon": "act174_pick_bufficon_6",
+    "effects": "412"
   },
   {
     "id": 110014,
@@ -126,8 +126,8 @@
     "desc": "梅兰妮启悟狂想「穿梭于点线面之网」",
     "relateHero": "3062",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
-    "effects": "414"
+    "icon": "act174_pick_bufficon_6",
+    "effects": "413"
   },
   {
     "id": 110015,
@@ -136,27 +136,37 @@
     "desc": "兔毛手袋启悟狂想「五毫升血液炼金术」",
     "relateHero": "3047",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
-    "effects": "415"
+    "icon": "act174_pick_bufficon_6",
+    "effects": "414"
   },
   {
     "id": 110016,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "爱兹拉启悟狂想「电能术阵」",
+    "desc": "爱兹拉启悟狂想「菌脉指引风的探针」",
     "relateHero": "3074",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
-    "effects": "416"
+    "icon": "act174_pick_bufficon_6",
+    "effects": "415"
   },
   {
     "id": 110017,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "爱兹拉启悟狂想「薪之杯」",
+    "desc": "爱兹拉启悟狂想「星火不息之种」",
     "relateHero": "3074",
     "relateItem": "",
-    "icon": "act174_pick_bufficon_7",
+    "icon": "act174_pick_bufficon_6",
+    "effects": "416"
+  },
+  {
+    "id": 110018,
+    "activityId": 12701,
+    "name": "七叶树协会赞助提供",
+    "desc": "曲娘启悟狂想「自有天星奉酒浆」",
+    "relateHero": "3074",
+    "relateItem": "",
+    "icon": "act174_pick_bufficon_6",
     "effects": "417"
   },
   {
@@ -166,7 +176,7 @@
     "desc": "造物『喧嚷弹夹』效果增强：\n自身额外行动造成伤害提升50%；\n己方角色额外行动后，自身50%概率获得1层【计划】",
     "relateHero": "",
     "relateItem": "8330715",
-    "icon": "act174_pick_bufficon_6",
+    "icon": "act174_pick_bufficon_7",
     "effects": "421"
   },
   {
@@ -176,7 +186,7 @@
     "desc": "造物『古董银剑』效果增强：\n自身仪式造成伤害提升50%；\n己方角色释放至终的仪式后，自身获得5层【礼仪】",
     "relateHero": "",
     "relateItem": "8310212",
-    "icon": "act174_pick_bufficon_6",
+    "icon": "act174_pick_bufficon_7",
     "effects": "422"
   },
   {
@@ -186,7 +196,7 @@
     "desc": "造物『锡兵礼盒』效果增强：\n己方全体术法威力+20%；\n己方触发【咒语同频】时，己方全体获得2层【倾力】",
     "relateHero": "",
     "relateItem": "8320210",
-    "icon": "act174_pick_bufficon_6",
+    "icon": "act174_pick_bufficon_7",
     "effects": "423"
   },
   {
@@ -226,7 +236,7 @@
     "desc": "造物『槲寄生枝叶』效果增强：\n自身治疗率提升30%；\n进入战斗时，己方角色获得20层【再生】，且每回合获得2层【流势·再生】",
     "relateHero": "",
     "relateItem": "8120416",
-    "icon": "act174_pick_bufficon_6",
+    "icon": "act174_pick_bufficon_7",
     "effects": "427"
   },
   {
@@ -236,7 +246,7 @@
     "desc": "造物『褶皱和圆』效果增强：\n自身对处于【燃烧】状态的敌人造成伤害提高50%；\n攻击时若敌方携带至少3种【状态异常】，则造成伤害提高20%",
     "relateHero": "",
     "relateItem": "8330211",
-    "icon": "act174_pick_bufficon_6",
+    "icon": "act174_pick_bufficon_7",
     "effects": "428"
   }
 ]

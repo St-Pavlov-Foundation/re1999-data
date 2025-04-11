@@ -14,6 +14,16 @@ end
 function slot0.reInit(slot0)
 end
 
+function slot0.enterActivity(slot0, slot1)
+	Activity191Rpc.instance:sendGetAct191InfoRequest(slot1, slot0.enterReply, slot0)
+end
+
+function slot0.enterReply(slot0, slot1, slot2)
+	if slot2 == 0 then
+		slot0:openMainView()
+	end
+end
+
 function slot0.openMainView(slot0, slot1)
 	ViewMgr.instance:openView(ViewName.Act191MainView, slot1)
 end
@@ -133,11 +143,25 @@ function slot0.startFight(slot0)
 end
 
 function slot0.checkOpenGetView(slot0)
-	if #Activity191Model.instance:getActInfo().triggerParams ~= 0 then
-		ViewMgr.instance:openView(ViewName.Act191GetView, slot1.triggerParams)
+	slot2 = false
+
+	for slot6, slot7 in ipairs(Activity191Model.instance:getActInfo().triggerEffectPushList) do
+		if not string.nilorempty(slot7.param) then
+			slot2 = true
+
+			break
+		end
+	end
+
+	if slot2 then
+		ViewMgr.instance:openView(ViewName.Act191GetView)
 
 		return true
 	end
+
+	slot1:clearTriggerEffectPush()
+
+	return false
 end
 
 slot0.instance = slot0.New()

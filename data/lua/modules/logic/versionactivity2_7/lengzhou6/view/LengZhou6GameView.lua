@@ -224,7 +224,7 @@ function slot0.endLessModelRefreshView(slot0, slot1)
 		slot0:initPlayerSKillView(slot5)
 		slot0:closeSkillTips()
 		slot0:cancelPlayerSkill()
-		slot0:updateEnemySkill()
+		slot0:updateEnemySkill(true)
 		slot0:enemySkillRound()
 	end
 end
@@ -261,7 +261,10 @@ function slot0.updateEliminateDamage(slot0)
 	end
 
 	if slot3 then
+		TaskDispatcher.cancelTask(slot0._onMoveEnd, slot0)
 		TaskDispatcher.runDelay(slot0._onMoveEnd, slot0, EliminateEnum_2_7.UpdateDamageStepTime)
+	else
+		slot0:_onMoveEnd()
 	end
 end
 
@@ -373,17 +376,17 @@ function slot0.initEnemySKillView(slot0)
 	end
 end
 
-function slot0.updateEnemySkill(slot0)
-	slot2 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
+function slot0.updateEnemySkill(slot0, slot1)
+	slot3 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
 
-	for slot6 = 1, 3 do
-		slot7 = slot2 and slot2[slot6] or nil
-		slot8 = slot0._enemySkillList[slot6]
+	for slot7 = 1, 3 do
+		slot8 = slot3 and slot3[slot7] or nil
+		slot9 = slot0._enemySkillList[slot7]
 
-		slot8:initSkill(slot7)
-		slot8:refreshState()
+		slot9:initSkill(slot8)
+		slot9:refreshState()
 
-		if slot7 ~= nil then
+		if slot8 ~= nil and not slot1 then
 			AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_refresh)
 		end
 	end
