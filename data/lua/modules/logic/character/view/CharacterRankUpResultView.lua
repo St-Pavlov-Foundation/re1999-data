@@ -42,14 +42,13 @@ function slot0._btnheroDetailOnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
-	slot4 = "guang_005"
-
-	slot0._simagecenterbg:LoadImage(ResUrl.getCharacterIcon(slot4))
+	slot0._simagecenterbg:LoadImage(ResUrl.getCharacterIcon("guang_005"))
 
 	slot0._txtlevel = gohelper.findChildText(slot0._goeffect, "#go_level")
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
+	slot4 = CharacterVoiceEnum.NormalPriority.CharacterRankUpResultView
 
-	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, slot4)
 	slot0._uiSpine:useRT()
 
 	slot0._rareGos = slot0:getUserDataTb_()

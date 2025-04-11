@@ -114,14 +114,12 @@ function slot0._editableInitView(slot0)
 	slot0._simageredcirclebg:LoadImage(ResUrl.getCharacterGetIcon("bg_yuan"))
 	slot0._simagecircle:LoadImage(ResUrl.getCharacterGetIcon("bg_yuanchuan"))
 	slot0._simageblackbg:LoadImage(ResUrl.getCharacterGetIcon("heisedi"))
-
-	slot4 = "bg_wz"
-
-	slot0._simagebgleft:LoadImage(ResUrl.getCharacterGetIcon(slot4))
+	slot0._simagebgleft:LoadImage(ResUrl.getCharacterGetIcon("bg_wz"))
 
 	slot0._uiSpine = GuiModelAgent.Create(slot0._gospine, true)
+	slot4 = CharacterVoiceEnum.NormalPriority.CharacterGetView
 
-	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+	slot0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, slot4)
 
 	slot0._starList = slot0:getUserDataTb_()
 
