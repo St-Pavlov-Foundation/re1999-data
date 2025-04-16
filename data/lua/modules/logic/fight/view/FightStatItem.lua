@@ -58,8 +58,9 @@ function slot0.onUpdateMO(slot0, slot1)
 	end
 
 	slot2 = ViewMgr.instance:isOpen(ViewName.Act174FightResultView)
-	slot3 = slot0._mo.fromOtherFight
-	slot4 = lua_character.configDict[slot0.entityMO.modelId]
+	slot3 = ViewMgr.instance:isOpen(ViewName.Act191FightSuccView)
+	slot4 = slot0._mo.fromOtherFight
+	slot5 = lua_character.configDict[slot0.entityMO.modelId]
 
 	gohelper.setActive(slot0.goLayout, true)
 	gohelper.setActive(slot0.goRare, true)
@@ -71,80 +72,82 @@ function slot0.onUpdateMO(slot0, slot1)
 		slot0:refreshASFDInfo()
 	elseif slot2 then
 		slot0:refreshAct174Info()
-	elseif not slot4 then
-		slot0._txtName.text = FightConfig.instance:getNewMonsterConfig(lua_monster.configDict[slot0.entityMO.modelId]) and slot5.highPriorityName or slot5.name
+	elseif slot3 then
+		slot0:refreshAct191Info()
+	elseif not slot5 then
+		slot0._txtName.text = FightConfig.instance:getNewMonsterConfig(lua_monster.configDict[slot0.entityMO.modelId]) and slot6.highPriorityName or slot6.name
 
-		if slot5 then
-			slot6, slot7 = HeroConfig.instance:getShowLevel(slot5.level)
-			slot0._txtLv.text = string.format("<size=20>LV.</size>%d", slot6)
+		if slot6 then
+			slot7, slot8 = HeroConfig.instance:getShowLevel(slot6.level)
+			slot0._txtLv.text = string.format("<size=20>LV.</size>%d", slot7)
 
-			gohelper.setActive(slot0._gorankobj, slot7 > 1)
+			gohelper.setActive(slot0._gorankobj, slot8 > 1)
 
-			for slot11 = 1, 3 do
-				gohelper.setActive(slot0._rankGOs[slot11], slot7 > 1 and slot11 == slot7 - 1 or false)
+			for slot12 = 1, 3 do
+				gohelper.setActive(slot0._rankGOs[slot12], slot8 > 1 and slot12 == slot8 - 1 or false)
 			end
 
-			slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot5.skinId).retangleIcon))
-			UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot5.career))
+			slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot6.skinId).retangleIcon))
+			UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot6.career))
 			UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. 1)
 		end
 	else
-		slot0._txtName.text = slot4 and slot4.name or ""
+		slot0._txtName.text = slot5 and slot5.name or ""
 
 		if slot0.entityMO:getTrialAttrCo() then
-			slot0._txtName.text = slot5.name
+			slot0._txtName.text = slot6.name
 		end
 
-		if not slot3 and FightReplayModel.instance:isReplay() then
-			slot6, slot7 = HeroConfig.instance:getShowLevel(slot0.entityMO.level)
-			slot0._txtLv.text = string.format("<size=20>LV.</size>%d", slot6)
+		if not slot4 and FightReplayModel.instance:isReplay() then
+			slot7, slot8 = HeroConfig.instance:getShowLevel(slot0.entityMO.level)
+			slot0._txtLv.text = string.format("<size=20>LV.</size>%d", slot7)
 
-			gohelper.setActive(slot0._gorankobj, slot7 > 1)
+			gohelper.setActive(slot0._gorankobj, slot8 > 1)
 
-			for slot11 = 1, 3 do
-				gohelper.setActive(slot0._rankGOs[slot11], slot7 > 1 and slot11 == slot7 - 1 or false)
+			for slot12 = 1, 3 do
+				gohelper.setActive(slot0._rankGOs[slot12], slot8 > 1 and slot12 == slot8 - 1 or false)
 			end
 
 			slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot0.entityMO.skin).retangleIcon))
-			UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot4.career))
-			UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. CharacterEnum.Star[slot4.rare])
+			UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot5.career))
+			UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. CharacterEnum.Star[slot5.rare])
 		else
-			if not HeroModel.instance:getByHeroId(slot0.entityMO.modelId) and slot4 or tonumber(slot0.entityMO.uid) < 0 or slot3 then
-				slot6 = HeroMo.New()
+			if not HeroModel.instance:getByHeroId(slot0.entityMO.modelId) and slot5 or tonumber(slot0.entityMO.uid) < 0 or slot4 then
+				slot7 = HeroMo.New()
 
-				slot6:initFromConfig(slot4)
+				slot7:initFromConfig(slot5)
 
-				slot6.level = slot0.entityMO.level
-				slot6.skin = slot0.entityMO.skin
+				slot7.level = slot0.entityMO.level
+				slot7.skin = slot0.entityMO.skin
 			end
 
-			if slot6 then
-				slot8 = nil
+			if slot7 then
+				slot9 = nil
 
-				if HeroGroupBalanceHelper.getHeroBalanceLv(slot6.heroId) and slot6.level < slot7 and not slot3 then
-					slot8 = true
+				if HeroGroupBalanceHelper.getHeroBalanceLv(slot7.heroId) and slot7.level < slot8 and not slot4 then
+					slot9 = true
 
-					for slot12 = 1, 3 do
-						SLFramework.UGUI.GuiHelper.SetColor(slot0._rankGOs[slot12], "#547a99")
+					for slot13 = 1, 3 do
+						SLFramework.UGUI.GuiHelper.SetColor(slot0._rankGOs[slot13], "#547a99")
 					end
 				else
-					for slot12 = 1, 3 do
-						SLFramework.UGUI.GuiHelper.SetColor(slot0._rankGOs[slot12], "#342929")
+					for slot13 = 1, 3 do
+						SLFramework.UGUI.GuiHelper.SetColor(slot0._rankGOs[slot13], "#342929")
 					end
 				end
 
-				slot10, slot11 = HeroConfig.instance:getShowLevel(slot8 and slot7 or (slot0.entityMO and slot0.entityMO.level or slot6.level))
-				slot0._txtLv.text = (slot8 and "<color=#547a99>" or "") .. string.format("<size=20>LV.</size>%d", slot10)
+				slot11, slot12 = HeroConfig.instance:getShowLevel(slot9 and slot8 or (slot0.entityMO and slot0.entityMO.level or slot7.level))
+				slot0._txtLv.text = (slot9 and "<color=#547a99>" or "") .. string.format("<size=20>LV.</size>%d", slot11)
 
-				gohelper.setActive(slot0._gorankobj, slot11 > 1)
+				gohelper.setActive(slot0._gorankobj, slot12 > 1)
 
-				for slot15 = 1, 3 do
-					gohelper.setActive(slot0._rankGOs[slot15], slot11 > 1 and slot15 == slot11 - 1 or false)
+				for slot16 = 1, 3 do
+					gohelper.setActive(slot0._rankGOs[slot16], slot12 > 1 and slot16 == slot12 - 1 or false)
 				end
 
-				slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot0.entityMO and slot0.entityMO.skin or slot6.skin).retangleIcon))
-				UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot6.config.career))
-				UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. CharacterEnum.Star[slot6.config.rare])
+				slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(FightConfig.instance:getSkinCO(slot0.entityMO and slot0.entityMO.skin or slot7.skin).retangleIcon))
+				UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot7.config.career))
+				UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. CharacterEnum.Star[slot7.config.rare])
 			end
 		end
 	end
@@ -152,20 +155,20 @@ function slot0.onUpdateMO(slot0, slot1)
 	slot0._txtHarm.text = slot1.harm
 	slot0._txtHurt.text = slot1.hurt
 	slot0._txtHeal.text = slot1.heal
-	slot6 = FightStatModel.instance:getTotalHurt()
-	slot7 = FightStatModel.instance:getTotalHeal()
-	slot0._txtHarmRate.text = string.format("%.2f%%", (FightStatModel.instance:getTotalHarm() > 0 and slot1.harm / slot5 or 0) * 100)
-	slot0._txtHurtRate.text = string.format("%.2f%%", (slot6 > 0 and slot1.hurt / slot6 or 0) * 100)
-	slot0._txtHealRate.text = string.format("%.2f%%", (slot7 > 0 and slot1.heal / slot7 or 0) * 100)
+	slot7 = FightStatModel.instance:getTotalHurt()
+	slot8 = FightStatModel.instance:getTotalHeal()
+	slot0._txtHarmRate.text = string.format("%.2f%%", (FightStatModel.instance:getTotalHarm() > 0 and slot1.harm / slot6 or 0) * 100)
+	slot0._txtHurtRate.text = string.format("%.2f%%", (slot7 > 0 and slot1.hurt / slot7 or 0) * 100)
+	slot0._txtHealRate.text = string.format("%.2f%%", (slot8 > 0 and slot1.heal / slot8 or 0) * 100)
 
 	if not slot0._tweenHarm then
-		slot0._tweenHarm = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHarm, slot8, slot8 * 2)
-		slot0._tweenHurt = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHurt, slot9, slot9 * 2)
-		slot0._tweenHeal = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHeal, slot10, slot10 * 2)
+		slot0._tweenHarm = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHarm, slot9, slot9 * 2)
+		slot0._tweenHurt = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHurt, slot10, slot10 * 2)
+		slot0._tweenHeal = ZProj.TweenHelper.DOFillAmount(slot0._imgProgressHeal, slot11, slot11 * 2)
 	else
-		slot0._imgProgressHarm.fillAmount = slot8
-		slot0._imgProgressHurt.fillAmount = slot9
-		slot0._imgProgressHeal.fillAmount = slot10
+		slot0._imgProgressHarm.fillAmount = slot9
+		slot0._imgProgressHurt.fillAmount = slot10
+		slot0._imgProgressHeal.fillAmount = slot11
 	end
 
 	slot0:_refreshInfoUI(slot0._statType)
@@ -367,7 +370,7 @@ function slot0.onDestroy(slot0)
 end
 
 function slot0.refreshAct174Info(slot0)
-	gohelper.setActive(slot0._txtLv.gameObject.transform.parent, false)
+	gohelper.setActive(slot0.goLayout, false)
 	recthelper.setAnchorY(slot0._txtName.gameObject.transform, 0)
 
 	if slot0.entityMO.modelId then
@@ -375,6 +378,21 @@ function slot0.refreshAct174Info(slot0)
 
 		UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot2.career))
 		UISpriteSetMgr.instance:setCommonSprite(slot0._rare, "bgequip" .. CharacterEnum.Color[slot2.rare])
+		slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(slot2.skinId))
+
+		slot0._txtName.text = slot2.name
+	end
+end
+
+function slot0.refreshAct191Info(slot0)
+	gohelper.setActive(slot0.goLayout, false)
+	recthelper.setAnchorY(slot0._txtName.gameObject.transform, 0)
+
+	if slot0.entityMO.modelId then
+		slot2 = Activity191Config.instance:getRoleCoByNativeId(slot1, 1)
+
+		UISpriteSetMgr.instance:setCommonSprite(slot0._career, "lssx_" .. tostring(slot2.career))
+		UISpriteSetMgr.instance:setAct174Sprite(slot0._rare, "act174_roleframe_" .. slot2.quality)
 		slot0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(slot2.skinId))
 
 		slot0._txtName.text = slot2.name

@@ -231,7 +231,7 @@ function slot0.getPanelGo(slot0)
 end
 
 function slot0.getBallPosZ(slot0)
-	return CooperGarlandEnum.Const.PanelPosZ - slot0._floorColliderThickness * slot0._panelScale - slot0._ballSize / 2
+	return CooperGarlandEnum.Const.PanelPosZ - slot0._floorColliderThickness * slot0._panelScale - slot0._ballSize / 2 + CooperGarlandEnum.Const.BallPosOffset
 end
 
 function slot0.getCompPosZ(slot0, slot1)

@@ -73,6 +73,10 @@ function slot0.enterStage(slot0, slot1, slot2)
 	table.insert(slot0.stageParam, slot2 or 0)
 end
 
+function slot0.getCurStageParam(slot0)
+	return slot0.stageParam[#slot0.stageParam]
+end
+
 function slot0.exitStage(slot0, slot1)
 	slot2 = nil
 

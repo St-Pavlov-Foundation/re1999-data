@@ -9,6 +9,8 @@ end
 
 function slot0.addEvents(slot0)
 	slot0:com_registFightEvent(FightEvent.UpdateFightParam, slot0.onUpdateFightParam)
+
+	slot0.tweenComp = slot0:addComponent(FightTweenComponent)
 end
 
 function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4)
@@ -17,7 +19,7 @@ function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4)
 	end
 
 	slot0:com_killTween(slot0.tweenId)
-	slot0:com_playTween(FightTweenType.DOTweenFloat, slot2, slot3, 0.5, slot0.onFrame, nil, slot0)
+	slot0.tweenComp:DOTweenFloat(slot2, slot3, 0.5, slot0.onFrame, nil, slot0)
 
 	if slot4 > 0 then
 		gohelper.setActive(slot0.addEffect, false)

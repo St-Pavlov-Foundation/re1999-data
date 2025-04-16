@@ -34,9 +34,18 @@ function slot0.init(slot0, slot1)
 	slot0.txtTag2 = gohelper.findChildText(slot1, "type3/go_Tag2/txt_Tag2")
 	slot0.goFetter = gohelper.findChild(slot1, "fetter/go_Fetter")
 	slot0.fetterItemList = {}
+	slot0.highLightGoList = slot0:getUserDataTb_()
 
 	for slot6 = 1, 3 do
-		slot0.fetterItemList[slot6] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0.goFetter), Act191FetterIconItem)
+		slot7 = gohelper.cloneInPlace(slot0.goFetter)
+		slot8 = MonoHelper.addNoUpdateLuaComOnceToGo(slot7, Act191FetterIconItem)
+
+		slot8:setExtraParam({
+			fromView = "Act191ShopView"
+		})
+
+		slot0.fetterItemList[slot6] = slot8
+		slot0.highLightGoList[slot6] = gohelper.findChild(slot7, "go_select")
 	end
 end
 
@@ -56,6 +65,7 @@ function slot0.setData(slot0, slot1, slot2)
 		gohelper.setActive(slot0["type" .. slot6], false)
 	end
 
+	slot0.bestTag = Activity191Model.instance:getActInfo():getGameInfo():getBestFetterTag()
 	slot0.soldOut = slot2
 	slot0.cost = slot1.cost
 	slot0.heroList = slot1.heroList
@@ -68,7 +78,7 @@ function slot0.setData(slot0, slot1, slot2)
 		if slot0.heroCnt == 1 then
 			slot0.headItemList[1]:setData(nil, slot0.heroList[1])
 
-			if not slot0.soldOut and Activity191Model.instance:getActInfo():getGameInfo():getHeroInfoInWarehouse(slot0.headItemList[1].config.roleId, true) then
+			if not slot0.soldOut and slot3:getHeroInfoInWarehouse(slot0.headItemList[1].config.roleId, true) then
 				slot0.maxMark = slot6.star == Activity191Enum.CharacterMaxStar
 				slot0.expMark = slot6.star ~= Activity191Enum.CharacterMaxStar
 			end
@@ -97,6 +107,8 @@ function slot0.setData(slot0, slot1, slot2)
 				gohelper.setActive(slot0["goTag" .. slot9], slot10)
 			end
 		end
+
+		slot0:refreshFetter(slot4)
 	end
 
 	if slot3.coin < slot0.cost then
@@ -114,11 +126,25 @@ function slot0.setData(slot0, slot1, slot2)
 end
 
 function slot0.refreshFetter(slot0, slot1)
+	if string.nilorempty(slot1.tag) then
+		for slot5 = 1, 3 do
+			gohelper.setActive(slot0.fetterItemList[slot5].go, false)
+		end
+
+		return
+	end
+
 	slot2 = string.split(slot1.tag, "#")
 
 	for slot6 = 1, 3 do
 		if slot2[slot6] then
 			slot0.fetterItemList[slot6]:setData(slot2[slot6])
+
+			if slot0.bestTag and slot0.bestTag == slot2[slot6] then
+				gohelper.setActive(slot0.highLightGoList[slot6], true)
+			else
+				gohelper.setActive(slot0.highLightGoList[slot6], false)
+			end
 		end
 
 		gohelper.setActive(slot0.fetterItemList[slot6].go, slot6 <= #slot2)
@@ -143,6 +169,8 @@ function slot0.onClick(slot0)
 
 		Activity191Controller.instance:openCollectionTipView(slot1)
 	end
+
+	Act191StatController.instance:statButtonClick("Act191ShopView", string.format("shopItem_%s_%s", slot0.isHeroShop and "hero" or "other", slot0.index))
 end
 
 function slot0.playFreshAnim(slot0)

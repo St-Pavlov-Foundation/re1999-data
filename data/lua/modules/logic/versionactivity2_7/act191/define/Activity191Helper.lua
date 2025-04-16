@@ -109,10 +109,14 @@ function slot0.getActiveFetterInfoList(slot0)
 	end
 
 	table.sort(slot1, function (slot0, slot1)
-		if slot0.config.tagBg == slot1.config.tagBg then
-			return slot1.count < slot0.count
+		if slot0.config.level == slot1.config.level then
+			if slot0.count == slot1.count then
+				return slot0.config.id < slot1.config.id
+			else
+				return slot1.count < slot0.count
+			end
 		else
-			return slot1.config.tagBg < slot0.config.tagBg
+			return slot1.config.level < slot0.config.level
 		end
 	end)
 
