@@ -18773,7 +18773,7 @@
   },
   {
     "id": "p_v2a7_act191heroeditview_filterype",
-    "lang": "羁绊选择"
+    "lang": "芯灵感应"
   },
   {
     "id": "p_v2a7_tower_fullview_txt_tipsforitem",
@@ -19361,6 +19361,6 @@
   },
   {
     "id": "p_act191herogroupview_txt_autotips",
-    "lang": "开启后总奖励提高，但战斗中无法取消"
+    "lang": "开启后奖励增加，但战斗中无法取消"
   }
 ]

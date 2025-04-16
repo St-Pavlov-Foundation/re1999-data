@@ -52,7 +52,7 @@ end
 
 function slot0._buyReply(slot0, slot1, slot2)
 	if slot2 == 0 then
-		GameFacade.showToast(slot0.viewParam.toastId)
+		GameFacade.showToast(slot0.viewParam.toastId, slot0.roleCoList[1].name)
 		slot0:closeThis()
 	end
 end

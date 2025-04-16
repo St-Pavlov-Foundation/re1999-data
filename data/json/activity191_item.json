@@ -3,31 +3,31 @@
     "id": 1001,
     "activityId": 12701,
     "name": "年轮切片",
-    "desc": "",
+    "desc": "角斗中的嘉奖。可用于在赛事补给站兑换。",
     "icon": "act174_endless_icon_0",
     "rare": 0
   },
   {
     "id": 1003,
     "activityId": 12701,
-    "name": "随机初级偶人",
-    "desc": "",
+    "name": "随机初阶偶人",
+    "desc": "随机获取1位初阶偶人，已获取的偶人会提升塑造。",
     "icon": "act174_store_icon_unknown",
     "rare": 3
   },
   {
     "id": 1004,
     "activityId": 12701,
-    "name": "随机中级偶人",
-    "desc": "",
+    "name": "随机中阶偶人",
+    "desc": "随机获取1位中阶偶人，已获取的偶人会提升塑造。",
     "icon": "act174_store_icon_unknown",
     "rare": 4
   },
   {
     "id": 1005,
     "activityId": 12701,
-    "name": "随机高级偶人",
-    "desc": "",
+    "name": "随机高阶偶人",
+    "desc": "随机获取1位高阶偶人，已获取的偶人会提升塑造。",
     "icon": "act174_store_icon_unknown",
     "rare": 5
   },
@@ -35,7 +35,7 @@
     "id": 1006,
     "activityId": 12701,
     "name": "随机寻常造物",
-    "desc": "",
+    "desc": "随机获得1件寻常造物。",
     "icon": "act174_shop_icon_randomitem",
     "rare": 0
   },
@@ -43,7 +43,7 @@
     "id": 1007,
     "activityId": 12701,
     "name": "随机精巧造物",
-    "desc": "",
+    "desc": "随机获得1件精巧造物。",
     "icon": "act174_shop_icon_randomitem",
     "rare": 0
   },
@@ -51,16 +51,144 @@
     "id": 1008,
     "activityId": 12701,
     "name": "随机妙想造物",
-    "desc": "",
+    "desc": "随机获得1件妙想造物。",
     "icon": "act174_shop_icon_randomitem",
     "rare": 0
   },
   {
     "id": 1009,
     "activityId": 12701,
-    "name": "局外积分",
-    "desc": "",
+    "name": "偶人之芯",
+    "desc": "击败偶人的证明。可用于芯的回收处兑换。",
     "icon": "act174_endless_icon_1",
     "rare": 0
+  },
+  {
+    "id": 1010,
+    "activityId": 12701,
+    "name": "行动术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1011,
+    "activityId": 12701,
+    "name": "礼仪术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1012,
+    "activityId": 12701,
+    "name": "启示术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1013,
+    "activityId": 12701,
+    "name": "燃血术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1014,
+    "activityId": 12701,
+    "name": "蓄电术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1015,
+    "activityId": 12701,
+    "name": "异常术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1016,
+    "activityId": 12701,
+    "name": "升阶术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1017,
+    "activityId": 12701,
+    "name": "反伤术式",
+    "desc": "",
+    "icon": "act174_shop_icon_randomitem",
+    "rare": 0
+  },
+  {
+    "id": 1018,
+    "activityId": 12701,
+    "name": "曲娘",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1019,
+    "activityId": 12701,
+    "name": "虚构集",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1020,
+    "activityId": 12701,
+    "name": "蓝手帕",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1021,
+    "activityId": 12701,
+    "name": "苏菲亚",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1022,
+    "activityId": 12701,
+    "name": "芭卡洛儿",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1023,
+    "activityId": 12701,
+    "name": "勿忘我",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1024,
+    "activityId": 12701,
+    "name": "露西",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
+  },
+  {
+    "id": 1025,
+    "activityId": 12701,
+    "name": "环状水星",
+    "desc": "",
+    "icon": "act174_store_icon_unknown",
+    "rare": 5
   }
 ]

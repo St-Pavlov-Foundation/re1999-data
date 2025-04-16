@@ -43,27 +43,31 @@ function slot0.statViewClose(slot0, slot1, slot2, slot3)
 
 	slot3 = slot3 or ""
 	slot4 = ServerTime.now() - slot0.viewOpenTimeMap[slot1]
-	slot5 = slot0.actInfo:getGameInfo()
-	slot6 = {
-		coin = slot5.coin,
-		stage = slot5.curStage,
-		node = slot5.curNode,
-		score = slot5.score,
-		rank = slot5.rank
-	}
-	slot8 = {}
+	slot5 = {}
+	slot6 = {}
 
-	if slot5:getNodeDetailMo(nil, true) then
-		slot8 = {
-			shopId = slot7.shopId,
-			eventId = slot7.eventId,
-			type = slot7.type
+	if slot0.actInfo then
+		slot7 = slot0.actInfo:getGameInfo()
+		slot5 = {
+			coin = slot7.coin,
+			stage = slot7.curStage,
+			node = slot7.curNode,
+			score = slot7.score,
+			rank = slot7.rank
 		}
+
+		if slot7:getNodeDetailMo(nil, true) then
+			slot6 = {
+				shopId = slot8.shopId,
+				eventId = slot8.eventId,
+				type = slot8.type
+			}
+		end
 	end
 
 	StatController.instance:track(StatEnum.EventName.Act191CloseView, {
-		[StatEnum.EventProperties.Act191BaseInfo] = slot6,
-		[StatEnum.EventProperties.Act191NodeInfo] = slot8,
+		[StatEnum.EventProperties.Act191BaseInfo] = slot5,
+		[StatEnum.EventProperties.Act191NodeInfo] = slot6,
 		[StatEnum.EventProperties.ViewName] = slot1,
 		[StatEnum.EventProperties.UseTime] = slot4,
 		[StatEnum.EventProperties.CooperGarland_From] = slot2 and "Manual" or "Auto",
@@ -103,20 +107,20 @@ end
 function slot0.statGameTime(slot0, slot1)
 	slot2 = nil
 	slot2 = slot0.startTime and ServerTime.now() - slot0.startTime or ServerTime.now() - FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].createTime
+	slot3 = {}
 	slot4 = {}
-	slot5 = {}
 
-	if slot0.actInfo:getGameInfo().state == Activity191Enum.GameState.Normal then
-		slot4 = {
-			coin = slot3.coin,
-			stage = slot3.curStage,
-			node = slot3.curNode,
-			score = slot3.score,
-			rank = slot3.rank
+	if slot0.actInfo and slot0.actInfo:getGameInfo().state == Activity191Enum.GameState.Normal then
+		slot3 = {
+			coin = slot5.coin,
+			stage = slot5.curStage,
+			node = slot5.curNode,
+			score = slot5.score,
+			rank = slot5.rank
 		}
 
-		if slot3:getNodeDetailMo(nil, true) then
-			slot5 = {
+		if slot5:getNodeDetailMo(nil, true) then
+			slot4 = {
 				shopId = slot6.shopId,
 				eventId = slot6.eventId,
 				type = slot6.type
@@ -125,11 +129,11 @@ function slot0.statGameTime(slot0, slot1)
 	end
 
 	StatController.instance:track(StatEnum.EventName.Act191GameTime, {
-		[StatEnum.EventProperties.Act191BaseInfo] = slot4,
-		[StatEnum.EventProperties.Act191NodeInfo] = slot5,
+		[StatEnum.EventProperties.Act191BaseInfo] = slot3,
+		[StatEnum.EventProperties.Act191NodeInfo] = slot4,
 		[StatEnum.EventProperties.ViewName] = slot1,
 		[StatEnum.EventProperties.UseTime] = slot2,
-		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(-999, "Act191GameCostTime", 1))
+		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(VersionActivity2_7Enum.ActivityId.Act191, "Act191GameCostTime", 1))
 	})
 end
 

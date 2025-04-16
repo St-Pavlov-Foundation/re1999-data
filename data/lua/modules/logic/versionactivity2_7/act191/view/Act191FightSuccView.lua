@@ -128,8 +128,6 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.onClose(slot0)
-	slot0.actInfo:cleanTriggerEffect()
-
 	slot0._canPlayVoice = false
 
 	TaskDispatcher.cancelTask(slot0._setCanPlayVoice, slot0)
@@ -240,13 +238,15 @@ function slot0.refreshReward(slot0)
 			end
 		end
 	else
-		for slot6, slot7 in ipairs(slot0.actInfo.triggerEffectIds) do
-			if not string.nilorempty(lua_activity191_effect.configDict[slot7].itemParam) then
-				for slot13, slot14 in ipairs(GameUtil.splitString2(slot8.itemParam, true)) do
-					if not slot1[slot14[1]] then
-						slot1[slot14[1]] = slot14[2]
-					else
-						slot1[slot14[1]] = slot1[slot14[1]] + slot14[2]
+		for slot6, slot7 in ipairs(slot0.actInfo.triggerEffectPushList) do
+			for slot11, slot12 in ipairs(slot7.effectId) do
+				if not string.nilorempty(lua_activity191_effect.configDict[slot12].itemParam) then
+					for slot18, slot19 in ipairs(GameUtil.splitString2(slot13.itemParam, true)) do
+						if not slot1[slot19[1]] then
+							slot1[slot19[1]] = slot19[2]
+						else
+							slot1[slot19[1]] = slot1[slot19[1]] + slot19[2]
+						end
 					end
 				end
 			end

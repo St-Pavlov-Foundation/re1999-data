@@ -105,6 +105,11 @@ function slot0.onToggleValueChanged(slot0)
 
 	slot0.gameInfo:setAutoFight(slot1)
 	gohelper.setActive(slot0.goAutoFight, slot1)
+
+	if slot1 then
+		AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_reward_increase)
+	end
+
 	slot0:refreshReward()
 	Act191StatController.instance:statButtonClick(slot0.viewName, "onToggleValueChanged")
 end

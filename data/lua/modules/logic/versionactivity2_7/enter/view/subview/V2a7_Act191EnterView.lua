@@ -29,7 +29,7 @@ function slot0._btnShopOnClick(slot0)
 end
 
 function slot0._btnEnterOnClick(slot0)
-	Activity191Controller.instance:openMainView()
+	Activity191Controller.instance:enterActivity(slot0.actId)
 end
 
 function slot0._editableInitView(slot0)
@@ -40,7 +40,6 @@ end
 function slot0.onOpen(slot0)
 	uv0.super.onOpen(slot0)
 	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshCurrency, slot0)
-	Activity191Rpc.instance:sendGetAct191InfoRequest(slot0.actId)
 	slot0:refreshCurrency()
 end
 

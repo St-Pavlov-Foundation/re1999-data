@@ -71,6 +71,9 @@ end
 
 function slot0._btnNextOnClick(slot0)
 	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnNextOnClick")
+
+	slot0.isLeaving = true
+
 	Activity191Rpc.instance:sendLeave191ShopRequest(slot0.actId, slot0.onLeaveShop, slot0)
 end
 
@@ -93,12 +96,17 @@ function slot0._editableInitView(slot0)
 	slot0.shopItemList = {}
 	slot0.animBtnFresh = slot0._btnFreshShop.gameObject:GetComponent(gohelper.Type_Animator)
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem)
+	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_unfold)
 
 	slot0.teamComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.TeamComp, slot0._goTeam), Act191TeamComp, slot0)
 end
 
 function slot0._updateInfo(slot0)
+	if slot0.isLeaving then
+		return
+	end
+
 	slot0.nodeDetailMo = slot0.gameInfo:getNodeDetailMo()
 
 	slot0:refreshShop()

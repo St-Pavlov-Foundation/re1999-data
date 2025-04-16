@@ -44,7 +44,7 @@ end
 function slot0.onStageChanged(slot0, slot1)
 	slot0:clearClientSimulationData()
 
-	if slot1 == FightStageMgr.StageType.Play then
+	if slot1 == FightStageMgr.StageType.Play and slot0.dataMgr.stageMgr:getCurStageParam() == FightStageMgr.PlayType.Normal then
 		slot0.extraMoveAct = 0
 	end
 end

@@ -101,7 +101,21 @@
     "ruleId": 1031,
     "node": 5,
     "random": 0,
-    "selectNum": 3,
+    "selectNum": 1,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 1031,
+    "node": 6,
+    "random": 0,
+    "selectNum": 1,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 1031,
+    "node": 7,
+    "random": 0,
+    "selectNum": 1,
     "desc": "击败偶人专家夺得角斗荣誉"
   }
 ]

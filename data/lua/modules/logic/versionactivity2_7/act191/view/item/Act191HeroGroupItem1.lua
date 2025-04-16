@@ -10,7 +10,7 @@ function slot0.init(slot0, slot1)
 	slot0.go = slot1
 	slot0.goEmpty = gohelper.findChild(slot1, "go_Empty")
 	slot0.goHero = gohelper.findChild(slot1, "go_Hero")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "btn_Click")
+	slot0.btnClick = gohelper.findChildButton(slot1, "btn_Click")
 	slot0.loader = PrefabInstantiate.Create(slot0.goHero)
 
 	slot0.loader:startLoad(Activity191Enum.PrefabPath.HeroHeadItem, slot0.onLoadCallBack, slot0)
@@ -71,10 +71,25 @@ function slot0.onClick(slot0)
 		return
 	end
 
+	if slot0.param then
+		slot1 = ""
+
+		if slot0.heroHeadItem and slot0.heroHeadItem.config then
+			slot1 = slot0.heroHeadItem.config.name
+		end
+
+		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("heroClick_%s_%s_%s", slot0.param.type, slot0._index, slot1))
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 	ViewMgr.instance:openView(ViewName.Act191HeroEditView, {
 		index = slot0._index,
 		heroId = slot0.heroId
 	})
+end
+
+function slot0.setExtraParam(slot0, slot1)
+	slot0.param = slot1
 end
 
 return slot0

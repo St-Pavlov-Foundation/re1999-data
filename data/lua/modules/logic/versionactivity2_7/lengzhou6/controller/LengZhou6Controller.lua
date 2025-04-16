@@ -89,7 +89,7 @@ function slot0.onFinishEpisode(slot0, slot1)
 
 	slot0.showEpisodeId = slot1.episodeId
 
-	LengZhou6Model.instance:onPushActInfo(slot1)
+	LengZhou6Model.instance:onFinishActInfo(slot1)
 
 	if slot1.activityId == LengZhou6Model.instance:getAct190Id() then
 		slot0:_playStoryClear(slot3)

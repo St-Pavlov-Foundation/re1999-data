@@ -7562,6 +7562,7 @@
     "Assets/ZResourcesLib/singlebg/headicon_small/565601.png",
     "Assets/ZResourcesLib/singlebg/headicon_small/610202.png",
     "Assets/ZResourcesLib/singlebg/headicon_small/610209.png",
+    "Assets/ZResourcesLib/singlebg/headicon_small/610211.png",
     "Assets/ZResourcesLib/singlebg/headicon_small/6104011.png",
     "Assets/ZResourcesLib/singlebg/headicon_small/6104022.png",
     "Assets/ZResourcesLib/singlebg/headicon_small/610410.png",
@@ -22268,6 +22269,9 @@
   "singlebg/headicon_small/4129011.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/4129011.png"
   ],
+  "singlebg/headicon_small/4131011.png.dat": [
+    "Assets/ZResourcesLib/singlebg/headicon_small/4131011.png"
+  ],
   "singlebg/headicon_small/522101.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/522101.png"
   ],
@@ -22450,9 +22454,6 @@
   ],
   "singlebg/headicon_small/565602.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/565602.png"
-  ],
-  "singlebg/headicon_small/6102111.png.dat": [
-    "Assets/ZResourcesLib/singlebg/headicon_small/6102111.png"
   ],
   "singlebg/headicon_small/6103011.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/6103011.png"

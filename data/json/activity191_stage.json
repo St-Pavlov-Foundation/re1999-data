@@ -7,7 +7,7 @@
     "rule": "1011",
     "name": "1",
     "score": 400,
-    "coin": 50
+    "coin": 20
   },
   {
     "activityId": 12701,
@@ -17,7 +17,7 @@
     "rule": "1021",
     "name": "2",
     "score": 600,
-    "coin": 60
+    "coin": 40
   },
   {
     "activityId": 12701,
@@ -27,6 +27,6 @@
     "rule": "1031",
     "name": "3",
     "score": 800,
-    "coin": 70
+    "coin": 60
   }
 ]
