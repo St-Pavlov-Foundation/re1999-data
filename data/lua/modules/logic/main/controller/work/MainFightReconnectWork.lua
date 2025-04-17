@@ -12,6 +12,10 @@ function slot0.onStart(slot0, slot1)
 	end
 
 	if FightModel.instance.needFightReconnect then
+		if FightDataHelper.fieldMgr:is191DouQuQu() then
+			Activity191Rpc.instance:sendGetAct191InfoRequest(VersionActivity2_7Enum.ActivityId.Act191)
+		end
+
 		if FightModel.instance:getFightReason().type == FightEnum.FightReason.None then
 			FightRpc.instance:sendEndFightRequest(false)
 			slot0:onDone(true)
@@ -48,10 +52,6 @@ function slot0.onStart(slot0, slot1)
 end
 
 function slot0._onConfirm(slot0)
-	if FightDataHelper.fieldMgr:is191DouQuQu() then
-		Activity191Rpc.instance:sendGetAct191InfoRequest(VersionActivity2_7Enum.ActivityId.Act191)
-	end
-
 	TaskDispatcher.runDelay(slot0._onDelayDone, slot0, 20)
 	GameSceneMgr.instance:registerCallback(SceneType.Fight, slot0._onEnterFightScene, slot0)
 
@@ -59,8 +59,16 @@ function slot0._onConfirm(slot0)
 
 	DungeonModel.instance:SetSendChapterEpisodeId(nil, slot2)
 
-	if DungeonConfig.instance:getEpisodeCO(slot2).type == DungeonEnum.EpisodeType.TowerPermanent and TowerModel.instance:getCurPermanentMo() then
-		TowerPermanentModel.instance:setLocalPassLayer(slot4.passLayerId)
+	if DungeonConfig.instance:getEpisodeCO(slot2).type == DungeonEnum.EpisodeType.TowerPermanent then
+		if TowerModel.instance:getCurPermanentMo() then
+			TowerPermanentModel.instance:setLocalPassLayer(slot4.passLayerId)
+		end
+	elseif slot3.type == DungeonEnum.EpisodeType.TowerLimited then
+		if TowerAssistBossModel.instance:getById(FightModel.instance.last_fightGroup.assistBossId) then
+			slot5:setTempState(slot5.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)))
+		end
+
+		TowerAssistBossModel.instance:getTempUnlockTrialBossMO(slot4)
 	end
 
 	if DungeonConfig.instance:isLeiMiTeBeiChapterType(slot3) then

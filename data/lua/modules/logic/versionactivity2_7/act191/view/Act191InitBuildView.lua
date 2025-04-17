@@ -91,6 +91,10 @@ function slot0._onInitBuildItem(slot0, slot1, slot2, slot3)
 end
 
 function slot0.selectInitBuild(slot0, slot1)
+	if slot0.selectIndex then
+		return
+	end
+
 	Activity191Rpc.instance:sendSelect191InitBuildRequest(slot0.actId, slot0.buildCoList[slot1].style, slot0.buildReply, slot0)
 
 	slot0.selectIndex = slot1
@@ -104,9 +108,6 @@ function slot0.buildReply(slot0, slot1, slot2)
 		end
 
 		TaskDispatcher.runDelay(slot0.nextStep, slot0, 0.67)
-
-		slot0.selectIndex = nil
-
 		Activity191Helper.setPlayerPrefs(slot0.actId, "Act191GameCostTime", Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 0) + 1)
 	end
 end
@@ -118,7 +119,9 @@ function slot0.clickCollection(slot0, slot1)
 end
 
 function slot0.nextStep(slot0)
-	Activity191Controller.instance:enterGame()
+	slot0.selectIndex = nil
+
+	Activity191Controller.instance:nextStep()
 	ViewMgr.instance:closeView(slot0.viewName)
 end
 

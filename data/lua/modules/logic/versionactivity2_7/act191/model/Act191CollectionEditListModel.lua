@@ -32,18 +32,22 @@ function slot0.initData(slot0, slot1)
 
 	if slot0.specialItem and slot0.specialItem ~= 0 then
 		slot0:selectItem(slot0.specialItem, true)
+	else
+		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickCollectionGroupItem)
 	end
 end
 
 function slot0.selectItem(slot0, slot1, slot2)
 	for slot7, slot8 in ipairs(slot0:getList()) do
 		if slot8.uid == slot1 then
-			for slot12, slot13 in ipairs(slot0._scrollViews) do
-				slot13:selectCell(slot7, slot2)
-			end
+			slot0:selectCell(slot7, slot2)
 
 			break
 		end
+	end
+
+	if not slot2 then
+		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickCollectionGroupItem)
 	end
 end
 

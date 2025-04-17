@@ -355,7 +355,7 @@ slot15 = {
 	_viewName = "V%sa%s_LinkageActivity_PanelView",
 	mainRes = "ui/viewres/activity/v%sa%s_linkageactivity_panelview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
+	viewType = ViewType.Modal,
 	anim = ViewAnim.Default
 }
 

@@ -308,7 +308,7 @@ function slot0.eliminateRange(slot0, slot1, slot2, slot3)
 		for slot11 = -slot3, slot3 do
 			slot13 = slot2 + slot11
 
-			if slot1 + slot7 > 0 and slot12 <= slot0._row and slot13 > 0 and slot13 <= slot0._col and slot0.cells[slot1][slot2].id ~= EliminateEnum_2_7.InvalidId then
+			if slot1 + slot7 > 0 and slot12 <= slot0._row and slot13 > 0 and slot13 <= slot0._col and slot0.cells[slot12][slot13].id ~= EliminateEnum_2_7.InvalidId then
 				slot15 = {}
 
 				table.insert(slot15, {
@@ -399,6 +399,7 @@ function slot0.eliminate(slot0)
 					if slot28 and not slot14 then
 						slot26:addStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
 						slot2:addChangeType(slot24, slot25, EliminateEnum_2_7.ChessState.Normal)
+						slot0:addChangePoints(slot24, slot25)
 
 						slot14 = true
 					end

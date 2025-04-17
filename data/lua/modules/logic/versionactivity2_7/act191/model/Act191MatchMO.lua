@@ -49,25 +49,23 @@ function slot0.getTeamFetterCntDic(slot0)
 	slot1 = {}
 
 	for slot5, slot6 in pairs(slot0.heroMap) do
-		slot7 = {}
-
 		if slot6.heroId ~= 0 then
-			for slot13, slot14 in ipairs(string.split(slot0:getRoleCo(slot6.heroId).tag, "#")) do
-				slot7[slot14] = 1
+			for slot12, slot13 in ipairs(string.split(slot0:getRoleCo(slot6.heroId).tag, "#")) do
+				if slot1[slot13] then
+					slot1[slot13] = slot1[slot13] + 1
+				else
+					slot1[slot13] = 1
+				end
 			end
 
 			if slot6.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot6.itemUid1).tag) then
-				for slot14, slot15 in ipairs(string.split(slot10.tag, "#")) do
-					slot7[slot15] = 1
+				for slot13, slot14 in ipairs(string.split(slot9.tag, "#")) do
+					if slot1[slot14] then
+						slot1[slot14] = slot1[slot14] + 1
+					else
+						slot1[slot14] = 1
+					end
 				end
-			end
-		end
-
-		for slot11, slot12 in pairs(slot7) do
-			if slot1[slot11] then
-				slot1[slot11] = slot1[slot11] + 1
-			else
-				slot1[slot11] = 1
 			end
 		end
 	end

@@ -3,7 +3,6 @@ module("modules.logic.versionactivity2_7.act191.view.item.Act191TeamComp", packa
 slot0 = class("Act191TeamComp", LuaCompBase)
 
 function slot0.ctor(slot0, slot1)
-	slot0.handleView = slot1
 	slot0.handleViewName = slot1.viewName
 end
 
@@ -23,15 +22,19 @@ function slot0.init(slot0, slot1)
 	slot0.subGroupItem1List = {}
 	slot0.groupItem2List = {}
 	slot0.fetterItemList = {}
+	slot0.heroPosTrList = slot0:getUserDataTb_()
 
 	for slot5 = 1, 8 do
-		slot0.groupItem1List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.goHeroTeam, "hero" .. slot5), Act191HeroGroupItem1)
+		slot0.heroPosTrList[slot5] = gohelper.findChild(slot0.go, "recordPos/hero" .. slot5).transform
+		slot7 = gohelper.findChild(slot0.goHeroTeam, "hero" .. slot5)
+		slot0.groupItem1List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(slot7, Act191HeroGroupItem1)
 
 		slot0.groupItem1List[slot5]:setIndex(slot5)
 		slot0.groupItem1List[slot5]:setExtraParam({
 			type = "justHero",
 			fromView = slot0.handleViewName
 		})
+		CommonDragHelper.instance:registerDragObj(slot7, slot0._onBeginDrag, nil, slot0._onEndDrag, slot0._checkDrag, slot0, slot5)
 
 		if slot5 <= 4 then
 			slot0.subGroupItem1List[slot5] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(slot0.goCollectionTeam, "hero" .. slot5), Act191HeroGroupItem1)
@@ -81,6 +84,10 @@ function slot0.onDestroy(slot0)
 	end
 
 	TaskDispatcher.cancelTask(slot0.refreshStatus, slot0)
+
+	for slot4, slot5 in ipairs(slot0.groupItem1List) do
+		CommonDragHelper.instance:unregisterDragObj(slot5.go)
+	end
 end
 
 function slot0._loadFinish(slot0)
@@ -104,7 +111,7 @@ function slot0.onClickSwitch(slot0, slot1)
 	end
 
 	if not slot1 then
-		Act191StatController.instance:statButtonClick(slot0.handleView.viewName, string.format("onClickSwitch_%s", slot0.editCollection and "Collection" or "Hero"))
+		Act191StatController.instance:statButtonClick(slot0.handleViewName, string.format("onClickSwitch_%s", slot0.editCollection and "Collection" or "Hero"))
 	end
 end
 
@@ -124,6 +131,9 @@ function slot0.refreshTeam(slot0)
 	UISpriteSetMgr.instance:setAct174Sprite(slot0.imageLevel, slot6)
 
 	for slot6 = 1, 4 do
+		slot0:_setHeroItemPos(slot0.groupItem1List[slot6], slot6)
+		slot0:_setHeroItemPos(slot0.groupItem1List[slot6 + 4], slot6 + 4)
+
 		slot8 = Activity191Helper.matchKeyInArray(slot1.battleHeroInfo, slot6) and slot7.heroId
 
 		slot0.groupItem1List[slot6]:setData(slot8)
@@ -142,7 +152,14 @@ end
 function slot0.refreshFetter(slot0)
 	for slot6, slot7 in ipairs(Activity191Helper.getActiveFetterInfoList(slot0.gameInfo:getTeamFetterCntDic())) do
 		if not slot0.fetterItemList[slot6] then
-			slot0.fetterItemList[slot6] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot0._loader:getFirstAssetItem():GetResource(), slot0.goFetterContent), Act191FetterItem)
+			slot8 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot0._loader:getFirstAssetItem():GetResource(), slot0.goFetterContent), Act191FetterItem)
+
+			slot8:setExtraParam({
+				fromView = slot0.handleViewName,
+				index = slot6
+			})
+
+			slot0.fetterItemList[slot6] = slot8
 		end
 
 		slot8:setData(slot7.config, slot7.count)
@@ -157,6 +174,76 @@ function slot0.refreshFetter(slot0)
 
 	slot0.scrollFetter.horizontalNormalizedPosition = 0
 	slot0.needFreshFetter = false
+end
+
+function slot0._checkDrag(slot0, slot1)
+	if not slot0.groupItem1List[slot1].heroId or slot2.heroId == 0 then
+		return true
+	end
+
+	return false
+end
+
+function slot0._onBeginDrag(slot0, slot1)
+	if slot0._nowDragingIndex then
+		return
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_raise)
+
+	slot0._nowDragingIndex = slot1
+
+	gohelper.setAsLastSibling(slot0.groupItem1List[slot1].go)
+end
+
+function slot0._onEndDrag(slot0, slot1, slot2)
+	if slot0._nowDragingIndex ~= slot1 then
+		return
+	end
+
+	slot0._nowDragingIndex = nil
+	slot3 = slot0.groupItem1List[slot1]
+
+	CommonDragHelper.instance:setGlobalEnabled(false)
+
+	if not Activity191Helper.calcIndex(slot2.position, slot0.heroPosTrList) or slot4 == slot1 then
+		slot0:_setHeroItemPos(slot3, slot1, true, function ()
+			CommonDragHelper.instance:setGlobalEnabled(true)
+		end)
+
+		return
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_release)
+
+	slot5 = slot0.groupItem1List[slot4]
+
+	gohelper.setAsLastSibling(slot5.go)
+
+	slot0._tweenId = slot0:_setHeroItemPos(slot5, slot1, true)
+
+	slot0:_setHeroItemPos(slot3, slot4, true, function ()
+		if uv0._tweenId then
+			ZProj.TweenHelper.KillById(uv0._tweenId)
+		end
+
+		CommonDragHelper.instance:setGlobalEnabled(true)
+		uv0.gameInfo:exchangeHero(uv1, uv2)
+	end, slot0)
+end
+
+function slot0._setHeroItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
+	slot7 = recthelper.rectToRelativeAnchorPos(slot0.heroPosTrList[slot2].position, slot0.goHeroTeam.transform)
+
+	if slot3 then
+		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
+	else
+		recthelper.setAnchor(slot1.go.transform, slot7.x, slot7.y)
+
+		if slot4 then
+			slot4(slot5)
+		end
+	end
 end
 
 return slot0

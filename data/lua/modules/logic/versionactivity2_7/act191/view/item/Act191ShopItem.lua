@@ -140,7 +140,7 @@ function slot0.refreshFetter(slot0, slot1)
 		if slot2[slot6] then
 			slot0.fetterItemList[slot6]:setData(slot2[slot6])
 
-			if slot0.bestTag and slot0.bestTag == slot2[slot6] then
+			if not slot0.soldOut and slot0.bestTag and slot0.bestTag == slot2[slot6] then
 				gohelper.setActive(slot0.highLightGoList[slot6], true)
 			else
 				gohelper.setActive(slot0.highLightGoList[slot6], false)

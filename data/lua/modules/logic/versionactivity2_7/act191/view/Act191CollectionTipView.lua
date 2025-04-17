@@ -63,6 +63,8 @@ function slot0._editableInitView(slot0)
 	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
 
 	slot0.actId = Activity191Model.instance:getCurActId()
+
+	SkillHelper.addHyperLinkClick(slot0._txtDesc)
 end
 
 function slot0.onUpdateParam(slot0)
@@ -80,6 +82,10 @@ end
 
 function slot0.refreshUI(slot0)
 	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
+
+	if slot0.viewParam.pos then
+		recthelper.setAnchor(slot0._goRoot.transform, slot1.x, slot1.y)
+	end
 
 	if slot0.viewParam.showBuy then
 		slot0:refreshCost()
@@ -101,17 +107,15 @@ function slot0.refreshUI(slot0)
 			slot0._txtDesc.text = SkillHelper.buildDesc(slot0.config.desc)
 		end
 
-		SkillHelper.addHyperLinkClick(slot0._txtDesc)
-
 		if string.nilorempty(slot0.config.label) then
 			gohelper.setActive(slot0._goTag1, false)
 			gohelper.setActive(slot0._goTag2, false)
 		else
-			for slot6 = 1, 2 do
-				slot7 = string.split(slot0.config.label, "#")[slot6]
-				slot0["_txtTag" .. slot6].text = slot7
+			for slot7 = 1, 2 do
+				slot8 = string.split(slot0.config.label, "#")[slot7]
+				slot0["_txtTag" .. slot7].text = slot8
 
-				gohelper.setActive(slot0["_goTag" .. slot6], slot7)
+				gohelper.setActive(slot0["_goTag" .. slot7], slot8)
 			end
 		end
 	end

@@ -13,12 +13,6 @@ function slot0.onInitView(slot0)
 	end
 end
 
-function slot0.addEvents(slot0)
-end
-
-function slot0.removeEvents(slot0)
-end
-
 function slot0._editableInitView(slot0)
 	slot0.effectTipItemList = {}
 	slot0.effectTipItemPool = {}
@@ -34,12 +28,6 @@ function slot0._editableInitView(slot0)
 	slot0.closeClick:AddClickListener(slot0.closeThis, slot0)
 
 	slot0.scrollTip = SLFramework.UGUI.ScrollRectWrap.Get(slot0.goscrolltip)
-end
-
-function slot0.setIsShowUI(slot0, slot1)
-	if not slot1 then
-		slot0:closeThis()
-	end
 end
 
 function slot0.initViewParam(slot0)
@@ -84,33 +72,23 @@ function slot0.calculateMaxHeight(slot0)
 end
 
 function slot0.addBuffTip(slot0, slot1)
-	if slot0.addEffectIdDict[tonumber(slot1)] then
+	if slot0.addEffectIdDict[slot1] then
 		return
 	end
 
-	if not lua_activity191_eff_desc.configDict[slot2] then
-		logError("not found skill_eff_desc , id : " .. tostring(slot1))
-
+	if not Activity191Config.instance:getEffDescCoByName(slot1) then
 		return
 	end
 
-	slot0.addEffectIdDict[slot2] = true
-	slot4 = slot0:getTipItem()
+	slot0.addEffectIdDict[slot1] = true
+	slot3 = slot0:getTipItem()
 
-	table.insert(slot0.effectTipItemList, slot4)
-	gohelper.setActive(slot4.go, true)
-	gohelper.setAsLastSibling(slot4.go)
+	table.insert(slot0.effectTipItemList, slot3)
+	gohelper.setActive(slot3.go, true)
+	gohelper.setAsLastSibling(slot3.go)
 
-	slot5 = slot3.name
-	slot4.txtName.text = SkillHelper.removeRichTag(slot5)
-	slot4.txtDesc.text = SkillHelper.getSkillDesc(nil, slot3)
-	slot8 = not string.nilorempty(CommonBuffTipController.instance:getBuffTagName(slot5))
-
-	gohelper.setActive(slot4.goTag, slot8)
-
-	if slot8 then
-		slot4.txtTag.text = slot7
-	end
+	slot3.txtName.text = SkillHelper.removeRichTag(slot1)
+	slot3.txtDesc.text = Activity191Helper.buildDesc(slot2.desc, Activity191Enum.HyperLinkPattern.SkillDesc)
 
 	slot0:refreshScrollHeight()
 end
@@ -160,7 +138,6 @@ end
 function slot0.onClose(slot0)
 	tabletool.clear(slot0.addEffectIdDict)
 	slot0:recycleAllTipItem()
-	slot0:removeEventCb(FightController.instance, FightEvent.SetIsShowUI, slot0.setIsShowUI, slot0)
 end
 
 function slot0.onDestroyView(slot0)

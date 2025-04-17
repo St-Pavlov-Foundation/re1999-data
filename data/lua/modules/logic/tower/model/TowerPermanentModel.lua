@@ -9,6 +9,7 @@ end
 function slot0.reInit(slot0)
 	slot0:initDataInfo()
 
+	slot0.curPassLayer = 0
 	slot0.lastPassLayer = 0
 	slot0.localCurPassLayer = -1
 end
@@ -19,7 +20,6 @@ function slot0.initDataInfo(slot0)
 	slot0.PermanentInfoMap = {}
 	slot0.defaultStage = 1
 	slot0.curSelectStage = 1
-	slot0.curPassLayer = 0
 	slot0.curSelectLayer = 1
 	slot0.curSelectEpisodeId = 0
 	slot0.realSelectMap = {}

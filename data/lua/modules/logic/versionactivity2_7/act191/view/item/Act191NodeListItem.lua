@@ -123,12 +123,12 @@ function slot0.playSalaryAnim(slot0, slot1, slot2)
 
 	slot3 = recthelper.rectToRelativeAnchorPos(slot1.transform.position, slot0.goFly1.transform.parent)
 
-	ZProj.TweenHelper.DOAnchorPos(slot0.goFly1.transform, slot3.x, slot3.y, 0.45)
+	ZProj.TweenHelper.DOAnchorPos(slot0.goFly1.transform, slot3.x, slot3.y, 1)
 
 	slot3 = recthelper.rectToRelativeAnchorPos(slot2.transform.position, slot0.goFly2.transform.parent)
 
-	ZProj.TweenHelper.DOAnchorPos(slot0.goFly2.transform, slot3.x, slot3.y, 0.45)
-	TaskDispatcher.runDelay(slot0.hideFly, slot0, 0.45)
+	ZProj.TweenHelper.DOAnchorPos(slot0.goFly2.transform, slot3.x, slot3.y, 1)
+	TaskDispatcher.runDelay(slot0.hideFly, slot0, 1)
 end
 
 function slot0.hideFly(slot0)

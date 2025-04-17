@@ -39,7 +39,7 @@ function slot0._onChangePanelAngle(slot0, slot1, slot2, slot3, slot4)
 		return
 	end
 
-	if not slot4 and (CooperGarlandGameModel.instance:getIsStopGame() or GuideModel.instance:isDoingClickGuide() and not GuideController.instance:isForbidGuides()) then
+	if not slot4 and (CooperGarlandGameModel.instance:getIsStopGame() or GuideModel.instance:isDoingClickGuide() and not GuideController.instance:isForbidGuides() or not CooperGarlandGameModel.instance:getSceneOpenAnimShowBall()) then
 		return
 	end
 
@@ -54,7 +54,7 @@ function slot0._onChangePanelAngle(slot0, slot1, slot2, slot3, slot4)
 
 		TaskDispatcher.runRepeat(slot0._lerpRotation, slot0, 0.01)
 	else
-		transformhelper.setLocalRotation(slot0._transCube, slot9, slot10, 0)
+		transformhelper.setLocalRotation(slot0._transCube, slot10, slot11, 0)
 	end
 end
 
@@ -249,7 +249,8 @@ function slot0._onPanelIn(slot0)
 end
 
 function slot0._onShowBall(slot0)
-	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_reset)
+	CooperGarlandGameModel.instance:setSceneOpenAnimShowBall(true)
+	CooperGarlandGameEntityMgr.instance:resetBall()
 end
 
 function slot0.onUpdateParam(slot0)

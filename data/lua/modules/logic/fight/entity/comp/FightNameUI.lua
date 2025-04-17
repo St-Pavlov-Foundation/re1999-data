@@ -212,7 +212,7 @@ function slot0._onLoaded(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnCurrentHpChange, slot0._onCurrentHpChange, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.MultiHpChange, slot0._onMultiHpChange, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ChangeWaveEnd, slot0._onChangeWaveEnd, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.CoverPerformanceEntityData, slot0.onCoverPerformanceEntityData, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ChangeCareer, slot0._onChangeCareer, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.UpdateUIFollower, slot0._onUpdateUIFollower, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.ChangeShield, slot0._onChangeShield, slot0)
@@ -329,7 +329,6 @@ function slot0.beforeDestroy(slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.OnCurrentHpChange, slot0._onCurrentHpChange, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.MultiHpChange, slot0._onMultiHpChange, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.ChangeWaveEnd, slot0._onChangeWaveEnd, slot0)
-	slot0:removeEventCb(FightController.instance, FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.ChangeCareer, slot0._onChangeCareer, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.UpdateUIFollower, slot0._onUpdateUIFollower, slot0)
 	slot0:removeEventCb(FightController.instance, FightEvent.ChangeShield, slot0._onChangeShield, slot0)
@@ -656,7 +655,7 @@ function slot0._onChangeWaveEnd(slot0)
 	slot0:_setPosOffset()
 end
 
-function slot0._onForceUpdatePerformanceData(slot0, slot1)
+function slot0.onCoverPerformanceEntityData(slot0, slot1)
 	if slot1 ~= slot0.entity.id then
 		return
 	end

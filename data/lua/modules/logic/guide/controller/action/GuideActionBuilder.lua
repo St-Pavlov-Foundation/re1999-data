@@ -85,6 +85,7 @@ function slot0.ctor(slot0)
 	slot0._ActionType2Impl[247] = WaitGuideActionRoomPlan
 	slot0._ActionType2Impl[248] = WaitGuideActionRoomTransport
 	slot0._ActionType2Impl[249] = WaitGuideActionPlayStoryStep
+	slot0._ActionType2Impl[250] = WaitGuideActionEnterChapter
 	slot0._ActionType2Impl[301] = WaitGuideActionFightRoundBegin
 	slot0._ActionType2Impl[302] = WaitGuideActionFightRoundEnd
 	slot0._ActionType2Impl[303] = WaitGuideActionFightResultClose

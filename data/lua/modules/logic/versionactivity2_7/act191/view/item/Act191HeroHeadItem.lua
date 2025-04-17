@@ -29,6 +29,7 @@ function slot0.init(slot0, slot1)
 
 	slot0.gounown = gohelper.findChild(slot1, "go_unown")
 	slot0.simageIconU = gohelper.findChildSingleImage(slot1, "go_unown/hero/simage_Icon")
+	slot0.goMask = gohelper.findChild(slot1, "go_unown/hero/mask")
 	slot0.imageRareU = gohelper.findChildImage(slot1, "go_unown/hero/image_Rare")
 	slot0.imageCareerU = gohelper.findChildImage(slot1, "go_unown/image_Career")
 	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "btn_Click")
@@ -65,8 +66,10 @@ function slot0.setData(slot0, slot1, slot2)
 			slot0.imageExSkill.fillAmount = slot0.config.exLevel / CharacterEnum.MaxSkillExLevel
 
 			gohelper.setActive(slot0.goExSkill, true)
+			gohelper.setActive(slot0.goMask, true)
 		else
 			gohelper.setActive(slot0.goExSkill, false)
+			gohelper.setActive(slot0.goMask, true)
 		end
 
 		slot0:refreshFetter()

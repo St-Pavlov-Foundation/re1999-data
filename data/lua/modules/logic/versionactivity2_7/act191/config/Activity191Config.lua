@@ -143,8 +143,8 @@ function slot0.getHeroPassiveSkillIdList(slot0, slot1)
 	if string.nilorempty(slot0:getRoleCo(slot1).passiveSkill) then
 		slot3 = {}
 
-		for slot9, slot10 in pairs(SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(slot2.roleId, #SkillConfig.instance:getheroranksCO(slot2.roleId) - 1)) do
-			slot3[#slot3 + 1] = slot10.skillPassive
+		for slot8, slot9 in pairs(SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(slot2.roleId, slot2.exLevel)) do
+			slot3[#slot3 + 1] = slot9.skillPassive
 		end
 
 		return slot3
@@ -241,6 +241,16 @@ function slot0.getFetterHeroList(slot0, slot1)
 	table.sort(slot2, Activity191Helper.sortFetterHeroList)
 
 	return slot2
+end
+
+function slot0.getEffDescCoByName(slot0, slot1)
+	for slot5, slot6 in ipairs(lua_activity191_eff_desc.configList) do
+		if slot6.name == slot1 then
+			return slot6
+		end
+	end
+
+	logError("not fount skillId, skillIndex : " .. slot1)
 end
 
 slot0.AttrIdToFieldName = {

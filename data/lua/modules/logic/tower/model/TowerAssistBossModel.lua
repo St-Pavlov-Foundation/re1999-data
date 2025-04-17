@@ -74,15 +74,22 @@ end
 
 function slot0.getLimitedTrialBossTalentPlan(slot0, slot1)
 	slot2 = 0
+	slot5 = slot0:getBoss(HeroGroupModel.instance:getCurGroupMO() and slot3:getAssistBossId() or FightModel.instance.last_fightGroup.assistBossId)
 
 	if slot1.towerType == TowerEnum.TowerType.Limited then
-		slot2 = slot0:getById(HeroGroupModel.instance:getCurGroupMO():getAssistBossId()) and slot5.trialTalentPlan > 0 and slot5.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)) and slot5.trialTalentPlan or 0
+		return slot5 and slot5.trialTalentPlan > 0 and slot5.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)) and slot5.trialTalentPlan or 0
+	else
+		return slot5 and slot5.useTalentPlan or 0
 	end
 
 	return slot2
 end
 
 function slot0.getTempUnlockTrialBossMO(slot0, slot1)
+	if not slot1 or slot1 == 0 then
+		return
+	end
+
 	if not slot0:getById(slot1) then
 		slot2 = slot0:buildTempUnlockTrialBossMO(slot1)
 

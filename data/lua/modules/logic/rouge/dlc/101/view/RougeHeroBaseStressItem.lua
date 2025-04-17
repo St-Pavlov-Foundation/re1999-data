@@ -1,7 +1,7 @@
 module("modules.logic.rouge.dlc.101.view.RougeHeroBaseStressItem", package.seeall)
 
 slot0 = class("RougeHeroBaseStressItem", LuaCompBase)
-slot0.AssetUrl = FightNameUIStressMgr.PrefabPath
+slot0.AssetUrl = RougeDLCEnum101.StressPrefabPath
 
 function slot0.init(slot0, slot1)
 	uv0.super.init(slot0, slot1)

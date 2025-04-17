@@ -25,6 +25,7 @@ function slot0.init(slot0, slot1)
 	slot0.clothId = slot1.clothId
 	slot0.assistBossId = slot1.assistBossId
 	slot0.heroList = {}
+	slot0.trialDict = {}
 	slot2 = slot1.heroList and #slot1.heroList or 0
 
 	for slot6 = 1, slot2 do

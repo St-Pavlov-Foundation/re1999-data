@@ -328,6 +328,7 @@ function slot0._ballArrivesEnd(slot0)
 		CooperGarlandStatHelper.instance:sendGameFinish()
 		slot0:dispatchEvent(CooperGarlandEvent.PlayFinishEpisodeStarVX)
 	else
+		CooperGarlandGameModel.instance:setSceneOpenAnimShowBall(false)
 		slot0:dispatchEvent(CooperGarlandEvent.PlayEnterNextRoundAnim)
 	end
 end
