@@ -14,20 +14,8 @@ function slot0.onInitView(slot0)
 	end
 end
 
-function slot0.addEvents(slot0)
-end
-
-function slot0.removeEvents(slot0)
-end
-
 function slot0.onClickModalMask(slot0)
 	slot0:closeThis()
-end
-
-function slot0._editableInitView(slot0)
-end
-
-function slot0.onUpdateParam(slot0)
 end
 
 function slot0.onOpen(slot0)
@@ -42,6 +30,10 @@ function slot0.onOpen(slot0)
 
 	slot0._txtName.text = slot0.config.name
 	slot0._txtDesc.text = slot0.config.desc
+
+	if slot0.config.id == 1001 then
+		transformhelper.setLocalScale(slot0._imageIcon.gameObject.transform, 0.75, 0.75, 1)
+	end
 end
 
 return slot0

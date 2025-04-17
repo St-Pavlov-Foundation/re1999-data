@@ -97,7 +97,9 @@ slot1 = {
 	ActivityEnum.Activity.V2a5_Role_SignView_Part2,
 	ActivityEnum.Activity.V2a5_DecorateStore,
 	ActivityEnum.Activity.V2a5_Act186Sign,
-	ActivityEnum.Activity.V2a7_Labor_Sign
+	ActivityEnum.Activity.V2a7_Labor_Sign,
+	ActivityEnum.Activity.V2a7_SelfSelectSix1,
+	ActivityEnum.Activity.V2a7_SelfSelectSix2
 }
 slot2 = {
 	ActivityEnum.Activity.VersionActivity1_3Radio,

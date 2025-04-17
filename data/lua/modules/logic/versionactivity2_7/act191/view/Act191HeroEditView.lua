@@ -272,8 +272,11 @@ function slot0.onOpen(slot0)
 	gohelper.addUIClickAudio(slot0._btnrarerank.gameObject, AudioEnum.UI.UI_Common_Click)
 	gohelper.addUIClickAudio(slot0._btnpassiveskill.gameObject, AudioEnum.UI.UI_Common_Click)
 	slot0:refreshFetter()
+
+	slot0.filterTag = nil
+
 	slot0:refreshBtnRare()
-	slot0:refreshBtnClassify()
+	slot0:_refreshBtnClassify()
 end
 
 function slot0.onClose(slot0)
@@ -291,11 +294,6 @@ end
 
 function slot0.refreshBtnRare(slot0)
 	transformhelper.setLocalRotation(slot0._goRareArrow.transform, 1, 1, slot0.sortRule == Activity191Enum.SortRule.Down and 0 or 180)
-end
-
-function slot0.refreshBtnClassify(slot0)
-	gohelper.setActive(slot0._classifyBtns[1], not slot0.filterTag)
-	gohelper.setActive(slot0._classifyBtns[2], slot0.filterTag)
 end
 
 function slot0.refreshDestiny(slot0)
@@ -426,8 +424,7 @@ function slot0._filterItemClick(slot0, slot1)
 		slot0.filterTag = slot1
 	end
 
-	slot0:_refreshFilterView()
-	slot0:refreshBtnClassify()
+	slot0:_refreshBtnClassify()
 
 	if slot0._isShowQuickEdit then
 		Act191HeroQuickEditListModel.instance:filterData(slot0.filterTag, slot0.sortRule)
@@ -436,12 +433,13 @@ function slot0._filterItemClick(slot0, slot1)
 	end
 end
 
-function slot0._refreshFilterView(slot0, slot1)
-	slot1 = slot1 or slot0.filterTag
+function slot0._refreshBtnClassify(slot0)
+	gohelper.setActive(slot0._classifyBtns[1], not slot0.filterTag)
+	gohelper.setActive(slot0._classifyBtns[2], slot0.filterTag)
 
-	for slot5, slot6 in pairs(slot0.filterItemMap) do
-		gohelper.setActive(slot6.goUnselect, slot5 ~= slot1)
-		gohelper.setActive(slot6.goSelect, slot5 == slot1)
+	for slot4, slot5 in pairs(slot0.filterItemMap) do
+		gohelper.setActive(slot5.goUnselect, slot4 ~= slot0.filterTag)
+		gohelper.setActive(slot5.goSelect, slot4 == slot0.filterTag)
 	end
 end
 

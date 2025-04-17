@@ -49,6 +49,8 @@ function slot0.addEvents(slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnUniversalAppear, slot0._onBlockOperateEnd, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.SetIsShowUI, slot0._setIsShowUI, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnGuideStopAutoFight, slot0._onGuideStopAutoFight, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.GuideRecordAutoState, slot0.onGuideRecordAutoState, slot0)
+	slot0:addEventCb(FightController.instance, FightEvent.GuideRefreshAutoStateByRecord, slot0.onGuideRefreshAutoStateByRecord, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.AfterPlayAppearTimeline, slot0._onAfterPlayAppearTimeline, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.StartReplay, slot0._checkStartReplay, slot0)
 	slot0:addEventCb(FightController.instance, FightEvent.OnChangeEntity, slot0._onChangeEntity, slot0)
@@ -179,10 +181,6 @@ function slot0.onOpen(slot0)
 	slot0:_showEnemySubCount()
 	slot0:initEnemyActionStatus()
 	slot0:_refreshDouQuQu()
-
-	if FightDataHelper.fieldMgr:is191DouQuQu() then
-		gohelper.setActive(slot0._enemyinfoRoot, false)
-	end
 end
 
 function slot0._refreshDouQuQu(slot0)
@@ -235,6 +233,23 @@ end
 function slot0._onGuideStopAutoFight(slot0)
 	FightModel.instance:setAuto(false)
 	slot0:_updateAutoAnim()
+end
+
+function slot0.onGuideRecordAutoState(slot0)
+	slot0.guideRecordAutoState = FightModel.instance:isAuto()
+
+	if slot0.forceAuto then
+		slot0.guideRecordAutoState = true
+	end
+end
+
+function slot0.onGuideRefreshAutoStateByRecord(slot0)
+	FightModel.instance:setAuto(slot0.guideRecordAutoState)
+	slot0:_updateAutoAnim()
+
+	if slot0.guideRecordAutoState then
+		slot0:_checkAutoCard()
+	end
 end
 
 function slot0._onFightDialogShow(slot0)

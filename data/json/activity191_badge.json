@@ -32,22 +32,22 @@
   {
     "activityId": 12701,
     "id": 4,
-    "name": "智能“角斗士”",
-    "desc": "偶人专家自动角斗胜利的次数",
-    "icon": "act174_badgeicon3",
-    "trigger": "PVPAutoWin",
-    "actParam": 5,
-    "spParam": 15
-  },
-  {
-    "activityId": 12701,
-    "id": 5,
     "name": "高“芯”角斗士 ",
     "desc": "累计获得偶人之心的数量",
     "icon": "act174_badgeicon4",
     "trigger": "GainScore",
     "actParam": 3000,
     "spParam": 8500
+  },
+  {
+    "activityId": 12701,
+    "id": 5,
+    "name": "智能“角斗士”",
+    "desc": "偶人专家自动角斗胜利的次数",
+    "icon": "act174_badgeicon3",
+    "trigger": "PVPAutoWin",
+    "actParam": 5,
+    "spParam": 15
   },
   {
     "activityId": 12701,

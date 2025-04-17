@@ -67,6 +67,12 @@ function slot0.onOpen(slot0)
 	slot0.nodeInfo = slot0.gameInfo:getNodeInfoById(slot0.curNode)
 	slot0.isWin = slot0.viewParam
 
+	if slot0.isWin then
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_settleaccounts_win)
+	else
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_settleaccounts_lose)
+	end
+
 	gohelper.setActive(slot0._goWin, slot0.isWin)
 	gohelper.setActive(slot0._goFail, not slot0.isWin)
 	slot0._simagecharacterbg:LoadImage(ResUrl.getFightQuitResultIcon("bg_renwubeiguang"))
@@ -76,7 +82,7 @@ function slot0.onOpen(slot0)
 	slot0.enemyMoList = FightDataHelper.entityMgr:getEnemyNormalList(nil, true)
 	slot0._randomEntityMO = slot0:_getRandomEntityMO()
 
-	if slot0._randomEntityMO then
+	if slot0.isWin and slot0._randomEntityMO then
 		slot0:_setSpineVoice()
 		gohelper.setActive(slot0._goLeft, true)
 		recthelper.setAnchorX(slot0._goRight.transform, 0)
@@ -117,7 +123,7 @@ function slot0.onOpen(slot0)
 		end
 
 		gohelper.setActive(slot0._goHeroItem, false)
-	else
+	elseif slot0.isPve or slot0.nodeDetailMo.type == Activity191Enum.NodeType.BattleEvent then
 		UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, "act191_level_" .. string.lower(lua_activity191_fight_event.configDict[slot0.nodeDetailMo.fightEventId].fightLevel))
 		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.BossHpItem, slot0._gobossHpRoot), Act191BossHpItem)
 	end
@@ -130,13 +136,13 @@ end
 function slot0.onClose(slot0)
 	slot0._canPlayVoice = false
 
-	TaskDispatcher.cancelTask(slot0._setCanPlayVoice, slot0)
 	gohelper.setActive(slot0._goSpine, false)
 	FightController.onResultViewClose()
 	Act191StatController.instance:statGameTime(slot0.viewName)
 end
 
 function slot0.onDestroyView(slot0)
+	TaskDispatcher.cancelTask(slot0._setCanPlayVoice, slot0)
 end
 
 function slot0._getRandomEntityMO(slot0)
@@ -223,18 +229,16 @@ function slot0._getSkin(slot0, slot1)
 end
 
 function slot0.refreshReward(slot0)
-	if not slot0.isWin then
-		return
-	end
-
 	slot1 = {}
 
 	if slot0.isPvp then
-		for slot10, slot11 in ipairs(GameUtil.splitString2(lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot0.nodeDetailMo.type]][FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].auto and "autoRewardView" or "rewardView"], true)) do
-			if not slot1[slot11[1]] then
-				slot1[slot11[1]] = slot11[2]
-			else
-				slot1[slot11[1]] = slot1[slot11[1]] + slot11[2]
+		if slot0.isWin then
+			for slot10, slot11 in ipairs(GameUtil.splitString2(lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot0.nodeDetailMo.type]][FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].auto and "autoRewardView" or "rewardView"], true)) do
+				if not slot1[slot11[1]] then
+					slot1[slot11[1]] = slot11[2]
+				else
+					slot1[slot11[1]] = slot1[slot11[1]] + slot11[2]
+				end
 			end
 		end
 	else

@@ -50,17 +50,28 @@ function slot0.onClick(slot0)
 		return
 	end
 
-	if slot0.param then
-		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("itemClick_%s_%s_%s", slot0.param.type, slot0._index, slot0.itemId))
+	if slot0.callback then
+		slot0.callback(slot0.callbackObj, slot0.itemId)
+
+		return
 	end
 
 	ViewMgr.instance:openView(ViewName.Act191CollectionEditView, {
 		index = slot0._index
 	})
+
+	if slot0.param then
+		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("itemClick_%s_%s_%s", slot0.param.type, slot0._index, slot0.itemId))
+	end
 end
 
 function slot0.setExtraParam(slot0, slot1)
 	slot0.param = slot1
+end
+
+function slot0.setOverrideClick(slot0, slot1, slot2)
+	slot0.callback = slot1
+	slot0.callbackObj = slot2
 end
 
 return slot0

@@ -15,12 +15,6 @@ function slot0.onInitView(slot0)
 	end
 end
 
-function slot0.addEvents(slot0)
-end
-
-function slot0.removeEvents(slot0)
-end
-
 function slot0.onClickModalMask(slot0)
 	slot0:closeThis()
 end
@@ -28,6 +22,7 @@ end
 function slot0._editableInitView(slot0)
 	slot0.actInfo = Activity191Model.instance:getActInfo()
 	slot0.gameInfo = slot0.actInfo:getGameInfo()
+	slot0.touchGraphic = slot0._scrollGet.gameObject:GetComponent(typeof(UnityEngine.UI.Graphic))
 end
 
 function slot0.onOpen(slot0)
@@ -105,6 +100,7 @@ function slot0.onOpen(slot0)
 
 			UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "image_Rare"), "act174_propitembg_" .. slot9.rare)
 			gohelper.findChildSingleImage(slot14, "simage_Icon"):LoadImage(ResUrl.getRougeSingleBgCollection(slot9.icon))
+			slot0:addClickCb(gohelper.findChildButtonWithAudio(slot14, "btn_Click"), slot0.onClickCollection, slot0, slot9.id)
 		end
 	end
 
@@ -112,6 +108,8 @@ function slot0.onOpen(slot0)
 	gohelper.setActive(slot0._goCollection, false)
 	gohelper.setActive(slot0._goHeroRoot, #slot3 ~= 0)
 	gohelper.setActive(slot0._goCollectionRoot, #slot4 ~= 0)
+
+	slot0.touchGraphic.raycastTarget = #slot3 > 2
 end
 
 function slot0.onClose(slot0)
@@ -124,6 +122,12 @@ function slot0.onClickHero(slot0, slot1)
 		heroList = {
 			slot1
 		}
+	})
+end
+
+function slot0.onClickCollection(slot0, slot1)
+	Activity191Controller.instance:openCollectionTipView({
+		itemId = slot1
 	})
 end
 

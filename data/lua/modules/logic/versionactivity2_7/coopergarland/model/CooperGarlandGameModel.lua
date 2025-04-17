@@ -19,6 +19,7 @@ function slot0.clearAllData(slot0)
 	slot0:setRemoveMode()
 	slot0:setBallHasKey(false)
 	slot0:setIsStopGame(false)
+	slot0:setSceneOpenAnimShowBall(false)
 end
 
 function slot0.enterGameInitData(slot0, slot1)
@@ -28,6 +29,7 @@ function slot0.enterGameInitData(slot0, slot1)
 
 	slot0:setGameId(CooperGarlandConfig.instance:getGameId(slot2, slot1))
 	slot0:changeRound(CooperGarlandModel.instance:getEpisodeProgress(slot2, slot1))
+	slot0:setSceneOpenAnimShowBall(false)
 end
 
 function slot0.changeRound(slot0, slot1)
@@ -85,6 +87,10 @@ function slot0.setIsStopGame(slot0, slot1)
 	slot0._isStopGame = slot1
 end
 
+function slot0.setSceneOpenAnimShowBall(slot0, slot1)
+	slot0._openAnimShowBall = slot1
+end
+
 function slot0.getEpisodeId(slot0)
 	return slot0._episodeId
 end
@@ -138,6 +144,10 @@ end
 
 function slot0.getIsStopGame(slot0)
 	return slot0._isStopGame
+end
+
+function slot0.getSceneOpenAnimShowBall(slot0)
+	return slot0._openAnimShowBall
 end
 
 slot0.instance = slot0.New()

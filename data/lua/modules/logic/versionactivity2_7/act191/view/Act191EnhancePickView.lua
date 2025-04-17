@@ -37,6 +37,8 @@ function slot0.onOpen(slot0)
 end
 
 function slot0.refreshUI(slot0)
+	slot0.freshIndex = nil
+
 	for slot4, slot5 in ipairs(slot0.nodeDetailMo.enhanceList) do
 		slot6 = slot0.enhanceItemList[slot4] or slot0:creatEnhanceItem(slot4)
 		slot7 = Activity191Config.instance:getEnhanceCo(slot0.actId, slot5)
@@ -45,7 +47,7 @@ function slot0.refreshUI(slot0)
 
 		slot6.txtName.text = slot7.title
 
-		if lua_activity191_effect.configDict[tonumber(slot7.effects)] then
+		if lua_activity191_effect.configDict[string.splitToNumber(slot7.effects, "|")[1]] then
 			if slot10.type == Activity191Enum.EffectType.EnhanceHero then
 				slot6.txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot7.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot10.typeParam)
 
@@ -87,12 +89,20 @@ function slot0.creatEnhanceItem(slot0, slot1)
 end
 
 function slot0.clickBuy(slot0, slot1)
+	if slot0.selectIndex then
+		return
+	end
+
 	slot0.selectIndex = slot1
 
 	Activity191Rpc.instance:sendSelect191EnhanceRequest(slot0.actId, slot1, slot0.onSelectEnhance, slot0)
 end
 
 function slot0.clickFresh(slot0, slot1)
+	if slot0.freshIndex then
+		return
+	end
+
 	slot0.freshIndex = slot1
 
 	Activity191Rpc.instance:sendFresh191EnhanceRequest(slot0.actId, slot1, slot0.onFreshEnhance, slot0)
@@ -106,13 +116,16 @@ function slot0.onSelectEnhance(slot0, slot1, slot2)
 		end
 
 		TaskDispatcher.runDelay(slot0.delayClose, slot0, 0.67)
-
-		slot0.selectIndex = nil
 	end
 end
 
 function slot0.delayClose(slot0)
-	Activity191Controller.instance:nextStep()
+	slot0.selectIndex = nil
+
+	if not Activity191Controller.instance:checkOpenGetView() then
+		Activity191Controller.instance:nextStep()
+	end
+
 	slot0:closeThis()
 end
 
@@ -120,8 +133,6 @@ function slot0.onFreshEnhance(slot0, slot1, slot2)
 	if slot2 == 0 then
 		if slot0.freshIndex then
 			slot0.enhanceItemList[slot0.freshIndex].anim:Play("switch", 0, 0)
-
-			slot0.freshIndex = nil
 		end
 
 		slot0.nodeDetailMo = Activity191Model.instance:getActInfo():getGameInfo():getNodeDetailMo()

@@ -21,7 +21,7 @@ function slot0.onStart(slot0)
 			if uv0.Key2Work[slot8] then
 				slot0.sequenceFlow:registWork(slot14, slot8, slot11, slot10, slot9)
 			else
-				slot0.sequenceFlow:registWork(FightWorkSendEvent, FightEvent.UpdateFightParam, slot8, slot11, slot10, slot9)
+				slot0.sequenceFlow:registWork(FightWorkSendEvent, FightEvent.UpdateFightParam, slot8, slot11, slot10, slot9, slot0.actEffectData)
 			end
 		end
 	end

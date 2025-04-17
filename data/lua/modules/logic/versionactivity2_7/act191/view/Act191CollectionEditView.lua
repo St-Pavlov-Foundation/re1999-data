@@ -79,15 +79,7 @@ function slot0.refreshUI(slot0)
 	end
 
 	slot0:refreshSlotItem()
-
-	slot1 = slot0.itemUidDic[slot0.curSlotIndex]
-
-	Act191CollectionEditListModel.instance:initData(slot1)
-
-	if slot1 == 0 then
-		slot0:refreshBtnStatus()
-		gohelper.setActive(slot0._goCollectionTip, false)
-	end
+	Act191CollectionEditListModel.instance:initData(slot0.itemUidDic[slot0.curSlotIndex])
 end
 
 function slot0.refreshSlotItem(slot0)
@@ -124,7 +116,11 @@ function slot0.onSlotClick(slot0, slot1)
 	end
 
 	if slot0.itemUidDic[slot0.curSlotIndex] == 0 then
-		slot0:refreshBtnStatus()
+		if slot0._itemMo then
+			Act191CollectionEditListModel.instance:selectItem(slot0._itemMo.uid, false)
+		else
+			slot0:refreshBtnStatus()
+		end
 	else
 		Act191CollectionEditListModel.instance:selectItem(slot2, true)
 	end
@@ -135,7 +131,6 @@ function slot0._onItemClick(slot0, slot1)
 
 	slot0:refreshItemTip()
 	slot0:refreshBtnStatus()
-	gohelper.setActive(slot0._goCollectionTip, true)
 end
 
 function slot0.refreshBtnStatus(slot0)

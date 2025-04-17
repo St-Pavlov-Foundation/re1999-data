@@ -12,7 +12,7 @@ function slot0.onScenePrepared(slot0, slot1, slot2)
 	FightController.instance:registerCallback(FightEvent.OnRestartStageBefore, slot0._onRestartStageBefore, slot0)
 	FightController.instance:registerCallback(FightEvent.FightDialogEnd, slot0._onFightDialogEnd, slot0)
 	FightController.instance:registerCallback(FightEvent.PushEndFight, slot0._pushEndFight, slot0)
-	FightController.instance:registerCallback(FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
+	FightController.instance:registerCallback(FightEvent.CoverPerformanceEntityData, slot0.onCoverPerformanceEntityData, slot0)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, slot0._onCloseView, slot0)
 end
 
@@ -100,7 +100,7 @@ function slot0._clearTab(slot0)
 	slot0._buffCount = nil
 end
 
-function slot0._onForceUpdatePerformanceData(slot0, slot1)
+function slot0.onCoverPerformanceEntityData(slot0, slot1)
 	if FightHelper.getEntity(slot1) and slot2.buff then
 		slot2.buff:releaseAllBuff()
 		slot2.buff:dealStartBuff()
@@ -114,7 +114,7 @@ function slot0.onSceneClose(slot0, slot1, slot2)
 	FightController.instance:unregisterCallback(FightEvent.OnRestartStageBefore, slot0._onRestartStageBefore, slot0)
 	FightController.instance:unregisterCallback(FightEvent.FightDialogEnd, slot0._onFightDialogEnd, slot0)
 	FightController.instance:unregisterCallback(FightEvent.PushEndFight, slot0._pushEndFight, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData, slot0)
+	FightController.instance:unregisterCallback(FightEvent.CoverPerformanceEntityData, slot0.onCoverPerformanceEntityData, slot0)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, slot0._onCloseView, slot0)
 end
 

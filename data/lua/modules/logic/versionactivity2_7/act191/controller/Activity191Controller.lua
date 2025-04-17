@@ -70,45 +70,45 @@ function slot0._openStoreViewAfterRpc(slot0, slot1, slot2)
 	end
 end
 
-function slot0.enterGame(slot0)
-	if Activity191Model.instance:getActInfo():getGameInfo().state == Activity191Enum.GameState.Normal then
-		if slot1.curStage == 0 and slot1.curNode == 0 then
+function slot0.nextStep(slot0)
+	if Activity191Model.instance:getActInfo():getGameInfo().state == Activity191Enum.GameState.None then
+		Activity191Rpc.instance:sendStart191GameRequest(Activity191Model.instance:getCurActId(), slot0.startReply, slot0)
+	elseif slot2.state == Activity191Enum.GameState.Normal then
+		if slot2.curStage == 0 and slot2.curNode == 0 then
 			ViewMgr.instance:openView(ViewName.Act191InitBuildView)
+		elseif string.nilorempty(Activity191Helper.matchKeyInArray(slot2.nodeInfo, slot2.curNode, "nodeId").nodeStr) then
+			ViewMgr.instance:openView(ViewName.Act191StageView)
+
+			if slot2.nodeChange then
+				ViewMgr.instance:openView(ViewName.Act191SwitchView)
+			end
 		else
-			slot0:nextStep()
+			slot4 = Act191NodeDetailMO.New()
+
+			slot4:init(slot3.nodeStr)
+
+			if Activity191Helper.isShopNode(slot4.type) then
+				ViewMgr.instance:openView(ViewName.Act191ShopView, slot4)
+			elseif slot4.type == Activity191Enum.NodeType.Enhance then
+				ViewMgr.instance:openView(ViewName.Act191EnhancePickView, slot4)
+			elseif slot4.type == Activity191Enum.NodeType.RewardEvent then
+				ViewMgr.instance:openView(ViewName.Act191AdventureView, slot4)
+			elseif slot4.type == Activity191Enum.NodeType.BattleEvent then
+				ViewMgr.instance:openView(ViewName.Act191AdventureView, slot4)
+			elseif Activity191Helper.isPveBattle(slot4.type) then
+				slot0:enterFightScene(slot4)
+			elseif Activity191Helper.isPvpBattle(slot4.type) then
+				slot0:enterFightScene(slot4)
+			end
 		end
-	elseif slot1.state == Activity191Enum.GameState.End then
-		Activity191Rpc.instance:sendEndAct191GameRequest(slot0.actId)
+	elseif slot2.state == Activity191Enum.GameState.End then
+		Activity191Rpc.instance:sendEndAct191GameRequest(slot1)
 	end
 end
 
-function slot0.nextStep(slot0)
-	slot1 = Activity191Model.instance:getActInfo():getGameInfo()
-
-	if string.nilorempty(Activity191Helper.matchKeyInArray(slot1.nodeInfo, slot1.curNode, "nodeId").nodeStr) then
-		ViewMgr.instance:openView(ViewName.Act191StageView)
-
-		if slot1.nodeChange then
-			ViewMgr.instance:openView(ViewName.Act191SwitchView)
-		end
-	else
-		slot3 = Act191NodeDetailMO.New()
-
-		slot3:init(slot2.nodeStr)
-
-		if Activity191Helper.isShopNode(slot3.type) then
-			ViewMgr.instance:openView(ViewName.Act191ShopView, slot3)
-		elseif slot3.type == Activity191Enum.NodeType.Enhance then
-			ViewMgr.instance:openView(ViewName.Act191EnhancePickView, slot3)
-		elseif slot3.type == Activity191Enum.NodeType.RewardEvent then
-			ViewMgr.instance:openView(ViewName.Act191AdventureView, slot3)
-		elseif slot3.type == Activity191Enum.NodeType.BattleEvent then
-			ViewMgr.instance:openView(ViewName.Act191AdventureView, slot3)
-		elseif Activity191Helper.isPveBattle(slot3.type) then
-			slot0:enterFightScene(slot3)
-		elseif Activity191Helper.isPvpBattle(slot3.type) then
-			slot0:enterFightScene(slot3)
-		end
+function slot0.startReply(slot0, slot1, slot2)
+	if slot2 == 0 then
+		slot0:nextStep()
 	end
 end
 
@@ -126,20 +126,6 @@ function slot0.enterFightScene(slot0, slot1)
 	DungeonModel.instance:SetSendChapterEpisodeId(slot3.chapterId, slot2)
 	FightController.instance:setFightParamByEpisodeAndBattle(slot2, slot3.battleId):setPreload()
 	FightController.instance:enterFightScene()
-end
-
-function slot0.startFight(slot0)
-	if not Activity191Model.instance:getActInfo():getGameInfo():teamHasMainHero() then
-		GameFacade.showToastString("请上阵主战英雄")
-
-		return
-	end
-
-	slot2 = DungeonModel.instance.curSendEpisodeId
-	slot3 = DungeonConfig.instance:getEpisodeCO(slot2)
-
-	FightController.instance:setFightParamByEpisodeAndBattle(slot2, slot3.battleId):setDungeon(slot3.chapterId, slot2)
-	DungeonRpc.instance:sendStartDungeonRequest(slot3.chapterId, slot2)
 end
 
 function slot0.checkOpenGetView(slot0)

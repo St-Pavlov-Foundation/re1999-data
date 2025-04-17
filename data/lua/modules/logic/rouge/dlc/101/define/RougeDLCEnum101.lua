@@ -26,5 +26,6 @@ slot0.LimiterBuffType = {
 	Large = 3,
 	Small = 1
 }
+slot0.StressPrefabPath = "ui/viewres/fight/fightstressitem.prefab"
 
 return slot0
