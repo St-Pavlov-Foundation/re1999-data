@@ -3,7 +3,7 @@ module("modules.logic.versionactivity2_7.act191.view.Act191SettlementView", pack
 slot0 = class("Act191SettlementView", BaseView)
 
 function slot0.onInitView(slot0)
-	slot0._txtTeamLvlM = gohelper.findChildText(slot0.viewGO, "Left/herogroupcontain/mainTitle/#txt_TeamLvlM")
+	slot0._imageLevel = gohelper.findChildImage(slot0.viewGO, "Left/herogroupcontain/mainTitle/#image_Level")
 	slot0._scrollFetter = gohelper.findChildScrollRect(slot0.viewGO, "Left/herogroupcontain/#scroll_Fetter")
 	slot0._goFetterContent = gohelper.findChild(slot0.viewGO, "Left/herogroupcontain/#scroll_Fetter/Viewport/#go_FetterContent")
 	slot0._goNodeList = gohelper.findChild(slot0.viewGO, "Right/node/#go_NodeList")
@@ -100,7 +100,6 @@ function slot0.initHeroAndEquipItem(slot0)
 		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot2, "hero" .. slot7), Act191HeroGroupItem1)
 
 		slot9:setIndex(slot7)
-		slot9:setClickEnable(false)
 
 		slot0.heroItemList[slot7] = slot9
 
@@ -110,6 +109,7 @@ function slot0.initHeroAndEquipItem(slot0)
 			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
 
 			slot10:setIndex(slot7)
+			slot10:setOverrideClick(slot0.clickCollection, slot0)
 
 			slot0.equipItemList[slot7] = slot10
 
@@ -122,7 +122,8 @@ function slot0.initHeroAndEquipItem(slot0)
 end
 
 function slot0.refreshLeft(slot0)
-	slot0._txtTeamLvlM.text = formatLuaLang("act191_herogroupview_mainteam", Activity191Model.instance:getActInfo():getGameInfo().rank ~= 0 and lua_activity191_rank.configDict[slot2].fightLevel or "")
+	UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, "act191_level_" .. string.lower(lua_activity191_rank.configDict[Activity191Model.instance:getActInfo():getGameInfo().rank ~= 0 and slot1.rank or 1].fightLevel or ""))
+
 	slot4 = slot1:getTeamInfo()
 
 	for slot8 = 1, 4 do
@@ -154,7 +155,6 @@ function slot0.refreshLeft(slot0)
 	for slot10, slot11 in ipairs(Activity191Helper.getActiveFetterInfoList(slot1:getTeamFetterCntDic())) do
 		slot13 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.FetterItem, slot0._goFetterContent), Act191FetterItem)
 
-		slot13:setClickEnable(false)
 		slot13:setData(slot11.config, slot11.count)
 		gohelper.setActive(slot13.go, true)
 	end
@@ -164,10 +164,6 @@ end
 
 function slot0._setHeroItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = recthelper.rectToRelativeAnchorPos(slot0.heroPosTrList[slot2].position, slot0.heroContainer.transform)
-
-	if slot1 and slot1.resetEquipPos then
-		slot1:resetEquipPos()
-	end
 
 	if slot3 then
 		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
@@ -182,10 +178,6 @@ end
 
 function slot0._setEquipItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = recthelper.rectToRelativeAnchorPos(slot0.equipPosTrList[slot2].position, slot0.heroContainer.transform)
-
-	if slot1 and slot1.resetEquipPos then
-		slot1:resetEquipPos()
-	end
 
 	if slot3 then
 		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
@@ -235,6 +227,14 @@ function slot0.playBadgeAnim(slot0)
 		if slot0.actInfo:getBadgeScoreChangeDic()[slot6.id] and slot7 ~= 0 then
 			slot6.anim:Play("refresh")
 		end
+	end
+end
+
+function slot0.clickCollection(slot0, slot1)
+	if slot1 and slot1 ~= 0 then
+		Activity191Controller.instance:openCollectionTipView({
+			itemId = slot1
+		})
 	end
 end
 

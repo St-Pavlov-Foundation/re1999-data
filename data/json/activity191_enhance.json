@@ -3,250 +3,250 @@
     "id": 110001,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "槲寄生启悟狂想「石中绿，林中我」",
+    "desc": "招募槲寄生并启悟狂想「石中绿，林中我」",
     "relateHero": "3003",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "401"
+    "effects": "401|451"
   },
   {
     "id": 110002,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "红弩箭启悟狂想「何物轰鸣如凯歌」",
+    "desc": "招募红弩箭并启悟狂想「何物轰鸣如凯歌」",
     "relateHero": "3004",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "402"
+    "effects": "402|452"
   },
   {
     "id": 110003,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "红弩箭启悟狂想「狩猎于勘察加」",
+    "desc": "招募红弩箭并启悟狂想「狩猎于勘察加」",
     "relateHero": "3004",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "403"
+    "effects": "403|453"
   },
   {
     "id": 110004,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "苏芙比启悟狂想「幻梦少许，天真足量」",
+    "desc": "招募苏芙比并启悟狂想「幻梦少许，天真足量」",
     "relateHero": "3009",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "404"
+    "effects": "404|454"
   },
   {
     "id": 110005,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "温妮弗雷德启悟狂想「再度饮下，蓝色浪潮」",
+    "desc": "招募温妮弗雷德并启悟狂想「再度饮下，蓝色浪潮」",
     "relateHero": "3051",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "405"
+    "effects": "405|455"
   },
   {
     "id": 110006,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "新巴别塔启悟狂想「高塔应以野心筑基」",
+    "desc": "招募新巴别塔并启悟狂想「高塔应以野心筑基」",
     "relateHero": "3052",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "406"
+    "effects": "406|456"
   },
   {
     "id": 110007,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "鬃毛沙砾启悟狂想「驮载于朝圣之途」",
+    "desc": "招募鬃毛沙砾并启悟狂想「驮载于朝圣之途」",
     "relateHero": "3072",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "407"
+    "effects": "407|457"
   },
   {
     "id": 110008,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "柏林以东启悟狂想「室中窃语，耳中春天」",
+    "desc": "招募柏林以东并启悟狂想「室中窃语，耳中春天」",
     "relateHero": "3020",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "408"
+    "effects": "408|458"
   },
   {
     "id": 110009,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "坦南特启悟狂想「无价火彩的同谋」",
+    "desc": "招募坦南特并启悟狂想「无价火彩的同谋」",
     "relateHero": "3043",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "409"
+    "effects": "409|459"
   },
   {
     "id": 110010,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "远旅启悟狂想「跨越光年的奏鸣」",
+    "desc": "招募远旅并启悟狂想「跨越光年的奏鸣」",
     "relateHero": "3048",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "410"
+    "effects": "410|460"
   },
   {
     "id": 110011,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "玛蒂尔达启悟狂想「明日澄如水晶」",
+    "desc": "招募玛蒂尔达并启悟狂想「明日澄如水晶」",
     "relateHero": "3041",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "411"
+    "effects": "411|461"
   },
   {
     "id": 110013,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "泥鯭的士启悟狂想「科学地处理不科学」",
+    "desc": "招募泥鯭的士并启悟狂想「科学地处理不科学」",
     "relateHero": "3039",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "412"
+    "effects": "412|462"
   },
   {
     "id": 110014,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "梅兰妮启悟狂想「穿梭于点线面之网」",
+    "desc": "招募梅兰妮并启悟狂想「穿梭于点线面之网」",
     "relateHero": "3062",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "413"
+    "effects": "413|463"
   },
   {
     "id": 110015,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "兔毛手袋启悟狂想「五毫升血液炼金术」",
+    "desc": "招募兔毛手袋并启悟狂想「五毫升血液炼金术」",
     "relateHero": "3047",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "414"
+    "effects": "414|464"
   },
   {
     "id": 110016,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "爱兹拉启悟狂想「菌脉指引风的探针」",
+    "desc": "招募爱兹拉并启悟狂想「菌脉指引风的探针」",
     "relateHero": "3074",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "415"
+    "effects": "415|465"
   },
   {
     "id": 110017,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "爱兹拉启悟狂想「星火不息之种」",
+    "desc": "招募爱兹拉并启悟狂想「星火不息之种」",
     "relateHero": "3074",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "416"
+    "effects": "416|466"
   },
   {
     "id": 110018,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "曲娘启悟狂想「自有天星奉酒浆」",
+    "desc": "招募曲娘并启悟狂想「自有天星奉酒浆」",
     "relateHero": "3074",
     "relateItem": "",
     "icon": "act174_pick_bufficon_6",
-    "effects": "417"
+    "effects": "417|467"
   },
   {
     "id": 110021,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『喧嚷弹夹』效果增强：\n自身额外行动造成伤害提升50%；\n己方角色额外行动后，自身50%概率获得1层【计划】",
+    "desc": "获得造物『喧嚷弹夹』并增强效果：\n自身额外行动造成伤害提升50%；\n己方角色额外行动后，自身50%概率获得1层【计划】",
     "relateHero": "",
     "relateItem": "8330715",
     "icon": "act174_pick_bufficon_7",
-    "effects": "421"
+    "effects": "421|468"
   },
   {
     "id": 110022,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『古董银剑』效果增强：\n自身仪式造成伤害提升50%；\n己方角色释放至终的仪式后，自身获得5层【礼仪】",
+    "desc": "获得造物『古董银剑』并增强效果：\n自身仪式造成伤害提升50%；\n己方角色释放至终的仪式后，自身获得5层【礼仪】",
     "relateHero": "",
     "relateItem": "8310212",
     "icon": "act174_pick_bufficon_7",
-    "effects": "422"
+    "effects": "422|469"
   },
   {
     "id": 110023,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『锡兵礼盒』效果增强：\n己方全体术法威力+20%；\n己方触发【咒语同频】时，己方全体获得2层【倾力】",
+    "desc": "获得造物『锡兵礼盒』并增强效果：\n己方全体术法威力+20%；\n己方触发【同音异名】时，己方全体获得2层【倾力】",
     "relateHero": "",
     "relateItem": "8320210",
     "icon": "act174_pick_bufficon_7",
-    "effects": "423"
+    "effects": "423|470"
   },
   {
     "id": 110024,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『锻造的丰容粉盒』效果增强：\n自身2/3阶咒语造成伤害提升50%；\n回合开始时，自身获得1层【蓄势·预备Ⅲ】",
+    "desc": "获得造物『锻造的丰容粉盒』并增强效果：\n自身2/3阶咒语造成伤害提升50%；\n回合开始时，自身获得1层【蓄势·预备Ⅲ】",
     "relateHero": "",
     "relateItem": "8330306",
     "icon": "act174_pick_bufficon_7",
-    "effects": "424"
+    "effects": "424|471"
   },
   {
     "id": 110025,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『“心”』效果增强：\n敌方受到本源创伤提升30%；\n己方角色行动时每为敌方目标施加1个【状态异常】时，自身50%概率获得1层【洞察】",
+    "desc": "获得造物『“心”』并增强效果：\n敌方受到本源创伤提升30%；\n己方角色行动时每为敌方目标施加1个【状态异常】时，自身50%概率获得1层【洞察】",
     "relateHero": "",
     "relateItem": "8330020",
     "icon": "act174_pick_bufficon_7",
-    "effects": "425"
+    "effects": "425|472"
   },
   {
     "id": 110026,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『荆棘王冠』效果增强：\n己方受到攻击后，自身攻击+5%，持续1回合（可叠加，最多叠加10层）；\n己方受到攻击后，自身20%概率获得1层【荆刺】",
+    "desc": "获得造物『荆棘王冠』并增强效果：\n己方受到攻击后，自身攻击+5%，持续1回合（可叠加，最多叠加10层）；\n己方受到攻击后，自身20%概率获得1层【荆刺】",
     "relateHero": "",
     "relateItem": "8320506",
     "icon": "act174_pick_bufficon_7",
-    "effects": "426"
+    "effects": "426|473"
   },
   {
     "id": 110027,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『槲寄生枝叶』效果增强：\n自身治疗率提升30%；\n进入战斗时，己方角色获得20层【再生】，且每回合获得2层【流势·再生】",
+    "desc": "获得造物『槲寄生枝叶』并增强效果：\n自身治疗率提升30%；\n进入战斗时，己方角色获得20层【再生】，且每回合获得2层【流势·再生】",
     "relateHero": "",
     "relateItem": "8120416",
     "icon": "act174_pick_bufficon_7",
-    "effects": "427"
+    "effects": "427|474"
   },
   {
     "id": 110028,
     "activityId": 12701,
     "name": "七叶树协会赞助提供",
-    "desc": "造物『褶皱和圆』效果增强：\n自身对处于【燃烧】状态的敌人造成伤害提高50%；\n攻击时若敌方携带至少3种【状态异常】，则造成伤害提高20%",
+    "desc": "获得造物『褶皱和圆』并增强效果：\n自身对处于【燃烧】状态的敌人造成伤害提高50%；\n攻击时若敌方携带至少3种【状态异常】，则造成伤害提高20%",
     "relateHero": "",
     "relateItem": "8330211",
     "icon": "act174_pick_bufficon_7",
-    "effects": "428"
+    "effects": "428|475"
   }
 ]

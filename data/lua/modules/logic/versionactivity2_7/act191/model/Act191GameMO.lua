@@ -42,7 +42,7 @@ function slot0.updateWareHouseInfo(slot0, slot1)
 		slot0.enhanceItemList = {}
 
 		for slot5, slot6 in ipairs(slot1.enhanceId) do
-			slot9 = lua_activity191_effect.configDict[tonumber(Activity191Config.instance:getEnhanceCo(slot0.actId, slot6).effects)]
+			slot9 = lua_activity191_effect.configDict[string.splitToNumber(Activity191Config.instance:getEnhanceCo(slot0.actId, slot6).effects, "|")[1]]
 			slot10 = string.splitToNumber(slot9.typeParam, "#")
 
 			if slot9.type == Activity191Enum.EffectType.EnhanceHero then
@@ -171,25 +171,23 @@ function slot0.getTeamFetterCntDic(slot0)
 	slot1 = {}
 
 	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		slot8 = {}
-
 		if slot7.heroId ~= 0 then
-			for slot15, slot16 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot7.heroId, slot0:getHeroInfoInWarehouse(slot7.heroId).star).tag, "#")) do
-				slot8[slot16] = 1
+			for slot14, slot15 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot7.heroId, slot0:getHeroInfoInWarehouse(slot7.heroId).star).tag, "#")) do
+				if slot1[slot15] then
+					slot1[slot15] = slot1[slot15] + 1
+				else
+					slot1[slot15] = 1
+				end
 			end
 
 			if slot7.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot7.itemUid1).itemId).tag) then
-				for slot17, slot18 in ipairs(string.split(slot13.tag, "#")) do
-					slot8[slot18] = 1
+				for slot16, slot17 in ipairs(string.split(slot12.tag, "#")) do
+					if slot1[slot17] then
+						slot1[slot17] = slot1[slot17] + 1
+					else
+						slot1[slot17] = 1
+					end
 				end
-			end
-		end
-
-		for slot12, slot13 in pairs(slot8) do
-			if slot1[slot12] then
-				slot1[slot12] = slot1[slot12] + 1
-			else
-				slot1[slot12] = 1
 			end
 		end
 	end

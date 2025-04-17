@@ -150,6 +150,10 @@ function slot0.resetMap(slot0)
 		end
 	end
 
+	slot0:resetBall()
+end
+
+function slot0.resetBall(slot0)
 	if slot0._ballEntity then
 		slot0._ballEntity:reset()
 	end

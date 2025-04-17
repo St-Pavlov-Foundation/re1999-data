@@ -39,142 +39,145 @@ function slot0._editableInitView(slot0)
 
 	gohelper.setActive(slot0._btnEnter, false)
 	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.TeamComp, slot0._goTeam), Act191TeamComp, slot0)
+
+	slot0.nodeListComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
 end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
-
-	slot0.nodeListComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
-
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_unfold)
 
-	slot2 = Activity191Model.instance:getActInfo():getGameInfo()
-	slot0._txtScore.text = slot2.score
-	slot0._txtCoin.text = slot2.coin
-	slot4 = #Activity191Helper.matchKeyInArray(slot2.nodeInfo, slot2.curNode, "nodeId").selectNodeStr
+	slot1 = Activity191Model.instance:getActInfo():getGameInfo()
+	slot0._txtScore.text = slot1.score
+	slot0._txtCoin.text = slot1.coin
+	slot3 = #Activity191Helper.matchKeyInArray(slot1.nodeInfo, slot1.curNode, "nodeId").selectNodeStr
 	slot0.stageItemList = {}
 	slot0.nodeDetailMoList = slot0:getUserDataTb_()
 
-	for slot8 = 1, 3 do
-		slot10 = gohelper.findChild(slot0.viewGO, "stageList/StageItem" .. (slot4 == 1 and 2 or slot8))
+	for slot7 = 1, 3 do
+		slot9 = gohelper.findChild(slot0.viewGO, "stageList/StageItem" .. (slot3 == 1 and 2 or slot7))
 
-		if slot8 <= slot4 then
-			slot11 = Act191NodeDetailMO.New()
+		if slot7 <= slot3 then
+			slot10 = Act191NodeDetailMO.New()
 
-			slot11:init(slot3.selectNodeStr[slot8])
+			slot10:init(slot2.selectNodeStr[slot7])
 
-			slot0.nodeDetailMoList[slot8] = slot11
-			slot14 = Activity191Helper.isPvpBattle(slot11.type)
+			slot0.nodeDetailMoList[slot7] = slot10
+			slot11 = slot0:getUserDataTb_()
+			slot13 = Activity191Helper.isPvpBattle(slot10.type)
 
-			if Activity191Helper.isPveBattle(slot11.type) or slot14 then
-				slot15 = gohelper.clone(slot0._goFightStage, slot10, "Item")
+			if Activity191Helper.isPveBattle(slot10.type) or slot13 then
+				slot14 = gohelper.clone(slot0._goFightStage, slot9)
+				slot11.canvasGroup = slot14:GetComponent(gohelper.Type_CanvasGroup)
 
-				slot0:addClickCb(gohelper.findChildButton(slot15, ""), slot0.clickStage, slot0, slot8)
+				slot0:addClickCb(gohelper.findChildButton(slot14, ""), slot0.clickStage, slot0, slot7)
 
-				slot17 = gohelper.findChildButtonWithAudio(slot15, "btn_Check")
+				slot16 = gohelper.findChildButtonWithAudio(slot14, "btn_Check")
 
-				slot0:addClickCb(slot17, slot0.clickCheck, slot0, slot8)
-				gohelper.setActive(slot17, slot13)
+				slot0:addClickCb(slot16, slot0.clickCheck, slot0, slot7)
+				gohelper.setActive(slot16, slot12)
 
-				slot0:getUserDataTb_().goSelect = gohelper.findChild(slot15, "go_Select")
-				slot23 = gohelper.findChild(slot15, "reward")
+				slot11.goMask = gohelper.findChild(slot14, "stage/go_mask")
+				slot11.goSelect = gohelper.findChild(slot14, "go_Select")
+				slot22 = gohelper.findChild(slot14, "reward")
 
-				gohelper.setActive(gohelper.findChild(slot15, "stage/go_Spine"), slot13)
-				gohelper.setActive(gohelper.findChild(slot15, "stage/go_Unknown"), slot14)
-				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot15, "image_NodeNum"), "act174_stage_num_0" .. slot8)
+				gohelper.setActive(gohelper.findChild(slot14, "stage/go_Spine"), slot12)
+				gohelper.setActive(gohelper.findChild(slot14, "stage/go_Unknown"), slot13)
+				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "image_NodeNum"), "act174_stage_num_0" .. slot7)
 
-				slot24 = nil
+				slot23 = nil
 
-				if slot13 then
-					slot25 = lua_activity191_fight_event.configDict[slot11.fightEventId]
+				if slot12 then
+					slot24 = lua_activity191_fight_event.configDict[slot10.fightEventId]
 
-					UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot15, "info/image_Level"), "act191_level_" .. string.lower(slot25.fightLevel))
-					slot0:createSpine(slot18, slot25)
+					UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "info/image_Level"), "act191_level_" .. string.lower(slot24.fightLevel))
+					slot0:createSpine(slot17, slot24)
 
-					slot24 = GameUtil.splitString2(slot25.rewardView, true)
+					slot23 = GameUtil.splitString2(slot24.rewardView, true)
 
-					gohelper.setActive(gohelper.findChild(slot15, "info/go_attribute"), false)
+					gohelper.setActive(gohelper.findChild(slot14, "info/go_attribute"), false)
 				else
-					UISpriteSetMgr.instance:setAct174Sprite(slot21, "act191_level_" .. string.lower(lua_activity191_match_rank.configDict[slot11.matchInfo.rank].fightLevel))
+					UISpriteSetMgr.instance:setAct174Sprite(slot20, "act191_level_" .. string.lower(lua_activity191_match_rank.configDict[slot10.matchInfo.rank].fightLevel))
 
-					slot27 = lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot11.type]]
-					slot24 = GameUtil.splitString2(slot27.rewardView, true)
+					slot26 = lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot10.type]]
+					slot23 = GameUtil.splitString2(slot26.rewardView, true)
 
-					if GameUtil.splitString2(slot27.attribute, true) then
-						for slot32 = 1, 2 do
-							slot33 = gohelper.findChild(slot22, slot32)
+					if GameUtil.splitString2(slot26.attribute, true) then
+						for slot31 = 1, 2 do
+							slot32 = gohelper.findChild(slot21, slot31)
 
-							if slot28[slot32] then
-								UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot33, "icon"), "icon_att_" .. slot28[slot32][1])
+							if slot27[slot31] then
+								UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot32, "icon"), "icon_att_" .. slot27[slot31][1])
 
-								gohelper.findChildText(slot33, "txt_attribute").text = (slot28[slot32][2] <= 0 or string.format("+%s%%", slot35 / 10)) and string.format("%s%%", slot35 / 10)
+								gohelper.findChildText(slot32, "txt_attribute").text = (slot27[slot31][2] <= 0 or string.format("+%s%%", slot34 / 10)) and string.format("%s%%", slot34 / 10)
 							end
 
-							gohelper.setActive(slot33, slot28[slot32])
+							gohelper.setActive(slot32, slot27[slot31])
 						end
 					end
 
-					gohelper.setActive(slot22, slot28)
+					gohelper.setActive(slot21, slot27)
 				end
 
-				for slot28, slot29 in ipairs(slot24) do
-					slot31 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot23), Act191RewardItem)
+				for slot27, slot28 in ipairs(slot23) do
+					slot30 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot22), Act191RewardItem)
 
-					slot31:setData(slot29[1], slot29[2])
-					slot31:setExtraParam({
-						index = slot28,
+					slot30:setData(slot28[1], slot28[2])
+					slot30:setExtraParam({
+						index = slot27,
 						fromView = slot0.viewName
 					})
 				end
 			else
-				slot15 = gohelper.clone(slot0._goNormalStage, slot10)
+				slot14 = gohelper.clone(slot0._goNormalStage, slot9)
+				slot11.canvasGroup = slot14:GetComponent(gohelper.Type_CanvasGroup)
 
-				slot0:addClickCb(gohelper.findChildButton(slot15, ""), slot0.clickStage, slot0, slot8)
+				slot0:addClickCb(gohelper.findChildButton(slot14, ""), slot0.clickStage, slot0, slot7)
 
-				slot17 = gohelper.findChildSingleImage(slot15, "stage/simage_Stage")
-				slot12.goSelect = gohelper.findChild(slot15, "go_Select")
-				slot19 = gohelper.findChildText(slot15, "info/txt_Name")
-				slot20 = gohelper.findChildText(slot15, "detail/scroll_desc/Viewport/Content/txt_Desc")
-				slot21 = gohelper.findChild(slot15, "tag")
+				slot16 = gohelper.findChildSingleImage(slot14, "stage/simage_Stage")
+				slot11.goSelect = gohelper.findChild(slot14, "go_Select")
+				slot18 = gohelper.findChildText(slot14, "info/txt_Name")
+				slot19 = gohelper.findChildText(slot14, "detail/scroll_desc/Viewport/Content/txt_Desc")
+				slot20 = gohelper.findChild(slot14, "tag")
 
-				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot15, "image_NodeNum"), "act174_stage_num_0" .. slot8)
+				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "image_NodeNum"), "act174_stage_num_0" .. slot7)
 
-				slot24 = nil
+				slot23 = nil
 
-				if Activity191Helper.isShopNode(slot11.type) then
-					slot25 = lua_activity191_shop.configDict[slot0.actId][slot11.shopId]
+				if Activity191Helper.isShopNode(slot10.type) then
+					slot24 = lua_activity191_shop.configDict[slot0.actId][slot10.shopId]
 
-					if slot11.type == Activity191Enum.NodeType.RoleShop then
-						gohelper.findChildText(slot15, "tag/txt_Tag").text = lua_activity191_const.configDict[Activity191Enum.ConstKey.RoleTag].value2
-					elseif slot11.type == Activity191Enum.NodeType.CollectionShop then
-						slot22.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.CollectionTag].value2
-					elseif tabletool.indexOf(Activity191Enum.TagShopField, slot11.type) then
-						slot22.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.FetterTag].value2
+					if slot10.type == Activity191Enum.NodeType.RoleShop then
+						gohelper.findChildText(slot14, "tag/txt_Tag").text = lua_activity191_const.configDict[Activity191Enum.ConstKey.RoleTag].value2
+					elseif slot10.type == Activity191Enum.NodeType.CollectionShop then
+						slot21.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.CollectionTag].value2
+					elseif tabletool.indexOf(Activity191Enum.TagShopField, slot10.type) then
+						slot21.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.FetterTag].value2
 					end
 
-					slot19.text = slot25.name
-					slot20.text = slot25.desc
-					slot24 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_3")
-				elseif slot11.type == Activity191Enum.NodeType.Enhance then
-					slot19.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceTitle].value2
-					slot20.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceDesc].value2
-					slot24 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_2")
-				elseif slot11.type == Activity191Enum.NodeType.BattleEvent or slot11.type == Activity191Enum.NodeType.RewardEvent then
-					slot25 = lua_activity191_event.configDict[slot11.eventId]
-					slot19.text = slot25.title
-					slot20.text = slot25.outDesc
-					slot24 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_1")
+					slot18.text = slot24.name
+					slot19.text = slot24.desc
+					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_3")
+				elseif slot10.type == Activity191Enum.NodeType.Enhance then
+					slot18.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceTitle].value2
+					slot19.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceDesc].value2
+					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_2")
+				elseif slot10.type == Activity191Enum.NodeType.BattleEvent or slot10.type == Activity191Enum.NodeType.RewardEvent then
+					slot24 = lua_activity191_event.configDict[slot10.eventId]
+					slot18.text = slot24.title
+					slot19.text = slot24.outDesc
+					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_1")
 
-					gohelper.setActive(slot20, true)
+					gohelper.setActive(slot19, true)
 				end
 
-				gohelper.setActive(slot21, slot23 and slot11.type ~= Activity191Enum.NodeType.MixStore)
-				slot17:LoadImage(slot24)
+				gohelper.setActive(slot20, slot22 and slot10.type ~= Activity191Enum.NodeType.MixStore)
+				slot16:LoadImage(slot23)
 			end
 
-			gohelper.setActive(slot10, true)
+			gohelper.setActive(slot9, true)
 
-			slot0.stageItemList[slot8] = slot12
+			slot0.stageItemList[slot7] = slot11
 		end
 	end
 
@@ -204,7 +207,10 @@ function slot0.clickStage(slot0, slot1)
 	slot0.selectIndex = slot1
 
 	for slot5, slot6 in ipairs(slot0.stageItemList) do
+		slot6.canvasGroup.alpha = slot5 == slot1 and 1 or 0.5
+
 		gohelper.setActive(slot6.goSelect, slot5 == slot1)
+		gohelper.setActive(slot6.goMask, slot5 ~= slot1)
 	end
 end
 

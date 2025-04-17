@@ -3274,14 +3274,6 @@
   {
     "id": 20613,
     "battleId": 2613,
-    "monster": 261302,
-    "invokeType": 9,
-    "param": "630407_change2",
-    "switch": "Fightboos_Third"
-  },
-  {
-    "id": 20613,
-    "battleId": 2613,
     "monster": 0,
     "invokeType": 6,
     "param": "0",
@@ -4678,5 +4670,29 @@
     "invokeType": 8,
     "param": "690401_change",
     "switch": "Fightboos_Second"
+  },
+  {
+    "id": 20613,
+    "battleId": 2613,
+    "monster": 0,
+    "invokeType": 11,
+    "param": "0",
+    "switch": ""
+  },
+  {
+    "id": 20613,
+    "battleId": 2613,
+    "monster": 0,
+    "invokeType": 12,
+    "param": "0",
+    "switch": ""
+  },
+  {
+    "id": 20613,
+    "battleId": 2613,
+    "monster": 261302,
+    "invokeType": 15,
+    "param": "0",
+    "switch": "Fightboos_Third"
   }
 ]

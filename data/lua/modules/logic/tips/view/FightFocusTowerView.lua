@@ -86,7 +86,7 @@ function slot0.onShow(slot0)
 end
 
 function slot0.refreshView(slot0)
-	slot1 = slot0.bossMo and slot0.bossMo.level or 1
+	slot1 = slot0.bossMo and slot0.bossMo.trialLevel > 0 and slot0.bossMo.trialLevel or slot0.bossMo and slot0.bossMo.level > 0 and slot0.bossMo.level or 1
 	slot0.txtLev.text = tostring(slot1)
 	slot0.txtName.text = slot0.config.name
 
@@ -103,7 +103,7 @@ function slot0.refreshPassiveSkill(slot0)
 	for slot6, slot7 in ipairs(slot0.passiveSkillItems) do
 		if TowerConfig.instance:getPassiveSKills(slot0.bossId)[slot6] then
 			gohelper.setActive(slot7.go, true)
-			gohelper.setActive(slot7.goOn, TowerConfig.instance:isSkillActive(slot0.bossId, slot8[1], slot0.bossMo and slot0.bossMo.level or 1))
+			gohelper.setActive(slot7.goOn, TowerConfig.instance:isSkillActive(slot0.bossId, slot8[1], slot0.bossMo and slot0.bossMo.trialLevel > 0 and slot0.bossMo.trialLevel or slot0.bossMo and slot0.bossMo.level > 0 and slot0.bossMo.level or 1))
 		else
 			gohelper.setActive(slot7.go, false)
 		end

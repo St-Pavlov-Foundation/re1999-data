@@ -101,7 +101,7 @@ function slot0.initByServerData(slot0)
 		slot0:setEndLessModelLayer(slot1.endLessLayer)
 		slot0:setEndLessBattleProgress(slot1.endLessBattleProgress)
 
-		if slot1.endLessBattleProgress == LengZhou6Enum.BattleProgress.selectSkill and slot1.endLessLayer ~= LengZhou6Enum.DefaultEndLessBeginRound then
+		if slot1.endLessLayer ~= LengZhou6Enum.DefaultEndLessBeginRound or slot1.endLessBattleProgress ~= LengZhou6Enum.BattleProgress.selectSkill then
 			slot0._isFirstEnterLayer = false
 		end
 	end

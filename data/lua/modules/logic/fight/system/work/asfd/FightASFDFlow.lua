@@ -99,7 +99,7 @@ function slot0.checkHasMonsterChangeEffectType(slot0, slot1)
 end
 
 function slot0.onStart(slot0)
-	if FightASFDHelper.isALFPullOutStep(slot0.stepMo, slot0.curIndex) then
+	if FightASFDHelper.isALFPullOutStep(slot0.fightStepData, slot0.curIndex) then
 		slot0:createPullOutSeq()
 	else
 		slot0:createNormalSeq()

@@ -86,7 +86,8 @@ end
 slot3 = {
 	ViewName.VersionActivity2_7StoreView,
 	ViewName.VersionActivity2_7TaskView,
-	ViewName.DungeonRewardView
+	ViewName.DungeonRewardView,
+	ViewName.StoryFrontView
 }
 
 function slot0._onOpenView(slot0, slot1)

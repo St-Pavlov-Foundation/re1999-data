@@ -9,6 +9,7 @@ end
 function slot0.reInit(slot0)
 	slot0.viewOpenTimeMap = {}
 	slot0.startTime = nil
+	slot0.actId = VersionActivity2_7Enum.ActivityId.Act191
 end
 
 function slot0.setActInfo(slot0, slot1, slot2)
@@ -66,6 +67,7 @@ function slot0.statViewClose(slot0, slot1, slot2, slot3)
 	end
 
 	StatController.instance:track(StatEnum.EventName.Act191CloseView, {
+		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1)),
 		[StatEnum.EventProperties.Act191BaseInfo] = slot5,
 		[StatEnum.EventProperties.Act191NodeInfo] = slot6,
 		[StatEnum.EventProperties.ViewName] = slot1,
@@ -97,6 +99,7 @@ function slot0.statButtonClick(slot0, slot1, slot2)
 	end
 
 	StatController.instance:track(StatEnum.EventName.ButtonClick, {
+		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1)),
 		[StatEnum.EventProperties.Act191BaseInfo] = slot4,
 		[StatEnum.EventProperties.Act191NodeInfo] = slot6,
 		[StatEnum.EventProperties.ViewName] = slot1,
@@ -133,7 +136,7 @@ function slot0.statGameTime(slot0, slot1)
 		[StatEnum.EventProperties.Act191NodeInfo] = slot4,
 		[StatEnum.EventProperties.ViewName] = slot1,
 		[StatEnum.EventProperties.UseTime] = slot2,
-		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(VersionActivity2_7Enum.ActivityId.Act191, "Act191GameCostTime", 1))
+		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1))
 	})
 end
 

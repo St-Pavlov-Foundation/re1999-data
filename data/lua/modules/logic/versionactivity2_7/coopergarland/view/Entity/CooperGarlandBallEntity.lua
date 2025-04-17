@@ -69,7 +69,7 @@ function slot0.setVisible(slot0, slot1, slot2)
 	transformhelper.setLocalPos(slot0.ballRoot, slot3.x, slot3.y, slot3.z)
 	transformhelper.setLocalPos(slot0.trans, 0, 0, 0)
 
-	slot0._isVisible = slot1 and true or false
+	slot0._isVisible = slot1 and CooperGarlandGameModel.instance:getSceneOpenAnimShowBall() and true or false
 
 	gohelper.setActive(slot0.ballRoot, slot0._isVisible)
 	slot0:checkFreeze()

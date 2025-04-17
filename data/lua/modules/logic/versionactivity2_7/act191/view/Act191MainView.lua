@@ -62,21 +62,8 @@ function slot0._btnShopOnClick(slot0)
 end
 
 function slot0._btnEnterGameOnClick(slot0)
-	if slot0.actInfo:getGameInfo().state == Activity191Enum.GameState.None then
-		Activity191Rpc.instance:sendStart191GameRequest(slot0.actId, slot0.enterReply, slot0)
-	elseif slot1.state == Activity191Enum.GameState.Normal then
-		Activity191Controller.instance:enterGame()
-	else
-		Activity191Rpc.instance:sendEndAct191GameRequest(slot0.actId)
-	end
-
+	Activity191Controller.instance:nextStep()
 	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnEnterGameOnClick")
-end
-
-function slot0.enterReply(slot0, slot1, slot2)
-	if slot2 == 0 then
-		Activity191Controller.instance:enterGame()
-	end
 end
 
 function slot0._editableInitView(slot0)
@@ -85,11 +72,9 @@ function slot0._editableInitView(slot0)
 	slot0.actId = Activity191Model.instance:getCurActId()
 end
 
-function slot0.onUpdateParam(slot0)
-end
-
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
+	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshCurrency, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, slot0.refreshUI, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateBadgeMo, slot0.refreshBadge, slot0)
 	slot0:addEventCb(Activity191Controller.instance, Activity191Event.EndGame, slot0.checkGameEndInfo, slot0)
@@ -102,9 +87,6 @@ end
 
 function slot0.onClose(slot0)
 	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
-end
-
-function slot0.onDestroyView(slot0)
 end
 
 function slot0.refreshUI(slot0)
@@ -162,7 +144,10 @@ end
 
 function slot0.checkGameEndInfo(slot0)
 	if slot0.actInfo:getGameEndInfo() then
-		Activity191Controller.instance:openSettlementView()
+		if Activity191Model.instance:getActInfo():getGameInfo().curNode ~= 0 and slot2.curStage ~= 0 then
+			Activity191Controller.instance:openSettlementView()
+		end
+
 		slot0:refreshUI()
 
 		return true

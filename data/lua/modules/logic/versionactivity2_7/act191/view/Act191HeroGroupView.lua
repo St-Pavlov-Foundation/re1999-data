@@ -10,10 +10,10 @@ function slot0.onInitView(slot0)
 	slot0._goEnemyTeam = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/enemycontain/enemyList/#go_EnemyTeam")
 	slot0._goRewardList = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/rewardpreview/#go_RewardList")
 	slot0._goRewardItem = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/rewardpreview/#go_RewardList/#go_RewardItem")
-	slot0._btnDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/#scroll_Info/infocontain/autofight/title/#btn_Detail")
-	slot0._goDetail = gohelper.findChild(slot0.viewGO, "container/#scroll_Info/infocontain/autofight/title/#go_Detail")
-	slot0._btnCloseDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "container/#scroll_Info/infocontain/autofight/title/#go_Detail/#btn_CloseDetail")
 	slot0._toggleAutoFight = gohelper.findChildToggle(slot0.viewGO, "container/#scroll_Info/infocontain/autofight/bg/#toggle_AutoFight")
+	slot0._btnDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#btn_Detail")
+	slot0._goDetail = gohelper.findChild(slot0.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#go_Detail")
+	slot0._btnCloseDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#go_Detail/#btn_CloseDetail")
 	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
 
 	if slot0._editableInitView then
@@ -44,7 +44,23 @@ function slot0._btnCloseDetailOnClick(slot0)
 end
 
 function slot0._btnStartOnClick(slot0)
-	Activity191Controller.instance:startFight()
+	if slot0.fighting then
+		return
+	end
+
+	if not slot0.gameInfo:teamHasMainHero() then
+		GameFacade.showToast(ToastEnum.Act191StartFightTip)
+
+		return
+	end
+
+	slot1 = DungeonModel.instance.curSendEpisodeId
+	slot2 = DungeonConfig.instance:getEpisodeCO(slot1)
+
+	FightController.instance:setFightParamByEpisodeAndBattle(slot1, slot2.battleId):setDungeon(slot2.chapterId, slot1)
+	DungeonRpc.instance:sendStartDungeonRequest(slot2.chapterId, slot1)
+
+	slot0.fighting = true
 end
 
 function slot0._btnEnemyOnClick(slot0)

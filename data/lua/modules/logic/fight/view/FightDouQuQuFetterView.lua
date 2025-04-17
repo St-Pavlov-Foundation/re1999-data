@@ -28,9 +28,7 @@ function slot0.onOpen(slot0)
 	for slot5, slot6 in pairs(lua_activity191_relation.configDict) do
 		slot1[slot7] = slot1[slot6.tag] or {}
 
-		if slot6.activeNum > 0 then
-			table.insert(slot1[slot7], slot6)
-		end
+		table.insert(slot1[slot7], slot6)
 	end
 
 	for slot5, slot6 in pairs(slot1) do
@@ -59,9 +57,15 @@ function slot0.refreshFetter(slot0)
 		end
 
 		for slot6, slot7 in ipairs(slot2) do
-			for slot11, slot12 in ipairs(slot0.configDic[slot7.key]) do
-				if slot12.activeNum <= slot7.value then
-					slot7.active = true
+			for slot11 = #slot0.configDic[slot7.key], 1, -1 do
+				if slot0.configDic[slot7.key][slot11].activeNum <= slot7.value then
+					slot7.config = slot12
+
+					if slot12.activeNum > 0 then
+						slot7.active = true
+					end
+
+					break
 				end
 			end
 		end
@@ -79,6 +83,16 @@ function slot0.sortItemListData(slot0, slot1)
 	elseif not slot2 and slot3 then
 		return false
 	else
+		if slot0.config.level == slot1.config.level then
+			if slot0.value == slot1.value then
+				return slot4.id < slot5.id
+			else
+				return slot1.value < slot0.value
+			end
+		else
+			return slot5.level < slot4.level
+		end
+
 		return false
 	end
 end
@@ -102,6 +116,7 @@ function slot0.onItemShow(slot0, slot1, slot2, slot3)
 	slot6.text = string.format("<%s>%s</color><%s>/%s</color>", slot10 == 0 and "#ED7F7F" or "#F0E2CA", slot8, slot10 == 0 and "#838383" or "#F0E2CA", slot9.activeNum)
 
 	UISpriteSetMgr.instance:setAct174Sprite(slot4, "act174_shop_tag_" .. slot11.tagBg)
+	ZProj.UGUIHelper.SetGrayscale(slot4.gameObject, slot10 == 0)
 	Activity191Helper.setFetterIcon(slot5, slot11.icon)
 	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot1), slot0.onClickItem, {
 		isFight = true,

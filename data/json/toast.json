@@ -8326,5 +8326,21 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 270109,
+    "tips": "刷新次数已耗尽",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 270110,
+    "tips": "请上阵主战英雄",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

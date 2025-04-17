@@ -68,7 +68,7 @@ function slot0.onOpen(slot0)
 	slot0:com_registFightEvent(FightEvent.BeforeDeadEffect, slot0._onBeforeDeadEffect)
 	slot0:com_registFightEvent(FightEvent.PushTeamInfo, slot0._onMonsterChange)
 	slot0:com_registFightEvent(FightEvent.OnSummon, slot0._checkBossAndUpdate)
-	slot0:com_registFightEvent(FightEvent.ForceUpdatePerformanceData, slot0._onForceUpdatePerformanceData)
+	slot0:com_registFightEvent(FightEvent.CoverPerformanceEntityData, slot0.onCoverPerformanceEntityData)
 	slot0:com_registFightEvent(FightEvent.ChangeCareer, slot0._onChangeCareer)
 	slot0:com_registFightEvent(FightEvent.ChangeShield, slot0._onChangeShield)
 
@@ -564,7 +564,7 @@ function slot0._onChangeShield(slot0, slot1)
 	end
 end
 
-function slot0._onForceUpdatePerformanceData(slot0, slot1)
+function slot0.onCoverPerformanceEntityData(slot0, slot1)
 	if not slot0._bossEntityMO or slot1 ~= slot0._bossEntityMO.id then
 		return
 	end

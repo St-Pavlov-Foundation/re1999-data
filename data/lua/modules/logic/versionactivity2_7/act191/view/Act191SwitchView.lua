@@ -18,12 +18,14 @@ end
 function slot0.removeEvents(slot0)
 end
 
-function slot0.onClickModalMask(slot0)
+function slot0._onEscBtnClick(slot0)
 end
 
 function slot0._editableInitView(slot0)
 	slot0.actId = Activity191Model.instance:getCurActId()
 	slot0.nodeItemList = {}
+
+	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
 end
 
 function slot0.onOpen(slot0)

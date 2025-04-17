@@ -50,6 +50,12 @@ function slot0._btnDetailOnClick(slot0)
 end
 
 function slot0._btnFreshShopOnClick(slot0)
+	if slot0.freshLimit and slot0.freshLimit <= slot0.nodeDetailMo.shopFreshNum then
+		GameFacade.showToast(ToastEnum.Act191FreshLimit)
+
+		return
+	end
+
 	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnFreshShopOnClick")
 
 	if slot0.gameInfo.coin < slot0:getFreshShopCost() then
@@ -70,11 +76,14 @@ function slot0.delayFresh(slot0)
 end
 
 function slot0._btnNextOnClick(slot0)
-	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnNextOnClick")
+	if slot0.isLeaving then
+		return
+	end
 
 	slot0.isLeaving = true
 
 	Activity191Rpc.instance:sendLeave191ShopRequest(slot0.actId, slot0.onLeaveShop, slot0)
+	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnNextOnClick")
 end
 
 function slot0._editableInitView(slot0)
@@ -138,19 +147,24 @@ end
 
 function slot0.refreshShop(slot0)
 	if slot0.freshLimit and slot0.freshLimit <= slot0.nodeDetailMo.shopFreshNum then
-		gohelper.setActive(slot0._btnFreshShop, false)
+		ZProj.UGUIHelper.SetGrayscale(slot0._btnFreshShop.gameObject, true)
 	else
-		gohelper.setActive(slot0._btnFreshShop, true)
-		slot0.animBtnFresh:Play(slot0:getFreshShopCost() == 0 and "first" or "idle", 0, 0)
-
-		slot0._txtFreshCost.text = slot1
+		ZProj.UGUIHelper.SetGrayscale(slot0._btnFreshShop.gameObject, false)
 	end
 
+	slot0.animBtnFresh:Play(slot0:getFreshShopCost() == 0 and "first" or "idle", 0, 0)
+
+	slot0._txtFreshCost.text = slot1
 	slot0._txtCoin.text = slot0.gameInfo.coin
 
-	for slot4 = 1, 6 do
-		if slot0.nodeDetailMo.shopPosMap[tostring(slot4)] then
-			(slot0.shopItemList[slot4] or slot0:createShopItem(slot4)):setData(slot5, tabletool.indexOf(slot0.nodeDetailMo.boughtSet, slot4))
+	for slot6 = 1, 6 do
+		if slot0.nodeDetailMo.shopPosMap[tostring(slot6)] then
+			slot8 = slot0.shopItemList[slot6] or slot0:createShopItem(slot6)
+
+			slot8:setData(slot7, tabletool.indexOf(slot0.nodeDetailMo.boughtSet, slot6))
+			gohelper.setActive(slot8.go, true)
+		elseif slot8 then
+			gohelper.setActive(slot8.go, false)
 		end
 	end
 end
@@ -170,6 +184,8 @@ function slot0.onLeaveShop(slot0, slot1, slot2)
 		Activity191Controller.instance:nextStep()
 		ViewMgr.instance:closeView(slot0.viewName)
 	end
+
+	slot0.isLeaving = false
 end
 
 function slot0.getFreshShopCost(slot0)

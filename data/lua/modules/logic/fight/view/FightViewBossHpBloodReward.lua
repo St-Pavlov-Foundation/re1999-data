@@ -35,7 +35,7 @@ end
 
 function slot0.onAfterCorrectData(slot0)
 	slot0:refreshItems()
-	slot0:com_playTween(FightTweenType.DOFillAmount, slot0.hpImg, (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
+	slot0.tweenComp:DOFillAmount(slot0.hpImg, (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
 end
 
 function slot0.onPlayTimelineHit(slot0, slot1, slot2)
@@ -61,7 +61,7 @@ function slot0.onPlayTimelineHit(slot0, slot1, slot2)
 	end
 
 	if slot3 ~= 0 then
-		slot0.tweenComp:DOFillAmount(slot0.hpImg, slot0.hpImg.fillAmount + slot3 / 1000, 0.2)
+		slot0:refreshHp(slot0.hpImg.fillAmount + slot3 / 1000)
 	end
 end
 
@@ -69,13 +69,15 @@ function slot0.hideEffect(slot0)
 	gohelper.setActive(slot0.hpEffect, false)
 end
 
-function slot0.refreshHp(slot0)
-	slot0.hpImg.fillAmount = (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000
+function slot0.refreshHp(slot0, slot1)
+	slot0.tweenComp:DOFillAmount(slot0.hpImg, slot1 or (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
 end
 
-function slot0.onUpdateFightParam(slot0, slot1)
+function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4, slot5)
 	if slot1 == FightParamData.ParamKey.ACT191_MIN_HP_RATE then
 		slot0:refreshItems()
+	elseif slot1 == FightParamData.ParamKey.ACT191_CUR_HP_RATE and not slot0.invokedEffect[slot5.clientId] then
+		slot0:refreshHp()
 	end
 end
 

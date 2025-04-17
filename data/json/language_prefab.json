@@ -19362,5 +19362,9 @@
   {
     "id": "p_act191herogroupview_txt_autotips",
     "lang": "开启后奖励增加，但战斗中无法取消"
+  },
+  {
+    "id": "p_act191herogroupview_txt_add",
+    "lang": "候场选手每增加1个，入场选手最大生命+5%；\n候场选手每增加1塑，最大生命加成额外+5%"
   }
 ]

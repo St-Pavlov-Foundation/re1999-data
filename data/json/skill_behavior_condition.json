@@ -22854,5 +22854,9 @@
   {
     "id": 42101,
     "type": "HasTypeBuffMoreThan"
+  },
+  {
+    "id": 552,
+    "type": "Random"
   }
 ]

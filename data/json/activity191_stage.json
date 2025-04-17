@@ -6,8 +6,8 @@
     "initStage": 1,
     "rule": "1011",
     "name": "1",
-    "score": 400,
-    "coin": 20
+    "score": 300,
+    "coin": 40
   },
   {
     "activityId": 12701,
@@ -16,8 +16,8 @@
     "initStage": 0,
     "rule": "1021",
     "name": "2",
-    "score": 600,
-    "coin": 40
+    "score": 500,
+    "coin": 60
   },
   {
     "activityId": 12701,
@@ -26,7 +26,7 @@
     "initStage": 0,
     "rule": "1031",
     "name": "3",
-    "score": 800,
-    "coin": 60
+    "score": 700,
+    "coin": 0
   }
 ]

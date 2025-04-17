@@ -14430,5 +14430,229 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "己方队伍每累计损失3000生命，薪血+1（受到攻击损失的生命仅记录30%）"
+  },
+  {
+    "id": 6270101,
+    "name": "结构分解<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成自身攻击*150%的自身创伤类型的伤害（视为额外行动）"
+  },
+  {
+    "id": 6270102,
+    "name": "额外行动",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270111,
+    "name": "仪式",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270132,
+    "name": "燃血",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270142,
+    "name": "电击",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对目标造成自身攻击*50%的自身创伤类型的伤害（不视为额外行动）"
+  },
+  {
+    "id": 6270143,
+    "name": "电击Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对目标造成自身攻击*100%的自身创伤类型的伤害（不视为额外行动）"
+  },
+  {
+    "id": 6270161,
+    "name": "切片冲击",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成自身攻击*100%的现实创伤"
+  },
+  {
+    "id": 6270162,
+    "name": "切片冲击Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成自身攻击*200%的现实创伤"
+  },
+  {
+    "id": 6270171,
+    "name": "治疗",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270181,
+    "name": "噩梦一瞥",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "敌方目标每累计获得10层【燃烧】/1个【中毒】时，额外获得1种随机异常状态；敌我全体受到伤害降低30%"
+  },
+  {
+    "id": 6270182,
+    "name": "毒蛇撕咬",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对敌方全体造成自身攻击*50%的自身创伤类型的伤害，敌方共计每携带2种【状态异常】，则额外造成目标攻击*5%本源创伤（最多提升25%本源创伤）"
+  },
+  {
+    "id": 6270201,
+    "name": "触底反弹",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270202,
+    "name": "荨麻披甲<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时若达到层数上限，对敌方全体造成自身现实防御*200%的本源创伤（最多叠加3层，生效后移除）"
+  },
+  {
+    "id": 6270221,
+    "name": "重塑之手",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270222,
+    "name": "重塑之口",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "携带【重塑之口】角色：回合开始时，﹝吞噬﹞后方相邻角色"
+  },
+  {
+    "id": 6270243,
+    "name": "沙龙邀请函",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270256,
+    "name": "挑战信",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270271,
+    "name": "偷“芯”人",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270281,
+    "name": "火图腾<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对敌方全体造成目标攻击*40%的本源创伤，敌方全体每共计携带20层【燃烧】，则额外附加目标攻击*10%的本源创伤；命中后赋予敌方全体2层【燃烧】"
+  },
+  {
+    "id": 6270301,
+    "name": "意识唤醒者",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270302,
+    "name": "复苏",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到致命攻击时不会退场，并回复自身30%最大生命；（生效后减少1层，可以叠加，不可驱散）"
+  },
+  {
+    "id": 6270311,
+    "name": "人道主义",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270321,
+    "name": "传说背后",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270333,
+    "name": "旧日阴霾",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270341,
+    "name": "钨丝破坏者",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6270351,
+    "name": "第一滴雨",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 6271141,
+    "name": "具象癫狂",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成50%精神创伤；本次攻击附加目标攻击*50%的本源创伤"
+  },
+  {
+    "id": 6270519,
+    "name": "荆刺",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "反弹对方自身攻击*15%的本源创伤（可叠加，最多叠加10层）"
   }
 ]

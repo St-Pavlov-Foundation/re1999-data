@@ -190,7 +190,9 @@ function slot0.replaceSkill(slot0, slot1)
 end
 
 function slot0.buildDesc(slot0, slot1, slot2)
-	return uv0.addColor(string.gsub(slot0, slot1, string.format("【<u><link=%s>%s</link></u>】", slot2, "%1")))
+	slot3 = nil
+
+	return uv0.addColor(string.gsub(slot0, slot1, (not slot2 or string.format("【<u><link=%s>%s</link></u>】", slot2, "%1")) and "【<u><link=%1>%1</link></u>】"))
 end
 
 function slot0.addColor(slot0)
@@ -219,8 +221,14 @@ function slot0.clickHyperLinkItem(slot0, slot1)
 end
 
 function slot0.clickHyperLinkSkill(slot0, slot1)
+	if tonumber(slot0) then
+		SkillHelper.defaultClick(slot0, slot1)
+
+		return
+	end
+
 	ViewMgr.instance:openView(ViewName.Act191BuffTipView, {
-		effId = slot0,
+		effectId = slot0,
 		clickPosition = slot1
 	})
 end

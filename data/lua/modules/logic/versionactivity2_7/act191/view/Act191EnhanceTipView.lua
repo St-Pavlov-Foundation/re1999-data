@@ -53,7 +53,7 @@ function slot0.onOpen(slot0)
 		slot0._txtName.text = slot2.name
 		slot0._txtDesc.text = slot2.desc
 
-		if lua_activity191_effect.configDict[tonumber(slot2.effects)] then
+		if lua_activity191_effect.configDict[string.splitToNumber(slot2.effects, "|")[1]] then
 			if slot5.type == Activity191Enum.EffectType.EnhanceHero then
 				slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot2.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot5.typeParam)
 

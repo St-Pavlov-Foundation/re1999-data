@@ -116,7 +116,7 @@ slot0.SortRule = {
 }
 slot0.HyperLinkPattern = {
 	EnhanceDestiny = "「(.-)」",
-	SkillDesc = "<(.-)>",
+	SkillDesc = "﹝(.-)﹞",
 	EnhanceItem = "『(.-)』"
 }
 slot0.PrefabPath = {

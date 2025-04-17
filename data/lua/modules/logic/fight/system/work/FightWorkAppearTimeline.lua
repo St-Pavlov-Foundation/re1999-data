@@ -73,19 +73,6 @@ function slot0._beforePlayAppearTimeline(slot0)
 	end
 
 	gohelper.setActive(ViewMgr.instance:getUILayer(UILayerName.Hud), false)
-
-	if slot0._timeline == "650402_born" then
-		for slot6, slot7 in ipairs(FightHelper.getAllEntitys()) do
-			if slot7.nameUI then
-				slot7.nameUI:setActive(false)
-			end
-		end
-
-		slot0._targetEntity:setAlpha(1, 0)
-		slot0._targetEntity.spine:getSkeletonAnim():SetMixDuration(0)
-		slot0._targetEntity.spine:play(SpineAnimState.born, false, true)
-		slot0._targetEntity.spine:getSkeletonAnim():ClearMixDuration()
-	end
 end
 
 function slot0._onOneSpineLoaded(slot0, slot1)

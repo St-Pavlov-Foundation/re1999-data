@@ -74,22 +74,24 @@ function slot0.initHeroAndEquipItem(slot0)
 	slot0.equipItemList = {}
 
 	for slot7 = 1, 8 do
-		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot2, "hero" .. slot7), Act191HeroGroupItem1, slot0)
+		slot8 = gohelper.cloneInPlace(slot2, "hero" .. slot7)
+		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(slot8, Act191HeroGroupItem1, slot0)
 
 		slot9:setIndex(slot7)
 
 		slot0.heroItemList[slot7] = slot9
 
-		CommonDragHelper.instance:registerDragObj(slot9.go, slot0._onBeginDrag, nil, slot0._onEndDrag, slot0._checkDrag, slot0, slot7)
+		CommonDragHelper.instance:registerDragObj(slot8, slot0._onBeginDrag, nil, slot0._onEndDrag, slot0._checkDrag, slot0, slot7)
 
 		if slot7 <= 4 then
-			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
+			slot8 = gohelper.cloneInPlace(slot3, "equip" .. slot7)
+			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(slot8, Act191HeroGroupItem2, slot0)
 
 			slot10:setIndex(slot7)
 
 			slot0.equipItemList[slot7] = slot10
 
-			CommonDragHelper.instance:registerDragObj(slot10.go, slot0._onBeginDrag1, nil, slot0._onEndDrag1, slot0._checkDrag1, slot0, slot7)
+			CommonDragHelper.instance:registerDragObj(slot8, slot0._onBeginDrag1, nil, slot0._onEndDrag1, slot0._checkDrag1, slot0, slot7)
 		end
 	end
 
@@ -149,10 +151,12 @@ function slot0._checkDrag(slot0, slot1)
 	return false
 end
 
-function slot0._onBeginDrag(slot0, slot1, slot2)
+function slot0._onBeginDrag(slot0, slot1)
 	if slot0._nowDragingIndex then
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_raise)
 
 	slot0._nowDragingIndex = slot1
 
@@ -177,6 +181,8 @@ function slot0._onEndDrag(slot0, slot1, slot2)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_release)
+
 	slot5 = slot0.heroItemList[slot4]
 
 	gohelper.setAsLastSibling(slot5.go)
@@ -195,10 +201,6 @@ end
 
 function slot0._setHeroItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = recthelper.rectToRelativeAnchorPos(slot0.heroPosTrList[slot2].position, slot0.heroContainer.transform)
-
-	if slot1 and slot1.resetEquipPos then
-		slot1:resetEquipPos()
-	end
 
 	if slot3 then
 		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
@@ -224,6 +226,8 @@ function slot0._onBeginDrag1(slot0, slot1, slot2)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_raise)
+
 	slot0._nowDragingIndex = slot1
 
 	gohelper.setAsLastSibling(slot0.equipItemList[slot1].go)
@@ -247,6 +251,8 @@ function slot0._onEndDrag1(slot0, slot1, slot2)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Team_release)
+
 	slot5 = slot0.equipItemList[slot4]
 
 	gohelper.setAsLastSibling(slot5.go)
@@ -265,10 +271,6 @@ end
 
 function slot0._setEquipItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot7 = recthelper.rectToRelativeAnchorPos(slot0.equipPosTrList[slot2].position, slot0.heroContainer.transform)
-
-	if slot1 and slot1.resetEquipPos then
-		slot1:resetEquipPos()
-	end
 
 	if slot3 then
 		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)

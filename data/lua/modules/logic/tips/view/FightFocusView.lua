@@ -1636,19 +1636,7 @@ function slot0.refreshDouQuQuFetter(slot0)
 end
 
 function slot0.refreshDouQuQuStar(slot0)
-	if not FightDataHelper.fieldMgr.customData then
-		return
-	end
-
-	if slot1[FightCustomData.CustomDataType.Act191] then
-		gohelper.setActive(slot0.levelRoot, false)
-
-		if slot0.douQuQuStarView then
-			slot0.douQuQuStarView:refreshEntityMO(slot0._entityMO)
-		else
-			slot0.douQuQuStarView = slot0:com_openSubView(FightDouQuQuStarView, "ui/viewres/fight/fight_act191qualityview.prefab", slot0.go_quality, slot0._entityMO)
-		end
-	end
+	gohelper.setActive(slot0.levelRoot, false)
 end
 
 function slot0.refreshDouQuQuCollection(slot0)

@@ -78,7 +78,7 @@ end
 function slot0.onItemClick(slot0, slot1)
 	slot2 = false
 
-	for slot6, slot7 in ipairs(slot0.customData.updataCollectionIds) do
+	for slot6, slot7 in ipairs(slot0.customData.updateCollectionIds) do
 		if slot7 == slot1 then
 			slot2 = true
 

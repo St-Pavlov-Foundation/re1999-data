@@ -31,20 +31,35 @@ function slot0.onStart(slot0, slot1)
 		return
 	end
 
-	if SLFramework.FrameworkSettings.IsEditor then
-		slot0:_refreshPerformanceData(true)
-	end
-
+	slot0:_refreshPerformanceData(true)
 	slot0:onDone(true)
 end
 
 function slot0._refreshPerformanceData(slot0)
-	for slot5, slot6 in pairs(FightLocalDataMgr.instance.entityMgr:getAllEntityMO()) do
-		if not slot6:isStatusDead() then
-			slot7 = slot6.id
+	for slot7, slot8 in pairs(FightLocalDataMgr.instance.entityMgr:getAllEntityMO()) do
+		if not slot8:isStatusDead() then
+			slot11, slot12 = FightDataUtil.findDiff(slot8, FightDataHelper.entityMgr:getById(slot8.id), {
+				buffFeaturesSplit = true,
+				playCardExPoint = true,
+				resistanceDict = true,
+				_playCardAddExpoint = true,
+				configMaxExPoint = true,
+				moveCardExPoint = true,
+				passiveSkillDic = true,
+				_combineCardAddExpoint = true,
+				custom_refreshNameUIOp = true,
+				class = true,
+				skillList = true,
+				_moveCardAddExpoint = true
+			}, {
+				attrMO = FightWorkCompareServerEntityData.compareAttrMO,
+				summonedInfo = FightWorkCompareServerEntityData.compareSummonedInfo
+			})
 
-			FightEntityDataHelper.copyEntityMO(slot6, FightDataHelper.entityMgr:getById(slot7))
-			FightController.instance:dispatchEvent(FightEvent.CoverPerformanceEntityData, slot7)
+			if slot11 then
+				FightEntityDataHelper.copyEntityMO(slot8, slot10)
+				FightController.instance:dispatchEvent(FightEvent.CoverPerformanceEntityData, slot9)
+			end
 		end
 	end
 end
