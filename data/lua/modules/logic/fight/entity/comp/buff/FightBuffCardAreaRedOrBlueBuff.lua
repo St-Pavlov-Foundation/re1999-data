@@ -6,6 +6,8 @@ function slot0.ctor(slot0)
 end
 
 function slot0.onBuffStart(slot0, slot1, slot2)
+	slot0:clearEffectAndEntity()
+
 	slot0.entity = slot1
 	slot0.entityMo = slot1:getMO()
 	slot0.side = slot0.entityMo.side
