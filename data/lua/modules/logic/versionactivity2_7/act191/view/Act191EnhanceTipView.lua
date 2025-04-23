@@ -22,21 +22,11 @@ function slot0.removeEvents(slot0)
 	slot0._btnClose:RemoveClickListener()
 end
 
-function slot0._onEscBtnClick(slot0)
-	slot0:closeThis()
-
-	if ViewMgr.instance:isOpen(ViewName.Act191InfoView) then
-		ViewMgr.instance:closeView(ViewName.Act191InfoView)
-	end
-end
-
 function slot0._btnCloseOnClick(slot0)
 	slot0:closeThis()
 end
 
 function slot0._editableInitView(slot0)
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
-
 	slot0.actId = Activity191Model.instance:getCurActId()
 end
 
@@ -44,29 +34,29 @@ function slot0.onOpen(slot0)
 	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
 
 	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, slot1.x, slot1.y)
+		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x + 85, 8)
 	end
 
 	if slot0.viewParam.co then
-		slot0._simageIcon:LoadImage(ResUrl.getAct174BuffIcon(slot2.icon))
+		slot0._simageIcon:LoadImage(ResUrl.getAct174BuffIcon(slot1.icon))
 
-		slot0._txtName.text = slot2.name
-		slot0._txtDesc.text = slot2.desc
+		slot0._txtName.text = slot1.name
+		slot0._txtDesc.text = slot1.desc
 
-		if lua_activity191_effect.configDict[string.splitToNumber(slot2.effects, "|")[1]] then
-			if slot5.type == Activity191Enum.EffectType.EnhanceHero then
-				slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot2.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot5.typeParam)
+		if lua_activity191_effect.configDict[string.splitToNumber(slot1.effects, "|")[1]] then
+			if slot4.type == Activity191Enum.EffectType.EnhanceHero then
+				slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot1.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot4.typeParam)
 
 				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkDestiny)
-			elseif slot5.type == Activity191Enum.EffectType.EnhanceItem then
-				slot0._txtDesc.text = Activity191Helper.buildDesc(slot3, Activity191Enum.HyperLinkPattern.EnhanceItem, slot5.typeParam .. "#")
+			elseif slot4.type == Activity191Enum.EffectType.EnhanceItem then
+				slot0._txtDesc.text = Activity191Helper.buildDesc(slot2, Activity191Enum.HyperLinkPattern.EnhanceItem, slot4.typeParam .. "#")
 
 				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkItem)
 			else
-				slot0._txtDesc.text = slot3
+				slot0._txtDesc.text = slot2
 			end
 		else
-			slot0._txtDesc.text = slot3
+			slot0._txtDesc.text = slot2
 		end
 	end
 end

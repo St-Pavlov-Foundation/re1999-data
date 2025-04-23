@@ -626,7 +626,7 @@ function slot0.getAdapterScale()
 	slot1 = UnityEngine.Screen.width
 	slot2 = UnityEngine.Screen.height
 
-	if BootNativeUtil.isWindows() then
+	if BootNativeUtil.isWindows() and not SLFramework.FrameworkSettings.IsEditor then
 		slot1, slot2 = SettingsModel.instance:getCurrentScreenSize()
 	end
 

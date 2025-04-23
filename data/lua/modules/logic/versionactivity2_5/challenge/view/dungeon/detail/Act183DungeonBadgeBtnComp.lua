@@ -33,6 +33,10 @@ function slot0.removeEventListeners(slot0)
 end
 
 function slot0._btnbadgeOnClick(slot0)
+	if slot0.mgr:getComp(Act183DungeonSelectBadgeComp) then
+		slot1:_onUpdateBadgeDetailVisible(true, slot0._readyUseBadgeNum)
+	end
+
 	Act183Controller.instance:dispatchEvent(Act183Event.OnUpdateBadgeDetailVisible, true, slot0._readyUseBadgeNum)
 end
 

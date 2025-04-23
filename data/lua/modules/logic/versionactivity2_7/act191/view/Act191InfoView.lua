@@ -20,15 +20,19 @@ function slot0.removeEvents(slot0)
 end
 
 function slot0.onClickModalMask(slot0)
+	if slot0.openViewName then
+		slot0:closeTipView()
+
+		return
+	end
+
 	slot0:closeThis()
 end
 
 function slot0._editableInitView(slot0)
 	slot0.anim = gohelper.findChild(slot0.viewGO, "right"):GetComponent(gohelper.Type_Animator)
 	slot0._txtRule2 = gohelper.findChildText(slot0.viewGO, "right/simage_rightbg/txt_rule2")
-end
-
-function slot0.onUpdateParam(slot0)
+	slot0.rightTr = gohelper.findChild(slot0.viewGO, "right").transform
 end
 
 function slot0.onOpen(slot0)
@@ -88,7 +92,7 @@ function slot0.clickCharacterItem(slot0, slot1)
 			heroList = {
 				slot2.config.id
 			},
-			pos = Vector2.New(-470, 0)
+			pos = slot0.rightTr.position
 		})
 		slot0:refreshSelect(slot2)
 	end
@@ -135,7 +139,7 @@ function slot0.clickCollectionItem(slot0, slot1)
 		Activity191Controller.instance:openCollectionTipView({
 			notShowBg = true,
 			itemId = slot2.config.id,
-			pos = Vector2.New(-300, 0)
+			pos = slot0.rightTr.position
 		})
 		slot0:refreshSelect(slot2)
 	end
@@ -179,7 +183,7 @@ function slot0.clickBuffItem(slot0, slot1)
 		Activity191Controller.instance:openEnhanceTipView({
 			notShowBg = true,
 			co = slot2.config,
-			pos = Vector2.New(-300, 0)
+			pos = slot0.rightTr.position
 		})
 		slot0:refreshSelect(slot2)
 	end
