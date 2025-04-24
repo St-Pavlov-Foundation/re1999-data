@@ -25440,6 +25440,12 @@
   "singlebg/summon/heroversion_2_7/v2a7_selfselectsix_role.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_selfselectsix_role.png"
   ],
+  "singlebg/summon/heroversion_2_7/v2a7_bakaluoer/v2a7_bakaluoer_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_bakaluoer/v2a7_bakaluoer_role1.png"
+  ],
+  "singlebg/summon/heroversion_2_7/v2a7_bakaluoer/v2a7_bakaluoer_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_bakaluoer/v2a7_bakaluoer_role2.png"
+  ],
   "singlebg/summon/heroversion_2_7/v2a7_coopergarland/v2a7_summon_coopergarland_fullbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_coopergarland/v2a7_summon_coopergarland_fullbg.png"
   ],

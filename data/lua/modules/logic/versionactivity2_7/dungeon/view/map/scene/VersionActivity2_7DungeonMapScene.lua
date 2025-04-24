@@ -7,6 +7,7 @@ slot2 = 0.16
 function slot0.onInitView(slot0)
 	uv0.super.onInitView(slot0)
 
+	slot0._screenWidth, slot0._screenHeight = GameGlobalMgr.instance:getScreenState():getScreenSize()
 	slot0._mainCameraGO = CameraMgr.instance:getMainCameraGO()
 	slot0._mainRoot = CameraMgr.instance:getCameraTraceGO()
 	slot0._mainCamera = CameraMgr.instance:getMainCamera()
@@ -16,14 +17,14 @@ function slot0.onInitView(slot0)
 	slot0._unitCamera = CameraMgr.instance:getUnitCamera()
 	slot0._ppVolumeGo = gohelper.findChild(slot0._unitCameraGO, "PPVolume")
 	slot0._unitPPVolume = slot0._ppVolumeGo:GetComponent(PostProcessingMgr.PPVolumeWrapType)
-	slot1, slot2 = transformhelper.getLocalRotation(slot0._mainRoot.transform)
+	slot2, slot3 = transformhelper.getLocalRotation(slot0._mainRoot.transform)
 	slot0._ppvalue = {
 		BloomActive = false,
 		bloomThreshold = 0.7,
 		localBloomActive = false
 	}
 
-	for slot7, slot8 in pairs(slot0._ppvalue) do
+	for slot8, slot9 in pairs(slot0._ppvalue) do
 		-- Nothing
 	end
 
@@ -34,11 +35,11 @@ function slot0.onInitView(slot0)
 		unitCameraGOActive = slot0._unitCameraGO.gameObject.activeSelf,
 		unitCameraEnable = slot0._unitCamera.enabled,
 		unitPPValue = {
-			[slot7] = PostProcessingMgr.instance:getUnitPPValue(slot7)
+			[slot8] = PostProcessingMgr.instance:getUnitPPValue(slot8)
 		},
 		orthographic = slot0._mainCamera.orthographic,
 		Fov = slot0._mainCamera.fieldOfView,
-		RotateY = slot2,
+		RotateY = slot3,
 		IgnoreUIBlur = PostProcessingMgr.instance:getIgnoreUIBlur()
 	}
 	slot0._isNeedCircleMv = UIBlockMgrExtend.needCircleMv
@@ -144,6 +145,12 @@ function slot0.onClose(slot0)
 	slot0:_resetCameraParam()
 	slot0:_playSceneBgm(false)
 
+	if slot0._rotateTweenId then
+		ZProj.TweenHelper.KillById(slot0._rotateTweenId)
+	end
+
+	slot0:tweenFinishRotateCallback()
+
 	if slot0._mainCameraAnim then
 		slot0._mainCameraAnim.runtimeAnimatorController = slot0._cameraParam.runtimeAnimatorController
 	end
@@ -151,6 +158,12 @@ function slot0.onClose(slot0)
 	slot0._curEpisodeIndex = nil
 
 	VersionActivity2_7DungeonController.instance:resetLoading()
+
+	slot2, slot3 = GameGlobalMgr.instance:getScreenState():getScreenSize()
+
+	if slot2 ~= slot0._screenWidth or slot3 ~= slot0._screenHeight then
+		GameGlobalMgr.instance:dispatchEvent(GameStateEvent.OnScreenResize, slot2, slot3)
+	end
 end
 
 function slot0.refreshMap(slot0, slot1, slot2)
@@ -537,15 +550,23 @@ function slot0.killTween(slot0)
 end
 
 function slot0.tweenFrameRotateCallback(slot0, slot1)
+	if not slot0._mainRoot then
+		slot0._mainRoot = CameraMgr.instance:getCameraTraceGO()
+	end
+
 	slot2, slot3, slot4 = transformhelper.getLocalRotation(slot0._mainRoot.transform)
 
 	transformhelper.setLocalRotation(slot0._mainRoot.transform, slot2, slot1, slot4)
 end
 
 function slot0.tweenFinishRotateCallback(slot0)
+	if not slot0._mainRoot then
+		slot0._mainRoot = CameraMgr.instance:getCameraTraceGO()
+	end
+
 	slot1, slot2, slot3 = transformhelper.getLocalRotation(slot0._mainRoot.transform)
 
-	transformhelper.setLocalRotation(slot0._mainRoot.transform, slot1, slot2, slot3)
+	transformhelper.setLocalRotation(slot0._mainRoot.transform, slot1, slot0._cameraParam.RotateY, slot3)
 end
 
 function slot0.directSetCameraRotate(slot0, slot1, slot2, slot3)

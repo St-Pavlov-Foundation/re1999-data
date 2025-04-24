@@ -30,14 +30,6 @@ function slot0.removeEvents(slot0)
 	slot0._btnBuy:RemoveClickListener()
 end
 
-function slot0._onEscBtnClick(slot0)
-	slot0:closeThis()
-
-	if ViewMgr.instance:isOpen(ViewName.Act191InfoView) then
-		ViewMgr.instance:closeView(ViewName.Act191InfoView)
-	end
-end
-
 function slot0._btnCloseOnClick(slot0)
 	slot0:closeThis()
 end
@@ -60,8 +52,6 @@ function slot0._buyReply(slot0, slot1, slot2)
 end
 
 function slot0._editableInitView(slot0)
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
-
 	slot0.actId = Activity191Model.instance:getCurActId()
 
 	SkillHelper.addHyperLinkClick(slot0._txtDesc)
@@ -73,6 +63,11 @@ end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
+
+	if slot0.viewParam.pos then
+		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x + 85, 8)
+	end
+
 	slot0:refreshUI()
 end
 
@@ -82,10 +77,6 @@ end
 
 function slot0.refreshUI(slot0)
 	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
-
-	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, slot1.x, slot1.y)
-	end
 
 	if slot0.viewParam.showBuy then
 		slot0:refreshCost()
@@ -111,11 +102,11 @@ function slot0.refreshUI(slot0)
 			gohelper.setActive(slot0._goTag1, false)
 			gohelper.setActive(slot0._goTag2, false)
 		else
-			for slot7 = 1, 2 do
-				slot8 = string.split(slot0.config.label, "#")[slot7]
-				slot0["_txtTag" .. slot7].text = slot8
+			for slot6 = 1, 2 do
+				slot7 = string.split(slot0.config.label, "#")[slot6]
+				slot0["_txtTag" .. slot6].text = slot7
 
-				gohelper.setActive(slot0["_goTag" .. slot7], slot8)
+				gohelper.setActive(slot0["_goTag" .. slot6], slot7)
 			end
 		end
 	end

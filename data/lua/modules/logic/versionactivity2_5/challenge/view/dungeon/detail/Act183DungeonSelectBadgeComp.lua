@@ -21,11 +21,10 @@ function slot0.init(slot0, slot1)
 	slot0._btnresetbadge = gohelper.findChildButtonWithAudio(slot0.go, "#go_badges/#btn_resetbadge")
 	slot0._btnclosebadge = gohelper.findChildButtonWithAudio(slot0.go, "#btn_closebadge")
 	slot0._badgeItemTab = slot0:getUserDataTb_()
-
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateBadgeDetailVisible, slot0._onUpdateBadgeDetailVisible, slot0)
 end
 
 function slot0.addEventListeners(slot0)
+	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateBadgeDetailVisible, slot0._onUpdateBadgeDetailVisible, slot0)
 	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateSelectBadgeNum, slot0._onUpdateSelectBadgeNum, slot0)
 	slot0._btnresetbadge:AddClickListener(slot0._btnresetbadgeOnClick, slot0)
 	slot0._btnclosebadge:AddClickListener(slot0._btnclosebadgeOnClick, slot0)
