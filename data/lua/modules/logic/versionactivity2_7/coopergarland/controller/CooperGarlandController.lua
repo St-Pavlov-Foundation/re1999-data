@@ -129,8 +129,12 @@ function slot0.afterClickEpisode(slot0, slot1, slot2)
 
 	CooperGarlandStatHelper.instance:enterEpisode(slot2)
 
-	if CooperGarlandConfig.instance:getStoryBefore(slot1, slot2) and slot4 ~= 0 then
-		StoryController.instance:playStory(slot4, nil, slot0._enterGame, slot0, {
+	if CooperGarlandConfig.instance:isExtraEpisode(slot1, slot2) then
+		Activity192Rpc.instance:sendAct192FinishEpisodeRequest(slot1, slot2, tostring(CooperGarlandModel.instance:getEpisodeProgress(slot1, slot2)))
+	end
+
+	if CooperGarlandConfig.instance:getStoryBefore(slot1, slot2) and slot5 ~= 0 then
+		StoryController.instance:playStory(slot5, nil, slot0._enterGame, slot0, {
 			episodeId = slot2
 		})
 

@@ -117,10 +117,10 @@
     "isOnline": 1,
     "minType": "库珀花环角色活动",
     "name": "库珀花环角色活动",
-    "desc": "完成前行的决心",
+    "desc": "参与前行的决心",
     "listenerType": "Act192",
     "listenerParam": "1270309#12703",
-    "maxProgress": 3,
+    "maxProgress": 1,
     "episodeId": 1270309,
     "jumpId": 0,
     "bonus": "27801019"
