@@ -28,14 +28,6 @@ function slot0.removeEvents(slot0)
 	slot0._btnBuy:RemoveClickListener()
 end
 
-function slot0._onEscBtnClick(slot0)
-	slot0:closeThis()
-
-	if ViewMgr.instance:isOpen(ViewName.Act191InfoView) then
-		ViewMgr.instance:closeView(ViewName.Act191InfoView)
-	end
-end
-
 function slot0._btnCloseOnClick(slot0)
 	slot0:closeThis()
 end
@@ -58,8 +50,6 @@ function slot0._buyReply(slot0, slot1, slot2)
 end
 
 function slot0._editableInitView(slot0)
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
-
 	slot0.actId = Activity191Model.instance:getCurActId()
 	slot0.characterInfo = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goRoot, Act191CharacterInfo)
 	slot0.fetterIconItemList = {}
@@ -71,6 +61,11 @@ end
 
 function slot0.onOpen(slot0)
 	Act191StatController.instance:onViewOpen(slot0.viewName)
+
+	if slot0.viewParam.pos then
+		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x - 100, 8)
+	end
+
 	slot0:refreshUI()
 end
 
@@ -88,51 +83,47 @@ function slot0.refreshUI(slot0)
 		gohelper.setActive(slot0._btnBuy, false)
 	end
 
-	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, slot1.x, slot1.y)
-	end
-
 	slot0.heroCnt = #slot0.viewParam.heroList
 	slot0.roleCoList = {
 		Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[1])
 	}
-	slot2 = slot0.roleCoList[1]
+	slot1 = slot0.roleCoList[1]
 
-	gohelper.findChildSingleImage(slot0._goSingleHero, "character/heroicon"):LoadImage(Activity191Helper.getHeadIconSmall(slot2))
-	UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot0._goSingleHero, "character/rare"), "act174_roleframe_" .. tostring(slot2.quality))
-	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "character/career"), "lssx_" .. slot2.career)
-	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "image_dmgtype"), "dmgtype" .. tostring(slot2.dmgType))
+	gohelper.findChildSingleImage(slot0._goSingleHero, "character/heroicon"):LoadImage(Activity191Helper.getHeadIconSmall(slot1))
+	UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot0._goSingleHero, "character/rare"), "act174_roleframe_" .. tostring(slot1.quality))
+	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "character/career"), "lssx_" .. slot1.career)
+	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "image_dmgtype"), "dmgtype" .. tostring(slot1.dmgType))
 
-	gohelper.findChildText(slot0._goSingleHero, "name/txt_name").text = slot2.name
+	gohelper.findChildText(slot0._goSingleHero, "name/txt_name").text = slot1.name
 
-	slot0:refreshFetter(slot2)
-	slot0.characterInfo:setData(slot2)
+	slot0:refreshFetter(slot1)
+	slot0.characterInfo:setData(slot1)
 	gohelper.setActive(slot0._goSingleHero, true)
 	gohelper.setActive(slot0._goMultiHero, false)
 
 	if false then
 		slot0.characterItemList = {}
 
-		for slot5 = 1, 3 do
-			slot6 = slot0:getUserDataTb_()
-			slot6.frame = gohelper.findChild(slot0._goMultiHero, "selectframe/selectframe" .. slot5)
-			slot6.go = gohelper.findChild(slot0._goMultiHero, "character" .. slot5)
-			slot0.roleCoList[slot5] = Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[slot5])
+		for slot4 = 1, 3 do
+			slot5 = slot0:getUserDataTb_()
+			slot5.frame = gohelper.findChild(slot0._goMultiHero, "selectframe/selectframe" .. slot4)
+			slot5.go = gohelper.findChild(slot0._goMultiHero, "character" .. slot4)
+			slot0.roleCoList[slot4] = Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[slot4])
 
-			if slot0.roleCoList[slot5] then
-				slot6.rare = gohelper.findChildImage(slot6.go, "rare")
-				slot6.heroIcon = gohelper.findChildSingleImage(slot6.go, "heroicon")
-				slot6.career = gohelper.findChildImage(slot6.go, "career")
+			if slot0.roleCoList[slot4] then
+				slot5.rare = gohelper.findChildImage(slot5.go, "rare")
+				slot5.heroIcon = gohelper.findChildSingleImage(slot5.go, "heroicon")
+				slot5.career = gohelper.findChildImage(slot5.go, "career")
 
-				slot0:addClickCb(gohelper.findButtonWithAudio(slot6.go), slot0.onClickRole, slot0, slot5)
-				UISpriteSetMgr.instance:setAct174Sprite(slot6.rare, "act174_roleframe_" .. tostring(slot8.quality))
-				UISpriteSetMgr.instance:setCommonSprite(slot6.career, "lssx_" .. slot8.career)
-				slot6.heroIcon:LoadImage(Activity191Helper.getHeadIconSmall(slot8))
+				slot0:addClickCb(gohelper.findButtonWithAudio(slot5.go), slot0.onClickRole, slot0, slot4)
+				UISpriteSetMgr.instance:setAct174Sprite(slot5.rare, "act174_roleframe_" .. tostring(slot7.quality))
+				UISpriteSetMgr.instance:setCommonSprite(slot5.career, "lssx_" .. slot7.career)
+				slot5.heroIcon:LoadImage(Activity191Helper.getHeadIconSmall(slot7))
 			else
-				gohelper.setActive(slot6.go, false)
+				gohelper.setActive(slot5.go, false)
 			end
 
-			table.insert(slot0.characterItemList, slot6)
+			table.insert(slot0.characterItemList, slot5)
 		end
 
 		slot0:onClickRole(1)

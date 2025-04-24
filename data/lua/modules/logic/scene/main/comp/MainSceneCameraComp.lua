@@ -5,7 +5,7 @@ slot0 = class("MainSceneCameraComp", CommonSceneCameraComp)
 function slot0._calcFovInternal(slot0, slot1)
 	slot2 = 1.7777777777777777 * UnityEngine.Screen.height / UnityEngine.Screen.width
 
-	if BootNativeUtil.isWindows() then
+	if BootNativeUtil.isWindows() and not SLFramework.FrameworkSettings.IsEditor then
 		slot3, slot4 = SettingsModel.instance:getCurrentScreenSize()
 		slot2 = 16 * slot4 / 9 / slot3
 	end

@@ -218,4 +218,12 @@ function slot0.getAct178OperHolePath(slot0, slot1)
 	return string.format("UIRoot/POPUP_TOP/PinballCityView/#go_buildingui/UI_%s%s", PinballModel.instance.guideHole, slot2)
 end
 
+function slot0.getBossTowerFirstBossPath(slot0)
+	if #TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open) > 1 then
+		table.sort(slot1, TowerAssistBossModel.sortBossList)
+	end
+
+	return string.format("UIRoot/POPUP_TOP/TowerBossSelectView/root/#scroll_boss/Viewport/#go_bossContent/boss%s/towerbossselectitem(Clone)/click", slot1[1] and slot1[1].id or 1)
+end
+
 return slot0

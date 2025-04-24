@@ -170,7 +170,7 @@
   {
     "id": 31170006,
     "skin": 0,
-    "layer": 9,
+    "layer": 8,
     "loopEffect": "v2a7_kphh/kphh_buff2_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,
@@ -191,7 +191,7 @@
   {
     "id": 31170006,
     "skin": 0,
-    "layer": 21,
+    "layer": 20,
     "loopEffect": "v2a7_kphh/kphh_buff3_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,
@@ -233,7 +233,7 @@
   {
     "id": 31170012,
     "skin": 0,
-    "layer": 9,
+    "layer": 8,
     "loopEffect": "v2a7_kphh/kphh_buff2_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,
@@ -254,7 +254,7 @@
   {
     "id": 31170012,
     "skin": 0,
-    "layer": 21,
+    "layer": 20,
     "loopEffect": "v2a7_kphh/kphh_buff3_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,
@@ -296,7 +296,7 @@
   {
     "id": 31170035,
     "skin": 0,
-    "layer": 9,
+    "layer": 8,
     "loopEffect": "v2a7_kphh/kphh_buff2_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,
@@ -317,7 +317,7 @@
   {
     "id": 31170035,
     "skin": 0,
-    "layer": 21,
+    "layer": 20,
     "loopEffect": "v2a7_kphh/kphh_buff3_idle",
     "loopEffectRoot": "mountroot",
     "loopEffectAudio": 0,

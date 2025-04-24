@@ -743,16 +743,22 @@ end
 function slot0.beforeDestroy(slot0)
 	TaskDispatcher.cancelTask(slot0.hideTsnnEffect, slot0)
 
-	for slot4, slot5 in ipairs(slot0.pointItemList) do
-		slot5:destroy()
+	if slot0.pointItemList then
+		for slot4, slot5 in ipairs(slot0.pointItemList) do
+			slot5:destroy()
+		end
 	end
 
-	for slot4, slot5 in ipairs(slot0.exPointItemPool) do
-		slot5:destroy()
+	if slot0.exPointItemPool then
+		for slot4, slot5 in ipairs(slot0.exPointItemPool) do
+			slot5:destroy()
+		end
 	end
 
-	for slot4, slot5 in ipairs(slot0.extraPointItemPool) do
-		slot5:destroy()
+	if slot0.extraPointItemPool then
+		for slot4, slot5 in ipairs(slot0.extraPointItemPool) do
+			slot5:destroy()
+		end
 	end
 
 	slot0.pointItemList = nil

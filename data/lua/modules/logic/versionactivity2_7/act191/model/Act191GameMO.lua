@@ -141,25 +141,21 @@ function slot0.getPreviewFetterCntDic(slot0, slot1)
 	slot3 = slot0:getTeamInfo()
 
 	for slot7, slot8 in pairs(slot1) do
-		slot9 = {
-			[slot17] = 1
-		}
-
-		for slot16, slot17 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot8, slot0:getHeroInfoInWarehouse(slot8).star).tag, "#")) do
-			-- Nothing
-		end
-
-		if slot7 <= 4 and Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, slot7) and slot13.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot14).itemId).tag) then
-			for slot20, slot21 in ipairs(string.split(slot16.tag, "#")) do
-				slot9[slot21] = 1
+		for slot15, slot16 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot8, slot0:getHeroInfoInWarehouse(slot8).star).tag, "#")) do
+			if not slot2[slot16] then
+				slot2[slot16] = 1
+			else
+				slot2[slot16] = slot2[slot16] + 1
 			end
 		end
 
-		for slot16, slot17 in pairs(slot9) do
-			if slot2[slot16] then
-				slot2[slot16] = slot2[slot16] + 1
-			else
-				slot2[slot16] = 1
+		if slot7 <= 4 and Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, slot7) and slot12.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot13).itemId).tag) then
+			for slot19, slot20 in ipairs(string.split(slot15.tag, "#")) do
+				if not slot2[slot20] then
+					slot2[slot20] = 1
+				else
+					slot2[slot20] = slot2[slot20] + 1
+				end
 			end
 		end
 	end
