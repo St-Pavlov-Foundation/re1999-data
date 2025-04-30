@@ -7,7 +7,7 @@
     ],
     "removeCount": [
       0,
-      3
+      6
     ],
     "cubeOpenAnim": "",
     "cubeSwitchAnim": "up",
@@ -21,8 +21,8 @@
       4
     ],
     "removeCount": [
-      4,
-      4
+      8,
+      8
     ],
     "cubeOpenAnim": "left",
     "cubeSwitchAnim": "left",
@@ -36,7 +36,7 @@
       6
     ],
     "removeCount": [
-      5,
+      10,
       0
     ],
     "cubeOpenAnim": "up",
@@ -52,9 +52,9 @@
       9
     ],
     "removeCount": [
-      4,
-      5,
-      6
+      99,
+      99,
+      99
     ],
     "cubeOpenAnim": "",
     "cubeSwitchAnim": "left",
