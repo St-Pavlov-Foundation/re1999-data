@@ -11246,6 +11246,7 @@ setNeedLoadModule("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.view.V2
 setNeedLoadModule("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.view.V2a7_SelfSelectSix_PickChoiceViewContainer", "V2a7_SelfSelectSix_PickChoiceViewContainer")
 setNeedLoadModule("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUp", "V2a7_WarmUp")
 setNeedLoadModule("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpContainer", "V2a7_WarmUpContainer")
+setNeedLoadModule("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpLeftView", "V2a7_WarmUpLeftView")
 setNeedLoadModule("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUp_radiotaskitem", "V2a7_WarmUp_radiotaskitem")
 setNeedLoadModule("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUp_rewarditem", "V2a7_WarmUp_rewarditem")
 setNeedLoadModule("modules.logic.video.AvProMgr", "AvProMgr")

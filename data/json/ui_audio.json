@@ -10603,5 +10603,20 @@
     "id": 20270057,
     "eventName": "play_monster690401_ux_posui",
     "bankName": "monster690401"
+  },
+  {
+    "id": 20270058,
+    "eventName": "play_ui_yuzhou_fax_earcap",
+    "bankName": "ui_activity_2_7_yuzhou"
+  },
+  {
+    "id": 20270059,
+    "eventName": "play_ui_yuzhou_fax_beep",
+    "bankName": "ui_activity_2_7_yuzhou"
+  },
+  {
+    "id": 20270060,
+    "eventName": "play_ui_yuzhou_fax_print",
+    "bankName": "ui_activity_2_7_yuzhou"
   }
 ]

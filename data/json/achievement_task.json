@@ -4670,7 +4670,7 @@
   {
     "id": 41180501,
     "achievementId": 411805,
-    "desc": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处置。",
+    "desc": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处治。",
     "extraDesc": "嘿，上班还是挺有意思的，伙计！顺便一问，这次是谁炸了实验室？",
     "listenerType": "Act183FinishedEpisodeCount",
     "listenerParam": "12505#2,3",
@@ -5102,7 +5102,7 @@
   {
     "id": 41200501,
     "achievementId": 412005,
-    "desc": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处置。",
+    "desc": "在“警铃鸣响时”中，完成2次不同的雨迹追查或雨痕处治。",
     "extraDesc": "为处理关于“高频响铃影响办公”的投诉，现已将编队人数上调20％。",
     "listenerType": "Act183FinishedEpisodeCount",
     "listenerParam": "12704#2,3",

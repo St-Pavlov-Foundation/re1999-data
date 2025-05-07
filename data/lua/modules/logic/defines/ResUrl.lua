@@ -1444,4 +1444,8 @@ function slot0.getAct191SingleBg(slot0)
 	return string.format("singlebg/act191/%s.png", slot0)
 end
 
+function slot0.getV2a7WarmUpSingleBg(slot0)
+	return string.format("singlebg/v2a7_warmup_singlebg/%s.png", slot0)
+end
+
 return slot0

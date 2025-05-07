@@ -25,6 +25,7 @@ function slot0._buildStartRoundSteps(slot0)
 		slot0:_buildNormalBorn()
 	end
 
+	slot0:addWork(FightWorkCompareDataAfterPlay.New())
 	slot0:addWork(FightWorkFbStory.New(FightWorkFbStory.Type_EnterWave))
 	slot0:addWork(FunctionWork.New(function ()
 		FightDataMgr.instance:afterPlayRoundData(FightDataHelper.roundMgr:getRoundData())

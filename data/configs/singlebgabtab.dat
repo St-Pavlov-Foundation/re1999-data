@@ -22587,6 +22587,9 @@
   "singlebg/headicon_small/630408.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/630408.png"
   ],
+  "singlebg/headicon_small/6304101.png.dat": [
+    "Assets/ZResourcesLib/singlebg/headicon_small/6304101.png"
+  ],
   "singlebg/headicon_small/630411.png.dat": [
     "Assets/ZResourcesLib/singlebg/headicon_small/630411.png"
   ],
@@ -25470,6 +25473,12 @@
   "singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_role1.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_role1.png"
   ],
+  "singlebg/summon/heroversion_2_7/v2a7_tuesday/v2a7_tuesday_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_tuesday/v2a7_tuesday_role1.png"
+  ],
+  "singlebg/summon/heroversion_2_7/v2a7_tuesday/v2a7_tuesday_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_tuesday/v2a7_tuesday_role2.png"
+  ],
   "singlebg/summon/heroversion_2_7/v2a7_tutushizi/v2a7_tutushizi_role1.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_7/v2a7_tutushizi/v2a7_tutushizi_role1.png"
   ],
@@ -26015,6 +26024,39 @@
   ],
   "singlebg/v2a7_tower_singlebg/v2a7_tower_panelbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a7_tower_singlebg/v2a7_tower_panelbg.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_1.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_2.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_chuanzhenji_3.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_decbg1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_decbg1.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_decbg2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_decbg2.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_fullbg.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_1.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_2.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_3.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_4.png"
+  ],
+  "singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_warmup_singlebg/v2a7_warmup_pic_5.png"
   ],
   "singlebg/versionactivityhelp/v2a5_challenge_help_2.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionactivityhelp/v2a5_challenge_help_2.png"
@@ -26867,6 +26909,9 @@
   ],
   "singlebg_lang/txt_v2a7_tower_singlebg/v2a7_tower_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a7_tower_singlebg/v2a7_tower_title.png"
+  ],
+  "singlebg_lang/txt_v2a7_warmup_singlebg/v2a7_warmup_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a7_warmup_singlebg/v2a7_warmup_title.png"
   ],
   "singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png"

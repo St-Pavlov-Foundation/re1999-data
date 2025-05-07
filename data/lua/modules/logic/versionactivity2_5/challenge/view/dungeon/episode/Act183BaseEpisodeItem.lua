@@ -133,28 +133,27 @@ function slot0.refreshPassStarList(slot0, slot1)
 		return
 	end
 
-	slot2, slot3, slot4 = Act183Helper.calcEpisodeTotalConditionCount(slot0._episodeId)
-	slot5 = slot3 + slot4
-	slot6 = {}
+	slot3 = slot0._episodeMo and slot0._episodeMo:getFinishStarCount() or 0
+	slot4 = {}
 
-	for slot10 = 1, slot2 do
-		if not slot0._starItemTab[slot10] then
-			slot11 = slot0:getUserDataTb_()
-			slot11.go = gohelper.cloneInPlace(slot1, "star_" .. slot10)
-			slot11.imagestar = slot11.go:GetComponent(gohelper.Type_Image)
-			slot0._starItemTab[slot10] = slot11
+	for slot8 = 1, slot0._episodeMo and slot0._episodeMo:getTotalStarCount() or 0 do
+		if not slot0._starItemTab[slot8] then
+			slot9 = slot0:getUserDataTb_()
+			slot9.go = gohelper.cloneInPlace(slot1, "star_" .. slot8)
+			slot9.imagestar = slot9.go:GetComponent(gohelper.Type_Image)
+			slot0._starItemTab[slot8] = slot9
 		end
 
-		UISpriteSetMgr.instance:setCommonSprite(slot11.imagestar, "zhuxianditu_pt_xingxing_001", true)
-		SLFramework.UGUI.GuiHelper.SetColor(slot11.imagestar, slot10 <= slot5 and "#F77040" or "#87898C")
-		gohelper.setActive(slot11.go, true)
+		UISpriteSetMgr.instance:setCommonSprite(slot9.imagestar, "zhuxianditu_pt_xingxing_001", true)
+		SLFramework.UGUI.GuiHelper.SetColor(slot9.imagestar, slot8 <= slot3 and "#F77040" or "#87898C")
+		gohelper.setActive(slot9.go, true)
 
-		slot6[slot11] = true
+		slot4[slot9] = true
 	end
 
-	for slot10, slot11 in pairs(slot0._starItemTab) do
-		if not slot6[slot11] then
-			gohelper.setActive(slot11.go, false)
+	for slot8, slot9 in pairs(slot0._starItemTab) do
+		if not slot4[slot9] then
+			gohelper.setActive(slot9.go, false)
 		end
 	end
 end

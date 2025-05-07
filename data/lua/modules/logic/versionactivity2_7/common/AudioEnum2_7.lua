@@ -57,5 +57,11 @@ slot0.Act191 = {
 	play_ui_yuzhou_dqq_pmgressbar_01 = 20270042,
 	play_ui_yuzhou_dqq_equip_creation = 20270049
 }
+slot0.WarmUp = {
+	play_ui_yuzhou_fax_print = 20270060,
+	play_ui_min_day_night = 20220210,
+	play_ui_yuzhou_fax_beep = 20270059,
+	play_ui_yuzhou_fax_earcap = 20270058
+}
 
 return slot0

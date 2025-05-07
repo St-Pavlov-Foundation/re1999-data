@@ -186,6 +186,7 @@ function slot0._onDragEnd(slot0)
 	if slot0._drag:isSwipeLT() or slot0._drag:isSwipeRB() then
 		slot0:_saveState(uv0.SwipeDone)
 		slot0:_playAnimAfterSwipe()
+		slot0.viewContainer:setLocalIsPlayCurByUser()
 	end
 end
 

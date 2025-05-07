@@ -74,7 +74,7 @@ function slot0._enterActivity12706(slot0, slot1)
 	slot8 = FlowSequence.New()
 
 	slot8:addWork(OpenViewWork.New({
-		openFunction = VersionActivityFixedHelper.getVersionActivityEnterController().directOpenVersionActivityEnterView,
+		openFunction = VersionActivityFixedHelper.getVersionActivityEnterController().exitFightEnterView,
 		openFunctionObj = VersionActivityFixedHelper.getVersionActivityEnterController().instance,
 		waitOpenViewName = slot7
 	}))

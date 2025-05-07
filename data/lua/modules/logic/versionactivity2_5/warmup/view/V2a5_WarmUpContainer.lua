@@ -81,6 +81,7 @@ function slot0.switchTabWithAnim(slot0, slot1, slot2)
 		return
 	end
 
+	slot0._isPlaying = false
 	slot0._tweenSwitchContext.lastEpisode = slot1
 	slot0._tweenSwitchContext.curEpisodeId = slot2
 
@@ -146,8 +147,9 @@ end
 function slot0.openDesc(slot0)
 	slot0._warmUp:setBlock_scroll(true)
 	slot0._warmUp:openDesc(function ()
-		uv0:setLocalIsPlayCur()
-		uv0._warmUp:_refresh()
+		uv0._isPlaying = false
+
+		uv0:_onAnimDone()
 		uv0._warmUp:setBlock_scroll(false)
 		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_read_over_25005506)
 	end)
@@ -169,6 +171,32 @@ end
 
 function slot0.saveStateDone(slot0, slot1, slot2)
 	slot0:saveState(slot1, slot2 and uv0.Done or uv0.None)
+end
+
+function slot0.setLocalIsPlayCurByUser(slot0)
+	slot0._isPlaying = true
+end
+
+function slot0.onContainerDestroy(slot0)
+	slot0:setCurSelectEpisodeIdSlient(nil)
+
+	slot0._isPlaying = false
+
+	uv0.super:onContainerDestroy()
+end
+
+function slot0.onUpdateActivity(slot0)
+	if slot0._isPlaying then
+		slot0:setLocalIsPlayCur()
+		slot0._warmUp:onUpdateActivity()
+
+		slot0._isPlaying = false
+	end
+end
+
+function slot0._onAnimDone(slot0)
+	slot0:setLocalIsPlayCur()
+	slot0._warmUp:_refresh()
 end
 
 return slot0

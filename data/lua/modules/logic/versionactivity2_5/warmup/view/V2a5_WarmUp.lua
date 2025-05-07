@@ -108,12 +108,12 @@ end
 function slot0.onClose(slot0)
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_tweenId")
-	slot0._animEvent:RemoveEventListener(uv0)
 	TaskDispatcher.cancelTask(slot0._showLeftTime, slot0)
-	GameUtil.onDestroyViewMemberList(slot0, "_itemTabList")
 end
 
 function slot0.onDestroyView(slot0)
+	slot0._animEvent:RemoveAllEventListener()
+	GameUtil.onDestroyViewMemberList(slot0, "_itemTabList")
 end
 
 function slot0._refreshOnce(slot0)
@@ -390,6 +390,12 @@ end
 
 function slot0.setBlock_scroll(slot0, slot1)
 	slot0._scrollCanvasGroup.blocksRaycasts = not slot1
+end
+
+function slot0.onUpdateActivity(slot0)
+	slot0._descScrollRect:StopMovement()
+	slot0:_resetTweenDescPos()
+	slot0:_refresh()
 end
 
 return slot0

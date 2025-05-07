@@ -21,6 +21,7 @@ function slot0.onInitView(slot0)
 	slot0._scrollReward = gohelper.findChildScrollRect(slot0.viewGO, "Right/RawardPanel/#scroll_Reward")
 	slot0._gorewarditem = gohelper.findChild(slot0.viewGO, "Right/RawardPanel/#scroll_Reward/Viewport/Content/#go_rewarditem")
 	slot0._btngetreward = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/RawardPanel/#btn_getreward")
+	slot0._btngoto = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_goto")
 
 	if slot0._editableInitView then
 		slot0:_editableInitView()
@@ -28,10 +29,12 @@ function slot0.onInitView(slot0)
 end
 
 function slot0.addEvents(slot0)
+	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot0)
 	slot0._btngetreward:AddClickListener(slot0._btngetrewardOnClick, slot0)
 end
 
 function slot0.removeEvents(slot0)
+	slot0._btngoto:RemoveClickListener()
 	slot0._btngetreward:RemoveClickListener()
 end
 
@@ -72,6 +75,7 @@ function slot0._editableInitView(slot0)
 	slot0:_resetTaskContentPos()
 	slot0:_setActive_goWrongChannel(false)
 
+	slot0._btngotoGo = slot0._btngoto.gameObject
 	slot0._txtLimitTime.text = ""
 	slot0._descHeight = 0
 	slot0._rewardCount = 0
@@ -81,6 +85,7 @@ end
 
 function slot0.onDataUpdateFirst(slot0)
 	slot0:_refreshOnce()
+	slot0:_refreshActive_btnplay()
 end
 
 function slot0.onDataUpdate(slot0)
@@ -91,7 +96,14 @@ function slot0.onSwitchEpisode(slot0)
 	slot0._descScrollRect:StopMovement()
 	slot0:_resetTweenDescPos()
 	slot0:_refresh()
+	slot0:_refreshActive_btnplay()
 	slot0.viewContainer:tryTweenDesc()
+end
+
+function slot0.onUpdateActivity(slot0)
+	slot0._descScrollRect:StopMovement()
+	slot0:_setTaskContentToEnd()
+	slot0:_refresh()
 end
 
 function slot0.onUpdateParam(slot0)
@@ -108,12 +120,12 @@ end
 function slot0.onClose(slot0)
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_tweenId")
-	slot0._animEvent:RemoveEventListener(uv0)
 	TaskDispatcher.cancelTask(slot0._showLeftTime, slot0)
-	GameUtil.onDestroyViewMemberList(slot0, "_itemTabList")
 end
 
 function slot0.onDestroyView(slot0)
+	slot0._animEvent:RemoveAllEventListener()
+	GameUtil.onDestroyViewMemberList(slot0, "_itemTabList")
 end
 
 function slot0._refreshOnce(slot0)
@@ -151,6 +163,7 @@ function slot0._setActive_goWrongChannel(slot0, slot1)
 
 	if slot1 then
 		slot0:_setMaskPaddingBottom(slot0._taskDescViewportHeight)
+		slot0:_resetTaskContentPos()
 	else
 		slot0:_setMaskPaddingBottom(0)
 	end
@@ -269,8 +282,11 @@ function slot0.openDesc(slot0, slot1, slot2)
 
 	gohelper.setActive(slot0._goWrongChannel, false)
 	gohelper.setActive(slot0._scroll_TaskDescGo, true)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_loop)
 
 	function slot7()
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_stop)
+
 		if uv0 then
 			uv0(uv1)
 		end
@@ -357,6 +373,7 @@ end
 function slot0._resetTweenDescPos(slot0)
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(slot0, "_tweenId")
+	AudioMgr.instance:trigger(AudioEnum.UI.Stop_UI_Bus)
 	slot0:_resetTaskContentPos()
 end
 
@@ -387,6 +404,34 @@ end
 
 function slot0.setBlock_scroll(slot0, slot1)
 	slot0._scrollCanvasGroup.blocksRaycasts = not slot1
+end
+
+function slot0._btngotoOnClick(slot0)
+	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
+
+	if SettingsModel.instance:isTwRegion() or SettingsModel.instance:isKrRegion() then
+		WebViewController.instance:openWebView(slot0.viewContainer:getH5BaseUrl(), false, slot0._onWebViewCb, slot0)
+	else
+		WebViewController.instance:simpleOpenWebView(slot1, false, slot0._onWebViewCb, slot0)
+	end
+end
+
+function slot0._onWebViewCb(slot0, slot1, slot2)
+	if slot1 == WebViewEnum.WebViewCBType.Cb and string.split(slot2, "#")[1] == "webClose" then
+		ViewMgr.instance:closeView(ViewName.WebView)
+	end
+end
+
+function slot0._refreshActive_btnplay(slot0)
+	gohelper.setActive(slot0._btngotoGo, slot0.viewContainer:isTimeToActiveH5Btn())
+end
+
+function slot0._setTaskContentToEnd(slot0)
+	recthelper.setAnchorY(slot0._txtTaskContentTran, slot0:_getTaskContentEndPosY())
+end
+
+function slot0._getTaskContentEndPosY(slot0)
+	return math.max(0, slot0._descHeight - slot0._taskDescViewportHeight)
 end
 
 return slot0

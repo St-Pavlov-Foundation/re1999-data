@@ -65,22 +65,27 @@ function slot0.directOpenVersionActivityEnterView(slot0, slot1)
 	slot0:openVersionActivityEnterView(nil, , slot1, true)
 end
 
-function slot0.openVersionActivityEnterView(slot0, slot1, slot2, slot3, slot4)
+function slot0.exitFightEnterView(slot0, slot1)
+	slot0:openVersionActivityEnterView(nil, , slot1, true, true)
+end
+
+function slot0.openVersionActivityEnterView(slot0, slot1, slot2, slot3, slot4, slot5)
 	slot0.openEnterViewCb = slot1
 	slot0.openEnterViewCbObj = slot2
-	slot8 = nil
+	slot9 = nil
 
 	if slot4 then
 		-- Nothing
 	else
-		slot8 = slot0._internalOpenEnterView
+		slot9 = slot0._internalOpenEnterView
 	end
 
-	slot0:_internalOpenView(VersionActivityFixedHelper.getVersionActivityEnterViewName(), slot5, slot8, slot0, {
+	slot0:_internalOpenView(VersionActivityFixedHelper.getVersionActivityEnterViewName(), slot6, slot9, slot0, {
 		actId = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.EnterView,
 		jumpActId = slot3,
 		activityIdList = VersionActivityEnterHelper.getActIdList(VersionActivityFixedHelper.getVersionActivityEnum().EnterViewActSetting),
 		activitySettingList = VersionActivityFixedHelper.getVersionActivityEnum().EnterViewActSetting,
+		isExitFight = slot5,
 		isDirectOpen = true
 	}, slot0.openEnterViewCb, slot0.openEnterViewCbObj)
 end

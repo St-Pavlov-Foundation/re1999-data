@@ -25,6 +25,7 @@ function slot0.init(slot0, slot1, slot2, slot3)
 	FightController.instance:registerCallback(FightEvent.OnClothSkillRoundSequenceFinish, slot0.updateBuff, slot0)
 	FightController.instance:registerCallback(FightEvent.GMForceRefreshNameUIBuff, slot0._onGMForceRefreshNameUIBuff, slot0)
 	FightController.instance:registerCallback(FightEvent.AfterForceUpdatePerformanceData, slot0._onAfterForceUpdatePerformanceData, slot0)
+	FightController.instance:registerCallback(FightEvent.CoverPerformanceEntityData, slot0._onCoverPerformanceEntityData, slot0)
 end
 
 function slot0.beforeDestroy(slot0)
@@ -41,6 +42,7 @@ function slot0.beforeDestroy(slot0)
 	FightController.instance:unregisterCallback(FightEvent.OnClothSkillRoundSequenceFinish, slot0.updateBuff, slot0)
 	FightController.instance:unregisterCallback(FightEvent.GMForceRefreshNameUIBuff, slot0._onGMForceRefreshNameUIBuff, slot0)
 	FightController.instance:unregisterCallback(FightEvent.AfterForceUpdatePerformanceData, slot0._onAfterForceUpdatePerformanceData, slot0)
+	FightController.instance:unregisterCallback(FightEvent.CoverPerformanceEntityData, slot0._onCoverPerformanceEntityData, slot0)
 end
 
 function slot0.updateBuff(slot0, slot1, slot2, slot3, slot4, slot5)
@@ -175,6 +177,14 @@ function slot0._onGMForceRefreshNameUIBuff(slot0, slot1)
 end
 
 function slot0._onAfterForceUpdatePerformanceData(slot0)
+	slot0:refreshBuffList()
+end
+
+function slot0._onCoverPerformanceEntityData(slot0, slot1)
+	if slot1 ~= slot0.entity.id then
+		return
+	end
+
 	slot0:refreshBuffList()
 end
 

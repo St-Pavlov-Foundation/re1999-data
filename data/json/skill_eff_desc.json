@@ -14061,7 +14061,7 @@
     "color": 2,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "造成伤害降低50%;额外行动不受影响"
+    "desc": "造成伤害降低50%;额外行动不受影响（攻击后扣除1层，不可驱散）"
   },
   {
     "id": 1271013,
@@ -14718,5 +14718,13 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "反弹对方自身攻击*15%的本源创伤（可叠加，最多叠加10层）"
+  },
+  {
+    "id": 6271311,
+    "name": "为生命",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对2名敌方造成精神创伤；自身获得1层【癔症】"
   }
 ]
