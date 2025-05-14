@@ -29,11 +29,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-            
+
       - name: Checkout the ljd-v2 repository
         uses: actions/checkout@v4
         with:
-          repository: aergoio/luajit-decompiler-v2
+          repository: milkory/luajit-decompiler-v2
           path: luajit-decompiler-v2
           submodules: true
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           cd luajit-decompiler-v2
           make
-          sed -i 's#./tools/luajit-decompiler-v2/luajit-decompiler-v2.exe#../luajit-decompiler-v2/decompiler#g' ../re1999-depack/conf.ini
+          sed -i 's#./tools/luajit-decompiler-v2/luajit-decompiler-v2.exe#../luajit-decompiler-v2/decompile#g' ../re1999-depack/conf.ini
 
       - name: Generate unpacked data
         id: bin
