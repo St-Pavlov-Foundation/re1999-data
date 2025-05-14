@@ -1,125 +1,136 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191CollectionTipView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191CollectionTipView", package.seeall)
 
-slot0 = class("Act191CollectionTipView", BaseView)
+local var_0_0 = class("Act191CollectionTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Close")
-	slot0._goRoot = gohelper.findChild(slot0.viewGO, "#go_Root")
-	slot0._simageIcon = gohelper.findChildSingleImage(slot0.viewGO, "#go_Root/#simage_Icon")
-	slot0._txtName = gohelper.findChildText(slot0.viewGO, "#go_Root/#txt_Name")
-	slot0._txtDesc = gohelper.findChildText(slot0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
-	slot0._btnBuy = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Root/#btn_Buy")
-	slot0._txtBuyCost = gohelper.findChildText(slot0.viewGO, "#go_Root/#btn_Buy/#txt_BuyCost")
-	slot0._goTag1 = gohelper.findChild(slot0.viewGO, "#go_Root/tag/#go_Tag1")
-	slot0._txtTag1 = gohelper.findChildText(slot0.viewGO, "#go_Root/tag/#go_Tag1/#txt_Tag1")
-	slot0._goTag2 = gohelper.findChild(slot0.viewGO, "#go_Root/tag/#go_Tag2")
-	slot0._txtTag2 = gohelper.findChildText(slot0.viewGO, "#go_Root/tag/#go_Tag2/#txt_Tag2")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Close")
+	arg_1_0._goRoot = gohelper.findChild(arg_1_0.viewGO, "#go_Root")
+	arg_1_0._simageIcon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_Root/#simage_Icon")
+	arg_1_0._txtName = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/#txt_Name")
+	arg_1_0._txtDesc = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
+	arg_1_0._btnBuy = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Root/#btn_Buy")
+	arg_1_0._txtBuyCost = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/#btn_Buy/#txt_BuyCost")
+	arg_1_0._goTag1 = gohelper.findChild(arg_1_0.viewGO, "#go_Root/tag/#go_Tag1")
+	arg_1_0._txtTag1 = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/tag/#go_Tag1/#txt_Tag1")
+	arg_1_0._goTag2 = gohelper.findChild(arg_1_0.viewGO, "#go_Root/tag/#go_Tag2")
+	arg_1_0._txtTag2 = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/tag/#go_Tag2/#txt_Tag2")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
-	slot0._btnBuy:AddClickListener(slot0._btnBuyOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
+	arg_2_0._btnBuy:AddClickListener(arg_2_0._btnBuyOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClose:RemoveClickListener()
-	slot0._btnBuy:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClose:RemoveClickListener()
+	arg_3_0._btnBuy:RemoveClickListener()
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._btnBuyOnClick(slot0)
-	if Activity191Model.instance:getActInfo():getGameInfo().coin < slot0.viewParam.cost then
+function var_0_0._btnBuyOnClick(arg_5_0)
+	if Activity191Model.instance:getActInfo():getGameInfo().coin < arg_5_0.viewParam.cost then
 		GameFacade.showToast(ToastEnum.Act174CoinNotEnough)
 
 		return
 	end
 
-	Activity191Rpc.instance:sendBuyIn191ShopRequest(slot0.actId, slot0.viewParam.index, slot0._buyReply, slot0)
+	Activity191Rpc.instance:sendBuyIn191ShopRequest(arg_5_0.actId, arg_5_0.viewParam.index, arg_5_0._buyReply, arg_5_0)
 end
 
-function slot0._buyReply(slot0, slot1, slot2)
-	if slot2 == 0 then
+function var_0_0._buyReply(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_2 == 0 then
 		GameFacade.showToast(ToastEnum.Act191BuyTip)
-		slot0:closeThis()
+		arg_6_0:closeThis()
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
+function var_0_0._editableInitView(arg_7_0)
+	arg_7_0.actId = Activity191Model.instance:getCurActId()
 
-	SkillHelper.addHyperLinkClick(slot0._txtDesc)
+	SkillHelper.addHyperLinkClick(arg_7_0._txtDesc)
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:refreshUI()
+function var_0_0.onUpdateParam(arg_8_0)
+	arg_8_0:refreshUI()
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
+function var_0_0.onOpen(arg_9_0)
+	Act191StatController.instance:onViewOpen(arg_9_0.viewName)
 
-	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x + 85, 8)
+	if arg_9_0.viewParam.pos then
+		local var_9_0 = recthelper.rectToRelativeAnchorPos(arg_9_0.viewParam.pos, arg_9_0.viewGO.transform)
+
+		recthelper.setAnchor(arg_9_0._goRoot.transform, var_9_0.x + 85, 8)
 	end
 
-	slot0:refreshUI()
+	arg_9_0:refreshUI()
 end
 
-function slot0.onClose(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose(), slot0.config.title)
+function var_0_0.onClose(arg_10_0)
+	local var_10_0 = arg_10_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_10_0.viewName, var_10_0, arg_10_0.config.title)
 end
 
-function slot0.refreshUI(slot0)
-	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
+function var_0_0.refreshUI(arg_11_0)
+	gohelper.setActive(arg_11_0._btnClose, not arg_11_0.viewParam.notShowBg)
 
-	if slot0.viewParam.showBuy then
-		slot0:refreshCost()
-		gohelper.setActive(slot0._btnBuy, true)
+	if arg_11_0.viewParam.showBuy then
+		arg_11_0:refreshCost()
+		gohelper.setActive(arg_11_0._btnBuy, true)
 	else
-		gohelper.setActive(slot0._btnBuy, false)
+		gohelper.setActive(arg_11_0._btnBuy, false)
 	end
 
-	slot0.config = Activity191Config.instance:getCollectionCo(slot0.viewParam.itemId)
+	arg_11_0.config = Activity191Config.instance:getCollectionCo(arg_11_0.viewParam.itemId)
 
-	if slot0.config then
-		slot0._simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(slot0.config.icon))
+	if arg_11_0.config then
+		arg_11_0._simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(arg_11_0.config.icon))
 
-		slot0._txtName.text = string.format("<#%s>%s</color>", Activity191Enum.CollectionColor[slot0.config.rare], slot0.config.title)
+		local var_11_0 = Activity191Enum.CollectionColor[arg_11_0.config.rare]
 
-		if slot0.viewParam.enhance then
-			slot0._txtDesc.text = SkillHelper.buildDesc(slot0.config.replaceDesc)
+		arg_11_0._txtName.text = string.format("<#%s>%s</color>", var_11_0, arg_11_0.config.title)
+
+		if arg_11_0.viewParam.enhance then
+			arg_11_0._txtDesc.text = SkillHelper.buildDesc(arg_11_0.config.replaceDesc)
 		else
-			slot0._txtDesc.text = SkillHelper.buildDesc(slot0.config.desc)
+			arg_11_0._txtDesc.text = SkillHelper.buildDesc(arg_11_0.config.desc)
 		end
 
-		if string.nilorempty(slot0.config.label) then
-			gohelper.setActive(slot0._goTag1, false)
-			gohelper.setActive(slot0._goTag2, false)
+		if string.nilorempty(arg_11_0.config.label) then
+			gohelper.setActive(arg_11_0._goTag1, false)
+			gohelper.setActive(arg_11_0._goTag2, false)
 		else
-			for slot6 = 1, 2 do
-				slot7 = string.split(slot0.config.label, "#")[slot6]
-				slot0["_txtTag" .. slot6].text = slot7
+			local var_11_1 = string.split(arg_11_0.config.label, "#")
 
-				gohelper.setActive(slot0["_goTag" .. slot6], slot7)
+			for iter_11_0 = 1, 2 do
+				local var_11_2 = var_11_1[iter_11_0]
+
+				arg_11_0["_txtTag" .. iter_11_0].text = var_11_2
+
+				gohelper.setActive(arg_11_0["_goTag" .. iter_11_0], var_11_2)
 			end
 		end
 	end
 end
 
-function slot0.refreshCost(slot0)
-	if Activity191Model.instance:getActInfo():getGameInfo().coin < slot0.viewParam.cost then
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtBuyCost, "#be4343")
+function var_0_0.refreshCost(arg_12_0)
+	local var_12_0 = arg_12_0.viewParam.cost
+
+	if var_12_0 > Activity191Model.instance:getActInfo():getGameInfo().coin then
+		SLFramework.UGUI.GuiHelper.SetColor(arg_12_0._txtBuyCost, "#be4343")
 	else
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtBuyCost, "#211f1f")
+		SLFramework.UGUI.GuiHelper.SetColor(arg_12_0._txtBuyCost, "#211f1f")
 	end
 
-	slot0._txtBuyCost.text = slot1
+	arg_12_0._txtBuyCost.text = var_12_0
 end
 
-return slot0
+return var_0_0

@@ -1,91 +1,107 @@
-module("modules.logic.fight.view.FightCommonalitySlider2", package.seeall)
+﻿module("modules.logic.fight.view.FightCommonalitySlider2", package.seeall)
 
-slot0 = class("FightCommonalitySlider2", FightBaseView)
+local var_0_0 = class("FightCommonalitySlider2", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.sliderBg = gohelper.findChild(slot0.viewGO, "slider/sliderbg")
-	slot0._slider = gohelper.findChildImage(slot0.viewGO, "slider/sliderbg/sliderfg")
-	slot0._sliderText = gohelper.findChildText(slot0.viewGO, "slider/sliderbg/#txt_slidernum")
-	slot0.effective = gohelper.findChild(slot0.viewGO, "slider/#max")
-	slot0.durationText = gohelper.findChildText(slot0.viewGO, "slider/#max/#txt_round")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.sliderBg = gohelper.findChild(arg_1_0.viewGO, "slider/sliderbg")
+	arg_1_0._slider = gohelper.findChildImage(arg_1_0.viewGO, "slider/sliderbg/sliderfg")
+	arg_1_0._sliderText = gohelper.findChildText(arg_1_0.viewGO, "slider/sliderbg/#txt_slidernum")
+	arg_1_0.effective = gohelper.findChild(arg_1_0.viewGO, "slider/#max")
+	arg_1_0.durationText = gohelper.findChildText(arg_1_0.viewGO, "slider/#max/#txt_round")
 end
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.fightRoot = slot1
+function var_0_0.onConstructor(arg_2_0, arg_2_1)
+	arg_2_0.fightRoot = arg_2_1
 end
 
-function slot0.onOpen(slot0)
-	slot0:_refreshData()
-	slot0:com_registMsg(FightMsgId.FightProgressValueChange, slot0._refreshData)
-	slot0:com_registMsg(FightMsgId.FightMaxProgressValueChange, slot0._refreshData)
-	slot0:com_registFightEvent(FightEvent.OnBuffUpdate, slot0._onBuffUpdate)
-	slot0:com_registFightEvent(FightEvent.OnRoundSequenceFinish, slot0._refreshData)
+function var_0_0.onOpen(arg_3_0)
+	arg_3_0:_refreshData()
+	arg_3_0:com_registMsg(FightMsgId.FightProgressValueChange, arg_3_0._refreshData)
+	arg_3_0:com_registMsg(FightMsgId.FightMaxProgressValueChange, arg_3_0._refreshData)
+	arg_3_0:com_registFightEvent(FightEvent.OnBuffUpdate, arg_3_0._onBuffUpdate)
+	arg_3_0:com_registFightEvent(FightEvent.OnRoundSequenceFinish, arg_3_0._refreshData)
 end
 
-function slot0._refreshData(slot0)
-	if slot0._lastMax ~= (FightDataHelper.fieldMgr.progressMax <= FightDataHelper.fieldMgr.progress) then
-		gohelper.setActive(slot0._max, slot3)
+function var_0_0._refreshData(arg_4_0)
+	local var_4_0 = FightDataHelper.fieldMgr.progress
+	local var_4_1 = FightDataHelper.fieldMgr.progressMax
+	local var_4_2 = var_4_1 <= var_4_0
+
+	if arg_4_0._lastMax ~= var_4_2 then
+		gohelper.setActive(arg_4_0._max, var_4_2)
 	end
 
-	slot4 = slot1 / slot2
-	slot0._sliderText.text = Mathf.Clamp(slot4 * 100, 0, 100) .. "%"
+	local var_4_3 = var_4_0 / var_4_1
 
-	ZProj.TweenHelper.KillByObj(slot0._slider)
-	ZProj.TweenHelper.DOFillAmount(slot0._slider, slot4, 0.2 / FightModel.instance:getUISpeed())
-	gohelper.setActive(slot0.sliderBg, true)
-	gohelper.setActive(slot0.effective, false)
+	arg_4_0._sliderText.text = Mathf.Clamp(var_4_3 * 100, 0, 100) .. "%"
 
-	slot0._lastMax = slot3
-	slot5 = false
+	ZProj.TweenHelper.KillByObj(arg_4_0._slider)
+	ZProj.TweenHelper.DOFillAmount(arg_4_0._slider, var_4_3, 0.2 / FightModel.instance:getUISpeed())
+	gohelper.setActive(arg_4_0.sliderBg, true)
+	gohelper.setActive(arg_4_0.effective, false)
 
-	if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 2 and FightDataHelper.entityMgr:getMyVertin() then
-		for slot12, slot13 in pairs(slot7.buffDic) do
-			if slot13.buffId == 9260101 then
-				gohelper.setActive(slot0.sliderBg, false)
-				gohelper.setActive(slot0.effective, true)
+	arg_4_0._lastMax = var_4_2
 
-				slot0.durationText.text = slot13.duration
-				slot5 = true
+	local var_4_4 = false
 
-				break
+	if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ProgressId] == 2 then
+		local var_4_5 = FightDataHelper.entityMgr:getMyVertin()
+
+		if var_4_5 then
+			local var_4_6 = var_4_5.buffDic
+
+			for iter_4_0, iter_4_1 in pairs(var_4_6) do
+				if iter_4_1.buffId == 9260101 then
+					gohelper.setActive(arg_4_0.sliderBg, false)
+					gohelper.setActive(arg_4_0.effective, true)
+
+					arg_4_0.durationText.text = iter_4_1.duration
+					var_4_4 = true
+
+					break
+				end
 			end
 		end
 	end
 
-	slot0:checkShowScreenEffect(slot5)
+	arg_4_0:checkShowScreenEffect(var_4_4)
 end
 
-function slot0.checkShowScreenEffect(slot0, slot1)
-	if not slot0._effectRoot then
-		slot0._effectRoot = gohelper.create2d(slot0.fightRoot, "FightCommonalitySlider2ScreenEffect")
-		slot2 = slot0._effectRoot.transform
-		slot2.anchorMin = Vector2.zero
-		slot2.anchorMax = Vector2.one
-		slot2.offsetMin = Vector2.zero
-		slot2.offsetMax = Vector2.zero
+function var_0_0.checkShowScreenEffect(arg_5_0, arg_5_1)
+	if not arg_5_0._effectRoot then
+		arg_5_0._effectRoot = gohelper.create2d(arg_5_0.fightRoot, "FightCommonalitySlider2ScreenEffect")
 
-		slot0:com_loadAsset("ui/viewres/fight/fight_weekwalk_screeneff.prefab", slot0.onScreenEffectLoaded)
+		local var_5_0 = arg_5_0._effectRoot.transform
+
+		var_5_0.anchorMin = Vector2.zero
+		var_5_0.anchorMax = Vector2.one
+		var_5_0.offsetMin = Vector2.zero
+		var_5_0.offsetMax = Vector2.zero
+
+		arg_5_0:com_loadAsset("ui/viewres/fight/fight_weekwalk_screeneff.prefab", arg_5_0.onScreenEffectLoaded)
 	end
 
-	gohelper.setActive(slot0._effectRoot, slot1)
+	gohelper.setActive(arg_5_0._effectRoot, arg_5_1)
 end
 
-function slot0.onScreenEffectLoaded(slot0, slot1, slot2)
-	if not slot1 then
+function var_0_0.onScreenEffectLoaded(arg_6_0, arg_6_1, arg_6_2)
+	if not arg_6_1 then
 		return
 	end
 
-	gohelper.clone(slot2:GetResource(), slot0._effectRoot)
+	local var_6_0 = arg_6_2:GetResource()
+
+	gohelper.clone(var_6_0, arg_6_0._effectRoot)
 end
 
-function slot0._onBuffUpdate(slot0, slot1, slot2, slot3)
-	if slot3 == 9260101 then
-		slot0:_refreshData()
+function var_0_0._onBuffUpdate(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	if arg_7_3 == 9260101 then
+		arg_7_0:_refreshData()
 	end
 end
 
-function slot0.onClose(slot0)
-	ZProj.TweenHelper.KillByObj(slot0._slider)
+function var_0_0.onClose(arg_8_0)
+	ZProj.TweenHelper.KillByObj(arg_8_0._slider)
 end
 
-return slot0
+return var_0_0

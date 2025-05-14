@@ -1,150 +1,157 @@
-module("modules.logic.settings.view.SettingsKeyMapView", package.seeall)
+﻿module("modules.logic.settings.view.SettingsKeyMapView", package.seeall)
 
-slot0 = class("SettingsKeyMapView", BaseView)
+local var_0_0 = class("SettingsKeyMapView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._txtdec = gohelper.findChildText(slot0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#txt_dec")
-	slot0._btnshortcuts = gohelper.findChildButtonWithAudio(slot0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#btn_shortcuts")
-	slot0._txtshortcuts = gohelper.findChildText(slot0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#btn_shortcuts/#txt_shortcuts")
-	slot0._gotopitem = gohelper.findChild(slot0.viewGO, "topScroll/Viewport/Content/#go_topitem")
-	slot0._gounchoose = gohelper.findChild(slot0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_unchoose")
-	slot0._txtunchoose = gohelper.findChildText(slot0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_unchoose/#txt_unchoose")
-	slot0._gochoose = gohelper.findChild(slot0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_choose")
-	slot0._txtchoose = gohelper.findChildText(slot0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_choose/#txt_choose")
-	slot0._btnreset = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_reset")
-	slot0._goarrow = gohelper.findChild(slot0.viewGO, "#go_arrow")
-	slot0._tipsBtn = gohelper.findChildButtonWithAudio(slot0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn")
-	slot0._tipsOn = gohelper.findChild(slot0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/on")
-	slot0._tipsoff = gohelper.findChild(slot0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/off")
-	slot0._tipsStatue = PlayerPrefsHelper.getNumber("keyTips", 0)
-	slot0._exitgame = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_exit")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._txtdec = gohelper.findChildText(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#txt_dec")
+	arg_1_0._btnshortcuts = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#btn_shortcuts")
+	arg_1_0._txtshortcuts = gohelper.findChildText(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutsitem/#btn_shortcuts/#txt_shortcuts")
+	arg_1_0._gotopitem = gohelper.findChild(arg_1_0.viewGO, "topScroll/Viewport/Content/#go_topitem")
+	arg_1_0._gounchoose = gohelper.findChild(arg_1_0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_unchoose")
+	arg_1_0._txtunchoose = gohelper.findChildText(arg_1_0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_unchoose/#txt_unchoose")
+	arg_1_0._gochoose = gohelper.findChild(arg_1_0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_choose")
+	arg_1_0._txtchoose = gohelper.findChildText(arg_1_0.viewGO, "topScroll/Viewport/Content/#go_topitem/#go_choose/#txt_choose")
+	arg_1_0._btnreset = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_reset")
+	arg_1_0._goarrow = gohelper.findChild(arg_1_0.viewGO, "#go_arrow")
+	arg_1_0._tipsBtn = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn")
+	arg_1_0._tipsOn = gohelper.findChild(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/on")
+	arg_1_0._tipsoff = gohelper.findChild(arg_1_0.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/off")
+	arg_1_0._tipsStatue = PlayerPrefsHelper.getNumber("keyTips", 0)
+	arg_1_0._exitgame = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_exit")
 
-	slot0:refreshTips()
+	arg_1_0:refreshTips()
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnshortcuts:AddClickListener(slot0._btnshortcutsOnClick, slot0)
-	slot0._btnreset:AddClickListener(slot0._btnresetOnClick, slot0)
-	slot0._tipsBtn:AddClickListener(slot0._tipsSwtich, slot0)
-	slot0._exitgame:AddClickListener(slot0.exitgame, slot0)
-	slot0:addEventCb(SettingsController.instance, SettingsEvent.OnKeyMapChange, slot0.onSelectChange, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnshortcuts:AddClickListener(arg_2_0._btnshortcutsOnClick, arg_2_0)
+	arg_2_0._btnreset:AddClickListener(arg_2_0._btnresetOnClick, arg_2_0)
+	arg_2_0._tipsBtn:AddClickListener(arg_2_0._tipsSwtich, arg_2_0)
+	arg_2_0._exitgame:AddClickListener(arg_2_0.exitgame, arg_2_0)
+	arg_2_0:addEventCb(SettingsController.instance, SettingsEvent.OnKeyMapChange, arg_2_0.onSelectChange, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnshortcuts:RemoveClickListener()
-	slot0._btnreset:RemoveClickListener()
-	slot0._tipsBtn:RemoveClickListener()
-	slot0._exitgame:RemoveClickListener()
-	slot0:removeEventCb(SettingsController.instance, SettingsEvent.OnKeyMapChange, slot0.onSelectChange, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnshortcuts:RemoveClickListener()
+	arg_3_0._btnreset:RemoveClickListener()
+	arg_3_0._tipsBtn:RemoveClickListener()
+	arg_3_0._exitgame:RemoveClickListener()
+	arg_3_0:removeEventCb(SettingsController.instance, SettingsEvent.OnKeyMapChange, arg_3_0.onSelectChange, arg_3_0)
 end
 
-function slot0._btnshortcutsOnClick(slot0)
+function var_0_0._btnshortcutsOnClick(arg_4_0)
+	return
 end
 
-function slot0._tipsSwtich(slot0)
-	if slot0._tipsStatue == 1 then
-		slot0._tipsStatue = 0
+function var_0_0._tipsSwtich(arg_5_0)
+	if arg_5_0._tipsStatue == 1 then
+		arg_5_0._tipsStatue = 0
 	else
-		slot0._tipsStatue = 1
+		arg_5_0._tipsStatue = 1
 	end
 
-	slot0:refreshTips()
-	PlayerPrefsHelper.setNumber("keyTips", slot0._tipsStatue)
+	arg_5_0:refreshTips()
+	PlayerPrefsHelper.setNumber("keyTips", arg_5_0._tipsStatue)
 	SettingsController.instance:dispatchEvent(SettingsEvent.OnKeyTipsChange)
 end
 
-function slot0.refreshTips(slot0)
-	slot0._tipsOn:SetActive(slot0._tipsStatue == 1)
-	slot0._tipsoff:SetActive(slot0._tipsStatue ~= 1)
+function var_0_0.refreshTips(arg_6_0)
+	arg_6_0._tipsOn:SetActive(arg_6_0._tipsStatue == 1)
+	arg_6_0._tipsoff:SetActive(arg_6_0._tipsStatue ~= 1)
 end
 
-function slot0._btnresetOnClick(slot0)
-	GameFacade.showMessageBox(MessageBoxIdDefine.PCInputReset, MsgBoxEnum.BoxType.Yes_No, slot0._ResetByIndex, nil, , slot0, nil, , slot0:getSelectTopMo().name)
+function var_0_0._btnresetOnClick(arg_7_0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.PCInputReset, MsgBoxEnum.BoxType.Yes_No, arg_7_0._ResetByIndex, nil, nil, arg_7_0, nil, nil, arg_7_0:getSelectTopMo().name)
 end
 
-function slot0._ResetByIndex(slot0)
-	SettingsKeyListModel.instance:Reset(slot0._index)
+function var_0_0._ResetByIndex(arg_8_0)
+	SettingsKeyListModel.instance:Reset(arg_8_0._index)
 end
 
-function slot0._editableInitView(slot0)
-	slot0:createTopScroll()
-	slot0:createPCScroll()
+function var_0_0._editableInitView(arg_9_0)
+	arg_9_0:createTopScroll()
+	arg_9_0:createPCScroll()
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_10_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_11_0)
+	return
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_12_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_13_0)
+	return
 end
 
-function slot0.onSelectChange(slot0, slot1)
-	if slot0._index ~= slot1 then
-		slot0._index = slot1
+function var_0_0.onSelectChange(arg_14_0, arg_14_1)
+	if arg_14_0._index ~= arg_14_1 then
+		arg_14_0._index = arg_14_1
 
-		SettingsKeyListModel.instance:SetActivity(slot0._index)
+		SettingsKeyListModel.instance:SetActivity(arg_14_0._index)
 	end
 end
 
-function slot0.createTopScroll(slot0)
-	slot1 = ListScrollParam.New()
-	slot1.scrollGOPath = "topScroll"
-	slot1.prefabType = ScrollEnum.ScrollPrefabFromView
-	slot1.prefabUrl = "topScroll/Viewport/Content/#go_topitem"
-	slot1.cellClass = SettingsKeyTopItem
-	slot1.scrollDir = ScrollEnum.ScrollDirH
-	slot1.lineCount = 1
-	slot1.cellWidth = 240
-	slot1.cellHeight = 68
-	slot1.cellSpaceH = 0
-	slot1.cellSpaceV = 0
-	slot0._topScroll = LuaListScrollView.New(SettingsKeyTopListModel.instance, slot1)
+function var_0_0.createTopScroll(arg_15_0)
+	local var_15_0 = ListScrollParam.New()
 
-	slot0:addChildView(slot0._topScroll)
+	var_15_0.scrollGOPath = "topScroll"
+	var_15_0.prefabType = ScrollEnum.ScrollPrefabFromView
+	var_15_0.prefabUrl = "topScroll/Viewport/Content/#go_topitem"
+	var_15_0.cellClass = SettingsKeyTopItem
+	var_15_0.scrollDir = ScrollEnum.ScrollDirH
+	var_15_0.lineCount = 1
+	var_15_0.cellWidth = 240
+	var_15_0.cellHeight = 68
+	var_15_0.cellSpaceH = 0
+	var_15_0.cellSpaceV = 0
+	arg_15_0._topScroll = LuaListScrollView.New(SettingsKeyTopListModel.instance, var_15_0)
+
+	arg_15_0:addChildView(arg_15_0._topScroll)
 	SettingsKeyTopListModel.instance:InitList()
 
-	slot0._index = 1
+	arg_15_0._index = 1
 
-	slot0._topScroll:selectCell(slot0._index, true)
+	arg_15_0._topScroll:selectCell(arg_15_0._index, true)
 end
 
-function slot0.createPCScroll(slot0)
-	slot1 = ListScrollParam.New()
-	slot1.scrollGOPath = "pcScroll"
-	slot1.prefabType = ScrollEnum.ScrollPrefabFromView
-	slot1.prefabUrl = "pcScroll/Viewport/Content/shortcutsitem"
-	slot1.cellClass = SettingsKeyItem
-	slot1.scrollDir = ScrollEnum.ScrollDirV
-	slot1.lineCount = 1
-	slot1.cellWidth = 1190
-	slot1.cellHeight = 90
-	slot1.cellSpaceH = 0
-	slot1.cellSpaceV = 0
-	slot1.startSpace = 230
-	slot0._pcScroll = LuaListScrollView.New(SettingsKeyListModel.instance, slot1)
+function var_0_0.createPCScroll(arg_16_0)
+	local var_16_0 = ListScrollParam.New()
 
-	slot0:addChildView(slot0._pcScroll)
+	var_16_0.scrollGOPath = "pcScroll"
+	var_16_0.prefabType = ScrollEnum.ScrollPrefabFromView
+	var_16_0.prefabUrl = "pcScroll/Viewport/Content/shortcutsitem"
+	var_16_0.cellClass = SettingsKeyItem
+	var_16_0.scrollDir = ScrollEnum.ScrollDirV
+	var_16_0.lineCount = 1
+	var_16_0.cellWidth = 1190
+	var_16_0.cellHeight = 90
+	var_16_0.cellSpaceH = 0
+	var_16_0.cellSpaceV = 0
+	var_16_0.startSpace = 230
+	arg_16_0._pcScroll = LuaListScrollView.New(SettingsKeyListModel.instance, var_16_0)
+
+	arg_16_0:addChildView(arg_16_0._pcScroll)
 	SettingsKeyListModel.instance:Init()
-	SettingsKeyListModel.instance:SetActivity(slot0._index)
+	SettingsKeyListModel.instance:SetActivity(arg_16_0._index)
 end
 
-function slot0.getSelectTopMo(slot0)
-	return slot0._topScroll:getFirstSelect()
+function var_0_0.getSelectTopMo(arg_17_0)
+	return arg_17_0._topScroll:getFirstSelect()
 end
 
-function slot0.exitgame(slot0)
-	GameFacade.showMessageBox(MessageBoxIdDefine.exitGame, MsgBoxEnum.BoxType.Yes_No, function ()
+function var_0_0.exitgame(arg_18_0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.exitGame, MsgBoxEnum.BoxType.Yes_No, function()
 		ProjBooter.instance:quitGame()
 	end)
 end
 
-return slot0
+return var_0_0

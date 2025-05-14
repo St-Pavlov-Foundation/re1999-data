@@ -1,17 +1,22 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.skill.GeneralSkill", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.skill.GeneralSkill", package.seeall)
 
-slot0 = class("GeneralSkill", SkillBase)
+local var_0_0 = class("GeneralSkill", SkillBase)
 
-function slot0.init(slot0, slot1, slot2)
-	uv0.super.init(slot0, slot1, slot2)
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	var_0_0.super.init(arg_1_0, arg_1_1, arg_1_2)
 
-	slot0._skillType = LengZhou6Enum.SkillType.passive
+	arg_1_0._skillType = LengZhou6Enum.SkillType.passive
 end
 
-function slot0.execute(slot0)
-	if uv0.super.execute(slot0) and slot0._triggerPoint == LengZhou6GameModel.instance:getCurGameStep() and LengZhou6EffectUtils.instance:getHandleFunc(slot0._effect[1]) ~= nil then
-		slot3(slot0._effect)
+function var_0_0.execute(arg_2_0)
+	if var_0_0.super.execute(arg_2_0) and arg_2_0._triggerPoint == LengZhou6GameModel.instance:getCurGameStep() then
+		local var_2_0 = arg_2_0._effect[1]
+		local var_2_1 = LengZhou6EffectUtils.instance:getHandleFunc(var_2_0)
+
+		if var_2_1 ~= nil then
+			var_2_1(arg_2_0._effect)
+		end
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,13 +1,15 @@
-module("modules.logic.versionactivity.view.VersionActivityDungeonMapLevelView", package.seeall)
+﻿module("modules.logic.versionactivity.view.VersionActivityDungeonMapLevelView", package.seeall)
 
-slot0 = class("VersionActivityDungeonMapLevelView", VersionActivityDungeonBaseMapLevelView)
+local var_0_0 = class("VersionActivityDungeonMapLevelView", VersionActivityDungeonBaseMapLevelView)
 
-function slot0.getEpisodeIndex(slot0)
-	if ActivityConfig.instance:getChapterIdMode(slot0.originEpisodeConfig.chapterId) == VersionActivityDungeonBaseEnum.DungeonMode.Hard then
-		return uv0.super.getEpisodeIndex(slot0)
+function var_0_0.getEpisodeIndex(arg_1_0)
+	if ActivityConfig.instance:getChapterIdMode(arg_1_0.originEpisodeConfig.chapterId) == VersionActivityDungeonBaseEnum.DungeonMode.Hard then
+		return var_0_0.super.getEpisodeIndex(arg_1_0)
 	end
 
-	return DungeonConfig.instance:getEpisodeLevelIndex(DungeonConfig.instance:getVersionActivityBrotherEpisodeByEpisodeCo(slot0.originEpisodeConfig)[1])
+	local var_1_0 = DungeonConfig.instance:getVersionActivityBrotherEpisodeByEpisodeCo(arg_1_0.originEpisodeConfig)
+
+	return DungeonConfig.instance:getEpisodeLevelIndex(var_1_0[1])
 end
 
-return slot0
+return var_0_0

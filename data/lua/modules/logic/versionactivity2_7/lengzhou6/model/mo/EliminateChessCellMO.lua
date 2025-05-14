@@ -1,45 +1,45 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.mo.EliminateChessCellMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.mo.EliminateChessCellMO", package.seeall)
 
-slot0 = class("EliminateChessCellMO", EliminateChessMO)
+local var_0_0 = class("EliminateChessCellMO", EliminateChessMO)
 
-function slot0.ctor(slot0)
-	uv0.super.ctor(slot0)
+function var_0_0.ctor(arg_1_0)
+	var_0_0.super.ctor(arg_1_0)
 
-	slot0._status = {}
+	arg_1_0._status = {}
 end
 
-function slot0.setChessId(slot0, slot1)
-	uv0.super.setChessId(slot0, slot1)
-	slot0:setEliminateID()
+function var_0_0.setChessId(arg_2_0, arg_2_1)
+	var_0_0.super.setChessId(arg_2_0, arg_2_1)
+	arg_2_0:setEliminateID()
 end
 
-function slot0.setEliminateID(slot0)
-	slot0._eliminateID = EliminateEnum_2_7.ChessIndexToType[slot0.id] or ""
+function var_0_0.setEliminateID(arg_3_0)
+	arg_3_0._eliminateID = EliminateEnum_2_7.ChessIndexToType[arg_3_0.id] or ""
 end
 
-function slot0.canMove(slot0)
-	return slot0:haveStatus(EliminateEnum.ChessState.Frost)
+function var_0_0.canMove(arg_4_0)
+	return arg_4_0:haveStatus(EliminateEnum.ChessState.Frost)
 end
 
-function slot0.getEliminateID(slot0)
-	if slot0._eliminateID == nil then
+function var_0_0.getEliminateID(arg_5_0)
+	if arg_5_0._eliminateID == nil then
 		logNormal("EliminateChessCellMO:getEliminateID() self._eliminateID == nil")
 	end
 
-	return slot0._eliminateID
+	return arg_5_0._eliminateID
 end
 
-function slot0.setStatus(slot0, slot1)
-	if slot1 == EliminateEnum.ChessState.Normal or slot1 == EliminateEnum.ChessState.Die then
-		tabletool.clear(slot0._status)
+function var_0_0.setStatus(arg_6_0, arg_6_1)
+	if arg_6_1 == EliminateEnum.ChessState.Normal or arg_6_1 == EliminateEnum.ChessState.Die then
+		tabletool.clear(arg_6_0._status)
 	end
 
-	slot0:addStatus(slot1)
+	arg_6_0:addStatus(arg_6_1)
 end
 
-function slot0.haveStatus(slot0, slot1)
-	for slot5 = 1, #slot0._status do
-		if slot0._status[slot5] == slot1 then
+function var_0_0.haveStatus(arg_7_0, arg_7_1)
+	for iter_7_0 = 1, #arg_7_0._status do
+		if arg_7_0._status[iter_7_0] == arg_7_1 then
 			return true
 		end
 	end
@@ -47,32 +47,32 @@ function slot0.haveStatus(slot0, slot1)
 	return false
 end
 
-function slot0.addStatus(slot0, slot1)
-	if slot1 == EliminateEnum.ChessState.Normal or slot1 == EliminateEnum.ChessState.Die then
-		tabletool.clear(slot0._status)
+function var_0_0.addStatus(arg_8_0, arg_8_1)
+	if arg_8_1 == EliminateEnum.ChessState.Normal or arg_8_1 == EliminateEnum.ChessState.Die then
+		tabletool.clear(arg_8_0._status)
 	end
 
-	if not slot0:haveStatus(slot1) then
-		table.insert(slot0._status, slot1)
+	if not arg_8_0:haveStatus(arg_8_1) then
+		table.insert(arg_8_0._status, arg_8_1)
 	end
 end
 
-function slot0.unsetStatus(slot0, slot1)
-	for slot5 = 1, #slot0._status do
-		if slot0._status[slot5] == slot1 then
-			table.remove(slot0._status, slot5)
+function var_0_0.unsetStatus(arg_9_0, arg_9_1)
+	for iter_9_0 = 1, #arg_9_0._status do
+		if arg_9_0._status[iter_9_0] == arg_9_1 then
+			table.remove(arg_9_0._status, iter_9_0)
 
 			break
 		end
 	end
 end
 
-function slot0.clear(slot0)
-	if slot0._status then
-		tabletool.clear(slot0._status)
+function var_0_0.clear(arg_10_0)
+	if arg_10_0._status then
+		tabletool.clear(arg_10_0._status)
 	end
 
-	uv0.super.clear(slot0)
+	var_0_0.super.clear(arg_10_0)
 end
 
-return slot0
+return var_0_0

@@ -1,7 +1,8 @@
-module("modules.logic.versionactivity2_7.act191.define.Activity191Enum", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.define.Activity191Enum", package.seeall)
 
-slot0 = _M
-slot0.NodeType = {
+local var_0_0 = _M
+
+var_0_0.NodeType = {
 	MonsterBattle6 = 16,
 	PlayerBattle2 = 12,
 	MonsterBattle5 = 15,
@@ -24,16 +25,16 @@ slot0.NodeType = {
 	BattleEvent = 6,
 	TagShop = 4
 }
-slot0.NodeType2Key = {
-	[slot0.NodeType.PlayerBattle1] = "playerBattle1",
-	[slot0.NodeType.PlayerBattle2] = "playerBattle2",
-	[slot0.NodeType.PlayerBattle3] = "playerBattle3",
-	[slot0.NodeType.PlayerBattle4] = "playerBattle4",
-	[slot0.NodeType.PlayerBattle5] = "playerBattle5",
-	[slot0.NodeType.PlayerBattle6] = "playerBattle6",
-	[slot0.NodeType.PlayerBattle7] = "playerBattle7"
+var_0_0.NodeType2Key = {
+	[var_0_0.NodeType.PlayerBattle1] = "playerBattle1",
+	[var_0_0.NodeType.PlayerBattle2] = "playerBattle2",
+	[var_0_0.NodeType.PlayerBattle3] = "playerBattle3",
+	[var_0_0.NodeType.PlayerBattle4] = "playerBattle4",
+	[var_0_0.NodeType.PlayerBattle5] = "playerBattle5",
+	[var_0_0.NodeType.PlayerBattle6] = "playerBattle6",
+	[var_0_0.NodeType.PlayerBattle7] = "playerBattle7"
 }
-slot0.EffectType = {
+var_0_0.EffectType = {
 	ItemByItem = 7,
 	CountEffects = 11,
 	DelayEffect = 10,
@@ -46,7 +47,7 @@ slot0.EffectType = {
 	HeroByHero = 4,
 	Hero = 2
 }
-slot0.PveFiled = {
+var_0_0.PveFiled = {
 	8,
 	9,
 	10,
@@ -55,7 +56,7 @@ slot0.PveFiled = {
 	16,
 	21
 }
-slot0.PvpFiled = {
+var_0_0.PvpFiled = {
 	11,
 	12,
 	13,
@@ -64,22 +65,22 @@ slot0.PvpFiled = {
 	19,
 	20
 }
-slot0.TagShopField = {
+var_0_0.TagShopField = {
 	4
 }
-slot0.AttrIdList = {
+var_0_0.AttrIdList = {
 	CharacterEnum.AttrId.Attack,
 	CharacterEnum.AttrId.Defense,
 	CharacterEnum.AttrId.Technic,
 	CharacterEnum.AttrId.Hp,
 	CharacterEnum.AttrId.Mdefense
 }
-slot0.GameState = {
+var_0_0.GameState = {
 	Normal = 1,
 	End = -1,
 	None = 0
 }
-slot0.ConstKey = {
+var_0_0.ConstKey = {
 	RoleTag = 10,
 	EnhanceDesc = 9,
 	PvpEpisodeName = 18,
@@ -95,31 +96,31 @@ slot0.ConstKey = {
 	TagShopFreshCost = 28,
 	PvpBattleEpisodeId = 6
 }
-slot0.CharacterType = {
+var_0_0.CharacterType = {
 	Monster = "monster",
 	Hero = "hero"
 }
-slot0.CollectionColor = {
+var_0_0.CollectionColor = {
 	"587FA1",
 	"8D6993",
 	"B8945F"
 }
-slot0.CharacterMaxStar = 6
-slot0.OpTeamType = {
+var_0_0.CharacterMaxStar = 6
+var_0_0.OpTeamType = {
 	ChangeName = 2,
 	ChangeIndex = 3,
 	Normal = 1
 }
-slot0.SortRule = {
+var_0_0.SortRule = {
 	Down = 2,
 	Up = 1
 }
-slot0.HyperLinkPattern = {
+var_0_0.HyperLinkPattern = {
 	EnhanceDestiny = "「(.-)」",
 	SkillDesc = "﹝(.-)﹞",
 	EnhanceItem = "『(.-)』"
 }
-slot0.PrefabPath = {
+var_0_0.PrefabPath = {
 	HeroHeadItem = "ui/viewres/versionactivity_2_7/act191/item/act191heroheaditem.prefab",
 	FetterItem = "ui/viewres/versionactivity_2_7/act191/item/act191fetteritem.prefab",
 	CollectionItem = "ui/viewres/versionactivity_2_7/act191/item/act191collectionitem.prefab",
@@ -130,4 +131,4 @@ slot0.PrefabPath = {
 	RewardItem = "ui/viewres/versionactivity_2_7/act191/item/act191rewarditem.prefab"
 }
 
-return slot0
+return var_0_0

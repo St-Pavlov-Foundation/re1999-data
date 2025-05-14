@@ -1,11 +1,11 @@
-module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroRewardMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroRewardMo", package.seeall)
 
-slot0 = class("DiceHeroRewardMo")
+local var_0_0 = class("DiceHeroRewardMo")
 
-function slot0.init(slot0, slot1)
-	slot0.type = slot1.type
-	slot0.id = slot1.id
-	slot0.index = nil
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.type = arg_1_1.type
+	arg_1_0.id = arg_1_1.id
+	arg_1_0.index = nil
 end
 
-return slot0
+return var_0_0

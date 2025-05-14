@@ -1,79 +1,81 @@
-module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.view.V2a7_SelfSelectSix_PanelView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.view.V2a7_SelfSelectSix_PanelView", package.seeall)
 
-slot0 = class("V2a7_SelfSelectSix_PanelView", BaseView)
+local var_0_0 = class("V2a7_SelfSelectSix_PanelView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goClaim = gohelper.findChild(slot0.viewGO, "root/simage_panelbg/reward/#btn_Claim")
-	slot0._gohasget = gohelper.findChild(slot0.viewGO, "root/simage_panelbg/reward/#go_hasget")
-	slot0._btnClaim = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/simage_panelbg/reward/#btn_Claim")
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_Close")
-	slot0._btnemptyTop = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_emptyTop")
-	slot0._btnemptyBottom = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_emptyBottom")
-	slot0._btnemptyLeft = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_emptyLeft")
-	slot0._btnemptyRight = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_emptyRight")
-	slot0._btnGo = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_Go")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "root/simage_panelbg/#txt_desc")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goClaim = gohelper.findChild(arg_1_0.viewGO, "root/simage_panelbg/reward/#btn_Claim")
+	arg_1_0._gohasget = gohelper.findChild(arg_1_0.viewGO, "root/simage_panelbg/reward/#go_hasget")
+	arg_1_0._btnClaim = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/simage_panelbg/reward/#btn_Claim")
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_Close")
+	arg_1_0._btnemptyTop = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_emptyTop")
+	arg_1_0._btnemptyBottom = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_emptyBottom")
+	arg_1_0._btnemptyLeft = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_emptyLeft")
+	arg_1_0._btnemptyRight = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_emptyRight")
+	arg_1_0._btnGo = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_Go")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "root/simage_panelbg/#txt_desc")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClaim:AddClickListener(slot0._btnClaimOnClick, slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
-	slot0._btnemptyTop:AddClickListener(slot0._btnemptyTopOnClick, slot0)
-	slot0._btnemptyBottom:AddClickListener(slot0._btnemptyBottomOnClick, slot0)
-	slot0._btnemptyLeft:AddClickListener(slot0._btnemptyLeftOnClick, slot0)
-	slot0._btnemptyRight:AddClickListener(slot0._btnemptyRightOnClick, slot0)
-	slot0._btnGo:AddClickListener(slot0._btnGoOnClick, slot0)
-	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, slot0.refreshUI, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClaim:AddClickListener(arg_2_0._btnClaimOnClick, arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
+	arg_2_0._btnemptyTop:AddClickListener(arg_2_0._btnemptyTopOnClick, arg_2_0)
+	arg_2_0._btnemptyBottom:AddClickListener(arg_2_0._btnemptyBottomOnClick, arg_2_0)
+	arg_2_0._btnemptyLeft:AddClickListener(arg_2_0._btnemptyLeftOnClick, arg_2_0)
+	arg_2_0._btnemptyRight:AddClickListener(arg_2_0._btnemptyRightOnClick, arg_2_0)
+	arg_2_0._btnGo:AddClickListener(arg_2_0._btnGoOnClick, arg_2_0)
+	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, arg_2_0.refreshUI, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClaim:RemoveClickListener()
-	slot0._btnClose:RemoveClickListener()
-	slot0._btnemptyTop:RemoveClickListener()
-	slot0._btnemptyBottom:RemoveClickListener()
-	slot0._btnemptyLeft:RemoveClickListener()
-	slot0._btnemptyRight:RemoveClickListener()
-	slot0._btnGo:RemoveClickListener()
-	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, slot0.refreshUI, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClaim:RemoveClickListener()
+	arg_3_0._btnClose:RemoveClickListener()
+	arg_3_0._btnemptyTop:RemoveClickListener()
+	arg_3_0._btnemptyBottom:RemoveClickListener()
+	arg_3_0._btnemptyLeft:RemoveClickListener()
+	arg_3_0._btnemptyRight:RemoveClickListener()
+	arg_3_0._btnGo:RemoveClickListener()
+	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, arg_3_0.refreshUI, arg_3_0)
 end
 
-function slot0._btnClaimOnClick(slot0)
-	if not slot0:checkReceied() and slot0:checkCanGet() then
-		Activity101Rpc.instance:sendGet101BonusRequest(slot0._actId, 1)
+function var_0_0._btnClaimOnClick(arg_4_0)
+	if not arg_4_0:checkReceied() and arg_4_0:checkCanGet() then
+		Activity101Rpc.instance:sendGet101BonusRequest(arg_4_0._actId, 1)
 	end
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_5_0)
+	arg_5_0:closeThis()
 end
 
-function slot0._btnemptyTopOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnemptyTopOnClick(arg_6_0)
+	arg_6_0:closeThis()
 end
 
-function slot0._btnemptyBottomOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnemptyBottomOnClick(arg_7_0)
+	arg_7_0:closeThis()
 end
 
-function slot0._btnemptyLeftOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnemptyLeftOnClick(arg_8_0)
+	arg_8_0:closeThis()
 end
 
-function slot0._btnemptyRightOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnemptyRightOnClick(arg_9_0)
+	arg_9_0:closeThis()
 end
 
-function slot0._btnGoOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnGoOnClick(arg_10_0)
+	arg_10_0:closeThis()
 
-	if ActivityModel.instance:getActMO(slot0._actId) and slot1.centerId then
-		ActivityModel.instance:setTargetActivityCategoryId(slot0._actId)
+	local var_10_0 = ActivityModel.instance:getActMO(arg_10_0._actId)
 
-		if slot1.centerId == ActivityEnum.ActivityType.Beginner then
+	if var_10_0 and var_10_0.centerId then
+		ActivityModel.instance:setTargetActivityCategoryId(arg_10_0._actId)
+
+		if var_10_0.centerId == ActivityEnum.ActivityType.Beginner then
 			ActivityController.instance:openActivityBeginnerView()
 		else
 			ActivityController.instance:openActivityWelfareView()
@@ -81,37 +83,44 @@ function slot0._btnGoOnClick(slot0)
 	end
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_11_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_12_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_13_0)
 	AudioMgr.instance:trigger(AudioEnum.Meilanni.play_ui_mln_day_night)
 
-	slot0._actId = slot0.viewParam.actId
-	slot0._actCo = ActivityConfig.instance:getActivityCo(slot0._actId)
-	slot0._txtdesc.text = slot0._actCo.actDesc
+	arg_13_0._actId = arg_13_0.viewParam.actId
+	arg_13_0._actCo = ActivityConfig.instance:getActivityCo(arg_13_0._actId)
+	arg_13_0._txtdesc.text = arg_13_0._actCo.actDesc
 end
 
-function slot0.refreshUI(slot0)
-	gohelper.setActive(slot0._goClaim, not slot0:checkReceied() and slot0:checkCanGet())
-	gohelper.setActive(slot0._gohasget, slot1)
+function var_0_0.refreshUI(arg_14_0)
+	local var_14_0 = arg_14_0:checkReceied()
+	local var_14_1 = arg_14_0:checkCanGet()
+
+	gohelper.setActive(arg_14_0._goClaim, not var_14_0 and var_14_1)
+	gohelper.setActive(arg_14_0._gohasget, var_14_0)
 end
 
-function slot0.checkReceied(slot0)
-	return ActivityType101Model.instance:isType101RewardGet(slot0._actId, 1)
+function var_0_0.checkReceied(arg_15_0)
+	return (ActivityType101Model.instance:isType101RewardGet(arg_15_0._actId, 1))
 end
 
-function slot0.checkCanGet(slot0)
-	return ActivityType101Model.instance:isType101RewardCouldGet(slot0._actId, 1)
+function var_0_0.checkCanGet(arg_16_0)
+	return (ActivityType101Model.instance:isType101RewardCouldGet(arg_16_0._actId, 1))
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_17_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_18_0)
+	return
 end
 
-return slot0
+return var_0_0

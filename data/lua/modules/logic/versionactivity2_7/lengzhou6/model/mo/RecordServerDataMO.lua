@@ -1,67 +1,79 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.mo.RecordServerDataMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.mo.RecordServerDataMO", package.seeall)
 
-slot0 = class("RecordServerDataMO")
-slot1 = {
-	endLessBattleProgress = nil,
-	round = nil,
-	endLessLayer = nil,
-	playerId = nil,
-	playerHp = nil,
-	playerSkillList = {},
-	enemyConfigId = nil,
-	enemyHp = nil,
-	curActionStepIndex = nil,
-	skillRound = nil,
-	chessData = {}
-}
+local var_0_0 = class("RecordServerDataMO")
+local var_0_1 = {}
 
-function slot0.ctor(slot0)
-	slot0._data = uv0
+var_0_1.endLessBattleProgress = nil
+var_0_1.round = nil
+var_0_1.endLessLayer = nil
+var_0_1.playerId = nil
+var_0_1.playerHp = nil
+var_0_1.playerSkillList = {}
+var_0_1.enemyConfigId = nil
+var_0_1.enemyHp = nil
+var_0_1.curActionStepIndex = nil
+var_0_1.skillRound = nil
+var_0_1.chessData = {}
+
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._data = var_0_1
 end
 
-function slot0.initFormJson(slot0, slot1)
-	slot0:_fromJson(slot1)
+function var_0_0.initFormJson(arg_2_0, arg_2_1)
+	arg_2_0:_fromJson(arg_2_1)
 end
 
-function slot0.toJson(slot0)
-	return cjson.encode(slot0._data)
+function var_0_0.toJson(arg_3_0)
+	return cjson.encode(arg_3_0._data)
 end
 
-function slot0._fromJson(slot0, slot1)
-	slot0._data = cjson.decode(slot1)
+function var_0_0._fromJson(arg_4_0, arg_4_1)
+	arg_4_0._data = cjson.decode(arg_4_1)
 end
 
-function slot0.getRecordData(slot0)
-	return slot0:toJson()
+function var_0_0.getRecordData(arg_5_0)
+	return arg_5_0:toJson()
 end
 
-function slot0.record(slot0, slot1)
-	tabletool.clear(slot0._data)
+function var_0_0.record(arg_6_0, arg_6_1)
+	tabletool.clear(arg_6_0._data)
 
-	if slot0._data ~= nil then
-		slot0._data.chessData = slot1
-		slot0._data.endLessBattleProgress = LengZhou6GameModel.instance:getEndLessBattleProgress()
-		slot0._data.round = LengZhou6GameModel.instance:getCurRound()
-		slot0._data.endLessLayer = LengZhou6GameModel.instance:getEndLessModelLayer()
-		slot0._data.playerId = LengZhou6GameModel.instance:getPlayer():getConfigId()
-		slot4 = LengZhou6GameModel.instance:getEnemy()
-		slot0._data.enemyConfigId = slot4:getConfigId()
-		slot0._data.curActionStepIndex = slot4:getAction() and slot4:getAction():getCurBehaviorId()
-		slot0._data.skillRound = slot4:getAction() and slot4:getAction():getCurRound()
-		slot6 = {}
+	if arg_6_0._data ~= nil then
+		arg_6_0._data.chessData = arg_6_1
 
-		for slot10 = 1, #slot3:getActiveSkills() do
-			table.insert(slot6, slot5[slot10]:getConfig().id)
+		local var_6_0 = LengZhou6GameModel.instance:getEndLessBattleProgress()
+
+		arg_6_0._data.endLessBattleProgress = var_6_0
+		arg_6_0._data.round = LengZhou6GameModel.instance:getCurRound()
+		arg_6_0._data.endLessLayer = LengZhou6GameModel.instance:getEndLessModelLayer()
+
+		local var_6_1 = LengZhou6GameModel.instance:getPlayer()
+
+		arg_6_0._data.playerId = var_6_1:getConfigId()
+
+		local var_6_2 = LengZhou6GameModel.instance:getEnemy()
+
+		arg_6_0._data.enemyConfigId = var_6_2:getConfigId()
+		arg_6_0._data.curActionStepIndex = var_6_2:getAction() and var_6_2:getAction():getCurBehaviorId()
+		arg_6_0._data.skillRound = var_6_2:getAction() and var_6_2:getAction():getCurRound()
+
+		local var_6_3 = var_6_1:getActiveSkills()
+		local var_6_4 = {}
+
+		for iter_6_0 = 1, #var_6_3 do
+			local var_6_5 = var_6_3[iter_6_0]
+
+			table.insert(var_6_4, var_6_5:getConfig().id)
 		end
 
-		slot0._data.playerSkillList = slot6
-		slot0._data.playerHp = slot3:getHp()
-		slot0._data.enemyHp = slot4:getHp()
+		arg_6_0._data.playerSkillList = var_6_4
+		arg_6_0._data.playerHp = var_6_1:getHp()
+		arg_6_0._data.enemyHp = var_6_2:getHp()
 	end
 end
 
-function slot0.getData(slot0)
-	return slot0._data
+function var_0_0.getData(arg_7_0)
+	return arg_7_0._data
 end
 
-return slot0
+return var_0_0

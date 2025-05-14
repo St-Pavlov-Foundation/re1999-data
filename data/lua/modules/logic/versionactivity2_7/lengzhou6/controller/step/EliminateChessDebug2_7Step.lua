@@ -1,57 +1,68 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessDebug2_7Step", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessDebug2_7Step", package.seeall)
 
-slot0 = class("EliminateChessDebug2_7Step", EliminateChessStepBase)
+local var_0_0 = class("EliminateChessDebug2_7Step", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
+function var_0_0.onStart(arg_1_0)
 	if not isDebugBuild then
-		slot0:onDone(true)
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	slot2 = LocalEliminateChessModel.instance:getAllCell()
-	slot3 = "\n"
+	local var_1_0 = LengZhou6EliminateChessItemController.instance:getChess()
+	local var_1_1 = LocalEliminateChessModel.instance:getAllCell()
+	local var_1_2 = "\n"
 
-	for slot7 = #LengZhou6EliminateChessItemController.instance:getChess(), 1, -1 do
-		slot8 = ""
+	for iter_1_0 = #var_1_0, 1, -1 do
+		local var_1_3 = ""
 
-		for slot12 = 1, #slot1[slot7] do
-			slot13 = 0
-			slot14 = -1
+		for iter_1_1 = 1, #var_1_0[iter_1_0] do
+			local var_1_4 = 0
+			local var_1_5 = -1
 
-			if slot1[slot12][slot7] ~= nil and slot1[slot12][slot7]:getData() ~= nil then
-				for slot20 = 1, #slot15:getStatus() do
-					slot13 = slot13 + slot16[slot20]
+			if var_1_0[iter_1_1][iter_1_0] ~= nil then
+				local var_1_6 = var_1_0[iter_1_1][iter_1_0]:getData()
+
+				if var_1_6 ~= nil then
+					local var_1_7 = var_1_6:getStatus()
+
+					for iter_1_2 = 1, #var_1_7 do
+						var_1_4 = var_1_4 + var_1_7[iter_1_2]
+					end
+
+					var_1_5 = var_1_6.id
 				end
-
-				slot14 = slot15.id
 			end
 
-			slot8 = slot8 .. slot14 .. "[" .. slot13 .. "]" .. " "
+			var_1_3 = var_1_3 .. var_1_5 .. "[" .. var_1_4 .. "]" .. " "
 		end
 
-		slot3 = slot3 .. slot8 .. "\n"
+		var_1_2 = var_1_2 .. var_1_3 .. "\n"
 	end
 
-	slot4 = "\n"
+	local var_1_8 = "\n"
 
-	for slot8 = #slot2, 1, -1 do
-		slot9 = ""
+	for iter_1_3 = #var_1_1, 1, -1 do
+		local var_1_9 = ""
 
-		for slot13 = 1, #slot2[slot8] do
-			for slot20 = 1, #slot2[slot13][slot8]:getStatus() do
-				slot16 = 0 + slot15[slot20]
+		for iter_1_4 = 1, #var_1_1[iter_1_3] do
+			local var_1_10 = var_1_1[iter_1_4][iter_1_3]
+			local var_1_11 = var_1_10:getStatus()
+			local var_1_12 = 0
+
+			for iter_1_5 = 1, #var_1_11 do
+				var_1_12 = var_1_12 + var_1_11[iter_1_5]
 			end
 
-			slot9 = slot9 .. slot14.id .. "[" .. slot16 .. "]" .. " "
+			var_1_9 = var_1_9 .. var_1_10.id .. "[" .. var_1_12 .. "]" .. " "
 		end
 
-		slot4 = slot4 .. slot9 .. "\n"
+		var_1_8 = var_1_8 .. var_1_9 .. "\n"
 	end
 
-	logNormal("chessStr = " .. slot3)
-	logNormal("chessMOStr = " .. slot4)
-	slot0:onDone(true)
+	logNormal("chessStr = " .. var_1_2)
+	logNormal("chessMOStr = " .. var_1_8)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

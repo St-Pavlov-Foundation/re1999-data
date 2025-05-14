@@ -1,63 +1,66 @@
-module("modules.logic.fight.fightcomponent.FightWorkQueueComponent", package.seeall)
+﻿module("modules.logic.fight.fightcomponent.FightWorkQueueComponent", package.seeall)
 
-slot0 = class("FightWorkQueueComponent", FightBaseClass)
+local var_0_0 = class("FightWorkQueueComponent", FightBaseClass)
 
-function slot0.onConstructor(slot0)
-	slot0.workQueue = {}
-	slot0.callback = nil
-	slot0.callbackHandle = nil
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.workQueue = {}
+	arg_1_0.callback = nil
+	arg_1_0.callbackHandle = nil
 end
 
-function slot0.registFinishCallback(slot0, slot1, slot2)
-	slot0.callback = slot1
-	slot0.callbackHandle = slot2
+function var_0_0.registFinishCallback(arg_2_0, arg_2_1, arg_2_2)
+	arg_2_0.callback = arg_2_1
+	arg_2_0.callbackHandle = arg_2_2
 end
 
-function slot0.clearFinishCallback(slot0)
-	slot0.callback = nil
-	slot0.callbackHandle = nil
+function var_0_0.clearFinishCallback(arg_3_0)
+	arg_3_0.callback = nil
+	arg_3_0.callbackHandle = nil
 end
 
-function slot0.addWork(slot0, slot1, slot2)
-	slot0:addWorkList({
-		slot1
-	}, slot2)
+function var_0_0.addWork(arg_4_0, arg_4_1, arg_4_2)
+	arg_4_0:addWorkList({
+		arg_4_1
+	}, arg_4_2)
 end
 
-function slot0.addWorkList(slot0, slot1, slot2)
-	slot3 = false
+function var_0_0.addWorkList(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = false
 
-	if #slot0.workQueue == 0 then
-		slot3 = true
+	if #arg_5_0.workQueue == 0 then
+		var_5_0 = true
 	end
 
-	for slot7, slot8 in ipairs(slot1) do
-		slot8:registFinishCallback(slot0._onWorkFinish, slot0)
-		table.insert(slot0.workQueue, {
-			work = slot8,
-			context = slot2
+	for iter_5_0, iter_5_1 in ipairs(arg_5_1) do
+		iter_5_1:registFinishCallback(arg_5_0._onWorkFinish, arg_5_0)
+		table.insert(arg_5_0.workQueue, {
+			work = iter_5_1,
+			context = arg_5_2
 		})
 	end
 
-	if slot3 then
-		slot0:_onWorkFinish()
+	if var_5_0 then
+		arg_5_0:_onWorkFinish()
 	end
 end
 
-function slot0._onWorkFinish(slot0)
-	if table.remove(slot0.workQueue, 1) then
-		return slot2.work:start(slot2.context)
-	elseif slot0.callback then
-		slot0.callback(slot0.callbackHandle)
+function var_0_0._onWorkFinish(arg_6_0)
+	local var_6_0 = arg_6_0.workQueue
+	local var_6_1 = table.remove(var_6_0, 1)
+
+	if var_6_1 then
+		return var_6_1.work:start(var_6_1.context)
+	elseif arg_6_0.callback then
+		arg_6_0.callback(arg_6_0.callbackHandle)
 	end
 end
 
-function slot0.onDestructor(slot0)
-	for slot4 = #slot0.workQueue, 1, -1 do
-		slot0.workQueue[slot4].work:disposeSelf()
+function var_0_0.onDestructor(arg_7_0)
+	for iter_7_0 = #arg_7_0.workQueue, 1, -1 do
+		arg_7_0.workQueue[iter_7_0].work:disposeSelf()
 	end
 
-	slot0:clearFinishCallback()
+	arg_7_0:clearFinishCallback()
 end
 
-return slot0
+return var_0_0

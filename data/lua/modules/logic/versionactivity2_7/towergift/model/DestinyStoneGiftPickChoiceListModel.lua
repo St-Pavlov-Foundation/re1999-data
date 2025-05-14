@@ -1,98 +1,117 @@
-module("modules.logic.versionactivity2_7.towergift.model.DestinyStoneGiftPickChoiceListModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.model.DestinyStoneGiftPickChoiceListModel", package.seeall)
 
-slot0 = class("DestinyStoneGiftPickChoiceListModel", ListScrollModel)
+local var_0_0 = class("DestinyStoneGiftPickChoiceListModel", ListScrollModel)
 
-function slot1(slot0, slot1)
-	if (slot0.heroMo.destinyStoneMo:isUnlockSlot() and 1 or 2) ~= (slot1.heroMo.destinyStoneMo:isUnlockSlot() and 1 or 2) then
-		return slot5 < slot4
+local function var_0_1(arg_1_0, arg_1_1)
+	local var_1_0 = arg_1_0.heroMo.destinyStoneMo
+	local var_1_1 = arg_1_1.heroMo.destinyStoneMo
+	local var_1_2 = var_1_0:isUnlockSlot() and 1 or 2
+	local var_1_3 = var_1_1:isUnlockSlot() and 1 or 2
+
+	if var_1_2 ~= var_1_3 then
+		return var_1_3 < var_1_2
 	end
 
-	if slot2.rank ~= slot3.rank then
-		return slot6 < slot7
+	local var_1_4 = var_1_0.rank
+	local var_1_5 = var_1_1.rank
+
+	if var_1_4 ~= var_1_5 then
+		return var_1_4 < var_1_5
 	end
 
-	return slot1.heroId < slot0.heroId
+	return arg_1_0.heroId > arg_1_1.heroId
 end
 
-function slot0.initList(slot0)
-	slot0._moList = {}
+function var_0_0.initList(arg_2_0)
+	arg_2_0._moList = {}
 
-	for slot5, slot6 in pairs(HeroModel.instance:getAllHero()) do
-		if slot6 and slot0:checkHeroOpenDestinyStone(slot6) then
-			slot7 = slot6.destinyStoneMo
-			slot8 = slot7:getStoneMoList()
+	local var_2_0 = HeroModel.instance:getAllHero()
 
-			if slot7:isSlotMaxLevel() then
-				for slot13, slot14 in pairs(slot8) do
-					if not slot14.isUnlock then
-						table.insert(slot0._moList, {
-							heroMo = slot6,
-							heroId = slot6.config.id,
-							stoneMo = slot14,
-							stoneId = slot14.stoneId,
-							isUnLock = false
-						})
+	for iter_2_0, iter_2_1 in pairs(var_2_0) do
+		if iter_2_1 and arg_2_0:checkHeroOpenDestinyStone(iter_2_1) then
+			local var_2_1 = iter_2_1.destinyStoneMo
+			local var_2_2 = var_2_1:getStoneMoList()
+
+			if var_2_1:isSlotMaxLevel() then
+				for iter_2_2, iter_2_3 in pairs(var_2_2) do
+					if not iter_2_3.isUnlock then
+						local var_2_3 = {
+							heroMo = iter_2_1,
+							heroId = iter_2_1.config.id,
+							stoneMo = iter_2_3,
+							stoneId = iter_2_3.stoneId
+						}
+
+						var_2_3.isUnLock = false
+
+						table.insert(arg_2_0._moList, var_2_3)
 					end
 				end
 			else
-				for slot13, slot14 in pairs(slot8) do
-					if ({
-						isUnLock = slot14.isUnlock
-					}).isUnLock then
-						slot15.stonelevel = slot7.rank
+				for iter_2_4, iter_2_5 in pairs(var_2_2) do
+					local var_2_4 = {
+						isUnLock = iter_2_5.isUnlock
+					}
+
+					if var_2_4.isUnLock then
+						var_2_4.stonelevel = var_2_1.rank
 					end
 
-					slot15.heroMo = slot6
-					slot15.heroId = slot6.config.id
-					slot15.stoneMo = slot14
-					slot15.stoneId = slot14.stoneId
+					var_2_4.heroMo = iter_2_1
+					var_2_4.heroId = iter_2_1.config.id
+					var_2_4.stoneMo = iter_2_5
+					var_2_4.stoneId = iter_2_5.stoneId
 
-					table.insert(slot0._moList, slot15)
+					table.insert(arg_2_0._moList, var_2_4)
 				end
 			end
 		end
 	end
 
-	table.sort(slot0._moList, uv0)
-	slot0:setList(slot0._moList)
+	table.sort(arg_2_0._moList, var_0_1)
+	arg_2_0:setList(arg_2_0._moList)
 end
 
-function slot0.checkHeroOpenDestinyStone(slot0, slot1)
-	if not slot1:isHasDestinySystem() then
+function var_0_0.checkHeroOpenDestinyStone(arg_3_0, arg_3_1)
+	if not arg_3_1:isHasDestinySystem() then
 		return false
 	end
 
-	if tonumber(CommonConfig.instance:getConstStr(CharacterDestinyEnum.DestinyStoneOpenLevelConstId[slot1.config.rare or 5])) <= slot1.level and not slot1.destinyStoneMo:checkAllUnlock() then
+	local var_3_0 = arg_3_1.config.rare or 5
+	local var_3_1 = CharacterDestinyEnum.DestinyStoneOpenLevelConstId[var_3_0]
+	local var_3_2 = CommonConfig.instance:getConstStr(var_3_1)
+
+	if arg_3_1.level >= tonumber(var_3_2) and not arg_3_1.destinyStoneMo:checkAllUnlock() then
 		return true
 	end
 
 	return false
 end
 
-function slot0.setCurrentSelectMo(slot0, slot1)
-	if not slot0.currentSelectMo then
-		slot0.currentSelectMo = slot1
-	elseif slot0:isSelectedMo(slot1.stoneId) then
-		slot0:clearSelect()
+function var_0_0.setCurrentSelectMo(arg_4_0, arg_4_1)
+	if not arg_4_0.currentSelectMo then
+		arg_4_0.currentSelectMo = arg_4_1
+	elseif arg_4_0:isSelectedMo(arg_4_1.stoneId) then
+		arg_4_0:clearSelect()
 	else
-		slot0.currentSelectMo = slot1
+		arg_4_0.currentSelectMo = arg_4_1
 	end
 
 	DestinyStoneGiftPickChoiceController.instance:dispatchEvent(DestinyStoneGiftPickChoiceEvent.onCustomPickListChanged)
 end
 
-function slot0.getCurrentSelectMo(slot0)
-	return slot0.currentSelectMo
+function var_0_0.getCurrentSelectMo(arg_5_0)
+	return arg_5_0.currentSelectMo
 end
 
-function slot0.clearSelect(slot0)
-	slot0.currentSelectMo = nil
+function var_0_0.clearSelect(arg_6_0)
+	arg_6_0.currentSelectMo = nil
 end
 
-function slot0.isSelectedMo(slot0, slot1)
-	return slot0.currentSelectMo and slot0.currentSelectMo.stoneId == slot1
+function var_0_0.isSelectedMo(arg_7_0, arg_7_1)
+	return arg_7_0.currentSelectMo and arg_7_0.currentSelectMo.stoneId == arg_7_1
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

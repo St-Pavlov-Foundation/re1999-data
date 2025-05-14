@@ -1,177 +1,215 @@
-module("modules.logic.versionactivity2_6.dicehero.rpc.DiceHeroRpc", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.rpc.DiceHeroRpc", package.seeall)
 
-slot0 = class("DiceHeroRpc", BaseRpc)
+local var_0_0 = class("DiceHeroRpc", BaseRpc)
 
-function slot0.sendDiceHeroGetInfo(slot0, slot1, slot2)
-	return slot0:sendMsg(DiceHeroModule_pb.DiceHeroGetInfoRequest(), slot1, slot2)
+function var_0_0.sendDiceHeroGetInfo(arg_1_0, arg_1_1, arg_1_2)
+	local var_1_0 = DiceHeroModule_pb.DiceHeroGetInfoRequest()
+
+	return arg_1_0:sendMsg(var_1_0, arg_1_1, arg_1_2)
 end
 
-function slot0.onReceiveDiceHeroGetInfoReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		DiceHeroModel.instance:initInfo(slot2.info)
+function var_0_0.onReceiveDiceHeroGetInfoReply(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_1 == 0 then
+		DiceHeroModel.instance:initInfo(arg_2_2.info)
 	end
 end
 
-function slot0.sendDiceHeroEnterStory(slot0, slot1, slot2, slot3, slot4)
-	slot5 = DiceHeroModule_pb.DiceHeroEnterStoryRequest()
-	slot5.levelId = slot1
-	slot5.chapter = slot2
+function var_0_0.sendDiceHeroEnterStory(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
+	local var_3_0 = DiceHeroModule_pb.DiceHeroEnterStoryRequest()
 
-	return slot0:sendMsg(slot5, slot3, slot4)
+	var_3_0.levelId = arg_3_1
+	var_3_0.chapter = arg_3_2
+
+	return arg_3_0:sendMsg(var_3_0, arg_3_3, arg_3_4)
 end
 
-function slot0.onReceiveDiceHeroEnterStoryReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		DiceHeroModel.instance:initInfo(slot2.info)
+function var_0_0.onReceiveDiceHeroEnterStoryReply(arg_4_0, arg_4_1, arg_4_2)
+	if arg_4_1 == 0 then
+		DiceHeroModel.instance:initInfo(arg_4_2.info)
 	end
 end
 
-function slot0.sendDiceHeroGetReward(slot0, slot1, slot2, slot3, slot4)
-	slot5 = DiceHeroModule_pb.DiceHeroGetRewardRequest()
+function var_0_0.sendDiceHeroGetReward(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)
+	local var_5_0 = DiceHeroModule_pb.DiceHeroGetRewardRequest()
 
-	for slot9, slot10 in ipairs(slot1) do
-		table.insert(slot5.index, slot10)
+	for iter_5_0, iter_5_1 in ipairs(arg_5_1) do
+		table.insert(var_5_0.index, iter_5_1)
 	end
 
-	slot5.chapter = slot2
+	var_5_0.chapter = arg_5_2
 
-	return slot0:sendMsg(slot5, slot3, slot4)
+	return arg_5_0:sendMsg(var_5_0, arg_5_3, arg_5_4)
 end
 
-function slot0.onReceiveDiceHeroGetRewardReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		DiceHeroModel.instance:initInfo(slot2.info)
-	end
-end
-
-function slot0.sendDiceHeroEnterFight(slot0, slot1, slot2, slot3)
-	DiceHeroModel.instance.lastEnterLevelId = slot1
-	slot4 = DiceHeroModule_pb.DiceHeroEnterFightRequest()
-	slot4.levelId = slot1
-
-	return slot0:sendMsg(slot4, slot2, slot3)
-end
-
-function slot0.onReceiveDiceHeroEnterFightReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		DiceHeroFightModel.instance:setGameData(slot2.fight)
+function var_0_0.onReceiveDiceHeroGetRewardReply(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_1 == 0 then
+		DiceHeroModel.instance:initInfo(arg_6_2.info)
 	end
 end
 
-function slot0.sendDiceHeroResetDice(slot0, slot1, slot2, slot3)
-	slot4 = DiceHeroModule_pb.DiceHeroResetDiceRequest()
+function var_0_0.sendDiceHeroEnterFight(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	DiceHeroModel.instance.lastEnterLevelId = arg_7_1
 
-	for slot8, slot9 in pairs(slot1) do
-		table.insert(slot4.diceUids, slot9)
-	end
+	local var_7_0 = DiceHeroModule_pb.DiceHeroEnterFightRequest()
 
-	return slot0:sendMsg(slot4, slot2, slot3)
+	var_7_0.levelId = arg_7_1
+
+	return arg_7_0:sendMsg(var_7_0, arg_7_2, arg_7_3)
 end
 
-function slot0.onReceiveDiceHeroResetDiceReply(slot0, slot1, slot2)
-	if slot1 == 0 then
+function var_0_0.onReceiveDiceHeroEnterFightReply(arg_8_0, arg_8_1, arg_8_2)
+	if arg_8_1 == 0 then
+		DiceHeroFightModel.instance:setGameData(arg_8_2.fight)
+	end
+end
+
+function var_0_0.sendDiceHeroResetDice(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
+	local var_9_0 = DiceHeroModule_pb.DiceHeroResetDiceRequest()
+
+	for iter_9_0, iter_9_1 in pairs(arg_9_1) do
+		table.insert(var_9_0.diceUids, iter_9_1)
+	end
+
+	return arg_9_0:sendMsg(var_9_0, arg_9_2, arg_9_3)
+end
+
+function var_0_0.onReceiveDiceHeroResetDiceReply(arg_10_0, arg_10_1, arg_10_2)
+	if arg_10_1 == 0 then
+		local var_10_0 = DiceHeroHelper.instance:buildFlow(arg_10_2.steps)
+
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.StepStart)
-		DiceHeroHelper.instance:startFlow(DiceHeroHelper.instance:buildFlow(slot2.steps))
+		DiceHeroHelper.instance:startFlow(var_10_0)
 	end
 end
 
-function slot0.sendDiceHeroConfirmDice(slot0, slot1, slot2)
-	return slot0:sendMsg(DiceHeroModule_pb.DiceHeroConfirmDiceRequest(), slot1, slot2)
+function var_0_0.sendDiceHeroConfirmDice(arg_11_0, arg_11_1, arg_11_2)
+	local var_11_0 = DiceHeroModule_pb.DiceHeroConfirmDiceRequest()
+
+	return arg_11_0:sendMsg(var_11_0, arg_11_1, arg_11_2)
 end
 
-function slot0.onReceiveDiceHeroConfirmDiceReply(slot0, slot1, slot2)
-	if slot1 == 0 then
+function var_0_0.onReceiveDiceHeroConfirmDiceReply(arg_12_0, arg_12_1, arg_12_2)
+	if arg_12_1 == 0 then
 		DiceHeroFightModel.instance:getGameData().confirmed = true
 
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.ConfirmDice)
+
+		local var_12_0 = DiceHeroHelper.instance:buildFlow(arg_12_2.steps)
+
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.StepStart)
-		DiceHeroHelper.instance:startFlow(DiceHeroHelper.instance:buildFlow(slot2.steps))
+		DiceHeroHelper.instance:startFlow(var_12_0)
 	end
 end
 
-function slot0.sendDiceHeroUseSkill(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
-	slot8 = DiceHeroModule_pb.DiceHeroUseSkillRequest()
-	slot8.type = slot1
-	slot8.skillId = slot2
-	slot8.toId = slot3
+function var_0_0.sendDiceHeroUseSkill(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4, arg_13_5, arg_13_6, arg_13_7)
+	local var_13_0 = DiceHeroModule_pb.DiceHeroUseSkillRequest()
 
-	for slot12, slot13 in ipairs(slot4) do
-		table.insert(slot8.diceUids, slot13)
+	var_13_0.type = arg_13_1
+	var_13_0.skillId = arg_13_2
+	var_13_0.toId = arg_13_3
+
+	for iter_13_0, iter_13_1 in ipairs(arg_13_4) do
+		table.insert(var_13_0.diceUids, iter_13_1)
 	end
 
-	slot8.pattern = slot5
+	var_13_0.pattern = arg_13_5
 
-	return slot0:sendMsg(slot8, slot6, slot7)
+	return arg_13_0:sendMsg(var_13_0, arg_13_6, arg_13_7)
 end
 
-function slot0.onReceiveDiceHeroUseSkillReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		for slot7, slot8 in ipairs(slot2.skillId) do
-			DiceHeroStatHelper.instance:addUseCard(slot8)
+function var_0_0.onReceiveDiceHeroUseSkillReply(arg_14_0, arg_14_1, arg_14_2)
+	if arg_14_1 == 0 then
+		local var_14_0 = DiceHeroFightModel.instance:getGameData()
 
-			if DiceHeroFightModel.instance:getGameData().skillCardsBySkillId[slot8] then
-				slot9.curRoundUse = slot9.curRoundUse + 1
+		for iter_14_0, iter_14_1 in ipairs(arg_14_2.skillId) do
+			DiceHeroStatHelper.instance:addUseCard(iter_14_1)
+
+			local var_14_1 = var_14_0.skillCardsBySkillId[iter_14_1]
+
+			if var_14_1 then
+				var_14_1.curRoundUse = var_14_1.curRoundUse + 1
 			end
 		end
 
-		for slot7, slot8 in ipairs(slot2.diceUids) do
-			if DiceHeroHelper.instance:getDice(slot8) then
-				slot9:markDeleted()
+		for iter_14_2, iter_14_3 in ipairs(arg_14_2.diceUids) do
+			local var_14_2 = DiceHeroHelper.instance:getDice(iter_14_3)
+
+			if var_14_2 then
+				var_14_2:markDeleted()
 			end
 		end
 
+		local var_14_3 = DiceHeroHelper.instance:buildFlow(arg_14_2.steps)
+
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.StepStart)
-		DiceHeroHelper.instance:startFlow(DiceHeroHelper.instance:buildFlow(slot2.steps))
+		DiceHeroHelper.instance:startFlow(var_14_3)
 	end
 end
 
-function slot0.sendDiceHeroEndRound(slot0, slot1, slot2)
-	return slot0:sendMsg(DiceHeroModule_pb.DiceHeroEndRoundRequest(), slot1, slot2)
+function var_0_0.sendDiceHeroEndRound(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0 = DiceHeroModule_pb.DiceHeroEndRoundRequest()
+
+	return arg_15_0:sendMsg(var_15_0, arg_15_1, arg_15_2)
 end
 
-function slot0.onReceiveDiceHeroEndRoundReply(slot0, slot1, slot2)
-	if slot1 == 0 then
+function var_0_0.onReceiveDiceHeroEndRoundReply(arg_16_0, arg_16_1, arg_16_2)
+	if arg_16_1 == 0 then
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.StepStart)
-		DiceHeroHelper.instance:buildFlow(slot2.steps):addWork(DiceHeroLastStepWork.New(slot2.fight))
 
-		if #slot2.afterSteps > 0 then
-			DiceHeroHelper.instance.afterFlow = DiceHeroHelper.instance:buildFlow(slot2.afterSteps)
+		local var_16_0 = DiceHeroHelper.instance:buildFlow(arg_16_2.steps)
+
+		var_16_0:addWork(DiceHeroLastStepWork.New(arg_16_2.fight))
+
+		if #arg_16_2.afterSteps > 0 then
+			local var_16_1 = DiceHeroHelper.instance:buildFlow(arg_16_2.afterSteps)
+
+			DiceHeroHelper.instance.afterFlow = var_16_1
 		end
 
-		DiceHeroHelper.instance:startFlow(slot3)
+		DiceHeroHelper.instance:startFlow(var_16_0)
 	end
 end
 
-function slot0.sendDiceGiveUp(slot0, slot1, slot2, slot3)
-	slot4 = DiceHeroModule_pb.DiceGiveUpRequest()
-	slot4.chapter = slot1
+function var_0_0.sendDiceGiveUp(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	local var_17_0 = DiceHeroModule_pb.DiceGiveUpRequest()
 
-	return slot0:sendMsg(slot4, slot2, slot3)
+	var_17_0.chapter = arg_17_1
+
+	return arg_17_0:sendMsg(var_17_0, arg_17_2, arg_17_3)
 end
 
-function slot0.onReceiveDiceGiveUpReply(slot0, slot1, slot2)
-	if slot1 == 0 then
+function var_0_0.onReceiveDiceGiveUpReply(arg_18_0, arg_18_1, arg_18_2)
+	if arg_18_1 == 0 then
 		DiceHeroStatHelper.instance:sendReset()
 		GameFacade.showToast(ToastEnum.DiceHeroDiceResetSuccess)
-		DiceHeroModel.instance:initInfo(slot2.info)
+		DiceHeroModel.instance:initInfo(arg_18_2.info)
 	end
 end
 
-function slot0.onReceiveDiceFightSettlePush(slot0, slot1, slot2)
-	if slot1 == 0 then
-		slot3 = false
+function var_0_0.onReceiveDiceFightSettlePush(arg_19_0, arg_19_1, arg_19_2)
+	if arg_19_1 == 0 then
+		local var_19_0 = false
 
-		if slot2.status == DiceHeroEnum.GameStatu.Win and lua_dice_level.configDict[DiceHeroModel.instance.lastEnterLevelId] and DiceHeroModel.instance:getGameInfo(slot5.chapter).currLevel == slot4 and not slot6.allPass then
-			slot3 = true
+		if arg_19_2.status == DiceHeroEnum.GameStatu.Win then
+			local var_19_1 = DiceHeroModel.instance.lastEnterLevelId
+			local var_19_2 = lua_dice_level.configDict[var_19_1]
+
+			if var_19_2 then
+				local var_19_3 = DiceHeroModel.instance:getGameInfo(var_19_2.chapter)
+
+				if var_19_3.currLevel == var_19_1 and not var_19_3.allPass then
+					var_19_0 = true
+				end
+			end
 		end
 
-		DiceHeroModel.instance:initInfo(slot2.info)
+		DiceHeroModel.instance:initInfo(arg_19_2.info)
 
-		DiceHeroFightModel.instance.finishResult = slot2.status
-		DiceHeroFightModel.instance.isFirstWin = slot3
+		DiceHeroFightModel.instance.finishResult = arg_19_2.status
+		DiceHeroFightModel.instance.isFirstWin = var_19_0
 	end
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

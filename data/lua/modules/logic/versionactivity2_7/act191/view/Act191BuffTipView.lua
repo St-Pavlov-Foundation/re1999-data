@@ -1,149 +1,167 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191BuffTipView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191BuffTipView", package.seeall)
 
-slot0 = class("Act191BuffTipView", BaseView)
+local var_0_0 = class("Act191BuffTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0.goclose = gohelper.findChild(slot0.viewGO, "#go_close")
-	slot0.goscrolltip = gohelper.findChild(slot0.viewGO, "#scroll_tip")
-	slot0.gocontent = gohelper.findChild(slot0.viewGO, "#scroll_tip/Viewport/Content")
-	slot0.gotipitem = gohelper.findChild(slot0.viewGO, "#scroll_tip/Viewport/Content/#go_tipitem")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.goclose = gohelper.findChild(arg_1_0.viewGO, "#go_close")
+	arg_1_0.goscrolltip = gohelper.findChild(arg_1_0.viewGO, "#scroll_tip")
+	arg_1_0.gocontent = gohelper.findChild(arg_1_0.viewGO, "#scroll_tip/Viewport/Content")
+	arg_1_0.gotipitem = gohelper.findChild(arg_1_0.viewGO, "#scroll_tip/Viewport/Content/#go_tipitem")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0.effectTipItemList = {}
-	slot0.effectTipItemPool = {}
-	slot0.addEffectIdDict = {}
-	slot0.rectTrScrollTip = slot0.goscrolltip:GetComponent(gohelper.Type_RectTransform)
-	slot0.rectTrViewGo = slot0.viewGO:GetComponent(gohelper.Type_RectTransform)
-	slot0.rectTrContent = slot0.gocontent:GetComponent(gohelper.Type_RectTransform)
+function var_0_0._editableInitView(arg_2_0)
+	arg_2_0.effectTipItemList = {}
+	arg_2_0.effectTipItemPool = {}
+	arg_2_0.addEffectIdDict = {}
+	arg_2_0.rectTrScrollTip = arg_2_0.goscrolltip:GetComponent(gohelper.Type_RectTransform)
+	arg_2_0.rectTrViewGo = arg_2_0.viewGO:GetComponent(gohelper.Type_RectTransform)
+	arg_2_0.rectTrContent = arg_2_0.gocontent:GetComponent(gohelper.Type_RectTransform)
 
-	gohelper.setActive(slot0.gotipitem, false)
+	gohelper.setActive(arg_2_0.gotipitem, false)
 
-	slot0.closeClick = gohelper.getClickWithDefaultAudio(slot0.goclose)
+	arg_2_0.closeClick = gohelper.getClickWithDefaultAudio(arg_2_0.goclose)
 
-	slot0.closeClick:AddClickListener(slot0.closeThis, slot0)
+	arg_2_0.closeClick:AddClickListener(arg_2_0.closeThis, arg_2_0)
 
-	slot0.scrollTip = SLFramework.UGUI.ScrollRectWrap.Get(slot0.goscrolltip)
+	arg_2_0.scrollTip = SLFramework.UGUI.ScrollRectWrap.Get(arg_2_0.goscrolltip)
 end
 
-function slot0.initViewParam(slot0)
-	slot0.effectId = slot0.viewParam.effectId
-	slot0.scrollAnchorPos = slot0.viewParam.scrollAnchorPos
-	slot0.pivot = slot0.viewParam.pivot
-	slot0.clickPosition = slot0.viewParam.clickPosition
-	slot0.setScrollPosCallback = slot0.viewParam.setScrollPosCallback
-	slot0.setScrollPosCallbackObj = slot0.viewParam.setScrollPosCallbackObj
+function var_0_0.initViewParam(arg_3_0)
+	arg_3_0.effectId = arg_3_0.viewParam.effectId
+	arg_3_0.scrollAnchorPos = arg_3_0.viewParam.scrollAnchorPos
+	arg_3_0.pivot = arg_3_0.viewParam.pivot
+	arg_3_0.clickPosition = arg_3_0.viewParam.clickPosition
+	arg_3_0.setScrollPosCallback = arg_3_0.viewParam.setScrollPosCallback
+	arg_3_0.setScrollPosCallbackObj = arg_3_0.viewParam.setScrollPosCallbackObj
 end
 
-function slot0.onOpen(slot0)
-	slot0:initViewParam()
-	slot0:setScrollPos()
-	slot0:calculateMaxHeight()
-	slot0:addBuffTip(slot0.effectId)
+function var_0_0.onOpen(arg_4_0)
+	arg_4_0:initViewParam()
+	arg_4_0:setScrollPos()
+	arg_4_0:calculateMaxHeight()
+	arg_4_0:addBuffTip(arg_4_0.effectId)
 end
 
-function slot0.setScrollPos(slot0)
-	if slot0.setScrollPosCallback then
-		slot0.setScrollPosCallback(slot0.setScrollPosCallbackObj, slot0.rectTrViewGo, slot0.rectTrScrollTip)
+function var_0_0.setScrollPos(arg_5_0)
+	if arg_5_0.setScrollPosCallback then
+		arg_5_0.setScrollPosCallback(arg_5_0.setScrollPosCallbackObj, arg_5_0.rectTrViewGo, arg_5_0.rectTrScrollTip)
 
 		return
 	end
 
-	if slot0.scrollAnchorPos then
-		slot0.rectTrScrollTip.pivot = slot0.pivot
+	if arg_5_0.scrollAnchorPos then
+		arg_5_0.rectTrScrollTip.pivot = arg_5_0.pivot
 
-		recthelper.setAnchor(slot0.rectTrScrollTip, slot0.scrollAnchorPos.x, slot0.scrollAnchorPos.y)
+		recthelper.setAnchor(arg_5_0.rectTrScrollTip, arg_5_0.scrollAnchorPos.x, arg_5_0.scrollAnchorPos.y)
 
 		return
 	end
 
-	slot0.rectTrScrollTip.pivot = GameUtil.checkClickPositionInRight(slot0.clickPosition) and CommonBuffTipEnum.Pivot.Right or CommonBuffTipEnum.Pivot.Left
-	slot2, slot3 = recthelper.screenPosToAnchorPos2(slot0.clickPosition, slot0.rectTrViewGo)
+	local var_5_0 = GameUtil.checkClickPositionInRight(arg_5_0.clickPosition)
 
-	recthelper.setAnchor(slot0.rectTrScrollTip, slot1 and slot2 - CommonBuffTipEnum.DefaultInterval or slot2 + CommonBuffTipEnum.DefaultInterval, slot3 + CommonBuffTipEnum.DefaultInterval)
+	arg_5_0.rectTrScrollTip.pivot = var_5_0 and CommonBuffTipEnum.Pivot.Right or CommonBuffTipEnum.Pivot.Left
+
+	local var_5_1, var_5_2 = recthelper.screenPosToAnchorPos2(arg_5_0.clickPosition, arg_5_0.rectTrViewGo)
+
+	var_5_1 = var_5_0 and var_5_1 - CommonBuffTipEnum.DefaultInterval or var_5_1 + CommonBuffTipEnum.DefaultInterval
+
+	recthelper.setAnchor(arg_5_0.rectTrScrollTip, var_5_1, var_5_2 + CommonBuffTipEnum.DefaultInterval)
 end
 
-function slot0.calculateMaxHeight(slot0)
-	slot0.maxHeight = recthelper.getHeight(slot0.rectTrViewGo) / 2 + recthelper.getAnchorY(slot0.rectTrScrollTip) - CommonBuffTipEnum.BottomMargin
+function var_0_0.calculateMaxHeight(arg_6_0)
+	local var_6_0 = recthelper.getHeight(arg_6_0.rectTrViewGo)
+	local var_6_1 = recthelper.getAnchorY(arg_6_0.rectTrScrollTip)
+
+	arg_6_0.maxHeight = var_6_0 / 2 + var_6_1 - CommonBuffTipEnum.BottomMargin
 end
 
-function slot0.addBuffTip(slot0, slot1)
-	if slot0.addEffectIdDict[slot1] then
+function var_0_0.addBuffTip(arg_7_0, arg_7_1)
+	if arg_7_0.addEffectIdDict[arg_7_1] then
 		return
 	end
 
-	if not Activity191Config.instance:getEffDescCoByName(slot1) then
+	local var_7_0 = Activity191Config.instance:getEffDescCoByName(arg_7_1)
+
+	if not var_7_0 then
 		return
 	end
 
-	slot0.addEffectIdDict[slot1] = true
-	slot3 = slot0:getTipItem()
+	arg_7_0.addEffectIdDict[arg_7_1] = true
 
-	table.insert(slot0.effectTipItemList, slot3)
-	gohelper.setActive(slot3.go, true)
-	gohelper.setAsLastSibling(slot3.go)
+	local var_7_1 = arg_7_0:getTipItem()
 
-	slot3.txtName.text = SkillHelper.removeRichTag(slot1)
-	slot3.txtDesc.text = Activity191Helper.buildDesc(slot2.desc, Activity191Enum.HyperLinkPattern.SkillDesc)
+	table.insert(arg_7_0.effectTipItemList, var_7_1)
+	gohelper.setActive(var_7_1.go, true)
+	gohelper.setAsLastSibling(var_7_1.go)
 
-	slot0:refreshScrollHeight()
+	local var_7_2 = SkillHelper.removeRichTag(arg_7_1)
+
+	var_7_1.txtName.text = var_7_2
+	var_7_1.txtDesc.text = Activity191Helper.buildDesc(var_7_0.desc, Activity191Enum.HyperLinkPattern.SkillDesc)
+
+	arg_7_0:refreshScrollHeight()
 end
 
-function slot0.refreshScrollHeight(slot0)
-	ZProj.UGUIHelper.RebuildLayout(slot0.rectTrContent)
-	recthelper.setHeight(slot0.rectTrScrollTip, math.min(slot0.maxHeight, recthelper.getHeight(slot0.rectTrContent)))
+function var_0_0.refreshScrollHeight(arg_8_0)
+	ZProj.UGUIHelper.RebuildLayout(arg_8_0.rectTrContent)
 
-	slot0.scrollTip.verticalNormalizedPosition = 0
+	local var_8_0 = recthelper.getHeight(arg_8_0.rectTrContent)
+	local var_8_1 = math.min(arg_8_0.maxHeight, var_8_0)
+
+	recthelper.setHeight(arg_8_0.rectTrScrollTip, var_8_1)
+
+	arg_8_0.scrollTip.verticalNormalizedPosition = 0
 end
 
-function slot0.getTipItem(slot0)
-	if #slot0.effectTipItemPool > 0 then
-		return table.remove(slot0.effectTipItemPool)
+function var_0_0.getTipItem(arg_9_0)
+	if #arg_9_0.effectTipItemPool > 0 then
+		return table.remove(arg_9_0.effectTipItemPool)
 	end
 
-	slot1 = slot0:getUserDataTb_()
-	slot1.go = gohelper.cloneInPlace(slot0.gotipitem)
-	slot1.txtName = gohelper.findChildText(slot1.go, "title/txt_name")
-	slot1.txtDesc = gohelper.findChildText(slot1.go, "txt_desc")
-	slot1.goTag = gohelper.findChild(slot1.go, "title/txt_name/go_tag")
-	slot1.txtTag = gohelper.findChildText(slot1.go, "title/txt_name/go_tag/bg/txt_tagname")
+	local var_9_0 = arg_9_0:getUserDataTb_()
 
-	SkillHelper.addHyperLinkClick(slot1.txtDesc, slot0.onClickHyperLinkText, slot0)
+	var_9_0.go = gohelper.cloneInPlace(arg_9_0.gotipitem)
+	var_9_0.txtName = gohelper.findChildText(var_9_0.go, "title/txt_name")
+	var_9_0.txtDesc = gohelper.findChildText(var_9_0.go, "txt_desc")
+	var_9_0.goTag = gohelper.findChild(var_9_0.go, "title/txt_name/go_tag")
+	var_9_0.txtTag = gohelper.findChildText(var_9_0.go, "title/txt_name/go_tag/bg/txt_tagname")
 
-	return slot1
+	SkillHelper.addHyperLinkClick(var_9_0.txtDesc, arg_9_0.onClickHyperLinkText, arg_9_0)
+
+	return var_9_0
 end
 
-function slot0.onClickHyperLinkText(slot0, slot1, slot2)
-	slot0:addBuffTip(slot1)
+function var_0_0.onClickHyperLinkText(arg_10_0, arg_10_1, arg_10_2)
+	arg_10_0:addBuffTip(arg_10_1)
 end
 
-function slot0.recycleTipItem(slot0, slot1)
-	gohelper.setActive(slot1.go, false)
-	table.insert(slot0.effectTipItemPool, slot1)
+function var_0_0.recycleTipItem(arg_11_0, arg_11_1)
+	gohelper.setActive(arg_11_1.go, false)
+	table.insert(arg_11_0.effectTipItemPool, arg_11_1)
 end
 
-function slot0.recycleAllTipItem(slot0)
-	for slot4, slot5 in ipairs(slot0.effectTipItemList) do
-		gohelper.setActive(slot5.go, false)
-		table.insert(slot0.effectTipItemPool, slot5)
+function var_0_0.recycleAllTipItem(arg_12_0)
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0.effectTipItemList) do
+		gohelper.setActive(iter_12_1.go, false)
+		table.insert(arg_12_0.effectTipItemPool, iter_12_1)
 	end
 
-	tabletool.clear(slot0.effectTipItemList)
+	tabletool.clear(arg_12_0.effectTipItemList)
 end
 
-function slot0.onClose(slot0)
-	tabletool.clear(slot0.addEffectIdDict)
-	slot0:recycleAllTipItem()
+function var_0_0.onClose(arg_13_0)
+	tabletool.clear(arg_13_0.addEffectIdDict)
+	arg_13_0:recycleAllTipItem()
 end
 
-function slot0.onDestroyView(slot0)
-	slot0.closeClick:RemoveClickListener()
+function var_0_0.onDestroyView(arg_14_0)
+	arg_14_0.closeClick:RemoveClickListener()
 
-	slot0.closeClick = nil
+	arg_14_0.closeClick = nil
 end
 
-return slot0
+return var_0_0

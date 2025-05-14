@@ -1,33 +1,33 @@
-module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerViewContainer", package.seeall)
+﻿module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerViewContainer", package.seeall)
 
-slot0 = class("WeekWalk_2HeartLayerViewContainer", BaseViewContainer)
+local var_0_0 = class("WeekWalk_2HeartLayerViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, WeekWalk_2HeartLayerView.New())
-	table.insert(slot1, TabViewGroup.New(1, "top_left"))
+	table.insert(var_1_0, WeekWalk_2HeartLayerView.New())
+	table.insert(var_1_0, TabViewGroup.New(1, "top_left"))
 
-	slot0.helpView = HelpShowView.New()
+	arg_1_0.helpView = HelpShowView.New()
 
-	slot0.helpView:setHelpId(HelpEnum.HelpId.WeekWalk_2HeartLayerOnce)
-	table.insert(slot1, slot0.helpView)
+	arg_1_0.helpView:setHelpId(HelpEnum.HelpId.WeekWalk_2HeartLayerOnce)
+	table.insert(var_1_0, arg_1_0.helpView)
 
-	return slot1
+	return var_1_0
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot0.navigateView = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		arg_2_0.navigateView = NavigateButtonsView.New({
 			true,
 			true,
 			true
 		}, HelpEnum.HelpId.WeekWalk_2HeartLayer)
 
 		return {
-			slot0.navigateView
+			arg_2_0.navigateView
 		}
 	end
 end
 
-return slot0
+return var_0_0

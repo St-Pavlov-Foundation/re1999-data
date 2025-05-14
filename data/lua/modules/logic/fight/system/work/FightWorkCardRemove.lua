@@ -1,64 +1,68 @@
-module("modules.logic.fight.system.work.FightWorkCardRemove", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCardRemove", package.seeall)
 
-slot0 = class("FightWorkCardRemove", FightEffectBase)
+local var_0_0 = class("FightWorkCardRemove", FightEffectBase)
 
-function slot0.beforePlayEffectData(slot0)
-	slot0.oldCardList = FightDataUtil.copyData(FightDataHelper.handCardMgr.handCard)
+function var_0_0.beforePlayEffectData(arg_1_0)
+	arg_1_0.oldCardList = FightDataUtil.copyData(FightDataHelper.handCardMgr.handCard)
 end
 
-function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_2_0)
+	if not FightCardDataHelper.cardChangeIsMySide(arg_2_0.actEffectData) then
+		arg_2_0:onDone(true)
 
 		return
 	end
 
-	slot0._revertVisible = true
+	arg_2_0._revertVisible = true
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	if #string.splitToNumber(slot0.actEffectData.reserveStr, "#") > 0 then
-		table.sort(slot1, FightWorkCardRemove2.sort)
+	local var_2_0 = string.splitToNumber(arg_2_0.actEffectData.reserveStr, "#")
 
-		slot3 = FightCardDataHelper.calcRemoveCardTime(slot0.oldCardList, slot1)
+	if #var_2_0 > 0 then
+		local var_2_1 = arg_2_0.oldCardList
 
-		for slot7, slot8 in ipairs(slot1) do
-			table.remove(slot2, slot8)
+		table.sort(var_2_0, FightWorkCardRemove2.sort)
+
+		local var_2_2 = FightCardDataHelper.calcRemoveCardTime(var_2_1, var_2_0)
+
+		for iter_2_0, iter_2_1 in ipairs(var_2_0) do
+			table.remove(var_2_1, iter_2_1)
 		end
 
 		if FightModel.instance:getVersion() >= 4 then
-			slot0:com_registTimer(slot0._delayAfterPerformance, slot3 / FightModel.instance:getUISpeed())
-			FightController.instance:dispatchEvent(FightEvent.CardRemove, slot1)
+			arg_2_0:com_registTimer(arg_2_0._delayAfterPerformance, var_2_2 / FightModel.instance:getUISpeed())
+			FightController.instance:dispatchEvent(FightEvent.CardRemove, var_2_0)
 		else
 			FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
-			slot0:onDone(true)
+			arg_2_0:onDone(true)
 		end
 
 		return
 	end
 
-	slot0:onDone(true)
+	arg_2_0:onDone(true)
 end
 
-function slot0._onCombineDone(slot0)
-	slot0:onDone(true)
+function var_0_0._onCombineDone(arg_3_0)
+	arg_3_0:onDone(true)
 end
 
-function slot0._delayAfterPerformance(slot0)
-	slot0:onDone(true)
+function var_0_0._delayAfterPerformance(arg_4_0)
+	arg_4_0:onDone(true)
 end
 
-function slot0._delayDone(slot0)
+function var_0_0._delayDone(arg_5_0)
 	FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
-	slot0:onDone(true)
+	arg_5_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnCombineCardEnd, slot0._onCombineDone, slot0)
+function var_0_0.clearWork(arg_6_0)
+	FightController.instance:unregisterCallback(FightEvent.OnCombineCardEnd, arg_6_0._onCombineDone, arg_6_0)
 
-	if slot0._revertVisible then
+	if arg_6_0._revertVisible then
 		FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true, true)
 	end
 end
 
-return slot0
+return var_0_0

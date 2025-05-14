@@ -1,233 +1,245 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroCardItem", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroCardItem", package.seeall)
 
-slot0 = class("DiceHeroCardItem", LuaCompBase)
+local var_0_0 = class("DiceHeroCardItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.trans = slot1.transform
-	slot0._anim = gohelper.findChildAnim(slot1, "")
-	slot0._frame2 = gohelper.findChild(slot1, "#frame_level2")
-	slot0._frame3 = gohelper.findChild(slot1, "#frame_level3")
-	slot0._txtname = gohelper.findChildTextMesh(slot1, "layout/#txt_name")
-	slot0._gosmallselect = gohelper.findChild(slot1, "#go_smallselect")
-	slot0._gobigselect = gohelper.findChild(slot1, "#go_bigselect")
-	slot0._imagelimitmask = gohelper.findChildImage(slot1, "#go_limitmask")
-	slot0._goredtips = gohelper.findChild(slot1, "#go_redtips")
-	slot0._txtredtips = gohelper.findChildTextMesh(slot1, "#go_redtips/#txt_tip")
-	slot0._golock = gohelper.findChild(slot1, "#go_limitmask/icon")
-	slot0._iconbg = gohelper.findChildImage(slot1, "#simage_bg")
-	slot0._iconframe = gohelper.findChildImage(slot1, "#simage_frame")
-	slot0._fighticon = gohelper.findChildImage(slot1, "layout/#go_fightnum/iconpos/#simage_icon")
-	slot0._useNum = gohelper.findChildTextMesh(slot1, "#go_usenum/#txt_usenum")
-	slot0._godiceitem = gohelper.findChild(slot1, "bottom/dicelist/#go_item")
-	slot0._godicelist = gohelper.findChild(slot1, "bottom/dicelist")
-	slot0._carddes = gohelper.findChildTextMesh(slot1, "layout/#scroll_skilldesc/viewport/#txt_skilldesc")
-	slot0._txtnum = gohelper.findChildTextMesh(slot1, "layout/#go_fightnum/#txt_num")
-	slot0._gonum = gohelper.findChild(slot1, "layout/#go_fightnum")
-	slot0._buffeffect = gohelper.findChild(slot1, "#go_buffhit")
-	slot0._click = gohelper.getClick(slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0.trans = arg_1_1.transform
+	arg_1_0._anim = gohelper.findChildAnim(arg_1_1, "")
+	arg_1_0._frame2 = gohelper.findChild(arg_1_1, "#frame_level2")
+	arg_1_0._frame3 = gohelper.findChild(arg_1_1, "#frame_level3")
+	arg_1_0._txtname = gohelper.findChildTextMesh(arg_1_1, "layout/#txt_name")
+	arg_1_0._gosmallselect = gohelper.findChild(arg_1_1, "#go_smallselect")
+	arg_1_0._gobigselect = gohelper.findChild(arg_1_1, "#go_bigselect")
+	arg_1_0._imagelimitmask = gohelper.findChildImage(arg_1_1, "#go_limitmask")
+	arg_1_0._goredtips = gohelper.findChild(arg_1_1, "#go_redtips")
+	arg_1_0._txtredtips = gohelper.findChildTextMesh(arg_1_1, "#go_redtips/#txt_tip")
+	arg_1_0._golock = gohelper.findChild(arg_1_1, "#go_limitmask/icon")
+	arg_1_0._iconbg = gohelper.findChildImage(arg_1_1, "#simage_bg")
+	arg_1_0._iconframe = gohelper.findChildImage(arg_1_1, "#simage_frame")
+	arg_1_0._fighticon = gohelper.findChildImage(arg_1_1, "layout/#go_fightnum/iconpos/#simage_icon")
+	arg_1_0._useNum = gohelper.findChildTextMesh(arg_1_1, "#go_usenum/#txt_usenum")
+	arg_1_0._godiceitem = gohelper.findChild(arg_1_1, "bottom/dicelist/#go_item")
+	arg_1_0._godicelist = gohelper.findChild(arg_1_1, "bottom/dicelist")
+	arg_1_0._carddes = gohelper.findChildTextMesh(arg_1_1, "layout/#scroll_skilldesc/viewport/#txt_skilldesc")
+	arg_1_0._txtnum = gohelper.findChildTextMesh(arg_1_1, "layout/#go_fightnum/#txt_num")
+	arg_1_0._gonum = gohelper.findChild(arg_1_1, "layout/#go_fightnum")
+	arg_1_0._buffeffect = gohelper.findChild(arg_1_1, "#go_buffhit")
+	arg_1_0._click = gohelper.getClick(arg_1_1)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._click:AddClickListener(slot0._onClickSkill, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, slot0._onSkillCardSelect, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, slot0._onSkillCardSelect, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.StepEnd, slot0.updateStatu, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.ConfirmDice, slot0.updateStatu, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.RerollDice, slot0.updateStatu, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0._click:AddClickListener(arg_2_0._onClickSkill, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, arg_2_0._onSkillCardSelect, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, arg_2_0._onSkillCardSelect, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.StepEnd, arg_2_0.updateStatu, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.ConfirmDice, arg_2_0.updateStatu, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.RerollDice, arg_2_0.updateStatu, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._click:RemoveClickListener()
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, slot0._onSkillCardSelect, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, slot0._onSkillCardSelect, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.StepEnd, slot0.updateStatu, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.ConfirmDice, slot0.updateStatu, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.RerollDice, slot0.updateStatu, slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._click:RemoveClickListener()
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, arg_3_0._onSkillCardSelect, arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, arg_3_0._onSkillCardSelect, arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.StepEnd, arg_3_0.updateStatu, arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.ConfirmDice, arg_3_0.updateStatu, arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.RerollDice, arg_3_0.updateStatu, arg_3_0)
 end
 
-slot1 = {
+local var_0_1 = {
 	[DiceHeroEnum.CardType.Atk] = "4",
 	[DiceHeroEnum.CardType.Def] = "5",
 	[DiceHeroEnum.CardType.Power] = "2"
 }
-slot2 = {
+local var_0_2 = {
 	[DiceHeroEnum.CardType.Atk] = "1",
 	[DiceHeroEnum.CardType.Def] = "5",
 	[DiceHeroEnum.CardType.Power] = "4"
 }
 
-function slot0.initData(slot0, slot1)
-	DiceHeroHelper.instance:registerCard(slot1.skillId, slot0)
+function var_0_0.initData(arg_4_0, arg_4_1)
+	DiceHeroHelper.instance:registerCard(arg_4_1.skillId, arg_4_0)
 
-	slot0.data = slot1
-	slot0._txtname.text = slot1.co.name
-	slot0._canUse = false
+	arg_4_0.data = arg_4_1
+	arg_4_0._txtname.text = arg_4_1.co.name
+	arg_4_0._canUse = false
 
-	gohelper.setActive(slot0._gosmallselect, false)
-	gohelper.setActive(slot0._gobigselect, false)
+	gohelper.setActive(arg_4_0._gosmallselect, false)
+	gohelper.setActive(arg_4_0._gobigselect, false)
 
-	slot0._carddes.text = slot1.co.desc
+	arg_4_0._carddes.text = arg_4_1.co.desc
 
-	gohelper.setActive(slot0._gonum, DiceHeroHelper.instance:isShowCarNum(slot1.co.effect1))
-	UISpriteSetMgr.instance:setDiceHeroSprite(slot0._iconbg, "v2a6_dicehero_game_skillcardquality" .. (uv0[slot1.co.type] or slot1.co.type))
-	UISpriteSetMgr.instance:setDiceHeroSprite(slot0._iconframe, "v2a6_dicehero_game_skillcardbg" .. slot1.co.quality)
-	UISpriteSetMgr.instance:setFightSprite(slot0._fighticon, "jnk_gj" .. (uv1[slot1.co.type] or 0))
-	gohelper.setActive(slot0._frame2, slot1.co.quality == "2")
-	gohelper.setActive(slot0._frame3, slot1.co.quality == "3")
-	slot0:updateStatu()
-	gohelper.CreateObjList(slot0, slot0._createDiceItem, slot0.data.matchDiceRules, nil, slot0._godiceitem, DiceHeroCardDiceItem)
+	gohelper.setActive(arg_4_0._gonum, DiceHeroHelper.instance:isShowCarNum(arg_4_1.co.effect1))
+	UISpriteSetMgr.instance:setDiceHeroSprite(arg_4_0._iconbg, "v2a6_dicehero_game_skillcardquality" .. (var_0_1[arg_4_1.co.type] or arg_4_1.co.type))
+	UISpriteSetMgr.instance:setDiceHeroSprite(arg_4_0._iconframe, "v2a6_dicehero_game_skillcardbg" .. arg_4_1.co.quality)
+	UISpriteSetMgr.instance:setFightSprite(arg_4_0._fighticon, "jnk_gj" .. (var_0_2[arg_4_1.co.type] or 0))
+	gohelper.setActive(arg_4_0._frame2, arg_4_1.co.quality == "2")
+	gohelper.setActive(arg_4_0._frame3, arg_4_1.co.quality == "3")
+	arg_4_0:updateStatu()
+	gohelper.CreateObjList(arg_4_0, arg_4_0._createDiceItem, arg_4_0.data.matchDiceRules, nil, arg_4_0._godiceitem, DiceHeroCardDiceItem)
 
-	if #slot0.data.matchDiceRules >= 5 then
-		transformhelper.setLocalScale(slot0._godicelist.transform, 0.74, 0.74, 1)
+	if #arg_4_0.data.matchDiceRules >= 5 then
+		transformhelper.setLocalScale(arg_4_0._godicelist.transform, 0.74, 0.74, 1)
 	else
-		transformhelper.setLocalScale(slot0._godicelist.transform, 1, 1, 1)
+		transformhelper.setLocalScale(arg_4_0._godicelist.transform, 1, 1, 1)
 	end
 end
 
-function slot0.updateStatu(slot0)
-	slot1 = false
-	slot2 = nil
-	slot3 = DiceHeroFightModel.instance:getGameData()
+function var_0_0.updateStatu(arg_5_0)
+	local var_5_0 = false
+	local var_5_1
+	local var_5_2 = DiceHeroFightModel.instance:getGameData()
 
 	if not DiceHeroHelper.instance:isInFlow() then
-		slot1, slot2 = slot0.data:canSelect()
+		var_5_0, var_5_1 = arg_5_0.data:canSelect()
 
-		gohelper.setActive(slot0._buffeffect, slot0.data.co.type == DiceHeroEnum.CardType.Atk and slot3.allyHero:haveBuff2())
+		gohelper.setActive(arg_5_0._buffeffect, arg_5_0.data.co.type == DiceHeroEnum.CardType.Atk and var_5_2.allyHero:haveBuff2())
 
-		if slot0._isGray == nil then
-			slot0._isGray = false
-			slot0._isBlack = false
+		if arg_5_0._isGray == nil then
+			arg_5_0._isGray = false
+			arg_5_0._isBlack = false
 		end
 
-		slot5 = slot1 and not slot3.confirmed
+		local var_5_3 = not var_5_0
+		local var_5_4 = var_5_0 and not var_5_2.confirmed
 
-		if (not slot1 ~= slot0._isGray or slot5 ~= slot0._isBlack) and not DiceHeroHelper.instance:isInFlow() then
-			if slot4 and slot0._isBlack then
-				slot0._anim:Play("togray", 0, 0)
-			elseif slot5 and slot0._isGray then
-				slot0._anim:Play("toblack", 0, 0)
-			elseif slot4 and not slot0._isGray then
-				slot0._anim:Play("gray", 0, 0)
-			elseif not slot4 and slot0._isGray then
-				slot0._anim:Play("ungray", 0, 0)
-			elseif slot5 and not slot0._isBlack then
-				slot0._anim:Play("black", 0, 0)
-			elseif not slot5 and slot0._isBlack then
-				slot0._anim:Play("unblack", 0, 0)
+		if (var_5_3 ~= arg_5_0._isGray or var_5_4 ~= arg_5_0._isBlack) and not DiceHeroHelper.instance:isInFlow() then
+			if var_5_3 and arg_5_0._isBlack then
+				arg_5_0._anim:Play("togray", 0, 0)
+			elseif var_5_4 and arg_5_0._isGray then
+				arg_5_0._anim:Play("toblack", 0, 0)
+			elseif var_5_3 and not arg_5_0._isGray then
+				arg_5_0._anim:Play("gray", 0, 0)
+			elseif not var_5_3 and arg_5_0._isGray then
+				arg_5_0._anim:Play("ungray", 0, 0)
+			elseif var_5_4 and not arg_5_0._isBlack then
+				arg_5_0._anim:Play("black", 0, 0)
+			elseif not var_5_4 and arg_5_0._isBlack then
+				arg_5_0._anim:Play("unblack", 0, 0)
 			end
 
-			slot0._isGray = slot4
-			slot0._isBlack = slot5
+			arg_5_0._isGray = var_5_3
+			arg_5_0._isBlack = var_5_4
 		end
 	end
 
-	gohelper.setActive(slot0._goredtips, not slot1)
+	gohelper.setActive(arg_5_0._goredtips, not var_5_0)
 
-	if not slot1 then
-		slot0._canUse = false
+	if not var_5_0 then
+		arg_5_0._canUse = false
 
-		gohelper.setActive(slot0._gosmallselect, false)
-		gohelper.setActive(slot0._gobigselect, false)
+		gohelper.setActive(arg_5_0._gosmallselect, false)
+		gohelper.setActive(arg_5_0._gobigselect, false)
 
-		if slot2 == DiceHeroEnum.CantUseReason.NoDice then
-			slot0._txtredtips.text = luaLang("dicehero_card_nodice")
+		if var_5_1 == DiceHeroEnum.CantUseReason.NoDice then
+			arg_5_0._txtredtips.text = luaLang("dicehero_card_nodice")
 
-			gohelper.setActive(slot0._golock, false)
-		elseif slot2 == DiceHeroEnum.CantUseReason.NoUseCount then
-			slot0._txtredtips.text = luaLang("dicehero_card_nocount")
+			gohelper.setActive(arg_5_0._golock, false)
+		elseif var_5_1 == DiceHeroEnum.CantUseReason.NoUseCount then
+			arg_5_0._txtredtips.text = luaLang("dicehero_card_nocount")
 
-			gohelper.setActive(slot0._golock, false)
-		elseif slot2 == DiceHeroEnum.CantUseReason.BanSkill then
-			slot0._txtredtips.text = luaLang("dicehero_card_banskill")
+			gohelper.setActive(arg_5_0._golock, false)
+		elseif var_5_1 == DiceHeroEnum.CantUseReason.BanSkill then
+			arg_5_0._txtredtips.text = luaLang("dicehero_card_banskill")
 
-			gohelper.setActive(slot0._golock, true)
+			gohelper.setActive(arg_5_0._golock, true)
 		end
 	else
-		gohelper.setActive(slot0._golock, false)
+		gohelper.setActive(arg_5_0._golock, false)
 	end
 
-	if slot0.data.co.roundLimitCount == 0 then
-		slot0._useNum.text = "∞"
+	if arg_5_0.data.co.roundLimitCount == 0 then
+		arg_5_0._useNum.text = "∞"
 	else
-		slot0._useNum.text = slot0.data.co.roundLimitCount - slot0.data.curRoundUse
+		arg_5_0._useNum.text = arg_5_0.data.co.roundLimitCount - arg_5_0.data.curRoundUse
 	end
 
-	slot0:updateNumShow()
+	arg_5_0:updateNumShow()
 end
 
-function slot0._createDiceItem(slot0, slot1, slot2, slot3)
-	slot1:initData(slot2, slot0.data, slot3)
+function var_0_0._createDiceItem(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
+	arg_6_1:initData(arg_6_2, arg_6_0.data, arg_6_3)
 end
 
-function slot0._onSkillCardSelect(slot0)
-	if DiceHeroFightModel.instance:getGameData().curSelectCardMo == slot0.data then
-		slot3 = slot0.data:canUse()
+function var_0_0._onSkillCardSelect(arg_7_0)
+	local var_7_0 = DiceHeroFightModel.instance:getGameData().curSelectCardMo == arg_7_0.data
 
-		if not slot0._canUse then
-			slot0._canUse = false
+	if var_7_0 then
+		local var_7_1 = arg_7_0.data:canUse()
+
+		if not arg_7_0._canUse then
+			arg_7_0._canUse = false
 		end
 
-		gohelper.setActive(slot0._gosmallselect, not slot3)
-		gohelper.setActive(slot0._gobigselect, slot3)
+		gohelper.setActive(arg_7_0._gosmallselect, not var_7_1)
+		gohelper.setActive(arg_7_0._gobigselect, var_7_1)
 	else
-		gohelper.setActive(slot0._gosmallselect, false)
-		gohelper.setActive(slot0._gobigselect, false)
+		gohelper.setActive(arg_7_0._gosmallselect, false)
+		gohelper.setActive(arg_7_0._gobigselect, false)
 	end
 
-	if not slot0._isSelect then
-		slot0._isSelect = false
+	if not arg_7_0._isSelect then
+		arg_7_0._isSelect = false
 	end
 
-	if slot0._isSelect ~= slot2 then
-		slot0._isSelect = slot2
+	if arg_7_0._isSelect ~= var_7_0 then
+		arg_7_0._isSelect = var_7_0
 
-		if slot2 then
-			slot0._anim:Play("select", 0, 0)
-		elseif not slot0._isGray and not slot0._isBlack then
-			slot0._anim:Play("unselect", 0, 0)
+		if var_7_0 then
+			arg_7_0._anim:Play("select", 0, 0)
+		elseif not arg_7_0._isGray and not arg_7_0._isBlack then
+			arg_7_0._anim:Play("unselect", 0, 0)
 		end
 	end
 
-	slot0:updateNumShow()
+	arg_7_0:updateNumShow()
 end
 
-function slot0.updateNumShow(slot0)
-	if not DiceHeroHelper.instance:isShowCarNum(slot0.data.co.effect1) then
+function var_0_0.updateNumShow(arg_8_0)
+	if not DiceHeroHelper.instance:isShowCarNum(arg_8_0.data.co.effect1) then
 		return
 	end
 
-	if slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.Damage1 or slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangeShield1 or slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangePower1 then
-		for slot6 = 1, #string.split(slot0.data.co.params1, ",") do
-			slot2[slot6] = string.format("<color=#%s>%s</color>", slot0.data:canUse() ~= slot6 and "A28D8D" or "FFFFFF", slot2[slot6])
+	if arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.Damage1 or arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangeShield1 or arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangePower1 then
+		local var_8_0 = arg_8_0.data:canUse()
+		local var_8_1 = string.split(arg_8_0.data.co.params1, ",")
+
+		for iter_8_0 = 1, #var_8_1 do
+			var_8_1[iter_8_0] = string.format("<color=#%s>%s</color>", var_8_0 ~= iter_8_0 and "A28D8D" or "FFFFFF", var_8_1[iter_8_0])
 		end
 
-		slot0._txtnum.text = table.concat(slot2, "/")
-	elseif slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.Damage2 or slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangeShield2 then
-		slot1 = 0
+		arg_8_0._txtnum.text = table.concat(var_8_1, "/")
+	elseif arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.Damage2 or arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangeShield2 then
+		local var_8_2 = 0
 
-		if slot0.data:isMatchMin() then
-			for slot6, slot7 in pairs(slot0.data.curSelectUids) do
-				if DiceHeroFightModel.instance:getGameData().diceBox:getDiceMoByUid(slot7) then
-					slot1 = slot1 + slot8.num
+		if arg_8_0.data:isMatchMin() then
+			local var_8_3 = DiceHeroFightModel.instance:getGameData().diceBox
+
+			for iter_8_1, iter_8_2 in pairs(arg_8_0.data.curSelectUids) do
+				local var_8_4 = var_8_3:getDiceMoByUid(iter_8_2)
+
+				if var_8_4 then
+					var_8_2 = var_8_2 + var_8_4.num
 				end
 			end
 		end
 
-		slot0._txtnum.text = slot1
-	elseif slot0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangePower2 then
-		slot1 = 0
+		arg_8_0._txtnum.text = var_8_2
+	elseif arg_8_0.data.co.effect1 == DiceHeroEnum.SkillEffectType.ChangePower2 then
+		local var_8_5 = 0
 
-		if slot0.data:isMatchMin() then
-			slot1 = DiceHeroFightModel.instance:getGameData().allyHero.power
+		if arg_8_0.data:isMatchMin() then
+			var_8_5 = DiceHeroFightModel.instance:getGameData().allyHero.power
 		end
 
-		slot0._txtnum.text = "+" .. slot1
+		arg_8_0._txtnum.text = "+" .. var_8_5
 	end
 end
 
-function slot0._onClickSkill(slot0)
-	if not DiceHeroFightModel.instance:getGameData().confirmed then
+function var_0_0._onClickSkill(arg_9_0)
+	local var_9_0 = DiceHeroFightModel.instance:getGameData()
+
+	if not var_9_0.confirmed then
 		return
 	end
 
@@ -235,39 +247,41 @@ function slot0._onClickSkill(slot0)
 		return
 	end
 
-	if slot1.curSelectCardMo == slot0.data then
-		slot2, slot3 = slot0.data:canUse()
+	if var_9_0.curSelectCardMo == arg_9_0.data then
+		local var_9_1, var_9_2 = arg_9_0.data:canUse()
 
-		if not slot2 then
+		if not var_9_1 then
 			GameFacade.showToast(ToastEnum.DiceHeroDiceNoEnoughDice)
 
 			return
 		end
 
-		DiceHeroRpc.instance:sendDiceHeroUseSkill(DiceHeroEnum.SkillType.Normal, slot0.data.skillId, slot1.curSelectEnemyMo and slot1.curSelectEnemyMo.uid or "", slot3, slot2 > 0 and slot2 - 1 or slot2)
-	elseif slot0.data:canSelect() then
+		local var_9_3 = var_9_0.curSelectEnemyMo and var_9_0.curSelectEnemyMo.uid or ""
+
+		DiceHeroRpc.instance:sendDiceHeroUseSkill(DiceHeroEnum.SkillType.Normal, arg_9_0.data.skillId, var_9_3, var_9_2, var_9_1 > 0 and var_9_1 - 1 or var_9_1)
+	elseif arg_9_0.data:canSelect() then
 		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardrelease)
-		slot1:setCurSelectCard(slot0.data)
+		var_9_0:setCurSelectCard(arg_9_0.data)
 	end
 end
 
-function slot0.doHitAnim(slot0)
-	slot0._anim:Play("hit", 0, 0)
+function var_0_0.doHitAnim(arg_10_0)
+	arg_10_0._anim:Play("hit", 0, 0)
 end
 
-function slot0.playRefreshAnim(slot0)
-	slot0._anim:Play("refresh", 0, 0)
+function var_0_0.playRefreshAnim(arg_11_0)
+	arg_11_0._anim:Play("refresh", 0, 0)
 
-	slot0._isGray = false
-	slot0._isBlack = false
+	arg_11_0._isGray = false
+	arg_11_0._isBlack = false
 end
 
-function slot0.getPos(slot0)
-	return slot0._txtname.transform.position
+function var_0_0.getPos(arg_12_0)
+	return arg_12_0._txtname.transform.position
 end
 
-function slot0.onDestroy(slot0)
-	DiceHeroHelper.instance:unregisterCard(slot0.data.skillId)
+function var_0_0.onDestroy(arg_13_0)
+	DiceHeroHelper.instance:unregisterCard(arg_13_0.data.skillId)
 end
 
-return slot0
+return var_0_0

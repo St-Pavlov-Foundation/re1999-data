@@ -1,20 +1,23 @@
-module("modules.logic.versionactivity2_7.towergift.controller.DestinyStoneGiftPickChoiceController", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.controller.DestinyStoneGiftPickChoiceController", package.seeall)
 
-slot0 = class("DestinyStoneGiftPickChoiceController", BaseController)
+local var_0_0 = class("DestinyStoneGiftPickChoiceController", BaseController)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_2_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	slot0:onInit()
+function var_0_0.reInit(arg_4_0)
+	arg_4_0:onInit()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

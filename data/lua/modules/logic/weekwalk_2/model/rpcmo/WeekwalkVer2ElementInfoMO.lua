@@ -1,12 +1,12 @@
-module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2ElementInfoMO", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2ElementInfoMO", package.seeall)
 
-slot0 = pureTable("WeekwalkVer2ElementInfoMO")
+local var_0_0 = pureTable("WeekwalkVer2ElementInfoMO")
 
-function slot0.init(slot0, slot1)
-	slot0.elementId = slot1.elementId
-	slot0.finish = slot1.finish
-	slot0.index = slot1.index
-	slot0.visible = slot1.visible
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.elementId = arg_1_1.elementId
+	arg_1_0.finish = arg_1_1.finish
+	arg_1_0.index = arg_1_1.index
+	arg_1_0.visible = arg_1_1.visible
 end
 
-return slot0
+return var_0_0

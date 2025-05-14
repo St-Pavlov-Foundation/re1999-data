@@ -1,19 +1,19 @@
-module("modules.common.global.GameGlobalMgr", package.seeall)
+﻿module("modules.common.global.GameGlobalMgr", package.seeall)
 
-slot0 = class("GameGlobalMgr")
+local var_0_0 = class("GameGlobalMgr")
 
-function slot0.ctor(slot0)
-	LuaEventSystem.addEventMechanism(slot0)
+function var_0_0.ctor(arg_1_0)
+	LuaEventSystem.addEventMechanism(arg_1_0)
 end
 
-function slot0.init(slot0)
-	slot0._screenState = GameScreenState.New()
-	slot0._loadingState = GameLoadingState.New()
-	slot0._fullViewState = GameFullViewState.New()
-	slot0._msgTooOfterCheck = GameMsgTooOftenCheck.New()
-	slot0._msgLockState = GameMsgLockState.New()
-	slot0._screenBrightness = GameScreenBrightness.New()
-	slot0._screenTouch = GameScreenTouch.New()
+function var_0_0.init(arg_2_0)
+	arg_2_0._screenState = GameScreenState.New()
+	arg_2_0._loadingState = GameLoadingState.New()
+	arg_2_0._fullViewState = GameFullViewState.New()
+	arg_2_0._msgTooOfterCheck = GameMsgTooOftenCheck.New()
+	arg_2_0._msgLockState = GameMsgLockState.New()
+	arg_2_0._screenBrightness = GameScreenBrightness.New()
+	arg_2_0._screenTouch = GameScreenTouch.New()
 
 	GoHelperExtend.activateExtend()
 	StringExtend.activateExtend()
@@ -28,30 +28,30 @@ function slot0.init(slot0)
 	end
 end
 
-function slot0.getScreenState(slot0)
-	return slot0._screenState
+function var_0_0.getScreenState(arg_3_0)
+	return arg_3_0._screenState
 end
 
-function slot0.getFullViewState(slot0)
-	return slot0._fullViewState
+function var_0_0.getFullViewState(arg_4_0)
+	return arg_4_0._fullViewState
 end
 
-function slot0.getLoadingState(slot0)
-	return slot0._loadingState
+function var_0_0.getLoadingState(arg_5_0)
+	return arg_5_0._loadingState
 end
 
-function slot0.getLangFont(slot0)
-	return slot0._langFont
+function var_0_0.getLangFont(arg_6_0)
+	return arg_6_0._langFont
 end
 
-function slot0.getMsgLockState(slot0)
-	return slot0._msgLockState
+function var_0_0.getMsgLockState(arg_7_0)
+	return arg_7_0._msgLockState
 end
 
-function slot0.playTouchEffect(slot0, slot1)
-	slot0._screenTouch:playTouchEffect(slot1)
+function var_0_0.playTouchEffect(arg_8_0, arg_8_1)
+	arg_8_0._screenTouch:playTouchEffect(arg_8_1)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

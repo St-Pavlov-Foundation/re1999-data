@@ -1,12 +1,12 @@
-module("modules.logic.fight.model.data.FightSummonedInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightSummonedInfoData", package.seeall)
 
-slot0 = FightDataClass("FightSummonedInfoData")
+local var_0_0 = FightDataClass("FightSummonedInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.summonedId = slot1.summonedId
-	slot0.level = slot1.level
-	slot0.uid = slot1.uid
-	slot0.fromUid = slot1.fromUid
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.summonedId = arg_1_1.summonedId
+	arg_1_0.level = arg_1_1.level
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.fromUid = arg_1_1.fromUid
 end
 
-return slot0
+return var_0_0

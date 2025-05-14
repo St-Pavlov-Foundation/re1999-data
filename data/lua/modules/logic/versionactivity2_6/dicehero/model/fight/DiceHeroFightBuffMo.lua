@@ -1,12 +1,12 @@
-module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightBuffMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightBuffMo", package.seeall)
 
-slot0 = pureTable("DiceHeroFightBuffMo")
+local var_0_0 = pureTable("DiceHeroFightBuffMo")
 
-function slot0.init(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.id = slot1.id
-	slot0.layer = slot1.layer
-	slot0.co = lua_dice_buff.configDict[slot0.id]
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.id = arg_1_1.id
+	arg_1_0.layer = arg_1_1.layer
+	arg_1_0.co = lua_dice_buff.configDict[arg_1_0.id]
 end
 
-return slot0
+return var_0_0

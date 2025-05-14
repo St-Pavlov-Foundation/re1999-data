@@ -1,104 +1,114 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.entity.EnemyEntity", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.entity.EnemyEntity", package.seeall)
 
-slot0 = class("EnemyEntity", EntityBase)
+local var_0_0 = class("EnemyEntity", EntityBase)
 
-function slot0.ctor(slot0)
-	uv0.super.ctor(slot0)
+function var_0_0.ctor(arg_1_0)
+	var_0_0.super.ctor(arg_1_0)
 
-	slot0._action = EnemyActionData.New()
-	slot0._camp = LengZhou6Enum.entityCamp.enemy
+	arg_1_0._action = EnemyActionData.New()
+	arg_1_0._camp = LengZhou6Enum.entityCamp.enemy
 end
 
-function slot0.init(slot0, slot1, slot2, slot3)
-	uv0.super.init(slot0, slot1, slot2, slot3)
+function var_0_0.init(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	var_0_0.super.init(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
 end
 
-function slot0.initByConfig(slot0)
-	slot0._config = LengZhou6Config.instance:getEliminateBattleEnemy(slot0._configId)
+function var_0_0.initByConfig(arg_3_0)
+	arg_3_0._config = LengZhou6Config.instance:getEliminateBattleEnemy(arg_3_0._configId)
 
-	if slot0._config == nil then
-		logError("eliminate_battle_enemy config is nil" .. slot0._configId)
+	if arg_3_0._config == nil then
+		logError("eliminate_battle_enemy config is nil" .. arg_3_0._configId)
 	end
 
-	slot0._icon = slot0._config.icon
-	slot0._name = slot0._config.name
+	arg_3_0._icon = arg_3_0._config.icon
+	arg_3_0._name = arg_3_0._config.name
 
-	slot0:setHp(slot0._config.hp)
-	slot0:initAction()
+	arg_3_0:setHp(arg_3_0._config.hp)
+	arg_3_0:initAction()
 
-	if not string.nilorempty(slot0._config.loop) then
-		slot2 = string.splitToNumber(slot1, "#")
+	local var_3_0 = arg_3_0._config.loop
 
-		slot0._action:initLoopIndex(slot2[1], slot2[2])
-	end
-end
+	if not string.nilorempty(var_3_0) then
+		local var_3_1 = string.splitToNumber(var_3_0, "#")
 
-function slot0.initAction(slot0)
-	slot0._action:init(slot0._configId)
-end
-
-function slot0.setActionStepIndexAndRound(slot0, slot1, slot2)
-	if slot0._action ~= nil and slot1 ~= nil and slot2 ~= nil then
-		slot0._action:setCurBehaviorId(slot1)
-		slot0._action:setCurRound(slot2)
+		arg_3_0._action:initLoopIndex(var_3_1[1], var_3_1[2])
 	end
 end
 
-function slot0.getCurSkillList(slot0)
-	return slot0._action:getCurBehavior() and slot1:getSkillList() or nil
+function var_0_0.initAction(arg_4_0)
+	arg_4_0._action:init(arg_4_0._configId)
 end
 
-function slot0.getAllCanUseSkillId(slot0)
-	if slot0._buffs ~= nil then
-		for slot4 = 1, #slot0._buffs do
-			if slot0._buffs[slot4]:getBuffEffect() == LengZhou6Enum.BuffEffect.petrify and slot5:execute(true) then
-				return nil, slot0._action:calCurResidueCd()
+function var_0_0.setActionStepIndexAndRound(arg_5_0, arg_5_1, arg_5_2)
+	if arg_5_0._action ~= nil and arg_5_1 ~= nil and arg_5_2 ~= nil then
+		arg_5_0._action:setCurBehaviorId(arg_5_1)
+		arg_5_0._action:setCurRound(arg_5_2)
+	end
+end
+
+function var_0_0.getCurSkillList(arg_6_0)
+	local var_6_0 = arg_6_0._action:getCurBehavior()
+
+	return var_6_0 and var_6_0:getSkillList() or nil
+end
+
+function var_0_0.getAllCanUseSkillId(arg_7_0)
+	if arg_7_0._buffs ~= nil then
+		for iter_7_0 = 1, #arg_7_0._buffs do
+			local var_7_0 = arg_7_0._buffs[iter_7_0]
+
+			if var_7_0:getBuffEffect() == LengZhou6Enum.BuffEffect.petrify and var_7_0:execute(true) then
+				return nil, arg_7_0._action:calCurResidueCd()
 			end
 		end
 	end
 
-	slot0:clearInvalidBuff()
+	arg_7_0:clearInvalidBuff()
 
-	slot2 = slot0._action:calCurResidueCd()
+	local var_7_1 = arg_7_0._action:getSkillList()
+	local var_7_2 = arg_7_0._action:calCurResidueCd()
 
-	if slot0._action:getSkillList() ~= nil then
-		for slot6 = 1, #slot1 do
-			slot7 = slot1[slot6]
-			slot0._skills[slot7._id] = slot7
+	if var_7_1 ~= nil then
+		for iter_7_1 = 1, #var_7_1 do
+			local var_7_3 = var_7_1[iter_7_1]
+
+			arg_7_0._skills[var_7_3._id] = var_7_3
 		end
 
-		slot2 = 0
+		var_7_2 = 0
 	end
 
-	return slot1, slot2
+	return var_7_1, var_7_2
 end
 
-function slot0.clearInvalidBuff(slot0)
-	slot1 = {}
+function var_0_0.clearInvalidBuff(arg_8_0)
+	local var_8_0 = {}
 
-	if slot0._buffs ~= nil then
-		for slot5 = 1, #slot0._buffs do
-			if slot0._buffs[slot5]:getBuffEffect() == 0 then
-				table.insert(slot1, slot5)
+	if arg_8_0._buffs ~= nil then
+		for iter_8_0 = 1, #arg_8_0._buffs do
+			if arg_8_0._buffs[iter_8_0]:getBuffEffect() == 0 then
+				table.insert(var_8_0, iter_8_0)
 			end
 		end
 	end
 
-	for slot5 = #slot1, 1, -1 do
-		if slot0._buffs[slot1[slot5]] ~= nil then
-			slot0._buffs[slot6] = nil
+	for iter_8_1 = #var_8_0, 1, -1 do
+		local var_8_1 = var_8_0[iter_8_1]
+
+		if arg_8_0._buffs[var_8_1] ~= nil then
+			arg_8_0._buffs[var_8_1] = nil
 		end
 	end
 end
 
-function slot0.getAction(slot0)
-	return slot0._action
+function var_0_0.getAction(arg_9_0)
+	return arg_9_0._action
 end
 
-function slot0.havePoisonBuff(slot0)
-	if slot0._buffs then
-		for slot4, slot5 in ipairs(slot0._buffs) do
-			if slot5._configId == 1001 then
+function var_0_0.havePoisonBuff(arg_10_0)
+	if arg_10_0._buffs then
+		for iter_10_0, iter_10_1 in ipairs(arg_10_0._buffs) do
+			if iter_10_1._configId == 1001 then
 				return true
 			end
 		end
@@ -107,12 +117,12 @@ function slot0.havePoisonBuff(slot0)
 	return false
 end
 
-function slot0.useSkill(slot0, slot1)
-	if slot0._skills[slot1] ~= nil then
-		slot0._skills[slot1]:execute()
+function var_0_0.useSkill(arg_11_0, arg_11_1)
+	if arg_11_0._skills[arg_11_1] ~= nil then
+		arg_11_0._skills[arg_11_1]:execute()
 	end
 
-	slot0._skills[slot1] = nil
+	arg_11_0._skills[arg_11_1] = nil
 end
 
-return slot0
+return var_0_0

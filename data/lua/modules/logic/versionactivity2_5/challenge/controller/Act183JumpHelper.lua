@@ -1,83 +1,101 @@
-module("modules.logic.versionactivity2_5.challenge.controller.Act183JumpHelper", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.controller.Act183JumpHelper", package.seeall)
 
-slot0 = _M
+local var_0_0 = _M
 
-function slot0.activate()
+function var_0_0.activate()
+	return
 end
 
-slot1 = VersionActivity2_7Enum.ActivityId.Challenge
-slot2 = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.EnterView
+local var_0_1 = VersionActivity2_7Enum.ActivityId.Challenge
+local var_0_2 = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.EnterView
 
-function slot0.fightExitHandleFunc(slot0, slot1)
-	DungeonModel.instance.lastSendEpisodeId = DungeonModel.instance.curSendEpisodeId
+function var_0_0.fightExitHandleFunc(arg_2_0, arg_2_1)
+	local var_2_0 = DungeonModel.instance.curSendEpisodeId
+
+	DungeonModel.instance.lastSendEpisodeId = var_2_0
 	DungeonModel.instance.curSendEpisodeId = nil
 
-	MainController.instance:enterMainScene(slot0)
-	SceneHelper.instance:waitSceneDone(SceneType.Main, function ()
+	MainController.instance:enterMainScene(arg_2_0)
+	SceneHelper.instance:waitSceneDone(SceneType.Main, function()
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.Act183MainView)
-		VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, , Act183Config.instance:getEpisodeCo(uv0) and slot0.activityId)
-		Act183Controller.instance:openAct183MainView(nil, function ()
-			Act183Controller.instance:openAct183DungeonView(Act183Helper.generateDungeonViewParams2(uv0))
+
+		local var_3_0 = Act183Config.instance:getEpisodeCo(var_2_0)
+		local var_3_1 = var_3_0 and var_3_0.activityId
+
+		VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, nil, var_3_1)
+		Act183Controller.instance:openAct183MainView(nil, function()
+			local var_4_0 = Act183Helper.generateDungeonViewParams2(var_2_0)
+
+			Act183Controller.instance:openAct183DungeonView(var_4_0)
 		end)
 	end)
 end
 
-function slot0.canJumpToAct183(slot0, slot1)
-	slot2, slot3, slot4 = ActivityHelper.getActivityStatusAndToast(uv0)
+function var_0_0.canJumpToAct183(arg_5_0, arg_5_1)
+	local var_5_0, var_5_1, var_5_2 = ActivityHelper.getActivityStatusAndToast(var_0_2)
 
-	if slot2 ~= ActivityEnum.ActivityStatus.Normal then
-		return false, slot3, slot4
+	if var_5_0 ~= ActivityEnum.ActivityStatus.Normal then
+		return false, var_5_1, var_5_2
 	end
 
-	slot5, slot6, slot7 = ActivityHelper.getActivityStatusAndToast(uv1)
+	local var_5_3, var_5_4, var_5_5 = ActivityHelper.getActivityStatusAndToast(var_0_1)
 
-	if slot5 ~= ActivityEnum.ActivityStatus.Normal then
-		return false, slot6, slot7
+	if var_5_3 ~= ActivityEnum.ActivityStatus.Normal then
+		return false, var_5_4, var_5_5
 	end
 
-	if not Act183Config.instance:isGroupExist(uv1, string.splitToNumber(slot1, "#") and slot8[2]) then
+	local var_5_6 = string.splitToNumber(arg_5_1, "#")
+	local var_5_7 = var_5_6 and var_5_6[2]
+
+	if not Act183Config.instance:isGroupExist(var_0_1, var_5_7) then
 		return false, ToastEnum.EpisodeNotExist, JumpController.DefaultToastParam
 	end
 
-	if (Act183Model.instance:getActInfo():getGroupEpisodeMo(slot9) and slot12:getStatus()) == Act183Enum.GroupStatus.Locked then
+	local var_5_8 = Act183Model.instance:getActInfo():getGroupEpisodeMo(var_5_7)
+
+	if (var_5_8 and var_5_8:getStatus()) == Act183Enum.GroupStatus.Locked then
 		return false, ToastEnum.Act183GroupNotOpen, JumpController.DefaultToastParam
 	end
 
 	return true, JumpController.DefaultToastId, JumpController.DefaultToastParam
 end
 
-function slot0.jumpToAct183(slot0, slot1)
-	table.insert(slot0.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
-	table.insert(slot0.waitOpenViewNames, ViewName.Act183MainView)
-	table.insert(slot0.waitOpenViewNames, ViewName.Act183DungeonView)
-	table.insert(slot0.closeViewNames, ViewName.Act183TaskView)
-	VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(function ()
-		slot2 = Act183Helper.generateDungeonViewParams3(uv1, string.splitToNumber(uv0, "#") and slot0[2])
+function var_0_0.jumpToAct183(arg_6_0, arg_6_1)
+	local var_6_0 = VersionActivityFixedHelper.getVersionActivityEnterViewName()
+
+	table.insert(arg_6_0.waitOpenViewNames, var_6_0)
+	table.insert(arg_6_0.waitOpenViewNames, ViewName.Act183MainView)
+	table.insert(arg_6_0.waitOpenViewNames, ViewName.Act183DungeonView)
+	table.insert(arg_6_0.closeViewNames, ViewName.Act183TaskView)
+	VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
+		local var_7_0 = string.splitToNumber(arg_6_1, "#")
+		local var_7_1 = var_7_0 and var_7_0[2]
+		local var_7_2 = Act183Helper.generateDungeonViewParams3(var_0_1, var_7_1)
 
 		if not ViewMgr.instance:isOpen(ViewName.Act183MainView) then
-			Act183Controller.instance:openAct183MainView(nil, function ()
-				Act183Controller.instance:openAct183DungeonView(uv0)
+			Act183Controller.instance:openAct183MainView(nil, function()
+				Act183Controller.instance:openAct183DungeonView(var_7_2)
 			end)
 		else
-			Act183Controller.instance:openAct183DungeonView(slot2)
+			Act183Controller.instance:openAct183DungeonView(var_7_2)
 		end
 	end)
 
 	return JumpEnum.JumpResult.Success
 end
 
-slot3 = {
-	[VersionActivity2_7Enum.ActivityId.Challenge] = slot0.fightExitHandleFunc
+local var_0_3 = {
+	[VersionActivity2_7Enum.ActivityId.Challenge] = var_0_0.fightExitHandleFunc
 }
 
-function slot4()
-	for slot3, slot4 in pairs(uv0) do
-		EnterActivityViewOnExitFightSceneHelper["enterActivity" .. slot3] = slot4
+local function var_0_4()
+	for iter_9_0, iter_9_1 in pairs(var_0_3) do
+		EnterActivityViewOnExitFightSceneHelper["enterActivity" .. iter_9_0] = iter_9_1
 	end
 end
 
-function ()
-	uv0()
-end()
+;(function()
+	var_0_4()
+end)()
 
-return slot0
+return var_0_0

@@ -1,134 +1,150 @@
-module("modules.logic.versionactivity2_7.coopergarland.model.CooperGarlandTaskListModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.model.CooperGarlandTaskListModel", package.seeall)
 
-slot0 = class("CooperGarlandTaskListModel", ListScrollModel)
+local var_0_0 = class("CooperGarlandTaskListModel", ListScrollModel)
 
-function slot1(slot0)
-	if slot0.id == CooperGarlandEnum.Const.TaskMOAllFinishId then
+local function var_0_1(arg_1_0)
+	if arg_1_0.id == CooperGarlandEnum.Const.TaskMOAllFinishId then
 		return 1
-	elseif slot0:isFinished() then
+	elseif arg_1_0:isFinished() then
 		return 100
-	elseif slot0:alreadyGotReward() then
+	elseif arg_1_0:alreadyGotReward() then
 		return 2
 	end
 
 	return 50
 end
 
-function slot2(slot0, slot1)
-	if uv0(slot0) ~= uv0(slot1) then
-		return slot2 < slot3
-	elseif slot0.id ~= slot1.id then
-		return slot0.id < slot1.id
+local function var_0_2(arg_2_0, arg_2_1)
+	local var_2_0 = var_0_1(arg_2_0)
+	local var_2_1 = var_0_1(arg_2_1)
+
+	if var_2_0 ~= var_2_1 then
+		return var_2_0 < var_2_1
+	elseif arg_2_0.id ~= arg_2_1.id then
+		return arg_2_0.id < arg_2_1.id
 	end
 end
 
-function slot0.init(slot0)
-	slot1 = {}
-	slot2 = 0
-	slot3 = CooperGarlandModel.instance:getAct192Id()
+function var_0_0.init(arg_3_0)
+	local var_3_0 = {}
+	local var_3_1 = 0
+	local var_3_2 = CooperGarlandModel.instance:getAct192Id()
+	local var_3_3 = TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Activity192)
 
-	if TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Activity192) ~= nil then
-		for slot9, slot10 in ipairs(CooperGarlandConfig.instance:getTaskList(slot3)) do
-			slot11 = CooperGarlandTaskMO.New()
+	if var_3_3 ~= nil then
+		local var_3_4 = CooperGarlandConfig.instance:getTaskList(var_3_2)
 
-			slot11:init(slot10, slot4[slot10.id])
+		for iter_3_0, iter_3_1 in ipairs(var_3_4) do
+			local var_3_5 = CooperGarlandTaskMO.New()
 
-			if slot11:alreadyGotReward() then
-				slot2 = slot2 + 1
+			var_3_5:init(iter_3_1, var_3_3[iter_3_1.id])
+
+			if var_3_5:alreadyGotReward() then
+				var_3_1 = var_3_1 + 1
 			end
 
-			table.insert(slot1, slot11)
+			table.insert(var_3_0, var_3_5)
 		end
 	end
 
-	if slot2 > 1 then
-		slot5 = CooperGarlandTaskMO.New()
-		slot5.id = CooperGarlandEnum.Const.TaskMOAllFinishId
-		slot5.activityId = slot3
+	if var_3_1 > 1 then
+		local var_3_6 = CooperGarlandTaskMO.New()
 
-		table.insert(slot1, slot5)
+		var_3_6.id = CooperGarlandEnum.Const.TaskMOAllFinishId
+		var_3_6.activityId = var_3_2
+
+		table.insert(var_3_0, var_3_6)
 	end
 
-	table.sort(slot1, uv0)
+	table.sort(var_3_0, var_0_2)
 
-	slot0._hasRankDiff = false
+	arg_3_0._hasRankDiff = false
 
-	slot0:setList(slot1)
+	arg_3_0:setList(var_3_0)
 end
 
-function slot0.getRankDiff(slot0, slot1)
-	if slot0._hasRankDiff and slot1 then
-		slot3 = slot0:getIndex(slot1)
+function var_0_0.getRankDiff(arg_4_0, arg_4_1)
+	if arg_4_0._hasRankDiff and arg_4_1 then
+		local var_4_0 = tabletool.indexOf(arg_4_0._idIdxList, arg_4_1.id)
+		local var_4_1 = arg_4_0:getIndex(arg_4_1)
 
-		if tabletool.indexOf(slot0._idIdxList, slot1.id) and slot3 then
-			slot0._idIdxList[slot2] = -2
+		if var_4_0 and var_4_1 then
+			arg_4_0._idIdxList[var_4_0] = -2
 
-			return slot3 - slot2
+			return var_4_1 - var_4_0
 		end
 	end
 
 	return 0
 end
 
-function slot0.refreshRankDiff(slot0)
-	slot0._idIdxList = {}
+function var_0_0.refreshRankDiff(arg_5_0)
+	arg_5_0._idIdxList = {}
 
-	for slot5, slot6 in ipairs(slot0:getList()) do
-		table.insert(slot0._idIdxList, slot6.id)
+	local var_5_0 = arg_5_0:getList()
+
+	for iter_5_0, iter_5_1 in ipairs(var_5_0) do
+		table.insert(arg_5_0._idIdxList, iter_5_1.id)
 	end
 end
 
-function slot0.preFinish(slot0, slot1)
-	if not slot1 then
+function var_0_0.preFinish(arg_6_0, arg_6_1)
+	if not arg_6_1 then
 		return
 	end
 
-	slot2 = false
-	slot0._hasRankDiff = false
+	local var_6_0 = false
 
-	slot0:refreshRankDiff()
+	arg_6_0._hasRankDiff = false
 
-	slot3 = 0
-	slot4 = slot0:getList()
+	arg_6_0:refreshRankDiff()
 
-	if slot1.id == CooperGarlandEnum.Const.TaskMOAllFinishId then
-		for slot8, slot9 in ipairs(slot4) do
-			if slot9:alreadyGotReward() and slot9.id ~= CooperGarlandEnum.Const.TaskMOAllFinishId then
-				slot9.preFinish = true
-				slot2 = true
-				slot3 = slot3 + 1
+	local var_6_1 = 0
+	local var_6_2 = arg_6_0:getList()
+
+	if arg_6_1.id == CooperGarlandEnum.Const.TaskMOAllFinishId then
+		for iter_6_0, iter_6_1 in ipairs(var_6_2) do
+			if iter_6_1:alreadyGotReward() and iter_6_1.id ~= CooperGarlandEnum.Const.TaskMOAllFinishId then
+				iter_6_1.preFinish = true
+				var_6_0 = true
+				var_6_1 = var_6_1 + 1
 			end
 		end
-	elseif slot1:alreadyGotReward() then
-		slot1.preFinish = true
-		slot2 = true
-		slot3 = slot3 + 1
+	elseif arg_6_1:alreadyGotReward() then
+		arg_6_1.preFinish = true
+		var_6_0 = true
+		var_6_1 = var_6_1 + 1
 	end
 
-	if slot2 then
-		if slot0:getById(CooperGarlandEnum.Const.TaskMOAllFinishId) and slot0:getGotRewardCount() < slot3 + 1 then
-			tabletool.removeValue(slot4, slot5)
+	if var_6_0 then
+		local var_6_3 = arg_6_0:getById(CooperGarlandEnum.Const.TaskMOAllFinishId)
+
+		if var_6_3 and arg_6_0:getGotRewardCount() < var_6_1 + 1 then
+			tabletool.removeValue(var_6_2, var_6_3)
 		end
 
-		slot0._hasRankDiff = true
+		arg_6_0._hasRankDiff = true
 
-		table.sort(slot4, uv0)
-		slot0:setList(slot4)
+		table.sort(var_6_2, var_0_2)
+		arg_6_0:setList(var_6_2)
 
-		slot0._hasRankDiff = false
+		arg_6_0._hasRankDiff = false
 	end
 end
 
-function slot0.getGotRewardCount(slot0, slot1)
-	for slot7, slot8 in ipairs(slot1 or slot0:getList()) do
-		if slot8:alreadyGotReward() and not slot8.preFinish and slot8.id ~= CooperGarlandEnum.Const.TaskMOAllFinishId then
-			slot3 = 0 + 1
+function var_0_0.getGotRewardCount(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_1 or arg_7_0:getList()
+	local var_7_1 = 0
+
+	for iter_7_0, iter_7_1 in ipairs(var_7_0) do
+		if iter_7_1:alreadyGotReward() and not iter_7_1.preFinish and iter_7_1.id ~= CooperGarlandEnum.Const.TaskMOAllFinishId then
+			var_7_1 = var_7_1 + 1
 		end
 	end
 
-	return slot3
+	return var_7_1
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

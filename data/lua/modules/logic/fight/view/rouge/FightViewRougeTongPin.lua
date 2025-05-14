@@ -1,127 +1,148 @@
-module("modules.logic.fight.view.rouge.FightViewRougeTongPin", package.seeall)
+﻿module("modules.logic.fight.view.rouge.FightViewRougeTongPin", package.seeall)
 
-slot0 = class("FightViewRougeTongPin", BaseViewExtended)
+local var_0_0 = class("FightViewRougeTongPin", BaseViewExtended)
 
-function slot0.onInitView(slot0)
-	slot0._polarizationRoot = slot0.viewGO
-	slot0._polarizationItem = gohelper.findChild(slot0.viewGO, "item")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._polarizationRoot = arg_1_0.viewGO
+	arg_1_0._polarizationItem = gohelper.findChild(arg_1_0.viewGO, "item")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.PolarizationLevel, slot0._onPolarizationLevel, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnClothSkillRoundSequenceFinish, slot0._onClothSkillRoundSequenceFinish, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, slot0._onRoundSequenceFinish, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.PolarizationLevel, arg_2_0._onPolarizationLevel, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.OnClothSkillRoundSequenceFinish, arg_2_0._onClothSkillRoundSequenceFinish, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, arg_2_0._onRoundSequenceFinish, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0.tongPingGoList = slot0:getUserDataTb_()
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0.tongPingGoList = arg_4_0:getUserDataTb_()
 
-	table.insert(slot0.tongPingGoList, slot0._polarizationItem)
+	table.insert(arg_4_0.tongPingGoList, arg_4_0._polarizationItem)
 end
 
-function slot0.onRefreshViewParam(slot0)
+function var_0_0.onRefreshViewParam(arg_5_0)
+	return
 end
 
-function slot0.hideTongPinObj(slot0)
-	gohelper.setActive(slot0._polarizationRoot, false)
+function var_0_0.hideTongPinObj(arg_6_0)
+	gohelper.setActive(arg_6_0._polarizationRoot, false)
 	FightController.instance:dispatchEvent(FightEvent.RightElements_HideElement, FightRightElementEnum.Elements.RougeTongPin)
 end
 
-function slot0.showTongPinObj(slot0, slot1)
-	gohelper.setActive(slot0._polarizationRoot, true)
-	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.RougeTongPin, slot1 and FightRightElementEnum.ElementsSizeDict[FightRightElementEnum.Elements.RougeTongPin].y * slot1 or nil)
+function var_0_0.showTongPinObj(arg_7_0, arg_7_1)
+	gohelper.setActive(arg_7_0._polarizationRoot, true)
+
+	local var_7_0 = FightRightElementEnum.ElementsSizeDict[FightRightElementEnum.Elements.RougeTongPin]
+	local var_7_1 = arg_7_1 and var_7_0.y * arg_7_1 or nil
+
+	FightController.instance:dispatchEvent(FightEvent.RightElements_ShowElement, FightRightElementEnum.Elements.RougeTongPin, var_7_1)
 end
 
-function slot0._onClothSkillRoundSequenceFinish(slot0)
-	slot0:hideTongPinObj()
+function var_0_0._onClothSkillRoundSequenceFinish(arg_8_0)
+	arg_8_0:hideTongPinObj()
 end
 
-function slot0._onRoundSequenceFinish(slot0)
-	slot0:hideTongPinObj()
+function var_0_0._onRoundSequenceFinish(arg_9_0)
+	arg_9_0:hideTongPinObj()
 end
 
-function slot0._onPolarizationLevel(slot0)
-	slot0:_refreshTongPin()
+function var_0_0._onPolarizationLevel(arg_10_0)
+	arg_10_0:_refreshTongPin()
 end
 
-function slot0.onOpen(slot0)
-	slot0:hideTongPinObj()
+function var_0_0.onOpen(arg_11_0)
+	arg_11_0:hideTongPinObj()
 end
 
-slot0.tempDataList = {}
+var_0_0.tempDataList = {}
 
-function slot0._refreshTongPin(slot0)
-	slot0._polarizationDic = FightRoundSequence.roundTempData.PolarizationLevel
+function var_0_0._refreshTongPin(arg_12_0)
+	arg_12_0._polarizationDic = FightRoundSequence.roundTempData.PolarizationLevel
 
-	if slot0._polarizationDic then
-		for slot4, slot5 in pairs(slot0._polarizationDic) do
-			if slot5.effectNum == 0 then
-				slot0._polarizationDic[slot4] = nil
+	if arg_12_0._polarizationDic then
+		for iter_12_0, iter_12_1 in pairs(arg_12_0._polarizationDic) do
+			if iter_12_1.effectNum == 0 then
+				arg_12_0._polarizationDic[iter_12_0] = nil
 			end
 		end
 	end
 
-	if slot0._polarizationDic and tabletool.len(slot0._polarizationDic) > 0 then
-		tabletool.clear(uv0.tempDataList)
+	if arg_12_0._polarizationDic and tabletool.len(arg_12_0._polarizationDic) > 0 then
+		local var_12_0 = var_0_0.tempDataList
 
-		for slot6, slot7 in pairs(slot0._polarizationDic) do
-			table.insert(slot2, slot7)
+		tabletool.clear(var_12_0)
+
+		for iter_12_2, iter_12_3 in pairs(arg_12_0._polarizationDic) do
+			table.insert(var_12_0, iter_12_3)
 		end
 
-		table.sort(slot2, slot0.sortPolarization)
-		slot0:com_createObjList(slot0._onPolarizationItemShow, slot2, slot0._polarizationRoot, slot0._polarizationItem)
-		slot0:showTongPinObj(#slot2)
+		table.sort(var_12_0, arg_12_0.sortPolarization)
+		arg_12_0:com_createObjList(arg_12_0._onPolarizationItemShow, var_12_0, arg_12_0._polarizationRoot, arg_12_0._polarizationItem)
+		arg_12_0:showTongPinObj(#var_12_0)
 	else
-		slot0:hideTongPinObj()
+		arg_12_0:hideTongPinObj()
 	end
 end
 
-function slot0.sortPolarization(slot0, slot1)
-	return slot0.configEffect < slot1.configEffect
+function var_0_0.sortPolarization(arg_13_0, arg_13_1)
+	return arg_13_0.configEffect < arg_13_1.configEffect
 end
 
-slot0.TempParam = {}
+var_0_0.TempParam = {}
 
-function slot0._onPolarizationItemShow(slot0, slot1, slot2, slot3)
-	if not (lua_polarization.configDict[slot2.effectNum] and lua_polarization.configDict[slot2.effectNum][slot2.configEffect]) then
-		gohelper.setActive(slot1, false)
+function var_0_0._onPolarizationItemShow(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
+	local var_14_0 = lua_polarization.configDict[arg_14_2.effectNum] and lua_polarization.configDict[arg_14_2.effectNum][arg_14_2.configEffect]
+
+	if not var_14_0 then
+		gohelper.setActive(arg_14_1, false)
 
 		return
 	end
 
-	gohelper.findChildText(slot1, "bg/#txt_name").text = slot4 and slot4.name
-	gohelper.findChildText(slot1, "bg/#txt_level").text = "Lv." .. slot2.effectNum
-	slot8 = gohelper.getClickWithDefaultAudio(gohelper.findChild(slot1, "bg"))
+	local var_14_1 = gohelper.findChildText(arg_14_1, "bg/#txt_name")
+	local var_14_2 = gohelper.findChildText(arg_14_1, "bg/#txt_level")
 
-	slot0:removeClickCb(slot8)
+	var_14_1.text = var_14_0 and var_14_0.name
 
-	slot9 = uv0.TempParam
-	slot9.config = slot4
-	slot9.position = slot1.transform.position
+	local var_14_3 = arg_14_2.effectNum
 
-	slot0:addClickCb(slot8, slot0._onBtnPolarization, slot0, slot9)
+	var_14_2.text = "Lv." .. var_14_3
 
-	for slot13 = 1, 3 do
-		gohelper.setActive(gohelper.findChild(slot1, "effect_lv/effect_lv" .. slot13), slot13 == slot7)
+	local var_14_4 = gohelper.getClickWithDefaultAudio(gohelper.findChild(arg_14_1, "bg"))
+
+	arg_14_0:removeClickCb(var_14_4)
+
+	local var_14_5 = var_0_0.TempParam
+
+	var_14_5.config = var_14_0
+	var_14_5.position = arg_14_1.transform.position
+
+	arg_14_0:addClickCb(var_14_4, arg_14_0._onBtnPolarization, arg_14_0, var_14_5)
+
+	for iter_14_0 = 1, 3 do
+		local var_14_6 = gohelper.findChild(arg_14_1, "effect_lv/effect_lv" .. iter_14_0)
+
+		gohelper.setActive(var_14_6, iter_14_0 == var_14_3)
 	end
 
-	if slot7 > 3 then
-		gohelper.setActive(gohelper.findChild(slot1, "effect_lv/effect_lv3"), true)
+	if var_14_3 > 3 then
+		gohelper.setActive(gohelper.findChild(arg_14_1, "effect_lv/effect_lv3"), true)
 	end
 end
 
-function slot0._onBtnPolarization(slot0, slot1)
-	FightController.instance:dispatchEvent(FightEvent.RougeShowTip, slot1)
+function var_0_0._onBtnPolarization(arg_15_0, arg_15_1)
+	FightController.instance:dispatchEvent(FightEvent.RougeShowTip, arg_15_1)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_16_0)
+	return
 end
 
-return slot0
+return var_0_0

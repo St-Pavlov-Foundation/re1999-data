@@ -1,54 +1,59 @@
-module("modules.logic.versionactivity2_7.enter.view.subview.V2a7_Act191EnterView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.enter.view.subview.V2a7_Act191EnterView", package.seeall)
 
-slot0 = class("V2a7_Act191EnterView", VersionActivityEnterBaseSubView)
+local var_0_0 = class("V2a7_Act191EnterView", VersionActivityEnterBaseSubView)
 
-function slot0.onInitView(slot0)
-	slot0._btnShop = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Shop")
-	slot0._txtnum = gohelper.findChildText(slot0.viewGO, "#btn_Shop/#txt_num")
-	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Enter")
-	slot0._txttime = gohelper.findChildText(slot0.viewGO, "#txt_time")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "#txt_desc")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnShop = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Shop")
+	arg_1_0._txtnum = gohelper.findChildText(arg_1_0.viewGO, "#btn_Shop/#txt_num")
+	arg_1_0._btnEnter = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Enter")
+	arg_1_0._txttime = gohelper.findChildText(arg_1_0.viewGO, "#txt_time")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "#txt_desc")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnShop:AddClickListener(slot0._btnShopOnClick, slot0)
-	slot0._btnEnter:AddClickListener(slot0._btnEnterOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnShop:AddClickListener(arg_2_0._btnShopOnClick, arg_2_0)
+	arg_2_0._btnEnter:AddClickListener(arg_2_0._btnEnterOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnShop:RemoveClickListener()
-	slot0._btnEnter:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnShop:RemoveClickListener()
+	arg_3_0._btnEnter:RemoveClickListener()
 end
 
-function slot0._btnShopOnClick(slot0)
+function var_0_0._btnShopOnClick(arg_4_0)
 	Activity191Controller.instance:openStoreView(VersionActivity2_7Enum.ActivityId.Act191Store)
 end
 
-function slot0._btnEnterOnClick(slot0)
-	Activity191Controller.instance:enterActivity(slot0.actId)
+function var_0_0._btnEnterOnClick(arg_5_0)
+	Activity191Controller.instance:enterActivity(arg_5_0.actId)
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = VersionActivity2_7Enum.ActivityId.Act191
-	slot0._txtdesc.text = ActivityConfig.instance:getActivityCo(slot0.actId).actDesc
+function var_0_0._editableInitView(arg_6_0)
+	arg_6_0.actId = VersionActivity2_7Enum.ActivityId.Act191
+
+	local var_6_0 = ActivityConfig.instance:getActivityCo(arg_6_0.actId)
+
+	arg_6_0._txtdesc.text = var_6_0.actDesc
 end
 
-function slot0.onOpen(slot0)
-	uv0.super.onOpen(slot0)
-	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshCurrency, slot0)
-	slot0:refreshCurrency()
+function var_0_0.onOpen(arg_7_0)
+	var_0_0.super.onOpen(arg_7_0)
+	arg_7_0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, arg_7_0.refreshCurrency, arg_7_0)
+	arg_7_0:refreshCurrency()
 end
 
-function slot0.everySecondCall(slot0)
-	slot0._txttime.text = ActivityHelper.getActivityRemainTimeStr(slot0.actId)
+function var_0_0.everySecondCall(arg_8_0)
+	arg_8_0._txttime.text = ActivityHelper.getActivityRemainTimeStr(arg_8_0.actId)
 end
 
-function slot0.refreshCurrency(slot0)
-	slot0._txtnum.text = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.Act191).quantity
+function var_0_0.refreshCurrency(arg_9_0)
+	local var_9_0 = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.Act191)
+
+	arg_9_0._txtnum.text = var_9_0.quantity
 end
 
-return slot0
+return var_0_0

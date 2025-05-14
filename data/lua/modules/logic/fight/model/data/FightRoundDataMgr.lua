@@ -1,51 +1,53 @@
-module("modules.logic.fight.model.data.FightRoundDataMgr", package.seeall)
+﻿module("modules.logic.fight.model.data.FightRoundDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightRoundDataMgr", FightDataMgrBase)
+local var_0_0 = FightDataClass("FightRoundDataMgr", FightDataMgrBase)
 
-function slot0.onConstructor(slot0)
-	slot0.dataList = {}
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.dataList = {}
 
 	if isDebugBuild then
-		slot0.originDataList = {}
+		arg_1_0.originDataList = {}
 	end
 
-	slot0.curRoundData = nil
-	slot0.originCurRoundData = nil
-	slot0.enterData = nil
+	arg_1_0.curRoundData = nil
+	arg_1_0.originCurRoundData = nil
+	arg_1_0.enterData = nil
 end
 
-function slot0.setRoundData(slot0, slot1)
-	slot0.curRoundData = slot1
+function var_0_0.setRoundData(arg_2_0, arg_2_1)
+	arg_2_0.curRoundData = arg_2_1
 
-	table.insert(slot0.dataList, slot1)
+	table.insert(arg_2_0.dataList, arg_2_1)
 end
 
-function slot0.setOriginRoundData(slot0, slot1)
-	slot0.originCurRoundData = slot1
+function var_0_0.setOriginRoundData(arg_3_0, arg_3_1)
+	arg_3_0.originCurRoundData = arg_3_1
 
-	table.insert(slot0.originDataList, slot0.originCurRoundData)
+	table.insert(arg_3_0.originDataList, arg_3_0.originCurRoundData)
 end
 
-function slot0.getRoundData(slot0)
-	return slot0.curRoundData
+function var_0_0.getRoundData(arg_4_0)
+	return arg_4_0.curRoundData
 end
 
-function slot0.getPreRoundData(slot0)
-	return slot0.dataList[#slot0.dataList - 1]
+function var_0_0.getPreRoundData(arg_5_0)
+	return arg_5_0.dataList[#arg_5_0.dataList - 1]
 end
 
-function slot0.getOriginRoundData(slot0)
-	return slot0.originCurRoundData
+function var_0_0.getOriginRoundData(arg_6_0)
+	return arg_6_0.originCurRoundData
 end
 
-function slot0.getOriginPreRoundData(slot0)
-	return slot0.originDataList[#slot0.originDataList - 1]
+function var_0_0.getOriginPreRoundData(arg_7_0)
+	return arg_7_0.originDataList[#arg_7_0.originDataList - 1]
 end
 
-function slot0.onCancelOperation(slot0)
+function var_0_0.onCancelOperation(arg_8_0)
+	return
 end
 
-function slot0.onStageChanged(slot0)
+function var_0_0.onStageChanged(arg_9_0)
+	return
 end
 
-return slot0
+return var_0_0

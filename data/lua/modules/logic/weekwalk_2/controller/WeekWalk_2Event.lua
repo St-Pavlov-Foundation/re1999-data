@@ -1,16 +1,17 @@
-module("modules.logic.weekwalk_2.controller.WeekWalk_2Event", package.seeall)
+﻿module("modules.logic.weekwalk_2.controller.WeekWalk_2Event", package.seeall)
 
-slot0 = _M
-slot1 = GameUtil.getUniqueTb()
-slot0.OnGetInfo = slot1()
-slot0.OnWeekwalkInfoUpdate = slot1()
-slot0.OnWeekwalkInfoChange = slot1()
-slot0.OnWeekwalkResetLayer = slot1()
-slot0.OnBuffSelectedChange = slot1()
-slot0.OnBuffSetup = slot1()
-slot0.OnBuffSetupReply = slot1()
-slot0.OnWeekwalkTaskUpdate = slot1()
-slot0.OnGetTaskReward = slot1()
-slot0.OnShowSkin = slot1()
+local var_0_0 = _M
+local var_0_1 = GameUtil.getUniqueTb()
 
-return slot0
+var_0_0.OnGetInfo = var_0_1()
+var_0_0.OnWeekwalkInfoUpdate = var_0_1()
+var_0_0.OnWeekwalkInfoChange = var_0_1()
+var_0_0.OnWeekwalkResetLayer = var_0_1()
+var_0_0.OnBuffSelectedChange = var_0_1()
+var_0_0.OnBuffSetup = var_0_1()
+var_0_0.OnBuffSetupReply = var_0_1()
+var_0_0.OnWeekwalkTaskUpdate = var_0_1()
+var_0_0.OnGetTaskReward = var_0_1()
+var_0_0.OnShowSkin = var_0_1()
+
+return var_0_0

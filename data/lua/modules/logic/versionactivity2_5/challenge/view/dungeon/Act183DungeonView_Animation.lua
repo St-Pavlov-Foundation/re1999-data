@@ -1,129 +1,135 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.Act183DungeonView_Animation", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.Act183DungeonView_Animation", package.seeall)
 
-slot0 = class("Act183DungeonView_Animation", BaseView)
-slot1 = 0.667
-slot2 = 1.167
+local var_0_0 = class("Act183DungeonView_Animation", BaseView)
+local var_0_1 = 0.667
+local var_0_2 = 1.167
 
-function slot0.onInitView(slot0)
-	slot0._gomiddle = gohelper.findChild(slot0.viewGO, "root/middle")
-	slot0._goline1 = gohelper.findChild(slot0.viewGO, "root/#go_line1")
-	slot0._goline2 = gohelper.findChild(slot0.viewGO, "root/#go_line2")
-	slot0._goline3 = gohelper.findChild(slot0.viewGO, "root/#go_line3")
-	slot0._gocompleted = gohelper.findChild(slot0.viewGO, "root/middle/#go_Completed")
-	slot0._godailycompleted = gohelper.findChild(slot0.viewGO, "root/middle/#go_DailyCompleted")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gomiddle = gohelper.findChild(arg_1_0.viewGO, "root/middle")
+	arg_1_0._goline1 = gohelper.findChild(arg_1_0.viewGO, "root/#go_line1")
+	arg_1_0._goline2 = gohelper.findChild(arg_1_0.viewGO, "root/#go_line2")
+	arg_1_0._goline3 = gohelper.findChild(arg_1_0.viewGO, "root/#go_line3")
+	arg_1_0._gocompleted = gohelper.findChild(arg_1_0.viewGO, "root/middle/#go_Completed")
+	arg_1_0._godailycompleted = gohelper.findChild(arg_1_0.viewGO, "root/middle/#go_DailyCompleted")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, slot0._onUpdateRepressInfo, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinish, slot0)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, arg_4_0._onUpdateRepressInfo, arg_4_0)
+	arg_4_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_4_0._onCloseViewFinish, arg_4_0)
 
-	slot0._lineEffectPool = slot0:getUserDataTb_()
-	slot0._useLineEffectPool = slot0:getUserDataTb_()
-	slot0._episodeItemTab = slot0.viewContainer:getMainView():getEpisodeItemTab()
-	slot0._animcompleted = gohelper.onceAddComponent(slot0._gocompleted, gohelper.Type_Animator)
-	slot0._animdailycompleted = gohelper.onceAddComponent(slot0._godailycompleted, gohelper.Type_Animator)
+	arg_4_0._lineEffectPool = arg_4_0:getUserDataTb_()
+	arg_4_0._useLineEffectPool = arg_4_0:getUserDataTb_()
+	arg_4_0._episodeItemTab = arg_4_0.viewContainer:getMainView():getEpisodeItemTab()
+	arg_4_0._animcompleted = gohelper.onceAddComponent(arg_4_0._gocompleted, gohelper.Type_Animator)
+	arg_4_0._animdailycompleted = gohelper.onceAddComponent(arg_4_0._godailycompleted, gohelper.Type_Animator)
 
-	slot0:_buildConfigToOrderAnimTypeMap()
-	slot0:_buildConfigToTemplateMap()
+	arg_4_0:_buildConfigToOrderAnimTypeMap()
+	arg_4_0:_buildConfigToTemplateMap()
 end
 
-function slot0._buildConfigToOrderAnimTypeMap(slot0)
-	slot0._orderToAnimTypeMap = {}
+function var_0_0._buildConfigToOrderAnimTypeMap(arg_5_0)
+	arg_5_0._orderToAnimTypeMap = {}
 
-	slot0:_addConfigToOrderAnimTypeMap(1, 2, Act183Enum.RuleEscapeAnimType.Left2Right)
-	slot0:_addConfigToOrderAnimTypeMap(2, 1, Act183Enum.RuleEscapeAnimType.Right2Left)
-	slot0:_addConfigToOrderAnimTypeMap(1, 3, Act183Enum.RuleEscapeAnimType.Top2Bottom)
-	slot0:_addConfigToOrderAnimTypeMap(3, 1, Act183Enum.RuleEscapeAnimType.Bottom2Top)
-	slot0:_addConfigToOrderAnimTypeMap(1, 4, Act183Enum.RuleEscapeAnimType.LeftTop2RightBottom)
-	slot0:_addConfigToOrderAnimTypeMap(4, 1, Act183Enum.RuleEscapeAnimType.RightBottom2LeftTop)
-	slot0:_addConfigToOrderAnimTypeMap(2, 3, Act183Enum.RuleEscapeAnimType.RightTop2LeftBottom)
-	slot0:_addConfigToOrderAnimTypeMap(3, 2, Act183Enum.RuleEscapeAnimType.LeftBottom2RightTop)
-	slot0:_addConfigToOrderAnimTypeMap(3, 4, Act183Enum.RuleEscapeAnimType.Left2Right)
-	slot0:_addConfigToOrderAnimTypeMap(4, 3, Act183Enum.RuleEscapeAnimType.Right2Left)
-	slot0:_addConfigToOrderAnimTypeMap(2, 4, Act183Enum.RuleEscapeAnimType.Top2Bottom)
-	slot0:_addConfigToOrderAnimTypeMap(4, 2, Act183Enum.RuleEscapeAnimType.Bottom2Top)
-	slot0:_addConfigToOrderAnimTypeMap(1, 101, Act183Enum.RuleEscapeAnimType.LeftTop2Center)
-	slot0:_addConfigToOrderAnimTypeMap(2, 101, Act183Enum.RuleEscapeAnimType.RightTop2Center)
-	slot0:_addConfigToOrderAnimTypeMap(3, 101, Act183Enum.RuleEscapeAnimType.LeftBottom2Center)
-	slot0:_addConfigToOrderAnimTypeMap(4, 101, Act183Enum.RuleEscapeAnimType.RightBottom2Center)
+	arg_5_0:_addConfigToOrderAnimTypeMap(1, 2, Act183Enum.RuleEscapeAnimType.Left2Right)
+	arg_5_0:_addConfigToOrderAnimTypeMap(2, 1, Act183Enum.RuleEscapeAnimType.Right2Left)
+	arg_5_0:_addConfigToOrderAnimTypeMap(1, 3, Act183Enum.RuleEscapeAnimType.Top2Bottom)
+	arg_5_0:_addConfigToOrderAnimTypeMap(3, 1, Act183Enum.RuleEscapeAnimType.Bottom2Top)
+	arg_5_0:_addConfigToOrderAnimTypeMap(1, 4, Act183Enum.RuleEscapeAnimType.LeftTop2RightBottom)
+	arg_5_0:_addConfigToOrderAnimTypeMap(4, 1, Act183Enum.RuleEscapeAnimType.RightBottom2LeftTop)
+	arg_5_0:_addConfigToOrderAnimTypeMap(2, 3, Act183Enum.RuleEscapeAnimType.RightTop2LeftBottom)
+	arg_5_0:_addConfigToOrderAnimTypeMap(3, 2, Act183Enum.RuleEscapeAnimType.LeftBottom2RightTop)
+	arg_5_0:_addConfigToOrderAnimTypeMap(3, 4, Act183Enum.RuleEscapeAnimType.Left2Right)
+	arg_5_0:_addConfigToOrderAnimTypeMap(4, 3, Act183Enum.RuleEscapeAnimType.Right2Left)
+	arg_5_0:_addConfigToOrderAnimTypeMap(2, 4, Act183Enum.RuleEscapeAnimType.Top2Bottom)
+	arg_5_0:_addConfigToOrderAnimTypeMap(4, 2, Act183Enum.RuleEscapeAnimType.Bottom2Top)
+	arg_5_0:_addConfigToOrderAnimTypeMap(1, 101, Act183Enum.RuleEscapeAnimType.LeftTop2Center)
+	arg_5_0:_addConfigToOrderAnimTypeMap(2, 101, Act183Enum.RuleEscapeAnimType.RightTop2Center)
+	arg_5_0:_addConfigToOrderAnimTypeMap(3, 101, Act183Enum.RuleEscapeAnimType.LeftBottom2Center)
+	arg_5_0:_addConfigToOrderAnimTypeMap(4, 101, Act183Enum.RuleEscapeAnimType.RightBottom2Center)
 end
 
-function slot0._buildConfigToTemplateMap(slot0)
-	slot0._lineTemplateMap = slot0:getUserDataTb_()
+function var_0_0._buildConfigToTemplateMap(arg_6_0)
+	arg_6_0._lineTemplateMap = arg_6_0:getUserDataTb_()
 
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Top2Bottom, slot0._goline1, 0, 0, -90)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Bottom2Top, slot0._goline1, 0, 0, 90)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Left2Right, slot0._goline2, 0, 0, 0)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Right2Left, slot0._goline2, 0, 0, 180)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftTop2RightBottom, slot0._goline3, 0, 0, -30)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightTop2LeftBottom, slot0._goline3, 0, 0, 200)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftBottom2RightTop, slot0._goline3, 0, 0, 30)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightBottom2LeftTop, slot0._goline3, 0, 0, -200)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftTop2Center, slot0._goline1, 0, 0, -15)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightTop2Center, slot0._goline1, 0, 0, 193)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftBottom2Center, slot0._goline1, 0, 0, 35)
-	slot0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightBottom2Center, slot0._goline1, 0, 0, 135)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Top2Bottom, arg_6_0._goline1, 0, 0, -90)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Bottom2Top, arg_6_0._goline1, 0, 0, 90)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Left2Right, arg_6_0._goline2, 0, 0, 0)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.Right2Left, arg_6_0._goline2, 0, 0, 180)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftTop2RightBottom, arg_6_0._goline3, 0, 0, -30)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightTop2LeftBottom, arg_6_0._goline3, 0, 0, 200)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftBottom2RightTop, arg_6_0._goline3, 0, 0, 30)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightBottom2LeftTop, arg_6_0._goline3, 0, 0, -200)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftTop2Center, arg_6_0._goline1, 0, 0, -15)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightTop2Center, arg_6_0._goline1, 0, 0, 193)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.LeftBottom2Center, arg_6_0._goline1, 0, 0, 35)
+	arg_6_0:_addConfigToTemplateMap(Act183Enum.RuleEscapeAnimType.RightBottom2Center, arg_6_0._goline1, 0, 0, 135)
 end
 
-function slot0._addConfigToTemplateMap(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot0._lineTemplateMap[slot1] = slot0:getUserDataTb_()
+function var_0_0._addConfigToTemplateMap(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4, arg_7_5)
+	arg_7_0._lineTemplateMap[arg_7_1] = arg_7_0:getUserDataTb_()
 
-	table.insert(slot0._lineTemplateMap[slot1], slot2)
-	table.insert(slot0._lineTemplateMap[slot1], slot3)
-	table.insert(slot0._lineTemplateMap[slot1], slot4)
-	table.insert(slot0._lineTemplateMap[slot1], slot5)
+	table.insert(arg_7_0._lineTemplateMap[arg_7_1], arg_7_2)
+	table.insert(arg_7_0._lineTemplateMap[arg_7_1], arg_7_3)
+	table.insert(arg_7_0._lineTemplateMap[arg_7_1], arg_7_4)
+	table.insert(arg_7_0._lineTemplateMap[arg_7_1], arg_7_5)
 end
 
-function slot0._addConfigToOrderAnimTypeMap(slot0, slot1, slot2, slot3)
-	slot0._orderToAnimTypeMap[string.format("%s_%s", slot1, slot2)] = slot3
+function var_0_0._addConfigToOrderAnimTypeMap(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	local var_8_0 = string.format("%s_%s", arg_8_1, arg_8_2)
+
+	arg_8_0._orderToAnimTypeMap[var_8_0] = arg_8_3
 end
 
-function slot0.checkIfNeedPlayEffect(slot0)
-	if not ViewHelper.instance:checkViewOnTheTop(slot0.viewName) then
+function var_0_0.checkIfNeedPlayEffect(arg_9_0)
+	if not ViewHelper.instance:checkViewOnTheTop(arg_9_0.viewName) then
 		return
 	end
 
-	slot0:destroyFlow()
+	local var_9_0 = Act183Model.instance:getNewFinishEpisodeId() ~= nil and var_0_1 or 0
 
-	slot0._flow = FlowSequence.New()
+	arg_9_0:destroyFlow()
 
-	slot0._flow:addWork(FunctionWork.New(slot0._lockScreen, slot0, true))
-	slot0._flow:addWork(FunctionWork.New(slot0.checkIfNeedPlayFinishEffect, slot0))
-	slot0._flow:addWork(FunctionWork.New(slot0.checkIfNeedPlayGroupFinishEffect, slot0))
-	slot0._flow:addWork(FunctionWork.New(slot0.checkIfNeedPlayGroupCategoryFinishAnim, slot0))
-	slot0._flow:addWork(WorkWaitSeconds.New(Act183Model.instance:getNewFinishEpisodeId() ~= nil and uv0 or 0))
-	slot0._flow:addWork(FunctionWork.New(slot0.checkIfNeedPlayRepressEffect, slot0))
-	slot0._flow:addWork(WorkWaitSeconds.New(uv1))
-	slot0._flow:addWork(FunctionWork.New(slot0._recycleLines, slot0))
-	slot0._flow:addWork(FunctionWork.New(slot0._lockScreen, slot0, false))
-	slot0._flow:registerDoneListener(slot0._onPlayEffectDone, slot0)
-	slot0._flow:start()
+	arg_9_0._flow = FlowSequence.New()
+
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0._lockScreen, arg_9_0, true))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0.checkIfNeedPlayFinishEffect, arg_9_0))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0.checkIfNeedPlayGroupFinishEffect, arg_9_0))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0.checkIfNeedPlayGroupCategoryFinishAnim, arg_9_0))
+	arg_9_0._flow:addWork(WorkWaitSeconds.New(var_9_0))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0.checkIfNeedPlayRepressEffect, arg_9_0))
+	arg_9_0._flow:addWork(WorkWaitSeconds.New(var_0_2))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0._recycleLines, arg_9_0))
+	arg_9_0._flow:addWork(FunctionWork.New(arg_9_0._lockScreen, arg_9_0, false))
+	arg_9_0._flow:registerDoneListener(arg_9_0._onPlayEffectDone, arg_9_0)
+	arg_9_0._flow:start()
 end
 
-function slot0._onPlayEffectDone(slot0)
+function var_0_0._onPlayEffectDone(arg_10_0)
 	Act183Model.instance:clearBattleFinishedInfo()
 end
 
-function slot0.destroyFlow(slot0)
-	if slot0._flow then
-		slot0._flow:destroy()
+function var_0_0.destroyFlow(arg_11_0)
+	if arg_11_0._flow then
+		arg_11_0._flow:destroy()
 
-		slot0._flow = nil
+		arg_11_0._flow = nil
 	end
 end
 
-function slot0._lockScreen(slot0, slot1)
-	if slot1 then
+function var_0_0._lockScreen(arg_12_0, arg_12_1)
+	if arg_12_1 then
 		UIBlockMgrExtend.setNeedCircleMv(false)
 		UIBlockMgr.instance:startBlock("Act183DungeonView_Animation_PlayAnim")
 	else
@@ -132,153 +138,198 @@ function slot0._lockScreen(slot0, slot1)
 	end
 end
 
-function slot0.checkIfNeedPlayRepressEffect(slot0)
-	if not Act183Model.instance:getRecordLastRepressEpisodeId() or slot1 == 0 then
+function var_0_0.checkIfNeedPlayRepressEffect(arg_13_0)
+	local var_13_0 = Act183Model.instance:getRecordLastRepressEpisodeId()
+
+	if not var_13_0 or var_13_0 == 0 then
 		return
 	end
 
-	slot0:_playRuleRepressEffect(Act183Model.instance:getEpisodeMoById(slot1))
+	local var_13_1 = Act183Model.instance:getEpisodeMoById(var_13_0)
+
+	arg_13_0:_playRuleRepressEffect(var_13_1)
 	Act183Model.instance:clearRecordLastRepressEpisodeId()
 end
 
-function slot0.checkIfNeedPlayGroupFinishEffect(slot0)
-	if not Act183Model.instance:getNewFinishGroupId() or slot0._lastFinishGroupId == slot1 then
+function var_0_0.checkIfNeedPlayGroupFinishEffect(arg_14_0)
+	local var_14_0 = Act183Model.instance:getNewFinishGroupId()
+
+	if not var_14_0 or arg_14_0._lastFinishGroupId == var_14_0 then
 		return
 	end
 
-	if (Act183Model.instance:getGroupEpisodeMo(slot1) and slot2:getGroupType()) == Act183Enum.GroupType.Daily then
-		gohelper.setActive(slot0._godailycompleted, true)
-		slot0._animdailycompleted:Play("in", 0, 0)
+	local var_14_1 = Act183Model.instance:getGroupEpisodeMo(var_14_0)
+
+	if (var_14_1 and var_14_1:getGroupType()) == Act183Enum.GroupType.Daily then
+		gohelper.setActive(arg_14_0._godailycompleted, true)
+		arg_14_0._animdailycompleted:Play("in", 0, 0)
 	else
-		gohelper.setActive(slot0._gocompleted, true)
-		slot0._animcompleted:Play("in", 0, 0)
+		gohelper.setActive(arg_14_0._gocompleted, true)
+		arg_14_0._animcompleted:Play("in", 0, 0)
 	end
 
-	slot0._lastFinishGroupId = slot1
+	arg_14_0._lastFinishGroupId = var_14_0
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_GroupFinished)
 end
 
-function slot0.checkIfNeedPlayFinishEffect(slot0)
-	if not Act183Model.instance:getNewFinishEpisodeId() or slot0._lastFinishEpisodeId == slot1 then
+function var_0_0.checkIfNeedPlayFinishEffect(arg_15_0)
+	local var_15_0 = Act183Model.instance:getNewFinishEpisodeId()
+
+	if not var_15_0 or arg_15_0._lastFinishEpisodeId == var_15_0 then
 		return
 	end
 
-	Act183Controller.instance:dispatchEvent(Act183Event.EpisodeStartPlayFinishAnim, slot1)
+	Act183Controller.instance:dispatchEvent(Act183Event.EpisodeStartPlayFinishAnim, var_15_0)
 
-	slot0._lastFinishEpisodeId = slot1
+	arg_15_0._lastFinishEpisodeId = var_15_0
 end
 
-function slot0._onUpdateRepressInfo(slot0, slot1, slot2)
-	slot0:checkIfNeedPlayEffect()
+function var_0_0._onUpdateRepressInfo(arg_16_0, arg_16_1, arg_16_2)
+	arg_16_0:checkIfNeedPlayEffect()
 end
 
-function slot0._playRuleRepressEffect(slot0, slot1)
-	if not Act183Model.instance:getGroupEpisodeMo(slot1:getGroupId()) then
+function var_0_0._playRuleRepressEffect(arg_17_0, arg_17_1)
+	local var_17_0 = arg_17_1:getGroupId()
+	local var_17_1 = Act183Model.instance:getGroupEpisodeMo(var_17_0)
+
+	if not var_17_1 then
 		return
 	end
 
-	if (slot0:_getUnfinishEpisodes(slot3) and #slot4 or 0) <= 0 then
+	local var_17_2 = arg_17_0:_getUnfinishEpisodes(var_17_1)
+
+	if (var_17_2 and #var_17_2 or 0) <= 0 then
 		return
 	end
 
-	for slot10, slot11 in ipairs(slot4) do
-		slot0:_showRepressEffect(slot1, slot1:getConfigOrder(), slot11:getConfigOrder())
+	local var_17_3 = arg_17_1:getConfigOrder()
+
+	for iter_17_0, iter_17_1 in ipairs(var_17_2) do
+		local var_17_4 = iter_17_1:getConfigOrder()
+
+		arg_17_0:_showRepressEffect(arg_17_1, var_17_3, var_17_4)
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_EscapeRuleLineEffect)
 end
 
-function slot0._showRepressEffect(slot0, slot1, slot2, slot3)
-	if not slot0._orderToAnimTypeMap[string.format("%s_%s", slot2, slot3)] then
-		logError(string.format("镇压连线动画类型不存在 episodeId = %s, startOrder = %s, endOrder = %s", slot1:getEpisodeId(), slot2, slot3))
+function var_0_0._showRepressEffect(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
+	local var_18_0 = string.format("%s_%s", arg_18_2, arg_18_3)
+	local var_18_1 = arg_18_0._orderToAnimTypeMap[var_18_0]
+
+	if not var_18_1 then
+		logError(string.format("镇压连线动画类型不存在 episodeId = %s, startOrder = %s, endOrder = %s", arg_18_1:getEpisodeId(), arg_18_2, arg_18_3))
 
 		return
 	end
 
-	slot0:_getOrCreateLine(slot5).name = slot4
-	slot0._useLineEffectPool[slot5] = slot0._useLineEffectPool[slot5] or slot0:getUserDataTb_()
+	local var_18_2 = arg_18_0:_getOrCreateLine(var_18_1)
 
-	table.insert(slot0._useLineEffectPool[slot5], slot6)
+	var_18_2.name = var_18_0
+	arg_18_0._useLineEffectPool[var_18_1] = arg_18_0._useLineEffectPool[var_18_1] or arg_18_0:getUserDataTb_()
 
-	slot9, slot10 = recthelper.rectToRelativeAnchorPos2(slot0._episodeItemTab[slot3]:getIconTran().position, slot0._gomiddle.transform)
+	table.insert(arg_18_0._useLineEffectPool[var_18_1], var_18_2)
 
-	gohelper.setActive(slot6, true)
-	recthelper.setAnchor(slot6.transform, slot9, slot10)
-	gohelper.setActive(gohelper.findChild(slot6, "line1"), slot1:getRuleStatus(1) == Act183Enum.RuleStatus.Escape)
-	gohelper.setActive(gohelper.findChild(slot6, "line2"), slot1:getRuleStatus(2) == Act183Enum.RuleStatus.Escape)
+	local var_18_3 = arg_18_0._episodeItemTab[arg_18_3]:getIconTran()
+	local var_18_4, var_18_5 = recthelper.rectToRelativeAnchorPos2(var_18_3.position, arg_18_0._gomiddle.transform)
+
+	gohelper.setActive(var_18_2, true)
+	recthelper.setAnchor(var_18_2.transform, var_18_4, var_18_5)
+
+	local var_18_6 = gohelper.findChild(var_18_2, "line1")
+	local var_18_7 = gohelper.findChild(var_18_2, "line2")
+
+	gohelper.setActive(var_18_6, arg_18_1:getRuleStatus(1) == Act183Enum.RuleStatus.Escape)
+	gohelper.setActive(var_18_7, arg_18_1:getRuleStatus(2) == Act183Enum.RuleStatus.Escape)
 end
 
-function slot0._getUnfinishEpisodes(slot0, slot1)
-	slot2 = {}
+function var_0_0._getUnfinishEpisodes(arg_19_0, arg_19_1)
+	local var_19_0 = {}
+	local var_19_1 = arg_19_1:getEpisodeMos()
 
-	for slot7, slot8 in ipairs(slot1:getEpisodeMos()) do
-		if not slot8:isFinished() then
-			table.insert(slot2, slot8)
+	for iter_19_0, iter_19_1 in ipairs(var_19_1) do
+		if not iter_19_1:isFinished() then
+			table.insert(var_19_0, iter_19_1)
 		end
 	end
 
-	return slot2
+	return var_19_0
 end
 
-function slot0._getOrCreateLine(slot0, slot1)
-	if not slot0._lineEffectPool[slot1] then
-		slot0._lineEffectPool[slot1] = slot0:getUserDataTb_()
+function var_0_0._getOrCreateLine(arg_20_0, arg_20_1)
+	local var_20_0 = arg_20_0._lineEffectPool[arg_20_1]
+
+	if not var_20_0 then
+		var_20_0 = arg_20_0:getUserDataTb_()
+		arg_20_0._lineEffectPool[arg_20_1] = var_20_0
 	end
 
-	if not table.remove(slot2, 1) then
-		slot4 = slot0._lineTemplateMap[slot1]
+	local var_20_1 = table.remove(var_20_0, 1)
 
-		transformhelper.setLocalRotation(gohelper.clone(slot4[1], slot0._gomiddle, "line_" .. slot1).transform, slot4[2], slot4[3], slot4[4])
+	if not var_20_1 then
+		local var_20_2 = arg_20_0._lineTemplateMap[arg_20_1]
+
+		var_20_1 = gohelper.clone(var_20_2[1], arg_20_0._gomiddle, "line_" .. arg_20_1)
+
+		local var_20_3 = var_20_2[2]
+		local var_20_4 = var_20_2[3]
+		local var_20_5 = var_20_2[4]
+
+		transformhelper.setLocalRotation(var_20_1.transform, var_20_3, var_20_4, var_20_5)
 	end
 
-	return slot3
+	return var_20_1
 end
 
-function slot0._recycleLines(slot0)
-	if slot0._useLineEffectPool then
-		for slot4, slot5 in pairs(slot0._useLineEffectPool) do
-			for slot9 = #slot5, 1, -1 do
-				gohelper.setActive(table.remove(slot5, slot9), false)
+function var_0_0._recycleLines(arg_21_0)
+	if arg_21_0._useLineEffectPool then
+		for iter_21_0, iter_21_1 in pairs(arg_21_0._useLineEffectPool) do
+			for iter_21_2 = #iter_21_1, 1, -1 do
+				local var_21_0 = table.remove(iter_21_1, iter_21_2)
 
-				slot0._lineEffectPool[slot4] = slot0._lineEffectPool[slot4] or slot0:getUserDataTb_()
+				gohelper.setActive(var_21_0, false)
 
-				table.insert(slot0._lineEffectPool[slot4], slot10)
+				arg_21_0._lineEffectPool[iter_21_0] = arg_21_0._lineEffectPool[iter_21_0] or arg_21_0:getUserDataTb_()
+
+				table.insert(arg_21_0._lineEffectPool[iter_21_0], var_21_0)
 			end
 		end
 	end
 end
 
-function slot0._onCloseViewFinish(slot0, slot1)
-	if slot1 == slot0.viewName then
+function var_0_0._onCloseViewFinish(arg_22_0, arg_22_1)
+	if arg_22_1 == arg_22_0.viewName then
 		return
 	end
 
-	slot0:checkIfNeedPlayEffect()
+	arg_22_0:checkIfNeedPlayEffect()
 end
 
-function slot0.checkIfNeedPlayGroupCategoryFinishAnim(slot0)
-	if Act183Model.instance:getUnfinishTaskMap() then
-		for slot5, slot6 in pairs(slot1) do
-			for slot10 = #slot6, 1, -1 do
-				if Act183Helper.isTaskFinished(slot6[slot10]) then
-					table.remove(slot6, slot10)
+function var_0_0.checkIfNeedPlayGroupCategoryFinishAnim(arg_23_0)
+	local var_23_0 = Act183Model.instance:getUnfinishTaskMap()
+
+	if var_23_0 then
+		for iter_23_0, iter_23_1 in pairs(var_23_0) do
+			for iter_23_2 = #iter_23_1, 1, -1 do
+				if Act183Helper.isTaskFinished(iter_23_1[iter_23_2]) then
+					table.remove(iter_23_1, iter_23_2)
 				end
 			end
 
-			if #slot6 <= 0 then
-				slot1[slot5] = nil
+			if #iter_23_1 <= 0 then
+				var_23_0[iter_23_0] = nil
 
-				Act183Controller.instance:dispatchEvent(Act183Event.OnGroupAllTaskFinished, slot5)
+				Act183Controller.instance:dispatchEvent(Act183Event.OnGroupAllTaskFinished, iter_23_0)
 			end
 		end
 	end
 end
 
-function slot0.onClose(slot0)
-	slot0:destroyFlow()
-	slot0:_lockScreen(false)
+function var_0_0.onClose(arg_24_0)
+	arg_24_0:destroyFlow()
+	arg_24_0:_lockScreen(false)
 	Act183Model.instance:clearBattleFinishedInfo()
 end
 
-return slot0
+return var_0_0

@@ -1,18 +1,20 @@
-module("modules.logic.fight.system.work.asfd.effectwork.FightWorkChangeCardEnergy", package.seeall)
+﻿module("modules.logic.fight.system.work.asfd.effectwork.FightWorkChangeCardEnergy", package.seeall)
 
-slot0 = class("FightWorkChangeCardEnergy", FightEffectBase)
+local var_0_0 = class("FightWorkChangeCardEnergy", FightEffectBase)
 
-function slot0.onConstructor(slot0)
-	slot0.SAFETIME = 1.5
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.SAFETIME = 1.5
 end
 
-function slot0.onStart(slot0)
-	FightController.instance:dispatchEvent(FightEvent.ASFD_OnChangeCardEnergy, FightStrUtil.instance:getSplitString2Cache(slot0.actEffectData.reserveStr, true))
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 1 / FightModel.instance:getUISpeed())
+function var_0_0.onStart(arg_2_0)
+	local var_2_0 = FightStrUtil.instance:getSplitString2Cache(arg_2_0.actEffectData.reserveStr, true)
+
+	FightController.instance:dispatchEvent(FightEvent.ASFD_OnChangeCardEnergy, var_2_0)
+	TaskDispatcher.runDelay(arg_2_0._delayDone, arg_2_0, 1 / FightModel.instance:getUISpeed())
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
+function var_0_0.clearWork(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0._delayDone, arg_3_0)
 end
 
-return slot0
+return var_0_0

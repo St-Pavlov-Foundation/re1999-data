@@ -1,108 +1,119 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.entity.EnemyActionData", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.entity.EnemyActionData", package.seeall)
 
-slot0 = class("EnemyActionData")
+local var_0_0 = class("EnemyActionData")
 
-function slot0.ctor(slot0)
-	slot0._round = 0
-	slot0._curBehaviorId = 1
-	slot0._loopIndex = 1
-	slot0._behaviorData = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._round = 0
+	arg_1_0._curBehaviorId = 1
+	arg_1_0._loopIndex = 1
+	arg_1_0._behaviorData = {}
 end
 
-function slot0.init(slot0, slot1)
-	slot0._config = LengZhou6Config.instance:getEliminateBattleEnemyBehavior(slot1)
-	slot0._curBehaviorId = 1
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0._config = LengZhou6Config.instance:getEliminateBattleEnemyBehavior(arg_2_1)
+	arg_2_0._curBehaviorId = 1
 
-	if slot0._behaviorData == nil then
-		slot0._behaviorData = {}
+	if arg_2_0._behaviorData == nil then
+		arg_2_0._behaviorData = {}
 	end
 
-	for slot5 = 1, #slot0._config do
-		slot7 = EnemyBehaviorData.New()
+	for iter_2_0 = 1, #arg_2_0._config do
+		local var_2_0 = arg_2_0._config[iter_2_0]
+		local var_2_1 = EnemyBehaviorData.New()
 
-		slot7:init(slot0._config[slot5])
-		table.insert(slot0._behaviorData, slot7)
+		var_2_1:init(var_2_0)
+		table.insert(arg_2_0._behaviorData, var_2_1)
 	end
 end
 
-function slot0.initLoopIndex(slot0, slot1, slot2)
-	slot0._startIndex = slot1
-	slot0._endIndex = slot2
+function var_0_0.initLoopIndex(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0._startIndex = arg_3_1
+	arg_3_0._endIndex = arg_3_2
 end
 
-function slot0._haveNeedActionSkill(slot0)
-	slot0._round = slot0._round + 1
+function var_0_0._haveNeedActionSkill(arg_4_0)
+	arg_4_0._round = arg_4_0._round + 1
 
-	if slot0:calCurResidueCd() and slot1 == 0 then
+	local var_4_0 = arg_4_0:calCurResidueCd()
+
+	if var_4_0 and var_4_0 == 0 then
 		return true
 	end
 
 	return false
 end
 
-function slot0.calCurResidueCd(slot0)
-	return math.max(slot0:getCurBehaviorCd() - slot0._round, 0)
+function var_0_0.calCurResidueCd(arg_5_0)
+	local var_5_0 = arg_5_0:getCurBehaviorCd()
+
+	return math.max(var_5_0 - arg_5_0._round, 0)
 end
 
-function slot0.getCurBehaviorCd(slot0)
-	if slot0._behaviorData[slot0._curBehaviorId] then
-		return slot1:cd()
+function var_0_0.getCurBehaviorCd(arg_6_0)
+	local var_6_0 = arg_6_0._behaviorData[arg_6_0._curBehaviorId]
+
+	if var_6_0 then
+		return var_6_0:cd()
 	end
 
 	return 0
 end
 
-function slot0.updateCurBehaviorId(slot0)
-	slot1 = #slot0._behaviorData
+function var_0_0.updateCurBehaviorId(arg_7_0)
+	local var_7_0 = #arg_7_0._behaviorData
 
-	if slot0._endIndex ~= nil and slot0._loopIndex > 1 then
-		slot1 = slot0._endIndex
+	if arg_7_0._endIndex ~= nil and arg_7_0._loopIndex > 1 then
+		var_7_0 = arg_7_0._endIndex
 	end
 
-	if slot0._curBehaviorId == slot1 then
-		slot0._loopIndex = slot0._loopIndex + 1
-		slot0._curBehaviorId = slot0._startIndex == nil and 1 or slot0._startIndex
+	if arg_7_0._curBehaviorId == var_7_0 then
+		arg_7_0._loopIndex = arg_7_0._loopIndex + 1
+		arg_7_0._curBehaviorId = arg_7_0._startIndex == nil and 1 or arg_7_0._startIndex
 	else
-		slot0._curBehaviorId = slot0._curBehaviorId + 1
+		arg_7_0._curBehaviorId = arg_7_0._curBehaviorId + 1
 	end
 end
 
-function slot0.setCurBehaviorId(slot0, slot1)
-	slot0._curBehaviorId = slot1
+function var_0_0.setCurBehaviorId(arg_8_0, arg_8_1)
+	arg_8_0._curBehaviorId = arg_8_1
 end
 
-function slot0.getCurBehaviorId(slot0)
-	return slot0._curBehaviorId
+function var_0_0.getCurBehaviorId(arg_9_0)
+	return arg_9_0._curBehaviorId
 end
 
-function slot0.getCurRound(slot0)
-	return slot0._round
+function var_0_0.getCurRound(arg_10_0)
+	return arg_10_0._round
 end
 
-function slot0.setCurRound(slot0, slot1)
-	slot0._round = slot1
+function var_0_0.setCurRound(arg_11_0, arg_11_1)
+	arg_11_0._round = arg_11_1
 end
 
-function slot0.getCurBehavior(slot0)
-	return slot0._behaviorData[slot0._curBehaviorId] or nil
+function var_0_0.getCurBehavior(arg_12_0)
+	return arg_12_0._behaviorData[arg_12_0._curBehaviorId] or nil
 end
 
-function slot0.getSkillList(slot0)
-	if slot0:_haveNeedActionSkill() then
-		if slot0:getCurBehavior() == nil then
-			logError("curBehavior is nil: index " .. slot0._curBehaviorId)
+function var_0_0.getSkillList(arg_13_0)
+	if arg_13_0:_haveNeedActionSkill() then
+		local var_13_0 = arg_13_0:getCurBehavior()
+
+		if var_13_0 == nil then
+			logError("curBehavior is nil: index " .. arg_13_0._curBehaviorId)
 
 			return nil
 		end
 
-		slot0._round = slot0._round - slot2:cd()
+		local var_13_1 = var_13_0:getSkillList(true)
 
-		slot0:updateCurBehaviorId()
+		arg_13_0._round = arg_13_0._round - var_13_0:cd()
 
-		return slot2:getSkillList(true)
+		arg_13_0:updateCurBehaviorId()
+
+		return var_13_1
 	end
 
 	return nil
 end
 
-return slot0
+return var_0_0

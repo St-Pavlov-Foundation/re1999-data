@@ -1,10 +1,10 @@
-module("modules.logic.fight.model.data.FightBloodPoolData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightBloodPoolData", package.seeall)
 
-slot0 = FightDataClass("FightBloodPoolData")
+local var_0_0 = FightDataClass("FightBloodPoolData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.value = slot1.value
-	slot0.max = slot1.max
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.value = arg_1_1.value
+	arg_1_0.max = arg_1_1.max
 end
 
-return slot0
+return var_0_0

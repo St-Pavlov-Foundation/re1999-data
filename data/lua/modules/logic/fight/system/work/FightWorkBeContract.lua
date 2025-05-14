@@ -1,10 +1,10 @@
-module("modules.logic.fight.system.work.FightWorkBeContract", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkBeContract", package.seeall)
 
-slot0 = class("FightWorkBeContract", FightEffectBase)
+local var_0_0 = class("FightWorkBeContract", FightEffectBase)
 
-function slot0.onStart(slot0)
-	FightModel.instance:setBeContractEntityUid(slot0.actEffectData.targetId)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	FightModel.instance:setBeContractEntityUid(arg_1_0.actEffectData.targetId)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

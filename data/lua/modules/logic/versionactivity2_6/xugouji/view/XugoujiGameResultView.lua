@@ -1,139 +1,159 @@
-module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameResultView", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameResultView", package.seeall)
 
-slot0 = class("XugoujiGameResultView", BaseView)
-slot1 = VersionActivity2_6Enum.ActivityId.Xugouji
+local var_0_0 = class("XugoujiGameResultView", BaseView)
+local var_0_1 = VersionActivity2_6Enum.ActivityId.Xugouji
 
-function slot0.onInitView(slot0)
-	slot0._simagebg2 = gohelper.findChildSingleImage(slot0.viewGO, "#simage_bg2")
-	slot0._simagebg1 = gohelper.findChildSingleImage(slot0.viewGO, "#simage_bg1")
-	slot0._btnclose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_successClick")
-	slot0._btnExit = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btn/#btn_quitgame")
-	slot0._btnRestart = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btn/#btn_restart")
-	slot0._gosuccess = gohelper.findChild(slot0.viewGO, "#go_success")
-	slot0._gofail = gohelper.findChild(slot0.viewGO, "#go_fail")
-	slot0._goBtns = gohelper.findChild(slot0.viewGO, "#go_btn")
-	slot0._goTargetRoot = gohelper.findChild(slot0.viewGO, "targets")
-	slot0._goTargetItem = gohelper.findChild(slot0.viewGO, "targets/#go_targetitem")
-	slot0._goTips = gohelper.findChild(slot0.viewGO, "content/Layout/#go_Tips")
-	slot0._txtTips = gohelper.findChildText(slot0.viewGO, "Tips/#txt_Tips")
-	slot0._scrollItem = gohelper.findChild(slot0.viewGO, "#scroll_List/Viewport/Content/#go_Item")
-	slot0._gorewardContent = gohelper.findChild(slot0.viewGO, "#scroll_List/Viewport/Content")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simagebg2 = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_bg2")
+	arg_1_0._simagebg1 = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_bg1")
+	arg_1_0._btnclose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_successClick")
+	arg_1_0._btnExit = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btn/#btn_quitgame")
+	arg_1_0._btnRestart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btn/#btn_restart")
+	arg_1_0._gosuccess = gohelper.findChild(arg_1_0.viewGO, "#go_success")
+	arg_1_0._gofail = gohelper.findChild(arg_1_0.viewGO, "#go_fail")
+	arg_1_0._goBtns = gohelper.findChild(arg_1_0.viewGO, "#go_btn")
+	arg_1_0._goTargetRoot = gohelper.findChild(arg_1_0.viewGO, "targets")
+	arg_1_0._goTargetItem = gohelper.findChild(arg_1_0.viewGO, "targets/#go_targetitem")
+	arg_1_0._goTips = gohelper.findChild(arg_1_0.viewGO, "content/Layout/#go_Tips")
+	arg_1_0._txtTips = gohelper.findChildText(arg_1_0.viewGO, "Tips/#txt_Tips")
+	arg_1_0._scrollItem = gohelper.findChild(arg_1_0.viewGO, "#scroll_List/Viewport/Content/#go_Item")
+	arg_1_0._gorewardContent = gohelper.findChild(arg_1_0.viewGO, "#scroll_List/Viewport/Content")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnclose:AddClickListener(slot0._btncloseOnClick, slot0)
-	slot0._btnExit:AddClickListener(slot0._btncloseOnClick, slot0)
-	slot0._btnRestart:AddClickListener(slot0._btnRestartOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnclose:AddClickListener(arg_2_0._btncloseOnClick, arg_2_0)
+	arg_2_0._btnExit:AddClickListener(arg_2_0._btncloseOnClick, arg_2_0)
+	arg_2_0._btnRestart:AddClickListener(arg_2_0._btnRestartOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnclose:RemoveClickListener()
-	slot0._btnExit:RemoveClickListener()
-	slot0._btnRestart:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnclose:RemoveClickListener()
+	arg_3_0._btnExit:RemoveClickListener()
+	arg_3_0._btnRestart:RemoveClickListener()
 end
 
-function slot0._btncloseOnClick(slot0)
-	if slot0:isLockOp() then
+function var_0_0._btncloseOnClick(arg_4_0)
+	if arg_4_0:isLockOp() then
 		return
 	end
 
 	XugoujiController.instance:gameResultOver()
 end
 
-function slot0._btnRestartOnClick(slot0)
-	if slot0:isLockOp() then
+function var_0_0._btnRestartOnClick(arg_5_0)
+	if arg_5_0:isLockOp() then
 		return
 	end
 
-	slot0:closeThis()
+	arg_5_0:closeThis()
 	XugoujiController.instance:restartEpisode()
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_6_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_7_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0._animator = slot0.viewGO:GetComponent(AiZiLaEnum.ComponentType.Animator)
+function var_0_0.onOpen(arg_8_0)
+	arg_8_0._animator = arg_8_0.viewGO:GetComponent(AiZiLaEnum.ComponentType.Animator)
 
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.ExitGame, slot0.onExitGame, slot0)
+	arg_8_0:addEventCb(XugoujiController.instance, XugoujiEvent.ExitGame, arg_8_0.onExitGame, arg_8_0)
 
-	if slot0.viewContainer then
-		NavigateMgr.instance:addEscape(slot0.viewContainer.viewName, slot0._btncloseOnClick, slot0)
+	if arg_8_0.viewContainer then
+		NavigateMgr.instance:addEscape(arg_8_0.viewContainer.viewName, arg_8_0._btncloseOnClick, arg_8_0)
 	end
 
-	slot0:_setLockOpTime(1)
-	slot0:refreshUI()
+	arg_8_0:_setLockOpTime(1)
+	arg_8_0:refreshUI()
 end
 
-function slot0.onExitGame(slot0)
+function var_0_0.onExitGame(arg_9_0)
 	XugoujiController.instance:getStatMo():sendDungeonFinishStatData()
-	slot0:closeThis()
+	arg_9_0:closeThis()
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_10_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_11_0)
+	return
 end
 
-function slot0.playViewAnimator(slot0, slot1)
-	if slot0._animator then
-		slot0._animator.enabled = true
+function var_0_0.playViewAnimator(arg_12_0, arg_12_1)
+	if arg_12_0._animator then
+		arg_12_0._animator.enabled = true
 
-		slot0._animator:Play(slot1, 0, 0)
+		arg_12_0._animator:Play(arg_12_1, 0, 0)
 	end
 end
 
-function slot0.refreshUI(slot0)
-	slot1 = Activity188Model.instance:getCurEpisodeId()
-	slot0._star = slot0.viewParam.star
-	slot3 = slot0.viewParam.reason == XugoujiEnum.ResultEnum.Completed
-	slot6 = slot2 == XugoujiEnum.ResultEnum.PowerUseup or slot2 == XugoujiEnum.ResultEnum.Quit
+function var_0_0.refreshUI(arg_13_0)
+	local var_13_0 = Activity188Model.instance:getCurEpisodeId()
+	local var_13_1 = arg_13_0.viewParam.reason
 
-	gohelper.setActive(slot0._gosuccess, slot3)
-	gohelper.setActive(slot0._gofail, slot6)
-	gohelper.setActive(slot0._goBtns, slot6)
-	gohelper.setActive(slot0._btnclose.gameObject, slot3)
-	AudioMgr.instance:trigger(slot6 and AudioEnum.VersionActivity2_2Lopera.play_ui_pkls_challenge_fail or AudioEnum.VersionActivity2_2Lopera.play_ui_pkls_endpoint_arriva)
-	slot0:_createTargetList()
+	arg_13_0._star = arg_13_0.viewParam.star
+
+	local var_13_2 = var_13_1 == XugoujiEnum.ResultEnum.Completed
+	local var_13_3 = var_13_1 == XugoujiEnum.ResultEnum.PowerUseup
+	local var_13_4 = var_13_1 == XugoujiEnum.ResultEnum.Quit
+	local var_13_5 = var_13_3 or var_13_4
+
+	gohelper.setActive(arg_13_0._gosuccess, var_13_2)
+	gohelper.setActive(arg_13_0._gofail, var_13_5)
+	gohelper.setActive(arg_13_0._goBtns, var_13_5)
+	gohelper.setActive(arg_13_0._btnclose.gameObject, var_13_2)
+	AudioMgr.instance:trigger(var_13_5 and AudioEnum.VersionActivity2_2Lopera.play_ui_pkls_challenge_fail or AudioEnum.VersionActivity2_2Lopera.play_ui_pkls_endpoint_arriva)
+	arg_13_0:_createTargetList()
 end
 
-function slot0._createTargetList(slot0)
-	slot0._targetDataList = {}
+function var_0_0._createTargetList(arg_14_0)
+	arg_14_0._targetDataList = {}
 
-	for slot7, slot8 in ipairs(string.split(Activity188Config.instance:getGameCfg(uv0, Activity188Model.instance:getCurGameId()).passRound, "#")) do
-		table.insert(slot0._targetDataList, slot8)
+	local var_14_0 = Activity188Model.instance:getCurGameId()
+	local var_14_1 = Activity188Config.instance:getGameCfg(var_0_1, var_14_0)
+	local var_14_2 = string.split(var_14_1.passRound, "#")
+
+	for iter_14_0, iter_14_1 in ipairs(var_14_2) do
+		local var_14_3 = iter_14_1
+
+		table.insert(arg_14_0._targetDataList, var_14_3)
 	end
 
-	gohelper.CreateObjList(slot0, slot0._createTargetItem, slot0._targetDataList, slot0._goTargetRoot, slot0._goTargetItem)
+	gohelper.CreateObjList(arg_14_0, arg_14_0._createTargetItem, arg_14_0._targetDataList, arg_14_0._goTargetRoot, arg_14_0._goTargetItem)
 end
 
-function slot0._createTargetItem(slot0, slot1, slot2, slot3)
-	gohelper.setActive(slot1, true)
+function var_0_0._createTargetItem(arg_15_0, arg_15_1, arg_15_2, arg_15_3)
+	local var_15_0 = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("xugouji_round_target"), arg_15_2)
 
-	gohelper.findChildText(slot1, "#txt_taskdesc").text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("xugouji_round_target"), slot2)
+	gohelper.setActive(arg_15_1, true)
 
-	gohelper.setActive(gohelper.findChild(slot1, "result/#go_finish"), slot3 <= slot0._star)
-	gohelper.setActive(gohelper.findChild(slot1, "result/#go_unfinish"), slot0._star < slot3)
+	gohelper.findChildText(arg_15_1, "#txt_taskdesc").text = var_15_0
+
+	local var_15_1 = gohelper.findChild(arg_15_1, "result/#go_finish")
+	local var_15_2 = gohelper.findChild(arg_15_1, "result/#go_unfinish")
+
+	gohelper.setActive(var_15_1, arg_15_3 <= arg_15_0._star)
+	gohelper.setActive(var_15_2, arg_15_3 > arg_15_0._star)
 end
 
-function slot0._setLockOpTime(slot0, slot1)
-	slot0._lockTime = Time.time + slot1
+function var_0_0._setLockOpTime(arg_16_0, arg_16_1)
+	arg_16_0._lockTime = Time.time + arg_16_1
 end
 
-function slot0.isLockOp(slot0)
-	if slot0._lockTime and Time.time < slot0._lockTime then
+function var_0_0.isLockOp(arg_17_0)
+	if arg_17_0._lockTime and Time.time < arg_17_0._lockTime then
 		return true
 	end
 
 	return false
 end
 
-return slot0
+return var_0_0

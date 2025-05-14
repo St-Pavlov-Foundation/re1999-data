@@ -1,30 +1,33 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.LengZhou6EnemyReleaseSkillStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.LengZhou6EnemyReleaseSkillStep", package.seeall)
 
-slot0 = class("LengZhou6EnemyReleaseSkillStep", EliminateChessStepBase)
+local var_0_0 = class("LengZhou6EnemyReleaseSkillStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
-	slot1 = slot0._data
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0._data
+	local var_1_1 = LengZhou6GameModel.instance:getEnemy()
 
-	if LengZhou6GameModel.instance:getEnemy() == nil or slot1 == nil then
-		slot0:onDone(true)
+	if var_1_1 == nil or var_1_0 == nil then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	slot3 = slot1._id
+	local var_1_2 = var_1_0._id
+	local var_1_3 = var_1_0:getEffect()[1]
+	local var_1_4 = var_1_0:getConfigId()
 
-	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UseEnemySkill, slot3)
-	slot2:useSkill(slot3)
-	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.EnemyUseSkill, slot1:getConfigId())
+	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UseEnemySkill, var_1_2)
+	var_1_1:useSkill(var_1_2)
+	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.EnemyUseSkill, var_1_4)
 
-	if slot1:getEffect()[1] == LengZhou6Enum.SkillEffect.DealsDamage or slot4 == LengZhou6Enum.SkillEffect.Heal then
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ShowEnemyEffect, slot4)
-		TaskDispatcher.runDelay(slot0._onDone, slot0, LengZhou6Enum.EnemySkillTime)
+	if var_1_3 == LengZhou6Enum.SkillEffect.DealsDamage or var_1_3 == LengZhou6Enum.SkillEffect.Heal then
+		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ShowEnemyEffect, var_1_3)
+		TaskDispatcher.runDelay(arg_1_0._onDone, arg_1_0, LengZhou6Enum.EnemySkillTime)
 
 		return
 	else
-		TaskDispatcher.runDelay(slot0._onDone, slot0, LengZhou6Enum.EnemySkillTime_2)
+		TaskDispatcher.runDelay(arg_1_0._onDone, arg_1_0, LengZhou6Enum.EnemySkillTime_2)
 	end
 end
 
-return slot0
+return var_0_0

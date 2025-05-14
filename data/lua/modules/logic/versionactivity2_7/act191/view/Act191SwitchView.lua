@@ -1,99 +1,107 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191SwitchView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191SwitchView", package.seeall)
 
-slot0 = class("Act191SwitchView", BaseView)
+local var_0_0 = class("Act191SwitchView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._txtStage = gohelper.findChildText(slot0.viewGO, "bg/stage/#txt_Stage")
-	slot0._goItem = gohelper.findChild(slot0.viewGO, "bg/#go_Item")
-	slot0._txtTips = gohelper.findChildText(slot0.viewGO, "#txt_Tips")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._txtStage = gohelper.findChildText(arg_1_0.viewGO, "bg/stage/#txt_Stage")
+	arg_1_0._goItem = gohelper.findChild(arg_1_0.viewGO, "bg/#go_Item")
+	arg_1_0._txtTips = gohelper.findChildText(arg_1_0.viewGO, "#txt_Tips")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._onEscBtnClick(slot0)
+function var_0_0._onEscBtnClick(arg_4_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.nodeItemList = {}
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.actId = Activity191Model.instance:getCurActId()
+	arg_5_0.nodeItemList = {}
 
-	NavigateMgr.instance:addEscape(slot0.viewName, slot0._onEscBtnClick, slot0)
+	NavigateMgr.instance:addEscape(arg_5_0.viewName, arg_5_0._onEscBtnClick, arg_5_0)
 end
 
-function slot0.onOpen(slot0)
-	gohelper.setActive(slot0._txtTips, false)
+function var_0_0.onOpen(arg_6_0)
+	gohelper.setActive(arg_6_0._txtTips, false)
 
-	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-	slot0.nodeInfoList = slot0.gameInfo:getStageNodeInfoList()
-	slot0.gameInfo.nodeChange = false
+	arg_6_0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	arg_6_0.nodeInfoList = arg_6_0.gameInfo:getStageNodeInfoList()
+	arg_6_0.gameInfo.nodeChange = false
 
-	for slot6, slot7 in ipairs(slot0.nodeInfoList) do
-		slot8 = slot0.nodeItemList[slot6] or slot0:creatNodeItem(slot6)
-		slot10 = nil
+	local var_6_0 = lua_activity191_stage.configDict[arg_6_0.actId][arg_6_0.gameInfo.curStage]
+	local var_6_1 = lua_activity191_node.configDict[tonumber(var_6_0.rule)]
 
-		if lua_activity191_node.configDict[tonumber(lua_activity191_stage.configDict[slot0.actId][slot0.gameInfo.curStage].rule)][slot6].random == 1 then
-			slot10 = Activity191Helper.getNodeIcon(slot7.nodeType)
-		elseif #slot7.selectNodeStr == 0 then
-			slot10 = Activity191Helper.getNodeIcon(slot7.nodeType)
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0.nodeInfoList) do
+		local var_6_2 = arg_6_0.nodeItemList[iter_6_0] or arg_6_0:creatNodeItem(iter_6_0)
+		local var_6_3 = var_6_1[iter_6_0]
+		local var_6_4
+
+		if var_6_3.random == 1 then
+			var_6_4 = Activity191Helper.getNodeIcon(iter_6_1.nodeType)
+		elseif #iter_6_1.selectNodeStr == 0 then
+			var_6_4 = Activity191Helper.getNodeIcon(iter_6_1.nodeType)
 		else
-			slot11 = Act191NodeDetailMO.New()
+			local var_6_5 = Act191NodeDetailMO.New()
 
-			slot11:init(slot7.selectNodeStr[1])
+			var_6_5:init(iter_6_1.selectNodeStr[1])
 
-			slot10 = Activity191Helper.getNodeIcon(slot11.type)
+			var_6_4 = Activity191Helper.getNodeIcon(var_6_5.type)
 		end
 
-		UISpriteSetMgr.instance:setAct174Sprite(slot8.imageNode, slot10)
-		UISpriteSetMgr.instance:setAct174Sprite(slot8.imageNodeS, slot10 .. "_light")
+		UISpriteSetMgr.instance:setAct174Sprite(var_6_2.imageNode, var_6_4)
+		UISpriteSetMgr.instance:setAct174Sprite(var_6_2.imageNodeS, var_6_4 .. "_light")
 
-		if slot7.nodeId == slot0.gameInfo.curNode then
-			slot0._txtStage.text = string.format("<#FAB459>%s</color>-%d", slot1.name, slot6)
-			slot0._txtTips.text = slot9.desc
+		if iter_6_1.nodeId == arg_6_0.gameInfo.curNode then
+			arg_6_0._txtStage.text = string.format("<#FAB459>%s</color>-%d", var_6_0.name, iter_6_0)
+			arg_6_0._txtTips.text = var_6_3.desc
 
-			gohelper.setActive(slot8.goSelect, true)
-			TaskDispatcher.runDelay(slot0.delayAudio, slot0, 1)
-			slot8.animSwitch:Play("switch_open")
-			gohelper.setActive(slot0._txtTips, true)
-		elseif slot7.nodeId == slot0.gameInfo.curNode - 1 then
-			gohelper.setActive(slot8.goSelect, true)
+			gohelper.setActive(var_6_2.goSelect, true)
+			TaskDispatcher.runDelay(arg_6_0.delayAudio, arg_6_0, 1)
+			var_6_2.animSwitch:Play("switch_open")
+			gohelper.setActive(arg_6_0._txtTips, true)
+		elseif iter_6_1.nodeId == arg_6_0.gameInfo.curNode - 1 then
+			gohelper.setActive(var_6_2.goSelect, true)
 			AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_01)
-			slot8.animSwitch:Play("switch_close")
+			var_6_2.animSwitch:Play("switch_close")
 		else
-			gohelper.setActive(slot8.goSelect, false)
+			gohelper.setActive(var_6_2.goSelect, false)
 		end
 	end
 
-	gohelper.setActive(slot0._goItem, false)
-	TaskDispatcher.runDelay(slot0.closeThis, slot0, 2.3)
+	gohelper.setActive(arg_6_0._goItem, false)
+	TaskDispatcher.runDelay(arg_6_0.closeThis, arg_6_0, 2.3)
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0.closeThis, slot0)
-	TaskDispatcher.cancelTask(slot0.delayAudio, slot0)
+function var_0_0.onDestroyView(arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.closeThis, arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.delayAudio, arg_7_0)
 end
 
-function slot0.creatNodeItem(slot0, slot1)
-	slot2 = slot0:getUserDataTb_()
-	slot3 = gohelper.cloneInPlace(slot0._goItem)
-	slot2.imageNode = gohelper.findChildImage(slot3, "image_Node")
-	slot2.goSelect = gohelper.findChildImage(slot3, "go_Select")
-	slot2.animSwitch = slot2.goSelect:GetComponent(gohelper.Type_Animator)
-	slot2.imageNodeS = gohelper.findChildImage(slot3, "go_Select/image_NodeS")
-	slot0.nodeItemList[slot1] = slot2
+function var_0_0.creatNodeItem(arg_8_0, arg_8_1)
+	local var_8_0 = arg_8_0:getUserDataTb_()
+	local var_8_1 = gohelper.cloneInPlace(arg_8_0._goItem)
 
-	return slot2
+	var_8_0.imageNode = gohelper.findChildImage(var_8_1, "image_Node")
+	var_8_0.goSelect = gohelper.findChildImage(var_8_1, "go_Select")
+	var_8_0.animSwitch = var_8_0.goSelect:GetComponent(gohelper.Type_Animator)
+	var_8_0.imageNodeS = gohelper.findChildImage(var_8_1, "go_Select/image_NodeS")
+	arg_8_0.nodeItemList[arg_8_1] = var_8_0
+
+	return var_8_0
 end
 
-function slot0.delayAudio(slot0)
+function var_0_0.delayAudio(arg_9_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_02)
 end
 
-return slot0
+return var_0_0

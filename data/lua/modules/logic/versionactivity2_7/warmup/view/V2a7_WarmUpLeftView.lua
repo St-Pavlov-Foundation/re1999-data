@@ -1,195 +1,206 @@
-module("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpLeftView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpLeftView", package.seeall)
 
-slot0 = class("V2a7_WarmUpLeftView", BaseView)
+local var_0_0 = class("V2a7_WarmUpLeftView", BaseView)
 
-function slot0.onInitView(slot0)
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._itemClick:AddClickListener(slot0._onItemClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._itemClick:AddClickListener(arg_2_0._onItemClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._itemClick:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._itemClick:RemoveClickListener()
 end
 
-slot1 = -1
-slot2 = 0
-slot3 = 1
-slot4 = SLFramework.AnimatorPlayer
-slot5 = {
+local var_0_1 = -1
+local var_0_2 = 0
+local var_0_3 = 1
+local var_0_4 = SLFramework.AnimatorPlayer
+local var_0_5 = {
 	Clicked = 1
 }
-slot6 = 5
+local var_0_6 = 5
 
-function slot0.ctor(slot0, ...)
-	V2a6_WarmUpLeftView.super.ctor(slot0, ...)
+function var_0_0.ctor(arg_4_0, ...)
+	V2a6_WarmUpLeftView.super.ctor(arg_4_0, ...)
 
-	slot0._draggedState = uv0
+	arg_4_0._draggedState = var_0_1
 end
 
-function slot0._editableInitView(slot0)
-	slot0._middleGo = gohelper.findChild(slot0.viewGO, "Middle")
-	slot0._openGo = gohelper.findChild(slot0._middleGo, "open")
-	slot0._unopenGo = gohelper.findChild(slot0._middleGo, "unopen")
-	slot0._godrag = gohelper.findChild(slot0._unopenGo, "drag")
-	slot0._guideGo = gohelper.findChild(slot0._unopenGo, "guide")
-	slot0._simagepic = gohelper.findChildSingleImage(slot0._openGo, "#simage_pic")
-	slot0._animatorPlayer = uv0.Get(slot0._middleGo)
-	slot0._animtor = slot0._animatorPlayer.animator
-	slot0._animEvent = gohelper.onceAddComponent(slot0._middleGo, gohelper.Type_AnimationEventWrap)
-	slot0._itemClick = gohelper.getClickWithAudio(slot0._godrag)
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0._middleGo = gohelper.findChild(arg_5_0.viewGO, "Middle")
+	arg_5_0._openGo = gohelper.findChild(arg_5_0._middleGo, "open")
+	arg_5_0._unopenGo = gohelper.findChild(arg_5_0._middleGo, "unopen")
+	arg_5_0._godrag = gohelper.findChild(arg_5_0._unopenGo, "drag")
+	arg_5_0._guideGo = gohelper.findChild(arg_5_0._unopenGo, "guide")
+	arg_5_0._simagepic = gohelper.findChildSingleImage(arg_5_0._openGo, "#simage_pic")
+	arg_5_0._animatorPlayer = var_0_4.Get(arg_5_0._middleGo)
+	arg_5_0._animtor = arg_5_0._animatorPlayer.animator
+	arg_5_0._animEvent = gohelper.onceAddComponent(arg_5_0._middleGo, gohelper.Type_AnimationEventWrap)
+	arg_5_0._itemClick = gohelper.getClickWithAudio(arg_5_0._godrag)
 
-	slot0:_setActive_drag(true)
+	arg_5_0:_setActive_drag(true)
 end
 
-function slot0.onOpen(slot0)
-	slot0._animEvent:AddEventListener("play_ui_yuzhou_fax_earcap", slot0._play_ui_yuzhou_fax_earcap, slot0)
-	slot0._animEvent:AddEventListener("play_ui_min_day_night", slot0._play_ui_min_day_night, slot0)
-	slot0._animEvent:AddEventListener("play_ui_yuzhou_fax_beep", slot0._play_ui_yuzhou_fax_beep, slot0)
-	slot0._animEvent:AddEventListener("play_ui_yuzhou_fax_print", slot0._play_ui_yuzhou_fax_print, slot0)
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0._animEvent:AddEventListener("play_ui_yuzhou_fax_earcap", arg_6_0._play_ui_yuzhou_fax_earcap, arg_6_0)
+	arg_6_0._animEvent:AddEventListener("play_ui_min_day_night", arg_6_0._play_ui_min_day_night, arg_6_0)
+	arg_6_0._animEvent:AddEventListener("play_ui_yuzhou_fax_beep", arg_6_0._play_ui_yuzhou_fax_beep, arg_6_0)
+	arg_6_0._animEvent:AddEventListener("play_ui_yuzhou_fax_print", arg_6_0._play_ui_yuzhou_fax_print, arg_6_0)
 end
 
-function slot0.onDataUpdateFirst(slot0)
+function var_0_0.onDataUpdateFirst(arg_7_0)
 	if isDebugBuild then
-		assert(slot0.viewContainer:getEpisodeCount() <= uv0, "invalid config json_activity125 actId: " .. slot0.viewContainer:actId())
+		assert(arg_7_0.viewContainer:getEpisodeCount() <= var_0_6, "invalid config json_activity125 actId: " .. arg_7_0.viewContainer:actId())
 	end
 
-	slot0._draggedState = slot0:_checkIsDone() and uv1 or uv2
+	arg_7_0._draggedState = arg_7_0:_checkIsDone() and var_0_2 or var_0_1
 end
 
-function slot0.onDataUpdate(slot0)
-	slot0:_refresh()
+function var_0_0.onDataUpdate(arg_8_0)
+	arg_8_0:_refresh()
 end
 
-function slot0.onSwitchEpisode(slot0)
-	if slot0._draggedState == uv0 and not slot0:_checkIsDone() then
-		slot0._draggedState = uv1 - 1
-	elseif slot0._draggedState < uv1 and slot1 then
-		slot0._draggedState = uv0
+function var_0_0.onSwitchEpisode(arg_9_0)
+	local var_9_0 = arg_9_0:_checkIsDone()
+
+	if arg_9_0._draggedState == var_0_2 and not var_9_0 then
+		arg_9_0._draggedState = var_0_1 - 1
+	elseif arg_9_0._draggedState < var_0_1 and var_9_0 then
+		arg_9_0._draggedState = var_0_2
 	end
 
-	slot0:_refresh()
+	arg_9_0:_refresh()
 end
 
-function slot0._episodeId(slot0)
-	return slot0.viewContainer:getCurSelectedEpisode()
+function var_0_0._episodeId(arg_10_0)
+	return arg_10_0.viewContainer:getCurSelectedEpisode()
 end
 
-function slot0._episode2Index(slot0, slot1)
-	return slot0.viewContainer:episode2Index(slot1 or slot0:_episodeId())
+function var_0_0._episode2Index(arg_11_0, arg_11_1)
+	return arg_11_0.viewContainer:episode2Index(arg_11_1 or arg_11_0:_episodeId())
 end
 
-function slot0._checkIsDone(slot0, slot1)
-	return slot0.viewContainer:checkIsDone(slot1 or slot0:_episodeId())
+function var_0_0._checkIsDone(arg_12_0, arg_12_1)
+	return arg_12_0.viewContainer:checkIsDone(arg_12_1 or arg_12_0:_episodeId())
 end
 
-function slot0._saveStateDone(slot0, slot1, slot2)
-	slot0.viewContainer:saveStateDone(slot2 or slot0:_episodeId(), slot1)
+function var_0_0._saveStateDone(arg_13_0, arg_13_1, arg_13_2)
+	arg_13_0.viewContainer:saveStateDone(arg_13_2 or arg_13_0:_episodeId(), arg_13_1)
 end
 
-function slot0._saveState(slot0, slot1, slot2)
-	assert(slot1 ~= 1999, "please call _saveStateDone instead")
-	slot0.viewContainer:saveState(slot2 or slot0:_episodeId(), slot1)
+function var_0_0._saveState(arg_14_0, arg_14_1, arg_14_2)
+	assert(arg_14_1 ~= 1999, "please call _saveStateDone instead")
+	arg_14_0.viewContainer:saveState(arg_14_2 or arg_14_0:_episodeId(), arg_14_1)
 end
 
-function slot0._getState(slot0, slot1, slot2)
-	return slot0.viewContainer:getState(slot2 or slot0:_episodeId(), slot1)
+function var_0_0._getState(arg_15_0, arg_15_1, arg_15_2)
+	return arg_15_0.viewContainer:getState(arg_15_2 or arg_15_0:_episodeId(), arg_15_1)
 end
 
-function slot0._setActive_drag(slot0, slot1)
-	gohelper.setActive(slot0._godrag, slot1)
+function var_0_0._setActive_drag(arg_16_0, arg_16_1)
+	gohelper.setActive(arg_16_0._godrag, arg_16_1)
 end
 
-function slot0._setActive_guide(slot0, slot1)
-	gohelper.setActive(slot0._guideGo, slot1)
+function var_0_0._setActive_guide(arg_17_0, arg_17_1)
+	gohelper.setActive(arg_17_0._guideGo, arg_17_1)
 end
 
-function slot0._refresh(slot0)
-	slot0._simagepic:LoadImage(slot0.viewContainer:getImgResUrl(slot0:_episode2Index()))
+function var_0_0._refresh(arg_18_0)
+	local var_18_0 = arg_18_0:_checkIsDone()
+	local var_18_1 = arg_18_0.viewContainer:getImgResUrl(arg_18_0:_episode2Index())
 
-	if slot0:_checkIsDone() then
-		slot0:_setActive_guide(false)
-		slot0:_setActive_drag(false)
-		slot0:_playAnimOpend()
-	elseif slot0:_getState() == 0 then
-		slot0:_setActive_guide(slot0._draggedState <= uv0)
-		slot0:_setActive_drag(true)
-		slot0:_playAnimIdle()
-	elseif uv1.Clicked == slot3 then
-		slot0:_setActive_guide(false)
-		slot0:_setActive_drag(false)
-		slot0:_playAnimOpend()
-		slot0:_playAnimAfterClicked()
+	arg_18_0._simagepic:LoadImage(var_18_1)
+
+	if var_18_0 then
+		arg_18_0:_setActive_guide(false)
+		arg_18_0:_setActive_drag(false)
+		arg_18_0:_playAnimOpend()
 	else
-		logError("[V2a7_WarmUpLeftView] invalid state: " .. tostring(slot3))
+		local var_18_2 = arg_18_0:_getState()
+
+		if var_18_2 == 0 then
+			arg_18_0:_setActive_guide(arg_18_0._draggedState <= var_0_1)
+			arg_18_0:_setActive_drag(true)
+			arg_18_0:_playAnimIdle()
+		elseif var_0_5.Clicked == var_18_2 then
+			arg_18_0:_setActive_guide(false)
+			arg_18_0:_setActive_drag(false)
+			arg_18_0:_playAnimOpend()
+			arg_18_0:_playAnimAfterClicked()
+		else
+			logError("[V2a7_WarmUpLeftView] invalid state: " .. tostring(var_18_2))
+		end
 	end
 end
 
-function slot0.onClose(slot0)
-	slot0._animEvent:RemoveAllEventListener()
+function var_0_0.onClose(arg_19_0)
+	arg_19_0._animEvent:RemoveAllEventListener()
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_20_0)
+	return
 end
 
-function slot0._playAnimIdle(slot0, slot1, slot2)
-	slot0:_playAnim(UIAnimationName.Unopen, slot1, slot2)
+function var_0_0._playAnimIdle(arg_21_0, arg_21_1, arg_21_2)
+	arg_21_0:_playAnim(UIAnimationName.Unopen, arg_21_1, arg_21_2)
 end
 
-function slot0._playAnimOpend(slot0, slot1, slot2)
-	slot0:_playAnim(UIAnimationName.Open, slot1, slot2)
+function var_0_0._playAnimOpend(arg_22_0, arg_22_1, arg_22_2)
+	arg_22_0:_playAnim(UIAnimationName.Open, arg_22_1, arg_22_2)
 end
 
-function slot0._playAnimClick(slot0, slot1, slot2)
-	slot0:_playAnim(UIAnimationName.Click, slot1, slot2)
+function var_0_0._playAnimClick(arg_23_0, arg_23_1, arg_23_2)
+	arg_23_0:_playAnim(UIAnimationName.Click, arg_23_1, arg_23_2)
 end
 
-function slot0._playAnim(slot0, slot1, slot2, slot3)
-	slot0._animatorPlayer:Play(slot1, slot2 or function ()
-	end, slot3)
+function var_0_0._playAnim(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
+	arg_24_0._animatorPlayer:Play(arg_24_1, arg_24_2 or function()
+		return
+	end, arg_24_3)
 end
 
-function slot0._onItemClick(slot0)
-	slot0:_setActive_drag(false)
-	slot0:_play_ui_yuzhou_fax_earcap()
-	slot0:_saveState(uv0.Clicked)
-	slot0:_playAnimAfterClicked()
-	slot0.viewContainer:setLocalIsPlayCurByUser()
+function var_0_0._onItemClick(arg_26_0)
+	arg_26_0:_setActive_drag(false)
+	arg_26_0:_play_ui_yuzhou_fax_earcap()
+	arg_26_0:_saveState(var_0_5.Clicked)
+	arg_26_0:_playAnimAfterClicked()
+	arg_26_0.viewContainer:setLocalIsPlayCurByUser()
 end
 
-slot7 = "V2a7_WarmUpLeftView:kBlock_Click"
-slot8 = 9.99
+local var_0_7 = "V2a7_WarmUpLeftView:kBlock_Click"
+local var_0_8 = 9.99
 
-function slot0._playAnimAfterClicked(slot0)
+function var_0_0._playAnimAfterClicked(arg_27_0)
 	UIBlockMgrExtend.setNeedCircleMv(false)
-	UIBlockHelper.instance:startBlock(uv0, uv1, slot0.viewName)
-	slot0.viewContainer:addNeedWaitCount()
-	slot0:_playAnimClick(function ()
-		UIBlockHelper.instance:endBlock(uv0)
+	UIBlockHelper.instance:startBlock(var_0_7, var_0_8, arg_27_0.viewName)
+	arg_27_0.viewContainer:addNeedWaitCount()
+	arg_27_0:_playAnimClick(function()
+		UIBlockHelper.instance:endBlock(var_0_7)
 		UIBlockMgrExtend.setNeedCircleMv(true)
-		uv1:_saveStateDone(true)
+		arg_27_0:_saveStateDone(true)
 	end)
-	slot0.viewContainer:openDesc()
+	arg_27_0.viewContainer:openDesc()
 end
 
-function slot0._play_ui_yuzhou_fax_earcap(slot0)
+function var_0_0._play_ui_yuzhou_fax_earcap(arg_29_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.WarmUp.play_ui_yuzhou_fax_earcap)
 end
 
-function slot0._play_ui_min_day_night(slot0)
+function var_0_0._play_ui_min_day_night(arg_30_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.WarmUp.play_ui_min_day_night)
 end
 
-function slot0._play_ui_yuzhou_fax_beep(slot0)
+function var_0_0._play_ui_yuzhou_fax_beep(arg_31_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.WarmUp.play_ui_yuzhou_fax_beep)
 end
 
-function slot0._play_ui_yuzhou_fax_print(slot0)
+function var_0_0._play_ui_yuzhou_fax_print(arg_32_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.WarmUp.play_ui_yuzhou_fax_print)
 end
 
-return slot0
+return var_0_0

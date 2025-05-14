@@ -1,13 +1,13 @@
-module("modules.logic.versionactivity2_5.challenge.view.store.Act183CurrencyReplaceTipsViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.store.Act183CurrencyReplaceTipsViewContainer", package.seeall)
 
-slot0 = class("Act183CurrencyReplaceTipsViewContainer", BaseViewContainer)
+local var_0_0 = class("Act183CurrencyReplaceTipsViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, Act183CurrencyReplaceTipsView.New())
+	table.insert(var_1_0, Act183CurrencyReplaceTipsView.New())
 
-	return slot1
+	return var_1_0
 end
 
-return slot0
+return var_0_0

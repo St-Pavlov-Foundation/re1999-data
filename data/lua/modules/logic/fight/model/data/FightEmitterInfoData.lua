@@ -1,9 +1,9 @@
-module("modules.logic.fight.model.data.FightEmitterInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightEmitterInfoData", package.seeall)
 
-slot0 = FightDataClass("FightEmitterInfoData")
+local var_0_0 = FightDataClass("FightEmitterInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.energy = slot1.energy
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.energy = arg_1_1.energy
 end
 
-return slot0
+return var_0_0

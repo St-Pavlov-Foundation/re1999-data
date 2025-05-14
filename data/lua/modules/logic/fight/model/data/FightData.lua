@@ -1,30 +1,30 @@
-module("modules.logic.fight.model.data.FightData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightData", package.seeall)
 
-slot0 = FightDataClass("FightData")
+local var_0_0 = FightDataClass("FightData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.attacker = FightTeamData.New(slot1.attacker)
-	slot0.defender = FightTeamData.New(slot1.defender)
-	slot0.curRound = slot1.curRound
-	slot0.maxRound = slot1.maxRound
-	slot0.isFinish = slot1.isFinish
-	slot0.curWave = slot1.curWave
-	slot0.battleId = slot1.battleId
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.attacker = FightTeamData.New(arg_1_1.attacker)
+	arg_1_0.defender = FightTeamData.New(arg_1_1.defender)
+	arg_1_0.curRound = arg_1_1.curRound
+	arg_1_0.maxRound = arg_1_1.maxRound
+	arg_1_0.isFinish = arg_1_1.isFinish
+	arg_1_0.curWave = arg_1_1.curWave
+	arg_1_0.battleId = arg_1_1.battleId
 
-	if slot1:HasField("magicCircle") then
-		slot0.magicCircle = FightMagicCircleInfoData.New(slot1.magicCircle)
+	if arg_1_1:HasField("magicCircle") then
+		arg_1_0.magicCircle = FightMagicCircleInfoData.New(arg_1_1.magicCircle)
 	end
 
-	slot0.version = slot1.version
-	slot0.isRecord = slot1.isRecord
-	slot0.episodeId = slot1.episodeId
-	slot0.fightActType = slot1.fightActType
-	slot0.lastChangeHeroUid = slot1.lastChangeHeroUid
-	slot0.progress = slot1.progress
-	slot0.progressMax = slot1.progressMax
-	slot0.param = FightParamData.New(slot1.param)
-	slot0.customData = FightCustomData.New(slot1.customData)
-	slot0.fightTaskBox = FightTaskBoxData.New(slot1.fightTaskBox)
+	arg_1_0.version = arg_1_1.version
+	arg_1_0.isRecord = arg_1_1.isRecord
+	arg_1_0.episodeId = arg_1_1.episodeId
+	arg_1_0.fightActType = arg_1_1.fightActType
+	arg_1_0.lastChangeHeroUid = arg_1_1.lastChangeHeroUid
+	arg_1_0.progress = arg_1_1.progress
+	arg_1_0.progressMax = arg_1_1.progressMax
+	arg_1_0.param = FightParamData.New(arg_1_1.param)
+	arg_1_0.customData = FightCustomData.New(arg_1_1.customData)
+	arg_1_0.fightTaskBox = FightTaskBoxData.New(arg_1_1.fightTaskBox)
 end
 
-return slot0
+return var_0_0

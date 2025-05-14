@@ -1,297 +1,370 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191GameMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191GameMO", package.seeall)
 
-slot0 = pureTable("Act191GameMO")
+local var_0_0 = pureTable("Act191GameMO")
 
-function slot0.init(slot0, slot1)
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.coin = slot1.coin
-	slot0.curStage = slot1.curStage
-	slot0.curNode = slot1.curNode
-	slot0.nodeInfo = slot1.nodeInfo
-	slot0.curTeamIndex = 1
-	slot0.teamInfo = slot1.teamInfo
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.actId = Activity191Model.instance:getCurActId()
+	arg_1_0.coin = arg_1_1.coin
+	arg_1_0.curStage = arg_1_1.curStage
+	arg_1_0.curNode = arg_1_1.curNode
+	arg_1_0.nodeInfo = arg_1_1.nodeInfo
+	arg_1_0.curTeamIndex = 1
+	arg_1_0.teamInfo = arg_1_1.teamInfo
 
-	slot0:updateWareHouseInfo(slot1.warehouseInfo)
+	arg_1_0:updateWareHouseInfo(arg_1_1.warehouseInfo)
 
-	slot0.score = slot1.score
-	slot0.state = slot1.state
-	slot0.rank = slot1.rank
+	arg_1_0.score = arg_1_1.score
+	arg_1_0.state = arg_1_1.state
+	arg_1_0.rank = arg_1_1.rank
 end
 
-function slot0.update(slot0, slot1)
-	if slot0.curNode ~= slot1.curNode then
-		slot0.nodeChange = true
+function var_0_0.update(arg_2_0, arg_2_1)
+	if arg_2_0.curNode ~= arg_2_1.curNode then
+		arg_2_0.nodeChange = true
 	end
 
-	slot0.coin = slot1.coin
-	slot0.curStage = slot1.curStage
-	slot0.curNode = slot1.curNode
-	slot0.nodeInfo = slot1.nodeInfo
-	slot0.teamInfo = slot1.teamInfo
+	arg_2_0.coin = arg_2_1.coin
+	arg_2_0.curStage = arg_2_1.curStage
+	arg_2_0.curNode = arg_2_1.curNode
+	arg_2_0.nodeInfo = arg_2_1.nodeInfo
+	arg_2_0.teamInfo = arg_2_1.teamInfo
 
-	slot0:updateWareHouseInfo(slot1.warehouseInfo)
+	arg_2_0:updateWareHouseInfo(arg_2_1.warehouseInfo)
 
-	slot0.score = slot1.score
-	slot0.state = slot1.state
-	slot0.rank = slot1.rank
+	arg_2_0.score = arg_2_1.score
+	arg_2_0.state = arg_2_1.state
+	arg_2_0.rank = arg_2_1.rank
 end
 
-function slot0.updateWareHouseInfo(slot0, slot1)
-	if not slot0.destinyHeroMap or slot0.warehouseInfo and #slot0.warehouseInfo.enhanceId ~= #slot1.enhanceId then
-		slot0.destinyHeroMap = {}
-		slot0.enhanceItemList = {}
+function var_0_0.updateWareHouseInfo(arg_3_0, arg_3_1)
+	if not arg_3_0.destinyHeroMap or arg_3_0.warehouseInfo and #arg_3_0.warehouseInfo.enhanceId ~= #arg_3_1.enhanceId then
+		arg_3_0.destinyHeroMap = {}
+		arg_3_0.enhanceItemList = {}
 
-		for slot5, slot6 in ipairs(slot1.enhanceId) do
-			slot9 = lua_activity191_effect.configDict[string.splitToNumber(Activity191Config.instance:getEnhanceCo(slot0.actId, slot6).effects, "|")[1]]
-			slot10 = string.splitToNumber(slot9.typeParam, "#")
+		for iter_3_0, iter_3_1 in ipairs(arg_3_1.enhanceId) do
+			local var_3_0 = Activity191Config.instance:getEnhanceCo(arg_3_0.actId, iter_3_1)
+			local var_3_1 = string.splitToNumber(var_3_0.effects, "|")[1]
+			local var_3_2 = lua_activity191_effect.configDict[var_3_1]
+			local var_3_3 = string.splitToNumber(var_3_2.typeParam, "#")
 
-			if slot9.type == Activity191Enum.EffectType.EnhanceHero then
-				slot0.destinyHeroMap[slot10[1]] = slot10[2]
-			elseif slot9.type == Activity191Enum.EffectType.EnhanceItem then
-				slot0.enhanceItemList[#slot0.enhanceItemList + 1] = slot10[1]
+			if var_3_2.type == Activity191Enum.EffectType.EnhanceHero then
+				arg_3_0.destinyHeroMap[var_3_3[1]] = var_3_3[2]
+			elseif var_3_2.type == Activity191Enum.EffectType.EnhanceItem then
+				arg_3_0.enhanceItemList[#arg_3_0.enhanceItemList + 1] = var_3_3[1]
 			end
 		end
 	end
 
-	slot0.warehouseInfo = slot1
+	arg_3_0.warehouseInfo = arg_3_1
 end
 
-function slot0.updateTeamInfo(slot0, slot1, slot2)
-	slot0.curTeamIndex = slot1
-	slot3 = false
+function var_0_0.updateTeamInfo(arg_4_0, arg_4_1, arg_4_2)
+	arg_4_0.curTeamIndex = arg_4_1
 
-	for slot7, slot8 in ipairs(slot0.teamInfo) do
-		if slot8.index == slot1 then
-			slot0.teamInfo[slot7] = slot2
-			slot3 = true
+	local var_4_0 = false
+
+	for iter_4_0, iter_4_1 in ipairs(arg_4_0.teamInfo) do
+		if iter_4_1.index == arg_4_1 then
+			arg_4_0.teamInfo[iter_4_0] = arg_4_2
+			var_4_0 = true
 
 			break
 		end
 	end
 
-	if not slot3 then
-		table.insert(slot0.teamInfo, slot2)
+	if not var_4_0 then
+		table.insert(arg_4_0.teamInfo, arg_4_2)
 	end
 end
 
-function slot0.updateCurNodeInfo(slot0, slot1)
-	for slot5 = 1, #slot0.nodeInfo do
-		if slot0.nodeInfo[slot5].nodeId == slot0.curNode then
-			slot0.nodeInfo[slot5] = slot1
+function var_0_0.updateCurNodeInfo(arg_5_0, arg_5_1)
+	for iter_5_0 = 1, #arg_5_0.nodeInfo do
+		if arg_5_0.nodeInfo[iter_5_0].nodeId == arg_5_0.curNode then
+			arg_5_0.nodeInfo[iter_5_0] = arg_5_1
 		end
 	end
 end
 
-function slot0.getStageNodeInfoList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getStageNodeInfoList(arg_6_0, arg_6_1)
+	local var_6_0 = {}
 
-	for slot6, slot7 in ipairs(slot0.nodeInfo) do
-		if slot7.stage == (slot1 or slot0.curStage) then
-			slot2[#slot2 + 1] = slot7
+	arg_6_1 = arg_6_1 or arg_6_0.curStage
+
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0.nodeInfo) do
+		if iter_6_1.stage == arg_6_1 then
+			var_6_0[#var_6_0 + 1] = iter_6_1
 		end
 	end
 
-	table.sort(slot2, function (slot0, slot1)
-		return slot0.nodeId < slot1.nodeId
+	table.sort(var_6_0, function(arg_7_0, arg_7_1)
+		return arg_7_0.nodeId < arg_7_1.nodeId
 	end)
 
-	return slot2
+	return var_6_0
 end
 
-function slot0.getNodeInfoById(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0.nodeInfo) do
-		if slot6.nodeId == slot1 then
-			return slot6
+function var_0_0.getNodeInfoById(arg_8_0, arg_8_1)
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0.nodeInfo) do
+		if iter_8_1.nodeId == arg_8_1 then
+			return iter_8_1
 		end
 	end
 end
 
-function slot0.getNodeDetailMo(slot0, slot1, slot2)
-	if not Activity191Helper.matchKeyInArray(slot0.nodeInfo, slot1 or slot0.curNode, "nodeId") or string.nilorempty(slot3.nodeStr) then
-		if slot2 then
+function var_0_0.getNodeDetailMo(arg_9_0, arg_9_1, arg_9_2)
+	arg_9_1 = arg_9_1 or arg_9_0.curNode
+
+	local var_9_0 = Activity191Helper.matchKeyInArray(arg_9_0.nodeInfo, arg_9_1, "nodeId")
+
+	if not var_9_0 or string.nilorempty(var_9_0.nodeStr) then
+		if arg_9_2 then
 			return
 		end
 
-		logError("check select node" .. slot1)
+		logError("check select node" .. arg_9_1)
 
 		return
 	end
 
-	slot4 = Act191NodeDetailMO.New()
+	local var_9_1 = Act191NodeDetailMO.New()
 
-	slot4:init(slot3.nodeStr)
+	var_9_1:init(var_9_0.nodeStr)
 
-	return slot4
+	return var_9_1
 end
 
-function slot0.getTeamInfo(slot0)
-	if not Activity191Helper.matchKeyInArray(slot0.teamInfo, slot0.curTeamIndex) then
-		slot1 = Activity191Module_pb.Act191BattleTeamInfo()
-		slot1.index = slot0.curTeamIndex
-		slot1.auto = false
+function var_0_0.getTeamInfo(arg_10_0)
+	local var_10_0 = Activity191Helper.matchKeyInArray(arg_10_0.teamInfo, arg_10_0.curTeamIndex)
 
-		table.insert(slot0.teamInfo, slot1)
+	if not var_10_0 then
+		var_10_0 = Activity191Module_pb.Act191BattleTeamInfo()
+		var_10_0.index = arg_10_0.curTeamIndex
+		var_10_0.auto = false
+
+		table.insert(arg_10_0.teamInfo, var_10_0)
 	end
 
-	return slot1
+	return var_10_0
 end
 
-function slot0.getPreviewFetterCntDic(slot0, slot1)
-	slot2 = {}
-	slot3 = slot0:getTeamInfo()
+function var_0_0.getPreviewFetterCntDic(arg_11_0, arg_11_1)
+	local var_11_0 = {}
+	local var_11_1 = arg_11_0:getTeamInfo()
 
-	for slot7, slot8 in pairs(slot1) do
-		for slot15, slot16 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot8, slot0:getHeroInfoInWarehouse(slot8).star).tag, "#")) do
-			if not slot2[slot16] then
-				slot2[slot16] = 1
+	for iter_11_0, iter_11_1 in pairs(arg_11_1) do
+		local var_11_2 = arg_11_0:getHeroInfoInWarehouse(iter_11_1)
+		local var_11_3 = Activity191Config.instance:getRoleCoByNativeId(iter_11_1, var_11_2.star)
+		local var_11_4 = string.split(var_11_3.tag, "#")
+
+		for iter_11_2, iter_11_3 in ipairs(var_11_4) do
+			if not var_11_0[iter_11_3] then
+				var_11_0[iter_11_3] = 1
 			else
-				slot2[slot16] = slot2[slot16] + 1
+				var_11_0[iter_11_3] = var_11_0[iter_11_3] + 1
 			end
 		end
 
-		if slot7 <= 4 and Activity191Helper.matchKeyInArray(slot3.battleHeroInfo, slot7) and slot12.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot13).itemId).tag) then
-			for slot19, slot20 in ipairs(string.split(slot15.tag, "#")) do
-				if not slot2[slot20] then
-					slot2[slot20] = 1
-				else
-					slot2[slot20] = slot2[slot20] + 1
-				end
-			end
-		end
-	end
+		if iter_11_0 <= 4 then
+			local var_11_5 = Activity191Helper.matchKeyInArray(var_11_1.battleHeroInfo, iter_11_0)
 
-	return slot2
-end
+			if var_11_5 then
+				local var_11_6 = var_11_5.itemUid1
 
-function slot0.getTeamFetterCntDic(slot0)
-	slot1 = {}
+				if var_11_6 ~= 0 then
+					local var_11_7 = arg_11_0:getItemInfoInWarehouse(var_11_6)
+					local var_11_8 = Activity191Config.instance:getCollectionCo(var_11_7.itemId)
 
-	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot7.heroId ~= 0 then
-			for slot14, slot15 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot7.heroId, slot0:getHeroInfoInWarehouse(slot7.heroId).star).tag, "#")) do
-				if slot1[slot15] then
-					slot1[slot15] = slot1[slot15] + 1
-				else
-					slot1[slot15] = 1
-				end
-			end
+					if not string.nilorempty(var_11_8.tag) then
+						local var_11_9 = string.split(var_11_8.tag, "#")
 
-			if slot7.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot7.itemUid1).itemId).tag) then
-				for slot16, slot17 in ipairs(string.split(slot12.tag, "#")) do
-					if slot1[slot17] then
-						slot1[slot17] = slot1[slot17] + 1
-					else
-						slot1[slot17] = 1
+						for iter_11_4, iter_11_5 in ipairs(var_11_9) do
+							if not var_11_0[iter_11_5] then
+								var_11_0[iter_11_5] = 1
+							else
+								var_11_0[iter_11_5] = var_11_0[iter_11_5] + 1
+							end
+						end
 					end
 				end
 			end
 		end
 	end
 
-	for slot6, slot7 in ipairs(slot2.subHeroInfo) do
-		for slot14, slot15 in ipairs(string.split(Activity191Config.instance:getRoleCoByNativeId(slot7.heroId, slot0:getHeroInfoInWarehouse(slot7.heroId).star).tag, "#")) do
-			if slot1[slot15] then
-				slot1[slot15] = slot1[slot15] + 1
+	return var_11_0
+end
+
+function var_0_0.getTeamFetterCntDic(arg_12_0)
+	local var_12_0 = {}
+	local var_12_1 = arg_12_0:getTeamInfo()
+
+	for iter_12_0, iter_12_1 in ipairs(var_12_1.battleHeroInfo) do
+		if iter_12_1.heroId ~= 0 then
+			local var_12_2 = arg_12_0:getHeroInfoInWarehouse(iter_12_1.heroId)
+			local var_12_3 = Activity191Config.instance:getRoleCoByNativeId(iter_12_1.heroId, var_12_2.star)
+			local var_12_4 = string.split(var_12_3.tag, "#")
+
+			for iter_12_2, iter_12_3 in ipairs(var_12_4) do
+				if var_12_0[iter_12_3] then
+					var_12_0[iter_12_3] = var_12_0[iter_12_3] + 1
+				else
+					var_12_0[iter_12_3] = 1
+				end
+			end
+
+			if iter_12_1.itemUid1 ~= 0 then
+				local var_12_5 = arg_12_0:getItemInfoInWarehouse(iter_12_1.itemUid1)
+				local var_12_6 = Activity191Config.instance:getCollectionCo(var_12_5.itemId)
+
+				if not string.nilorempty(var_12_6.tag) then
+					local var_12_7 = string.split(var_12_6.tag, "#")
+
+					for iter_12_4, iter_12_5 in ipairs(var_12_7) do
+						if var_12_0[iter_12_5] then
+							var_12_0[iter_12_5] = var_12_0[iter_12_5] + 1
+						else
+							var_12_0[iter_12_5] = 1
+						end
+					end
+				end
+			end
+		end
+	end
+
+	for iter_12_6, iter_12_7 in ipairs(var_12_1.subHeroInfo) do
+		local var_12_8 = arg_12_0:getHeroInfoInWarehouse(iter_12_7.heroId)
+		local var_12_9 = Activity191Config.instance:getRoleCoByNativeId(iter_12_7.heroId, var_12_8.star)
+		local var_12_10 = string.split(var_12_9.tag, "#")
+
+		for iter_12_8, iter_12_9 in ipairs(var_12_10) do
+			if var_12_0[iter_12_9] then
+				var_12_0[iter_12_9] = var_12_0[iter_12_9] + 1
 			else
-				slot1[slot15] = 1
+				var_12_0[iter_12_9] = 1
 			end
 		end
 	end
 
-	return slot1
+	return var_12_0
 end
 
-function slot0.getFetterHeroList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getFetterHeroList(arg_13_0, arg_13_1)
+	local var_13_0 = {}
+	local var_13_1 = lua_activity191_role.configList
 
-	for slot7, slot8 in ipairs(lua_activity191_role.configList) do
-		if slot8.star == 1 then
-			slot9 = 0
-			slot10 = 0
+	for iter_13_0, iter_13_1 in ipairs(var_13_1) do
+		if iter_13_1.star == 1 then
+			local var_13_2 = 0
+			local var_13_3 = 0
 
-			if slot0:isHeroInTeam(slot8.roleId) then
-				slot10 = 2
-			elseif slot0:getHeroInfoInWarehouse(slot8.roleId, true) then
-				slot10 = 1
+			if arg_13_0:isHeroInTeam(iter_13_1.roleId) then
+				var_13_3 = 2
+			elseif arg_13_0:getHeroInfoInWarehouse(iter_13_1.roleId, true) then
+				var_13_3 = 1
 			end
 
-			if tabletool.indexOf(string.split(slot8.tag, "#"), slot1) then
-				slot2[#slot2 + 1] = {
-					config = slot8,
-					inBag = slot10,
-					transfer = slot9
+			local var_13_4 = string.split(iter_13_1.tag, "#")
+
+			if tabletool.indexOf(var_13_4, arg_13_1) then
+				local var_13_5 = {
+					config = iter_13_1,
+					inBag = var_13_3,
+					transfer = var_13_2
 				}
-			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) and slot12.itemUid1 ~= 0 and not string.nilorempty(Activity191Config.instance:getCollectionCo(slot0:getItemInfoInWarehouse(slot12.itemUid1).itemId).tag) and tabletool.indexOf(string.split(slot14.tag, "#"), slot1) then
-				slot2[#slot2 + 1] = {
-					inBag = 2,
-					transfer = 1,
-					config = slot8
-				}
+
+				var_13_0[#var_13_0 + 1] = var_13_5
+			else
+				local var_13_6 = arg_13_0:getBattleHeroInfoInTeam(iter_13_1.roleId)
+
+				if var_13_6 and var_13_6.itemUid1 ~= 0 then
+					local var_13_7 = arg_13_0:getItemInfoInWarehouse(var_13_6.itemUid1)
+					local var_13_8 = Activity191Config.instance:getCollectionCo(var_13_7.itemId)
+
+					if not string.nilorempty(var_13_8.tag) then
+						local var_13_9 = string.split(var_13_8.tag, "#")
+
+						if tabletool.indexOf(var_13_9, arg_13_1) then
+							local var_13_10 = {
+								inBag = 2,
+								transfer = 1,
+								config = iter_13_1
+							}
+
+							var_13_0[#var_13_0 + 1] = var_13_10
+						end
+					end
+				end
 			end
 		end
 	end
 
-	table.sort(slot2, Activity191Helper.sortFetterHeroList)
+	table.sort(var_13_0, Activity191Helper.sortFetterHeroList)
 
-	return slot2
+	return var_13_0
 end
 
-function slot0.setAutoFight(slot0, slot1)
-	slot2 = slot0:getTeamInfo()
-	slot2.auto = slot1
+function var_0_0.setAutoFight(arg_14_0, arg_14_1)
+	local var_14_0 = arg_14_0:getTeamInfo()
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
+	var_14_0.auto = arg_14_1
+
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_14_0.actId, arg_14_0.curTeamIndex, var_14_0)
 end
 
-function slot0.getHeroInfoInWarehouse(slot0, slot1, slot2)
-	slot3 = nil
+function var_0_0.getHeroInfoInWarehouse(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0
 
-	for slot7, slot8 in ipairs(slot0.warehouseInfo.hero) do
-		if slot1 == slot8.heroId then
-			slot3 = slot8
+	for iter_15_0, iter_15_1 in ipairs(arg_15_0.warehouseInfo.hero) do
+		if arg_15_1 == iter_15_1.heroId then
+			var_15_0 = iter_15_1
 
 			break
 		end
 	end
 
-	if not slot2 and not slot3 then
-		logError(string.format("heroId : %s, heroInfo not found", slot1))
+	if not arg_15_2 and not var_15_0 then
+		logError(string.format("heroId : %s, heroInfo not found", arg_15_1))
 	end
 
-	return slot3
+	return var_15_0
 end
 
-function slot0.getBattleHeroInfoInTeam(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot7.heroId == slot1 then
-			return slot7
+function var_0_0.getBattleHeroInfoInTeam(arg_16_0, arg_16_1)
+	local var_16_0 = arg_16_0:getTeamInfo()
+
+	for iter_16_0, iter_16_1 in ipairs(var_16_0.battleHeroInfo) do
+		if iter_16_1.heroId == arg_16_1 then
+			return iter_16_1
 		end
 	end
 end
 
-function slot0.getSubHeroInfoInTeam(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTeamInfo().subHeroInfo) do
-		if slot7.heroId == slot1 then
-			return slot7
+function var_0_0.getSubHeroInfoInTeam(arg_17_0, arg_17_1)
+	local var_17_0 = arg_17_0:getTeamInfo()
+
+	for iter_17_0, iter_17_1 in ipairs(var_17_0.subHeroInfo) do
+		if iter_17_1.heroId == arg_17_1 then
+			return iter_17_1
 		end
 	end
 end
 
-function slot0.isHeroInTeam(slot0, slot1, slot2)
-	for slot7, slot8 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot8.heroId == slot1 then
-			if slot2 then
-				slot8.heroId = 0
+function var_0_0.isHeroInTeam(arg_18_0, arg_18_1, arg_18_2)
+	local var_18_0 = arg_18_0:getTeamInfo()
+
+	for iter_18_0, iter_18_1 in ipairs(var_18_0.battleHeroInfo) do
+		if iter_18_1.heroId == arg_18_1 then
+			if arg_18_2 then
+				iter_18_1.heroId = 0
 			end
 
 			return true
 		end
 	end
 
-	for slot7, slot8 in ipairs(slot3.subHeroInfo) do
-		if slot8.heroId == slot1 then
-			if slot2 then
-				slot8.heroId = 0
+	for iter_18_2, iter_18_3 in ipairs(var_18_0.subHeroInfo) do
+		if iter_18_3.heroId == arg_18_1 then
+			if arg_18_2 then
+				iter_18_3.heroId = 0
 			end
 
 			return true
@@ -299,9 +372,11 @@ function slot0.isHeroInTeam(slot0, slot1, slot2)
 	end
 end
 
-function slot0.teamHasMainHero(slot0)
-	for slot5, slot6 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot6.heroId ~= 0 then
+function var_0_0.teamHasMainHero(arg_19_0)
+	local var_19_0 = arg_19_0:getTeamInfo()
+
+	for iter_19_0, iter_19_1 in ipairs(var_19_0.battleHeroInfo) do
+		if iter_19_1.heroId ~= 0 then
 			return true
 		end
 	end
@@ -309,169 +384,197 @@ function slot0.teamHasMainHero(slot0)
 	return false
 end
 
-function slot0.saveQuickGroupInfo(slot0, slot1)
-	slot2 = slot0:getTeamInfo()
+function var_0_0.saveQuickGroupInfo(arg_20_0, arg_20_1)
+	local var_20_0 = arg_20_0:getTeamInfo()
 
-	for slot6 = 1, 4 do
-		Activity191Helper.getWithBuildBattleHeroInfo(slot2.battleHeroInfo, slot6).heroId = slot1[slot6] or 0
-		Activity191Helper.getWithBuildSubHeroInfo(slot2.subHeroInfo, slot6).heroId = slot1[slot6 + 4] or 0
+	for iter_20_0 = 1, 4 do
+		Activity191Helper.getWithBuildBattleHeroInfo(var_20_0.battleHeroInfo, iter_20_0).heroId = arg_20_1[iter_20_0] or 0
+		Activity191Helper.getWithBuildSubHeroInfo(var_20_0.subHeroInfo, iter_20_0).heroId = arg_20_1[iter_20_0 + 4] or 0
 	end
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_20_0.actId, arg_20_0.curTeamIndex, var_20_0)
 end
 
-function slot0.replaceHeroInTeam(slot0, slot1, slot2)
-	slot0:isHeroInTeam(slot1, true)
+function var_0_0.replaceHeroInTeam(arg_21_0, arg_21_1, arg_21_2)
+	arg_21_0:isHeroInTeam(arg_21_1, true)
 
-	if slot2 <= 4 then
-		Activity191Helper.getWithBuildBattleHeroInfo(slot0:getTeamInfo().battleHeroInfo, slot2).heroId = slot1
+	local var_21_0 = arg_21_0:getTeamInfo()
+
+	if arg_21_2 <= 4 then
+		Activity191Helper.getWithBuildBattleHeroInfo(var_21_0.battleHeroInfo, arg_21_2).heroId = arg_21_1
 	else
-		Activity191Helper.getWithBuildSubHeroInfo(slot3.subHeroInfo, slot2 - 4).heroId = slot1
+		Activity191Helper.getWithBuildSubHeroInfo(var_21_0.subHeroInfo, arg_21_2 - 4).heroId = arg_21_1
 	end
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_21_0.actId, arg_21_0.curTeamIndex, var_21_0)
 end
 
-function slot0.removeHeroInTeam(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot7.heroId == slot1 then
-			slot7.heroId = 0
+function var_0_0.removeHeroInTeam(arg_22_0, arg_22_1)
+	local var_22_0 = arg_22_0:getTeamInfo()
 
-			Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
+	for iter_22_0, iter_22_1 in ipairs(var_22_0.battleHeroInfo) do
+		if iter_22_1.heroId == arg_22_1 then
+			iter_22_1.heroId = 0
+
+			Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_22_0.actId, arg_22_0.curTeamIndex, var_22_0)
 
 			return
 		end
 	end
 
-	for slot6, slot7 in ipairs(slot2.subHeroInfo) do
-		if slot7.heroId == slot1 then
-			slot7.heroId = 0
+	for iter_22_2, iter_22_3 in ipairs(var_22_0.subHeroInfo) do
+		if iter_22_3.heroId == arg_22_1 then
+			iter_22_3.heroId = 0
 
-			Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
+			Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_22_0.actId, arg_22_0.curTeamIndex, var_22_0)
 
 			return
 		end
 	end
 end
 
-function slot0.exchangeHero(slot0, slot1, slot2)
-	slot3 = slot0:getTeamInfo()
-	slot4, slot5 = nil
-	slot4 = (slot1 > 4 or Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot1)) and Activity191Helper.getWithBuildSubHeroInfo(slot3.subHeroInfo, slot1 - 4)
-	slot5 = (slot2 > 4 or Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot2)) and Activity191Helper.getWithBuildSubHeroInfo(slot3.subHeroInfo, slot2 - 4)
-	slot4.heroId = slot5.heroId
-	slot5.heroId = slot4.heroId
+function var_0_0.exchangeHero(arg_23_0, arg_23_1, arg_23_2)
+	local var_23_0 = arg_23_0:getTeamInfo()
+	local var_23_1
+	local var_23_2
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
+	if arg_23_1 <= 4 then
+		var_23_1 = Activity191Helper.getWithBuildBattleHeroInfo(var_23_0.battleHeroInfo, arg_23_1)
+	else
+		var_23_1 = Activity191Helper.getWithBuildSubHeroInfo(var_23_0.subHeroInfo, arg_23_1 - 4)
+	end
+
+	if arg_23_2 <= 4 then
+		var_23_2 = Activity191Helper.getWithBuildBattleHeroInfo(var_23_0.battleHeroInfo, arg_23_2)
+	else
+		var_23_2 = Activity191Helper.getWithBuildSubHeroInfo(var_23_0.subHeroInfo, arg_23_2 - 4)
+	end
+
+	var_23_2.heroId, var_23_1.heroId = var_23_1.heroId, var_23_2.heroId
+
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_23_0.actId, arg_23_0.curTeamIndex, var_23_0)
 end
 
-function slot0.getItemInfoInWarehouse(slot0, slot1)
-	slot2 = nil
+function var_0_0.getItemInfoInWarehouse(arg_24_0, arg_24_1)
+	local var_24_0
 
-	for slot6, slot7 in ipairs(slot0.warehouseInfo.item) do
-		if slot7.uid == slot1 then
-			slot2 = slot7
+	for iter_24_0, iter_24_1 in ipairs(arg_24_0.warehouseInfo.item) do
+		if iter_24_1.uid == arg_24_1 then
+			var_24_0 = iter_24_1
 
 			break
 		end
 	end
 
-	if not slot2 then
-		logError(string.format("itemUid : %s, itemInfo not found", slot1))
+	if not var_24_0 then
+		logError(string.format("itemUid : %s, itemInfo not found", arg_24_1))
 	end
 
-	return slot2
+	return var_24_0
 end
 
-function slot0.isItemInTeam(slot0, slot1, slot2)
-	for slot7, slot8 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot8.itemUid1 == slot1 then
-			if slot2 then
-				slot8.itemUid1 = 0
+function var_0_0.isItemInTeam(arg_25_0, arg_25_1, arg_25_2)
+	local var_25_0 = arg_25_0:getTeamInfo()
+
+	for iter_25_0, iter_25_1 in ipairs(var_25_0.battleHeroInfo) do
+		if iter_25_1.itemUid1 == arg_25_1 then
+			if arg_25_2 then
+				iter_25_1.itemUid1 = 0
 			end
 
-			return true, slot8.heroId
+			return true, iter_25_1.heroId
 		end
 	end
 end
 
-function slot0.replaceItemInTeam(slot0, slot1, slot2)
-	slot0:isItemInTeam(slot1, true)
+function var_0_0.replaceItemInTeam(arg_26_0, arg_26_1, arg_26_2)
+	arg_26_0:isItemInTeam(arg_26_1, true)
 
-	slot3 = slot0:getTeamInfo()
-	Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot2).itemUid1 = slot1
+	local var_26_0 = arg_26_0:getTeamInfo()
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
+	Activity191Helper.getWithBuildBattleHeroInfo(var_26_0.battleHeroInfo, arg_26_2).itemUid1 = arg_26_1
+
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_26_0.actId, arg_26_0.curTeamIndex, var_26_0)
 end
 
-function slot0.removeItemInTeam(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTeamInfo().battleHeroInfo) do
-		if slot7.itemUid1 == slot1 then
-			slot7.itemUid1 = 0
+function var_0_0.removeItemInTeam(arg_27_0, arg_27_1)
+	local var_27_0 = arg_27_0:getTeamInfo()
+
+	for iter_27_0, iter_27_1 in ipairs(var_27_0.battleHeroInfo) do
+		if iter_27_1.itemUid1 == arg_27_1 then
+			iter_27_1.itemUid1 = 0
 		end
 	end
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot2)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_27_0.actId, arg_27_0.curTeamIndex, var_27_0)
 end
 
-function slot0.exchangeItem(slot0, slot1, slot2)
-	slot3 = slot0:getTeamInfo()
-	slot4, slot5 = nil
-	slot4 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot1)
-	slot5 = Activity191Helper.getWithBuildBattleHeroInfo(slot3.battleHeroInfo, slot2)
-	slot4.itemUid1 = slot5.itemUid1
-	slot5.itemUid1 = slot4.itemUid1
+function var_0_0.exchangeItem(arg_28_0, arg_28_1, arg_28_2)
+	local var_28_0 = arg_28_0:getTeamInfo()
+	local var_28_1
+	local var_28_2
+	local var_28_3 = Activity191Helper.getWithBuildBattleHeroInfo(var_28_0.battleHeroInfo, arg_28_1)
+	local var_28_4 = Activity191Helper.getWithBuildBattleHeroInfo(var_28_0.battleHeroInfo, arg_28_2)
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, slot0.curTeamIndex, slot3)
+	var_28_4.itemUid1, var_28_3.itemUid1 = var_28_3.itemUid1, var_28_4.itemUid1
+
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_28_0.actId, arg_28_0.curTeamIndex, var_28_0)
 end
 
-function slot0.isHeroDestinyUnlock(slot0, slot1)
-	if slot0.destinyHeroMap[slot1] then
-		return true, slot2
+function var_0_0.isHeroDestinyUnlock(arg_29_0, arg_29_1)
+	local var_29_0 = arg_29_0.destinyHeroMap[arg_29_1]
+
+	if var_29_0 then
+		return true, var_29_0
 	end
 
 	return false
 end
 
-function slot0.isItemEnhance(slot0, slot1)
-	if tabletool.indexOf(slot0.enhanceItemList, slot1) then
+function var_0_0.isItemEnhance(arg_30_0, arg_30_1)
+	if tabletool.indexOf(arg_30_0.enhanceItemList, arg_30_1) then
 		return true
 	end
 
 	return false
 end
 
-function slot0.autoFill(slot0)
-	slot1 = slot0:getTeamInfo()
-	slot2 = slot0.warehouseInfo.item
+function var_0_0.autoFill(arg_31_0)
+	local var_31_0 = arg_31_0:getTeamInfo()
+	local var_31_1 = arg_31_0.warehouseInfo.item
 
-	for slot6, slot7 in ipairs(slot0.warehouseInfo.hero) do
-		if slot6 <= 4 then
-			Activity191Helper.getWithBuildBattleHeroInfo(slot1.battleHeroInfo, slot6).heroId = slot7.heroId
+	for iter_31_0, iter_31_1 in ipairs(arg_31_0.warehouseInfo.hero) do
+		if iter_31_0 <= 4 then
+			local var_31_2 = Activity191Helper.getWithBuildBattleHeroInfo(var_31_0.battleHeroInfo, iter_31_0)
 
-			if slot2[slot6] then
-				slot8.itemUid1 = slot2[slot6].uid
+			var_31_2.heroId = iter_31_1.heroId
+
+			if var_31_1[iter_31_0] then
+				var_31_2.itemUid1 = var_31_1[iter_31_0].uid
 			end
-		elseif slot6 <= 8 then
-			Activity191Helper.getWithBuildSubHeroInfo(slot1.subHeroInfo, slot6 - 4).heroId = slot7.heroId
+		elseif iter_31_0 <= 8 then
+			Activity191Helper.getWithBuildSubHeroInfo(var_31_0.subHeroInfo, iter_31_0 - 4).heroId = iter_31_1.heroId
 		end
 	end
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(slot0.actId, 1, slot1)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(arg_31_0.actId, 1, var_31_0)
 end
 
-function slot0.getAct191Effect(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0.warehouseInfo.effect) do
-		if slot6.id == slot1 then
-			return slot6
+function var_0_0.getAct191Effect(arg_32_0, arg_32_1)
+	for iter_32_0, iter_32_1 in ipairs(arg_32_0.warehouseInfo.effect) do
+		if iter_32_1.id == arg_32_1 then
+			return iter_32_1
 		end
 	end
 end
 
-function slot0.getBestFetterTag(slot0)
-	if next(Activity191Helper.getActiveFetterInfoList(slot0:getTeamFetterCntDic())) then
-		return slot2[1].config.tag
+function var_0_0.getBestFetterTag(arg_33_0)
+	local var_33_0 = arg_33_0:getTeamFetterCntDic()
+	local var_33_1 = Activity191Helper.getActiveFetterInfoList(var_33_0)
+
+	if next(var_33_1) then
+		return var_33_1[1].config.tag
 	end
 end
 
-return slot0
+return var_0_0

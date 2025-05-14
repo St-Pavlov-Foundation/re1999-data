@@ -1,28 +1,28 @@
-module("modules.logic.rouge.dlc.103.view.RougeBossCollectionDropViewContainer", package.seeall)
+﻿module("modules.logic.rouge.dlc.103.view.RougeBossCollectionDropViewContainer", package.seeall)
 
-slot0 = class("RougeBossCollectionDropViewContainer", BaseViewContainer)
+local var_0_0 = class("RougeBossCollectionDropViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, RougeBossCollectionDropView.New())
-	table.insert(slot1, TabViewGroup.New(1, "#go_topleft"))
-	table.insert(slot1, TabViewGroup.New(2, "layout/#go_rougemapdetailcontainer"))
+	table.insert(var_1_0, RougeBossCollectionDropView.New())
+	table.insert(var_1_0, TabViewGroup.New(1, "#go_topleft"))
+	table.insert(var_1_0, TabViewGroup.New(2, "layout/#go_rougemapdetailcontainer"))
 
-	slot2 = HelpShowView.New()
+	local var_1_1 = HelpShowView.New()
 
-	slot2:setHelpId(HelpEnum.HelpId.RougeBossCollectionDropHelp)
-	table.insert(slot1, slot2)
+	var_1_1:setHelpId(HelpEnum.HelpId.RougeBossCollectionDropHelp)
+	table.insert(var_1_0, var_1_1)
 
-	return slot1
+	return var_1_0
 end
 
-function slot0.playCloseTransition(slot0)
-	TaskDispatcher.runDelay(slot0.onPlayCloseTransitionFinish, slot0, RougeMapEnum.CollectionChangeAnimDuration)
+function var_0_0.playCloseTransition(arg_2_0)
+	TaskDispatcher.runDelay(arg_2_0.onPlayCloseTransitionFinish, arg_2_0, RougeMapEnum.CollectionChangeAnimDuration)
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
+function var_0_0.buildTabViews(arg_3_0, arg_3_1)
+	if arg_3_1 == 1 then
 		return {
 			NavigateButtonsView.New({
 				false,
@@ -30,11 +30,11 @@ function slot0.buildTabViews(slot0, slot1)
 				true
 			}, HelpEnum.HelpId.RougeBossCollectionDropHelp)
 		}
-	elseif slot1 == 2 then
+	elseif arg_3_1 == 2 then
 		return {
 			RougeCollectionDetailBtnComp.New()
 		}
 	end
 end
 
-return slot0
+return var_0_0

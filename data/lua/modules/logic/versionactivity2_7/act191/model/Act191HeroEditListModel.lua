@@ -1,103 +1,120 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191HeroEditListModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191HeroEditListModel", package.seeall)
 
-slot0 = class("Act191HeroEditListModel", ListScrollModel)
+local var_0_0 = class("Act191HeroEditListModel", ListScrollModel)
 
-function slot0.initData(slot0, slot1)
-	slot0.specialHero = slot1.heroId
-	slot0.specialIndex = slot1.index
-	slot0.moList = {}
-	slot0._index2HeroIdMap = {}
+function var_0_0.initData(arg_1_0, arg_1_1)
+	arg_1_0.specialHero = arg_1_1.heroId
+	arg_1_0.specialIndex = arg_1_1.index
+	arg_1_0.moList = {}
+	arg_1_0._index2HeroIdMap = {}
 
-	for slot6, slot7 in ipairs(Activity191Model.instance:getActInfo():getGameInfo().warehouseInfo.hero) do
-		if slot2:getBattleHeroInfoInTeam(({
-			heroId = slot7.heroId,
-			star = slot7.star,
-			exp = slot7.exp,
-			inTeam = 0,
-			config = Activity191Config.instance:getRoleCoByNativeId(slot7.heroId, slot7.star)
-		}).heroId) then
-			slot8.inTeam = 2
-			slot0._index2HeroIdMap[slot9.index] = slot8.heroId
-		elseif slot2:getSubHeroInfoInTeam(slot8.heroId) then
-			slot8.inTeam = 1
-			slot0._index2HeroIdMap[slot10.index + 4] = slot8.heroId
+	local var_1_0 = Activity191Model.instance:getActInfo():getGameInfo()
+
+	for iter_1_0, iter_1_1 in ipairs(var_1_0.warehouseInfo.hero) do
+		local var_1_1 = {
+			heroId = iter_1_1.heroId,
+			star = iter_1_1.star,
+			exp = iter_1_1.exp
+		}
+
+		var_1_1.inTeam = 0
+		var_1_1.config = Activity191Config.instance:getRoleCoByNativeId(iter_1_1.heroId, iter_1_1.star)
+
+		local var_1_2 = var_1_0:getBattleHeroInfoInTeam(var_1_1.heroId)
+
+		if var_1_2 then
+			var_1_1.inTeam = 2
+			arg_1_0._index2HeroIdMap[var_1_2.index] = var_1_1.heroId
+		else
+			local var_1_3 = var_1_0:getSubHeroInfoInTeam(var_1_1.heroId)
+
+			if var_1_3 then
+				var_1_1.inTeam = 1
+				arg_1_0._index2HeroIdMap[var_1_3.index + 4] = var_1_1.heroId
+			end
 		end
 
-		if slot8.heroId == slot0.specialHero then
-			slot8.inTeam = 3
+		if var_1_1.heroId == arg_1_0.specialHero then
+			var_1_1.inTeam = 3
 		end
 
-		slot0.moList[#slot0.moList + 1] = slot8
+		arg_1_0.moList[#arg_1_0.moList + 1] = var_1_1
 	end
 
-	slot0:filterData(nil, Activity191Enum.SortRule.Down)
+	arg_1_0:filterData(nil, Activity191Enum.SortRule.Down)
 
-	if #slot0._scrollViews > 0 and slot0.specialHero and slot0.specialHero ~= 0 then
-		for slot6, slot7 in ipairs(slot0._scrollViews) do
-			slot7:selectCell(1, true)
+	if #arg_1_0._scrollViews > 0 and arg_1_0.specialHero and arg_1_0.specialHero ~= 0 then
+		for iter_1_2, iter_1_3 in ipairs(arg_1_0._scrollViews) do
+			iter_1_3:selectCell(1, true)
 		end
 	end
 end
 
-function slot0.filterData(slot0, slot1, slot2)
-	slot3 = nil
+function var_0_0.filterData(arg_2_0, arg_2_1, arg_2_2)
+	local var_2_0
 
-	if slot1 then
-		slot3 = {}
+	if arg_2_1 then
+		var_2_0 = {}
 
-		for slot7, slot8 in ipairs(slot0.moList) do
-			if tabletool.indexOf(string.split(slot8.config.tag, "#"), slot1) then
-				slot3[#slot3 + 1] = slot8
+		for iter_2_0, iter_2_1 in ipairs(arg_2_0.moList) do
+			local var_2_1 = string.split(iter_2_1.config.tag, "#")
+
+			if tabletool.indexOf(var_2_1, arg_2_1) then
+				var_2_0[#var_2_0 + 1] = iter_2_1
 			end
 		end
 	else
-		slot3 = tabletool.copy(slot0.moList)
+		var_2_0 = tabletool.copy(arg_2_0.moList)
 	end
 
-	table.sort(slot3, function (slot0, slot1)
-		if slot0.inTeam == slot1.inTeam then
-			if slot0.config.quality == slot1.config.quality then
-				if slot0.config.exLevel == slot1.config.exLevel then
-					return slot0.config.id < slot1.config.id
+	table.sort(var_2_0, function(arg_3_0, arg_3_1)
+		if arg_3_0.inTeam == arg_3_1.inTeam then
+			if arg_3_0.config.quality == arg_3_1.config.quality then
+				if arg_3_0.config.exLevel == arg_3_1.config.exLevel then
+					return arg_3_0.config.id < arg_3_1.config.id
 				else
-					return slot1.config.exLevel < slot0.config.exLevel
+					return arg_3_0.config.exLevel > arg_3_1.config.exLevel
 				end
-			elseif uv0 == Activity191Enum.SortRule.Down then
-				return slot1.config.quality < slot0.config.quality
+			elseif arg_2_2 == Activity191Enum.SortRule.Down then
+				return arg_3_0.config.quality > arg_3_1.config.quality
 			else
-				return slot0.config.quality < slot1.config.quality
+				return arg_3_0.config.quality < arg_3_1.config.quality
 			end
 		else
-			return slot1.inTeam < slot0.inTeam
+			return arg_3_0.inTeam > arg_3_1.inTeam
 		end
 	end)
-	slot0:setList(slot3)
+	arg_2_0:setList(var_2_0)
 end
 
-function slot0.getHeroIdMap(slot0)
-	if slot0._scrollViews[1] then
-		if slot1:getFirstSelect() then
-			slot3 = true
+function var_0_0.getHeroIdMap(arg_4_0)
+	local var_4_0 = arg_4_0._scrollViews[1]
 
-			for slot7, slot8 in pairs(slot0._index2HeroIdMap) do
-				if slot8 == slot2.heroId then
-					slot3 = false
+	if var_4_0 then
+		local var_4_1 = var_4_0:getFirstSelect()
+
+		if var_4_1 then
+			local var_4_2 = true
+
+			for iter_4_0, iter_4_1 in pairs(arg_4_0._index2HeroIdMap) do
+				if iter_4_1 == var_4_1.heroId then
+					var_4_2 = false
 
 					break
 				end
 			end
 
-			if slot3 then
-				slot0._index2HeroIdMap[slot0.specialIndex] = slot2.heroId
+			if var_4_2 then
+				arg_4_0._index2HeroIdMap[arg_4_0.specialIndex] = var_4_1.heroId
 			end
 		else
-			slot0._index2HeroIdMap[slot0.specialIndex] = nil
+			arg_4_0._index2HeroIdMap[arg_4_0.specialIndex] = nil
 		end
 	end
 
-	return slot0._index2HeroIdMap or {}
+	return arg_4_0._index2HeroIdMap or {}
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

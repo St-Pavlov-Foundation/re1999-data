@@ -1,196 +1,207 @@
-module("modules.logic.versionactivity2_7.lengzhou6.view.EliminateChessItem2_7", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.view.EliminateChessItem2_7", package.seeall)
 
-slot0 = class("EliminateChessItem2_7", EliminateChessItem)
-slot1 = {
+local var_0_0 = class("EliminateChessItem2_7", EliminateChessItem)
+local var_0_1 = {
 	store = "smoke",
 	fire = "fire",
 	idle = "idle",
 	tip = "tips",
 	die = "succees"
 }
-slot2 = ZProj.TweenHelper
-slot3 = SLFramework.UGUI.UIDragListener
+local var_0_2 = ZProj.TweenHelper
+local var_0_3 = SLFramework.UGUI.UIDragListener
 
-function slot0.init(slot0, slot1)
-	slot0._go = slot1
-	slot0._tr = slot1.transform
-	slot0._select = false
-	slot0._ani = slot1:GetComponent(gohelper.Type_Animator)
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._go = arg_1_1
+	arg_1_0._tr = arg_1_1.transform
+	arg_1_0._select = false
+	arg_1_0._ani = arg_1_1:GetComponent(gohelper.Type_Animator)
 
-	if slot0._ani then
-		slot0._ani.enabled = true
+	if arg_1_0._ani then
+		arg_1_0._ani.enabled = true
 	end
 
-	slot0._img_select = gohelper.findChild(slot0._go, "#img_select")
-	slot0._img_chess = gohelper.findChildImage(slot0._go, "#img_sprite")
-	slot0._btnClick = gohelper.findChildButtonWithAudio(slot0._go, "#btn_click")
+	arg_1_0._img_select = gohelper.findChild(arg_1_0._go, "#img_select")
+	arg_1_0._img_chess = gohelper.findChildImage(arg_1_0._go, "#img_sprite")
+	arg_1_0._btnClick = gohelper.findChildButtonWithAudio(arg_1_0._go, "#btn_click")
 
-	slot0._btnClick:AddClickListener(slot0.onClick, slot0)
+	arg_1_0._btnClick:AddClickListener(arg_1_0.onClick, arg_1_0)
 
-	slot0._drag = UIDragListenerHelper.New()
-	slot0._drag = uv0.Get(slot0._btnClick.gameObject)
+	arg_1_0._drag = UIDragListenerHelper.New()
+	arg_1_0._drag = var_0_3.Get(arg_1_0._btnClick.gameObject)
 end
 
-function slot0.initData(slot0, slot1)
-	slot0._data = slot1
+function var_0_0.initData(arg_2_0, arg_2_1)
+	arg_2_0._data = arg_2_1
 
-	slot0:updateInfo()
+	arg_2_0:updateInfo()
 end
 
-function slot0.getData(slot0)
-	return slot0._data
+function var_0_0.getData(arg_3_0)
+	return arg_3_0._data
 end
 
-function slot0.updateInfo(slot0)
-	if slot0._data then
-		recthelper.setSize(slot0._tr, EliminateEnum_2_7.ChessWidth, EliminateEnum_2_7.ChessHeight)
+function var_0_0.updateInfo(arg_4_0)
+	if arg_4_0._data then
+		local var_4_0 = LengZhou6EliminateConfig.instance:getChessIconPath(arg_4_0._data.id)
+		local var_4_1 = not string.nilorempty(var_4_0)
 
-		if not string.nilorempty(LengZhou6EliminateConfig.instance:getChessIconPath(slot0._data.id)) then
-			UISpriteSetMgr.instance:setHisSaBethSprite(slot0._img_chess, slot1, false)
+		recthelper.setSize(arg_4_0._tr, EliminateEnum_2_7.ChessWidth, EliminateEnum_2_7.ChessHeight)
+
+		if var_4_1 then
+			UISpriteSetMgr.instance:setHisSaBethSprite(arg_4_0._img_chess, var_4_0, false)
 		end
 
-		gohelper.setActiveCanvasGroup(slot0._go, slot2)
-		slot0:updatePos()
-		slot0:_checkSpecialSkillState()
-		slot0:setNormalAnimation()
-		gohelper.setActive(slot0._go, slot2)
+		gohelper.setActiveCanvasGroup(arg_4_0._go, var_4_1)
+		arg_4_0:updatePos()
+		arg_4_0:_checkSpecialSkillState()
+		arg_4_0:setNormalAnimation()
+		gohelper.setActive(arg_4_0._go, var_4_1)
 	end
 end
 
-function slot0.setNormalAnimation(slot0)
-	if slot0._data == nil then
+function var_0_0.setNormalAnimation(arg_5_0)
+	if arg_5_0._data == nil then
 		return
 	end
 
-	if slot0._data:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
-		slot0:playAnimation(uv0.idle)
+	if arg_5_0._data:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
+		arg_5_0:playAnimation(var_0_1.idle)
 	else
-		slot0:playAnimation(uv0.store)
+		arg_5_0:playAnimation(var_0_1.store)
 	end
 end
 
-function slot0.updatePos(slot0)
-	if slot0._data then
-		slot1, slot2 = LocalEliminateChessUtils.instance.getChessPos(slot0._data.startX, slot0._data.startY)
+function var_0_0.updatePos(arg_6_0)
+	if arg_6_0._data then
+		local var_6_0, var_6_1 = LocalEliminateChessUtils.instance.getChessPos(arg_6_0._data.startX, arg_6_0._data.startY)
 
-		transformhelper.setLocalPosXY(slot0._tr, slot1, slot2)
+		transformhelper.setLocalPosXY(arg_6_0._tr, var_6_0, var_6_1)
 	end
 end
 
-function slot0.onClick(slot0)
-	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.OnChessSelect, slot0._data.x, slot0._data.y, true)
+function var_0_0.onClick(arg_7_0)
+	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.OnChessSelect, arg_7_0._data.x, arg_7_0._data.y, true)
 end
 
-function slot0.setSelect(slot0, slot1)
-	slot0._select = slot1
+function var_0_0.setSelect(arg_8_0, arg_8_1)
+	arg_8_0._select = arg_8_1
 
-	gohelper.setActiveCanvasGroup(slot0._img_select, slot0._select)
+	gohelper.setActiveCanvasGroup(arg_8_0._img_select, arg_8_0._select)
 end
 
-function slot0.toTip(slot0, slot1)
-	if not slot1 then
-		slot0:setNormalAnimation()
+function var_0_0.toTip(arg_9_0, arg_9_1)
+	if not arg_9_1 then
+		arg_9_0:setNormalAnimation()
 	else
-		slot0:playAnimation(uv0.tip)
+		arg_9_0:playAnimation(var_0_1.tip)
 	end
 end
 
-function slot0.getGoPos(slot0)
-	slot0._chessPosX, slot0._chessPosY = transformhelper.getPos(slot0._img_chess.transform)
+function var_0_0.getGoPos(arg_10_0)
+	arg_10_0._chessPosX, arg_10_0._chessPosY = transformhelper.getPos(arg_10_0._img_chess.transform)
 
-	return slot0._chessPosX, slot0._chessPosY
+	return arg_10_0._chessPosX, arg_10_0._chessPosY
 end
 
-function slot0.toDie(slot0, slot1, slot2)
-	if slot2 == nil or slot2 == LengZhou6Enum.NormalEliminateEffect then
-		slot0:playAnimation(uv0.die)
-	elseif slot2 == LengZhou6Enum.SkillEffect.EliminationCross then
-		slot0:playAnimation(uv0.fire)
+function var_0_0.toDie(arg_11_0, arg_11_1, arg_11_2)
+	if arg_11_2 == nil or arg_11_2 == LengZhou6Enum.NormalEliminateEffect then
+		arg_11_0:playAnimation(var_0_1.die)
+	elseif arg_11_2 == LengZhou6Enum.SkillEffect.EliminationCross then
+		arg_11_0:playAnimation(var_0_1.fire)
 	else
-		slot0:playAnimation(uv0.die)
+		arg_11_0:playAnimation(var_0_1.die)
 	end
 
-	TaskDispatcher.runDelay(slot0.onDestroy, slot0, slot1)
+	TaskDispatcher.runDelay(arg_11_0.onDestroy, arg_11_0, arg_11_1)
 end
 
-function slot0.toMove(slot0, slot1, slot2, slot3, slot4)
-	if slot0._data == nil then
-		logNormal("EliminateChessItem2_7:toMove self._data == nil" .. slot0._go.name)
+function var_0_0.toMove(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4)
+	if arg_12_0._data == nil then
+		logNormal("EliminateChessItem2_7:toMove self._data == nil" .. arg_12_0._go.name)
 	end
 
-	slot5, slot6 = LocalEliminateChessUtils.instance.getChessPos(slot0._data.x, slot0._data.y)
-	slot0._tweenId = uv0.DOLocalMove(slot0._tr, slot5, slot6, 0, slot1, slot0._onMoveEnd, slot0, {
-		cb = slot3,
-		cbTarget = slot4,
-		animType = slot2
+	local var_12_0, var_12_1 = LocalEliminateChessUtils.instance.getChessPos(arg_12_0._data.x, arg_12_0._data.y)
+
+	arg_12_0._tweenId = var_0_2.DOLocalMove(arg_12_0._tr, var_12_0, var_12_1, 0, arg_12_1, arg_12_0._onMoveEnd, arg_12_0, {
+		cb = arg_12_3,
+		cbTarget = arg_12_4,
+		animType = arg_12_2
 	}, EaseType.OutQuart)
 end
 
-function slot0._onMoveEnd(slot0, slot1)
-	if slot0._data ~= nil then
-		slot0._data:setStartXY(slot0._data.x, slot0._data.y)
+function var_0_0._onMoveEnd(arg_13_0, arg_13_1)
+	if arg_13_0._data ~= nil then
+		arg_13_0._data:setStartXY(arg_13_0._data.x, arg_13_0._data.y)
 	end
 
-	if slot1.cb then
-		slot1.cb(slot1.cbTarget)
-	end
-end
-
-function slot0.playAnimation(slot0, slot1)
-	if slot0._ani then
-		slot0._ani:Play(slot1, 0, 0)
+	if arg_13_1.cb then
+		arg_13_1.cb(arg_13_1.cbTarget)
 	end
 end
 
-function slot0.clear(slot0)
-	if slot0._go then
-		LengZhou6EliminateChessItemController.instance:putChessItemGo(slot0._go)
+function var_0_0.playAnimation(arg_14_0, arg_14_1)
+	if arg_14_0._ani then
+		arg_14_0._ani:Play(arg_14_1, 0, 0)
 	end
-
-	slot0._img_select = nil
-	slot0._img_chess = nil
-	slot0._goClick = nil
-	slot0._data = nil
-	slot0._select = false
-	slot0._drag = nil
 end
 
-function slot0.changeState(slot0, slot1, slot2, slot3)
-	if slot0._data == nil then
+function var_0_0.clear(arg_15_0)
+	if arg_15_0._go then
+		LengZhou6EliminateChessItemController.instance:putChessItemGo(arg_15_0._go)
+	end
+
+	arg_15_0._img_select = nil
+	arg_15_0._img_chess = nil
+	arg_15_0._goClick = nil
+	arg_15_0._data = nil
+	arg_15_0._select = false
+	arg_15_0._drag = nil
+end
+
+function var_0_0.changeState(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	if arg_16_0._data == nil then
 		return
 	end
 
-	slot0:_checkFrostState(slot1, slot2, slot3)
-	slot0:_checkSpecialSkillState(slot1)
+	arg_16_0:_checkFrostState(arg_16_1, arg_16_2, arg_16_3)
+	arg_16_0:_checkSpecialSkillState(arg_16_1)
 end
 
-function slot0._checkFrostState(slot0, slot1, slot2, slot3)
-	LengZhou6EliminateController.instance:dispatchEvent(slot0._data:haveStatus(EliminateEnum_2_7.ChessState.Frost) and LengZhou6Event.ShowEffect or LengZhou6Event.HideEffect, slot2, slot3, EliminateEnum_2_7.ChessEffect.frost)
+function var_0_0._checkFrostState(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	local var_17_0 = arg_17_0._data:haveStatus(EliminateEnum_2_7.ChessState.Frost) and LengZhou6Event.ShowEffect or LengZhou6Event.HideEffect
+
+	LengZhou6EliminateController.instance:dispatchEvent(var_17_0, arg_17_2, arg_17_3, EliminateEnum_2_7.ChessEffect.frost)
 end
 
-function slot0._checkSpecialSkillState(slot0)
-	if slot0._data:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill) and not string.nilorempty(EliminateEnum_2_7.SpecialChessImage[slot0._data:getEliminateID()]) then
-		UISpriteSetMgr.instance:setHisSaBethSprite(slot0._img_chess, slot3, false)
+function var_0_0._checkSpecialSkillState(arg_18_0)
+	if arg_18_0._data:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill) then
+		local var_18_0 = arg_18_0._data:getEliminateID()
+		local var_18_1 = EliminateEnum_2_7.SpecialChessImage[var_18_0]
+
+		if not string.nilorempty(var_18_1) then
+			UISpriteSetMgr.instance:setHisSaBethSprite(arg_18_0._img_chess, var_18_1, false)
+		end
 	end
 end
 
-function slot0.onDestroy(slot0)
-	if slot0._tweenId then
-		ZProj.TweenHelper.KillById(slot0._tweenId)
+function var_0_0.onDestroy(arg_19_0)
+	if arg_19_0._tweenId then
+		ZProj.TweenHelper.KillById(arg_19_0._tweenId)
 
-		slot0._tweenId = nil
+		arg_19_0._tweenId = nil
 	end
 
-	if slot0._btnClick then
-		slot0._btnClick:RemoveClickListener()
+	if arg_19_0._btnClick then
+		arg_19_0._btnClick:RemoveClickListener()
 	end
 
-	if slot0._ani then
-		slot0._ani = nil
+	if arg_19_0._ani then
+		arg_19_0._ani = nil
 	end
 
-	slot0:clear()
-	uv0.super.onDestroy(slot0)
+	arg_19_0:clear()
+	var_0_0.super.onDestroy(arg_19_0)
 end
 
-return slot0
+return var_0_0

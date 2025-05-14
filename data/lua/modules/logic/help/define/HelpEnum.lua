@@ -1,7 +1,8 @@
-module("modules.logic.help.define.HelpEnum", package.seeall)
+﻿module("modules.logic.help.define.HelpEnum", package.seeall)
 
-slot0 = _M
-slot0.HelpId = {
+local var_0_0 = _M
+
+var_0_0.HelpId = {
 	Season1_5HerogroupHelp = 185,
 	Season1_4HerogroupHelp = 182,
 	VersionActivity_1_3Role1Chess = 178,
@@ -113,18 +114,18 @@ slot0.HelpId = {
 	V2A7_boss = 2700111,
 	ExploreMap = 1450104
 }
-slot0.SaveServer = {
-	[slot0.HelpId.Dungeon] = true,
-	[slot0.HelpId.HeroGroupNormal] = true,
-	[slot0.HelpId.HeroGroupHard] = true
+var_0_0.SaveServer = {
+	[var_0_0.HelpId.Dungeon] = true,
+	[var_0_0.HelpId.HeroGroupNormal] = true,
+	[var_0_0.HelpId.HeroGroupHard] = true
 }
-slot0.HelpType = {
+var_0_0.HelpType = {
 	VersionActivity = 2,
 	Normal = 1
 }
-slot0.PageTabShowType = {
+var_0_0.PageTabShowType = {
 	Video = 1,
 	HelpView = 2
 }
 
-return slot0
+return var_0_0

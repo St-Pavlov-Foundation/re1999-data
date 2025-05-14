@@ -1,140 +1,149 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191NodeListItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191NodeListItem", package.seeall)
 
-slot0 = class("Act191NodeListItem", LuaCompBase)
+local var_0_0 = class("Act191NodeListItem", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0.handleView = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.handleView = arg_1_1
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.txtStage = gohelper.findChildText(slot1, "bg/stage/#txt_Stage")
-	slot0.goNodeItem = gohelper.findChild(slot1, "bg/#go_NodeItem")
-	slot0.goSalary = gohelper.findChild(slot1, "#go_Salary")
-	slot0.txtCoin1 = gohelper.findChildText(slot1, "#go_Salary/Coin1/#txt_Coin1")
-	slot0.txtCoin2 = gohelper.findChildText(slot1, "#go_Salary/Coin2/#txt_Coin2")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "#btn_Click")
-	slot0.nodeItemList = {}
-	slot0.goFly1 = gohelper.findChild(slot1, "#go_Salary/Coin1/#fly")
-	slot0.goFly2 = gohelper.findChild(slot1, "#go_Salary/Coin2/#fly")
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0.txtStage = gohelper.findChildText(arg_2_1, "bg/stage/#txt_Stage")
+	arg_2_0.goNodeItem = gohelper.findChild(arg_2_1, "bg/#go_NodeItem")
+	arg_2_0.goSalary = gohelper.findChild(arg_2_1, "#go_Salary")
+	arg_2_0.txtCoin1 = gohelper.findChildText(arg_2_1, "#go_Salary/Coin1/#txt_Coin1")
+	arg_2_0.txtCoin2 = gohelper.findChildText(arg_2_1, "#go_Salary/Coin2/#txt_Coin2")
+	arg_2_0.btnClick = gohelper.findChildButtonWithAudio(arg_2_1, "#btn_Click")
+	arg_2_0.nodeItemList = {}
+	arg_2_0.goFly1 = gohelper.findChild(arg_2_1, "#go_Salary/Coin1/#fly")
+	arg_2_0.goFly2 = gohelper.findChild(arg_2_1, "#go_Salary/Coin2/#fly")
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addClickCb(slot0.btnClick, slot0.onClick, slot0)
-	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, slot0.refreshUI, slot0)
+function var_0_0.addEventListeners(arg_3_0)
+	arg_3_0:addClickCb(arg_3_0.btnClick, arg_3_0.onClick, arg_3_0)
+	arg_3_0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, arg_3_0.refreshUI, arg_3_0)
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_4_0)
+	return
 end
 
-function slot0.onClick(slot0)
-	Act191StatController.instance:statButtonClick(slot0.handleView.viewName, string.format("showSalary_%s", slot0.goSalary.activeInHierarchy and "false" or "true"))
-	slot0:showSalary()
+function var_0_0.onClick(arg_5_0)
+	local var_5_0 = arg_5_0.goSalary.activeInHierarchy and "false" or "true"
+
+	Act191StatController.instance:statButtonClick(arg_5_0.handleView.viewName, string.format("showSalary_%s", var_5_0))
+	arg_5_0:showSalary()
 end
 
-function slot0.onStart(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
+function var_0_0.onStart(arg_6_0)
+	arg_6_0.actId = Activity191Model.instance:getCurActId()
 
-	slot0:refreshUI()
+	arg_6_0:refreshUI()
 end
 
-function slot0.onDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0.playSalaryAnim, slot0)
-	TaskDispatcher.cancelTask(slot0.hideSalary, slot0)
-	TaskDispatcher.cancelTask(slot0.hideFly, slot0)
+function var_0_0.onDestroy(arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.playSalaryAnim, arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.hideSalary, arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.hideFly, arg_7_0)
 end
 
-function slot0.refreshUI(slot0)
-	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-	slot0.nodeInfoList = slot0.gameInfo:getStageNodeInfoList()
-	slot1 = lua_activity191_stage.configDict[slot0.actId][slot0.gameInfo.curStage]
-	slot0.txtCoin1.text = slot1.coin
-	slot0.txtCoin2.text = slot1.score
+function var_0_0.refreshUI(arg_8_0)
+	arg_8_0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	arg_8_0.nodeInfoList = arg_8_0.gameInfo:getStageNodeInfoList()
 
-	for slot6, slot7 in ipairs(slot0.nodeInfoList) do
-		slot8 = slot0.nodeItemList[slot6] or slot0:creatNodeItem(slot6)
-		slot10 = nil
+	local var_8_0 = lua_activity191_stage.configDict[arg_8_0.actId][arg_8_0.gameInfo.curStage]
 
-		if lua_activity191_node.configDict[tonumber(slot1.rule)][slot6].random == 1 then
-			slot10 = Activity191Helper.getNodeIcon(slot7.nodeType)
-		elseif #slot7.selectNodeStr == 0 then
-			slot10 = Activity191Helper.getNodeIcon(slot7.nodeType)
+	arg_8_0.txtCoin1.text = var_8_0.coin
+	arg_8_0.txtCoin2.text = var_8_0.score
+
+	local var_8_1 = lua_activity191_node.configDict[tonumber(var_8_0.rule)]
+
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0.nodeInfoList) do
+		local var_8_2 = arg_8_0.nodeItemList[iter_8_0] or arg_8_0:creatNodeItem(iter_8_0)
+		local var_8_3 = var_8_1[iter_8_0]
+		local var_8_4
+
+		if var_8_3.random == 1 then
+			var_8_4 = Activity191Helper.getNodeIcon(iter_8_1.nodeType)
+		elseif #iter_8_1.selectNodeStr == 0 then
+			var_8_4 = Activity191Helper.getNodeIcon(iter_8_1.nodeType)
 		else
-			slot11 = Act191NodeDetailMO.New()
+			local var_8_5 = Act191NodeDetailMO.New()
 
-			slot11:init(slot7.selectNodeStr[1])
+			var_8_5:init(iter_8_1.selectNodeStr[1])
 
-			slot10 = Activity191Helper.getNodeIcon(slot11.type)
+			var_8_4 = Activity191Helper.getNodeIcon(var_8_5.type)
 		end
 
-		UISpriteSetMgr.instance:setAct174Sprite(slot8.imageNode, slot10)
-		UISpriteSetMgr.instance:setAct174Sprite(slot8.imageNodeS, slot10 .. "_light")
+		UISpriteSetMgr.instance:setAct174Sprite(var_8_2.imageNode, var_8_4)
+		UISpriteSetMgr.instance:setAct174Sprite(var_8_2.imageNodeS, var_8_4 .. "_light")
 
-		if slot7.nodeId == slot0.gameInfo.curNode then
-			if slot6 == 1 and slot0.gameInfo.curNode ~= 1 then
-				slot0.firstNode = true
+		if iter_8_1.nodeId == arg_8_0.gameInfo.curNode then
+			if iter_8_0 == 1 and arg_8_0.gameInfo.curNode ~= 1 then
+				arg_8_0.firstNode = true
 			end
 
-			slot0.txtStage.text = string.format("<#FAB459>%s</color>-%d", slot1.name, slot6)
+			arg_8_0.txtStage.text = string.format("<#FAB459>%s</color>-%d", var_8_0.name, iter_8_0)
 
-			gohelper.setActive(slot8.goSelect, true)
+			gohelper.setActive(var_8_2.goSelect, true)
 		else
-			gohelper.setActive(slot8.goSelect, false)
+			gohelper.setActive(var_8_2.goSelect, false)
 		end
 	end
 
-	gohelper.setActive(slot0.goNodeItem, false)
+	gohelper.setActive(arg_8_0.goNodeItem, false)
 end
 
-function slot0.creatNodeItem(slot0, slot1)
-	slot2 = slot0:getUserDataTb_()
-	slot3 = gohelper.cloneInPlace(slot0.goNodeItem)
-	slot2.imageNode = gohelper.findChildImage(slot3, "image_Node")
-	slot2.goSelect = gohelper.findChildImage(slot3, "go_Select")
-	slot2.imageNodeS = gohelper.findChildImage(slot3, "go_Select/image_NodeS")
-	slot0.nodeItemList[slot1] = slot2
+function var_0_0.creatNodeItem(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0:getUserDataTb_()
+	local var_9_1 = gohelper.cloneInPlace(arg_9_0.goNodeItem)
 
-	return slot2
+	var_9_0.imageNode = gohelper.findChildImage(var_9_1, "image_Node")
+	var_9_0.goSelect = gohelper.findChildImage(var_9_1, "go_Select")
+	var_9_0.imageNodeS = gohelper.findChildImage(var_9_1, "go_Select/image_NodeS")
+	arg_9_0.nodeItemList[arg_9_1] = var_9_0
+
+	return var_9_0
 end
 
-function slot0.showSalary(slot0)
-	if slot0.goSalary.activeInHierarchy then
-		TaskDispatcher.cancelTask(slot0.hideSalary, slot0)
-		slot0:hideSalary()
+function var_0_0.showSalary(arg_10_0)
+	if arg_10_0.goSalary.activeInHierarchy then
+		TaskDispatcher.cancelTask(arg_10_0.hideSalary, arg_10_0)
+		arg_10_0:hideSalary()
 
 		return
 	end
 
-	gohelper.setActive(slot0.goSalary, true)
-	TaskDispatcher.runDelay(slot0.hideSalary, slot0, 2)
+	gohelper.setActive(arg_10_0.goSalary, true)
+	TaskDispatcher.runDelay(arg_10_0.hideSalary, arg_10_0, 2)
 end
 
-function slot0.hideSalary(slot0)
-	gohelper.setActive(slot0.goSalary, false)
+function var_0_0.hideSalary(arg_11_0)
+	gohelper.setActive(arg_11_0.goSalary, false)
 end
 
-function slot0.setClickEnable(slot0, slot1)
-	gohelper.setActive(slot0.btnClick, slot1)
+function var_0_0.setClickEnable(arg_12_0, arg_12_1)
+	gohelper.setActive(arg_12_0.btnClick, arg_12_1)
 end
 
-function slot0.playSalaryAnim(slot0, slot1, slot2)
-	gohelper.setActive(slot0.goFly1, true)
-	gohelper.setActive(slot0.goFly2, true)
+function var_0_0.playSalaryAnim(arg_13_0, arg_13_1, arg_13_2)
+	gohelper.setActive(arg_13_0.goFly1, true)
+	gohelper.setActive(arg_13_0.goFly2, true)
 
-	slot3 = recthelper.rectToRelativeAnchorPos(slot1.transform.position, slot0.goFly1.transform.parent)
+	local var_13_0 = recthelper.rectToRelativeAnchorPos(arg_13_1.transform.position, arg_13_0.goFly1.transform.parent)
 
-	ZProj.TweenHelper.DOAnchorPos(slot0.goFly1.transform, slot3.x, slot3.y, 1)
+	ZProj.TweenHelper.DOAnchorPos(arg_13_0.goFly1.transform, var_13_0.x, var_13_0.y, 1)
 
-	slot3 = recthelper.rectToRelativeAnchorPos(slot2.transform.position, slot0.goFly2.transform.parent)
+	local var_13_1 = recthelper.rectToRelativeAnchorPos(arg_13_2.transform.position, arg_13_0.goFly2.transform.parent)
 
-	ZProj.TweenHelper.DOAnchorPos(slot0.goFly2.transform, slot3.x, slot3.y, 1)
-	TaskDispatcher.runDelay(slot0.hideFly, slot0, 1)
+	ZProj.TweenHelper.DOAnchorPos(arg_13_0.goFly2.transform, var_13_1.x, var_13_1.y, 1)
+	TaskDispatcher.runDelay(arg_13_0.hideFly, arg_13_0, 1)
 end
 
-function slot0.hideFly(slot0)
+function var_0_0.hideFly(arg_14_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_earn_gold)
-	gohelper.setActive(slot0.goFly1, false)
-	gohelper.setActive(slot0.goFly2, false)
+	gohelper.setActive(arg_14_0.goFly1, false)
+	gohelper.setActive(arg_14_0.goFly2, false)
 end
 
-return slot0
+return var_0_0

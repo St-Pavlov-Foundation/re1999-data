@@ -1,241 +1,259 @@
-module("modules.logic.fight.model.datahelper.FightDataUtil", package.seeall)
+﻿module("modules.logic.fight.model.datahelper.FightDataUtil", package.seeall)
 
-slot1 = {
+local var_0_0 = {}
+
+function var_0_0.copyData(arg_1_0)
+	if type(arg_1_0) ~= "table" then
+		return arg_1_0
+	else
+		local var_1_0 = {}
+
+		for iter_1_0, iter_1_1 in pairs(arg_1_0) do
+			var_1_0[iter_1_0] = var_0_0.copyData(iter_1_1)
+		end
+
+		local var_1_1 = getmetatable(arg_1_0)
+
+		if var_1_1 then
+			setmetatable(var_1_0, var_1_1)
+		end
+
+		return var_1_0
+	end
+end
+
+local var_0_1 = {
 	class = true
 }
 
-return {
-	copyData = function (slot0)
-		if type(slot0) ~= "table" then
-			return slot0
-		else
-			slot1 = {
-				[slot5] = uv0.copyData(slot6)
-			}
-
-			for slot5, slot6 in pairs(slot0) do
-				-- Nothing
-			end
-
-			if getmetatable(slot0) then
-				setmetatable(slot1, slot2)
-			end
-
-			return slot1
-		end
-	end,
-	coverData = function (slot0, slot1, slot2, slot3)
-		if slot0 == nil then
-			return nil
-		end
-
-		if slot1 == nil then
-			if getmetatable(slot0) then
-				setmetatable({}, slot4)
-			end
-		end
-
-		for slot7, slot8 in pairs(slot1) do
-			slot9 = false
-
-			if slot2 and slot2[slot7] then
-				slot9 = true
-			end
-
-			if uv0[slot7] then
-				slot9 = true
-			end
-
-			if not slot9 and slot0[slot7] == nil then
-				slot1[slot7] = nil
-			end
-		end
-
-		for slot7, slot8 in pairs(slot0) do
-			slot9 = false
-
-			if slot2 and slot2[slot7] then
-				slot9 = true
-			end
-
-			if uv0[slot7] then
-				slot9 = true
-			end
-
-			if not slot9 then
-				if slot3 and slot3[slot7] then
-					slot3[slot7](slot0, slot1)
-				elseif slot1[slot7] == nil then
-					slot1[slot7] = FightHelper.deepCopySimpleWithMeta(slot0[slot7])
-				elseif type(slot8) == "table" then
-					uv1.coverInternal(slot8, slot1[slot7])
-				else
-					slot1[slot7] = slot8
-				end
-			end
-		end
-
-		return slot1
-	end,
-	coverInternal = function (slot0, slot1)
-		for slot5, slot6 in pairs(slot1) do
-			if slot0[slot5] == nil then
-				slot1[slot5] = nil
-			end
-		end
-
-		for slot5, slot6 in pairs(slot0) do
-			if type(slot6) == "table" then
-				if slot1[slot5] == nil then
-					slot1[slot5] = FightHelper.deepCopySimpleWithMeta(slot6)
-				else
-					uv0.coverInternal(slot6, slot1[slot5])
-				end
-			else
-				slot1[slot5] = slot6
-			end
-		end
-	end,
-	findDiffList = {},
-	findDiffPath = {},
-	addPathkey = function (slot0)
-		table.insert(uv0.findDiffPath, slot0)
-	end,
-	removePathKey = function ()
-		table.remove(uv0.findDiffPath)
-	end,
-	findDiff = function (slot0, slot1, slot2, slot3)
-		uv0.findDiffList = {}
-		uv0.findDiffPath = {}
-		slot8 = slot3
-
-		uv0.doFindDiff(slot0, slot1, slot2, slot8)
-
-		slot4 = {}
-
-		for slot8, slot9 in ipairs(uv0.findDiffList) do
-			slot4[slot10] = slot4[slot9.pathList[1]] or {}
-
-			table.insert(slot4[slot10], slot9)
-		end
-
-		return #uv0.findDiffList > 0, slot4, uv0.findDiffList
-	end,
-	doFindDiff = function (slot0, slot1, slot2, slot3, slot4)
-		if type(slot0) ~= "table" or type(slot1) ~= "table" then
-			logError("传入的参数必须是表结构,请检查代码")
-
-			return
-		end
-
-		slot8 = slot2
-
-		uv0.doCheckMissing(slot0, slot1, slot8)
-
-		for slot8, slot9 in pairs(slot0) do
-			slot10 = false
-
-			if slot2 and slot2[slot8] then
-				slot10 = true
-			end
-
-			if not slot10 and slot1[slot8] ~= nil then
-				uv0.addPathkey(slot8)
-
-				if slot3 and slot3[slot8] then
-					slot3[slot8](slot0[slot8], slot1[slot8], slot0, slot1)
-				elseif slot4 then
-					slot4(slot0[slot8], slot1[slot8])
-				else
-					uv0.checkDifference(slot0[slot8], slot1[slot8])
-				end
-
-				uv0.removePathKey()
-			end
-		end
-	end,
-	checkDifference = function (slot0, slot1)
-		if type(slot0) ~= type(slot1) then
-			uv0.addDiff(nil, uv0.diffType.difference)
-
-			return
-		elseif type(slot0) == "table" then
-			uv0.doCheckMissing(slot0, slot1)
-
-			for slot5, slot6 in pairs(slot0) do
-				if slot1[slot5] ~= nil then
-					uv0.addPathkey(slot5)
-					uv0.checkDifference(slot6, slot1[slot5])
-					uv0.removePathKey()
-				end
-			end
-		elseif slot0 ~= slot1 then
-			uv0.addDiff(nil, uv0.diffType.difference)
-		end
-	end,
-	doCheckMissing = function (slot0, slot1, slot2)
-		for slot6, slot7 in pairs(slot1) do
-			slot8 = false
-
-			if slot2 and slot2[slot6] then
-				slot8 = true
-			end
-
-			if not slot8 and slot0[slot6] == nil then
-				uv0.addDiff(slot6, uv0.diffType.missingSource)
-			end
-		end
-
-		for slot6, slot7 in pairs(slot0) do
-			slot8 = false
-
-			if slot2 and slot2[slot6] then
-				slot8 = true
-			end
-
-			if not slot8 and slot1[slot6] == nil then
-				uv0.addDiff(slot6, uv0.diffType.missingTarget)
-			end
-		end
-	end,
-	diffType = {
-		missingTarget = 2,
-		difference = 3,
-		missingSource = 1
-	},
-	addDiff = function (slot0, slot1)
-		slot2 = {
-			diffType = slot1 or uv0.diffType.difference
-		}
-		slot3 = uv0.coverData(uv0.findDiffPath)
-
-		if slot0 then
-			table.insert(slot3, slot0)
-		end
-
-		slot2.pathList = slot3
-		slot2.pathStr = table.concat(slot3, ".")
-
-		table.insert(uv0.findDiffList, slot2)
-
-		return slot2
-	end,
-	getDiffValue = function (slot0, slot1, slot2)
-		slot3, slot4 = nil
-
-		for slot11, slot12 in ipairs(slot2.pathList) do
-			slot6 = slot0[slot12]
-			slot7 = slot1[slot12]
-		end
-
-		if slot3 == nil then
-			slot3 = "nil"
-		end
-
-		if slot4 == nil then
-			slot4 = "nil"
-		end
-
-		return slot3, slot4
+function var_0_0.coverData(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	if arg_2_0 == nil then
+		return nil
 	end
+
+	if arg_2_1 == nil then
+		arg_2_1 = {}
+
+		local var_2_0 = getmetatable(arg_2_0)
+
+		if var_2_0 then
+			setmetatable(arg_2_1, var_2_0)
+		end
+	end
+
+	for iter_2_0, iter_2_1 in pairs(arg_2_1) do
+		local var_2_1 = false
+
+		if arg_2_2 and arg_2_2[iter_2_0] then
+			var_2_1 = true
+		end
+
+		if var_0_1[iter_2_0] then
+			var_2_1 = true
+		end
+
+		if not var_2_1 and arg_2_0[iter_2_0] == nil then
+			arg_2_1[iter_2_0] = nil
+		end
+	end
+
+	for iter_2_2, iter_2_3 in pairs(arg_2_0) do
+		local var_2_2 = false
+
+		if arg_2_2 and arg_2_2[iter_2_2] then
+			var_2_2 = true
+		end
+
+		if var_0_1[iter_2_2] then
+			var_2_2 = true
+		end
+
+		if not var_2_2 then
+			if arg_2_3 and arg_2_3[iter_2_2] then
+				arg_2_3[iter_2_2](arg_2_0, arg_2_1)
+			elseif arg_2_1[iter_2_2] == nil then
+				arg_2_1[iter_2_2] = FightHelper.deepCopySimpleWithMeta(arg_2_0[iter_2_2])
+			elseif type(iter_2_3) == "table" then
+				var_0_0.coverInternal(iter_2_3, arg_2_1[iter_2_2])
+			else
+				arg_2_1[iter_2_2] = iter_2_3
+			end
+		end
+	end
+
+	return arg_2_1
+end
+
+function var_0_0.coverInternal(arg_3_0, arg_3_1)
+	for iter_3_0, iter_3_1 in pairs(arg_3_1) do
+		if arg_3_0[iter_3_0] == nil then
+			arg_3_1[iter_3_0] = nil
+		end
+	end
+
+	for iter_3_2, iter_3_3 in pairs(arg_3_0) do
+		if type(iter_3_3) == "table" then
+			if arg_3_1[iter_3_2] == nil then
+				arg_3_1[iter_3_2] = FightHelper.deepCopySimpleWithMeta(iter_3_3)
+			else
+				var_0_0.coverInternal(iter_3_3, arg_3_1[iter_3_2])
+			end
+		else
+			arg_3_1[iter_3_2] = iter_3_3
+		end
+	end
+end
+
+var_0_0.findDiffList = {}
+var_0_0.findDiffPath = {}
+
+function var_0_0.addPathkey(arg_4_0)
+	table.insert(var_0_0.findDiffPath, arg_4_0)
+end
+
+function var_0_0.removePathKey()
+	table.remove(var_0_0.findDiffPath)
+end
+
+function var_0_0.findDiff(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
+	var_0_0.findDiffList = {}
+	var_0_0.findDiffPath = {}
+
+	var_0_0.doFindDiff(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
+
+	local var_6_0 = {}
+
+	for iter_6_0, iter_6_1 in ipairs(var_0_0.findDiffList) do
+		local var_6_1 = iter_6_1.pathList[1]
+
+		var_6_0[var_6_1] = var_6_0[var_6_1] or {}
+
+		table.insert(var_6_0[var_6_1], iter_6_1)
+	end
+
+	return #var_0_0.findDiffList > 0, var_6_0, var_0_0.findDiffList
+end
+
+function var_0_0.doFindDiff(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4)
+	if type(arg_7_0) ~= "table" or type(arg_7_1) ~= "table" then
+		logError("传入的参数必须是表结构,请检查代码")
+
+		return
+	end
+
+	var_0_0.doCheckMissing(arg_7_0, arg_7_1, arg_7_2)
+
+	for iter_7_0, iter_7_1 in pairs(arg_7_0) do
+		local var_7_0 = false
+
+		if arg_7_2 and arg_7_2[iter_7_0] then
+			var_7_0 = true
+		end
+
+		if not var_7_0 and arg_7_1[iter_7_0] ~= nil then
+			var_0_0.addPathkey(iter_7_0)
+
+			if arg_7_3 and arg_7_3[iter_7_0] then
+				arg_7_3[iter_7_0](arg_7_0[iter_7_0], arg_7_1[iter_7_0], arg_7_0, arg_7_1)
+			elseif arg_7_4 then
+				arg_7_4(arg_7_0[iter_7_0], arg_7_1[iter_7_0])
+			else
+				var_0_0.checkDifference(arg_7_0[iter_7_0], arg_7_1[iter_7_0])
+			end
+
+			var_0_0.removePathKey()
+		end
+	end
+end
+
+function var_0_0.checkDifference(arg_8_0, arg_8_1)
+	if type(arg_8_0) ~= type(arg_8_1) then
+		var_0_0.addDiff(nil, var_0_0.diffType.difference)
+
+		return
+	elseif type(arg_8_0) == "table" then
+		var_0_0.doCheckMissing(arg_8_0, arg_8_1)
+
+		for iter_8_0, iter_8_1 in pairs(arg_8_0) do
+			if arg_8_1[iter_8_0] ~= nil then
+				var_0_0.addPathkey(iter_8_0)
+				var_0_0.checkDifference(iter_8_1, arg_8_1[iter_8_0])
+				var_0_0.removePathKey()
+			end
+		end
+	elseif arg_8_0 ~= arg_8_1 then
+		var_0_0.addDiff(nil, var_0_0.diffType.difference)
+	end
+end
+
+function var_0_0.doCheckMissing(arg_9_0, arg_9_1, arg_9_2)
+	for iter_9_0, iter_9_1 in pairs(arg_9_1) do
+		local var_9_0 = false
+
+		if arg_9_2 and arg_9_2[iter_9_0] then
+			var_9_0 = true
+		end
+
+		if not var_9_0 and arg_9_0[iter_9_0] == nil then
+			var_0_0.addDiff(iter_9_0, var_0_0.diffType.missingSource)
+		end
+	end
+
+	for iter_9_2, iter_9_3 in pairs(arg_9_0) do
+		local var_9_1 = false
+
+		if arg_9_2 and arg_9_2[iter_9_2] then
+			var_9_1 = true
+		end
+
+		if not var_9_1 and arg_9_1[iter_9_2] == nil then
+			var_0_0.addDiff(iter_9_2, var_0_0.diffType.missingTarget)
+		end
+	end
+end
+
+var_0_0.diffType = {
+	missingTarget = 2,
+	difference = 3,
+	missingSource = 1
 }
+
+function var_0_0.addDiff(arg_10_0, arg_10_1)
+	local var_10_0 = {
+		diffType = arg_10_1 or var_0_0.diffType.difference
+	}
+	local var_10_1 = var_0_0.coverData(var_0_0.findDiffPath)
+
+	if arg_10_0 then
+		table.insert(var_10_1, arg_10_0)
+	end
+
+	var_10_0.pathList = var_10_1
+	var_10_0.pathStr = table.concat(var_10_1, ".")
+
+	table.insert(var_0_0.findDiffList, var_10_0)
+
+	return var_10_0
+end
+
+function var_0_0.getDiffValue(arg_11_0, arg_11_1, arg_11_2)
+	local var_11_0
+	local var_11_1
+	local var_11_2 = arg_11_2.pathList
+	local var_11_3 = arg_11_0
+	local var_11_4 = arg_11_1
+
+	for iter_11_0, iter_11_1 in ipairs(var_11_2) do
+		var_11_0 = var_11_3[iter_11_1]
+		var_11_1 = var_11_4[iter_11_1]
+		var_11_3 = var_11_0
+		var_11_4 = var_11_1
+	end
+
+	var_11_0 = var_11_0 == nil and "nil" or var_11_0
+	var_11_1 = var_11_1 == nil and "nil" or var_11_1
+
+	return var_11_0, var_11_1
+end
+
+return var_0_0

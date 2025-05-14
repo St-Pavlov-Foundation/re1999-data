@@ -1,35 +1,39 @@
-module("modules.logic.fight.system.work.FightWorkDistributeCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkDistributeCard", package.seeall)
 
-slot0 = class("FightWorkDistributeCard", BaseWork)
+local var_0_0 = class("FightWorkDistributeCard", BaseWork)
 
-function slot0.onConstructor(slot0)
-	slot0.skipAutoPlayData = true
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.skipAutoPlayData = true
 end
 
-function slot0.onStart(slot0)
+function var_0_0.onStart(arg_2_0)
 	if not FightDataHelper.roundMgr:getRoundData() then
-		slot0:onDone(false)
+		arg_2_0:onDone(false)
 
 		return
 	end
 
 	FightController.instance:setCurStage(FightEnum.Stage.Distribute)
-	FightController.instance:GuideFlowPauseAndContinue("OnGuideDistributePause", FightEvent.OnGuideDistributePause, FightEvent.OnGuideDistributeContinue, slot0._distrubute, slot0)
+	FightController.instance:GuideFlowPauseAndContinue("OnGuideDistributePause", FightEvent.OnGuideDistributePause, FightEvent.OnGuideDistributeContinue, arg_2_0._distrubute, arg_2_0)
 end
 
-function slot0._distrubute(slot0)
+function var_0_0._distrubute(arg_3_0)
 	FightViewPartVisible.set(false, true, false, false, false)
-	FightController.instance:registerCallback(FightEvent.OnDistributeCards, slot0._done, slot0)
-	FightController.instance:dispatchEvent(FightEvent.DistributeCards, FightDataHelper.handCardMgr.beforeCards1, FightDataHelper.handCardMgr.teamACards1)
+	FightController.instance:registerCallback(FightEvent.OnDistributeCards, arg_3_0._done, arg_3_0)
+
+	local var_3_0 = FightDataHelper.handCardMgr.beforeCards1
+	local var_3_1 = FightDataHelper.handCardMgr.teamACards1
+
+	FightController.instance:dispatchEvent(FightEvent.DistributeCards, var_3_0, var_3_1)
 end
 
-function slot0._done(slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, slot0._done, slot0)
-	slot0:onDone(true)
+function var_0_0._done(arg_4_0)
+	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, arg_4_0._done, arg_4_0)
+	arg_4_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, slot0._done, slot0)
+function var_0_0.clearWork(arg_5_0)
+	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, arg_5_0._done, arg_5_0)
 end
 
-return slot0
+return var_0_0

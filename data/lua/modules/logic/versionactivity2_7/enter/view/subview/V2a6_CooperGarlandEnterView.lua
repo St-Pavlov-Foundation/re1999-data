@@ -1,83 +1,89 @@
-module("modules.logic.versionactivity2_7.enter.view.subview.V2a6_CooperGarlandEnterView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.enter.view.subview.V2a6_CooperGarlandEnterView", package.seeall)
 
-slot0 = class("V2a6_CooperGarlandEnterView", VersionActivityEnterBaseSubView)
+local var_0_0 = class("V2a6_CooperGarlandEnterView", VersionActivityEnterBaseSubView)
 
-function slot0.onInitView(slot0)
-	slot0._txtDescr = gohelper.findChildText(slot0.viewGO, "Right/#txt_Descr")
-	slot0._txtlimittime = gohelper.findChildText(slot0.viewGO, "Right/#go_time/#txt_limittime")
-	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Enter")
-	slot0._goreddot = gohelper.findChild(slot0.viewGO, "Right/#btn_Enter/#go_reddot")
-	slot0._btnLocked = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Locked")
-	slot0._btnTrial = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#go_Try/image_TryBtn")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._txtDescr = gohelper.findChildText(arg_1_0.viewGO, "Right/#txt_Descr")
+	arg_1_0._txtlimittime = gohelper.findChildText(arg_1_0.viewGO, "Right/#go_time/#txt_limittime")
+	arg_1_0._btnEnter = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Right/#btn_Enter")
+	arg_1_0._goreddot = gohelper.findChild(arg_1_0.viewGO, "Right/#btn_Enter/#go_reddot")
+	arg_1_0._btnLocked = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Right/#btn_Locked")
+	arg_1_0._btnTrial = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Right/#go_Try/image_TryBtn")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnEnter:AddClickListener(slot0._btnEnterOnClick, slot0)
-	slot0._btnLocked:AddClickListener(slot0._btnLockedOnClick, slot0)
-	slot0._btnTrial:AddClickListener(slot0._btnTrialOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnEnter:AddClickListener(arg_2_0._btnEnterOnClick, arg_2_0)
+	arg_2_0._btnLocked:AddClickListener(arg_2_0._btnLockedOnClick, arg_2_0)
+	arg_2_0._btnTrial:AddClickListener(arg_2_0._btnTrialOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnEnter:RemoveClickListener()
-	slot0._btnLocked:RemoveClickListener()
-	slot0._btnTrial:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnEnter:RemoveClickListener()
+	arg_3_0._btnLocked:RemoveClickListener()
+	arg_3_0._btnTrial:RemoveClickListener()
 end
 
-function slot0._btnEnterOnClick(slot0)
+function var_0_0._btnEnterOnClick(arg_4_0)
 	CooperGarlandController.instance:openLevelView()
 end
 
-function slot0._btnLockedOnClick(slot0)
-	slot1, slot2 = OpenHelper.getToastIdAndParam(slot0.actCo.openId)
+function var_0_0._btnLockedOnClick(arg_5_0)
+	local var_5_0, var_5_1 = OpenHelper.getToastIdAndParam(arg_5_0.actCo.openId)
 
-	if slot1 and slot1 ~= 0 then
-		GameFacade.showToastWithTableParam(slot1, slot2)
+	if var_5_0 and var_5_0 ~= 0 then
+		GameFacade.showToastWithTableParam(var_5_0, var_5_1)
 	end
 end
 
-function slot0._btnTrialOnClick(slot0)
+function var_0_0._btnTrialOnClick(arg_6_0)
 	if CooperGarlandModel.instance:isAct192Open() then
-		if slot0.actCo.tryoutEpisode <= 0 then
+		local var_6_0 = arg_6_0.actCo.tryoutEpisode
+
+		if var_6_0 <= 0 then
 			logError("没有配置对应的试用关卡")
 
 			return
 		end
 
-		DungeonFightController.instance:enterFight(DungeonConfig.instance:getEpisodeCO(slot2).chapterId, slot2)
+		local var_6_1 = DungeonConfig.instance:getEpisodeCO(var_6_0)
+
+		DungeonFightController.instance:enterFight(var_6_1.chapterId, var_6_0)
 	else
-		slot0:_btnLockedOnClick()
+		arg_6_0:_btnLockedOnClick()
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = CooperGarlandModel.instance:getAct192Id()
-	slot0.actCo = ActivityConfig.instance:getActivityCo(slot0.actId)
-	slot0._txtDescr.text = slot0.actCo.actDesc
+function var_0_0._editableInitView(arg_7_0)
+	arg_7_0.actId = CooperGarlandModel.instance:getAct192Id()
+	arg_7_0.actCo = ActivityConfig.instance:getActivityCo(arg_7_0.actId)
+	arg_7_0._txtDescr.text = arg_7_0.actCo.actDesc
 end
 
-function slot0.onOpen(slot0)
-	uv0.super.onOpen(slot0)
-	slot0:_refreshTime()
-	RedDotController.instance:addRedDot(slot0._goreddot, RedDotEnum.DotNode.V2a7CooperGarland)
+function var_0_0.onOpen(arg_8_0)
+	var_0_0.super.onOpen(arg_8_0)
+	arg_8_0:_refreshTime()
+	RedDotController.instance:addRedDot(arg_8_0._goreddot, RedDotEnum.DotNode.V2a7CooperGarland)
 end
 
-function slot0.everySecondCall(slot0)
-	slot0:_refreshTime()
+function var_0_0.everySecondCall(arg_9_0)
+	arg_9_0:_refreshTime()
 end
 
-function slot0._refreshTime(slot0)
-	slot0._txtlimittime.text, slot2 = CooperGarlandModel.instance:getAct192RemainTimeStr(slot0.actId)
+function var_0_0._refreshTime(arg_10_0)
+	local var_10_0, var_10_1 = CooperGarlandModel.instance:getAct192RemainTimeStr(arg_10_0.actId)
 
-	gohelper.setActive(slot0._txtlimittime.gameObject, not slot2)
+	arg_10_0._txtlimittime.text = var_10_0
 
-	slot3 = CooperGarlandModel.instance:isAct192Open()
+	gohelper.setActive(arg_10_0._txtlimittime.gameObject, not var_10_1)
 
-	gohelper.setActive(slot0._btnEnter, slot3)
-	gohelper.setActive(slot0._btnLocked, not slot3)
+	local var_10_2 = CooperGarlandModel.instance:isAct192Open()
+
+	gohelper.setActive(arg_10_0._btnEnter, var_10_2)
+	gohelper.setActive(arg_10_0._btnLocked, not var_10_2)
 end
 
-return slot0
+return var_0_0

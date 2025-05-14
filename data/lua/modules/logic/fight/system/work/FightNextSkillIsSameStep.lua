@@ -1,91 +1,97 @@
-module("modules.logic.fight.system.work.FightNextSkillIsSameStep", package.seeall)
+﻿module("modules.logic.fight.system.work.FightNextSkillIsSameStep", package.seeall)
 
-slot0 = class("FightNextSkillIsSameStep", BaseWork)
+local var_0_0 = class("FightNextSkillIsSameStep", BaseWork)
 
-function slot0.ctor(slot0, slot1, slot2)
-	slot0.fightStepData = slot1
-	slot0.preStepData = slot2
+function var_0_0.ctor(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.fightStepData = arg_1_1
+	arg_1_0.preStepData = arg_1_2
 
-	FightController.instance:registerCallback(FightEvent.CheckPlaySameSkill, slot0._checkPlaySameSkill, slot0)
+	FightController.instance:registerCallback(FightEvent.CheckPlaySameSkill, arg_1_0._checkPlaySameSkill, arg_1_0)
 end
 
-function slot0.onStart(slot0)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_2_0)
+	arg_2_0:onDone(true)
 end
 
-function slot0._checkPlaySameSkill(slot0, slot1, slot2)
-	if slot1 ~= slot0.preStepData then
+function var_0_0._checkPlaySameSkill(arg_3_0, arg_3_1, arg_3_2)
+	if arg_3_1 ~= arg_3_0.preStepData then
 		return
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot0.fightStepData.fromId) then
+	local var_3_0 = FightDataHelper.entityMgr:getById(arg_3_0.fightStepData.fromId)
+
+	if not var_3_0 then
 		return
 	end
 
-	if slot0.fightStepData.fromId ~= slot0.preStepData.fromId then
+	if arg_3_0.fightStepData.fromId ~= arg_3_0.preStepData.fromId then
 		return
 	end
 
-	if FightDataHelper.entityMgr:getById(slot0.fightStepData.fromId).side ~= FightDataHelper.entityMgr:getById(slot0.preStepData.fromId).side then
+	local var_3_1 = FightDataHelper.entityMgr:getById(arg_3_0.fightStepData.fromId)
+	local var_3_2 = FightDataHelper.entityMgr:getById(arg_3_0.preStepData.fromId)
+
+	if var_3_1.side ~= var_3_2.side then
 		return
 	end
 
 	if SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
-		if slot0.fightStepData.actId ~= slot0.preStepData.actId then
-			slot7 = -1
-			slot8 = nil
+		if arg_3_0.fightStepData.actId ~= arg_3_0.preStepData.actId then
+			local var_3_3 = SkillConfig.instance:getHeroAllSkillIdDict(var_3_1.modelId)
+			local var_3_4 = -1
+			local var_3_5
 
-			for slot12, slot13 in pairs(SkillConfig.instance:getHeroAllSkillIdDict(slot4.modelId)) do
-				for slot17, slot18 in ipairs(slot13) do
-					if slot18 == slot0.preStepData.actId then
-						slot7 = slot12
+			for iter_3_0, iter_3_1 in pairs(var_3_3) do
+				for iter_3_2, iter_3_3 in ipairs(iter_3_1) do
+					if iter_3_3 == arg_3_0.preStepData.actId then
+						var_3_4 = iter_3_0
 					end
 
-					if slot18 == slot0.fightStepData.actId then
-						slot8 = slot12
+					if iter_3_3 == arg_3_0.fightStepData.actId then
+						var_3_5 = iter_3_0
 					end
 				end
 			end
 
-			if slot7 ~= slot8 then
+			if var_3_4 ~= var_3_5 then
 				return
 			end
 		end
-	elseif slot0.fightStepData.actId ~= slot0.preStepData.actId then
-		slot6 = -1
-		slot7 = nil
+	elseif arg_3_0.fightStepData.actId ~= arg_3_0.preStepData.actId then
+		local var_3_6 = -1
+		local var_3_7
 
-		for slot11, slot12 in ipairs(slot3.skillGroup1) do
-			if slot0.preStepData.actId == slot12 then
-				slot6 = 1
+		for iter_3_4, iter_3_5 in ipairs(var_3_0.skillGroup1) do
+			if arg_3_0.preStepData.actId == iter_3_5 then
+				var_3_6 = 1
 			end
 
-			if slot0.fightStepData.actId == slot12 then
-				slot7 = 1
-			end
-		end
-
-		for slot11, slot12 in ipairs(slot3.skillGroup2) do
-			if slot0.preStepData.actId == slot12 then
-				slot6 = 2
-			end
-
-			if slot0.fightStepData.actId == slot12 then
-				slot7 = 2
+			if arg_3_0.fightStepData.actId == iter_3_5 then
+				var_3_7 = 1
 			end
 		end
 
-		if slot6 ~= slot7 then
+		for iter_3_6, iter_3_7 in ipairs(var_3_0.skillGroup2) do
+			if arg_3_0.preStepData.actId == iter_3_7 then
+				var_3_6 = 2
+			end
+
+			if arg_3_0.fightStepData.actId == iter_3_7 then
+				var_3_7 = 2
+			end
+		end
+
+		if var_3_6 ~= var_3_7 then
 			return
 		end
 	end
 
-	FightController.instance:unregisterCallback(FightEvent.CheckPlaySameSkill, slot0._checkPlaySameSkill, slot0)
-	FightController.instance:dispatchEvent(FightEvent.BeforePlaySameSkill, slot0.preStepData, slot0.fightStepData)
+	FightController.instance:unregisterCallback(FightEvent.CheckPlaySameSkill, arg_3_0._checkPlaySameSkill, arg_3_0)
+	FightController.instance:dispatchEvent(FightEvent.BeforePlaySameSkill, arg_3_0.preStepData, arg_3_0.fightStepData)
 end
 
-function slot0.clearWork(slot0)
-	FightController.instance:unregisterCallback(FightEvent.CheckPlaySameSkill, slot0._checkPlaySameSkill, slot0)
+function var_0_0.clearWork(arg_4_0)
+	FightController.instance:unregisterCallback(FightEvent.CheckPlaySameSkill, arg_4_0._checkPlaySameSkill, arg_4_0)
 end
 
-return slot0
+return var_0_0

@@ -1,47 +1,47 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183MainBossEpisodeItem", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183MainBossEpisodeItem", package.seeall)
 
-slot0 = class("Act183MainBossEpisodeItem", Act183BaseEpisodeItem)
+local var_0_0 = class("Act183MainBossEpisodeItem", Act183BaseEpisodeItem)
 
-function slot0.getItemParentPath(slot0)
+function var_0_0.getItemParentPath(arg_1_0)
 	return "root/middle/#go_episodecontainer/go_pointboss"
 end
 
-function slot0.getItemTemplatePath()
+function var_0_0.getItemTemplatePath()
 	return "root/middle/#go_episodecontainer/#go_bossepisode"
 end
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_3_0, arg_3_1)
+	var_0_0.super.init(arg_3_0, arg_3_1)
 
-	slot0._gostars = gohelper.findChild(slot0.go, "go_finish/go_stars")
-	slot0._gostaritem = gohelper.findChild(slot0.go, "go_finish/go_stars/stars/go_staritem")
-	slot0._animunlock = gohelper.onceAddComponent(slot0._gounlock, gohelper.Type_Animator)
+	arg_3_0._gostars = gohelper.findChild(arg_3_0.go, "go_finish/go_stars")
+	arg_3_0._gostaritem = gohelper.findChild(arg_3_0.go, "go_finish/go_stars/stars/go_staritem")
+	arg_3_0._animunlock = gohelper.onceAddComponent(arg_3_0._gounlock, gohelper.Type_Animator)
 
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnInitDungeonDone, slot0._onInitDungeonDone, slot0)
+	arg_3_0:addEventCb(Act183Controller.instance, Act183Event.OnInitDungeonDone, arg_3_0._onInitDungeonDone, arg_3_0)
 end
 
-function slot0.onUpdateMo(slot0, slot1)
-	uv0.super.onUpdateMo(slot0, slot1)
-	slot0:refreshPassStarList(slot0._gostaritem)
+function var_0_0.onUpdateMo(arg_4_0, arg_4_1)
+	var_0_0.super.onUpdateMo(arg_4_0, arg_4_1)
+	arg_4_0:refreshPassStarList(arg_4_0._gostaritem)
 end
 
-function slot0._onInitDungeonDone(slot0)
-	slot0:_checkPlayNewUnlockAnim()
+function var_0_0._onInitDungeonDone(arg_5_0)
+	arg_5_0:_checkPlayNewUnlockAnim()
 end
 
-function slot0._checkPlayNewUnlockAnim(slot0)
-	if slot0._status ~= Act183Enum.EpisodeStatus.Unlocked then
+function var_0_0._checkPlayNewUnlockAnim(arg_6_0)
+	if arg_6_0._status ~= Act183Enum.EpisodeStatus.Unlocked then
 		return
 	end
 
-	if Act183Model.instance:isEpisodeNewUnlock(slot0._episodeId) then
-		slot0._animunlock:Play("unlock", 0, 0)
+	if Act183Model.instance:isEpisodeNewUnlock(arg_6_0._episodeId) then
+		arg_6_0._animunlock:Play("unlock", 0, 0)
 	end
 end
 
-function slot0.playFinishAnim(slot0)
-	uv0.super.playFinishAnim(slot0)
+function var_0_0.playFinishAnim(arg_7_0)
+	var_0_0.super.playFinishAnim(arg_7_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_EpisodeFinished_Star)
 end
 
-return slot0
+return var_0_0

@@ -1,148 +1,163 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191EnhancePickView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191EnhancePickView", package.seeall)
 
-slot0 = class("Act191EnhancePickView", BaseView)
+local var_0_0 = class("Act191EnhancePickView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goSelectItem = gohelper.findChild(slot0.viewGO, "scroll_view/Viewport/Content/#go_SelectItem")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goSelectItem = gohelper.findChild(arg_1_0.viewGO, "scroll_view/Viewport/Content/#go_SelectItem")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function Act174ForcePickView._onEscBtnClick(slot0)
+function Act174ForcePickView._onEscBtnClick(arg_4_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	gohelper.setActive(slot0._goSelectItem, false)
+function var_0_0._editableInitView(arg_5_0)
+	gohelper.setActive(arg_5_0._goSelectItem, false)
 
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.maxFreshNum = tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.MaxFreshNum].value)
+	arg_5_0.actId = Activity191Model.instance:getCurActId()
+	arg_5_0.maxFreshNum = tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.MaxFreshNum].value)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_6_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0.nodeDetailMo = slot0.viewParam
-	slot0.enhanceItemList = {}
+function var_0_0.onOpen(arg_7_0)
+	arg_7_0.nodeDetailMo = arg_7_0.viewParam
+	arg_7_0.enhanceItemList = {}
 
-	slot0:refreshUI()
+	arg_7_0:refreshUI()
 end
 
-function slot0.refreshUI(slot0)
-	slot0.freshIndex = nil
+function var_0_0.refreshUI(arg_8_0)
+	arg_8_0.freshIndex = nil
 
-	for slot4, slot5 in ipairs(slot0.nodeDetailMo.enhanceList) do
-		slot6 = slot0.enhanceItemList[slot4] or slot0:creatEnhanceItem(slot4)
-		slot7 = Activity191Config.instance:getEnhanceCo(slot0.actId, slot5)
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0.nodeDetailMo.enhanceList) do
+		local var_8_0 = arg_8_0.enhanceItemList[iter_8_0] or arg_8_0:creatEnhanceItem(iter_8_0)
+		local var_8_1 = Activity191Config.instance:getEnhanceCo(arg_8_0.actId, iter_8_1)
 
-		slot6.buffIcon:LoadImage(ResUrl.getAct174BuffIcon(slot7.icon))
+		var_8_0.buffIcon:LoadImage(ResUrl.getAct174BuffIcon(var_8_1.icon))
 
-		slot6.txtName.text = slot7.title
+		var_8_0.txtName.text = var_8_1.title
 
-		if lua_activity191_effect.configDict[string.splitToNumber(slot7.effects, "|")[1]] then
-			if slot10.type == Activity191Enum.EffectType.EnhanceHero then
-				slot6.txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot7.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot10.typeParam)
+		local var_8_2 = SkillHelper.addLink(var_8_1.desc)
+		local var_8_3 = string.splitToNumber(var_8_1.effects, "|")[1]
+		local var_8_4 = lua_activity191_effect.configDict[var_8_3]
 
-				SkillHelper.addHyperLinkClick(slot6.txtDesc, Activity191Helper.clickHyperLinkDestiny)
-			elseif slot10.type == Activity191Enum.EffectType.EnhanceItem then
-				slot6.txtDesc.text = Activity191Helper.buildDesc(slot8, Activity191Enum.HyperLinkPattern.EnhanceItem, slot10.typeParam .. "#")
+		if var_8_4 then
+			if var_8_4.type == Activity191Enum.EffectType.EnhanceHero then
+				var_8_0.txtDesc.text = Activity191Helper.buildDesc(var_8_2, Activity191Enum.HyperLinkPattern.EnhanceDestiny, var_8_4.typeParam)
 
-				SkillHelper.addHyperLinkClick(slot6.txtDesc, Activity191Helper.clickHyperLinkItem)
+				SkillHelper.addHyperLinkClick(var_8_0.txtDesc, Activity191Helper.clickHyperLinkDestiny)
+			elseif var_8_4.type == Activity191Enum.EffectType.EnhanceItem then
+				var_8_0.txtDesc.text = Activity191Helper.buildDesc(var_8_2, Activity191Enum.HyperLinkPattern.EnhanceItem, var_8_4.typeParam .. "#")
+
+				SkillHelper.addHyperLinkClick(var_8_0.txtDesc, Activity191Helper.clickHyperLinkItem)
 			else
-				slot6.txtDesc.text = slot8
+				var_8_0.txtDesc.text = var_8_2
 			end
 		else
-			slot6.txtDesc.text = slot8
+			var_8_0.txtDesc.text = var_8_2
 		end
 
-		gohelper.setActive(slot6.btnFresh, (slot0.nodeDetailMo.enhanceNumList[slot4] or 0) < slot0.maxFreshNum)
+		local var_8_5 = arg_8_0.nodeDetailMo.enhanceNumList[iter_8_0] or 0
+
+		gohelper.setActive(var_8_0.btnFresh, var_8_5 < arg_8_0.maxFreshNum)
 	end
 end
 
-function slot0.creatEnhanceItem(slot0, slot1)
-	slot2 = slot0:getUserDataTb_()
-	slot3 = gohelper.cloneInPlace(slot0._goSelectItem, "enhanceItem" .. slot1)
-	slot2.anim = slot3:GetComponent(gohelper.Type_Animator)
-	slot2.buffIcon = gohelper.findChildSingleImage(slot3, "simage_bufficon")
-	slot2.txtName = gohelper.findChildText(slot3, "txt_name")
-	slot2.txtDesc = gohelper.findChildText(slot3, "scroll_desc/Viewport/go_desccontent/txt_desc")
+function var_0_0.creatEnhanceItem(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0:getUserDataTb_()
+	local var_9_1 = gohelper.cloneInPlace(arg_9_0._goSelectItem, "enhanceItem" .. arg_9_1)
 
-	slot0:addClickCb(gohelper.findChildButtonWithAudio(slot3, "btn_select"), slot0.clickBuy, slot0, slot1)
+	var_9_0.anim = var_9_1:GetComponent(gohelper.Type_Animator)
+	var_9_0.buffIcon = gohelper.findChildSingleImage(var_9_1, "simage_bufficon")
+	var_9_0.txtName = gohelper.findChildText(var_9_1, "txt_name")
+	var_9_0.txtDesc = gohelper.findChildText(var_9_1, "scroll_desc/Viewport/go_desccontent/txt_desc")
 
-	slot2.btnFresh = gohelper.findChildButtonWithAudio(slot3, "btn_Fresh")
+	local var_9_2 = gohelper.findChildButtonWithAudio(var_9_1, "btn_select")
 
-	slot0:addClickCb(slot2.btnFresh, slot0.clickFresh, slot0, slot1)
+	arg_9_0:addClickCb(var_9_2, arg_9_0.clickBuy, arg_9_0, arg_9_1)
 
-	slot0.enhanceItemList[slot1] = slot2
+	var_9_0.btnFresh = gohelper.findChildButtonWithAudio(var_9_1, "btn_Fresh")
 
-	gohelper.setActive(slot3, true)
+	arg_9_0:addClickCb(var_9_0.btnFresh, arg_9_0.clickFresh, arg_9_0, arg_9_1)
 
-	return slot2
+	arg_9_0.enhanceItemList[arg_9_1] = var_9_0
+
+	gohelper.setActive(var_9_1, true)
+
+	return var_9_0
 end
 
-function slot0.clickBuy(slot0, slot1)
-	if slot0.selectIndex then
+function var_0_0.clickBuy(arg_10_0, arg_10_1)
+	if arg_10_0.selectIndex then
 		return
 	end
 
-	slot0.selectIndex = slot1
+	arg_10_0.selectIndex = arg_10_1
 
-	Activity191Rpc.instance:sendSelect191EnhanceRequest(slot0.actId, slot1, slot0.onSelectEnhance, slot0)
+	Activity191Rpc.instance:sendSelect191EnhanceRequest(arg_10_0.actId, arg_10_1, arg_10_0.onSelectEnhance, arg_10_0)
 end
 
-function slot0.clickFresh(slot0, slot1)
-	if slot0.freshIndex then
+function var_0_0.clickFresh(arg_11_0, arg_11_1)
+	if arg_11_0.freshIndex then
 		return
 	end
 
-	slot0.freshIndex = slot1
+	arg_11_0.freshIndex = arg_11_1
 
-	Activity191Rpc.instance:sendFresh191EnhanceRequest(slot0.actId, slot1, slot0.onFreshEnhance, slot0)
+	Activity191Rpc.instance:sendFresh191EnhanceRequest(arg_11_0.actId, arg_11_1, arg_11_0.onFreshEnhance, arg_11_0)
 end
 
-function slot0.onSelectEnhance(slot0, slot1, slot2)
-	if slot2 == 0 then
-		if slot0.enhanceItemList[slot0.selectIndex] then
-			slot3.anim:Play(UIAnimationName.Close)
+function var_0_0.onSelectEnhance(arg_12_0, arg_12_1, arg_12_2)
+	if arg_12_2 == 0 then
+		local var_12_0 = arg_12_0.enhanceItemList[arg_12_0.selectIndex]
+
+		if var_12_0 then
+			var_12_0.anim:Play(UIAnimationName.Close)
 			AudioMgr.instance:trigger(AudioEnum.Act174.play_ui_shuori_qiyuan_reset)
 		end
 
-		TaskDispatcher.runDelay(slot0.delayClose, slot0, 0.67)
+		TaskDispatcher.runDelay(arg_12_0.delayClose, arg_12_0, 0.67)
 	end
 end
 
-function slot0.delayClose(slot0)
-	slot0.selectIndex = nil
+function var_0_0.delayClose(arg_13_0)
+	arg_13_0.selectIndex = nil
 
 	if not Activity191Controller.instance:checkOpenGetView() then
 		Activity191Controller.instance:nextStep()
 	end
 
-	slot0:closeThis()
+	arg_13_0:closeThis()
 end
 
-function slot0.onFreshEnhance(slot0, slot1, slot2)
-	if slot2 == 0 then
-		if slot0.freshIndex then
-			slot0.enhanceItemList[slot0.freshIndex].anim:Play("switch", 0, 0)
+function var_0_0.onFreshEnhance(arg_14_0, arg_14_1, arg_14_2)
+	if arg_14_2 == 0 then
+		if arg_14_0.freshIndex then
+			arg_14_0.enhanceItemList[arg_14_0.freshIndex].anim:Play("switch", 0, 0)
 		end
 
-		slot0.nodeDetailMo = Activity191Model.instance:getActInfo():getGameInfo():getNodeDetailMo()
+		arg_14_0.nodeDetailMo = Activity191Model.instance:getActInfo():getGameInfo():getNodeDetailMo()
 
-		TaskDispatcher.runDelay(slot0.refreshUI, slot0, 0.16)
+		TaskDispatcher.runDelay(arg_14_0.refreshUI, arg_14_0, 0.16)
 	end
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0.delayClose, slot0)
+function var_0_0.onDestroyView(arg_15_0)
+	TaskDispatcher.cancelTask(arg_15_0.delayClose, arg_15_0)
 end
 
-return slot0
+return var_0_0

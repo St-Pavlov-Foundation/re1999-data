@@ -1,392 +1,429 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.LengZhou6GameModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.LengZhou6GameModel", package.seeall)
 
-slot0 = class("LengZhou6GameModel", BaseModel)
+local var_0_0 = class("LengZhou6GameModel", BaseModel)
 
-function slot0.ctor(slot0)
-	slot0._round = 0
-	slot0._enemySettleCount = 1
-	slot0._battleModel = LengZhou6Enum.BattleModel.normal
-	slot0._recordServerData = nil
-	slot0._endlessBattleProgress = nil
-	slot0._isFirstEnterLayer = true
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._round = 0
+	arg_1_0._enemySettleCount = 1
+	arg_1_0._battleModel = LengZhou6Enum.BattleModel.normal
+	arg_1_0._recordServerData = nil
+	arg_1_0._endlessBattleProgress = nil
+	arg_1_0._isFirstEnterLayer = true
 end
 
-function slot0.enterLevel(slot0, slot1)
-	slot0._isFirstEnterLayer = true
-	slot0._episodeConfig = slot1
-	slot0._levelId = slot1.episodeId
+function var_0_0.enterLevel(arg_2_0, arg_2_1)
+	arg_2_0._isFirstEnterLayer = true
+	arg_2_0._episodeConfig = arg_2_1
+	arg_2_0._levelId = arg_2_1.episodeId
 
-	slot0:setBattleModel(slot1.type)
+	arg_2_0:setBattleModel(arg_2_1.type)
 
-	if slot1.type == LengZhou6Enum.BattleModel.infinite then
-		slot0:initSelectSkillId()
+	if arg_2_1.type == LengZhou6Enum.BattleModel.infinite then
+		arg_2_0:initSelectSkillId()
 
-		if slot0._recordServerData == nil then
-			slot0._recordServerData = RecordServerDataMO.New()
+		if arg_2_0._recordServerData == nil then
+			arg_2_0._recordServerData = RecordServerDataMO.New()
 		end
 	end
 
-	if LengZhou6Model.instance:getEpisodeInfoMo(slot1.episodeId) ~= nil and not string.nilorempty(slot2.progress) then
-		slot0._recordServerData:initFormJson(slot2.progress)
-		slot0:initByServerData()
+	local var_2_0 = LengZhou6Model.instance:getEpisodeInfoMo(arg_2_1.episodeId)
+
+	if var_2_0 ~= nil and not string.nilorempty(var_2_0.progress) then
+		arg_2_0._recordServerData:initFormJson(var_2_0.progress)
+		arg_2_0:initByServerData()
 	else
-		slot0:initByConfig(slot1)
+		arg_2_0:initByConfig(arg_2_1)
 
-		if slot1.type == LengZhou6Enum.BattleModel.infinite then
-			slot0:setEndLessBattleProgress(LengZhou6Enum.BattleProgress.selectSkill)
+		if arg_2_1.type == LengZhou6Enum.BattleModel.infinite then
+			arg_2_0:setEndLessBattleProgress(LengZhou6Enum.BattleProgress.selectSkill)
 		end
 	end
 
-	slot0._lineEliminateRate = 0
+	arg_2_0._lineEliminateRate = 0
 
-	slot0:setCurGameStep(LengZhou6Enum.BattleStep.gameBegin)
+	arg_2_0:setCurGameStep(LengZhou6Enum.BattleStep.gameBegin)
 end
 
-function slot0.initByConfig(slot0, slot1)
-	slot0._playerEntity = PlayerEntity.New()
+function var_0_0.initByConfig(arg_3_0, arg_3_1)
+	arg_3_0._playerEntity = PlayerEntity.New()
 
-	if slot1.masterId then
-		slot0:initPlayer(slot2)
+	local var_3_0 = arg_3_1.masterId
+
+	if var_3_0 then
+		arg_3_0:initPlayer(var_3_0)
 	end
 
-	slot0:_initEnemyByConfig(slot1)
+	arg_3_0:_initEnemyByConfig(arg_3_1)
 
-	slot0._round = slot1.maxRound
+	arg_3_0._round = arg_3_1.maxRound
 
-	if slot0:getBattleModel() == LengZhou6Enum.BattleModel.infinite then
-		slot0._round = slot0:calRound()
-	end
-end
-
-function slot0._initEnemyByConfig(slot0, slot1)
-	slot0._enemyEntity = EnemyEntity.New()
-
-	if string.splitToNumber(slot1.enemyId, "#")[1] == 1 and slot2[2] or slot0:calEnemyId() then
-		slot0:initEnemy(slot3)
-		slot0._enemyEntity:setHp(slot0:calEnemyHpUp() + slot0._enemyEntity:getHp())
+	if arg_3_0:getBattleModel() == LengZhou6Enum.BattleModel.infinite then
+		arg_3_0._round = arg_3_0:calRound()
 	end
 end
 
-function slot0.initByServerData(slot0)
-	if slot0._recordServerData ~= nil then
-		slot1 = slot0._recordServerData:getData()
-		slot0._round = slot1.round
-		slot0._playerEntity = PlayerEntity.New()
+function var_0_0._initEnemyByConfig(arg_4_0, arg_4_1)
+	arg_4_0._enemyEntity = EnemyEntity.New()
 
-		if slot1.playerId then
-			slot0:initPlayer(slot2, slot1.playerSkillList)
+	local var_4_0 = string.splitToNumber(arg_4_1.enemyId, "#")
+	local var_4_1 = var_4_0[1] == 1 and var_4_0[2] or arg_4_0:calEnemyId()
 
-			if slot1.playerSkillList ~= nil then
-				for slot6 = 1, #slot1.playerSkillList do
-					slot0:setPlayerSelectSkillId(slot6, slot1.playerSkillList[slot6])
+	if var_4_1 then
+		arg_4_0:initEnemy(var_4_1)
+
+		local var_4_2 = arg_4_0:calEnemyHpUp()
+
+		arg_4_0._enemyEntity:setHp(var_4_2 + arg_4_0._enemyEntity:getHp())
+	end
+end
+
+function var_0_0.initByServerData(arg_5_0)
+	if arg_5_0._recordServerData ~= nil then
+		local var_5_0 = arg_5_0._recordServerData:getData()
+
+		arg_5_0._round = var_5_0.round
+		arg_5_0._playerEntity = PlayerEntity.New()
+
+		local var_5_1 = var_5_0.playerId
+
+		if var_5_1 then
+			arg_5_0:initPlayer(var_5_1, var_5_0.playerSkillList)
+
+			if var_5_0.playerSkillList ~= nil then
+				for iter_5_0 = 1, #var_5_0.playerSkillList do
+					arg_5_0:setPlayerSelectSkillId(iter_5_0, var_5_0.playerSkillList[iter_5_0])
 				end
 			end
 
-			slot0._playerEntity:setHp(slot1.playerHp)
+			arg_5_0._playerEntity:setHp(var_5_0.playerHp)
 		end
 
-		if slot1.enemyConfigId then
-			LengZhou6Config.instance:recordEnemyLastRandomId(slot1.endLessLayer)
-			LengZhou6Config.instance:setSelectEnemyRandomId(slot1.endLessLayer, slot3)
+		local var_5_2 = var_5_0.enemyConfigId
 
-			slot0._enemyEntity = EnemyEntity.New()
+		if var_5_2 then
+			LengZhou6Config.instance:recordEnemyLastRandomId(var_5_0.endLessLayer)
+			LengZhou6Config.instance:setSelectEnemyRandomId(var_5_0.endLessLayer, var_5_2)
 
-			slot0:initEnemy(slot3)
-			slot0._enemyEntity:setHp(slot1.enemyHp)
-			slot0._enemyEntity:setActionStepIndexAndRound(slot1.curActionStepIndex, slot1.skillRound)
+			arg_5_0._enemyEntity = EnemyEntity.New()
+
+			arg_5_0:initEnemy(var_5_2)
+			arg_5_0._enemyEntity:setHp(var_5_0.enemyHp)
+			arg_5_0._enemyEntity:setActionStepIndexAndRound(var_5_0.curActionStepIndex, var_5_0.skillRound)
 		end
 
-		slot0._round = slot1.round
+		arg_5_0._round = var_5_0.round
 
-		slot0:setEndLessModelLayer(slot1.endLessLayer)
-		slot0:setEndLessBattleProgress(slot1.endLessBattleProgress)
+		arg_5_0:setEndLessModelLayer(var_5_0.endLessLayer)
+		arg_5_0:setEndLessBattleProgress(var_5_0.endLessBattleProgress)
 
-		if slot1.endLessLayer ~= LengZhou6Enum.DefaultEndLessBeginRound or slot1.endLessBattleProgress ~= LengZhou6Enum.BattleProgress.selectSkill then
-			slot0._isFirstEnterLayer = false
+		if var_5_0.endLessLayer ~= LengZhou6Enum.DefaultEndLessBeginRound or var_5_0.endLessBattleProgress ~= LengZhou6Enum.BattleProgress.selectSkill then
+			arg_5_0._isFirstEnterLayer = false
 		end
 	end
 end
 
-function slot0.getRecordServerData(slot0)
-	return slot0._recordServerData
+function var_0_0.getRecordServerData(arg_6_0)
+	return arg_6_0._recordServerData
 end
 
-function slot0.initPlayer(slot0, slot1, slot2, slot3)
-	slot0._playerEntity:init(slot1)
+function var_0_0.initPlayer(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	arg_7_0._playerEntity:init(arg_7_1)
 
-	if slot2 ~= nil then
-		slot0._playerEntity:resetData(slot2)
+	if arg_7_2 ~= nil then
+		arg_7_0._playerEntity:resetData(arg_7_2)
 	end
 end
 
-function slot0.initEnemy(slot0, slot1, slot2, slot3)
-	slot0._enemyEntity:init(slot1)
+function var_0_0.initEnemy(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	arg_8_0._enemyEntity:init(arg_8_1)
 end
 
-function slot0.getBattleModel(slot0)
-	return slot0._battleModel
+function var_0_0.getBattleModel(arg_9_0)
+	return arg_9_0._battleModel
 end
 
-function slot0.setBattleModel(slot0, slot1)
-	slot0._battleModel = slot1
+function var_0_0.setBattleModel(arg_10_0, arg_10_1)
+	arg_10_0._battleModel = arg_10_1
 end
 
-function slot0.getEpisodeConfig(slot0)
-	return slot0._episodeConfig
+function var_0_0.getEpisodeConfig(arg_11_0)
+	return arg_11_0._episodeConfig
 end
 
-function slot0.getPlayer(slot0)
-	return slot0._playerEntity
+function var_0_0.getPlayer(arg_12_0)
+	return arg_12_0._playerEntity
 end
 
-function slot0.getEnemy(slot0)
-	return slot0._enemyEntity
+function var_0_0.getEnemy(arg_13_0)
+	return arg_13_0._enemyEntity
 end
 
-function slot0.changeRound(slot0, slot1)
-	slot0._round = math.max(slot0._round + slot1, 0)
+function var_0_0.changeRound(arg_14_0, arg_14_1)
+	arg_14_0._round = math.max(arg_14_0._round + arg_14_1, 0)
 
 	LengZhou6StatHelper.instance:updateRound()
 end
 
-function slot0.getCurRound(slot0)
-	return slot0._round
+function var_0_0.getCurRound(arg_15_0)
+	return arg_15_0._round
 end
 
-function slot0.gameIsOver(slot0)
-	if slot0._enemyEntity == nil or slot0._playerEntity == nil then
+function var_0_0.gameIsOver(arg_16_0)
+	if arg_16_0._enemyEntity == nil or arg_16_0._playerEntity == nil then
 		return false
 	end
 
-	return slot0._round == 0 or slot0._enemyEntity:getHp() <= 0 or slot0._playerEntity:getHp() <= 0
+	return arg_16_0._round == 0 or arg_16_0._enemyEntity:getHp() <= 0 or arg_16_0._playerEntity:getHp() <= 0
 end
 
-function slot0.playerIsWin(slot0)
-	if slot0._enemyEntity == nil then
+function var_0_0.playerIsWin(arg_17_0)
+	if arg_17_0._enemyEntity == nil then
 		return false
 	end
 
-	return slot0._enemyEntity:getHp() <= 0 and slot0._playerEntity:getHp() > 0 and slot0._round > 0
+	return arg_17_0._enemyEntity:getHp() <= 0 and arg_17_0._playerEntity:getHp() > 0 and arg_17_0._round > 0
 end
 
-function slot0.enemySettle(slot0)
+function var_0_0.enemySettle(arg_18_0)
+	return
 end
 
-slot1 = "\n"
+local var_0_1 = "\n"
 
-function slot0.getTotalPlayerSettle(slot0)
-	slot1 = 0
-	slot2 = 0
+function var_0_0.getTotalPlayerSettle(arg_19_0)
+	local var_19_0 = 0
+	local var_19_1 = 0
 
-	if slot0._playerTempDamages ~= nil then
-		for slot6 = 1, #slot0._playerTempDamages do
-			slot1 = slot1 + slot0._playerTempDamages[slot6] * (1 + slot0._lineEliminateRate * (slot6 - 1))
+	if arg_19_0._playerTempDamages ~= nil then
+		for iter_19_0 = 1, #arg_19_0._playerTempDamages do
+			local var_19_2 = 1 + arg_19_0._lineEliminateRate * (iter_19_0 - 1)
+			local var_19_3 = arg_19_0._playerTempDamages[iter_19_0] * var_19_2
+
+			var_19_0 = var_19_0 + var_19_3
 
 			if isDebugBuild then
-				uv0 = uv0 .. "消除第 " .. slot6 .. " 次 连消伤害：" .. slot8 .. " = " .. slot0._playerTempDamages[slot6] .. " * " .. slot7 .. "\n"
+				var_0_1 = var_0_1 .. "消除第 " .. iter_19_0 .. " 次 连消伤害：" .. var_19_3 .. " = " .. arg_19_0._playerTempDamages[iter_19_0] .. " * " .. var_19_2 .. "\n"
 			end
 		end
 	end
 
-	if slot0._playerTempHps ~= nil then
-		for slot6 = 1, #slot0._playerTempHps do
-			slot2 = slot2 + slot0._playerTempHps[slot6]
+	if arg_19_0._playerTempHps ~= nil then
+		for iter_19_1 = 1, #arg_19_0._playerTempHps do
+			var_19_1 = var_19_1 + arg_19_0._playerTempHps[iter_19_1]
 		end
 	end
 
 	if isDebugBuild then
-		uv0 = uv0 .. "消除伤害总值：" .. math.floor(slot1) .. "\n"
+		var_0_1 = var_0_1 .. "消除伤害总值：" .. math.floor(var_19_0) .. "\n"
 
-		logNormal(uv0)
+		logNormal(var_0_1)
 
-		uv0 = "\n"
+		var_0_1 = "\n"
 
-		logNormal("消除治疗总值：" .. math.floor(slot2))
+		logNormal("消除治疗总值：" .. math.floor(var_19_1))
 	end
 
-	return math.floor(slot1), math.floor(slot2)
+	return math.floor(var_19_0), math.floor(var_19_1)
 end
 
-function slot0.setLineEliminateRate(slot0, slot1)
-	slot0._lineEliminateRate = slot1
+function var_0_0.setLineEliminateRate(arg_20_0, arg_20_1)
+	arg_20_0._lineEliminateRate = arg_20_1
 end
 
-function slot0.clearTempData(slot0)
-	if slot0._playerTempDamages == nil or slot0._playerTempHps == nil then
+function var_0_0.clearTempData(arg_21_0)
+	if arg_21_0._playerTempDamages == nil or arg_21_0._playerTempHps == nil then
 		return
 	end
 
-	tabletool.clear(slot0._playerTempDamages)
-	tabletool.clear(slot0._playerTempHps)
+	tabletool.clear(arg_21_0._playerTempDamages)
+	tabletool.clear(arg_21_0._playerTempHps)
 end
 
-function slot0._playerSettle(slot0)
-	slot1 = LocalEliminateChessModel.instance:getCurEliminateRecordData()
+function var_0_0._playerSettle(arg_22_0)
+	local var_22_0 = LocalEliminateChessModel.instance:getCurEliminateRecordData()
+	local var_22_1 = arg_22_0._playerEntity:calDamage(var_22_0)
+	local var_22_2 = arg_22_0._playerEntity:calTreatment(var_22_0)
 
-	return slot0._playerEntity:calDamage(slot1), slot0._playerEntity:calTreatment(slot1)
+	return var_22_1, var_22_2
 end
 
-function slot0.playerSettle(slot0)
-	uv0.instance:setCurGameStep(LengZhou6Enum.BattleStep.calHpBefore)
+function var_0_0.playerSettle(arg_23_0)
+	var_0_0.instance:setCurGameStep(LengZhou6Enum.BattleStep.calHpBefore)
 
-	slot1, slot2 = slot0:_playerSettle()
+	local var_23_0, var_23_1 = arg_23_0:_playerSettle()
 
-	uv0.instance:setCurGameStep(LengZhou6Enum.BattleStep.calHpAfter)
+	var_0_0.instance:setCurGameStep(LengZhou6Enum.BattleStep.calHpAfter)
 
-	if slot0._playerTempDamages == nil then
-		slot0._playerTempDamages = {}
+	if arg_23_0._playerTempDamages == nil then
+		arg_23_0._playerTempDamages = {}
 	end
 
-	table.insert(slot0._playerTempDamages, slot1)
+	table.insert(arg_23_0._playerTempDamages, var_23_0)
 
-	if slot0._playerTempHps == nil then
-		slot0._playerTempHps = {}
+	if arg_23_0._playerTempHps == nil then
+		arg_23_0._playerTempHps = {}
 	end
 
-	table.insert(slot0._playerTempHps, slot2)
+	table.insert(arg_23_0._playerTempHps, var_23_1)
 end
 
-function slot0.addBuffIdToEntity(slot0)
+function var_0_0.addBuffIdToEntity(arg_24_0)
+	return
 end
 
-function slot0.setEnemySettleCount(slot0, slot1)
-	slot0._enemySettleCount = slot1
+function var_0_0.setEnemySettleCount(arg_25_0, arg_25_1)
+	arg_25_0._enemySettleCount = arg_25_1
 end
 
-function slot0.getEnemySettleCount(slot0)
-	return slot0._enemySettleCount
+function var_0_0.getEnemySettleCount(arg_26_0)
+	return arg_26_0._enemySettleCount
 end
 
-function slot0.resetEnemySettleCount(slot0)
-	slot0:setEnemySettleCount(1)
+function var_0_0.resetEnemySettleCount(arg_27_0)
+	arg_27_0:setEnemySettleCount(1)
 end
 
-function slot0.triggerPlayerBuffOrSkill(slot0)
-	if slot0._playerEntity then
-		slot0._playerEntity:triggerBuffAndSkill()
+function var_0_0.triggerPlayerBuffOrSkill(arg_28_0)
+	if arg_28_0._playerEntity then
+		arg_28_0._playerEntity:triggerBuffAndSkill()
 	end
 
-	if slot0._enemyEntity then
-		slot0._enemyEntity:triggerBuffAndSkill()
+	if arg_28_0._enemyEntity then
+		arg_28_0._enemyEntity:triggerBuffAndSkill()
 	end
 end
 
-function slot0.setCurGameStep(slot0, slot1)
-	slot0._curGameStep = slot1
+function var_0_0.setCurGameStep(arg_29_0, arg_29_1)
+	arg_29_0._curGameStep = arg_29_1
 
-	slot0:triggerPlayerBuffOrSkill()
+	arg_29_0:triggerPlayerBuffOrSkill()
 end
 
-function slot0.getCurGameStep(slot0)
-	return slot0._curGameStep
+function var_0_0.getCurGameStep(arg_30_0)
+	return arg_30_0._curGameStep
 end
 
-function slot0.getCurEliminateSpEliminateCount(slot0, slot1)
-	slot4 = 0
+function var_0_0.getCurEliminateSpEliminateCount(arg_31_0, arg_31_1)
+	local var_31_0 = LocalEliminateChessModel.instance:getCurEliminateRecordData():getEliminateTypeMap()
+	local var_31_1 = 0
 
-	for slot8, slot9 in pairs(LocalEliminateChessModel.instance:getCurEliminateRecordData():getEliminateTypeMap()) do
-		if slot8 == slot1 then
-			for slot13 = 1, #slot9 do
-				if slot9[slot13].spEliminateCount ~= nil then
-					slot4 = slot4 + slot15
+	for iter_31_0, iter_31_1 in pairs(var_31_0) do
+		if iter_31_0 == arg_31_1 then
+			for iter_31_2 = 1, #iter_31_1 do
+				local var_31_2 = iter_31_1[iter_31_2].spEliminateCount
+
+				if var_31_2 ~= nil then
+					var_31_1 = var_31_1 + var_31_2
 				end
 			end
 		end
 	end
 
-	return slot4
+	return var_31_1
 end
 
-function slot0.clear(slot0)
-	slot0._endLessModelLayer = nil
-	slot0._isFirstEnterLayer = true
-	slot0._episodeConfig = nil
-	slot0._playerEntity = nil
-	slot0._enemyEntity = nil
-	slot0._round = 0
-	slot0._enemySettleCount = 1
-	slot0._playerTempDamages = nil
-	slot0._playerTempHps = nil
-	slot0._recordServerData = nil
-	slot0._recordLayerId = nil
-	slot0._playerSelectSkillIds = nil
+function var_0_0.clear(arg_32_0)
+	arg_32_0._endLessModelLayer = nil
+	arg_32_0._isFirstEnterLayer = true
+	arg_32_0._episodeConfig = nil
+	arg_32_0._playerEntity = nil
+	arg_32_0._enemyEntity = nil
+	arg_32_0._round = 0
+	arg_32_0._enemySettleCount = 1
+	arg_32_0._playerTempDamages = nil
+	arg_32_0._playerTempHps = nil
+	arg_32_0._recordServerData = nil
+	arg_32_0._recordLayerId = nil
+	arg_32_0._playerSelectSkillIds = nil
 
 	LengZhou6Config.instance:clearLevelCache()
 end
 
-function slot0.setEndLessModelLayer(slot0, slot1)
-	slot0._endLessModelLayer = slot1
+function var_0_0.setEndLessModelLayer(arg_33_0, arg_33_1)
+	arg_33_0._endLessModelLayer = arg_33_1
 end
 
-function slot0.getEndLessModelLayer(slot0)
-	return slot0._endLessModelLayer or 1
+function var_0_0.getEndLessModelLayer(arg_34_0)
+	return arg_34_0._endLessModelLayer or 1
 end
 
-function slot0.setEndLessBattleProgress(slot0, slot1)
-	slot0._endlessBattleProgress = slot1
+function var_0_0.setEndLessBattleProgress(arg_35_0, arg_35_1)
+	arg_35_0._endlessBattleProgress = arg_35_1
 
 	LengZhou6GameController.instance:dispatchEvent(LengZhou6Event.OnEndlessChangeSelectState)
 end
 
-function slot0.getEndLessBattleProgress(slot0)
-	return slot0._endlessBattleProgress
+function var_0_0.getEndLessBattleProgress(arg_36_0)
+	return arg_36_0._endlessBattleProgress
 end
 
-function slot0.calEnemyId(slot0)
-	if (slot0:getEndLessModelLayer() or 1) <= LengZhou6Config.instance:getEliminateBattleCost(9) then
-		if LengZhou6Config.instance:getEnemyRandomIdsConfig(slot1) then
-			slot4 = slot3[math.random(1, #slot3)]
+function var_0_0.calEnemyId(arg_37_0)
+	local var_37_0 = arg_37_0:getEndLessModelLayer() or 1
+	local var_37_1 = LengZhou6Config.instance:getEliminateBattleCost(9)
 
-			LengZhou6Config.instance:setSelectEnemyRandomId(slot1, slot4)
+	if var_37_0 <= var_37_1 then
+		local var_37_2 = LengZhou6Config.instance:getEnemyRandomIdsConfig(var_37_0)
 
-			return slot4
+		if var_37_2 then
+			local var_37_3 = var_37_2[math.random(1, #var_37_2)]
+
+			LengZhou6Config.instance:setSelectEnemyRandomId(var_37_0, var_37_3)
+
+			return var_37_3
 		else
 			return LengZhou6Enum.defaultEnemy
 		end
 	end
 
-	slot3 = slot1 - slot2
+	local var_37_4 = var_37_0 - var_37_1
 
-	if slot0._recordLayerId == nil then
-		slot0._recordLayerId = {}
+	if arg_37_0._recordLayerId == nil then
+		arg_37_0._recordLayerId = {}
 	end
 
-	if slot0._recordLayerId[math.ceil(slot3 / 5)] == nil and string.splitToNumber(LengZhou6Config.instance:getEliminateBattleCostStr(16), "#") then
-		slot0._recordLayerId[slot4] = slot6[math.random(1, #slot6)]
-	end
+	local var_37_5 = math.ceil(var_37_4 / 5)
 
-	return slot0._recordLayerId[slot4]
-end
+	if arg_37_0._recordLayerId[var_37_5] == nil then
+		local var_37_6 = LengZhou6Config.instance:getEliminateBattleCostStr(16)
+		local var_37_7 = string.splitToNumber(var_37_6, "#")
 
-function slot0.initSelectSkillId(slot0)
-	if slot0._playerSelectSkillIds == nil then
-		slot0._playerSelectSkillIds = {}
-	end
-end
-
-function slot0.getSelectSkillIdList(slot0)
-	slot1 = {}
-
-	if slot0._playerSelectSkillIds ~= nil then
-		for slot5, slot6 in pairs(slot0._playerSelectSkillIds) do
-			table.insert(slot1, slot6)
+		if var_37_7 then
+			arg_37_0._recordLayerId[var_37_5] = var_37_7[math.random(1, #var_37_7)]
 		end
 	end
 
-	return slot1
+	return arg_37_0._recordLayerId[var_37_5]
 end
 
-function slot0.getSelectSkillId(slot0)
-	return slot0._playerSelectSkillIds
+function var_0_0.initSelectSkillId(arg_38_0)
+	if arg_38_0._playerSelectSkillIds == nil then
+		arg_38_0._playerSelectSkillIds = {}
+	end
 end
 
-function slot0.isSelectSkill(slot0, slot1)
-	if slot0._playerSelectSkillIds == nil then
+function var_0_0.getSelectSkillIdList(arg_39_0)
+	local var_39_0 = {}
+
+	if arg_39_0._playerSelectSkillIds ~= nil then
+		for iter_39_0, iter_39_1 in pairs(arg_39_0._playerSelectSkillIds) do
+			table.insert(var_39_0, iter_39_1)
+		end
+	end
+
+	return var_39_0
+end
+
+function var_0_0.getSelectSkillId(arg_40_0)
+	return arg_40_0._playerSelectSkillIds
+end
+
+function var_0_0.isSelectSkill(arg_41_0, arg_41_1)
+	if arg_41_0._playerSelectSkillIds == nil then
 		return false
 	end
 
-	for slot5, slot6 in pairs(slot0._playerSelectSkillIds) do
-		if slot6 == slot1 then
+	for iter_41_0, iter_41_1 in pairs(arg_41_0._playerSelectSkillIds) do
+		if iter_41_1 == arg_41_1 then
 			return true
 		end
 	end
@@ -394,107 +431,127 @@ function slot0.isSelectSkill(slot0, slot1)
 	return false
 end
 
-function slot0.resetSelectSkillId(slot0)
-	if slot0._playerSelectSkillIds then
-		tabletool.clear(slot0._playerSelectSkillIds)
+function var_0_0.resetSelectSkillId(arg_42_0)
+	if arg_42_0._playerSelectSkillIds then
+		tabletool.clear(arg_42_0._playerSelectSkillIds)
 	end
 end
 
-function slot0.setPlayerSelectSkillId(slot0, slot1, slot2)
-	if slot0._playerSelectSkillIds == nil then
-		slot0._playerSelectSkillIds = {}
+function var_0_0.setPlayerSelectSkillId(arg_43_0, arg_43_1, arg_43_2)
+	if arg_43_0._playerSelectSkillIds == nil then
+		arg_43_0._playerSelectSkillIds = {}
 	end
 
-	slot0._playerSelectSkillIds[slot1] = slot2
+	arg_43_0._playerSelectSkillIds[arg_43_1] = arg_43_2
 end
 
-function slot0.calRound(slot0)
-	slot2 = slot0:getEndLessModelLayer() or 1
+function var_0_0.calRound(arg_44_0)
+	local var_44_0 = arg_44_0:getBattleModel()
+	local var_44_1 = arg_44_0:getEndLessModelLayer() or 1
 
-	if slot0:getBattleModel() == LengZhou6Enum.BattleModel.normal or slot2 == 0 then
-		return slot0._round
+	if var_44_0 == LengZhou6Enum.BattleModel.normal or var_44_1 == 0 then
+		return arg_44_0._round
 	end
 
-	if slot2 - 1 ~= 0 then
-		slot3 = (slot0._round or 0) + (slot7 % LengZhou6Config.instance:getEliminateBattleCost(8) == 0 and LengZhou6Config.instance:getEliminateBattleCost(7) or LengZhou6Config.instance:getEliminateBattleCost(6))
+	local var_44_2 = arg_44_0._round or 0
+	local var_44_3 = LengZhou6Config.instance:getEliminateBattleCost(6)
+	local var_44_4 = LengZhou6Config.instance:getEliminateBattleCost(7)
+	local var_44_5 = LengZhou6Config.instance:getEliminateBattleCost(8)
+	local var_44_6 = var_44_1 - 1
+
+	if var_44_6 ~= 0 then
+		var_44_2 = var_44_2 + (var_44_6 % var_44_5 == 0 and var_44_4 or var_44_3)
 	end
 
-	return slot3
+	return var_44_2
 end
 
-function slot0.getSkillEffectUp(slot0, slot1)
-	if slot0:getBattleModel() == LengZhou6Enum.BattleModel.normal or (slot0:getEndLessModelLayer() or 1) == 0 then
+function var_0_0.getSkillEffectUp(arg_45_0, arg_45_1)
+	local var_45_0 = arg_45_0:getBattleModel()
+	local var_45_1 = arg_45_0:getEndLessModelLayer() or 1
+
+	if var_45_0 == LengZhou6Enum.BattleModel.normal or var_45_1 == 0 then
 		return 0
 	end
 
-	return LengZhou6Config.instance:getEliminateBattleEndlessMode(math.min(slot0:getEndLessModelLayer() or 1, LengZhou6Config.instance:getEliminateBattleCost(9))) and slot5[slot1] or 0
+	local var_45_2 = math.min(arg_45_0:getEndLessModelLayer() or 1, LengZhou6Config.instance:getEliminateBattleCost(9))
+	local var_45_3 = LengZhou6Config.instance:getEliminateBattleEndlessMode(var_45_2)
+
+	return var_45_3 and var_45_3[arg_45_1] or 0
 end
 
-function slot0.calEnemyHpUp(slot0)
-	slot2 = slot0:getEndLessModelLayer() or 1
+function var_0_0.calEnemyHpUp(arg_46_0)
+	local var_46_0 = arg_46_0:getBattleModel()
+	local var_46_1 = arg_46_0:getEndLessModelLayer() or 1
 
-	if slot0:getBattleModel() == LengZhou6Enum.BattleModel.normal or slot2 == 0 then
+	if var_46_0 == LengZhou6Enum.BattleModel.normal or var_46_1 == 0 then
 		return 0
 	end
 
-	slot3 = LengZhou6Config.instance:getEliminateBattleCost(9)
+	local var_46_2 = LengZhou6Config.instance:getEliminateBattleCost(9)
 
-	if slot2 > 0 and slot2 <= slot3 then
-		return LengZhou6Config.instance:getEliminateBattleEndlessMode(slot2).hp
+	if var_46_1 > 0 and var_46_1 <= var_46_2 then
+		return LengZhou6Config.instance:getEliminateBattleEndlessMode(var_46_1).hp
 	end
 
-	for slot11 = 1, slot2 - slot3 do
-		slot5 = LengZhou6Config.instance:getEliminateBattleEndlessMode(slot3).hp + (slot11 % 5 == 0 and LengZhou6Config.instance:getEliminateBattleCost(11) or LengZhou6Config.instance:getEliminateBattleCost(10))
+	local var_46_3 = LengZhou6Config.instance:getEliminateBattleEndlessMode(var_46_2).hp
+	local var_46_4 = LengZhou6Config.instance:getEliminateBattleCost(10)
+	local var_46_5 = LengZhou6Config.instance:getEliminateBattleCost(11)
+
+	for iter_46_0 = 1, var_46_1 - var_46_2 do
+		var_46_3 = var_46_3 + (iter_46_0 % 5 == 0 and var_46_5 or var_46_4)
 	end
 
-	return slot5
+	return var_46_3
 end
 
-function slot0.enterNextLayer(slot0)
-	if slot0._playerEntity then
-		slot0._playerEntity:resetData(uv0.instance:getSelectSkillIdList())
+function var_0_0.enterNextLayer(arg_47_0)
+	if arg_47_0._playerEntity then
+		local var_47_0 = var_0_0.instance:getSelectSkillIdList()
+
+		arg_47_0._playerEntity:resetData(var_47_0)
 	end
 
-	slot1 = slot0:getEndLessModelLayer()
+	local var_47_1 = arg_47_0:getEndLessModelLayer()
 
-	if slot0._isFirstEnterLayer then
-		slot0:setEndLessModelLayer(LengZhou6Enum.DefaultEndLessBeginRound)
+	if arg_47_0._isFirstEnterLayer then
+		arg_47_0:setEndLessModelLayer(LengZhou6Enum.DefaultEndLessBeginRound)
 
-		slot0._isFirstEnterLayer = false
+		arg_47_0._isFirstEnterLayer = false
 	else
 		LocalEliminateChessModel.instance:createInitMoveState()
-		slot0:setEndLessModelLayer(slot1 + 1)
-		slot0:_initEnemyByConfig(slot0._episodeConfig)
+		arg_47_0:setEndLessModelLayer(var_47_1 + 1)
+		arg_47_0:_initEnemyByConfig(arg_47_0._episodeConfig)
 	end
 
-	if slot0:getBattleModel() == LengZhou6Enum.BattleModel.infinite then
-		slot0._round = slot0:calRound()
+	if arg_47_0:getBattleModel() == LengZhou6Enum.BattleModel.infinite then
+		arg_47_0._round = arg_47_0:calRound()
 	end
 
-	slot0:setCurGameStep(LengZhou6Enum.BattleStep.gameBegin)
-	uv0.instance:setEndLessBattleProgress(LengZhou6Enum.BattleProgress.selectFinish)
+	arg_47_0:setCurGameStep(LengZhou6Enum.BattleStep.gameBegin)
+	var_0_0.instance:setEndLessBattleProgress(LengZhou6Enum.BattleProgress.selectFinish)
 end
 
-function slot0.recordChessData(slot0)
-	slot1 = LocalEliminateChessModel.instance:getInitData()
+function var_0_0.recordChessData(arg_48_0)
+	local var_48_0 = LocalEliminateChessModel.instance:getInitData()
 
-	if slot0._recordServerData and slot1 ~= nil then
-		slot0._recordServerData:record(slot1)
+	if arg_48_0._recordServerData and var_48_0 ~= nil then
+		arg_48_0._recordServerData:record(var_48_0)
 	end
 end
 
-function slot0.canSelectSkill(slot0)
-	if uv0.instance:getEndLessModelLayer() % LengZhou6Enum.EndLessChangeSkillLayer == 0 then
+function var_0_0.canSelectSkill(arg_49_0)
+	if var_0_0.instance:getEndLessModelLayer() % LengZhou6Enum.EndLessChangeSkillLayer == 0 then
 		return true
 	end
 
 	return false
 end
 
-function slot0.isFirstEnterLayer(slot0)
-	return slot0._isFirstEnterLayer
+function var_0_0.isFirstEnterLayer(arg_50_0)
+	return arg_50_0._isFirstEnterLayer
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

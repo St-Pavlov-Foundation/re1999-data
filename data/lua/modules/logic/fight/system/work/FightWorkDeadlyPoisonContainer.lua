@@ -1,86 +1,109 @@
-module("modules.logic.fight.system.work.FightWorkDeadlyPoisonContainer", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkDeadlyPoisonContainer", package.seeall)
 
-slot0 = class("FightWorkDeadlyPoisonContainer", FightStepEffectFlow)
-slot0.existWrapDict = {}
-slot0.targetDict = {}
+local var_0_0 = class("FightWorkDeadlyPoisonContainer", FightStepEffectFlow)
 
-function slot0.onStart(slot0)
-	slot0.targetDict = {}
+var_0_0.existWrapDict = {}
+var_0_0.targetDict = {}
 
-	for slot6, slot7 in ipairs(slot0.fightStepData.actEffect) do
-		if not slot7:isDone() and slot0:getEffectType() == slot7.effectType then
-			slot0:addActEffectData(slot7)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0:getEffectType()
+	local var_1_1 = arg_1_0.fightStepData.actEffect
+
+	arg_1_0.targetDict = {}
+
+	for iter_1_0, iter_1_1 in ipairs(var_1_1) do
+		if not iter_1_1:isDone() and var_1_0 == iter_1_1.effectType then
+			arg_1_0:addActEffectData(iter_1_1)
 		end
 	end
 
-	tabletool.clear(uv0.existWrapDict)
+	tabletool.clear(var_0_0.existWrapDict)
 
-	for slot6, slot7 in pairs(slot0.targetDict) do
-		if FightHelper.getEntity(slot6) then
-			for slot13, slot14 in pairs(slot7) do
-				if slot14[1] > 0 then
-					FightFloatMgr.instance:float(slot6, slot0:getFloatType(), slot8:isMySide() and -slot15 or slot15)
+	for iter_1_2, iter_1_3 in pairs(arg_1_0.targetDict) do
+		local var_1_2 = FightHelper.getEntity(iter_1_2)
 
-					if slot8.nameUI then
-						slot8.nameUI:addHp(-slot15)
+		if var_1_2 then
+			local var_1_3 = var_1_2:isMySide()
+
+			for iter_1_4, iter_1_5 in pairs(iter_1_3) do
+				local var_1_4 = iter_1_5[1]
+
+				if var_1_4 > 0 then
+					local var_1_5 = var_1_3 and -var_1_4 or var_1_4
+
+					FightFloatMgr.instance:float(iter_1_2, arg_1_0:getFloatType(), var_1_5)
+
+					if var_1_2.nameUI then
+						var_1_2.nameUI:addHp(-var_1_4)
 					end
 
-					FightController.instance:dispatchEvent(FightEvent.OnHpChange, slot8, -slot15)
+					FightController.instance:dispatchEvent(FightEvent.OnHpChange, var_1_2, -var_1_4)
 
-					if slot14[2] and not uv0.existWrapDict[slot6] then
-						slot17, slot18 = slot0:getEffectRes()
-						slot19 = slot8.effect:addHangEffect(slot17, slot18, nil, 1)
+					if iter_1_5[2] and not var_0_0.existWrapDict[iter_1_2] then
+						local var_1_6, var_1_7 = arg_1_0:getEffectRes()
+						local var_1_8 = var_1_2.effect:addHangEffect(var_1_6, var_1_7, nil, 1)
 
-						FightRenderOrderMgr.instance:onAddEffectWrap(slot6, slot19)
-						slot19:setLocalPos(0, 0, 0)
+						FightRenderOrderMgr.instance:onAddEffectWrap(iter_1_2, var_1_8)
+						var_1_8:setLocalPos(0, 0, 0)
 
-						uv0.existWrapDict[slot6] = true
+						var_0_0.existWrapDict[iter_1_2] = true
 					end
 				end
 			end
 		end
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0.getEffectRes(slot0)
-	slot2 = slot0.fightStepData.fromId and FightDataHelper.entityMgr:getById(slot1)
-	slot3 = slot2 and slot2.skin
-	slot5 = "v2a3_ddg/ddg_innate_02"
-	slot6 = ModuleEnum.SpineHangPointRoot
+function var_0_0.getEffectRes(arg_2_0)
+	local var_2_0 = arg_2_0.fightStepData.fromId
+	local var_2_1 = var_2_0 and FightDataHelper.entityMgr:getById(var_2_0)
+	local var_2_2 = var_2_1 and var_2_1.skin
+	local var_2_3 = var_2_2 and lua_fight_sp_effect_ddg.configDict[var_2_2]
+	local var_2_4 = "v2a3_ddg/ddg_innate_02"
+	local var_2_5 = ModuleEnum.SpineHangPointRoot
 
-	if slot3 and lua_fight_sp_effect_ddg.configDict[slot3] then
-		slot5 = slot4.posionEffect
-		slot6 = slot4.posionHang
+	if var_2_3 then
+		var_2_4 = var_2_3.posionEffect
+		var_2_5 = var_2_3.posionHang
 	end
 
-	return slot5, slot6
+	return var_2_4, var_2_5
 end
 
-function slot0.addActEffectData(slot0, slot1)
-	if not slot0.targetDict[slot1.targetId] then
-		slot0.targetDict[slot2] = {}
+function var_0_0.addActEffectData(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_1.targetId
+	local var_3_1 = arg_3_0.targetDict[var_3_0]
+
+	if not var_3_1 then
+		var_3_1 = {}
+		arg_3_0.targetDict[var_3_0] = var_3_1
 	end
 
-	if not slot3[tonumber(slot1.reserveId)] then
-		slot3[slot4] = {
-			slot1.effectNum,
-			not string.nilorempty(slot1.reserveStr)
+	local var_3_2 = tonumber(arg_3_1.reserveId)
+	local var_3_3 = not string.nilorempty(arg_3_1.reserveStr)
+	local var_3_4 = var_3_1[var_3_2]
+
+	if not var_3_4 then
+		var_3_4 = {
+			arg_3_1.effectNum,
+			var_3_3
 		}
+		var_3_1[var_3_2] = var_3_4
 	else
-		slot6[1] = slot6[1] + slot1.effectNum
+		var_3_4[1] = var_3_4[1] + arg_3_1.effectNum
 	end
 
-	slot1:setDone()
+	arg_3_1:setDone()
 end
 
-function slot0.getEffectType(slot0)
+function var_0_0.getEffectType(arg_4_0)
 	return FightEnum.EffectType.DEADLYPOISONORIGINDAMAGE
 end
 
-function slot0.getFloatType(slot0)
+function var_0_0.getFloatType(arg_5_0)
 	return FightEnum.FloatType.damage_origin
 end
 
-return slot0
+return var_0_0

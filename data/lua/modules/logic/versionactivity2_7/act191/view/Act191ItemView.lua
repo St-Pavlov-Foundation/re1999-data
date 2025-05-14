@@ -1,39 +1,39 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191ItemView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191ItemView", package.seeall)
 
-slot0 = class("Act191ItemView", BaseView)
+local var_0_0 = class("Act191ItemView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goRoot = gohelper.findChild(slot0.viewGO, "#go_Root")
-	slot0._imageRare = gohelper.findChildImage(slot0.viewGO, "#go_Root/#image_Rare")
-	slot0._imageIcon = gohelper.findChildImage(slot0.viewGO, "#go_Root/#image_Icon")
-	slot0._txtName = gohelper.findChildText(slot0.viewGO, "#go_Root/#txt_Name")
-	slot0._txtDesc = gohelper.findChildText(slot0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goRoot = gohelper.findChild(arg_1_0.viewGO, "#go_Root")
+	arg_1_0._imageRare = gohelper.findChildImage(arg_1_0.viewGO, "#go_Root/#image_Rare")
+	arg_1_0._imageIcon = gohelper.findChildImage(arg_1_0.viewGO, "#go_Root/#image_Icon")
+	arg_1_0._txtName = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/#txt_Name")
+	arg_1_0._txtDesc = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.onClickModalMask(slot0)
-	slot0:closeThis()
+function var_0_0.onClickModalMask(arg_2_0)
+	arg_2_0:closeThis()
 end
 
-function slot0.onOpen(slot0)
-	slot0.config = slot0.viewParam
+function var_0_0.onOpen(arg_3_0)
+	arg_3_0.config = arg_3_0.viewParam
 
-	if slot0.config.rare ~= 0 then
-		UISpriteSetMgr.instance:setAct174Sprite(slot0._imageRare, "act174_roleframe_" .. slot0.config.rare)
+	if arg_3_0.config.rare ~= 0 then
+		UISpriteSetMgr.instance:setAct174Sprite(arg_3_0._imageRare, "act174_roleframe_" .. arg_3_0.config.rare)
 	end
 
-	gohelper.setActive(slot0._imageRare, slot0.config.rare ~= 0)
-	UISpriteSetMgr.instance:setAct174Sprite(slot0._imageIcon, slot0.config.icon)
+	gohelper.setActive(arg_3_0._imageRare, arg_3_0.config.rare ~= 0)
+	UISpriteSetMgr.instance:setAct174Sprite(arg_3_0._imageIcon, arg_3_0.config.icon)
 
-	slot0._txtName.text = slot0.config.name
-	slot0._txtDesc.text = slot0.config.desc
+	arg_3_0._txtName.text = arg_3_0.config.name
+	arg_3_0._txtDesc.text = arg_3_0.config.desc
 
-	if slot0.config.id == 1001 then
-		transformhelper.setLocalScale(slot0._imageIcon.gameObject.transform, 0.75, 0.75, 1)
+	if arg_3_0.config.id == 1001 then
+		transformhelper.setLocalScale(arg_3_0._imageIcon.gameObject.transform, 0.75, 0.75, 1)
 	end
 end
 
-return slot0
+return var_0_0

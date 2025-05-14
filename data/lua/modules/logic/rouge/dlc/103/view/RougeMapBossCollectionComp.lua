@@ -1,179 +1,198 @@
-module("modules.logic.rouge.dlc.103.view.RougeMapBossCollectionComp", package.seeall)
+﻿module("modules.logic.rouge.dlc.103.view.RougeMapBossCollectionComp", package.seeall)
 
-slot0 = class("RougeMapBossCollectionComp", BaseViewExtended)
+local var_0_0 = class("RougeMapBossCollectionComp", BaseViewExtended)
 
-function slot0.definePrefabUrl(slot0)
-	slot0:setPrefabUrl("ui/viewres/rouge/dlc/103/rougedistortruleview.prefab")
+function var_0_0.definePrefabUrl(arg_1_0)
+	arg_1_0:setPrefabUrl("ui/viewres/rouge/dlc/103/rougedistortruleview.prefab")
 end
 
-function slot0.onInitView(slot0)
-	slot0._gonormal = gohelper.findChild(slot0.viewGO, "Bg/normal")
-	slot0._gohard = gohelper.findChild(slot0.viewGO, "Bg/hard")
-	slot0._gocollection = gohelper.findChild(slot0.viewGO, "#go_collection")
-	slot0._gocollectionitem = gohelper.findChild(slot0.viewGO, "#go_collection/#go_collectionitem")
-	slot0._btnfresh = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_fresh")
-	slot0._txtrule = gohelper.findChildText(slot0.viewGO, "RuleView/Viewport/Content/#txt_rule")
-	slot0._gopic = gohelper.findChild(slot0.PARENT_VIEW.viewGO, "#go_layer_right/#go_pic")
-	slot0._gofreshnormal = gohelper.findChild(slot0.viewGO, "fresh_normal")
-	slot0._gofreshhard = gohelper.findChild(slot0.viewGO, "fresh_hard")
+function var_0_0.onInitView(arg_2_0)
+	arg_2_0._gonormal = gohelper.findChild(arg_2_0.viewGO, "Bg/normal")
+	arg_2_0._gohard = gohelper.findChild(arg_2_0.viewGO, "Bg/hard")
+	arg_2_0._gocollection = gohelper.findChild(arg_2_0.viewGO, "#go_collection")
+	arg_2_0._gocollectionitem = gohelper.findChild(arg_2_0.viewGO, "#go_collection/#go_collectionitem")
+	arg_2_0._btnfresh = gohelper.findChildButtonWithAudio(arg_2_0.viewGO, "#btn_fresh")
+	arg_2_0._txtrule = gohelper.findChildText(arg_2_0.viewGO, "RuleView/Viewport/Content/#txt_rule")
+	arg_2_0._gopic = gohelper.findChild(arg_2_0.PARENT_VIEW.viewGO, "#go_layer_right/#go_pic")
+	arg_2_0._gofreshnormal = gohelper.findChild(arg_2_0.viewGO, "fresh_normal")
+	arg_2_0._gofreshhard = gohelper.findChild(arg_2_0.viewGO, "fresh_hard")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_2_0._editableInitView then
+		arg_2_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnfresh:AddClickListener(slot0._btnfreshOnClick, slot0)
+function var_0_0.addEvents(arg_3_0)
+	arg_3_0._btnfresh:AddClickListener(arg_3_0._btnfreshOnClick, arg_3_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnfresh:RemoveClickListener()
+function var_0_0.removeEvents(arg_4_0)
+	arg_4_0._btnfresh:RemoveClickListener()
 end
 
-function slot0._btnfreshOnClick(slot0)
-	if not slot0._selectLayerId or not slot0._canFreshMapRule then
+function var_0_0._btnfreshOnClick(arg_5_0)
+	if not arg_5_0._selectLayerId or not arg_5_0._canFreshMapRule then
 		return
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.RefreshRougeMapRule)
 
-	slot1 = slot0._layerChoiceInfo and slot0._layerChoiceInfo:getMapRuleCo()
-	slot2 = slot1 and slot1.type
+	local var_5_0 = arg_5_0._layerChoiceInfo and arg_5_0._layerChoiceInfo:getMapRuleCo()
+	local var_5_1 = var_5_0 and var_5_0.type
 
-	gohelper.setActive(slot0._gofreshnormal, slot2 == RougeDLCEnum103.MapRuleType.Normal)
-	gohelper.setActive(slot0._gofreshhard, slot2 == RougeDLCEnum103.MapRuleType.Hard)
-	RougeRpc.instance:sendRougeRefreshMapRuleRequest(RougeModel.instance:getSeason(), slot0._selectLayerId)
+	gohelper.setActive(arg_5_0._gofreshnormal, var_5_1 == RougeDLCEnum103.MapRuleType.Normal)
+	gohelper.setActive(arg_5_0._gofreshhard, var_5_1 == RougeDLCEnum103.MapRuleType.Hard)
+
+	local var_5_2 = RougeModel.instance:getSeason()
+
+	RougeRpc.instance:sendRougeRefreshMapRuleRequest(var_5_2, arg_5_0._selectLayerId)
 end
 
-function slot0._editableInitView(slot0)
-	slot0._collectionItemTab = slot0:getUserDataTb_()
-	slot0._gofresh_light = gohelper.findChild(slot0.viewGO, "#btn_fresh/light")
-	slot0._gofresh_dark = gohelper.findChild(slot0.viewGO, "#btn_fresh/dark")
+function var_0_0._editableInitView(arg_6_0)
+	arg_6_0._collectionItemTab = arg_6_0:getUserDataTb_()
+	arg_6_0._gofresh_light = gohelper.findChild(arg_6_0.viewGO, "#btn_fresh/light")
+	arg_6_0._gofresh_dark = gohelper.findChild(arg_6_0.viewGO, "#btn_fresh/dark")
 
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onSelectLayerChange, slot0.onSelectLayerChange, slot0)
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onChangeMapInfo, slot0.onChangeMapInfo, slot0)
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onUpdateMapInfo, slot0.onChangeMapInfo, slot0)
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onPathSelectMapFocusDone, slot0.onChangeMapInfo, slot0)
+	arg_6_0:addEventCb(RougeMapController.instance, RougeMapEvent.onSelectLayerChange, arg_6_0.onSelectLayerChange, arg_6_0)
+	arg_6_0:addEventCb(RougeMapController.instance, RougeMapEvent.onChangeMapInfo, arg_6_0.onChangeMapInfo, arg_6_0)
+	arg_6_0:addEventCb(RougeMapController.instance, RougeMapEvent.onUpdateMapInfo, arg_6_0.onChangeMapInfo, arg_6_0)
+	arg_6_0:addEventCb(RougeMapController.instance, RougeMapEvent.onPathSelectMapFocusDone, arg_6_0.onChangeMapInfo, arg_6_0)
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_7_0)
 	if not RougeMapModel.instance:isPathSelect() then
 		return
 	end
 
-	slot0:initData(RougeMapModel.instance:getSelectLayerId())
-	slot0:refresh()
+	arg_7_0:initData(RougeMapModel.instance:getSelectLayerId())
+	arg_7_0:refresh()
 end
 
-function slot0.initData(slot0, slot1)
-	slot0._selectLayerId = slot1
-	slot0._layerChoiceInfo = RougeMapModel.instance:getLayerChoiceInfo(slot0._selectLayerId)
-	slot0._mapRuleCanFreshNum = slot0._layerChoiceInfo and slot0._layerChoiceInfo:getMapRuleCanFreshNum()
-	slot0._canFreshMapRule = slot0._mapRuleCanFreshNum and slot0._mapRuleCanFreshNum > 0
-	slot0._isPathSelect = RougeMapModel.instance:isPathSelect()
+function var_0_0.initData(arg_8_0, arg_8_1)
+	arg_8_0._selectLayerId = arg_8_1
+	arg_8_0._layerChoiceInfo = RougeMapModel.instance:getLayerChoiceInfo(arg_8_0._selectLayerId)
+	arg_8_0._mapRuleCanFreshNum = arg_8_0._layerChoiceInfo and arg_8_0._layerChoiceInfo:getMapRuleCanFreshNum()
+	arg_8_0._canFreshMapRule = arg_8_0._mapRuleCanFreshNum and arg_8_0._mapRuleCanFreshNum > 0
+	arg_8_0._isPathSelect = RougeMapModel.instance:isPathSelect()
 end
 
-function slot0.refresh(slot0)
-	gohelper.setActive(slot0._gopic, not slot0._isPathSelect)
+function var_0_0.refresh(arg_9_0)
+	gohelper.setActive(arg_9_0._gopic, not arg_9_0._isPathSelect)
 
-	if not slot0._isPathSelect then
+	if not arg_9_0._isPathSelect then
 		return
 	end
 
-	slot0:refreshFreshBtn()
-	slot0:refreshMapRuleInfos()
-	slot0:refreshCollections()
+	arg_9_0:refreshFreshBtn()
+	arg_9_0:refreshMapRuleInfos()
+	arg_9_0:refreshCollections()
 end
 
-function slot0.refreshFreshBtn(slot0)
-	gohelper.setActive(slot0._gofresh_light, slot0._canFreshMapRule)
-	gohelper.setActive(slot0._gofresh_dark, not slot0._canFreshMapRule)
+function var_0_0.refreshFreshBtn(arg_10_0)
+	gohelper.setActive(arg_10_0._gofresh_light, arg_10_0._canFreshMapRule)
+	gohelper.setActive(arg_10_0._gofresh_dark, not arg_10_0._canFreshMapRule)
 end
 
-function slot0.refreshMapRuleInfos(slot0)
-	slot1 = slot0._layerChoiceInfo and slot0._layerChoiceInfo:getMapRuleCo()
-	slot2 = slot1 and slot1.type
-	slot0._txtrule.text = SkillHelper.buildDesc(slot1 and slot1.desc or "")
+function var_0_0.refreshMapRuleInfos(arg_11_0)
+	local var_11_0 = arg_11_0._layerChoiceInfo and arg_11_0._layerChoiceInfo:getMapRuleCo()
+	local var_11_1 = var_11_0 and var_11_0.type
+	local var_11_2 = var_11_0 and var_11_0.desc or ""
 
-	SkillHelper.addHyperLinkClick(slot0._txtrule)
-	gohelper.setActive(slot0._gonormal, slot2 == RougeDLCEnum103.MapRuleType.Normal)
-	gohelper.setActive(slot0._gohard, slot2 == RougeDLCEnum103.MapRuleType.Hard)
+	arg_11_0._txtrule.text = SkillHelper.buildDesc(var_11_2)
+
+	SkillHelper.addHyperLinkClick(arg_11_0._txtrule)
+	gohelper.setActive(arg_11_0._gonormal, var_11_1 == RougeDLCEnum103.MapRuleType.Normal)
+	gohelper.setActive(arg_11_0._gohard, var_11_1 == RougeDLCEnum103.MapRuleType.Hard)
 end
 
-function slot0.refreshCollections(slot0)
-	slot0._collectionCfgIds = slot0._layerChoiceInfo and slot0._layerChoiceInfo:getCurLayerCollection()
-	slot1 = {
-		[slot7] = true
-	}
+function var_0_0.refreshCollections(arg_12_0)
+	arg_12_0._collectionCfgIds = arg_12_0._layerChoiceInfo and arg_12_0._layerChoiceInfo:getCurLayerCollection()
 
-	for slot5, slot6 in ipairs(slot0._collectionCfgIds or {}) do
-		slot0:_getOrCreateCollectionItem(slot5).simageicon:LoadImage(RougeCollectionHelper.getCollectionIconUrl(slot6))
-		UISpriteSetMgr.instance:setRougeSprite(slot7.imagebg, "rouge_episode_collectionbg_" .. tostring(RougeCollectionConfig.instance:getCollectionCfg(slot6) and slot8.showRare))
-		gohelper.setActive(slot7.viewGO, true)
+	local var_12_0 = {}
+
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0._collectionCfgIds or {}) do
+		local var_12_1 = arg_12_0:_getOrCreateCollectionItem(iter_12_0)
+		local var_12_2 = RougeCollectionConfig.instance:getCollectionCfg(iter_12_1)
+		local var_12_3 = RougeCollectionHelper.getCollectionIconUrl(iter_12_1)
+
+		var_12_1.simageicon:LoadImage(var_12_3)
+
+		local var_12_4 = var_12_2 and var_12_2.showRare
+
+		UISpriteSetMgr.instance:setRougeSprite(var_12_1.imagebg, "rouge_episode_collectionbg_" .. tostring(var_12_4))
+		gohelper.setActive(var_12_1.viewGO, true)
+
+		var_12_0[var_12_1] = true
 	end
 
-	for slot5, slot6 in pairs(slot0._collectionItemTab) do
-		if not slot1[slot6] then
-			gohelper.setActive(slot6.viewGO, false)
+	for iter_12_2, iter_12_3 in pairs(arg_12_0._collectionItemTab) do
+		if not var_12_0[iter_12_3] then
+			gohelper.setActive(iter_12_3.viewGO, false)
 		end
 	end
 end
 
-function slot0._getOrCreateCollectionItem(slot0, slot1)
-	if not slot0._collectionItemTab[slot1] then
-		slot2 = slot0:getUserDataTb_()
-		slot2.viewGO = gohelper.cloneInPlace(slot0._gocollectionitem, "collection_" .. slot1)
-		slot2.imagebg = gohelper.findChildImage(slot2.viewGO, "#image_bg")
-		slot2.simageicon = gohelper.findChildSingleImage(slot2.viewGO, "#simage_collection")
-		slot2.btnclick = gohelper.findChildButtonWithAudio(slot2.viewGO, "#btn_click")
+function var_0_0._getOrCreateCollectionItem(arg_13_0, arg_13_1)
+	local var_13_0 = arg_13_0._collectionItemTab[arg_13_1]
 
-		slot2.btnclick:AddClickListener(slot0._btncollectionOnClick, slot0, slot1)
+	if not var_13_0 then
+		var_13_0 = arg_13_0:getUserDataTb_()
+		var_13_0.viewGO = gohelper.cloneInPlace(arg_13_0._gocollectionitem, "collection_" .. arg_13_1)
+		var_13_0.imagebg = gohelper.findChildImage(var_13_0.viewGO, "#image_bg")
+		var_13_0.simageicon = gohelper.findChildSingleImage(var_13_0.viewGO, "#simage_collection")
+		var_13_0.btnclick = gohelper.findChildButtonWithAudio(var_13_0.viewGO, "#btn_click")
 
-		slot0._collectionItemTab[slot1] = slot2
+		var_13_0.btnclick:AddClickListener(arg_13_0._btncollectionOnClick, arg_13_0, arg_13_1)
+
+		arg_13_0._collectionItemTab[arg_13_1] = var_13_0
 	end
 
-	return slot2
+	return var_13_0
 end
 
-function slot0._btncollectionOnClick(slot0, slot1)
-	if not slot0._collectionCfgIds[slot1] then
+function var_0_0._btncollectionOnClick(arg_14_0, arg_14_1)
+	local var_14_0 = arg_14_0._collectionCfgIds[arg_14_1]
+
+	if not var_14_0 then
 		return
 	end
 
-	RougeController.instance:openRougeCollectionTipView({
+	local var_14_1 = {
 		interactable = false,
-		collectionCfgId = slot2,
+		collectionCfgId = var_14_0,
 		viewPosition = RougeEnum.CollectionTipPos.MapRule
-	})
+	}
+
+	RougeController.instance:openRougeCollectionTipView(var_14_1)
 end
 
-function slot0._releaseAllCollectionItems(slot0)
-	for slot4, slot5 in pairs(slot0._collectionItemTab) do
-		slot5.simageicon:UnLoadImage()
-		slot5.btnclick:RemoveClickListener()
+function var_0_0._releaseAllCollectionItems(arg_15_0)
+	for iter_15_0, iter_15_1 in pairs(arg_15_0._collectionItemTab) do
+		iter_15_1.simageicon:UnLoadImage()
+		iter_15_1.btnclick:RemoveClickListener()
 	end
 end
 
-function slot0.onSelectLayerChange(slot0, slot1)
-	slot0:initData(slot1)
-	gohelper.setActive(slot0._gofreshnormal, false)
-	gohelper.setActive(slot0._gofreshhard, false)
-	TaskDispatcher.cancelTask(slot0.refresh, slot0)
-	TaskDispatcher.runDelay(slot0.refresh, slot0, RougeMapEnum.WaitMapRightRefreshTime)
+function var_0_0.onSelectLayerChange(arg_16_0, arg_16_1)
+	arg_16_0:initData(arg_16_1)
+	gohelper.setActive(arg_16_0._gofreshnormal, false)
+	gohelper.setActive(arg_16_0._gofreshhard, false)
+	TaskDispatcher.cancelTask(arg_16_0.refresh, arg_16_0)
+	TaskDispatcher.runDelay(arg_16_0.refresh, arg_16_0, RougeMapEnum.WaitMapRightRefreshTime)
 end
 
-function slot0.onChangeMapInfo(slot0)
+function var_0_0.onChangeMapInfo(arg_17_0)
 	if not RougeMapModel.instance:isPathSelect() then
 		return
 	end
 
-	slot0:initData(RougeMapModel.instance:getSelectLayerId())
-	slot0:refresh()
+	arg_17_0:initData(RougeMapModel.instance:getSelectLayerId())
+	arg_17_0:refresh()
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0.refresh, slot0)
-	slot0:_releaseAllCollectionItems()
+function var_0_0.onClose(arg_18_0)
+	TaskDispatcher.cancelTask(arg_18_0.refresh, arg_18_0)
+	arg_18_0:_releaseAllCollectionItems()
 end
 
-return slot0
+return var_0_0

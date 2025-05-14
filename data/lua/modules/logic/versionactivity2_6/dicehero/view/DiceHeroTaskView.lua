@@ -1,31 +1,31 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroTaskView", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroTaskView", package.seeall)
 
-slot0 = class("DiceHeroTaskView", BaseView)
+local var_0_0 = class("DiceHeroTaskView", BaseView)
 
-function slot0.onInitView(slot0)
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_2_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Act1_6DungeonEnterTaskView)
-	slot0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, slot0._oneClaimReward, slot0)
-	slot0:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, slot0._onFinishTask, slot0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, arg_2_0._oneClaimReward, arg_2_0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, arg_2_0._onFinishTask, arg_2_0)
 	DiceHeroTaskListModel.instance:clear()
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.DiceHero
-	}, slot0._oneClaimReward, slot0)
+	}, arg_2_0._oneClaimReward, arg_2_0)
 end
 
-function slot0._oneClaimReward(slot0)
+function var_0_0._oneClaimReward(arg_3_0)
 	DiceHeroTaskListModel.instance:init()
 end
 
-function slot0._onFinishTask(slot0, slot1)
-	if DiceHeroTaskListModel.instance:getById(slot1) then
+function var_0_0._onFinishTask(arg_4_0, arg_4_1)
+	if DiceHeroTaskListModel.instance:getById(arg_4_1) then
 		DiceHeroTaskListModel.instance:init()
 	end
 end
 
-return slot0
+return var_0_0

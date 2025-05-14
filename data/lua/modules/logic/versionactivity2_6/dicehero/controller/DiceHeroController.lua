@@ -1,33 +1,33 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.DiceHeroController", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.DiceHeroController", package.seeall)
 
-slot0 = class("DiceHeroController", BaseController)
+local var_0_0 = class("DiceHeroController", BaseController)
 
-function slot0.addConstEvents(slot0)
-	OpenController.instance:registerCallback(OpenEvent.GetOpenInfoSuccess, slot0._onGetOpenInfoSuccess, slot0)
-	MainController.instance:registerCallback(MainEvent.OnFuncUnlockRefresh, slot0._onGetOpenInfoSuccess, slot0)
-	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, slot0._newFuncUnlock, slot0)
+function var_0_0.addConstEvents(arg_1_0)
+	OpenController.instance:registerCallback(OpenEvent.GetOpenInfoSuccess, arg_1_0._onGetOpenInfoSuccess, arg_1_0)
+	MainController.instance:registerCallback(MainEvent.OnFuncUnlockRefresh, arg_1_0._onGetOpenInfoSuccess, arg_1_0)
+	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, arg_1_0._newFuncUnlock, arg_1_0)
 end
 
-function slot0._onGetOpenInfoSuccess(slot0)
+function var_0_0._onGetOpenInfoSuccess(arg_2_0)
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DiceHero) then
-		slot0:_getInfo()
+		arg_2_0:_getInfo()
 	end
 end
 
-function slot0._newFuncUnlock(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		if slot6 == OpenEnum.UnlockFunc.DiceHero then
-			slot0:_getInfo()
+function var_0_0._newFuncUnlock(arg_3_0, arg_3_1)
+	for iter_3_0, iter_3_1 in ipairs(arg_3_1) do
+		if iter_3_1 == OpenEnum.UnlockFunc.DiceHero then
+			arg_3_0:_getInfo()
 
 			break
 		end
 	end
 end
 
-function slot0._getInfo(slot0)
+function var_0_0._getInfo(arg_4_0)
 	DiceHeroRpc.instance:sendDiceHeroGetInfo()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,78 +1,83 @@
-module("modules.logic.versionactivity1_6.act152.controller.Activity152Controller", package.seeall)
+﻿module("modules.logic.versionactivity1_6.act152.controller.Activity152Controller", package.seeall)
 
-slot0 = class("Activity152Controller", BaseController)
+local var_0_0 = class("Activity152Controller", BaseController)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	if slot0._popupFlow then
-		slot0._popupFlow:destroy()
+function var_0_0.reInit(arg_2_0)
+	if arg_2_0._popupFlow then
+		arg_2_0._popupFlow:destroy()
 
-		slot0._popupFlow = nil
+		arg_2_0._popupFlow = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0._checkGiftUnlock, slot0)
+	TaskDispatcher.cancelTask(arg_2_0._checkGiftUnlock, arg_2_0)
 end
 
-function slot0.addConstEvents(slot0)
-	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, slot0._checkActivityInfo, slot0)
-	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, slot0._startCheckGiftUnlock, slot0)
-	GameStateMgr.instance:registerCallback(GameStateEvent.onApplicationPause, slot0._onApplicationPause, slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, arg_3_0._checkActivityInfo, arg_3_0)
+	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, arg_3_0._startCheckGiftUnlock, arg_3_0)
+	GameStateMgr.instance:registerCallback(GameStateEvent.onApplicationPause, arg_3_0._onApplicationPause, arg_3_0)
 end
 
-function slot0._checkActivityInfo(slot0)
+function var_0_0._checkActivityInfo(arg_4_0)
 	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.NewYearEve) then
 		Activity152Rpc.instance:sendGet152InfoRequest(ActivityEnum.Activity.NewYearEve)
 	end
 end
 
-function slot0._onApplicationPause(slot0, slot1)
-	if slot1 then
-		slot0:_startCheckGiftUnlock()
+function var_0_0._onApplicationPause(arg_5_0, arg_5_1)
+	if arg_5_1 then
+		arg_5_0:_startCheckGiftUnlock()
 	end
 end
 
-function slot0._startCheckGiftUnlock(slot0)
+function var_0_0._startCheckGiftUnlock(arg_6_0)
 	if not ActivityModel.instance:isActOnLine(ActivityEnum.Activity.NewYearEve) then
 		return
 	end
 
-	if slot0._popupFlow then
-		slot0._popupFlow:destroy()
+	if arg_6_0._popupFlow then
+		arg_6_0._popupFlow:destroy()
 
-		slot0._popupFlow = nil
+		arg_6_0._popupFlow = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0._checkGiftUnlock, slot0)
+	local var_6_0 = Activity152Model.instance:getPresentUnaccepted()
 
-	if (#Activity152Model.instance:getPresentUnaccepted() > 0 and 0.5 or Activity152Model.instance:getNextUnlockLimitTime() + 0.5) > 0 then
-		TaskDispatcher.runDelay(slot0._checkGiftUnlock, slot0, slot2)
+	TaskDispatcher.cancelTask(arg_6_0._checkGiftUnlock, arg_6_0)
+
+	local var_6_1 = #var_6_0 > 0 and 0.5 or Activity152Model.instance:getNextUnlockLimitTime() + 0.5
+
+	if var_6_1 > 0 then
+		TaskDispatcher.runDelay(arg_6_0._checkGiftUnlock, arg_6_0, var_6_1)
 	end
 end
 
-function slot0._checkGiftUnlock(slot0)
-	slot0._popupFlow = FlowSequence.New()
+function var_0_0._checkGiftUnlock(arg_7_0)
+	arg_7_0._popupFlow = FlowSequence.New()
 
-	slot0._popupFlow:addWork(Activity152PatFaceWork.New())
-	slot0._popupFlow:registerDoneListener(slot0._stopShowSequence, slot0)
-	slot0._popupFlow:start()
+	arg_7_0._popupFlow:addWork(Activity152PatFaceWork.New())
+	arg_7_0._popupFlow:registerDoneListener(arg_7_0._stopShowSequence, arg_7_0)
+	arg_7_0._popupFlow:start()
 end
 
-function slot0._stopShowSequence(slot0)
-	if slot0._popupFlow then
-		slot0._popupFlow:destroy()
+function var_0_0._stopShowSequence(arg_8_0)
+	if arg_8_0._popupFlow then
+		arg_8_0._popupFlow:destroy()
 
-		slot0._popupFlow = nil
+		arg_8_0._popupFlow = nil
 	end
 
-	slot0:_startCheckGiftUnlock()
+	arg_8_0:_startCheckGiftUnlock()
 end
 
-function slot0.openNewYearGiftView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.NewYearEveGiftView, slot1)
+function var_0_0.openNewYearGiftView(arg_9_0, arg_9_1)
+	ViewMgr.instance:openView(ViewName.NewYearEveGiftView, arg_9_1)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

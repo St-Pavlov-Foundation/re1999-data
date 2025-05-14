@@ -1,12 +1,12 @@
-module("modules.logic.fight.model.data.FightTaskValueData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightTaskValueData", package.seeall)
 
-slot0 = FightDataClass("FightTaskValueData")
+local var_0_0 = FightDataClass("FightTaskValueData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.index = slot1.index
-	slot0.progress = slot1.progress
-	slot0.maxProgress = slot1.maxProgress
-	slot0.finished = slot1.finished
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.index = arg_1_1.index
+	arg_1_0.progress = arg_1_1.progress
+	arg_1_0.maxProgress = arg_1_1.maxProgress
+	arg_1_0.finished = arg_1_1.finished
 end
 
-return slot0
+return var_0_0

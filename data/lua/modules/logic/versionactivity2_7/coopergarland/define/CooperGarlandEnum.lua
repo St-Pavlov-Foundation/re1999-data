@@ -1,7 +1,8 @@
-module("modules.logic.versionactivity2_7.coopergarland.define.CooperGarlandEnum", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.define.CooperGarlandEnum", package.seeall)
 
-slot0 = _M
-slot0.Const = {
+local var_0_0 = _M
+
+var_0_0.Const = {
 	TaskMOAllFinishId = -99999,
 	BallPosOffset = -0.06,
 	SpikeMoveDirX = 1,
@@ -13,7 +14,7 @@ slot0.Const = {
 	CameraMaxFov = 120,
 	GyroscopeMode = 2
 }
-slot0.ComponentType = {
+var_0_0.ComponentType = {
 	Key = 5,
 	End = 2,
 	Door = 4,
@@ -23,7 +24,7 @@ slot0.ComponentType = {
 	Start = 1,
 	Spike = 7
 }
-slot0.ConstId = {
+var_0_0.ConstId = {
 	Gravity = 1,
 	BallScale = 8,
 	BallAngularDrag = 10,
@@ -36,14 +37,14 @@ slot0.ConstId = {
 	CameraFOV = 4,
 	BallDrag = 2
 }
-slot0.BlockKey = {
+var_0_0.BlockKey = {
 	LoadGameScene = "CooperGarlandLoadGameSceneBlockKey",
 	LoadGameRes = "CooperGarlandLoadGameResBlockKey",
 	OneClickClaimReward = "CooperGarlandOneClickClaimRewardBlockKey"
 }
-slot0.ResPath = {
+var_0_0.ResPath = {
 	Ball = "scenes/v2a7_m_s12_kbhh_jshd/prefab/v2a7_m_s12_kbhh_jshd_ball_p.prefab",
 	UIPanel = "ui/viewres/versionactivity_2_7/v2a7_coopergarland/map/panel.prefab"
 }
 
-return slot0
+return var_0_0

@@ -1,104 +1,113 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroEditItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroEditItem", package.seeall)
 
-slot0 = class("Act191HeroEditItem", ListScrollCell)
+local var_0_0 = class("Act191HeroEditItem", ListScrollCell)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.nameCnTxt = gohelper.findChildText(slot1, "namecn")
-	slot0.nameEnTxt = gohelper.findChildText(slot1, "nameen")
-	slot0.cardIcon = gohelper.findChild(slot1, "mask/charactericon")
-	slot0.commonHeroCard = CommonHeroCard.create(slot0.cardIcon, slot0.__cname)
-	slot0.front = gohelper.findChildImage(slot1, "mask/front")
-	slot0.current = gohelper.findChild(slot1, "current")
-	slot0.rare = gohelper.findChildImage(slot1, "image_rare")
-	slot0.selectframe = gohelper.findChild(slot1, "selectframe")
-	slot0.careerIcon = gohelper.findChildImage(slot1, "career")
-	slot0.goexskill = gohelper.findChild(slot1, "go_exskill")
-	slot0.imageexskill = gohelper.findChildImage(slot1, "go_exskill/image_exskill")
-	slot0.newTag = gohelper.findChild(slot1, "new")
-	slot0.goFetter = gohelper.findChild(slot1, "fetter/image_Fetter")
-	slot0.goOrderBg = gohelper.findChild(slot1, "go_OrderBg")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "click")
-	slot0._animator = slot0.go:GetComponent(typeof(UnityEngine.Animator))
-	slot0.isSelect = false
-	slot0.inteam = gohelper.findChild(slot1, "inteam")
-	slot0.insub = gohelper.findChild(slot1, "insub")
-	slot0.imageFetterList = slot0:getUserDataTb_()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0.nameCnTxt = gohelper.findChildText(arg_1_1, "namecn")
+	arg_1_0.nameEnTxt = gohelper.findChildText(arg_1_1, "nameen")
+	arg_1_0.cardIcon = gohelper.findChild(arg_1_1, "mask/charactericon")
+	arg_1_0.commonHeroCard = CommonHeroCard.create(arg_1_0.cardIcon, arg_1_0.__cname)
+	arg_1_0.front = gohelper.findChildImage(arg_1_1, "mask/front")
+	arg_1_0.current = gohelper.findChild(arg_1_1, "current")
+	arg_1_0.rare = gohelper.findChildImage(arg_1_1, "image_rare")
+	arg_1_0.selectframe = gohelper.findChild(arg_1_1, "selectframe")
+	arg_1_0.careerIcon = gohelper.findChildImage(arg_1_1, "career")
+	arg_1_0.goexskill = gohelper.findChild(arg_1_1, "go_exskill")
+	arg_1_0.imageexskill = gohelper.findChildImage(arg_1_1, "go_exskill/image_exskill")
+	arg_1_0.newTag = gohelper.findChild(arg_1_1, "new")
+	arg_1_0.goFetter = gohelper.findChild(arg_1_1, "fetter/image_Fetter")
+	arg_1_0.goOrderBg = gohelper.findChild(arg_1_1, "go_OrderBg")
+	arg_1_0.btnClick = gohelper.findChildButtonWithAudio(arg_1_1, "click")
+	arg_1_0._animator = arg_1_0.go:GetComponent(typeof(UnityEngine.Animator))
+	arg_1_0.isSelect = false
+	arg_1_0.inteam = gohelper.findChild(arg_1_1, "inteam")
+	arg_1_0.insub = gohelper.findChild(arg_1_1, "insub")
+	arg_1_0.imageFetterList = arg_1_0:getUserDataTb_()
 
-	gohelper.setActive(slot0.goFetter, false)
+	gohelper.setActive(arg_1_0.goFetter, false)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addClickCb(slot0.btnClick, slot0._onItemClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0:addClickCb(arg_2_0.btnClick, arg_2_0._onItemClick, arg_2_0)
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0._mo = slot1
-	slot0.config = slot1.config
-	slot0.nameCnTxt.text = slot0.config.name
+function var_0_0.onUpdateMO(arg_3_0, arg_3_1)
+	arg_3_0._mo = arg_3_1
+	arg_3_0.config = arg_3_1.config
+	arg_3_0.nameCnTxt.text = arg_3_0.config.name
 
-	UISpriteSetMgr.instance:setCommonSprite(slot0.careerIcon, "lssx_" .. tostring(slot0.config.career))
-	UISpriteSetMgr.instance:setAct174Sprite(slot0.rare, "act174_rolefame_" .. tostring(slot0.config.quality))
-	UISpriteSetMgr.instance:setAct174Sprite(slot0.front, "act174_rolebg_" .. tostring(slot0.config.quality))
+	UISpriteSetMgr.instance:setCommonSprite(arg_3_0.careerIcon, "lssx_" .. tostring(arg_3_0.config.career))
+	UISpriteSetMgr.instance:setAct174Sprite(arg_3_0.rare, "act174_rolefame_" .. tostring(arg_3_0.config.quality))
+	UISpriteSetMgr.instance:setAct174Sprite(arg_3_0.front, "act174_rolebg_" .. tostring(arg_3_0.config.quality))
 
-	if not FightConfig.instance:getSkinCO(slot0.config.skinId) then
-		logError("找不到皮肤配置, id: " .. tostring(slot0.config.skinId))
+	local var_3_0 = FightConfig.instance:getSkinCO(arg_3_0.config.skinId)
+
+	if not var_3_0 then
+		logError("找不到皮肤配置, id: " .. tostring(arg_3_0.config.skinId))
 
 		return
 	end
 
-	slot0.commonHeroCard:onUpdateMO(slot2)
-	gohelper.setActive(slot0.goexskill, slot0.config.exLevel ~= 0)
+	arg_3_0.commonHeroCard:onUpdateMO(var_3_0)
+	gohelper.setActive(arg_3_0.goexskill, arg_3_0.config.exLevel ~= 0)
 
-	slot0.imageexskill.fillAmount = slot0.config.exLevel / CharacterEnum.MaxSkillExLevel
+	arg_3_0.imageexskill.fillAmount = arg_3_0.config.exLevel / CharacterEnum.MaxSkillExLevel
 
-	slot0:refreshFetterIcon()
-	gohelper.setActive(slot0.inteam, slot1.inTeam == 2)
-	gohelper.setActive(slot0.insub, slot1.inTeam == 1)
-	gohelper.setActive(slot0.current, slot1.inTeam == 3)
+	arg_3_0:refreshFetterIcon()
+	gohelper.setActive(arg_3_0.inteam, arg_3_1.inTeam == 2)
+	gohelper.setActive(arg_3_0.insub, arg_3_1.inTeam == 1)
+	gohelper.setActive(arg_3_0.current, arg_3_1.inTeam == 3)
 end
 
-function slot0.onSelect(slot0, slot1)
-	slot0.isSelect = slot1
+function var_0_0.onSelect(arg_4_0, arg_4_1)
+	arg_4_0.isSelect = arg_4_1
 
-	gohelper.setActive(slot0.selectframe, slot1)
+	gohelper.setActive(arg_4_0.selectframe, arg_4_1)
 
-	if slot1 then
-		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickHeroEditItem, slot0._mo)
+	if arg_4_1 then
+		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickHeroEditItem, arg_4_0._mo)
 	end
 end
 
-function slot0._onItemClick(slot0)
+function var_0_0._onItemClick(arg_5_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 
-	if slot0.isSelect then
-		slot0._view:selectCell(slot0._index, false)
+	if arg_5_0.isSelect then
+		arg_5_0._view:selectCell(arg_5_0._index, false)
 		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickHeroEditItem)
 	else
-		slot0._view:selectCell(slot0._index, true)
+		arg_5_0._view:selectCell(arg_5_0._index, true)
 	end
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_6_0)
+	return
 end
 
-function slot0.getAnimator(slot0)
-	return slot0._animator
+function var_0_0.getAnimator(arg_7_0)
+	return arg_7_0._animator
 end
 
-function slot0.refreshFetterIcon(slot0)
-	for slot5, slot6 in ipairs(string.split(slot0.config.tag, "#")) do
-		if not slot0.imageFetterList[slot5] then
-			slot0.imageFetterList[slot5] = gohelper.findChildImage(gohelper.cloneInPlace(slot0.goFetter), "")
+function var_0_0.refreshFetterIcon(arg_8_0)
+	local var_8_0 = string.split(arg_8_0.config.tag, "#")
+
+	for iter_8_0, iter_8_1 in ipairs(var_8_0) do
+		if not arg_8_0.imageFetterList[iter_8_0] then
+			local var_8_1 = gohelper.cloneInPlace(arg_8_0.goFetter)
+
+			arg_8_0.imageFetterList[iter_8_0] = gohelper.findChildImage(var_8_1, "")
 		end
 
-		Activity191Helper.setFetterIcon(slot0.imageFetterList[slot5], Activity191Config.instance:getRelationCo(slot6).icon)
-		gohelper.setActive(slot0.imageFetterList[slot5], true)
+		local var_8_2 = Activity191Config.instance:getRelationCo(iter_8_1)
+
+		Activity191Helper.setFetterIcon(arg_8_0.imageFetterList[iter_8_0], var_8_2.icon)
+		gohelper.setActive(arg_8_0.imageFetterList[iter_8_0], true)
 	end
 
-	for slot5 = #slot1 + 1, #slot0.imageFetterList do
-		gohelper.setActive(slot0.imageFetterList[slot5], false)
+	for iter_8_2 = #var_8_0 + 1, #arg_8_0.imageFetterList do
+		gohelper.setActive(arg_8_0.imageFetterList[iter_8_2], false)
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,32 +1,36 @@
-module("modules.logic.fight.entity.comp.buff.FightBuffRecordByRound", package.seeall)
+﻿module("modules.logic.fight.entity.comp.buff.FightBuffRecordByRound", package.seeall)
 
-slot0 = class("FightBuffRecordByRound")
+local var_0_0 = class("FightBuffRecordByRound")
 
-function slot0.onBuffStart(slot0, slot1, slot2)
-	slot0.entity = slot1
+function var_0_0.onBuffStart(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.entity = arg_1_1
 
-	FightController.instance:registerCallback(FightEvent.ALF_AddRecordCardData, slot0.onUpdateRecordCard, slot0)
-	slot0:onUpdateRecordCard(slot2)
+	FightController.instance:registerCallback(FightEvent.ALF_AddRecordCardData, arg_1_0.onUpdateRecordCard, arg_1_0)
+	arg_1_0:onUpdateRecordCard(arg_1_2)
 end
 
-function slot0.onUpdateRecordCard(slot0, slot1)
-	if slot0.entity.heroCustomComp and slot0.entity.heroCustomComp:getCustomComp() then
-		slot4:setCacheRecordSkillList(FightStrUtil.instance:getSplitToNumberCache(slot1 and slot1.actCommonParams or "", "#"))
+function var_0_0.onUpdateRecordCard(arg_2_0, arg_2_1)
+	local var_2_0 = arg_2_1 and arg_2_1.actCommonParams or ""
+	local var_2_1 = FightStrUtil.instance:getSplitToNumberCache(var_2_0, "#")
+	local var_2_2 = arg_2_0.entity.heroCustomComp and arg_2_0.entity.heroCustomComp:getCustomComp()
+
+	if var_2_2 then
+		var_2_2:setCacheRecordSkillList(var_2_1)
 	end
 
 	FightController.instance:dispatchEvent(FightEvent.ALF_AddRecordCardUI)
 end
 
-function slot0.onBuffEnd(slot0)
-	slot0:clear()
+function var_0_0.onBuffEnd(arg_3_0)
+	arg_3_0:clear()
 end
 
-function slot0.clear(slot0)
-	FightController.instance:unregisterCallback(FightEvent.ALF_AddRecordCardData, slot0.onUpdateRecordCard, slot0)
+function var_0_0.clear(arg_4_0)
+	FightController.instance:unregisterCallback(FightEvent.ALF_AddRecordCardData, arg_4_0.onUpdateRecordCard, arg_4_0)
 end
 
-function slot0.dispose(slot0)
-	slot0:clear()
+function var_0_0.dispose(arg_5_0)
+	arg_5_0:clear()
 end
 
-return slot0
+return var_0_0

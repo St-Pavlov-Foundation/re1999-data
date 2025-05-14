@@ -1,12 +1,12 @@
-module("modules.logic.fight.model.data.FightAssistBossSkillInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightAssistBossSkillInfoData", package.seeall)
 
-slot0 = FightDataClass("FightAssistBossSkillInfoData")
+local var_0_0 = FightDataClass("FightAssistBossSkillInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.skillId = slot1.skillId
-	slot0.needPower = slot1.needPower
-	slot0.powerLow = slot1.powerLow
-	slot0.powerHigh = slot1.powerHigh
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.skillId = arg_1_1.skillId
+	arg_1_0.needPower = arg_1_1.needPower
+	arg_1_0.powerLow = arg_1_1.powerLow
+	arg_1_0.powerHigh = arg_1_1.powerHigh
 end
 
-return slot0
+return var_0_0

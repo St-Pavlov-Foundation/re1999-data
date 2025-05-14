@@ -1,31 +1,35 @@
-module("modules.logic.store.view.recommend.StoreNewbieView", package.seeall)
+﻿module("modules.logic.store.view.recommend.StoreNewbieView", package.seeall)
 
-slot0 = class("StoreNewbieView", StoreRecommendBaseSubView)
+local var_0_0 = class("StoreNewbieView", StoreRecommendBaseSubView)
 
-function slot0.onInitView(slot0)
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btn:AddClickListener(slot0._onClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btn:AddClickListener(arg_2_0._onClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btn:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btn:RemoveClickListener()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._animatorPlayer = SLFramework.AnimatorPlayer.Get(gohelper.findChild(slot0.viewGO, "recommend"))
-	slot0._btn = gohelper.getClickWithAudio(slot0.viewGO)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._animator = arg_4_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+
+	local var_4_0 = gohelper.findChild(arg_4_0.viewGO, "recommend")
+
+	arg_4_0._animatorPlayer = SLFramework.AnimatorPlayer.Get(var_4_0)
+	arg_4_0._btn = gohelper.getClickWithAudio(arg_4_0.viewGO)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_5_0)
+	return
 end
 
-function slot0._onClick(slot0)
+function var_0_0._onClick(arg_6_0)
 	StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 		[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
 		[StatEnum.EventProperties.RecommendPageId] = "712",
@@ -35,7 +39,8 @@ function slot0._onClick(slot0)
 	AudioMgr.instance:trigger(2000001)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_7_0)
+	return
 end
 
-return slot0
+return var_0_0

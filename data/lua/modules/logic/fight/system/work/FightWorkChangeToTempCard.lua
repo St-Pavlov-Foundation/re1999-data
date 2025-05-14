@@ -1,26 +1,31 @@
-module("modules.logic.fight.system.work.FightWorkChangeToTempCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkChangeToTempCard", package.seeall)
 
-slot0 = class("FightWorkChangeToTempCard", FightEffectBase)
+local var_0_0 = class("FightWorkChangeToTempCard", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if not FightCardDataHelper.cardChangeIsMySide(arg_1_0.actEffectData) then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	if #string.splitToNumber(slot0.actEffectData.reserveStr, "#") > 0 then
-		for slot6, slot7 in ipairs(slot1) do
-			if FightDataHelper.handCardMgr.handCard[slot7] then
-				FightController.instance:dispatchEvent(FightEvent.ChangeToTempCard, slot7)
+	local var_1_0 = string.splitToNumber(arg_1_0.actEffectData.reserveStr, "#")
+
+	if #var_1_0 > 0 then
+		local var_1_1 = FightDataHelper.handCardMgr.handCard
+
+		for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+			if var_1_1[iter_1_1] then
+				FightController.instance:dispatchEvent(FightEvent.ChangeToTempCard, iter_1_1)
 			end
 		end
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_2_0)
+	return
 end
 
-return slot0
+return var_0_0

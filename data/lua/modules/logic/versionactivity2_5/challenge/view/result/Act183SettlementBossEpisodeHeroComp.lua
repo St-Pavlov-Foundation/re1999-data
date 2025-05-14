@@ -1,17 +1,19 @@
-module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementBossEpisodeHeroComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementBossEpisodeHeroComp", package.seeall)
 
-slot0 = class("Act183SettlementBossEpisodeHeroComp", Act183SettlementSubEpisodeHeroComp)
-slot0.TeamLeaderPosition = {
+local var_0_0 = class("Act183SettlementBossEpisodeHeroComp", Act183SettlementSubEpisodeHeroComp)
+
+var_0_0.TeamLeaderPosition = {
 	1,
 	1,
 	1,
 	1,
 	1
 }
-slot1 = 1
 
-function slot0.refreshHeroPosition(slot0, slot1, slot2)
-	transformhelper.setLocalScale(slot1.transform, uv0, uv0, uv0)
+local var_0_1 = 1
+
+function var_0_0.refreshHeroPosition(arg_1_0, arg_1_1, arg_1_2)
+	transformhelper.setLocalScale(arg_1_1.transform, var_0_1, var_0_1, var_0_1)
 end
 
-return slot0
+return var_0_0

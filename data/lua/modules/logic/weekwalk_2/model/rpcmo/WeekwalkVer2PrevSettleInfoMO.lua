@@ -1,25 +1,29 @@
-module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2PrevSettleInfoMO", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2PrevSettleInfoMO", package.seeall)
 
-slot0 = pureTable("WeekwalkVer2PrevSettleInfoMO")
+local var_0_0 = pureTable("WeekwalkVer2PrevSettleInfoMO")
 
-function slot0.init(slot0, slot1)
-	slot0.maxLayerId = slot1.maxLayerId
-	slot0.maxBattleId = slot1.maxBattleId
-	slot0.maxBattleIndex = slot1.maxBattleIndex
-	slot0.show = slot1.show
-	slot0.layerInfos = GameUtil.rpcInfosToMap(slot1.layerInfos, WeekwalkVer2PrevSettleLayerInfoMO, "layerIndex")
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.maxLayerId = arg_1_1.maxLayerId
+	arg_1_0.maxBattleId = arg_1_1.maxBattleId
+	arg_1_0.maxBattleIndex = arg_1_1.maxBattleIndex
+	arg_1_0.show = arg_1_1.show
+	arg_1_0.layerInfos = GameUtil.rpcInfosToMap(arg_1_1.layerInfos, WeekwalkVer2PrevSettleLayerInfoMO, "layerIndex")
 end
 
-function slot0.getLayerPlatinumCupNum(slot0, slot1)
-	return slot0.layerInfos[slot1] and slot2.platinumCupNum
+function var_0_0.getLayerPlatinumCupNum(arg_2_0, arg_2_1)
+	local var_2_0 = arg_2_0.layerInfos[arg_2_1]
+
+	return var_2_0 and var_2_0.platinumCupNum
 end
 
-function slot0.getTotalPlatinumCupNum(slot0)
-	for slot5, slot6 in pairs(slot0.layerInfos) do
-		slot1 = 0 + slot6.platinumCupNum
+function var_0_0.getTotalPlatinumCupNum(arg_3_0)
+	local var_3_0 = 0
+
+	for iter_3_0, iter_3_1 in pairs(arg_3_0.layerInfos) do
+		var_3_0 = var_3_0 + iter_3_1.platinumCupNum
 	end
 
-	return slot1
+	return var_3_0
 end
 
-return slot0
+return var_0_0

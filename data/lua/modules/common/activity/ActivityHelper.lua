@@ -1,73 +1,83 @@
-module("modules.common.activity.ActivityHelper", package.seeall)
+﻿module("modules.common.activity.ActivityHelper", package.seeall)
 
-slot0 = class("ActivityHelper")
+local var_0_0 = class("ActivityHelper")
 
-function slot0.getActivityStatus(slot0, slot1)
-	if not ActivityModel.instance:getActivityInfo()[slot0] then
-		if not slot1 then
-			logError(string.format("not found ActivityId : %s activity", slot0))
+function var_0_0.getActivityStatus(arg_1_0, arg_1_1)
+	local var_1_0 = ActivityModel.instance:getActivityInfo()[arg_1_0]
+
+	if not var_1_0 then
+		if not arg_1_1 then
+			logError(string.format("not found ActivityId : %s activity", arg_1_0))
 		end
 
 		return ActivityEnum.ActivityStatus.None
 	end
 
-	if not slot2:isOpen() then
+	if not var_1_0:isOpen() then
 		return ActivityEnum.ActivityStatus.NotOpen
 	end
 
-	if slot2:isExpired() then
+	if var_1_0:isExpired() then
 		return ActivityEnum.ActivityStatus.Expired
 	end
 
-	if slot2.config and slot2.config.openId and slot3 ~= 0 and not OpenModel.instance:isFunctionUnlock(slot3) then
+	local var_1_1 = var_1_0.config and var_1_0.config.openId
+
+	if var_1_1 and var_1_1 ~= 0 and not OpenModel.instance:isFunctionUnlock(var_1_1) then
 		return ActivityEnum.ActivityStatus.NotUnlock
 	end
 
-	if not slot2:isOnline() then
+	if not var_1_0:isOnline() then
 		return ActivityEnum.ActivityStatus.NotOnLine
 	end
 
 	return ActivityEnum.ActivityStatus.Normal
 end
 
-function slot0.isOpen(slot0)
-	return uv0.getActivityStatus(slot0, true) == ActivityEnum.ActivityStatus.Normal
+function var_0_0.isOpen(arg_2_0)
+	return var_0_0.getActivityStatus(arg_2_0, true) == ActivityEnum.ActivityStatus.Normal
 end
 
-function slot0.getActivityStatusAndToast(slot0, slot1)
-	if not ActivityModel.instance:getActivityInfo()[slot0] then
-		if not slot1 then
-			logError(string.format("not found ActivityId : %s activity", slot0))
+function var_0_0.getActivityStatusAndToast(arg_3_0, arg_3_1)
+	local var_3_0 = ActivityModel.instance:getActivityInfo()[arg_3_0]
+
+	if not var_3_0 then
+		if not arg_3_1 then
+			logError(string.format("not found ActivityId : %s activity", arg_3_0))
 		end
 
 		return ActivityEnum.ActivityStatus.None
 	end
 
-	if not slot2:isOpen() then
+	if not var_3_0:isOpen() then
 		return ActivityEnum.ActivityStatus.NotOpen, ToastEnum.ActivityNotOpen
 	end
 
-	if slot2:isExpired() then
+	if var_3_0:isExpired() then
 		return ActivityEnum.ActivityStatus.Expired, ToastEnum.ActivityEnd
 	end
 
-	if slot2.config and slot2.config.openId and slot3 ~= 0 and not OpenModel.instance:isFunctionUnlock(slot3) then
-		slot4, slot5 = OpenHelper.getToastIdAndParam(slot3)
+	local var_3_1 = var_3_0.config and var_3_0.config.openId
 
-		return ActivityEnum.ActivityStatus.NotUnlock, slot4, slot5
+	if var_3_1 and var_3_1 ~= 0 and not OpenModel.instance:isFunctionUnlock(var_3_1) then
+		local var_3_2, var_3_3 = OpenHelper.getToastIdAndParam(var_3_1)
+
+		return ActivityEnum.ActivityStatus.NotUnlock, var_3_2, var_3_3
 	end
 
-	if not slot2:isOnline() then
+	if not var_3_0:isOnline() then
 		return ActivityEnum.ActivityStatus.NotOnLine, ToastEnum.ActivityEnd
 	end
 
 	return ActivityEnum.ActivityStatus.Normal
 end
 
-function slot0.getActivityRemainTimeStr(slot0, slot1)
-	if ActivityModel.instance:getRemainTimeSec(slot0) then
-		if slot2 >= 0 then
-			return TimeUtil.SecondToActivityTimeFormat(slot2, slot1)
+function var_0_0.getActivityRemainTimeStr(arg_4_0, arg_4_1)
+	local var_4_0 = ActivityModel.instance:getRemainTimeSec(arg_4_0)
+
+	if var_4_0 then
+		if var_4_0 >= 0 then
+			return TimeUtil.SecondToActivityTimeFormat(var_4_0, arg_4_1)
 		else
 			return luaLang("turnback_end")
 		end
@@ -76,80 +86,90 @@ function slot0.getActivityRemainTimeStr(slot0, slot1)
 	return ""
 end
 
-slot1, slot2 = nil
+local var_0_1
+local var_0_2
 
-function slot0.initActivityVersion()
-	if not uv0 then
-		uv0 = {}
-		uv1 = {}
-		slot0 = 1
+function var_0_0.initActivityVersion()
+	if not var_0_1 then
+		var_0_1 = {}
+		var_0_2 = {}
 
-		for slot4 = 1, math.huge do
-			for slot8 = slot0, math.huge do
-				slot9 = string.format("VersionActivity%d_%dEnum", slot4, slot8)
+		local var_5_0 = 1
 
-				if slot4 == 1 and slot8 == 1 then
-					slot9 = "VersionActivityEnum"
+		for iter_5_0 = 1, math.huge do
+			for iter_5_1 = var_5_0, math.huge do
+				local var_5_1 = string.format("VersionActivity%d_%dEnum", iter_5_0, iter_5_1)
+
+				if iter_5_0 == 1 and iter_5_1 == 1 then
+					var_5_1 = "VersionActivityEnum"
 				end
 
-				if slot8 == 0 and not _G[slot9] then
+				local var_5_2 = _G[var_5_1]
+
+				if iter_5_1 == 0 and not var_5_2 then
 					return
-				elseif not slot10 then
+				elseif not var_5_2 then
 					break
 				end
 
 				if isDebugBuild then
-					logNormal("自动加载" .. slot9)
+					logNormal("自动加载" .. var_5_1)
 				end
 
-				if slot10.ActivityId then
-					for slot15, slot16 in pairs(slot10.ActivityId) do
-						uv0[slot16] = string.format("%d_%d", slot4, slot8)
+				if var_5_2.ActivityId then
+					local var_5_3 = string.format("%d_%d", iter_5_0, iter_5_1)
+
+					for iter_5_2, iter_5_3 in pairs(var_5_2.ActivityId) do
+						var_0_1[iter_5_3] = var_5_3
 					end
 				end
 
-				if slot10.JumpNeedCloseView then
-					for slot14, slot15 in pairs(slot10.JumpNeedCloseView()) do
-						uv1[slot15] = true
+				if var_5_2.JumpNeedCloseView then
+					for iter_5_4, iter_5_5 in pairs(var_5_2.JumpNeedCloseView()) do
+						var_0_2[iter_5_5] = true
 					end
 				end
 			end
 
-			slot0 = 0
+			var_5_0 = 0
 		end
 	end
 end
 
-function slot0.getActivityVersion(slot0)
-	uv0.initActivityVersion()
+function var_0_0.getActivityVersion(arg_6_0)
+	var_0_0.initActivityVersion()
 
-	return uv1[slot0] or ""
+	return var_0_1[arg_6_0] or ""
 end
 
-function slot0.getJumpNeedCloseViewDict()
-	uv0.initActivityVersion()
+function var_0_0.getJumpNeedCloseViewDict()
+	var_0_0.initActivityVersion()
 
-	return uv1
+	return var_0_2
 end
 
-function slot0.activateClass(slot0, slot1, slot2)
-	slot2 = slot2 or 0
+function var_0_0.activateClass(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_1 = arg_8_1 or 1
+	arg_8_2 = arg_8_2 or 0
 
-	for slot6 = slot1 or 1, math.huge do
-		for slot10 = slot2, math.huge do
-			if slot10 == 0 and not _G[string.format(slot0, slot6, slot10)] then
+	for iter_8_0 = arg_8_1, math.huge do
+		for iter_8_1 = arg_8_2, math.huge do
+			local var_8_0 = string.format(arg_8_0, iter_8_0, iter_8_1)
+			local var_8_1 = _G[var_8_0]
+
+			if iter_8_1 == 0 and not var_8_1 then
 				return
-			elseif not slot12 then
+			elseif not var_8_1 then
 				break
 			end
 
 			if isDebugBuild then
-				logNormal("自动加载" .. slot11)
+				logNormal("自动加载" .. var_8_0)
 			end
 		end
 
-		slot2 = 0
+		arg_8_2 = 0
 	end
 end
 
-return slot0
+return var_0_0

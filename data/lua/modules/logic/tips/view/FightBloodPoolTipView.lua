@@ -1,41 +1,49 @@
-module("modules.logic.tips.view.FightBloodPoolTipView", package.seeall)
+﻿module("modules.logic.tips.view.FightBloodPoolTipView", package.seeall)
 
-slot0 = class("FightBloodPoolTipView", BaseView)
+local var_0_0 = class("FightBloodPoolTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._txttitle = gohelper.findChildText(slot0.viewGO, "root/layout/#txt_title")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "root/layout/#txt_desc")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._txttitle = gohelper.findChildText(arg_1_0.viewGO, "root/layout/#txt_title")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "root/layout/#txt_desc")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0.click = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "close_block")
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0.click = gohelper.findChildClickWithDefaultAudio(arg_4_0.viewGO, "close_block")
 
-	slot0.click:AddClickListener(slot0.closeThis, slot0)
+	arg_4_0.click:AddClickListener(arg_4_0.closeThis, arg_4_0)
 end
 
-function slot0.onOpen(slot0)
-	slot0._txttitle.text = lua_fight_xcjl_const.configDict[6].value2
-	slot3 = lua_skill.configDict[FightHelper.getBloodPoolSkillId()]
-	slot4 = string.format("【%s】", slot3.name)
-	slot0._txtdesc.text = string.format("%s\n\n%s:%s", GameUtil.getSubPlaceholderLuaLangTwoParam(lua_fight_xcjl_const.configDict[7].value2, lua_fight_xcjl_const.configDict[3].value, slot4), slot4, FightConfig.instance:getSkillEffectDesc(nil, slot3))
+function var_0_0.onOpen(arg_5_0)
+	arg_5_0._txttitle.text = lua_fight_xcjl_const.configDict[6].value2
+
+	local var_5_0 = lua_fight_xcjl_const.configDict[7].value2
+	local var_5_1 = FightHelper.getBloodPoolSkillId()
+	local var_5_2 = lua_skill.configDict[var_5_1]
+	local var_5_3 = string.format("【%s】", var_5_2.name)
+	local var_5_4 = GameUtil.getSubPlaceholderLuaLangTwoParam(var_5_0, lua_fight_xcjl_const.configDict[3].value, var_5_3)
+	local var_5_5 = FightConfig.instance:getSkillEffectDesc(nil, var_5_2)
+
+	arg_5_0._txtdesc.text = string.format("%s\n\n%s:%s", var_5_4, var_5_3, var_5_5)
 end
 
-function slot0.onDestroyView(slot0)
-	if slot0.click then
-		slot0.click:RemoveClickListener()
+function var_0_0.onDestroyView(arg_6_0)
+	if arg_6_0.click then
+		arg_6_0.click:RemoveClickListener()
 
-		slot0.click = nil
+		arg_6_0.click = nil
 	end
 end
 
-return slot0
+return var_0_0

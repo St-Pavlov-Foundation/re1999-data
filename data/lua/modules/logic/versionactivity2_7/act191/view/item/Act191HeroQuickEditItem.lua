@@ -1,122 +1,131 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroQuickEditItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroQuickEditItem", package.seeall)
 
-slot0 = class("Act191HeroQuickEditItem", ListScrollCell)
+local var_0_0 = class("Act191HeroQuickEditItem", ListScrollCell)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.nameCnTxt = gohelper.findChildText(slot1, "namecn")
-	slot0.nameEnTxt = gohelper.findChildText(slot1, "nameen")
-	slot0.cardIcon = gohelper.findChild(slot1, "mask/charactericon")
-	slot0.commonHeroCard = CommonHeroCard.create(slot0.cardIcon, slot0.__cname)
-	slot0.front = gohelper.findChildImage(slot1, "mask/front")
-	slot0.rare = gohelper.findChildImage(slot1, "image_rare")
-	slot0.selectframe = gohelper.findChild(slot1, "selectframe")
-	slot0.careerIcon = gohelper.findChildImage(slot1, "career")
-	slot0.goexskill = gohelper.findChild(slot1, "go_exskill")
-	slot0.imageexskill = gohelper.findChildImage(slot1, "go_exskill/image_exskill")
-	slot0.newTag = gohelper.findChild(slot1, "new")
-	slot0.goFetter = gohelper.findChild(slot1, "fetter/image_Fetter")
-	slot0.goOrderBg = gohelper.findChild(slot1, "go_OrderBg")
-	slot0.imageOrder = gohelper.findChildImage(slot1, "go_OrderBg/image_Order")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "click")
-	slot0.animator = slot0.go:GetComponent(typeof(UnityEngine.Animator))
-	slot0.assist = gohelper.findChild(slot1, "assist")
-	slot0.imageFetterList = slot0:getUserDataTb_()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0.nameCnTxt = gohelper.findChildText(arg_1_1, "namecn")
+	arg_1_0.nameEnTxt = gohelper.findChildText(arg_1_1, "nameen")
+	arg_1_0.cardIcon = gohelper.findChild(arg_1_1, "mask/charactericon")
+	arg_1_0.commonHeroCard = CommonHeroCard.create(arg_1_0.cardIcon, arg_1_0.__cname)
+	arg_1_0.front = gohelper.findChildImage(arg_1_1, "mask/front")
+	arg_1_0.rare = gohelper.findChildImage(arg_1_1, "image_rare")
+	arg_1_0.selectframe = gohelper.findChild(arg_1_1, "selectframe")
+	arg_1_0.careerIcon = gohelper.findChildImage(arg_1_1, "career")
+	arg_1_0.goexskill = gohelper.findChild(arg_1_1, "go_exskill")
+	arg_1_0.imageexskill = gohelper.findChildImage(arg_1_1, "go_exskill/image_exskill")
+	arg_1_0.newTag = gohelper.findChild(arg_1_1, "new")
+	arg_1_0.goFetter = gohelper.findChild(arg_1_1, "fetter/image_Fetter")
+	arg_1_0.goOrderBg = gohelper.findChild(arg_1_1, "go_OrderBg")
+	arg_1_0.imageOrder = gohelper.findChildImage(arg_1_1, "go_OrderBg/image_Order")
+	arg_1_0.btnClick = gohelper.findChildButtonWithAudio(arg_1_1, "click")
+	arg_1_0.animator = arg_1_0.go:GetComponent(typeof(UnityEngine.Animator))
+	arg_1_0.assist = gohelper.findChild(arg_1_1, "assist")
+	arg_1_0.imageFetterList = arg_1_0:getUserDataTb_()
 
-	gohelper.setActive(slot0.goFetter, false)
+	gohelper.setActive(arg_1_0.goFetter, false)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addClickCb(slot0.btnClick, slot0._onItemClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0:addClickCb(arg_2_0.btnClick, arg_2_0._onItemClick, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0._mo = slot1
-	slot0.config = slot1.config
-	slot0.nameCnTxt.text = slot0.config.name
+function var_0_0.onUpdateMO(arg_4_0, arg_4_1)
+	arg_4_0._mo = arg_4_1
+	arg_4_0.config = arg_4_1.config
+	arg_4_0.nameCnTxt.text = arg_4_0.config.name
 
-	UISpriteSetMgr.instance:setCommonSprite(slot0.careerIcon, "lssx_" .. tostring(slot0.config.career))
-	UISpriteSetMgr.instance:setAct174Sprite(slot0.rare, "act174_rolefame_" .. tostring(slot0.config.quality))
-	UISpriteSetMgr.instance:setAct174Sprite(slot0.front, "act174_rolebg_" .. tostring(slot0.config.quality))
+	UISpriteSetMgr.instance:setCommonSprite(arg_4_0.careerIcon, "lssx_" .. tostring(arg_4_0.config.career))
+	UISpriteSetMgr.instance:setAct174Sprite(arg_4_0.rare, "act174_rolefame_" .. tostring(arg_4_0.config.quality))
+	UISpriteSetMgr.instance:setAct174Sprite(arg_4_0.front, "act174_rolebg_" .. tostring(arg_4_0.config.quality))
 
-	if not FightConfig.instance:getSkinCO(slot0.config.skinId) then
-		logError("找不到皮肤配置, id: " .. tostring(slot0.config.skinId))
+	local var_4_0 = FightConfig.instance:getSkinCO(arg_4_0.config.skinId)
+
+	if not var_4_0 then
+		logError("找不到皮肤配置, id: " .. tostring(arg_4_0.config.skinId))
 
 		return
 	end
 
-	slot0.commonHeroCard:onUpdateMO(slot2)
-	gohelper.setActive(slot0.goexskill, slot0.config.exLevel ~= 0)
+	arg_4_0.commonHeroCard:onUpdateMO(var_4_0)
+	gohelper.setActive(arg_4_0.goexskill, arg_4_0.config.exLevel ~= 0)
 
-	slot0.imageexskill.fillAmount = slot0.config.exLevel / CharacterEnum.MaxSkillExLevel
+	arg_4_0.imageexskill.fillAmount = arg_4_0.config.exLevel / CharacterEnum.MaxSkillExLevel
 
-	slot0:refreshFetterIcon()
-	slot0:refreshSelect()
+	arg_4_0:refreshFetterIcon()
+	arg_4_0:refreshSelect()
 
-	slot0._open_ani_finish = true
+	arg_4_0._open_ani_finish = true
 end
 
-function slot0.refreshSelect(slot0)
-	slot0._team_pos_index = Act191HeroQuickEditListModel.instance:getHeroTeamPos(slot0._mo.heroId)
-	slot0.isSelect = slot0._team_pos_index ~= 0
+function var_0_0.refreshSelect(arg_5_0)
+	arg_5_0._team_pos_index = Act191HeroQuickEditListModel.instance:getHeroTeamPos(arg_5_0._mo.heroId)
+	arg_5_0.isSelect = arg_5_0._team_pos_index ~= 0
 
-	if not slot0._open_ani_finish then
-		TaskDispatcher.runDelay(slot0.showOrderBg, slot0, 0.3)
+	if not arg_5_0._open_ani_finish then
+		TaskDispatcher.runDelay(arg_5_0.showOrderBg, arg_5_0, 0.3)
 	else
-		slot0:showOrderBg()
+		arg_5_0:showOrderBg()
 	end
 end
 
-function slot0.showOrderBg(slot0)
-	if slot0.isSelect then
-		if slot0._team_pos_index < 5 then
-			gohelper.setActive(slot0.goOrderBg, true)
-			gohelper.setActive(slot0.assist, false)
-			gohelper.setActive(slot0.selectframe, true)
-			UISpriteSetMgr.instance:setHeroGroupSprite(slot0.imageOrder, "biandui_shuzi_" .. slot0._team_pos_index)
+function var_0_0.showOrderBg(arg_6_0)
+	if arg_6_0.isSelect then
+		if arg_6_0._team_pos_index < 5 then
+			gohelper.setActive(arg_6_0.goOrderBg, true)
+			gohelper.setActive(arg_6_0.assist, false)
+			gohelper.setActive(arg_6_0.selectframe, true)
+			UISpriteSetMgr.instance:setHeroGroupSprite(arg_6_0.imageOrder, "biandui_shuzi_" .. arg_6_0._team_pos_index)
 		else
-			gohelper.setActive(slot0.goOrderBg, false)
-			gohelper.setActive(slot0.assist, true)
-			gohelper.setActive(slot0.selectframe, true)
+			gohelper.setActive(arg_6_0.goOrderBg, false)
+			gohelper.setActive(arg_6_0.assist, true)
+			gohelper.setActive(arg_6_0.selectframe, true)
 		end
 	else
-		gohelper.setActive(slot0.goOrderBg, false)
-		gohelper.setActive(slot0.assist, false)
-		gohelper.setActive(slot0.selectframe, false)
+		gohelper.setActive(arg_6_0.goOrderBg, false)
+		gohelper.setActive(arg_6_0.assist, false)
+		gohelper.setActive(arg_6_0.selectframe, false)
 	end
 end
 
-function slot0._onItemClick(slot0)
+function var_0_0._onItemClick(arg_7_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
-	Act191HeroQuickEditListModel.instance:selectHero(slot0._mo.heroId, not slot0.isSelect)
-	slot0:refreshSelect()
-	Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickHeroEditItem, slot0._mo)
+	Act191HeroQuickEditListModel.instance:selectHero(arg_7_0._mo.heroId, not arg_7_0.isSelect)
+	arg_7_0:refreshSelect()
+	Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickHeroEditItem, arg_7_0._mo)
 end
 
-function slot0.onDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0.showOrderBg, slot0)
+function var_0_0.onDestroy(arg_8_0)
+	TaskDispatcher.cancelTask(arg_8_0.showOrderBg, arg_8_0)
 end
 
-function slot0.getAnimator(slot0)
-	return slot0.animator
+function var_0_0.getAnimator(arg_9_0)
+	return arg_9_0.animator
 end
 
-function slot0.refreshFetterIcon(slot0)
-	for slot5, slot6 in ipairs(string.split(slot0.config.tag, "#")) do
-		if not slot0.imageFetterList[slot5] then
-			slot0.imageFetterList[slot5] = gohelper.findChildImage(gohelper.cloneInPlace(slot0.goFetter), "")
+function var_0_0.refreshFetterIcon(arg_10_0)
+	local var_10_0 = string.split(arg_10_0.config.tag, "#")
+
+	for iter_10_0, iter_10_1 in ipairs(var_10_0) do
+		if not arg_10_0.imageFetterList[iter_10_0] then
+			local var_10_1 = gohelper.cloneInPlace(arg_10_0.goFetter)
+
+			arg_10_0.imageFetterList[iter_10_0] = gohelper.findChildImage(var_10_1, "")
 		end
 
-		Activity191Helper.setFetterIcon(slot0.imageFetterList[slot5], Activity191Config.instance:getRelationCo(slot6).icon)
-		gohelper.setActive(slot0.imageFetterList[slot5], true)
+		local var_10_2 = Activity191Config.instance:getRelationCo(iter_10_1)
+
+		Activity191Helper.setFetterIcon(arg_10_0.imageFetterList[iter_10_0], var_10_2.icon)
+		gohelper.setActive(arg_10_0.imageFetterList[iter_10_0], true)
 	end
 
-	for slot5 = #slot1 + 1, #slot0.imageFetterList do
-		gohelper.setActive(slot0.imageFetterList[slot5], false)
+	for iter_10_2 = #var_10_0 + 1, #arg_10_0.imageFetterList do
+		gohelper.setActive(arg_10_0.imageFetterList[iter_10_2], false)
 	end
 end
 
-return slot0
+return var_0_0

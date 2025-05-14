@@ -1,17 +1,18 @@
-module("modules.logic.versionactivity2_7.lengzhou6.define.LengZhou6Enum", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.define.LengZhou6Enum", package.seeall)
 
-slot0 = class("LengZhou6Enum")
-slot0.entityCamp = {
+local var_0_0 = class("LengZhou6Enum")
+
+var_0_0.entityCamp = {
 	enemy = 2,
 	player = 1
 }
-slot0.TaskMOAllFinishId = -99999
-slot0.SkillType = {
+var_0_0.TaskMOAllFinishId = -99999
+var_0_0.SkillType = {
 	passive = "passive",
 	enemyActive = "enemyActive",
 	active = "active"
 }
-slot0.BattleStep = {
+var_0_0.BattleStep = {
 	attackAfter = 208,
 	attackComplete = 212,
 	enemyCheckInterval = 900,
@@ -23,8 +24,8 @@ slot0.BattleStep = {
 	poisonSettlement = 910,
 	gameBegin = 0
 }
-slot0.LoadingTime = 1
-slot0.SkillEffect = {
+var_0_0.LoadingTime = 1
+var_0_0.SkillEffect = {
 	AddBuffByIntensified = "AddBuffByIntensified",
 	EliminationDecreaseCd = "EliminationDecreaseCd",
 	DealsDamage = "DealsDamage",
@@ -43,40 +44,40 @@ slot0.SkillEffect = {
 	SuccessiveElimination = "SuccessiveElimination",
 	DamageUpByType = "DamageUpByType"
 }
-slot0.NormalEliminateEffect = "normal"
-slot0.BuffEffect = {
+var_0_0.NormalEliminateEffect = "normal"
+var_0_0.BuffEffect = {
 	damageUp = "damageUp",
 	petrify = "petrify",
 	poison = "poison"
 }
-slot0.BattleModel = {
+var_0_0.BattleModel = {
 	infinite = "infinite",
 	normal = "normal"
 }
-slot0.BattleProgress = {
+var_0_0.BattleProgress = {
 	selectFinish = 2,
 	selectSkill = 1
 }
-slot0.EnemySkillTime = 1
-slot0.EnemySkillTime_2 = 0.5
-slot0.EnemyBuffEffectShowTime = 0.5
-slot0.enterGM = false
-slot0.DebugPlayerHp = 10000000
-slot0.PlayerSkillMaxCount = 3
-slot0.DefaultEndLessBeginRound = 1
-slot0.EndLessChangeSkillLayer = 5
-slot0.BlockKey = {
+var_0_0.EnemySkillTime = 1
+var_0_0.EnemySkillTime_2 = 0.5
+var_0_0.EnemyBuffEffectShowTime = 0.5
+var_0_0.enterGM = false
+var_0_0.DebugPlayerHp = 10000000
+var_0_0.PlayerSkillMaxCount = 3
+var_0_0.DefaultEndLessBeginRound = 1
+var_0_0.EndLessChangeSkillLayer = 5
+var_0_0.BlockKey = {
 	OneClickResetLevel = "LengZhou6OneClickResetLevelKey",
 	OneClickClaimReward = "LengZhou6OneClickClaimRewardBlockKey"
 }
-slot0.openViewAniTime = 1.167
-slot0.GameResult = {
+var_0_0.openViewAniTime = 1.167
+var_0_0.GameResult = {
 	normalCancel = 3,
 	lose = 2,
 	infiniteCancel = 4,
 	win = 1
 }
-slot0.defaultEnemy = 227101
-slot0.defaultPlayerSkillSelectMax = 3
+var_0_0.defaultEnemy = 227101
+var_0_0.defaultPlayerSkillSelectMax = 3
 
-return slot0
+return var_0_0

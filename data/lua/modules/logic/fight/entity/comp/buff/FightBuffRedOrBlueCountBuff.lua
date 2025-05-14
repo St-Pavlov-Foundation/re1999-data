@@ -1,31 +1,32 @@
-module("modules.logic.fight.entity.comp.buff.FightBuffRedOrBlueCountBuff", package.seeall)
+﻿module("modules.logic.fight.entity.comp.buff.FightBuffRedOrBlueCountBuff", package.seeall)
 
-slot0 = class("FightBuffRedOrBlueCountBuff")
+local var_0_0 = class("FightBuffRedOrBlueCountBuff")
 
-function slot0.ctor(slot0)
+function var_0_0.ctor(arg_1_0)
+	return
 end
 
-function slot0.onBuffStart(slot0, slot1, slot2)
-	slot0.entityMo = slot1:getMO()
-	slot0.side = slot0.entityMo.side
+function var_0_0.onBuffStart(arg_2_0, arg_2_1, arg_2_2)
+	arg_2_0.entityMo = arg_2_1:getMO()
+	arg_2_0.side = arg_2_0.entityMo.side
 
-	if slot0.side == FightEnum.EntitySide.MySide then
-		FightDataHelper.LYDataMgr:setLYCountBuff(slot2)
+	if arg_2_0.side == FightEnum.EntitySide.MySide then
+		FightDataHelper.LYDataMgr:setLYCountBuff(arg_2_2)
 	end
 end
 
-function slot0.clear(slot0)
-	if slot0.side == FightEnum.EntitySide.MySide then
+function var_0_0.clear(arg_3_0)
+	if arg_3_0.side == FightEnum.EntitySide.MySide then
 		FightDataHelper.LYDataMgr:setLYCountBuff(nil)
 	end
 end
 
-function slot0.onBuffEnd(slot0)
-	slot0:clear()
+function var_0_0.onBuffEnd(arg_4_0)
+	arg_4_0:clear()
 end
 
-function slot0.dispose(slot0)
-	slot0:clear()
+function var_0_0.dispose(arg_5_0)
+	arg_5_0:clear()
 end
 
-return slot0
+return var_0_0

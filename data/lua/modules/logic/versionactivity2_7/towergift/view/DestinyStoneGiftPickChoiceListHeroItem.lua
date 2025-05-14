@@ -1,7 +1,7 @@
-module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceListHeroItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceListHeroItem", package.seeall)
 
-slot0 = class("DestinyStoneGiftPickChoiceListHeroItem", LuaCompBase)
-slot1 = {
+local var_0_0 = class("DestinyStoneGiftPickChoiceListHeroItem", LuaCompBase)
+local var_0_1 = {
 	0.2,
 	0.4,
 	0.6,
@@ -9,97 +9,103 @@ slot1 = {
 	1
 }
 
-function slot0.init(slot0, slot1)
-	slot0._go = slot1
-	slot0._imagerare = gohelper.findChildImage(slot0._go, "rare")
-	slot0._simageicon = gohelper.findChildSingleImage(slot0._go, "heroicon")
-	slot0._imagecareer = gohelper.findChildImage(slot0._go, "career")
-	slot0._txtname = gohelper.findChildText(slot0._go, "name")
-	slot0._goexskill = gohelper.findChild(slot1, "#go_exskill")
-	slot0._imageexskill = gohelper.findChildImage(slot1, "#go_exskill/#image_exskill")
-	slot0._goRankBg = gohelper.findChild(slot1, "Rank")
-	slot0._goranks = slot0:getUserDataTb_()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._go = arg_1_1
+	arg_1_0._imagerare = gohelper.findChildImage(arg_1_0._go, "rare")
+	arg_1_0._simageicon = gohelper.findChildSingleImage(arg_1_0._go, "heroicon")
+	arg_1_0._imagecareer = gohelper.findChildImage(arg_1_0._go, "career")
+	arg_1_0._txtname = gohelper.findChildText(arg_1_0._go, "name")
+	arg_1_0._goexskill = gohelper.findChild(arg_1_1, "#go_exskill")
+	arg_1_0._imageexskill = gohelper.findChildImage(arg_1_1, "#go_exskill/#image_exskill")
+	arg_1_0._goRankBg = gohelper.findChild(arg_1_1, "Rank")
+	arg_1_0._goranks = arg_1_0:getUserDataTb_()
 
-	for slot5 = 1, 3 do
-		slot0._goranks[slot5] = gohelper.findChild(slot1, "Rank/rank" .. slot5)
+	for iter_1_0 = 1, 3 do
+		arg_1_0._goranks[iter_1_0] = gohelper.findChild(arg_1_1, "Rank/rank" .. iter_1_0)
 	end
 
-	slot0:addEvents()
+	arg_1_0:addEvents()
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0._mo = slot1
+function var_0_0.onUpdateMO(arg_4_0, arg_4_1)
+	arg_4_0._mo = arg_4_1
 
-	slot0:refreshUI()
+	arg_4_0:refreshUI()
 end
 
-function slot0.setLock(slot0)
-	slot0._btnClick:RemoveClickListener()
+function var_0_0.setLock(arg_5_0)
+	arg_5_0._btnClick:RemoveClickListener()
 end
 
-function slot0.refreshUI(slot0)
-	if not HeroConfig.instance:getHeroCO(slot0._mo.id) then
-		logError("DestinyStoneGiftPickChoiceListHeroItem.onUpdateMO error, heroConfig is nil, id:" .. tostring(slot0._mo.id))
+function var_0_0.refreshUI(arg_6_0)
+	local var_6_0 = HeroConfig.instance:getHeroCO(arg_6_0._mo.id)
+
+	if not var_6_0 then
+		logError("DestinyStoneGiftPickChoiceListHeroItem.onUpdateMO error, heroConfig is nil, id:" .. tostring(arg_6_0._mo.id))
 
 		return
 	end
 
-	slot0:refreshBaseInfo(slot1)
-	slot0:refreshExSkill()
+	arg_6_0:refreshBaseInfo(var_6_0)
+	arg_6_0:refreshExSkill()
 end
 
-function slot0.refreshBaseInfo(slot0, slot1)
-	if not SkinConfig.instance:getSkinCo(slot1.skinId) then
-		logError("DestinyStoneGiftPickChoiceListHeroItem.onUpdateMO error, skinCfg is nil, id:" .. tostring(slot1.skinId))
+function var_0_0.refreshBaseInfo(arg_7_0, arg_7_1)
+	local var_7_0 = SkinConfig.instance:getSkinCo(arg_7_1.skinId)
+
+	if not var_7_0 then
+		logError("DestinyStoneGiftPickChoiceListHeroItem.onUpdateMO error, skinCfg is nil, id:" .. tostring(arg_7_1.skinId))
 
 		return
 	end
 
-	slot0._simageicon:LoadImage(ResUrl.getRoomHeadIcon(slot2.headIcon))
-	UISpriteSetMgr.instance:setCommonSprite(slot0._imagecareer, "lssx_" .. slot1.career)
+	arg_7_0._simageicon:LoadImage(ResUrl.getRoomHeadIcon(var_7_0.headIcon))
+	UISpriteSetMgr.instance:setCommonSprite(arg_7_0._imagecareer, "lssx_" .. arg_7_1.career)
+	UISpriteSetMgr.instance:setCommonSprite(arg_7_0._imagerare, "bgequip" .. tostring(CharacterEnum.Color[arg_7_1.rare]))
 
-	slot9 = slot1.rare
+	arg_7_0._txtname.text = arg_7_1.name
 
-	UISpriteSetMgr.instance:setCommonSprite(slot0._imagerare, "bgequip" .. tostring(CharacterEnum.Color[slot9]))
+	local var_7_1 = arg_7_0._mo.rank - 1
+	local var_7_2 = false
 
-	slot0._txtname.text = slot1.name
+	for iter_7_0 = 1, 3 do
+		local var_7_3 = iter_7_0 == var_7_1
 
-	for slot9 = 1, 3 do
-		slot10 = slot9 == slot0._mo.rank - 1
+		gohelper.setActive(arg_7_0._goranks[iter_7_0], var_7_3)
 
-		gohelper.setActive(slot0._goranks[slot9], slot10)
-
-		slot5 = false or slot10
+		var_7_2 = var_7_2 or var_7_3
 	end
 
-	gohelper.setActive(slot0._goRankBg, slot5)
+	gohelper.setActive(arg_7_0._goRankBg, var_7_2)
 end
 
-function slot0.refreshExSkill(slot0)
-	if not slot0._mo:hasHero() or slot0._mo:getSkillLevel() <= 0 then
-		gohelper.setActive(slot0._goexskill, false)
+function var_0_0.refreshExSkill(arg_8_0)
+	if not arg_8_0._mo:hasHero() or arg_8_0._mo:getSkillLevel() <= 0 then
+		gohelper.setActive(arg_8_0._goexskill, false)
 
 		return
 	end
 
-	gohelper.setActive(slot0._goexskill, true)
+	gohelper.setActive(arg_8_0._goexskill, true)
 
-	slot0._imageexskill.fillAmount = uv0[slot0._mo:getSkillLevel()] or 1
+	arg_8_0._imageexskill.fillAmount = var_0_1[arg_8_0._mo:getSkillLevel()] or 1
 end
 
-function slot0.onDestroy(slot0)
-	if not slot0._isDisposed then
-		slot0._simageicon:UnLoadImage()
-		slot0:removeEvents()
+function var_0_0.onDestroy(arg_9_0)
+	if not arg_9_0._isDisposed then
+		arg_9_0._simageicon:UnLoadImage()
+		arg_9_0:removeEvents()
 
-		slot0._isDisposed = true
+		arg_9_0._isDisposed = true
 	end
 end
 
-return slot0
+return var_0_0

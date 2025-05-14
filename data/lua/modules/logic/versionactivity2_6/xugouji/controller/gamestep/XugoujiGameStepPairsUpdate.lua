@@ -1,54 +1,55 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepPairsUpdate", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepPairsUpdate", package.seeall)
 
-slot0 = class("XugoujiGameStepPairsUpdate", XugoujiGameStepBase)
+local var_0_0 = class("XugoujiGameStepPairsUpdate", XugoujiGameStepBase)
 
-function slot0.start(slot0)
-	slot1 = slot0._stepData.isSelf
+function var_0_0.start(arg_1_0)
+	local var_1_0 = arg_1_0._stepData.isSelf
+	local var_1_1 = arg_1_0._stepData.pairCount
 
-	if slot0._stepData.pairCount == 0 then
-		slot0:finish()
+	if var_1_1 == 0 then
+		arg_1_0:finish()
 
 		return
 	end
 
-	Activity188Model.instance:setPairCount(slot2, slot1)
-	TaskDispatcher.runDelay(slot0.doGotPairsView, slot0, 0.5)
+	Activity188Model.instance:setPairCount(var_1_1, var_1_0)
+	TaskDispatcher.runDelay(arg_1_0.doGotPairsView, arg_1_0, 0.5)
 end
 
-function slot0.doGotPairsView(slot0)
-	slot1, slot2 = Activity188Model.instance:getLastCardPair()
+function var_0_0.doGotPairsView(arg_2_0)
+	local var_2_0, var_2_1 = Activity188Model.instance:getLastCardPair()
 
-	if slot1 then
+	if var_2_0 then
 		AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.cardPair)
 		XugoujiController.instance:dispatchEvent(XugoujiEvent.GotActiveCard, {
-			slot1,
-			slot2
+			var_2_0,
+			var_2_1
 		})
 	end
 
-	XugoujiController.instance:registerCallback(XugoujiEvent.CloseCardInfoView, slot0.onCloseCardInfoView, slot0)
+	XugoujiController.instance:registerCallback(XugoujiEvent.CloseCardInfoView, arg_2_0.onCloseCardInfoView, arg_2_0)
 	Activity188Model.instance:setGameState(XugoujiEnum.GameStatus.Operatable)
 	XugoujiController.instance:openCardInfoView()
 end
 
-function slot0.onCloseCardInfoView(slot0)
+function var_0_0.onCloseCardInfoView(arg_3_0)
 	Activity188Model.instance:setGameState(XugoujiEnum.GameStatus.UnOperatable)
 
-	slot1, slot2 = Activity188Model.instance:getLastCardPair()
+	local var_3_0, var_3_1 = Activity188Model.instance:getLastCardPair()
 
-	if slot1 then
-		XugoujiController.instance:dispatchEvent(XugoujiEvent.CardPairStatusUpdated, slot1)
-		XugoujiController.instance:dispatchEvent(XugoujiEvent.CardPairStatusUpdated, slot2)
+	if var_3_0 then
+		XugoujiController.instance:dispatchEvent(XugoujiEvent.CardPairStatusUpdated, var_3_0)
+		XugoujiController.instance:dispatchEvent(XugoujiEvent.CardPairStatusUpdated, var_3_1)
 	end
 
-	XugoujiController.instance:unregisterCallback(XugoujiEvent.CloseCardInfoView, slot0.onCloseCardInfoView, slot0)
-	TaskDispatcher.runDelay(slot0.finish, slot0, 0.3)
+	XugoujiController.instance:unregisterCallback(XugoujiEvent.CloseCardInfoView, arg_3_0.onCloseCardInfoView, arg_3_0)
+	TaskDispatcher.runDelay(arg_3_0.finish, arg_3_0, 0.3)
 end
 
-function slot0.dispose(slot0)
-	XugoujiController.instance:unregisterCallback(XugoujiEvent.CloseCardInfoView, slot0.onCloseCardInfoView, slot0)
-	TaskDispatcher.cancelTask(slot0.doGotPairsView, slot0)
-	XugoujiGameStepBase.dispose(slot0)
+function var_0_0.dispose(arg_4_0)
+	XugoujiController.instance:unregisterCallback(XugoujiEvent.CloseCardInfoView, arg_4_0.onCloseCardInfoView, arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0.doGotPairsView, arg_4_0)
+	XugoujiGameStepBase.dispose(arg_4_0)
 end
 
-return slot0
+return var_0_0

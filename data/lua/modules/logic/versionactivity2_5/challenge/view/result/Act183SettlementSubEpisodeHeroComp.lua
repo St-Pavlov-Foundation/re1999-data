@@ -1,7 +1,8 @@
-module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementSubEpisodeHeroComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementSubEpisodeHeroComp", package.seeall)
 
-slot0 = class("Act183SettlementSubEpisodeHeroComp", LuaCompBase)
-slot0.HeroIconPosition = {
+local var_0_0 = class("Act183SettlementSubEpisodeHeroComp", LuaCompBase)
+
+var_0_0.HeroIconPosition = {
 	{
 		{
 			0,
@@ -88,14 +89,15 @@ slot0.HeroIconPosition = {
 		}
 	}
 }
-slot0.TeamLeaderPosition = {
+var_0_0.TeamLeaderPosition = {
 	1,
 	2,
 	3,
 	4,
 	5
 }
-slot1 = {
+
+local var_0_1 = {
 	[Act183Enum.EpisodeType.Boss] = {
 		-52,
 		-52
@@ -106,112 +108,135 @@ slot1 = {
 	}
 }
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0._heroIconTab = slot0:getUserDataTb_()
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._heroIconTab = arg_4_0:getUserDataTb_()
 end
 
-function slot0.setHeroTemplate(slot0, slot1)
-	slot0._goherotemplate = slot1
+function var_0_0.setHeroTemplate(arg_5_0, arg_5_1)
+	arg_5_0._goherotemplate = arg_5_1
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0:refreshHeroGroup(slot1)
+function var_0_0.onUpdateMO(arg_6_0, arg_6_1)
+	arg_6_0:refreshHeroGroup(arg_6_1)
 end
 
-function slot0.refreshHeroGroup(slot0, slot1)
-	if not slot1 then
+function var_0_0.refreshHeroGroup(arg_7_0, arg_7_1)
+	if not arg_7_1 then
 		return
 	end
 
-	slot0._episodeType = slot1:getEpisodeType()
-	slot0._hasTeamLeader = Act183Helper.isEpisodeHasTeamLeader(slot1:getEpisodeId())
-	slot5 = slot0.HeroIconPosition[slot0:_setTeamLeaderPosition(slot1) and #slot3 or 0]
+	local var_7_0 = arg_7_1:getEpisodeId()
 
-	for slot9, slot10 in ipairs(slot3) do
-		slot0:refreshSingleHeroItem(gohelper.clone(slot0._goherotemplate, slot0.go, "hero_" .. slot9), slot10, slot9, slot5 and slot5[slot9])
+	arg_7_0._episodeType = arg_7_1:getEpisodeType()
+	arg_7_0._hasTeamLeader = Act183Helper.isEpisodeHasTeamLeader(var_7_0)
+
+	local var_7_1 = arg_7_0:_setTeamLeaderPosition(arg_7_1)
+	local var_7_2 = var_7_1 and #var_7_1 or 0
+	local var_7_3 = arg_7_0.HeroIconPosition[var_7_2]
+
+	for iter_7_0, iter_7_1 in ipairs(var_7_1) do
+		local var_7_4 = gohelper.clone(arg_7_0._goherotemplate, arg_7_0.go, "hero_" .. iter_7_0)
+		local var_7_5 = var_7_3 and var_7_3[iter_7_0]
+
+		arg_7_0:refreshSingleHeroItem(var_7_4, iter_7_1, iter_7_0, var_7_5)
 	end
 end
 
-function slot0._setTeamLeaderPosition(slot0, slot1)
-	slot3 = {}
-	slot5 = slot1:getHeroMos() and #slot2 or 0
+function var_0_0._setTeamLeaderPosition(arg_8_0, arg_8_1)
+	local var_8_0 = arg_8_1:getHeroMos()
+	local var_8_1 = {}
+	local var_8_2 = {}
+	local var_8_3 = var_8_0 and #var_8_0 or 0
 
-	for slot9, slot10 in ipairs(slot2) do
-		if slot0._hasTeamLeader and slot10:isTeamLeader() then
-			table.insert({}, slot10)
+	for iter_8_0, iter_8_1 in ipairs(var_8_0) do
+		if arg_8_0._hasTeamLeader and iter_8_1:isTeamLeader() then
+			table.insert(var_8_2, iter_8_1)
 		else
-			table.insert(slot3, slot10)
+			table.insert(var_8_1, iter_8_1)
 		end
 	end
 
-	if not slot0.TeamLeaderPosition[slot5] then
-		slot6 = slot5
+	local var_8_4 = arg_8_0.TeamLeaderPosition[var_8_3]
 
-		logWarn(string.format("未配置队长显示位置(TeamLeaderPosition)!!!默认放队尾  episodeId = %s, heroCount = %s", slot1:getEpisodeId(), slot5))
+	if not var_8_4 then
+		var_8_4 = var_8_3
+
+		logWarn(string.format("未配置队长显示位置(TeamLeaderPosition)!!!默认放队尾  episodeId = %s, heroCount = %s", arg_8_1:getEpisodeId(), var_8_3))
 	end
 
-	for slot10, slot11 in ipairs(slot4) do
-		table.insert(slot3, slot6, slot11)
+	for iter_8_2, iter_8_3 in ipairs(var_8_2) do
+		table.insert(var_8_1, var_8_4, iter_8_3)
 	end
 
-	return slot3
+	return var_8_1
 end
 
-function slot0.refreshSingleHeroItem(slot0, slot1, slot2, slot3, slot4)
-	gohelper.setActive(slot1, true)
+function var_0_0.refreshSingleHeroItem(arg_9_0, arg_9_1, arg_9_2, arg_9_3, arg_9_4)
+	gohelper.setActive(arg_9_1, true)
 
-	slot5 = gohelper.findChildSingleImage(slot1, "simage_heroicon")
+	local var_9_0 = gohelper.findChildSingleImage(arg_9_1, "simage_heroicon")
+	local var_9_1 = arg_9_2:getHeroIconUrl()
 
-	slot5:LoadImage(slot2:getHeroIconUrl())
+	var_9_0:LoadImage(var_9_1)
 
-	slot0._heroIconTab[slot5] = true
+	arg_9_0._heroIconTab[var_9_0] = true
 
-	slot0:refreshHeroPosition(slot1, slot4)
+	arg_9_0:refreshHeroPosition(arg_9_1, arg_9_4)
 
-	slot8 = slot0._hasTeamLeader and slot2:isTeamLeader()
+	local var_9_2 = gohelper.findChild(arg_9_1, "#go_LeaderFrame")
+	local var_9_3 = arg_9_0._hasTeamLeader and arg_9_2:isTeamLeader()
 
-	gohelper.setActive(gohelper.findChild(slot1, "#go_LeaderFrame"), slot8)
+	gohelper.setActive(var_9_2, var_9_3)
 
-	if slot8 then
-		slot0:onRefreshTeamLeaderHero(slot1)
+	if var_9_3 then
+		arg_9_0:onRefreshTeamLeaderHero(arg_9_1)
 	end
 end
 
-function slot0.refreshHeroPosition(slot0, slot1, slot2)
-	slot5 = slot2 and slot2[3]
+function var_0_0.refreshHeroPosition(arg_10_0, arg_10_1, arg_10_2)
+	local var_10_0 = arg_10_2 and arg_10_2[1]
+	local var_10_1 = arg_10_2 and arg_10_2[2]
+	local var_10_2 = arg_10_2 and arg_10_2[3]
 
-	transformhelper.setLocalScale(slot1.transform, slot5 or 1, slot5 or 1, slot5 or 1)
-	recthelper.setAnchor(slot1.transform, slot2 and slot2[1] or 0, slot2 and slot2[2] or 0)
+	transformhelper.setLocalScale(arg_10_1.transform, var_10_2 or 1, var_10_2 or 1, var_10_2 or 1)
+	recthelper.setAnchor(arg_10_1.transform, var_10_0 or 0, var_10_1 or 0)
 end
 
-function slot0.onRefreshTeamLeaderHero(slot0, slot1)
-	recthelper.setAnchor(gohelper.findChild(slot1, "#go_LeaderFrame/image_LeaderIcon").transform, uv0[slot0._episodeType] and slot3[1] or 0, slot3 and slot3[2] or 0)
+function var_0_0.onRefreshTeamLeaderHero(arg_11_0, arg_11_1)
+	local var_11_0 = gohelper.findChild(arg_11_1, "#go_LeaderFrame/image_LeaderIcon")
+	local var_11_1 = var_0_1[arg_11_0._episodeType]
+	local var_11_2 = var_11_1 and var_11_1[1]
+	local var_11_3 = var_11_1 and var_11_1[2]
+
+	recthelper.setAnchor(var_11_0.transform, var_11_2 or 0, var_11_3 or 0)
 end
 
-function slot0.releaseAllSingleImage(slot0)
-	if slot0._heroIconTab then
-		for slot4, slot5 in pairs(slot0._heroIconTab) do
-			slot4:UnLoadImage()
+function var_0_0.releaseAllSingleImage(arg_12_0)
+	if arg_12_0._heroIconTab then
+		for iter_12_0, iter_12_1 in pairs(arg_12_0._heroIconTab) do
+			iter_12_0:UnLoadImage()
 		end
 	end
 end
 
-function slot0.onDestroy(slot0)
-	slot0:releaseAllSingleImage()
+function var_0_0.onDestroy(arg_13_0)
+	arg_13_0:releaseAllSingleImage()
 end
 
-return slot0
+return var_0_0

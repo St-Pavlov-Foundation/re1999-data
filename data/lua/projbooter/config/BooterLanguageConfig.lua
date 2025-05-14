@@ -1,12 +1,6 @@
-module("projbooter.config.BooterLanguageConfig", package.seeall)
+﻿module("projbooter.config.BooterLanguageConfig", package.seeall)
 
-function booterLang(slot0)
-	return uv0[slot0]
-end
-
-setGlobal("booterLang", booterLang)
-
-return {
+local var_0_0 = {
 	continue_download = "继续下载",
 	jp_voice_desc = "以日语为通用语种，附赠少量方言口音、其他语种及不可知语种的丰富配音体验。",
 	zh = "中文",
@@ -99,3 +93,11 @@ return {
 	unpack_error_file_not_found = "无法完成资源解压，部分资源文件缺失，请尝试修复后重试。",
 	unpack_error_done = "资源解压已完成，请勿重复操作。"
 }
+
+function booterLang(arg_1_0)
+	return var_0_0[arg_1_0]
+end
+
+setGlobal("booterLang", booterLang)
+
+return var_0_0

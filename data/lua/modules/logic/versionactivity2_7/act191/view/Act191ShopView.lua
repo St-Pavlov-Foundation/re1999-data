@@ -1,199 +1,219 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191ShopView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191ShopView", package.seeall)
 
-slot0 = class("Act191ShopView", BaseView)
+local var_0_0 = class("Act191ShopView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goNodeList = gohelper.findChild(slot0.viewGO, "#go_NodeList")
-	slot0._btnFreshShop = gohelper.findChildButtonWithAudio(slot0.viewGO, "Middle/shopRoot/#btn_FreshShop")
-	slot0._txtFreshCost = gohelper.findChildText(slot0.viewGO, "Middle/shopRoot/#btn_FreshShop/#txt_FreshCost")
-	slot0._goFreeFresh = gohelper.findChild(slot0.viewGO, "Middle/shopRoot/#btn_FreshShop/#go_FreeFresh")
-	slot0._goShopItem = gohelper.findChild(slot0.viewGO, "Middle/shopRoot/#go_ShopItem")
-	slot0._goShopLevel = gohelper.findChild(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel")
-	slot0._txtShopLevel = gohelper.findChildText(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel/#txt_ShopLevel")
-	slot0._btnDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel/#btn_Detail")
-	slot0._goDetail = gohelper.findChild(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail")
-	slot0._btnCloseDetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/#btn_CloseDetail")
-	slot0._txtDetail = gohelper.findChildText(slot0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/go_scroll/viewport/content/#txt_Detail")
-	slot0._btnNext = gohelper.findChildButtonWithAudio(slot0.viewGO, "Bottom/#btn_Next")
-	slot0._goTeam = gohelper.findChild(slot0.viewGO, "Bottom/#go_Team")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
-	slot0._txtCoin = gohelper.findChildText(slot0.viewGO, "go_topright/Coin/#txt_Coin")
-	slot0._txtScore = gohelper.findChildText(slot0.viewGO, "go_topright/Score/#txt_Score")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goNodeList = gohelper.findChild(arg_1_0.viewGO, "#go_NodeList")
+	arg_1_0._btnFreshShop = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Middle/shopRoot/#btn_FreshShop")
+	arg_1_0._txtFreshCost = gohelper.findChildText(arg_1_0.viewGO, "Middle/shopRoot/#btn_FreshShop/#txt_FreshCost")
+	arg_1_0._goFreeFresh = gohelper.findChild(arg_1_0.viewGO, "Middle/shopRoot/#btn_FreshShop/#go_FreeFresh")
+	arg_1_0._goShopItem = gohelper.findChild(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopItem")
+	arg_1_0._goShopLevel = gohelper.findChild(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel")
+	arg_1_0._txtShopLevel = gohelper.findChildText(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel/#txt_ShopLevel")
+	arg_1_0._btnDetail = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel/#btn_Detail")
+	arg_1_0._goDetail = gohelper.findChild(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail")
+	arg_1_0._btnCloseDetail = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/#btn_CloseDetail")
+	arg_1_0._txtDetail = gohelper.findChildText(arg_1_0.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/go_scroll/viewport/content/#txt_Detail")
+	arg_1_0._btnNext = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Bottom/#btn_Next")
+	arg_1_0._goTeam = gohelper.findChild(arg_1_0.viewGO, "Bottom/#go_Team")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_topleft")
+	arg_1_0._txtCoin = gohelper.findChildText(arg_1_0.viewGO, "go_topright/Coin/#txt_Coin")
+	arg_1_0._txtScore = gohelper.findChildText(arg_1_0.viewGO, "go_topright/Score/#txt_Score")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnFreshShop:AddClickListener(slot0._btnFreshShopOnClick, slot0)
-	slot0._btnDetail:AddClickListener(slot0._btnDetailOnClick, slot0)
-	slot0._btnCloseDetail:AddClickListener(slot0._btnCloseDetailOnClick, slot0)
-	slot0._btnNext:AddClickListener(slot0._btnNextOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnFreshShop:AddClickListener(arg_2_0._btnFreshShopOnClick, arg_2_0)
+	arg_2_0._btnDetail:AddClickListener(arg_2_0._btnDetailOnClick, arg_2_0)
+	arg_2_0._btnCloseDetail:AddClickListener(arg_2_0._btnCloseDetailOnClick, arg_2_0)
+	arg_2_0._btnNext:AddClickListener(arg_2_0._btnNextOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnFreshShop:RemoveClickListener()
-	slot0._btnDetail:RemoveClickListener()
-	slot0._btnCloseDetail:RemoveClickListener()
-	slot0._btnNext:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnFreshShop:RemoveClickListener()
+	arg_3_0._btnDetail:RemoveClickListener()
+	arg_3_0._btnCloseDetail:RemoveClickListener()
+	arg_3_0._btnNext:RemoveClickListener()
 end
 
-function slot0._btnCloseDetailOnClick(slot0)
-	gohelper.setActive(slot0._goDetail, false)
+function var_0_0._btnCloseDetailOnClick(arg_4_0)
+	gohelper.setActive(arg_4_0._goDetail, false)
 end
 
-function slot0._btnDetailOnClick(slot0)
-	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnDetailOnClick")
-	gohelper.setAsLastSibling(slot0._goShopLevel)
-	gohelper.setActive(slot0._goDetail, true)
+function var_0_0._btnDetailOnClick(arg_5_0)
+	Act191StatController.instance:statButtonClick(arg_5_0.viewName, "_btnDetailOnClick")
+	gohelper.setAsLastSibling(arg_5_0._goShopLevel)
+	gohelper.setActive(arg_5_0._goDetail, true)
 end
 
-function slot0._btnFreshShopOnClick(slot0)
-	if slot0.freshLimit and slot0.freshLimit <= slot0.nodeDetailMo.shopFreshNum then
+function var_0_0._btnFreshShopOnClick(arg_6_0)
+	if arg_6_0.freshLimit and arg_6_0.freshLimit <= arg_6_0.nodeDetailMo.shopFreshNum then
 		GameFacade.showToast(ToastEnum.Act191FreshLimit)
 
 		return
 	end
 
-	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnFreshShopOnClick")
+	Act191StatController.instance:statButtonClick(arg_6_0.viewName, "_btnFreshShopOnClick")
 
-	if slot0.gameInfo.coin < slot0:getFreshShopCost() then
+	if arg_6_0.gameInfo.coin < arg_6_0:getFreshShopCost() then
 		GameFacade.showToast(ToastEnum.Act174CoinNotEnough)
 
 		return
 	end
 
-	for slot4, slot5 in ipairs(slot0.shopItemList) do
-		slot5:playFreshAnim()
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0.shopItemList) do
+		iter_6_1:playFreshAnim()
 	end
 
-	TaskDispatcher.runDelay(slot0.delayFresh, slot0, 0.16)
+	TaskDispatcher.runDelay(arg_6_0.delayFresh, arg_6_0, 0.16)
 end
 
-function slot0.delayFresh(slot0)
-	Activity191Rpc.instance:sendFresh191ShopRequest(slot0.actId, slot0._updateInfo, slot0)
+function var_0_0.delayFresh(arg_7_0)
+	Activity191Rpc.instance:sendFresh191ShopRequest(arg_7_0.actId, arg_7_0._updateInfo, arg_7_0)
 end
 
-function slot0._btnNextOnClick(slot0)
-	if slot0.isLeaving then
+function var_0_0._btnNextOnClick(arg_8_0)
+	if arg_8_0.isLeaving then
 		return
 	end
 
-	slot0.isLeaving = true
+	arg_8_0.isLeaving = true
 
-	Activity191Rpc.instance:sendLeave191ShopRequest(slot0.actId, slot0.onLeaveShop, slot0)
-	Act191StatController.instance:statButtonClick(slot0.viewName, "_btnNextOnClick")
+	Activity191Rpc.instance:sendLeave191ShopRequest(arg_8_0.actId, arg_8_0.onLeaveShop, arg_8_0)
+	Act191StatController.instance:statButtonClick(arg_8_0.viewName, "_btnNextOnClick")
 end
 
-function slot0._editableInitView(slot0)
-	gohelper.setActive(slot0._goShopItem, false)
+function var_0_0._editableInitView(arg_9_0)
+	gohelper.setActive(arg_9_0._goShopItem, false)
 
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-	slot0.nodeDetailMo = slot0.gameInfo:getNodeDetailMo()
-	slot1 = nil
+	arg_9_0.actId = Activity191Model.instance:getCurActId()
+	arg_9_0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	arg_9_0.nodeDetailMo = arg_9_0.gameInfo:getNodeDetailMo()
 
-	if tabletool.indexOf(Activity191Enum.TagShopField, slot0.nodeDetailMo.type) then
-		slot1 = lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshCost].value
-		slot0.freshLimit = tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshLimit].value)
+	local var_9_0
+
+	if tabletool.indexOf(Activity191Enum.TagShopField, arg_9_0.nodeDetailMo.type) then
+		var_9_0 = lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshCost].value
+		arg_9_0.freshLimit = tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshLimit].value)
 	else
-		slot1 = lua_activity191_const.configDict[Activity191Enum.ConstKey.ShopFreshCost].value
+		var_9_0 = lua_activity191_const.configDict[Activity191Enum.ConstKey.ShopFreshCost].value
 	end
 
-	slot0.freshCostList = GameUtil.splitString2(slot1, true)
-	slot0.shopItemList = {}
-	slot0.animBtnFresh = slot0._btnFreshShop.gameObject:GetComponent(gohelper.Type_Animator)
+	arg_9_0.freshCostList = GameUtil.splitString2(var_9_0, true)
+	arg_9_0.shopItemList = {}
+	arg_9_0.animBtnFresh = arg_9_0._btnFreshShop.gameObject:GetComponent(gohelper.Type_Animator)
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
+	local var_9_1 = arg_9_0:getResInst(Activity191Enum.PrefabPath.NodeListItem, arg_9_0._goNodeList)
+
+	MonoHelper.addNoUpdateLuaComOnceToGo(var_9_1, Act191NodeListItem, arg_9_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_unfold)
 
-	slot0.teamComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.TeamComp, slot0._goTeam), Act191TeamComp, slot0)
+	local var_9_2 = arg_9_0:getResInst(Activity191Enum.PrefabPath.TeamComp, arg_9_0._goTeam)
+
+	arg_9_0.teamComp = MonoHelper.addNoUpdateLuaComOnceToGo(var_9_2, Act191TeamComp, arg_9_0)
 end
 
-function slot0._updateInfo(slot0)
-	if slot0.isLeaving then
+function var_0_0._updateInfo(arg_10_0)
+	if arg_10_0.isLeaving then
 		return
 	end
 
-	slot0.nodeDetailMo = slot0.gameInfo:getNodeDetailMo()
+	arg_10_0.nodeDetailMo = arg_10_0.gameInfo:getNodeDetailMo()
 
-	slot0:refreshShop()
+	arg_10_0:refreshShop()
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
-	slot0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, slot0._updateInfo, slot0)
+function var_0_0.onOpen(arg_11_0)
+	Act191StatController.instance:onViewOpen(arg_11_0.viewName)
+	arg_11_0:addEventCb(Activity191Controller.instance, Activity191Event.UpdateGameInfo, arg_11_0._updateInfo, arg_11_0)
 
-	if slot0.nodeDetailMo.type == Activity191Enum.NodeType.CollectionShop then
-		slot0.teamComp:onClickSwitch(true)
+	if arg_11_0.nodeDetailMo.type == Activity191Enum.NodeType.CollectionShop then
+		arg_11_0.teamComp:onClickSwitch(true)
 	end
 
-	slot0:refreshUI()
+	arg_11_0:refreshUI()
 end
 
-function slot0.onClose(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
+function var_0_0.onClose(arg_12_0)
+	local var_12_0 = arg_12_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_12_0.viewName, var_12_0)
 end
 
-function slot0.refreshUI(slot0)
-	slot0.shopConfig = lua_activity191_shop.configDict[slot0.actId][slot0.nodeDetailMo.shopId]
-	slot0._txtShopLevel.text = slot0.shopConfig.name
-	slot0._txtDetail.text = slot0.shopConfig.desc
-	slot0._txtScore.text = slot0.gameInfo.score
+function var_0_0.refreshUI(arg_13_0)
+	arg_13_0.shopConfig = lua_activity191_shop.configDict[arg_13_0.actId][arg_13_0.nodeDetailMo.shopId]
+	arg_13_0._txtShopLevel.text = arg_13_0.shopConfig.name
+	arg_13_0._txtDetail.text = arg_13_0.shopConfig.desc
+	arg_13_0._txtScore.text = arg_13_0.gameInfo.score
 
-	slot0:refreshShop()
+	arg_13_0:refreshShop()
 end
 
-function slot0.refreshShop(slot0)
-	if slot0.freshLimit and slot0.freshLimit <= slot0.nodeDetailMo.shopFreshNum then
-		ZProj.UGUIHelper.SetGrayscale(slot0._btnFreshShop.gameObject, true)
+function var_0_0.refreshShop(arg_14_0)
+	if arg_14_0.freshLimit and arg_14_0.freshLimit <= arg_14_0.nodeDetailMo.shopFreshNum then
+		ZProj.UGUIHelper.SetGrayscale(arg_14_0._btnFreshShop.gameObject, true)
 	else
-		ZProj.UGUIHelper.SetGrayscale(slot0._btnFreshShop.gameObject, false)
+		ZProj.UGUIHelper.SetGrayscale(arg_14_0._btnFreshShop.gameObject, false)
 	end
 
-	slot0.animBtnFresh:Play(slot0:getFreshShopCost() == 0 and "first" or "idle", 0, 0)
+	local var_14_0 = arg_14_0:getFreshShopCost()
+	local var_14_1 = var_14_0 == 0 and "first" or "idle"
 
-	slot0._txtFreshCost.text = slot1
-	slot0._txtCoin.text = slot0.gameInfo.coin
+	arg_14_0.animBtnFresh:Play(var_14_1, 0, 0)
 
-	for slot6 = 1, 6 do
-		if slot0.nodeDetailMo.shopPosMap[tostring(slot6)] then
-			slot8 = slot0.shopItemList[slot6] or slot0:createShopItem(slot6)
+	arg_14_0._txtFreshCost.text = var_14_0
+	arg_14_0._txtCoin.text = arg_14_0.gameInfo.coin
 
-			slot8:setData(slot7, tabletool.indexOf(slot0.nodeDetailMo.boughtSet, slot6))
-			gohelper.setActive(slot8.go, true)
-		elseif slot8 then
-			gohelper.setActive(slot8.go, false)
+	for iter_14_0 = 1, 6 do
+		local var_14_2 = arg_14_0.nodeDetailMo.shopPosMap[tostring(iter_14_0)]
+		local var_14_3 = arg_14_0.shopItemList[iter_14_0]
+
+		if var_14_2 then
+			var_14_3 = var_14_3 or arg_14_0:createShopItem(iter_14_0)
+
+			local var_14_4 = tabletool.indexOf(arg_14_0.nodeDetailMo.boughtSet, iter_14_0)
+
+			var_14_3:setData(var_14_2, var_14_4)
+			gohelper.setActive(var_14_3.go, true)
+		elseif var_14_3 then
+			gohelper.setActive(var_14_3.go, false)
 		end
 	end
 end
 
-function slot0.createShopItem(slot0, slot1)
-	slot3 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot0._goShopItem, "shopItem" .. slot1), Act191ShopItem, slot0)
+function var_0_0.createShopItem(arg_15_0, arg_15_1)
+	local var_15_0 = gohelper.cloneInPlace(arg_15_0._goShopItem, "shopItem" .. arg_15_1)
+	local var_15_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_0, Act191ShopItem, arg_15_0)
 
-	slot3:setIndex(slot1)
+	var_15_1:setIndex(arg_15_1)
 
-	slot0.shopItemList[slot1] = slot3
+	arg_15_0.shopItemList[arg_15_1] = var_15_1
 
-	return slot3
+	return var_15_1
 end
 
-function slot0.onLeaveShop(slot0, slot1, slot2)
-	if slot2 == 0 then
+function var_0_0.onLeaveShop(arg_16_0, arg_16_1, arg_16_2)
+	if arg_16_2 == 0 then
 		Activity191Controller.instance:nextStep()
-		ViewMgr.instance:closeView(slot0.viewName)
+		ViewMgr.instance:closeView(arg_16_0.viewName)
 	end
 
-	slot0.isLeaving = false
+	arg_16_0.isLeaving = false
 end
 
-function slot0.getFreshShopCost(slot0)
-	for slot5 = #slot0.freshCostList, 1, -1 do
-		if slot0.freshCostList[slot5][1] <= slot0.nodeDetailMo.shopFreshNum + 1 then
-			return slot6[2]
+function var_0_0.getFreshShopCost(arg_17_0)
+	local var_17_0 = arg_17_0.nodeDetailMo.shopFreshNum
+
+	for iter_17_0 = #arg_17_0.freshCostList, 1, -1 do
+		local var_17_1 = arg_17_0.freshCostList[iter_17_0]
+
+		if var_17_1[1] <= var_17_0 + 1 then
+			return var_17_1[2]
 		end
 	end
 end
 
-return slot0
+return var_0_0

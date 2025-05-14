@@ -1,13 +1,13 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191FightSuccViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191FightSuccViewContainer", package.seeall)
 
-slot0 = class("Act191FightSuccViewContainer", BaseViewContainer)
+local var_0_0 = class("Act191FightSuccViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, Act191FightSuccView.New())
+	table.insert(var_1_0, Act191FightSuccView.New())
 
-	return slot1
+	return var_1_0
 end
 
-return slot0
+return var_0_0

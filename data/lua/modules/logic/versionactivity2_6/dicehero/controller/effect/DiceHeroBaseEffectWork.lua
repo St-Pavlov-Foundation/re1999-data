@@ -1,13 +1,13 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroBaseEffectWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroBaseEffectWork", package.seeall)
 
-slot0 = class("DiceHeroBaseEffectWork", BaseWork)
+local var_0_0 = class("DiceHeroBaseEffectWork", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	slot0._effectMo = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._effectMo = arg_1_1
 end
 
-function slot0.onStart(slot0, slot1)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_2_0, arg_2_1)
+	arg_2_0:onDone(true)
 end
 
-return slot0
+return var_0_0

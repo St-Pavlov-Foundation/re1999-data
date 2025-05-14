@@ -1,30 +1,34 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.work.DiceHeroActionWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.work.DiceHeroActionWork", package.seeall)
 
-slot0 = class("DiceHeroActionWork", BaseWork)
+local var_0_0 = class("DiceHeroActionWork", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	uv0.super.ctor(slot0, slot1)
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	var_0_0.super.ctor(arg_1_0, arg_1_1)
 
-	slot0._stepMo = slot1
+	arg_1_0._stepMo = arg_1_1
 end
 
-function slot0.onStart(slot0, slot1)
-	if slot0._stepMo.actionType == 1 and slot0._stepMo.isByCard then
-		DiceHeroHelper.instance:getCard(tonumber(slot0._stepMo.reasonId)):doHitAnim()
-	elseif DiceHeroHelper.instance:getEntity(slot0._stepMo.fromId) then
-		slot2:playHitAnim()
+function var_0_0.onStart(arg_2_0, arg_2_1)
+	if arg_2_0._stepMo.actionType == 1 and arg_2_0._stepMo.isByCard then
+		DiceHeroHelper.instance:getCard(tonumber(arg_2_0._stepMo.reasonId)):doHitAnim()
+	else
+		local var_2_0 = DiceHeroHelper.instance:getEntity(arg_2_0._stepMo.fromId)
+
+		if var_2_0 then
+			var_2_0:playHitAnim()
+		end
 	end
 
 	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardrelease)
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 1)
+	TaskDispatcher.runDelay(arg_2_0._delayDone, arg_2_0, 1)
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_3_0)
+	arg_3_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
+function var_0_0.clearWork(arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0._delayDone, arg_4_0)
 end
 
-return slot0
+return var_0_0

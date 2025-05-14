@@ -1,98 +1,113 @@
-module("modules.logic.fight.system.work.FightWorkEffectDistributeCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkEffectDistributeCard", package.seeall)
 
-slot0 = class("FightWorkEffectDistributeCard", FightEffectBase)
-slot0.handCardScale = 0.52
-slot0.handCardScaleTime = 0.25
+local var_0_0 = class("FightWorkEffectDistributeCard", FightEffectBase)
 
-function slot0.onConstructor(slot0)
-	slot0.skipAutoPlayData = true
+var_0_0.handCardScale = 0.52
+var_0_0.handCardScaleTime = 0.25
+
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.skipAutoPlayData = true
 end
 
-function slot0.onStart(slot0)
-	slot0:com_registTimer(slot0._delayDone, 20)
-	TaskDispatcher.runDelay(slot0._delayDistribute, slot0, 0.01)
+function var_0_0.onStart(arg_2_0)
+	arg_2_0:com_registTimer(arg_2_0._delayDone, 20)
+	TaskDispatcher.runDelay(arg_2_0._delayDistribute, arg_2_0, 0.01)
 end
 
-function slot0._delayDistribute(slot0)
+function var_0_0._delayDistribute(arg_3_0)
 	if not FightDataHelper.roundMgr:getRoundData() then
 		logError("回合数据不存在")
-		slot0:onDone(false)
+		arg_3_0:onDone(false)
 
 		return
 	end
 
 	FightController.instance:setCurStage(FightEnum.Stage.FillCard)
 
-	if slot0.actEffectData.effectType == FightEnum.EffectType.DEALCARD2 then
-		slot3 = FightDataHelper.handCardMgr.teamACards2
+	if arg_3_0.actEffectData.effectType == FightEnum.EffectType.DEALCARD2 then
+		local var_3_0 = FightDataHelper.handCardMgr.beforeCards2
+		local var_3_1 = FightDataHelper.handCardMgr.teamACards2
 
-		if #FightDataHelper.handCardMgr.beforeCards2 > 0 or #slot3 > 0 then
-			FightController.instance:registerCallback(FightEvent.OnDistributeCards, slot0._distributeDone, slot0)
+		if #var_3_0 > 0 or #var_3_1 > 0 then
+			FightController.instance:registerCallback(FightEvent.OnDistributeCards, arg_3_0._distributeDone, arg_3_0)
 			FightViewPartVisible.set(false, true, false, false, false)
-			FightController.instance:dispatchEvent(FightEvent.DistributeCards, slot2, slot3)
+			FightController.instance:dispatchEvent(FightEvent.DistributeCards, var_3_0, var_3_1)
 		else
-			slot0:_distributeDone()
+			arg_3_0:_distributeDone()
 		end
 	else
-		slot0:onDone(true)
+		arg_3_0:onDone(true)
 	end
 end
 
-function slot0._distributeDone(slot0)
+function var_0_0._distributeDone(arg_4_0)
 	FightController.instance:setCurStage(FightEnum.Stage.Play)
-	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, slot0._distributeDone, slot0)
+	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, arg_4_0._distributeDone, arg_4_0)
 
-	if not gohelper.isNil(FightViewHandCard.handCardContainer) and #FightHelper.getSideEntitys(FightEnum.EntitySide.EnemySide, true) > 0 and slot0:_checkHasEnemySkill() then
+	local var_4_0 = FightViewHandCard.handCardContainer
+	local var_4_1 = FightHelper.getSideEntitys(FightEnum.EntitySide.EnemySide, true)
+	local var_4_2 = arg_4_0:_checkHasEnemySkill()
+
+	if not gohelper.isNil(var_4_0) and #var_4_1 > 0 and var_4_2 then
 		FightViewPartVisible.set(false, true, false, true, false)
 
-		slot4 = uv0.handCardScale
-		slot0.tweenId = ZProj.TweenHelper.DOScale(slot1.transform, slot4, slot4, slot4, uv0.getHandCardScaleTime(), slot0._onHandCardsShrink, slot0)
+		local var_4_3 = var_0_0.handCardScale
+		local var_4_4 = var_0_0.getHandCardScaleTime()
+
+		arg_4_0.tweenId = ZProj.TweenHelper.DOScale(var_4_0.transform, var_4_3, var_4_3, var_4_3, var_4_4, arg_4_0._onHandCardsShrink, arg_4_0)
 	else
-		slot0:_onHandCardsShrink()
+		arg_4_0:_onHandCardsShrink()
 	end
 end
 
-function slot0._checkHasEnemySkill(slot0)
-	for slot6, slot7 in ipairs(FightDataHelper.roundMgr:getRoundData().fightStep) do
-		if not false and slot7.actType == FightEnum.ActType.EFFECT then
-			for slot11, slot12 in ipairs(slot7.actEffect) do
-				if slot12.effectType == FightEnum.EffectType.DEALCARD2 then
-					slot2 = true
+function var_0_0._checkHasEnemySkill(arg_5_0)
+	local var_5_0 = FightDataHelper.roundMgr:getRoundData()
+	local var_5_1 = false
+
+	for iter_5_0, iter_5_1 in ipairs(var_5_0.fightStep) do
+		if not var_5_1 and iter_5_1.actType == FightEnum.ActType.EFFECT then
+			for iter_5_2, iter_5_3 in ipairs(iter_5_1.actEffect) do
+				if iter_5_3.effectType == FightEnum.EffectType.DEALCARD2 then
+					var_5_1 = true
 
 					break
 				end
 			end
-		elseif slot2 and slot7.actType == FightEnum.ActType.SKILL and FightHelper.getEntity(slot7.fromId) and slot8:isEnemySide() then
-			return true
+		elseif var_5_1 and iter_5_1.actType == FightEnum.ActType.SKILL then
+			local var_5_2 = FightHelper.getEntity(iter_5_1.fromId)
+
+			if var_5_2 and var_5_2:isEnemySide() then
+				return true
+			end
 		end
 	end
 
 	return false
 end
 
-function slot0._onHandCardsShrink(slot0)
-	slot0:onDone(true)
+function var_0_0._onHandCardsShrink(arg_6_0)
+	arg_6_0:onDone(true)
 end
 
-function slot0.getHandCardScaleTime()
-	return uv0.handCardScaleTime / FightModel.instance:getUISpeed()
+function var_0_0.getHandCardScaleTime()
+	return var_0_0.handCardScaleTime / FightModel.instance:getUISpeed()
 end
 
-function slot0.clearWork(slot0)
-	if slot0.tweenId then
-		ZProj.TweenHelper.KillById(slot0.tweenId)
+function var_0_0.clearWork(arg_8_0)
+	if arg_8_0.tweenId then
+		ZProj.TweenHelper.KillById(arg_8_0.tweenId)
 
-		slot0.tweenId = nil
+		arg_8_0.tweenId = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0._delayDistribute, slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, slot0._distributeDone, slot0)
-	FightController.instance:unregisterCallback(FightEvent.OnDissolveCombineEnd, slot0._onDissolveCombineEnd, slot0)
-	TaskDispatcher.cancelTask(slot0._dissolveTimeout, slot0)
+	TaskDispatcher.cancelTask(arg_8_0._delayDistribute, arg_8_0)
+	FightController.instance:unregisterCallback(FightEvent.OnDistributeCards, arg_8_0._distributeDone, arg_8_0)
+	FightController.instance:unregisterCallback(FightEvent.OnDissolveCombineEnd, arg_8_0._onDissolveCombineEnd, arg_8_0)
+	TaskDispatcher.cancelTask(arg_8_0._dissolveTimeout, arg_8_0)
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_9_0)
+	arg_9_0:onDone(true)
 end
 
-return slot0
+return var_0_0

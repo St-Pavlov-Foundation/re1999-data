@@ -1,86 +1,88 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventUIVisible", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventUIVisible", package.seeall)
 
-slot0 = class("FightTLEventUIVisible", FightTimelineTrackItem)
-slot1 = nil
-slot2 = {
+local var_0_0 = class("FightTLEventUIVisible", FightTimelineTrackItem)
+local var_0_1
+local var_0_2 = {
 	[FightEnum.EffectType.DAMAGEFROMABSORB] = true,
 	[FightEnum.EffectType.STORAGEINJURY] = true,
 	[FightEnum.EffectType.SHIELDVALUECHANGE] = true,
 	[FightEnum.EffectType.SHAREHURT] = true
 }
 
-function slot0.resetLatestStepUid()
-	uv0 = nil
+function var_0_0.resetLatestStepUid()
+	var_0_1 = nil
 end
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	if uv0 and slot1.stepUid < uv0 then
+function var_0_0.onTrackStart(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	if var_0_1 and arg_2_1.stepUid < var_0_1 then
 		return
 	end
 
-	uv0 = slot1.stepUid
-	slot0.fightStepData = slot1
-	slot0._isShowUI = slot3[1] == "1" and true or false
-	slot0._isShowFloat = slot3[2] == "1" and true or false
-	slot0._isShowNameUI = slot3[3] == "1" and true or false
-	slot0._showNameUITarget = slot3[4] and tonumber(slot3[4]) or 0
-	slot4 = FightHelper.getEntity(slot1.fromId)
-	slot5 = FightHelper.getEntity(slot1.toId)
-	slot0._entitys = nil
+	var_0_1 = arg_2_1.stepUid
+	arg_2_0.fightStepData = arg_2_1
+	arg_2_0._isShowUI = arg_2_3[1] == "1" and true or false
+	arg_2_0._isShowFloat = arg_2_3[2] == "1" and true or false
+	arg_2_0._isShowNameUI = arg_2_3[3] == "1" and true or false
+	arg_2_0._showNameUITarget = arg_2_3[4] and tonumber(arg_2_3[4]) or 0
 
-	if slot0._showNameUITarget == 0 then
-		slot0._entitys = FightHelper.getAllEntitys()
-	elseif slot0._showNameUITarget == 1 then
-		slot0._entitys = {}
+	local var_2_0 = FightHelper.getEntity(arg_2_1.fromId)
+	local var_2_1 = FightHelper.getEntity(arg_2_1.toId)
 
-		table.insert(slot0._entitys, slot4)
-	elseif slot0._showNameUITarget == 2 then
-		slot0._entitys = FightHelper.getSkillTargetEntitys(slot1, uv1)
-	elseif slot0._showNameUITarget == 3 then
-		if slot4 then
-			slot0._entitys = FightHelper.getSideEntitys(slot4:getSide(), true)
+	arg_2_0._entitys = nil
+
+	if arg_2_0._showNameUITarget == 0 then
+		arg_2_0._entitys = FightHelper.getAllEntitys()
+	elseif arg_2_0._showNameUITarget == 1 then
+		arg_2_0._entitys = {}
+
+		table.insert(arg_2_0._entitys, var_2_0)
+	elseif arg_2_0._showNameUITarget == 2 then
+		arg_2_0._entitys = FightHelper.getSkillTargetEntitys(arg_2_1, var_0_2)
+	elseif arg_2_0._showNameUITarget == 3 then
+		if var_2_0 then
+			arg_2_0._entitys = FightHelper.getSideEntitys(var_2_0:getSide(), true)
 		end
-	elseif slot0._showNameUITarget == 4 and slot5 then
-		slot0._entitys = FightHelper.getSideEntitys(slot5:getSide(), true)
+	elseif arg_2_0._showNameUITarget == 4 and var_2_1 then
+		arg_2_0._entitys = FightHelper.getSideEntitys(var_2_1:getSide(), true)
 	end
 
-	slot0:_setShowUI()
-	TaskDispatcher.runRepeat(slot0._setShowUI, slot0, 0.5)
-	FightController.instance:registerCallback(FightEvent.ParallelPlayNextSkillDoneThis, slot0._onDoneThis, slot0)
-	FightController.instance:registerCallback(FightEvent.ForceEndSkillStep, slot0._onDoneThis, slot0)
+	arg_2_0:_setShowUI()
+	TaskDispatcher.runRepeat(arg_2_0._setShowUI, arg_2_0, 0.5)
+	FightController.instance:registerCallback(FightEvent.ParallelPlayNextSkillDoneThis, arg_2_0._onDoneThis, arg_2_0)
+	FightController.instance:registerCallback(FightEvent.ForceEndSkillStep, arg_2_0._onDoneThis, arg_2_0)
 end
 
-function slot0.onTrackEnd(slot0)
-	slot0:_removeEvent()
+function var_0_0.onTrackEnd(arg_3_0)
+	arg_3_0:_removeEvent()
 end
 
-function slot0._setShowUI(slot0)
-	FightController.instance:dispatchEvent(FightEvent.SetIsShowUI, slot0._isShowUI)
-	FightController.instance:dispatchEvent(FightEvent.SetIsShowFloat, slot0._isShowFloat)
+function var_0_0._setShowUI(arg_4_0)
+	FightController.instance:dispatchEvent(FightEvent.SetIsShowUI, arg_4_0._isShowUI)
+	FightController.instance:dispatchEvent(FightEvent.SetIsShowFloat, arg_4_0._isShowFloat)
 
-	if slot0._entitys then
-		for slot4, slot5 in ipairs(slot0._entitys) do
-			FightController.instance:dispatchEvent(FightEvent.SetNameUIVisibleByTimeline, slot5, slot0.fightStepData, slot0._isShowNameUI)
+	if arg_4_0._entitys then
+		for iter_4_0, iter_4_1 in ipairs(arg_4_0._entitys) do
+			FightController.instance:dispatchEvent(FightEvent.SetNameUIVisibleByTimeline, iter_4_1, arg_4_0.fightStepData, arg_4_0._isShowNameUI)
 		end
 	end
 end
 
-function slot0._onDoneThis(slot0, slot1)
-	if slot1 == slot0.fightStepData then
-		slot0:_removeEvent()
+function var_0_0._onDoneThis(arg_5_0, arg_5_1)
+	if arg_5_1 == arg_5_0.fightStepData then
+		arg_5_0:_removeEvent()
 	end
 end
 
-function slot0._removeEvent(slot0)
-	TaskDispatcher.cancelTask(slot0._setShowUI, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ParallelPlayNextSkillDoneThis, slot0._onDoneThis, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, slot0._onDoneThis, slot0)
+function var_0_0._removeEvent(arg_6_0)
+	TaskDispatcher.cancelTask(arg_6_0._setShowUI, arg_6_0)
+	FightController.instance:unregisterCallback(FightEvent.ParallelPlayNextSkillDoneThis, arg_6_0._onDoneThis, arg_6_0)
+	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, arg_6_0._onDoneThis, arg_6_0)
 end
 
-function slot0.onDestructor(slot0)
-	slot0._entitys = nil
+function var_0_0.onDestructor(arg_7_0)
+	arg_7_0._entitys = nil
 
-	slot0:_removeEvent()
+	arg_7_0:_removeEvent()
 end
 
-return slot0
+return var_0_0

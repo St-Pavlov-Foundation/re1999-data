@@ -1,51 +1,71 @@
-module("modules.logic.fight.controller.FightASFDFlyPathHelper", package.seeall)
+﻿module("modules.logic.fight.controller.FightASFDFlyPathHelper", package.seeall)
 
-slot0 = _M
+local var_0_0 = _M
 
-function slot0.getMissileMover(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
-	return uv0.flyPathHandle[slot1.flyPath] or uv0.defaultFlyMover(slot1.flyPath, slot0, slot1, slot2, slot3, slot4, slot5, slot6)
+function var_0_0.getMissileMover(arg_1_0, arg_1_1, arg_1_2, arg_1_3, arg_1_4, arg_1_5, arg_1_6)
+	return (var_0_0.flyPathHandle[arg_1_1.flyPath] or var_0_0.defaultFlyMover)(arg_1_1.flyPath, arg_1_0, arg_1_1, arg_1_2, arg_1_3, arg_1_4, arg_1_5, arg_1_6)
 end
 
-function slot0.defaultFlyMover(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
-	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverHandler)
-	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverBezier3):registerCallback(UnitMoveEvent.Arrive, slot6, slot7)
+function var_0_0.defaultFlyMover(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4, arg_2_5, arg_2_6, arg_2_7)
+	local var_2_0 = MonoHelper.addLuaComOnceToGo(arg_2_3.containerGO, UnitMoverBezier3)
+
+	MonoHelper.addLuaComOnceToGo(arg_2_3.containerGO, UnitMoverHandler)
+	var_2_0:registerCallback(UnitMoveEvent.Arrive, arg_2_6, arg_2_7)
 	FightASFDHelper.changeRandomArea()
 
-	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide, slot2.sceneEmitterId)
-	slot11 = FightASFDHelper.getEndPos(slot4)
-	slot13 = FightASFDHelper.getRandomPos(slot10, slot11, slot2)
+	local var_2_1 = arg_2_1:getMO()
+	local var_2_2 = FightASFDHelper.getStartPos(var_2_1 and var_2_1.side or FightEnum.EntitySide.MySide, arg_2_2.sceneEmitterId)
+	local var_2_3 = FightASFDHelper.getEndPos(arg_2_4)
+	local var_2_4 = var_2_2
+	local var_2_5 = FightASFDHelper.getRandomPos(var_2_2, var_2_3, arg_2_2)
+	local var_2_6 = var_2_5
+	local var_2_7 = var_2_3
 
-	slot3:setWorldPos(slot10.x, slot10.y, slot10.z)
+	arg_2_3:setWorldPos(var_2_2.x, var_2_2.y, var_2_2.z)
 
-	slot16 = FightASFDConfig.instance:getFlyPathCo(slot0)
+	local var_2_8 = FightASFDConfig.instance:getFlyPathCo(arg_2_0)
 
-	slot8:setEaseType(slot16.lineType)
-	slot8:simpleMove(slot10, slot13, slot13, slot11, FightASFDConfig.instance:getFlyDuration(slot16.flyDuration, slot5.emitterAttackNum) / FightModel.instance:getSpeed())
+	var_2_0:setEaseType(var_2_8.lineType)
 
-	return slot8
+	local var_2_9 = arg_2_5.emitterAttackNum
+	local var_2_10 = FightASFDConfig.instance:getFlyDuration(var_2_8.flyDuration, var_2_9) / FightModel.instance:getSpeed()
+
+	var_2_0:simpleMove(var_2_4, var_2_5, var_2_6, var_2_7, var_2_10)
+
+	return var_2_0
 end
 
-function slot0.straightLineFlyMover(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
-	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverHandler)
-	MonoHelper.addLuaComOnceToGo(slot3.containerGO, UnitMoverEase):registerCallback(UnitMoveEvent.Arrive, slot6, slot7)
+function var_0_0.straightLineFlyMover(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4, arg_3_5, arg_3_6, arg_3_7)
+	local var_3_0 = MonoHelper.addLuaComOnceToGo(arg_3_3.containerGO, UnitMoverEase)
 
-	slot10 = FightASFDHelper.getStartPos(slot1:getMO() and slot9.side or FightEnum.EntitySide.MySide, slot2.sceneEmitterId)
-	slot11 = FightASFDHelper.getEndPos(slot4, ModuleEnum.SpineHangPoint.mountbody)
+	MonoHelper.addLuaComOnceToGo(arg_3_3.containerGO, UnitMoverHandler)
+	var_3_0:registerCallback(UnitMoveEvent.Arrive, arg_3_6, arg_3_7)
 
-	slot3:setWorldPos(slot10.x, slot10.y, slot10.z)
-	transformhelper.setLocalRotation(slot3.containerGO.transform, 0, 0, FightASFDHelper.getZRotation(slot10.x, slot10.y, slot11.x, slot11.y))
+	local var_3_1 = arg_3_1:getMO()
+	local var_3_2 = FightASFDHelper.getStartPos(var_3_1 and var_3_1.side or FightEnum.EntitySide.MySide, arg_3_2.sceneEmitterId)
+	local var_3_3 = FightASFDHelper.getEndPos(arg_3_4, ModuleEnum.SpineHangPoint.mountbody)
 
-	slot13 = FightASFDConfig.instance:getFlyPathCo(slot0)
+	arg_3_3:setWorldPos(var_3_2.x, var_3_2.y, var_3_2.z)
 
-	slot8:setEaseType(slot13.lineType)
-	slot8:simpleMove(slot10.x, slot10.y, slot10.z, slot11.x, slot11.y, slot11.z, FightASFDConfig.instance:getFlyDuration(slot13.flyDuration, slot5.emitterAttackNum) / FightModel.instance:getSpeed())
+	local var_3_4 = FightASFDHelper.getZRotation(var_3_2.x, var_3_2.y, var_3_3.x, var_3_3.y)
 
-	return slot8
+	transformhelper.setLocalRotation(arg_3_3.containerGO.transform, 0, 0, var_3_4)
+
+	local var_3_5 = FightASFDConfig.instance:getFlyPathCo(arg_3_0)
+
+	var_3_0:setEaseType(var_3_5.lineType)
+
+	local var_3_6 = arg_3_5.emitterAttackNum
+	local var_3_7 = FightASFDConfig.instance:getFlyDuration(var_3_5.flyDuration, var_3_6) / FightModel.instance:getSpeed()
+
+	var_3_0:simpleMove(var_3_2.x, var_3_2.y, var_3_2.z, var_3_3.x, var_3_3.y, var_3_3.z, var_3_7)
+
+	return var_3_0
 end
 
-slot0.flyPathHandle = {
-	[FightEnum.ASFDFlyPath.Default] = slot0.defaultFlyMover,
-	[FightEnum.ASFDFlyPath.StraightLine] = slot0.straightLineFlyMover
+var_0_0.flyPathHandle = {
+	[FightEnum.ASFDFlyPath.Default] = var_0_0.defaultFlyMover,
+	[FightEnum.ASFDFlyPath.StraightLine] = var_0_0.straightLineFlyMover
 }
 
-return slot0
+return var_0_0

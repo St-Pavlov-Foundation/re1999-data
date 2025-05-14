@@ -1,100 +1,100 @@
-module("modules.logic.fight.model.data.FightActEffectData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightActEffectData", package.seeall)
 
-slot0 = FightDataClass("FightActEffectData")
-slot1 = 1
+local var_0_0 = FightDataClass("FightActEffectData")
+local var_0_1 = 1
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.clientId = uv0
-	uv0 = uv0 + 1
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.clientId = var_0_1
+	var_0_1 = var_0_1 + 1
 
-	if not slot1 then
+	if not arg_1_1 then
 		return
 	end
 
-	slot0.targetId = slot1.targetId
-	slot0.effectType = slot1.effectType
-	slot0.effectNum = slot1.effectNum
+	arg_1_0.targetId = arg_1_1.targetId
+	arg_1_0.effectType = arg_1_1.effectType
+	arg_1_0.effectNum = arg_1_1.effectNum
 
-	if slot1:HasField("buff") then
-		slot0.buff = FightBuffInfoData.New(slot1.buff, slot0.targetId)
+	if arg_1_1:HasField("buff") then
+		arg_1_0.buff = FightBuffInfoData.New(arg_1_1.buff, arg_1_0.targetId)
 	end
 
-	if slot1:HasField("entity") then
-		slot0.entity = FightEntityInfoData.New(slot1.entity)
+	if arg_1_1:HasField("entity") then
+		arg_1_0.entity = FightEntityInfoData.New(arg_1_1.entity)
 	end
 
-	slot0.configEffect = slot1.configEffect
-	slot0.buffActId = slot1.buffActId
-	slot0.reserveId = slot1.reserveId
-	slot0.reserveStr = slot1.reserveStr
+	arg_1_0.configEffect = arg_1_1.configEffect
+	arg_1_0.buffActId = arg_1_1.buffActId
+	arg_1_0.reserveId = arg_1_1.reserveId
+	arg_1_0.reserveStr = arg_1_1.reserveStr
 
-	if slot1:HasField("summoned") then
-		slot0.summoned = FightSummonedInfoData.New(slot1.summoned)
+	if arg_1_1:HasField("summoned") then
+		arg_1_0.summoned = FightSummonedInfoData.New(arg_1_1.summoned)
 	end
 
-	if slot1:HasField("magicCircle") then
-		slot0.magicCircle = FightMagicCircleInfoData.New(slot1.magicCircle)
+	if arg_1_1:HasField("magicCircle") then
+		arg_1_0.magicCircle = FightMagicCircleInfoData.New(arg_1_1.magicCircle)
 	end
 
-	if slot1:HasField("cardInfo") then
-		slot0.cardInfo = FightCardInfoData.New(slot1.cardInfo)
+	if arg_1_1:HasField("cardInfo") then
+		arg_1_0.cardInfo = FightCardInfoData.New(arg_1_1.cardInfo)
 	end
 
-	slot0.cardInfoList = {}
+	arg_1_0.cardInfoList = {}
 
-	for slot5, slot6 in ipairs(slot1.cardInfoList) do
-		table.insert(slot0.cardInfoList, FightCardInfoData.New(slot6))
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.cardInfoList) do
+		table.insert(arg_1_0.cardInfoList, FightCardInfoData.New(iter_1_1))
 	end
 
-	slot0.teamType = slot1.teamType
+	arg_1_0.teamType = arg_1_1.teamType
 
-	if slot1:HasField("fightStep") then
-		slot0.fightStep = FightStepData.New(slot1.fightStep)
+	if arg_1_1:HasField("fightStep") then
+		arg_1_0.fightStep = FightStepData.New(arg_1_1.fightStep)
 	end
 
-	if slot1:HasField("assistBossInfo") then
-		slot0.assistBossInfo = FightAssistBossInfoData.New(slot1.assistBossInfo)
+	if arg_1_1:HasField("assistBossInfo") then
+		arg_1_0.assistBossInfo = FightAssistBossInfoData.New(arg_1_1.assistBossInfo)
 	end
 
-	slot0.effectNum1 = slot1.effectNum1
+	arg_1_0.effectNum1 = arg_1_1.effectNum1
 
-	if slot1:HasField("emitterInfo") then
-		slot0.emitterInfo = FightEmitterInfoData.New(slot1.emitterInfo)
+	if arg_1_1:HasField("emitterInfo") then
+		arg_1_0.emitterInfo = FightEmitterInfoData.New(arg_1_1.emitterInfo)
 	end
 
-	if slot1:HasField("playerFinisherInfo") then
-		slot0.playerFinisherInfo = FightPlayerFinisherInfoData.New(slot1.playerFinisherInfo)
+	if arg_1_1:HasField("playerFinisherInfo") then
+		arg_1_0.playerFinisherInfo = FightPlayerFinisherInfoData.New(arg_1_1.playerFinisherInfo)
 	end
 
-	if slot1:HasField("powerInfo") then
-		slot0.powerInfo = FightPowerInfoData.New(slot1.powerInfo)
+	if arg_1_1:HasField("powerInfo") then
+		arg_1_0.powerInfo = FightPowerInfoData.New(arg_1_1.powerInfo)
 	end
 
-	if slot1:HasField("cardHeatValue") then
-		slot0.cardHeatValue = FightCardHeatValueData.New(slot1.cardHeatValue)
+	if arg_1_1:HasField("cardHeatValue") then
+		arg_1_0.cardHeatValue = FightCardHeatValueData.New(arg_1_1.cardHeatValue)
 	end
 
-	slot0.fightTasks = {}
+	arg_1_0.fightTasks = {}
 
-	for slot5, slot6 in ipairs(slot1.fightTasks) do
-		table.insert(slot0.fightTasks, FightTaskData.New(slot6))
+	for iter_1_2, iter_1_3 in ipairs(arg_1_1.fightTasks) do
+		table.insert(arg_1_0.fightTasks, FightTaskData.New(iter_1_3))
 	end
 
-	if slot1:HasField("fight") then
-		slot0.fight = FightData.New(slot1.fight)
+	if arg_1_1:HasField("fight") then
+		arg_1_0.fight = FightData.New(arg_1_1.fight)
 	end
 end
 
-function slot0.isDone(slot0)
-	return slot0.CUSTOM_ISDONE
+function var_0_0.isDone(arg_2_0)
+	return arg_2_0.CUSTOM_ISDONE
 end
 
-function slot0.setDone(slot0)
-	slot0.CUSTOM_ISDONE = true
+function var_0_0.setDone(arg_3_0)
+	arg_3_0.CUSTOM_ISDONE = true
 end
 
-function slot0.revertDone(slot0)
-	slot0.CUSTOM_ISDONE = false
+function var_0_0.revertDone(arg_4_0)
+	arg_4_0.CUSTOM_ISDONE = false
 end
 
-return slot0
+return var_0_0

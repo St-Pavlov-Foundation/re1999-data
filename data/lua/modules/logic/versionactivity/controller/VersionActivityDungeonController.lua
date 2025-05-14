@@ -1,58 +1,65 @@
-module("modules.logic.versionactivity.controller.VersionActivityDungeonController", package.seeall)
+﻿module("modules.logic.versionactivity.controller.VersionActivityDungeonController", package.seeall)
 
-slot0 = class("VersionActivityDungeonController", BaseController)
+local var_0_0 = class("VersionActivityDungeonController", BaseController)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.reInit(slot0)
+function var_0_0.reInit(arg_2_0)
+	return
 end
 
-function slot0.openVersionActivityDungeonMapView(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot0.rpcCallback = slot3
-	slot0.rpcCallbackObj = slot4
-	slot0.openViewParam = {
-		chapterId = slot1,
-		episodeId = slot2
+function var_0_0.openVersionActivityDungeonMapView(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4, arg_3_5)
+	arg_3_0.rpcCallback = arg_3_3
+	arg_3_0.rpcCallbackObj = arg_3_4
+	arg_3_0.openViewParam = {
+		chapterId = arg_3_1,
+		episodeId = arg_3_2
 	}
 
-	if slot5 then
-		for slot9, slot10 in pairs(slot5) do
-			slot0.openViewParam[slot9] = slot10
+	if arg_3_5 then
+		for iter_3_0, iter_3_1 in pairs(arg_3_5) do
+			arg_3_0.openViewParam[iter_3_0] = iter_3_1
 		end
 	end
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.ActivityDungeon
-	}, slot0._openVersionActivityDungeonMapView, slot0)
+	}, arg_3_0._openVersionActivityDungeonMapView, arg_3_0)
 end
 
-function slot0._openVersionActivityDungeonMapView(slot0)
-	ViewMgr.instance:openView(ViewName.VersionActivityDungeonMapView, slot0.openViewParam)
+function var_0_0._openVersionActivityDungeonMapView(arg_4_0)
+	ViewMgr.instance:openView(ViewName.VersionActivityDungeonMapView, arg_4_0.openViewParam)
 
-	if slot0.rpcCallback then
-		slot0.rpcCallback(slot0.rpcCallbackObj)
+	if arg_4_0.rpcCallback then
+		arg_4_0.rpcCallback(arg_4_0.rpcCallbackObj)
 	end
 end
 
-function slot0.getEpisodeMapConfig(slot0, slot1)
-	if DungeonConfig.instance:getEpisodeCO(slot1).chapterId == VersionActivityEnum.DungeonChapterId.LeiMiTeBeiHard then
-		for slot8, slot9 in ipairs(DungeonConfig.instance:getChapterEpisodeCOList(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)) do
-			if DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(slot1) == DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(slot9.id) then
-				slot2 = slot9
+function var_0_0.getEpisodeMapConfig(arg_5_0, arg_5_1)
+	local var_5_0 = DungeonConfig.instance:getEpisodeCO(arg_5_1)
+
+	if var_5_0.chapterId == VersionActivityEnum.DungeonChapterId.LeiMiTeBeiHard then
+		local var_5_1 = DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(arg_5_1)
+		local var_5_2 = DungeonConfig.instance:getChapterEpisodeCOList(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)
+
+		for iter_5_0, iter_5_1 in ipairs(var_5_2) do
+			if var_5_1 == DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(iter_5_1.id) then
+				var_5_0 = iter_5_1
 
 				break
 			end
 		end
 	else
-		while slot2.chapterId ~= VersionActivityEnum.DungeonChapterId.LeiMiTeBei do
-			slot2 = DungeonConfig.instance:getEpisodeCO(slot2.preEpisode)
+		while var_5_0.chapterId ~= VersionActivityEnum.DungeonChapterId.LeiMiTeBei do
+			var_5_0 = DungeonConfig.instance:getEpisodeCO(var_5_0.preEpisode)
 		end
 	end
 
-	return DungeonConfig.instance:getChapterMapCfg(VersionActivityEnum.DungeonChapterId.LeiMiTeBei, slot2.preEpisode)
+	return DungeonConfig.instance:getChapterMapCfg(VersionActivityEnum.DungeonChapterId.LeiMiTeBei, var_5_0.preEpisode)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

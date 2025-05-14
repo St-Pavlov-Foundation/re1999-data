@@ -1,69 +1,69 @@
-module("modules.logic.versionactivity2_1.aergusi.view.AergusiDialogRoleRightItem", package.seeall)
+﻿module("modules.logic.versionactivity2_1.aergusi.view.AergusiDialogRoleRightItem", package.seeall)
 
-slot0 = class("AergusiDialogRoleRightItem", LuaCompBase)
+local var_0_0 = class("AergusiDialogRoleRightItem", LuaCompBase)
 
-function slot0.init(slot0, slot1, slot2)
-	slot0.go = slot1
-	slot0._resPath = slot2
-	slot0._golight = gohelper.findChild(slot1, "light")
-	slot0._gochess = gohelper.findChild(slot1, "#chessitem")
-	slot0._simagechess = gohelper.findChildSingleImage(slot1, "#chessitem/#chess")
-	slot0._gotalk = gohelper.findChild(slot1, "go_talking")
-	slot0._gobubble = gohelper.findChild(slot1, "go_bubble")
-	slot0._gospeakbubble = gohelper.findChild(slot1, "go_bubble/go_speakbubble")
-	slot0._txtspeakbubbledesc = gohelper.findChildText(slot1, "go_bubble/go_speakbubble/txt_dec")
-	slot0._gothinkbubble = gohelper.findChild(slot1, "go_bubble/go_thinkbubble")
-	slot0._txtthinkbubbledesc = gohelper.findChildText(slot1, "go_bubble/go_thinkbubble/txt_dec")
-	slot0._goemo = gohelper.findChild(slot1, "emobg")
-	slot0._chessAni = slot0._gochess:GetComponent(typeof(UnityEngine.Animator))
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.go = arg_1_1
+	arg_1_0._resPath = arg_1_2
+	arg_1_0._golight = gohelper.findChild(arg_1_1, "light")
+	arg_1_0._gochess = gohelper.findChild(arg_1_1, "#chessitem")
+	arg_1_0._simagechess = gohelper.findChildSingleImage(arg_1_1, "#chessitem/#chess")
+	arg_1_0._gotalk = gohelper.findChild(arg_1_1, "go_talking")
+	arg_1_0._gobubble = gohelper.findChild(arg_1_1, "go_bubble")
+	arg_1_0._gospeakbubble = gohelper.findChild(arg_1_1, "go_bubble/go_speakbubble")
+	arg_1_0._txtspeakbubbledesc = gohelper.findChildText(arg_1_1, "go_bubble/go_speakbubble/txt_dec")
+	arg_1_0._gothinkbubble = gohelper.findChild(arg_1_1, "go_bubble/go_thinkbubble")
+	arg_1_0._txtthinkbubbledesc = gohelper.findChildText(arg_1_1, "go_bubble/go_thinkbubble/txt_dec")
+	arg_1_0._goemo = gohelper.findChild(arg_1_1, "emobg")
+	arg_1_0._chessAni = arg_1_0._gochess:GetComponent(typeof(UnityEngine.Animator))
 
-	gohelper.setActive(slot0.go, true)
-	gohelper.setActive(slot0._golight, false)
-	gohelper.setActive(slot0._gotalk, false)
-	gohelper.setActive(slot0._gobubble, false)
-	gohelper.setActive(slot0._goemo, false)
-	slot0._simagechess:LoadImage(ResUrl.getV2a1AergusiSingleBg(slot0._resPath))
+	gohelper.setActive(arg_1_0.go, true)
+	gohelper.setActive(arg_1_0._golight, false)
+	gohelper.setActive(arg_1_0._gotalk, false)
+	gohelper.setActive(arg_1_0._gobubble, false)
+	gohelper.setActive(arg_1_0._goemo, false)
+	arg_1_0._simagechess:LoadImage(ResUrl.getV2a1AergusiSingleBg(arg_1_0._resPath))
 end
 
-function slot0.showTalking(slot0)
-	slot0._chessAni:Play("jump", 0, 0)
-	gohelper.setActive(slot0._golight, true)
-	gohelper.setActive(slot0._gotalk, true)
-	TaskDispatcher.runDelay(slot0.hideTalking, slot0, 3)
+function var_0_0.showTalking(arg_2_0)
+	arg_2_0._chessAni:Play("jump", 0, 0)
+	gohelper.setActive(arg_2_0._golight, true)
+	gohelper.setActive(arg_2_0._gotalk, true)
+	TaskDispatcher.runDelay(arg_2_0.hideTalking, arg_2_0, 3)
 end
 
-function slot0.hideTalking(slot0)
-	TaskDispatcher.cancelTask(slot0.hideTalking, slot0)
-	gohelper.setActive(slot0._gotalk, false)
-	gohelper.setActive(slot0._golight, false)
+function var_0_0.hideTalking(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0.hideTalking, arg_3_0)
+	gohelper.setActive(arg_3_0._gotalk, false)
+	gohelper.setActive(arg_3_0._golight, false)
 end
 
-function slot0.showEmo(slot0)
-	gohelper.setActive(slot0._goemo, true)
+function var_0_0.showEmo(arg_4_0)
+	gohelper.setActive(arg_4_0._goemo, true)
 end
 
-function slot0.showBubble(slot0, slot1)
-	gohelper.setActive(slot0._gobubble, true)
+function var_0_0.showBubble(arg_5_0, arg_5_1)
+	gohelper.setActive(arg_5_0._gobubble, true)
 
-	if slot1.bubbleType == AergusiEnum.DialogBubbleType.Speaker then
-		gohelper.setActive(slot0._gospeakbubble, true)
-		gohelper.setActive(slot0._gothinkbubble, false)
+	if arg_5_1.bubbleType == AergusiEnum.DialogBubbleType.Speaker then
+		gohelper.setActive(arg_5_0._gospeakbubble, true)
+		gohelper.setActive(arg_5_0._gothinkbubble, false)
 
-		slot0._txtspeakbubbledesc.text = slot1.content
+		arg_5_0._txtspeakbubbledesc.text = arg_5_1.content
 	else
-		gohelper.setActive(slot0._gothinkbubble, true)
-		gohelper.setActive(slot0._gospeakbubble, false)
+		gohelper.setActive(arg_5_0._gothinkbubble, true)
+		gohelper.setActive(arg_5_0._gospeakbubble, false)
 
-		slot0._txtthinkbubbledesc.text = slot1.content
+		arg_5_0._txtthinkbubbledesc.text = arg_5_1.content
 	end
 end
 
-function slot0.hideBubble(slot0)
-	gohelper.setActive(slot0._gobubble, false)
+function var_0_0.hideBubble(arg_6_0)
+	gohelper.setActive(arg_6_0._gobubble, false)
 end
 
-function slot0.destroy(slot0)
-	slot0._simagechess:UnLoadImage()
+function var_0_0.destroy(arg_7_0)
+	arg_7_0._simagechess:UnLoadImage()
 end
 
-return slot0
+return var_0_0

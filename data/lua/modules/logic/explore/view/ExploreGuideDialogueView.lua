@@ -1,69 +1,69 @@
-module("modules.logic.explore.view.ExploreGuideDialogueView", package.seeall)
+﻿module("modules.logic.explore.view.ExploreGuideDialogueView", package.seeall)
 
-slot0 = class("ExploreGuideDialogueView", BaseView)
+local var_0_0 = class("ExploreGuideDialogueView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnfullscreen = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_fullscreen")
-	slot0._gochoicelist = gohelper.findChild(slot0.viewGO, "#go_choicelist")
-	slot0._gochoiceitem = gohelper.findChild(slot0.viewGO, "#go_choicelist/#go_choiceitem")
-	slot0._txttalkinfo = gohelper.findChildText(slot0.viewGO, "go_normalcontent/txt_contentcn")
-	slot0._txttalker = gohelper.findChildText(slot0.viewGO, "#txt_talker")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnfullscreen = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_fullscreen")
+	arg_1_0._gochoicelist = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist")
+	arg_1_0._gochoiceitem = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist/#go_choiceitem")
+	arg_1_0._txttalkinfo = gohelper.findChildText(arg_1_0.viewGO, "go_normalcontent/txt_contentcn")
+	arg_1_0._txttalker = gohelper.findChildText(arg_1_0.viewGO, "#txt_talker")
 
-	gohelper.setActive(slot0._gochoicelist, false)
+	gohelper.setActive(arg_1_0._gochoicelist, false)
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnfullscreen:AddClickListener(slot0.onClickFull, slot0)
-	GuideController.instance:registerCallback(GuideEvent.OnClickSpace, slot0.onClickFull, slot0)
-	GuideController.instance:registerCallback(GuideEvent.OneKeyFinishGuides, slot0.closeThis, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnfullscreen:AddClickListener(arg_2_0.onClickFull, arg_2_0)
+	GuideController.instance:registerCallback(GuideEvent.OnClickSpace, arg_2_0.onClickFull, arg_2_0)
+	GuideController.instance:registerCallback(GuideEvent.OneKeyFinishGuides, arg_2_0.closeThis, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	GuideController.instance:unregisterCallback(GuideEvent.OnClickSpace, slot0.onClickFull, slot0)
-	GuideController.instance:unregisterCallback(GuideEvent.OneKeyFinishGuides, slot0.closeThis, slot0)
-	slot0._btnfullscreen:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	GuideController.instance:unregisterCallback(GuideEvent.OnClickSpace, arg_3_0.onClickFull, arg_3_0)
+	GuideController.instance:unregisterCallback(GuideEvent.OneKeyFinishGuides, arg_3_0.closeThis, arg_3_0)
+	arg_3_0._btnfullscreen:RemoveClickListener()
 end
 
-function slot0.onClickFull(slot0)
-	if slot0._hasIconDialogItem:isPlaying() then
-		slot0._hasIconDialogItem:conFinished()
+function var_0_0.onClickFull(arg_4_0)
+	if arg_4_0._hasIconDialogItem:isPlaying() then
+		arg_4_0._hasIconDialogItem:conFinished()
 
 		return
 	end
 
-	slot1 = slot0.viewParam.closeCallBack
-	slot2 = slot0.viewParam.guideKey
+	local var_4_0 = arg_4_0.viewParam.closeCallBack
+	local var_4_1 = arg_4_0.viewParam.guideKey
 
-	if not slot0.viewParam.noClose then
-		slot0:closeThis()
+	if not arg_4_0.viewParam.noClose then
+		arg_4_0:closeThis()
 	end
 
-	slot1(slot2)
+	var_4_0(var_4_1)
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_5_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_course_open)
-	slot0:_refreshView()
+	arg_5_0:_refreshView()
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:_refreshView()
+function var_0_0.onUpdateParam(arg_6_0)
+	arg_6_0:_refreshView()
 end
 
-function slot0._refreshView(slot0)
-	slot1 = string.gsub(slot0.viewParam.tipsContent, " ", " ")
+function var_0_0._refreshView(arg_7_0)
+	local var_7_0 = string.gsub(arg_7_0.viewParam.tipsContent, " ", " ")
 
-	if not slot0._hasIconDialogItem then
-		slot0._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(slot0.viewGO, TMPFadeIn)
+	if not arg_7_0._hasIconDialogItem then
+		arg_7_0._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(arg_7_0.viewGO, TMPFadeIn)
 	end
 
-	slot0._hasIconDialogItem:playNormalText(slot1)
+	arg_7_0._hasIconDialogItem:playNormalText(var_7_0)
 
-	slot0._txttalker.text = slot0.viewParam.tipsTalker
+	arg_7_0._txttalker.text = arg_7_0.viewParam.tipsTalker
 end
 
-return slot0
+return var_0_0

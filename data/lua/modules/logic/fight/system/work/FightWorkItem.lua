@@ -1,227 +1,242 @@
-module("modules.logic.fight.system.work.FightWorkItem", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkItem", package.seeall)
 
-slot0 = class("FightWorkItem", FightBaseClass)
+local var_0_0 = class("FightWorkItem", FightBaseClass)
 
-function slot0.onConstructor(slot0)
-	slot0.CALLBACK = {}
-	slot0.SAFETIME = 0.5
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.CALLBACK = {}
+	arg_1_0.SAFETIME = 0.5
 end
 
-function slot0.start(slot0, slot1)
-	if slot0.WORKFINISHED then
-		logError("work已经结束了,但是又被调用了start,请检查代码,类名:" .. slot0.__cname)
+function var_0_0.start(arg_2_0, arg_2_1)
+	if arg_2_0.WORKFINISHED then
+		logError("work已经结束了,但是又被调用了start,请检查代码,类名:" .. arg_2_0.__cname)
 
 		return
 	end
 
-	if slot0.STARTED then
-		logError("work已经开始了,但是又被调用了start,请检查代码,类名:" .. slot0.__cname)
+	if arg_2_0.STARTED then
+		logError("work已经开始了,但是又被调用了start,请检查代码,类名:" .. arg_2_0.__cname)
 
 		return
 	end
 
-	if slot0.IS_DISPOSED then
-		logError("work已经被释放了,但是又被调用了start,请检查代码,类名:" .. slot0.__cname)
+	if arg_2_0.IS_DISPOSED then
+		logError("work已经被释放了,但是又被调用了start,请检查代码,类名:" .. arg_2_0.__cname)
 
 		return
 	end
 
-	slot0.context = slot1
-	slot0.STARTED = true
-	slot0.EXCLUSIVETIMER = {}
-	slot0.SAFETIMER = slot0:com_registTimer(slot0._fightWorkSafeTimer, slot0.SAFETIME)
+	arg_2_0.context = arg_2_1
+	arg_2_0.STARTED = true
+	arg_2_0.EXCLUSIVETIMER = {}
+	arg_2_0.SAFETIMER = arg_2_0:com_registTimer(arg_2_0._fightWorkSafeTimer, arg_2_0.SAFETIME)
 
-	table.insert(slot0.EXCLUSIVETIMER, slot0.SAFETIMER)
-	slot0:beforeStart()
+	table.insert(arg_2_0.EXCLUSIVETIMER, arg_2_0.SAFETIMER)
+	arg_2_0:beforeStart()
 
-	return slot0:onStart()
+	return arg_2_0:onStart()
 end
 
-function slot0.cancelFightWorkSafeTimer(slot0)
-	return slot0:com_cancelTimer(slot0.SAFETIMER)
+function var_0_0.cancelFightWorkSafeTimer(arg_3_0)
+	return arg_3_0:com_cancelTimer(arg_3_0.SAFETIMER)
 end
 
-function slot0._fightWorkSafeTimer(slot0)
-	logError("战斗保底 fightwork ondone, className = " .. slot0.__cname)
+function var_0_0._fightWorkSafeTimer(arg_4_0)
+	logError("战斗保底 fightwork ondone, className = " .. arg_4_0.__cname)
 
-	return slot0:onDone(false)
+	return arg_4_0:onDone(false)
 end
 
-function slot0._delayAfterPerformance(slot0)
-	return slot0:onDone(true)
+function var_0_0._delayAfterPerformance(arg_5_0)
+	return arg_5_0:onDone(true)
 end
 
-function slot0._delayDone(slot0)
-	return slot0:onDone(true)
+function var_0_0._delayDone(arg_6_0)
+	return arg_6_0:onDone(true)
 end
 
-function slot0.finishWork(slot0)
-	return slot0:onDone(true)
+function var_0_0.finishWork(arg_7_0)
+	return arg_7_0:onDone(true)
 end
 
-function slot0.playWorkAndDone(slot0, slot1)
-	if not slot1 then
-		return slot0:onDone(true)
+function var_0_0.playWorkAndDone(arg_8_0, arg_8_1)
+	if not arg_8_1 then
+		return arg_8_0:onDone(true)
 	end
 
-	slot1:registFinishCallback(slot0.finishWork, slot0)
-	slot0:cancelFightWorkSafeTimer()
-	slot1:start()
+	arg_8_1:registFinishCallback(arg_8_0.finishWork, arg_8_0)
+	arg_8_0:cancelFightWorkSafeTimer()
+	arg_8_1:start()
 end
 
-function slot0.com_registTimer(slot0, slot1, slot2, slot3)
-	if slot1 == slot0._delayDone or slot1 == slot0._delayAfterPerformance or slot1 == slot0.finishWork then
-		slot0:releaseExclusiveTimer()
+function var_0_0.com_registTimer(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
+	if arg_9_1 == arg_9_0._delayDone or arg_9_1 == arg_9_0._delayAfterPerformance or arg_9_1 == arg_9_0.finishWork then
+		arg_9_0:releaseExclusiveTimer()
 
-		slot4 = uv0.super.com_registTimer(slot0, slot1, slot2, slot3)
+		local var_9_0 = var_0_0.super.com_registTimer(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
 
-		table.insert(slot0.EXCLUSIVETIMER, slot4)
+		table.insert(arg_9_0.EXCLUSIVETIMER, var_9_0)
 
-		return slot4
+		return var_9_0
 	end
 
-	return uv0.super.com_registTimer(slot0, slot1, slot2, slot3)
+	return var_0_0.super.com_registTimer(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
 end
 
-function slot0.releaseExclusiveTimer(slot0)
-	if slot0.EXCLUSIVETIMER then
-		for slot4 = #slot0.EXCLUSIVETIMER, 1, -1 do
-			slot0:com_cancelTimer(slot0.EXCLUSIVETIMER[slot4])
-			table.remove(slot0.EXCLUSIVETIMER, slot4)
+function var_0_0.releaseExclusiveTimer(arg_10_0)
+	if arg_10_0.EXCLUSIVETIMER then
+		for iter_10_0 = #arg_10_0.EXCLUSIVETIMER, 1, -1 do
+			arg_10_0:com_cancelTimer(arg_10_0.EXCLUSIVETIMER[iter_10_0])
+			table.remove(arg_10_0.EXCLUSIVETIMER, iter_10_0)
 		end
 	end
 end
 
-function slot0.com_registWorkDoneFlowSequence(slot0)
-	slot1 = slot0:com_registCustomFlow(FightWorkDoneFlowSequence)
+function var_0_0.com_registWorkDoneFlowSequence(arg_11_0)
+	local var_11_0 = arg_11_0:com_registCustomFlow(FightWorkDoneFlowSequence)
 
-	slot1:registFinishCallback(slot0.finishWork, slot0)
+	var_11_0:registFinishCallback(arg_11_0.finishWork, arg_11_0)
 
-	return slot1
+	return var_11_0
 end
 
-function slot0.com_registWorkDoneFlowParallel(slot0)
-	slot1 = slot0:com_registCustomFlow(FightWorkDoneFlowParallel)
+function var_0_0.com_registWorkDoneFlowParallel(arg_12_0)
+	local var_12_0 = arg_12_0:com_registCustomFlow(FightWorkDoneFlowParallel)
 
-	slot1:registFinishCallback(slot0.finishWork, slot0)
+	var_12_0:registFinishCallback(arg_12_0.finishWork, arg_12_0)
 
-	return slot1
+	return var_12_0
 end
 
-function slot0.beforeStart(slot0)
+function var_0_0.beforeStart(arg_13_0)
+	return
 end
 
-function slot0.onStart(slot0)
+function var_0_0.onStart(arg_14_0)
+	return
 end
 
-function slot0.beforeClearWork(slot0)
+function var_0_0.beforeClearWork(arg_15_0)
+	return
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_16_0)
+	return
 end
 
-function slot0.registFinishCallback(slot0, slot1, slot2, slot3)
-	if slot0.IS_DISPOSED or slot0.WORKFINISHED then
-		return slot1(slot2, slot3)
+function var_0_0.registFinishCallback(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	if arg_17_0.IS_DISPOSED or arg_17_0.WORKFINISHED then
+		return arg_17_1(arg_17_2, arg_17_3)
 	end
 
-	table.insert(slot0.CALLBACK, {
-		callback = slot1,
-		handle = slot2,
-		param = slot3
+	table.insert(arg_17_0.CALLBACK, {
+		callback = arg_17_1,
+		handle = arg_17_2,
+		param = arg_17_3
 	})
 end
 
-function slot0.onDestructor(slot0)
-	if slot0.STARTED then
-		slot0:beforeClearWork()
+function var_0_0.onDestructor(arg_18_0)
+	if arg_18_0.STARTED then
+		arg_18_0:beforeClearWork()
 
-		return slot0:clearWork()
+		return arg_18_0:clearWork()
 	end
 end
 
-function slot0.onDestructorFinish(slot0)
-	slot0:playCallback(slot0.CALLBACK)
+function var_0_0.onDestructorFinish(arg_19_0)
+	arg_19_0:playCallback(arg_19_0.CALLBACK)
 
-	slot0.CALLBACK = nil
+	arg_19_0.CALLBACK = nil
 end
 
-function slot0.playCallback(slot0, slot1)
-	if slot0.WORKFINISHED or slot0.STARTED then
-		slot2 = slot0.SUCCEEDED and true or false
-		slot3 = #slot1
+function var_0_0.playCallback(arg_20_0, arg_20_1)
+	if arg_20_0.WORKFINISHED or arg_20_0.STARTED then
+		local var_20_0 = arg_20_0.SUCCEEDED and true or false
+		local var_20_1 = #arg_20_1
 
-		for slot7, slot8 in ipairs(slot1) do
-			slot9 = slot0.WORKFINISHED
+		for iter_20_0, iter_20_1 in ipairs(arg_20_1) do
+			local var_20_2 = arg_20_0.WORKFINISHED
 
-			if not slot0.WORKFINISHED and slot0.STARTED and isTypeOf(slot8.handle, FightBaseClass) and not slot10.IS_RELEASING then
-				slot9 = true
+			if not arg_20_0.WORKFINISHED and arg_20_0.STARTED then
+				local var_20_3 = iter_20_1.handle
+
+				if isTypeOf(var_20_3, FightBaseClass) and not var_20_3.IS_RELEASING then
+					var_20_2 = true
+				end
 			end
 
-			if slot9 then
-				if slot8.handle then
-					if not slot10.IS_DISPOSED then
-						if slot7 == slot3 then
-							return slot8.callback(slot10, slot8.param, slot2)
+			if var_20_2 then
+				local var_20_4 = iter_20_1.handle
+				local var_20_5 = iter_20_1.callback
+				local var_20_6 = iter_20_1.param
+
+				if var_20_4 then
+					if not var_20_4.IS_DISPOSED then
+						if iter_20_0 == var_20_1 then
+							return var_20_5(var_20_4, var_20_6, var_20_0)
 						else
-							slot11(slot10, slot12, slot2)
+							var_20_5(var_20_4, var_20_6, var_20_0)
 						end
 					end
-				elseif slot7 == slot3 then
-					return slot11(slot12, slot2)
+				elseif iter_20_0 == var_20_1 then
+					return var_20_5(var_20_6, var_20_0)
 				else
-					slot11(slot12, slot2)
+					var_20_5(var_20_6, var_20_0)
 				end
 			end
 		end
 	end
 end
 
-function slot0.onDone(slot0, slot1)
-	if slot0.FIGHT_WORK_ENTRUSTED then
-		slot0.FIGHT_WORK_ENTRUSTED = nil
+function var_0_0.onDone(arg_21_0, arg_21_1)
+	if arg_21_0.FIGHT_WORK_ENTRUSTED then
+		arg_21_0.FIGHT_WORK_ENTRUSTED = nil
 	end
 
-	if slot0.IS_DISPOSED then
-		logError("work已经被释放了,但是又被调用了onDone,请检查代码,类名:" .. slot0.__cname)
+	if arg_21_0.IS_DISPOSED then
+		logError("work已经被释放了,但是又被调用了onDone,请检查代码,类名:" .. arg_21_0.__cname)
 
 		return
 	end
 
-	if slot0.WORKFINISHED then
-		logError("work已经完成了,但是又被调用了onDone,请检查代码,类名:" .. slot0.__cname)
+	if arg_21_0.WORKFINISHED then
+		logError("work已经完成了,但是又被调用了onDone,请检查代码,类名:" .. arg_21_0.__cname)
 
 		return
 	end
 
-	slot0.WORKFINISHED = true
-	slot0.SUCCEEDED = slot1
+	arg_21_0.WORKFINISHED = true
+	arg_21_0.SUCCEEDED = arg_21_1
 
-	return slot0:disposeSelf()
+	return arg_21_0:disposeSelf()
 end
 
-function slot0.onDoneAndKeepPlay(slot0)
-	slot0.FIGHT_WORK_ENTRUSTED = true
-	slot0.SUCCEEDED = true
-	slot0.CALLBACK = {}
+function var_0_0.onDoneAndKeepPlay(arg_22_0)
+	arg_22_0.FIGHT_WORK_ENTRUSTED = true
+	arg_22_0.SUCCEEDED = true
 
-	slot0:playCallback(tabletool.copy(slot0.CALLBACK))
+	local var_22_0 = tabletool.copy(arg_22_0.CALLBACK)
 
-	if not slot0:com_sendMsg(FightMsgId.EntrustFightWork, slot0) then
-		logError("托管fightwork未成功,类名:" .. slot0.__cname)
+	arg_22_0.CALLBACK = {}
 
-		slot0.FIGHT_WORK_ENTRUSTED = nil
+	arg_22_0:playCallback(var_22_0)
 
-		slot0:disposeSelf()
+	if not arg_22_0:com_sendMsg(FightMsgId.EntrustFightWork, arg_22_0) then
+		logError("托管fightwork未成功,类名:" .. arg_22_0.__cname)
+
+		arg_22_0.FIGHT_WORK_ENTRUSTED = nil
+
+		arg_22_0:disposeSelf()
 	end
 end
 
-function slot0.disposeSelf(slot0)
-	if slot0.FIGHT_WORK_ENTRUSTED then
+function var_0_0.disposeSelf(arg_23_0)
+	if arg_23_0.FIGHT_WORK_ENTRUSTED then
 		return
 	end
 
-	uv0.super.disposeSelf(slot0)
+	var_0_0.super.disposeSelf(arg_23_0)
 end
 
-return slot0
+return var_0_0

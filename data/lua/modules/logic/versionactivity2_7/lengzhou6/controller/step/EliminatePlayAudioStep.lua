@@ -1,16 +1,18 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminatePlayAudioStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminatePlayAudioStep", package.seeall)
 
-slot0 = class("EliminatePlayAudioStep", EliminateChessStepBase)
+local var_0_0 = class("EliminatePlayAudioStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
-	if slot0._data == nil then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0._data
+
+	if var_1_0 == nil then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	AudioMgr.instance:trigger(slot1)
-	slot0:onDone(true)
+	AudioMgr.instance:trigger(var_1_0)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

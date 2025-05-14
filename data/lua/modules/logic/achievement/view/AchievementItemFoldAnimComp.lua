@@ -1,92 +1,99 @@
-module("modules.logic.achievement.view.AchievementItemFoldAnimComp", package.seeall)
+﻿module("modules.logic.achievement.view.AchievementItemFoldAnimComp", package.seeall)
 
-slot0 = class("AchievementItemFoldAnimComp", LuaCompBase)
+local var_0_0 = class("AchievementItemFoldAnimComp", LuaCompBase)
 
-function slot0.Get(slot0, slot1)
-	slot2 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0, uv0)
+function var_0_0.Get(arg_1_0, arg_1_1)
+	local var_1_0 = MonoHelper.addNoUpdateLuaComOnceToGo(arg_1_0, var_0_0)
 
-	slot2:setFoldRoot(slot1)
+	var_1_0:setFoldRoot(arg_1_1)
 
-	return slot2
+	return var_1_0
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._btnpopup = gohelper.getClickWithDefaultAudio(slot0.go)
-	slot0._gooff = gohelper.findChild(slot0.go, "#go_off")
-	slot0._goon = gohelper.findChild(slot0.go, "#go_on")
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0._btnpopup = gohelper.getClickWithDefaultAudio(arg_2_0.go)
+	arg_2_0._gooff = gohelper.findChild(arg_2_0.go, "#go_off")
+	arg_2_0._goon = gohelper.findChild(arg_2_0.go, "#go_on")
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._btnpopup:AddClickListener(slot0._btnpopupOnClick, slot0)
-	slot0:addEventCb(AchievementMainController.instance, AchievementEvent.OnPlayGroupFadeAnim, slot0._onPlayGroupFadeAnimation, slot0)
+function var_0_0.addEventListeners(arg_3_0)
+	arg_3_0._btnpopup:AddClickListener(arg_3_0._btnpopupOnClick, arg_3_0)
+	arg_3_0:addEventCb(AchievementMainController.instance, AchievementEvent.OnPlayGroupFadeAnim, arg_3_0._onPlayGroupFadeAnimation, arg_3_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnpopup:RemoveClickListener()
+function var_0_0.removeEventListeners(arg_4_0)
+	arg_4_0._btnpopup:RemoveClickListener()
 end
 
-function slot0._btnpopupOnClick(slot0)
-	AchievementMainController.instance:dispatchEvent(AchievementEvent.OnClickGroupFoldBtn, slot0._mo:getGroupId(), not slot0._mo:getIsFold())
+function var_0_0._btnpopupOnClick(arg_5_0)
+	local var_5_0 = arg_5_0._mo:getIsFold()
+	local var_5_1 = arg_5_0._mo:getGroupId()
+
+	AchievementMainController.instance:dispatchEvent(AchievementEvent.OnClickGroupFoldBtn, var_5_1, not var_5_0)
 end
 
-function slot0.onDestroy(slot0)
-	slot0:killTween()
+function var_0_0.onDestroy(arg_6_0)
+	arg_6_0:killTween()
 end
 
-function slot0.setFoldRoot(slot0, slot1)
-	slot0._gofoldroot = slot1
+function var_0_0.setFoldRoot(arg_7_0, arg_7_1)
+	arg_7_0._gofoldroot = arg_7_1
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	if slot0._mo ~= slot1 then
-		slot0:killTween()
+function var_0_0.onUpdateMO(arg_8_0, arg_8_1)
+	if arg_8_0._mo ~= arg_8_1 then
+		arg_8_0:killTween()
 	end
 
-	slot0._mo = slot1
+	arg_8_0._mo = arg_8_1
 
-	slot0:refreshUI()
+	arg_8_0:refreshUI()
 end
 
-function slot0._onPlayGroupFadeAnimation(slot0, slot1)
-	if not slot1 or slot1.mo ~= slot0._mo then
+function var_0_0._onPlayGroupFadeAnimation(arg_9_0, arg_9_1)
+	if not arg_9_1 or arg_9_1.mo ~= arg_9_0._mo then
 		return
 	end
 
-	slot0._isFold = slot1.isFold
+	arg_9_0._isFold = arg_9_1.isFold
 
-	if not slot0._isFold then
-		slot0._mo:setIsFold(slot0._isFold)
+	if not arg_9_0._isFold then
+		arg_9_0._mo:setIsFold(arg_9_0._isFold)
 	end
 
-	slot0._openAnimTweenId = ZProj.TweenHelper.DOTweenFloat(slot1.orginLineHeight, slot1.targetLineHeight, slot1.duration, slot0._onOpenTweenFrameCallback, slot0._onOpenTweenFinishCallback, slot0, nil)
+	local var_9_0 = arg_9_1.orginLineHeight
+	local var_9_1 = arg_9_1.targetLineHeight
+	local var_9_2 = arg_9_1.duration
+
+	arg_9_0._openAnimTweenId = ZProj.TweenHelper.DOTweenFloat(var_9_0, var_9_1, var_9_2, arg_9_0._onOpenTweenFrameCallback, arg_9_0._onOpenTweenFinishCallback, arg_9_0, nil)
 end
 
-function slot0._onOpenTweenFrameCallback(slot0, slot1)
-	slot0._mo:overrideLineHeight(slot1)
+function var_0_0._onOpenTweenFrameCallback(arg_10_0, arg_10_1)
+	arg_10_0._mo:overrideLineHeight(arg_10_1)
 	AchievementMainCommonModel.instance:getCurViewExcuteModelInstance():onModelUpdate()
 end
 
-function slot0._onOpenTweenFinishCallback(slot0)
-	slot0._mo:clearOverrideLineHeight()
-	slot0._mo:setIsFold(slot0._isFold)
+function var_0_0._onOpenTweenFinishCallback(arg_11_0)
+	arg_11_0._mo:clearOverrideLineHeight()
+	arg_11_0._mo:setIsFold(arg_11_0._isFold)
 	AchievementMainCommonModel.instance:getCurViewExcuteModelInstance():onModelUpdate()
 end
 
-function slot0.refreshUI(slot0)
-	slot1 = slot0._mo:getIsFold()
+function var_0_0.refreshUI(arg_12_0)
+	local var_12_0 = arg_12_0._mo:getIsFold()
 
-	gohelper.setActive(slot0._goon, not slot1)
-	gohelper.setActive(slot0._gooff, slot1)
-	gohelper.setActive(slot0._gofoldroot, not slot1)
+	gohelper.setActive(arg_12_0._goon, not var_12_0)
+	gohelper.setActive(arg_12_0._gooff, var_12_0)
+	gohelper.setActive(arg_12_0._gofoldroot, not var_12_0)
 end
 
-function slot0.killTween(slot0)
-	if slot0._openAnimTweenId then
-		ZProj.TweenHelper.KillById(slot0._openAnimTweenId)
+function var_0_0.killTween(arg_13_0)
+	if arg_13_0._openAnimTweenId then
+		ZProj.TweenHelper.KillById(arg_13_0._openAnimTweenId)
 
-		slot0._openAnimTweenId = nil
+		arg_13_0._openAnimTweenId = nil
 	end
 end
 
-return slot0
+return var_0_0

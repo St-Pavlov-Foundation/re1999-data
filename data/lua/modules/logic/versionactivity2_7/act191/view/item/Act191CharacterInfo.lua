@@ -1,120 +1,148 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191CharacterInfo", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191CharacterInfo", package.seeall)
 
-slot0 = class("Act191CharacterInfo", LuaCompBase)
+local var_0_0 = class("Act191CharacterInfo", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0._go = slot1
-	slot0.goSkill = gohelper.findChild(slot1, "go_characterinfo/go_skill")
-	slot0.txtPassiveName = gohelper.findChildText(slot1, "go_characterinfo/passiveskill/bg/txt_passivename")
-	slot0.btnPassiveSkill = gohelper.findChildButtonWithAudio(slot1, "go_characterinfo/passiveskill/btn_passiveskill")
-	slot5 = slot0.onClickPassiveSkill
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._go = arg_1_1
+	arg_1_0.goSkill = gohelper.findChild(arg_1_1, "go_characterinfo/go_skill")
+	arg_1_0.txtPassiveName = gohelper.findChildText(arg_1_1, "go_characterinfo/passiveskill/bg/txt_passivename")
+	arg_1_0.btnPassiveSkill = gohelper.findChildButtonWithAudio(arg_1_1, "go_characterinfo/passiveskill/btn_passiveskill")
 
-	slot0:addClickCb(slot0.btnPassiveSkill, slot5, slot0)
+	arg_1_0:addClickCb(arg_1_0.btnPassiveSkill, arg_1_0.onClickPassiveSkill, arg_1_0)
 
-	for slot5 = 1, 5 do
-		slot6 = gohelper.findChild(slot1, "go_characterinfo/attribute/go_attribute/attribute" .. slot5)
-		slot0["txtAttr" .. slot5] = gohelper.findChildText(slot6, "txt_attribute")
-		slot0["txtAttrName" .. slot5] = gohelper.findChildText(slot6, "name")
+	for iter_1_0 = 1, 5 do
+		local var_1_0 = gohelper.findChild(arg_1_1, "go_characterinfo/attribute/go_attribute/attribute" .. iter_1_0)
+
+		arg_1_0["txtAttr" .. iter_1_0] = gohelper.findChildText(var_1_0, "txt_attribute")
+		arg_1_0["txtAttrName" .. iter_1_0] = gohelper.findChildText(var_1_0, "name")
 	end
 
-	slot0.goPassiveSkill = gohelper.findChild(slot1, "go_characterinfo/passiveskill/go_passiveskills")
+	arg_1_0.goPassiveSkill = gohelper.findChild(arg_1_1, "go_characterinfo/passiveskill/go_passiveskills")
 
-	for slot5 = 1, 3 do
-		slot0["goPassiveSkill" .. slot5] = gohelper.findChild(slot0.goPassiveSkill, "passiveskill" .. slot5)
+	for iter_1_1 = 1, 3 do
+		arg_1_0["goPassiveSkill" .. iter_1_1] = gohelper.findChild(arg_1_0.goPassiveSkill, "passiveskill" .. iter_1_1)
 	end
 
-	slot0._detailPassiveTables = {}
-	slot0.goDetail = gohelper.findChild(slot1, "go_detailView")
-	slot0.btnCloseDetail = gohelper.findChildButtonWithAudio(slot0.goDetail, "btn_detailClose")
-	slot0.goDetailItem = gohelper.findChild(slot0.goDetail, "scroll_content/viewport/content/go_detailpassiveitem")
+	arg_1_0._detailPassiveTables = {}
+	arg_1_0.goDetail = gohelper.findChild(arg_1_1, "go_detailView")
+	arg_1_0.btnCloseDetail = gohelper.findChildButtonWithAudio(arg_1_0.goDetail, "btn_detailClose")
+	arg_1_0.goDetailItem = gohelper.findChild(arg_1_0.goDetail, "scroll_content/viewport/content/go_detailpassiveitem")
 
-	slot0:addClickCb(slot0.btnCloseDetail, slot0.onClickCloseDetail, slot0)
+	arg_1_0:addClickCb(arg_1_0.btnCloseDetail, arg_1_0.onClickCloseDetail, arg_1_0)
 
-	slot0._skillContainer = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.goSkill, Act191SkillContainer)
+	arg_1_0._skillContainer = MonoHelper.addNoUpdateLuaComOnceToGo(arg_1_0.goSkill, Act191SkillContainer)
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_2_0)
+	return
 end
 
-function slot0.setData(slot0, slot1)
-	slot0.config = slot1
-	slot0.passiveSkillIds = Activity191Config.instance:getHeroPassiveSkillIdList(slot1.id)
+function var_0_0.setData(arg_3_0, arg_3_1)
+	arg_3_0.config = arg_3_1
+	arg_3_0.passiveSkillIds = Activity191Config.instance:getHeroPassiveSkillIdList(arg_3_1.id)
 
-	for slot6 = 1, 5 do
-		slot7 = Activity191Enum.AttrIdList[slot6]
-		slot0["txtAttrName" .. slot6].text = HeroConfig.instance:getHeroAttributeCO(slot7).name
-		slot0["txtAttr" .. slot6].text = lua_activity191_template.configDict[slot1.id][Activity191Config.AttrIdToFieldName[slot7]]
+	local var_3_0 = lua_activity191_template.configDict[arg_3_1.id]
+
+	for iter_3_0 = 1, 5 do
+		local var_3_1 = Activity191Enum.AttrIdList[iter_3_0]
+		local var_3_2 = HeroConfig.instance:getHeroAttributeCO(var_3_1).name
+
+		arg_3_0["txtAttrName" .. iter_3_0].text = var_3_2
+		arg_3_0["txtAttr" .. iter_3_0].text = var_3_0[Activity191Config.AttrIdToFieldName[var_3_1]]
 	end
 
-	if lua_skill.configDict[slot0.passiveSkillIds[1]] then
-		slot0.txtPassiveName.text = slot3.name
+	local var_3_3 = lua_skill.configDict[arg_3_0.passiveSkillIds[1]]
+
+	if var_3_3 then
+		arg_3_0.txtPassiveName.text = var_3_3.name
 	end
 
-	slot4 = nil
+	local var_3_4
 
-	for slot8 = 1, 3 do
-		gohelper.setActive(slot0["goPassiveSkill" .. slot8], slot8 <= (slot1.type == Activity191Enum.CharacterType.Hero and #SkillConfig.instance:getheroranksCO(slot1.roleId) - 1 or 0))
-	end
-
-	slot0._skillContainer:onUpdateMO(slot1)
-end
-
-function slot0.onClickPassiveSkill(slot0)
-	if slot0.config.type == Activity191Enum.CharacterType.Hero then
-		ViewMgr.instance:openView(ViewName.Act191CharacterTipView, {
-			id = slot0.config.id,
-			tipPos = Vector2.New(851, -59),
-			buffTipsX = 1603,
-			anchorParams = {
-				Vector2.New(0, 0.5),
-				Vector2.New(0, 0.5)
-			}
-		})
+	if arg_3_1.type == Activity191Enum.CharacterType.Hero then
+		var_3_4 = #SkillConfig.instance:getheroranksCO(arg_3_1.roleId) - 1
 	else
-		slot0:refreshPassiveDetail()
-		gohelper.setActive(slot0.goDetail, true)
+		var_3_4 = 0
+	end
+
+	for iter_3_1 = 1, 3 do
+		local var_3_5 = arg_3_0["goPassiveSkill" .. iter_3_1]
+
+		gohelper.setActive(var_3_5, iter_3_1 <= var_3_4)
+	end
+
+	arg_3_0._skillContainer:onUpdateMO(arg_3_1)
+end
+
+function var_0_0.onClickPassiveSkill(arg_4_0)
+	if arg_4_0.config.type == Activity191Enum.CharacterType.Hero then
+		local var_4_0 = {
+			id = arg_4_0.config.id,
+			tipPos = Vector2.New(851, -59)
+		}
+
+		var_4_0.buffTipsX = 1603
+		var_4_0.anchorParams = {
+			Vector2.New(0, 0.5),
+			Vector2.New(0, 0.5)
+		}
+
+		ViewMgr.instance:openView(ViewName.Act191CharacterTipView, var_4_0)
+	else
+		arg_4_0:refreshPassiveDetail()
+		gohelper.setActive(arg_4_0.goDetail, true)
 	end
 end
 
-function slot0.refreshPassiveDetail(slot0)
-	for slot5 = 1, #slot0.passiveSkillIds do
-		if lua_skill.configDict[tonumber(slot0.passiveSkillIds[slot5])] then
-			if not slot0._detailPassiveTables[slot5] then
-				slot9 = gohelper.cloneInPlace(slot0.goDetailItem, "item" .. slot5)
-				slot8 = slot0:getUserDataTb_()
-				slot8.go = slot9
-				slot8.name = gohelper.findChildText(slot9, "title/txt_name")
-				slot8.icon = gohelper.findChildSingleImage(slot9, "title/simage_icon")
-				slot8.desc = gohelper.findChildText(slot9, "txt_desc")
+function var_0_0.refreshPassiveDetail(arg_5_0)
+	local var_5_0 = #arg_5_0.passiveSkillIds
 
-				SkillHelper.addHyperLinkClick(slot8.desc, slot0.onClickHyperLink, slot0)
+	for iter_5_0 = 1, var_5_0 do
+		local var_5_1 = tonumber(arg_5_0.passiveSkillIds[iter_5_0])
+		local var_5_2 = lua_skill.configDict[var_5_1]
 
-				slot8.line = gohelper.findChild(slot9, "txt_desc/image_line")
+		if var_5_2 then
+			local var_5_3 = arg_5_0._detailPassiveTables[iter_5_0]
 
-				table.insert(slot0._detailPassiveTables, slot8)
+			if not var_5_3 then
+				local var_5_4 = gohelper.cloneInPlace(arg_5_0.goDetailItem, "item" .. iter_5_0)
+
+				var_5_3 = arg_5_0:getUserDataTb_()
+				var_5_3.go = var_5_4
+				var_5_3.name = gohelper.findChildText(var_5_4, "title/txt_name")
+				var_5_3.icon = gohelper.findChildSingleImage(var_5_4, "title/simage_icon")
+				var_5_3.desc = gohelper.findChildText(var_5_4, "txt_desc")
+
+				SkillHelper.addHyperLinkClick(var_5_3.desc, arg_5_0.onClickHyperLink, arg_5_0)
+
+				var_5_3.line = gohelper.findChild(var_5_4, "txt_desc/image_line")
+
+				table.insert(arg_5_0._detailPassiveTables, var_5_3)
 			end
 
-			slot8.name.text = slot7.name
-			slot8.desc.text = SkillHelper.getSkillDesc(slot0.config.name, slot7)
+			var_5_3.name.text = var_5_2.name
+			var_5_3.desc.text = SkillHelper.getSkillDesc(arg_5_0.config.name, var_5_2)
 
-			gohelper.setActive(slot8.go, true)
-			gohelper.setActive(slot8.line, slot5 < slot1)
+			gohelper.setActive(var_5_3.go, true)
+			gohelper.setActive(var_5_3.line, iter_5_0 < var_5_0)
 		else
-			logError(string.format("被动技能配置没找到, id: %d", slot6))
+			logError(string.format("被动技能配置没找到, id: %d", var_5_1))
 		end
 	end
 
-	for slot5 = slot1 + 1, #slot0._detailPassiveTables do
-		gohelper.setActive(slot0._detailPassiveTables[slot5].go, false)
+	for iter_5_1 = var_5_0 + 1, #arg_5_0._detailPassiveTables do
+		gohelper.setActive(arg_5_0._detailPassiveTables[iter_5_1].go, false)
 	end
 end
 
-function slot0.onClickCloseDetail(slot0)
-	gohelper.setActive(slot0.goDetail, false)
+function var_0_0.onClickCloseDetail(arg_6_0)
+	gohelper.setActive(arg_6_0.goDetail, false)
 end
 
-function slot0.onClickHyperLink(slot0, slot1)
-	CommonBuffTipController:openCommonTipViewWithCustomPos(slot1, Vector2.New(40, 0))
+function var_0_0.onClickHyperLink(arg_7_0, arg_7_1)
+	local var_7_0 = Vector2.New(40, 0)
+
+	CommonBuffTipController:openCommonTipViewWithCustomPos(arg_7_1, var_7_0)
 end
 
-return slot0
+return var_0_0

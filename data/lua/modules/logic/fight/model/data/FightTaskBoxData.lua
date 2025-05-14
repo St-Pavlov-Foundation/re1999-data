@@ -1,18 +1,21 @@
-module("modules.logic.fight.model.data.FightTaskBoxData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightTaskBoxData", package.seeall)
 
-slot0 = FightDataClass("FightTaskBoxData")
-slot0.TaskStatus = {
+local var_0_0 = FightDataClass("FightTaskBoxData")
+
+var_0_0.TaskStatus = {
 	Finished = 3,
 	Running = 2,
 	Init = 1
 }
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.tasks = {}
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.tasks = {}
 
-	for slot5, slot6 in ipairs(slot1.tasks) do
-		slot0.tasks[slot6.taskId] = FightTaskData.New(slot6)
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.tasks) do
+		local var_1_0 = FightTaskData.New(iter_1_1)
+
+		arg_1_0.tasks[iter_1_1.taskId] = var_1_0
 	end
 end
 
-return slot0
+return var_0_0

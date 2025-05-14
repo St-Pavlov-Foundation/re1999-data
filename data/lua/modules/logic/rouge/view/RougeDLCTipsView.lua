@@ -1,50 +1,61 @@
-module("modules.logic.rouge.view.RougeDLCTipsView", package.seeall)
+﻿module("modules.logic.rouge.view.RougeDLCTipsView", package.seeall)
 
-slot0 = class("RougeDLCTipsView", BaseView)
+local var_0_0 = class("RougeDLCTipsView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goroot = gohelper.findChild(slot0.viewGO, "#go_root")
-	slot0._gocontainer = gohelper.findChild(slot0.viewGO, "#go_root/#go_container")
-	slot0._txtdlcname = gohelper.findChildText(slot0.viewGO, "#go_root/#go_container/#txt_dlcname")
-	slot0._scrollinfo = gohelper.findChildScrollRect(slot0.viewGO, "#go_root/#go_container/#scroll_info")
-	slot0._simagebanner = gohelper.findChildSingleImage(slot0.viewGO, "#go_root/#go_container/#scroll_info/Viewport/Content/bg/#simage_banner")
-	slot0._txtdlcdesc = gohelper.findChildText(slot0.viewGO, "#go_root/#go_container/#scroll_info/Viewport/Content/#txt_dlcdesc")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_root/#go_topleft")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goroot = gohelper.findChild(arg_1_0.viewGO, "#go_root")
+	arg_1_0._gocontainer = gohelper.findChild(arg_1_0.viewGO, "#go_root/#go_container")
+	arg_1_0._txtdlcname = gohelper.findChildText(arg_1_0.viewGO, "#go_root/#go_container/#txt_dlcname")
+	arg_1_0._scrollinfo = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_root/#go_container/#scroll_info")
+	arg_1_0._simagebanner = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_root/#go_container/#scroll_info/Viewport/Content/bg/#simage_banner")
+	arg_1_0._txtdlcdesc = gohelper.findChildText(arg_1_0.viewGO, "#go_root/#go_container/#scroll_info/Viewport/Content/#txt_dlcdesc")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_root/#go_topleft")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_4_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_5_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:refreshDLCContainer()
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0:refreshDLCContainer()
 end
 
-function slot0.refreshDLCContainer(slot0)
-	if lua_rouge_season.configDict[slot0.viewParam and slot0.viewParam.dlcId] then
-		slot0._txtdlcname.text = slot2.name
-		slot0._txtdlcdesc.text = slot2.desc
+function var_0_0.refreshDLCContainer(arg_7_0)
+	local var_7_0 = arg_7_0.viewParam and arg_7_0.viewParam.dlcId
+	local var_7_1 = lua_rouge_season.configDict[var_7_0]
 
-		slot0._simagebanner:LoadImage(ResUrl.getRougeDLCLangImage("rouge_dlc_banner_" .. slot2.id))
+	if var_7_1 then
+		arg_7_0._txtdlcname.text = var_7_1.name
+		arg_7_0._txtdlcdesc.text = var_7_1.desc
+
+		local var_7_2 = ResUrl.getRougeDLCLangImage("rouge_dlc_banner_" .. var_7_1.id)
+
+		arg_7_0._simagebanner:LoadImage(var_7_2)
 	end
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_8_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_9_0)
+	return
 end
 
-return slot0
+return var_0_0

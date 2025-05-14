@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity2_6.dicehero.config.DiceHeroConfig", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.config.DiceHeroConfig", package.seeall)
 
-slot0 = class("DiceHeroConfig", BaseConfig)
+local var_0_0 = class("DiceHeroConfig", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"dice",
 		"dice_buff",
@@ -19,90 +19,90 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.getTaskList(slot0)
-	slot1 = {}
+function var_0_0.getTaskList(arg_2_0)
+	local var_2_0 = {}
 
-	for slot5, slot6 in ipairs(lua_dice_task.configList) do
-		if slot6.isOnline == 1 then
-			table.insert(slot1, slot6)
+	for iter_2_0, iter_2_1 in ipairs(lua_dice_task.configList) do
+		if iter_2_1.isOnline == 1 then
+			table.insert(var_2_0, iter_2_1)
 		end
 	end
 
-	return slot1
+	return var_2_0
 end
 
-function slot0.getLevelCo(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(lua_dice_level.configList) do
-		if slot7.chapter == slot1 and slot7.room == slot2 then
-			return slot7
+function var_0_0.getLevelCo(arg_3_0, arg_3_1, arg_3_2)
+	for iter_3_0, iter_3_1 in ipairs(lua_dice_level.configList) do
+		if iter_3_1.chapter == arg_3_1 and iter_3_1.room == arg_3_2 then
+			return iter_3_1
 		end
 	end
 end
 
-function slot0.getLevelCos(slot0, slot1)
-	if not slot0._levelCos then
-		slot0._levelCos = {}
+function var_0_0.getLevelCos(arg_4_0, arg_4_1)
+	if not arg_4_0._levelCos then
+		arg_4_0._levelCos = {}
 
-		for slot5, slot6 in ipairs(lua_dice_level.configList) do
-			if not slot0._levelCos[slot6.chapter] then
-				slot0._levelCos[slot6.chapter] = {}
+		for iter_4_0, iter_4_1 in ipairs(lua_dice_level.configList) do
+			if not arg_4_0._levelCos[iter_4_1.chapter] then
+				arg_4_0._levelCos[iter_4_1.chapter] = {}
 			end
 
-			slot0._levelCos[slot6.chapter][slot6.room] = slot6
+			arg_4_0._levelCos[iter_4_1.chapter][iter_4_1.room] = iter_4_1
 		end
 	end
 
-	return slot0._levelCos[slot1] or {}
+	return arg_4_0._levelCos[arg_4_1] or {}
 end
 
-function slot0.getDiceSuitDict(slot0, slot1)
-	if not slot0._suitDict then
-		slot0._suitDict = {}
+function var_0_0.getDiceSuitDict(arg_5_0, arg_5_1)
+	if not arg_5_0._suitDict then
+		arg_5_0._suitDict = {}
 
-		for slot5, slot6 in ipairs(lua_dice_suit.configList) do
-			for slot11, slot12 in ipairs(string.splitToNumber(slot6.suit, "#") or {}) do
-				-- Nothing
+		for iter_5_0, iter_5_1 in ipairs(lua_dice_suit.configList) do
+			local var_5_0 = {}
+
+			for iter_5_2, iter_5_3 in ipairs(string.splitToNumber(iter_5_1.suit, "#") or {}) do
+				var_5_0[iter_5_3] = true
 			end
 
-			slot0._suitDict[slot6.id] = {
-				[slot12] = true
-			}
+			arg_5_0._suitDict[iter_5_1.id] = var_5_0
 		end
 
-		slot2 = {}
+		local var_5_1 = {}
 
-		GameUtil.setDefaultValue(slot2, true)
+		GameUtil.setDefaultValue(var_5_1, true)
 
-		slot0._suitDict[0] = slot2
+		arg_5_0._suitDict[0] = var_5_1
 	end
 
-	return slot0._suitDict[slot1]
+	return arg_5_0._suitDict[arg_5_1]
 end
 
-function slot0.getDicePointDict(slot0, slot1)
-	if not slot0._pointDict then
-		slot0._pointDict = {}
+function var_0_0.getDicePointDict(arg_6_0, arg_6_1)
+	if not arg_6_0._pointDict then
+		arg_6_0._pointDict = {}
 
-		for slot5, slot6 in ipairs(lua_dice_point.configList) do
-			for slot11, slot12 in ipairs(string.splitToNumber(slot6.pointList, "#") or {}) do
-				-- Nothing
+		for iter_6_0, iter_6_1 in ipairs(lua_dice_point.configList) do
+			local var_6_0 = {}
+
+			for iter_6_2, iter_6_3 in ipairs(string.splitToNumber(iter_6_1.pointList, "#") or {}) do
+				var_6_0[iter_6_3] = true
 			end
 
-			slot0._pointDict[slot6.id] = {
-				[slot12] = true
-			}
+			arg_6_0._pointDict[iter_6_1.id] = var_6_0
 		end
 
-		slot2 = {}
+		local var_6_1 = {}
 
-		GameUtil.setDefaultValue(slot2, true)
+		GameUtil.setDefaultValue(var_6_1, true)
 
-		slot0._pointDict[0] = slot2
+		arg_6_0._pointDict[0] = var_6_1
 	end
 
-	return slot0._pointDict[slot1]
+	return arg_6_0._pointDict[arg_6_1]
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,69 +1,71 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventSameSkillJump", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventSameSkillJump", package.seeall)
 
-slot0 = class("FightTLEventSameSkillJump", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventSameSkillJump", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	if not FightModel.instance:canParallelSkill(slot1) then
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	if not FightModel.instance:canParallelSkill(arg_1_1) then
 		return
 	end
 
-	if not string.nilorempty(slot3[1]) then
+	if not string.nilorempty(arg_1_3[1]) then
 		CameraMgr.instance:getCameraRootAnimator().enabled = true
 
-		FightController.instance:registerCallback(FightEvent.BeforePlaySameSkill, slot0._onBeforePlaySameSkill, slot0)
+		FightController.instance:registerCallback(FightEvent.BeforePlaySameSkill, arg_1_0._onBeforePlaySameSkill, arg_1_0)
 
-		slot0.fightStepData = slot1
-		slot0._paramsArr = slot3
+		arg_1_0.fightStepData = arg_1_1
+		arg_1_0._paramsArr = arg_1_3
 
-		FightController.instance:dispatchEvent(FightEvent.CheckPlaySameSkill, slot1)
+		FightController.instance:dispatchEvent(FightEvent.CheckPlaySameSkill, arg_1_1)
 	end
 end
 
-function slot0._onBeforePlaySameSkill(slot0, slot1, slot2)
-	if not string.nilorempty(slot0._paramsArr[1]) and not slot0._done then
-		slot0._jump_type = tonumber(slot0._paramsArr[1]) or 0
-		slot0.audioId = slot0.fightStepData.atkAudioId
-		slot0._done = true
-		slot0._animComp = CameraMgr.instance:getCameraRootAnimator()
-		slot0._animComp.enabled = false
-		slot0._attacker = FightHelper.getEntity(slot0.fightStepData.fromId)
+function var_0_0._onBeforePlaySameSkill(arg_2_0, arg_2_1, arg_2_2)
+	if not string.nilorempty(arg_2_0._paramsArr[1]) and not arg_2_0._done then
+		arg_2_0._jump_type = tonumber(arg_2_0._paramsArr[1]) or 0
+		arg_2_0.audioId = arg_2_0.fightStepData.atkAudioId
+		arg_2_0._done = true
+		arg_2_0._animComp = CameraMgr.instance:getCameraRootAnimator()
+		arg_2_0._animComp.enabled = false
+		arg_2_0._attacker = FightHelper.getEntity(arg_2_0.fightStepData.fromId)
 
-		AudioEffectMgr.instance:stopAudio(slot0.audioId, 0)
+		AudioEffectMgr.instance:stopAudio(arg_2_0.audioId, 0)
 
-		slot0.curAnimState = slot0._attacker.spine.curAnimState
+		arg_2_0.curAnimState = arg_2_0._attacker.spine.curAnimState
 
-		if slot0._attacker.spine:hasAnimation(SpineAnimState.posture) then
-			slot0._attacker.spine:play(SpineAnimState.posture, true)
+		if arg_2_0._attacker.spine:hasAnimation(SpineAnimState.posture) then
+			arg_2_0._attacker.spine:play(SpineAnimState.posture, true)
 		end
 
-		if not string.nilorempty(slot0._paramsArr[2]) then
-			for slot7, slot8 in ipairs(string.splitToNumber(slot0._paramsArr[2], "#")) do
-				slot0.fightStepData.cusParam_lockTimelineTypes = slot0.fightStepData.cusParam_lockTimelineTypes or {}
-				slot0.fightStepData.cusParam_lockTimelineTypes[slot8] = true
+		if not string.nilorempty(arg_2_0._paramsArr[2]) then
+			local var_2_0 = string.splitToNumber(arg_2_0._paramsArr[2], "#")
+
+			for iter_2_0, iter_2_1 in ipairs(var_2_0) do
+				arg_2_0.fightStepData.cusParam_lockTimelineTypes = arg_2_0.fightStepData.cusParam_lockTimelineTypes or {}
+				arg_2_0.fightStepData.cusParam_lockTimelineTypes[iter_2_1] = true
 			end
 		end
 
-		if slot0._paramsArr[3] == "1" then
-			slot0.fightStepData.cus_Param_invokeSpineActTimelineEnd = true
+		if arg_2_0._paramsArr[3] == "1" then
+			arg_2_0.fightStepData.cus_Param_invokeSpineActTimelineEnd = true
 		end
 
-		if not string.nilorempty(slot0._paramsArr[4]) then
-			slot0._attacker.skill:recordFilterAtkEffect(slot0._paramsArr[4], slot2)
+		if not string.nilorempty(arg_2_0._paramsArr[4]) then
+			arg_2_0._attacker.skill:recordFilterAtkEffect(arg_2_0._paramsArr[4], arg_2_2)
 		end
 
-		if not string.nilorempty(slot0._paramsArr[5]) then
-			slot0._attacker.skill:recordFilterFlyEffect(slot0._paramsArr[5], slot2)
+		if not string.nilorempty(arg_2_0._paramsArr[5]) then
+			arg_2_0._attacker.skill:recordFilterFlyEffect(arg_2_0._paramsArr[5], arg_2_2)
 		end
 
-		slot0._attacker.skill:stopCurTimelineWaitPlaySameSkill(slot0._jump_type, slot0.curAnimState, slot0.audioId, slot1, slot2)
+		arg_2_0._attacker.skill:stopCurTimelineWaitPlaySameSkill(arg_2_0._jump_type, arg_2_0.curAnimState, arg_2_0.audioId, arg_2_1, arg_2_2)
 	end
 end
 
-function slot0.onDestructor(slot0)
-	slot0._done = nil
-	slot0._animComp = nil
+function var_0_0.onDestructor(arg_3_0)
+	arg_3_0._done = nil
+	arg_3_0._animComp = nil
 
-	FightController.instance:unregisterCallback(FightEvent.BeforePlaySameSkill, slot0._onBeforePlaySameSkill, slot0)
+	FightController.instance:unregisterCallback(FightEvent.BeforePlaySameSkill, arg_3_0._onBeforePlaySameSkill, arg_3_0)
 end
 
-return slot0
+return var_0_0

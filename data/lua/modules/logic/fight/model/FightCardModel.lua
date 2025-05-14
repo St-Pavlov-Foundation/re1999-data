@@ -1,655 +1,709 @@
-module("modules.logic.fight.model.FightCardModel", package.seeall)
+﻿module("modules.logic.fight.model.FightCardModel", package.seeall)
 
-slot0 = class("FightCardModel", BaseModel)
+local var_0_0 = class("FightCardModel", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0._cardMO = FightCardMO.New()
-	slot0._distributeQueue = {}
-	slot0._cardOps = {}
-	slot0.curSelectEntityId = 0
-	slot0.nextRoundActPoint = nil
-	slot0.nextRoundMoveNum = nil
-	slot0._universalCardMO = nil
-	slot0._beCombineCardMO = nil
-	slot0.redealCardInfoList = nil
-	slot0._dissolvingCard = nil
-	slot0._changingCard = nil
-	slot0.areaSize = 0
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._cardMO = FightCardMO.New()
+	arg_1_0._distributeQueue = {}
+	arg_1_0._cardOps = {}
+	arg_1_0.curSelectEntityId = 0
+	arg_1_0.nextRoundActPoint = nil
+	arg_1_0.nextRoundMoveNum = nil
+	arg_1_0._universalCardMO = nil
+	arg_1_0._beCombineCardMO = nil
+	arg_1_0.redealCardInfoList = nil
+	arg_1_0._dissolvingCard = nil
+	arg_1_0._changingCard = nil
+	arg_1_0.areaSize = 0
 end
 
-function slot0.clear(slot0)
-	slot0.redealCardInfoList = nil
-	slot0._dissolvingCard = nil
-	slot0._changingCard = nil
-	slot0.areaSize = 0
+function var_0_0.clear(arg_2_0)
+	arg_2_0.redealCardInfoList = nil
+	arg_2_0._dissolvingCard = nil
+	arg_2_0._changingCard = nil
+	arg_2_0.areaSize = 0
 
-	slot0:clearCardOps()
+	arg_2_0:clearCardOps()
 
-	if slot0._cardMO then
-		slot0._cardMO:reset()
+	if arg_2_0._cardMO then
+		arg_2_0._cardMO:reset()
 	end
 
-	slot0:clearDistributeQueue()
+	arg_2_0:clearDistributeQueue()
 end
 
-function slot0.setDissolving(slot0, slot1)
+function var_0_0.setDissolving(arg_3_0, arg_3_1)
 	if FightModel.instance:getVersion() >= 1 then
 		return
 	end
 
-	slot0._dissolvingCard = slot1
+	arg_3_0._dissolvingCard = arg_3_1
 end
 
-function slot0.setChanging(slot0, slot1)
-	slot0._changingCard = slot1
+function var_0_0.setChanging(arg_4_0, arg_4_1)
+	arg_4_0._changingCard = arg_4_1
 end
 
-function slot0.isDissolving(slot0)
-	return slot0._dissolvingCard
+function var_0_0.isDissolving(arg_5_0)
+	return arg_5_0._dissolvingCard
 end
 
-function slot0.isChanging(slot0)
-	return slot0._changingCard
+function var_0_0.isChanging(arg_6_0)
+	return arg_6_0._changingCard
 end
 
-function slot0.setUniversalCombine(slot0, slot1, slot2)
-	slot0._universalCardMO = slot1
-	slot0._beCombineCardMO = slot2
+function var_0_0.setUniversalCombine(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0._universalCardMO = arg_7_1
+	arg_7_0._beCombineCardMO = arg_7_2
 end
 
-function slot0.getUniversalCardMO(slot0)
-	return slot0._universalCardMO
+function var_0_0.getUniversalCardMO(arg_8_0)
+	return arg_8_0._universalCardMO
 end
 
-function slot0.getBeCombineCardMO(slot0)
-	return slot0._beCombineCardMO
+function var_0_0.getBeCombineCardMO(arg_9_0)
+	return arg_9_0._beCombineCardMO
 end
 
-function slot0.enqueueDistribute(slot0, slot1, slot2)
-	slot3 = tabletool.copy(slot1)
+function var_0_0.enqueueDistribute(arg_10_0, arg_10_1, arg_10_2)
+	local var_10_0 = tabletool.copy(arg_10_1)
+	local var_10_1 = tabletool.copy(arg_10_2)
 
-	if #tabletool.copy(slot2) > 0 then
-		while #slot4 > 0 do
-			slot5 = #slot4
-			slot6 = 1
-			slot7 = tabletool.copy(slot3)
+	if #var_10_1 > 0 then
+		while #var_10_1 > 0 do
+			local var_10_2 = #var_10_1
+			local var_10_3 = 1
+			local var_10_4 = tabletool.copy(var_10_0)
 
-			while #slot4 > 0 do
-				table.insert(slot7, table.remove(slot4, 1))
+			while #var_10_1 > 0 do
+				table.insert(var_10_4, table.remove(var_10_1, 1))
 
-				if uv0.getCombineIndexOnce(slot7) then
+				if var_0_0.getCombineIndexOnce(var_10_4) then
 					break
 				end
 			end
 
-			slot8 = {}
+			local var_10_5 = {}
 
-			for slot12 = #slot3 + 1, #slot7 do
-				table.insert(slot8, slot7[slot12])
+			for iter_10_0 = #var_10_0 + 1, #var_10_4 do
+				table.insert(var_10_5, var_10_4[iter_10_0])
 			end
 
-			table.insert(slot0._distributeQueue, {
-				slot3,
-				slot8
+			table.insert(arg_10_0._distributeQueue, {
+				var_10_0,
+				var_10_5
 			})
 
-			slot3 = uv0.calcCardsAfterCombine(slot7)
+			var_10_0 = var_0_0.calcCardsAfterCombine(var_10_4)
 		end
 	else
-		table.insert(slot0._distributeQueue, {
-			slot3,
-			slot4
+		table.insert(arg_10_0._distributeQueue, {
+			var_10_0,
+			var_10_1
 		})
 	end
 end
 
-function slot0.dequeueDistribute(slot0)
-	if #slot0._distributeQueue > 0 then
-		slot1 = table.remove(slot0._distributeQueue, 1)
+function var_0_0.dequeueDistribute(arg_11_0)
+	if #arg_11_0._distributeQueue > 0 then
+		local var_11_0 = table.remove(arg_11_0._distributeQueue, 1)
 
-		return slot1[1], slot1[2]
+		return var_11_0[1], var_11_0[2]
 	end
 end
 
-function slot0.clearDistributeQueue(slot0)
-	slot0._distributeQueue = {}
+function var_0_0.clearDistributeQueue(arg_12_0)
+	arg_12_0._distributeQueue = {}
 end
 
-function slot0.getDistributeQueueLen(slot0)
-	return #slot0._distributeQueue
+function var_0_0.getDistributeQueueLen(arg_13_0)
+	return #arg_13_0._distributeQueue
 end
 
-function slot0.applyNextRoundActPoint(slot0)
-	if slot0.nextRoundActPoint and slot0.nextRoundActPoint > 0 then
-		slot0._cardMO.actPoint = slot0.nextRoundActPoint
-		slot0._cardMO.moveNum = slot0.nextRoundMoveNum
-		slot0.nextRoundActPoint = nil
-		slot0.nextRoundMoveNum = nil
+function var_0_0.applyNextRoundActPoint(arg_14_0)
+	if arg_14_0.nextRoundActPoint and arg_14_0.nextRoundActPoint > 0 then
+		arg_14_0._cardMO.actPoint = arg_14_0.nextRoundActPoint
+		arg_14_0._cardMO.moveNum = arg_14_0.nextRoundMoveNum
+		arg_14_0.nextRoundActPoint = nil
+		arg_14_0.nextRoundMoveNum = nil
 	end
 end
 
-function slot0.getEntityOps(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.getEntityOps(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0 = {}
 
-	for slot7, slot8 in ipairs(slot0._cardOps) do
-		if slot8.belongToEntityId == slot1 and (not slot2 or slot8.operType == slot2) then
-			table.insert(slot3, slot8)
+	for iter_15_0, iter_15_1 in ipairs(arg_15_0._cardOps) do
+		if iter_15_1.belongToEntityId == arg_15_1 and (not arg_15_2 or iter_15_1.operType == arg_15_2) then
+			table.insert(var_15_0, iter_15_1)
 		end
 	end
 
-	return slot3
+	return var_15_0
 end
 
-function slot0.setCurSelectEntityId(slot0, slot1)
-	slot0.curSelectEntityId = slot1
+function var_0_0.setCurSelectEntityId(arg_16_0, arg_16_1)
+	arg_16_0.curSelectEntityId = arg_16_1
 end
 
-function slot0.resetCurSelectEntityIdDefault(slot0)
+function var_0_0.resetCurSelectEntityIdDefault(arg_17_0)
 	if FightModel.instance:isAuto() then
-		if FightHelper.canSelectEnemyEntity(slot0.curSelectEntityId) then
-			slot0:setCurSelectEntityId(slot0.curSelectEntityId)
+		if FightHelper.canSelectEnemyEntity(arg_17_0.curSelectEntityId) then
+			arg_17_0:setCurSelectEntityId(arg_17_0.curSelectEntityId)
 		else
-			slot0:setCurSelectEntityId(0)
+			arg_17_0:setCurSelectEntityId(0)
 		end
 	else
-		if FightDataHelper.entityMgr:getById(slot0.curSelectEntityId) and slot1:isStatusDead() then
-			slot1 = nil
+		local var_17_0 = FightDataHelper.entityMgr:getById(arg_17_0.curSelectEntityId)
+
+		if var_17_0 and var_17_0:isStatusDead() then
+			var_17_0 = nil
 		end
 
-		if slot1 and slot1.side == FightEnum.EntitySide.MySide then
-			slot0.curSelectEntityId = 0
-			slot1 = nil
+		if var_17_0 and var_17_0.side == FightEnum.EntitySide.MySide then
+			arg_17_0.curSelectEntityId = 0
+			var_17_0 = nil
 		end
 
-		if slot0.curSelectEntityId ~= 0 and slot1 ~= nil and not (slot1 and slot1:hasBuffFeature(FightEnum.BuffType_CantSelect)) and not (slot1 and slot1:hasBuffFeature(FightEnum.BuffType_CantSelectEx)) then
+		local var_17_1 = var_17_0 ~= nil
+		local var_17_2 = var_17_0 and var_17_0:hasBuffFeature(FightEnum.BuffType_CantSelect)
+		local var_17_3 = var_17_0 and var_17_0:hasBuffFeature(FightEnum.BuffType_CantSelectEx)
+
+		if arg_17_0.curSelectEntityId ~= 0 and var_17_1 and not var_17_2 and not var_17_3 then
 			return
 		end
 
-		for slot9 = #FightDataHelper.entityMgr:getEnemyNormalList(), 1, -1 do
-			if slot5[slot9]:hasBuffFeature(FightEnum.BuffType_CantSelect) or slot10:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
-				table.remove(slot5, slot9)
+		local var_17_4 = FightDataHelper.entityMgr:getEnemyNormalList()
+
+		for iter_17_0 = #var_17_4, 1, -1 do
+			local var_17_5 = var_17_4[iter_17_0]
+
+			if var_17_5:hasBuffFeature(FightEnum.BuffType_CantSelect) or var_17_5:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
+				table.remove(var_17_4, iter_17_0)
 			end
 		end
 
-		if #slot5 > 0 then
-			table.sort(slot5, function (slot0, slot1)
-				return slot0.position < slot1.position
+		if #var_17_4 > 0 then
+			table.sort(var_17_4, function(arg_18_0, arg_18_1)
+				return arg_18_0.position < arg_18_1.position
 			end)
-			slot0:setCurSelectEntityId(slot5[1].id)
+			arg_17_0:setCurSelectEntityId(var_17_4[1].id)
 		end
 	end
 end
 
-function slot0.getSelectEnemyPosLOrR(slot0, slot1)
-	for slot6 = #FightDataHelper.entityMgr:getEnemyNormalList(), 1, -1 do
-		if slot2[slot6]:hasBuffFeature(FightEnum.BuffType_CantSelect) or slot7:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
-			table.remove(slot2, slot6)
+function var_0_0.getSelectEnemyPosLOrR(arg_19_0, arg_19_1)
+	local var_19_0 = FightDataHelper.entityMgr:getEnemyNormalList()
+
+	for iter_19_0 = #var_19_0, 1, -1 do
+		local var_19_1 = var_19_0[iter_19_0]
+
+		if var_19_1:hasBuffFeature(FightEnum.BuffType_CantSelect) or var_19_1:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
+			table.remove(var_19_0, iter_19_0)
 		end
 	end
 
-	if #slot2 > 0 then
-		table.sort(slot2, function (slot0, slot1)
-			return slot0.position < slot1.position
+	if #var_19_0 > 0 then
+		table.sort(var_19_0, function(arg_20_0, arg_20_1)
+			return arg_20_0.position < arg_20_1.position
 		end)
 
-		for slot6 = 1, #slot2 do
-			if slot2[slot6].id == slot0.curSelectEntityId then
-				if slot1 == 1 and slot6 < #slot2 then
-					return slot2[slot6 + 1].id
-				elseif slot1 == 2 and slot6 > 1 then
-					return slot2[slot6 - 1].id
+		for iter_19_1 = 1, #var_19_0 do
+			if var_19_0[iter_19_1].id == arg_19_0.curSelectEntityId then
+				if arg_19_1 == 1 and iter_19_1 < #var_19_0 then
+					return var_19_0[iter_19_1 + 1].id
+				elseif arg_19_1 == 2 and iter_19_1 > 1 then
+					return var_19_0[iter_19_1 - 1].id
 				end
 			end
 		end
 	end
 end
 
-function slot0.onStartRound(slot0)
-	slot0:getCardMO():setExtraMoveAct(0)
+function var_0_0.onStartRound(arg_21_0)
+	arg_21_0:getCardMO():setExtraMoveAct(0)
 end
 
-function slot0.onEndRound(slot0)
+function var_0_0.onEndRound(arg_22_0)
+	return
 end
 
-function slot0.getCardMO(slot0)
-	return slot0._cardMO
+function var_0_0.getCardMO(arg_23_0)
+	return arg_23_0._cardMO
 end
 
-function slot0.getCardOps(slot0)
-	return slot0._cardOps
+function var_0_0.getCardOps(arg_24_0)
+	return arg_24_0._cardOps
 end
 
-function slot0.resetCardOps(slot0)
-	slot0._cardOps = {}
+function var_0_0.resetCardOps(arg_25_0)
+	arg_25_0._cardOps = {}
 
-	for slot5, slot6 in pairs(FightDataHelper.entityMgr:getAllEntityData()) do
-		slot6:resetSimulateExPoint()
+	local var_25_0 = FightDataHelper.entityMgr:getAllEntityData()
+
+	for iter_25_0, iter_25_1 in pairs(var_25_0) do
+		iter_25_1:resetSimulateExPoint()
 	end
 end
 
-function slot0.clearCardOps(slot0)
-	slot0._cardOps = {}
+function var_0_0.clearCardOps(arg_26_0)
+	arg_26_0._cardOps = {}
 end
 
-function slot0.getShowOpActList(slot0)
-	slot1 = {}
+function var_0_0.getShowOpActList(arg_27_0)
+	local var_27_0 = {}
 
-	for slot5, slot6 in ipairs(slot0._cardOps) do
-		if uv0.instance:canShowOpAct(slot6) then
-			table.insert(slot1, slot6)
+	for iter_27_0, iter_27_1 in ipairs(arg_27_0._cardOps) do
+		if var_0_0.instance:canShowOpAct(iter_27_1) then
+			table.insert(var_27_0, iter_27_1)
 		end
 	end
 
-	return slot1
+	return var_27_0
 end
 
-function slot0.canShowOpAct(slot0, slot1)
-	if not slot1:isMoveUniversal() and (not slot1:isMoveCard() or not slot0._cardMO:isUnlimitMoveCard() or slot1:isPlayCard()) then
+function var_0_0.canShowOpAct(arg_28_0, arg_28_1)
+	if not arg_28_1:isMoveUniversal() and (not (arg_28_1:isMoveCard() and arg_28_0._cardMO:isUnlimitMoveCard()) or arg_28_1:isPlayCard()) then
 		return true
 	end
 end
 
-function slot0.getPlayCardOpList(slot0)
-	slot1 = {}
+function var_0_0.getPlayCardOpList(arg_29_0)
+	local var_29_0 = {}
 
-	for slot5, slot6 in ipairs(slot0._cardOps) do
-		if slot6:isPlayCard() then
-			table.insert(slot1, slot6)
+	for iter_29_0, iter_29_1 in ipairs(arg_29_0._cardOps) do
+		if iter_29_1:isPlayCard() then
+			table.insert(var_29_0, iter_29_1)
 		end
 	end
 
-	return slot1
+	return var_29_0
 end
 
-function slot0.getMoveCardOpList(slot0)
-	slot1 = {}
+function var_0_0.getMoveCardOpList(arg_30_0)
+	local var_30_0 = {}
 
-	for slot5, slot6 in ipairs(slot0._cardOps) do
-		if slot6:isMoveCard() then
-			table.insert(slot1, slot6)
+	for iter_30_0, iter_30_1 in ipairs(arg_30_0._cardOps) do
+		if iter_30_1:isMoveCard() then
+			table.insert(var_30_0, iter_30_1)
 		end
 	end
 
-	return slot1
+	return var_30_0
 end
 
-function slot0.getMoveCardOpCostActList(slot0)
-	slot1 = {}
+function var_0_0.getMoveCardOpCostActList(arg_31_0)
+	local var_31_0 = {}
 
-	for slot5, slot6 in ipairs(slot0._cardOps) do
-		if slot6:isMoveCard() then
-			table.insert(slot1, slot6)
+	for iter_31_0, iter_31_1 in ipairs(arg_31_0._cardOps) do
+		if iter_31_1:isMoveCard() then
+			table.insert(var_31_0, iter_31_1)
 		end
 	end
 
-	return slot1
+	return var_31_0
 end
 
-function slot0.updateCard(slot0, slot1)
-	slot0:clearCardOps()
-	slot0._cardMO:init(slot1)
+function var_0_0.updateCard(arg_32_0, arg_32_1)
+	arg_32_0:clearCardOps()
+	arg_32_0._cardMO:init(arg_32_1)
 end
 
-function slot0.coverCard(slot0, slot1)
-	if not slot1 then
+function var_0_0.coverCard(arg_33_0, arg_33_1)
+	if not arg_33_1 then
 		logError("覆盖卡牌序列,传入的数据为空")
 	end
 
-	slot0._cardMO:setCards(slot1)
+	arg_33_0._cardMO:setCards(arg_33_1)
 end
 
-function slot0.getHandCards(slot0)
-	return slot0:getHandCardsByOps(slot0._cardOps)
+function var_0_0.getHandCards(arg_34_0)
+	return arg_34_0:getHandCardsByOps(arg_34_0._cardOps)
 end
 
-function slot0.getHandCardData(slot0)
-	return slot0._cardMO and slot0._cardMO.cardGroup
+function var_0_0.getHandCardData(arg_35_0)
+	return arg_35_0._cardMO and arg_35_0._cardMO.cardGroup
 end
 
-function slot0.getHandCardsByOps(slot0, slot1)
-	return slot0:tryGettingHandCardsByOps(slot1) or {}
+function var_0_0.getHandCardsByOps(arg_36_0, arg_36_1)
+	return arg_36_0:tryGettingHandCardsByOps(arg_36_1) or {}
 end
 
-function slot0.tryGettingHandCardsByOps(slot0, slot1)
-	if not slot0._cardMO then
+function var_0_0.tryGettingHandCardsByOps(arg_37_0, arg_37_1)
+	if not arg_37_0._cardMO then
 		return nil
 	end
 
-	slot2, slot3 = nil
-	slot4 = tabletool.copy(slot0._cardMO.cardGroup)
+	local var_37_0
+	local var_37_1
+	local var_37_2 = tabletool.copy(arg_37_0._cardMO.cardGroup)
 
-	for slot8, slot9 in ipairs(slot1) do
-		slot10 = false
+	for iter_37_0, iter_37_1 in ipairs(arg_37_1) do
+		local var_37_3 = false
 
-		if slot9:isMoveCard() then
-			slot2, slot3 = nil
+		if iter_37_1:isMoveCard() then
+			var_37_0 = nil
+			var_37_1 = nil
 
-			if not slot4[slot9.param1] then
+			if not var_37_2[iter_37_1.param1] then
 				return nil
 			end
 
-			if not slot4[slot9.param2] then
+			if not var_37_2[iter_37_1.param2] then
 				return nil
 			end
 
-			uv0.moveOnly(slot4, slot9.param1, slot9.param2)
-		elseif slot9:isPlayCard() then
-			slot2, slot3 = nil
+			var_0_0.moveOnly(var_37_2, iter_37_1.param1, iter_37_1.param2)
+		elseif iter_37_1:isPlayCard() then
+			var_37_0 = nil
+			var_37_1 = nil
 
-			if not slot4[slot9.param1] then
+			if not var_37_2[iter_37_1.param1] then
 				return nil
 			end
 
-			table.remove(slot4, slot9.param1)
+			table.remove(var_37_2, iter_37_1.param1)
 
-			if slot9.param2 and slot9.params ~= 0 then
-				slot10 = true
+			if iter_37_1.param2 and iter_37_1.params ~= 0 then
+				var_37_3 = true
 			end
-		elseif slot9:isMoveUniversal() then
-			slot2 = slot4[slot9.param1]
-			slot3 = slot4[slot9.param2]
+		elseif iter_37_1:isMoveUniversal() then
+			var_37_0 = var_37_2[iter_37_1.param1]
+			var_37_1 = var_37_2[iter_37_1.param2]
 
-			if not slot4[slot9.param1] then
+			if not var_37_2[iter_37_1.param1] then
 				return nil
 			end
 
-			if not slot4[slot9.param2] then
+			if not var_37_2[iter_37_1.param2] then
 				return nil
 			end
 
-			uv0.moveOnly(slot4, slot9.param1, slot9.moveToIndex)
-		elseif slot9:isSimulateDissolveCard() then
-			table.remove(slot4, slot9.dissolveIndex)
+			var_0_0.moveOnly(var_37_2, iter_37_1.param1, iter_37_1.moveToIndex)
+		elseif iter_37_1:isSimulateDissolveCard() then
+			table.remove(var_37_2, iter_37_1.dissolveIndex)
 		end
 
-		if slot10 then
-			table.remove(slot4, slot9.param2)
+		if var_37_3 then
+			table.remove(var_37_2, iter_37_1.param2)
 
-			slot11 = uv0.getCombineIndexOnce(slot4, slot2, slot3)
+			local var_37_4 = var_0_0.getCombineIndexOnce(var_37_2, var_37_0, var_37_1)
 
-			while #slot4 >= 2 and slot11 do
-				slot4[slot11] = uv0.combineTwoCard(slot4[slot11], slot4[slot11 + 1], slot3)
+			while #var_37_2 >= 2 and var_37_4 do
+				var_37_2[var_37_4] = var_0_0.combineTwoCard(var_37_2[var_37_4], var_37_2[var_37_4 + 1], var_37_1)
 
-				table.remove(slot4, slot11 + 1)
+				table.remove(var_37_2, var_37_4 + 1)
 
-				slot2, slot3 = nil
-				slot11 = uv0.getCombineIndexOnce(slot4)
+				var_37_0 = nil
+				var_37_1 = nil
+				var_37_4 = var_0_0.getCombineIndexOnce(var_37_2)
 			end
 		end
 
-		slot11 = uv0.getCombineIndexOnce(slot4, slot2, slot3)
+		local var_37_5 = var_0_0.getCombineIndexOnce(var_37_2, var_37_0, var_37_1)
 
-		while #slot4 >= 2 and slot11 do
-			slot4[slot11] = uv0.combineTwoCard(slot4[slot11], slot4[slot11 + 1], slot3)
+		while #var_37_2 >= 2 and var_37_5 do
+			var_37_2[var_37_5] = var_0_0.combineTwoCard(var_37_2[var_37_5], var_37_2[var_37_5 + 1], var_37_1)
 
-			table.remove(slot4, slot11 + 1)
+			table.remove(var_37_2, var_37_5 + 1)
 
-			slot2, slot3 = nil
-			slot11 = uv0.getCombineIndexOnce(slot4)
+			var_37_0 = nil
+			var_37_1 = nil
+			var_37_5 = var_0_0.getCombineIndexOnce(var_37_2)
 		end
 	end
 
-	return slot4
+	return var_37_2
 end
 
-function slot0.isCardOpEnd(slot0)
-	if not uv0.instance:getCardMO() then
+function var_0_0.isCardOpEnd(arg_38_0)
+	local var_38_0 = var_0_0.instance:getCardMO()
+
+	if not var_38_0 then
 		return true
 	end
 
-	if #uv0.instance:getHandCards() == 0 then
+	local var_38_1 = var_0_0.instance:getHandCards()
+
+	if #var_38_1 == 0 then
 		return true
 	end
 
-	slot6 = 0
+	local var_38_2 = var_0_0.instance:getCardOps()
+	local var_38_3 = 0
+	local var_38_4 = 0
 
-	for slot10, slot11 in ipairs(uv0.instance:getCardOps()) do
-		if slot11:isPlayCard() then
-			slot5 = 0 + slot11.costActPoint
-		elseif slot11:isMoveCard() then
-			if not slot0._cardMO:isUnlimitMoveCard() and slot0._cardMO.extraMoveAct < slot6 + 1 then
-				slot5 = slot5 + slot11.costActPoint
+	for iter_38_0, iter_38_1 in ipairs(var_38_2) do
+		if iter_38_1:isPlayCard() then
+			var_38_3 = var_38_3 + iter_38_1.costActPoint
+		elseif iter_38_1:isMoveCard() then
+			var_38_4 = var_38_4 + 1
+
+			if not arg_38_0._cardMO:isUnlimitMoveCard() and var_38_4 > arg_38_0._cardMO.extraMoveAct then
+				var_38_3 = var_38_3 + iter_38_1.costActPoint
 			end
 		end
 	end
 
-	slot7 = slot1.actPoint
+	local var_38_5 = var_38_0.actPoint
 
 	if FightModel.instance:isSeason2() then
-		slot7 = 1
+		var_38_5 = 1
 
-		if #slot4 >= 1 then
+		if #var_38_2 >= 1 then
 			return true
 		end
 	end
 
-	if slot7 <= slot5 then
+	if var_38_5 <= var_38_3 then
 		return true
 	end
 
-	if FightCardDataHelper.allFrozenCard(slot2) then
+	if FightCardDataHelper.allFrozenCard(var_38_1) then
 		return true
 	end
 
 	return false
 end
 
-function slot0.calcCardsAfterCombine(slot0, slot1)
-	slot3 = uv0.getCombineIndexOnce(tabletool.copy(slot0))
-	slot4 = 0
+function var_0_0.calcCardsAfterCombine(arg_39_0, arg_39_1)
+	local var_39_0 = tabletool.copy(arg_39_0)
+	local var_39_1 = var_0_0.getCombineIndexOnce(var_39_0)
+	local var_39_2 = 0
 
-	while slot3 do
-		slot2[slot3] = uv0.combineTwoCard(slot2[slot3], slot2[slot3 + 1])
+	while var_39_1 do
+		var_39_0[var_39_1] = var_0_0.combineTwoCard(var_39_0[var_39_1], var_39_0[var_39_1 + 1])
 
-		table.remove(slot2, slot3 + 1)
+		table.remove(var_39_0, var_39_1 + 1)
 
-		slot3 = uv0.getCombineIndexOnce(slot2)
+		var_39_1 = var_0_0.getCombineIndexOnce(var_39_0)
+		var_39_2 = var_39_2 + 1
 
-		if slot4 + 1 == slot1 then
+		if var_39_2 == arg_39_1 then
 			break
 		end
 	end
 
-	return slot2, slot4
+	return var_39_0, var_39_2
 end
 
-function slot0.combineTwoCard(slot0, slot1, slot2)
-	slot3 = slot2 and slot2:clone() or slot0:clone()
-	slot3.skillId = uv0.getCombineSkillId(slot0, slot1, slot2)
-	slot3.tempCard = false
+function var_0_0.combineTwoCard(arg_40_0, arg_40_1, arg_40_2)
+	local var_40_0 = arg_40_2 and arg_40_2:clone() or arg_40_0:clone()
 
-	FightCardDataHelper.enchantsAfterCombine(slot3, slot1)
+	var_40_0.skillId = var_0_0.getCombineSkillId(arg_40_0, arg_40_1, arg_40_2)
+	var_40_0.tempCard = false
 
-	if not slot3.uid or tonumber(slot3.uid) == 0 then
-		slot3.uid = slot1.uid
-		slot3.cardType = slot1.cardType
+	FightCardDataHelper.enchantsAfterCombine(var_40_0, arg_40_1)
+
+	if not var_40_0.uid or tonumber(var_40_0.uid) == 0 then
+		var_40_0.uid = arg_40_1.uid
+		var_40_0.cardType = arg_40_1.cardType
 	end
 
-	if slot3.heroId ~= slot1.heroId then
-		slot3.heroId = slot1.heroId
+	if var_40_0.heroId ~= arg_40_1.heroId then
+		var_40_0.heroId = arg_40_1.heroId
 	end
 
-	slot3.energy = slot0.energy + slot1.energy
-	slot3.heatId = slot3.uid and slot3.uid ~= "0" and slot3.heatId or slot1.heatId
+	var_40_0.energy = arg_40_0.energy + arg_40_1.energy
+	var_40_0.heatId = var_40_0.uid and var_40_0.uid ~= "0" and var_40_0.heatId or arg_40_1.heatId
 
-	return slot3
+	return var_40_0
 end
 
-function slot0.getCombineSkillId(slot0, slot1, slot2)
-	slot3 = slot0.uid
-	slot4 = slot0.skillId
+function var_0_0.getCombineSkillId(arg_41_0, arg_41_1, arg_41_2)
+	local var_41_0 = arg_41_0.uid
+	local var_41_1 = arg_41_0.skillId
 
-	if slot2 then
-		if slot0 == slot2 then
-			slot4 = slot0.skillId
-			slot3 = slot2.uid
-		elseif slot1 == slot2 then
-			slot4 = slot1.skillId
-			slot3 = slot2.uid
+	if arg_41_2 then
+		if arg_41_0 == arg_41_2 then
+			var_41_1 = arg_41_0.skillId
+			var_41_0 = arg_41_2.uid
+		elseif arg_41_1 == arg_41_2 then
+			var_41_1 = arg_41_1.skillId
+			var_41_0 = arg_41_2.uid
 		end
 	end
 
-	slot5 = uv0.instance:getSkillNextLvId(slot3, slot4)
-	slot6 = true
+	local var_41_2 = var_0_0.instance:getSkillNextLvId(var_41_0, var_41_1)
+	local var_41_3 = true
 
-	if FightCardDataHelper.isSkill3(slot0) or FightCardDataHelper.isSkill3(slot1) then
-		slot6 = false
+	if FightCardDataHelper.isSkill3(arg_41_0) or FightCardDataHelper.isSkill3(arg_41_1) then
+		var_41_3 = false
 	end
 
-	if slot6 and not FightEnum.UniversalCard[slot0.skillId] and not FightEnum.UniversalCard[slot1.skillId] then
-		slot7 = FightEnum.BuffFeature.ChangeComposeCardSkill
-		slot8 = {}
+	if var_41_3 and not FightEnum.UniversalCard[arg_41_0.skillId] and not FightEnum.UniversalCard[arg_41_1.skillId] then
+		local var_41_4 = FightEnum.BuffFeature.ChangeComposeCardSkill
+		local var_41_5 = {}
 
-		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMyPlayerList())
-		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMyNormalList())
-		tabletool.addValues(slot8, FightDataHelper.entityMgr:getMySpList())
+		tabletool.addValues(var_41_5, FightDataHelper.entityMgr:getMyPlayerList())
+		tabletool.addValues(var_41_5, FightDataHelper.entityMgr:getMyNormalList())
+		tabletool.addValues(var_41_5, FightDataHelper.entityMgr:getMySpList())
 
-		slot9 = 0
+		local var_41_6 = 0
 
-		for slot13, slot14 in ipairs(slot8) do
-			for slot19, slot20 in pairs(slot14.buffDic) do
-				if FightConfig.instance:hasBuffFeature(slot20.buffId, slot7) and string.splitToNumber(slot21.featureStr, "#")[2] then
-					slot9 = slot9 + slot22[2]
+		for iter_41_0, iter_41_1 in ipairs(var_41_5) do
+			local var_41_7 = iter_41_1.buffDic
+
+			for iter_41_2, iter_41_3 in pairs(var_41_7) do
+				local var_41_8 = FightConfig.instance:hasBuffFeature(iter_41_3.buffId, var_41_4)
+
+				if var_41_8 then
+					local var_41_9 = string.splitToNumber(var_41_8.featureStr, "#")
+
+					if var_41_9[2] then
+						var_41_6 = var_41_6 + var_41_9[2]
+					end
 				end
 			end
 		end
 
-		if slot9 == 0 then
-			return slot5
-		elseif slot9 > 0 then
-			for slot13 = 1, slot9 do
-				slot5 = uv0.instance:getSkillNextLvId(slot3, slot5) or slot5
+		if var_41_6 == 0 then
+			return var_41_2
+		elseif var_41_6 > 0 then
+			for iter_41_4 = 1, var_41_6 do
+				var_41_2 = var_0_0.instance:getSkillNextLvId(var_41_0, var_41_2) or var_41_2
 			end
 		else
-			for slot13 = 1, math.abs(slot9) do
-				slot5 = uv0.instance:getSkillPrevLvId(slot3, slot5) or slot5
+			for iter_41_5 = 1, math.abs(var_41_6) do
+				var_41_2 = var_0_0.instance:getSkillPrevLvId(var_41_0, var_41_2) or var_41_2
 			end
 		end
 	end
 
-	return slot5
+	return var_41_2
 end
 
-function slot0.moveOnly(slot0, slot1, slot2)
-	if slot2 < slot1 then
-		slot3 = slot0[slot1]
+function var_0_0.moveOnly(arg_42_0, arg_42_1, arg_42_2)
+	if arg_42_2 < arg_42_1 then
+		local var_42_0 = arg_42_0[arg_42_1]
 
-		for slot7 = slot1, slot2 + 1, -1 do
-			slot0[slot7] = slot0[slot7 - 1]
+		for iter_42_0 = arg_42_1, arg_42_2 + 1, -1 do
+			arg_42_0[iter_42_0] = arg_42_0[iter_42_0 - 1]
 		end
 
-		slot0[slot2] = slot3
-	elseif slot1 < slot2 then
-		slot3 = slot0[slot1]
+		arg_42_0[arg_42_2] = var_42_0
+	elseif arg_42_1 < arg_42_2 then
+		local var_42_1 = arg_42_0[arg_42_1]
 
-		for slot7 = slot1, slot2 - 1 do
-			slot0[slot7] = slot0[slot7 + 1]
+		for iter_42_1 = arg_42_1, arg_42_2 - 1 do
+			arg_42_0[iter_42_1] = arg_42_0[iter_42_1 + 1]
 		end
 
-		slot0[slot2] = slot3
+		arg_42_0[arg_42_2] = var_42_1
 	end
 end
 
-function slot0.getCombineIndexOnce(slot0, slot1, slot2)
-	if not slot0 then
+function var_0_0.getCombineIndexOnce(arg_43_0, arg_43_1, arg_43_2)
+	if not arg_43_0 then
 		return
 	end
 
-	for slot6 = 1, #slot0 - 1 do
-		if slot1 and slot2 then
-			if slot1 == slot0[slot6] and slot2 == slot0[slot6 + 1] then
-				return slot6
-			elseif slot2 == slot0[slot6] and slot1 == slot0[slot6 + 1] then
-				return slot6
+	for iter_43_0 = 1, #arg_43_0 - 1 do
+		if arg_43_1 and arg_43_2 then
+			if arg_43_1 == arg_43_0[iter_43_0] and arg_43_2 == arg_43_0[iter_43_0 + 1] then
+				return iter_43_0
+			elseif arg_43_2 == arg_43_0[iter_43_0] and arg_43_1 == arg_43_0[iter_43_0 + 1] then
+				return iter_43_0
 			end
-		elseif FightCardDataHelper.canCombineCardForPerformance(slot0[slot6], slot0[slot6 + 1]) then
-			return slot6
+		elseif FightCardDataHelper.canCombineCardForPerformance(arg_43_0[iter_43_0], arg_43_0[iter_43_0 + 1]) then
+			return iter_43_0
 		end
 	end
 end
 
-function slot0.revertOp(slot0)
-	if #slot0._cardOps > 0 then
-		return table.remove(slot0._cardOps, #slot0._cardOps)
+function var_0_0.revertOp(arg_44_0)
+	if #arg_44_0._cardOps > 0 then
+		return table.remove(arg_44_0._cardOps, #arg_44_0._cardOps)
 	end
 end
 
-function slot0.moveHandCardOp(slot0, slot1, slot2, slot3, slot4)
-	if slot1 ~= slot2 then
-		slot5 = FightBeginRoundOp.New()
+function var_0_0.moveHandCardOp(arg_45_0, arg_45_1, arg_45_2, arg_45_3, arg_45_4)
+	if arg_45_1 ~= arg_45_2 then
+		local var_45_0 = FightBeginRoundOp.New()
 
-		slot5:moveCard(slot1, slot2, slot3, slot4)
-		table.insert(slot0._cardOps, slot5)
+		var_45_0:moveCard(arg_45_1, arg_45_2, arg_45_3, arg_45_4)
+		table.insert(arg_45_0._cardOps, var_45_0)
 
-		return slot5
+		return var_45_0
 	end
 end
 
-function slot0.moveUniversalCardOp(slot0, slot1, slot2, slot3, slot4, slot5)
-	if slot1 ~= slot2 then
-		slot6 = FightBeginRoundOp.New()
+function var_0_0.moveUniversalCardOp(arg_46_0, arg_46_1, arg_46_2, arg_46_3, arg_46_4, arg_46_5)
+	if arg_46_1 ~= arg_46_2 then
+		local var_46_0 = FightBeginRoundOp.New()
 
-		slot6:moveUniversalCard(slot1, slot2, slot3, slot4, slot5)
-		table.insert(slot0._cardOps, slot6)
+		var_46_0:moveUniversalCard(arg_46_1, arg_46_2, arg_46_3, arg_46_4, arg_46_5)
+		table.insert(arg_46_0._cardOps, var_46_0)
 
-		return slot6
+		return var_46_0
 	end
 end
 
-function slot0.playHandCardOp(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
-	slot7 = FightBeginRoundOp.New()
+function var_0_0.playHandCardOp(arg_47_0, arg_47_1, arg_47_2, arg_47_3, arg_47_4, arg_47_5, arg_47_6)
+	local var_47_0 = FightBeginRoundOp.New()
+	local var_47_1 = arg_47_2 or arg_47_0.curSelectEntityId
 
-	if (slot2 or slot0.curSelectEntityId) == 0 and #FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, slot3) > 0 then
-		slot8 = slot9[1]
+	if var_47_1 == 0 then
+		local var_47_2 = FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, arg_47_3)
+
+		if #var_47_2 > 0 then
+			var_47_1 = var_47_2[1]
+		end
 	end
 
-	slot7:playCard(slot1, slot8, slot3, slot4, slot5, slot6)
-	table.insert(slot0._cardOps, slot7)
+	var_47_0:playCard(arg_47_1, var_47_1, arg_47_3, arg_47_4, arg_47_5, arg_47_6)
+	table.insert(arg_47_0._cardOps, var_47_0)
 
-	return slot7
+	return var_47_0
 end
 
-function slot0.playAssistBossHandCardOp(slot0, slot1, slot2)
-	slot3 = FightBeginRoundOp.New()
+function var_0_0.playAssistBossHandCardOp(arg_48_0, arg_48_1, arg_48_2)
+	local var_48_0 = FightBeginRoundOp.New()
+	local var_48_1 = arg_48_2 or arg_48_0.curSelectEntityId
 
-	if (slot2 or slot0.curSelectEntityId) == 0 and #FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, slot1) > 0 then
-		slot4 = slot5[1]
+	if var_48_1 == 0 then
+		local var_48_2 = FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, arg_48_1)
+
+		if #var_48_2 > 0 then
+			var_48_1 = var_48_2[1]
+		end
 	end
 
-	slot3:playAssistBossHandCard(slot1, slot4)
-	table.insert(slot0._cardOps, slot3)
+	var_48_0:playAssistBossHandCard(arg_48_1, var_48_1)
+	table.insert(arg_48_0._cardOps, var_48_0)
 
-	return slot3
+	return var_48_0
 end
 
-function slot0.playPlayerFinisherSkill(slot0, slot1, slot2)
-	slot3 = FightBeginRoundOp.New()
+function var_0_0.playPlayerFinisherSkill(arg_49_0, arg_49_1, arg_49_2)
+	local var_49_0 = FightBeginRoundOp.New()
 
-	slot3:playPlayerFinisherSkill(slot1, slot2)
-	table.insert(slot0._cardOps, slot3)
+	var_49_0:playPlayerFinisherSkill(arg_49_1, arg_49_2)
+	table.insert(arg_49_0._cardOps, var_49_0)
 
-	return slot3
+	return var_49_0
 end
 
-function slot0.playBloodPoolCardOp(slot0, slot1, slot2)
-	slot3 = FightBeginRoundOp.New()
+function var_0_0.playBloodPoolCardOp(arg_50_0, arg_50_1, arg_50_2)
+	local var_50_0 = FightBeginRoundOp.New()
 
-	slot3:playBloodPoolCard(slot1, slot2 or slot0.curSelectEntityId)
-	table.insert(slot0._cardOps, slot3)
+	arg_50_2 = arg_50_2 or arg_50_0.curSelectEntityId
 
-	return slot3
+	var_50_0:playBloodPoolCard(arg_50_1, arg_50_2)
+	table.insert(arg_50_0._cardOps, var_50_0)
+
+	return var_50_0
 end
 
-function slot0.simulateDissolveCard(slot0, slot1)
-	slot2 = FightBeginRoundOp.New()
+function var_0_0.simulateDissolveCard(arg_51_0, arg_51_1)
+	local var_51_0 = FightBeginRoundOp.New()
 
-	slot2:simulateDissolveCard(slot1)
-	table.insert(slot0._cardOps, slot2)
+	var_51_0:simulateDissolveCard(arg_51_1)
+	table.insert(arg_51_0._cardOps, var_51_0)
 
-	return slot2
+	return var_51_0
 end
 
-slot1 = {
+local var_0_1 = {
 	nil,
 	nil,
 	nil,
@@ -672,60 +726,71 @@ slot1 = {
 	0.4
 }
 
-function slot0.getHandCardContainerScale(slot0, slot1, slot2)
-	slot5 = uv0[#(slot2 or slot0:getHandCards())] or 1
+function var_0_0.getHandCardContainerScale(arg_52_0, arg_52_1, arg_52_2)
+	local var_52_0 = #(arg_52_2 or arg_52_0:getHandCards())
+	local var_52_1 = var_0_1[var_52_0] or 1
 
-	if slot4 > 20 then
-		slot5 = 0.4
+	if var_52_0 > 20 then
+		var_52_1 = 0.4
 	end
 
-	if slot1 and slot4 >= 8 then
-		slot5 = slot5 * 0.9
+	if arg_52_1 and var_52_0 >= 8 then
+		var_52_1 = var_52_1 * 0.9
 	end
 
-	return slot5
+	return var_52_1
 end
 
-function slot0.getSkillLv(slot0, slot1, slot2)
-	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot3:getSkillLv(slot2)
+function var_0_0.getSkillLv(arg_53_0, arg_53_1, arg_53_2)
+	local var_53_0 = FightDataHelper.entityMgr:getById(arg_53_1)
+
+	if var_53_0 then
+		return var_53_0:getSkillLv(arg_53_2)
 	end
 
-	return FightConfig.instance:getSkillLv(slot2)
+	return FightConfig.instance:getSkillLv(arg_53_2)
 end
 
-function slot0.getSkillNextLvId(slot0, slot1, slot2)
-	if lua_skill_next.configDict[slot2] and slot3.nextId ~= 0 then
-		return slot3.nextId
+function var_0_0.getSkillNextLvId(arg_54_0, arg_54_1, arg_54_2)
+	local var_54_0 = lua_skill_next.configDict[arg_54_2]
+
+	if var_54_0 and var_54_0.nextId ~= 0 then
+		return var_54_0.nextId
 	end
 
-	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot4:getSkillNextLvId(slot2)
+	local var_54_1 = FightDataHelper.entityMgr:getById(arg_54_1)
+
+	if var_54_1 then
+		return var_54_1:getSkillNextLvId(arg_54_2)
 	end
 
-	return FightConfig.instance:getSkillNextLvId(slot2)
+	return FightConfig.instance:getSkillNextLvId(arg_54_2)
 end
 
-function slot0.getSkillPrevLvId(slot0, slot1, slot2)
-	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot3:getSkillPrevLvId(slot2)
+function var_0_0.getSkillPrevLvId(arg_55_0, arg_55_1, arg_55_2)
+	local var_55_0 = FightDataHelper.entityMgr:getById(arg_55_1)
+
+	if var_55_0 then
+		return var_55_0:getSkillPrevLvId(arg_55_2)
 	end
 
-	return FightConfig.instance:getSkillPrevLvId(slot2)
+	return FightConfig.instance:getSkillPrevLvId(arg_55_2)
 end
 
-function slot0.isActiveSkill(slot0, slot1, slot2)
-	if FightDataHelper.entityMgr:getById(slot1) then
-		return slot3:isActiveSkill(slot2)
+function var_0_0.isActiveSkill(arg_56_0, arg_56_1, arg_56_2)
+	local var_56_0 = FightDataHelper.entityMgr:getById(arg_56_1)
+
+	if var_56_0 then
+		return var_56_0:isActiveSkill(arg_56_2)
 	end
 
-	return FightConfig.instance:isActiveSkill(slot2)
+	return FightConfig.instance:isActiveSkill(arg_56_2)
 end
 
-function slot0.isUnlimitMoveCard(slot0)
-	return slot0._cardMO and slot0._cardMO:isUnlimitMoveCard()
+function var_0_0.isUnlimitMoveCard(arg_57_0)
+	return arg_57_0._cardMO and arg_57_0._cardMO:isUnlimitMoveCard()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

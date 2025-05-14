@@ -1,100 +1,114 @@
-module("modules.logic.fight.view.FightViewBossHpBloodReward", package.seeall)
+﻿module("modules.logic.fight.view.FightViewBossHpBloodReward", package.seeall)
 
-slot0 = class("FightViewBossHpBloodReward", FightBaseView)
+local var_0_0 = class("FightViewBossHpBloodReward", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.hpImg = gohelper.findChildImage(slot0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp")
-	slot0.signRoot = gohelper.findChild(slot0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp/imgSignHpContainer")
-	slot0.signItem = gohelper.findChild(slot0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp/imgSignHpContainer/imgSignHpItem")
-	slot0.hpEffect = gohelper.findChild(slot0.viewGO, "Root/bossHp/Alpha/bossHp/#hpeffect")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.hpImg = gohelper.findChildImage(arg_1_0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp")
+	arg_1_0.signRoot = gohelper.findChild(arg_1_0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp/imgSignHpContainer")
+	arg_1_0.signItem = gohelper.findChild(arg_1_0.viewGO, "Root/bossHp/Alpha/bossHp/mask/container/imgHp/imgSignHpContainer/imgSignHpItem")
+	arg_1_0.hpEffect = gohelper.findChild(arg_1_0.viewGO, "Root/bossHp/Alpha/bossHp/#hpeffect")
 
-	gohelper.setActive(slot0.hpEffect, false)
+	gohelper.setActive(arg_1_0.hpEffect, false)
 end
 
-function slot0.addEvents(slot0)
-	slot0:com_registFightEvent(FightEvent.UpdateFightParam, slot0.onUpdateFightParam)
-	slot0:com_registFightEvent(FightEvent.PlayTimelineHit, slot0.onPlayTimelineHit)
-	slot0:com_registFightEvent(FightEvent.AfterCorrectData, slot0.onAfterCorrectData)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:com_registFightEvent(FightEvent.UpdateFightParam, arg_2_0.onUpdateFightParam)
+	arg_2_0:com_registFightEvent(FightEvent.PlayTimelineHit, arg_2_0.onPlayTimelineHit)
+	arg_2_0:com_registFightEvent(FightEvent.AfterCorrectData, arg_2_0.onAfterCorrectData)
 
-	slot0.tweenComp = slot0:addComponent(FightTweenComponent)
+	arg_2_0.tweenComp = arg_2_0:addComponent(FightTweenComponent)
 end
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.data = slot1
+function var_0_0.onConstructor(arg_3_0, arg_3_1)
+	arg_3_0.data = arg_3_1
 end
 
-function slot0.onOpen(slot0)
-	slot0.invokedEffect = {}
-	slot0.bgWidth = recthelper.getWidth(slot0.signRoot.transform)
-	slot0.halfWidth = slot0.bgWidth / 2
-	slot0.itemDataList = GameUtil.splitString2(slot0.data.bloodReward, true)
+function var_0_0.onOpen(arg_4_0)
+	arg_4_0.invokedEffect = {}
+	arg_4_0.bgWidth = recthelper.getWidth(arg_4_0.signRoot.transform)
+	arg_4_0.halfWidth = arg_4_0.bgWidth / 2
+	arg_4_0.itemDataList = GameUtil.splitString2(arg_4_0.data.bloodReward, true)
 
-	slot0:refreshItems()
-	slot0:refreshHp()
+	arg_4_0:refreshItems()
+	arg_4_0:refreshHp()
 end
 
-function slot0.onAfterCorrectData(slot0)
-	slot0:refreshItems()
-	slot0.tweenComp:DOFillAmount(slot0.hpImg, (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
+function var_0_0.onAfterCorrectData(arg_5_0)
+	arg_5_0:refreshItems()
+
+	local var_5_0 = (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000
+
+	arg_5_0.tweenComp:DOFillAmount(arg_5_0.hpImg, var_5_0, 0.2)
 end
 
-function slot0.onPlayTimelineHit(slot0, slot1, slot2)
-	if slot2.side ~= FightEnum.EntitySide.EnemySide then
+function var_0_0.onPlayTimelineHit(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_2.side ~= FightEnum.EntitySide.EnemySide then
 		return
 	end
 
-	gohelper.setActive(slot0.hpEffect, false)
-	gohelper.setActive(slot0.hpEffect, true)
-	slot0:com_registSingleTimer(slot0.hideEffect, 0.5)
+	gohelper.setActive(arg_6_0.hpEffect, false)
+	gohelper.setActive(arg_6_0.hpEffect, true)
+	arg_6_0:com_registSingleTimer(arg_6_0.hideEffect, 0.5)
 
-	slot3 = 0
+	local var_6_0 = 0
 
-	for slot7, slot8 in ipairs(slot1.actEffect) do
-		if not slot8:isDone() and not slot0.invokedEffect[slot8.clientId] and slot8.effectType == FightEnum.EffectType.FIGHTPARAMCHANGE then
-			for slot13, slot14 in ipairs(GameUtil.splitString2(slot8.reserveStr, true)) do
-				if slot14[1] == FightParamData.ParamKey.ACT191_CUR_HP_RATE then
-					slot3 = slot3 + slot14[2]
-					slot0.invokedEffect[slot8.clientId] = true
+	for iter_6_0, iter_6_1 in ipairs(arg_6_1.actEffect) do
+		if not iter_6_1:isDone() and not arg_6_0.invokedEffect[iter_6_1.clientId] and iter_6_1.effectType == FightEnum.EffectType.FIGHTPARAMCHANGE then
+			local var_6_1 = GameUtil.splitString2(iter_6_1.reserveStr, true)
+
+			for iter_6_2, iter_6_3 in ipairs(var_6_1) do
+				if iter_6_3[1] == FightParamData.ParamKey.ACT191_CUR_HP_RATE then
+					var_6_0 = var_6_0 + iter_6_3[2]
+					arg_6_0.invokedEffect[iter_6_1.clientId] = true
 				end
 			end
 		end
 	end
 
-	if slot3 ~= 0 then
-		slot0:refreshHp(slot0.hpImg.fillAmount + slot3 / 1000)
+	if var_6_0 ~= 0 then
+		arg_6_0:refreshHp(arg_6_0.hpImg.fillAmount + var_6_0 / 1000)
 	end
 end
 
-function slot0.hideEffect(slot0)
-	gohelper.setActive(slot0.hpEffect, false)
+function var_0_0.hideEffect(arg_7_0)
+	gohelper.setActive(arg_7_0.hpEffect, false)
 end
 
-function slot0.refreshHp(slot0, slot1)
-	slot0.tweenComp:DOFillAmount(slot0.hpImg, slot1 or (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000, 0.2)
+function var_0_0.refreshHp(arg_8_0, arg_8_1)
+	arg_8_1 = arg_8_1 or (FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_CUR_HP_RATE] or 0) / 1000
+
+	arg_8_0.tweenComp:DOFillAmount(arg_8_0.hpImg, arg_8_1, 0.2)
 end
 
-function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4, slot5)
-	if slot1 == FightParamData.ParamKey.ACT191_MIN_HP_RATE then
-		slot0:refreshItems()
-	elseif slot1 == FightParamData.ParamKey.ACT191_CUR_HP_RATE and not slot0.invokedEffect[slot5.clientId] then
-		slot0:refreshHp()
+function var_0_0.onUpdateFightParam(arg_9_0, arg_9_1, arg_9_2, arg_9_3, arg_9_4, arg_9_5)
+	if arg_9_1 == FightParamData.ParamKey.ACT191_MIN_HP_RATE then
+		arg_9_0:refreshItems()
+	elseif arg_9_1 == FightParamData.ParamKey.ACT191_CUR_HP_RATE and not arg_9_0.invokedEffect[arg_9_5.clientId] then
+		arg_9_0:refreshHp()
 	end
 end
 
-function slot0.refreshItems(slot0)
-	gohelper.CreateObjList(slot0, slot0.onItemShow, slot0.itemDataList, slot0.signRoot, slot0.signItem)
+function var_0_0.refreshItems(arg_10_0)
+	gohelper.CreateObjList(arg_10_0, arg_10_0.onItemShow, arg_10_0.itemDataList, arg_10_0.signRoot, arg_10_0.signItem)
 end
 
-function slot0.onItemShow(slot0, slot1, slot2, slot3)
-	if FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_MIN_HP_RATE] <= slot2[1] then
-		gohelper.setActive(gohelper.findChild(slot1, "unfinish"), false)
-		gohelper.setActive(gohelper.findChild(slot1, "finished"), true)
+function var_0_0.onItemShow(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	local var_11_0 = gohelper.findChild(arg_11_1, "unfinish")
+	local var_11_1 = gohelper.findChild(arg_11_1, "finished")
+	local var_11_2 = FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_MIN_HP_RATE]
+	local var_11_3 = arg_11_2[1]
+
+	if var_11_2 <= var_11_3 then
+		gohelper.setActive(var_11_0, false)
+		gohelper.setActive(var_11_1, true)
 	else
-		gohelper.setActive(slot4, true)
-		gohelper.setActive(slot5, false)
+		gohelper.setActive(var_11_0, true)
+		gohelper.setActive(var_11_1, false)
 	end
 
-	recthelper.setAnchorX(slot1.transform, slot7 / 1000 * slot0.bgWidth - slot0.halfWidth)
+	local var_11_4 = var_11_3 / 1000 * arg_11_0.bgWidth - arg_11_0.halfWidth
+
+	recthelper.setAnchorX(arg_11_1.transform, var_11_4)
 end
 
-return slot0
+return var_0_0

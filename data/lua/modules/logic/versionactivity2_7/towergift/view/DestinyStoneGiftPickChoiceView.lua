@@ -1,81 +1,88 @@
-module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceView", package.seeall)
 
-slot0 = class("DestinyStoneGiftPickChoiceView", BaseView)
+local var_0_0 = class("DestinyStoneGiftPickChoiceView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goconfirm = gohelper.findChild(slot0.viewGO, "#btn_confirm")
-	slot0._btnconfirm = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_confirm")
-	slot0._goconfirmgrey = gohelper.findChild(slot0.viewGO, "#btn_confirm_grey")
-	slot0._btnconfirmgrey = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_confirm_grey")
-	slot0._btncancel = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_cancel")
-	slot0._scrollstone = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_stone")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goconfirm = gohelper.findChild(arg_1_0.viewGO, "#btn_confirm")
+	arg_1_0._btnconfirm = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_confirm")
+	arg_1_0._goconfirmgrey = gohelper.findChild(arg_1_0.viewGO, "#btn_confirm_grey")
+	arg_1_0._btnconfirmgrey = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_confirm_grey")
+	arg_1_0._btncancel = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_cancel")
+	arg_1_0._scrollstone = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_stone")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnconfirm:AddClickListener(slot0._btnconfirmOnClick, slot0)
-	slot0._btncancel:AddClickListener(slot0._btncancelOnClick, slot0)
-	slot0._btnconfirmgrey:AddClickListener(slot0._btnconfirmgreyOnClick, slot0)
-	slot0:addEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.onCustomPickListChanged, slot0.refreshUI, slot0)
-	slot0:addEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.hadStoneUp, slot0.onStoneUpFinish, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnconfirm:AddClickListener(arg_2_0._btnconfirmOnClick, arg_2_0)
+	arg_2_0._btncancel:AddClickListener(arg_2_0._btncancelOnClick, arg_2_0)
+	arg_2_0._btnconfirmgrey:AddClickListener(arg_2_0._btnconfirmgreyOnClick, arg_2_0)
+	arg_2_0:addEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.onCustomPickListChanged, arg_2_0.refreshUI, arg_2_0)
+	arg_2_0:addEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.hadStoneUp, arg_2_0.onStoneUpFinish, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnconfirm:RemoveClickListener()
-	slot0._btncancel:RemoveClickListener()
-	slot0._btnconfirmgrey:RemoveClickListener()
-	slot0:removeEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.onCustomPickListChanged, slot0.refreshUI, slot0)
-	slot0:removeEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.hadStoneUp, slot0.onStoneUpFinish, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnconfirm:RemoveClickListener()
+	arg_3_0._btncancel:RemoveClickListener()
+	arg_3_0._btnconfirmgrey:RemoveClickListener()
+	arg_3_0:removeEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.onCustomPickListChanged, arg_3_0.refreshUI, arg_3_0)
+	arg_3_0:removeEventCb(DestinyStoneGiftPickChoiceController.instance, DestinyStoneGiftPickChoiceEvent.hadStoneUp, arg_3_0.onStoneUpFinish, arg_3_0)
 end
 
-function slot0._btnconfirmOnClick(slot0)
-	if DestinyStoneGiftPickChoiceListModel.instance:getCurrentSelectMo() then
-		slot1.heroMo.destinyStoneMo:setUpStoneId(slot1.stoneId)
-		ViewMgr.instance:openView(ViewName.CharacterDestinyStoneUpView, {
-			heroMo = slot1.heroMo,
-			stoneMo = slot1.stoneMo
-		})
+function var_0_0._btnconfirmOnClick(arg_4_0)
+	local var_4_0 = DestinyStoneGiftPickChoiceListModel.instance:getCurrentSelectMo()
+
+	if var_4_0 then
+		var_4_0.heroMo.destinyStoneMo:setUpStoneId(var_4_0.stoneId)
+
+		local var_4_1 = {
+			heroMo = var_4_0.heroMo,
+			stoneMo = var_4_0.stoneMo
+		}
+
+		ViewMgr.instance:openView(ViewName.CharacterDestinyStoneUpView, var_4_1)
 	end
 end
 
-function slot0._btncancelOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btncancelOnClick(arg_5_0)
+	arg_5_0:closeThis()
 end
 
-function slot0._btnconfirmgreyOnClick(slot0)
+function var_0_0._btnconfirmgreyOnClick(arg_6_0)
 	GameFacade.showToast(ToastEnum.NoChoiceHeroStoneUp)
 end
 
-function slot0.onStoneUpFinish(slot0)
-	slot0:closeThis()
+function var_0_0.onStoneUpFinish(arg_7_0)
+	arg_7_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_8_0)
 	DestinyStoneGiftPickChoiceListModel.instance:initList()
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_9_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:refreshUI()
+function var_0_0.onOpen(arg_10_0)
+	arg_10_0:refreshUI()
 end
 
-function slot0.refreshUI(slot0)
-	slot1 = DestinyStoneGiftPickChoiceListModel.instance:getCurrentSelectMo() ~= nil
+function var_0_0.refreshUI(arg_11_0)
+	local var_11_0 = DestinyStoneGiftPickChoiceListModel.instance:getCurrentSelectMo() ~= nil
 
-	gohelper.setActive(slot0._goconfirm, slot1)
-	gohelper.setActive(slot0._goconfirmgrey, not slot1)
+	gohelper.setActive(arg_11_0._goconfirm, var_11_0)
+	gohelper.setActive(arg_11_0._goconfirmgrey, not var_11_0)
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_12_0)
 	DestinyStoneGiftPickChoiceListModel.instance:clearSelect()
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_13_0)
+	return
 end
 
-return slot0
+return var_0_0

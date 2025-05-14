@@ -1,93 +1,113 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventPlayEffectByOperation", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventPlayEffectByOperation", package.seeall)
 
-slot0 = class("FightTLEventPlayEffectByOperation", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventPlayEffectByOperation", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	slot0.curCount = 0
-	slot0.operationWorkList = {}
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	arg_1_0.curCount = 0
+	arg_1_0.operationWorkList = {}
 
-	FightController.instance:registerCallback(FightEvent.OperationForPlayEffect, slot0.onOperationForPlayEffect, slot0)
+	FightController.instance:registerCallback(FightEvent.OperationForPlayEffect, arg_1_0.onOperationForPlayEffect, arg_1_0)
 
-	slot0.fightStepData = slot1
-	slot0.paramsArr = slot3
-	slot0.effectType = tonumber(slot0.paramsArr[1])
+	arg_1_0.fightStepData = arg_1_1
+	arg_1_0.paramsArr = arg_1_3
+	arg_1_0.effectType = tonumber(arg_1_0.paramsArr[1])
 
-	if ({
-		[-666.0] = "GMFightNuoDiKaXianJieAnNiu"
-	})[slot0.effectType] then
-		ViewMgr.instance:openView(slot5, {
-			effectType = slot0.effectType,
-			timeLimit = tonumber(slot0.paramsArr[4])
+	local var_1_0 = ({
+		[-666] = "GMFightNuoDiKaXianJieAnNiu"
+	})[arg_1_0.effectType]
+
+	if var_1_0 then
+		ViewMgr.instance:openView(var_1_0, {
+			effectType = arg_1_0.effectType,
+			timeLimit = tonumber(arg_1_0.paramsArr[4])
 		})
 	end
 
-	slot0.sequenceFlow = FightWorkFlowSequence.New()
+	arg_1_0.sequenceFlow = FightWorkFlowSequence.New()
 
-	slot0.timelineItem:addWork2FinishWork(slot0.sequenceFlow)
-	slot0:buildOperationWorkList()
-	TaskDispatcher.runDelay(slot0.playAllOperationWork, slot0, tonumber(slot0.paramsArr[3]))
-	slot0.sequenceFlow:registWork(FightWorkFunction, slot0.clearEvent, slot0)
+	arg_1_0.timelineItem:addWork2FinishWork(arg_1_0.sequenceFlow)
+	arg_1_0:buildOperationWorkList()
+	TaskDispatcher.runDelay(arg_1_0.playAllOperationWork, arg_1_0, tonumber(arg_1_0.paramsArr[3]))
+	arg_1_0.sequenceFlow:registWork(FightWorkFunction, arg_1_0.clearEvent, arg_1_0)
 
-	if slot5 then
-		slot0.sequenceFlow:registWork(FightWorkFunction, slot0.closeView, slot0, slot5)
+	if var_1_0 then
+		arg_1_0.sequenceFlow:registWork(FightWorkFunction, arg_1_0.closeView, arg_1_0, var_1_0)
 	end
 
-	if not string.nilorempty(slot0.paramsArr[6]) then
-		slot0.sequenceFlow:registWork(FightWorkDelayTimer, tonumber(slot0.paramsArr[5]))
-		slot0.sequenceFlow:registWork(FightWorkPlayFakeStepTimeline, slot6, slot1)
+	local var_1_1 = arg_1_0.paramsArr[6]
+
+	if not string.nilorempty(var_1_1) then
+		local var_1_2 = tonumber(arg_1_0.paramsArr[5])
+
+		arg_1_0.sequenceFlow:registWork(FightWorkDelayTimer, var_1_2)
+		arg_1_0.sequenceFlow:registWork(FightWorkPlayFakeStepTimeline, var_1_1, arg_1_1)
 	end
 end
 
-function slot0.buildOperationWorkList(slot0)
-	slot0.timelineDic = {}
-	slot5 = "#"
+function var_0_0.buildOperationWorkList(arg_2_0)
+	arg_2_0.timelineDic = {}
 
-	for slot5, slot6 in ipairs(GameUtil.splitString2(slot0.paramsArr[2], false, ",", slot5)) do
-		slot0.timelineDic[tonumber(slot6[1])] = {}
+	local var_2_0 = GameUtil.splitString2(arg_2_0.paramsArr[2], false, ",", "#")
 
-		for slot12, slot13 in ipairs(string.split(slot6[2], "|")) do
-			table.insert(slot0.timelineDic[slot7], slot13)
+	for iter_2_0, iter_2_1 in ipairs(var_2_0) do
+		local var_2_1 = tonumber(iter_2_1[1])
+
+		arg_2_0.timelineDic[var_2_1] = {}
+
+		local var_2_2 = string.split(iter_2_1[2], "|")
+
+		for iter_2_2, iter_2_3 in ipairs(var_2_2) do
+			table.insert(arg_2_0.timelineDic[var_2_1], iter_2_3)
 		end
 	end
 
-	for slot7, slot8 in ipairs(slot0.fightStepData.actEffect) do
-		if slot8.effectType == slot0.effectType then
-			table.insert(slot0.operationWorkList, slot0.sequenceFlow:registWork(FightWorkFlowParallel):registWork(FightWorkPlayEffectTimelineByOperation, slot8, slot0.paramsArr, slot0.fightStepData, slot0.timelineDic))
+	local var_2_3 = arg_2_0.fightStepData.actEffect
+	local var_2_4 = arg_2_0.sequenceFlow:registWork(FightWorkFlowParallel)
+
+	for iter_2_4, iter_2_5 in ipairs(var_2_3) do
+		if iter_2_5.effectType == arg_2_0.effectType then
+			local var_2_5 = var_2_4:registWork(FightWorkPlayEffectTimelineByOperation, iter_2_5, arg_2_0.paramsArr, arg_2_0.fightStepData, arg_2_0.timelineDic)
+
+			table.insert(arg_2_0.operationWorkList, var_2_5)
 		end
 	end
 end
 
-function slot0.clearEvent(slot0)
-	TaskDispatcher.cancelTask(slot0.playAllOperationWork, slot0)
-	FightController.instance:unregisterCallback(FightEvent.OperationForPlayEffect, slot0.onOperationForPlayEffect, slot0)
+function var_0_0.clearEvent(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0.playAllOperationWork, arg_3_0)
+	FightController.instance:unregisterCallback(FightEvent.OperationForPlayEffect, arg_3_0.onOperationForPlayEffect, arg_3_0)
 end
 
-function slot0.onOperationForPlayEffect(slot0, slot1)
-	if slot1 ~= slot0.effectType then
+function var_0_0.onOperationForPlayEffect(arg_4_0, arg_4_1)
+	if arg_4_1 ~= arg_4_0.effectType then
 		return
 	end
 
-	slot0.curCount = slot0.curCount + 1
+	arg_4_0.curCount = arg_4_0.curCount + 1
 
-	if slot0.operationWorkList[slot0.curCount] then
-		slot2:playTimeline()
+	local var_4_0 = arg_4_0.operationWorkList[arg_4_0.curCount]
+
+	if var_4_0 then
+		var_4_0:playTimeline()
 	end
 end
 
-function slot0.playAllOperationWork(slot0)
-	for slot4, slot5 in ipairs(slot0.operationWorkList) do
-		slot5:playTimeline()
+function var_0_0.playAllOperationWork(arg_5_0)
+	for iter_5_0, iter_5_1 in ipairs(arg_5_0.operationWorkList) do
+		iter_5_1:playTimeline()
 	end
 end
 
-function slot0.closeView(slot0, slot1)
-	ViewMgr.instance:closeView(slot1, true)
+function var_0_0.closeView(arg_6_0, arg_6_1)
+	ViewMgr.instance:closeView(arg_6_1, true)
 end
 
-function slot0.onTrackEnd(slot0)
+function var_0_0.onTrackEnd(arg_7_0)
+	return
 end
 
-function slot0.onDestructor(slot0)
+function var_0_0.onDestructor(arg_8_0)
+	return
 end
 
-return slot0
+return var_0_0

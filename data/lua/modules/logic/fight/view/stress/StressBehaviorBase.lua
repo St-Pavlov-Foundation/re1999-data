@@ -1,51 +1,59 @@
-module("modules.logic.fight.view.stress.StressBehaviorBase", package.seeall)
+﻿module("modules.logic.fight.view.stress.StressBehaviorBase", package.seeall)
 
-slot0 = class("StressBehaviorBase", UserDataDispose)
+local var_0_0 = class("StressBehaviorBase", UserDataDispose)
 
-function slot0.init(slot0, slot1, slot2)
-	slot0:__onInit()
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0:__onInit()
 
-	slot0.instanceGo = slot1
-	slot0.entity = slot2
-	slot0.entityId = slot0.entity.id
+	arg_1_0.instanceGo = arg_1_1
+	arg_1_0.entity = arg_1_2
+	arg_1_0.entityId = arg_1_0.entity.id
 
-	slot0:initUI()
-	slot0:refreshUI()
-	slot0:addCustomEvent()
+	arg_1_0:initUI()
+	arg_1_0:refreshUI()
+	arg_1_0:addCustomEvent()
 end
 
-function slot0.initUI(slot0)
+function var_0_0.initUI(arg_2_0)
+	return
 end
 
-function slot0.refreshUI(slot0)
+function var_0_0.refreshUI(arg_3_0)
+	return
 end
 
-function slot0.addCustomEvent(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.PowerChange, slot0.onPowerChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.TriggerStressBehaviour, slot0.triggerStressBehaviour, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnStageChange, slot0.onStageChange, slot0)
+function var_0_0.addCustomEvent(arg_4_0)
+	arg_4_0:addEventCb(FightController.instance, FightEvent.PowerChange, arg_4_0.onPowerChange, arg_4_0)
+	arg_4_0:addEventCb(FightController.instance, FightEvent.TriggerStressBehaviour, arg_4_0.triggerStressBehaviour, arg_4_0)
+	arg_4_0:addEventCb(FightController.instance, FightEvent.OnStageChange, arg_4_0.onStageChange, arg_4_0)
 end
 
-function slot0.onStageChange(slot0)
+function var_0_0.onStageChange(arg_5_0)
 	ViewMgr.instance:closeView(ViewName.StressTipView)
 end
 
-function slot0.onPowerChange(slot0, slot1, slot2, slot3, slot4)
+function var_0_0.onPowerChange(arg_6_0, arg_6_1, arg_6_2, arg_6_3, arg_6_4)
+	return
 end
 
-function slot0.triggerStressBehaviour(slot0, slot1, slot2)
+function var_0_0.triggerStressBehaviour(arg_7_0, arg_7_1, arg_7_2)
+	return
 end
 
-function slot0.getCurStress(slot0)
-	return slot0.entity:getMO():getPowerInfo(FightEnum.PowerType.Stress) and slot2.num or 0
+function var_0_0.getCurStress(arg_8_0)
+	local var_8_0 = arg_8_0.entity:getMO():getPowerInfo(FightEnum.PowerType.Stress)
+
+	return var_8_0 and var_8_0.num or 0
 end
 
-function FightNameUIStressMgr.log(slot0, slot1)
-	logError(string.format("[%s] : %s", slot0.entity:getMO():getEntityName(), slot1))
+function FightNameUIStressMgr.log(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0.entity:getMO()
+
+	logError(string.format("[%s] : %s", var_9_0:getEntityName(), arg_9_1))
 end
 
-function slot0.beforeDestroy(slot0)
-	slot0:__onDispose()
+function var_0_0.beforeDestroy(arg_10_0)
+	arg_10_0:__onDispose()
 end
 
-return slot0
+return var_0_0

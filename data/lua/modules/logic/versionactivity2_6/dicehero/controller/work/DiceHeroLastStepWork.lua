@@ -1,23 +1,25 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.work.DiceHeroLastStepWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.work.DiceHeroLastStepWork", package.seeall)
 
-slot0 = class("DiceHeroLastStepWork", BaseWork)
+local var_0_0 = class("DiceHeroLastStepWork", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	slot0.fight = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.fight = arg_1_1
 end
 
-function slot0.onStart(slot0, slot1)
-	DiceHeroFightModel.instance:getGameData():init(slot0.fight)
+function var_0_0.onStart(arg_2_0, arg_2_1)
+	DiceHeroFightModel.instance:getGameData():init(arg_2_0.fight)
 
 	DiceHeroFightModel.instance.tempRoundEnd = true
 
-	slot0:onDone(true)
+	local var_2_0 = DiceHeroFightModel.instance.finishResult == DiceHeroEnum.GameStatu.None
 
-	if DiceHeroFightModel.instance.finishResult == DiceHeroEnum.GameStatu.None then
+	arg_2_0:onDone(true)
+
+	if var_2_0 then
 		DiceHeroController.instance:dispatchEvent(DiceHeroEvent.RoundEnd)
 	end
 
 	DiceHeroFightModel.instance.tempRoundEnd = false
 end
 
-return slot0
+return var_0_0

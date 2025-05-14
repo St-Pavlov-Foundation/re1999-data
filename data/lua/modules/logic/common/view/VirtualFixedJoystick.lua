@@ -1,104 +1,112 @@
-module("modules.logic.common.view.VirtualFixedJoystick", package.seeall)
+﻿module("modules.logic.common.view.VirtualFixedJoystick", package.seeall)
 
-slot0 = class("VirtualFixedJoystick", LuaCompBase)
-slot1 = 1
-slot2 = 0.5
-slot3 = 0
+local var_0_0 = class("VirtualFixedJoystick", LuaCompBase)
+local var_0_1 = 1
+local var_0_2 = 0.5
+local var_0_3 = 0
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._gobg = gohelper.findChild(slot0.go, "#go_background")
-	slot0._transbg = slot0._gobg.transform
-	slot0._transbg.pivot.x = uv0
-	slot0._transbg.pivot.y = uv0
-	slot0._radius = slot0._transbg.sizeDelta.x / 2
-	slot0._gohandle = gohelper.findChild(slot0.go, "#go_background/#go_handle")
-	slot0._transhandle = slot0._gohandle.transform
-	slot0._transhandle.anchorMin.x = uv0
-	slot0._transhandle.anchorMin.y = uv0
-	slot0._transhandle.anchorMax.x = uv0
-	slot0._transhandle.anchorMax.y = uv0
-	slot0._transhandle.pivot.x = uv0
-	slot0._transhandle.pivot.y = uv0
-	slot0._input = Vector2.zero
-	slot0._click = SLFramework.UGUI.UIClickListener.Get(slot0.go)
-	slot0._drag = SLFramework.UGUI.UIDragListener.Get(slot0.go)
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0._gobg = gohelper.findChild(arg_1_0.go, "#go_background")
+	arg_1_0._transbg = arg_1_0._gobg.transform
+	arg_1_0._transbg.pivot.x = var_0_2
+	arg_1_0._transbg.pivot.y = var_0_2
+	arg_1_0._radius = arg_1_0._transbg.sizeDelta.x / 2
+	arg_1_0._gohandle = gohelper.findChild(arg_1_0.go, "#go_background/#go_handle")
+	arg_1_0._transhandle = arg_1_0._gohandle.transform
+	arg_1_0._transhandle.anchorMin.x = var_0_2
+	arg_1_0._transhandle.anchorMin.y = var_0_2
+	arg_1_0._transhandle.anchorMax.x = var_0_2
+	arg_1_0._transhandle.anchorMax.y = var_0_2
+	arg_1_0._transhandle.pivot.x = var_0_2
+	arg_1_0._transhandle.pivot.y = var_0_2
+	arg_1_0._input = Vector2.zero
+	arg_1_0._click = SLFramework.UGUI.UIClickListener.Get(arg_1_0.go)
+	arg_1_0._drag = SLFramework.UGUI.UIDragListener.Get(arg_1_0.go)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._click:AddClickDownListener(slot0._onClickDown, slot0)
-	slot0._drag:AddDragListener(slot0._onDrag, slot0)
-	slot0._click:AddClickUpListener(slot0._onClickUp, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0._click:AddClickDownListener(arg_2_0._onClickDown, arg_2_0)
+	arg_2_0._drag:AddDragListener(arg_2_0._onDrag, arg_2_0)
+	arg_2_0._click:AddClickUpListener(arg_2_0._onClickUp, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._click:RemoveClickDownListener()
-	slot0._drag:RemoveDragListener()
-	slot0._click:RemoveClickUpListener()
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._click:RemoveClickDownListener()
+	arg_3_0._drag:RemoveDragListener()
+	arg_3_0._click:RemoveClickUpListener()
 end
 
-function slot0._onClickDown(slot0, slot1, slot2, slot3)
-	if slot0._dragging then
+function var_0_0._onClickDown(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
+	if arg_4_0._dragging then
 		return
 	end
 
-	slot0._dragging = true
+	arg_4_0._dragging = true
 
-	slot0:_handleInput(slot2)
+	arg_4_0:_handleInput(arg_4_2)
 end
 
-function slot0._onDrag(slot0, slot1, slot2)
-	if not slot0._dragging then
+function var_0_0._onDrag(arg_5_0, arg_5_1, arg_5_2)
+	if not arg_5_0._dragging then
 		return
 	end
 
-	slot0:_handleInput(slot2.position)
+	arg_5_0:_handleInput(arg_5_2.position)
 end
 
-function slot0._handleInput(slot0, slot1)
-	slot2, slot3 = recthelper.screenPosToAnchorPos2(slot1, slot0._transbg)
+function var_0_0._handleInput(arg_6_0, arg_6_1)
+	local var_6_0, var_6_1 = recthelper.screenPosToAnchorPos2(arg_6_1, arg_6_0._transbg)
+	local var_6_2 = (var_6_0 - var_0_3) / arg_6_0._radius
+	local var_6_3 = (var_6_1 - var_0_3) / arg_6_0._radius
 
-	slot0:setInPutValue((slot2 - uv0) / slot0._radius, (slot3 - uv0) / slot0._radius)
+	arg_6_0:setInPutValue(var_6_2, var_6_3)
 end
 
-function slot0._onClickUp(slot0, slot1, slot2, slot3)
-	if not slot0._dragging then
+function var_0_0._onClickUp(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	if not arg_7_0._dragging then
 		return
 	end
 
-	slot0:reset()
+	arg_7_0:reset()
 end
 
-function slot0.setInPutValue(slot0, slot1, slot2)
-	slot0._input.x = slot1 or uv0
-	slot0._input.y = slot2 or uv0
+function var_0_0.setInPutValue(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_0._input.x = arg_8_1 or var_0_3
+	arg_8_0._input.y = arg_8_2 or var_0_3
 
-	if uv1 < slot0._input.magnitude then
-		slot0._input = slot0._input.normalized
+	if arg_8_0._input.magnitude > var_0_1 then
+		arg_8_0._input = arg_8_0._input.normalized
 	end
 
-	slot0:refreshHandlePos()
+	arg_8_0:refreshHandlePos()
 end
 
-function slot0.refreshHandlePos(slot0)
-	transformhelper.setLocalPosXY(slot0._transhandle, GameUtil.clamp(slot0._input.x * slot0._radius, -slot0._radius, slot0._radius), GameUtil.clamp(slot0._input.y * slot0._radius, -slot0._radius, slot0._radius))
+function var_0_0.refreshHandlePos(arg_9_0)
+	local var_9_0 = arg_9_0._input.x * arg_9_0._radius
+	local var_9_1 = arg_9_0._input.y * arg_9_0._radius
+	local var_9_2 = GameUtil.clamp(var_9_0, -arg_9_0._radius, arg_9_0._radius)
+	local var_9_3 = GameUtil.clamp(var_9_1, -arg_9_0._radius, arg_9_0._radius)
+
+	transformhelper.setLocalPosXY(arg_9_0._transhandle, var_9_2, var_9_3)
 end
 
-function slot0.getIsDragging(slot0)
-	return slot0._dragging
+function var_0_0.getIsDragging(arg_10_0)
+	return arg_10_0._dragging
 end
 
-function slot0.getInputValue(slot0)
-	return slot0._input
+function var_0_0.getInputValue(arg_11_0)
+	return arg_11_0._input
 end
 
-function slot0.reset(slot0)
-	slot0:setInPutValue()
+function var_0_0.reset(arg_12_0)
+	arg_12_0:setInPutValue()
 
-	slot0._dragging = false
+	arg_12_0._dragging = false
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_13_0)
+	return
 end
 
-return slot0
+return var_0_0

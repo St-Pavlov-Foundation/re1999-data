@@ -1,139 +1,150 @@
-module("modules.logic.weekwalk_2.model.WeekWalk_2Model", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.WeekWalk_2Model", package.seeall)
 
-slot0 = class("WeekWalk_2Model", BaseModel)
+local var_0_0 = class("WeekWalk_2Model", BaseModel)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	slot0._weekWalkInfo = nil
-	slot0._weekWalkSettleInfo = nil
-	slot0._isWin = nil
+function var_0_0.reInit(arg_2_0)
+	arg_2_0._weekWalkInfo = nil
+	arg_2_0._weekWalkSettleInfo = nil
+	arg_2_0._isWin = nil
 end
 
-function slot0.initFightSettleInfo(slot0, slot1, slot2)
-	slot0._isWin = slot1 == 1
-	slot0._resultCupInfos = GameUtil.rpcInfosToMap(slot2, WeekwalkVer2CupInfoMO, "index")
+function var_0_0.initFightSettleInfo(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0._isWin = arg_3_1 == 1
+	arg_3_0._resultCupInfos = GameUtil.rpcInfosToMap(arg_3_2, WeekwalkVer2CupInfoMO, "index")
 end
 
-function slot0.isWin(slot0)
-	return slot0._isWin
+function var_0_0.isWin(arg_4_0)
+	return arg_4_0._isWin
 end
 
-function slot0.getResultCupInfos(slot0)
-	return slot0._resultCupInfos
+function var_0_0.getResultCupInfos(arg_5_0)
+	return arg_5_0._resultCupInfos
 end
 
-function slot0.initSettleInfo(slot0, slot1)
-	slot2 = WeekwalkVer2SettleInfoMO.New()
+function var_0_0.initSettleInfo(arg_6_0, arg_6_1)
+	local var_6_0 = WeekwalkVer2SettleInfoMO.New()
 
-	slot2:init(slot1)
+	var_6_0:init(arg_6_1)
 
-	slot0._weekWalkSettleInfo = slot2
+	arg_6_0._weekWalkSettleInfo = var_6_0
 end
 
-function slot0.getSettleInfo(slot0)
-	return slot0._weekWalkSettleInfo
+function var_0_0.getSettleInfo(arg_7_0)
+	return arg_7_0._weekWalkSettleInfo
 end
 
-function slot0.clearSettleInfo(slot0)
-	slot0._weekWalkSettleInfo = nil
+function var_0_0.clearSettleInfo(arg_8_0)
+	arg_8_0._weekWalkSettleInfo = nil
 end
 
-function slot0.updateInfo(slot0, slot1)
-	slot0:initInfo(slot1)
+function var_0_0.updateInfo(arg_9_0, arg_9_1)
+	arg_9_0:initInfo(arg_9_1)
 end
 
-function slot0.initInfo(slot0, slot1)
-	callWithCatch(function ()
-		uv0:init(uv1)
+function var_0_0.initInfo(arg_10_0, arg_10_1)
+	local var_10_0 = WeekwalkVer2InfoMO.New()
+
+	callWithCatch(function()
+		var_10_0:init(arg_10_1)
 	end)
 
-	slot0._weekWalkInfo = WeekwalkVer2InfoMO.New()
+	arg_10_0._weekWalkInfo = var_10_0
 end
 
-function slot0.getInfo(slot0)
-	return slot0._weekWalkInfo
+function var_0_0.getInfo(arg_12_0)
+	return arg_12_0._weekWalkInfo
 end
 
-function slot0.getTimeId(slot0)
-	return slot0._weekWalkInfo and slot0._weekWalkInfo.timeId
+function var_0_0.getTimeId(arg_13_0)
+	return arg_13_0._weekWalkInfo and arg_13_0._weekWalkInfo.timeId
 end
 
-function slot0.getLayerInfo(slot0, slot1)
-	return slot0._weekWalkInfo and slot0._weekWalkInfo:getLayerInfo(slot1)
+function var_0_0.getLayerInfo(arg_14_0, arg_14_1)
+	return arg_14_0._weekWalkInfo and arg_14_0._weekWalkInfo:getLayerInfo(arg_14_1)
 end
 
-function slot0.getLayerInfoByLayerIndex(slot0, slot1)
-	return slot0._weekWalkInfo and slot0._weekWalkInfo:getLayerInfoByLayerIndex(slot1)
+function var_0_0.getLayerInfoByLayerIndex(arg_15_0, arg_15_1)
+	return arg_15_0._weekWalkInfo and arg_15_0._weekWalkInfo:getLayerInfoByLayerIndex(arg_15_1)
 end
 
-function slot0.setBattleElementId(slot0, slot1)
-	slot0._battleElementId = slot1
+function var_0_0.setBattleElementId(arg_16_0, arg_16_1)
+	arg_16_0._battleElementId = arg_16_1
 end
 
-function slot0.getBattleElementId(slot0)
-	return slot0._battleElementId
+function var_0_0.getBattleElementId(arg_17_0)
+	return arg_17_0._battleElementId
 end
 
-function slot0.setCurMapId(slot0, slot1)
-	slot0._curMapId = slot1
+function var_0_0.setCurMapId(arg_18_0, arg_18_1)
+	arg_18_0._curMapId = arg_18_1
 end
 
-function slot0.getCurMapId(slot0)
-	return slot0._curMapId
+function var_0_0.getCurMapId(arg_19_0)
+	return arg_19_0._curMapId
 end
 
-function slot0.getCurMapInfo(slot0)
-	return slot0:getLayerInfo(slot0._curMapId)
+function var_0_0.getCurMapInfo(arg_20_0)
+	return arg_20_0:getLayerInfo(arg_20_0._curMapId)
 end
 
-function slot0.getBattleInfo(slot0, slot1, slot2)
-	return slot0:getLayerInfo(slot1) and slot3:getBattleInfoByBattleId(slot2)
+function var_0_0.getBattleInfo(arg_21_0, arg_21_1, arg_21_2)
+	local var_21_0 = arg_21_0:getLayerInfo(arg_21_1)
+
+	return var_21_0 and var_21_0:getBattleInfoByBattleId(arg_21_2)
 end
 
-function slot0.getBattleInfoByLayerAndIndex(slot0, slot1, slot2)
-	slot3 = slot0._weekWalkInfo and slot0._weekWalkInfo:getLayerInfoByLayerIndex(slot1)
+function var_0_0.getBattleInfoByLayerAndIndex(arg_22_0, arg_22_1, arg_22_2)
+	local var_22_0 = arg_22_0._weekWalkInfo and arg_22_0._weekWalkInfo:getLayerInfoByLayerIndex(arg_22_1)
 
-	return slot3 and slot3:getBattleInfoByIndex(slot2)
+	return var_22_0 and var_22_0:getBattleInfoByIndex(arg_22_2)
 end
 
-function slot0.getBattleInfoByIdAndIndex(slot0, slot1, slot2)
-	slot3 = slot0._weekWalkInfo and slot0._weekWalkInfo:getLayerInfo(slot1)
+function var_0_0.getBattleInfoByIdAndIndex(arg_23_0, arg_23_1, arg_23_2)
+	local var_23_0 = arg_23_0._weekWalkInfo and arg_23_0._weekWalkInfo:getLayerInfo(arg_23_1)
 
-	return slot3 and slot3:getBattleInfoByIndex(slot2)
+	return var_23_0 and var_23_0:getBattleInfoByIndex(arg_23_2)
 end
 
-function slot0.getCurMapHeroCd(slot0, slot1)
-	return slot0:getHeroCd(slot0._curMapId, slot1)
+function var_0_0.getCurMapHeroCd(arg_24_0, arg_24_1)
+	return arg_24_0:getHeroCd(arg_24_0._curMapId, arg_24_1)
 end
 
-function slot0.getHeroCd(slot0, slot1, slot2)
-	return slot0:getLayerInfo(slot1) and slot3:heroInCD(slot2) and 1 or 0
+function var_0_0.getHeroCd(arg_25_0, arg_25_1, arg_25_2)
+	local var_25_0 = arg_25_0:getLayerInfo(arg_25_1)
+
+	return var_25_0 and var_25_0:heroInCD(arg_25_2) and 1 or 0
 end
 
-function slot0.getFightParam(slot0)
-	if WeekWalk_2BuffListModel.getCurHeroGroupSkillId() then
-		-- Nothing
+function var_0_0.getFightParam(arg_26_0)
+	local var_26_0 = arg_26_0:getBattleElementId()
+	local var_26_1 = arg_26_0:getCurMapId()
+	local var_26_2 = {
+		elementId = var_26_0,
+		layerId = var_26_1
+	}
+	local var_26_3 = WeekWalk_2BuffListModel.getCurHeroGroupSkillId()
+
+	if var_26_3 then
+		var_26_2.chooseSkillIds = {
+			var_26_3
+		}
 	end
 
-	return cjson.encode({
-		elementId = slot0:getBattleElementId(),
-		layerId = slot0:getCurMapId(),
-		chooseSkillIds = {
-			slot4
-		}
-	})
+	return cjson.encode(var_26_2)
 end
 
-function slot0.setFinishMapId(slot0, slot1)
-	slot0._curFinishMapId = slot1
+function var_0_0.setFinishMapId(arg_27_0, arg_27_1)
+	arg_27_0._curFinishMapId = arg_27_1
 end
 
-function slot0.getFinishMapId(slot0)
-	return slot0._curFinishMapId
+function var_0_0.getFinishMapId(arg_28_0)
+	return arg_28_0._curFinishMapId
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

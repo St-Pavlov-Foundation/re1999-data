@@ -1,10 +1,10 @@
-module("modules.logic.fight.system.work.FightWorkAddRecordCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkAddRecordCard", package.seeall)
 
-slot0 = class("FightWorkAddRecordCard", FightEffectBase)
+local var_0_0 = class("FightWorkAddRecordCard", FightEffectBase)
 
-function slot0.onStart(slot0)
-	FightController.instance:dispatchEvent(FightEvent.ALF_AddRecordCardData, slot0.actEffectData.buff)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	FightController.instance:dispatchEvent(FightEvent.ALF_AddRecordCardData, arg_1_0.actEffectData.buff)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

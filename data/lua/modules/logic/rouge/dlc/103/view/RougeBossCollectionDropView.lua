@@ -1,321 +1,331 @@
-module("modules.logic.rouge.dlc.103.view.RougeBossCollectionDropView", package.seeall)
+﻿module("modules.logic.rouge.dlc.103.view.RougeBossCollectionDropView", package.seeall)
 
-slot0 = class("RougeBossCollectionDropView", BaseViewExtended)
+local var_0_0 = class("RougeBossCollectionDropView", BaseViewExtended)
 
-function slot0.onInitView(slot0)
-	slot0._simagemaskbg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_maskbg")
-	slot0._gotitletip = gohelper.findChild(slot0.viewGO, "Title/txt_Tips")
-	slot0._scrollView = gohelper.findChildScrollRect(slot0.viewGO, "scroll_view")
-	slot0._gocollectionitem = gohelper.findChild(slot0.viewGO, "scroll_view/Viewport/Content/#go_collectionitem")
-	slot0._btnconfirm = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_confirm")
-	slot0._gorefresh = gohelper.findChild(slot0.viewGO, "#go_refresh")
-	slot0._txtrefresh = gohelper.findChildText(slot0.viewGO, "#go_refresh/#txt_refresh")
-	slot0._gorefreshactivebg = gohelper.findChild(slot0.viewGO, "#go_refresh/#go_activebg")
-	slot0._gorefreshdisablebg = gohelper.findChild(slot0.viewGO, "#go_refresh/#go_disablebg")
-	slot0._gorougefunctionitem2 = gohelper.findChild(slot0.viewGO, "#go_rougefunctionitem2")
-	slot0._gotips = gohelper.findChild(slot0.viewGO, "#go_tips")
-	slot0._txtselectnum = gohelper.findChildText(slot0.viewGO, "#go_topright/#txt_num")
-	slot0._gotopright = gohelper.findChild(slot0.viewGO, "#go_topright")
-	slot0._btninherit = gohelper.findChildButtonWithAudio(slot0.viewGO, "layout/#go_rougemapbaseinherit/#btn_inherit")
-	slot0._godistortrule = gohelper.findChild(slot0.viewGO, "Left/#go_distortrule")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simagemaskbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_maskbg")
+	arg_1_0._gotitletip = gohelper.findChild(arg_1_0.viewGO, "Title/txt_Tips")
+	arg_1_0._scrollView = gohelper.findChildScrollRect(arg_1_0.viewGO, "scroll_view")
+	arg_1_0._gocollectionitem = gohelper.findChild(arg_1_0.viewGO, "scroll_view/Viewport/Content/#go_collectionitem")
+	arg_1_0._btnconfirm = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_confirm")
+	arg_1_0._gorefresh = gohelper.findChild(arg_1_0.viewGO, "#go_refresh")
+	arg_1_0._txtrefresh = gohelper.findChildText(arg_1_0.viewGO, "#go_refresh/#txt_refresh")
+	arg_1_0._gorefreshactivebg = gohelper.findChild(arg_1_0.viewGO, "#go_refresh/#go_activebg")
+	arg_1_0._gorefreshdisablebg = gohelper.findChild(arg_1_0.viewGO, "#go_refresh/#go_disablebg")
+	arg_1_0._gorougefunctionitem2 = gohelper.findChild(arg_1_0.viewGO, "#go_rougefunctionitem2")
+	arg_1_0._gotips = gohelper.findChild(arg_1_0.viewGO, "#go_tips")
+	arg_1_0._txtselectnum = gohelper.findChildText(arg_1_0.viewGO, "#go_topright/#txt_num")
+	arg_1_0._gotopright = gohelper.findChild(arg_1_0.viewGO, "#go_topright")
+	arg_1_0._btninherit = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "layout/#go_rougemapbaseinherit/#btn_inherit")
+	arg_1_0._godistortrule = gohelper.findChild(arg_1_0.viewGO, "Left/#go_distortrule")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnconfirm:AddClickListener(slot0._btnconfirmOnClick, slot0)
-	slot0._btninherit:AddClickListener(slot0._btninheritOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnconfirm:AddClickListener(arg_2_0._btnconfirmOnClick, arg_2_0)
+	arg_2_0._btninherit:AddClickListener(arg_2_0._btninheritOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnconfirm:RemoveClickListener()
-	slot0._btninherit:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnconfirm:RemoveClickListener()
+	arg_3_0._btninherit:RemoveClickListener()
 end
 
-function slot0._btnconfirmOnClick(slot0)
-	if slot0.viewEnum == RougeMapEnum.CollectionDropViewEnum.OnlyShow then
-		slot0:closeThis()
+function var_0_0._btnconfirmOnClick(arg_4_0)
+	if arg_4_0.viewEnum == RougeMapEnum.CollectionDropViewEnum.OnlyShow then
+		arg_4_0:closeThis()
 
 		return
 	end
 
-	if #slot0.selectPosList < 1 then
+	if #arg_4_0.selectPosList < 1 then
 		return
 	end
 
-	slot0:clearSelectCallback()
+	arg_4_0:clearSelectCallback()
 
-	slot0.selectCallbackId = RougeRpc.instance:sendRougeSelectDropRequest(slot0.selectPosList, slot0.onReceiveSelect, slot0)
+	arg_4_0.selectCallbackId = RougeRpc.instance:sendRougeSelectDropRequest(arg_4_0.selectPosList, arg_4_0.onReceiveSelect, arg_4_0)
 end
 
-function slot0.onReceiveSelect(slot0)
-	slot0.refreshCallbackId = nil
+function var_0_0.onReceiveSelect(arg_5_0)
+	arg_5_0.refreshCallbackId = nil
 
-	slot0:delayCloseView()
+	arg_5_0:delayCloseView()
 end
 
-function slot0.delayCloseView(slot0)
-	UIBlockMgr.instance:startBlock(slot0.viewName)
-	TaskDispatcher.cancelTask(slot0._closeView, slot0)
-	TaskDispatcher.runDelay(slot0._closeView, slot0, RougeMapEnum.CollectionChangeAnimDuration)
+function var_0_0.delayCloseView(arg_6_0)
+	UIBlockMgr.instance:startBlock(arg_6_0.viewName)
+	TaskDispatcher.cancelTask(arg_6_0._closeView, arg_6_0)
+	TaskDispatcher.runDelay(arg_6_0._closeView, arg_6_0, RougeMapEnum.CollectionChangeAnimDuration)
 end
 
-function slot0._closeView(slot0)
-	UIBlockMgr.instance:endBlock(slot0.viewName)
-	slot0:closeThis()
+function var_0_0._closeView(arg_7_0)
+	UIBlockMgr.instance:endBlock(arg_7_0.viewName)
+	arg_7_0:closeThis()
 end
 
-function slot0.onClickBg(slot0)
-	if slot0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
+function var_0_0.onClickBg(arg_8_0)
+	if arg_8_0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
 		return
 	end
 
-	slot0:closeThis()
+	arg_8_0:closeThis()
 end
 
-function slot0._btninheritOnClick(slot0)
-	slot0._isShowMonsterRule = not slot0._isShowMonsterRule
+function var_0_0._btninheritOnClick(arg_9_0)
+	arg_9_0._isShowMonsterRule = not arg_9_0._isShowMonsterRule
 
-	slot0:refreshInheritBtn()
-	RougeController.instance:dispatchEvent(RougeEvent.ShowMonsterRuleDesc, slot0._isShowMonsterRule)
+	arg_9_0:refreshInheritBtn()
+	RougeController.instance:dispatchEvent(RougeEvent.ShowMonsterRuleDesc, arg_9_0._isShowMonsterRule)
 end
 
-function slot0._editableInitView(slot0)
-	slot0.bgClick = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "#simage_maskbg")
+function var_0_0._editableInitView(arg_10_0)
+	arg_10_0.bgClick = gohelper.findChildClickWithDefaultAudio(arg_10_0.viewGO, "#simage_maskbg")
 
-	slot0.bgClick:AddClickListener(slot0.onClickBg, slot0)
+	arg_10_0.bgClick:AddClickListener(arg_10_0.onClickBg, arg_10_0)
 
-	slot0.viewPortClick = gohelper.findChildClickWithDefaultAudio(slot0.viewGO, "scroll_view/Viewport")
+	arg_10_0.viewPortClick = gohelper.findChildClickWithDefaultAudio(arg_10_0.viewGO, "scroll_view/Viewport")
 
-	slot0.viewPortClick:AddClickListener(slot0.onClickBg, slot0)
-	slot0._simagemaskbg:LoadImage("singlebg/rouge/rouge_talent_bg.png")
+	arg_10_0.viewPortClick:AddClickListener(arg_10_0.onClickBg, arg_10_0)
+	arg_10_0._simagemaskbg:LoadImage("singlebg/rouge/rouge_talent_bg.png")
 
-	slot0.txtTips = gohelper.findChildText(slot0.viewGO, "Title/txt_Tips")
-	slot0.txtTitle = gohelper.findChildText(slot0.viewGO, "Title/txt_Title")
-	slot0.goConfirmBtn = slot0._btnconfirm.gameObject
+	arg_10_0.txtTips = gohelper.findChildText(arg_10_0.viewGO, "Title/txt_Tips")
+	arg_10_0.txtTitle = gohelper.findChildText(arg_10_0.viewGO, "Title/txt_Title")
+	arg_10_0.goConfirmBtn = arg_10_0._btnconfirm.gameObject
 
-	gohelper.setActive(slot0._gocollectionitem, false)
+	gohelper.setActive(arg_10_0._gocollectionitem, false)
 
-	slot0.selectPosList = {}
-	slot0.collectionItemList = {}
+	arg_10_0.selectPosList = {}
+	arg_10_0.collectionItemList = {}
 
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onSelectDropChange, slot0.onSelectDropChange, slot0)
-	slot0:addEventCb(RougeMapController.instance, RougeMapEvent.onUpdateMapInfo, slot0.onUpdateMapInfo, slot0)
+	arg_10_0:addEventCb(RougeMapController.instance, RougeMapEvent.onSelectDropChange, arg_10_0.onSelectDropChange, arg_10_0)
+	arg_10_0:addEventCb(RougeMapController.instance, RougeMapEvent.onUpdateMapInfo, arg_10_0.onUpdateMapInfo, arg_10_0)
 
-	slot0.goCollection = slot0.viewContainer:getResInst(RougeEnum.ResPath.CommonCollectionItem, slot0._gorougefunctionitem2)
-	slot0.collectionComp = RougeCollectionComp.Get(slot0.goCollection)
+	arg_10_0.goCollection = arg_10_0.viewContainer:getResInst(RougeEnum.ResPath.CommonCollectionItem, arg_10_0._gorougefunctionitem2)
+	arg_10_0.collectionComp = RougeCollectionComp.Get(arg_10_0.goCollection)
 
-	NavigateMgr.instance:addEscape(slot0.viewName, RougeMapHelper.blockEsc)
-	slot0:openSubView(RougeMapAttributeComp, nil, slot0._godistortrule)
+	NavigateMgr.instance:addEscape(arg_10_0.viewName, RougeMapHelper.blockEsc)
+	arg_10_0:openSubView(RougeMapAttributeComp, nil, arg_10_0._godistortrule)
 
-	slot0._goselectinherit = gohelper.findChild(slot0.viewGO, "layout/#go_rougemapbaseinherit/#btn_inherit/circle/select")
-	slot0._isShowMonsterRule = true
+	arg_10_0._goselectinherit = gohelper.findChild(arg_10_0.viewGO, "layout/#go_rougemapbaseinherit/#btn_inherit/circle/select")
+	arg_10_0._isShowMonsterRule = true
 end
 
-function slot0.onSelectDropChange(slot0)
-	slot0:refreshConfirmBtn()
-	slot0:refreshTopRight()
+function var_0_0.onSelectDropChange(arg_11_0)
+	arg_11_0:refreshConfirmBtn()
+	arg_11_0:refreshTopRight()
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:onOpen()
+function var_0_0.onUpdateParam(arg_12_0)
+	arg_12_0:onOpen()
 end
 
-function slot0.initData(slot0)
-	slot0.viewEnum = slot0.viewParam.viewEnum
-	slot0.collectionList = slot0.viewParam.collectionList
-	slot0.monsterRuleList = slot0.viewParam.monsterRuleList
+function var_0_0.initData(arg_13_0)
+	arg_13_0.viewEnum = arg_13_0.viewParam.viewEnum
+	arg_13_0.collectionList = arg_13_0.viewParam.collectionList
+	arg_13_0.monsterRuleList = arg_13_0.viewParam.monsterRuleList
 
-	if slot0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
-		slot0.canSelectCount = slot0.viewParam.canSelectCount
-		slot0.dropRandomNum = slot0.viewParam.dropRandomNum
+	if arg_13_0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
+		arg_13_0.canSelectCount = arg_13_0.viewParam.canSelectCount
+		arg_13_0.dropRandomNum = arg_13_0.viewParam.dropRandomNum
 	end
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_14_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.DropRefresh)
-	slot0:initData()
-	slot0:refreshUI()
-	slot0.collectionComp:onOpen()
+	arg_14_0:initData()
+	arg_14_0:refreshUI()
+	arg_14_0.collectionComp:onOpen()
 end
 
-function slot0.refreshUI(slot0)
-	slot0:refreshTitle()
-	slot0:refreshCollection()
-	slot0:refreshConfirmBtn()
-	slot0:refreshRefreshBtn()
-	slot0:refreshInheritBtn()
-	slot0:refreshTopRight()
+function var_0_0.refreshUI(arg_15_0)
+	arg_15_0:refreshTitle()
+	arg_15_0:refreshCollection()
+	arg_15_0:refreshConfirmBtn()
+	arg_15_0:refreshRefreshBtn()
+	arg_15_0:refreshInheritBtn()
+	arg_15_0:refreshTopRight()
 end
 
-function slot0.refreshTitle(slot0)
-	if slot0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
-		slot0.txtTitle.text = luaLang("rougebosscollectionselectview_txt_title")
-		slot0.txtTips.text = string.gsub(luaLang("rougebosscollectionselectview_txt_tips"), "▩1%%s", slot0.canSelectCount)
+function var_0_0.refreshTitle(arg_16_0)
+	if arg_16_0.viewEnum == RougeMapEnum.CollectionDropViewEnum.Select then
+		arg_16_0.txtTitle.text = luaLang("rougebosscollectionselectview_txt_title")
+		arg_16_0.txtTips.text = string.gsub(luaLang("rougebosscollectionselectview_txt_tips"), "▩1%%s", arg_16_0.canSelectCount)
 
-		gohelper.setActive(slot0._gotitletip, true)
+		gohelper.setActive(arg_16_0._gotitletip, true)
 	else
-		slot0.txtTips.text = luaLang("rougecollectionselectview_txt_get_Tips")
-		slot0.txtTitle.text = luaLang("rougebosscollectionselectview_txt_title")
+		arg_16_0.txtTips.text = luaLang("rougecollectionselectview_txt_get_Tips")
+		arg_16_0.txtTitle.text = luaLang("rougebosscollectionselectview_txt_title")
 
-		gohelper.setActive(slot0._gotitletip, false)
+		gohelper.setActive(arg_16_0._gotitletip, false)
 	end
 end
 
-function slot0.refreshCollection(slot0)
-	slot1 = slot0.collectionList or {}
-	slot2 = slot0.monsterRuleList or {}
+function var_0_0.refreshCollection(arg_17_0)
+	local var_17_0 = arg_17_0.collectionList or {}
+	local var_17_1 = arg_17_0.monsterRuleList or {}
 
-	for slot6, slot7 in ipairs(slot1) do
-		if not slot0.collectionItemList[slot6] then
-			slot8 = RougeBossCollectionDropItem.New()
+	for iter_17_0, iter_17_1 in ipairs(var_17_0) do
+		local var_17_2 = arg_17_0.collectionItemList[iter_17_0]
 
-			slot8:init(gohelper.cloneInPlace(slot0._gocollectionitem), slot0)
-			slot8:setParentScroll(slot0._scrollView.gameObject)
-			table.insert(slot0.collectionItemList, slot8)
+		if not var_17_2 then
+			var_17_2 = RougeBossCollectionDropItem.New()
+
+			local var_17_3 = gohelper.cloneInPlace(arg_17_0._gocollectionitem)
+
+			var_17_2:init(var_17_3, arg_17_0)
+			var_17_2:setParentScroll(arg_17_0._scrollView.gameObject)
+			table.insert(arg_17_0.collectionItemList, var_17_2)
 		end
 
-		slot8:show()
-		slot8:update(slot6, slot7, slot2[slot6], slot0._isShowMonsterRule)
+		var_17_2:show()
+		var_17_2:update(iter_17_0, iter_17_1, var_17_1[iter_17_0], arg_17_0._isShowMonsterRule)
 	end
 
-	for slot6 = #slot1 + 1, #slot0.collectionItemList do
-		slot0.collectionItemList[slot6]:hide()
+	for iter_17_2 = #var_17_0 + 1, #arg_17_0.collectionItemList do
+		arg_17_0.collectionItemList[iter_17_2]:hide()
 	end
 
-	slot0._scrollView.horizontalNormalizedPosition = 0
+	arg_17_0._scrollView.horizontalNormalizedPosition = 0
 end
 
-function slot0.refreshConfirmBtn(slot0)
-	if slot0.viewEnum == RougeMapEnum.CollectionDropViewEnum.OnlyShow then
-		gohelper.setActive(slot0.goConfirmBtn, false)
-		gohelper.setActive(slot0._gotips, true)
+function var_0_0.refreshConfirmBtn(arg_18_0)
+	if arg_18_0.viewEnum == RougeMapEnum.CollectionDropViewEnum.OnlyShow then
+		gohelper.setActive(arg_18_0.goConfirmBtn, false)
+		gohelper.setActive(arg_18_0._gotips, true)
 
 		return
 	end
 
-	gohelper.setActive(slot0._gotips, false)
-	gohelper.setActive(slot0.goConfirmBtn, slot0.canSelectCount <= #slot0.selectPosList)
+	gohelper.setActive(arg_18_0._gotips, false)
+	gohelper.setActive(arg_18_0.goConfirmBtn, #arg_18_0.selectPosList >= arg_18_0.canSelectCount)
 end
 
-function slot0.refreshRefreshBtn(slot0)
-	slot0.canClickRefresh = false
+function var_0_0.refreshRefreshBtn(arg_19_0)
+	arg_19_0.canClickRefresh = false
 
-	if slot0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
-		gohelper.setActive(slot0._gorefresh, false)
+	if arg_19_0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
+		gohelper.setActive(arg_19_0._gorefresh, false)
 
 		return
 	end
 
-	slot0.canClickRefresh = RougeMapModel.instance:getMonsterRuleRemainCanFreshNum() and slot1 > 0
+	local var_19_0 = RougeMapModel.instance:getMonsterRuleRemainCanFreshNum()
 
-	gohelper.setActive(slot0._gorefresh, true)
-	gohelper.setActive(slot0._gorefreshactivebg, slot0.canClickRefresh)
-	gohelper.setActive(slot0._gorefreshdisablebg, not slot0.canClickRefresh)
+	arg_19_0.canClickRefresh = var_19_0 and var_19_0 > 0
 
-	slot0._txtrefresh.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("rougebosscollectionselectview_refresh"), slot1)
+	gohelper.setActive(arg_19_0._gorefresh, true)
+	gohelper.setActive(arg_19_0._gorefreshactivebg, arg_19_0.canClickRefresh)
+	gohelper.setActive(arg_19_0._gorefreshdisablebg, not arg_19_0.canClickRefresh)
+
+	arg_19_0._txtrefresh.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("rougebosscollectionselectview_refresh"), var_19_0)
 end
 
-function slot0.refreshInheritBtn(slot0)
-	gohelper.setActive(slot0._goselectinherit, slot0._isShowMonsterRule)
+function var_0_0.refreshInheritBtn(arg_20_0)
+	gohelper.setActive(arg_20_0._goselectinherit, arg_20_0._isShowMonsterRule)
 end
 
-function slot0.refreshTopRight(slot0)
-	if slot0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
-		gohelper.setActive(slot0._gotopright, false)
+function var_0_0.refreshTopRight(arg_21_0)
+	if arg_21_0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
+		gohelper.setActive(arg_21_0._gotopright, false)
 
 		return
 	end
 
-	gohelper.setActive(slot0._gotopright, true)
+	gohelper.setActive(arg_21_0._gotopright, true)
 
-	slot0._txtselectnum.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("rouge_drop_select"), #slot0.selectPosList, slot0.canSelectCount)
+	arg_21_0._txtselectnum.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("rouge_drop_select"), #arg_21_0.selectPosList, arg_21_0.canSelectCount)
 end
 
-function slot0.selectPos(slot0, slot1)
-	if slot0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
+function var_0_0.selectPos(arg_22_0, arg_22_1)
+	if arg_22_0.viewEnum ~= RougeMapEnum.CollectionDropViewEnum.Select then
 		return false
 	end
 
-	if tabletool.indexOf(slot0.selectPosList, slot1) then
-		table.remove(slot0.selectPosList, slot2)
+	local var_22_0 = tabletool.indexOf(arg_22_0.selectPosList, arg_22_1)
+
+	if var_22_0 then
+		table.remove(arg_22_0.selectPosList, var_22_0)
 		RougeMapController.instance:dispatchEvent(RougeMapEvent.onSelectDropChange)
 
 		return
 	end
 
-	if slot0.canSelectCount > 1 then
-		if slot0.canSelectCount <= #slot0.selectPosList then
+	if arg_22_0.canSelectCount > 1 then
+		if #arg_22_0.selectPosList >= arg_22_0.canSelectCount then
 			return
 		end
 
-		table.insert(slot0.selectPosList, slot1)
+		table.insert(arg_22_0.selectPosList, arg_22_1)
 		RougeMapController.instance:dispatchEvent(RougeMapEvent.onSelectDropChange)
 	end
 
-	table.remove(slot0.selectPosList)
-	table.insert(slot0.selectPosList, slot1)
+	table.remove(arg_22_0.selectPosList)
+	table.insert(arg_22_0.selectPosList, arg_22_1)
 	RougeMapController.instance:dispatchEvent(RougeMapEvent.onSelectDropChange)
 end
 
-function slot0.isSelect(slot0, slot1)
-	return tabletool.indexOf(slot0.selectPosList, slot1)
+function var_0_0.isSelect(arg_23_0, arg_23_1)
+	return tabletool.indexOf(arg_23_0.selectPosList, arg_23_1)
 end
 
-function slot0.onUpdateMapInfo(slot0)
-	if not RougeMapModel.instance:getCurInteractiveJson() then
+function var_0_0.onUpdateMapInfo(arg_24_0)
+	local var_24_0 = RougeMapModel.instance:getCurInteractiveJson()
+
+	if not var_24_0 then
 		return
 	end
 
-	slot0.collectionList = slot1 and slot1.dropCollectList
-	slot0.monsterRuleList = slot1 and slot1.dropCollectMonsterRuleList
-	slot0.selectPosList = {}
+	arg_24_0.collectionList = var_24_0 and var_24_0.dropCollectList
+	arg_24_0.monsterRuleList = var_24_0 and var_24_0.dropCollectMonsterRuleList
+	arg_24_0.selectPosList = {}
 
-	slot0:refreshUI()
+	arg_24_0:refreshUI()
 end
 
-function slot0.clearSelectCallback(slot0)
-	if slot0.selectCallbackId then
-		RougeRpc.instance:removeCallbackById(slot0.selectCallbackId)
+function var_0_0.clearSelectCallback(arg_25_0)
+	if arg_25_0.selectCallbackId then
+		RougeRpc.instance:removeCallbackById(arg_25_0.selectCallbackId)
 
-		slot0.selectCallbackId = nil
+		arg_25_0.selectCallbackId = nil
 	end
 end
 
-function slot0.clearRefreshCallback(slot0)
-	if slot0.refreshCallbackId then
-		RougeRpc.instance:removeCallbackById(slot0.refreshCallbackId)
+function var_0_0.clearRefreshCallback(arg_26_0)
+	if arg_26_0.refreshCallbackId then
+		RougeRpc.instance:removeCallbackById(arg_26_0.refreshCallbackId)
 
-		slot0.refreshCallbackId = nil
+		arg_26_0.refreshCallbackId = nil
 	end
 end
 
-function slot0.onClose(slot0)
-	slot0:clearSelectCallback()
-	slot0:clearRefreshCallback()
-	slot0.collectionComp:onClose()
+function var_0_0.onClose(arg_27_0)
+	arg_27_0:clearSelectCallback()
+	arg_27_0:clearRefreshCallback()
+	arg_27_0.collectionComp:onClose()
 
-	for slot4, slot5 in ipairs(slot0.collectionItemList) do
-		slot5:onClose()
+	for iter_27_0, iter_27_1 in ipairs(arg_27_0.collectionItemList) do
+		iter_27_1:onClose()
 	end
 
-	tabletool.clear(slot0.selectPosList)
+	tabletool.clear(arg_27_0.selectPosList)
 end
 
-function slot0.onDestroyView(slot0)
-	for slot4, slot5 in ipairs(slot0.collectionItemList) do
-		slot5:destroy()
+function var_0_0.onDestroyView(arg_28_0)
+	for iter_28_0, iter_28_1 in ipairs(arg_28_0.collectionItemList) do
+		iter_28_1:destroy()
 	end
 
-	slot0.collectionItemList = nil
+	arg_28_0.collectionItemList = nil
 
-	slot0._simagemaskbg:UnLoadImage()
-	slot0.collectionComp:destroy()
-	slot0.bgClick:RemoveClickListener()
-	slot0.viewPortClick:RemoveClickListener()
-	TaskDispatcher.cancelTask(slot0.closeThis, slot0)
+	arg_28_0._simagemaskbg:UnLoadImage()
+	arg_28_0.collectionComp:destroy()
+	arg_28_0.bgClick:RemoveClickListener()
+	arg_28_0.viewPortClick:RemoveClickListener()
+	TaskDispatcher.cancelTask(arg_28_0.closeThis, arg_28_0)
 end
 
-return slot0
+return var_0_0

@@ -1,29 +1,30 @@
-module("modules.logic.character.defines.CharacterDestinyEnum", package.seeall)
+﻿module("modules.logic.character.defines.CharacterDestinyEnum", package.seeall)
 
-slot0 = _M
-slot0.DestinyStoneOpenLevelConstId = {
+local var_0_0 = _M
+
+var_0_0.DestinyStoneOpenLevelConstId = {
 	[4] = ConstEnum.UnlockDestinyHeroLevel5,
 	[5] = ConstEnum.UnlockDestinyHeroLevel6
 }
-slot0.DestinyUpBaseAttr = {
+var_0_0.DestinyUpBaseAttr = {
 	CharacterEnum.AttrId.HpBase,
 	CharacterEnum.AttrId.AttackBase,
 	CharacterEnum.AttrId.DefenseBase,
 	CharacterEnum.AttrId.MdefenseBase
 }
-slot0.DestinyUpBaseAttrPercent = {
+var_0_0.DestinyUpBaseAttrPercent = {
 	CharacterEnum.AttrId.HpPercent,
 	CharacterEnum.AttrId.AttackPercent,
 	CharacterEnum.AttrId.DefensePercent,
 	CharacterEnum.AttrId.MdefensePercent
 }
-slot0.DestinyUpSpecialAttr = {
+var_0_0.DestinyUpSpecialAttr = {
 	CharacterEnum.AttrId.ReboundDmg,
 	CharacterEnum.AttrId.ExtraDmg,
 	CharacterEnum.AttrId.ReuseDmg,
 	CharacterEnum.AttrId.PoisonAddRate
 }
-slot0.DestinyUpBaseParseAttr = {
+var_0_0.DestinyUpBaseParseAttr = {
 	[CharacterEnum.AttrId.Hp] = {
 		CharacterEnum.AttrId.HpBase,
 		CharacterEnum.AttrId.HpPercent
@@ -41,12 +42,12 @@ slot0.DestinyUpBaseParseAttr = {
 		CharacterEnum.AttrId.MdefensePercent
 	}
 }
-slot0.SlotTitle = {
-	[1.0] = "character_destiny_slot_title_1",
-	[6.0] = "character_destiny_slot_title_2"
+var_0_0.SlotTitle = {
+	[1] = "character_destiny_slot_title_1",
+	[6] = "character_destiny_slot_title_2"
 }
-slot0.EffectItemCount = 4
-slot0.SlotViewAnim = {
+var_0_0.EffectItemCount = 4
+var_0_0.SlotViewAnim = {
 	CloseLock = "close_lock",
 	OpenUnlock = "open_unlock",
 	LockIdle = "lock_idle",
@@ -56,7 +57,7 @@ slot0.SlotViewAnim = {
 	Unlock = "unlock",
 	UnlockIdle = "unlock_idle"
 }
-slot0.StoneViewAnim = {
+var_0_0.StoneViewAnim = {
 	SwitchLeft = "switch_left",
 	Idle = "idle",
 	Close = "close",
@@ -64,13 +65,13 @@ slot0.StoneViewAnim = {
 	SwitchRight = "switch_right",
 	Open = "open"
 }
-slot0.AnimEventName = {
+var_0_0.AnimEventName = {
 	RefreshView = "RefreshView",
 	UnlockAttrAnim = "UnlockAttrAnim",
 	UnlockEnd = "UnlockEnd",
 	LevelUpEnd = "LevelUpEnd"
 }
-slot0.SlotTend = {
+var_0_0.SlotTend = {
 	{
 		TitleColor = "#ff938a",
 		TitleIconName = "character_destiny_icon_1",
@@ -97,7 +98,7 @@ slot0.SlotTend = {
 		RuneColor = Color(0.4823529411764706, 0.32941176470588235, 0.5882352941176471, 1)
 	}
 }
-slot0.RomanNum = {
+var_0_0.RomanNum = {
 	"Ⅰ",
 	"Ⅱ",
 	"Ⅲ",
@@ -109,4 +110,4 @@ slot0.RomanNum = {
 	"Ⅸ"
 }
 
-return slot0
+return var_0_0

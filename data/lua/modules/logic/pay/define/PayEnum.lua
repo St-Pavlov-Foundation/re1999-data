@@ -1,7 +1,8 @@
-module("modules.logic.pay.define.PayEnum", package.seeall)
+﻿module("modules.logic.pay.define.PayEnum", package.seeall)
 
-slot0 = _M
-slot0.PayResultCode = {
+local var_0_0 = _M
+
+var_0_0.PayResultCode = {
 	PayCancel = 901,
 	PayOrderCancel = 904,
 	PayError = 903,
@@ -10,4 +11,4 @@ slot0.PayResultCode = {
 	PayChannelFail = 905
 }
 
-return slot0
+return var_0_0

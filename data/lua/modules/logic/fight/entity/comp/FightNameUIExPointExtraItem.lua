@@ -1,17 +1,17 @@
-module("modules.logic.fight.entity.comp.FightNameUIExPointExtraItem", package.seeall)
+﻿module("modules.logic.fight.entity.comp.FightNameUIExPointExtraItem", package.seeall)
 
-slot0 = class("FightNameUIExPointExtraItem", FightNameUIExPointBaseItem)
+local var_0_0 = class("FightNameUIExPointExtraItem", FightNameUIExPointBaseItem)
 
-function slot0.getType(slot0)
+function var_0_0.getType(arg_1_0)
 	return FightNameUIExPointBaseItem.ExPointType.Extra
 end
 
-function slot0.GetExtraExPointItem(slot0)
-	slot1 = uv0.New()
+function var_0_0.GetExtraExPointItem(arg_2_0)
+	local var_2_0 = var_0_0.New()
 
-	slot1:init(slot0)
+	var_2_0:init(arg_2_0)
 
-	return slot1
+	return var_2_0
 end
 
-return slot0
+return var_0_0

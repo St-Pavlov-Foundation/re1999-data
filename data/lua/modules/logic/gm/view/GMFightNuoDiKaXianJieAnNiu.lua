@@ -1,32 +1,33 @@
-module("modules.logic.gm.view.GMFightNuoDiKaXianJieAnNiu", package.seeall)
+﻿module("modules.logic.gm.view.GMFightNuoDiKaXianJieAnNiu", package.seeall)
 
-slot0 = class("GMFightNuoDiKaXianJieAnNiu", FightBaseView)
+local var_0_0 = class("GMFightNuoDiKaXianJieAnNiu", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.btnStart = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btnStart")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.btnStart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/btnStart")
 end
 
-function slot0.addEvents(slot0)
-	slot0:com_registClick(slot0.btnStart, slot0.onClickStart)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:com_registClick(arg_2_0.btnStart, arg_2_0.onClickStart)
 end
 
-function slot0.onClickStart(slot0)
-	slot0.time = slot0.time or Time.time
+function var_0_0.onClickStart(arg_3_0)
+	arg_3_0.time = arg_3_0.time or Time.time
 
-	if slot0.timeLimit < Time.time - slot0.time then
-		slot0.time = Time.time
+	if Time.time - arg_3_0.time > arg_3_0.timeLimit then
+		arg_3_0.time = Time.time
 
-		slot0:com_sendFightEvent(FightEvent.OperationForPlayEffect, slot0.effectType)
+		arg_3_0:com_sendFightEvent(FightEvent.OperationForPlayEffect, arg_3_0.effectType)
 	end
 end
 
-function slot0.onOpen(slot0)
-	slot0.effectType = slot0.viewParam.effectType
-	slot0.timeLimit = slot0.viewParam.timeLimit
-	slot0.time = 0
+function var_0_0.onOpen(arg_4_0)
+	arg_4_0.effectType = arg_4_0.viewParam.effectType
+	arg_4_0.timeLimit = arg_4_0.viewParam.timeLimit
+	arg_4_0.time = 0
 end
 
-function slot0.onDestructor(slot0)
+function var_0_0.onDestructor(arg_5_0)
+	return
 end
 
-return slot0
+return var_0_0

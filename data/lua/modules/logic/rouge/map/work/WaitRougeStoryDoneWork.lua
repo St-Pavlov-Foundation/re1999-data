@@ -1,24 +1,25 @@
-module("modules.logic.rouge.map.work.WaitRougeStoryDoneWork", package.seeall)
+﻿module("modules.logic.rouge.map.work.WaitRougeStoryDoneWork", package.seeall)
 
-slot0 = class("WaitRougeStoryDoneWork", BaseWork)
+local var_0_0 = class("WaitRougeStoryDoneWork", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	slot0.storyId = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.storyId = arg_1_1
 end
 
-function slot0.onStart(slot0)
-	if not slot0.storyId or slot0.storyId == 0 then
-		return slot0:onDone(true)
+function var_0_0.onStart(arg_2_0)
+	if not arg_2_0.storyId or arg_2_0.storyId == 0 then
+		return arg_2_0:onDone(true)
 	end
 
-	StoryController.instance:playStory(slot0.storyId, nil, slot0.onStoryDone, slot0)
+	StoryController.instance:playStory(arg_2_0.storyId, nil, arg_2_0.onStoryDone, arg_2_0)
 end
 
-function slot0.onStoryDone(slot0)
-	slot0:onDone(true)
+function var_0_0.onStoryDone(arg_3_0)
+	arg_3_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_4_0)
+	return
 end
 
-return slot0
+return var_0_0

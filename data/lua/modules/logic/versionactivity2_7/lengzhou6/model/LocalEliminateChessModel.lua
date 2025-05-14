@@ -1,7 +1,7 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.LocalEliminateChessModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.LocalEliminateChessModel", package.seeall)
 
-slot0 = class("LocalEliminateChessModel")
-slot1 = {
+local var_0_0 = class("LocalEliminateChessModel")
+local var_0_1 = {
 	{
 		x = 1,
 		y = 0
@@ -11,7 +11,7 @@ slot1 = {
 		y = 0
 	}
 }
-slot2 = {
+local var_0_2 = {
 	{
 		x = 0,
 		y = 1
@@ -22,10 +22,10 @@ slot2 = {
 	}
 }
 
-function slot0.ctor(slot0)
-	slot0._changePoints = {}
-	slot0._tempEliminateCheckResults = {}
-	slot0._weights = {
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._changePoints = {}
+	arg_1_0._tempEliminateCheckResults = {}
+	arg_1_0._weights = {
 		1,
 		1,
 		1,
@@ -33,143 +33,152 @@ function slot0.ctor(slot0)
 	}
 end
 
-function slot0.initByData(slot0, slot1)
+function var_0_0.initByData(arg_2_0, arg_2_1)
 	math.randomseed(os.time())
 
-	if slot0.cells == nil then
-		slot0.cells = {}
+	if arg_2_0.cells == nil then
+		arg_2_0.cells = {}
 	end
 
-	slot0._row = #slot1
+	arg_2_0._row = #arg_2_1
 
-	for slot5 = 1, #slot1 do
-		if slot0.cells[slot5] == nil then
-			slot0.cells[slot5] = {}
+	for iter_2_0 = 1, #arg_2_1 do
+		if arg_2_0.cells[iter_2_0] == nil then
+			arg_2_0.cells[iter_2_0] = {}
 		end
 
-		slot6 = slot1[slot5]
-		slot0._col = #slot6
+		local var_2_0 = arg_2_1[iter_2_0]
 
-		for slot10 = 1, #slot6 do
-			if slot0.cells[slot5][slot10] == nil then
-				slot11 = slot0:createNewCell(slot5, slot10, EliminateEnum_2_7.ChessState.Normal, slot6[slot10])
+		arg_2_0._col = #var_2_0
+
+		for iter_2_1 = 1, #var_2_0 do
+			local var_2_1 = arg_2_0.cells[iter_2_0][iter_2_1]
+			local var_2_2 = var_2_0[iter_2_1]
+
+			if var_2_1 == nil then
+				var_2_1 = arg_2_0:createNewCell(iter_2_0, iter_2_1, EliminateEnum_2_7.ChessState.Normal, var_2_2)
 			else
-				slot0:initCell(slot11, slot5, slot10, EliminateEnum_2_7.ChessState.Normal, slot12)
+				arg_2_0:initCell(var_2_1, iter_2_0, iter_2_1, EliminateEnum_2_7.ChessState.Normal, var_2_2)
 			end
 
-			slot11:setStartXY(slot5, slot0._col + 1)
-			slot11:setXY(slot5, slot10)
+			var_2_1:setStartXY(iter_2_0, arg_2_0._col + 1)
+			var_2_1:setXY(iter_2_0, iter_2_1)
 		end
 	end
 
-	slot0._initData = slot1
+	arg_2_0._initData = arg_2_1
 end
 
-function slot0.getInitData(slot0)
-	return slot0._initData
+function var_0_0.getInitData(arg_3_0)
+	return arg_3_0._initData
 end
 
-function slot0.getAllCell(slot0)
-	return slot0.cells
+function var_0_0.getAllCell(arg_4_0)
+	return arg_4_0.cells
 end
 
-function slot0.getCell(slot0, slot1, slot2)
-	if slot0.cells == nil or slot0.cells[slot1] == nil then
+function var_0_0.getCell(arg_5_0, arg_5_1, arg_5_2)
+	if arg_5_0.cells == nil or arg_5_0.cells[arg_5_1] == nil then
 		return nil
 	end
 
-	return slot0.cells[slot1][slot2]
+	return arg_5_0.cells[arg_5_1][arg_5_2]
 end
 
-function slot0.getCellRowAndCol(slot0)
-	return slot0._row, slot0._col
+function var_0_0.getCellRowAndCol(arg_6_0)
+	return arg_6_0._row, arg_6_0._col
 end
 
-function slot0.setEliminateDieEffect(slot0, slot1)
-	slot0._dieEffect = slot1
+function var_0_0.setEliminateDieEffect(arg_7_0, arg_7_1)
+	arg_7_0._dieEffect = arg_7_1
 end
 
-function slot0.getEliminateDieEffect(slot0)
-	return slot0._dieEffect
+function var_0_0.getEliminateDieEffect(arg_8_0)
+	return arg_8_0._dieEffect
 end
 
-function slot0.randomCell(slot0)
+function var_0_0.randomCell(arg_9_0)
 	if isDebugBuild then
-		slot0:printInfo("打乱棋盘前:")
+		arg_9_0:printInfo("打乱棋盘前:")
 	end
 
-	slot1 = {}
-	slot2 = {}
+	local var_9_0 = {}
+	local var_9_1 = {}
 
-	for slot6 = 1, slot0._col do
-		for slot10 = 1, slot0._row do
-			if slot0:_canEx(slot6, slot10) then
-				table.insert(slot2, slot6)
-				table.insert(slot2, slot10)
+	for iter_9_0 = 1, arg_9_0._col do
+		for iter_9_1 = 1, arg_9_0._row do
+			if arg_9_0:_canEx(iter_9_0, iter_9_1) then
+				table.insert(var_9_1, iter_9_0)
+				table.insert(var_9_1, iter_9_1)
 			end
 		end
 	end
 
-	slot3 = math.floor(#slot2 / 2)
-	slot4 = {}
-	slot5, slot6 = nil
+	local var_9_2 = math.floor(#var_9_1 / 2)
+	local var_9_3 = {}
+	local var_9_4
+	local var_9_5
 
-	while slot3 > #slot4 do
-		slot8 = false
+	while var_9_2 > #var_9_3 do
+		local var_9_6 = math.random(1, var_9_2)
+		local var_9_7 = false
 
-		for slot12 = 1, #slot4 do
-			if slot4[slot12] == math.random(1, slot3) then
-				slot8 = true
+		for iter_9_2 = 1, #var_9_3 do
+			if var_9_3[iter_9_2] == var_9_6 then
+				var_9_7 = true
 
 				break
 			end
 		end
 
-		if not slot8 then
-			table.insert(slot4, slot7)
+		if not var_9_7 then
+			table.insert(var_9_3, var_9_6)
 
-			if slot5 == nil then
-				slot5 = slot7
-			elseif slot6 == nil then
-				slot6 = slot7
+			if var_9_4 == nil then
+				var_9_4 = var_9_6
+			elseif var_9_5 == nil then
+				var_9_5 = var_9_6
 			end
 
-			if slot6 ~= nil and slot5 ~= nil then
-				slot9 = slot2[slot5 * 2 - 1]
-				slot10 = slot2[slot5 * 2]
-				slot11 = slot2[slot6 * 2 - 1]
-				slot12 = slot2[slot6 * 2]
+			if var_9_5 ~= nil and var_9_4 ~= nil then
+				local var_9_8 = var_9_1[var_9_4 * 2 - 1]
+				local var_9_9 = var_9_1[var_9_4 * 2]
+				local var_9_10 = var_9_1[var_9_5 * 2 - 1]
+				local var_9_11 = var_9_1[var_9_5 * 2]
 
-				table.insert(slot1, slot9)
-				table.insert(slot1, slot10)
-				table.insert(slot1, slot11)
-				table.insert(slot1, slot12)
-				slot0:addChangePoints(slot9, slot10)
-				slot0:addChangePoints(slot11, slot12)
-				slot0:_exchangeCell(slot9, slot10, slot11, slot12)
+				table.insert(var_9_0, var_9_8)
+				table.insert(var_9_0, var_9_9)
+				table.insert(var_9_0, var_9_10)
+				table.insert(var_9_0, var_9_11)
+				arg_9_0:addChangePoints(var_9_8, var_9_9)
+				arg_9_0:addChangePoints(var_9_10, var_9_11)
+				arg_9_0:_exchangeCell(var_9_8, var_9_9, var_9_10, var_9_11)
 
-				slot5, slot6 = nil
+				var_9_4 = nil
+				var_9_5 = nil
 			end
 		end
 	end
 
 	if isDebugBuild then
-		slot0:printInfo("打乱棋盘后:")
+		arg_9_0:printInfo("打乱棋盘后:")
 	end
 
-	return slot1
+	return var_9_0
 end
 
-function slot0._canEx(slot0, slot1, slot2)
-	if slot0.cells[slot1][slot2] == nil then
+function var_0_0._canEx(arg_10_0, arg_10_1, arg_10_2)
+	local var_10_0 = arg_10_0.cells[arg_10_1][arg_10_2]
+
+	if var_10_0 == nil then
 		return false
 	end
 
-	return slot3.id ~= -1 and not slot3:haveStatus(EliminateEnum_2_7.ChessState.Frost) and slot3.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone
+	return var_10_0.id ~= -1 and not var_10_0:haveStatus(EliminateEnum_2_7.ChessState.Frost) and var_10_0.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone
 end
 
-function slot0.resetCreateWeight(slot0)
-	slot0._weights = {
+function var_0_0.resetCreateWeight(arg_11_0)
+	arg_11_0._weights = {
 		1,
 		1,
 		1,
@@ -177,72 +186,72 @@ function slot0.resetCreateWeight(slot0)
 	}
 end
 
-function slot0.changeCreateWeight(slot0, slot1, slot2)
-	slot3 = nil
+function var_0_0.changeCreateWeight(arg_12_0, arg_12_1, arg_12_2)
+	local var_12_0
 
-	for slot7 = 1, #EliminateEnum_2_7.AllChessType do
-		if EliminateEnum_2_7.AllChessType[slot7] == slot1 then
-			slot3 = slot7
+	for iter_12_0 = 1, #EliminateEnum_2_7.AllChessType do
+		if EliminateEnum_2_7.AllChessType[iter_12_0] == arg_12_1 then
+			var_12_0 = iter_12_0
 		end
 	end
 
-	if slot3 ~= nil then
-		slot0._weights[slot3] = slot0._weights[slot3] * slot2
+	if var_12_0 ~= nil then
+		arg_12_0._weights[var_12_0] = arg_12_0._weights[var_12_0] * arg_12_2
 	end
 end
 
-function slot0.changeCellState(slot0, slot1, slot2, slot3)
-	if slot0.cells == nil or slot0.cells[slot1] == nil or slot0.cells[slot1][slot2] == nil then
+function var_0_0.changeCellState(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
+	if arg_13_0.cells == nil or arg_13_0.cells[arg_13_1] == nil or arg_13_0.cells[arg_13_1][arg_13_2] == nil then
 		return
 	end
 
-	slot0.cells[slot1][slot2]:addStatus(slot3)
+	arg_13_0.cells[arg_13_1][arg_13_2]:addStatus(arg_13_3)
 
 	if isDebugBuild then
-		slot0:printInfo("改变状态: ")
+		arg_13_0:printInfo("改变状态: ")
 	end
 end
 
-function slot0.changeCellId(slot0, slot1, slot2, slot3)
-	if slot0.cells == nil or slot0.cells[slot1][slot2] == nil then
+function var_0_0.changeCellId(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
+	if arg_14_0.cells == nil or arg_14_0.cells[arg_14_1][arg_14_2] == nil then
 		return nil
 	end
 
-	slot4 = slot0.cells[slot1][slot2]
+	local var_14_0 = arg_14_0.cells[arg_14_1][arg_14_2]
 
-	slot4:setChessId(slot3)
-	slot4:setStatus(EliminateEnum_2_7.ChessState.Normal)
+	var_14_0:setChessId(arg_14_3)
+	var_14_0:setStatus(EliminateEnum_2_7.ChessState.Normal)
 
 	if isDebugBuild then
-		slot0:printInfo("改变棋子类型：")
+		arg_14_0:printInfo("改变棋子类型：")
 	end
 
-	return slot4
+	return var_14_0
 end
 
-function slot0.exchangeCell(slot0, slot1, slot2, slot3, slot4, slot5)
+function var_0_0.exchangeCell(arg_15_0, arg_15_1, arg_15_2, arg_15_3, arg_15_4, arg_15_5)
 	if isDebugBuild then
-		slot0:printInfo("交换前: ")
+		arg_15_0:printInfo("交换前: ")
 	end
 
-	if slot5 then
-		slot0:_exchangeCell(slot1, slot2, slot3, slot4)
+	if arg_15_5 then
+		arg_15_0:_exchangeCell(arg_15_1, arg_15_2, arg_15_3, arg_15_4)
 	end
 
-	slot0:addChangePoints(slot1, slot2)
-	slot0:addChangePoints(slot3, slot4)
+	arg_15_0:addChangePoints(arg_15_1, arg_15_2)
+	arg_15_0:addChangePoints(arg_15_3, arg_15_4)
 
 	if isDebugBuild then
-		slot0:printInfo("交换后")
+		arg_15_0:printInfo("交换后")
 	end
 
-	if not slot0:check(false, true) then
-		if slot5 then
-			slot0:_exchangeCell(slot3, slot4, slot1, slot2)
+	if not arg_15_0:check(false, true) then
+		if arg_15_5 then
+			arg_15_0:_exchangeCell(arg_15_3, arg_15_4, arg_15_1, arg_15_2)
 		end
 
 		if isDebugBuild then
-			slot0:printInfo("还原")
+			arg_15_0:printInfo("还原")
 		end
 
 		return false
@@ -251,287 +260,339 @@ function slot0.exchangeCell(slot0, slot1, slot2, slot3, slot4, slot5)
 	return true
 end
 
-function slot0.eliminateCross(slot0, slot1, slot2)
-	slot3 = {}
-	slot4 = true
+function var_0_0.eliminateCross(arg_16_0, arg_16_1, arg_16_2)
+	local var_16_0 = {}
+	local var_16_1 = true
 
-	for slot9 = 1, slot0._row do
-		if slot0.cells[slot9][slot2].id ~= EliminateEnum_2_7.InvalidId and slot10:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
-			function (slot0, slot1)
-				uv0 = true
+	local function var_16_2(arg_17_0, arg_17_1)
+		var_16_1 = true
 
-				for slot6 = 1, #uv1 / 2 do
-					if uv1[slot6 * 2 - 1] == slot0 and uv1[slot6 * 2] == slot1 then
-						uv0 = false
+		local var_17_0 = #var_16_0 / 2
 
-						break
-					end
-				end
+		for iter_17_0 = 1, var_17_0 do
+			local var_17_1 = var_16_0[iter_17_0 * 2 - 1]
+			local var_17_2 = var_16_0[iter_17_0 * 2]
 
-				if uv0 then
-					table.insert(uv1, slot0)
-					table.insert(uv1, slot1)
-				end
-			end(slot9, slot2)
+			if var_17_1 == arg_17_0 and var_17_2 == arg_17_1 then
+				var_16_1 = false
+
+				break
+			end
+		end
+
+		if var_16_1 then
+			table.insert(var_16_0, arg_17_0)
+			table.insert(var_16_0, arg_17_1)
 		end
 	end
 
-	for slot9 = 1, slot0._col do
-		if slot0.cells[slot1][slot9].id ~= EliminateEnum_2_7.InvalidId and slot10:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
-			slot5(slot1, slot9)
+	for iter_16_0 = 1, arg_16_0._row do
+		local var_16_3 = arg_16_0.cells[iter_16_0][arg_16_2]
+
+		if var_16_3.id ~= EliminateEnum_2_7.InvalidId and var_16_3:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
+			var_16_2(iter_16_0, arg_16_2)
 		end
 	end
 
-	for slot10 = 1, #slot3 / 2 do
-		slot13 = {}
+	for iter_16_1 = 1, arg_16_0._col do
+		local var_16_4 = arg_16_0.cells[arg_16_1][iter_16_1]
 
-		table.insert(slot13, {
-			x = slot3[slot10 * 2 - 1],
-			y = slot3[slot10 * 2]
+		if var_16_4.id ~= EliminateEnum_2_7.InvalidId and var_16_4:getEliminateID() ~= EliminateEnum_2_7.ChessType.stone then
+			var_16_2(arg_16_1, iter_16_1)
+		end
+	end
+
+	local var_16_5 = #var_16_0 / 2
+
+	for iter_16_2 = 1, var_16_5 do
+		local var_16_6 = var_16_0[iter_16_2 * 2 - 1]
+		local var_16_7 = var_16_0[iter_16_2 * 2]
+		local var_16_8 = {}
+
+		table.insert(var_16_8, {
+			x = var_16_6,
+			y = var_16_7
 		})
-		table.insert(slot0._tempEliminateCheckResults, {
-			eliminatePoints = slot13,
+
+		local var_16_9 = {
+			eliminatePoints = var_16_8,
 			eliminateType = EliminateEnum_2_7.eliminateType.base,
-			eliminateX = slot1,
-			eliminateY = slot2,
+			eliminateX = arg_16_1,
+			eliminateY = arg_16_2,
 			skillEffect = LengZhou6Enum.SkillEffect.EliminationCross
-		})
+		}
+
+		table.insert(arg_16_0._tempEliminateCheckResults, var_16_9)
 	end
 
-	slot0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationCross)
+	arg_16_0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationCross)
 end
 
-function slot0.eliminateRange(slot0, slot1, slot2, slot3)
-	slot3 = (slot3 - 1) / 2
+function var_0_0.eliminateRange(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
+	arg_18_3 = (arg_18_3 - 1) / 2
 
-	for slot7 = -slot3, slot3 do
-		for slot11 = -slot3, slot3 do
-			slot13 = slot2 + slot11
+	for iter_18_0 = -arg_18_3, arg_18_3 do
+		for iter_18_1 = -arg_18_3, arg_18_3 do
+			local var_18_0 = arg_18_1 + iter_18_0
+			local var_18_1 = arg_18_2 + iter_18_1
 
-			if slot1 + slot7 > 0 and slot12 <= slot0._row and slot13 > 0 and slot13 <= slot0._col and slot0.cells[slot12][slot13].id ~= EliminateEnum_2_7.InvalidId then
-				slot15 = {}
+			if var_18_0 > 0 and var_18_0 <= arg_18_0._row and var_18_1 > 0 and var_18_1 <= arg_18_0._col and arg_18_0.cells[var_18_0][var_18_1].id ~= EliminateEnum_2_7.InvalidId then
+				local var_18_2 = {}
 
-				table.insert(slot15, {
-					x = slot12,
-					y = slot13
+				table.insert(var_18_2, {
+					x = var_18_0,
+					y = var_18_1
 				})
-				table.insert(slot0._tempEliminateCheckResults, {
-					eliminatePoints = slot15,
+
+				local var_18_3 = {
+					eliminatePoints = var_18_2,
 					eliminateType = EliminateEnum_2_7.eliminateType.base,
-					eliminateX = slot1,
-					eliminateY = slot2,
+					eliminateX = arg_18_1,
+					eliminateY = arg_18_2,
 					skillEffect = LengZhou6Enum.SkillEffect.EliminationRange
-				})
+				}
+
+				table.insert(arg_18_0._tempEliminateCheckResults, var_18_3)
 			end
 		end
 	end
 
-	slot0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationRange)
+	arg_18_0:setEliminateDieEffect(LengZhou6Enum.SkillEffect.EliminationRange)
 end
 
-function slot0.checkEliminate(slot0)
-	if slot0._eliminateCount == nil then
-		slot0:setEliminateCount(1)
+function var_0_0.checkEliminate(arg_19_0)
+	if arg_19_0._eliminateCount == nil then
+		arg_19_0:setEliminateCount(1)
 	else
-		slot0:setEliminateCount(slot0._eliminateCount + 1)
+		arg_19_0:setEliminateCount(arg_19_0._eliminateCount + 1)
 	end
 
-	slot0:AddEliminateRecord()
-	slot0:eliminate()
+	arg_19_0:AddEliminateRecord()
+	arg_19_0:eliminate()
 
 	if isDebugBuild then
-		slot0:printInfo("消除处理后")
+		arg_19_0:printInfo("消除处理后")
 	end
 
-	slot0:tidyUp()
+	arg_19_0:tidyUp()
 
 	if isDebugBuild then
-		slot0:printInfo("整理处理后")
+		arg_19_0:printInfo("整理处理后")
 	end
 
-	slot0:fill()
+	arg_19_0:fill()
 
 	if isDebugBuild then
-		slot0:printInfo("填充处理后")
-		slot0:printInfo("消除次数：" .. slot0._eliminateCount .. "次")
+		arg_19_0:printInfo("填充处理后")
+		arg_19_0:printInfo("消除次数：" .. arg_19_0._eliminateCount .. "次")
 	end
 end
 
-function slot0.eliminate(slot0)
-	if #slot0._tempEliminateCheckResults <= 0 then
+function var_0_0.eliminate(arg_20_0)
+	if #arg_20_0._tempEliminateCheckResults <= 0 then
 		return
 	end
 
-	slot1 = slot0:getCurEliminateRecordData()
-	slot2 = slot0:getEliminateRecordShowData()
+	local var_20_0 = arg_20_0:getCurEliminateRecordData()
+	local var_20_1 = arg_20_0:getEliminateRecordShowData()
 
-	for slot6 = 1, #slot0._tempEliminateCheckResults do
-		slot7 = slot0._tempEliminateCheckResults[slot6]
-		slot8 = slot7.newCellStatus
-		slot12 = slot7.eliminateType
-		slot13 = slot7.skillEffect
-		slot14 = false
-		slot16 = slot0.cells[slot7.eliminateX][slot7.eliminateY]:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
+	for iter_20_0 = 1, #arg_20_0._tempEliminateCheckResults do
+		local var_20_2 = arg_20_0._tempEliminateCheckResults[iter_20_0]
+		local var_20_3 = var_20_2.newCellStatus
+		local var_20_4 = var_20_2.eliminateX
+		local var_20_5 = var_20_2.eliminateY
+		local var_20_6 = var_20_2.eliminatePoints
+		local var_20_7 = var_20_2.eliminateType
+		local var_20_8 = var_20_2.skillEffect
+		local var_20_9 = false
+		local var_20_10 = arg_20_0.cells[var_20_4][var_20_5]:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
 
-		if slot7.eliminatePoints ~= nil then
-			slot17 = nil
-			slot18 = 0
+		if var_20_6 ~= nil then
+			local var_20_11
+			local var_20_12 = 0
+			local var_20_13 = 0
 
-			for slot23 = 1, #slot7.eliminatePoints do
-				slot26 = slot0.cells[slot7.eliminatePoints[slot23].x][slot7.eliminatePoints[slot23].y]
-				slot17 = slot26:getEliminateID()
+			for iter_20_1 = 1, #var_20_2.eliminatePoints do
+				local var_20_14 = var_20_2.eliminatePoints[iter_20_1].x
+				local var_20_15 = var_20_2.eliminatePoints[iter_20_1].y
+				local var_20_16 = arg_20_0.cells[var_20_14][var_20_15]
 
-				if slot26:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill) then
-					slot19 = 0 + 1
+				var_20_11 = var_20_16:getEliminateID()
+
+				if var_20_16:haveStatus(EliminateEnum_2_7.ChessState.SpecialSkill) then
+					var_20_13 = var_20_13 + 1
 				end
 
-				slot18 = slot18 + 1
+				var_20_12 = var_20_12 + 1
 
-				if not slot26:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
-					slot27 = true
-					slot28 = false
+				if not var_20_16:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
+					local var_20_17 = true
+					local var_20_18 = false
 
-					if slot8 ~= nil and slot8 == EliminateEnum_2_7.ChessState.SpecialSkill and (not slot16 or slot9 ~= slot24 or slot25 ~= slot10) and not slot14 then
-						slot28 = true
-						slot27 = false
+					if var_20_3 ~= nil and var_20_3 == EliminateEnum_2_7.ChessState.SpecialSkill and (not var_20_10 or var_20_4 ~= var_20_14 or var_20_15 ~= var_20_5) and not var_20_9 then
+						var_20_18 = true
+						var_20_17 = false
 					end
 
-					if slot28 and not slot14 then
-						slot26:addStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
-						slot2:addChangeType(slot24, slot25, EliminateEnum_2_7.ChessState.Normal)
-						slot0:addChangePoints(slot24, slot25)
+					if var_20_18 and not var_20_9 then
+						var_20_16:addStatus(EliminateEnum_2_7.ChessState.SpecialSkill)
+						var_20_1:addChangeType(var_20_14, var_20_15, EliminateEnum_2_7.ChessState.Normal)
+						arg_20_0:addChangePoints(var_20_14, var_20_15)
 
-						slot14 = true
+						var_20_9 = true
 					end
 
-					if slot27 then
-						slot26:setStatus(EliminateEnum_2_7.ChessState.Die)
-						slot26:setChessId(EliminateEnum_2_7.InvalidId)
-						slot2:addEliminate(slot24, slot25, slot13)
+					if var_20_17 then
+						var_20_16:setStatus(EliminateEnum_2_7.ChessState.Die)
+						var_20_16:setChessId(EliminateEnum_2_7.InvalidId)
+						var_20_1:addEliminate(var_20_14, var_20_15, var_20_8)
 					end
 				else
-					slot26:setStatus(EliminateEnum_2_7.ChessState.Normal)
-					slot2:addChangeType(slot24, slot25, EliminateEnum_2_7.ChessState.Frost)
+					var_20_16:setStatus(EliminateEnum_2_7.ChessState.Normal)
+					var_20_1:addChangeType(var_20_14, var_20_15, EliminateEnum_2_7.ChessState.Frost)
 				end
 			end
 
-			if slot17 ~= nil then
-				slot1:setEliminateType(slot17, slot12, slot18, slot19)
+			if var_20_11 ~= nil then
+				var_20_0:setEliminateType(var_20_11, var_20_7, var_20_12, var_20_13)
 			end
 		end
 	end
 
-	tabletool.clear(slot0._tempEliminateCheckResults)
+	tabletool.clear(arg_20_0._tempEliminateCheckResults)
 end
 
-function slot0.tidyUp(slot0)
-	slot1 = slot0:getEliminateRecordShowData()
+function var_0_0.tidyUp(arg_21_0)
+	local var_21_0 = arg_21_0:getEliminateRecordShowData()
 
-	for slot5 = 1, slot0._row do
-		for slot9 = 1, slot0._col do
-			if slot0.cells[slot5][slot9]:haveStatus(EliminateEnum_2_7.ChessState.Die) and slot0:findNextStartIndex(slot9 + 1, slot5, slot0._row) ~= -1 then
-				slot0:_exchangeCell(slot5, slot9, slot5, slot11)
-				slot0:addChangePoints(slot5, slot9)
-				slot0:addChangePoints(slot5, slot11)
-				slot1:addMove(slot5, slot11, slot5, slot9)
+	for iter_21_0 = 1, arg_21_0._row do
+		for iter_21_1 = 1, arg_21_0._col do
+			if arg_21_0.cells[iter_21_0][iter_21_1]:haveStatus(EliminateEnum_2_7.ChessState.Die) then
+				local var_21_1 = arg_21_0:findNextStartIndex(iter_21_1 + 1, iter_21_0, arg_21_0._row)
+
+				if var_21_1 ~= -1 then
+					arg_21_0:_exchangeCell(iter_21_0, iter_21_1, iter_21_0, var_21_1)
+					arg_21_0:addChangePoints(iter_21_0, iter_21_1)
+					arg_21_0:addChangePoints(iter_21_0, var_21_1)
+					var_21_0:addMove(iter_21_0, var_21_1, iter_21_0, iter_21_1)
+				end
 			end
 		end
 	end
 end
 
-function slot0.findNextStartIndex(slot0, slot1, slot2, slot3)
-	for slot7 = slot1, slot3 do
-		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
+function var_0_0.findNextStartIndex(arg_22_0, arg_22_1, arg_22_2, arg_22_3)
+	for iter_22_0 = arg_22_1, arg_22_3 do
+		local var_22_0 = arg_22_0.cells[arg_22_2][iter_22_0]
+		local var_22_1 = var_22_0 and var_22_0:getStatus()
+
+		if var_22_1 and var_22_0:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
 			break
 		end
 
-		if slot9 and not slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) and not slot8:haveStatus(EliminateEnum_2_7.ChessState.Die) then
-			return slot7
+		if var_22_1 and not var_22_0:haveStatus(EliminateEnum_2_7.ChessState.Frost) and not var_22_0:haveStatus(EliminateEnum_2_7.ChessState.Die) then
+			return iter_22_0
 		end
 	end
 
 	return -1
 end
 
-function slot0.fill(slot0)
-	slot1 = slot0:getEliminateRecordShowData()
+function var_0_0.fill(arg_23_0)
+	local var_23_0 = arg_23_0:getEliminateRecordShowData()
 
-	for slot5 = 1, slot0._row do
-		for slot9 = 1, slot0._col do
-			slot11 = slot0.cells[slot5][slot9] and slot10:getStatus()
+	for iter_23_0 = 1, arg_23_0._row do
+		for iter_23_1 = 1, arg_23_0._col do
+			local var_23_1 = arg_23_0.cells[iter_23_0][iter_23_1]
+			local var_23_2
 
-			if slot10:haveStatus(EliminateEnum_2_7.ChessState.Die) and slot0:findNextSpecialIndex(slot9 + 1, slot5, slot0._row) == -1 then
-				slot0:createNewCell(slot5, slot9, EliminateEnum_2_7.ChessState.Normal):setStartXY(slot5, slot0._row + 1)
-				slot0:addChangePoints(slot5, slot9)
-				slot1:addNew(slot5, slot9)
+			var_23_2 = var_23_1 and var_23_1:getStatus()
+
+			if var_23_1:haveStatus(EliminateEnum_2_7.ChessState.Die) and arg_23_0:findNextSpecialIndex(iter_23_1 + 1, iter_23_0, arg_23_0._row) == -1 then
+				arg_23_0:createNewCell(iter_23_0, iter_23_1, EliminateEnum_2_7.ChessState.Normal):setStartXY(iter_23_0, arg_23_0._row + 1)
+				arg_23_0:addChangePoints(iter_23_0, iter_23_1)
+				var_23_0:addNew(iter_23_0, iter_23_1)
 			end
 		end
 	end
 end
 
-function slot0.findNextSpecialIndex(slot0, slot1, slot2, slot3)
-	for slot7 = slot1, slot3 do
-		if slot0.cells[slot2][slot7] and slot8:getStatus() and slot8:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
-			return slot7
+function var_0_0.findNextSpecialIndex(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
+	for iter_24_0 = arg_24_1, arg_24_3 do
+		local var_24_0 = arg_24_0.cells[arg_24_2][iter_24_0]
+
+		if var_24_0 and var_24_0:getStatus() and var_24_0:haveStatus(EliminateEnum_2_7.ChessState.Frost) then
+			return iter_24_0
 		end
 	end
 
 	return -1
 end
 
-function slot0.check(slot0, slot1, slot2)
-	if slot0._changePoints ~= nil and #slot0._changePoints > 0 then
-		for slot7 = 1, #slot0._changePoints / 2 do
-			if slot0:checkPoint(slot0._changePoints[slot7 * 2 - 1], slot0._changePoints[slot7 * 2]) and #slot10.eliminatePoints >= 3 then
-				-- Nothing
+function var_0_0.check(arg_25_0, arg_25_1, arg_25_2)
+	if arg_25_0._changePoints ~= nil and #arg_25_0._changePoints > 0 then
+		local var_25_0 = {}
+
+		for iter_25_0 = 1, #arg_25_0._changePoints / 2 do
+			local var_25_1 = arg_25_0._changePoints[iter_25_0 * 2 - 1]
+			local var_25_2 = arg_25_0._changePoints[iter_25_0 * 2]
+			local var_25_3 = arg_25_0:checkPoint(var_25_1, var_25_2)
+
+			if var_25_3 and #var_25_3.eliminatePoints >= 3 then
+				var_25_0[var_25_1 .. "_" .. var_25_2] = var_25_3
 			end
 		end
 
-		slot4 = {}
+		local var_25_4 = {}
 
-		for slot8, slot9 in pairs({
-			[slot8 .. "_" .. slot9] = slot10
-		}) do
-			for slot13 = 1, #slot9.eliminatePoints do
-				slot15 = slot9.eliminatePoints[slot13].y
+		for iter_25_1, iter_25_2 in pairs(var_25_0) do
+			for iter_25_3 = 1, #iter_25_2.eliminatePoints do
+				local var_25_5 = iter_25_2.eliminatePoints[iter_25_3].x
+				local var_25_6 = iter_25_2.eliminatePoints[iter_25_3].y
 
-				if slot9.eliminatePoints[slot13].x ~= slot9.eliminateX or slot15 ~= slot9.eliminateY then
-					slot16 = slot14 .. "_" .. slot15
-					slot17 = false
+				if var_25_5 ~= iter_25_2.eliminateX or var_25_6 ~= iter_25_2.eliminateY then
+					local var_25_7 = var_25_5 .. "_" .. var_25_6
+					local var_25_8 = false
 
-					for slot21 = 1, #slot4 do
-						if slot16 == slot4[slot21] or slot8 == slot22 then
-							slot17 = true
+					for iter_25_4 = 1, #var_25_4 do
+						local var_25_9 = var_25_4[iter_25_4]
+
+						if var_25_7 == var_25_9 or iter_25_1 == var_25_9 then
+							var_25_8 = true
 
 							break
 						end
 					end
 
-					if not slot17 and slot3[slot16] ~= nil and #slot18.eliminatePoints <= #slot9.eliminatePoints then
-						table.insert(slot4, slot16)
+					if not var_25_8 then
+						local var_25_10 = var_25_0[var_25_7]
+
+						if var_25_10 ~= nil and #var_25_10.eliminatePoints <= #iter_25_2.eliminatePoints then
+							table.insert(var_25_4, var_25_7)
+						end
 					end
 				end
 			end
 		end
 
-		for slot8, slot9 in pairs(slot4) do
-			slot3[slot9] = nil
+		for iter_25_5, iter_25_6 in pairs(var_25_4) do
+			var_25_0[iter_25_6] = nil
 		end
 
-		for slot8, slot9 in pairs(slot3) do
-			if slot0:canAddResult(slot9) then
-				table.insert(slot0._tempEliminateCheckResults, slot9)
+		for iter_25_7, iter_25_8 in pairs(var_25_0) do
+			if arg_25_0:canAddResult(iter_25_8) then
+				table.insert(arg_25_0._tempEliminateCheckResults, iter_25_8)
 			end
 		end
 	end
 
-	if slot1 then
-		tabletool.clear(slot0._changePoints)
+	if arg_25_1 then
+		tabletool.clear(arg_25_0._changePoints)
 	end
 
-	if #slot0._tempEliminateCheckResults > 0 then
-		if slot2 then
-			tabletool.clear(slot0._tempEliminateCheckResults)
+	if #arg_25_0._tempEliminateCheckResults > 0 then
+		if arg_25_2 then
+			tabletool.clear(arg_25_0._tempEliminateCheckResults)
 		end
 
 		return true
@@ -540,362 +601,407 @@ function slot0.check(slot0, slot1, slot2)
 	return false
 end
 
-function slot0.canAddResult(slot0, slot1)
-	slot2 = true
+function var_0_0.canAddResult(arg_26_0, arg_26_1)
+	local var_26_0 = true
 
-	for slot6 = 1, #slot0._tempEliminateCheckResults do
-		if #slot0._tempEliminateCheckResults[slot6].eliminatePoints == #slot1.eliminatePoints then
-			slot10 = true
+	for iter_26_0 = 1, #arg_26_0._tempEliminateCheckResults do
+		local var_26_1 = arg_26_0._tempEliminateCheckResults[iter_26_0].eliminatePoints
+		local var_26_2 = arg_26_1.eliminatePoints
 
-			for slot14 = 1, #slot8 do
-				if slot8[slot14].x ~= slot9[slot14].x or slot15.y ~= slot16.y then
-					slot10 = false
+		if #var_26_1 == #var_26_2 then
+			local var_26_3 = true
+
+			for iter_26_1 = 1, #var_26_1 do
+				local var_26_4 = var_26_1[iter_26_1]
+				local var_26_5 = var_26_2[iter_26_1]
+
+				if var_26_4.x ~= var_26_5.x or var_26_4.y ~= var_26_5.y then
+					var_26_3 = false
 
 					break
 				end
 			end
 
-			if slot10 then
-				slot2 = false
+			if var_26_3 then
+				var_26_0 = false
 
 				break
 			end
 		end
 	end
 
-	return slot2
+	return var_26_0
 end
 
-function slot0.createNewCell(slot0, slot1, slot2, slot3, slot4)
-	slot5 = EliminateChessCellMO.New()
+function var_0_0.createNewCell(arg_27_0, arg_27_1, arg_27_2, arg_27_3, arg_27_4)
+	local var_27_0 = EliminateChessCellMO.New()
 
-	slot0:initCell(slot5, slot1, slot2, slot3, slot4)
+	arg_27_0:initCell(var_27_0, arg_27_1, arg_27_2, arg_27_3, arg_27_4)
 
-	return slot5
+	return var_27_0
 end
 
-function slot0.initCell(slot0, slot1, slot2, slot3, slot4, slot5)
-	if slot5 == nil then
-		slot1:setChessId(slot0:getRandomId())
+function var_0_0.initCell(arg_28_0, arg_28_1, arg_28_2, arg_28_3, arg_28_4, arg_28_5)
+	if arg_28_5 == nil then
+		arg_28_1:setChessId(arg_28_0:getRandomId())
 	else
-		slot1:setChessId(slot5)
+		arg_28_1:setChessId(arg_28_5)
 	end
 
-	slot1:setXY(slot2, slot3)
-	slot1:setStatus(slot4 and slot4 or EliminateEnum_2_7.ChessState.Normal)
+	arg_28_1:setXY(arg_28_2, arg_28_3)
+	arg_28_1:setStatus(arg_28_4 and arg_28_4 or EliminateEnum_2_7.ChessState.Normal)
 
-	slot0.cells[slot2][slot3] = slot1
+	arg_28_0.cells[arg_28_2][arg_28_3] = arg_28_1
 end
 
-function slot0.getRandomId(slot0)
-	if LocalEliminateChessUtils.getFixDropId() ~= nil then
-		return slot1
+function var_0_0.getRandomId(arg_29_0)
+	local var_29_0 = LocalEliminateChessUtils.getFixDropId()
+
+	if var_29_0 ~= nil then
+		return var_29_0
 	end
 
-	slot0._weights = slot0._weights or {
+	arg_29_0._weights = arg_29_0._weights or {
 		1,
 		1,
 		1,
 		1
 	}
 
-	return EliminateEnum_2_7.AllChessID[EliminateModelUtils.getRandomNumberByWeight(slot0._weights)]
+	local var_29_1 = EliminateModelUtils.getRandomNumberByWeight(arg_29_0._weights)
+
+	return EliminateEnum_2_7.AllChessID[var_29_1]
 end
 
-function slot0._exchangeCell(slot0, slot1, slot2, slot3, slot4)
-	if slot0.cells == nil or slot0.cells[slot1] == nil or slot0.cells[slot3] == nil then
+function var_0_0._exchangeCell(arg_30_0, arg_30_1, arg_30_2, arg_30_3, arg_30_4)
+	if arg_30_0.cells == nil or arg_30_0.cells[arg_30_1] == nil or arg_30_0.cells[arg_30_3] == nil then
 		return
 	end
 
-	slot0.cells[slot1][slot2] = slot0.cells[slot3][slot4]
+	local var_30_0 = arg_30_0.cells[arg_30_1][arg_30_2]
 
-	slot0.cells[slot1][slot2]:setXY(slot1, slot2)
-	slot0.cells[slot1][slot2]:setStartXY(slot3, slot4)
+	arg_30_0.cells[arg_30_1][arg_30_2] = arg_30_0.cells[arg_30_3][arg_30_4]
 
-	slot0.cells[slot3][slot4] = slot0.cells[slot1][slot2]
+	arg_30_0.cells[arg_30_1][arg_30_2]:setXY(arg_30_1, arg_30_2)
+	arg_30_0.cells[arg_30_1][arg_30_2]:setStartXY(arg_30_3, arg_30_4)
 
-	slot0.cells[slot3][slot4]:setXY(slot3, slot4)
-	slot0.cells[slot3][slot4]:setStartXY(slot1, slot2)
+	arg_30_0.cells[arg_30_3][arg_30_4] = var_30_0
+
+	arg_30_0.cells[arg_30_3][arg_30_4]:setXY(arg_30_3, arg_30_4)
+	arg_30_0.cells[arg_30_3][arg_30_4]:setStartXY(arg_30_1, arg_30_2)
 end
 
-function slot0.checkPoint(slot0, slot1, slot2)
-	slot5 = {}
-	slot6 = nil
-	slot7 = EliminateEnum_2_7.eliminateType.three
+function var_0_0.checkPoint(arg_31_0, arg_31_1, arg_31_2)
+	local var_31_0 = arg_31_0:checkWithDirection(arg_31_1, arg_31_2, var_0_1, arg_31_0._row, arg_31_0._col)
+	local var_31_1 = arg_31_0:checkWithDirection(arg_31_1, arg_31_2, var_0_2, arg_31_0._row, arg_31_0._col)
+	local var_31_2 = {}
+	local var_31_3
+	local var_31_4 = EliminateEnum_2_7.eliminateType.three
 
-	if #slot0:checkWithDirection(slot1, slot2, uv0, slot0._row, slot0._col) >= 5 or #slot0:checkWithDirection(slot1, slot2, uv1, slot0._row, slot0._col) >= 5 then
-		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
-		slot7 = EliminateEnum_2_7.eliminateType.five
-	elseif #slot3 >= 3 and #slot4 >= 3 then
-		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
-		slot7 = EliminateEnum_2_7.eliminateType.cross
-	elseif #slot3 >= 4 then
-		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
-		slot7 = EliminateEnum_2_7.eliminateType.four
-	elseif #slot4 >= 4 then
-		slot6 = EliminateEnum_2_7.ChessState.SpecialSkill
-		slot7 = EliminateEnum_2_7.eliminateType.four
+	if #var_31_0 >= 5 or #var_31_1 >= 5 then
+		var_31_3 = EliminateEnum_2_7.ChessState.SpecialSkill
+		var_31_4 = EliminateEnum_2_7.eliminateType.five
+	elseif #var_31_0 >= 3 and #var_31_1 >= 3 then
+		var_31_3 = EliminateEnum_2_7.ChessState.SpecialSkill
+		var_31_4 = EliminateEnum_2_7.eliminateType.cross
+	elseif #var_31_0 >= 4 then
+		var_31_3 = EliminateEnum_2_7.ChessState.SpecialSkill
+		var_31_4 = EliminateEnum_2_7.eliminateType.four
+	elseif #var_31_1 >= 4 then
+		var_31_3 = EliminateEnum_2_7.ChessState.SpecialSkill
+		var_31_4 = EliminateEnum_2_7.eliminateType.four
 	end
 
-	if #slot3 >= 3 then
-		slot5 = slot3
+	if #var_31_0 >= 3 then
+		var_31_2 = var_31_0
 	end
 
-	if #slot4 >= 3 then
-		slot5 = EliminateModelUtils.mergePointArray(slot5, slot4)
+	if #var_31_1 >= 3 then
+		var_31_2 = EliminateModelUtils.mergePointArray(var_31_2, var_31_1)
 	end
 
 	return {
-		eliminatePoints = slot5,
-		newCellStatus = slot6,
-		oldCellStatus = slot0.cells[slot1][slot2]:getStatus(),
-		eliminateX = slot1,
-		eliminateY = slot2,
-		eliminateType = slot7,
+		eliminatePoints = var_31_2,
+		newCellStatus = var_31_3,
+		oldCellStatus = arg_31_0.cells[arg_31_1][arg_31_2]:getStatus(),
+		eliminateX = arg_31_1,
+		eliminateY = arg_31_2,
+		eliminateType = var_31_4,
 		skillEffect = LengZhou6Enum.NormalEliminateEffect
 	}
 end
 
-function slot0.checkWithDirection(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot7 = {
-		[slot1 + slot2 * slot5] = true
+function var_0_0.checkWithDirection(arg_32_0, arg_32_1, arg_32_2, arg_32_3, arg_32_4, arg_32_5)
+	local var_32_0 = {}
+	local var_32_1 = {
+		[arg_32_1 + arg_32_2 * arg_32_5] = true
 	}
 
-	table.insert({}, {
-		x = slot1,
-		y = slot2
+	table.insert(var_32_0, {
+		x = arg_32_1,
+		y = arg_32_2
 	})
 
-	slot8 = 1
+	local var_32_2 = 1
 
-	while slot8 <= #slot6 do
-		slot9 = slot6[slot8]
-		slot8 = slot8 + 1
+	while var_32_2 <= #var_32_0 do
+		local var_32_3 = var_32_0[var_32_2]
 
-		if slot0.cells[slot9.x][slot9.y] then
-			for slot14 = 1, #slot3 do
-				slot16 = slot2 + slot3[slot14].y
+		arg_32_1 = var_32_3.x
+		arg_32_2 = var_32_3.y
 
-				if slot1 + slot3[slot14].x >= 1 and slot4 >= slot15 and slot16 >= 1 and slot5 >= slot16 and not slot7[slot15 + slot16 * slot5] and slot0.cells[slot15] ~= nil then
-					if slot0.cells[slot15][slot16] == nil then
-						-- Nothing
-					elseif slot10.id == slot0.cells[slot15][slot16].id and slot10.id ~= EliminateEnum_2_7.InvalidId and slot10.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
-						slot7[slot15 + slot16 * slot5] = true
+		local var_32_4 = arg_32_0.cells[arg_32_1][arg_32_2]
 
-						table.insert(slot6, {
-							x = slot15,
-							y = slot16
-						})
-					end
+		var_32_2 = var_32_2 + 1
+
+		if not var_32_4 then
+			-- block empty
+		else
+			for iter_32_0 = 1, #arg_32_3 do
+				local var_32_5 = arg_32_1 + arg_32_3[iter_32_0].x
+				local var_32_6 = arg_32_2 + arg_32_3[iter_32_0].y
+
+				if var_32_5 < 1 or arg_32_4 < var_32_5 or var_32_6 < 1 or arg_32_5 < var_32_6 or var_32_1[var_32_5 + var_32_6 * arg_32_5] or arg_32_0.cells[var_32_5] == nil or arg_32_0.cells[var_32_5][var_32_6] == nil then
+					-- block empty
+				elseif var_32_4.id == arg_32_0.cells[var_32_5][var_32_6].id and var_32_4.id ~= EliminateEnum_2_7.InvalidId and var_32_4.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
+					var_32_1[var_32_5 + var_32_6 * arg_32_5] = true
+
+					table.insert(var_32_0, {
+						x = var_32_5,
+						y = var_32_6
+					})
 				end
 			end
 		end
 	end
 
-	return slot6
+	return var_32_0
 end
 
-function slot0.getAllEliminateIdPos(slot0, slot1)
-	slot2 = {}
+function var_0_0.getAllEliminateIdPos(arg_33_0, arg_33_1)
+	local var_33_0 = {}
 
-	for slot6 = 1, slot0._row do
-		for slot10 = 1, slot0._col do
-			if slot0:getCell(slot6, slot10).id == slot1 then
-				table.insert(slot2, {
-					x = slot6,
-					y = slot10
+	for iter_33_0 = 1, arg_33_0._row do
+		for iter_33_1 = 1, arg_33_0._col do
+			if arg_33_0:getCell(iter_33_0, iter_33_1).id == arg_33_1 then
+				table.insert(var_33_0, {
+					x = iter_33_0,
+					y = iter_33_1
 				})
 			end
 		end
 	end
 
-	return slot2
+	return var_33_0
 end
 
-function slot0.canEliminate(slot0)
-	if slot0.cells == nil then
+function var_0_0.canEliminate(arg_34_0)
+	if arg_34_0.cells == nil then
 		return nil
 	end
 
-	return LocalEliminateChessUtils.instance.canEliminate(slot0.cells, slot0._row, slot0._col)
+	return LocalEliminateChessUtils.instance.canEliminate(arg_34_0.cells, arg_34_0._row, arg_34_0._col)
 end
 
-function slot0.createInitMoveState(slot0)
-	slot0:initByData(LocalEliminateChessUtils.instance.generateUnsolvableBoard(EliminateEnum_2_7.MaxRow, EliminateEnum_2_7.MaxCol))
+function var_0_0.createInitMoveState(arg_35_0)
+	local var_35_0 = LocalEliminateChessUtils.instance.generateUnsolvableBoard(EliminateEnum_2_7.MaxRow, EliminateEnum_2_7.MaxCol)
+
+	arg_35_0:initByData(var_35_0)
 end
 
-function slot0.addChangePoints(slot0, slot1, slot2)
-	if slot0._changePoints == nil then
-		slot0._changePoints = {}
+function var_0_0.addChangePoints(arg_36_0, arg_36_1, arg_36_2)
+	if arg_36_0._changePoints == nil then
+		arg_36_0._changePoints = {}
 	end
 
-	table.insert(slot0._changePoints, slot1)
-	table.insert(slot0._changePoints, slot2)
+	table.insert(arg_36_0._changePoints, arg_36_1)
+	table.insert(arg_36_0._changePoints, arg_36_2)
 end
 
-function slot0.printInfo(slot0, slot1)
+function var_0_0.printInfo(arg_37_0, arg_37_1)
 	if isDebugBuild then
-		slot2 = "\n"
+		local var_37_0 = "\n"
 
-		for slot6 = slot0._row, 1, -1 do
-			slot7 = ""
+		for iter_37_0 = arg_37_0._row, 1, -1 do
+			local var_37_1 = ""
 
-			for slot11 = 1, slot0._col do
-				for slot18 = 1, #slot0.cells[slot11][slot6]:getStatus() do
-					slot14 = 0 + slot13[slot18]
+			for iter_37_1 = 1, arg_37_0._col do
+				local var_37_2 = arg_37_0.cells[iter_37_1][iter_37_0]
+				local var_37_3 = var_37_2:getStatus()
+				local var_37_4 = 0
+
+				for iter_37_2 = 1, #var_37_3 do
+					var_37_4 = var_37_4 + var_37_3[iter_37_2]
 				end
 
-				slot7 = slot7 .. slot12.id .. "[" .. slot14 .. "]" .. " "
+				var_37_1 = var_37_1 .. var_37_2.id .. "[" .. var_37_4 .. "]" .. " "
 			end
 
-			slot2 = slot2 .. slot7 .. "\n"
+			var_37_0 = var_37_0 .. var_37_1 .. "\n"
 		end
 
-		logNormal((slot1 and slot1 or "") .. slot2)
+		logNormal((arg_37_1 and arg_37_1 or "") .. var_37_0)
 	end
 end
 
-function slot0.recordSpEffect(slot0, slot1, slot2, slot3)
-	if slot0._chessEffect == nil then
-		slot0._chessEffect = {}
+function var_0_0.recordSpEffect(arg_38_0, arg_38_1, arg_38_2, arg_38_3)
+	if arg_38_0._chessEffect == nil then
+		arg_38_0._chessEffect = {}
 	end
 
-	slot0._chessEffect[slot1 .. "_" .. slot2] = slot3
+	arg_38_0._chessEffect[arg_38_1 .. "_" .. arg_38_2] = arg_38_3
 
-	slot0:addSpEffectCd(slot1, slot2, slot3)
+	arg_38_0:addSpEffectCd(arg_38_1, arg_38_2, arg_38_3)
 end
 
-function slot0.getSpEffect(slot0, slot1, slot2)
-	if slot0._chessEffect == nil then
+function var_0_0.getSpEffect(arg_39_0, arg_39_1, arg_39_2)
+	if arg_39_0._chessEffect == nil then
 		return nil
 	end
 
-	return slot0._chessEffect[slot1 .. "_" .. slot2]
+	return arg_39_0._chessEffect[arg_39_1 .. "_" .. arg_39_2]
 end
 
-function slot0.clearAllEffect(slot0)
-	if slot0._chessEffect ~= nil then
-		tabletool.clear(slot0._chessEffect)
+function var_0_0.clearAllEffect(arg_40_0)
+	if arg_40_0._chessEffect ~= nil then
+		tabletool.clear(arg_40_0._chessEffect)
 	end
 
-	if slot0._needChessCdEffect ~= nil then
-		tabletool.clear(slot0._needChessCdEffect)
+	if arg_40_0._needChessCdEffect ~= nil then
+		tabletool.clear(arg_40_0._needChessCdEffect)
 	end
 end
 
-function slot0.addSpEffectCd(slot0, slot1, slot2, slot3)
-	if slot0._needChessCdEffect == nil then
-		slot0._needChessCdEffect = {}
+function var_0_0.addSpEffectCd(arg_41_0, arg_41_1, arg_41_2, arg_41_3)
+	if arg_41_0._needChessCdEffect == nil then
+		arg_41_0._needChessCdEffect = {}
 	end
 
-	if slot3 and slot3 == EliminateEnum_2_7.ChessEffect.pollution then
-		table.insert(slot0._needChessCdEffect, {
-			x = slot1,
-			y = slot2,
-			cd = LengZhou6Config.instance:getEliminateBattleCost(32),
-			effect = slot3
+	if arg_41_3 and arg_41_3 == EliminateEnum_2_7.ChessEffect.pollution then
+		local var_41_0 = LengZhou6Config.instance:getEliminateBattleCost(32)
+
+		table.insert(arg_41_0._needChessCdEffect, {
+			x = arg_41_1,
+			y = arg_41_2,
+			cd = var_41_0,
+			effect = arg_41_3
 		})
 	end
 end
 
-function slot0.updateSpEffectCd(slot0)
-	if slot0._needChessCdEffect == nil then
+function var_0_0.updateSpEffectCd(arg_42_0)
+	if arg_42_0._needChessCdEffect == nil then
 		return
 	end
 
-	slot1 = {
-		[slot5] = true
-	}
+	local var_42_0 = {}
 
-	for slot5 = 1, #slot0._needChessCdEffect do
-		if slot0._needChessCdEffect[slot5].cd <= 0 then
-			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.HideEffect, slot6.x, slot6.y, slot6.effect)
+	for iter_42_0 = 1, #arg_42_0._needChessCdEffect do
+		local var_42_1 = arg_42_0._needChessCdEffect[iter_42_0]
+
+		if var_42_1.cd <= 0 then
+			local var_42_2 = var_42_1.x
+			local var_42_3 = var_42_1.y
+			local var_42_4 = var_42_1.effect
+
+			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.HideEffect, var_42_2, var_42_3, var_42_4)
+
+			var_42_0[iter_42_0] = true
 		else
-			slot6.cd = slot6.cd - 1
-			slot0._needChessCdEffect[slot5] = slot6
+			var_42_1.cd = var_42_1.cd - 1
+			arg_42_0._needChessCdEffect[iter_42_0] = var_42_1
 		end
 	end
 
-	for slot5 = #slot0._needChessCdEffect, 1, -1 do
-		if slot1[slot5] then
-			table.remove(slot0._needChessCdEffect, slot5)
+	for iter_42_1 = #arg_42_0._needChessCdEffect, 1, -1 do
+		if var_42_0[iter_42_1] then
+			table.remove(arg_42_0._needChessCdEffect, iter_42_1)
 		end
 	end
 end
 
-function slot0.setEliminateCount(slot0, slot1)
-	slot0._eliminateCount = slot1
+function var_0_0.setEliminateCount(arg_43_0, arg_43_1)
+	arg_43_0._eliminateCount = arg_43_1
 end
 
-function slot0.roundDataClear(slot0)
-	slot0:setEliminateCount(nil)
+function var_0_0.roundDataClear(arg_44_0)
+	arg_44_0:setEliminateCount(nil)
 
-	if slot0._allEliminateRecordData ~= nil then
-		tabletool.clear(slot0._allEliminateRecordData)
+	if arg_44_0._allEliminateRecordData ~= nil then
+		tabletool.clear(arg_44_0._allEliminateRecordData)
 	end
 end
 
-function slot0.AddEliminateRecord(slot0)
-	if slot0._allEliminateRecordData == nil then
-		slot0._allEliminateRecordData = {}
+function var_0_0.AddEliminateRecord(arg_45_0)
+	if arg_45_0._allEliminateRecordData == nil then
+		arg_45_0._allEliminateRecordData = {}
 	end
 
-	table.insert(slot0._allEliminateRecordData, EliminateRecordDataMO.New())
+	local var_45_0 = EliminateRecordDataMO.New()
+
+	table.insert(arg_45_0._allEliminateRecordData, var_45_0)
 end
 
-function slot0.getCurEliminateRecordData(slot0)
-	if slot0._allEliminateRecordData == nil then
-		slot0:AddEliminateRecord()
+function var_0_0.getCurEliminateRecordData(arg_46_0)
+	if arg_46_0._allEliminateRecordData == nil then
+		arg_46_0:AddEliminateRecord()
 	end
 
-	return slot0._allEliminateRecordData[#slot0._allEliminateRecordData]
+	return arg_46_0._allEliminateRecordData[#arg_46_0._allEliminateRecordData]
 end
 
-function slot0.getAllEliminateRecordData(slot0)
-	return slot0._allEliminateRecordData
+function var_0_0.getAllEliminateRecordData(arg_47_0)
+	return arg_47_0._allEliminateRecordData
 end
 
-function slot0.getEliminateRecordShowData(slot0)
-	if slot0._eliminateRecordShowMo == nil then
-		slot0._eliminateRecordShowMo = EliminateRecordShowMO.New()
+function var_0_0.getEliminateRecordShowData(arg_48_0)
+	if arg_48_0._eliminateRecordShowMo == nil then
+		arg_48_0._eliminateRecordShowMo = EliminateRecordShowMO.New()
 	end
 
-	return slot0._eliminateRecordShowMo
+	return arg_48_0._eliminateRecordShowMo
 end
 
-function slot0.clear(slot0)
-	slot0._eliminateRecordShowMo = nil
-	slot0._allEliminateRecordData = nil
-	slot0.cells = nil
-	slot0._weights = nil
-	slot0._needChessCdEffect = nil
-	slot0._chessEffect = nil
+function var_0_0.clear(arg_49_0)
+	arg_49_0._eliminateRecordShowMo = nil
+	arg_49_0._allEliminateRecordData = nil
+	arg_49_0.cells = nil
+	arg_49_0._weights = nil
+	arg_49_0._needChessCdEffect = nil
+	arg_49_0._chessEffect = nil
 end
 
-function slot0.testRound(slot0)
-	slot1 = {}
+function var_0_0.testRound(arg_50_0)
+	local var_50_0 = {}
 
-	for slot5 = 1, 10000 do
-		table.insert(slot1, EliminateEnum_2_7.ChessIndexToType[slot0:getRandomId()])
+	for iter_50_0 = 1, 10000 do
+		local var_50_1 = arg_50_0:getRandomId()
+		local var_50_2 = EliminateEnum_2_7.ChessIndexToType[var_50_1]
+
+		table.insert(var_50_0, var_50_2)
 	end
 
-	slot2 = {}
+	local var_50_3 = {}
 
-	for slot6 = 1, #slot1 do
-		if slot2[slot1[slot6]] == nil then
-			slot2[slot7] = 1
+	for iter_50_1 = 1, #var_50_0 do
+		local var_50_4 = var_50_0[iter_50_1]
+
+		if var_50_3[var_50_4] == nil then
+			var_50_3[var_50_4] = 1
 		else
-			slot2[slot7] = slot2[slot7] + 1
+			var_50_3[var_50_4] = var_50_3[var_50_4] + 1
 		end
 	end
 
-	for slot7, slot8 in pairs(slot2) do
-		slot3 = "" .. slot7 .. " : " .. slot8 / 10000 * 100 .. "%\n"
+	local var_50_5 = ""
+
+	for iter_50_2, iter_50_3 in pairs(var_50_3) do
+		var_50_5 = var_50_5 .. iter_50_2 .. " : " .. iter_50_3 / 10000 * 100 .. "%\n"
 	end
 
-	logNormal(slot3)
+	logNormal(var_50_5)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

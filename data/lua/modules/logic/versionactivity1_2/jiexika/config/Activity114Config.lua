@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity1_2.jiexika.config.Activity114Config", package.seeall)
+﻿module("modules.logic.versionactivity1_2.jiexika.config.Activity114Config", package.seeall)
 
-slot0 = class("Activity114Config", BaseConfig)
+local var_0_0 = class("Activity114Config", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"activity114_photo",
 		"activity114_round",
@@ -19,357 +19,390 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onInit(slot0)
-	slot0._attrVerify = nil
-	slot0._eventDict = nil
-	slot0._eduEventDict = nil
-	slot0._restEventDict = nil
-	slot0._rateDescDict = nil
-	slot0._allActivityIds = nil
-	slot0._answerFailDict = nil
-	slot0._motionDic = nil
+function var_0_0.onInit(arg_2_0)
+	arg_2_0._attrVerify = nil
+	arg_2_0._eventDict = nil
+	arg_2_0._eduEventDict = nil
+	arg_2_0._restEventDict = nil
+	arg_2_0._rateDescDict = nil
+	arg_2_0._allActivityIds = nil
+	arg_2_0._answerFailDict = nil
+	arg_2_0._motionDic = nil
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot1 == "activity114_attribute" then
-		slot0._attrVerify = {}
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	if arg_3_1 == "activity114_attribute" then
+		arg_3_0._attrVerify = {}
 
-		for slot6, slot7 in ipairs(slot2.configList) do
-			slot9 = {
-				[slot13] = string.splitToNumber(slot14, "#")
+		for iter_3_0, iter_3_1 in ipairs(arg_3_2.configList) do
+			local var_3_0 = string.split(iter_3_1.attributeNum, "|")
+			local var_3_1 = {}
+
+			for iter_3_2, iter_3_3 in ipairs(var_3_0) do
+				var_3_1[iter_3_2] = string.splitToNumber(iter_3_3, "#")
+			end
+
+			if not arg_3_0._attrVerify[iter_3_1.activityId] then
+				arg_3_0._attrVerify[iter_3_1.activityId] = {}
+			end
+
+			arg_3_0._attrVerify[iter_3_1.activityId][iter_3_1.id] = var_3_1
+		end
+	elseif arg_3_1 == "activity114_event" then
+		arg_3_0._eventDict = {}
+		arg_3_0._eduEventDict = {}
+		arg_3_0._restEventDict = {}
+		arg_3_0._allActivityIds = {}
+
+		for iter_3_4, iter_3_5 in ipairs(arg_3_2.configList) do
+			if not arg_3_0._eventDict[iter_3_5.activityId] then
+				arg_3_0._eventDict[iter_3_5.activityId] = {}
+			end
+
+			arg_3_0._allActivityIds[iter_3_5.activityId] = true
+
+			local var_3_2 = {}
+			local var_3_3 = {}
+			local var_3_4 = {}
+			local var_3_5 = {}
+			local var_3_6 = {}
+			local var_3_7 = {}
+
+			arg_3_0:_splitVerifyInfo(iter_3_5.successVerify, var_3_3, var_3_2)
+			arg_3_0:_splitVerifyInfo(iter_3_5.failureVerify, var_3_5, var_3_4)
+			arg_3_0:_splitVerifyInfo(iter_3_5.successBattle, var_3_7, var_3_6)
+
+			local var_3_8 = {
+				config = iter_3_5,
+				successVerify = var_3_2,
+				failureVerify = var_3_4,
+				successFeatures = var_3_3,
+				failureFeatures = var_3_5,
+				successBattleFeatures = var_3_7,
+				successBattleVerify = var_3_6
 			}
 
-			for slot13, slot14 in ipairs(string.split(slot7.attributeNum, "|")) do
-				-- Nothing
-			end
+			arg_3_0._eventDict[iter_3_5.activityId][iter_3_5.id] = var_3_8
 
-			if not slot0._attrVerify[slot7.activityId] then
-				slot0._attrVerify[slot7.activityId] = {}
-			end
-
-			slot0._attrVerify[slot7.activityId][slot7.id] = slot9
-		end
-	elseif slot1 == "activity114_event" then
-		slot0._eventDict = {}
-		slot0._eduEventDict = {}
-		slot0._restEventDict = {}
-		slot0._allActivityIds = {}
-
-		for slot6, slot7 in ipairs(slot2.configList) do
-			if not slot0._eventDict[slot7.activityId] then
-				slot0._eventDict[slot7.activityId] = {}
-			end
-
-			slot0._allActivityIds[slot7.activityId] = true
-			slot8 = {}
-			slot9 = {}
-			slot10 = {}
-			slot11 = {}
-			slot12 = {}
-			slot13 = {}
-
-			slot0:_splitVerifyInfo(slot7.successVerify, slot9, slot8)
-			slot0:_splitVerifyInfo(slot7.failureVerify, slot11, slot10)
-			slot0:_splitVerifyInfo(slot7.successBattle, slot13, slot12)
-
-			slot0._eventDict[slot7.activityId][slot7.id] = {
-				config = slot7,
-				successVerify = slot8,
-				failureVerify = slot10,
-				successFeatures = slot9,
-				failureFeatures = slot11,
-				successBattleFeatures = slot13,
-				successBattleVerify = slot12
-			}
-
-			if slot7.eventType == Activity114Enum.EventType.Edu then
-				if not slot0._eduEventDict[slot7.activityId] then
-					slot0._eduEventDict[slot7.activityId] = {}
+			if iter_3_5.eventType == Activity114Enum.EventType.Edu then
+				if not arg_3_0._eduEventDict[iter_3_5.activityId] then
+					arg_3_0._eduEventDict[iter_3_5.activityId] = {}
 				end
 
-				slot0._eduEventDict[slot7.activityId][tonumber(slot7.param)] = slot14
-			elseif slot7.eventType == Activity114Enum.EventType.Rest then
-				if not slot0._restEventDict[slot7.activityId] then
-					slot0._restEventDict[slot7.activityId] = {}
+				arg_3_0._eduEventDict[iter_3_5.activityId][tonumber(iter_3_5.param)] = var_3_8
+			elseif iter_3_5.eventType == Activity114Enum.EventType.Rest then
+				if not arg_3_0._restEventDict[iter_3_5.activityId] then
+					arg_3_0._restEventDict[iter_3_5.activityId] = {}
 				end
 
-				slot0._restEventDict[slot7.activityId][tonumber(slot7.param)] = slot14
+				arg_3_0._restEventDict[iter_3_5.activityId][tonumber(iter_3_5.param)] = var_3_8
 			end
 		end
-	elseif slot1 == "activity114_difficulty" then
-		slot0._rateDescDict = {}
+	elseif arg_3_1 == "activity114_difficulty" then
+		arg_3_0._rateDescDict = {}
 
-		for slot6, slot7 in ipairs(slot2.configList) do
-			slot8 = string.splitToNumber(slot7.interval, ",")
-			slot0._rateDescDict[slot6] = {
-				min = slot8[1],
-				max = slot8[2],
-				co = slot7
+		for iter_3_6, iter_3_7 in ipairs(arg_3_2.configList) do
+			local var_3_9 = string.splitToNumber(iter_3_7.interval, ",")
+
+			arg_3_0._rateDescDict[iter_3_6] = {
+				min = var_3_9[1],
+				max = var_3_9[2],
+				co = iter_3_7
 			}
 		end
-	elseif slot1 == "activity114_test" then
-		slot0._answerFailDict = {}
+	elseif arg_3_1 == "activity114_test" then
+		arg_3_0._answerFailDict = {}
 
-		for slot6, slot7 in pairs(slot2.configDict) do
-			slot0._answerFailDict[slot6] = {}
+		for iter_3_8, iter_3_9 in pairs(arg_3_2.configDict) do
+			arg_3_0._answerFailDict[iter_3_8] = {}
 
-			for slot11, slot12 in pairs(slot7) do
-				if not slot0._answerFailDict[slot6][slot12.testId] then
-					slot0._answerFailDict[slot6][slot12.testId] = string.splitToNumber(slot12.result, "#")[1]
+			for iter_3_10, iter_3_11 in pairs(iter_3_9) do
+				if not arg_3_0._answerFailDict[iter_3_8][iter_3_11.testId] then
+					local var_3_10 = string.splitToNumber(iter_3_11.result, "#")
+
+					arg_3_0._answerFailDict[iter_3_8][iter_3_11.testId] = var_3_10[1]
 				end
 			end
 		end
-	elseif slot1 == "activity114_motion" then
-		slot0._motionDic = {}
+	elseif arg_3_1 == "activity114_motion" then
+		arg_3_0._motionDic = {}
 
-		for slot6, slot7 in ipairs(slot2.configList) do
-			if slot7.type == Activity114Enum.MotionType.Time then
-				if not slot0._motionDic[slot7.type] then
-					slot0._motionDic[slot7.type] = {}
-					slot0._motionDic.firstTime = string.splitToNumber(slot7.param, "#")[1] or 0
-					slot0._motionDic.nextTime = slot8[2] or 0
+		for iter_3_12, iter_3_13 in ipairs(arg_3_2.configList) do
+			if iter_3_13.type == Activity114Enum.MotionType.Time then
+				if not arg_3_0._motionDic[iter_3_13.type] then
+					arg_3_0._motionDic[iter_3_13.type] = {}
+
+					local var_3_11 = string.splitToNumber(iter_3_13.param, "#")
+
+					arg_3_0._motionDic.firstTime = var_3_11[1] or 0
+					arg_3_0._motionDic.nextTime = var_3_11[2] or 0
 				end
 
-				table.insert(slot0._motionDic[slot7.type], slot7)
-			elseif slot7.type == Activity114Enum.MotionType.Click then
-				slot0._motionDic[slot7.type] = slot7
+				table.insert(arg_3_0._motionDic[iter_3_13.type], iter_3_13)
+			elseif iter_3_13.type == Activity114Enum.MotionType.Click then
+				arg_3_0._motionDic[iter_3_13.type] = iter_3_13
 			else
-				if not slot0._motionDic[slot7.type] then
-					slot0._motionDic[slot7.type] = {}
+				if not arg_3_0._motionDic[iter_3_13.type] then
+					arg_3_0._motionDic[iter_3_13.type] = {}
 				end
 
-				slot0._motionDic[slot7.type][tonumber(slot7.param)] = slot7
+				arg_3_0._motionDic[iter_3_13.type][tonumber(iter_3_13.param)] = iter_3_13
 			end
 		end
 	end
 end
 
-function slot0._splitVerifyInfo(slot0, slot1, slot2, slot3)
-	if string.nilorempty(slot1) then
+function var_0_0._splitVerifyInfo(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
+	if string.nilorempty(arg_4_1) then
 		return
 	end
 
-	slot7 = "|"
+	for iter_4_0, iter_4_1 in pairs(string.split(arg_4_1, "|")) do
+		local var_4_0 = string.splitToNumber(iter_4_1, "#")
 
-	for slot7, slot8 in pairs(string.split(slot1, slot7)) do
-		if not string.splitToNumber(slot8, "#")[1] then
-			logError("洁西卡事件奖励配置错误：" .. slot1)
+		if not var_4_0[1] then
+			logError("洁西卡事件奖励配置错误：" .. arg_4_1)
 		end
 
-		if slot9[1] == Activity114Enum.AddAttrType.Feature then
-			table.insert(slot2, slot9[2])
-		elseif slot9[1] and slot9[1] < Activity114Enum.Attr.End or slot9[1] == Activity114Enum.AddAttrType.Attention or slot9[1] == Activity114Enum.AddAttrType.KeyDayScore or slot9[1] == Activity114Enum.AddAttrType.LastKeyDayScore then
-			slot3[slot9[1]] = (slot3[slot9[1]] or 0) + slot9[2]
-		elseif slot9[1] then
-			slot3[slot9[1]] = slot3[slot9[1]] or {}
+		if var_4_0[1] == Activity114Enum.AddAttrType.Feature then
+			table.insert(arg_4_2, var_4_0[2])
+		elseif var_4_0[1] and var_4_0[1] < Activity114Enum.Attr.End or var_4_0[1] == Activity114Enum.AddAttrType.Attention or var_4_0[1] == Activity114Enum.AddAttrType.KeyDayScore or var_4_0[1] == Activity114Enum.AddAttrType.LastKeyDayScore then
+			arg_4_3[var_4_0[1]] = (arg_4_3[var_4_0[1]] or 0) + var_4_0[2]
+		elseif var_4_0[1] then
+			arg_4_3[var_4_0[1]] = arg_4_3[var_4_0[1]] or {}
 
-			table.insert(slot3[slot9[1]], slot9[2])
+			table.insert(arg_4_3[var_4_0[1]], var_4_0[2])
 		end
 	end
 end
 
-function slot0.getUnlockIds(slot0, slot1)
-	slot2 = {
-		[slot8.id] = true
-	}
-	slot3 = {}
+function var_0_0.getUnlockIds(arg_5_0, arg_5_1)
+	local var_5_0 = {}
+	local var_5_1 = {}
 
-	for slot7, slot8 in pairs(lua_activity114_meeting.configDict[slot1]) do
-		if string.find(slot8.condition, "^1#") then
-			-- Nothing
+	for iter_5_0, iter_5_1 in pairs(lua_activity114_meeting.configDict[arg_5_1]) do
+		if string.find(iter_5_1.condition, "^1#") then
+			var_5_0[iter_5_1.id] = true
 		end
 	end
 
-	for slot7, slot8 in pairs(lua_activity114_travel.configDict[slot1]) do
-		if string.find(slot8.condition, "^1#") then
-			slot3[slot8.id] = true
+	for iter_5_2, iter_5_3 in pairs(lua_activity114_travel.configDict[arg_5_1]) do
+		if string.find(iter_5_3.condition, "^1#") then
+			var_5_1[iter_5_3.id] = true
 		end
 	end
 
-	return slot2, slot3
+	return var_5_0, var_5_1
 end
 
-function slot0.getAllActivityIds(slot0)
-	return slot0._allActivityIds
+function var_0_0.getAllActivityIds(arg_6_0)
+	return arg_6_0._allActivityIds
 end
 
-function slot0.getFeatureCo(slot0, slot1, slot2)
-	return lua_activity114_feature.configDict[slot1][slot2]
+function var_0_0.getFeatureCo(arg_7_0, arg_7_1, arg_7_2)
+	return lua_activity114_feature.configDict[arg_7_1][arg_7_2]
 end
 
-function slot0.getMotionCo(slot0)
-	return slot0._motionDic
+function var_0_0.getMotionCo(arg_8_0)
+	return arg_8_0._motionDic
 end
 
-function slot0.getAttrVerify(slot0, slot1, slot2, slot3)
-	if not slot0._attrVerify[slot1][slot2] then
+function var_0_0.getAttrVerify(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
+	if not arg_9_0._attrVerify[arg_9_1][arg_9_2] then
 		return 0
 	end
 
-	slot4 = nil
+	local var_9_0
 
-	for slot8, slot9 in ipairs(slot0._attrVerify[slot1][slot2]) do
-		if slot9[1] <= slot3 then
-			slot4 = slot9[2]
+	for iter_9_0, iter_9_1 in ipairs(arg_9_0._attrVerify[arg_9_1][arg_9_2]) do
+		if arg_9_3 >= iter_9_1[1] then
+			var_9_0 = iter_9_1[2]
 		else
 			break
 		end
 	end
 
-	return slot4 or 0
+	return var_9_0 or 0
 end
 
-function slot0.getEduEventCo(slot0, slot1, slot2)
-	return slot0._eduEventDict[slot1][slot2]
+function var_0_0.getEduEventCo(arg_10_0, arg_10_1, arg_10_2)
+	return arg_10_0._eduEventDict[arg_10_1][arg_10_2]
 end
 
-function slot0.getRestEventCo(slot0, slot1, slot2)
-	return slot0._restEventDict[slot1][slot2]
+function var_0_0.getRestEventCo(arg_11_0, arg_11_1, arg_11_2)
+	return arg_11_0._restEventDict[arg_11_1][arg_11_2]
 end
 
-function slot0.getEventCoById(slot0, slot1, slot2)
-	return slot0._eventDict[slot1][slot2]
+function var_0_0.getEventCoById(arg_12_0, arg_12_1, arg_12_2)
+	return arg_12_0._eventDict[arg_12_1][arg_12_2]
 end
 
-function slot0.getMeetingCoList(slot0, slot1)
-	return lua_activity114_meeting.configDict[slot1]
+function var_0_0.getMeetingCoList(arg_13_0, arg_13_1)
+	return lua_activity114_meeting.configDict[arg_13_1]
 end
 
-function slot0.getTravelCoList(slot0, slot1)
-	return lua_activity114_travel.configDict[slot1]
+function var_0_0.getTravelCoList(arg_14_0, arg_14_1)
+	return lua_activity114_travel.configDict[arg_14_1]
 end
 
-function slot0.getTaskCoById(slot0, slot1, slot2)
-	return lua_activity114_task.configDict[slot1][slot2]
+function var_0_0.getTaskCoById(arg_15_0, arg_15_1, arg_15_2)
+	return lua_activity114_task.configDict[arg_15_1][arg_15_2]
 end
 
-function slot0.getAnswerCo(slot0, slot1, slot2)
-	return lua_activity114_test.configDict[slot1][slot2]
+function var_0_0.getAnswerCo(arg_16_0, arg_16_1, arg_16_2)
+	return lua_activity114_test.configDict[arg_16_1][arg_16_2]
 end
 
-function slot0.getAnswerResult(slot0, slot1, slot2, slot3)
-	slot5 = string.splitToNumber(slot0:getAnswerCo(slot1, slot2).result, "#")
+function var_0_0.getAnswerResult(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	local var_17_0 = arg_17_0:getAnswerCo(arg_17_1, arg_17_2)
+	local var_17_1 = string.splitToNumber(var_17_0.result, "#")
 
-	for slot9 = 3, 1, -1 do
-		if slot5[slot9] > 0 then
-			slot10, slot11 = slot0:getConstValue(slot1, slot5[slot9])
+	for iter_17_0 = 3, 1, -1 do
+		if var_17_1[iter_17_0] > 0 then
+			local var_17_2, var_17_3 = arg_17_0:getConstValue(arg_17_1, var_17_1[iter_17_0])
 
-			if slot10 <= slot3 then
-				return slot9, slot11
+			if var_17_2 <= arg_17_3 then
+				return iter_17_0, var_17_3
 			end
 		end
 	end
 
-	if slot5[1] > 0 then
-		slot6, slot7 = slot0:getConstValue(slot1, slot5[1])
+	if var_17_1[1] > 0 then
+		local var_17_4, var_17_5 = arg_17_0:getConstValue(arg_17_1, var_17_1[1])
 
-		return 1, slot7
+		return 1, var_17_5
 	end
 
-	logError("查找结果失败>>" .. slot4.id .. " >>> " .. slot3)
+	logError("查找结果失败>>" .. var_17_0.id .. " >>> " .. arg_17_3)
 
 	return 1, ""
 end
 
-function slot0.getRoundCo(slot0, slot1, slot2, slot3)
-	return lua_activity114_round.configDict[slot1][slot2][slot3]
+function var_0_0.getRoundCo(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
+	return lua_activity114_round.configDict[arg_18_1][arg_18_2][arg_18_3]
 end
 
-function slot0.getRoundCount(slot0, slot1, slot2, slot3)
-	for slot8 = 1, slot2 - 1 do
-		slot4 = slot3 + #lua_activity114_round.configDict[slot1][slot8]
+function var_0_0.getRoundCount(arg_19_0, arg_19_1, arg_19_2, arg_19_3)
+	local var_19_0 = arg_19_3
+
+	for iter_19_0 = 1, arg_19_2 - 1 do
+		var_19_0 = var_19_0 + #lua_activity114_round.configDict[arg_19_1][iter_19_0]
 	end
 
-	return slot4
+	return var_19_0
 end
 
-function slot0.getKeyDayCo(slot0, slot1, slot2)
+function var_0_0.getKeyDayCo(arg_20_0, arg_20_1, arg_20_2)
 	while true do
-		if not lua_activity114_round.configDict[slot1][slot2 + 1] or not slot3[1] then
+		local var_20_0 = lua_activity114_round.configDict[arg_20_1][arg_20_2 + 1]
+
+		if not var_20_0 or not var_20_0[1] then
 			return
 		end
 
-		if slot3[1].type == Activity114Enum.RoundType.KeyDay then
-			return slot3[1]
+		if var_20_0[1].type == Activity114Enum.RoundType.KeyDay then
+			return var_20_0[1]
 		end
 
-		slot2 = slot2 + 1
+		arg_20_2 = arg_20_2 + 1
 	end
 end
 
-function slot0.getPhotoCoList(slot0, slot1)
-	return lua_activity114_photo.configDict[slot1]
+function var_0_0.getPhotoCoList(arg_21_0, arg_21_1)
+	return lua_activity114_photo.configDict[arg_21_1]
 end
 
-function slot0.getRateDes(slot0, slot1)
-	for slot5, slot6 in pairs(slot0._rateDescDict) do
-		if slot6.min <= slot1 and slot1 <= slot6.max then
-			return slot6.co.word, slot5
+function var_0_0.getRateDes(arg_22_0, arg_22_1)
+	for iter_22_0, iter_22_1 in pairs(arg_22_0._rateDescDict) do
+		if arg_22_1 >= iter_22_1.min and arg_22_1 <= iter_22_1.max then
+			return iter_22_1.co.word, iter_22_0
 		end
 	end
 
 	return "??", 1
 end
 
-function slot0.getEduSuccessRate(slot0, slot1, slot2, slot3)
-	if not slot0:getAttrCo(slot1, slot2) then
+function var_0_0.getEduSuccessRate(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
+	local var_23_0 = arg_23_0:getAttrCo(arg_23_1, arg_23_2)
+
+	if not var_23_0 then
 		return 0
 	end
 
-	slot6, slot7, slot8 = nil
-	slot3 = Mathf.Clamp(slot3, 0, 100)
+	local var_23_1 = string.splitToNumber(var_23_0.educationAttentionConsts, "#")
+	local var_23_2
+	local var_23_3
+	local var_23_4
+	local var_23_5 = (var_23_1[1] or 0) / 1000
+	local var_23_6 = (var_23_1[2] or 0) / 1000
+	local var_23_7 = (var_23_1[3] or 0) / 1000
 
-	return Mathf.Clamp(Mathf.Floor((string.splitToNumber(slot4.educationAttentionConsts, "#")[1] or 0) / 1000 * slot3^2 + (slot5[2] or 0) / 1000 * slot3 + (slot5[3] or 0) / 1000), 0, 100)
+	arg_23_3 = Mathf.Clamp(arg_23_3, 0, 100)
+
+	local var_23_8 = Mathf.Floor(var_23_5 * arg_23_3^2 + var_23_6 * arg_23_3 + var_23_7)
+
+	return Mathf.Clamp(var_23_8, 0, 100)
 end
 
-function slot0.getAttrName(slot0, slot1, slot2)
-	return lua_activity114_attribute.configDict[slot1][slot2].attrName
+function var_0_0.getAttrName(arg_24_0, arg_24_1, arg_24_2)
+	return lua_activity114_attribute.configDict[arg_24_1][arg_24_2].attrName
 end
 
-function slot0.getAttrCo(slot0, slot1, slot2)
-	return lua_activity114_attribute.configDict[slot1][slot2]
+function var_0_0.getAttrCo(arg_25_0, arg_25_1, arg_25_2)
+	return lua_activity114_attribute.configDict[arg_25_1][arg_25_2]
 end
 
-function slot0.getAttrMaxValue(slot0, slot1, slot2)
-	if not slot0._attrVerify[slot1][slot2] then
+function var_0_0.getAttrMaxValue(arg_26_0, arg_26_1, arg_26_2)
+	local var_26_0 = arg_26_0._attrVerify[arg_26_1][arg_26_2]
+
+	if not var_26_0 then
 		return 0
 	end
 
-	return slot3[#slot3][1]
+	return var_26_0[#var_26_0][1]
 end
 
-function slot0.getConstValue(slot0, slot1, slot2)
-	if not (lua_activity114_const.configDict[slot1] and slot3[slot2]) then
+function var_0_0.getConstValue(arg_27_0, arg_27_1, arg_27_2)
+	local var_27_0 = lua_activity114_const.configDict[arg_27_1]
+	local var_27_1 = var_27_0 and var_27_0[arg_27_2]
+
+	if not var_27_1 then
 		return 0, ""
 	end
 
-	return slot4.value, slot4.value2
+	return var_27_1.value, var_27_1.value2
 end
 
-function slot0.getDiceRate(slot0, slot1)
-	if slot1 <= 2 then
+function var_0_0.getDiceRate(arg_28_0, arg_28_1)
+	if arg_28_1 <= 2 then
 		return 100
 	end
 
-	if slot1 > 12 then
+	if arg_28_1 > 12 then
 		return 0
 	end
 
-	if slot1 >= 7 then
-		for slot6 = 1, 14 - slot1 - 1 do
-			slot2 = 0 + slot6
+	if arg_28_1 >= 7 then
+		arg_28_1 = 14 - arg_28_1
+
+		local var_28_0 = 0
+
+		for iter_28_0 = 1, arg_28_1 - 1 do
+			var_28_0 = var_28_0 + iter_28_0
 		end
 
-		return Mathf.Round(slot2 / 36 * 100)
+		return Mathf.Round(var_28_0 / 36 * 100)
 	else
-		for slot6 = 2, slot1 - 1 do
-			slot2 = 0 + slot6 - 1
+		local var_28_1 = 0
+
+		for iter_28_1 = 2, arg_28_1 - 1 do
+			var_28_1 = var_28_1 + iter_28_1 - 1
 		end
 
-		return Mathf.Round(100 - slot2 / 36 * 100)
+		return Mathf.Round(100 - var_28_1 / 36 * 100)
 	end
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,25 +1,29 @@
-module("modules.logic.fight.system.work.FightWorkEffectCardEffectChange", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkEffectCardEffectChange", package.seeall)
 
-slot0 = class("FightWorkEffectCardEffectChange", FightEffectBase)
+local var_0_0 = class("FightWorkEffectCardEffectChange", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if not FightCardDataHelper.cardChangeIsMySide(arg_1_0.actEffectData) then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	for slot6, slot7 in ipairs(string.splitToNumber(slot0.actEffectData.reserveStr, "#")) do
-		if FightDataHelper.handCardMgr.handCard[slot7] then
-			FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, slot7)
-			FightController.instance:dispatchEvent(FightEvent.CardEffectChange, slot7)
+	local var_1_0 = string.splitToNumber(arg_1_0.actEffectData.reserveStr, "#")
+	local var_1_1 = FightDataHelper.handCardMgr.handCard
+
+	for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+		if var_1_1[iter_1_1] then
+			FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, iter_1_1)
+			FightController.instance:dispatchEvent(FightEvent.CardEffectChange, iter_1_1)
 		end
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_2_0)
+	return
 end
 
-return slot0
+return var_0_0

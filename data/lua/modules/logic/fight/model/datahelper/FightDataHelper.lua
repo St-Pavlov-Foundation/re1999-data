@@ -1,90 +1,105 @@
-module("modules.logic.fight.model.datahelper.FightDataHelper", package.seeall)
+﻿module("modules.logic.fight.model.datahelper.FightDataHelper", package.seeall)
 
-slot0 = {
-	defineMgrRef = function ()
-		slot0 = FightDataMgr.instance.mgrList
+local var_0_0 = {}
 
-		for slot4, slot5 in pairs(FightDataMgr.instance) do
-			for slot9, slot10 in ipairs(slot0) do
-				if slot10 == slot5 then
-					uv0[slot4] = slot10
+function var_0_0.defineMgrRef()
+	local var_1_0 = FightDataMgr.instance.mgrList
 
-					break
-				end
+	for iter_1_0, iter_1_1 in pairs(FightDataMgr.instance) do
+		for iter_1_2, iter_1_3 in ipairs(var_1_0) do
+			if iter_1_3 == iter_1_1 then
+				var_0_0[iter_1_0] = iter_1_3
+
+				break
 			end
 		end
-	end,
-	initDataMgr = function ()
-		uv0.lastFightResult = nil
-
-		FightLocalDataMgr.instance:initDataMgr()
-		FightDataMgr.instance:initDataMgr()
-		uv0.defineMgrRef()
-		FightMsgMgr.sendMsg(FightMsgId.AfterInitDataMgrRef)
-	end,
-	initFightData = function (slot0)
-		if not slot0 then
-			uv0.version = 999
-			FightModel.instance._version = uv0.version
-
-			return
-		end
-
-		uv0.version = FightModel.GMForceVersion or slot0.version or 0
-		FightModel.instance._version = uv0.version
-
-		uv0.checkReplay(slot0)
-		FightLocalDataMgr.instance:updateFightData(slot0)
-		FightDataMgr.instance:updateFightData(slot0)
-
-		if isDebugBuild then
-			FightLocalDataMgr.instance.roundMgr.enterData = slot0
-			FightDataMgr.instance.roundMgr.enterData = slot0
-		end
-	end,
-	checkReplay = function (slot0)
-		if uv0.version >= 1 then
-			if slot0.isRecord then
-				uv0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
-			end
-		elseif FightModel.instance:getFightParam() and slot3.isReplay then
-			uv0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
-		elseif FightReplayModel.instance:isReconnectReplay() then
-			uv0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
-		end
-	end,
-	playEffectData = function (slot0)
-		if slot0:isDone() then
-			return
-		end
-
-		uv0.calMgr:playActEffectData(slot0)
-	end,
-	cacheFightWavePush = function (slot0)
-		FightLocalDataMgr.instance.cacheFightMgr:cacheFightWavePush(slot0)
-		FightDataMgr.instance.cacheFightMgr:cacheFightWavePush(slot0)
-	end,
-	setRoundDataByProto = function (slot0)
-		slot1 = FightRoundData.New(slot0)
-
-		if isDebugBuild then
-			slot2 = FightDataUtil.coverData(slot1)
-
-			FightLocalDataMgr.instance.roundMgr:setOriginRoundData(slot2)
-			FightDataMgr.instance.roundMgr:setOriginRoundData(slot2)
-			FightDataMgr.instance.protoCacheMgr:addRoundProto(slot0)
-		end
-
-		FightLocalDataMgr.instance.roundMgr:setRoundData(slot1)
-		FightDataMgr.instance.roundMgr:setRoundData(slot1)
-	end,
-	getBloodPool = function (slot0)
-		slot2 = uv0.teamDataMgr and slot1[slot0]
-
-		return slot2 and slot2.bloodPool
 	end
-}
+end
 
-slot0.initDataMgr()
+function var_0_0.initDataMgr()
+	var_0_0.lastFightResult = nil
 
-return slot0
+	FightLocalDataMgr.instance:initDataMgr()
+	FightDataMgr.instance:initDataMgr()
+	var_0_0.defineMgrRef()
+	FightMsgMgr.sendMsg(FightMsgId.AfterInitDataMgrRef)
+end
+
+function var_0_0.initFightData(arg_3_0)
+	if not arg_3_0 then
+		var_0_0.version = 999
+		FightModel.instance._version = var_0_0.version
+
+		return
+	end
+
+	var_0_0.version = FightModel.GMForceVersion or arg_3_0.version or 0
+	FightModel.instance._version = var_0_0.version
+
+	var_0_0.checkReplay(arg_3_0)
+	FightLocalDataMgr.instance:updateFightData(arg_3_0)
+	FightDataMgr.instance:updateFightData(arg_3_0)
+
+	if isDebugBuild then
+		FightLocalDataMgr.instance.roundMgr.enterData = arg_3_0
+		FightDataMgr.instance.roundMgr.enterData = arg_3_0
+	end
+end
+
+function var_0_0.checkReplay(arg_4_0)
+	local var_4_0 = var_0_0.version
+	local var_4_1 = arg_4_0.isRecord
+
+	if var_4_0 >= 1 then
+		if var_4_1 then
+			var_0_0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
+		end
+	else
+		local var_4_2 = FightModel.instance:getFightParam()
+
+		if var_4_2 and var_4_2.isReplay then
+			var_0_0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
+		elseif FightReplayModel.instance:isReconnectReplay() then
+			var_0_0.stageMgr:enterFightState(FightStageMgr.FightStateType.Replay)
+		end
+	end
+end
+
+function var_0_0.playEffectData(arg_5_0)
+	if arg_5_0:isDone() then
+		return
+	end
+
+	var_0_0.calMgr:playActEffectData(arg_5_0)
+end
+
+function var_0_0.cacheFightWavePush(arg_6_0)
+	FightLocalDataMgr.instance.cacheFightMgr:cacheFightWavePush(arg_6_0)
+	FightDataMgr.instance.cacheFightMgr:cacheFightWavePush(arg_6_0)
+end
+
+function var_0_0.setRoundDataByProto(arg_7_0)
+	local var_7_0 = FightRoundData.New(arg_7_0)
+
+	if isDebugBuild then
+		local var_7_1 = FightDataUtil.coverData(var_7_0)
+
+		FightLocalDataMgr.instance.roundMgr:setOriginRoundData(var_7_1)
+		FightDataMgr.instance.roundMgr:setOriginRoundData(var_7_1)
+		FightDataMgr.instance.protoCacheMgr:addRoundProto(arg_7_0)
+	end
+
+	FightLocalDataMgr.instance.roundMgr:setRoundData(var_7_0)
+	FightDataMgr.instance.roundMgr:setRoundData(var_7_0)
+end
+
+function var_0_0.getBloodPool(arg_8_0)
+	local var_8_0 = var_0_0.teamDataMgr
+	local var_8_1 = var_8_0 and var_8_0[arg_8_0]
+
+	return var_8_1 and var_8_1.bloodPool
+end
+
+var_0_0.initDataMgr()
+
+return var_0_0

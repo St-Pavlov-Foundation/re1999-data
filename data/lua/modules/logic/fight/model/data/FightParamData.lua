@@ -1,7 +1,8 @@
-module("modules.logic.fight.model.data.FightParamData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightParamData", package.seeall)
 
-slot0 = FightDataClass("FightParamData")
-slot0.ParamKey = {
+local var_0_0 = FightDataClass("FightParamData")
+
+var_0_0.ParamKey = {
 	ProgressId = 2,
 	DoomsdayClock_Range1 = 4,
 	ACT191_CUR_HP_RATE = 12,
@@ -16,21 +17,22 @@ slot0.ParamKey = {
 	DoomsdayClock_Range2 = 5
 }
 
-function slot0.onConstructor(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		slot0[slot6.key] = slot6.value
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1) do
+		arg_1_0[iter_1_1.key] = iter_1_1.value
 	end
 end
 
-function slot0.getKey(slot0, slot1)
-	return slot0[slot1]
+function var_0_0.getKey(arg_2_0, arg_2_1)
+	return arg_2_0[arg_2_1]
 end
 
-function slot0.isInit(slot0, slot1)
-	return slot0.initDict[slot1]
+function var_0_0.isInit(arg_3_0, arg_3_1)
+	return arg_3_0.initDict[arg_3_1]
 end
 
-function slot0.setInit(slot0, slot1)
+function var_0_0.setInit(arg_4_0, arg_4_1)
+	return
 end
 
-return slot0
+return var_0_0

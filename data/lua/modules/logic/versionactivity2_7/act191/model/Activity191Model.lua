@@ -1,39 +1,41 @@
-module("modules.logic.versionactivity2_7.act191.model.Activity191Model", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Activity191Model", package.seeall)
 
-slot0 = class("Activity191Model", BaseModel)
+local var_0_0 = class("Activity191Model", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0:reInit()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:reInit()
 end
 
-function slot0.reInit(slot0)
-	slot0.actMoDic = {}
+function var_0_0.reInit(arg_2_0)
+	arg_2_0.actMoDic = {}
 end
 
-function slot0.setActInfo(slot0, slot1, slot2)
-	slot0.curActId = slot1
+function var_0_0.setActInfo(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0.curActId = arg_3_1
 
-	if not slot0.actMoDic[slot1] then
-		slot0.actMoDic[slot1] = Act191MO.New()
+	if not arg_3_0.actMoDic[arg_3_1] then
+		arg_3_0.actMoDic[arg_3_1] = Act191MO.New()
 	end
 
-	slot0.actMoDic[slot1]:initBadgeInfo(slot1)
-	slot0.actMoDic[slot1]:init(slot2)
-	Act191StatController.instance:setActInfo(slot1, slot0.actMoDic[slot1])
+	arg_3_0.actMoDic[arg_3_1]:initBadgeInfo(arg_3_1)
+	arg_3_0.actMoDic[arg_3_1]:init(arg_3_2)
+	Act191StatController.instance:setActInfo(arg_3_1, arg_3_0.actMoDic[arg_3_1])
 end
 
-function slot0.getCurActId(slot0)
-	return slot0.curActId
+function var_0_0.getCurActId(arg_4_0)
+	return arg_4_0.curActId
 end
 
-function slot0.getActInfo(slot0, slot1)
-	return slot0.actMoDic[slot1 or slot0.curActId]
+function var_0_0.getActInfo(arg_5_0, arg_5_1)
+	arg_5_1 = arg_5_1 or arg_5_0.curActId
+
+	return arg_5_0.actMoDic[arg_5_1]
 end
 
-function slot0.setGameEndInfo(slot0, slot1)
-	slot0.endInfo = slot1
+function var_0_0.setGameEndInfo(arg_6_0, arg_6_1)
+	arg_6_0.endInfo = arg_6_1
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

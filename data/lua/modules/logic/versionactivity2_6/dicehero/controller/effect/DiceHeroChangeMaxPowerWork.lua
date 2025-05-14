@@ -1,15 +1,18 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroChangeMaxPowerWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroChangeMaxPowerWork", package.seeall)
 
-slot0 = class("DiceHeroChangeMaxPowerWork", DiceHeroBaseEffectWork)
+local var_0_0 = class("DiceHeroChangeMaxPowerWork", DiceHeroBaseEffectWork)
 
-function slot0.onStart(slot0, slot1)
-	if not DiceHeroHelper.instance:getEntity(slot0._effectMo.targetId) then
-		logError("找不到实体" .. slot2)
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	local var_1_0 = arg_1_0._effectMo.targetId
+	local var_1_1 = DiceHeroHelper.instance:getEntity(var_1_0)
+
+	if not var_1_1 then
+		logError("找不到实体" .. var_1_0)
 	else
-		slot3:addMaxPower(slot0._effectMo.effectNum)
+		var_1_1:addMaxPower(arg_1_0._effectMo.effectNum)
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

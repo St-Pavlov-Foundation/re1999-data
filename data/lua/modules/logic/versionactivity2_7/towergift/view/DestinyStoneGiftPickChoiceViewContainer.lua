@@ -1,27 +1,28 @@
-module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.view.DestinyStoneGiftPickChoiceViewContainer", package.seeall)
 
-slot0 = class("DestinyStoneGiftPickChoiceViewContainer", BaseViewContainer)
+local var_0_0 = class("DestinyStoneGiftPickChoiceViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
-	slot2 = ListScrollParam.New()
-	slot2.scrollGOPath = "#scroll_stone"
-	slot2.prefabType = ScrollEnum.ScrollPrefabFromView
-	slot2.prefabUrl = "#scroll_stone/Viewport/Content/stoneitem"
-	slot2.cellClass = DestinyStoneGiftPickChoiceListItem
-	slot2.scrollDir = ScrollEnum.ScrollDirV
-	slot2.lineCount = 4
-	slot2.cellWidth = 408
-	slot2.cellHeight = 208
-	slot2.cellSpaceH = 16
-	slot2.cellSpaceV = 16
-	slot2.startSpace = 10
-	slot2.endSpace = 30
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
+	local var_1_1 = ListScrollParam.New()
 
-	table.insert(slot1, LuaListScrollView.New(DestinyStoneGiftPickChoiceListModel.instance, slot2))
-	table.insert(slot1, DestinyStoneGiftPickChoiceView.New())
+	var_1_1.scrollGOPath = "#scroll_stone"
+	var_1_1.prefabType = ScrollEnum.ScrollPrefabFromView
+	var_1_1.prefabUrl = "#scroll_stone/Viewport/Content/stoneitem"
+	var_1_1.cellClass = DestinyStoneGiftPickChoiceListItem
+	var_1_1.scrollDir = ScrollEnum.ScrollDirV
+	var_1_1.lineCount = 4
+	var_1_1.cellWidth = 408
+	var_1_1.cellHeight = 208
+	var_1_1.cellSpaceH = 16
+	var_1_1.cellSpaceV = 16
+	var_1_1.startSpace = 10
+	var_1_1.endSpace = 30
 
-	return slot1
+	table.insert(var_1_0, LuaListScrollView.New(DestinyStoneGiftPickChoiceListModel.instance, var_1_1))
+	table.insert(var_1_0, DestinyStoneGiftPickChoiceView.New())
+
+	return var_1_0
 end
 
-return slot0
+return var_0_0

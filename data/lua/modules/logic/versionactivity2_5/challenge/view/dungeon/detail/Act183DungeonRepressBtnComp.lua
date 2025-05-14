@@ -1,70 +1,81 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRepressBtnComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRepressBtnComp", package.seeall)
 
-slot0 = class("Act183DungeonRepressBtnComp", Act183DungeonBaseComp)
-slot1 = 25
-slot2 = 0
+local var_0_0 = class("Act183DungeonRepressBtnComp", Act183DungeonBaseComp)
+local var_0_1 = 25
+local var_0_2 = 0
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._btnrepress = gohelper.getClickWithDefaultAudio(slot0.go)
-	slot0._txtbtnrepress = gohelper.findChildText(slot0.go, "txt_Cn")
-	slot0._gosetrepresshero = gohelper.findChild(slot0.go, "#go_setrepresshero")
-	slot0._simagerepressheroicon = gohelper.findChildSingleImage(slot0.go, "#go_setrepresshero/#simage_repressheroicon")
-	slot0._imagecareer = gohelper.findChildImage(slot0.go, "#go_setrepresshero/#image_Career")
+	arg_1_0._btnrepress = gohelper.getClickWithDefaultAudio(arg_1_0.go)
+	arg_1_0._txtbtnrepress = gohelper.findChildText(arg_1_0.go, "txt_Cn")
+	arg_1_0._gosetrepresshero = gohelper.findChild(arg_1_0.go, "#go_setrepresshero")
+	arg_1_0._simagerepressheroicon = gohelper.findChildSingleImage(arg_1_0.go, "#go_setrepresshero/#simage_repressheroicon")
+	arg_1_0._imagecareer = gohelper.findChildImage(arg_1_0.go, "#go_setrepresshero/#image_Career")
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateBadgeDetailVisible, slot0._onUpdateBadgeDetailVisible, slot0)
-	slot0._btnrepress:AddClickListener(slot0._btnrepressOnClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateBadgeDetailVisible, arg_2_0._onUpdateBadgeDetailVisible, arg_2_0)
+	arg_2_0._btnrepress:AddClickListener(arg_2_0._btnrepressOnClick, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnrepress:RemoveClickListener()
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._btnrepress:RemoveClickListener()
 end
 
-function slot0._btnrepressOnClick(slot0)
-	Act183Controller.instance:openAct183RepressView({
-		activityId = slot0._activityId,
-		episodeMo = slot0._episodeMo
-	})
+function var_0_0._btnrepressOnClick(arg_4_0)
+	local var_4_0 = {
+		activityId = arg_4_0._activityId,
+		episodeMo = arg_4_0._episodeMo
+	}
+
+	Act183Controller.instance:openAct183RepressView(var_4_0)
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_5_0, arg_5_1)
+	var_0_0.super.updateInfo(arg_5_0, arg_5_1)
 
-	slot0._isCanReRepress = slot0._groupEpisodeMo:isEpisodeCanReRepress(slot0._episodeId)
+	arg_5_0._isCanReRepress = arg_5_0._groupEpisodeMo:isEpisodeCanReRepress(arg_5_0._episodeId)
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._isCanReRepress
+function var_0_0.checkIsVisible(arg_6_0)
+	return arg_6_0._isCanReRepress
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
+function var_0_0.show(arg_7_0)
+	var_0_0.super.show(arg_7_0)
 
-	slot2 = slot0._episodeMo:getRepressHeroMo() ~= nil
+	local var_7_0 = arg_7_0._episodeMo:getRepressHeroMo()
+	local var_7_1 = var_7_0 ~= nil
 
-	gohelper.setActive(slot0._gosetrepresshero, slot2)
-	recthelper.setAnchorX(slot0._txtbtnrepress.transform, slot2 and uv1 or uv2)
+	gohelper.setActive(arg_7_0._gosetrepresshero, var_7_1)
 
-	if not slot2 then
+	local var_7_2 = var_7_1 and var_0_1 or var_0_2
+
+	recthelper.setAnchorX(arg_7_0._txtbtnrepress.transform, var_7_2)
+
+	if not var_7_1 then
 		return
 	end
 
-	slot0._simagerepressheroicon:LoadImage(slot1:getHeroIconUrl())
-	UISpriteSetMgr.instance:setCommonSprite(slot0._imagecareer, "lssx_" .. tostring(slot1:getHeroCarrer()))
+	local var_7_3 = var_7_0:getHeroIconUrl()
+
+	arg_7_0._simagerepressheroicon:LoadImage(var_7_3)
+
+	local var_7_4 = var_7_0:getHeroCarrer()
+
+	UISpriteSetMgr.instance:setCommonSprite(arg_7_0._imagecareer, "lssx_" .. tostring(var_7_4))
 end
 
-function slot0._onUpdateBadgeDetailVisible(slot0, slot1)
-	if slot0:checkIsVisible() then
-		gohelper.setActive(slot0.go, not slot1)
+function var_0_0._onUpdateBadgeDetailVisible(arg_8_0, arg_8_1)
+	if arg_8_0:checkIsVisible() then
+		gohelper.setActive(arg_8_0.go, not arg_8_1)
 	end
 end
 
-function slot0.onDestroy(slot0)
-	slot0._simagerepressheroicon:UnLoadImage()
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_9_0)
+	arg_9_0._simagerepressheroicon:UnLoadImage()
+	var_0_0.super.onDestroy(arg_9_0)
 end
 
-return slot0
+return var_0_0

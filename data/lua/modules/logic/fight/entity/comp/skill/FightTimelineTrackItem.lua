@@ -1,25 +1,28 @@
-module("modules.logic.fight.entity.comp.skill.FightTimelineTrackItem", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTimelineTrackItem", package.seeall)
 
-slot0 = class("FightTimelineTrackItem", FightBaseClass)
+local var_0_0 = class("FightTimelineTrackItem", FightBaseClass)
 
-function slot0.onConstructor(slot0, slot1, slot2, slot3, slot4)
-	slot0.id = slot1
-	slot0.type = slot2
-	slot0.binder = slot3
-	slot0.timelineItem = slot4
+function var_0_0.onConstructor(arg_1_0, arg_1_1, arg_1_2, arg_1_3, arg_1_4)
+	arg_1_0.id = arg_1_1
+	arg_1_0.type = arg_1_2
+	arg_1_0.binder = arg_1_3
+	arg_1_0.timelineItem = arg_1_4
 end
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+function var_0_0.onTrackStart(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	return
 end
 
-function slot0.onTrackEnd(slot0)
+function var_0_0.onTrackEnd(arg_3_0)
+	return
 end
 
-function slot0.addWork2TimelineFinishWork(slot0, slot1)
-	slot0.timelineItem:addWork2FinishWork(slot1)
+function var_0_0.addWork2TimelineFinishWork(arg_4_0, arg_4_1)
+	arg_4_0.timelineItem:addWork2FinishWork(arg_4_1)
 end
 
-function slot0.onDestructor(slot0)
+function var_0_0.onDestructor(arg_5_0)
+	return
 end
 
-return slot0
+return var_0_0

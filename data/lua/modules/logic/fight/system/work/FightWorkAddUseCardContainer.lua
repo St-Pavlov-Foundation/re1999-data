@@ -1,41 +1,50 @@
-module("modules.logic.fight.system.work.FightWorkAddUseCardContainer", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkAddUseCardContainer", package.seeall)
 
-slot0 = class("FightWorkAddUseCardContainer", FightStepEffectFlow)
-slot0.IndexList = {}
+local var_0_0 = class("FightWorkAddUseCardContainer", FightStepEffectFlow)
 
-function slot0.onStart(slot0)
-	slot1 = slot0:getAdjacentSameEffectList(nil, false)
+var_0_0.IndexList = {}
 
-	slot0:customPlayEffectData(slot1)
-	tabletool.clear(uv0.IndexList)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0:getAdjacentSameEffectList(nil, false)
 
-	slot3 = 0.5
+	arg_1_0:customPlayEffectData(var_1_0)
 
-	for slot7, slot8 in ipairs(slot1) do
-		if slot8.actEffectData.effectNum - 1 > #FightPlayCardModel.instance:getUsedCards() then
-			slot10 = #slot11 + 1
+	local var_1_1 = var_0_0.IndexList
+
+	tabletool.clear(var_1_1)
+
+	local var_1_2 = 0.5
+
+	for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+		local var_1_3 = iter_1_1.actEffectData
+		local var_1_4 = var_1_3.effectNum
+		local var_1_5 = FightPlayCardModel.instance:getUsedCards()
+
+		if var_1_4 - 1 > #var_1_5 then
+			var_1_4 = #var_1_5 + 1
 		end
 
-		table.insert(slot2, slot10)
-		FightPlayCardModel.instance:addUseCard(slot10, slot9.cardInfo, slot9.effectNum1)
+		table.insert(var_1_1, var_1_4)
+		FightPlayCardModel.instance:addUseCard(var_1_4, var_1_3.cardInfo, var_1_3.effectNum1)
 
-		if FightHeroALFComp.ALFSkillDict[slot9.effectNum1] then
-			slot3 = 1.8
+		if FightHeroALFComp.ALFSkillDict[var_1_3.effectNum1] then
+			var_1_2 = 1.8
 		end
 	end
 
-	FightController.instance:dispatchEvent(FightEvent.AddUseCard, slot2)
-	FightController.instance:dispatchEvent(FightEvent.AfterAddUseCardContainer, slot0.fightStepData)
-	slot0:com_registTimer(slot0._delayAfterPerformance, slot3 / FightModel.instance:getUISpeed())
+	FightController.instance:dispatchEvent(FightEvent.AddUseCard, var_1_1)
+	FightController.instance:dispatchEvent(FightEvent.AfterAddUseCardContainer, arg_1_0.fightStepData)
+	arg_1_0:com_registTimer(arg_1_0._delayAfterPerformance, var_1_2 / FightModel.instance:getUISpeed())
 end
 
-function slot0.customPlayEffectData(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		FightDataHelper.playEffectData(slot6.actEffectData)
+function var_0_0.customPlayEffectData(arg_2_0, arg_2_1)
+	for iter_2_0, iter_2_1 in ipairs(arg_2_1) do
+		FightDataHelper.playEffectData(iter_2_1.actEffectData)
 	end
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

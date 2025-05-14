@@ -1,155 +1,173 @@
-module("modules.logic.versionactivity2_7.coopergarland.model.CooperGarlandGameModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.model.CooperGarlandGameModel", package.seeall)
 
-slot0 = class("CooperGarlandGameModel", BaseModel)
+local var_0_0 = class("CooperGarlandGameModel", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0:clearAllData()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:clearAllData()
 end
 
-function slot0.reInit(slot0)
-	slot0:clearAllData()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:clearAllData()
 end
 
-function slot0.clearAllData(slot0)
-	slot0:setEpisodeId()
-	slot0:setGameId()
-	slot0:setGameRound()
-	slot0:setMapId()
-	slot0:setRemoveCount()
-	slot0:setRemoveMode()
-	slot0:setBallHasKey(false)
-	slot0:setIsStopGame(false)
-	slot0:setSceneOpenAnimShowBall(false)
+function var_0_0.clearAllData(arg_3_0)
+	arg_3_0:setEpisodeId()
+	arg_3_0:setGameId()
+	arg_3_0:setGameRound()
+	arg_3_0:setMapId()
+	arg_3_0:setRemoveCount()
+	arg_3_0:setRemoveMode()
+	arg_3_0:setBallHasKey(false)
+	arg_3_0:setIsStopGame(false)
+	arg_3_0:setSceneOpenAnimShowBall(false)
 end
 
-function slot0.enterGameInitData(slot0, slot1)
-	slot0:setEpisodeId(slot1)
+function var_0_0.enterGameInitData(arg_4_0, arg_4_1)
+	arg_4_0:setEpisodeId(arg_4_1)
 
-	slot2 = CooperGarlandModel.instance:getAct192Id()
+	local var_4_0 = CooperGarlandModel.instance:getAct192Id()
+	local var_4_1 = CooperGarlandConfig.instance:getGameId(var_4_0, arg_4_1)
 
-	slot0:setGameId(CooperGarlandConfig.instance:getGameId(slot2, slot1))
-	slot0:changeRound(CooperGarlandModel.instance:getEpisodeProgress(slot2, slot1))
-	slot0:setSceneOpenAnimShowBall(false)
+	arg_4_0:setGameId(var_4_1)
+
+	local var_4_2 = CooperGarlandModel.instance:getEpisodeProgress(var_4_0, arg_4_1)
+
+	arg_4_0:changeRound(var_4_2)
+	arg_4_0:setSceneOpenAnimShowBall(false)
 end
 
-function slot0.changeRound(slot0, slot1)
-	if not slot0:getGameId() then
+function var_0_0.changeRound(arg_5_0, arg_5_1)
+	local var_5_0 = arg_5_0:getGameId()
+
+	if not var_5_0 then
 		return
 	end
 
-	slot0:setGameRound(slot1)
-	slot0:setMapId(CooperGarlandConfig.instance:getMapId(slot2, slot1))
-	slot0:setRemoveCount(CooperGarlandConfig.instance:getRemoveCount(slot2, slot1))
-	slot0:setBallHasKey(false)
-	slot0:setRemoveMode(false)
-	slot0:setIsStopGame(false)
+	arg_5_0:setGameRound(arg_5_1)
+
+	local var_5_1 = CooperGarlandConfig.instance:getMapId(var_5_0, arg_5_1)
+
+	arg_5_0:setMapId(var_5_1)
+
+	local var_5_2 = CooperGarlandConfig.instance:getRemoveCount(var_5_0, arg_5_1)
+
+	arg_5_0:setRemoveCount(var_5_2)
+	arg_5_0:setBallHasKey(false)
+	arg_5_0:setRemoveMode(false)
+	arg_5_0:setIsStopGame(false)
 end
 
-function slot0.resetGameData(slot0)
-	slot0:changeRound(slot0:getGameRound())
+function var_0_0.resetGameData(arg_6_0)
+	local var_6_0 = arg_6_0:getGameRound()
+
+	arg_6_0:changeRound(var_6_0)
 end
 
-function slot0.setEpisodeId(slot0, slot1)
-	slot0._episodeId = slot1
+function var_0_0.setEpisodeId(arg_7_0, arg_7_1)
+	arg_7_0._episodeId = arg_7_1
 end
 
-function slot0.setGameId(slot0, slot1)
-	slot0._gameId = slot1
+function var_0_0.setGameId(arg_8_0, arg_8_1)
+	arg_8_0._gameId = arg_8_1
 end
 
-function slot0.setGameRound(slot0, slot1)
-	slot0._gameRound = slot1
+function var_0_0.setGameRound(arg_9_0, arg_9_1)
+	arg_9_0._gameRound = arg_9_1
 end
 
-function slot0.setMapId(slot0, slot1)
-	slot0._mapId = slot1
+function var_0_0.setMapId(arg_10_0, arg_10_1)
+	arg_10_0._mapId = arg_10_1
 end
 
-function slot0.setRemoveCount(slot0, slot1)
-	slot0._removeCount = slot1
+function var_0_0.setRemoveCount(arg_11_0, arg_11_1)
+	arg_11_0._removeCount = arg_11_1
 end
 
-function slot0.setRemoveMode(slot0, slot1)
-	slot0._isRemoveMode = slot1
+function var_0_0.setRemoveMode(arg_12_0, arg_12_1)
+	arg_12_0._isRemoveMode = arg_12_1
 end
 
-function slot0.setBallHasKey(slot0, slot1)
-	slot0._hasKey = slot1
+function var_0_0.setBallHasKey(arg_13_0, arg_13_1)
+	arg_13_0._hasKey = arg_13_1
 end
 
-function slot0.setControlMode(slot0, slot1)
-	slot0._controlMode = slot1
+function var_0_0.setControlMode(arg_14_0, arg_14_1)
+	arg_14_0._controlMode = arg_14_1
 
-	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, slot1)
+	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, arg_14_1)
 end
 
-function slot0.setIsStopGame(slot0, slot1)
-	slot0._isStopGame = slot1
+function var_0_0.setIsStopGame(arg_15_0, arg_15_1)
+	arg_15_0._isStopGame = arg_15_1
 end
 
-function slot0.setSceneOpenAnimShowBall(slot0, slot1)
-	slot0._openAnimShowBall = slot1
+function var_0_0.setSceneOpenAnimShowBall(arg_16_0, arg_16_1)
+	arg_16_0._openAnimShowBall = arg_16_1
 end
 
-function slot0.getEpisodeId(slot0)
-	return slot0._episodeId
+function var_0_0.getEpisodeId(arg_17_0)
+	return arg_17_0._episodeId
 end
 
-function slot0.getGameId(slot0)
-	return slot0._gameId
+function var_0_0.getGameId(arg_18_0)
+	return arg_18_0._gameId
 end
 
-function slot0.getGameRound(slot0)
-	return slot0._gameRound
+function var_0_0.getGameRound(arg_19_0)
+	return arg_19_0._gameRound
 end
 
-function slot0.getMapId(slot0)
-	return slot0._mapId
+function var_0_0.getMapId(arg_20_0)
+	return arg_20_0._mapId
 end
 
-function slot0.getRemoveCount(slot0)
-	return slot0._removeCount or 0
+function var_0_0.getRemoveCount(arg_21_0)
+	return arg_21_0._removeCount or 0
 end
 
-function slot0.getIsRemoveMode(slot0)
-	return slot0._isRemoveMode
+function var_0_0.getIsRemoveMode(arg_22_0)
+	return arg_22_0._isRemoveMode
 end
 
-function slot0.getBallHasKey(slot0)
-	return slot0._hasKey
+function var_0_0.getBallHasKey(arg_23_0)
+	return arg_23_0._hasKey
 end
 
-function slot0.getControlMode(slot0)
-	if not slot0._controlMode then
-		slot0._controlMode = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, CooperGarlandEnum.Const.JoystickModeRight)
+function var_0_0.getControlMode(arg_24_0)
+	if not arg_24_0._controlMode then
+		arg_24_0._controlMode = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.CooperGarlandControlMode, CooperGarlandEnum.Const.JoystickModeRight)
 	end
 
-	return slot0._controlMode
+	return arg_24_0._controlMode
 end
 
-function slot0.getIsJoystick(slot0)
-	return slot0:getControlMode() == CooperGarlandEnum.Const.JoystickModeRight or slot1 == CooperGarlandEnum.Const.JoystickModeLeft
+function var_0_0.getIsJoystick(arg_25_0)
+	local var_25_0 = arg_25_0:getControlMode()
+
+	return var_25_0 == CooperGarlandEnum.Const.JoystickModeRight or var_25_0 == CooperGarlandEnum.Const.JoystickModeLeft
 end
 
-function slot0.isFinishedStoryComponent(slot0, slot1, slot2)
-	slot3 = false
-	slot6 = CooperGarlandConfig.instance:getMapComponentExtraParams(slot1, slot2) and tonumber(slot5)
+function var_0_0.isFinishedStoryComponent(arg_26_0, arg_26_1, arg_26_2)
+	local var_26_0 = false
+	local var_26_1 = CooperGarlandConfig.instance:getMapComponentType(arg_26_1, arg_26_2)
+	local var_26_2 = CooperGarlandConfig.instance:getMapComponentExtraParams(arg_26_1, arg_26_2)
+	local var_26_3 = var_26_2 and tonumber(var_26_2)
 
-	if CooperGarlandConfig.instance:getMapComponentType(slot1, slot2) == CooperGarlandEnum.ComponentType.Story and slot6 then
-		slot3 = GuideModel.instance:isGuideFinish(slot6)
+	if var_26_1 == CooperGarlandEnum.ComponentType.Story and var_26_3 then
+		var_26_0 = GuideModel.instance:isGuideFinish(var_26_3)
 	end
 
-	return slot3
+	return var_26_0
 end
 
-function slot0.getIsStopGame(slot0)
-	return slot0._isStopGame
+function var_0_0.getIsStopGame(arg_27_0)
+	return arg_27_0._isStopGame
 end
 
-function slot0.getSceneOpenAnimShowBall(slot0)
-	return slot0._openAnimShowBall
+function var_0_0.getSceneOpenAnimShowBall(arg_28_0)
+	return arg_28_0._openAnimShowBall
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

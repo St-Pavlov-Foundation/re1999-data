@@ -1,176 +1,190 @@
-module("modules.logic.versionactivity2_7.coopergarland.view.Entity.CooperGarlandBallEntity", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.view.Entity.CooperGarlandBallEntity", package.seeall)
 
-slot0 = class("CooperGarlandBallEntity", LuaCompBase)
+local var_0_0 = class("CooperGarlandBallEntity", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0.mapId = slot1.mapId
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.mapId = arg_1_1.mapId
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.trans = slot1.transform
-	slot0.ballRoot = slot0.trans.parent
-	slot0._rigidBody = slot0.go:GetComponent(typeof(UnityEngine.Rigidbody))
-	slot0._goFireVx = gohelper.findChild(slot0.ballRoot.gameObject, "vx/#go_fire")
-	slot0._goBornVx = gohelper.findChild(slot0.ballRoot.gameObject, "vx/#go_born")
-	slot0._goDieVx = gohelper.findChild(slot0.ballRoot.gameObject, "vx/#go_die")
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0.trans = arg_2_1.transform
+	arg_2_0.ballRoot = arg_2_0.trans.parent
+	arg_2_0._rigidBody = arg_2_0.go:GetComponent(typeof(UnityEngine.Rigidbody))
+	arg_2_0._goFireVx = gohelper.findChild(arg_2_0.ballRoot.gameObject, "vx/#go_fire")
+	arg_2_0._goBornVx = gohelper.findChild(arg_2_0.ballRoot.gameObject, "vx/#go_born")
+	arg_2_0._goDieVx = gohelper.findChild(arg_2_0.ballRoot.gameObject, "vx/#go_die")
 
-	slot0:onInit()
+	arg_2_0:onInit()
 end
 
-function slot0.onInit(slot0)
-	slot0._rigidBody.drag = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.BallDrag, true)
-	slot0._rigidBody.angularDrag = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.BallAngularDrag, true)
+function var_0_0.onInit(arg_3_0)
+	local var_3_0 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.BallDrag, true)
 
-	slot0:setVisible()
+	arg_3_0._rigidBody.drag = var_3_0
+
+	local var_3_1 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.BallAngularDrag, true)
+
+	arg_3_0._rigidBody.angularDrag = var_3_1
+
+	arg_3_0:setVisible()
 	AudioMgr.instance:setRTPCValue(AudioEnum2_7.CooperGarlandBallRTPC, 0)
-	slot0:playLoopAudio(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
+	arg_3_0:playLoopAudio(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnBallKeyChange, slot0._onBallKeyChange, slot0)
+function var_0_0.addEventListeners(arg_4_0)
+	arg_4_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnBallKeyChange, arg_4_0._onBallKeyChange, arg_4_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnBallKeyChange, slot0._onBallKeyChange, slot0)
+function var_0_0.removeEventListeners(arg_5_0)
+	arg_5_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnBallKeyChange, arg_5_0._onBallKeyChange, arg_5_0)
 end
 
-function slot0._onBallKeyChange(slot0)
-	if not slot0._isVisible then
+function var_0_0._onBallKeyChange(arg_6_0)
+	if not arg_6_0._isVisible then
 		return
 	end
 
-	slot0:refreshKeyStatus()
+	arg_6_0:refreshKeyStatus()
 end
 
-function slot0.refreshKeyStatus(slot0)
-	if CooperGarlandGameModel.instance:getBallHasKey() then
+function var_0_0.refreshKeyStatus(arg_7_0)
+	local var_7_0 = CooperGarlandGameModel.instance:getBallHasKey()
+
+	if var_7_0 then
 		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_fire)
 	end
 
-	gohelper.setActive(slot0._goFireVx, slot1)
-	slot0:playLoopAudio(slot1 and AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_fire_loop or AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
+	gohelper.setActive(arg_7_0._goFireVx, var_7_0)
+	arg_7_0:playLoopAudio(var_7_0 and AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_fire_loop or AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_loop)
 end
 
-function slot0.setVisible(slot0, slot1, slot2)
-	slot3 = {
+function var_0_0.setVisible(arg_8_0, arg_8_1, arg_8_2)
+	local var_8_0 = {
 		z = 0,
 		x = 0,
 		y = 0
 	}
 
-	if slot1 then
-		slot3 = slot0.ballRoot.parent:InverseTransformPoint(slot1)
-		slot0._showWorldPos = slot1
+	if arg_8_1 then
+		var_8_0 = arg_8_0.ballRoot.parent:InverseTransformPoint(arg_8_1)
+		arg_8_0._showWorldPos = arg_8_1
 	end
 
-	slot3.z = CooperGarlandGameEntityMgr.instance:getBallPosZ()
+	var_8_0.z = CooperGarlandGameEntityMgr.instance:getBallPosZ()
 
-	transformhelper.setLocalPos(slot0.ballRoot, slot3.x, slot3.y, slot3.z)
-	transformhelper.setLocalPos(slot0.trans, 0, 0, 0)
+	transformhelper.setLocalPos(arg_8_0.ballRoot, var_8_0.x, var_8_0.y, var_8_0.z)
+	transformhelper.setLocalPos(arg_8_0.trans, 0, 0, 0)
 
-	slot0._isVisible = slot1 and CooperGarlandGameModel.instance:getSceneOpenAnimShowBall() and true or false
+	local var_8_1 = CooperGarlandGameModel.instance:getSceneOpenAnimShowBall()
 
-	gohelper.setActive(slot0.ballRoot, slot0._isVisible)
-	slot0:checkFreeze()
+	arg_8_0._isVisible = arg_8_1 and var_8_1 and true or false
 
-	if slot0._isVisible then
-		slot0:playBornVx(slot2)
-		slot0:refreshKeyStatus()
+	gohelper.setActive(arg_8_0.ballRoot, arg_8_0._isVisible)
+	arg_8_0:checkFreeze()
+
+	if arg_8_0._isVisible then
+		arg_8_0:playBornVx(arg_8_2)
+		arg_8_0:refreshKeyStatus()
 	end
 end
 
-function slot0.checkFreeze(slot0, slot1)
-	if slot0._isFreeze == (CooperGarlandGameModel.instance:getIsStopGame() or not slot0._isVisible) then
+function var_0_0.checkFreeze(arg_9_0, arg_9_1)
+	local var_9_0 = CooperGarlandGameModel.instance:getIsStopGame() or not arg_9_0._isVisible
+
+	if arg_9_0._isFreeze == var_9_0 then
 		return
 	end
 
-	slot0._isFreeze = slot3
-	slot4 = Vector3.zero
-	slot5 = Vector3.zero
+	arg_9_0._isFreeze = var_9_0
 
-	if slot0._isFreeze then
-		slot6 = slot0._rigidBody.velocity
-		slot7 = slot0._rigidBody.angularVelocity
-		slot0._recordSpeed = {
-			vX = slot6.x,
-			vY = slot6.y,
-			vZ = slot6.z,
-			angularVX = slot7.x,
-			angularVY = slot7.y,
-			angularVZ = slot7.z
+	local var_9_1 = Vector3.zero
+	local var_9_2 = Vector3.zero
+
+	if arg_9_0._isFreeze then
+		local var_9_3 = arg_9_0._rigidBody.velocity
+		local var_9_4 = arg_9_0._rigidBody.angularVelocity
+
+		arg_9_0._recordSpeed = {
+			vX = var_9_3.x,
+			vY = var_9_3.y,
+			vZ = var_9_3.z,
+			angularVX = var_9_4.x,
+			angularVY = var_9_4.y,
+			angularVZ = var_9_4.z
 		}
 	else
-		if slot1 and slot0._recordSpeed then
-			slot4 = Vector3(slot0._recordSpeed.vX, slot0._recordSpeed.vY, slot0._recordSpeed.vZ)
-			slot5 = Vector3(slot0._recordSpeed.angularVX, slot0._recordSpeed.angularVY, slot0._recordSpeed.angularVZ)
+		if arg_9_1 and arg_9_0._recordSpeed then
+			var_9_1 = Vector3(arg_9_0._recordSpeed.vX, arg_9_0._recordSpeed.vY, arg_9_0._recordSpeed.vZ)
+			var_9_2 = Vector3(arg_9_0._recordSpeed.angularVX, arg_9_0._recordSpeed.angularVY, arg_9_0._recordSpeed.angularVZ)
 		end
 
-		slot0._recordSpeed = nil
+		arg_9_0._recordSpeed = nil
 	end
 
-	slot0._rigidBody.useGravity = not slot0._isFreeze
-	slot0._rigidBody.isKinematic = slot0._isFreeze
-	slot0._rigidBody.velocity = slot4
-	slot0._rigidBody.angularVelocity = slot5
+	arg_9_0._rigidBody.useGravity = not arg_9_0._isFreeze
+	arg_9_0._rigidBody.isKinematic = arg_9_0._isFreeze
+	arg_9_0._rigidBody.velocity = var_9_1
+	arg_9_0._rigidBody.angularVelocity = var_9_2
 end
 
-function slot0.reset(slot0)
-	slot0._recordSpeed = nil
+function var_0_0.reset(arg_10_0)
+	arg_10_0._recordSpeed = nil
 
-	slot0:refreshKeyStatus()
-	slot0:setVisible(slot0._showWorldPos, true)
+	arg_10_0:refreshKeyStatus()
+	arg_10_0:setVisible(arg_10_0._showWorldPos, true)
 end
 
-function slot0.isCanTriggerComp(slot0)
-	return slot0._isVisible and not slot0._isFreeze
+function var_0_0.isCanTriggerComp(arg_11_0)
+	return arg_11_0._isVisible and not arg_11_0._isFreeze
 end
 
-function slot0.getVelocity(slot0)
-	return slot0._rigidBody and slot0._rigidBody.velocity or Vector3.zero
+function var_0_0.getVelocity(arg_12_0)
+	return arg_12_0._rigidBody and arg_12_0._rigidBody.velocity or Vector3.zero
 end
 
-function slot0.playBornVx(slot0, slot1)
-	gohelper.setActive(slot0._goBornVx, false)
-	gohelper.setActive(slot0._goBornVx, true)
+function var_0_0.playBornVx(arg_13_0, arg_13_1)
+	gohelper.setActive(arg_13_0._goBornVx, false)
+	gohelper.setActive(arg_13_0._goBornVx, true)
 
-	if slot1 then
+	if arg_13_1 then
 		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_ball_reset)
 	end
 end
 
-function slot0.playDieVx(slot0)
-	gohelper.setActive(slot0._goDieVx, false)
-	gohelper.setActive(slot0._goDieVx, true)
+function var_0_0.playDieVx(arg_14_0)
+	gohelper.setActive(arg_14_0._goDieVx, false)
+	gohelper.setActive(arg_14_0._goDieVx, true)
 end
 
-function slot0.playLoopAudio(slot0, slot1)
-	if slot0._loopAudioId == slot1 then
+function var_0_0.playLoopAudio(arg_15_0, arg_15_1)
+	if arg_15_0._loopAudioId == arg_15_1 then
 		return
 	end
 
-	slot0:stopLoopAudio()
+	arg_15_0:stopLoopAudio()
 
-	slot0._loopAudioId = slot1
+	arg_15_0._loopAudioId = arg_15_1
 
-	AudioMgr.instance:trigger(slot0._loopAudioId)
+	AudioMgr.instance:trigger(arg_15_0._loopAudioId)
 end
 
-function slot0.stopLoopAudio(slot0)
+function var_0_0.stopLoopAudio(arg_16_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.stop_ui_yuzhou_ball_loop)
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.stop_ui_yuzhou_ball_fire_loop)
 
-	slot0._loopAudioId = nil
+	arg_16_0._loopAudioId = nil
 end
 
-function slot0.destroy(slot0)
-	slot0._recordSpeed = nil
+function var_0_0.destroy(arg_17_0)
+	arg_17_0._recordSpeed = nil
 
-	slot0:stopLoopAudio()
-	gohelper.destroy(slot0.ballRoot.gameObject)
+	arg_17_0:stopLoopAudio()
+	gohelper.destroy(arg_17_0.ballRoot.gameObject)
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_18_0)
+	return
 end
 
-return slot0
+return var_0_0

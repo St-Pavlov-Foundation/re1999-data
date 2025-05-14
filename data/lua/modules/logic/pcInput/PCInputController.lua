@@ -1,26 +1,26 @@
-module("modules.logic.pcInput.PCInputController", package.seeall)
+﻿module("modules.logic.pcInput.PCInputController", package.seeall)
 
-slot0 = class("PCInputController", BaseController)
+local var_0_0 = class("PCInputController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0.Adapters = slot0.Adapters or {}
-	slot0.eventMgr = ZProj.GamepadEvent
+function var_0_0.onInit(arg_1_0)
+	arg_1_0.Adapters = arg_1_0.Adapters or {}
+	arg_1_0.eventMgr = ZProj.GamepadEvent
 
-	slot0.eventMgr.Instance:AddLuaLisenter(slot0.eventMgr.UpKey, slot0.OnKeyUp, slot0)
-	slot0.eventMgr.Instance:AddLuaLisenter(slot0.eventMgr.DownKey, slot0.OnKeyDown, slot0)
+	arg_1_0.eventMgr.Instance:AddLuaLisenter(arg_1_0.eventMgr.UpKey, arg_1_0.OnKeyUp, arg_1_0)
+	arg_1_0.eventMgr.Instance:AddLuaLisenter(arg_1_0.eventMgr.DownKey, arg_1_0.OnKeyDown, arg_1_0)
 
-	slot0.inputInst = ZProj.PCInputManager.Instance
+	arg_1_0.inputInst = ZProj.PCInputManager.Instance
 
-	if not slot0:getIsUse() then
-		slot0.init = false
+	if not arg_1_0:getIsUse() then
+		arg_1_0.init = false
 	else
-		slot0.init = true
+		arg_1_0.init = true
 	end
 
-	logNormal("PCInputController:onInit()" .. tostring(slot0.init))
+	logNormal("PCInputController:onInit()" .. tostring(arg_1_0.init))
 end
 
-function slot0.getIsUse(slot0)
+function var_0_0.getIsUse(arg_2_0)
 	if ZProj.PCInputManager and ZProj.PCInputManager.Instance:isWindows() then
 		if UnityEngine.Application.isEditor then
 			return UnityEngine.PlayerPrefs.GetInt("PCInputSwitch", 0) == 1
@@ -32,138 +32,144 @@ function slot0.getIsUse(slot0)
 	return false
 end
 
-function slot0.Switch(slot0)
-	slot0.init = slot0:getIsUse()
+function var_0_0.Switch(arg_3_0)
+	arg_3_0.init = arg_3_0:getIsUse()
 end
 
-function slot0.getCurrentPresskey(slot0)
-	if slot0.init then
-		return slot0.inputInst:getCurrentPresskey()
+function var_0_0.getCurrentPresskey(arg_4_0)
+	if arg_4_0.init then
+		return arg_4_0.inputInst:getCurrentPresskey()
 	end
 
 	return nil
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_5_0)
+	return
 end
 
-function slot0.reInit(slot0)
+function var_0_0.reInit(arg_6_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0.onOpenViewCallBack, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.onCloseViewCallBack, slot0)
+function var_0_0.addConstEvents(arg_7_0)
+	arg_7_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, arg_7_0.onOpenViewCallBack, arg_7_0)
+	arg_7_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_7_0.onCloseViewCallBack, arg_7_0)
 end
 
-function slot0.onOpenViewCallBack(slot0, slot1)
-	TaskDispatcher.runDelay(function ()
-		if uv0 == ViewName.MainView then
-			if uv1.Adapters[PCInputModel.Activity.MainActivity] == nil then
-				uv1.Adapters[PCInputModel.Activity.MainActivity] = MainActivityAdapter.New()
+function var_0_0.onOpenViewCallBack(arg_8_0, arg_8_1)
+	TaskDispatcher.runDelay(function()
+		if arg_8_1 == ViewName.MainView then
+			if arg_8_0.Adapters[PCInputModel.Activity.MainActivity] == nil then
+				arg_8_0.Adapters[PCInputModel.Activity.MainActivity] = MainActivityAdapter.New()
 			end
-		elseif uv0 == ViewName.ExploreView then
-			if uv1.Adapters[PCInputModel.Activity.thrityDoor] == nil then
-				uv1.Adapters[PCInputModel.Activity.thrityDoor] = ThirdDoorActivtiyAdapter.New()
+		elseif arg_8_1 == ViewName.ExploreView then
+			if arg_8_0.Adapters[PCInputModel.Activity.thrityDoor] == nil then
+				arg_8_0.Adapters[PCInputModel.Activity.thrityDoor] = ThirdDoorActivtiyAdapter.New()
 			end
-		elseif uv0 == ViewName.FightView then
-			if uv1.Adapters[PCInputModel.Activity.battle] == nil then
-				uv1.Adapters[PCInputModel.Activity.battle] = BattleActivityAdapter.New()
+		elseif arg_8_1 == ViewName.FightView then
+			if arg_8_0.Adapters[PCInputModel.Activity.battle] == nil then
+				arg_8_0.Adapters[PCInputModel.Activity.battle] = BattleActivityAdapter.New()
 			end
-		elseif uv0 == ViewName.RoomView then
-			if uv1.Adapters[PCInputModel.Activity.room] == nil then
-				uv1.Adapters[PCInputModel.Activity.room] = RoomActivityAdapter.New()
+		elseif arg_8_1 == ViewName.RoomView then
+			if arg_8_0.Adapters[PCInputModel.Activity.room] == nil then
+				arg_8_0.Adapters[PCInputModel.Activity.room] = RoomActivityAdapter.New()
 			end
-		elseif uv0 == ViewName.WeekWalkDialogView or uv0 == ViewName.StoryFrontView or uv0 == ViewName.ExploreInteractView or uv0 == ViewName.RoomBranchView or uv0.StoryBranchView then
-			if uv1.Adapters[PCInputModel.Activity.storyDialog] == nil then
-				uv1.Adapters[PCInputModel.Activity.storyDialog] = StoryDialogAdapter.New()
+		elseif arg_8_1 == ViewName.WeekWalkDialogView or arg_8_1 == ViewName.StoryFrontView or arg_8_1 == ViewName.ExploreInteractView or arg_8_1 == ViewName.RoomBranchView or arg_8_1.StoryBranchView then
+			if arg_8_0.Adapters[PCInputModel.Activity.storyDialog] == nil then
+				arg_8_0.Adapters[PCInputModel.Activity.storyDialog] = StoryDialogAdapter.New()
 			end
-		elseif (uv0 == ViewName.MessageBoxView or uv0 == ViewName.TopMessageBoxView or uv0 == ViewName.SDKExitGameView or uv0 == ViewName.FightQuitTipView) and uv1.Adapters[PCInputModel.Activity.CommonDialog] == nil then
-			uv1.Adapters[PCInputModel.Activity.CommonDialog] = CommonActivityAdapter.New()
+		elseif (arg_8_1 == ViewName.MessageBoxView or arg_8_1 == ViewName.TopMessageBoxView or arg_8_1 == ViewName.SDKExitGameView or arg_8_1 == ViewName.FightQuitTipView) and arg_8_0.Adapters[PCInputModel.Activity.CommonDialog] == nil then
+			arg_8_0.Adapters[PCInputModel.Activity.CommonDialog] = CommonActivityAdapter.New()
 		end
-	end, slot0, 0.01)
+	end, arg_8_0, 0.01)
 end
 
-function slot0.onCloseViewCallBack(slot0, slot1)
-	TaskDispatcher.runDelay(function ()
-		if uv0 == ViewName.MainView then
-			uv1:_removeAdapter(PCInputModel.Activity.MainActivity)
-		elseif uv0 == ViewName.ExploreView then
-			uv1:_removeAdapter(PCInputModel.Activity.thrityDoor)
-		elseif uv0 == ViewName.FightView then
-			uv1:_removeAdapter(PCInputModel.Activity.battle)
-		elseif uv0 == ViewName.RoomView then
-			uv1:_removeAdapter(PCInputModel.Activity.room)
-		elseif uv0 == ViewName.WeekWalkDialogView or uv0 == ViewName.StoryFrontView or uv0 == ViewName.ExploreInteractView or uv0 == ViewName.RoomBranchView or uv0.StoryBranchView then
-			uv1:_removeAdapter(PCInputModel.Activity.storyDialog)
-		elseif uv0 == ViewName.MessageBoxView or uv0 == ViewName.TopMessageBoxView or uv0 == ViewName.SDKExitGameView or uv0 == ViewName.FightQuitTipView then
-			uv1:_removeAdapter(PCInputModel.Activity.CommonDialog)
-		elseif uv0 == ViewName.SettingsView then
-			uv1:ReRegisterKeys()
+function var_0_0.onCloseViewCallBack(arg_10_0, arg_10_1)
+	TaskDispatcher.runDelay(function()
+		if arg_10_1 == ViewName.MainView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.MainActivity)
+		elseif arg_10_1 == ViewName.ExploreView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.thrityDoor)
+		elseif arg_10_1 == ViewName.FightView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.battle)
+		elseif arg_10_1 == ViewName.RoomView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.room)
+		elseif arg_10_1 == ViewName.WeekWalkDialogView or arg_10_1 == ViewName.StoryFrontView or arg_10_1 == ViewName.ExploreInteractView or arg_10_1 == ViewName.RoomBranchView or arg_10_1.StoryBranchView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.storyDialog)
+		elseif arg_10_1 == ViewName.MessageBoxView or arg_10_1 == ViewName.TopMessageBoxView or arg_10_1 == ViewName.SDKExitGameView or arg_10_1 == ViewName.FightQuitTipView then
+			arg_10_0:_removeAdapter(PCInputModel.Activity.CommonDialog)
+		elseif arg_10_1 == ViewName.SettingsView then
+			arg_10_0:ReRegisterKeys()
 		end
-	end, slot0, 0.01)
+	end, arg_10_0, 0.01)
 end
 
-function slot0.ReRegisterKeys(slot0)
-	for slot4, slot5 in pairs(slot0.Adapters) do
-		if slot5 then
-			slot5:unRegisterFunction()
-			slot5:registerFunction()
-		end
-	end
-end
-
-function slot0._removeAdapter(slot0, slot1)
-	if slot0.Adapters[slot1] then
-		slot0.Adapters[slot1]:destroy()
-
-		slot0.Adapters[slot1] = nil
-	end
-end
-
-function slot0.registerKey(slot0, slot1, slot2)
-	if slot1 and slot0.inputInst then
-		slot0.inputInst:RegisterKey(slot1, slot2)
-	end
-end
-
-function slot0.unregisterKey(slot0, slot1, slot2)
-	if slot1 and slot0.inputInst then
-		slot0.inputInst:UnregisterKey(slot1, slot2)
-	end
-end
-
-function slot0.registerKeys(slot0, slot1, slot2)
-	if slot1 and slot0.inputInst then
-		for slot6, slot7 in pairs(slot1) do
-			if slot7 then
-				slot0.inputInst:RegisterKey(slot7, slot2)
-			end
+function var_0_0.ReRegisterKeys(arg_12_0)
+	for iter_12_0, iter_12_1 in pairs(arg_12_0.Adapters) do
+		if iter_12_1 then
+			iter_12_1:unRegisterFunction()
+			iter_12_1:registerFunction()
 		end
 	end
 end
 
-function slot0.unregisterKeys(slot0, slot1, slot2)
-	if slot1 and slot0.inputInst then
-		for slot6, slot7 in pairs(slot1) do
-			if slot7 then
-				slot0.inputInst:UnregisterKey(slot7, slot2)
+function var_0_0._removeAdapter(arg_13_0, arg_13_1)
+	if arg_13_0.Adapters[arg_13_1] then
+		arg_13_0.Adapters[arg_13_1]:destroy()
+
+		arg_13_0.Adapters[arg_13_1] = nil
+	end
+end
+
+function var_0_0.registerKey(arg_14_0, arg_14_1, arg_14_2)
+	if arg_14_1 and arg_14_0.inputInst then
+		arg_14_0.inputInst:RegisterKey(arg_14_1, arg_14_2)
+	end
+end
+
+function var_0_0.unregisterKey(arg_15_0, arg_15_1, arg_15_2)
+	if arg_15_1 and arg_15_0.inputInst then
+		arg_15_0.inputInst:UnregisterKey(arg_15_1, arg_15_2)
+	end
+end
+
+function var_0_0.registerKeys(arg_16_0, arg_16_1, arg_16_2)
+	if arg_16_1 and arg_16_0.inputInst then
+		for iter_16_0, iter_16_1 in pairs(arg_16_1) do
+			if iter_16_1 then
+				arg_16_0.inputInst:RegisterKey(iter_16_1, arg_16_2)
 			end
 		end
 	end
 end
 
-function slot0.getKeyPress(slot0, slot1)
-	if slot0.init and slot0.inputInst and not ViewMgr.instance:isOpen(ViewName.GuideView) then
-		return slot0.inputInst:getKeyPress(slot1)
+function var_0_0.unregisterKeys(arg_17_0, arg_17_1, arg_17_2)
+	if arg_17_1 and arg_17_0.inputInst then
+		for iter_17_0, iter_17_1 in pairs(arg_17_1) do
+			if iter_17_1 then
+				arg_17_0.inputInst:UnregisterKey(iter_17_1, arg_17_2)
+			end
+		end
+	end
+end
+
+function var_0_0.getKeyPress(arg_18_0, arg_18_1)
+	if arg_18_0.init and arg_18_0.inputInst and not ViewMgr.instance:isOpen(ViewName.GuideView) then
+		return arg_18_0.inputInst:getKeyPress(arg_18_1)
 	end
 
 	return false
 end
 
-function slot0.getActivityFunPress(slot0, slot1, slot2)
-	if PCInputModel.instance:getActivityKeys(slot1) then
-		if slot3[slot2] then
-			return slot0:getKeyPress(slot4[4])
+function var_0_0.getActivityFunPress(arg_19_0, arg_19_1, arg_19_2)
+	local var_19_0 = PCInputModel.instance:getActivityKeys(arg_19_1)
+
+	if var_19_0 then
+		local var_19_1 = var_19_0[arg_19_2]
+
+		if var_19_1 then
+			return arg_19_0:getKeyPress(var_19_1[4])
 		else
 			return false
 		end
@@ -172,8 +178,8 @@ function slot0.getActivityFunPress(slot0, slot1, slot2)
 	return false
 end
 
-function slot0.OnKeyDown(slot0, slot1)
-	if not slot0.init or not slot0.inputInst then
+function var_0_0.OnKeyDown(arg_20_0, arg_20_1)
+	if not arg_20_0.init or not arg_20_0.inputInst then
 		return
 	end
 
@@ -181,15 +187,17 @@ function slot0.OnKeyDown(slot0, slot1)
 		return
 	end
 
-	for slot6, slot7 in pairs(slot0.Adapters) do
-		if slot7 then
-			slot7:OnkeyDown(slot0.inputInst:keyCodeToKey(slot1))
+	local var_20_0 = arg_20_0.inputInst:keyCodeToKey(arg_20_1)
+
+	for iter_20_0, iter_20_1 in pairs(arg_20_0.Adapters) do
+		if iter_20_1 then
+			iter_20_1:OnkeyDown(var_20_0)
 		end
 	end
 end
 
-function slot0.OnKeyUp(slot0, slot1)
-	if not slot0.init or not slot0.inputInst then
+function var_0_0.OnKeyUp(arg_21_0, arg_21_1)
+	if not arg_21_0.init or not arg_21_0.inputInst then
 		return
 	end
 
@@ -197,47 +205,53 @@ function slot0.OnKeyUp(slot0, slot1)
 		return
 	end
 
-	for slot6, slot7 in pairs(slot0.Adapters) do
-		if slot7 then
-			slot7:OnkeyUp(slot0.inputInst:keyCodeToKey(slot1))
+	local var_21_0 = arg_21_0.inputInst:keyCodeToKey(arg_21_1)
+
+	for iter_21_0, iter_21_1 in pairs(arg_21_0.Adapters) do
+		if iter_21_1 then
+			iter_21_1:OnkeyUp(var_21_0)
 		end
 	end
 end
 
-function slot0.getThirdMoveKey(slot0)
+function var_0_0.getThirdMoveKey(arg_22_0)
 	return PCInputModel.instance:getThirdDoorMoveKey()
 end
 
-function slot0.getKeyMap(slot0)
-	return LuaUtil.deepCopy(PCInputModel.instance:getKeyBinding())
+function var_0_0.getKeyMap(arg_23_0)
+	local var_23_0 = PCInputModel.instance:getKeyBinding()
+
+	return LuaUtil.deepCopy(var_23_0)
 end
 
-function slot0.saveKeyMap(slot0, slot1)
-	PCInputModel.instance:Save(slot1)
+function var_0_0.saveKeyMap(arg_24_0, arg_24_1)
+	PCInputModel.instance:Save(arg_24_1)
 end
 
-function slot0.showkeyTips(slot0, slot1, slot2, slot3, slot4)
-	if slot1 == nil or not slot0.init then
+function var_0_0.showkeyTips(arg_25_0, arg_25_1, arg_25_2, arg_25_3, arg_25_4)
+	if arg_25_1 == nil or not arg_25_0.init then
 		return
 	end
 
-	if not slot4 then
-		MonoHelper.addLuaComOnceToGo(slot1, keyTipsView, {
-			keyname = slot4,
-			activityId = slot2,
-			keyid = slot3
-		}):Refresh(slot2, slot3)
+	local var_25_0 = MonoHelper.addLuaComOnceToGo(arg_25_1, keyTipsView, {
+		keyname = arg_25_4,
+		activityId = arg_25_2,
+		keyid = arg_25_3
+	})
+
+	if not arg_25_4 then
+		var_25_0:Refresh(arg_25_2, arg_25_3)
 	else
-		slot5:RefreshByKeyName(slot4)
+		var_25_0:RefreshByKeyName(arg_25_4)
 	end
 
-	return slot5
+	return var_25_0
 end
 
-function slot0.KeyNameToDescName(slot0, slot1)
-	return PCInputModel.instance:ReplaceKeyName(slot1)
+function var_0_0.KeyNameToDescName(arg_26_0, arg_26_1)
+	return PCInputModel.instance:ReplaceKeyName(arg_26_1)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

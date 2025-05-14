@@ -1,6 +1,7 @@
-module("modules.logic.rouge.dlc.103.model.RougeDLCModel103", package.seeall)
+﻿module("modules.logic.rouge.dlc.103.model.RougeDLCModel103", package.seeall)
 
-slot0 = class("RougeDLCModel103", BaseModel)
-slot0.instance = slot0.New()
+local var_0_0 = class("RougeDLCModel103", BaseModel)
 
-return slot0
+var_0_0.instance = var_0_0.New()
+
+return var_0_0

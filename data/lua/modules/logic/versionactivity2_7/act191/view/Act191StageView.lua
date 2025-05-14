@@ -1,256 +1,323 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191StageView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191StageView", package.seeall)
 
-slot0 = class("Act191StageView", BaseView)
+local var_0_0 = class("Act191StageView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goNodeList = gohelper.findChild(slot0.viewGO, "#go_NodeList")
-	slot0._goNormalStage = gohelper.findChild(slot0.viewGO, "#go_NormalStage")
-	slot0._goFightStage = gohelper.findChild(slot0.viewGO, "#go_FightStage")
-	slot0._goTeam = gohelper.findChild(slot0.viewGO, "#go_Team")
-	slot0._btnEnter = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Enter")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
-	slot0._txtCoin = gohelper.findChildText(slot0.viewGO, "go_topright/Coin/#txt_Coin")
-	slot0._txtScore = gohelper.findChildText(slot0.viewGO, "go_topright/Score/#txt_Score")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goNodeList = gohelper.findChild(arg_1_0.viewGO, "#go_NodeList")
+	arg_1_0._goNormalStage = gohelper.findChild(arg_1_0.viewGO, "#go_NormalStage")
+	arg_1_0._goFightStage = gohelper.findChild(arg_1_0.viewGO, "#go_FightStage")
+	arg_1_0._goTeam = gohelper.findChild(arg_1_0.viewGO, "#go_Team")
+	arg_1_0._btnEnter = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Enter")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_topleft")
+	arg_1_0._txtCoin = gohelper.findChildText(arg_1_0.viewGO, "go_topright/Coin/#txt_Coin")
+	arg_1_0._txtScore = gohelper.findChildText(arg_1_0.viewGO, "go_topright/Score/#txt_Score")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnEnter:AddClickListener(slot0._btnEnterOnClick, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0.onCloseView, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnEnter:AddClickListener(arg_2_0._btnEnterOnClick, arg_2_0)
+	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_2_0.onCloseView, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnEnter:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnEnter:RemoveClickListener()
 end
 
-function slot0._btnEnterOnClick(slot0)
-	if not slot0.selectIndex then
+function var_0_0._btnEnterOnClick(arg_4_0)
+	if not arg_4_0.selectIndex then
 		return
 	end
 
-	Activity191Rpc.instance:sendSelect191NodeRequest(slot0.actId, slot0.selectIndex - 1, slot0.onSelectNode, slot0)
+	Activity191Rpc.instance:sendSelect191NodeRequest(arg_4_0.actId, arg_4_0.selectIndex - 1, arg_4_0.onSelectNode, arg_4_0)
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.actId = Activity191Model.instance:getCurActId()
 
-	gohelper.setActive(slot0._btnEnter, false)
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.TeamComp, slot0._goTeam), Act191TeamComp, slot0)
+	gohelper.setActive(arg_5_0._btnEnter, false)
 
-	slot0.nodeListComp = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem, slot0)
+	local var_5_0 = arg_5_0:getResInst(Activity191Enum.PrefabPath.TeamComp, arg_5_0._goTeam)
+
+	MonoHelper.addNoUpdateLuaComOnceToGo(var_5_0, Act191TeamComp, arg_5_0)
+
+	local var_5_1 = arg_5_0:getResInst(Activity191Enum.PrefabPath.NodeListItem, arg_5_0._goNodeList)
+
+	arg_5_0.nodeListComp = MonoHelper.addNoUpdateLuaComOnceToGo(var_5_1, Act191NodeListItem, arg_5_0)
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
+function var_0_0.onOpen(arg_6_0)
+	Act191StatController.instance:onViewOpen(arg_6_0.viewName)
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_unfold)
 
-	slot1 = Activity191Model.instance:getActInfo():getGameInfo()
-	slot0._txtScore.text = slot1.score
-	slot0._txtCoin.text = slot1.coin
-	slot3 = #Activity191Helper.matchKeyInArray(slot1.nodeInfo, slot1.curNode, "nodeId").selectNodeStr
-	slot0.stageItemList = {}
-	slot0.nodeDetailMoList = slot0:getUserDataTb_()
+	local var_6_0 = Activity191Model.instance:getActInfo():getGameInfo()
 
-	for slot7 = 1, 3 do
-		slot9 = gohelper.findChild(slot0.viewGO, "stageList/StageItem" .. (slot3 == 1 and 2 or slot7))
+	arg_6_0._txtScore.text = var_6_0.score
+	arg_6_0._txtCoin.text = var_6_0.coin
 
-		if slot7 <= slot3 then
-			slot10 = Act191NodeDetailMO.New()
+	local var_6_1 = Activity191Helper.matchKeyInArray(var_6_0.nodeInfo, var_6_0.curNode, "nodeId")
+	local var_6_2 = #var_6_1.selectNodeStr
 
-			slot10:init(slot2.selectNodeStr[slot7])
+	arg_6_0.stageItemList = {}
+	arg_6_0.nodeDetailMoList = arg_6_0:getUserDataTb_()
 
-			slot0.nodeDetailMoList[slot7] = slot10
-			slot11 = slot0:getUserDataTb_()
-			slot13 = Activity191Helper.isPvpBattle(slot10.type)
+	for iter_6_0 = 1, 3 do
+		local var_6_3 = var_6_2 == 1 and 2 or iter_6_0
+		local var_6_4 = gohelper.findChild(arg_6_0.viewGO, "stageList/StageItem" .. var_6_3)
 
-			if Activity191Helper.isPveBattle(slot10.type) or slot13 then
-				slot14 = gohelper.clone(slot0._goFightStage, slot9)
-				slot11.canvasGroup = slot14:GetComponent(gohelper.Type_CanvasGroup)
+		if iter_6_0 <= var_6_2 then
+			local var_6_5 = Act191NodeDetailMO.New()
 
-				slot0:addClickCb(gohelper.findChildButton(slot14, ""), slot0.clickStage, slot0, slot7)
+			var_6_5:init(var_6_1.selectNodeStr[iter_6_0])
 
-				slot16 = gohelper.findChildButtonWithAudio(slot14, "btn_Check")
+			arg_6_0.nodeDetailMoList[iter_6_0] = var_6_5
 
-				slot0:addClickCb(slot16, slot0.clickCheck, slot0, slot7)
-				gohelper.setActive(slot16, slot12)
+			local var_6_6 = arg_6_0:getUserDataTb_()
+			local var_6_7 = Activity191Helper.isPveBattle(var_6_5.type)
+			local var_6_8 = Activity191Helper.isPvpBattle(var_6_5.type)
 
-				slot11.goMask = gohelper.findChild(slot14, "stage/go_mask")
-				slot11.goSelect = gohelper.findChild(slot14, "go_Select")
-				slot22 = gohelper.findChild(slot14, "reward")
+			if var_6_7 or var_6_8 then
+				local var_6_9 = gohelper.clone(arg_6_0._goFightStage, var_6_4)
 
-				gohelper.setActive(gohelper.findChild(slot14, "stage/go_Spine"), slot12)
-				gohelper.setActive(gohelper.findChild(slot14, "stage/go_Unknown"), slot13)
-				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "image_NodeNum"), "act174_stage_num_0" .. slot7)
+				var_6_6.canvasGroup = var_6_9:GetComponent(gohelper.Type_CanvasGroup)
 
-				slot23 = nil
+				local var_6_10 = gohelper.findChildButton(var_6_9, "")
 
-				if slot12 then
-					slot24 = lua_activity191_fight_event.configDict[slot10.fightEventId]
+				arg_6_0:addClickCb(var_6_10, arg_6_0.clickStage, arg_6_0, iter_6_0)
 
-					UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "info/image_Level"), "act191_level_" .. string.lower(slot24.fightLevel))
-					slot0:createSpine(slot17, slot24)
+				local var_6_11 = gohelper.findChildButtonWithAudio(var_6_9, "btn_Check")
 
-					slot23 = GameUtil.splitString2(slot24.rewardView, true)
+				arg_6_0:addClickCb(var_6_11, arg_6_0.clickCheck, arg_6_0, iter_6_0)
+				gohelper.setActive(var_6_11, var_6_7)
 
-					gohelper.setActive(gohelper.findChild(slot14, "info/go_attribute"), false)
+				local var_6_12 = gohelper.findChild(var_6_9, "stage/go_Spine")
+
+				var_6_6.goMask = gohelper.findChild(var_6_9, "stage/go_mask")
+
+				local var_6_13 = gohelper.findChild(var_6_9, "stage/go_Unknown")
+
+				var_6_6.goSelect = gohelper.findChild(var_6_9, "go_Select")
+
+				local var_6_14 = gohelper.findChildImage(var_6_9, "image_NodeNum")
+				local var_6_15 = gohelper.findChildImage(var_6_9, "info/image_Level")
+				local var_6_16 = gohelper.findChild(var_6_9, "info/go_attribute")
+				local var_6_17 = gohelper.findChild(var_6_9, "reward")
+
+				gohelper.setActive(var_6_12, var_6_7)
+				gohelper.setActive(var_6_13, var_6_8)
+				UISpriteSetMgr.instance:setAct174Sprite(var_6_14, "act174_stage_num_0" .. iter_6_0)
+
+				local var_6_18
+
+				if var_6_7 then
+					local var_6_19 = lua_activity191_fight_event.configDict[var_6_5.fightEventId]
+					local var_6_20 = var_6_19.fightLevel
+
+					UISpriteSetMgr.instance:setAct174Sprite(var_6_15, "act191_level_" .. string.lower(var_6_20))
+					arg_6_0:createSpine(var_6_12, var_6_19)
+
+					var_6_18 = GameUtil.splitString2(var_6_19.rewardView, true)
+
+					gohelper.setActive(var_6_16, false)
 				else
-					UISpriteSetMgr.instance:setAct174Sprite(slot20, "act191_level_" .. string.lower(lua_activity191_match_rank.configDict[slot10.matchInfo.rank].fightLevel))
+					local var_6_21 = lua_activity191_match_rank.configDict[var_6_5.matchInfo.rank].fightLevel
 
-					slot26 = lua_activity191_pvp_match.configDict[Activity191Enum.NodeType2Key[slot10.type]]
-					slot23 = GameUtil.splitString2(slot26.rewardView, true)
+					UISpriteSetMgr.instance:setAct174Sprite(var_6_15, "act191_level_" .. string.lower(var_6_21))
 
-					if GameUtil.splitString2(slot26.attribute, true) then
-						for slot31 = 1, 2 do
-							slot32 = gohelper.findChild(slot21, slot31)
+					local var_6_22 = Activity191Enum.NodeType2Key[var_6_5.type]
+					local var_6_23 = lua_activity191_pvp_match.configDict[var_6_22]
 
-							if slot27[slot31] then
-								UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot32, "icon"), "icon_att_" .. slot27[slot31][1])
+					var_6_18 = GameUtil.splitString2(var_6_23.rewardView, true)
 
-								gohelper.findChildText(slot32, "txt_attribute").text = (slot27[slot31][2] <= 0 or string.format("+%s%%", slot34 / 10)) and string.format("%s%%", slot34 / 10)
+					local var_6_24 = GameUtil.splitString2(var_6_23.attribute, true)
+
+					if var_6_24 then
+						for iter_6_1 = 1, 2 do
+							local var_6_25 = gohelper.findChild(var_6_16, iter_6_1)
+
+							if var_6_24[iter_6_1] then
+								local var_6_26 = var_6_24[iter_6_1][1]
+								local var_6_27 = var_6_24[iter_6_1][2]
+
+								if var_6_27 > 0 then
+									var_6_27 = string.format("+%s%%", var_6_27 / 10)
+								else
+									var_6_27 = string.format("%s%%", var_6_27 / 10)
+								end
+
+								local var_6_28 = gohelper.findChildImage(var_6_25, "icon")
+
+								UISpriteSetMgr.instance:setCommonSprite(var_6_28, "icon_att_" .. var_6_26)
+
+								gohelper.findChildText(var_6_25, "txt_attribute").text = var_6_27
 							end
 
-							gohelper.setActive(slot32, slot27[slot31])
+							gohelper.setActive(var_6_25, var_6_24[iter_6_1])
 						end
 					end
 
-					gohelper.setActive(slot21, slot27)
+					gohelper.setActive(var_6_16, var_6_24)
 				end
 
-				for slot27, slot28 in ipairs(slot23) do
-					slot30 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.RewardItem, slot22), Act191RewardItem)
+				for iter_6_2, iter_6_3 in ipairs(var_6_18) do
+					local var_6_29 = arg_6_0:getResInst(Activity191Enum.PrefabPath.RewardItem, var_6_17)
+					local var_6_30 = MonoHelper.addNoUpdateLuaComOnceToGo(var_6_29, Act191RewardItem)
 
-					slot30:setData(slot28[1], slot28[2])
-					slot30:setExtraParam({
-						index = slot27,
-						fromView = slot0.viewName
-					})
+					var_6_30:setData(iter_6_3[1], iter_6_3[2])
+
+					local var_6_31 = {
+						index = iter_6_2,
+						fromView = arg_6_0.viewName
+					}
+
+					var_6_30:setExtraParam(var_6_31)
 				end
 			else
-				slot14 = gohelper.clone(slot0._goNormalStage, slot9)
-				slot11.canvasGroup = slot14:GetComponent(gohelper.Type_CanvasGroup)
+				local var_6_32 = gohelper.clone(arg_6_0._goNormalStage, var_6_4)
 
-				slot0:addClickCb(gohelper.findChildButton(slot14, ""), slot0.clickStage, slot0, slot7)
+				var_6_6.canvasGroup = var_6_32:GetComponent(gohelper.Type_CanvasGroup)
 
-				slot16 = gohelper.findChildSingleImage(slot14, "stage/simage_Stage")
-				slot11.goSelect = gohelper.findChild(slot14, "go_Select")
-				slot18 = gohelper.findChildText(slot14, "info/txt_Name")
-				slot19 = gohelper.findChildText(slot14, "detail/scroll_desc/Viewport/Content/txt_Desc")
-				slot20 = gohelper.findChild(slot14, "tag")
+				local var_6_33 = gohelper.findChildButton(var_6_32, "")
 
-				UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot14, "image_NodeNum"), "act174_stage_num_0" .. slot7)
+				arg_6_0:addClickCb(var_6_33, arg_6_0.clickStage, arg_6_0, iter_6_0)
 
-				slot23 = nil
+				local var_6_34 = gohelper.findChildSingleImage(var_6_32, "stage/simage_Stage")
 
-				if Activity191Helper.isShopNode(slot10.type) then
-					slot24 = lua_activity191_shop.configDict[slot0.actId][slot10.shopId]
+				var_6_6.goSelect = gohelper.findChild(var_6_32, "go_Select")
 
-					if slot10.type == Activity191Enum.NodeType.RoleShop then
-						gohelper.findChildText(slot14, "tag/txt_Tag").text = lua_activity191_const.configDict[Activity191Enum.ConstKey.RoleTag].value2
-					elseif slot10.type == Activity191Enum.NodeType.CollectionShop then
-						slot21.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.CollectionTag].value2
-					elseif tabletool.indexOf(Activity191Enum.TagShopField, slot10.type) then
-						slot21.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.FetterTag].value2
+				local var_6_35 = gohelper.findChildImage(var_6_32, "image_NodeNum")
+				local var_6_36 = gohelper.findChildText(var_6_32, "info/txt_Name")
+				local var_6_37 = gohelper.findChildText(var_6_32, "detail/scroll_desc/Viewport/Content/txt_Desc")
+				local var_6_38 = gohelper.findChild(var_6_32, "tag")
+				local var_6_39 = gohelper.findChildText(var_6_32, "tag/txt_Tag")
+
+				UISpriteSetMgr.instance:setAct174Sprite(var_6_35, "act174_stage_num_0" .. iter_6_0)
+
+				local var_6_40 = Activity191Helper.isShopNode(var_6_5.type)
+				local var_6_41
+
+				if var_6_40 then
+					local var_6_42 = lua_activity191_shop.configDict[arg_6_0.actId][var_6_5.shopId]
+
+					if var_6_5.type == Activity191Enum.NodeType.RoleShop then
+						var_6_39.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.RoleTag].value2
+					elseif var_6_5.type == Activity191Enum.NodeType.CollectionShop then
+						var_6_39.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.CollectionTag].value2
+					elseif tabletool.indexOf(Activity191Enum.TagShopField, var_6_5.type) then
+						var_6_39.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.FetterTag].value2
 					end
 
-					slot18.text = slot24.name
-					slot19.text = slot24.desc
-					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_3")
-				elseif slot10.type == Activity191Enum.NodeType.Enhance then
-					slot18.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceTitle].value2
-					slot19.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceDesc].value2
-					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_2")
-				elseif slot10.type == Activity191Enum.NodeType.BattleEvent or slot10.type == Activity191Enum.NodeType.RewardEvent then
-					slot24 = lua_activity191_event.configDict[slot10.eventId]
-					slot18.text = slot24.title
-					slot19.text = slot24.outDesc
-					slot23 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_1")
+					var_6_36.text = var_6_42.name
+					var_6_37.text = var_6_42.desc
+					var_6_41 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_3")
+				elseif var_6_5.type == Activity191Enum.NodeType.Enhance then
+					var_6_36.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceTitle].value2
+					var_6_37.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.EnhanceDesc].value2
+					var_6_41 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_2")
+				elseif var_6_5.type == Activity191Enum.NodeType.BattleEvent or var_6_5.type == Activity191Enum.NodeType.RewardEvent then
+					local var_6_43 = lua_activity191_event.configDict[var_6_5.eventId]
 
-					gohelper.setActive(slot19, true)
+					var_6_36.text = var_6_43.title
+					var_6_37.text = var_6_43.outDesc
+					var_6_41 = ResUrl.getAct191SingleBg("stage/act191_stage_mode_1")
+
+					gohelper.setActive(var_6_37, true)
 				end
 
-				gohelper.setActive(slot20, slot22 and slot10.type ~= Activity191Enum.NodeType.MixStore)
-				slot16:LoadImage(slot23)
+				gohelper.setActive(var_6_38, var_6_40 and var_6_5.type ~= Activity191Enum.NodeType.MixStore)
+				var_6_34:LoadImage(var_6_41)
 			end
 
-			gohelper.setActive(slot9, true)
+			gohelper.setActive(var_6_4, true)
 
-			slot0.stageItemList[slot7] = slot11
+			arg_6_0.stageItemList[iter_6_0] = var_6_6
 		end
 	end
 
-	gohelper.setActive(slot0._goFightStage, false)
-	gohelper.setActive(slot0._goNormalStage, false)
+	gohelper.setActive(arg_6_0._goFightStage, false)
+	gohelper.setActive(arg_6_0._goNormalStage, false)
 end
 
-function slot0.onClose(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
+function var_0_0.onClose(arg_7_0)
+	local var_7_0 = arg_7_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_7_0.viewName, var_7_0)
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0.playSalaryAnim, slot0)
+function var_0_0.onDestroyView(arg_8_0)
+	TaskDispatcher.cancelTask(arg_8_0.playSalaryAnim, arg_8_0)
 end
 
-function slot0.clickStage(slot0, slot1)
-	if not slot0.selectIndex then
-		gohelper.setActive(slot0._btnEnter, true)
+function var_0_0.clickStage(arg_9_0, arg_9_1)
+	if not arg_9_0.selectIndex then
+		gohelper.setActive(arg_9_0._btnEnter, true)
 	end
 
-	if slot0.selectIndex == slot1 then
+	if arg_9_0.selectIndex == arg_9_1 then
 		return
 	end
 
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_fire_interface)
 
-	slot0.selectIndex = slot1
+	arg_9_0.selectIndex = arg_9_1
 
-	for slot5, slot6 in ipairs(slot0.stageItemList) do
-		slot6.canvasGroup.alpha = slot5 == slot1 and 1 or 0.5
+	for iter_9_0, iter_9_1 in ipairs(arg_9_0.stageItemList) do
+		local var_9_0 = iter_9_0 == arg_9_1 and 1 or 0.5
 
-		gohelper.setActive(slot6.goSelect, slot5 == slot1)
-		gohelper.setActive(slot6.goMask, slot5 ~= slot1)
+		iter_9_1.canvasGroup.alpha = var_9_0
+
+		gohelper.setActive(iter_9_1.goSelect, iter_9_0 == arg_9_1)
+		gohelper.setActive(iter_9_1.goMask, iter_9_0 ~= arg_9_1)
 	end
 end
 
-function slot0.clickCheck(slot0, slot1)
-	if slot0.nodeDetailMoList[slot1] then
-		EnemyInfoController.instance:openAct191EnemyInfoView(DungeonConfig.instance:getEpisodeCO(lua_activity191_fight_event.configDict[slot2.fightEventId].episodeId).battleId)
-		Act191StatController.instance:statButtonClick(slot0.viewName, string.format("clickCheck_%s_%s", slot1, slot2.fightEventId))
+function var_0_0.clickCheck(arg_10_0, arg_10_1)
+	local var_10_0 = arg_10_0.nodeDetailMoList[arg_10_1]
+
+	if var_10_0 then
+		local var_10_1 = lua_activity191_fight_event.configDict[var_10_0.fightEventId].episodeId
+		local var_10_2 = DungeonConfig.instance:getEpisodeCO(var_10_1)
+
+		EnemyInfoController.instance:openAct191EnemyInfoView(var_10_2.battleId)
+		Act191StatController.instance:statButtonClick(arg_10_0.viewName, string.format("clickCheck_%s_%s", arg_10_1, var_10_0.fightEventId))
 	end
 end
 
-function slot0.onSelectNode(slot0, slot1, slot2)
-	if slot2 == 0 then
+function var_0_0.onSelectNode(arg_11_0, arg_11_1, arg_11_2)
+	if arg_11_2 == 0 then
 		Activity191Controller.instance:nextStep()
-		ViewMgr.instance:closeView(slot0.viewName)
+		ViewMgr.instance:closeView(arg_11_0.viewName)
 	end
 end
 
-function slot0.createSpine(slot0, slot1, slot2)
-	GuiSpine.Create(slot1, false):setResPath(ResUrl.getSpineUIPrefab(FightConfig.instance:getSkinCO(slot2.skinId).spine), nil, , true)
+function var_0_0.createSpine(arg_12_0, arg_12_1, arg_12_2)
+	local var_12_0 = GuiSpine.Create(arg_12_1, false)
+	local var_12_1 = FightConfig.instance:getSkinCO(arg_12_2.skinId)
 
-	if not string.nilorempty(slot2.offset) then
-		slot5 = string.splitToNumber(slot2.offset, "#")
+	var_12_0:setResPath(ResUrl.getSpineUIPrefab(var_12_1.spine), nil, nil, true)
 
-		recthelper.setAnchor(slot1.transform, slot5[1], slot5[2])
+	if not string.nilorempty(arg_12_2.offset) then
+		local var_12_2 = string.splitToNumber(arg_12_2.offset, "#")
 
-		if slot5[3] then
-			transformhelper.setLocalScale(slot1.transform, slot5[3], slot5[3], 1)
+		recthelper.setAnchor(arg_12_1.transform, var_12_2[1], var_12_2[2])
+
+		if var_12_2[3] then
+			transformhelper.setLocalScale(arg_12_1.transform, var_12_2[3], var_12_2[3], 1)
 		end
 	end
 end
 
-function slot0.onCloseView(slot0, slot1)
-	if slot1 == ViewName.Act191SwitchView and slot0.nodeListComp.firstNode then
-		slot0.nodeListComp:showSalary()
-		TaskDispatcher.runDelay(slot0.playSalaryAnim, slot0, 0.5)
+function var_0_0.onCloseView(arg_13_0, arg_13_1)
+	if arg_13_1 == ViewName.Act191SwitchView and arg_13_0.nodeListComp.firstNode then
+		arg_13_0.nodeListComp:showSalary()
+		TaskDispatcher.runDelay(arg_13_0.playSalaryAnim, arg_13_0, 0.5)
 	end
 end
 
-function slot0.playSalaryAnim(slot0)
-	slot0.nodeListComp:playSalaryAnim(slot0._txtCoin.gameObject, slot0._txtScore.gameObject)
+function var_0_0.playSalaryAnim(arg_14_0)
+	arg_14_0.nodeListComp:playSalaryAnim(arg_14_0._txtCoin.gameObject, arg_14_0._txtScore.gameObject)
 end
 
-return slot0
+return var_0_0

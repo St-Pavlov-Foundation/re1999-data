@@ -1,11 +1,11 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventPlayNextSkill", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventPlayNextSkill", package.seeall)
 
-slot0 = class("FightTLEventPlayNextSkill", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventPlayNextSkill", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	if FightModel.instance:canParallelSkill(slot1) then
-		FightController.instance:dispatchEvent(FightEvent.ParallelPlayNextSkillCheck, slot1)
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	if FightModel.instance:canParallelSkill(arg_1_1) then
+		FightController.instance:dispatchEvent(FightEvent.ParallelPlayNextSkillCheck, arg_1_1)
 	end
 end
 
-return slot0
+return var_0_0

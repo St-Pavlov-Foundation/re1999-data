@@ -1,37 +1,37 @@
-module("modules.logic.bossrush.view.V1a4_BossRush_EnemyInfoViewContainer", package.seeall)
+﻿module("modules.logic.bossrush.view.V1a4_BossRush_EnemyInfoViewContainer", package.seeall)
 
-slot0 = class("V1a4_BossRush_EnemyInfoViewContainer", BaseViewContainer)
+local var_0_0 = class("V1a4_BossRush_EnemyInfoViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot0._bossRushViewRule = V1a4_BossRushViewRule.New()
+function var_0_0.buildViews(arg_1_0)
+	arg_1_0._bossRushViewRule = V1a4_BossRushViewRule.New()
 
 	return {
 		V1a4_BossRush_EnemyInfoView.New(),
 		TabViewGroup.New(1, "#go_btns"),
-		slot0._bossRushViewRule
+		arg_1_0._bossRushViewRule
 	}
 end
 
-function slot0.getBossRushViewRule(slot0)
-	return slot0._bossRushViewRule
+function var_0_0.getBossRushViewRule(arg_2_0)
+	return arg_2_0._bossRushViewRule
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot0._navigateButtonView = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_3_0, arg_3_1)
+	if arg_3_1 == 1 then
+		arg_3_0._navigateButtonView = NavigateButtonsView.New({
 			true,
 			true,
 			false
-		}, 100, slot0._closeCallback, nil, , slot0)
+		}, 100, arg_3_0._closeCallback, nil, nil, arg_3_0)
 
 		return {
-			slot0._navigateButtonView
+			arg_3_0._navigateButtonView
 		}
 	end
 end
 
-function slot0.diffRootChild(slot0, slot1)
+function var_0_0.diffRootChild(arg_4_0, arg_4_1)
 	return false
 end
 
-return slot0
+return var_0_0

@@ -1,9 +1,9 @@
-module("modules.logic.weekwalk_2.view.WeekWalk_2HeroGroupFightLayoutView", package.seeall)
+﻿module("modules.logic.weekwalk_2.view.WeekWalk_2HeroGroupFightLayoutView", package.seeall)
 
-slot0 = class("WeekWalk_2HeroGroupFightLayoutView", HeroGroupFightLayoutView)
+local var_0_0 = class("WeekWalk_2HeroGroupFightLayoutView", HeroGroupFightLayoutView)
 
-function slot0.checkNeedSetOffset(slot0)
+function var_0_0.checkNeedSetOffset(arg_1_0)
 	return true
 end
 
-return slot0
+return var_0_0

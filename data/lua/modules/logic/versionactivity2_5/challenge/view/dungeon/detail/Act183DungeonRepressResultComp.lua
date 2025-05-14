@@ -1,76 +1,83 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRepressResultComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRepressResultComp", package.seeall)
 
-slot0 = class("Act183DungeonRepressResultComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonRepressResultComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._gohasrepress = gohelper.findChild(slot0.go, "#go_hasrepress")
-	slot0._gounrepress = gohelper.findChild(slot0.go, "#go_unrepress")
-	slot0._gorepressruleitem = gohelper.findChild(slot0.go, "#go_repressrules/#go_repressruleitem")
-	slot0._gorepressheropos = gohelper.findChild(slot0.go, "#go_hasrepress/#go_repressheropos")
-	slot0._repressRuleItemTab = slot0:getUserDataTb_()
+	arg_1_0._gohasrepress = gohelper.findChild(arg_1_0.go, "#go_hasrepress")
+	arg_1_0._gounrepress = gohelper.findChild(arg_1_0.go, "#go_unrepress")
+	arg_1_0._gorepressruleitem = gohelper.findChild(arg_1_0.go, "#go_repressrules/#go_repressruleitem")
+	arg_1_0._gorepressheropos = gohelper.findChild(arg_1_0.go, "#go_hasrepress/#go_repressheropos")
+	arg_1_0._repressRuleItemTab = arg_1_0:getUserDataTb_()
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_4_0, arg_4_1)
+	var_0_0.super.updateInfo(arg_4_0, arg_4_1)
 
-	slot0._baseRules = Act183Config.instance:getEpisodeAllRuleDesc(slot0._episodeId)
+	arg_4_0._baseRules = Act183Config.instance:getEpisodeAllRuleDesc(arg_4_0._episodeId)
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._status == Act183Enum.EpisodeStatus.Finished and slot0._episodeType == Act183Enum.EpisodeType.Sub and not Act183Helper.isLastPassEpisodeInType(slot0._episodeMo)
+function var_0_0.checkIsVisible(arg_5_0)
+	local var_5_0 = arg_5_0._status == Act183Enum.EpisodeStatus.Finished
+	local var_5_1 = arg_5_0._episodeType == Act183Enum.EpisodeType.Sub
+	local var_5_2 = Act183Helper.isLastPassEpisodeInType(arg_5_0._episodeMo)
+
+	return var_5_0 and var_5_1 and not var_5_2
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
-	gohelper.setActive(slot0._gohasrepress, false)
-	gohelper.setActive(slot0._gounrepress, true)
-	slot0:createObjList(slot0._baseRules, slot0._repressRuleItemTab, slot0._gorepressruleitem, slot0._initRepressRuleItemFunc, slot0._refreshRepressResultFunc, slot0._defaultItemFreeFunc)
+function var_0_0.show(arg_6_0)
+	var_0_0.super.show(arg_6_0)
+	gohelper.setActive(arg_6_0._gohasrepress, false)
+	gohelper.setActive(arg_6_0._gounrepress, true)
+	arg_6_0:createObjList(arg_6_0._baseRules, arg_6_0._repressRuleItemTab, arg_6_0._gorepressruleitem, arg_6_0._initRepressRuleItemFunc, arg_6_0._refreshRepressResultFunc, arg_6_0._defaultItemFreeFunc)
 end
 
-function slot0._initRepressRuleItemFunc(slot0, slot1)
-	slot1.txtdesc = gohelper.findChildText(slot1.go, "txt_desc")
-	slot1.imageicon = gohelper.findChildImage(slot1.go, "image_icon")
-	slot1.godisable = gohelper.findChild(slot1.go, "image_icon/go_disable")
-	slot1.goescape = gohelper.findChild(slot1.go, "image_icon/go_escape")
-	slot1.gorepressbg = gohelper.findChild(slot1.go, "#go_Disable")
+function var_0_0._initRepressRuleItemFunc(arg_7_0, arg_7_1)
+	arg_7_1.txtdesc = gohelper.findChildText(arg_7_1.go, "txt_desc")
+	arg_7_1.imageicon = gohelper.findChildImage(arg_7_1.go, "image_icon")
+	arg_7_1.godisable = gohelper.findChild(arg_7_1.go, "image_icon/go_disable")
+	arg_7_1.goescape = gohelper.findChild(arg_7_1.go, "image_icon/go_escape")
+	arg_7_1.gorepressbg = gohelper.findChild(arg_7_1.go, "#go_Disable")
 
-	SkillHelper.addHyperLinkClick(slot1.txtdesc)
+	SkillHelper.addHyperLinkClick(arg_7_1.txtdesc)
 end
 
-function slot0._refreshRepressResultFunc(slot0, slot1, slot2, slot3)
-	slot5 = slot0._episodeMo:getRuleStatus(slot3) == Act183Enum.RuleStatus.Repress
-	slot1.txtdesc.text = SkillHelper.buildDesc(slot2)
+function var_0_0._refreshRepressResultFunc(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	local var_8_0 = arg_8_0._episodeMo:getRuleStatus(arg_8_3) == Act183Enum.RuleStatus.Repress
 
-	gohelper.setActive(slot1.godisable, slot5)
-	gohelper.setActive(slot1.gorepressbg, slot5)
-	gohelper.setActive(slot1.goescape, not slot5)
-	Act183Helper.setRuleIcon(slot0._episodeId, slot3, slot1.imageicon)
+	arg_8_1.txtdesc.text = SkillHelper.buildDesc(arg_8_2)
 
-	if slot5 then
-		slot7 = slot0._episodeMo:getRepressHeroMo():getHeroId()
+	gohelper.setActive(arg_8_1.godisable, var_8_0)
+	gohelper.setActive(arg_8_1.gorepressbg, var_8_0)
+	gohelper.setActive(arg_8_1.goescape, not var_8_0)
+	Act183Helper.setRuleIcon(arg_8_0._episodeId, arg_8_3, arg_8_1.imageicon)
 
-		if not slot0._repressHeroItem then
-			slot0._repressHeroItem = IconMgr.instance:getCommonHeroIconNew(slot0._gorepressheropos)
+	if var_8_0 then
+		local var_8_1 = arg_8_0._episodeMo:getRepressHeroMo():getHeroId()
 
-			slot0._repressHeroItem:isShowLevel(false)
+		if not arg_8_0._repressHeroItem then
+			arg_8_0._repressHeroItem = IconMgr.instance:getCommonHeroIconNew(arg_8_0._gorepressheropos)
+
+			arg_8_0._repressHeroItem:isShowLevel(false)
 		end
 
-		slot0._repressHeroItem:onUpdateHeroId(slot7)
-		gohelper.setActive(slot0._gohasrepress, true)
-		gohelper.setActive(slot0._gounrepress, false)
+		arg_8_0._repressHeroItem:onUpdateHeroId(var_8_1)
+		gohelper.setActive(arg_8_0._gohasrepress, true)
+		gohelper.setActive(arg_8_0._gounrepress, false)
 	end
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_9_0)
+	var_0_0.super.onDestroy(arg_9_0)
 end
 
-return slot0
+return var_0_0

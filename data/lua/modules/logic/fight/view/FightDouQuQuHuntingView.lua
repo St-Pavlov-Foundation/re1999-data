@@ -1,49 +1,55 @@
-module("modules.logic.fight.view.FightDouQuQuHuntingView", package.seeall)
+﻿module("modules.logic.fight.view.FightDouQuQuHuntingView", package.seeall)
 
-slot0 = class("FightDouQuQuHuntingView", FightBaseView)
+local var_0_0 = class("FightDouQuQuHuntingView", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.huntingText = gohelper.findChildText(slot0.viewGO, "root/#txt_num")
-	slot0.addEffect = gohelper.findChild(slot0.viewGO, "root/#add")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.huntingText = gohelper.findChildText(arg_1_0.viewGO, "root/#txt_num")
+	arg_1_0.addEffect = gohelper.findChild(arg_1_0.viewGO, "root/#add")
 end
 
-function slot0.addEvents(slot0)
-	slot0:com_registFightEvent(FightEvent.UpdateFightParam, slot0.onUpdateFightParam)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:com_registFightEvent(FightEvent.UpdateFightParam, arg_2_0.onUpdateFightParam)
 
-	slot0.tweenComp = slot0:addComponent(FightTweenComponent)
+	arg_2_0.tweenComp = arg_2_0:addComponent(FightTweenComponent)
 end
 
-function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4)
-	if slot1 ~= FightParamData.ParamKey.ACT191_HUNTING then
+function var_0_0.onUpdateFightParam(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
+	if arg_3_1 ~= FightParamData.ParamKey.ACT191_HUNTING then
 		return
 	end
 
-	slot0:com_killTween(slot0.tweenId)
-	slot0.tweenComp:DOTweenFloat(slot2, slot3, 0.5, slot0.onFrame, nil, slot0)
+	arg_3_0:com_killTween(arg_3_0.tweenId)
+	arg_3_0.tweenComp:DOTweenFloat(arg_3_2, arg_3_3, 0.5, arg_3_0.onFrame, nil, arg_3_0)
 
-	if slot4 > 0 then
-		gohelper.setActive(slot0.addEffect, false)
-		gohelper.setActive(slot0.addEffect, true)
-		slot0:com_registSingleTimer(slot0.hideEffect, 1)
+	if arg_3_4 > 0 then
+		gohelper.setActive(arg_3_0.addEffect, false)
+		gohelper.setActive(arg_3_0.addEffect, true)
+		arg_3_0:com_registSingleTimer(arg_3_0.hideEffect, 1)
 	end
 end
 
-function slot0.onFrame(slot0, slot1)
-	slot0:refreshData(math.ceil(slot1))
+function var_0_0.onFrame(arg_4_0, arg_4_1)
+	arg_4_1 = math.ceil(arg_4_1)
+
+	arg_4_0:refreshData(arg_4_1)
 end
 
-function slot0.hideEffect(slot0)
-	gohelper.setActive(slot0.addEffect, false)
+function var_0_0.hideEffect(arg_5_0)
+	gohelper.setActive(arg_5_0.addEffect, false)
 end
 
-function slot0.refreshData(slot0, slot1)
-	slot0.huntingText.text = string.format("<%s>%s</color>/%s", slot1 < slot0.maxValue and "#D97373" or "#65B96F", slot1, slot0.maxValue)
+function var_0_0.refreshData(arg_6_0, arg_6_1)
+	local var_6_0 = arg_6_1 < arg_6_0.maxValue and "#D97373" or "#65B96F"
+
+	arg_6_0.huntingText.text = string.format("<%s>%s</color>/%s", var_6_0, arg_6_1, arg_6_0.maxValue)
 end
 
-function slot0.onOpen(slot0)
-	slot0.maxValue = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].minNeedHuntValue
+function var_0_0.onOpen(arg_7_0)
+	arg_7_0.maxValue = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].minNeedHuntValue
 
-	slot0:refreshData(FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_HUNTING])
+	local var_7_0 = FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_HUNTING]
+
+	arg_7_0:refreshData(var_7_0)
 end
 
-return slot0
+return var_0_0

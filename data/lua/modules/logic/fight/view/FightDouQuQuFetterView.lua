@@ -1,68 +1,75 @@
-module("modules.logic.fight.view.FightDouQuQuFetterView", package.seeall)
+﻿module("modules.logic.fight.view.FightDouQuQuFetterView", package.seeall)
 
-slot0 = class("FightDouQuQuFetterView", FightBaseView)
+local var_0_0 = class("FightDouQuQuFetterView", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.content = gohelper.findChild(slot0.viewGO, "root/fetters/Viewport/Content")
-	slot0.itemObj = gohelper.findChild(slot0.viewGO, "root/fetters/Viewport/Content/FetterItem")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.content = gohelper.findChild(arg_1_0.viewGO, "root/fetters/Viewport/Content")
+	arg_1_0.itemObj = gohelper.findChild(arg_1_0.viewGO, "root/fetters/Viewport/Content/FetterItem")
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.onConstructor(arg_3_0, arg_3_1)
+	arg_3_0.entityMO = arg_3_1
 end
 
-function slot0.refreshEntityMO(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.refreshEntityMO(arg_4_0, arg_4_1)
+	arg_4_0.entityMO = arg_4_1
 
-	if slot0.viewGO then
-		slot0:refreshFetter()
+	if arg_4_0.viewGO then
+		arg_4_0:refreshFetter()
 	end
 end
 
-function slot0.onOpen(slot0)
-	slot1 = {}
+function var_0_0.onOpen(arg_5_0)
+	local var_5_0 = {}
 
-	for slot5, slot6 in pairs(lua_activity191_relation.configDict) do
-		slot1[slot7] = slot1[slot6.tag] or {}
+	for iter_5_0, iter_5_1 in pairs(lua_activity191_relation.configDict) do
+		local var_5_1 = iter_5_1.tag
 
-		table.insert(slot1[slot7], slot6)
+		var_5_0[var_5_1] = var_5_0[var_5_1] or {}
+
+		table.insert(var_5_0[var_5_1], iter_5_1)
 	end
 
-	for slot5, slot6 in pairs(slot1) do
-		table.sort(slot6, function (slot0, slot1)
-			return slot0.activeNum < slot1.activeNum
+	for iter_5_2, iter_5_3 in pairs(var_5_0) do
+		table.sort(iter_5_3, function(arg_6_0, arg_6_1)
+			return arg_6_0.activeNum < arg_6_1.activeNum
 		end)
 	end
 
-	slot0.configDic = slot1
-	slot0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
+	arg_5_0.configDic = var_5_0
+	arg_5_0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
 
-	slot0:refreshFetter()
+	arg_5_0:refreshFetter()
 end
 
-function slot0.refreshFetter(slot0)
-	if (slot0.entityMO.side == FightEnum.EntitySide.MySide and slot0.customData.teamATag2NumMap or slot0.customData.teamBTag2NumMap) and tabletool.len(slot1) > 0 then
-		gohelper.setActive(slot0.viewGO, true)
+function var_0_0.refreshFetter(arg_7_0)
+	local var_7_0 = arg_7_0.entityMO.side == FightEnum.EntitySide.MySide and arg_7_0.customData.teamATag2NumMap or arg_7_0.customData.teamBTag2NumMap
 
-		slot2 = {}
+	if var_7_0 and tabletool.len(var_7_0) > 0 then
+		gohelper.setActive(arg_7_0.viewGO, true)
 
-		for slot6, slot7 in pairs(slot1) do
-			table.insert(slot2, {
-				key = slot6,
-				value = slot7
+		local var_7_1 = {}
+
+		for iter_7_0, iter_7_1 in pairs(var_7_0) do
+			table.insert(var_7_1, {
+				key = iter_7_0,
+				value = iter_7_1
 			})
 		end
 
-		for slot6, slot7 in ipairs(slot2) do
-			for slot11 = #slot0.configDic[slot7.key], 1, -1 do
-				if slot0.configDic[slot7.key][slot11].activeNum <= slot7.value then
-					slot7.config = slot12
+		for iter_7_2, iter_7_3 in ipairs(var_7_1) do
+			for iter_7_4 = #arg_7_0.configDic[iter_7_3.key], 1, -1 do
+				local var_7_2 = arg_7_0.configDic[iter_7_3.key][iter_7_4]
 
-					if slot12.activeNum > 0 then
-						slot7.active = true
+				if iter_7_3.value >= var_7_2.activeNum then
+					iter_7_3.config = var_7_2
+
+					if var_7_2.activeNum > 0 then
+						iter_7_3.active = true
 					end
 
 					break
@@ -70,63 +77,77 @@ function slot0.refreshFetter(slot0)
 			end
 		end
 
-		table.sort(slot2, uv0.sortItemListData)
-		slot0:com_createObjList(slot0.onItemShow, slot2, slot0.content, slot0.itemObj)
+		table.sort(var_7_1, var_0_0.sortItemListData)
+		arg_7_0:com_createObjList(arg_7_0.onItemShow, var_7_1, arg_7_0.content, arg_7_0.itemObj)
 	else
-		gohelper.setActive(slot0.viewGO, false)
+		gohelper.setActive(arg_7_0.viewGO, false)
 	end
 end
 
-function slot0.sortItemListData(slot0, slot1)
-	if slot0.active and not slot1.active then
+function var_0_0.sortItemListData(arg_8_0, arg_8_1)
+	local var_8_0 = arg_8_0.active
+	local var_8_1 = arg_8_1.active
+
+	if var_8_0 and not var_8_1 then
 		return true
-	elseif not slot2 and slot3 then
+	elseif not var_8_0 and var_8_1 then
 		return false
 	else
-		if slot0.config.level == slot1.config.level then
-			if slot0.value == slot1.value then
-				return slot4.id < slot5.id
+		local var_8_2 = arg_8_0.config
+		local var_8_3 = arg_8_1.config
+
+		if var_8_2.level == var_8_3.level then
+			if arg_8_0.value == arg_8_1.value then
+				return var_8_2.id < var_8_3.id
 			else
-				return slot1.value < slot0.value
+				return arg_8_0.value > arg_8_1.value
 			end
 		else
-			return slot5.level < slot4.level
+			return var_8_2.level > var_8_3.level
 		end
 
 		return false
 	end
 end
 
-function slot0.onItemShow(slot0, slot1, slot2, slot3)
-	slot4 = gohelper.findChildImage(slot1, "image_Bg")
-	slot5 = gohelper.findChildImage(slot1, "image_Fetter")
-	slot6 = gohelper.findChildText(slot1, "txt_FetterCnt")
-	slot7 = slot2.key
-	slot8 = slot2.value
-	slot10 = 0
-	slot11 = Activity191Config.instance:getRelationMaxCo(slot7)
+function var_0_0.onItemShow(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
+	local var_9_0 = gohelper.findChildImage(arg_9_1, "image_Bg")
+	local var_9_1 = gohelper.findChildImage(arg_9_1, "image_Fetter")
+	local var_9_2 = gohelper.findChildText(arg_9_1, "txt_FetterCnt")
+	local var_9_3 = arg_9_2.key
+	local var_9_4 = arg_9_2.value
+	local var_9_5 = Activity191Config.instance:getRelationMaxCo(var_9_3)
+	local var_9_6 = 0
+	local var_9_7 = var_9_5
 
-	for slot15, slot16 in ipairs(slot0.configDic[slot7]) do
-		if slot16.activeNum <= slot8 then
-			slot10 = slot16.level
-			slot11 = slot16
+	for iter_9_0, iter_9_1 in ipairs(arg_9_0.configDic[var_9_3]) do
+		if var_9_4 >= iter_9_1.activeNum then
+			var_9_6 = iter_9_1.level
+			var_9_7 = iter_9_1
 		end
 	end
 
-	slot6.text = string.format("<%s>%s</color><%s>/%s</color>", slot10 == 0 and "#ED7F7F" or "#F0E2CA", slot8, slot10 == 0 and "#838383" or "#F0E2CA", slot9.activeNum)
+	local var_9_8 = var_9_6 == 0 and "#ED7F7F" or "#F0E2CA"
+	local var_9_9 = var_9_6 == 0 and "#838383" or "#F0E2CA"
 
-	UISpriteSetMgr.instance:setAct174Sprite(slot4, "act174_shop_tag_" .. slot11.tagBg)
-	ZProj.UGUIHelper.SetGrayscale(slot4.gameObject, slot10 == 0)
-	Activity191Helper.setFetterIcon(slot5, slot11.icon)
-	slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot1), slot0.onClickItem, {
+	var_9_2.text = string.format("<%s>%s</color><%s>/%s</color>", var_9_8, var_9_4, var_9_9, var_9_5.activeNum)
+
+	UISpriteSetMgr.instance:setAct174Sprite(var_9_0, "act174_shop_tag_" .. var_9_7.tagBg)
+	ZProj.UGUIHelper.SetGrayscale(var_9_0.gameObject, var_9_6 == 0)
+	Activity191Helper.setFetterIcon(var_9_1, var_9_7.icon)
+
+	local var_9_10 = gohelper.getClickWithDefaultAudio(arg_9_1)
+	local var_9_11 = {
 		isFight = true,
-		count = slot8,
-		tag = slot11.tag
-	})
+		count = var_9_4,
+		tag = var_9_7.tag
+	}
+
+	arg_9_0:com_registClick(var_9_10, arg_9_0.onClickItem, var_9_11)
 end
 
-function slot0.onClickItem(slot0, slot1)
-	Activity191Controller.instance:openFetterTipView(slot1)
+function var_0_0.onClickItem(arg_10_0, arg_10_1)
+	Activity191Controller.instance:openFetterTipView(arg_10_1)
 end
 
-return slot0
+return var_0_0

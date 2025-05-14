@@ -1,29 +1,36 @@
-module("modules.logic.fight.system.work.FightWorkCardInvalid", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCardInvalid", package.seeall)
 
-slot0 = class("FightWorkCardInvalid", FightEffectBase)
+local var_0_0 = class("FightWorkCardInvalid", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if FightModel.instance:getVersion() >= 1 and slot0.actEffectData.teamType ~= FightEnum.TeamType.MySide then
-		if FightDataHelper.roundMgr:getPreRoundData() and slot2:getAIUseCardMOList()[slot0.actEffectData.effectNum] then
-			slot4.custom_done = true
+function var_0_0.onStart(arg_1_0)
+	if FightModel.instance:getVersion() >= 1 and arg_1_0.actEffectData.teamType ~= FightEnum.TeamType.MySide then
+		local var_1_0 = FightDataHelper.roundMgr:getPreRoundData()
+
+		if var_1_0 then
+			local var_1_1 = var_1_0:getAIUseCardMOList()[arg_1_0.actEffectData.effectNum]
+
+			if var_1_1 then
+				var_1_1.custom_done = true
+			end
 		end
 
-		FightController.instance:dispatchEvent(FightEvent.InvalidEnemyUsedCard, slot0.actEffectData.effectNum)
-		slot0:onDone(true)
+		FightController.instance:dispatchEvent(FightEvent.InvalidEnemyUsedCard, arg_1_0.actEffectData.effectNum)
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	FightPlayCardModel.instance:playCard(slot0.actEffectData.effectNum)
-	FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, slot0.actEffectData.effectNum, slot0.actEffectData.configEffect)
-	slot0:com_registTimer(slot0._delayDone, 1 / FightModel.instance:getUISpeed())
+	FightPlayCardModel.instance:playCard(arg_1_0.actEffectData.effectNum)
+	FightController.instance:dispatchEvent(FightEvent.InvalidUsedCard, arg_1_0.actEffectData.effectNum, arg_1_0.actEffectData.configEffect)
+	arg_1_0:com_registTimer(arg_1_0._delayDone, 1 / FightModel.instance:getUISpeed())
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_2_0)
+	arg_2_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

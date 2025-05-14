@@ -1,241 +1,293 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191SettlementView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191SettlementView", package.seeall)
 
-slot0 = class("Act191SettlementView", BaseView)
+local var_0_0 = class("Act191SettlementView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._imageLevel = gohelper.findChildImage(slot0.viewGO, "Left/herogroupcontain/mainTitle/#image_Level")
-	slot0._scrollFetter = gohelper.findChildScrollRect(slot0.viewGO, "Left/herogroupcontain/#scroll_Fetter")
-	slot0._goFetterContent = gohelper.findChild(slot0.viewGO, "Left/herogroupcontain/#scroll_Fetter/Viewport/#go_FetterContent")
-	slot0._goNodeList = gohelper.findChild(slot0.viewGO, "Right/node/#go_NodeList")
-	slot0._goBadgeItem = gohelper.findChild(slot0.viewGO, "Right/badge/layout/#go_BadgeItem")
-	slot0._txtScore = gohelper.findChildText(slot0.viewGO, "Right/score/#txt_Score")
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Close")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._imageLevel = gohelper.findChildImage(arg_1_0.viewGO, "Left/herogroupcontain/mainTitle/#image_Level")
+	arg_1_0._scrollFetter = gohelper.findChildScrollRect(arg_1_0.viewGO, "Left/herogroupcontain/#scroll_Fetter")
+	arg_1_0._goFetterContent = gohelper.findChild(arg_1_0.viewGO, "Left/herogroupcontain/#scroll_Fetter/Viewport/#go_FetterContent")
+	arg_1_0._goNodeList = gohelper.findChild(arg_1_0.viewGO, "Right/node/#go_NodeList")
+	arg_1_0._goBadgeItem = gohelper.findChild(arg_1_0.viewGO, "Right/badge/layout/#go_BadgeItem")
+	arg_1_0._txtScore = gohelper.findChildText(arg_1_0.viewGO, "Right/score/#txt_Score")
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Close")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClose:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClose:RemoveClickListener()
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	slot0.heroContainer = gohelper.findChild(slot0.viewGO, "Left/herogroupcontain/heroContainer")
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.heroContainer = gohelper.findChild(arg_5_0.viewGO, "Left/herogroupcontain/heroContainer")
 
-	slot0:initHeroInfoItem()
-	slot0:initHeroAndEquipItem()
+	arg_5_0:initHeroInfoItem()
+	arg_5_0:initHeroAndEquipItem()
 
-	slot0.animEvent = slot0.viewGO:GetComponent(gohelper.Type_AnimationEventWrap)
+	arg_5_0.animEvent = arg_5_0.viewGO:GetComponent(gohelper.Type_AnimationEventWrap)
 
-	slot0.animEvent:AddEventListener("PlayBadgeAnim", slot0.playBadgeAnim, slot0)
+	arg_5_0.animEvent:AddEventListener("PlayBadgeAnim", arg_5_0.playBadgeAnim, arg_5_0)
 
-	slot0.actInfo = Activity191Model.instance:getActInfo()
+	arg_5_0.actInfo = Activity191Model.instance:getActInfo()
 
-	slot0:initBadge()
+	arg_5_0:initBadge()
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_6_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
+function var_0_0.onOpen(arg_7_0)
+	Act191StatController.instance:onViewOpen(arg_7_0.viewName)
 
-	slot0.gameInfo = slot0.actInfo:getGameInfo()
-	slot0.gameEndInfo = slot0.actInfo:getGameEndInfo()
+	arg_7_0.gameInfo = arg_7_0.actInfo:getGameInfo()
+	arg_7_0.gameEndInfo = arg_7_0.actInfo:getGameEndInfo()
 
-	slot0:refreshLeft()
-	slot0:refreshRight()
+	arg_7_0:refreshLeft()
+	arg_7_0:refreshRight()
 	AudioMgr.instance:trigger(AudioEnum.Act174.play_ui_shenghuo_dqq_fight_end)
 end
 
-function slot0.onClose(slot0)
-	slot0.actInfo:clearEndInfo()
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
+function var_0_0.onClose(arg_8_0)
+	arg_8_0.actInfo:clearEndInfo()
+
+	local var_8_0 = arg_8_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_8_0.viewName, var_8_0)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0.animEvent:RemoveEventListener("PlayBadgeAnim")
+function var_0_0.onDestroyView(arg_9_0)
+	arg_9_0.animEvent:RemoveEventListener("PlayBadgeAnim")
 end
 
-function slot0.initHeroInfoItem(slot0)
-	slot0.heroInfoItemList = {}
+function var_0_0.initHeroInfoItem(arg_10_0)
+	arg_10_0.heroInfoItemList = {}
 
-	for slot4 = 1, 4 do
-		slot5 = slot0:getUserDataTb_()
-		slot6 = gohelper.findChild(slot0.heroContainer, "bg" .. slot4)
-		slot5.goIndex = gohelper.findChild(slot6, "Index")
-		slot5.txtName = gohelper.findChildText(slot6, "Name")
-		slot0.heroInfoItemList[slot4] = slot5
+	for iter_10_0 = 1, 4 do
+		local var_10_0 = arg_10_0:getUserDataTb_()
+		local var_10_1 = gohelper.findChild(arg_10_0.heroContainer, "bg" .. iter_10_0)
+
+		var_10_0.goIndex = gohelper.findChild(var_10_1, "Index")
+		var_10_0.txtName = gohelper.findChildText(var_10_1, "Name")
+		arg_10_0.heroInfoItemList[iter_10_0] = var_10_0
 	end
 end
 
-function slot0.initHeroAndEquipItem(slot0)
-	slot0.heroPosTrList = slot0:getUserDataTb_()
-	slot0.equipPosTrList = slot0:getUserDataTb_()
-	slot1 = gohelper.findChild(slot0.viewGO, "Left/herogroupcontain/recordPos")
+function var_0_0.initHeroAndEquipItem(arg_11_0)
+	arg_11_0.heroPosTrList = arg_11_0:getUserDataTb_()
+	arg_11_0.equipPosTrList = arg_11_0:getUserDataTb_()
 
-	for slot5 = 1, 8 do
-		slot0.heroPosTrList[slot5] = gohelper.findChild(slot1, "heroPos" .. slot5).transform
+	local var_11_0 = gohelper.findChild(arg_11_0.viewGO, "Left/herogroupcontain/recordPos")
 
-		if slot5 <= 4 then
-			slot0.equipPosTrList[slot5] = gohelper.findChild(slot1, "equipPos" .. slot5).transform
+	for iter_11_0 = 1, 8 do
+		local var_11_1 = gohelper.findChild(var_11_0, "heroPos" .. iter_11_0)
+
+		arg_11_0.heroPosTrList[iter_11_0] = var_11_1.transform
+
+		if iter_11_0 <= 4 then
+			local var_11_2 = gohelper.findChild(var_11_0, "equipPos" .. iter_11_0)
+
+			arg_11_0.equipPosTrList[iter_11_0] = var_11_2.transform
 		end
 	end
 
-	slot2 = gohelper.findChild(slot0.heroContainer, "go_HeroItem")
-	slot3 = gohelper.findChild(slot0.heroContainer, "go_EquipItem")
-	slot0.heroItemList = {}
-	slot0.equipItemList = {}
+	local var_11_3 = gohelper.findChild(arg_11_0.heroContainer, "go_HeroItem")
+	local var_11_4 = gohelper.findChild(arg_11_0.heroContainer, "go_EquipItem")
 
-	for slot7 = 1, 8 do
-		slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot2, "hero" .. slot7), Act191HeroGroupItem1)
+	arg_11_0.heroItemList = {}
+	arg_11_0.equipItemList = {}
 
-		slot9:setIndex(slot7)
+	for iter_11_1 = 1, 8 do
+		local var_11_5 = gohelper.cloneInPlace(var_11_3, "hero" .. iter_11_1)
+		local var_11_6 = MonoHelper.addNoUpdateLuaComOnceToGo(var_11_5, Act191HeroGroupItem1)
 
-		slot0.heroItemList[slot7] = slot9
+		var_11_6:setIndex(iter_11_1)
 
-		slot0:_setHeroItemPos(slot9, slot7)
+		arg_11_0.heroItemList[iter_11_1] = var_11_6
 
-		if slot7 <= 4 then
-			slot10 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.cloneInPlace(slot3, "equip" .. slot7), Act191HeroGroupItem2, slot0)
+		arg_11_0:_setHeroItemPos(var_11_6, iter_11_1)
 
-			slot10:setIndex(slot7)
-			slot10:setOverrideClick(slot0.clickCollection, slot0)
+		if iter_11_1 <= 4 then
+			local var_11_7 = gohelper.cloneInPlace(var_11_4, "equip" .. iter_11_1)
+			local var_11_8 = MonoHelper.addNoUpdateLuaComOnceToGo(var_11_7, Act191HeroGroupItem2, arg_11_0)
 
-			slot0.equipItemList[slot7] = slot10
+			var_11_8:setIndex(iter_11_1)
+			var_11_8:setOverrideClick(arg_11_0.clickCollection, arg_11_0)
 
-			slot0:_setEquipItemPos(slot10, slot7)
+			arg_11_0.equipItemList[iter_11_1] = var_11_8
+
+			arg_11_0:_setEquipItemPos(var_11_8, iter_11_1)
 		end
 	end
 
-	gohelper.setActive(slot2, false)
-	gohelper.setActive(slot3, false)
+	gohelper.setActive(var_11_3, false)
+	gohelper.setActive(var_11_4, false)
 end
 
-function slot0.refreshLeft(slot0)
-	UISpriteSetMgr.instance:setAct174Sprite(slot0._imageLevel, "act191_level_" .. string.lower(lua_activity191_rank.configDict[Activity191Model.instance:getActInfo():getGameInfo().rank ~= 0 and slot1.rank or 1].fightLevel or ""))
+function var_0_0.refreshLeft(arg_12_0)
+	local var_12_0 = Activity191Model.instance:getActInfo():getGameInfo()
+	local var_12_1 = var_12_0.rank ~= 0 and var_12_0.rank or 1
+	local var_12_2 = lua_activity191_rank.configDict[var_12_1].fightLevel or ""
 
-	slot4 = slot1:getTeamInfo()
+	UISpriteSetMgr.instance:setAct174Sprite(arg_12_0._imageLevel, "act191_level_" .. string.lower(var_12_2))
 
-	for slot8 = 1, 4 do
-		slot10, slot11 = nil
+	local var_12_3 = var_12_0:getTeamInfo()
 
-		if Activity191Helper.matchKeyInArray(slot4.battleHeroInfo, slot8) then
-			slot10 = slot9.heroId
-			slot11 = slot9.itemUid1
+	for iter_12_0 = 1, 4 do
+		local var_12_4 = Activity191Helper.matchKeyInArray(var_12_3.battleHeroInfo, iter_12_0)
+		local var_12_5
+		local var_12_6
+
+		if var_12_4 then
+			var_12_5 = var_12_4.heroId
+			var_12_6 = var_12_4.itemUid1
 		end
 
-		slot0.heroItemList[slot8]:setData(slot10)
-		slot0.equipItemList[slot8]:setData(slot11)
+		arg_12_0.heroItemList[iter_12_0]:setData(var_12_5)
+		arg_12_0.equipItemList[iter_12_0]:setData(var_12_6)
 
-		slot12 = slot0.heroInfoItemList[slot8]
+		local var_12_7 = arg_12_0.heroInfoItemList[iter_12_0]
 
-		if slot10 and slot10 ~= 0 then
-			slot12.txtName.text = Activity191Config.instance:getRoleCoByNativeId(slot10, slot1:getHeroInfoInWarehouse(slot10).star).name
+		if var_12_5 and var_12_5 ~= 0 then
+			local var_12_8 = var_12_0:getHeroInfoInWarehouse(var_12_5)
+			local var_12_9 = Activity191Config.instance:getRoleCoByNativeId(var_12_5, var_12_8.star)
 
-			gohelper.setActive(slot12.goIndex, false)
-			gohelper.setActive(slot12.txtName, true)
+			var_12_7.txtName.text = var_12_9.name
+
+			gohelper.setActive(var_12_7.goIndex, false)
+			gohelper.setActive(var_12_7.txtName, true)
 		else
-			gohelper.setActive(slot12.goIndex, true)
-			gohelper.setActive(slot12.txtName, false)
+			gohelper.setActive(var_12_7.goIndex, true)
+			gohelper.setActive(var_12_7.txtName, false)
 		end
 
-		slot0.heroItemList[slot8 + 4]:setData(Activity191Helper.matchKeyInArray(slot4.subHeroInfo, slot8) and slot14.heroId or 0)
+		local var_12_10 = iter_12_0 + 4
+		local var_12_11 = Activity191Helper.matchKeyInArray(var_12_3.subHeroInfo, iter_12_0)
+		local var_12_12 = var_12_11 and var_12_11.heroId or 0
+
+		arg_12_0.heroItemList[var_12_10]:setData(var_12_12)
 	end
 
-	for slot10, slot11 in ipairs(Activity191Helper.getActiveFetterInfoList(slot1:getTeamFetterCntDic())) do
-		slot13 = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.FetterItem, slot0._goFetterContent), Act191FetterItem)
+	local var_12_13 = var_12_0:getTeamFetterCntDic()
+	local var_12_14 = Activity191Helper.getActiveFetterInfoList(var_12_13)
 
-		slot13:setData(slot11.config, slot11.count)
-		gohelper.setActive(slot13.go, true)
+	for iter_12_1, iter_12_2 in ipairs(var_12_14) do
+		local var_12_15 = arg_12_0:getResInst(Activity191Enum.PrefabPath.FetterItem, arg_12_0._goFetterContent)
+		local var_12_16 = MonoHelper.addNoUpdateLuaComOnceToGo(var_12_15, Act191FetterItem)
+
+		var_12_16:setData(iter_12_2.config, iter_12_2.count)
+		gohelper.setActive(var_12_16.go, true)
 	end
 
-	slot0._scrollFetter.horizontalNormalizedPosition = 0
+	arg_12_0._scrollFetter.horizontalNormalizedPosition = 0
 end
 
-function slot0._setHeroItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot7 = recthelper.rectToRelativeAnchorPos(slot0.heroPosTrList[slot2].position, slot0.heroContainer.transform)
+function var_0_0._setHeroItemPos(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4, arg_13_5)
+	local var_13_0 = arg_13_0.heroPosTrList[arg_13_2]
+	local var_13_1 = recthelper.rectToRelativeAnchorPos(var_13_0.position, arg_13_0.heroContainer.transform)
 
-	if slot3 then
-		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
+	if arg_13_3 then
+		return ZProj.TweenHelper.DOAnchorPos(arg_13_1.go.transform, var_13_1.x, var_13_1.y, 0.2, arg_13_4, arg_13_5)
 	else
-		recthelper.setAnchor(slot1.go.transform, slot7.x, slot7.y)
+		recthelper.setAnchor(arg_13_1.go.transform, var_13_1.x, var_13_1.y)
 
-		if slot4 then
-			slot4(slot5)
+		if arg_13_4 then
+			arg_13_4(arg_13_5)
 		end
 	end
 end
 
-function slot0._setEquipItemPos(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot7 = recthelper.rectToRelativeAnchorPos(slot0.equipPosTrList[slot2].position, slot0.heroContainer.transform)
+function var_0_0._setEquipItemPos(arg_14_0, arg_14_1, arg_14_2, arg_14_3, arg_14_4, arg_14_5)
+	local var_14_0 = arg_14_0.equipPosTrList[arg_14_2]
+	local var_14_1 = recthelper.rectToRelativeAnchorPos(var_14_0.position, arg_14_0.heroContainer.transform)
 
-	if slot3 then
-		return ZProj.TweenHelper.DOAnchorPos(slot1.go.transform, slot7.x, slot7.y, 0.2, slot4, slot5)
+	if arg_14_3 then
+		return ZProj.TweenHelper.DOAnchorPos(arg_14_1.go.transform, var_14_1.x, var_14_1.y, 0.2, arg_14_4, arg_14_5)
 	else
-		recthelper.setAnchor(slot1.go.transform, slot7.x, slot7.y)
+		recthelper.setAnchor(arg_14_1.go.transform, var_14_1.x, var_14_1.y)
 
-		if slot4 then
-			slot4(slot5)
+		if arg_14_4 then
+			arg_14_4(arg_14_5)
 		end
 	end
 end
 
-function slot0.refreshRight(slot0)
-	if slot0.gameInfo.curStage ~= 0 then
-		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.NodeListItem, slot0._goNodeList), Act191NodeListItem):setClickEnable(false)
+function var_0_0.refreshRight(arg_15_0)
+	if arg_15_0.gameInfo.curStage ~= 0 then
+		local var_15_0 = arg_15_0:getResInst(Activity191Enum.PrefabPath.NodeListItem, arg_15_0._goNodeList)
+
+		MonoHelper.addNoUpdateLuaComOnceToGo(var_15_0, Act191NodeListItem):setClickEnable(false)
 	end
 
-	slot0._txtScore.text = slot0.gameEndInfo.gainScore
+	arg_15_0._txtScore.text = arg_15_0.gameEndInfo.gainScore
 end
 
-function slot0.initBadge(slot0)
-	slot0.badgeItemList = {}
+function var_0_0.initBadge(arg_16_0)
+	arg_16_0.badgeItemList = {}
 
-	for slot6, slot7 in ipairs(slot0.actInfo:getBadgeMoList()) do
-		slot9 = gohelper.cloneInPlace(slot0._goBadgeItem)
-		slot0:getUserDataTb_().Icon = gohelper.findChildSingleImage(slot9, "root/image_icon")
-		slot11 = gohelper.findChildText(slot9, "root/txt_score")
-		gohelper.findChildText(slot9, "root/txt_num").text = slot7.count
+	local var_16_0 = arg_16_0.actInfo:getBadgeScoreChangeDic()
+	local var_16_1 = arg_16_0.actInfo:getBadgeMoList()
 
-		if slot0.actInfo:getBadgeScoreChangeDic()[slot7.id] and slot12 ~= 0 then
-			slot11.text = "+" .. slot12
+	for iter_16_0, iter_16_1 in ipairs(var_16_1) do
+		local var_16_2 = arg_16_0:getUserDataTb_()
+		local var_16_3 = gohelper.cloneInPlace(arg_16_0._goBadgeItem)
+
+		var_16_2.Icon = gohelper.findChildSingleImage(var_16_3, "root/image_icon")
+
+		local var_16_4 = gohelper.findChildText(var_16_3, "root/txt_num")
+		local var_16_5 = gohelper.findChildText(var_16_3, "root/txt_score")
+
+		var_16_4.text = iter_16_1.count
+
+		local var_16_6 = var_16_0[iter_16_1.id]
+
+		if var_16_6 and var_16_6 ~= 0 then
+			var_16_5.text = "+" .. var_16_6
 		end
 
-		gohelper.setActive(slot11, slot12 ~= 0)
-		slot8.Icon:LoadImage(ResUrl.getAct174BadgeIcon(slot7.config.icon, slot7:getState()))
+		gohelper.setActive(var_16_5, var_16_6 ~= 0)
 
-		slot8.anim = slot9:GetComponent(gohelper.Type_Animator)
-		slot8.id = slot7.id
-		slot0.badgeItemList[#slot0.badgeItemList] = slot8
+		local var_16_7 = iter_16_1:getState()
+		local var_16_8 = ResUrl.getAct174BadgeIcon(iter_16_1.config.icon, var_16_7)
+
+		var_16_2.Icon:LoadImage(var_16_8)
+
+		var_16_2.anim = var_16_3:GetComponent(gohelper.Type_Animator)
+		var_16_2.id = iter_16_1.id
+		arg_16_0.badgeItemList[#arg_16_0.badgeItemList] = var_16_2
 	end
 
-	gohelper.setActive(slot0._goBadgeItem, false)
+	gohelper.setActive(arg_16_0._goBadgeItem, false)
 end
 
-function slot0.playBadgeAnim(slot0)
-	for slot5, slot6 in ipairs(slot0.badgeItemList) do
-		if slot0.actInfo:getBadgeScoreChangeDic()[slot6.id] and slot7 ~= 0 then
-			slot6.anim:Play("refresh")
+function var_0_0.playBadgeAnim(arg_17_0)
+	local var_17_0 = arg_17_0.actInfo:getBadgeScoreChangeDic()
+
+	for iter_17_0, iter_17_1 in ipairs(arg_17_0.badgeItemList) do
+		local var_17_1 = var_17_0[iter_17_1.id]
+
+		if var_17_1 and var_17_1 ~= 0 then
+			iter_17_1.anim:Play("refresh")
 		end
 	end
 end
 
-function slot0.clickCollection(slot0, slot1)
-	if slot1 and slot1 ~= 0 then
+function var_0_0.clickCollection(arg_18_0, arg_18_1)
+	if arg_18_1 and arg_18_1 ~= 0 then
 		Activity191Controller.instance:openCollectionTipView({
-			itemId = slot1
+			itemId = arg_18_1
 		})
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,147 +1,161 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRewardRuleComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonRewardRuleComp", package.seeall)
 
-slot0 = class("Act183DungeonRewardRuleComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonRewardRuleComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._gorewarditem = gohelper.findChild(slot0.go, "#go_rewards/#go_rewarditem")
-	slot0._rewardRuleItemTab = slot0:getUserDataTb_()
+	arg_1_0._gorewarditem = gohelper.findChild(arg_1_0.go, "#go_rewards/#go_rewarditem")
+	arg_1_0._rewardRuleItemTab = arg_1_0:getUserDataTb_()
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_4_0, arg_4_1)
+	var_0_0.super.updateInfo(arg_4_0, arg_4_1)
 
-	slot0._subEpisodeConditions = Act183Config.instance:getGroupSubEpisodeConditions(slot0._activityId, slot0._groupId)
+	arg_4_0._subEpisodeConditions = Act183Config.instance:getGroupSubEpisodeConditions(arg_4_0._activityId, arg_4_0._groupId)
 
-	slot0:initSelectConditionMap()
+	arg_4_0:initSelectConditionMap()
 end
 
-function slot0.initSelectConditionMap(slot0)
-	slot0._selectConditionMap = {}
-	slot0._selectConditionIds = {}
-	slot1 = false
-	slot0._fightConditionIds, slot0._passFightConditionIds = slot0._groupEpisodeMo:getTotalAndPassConditionIds(slot0._episodeId)
-	slot0._fightConditionIdMap = Act183Helper.listToMap(slot0._fightConditionIds)
-	slot0._passFightConditionIdMap = Act183Helper.listToMap(slot0._passFightConditionIds)
+function var_0_0.initSelectConditionMap(arg_5_0)
+	arg_5_0._selectConditionMap = {}
+	arg_5_0._selectConditionIds = {}
 
-	if slot0._episodeType == Act183Enum.EpisodeType.Boss then
-		slot2 = {}
+	local var_5_0 = false
 
-		if PlayerPrefsHelper.hasKey(Act183Helper._generateSaveSelectCollectionIdsKey(slot0._activityId, slot0._episodeId)) then
-			slot2 = Act183Helper.getSelectConditionIdsInLocal(slot0._activityId, slot0._episodeId)
+	arg_5_0._fightConditionIds, arg_5_0._passFightConditionIds = arg_5_0._groupEpisodeMo:getTotalAndPassConditionIds(arg_5_0._episodeId)
+	arg_5_0._fightConditionIdMap = Act183Helper.listToMap(arg_5_0._fightConditionIds)
+	arg_5_0._passFightConditionIdMap = Act183Helper.listToMap(arg_5_0._passFightConditionIds)
+
+	if arg_5_0._episodeType == Act183Enum.EpisodeType.Boss then
+		local var_5_1 = {}
+
+		if PlayerPrefsHelper.hasKey(Act183Helper._generateSaveSelectCollectionIdsKey(arg_5_0._activityId, arg_5_0._episodeId)) then
+			var_5_1 = Act183Helper.getSelectConditionIdsInLocal(arg_5_0._activityId, arg_5_0._episodeId)
 		else
-			slot2 = slot0._passFightConditionIds
-			slot1 = true
+			var_5_1 = arg_5_0._passFightConditionIds
+			var_5_0 = true
 		end
 
-		if slot2 then
-			for slot7, slot8 in ipairs(slot2) do
-				if slot0._passFightConditionIdMap[slot8] then
-					slot0._selectConditionMap[slot8] = true
+		if var_5_1 then
+			for iter_5_0, iter_5_1 in ipairs(var_5_1) do
+				if arg_5_0._passFightConditionIdMap[iter_5_1] then
+					arg_5_0._selectConditionMap[iter_5_1] = true
 
-					table.insert(slot0._selectConditionIds, slot8)
+					table.insert(arg_5_0._selectConditionIds, iter_5_1)
 				else
-					slot1 = true
+					var_5_0 = true
 				end
 			end
 		end
 	end
 
-	if slot1 then
-		Act183Helper.saveSelectConditionIdsInLocal(slot0._activityId, slot0._episodeId, slot0._selectConditionIds)
+	if var_5_0 then
+		Act183Helper.saveSelectConditionIdsInLocal(arg_5_0._activityId, arg_5_0._episodeId, arg_5_0._selectConditionIds)
 	end
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._episodeType == Act183Enum.EpisodeType.Boss
+function var_0_0.checkIsVisible(arg_6_0)
+	return arg_6_0._episodeType == Act183Enum.EpisodeType.Boss
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
+function var_0_0.show(arg_7_0)
+	var_0_0.super.show(arg_7_0)
 
-	slot0._hasPlayRefreshAnimRuleIds = Act183Helper.getHasPlayRefreshAnimRuleIdsInLocal(slot0._episodeId)
-	slot0._hasPlayRefreshAnimRuleIdMap = Act183Helper.listToMap(slot0._hasPlayRefreshAnimRuleIds)
-	slot0._needFocusEscapeRule = false
+	arg_7_0._hasPlayRefreshAnimRuleIds = Act183Helper.getHasPlayRefreshAnimRuleIdsInLocal(arg_7_0._episodeId)
+	arg_7_0._hasPlayRefreshAnimRuleIdMap = Act183Helper.listToMap(arg_7_0._hasPlayRefreshAnimRuleIds)
+	arg_7_0._needFocusEscapeRule = false
 
-	slot0:createObjList(slot0._subEpisodeConditions, slot0._rewardRuleItemTab, slot0._gorewarditem, slot0._initRewardRuleItemFunc, slot0._refreshRewardRuleItemFunc, slot0._defaultItemFreeFunc)
-	Act183Helper.saveHasPlayRefreshAnimRuleIdsInLocal(slot0._episodeId, slot0._hasPlayRefreshAnimRuleIds)
+	arg_7_0:createObjList(arg_7_0._subEpisodeConditions, arg_7_0._rewardRuleItemTab, arg_7_0._gorewarditem, arg_7_0._initRewardRuleItemFunc, arg_7_0._refreshRewardRuleItemFunc, arg_7_0._defaultItemFreeFunc)
+	Act183Helper.saveHasPlayRefreshAnimRuleIdsInLocal(arg_7_0._episodeId, arg_7_0._hasPlayRefreshAnimRuleIds)
 end
 
-function slot0._initRewardRuleItemFunc(slot0, slot1, slot2)
-	slot1.goselectbg = gohelper.findChild(slot1.go, "btn_check/#go_BG1")
-	slot1.gounselectbg = gohelper.findChild(slot1.go, "btn_check/#go_BG2")
-	slot1.imageicon = gohelper.findChildImage(slot1.go, "image_icon")
-	slot1.txtcondition = gohelper.findChildText(slot1.go, "txt_condition")
+function var_0_0._initRewardRuleItemFunc(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_1.goselectbg = gohelper.findChild(arg_8_1.go, "btn_check/#go_BG1")
+	arg_8_1.gounselectbg = gohelper.findChild(arg_8_1.go, "btn_check/#go_BG2")
+	arg_8_1.imageicon = gohelper.findChildImage(arg_8_1.go, "image_icon")
+	arg_8_1.txtcondition = gohelper.findChildText(arg_8_1.go, "txt_condition")
 
-	SkillHelper.addHyperLinkClick(slot1.txtcondition)
+	SkillHelper.addHyperLinkClick(arg_8_1.txtcondition)
 
-	slot1.txteffect = gohelper.findChildText(slot1.go, "txt_effect")
-	slot1.btncheck = gohelper.findChildButtonWithAudio(slot1.go, "btn_check")
+	arg_8_1.txteffect = gohelper.findChildText(arg_8_1.go, "txt_effect")
+	arg_8_1.btncheck = gohelper.findChildButtonWithAudio(arg_8_1.go, "btn_check")
 
-	slot1.btncheck:AddClickListener(slot0._onClickRewardItem, slot0, slot2)
+	arg_8_1.btncheck:AddClickListener(arg_8_0._onClickRewardItem, arg_8_0, arg_8_2)
 
-	slot1.goselect = gohelper.findChild(slot1.go, "btn_check/go_select")
+	arg_8_1.goselect = gohelper.findChild(arg_8_1.go, "btn_check/go_select")
 end
 
-function slot0._onClickRewardItem(slot0, slot1)
-	if not Act183Config.instance:getConditionCo(slot0._subEpisodeConditions and slot0._subEpisodeConditions[slot1]) then
+function var_0_0._onClickRewardItem(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0._subEpisodeConditions and arg_9_0._subEpisodeConditions[arg_9_1]
+	local var_9_1 = Act183Config.instance:getConditionCo(var_9_0)
+
+	if not var_9_1 then
 		return
 	end
 
-	slot5 = not slot0._selectConditionMap[slot3.id]
-	slot0._selectConditionMap[slot3.id] = slot5
+	local var_9_2 = not arg_9_0._selectConditionMap[var_9_1.id]
 
-	tabletool.removeValue(slot0._selectConditionIds, slot3.id)
+	arg_9_0._selectConditionMap[var_9_1.id] = var_9_2
 
-	if slot5 then
-		table.insert(slot0._selectConditionIds, slot3.id)
+	tabletool.removeValue(arg_9_0._selectConditionIds, var_9_1.id)
+
+	if var_9_2 then
+		table.insert(arg_9_0._selectConditionIds, var_9_1.id)
 	end
 
-	Act183Helper.saveSelectConditionIdsInLocal(slot0._activityId, slot0._episodeId, slot0._selectConditionIds)
-	slot0:refresh()
+	Act183Helper.saveSelectConditionIdsInLocal(arg_9_0._activityId, arg_9_0._episodeId, arg_9_0._selectConditionIds)
+	arg_9_0:refresh()
 end
 
-function slot0._refreshRewardRuleItemFunc(slot0, slot1, slot2, slot3)
-	if not Act183Config.instance:getConditionCo(slot2) then
+function var_0_0._refreshRewardRuleItemFunc(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	local var_10_0 = Act183Config.instance:getConditionCo(arg_10_2)
+
+	if not var_10_0 then
 		return
 	end
 
-	slot1.txtcondition.text = SkillHelper.buildDesc(slot4.decs1)
-	slot1.txteffect.text = slot4.decs2
-	slot7 = slot0._selectConditionMap[slot2] == true
-	slot8 = slot0._groupEpisodeMo:isConditionPass(slot2)
+	local var_10_1 = var_10_0.decs1
+	local var_10_2 = var_10_0.decs2
 
-	ZProj.UGUIHelper.SetGrayscale(slot1.imageicon.gameObject, not slot8)
-	gohelper.setActive(slot1.goselect, slot7)
-	gohelper.setActive(slot1.btncheck.gameObject, slot8 and slot0._status ~= Act183Enum.EpisodeStatus.Locked)
-	gohelper.setActive(slot1.goselectbg, slot7)
-	gohelper.setActive(slot1.gounselectbg, not slot7 and slot8)
-	gohelper.setActive(slot1.go, true)
-	Act183Helper.setEpisodeConditionStar(slot1.imageicon, slot8, slot7)
+	arg_10_1.txtcondition.text = SkillHelper.buildDesc(var_10_1)
+	arg_10_1.txteffect.text = var_10_2
+
+	local var_10_3 = arg_10_0._selectConditionMap[arg_10_2] == true
+	local var_10_4 = arg_10_0._groupEpisodeMo:isConditionPass(arg_10_2)
+
+	ZProj.UGUIHelper.SetGrayscale(arg_10_1.imageicon.gameObject, not var_10_4)
+	gohelper.setActive(arg_10_1.goselect, var_10_3)
+	gohelper.setActive(arg_10_1.btncheck.gameObject, var_10_4 and arg_10_0._status ~= Act183Enum.EpisodeStatus.Locked)
+	gohelper.setActive(arg_10_1.goselectbg, var_10_3)
+	gohelper.setActive(arg_10_1.gounselectbg, not var_10_3 and var_10_4)
+	gohelper.setActive(arg_10_1.go, true)
+	Act183Helper.setEpisodeConditionStar(arg_10_1.imageicon, var_10_4, var_10_3)
 end
 
-function slot0._releaseRewardItemsFunc(slot0)
-	if slot0._rewardRuleItemTab then
-		for slot4, slot5 in pairs(slot0._rewardRuleItemTab) do
-			slot5.btncheck:RemoveClickListener()
+function var_0_0._releaseRewardItemsFunc(arg_11_0)
+	if arg_11_0._rewardRuleItemTab then
+		for iter_11_0, iter_11_1 in pairs(arg_11_0._rewardRuleItemTab) do
+			iter_11_1.btncheck:RemoveClickListener()
 		end
 	end
 end
 
-function slot0.getSelectConditionMap(slot0)
-	return slot0._selectConditionMap
+function var_0_0.getSelectConditionMap(arg_12_0)
+	return arg_12_0._selectConditionMap
 end
 
-function slot0.onDestroy(slot0)
-	slot0:_releaseRewardItemsFunc()
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_13_0)
+	arg_13_0:_releaseRewardItemsFunc()
+	var_0_0.super.onDestroy(arg_13_0)
 end
 
-return slot0
+return var_0_0

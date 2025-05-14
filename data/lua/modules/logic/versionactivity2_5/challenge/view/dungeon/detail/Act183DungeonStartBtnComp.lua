@@ -1,35 +1,38 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonStartBtnComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonStartBtnComp", package.seeall)
 
-slot0 = class("Act183DungeonStartBtnComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonStartBtnComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._btnstart = gohelper.getClickWithDefaultAudio(slot0.go)
+	arg_1_0._btnstart = gohelper.getClickWithDefaultAudio(arg_1_0.go)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._btnstart:AddClickListener(slot0._btnstartOnClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0._btnstart:AddClickListener(arg_2_0._btnstartOnClick, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnstart:RemoveClickListener()
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._btnstart:RemoveClickListener()
 end
 
-function slot0._btnstartOnClick(slot0)
-	Act183HeroGroupController.instance:enterFight(slot0._episodeId, slot0.mgr:getFuncValue(Act183DungeonSelectBadgeComp, "getReadyUseBadgeNum"), slot0.mgr:getFuncValue(Act183DungeonRewardRuleComp, "getSelectConditionMap"))
+function var_0_0._btnstartOnClick(arg_4_0)
+	local var_4_0 = arg_4_0.mgr:getFuncValue(Act183DungeonSelectBadgeComp, "getReadyUseBadgeNum")
+	local var_4_1 = arg_4_0.mgr:getFuncValue(Act183DungeonRewardRuleComp, "getSelectConditionMap")
+
+	Act183HeroGroupController.instance:enterFight(arg_4_0._episodeId, var_4_0, var_4_1)
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._status == Act183Enum.EpisodeStatus.Unlocked
+function var_0_0.checkIsVisible(arg_5_0)
+	return arg_5_0._status == Act183Enum.EpisodeStatus.Unlocked
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
+function var_0_0.show(arg_6_0)
+	var_0_0.super.show(arg_6_0)
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_7_0)
+	var_0_0.super.onDestroy(arg_7_0)
 end
 
-return slot0
+return var_0_0

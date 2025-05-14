@@ -1,77 +1,81 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroGroupItem2", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroGroupItem2", package.seeall)
 
-slot0 = class("Act191HeroGroupItem2", LuaCompBase)
+local var_0_0 = class("Act191HeroGroupItem2", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0.handleView = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.handleView = arg_1_1
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.goEmpty = gohelper.findChild(slot1, "go_Empty")
-	slot0.goCollection = gohelper.findChild(slot1, "go_Collection")
-	slot0.imageRare = gohelper.findChildImage(slot1, "go_Collection/image_Rare")
-	slot0.simageIcon = gohelper.findChildSingleImage(slot1, "go_Collection/simage_Icon")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "btn_Click")
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0.goEmpty = gohelper.findChild(arg_2_1, "go_Empty")
+	arg_2_0.goCollection = gohelper.findChild(arg_2_1, "go_Collection")
+	arg_2_0.imageRare = gohelper.findChildImage(arg_2_1, "go_Collection/image_Rare")
+	arg_2_0.simageIcon = gohelper.findChildSingleImage(arg_2_1, "go_Collection/simage_Icon")
+	arg_2_0.btnClick = gohelper.findChildButtonWithAudio(arg_2_1, "btn_Click")
 end
 
-function slot0.addEventListeners(slot0)
-	if slot0.btnClick then
-		slot0:addClickCb(slot0.btnClick, slot0.onClick, slot0)
+function var_0_0.addEventListeners(arg_3_0)
+	if arg_3_0.btnClick then
+		arg_3_0:addClickCb(arg_3_0.btnClick, arg_3_0.onClick, arg_3_0)
 	end
 end
 
-function slot0.setData(slot0, slot1)
-	slot0.itemUid = slot1
+function var_0_0.setData(arg_4_0, arg_4_1)
+	arg_4_0.itemUid = arg_4_1
 
-	if slot1 and slot1 ~= 0 then
-		slot3 = Activity191Model.instance:getActInfo():getGameInfo():getItemInfoInWarehouse(slot1)
-		slot0.itemId = slot3.itemId
-		slot4 = Activity191Config.instance:getCollectionCo(slot3.itemId)
+	if arg_4_1 and arg_4_1 ~= 0 then
+		local var_4_0 = Activity191Model.instance:getActInfo():getGameInfo():getItemInfoInWarehouse(arg_4_1)
 
-		UISpriteSetMgr.instance:setAct174Sprite(slot0.imageRare, "act174_propitembg_" .. slot4.rare)
-		slot0.simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(slot4.icon))
-		gohelper.setActive(slot0.goCollection, true)
-		gohelper.setActive(slot0.goEmpty, false)
+		arg_4_0.itemId = var_4_0.itemId
+
+		local var_4_1 = Activity191Config.instance:getCollectionCo(var_4_0.itemId)
+
+		UISpriteSetMgr.instance:setAct174Sprite(arg_4_0.imageRare, "act174_propitembg_" .. var_4_1.rare)
+		arg_4_0.simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(var_4_1.icon))
+		gohelper.setActive(arg_4_0.goCollection, true)
+		gohelper.setActive(arg_4_0.goEmpty, false)
 	else
-		slot0.itemId = 0
+		arg_4_0.itemId = 0
 
-		gohelper.setActive(slot0.goCollection, false)
-		gohelper.setActive(slot0.goEmpty, true)
+		gohelper.setActive(arg_4_0.goCollection, false)
+		gohelper.setActive(arg_4_0.goEmpty, true)
 	end
 end
 
-function slot0.setIndex(slot0, slot1)
-	slot0._index = slot1
+function var_0_0.setIndex(arg_5_0, arg_5_1)
+	arg_5_0._index = arg_5_1
 end
 
-function slot0.onClick(slot0)
-	if slot0.handleView and slot0.handleView._nowDragingIndex then
+function var_0_0.onClick(arg_6_0)
+	if arg_6_0.handleView and arg_6_0.handleView._nowDragingIndex then
 		return
 	end
 
-	if slot0.callback then
-		slot0.callback(slot0.callbackObj, slot0.itemId)
+	if arg_6_0.callback then
+		arg_6_0.callback(arg_6_0.callbackObj, arg_6_0.itemId)
 
 		return
 	end
 
-	ViewMgr.instance:openView(ViewName.Act191CollectionEditView, {
-		index = slot0._index
-	})
+	local var_6_0 = {
+		index = arg_6_0._index
+	}
 
-	if slot0.param then
-		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("itemClick_%s_%s_%s", slot0.param.type, slot0._index, slot0.itemId))
+	ViewMgr.instance:openView(ViewName.Act191CollectionEditView, var_6_0)
+
+	if arg_6_0.param then
+		Act191StatController.instance:statButtonClick(arg_6_0.param.fromView, string.format("itemClick_%s_%s_%s", arg_6_0.param.type, arg_6_0._index, arg_6_0.itemId))
 	end
 end
 
-function slot0.setExtraParam(slot0, slot1)
-	slot0.param = slot1
+function var_0_0.setExtraParam(arg_7_0, arg_7_1)
+	arg_7_0.param = arg_7_1
 end
 
-function slot0.setOverrideClick(slot0, slot1, slot2)
-	slot0.callback = slot1
-	slot0.callbackObj = slot2
+function var_0_0.setOverrideClick(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_0.callback = arg_8_1
+	arg_8_0.callbackObj = arg_8_2
 end
 
-return slot0
+return var_0_0

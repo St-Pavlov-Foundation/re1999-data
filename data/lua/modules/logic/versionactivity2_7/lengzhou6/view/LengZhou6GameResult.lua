@@ -1,90 +1,99 @@
-module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameResult", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameResult", package.seeall)
 
-slot0 = class("LengZhou6GameResult", BaseView)
+local var_0_0 = class("LengZhou6GameResult", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._gotop = gohelper.findChild(slot0.viewGO, "#go_top")
-	slot0._txtstage = gohelper.findChildText(slot0.viewGO, "#go_top/#txt_stage")
-	slot0._txtname = gohelper.findChildText(slot0.viewGO, "#go_top/#txt_name")
-	slot0._gosuccess = gohelper.findChild(slot0.viewGO, "#go_success")
-	slot0._gofail = gohelper.findChild(slot0.viewGO, "#go_fail")
-	slot0._gotargetitem = gohelper.findChild(slot0.viewGO, "targets/#go_targetitem")
-	slot0._txttaskdesc = gohelper.findChildText(slot0.viewGO, "targets/#go_targetitem/#txt_taskdesc")
-	slot0._gofinish = gohelper.findChild(slot0.viewGO, "targets/#go_targetitem/result/#go_finish")
-	slot0._gounfinish = gohelper.findChild(slot0.viewGO, "targets/#go_targetitem/result/#go_unfinish")
-	slot0._gobtn = gohelper.findChild(slot0.viewGO, "#go_btn")
-	slot0._btnquitgame = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btn/#btn_quitgame")
-	slot0._btnrestart = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btn/#btn_restart")
-	slot0._btnsuccessClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_successClick")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gotop = gohelper.findChild(arg_1_0.viewGO, "#go_top")
+	arg_1_0._txtstage = gohelper.findChildText(arg_1_0.viewGO, "#go_top/#txt_stage")
+	arg_1_0._txtname = gohelper.findChildText(arg_1_0.viewGO, "#go_top/#txt_name")
+	arg_1_0._gosuccess = gohelper.findChild(arg_1_0.viewGO, "#go_success")
+	arg_1_0._gofail = gohelper.findChild(arg_1_0.viewGO, "#go_fail")
+	arg_1_0._gotargetitem = gohelper.findChild(arg_1_0.viewGO, "targets/#go_targetitem")
+	arg_1_0._txttaskdesc = gohelper.findChildText(arg_1_0.viewGO, "targets/#go_targetitem/#txt_taskdesc")
+	arg_1_0._gofinish = gohelper.findChild(arg_1_0.viewGO, "targets/#go_targetitem/result/#go_finish")
+	arg_1_0._gounfinish = gohelper.findChild(arg_1_0.viewGO, "targets/#go_targetitem/result/#go_unfinish")
+	arg_1_0._gobtn = gohelper.findChild(arg_1_0.viewGO, "#go_btn")
+	arg_1_0._btnquitgame = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btn/#btn_quitgame")
+	arg_1_0._btnrestart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btn/#btn_restart")
+	arg_1_0._btnsuccessClick = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_successClick")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnquitgame:AddClickListener(slot0._btnquitgameOnClick, slot0)
-	slot0._btnrestart:AddClickListener(slot0._btnrestartOnClick, slot0)
-	slot0._btnsuccessClick:AddClickListener(slot0._btnsuccessClickOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnquitgame:AddClickListener(arg_2_0._btnquitgameOnClick, arg_2_0)
+	arg_2_0._btnrestart:AddClickListener(arg_2_0._btnrestartOnClick, arg_2_0)
+	arg_2_0._btnsuccessClick:AddClickListener(arg_2_0._btnsuccessClickOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnquitgame:RemoveClickListener()
-	slot0._btnrestart:RemoveClickListener()
-	slot0._btnsuccessClick:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnquitgame:RemoveClickListener()
+	arg_3_0._btnrestart:RemoveClickListener()
+	arg_3_0._btnsuccessClick:RemoveClickListener()
 end
 
-function slot0._btnquitgameOnClick(slot0)
-	slot0:close()
+function var_0_0._btnquitgameOnClick(arg_4_0)
+	arg_4_0:close()
 end
 
-function slot0._btnrestartOnClick(slot0)
-	slot0._isCloseGameView = false
+function var_0_0._btnrestartOnClick(arg_5_0)
+	arg_5_0._isCloseGameView = false
 
-	slot0:close()
+	arg_5_0:close()
 	LengZhou6Controller.instance:restartGame()
 end
 
-function slot0._btnsuccessClickOnClick(slot0)
-	slot0:close()
+function var_0_0._btnsuccessClickOnClick(arg_6_0)
+	arg_6_0:close()
 end
 
-function slot0.close(slot0)
-	slot0:closeThis()
+function var_0_0.close(arg_7_0)
+	arg_7_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_8_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_9_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0._isCloseGameView = true
+function var_0_0.onOpen(arg_10_0)
+	arg_10_0._isCloseGameView = true
 
-	slot0:initInfo()
-	slot0:initResult()
+	arg_10_0:initInfo()
+	arg_10_0:initResult()
 	LengZhou6StatHelper.instance:sendGameExit()
 end
 
-function slot0.initInfo(slot0)
-	slot1 = LengZhou6GameModel.instance:getEpisodeConfig()
-	slot0._txtname.text = slot1.name
-	slot0._txtstage.text = string.format("STAGE %s", slot1.episodeId - 1270200)
+function var_0_0.initInfo(arg_11_0)
+	local var_11_0 = LengZhou6GameModel.instance:getEpisodeConfig()
+
+	arg_11_0._txtname.text = var_11_0.name
+	arg_11_0._txtstage.text = string.format("STAGE %s", var_11_0.episodeId - 1270200)
 end
 
-function slot0.initResult(slot0)
-	slot1 = LengZhou6GameModel.instance:playerIsWin()
+function var_0_0.initResult(arg_12_0)
+	local var_12_0 = LengZhou6GameModel.instance:playerIsWin()
 
-	gohelper.setActive(slot0._gofail, not slot1)
-	gohelper.setActive(slot0._gosuccess, slot1)
-	gohelper.setActive(slot0._gobtn, not slot1)
-	AudioMgr.instance:trigger(slot1 and AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_success or AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_fail)
-	LengZhou6StatHelper.instance:setGameResult(slot1 and LengZhou6Enum.GameResult.win or LengZhou6Enum.GameResult.lose)
+	gohelper.setActive(arg_12_0._gofail, not var_12_0)
+	gohelper.setActive(arg_12_0._gosuccess, var_12_0)
+	gohelper.setActive(arg_12_0._gobtn, not var_12_0)
+
+	local var_12_1 = var_12_0 and AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_success or AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_fail
+
+	AudioMgr.instance:trigger(var_12_1)
+
+	local var_12_2 = var_12_0 and LengZhou6Enum.GameResult.win or LengZhou6Enum.GameResult.lose
+
+	LengZhou6StatHelper.instance:setGameResult(var_12_2)
 end
 
-function slot0.onClose(slot0)
-	LengZhou6GameController.instance:levelGame(slot0._isCloseGameView)
+function var_0_0.onClose(arg_13_0)
+	LengZhou6GameController.instance:levelGame(arg_13_0._isCloseGameView)
 end
 
-return slot0
+return var_0_0

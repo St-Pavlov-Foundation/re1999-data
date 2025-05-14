@@ -1,84 +1,89 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroResultView", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroResultView", package.seeall)
 
-slot0 = class("DiceHeroResultView", BaseView)
+local var_0_0 = class("DiceHeroResultView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._gosuccess = gohelper.findChild(slot0.viewGO, "#go_success")
-	slot0._gofail = gohelper.findChild(slot0.viewGO, "#go_fail")
-	slot0._btnClick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_click")
-	slot0._gobtns = gohelper.findChild(slot0.viewGO, "#go_btns")
-	slot0._btnquitgame = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btns/#btn_quitgame")
-	slot0._btnrestart = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_btns/#btn_restart")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gosuccess = gohelper.findChild(arg_1_0.viewGO, "#go_success")
+	arg_1_0._gofail = gohelper.findChild(arg_1_0.viewGO, "#go_fail")
+	arg_1_0._btnClick = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_click")
+	arg_1_0._gobtns = gohelper.findChild(arg_1_0.viewGO, "#go_btns")
+	arg_1_0._btnquitgame = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btns/#btn_quitgame")
+	arg_1_0._btnrestart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_btns/#btn_restart")
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClick:AddClickListener(slot0._onClickClose, slot0)
-	slot0._btnquitgame:AddClickListener(slot0.closeThis, slot0)
-	slot0._btnrestart:AddClickListener(slot0._onClickRestart, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClick:AddClickListener(arg_2_0._onClickClose, arg_2_0)
+	arg_2_0._btnquitgame:AddClickListener(arg_2_0.closeThis, arg_2_0)
+	arg_2_0._btnrestart:AddClickListener(arg_2_0._onClickRestart, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClick:RemoveClickListener()
-	slot0._btnquitgame:RemoveClickListener()
-	slot0._btnrestart:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClick:RemoveClickListener()
+	arg_3_0._btnquitgame:RemoveClickListener()
+	arg_3_0._btnrestart:RemoveClickListener()
 end
 
-function slot0.onOpen(slot0)
-	gohelper.setActive(slot0._gosuccess, slot0.viewParam.status == DiceHeroEnum.GameStatu.Win)
-	gohelper.setActive(slot0._gofail, slot0.viewParam.status == DiceHeroEnum.GameStatu.Lose)
+function var_0_0.onOpen(arg_4_0)
+	gohelper.setActive(arg_4_0._gosuccess, arg_4_0.viewParam.status == DiceHeroEnum.GameStatu.Win)
+	gohelper.setActive(arg_4_0._gofail, arg_4_0.viewParam.status == DiceHeroEnum.GameStatu.Lose)
 
-	slot2 = lua_dice_level.configDict[DiceHeroModel.instance.lastEnterLevelId]
-	slot0.co = slot2
-	slot3 = false
+	local var_4_0 = DiceHeroModel.instance.lastEnterLevelId
+	local var_4_1 = lua_dice_level.configDict[var_4_0]
 
-	if slot2 then
-		slot3 = slot0.viewParam.status == DiceHeroEnum.GameStatu.Lose and slot2.mode == 1
+	arg_4_0.co = var_4_1
+
+	local var_4_2 = false
+
+	if var_4_1 then
+		var_4_2 = arg_4_0.viewParam.status == DiceHeroEnum.GameStatu.Lose and var_4_1.mode == 1
 	end
 
-	gohelper.setActive(slot0._gobtns, slot3)
-	gohelper.setActive(slot0._btnClick, not slot3)
+	gohelper.setActive(arg_4_0._gobtns, var_4_2)
+	gohelper.setActive(arg_4_0._btnClick, not var_4_2)
 
-	if slot0.viewParam.status == DiceHeroEnum.GameStatu.Win then
+	if arg_4_0.viewParam.status == DiceHeroEnum.GameStatu.Win then
 		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_pkls_endpoint_arrival)
 	else
 		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_pkls_challenge_fail)
 	end
 end
 
-function slot0._onClickRestart(slot0)
+function var_0_0._onClickRestart(arg_5_0)
 	DiceHeroStatHelper.instance:resetGameDt()
-	DiceHeroRpc.instance:sendDiceHeroEnterFight(slot0.co.id, slot0._onEnterFight, slot0)
+	DiceHeroRpc.instance:sendDiceHeroEnterFight(arg_5_0.co.id, arg_5_0._onEnterFight, arg_5_0)
 end
 
-function slot0._onClickClose(slot0)
-	if slot0.co then
-		if DiceHeroModel.instance:getGameInfo(slot0.co.chapter):hasReward() and slot1.currLevel == DiceHeroModel.instance.lastEnterLevelId then
+function var_0_0._onClickClose(arg_6_0)
+	if arg_6_0.co then
+		local var_6_0 = DiceHeroModel.instance:getGameInfo(arg_6_0.co.chapter)
+
+		if var_6_0:hasReward() and var_6_0.currLevel == DiceHeroModel.instance.lastEnterLevelId then
 			ViewMgr.instance:openView(ViewName.DiceHeroTalkView, {
-				co = slot0.co
+				co = arg_6_0.co
 			})
-		elseif slot0.co.mode == 2 and slot0.viewParam.status == DiceHeroEnum.GameStatu.Win and slot0.co.dialog ~= 0 then
+		elseif arg_6_0.co.mode == 2 and arg_6_0.viewParam.status == DiceHeroEnum.GameStatu.Win and arg_6_0.co.dialog ~= 0 then
 			ViewMgr.instance:openView(ViewName.DiceHeroTalkView, {
-				co = slot0.co
+				co = arg_6_0.co
 			})
 		end
 	end
 
-	slot0:closeThis()
+	arg_6_0:closeThis()
 end
 
-function slot0._onEnterFight(slot0, slot1, slot2, slot3)
-	if slot2 ~= 0 then
+function var_0_0._onEnterFight(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	if arg_7_2 ~= 0 then
 		return
 	end
 
-	slot0._restart = true
+	arg_7_0._restart = true
 
 	ViewMgr.instance:openView(ViewName.DiceHeroGameView)
-	slot0:closeThis()
+	arg_7_0:closeThis()
 end
 
-function slot0.onClose(slot0)
-	if not slot0._restart then
+function var_0_0.onClose(arg_8_0)
+	if not arg_8_0._restart then
 		ViewMgr.instance:closeView(ViewName.DiceHeroGameView)
 	end
 
@@ -89,4 +94,4 @@ function slot0.onClose(slot0)
 	end
 end
 
-return slot0
+return var_0_0

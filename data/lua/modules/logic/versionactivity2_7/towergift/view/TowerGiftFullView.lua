@@ -1,90 +1,95 @@
-module("modules.logic.versionactivity2_7.towergift.view.TowerGiftFullView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.view.TowerGiftFullView", package.seeall)
 
-slot0 = class("TowerGiftFullView", BaseView)
-slot0.TaskId = 92001101
+local var_0_0 = class("TowerGiftFullView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btncheck = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_check")
-	slot0._btn1Claim = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/reward1/go_canget/#btn_Claim")
-	slot0._gocanget = gohelper.findChild(slot0.viewGO, "root/reward1/go_canget")
-	slot0._goreceive = gohelper.findChild(slot0.viewGO, "root/reward1/go_receive")
-	slot0._gotaskreceive = gohelper.findChild(slot0.viewGO, "root/reward2/go_receive")
-	slot0._txtprogress = gohelper.findChildText(slot0.viewGO, "root/reward2/go_goto/#txt_progress")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "root/reward2/go_goto/txt_dec")
-	slot0._txttime = gohelper.findChildText(slot0.viewGO, "root/simage_fullbg/#txt_time")
-	slot0._gogoto = gohelper.findChild(slot0.viewGO, "root/reward2/go_goto")
-	slot0._golock = gohelper.findChild(slot0.viewGO, "root/reward2/go_lock")
-	slot0._btngoto = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/reward2/go_goto/#btn_goto")
-	slot0._btnicon = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/reward2/icon/click")
-	slot0._bgmId = nil
+var_0_0.TaskId = 92001101
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btncheck = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_check")
+	arg_1_0._btn1Claim = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/reward1/go_canget/#btn_Claim")
+	arg_1_0._gocanget = gohelper.findChild(arg_1_0.viewGO, "root/reward1/go_canget")
+	arg_1_0._goreceive = gohelper.findChild(arg_1_0.viewGO, "root/reward1/go_receive")
+	arg_1_0._gotaskreceive = gohelper.findChild(arg_1_0.viewGO, "root/reward2/go_receive")
+	arg_1_0._txtprogress = gohelper.findChildText(arg_1_0.viewGO, "root/reward2/go_goto/#txt_progress")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "root/reward2/go_goto/txt_dec")
+	arg_1_0._txttime = gohelper.findChildText(arg_1_0.viewGO, "root/simage_fullbg/#txt_time")
+	arg_1_0._gogoto = gohelper.findChild(arg_1_0.viewGO, "root/reward2/go_goto")
+	arg_1_0._golock = gohelper.findChild(arg_1_0.viewGO, "root/reward2/go_lock")
+	arg_1_0._btngoto = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/reward2/go_goto/#btn_goto")
+	arg_1_0._btnicon = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/reward2/icon/click")
+	arg_1_0._bgmId = nil
+
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btncheck:AddClickListener(slot0._btncheckOnClick, slot0)
-	slot0._btn1Claim:AddClickListener(slot0._btn1ClaimOnClick, slot0)
-	slot0._btngoto:AddClickListener(slot0._btngotoOnClick, slot0)
-	slot0._btnicon:AddClickListener(slot0._btniconOnClick, slot0)
-	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, slot0.refreshUI, slot0)
-	slot0:addEventCb(TowerController.instance, TowerEvent.TowerRefreshTask, slot0.refreshUI, slot0)
-	slot0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshUI, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.checkBgm, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btncheck:AddClickListener(arg_2_0._btncheckOnClick, arg_2_0)
+	arg_2_0._btn1Claim:AddClickListener(arg_2_0._btn1ClaimOnClick, arg_2_0)
+	arg_2_0._btngoto:AddClickListener(arg_2_0._btngotoOnClick, arg_2_0)
+	arg_2_0._btnicon:AddClickListener(arg_2_0._btniconOnClick, arg_2_0)
+	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, arg_2_0.refreshUI, arg_2_0)
+	arg_2_0:addEventCb(TowerController.instance, TowerEvent.TowerRefreshTask, arg_2_0.refreshUI, arg_2_0)
+	arg_2_0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, arg_2_0.refreshUI, arg_2_0)
+	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_2_0.checkBgm, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btncheck:RemoveClickListener()
-	slot0._btn1Claim:RemoveClickListener()
-	slot0._btngoto:RemoveClickListener()
-	slot0._btnicon:RemoveClickListener()
-	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, slot0.refreshUI, slot0)
-	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerRefreshTask, slot0.refreshUI, slot0)
-	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshUI, slot0)
-	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.checkBgm, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btncheck:RemoveClickListener()
+	arg_3_0._btn1Claim:RemoveClickListener()
+	arg_3_0._btngoto:RemoveClickListener()
+	arg_3_0._btnicon:RemoveClickListener()
+	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, arg_3_0.refreshUI, arg_3_0)
+	arg_3_0:removeEventCb(TowerController.instance, TowerEvent.TowerRefreshTask, arg_3_0.refreshUI, arg_3_0)
+	arg_3_0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, arg_3_0.refreshUI, arg_3_0)
+	arg_3_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_3_0.checkBgm, arg_3_0)
 end
 
-function slot0._btncheckOnClick(slot0)
-	ViewMgr.instance:openView(ViewName.VersionActivity2_3NewCultivationDetailView, {
+function var_0_0._btncheckOnClick(arg_4_0)
+	local var_4_0 = {
 		showType = VersionActivity2_3NewCultivationDetailView.DISPLAY_TYPE.Effect,
 		heroId = TowerGiftEnum.ShowHeroList
-	})
+	}
+
+	ViewMgr.instance:openView(ViewName.VersionActivity2_3NewCultivationDetailView, var_4_0)
 end
 
-function slot0._btn1ClaimOnClick(slot0)
-	if not slot0:checkReceied() and slot0:checkCanGet() then
-		Activity101Rpc.instance:sendGet101BonusRequest(slot0._actId, 1)
+function var_0_0._btn1ClaimOnClick(arg_5_0)
+	if not arg_5_0:checkReceied() and arg_5_0:checkCanGet() then
+		Activity101Rpc.instance:sendGet101BonusRequest(arg_5_0._actId, 1)
 	end
 end
 
-function slot0._btngotoOnClick(slot0)
+function var_0_0._btngotoOnClick(arg_6_0)
 	if OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Tower) then
 		TowerController.instance:openTowerTaskView()
 
-		slot0._bgmId = BGMSwitchModel.instance:getCurBgm()
+		arg_6_0._bgmId = BGMSwitchModel.instance:getCurBgm()
 	else
-		slot1, slot2, slot3 = JumpController.instance:canJumpNew(JumpEnum.JumpView.Tower)
+		local var_6_0, var_6_1, var_6_2 = JumpController.instance:canJumpNew(JumpEnum.JumpView.Tower)
 
-		if not slot1 then
-			GameFacade.showToastWithTableParam(slot2, slot3)
+		if not var_6_0 then
+			GameFacade.showToastWithTableParam(var_6_1, var_6_2)
 
 			return false
 		end
 	end
 end
 
-function slot0._btniconOnClick(slot0)
+function var_0_0._btniconOnClick(arg_7_0)
 	MaterialTipController.instance:showMaterialInfo(MaterialEnum.MaterialType.Item, TowerGiftEnum.StoneUpTicketId)
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_8_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_9_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_10_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_leimi_theft_open)
 
 	if OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Tower) then
@@ -94,80 +99,98 @@ function slot0.onOpen(slot0)
 		})
 	end
 
-	slot0._actId = slot0.viewParam.actId
+	local var_10_0 = arg_10_0.viewParam.parent
 
-	gohelper.addChild(slot0.viewParam.parent, slot0.viewGO)
-	Activity101Rpc.instance:sendGet101InfosRequest(slot0._actId)
-	slot0:refreshUI()
+	arg_10_0._actId = arg_10_0.viewParam.actId
+
+	gohelper.addChild(var_10_0, arg_10_0.viewGO)
+	Activity101Rpc.instance:sendGet101InfosRequest(arg_10_0._actId)
+	arg_10_0:refreshUI()
 end
 
-function slot0.refreshUI(slot0)
-	slot2 = nil
+function var_0_0.refreshUI(arg_11_0)
+	local var_11_0 = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Tower)
+	local var_11_1
 
-	if OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Tower) then
-		slot2 = TowerTaskModel.instance:getActRewardTask()
+	if var_11_0 then
+		var_11_1 = TowerTaskModel.instance:getActRewardTask()
 	end
 
-	if slot1 then
-		if not (slot2 and next(slot2)) then
-			gohelper.setActive(slot0._golock, true)
-			gohelper.setActive(slot0._gogoto, false)
+	local var_11_2 = var_11_1 and next(var_11_1)
+
+	if var_11_0 then
+		if not var_11_2 then
+			gohelper.setActive(arg_11_0._golock, true)
+			gohelper.setActive(arg_11_0._gogoto, false)
 		else
-			gohelper.setActive(slot0._golock, false)
-			gohelper.setActive(slot0._gogoto, true)
+			gohelper.setActive(arg_11_0._golock, false)
+			gohelper.setActive(arg_11_0._gogoto, true)
 		end
 	else
-		gohelper.setActive(slot0._golock, true)
-		gohelper.setActive(slot0._gogoto, false)
+		gohelper.setActive(arg_11_0._golock, true)
+		gohelper.setActive(arg_11_0._gogoto, false)
 	end
 
-	if slot2 then
-		slot4 = slot2:isClaimed()
+	if var_11_1 then
+		local var_11_3 = var_11_1:isClaimed()
 
-		gohelper.setActive(slot0._gotaskreceive, slot4)
-		gohelper.setActive(slot0._gogoto, not slot4)
+		gohelper.setActive(arg_11_0._gotaskreceive, var_11_3)
+		gohelper.setActive(arg_11_0._gogoto, not var_11_3)
 
-		if slot4 then
-			slot0._txtprogress.text = luaLang("p_v2a7_tower_fullview_txt_finished")
+		if var_11_3 then
+			arg_11_0._txtprogress.text = luaLang("p_v2a7_tower_fullview_txt_finished")
 		end
 
-		gohelper.setActive(slot0._txtprogress.gameObject, true)
+		gohelper.setActive(arg_11_0._txtprogress.gameObject, true)
 
-		slot0._txtprogress.text = string.format("<#ec5d5d>%s</color>/%s", slot2.progress, slot2.config.maxProgress)
+		arg_11_0._txtprogress.text = string.format("<#ec5d5d>%s</color>/%s", var_11_1.progress, var_11_1.config.maxProgress)
 	end
 
-	gohelper.setActive(slot0._gocanget, slot0:checkCanGet())
-	gohelper.setActive(slot0._goreceive, slot0:checkReceied())
+	local var_11_4 = arg_11_0:checkReceied()
+	local var_11_5 = arg_11_0:checkCanGet()
 
-	slot0._txttime.text = ActivityHelper.getActivityRemainTimeStr(slot0._actId)
+	gohelper.setActive(arg_11_0._gocanget, var_11_5)
+	gohelper.setActive(arg_11_0._goreceive, var_11_4)
+
+	arg_11_0._txttime.text = ActivityHelper.getActivityRemainTimeStr(arg_11_0._actId)
 end
 
-function slot0.checkReceied(slot0)
-	return ActivityType101Model.instance:isType101RewardGet(slot0._actId, 1)
+function var_0_0.checkReceied(arg_12_0)
+	return (ActivityType101Model.instance:isType101RewardGet(arg_12_0._actId, 1))
 end
 
-function slot0.checkCanGet(slot0)
-	return ActivityType101Model.instance:isType101RewardCouldGet(slot0._actId, 1)
+function var_0_0.checkCanGet(arg_13_0)
+	return (ActivityType101Model.instance:isType101RewardCouldGet(arg_13_0._actId, 1))
 end
 
-function slot0.checkBgm(slot0, slot1)
-	if slot1 == ViewName.TowerMainView then
-		if slot0._bgmId and slot0._bgmId ~= -1 then
-			AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.Main, BGMSwitchConfig.instance:getBGMSwitchCO(slot0._bgmId) and slot2.audio)
+function var_0_0.checkBgm(arg_14_0, arg_14_1)
+	if arg_14_1 == ViewName.TowerMainView then
+		if arg_14_0._bgmId and arg_14_0._bgmId ~= -1 then
+			local var_14_0 = BGMSwitchConfig.instance:getBGMSwitchCO(arg_14_0._bgmId)
+			local var_14_1 = var_14_0 and var_14_0.audio
+
+			AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.Main, var_14_1)
 		else
-			if BGMSwitchModel.instance:isRandomBgmId(BGMSwitchModel.instance:getUsedBgmIdFromServer()) then
-				slot2 = BGMSwitchModel.instance:nextBgm(1, true)
+			local var_14_2 = BGMSwitchModel.instance:getUsedBgmIdFromServer()
+
+			if BGMSwitchModel.instance:isRandomBgmId(var_14_2) then
+				var_14_2 = BGMSwitchModel.instance:nextBgm(1, true)
 			end
 
-			AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.Main, BGMSwitchConfig.instance:getBGMSwitchCO(slot2) and slot3.audio or AudioEnum.UI.Play_Replay_Music_Daytime)
+			local var_14_3 = BGMSwitchConfig.instance:getBGMSwitchCO(var_14_2)
+			local var_14_4 = var_14_3 and var_14_3.audio or AudioEnum.UI.Play_Replay_Music_Daytime
+
+			AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.Main, var_14_4)
 		end
 	end
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_15_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_16_0)
+	return
 end
 
-return slot0
+return var_0_0

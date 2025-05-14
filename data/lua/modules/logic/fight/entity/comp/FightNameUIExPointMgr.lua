@@ -1,362 +1,408 @@
-module("modules.logic.fight.entity.comp.FightNameUIExPointMgr", package.seeall)
+﻿module("modules.logic.fight.entity.comp.FightNameUIExPointMgr", package.seeall)
 
-slot0 = class("FightNameUIExPointMgr", UserDataDispose)
-slot1 = {
-	[141102.0] = true
+local var_0_0 = class("FightNameUIExPointMgr", UserDataDispose)
+local var_0_1 = {
+	[141102] = true
 }
-slot0.LineCount = 6
-slot0.linePrefixX = 12
-slot0.lineTopY = 16
 
-function slot0.initMgr(slot0, slot1, slot2)
-	slot0:__onInit()
+var_0_0.LineCount = 6
+var_0_0.linePrefixX = 12
+var_0_0.lineTopY = 16
 
-	slot0.goExPointContainer = slot1
-	slot0.entity = slot2
-	slot0.entityId = slot0.entity.id
-	slot0.pointItemList = {}
-	slot0.hideExPoint = slot0:checkNeedShieldExPoint()
+function var_0_0.initMgr(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0:__onInit()
 
-	if slot0.hideExPoint then
-		gohelper.setActive(slot1, false)
+	arg_1_0.goExPointContainer = arg_1_1
+	arg_1_0.entity = arg_1_2
+	arg_1_0.entityId = arg_1_0.entity.id
+	arg_1_0.pointItemList = {}
+	arg_1_0.hideExPoint = arg_1_0:checkNeedShieldExPoint()
+
+	if arg_1_0.hideExPoint then
+		gohelper.setActive(arg_1_1, false)
 
 		return
 	end
 
-	slot3 = slot0.entity:getMO()
-	slot0.entityConfig = slot3:getCO()
-	slot0.totalMaxExPoint = slot3:getMaxExPoint()
+	local var_1_0 = arg_1_0.entity:getMO()
 
-	if not slot0.entityConfig then
-		logError(string.format("entity 找不到配置表: entityType = %s  modelId = %s", slot0.entity:getMO().entityType, slot0.entity:getMO().modelId))
+	arg_1_0.entityConfig = var_1_0:getCO()
+	arg_1_0.totalMaxExPoint = var_1_0:getMaxExPoint()
+
+	if not arg_1_0.entityConfig then
+		logError(string.format("entity 找不到配置表: entityType = %s  modelId = %s", arg_1_0.entity:getMO().entityType, arg_1_0.entity:getMO().modelId))
 	end
 
-	slot0:initGoPointPool()
-	slot0:initExPointLine()
-	slot0:initExPointItemList()
-	slot0:initExtraExPointItemList()
-	slot0:refreshPointItemCount()
-	slot0:addCustomEvents()
-	slot0:updateSelfExPoint()
+	arg_1_0:initGoPointPool()
+	arg_1_0:initExPointLine()
+	arg_1_0:initExPointItemList()
+	arg_1_0:initExtraExPointItemList()
+	arg_1_0:refreshPointItemCount()
+	arg_1_0:addCustomEvents()
+	arg_1_0:updateSelfExPoint()
 end
 
-slot2 = {
-	[10212131.0] = true,
-	[10222111.0] = true,
-	[10222131.0] = true,
-	[10212111.0] = true,
-	[10222121.0] = true,
-	[10212121.0] = true
+local var_0_2 = {
+	[10212131] = true,
+	[10222111] = true,
+	[10222131] = true,
+	[10212111] = true,
+	[10222121] = true,
+	[10212121] = true
 }
 
-function slot0.checkNeedShieldExPoint(slot0)
-	if slot0.entity:getMO() and slot1.modelId and uv0[slot2] then
+function var_0_0.checkNeedShieldExPoint(arg_2_0)
+	local var_2_0 = arg_2_0.entity:getMO()
+	local var_2_1 = var_2_0 and var_2_0.modelId
+
+	if var_2_1 and var_0_2[var_2_1] then
 		return false
 	end
 
-	if uv1[slot2] then
+	if var_0_1[var_2_1] then
 		return true
 	end
 
-	slot4 = FightModel.instance:getCurMonsterGroupId() and lua_monster_group.configDict[slot3]
-	slot5 = slot4 and slot4.bossId
+	local var_2_2 = FightModel.instance:getCurMonsterGroupId()
+	local var_2_3 = var_2_2 and lua_monster_group.configDict[var_2_2]
+	local var_2_4 = var_2_3 and var_2_3.bossId
+	local var_2_5 = var_2_4 and FightHelper.isBossId(var_2_4, var_2_1)
 
-	return BossRushController.instance:isInBossRushFight() and (slot5 and FightHelper.isBossId(slot5, slot2))
+	return BossRushController.instance:isInBossRushFight() and var_2_5
 end
 
-function slot0.initGoPointPool(slot0)
-	slot0.exPointItemPool = {}
-	slot0.extraPointItemPool = {}
-	slot0.goPoolContainer = gohelper.create2d(slot0.goExPointContainer, "pointPool")
+function var_0_0.initGoPointPool(arg_3_0)
+	arg_3_0.exPointItemPool = {}
+	arg_3_0.extraPointItemPool = {}
+	arg_3_0.goPoolContainer = gohelper.create2d(arg_3_0.goExPointContainer, "pointPool")
 
-	gohelper.setActive(slot0.goPoolContainer, false)
+	gohelper.setActive(arg_3_0.goPoolContainer, false)
 end
 
-function slot0.initExPointLine(slot0)
-	slot0.lineGroupList = slot0:getUserDataTb_()
-	slot0.goLineGroupItem = gohelper.findChild(slot0.goExPointContainer, "exPointLine")
+function var_0_0.initExPointLine(arg_4_0)
+	arg_4_0.lineGroupList = arg_4_0:getUserDataTb_()
+	arg_4_0.goLineGroupItem = gohelper.findChild(arg_4_0.goExPointContainer, "exPointLine")
 
-	gohelper.setActive(slot0.goLineGroupItem, false)
+	gohelper.setActive(arg_4_0.goLineGroupItem, false)
 
-	slot0.initLineGroupAnchorX, slot0.initLineGroupAnchorY = recthelper.getAnchor(slot0.goLineGroupItem.transform)
+	arg_4_0.initLineGroupAnchorX, arg_4_0.initLineGroupAnchorY = recthelper.getAnchor(arg_4_0.goLineGroupItem.transform)
 end
 
-function slot0.addLineGroup(slot0, slot1)
-	slot2 = gohelper.cloneInPlace(slot0.goLineGroupItem)
+function var_0_0.addLineGroup(arg_5_0, arg_5_1)
+	local var_5_0 = gohelper.cloneInPlace(arg_5_0.goLineGroupItem)
 
-	gohelper.setActive(slot2, true)
-	table.insert(slot0.lineGroupList, slot1, slot2)
-	recthelper.setAnchor(slot2:GetComponent(gohelper.Type_RectTransform), slot0.initLineGroupAnchorX + (slot1 - 1) * uv0.linePrefixX, slot0.initLineGroupAnchorY - (slot1 - 1) * uv0.lineTopY)
+	gohelper.setActive(var_5_0, true)
+	table.insert(arg_5_0.lineGroupList, arg_5_1, var_5_0)
 
-	return slot2
+	local var_5_1 = var_5_0:GetComponent(gohelper.Type_RectTransform)
+	local var_5_2 = arg_5_0.initLineGroupAnchorX
+	local var_5_3 = arg_5_0.initLineGroupAnchorY
+	local var_5_4 = var_5_2 + (arg_5_1 - 1) * var_0_0.linePrefixX
+	local var_5_5 = var_5_3 - (arg_5_1 - 1) * var_0_0.lineTopY
+
+	recthelper.setAnchor(var_5_1, var_5_4, var_5_5)
+
+	return var_5_0
 end
 
-function slot0.getLineGroup(slot0, slot1)
-	if slot1 < 1 then
+function var_0_0.getLineGroup(arg_6_0, arg_6_1)
+	if arg_6_1 < 1 then
 		logError("激情点下标小于1 了？")
 
-		return slot0.lineGroupList[1]
+		return arg_6_0.lineGroupList[1]
 	end
 
-	return slot0.lineGroupList[math.ceil(slot1 / uv0.LineCount)] or slot0:addLineGroup(slot1)
+	arg_6_1 = math.ceil(arg_6_1 / var_0_0.LineCount)
+
+	return arg_6_0.lineGroupList[arg_6_1] or arg_6_0:addLineGroup(arg_6_1)
 end
 
-function slot0.checkRemoveLineGroup(slot0)
-	slot2 = #slot0.lineGroupList
+function var_0_0.checkRemoveLineGroup(arg_7_0)
+	local var_7_0 = #arg_7_0.pointItemList
+	local var_7_1 = #arg_7_0.lineGroupList
+	local var_7_2 = math.ceil(var_7_0 / var_0_0.LineCount)
 
-	while math.ceil(#slot0.pointItemList / uv0.LineCount) < slot2 do
-		table.remove(slot0.lineGroupList)
-		gohelper.destroy(slot0.lineGroupList[slot2])
+	while var_7_2 < var_7_1 do
+		local var_7_3 = arg_7_0.lineGroupList[var_7_1]
 
-		slot2 = slot2 - 1
+		table.remove(arg_7_0.lineGroupList)
+		gohelper.destroy(var_7_3)
+
+		var_7_1 = var_7_1 - 1
 	end
 end
 
-function slot0.initExPointItemList(slot0)
-	slot0.exPointItemList = {}
-	slot0.goPointItem = gohelper.findChild(slot0.goExPointContainer, "empty")
+function var_0_0.initExPointItemList(arg_8_0)
+	arg_8_0.exPointItemList = {}
+	arg_8_0.goPointItem = gohelper.findChild(arg_8_0.goExPointContainer, "empty")
 
-	gohelper.setActive(slot0.goPointItem, false)
+	gohelper.setActive(arg_8_0.goPointItem, false)
 end
 
-function slot0.initExtraExPointItemList(slot0)
-	slot0.extraExPointItemList = {}
-	slot1 = gohelper.findChild(slot0.goExPointContainer, "extra")
+function var_0_0.initExtraExPointItemList(arg_9_0)
+	arg_9_0.extraExPointItemList = {}
 
-	gohelper.setActive(slot1, false)
+	local var_9_0 = gohelper.findChild(arg_9_0.goExPointContainer, "extra")
 
-	slot0.goExtraPointItem = slot1
+	gohelper.setActive(var_9_0, false)
+
+	arg_9_0.goExtraPointItem = var_9_0
 end
 
-function slot0.refreshPointItemCount(slot0)
-	slot4 = "prePointCount : %s, exPointCount : %s, extraPointCount : %s"
-	slot5 = #slot0.pointItemList
+function var_0_0.refreshPointItemCount(arg_10_0)
+	arg_10_0:log(string.format("prePointCount : %s, exPointCount : %s, extraPointCount : %s", #arg_10_0.pointItemList, #arg_10_0.exPointItemList, #arg_10_0.extraExPointItemList))
 
-	slot0:log(string.format(slot4, slot5, #slot0.exPointItemList, #slot0.extraExPointItemList))
-
-	for slot4, slot5 in ipairs(slot0.pointItemList) do
-		if slot5:getType() == FightNameUIExPointBaseItem.ExPointType.Normal then
-			table.insert(slot0.exPointItemPool, slot5)
+	for iter_10_0, iter_10_1 in ipairs(arg_10_0.pointItemList) do
+		if iter_10_1:getType() == FightNameUIExPointBaseItem.ExPointType.Normal then
+			table.insert(arg_10_0.exPointItemPool, iter_10_1)
 		else
-			table.insert(slot0.extraPointItemPool, slot5)
+			table.insert(arg_10_0.extraPointItemPool, iter_10_1)
 		end
 
-		slot5:recycle(slot0.goPoolContainer)
+		iter_10_1:recycle(arg_10_0.goPoolContainer)
 	end
 
-	tabletool.clear(slot0.pointItemList)
-	tabletool.clear(slot0.exPointItemList)
-	tabletool.clear(slot0.extraExPointItemList)
+	tabletool.clear(arg_10_0.pointItemList)
+	tabletool.clear(arg_10_0.exPointItemList)
+	tabletool.clear(arg_10_0.extraExPointItemList)
 
-	slot1 = slot0:getUniqueSkillNeedExPoint()
-	slot5 = "totalCount : %s, skillNeedPoint : %s, extraPointCount : %s"
+	local var_10_0 = arg_10_0:getUniqueSkillNeedExPoint()
 
-	slot0:log(string.format(slot5, slot0.totalMaxExPoint, slot1, slot0.totalMaxExPoint - slot1))
+	arg_10_0:log(string.format("totalCount : %s, skillNeedPoint : %s, extraPointCount : %s", arg_10_0.totalMaxExPoint, var_10_0, arg_10_0.totalMaxExPoint - var_10_0))
 
-	for slot5 = 1, slot0.totalMaxExPoint do
-		if slot5 <= slot1 then
-			slot0:addPointItem(slot5)
+	for iter_10_2 = 1, arg_10_0.totalMaxExPoint do
+		if iter_10_2 <= var_10_0 then
+			arg_10_0:addPointItem(iter_10_2)
 		else
-			slot0:addExtraPointItem(slot5)
+			arg_10_0:addExtraPointItem(iter_10_2)
 		end
 	end
 end
 
-function slot0.addPointItem(slot0, slot1)
-	slot3 = nil
+function var_0_0.addPointItem(arg_11_0, arg_11_1)
+	local var_11_0 = arg_11_0:getLineGroup(arg_11_1)
+	local var_11_1
 
-	if #slot0.exPointItemPool > 0 then
-		gohelper.addChild(slot0:getLineGroup(slot1), table.remove(slot0.exPointItemPool):getPointGo())
+	if #arg_11_0.exPointItemPool > 0 then
+		var_11_1 = table.remove(arg_11_0.exPointItemPool)
+
+		gohelper.addChild(var_11_0, var_11_1:getPointGo())
 	else
-		slot3 = FightNameUIExPointItem.GetExPointItem(gohelper.clone(slot0.goPointItem, slot2))
+		local var_11_2 = gohelper.clone(arg_11_0.goPointItem, var_11_0)
+
+		var_11_1 = FightNameUIExPointItem.GetExPointItem(var_11_2)
 	end
 
-	slot3.entityName = slot0.entity:getMO():getEntityName()
+	var_11_1.entityName = arg_11_0.entity:getMO():getEntityName()
 
-	table.insert(slot0.exPointItemList, slot3)
-	table.insert(slot0.pointItemList, slot3)
-	slot3:setIndex(slot1)
-	slot3:setMgr(slot0)
+	table.insert(arg_11_0.exPointItemList, var_11_1)
+	table.insert(arg_11_0.pointItemList, var_11_1)
+	var_11_1:setIndex(arg_11_1)
+	var_11_1:setMgr(arg_11_0)
 end
 
-function slot0.removePointItem(slot0)
-	slot1 = table.remove(slot0.exPointItemList)
+function var_0_0.removePointItem(arg_12_0)
+	local var_12_0 = table.remove(arg_12_0.exPointItemList)
 
-	slot0:assetPointItem(slot1)
+	arg_12_0:assetPointItem(var_12_0)
 
-	if slot1 then
-		slot1:recycle(slot0.goPoolContainer)
-		table.insert(slot0.exPointItemPool, slot1)
+	if var_12_0 then
+		var_12_0:recycle(arg_12_0.goPoolContainer)
+		table.insert(arg_12_0.exPointItemPool, var_12_0)
 	end
 
-	tabletool.removeValue(slot0.pointItemList, slot1)
-	slot0:checkRemoveLineGroup()
+	tabletool.removeValue(arg_12_0.pointItemList, var_12_0)
+	arg_12_0:checkRemoveLineGroup()
 end
 
-function slot0.addExtraPointItem(slot0, slot1)
-	if slot0.entity:getMO():hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
-		slot0:addPointItem(slot1)
+function var_0_0.addExtraPointItem(arg_13_0, arg_13_1)
+	if arg_13_0.entity:getMO():hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
+		arg_13_0:addPointItem(arg_13_1)
 
 		return
 	end
 
-	slot4 = nil
+	local var_13_0 = arg_13_0:getLineGroup(arg_13_1)
+	local var_13_1
 
-	if #slot0.extraPointItemPool > 0 then
-		gohelper.addChild(slot0:getLineGroup(slot1), table.remove(slot0.extraPointItemPool):getPointGo())
+	if #arg_13_0.extraPointItemPool > 0 then
+		var_13_1 = table.remove(arg_13_0.extraPointItemPool)
+
+		gohelper.addChild(var_13_0, var_13_1:getPointGo())
 	else
-		slot4 = FightNameUIExPointExtraItem.GetExtraExPointItem(gohelper.clone(slot0.goExtraPointItem, slot3))
+		local var_13_2 = gohelper.clone(arg_13_0.goExtraPointItem, var_13_0)
+
+		var_13_1 = FightNameUIExPointExtraItem.GetExtraExPointItem(var_13_2)
 	end
 
-	slot4.entityName = slot0.entity:getMO():getEntityName()
+	var_13_1.entityName = arg_13_0.entity:getMO():getEntityName()
 
-	table.insert(slot0.extraExPointItemList, slot4)
-	table.insert(slot0.pointItemList, slot4)
-	slot4:setIndex(slot1)
-	slot4:setMgr(slot0)
+	table.insert(arg_13_0.extraExPointItemList, var_13_1)
+	table.insert(arg_13_0.pointItemList, var_13_1)
+	var_13_1:setIndex(arg_13_1)
+	var_13_1:setMgr(arg_13_0)
 end
 
-function slot0.removeExtraPointItem(slot0)
-	if slot0.entity:getMO():hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
-		slot0:removePointItem()
+function var_0_0.removeExtraPointItem(arg_14_0)
+	if arg_14_0.entity:getMO():hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
+		arg_14_0:removePointItem()
 
 		return
 	end
 
-	slot2 = table.remove(slot0.extraExPointItemList)
+	local var_14_0 = table.remove(arg_14_0.extraExPointItemList)
 
-	slot0:assetPointItem(slot2)
+	arg_14_0:assetPointItem(var_14_0)
 
-	if slot2 then
-		slot2:recycle(slot0.goPoolContainer)
-		table.insert(slot0.extraPointItemPool, slot2)
+	if var_14_0 then
+		var_14_0:recycle(arg_14_0.goPoolContainer)
+		table.insert(arg_14_0.extraPointItemPool, var_14_0)
 	end
 
-	tabletool.removeValue(slot0.pointItemList, slot2)
-	slot0:checkRemoveLineGroup()
+	tabletool.removeValue(arg_14_0.pointItemList, var_14_0)
+	arg_14_0:checkRemoveLineGroup()
 end
 
-function slot0.addCustomEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.AddPlayCardClientExPoint, slot0.addPlayCardClientExPoint, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.UpdateExPoint, slot0.updateExPoint, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnExpointMaxAdd, slot0.onExPointMaxAdd, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, slot0.onBuffUpdate, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnExPointChange, slot0.onExPointChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.MultiHpChange, slot0.onMultiHpChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnExSkillPointChange, slot0.onExSkillPointChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnStoreExPointChange, slot0.onStoreExPointChange, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.BeContract, slot0.onBeContract, slot0)
+function var_0_0.addCustomEvents(arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.AddPlayCardClientExPoint, arg_15_0.addPlayCardClientExPoint, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.UpdateExPoint, arg_15_0.updateExPoint, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.OnExpointMaxAdd, arg_15_0.onExPointMaxAdd, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, arg_15_0.onBuffUpdate, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.OnExPointChange, arg_15_0.onExPointChange, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.MultiHpChange, arg_15_0.onMultiHpChange, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.OnExSkillPointChange, arg_15_0.onExSkillPointChange, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.OnStoreExPointChange, arg_15_0.onStoreExPointChange, arg_15_0)
+	arg_15_0:addEventCb(FightController.instance, FightEvent.BeContract, arg_15_0.onBeContract, arg_15_0)
 end
 
-function slot0.onBeContract(slot0, slot1)
-	if slot0.entityId ~= slot1 then
+function var_0_0.onBeContract(arg_16_0, arg_16_1)
+	if arg_16_0.entityId ~= arg_16_1 then
 		return
 	end
 
 	AudioMgr.instance:trigger(20220175)
 
-	slot2 = gohelper.findChild(slot0.goExPointContainer, "#go_tianshinana")
+	local var_16_0 = gohelper.findChild(arg_16_0.goExPointContainer, "#go_tianshinana")
 
-	gohelper.setActive(slot2, false)
-	gohelper.setActive(slot2, true)
-	gohelper.setAsLastSibling(slot2)
-	slot0:updateSelfExPoint()
-	TaskDispatcher.cancelTask(slot0.hideTsnnEffect, slot0)
-	TaskDispatcher.runDelay(slot0.hideTsnnEffect, slot0, 1)
+	gohelper.setActive(var_16_0, false)
+	gohelper.setActive(var_16_0, true)
+	gohelper.setAsLastSibling(var_16_0)
+	arg_16_0:updateSelfExPoint()
+	TaskDispatcher.cancelTask(arg_16_0.hideTsnnEffect, arg_16_0)
+	TaskDispatcher.runDelay(arg_16_0.hideTsnnEffect, arg_16_0, 1)
 end
 
-function slot0.hideTsnnEffect(slot0)
-	gohelper.setActive(gohelper.findChild(slot0.goExPointContainer, "#go_tianshinana"), false)
+function var_0_0.hideTsnnEffect(arg_17_0)
+	local var_17_0 = gohelper.findChild(arg_17_0.goExPointContainer, "#go_tianshinana")
+
+	gohelper.setActive(var_17_0, false)
 end
 
-function slot0.getClientExPoint(slot0)
-	slot1 = slot0.entity:getMO()
+function var_0_0.getClientExPoint(arg_18_0)
+	local var_18_0 = arg_18_0.entity:getMO()
 
-	return slot1.exPoint + slot1.moveCardExPoint + slot1.playCardExPoint
+	return var_18_0.exPoint + var_18_0.moveCardExPoint + var_18_0.playCardExPoint
 end
 
-function slot0.getServerExPoint(slot0)
-	return slot0.entity:getMO().exPoint
+function var_0_0.getServerExPoint(arg_19_0)
+	return arg_19_0.entity:getMO().exPoint
 end
 
-function slot0.getUsedExPoint(slot0)
-	return FightHelper.getPredeductionExpoint(slot0.entityId)
+function var_0_0.getUsedExPoint(arg_20_0)
+	return FightHelper.getPredeductionExpoint(arg_20_0.entityId)
 end
 
-function slot0.getUniqueSkillNeedExPoint(slot0)
-	slot1 = slot0.entity:getMO():getUniqueSkillPoint()
+function var_0_0.getUniqueSkillNeedExPoint(arg_21_0)
+	local var_21_0 = arg_21_0.entity:getMO():getUniqueSkillPoint()
 
-	slot0:log("大招需要激情点：" .. tostring(slot1))
+	arg_21_0:log("大招需要激情点：" .. tostring(var_21_0))
 
-	return slot1
+	return var_21_0
 end
 
-function slot0.getStoredExPoint(slot0)
-	return slot0.entity:getMO():getStoredExPoint()
+function var_0_0.getStoredExPoint(arg_22_0)
+	return arg_22_0.entity:getMO():getStoredExPoint()
 end
 
-function slot0.updateSelfExPoint(slot0)
-	if slot0.hideExPoint then
+function var_0_0.updateSelfExPoint(arg_23_0)
+	if arg_23_0.hideExPoint then
 		return
 	end
 
-	slot0:updateExPoint(slot0.entityId)
+	arg_23_0:updateExPoint(arg_23_0.entityId)
 end
 
-function slot0.getPointCurState(slot0, slot1)
-	if slot0:getUsedExPoint() > 0 then
-		return slot0:getUsedPointCurState(slot1)
+function var_0_0.getPointCurState(arg_24_0, arg_24_1)
+	if arg_24_0:getUsedExPoint() > 0 then
+		return arg_24_0:getUsedPointCurState(arg_24_1)
 	else
-		return slot0:getNoUsePointCurState(slot1)
+		return arg_24_0:getNoUsePointCurState(arg_24_1)
 	end
 end
 
-function slot0.getUsedPointCurState(slot0, slot1)
-	if slot1 <= math.min(slot0:getStoredExPoint(), slot0:getUniqueSkillNeedExPoint()) then
+function var_0_0.getUsedPointCurState(arg_25_0, arg_25_1)
+	local var_25_0 = arg_25_0:getStoredExPoint()
+	local var_25_1 = arg_25_0:getUniqueSkillNeedExPoint()
+	local var_25_2 = math.min(var_25_0, var_25_1)
+
+	if arg_25_1 <= var_25_2 then
 		return FightEnum.ExPointState.Stored
 	end
 
-	slot4 = slot0:getClientExPoint()
+	local var_25_3 = arg_25_0:getClientExPoint()
+	local var_25_4 = arg_25_0:getServerExPoint()
+	local var_25_5 = arg_25_0:getUsedExPoint()
+	local var_25_6 = var_25_4 - var_25_5
+	local var_25_7 = math.min(arg_25_0.totalMaxExPoint, var_25_2 + var_25_6)
 
-	if slot1 <= math.min(slot0.totalMaxExPoint, slot2 + slot0:getServerExPoint() - slot0:getUsedExPoint()) then
+	if arg_25_1 <= var_25_7 then
 		return FightEnum.ExPointState.Server
 	end
 
-	if slot1 <= math.min(slot0.totalMaxExPoint, slot2 + slot4 - slot6) then
+	local var_25_8 = var_25_3 - var_25_5
+	local var_25_9 = math.min(arg_25_0.totalMaxExPoint, var_25_2 + var_25_8)
+
+	if arg_25_1 <= var_25_9 then
 		return FightEnum.ExPointState.Client
 	end
 
-	if slot1 <= math.min(slot0.totalMaxExPoint, math.max(slot7, slot8) + slot3) then
+	local var_25_10 = math.max(var_25_7, var_25_9)
+
+	if arg_25_1 <= math.min(arg_25_0.totalMaxExPoint, var_25_10 + var_25_1) then
 		return FightEnum.ExPointState.UsingUnique
 	end
 
 	return FightEnum.ExPointState.Empty
 end
 
-function slot0.getNoUsePointCurState(slot0, slot1)
-	slot2 = slot0:getClientExPoint()
-	slot3 = slot0:getServerExPoint()
+function var_0_0.getNoUsePointCurState(arg_26_0, arg_26_1)
+	local var_26_0 = arg_26_0:getClientExPoint()
+	local var_26_1 = arg_26_0:getServerExPoint()
+	local var_26_2 = arg_26_0:getStoredExPoint()
+	local var_26_3 = arg_26_0:getUniqueSkillNeedExPoint()
 
-	if slot1 <= math.min(slot0:getStoredExPoint(), slot0:getUniqueSkillNeedExPoint()) then
+	if arg_26_1 <= math.min(var_26_2, var_26_3) then
 		return FightEnum.ExPointState.Stored
 	end
 
-	if slot0.entity:getMO():getMaxExPoint() <= slot3 then
+	local var_26_4 = arg_26_0.entity:getMO()
+
+	if var_26_1 >= var_26_4:getMaxExPoint() then
 		return FightEnum.ExPointState.ServerFull
 	end
 
-	if not FightHelper.canAddPoint(slot6) then
-		if slot1 <= slot3 then
+	if not FightHelper.canAddPoint(var_26_4) then
+		if arg_26_1 <= var_26_1 then
 			return FightEnum.ExPointState.Server
 		end
 
 		return FightEnum.ExPointState.Lock
 	else
-		if slot1 <= slot3 then
+		if arg_26_1 <= var_26_1 then
 			return FightEnum.ExPointState.Server
 		end
 
-		if slot1 <= slot2 then
+		if arg_26_1 <= var_26_0 then
 			return FightEnum.ExPointState.Client
 		end
 
@@ -364,410 +410,476 @@ function slot0.getNoUsePointCurState(slot0, slot1)
 	end
 end
 
-function slot0.updateExPoint(slot0, slot1)
-	if slot0.entityId ~= slot1 then
+function var_0_0.updateExPoint(arg_27_0, arg_27_1)
+	if arg_27_0.entityId ~= arg_27_1 then
 		return
 	end
 
-	slot0:log("updateExPoint")
+	arg_27_0:log("updateExPoint")
 
-	if slot0:getUsedExPoint() > 0 then
-		slot0:_updateUsedPointStatus()
+	if arg_27_0:getUsedExPoint() > 0 then
+		arg_27_0:_updateUsedPointStatus()
 	else
-		slot0:_updateNoUsedPointStatus()
+		arg_27_0:_updateNoUsedPointStatus()
 	end
 
-	slot0.preClientExPoint = slot0:getClientExPoint()
+	arg_27_0.preClientExPoint = arg_27_0:getClientExPoint()
 end
 
-function slot0._updateUsedPointStatus(slot0)
-	slot1 = slot0:getClientExPoint()
-	slot2 = slot0:getServerExPoint()
-	slot3 = slot0:getUsedExPoint()
-	slot6 = 0
+function var_0_0._updateUsedPointStatus(arg_28_0)
+	local var_28_0 = arg_28_0:getClientExPoint()
+	local var_28_1 = arg_28_0:getServerExPoint()
+	local var_28_2 = arg_28_0:getUsedExPoint()
+	local var_28_3 = arg_28_0:getStoredExPoint()
+	local var_28_4 = arg_28_0:getUniqueSkillNeedExPoint()
+	local var_28_5 = math.min(var_28_3, var_28_4)
+	local var_28_6 = 0
 
-	for slot10 = 1, math.min(slot0:getStoredExPoint(), slot0:getUniqueSkillNeedExPoint()) do
-		slot11 = slot0.pointItemList[slot6 + 1]
+	for iter_28_0 = 1, var_28_5 do
+		var_28_6 = var_28_6 + 1
 
-		slot0:assetPointItem(slot11)
+		local var_28_7 = arg_28_0.pointItemList[var_28_6]
 
-		if slot11 then
-			slot11:directSetState(FightEnum.ExPointState.Stored)
+		arg_28_0:assetPointItem(var_28_7)
+
+		if var_28_7 then
+			var_28_7:directSetState(FightEnum.ExPointState.Stored)
 		end
 	end
 
-	for slot12 = slot6 + 1, math.min(slot0.totalMaxExPoint, slot4 + slot2 - slot3) do
-		slot13 = slot0.pointItemList[slot6 + 1]
+	local var_28_8 = var_28_1 - var_28_2
+	local var_28_9 = math.min(arg_28_0.totalMaxExPoint, var_28_5 + var_28_8)
 
-		slot0:assetPointItem(slot13)
+	for iter_28_1 = var_28_6 + 1, var_28_9 do
+		var_28_6 = var_28_6 + 1
 
-		if slot13 then
-			slot13:directSetState(FightEnum.ExPointState.Server)
+		local var_28_10 = arg_28_0.pointItemList[var_28_6]
+
+		arg_28_0:assetPointItem(var_28_10)
+
+		if var_28_10 then
+			var_28_10:directSetState(FightEnum.ExPointState.Server)
 		end
 	end
 
-	for slot14 = slot6 + 1, math.min(slot0.totalMaxExPoint, slot4 + slot1 - slot3) do
-		slot15 = slot0.pointItemList[slot6 + 1]
+	local var_28_11 = var_28_0 - var_28_2
+	local var_28_12 = math.min(arg_28_0.totalMaxExPoint, var_28_5 + var_28_11)
 
-		slot0:assetPointItem(slot15)
+	for iter_28_2 = var_28_6 + 1, var_28_12 do
+		var_28_6 = var_28_6 + 1
 
-		if slot15 then
-			slot15:directSetState(FightEnum.ExPointState.Client)
+		local var_28_13 = arg_28_0.pointItemList[var_28_6]
+
+		arg_28_0:assetPointItem(var_28_13)
+
+		if var_28_13 then
+			var_28_13:directSetState(FightEnum.ExPointState.Client)
 		end
 	end
 
-	for slot15 = slot6 + 1, math.min(slot0.totalMaxExPoint, slot6 + slot5) do
-		slot16 = slot0.pointItemList[slot6 + 1]
+	local var_28_14 = math.min(arg_28_0.totalMaxExPoint, var_28_6 + var_28_4)
 
-		slot0:assetPointItem(slot16)
+	for iter_28_3 = var_28_6 + 1, var_28_14 do
+		var_28_6 = var_28_6 + 1
 
-		if slot16 then
-			slot16:directSetState(FightEnum.ExPointState.UsingUnique)
+		local var_28_15 = arg_28_0.pointItemList[var_28_6]
+
+		arg_28_0:assetPointItem(var_28_15)
+
+		if var_28_15 then
+			var_28_15:directSetState(FightEnum.ExPointState.UsingUnique)
 		end
 	end
 
-	for slot15 = slot6 + 1, slot0.totalMaxExPoint do
-		slot6 = slot6 + 1
-		slot16 = slot0.pointItemList[slot15]
+	for iter_28_4 = var_28_6 + 1, arg_28_0.totalMaxExPoint do
+		var_28_6 = var_28_6 + 1
 
-		slot0:assetPointItem(slot16)
+		local var_28_16 = arg_28_0.pointItemList[iter_28_4]
 
-		if slot16 then
-			slot16:directSetState(FightEnum.ExPointState.Empty)
+		arg_28_0:assetPointItem(var_28_16)
+
+		if var_28_16 then
+			var_28_16:directSetState(FightEnum.ExPointState.Empty)
 		end
 	end
 end
 
-function slot0._updateNoUsedPointStatus(slot0)
-	slot1 = slot0:getClientExPoint()
-	slot2 = slot0:getServerExPoint()
-	slot5 = 0
+function var_0_0._updateNoUsedPointStatus(arg_29_0)
+	local var_29_0 = arg_29_0:getClientExPoint()
+	local var_29_1 = arg_29_0:getServerExPoint()
+	local var_29_2 = arg_29_0:getStoredExPoint()
+	local var_29_3 = arg_29_0:getUniqueSkillNeedExPoint()
+	local var_29_4 = math.min(var_29_2, var_29_3)
+	local var_29_5 = 0
 
-	for slot9 = 1, math.min(slot0:getStoredExPoint(), slot0:getUniqueSkillNeedExPoint()) do
-		slot10 = slot0.pointItemList[slot5 + 1]
+	for iter_29_0 = 1, var_29_4 do
+		var_29_5 = var_29_5 + 1
 
-		slot0:assetPointItem(slot10)
+		local var_29_6 = arg_29_0.pointItemList[var_29_5]
 
-		if slot10 then
-			slot10:directSetState(FightEnum.ExPointState.Stored)
+		arg_29_0:assetPointItem(var_29_6)
+
+		if var_29_6 then
+			var_29_6:directSetState(FightEnum.ExPointState.Stored)
 		end
 	end
 
-	for slot9 = slot5 + 1, slot2 do
-		slot10 = slot0.pointItemList[slot5 + 1]
+	for iter_29_1 = var_29_5 + 1, var_29_1 do
+		var_29_5 = var_29_5 + 1
 
-		slot0:assetPointItem(slot10)
+		local var_29_7 = arg_29_0.pointItemList[var_29_5]
 
-		if slot10 then
-			slot10:directSetState(FightEnum.ExPointState.Server)
+		arg_29_0:assetPointItem(var_29_7)
+
+		if var_29_7 then
+			var_29_7:directSetState(FightEnum.ExPointState.Server)
 		end
 	end
 
-	slot6 = slot0.entity:getMO()
+	local var_29_8 = arg_29_0.entity:getMO()
 
-	if slot0.totalMaxExPoint <= slot2 then
-		slot0:playFullAnim()
+	if var_29_1 >= arg_29_0.totalMaxExPoint then
+		arg_29_0:playFullAnim()
 
 		return
 	end
 
-	if not FightHelper.canAddPoint(slot6) then
-		for slot11 = slot5 + 1, slot0.totalMaxExPoint do
-			slot12 = slot0.pointItemList[slot5 + 1]
+	if not FightHelper.canAddPoint(var_29_8) then
+		for iter_29_2 = var_29_5 + 1, arg_29_0.totalMaxExPoint do
+			var_29_5 = var_29_5 + 1
 
-			slot0:assetPointItem(slot12)
+			local var_29_9 = arg_29_0.pointItemList[var_29_5]
 
-			if slot12 then
-				slot12:directSetState(FightEnum.ExPointState.Lock)
-			end
-		end
-	else
-		for slot11 = slot5 + 1, slot1 do
-			slot12 = slot0.pointItemList[slot5 + 1]
+			arg_29_0:assetPointItem(var_29_9)
 
-			slot0:assetPointItem(slot12)
-
-			if slot12 then
-				slot12:directSetState(FightEnum.ExPointState.Client)
-			end
-		end
-
-		for slot11 = slot5 + 1, slot0.totalMaxExPoint do
-			slot12 = slot0.pointItemList[slot5 + 1]
-
-			slot0:assetPointItem(slot12)
-
-			if slot12 then
-				slot12:directSetState(FightEnum.ExPointState.Empty)
-			end
-		end
-	end
-end
-
-function slot0.onExPointMaxAdd(slot0, slot1, slot2)
-	if slot0.entityId ~= slot1 then
-		return
-	end
-
-	if slot0.entity:getMO():getMaxExPoint() == #slot0.pointItemList then
-		return
-	end
-
-	slot0:log("激情点上限增加")
-
-	slot0.totalMaxExPoint = slot4
-
-	slot0:refreshPointItemCount()
-	slot0:updateSelfExPoint()
-end
-
-function slot0.onBuffUpdate(slot0, slot1, slot2, slot3)
-	if slot1 ~= slot0.entityId then
-		return
-	end
-
-	slot0:log("更新buff")
-	slot0:refreshPointLockStatus(slot2, slot3)
-	slot0:checkNeedRefreshPointCount(slot2, slot3)
-end
-
-function slot0.refreshPointLockStatus(slot0, slot1, slot2)
-	slot3 = nil
-
-	if slot1 == FightEnum.EffectType.BUFFADD then
-		if FightBuffHelper.hasCantAddExPointFeature(slot2) then
-			slot3 = FightEnum.ExPointState.Lock
-		end
-	elseif slot1 == FightEnum.EffectType.BUFFDEL then
-		if FightBuffHelper.hasCantAddExPointFeature(slot2) and FightHelper.canAddPoint(slot0.entity:getMO()) then
-			slot3 = FightEnum.ExPointState.Empty
-		end
-	end
-
-	if slot3 then
-		for slot10 = math.max(slot0.entity:getMO().exPoint, slot0:getStoredExPoint()) + 1, slot0.totalMaxExPoint do
-			slot11 = slot0.pointItemList[slot10]
-
-			slot0:assetPointItem(slot11)
-
-			if slot11 then
-				slot11:switchToState(slot3)
-			end
-		end
-	end
-end
-
-function slot0.checkNeedRefreshPointCount(slot0, slot1, slot2)
-	if slot1 == FightEnum.EffectType.BUFFADD and slot0.entity:getMO():getFeaturesSplitInfoByBuffId(slot2) then
-		for slot8, slot9 in ipairs(slot4) do
-			if slot9[1] == FightEnum.BuffActId.ExSkillNoConsumption then
-				slot0:refreshPointItemCount()
-				slot0:updateSelfExPoint()
-
-				return
-			end
-		end
-	end
-
-	if slot1 == FightEnum.EffectType.BUFFDEL and slot3:getFeaturesSplitInfoByBuffId(slot2) then
-		for slot8, slot9 in ipairs(slot4) do
-			if slot9[1] == FightEnum.BuffActId.ExSkillNoConsumption then
-				slot0:refreshPointItemCount()
-				slot0:updateSelfExPoint()
-			end
-		end
-	end
-end
-
-function slot0.onExPointChange(slot0, slot1, slot2, slot3)
-	if slot1 ~= slot0.entityId then
-		return
-	end
-
-	if slot2 == slot3 then
-		return
-	end
-
-	slot0:log(string.format("激情点改变 oldNum : %s, newNUm : %s", slot2, slot3))
-
-	if slot2 < slot3 then
-		slot0:playAddPointEffect(slot2, slot3)
-	else
-		slot0:playRemovePointEffect(slot2, slot3)
-	end
-end
-
-function slot0.playAddPointEffect(slot0, slot1, slot2)
-	slot4 = slot0:getStoredExPoint()
-
-	if slot0.entity:getMO():getMaxExPoint() <= slot2 then
-		for slot10 = math.max(slot4 + 1, 1), slot1 do
-			slot11 = slot0.pointItemList[slot10]
-
-			slot0:assetPointItem(slot11)
-
-			if slot11 then
-				slot11:delaySwitchToNextState(FightEnum.ExPointState.ServerFull, FightNameUIExPointBaseItem.AnimNameDuration[FightNameUIExPointBaseItem.AnimName.Add] + 0.13 * (slot10 - 1))
-			end
-		end
-
-		for slot10 = math.max(slot4 + 1, slot1 + 1), slot2 do
-			slot11 = slot0.pointItemList[slot10]
-
-			slot0:assetPointItem(slot11)
-
-			if slot11 then
-				slot11:playAddPointEffect(FightEnum.ExPointState.ServerFull, slot5 + 0.13 * (slot10 - 1))
+			if var_29_9 then
+				var_29_9:directSetState(FightEnum.ExPointState.Lock)
 			end
 		end
 	else
-		for slot9 = math.max(slot4 + 1, slot1 + 1), slot2 do
-			slot10 = slot0.pointItemList[slot9]
+		for iter_29_3 = var_29_5 + 1, var_29_0 do
+			var_29_5 = var_29_5 + 1
 
-			slot0:assetPointItem(slot10)
+			local var_29_10 = arg_29_0.pointItemList[var_29_5]
 
-			if slot10 then
-				slot10:playAddPointEffect()
+			arg_29_0:assetPointItem(var_29_10)
+
+			if var_29_10 then
+				var_29_10:directSetState(FightEnum.ExPointState.Client)
+			end
+		end
+
+		for iter_29_4 = var_29_5 + 1, arg_29_0.totalMaxExPoint do
+			var_29_5 = var_29_5 + 1
+
+			local var_29_11 = arg_29_0.pointItemList[var_29_5]
+
+			arg_29_0:assetPointItem(var_29_11)
+
+			if var_29_11 then
+				var_29_11:directSetState(FightEnum.ExPointState.Empty)
 			end
 		end
 	end
 end
 
-function slot0.playRemovePointEffect(slot0, slot1, slot2)
-	if slot0.entity:getMO():getMaxExPoint() <= slot1 then
-		for slot6, slot7 in ipairs(slot0.pointItemList) do
-			slot7:updateExPoint()
-		end
-	end
-
-	for slot6 = slot2 + 1, slot1 do
-		slot7 = slot0.pointItemList[slot6]
-
-		slot0:assetPointItem(slot7)
-
-		if slot7 then
-			slot7:playAnim(FightNameUIExPointBaseItem.AnimName.Lost)
-		end
-	end
-end
-
-function slot0.playFullAnim(slot0)
-	for slot7 = slot0:getStoredExPoint() + 1, slot0.entity:getMO().exPoint do
-		slot8 = slot0.pointItemList[slot0.curPlayFullIndex]
-
-		slot0:assetPointItem(slot8)
-
-		if slot8 then
-			slot8:delaySwitchToNextState(FightEnum.ExPointState.ServerFull, 0.13 * (slot7 - slot3))
-		end
-	end
-end
-
-function slot0.onMultiHpChange(slot0)
-	slot0:log("onMultiHpChange")
-	slot0:updateSelfExPoint()
-end
-
-function slot0.onExSkillPointChange(slot0, slot1, slot2, slot3)
-	if slot0.entity and slot1 == slot0.entity.id then
-		slot0:log("大招需求激情变化")
-		slot0:refreshPointItemCount()
-		slot0:updateSelfExPoint()
-	end
-end
-
-function slot0.addPlayCardClientExPoint(slot0, slot1)
-	if slot1 ~= slot0.entityId then
+function var_0_0.onExPointMaxAdd(arg_30_0, arg_30_1, arg_30_2)
+	if arg_30_0.entityId ~= arg_30_1 then
 		return
 	end
 
-	slot0:log("增加客户端激情点")
+	local var_30_0 = arg_30_0.entity:getMO():getMaxExPoint()
 
-	if slot0.entity:getMO():getMaxExPoint() <= slot0.preClientExPoint then
-		slot0:updateSelfExPoint()
-
+	if var_30_0 == #arg_30_0.pointItemList then
 		return
 	end
 
-	if slot0:getClientExPoint() == slot2 then
-		for slot7, slot8 in ipairs(slot0.pointItemList) do
-			slot8:playAnim(FightNameUIExPointBaseItem.AnimName.Explosion)
+	arg_30_0:log("激情点上限增加")
+
+	arg_30_0.totalMaxExPoint = var_30_0
+
+	arg_30_0:refreshPointItemCount()
+	arg_30_0:updateSelfExPoint()
+end
+
+function var_0_0.onBuffUpdate(arg_31_0, arg_31_1, arg_31_2, arg_31_3)
+	if arg_31_1 ~= arg_31_0.entityId then
+		return
+	end
+
+	arg_31_0:log("更新buff")
+	arg_31_0:refreshPointLockStatus(arg_31_2, arg_31_3)
+	arg_31_0:checkNeedRefreshPointCount(arg_31_2, arg_31_3)
+end
+
+function var_0_0.refreshPointLockStatus(arg_32_0, arg_32_1, arg_32_2)
+	local var_32_0
+
+	if arg_32_1 == FightEnum.EffectType.BUFFADD then
+		if FightBuffHelper.hasCantAddExPointFeature(arg_32_2) then
+			var_32_0 = FightEnum.ExPointState.Lock
+		end
+	elseif arg_32_1 == FightEnum.EffectType.BUFFDEL then
+		local var_32_1 = arg_32_0.entity:getMO()
+
+		if FightBuffHelper.hasCantAddExPointFeature(arg_32_2) and FightHelper.canAddPoint(var_32_1) then
+			var_32_0 = FightEnum.ExPointState.Empty
+		end
+	end
+
+	if var_32_0 then
+		local var_32_2 = arg_32_0.entity:getMO().exPoint
+		local var_32_3 = arg_32_0:getStoredExPoint()
+
+		for iter_32_0 = math.max(var_32_2, var_32_3) + 1, arg_32_0.totalMaxExPoint do
+			local var_32_4 = arg_32_0.pointItemList[iter_32_0]
+
+			arg_32_0:assetPointItem(var_32_4)
+
+			if var_32_4 then
+				var_32_4:switchToState(var_32_0)
+			end
+		end
+	end
+end
+
+function var_0_0.checkNeedRefreshPointCount(arg_33_0, arg_33_1, arg_33_2)
+	local var_33_0 = arg_33_0.entity:getMO()
+
+	if arg_33_1 == FightEnum.EffectType.BUFFADD then
+		local var_33_1 = var_33_0:getFeaturesSplitInfoByBuffId(arg_33_2)
+
+		if var_33_1 then
+			for iter_33_0, iter_33_1 in ipairs(var_33_1) do
+				if iter_33_1[1] == FightEnum.BuffActId.ExSkillNoConsumption then
+					arg_33_0:refreshPointItemCount()
+					arg_33_0:updateSelfExPoint()
+
+					return
+				end
+			end
+		end
+	end
+
+	if arg_33_1 == FightEnum.EffectType.BUFFDEL then
+		local var_33_2 = var_33_0:getFeaturesSplitInfoByBuffId(arg_33_2)
+
+		if var_33_2 then
+			for iter_33_2, iter_33_3 in ipairs(var_33_2) do
+				if iter_33_3[1] == FightEnum.BuffActId.ExSkillNoConsumption then
+					arg_33_0:refreshPointItemCount()
+					arg_33_0:updateSelfExPoint()
+				end
+			end
+		end
+	end
+end
+
+function var_0_0.onExPointChange(arg_34_0, arg_34_1, arg_34_2, arg_34_3)
+	if arg_34_1 ~= arg_34_0.entityId then
+		return
+	end
+
+	if arg_34_2 == arg_34_3 then
+		return
+	end
+
+	arg_34_0:log(string.format("激情点改变 oldNum : %s, newNUm : %s", arg_34_2, arg_34_3))
+
+	if arg_34_2 < arg_34_3 then
+		arg_34_0:playAddPointEffect(arg_34_2, arg_34_3)
+	else
+		arg_34_0:playRemovePointEffect(arg_34_2, arg_34_3)
+	end
+end
+
+function var_0_0.playAddPointEffect(arg_35_0, arg_35_1, arg_35_2)
+	local var_35_0 = arg_35_2 >= arg_35_0.entity:getMO():getMaxExPoint()
+	local var_35_1 = arg_35_0:getStoredExPoint()
+
+	if var_35_0 then
+		local var_35_2 = FightNameUIExPointBaseItem.AnimNameDuration[FightNameUIExPointBaseItem.AnimName.Add]
+
+		for iter_35_0 = math.max(var_35_1 + 1, 1), arg_35_1 do
+			local var_35_3 = arg_35_0.pointItemList[iter_35_0]
+
+			arg_35_0:assetPointItem(var_35_3)
+
+			if var_35_3 then
+				var_35_3:delaySwitchToNextState(FightEnum.ExPointState.ServerFull, var_35_2 + 0.13 * (iter_35_0 - 1))
+			end
+		end
+
+		for iter_35_1 = math.max(var_35_1 + 1, arg_35_1 + 1), arg_35_2 do
+			local var_35_4 = arg_35_0.pointItemList[iter_35_1]
+
+			arg_35_0:assetPointItem(var_35_4)
+
+			if var_35_4 then
+				var_35_4:playAddPointEffect(FightEnum.ExPointState.ServerFull, var_35_2 + 0.13 * (iter_35_1 - 1))
+			end
 		end
 	else
-		slot0:updateSelfExPoint()
+		for iter_35_2 = math.max(var_35_1 + 1, arg_35_1 + 1), arg_35_2 do
+			local var_35_5 = arg_35_0.pointItemList[iter_35_2]
+
+			arg_35_0:assetPointItem(var_35_5)
+
+			if var_35_5 then
+				var_35_5:playAddPointEffect()
+			end
+		end
 	end
 end
 
-function slot0.onStoreExPointChange(slot0, slot1, slot2)
-	if slot1 ~= slot0.entityId then
+function var_0_0.playRemovePointEffect(arg_36_0, arg_36_1, arg_36_2)
+	if arg_36_1 >= arg_36_0.entity:getMO():getMaxExPoint() then
+		for iter_36_0, iter_36_1 in ipairs(arg_36_0.pointItemList) do
+			iter_36_1:updateExPoint()
+		end
+	end
+
+	for iter_36_2 = arg_36_2 + 1, arg_36_1 do
+		local var_36_0 = arg_36_0.pointItemList[iter_36_2]
+
+		arg_36_0:assetPointItem(var_36_0)
+
+		if var_36_0 then
+			var_36_0:playAnim(FightNameUIExPointBaseItem.AnimName.Lost)
+		end
+	end
+end
+
+function var_0_0.playFullAnim(arg_37_0)
+	local var_37_0 = arg_37_0.entity:getMO().exPoint
+	local var_37_1 = arg_37_0:getStoredExPoint() + 1
+
+	for iter_37_0 = var_37_1, var_37_0 do
+		local var_37_2 = arg_37_0.pointItemList[arg_37_0.curPlayFullIndex]
+
+		arg_37_0:assetPointItem(var_37_2)
+
+		if var_37_2 then
+			var_37_2:delaySwitchToNextState(FightEnum.ExPointState.ServerFull, 0.13 * (iter_37_0 - var_37_1))
+		end
+	end
+end
+
+function var_0_0.onMultiHpChange(arg_38_0)
+	arg_38_0:log("onMultiHpChange")
+	arg_38_0:updateSelfExPoint()
+end
+
+function var_0_0.onExSkillPointChange(arg_39_0, arg_39_1, arg_39_2, arg_39_3)
+	if arg_39_0.entity and arg_39_1 == arg_39_0.entity.id then
+		arg_39_0:log("大招需求激情变化")
+		arg_39_0:refreshPointItemCount()
+		arg_39_0:updateSelfExPoint()
+	end
+end
+
+function var_0_0.addPlayCardClientExPoint(arg_40_0, arg_40_1)
+	if arg_40_1 ~= arg_40_0.entityId then
 		return
 	end
 
-	if slot2 == slot0:getStoredExPoint() then
+	arg_40_0:log("增加客户端激情点")
+
+	local var_40_0 = arg_40_0.entity:getMO():getMaxExPoint()
+
+	if var_40_0 <= arg_40_0.preClientExPoint then
+		arg_40_0:updateSelfExPoint()
+
 		return
 	end
 
-	slot0:log("溢出激情变化")
+	if arg_40_0:getClientExPoint() == var_40_0 then
+		for iter_40_0, iter_40_1 in ipairs(arg_40_0.pointItemList) do
+			iter_40_1:playAnim(FightNameUIExPointBaseItem.AnimName.Explosion)
+		end
+	else
+		arg_40_0:updateSelfExPoint()
+	end
+end
 
-	if slot2 < slot3 then
+function var_0_0.onStoreExPointChange(arg_41_0, arg_41_1, arg_41_2)
+	if arg_41_1 ~= arg_41_0.entityId then
+		return
+	end
+
+	local var_41_0 = arg_41_0:getStoredExPoint()
+
+	if arg_41_2 == var_41_0 then
+		return
+	end
+
+	arg_41_0:log("溢出激情变化")
+
+	if arg_41_2 < var_41_0 then
 		FightAudioMgr.instance:playAudio(20211401)
-		slot0:playAddStoredPointEffect(slot2, slot3)
+		arg_41_0:playAddStoredPointEffect(arg_41_2, var_41_0)
 	else
 		FightAudioMgr.instance:playAudio(20211402)
-		slot0:playRemoveStoredPointEffect(slot2, slot3)
+		arg_41_0:playRemoveStoredPointEffect(arg_41_2, var_41_0)
 	end
 end
 
-function slot0.playAddStoredPointEffect(slot0, slot1, slot2)
-	for slot6 = slot1 + 1, slot2 do
-		if slot0.pointItemList[slot6] then
-			slot7:switchToState(FightEnum.ExPointState.Stored)
+function var_0_0.playAddStoredPointEffect(arg_42_0, arg_42_1, arg_42_2)
+	for iter_42_0 = arg_42_1 + 1, arg_42_2 do
+		local var_42_0 = arg_42_0.pointItemList[iter_42_0]
+
+		if var_42_0 then
+			var_42_0:switchToState(FightEnum.ExPointState.Stored)
 		end
 	end
 end
 
-function slot0.playRemoveStoredPointEffect(slot0, slot1, slot2)
-	for slot6 = slot2 + 1, slot1 do
-		if slot0.pointItemList[slot6] then
-			slot7:playRemoveStoredEffect()
+function var_0_0.playRemoveStoredPointEffect(arg_43_0, arg_43_1, arg_43_2)
+	for iter_43_0 = arg_43_2 + 1, arg_43_1 do
+		local var_43_0 = arg_43_0.pointItemList[iter_43_0]
+
+		if var_43_0 then
+			var_43_0:playRemoveStoredEffect()
 		end
 	end
 end
 
-function slot0.assetPointItem(slot0, slot1)
+function var_0_0.assetPointItem(arg_44_0, arg_44_1)
+	return
 end
 
-function slot0.log(slot0, slot1)
+function var_0_0.log(arg_45_0, arg_45_1)
+	return
 end
 
-function slot0.beforeDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0.hideTsnnEffect, slot0)
+function var_0_0.beforeDestroy(arg_46_0)
+	TaskDispatcher.cancelTask(arg_46_0.hideTsnnEffect, arg_46_0)
 
-	if slot0.pointItemList then
-		for slot4, slot5 in ipairs(slot0.pointItemList) do
-			slot5:destroy()
+	if arg_46_0.pointItemList then
+		for iter_46_0, iter_46_1 in ipairs(arg_46_0.pointItemList) do
+			iter_46_1:destroy()
 		end
 	end
 
-	if slot0.exPointItemPool then
-		for slot4, slot5 in ipairs(slot0.exPointItemPool) do
-			slot5:destroy()
+	if arg_46_0.exPointItemPool then
+		for iter_46_2, iter_46_3 in ipairs(arg_46_0.exPointItemPool) do
+			iter_46_3:destroy()
 		end
 	end
 
-	if slot0.extraPointItemPool then
-		for slot4, slot5 in ipairs(slot0.extraPointItemPool) do
-			slot5:destroy()
+	if arg_46_0.extraPointItemPool then
+		for iter_46_4, iter_46_5 in ipairs(arg_46_0.extraPointItemPool) do
+			iter_46_5:destroy()
 		end
 	end
 
-	slot0.pointItemList = nil
-	slot0.exPointItemList = nil
-	slot0.extraExPointItemList = nil
-	slot0.exPointItemPool = nil
-	slot0.extraPointItemPool = nil
+	arg_46_0.pointItemList = nil
+	arg_46_0.exPointItemList = nil
+	arg_46_0.extraExPointItemList = nil
+	arg_46_0.exPointItemPool = nil
+	arg_46_0.extraPointItemPool = nil
 
-	slot0:__onDispose()
+	arg_46_0:__onDispose()
 end
 
-return slot0
+return var_0_0

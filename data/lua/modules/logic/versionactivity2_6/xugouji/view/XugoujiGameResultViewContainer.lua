@@ -1,14 +1,15 @@
-module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameResultViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameResultViewContainer", package.seeall)
 
-slot0 = class("XugoujiGameResultViewContainer", BaseViewContainer)
+local var_0_0 = class("XugoujiGameResultViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
-	slot0._resultView = XugoujiGameResultView.New()
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, slot0._resultView)
+	arg_1_0._resultView = XugoujiGameResultView.New()
 
-	return slot1
+	table.insert(var_1_0, arg_1_0._resultView)
+
+	return var_1_0
 end
 
-return slot0
+return var_0_0

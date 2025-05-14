@@ -1,39 +1,43 @@
-module("modules.logic.guide.controller.action.impl.WaitGuideActionEnterChapter", package.seeall)
+﻿module("modules.logic.guide.controller.action.impl.WaitGuideActionEnterChapter", package.seeall)
 
-slot0 = class("WaitGuideActionEnterChapter", BaseGuideAction)
+local var_0_0 = class("WaitGuideActionEnterChapter", BaseGuideAction)
 
-function slot0.onStart(slot0, slot1)
-	uv0.super.onStart(slot0, slot1)
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	var_0_0.super.onStart(arg_1_0, arg_1_1)
 
-	slot0.chapterId = tonumber(slot0.actionParam)
+	arg_1_0.chapterId = tonumber(arg_1_0.actionParam)
 
-	GameSceneMgr.instance:registerCallback(SceneEventName.EnterSceneFinish, slot0._checkInEpisode, slot0)
-	slot0:_checkInEpisode(GameSceneMgr.instance:getCurSceneType(), nil)
+	GameSceneMgr.instance:registerCallback(SceneEventName.EnterSceneFinish, arg_1_0._checkInEpisode, arg_1_0)
+	arg_1_0:_checkInEpisode(GameSceneMgr.instance:getCurSceneType(), nil)
 end
 
-function slot0._checkInEpisode(slot0, slot1, slot2)
-	if slot1 == SceneType.Fight then
-		if not FightModel.instance:getFightParam() then
-			slot0:onDone(true)
+function var_0_0._checkInEpisode(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_1 == SceneType.Fight then
+		local var_2_0 = FightModel.instance:getFightParam()
+
+		if not var_2_0 then
+			arg_2_0:onDone(true)
 
 			return
 		end
 
-		if not DungeonConfig.instance:getEpisodeCO(slot3.episodeId) then
-			slot0:onDone(true)
+		local var_2_1 = DungeonConfig.instance:getEpisodeCO(var_2_0.episodeId)
+
+		if not var_2_1 then
+			arg_2_0:onDone(true)
 
 			return
 		end
 
-		if not slot0.chapterId or slot0.chapterId == slot4.chapterId then
-			GameSceneMgr.instance:unregisterCallback(SceneEventName.EnterSceneFinish, slot0._checkInEpisode, slot0)
-			slot0:onDone(true)
+		if not arg_2_0.chapterId or arg_2_0.chapterId == var_2_1.chapterId then
+			GameSceneMgr.instance:unregisterCallback(SceneEventName.EnterSceneFinish, arg_2_0._checkInEpisode, arg_2_0)
+			arg_2_0:onDone(true)
 		end
 	end
 end
 
-function slot0.clearWork(slot0)
-	GameSceneMgr.instance:unregisterCallback(SceneEventName.EnterSceneFinish, slot0._checkInEpisode, slot0)
+function var_0_0.clearWork(arg_3_0)
+	GameSceneMgr.instance:unregisterCallback(SceneEventName.EnterSceneFinish, arg_3_0._checkInEpisode, arg_3_0)
 end
 
-return slot0
+return var_0_0

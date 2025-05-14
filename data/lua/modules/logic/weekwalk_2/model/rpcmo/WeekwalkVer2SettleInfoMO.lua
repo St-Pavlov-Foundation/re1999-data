@@ -1,21 +1,21 @@
-module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2SettleInfoMO", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2SettleInfoMO", package.seeall)
 
-slot0 = pureTable("WeekwalkVer2SettleInfoMO")
+local var_0_0 = pureTable("WeekwalkVer2SettleInfoMO")
 
-function slot0.init(slot0, slot1)
-	slot0.harmHero = WeekwalkVer2SettleHeroInfoMO.New()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.harmHero = WeekwalkVer2SettleHeroInfoMO.New()
 
-	slot0.harmHero:init(slot1.harmHero)
+	arg_1_0.harmHero:init(arg_1_1.harmHero)
 
-	slot0.healHero = WeekwalkVer2SettleHeroInfoMO.New()
+	arg_1_0.healHero = WeekwalkVer2SettleHeroInfoMO.New()
 
-	slot0.healHero:init(slot1.healHero)
+	arg_1_0.healHero:init(arg_1_1.healHero)
 
-	slot0.hurtHero = WeekwalkVer2SettleHeroInfoMO.New()
+	arg_1_0.hurtHero = WeekwalkVer2SettleHeroInfoMO.New()
 
-	slot0.hurtHero:init(slot1.hurtHero)
+	arg_1_0.hurtHero:init(arg_1_1.hurtHero)
 
-	slot0.layerInfos = GameUtil.rpcInfosToMap(slot1.layerInfos, WeekwalkVer2SettleLayerInfoMO, "layerId")
+	arg_1_0.layerInfos = GameUtil.rpcInfosToMap(arg_1_1.layerInfos, WeekwalkVer2SettleLayerInfoMO, "layerId")
 end
 
-return slot0
+return var_0_0

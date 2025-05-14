@@ -1,14 +1,15 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventChangeScene", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventChangeScene", package.seeall)
 
-slot0 = class("FightTLEventChangeScene", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventChangeScene", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	if not string.nilorempty(slot3[1]) then
-		GameSceneMgr.instance:getScene(SceneType.Fight).level:loadLevelNoEffect(tonumber(slot3[1]))
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	if not string.nilorempty(arg_1_3[1]) then
+		GameSceneMgr.instance:getScene(SceneType.Fight).level:loadLevelNoEffect(tonumber(arg_1_3[1]))
 	end
 end
 
-function slot0.onTrackEnd(slot0)
+function var_0_0.onTrackEnd(arg_2_0)
+	return
 end
 
-return slot0
+return var_0_0

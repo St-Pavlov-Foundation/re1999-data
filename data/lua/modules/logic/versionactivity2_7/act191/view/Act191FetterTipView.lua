@@ -1,189 +1,230 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191FetterTipView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191FetterTipView", package.seeall)
 
-slot0 = class("Act191FetterTipView", BaseView)
+local var_0_0 = class("Act191FetterTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._txtName = gohelper.findChildText(slot0.viewGO, "title/#txt_Name")
-	slot0._imageIcon = gohelper.findChildImage(slot0.viewGO, "title/#image_Icon")
-	slot0._scrollDetails = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_Details")
-	slot0._txtDesc = gohelper.findChildText(slot0.viewGO, "#scroll_Details/Viewport/Content/#txt_Desc")
-	slot0._goFetterDesc = gohelper.findChild(slot0.viewGO, "#scroll_Details/Viewport/Content/#go_FetterDesc")
-	slot0._scrollHeros = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_Heros")
-	slot0._goHeroItem = gohelper.findChild(slot0.viewGO, "#scroll_Heros/Viewport/Content/#go_HeroItem")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._txtName = gohelper.findChildText(arg_1_0.viewGO, "title/#txt_Name")
+	arg_1_0._imageIcon = gohelper.findChildImage(arg_1_0.viewGO, "title/#image_Icon")
+	arg_1_0._scrollDetails = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_Details")
+	arg_1_0._txtDesc = gohelper.findChildText(arg_1_0.viewGO, "#scroll_Details/Viewport/Content/#txt_Desc")
+	arg_1_0._goFetterDesc = gohelper.findChild(arg_1_0.viewGO, "#scroll_Details/Viewport/Content/#go_FetterDesc")
+	arg_1_0._scrollHeros = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_Heros")
+	arg_1_0._goHeroItem = gohelper.findChild(arg_1_0.viewGO, "#scroll_Heros/Viewport/Content/#go_HeroItem")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0.onClickModalMask(slot0)
+function var_0_0.onClickModalMask(arg_4_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_panel_close)
-	slot0:closeThis()
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkSkill)
+function var_0_0._editableInitView(arg_5_0)
+	SkillHelper.addHyperLinkClick(arg_5_0._txtDesc, Activity191Helper.clickHyperLinkSkill)
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
+function var_0_0.onOpen(arg_6_0)
+	Act191StatController.instance:onViewOpen(arg_6_0.viewName)
 
-	slot0.activeLvl = 0
-	slot0.tag = slot0.viewParam.tag
-	slot0.fetterCoList = Activity191Config.instance:getRelationCoList(slot0.tag)
-	slot1 = slot0.fetterCoList[0]
-	slot0._txtName.text = slot1.name
+	arg_6_0.activeLvl = 0
+	arg_6_0.tag = arg_6_0.viewParam.tag
+	arg_6_0.fetterCoList = Activity191Config.instance:getRelationCoList(arg_6_0.tag)
 
-	Activity191Helper.setFetterIcon(slot0._imageIcon, slot1.icon)
+	local var_6_0 = arg_6_0.fetterCoList[0]
 
-	slot2 = nil
+	arg_6_0._txtName.text = var_6_0.name
 
-	if slot0.viewParam.isFight then
-		slot0.activeCnt = slot0.viewParam.count or 0
+	Activity191Helper.setFetterIcon(arg_6_0._imageIcon, var_6_0.icon)
 
-		for slot6, slot7 in ipairs(slot0.fetterCoList) do
-			SkillHelper.addHyperLinkClick(gohelper.findChildText(gohelper.cloneInPlace(slot0._goFetterDesc), ""))
+	local var_6_1
 
-			slot10 = Activity191Helper.buildDesc(SkillHelper.addLink(slot7.levelDesc), Activity191Enum.HyperLinkPattern.SkillDesc)
+	if arg_6_0.viewParam.isFight then
+		arg_6_0.activeCnt = arg_6_0.viewParam.count or 0
 
-			if slot7.activeNum <= slot0.activeCnt then
-				if slot0.activeLvl < slot7.level then
-					slot0.activeLvl = slot7.level
+		for iter_6_0, iter_6_1 in ipairs(arg_6_0.fetterCoList) do
+			local var_6_2 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
+			local var_6_3 = gohelper.findChildText(var_6_2, "")
+
+			SkillHelper.addHyperLinkClick(var_6_3)
+
+			local var_6_4 = SkillHelper.addLink(iter_6_1.levelDesc)
+			local var_6_5 = Activity191Helper.buildDesc(var_6_4, Activity191Enum.HyperLinkPattern.SkillDesc)
+
+			if arg_6_0.activeCnt >= iter_6_1.activeNum then
+				if arg_6_0.activeLvl < iter_6_1.level then
+					arg_6_0.activeLvl = iter_6_1.level
 				end
 
-				slot9.text = string.format("<color=#9c8052>（%d/%d）%s</color>", slot0.activeCnt, slot7.activeNum, slot10)
+				var_6_3.text = string.format("<color=#9c8052>（%d/%d）%s</color>", arg_6_0.activeCnt, iter_6_1.activeNum, var_6_5)
 			else
-				slot9.text = string.format("（<color=#ad2319>%d</color>/%d）%s", slot0.activeCnt, slot7.activeNum, slot10)
+				var_6_3.text = string.format("（<color=#ad2319>%d</color>/%d）%s", arg_6_0.activeCnt, iter_6_1.activeNum, var_6_5)
 			end
 
-			slot0:_fixHeight(slot9)
+			arg_6_0:_fixHeight(var_6_3)
 		end
 
-		gohelper.setActive(slot0._goFetterDesc, false)
-		gohelper.setActive(slot0._scrollHeros, false)
-		recthelper.setHeight(slot0._scrollDetails.gameObject.transform, 647)
+		gohelper.setActive(arg_6_0._goFetterDesc, false)
+		gohelper.setActive(arg_6_0._scrollHeros, false)
+		recthelper.setHeight(arg_6_0._scrollDetails.gameObject.transform, 647)
 
-		slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(string.gsub(slot0.fetterCoList[slot0.activeLvl].desc, "（(.-)）", "")), Activity191Enum.HyperLinkPattern.SkillDesc)
+		var_6_1 = string.gsub(arg_6_0.fetterCoList[arg_6_0.activeLvl].desc, "（(.-)）", "")
+		var_6_1 = SkillHelper.addLink(var_6_1)
+		var_6_1 = Activity191Helper.buildDesc(var_6_1, Activity191Enum.HyperLinkPattern.SkillDesc)
+		arg_6_0._txtDesc.text = var_6_1
 
 		return
 	end
 
-	slot0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	arg_6_0.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 
-	if slot0.viewParam.isPreview then
-		for slot6, slot7 in ipairs(slot0.fetterCoList) do
-			slot9 = gohelper.findChildText(gohelper.cloneInPlace(slot0._goFetterDesc), "")
+	if arg_6_0.viewParam.isPreview then
+		for iter_6_2, iter_6_3 in ipairs(arg_6_0.fetterCoList) do
+			local var_6_6 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
+			local var_6_7 = gohelper.findChildText(var_6_6, "")
 
-			SkillHelper.addHyperLinkClick(slot9)
+			SkillHelper.addHyperLinkClick(var_6_7)
 
-			slot9.text = string.format("<color=#9c8052>（%d）%s</color>", slot7.activeNum, Activity191Helper.buildDesc(SkillHelper.addLink(slot7.levelDesc), Activity191Enum.HyperLinkPattern.SkillDesc))
+			local var_6_8 = SkillHelper.addLink(iter_6_3.levelDesc)
+			local var_6_9 = Activity191Helper.buildDesc(var_6_8, Activity191Enum.HyperLinkPattern.SkillDesc)
 
-			slot0:_fixHeight(slot9)
+			var_6_7.text = string.format("<color=#9c8052>（%d）%s</color>", iter_6_3.activeNum, var_6_9)
+
+			arg_6_0:_fixHeight(var_6_7)
 		end
 
-		slot0.fetterHeroList = Activity191Config.instance:getFetterHeroList(slot0.tag)
-		slot2 = string.gsub(slot0.fetterCoList[0].desc, "（(.-)）", "")
-	elseif slot0.viewParam.isEnemy then
-		slot3 = slot0.gameInfo:getNodeDetailMo().matchInfo
-		slot0.fetterHeroList = slot3:getFetterHeroList(slot0.tag)
-		slot0.activeCnt = slot3:getTeamFetterCntDic()[slot0.tag] or 0
+		arg_6_0.fetterHeroList = Activity191Config.instance:getFetterHeroList(arg_6_0.tag)
+		var_6_1 = string.gsub(arg_6_0.fetterCoList[0].desc, "（(.-)）", "")
+	elseif arg_6_0.viewParam.isEnemy then
+		local var_6_10 = arg_6_0.gameInfo:getNodeDetailMo().matchInfo
 
-		for slot8, slot9 in ipairs(slot0.fetterCoList) do
-			SkillHelper.addHyperLinkClick(gohelper.findChildText(gohelper.cloneInPlace(slot0._goFetterDesc), ""))
+		arg_6_0.fetterHeroList = var_6_10:getFetterHeroList(arg_6_0.tag)
+		arg_6_0.activeCnt = var_6_10:getTeamFetterCntDic()[arg_6_0.tag] or 0
 
-			slot12 = Activity191Helper.buildDesc(SkillHelper.addLink(slot9.levelDesc), Activity191Enum.HyperLinkPattern.SkillDesc)
+		for iter_6_4, iter_6_5 in ipairs(arg_6_0.fetterCoList) do
+			local var_6_11 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
+			local var_6_12 = gohelper.findChildText(var_6_11, "")
 
-			if slot9.activeNum <= slot0.activeCnt then
-				if slot0.activeLvl < slot9.level then
-					slot0.activeLvl = slot9.level
+			SkillHelper.addHyperLinkClick(var_6_12)
+
+			local var_6_13 = SkillHelper.addLink(iter_6_5.levelDesc)
+			local var_6_14 = Activity191Helper.buildDesc(var_6_13, Activity191Enum.HyperLinkPattern.SkillDesc)
+
+			if arg_6_0.activeCnt >= iter_6_5.activeNum then
+				if arg_6_0.activeLvl < iter_6_5.level then
+					arg_6_0.activeLvl = iter_6_5.level
 				end
 
-				slot11.text = string.format("<color=#9c8052>（%d/%d）%s</color>", slot0.activeCnt, slot9.activeNum, slot12)
+				var_6_12.text = string.format("<color=#9c8052>（%d/%d）%s</color>", arg_6_0.activeCnt, iter_6_5.activeNum, var_6_14)
 			else
-				slot11.text = string.format("（<color=#ad2319>%d</color>/%d）%s", slot0.activeCnt, slot9.activeNum, slot12)
+				var_6_12.text = string.format("（<color=#ad2319>%d</color>/%d）%s", arg_6_0.activeCnt, iter_6_5.activeNum, var_6_14)
 			end
 
-			slot0:_fixHeight(slot11)
+			arg_6_0:_fixHeight(var_6_12)
 		end
 
-		slot2 = string.gsub(slot0.fetterCoList[0].desc, "（(.-)）", "")
+		var_6_1 = string.gsub(arg_6_0.fetterCoList[0].desc, "（(.-)）", "")
 	else
-		slot0.fetterHeroList = slot0.gameInfo:getFetterHeroList(slot0.tag)
-		slot0.activeCnt = slot0.gameInfo:getTeamFetterCntDic()[slot0.tag] or 0
+		arg_6_0.fetterHeroList = arg_6_0.gameInfo:getFetterHeroList(arg_6_0.tag)
+		arg_6_0.activeCnt = arg_6_0.gameInfo:getTeamFetterCntDic()[arg_6_0.tag] or 0
 
-		for slot7, slot8 in ipairs(slot0.fetterCoList) do
-			SkillHelper.addHyperLinkClick(gohelper.findChildText(gohelper.cloneInPlace(slot0._goFetterDesc), ""))
+		for iter_6_6, iter_6_7 in ipairs(arg_6_0.fetterCoList) do
+			local var_6_15 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
+			local var_6_16 = gohelper.findChildText(var_6_15, "")
 
-			slot11 = Activity191Helper.buildDesc(SkillHelper.addLink(slot8.levelDesc), Activity191Enum.HyperLinkPattern.SkillDesc)
+			SkillHelper.addHyperLinkClick(var_6_16)
 
-			if slot8.activeNum <= slot0.activeCnt then
-				if slot0.activeLvl < slot8.level then
-					slot0.activeLvl = slot8.level
+			local var_6_17 = SkillHelper.addLink(iter_6_7.levelDesc)
+			local var_6_18 = Activity191Helper.buildDesc(var_6_17, Activity191Enum.HyperLinkPattern.SkillDesc)
+
+			if arg_6_0.activeCnt >= iter_6_7.activeNum then
+				if arg_6_0.activeLvl < iter_6_7.level then
+					arg_6_0.activeLvl = iter_6_7.level
 				end
 
-				slot10.text = string.format("<color=#9c8052>（%d/%d）%s</color>", slot0.activeCnt, slot8.activeNum, slot11)
+				var_6_16.text = string.format("<color=#9c8052>（%d/%d）%s</color>", arg_6_0.activeCnt, iter_6_7.activeNum, var_6_18)
 			else
-				slot10.text = string.format("（<color=#ad2319>%d</color>/%d）%s", slot0.activeCnt, slot8.activeNum, slot11)
+				var_6_16.text = string.format("（<color=#ad2319>%d</color>/%d）%s", arg_6_0.activeCnt, iter_6_7.activeNum, var_6_18)
 			end
 
-			slot0:_fixHeight(slot10)
+			arg_6_0:_fixHeight(var_6_16)
 		end
 
-		slot6 = false
+		local var_6_19 = arg_6_0.fetterCoList[arg_6_0.activeLvl]
+		local var_6_20 = var_6_19.effects
+		local var_6_21 = false
 
-		if not string.nilorempty(slot0.fetterCoList[slot0.activeLvl].effects) then
-			for slot11, slot12 in ipairs(string.splitToNumber(slot0.fetterCoList[slot0.activeLvl].effects, "|")) do
-				if slot0.gameInfo:getAct191Effect(slot12) and (not slot13["end"] or slot11 == #slot7) then
-					slot2 = GameUtil.getSubPlaceholderLuaLangOneParam(slot4.desc, string.format("%d/%d", slot13.count, slot13.needCount))
-					slot6 = true
+		if not string.nilorempty(var_6_20) then
+			local var_6_22 = string.splitToNumber(arg_6_0.fetterCoList[arg_6_0.activeLvl].effects, "|")
+
+			for iter_6_8, iter_6_9 in ipairs(var_6_22) do
+				local var_6_23 = arg_6_0.gameInfo:getAct191Effect(iter_6_9)
+
+				if var_6_23 and (not var_6_23["end"] or iter_6_8 == #var_6_22) then
+					var_6_1 = GameUtil.getSubPlaceholderLuaLangOneParam(var_6_19.desc, string.format("%d/%d", var_6_23.count, var_6_23.needCount))
+					var_6_21 = true
 
 					break
 				end
 			end
 		end
 
-		if not slot6 then
-			slot2 = string.gsub(slot4.desc, "（(.-)）", "")
+		if not var_6_21 then
+			var_6_1 = string.gsub(var_6_19.desc, "（(.-)）", "")
 		end
 	end
 
-	slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot2), Activity191Enum.HyperLinkPattern.SkillDesc)
+	local var_6_24 = SkillHelper.addLink(var_6_1)
+	local var_6_25 = Activity191Helper.buildDesc(var_6_24, Activity191Enum.HyperLinkPattern.SkillDesc)
 
-	gohelper.setActive(slot0._goFetterDesc, false)
-	slot0:refreshHeroHead()
+	arg_6_0._txtDesc.text = var_6_25
+
+	gohelper.setActive(arg_6_0._goFetterDesc, false)
+	arg_6_0:refreshHeroHead()
 end
 
-function slot0.onClose(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose(), slot0.fetterCoList[0].name)
+function var_0_0.onClose(arg_7_0)
+	local var_7_0 = arg_7_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_7_0.viewName, var_7_0, arg_7_0.fetterCoList[0].name)
 end
 
-function slot0.refreshHeroHead(slot0)
-	for slot5, slot6 in ipairs(slot0.fetterHeroList) do
-		MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(Activity191Enum.PrefabPath.HeroHeadItem, gohelper.cloneInPlace(slot0._goHeroItem)), Act191HeroHeadItem, {
-			noClick = true,
-			noFetter = true
-		}):setData(nil, slot6.config.id)
+function var_0_0.refreshHeroHead(arg_8_0)
+	local var_8_0 = {
+		noClick = true,
+		noFetter = true
+	}
 
-		if slot6.inBag == 0 then
-			slot9:setNotOwn()
-		elseif slot6.inBag == 2 then
-			slot9:setActivation(true)
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0.fetterHeroList) do
+		local var_8_1 = gohelper.cloneInPlace(arg_8_0._goHeroItem)
+		local var_8_2 = arg_8_0:getResInst(Activity191Enum.PrefabPath.HeroHeadItem, var_8_1)
+		local var_8_3 = MonoHelper.addNoUpdateLuaComOnceToGo(var_8_2, Act191HeroHeadItem, var_8_0)
+
+		var_8_3:setData(nil, iter_8_1.config.id)
+
+		if iter_8_1.inBag == 0 then
+			var_8_3:setNotOwn()
+		elseif iter_8_1.inBag == 2 then
+			var_8_3:setActivation(true)
 		end
 	end
 
-	slot0._scrollHeros.horizontalNormalizedPosition = 0
+	arg_8_0._scrollHeros.horizontalNormalizedPosition = 0
 
-	gohelper.setActive(slot0._goHeroItem, false)
+	gohelper.setActive(arg_8_0._goHeroItem, false)
 end
 
-function slot0._fixHeight(slot0, slot1)
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot1.gameObject, FixTmpBreakLine):refreshTmpContent(slot1)
+function var_0_0._fixHeight(arg_9_0, arg_9_1)
+	MonoHelper.addNoUpdateLuaComOnceToGo(arg_9_1.gameObject, FixTmpBreakLine):refreshTmpContent(arg_9_1)
 end
 
-return slot0
+return var_0_0

@@ -1,183 +1,233 @@
-module("modules.common.global.gamestate.GameLangFont", package.seeall)
+﻿module("modules.common.global.gamestate.GameLangFont", package.seeall)
 
-slot0 = class("GameLangFont")
-slot1 = 1
-slot2 = 2
-slot3 = 3
+local var_0_0 = class("GameLangFont")
+local var_0_1 = 1
+local var_0_2 = 2
+local var_0_3 = 3
 
-function slot0.ctor(slot0)
-	slot0._loadStatus = uv0
-	slot0._SettingStatus = uv0
-	slot0._registerFontDict = {}
-	slot0._id2TmpFontUrlDict = {}
-	slot0._id2TextFontUrlDict = {}
-	slot0._id2TmpFontAssetDict = {}
-	slot0._id2TextFontAssetDict = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._loadStatus = var_0_1
+	arg_1_0._SettingStatus = var_0_1
+	arg_1_0._registerFontDict = {}
+	arg_1_0._id2TmpFontUrlDict = {}
+	arg_1_0._id2TextFontUrlDict = {}
+	arg_1_0._id2TmpFontAssetDict = {}
+	arg_1_0._id2TextFontAssetDict = {}
 
-	slot0:_loadFontAsset()
-	ZProj.LangFontAssetMgr.Instance:SetLuaCallback(slot0._callback, slot0)
+	arg_1_0:_loadFontAsset()
+	ZProj.LangFontAssetMgr.Instance:SetLuaCallback(arg_1_0._callback, arg_1_0)
 end
 
-function slot0._callback(slot0, slot1, slot2)
-	if slot2 then
-		slot0._registerFontDict[slot1] = true
+function var_0_0._callback(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_2 then
+		arg_2_0._registerFontDict[arg_2_1] = true
 
-		if slot0._loadStatus == uv0 then
-			slot0:_setFontAsset(slot1)
+		if arg_2_0._loadStatus == var_0_3 then
+			arg_2_0:_setFontAsset(arg_2_1)
 		else
-			slot0:_loadFontAsset()
+			arg_2_0:_loadFontAsset()
 		end
 	else
-		slot0._registerFontDict[slot1] = nil
+		arg_2_0._registerFontDict[arg_2_1] = nil
 
-		if slot1.id > 0 and not string.nilorempty(slot1.str1) and slot1.tmpText then
-			gohelper.destroy(slot4.fontSharedMaterial)
+		if arg_2_1.id > 0 and not string.nilorempty(arg_2_1.str1) then
+			local var_2_0 = arg_2_1.tmpText
+
+			if var_2_0 then
+				gohelper.destroy(var_2_0.fontSharedMaterial)
+			end
 		end
 	end
 end
 
-function slot0.changeFontAsset(slot0, slot1, slot2)
-	slot0._loadStatus = uv0
-	slot0._loadFontAssetCallback = slot1
-	slot0._loadFontAssetcallbackObj = slot2
+function var_0_0.changeFontAsset(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0._loadStatus = var_0_1
+	arg_3_0._loadFontAssetCallback = arg_3_1
+	arg_3_0._loadFontAssetcallbackObj = arg_3_2
 
-	slot0:_loadFontAsset()
+	arg_3_0:_loadFontAsset()
 end
 
-function slot0._loadFontAsset(slot0)
-	if slot0._loadStatus ~= uv0 then
+function var_0_0._loadFontAsset(arg_4_0)
+	if arg_4_0._loadStatus ~= var_0_1 then
 		return
 	end
 
-	slot0._loadStatus = uv1
-	slot0._id2TmpFontUrlDict = {}
-	slot0._id2TextFontUrlDict = {}
-	slot3 = lua_setting_lang.configDict[LangSettings.shortcutTab[GameConfig:GetCurLangType()]]
+	arg_4_0._loadStatus = var_0_2
 
-	for slot7 = 1, 2 do
-		if not string.nilorempty(slot3["fontasset" .. slot7]) then
-			slot9 = string.format("font/meshpro/%s.asset", slot3[slot8])
+	local var_4_0 = {}
 
-			table.insert({}, slot9)
+	arg_4_0._id2TmpFontUrlDict = {}
+	arg_4_0._id2TextFontUrlDict = {}
 
-			slot0._id2TmpFontUrlDict[slot7] = slot9
+	local var_4_1 = LangSettings.shortcutTab[GameConfig:GetCurLangType()]
+	local var_4_2 = lua_setting_lang.configDict[var_4_1]
+
+	for iter_4_0 = 1, 2 do
+		local var_4_3 = "fontasset" .. iter_4_0
+
+		if not string.nilorempty(var_4_2[var_4_3]) then
+			local var_4_4 = string.format("font/meshpro/%s.asset", var_4_2[var_4_3])
+
+			table.insert(var_4_0, var_4_4)
+
+			arg_4_0._id2TmpFontUrlDict[iter_4_0] = var_4_4
 		end
 
-		if not string.nilorempty(slot3["textfontasset" .. slot7]) then
-			slot9 = string.format("font/%s", slot3[slot8])
+		local var_4_5 = "textfontasset" .. iter_4_0
 
-			table.insert(slot1, slot9)
+		if not string.nilorempty(var_4_2[var_4_5]) then
+			local var_4_6 = string.format("font/%s", var_4_2[var_4_5])
 
-			slot0._id2TextFontUrlDict[slot7] = slot9
+			table.insert(var_4_0, var_4_6)
+
+			arg_4_0._id2TextFontUrlDict[iter_4_0] = var_4_6
 		end
 	end
 
-	if slot0._loader then
-		slot0._loader:dispose()
+	if arg_4_0._loader then
+		arg_4_0._loader:dispose()
 	end
 
-	slot0._loader = MultiAbLoader.New()
+	arg_4_0._loader = MultiAbLoader.New()
 
-	slot0._loader:setPathList(slot1)
-	slot0._loader:startLoad(slot0._onFontLoaded, slot0)
+	arg_4_0._loader:setPathList(var_4_0)
+	arg_4_0._loader:startLoad(arg_4_0._onFontLoaded, arg_4_0)
 end
 
-function slot0._onFontLoaded(slot0)
-	slot0._loadStatus = uv0
-	slot0._id2TmpFontAssetDict = {}
-	slot0._id2TextFontAssetDict = {}
+function var_0_0._onFontLoaded(arg_5_0)
+	arg_5_0._loadStatus = var_0_3
+	arg_5_0._id2TmpFontAssetDict = {}
+	arg_5_0._id2TextFontAssetDict = {}
 
-	for slot5, slot6 in pairs(slot0._loader:getAssetItemDict()) do
-		for slot10, slot11 in pairs(slot0._id2TmpFontUrlDict) do
-			if slot11 == slot5 then
-				slot0._id2TmpFontAssetDict[slot10] = slot6:GetResource()
+	local var_5_0 = arg_5_0._loader:getAssetItemDict()
+
+	for iter_5_0, iter_5_1 in pairs(var_5_0) do
+		for iter_5_2, iter_5_3 in pairs(arg_5_0._id2TmpFontUrlDict) do
+			if iter_5_3 == iter_5_0 then
+				arg_5_0._id2TmpFontAssetDict[iter_5_2] = iter_5_1:GetResource()
 			end
 		end
 
-		for slot10, slot11 in pairs(slot0._id2TextFontUrlDict) do
-			if slot11 == slot5 then
-				slot0._id2TextFontAssetDict[slot10] = slot6:GetResource()
+		for iter_5_4, iter_5_5 in pairs(arg_5_0._id2TextFontUrlDict) do
+			if iter_5_5 == iter_5_0 then
+				arg_5_0._id2TextFontAssetDict[iter_5_4] = iter_5_1:GetResource()
 			end
 		end
 	end
 
-	for slot5, slot6 in pairs(slot0._registerFontDict) do
-		slot0:_setFontAsset(slot5)
+	for iter_5_6, iter_5_7 in pairs(arg_5_0._registerFontDict) do
+		arg_5_0:_setFontAsset(iter_5_6)
 	end
 
-	if slot0._loadFontAssetCallback then
-		slot0._loadFontAssetCallback(slot0._loadFontAssetcallbackObj)
+	if arg_5_0._loadFontAssetCallback then
+		arg_5_0._loadFontAssetCallback(arg_5_0._loadFontAssetcallbackObj)
 	end
 
-	slot0._loadFontAssetCallback = nil
-	slot0._loadFontAssetcallbackObj = nil
+	arg_5_0._loadFontAssetCallback = nil
+	arg_5_0._loadFontAssetcallbackObj = nil
 end
 
-function slot0._setFontAsset(slot0, slot1)
-	if gohelper.isNil(slot1) then
+function var_0_0._setFontAsset(arg_6_0, arg_6_1)
+	if gohelper.isNil(arg_6_1) then
 		return
 	end
 
-	if slot1.id > 0 then
-		if slot1.tmpText then
-			if slot0._id2TmpFontAssetDict[slot2] then
-				slot3.font = slot4
+	local var_6_0 = arg_6_1.id
+
+	if var_6_0 > 0 then
+		local var_6_1 = arg_6_1.tmpText
+
+		if var_6_1 then
+			local var_6_2 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+
+			if var_6_2 then
+				var_6_1.font = var_6_2
 			end
 
-			if not string.nilorempty(slot1.str1) then
-				slot6 = SLFramework.UGUI.GuiHelper.ParseColor(slot5)
-				slot8 = UnityEngine.Object.Instantiate(slot3.fontSharedMaterial)
-				slot3.fontSharedMaterial = slot8
+			local var_6_3 = arg_6_1.str1
 
-				slot8:EnableKeyword("OUTLINE_ON")
+			if not string.nilorempty(var_6_3) then
+				local var_6_4 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_3)
+				local var_6_5 = UnityEngine.Color32.New(var_6_4.r * 255, var_6_4.g * 255, var_6_4.b * 255, var_6_4.a * 255)
+				local var_6_6 = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
 
-				slot3.outlineColor = UnityEngine.Color32.New(slot6.r * 255, slot6.g * 255, slot6.b * 255, slot6.a * 255)
-				slot3.outlineWidth = slot1.int1 / 1000
-			elseif slot1.instanceMaterial then
-				slot3.fontSharedMaterial = UnityEngine.Object.Instantiate(slot3.fontSharedMaterial)
+				var_6_1.fontSharedMaterial = var_6_6
+
+				var_6_6:EnableKeyword("OUTLINE_ON")
+
+				var_6_1.outlineColor = var_6_5
+				var_6_1.outlineWidth = arg_6_1.int1 / 1000
+			elseif arg_6_1.instanceMaterial then
+				var_6_1.fontSharedMaterial = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
 			end
-		elseif slot1.tmpInputText and slot0._id2TmpFontAssetDict[slot2] then
-			slot4.fontAsset = slot5
+		else
+			local var_6_7 = arg_6_1.tmpInputText
+
+			if var_6_7 then
+				local var_6_8 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+
+				if var_6_8 then
+					var_6_7.fontAsset = var_6_8
+				end
+			end
 		end
 
 		return
 	end
 
-	if slot1.textId > 0 and slot1.text and slot0._id2TextFontAssetDict[slot3] then
-		slot4.font = slot5
+	local var_6_9 = arg_6_1.textId
+
+	if var_6_9 > 0 then
+		local var_6_10 = arg_6_1.text
+
+		if var_6_10 then
+			local var_6_11 = arg_6_0._id2TextFontAssetDict[var_6_9]
+
+			if var_6_11 then
+				var_6_10.font = var_6_11
+			end
+		end
 	end
 end
 
-function slot0.ControlDoubleEn(slot0)
-	slot0.languageMgr = SLFramework.LanguageMgr.Instance
-	slot0._comps = {}
+function var_0_0.ControlDoubleEn(arg_7_0)
+	local var_7_0 = ViewMgr.instance:getUIRoot()
 
-	ZProj.AStarPathBridge.ArrayToLuaTable(ViewMgr.instance:getUIRoot():GetComponentsInChildren(typeof(SLFramework.LangCaptions), true), slot0._comps)
-	TaskDispatcher.runRepeat(slot0._onRepectSetEnActive, slot0, 0)
+	arg_7_0.languageMgr = SLFramework.LanguageMgr.Instance
+
+	local var_7_1 = var_7_0:GetComponentsInChildren(typeof(SLFramework.LangCaptions), true)
+
+	arg_7_0._comps = {}
+
+	ZProj.AStarPathBridge.ArrayToLuaTable(var_7_1, arg_7_0._comps)
+	TaskDispatcher.runRepeat(arg_7_0._onRepectSetEnActive, arg_7_0, 0)
 end
 
-function slot0._onRepectSetEnActive(slot0)
-	for slot4 = 1, 100 do
-		if #slot0._comps > 0 then
-			table.remove(slot0._comps, #slot0._comps)
+function var_0_0._onRepectSetEnActive(arg_8_0)
+	for iter_8_0 = 1, 100 do
+		if #arg_8_0._comps > 0 then
+			local var_8_0 = arg_8_0._comps[#arg_8_0._comps]
 
-			if not gohelper.isNil(slot0._comps[#slot0._comps]) then
-				slot0.languageMgr:ApplyLangCaptions(slot5)
+			table.remove(arg_8_0._comps, #arg_8_0._comps)
+
+			if not gohelper.isNil(var_8_0) then
+				arg_8_0.languageMgr:ApplyLangCaptions(var_8_0)
 			end
 		end
 	end
 
-	if #slot0._comps == 0 then
-		slot0:_stopSetEnActive()
+	if #arg_8_0._comps == 0 then
+		arg_8_0:_stopSetEnActive()
 	end
 end
 
-function slot0._stopSetEnActive(slot0)
-	TaskDispatcher.cancelTask(slot0._onRepectSetEnActive, slot0)
+function var_0_0._stopSetEnActive(arg_9_0)
+	TaskDispatcher.cancelTask(arg_9_0._onRepectSetEnActive, arg_9_0)
 
-	if slot0._comps then
-		slot0._comps = nil
+	if arg_9_0._comps then
+		arg_9_0._comps = nil
 	end
 end
 
-return slot0
+return var_0_0

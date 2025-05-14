@@ -1,144 +1,151 @@
-module("modules.logic.main.view.ActCenterItemBase", package.seeall)
+﻿module("modules.logic.main.view.ActCenterItemBase", package.seeall)
 
-slot0 = class("ActCenterItemBase", LuaCompBase)
+local var_0_0 = class("ActCenterItemBase", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0:__onInit()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0:__onInit()
 
-	slot0.go = slot1
-	slot0._transform = slot1.transform
-	slot0._imgGo = gohelper.findChild(slot1, "bg")
-	slot0._imgitem = gohelper.findChildImage(slot1, "bg")
-	slot0._btnitem = gohelper.findChildClick(slot1, "bg")
-	slot0._goactivityreddot = gohelper.findChild(slot1, "go_activityreddot")
-	slot0._txttheme = gohelper.findChildText(slot1, "txt_theme")
-	slot0._godeadline = gohelper.findChild(slot1, "#go_deadline")
-	slot0._txttime = gohelper.findChildText(slot1, "#go_deadline/#txt_time")
-	slot0._act_iconbgGo = gohelper.findChild(slot1, "act_iconbg")
-	slot0._act_iconbg_effGo = gohelper.findChild(slot1, "act_iconbg_eff")
-	slot0._goexpup = gohelper.findChild(slot0.go, "#go_expup")
+	arg_1_0.go = arg_1_1
+	arg_1_0._transform = arg_1_1.transform
+	arg_1_0._imgGo = gohelper.findChild(arg_1_1, "bg")
+	arg_1_0._imgitem = gohelper.findChildImage(arg_1_1, "bg")
+	arg_1_0._btnitem = gohelper.findChildClick(arg_1_1, "bg")
+	arg_1_0._goactivityreddot = gohelper.findChild(arg_1_1, "go_activityreddot")
+	arg_1_0._txttheme = gohelper.findChildText(arg_1_1, "txt_theme")
+	arg_1_0._godeadline = gohelper.findChild(arg_1_1, "#go_deadline")
+	arg_1_0._txttime = gohelper.findChildText(arg_1_1, "#go_deadline/#txt_time")
+	arg_1_0._act_iconbgGo = gohelper.findChild(arg_1_1, "act_iconbg")
+	arg_1_0._act_iconbg_effGo = gohelper.findChild(arg_1_1, "act_iconbg_eff")
+	arg_1_0._goexpup = gohelper.findChild(arg_1_0.go, "#go_expup")
 
-	slot0:_initActEff()
-	slot0:onInit(slot1)
-	slot0:_addEvent()
-	gohelper.setActive(slot1, true)
+	arg_1_0:_initActEff()
+	arg_1_0:onInit(arg_1_1)
+	arg_1_0:_addEvent()
+	gohelper.setActive(arg_1_1, true)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0:_removeEvent()
-	slot0:onDestroy()
-	gohelper.destroy(slot0.go)
-	slot0:__onDispose()
+function var_0_0.onDestroyView(arg_2_0)
+	arg_2_0:_removeEvent()
+	arg_2_0:onDestroy()
+	gohelper.destroy(arg_2_0.go)
+	arg_2_0:__onDispose()
 end
 
-function slot0._addEvent(slot0)
-	slot0._btnitem:AddClickListener(slot0.onClick, slot0)
-	slot0:onAddEvent()
+function var_0_0._addEvent(arg_3_0)
+	arg_3_0._btnitem:AddClickListener(arg_3_0.onClick, arg_3_0)
+	arg_3_0:onAddEvent()
 end
 
-function slot0._removeEvent(slot0)
-	slot0._btnitem:RemoveClickListener()
-	slot0:onRemoveEvent()
+function var_0_0._removeEvent(arg_4_0)
+	arg_4_0._btnitem:RemoveClickListener()
+	arg_4_0:onRemoveEvent()
 end
 
-function slot0._onOpen(slot0, ...)
-	slot0:onOpen(...)
+function var_0_0._onOpen(arg_5_0, ...)
+	arg_5_0:onOpen(...)
 end
 
-function slot0.refresh(slot0, ...)
-	if not slot0.__isFirst then
-		slot0:_onOpen(...)
+function var_0_0.refresh(arg_6_0, ...)
+	if not arg_6_0.__isFirst then
+		arg_6_0:_onOpen(...)
 
-		slot0.__isFirst = true
+		arg_6_0.__isFirst = true
 	end
 
-	slot0:onRefresh(...)
+	arg_6_0:onRefresh(...)
 end
 
-function slot0._addNotEventRedDot(slot0, slot1, slot2)
-	slot0._redDot = RedDotController.instance:addNotEventRedDot(slot0._goactivityreddot, slot1, slot2)
+function var_0_0._addNotEventRedDot(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0._redDot = RedDotController.instance:addNotEventRedDot(arg_7_0._goactivityreddot, arg_7_1, arg_7_2)
 end
 
-function slot0.isShowRedDot(slot0)
-	return slot0._redDot and slot0._redDot.isShowRedDot
+function var_0_0.isShowRedDot(arg_8_0)
+	return arg_8_0._redDot and arg_8_0._redDot.isShowRedDot
 end
 
-function slot0._setMainSprite(slot0, slot1)
-	UISpriteSetMgr.instance:setMainSprite(slot0._imgitem, slot1)
+function var_0_0._setMainSprite(arg_9_0, arg_9_1)
+	UISpriteSetMgr.instance:setMainSprite(arg_9_0._imgitem, arg_9_1)
 end
 
-function slot0.setSiblingIndex(slot0, slot1)
-	slot0._transform:SetSiblingIndex(slot1)
+function var_0_0.setSiblingIndex(arg_10_0, arg_10_1)
+	arg_10_0._transform:SetSiblingIndex(arg_10_1)
 end
 
-function slot0._refreshRedDot(slot0)
-	if slot0._redDot then
-		slot0._redDot:refreshRedDot()
+function var_0_0._refreshRedDot(arg_11_0)
+	if arg_11_0._redDot then
+		arg_11_0._redDot:refreshRedDot()
 	end
 end
 
-function slot0.setCustomData(slot0, slot1)
-	slot0._data = slot1
+function var_0_0.setCustomData(arg_12_0, arg_12_1)
+	arg_12_0._data = arg_12_1
 end
 
-function slot0.getCustomData(slot0)
-	return slot0._data
+function var_0_0.getCustomData(arg_13_0)
+	return arg_13_0._data
 end
 
-function slot0.getMainActAtmosphereConfig(slot0)
+function var_0_0.getMainActAtmosphereConfig(arg_14_0)
 	return ActivityConfig.instance:getMainActAtmosphereConfig()
 end
 
-function slot0.isShowActivityEffect(slot0, slot1)
-	if slot0._isShowActivityEffect == nil or slot1 then
-		slot0._isShowActivityEffect = ActivityModel.showActivityEffect()
+function var_0_0.isShowActivityEffect(arg_15_0, arg_15_1)
+	if arg_15_0._isShowActivityEffect == nil or arg_15_1 then
+		arg_15_0._isShowActivityEffect = ActivityModel.showActivityEffect()
 	end
 
-	return slot0._isShowActivityEffect
+	return arg_15_0._isShowActivityEffect
 end
 
-function slot0._initActEff(slot0)
-	slot0._mainViewActBtnGoList = slot0:getUserDataTb_()
+function var_0_0._initActEff(arg_16_0)
+	local var_16_0 = ActivityConfig.instance:getMainActAtmosphereConfig()
 
-	for slot5, slot6 in ipairs(ActivityConfig.instance:getMainActAtmosphereConfig().mainViewActBtn or {}) do
-		slot0._mainViewActBtnGoList[slot5] = gohelper.findChild(slot0.go, slot6)
+	arg_16_0._mainViewActBtnGoList = arg_16_0:getUserDataTb_()
+
+	for iter_16_0, iter_16_1 in ipairs(var_16_0.mainViewActBtn or {}) do
+		arg_16_0._mainViewActBtnGoList[iter_16_0] = gohelper.findChild(arg_16_0.go, iter_16_1)
 	end
 
-	slot2 = slot0:isShowActivityEffect()
+	local var_16_1 = arg_16_0:isShowActivityEffect()
 
-	for slot6, slot7 in pairs(slot0._mainViewActBtnGoList) do
-		gohelper.setActive(slot7, slot2)
+	for iter_16_2, iter_16_3 in pairs(arg_16_0._mainViewActBtnGoList) do
+		gohelper.setActive(iter_16_3, var_16_1)
 	end
 
-	slot0:_setActive_act_iconbg(slot2 and ActivityModel.checkIsShowFxVisible())
+	arg_16_0:_setActive_act_iconbg(var_16_1 and ActivityModel.checkIsShowFxVisible())
 end
 
-function slot0.onInit(slot0, slot1)
+function var_0_0.onInit(arg_17_0, arg_17_1)
+	return
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_18_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_19_0)
+	return
 end
 
-function slot0.onRefresh(slot0, ...)
-	slot0:refreshRedDot()
+function var_0_0.onRefresh(arg_20_0, ...)
+	arg_20_0:refreshRedDot()
 end
 
-function slot0.onAddEvent(slot0)
+function var_0_0.onAddEvent(arg_21_0)
+	return
 end
 
-function slot0.onRemoveEvent(slot0)
+function var_0_0.onRemoveEvent(arg_22_0)
+	return
 end
 
-function slot0.onClick(slot0)
+function var_0_0.onClick(arg_23_0)
 	assert(false, "please override 'onClick' function!!")
 end
 
-function slot0._setActive_act_iconbg(slot0, slot1)
-	gohelper.setActive(slot0._act_iconbgGo, slot1)
-	gohelper.setActive(slot0._act_iconbg_effGo, slot1)
+function var_0_0._setActive_act_iconbg(arg_24_0, arg_24_1)
+	gohelper.setActive(arg_24_0._act_iconbgGo, arg_24_1)
+	gohelper.setActive(arg_24_0._act_iconbg_effGo, arg_24_1)
 end
 
-return slot0
+return var_0_0

@@ -1,52 +1,53 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroTalkViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroTalkViewContainer", package.seeall)
 
-slot0 = class("DiceHeroTalkViewContainer", BaseViewContainer)
+local var_0_0 = class("DiceHeroTalkViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {
 		DiceHeroTalkView.New()
 	}
 
 	DiceHeroStatHelper.instance:resetTalkDt()
 
-	DiceHeroModel.instance.guideLevel = slot0.viewParam.co.id
+	DiceHeroModel.instance.guideLevel = arg_1_0.viewParam.co.id
 
-	if slot0.viewParam.co.type == DiceHeroEnum.LevelType.Story then
-		table.insert(slot1, TabViewGroup.New(1, "#go_lefttop"))
+	if arg_1_0.viewParam.co.type == DiceHeroEnum.LevelType.Story then
+		table.insert(var_1_0, TabViewGroup.New(1, "#go_lefttop"))
 	end
 
-	return slot1
+	return var_1_0
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot2 = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		local var_2_0 = NavigateButtonsView.New({
 			true,
 			false,
 			false
 		})
 
-		slot2:setOverrideClose(slot0.defaultOverrideCloseClick, slot0)
+		var_2_0:setOverrideClose(arg_2_0.defaultOverrideCloseClick, arg_2_0)
 
 		return {
-			slot2
+			var_2_0
 		}
 	end
 end
 
-function slot0.defaultOverrideCloseClick(slot0)
-	slot1 = slot0.viewParam.co
+function var_0_0.defaultOverrideCloseClick(arg_3_0)
+	local var_3_0 = arg_3_0.viewParam.co
+	local var_3_1 = DiceHeroModel.instance:getGameInfo(var_3_0.chapter)
 
-	if DiceHeroModel.instance:getGameInfo(slot1.chapter).currLevel == slot1.id and not slot2.allPass then
-		MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.DiceHeroExitFight, MsgBoxEnum.BoxType.Yes_No, slot0.statAndClose, nil, , slot0)
+	if var_3_1.currLevel == var_3_0.id and not var_3_1.allPass then
+		MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.DiceHeroExitFight, MsgBoxEnum.BoxType.Yes_No, arg_3_0.statAndClose, nil, nil, arg_3_0)
 	else
-		slot0:statAndClose()
+		arg_3_0:statAndClose()
 	end
 end
 
-function slot0.statAndClose(slot0)
+function var_0_0.statAndClose(arg_4_0)
 	DiceHeroStatHelper.instance:sendStoryEnd(false, false)
-	slot0:closeThis()
+	arg_4_0:closeThis()
 end
 
-return slot0
+return var_0_0

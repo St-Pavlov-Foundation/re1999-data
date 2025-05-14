@@ -1,42 +1,43 @@
-module("modules.logic.fight.controller.replay.FightReplyWorkBloodPoolSkill", package.seeall)
+﻿module("modules.logic.fight.controller.replay.FightReplyWorkBloodPoolSkill", package.seeall)
 
-slot0 = class("FightReplyWorkBloodPoolSkill", BaseWork)
+local var_0_0 = class("FightReplyWorkBloodPoolSkill", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	slot0._beginRoundOp = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._beginRoundOp = arg_1_1
 end
 
-function slot0.onStart(slot0, slot1)
+function var_0_0.onStart(arg_2_0, arg_2_1)
 	if FightDataHelper.operationDataMgr:isCardOpEnd() then
-		slot0:onDone(true)
+		arg_2_0:onDone(true)
 
 		return
 	end
 
-	if not slot0._beginRoundOp then
-		return slot0:onDone(true)
+	if not arg_2_0._beginRoundOp then
+		return arg_2_0:onDone(true)
 	end
 
-	FightController.instance:dispatchEvent(FightEvent.AutoToSelectSkillTarget, slot0._beginRoundOp.toId)
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 3)
+	FightController.instance:dispatchEvent(FightEvent.AutoToSelectSkillTarget, arg_2_0._beginRoundOp.toId)
+	TaskDispatcher.runDelay(arg_2_0._delayDone, arg_2_0, 3)
 
-	slot3 = FightDataHelper.operationDataMgr:newOperation()
+	local var_2_0 = FightHelper.getBloodPoolSkillId()
+	local var_2_1 = FightDataHelper.operationDataMgr:newOperation()
 
-	slot3:playBloodPoolCard(FightHelper.getBloodPoolSkillId())
-	FightController.instance:dispatchEvent(FightEvent.AddPlayOperationData, slot3)
+	var_2_1:playBloodPoolCard(var_2_0)
+	FightController.instance:dispatchEvent(FightEvent.AddPlayOperationData, var_2_1)
 	FightController.instance:dispatchEvent(FightEvent.onNoActCostMoveFlowOver)
-	FightController.instance:dispatchEvent(FightEvent.RefreshPlayCardRoundOp, slot3)
-	FightController.instance:dispatchEvent(FightEvent.OnPlayAssistBossCardFlowDone, slot3)
+	FightController.instance:dispatchEvent(FightEvent.RefreshPlayCardRoundOp, var_2_1)
+	FightController.instance:dispatchEvent(FightEvent.OnPlayAssistBossCardFlowDone, var_2_1)
 	FightDataHelper.bloodPoolDataMgr:playBloodPoolCard()
-	slot0:onDone(true)
+	arg_2_0:onDone(true)
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_3_0)
+	arg_3_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
+function var_0_0.clearWork(arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0._delayDone, arg_4_0)
 end
 
-return slot0
+return var_0_0

@@ -1,61 +1,67 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonConditionComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonConditionComp", package.seeall)
 
-slot0 = class("Act183DungeonConditionComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonConditionComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._txtconditionitem = gohelper.findChildText(slot0.go, "#go_conditiondescs/#txt_conditionitem")
-	slot0._imageconditionstar = gohelper.findChildImage(slot0.go, "top/title/#image_conditionstar")
+	arg_1_0._txtconditionitem = gohelper.findChildText(arg_1_0.go, "#go_conditiondescs/#txt_conditionitem")
+	arg_1_0._imageconditionstar = gohelper.findChildImage(arg_1_0.go, "top/title/#image_conditionstar")
 
-	Act183Helper.setEpisodeConditionStar(slot0._imageconditionstar, true)
+	Act183Helper.setEpisodeConditionStar(arg_1_0._imageconditionstar, true)
 
-	slot0._conditionItemTab = slot0:getUserDataTb_()
+	arg_1_0._conditionItemTab = arg_1_0:getUserDataTb_()
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_4_0, arg_4_1)
+	var_0_0.super.updateInfo(arg_4_0, arg_4_1)
 
-	slot0._conditionIds = slot0._episodeMo:getConditionIds()
-	slot0._isAllConditionPass = slot0._episodeMo:isAllConditionPass()
+	arg_4_0._conditionIds = arg_4_0._episodeMo:getConditionIds()
+	arg_4_0._isAllConditionPass = arg_4_0._episodeMo:isAllConditionPass()
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._conditionIds and #slot0._conditionIds > 0
+function var_0_0.checkIsVisible(arg_5_0)
+	return arg_5_0._conditionIds and #arg_5_0._conditionIds > 0
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
-	slot0:createObjList(slot0._conditionIds, slot0._conditionItemTab, slot0._txtconditionitem.gameObject, slot0._initConditionItemFunc, slot0._refreshConditionItemFunc, slot0._defaultItemFreeFunc)
-	ZProj.UGUIHelper.SetGrayscale(slot0._imageconditionstar.gameObject, not slot0._isAllConditionPass)
+function var_0_0.show(arg_6_0)
+	var_0_0.super.show(arg_6_0)
+	arg_6_0:createObjList(arg_6_0._conditionIds, arg_6_0._conditionItemTab, arg_6_0._txtconditionitem.gameObject, arg_6_0._initConditionItemFunc, arg_6_0._refreshConditionItemFunc, arg_6_0._defaultItemFreeFunc)
+	ZProj.UGUIHelper.SetGrayscale(arg_6_0._imageconditionstar.gameObject, not arg_6_0._isAllConditionPass)
 end
 
-function slot0._initConditionItemFunc(slot0, slot1)
-	slot1.txtcondition = gohelper.onceAddComponent(slot1.go, gohelper.Type_TextMesh)
+function var_0_0._initConditionItemFunc(arg_7_0, arg_7_1)
+	arg_7_1.txtcondition = gohelper.onceAddComponent(arg_7_1.go, gohelper.Type_TextMesh)
 
-	SkillHelper.addHyperLinkClick(slot1.txtcondition)
+	SkillHelper.addHyperLinkClick(arg_7_1.txtcondition)
 
-	slot1.gostar = gohelper.findChild(slot1.go, "star")
+	arg_7_1.gostar = gohelper.findChild(arg_7_1.go, "star")
 end
 
-function slot0._refreshConditionItemFunc(slot0, slot1, slot2, slot3)
-	if not Act183Config.instance:getConditionCo(slot2) then
+function var_0_0._refreshConditionItemFunc(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	local var_8_0 = Act183Config.instance:getConditionCo(arg_8_2)
+
+	if not var_8_0 then
 		return
 	end
 
-	slot1.txtcondition.text = SkillHelper.buildDesc(slot4.decs1)
+	arg_8_1.txtcondition.text = SkillHelper.buildDesc(var_8_0.decs1)
 
-	gohelper.setActive(slot1.gostar, slot0._episodeMo:isConditionPass(slot2))
+	local var_8_1 = arg_8_0._episodeMo:isConditionPass(arg_8_2)
+
+	gohelper.setActive(arg_8_1.gostar, var_8_1)
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_9_0)
+	var_0_0.super.onDestroy(arg_9_0)
 end
 
-return slot0
+return var_0_0

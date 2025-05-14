@@ -1,20 +1,20 @@
-module("modules.logic.fight.system.work.FightWorkNewChangeWave337", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkNewChangeWave337", package.seeall)
 
-slot0 = class("FightWorkNewChangeWave337", FightEffectBase)
+local var_0_0 = class("FightWorkNewChangeWave337", FightEffectBase)
 
-function slot0.onStart(slot0)
-	slot1 = slot0:com_registWorkDoneFlowSequence()
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0:com_registWorkDoneFlowSequence()
 
-	slot1:registWork(Work2FightWork, FightWorkStepChangeWave, slot0.actEffectData.fight)
-	slot1:registWork(Work2FightWork, FightWorkAppearTimeline)
-	slot1:registWork(Work2FightWork, FightWorkStartBornEnemy)
-	slot1:registWork(Work2FightWork, FightWorkFocusMonster)
-	slot1:registWork(FightWorkFunction, slot0.sendChangeWaveEvent, slot0)
-	slot1:start({})
+	var_1_0:registWork(Work2FightWork, FightWorkStepChangeWave, arg_1_0.actEffectData.fight)
+	var_1_0:registWork(Work2FightWork, FightWorkAppearTimeline)
+	var_1_0:registWork(Work2FightWork, FightWorkStartBornEnemy)
+	var_1_0:registWork(Work2FightWork, FightWorkFocusMonster)
+	var_1_0:registWork(FightWorkFunction, arg_1_0.sendChangeWaveEvent, arg_1_0)
+	var_1_0:start({})
 end
 
-function slot0.sendChangeWaveEvent(slot0)
+function var_0_0.sendChangeWaveEvent(arg_2_0)
 	FightController.instance:beginWave()
 end
 
-return slot0
+return var_0_0

@@ -1,297 +1,306 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191CharacterExSkillView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191CharacterExSkillView", package.seeall)
 
-slot0 = class("Act191CharacterExSkillView", BaseView)
+local var_0_0 = class("Act191CharacterExSkillView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._golvProgress = gohelper.findChild(slot0.viewGO, "#go_lvProgress")
-	slot0._goitem = gohelper.findChild(slot0.viewGO, "materialCost/#go_item")
-	slot0._goskillDetailTipView = gohelper.findChild(slot0.viewGO, "#go_skillDetailTipView")
-	slot0._goarrow = gohelper.findChild(slot0.viewGO, "#go_skillDetailTipView/tipViewBg/#go_arrow")
-	slot0._goContent = gohelper.findChild(slot0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content")
-	slot0._godescripteList = gohelper.findChild(slot0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content/#go_descripteList")
-	slot0._godescitem = gohelper.findChild(slot0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content/#go_descripteList/descripteitem")
-	slot0._goBuffContainer = gohelper.findChild(slot0.viewGO, "#go_buffContainer")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._golvProgress = gohelper.findChild(arg_1_0.viewGO, "#go_lvProgress")
+	arg_1_0._goitem = gohelper.findChild(arg_1_0.viewGO, "materialCost/#go_item")
+	arg_1_0._goskillDetailTipView = gohelper.findChild(arg_1_0.viewGO, "#go_skillDetailTipView")
+	arg_1_0._goarrow = gohelper.findChild(arg_1_0.viewGO, "#go_skillDetailTipView/tipViewBg/#go_arrow")
+	arg_1_0._goContent = gohelper.findChild(arg_1_0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content")
+	arg_1_0._godescripteList = gohelper.findChild(arg_1_0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content/#go_descripteList")
+	arg_1_0._godescitem = gohelper.findChild(arg_1_0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll/Viewport/#go_Content/#go_descripteList/descripteitem")
+	arg_1_0._goBuffContainer = gohelper.findChild(arg_1_0.viewGO, "#go_buffContainer")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-slot0.NormalDescColor = "#b1b1b1"
-slot0.NotHaveDescColor = "#b1b1b1"
-slot0.NormalDescColorA = 1
-slot0.NotHaveDescColorA = 0.4
+var_0_0.NormalDescColor = "#b1b1b1"
+var_0_0.NotHaveDescColor = "#b1b1b1"
+var_0_0.NormalDescColorA = 1
+var_0_0.NotHaveDescColorA = 0.4
 
-function slot0._onEscapeBtnClick(slot0)
-	slot0:closeThis()
+function var_0_0._onEscapeBtnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	slot0.goCircleNormal1 = gohelper.findChild(slot0.viewGO, "go_skills/#simage_circleup")
-	slot0.goCircleNormal2 = gohelper.findChild(slot0.viewGO, "go_skills/#simage_circledown")
-	slot0.goCircleMax1 = gohelper.findChild(slot0.viewGO, "go_skills/#simage_maxup")
-	slot0.goCircleMax2 = gohelper.findChild(slot0.viewGO, "go_skills/#simage_maxdown")
-	slot0._gocircle1 = gohelper.findChild(slot0.viewGO, "go_skills/decoration/#go_circle1")
-	slot0._gocircle5 = gohelper.findChild(slot0.viewGO, "go_skills/decoration/#go_circle5")
-	slot0._gosignature = gohelper.findChild(slot0.viewGO, "go_skills/signature")
-	slot0._goclickani = gohelper.findChild(slot0.viewGO, "go_skills/click/ani")
-	slot0._gomaxani = gohelper.findChild(slot0.viewGO, "go_skills/max/ani")
-	slot0._simagefulllevel = gohelper.findChildSingleImage(slot0.viewGO, "go_skills/decoration/#simage_fulllevel")
-	slot0._scrollskillDetailTipScroll = gohelper.findChildScrollRect(slot0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll")
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.goCircleNormal1 = gohelper.findChild(arg_5_0.viewGO, "go_skills/#simage_circleup")
+	arg_5_0.goCircleNormal2 = gohelper.findChild(arg_5_0.viewGO, "go_skills/#simage_circledown")
+	arg_5_0.goCircleMax1 = gohelper.findChild(arg_5_0.viewGO, "go_skills/#simage_maxup")
+	arg_5_0.goCircleMax2 = gohelper.findChild(arg_5_0.viewGO, "go_skills/#simage_maxdown")
+	arg_5_0._gocircle1 = gohelper.findChild(arg_5_0.viewGO, "go_skills/decoration/#go_circle1")
+	arg_5_0._gocircle5 = gohelper.findChild(arg_5_0.viewGO, "go_skills/decoration/#go_circle5")
+	arg_5_0._gosignature = gohelper.findChild(arg_5_0.viewGO, "go_skills/signature")
+	arg_5_0._goclickani = gohelper.findChild(arg_5_0.viewGO, "go_skills/click/ani")
+	arg_5_0._gomaxani = gohelper.findChild(arg_5_0.viewGO, "go_skills/max/ani")
+	arg_5_0._simagefulllevel = gohelper.findChildSingleImage(arg_5_0.viewGO, "go_skills/decoration/#simage_fulllevel")
+	arg_5_0._scrollskillDetailTipScroll = gohelper.findChildScrollRect(arg_5_0.viewGO, "#go_skillDetailTipView/skillDetailTipScroll")
 
-	slot0._scrollskillDetailTipScroll:AddOnValueChanged(slot0._refreshArrow, slot0)
+	arg_5_0._scrollskillDetailTipScroll:AddOnValueChanged(arg_5_0._refreshArrow, arg_5_0)
+	arg_5_0._simagefulllevel:LoadImage(ResUrl.getCharacterExskill("zs_02"))
 
-	slot4 = "zs_02"
+	arg_5_0.skillContainerGo = gohelper.findChild(arg_5_0.viewGO, "go_skills")
+	arg_5_0.skillCardGoDict = arg_5_0:getUserDataTb_()
 
-	slot0._simagefulllevel:LoadImage(ResUrl.getCharacterExskill(slot4))
+	for iter_5_0 = 1, 3 do
+		local var_5_0 = arg_5_0:getUserDataTb_()
 
-	slot0.skillContainerGo = gohelper.findChild(slot0.viewGO, "go_skills")
-	slot0.skillCardGoDict = slot0:getUserDataTb_()
-
-	for slot4 = 1, 3 do
-		slot5 = slot0:getUserDataTb_()
-		slot5.icon = gohelper.findChildSingleImage(slot0.skillContainerGo, string.format("skillicon%s/ani/imgIcon", slot4))
-		slot5.tagIcon = gohelper.findChildSingleImage(slot0.skillContainerGo, string.format("skillicon%s/ani/tag/tagIcon", slot4))
-		slot0.skillCardGoDict[slot4] = slot5
+		var_5_0.icon = gohelper.findChildSingleImage(arg_5_0.skillContainerGo, string.format("skillicon%s/ani/imgIcon", iter_5_0))
+		var_5_0.tagIcon = gohelper.findChildSingleImage(arg_5_0.skillContainerGo, string.format("skillicon%s/ani/tag/tagIcon", iter_5_0))
+		arg_5_0.skillCardGoDict[iter_5_0] = var_5_0
 	end
 
-	slot0._buffBg = gohelper.findChild(slot0.viewGO, "#go_buffContainer/buff_bg")
-	slot0._buffBgClick = gohelper.getClick(slot0._buffBg)
-	slot4 = slot0
+	arg_5_0._buffBg = gohelper.findChild(arg_5_0.viewGO, "#go_buffContainer/buff_bg")
+	arg_5_0._buffBgClick = gohelper.getClick(arg_5_0._buffBg)
 
-	slot0._buffBgClick:AddClickDownListener(slot0.hideBuffContainer, slot4)
+	arg_5_0._buffBgClick:AddClickDownListener(arg_5_0.hideBuffContainer, arg_5_0)
 
-	slot0._goBuffItem = gohelper.findChild(slot0.viewGO, "#go_buffContainer/#go_buffitem")
-	slot0._txtBuffName = gohelper.findChildText(slot0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name")
-	slot0._goBuffTag = gohelper.findChild(slot0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name/go_tag")
-	slot0._txtBuffTagName = gohelper.findChildText(slot0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name/go_tag/bg/txt_tagname")
-	slot0._txtBuffDesc = gohelper.findChildText(slot0.viewGO, "#go_buffContainer/#go_buffitem/txt_desc")
-	slot0.golvList = slot0:getUserDataTb_()
+	arg_5_0._goBuffItem = gohelper.findChild(arg_5_0.viewGO, "#go_buffContainer/#go_buffitem")
+	arg_5_0._txtBuffName = gohelper.findChildText(arg_5_0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name")
+	arg_5_0._goBuffTag = gohelper.findChild(arg_5_0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name/go_tag")
+	arg_5_0._txtBuffTagName = gohelper.findChildText(arg_5_0.viewGO, "#go_buffContainer/#go_buffitem/title/txt_name/go_tag/bg/txt_tagname")
+	arg_5_0._txtBuffDesc = gohelper.findChildText(arg_5_0.viewGO, "#go_buffContainer/#go_buffitem/txt_desc")
+	arg_5_0.golvList = arg_5_0:getUserDataTb_()
 
-	for slot4 = 1, CharacterEnum.MaxSkillExLevel do
-		table.insert(slot0.golvList, gohelper.findChild(slot0.viewGO, "#go_lvProgress/#go_lv" .. slot4))
+	for iter_5_1 = 1, CharacterEnum.MaxSkillExLevel do
+		table.insert(arg_5_0.golvList, gohelper.findChild(arg_5_0.viewGO, "#go_lvProgress/#go_lv" .. iter_5_1))
 	end
 
-	gohelper.setActive(slot0._goBuffContainer, false)
-	gohelper.setActive(slot0._godescitem, false)
-	gohelper.setActive(slot0._gosignature, false)
+	gohelper.setActive(arg_5_0._goBuffContainer, false)
+	gohelper.setActive(arg_5_0._godescitem, false)
+	gohelper.setActive(arg_5_0._gosignature, false)
 
-	slot0.goSignatureAnimator = slot0._gosignature:GetComponent(typeof(UnityEngine.Animator))
-	slot0.viewGoAnimator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0.viewGoAniEventWrap = slot0.viewGO:GetComponent(typeof(ZProj.AnimationEventWrap))
+	arg_5_0.goSignatureAnimator = arg_5_0._gosignature:GetComponent(typeof(UnityEngine.Animator))
+	arg_5_0.viewGoAnimator = arg_5_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	arg_5_0.viewGoAniEventWrap = arg_5_0.viewGO:GetComponent(typeof(ZProj.AnimationEventWrap))
 
-	slot0.viewGoAniEventWrap:AddEventListener("end", slot0.onAniEnd, slot0)
-	slot0.viewGoAniEventWrap:AddEventListener("refreshUI", slot0.onAniRefreshUI, slot0)
-	slot0.viewGoAniEventWrap:AddEventListener("onJumpTargetFrame", slot0.onJumpTargetFrame, slot0)
+	arg_5_0.viewGoAniEventWrap:AddEventListener("end", arg_5_0.onAniEnd, arg_5_0)
+	arg_5_0.viewGoAniEventWrap:AddEventListener("refreshUI", arg_5_0.onAniRefreshUI, arg_5_0)
+	arg_5_0.viewGoAniEventWrap:AddEventListener("onJumpTargetFrame", arg_5_0.onJumpTargetFrame, arg_5_0)
 
-	slot0.goClickAnimation = slot0._goclickani:GetComponent(typeof(UnityEngine.Animation))
-	slot0.maxBuffContainerWidth = 570
+	arg_5_0.goClickAnimation = arg_5_0._goclickani:GetComponent(typeof(UnityEngine.Animation))
+	arg_5_0.maxBuffContainerWidth = 570
 end
 
-function slot0.initViewParam(slot0)
-	slot0.config = slot0.viewParam.config
-	slot0.exSkillLevel = slot0.config.exLevel
+function var_0_0.initViewParam(arg_6_0)
+	arg_6_0.config = arg_6_0.viewParam.config
+	arg_6_0.exSkillLevel = arg_6_0.config.exLevel
 end
 
-function slot0.onOpen(slot0)
-	slot0:initViewParam()
-	slot0:_refreshUI()
+function var_0_0.onOpen(arg_7_0)
+	arg_7_0:initViewParam()
+	arg_7_0:_refreshUI()
 
-	if slot0:_isSkillLevelTop() then
-		gohelper.setActive(slot0._gosignature, true)
-		slot0.goSignatureAnimator:Play(UIAnimationName.Open)
+	if arg_7_0:_isSkillLevelTop() then
+		gohelper.setActive(arg_7_0._gosignature, true)
+		arg_7_0.goSignatureAnimator:Play(UIAnimationName.Open)
 	end
 
-	if slot0:_isSkillLevelTop() then
+	if arg_7_0:_isSkillLevelTop() then
 		AudioMgr.instance:trigger(AudioEnum.UI.Play_ui_mould_opengeneral)
 	else
 		AudioMgr.instance:trigger(AudioEnum.UI.Play_ui_mould_open)
 	end
 
-	NavigateMgr.instance:addEscape(ViewName.Act191CharacterExSkillView, slot0._onEscapeBtnClick, slot0)
+	NavigateMgr.instance:addEscape(ViewName.Act191CharacterExSkillView, arg_7_0._onEscapeBtnClick, arg_7_0)
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:initViewParam()
-	slot0:_refreshUI()
-	gohelper.setActive(slot0._gosignature, slot0:_isSkillLevelTop())
+function var_0_0.onUpdateParam(arg_8_0)
+	arg_8_0:initViewParam()
+	arg_8_0:_refreshUI()
+	gohelper.setActive(arg_8_0._gosignature, arg_8_0:_isSkillLevelTop())
 end
 
-function slot0._refreshUI(slot0)
-	slot0:refreshCircleAnimation()
-	slot0:refreshSkillCardInfo()
-	slot0:refreshExLevel()
-	slot0:showSkillDetail()
-	slot0:setSkillLevelTop(slot0:_isSkillLevelTop())
+function var_0_0._refreshUI(arg_9_0)
+	arg_9_0:refreshCircleAnimation()
+	arg_9_0:refreshSkillCardInfo()
+	arg_9_0:refreshExLevel()
+	arg_9_0:showSkillDetail()
+	arg_9_0:setSkillLevelTop(arg_9_0:_isSkillLevelTop())
 end
 
-function slot0.refreshCircleAnimation(slot0)
-	slot1 = slot0:_isSkillLevelTop()
+function var_0_0.refreshCircleAnimation(arg_10_0)
+	local var_10_0 = arg_10_0:_isSkillLevelTop()
 
-	gohelper.setActive(slot0.goCircleNormal1, not slot1)
-	gohelper.setActive(slot0.goCircleNormal2, not slot1)
-	gohelper.setActive(slot0.goCircleMax1, slot1)
-	gohelper.setActive(slot0.goCircleMax2, slot1)
+	gohelper.setActive(arg_10_0.goCircleNormal1, not var_10_0)
+	gohelper.setActive(arg_10_0.goCircleNormal2, not var_10_0)
+	gohelper.setActive(arg_10_0.goCircleMax1, var_10_0)
+	gohelper.setActive(arg_10_0.goCircleMax2, var_10_0)
 end
 
-function slot0.refreshSkillCardInfo(slot0)
-	slot2, slot3 = nil
+function var_0_0.refreshSkillCardInfo(arg_11_0)
+	local var_11_0 = Activity191Config.instance:getHeroSkillIdDic(arg_11_0.config.id, true)
+	local var_11_1
+	local var_11_2
 
-	for slot7 = 1, 3 do
-		if not lua_skill.configDict[Activity191Config.instance:getHeroSkillIdDic(slot0.config.id, true)[slot7]] then
-			logError(string.format("heroID : %s, skillId not found : %s", slot0.config.id, slot3))
+	for iter_11_0 = 1, 3 do
+		local var_11_3 = var_11_0[iter_11_0]
+		local var_11_4 = lua_skill.configDict[var_11_3]
+
+		if not var_11_4 then
+			logError(string.format("heroID : %s, skillId not found : %s", arg_11_0.config.id, var_11_3))
 		end
 
-		slot0.skillCardGoDict[slot7].icon:LoadImage(ResUrl.getSkillIcon(slot2.icon))
-		slot0.skillCardGoDict[slot7].tagIcon:LoadImage(ResUrl.getAttributeIcon("attribute_" .. slot2.showTag))
+		arg_11_0.skillCardGoDict[iter_11_0].icon:LoadImage(ResUrl.getSkillIcon(var_11_4.icon))
+		arg_11_0.skillCardGoDict[iter_11_0].tagIcon:LoadImage(ResUrl.getAttributeIcon("attribute_" .. var_11_4.showTag))
 	end
 end
 
-function slot0.refreshExLevel(slot0)
-	for slot4 = 1, slot0.exSkillLevel do
-		gohelper.setActive(slot0.golvList[slot4], true)
+function var_0_0.refreshExLevel(arg_12_0)
+	for iter_12_0 = 1, arg_12_0.exSkillLevel do
+		gohelper.setActive(arg_12_0.golvList[iter_12_0], true)
 	end
 
-	for slot4 = slot0.exSkillLevel + 1, CharacterEnum.MaxSkillExLevel do
-		gohelper.setActive(slot0.golvList[slot4], false)
+	for iter_12_1 = arg_12_0.exSkillLevel + 1, CharacterEnum.MaxSkillExLevel do
+		gohelper.setActive(arg_12_0.golvList[iter_12_1], false)
 	end
 end
 
-function slot0.setSkillLevelTop(slot0, slot1)
-	if slot1 then
-		recthelper.setHeight(slot0._scrollskillDetailTipScroll.transform, 638)
+function var_0_0.setSkillLevelTop(arg_13_0, arg_13_1)
+	if arg_13_1 then
+		recthelper.setHeight(arg_13_0._scrollskillDetailTipScroll.transform, 638)
 	else
-		recthelper.setHeight(slot0._scrollskillDetailTipScroll.transform, 750)
+		recthelper.setHeight(arg_13_0._scrollskillDetailTipScroll.transform, 750)
 	end
 
-	gohelper.setActive(slot0._simagefulllevel.gameObject, slot1)
-	gohelper.setActive(slot0._gocircle5, slot1)
-	gohelper.setActive(slot0._gocircle1, slot1 == false)
+	gohelper.setActive(arg_13_0._simagefulllevel.gameObject, arg_13_1)
+	gohelper.setActive(arg_13_0._gocircle5, arg_13_1)
+	gohelper.setActive(arg_13_0._gocircle1, arg_13_1 == false)
 end
 
-function slot0._refreshArrow(slot0)
-	if slot0._scrollskillDetailTipScroll.verticalNormalizedPosition > 0.01 then
-		gohelper.setActive(slot0._goarrow, true)
+function var_0_0._refreshArrow(arg_14_0)
+	if arg_14_0._scrollskillDetailTipScroll.verticalNormalizedPosition > 0.01 then
+		gohelper.setActive(arg_14_0._goarrow, true)
 	else
-		gohelper.setActive(slot0._goarrow, false)
+		gohelper.setActive(arg_14_0._goarrow, false)
 	end
 end
 
-function slot0._isSkillLevelTop(slot0)
-	return slot0.exSkillLevel == CharacterEnum.MaxSkillExLevel
+function var_0_0._isSkillLevelTop(arg_15_0)
+	return arg_15_0.exSkillLevel == CharacterEnum.MaxSkillExLevel
 end
 
-function slot0.onAniEnd(slot0)
-	gohelper.setActive(slot0._goJumpAnimationMask, false)
-	gohelper.setActive(slot0._goclickani, true)
-	gohelper.setActive(slot0._gomaxani, true)
+function var_0_0.onAniEnd(arg_16_0)
+	gohelper.setActive(arg_16_0._goJumpAnimationMask, false)
+	gohelper.setActive(arg_16_0._goclickani, true)
+	gohelper.setActive(arg_16_0._gomaxani, true)
 end
 
-function slot0.onAniRefreshUI(slot0)
-	slot0:_refreshUI()
+function var_0_0.onAniRefreshUI(arg_17_0)
+	arg_17_0:_refreshUI()
 end
 
-function slot0.onJumpTargetFrame(slot0)
-	slot0.inPreTargetFrame = false
+function var_0_0.onJumpTargetFrame(arg_18_0)
+	arg_18_0.inPreTargetFrame = false
 end
 
-function slot0.resetJumpValue(slot0)
-	slot0.inPreTargetFrame = true
-	slot0.jumped = false
+function var_0_0.resetJumpValue(arg_19_0)
+	arg_19_0.inPreTargetFrame = true
+	arg_19_0.jumped = false
 end
 
-function slot0.showSkillDetail(slot0)
-	slot1 = 0
-	slot2 = 0
+function var_0_0.showSkillDetail(arg_20_0)
+	local var_20_0 = 0
+	local var_20_1 = 0
 
-	for slot6 = 1, CharacterEnum.MaxSkillExLevel do
-		slot7 = slot0:addDescItem(slot6)
+	for iter_20_0 = 1, CharacterEnum.MaxSkillExLevel do
+		local var_20_2 = arg_20_0:addDescItem(iter_20_0)
 
-		if slot6 == slot0.exSkillLevel then
-			slot2 = slot1
+		if iter_20_0 == arg_20_0.exSkillLevel then
+			var_20_1 = var_20_0
 		end
 
-		slot1 = slot1 + slot7
+		var_20_0 = var_20_0 + var_20_2
 	end
 
-	slot0._goContent:SetActive(true)
-	slot0:rebuildLayout()
-	recthelper.setAnchorY(slot0._goContent.transform, slot2)
+	arg_20_0._goContent:SetActive(true)
+	arg_20_0:rebuildLayout()
+	recthelper.setAnchorY(arg_20_0._goContent.transform, var_20_1)
 end
 
-function slot0.rebuildLayout(slot0)
-	ZProj.UGUIHelper.RebuildLayout(slot0._godescripteList.transform)
-	slot0:_refreshArrow()
+function var_0_0.rebuildLayout(arg_21_0)
+	ZProj.UGUIHelper.RebuildLayout(arg_21_0._godescripteList.transform)
+	arg_21_0:_refreshArrow()
 end
 
-function slot0.addDescItem(slot0, slot1)
-	slot0._descList = slot0._descList or slot0:getUserDataTb_()
+function var_0_0.addDescItem(arg_22_0, arg_22_1)
+	arg_22_0._descList = arg_22_0._descList or arg_22_0:getUserDataTb_()
 
-	if not slot0._descList[slot1] then
-		slot2 = Act191CharacterSkillDesc.New()
-		slot3 = gohelper.clone(slot0._godescitem, slot0._godescripteList)
+	local var_22_0 = arg_22_0._descList[arg_22_1]
 
-		slot3:SetActive(true)
-		slot2:initView(slot3)
+	if not var_22_0 then
+		var_22_0 = Act191CharacterSkillDesc.New()
 
-		slot0._descList[slot1] = slot2
+		local var_22_1 = gohelper.clone(arg_22_0._godescitem, arg_22_0._godescripteList)
+
+		var_22_1:SetActive(true)
+		var_22_0:initView(var_22_1)
+
+		arg_22_0._descList[arg_22_1] = var_22_0
 	end
 
-	return slot2:updateInfo(slot0, slot0.config, slot1)
+	return (var_22_0:updateInfo(arg_22_0, arg_22_0.config, arg_22_1))
 end
 
-function slot0.showBuffContainer(slot0, slot1, slot2, slot3)
-	gohelper.setActive(slot0._goBuffContainer, true)
+function var_0_0.showBuffContainer(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
+	gohelper.setActive(arg_23_0._goBuffContainer, true)
 
-	slot0.buffItemWidth = GameUtil.getTextWidthByLine(slot0._txtBuffDesc, slot2, 24)
-	slot0.buffItemWidth = slot0.buffItemWidth + 70
+	arg_23_0.buffItemWidth = GameUtil.getTextWidthByLine(arg_23_0._txtBuffDesc, arg_23_2, 24)
+	arg_23_0.buffItemWidth = arg_23_0.buffItemWidth + 70
 
-	if slot0.maxBuffContainerWidth < slot0.buffItemWidth then
-		slot0.buffItemWidth = slot0.maxBuffContainerWidth
+	if arg_23_0.buffItemWidth > arg_23_0.maxBuffContainerWidth then
+		arg_23_0.buffItemWidth = arg_23_0.maxBuffContainerWidth
 	end
 
-	slot0._txtBuffName.text = slot1
-	slot0._txtBuffDesc.text = slot2
-	slot4 = FightConfig.instance:getBuffTag(slot1)
+	arg_23_0._txtBuffName.text = arg_23_1
+	arg_23_0._txtBuffDesc.text = arg_23_2
 
-	gohelper.setActive(slot0._goBuffTag, not string.nilorempty(slot4))
+	local var_23_0 = FightConfig.instance:getBuffTag(arg_23_1)
 
-	slot0._txtBuffTagName.text = slot4
-	slot5 = recthelper.screenPosToAnchorPos(slot3, slot0.viewGO.transform)
+	gohelper.setActive(arg_23_0._goBuffTag, not string.nilorempty(var_23_0))
 
-	recthelper.setAnchor(slot0._goBuffItem.transform, slot5.x - 20, slot5.y)
+	arg_23_0._txtBuffTagName.text = var_23_0
+
+	local var_23_1 = recthelper.screenPosToAnchorPos(arg_23_3, arg_23_0.viewGO.transform)
+
+	recthelper.setAnchor(arg_23_0._goBuffItem.transform, var_23_1.x - 20, var_23_1.y)
 end
 
-function slot0.hideBuffContainer(slot0)
-	gohelper.setActive(slot0._goBuffContainer, false)
+function var_0_0.hideBuffContainer(arg_24_0)
+	gohelper.setActive(arg_24_0._goBuffContainer, false)
 end
 
-function slot0.getShowAttributeOption(slot0)
+function var_0_0.getShowAttributeOption(arg_25_0)
 	return CharacterEnum.showAttributeOption.ShowCurrent
 end
 
-function slot0.onClose(slot0)
-	for slot4, slot5 in ipairs(slot0._descList) do
-		slot5:onClose()
+function var_0_0.onClose(arg_26_0)
+	for iter_26_0, iter_26_1 in ipairs(arg_26_0._descList) do
+		iter_26_1:onClose()
 	end
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._buffBgClick:RemoveClickDownListener()
-	slot0._scrollskillDetailTipScroll:RemoveOnValueChanged()
-	slot0._simagefulllevel:UnLoadImage()
-	slot0.viewGoAniEventWrap:RemoveAllEventListener()
+function var_0_0.onDestroyView(arg_27_0)
+	arg_27_0._buffBgClick:RemoveClickDownListener()
+	arg_27_0._scrollskillDetailTipScroll:RemoveOnValueChanged()
+	arg_27_0._simagefulllevel:UnLoadImage()
+	arg_27_0.viewGoAniEventWrap:RemoveAllEventListener()
 
-	for slot4, slot5 in pairs(slot0.skillCardGoDict) do
-		slot5.icon:UnLoadImage()
-		slot5.tagIcon:UnLoadImage()
+	for iter_27_0, iter_27_1 in pairs(arg_27_0.skillCardGoDict) do
+		iter_27_1.icon:UnLoadImage()
+		iter_27_1.tagIcon:UnLoadImage()
 	end
 end
 
-return slot0
+return var_0_0

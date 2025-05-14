@@ -1,24 +1,25 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191NodeDetailMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191NodeDetailMO", package.seeall)
 
-slot0 = pureTable("Act191NodeDetailMO")
+local var_0_0 = pureTable("Act191NodeDetailMO")
 
-function slot0.init(slot0, slot1)
-	slot2 = cjson.decode(slot1)
-	slot0.type = slot2.type
-	slot0.shopId = slot2.shopId
-	slot0.shopFreshNum = slot2.shopFreshNum
-	slot0.shopPosMap = slot2.shopPosMap
-	slot0.boughtSet = slot2.boughtSet
-	slot0.enhanceList = slot2.enhanceList
-	slot0.enhanceNumList = slot2.enhanceNumList
-	slot0.eventId = slot2.eventId
-	slot0.fightEventId = slot2.fightEventId
+function var_0_0.init(arg_1_0, arg_1_1)
+	local var_1_0 = cjson.decode(arg_1_1)
 
-	if slot2.matchInfo then
-		slot0.matchInfo = Act191MatchMO.New()
+	arg_1_0.type = var_1_0.type
+	arg_1_0.shopId = var_1_0.shopId
+	arg_1_0.shopFreshNum = var_1_0.shopFreshNum
+	arg_1_0.shopPosMap = var_1_0.shopPosMap
+	arg_1_0.boughtSet = var_1_0.boughtSet
+	arg_1_0.enhanceList = var_1_0.enhanceList
+	arg_1_0.enhanceNumList = var_1_0.enhanceNumList
+	arg_1_0.eventId = var_1_0.eventId
+	arg_1_0.fightEventId = var_1_0.fightEventId
 
-		slot0.matchInfo:init(slot2.matchInfo)
+	if var_1_0.matchInfo then
+		arg_1_0.matchInfo = Act191MatchMO.New()
+
+		arg_1_0.matchInfo:init(var_1_0.matchInfo)
 	end
 end
 
-return slot0
+return var_0_0

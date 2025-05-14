@@ -1,11 +1,12 @@
-module("modules.logic.versionactivity2_6.common.ActivityLiveMgr2_6", package.seeall)
+﻿module("modules.logic.versionactivity2_6.common.ActivityLiveMgr2_6", package.seeall)
 
-slot0 = class("ActivityLiveMgr2_6")
+local var_0_0 = class("ActivityLiveMgr2_6")
 
-function slot0.init(slot0)
+function var_0_0.init(arg_1_0)
+	return
 end
 
-function slot0.getActId2ViewList(slot0)
+function var_0_0.getActId2ViewList(arg_2_0)
 	return {
 		[VersionActivity2_6Enum.ActivityId.EnterView] = {
 			ViewName.VersionActivity2_6EnterView
@@ -24,6 +25,6 @@ function slot0.getActId2ViewList(slot0)
 	}
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

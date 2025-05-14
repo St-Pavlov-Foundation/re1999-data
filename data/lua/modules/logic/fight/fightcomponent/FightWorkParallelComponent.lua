@@ -1,58 +1,58 @@
-module("modules.logic.fight.fightcomponent.FightWorkParallelComponent", package.seeall)
+﻿module("modules.logic.fight.fightcomponent.FightWorkParallelComponent", package.seeall)
 
-slot0 = class("FightWorkParallelComponent", FightBaseClass)
+local var_0_0 = class("FightWorkParallelComponent", FightBaseClass)
 
-function slot0.onConstructor(slot0)
-	slot0.workParallel = {}
-	slot0.callback = nil
-	slot0.callbackHandle = nil
-	slot0.finishCount = 0
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.workParallel = {}
+	arg_1_0.callback = nil
+	arg_1_0.callbackHandle = nil
+	arg_1_0.finishCount = 0
 end
 
-function slot0.registFinishCallback(slot0, slot1, slot2)
-	slot0.callback = slot1
-	slot0.callbackHandle = slot2
+function var_0_0.registFinishCallback(arg_2_0, arg_2_1, arg_2_2)
+	arg_2_0.callback = arg_2_1
+	arg_2_0.callbackHandle = arg_2_2
 end
 
-function slot0.clearFinishCallback(slot0)
-	slot0.callback = nil
-	slot0.callbackHandle = nil
+function var_0_0.clearFinishCallback(arg_3_0)
+	arg_3_0.callback = nil
+	arg_3_0.callbackHandle = nil
 end
 
-function slot0.addWork(slot0, slot1, slot2)
-	slot0:addWorkList({
-		slot1
-	}, slot2)
+function var_0_0.addWork(arg_4_0, arg_4_1, arg_4_2)
+	arg_4_0:addWorkList({
+		arg_4_1
+	}, arg_4_2)
 end
 
-function slot0.addWorkList(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot1) do
-		slot7:registFinishCallback(slot0._onWorkFinish, slot0)
-		table.insert(slot0.workParallel, {
-			work = slot7,
-			context = slot2
+function var_0_0.addWorkList(arg_5_0, arg_5_1, arg_5_2)
+	for iter_5_0, iter_5_1 in ipairs(arg_5_1) do
+		iter_5_1:registFinishCallback(arg_5_0._onWorkFinish, arg_5_0)
+		table.insert(arg_5_0.workParallel, {
+			work = iter_5_1,
+			context = arg_5_2
 		})
 	end
 
-	for slot6, slot7 in ipairs(slot1) do
-		slot7:start(slot2)
+	for iter_5_2, iter_5_3 in ipairs(arg_5_1) do
+		iter_5_3:start(arg_5_2)
 	end
 end
 
-function slot0._onWorkFinish(slot0)
-	slot0.finishCount = slot0.finishCount + 1
+function var_0_0._onWorkFinish(arg_6_0)
+	arg_6_0.finishCount = arg_6_0.finishCount + 1
 
-	if slot0.finishCount == #slot0.workParallel and slot0.callback then
-		slot0.callback(slot0.callbackHandle)
+	if arg_6_0.finishCount == #arg_6_0.workParallel and arg_6_0.callback then
+		arg_6_0.callback(arg_6_0.callbackHandle)
 	end
 end
 
-function slot0.onDestructor(slot0)
-	for slot4 = #slot0.workParallel, 1, -1 do
-		slot0.workParallel[slot4].work:disposeSelf()
+function var_0_0.onDestructor(arg_7_0)
+	for iter_7_0 = #arg_7_0.workParallel, 1, -1 do
+		arg_7_0.workParallel[iter_7_0].work:disposeSelf()
 	end
 
-	slot0:clearFinishCallback()
+	arg_7_0:clearFinishCallback()
 end
 
-return slot0
+return var_0_0

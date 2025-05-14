@@ -1,35 +1,39 @@
-module("modules.logic.common.view.FixTmpBreakLine", package.seeall)
+﻿module("modules.logic.common.view.FixTmpBreakLine", package.seeall)
 
-slot0 = class("FixTmpBreakLine", LuaCompBase)
+local var_0_0 = class("FixTmpBreakLine", LuaCompBase)
 
-function slot0.initData(slot0, slot1)
-	slot0.textMeshPro = slot1.gameObject:GetComponent(typeof(TMPro.TextMeshProUGUI))
+function var_0_0.initData(arg_1_0, arg_1_1)
+	arg_1_0.textMeshPro = arg_1_1.gameObject:GetComponent(typeof(TMPro.TextMeshProUGUI))
 
-	if slot0.textMeshPro then
-		slot0.textMeshPro.richText = true
+	if arg_1_0.textMeshPro then
+		arg_1_0.textMeshPro.richText = true
 	end
 end
 
-function slot0.refreshTmpContent(slot0, slot1)
-	if not slot1 then
+function var_0_0.refreshTmpContent(arg_2_0, arg_2_1)
+	if not arg_2_1 then
 		return
 	end
 
-	slot0:initData(slot1)
+	arg_2_0:initData(arg_2_1)
 
-	if not slot0:startsWith(slot0.textMeshPro.text, "<nobr>") then
-		slot2 = string.format("<nobr>%s", slot2)
+	local var_2_0 = arg_2_0.textMeshPro.text
+
+	if not arg_2_0:startsWith(var_2_0, "<nobr>") then
+		var_2_0 = string.format("<nobr>%s", var_2_0)
 	end
 
-	slot0.textMeshPro.text = string.gsub(slot2, " +", function (slot0)
-		return "<space=" .. string.len(slot0) * ZProj.GameHelper.GetTmpCharWidth(uv0.textMeshPro, 32) .. ">"
+	local var_2_1 = string.gsub(var_2_0, " +", function(arg_3_0)
+		return "<space=" .. string.len(arg_3_0) * ZProj.GameHelper.GetTmpCharWidth(arg_2_0.textMeshPro, 32) .. ">"
 	end)
 
-	slot0.textMeshPro:Rebuild(UnityEngine.UI.CanvasUpdate.PreRender)
+	arg_2_0.textMeshPro.text = var_2_1
+
+	arg_2_0.textMeshPro:Rebuild(UnityEngine.UI.CanvasUpdate.PreRender)
 end
 
-function slot0.startsWith(slot0, slot1, slot2)
-	return string.sub(slot1, 1, string.len(slot2)) == slot2
+function var_0_0.startsWith(arg_4_0, arg_4_1, arg_4_2)
+	return string.sub(arg_4_1, 1, string.len(arg_4_2)) == arg_4_2
 end
 
-return slot0
+return var_0_0

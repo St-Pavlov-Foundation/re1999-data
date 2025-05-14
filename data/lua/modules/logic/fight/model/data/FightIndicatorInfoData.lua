@@ -1,10 +1,10 @@
-module("modules.logic.fight.model.data.FightIndicatorInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightIndicatorInfoData", package.seeall)
 
-slot0 = FightDataClass("FightIndicatorInfoData")
+local var_0_0 = FightDataClass("FightIndicatorInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.inticatorId = slot1.inticatorId
-	slot0.num = slot1.num
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.inticatorId = arg_1_1.inticatorId
+	arg_1_0.num = arg_1_1.num
 end
 
-return slot0
+return var_0_0

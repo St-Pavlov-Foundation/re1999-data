@@ -1,282 +1,349 @@
-module("modules.logic.fight.view.FightBuffTipsView", package.seeall)
+﻿module("modules.logic.fight.view.FightBuffTipsView", package.seeall)
 
-slot0 = class("FightBuffTipsView", BaseView)
+local var_0_0 = class("FightBuffTipsView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._gobuffinfocontainer = gohelper.findChild(slot0.viewGO, "root/#go_buffinfocontainer/buff")
-	slot0._scrollbuff = gohelper.findChildScrollRect(slot0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff")
-	slot0._gobuffitem = gohelper.findChild(slot0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content/#go_buffitem")
-	slot0._btnclosebuffinfocontainer = gohelper.findChildButton(slot0.viewGO, "root/#go_buffinfocontainer/#btn_click")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gobuffinfocontainer = gohelper.findChild(arg_1_0.viewGO, "root/#go_buffinfocontainer/buff")
+	arg_1_0._scrollbuff = gohelper.findChildScrollRect(arg_1_0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff")
+	arg_1_0._gobuffitem = gohelper.findChild(arg_1_0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content/#go_buffitem")
+	arg_1_0._btnclosebuffinfocontainer = gohelper.findChildButton(arg_1_0.viewGO, "root/#go_buffinfocontainer/#btn_click")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnclosebuffinfocontainer:AddClickListener(slot0._onCloseBuffInfoContainer, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnclosebuffinfocontainer:AddClickListener(arg_2_0._onCloseBuffInfoContainer, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnclosebuffinfocontainer:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnclosebuffinfocontainer:RemoveClickListener()
 end
 
-function slot0._editableInitView(slot0)
-	slot0.rectTrScrollBuff = slot0._scrollbuff:GetComponent(gohelper.Type_RectTransform)
-	slot0.rectTrBuffContent = gohelper.findChildComponent(slot0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content", gohelper.Type_RectTransform)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0.rectTrScrollBuff = arg_4_0._scrollbuff:GetComponent(gohelper.Type_RectTransform)
+	arg_4_0.rectTrBuffContent = gohelper.findChildComponent(arg_4_0.viewGO, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content", gohelper.Type_RectTransform)
 
-	gohelper.setActive(slot0._gobuffitem, false)
+	gohelper.setActive(arg_4_0._gobuffitem, false)
 
-	slot0._buffItemList = {}
+	arg_4_0._buffItemList = {}
 end
 
-function slot0._onCloseBuffInfoContainer(slot0)
+function var_0_0._onCloseBuffInfoContainer(arg_5_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_click)
-	slot0:closeThis()
+	arg_5_0:closeThis()
 end
 
-function slot0.onOpen(slot0)
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, "root/tips"), true)
-	slot0:_updateBuffs(FightDataHelper.entityMgr:getById(slot0.viewParam.entityId or slot0.viewParam))
+function var_0_0.onOpen(arg_6_0)
+	gohelper.setActive(gohelper.findChild(arg_6_0.viewGO, "root/tips"), true)
 
-	if slot0.viewParam.viewname and slot0.viewParam.viewname == "FightView" then
-		slot0:_setPos(slot1)
+	local var_6_0 = FightDataHelper.entityMgr:getById(arg_6_0.viewParam.entityId or arg_6_0.viewParam)
+
+	arg_6_0:_updateBuffs(var_6_0)
+
+	if arg_6_0.viewParam.viewname and arg_6_0.viewParam.viewname == "FightView" then
+		arg_6_0:_setPos(var_6_0)
 	else
-		recthelper.setAnchorX(slot0._gobuffinfocontainer.transform, slot1.side == FightEnum.EntitySide.MySide and 207 or -161)
+		local var_6_1 = var_6_0.side == FightEnum.EntitySide.MySide and 207 or -161
+
+		recthelper.setAnchorX(arg_6_0._gobuffinfocontainer.transform, var_6_1)
 	end
 end
 
-function slot0._setPos(slot0, slot1)
-	slot0.enemyBuffTipPosY = 80
-	slot5 = recthelper.rectToRelativeAnchorPos(slot0.viewParam.iconPos, slot0._gobuffinfocontainer.transform.parent)
-	slot6 = recthelper.getWidth(slot0.rectTrScrollBuff)
-	slot7 = recthelper.getHeight(slot0.rectTrScrollBuff)
-	slot8 = 0
-	slot9 = 0
+function var_0_0._setPos(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_0.viewParam.iconPos
+	local var_7_1 = arg_7_0.viewParam.offsetX
+	local var_7_2 = arg_7_0.viewParam.offsetY
 
-	if slot1.side == FightEnum.EntitySide.MySide then
-		slot8 = slot5.x - slot0.viewParam.offsetX
-		slot9 = slot5.y + slot0.viewParam.offsetY
+	arg_7_0.enemyBuffTipPosY = 80
+
+	local var_7_3 = recthelper.rectToRelativeAnchorPos(var_7_0, arg_7_0._gobuffinfocontainer.transform.parent)
+	local var_7_4 = recthelper.getWidth(arg_7_0.rectTrScrollBuff)
+	local var_7_5 = recthelper.getHeight(arg_7_0.rectTrScrollBuff)
+	local var_7_6 = 0
+	local var_7_7 = 0
+
+	if arg_7_1.side == FightEnum.EntitySide.MySide then
+		var_7_6 = var_7_3.x - var_7_1
+		var_7_7 = var_7_3.y + var_7_2
 	else
-		slot8 = slot5.x + slot3
-		slot9 = slot0.enemyBuffTipPosY
+		var_7_6 = var_7_3.x + var_7_1
+		var_7_7 = arg_7_0.enemyBuffTipPosY
 	end
 
-	slot10 = UnityEngine.Screen.width * 0.5
-	slot11 = 10
-	slot12 = {
-		min = -slot10 + slot6 + slot11,
-		max = slot10 - slot6 - slot11
+	local var_7_8 = UnityEngine.Screen.width * 0.5
+	local var_7_9 = 10
+	local var_7_10 = {
+		min = -var_7_8 + var_7_4 + var_7_9,
+		max = var_7_8 - var_7_4 - var_7_9
 	}
+	local var_7_11 = GameUtil.clamp(var_7_6, var_7_10.min, var_7_10.max)
 
-	recthelper.setAnchor(slot0._gobuffinfocontainer.transform, GameUtil.clamp(slot8, slot12.min, slot12.max), slot9)
+	recthelper.setAnchor(arg_7_0._gobuffinfocontainer.transform, var_7_11, var_7_7)
 end
 
-function slot0._updateBuffs(slot0, slot1)
-	slot0:updateBuffDesc(slot1, slot0._buffItemList, slot0._gobuffitem, slot0, slot0.getCommonBuffTipScrollAnchor)
+function var_0_0._updateBuffs(arg_8_0, arg_8_1)
+	arg_8_0:updateBuffDesc(arg_8_1, arg_8_0._buffItemList, arg_8_0._gobuffitem, arg_8_0, arg_8_0.getCommonBuffTipScrollAnchor)
 end
 
-slot0.Interval = 10
+var_0_0.Interval = 10
 
-function slot0.getCommonBuffTipScrollAnchor(slot0, slot1, slot2)
-	slot5 = slot0.rectTrScrollBuff
-	slot7, slot8 = recthelper.uiPosToScreenPos2(slot5)
-	slot9, slot10 = SLFramework.UGUI.RectTrHelper.ScreenPosXYToAnchorPosXY(slot7, slot8, slot1, CameraMgr.instance:getUICamera(), nil, )
-	slot2.pivot = CommonBuffTipEnum.Pivot.Right
-	slot15 = slot9
+function var_0_0.getCommonBuffTipScrollAnchor(arg_9_0, arg_9_1, arg_9_2)
+	local var_9_0 = GameUtil.getViewSize() / 2
+	local var_9_1 = arg_9_0.rectTrScrollBuff
+	local var_9_2 = arg_9_0.rectTrBuffContent
+	local var_9_3, var_9_4 = recthelper.uiPosToScreenPos2(var_9_1)
+	local var_9_5, var_9_6 = SLFramework.UGUI.RectTrHelper.ScreenPosXYToAnchorPosXY(var_9_3, var_9_4, arg_9_1, CameraMgr.instance:getUICamera(), nil, nil)
+	local var_9_7 = recthelper.getWidth(var_9_1) / 2
+	local var_9_8 = var_9_0 + var_9_5 - var_9_7 - var_0_0.Interval
+	local var_9_9 = recthelper.getWidth(arg_9_2)
+	local var_9_10 = var_9_9 <= var_9_8
 
-	recthelper.setAnchor(slot2, recthelper.getWidth(slot2) <= GameUtil.getViewSize() / 2 + slot9 - recthelper.getWidth(slot5) / 2 - uv0.Interval and slot15 - slot11 - uv0.Interval or slot15 + slot11 + uv0.Interval + slot13, slot10 + math.min(recthelper.getHeight(slot5), recthelper.getHeight(slot0.rectTrBuffContent)) / 2)
+	arg_9_2.pivot = CommonBuffTipEnum.Pivot.Right
+
+	local var_9_11 = var_9_5
+	local var_9_12 = var_9_6
+
+	if var_9_10 then
+		var_9_11 = var_9_11 - var_9_7 - var_0_0.Interval
+	else
+		var_9_11 = var_9_11 + var_9_7 + var_0_0.Interval + var_9_9
+	end
+
+	local var_9_13 = math.min(recthelper.getHeight(var_9_1), recthelper.getHeight(var_9_2)) / 2
+
+	recthelper.setAnchor(arg_9_2, var_9_11, var_9_12 + var_9_13)
 end
 
-slot0.filterTypeKey = {
-	[2.0] = true
+var_0_0.filterTypeKey = {
+	[2] = true
 }
-slot1 = 635
-slot2 = 597
-slot3 = 300
 
-function slot0.updateBuffDesc(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = FightBuffHelper.filterBuffType(tabletool.copy(slot1 and slot1:getBuffList() or {}), uv0.filterTypeKey)
+local var_0_1 = 635
+local var_0_2 = 597
+local var_0_3 = 300
 
-	FightSkillBuffMgr.instance:dealStackerBuff(slot6)
-	table.sort(slot6, function (slot0, slot1)
-		if slot0.time ~= slot1.time then
-			return slot0.time < slot1.time
+function var_0_0.updateBuffDesc(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4, arg_10_5)
+	local var_10_0 = arg_10_1 and arg_10_1:getBuffList() or {}
+	local var_10_1 = tabletool.copy(var_10_0)
+	local var_10_2 = FightBuffHelper.filterBuffType(var_10_1, var_0_0.filterTypeKey)
+
+	FightSkillBuffMgr.instance:dealStackerBuff(var_10_2)
+	table.sort(var_10_2, function(arg_11_0, arg_11_1)
+		if arg_11_0.time ~= arg_11_1.time then
+			return arg_11_0.time < arg_11_1.time
 		end
 
-		return slot0.id < slot1.id
+		return arg_11_0.id < arg_11_1.id
 	end)
 
-	for slot10, slot11 in ipairs(slot2) do
-		gohelper.setActive(slot11.go, false)
+	for iter_10_0, iter_10_1 in ipairs(arg_10_2) do
+		gohelper.setActive(iter_10_1.go, false)
 	end
 
-	slot7 = slot6 and #slot6 or 0
-	slot8 = 0
-	slot9 = -1
-	slot10 = uv1
-	slot11 = uv2
-	slot12 = {}
+	local var_10_3 = var_10_2 and #var_10_2 or 0
+	local var_10_4 = 0
+	local var_10_5 = -1
+	local var_10_6 = var_0_1
+	local var_10_7 = var_0_2
+	local var_10_8 = {}
 
-	for slot16 = 1, slot7 do
-		if lua_skill_buff.configDict[slot6[slot16].buffId] and slot18.isNoShow == 0 then
-			slot19 = lua_skill_bufftype.configDict[slot18.typeId]
+	for iter_10_2 = 1, var_10_3 do
+		local var_10_9 = var_10_2[iter_10_2]
+		local var_10_10 = lua_skill_buff.configDict[var_10_9.buffId]
 
-			if not slot2[slot8 + 1] then
-				slot20 = slot4:getUserDataTb_()
-				slot20.go = gohelper.cloneInPlace(slot3, "buff" .. slot8)
-				slot20.getAnchorFunc = slot5
-				slot20.viewClass = slot4
+		if var_10_10 and var_10_10.isNoShow == 0 then
+			local var_10_11 = lua_skill_bufftype.configDict[var_10_10.typeId]
 
-				table.insert(slot2, slot20)
+			var_10_4 = var_10_4 + 1
+
+			local var_10_12 = arg_10_2[var_10_4]
+
+			if not var_10_12 then
+				var_10_12 = arg_10_4:getUserDataTb_()
+				var_10_12.go = gohelper.cloneInPlace(arg_10_3, "buff" .. var_10_4)
+				var_10_12.getAnchorFunc = arg_10_5
+				var_10_12.viewClass = arg_10_4
+
+				table.insert(arg_10_2, var_10_12)
 			end
 
-			slot21 = slot20.go
+			local var_10_13 = var_10_12.go
 
-			gohelper.setActive(slot21, true)
-			uv0.showBuffTime(gohelper.findChildText(slot21, "title/txt_time"), slot17, slot18, slot1)
+			gohelper.setActive(var_10_13, true)
 
-			slot23 = gohelper.findChildText(slot21, "txt_desc")
+			local var_10_14 = gohelper.findChildText(var_10_13, "title/txt_time")
 
-			SkillHelper.addHyperLinkClick(slot23, uv0.onClickBuffHyperLink, slot20)
+			var_0_0.showBuffTime(var_10_14, var_10_9, var_10_10, arg_10_1)
 
-			slot24 = gohelper.findChildText(slot21, "title/txt_name")
-			slot24.text = slot18.name
-			slot25 = slot24.preferredWidth
-			slot26 = FightBuffGetDescHelper.getBuffDesc(slot17)
+			local var_10_15 = gohelper.findChildText(var_10_13, "txt_desc")
 
-			recthelper.setHeight(slot21.transform, GameUtil.getTextHeightByLine(slot23, slot26, 52.1) + 62)
+			SkillHelper.addHyperLinkClick(var_10_15, var_0_0.onClickBuffHyperLink, var_10_12)
 
-			slot23.text = slot26
+			local var_10_16 = gohelper.findChildText(var_10_13, "title/txt_name")
 
-			if gohelper.findChildImage(slot21, "title/simage_icon") then
-				UISpriteSetMgr.instance:setBuffSprite(slot28, slot18.iconId)
+			var_10_16.text = var_10_10.name
+
+			local var_10_17 = var_10_16.preferredWidth
+			local var_10_18 = FightBuffGetDescHelper.getBuffDesc(var_10_9)
+			local var_10_19 = GameUtil.getTextHeightByLine(var_10_15, var_10_18, 52.1) + 62
+
+			recthelper.setHeight(var_10_13.transform, var_10_19)
+
+			var_10_15.text = var_10_18
+
+			local var_10_20 = gohelper.findChildImage(var_10_13, "title/simage_icon")
+
+			if var_10_20 then
+				UISpriteSetMgr.instance:setBuffSprite(var_10_20, var_10_10.iconId)
 			end
 
-			slot29 = gohelper.findChild(slot21, "txt_desc/image_line")
-			slot30 = gohelper.findChild(slot21, "title/txt_name/go_tag")
-			slot31 = gohelper.findChildText(slot21, "title/txt_name/go_tag/bg/txt_tagname")
+			local var_10_21 = gohelper.findChild(var_10_13, "txt_desc/image_line")
+			local var_10_22 = gohelper.findChild(var_10_13, "title/txt_name/go_tag")
+			local var_10_23 = gohelper.findChildText(var_10_13, "title/txt_name/go_tag/bg/txt_tagname")
+			local var_10_24 = lua_skill_buff_desc.configDict[var_10_11.type]
 
-			if lua_skill_buff_desc.configDict[slot19.type] then
-				slot31.text = slot32.name
-				slot25 = slot25 + slot31.preferredWidth
+			if var_10_24 then
+				var_10_23.text = var_10_24.name
+				var_10_17 = var_10_17 + var_10_23.preferredWidth
 			end
 
-			gohelper.setActive(slot30, slot32)
-			gohelper.setActive(slot29, slot8 ~= slot7)
+			gohelper.setActive(var_10_22, var_10_24)
+			gohelper.setActive(var_10_21, var_10_4 ~= var_10_3)
 
-			slot4._scrollbuff.verticalNormalizedPosition = 1
-			slot12[#slot12 + 1] = slot23.transform
-			slot12[#slot12 + 1] = gohelper.findChild(slot21, "title").transform
-			slot12[#slot12 + 1] = slot21.transform
-			slot12[#slot12 + 1] = slot23
-			slot12[#slot12 + 1] = slot17
+			arg_10_4._scrollbuff.verticalNormalizedPosition = 1
 
-			if uv3 < slot25 then
-				slot38 = uv2 + slot25 - uv3
-				slot10 = math.max(slot10, slot38)
-				slot11 = math.max(slot11, slot38)
+			local var_10_25 = var_10_15.transform
+			local var_10_26 = gohelper.findChild(var_10_13, "title").transform
+			local var_10_27 = var_10_13.transform
+
+			var_10_8[#var_10_8 + 1] = var_10_25
+			var_10_8[#var_10_8 + 1] = var_10_26
+			var_10_8[#var_10_8 + 1] = var_10_27
+			var_10_8[#var_10_8 + 1] = var_10_15
+			var_10_8[#var_10_8 + 1] = var_10_9
+
+			if var_10_17 > var_0_3 then
+				local var_10_28 = var_10_17 - var_0_3
+				local var_10_29 = var_0_2 + var_10_28
+
+				var_10_6 = math.max(var_10_6, var_10_29)
+				var_10_7 = math.max(var_10_7, var_10_29)
 			end
 		end
 	end
 
-	recthelper.setWidth(slot0.rectTrScrollBuff, slot11)
-	recthelper.setWidth(slot0.rectTrBuffContent, slot11)
+	recthelper.setWidth(arg_10_0.rectTrScrollBuff, var_10_7)
+	recthelper.setWidth(arg_10_0.rectTrBuffContent, var_10_7)
 
-	if #slot12 > 0 then
-		for slot16 = 0, #slot12 - 1, 5 do
-			slot19 = slot12[slot16 + 3]
-			slot20 = slot12[slot16 + 4]
+	if #var_10_8 > 0 then
+		for iter_10_3 = 0, #var_10_8 - 1, 5 do
+			local var_10_30 = var_10_8[iter_10_3 + 1]
+			local var_10_31 = var_10_8[iter_10_3 + 2]
+			local var_10_32 = var_10_8[iter_10_3 + 3]
+			local var_10_33 = var_10_8[iter_10_3 + 4]
+			local var_10_34 = var_10_8[iter_10_3 + 5]
 
-			recthelper.setWidth(slot12[slot16 + 2], slot11 - 10)
-			recthelper.setWidth(slot12[slot16 + 1], slot11 - 46)
-			ZProj.UGUIHelper.RebuildLayout(slot19)
-			recthelper.setWidth(slot19, slot11)
+			recthelper.setWidth(var_10_31, var_10_7 - 10)
+			recthelper.setWidth(var_10_30, var_10_7 - 46)
+			ZProj.UGUIHelper.RebuildLayout(var_10_32)
+			recthelper.setWidth(var_10_32, var_10_7)
 
-			slot20.text = FightBuffGetDescHelper.getBuffDesc(slot12[slot16 + 5])
-			slot20.text = slot20.text
+			var_10_33.text = FightBuffGetDescHelper.getBuffDesc(var_10_34)
+			var_10_33.text = var_10_33.text
 
-			recthelper.setHeight(slot19, slot20.preferredHeight + 52.1 + 10)
+			local var_10_35 = var_10_33.preferredHeight + 52.1 + 10
+
+			recthelper.setHeight(var_10_32, var_10_35)
 		end
 	end
 
-	for slot16 in pairs(slot12) do
-		rawset(slot12, slot16, nil)
+	for iter_10_4 in pairs(var_10_8) do
+		rawset(var_10_8, iter_10_4, nil)
 	end
 
-	slot12 = nil
+	local var_10_36
 
-	ZProj.UGUIHelper.RebuildLayout(slot0.rectTrBuffContent)
+	ZProj.UGUIHelper.RebuildLayout(arg_10_0.rectTrBuffContent)
 end
 
-function slot0.onClickBuffHyperLink(slot0, slot1, slot2)
-	CommonBuffTipController.instance:openCommonTipViewWithCustomPosCallback(slot1, slot0.getAnchorFunc, slot0.viewClass)
+function var_0_0.onClickBuffHyperLink(arg_12_0, arg_12_1, arg_12_2)
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPosCallback(arg_12_1, arg_12_0.getAnchorFunc, arg_12_0.viewClass)
 end
 
-function slot0.showBuffTime(slot0, slot1, slot2, slot3)
-	if FightBuffHelper.isCountContinueChanelBuff(slot1) then
-		slot0.text = string.format(luaLang("enemytip_buff_time"), slot1.exInfo)
+function var_0_0.showBuffTime(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
+	if FightBuffHelper.isCountContinueChanelBuff(arg_13_1) then
+		arg_13_0.text = string.format(luaLang("enemytip_buff_time"), arg_13_1.exInfo)
 
 		return
 	end
 
-	if slot1 and FightConfig.instance:hasBuffFeature(slot1.buffId, FightEnum.BuffFeature.CountUseSelfSkillContinueChannel) then
-		slot0.text = string.format(luaLang("enemytip_buff_time"), slot1.exInfo)
+	if arg_13_1 and FightConfig.instance:hasBuffFeature(arg_13_1.buffId, FightEnum.BuffFeature.CountUseSelfSkillContinueChannel) then
+		arg_13_0.text = string.format(luaLang("enemytip_buff_time"), arg_13_1.exInfo)
 
 		return
 	end
 
-	if FightBuffHelper.isDuduBoneContinueChannelBuff(slot1) then
-		slot0.text = string.format(luaLang("buff_tip_duration"), slot1.exInfo)
+	if FightBuffHelper.isDuduBoneContinueChannelBuff(arg_13_1) then
+		arg_13_0.text = string.format(luaLang("buff_tip_duration"), arg_13_1.exInfo)
 
 		return
 	end
 
-	if FightBuffHelper.isDeadlyPoisonBuff(slot1) then
-		slot0.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("buff_tip_round_and_layer"), slot1.duration, FightSkillBuffMgr.instance:getStackedCount(slot1.entityId, slot1))
+	if FightBuffHelper.isDeadlyPoisonBuff(arg_13_1) then
+		local var_13_0 = FightSkillBuffMgr.instance:getStackedCount(arg_13_1.entityId, arg_13_1)
+
+		arg_13_0.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("buff_tip_round_and_layer"), arg_13_1.duration, var_13_0)
 
 		return
 	end
 
-	slot4 = lua_skill_bufftype.configDict[slot2.typeId]
-	slot5, slot6 = FightSkillBuffMgr.instance:buffIsStackerBuff(slot2)
+	local var_13_1 = lua_skill_bufftype.configDict[arg_13_2.typeId]
+	local var_13_2, var_13_3 = FightSkillBuffMgr.instance:buffIsStackerBuff(arg_13_2)
 
-	if slot5 then
-		if slot6 == FightEnum.BuffIncludeTypes.Stacked12 then
-			slot0.text = string.format(luaLang("enemytip_buff_stacked_count"), FightSkillBuffMgr.instance:getStackedCount(slot3.id, slot1)) .. " " .. string.format(luaLang("enemytip_buff_time"), slot1.duration)
+	if var_13_2 then
+		local var_13_4 = string.format(luaLang("enemytip_buff_stacked_count"), FightSkillBuffMgr.instance:getStackedCount(arg_13_3.id, arg_13_1))
+
+		if var_13_3 == FightEnum.BuffIncludeTypes.Stacked12 then
+			arg_13_0.text = var_13_4 .. " " .. string.format(luaLang("enemytip_buff_time"), arg_13_1.duration)
 		else
-			slot0.text = slot7
+			arg_13_0.text = var_13_4
 		end
-	elseif slot1.duration == 0 then
-		if slot1.count == 0 then
-			slot0.text = luaLang("forever")
+	elseif arg_13_1.duration == 0 then
+		if arg_13_1.count == 0 then
+			arg_13_0.text = luaLang("forever")
 		else
-			slot7 = slot1.count
-			slot8 = "enemytip_buff_count"
+			local var_13_5 = arg_13_1.count
+			local var_13_6 = "enemytip_buff_count"
+			local var_13_7 = var_13_1 and var_13_1.includeTypes or ""
 
-			if string.split(slot4 and slot4.includeTypes or "", "#")[1] == "11" then
-				slot8 = "enemytip_buff_stacked_count"
-				slot7 = slot1.layer
+			if string.split(var_13_7, "#")[1] == "11" then
+				var_13_6 = "enemytip_buff_stacked_count"
+				var_13_5 = arg_13_1.layer
 			end
 
-			slot0.text = string.format(luaLang(slot8), slot7)
+			arg_13_0.text = string.format(luaLang(var_13_6), var_13_5)
 		end
-	elseif slot1.count == 0 then
-		slot0.text = string.format(luaLang("enemytip_buff_time"), slot1.duration)
+	elseif arg_13_1.count == 0 then
+		arg_13_0.text = string.format(luaLang("enemytip_buff_time"), arg_13_1.duration)
 	else
-		slot7 = slot1.count
-		slot8 = "round_or_times"
+		local var_13_8 = arg_13_1.count
+		local var_13_9 = "round_or_times"
+		local var_13_10 = var_13_1 and var_13_1.includeTypes or ""
 
-		if string.split(slot4 and slot4.includeTypes or "", "#")[1] == "11" then
-			slot8 = "round_or_stacked_count"
-			slot7 = slot1.layer
+		if string.split(var_13_10, "#")[1] == "11" then
+			var_13_9 = "round_or_stacked_count"
+			var_13_8 = arg_13_1.layer
 		end
 
-		slot0.text = GameUtil.getSubPlaceholderLuaLang(luaLang(slot8), {
-			slot1.duration,
-			slot7
-		})
+		local var_13_11 = {
+			arg_13_1.duration,
+			var_13_8
+		}
+
+		arg_13_0.text = GameUtil.getSubPlaceholderLuaLang(luaLang(var_13_9), var_13_11)
 	end
 end
 
-return slot0
+return var_0_0

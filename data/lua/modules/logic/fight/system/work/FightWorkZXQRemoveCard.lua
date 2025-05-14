@@ -1,19 +1,20 @@
-module("modules.logic.fight.system.work.FightWorkZXQRemoveCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkZXQRemoveCard", package.seeall)
 
-slot0 = class("FightWorkZXQRemoveCard", FightEffectBase)
+local var_0_0 = class("FightWorkZXQRemoveCard", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if slot0.actEffectData.teamType ~= FightEnum.TeamType.MySide then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if arg_1_0.actEffectData.teamType ~= FightEnum.TeamType.MySide then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
 	FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_2_0)
+	return
 end
 
-return slot0
+return var_0_0

@@ -1,38 +1,42 @@
-module("modules.logic.room.view.common.RoomStoreGoodsTipViewContainer", package.seeall)
+﻿module("modules.logic.room.view.common.RoomStoreGoodsTipViewContainer", package.seeall)
 
-slot0 = class("RoomStoreGoodsTipViewContainer", BaseViewContainer)
+local var_0_0 = class("RoomStoreGoodsTipViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, RoomStoreGoodsTipView.New())
-	table.insert(slot1, RoomStroreGoodsTipViewBanner.New())
+	table.insert(var_1_0, RoomStoreGoodsTipView.New())
+	table.insert(var_1_0, RoomStroreGoodsTipViewBanner.New())
 
-	slot2 = ListScrollParam.New()
-	slot2.scrollGOPath = "right/#go_buyContent/scroll_blockpackage"
-	slot2.prefabType = ScrollEnum.ScrollPrefabFromView
-	slot2.prefabUrl = "right/#go_buyContent/#go_blockInfoItem"
-	slot2.cellClass = RoomStoreGoodsTipItem
-	slot2.scrollDir = ScrollEnum.ScrollDirV
-	slot2.lineCount = 1
-	slot2.cellWidth = 470
-	slot2.cellHeight = 50
-	slot2.cellSpaceH = 0
-	slot2.cellSpaceV = 1.44
-	slot2.startSpace = 0
+	local var_1_1 = ListScrollParam.New()
 
-	table.insert(slot1, LuaListScrollView.New(RoomStoreItemListModel.instance, slot2))
-	table.insert(slot1, TabViewGroup.New(1, "#go_topright"))
+	var_1_1.scrollGOPath = "right/#go_buyContent/scroll_blockpackage"
+	var_1_1.prefabType = ScrollEnum.ScrollPrefabFromView
+	var_1_1.prefabUrl = "right/#go_buyContent/#go_blockInfoItem"
+	var_1_1.cellClass = RoomStoreGoodsTipItem
+	var_1_1.scrollDir = ScrollEnum.ScrollDirV
+	var_1_1.lineCount = 1
+	var_1_1.cellWidth = 470
+	var_1_1.cellHeight = 50
+	var_1_1.cellSpaceH = 0
+	var_1_1.cellSpaceV = 1.44
+	var_1_1.startSpace = 0
 
-	return slot1
+	table.insert(var_1_0, LuaListScrollView.New(RoomStoreItemListModel.instance, var_1_1))
+	table.insert(var_1_0, TabViewGroup.New(1, "#go_topright"))
+
+	return var_1_0
 end
 
-function slot0.buildTabViews(slot0, slot1)
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	local var_2_0 = CurrencyEnum.CurrencyType
+	local var_2_1 = {
+		var_2_0.FreeDiamondCoupon,
+		23
+	}
+
 	if ItemModel.instance:getItemCount(StoreEnum.NormalRoomTicket) > 0 then
-		table.insert({
-			CurrencyEnum.CurrencyType.FreeDiamondCoupon,
-			23
-		}, {
+		table.insert(var_2_1, {
 			isCurrencySprite = true,
 			id = StoreEnum.NormalRoomTicket,
 			type = MaterialEnum.MaterialType.Item
@@ -40,7 +44,7 @@ function slot0.buildTabViews(slot0, slot1)
 	end
 
 	if ItemModel.instance:getItemCount(StoreEnum.TopRoomTicket) > 0 then
-		table.insert(slot3, {
+		table.insert(var_2_1, {
 			isCurrencySprite = true,
 			id = StoreEnum.TopRoomTicket,
 			type = MaterialEnum.MaterialType.Item
@@ -48,12 +52,12 @@ function slot0.buildTabViews(slot0, slot1)
 	end
 
 	return {
-		CurrencyView.New(slot3)
+		CurrencyView.New(var_2_1)
 	}
 end
 
-function slot0.onContainerClickModalMask(slot0)
+function var_0_0.onContainerClickModalMask(arg_3_0)
 	ViewMgr.instance:closeView(ViewName.RoomStoreGoodsTipView, nil, true)
 end
 
-return slot0
+return var_0_0

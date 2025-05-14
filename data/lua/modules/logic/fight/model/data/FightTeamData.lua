@@ -1,77 +1,77 @@
-module("modules.logic.fight.model.data.FightTeamData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightTeamData", package.seeall)
 
-slot0 = FightDataClass("FightTeamData")
+local var_0_0 = FightDataClass("FightTeamData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.entitys = {}
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.entitys = {}
 
-	for slot5, slot6 in ipairs(slot1.entitys) do
-		table.insert(slot0.entitys, FightEntityInfoData.New(slot6))
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.entitys) do
+		table.insert(arg_1_0.entitys, FightEntityInfoData.New(iter_1_1))
 	end
 
-	slot0.subEntitys = {}
+	arg_1_0.subEntitys = {}
 
-	for slot5, slot6 in ipairs(slot1.subEntitys) do
-		table.insert(slot0.subEntitys, FightEntityInfoData.New(slot6))
+	for iter_1_2, iter_1_3 in ipairs(arg_1_1.subEntitys) do
+		table.insert(arg_1_0.subEntitys, FightEntityInfoData.New(iter_1_3))
 	end
 
-	slot0.power = slot1.power
-	slot0.clothId = slot1.clothId
-	slot0.skillInfos = {}
+	arg_1_0.power = arg_1_1.power
+	arg_1_0.clothId = arg_1_1.clothId
+	arg_1_0.skillInfos = {}
 
-	for slot5, slot6 in ipairs(slot1.skillInfos) do
-		table.insert(slot0.skillInfos, FightPlayerSkillInfoData.New(slot6))
+	for iter_1_4, iter_1_5 in ipairs(arg_1_1.skillInfos) do
+		table.insert(arg_1_0.skillInfos, FightPlayerSkillInfoData.New(iter_1_5))
 	end
 
-	slot0.spEntitys = {}
+	arg_1_0.spEntitys = {}
 
-	for slot5, slot6 in ipairs(slot1.spEntitys) do
-		table.insert(slot0.spEntitys, FightEntityInfoData.New(slot6))
+	for iter_1_6, iter_1_7 in ipairs(arg_1_1.spEntitys) do
+		table.insert(arg_1_0.spEntitys, FightEntityInfoData.New(iter_1_7))
 	end
 
-	slot0.indicators = {}
+	arg_1_0.indicators = {}
 
-	for slot5, slot6 in ipairs(slot1.indicators) do
-		table.insert(slot0.indicators, FightIndicatorInfoData.New(slot6))
+	for iter_1_8, iter_1_9 in ipairs(arg_1_1.indicators) do
+		table.insert(arg_1_0.indicators, FightIndicatorInfoData.New(iter_1_9))
 	end
 
-	slot0.exTeamStr = slot1.exTeamStr
+	arg_1_0.exTeamStr = arg_1_1.exTeamStr
 
-	if slot1:HasField("assistBoss") then
-		slot0.assistBoss = FightEntityInfoData.New(slot1.assistBoss)
+	if arg_1_1:HasField("assistBoss") then
+		arg_1_0.assistBoss = FightEntityInfoData.New(arg_1_1.assistBoss)
 	end
 
-	if slot1:HasField("assistBossInfo") then
-		slot0.assistBossInfo = FightAssistBossInfoData.New(slot1.assistBossInfo)
+	if arg_1_1:HasField("assistBossInfo") then
+		arg_1_0.assistBossInfo = FightAssistBossInfoData.New(arg_1_1.assistBossInfo)
 	end
 
-	if slot1:HasField("emitter") then
-		slot0.emitter = FightEntityInfoData.New(slot1.emitter)
+	if arg_1_1:HasField("emitter") then
+		arg_1_0.emitter = FightEntityInfoData.New(arg_1_1.emitter)
 	end
 
-	if slot1:HasField("emitterInfo") then
-		slot0.emitterInfo = FightEmitterInfoData.New(slot1.emitterInfo)
+	if arg_1_1:HasField("emitterInfo") then
+		arg_1_0.emitterInfo = FightEmitterInfoData.New(arg_1_1.emitterInfo)
 	end
 
-	if slot1:HasField("playerEntity") then
-		slot0.playerEntity = FightEntityInfoData.New(slot1.playerEntity)
+	if arg_1_1:HasField("playerEntity") then
+		arg_1_0.playerEntity = FightEntityInfoData.New(arg_1_1.playerEntity)
 	end
 
-	if slot1:HasField("playerFinisherInfo") then
-		slot0.playerFinisherInfo = FightPlayerFinisherInfoData.New(slot1.playerFinisherInfo)
+	if arg_1_1:HasField("playerFinisherInfo") then
+		arg_1_0.playerFinisherInfo = FightPlayerFinisherInfoData.New(arg_1_1.playerFinisherInfo)
 	end
 
-	slot0.energy = slot1.energy
+	arg_1_0.energy = arg_1_1.energy
 
-	if slot1:HasField("cardHeat") then
-		slot0.cardHeat = FightCardHeatInfoData.New(slot1.cardHeat)
+	if arg_1_1:HasField("cardHeat") then
+		arg_1_0.cardHeat = FightCardHeatInfoData.New(arg_1_1.cardHeat)
 	end
 
-	slot0.cardDeckSize = slot1.cardDeckSize
+	arg_1_0.cardDeckSize = arg_1_1.cardDeckSize
 
-	if slot1:HasField("bloodPool") then
-		slot0.bloodPool = FightDataBloodPool.New(slot1.bloodPool)
+	if arg_1_1:HasField("bloodPool") then
+		arg_1_0.bloodPool = FightDataBloodPool.New(arg_1_1.bloodPool)
 	end
 end
 
-return slot0
+return var_0_0

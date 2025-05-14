@@ -1,3 +1,3 @@
-module("modules.logic.versionactivity2_7.dungeon.view.map.V2a7LoadingSpaceView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.dungeon.view.map.V2a7LoadingSpaceView", package.seeall)
 
-return class("V2a7LoadingSpaceView", LoadingView)
+return (class("V2a7LoadingSpaceView", LoadingView))

@@ -1,35 +1,36 @@
-module("modules.logic.versionactivity2_6.dicehero.defines.DiceHeroEnum", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.defines.DiceHeroEnum", package.seeall)
 
-slot0 = _M
-slot0.LevelType = {
+local var_0_0 = _M
+
+var_0_0.LevelType = {
 	Fight = 2,
 	Story = 1
 }
-slot0.GetRewardType = {
+var_0_0.GetRewardType = {
 	All = 1,
 	One = 2,
 	None = 0
 }
-slot0.RewardType = {
+var_0_0.RewardType = {
 	SkillCard = 2,
 	Hero = 1,
 	Relic = 3
 }
-slot0.DialogContentType = {
+var_0_0.DialogContentType = {
 	Narration = 3,
 	Talk = 2,
 	Title = 1
 }
-slot0.SkillType = {
+var_0_0.SkillType = {
 	Hero = 2,
 	Normal = 1
 }
-slot0.GameStatu = {
+var_0_0.GameStatu = {
 	Win = 1,
 	Lose = 2,
 	None = 0
 }
-slot0.SkillEffectType = {
+var_0_0.SkillEffectType = {
 	FixDamageByDicePoint = 108,
 	AddBuff = 40,
 	FixAddShield = 107,
@@ -54,43 +55,43 @@ slot0.SkillEffectType = {
 	Damage2 = 11,
 	AddDice = 101
 }
-slot0.GameProgress = {
+var_0_0.GameProgress = {
 	PlaySkill = 1,
 	RollDice = 2,
 	UseSkill = 3,
 	None = 0
 }
-slot0.DiceStatu = {
+var_0_0.DiceStatu = {
 	HardLock = 2,
 	SoftLock = 1,
 	Normal = 0
 }
-slot0.DiceType = {
+var_0_0.DiceType = {
 	Power = 4,
 	Def = 2,
 	Atk = 1
 }
-slot0.BaseDiceSuitDict = {
-	[slot0.DiceType.Atk] = true,
-	[slot0.DiceType.Def] = true,
-	[slot0.DiceType.Power] = true
+var_0_0.BaseDiceSuitDict = {
+	[var_0_0.DiceType.Atk] = true,
+	[var_0_0.DiceType.Def] = true,
+	[var_0_0.DiceType.Power] = true
 }
-slot0.CardType = {
+var_0_0.CardType = {
 	Power = 3,
 	Def = 2,
 	Hero = 4,
 	Atk = 1
 }
-slot0.HeroCardType = {
+var_0_0.HeroCardType = {
 	PassiveSkill = 2,
 	ActiveSkill = 1,
 	None = 0
 }
-slot0.FightActionType = {
+var_0_0.FightActionType = {
 	UseSkill = 1,
 	Effect = 2
 }
-slot0.FightEffectType = {
+var_0_0.FightEffectType = {
 	ChangePower = 5,
 	RemoveBuff = 2,
 	Damage = 8,
@@ -104,22 +105,22 @@ slot0.FightEffectType = {
 	UpdateBuff = 3,
 	ChangeShield = 4
 }
-slot0.SkillCardTargetType = {
+var_0_0.SkillCardTargetType = {
 	RandomEnemy = 4,
 	Self = 2,
 	AllEnemy = 3,
 	SingleEnemy = 1,
 	None = 0
 }
-slot0.CantUseReason = {
+var_0_0.CantUseReason = {
 	NoUseCount = 2,
 	NoDice = 1,
 	BanSkill = 3
 }
-slot0.FightEffectTypeToName = {}
+var_0_0.FightEffectTypeToName = {}
 
-for slot4, slot5 in pairs(slot0.FightEffectType) do
-	slot0.FightEffectTypeToName[slot5] = slot4
+for iter_0_0, iter_0_1 in pairs(var_0_0.FightEffectType) do
+	var_0_0.FightEffectTypeToName[iter_0_1] = iter_0_0
 end
 
-return slot0
+return var_0_0

@@ -1,45 +1,51 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventInvokeLookBack", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventInvokeLookBack", package.seeall)
 
-slot0 = class("FightTLEventInvokeLookBack", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventInvokeLookBack", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	if not (slot1 and slot1.actEffect) then
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	local var_1_0 = arg_1_1 and arg_1_1.actEffect
+
+	if not var_1_0 then
 		return
 	end
 
-	slot5 = {}
-	slot6 = false
+	local var_1_1 = {}
+	local var_1_2 = false
 
-	for slot10, slot11 in ipairs(slot4) do
-		if slot11.effectType == FightEnum.EffectType.SAVEFIGHTRECORDSTART then
-			slot6 = true
-		elseif slot11.effectType == FightEnum.EffectType.SAVEFIGHTRECORDEND then
+	for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+		if iter_1_1.effectType == FightEnum.EffectType.SAVEFIGHTRECORDSTART then
+			var_1_2 = true
+		elseif iter_1_1.effectType == FightEnum.EffectType.SAVEFIGHTRECORDEND then
 			break
-		elseif slot6 then
-			table.insert(slot5, slot11)
+		elseif var_1_2 then
+			table.insert(var_1_1, iter_1_1)
 		end
 	end
 
-	if #slot5 < 1 then
+	if #var_1_1 < 1 then
 		return
 	end
 
-	slot7 = slot0:com_registFlowParallel()
+	local var_1_3 = arg_1_0:com_registFlowParallel()
 
-	for slot11, slot12 in ipairs(slot5) do
-		if FightStepBuilder.ActEffectWorkCls[slot12.effectType] then
-			slot7:registWork(slot13, slot1, slot12)
+	for iter_1_2, iter_1_3 in ipairs(var_1_1) do
+		local var_1_4 = FightStepBuilder.ActEffectWorkCls[iter_1_3.effectType]
+
+		if var_1_4 then
+			var_1_3:registWork(var_1_4, arg_1_1, iter_1_3)
 		end
 	end
 
-	slot0:addWork2TimelineFinishWork(slot7)
-	slot7:start()
+	arg_1_0:addWork2TimelineFinishWork(var_1_3)
+	var_1_3:start()
 end
 
-function slot0.onTrackEnd(slot0)
+function var_0_0.onTrackEnd(arg_2_0)
+	return
 end
 
-function slot0.onDestructor(slot0)
+function var_0_0.onDestructor(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

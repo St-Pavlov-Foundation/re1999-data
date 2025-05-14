@@ -1,115 +1,131 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.XugoujiController", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.XugoujiController", package.seeall)
 
-slot0 = class("XugoujiController", BaseController)
-slot1 = VersionActivity2_6Enum.ActivityId.Xugouji
+local var_0_0 = class("XugoujiController", BaseController)
+local var_0_1 = VersionActivity2_6Enum.ActivityId.Xugouji
 
-function slot0.onInit(slot0)
-	slot0._debugMode = PlayerPrefsHelper.getNumber("XugoujiDebugMode", 0) == 1
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._debugMode = PlayerPrefsHelper.getNumber("XugoujiDebugMode", 0) == 1
 end
 
-function slot0.reInit(slot0)
+function var_0_0.reInit(arg_2_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	return
 end
 
-function slot0._setGuideMode(slot0, slot1)
-	Activity188Model.instance:setGameGuideMode(slot1)
+function var_0_0._setGuideMode(arg_4_0, arg_4_1)
+	Activity188Model.instance:setGameGuideMode(arg_4_1)
 end
 
-function slot0.openXugoujiLevelView(slot0)
-	slot0:registerCallback(XugoujiEvent.SetGameGuideMode, slot0._setGuideMode, slot0)
+function var_0_0.openXugoujiLevelView(arg_5_0)
+	arg_5_0:registerCallback(XugoujiEvent.SetGameGuideMode, arg_5_0._setGuideMode, arg_5_0)
 
-	if slot0:_checkCanPlayStory(ActivityModel.instance:getActMO(uv0) and slot1.config and slot1.config.storyId) then
-		StoryController.instance:playStory(slot2, nil, slot0._requestActInfo, slot0)
+	local var_5_0 = ActivityModel.instance:getActMO(var_0_1)
+	local var_5_1 = var_5_0 and var_5_0.config and var_5_0.config.storyId
+
+	if arg_5_0:_checkCanPlayStory(var_5_1) then
+		StoryController.instance:playStory(var_5_1, nil, arg_5_0._requestActInfo, arg_5_0)
 	else
-		slot0:_requestActInfo()
+		arg_5_0:_requestActInfo()
 	end
 end
 
-function slot0._requestActInfo(slot0)
-	Activity188Rpc.instance:sendGet188InfosRequest(VersionActivity2_6Enum.ActivityId.Xugouji, slot0._onReceivedActInfo, slot0)
+function var_0_0._requestActInfo(arg_6_0)
+	Activity188Rpc.instance:sendGet188InfosRequest(VersionActivity2_6Enum.ActivityId.Xugouji, arg_6_0._onReceivedActInfo, arg_6_0)
 end
 
-function slot0._onReceivedActInfo(slot0)
+function var_0_0._onReceivedActInfo(arg_7_0)
 	ViewMgr.instance:openView(ViewName.XugoujiLevelView)
 end
 
-function slot0.openXugoujiGameView(slot0)
+function var_0_0.openXugoujiGameView(arg_8_0)
 	ViewMgr.instance:openView(ViewName.XugoujiGameView)
 end
 
-function slot0.openTaskView(slot0)
+function var_0_0.openTaskView(arg_9_0)
 	ViewMgr.instance:openView(ViewName.XugoujiTaskView)
 end
 
-function slot0.openCardInfoView(slot0, slot1)
-	slot1 = slot1 or Activity188Model.instance:getLastCardId()
-	slot0._lastCardInfoUId = slot1
+function var_0_0.openCardInfoView(arg_10_0, arg_10_1)
+	arg_10_1 = arg_10_1 or Activity188Model.instance:getLastCardId()
+	arg_10_0._lastCardInfoUId = arg_10_1
 
 	AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.cardInfo)
 	ViewMgr.instance:openView(ViewName.XugoujiCardInfoView, {
-		cardId = slot1
+		cardId = arg_10_1
 	})
 end
 
-function slot0.openGameResultView(slot0, slot1)
-	if slot0._isWaitingEventResult then
-		slot0._isWaitingGameResult = true
+function var_0_0.openGameResultView(arg_11_0, arg_11_1)
+	if arg_11_0._isWaitingEventResult then
+		arg_11_0._isWaitingGameResult = true
 
 		return
 	end
 
-	slot0._isWaitingGameResult = false
+	arg_11_0._isWaitingGameResult = false
 
-	slot0:dispatchEvent(XugoujiEvent.OnOpenGameResultView)
-	ViewMgr.instance:openView(ViewName.XugoujiGameResultView, slot1)
+	arg_11_0:dispatchEvent(XugoujiEvent.OnOpenGameResultView)
+	ViewMgr.instance:openView(ViewName.XugoujiGameResultView, arg_11_1)
 
-	slot2 = slot0:getStatMo()
+	local var_11_0 = arg_11_0:getStatMo()
+	local var_11_1 = arg_11_1.reason == XugoujiEnum.ResultEnum.Completed and 1 or 0
+	local var_11_2 = Activity188Model.instance:getRound()
+	local var_11_3 = Activity188Model.instance:getCurHP()
+	local var_11_4 = Activity188Model.instance:getEnemyHP()
+	local var_11_5 = Activity188Model.instance:getCurPairCount()
+	local var_11_6 = Activity188Model.instance:getEnemyPairCount()
 
-	slot2:setGameData(slot1.reason == XugoujiEnum.ResultEnum.Completed and 1 or 0, Activity188Model.instance:getRound(), Activity188Model.instance:getCurHP(), Activity188Model.instance:getEnemyHP(), Activity188Model.instance:getCurPairCount(), Activity188Model.instance:getEnemyPairCount())
-	slot2:sendGameFinishStatData()
+	var_11_0:setGameData(var_11_1, var_11_2, var_11_3, var_11_4, var_11_5, var_11_6)
+	var_11_0:sendGameFinishStatData()
 end
 
-function slot0.enterEpisode(slot0, slot1)
+function var_0_0.enterEpisode(arg_12_0, arg_12_1)
 	Activity188Model.instance:setCurActId(VersionActivity2_6Enum.ActivityId.Xugouji)
 
-	slot0._curEnterEpisode = slot1
+	arg_12_0._curEnterEpisode = arg_12_1
 
-	Activity188Rpc.instance:sendAct188EnterEpisodeRequest(VersionActivity2_6Enum.ActivityId.Xugouji, slot1, slot0._onEnterGameReply, slot0)
-	Activity188Rpc.instance:SetEpisodePushCallback(slot0._onEpisodeUpdate, slot0)
+	Activity188Rpc.instance:sendAct188EnterEpisodeRequest(VersionActivity2_6Enum.ActivityId.Xugouji, arg_12_1, arg_12_0._onEnterGameReply, arg_12_0)
+	Activity188Rpc.instance:SetEpisodePushCallback(arg_12_0._onEpisodeUpdate, arg_12_0)
 end
 
-function slot0._onEnterGameReply(slot0)
-	slot4 = slot0:getStatMo()
+function var_0_0._onEnterGameReply(arg_13_0)
+	local var_13_0 = Activity188Config.instance:getEpisodeCfg(var_0_1, arg_13_0._curEnterEpisode).gameId
+	local var_13_1 = Activity188Config.instance:getGameCfg(var_0_1, var_13_0)
+	local var_13_2 = arg_13_0:getStatMo()
 
-	slot4:reset()
-	slot4:setBaseData(uv0, slot0._curEnterEpisode)
+	var_13_2:reset()
+	var_13_2:setBaseData(var_0_1, arg_13_0._curEnterEpisode)
 
-	if Activity188Config.instance:getGameCfg(uv0, Activity188Config.instance:getEpisodeCfg(uv0, slot0._curEnterEpisode).gameId) then
-		slot0._lastCardInfoUId = -1
+	if var_13_1 then
+		arg_13_0._lastCardInfoUId = -1
 
 		XugoujiGameStepController.instance:clear()
-		slot4:setBaseData(uv0, slot0._curEnterEpisode, slot3.id)
+		var_13_2:setBaseData(var_0_1, arg_13_0._curEnterEpisode, var_13_1.id)
 	end
 
-	Activity188Model.instance:setCurEpisodeId(slot0._curEnterEpisode)
-	slot0:dispatchEvent(XugoujiEvent.EnterEpisode, slot0._curEnterEpisode)
+	Activity188Model.instance:setCurEpisodeId(arg_13_0._curEnterEpisode)
+	arg_13_0:dispatchEvent(XugoujiEvent.EnterEpisode, arg_13_0._curEnterEpisode)
 end
 
-function slot0.restartEpisode(slot0)
-	Activity188Rpc.instance:sendAct188EnterEpisodeRequest(VersionActivity2_6Enum.ActivityId.Xugouji, slot0._curEnterEpisode, slot0._onRestartGameReply, slot0)
-	Activity188Rpc.instance:SetEpisodePushCallback(slot0._onEpisodeUpdate, slot0)
+function var_0_0.restartEpisode(arg_14_0)
+	Activity188Rpc.instance:sendAct188EnterEpisodeRequest(VersionActivity2_6Enum.ActivityId.Xugouji, arg_14_0._curEnterEpisode, arg_14_0._onRestartGameReply, arg_14_0)
+	Activity188Rpc.instance:SetEpisodePushCallback(arg_14_0._onEpisodeUpdate, arg_14_0)
 end
 
-function slot0._onRestartGameReply(slot0)
-	Activity188Model.instance:setCurEpisodeId(slot0._curEnterEpisode)
+function var_0_0._onRestartGameReply(arg_15_0)
+	local var_15_0 = Activity188Model.instance:getCurGameId()
+	local var_15_1 = Activity188Config.instance:getGameCfg(var_0_1, var_15_0)
+
+	Activity188Model.instance:setCurEpisodeId(arg_15_0._curEnterEpisode)
 	XugoujiGameStepController.instance:clear()
 
-	slot3 = slot0:getStatMo()
+	local var_15_2 = arg_15_0:getStatMo()
 
-	slot3:reset()
-	slot3:setBaseData(uv0, slot0._curEnterEpisode, Activity188Config.instance:getGameCfg(uv0, Activity188Model.instance:getCurGameId()).id)
+	var_15_2:reset()
+	var_15_2:setBaseData(var_0_1, arg_15_0._curEnterEpisode, var_15_1.id)
 	XugoujiGameStepController.instance:insertStepListClient({
 		{
 			stepType = XugoujiEnum.GameStepType.GameReStart
@@ -118,16 +134,20 @@ function slot0._onRestartGameReply(slot0)
 			stepType = XugoujiEnum.GameStepType.UpdateInitialCard
 		}
 	})
-	slot0:dispatchEvent(XugoujiEvent.GameRestart)
+	arg_15_0:dispatchEvent(XugoujiEvent.GameRestart)
 end
 
-function slot0.finishStoryPlay(slot0)
-	Activity188Rpc.instance:sendAct188StoryRequest(VersionActivity2_6Enum.ActivityId.Xugouji, Activity188Model.instance:getCurEpisodeId(), slot0._onEpisodeUpdate, slot0)
-	uv0.instance:getStatMo():sendDungeonFinishStatData()
+function var_0_0.finishStoryPlay(arg_16_0)
+	local var_16_0 = Activity188Model.instance:getCurEpisodeId()
+
+	Activity188Rpc.instance:sendAct188StoryRequest(VersionActivity2_6Enum.ActivityId.Xugouji, var_16_0, arg_16_0._onEpisodeUpdate, arg_16_0)
+	var_0_0.instance:getStatMo():sendDungeonFinishStatData()
 end
 
-function slot0.selectCardItem(slot0, slot1)
-	if Activity188Model.instance:getCurTurnOperateTime() == 0 then
+function var_0_0.selectCardItem(arg_17_0, arg_17_1)
+	local var_17_0 = Activity188Model.instance:getCurTurnOperateTime()
+
+	if var_17_0 == 0 then
 		return
 	end
 
@@ -135,91 +155,100 @@ function slot0.selectCardItem(slot0, slot1)
 		return
 	end
 
-	if slot1 == Activity188Model.instance:getCurCardUid() then
+	if arg_17_1 == Activity188Model.instance:getCurCardUid() then
 		return
 	end
 
-	Activity188Model.instance:setCurTurnOperateTime(slot2 - 1, false)
-	slot0:dispatchEvent(XugoujiEvent.OperateTimeUpdated)
-	Activity188Model.instance:setCurCardUid(slot1)
-	Activity188Rpc.instance:sendAct188ReverseCardRequest(uv0, slot0._curEnterEpisode, slot1, slot0._onOperateCardReply, slot0)
+	Activity188Model.instance:setCurTurnOperateTime(var_17_0 - 1, false)
+	arg_17_0:dispatchEvent(XugoujiEvent.OperateTimeUpdated)
+	Activity188Model.instance:setCurCardUid(arg_17_1)
+	Activity188Rpc.instance:sendAct188ReverseCardRequest(var_0_1, arg_17_0._curEnterEpisode, arg_17_1, arg_17_0._onOperateCardReply, arg_17_0)
 end
 
-function slot0._onOperateCardReply(slot0, slot1, slot2)
-	slot0:dispatchEvent(XugoujiEvent.OperateCard, Activity188Model.instance:getCurCardUid())
+function var_0_0._onOperateCardReply(arg_18_0, arg_18_1, arg_18_2)
+	local var_18_0 = Activity188Model.instance:getCurCardUid()
+
+	arg_18_0:dispatchEvent(XugoujiEvent.OperateCard, var_18_0)
 end
 
-function slot0.manualExitGame(slot0)
+function var_0_0.manualExitGame(arg_19_0)
 	XugoujiGameStepController.instance:disposeAllStep()
-	slot0:dispatchEvent(XugoujiEvent.ManualExitGame)
+	arg_19_0:dispatchEvent(XugoujiEvent.ManualExitGame)
 end
 
-function slot0.sendExitGameStat(slot0)
-	slot1 = slot0:getStatMo()
+function var_0_0.sendExitGameStat(arg_20_0)
+	local var_20_0 = arg_20_0:getStatMo()
+	local var_20_1 = Activity188Model.instance:getRound()
+	local var_20_2 = Activity188Model.instance:getCurHP()
+	local var_20_3 = Activity188Model.instance:getEnemyHP()
+	local var_20_4 = Activity188Model.instance:getCurPairCount()
+	local var_20_5 = Activity188Model.instance:getEnemyPairCount()
 
-	slot1:setGameData(nil, Activity188Model.instance:getRound(), Activity188Model.instance:getCurHP(), Activity188Model.instance:getEnemyHP(), Activity188Model.instance:getCurPairCount(), Activity188Model.instance:getEnemyPairCount())
-	slot1:sendGameGiveUpStatData()
-	slot1:sendDungeonFinishStatData()
+	var_20_0:setGameData(nil, var_20_1, var_20_2, var_20_3, var_20_4, var_20_5)
+	var_20_0:sendGameGiveUpStatData()
+	var_20_0:sendDungeonFinishStatData()
 end
 
-function slot0.gameResultOver(slot0)
-	slot0:dispatchEvent(XugoujiEvent.ExitGame)
+function var_0_0.gameResultOver(arg_21_0)
+	arg_21_0:dispatchEvent(XugoujiEvent.ExitGame)
 end
 
-function slot0._onEpisodeUpdate(slot0)
-	slot0:dispatchEvent(XugoujiEvent.EpisodeUpdate)
+function var_0_0._onEpisodeUpdate(arg_22_0)
+	arg_22_0:dispatchEvent(XugoujiEvent.EpisodeUpdate)
 end
 
-function slot0._checkCanPlayStory(slot0, slot1)
-	if slot1 and slot1 ~= 0 and not StoryModel.instance:isStoryHasPlayed(slot1) then
+function var_0_0._checkCanPlayStory(arg_23_0, arg_23_1)
+	if arg_23_1 and arg_23_1 ~= 0 and not StoryModel.instance:isStoryHasPlayed(arg_23_1) then
 		return true
 	end
 
 	return false
 end
 
-function slot0.checkOptionChoosed(slot0, slot1)
-	if not slot0._optionDescRecord then
-		slot0._optionDescRecord = {}
-		slot0._optionDescRecordStr = ""
-		slot0._optionDescRecordStr = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.Version2_2LoperaOptionDesc, "")
+function var_0_0.checkOptionChoosed(arg_24_0, arg_24_1)
+	if not arg_24_0._optionDescRecord then
+		arg_24_0._optionDescRecord = {}
+		arg_24_0._optionDescRecordStr = ""
+		arg_24_0._optionDescRecordStr = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.Version2_2LoperaOptionDesc, "")
 
-		for slot6, slot7 in pairs(string.splitToNumber(slot0._optionDescRecordStr, ",")) do
-			slot0._optionDescRecord[slot7] = true
+		local var_24_0 = string.splitToNumber(arg_24_0._optionDescRecordStr, ",")
+
+		for iter_24_0, iter_24_1 in pairs(var_24_0) do
+			arg_24_0._optionDescRecord[iter_24_1] = true
 		end
 	end
 
-	return slot0._optionDescRecord[slot1]
+	return arg_24_0._optionDescRecord[arg_24_1]
 end
 
-function slot0.saveOptionChoosed(slot0, slot1)
-	slot0._optionDescRecord[slot1] = true
+function var_0_0.saveOptionChoosed(arg_25_0, arg_25_1)
+	arg_25_0._optionDescRecord[arg_25_1] = true
 
-	if string.nilorempty(slot0._optionDescRecordStr) then
-		slot0._optionDescRecordStr = slot1
+	if string.nilorempty(arg_25_0._optionDescRecordStr) then
+		arg_25_0._optionDescRecordStr = arg_25_1
 	else
-		slot0._optionDescRecordStr = slot0._optionDescRecordStr .. "," .. slot1
+		arg_25_0._optionDescRecordStr = arg_25_0._optionDescRecordStr .. "," .. arg_25_1
 	end
 
-	GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.Version2_2LoperaOptionDesc, slot0._optionDescRecordStr)
+	GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.Version2_2LoperaOptionDesc, arg_25_0._optionDescRecordStr)
 end
 
-function slot0.getStatMo(slot0)
-	if not slot0.statMo then
-		slot0.statMo = Activity188StatMo.New()
+function var_0_0.getStatMo(arg_26_0)
+	if not arg_26_0.statMo then
+		arg_26_0.statMo = Activity188StatMo.New()
 	end
 
-	return slot0.statMo
+	return arg_26_0.statMo
 end
 
-function slot0.setDebugMode(slot0, slot1)
-	slot0._debugMode = slot1
+function var_0_0.setDebugMode(arg_27_0, arg_27_1)
+	arg_27_0._debugMode = arg_27_1
 end
 
-function slot0.isDebugMode(slot0)
-	return slot0._debugMode
+function var_0_0.isDebugMode(arg_28_0)
+	return arg_28_0._debugMode
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

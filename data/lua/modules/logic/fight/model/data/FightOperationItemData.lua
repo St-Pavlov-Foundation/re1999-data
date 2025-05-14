@@ -1,151 +1,163 @@
-module("modules.logic.fight.model.data.FightOperationItemData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightOperationItemData", package.seeall)
 
-slot0 = FightDataClass("FightOperationItemData")
+local var_0_0 = FightDataClass("FightOperationItemData")
 
-function slot0.onConstructor(slot0)
-	slot0.costActPoint = 0
-	slot0.cardColor = FightEnum.CardColor.None
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.costActPoint = 0
+	arg_1_0.cardColor = FightEnum.CardColor.None
 end
 
-function slot0.setByProto(slot0, slot1)
-	slot0.operType = slot1.operType
-	slot0.param1 = slot1.param1
-	slot0.param2 = slot1.param2
-	slot0.toId = slot1.toId
+function var_0_0.setByProto(arg_2_0, arg_2_1)
+	arg_2_0.operType = arg_2_1.operType
+	arg_2_0.param1 = arg_2_1.param1
+	arg_2_0.param2 = arg_2_1.param2
+	arg_2_0.toId = arg_2_1.toId
 end
 
-function slot0.moveCard(slot0, slot1, slot2, slot3)
-	slot0.operType = FightEnum.CardOpType.MoveCard
-	slot0.param1 = slot1
-	slot0.param2 = slot2
-	slot0.cardData = FightDataUtil.copyData(slot3)
-	slot0.costActPoint = FightCardDataHelper.moveActCost(slot3)
-	slot0.skillId = slot3.skillId
-	slot0.belongToEntityId = slot3.uid
-	slot0.moveToIndex = slot2
+function var_0_0.moveCard(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
+	arg_3_0.operType = FightEnum.CardOpType.MoveCard
+	arg_3_0.param1 = arg_3_1
+	arg_3_0.param2 = arg_3_2
+	arg_3_0.cardData = FightDataUtil.copyData(arg_3_3)
+	arg_3_0.costActPoint = FightCardDataHelper.moveActCost(arg_3_3)
+	arg_3_0.skillId = arg_3_3.skillId
+	arg_3_0.belongToEntityId = arg_3_3.uid
+	arg_3_0.moveToIndex = arg_3_2
 end
 
-function slot0.moveUniversalCard(slot0, slot1, slot2, slot3)
-	slot0.operType = FightEnum.CardOpType.MoveUniversal
-	slot0.param1 = slot1
-	slot0.param2 = slot2
-	slot0.cardData = FightDataUtil.copyData(slot3)
-	slot0.costActPoint = FightCardDataHelper.moveActCost(slot3)
-	slot0.skillId = slot3.skillId
-	slot0.belongToEntityId = slot3.uid
-	slot0.moveToIndex = slot2
+function var_0_0.moveUniversalCard(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
+	arg_4_0.operType = FightEnum.CardOpType.MoveUniversal
+	arg_4_0.param1 = arg_4_1
+	arg_4_0.param2 = arg_4_2
+	arg_4_0.cardData = FightDataUtil.copyData(arg_4_3)
+	arg_4_0.costActPoint = FightCardDataHelper.moveActCost(arg_4_3)
+	arg_4_0.skillId = arg_4_3.skillId
+	arg_4_0.belongToEntityId = arg_4_3.uid
+	arg_4_0.moveToIndex = arg_4_2
 end
 
-function slot0.playCard(slot0, slot1, slot2, slot3, slot4)
-	slot0.operType = FightEnum.CardOpType.PlayCard
-	slot0.param1 = slot1
-	slot0.param2 = slot4
-	slot0.toId = slot0:getTarget(slot2, slot3.skillId)
-	slot5 = slot3.uid
-	slot6 = slot3.skillId
-	slot0.cardData = FightDataUtil.copyData(slot3)
-	slot0.costActPoint = FightCardDataHelper.playActCost(slot3)
-	slot0.clientSimulateCanPlayCard = FightViewHandCardItemLock.canUseCardSkill(slot5, slot6, FightBuffHelper.simulateBuffList(FightDataHelper.entityMgr:getById(slot5)))
-	slot0.skillId = slot6
-	slot0.belongToEntityId = slot5
-	slot0.cardInfoMO = slot0.cardData
+function var_0_0.playCard(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)
+	arg_5_0.operType = FightEnum.CardOpType.PlayCard
+	arg_5_0.param1 = arg_5_1
+	arg_5_0.param2 = arg_5_4
+	arg_5_0.toId = arg_5_0:getTarget(arg_5_2, arg_5_3.skillId)
+
+	local var_5_0 = arg_5_3.uid
+	local var_5_1 = arg_5_3.skillId
+
+	arg_5_0.cardData = FightDataUtil.copyData(arg_5_3)
+	arg_5_0.costActPoint = FightCardDataHelper.playActCost(arg_5_3)
+
+	local var_5_2 = FightDataHelper.entityMgr:getById(var_5_0)
+	local var_5_3 = FightBuffHelper.simulateBuffList(var_5_2)
+
+	arg_5_0.clientSimulateCanPlayCard = FightViewHandCardItemLock.canUseCardSkill(var_5_0, var_5_1, var_5_3)
+	arg_5_0.skillId = var_5_1
+	arg_5_0.belongToEntityId = var_5_0
+	arg_5_0.cardInfoMO = arg_5_0.cardData
 end
 
-function slot0.playAssistBossHandCard(slot0, slot1, slot2)
-	slot0.operType = FightEnum.CardOpType.AssistBoss
-	slot0.param1 = slot1
-	slot0.toId = slot0:getTarget(slot2, slot1)
-	slot0.skillId = slot1
-	slot0.belongToEntityId = FightDataHelper.entityMgr:getAssistBoss().id
-	slot0.costActPoint = 0
-	slot0.cardInfoMO = FightCardInfoData.New({
-		skillId = slot1,
-		uid = slot0.belongToEntityId
+function var_0_0.playAssistBossHandCard(arg_6_0, arg_6_1, arg_6_2)
+	arg_6_0.operType = FightEnum.CardOpType.AssistBoss
+	arg_6_0.param1 = arg_6_1
+	arg_6_0.toId = arg_6_0:getTarget(arg_6_2, arg_6_1)
+	arg_6_0.skillId = arg_6_1
+	arg_6_0.belongToEntityId = FightDataHelper.entityMgr:getAssistBoss().id
+	arg_6_0.costActPoint = 0
+	arg_6_0.cardInfoMO = FightCardInfoData.New({
+		skillId = arg_6_1,
+		uid = arg_6_0.belongToEntityId
 	})
 end
 
-function slot0.playPlayerFinisherSkill(slot0, slot1, slot2)
-	slot0.operType = FightEnum.CardOpType.PlayerFinisherSkill
-	slot0.param1 = slot1
-	slot0.toId = slot2
-	slot0.skillId = slot1
-	slot0.costActPoint = 0
-	slot0.belongToEntityId = FightEntityScene.MySideId
-	slot0.cardInfoMO = FightCardInfoData.New({
-		skillId = slot1,
-		uid = slot0.belongToEntityId
+function var_0_0.playPlayerFinisherSkill(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0.operType = FightEnum.CardOpType.PlayerFinisherSkill
+	arg_7_0.param1 = arg_7_1
+	arg_7_0.toId = arg_7_2
+	arg_7_0.skillId = arg_7_1
+	arg_7_0.costActPoint = 0
+	arg_7_0.belongToEntityId = FightEntityScene.MySideId
+	arg_7_0.cardInfoMO = FightCardInfoData.New({
+		skillId = arg_7_1,
+		uid = arg_7_0.belongToEntityId
 	})
 end
 
-function slot0.playBloodPoolCard(slot0, slot1, slot2)
-	slot0.operType = FightEnum.CardOpType.BloodPool
-	slot0.param1 = slot1
-	slot0.toId = slot0:getTarget(slot2, slot1)
-	slot0.skillId = slot1
-	slot0.belongToEntityId = FightEntityScene.MySideId
-	slot0.costActPoint = 0
-	slot0.cardInfoMO = FightCardInfoData.New({
-		skillId = slot1,
-		uid = slot0.belongToEntityId
+function var_0_0.playBloodPoolCard(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_0.operType = FightEnum.CardOpType.BloodPool
+	arg_8_0.param1 = arg_8_1
+	arg_8_0.toId = arg_8_0:getTarget(arg_8_2, arg_8_1)
+	arg_8_0.skillId = arg_8_1
+	arg_8_0.belongToEntityId = FightEntityScene.MySideId
+	arg_8_0.costActPoint = 0
+	arg_8_0.cardInfoMO = FightCardInfoData.New({
+		skillId = arg_8_1,
+		uid = arg_8_0.belongToEntityId
 	})
 end
 
-function slot0.simulateDissolveCard(slot0, slot1)
-	slot0.operType = FightEnum.CardOpType.SimulateDissolveCard
-	slot0.dissolveIndex = slot1
-	slot0.costActPoint = 0
+function var_0_0.simulateDissolveCard(arg_9_0, arg_9_1)
+	arg_9_0.operType = FightEnum.CardOpType.SimulateDissolveCard
+	arg_9_0.dissolveIndex = arg_9_1
+	arg_9_0.costActPoint = 0
 end
 
-function slot0.selectSkillTarget(slot0, slot1)
-	slot0.toId = slot1
+function var_0_0.selectSkillTarget(arg_10_0, arg_10_1)
+	arg_10_0.toId = arg_10_1
 end
 
-function slot0.isMoveCard(slot0)
-	return slot0.operType == FightEnum.CardOpType.MoveCard
+function var_0_0.isMoveCard(arg_11_0)
+	return arg_11_0.operType == FightEnum.CardOpType.MoveCard
 end
 
-function slot0.isMoveUniversal(slot0)
-	return slot0.operType == FightEnum.CardOpType.MoveUniversal
+function var_0_0.isMoveUniversal(arg_12_0)
+	return arg_12_0.operType == FightEnum.CardOpType.MoveUniversal
 end
 
-function slot0.isPlayCard(slot0)
-	return slot0.operType == FightEnum.CardOpType.PlayCard
+function var_0_0.isPlayCard(arg_13_0)
+	return arg_13_0.operType == FightEnum.CardOpType.PlayCard
 end
 
-function slot0.isAssistBossPlayCard(slot0)
-	return slot0.operType == FightEnum.CardOpType.AssistBoss
+function var_0_0.isAssistBossPlayCard(arg_14_0)
+	return arg_14_0.operType == FightEnum.CardOpType.AssistBoss
 end
 
-function slot0.isPlayerFinisherSkill(slot0)
-	return slot0.operType == FightEnum.CardOpType.PlayerFinisherSkill
+function var_0_0.isPlayerFinisherSkill(arg_15_0)
+	return arg_15_0.operType == FightEnum.CardOpType.PlayerFinisherSkill
 end
 
-function slot0.isBloodPoolSkill(slot0)
-	return slot0.operType == FightEnum.CardOpType.BloodPool
+function var_0_0.isBloodPoolSkill(arg_16_0)
+	return arg_16_0.operType == FightEnum.CardOpType.BloodPool
 end
 
-function slot0.isSeason2ChangeHero(slot0)
-	return slot0.operType == FightEnum.CardOpType.Season2ChangeHero
+function var_0_0.isSeason2ChangeHero(arg_17_0)
+	return arg_17_0.operType == FightEnum.CardOpType.Season2ChangeHero
 end
 
-function slot0.isSimulateDissolveCard(slot0)
-	return slot0.operType == FightEnum.CardOpType.SimulateDissolveCard
+function var_0_0.isSimulateDissolveCard(arg_18_0)
+	return arg_18_0.operType == FightEnum.CardOpType.SimulateDissolveCard
 end
 
-function slot0.copyCard(slot0)
-	slot0._needCopyCard = 1
+function var_0_0.copyCard(arg_19_0)
+	arg_19_0._needCopyCard = 1
 end
 
-function slot0.needCopyCard(slot0)
-	return slot0._needCopyCard == 1
+function var_0_0.needCopyCard(arg_20_0)
+	return arg_20_0._needCopyCard == 1
 end
 
-function slot0.getTarget(slot0, slot1, slot2)
-	if (slot1 or FightDataHelper.operationDataMgr.curSelectEntityId) == 0 and #FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, slot2) > 0 then
-		slot3 = slot4[1]
+function var_0_0.getTarget(arg_21_0, arg_21_1, arg_21_2)
+	local var_21_0 = arg_21_1 or FightDataHelper.operationDataMgr.curSelectEntityId
+
+	if var_21_0 == 0 then
+		local var_21_1 = FightHelper.getTargetLimits(FightEnum.EntitySide.MySide, arg_21_2)
+
+		if #var_21_1 > 0 then
+			var_21_0 = var_21_1[1]
+		end
 	end
 
-	return slot3
+	return var_21_0
 end
 
-return slot0
+return var_0_0

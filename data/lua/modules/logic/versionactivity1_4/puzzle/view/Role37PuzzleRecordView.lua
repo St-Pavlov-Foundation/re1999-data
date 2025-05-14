@@ -1,49 +1,52 @@
-module("modules.logic.versionactivity1_4.puzzle.view.Role37PuzzleRecordView", package.seeall)
+﻿module("modules.logic.versionactivity1_4.puzzle.view.Role37PuzzleRecordView", package.seeall)
 
-slot0 = class("Role37PuzzleRecordView", BaseView)
+local var_0_0 = class("Role37PuzzleRecordView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnCloseMask = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_CloseMask")
-	slot0._txtTitle = gohelper.findChildText(slot0.viewGO, "Title/#txt_Title")
-	slot0._scrollList = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_List")
-	slot0._goEmpty = gohelper.findChild(slot0.viewGO, "#go_Empty")
-	slot0._txtEmpty = gohelper.findChildText(slot0.viewGO, "#go_Empty/#txt_Empty")
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Close")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnCloseMask = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_CloseMask")
+	arg_1_0._txtTitle = gohelper.findChildText(arg_1_0.viewGO, "Title/#txt_Title")
+	arg_1_0._scrollList = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_List")
+	arg_1_0._goEmpty = gohelper.findChild(arg_1_0.viewGO, "#go_Empty")
+	arg_1_0._txtEmpty = gohelper.findChildText(arg_1_0.viewGO, "#go_Empty/#txt_Empty")
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Close")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnCloseMask:AddClickListener(slot0._btnCloseMaskOnClick, slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnCloseMask:AddClickListener(arg_2_0._btnCloseMaskOnClick, arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnCloseMask:RemoveClickListener()
-	slot0._btnClose:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnCloseMask:RemoveClickListener()
+	arg_3_0._btnClose:RemoveClickListener()
 end
 
-function slot0._btnCloseMaskOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseMaskOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_5_0)
+	arg_5_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	Role37PuzzleController.instance:registerCallback(Role37PuzzleEvent.RecordCntChange, slot0.onRecordChange, slot0)
-	slot0:onRecordChange(PuzzleRecordListModel.instance:getCount())
+function var_0_0._editableInitView(arg_6_0)
+	Role37PuzzleController.instance:registerCallback(Role37PuzzleEvent.RecordCntChange, arg_6_0.onRecordChange, arg_6_0)
+
+	local var_6_0 = PuzzleRecordListModel.instance:getCount()
+
+	arg_6_0:onRecordChange(var_6_0)
 end
 
-function slot0.onDestroyView(slot0)
-	Role37PuzzleController.instance:unregisterCallback(Role37PuzzleEvent.RecordCntChange, slot0.onRecordChange, slot0)
+function var_0_0.onDestroyView(arg_7_0)
+	Role37PuzzleController.instance:unregisterCallback(Role37PuzzleEvent.RecordCntChange, arg_7_0.onRecordChange, arg_7_0)
 end
 
-function slot0.onRecordChange(slot0, slot1)
-	gohelper.setActive(slot0._goEmpty, slot1 <= 0)
+function var_0_0.onRecordChange(arg_8_0, arg_8_1)
+	gohelper.setActive(arg_8_0._goEmpty, arg_8_1 <= 0)
 end
 
-return slot0
+return var_0_0

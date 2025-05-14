@@ -1,7 +1,7 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.LocalEliminateChessUtils", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.LocalEliminateChessUtils", package.seeall)
 
-slot0 = class("LocalEliminateChessUtils")
-slot1 = {
+local var_0_0 = class("LocalEliminateChessUtils")
+local var_0_1 = {
 	{
 		x = 1,
 		y = 0
@@ -19,7 +19,7 @@ slot1 = {
 		y = 0
 	}
 }
-slot2 = {
+local var_0_2 = {
 	{
 		x = 0,
 		y = 1
@@ -38,158 +38,176 @@ slot2 = {
 	}
 }
 
-function slot3(slot0, slot1, slot2)
-	slot4 = {}
-	slot5 = slot2 > 1 and slot0[slot1][slot2 - 1] or nil
-	slot6 = slot2 > 2 and slot0[slot1][slot2 - 2] or nil
-	slot7 = slot1 > 1 and slot0[slot1 - 1][slot2] or nil
-	slot8 = slot1 > 2 and slot0[slot1 - 2][slot2] or nil
+local function var_0_3(arg_1_0, arg_1_1, arg_1_2)
+	local var_1_0 = EliminateEnum_2_7.AllChessID
+	local var_1_1 = {}
+	local var_1_2 = arg_1_2 > 1 and arg_1_0[arg_1_1][arg_1_2 - 1] or nil
+	local var_1_3 = arg_1_2 > 2 and arg_1_0[arg_1_1][arg_1_2 - 2] or nil
+	local var_1_4 = arg_1_1 > 1 and arg_1_0[arg_1_1 - 1][arg_1_2] or nil
+	local var_1_5 = arg_1_1 > 2 and arg_1_0[arg_1_1 - 2][arg_1_2] or nil
 
-	for slot12, slot13 in ipairs(EliminateEnum_2_7.AllChessID) do
-		slot14 = true
+	for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+		local var_1_6 = true
 
-		if slot5 and slot6 and slot13 == slot5 and slot13 == slot6 then
-			slot14 = false
+		if var_1_2 and var_1_3 and iter_1_1 == var_1_2 and iter_1_1 == var_1_3 then
+			var_1_6 = false
 		end
 
-		if slot7 and slot8 and slot13 == slot7 and slot13 == slot8 then
-			slot14 = false
+		if var_1_4 and var_1_5 and iter_1_1 == var_1_4 and iter_1_1 == var_1_5 then
+			var_1_6 = false
 		end
 
-		if slot14 then
-			table.insert(slot4, slot13)
+		if var_1_6 then
+			table.insert(var_1_1, iter_1_1)
 		end
 	end
 
-	return slot4
+	return var_1_1
 end
 
-function slot4(slot0, slot1)
+local function var_0_4(arg_2_0, arg_2_1)
 	print("生成的不可消除棋盘：")
 
-	for slot5 = 1, slot1 do
-		print(table.concat(slot0[slot5], " "))
+	for iter_2_0 = 1, arg_2_1 do
+		print(table.concat(arg_2_0[iter_2_0], " "))
 	end
 end
 
-function slot0.generateUnsolvableBoard(slot0, slot1)
+function var_0_0.generateUnsolvableBoard(arg_3_0, arg_3_1)
 	math.randomseed(os.time())
 
-	slot2 = {
-		[slot6] = {}
-	}
+	local var_3_0 = {}
 
-	for slot6 = 1, slot0 do
+	for iter_3_0 = 1, arg_3_0 do
+		var_3_0[iter_3_0] = {}
 	end
 
-	for slot6 = 1, slot0 do
-		for slot10 = 1, slot1 do
-			if #uv0(slot2, slot6, slot10) == 0 then
+	for iter_3_1 = 1, arg_3_0 do
+		for iter_3_2 = 1, arg_3_1 do
+			local var_3_1 = var_0_3(var_3_0, iter_3_1, iter_3_2)
+
+			if #var_3_1 == 0 then
 				return nil
 			end
 
-			slot2[slot6][slot10] = slot11[math.random(#slot11)]
+			var_3_0[iter_3_1][iter_3_2] = var_3_1[math.random(#var_3_1)]
 		end
 	end
 
-	uv1(slot2, slot0)
+	var_0_4(var_3_0, arg_3_0)
 
-	return slot2
+	return var_3_0
 end
 
-function slot0.canEliminate(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.canEliminate(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0 = {}
 
-	for slot7 = 1, slot1 do
-		for slot11 = 1, slot2 do
-			if not slot0[slot7][slot11]:haveStatus(EliminateEnum.ChessState.Die) then
-				slot14 = uv0.instance.checkWithDirection(slot7, slot11, uv2, slot1, slot2, slot0)
+	for iter_4_0 = 1, arg_4_1 do
+		for iter_4_1 = 1, arg_4_2 do
+			local var_4_1 = arg_4_0[iter_4_0][iter_4_1]
 
-				if #uv0.instance.checkWithDirection(slot7, slot11, uv1, slot1, slot2, slot0) == 2 then
-					tabletool.clear(slot3)
+			if not var_4_1:haveStatus(EliminateEnum.ChessState.Die) then
+				local var_4_2 = var_0_0.instance.checkWithDirection(iter_4_0, iter_4_1, var_0_1, arg_4_1, arg_4_2, arg_4_0)
+				local var_4_3 = var_0_0.instance.checkWithDirection(iter_4_0, iter_4_1, var_0_2, arg_4_1, arg_4_2, arg_4_0)
 
-					for slot18 = 1, #slot13 do
-						table.insert(slot3, slot13[slot18])
+				if #var_4_2 == 2 then
+					tabletool.clear(var_4_0)
+
+					for iter_4_2 = 1, #var_4_2 do
+						table.insert(var_4_0, var_4_2[iter_4_2])
 					end
 
-					slot15, slot16 = uv0.instance._findTypeXY(slot0, slot1, slot2, slot12.id, slot13)
+					local var_4_4, var_4_5 = var_0_0.instance._findTypeXY(arg_4_0, arg_4_1, arg_4_2, var_4_1.id, var_4_2)
 
-					if slot15 ~= nil then
-						table.insert(slot3, {
-							x = slot15,
-							y = slot16
+					if var_4_4 ~= nil then
+						table.insert(var_4_0, {
+							x = var_4_4,
+							y = var_4_5
 						})
 
-						return slot3
+						return var_4_0
 					end
 				end
 
-				if #slot14 == 2 then
-					tabletool.clear(slot3)
+				if #var_4_3 == 2 then
+					tabletool.clear(var_4_0)
 
-					for slot18 = 1, #slot14 do
-						table.insert(slot3, slot14[slot18])
+					for iter_4_3 = 1, #var_4_3 do
+						table.insert(var_4_0, var_4_3[iter_4_3])
 					end
 
-					slot15, slot16 = uv0.instance._findTypeXY(slot0, slot1, slot2, slot12.id, slot14)
+					local var_4_6, var_4_7 = var_0_0.instance._findTypeXY(arg_4_0, arg_4_1, arg_4_2, var_4_1.id, var_4_3)
 
-					if slot15 ~= nil then
-						table.insert(slot3, {
-							x = slot15,
-							y = slot16
+					if var_4_6 ~= nil then
+						table.insert(var_4_0, {
+							x = var_4_6,
+							y = var_4_7
 						})
 
-						return slot3
+						return var_4_0
 					end
 				end
 			end
 		end
 	end
 
-	return slot3
+	return var_4_0
 end
 
-function slot0.checkWithDirection(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = {}
-	slot7 = {
-		[slot0 + slot1 * slot4] = true
+function var_0_0.checkWithDirection(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4, arg_5_5)
+	local var_5_0 = {}
+	local var_5_1 = {
+		[arg_5_0 + arg_5_1 * arg_5_4] = true
 	}
 
-	table.insert(slot6, {
-		x = slot0,
-		y = slot1
+	table.insert(var_5_0, {
+		x = arg_5_0,
+		y = arg_5_1
 	})
 
-	slot8 = 1
-	slot9 = slot6[slot8]
-	slot8 = slot8 + 1
+	local var_5_2 = 1
+	local var_5_3 = var_5_0[var_5_2]
 
-	if slot5[slot9.x][slot9.y] then
-		for slot14 = 1, #slot2 do
-			slot18 = slot1 + slot2[slot14].y
+	arg_5_0 = var_5_3.x
+	arg_5_1 = var_5_3.y
 
-			if slot0 + slot2[slot14].x >= 1 and slot3 >= slot17 and slot18 >= 1 and slot4 >= slot18 and not slot7[slot17 + slot18 * slot4] and slot5[slot17] ~= nil then
-				if slot5[slot17][slot18] == nil then
-					-- Nothing
-				elseif slot10.id == slot5[slot17][slot18].id and slot10.id ~= EliminateEnum.InvalidId and slot10.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
-					slot7[slot17 + slot18 * slot4] = true
-					slot19 = -1
-					slot20 = -1
+	local var_5_4 = arg_5_5[arg_5_0][arg_5_1]
+	local var_5_5 = var_5_2 + 1
 
-					if math.abs(slot15) == 1 or math.abs(slot16) == 1 then
-						slot19 = slot0 + slot15 * 2
-						slot20 = slot1 + slot16 * 2
-					end
+	if not var_5_4 then
+		-- block empty
+	else
+		for iter_5_0 = 1, #arg_5_2 do
+			local var_5_6 = arg_5_2[iter_5_0].x
+			local var_5_7 = arg_5_2[iter_5_0].y
+			local var_5_8 = arg_5_0 + var_5_6
+			local var_5_9 = arg_5_1 + var_5_7
 
-					if math.abs(slot15) == 2 or math.abs(slot16) == 2 then
-						slot19 = slot0 + (slot15 ~= 0 and slot15 / 2 or slot15)
-						slot20 = slot1 + (slot16 ~= 0 and slot16 / 2 or slot16)
-					end
+			if var_5_8 < 1 or arg_5_3 < var_5_8 or var_5_9 < 1 or arg_5_4 < var_5_9 or var_5_1[var_5_8 + var_5_9 * arg_5_4] or arg_5_5[var_5_8] == nil or arg_5_5[var_5_8][var_5_9] == nil then
+				-- block empty
+			elseif var_5_4.id == arg_5_5[var_5_8][var_5_9].id and var_5_4.id ~= EliminateEnum.InvalidId and var_5_4.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
+				var_5_1[var_5_8 + var_5_9 * arg_5_4] = true
 
-					if slot19 >= 1 and slot20 >= 1 and slot19 <= slot3 and slot20 <= slot4 and slot5[slot19][slot20] ~= nil and not slot21:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot19, slot20) == nil and slot21.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone and slot21.id ~= EliminateEnum_2_7.InvalidId then
-						table.insert(slot6, {
-							x = slot17,
-							y = slot18
+				local var_5_10 = -1
+				local var_5_11 = -1
+
+				if math.abs(var_5_6) == 1 or math.abs(var_5_7) == 1 then
+					var_5_10 = arg_5_0 + var_5_6 * 2
+					var_5_11 = arg_5_1 + var_5_7 * 2
+				end
+
+				if math.abs(var_5_6) == 2 or math.abs(var_5_7) == 2 then
+					var_5_10 = arg_5_0 + (var_5_6 ~= 0 and var_5_6 / 2 or var_5_6)
+					var_5_11 = arg_5_1 + (var_5_7 ~= 0 and var_5_7 / 2 or var_5_7)
+				end
+
+				if var_5_10 >= 1 and var_5_11 >= 1 and var_5_10 <= arg_5_3 and var_5_11 <= arg_5_4 then
+					local var_5_12 = arg_5_5[var_5_10][var_5_11]
+
+					if var_5_12 ~= nil and not var_5_12:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(var_5_10, var_5_11) == nil and var_5_12.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone and var_5_12.id ~= EliminateEnum_2_7.InvalidId then
+						table.insert(var_5_0, {
+							x = var_5_8,
+							y = var_5_9
 						})
 					end
 				end
@@ -197,40 +215,44 @@ function slot0.checkWithDirection(slot0, slot1, slot2, slot3, slot4, slot5)
 		end
 	end
 
-	return slot6
+	return var_5_0
 end
 
-function slot0._findTypeXY(slot0, slot1, slot2, slot3, slot4)
-	if slot0 == nil then
-		return nil, 
+function var_0_0._findTypeXY(arg_6_0, arg_6_1, arg_6_2, arg_6_3, arg_6_4)
+	if arg_6_0 == nil then
+		return nil, nil
 	end
 
-	for slot8 = 1, slot1 do
-		for slot12 = 1, slot2 do
-			if slot0[slot8][slot12].id == slot3 and not slot13:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(slot8, slot12) == nil and slot13.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
-				slot14 = true
+	for iter_6_0 = 1, arg_6_1 do
+		for iter_6_1 = 1, arg_6_2 do
+			local var_6_0 = arg_6_0[iter_6_0][iter_6_1]
 
-				if slot4 ~= nil then
-					for slot18 = 1, #slot4 do
-						if slot4[slot18].x == slot8 and slot19.y == slot12 then
-							slot14 = false
+			if var_6_0.id == arg_6_3 and not var_6_0:haveStatus(EliminateEnum.ChessState.Frost) and LocalEliminateChessModel.instance:getSpEffect(iter_6_0, iter_6_1) == nil and var_6_0.id ~= EliminateEnum_2_7.ChessTypeToIndex.stone then
+				local var_6_1 = true
+
+				if arg_6_4 ~= nil then
+					for iter_6_2 = 1, #arg_6_4 do
+						local var_6_2 = arg_6_4[iter_6_2]
+
+						if var_6_2.x == iter_6_0 and var_6_2.y == iter_6_1 then
+							var_6_1 = false
 
 							break
 						end
 					end
 				end
 
-				if slot14 then
-					return slot8, slot12
+				if var_6_1 then
+					return iter_6_0, iter_6_1
 				end
 			end
 		end
 	end
 
-	return nil, 
+	return nil, nil
 end
 
-slot5 = {
+local var_0_5 = {
 	8,
 	7,
 	6,
@@ -242,18 +264,21 @@ slot5 = {
 	6
 }
 
-function slot0.getFixDropId()
+function var_0_0.getFixDropId()
 	if not LengZhou6Controller.instance:isNeedForceDrop() then
 		return nil
 	end
 
-	return table.remove(uv0, 1)
+	return (table.remove(var_0_5, 1))
 end
 
-function slot0.getChessPos(slot0, slot1)
-	return (slot0 - 1) * EliminateEnum_2_7.ChessWidth + EliminateEnum_2_7.ChessIntervalX * (slot0 - 1), (slot1 - 1) * EliminateEnum_2_7.ChessHeight + EliminateEnum_2_7.ChessIntervalY * (slot1 - 1)
+function var_0_0.getChessPos(arg_8_0, arg_8_1)
+	local var_8_0 = (arg_8_0 - 1) * EliminateEnum_2_7.ChessWidth + EliminateEnum_2_7.ChessIntervalX * (arg_8_0 - 1)
+	local var_8_1 = (arg_8_1 - 1) * EliminateEnum_2_7.ChessHeight + EliminateEnum_2_7.ChessIntervalY * (arg_8_1 - 1)
+
+	return var_8_0, var_8_1
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

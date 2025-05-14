@@ -1,57 +1,58 @@
-module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandLevelViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandLevelViewContainer", package.seeall)
 
-slot0 = class("CooperGarlandLevelViewContainer", BaseViewContainer)
+local var_0_0 = class("CooperGarlandLevelViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
-	slot0._levelView = CooperGarlandLevelView.New()
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, slot0._levelView)
-	table.insert(slot1, TabViewGroup.New(1, "#go_btns"))
+	arg_1_0._levelView = CooperGarlandLevelView.New()
 
-	return slot1
+	table.insert(var_1_0, arg_1_0._levelView)
+	table.insert(var_1_0, TabViewGroup.New(1, "#go_btns"))
+
+	return var_1_0
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot0.navigateView = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		arg_2_0.navigateView = NavigateButtonsView.New({
 			true,
 			false,
 			false
 		})
 
 		return {
-			slot0.navigateView
+			arg_2_0.navigateView
 		}
 	end
 end
 
-function slot0.setVisibleInternal(slot0, slot1)
-	uv0.super.setVisibleInternal(slot0, slot1)
+function var_0_0.setVisibleInternal(arg_3_0, arg_3_1)
+	var_0_0.super.setVisibleInternal(arg_3_0, arg_3_1)
 
-	slot0._levelView.openAnimComplete = false
+	arg_3_0._levelView.openAnimComplete = false
 
-	if slot1 then
-		slot0:playAnim(UIAnimationName.Open, slot0._playOpenAnimFinish, slot0)
+	if arg_3_1 then
+		arg_3_0:playAnim(UIAnimationName.Open, arg_3_0._playOpenAnimFinish, arg_3_0)
 	end
 end
 
-function slot0._playOpenAnimFinish(slot0)
-	if not slot0._levelView then
+function var_0_0._playOpenAnimFinish(arg_4_0)
+	if not arg_4_0._levelView then
 		return
 	end
 
-	slot0._levelView.openAnimComplete = true
+	arg_4_0._levelView.openAnimComplete = true
 
-	slot0._levelView:playEpisodeFinishAnim()
+	arg_4_0._levelView:playEpisodeFinishAnim()
 end
 
-function slot0.playAnim(slot0, slot1, slot2, slot3)
-	slot0.animatorPlayer = SLFramework.AnimatorPlayer.Get(slot0.viewGO)
+function var_0_0.playAnim(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
+	arg_5_0.animatorPlayer = SLFramework.AnimatorPlayer.Get(arg_5_0.viewGO)
 
-	if slot0.animatorPlayer then
-		slot0.animatorPlayer:Play(slot1, slot2, slot3)
+	if arg_5_0.animatorPlayer then
+		arg_5_0.animatorPlayer:Play(arg_5_1, arg_5_2, arg_5_3)
 	end
 end
 
-return slot0
+return var_0_0

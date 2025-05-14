@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity2_7.coopergarland.config.CooperGarlandConfig", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.config.CooperGarlandConfig", package.seeall)
 
-slot0 = class("CooperGarlandConfig", BaseConfig)
+local var_0_0 = class("CooperGarlandConfig", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"activity192_const",
 		"activity192_episode",
@@ -13,297 +13,368 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onInit(slot0)
-	slot0._actTaskDict = {}
-	slot0._actEpisodeDict = {}
-	slot0._map2ComponentList = {}
+function var_0_0.onInit(arg_2_0)
+	arg_2_0._actTaskDict = {}
+	arg_2_0._actEpisodeDict = {}
+	arg_2_0._map2ComponentList = {}
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot0[string.format("%sConfigLoaded", slot1)] then
-		slot4(slot0, slot2)
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	local var_3_0 = arg_3_0[string.format("%sConfigLoaded", arg_3_1)]
+
+	if var_3_0 then
+		var_3_0(arg_3_0, arg_3_2)
 	end
 end
 
-function slot0.activity192_mapConfigLoaded(slot0, slot1)
-	slot0._map2ComponentList = {}
+function var_0_0.activity192_mapConfigLoaded(arg_4_0, arg_4_1)
+	arg_4_0._map2ComponentList = {}
 
-	for slot5, slot6 in ipairs(slot1.configList) do
-		if not slot0._map2ComponentList[slot6.mapId] then
-			slot0._map2ComponentList[slot7] = {}
+	for iter_4_0, iter_4_1 in ipairs(arg_4_1.configList) do
+		local var_4_0 = iter_4_1.mapId
+		local var_4_1 = arg_4_0._map2ComponentList[var_4_0]
+
+		if not var_4_1 then
+			var_4_1 = {}
+			arg_4_0._map2ComponentList[var_4_0] = var_4_1
 		end
 
-		slot8[#slot8 + 1] = slot6.componentId
+		var_4_1[#var_4_1 + 1] = iter_4_1.componentId
 	end
 end
 
-function slot0.getAct192ConstCfg(slot0, slot1, slot2)
-	if not lua_activity192_const.configDict[slot1] and slot2 then
-		logError(string.format("CooperGarlandConfig:getAct192ConstCfg error, cfg is nil, constId:%s", slot1))
+function var_0_0.getAct192ConstCfg(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = lua_activity192_const.configDict[arg_5_1]
+
+	if not var_5_0 and arg_5_2 then
+		logError(string.format("CooperGarlandConfig:getAct192ConstCfg error, cfg is nil, constId:%s", arg_5_1))
 	end
 
-	return slot3
+	return var_5_0
 end
 
-function slot0.getAct192Const(slot0, slot1, slot2)
-	slot3 = nil
+function var_0_0.getAct192Const(arg_6_0, arg_6_1, arg_6_2)
+	local var_6_0
+	local var_6_1 = arg_6_0:getAct192ConstCfg(arg_6_1, true)
 
-	if slot0:getAct192ConstCfg(slot1, true) then
-		if slot2 then
-			slot3 = tonumber(slot4.value)
+	if var_6_1 then
+		var_6_0 = var_6_1.value
+
+		if arg_6_2 then
+			var_6_0 = tonumber(var_6_0)
 		end
 	end
 
-	return slot3
+	return var_6_0
 end
 
-function slot0.getAct192EpisodeCfg(slot0, slot1, slot2, slot3)
-	if not (lua_activity192_episode.configDict[slot1] and lua_activity192_episode.configDict[slot1][slot2]) and slot3 then
-		logError(string.format("CooperGarlandConfig:getAct192EpisodeCfg error, cfg is nil, actId:%s, episodeId:%s", slot1, slot2))
+function var_0_0.getAct192EpisodeCfg(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
+	local var_7_0 = lua_activity192_episode.configDict[arg_7_1] and lua_activity192_episode.configDict[arg_7_1][arg_7_2]
+
+	if not var_7_0 and arg_7_3 then
+		logError(string.format("CooperGarlandConfig:getAct192EpisodeCfg error, cfg is nil, actId:%s, episodeId:%s", arg_7_1, arg_7_2))
 	end
 
-	return slot4
+	return var_7_0
 end
 
-function slot0.getEpisodeIdList(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.getEpisodeIdList(arg_8_0, arg_8_1, arg_8_2)
+	local var_8_0 = {}
 
-	if lua_activity192_episode.configDict[slot1] then
-		if not slot0._actEpisodeDict[slot1] then
-			slot0._actEpisodeDict = {}
+	if lua_activity192_episode.configDict[arg_8_1] then
+		var_8_0 = arg_8_0._actEpisodeDict[arg_8_1]
 
-			for slot8, slot9 in ipairs(lua_activity192_episode.configList) do
-				if slot1 == slot9.activityId and not slot9.isExtra then
-					slot3[#slot3 + 1] = slot9.episodeId
+		if not var_8_0 then
+			var_8_0 = {}
+			arg_8_0._actEpisodeDict = var_8_0
+
+			for iter_8_0, iter_8_1 in ipairs(lua_activity192_episode.configList) do
+				if arg_8_1 == iter_8_1.activityId and not iter_8_1.isExtra then
+					var_8_0[#var_8_0 + 1] = iter_8_1.episodeId
 				end
 			end
 		end
-	elseif slot2 then
-		logError(string.format("CooperGarlandConfig:getEpisodeIdList error, cfg is nil, actId:%s", slot1))
+	elseif arg_8_2 then
+		logError(string.format("CooperGarlandConfig:getEpisodeIdList error, cfg is nil, actId:%s", arg_8_1))
 	end
 
-	return slot3
+	return var_8_0
 end
 
-function slot0.getEpisodeName(slot0, slot1, slot2)
-	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.name or ""
+function var_0_0.getEpisodeName(arg_9_0, arg_9_1, arg_9_2)
+	local var_9_0 = arg_9_0:getAct192EpisodeCfg(arg_9_1, arg_9_2, true)
+
+	return var_9_0 and var_9_0.name or ""
 end
 
-function slot0.getGameId(slot0, slot1, slot2)
-	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.gameId
+function var_0_0.getGameId(arg_10_0, arg_10_1, arg_10_2)
+	local var_10_0 = arg_10_0:getAct192EpisodeCfg(arg_10_1, arg_10_2, true)
+
+	return var_10_0 and var_10_0.gameId
 end
 
-function slot0.isGameEpisode(slot0, slot1, slot2)
-	return slot0:getGameId(slot1, slot2) and slot3 ~= 0
+function var_0_0.isGameEpisode(arg_11_0, arg_11_1, arg_11_2)
+	local var_11_0 = arg_11_0:getGameId(arg_11_1, arg_11_2)
+
+	return var_11_0 and var_11_0 ~= 0
 end
 
-function slot0.getStoryBefore(slot0, slot1, slot2)
-	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.storyBefore
+function var_0_0.getStoryBefore(arg_12_0, arg_12_1, arg_12_2)
+	local var_12_0 = arg_12_0:getAct192EpisodeCfg(arg_12_1, arg_12_2, true)
+
+	return var_12_0 and var_12_0.storyBefore
 end
 
-function slot0.getStoryClear(slot0, slot1, slot2)
-	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.storyClear
+function var_0_0.getStoryClear(arg_13_0, arg_13_1, arg_13_2)
+	local var_13_0 = arg_13_0:getAct192EpisodeCfg(arg_13_1, arg_13_2, true)
+
+	return var_13_0 and var_13_0.storyClear
 end
 
-function slot0.getExtraEpisode(slot0, slot1, slot2)
-	slot3 = nil
+function var_0_0.getExtraEpisode(arg_14_0, arg_14_1, arg_14_2)
+	local var_14_0
+	local var_14_1 = lua_activity192_episode.configDict[arg_14_1]
 
-	if lua_activity192_episode.configDict[slot1] then
-		for slot8, slot9 in pairs(slot4) do
-			if slot9.isExtra then
-				slot3 = slot8
+	if var_14_1 then
+		for iter_14_0, iter_14_1 in pairs(var_14_1) do
+			if iter_14_1.isExtra then
+				var_14_0 = iter_14_0
 
 				break
 			end
 		end
-	elseif slot2 then
-		logError(string.format("CooperGarlandConfig:getExtraEpisode error, cfg is nil, actId:%s", slot1))
+	elseif arg_14_2 then
+		logError(string.format("CooperGarlandConfig:getExtraEpisode error, cfg is nil, actId:%s", arg_14_1))
 	end
 
-	return slot3
+	return var_14_0
 end
 
-function slot0.isExtraEpisode(slot0, slot1, slot2)
-	return slot0:getAct192EpisodeCfg(slot1, slot2, true) and slot3.isExtra
+function var_0_0.isExtraEpisode(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0 = arg_15_0:getAct192EpisodeCfg(arg_15_1, arg_15_2, true)
+
+	return var_15_0 and var_15_0.isExtra
 end
 
-function slot0.getAct192TaskCfg(slot0, slot1, slot2, slot3)
-	slot4 = lua_activity192_task.configDict[slot2]
+function var_0_0.getAct192TaskCfg(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	local var_16_0 = lua_activity192_task.configDict[arg_16_2]
 
-	if slot3 then
-		if slot4 then
-			if slot4.activityId ~= slot1 then
-				logError(string.format("CooperGarlandConfig:getAct192TaskCfg error, actId error, actId:%s, taskId:%s, cfg actId:%s", slot1, slot2, slot4.activityId))
+	if arg_16_3 then
+		if var_16_0 then
+			if var_16_0.activityId ~= arg_16_1 then
+				logError(string.format("CooperGarlandConfig:getAct192TaskCfg error, actId error, actId:%s, taskId:%s, cfg actId:%s", arg_16_1, arg_16_2, var_16_0.activityId))
 			end
 		else
-			logError(string.format("CooperGarlandConfig:getAct192TaskCfg error, cfg is nil, actId:%s, taskId:%s", slot1, slot2))
+			logError(string.format("CooperGarlandConfig:getAct192TaskCfg error, cfg is nil, actId:%s, taskId:%s", arg_16_1, arg_16_2))
 		end
 	end
 
-	return slot4
+	return var_16_0
 end
 
-function slot0.getTaskList(slot0, slot1)
-	if not slot0._actTaskDict[slot1] then
-		slot0._actTaskDict = {}
+function var_0_0.getTaskList(arg_17_0, arg_17_1)
+	local var_17_0 = arg_17_0._actTaskDict[arg_17_1]
 
-		for slot6, slot7 in pairs(lua_activity192_task.configDict) do
-			if slot1 == slot7.activityId then
-				slot2[#slot2 + 1] = slot7
+	if not var_17_0 then
+		var_17_0 = {}
+		arg_17_0._actTaskDict = var_17_0
+
+		for iter_17_0, iter_17_1 in pairs(lua_activity192_task.configDict) do
+			if arg_17_1 == iter_17_1.activityId then
+				var_17_0[#var_17_0 + 1] = iter_17_1
 			end
 		end
 	end
 
-	return slot2
+	return var_17_0
 end
 
-function slot0.getAct192GameCfg(slot0, slot1, slot2)
-	if not lua_activity192_game.configDict[slot1] and slot2 then
-		logError(string.format("CooperGarlandConfig:getAct192GameCfg error, cfg is nil, gameId:%s", slot1))
+function var_0_0.getAct192GameCfg(arg_18_0, arg_18_1, arg_18_2)
+	local var_18_0 = lua_activity192_game.configDict[arg_18_1]
+
+	if not var_18_0 and arg_18_2 then
+		logError(string.format("CooperGarlandConfig:getAct192GameCfg error, cfg is nil, gameId:%s", arg_18_1))
 	end
 
-	return slot3
+	return var_18_0
 end
 
-function slot0.getMapId(slot0, slot1, slot2)
-	return slot0:getAct192GameCfg(slot1, true) and slot3.maps[slot2]
+function var_0_0.getMapId(arg_19_0, arg_19_1, arg_19_2)
+	local var_19_0 = arg_19_0:getAct192GameCfg(arg_19_1, true)
+
+	return var_19_0 and var_19_0.maps[arg_19_2]
 end
 
-function slot0.getMaxRound(slot0, slot1)
-	slot2 = 0
+function var_0_0.getMaxRound(arg_20_0, arg_20_1)
+	local var_20_0 = 0
+	local var_20_1 = arg_20_0:getAct192GameCfg(arg_20_1, true)
 
-	if slot0:getAct192GameCfg(slot1, true) then
-		slot2 = #slot3.maps
+	if var_20_1 then
+		var_20_0 = #var_20_1.maps
 	end
 
-	return slot2
+	return var_20_0
 end
 
-function slot0.getRemoveCount(slot0, slot1, slot2)
-	return slot0:getAct192GameCfg(slot1, true) and slot3.removeCount[slot2]
+function var_0_0.getRemoveCount(arg_21_0, arg_21_1, arg_21_2)
+	local var_21_0 = arg_21_0:getAct192GameCfg(arg_21_1, true)
+
+	return var_21_0 and var_21_0.removeCount[arg_21_2]
 end
 
-function slot0.getPanelImage(slot0, slot1)
-	return slot0:getAct192GameCfg(slot1, true) and slot2.panelImage
+function var_0_0.getPanelImage(arg_22_0, arg_22_1)
+	local var_22_0 = arg_22_0:getAct192GameCfg(arg_22_1, true)
+
+	return var_22_0 and var_22_0.panelImage
 end
 
-function slot0.getScenePath(slot0, slot1)
-	return slot0:getAct192GameCfg(slot1, true) and slot2.scenePath
+function var_0_0.getScenePath(arg_23_0, arg_23_1)
+	local var_23_0 = arg_23_0:getAct192GameCfg(arg_23_1, true)
+
+	return var_23_0 and var_23_0.scenePath
 end
 
-function slot0.getCubeOpenAnim(slot0, slot1)
-	return slot0:getAct192GameCfg(slot1, true) and slot2.cubeOpenAnim
+function var_0_0.getCubeOpenAnim(arg_24_0, arg_24_1)
+	local var_24_0 = arg_24_0:getAct192GameCfg(arg_24_1, true)
+
+	return var_24_0 and var_24_0.cubeOpenAnim
 end
 
-function slot0.getCubeSwitchAnim(slot0, slot1)
-	return slot0:getAct192GameCfg(slot1, true) and slot2.cubeSwitchAnim
+function var_0_0.getCubeSwitchAnim(arg_25_0, arg_25_1)
+	local var_25_0 = arg_25_0:getAct192GameCfg(arg_25_1, true)
+
+	return var_25_0 and var_25_0.cubeSwitchAnim
 end
 
-function slot0.getAct192MapComponentCfg(slot0, slot1, slot2, slot3)
-	if not (lua_activity192_map.configDict[slot1] and lua_activity192_map.configDict[slot1][slot2]) and slot3 then
-		logError(string.format("CooperGarlandConfig:getAct192MapComponentCfg error, cfg is nil, mapId:%s, componentId:%s", slot1, slot2))
+function var_0_0.getAct192MapComponentCfg(arg_26_0, arg_26_1, arg_26_2, arg_26_3)
+	local var_26_0 = lua_activity192_map.configDict[arg_26_1] and lua_activity192_map.configDict[arg_26_1][arg_26_2]
+
+	if not var_26_0 and arg_26_3 then
+		logError(string.format("CooperGarlandConfig:getAct192MapComponentCfg error, cfg is nil, mapId:%s, componentId:%s", arg_26_1, arg_26_2))
 	end
 
-	return slot4
+	return var_26_0
 end
 
-function slot0.getMapComponentList(slot0, slot1)
-	return slot0._map2ComponentList and slot0._map2ComponentList[slot1] or {}
+function var_0_0.getMapComponentList(arg_27_0, arg_27_1)
+	return arg_27_0._map2ComponentList and arg_27_0._map2ComponentList[arg_27_1] or {}
 end
 
-function slot0.getMapComponentType(slot0, slot1, slot2)
-	return slot0:getAct192MapComponentCfg(slot1, slot2, true) and slot3.componentType
+function var_0_0.getMapComponentType(arg_28_0, arg_28_1, arg_28_2)
+	local var_28_0 = arg_28_0:getAct192MapComponentCfg(arg_28_1, arg_28_2, true)
+
+	return var_28_0 and var_28_0.componentType
 end
 
-function slot0.getMapComponentSize(slot0, slot1, slot2)
-	slot3 = 0
-	slot4 = 0
+function var_0_0.getMapComponentSize(arg_29_0, arg_29_1, arg_29_2)
+	local var_29_0 = 0
+	local var_29_1 = 0
+	local var_29_2 = arg_29_0:getAct192MapComponentCfg(arg_29_1, arg_29_2, true)
 
-	if slot0:getAct192MapComponentCfg(slot1, slot2, true) then
-		slot3 = slot5.width
-		slot4 = slot5.height
+	if var_29_2 then
+		var_29_0 = var_29_2.width
+		var_29_1 = var_29_2.height
 	end
 
-	return slot3, slot4
+	return var_29_0, var_29_1
 end
 
-function slot0.getMapComponentColliderSize(slot0, slot1, slot2)
-	slot3 = 0
-	slot4 = 0
+function var_0_0.getMapComponentColliderSize(arg_30_0, arg_30_1, arg_30_2)
+	local var_30_0 = 0
+	local var_30_1 = 0
+	local var_30_2 = arg_30_0:getAct192MapComponentCfg(arg_30_1, arg_30_2, true)
 
-	if slot0:getAct192MapComponentCfg(slot1, slot2, true) then
-		slot3 = slot5.colliderWidth
-		slot4 = slot5.colliderHeight
+	if var_30_2 then
+		var_30_0 = var_30_2.colliderWidth
+		var_30_1 = var_30_2.colliderHeight
 	end
 
-	return slot3, slot4
+	return var_30_0, var_30_1
 end
 
-function slot0.getMapComponentColliderOffset(slot0, slot1, slot2)
-	slot3 = 0
-	slot4 = 0
+function var_0_0.getMapComponentColliderOffset(arg_31_0, arg_31_1, arg_31_2)
+	local var_31_0 = 0
+	local var_31_1 = 0
+	local var_31_2 = arg_31_0:getAct192MapComponentCfg(arg_31_1, arg_31_2, true)
 
-	if slot0:getAct192MapComponentCfg(slot1, slot2, true) then
-		slot3 = slot5.colliderOffsetX
-		slot4 = slot5.colliderOffsetY
+	if var_31_2 then
+		var_31_0 = var_31_2.colliderOffsetX
+		var_31_1 = var_31_2.colliderOffsetY
 	end
 
-	return slot3, slot4
+	return var_31_0, var_31_1
 end
 
-function slot0.getMapComponentScale(slot0, slot1, slot2)
-	return slot0:getAct192MapComponentCfg(slot1, slot2, true) and slot3.scale
+function var_0_0.getMapComponentScale(arg_32_0, arg_32_1, arg_32_2)
+	local var_32_0 = arg_32_0:getAct192MapComponentCfg(arg_32_1, arg_32_2, true)
+
+	return var_32_0 and var_32_0.scale
 end
 
-function slot0.getMapComponentPos(slot0, slot1, slot2)
-	slot3, slot4 = nil
+function var_0_0.getMapComponentPos(arg_33_0, arg_33_1, arg_33_2)
+	local var_33_0
+	local var_33_1
+	local var_33_2 = arg_33_0:getAct192MapComponentCfg(arg_33_1, arg_33_2, true)
 
-	if slot0:getAct192MapComponentCfg(slot1, slot2, true) then
-		slot3 = slot5.posX
-		slot4 = slot5.posY
+	if var_33_2 then
+		var_33_0 = var_33_2.posX
+		var_33_1 = var_33_2.posY
 	end
 
-	return slot3, slot4
+	return var_33_0, var_33_1
 end
 
-function slot0.getMapComponentRotation(slot0, slot1, slot2)
-	return slot0:getAct192MapComponentCfg(slot1, slot2, true) and slot3.rotation
+function var_0_0.getMapComponentRotation(arg_34_0, arg_34_1, arg_34_2)
+	local var_34_0 = arg_34_0:getAct192MapComponentCfg(arg_34_1, arg_34_2, true)
+
+	return var_34_0 and var_34_0.rotation
 end
 
-function slot0.getMapComponentExtraParams(slot0, slot1, slot2)
-	return slot0:getAct192MapComponentCfg(slot1, slot2, true) and slot3.extraParams
+function var_0_0.getMapComponentExtraParams(arg_35_0, arg_35_1, arg_35_2)
+	local var_35_0 = arg_35_0:getAct192MapComponentCfg(arg_35_1, arg_35_2, true)
+
+	return var_35_0 and var_35_0.extraParams
 end
 
-function slot0.getStoryCompId(slot0, slot1, slot2)
-	for slot7, slot8 in ipairs(slot0:getMapComponentList(slot1)) do
-		if slot0:getMapComponentType(slot1, slot8) == CooperGarlandEnum.ComponentType.Story and tonumber(slot0:getMapComponentExtraParams(slot1, slot8)) == slot2 then
-			return slot8
+function var_0_0.getStoryCompId(arg_36_0, arg_36_1, arg_36_2)
+	local var_36_0 = arg_36_0:getMapComponentList(arg_36_1)
+
+	for iter_36_0, iter_36_1 in ipairs(var_36_0) do
+		local var_36_1 = arg_36_0:getMapComponentType(arg_36_1, iter_36_1)
+		local var_36_2 = arg_36_0:getMapComponentExtraParams(arg_36_1, iter_36_1)
+
+		if var_36_1 == CooperGarlandEnum.ComponentType.Story and tonumber(var_36_2) == arg_36_2 then
+			return iter_36_1
 		end
 	end
 end
 
-function slot0.getAct192ComponentTypeCfg(slot0, slot1, slot2)
-	if not lua_activity192_component_type.configDict[slot1] and slot2 then
-		logError(string.format("CooperGarlandConfig:getAct192ComponentTypeCfg error, cfg is nil, componentType:%s", slot1))
+function var_0_0.getAct192ComponentTypeCfg(arg_37_0, arg_37_1, arg_37_2)
+	local var_37_0 = lua_activity192_component_type.configDict[arg_37_1]
+
+	if not var_37_0 and arg_37_2 then
+		logError(string.format("CooperGarlandConfig:getAct192ComponentTypeCfg error, cfg is nil, componentType:%s", arg_37_1))
 	end
 
-	return slot3
+	return var_37_0
 end
 
-function slot0.getAllComponentResPath(slot0)
-	slot1 = {}
+function var_0_0.getAllComponentResPath(arg_38_0)
+	local var_38_0 = {}
 
-	for slot5, slot6 in ipairs(lua_activity192_component_type.configList) do
-		slot1[#slot1 + 1] = slot6.path
+	for iter_38_0, iter_38_1 in ipairs(lua_activity192_component_type.configList) do
+		var_38_0[#var_38_0 + 1] = iter_38_1.path
 	end
 
-	return slot1
+	return var_38_0
 end
 
-function slot0.getComponentTypePath(slot0, slot1)
-	return slot0:getAct192ComponentTypeCfg(slot1, true) and slot2.path
+function var_0_0.getComponentTypePath(arg_39_0, arg_39_1)
+	local var_39_0 = arg_39_0:getAct192ComponentTypeCfg(arg_39_1, true)
+
+	return var_39_0 and var_39_0.path
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

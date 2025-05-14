@@ -1,186 +1,214 @@
-module("modules.logic.fight.view.magiccircle.FightShuZhenView", package.seeall)
+﻿module("modules.logic.fight.view.magiccircle.FightShuZhenView", package.seeall)
 
-slot0 = class("FightShuZhenView", BaseView)
+local var_0_0 = class("FightShuZhenView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._topLeftRoot = gohelper.findChild(slot0.viewGO, "root/topLeftContent")
-	slot0._obj = gohelper.findChild(slot0.viewGO, "root/topLeftContent/#go_shuzhentips")
-	slot0._detail = gohelper.findChild(slot0.viewGO, "root/#go_shuzhendetails")
-	gohelper.onceAddComponent(slot0._detail, typeof(UnityEngine.Animator)).enabled = true
-	slot0._detailHeightObj = gohelper.findChild(slot0.viewGO, "root/#go_shuzhendetails/details")
-	slot0._detailTitle = gohelper.findChildText(slot0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_title")
-	slot0._detailRound = gohelper.findChildText(slot0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_title/#txt_round")
-	slot0._detailText = gohelper.findChildText(slot0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_details")
-	slot0._detailClick = gohelper.getClickWithDefaultAudio(gohelper.findChild(slot0._detail, "#btn_shuzhendetailclick"))
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._topLeftRoot = gohelper.findChild(arg_1_0.viewGO, "root/topLeftContent")
+	arg_1_0._obj = gohelper.findChild(arg_1_0.viewGO, "root/topLeftContent/#go_shuzhentips")
+	arg_1_0._detail = gohelper.findChild(arg_1_0.viewGO, "root/#go_shuzhendetails")
+	gohelper.onceAddComponent(arg_1_0._detail, typeof(UnityEngine.Animator)).enabled = true
+	arg_1_0._detailHeightObj = gohelper.findChild(arg_1_0.viewGO, "root/#go_shuzhendetails/details")
+	arg_1_0._detailTitle = gohelper.findChildText(arg_1_0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_title")
+	arg_1_0._detailRound = gohelper.findChildText(arg_1_0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_title/#txt_round")
+	arg_1_0._detailText = gohelper.findChildText(arg_1_0.viewGO, "root/#go_shuzhendetails/details/#scroll_details/Viewport/Content/#txt_details")
+	arg_1_0._detailClick = gohelper.getClickWithDefaultAudio(gohelper.findChild(arg_1_0._detail, "#btn_shuzhendetailclick"))
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._detailClick:AddClickListener(slot0._onDetailClick, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.AddMagicCircile, slot0._onAddMagicCircile, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.DeleteMagicCircile, slot0._onDeleteMagicCircile, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.UpdateMagicCircile, slot0._onUpdateMagicCircile, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.OnClickMagicCircleText, slot0.OnClickMagicCircleText, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._detailClick:AddClickListener(arg_2_0._onDetailClick, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.AddMagicCircile, arg_2_0._onAddMagicCircile, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.DeleteMagicCircile, arg_2_0._onDeleteMagicCircile, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.UpdateMagicCircile, arg_2_0._onUpdateMagicCircile, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.OnClickMagicCircleText, arg_2_0.OnClickMagicCircleText, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._detailClick:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._detailClick:RemoveClickListener()
 end
 
-function slot0._editableInitView(slot0)
-	slot0:hideObj()
-	gohelper.setActive(slot0._detail, false)
-	SkillHelper.addHyperLinkClick(slot0._detailText, slot0.onClickShuZhenHyperDesc, slot0)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0:hideObj()
+	gohelper.setActive(arg_4_0._detail, false)
+	SkillHelper.addHyperLinkClick(arg_4_0._detailText, arg_4_0.onClickShuZhenHyperDesc, arg_4_0)
 
-	slot0.detailRectTr = slot0._detail:GetComponent(gohelper.Type_RectTransform)
-	slot0.viewGoRectTr = slot0.viewGO:GetComponent(gohelper.Type_RectTransform)
-	slot4 = gohelper.Type_RectTransform
-	slot0.scrollRectTr = gohelper.findChildComponent(slot0.viewGO, "root/#go_shuzhendetails/details/#scroll_details", slot4)
-	slot0.topLeftRootTr = slot0._topLeftRoot.transform
-	slot0.detailTr = slot0._detail.transform
+	arg_4_0.detailRectTr = arg_4_0._detail:GetComponent(gohelper.Type_RectTransform)
+	arg_4_0.viewGoRectTr = arg_4_0.viewGO:GetComponent(gohelper.Type_RectTransform)
+	arg_4_0.scrollRectTr = gohelper.findChildComponent(arg_4_0.viewGO, "root/#go_shuzhendetails/details/#scroll_details", gohelper.Type_RectTransform)
+	arg_4_0.topLeftRootTr = arg_4_0._topLeftRoot.transform
+	arg_4_0.detailTr = arg_4_0._detail.transform
 
-	for slot4, slot5 in pairs(FightEnum.MagicCircleUIType2Name) do
-		gohelper.setActive(gohelper.findChild(slot0._obj, "layout/" .. slot5), false)
+	for iter_4_0, iter_4_1 in pairs(FightEnum.MagicCircleUIType2Name) do
+		gohelper.setActive(gohelper.findChild(arg_4_0._obj, "layout/" .. iter_4_1), false)
 	end
 end
 
-slot0.TipIntervalX = 10
+var_0_0.TipIntervalX = 10
 
-function slot0.onClickShuZhenHyperDesc(slot0, slot1, slot2)
-	slot0.commonBuffTipAnchorPos = slot0.commonBuffTipAnchorPos or Vector2()
+function var_0_0.onClickShuZhenHyperDesc(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = recthelper.getWidth(arg_5_0.viewGoRectTr) / 2
+	local var_5_1 = recthelper.getAnchorX(arg_5_0.detailRectTr)
+	local var_5_2 = recthelper.getWidth(arg_5_0.scrollRectTr)
+	local var_5_3 = var_5_0 - var_5_1 - var_5_2 - var_0_0.TipIntervalX
 
-	slot0.commonBuffTipAnchorPos:Set(-(recthelper.getWidth(slot0.viewGoRectTr) / 2 - recthelper.getAnchorX(slot0.detailRectTr) - recthelper.getWidth(slot0.scrollRectTr) - uv0.TipIntervalX), 312.24)
-	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(slot1, slot0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Left)
+	arg_5_0.commonBuffTipAnchorPos = arg_5_0.commonBuffTipAnchorPos or Vector2()
+
+	arg_5_0.commonBuffTipAnchorPos:Set(-var_5_3, 312.24)
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(arg_5_1, arg_5_0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Left)
 end
 
-function slot0.OnClickMagicCircleText(slot0, slot1, slot2)
-	recthelper.setAnchorY(slot0.detailTr, recthelper.rectToRelativeAnchorPos(slot2, slot0.topLeftRootTr).y - slot1 + recthelper.getAnchorY(slot0.topLeftRootTr))
-	gohelper.setActive(slot0._detail, true)
+function var_0_0.OnClickMagicCircleText(arg_6_0, arg_6_1, arg_6_2)
+	local var_6_0 = recthelper.rectToRelativeAnchorPos(arg_6_2, arg_6_0.topLeftRootTr).y - arg_6_1 + recthelper.getAnchorY(arg_6_0.topLeftRootTr)
 
-	slot6 = FightModel.instance:getMagicCircleInfo() and slot5.magicCircleId and lua_magic_circle.configDict[slot5.magicCircleId]
+	recthelper.setAnchorY(arg_6_0.detailTr, var_6_0)
+	gohelper.setActive(arg_6_0._detail, true)
 
-	if slot5 and slot6 then
-		slot0._detailTitle.text = slot6.name
-		slot0._detailRound.text = formatLuaLang("x_round", slot5.round == -1 and "∞" or slot5.round)
-		slot0._detailText.text = SkillHelper.buildDesc(slot6.desc)
+	local var_6_1 = FightModel.instance:getMagicCircleInfo()
+	local var_6_2 = var_6_1 and var_6_1.magicCircleId and lua_magic_circle.configDict[var_6_1.magicCircleId]
+
+	if var_6_1 and var_6_2 then
+		local var_6_3 = var_6_1.round == -1 and "∞" or var_6_1.round
+
+		arg_6_0._detailTitle.text = var_6_2.name
+		arg_6_0._detailRound.text = formatLuaLang("x_round", var_6_3)
+		arg_6_0._detailText.text = SkillHelper.buildDesc(var_6_2.desc)
 	end
 end
 
-function slot0._onDetailClick(slot0)
-	gohelper.setActive(slot0._detail, false)
+function var_0_0._onDetailClick(arg_7_0)
+	gohelper.setActive(arg_7_0._detail, false)
 end
 
-function slot0.addMagic(slot0)
-	slot0:clearFlow()
+function var_0_0.addMagic(arg_8_0)
+	arg_8_0:clearFlow()
 
-	slot0.flow = FlowSequence.New()
-	slot0.magicItem = nil
+	arg_8_0.flow = FlowSequence.New()
 
-	slot0.flow:addWork(FightMagicCircleRemoveWork.New(slot0.magicItem))
-	slot0.flow:addWork(FunctionWork.New(slot0.createMagicItem, slot0))
-	slot0.flow:start()
+	local var_8_0 = arg_8_0.magicItem
+
+	arg_8_0.magicItem = nil
+
+	arg_8_0.flow:addWork(FightMagicCircleRemoveWork.New(var_8_0))
+	arg_8_0.flow:addWork(FunctionWork.New(arg_8_0.createMagicItem, arg_8_0))
+	arg_8_0.flow:start()
 end
 
-function slot0.removeMagic(slot0)
-	slot0:clearFlow()
+function var_0_0.removeMagic(arg_9_0)
+	arg_9_0:clearFlow()
 
-	slot0.flow = FlowSequence.New()
-	slot0.magicItem = nil
+	arg_9_0.flow = FlowSequence.New()
 
-	slot0.flow:addWork(FightMagicCircleRemoveWork.New(slot0.magicItem))
-	slot0.flow:registerDoneListener(slot0.hideObj, slot0)
-	slot0.flow:start()
+	local var_9_0 = arg_9_0.magicItem
+
+	arg_9_0.magicItem = nil
+
+	arg_9_0.flow:addWork(FightMagicCircleRemoveWork.New(var_9_0))
+	arg_9_0.flow:registerDoneListener(arg_9_0.hideObj, arg_9_0)
+	arg_9_0.flow:start()
 end
 
-slot0.UiType2Class = {
+var_0_0.UiType2Class = {
 	[FightEnum.MagicCircleUIType.Normal] = FightMagicCircleNormal,
 	[FightEnum.MagicCircleUIType.Electric] = FightMagicCircleElectric
 }
 
-function slot0.createMagicItem(slot0)
-	if not FightModel.instance:getMagicCircleInfo() then
+function var_0_0.createMagicItem(arg_10_0)
+	local var_10_0 = FightModel.instance:getMagicCircleInfo()
+
+	if not var_10_0 then
 		return
 	end
 
-	if not slot1.magicCircleId then
+	if not var_10_0.magicCircleId then
 		return
 	end
 
-	if not lua_magic_circle.configDict[slot1.magicCircleId] then
+	local var_10_1 = lua_magic_circle.configDict[var_10_0.magicCircleId]
+
+	if not var_10_1 then
 		return
 	end
 
-	slot0:showObj()
+	arg_10_0:showObj()
 
-	slot0.magicItem = (slot0.UiType2Class[slot2.uiType] or FightMagicCircleNormal).New()
+	local var_10_2 = var_10_1.uiType
 
-	slot0.magicItem:init(gohelper.findChild(slot0._obj, "layout/" .. FightEnum.MagicCircleUIType2Name[slot3]))
-	slot0.magicItem:onCreateMagic(slot1, slot2)
+	arg_10_0.magicItem = (arg_10_0.UiType2Class[var_10_2] or FightMagicCircleNormal).New()
+
+	local var_10_3 = gohelper.findChild(arg_10_0._obj, "layout/" .. FightEnum.MagicCircleUIType2Name[var_10_2])
+
+	arg_10_0.magicItem:init(var_10_3)
+	arg_10_0.magicItem:onCreateMagic(var_10_0, var_10_1)
 end
 
-function slot0.onOpen(slot0)
-	slot0:addMagic()
+function var_0_0.onOpen(arg_11_0)
+	arg_11_0:addMagic()
 end
 
-function slot0._onAddMagicCircile(slot0)
-	slot0:addMagic()
+function var_0_0._onAddMagicCircile(arg_12_0)
+	arg_12_0:addMagic()
 end
 
-function slot0._onDeleteMagicCircile(slot0)
-	slot0:removeMagic()
+function var_0_0._onDeleteMagicCircile(arg_13_0)
+	arg_13_0:removeMagic()
 end
 
-function slot0._onUpdateMagicCircile(slot0)
-	if not FightModel.instance:getMagicCircleInfo() then
-		return slot0:removeMagic()
+function var_0_0._onUpdateMagicCircile(arg_14_0)
+	local var_14_0 = FightModel.instance:getMagicCircleInfo()
+
+	if not var_14_0 then
+		return arg_14_0:removeMagic()
 	end
 
-	if not slot1.magicCircleId then
-		return slot0:removeMagic()
+	if not var_14_0.magicCircleId then
+		return arg_14_0:removeMagic()
 	end
 
-	if not lua_magic_circle.configDict[slot1.magicCircleId] then
-		return slot0:removeMagic()
+	local var_14_1 = lua_magic_circle.configDict[var_14_0.magicCircleId]
+
+	if not var_14_1 then
+		return arg_14_0:removeMagic()
 	end
 
-	if slot2.uiType == (slot0.magicItem and slot0.magicItem:getUIType()) then
-		slot0.magicItem:onUpdateMagic(slot1, slot2)
+	if var_14_1.uiType == (arg_14_0.magicItem and arg_14_0.magicItem:getUIType()) then
+		arg_14_0.magicItem:onUpdateMagic(var_14_0, var_14_1)
 	else
-		slot0:addMagic()
+		arg_14_0:addMagic()
 	end
 end
 
-function slot0.hideObj(slot0)
-	gohelper.setActive(slot0._obj, false)
+function var_0_0.hideObj(arg_15_0)
+	gohelper.setActive(arg_15_0._obj, false)
 end
 
-function slot0.showObj(slot0)
-	gohelper.setActive(slot0._obj, true)
+function var_0_0.showObj(arg_16_0)
+	gohelper.setActive(arg_16_0._obj, true)
 end
 
-function slot0.clearFlow(slot0)
-	if slot0.flow then
-		slot0.flow:stop()
-		slot0.flow:destroy()
+function var_0_0.clearFlow(arg_17_0)
+	if arg_17_0.flow then
+		arg_17_0.flow:stop()
+		arg_17_0.flow:destroy()
 
-		slot0.flow = nil
+		arg_17_0.flow = nil
 	end
 end
 
-function slot0.onClose(slot0)
-	slot0:clearFlow()
+function var_0_0.onClose(arg_18_0)
+	arg_18_0:clearFlow()
 
-	if slot0.magicItem then
-		slot0.magicItem:destroy()
+	if arg_18_0.magicItem then
+		arg_18_0.magicItem:destroy()
 
-		slot0.magicItem = nil
+		arg_18_0.magicItem = nil
 	end
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_19_0)
+	return
 end
 
-return slot0
+return var_0_0

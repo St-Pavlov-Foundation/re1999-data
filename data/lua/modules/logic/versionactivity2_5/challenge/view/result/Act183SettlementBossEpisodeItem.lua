@@ -1,85 +1,100 @@
-module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementBossEpisodeItem", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.result.Act183SettlementBossEpisodeItem", package.seeall)
 
-slot0 = class("Act183SettlementBossEpisodeItem", LuaCompBase)
+local var_0_0 = class("Act183SettlementBossEpisodeItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._txtbossbadge = gohelper.findChildText(slot1, "root/right/#txt_bossbadge")
-	slot0._simageboss = gohelper.findChildSingleImage(slot1, "root/right/#simage_boss")
-	slot0._gobossheros = gohelper.findChild(slot1, "root/right/#go_bossheros")
-	slot0._gobuffs = gohelper.findChild(slot1, "root/right/buffs/#go_buffs")
-	slot0._gobuffitem = gohelper.findChild(slot1, "root/right/buffs/#go_buffs/#go_buffitem")
-	slot0._gostars = gohelper.findChild(slot1, "root/right/BossStars/#go_Stars")
-	slot0._gostaritem = gohelper.findChild(slot1, "root/right/BossStars/#go_Stars/#go_Staritem")
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0._txtbossbadge = gohelper.findChildText(arg_1_1, "root/right/#txt_bossbadge")
+	arg_1_0._simageboss = gohelper.findChildSingleImage(arg_1_1, "root/right/#simage_boss")
+	arg_1_0._gobossheros = gohelper.findChild(arg_1_1, "root/right/#go_bossheros")
+	arg_1_0._gobuffs = gohelper.findChild(arg_1_1, "root/right/buffs/#go_buffs")
+	arg_1_0._gobuffitem = gohelper.findChild(arg_1_1, "root/right/buffs/#go_buffs/#go_buffitem")
+	arg_1_0._gostars = gohelper.findChild(arg_1_1, "root/right/BossStars/#go_Stars")
+	arg_1_0._gostaritem = gohelper.findChild(arg_1_1, "root/right/BossStars/#go_Stars/#go_Staritem")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0._herogroupComp = MonoHelper.addLuaComOnceToGo(slot0._gobossheros, Act183SettlementBossEpisodeHeroComp)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._herogroupComp = MonoHelper.addLuaComOnceToGo(arg_4_0._gobossheros, Act183SettlementBossEpisodeHeroComp)
 end
 
-function slot0.setHeroTemplate(slot0, slot1)
-	if slot0._herogroupComp then
-		slot0._herogroupComp:setHeroTemplate(slot1)
+function var_0_0.setHeroTemplate(arg_5_0, arg_5_1)
+	if arg_5_0._herogroupComp then
+		arg_5_0._herogroupComp:setHeroTemplate(arg_5_1)
 	end
 end
 
-function slot0.onUpdateMO(slot0, slot1, slot2)
-	if not slot2 then
+function var_0_0.onUpdateMO(arg_6_0, arg_6_1, arg_6_2)
+	if not arg_6_2 then
 		return
 	end
 
-	slot0._bossEpisodeId = slot2:getEpisodeId()
+	arg_6_0._bossEpisodeId = arg_6_2:getEpisodeId()
 
-	Act183Helper.setBossEpisodeResultIcon(slot0._bossEpisodeId, slot0._simageboss)
-	slot0:refreshUseBadge(slot2)
-	slot0:refreshHeroGroup(slot2)
-	slot0:refreshEpisodeStars(slot2)
+	Act183Helper.setBossEpisodeResultIcon(arg_6_0._bossEpisodeId, arg_6_0._simageboss)
+	arg_6_0:refreshUseBadge(arg_6_2)
+	arg_6_0:refreshHeroGroup(arg_6_2)
+	arg_6_0:refreshEpisodeStars(arg_6_2)
 
-	slot3, slot4, slot5, slot6 = slot1:getBossEpisodeConditionStatus()
-	slot0._unlockConditionMap = Act183Helper.listToMap(slot4)
-	slot0._passConditionMap = Act183Helper.listToMap(slot5)
-	slot0._chooseConditionMap = Act183Helper.listToMap(slot6)
+	local var_6_0, var_6_1, var_6_2, var_6_3 = arg_6_1:getBossEpisodeConditionStatus()
 
-	gohelper.CreateObjList(slot0, slot0.refreshBossEpisodeCondition, slot3 or {}, slot0._gobuffs, slot0._gobuffitem)
+	arg_6_0._unlockConditionMap = Act183Helper.listToMap(var_6_1)
+	arg_6_0._passConditionMap = Act183Helper.listToMap(var_6_2)
+	arg_6_0._chooseConditionMap = Act183Helper.listToMap(var_6_3)
+
+	gohelper.CreateObjList(arg_6_0, arg_6_0.refreshBossEpisodeCondition, var_6_0 or {}, arg_6_0._gobuffs, arg_6_0._gobuffitem)
 end
 
-function slot0.refreshUseBadge(slot0, slot1)
-	gohelper.setActive(slot0._txtbossbadge.gameObject, slot1:getUseBadgeNum() > 0)
+function var_0_0.refreshUseBadge(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_1:getUseBadgeNum()
 
-	slot0._txtbossbadge.text = slot2
+	gohelper.setActive(arg_7_0._txtbossbadge.gameObject, var_7_0 > 0)
+
+	arg_7_0._txtbossbadge.text = var_7_0
 end
 
-function slot0.refreshBossEpisodeCondition(slot0, slot1, slot2, slot3)
-	Act183Helper.setEpisodeConditionStar(gohelper.onceAddComponent(slot1, gohelper.Type_Image), slot0._unlockConditionMap[slot2] ~= nil, slot0._chooseConditionMap[slot2] ~= nil)
+function var_0_0.refreshBossEpisodeCondition(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	local var_8_0 = gohelper.onceAddComponent(arg_8_1, gohelper.Type_Image)
+	local var_8_1 = arg_8_0._unlockConditionMap[arg_8_2] ~= nil
+	local var_8_2 = arg_8_0._chooseConditionMap[arg_8_2] ~= nil
+
+	Act183Helper.setEpisodeConditionStar(var_8_0, var_8_1, var_8_2)
 end
 
-function slot0.refreshEpisodeStars(slot0, slot1)
-	for slot7 = 1, slot1:getTotalStarCount() do
-		slot9 = gohelper.onceAddComponent(gohelper.cloneInPlace(slot0._gostaritem, "star_" .. slot7), gohelper.Type_Image)
+function var_0_0.refreshEpisodeStars(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_1:getTotalStarCount()
+	local var_9_1 = arg_9_1:getFinishStarCount()
 
-		UISpriteSetMgr.instance:setCommonSprite(slot9, "zhuxianditu_pt_xingxing_001", true)
-		SLFramework.UGUI.GuiHelper.SetColor(slot9, slot7 <= slot1:getFinishStarCount() and "#F77040" or "#87898C")
-		gohelper.setActive(slot8, true)
+	for iter_9_0 = 1, var_9_0 do
+		local var_9_2 = gohelper.cloneInPlace(arg_9_0._gostaritem, "star_" .. iter_9_0)
+		local var_9_3 = gohelper.onceAddComponent(var_9_2, gohelper.Type_Image)
+		local var_9_4 = iter_9_0 <= var_9_1 and "#F77040" or "#87898C"
+
+		UISpriteSetMgr.instance:setCommonSprite(var_9_3, "zhuxianditu_pt_xingxing_001", true)
+		SLFramework.UGUI.GuiHelper.SetColor(var_9_3, var_9_4)
+		gohelper.setActive(var_9_2, true)
 	end
 end
 
-function slot0.refreshHeroGroup(slot0, slot1)
-	if slot0._herogroupComp then
-		slot0._herogroupComp:onUpdateMO(slot1)
+function var_0_0.refreshHeroGroup(arg_10_0, arg_10_1)
+	if arg_10_0._herogroupComp then
+		arg_10_0._herogroupComp:onUpdateMO(arg_10_1)
 	end
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_11_0)
+	return
 end
 
-return slot0
+return var_0_0

@@ -1,41 +1,41 @@
-module("modules.logic.fight.system.work.FightWorkCompareDataAfterPlay", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCompareDataAfterPlay", package.seeall)
 
-slot0 = class("FightWorkCompareDataAfterPlay", BaseWork)
+local var_0_0 = class("FightWorkCompareDataAfterPlay", BaseWork)
 
-function slot0.onStart(slot0, slot1)
-	slot0._flow = FightWorkFlowSequence.New()
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	arg_1_0._flow = FightWorkFlowSequence.New()
 
-	slot0:_registCompareServer()
-	slot0:_registRefreshPerformance()
-	slot0._flow:registFinishCallback(slot0._onFlowFinish, slot0)
-	slot0._flow:start()
+	arg_1_0:_registCompareServer()
+	arg_1_0:_registRefreshPerformance()
+	arg_1_0._flow:registFinishCallback(arg_1_0._onFlowFinish, arg_1_0)
+	arg_1_0._flow:start()
 end
 
-function slot0._registCompareServer(slot0)
-	slot0._flow:registWork(FightWorkCompareServerEntityData)
+function var_0_0._registCompareServer(arg_2_0)
+	arg_2_0._flow:registWork(FightWorkCompareServerEntityData)
 end
 
-function slot0._registRefreshPerformance(slot0)
-	slot0._flow:registWork(FightWorkRefreshPerformanceEntityData)
-	slot0._flow:registWork(FightWorkFunction, slot0.refreshPerformanceData, slot0)
+function var_0_0._registRefreshPerformance(arg_3_0)
+	arg_3_0._flow:registWork(FightWorkRefreshPerformanceEntityData)
+	arg_3_0._flow:registWork(FightWorkFunction, arg_3_0.refreshPerformanceData, arg_3_0)
 end
 
-function slot0.refreshPerformanceData(slot0)
+function var_0_0.refreshPerformanceData(arg_4_0)
 	FightDataUtil.coverData(FightLocalDataMgr.instance.fieldMgr.param, FightDataMgr.instance.fieldMgr.param)
 	FightDataUtil.coverData(FightLocalDataMgr.instance.fieldMgr.fightTaskBox, FightDataMgr.instance.fieldMgr.fightTaskBox)
 end
 
-function slot0._onFlowFinish(slot0)
+function var_0_0._onFlowFinish(arg_5_0)
 	FightController.instance:dispatchEvent(FightEvent.AfterCorrectData)
-	slot0:onDone(true)
+	arg_5_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	if slot0._flow then
-		slot0._flow:disposeSelf()
+function var_0_0.clearWork(arg_6_0)
+	if arg_6_0._flow then
+		arg_6_0._flow:disposeSelf()
 
-		slot0._flow = nil
+		arg_6_0._flow = nil
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,70 +1,81 @@
-module("modules.logic.activity.view.ActivityDoubleFestivalSignView_1_3", package.seeall)
+﻿module("modules.logic.activity.view.ActivityDoubleFestivalSignView_1_3", package.seeall)
 
-slot0 = class("ActivityDoubleFestivalSignView_1_3", Activity101SignViewBase)
+local var_0_0 = class("ActivityDoubleFestivalSignView_1_3", Activity101SignViewBase)
 
-function slot0.onInitView(slot0)
-	slot0._simageFullBG = gohelper.findChildSingleImage(slot0.viewGO, "#simage_FullBG")
-	slot0._simageTitle = gohelper.findChildSingleImage(slot0.viewGO, "Root/#simage_Title")
-	slot0._txtLimitTime = gohelper.findChildText(slot0.viewGO, "Root/#txt_LimitTime")
-	slot0._scrollItemList = gohelper.findChildScrollRect(slot0.viewGO, "Root/#scroll_ItemList")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
+	arg_1_0._simageTitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "Root/#simage_Title")
+	arg_1_0._txtLimitTime = gohelper.findChildText(arg_1_0.viewGO, "Root/#txt_LimitTime")
+	arg_1_0._scrollItemList = gohelper.findChildScrollRect(arg_1_0.viewGO, "Root/#scroll_ItemList")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0._simageTitle:LoadImage(ResUrl.getActivityLangIcon("v1a3_sign_fulltitle"))
-	slot0._simageFullBG:LoadImage(ResUrl.getActivityBg("v1a3_sign_fullbg"))
+function var_0_0._editableInitView(arg_2_0)
+	arg_2_0._simageTitle:LoadImage(ResUrl.getActivityLangIcon("v1a3_sign_fulltitle"))
+	arg_2_0._simageFullBG:LoadImage(ResUrl.getActivityBg("v1a3_sign_fullbg"))
 end
 
-function slot0.onOpen(slot0)
-	slot0._txtLimitTime.text = ""
+function var_0_0.onOpen(arg_3_0)
+	arg_3_0._txtLimitTime.text = ""
 
-	slot0:internal_set_openMode(Activity101SignViewBase.eOpenMode.ActivityBeginnerView)
-	slot0:internal_onOpen()
-	TaskDispatcher.runRepeat(slot0._refreshTimeTick, slot0, 1)
+	arg_3_0:internal_set_openMode(Activity101SignViewBase.eOpenMode.ActivityBeginnerView)
+	arg_3_0:internal_onOpen()
+	TaskDispatcher.runRepeat(arg_3_0._refreshTimeTick, arg_3_0, 1)
 end
 
-function slot0._updateScrollViewPos(slot0)
-	if slot0._isFirstUpdateScrollPos then
+function var_0_0._updateScrollViewPos(arg_4_0)
+	if arg_4_0._isFirstUpdateScrollPos then
 		return
 	end
 
-	slot0._isFirstUpdateScrollPos = true
+	arg_4_0._isFirstUpdateScrollPos = true
 
-	slot0:updateRewardCouldGetHorizontalScrollPixel()
+	arg_4_0:updateRewardCouldGetHorizontalScrollPixel()
 end
 
-function slot0.onClose(slot0)
-	slot0._isFirstUpdateScrollPos = nil
+function var_0_0.onClose(arg_5_0)
+	arg_5_0._isFirstUpdateScrollPos = nil
 
-	TaskDispatcher.cancelTask(slot0._refreshTimeTick, slot0)
+	TaskDispatcher.cancelTask(arg_5_0._refreshTimeTick, arg_5_0)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._simageTitle:UnLoadImage()
-	slot0._simageFullBG:UnLoadImage()
-	TaskDispatcher.cancelTask(slot0._refreshTimeTick, slot0)
+function var_0_0.onDestroyView(arg_6_0)
+	arg_6_0._simageTitle:UnLoadImage()
+	arg_6_0._simageFullBG:UnLoadImage()
+	TaskDispatcher.cancelTask(arg_6_0._refreshTimeTick, arg_6_0)
 end
 
-function slot0.onRefresh(slot0)
-	slot0:_refreshList()
-	slot0:_updateScrollViewPos()
-	slot0:_refreshTimeTick()
+function var_0_0.onRefresh(arg_7_0)
+	arg_7_0:_refreshList()
+	arg_7_0:_updateScrollViewPos()
+	arg_7_0:_refreshTimeTick()
 end
 
-function slot0._refreshTimeTick(slot0)
-	slot0._txtLimitTime.text = slot0:getRemainTimeStr()
+function var_0_0._refreshTimeTick(arg_8_0)
+	arg_8_0._txtLimitTime.text = arg_8_0:getRemainTimeStr()
 end
 
-function slot0.updateRewardCouldGetHorizontalScrollPixel(slot0)
-	slot1, slot2 = slot0:getRewardCouldGetIndex()
-	slot3 = slot0.viewContainer:getCsListScroll()
-	slot4 = slot0.viewContainer:getListScrollParam()
-	slot3.HorizontalScrollPixel = math.max(0, (slot4.cellWidth + slot4.cellSpaceH) * math.max(0, slot2 <= 4 and slot2 - 4 or 10))
+function var_0_0.updateRewardCouldGetHorizontalScrollPixel(arg_9_0)
+	local var_9_0, var_9_1 = arg_9_0:getRewardCouldGetIndex()
+	local var_9_2 = arg_9_0.viewContainer:getCsListScroll()
+	local var_9_3 = arg_9_0.viewContainer:getListScrollParam()
+	local var_9_4 = var_9_3.cellWidth
+	local var_9_5 = var_9_3.cellSpaceH
 
-	slot3:UpdateCells(false)
+	if var_9_1 <= 4 then
+		var_9_1 = var_9_1 - 4
+	else
+		var_9_1 = 10
+	end
+
+	local var_9_6 = (var_9_4 + var_9_5) * math.max(0, var_9_1)
+
+	var_9_2.HorizontalScrollPixel = math.max(0, var_9_6)
+
+	var_9_2:UpdateCells(false)
 end
 
-return slot0
+return var_0_0

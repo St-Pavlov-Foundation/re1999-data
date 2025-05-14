@@ -1,29 +1,29 @@
-module("modules.logic.fight.config.FightRightBottomElementEnum", package.seeall)
+﻿module("modules.logic.fight.config.FightRightBottomElementEnum", package.seeall)
 
-slot0 = _M
-slot1 = 0
+local var_0_0 = _M
+local var_0_1 = 0
 
-function slot2()
-	uv0 = uv0 + 1
+local function var_0_2()
+	var_0_1 = var_0_1 + 1
 
-	return uv0
+	return var_0_1
 end
 
-slot0.Elements = {
-	ASFD = slot2(),
-	BloodPool = slot2()
+var_0_0.Elements = {
+	ASFD = var_0_2(),
+	BloodPool = var_0_2()
 }
-slot0.Priority = {
-	slot0.Elements.BloodPool,
-	slot0.Elements.ASFD
+var_0_0.Priority = {
+	var_0_0.Elements.BloodPool,
+	var_0_0.Elements.ASFD
 }
-slot0.ElementsSizeDict = {
-	[slot0.Elements.BloodPool] = Vector2(180, 170),
-	[slot0.Elements.ASFD] = Vector2(100, 170)
+var_0_0.ElementsSizeDict = {
+	[var_0_0.Elements.BloodPool] = Vector2(180, 170),
+	[var_0_0.Elements.ASFD] = Vector2(100, 170)
 }
-slot0.ElementsNodeName = {
-	[slot0.Elements.BloodPool] = "bloodpool",
-	[slot0.Elements.ASFD] = "asfd"
+var_0_0.ElementsNodeName = {
+	[var_0_0.Elements.BloodPool] = "bloodpool",
+	[var_0_0.Elements.ASFD] = "asfd"
 }
 
-return slot0
+return var_0_0

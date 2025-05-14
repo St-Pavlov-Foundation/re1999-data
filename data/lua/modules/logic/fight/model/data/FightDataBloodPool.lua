@@ -1,18 +1,18 @@
-module("modules.logic.fight.model.data.FightDataBloodPool", package.seeall)
+﻿module("modules.logic.fight.model.data.FightDataBloodPool", package.seeall)
 
-slot0 = FightDataClass("FightDataBloodPool")
+local var_0_0 = FightDataClass("FightDataBloodPool")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.value = slot1 and slot1.value or 0
-	slot0.max = slot1 and slot1.max or 0
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.value = arg_1_1 and arg_1_1.value or 0
+	arg_1_0.max = arg_1_1 and arg_1_1.max or 0
 end
 
-function slot0.changeMaxValue(slot0, slot1)
-	slot0.max = slot0.max + slot1
+function var_0_0.changeMaxValue(arg_2_0, arg_2_1)
+	arg_2_0.max = arg_2_0.max + arg_2_1
 end
 
-function slot0.changeValue(slot0, slot1)
-	slot0.value = slot0.value + slot1
+function var_0_0.changeValue(arg_3_0, arg_3_1)
+	arg_3_0.value = arg_3_0.value + arg_3_1
 end
 
-return slot0
+return var_0_0

@@ -1,65 +1,67 @@
-module("modules.logic.fight.view.magiccircle.FightMagicCircleBaseItem", package.seeall)
+﻿module("modules.logic.fight.view.magiccircle.FightMagicCircleBaseItem", package.seeall)
 
-slot0 = class("FightMagicCircleBaseItem", UserDataDispose)
+local var_0_0 = class("FightMagicCircleBaseItem", UserDataDispose)
 
-function slot0.init(slot0, slot1)
-	slot0:__onInit()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0:__onInit()
 
-	slot0.go = slot1
-	slot0.destroyed = nil
-	slot0._aniPlayer = SLFramework.AnimatorPlayer.Get(slot0.go)
-	slot0._ani = slot0.go:GetComponent(gohelper.Type_Animator)
+	arg_1_0.go = arg_1_1
+	arg_1_0.destroyed = nil
+	arg_1_0._aniPlayer = SLFramework.AnimatorPlayer.Get(arg_1_0.go)
+	arg_1_0._ani = arg_1_0.go:GetComponent(gohelper.Type_Animator)
 
-	slot0:initView()
+	arg_1_0:initView()
 end
 
-function slot0.destroy(slot0)
-	slot0.destroyed = true
+function var_0_0.destroy(arg_2_0)
+	arg_2_0.destroyed = true
 
-	if slot0._aniPlayer then
-		slot0._aniPlayer:Stop()
+	if arg_2_0._aniPlayer then
+		arg_2_0._aniPlayer:Stop()
 	end
 
-	slot0:hideGo()
-	slot0:__onDispose()
+	arg_2_0:hideGo()
+	arg_2_0:__onDispose()
 end
 
-function slot0.getUIType(slot0)
+function var_0_0.getUIType(arg_3_0)
 	return FightEnum.MagicCircleUIType.Normal
 end
 
-function slot0.hideGo(slot0)
-	gohelper.setActive(slot0.go, false)
+function var_0_0.hideGo(arg_4_0)
+	gohelper.setActive(arg_4_0.go, false)
 end
 
-function slot0.showGo(slot0)
-	gohelper.setActive(slot0.go, true)
+function var_0_0.showGo(arg_5_0)
+	gohelper.setActive(arg_5_0.go, true)
 end
 
-function slot0.initView(slot0)
+function var_0_0.initView(arg_6_0)
+	return
 end
 
-function slot0.onCreateMagic(slot0, slot1, slot2)
-	slot0:showGo()
-	slot0:playAnim("open")
-	slot0:refreshUI(slot1, slot2)
+function var_0_0.onCreateMagic(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0:showGo()
+	arg_7_0:playAnim("open")
+	arg_7_0:refreshUI(arg_7_1, arg_7_2)
 end
 
-function slot0.onUpdateMagic(slot0, slot1, slot2)
-	slot0:refreshUI(slot1, slot2)
+function var_0_0.onUpdateMagic(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_0:refreshUI(arg_8_1, arg_8_2)
 end
 
-function slot0.onRemoveMagic(slot0)
-	slot0:destroy()
+function var_0_0.onRemoveMagic(arg_9_0)
+	arg_9_0:destroy()
 end
 
-function slot0.playAnim(slot0, slot1, slot2, slot3)
-	slot0._ani.speed = FightModel.instance:getSpeed()
+function var_0_0.playAnim(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	arg_10_0._ani.speed = FightModel.instance:getSpeed()
 
-	slot0._aniPlayer:Play(slot1, slot2, slot3)
+	arg_10_0._aniPlayer:Play(arg_10_1, arg_10_2, arg_10_3)
 end
 
-function slot0.refreshUI(slot0, slot1, slot2)
+function var_0_0.refreshUI(arg_11_0, arg_11_1, arg_11_2)
+	return
 end
 
-return slot0
+return var_0_0

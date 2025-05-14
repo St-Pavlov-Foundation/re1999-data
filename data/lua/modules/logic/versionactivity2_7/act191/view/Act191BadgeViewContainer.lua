@@ -1,13 +1,13 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191BadgeViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191BadgeViewContainer", package.seeall)
 
-slot0 = class("Act191BadgeViewContainer", BaseViewContainer)
+local var_0_0 = class("Act191BadgeViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, Act191BadgeView.New())
+	table.insert(var_1_0, Act191BadgeView.New())
 
-	return slot1
+	return var_1_0
 end
 
-return slot0
+return var_0_0

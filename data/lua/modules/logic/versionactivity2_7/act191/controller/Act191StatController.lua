@@ -1,145 +1,168 @@
-module("modules.logic.versionactivity2_7.act191.controller.Act191StatController", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.controller.Act191StatController", package.seeall)
 
-slot0 = class("Act191StatController", BaseController)
+local var_0_0 = class("Act191StatController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0:reInit()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:reInit()
 end
 
-function slot0.reInit(slot0)
-	slot0.viewOpenTimeMap = {}
-	slot0.startTime = nil
-	slot0.actId = VersionActivity2_7Enum.ActivityId.Act191
+function var_0_0.reInit(arg_2_0)
+	arg_2_0.viewOpenTimeMap = {}
+	arg_2_0.startTime = nil
+	arg_2_0.actId = VersionActivity2_7Enum.ActivityId.Act191
 end
 
-function slot0.setActInfo(slot0, slot1, slot2)
-	slot0.actId = slot1
-	slot0.actInfo = slot2
+function var_0_0.setActInfo(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0.actId = arg_3_1
+	arg_3_0.actInfo = arg_3_2
 end
 
-function slot0.onViewOpen(slot0, slot1)
-	if slot1 == ViewName.Act191MainView then
-		slot0.startTime = ServerTime.now()
+function var_0_0.onViewOpen(arg_4_0, arg_4_1)
+	if arg_4_1 == ViewName.Act191MainView then
+		arg_4_0.startTime = ServerTime.now()
 	end
 
-	if not slot0.viewOpenTimeMap[slot1] then
-		slot0.viewOpenTimeMap[slot1] = ServerTime.now()
+	if not arg_4_0.viewOpenTimeMap[arg_4_1] then
+		arg_4_0.viewOpenTimeMap[arg_4_1] = ServerTime.now()
 	end
 end
 
-function slot0.statViewClose(slot0, slot1, slot2, slot3)
-	if slot1 == ViewName.Act191MainView then
-		slot0:statGameTime(slot1)
+function var_0_0.statViewClose(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
+	if arg_5_1 == ViewName.Act191MainView then
+		arg_5_0:statGameTime(arg_5_1)
 
-		if slot2 then
-			slot0.startTime = nil
+		if arg_5_2 then
+			arg_5_0.startTime = nil
 		else
-			slot0.startTime = ServerTime.now()
+			arg_5_0.startTime = ServerTime.now()
 		end
 	end
 
-	if not slot0.viewOpenTimeMap[slot1] then
+	if not arg_5_0.viewOpenTimeMap[arg_5_1] then
 		return
 	end
 
-	slot3 = slot3 or ""
-	slot4 = ServerTime.now() - slot0.viewOpenTimeMap[slot1]
-	slot5 = {}
-	slot6 = {}
+	arg_5_3 = arg_5_3 or ""
 
-	if slot0.actInfo then
-		slot7 = slot0.actInfo:getGameInfo()
-		slot5 = {
-			coin = slot7.coin,
-			stage = slot7.curStage,
-			node = slot7.curNode,
-			score = slot7.score,
-			rank = slot7.rank
+	local var_5_0 = ServerTime.now() - arg_5_0.viewOpenTimeMap[arg_5_1]
+	local var_5_1 = {}
+	local var_5_2 = {}
+
+	if arg_5_0.actInfo then
+		local var_5_3 = arg_5_0.actInfo:getGameInfo()
+
+		var_5_1 = {
+			coin = var_5_3.coin,
+			stage = var_5_3.curStage,
+			node = var_5_3.curNode,
+			score = var_5_3.score,
+			rank = var_5_3.rank
 		}
 
-		if slot7:getNodeDetailMo(nil, true) then
-			slot6 = {
-				shopId = slot8.shopId,
-				eventId = slot8.eventId,
-				type = slot8.type
+		local var_5_4 = var_5_3:getNodeDetailMo(nil, true)
+
+		if var_5_4 then
+			var_5_2 = {
+				shopId = var_5_4.shopId,
+				eventId = var_5_4.eventId,
+				type = var_5_4.type
 			}
 		end
 	end
+
+	local var_5_5 = Activity191Helper.getPlayerPrefs(arg_5_0.actId, "Act191GameCostTime", 1)
 
 	StatController.instance:track(StatEnum.EventName.Act191CloseView, {
-		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1)),
-		[StatEnum.EventProperties.Act191BaseInfo] = slot5,
-		[StatEnum.EventProperties.Act191NodeInfo] = slot6,
-		[StatEnum.EventProperties.ViewName] = slot1,
-		[StatEnum.EventProperties.UseTime] = slot4,
-		[StatEnum.EventProperties.CooperGarland_From] = slot2 and "Manual" or "Auto",
-		[StatEnum.EventProperties.ProductName] = slot3
+		[StatEnum.EventProperties.Act191GameUid] = tostring(var_5_5),
+		[StatEnum.EventProperties.Act191BaseInfo] = var_5_1,
+		[StatEnum.EventProperties.Act191NodeInfo] = var_5_2,
+		[StatEnum.EventProperties.ViewName] = arg_5_1,
+		[StatEnum.EventProperties.UseTime] = var_5_0,
+		[StatEnum.EventProperties.CooperGarland_From] = arg_5_2 and "Manual" or "Auto",
+		[StatEnum.EventProperties.ProductName] = arg_5_3
 	})
 
-	slot0.viewOpenTimeMap[slot1] = nil
+	arg_5_0.viewOpenTimeMap[arg_5_1] = nil
 end
 
-function slot0.statButtonClick(slot0, slot1, slot2)
-	slot3 = slot0.actInfo:getGameInfo()
-	slot4 = {
-		coin = slot3.coin,
-		stage = slot3.curStage,
-		node = slot3.curNode,
-		score = slot3.score,
-		rank = slot3.rank
+function var_0_0.statButtonClick(arg_6_0, arg_6_1, arg_6_2)
+	local var_6_0 = arg_6_0.actInfo:getGameInfo()
+	local var_6_1 = {
+		coin = var_6_0.coin,
+		stage = var_6_0.curStage,
+		node = var_6_0.curNode,
+		score = var_6_0.score,
+		rank = var_6_0.rank
 	}
-	slot6 = {}
+	local var_6_2 = var_6_0:getNodeDetailMo(nil, true)
+	local var_6_3 = {}
 
-	if slot3:getNodeDetailMo(nil, true) then
-		slot6 = {
-			shopId = slot5.shopId,
-			eventId = slot5.eventId,
-			type = slot5.type
+	if var_6_2 then
+		var_6_3 = {
+			shopId = var_6_2.shopId,
+			eventId = var_6_2.eventId,
+			type = var_6_2.type
 		}
 	end
 
+	local var_6_4 = Activity191Helper.getPlayerPrefs(arg_6_0.actId, "Act191GameCostTime", 1)
+
 	StatController.instance:track(StatEnum.EventName.ButtonClick, {
-		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1)),
-		[StatEnum.EventProperties.Act191BaseInfo] = slot4,
-		[StatEnum.EventProperties.Act191NodeInfo] = slot6,
-		[StatEnum.EventProperties.ViewName] = slot1,
-		[StatEnum.EventProperties.ButtonName] = slot2
+		[StatEnum.EventProperties.Act191GameUid] = tostring(var_6_4),
+		[StatEnum.EventProperties.Act191BaseInfo] = var_6_1,
+		[StatEnum.EventProperties.Act191NodeInfo] = var_6_3,
+		[StatEnum.EventProperties.ViewName] = arg_6_1,
+		[StatEnum.EventProperties.ButtonName] = arg_6_2
 	})
 end
 
-function slot0.statGameTime(slot0, slot1)
-	slot2 = nil
-	slot2 = slot0.startTime and ServerTime.now() - slot0.startTime or ServerTime.now() - FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].createTime
-	slot3 = {}
-	slot4 = {}
+function var_0_0.statGameTime(arg_7_0, arg_7_1)
+	local var_7_0
 
-	if slot0.actInfo and slot0.actInfo:getGameInfo().state == Activity191Enum.GameState.Normal then
-		slot3 = {
-			coin = slot5.coin,
-			stage = slot5.curStage,
-			node = slot5.curNode,
-			score = slot5.score,
-			rank = slot5.rank
-		}
+	if arg_7_0.startTime then
+		var_7_0 = ServerTime.now() - arg_7_0.startTime
+	else
+		var_7_0 = ServerTime.now() - FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].createTime
+	end
 
-		if slot5:getNodeDetailMo(nil, true) then
-			slot4 = {
-				shopId = slot6.shopId,
-				eventId = slot6.eventId,
-				type = slot6.type
+	local var_7_1 = {}
+	local var_7_2 = {}
+
+	if arg_7_0.actInfo then
+		local var_7_3 = arg_7_0.actInfo:getGameInfo()
+
+		if var_7_3.state == Activity191Enum.GameState.Normal then
+			var_7_1 = {
+				coin = var_7_3.coin,
+				stage = var_7_3.curStage,
+				node = var_7_3.curNode,
+				score = var_7_3.score,
+				rank = var_7_3.rank
 			}
+
+			local var_7_4 = var_7_3:getNodeDetailMo(nil, true)
+
+			if var_7_4 then
+				var_7_2 = {
+					shopId = var_7_4.shopId,
+					eventId = var_7_4.eventId,
+					type = var_7_4.type
+				}
+			end
 		end
 	end
 
+	local var_7_5 = Activity191Helper.getPlayerPrefs(arg_7_0.actId, "Act191GameCostTime", 1)
+
 	StatController.instance:track(StatEnum.EventName.Act191GameTime, {
-		[StatEnum.EventProperties.Act191BaseInfo] = slot3,
-		[StatEnum.EventProperties.Act191NodeInfo] = slot4,
-		[StatEnum.EventProperties.ViewName] = slot1,
-		[StatEnum.EventProperties.UseTime] = slot2,
-		[StatEnum.EventProperties.Act191GameUid] = tostring(Activity191Helper.getPlayerPrefs(slot0.actId, "Act191GameCostTime", 1))
+		[StatEnum.EventProperties.Act191BaseInfo] = var_7_1,
+		[StatEnum.EventProperties.Act191NodeInfo] = var_7_2,
+		[StatEnum.EventProperties.ViewName] = arg_7_1,
+		[StatEnum.EventProperties.UseTime] = var_7_0,
+		[StatEnum.EventProperties.Act191GameUid] = tostring(var_7_5)
 	})
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

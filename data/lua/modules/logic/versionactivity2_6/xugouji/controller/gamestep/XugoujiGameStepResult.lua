@@ -1,10 +1,10 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepResult", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepResult", package.seeall)
 
-slot0 = class("XugoujiGameStepResult", XugoujiGameStepBase)
+local var_0_0 = class("XugoujiGameStepResult", XugoujiGameStepBase)
 
-function slot0.start(slot0)
-	XugoujiController.instance:dispatchEvent(XugoujiEvent.GameResult, slot0._stepData)
+function var_0_0.start(arg_1_0)
+	XugoujiController.instance:dispatchEvent(XugoujiEvent.GameResult, arg_1_0._stepData)
 	XugoujiGameStepController.instance:disposeAllStep()
 end
 
-return slot0
+return var_0_0

@@ -1,341 +1,373 @@
-module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandGameView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandGameView", package.seeall)
 
-slot0 = class("CooperGarlandGameView", BaseView)
+local var_0_0 = class("CooperGarlandGameView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goleft = gohelper.findChild(slot0.viewGO, "Left")
-	slot0._goTargetStar1 = gohelper.findChild(slot0.viewGO, "Left/Target/TargetStar/#go_TargetStar1")
-	slot0._goTargetStar2 = gohelper.findChild(slot0.viewGO, "Left/Target/TargetStar/#go_TargetStar2")
-	slot0._btnControl = gohelper.findChildButtonWithAudio(slot0.viewGO, "Left/Control/#btn_Control")
-	slot0._animControl = gohelper.findChildAnim(slot0.viewGO, "Left/Control")
-	slot0._goJoystickMode = gohelper.findChild(slot0.viewGO, "Left/Control/#go_Joystick")
-	slot0._txtjoystick = gohelper.findChildText(slot0.viewGO, "Left/Control/#go_Joystick/txt_Joystick")
-	slot0._imgjoystick = gohelper.findChildImage(slot0.viewGO, "Left/Control/#go_Joystick/image_Joystick")
-	slot0._goGyroscopeMode = gohelper.findChild(slot0.viewGO, "Left/Control/#go_Gyroscope")
-	slot0._transJoyLeftPoint = gohelper.findChild(slot0.viewGO, "Left/#go_joyLeftPoint").transform
-	slot0._btnReset = gohelper.findChildButtonWithAudio(slot0.viewGO, "Right/#btn_Reset")
-	slot0._goRemove = gohelper.findChild(slot0.viewGO, "Right/Collect")
-	slot0._animCollect = gohelper.findChildAnim(slot0.viewGO, "Right/Collect")
-	slot0._goIcon1 = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_Icon1")
-	slot0._goIcon2 = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_Icon2")
-	slot0._goselectRemove = gohelper.findChild(slot0.viewGO, "Right/Collect/#go_select")
-	slot0._txtLightNum = gohelper.findChildText(slot0.viewGO, "Right/Collect/#txt_LightNum")
-	slot0._btnRemoveMode = gohelper.findChildClickWithAudio(slot0.viewGO, "Right/Collect/#btn_modeClick")
-	slot0._transJoyRightPoint = gohelper.findChild(slot0.viewGO, "Right/#go_joyRightPoint").transform
-	slot0._gojoystick = gohelper.findChild(slot0.viewGO, "Right/#go_joyRightPoint/#go_joystick")
-	slot0._goTopTips = gohelper.findChild(slot0.viewGO, "#go_TopTips")
-	slot0._goGameTips = gohelper.findChild(slot0.viewGO, "#go_TopTips2")
-	slot0._txtGameTips = gohelper.findChildText(slot0.viewGO, "#go_TopTips2/#txt_Tips")
-	slot0._goExtraTips = gohelper.findChild(slot0.viewGO, "#go_ExtraTips")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goleft = gohelper.findChild(arg_1_0.viewGO, "Left")
+	arg_1_0._goTargetStar1 = gohelper.findChild(arg_1_0.viewGO, "Left/Target/TargetStar/#go_TargetStar1")
+	arg_1_0._goTargetStar2 = gohelper.findChild(arg_1_0.viewGO, "Left/Target/TargetStar/#go_TargetStar2")
+	arg_1_0._btnControl = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/Control/#btn_Control")
+	arg_1_0._animControl = gohelper.findChildAnim(arg_1_0.viewGO, "Left/Control")
+	arg_1_0._goJoystickMode = gohelper.findChild(arg_1_0.viewGO, "Left/Control/#go_Joystick")
+	arg_1_0._txtjoystick = gohelper.findChildText(arg_1_0.viewGO, "Left/Control/#go_Joystick/txt_Joystick")
+	arg_1_0._imgjoystick = gohelper.findChildImage(arg_1_0.viewGO, "Left/Control/#go_Joystick/image_Joystick")
+	arg_1_0._goGyroscopeMode = gohelper.findChild(arg_1_0.viewGO, "Left/Control/#go_Gyroscope")
+	arg_1_0._transJoyLeftPoint = gohelper.findChild(arg_1_0.viewGO, "Left/#go_joyLeftPoint").transform
+	arg_1_0._btnReset = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Right/#btn_Reset")
+	arg_1_0._goRemove = gohelper.findChild(arg_1_0.viewGO, "Right/Collect")
+	arg_1_0._animCollect = gohelper.findChildAnim(arg_1_0.viewGO, "Right/Collect")
+	arg_1_0._goIcon1 = gohelper.findChild(arg_1_0.viewGO, "Right/Collect/#go_Icon1")
+	arg_1_0._goIcon2 = gohelper.findChild(arg_1_0.viewGO, "Right/Collect/#go_Icon2")
+	arg_1_0._goselectRemove = gohelper.findChild(arg_1_0.viewGO, "Right/Collect/#go_select")
+	arg_1_0._txtLightNum = gohelper.findChildText(arg_1_0.viewGO, "Right/Collect/#txt_LightNum")
+	arg_1_0._btnRemoveMode = gohelper.findChildClickWithAudio(arg_1_0.viewGO, "Right/Collect/#btn_modeClick")
+	arg_1_0._transJoyRightPoint = gohelper.findChild(arg_1_0.viewGO, "Right/#go_joyRightPoint").transform
+	arg_1_0._gojoystick = gohelper.findChild(arg_1_0.viewGO, "Right/#go_joyRightPoint/#go_joystick")
+	arg_1_0._goTopTips = gohelper.findChild(arg_1_0.viewGO, "#go_TopTips")
+	arg_1_0._goGameTips = gohelper.findChild(arg_1_0.viewGO, "#go_TopTips2")
+	arg_1_0._txtGameTips = gohelper.findChildText(arg_1_0.viewGO, "#go_TopTips2/#txt_Tips")
+	arg_1_0._goExtraTips = gohelper.findChild(arg_1_0.viewGO, "#go_ExtraTips")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnControl:AddClickListener(slot0._btnControlOnClick, slot0)
-	slot0._btnReset:AddClickListener(slot0._btnResetOnClick, slot0)
-	slot0._btnRemoveMode:AddClickListener(slot0._btnRemoveModeClick, slot0)
-	NavigateMgr.instance:addEscape(ViewName.CooperGarlandGameView, slot0._onEscapeBtnClick, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnChangeControlMode, slot0._onChangeControlMode, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, slot0._onRemoveModeChange, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveComponent, slot0._onRemoveComponent, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, slot0._onPlayEnterNextRoundAnim, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnEnterNextRound, slot0._onEnterNextRound, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, slot0._onResetGame, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayFinishEpisodeStarVX, slot0._onPlayStarFinishVx, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.ResetJoystick, slot0._resetJoystick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnControl:AddClickListener(arg_2_0._btnControlOnClick, arg_2_0)
+	arg_2_0._btnReset:AddClickListener(arg_2_0._btnResetOnClick, arg_2_0)
+	arg_2_0._btnRemoveMode:AddClickListener(arg_2_0._btnRemoveModeClick, arg_2_0)
+	NavigateMgr.instance:addEscape(ViewName.CooperGarlandGameView, arg_2_0._onEscapeBtnClick, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnChangeControlMode, arg_2_0._onChangeControlMode, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, arg_2_0._onRemoveModeChange, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveComponent, arg_2_0._onRemoveComponent, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, arg_2_0._onPlayEnterNextRoundAnim, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnEnterNextRound, arg_2_0._onEnterNextRound, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, arg_2_0._onResetGame, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayFinishEpisodeStarVX, arg_2_0._onPlayStarFinishVx, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.ResetJoystick, arg_2_0._resetJoystick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnControl:RemoveClickListener()
-	slot0._btnReset:RemoveClickListener()
-	slot0._btnRemoveMode:RemoveClickListener()
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnChangeControlMode, slot0._onChangeControlMode, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, slot0._onRemoveModeChange, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveComponent, slot0._onRemoveComponent, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, slot0._onPlayEnterNextRoundAnim, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnEnterNextRound, slot0._onEnterNextRound, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, slot0._onResetGame, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayFinishEpisodeStarVX, slot0._onPlayStarFinishVx, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.ResetJoystick, slot0._resetJoystick, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnControl:RemoveClickListener()
+	arg_3_0._btnReset:RemoveClickListener()
+	arg_3_0._btnRemoveMode:RemoveClickListener()
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnChangeControlMode, arg_3_0._onChangeControlMode, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, arg_3_0._onRemoveModeChange, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveComponent, arg_3_0._onRemoveComponent, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, arg_3_0._onPlayEnterNextRoundAnim, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnEnterNextRound, arg_3_0._onEnterNextRound, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, arg_3_0._onResetGame, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayFinishEpisodeStarVX, arg_3_0._onPlayStarFinishVx, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.ResetJoystick, arg_3_0._resetJoystick, arg_3_0)
 end
 
-function slot0._btnControlOnClick(slot0)
+function var_0_0._btnControlOnClick(arg_4_0)
 	CooperGarlandController.instance:changeControlMode()
-	slot0:_showGameTips(luaLang(CooperGarlandGameModel.instance:getIsJoystick() and "v2a7_coopergarland_change_control_mode1" or "v2a7_coopergarland_change_control_mode2"))
+
+	local var_4_0 = CooperGarlandGameModel.instance:getIsJoystick()
+	local var_4_1 = luaLang(var_4_0 and "v2a7_coopergarland_change_control_mode1" or "v2a7_coopergarland_change_control_mode2")
+
+	arg_4_0:_showGameTips(var_4_1)
 end
 
-function slot0._btnResetOnClick(slot0)
+function var_0_0._btnResetOnClick(arg_5_0)
 	CooperGarlandController.instance:setStopGame(true)
-	GameFacade.showMessageBox(MessageBoxIdDefine.CooperGarlandResetGame, MsgBoxEnum.BoxType.Yes_No, slot0._confirmReset, slot0._closeResetMessBox, nil, slot0, slot0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.CooperGarlandResetGame, MsgBoxEnum.BoxType.Yes_No, arg_5_0._confirmReset, arg_5_0._closeResetMessBox, nil, arg_5_0, arg_5_0)
 end
 
-function slot0._confirmReset(slot0)
-	CooperGarlandStatHelper.instance:sendMapReset(slot0.viewName)
+function var_0_0._confirmReset(arg_6_0)
+	CooperGarlandStatHelper.instance:sendMapReset(arg_6_0.viewName)
 	CooperGarlandController.instance:resetGame()
 end
 
-function slot0._closeResetMessBox(slot0)
+function var_0_0._closeResetMessBox(arg_7_0)
 	CooperGarlandController.instance:setStopGame(false)
 end
 
-function slot0._btnRemoveModeClick(slot0)
+function var_0_0._btnRemoveModeClick(arg_8_0)
 	CooperGarlandController.instance:changeRemoveMode()
 end
 
-function slot0._onEscapeBtnClick(slot0)
-	slot0.viewContainer:overrideClose()
+function var_0_0._onEscapeBtnClick(arg_9_0)
+	arg_9_0.viewContainer:overrideClose()
 end
 
-function slot0._onChangeControlMode(slot0)
-	slot0:refreshControlMode(true)
+function var_0_0._onChangeControlMode(arg_10_0)
+	arg_10_0:refreshControlMode(true)
 end
 
-function slot0._onRemoveModeChange(slot0)
-	slot0:refreshControlMode()
-	slot0:refreshRemoveMode()
+function var_0_0._onRemoveModeChange(arg_11_0)
+	arg_11_0:refreshControlMode()
+	arg_11_0:refreshRemoveMode()
 
 	if CooperGarlandGameModel.instance:getIsRemoveMode() then
-		slot0:_showGameTips()
+		arg_11_0:_showGameTips()
 		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_trap_choose)
 	end
 end
 
-function slot0._onRemoveComponent(slot0)
-	slot0:_btnRemoveModeClick()
-	slot0:refreshRemoveCount(true)
-	slot0:_showGameTips(luaLang("v2a7_coopergarland_remove_comp"))
+function var_0_0._onRemoveComponent(arg_12_0)
+	arg_12_0:_btnRemoveModeClick()
+	arg_12_0:refreshRemoveCount(true)
+	arg_12_0:_showGameTips(luaLang("v2a7_coopergarland_remove_comp"))
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_trap_dispel)
 end
 
-function slot0._onPlayEnterNextRoundAnim(slot0)
-	if not slot0.animator then
+function var_0_0._onPlayEnterNextRoundAnim(arg_13_0)
+	if not arg_13_0.animator then
 		return
 	end
 
-	slot0.animator.enabled = true
+	arg_13_0.animator.enabled = true
 
-	slot0.animator:Play("switch", 0, 0)
+	arg_13_0.animator:Play("switch", 0, 0)
 end
 
-function slot0._onEnterNextRound(slot0)
-	slot0:refreshRemoveCount()
+function var_0_0._onEnterNextRound(arg_14_0)
+	arg_14_0:refreshRemoveCount()
 end
 
-function slot0._onResetGame(slot0)
-	slot0:refresh()
+function var_0_0._onResetGame(arg_15_0)
+	arg_15_0:refresh()
 end
 
-function slot0._onPlayStarFinishVx(slot0)
-	slot0:setTargetStar(true, true)
+function var_0_0._onPlayStarFinishVx(arg_16_0)
+	arg_16_0:setTargetStar(true, true)
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_pkls_star_light)
-	TaskDispatcher.runDelay(slot0._afterPlayStarFinish, slot0, TimeUtil.OneSecond)
+	TaskDispatcher.runDelay(arg_16_0._afterPlayStarFinish, arg_16_0, TimeUtil.OneSecond)
 end
 
-function slot0._afterPlayStarFinish(slot0)
-	CooperGarlandController.instance:finishEpisode(CooperGarlandGameModel.instance:getEpisodeId(), true)
+function var_0_0._afterPlayStarFinish(arg_17_0)
+	local var_17_0 = CooperGarlandGameModel.instance:getEpisodeId()
+
+	CooperGarlandController.instance:finishEpisode(var_17_0, true)
 end
 
-function slot0._resetJoystick(slot0)
-	if not slot0.joystick then
+function var_0_0._resetJoystick(arg_18_0)
+	if not arg_18_0.joystick then
 		return
 	end
 
-	slot0.joystick:reset()
+	arg_18_0.joystick:reset()
 end
 
-function slot0._showGameTips(slot0, slot1)
-	gohelper.setActive(slot0._goGameTips, false)
+function var_0_0._showGameTips(arg_19_0, arg_19_1)
+	gohelper.setActive(arg_19_0._goGameTips, false)
 
-	if string.nilorempty(slot1) then
+	if string.nilorempty(arg_19_1) then
 		return
 	end
 
-	slot0._txtGameTips.text = slot1
+	arg_19_0._txtGameTips.text = arg_19_1
 
-	gohelper.setActive(slot0._goGameTips, true)
+	gohelper.setActive(arg_19_0._goGameTips, true)
 end
 
-function slot0._editableInitView(slot0)
-	slot0.animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._gyroSensitivity = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.GyroSensitivity, true)
-	slot0._cubeResetSpeed = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubeBalanceRestSpeed, true)
-	slot0.joystick = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._gojoystick, VirtualFixedJoystick)
+function var_0_0._editableInitView(arg_20_0)
+	arg_20_0.animator = arg_20_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	arg_20_0._gyroSensitivity = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.GyroSensitivity, true)
+	arg_20_0._cubeResetSpeed = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubeBalanceRestSpeed, true)
+	arg_20_0.joystick = MonoHelper.addNoUpdateLuaComOnceToGo(arg_20_0._gojoystick, VirtualFixedJoystick)
 
-	if not slot0._isRunning then
-		slot0._isRunning = true
+	if not arg_20_0._isRunning then
+		arg_20_0._isRunning = true
 
-		LateUpdateBeat:Add(slot0._onLateUpdate, slot0)
+		LateUpdateBeat:Add(arg_20_0._onLateUpdate, arg_20_0)
 	end
 
-	slot0.originalAutoLeft = UnityEngine.Screen.autorotateToLandscapeLeft
-	slot0.originalAutoRight = UnityEngine.Screen.autorotateToLandscapeRight
+	arg_20_0.originalAutoLeft = UnityEngine.Screen.autorotateToLandscapeLeft
+	arg_20_0.originalAutoRight = UnityEngine.Screen.autorotateToLandscapeRight
 	UnityEngine.Screen.autorotateToLandscapeLeft = false
 	UnityEngine.Screen.autorotateToLandscapeRight = false
-	slot0._isMobilePlayer = GameUtil.isMobilePlayerAndNotEmulator()
+	arg_20_0._isMobilePlayer = GameUtil.isMobilePlayerAndNotEmulator()
 
-	if slot0._isMobilePlayer then
-		slot0.gyro = UnityEngine.Input.gyro
-		slot0.originalGyroStatus = slot0.gyro.enabled
-		slot0.gyro.enabled = true
+	if arg_20_0._isMobilePlayer then
+		arg_20_0.gyro = UnityEngine.Input.gyro
+		arg_20_0.originalGyroStatus = arg_20_0.gyro.enabled
+		arg_20_0.gyro.enabled = true
 	end
 
-	slot0:setTargetStar(false)
-	gohelper.setActive(slot0._goExtraTips, CooperGarlandConfig.instance:isExtraEpisode(CooperGarlandModel.instance:getAct192Id(), CooperGarlandGameModel.instance:getEpisodeId()))
+	arg_20_0:setTargetStar(false)
+
+	local var_20_0 = CooperGarlandModel.instance:getAct192Id()
+	local var_20_1 = CooperGarlandGameModel.instance:getEpisodeId()
+	local var_20_2 = CooperGarlandConfig.instance:isExtraEpisode(var_20_0, var_20_1)
+
+	gohelper.setActive(arg_20_0._goExtraTips, var_20_2)
 end
 
-slot1 = 3
+local var_0_1 = 3
 
-function slot0._onLateUpdate(slot0)
+function var_0_0._onLateUpdate(arg_21_0)
 	if CooperGarlandGameModel.instance:getIsJoystick() then
-		slot2, slot3 = nil
+		local var_21_0
+		local var_21_1
 
-		if not slot0._isMobilePlayer then
+		if not arg_21_0._isMobilePlayer then
 			if UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
-				slot2 = 1
+				var_21_0 = 1
 			elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
-				slot2 = -1
+				var_21_0 = -1
 			end
 
 			if UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) then
-				slot3 = 1
+				var_21_1 = 1
 			elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.S) then
-				slot3 = -1
+				var_21_1 = -1
 			end
 		end
 
-		if slot2 or slot3 then
-			slot0.joystick:setInPutValue(slot2, slot3)
+		if var_21_0 or var_21_1 then
+			arg_21_0.joystick:setInPutValue(var_21_0, var_21_1)
 		end
 
-		if slot0.joystick:getIsDragging() or slot2 or slot3 then
-			slot5 = slot0.joystick:getInputValue()
+		if arg_21_0.joystick:getIsDragging() or var_21_0 or var_21_1 then
+			local var_21_2 = arg_21_0.joystick:getInputValue()
 
-			CooperGarlandController.instance:changePanelBalance(slot5.x, slot5.y)
+			CooperGarlandController.instance:changePanelBalance(var_21_2.x, var_21_2.y)
 
-			slot0._needReset = true
-		elseif slot0._needReset then
-			slot0:_resetJoystick()
-			CooperGarlandController.instance:resetPanelBalance(slot0._cubeResetSpeed)
+			arg_21_0._needReset = true
+		elseif arg_21_0._needReset then
+			arg_21_0:_resetJoystick()
+			CooperGarlandController.instance:resetPanelBalance(arg_21_0._cubeResetSpeed)
 
-			slot0._needReset = false
+			arg_21_0._needReset = false
 		end
 	else
-		slot2 = 0
-		slot3 = 0
+		local var_21_3 = 0
+		local var_21_4 = 0
 
-		if slot0.gyro then
-			slot4 = slot0.gyro.gravity.normalized
-			slot2 = slot4.x
-			slot3 = slot4.y
+		if arg_21_0.gyro then
+			local var_21_5 = arg_21_0.gyro.gravity.normalized
+
+			var_21_3 = var_21_5.x
+			var_21_4 = var_21_5.y
 		end
 
-		CooperGarlandController.instance:changePanelBalance(Mathf.Clamp(slot0._gyroSensitivity * slot2, -1, 1), Mathf.Clamp(slot0._gyroSensitivity * slot3, -1, 1))
+		local var_21_6 = Mathf.Clamp(arg_21_0._gyroSensitivity * var_21_3, -1, 1)
+		local var_21_7 = Mathf.Clamp(arg_21_0._gyroSensitivity * var_21_4, -1, 1)
+
+		CooperGarlandController.instance:changePanelBalance(var_21_6, var_21_7)
 	end
 
-	AudioMgr.instance:setRTPCValue(AudioEnum2_7.CooperGarlandBallRTPC, CooperGarlandGameEntityMgr.instance:getBallVelocity().magnitude * uv0)
+	local var_21_8 = CooperGarlandGameEntityMgr.instance:getBallVelocity().magnitude * var_0_1
+
+	AudioMgr.instance:setRTPCValue(AudioEnum2_7.CooperGarlandBallRTPC, var_21_8)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_22_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:refresh()
+function var_0_0.onOpen(arg_23_0)
+	arg_23_0:refresh()
 end
 
-function slot0.refresh(slot0)
-	slot0:refreshRemoveCount()
-	slot0:refreshRemoveMode()
-	slot0:refreshControlMode()
+function var_0_0.refresh(arg_24_0)
+	arg_24_0:refreshRemoveCount()
+	arg_24_0:refreshRemoveMode()
+	arg_24_0:refreshControlMode()
 end
 
-function slot0.refreshRemoveCount(slot0, slot1)
-	if CooperGarlandConfig.instance:getRemoveCount(CooperGarlandGameModel.instance:getGameId(), CooperGarlandGameModel.instance:getGameRound()) and slot4 > 0 then
-		slot7 = CooperGarlandGameModel.instance:getRemoveCount() and slot6 > 0
+function var_0_0.refreshRemoveCount(arg_25_0, arg_25_1)
+	local var_25_0 = CooperGarlandGameModel.instance:getGameId()
+	local var_25_1 = CooperGarlandGameModel.instance:getGameRound()
+	local var_25_2 = CooperGarlandConfig.instance:getRemoveCount(var_25_0, var_25_1)
+	local var_25_3 = var_25_2 and var_25_2 > 0
 
-		gohelper.setActive(slot0._goIcon1, not slot7)
-		gohelper.setActive(slot0._goIcon2, slot7)
+	if var_25_3 then
+		local var_25_4 = CooperGarlandGameModel.instance:getRemoveCount()
+		local var_25_5 = var_25_4 and var_25_4 > 0
 
-		if slot1 then
-			slot0._animCollect:Play("switch", 0, 0)
+		gohelper.setActive(arg_25_0._goIcon1, not var_25_5)
+		gohelper.setActive(arg_25_0._goIcon2, var_25_5)
+
+		if arg_25_1 then
+			arg_25_0._animCollect:Play("switch", 0, 0)
 		end
 
-		slot0._txtLightNum.text = luaLang("multiple") .. (slot6 or 0)
+		arg_25_0._txtLightNum.text = luaLang("multiple") .. (var_25_4 or 0)
 	end
 
-	gohelper.setActive(slot0._goRemove, slot5)
+	gohelper.setActive(arg_25_0._goRemove, var_25_3)
 end
 
-function slot0.refreshRemoveMode(slot0)
-	slot1 = CooperGarlandGameModel.instance:getIsRemoveMode()
+function var_0_0.refreshRemoveMode(arg_26_0)
+	local var_26_0 = CooperGarlandGameModel.instance:getIsRemoveMode()
 
-	gohelper.setActive(slot0._goleft, not slot1)
-	gohelper.setActive(slot0._btnReset, not slot1)
-	gohelper.setActive(slot0._goTopTips, slot1)
-	gohelper.setActive(slot0._goselectRemove, slot1)
+	gohelper.setActive(arg_26_0._goleft, not var_26_0)
+	gohelper.setActive(arg_26_0._btnReset, not var_26_0)
+	gohelper.setActive(arg_26_0._goTopTips, var_26_0)
+	gohelper.setActive(arg_26_0._goselectRemove, var_26_0)
 end
 
-function slot0.refreshControlMode(slot0, slot1)
-	if CooperGarlandGameModel.instance:getIsJoystick() then
-		slot3 = slot0._transJoyRightPoint
-		slot4 = "v2a7_coopergarland_right_joystick"
-		slot5 = "v2a7_coopergarland_game_controlicon1"
+function var_0_0.refreshControlMode(arg_27_0, arg_27_1)
+	local var_27_0 = CooperGarlandGameModel.instance:getIsJoystick()
+
+	if var_27_0 then
+		local var_27_1 = arg_27_0._transJoyRightPoint
+		local var_27_2 = "v2a7_coopergarland_right_joystick"
+		local var_27_3 = "v2a7_coopergarland_game_controlicon1"
 
 		if CooperGarlandGameModel.instance:getControlMode() == CooperGarlandEnum.Const.JoystickModeLeft then
-			slot3 = slot0._transJoyLeftPoint
-			slot4 = "v2a7_coopergarland_left_joystick"
-			slot5 = "v2a7_coopergarland_game_controlicon3"
+			var_27_1 = arg_27_0._transJoyLeftPoint
+			var_27_2 = "v2a7_coopergarland_left_joystick"
+			var_27_3 = "v2a7_coopergarland_game_controlicon3"
 		end
 
-		slot0._txtjoystick.text = luaLang(slot4)
+		arg_27_0._txtjoystick.text = luaLang(var_27_2)
 
-		slot0._gojoystick.transform:SetParent(slot3, false)
-		UISpriteSetMgr.instance:setV2a7CooperGarlandSprite(slot0._imgjoystick, slot5)
+		arg_27_0._gojoystick.transform:SetParent(var_27_1, false)
+		UISpriteSetMgr.instance:setV2a7CooperGarlandSprite(arg_27_0._imgjoystick, var_27_3)
 	end
 
-	gohelper.setActive(slot0._gojoystick, not CooperGarlandGameModel.instance:getIsRemoveMode() and slot2)
-	gohelper.setActive(slot0._goGyroscopeMode, not slot2)
-	gohelper.setActive(slot0._goJoystickMode, slot2)
+	local var_27_4 = CooperGarlandGameModel.instance:getIsRemoveMode()
 
-	if slot1 then
-		slot0._animControl:Play(slot2 and "switch2" or "switch1", 0, 0)
+	gohelper.setActive(arg_27_0._gojoystick, not var_27_4 and var_27_0)
+	gohelper.setActive(arg_27_0._goGyroscopeMode, not var_27_0)
+	gohelper.setActive(arg_27_0._goJoystickMode, var_27_0)
+
+	if arg_27_1 then
+		local var_27_5 = var_27_0 and "switch2" or "switch1"
+
+		arg_27_0._animControl:Play(var_27_5, 0, 0)
 	end
 end
 
-function slot0.setTargetStar(slot0, slot1, slot2)
-	if slot2 and slot0.animator then
-		slot0.animator.enabled = false
+function var_0_0.setTargetStar(arg_28_0, arg_28_1, arg_28_2)
+	if arg_28_2 and arg_28_0.animator then
+		arg_28_0.animator.enabled = false
 	end
 
-	gohelper.setActive(slot0._goTargetStar1, not slot1)
-	gohelper.setActive(slot0._goTargetStar2, slot1)
+	gohelper.setActive(arg_28_0._goTargetStar1, not arg_28_1)
+	gohelper.setActive(arg_28_0._goTargetStar2, arg_28_1)
 end
 
-function slot0.onClose(slot0)
-	if slot0._isRunning then
-		slot0._isRunning = false
+function var_0_0.onClose(arg_29_0)
+	if arg_29_0._isRunning then
+		arg_29_0._isRunning = false
 
-		LateUpdateBeat:Remove(slot0._onLateUpdate, slot0)
+		LateUpdateBeat:Remove(arg_29_0._onLateUpdate, arg_29_0)
 	end
 
-	if slot0.originalAutoLeft ~= nil then
-		UnityEngine.Screen.autorotateToLandscapeLeft = slot0.originalAutoLeft
+	if arg_29_0.originalAutoLeft ~= nil then
+		UnityEngine.Screen.autorotateToLandscapeLeft = arg_29_0.originalAutoLeft
 	end
 
-	if slot0.originalAutoRight ~= nil then
-		UnityEngine.Screen.autorotateToLandscapeRight = slot0.originalAutoRight
+	if arg_29_0.originalAutoRight ~= nil then
+		UnityEngine.Screen.autorotateToLandscapeRight = arg_29_0.originalAutoRight
 	end
 
-	if slot0.gyro then
-		slot0.gyro.enabled = slot0.originalGyroStatus
+	if arg_29_0.gyro then
+		arg_29_0.gyro.enabled = arg_29_0.originalGyroStatus
 	end
 
-	TaskDispatcher.cancelTask(slot0._afterPlayStarFinish, slot0)
+	TaskDispatcher.cancelTask(arg_29_0._afterPlayStarFinish, arg_29_0)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_30_0)
+	return
 end
 
-return slot0
+return var_0_0

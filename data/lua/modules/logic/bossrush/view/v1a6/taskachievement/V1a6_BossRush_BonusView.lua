@@ -1,145 +1,154 @@
-module("modules.logic.bossrush.view.v1a6.taskachievement.V1a6_BossRush_BonusView", package.seeall)
+﻿module("modules.logic.bossrush.view.v1a6.taskachievement.V1a6_BossRush_BonusView", package.seeall)
 
-slot0 = class("V1a6_BossRush_BonusView", BaseView)
+local var_0_0 = class("V1a6_BossRush_BonusView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._simageFullBG = gohelper.findChildSingleImage(slot0.viewGO, "#simage_FullBG")
-	slot0._gobonus = gohelper.findChild(slot0.viewGO, "#go_bonus")
-	slot0._goTab3 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab3")
-	slot0._goUnSelect3 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab3/#go_UnSelect3")
-	slot0._goSelected3 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab3/#go_Selected3")
-	slot0._goRedDot3 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab3/#go_RedDot3")
-	slot0._btn3 = gohelper.findChildButtonWithAudio(slot0.viewGO, "Tab/#go_Tab3/#btn_3")
-	slot0._goTab1 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab1")
-	slot0._goUnSelected1 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab1/#go_UnSelected1")
-	slot0._goSelected1 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab1/#go_Selected1")
-	slot0._goRedDot1 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab1/#go_RedDot1")
-	slot0._btn1 = gohelper.findChildButtonWithAudio(slot0.viewGO, "Tab/#go_Tab1/#btn_1")
-	slot0._goTab2 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab2")
-	slot0._goUnSelect2 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab2/#go_UnSelect2")
-	slot0._goSelected2 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab2/#go_Selected2")
-	slot0._goRedDot2 = gohelper.findChild(slot0.viewGO, "Tab/#go_Tab2/#go_RedDot2")
-	slot0._btn2 = gohelper.findChildButtonWithAudio(slot0.viewGO, "Tab/#go_Tab2/#btn_2")
-	slot0._goBlock = gohelper.findChild(slot0.viewGO, "#go_Block")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
+	arg_1_0._gobonus = gohelper.findChild(arg_1_0.viewGO, "#go_bonus")
+	arg_1_0._goTab3 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab3")
+	arg_1_0._goUnSelect3 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab3/#go_UnSelect3")
+	arg_1_0._goSelected3 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab3/#go_Selected3")
+	arg_1_0._goRedDot3 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab3/#go_RedDot3")
+	arg_1_0._btn3 = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Tab/#go_Tab3/#btn_3")
+	arg_1_0._goTab1 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab1")
+	arg_1_0._goUnSelected1 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab1/#go_UnSelected1")
+	arg_1_0._goSelected1 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab1/#go_Selected1")
+	arg_1_0._goRedDot1 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab1/#go_RedDot1")
+	arg_1_0._btn1 = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Tab/#go_Tab1/#btn_1")
+	arg_1_0._goTab2 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab2")
+	arg_1_0._goUnSelect2 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab2/#go_UnSelect2")
+	arg_1_0._goSelected2 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab2/#go_Selected2")
+	arg_1_0._goRedDot2 = gohelper.findChild(arg_1_0.viewGO, "Tab/#go_Tab2/#go_RedDot2")
+	arg_1_0._btn2 = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Tab/#go_Tab2/#btn_2")
+	arg_1_0._goBlock = gohelper.findChild(arg_1_0.viewGO, "#go_Block")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btn3:AddClickListener(slot0._btn3OnClick, slot0)
-	slot0._btn1:AddClickListener(slot0._btn1OnClick, slot0)
-	slot0._btn2:AddClickListener(slot0._btn2OnClick, slot0)
-	slot0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, slot0._refreshRedDot, slot0)
-	slot0:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, slot0._refreshRedDot, slot0)
-	slot0:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, slot0._refreshRedDot, slot0)
-	slot0:addEventCb(TaskController.instance, TaskEvent.SetTaskList, slot0._refreshRedDot, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btn3:AddClickListener(arg_2_0._btn3OnClick, arg_2_0)
+	arg_2_0._btn1:AddClickListener(arg_2_0._btn1OnClick, arg_2_0)
+	arg_2_0._btn2:AddClickListener(arg_2_0._btn2OnClick, arg_2_0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, arg_2_0._refreshRedDot, arg_2_0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, arg_2_0._refreshRedDot, arg_2_0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, arg_2_0._refreshRedDot, arg_2_0)
+	arg_2_0:addEventCb(TaskController.instance, TaskEvent.SetTaskList, arg_2_0._refreshRedDot, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btn3:RemoveClickListener()
-	slot0._btn1:RemoveClickListener()
-	slot0._btn2:RemoveClickListener()
-	slot0:removeEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, slot0._refreshRedDot, slot0)
-	slot0:removeEventCb(TaskController.instance, TaskEvent.OnFinishTask, slot0._refreshRedDot, slot0)
-	slot0:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, slot0._refreshRedDot, slot0)
-	slot0:removeEventCb(TaskController.instance, TaskEvent.SetTaskList, slot0._refreshRedDot, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btn3:RemoveClickListener()
+	arg_3_0._btn1:RemoveClickListener()
+	arg_3_0._btn2:RemoveClickListener()
+	arg_3_0:removeEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, arg_3_0._refreshRedDot, arg_3_0)
+	arg_3_0:removeEventCb(TaskController.instance, TaskEvent.OnFinishTask, arg_3_0._refreshRedDot, arg_3_0)
+	arg_3_0:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, arg_3_0._refreshRedDot, arg_3_0)
+	arg_3_0:removeEventCb(TaskController.instance, TaskEvent.SetTaskList, arg_3_0._refreshRedDot, arg_3_0)
 end
 
-function slot0._btn1OnClick(slot0)
-	slot0:cutTab(BossRushEnum.BonusViewTab.AchievementTab)
+function var_0_0._btn1OnClick(arg_4_0)
+	arg_4_0:cutTab(BossRushEnum.BonusViewTab.AchievementTab)
 end
 
-function slot0._btn2OnClick(slot0)
-	slot0:cutTab(BossRushEnum.BonusViewTab.ScheduleTab)
+function var_0_0._btn2OnClick(arg_5_0)
+	arg_5_0:cutTab(BossRushEnum.BonusViewTab.ScheduleTab)
 end
 
-function slot0._btn3OnClick(slot0)
-	slot0:cutTab(BossRushEnum.BonusViewTab.SpecialScheduleTab)
+function var_0_0._btn3OnClick(arg_6_0)
+	arg_6_0:cutTab(BossRushEnum.BonusViewTab.SpecialScheduleTab)
 end
 
-function slot0._btnOnClick(slot0)
+function var_0_0._btnOnClick(arg_7_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_8_0)
+	return
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_9_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0._stage = slot0.viewParam.stage
-	slot0._selectTab = BossRushModel.instance:isSpecialActivity() and BossRushEnum.BonusViewTab.SpecialScheduleTab or BossRushEnum.BonusViewTab.AchievementTab
+function var_0_0.onOpen(arg_10_0)
+	arg_10_0._stage = arg_10_0.viewParam.stage
+	arg_10_0._selectTab = BossRushModel.instance:isSpecialActivity() and BossRushEnum.BonusViewTab.SpecialScheduleTab or BossRushEnum.BonusViewTab.AchievementTab
 
-	slot0:activeTab()
-	slot0:_refreshTab()
-	slot0:_addRedDot()
-	BossRushController.instance:sendGetTaskInfoRequest(slot0.openDefaultTab, slot0)
+	arg_10_0:activeTab()
+	arg_10_0:_refreshTab()
+	arg_10_0:_addRedDot()
+	BossRushController.instance:sendGetTaskInfoRequest(arg_10_0.openDefaultTab, arg_10_0)
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_11_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_12_0)
+	return
 end
 
-function slot0.openDefaultTab(slot0)
-	slot0:selectTab(slot0._selectTab)
-	slot0:_refreshRedDot()
+function var_0_0.openDefaultTab(arg_13_0)
+	arg_13_0:selectTab(arg_13_0._selectTab)
+	arg_13_0:_refreshRedDot()
 end
 
-function slot0.cutTab(slot0, slot1)
-	if slot0._selectTab and slot0._selectTab == slot1 then
+function var_0_0.cutTab(arg_14_0, arg_14_1)
+	if arg_14_0._selectTab and arg_14_0._selectTab == arg_14_1 then
 		return
 	end
 
-	slot0._selectTab = slot1
+	arg_14_0._selectTab = arg_14_1
 
-	slot0:activeTab()
-	slot0:selectTab(slot0._selectTab)
+	arg_14_0:activeTab()
+	arg_14_0:selectTab(arg_14_0._selectTab)
 end
 
-function slot0.selectTab(slot0, slot1, slot2)
-	slot0.viewContainer:selectTabView(slot1, slot2)
+function var_0_0.selectTab(arg_15_0, arg_15_1, arg_15_2)
+	arg_15_0.viewContainer:selectTabView(arg_15_1, arg_15_2)
 end
 
-function slot0.activeTab(slot0)
-	gohelper.setActive(slot0._goUnSelected1, slot0._selectTab ~= BossRushEnum.BonusViewTab.AchievementTab)
-	gohelper.setActive(slot0._goSelected1, slot0._selectTab == BossRushEnum.BonusViewTab.AchievementTab)
-	gohelper.setActive(slot0._goUnSelect2, slot0._selectTab ~= BossRushEnum.BonusViewTab.ScheduleTab)
-	gohelper.setActive(slot0._goSelected2, slot0._selectTab == BossRushEnum.BonusViewTab.ScheduleTab)
-	gohelper.setActive(slot0._goUnSelect3, slot0._selectTab ~= BossRushEnum.BonusViewTab.SpecialScheduleTab)
-	gohelper.setActive(slot0._goSelected3, slot0._selectTab == BossRushEnum.BonusViewTab.SpecialScheduleTab)
+function var_0_0.activeTab(arg_16_0)
+	gohelper.setActive(arg_16_0._goUnSelected1, arg_16_0._selectTab ~= BossRushEnum.BonusViewTab.AchievementTab)
+	gohelper.setActive(arg_16_0._goSelected1, arg_16_0._selectTab == BossRushEnum.BonusViewTab.AchievementTab)
+	gohelper.setActive(arg_16_0._goUnSelect2, arg_16_0._selectTab ~= BossRushEnum.BonusViewTab.ScheduleTab)
+	gohelper.setActive(arg_16_0._goSelected2, arg_16_0._selectTab == BossRushEnum.BonusViewTab.ScheduleTab)
+	gohelper.setActive(arg_16_0._goUnSelect3, arg_16_0._selectTab ~= BossRushEnum.BonusViewTab.SpecialScheduleTab)
+	gohelper.setActive(arg_16_0._goSelected3, arg_16_0._selectTab == BossRushEnum.BonusViewTab.SpecialScheduleTab)
 end
 
-function slot0._addRedDot(slot0)
-	slot1 = RedDotEnum.DotNode.BossRushBossSchedule
+function var_0_0._addRedDot(arg_17_0)
+	local var_17_0 = RedDotEnum.DotNode.BossRushBossSchedule
+	local var_17_1 = BossRushRedModel.instance:getUId(var_17_0, arg_17_0._stage)
 
-	RedDotController.instance:addRedDot(slot0._goRedDot2, slot1, BossRushRedModel.instance:getUId(slot1, slot0._stage))
+	RedDotController.instance:addRedDot(arg_17_0._goRedDot2, var_17_0, var_17_1)
 
-	slot3 = RedDotEnum.DotNode.BossRushBossAchievement
-	slot4 = BossRushRedModel.instance:getUId(slot3, slot0._stage)
+	local var_17_2 = RedDotEnum.DotNode.BossRushBossAchievement
+	local var_17_3 = BossRushRedModel.instance:getUId(var_17_2, arg_17_0._stage)
 
-	RedDotController.instance:addRedDot(slot0._goRedDot1, slot3, slot4)
-	RedDotController.instance:addRedDot(slot0._goRedDot3, slot3, slot4)
+	RedDotController.instance:addRedDot(arg_17_0._goRedDot1, var_17_2, var_17_3)
+	RedDotController.instance:addRedDot(arg_17_0._goRedDot3, var_17_2, var_17_3)
 end
 
-function slot0._refreshRedDot(slot0)
-	gohelper.setActive(slot0._goRedDot1, V1a4_BossRush_ScoreTaskAchievementListModel.instance:isReddot(slot0._stage))
-	gohelper.setActive(slot0._goRedDot3, V2a1_BossRush_SpecialScheduleViewListModel.instance:isReddot(slot0._stage))
+function var_0_0._refreshRedDot(arg_18_0)
+	local var_18_0 = V1a4_BossRush_ScoreTaskAchievementListModel.instance:isReddot(arg_18_0._stage)
+	local var_18_1 = V2a1_BossRush_SpecialScheduleViewListModel.instance:isReddot(arg_18_0._stage)
+
+	gohelper.setActive(arg_18_0._goRedDot1, var_18_0)
+	gohelper.setActive(arg_18_0._goRedDot3, var_18_1)
 end
 
-function slot0._refreshTab(slot0)
-	slot1 = BossRushModel.instance:isSpecialActivity()
+function var_0_0._refreshTab(arg_19_0)
+	local var_19_0 = BossRushModel.instance:isSpecialActivity()
 
-	gohelper.setActive(slot0._goTab3, slot1)
+	gohelper.setActive(arg_19_0._goTab3, var_19_0)
 
-	slot2 = slot1 and 326 or 489
+	local var_19_1 = var_19_0 and 326 or 489
 
-	recthelper.setWidth(slot0._goTab1.transform, slot2)
-	recthelper.setWidth(slot0._goTab2.transform, slot2)
-	recthelper.setWidth(slot0._goTab3.transform, slot2)
+	recthelper.setWidth(arg_19_0._goTab1.transform, var_19_1)
+	recthelper.setWidth(arg_19_0._goTab2.transform, var_19_1)
+	recthelper.setWidth(arg_19_0._goTab3.transform, var_19_1)
 end
 
-return slot0
+return var_0_0

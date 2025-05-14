@@ -1,11 +1,14 @@
-module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2PrevSettleLayerInfoMO", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2PrevSettleLayerInfoMO", package.seeall)
 
-slot0 = pureTable("WeekwalkVer2PrevSettleLayerInfoMO")
+local var_0_0 = pureTable("WeekwalkVer2PrevSettleLayerInfoMO")
 
-function slot0.init(slot0, slot1)
-	slot0.layerId = slot1.layerId
-	slot0.platinumCupNum = slot1.platinumCupNum
-	slot0.layerIndex = lua_weekwalk_ver2.configDict[slot0.layerId] and slot2.layer or 0
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.layerId = arg_1_1.layerId
+	arg_1_0.platinumCupNum = arg_1_1.platinumCupNum
+
+	local var_1_0 = lua_weekwalk_ver2.configDict[arg_1_0.layerId]
+
+	arg_1_0.layerIndex = var_1_0 and var_1_0.layer or 0
 end
 
-return slot0
+return var_0_0

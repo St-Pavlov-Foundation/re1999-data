@@ -1,145 +1,158 @@
-module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.model.V2a7_SelfSelectSix_PickChoiceListModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.model.V2a7_SelfSelectSix_PickChoiceListModel", package.seeall)
 
-slot0 = class("V2a7_SelfSelectSix_PickChoiceListModel", MixScrollModel)
+local var_0_0 = class("V2a7_SelfSelectSix_PickChoiceListModel", MixScrollModel)
 
-function slot0.onInit(slot0)
-	slot0._selectIdList = {}
-	slot0._selectIdMap = {}
-	slot0._pickChoiceMap = {}
-	slot0.maxSelectCount = nil
-	slot0._lastUnLock = nil
-	slot0._lastUnlockEpisodeId = nil
-	slot0._allPass = false
-	slot0._arrcount = 0
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._selectIdList = {}
+	arg_1_0._selectIdMap = {}
+	arg_1_0._pickChoiceMap = {}
+	arg_1_0.maxSelectCount = nil
+	arg_1_0._lastUnLock = nil
+	arg_1_0._lastUnlockEpisodeId = nil
+	arg_1_0._allPass = false
+	arg_1_0._arrcount = 0
 end
 
-function slot0.reInit(slot0)
-	slot0:onInit()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:onInit()
 end
 
-function slot0.initData(slot0, slot1, slot2)
-	slot0:onInit()
-	slot0:initList(slot1)
+function var_0_0.initData(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0:onInit()
+	arg_3_0:initList(arg_3_1)
 
-	slot0.maxSelectCount = slot2 or 1
+	arg_3_0.maxSelectCount = arg_3_2 or 1
 end
 
-function slot0.initList(slot0, slot1)
-	if not slot1 then
+function var_0_0.initList(arg_4_0, arg_4_1)
+	if not arg_4_1 then
 		return
 	end
 
-	slot2 = {}
-	slot0._arrcount = #slot1
-	slot3 = true
+	local var_4_0 = {}
 
-	for slot7, slot8 in ipairs(slot1) do
-		slot9 = {}
-		slot11 = {}
+	arg_4_0._arrcount = #arg_4_1
 
-		if string.split(slot8, ":")[2] and #slot10[2] > 0 then
-			slot0._pickChoiceMap[tonumber(slot10[1])] = string.splitToNumber(slot10[2], ",")
+	local var_4_1 = true
+
+	for iter_4_0, iter_4_1 in ipairs(arg_4_1) do
+		local var_4_2 = {}
+		local var_4_3 = string.split(iter_4_1, ":")
+		local var_4_4 = {}
+
+		if var_4_3[2] and #var_4_3[2] > 0 then
+			var_4_4 = string.splitToNumber(var_4_3[2], ",")
+			arg_4_0._pickChoiceMap[tonumber(var_4_3[1])] = var_4_4
 		end
 
-		slot9.episodeId = tonumber(slot10[1])
-		slot9.heroIdList = slot11
-		slot12 = DungeonModel.instance:hasPassLevel(slot9.episodeId)
-		slot9.isUnlock = slot12
+		var_4_2.episodeId = tonumber(var_4_3[1])
+		var_4_2.heroIdList = var_4_4
 
-		if slot12 then
-			slot0._lastUnLock = slot7
+		local var_4_5 = DungeonModel.instance:hasPassLevel(var_4_2.episodeId)
+
+		var_4_2.isUnlock = var_4_5
+
+		if var_4_5 then
+			arg_4_0._lastUnLock = iter_4_0
 		else
-			slot3 = false
+			var_4_1 = false
 		end
 
-		if not slot12 and not slot0._lastUnlockEpisodeId then
-			slot0._lastUnlockEpisodeId = slot9.episodeId
+		if not var_4_5 and not arg_4_0._lastUnlockEpisodeId then
+			arg_4_0._lastUnlockEpisodeId = var_4_2.episodeId
 		end
 
-		if slot7 == #slot1 and slot3 then
-			slot0._lastUnlockEpisodeId = slot9.episodeId
+		if iter_4_0 == #arg_4_1 and var_4_1 then
+			arg_4_0._lastUnlockEpisodeId = var_4_2.episodeId
 		end
 
-		table.insert(slot2, {
+		table.insert(var_4_0, {
 			isTitle = true,
-			episodeId = slot9.episodeId,
-			isUnlock = slot12
+			episodeId = var_4_2.episodeId,
+			isUnlock = var_4_5
 		})
-		table.insert(slot2, slot9)
+		table.insert(var_4_0, var_4_2)
 
-		slot0._allPass = slot3
+		arg_4_0._allPass = var_4_1
 	end
 
-	slot0:setList(slot2)
+	arg_4_0:setList(var_4_0)
 end
 
-function slot0.getLastUnlockIndex(slot0)
-	return slot0._lastUnLock
+function var_0_0.getLastUnlockIndex(arg_5_0)
+	return arg_5_0._lastUnLock
 end
 
-function slot0.getLastUnlockEpisodeId(slot0)
-	return slot0._lastUnlockEpisodeId, slot0._allPass
+function var_0_0.getLastUnlockEpisodeId(arg_6_0)
+	return arg_6_0._lastUnlockEpisodeId, arg_6_0._allPass
 end
 
-function slot0.getArrCount(slot0)
-	return slot0._arrcount
+function var_0_0.getArrCount(arg_7_0)
+	return arg_7_0._arrcount
 end
 
-function slot0.setSelectId(slot0, slot1)
-	if not slot0._selectIdList then
+function var_0_0.setSelectId(arg_8_0, arg_8_1)
+	if not arg_8_0._selectIdList then
 		return
 	end
 
-	if slot0._selectIdMap[slot1] then
-		slot0._selectIdMap[slot1] = nil
+	if arg_8_0._selectIdMap[arg_8_1] then
+		arg_8_0._selectIdMap[arg_8_1] = nil
 
-		tabletool.removeValue(slot0._selectIdList, slot1)
+		tabletool.removeValue(arg_8_0._selectIdList, arg_8_1)
 	else
-		slot0._selectIdMap[slot1] = true
+		arg_8_0._selectIdMap[arg_8_1] = true
 
-		table.insert(slot0._selectIdList, slot1)
+		table.insert(arg_8_0._selectIdList, arg_8_1)
 	end
 end
 
-function slot0.clearAllSelect(slot0)
-	slot0._selectIdMap = {}
-	slot0._selectIdList = {}
+function var_0_0.clearAllSelect(arg_9_0)
+	arg_9_0._selectIdMap = {}
+	arg_9_0._selectIdList = {}
 end
 
-function slot0.getSelectIds(slot0)
-	return slot0._selectIdList
+function var_0_0.getSelectIds(arg_10_0)
+	return arg_10_0._selectIdList
 end
 
-function slot0.getSelectCount(slot0)
-	if slot0._selectIdList then
-		return #slot0._selectIdList
+function var_0_0.getSelectCount(arg_11_0)
+	if arg_11_0._selectIdList then
+		return #arg_11_0._selectIdList
 	end
 
 	return 0
 end
 
-function slot0.getMaxSelectCount(slot0)
-	return slot0.maxSelectCount
+function var_0_0.getMaxSelectCount(arg_12_0)
+	return arg_12_0.maxSelectCount
 end
 
-function slot0.isHeroIdSelected(slot0, slot1)
-	if slot0._selectIdMap then
-		return slot0._selectIdMap[slot1] ~= nil
+function var_0_0.isHeroIdSelected(arg_13_0, arg_13_1)
+	if arg_13_0._selectIdMap then
+		return arg_13_0._selectIdMap[arg_13_1] ~= nil
 	end
 
 	return false
 end
 
-function slot0.getInfoList(slot0, slot1)
-	slot0._mixCellInfo = {}
+function var_0_0.getInfoList(arg_14_0, arg_14_1)
+	arg_14_0._mixCellInfo = {}
 
-	for slot6, slot7 in ipairs(slot0:getList()) do
-		table.insert(slot0._mixCellInfo, SLFramework.UGUI.MixCellInfo.New(slot7.isTitle and 0 or 1, slot8 and 66 or 200, nil))
+	local var_14_0 = arg_14_0:getList()
+
+	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
+		local var_14_1 = iter_14_1.isTitle
+		local var_14_2 = var_14_1 and 0 or 1
+		local var_14_3 = var_14_1 and 66 or 200
+		local var_14_4 = SLFramework.UGUI.MixCellInfo.New(var_14_2, var_14_3, nil)
+
+		table.insert(arg_14_0._mixCellInfo, var_14_4)
 	end
 
-	return slot0._mixCellInfo
+	return arg_14_0._mixCellInfo
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

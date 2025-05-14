@@ -1,391 +1,469 @@
-module("modules.logic.tower.controller.TowerController", package.seeall)
+﻿module("modules.logic.tower.controller.TowerController", package.seeall)
 
-slot0 = class("TowerController", BaseController)
+local var_0_0 = class("TowerController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0.jumpFlow = nil
+function var_0_0.onInit(arg_1_0)
+	arg_1_0.jumpFlow = nil
 end
 
-function slot0.reInit(slot0)
-	if slot0.jumpFlow then
-		slot0.jumpFlow:onDestroyInternal()
+function var_0_0.reInit(arg_2_0)
+	if arg_2_0.jumpFlow then
+		arg_2_0.jumpFlow:onDestroyInternal()
 	end
 
-	slot0.jumpFlow = nil
+	arg_2_0.jumpFlow = nil
 end
 
-function slot0.addConstEvents(slot0)
-	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, slot0.onUpdateTaskList, slot0)
-	TaskController.instance:registerCallback(TaskEvent.SetTaskList, slot0.onSetTaskList, slot0)
-	slot0:registerCallback(TowerEvent.DailyReresh, slot0.dailyReddotRefresh, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, arg_3_0.onUpdateTaskList, arg_3_0)
+	TaskController.instance:registerCallback(TaskEvent.SetTaskList, arg_3_0.onSetTaskList, arg_3_0)
+	arg_3_0:registerCallback(TowerEvent.DailyReresh, arg_3_0.dailyReddotRefresh, arg_3_0)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_3_0._onDailyRefresh, arg_3_0)
 end
 
-function slot0.jumpView(slot0, slot1)
+function var_0_0.jumpView(arg_4_0, arg_4_1)
 	if not ViewMgr.instance:isOpen(ViewName.TowerMainView) then
-		slot0.jumpFlow = FlowSequence.New()
+		arg_4_0.jumpFlow = FlowSequence.New()
 
-		slot0.jumpFlow:addWork(TowerEnterWork.New())
-		slot0.jumpFlow:addWork(FunctionWork.New(slot0.realJumpTowerView, slot0, slot1))
-		slot0.jumpFlow:registerDoneListener(slot0.flowDone, slot0)
-		slot0.jumpFlow:start()
+		local var_4_0 = TowerEnterWork.New()
+
+		arg_4_0.jumpFlow:addWork(var_4_0)
+		arg_4_0.jumpFlow:addWork(FunctionWork.New(arg_4_0.realJumpTowerView, arg_4_0, arg_4_1))
+		arg_4_0.jumpFlow:registerDoneListener(arg_4_0.flowDone, arg_4_0)
+		arg_4_0.jumpFlow:start()
 	else
-		slot0:realJumpTowerView(slot1)
+		arg_4_0:realJumpTowerView(arg_4_1)
 	end
 end
 
-function slot0.realJumpTowerView(slot0, slot1)
-	if slot1.towerType == TowerEnum.TowerType.Boss then
-		slot0:openBossTowerEpisodeView(slot2, slot1.towerId)
-	elseif slot2 == TowerEnum.TowerType.Limited then
-		slot0:openTowerTimeLimitLevelView()
-	elseif slot2 == TowerEnum.TowerType.Normal then
-		slot0:openTowerPermanentView()
+function var_0_0.realJumpTowerView(arg_5_0, arg_5_1)
+	local var_5_0 = arg_5_1.towerType
+	local var_5_1 = arg_5_1.towerId
+
+	if var_5_0 == TowerEnum.TowerType.Boss then
+		arg_5_0:openBossTowerEpisodeView(var_5_0, var_5_1)
+	elseif var_5_0 == TowerEnum.TowerType.Limited then
+		arg_5_0:openTowerTimeLimitLevelView()
+	elseif var_5_0 == TowerEnum.TowerType.Normal then
+		arg_5_0:openTowerPermanentView()
 	end
 
-	if slot0.jumpFlow then
-		slot0.jumpFlow:onDone(true)
+	if arg_5_0.jumpFlow then
+		arg_5_0.jumpFlow:onDone(true)
 	end
 end
 
-function slot0.flowDone(slot0, slot1)
-	slot0.jumpFlow = nil
+function var_0_0.flowDone(arg_6_0, arg_6_1)
+	arg_6_0.jumpFlow = nil
 end
 
-function slot0.openMainView(slot0, slot1)
-	slot0._mainviewParam = slot1
+function var_0_0.openMainView(arg_7_0, arg_7_1)
+	arg_7_0._mainviewParam = arg_7_1
 
-	TowerRpc.instance:sendGetTowerInfoRequest(slot0._openMainView, slot0)
+	TowerRpc.instance:sendGetTowerInfoRequest(arg_7_0._openMainView, arg_7_0)
 end
 
-function slot0._openMainView(slot0, slot1, slot2, slot3)
-	if slot2 ~= 0 then
+function var_0_0._openMainView(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	if arg_8_2 ~= 0 then
 		return
 	end
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Tower
-	}, function (slot0, slot1, slot2)
-		if slot1 == 0 then
-			StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function (slot0, slot1, slot2)
-				if slot1 == 0 then
-					ViewMgr.instance:openView(ViewName.TowerMainView, uv0._mainviewParam)
+	}, function(arg_9_0, arg_9_1, arg_9_2)
+		if arg_9_1 == 0 then
+			StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function(arg_10_0, arg_10_1, arg_10_2)
+				if arg_10_1 == 0 then
+					ViewMgr.instance:openView(ViewName.TowerMainView, arg_8_0._mainviewParam)
 				end
 			end)
 		end
 	end)
 end
 
-function slot0.openBossTowerEpisodeView(slot0, slot1, slot2, slot3)
-	if not slot1 or not slot2 then
+function var_0_0.openBossTowerEpisodeView(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	if not arg_11_1 or not arg_11_2 then
 		return
 	end
 
-	slot4 = TowerModel.instance:getEpisodeMoByTowerType(slot1)
-	slot5 = TowerModel.instance:getTowerInfoById(slot1, slot2)
+	local var_11_0 = TowerModel.instance:getEpisodeMoByTowerType(arg_11_1)
+	local var_11_1 = TowerModel.instance:getTowerInfoById(arg_11_1, arg_11_2)
 
-	if not TowerModel.instance:getTowerOpenInfo(slot1, slot2) then
+	if not TowerModel.instance:getTowerOpenInfo(arg_11_1, arg_11_2) then
 		return
 	end
 
-	slot7 = slot5 and slot5.passLayerId or 0
+	local var_11_2 = var_11_1 and var_11_1.passLayerId or 0
+	local var_11_3 = var_11_0:getNextEpisodeLayer(arg_11_2, var_11_2) or var_11_2
+	local var_11_4 = var_11_0:getEpisodeConfig(arg_11_2, var_11_3)
 
-	if slot4:getEpisodeConfig(slot2, slot4:getNextEpisodeLayer(slot2, slot7) or slot7) then
-		(slot3 or {}).episodeConfig = slot9
+	if var_11_4 then
+		local var_11_5 = arg_11_3 or {}
 
-		if slot9.openRound > 0 then
-			if slot5:isSpLayerOpen(slot9.layerId) then
-				ViewMgr.instance:openView(ViewName.TowerBossSpEpisodeView, slot10)
+		var_11_5.episodeConfig = var_11_4
+
+		if var_11_4.openRound > 0 then
+			if var_11_1:isSpLayerOpen(var_11_4.layerId) then
+				ViewMgr.instance:openView(ViewName.TowerBossSpEpisodeView, var_11_5)
 			else
-				slot10.episodeConfig = slot4:getEpisodeConfig(slot2, slot7)
+				var_11_5.episodeConfig = var_11_0:getEpisodeConfig(arg_11_2, var_11_2)
 
-				if slot10.episodeConfig.openRound > 0 then
-					ViewMgr.instance:openView(ViewName.TowerBossSpEpisodeView, slot10)
+				if var_11_5.episodeConfig.openRound > 0 then
+					ViewMgr.instance:openView(ViewName.TowerBossSpEpisodeView, var_11_5)
 				else
-					ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
+					ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, var_11_5)
 				end
 			end
 		else
-			ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, slot10)
+			ViewMgr.instance:openView(ViewName.TowerBossEpisodeView, var_11_5)
 		end
 
 		TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Boss)
 	end
 end
 
-function slot0.openAssistBossView(slot0, slot1, slot2, slot3, slot4)
+function var_0_0.openAssistBossView(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4)
 	ViewMgr.instance:openView(ViewName.TowerAssistBossView, {
-		bossId = slot1,
-		isFromHeroGroup = slot2,
-		towerType = slot3,
-		towerId = slot4
+		bossId = arg_12_1,
+		isFromHeroGroup = arg_12_2,
+		towerType = arg_12_3,
+		towerId = arg_12_4
 	})
 end
 
-function slot0.enterFight(slot0, slot1)
-	if not slot1 then
+function var_0_0.enterFight(arg_13_0, arg_13_1)
+	if not arg_13_1 then
 		return
 	end
 
-	slot0.enterFightParam = slot1
-	slot2 = ModuleEnum.HeroGroupSnapshotType.TowerPermanentAndLimit
+	arg_13_0.enterFightParam = arg_13_1
 
-	if slot1.towerType == TowerEnum.TowerType.Boss then
-		slot2 = ModuleEnum.HeroGroupSnapshotType.TowerBoss
+	local var_13_0 = ModuleEnum.HeroGroupSnapshotType.TowerPermanentAndLimit
+
+	if arg_13_1.towerType == TowerEnum.TowerType.Boss then
+		var_13_0 = ModuleEnum.HeroGroupSnapshotType.TowerBoss
 	end
 
-	HeroGroupRpc.instance:sendGetHeroGroupSnapshotListRequest(slot2, slot0._enterFight, slot0)
+	HeroGroupRpc.instance:sendGetHeroGroupSnapshotListRequest(var_13_0, arg_13_0._enterFight, arg_13_0)
 end
 
-function slot0._enterFight(slot0)
-	if not slot0.enterFightParam then
+function var_0_0._enterFight(arg_14_0)
+	local var_14_0 = arg_14_0.enterFightParam
+
+	if not var_14_0 then
 		return
 	end
 
-	TowerModel.instance:setRecordFightParam(slot1.towerType, slot1.towerId, slot1.layerId, slot1.difficulty, slot1.episodeId)
-	DungeonFightController.instance:enterFight(DungeonConfig.instance:getEpisodeCO(slot2).chapterId, slot2, slot1.speed or 1)
+	local var_14_1 = var_14_0.episodeId
+
+	TowerModel.instance:setRecordFightParam(var_14_0.towerType, var_14_0.towerId, var_14_0.layerId, var_14_0.difficulty, var_14_1)
+
+	local var_14_2 = var_14_0.speed or 1
+	local var_14_3 = DungeonConfig.instance:getEpisodeCO(var_14_1)
+
+	DungeonFightController.instance:enterFight(var_14_3.chapterId, var_14_1, var_14_2)
 end
 
-function slot0.startFight(slot0, slot1, slot2, slot3)
-	if not slot1 then
+function var_0_0.startFight(arg_15_0, arg_15_1, arg_15_2, arg_15_3)
+	if not arg_15_1 then
 		return
 	end
 
-	DungeonModel.instance:SetSendChapterEpisodeId(slot1.chapterId, slot1.episodeId)
-	TowerRpc.instance:sendStartTowerBattleRequest(slot1, slot2, slot3)
+	DungeonModel.instance:SetSendChapterEpisodeId(arg_15_1.chapterId, arg_15_1.episodeId)
+	TowerRpc.instance:sendStartTowerBattleRequest(arg_15_1, arg_15_2, arg_15_3)
 end
 
-function slot0.restartStage(slot0)
-	slot2 = FightModel.instance:getFightParam()
+function var_0_0.restartStage(arg_16_0)
+	local var_16_0 = {}
+	local var_16_1 = FightModel.instance:getFightParam()
 
-	slot0:startFight({
-		fightParam = slot2,
-		chapterId = slot2.chapterId,
-		episodeId = slot2.episodeId,
-		useRecord = slot2.isReplay,
-		multiplication = slot2.multiplication,
-		isRestart = true
-	})
+	var_16_0.fightParam = var_16_1
+	var_16_0.chapterId = var_16_1.chapterId
+	var_16_0.episodeId = var_16_1.episodeId
+	var_16_0.useRecord = var_16_1.isReplay
+	var_16_0.multiplication = var_16_1.multiplication
+	var_16_0.isRestart = true
+
+	arg_16_0:startFight(var_16_0)
 end
 
-function slot0.openTowerMopUpView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.TowerMopUpView, slot1)
+function var_0_0.openTowerMopUpView(arg_17_0, arg_17_1)
+	ViewMgr.instance:openView(ViewName.TowerMopUpView, arg_17_1)
 end
 
-function slot0.openTowerPermanentView(slot0, slot1)
+function var_0_0.openTowerPermanentView(arg_18_0, arg_18_1)
 	TowerPermanentModel.instance:onInit()
 	TowerPermanentModel.instance:InitData()
 
-	if slot1 and tabletool.len(slot1) > 0 then
-		slot2 = TowerConfig.instance:getPermanentEpisodeCo(slot1.layerId)
-		slot3 = slot2.stageId
+	if arg_18_1 and tabletool.len(arg_18_1) > 0 then
+		local var_18_0 = TowerConfig.instance:getPermanentEpisodeCo(arg_18_1.layerId)
+		local var_18_1 = var_18_0.stageId
+		local var_18_2 = var_18_0.index
 
-		TowerPermanentModel.instance:setCurSelectLayer(slot2.index, slot3)
-		TowerPermanentModel.instance:setCurSelectStage(slot3)
+		TowerPermanentModel.instance:setCurSelectLayer(var_18_2, var_18_1)
+		TowerPermanentModel.instance:setCurSelectStage(var_18_1)
 	end
 
 	TowerPermanentModel.instance:initStageUnFoldState()
-	ViewMgr.instance:openView(ViewName.TowerPermanentView, slot1)
+	ViewMgr.instance:openView(ViewName.TowerPermanentView, arg_18_1)
 	TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Normal)
 end
 
-function slot0.openTowerStoreView(slot0)
-	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function ()
-		ViewMgr.instance:openView(ViewName.TowerStoreView, {})
-	end, slot0)
+function var_0_0.openTowerStoreView(arg_19_0)
+	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore, function()
+		local var_20_0 = {}
+
+		ViewMgr.instance:openView(ViewName.TowerStoreView, var_20_0)
+	end, arg_19_0)
 end
 
-function slot0.openTowerHeroTrialView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.TowerHeroTrialView, slot1)
+function var_0_0.openTowerHeroTrialView(arg_21_0, arg_21_1)
+	ViewMgr.instance:openView(ViewName.TowerHeroTrialView, arg_21_1)
 end
 
-function slot0.openTowerBossTeachView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.TowerBossTeachView, slot1)
+function var_0_0.openTowerBossTeachView(arg_22_0, arg_22_1)
+	ViewMgr.instance:openView(ViewName.TowerBossTeachView, arg_22_1)
 end
 
-function slot0.openTowerTaskView(slot0, slot1)
-	slot3 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() and slot2.towerId or 1
-	slot4 = slot1 or {}
-	slot4.towerType = slot1 and slot1.towerType
-	slot4.towerId = slot1 and slot1.towerId
+function var_0_0.openTowerTaskView(arg_23_0, arg_23_1)
+	local var_23_0 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
+
+	if not var_23_0 or not var_23_0.towerId then
+		local var_23_1 = 1
+	end
+
+	local var_23_2 = arg_23_1 or {}
+
+	var_23_2.towerType = arg_23_1 and arg_23_1.towerType
+	var_23_2.towerId = arg_23_1 and arg_23_1.towerId
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Tower
-	}, function ()
-		ViewMgr.instance:openView(ViewName.TowerTaskView, uv0)
+	}, function()
+		ViewMgr.instance:openView(ViewName.TowerTaskView, var_23_2)
 	end)
 end
 
-function slot0.selectDefaultTowerTask(slot0)
-	TowerTaskModel.instance:setCurSelectTowerTypeAndId(TowerEnum.TowerType.Limited, TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() and slot1.towerId or 1)
+function var_0_0.selectDefaultTowerTask(arg_25_0)
+	local var_25_0 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
+	local var_25_1 = var_25_0 and var_25_0.towerId or 1
+
+	TowerTaskModel.instance:setCurSelectTowerTypeAndId(TowerEnum.TowerType.Limited, var_25_1)
 end
 
-function slot0.onUpdateTaskList(slot0, slot1)
-	if TowerTaskModel.instance:updateTaskInfo(slot1.taskInfo) then
+function var_0_0.onUpdateTaskList(arg_26_0, arg_26_1)
+	if TowerTaskModel.instance:updateTaskInfo(arg_26_1.taskInfo) then
 		TowerTaskModel.instance:refreshList()
 	end
 
-	slot0:dispatchEvent(TowerEvent.TowerTaskUpdated)
+	arg_26_0:dispatchEvent(TowerEvent.TowerTaskUpdated)
 end
 
-function slot0.onSetTaskList(slot0)
+function var_0_0.onSetTaskList(arg_27_0)
 	RedDotRpc.instance:sendGetRedDotInfosRequest({
 		RedDotEnum.DotNode.TowerTask
 	})
-	TowerTaskModel.instance:setTaskInfoList(TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Tower) or {})
-	TowerTaskModel.instance:refreshList(TowerTaskModel.instance.curSelectTowerType)
-	slot0:dispatchEvent(TowerEvent.TowerTaskUpdated)
+
+	local var_27_0 = TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Tower) or {}
+
+	TowerTaskModel.instance:setTaskInfoList(var_27_0)
+
+	local var_27_1 = TowerTaskModel.instance.curSelectTowerType
+
+	TowerTaskModel.instance:refreshList(var_27_1)
+	arg_27_0:dispatchEvent(TowerEvent.TowerTaskUpdated)
 end
 
-function slot0.openTowerTimeLimitLevelView(slot0, slot1)
-	ViewMgr.instance:openView(ViewName.TowerTimeLimitLevelView, slot1)
+function var_0_0.openTowerTimeLimitLevelView(arg_28_0, arg_28_1)
+	ViewMgr.instance:openView(ViewName.TowerTimeLimitLevelView, arg_28_1)
 	TowerModel.instance:setCurTowerType(TowerEnum.TowerType.Limited)
 end
 
-function slot0.getRecommendList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getRecommendList(arg_29_0, arg_29_1)
+	local var_29_0 = {}
+	local var_29_1 = lua_battle.configDict[arg_29_1]
 
-	if lua_battle.configDict[slot1] and not string.nilorempty(slot3.monsterGroupIds) then
-		for slot8, slot9 in ipairs(string.splitToNumber(slot3.monsterGroupIds, "#")) do
-			for slot14, slot15 in ipairs(string.splitToNumber(lua_monster_group.configDict[slot9].monster, "#")) do
-				if not tabletool.indexOf(slot2, lua_monster.configDict[slot15].career) then
-					table.insert(slot2, slot16)
+	if var_29_1 and not string.nilorempty(var_29_1.monsterGroupIds) then
+		local var_29_2 = string.splitToNumber(var_29_1.monsterGroupIds, "#")
+
+		for iter_29_0, iter_29_1 in ipairs(var_29_2) do
+			local var_29_3 = string.splitToNumber(lua_monster_group.configDict[iter_29_1].monster, "#")
+
+			for iter_29_2, iter_29_3 in ipairs(var_29_3) do
+				local var_29_4 = lua_monster.configDict[iter_29_3].career
+
+				if not tabletool.indexOf(var_29_0, var_29_4) then
+					table.insert(var_29_0, var_29_4)
 				end
 			end
 		end
 
-		slot2 = FightHelper.getAttributeCounter(slot4, false)
+		var_29_0 = FightHelper.getAttributeCounter(var_29_2, false)
 	end
 
-	return slot2
+	return var_29_0
 end
 
-function slot0.setPlayerPrefs(slot0, slot1, slot2)
-	if string.nilorempty(slot1) or not slot2 then
+function var_0_0.setPlayerPrefs(arg_30_0, arg_30_1, arg_30_2)
+	if string.nilorempty(arg_30_1) or not arg_30_2 then
 		return
 	end
 
-	if type(slot2) == "number" then
-		GameUtil.playerPrefsSetNumberByUserId(slot1, slot2)
+	if type(arg_30_2) == "number" then
+		GameUtil.playerPrefsSetNumberByUserId(arg_30_1, arg_30_2)
 	else
-		GameUtil.playerPrefsSetStringByUserId(slot1, slot2)
+		GameUtil.playerPrefsSetStringByUserId(arg_30_1, arg_30_2)
 	end
 
-	slot0:dispatchEvent(TowerEvent.LocalKeyChange)
+	arg_30_0:dispatchEvent(TowerEvent.LocalKeyChange)
 end
 
-function slot0.getPlayerPrefs(slot0, slot1, slot2)
-	slot3 = slot2 or ""
+function var_0_0.getPlayerPrefs(arg_31_0, arg_31_1, arg_31_2)
+	local var_31_0 = arg_31_2 or ""
 
-	if string.nilorempty(slot1) then
-		return slot3
+	if string.nilorempty(arg_31_1) then
+		return var_31_0
 	end
 
-	return (not (type(slot3) == "number") or GameUtil.playerPrefsGetNumberByUserId(slot1, slot3)) and GameUtil.playerPrefsGetStringByUserId(slot1, slot3)
+	if type(var_31_0) == "number" then
+		var_31_0 = GameUtil.playerPrefsGetNumberByUserId(arg_31_1, var_31_0)
+	else
+		var_31_0 = GameUtil.playerPrefsGetStringByUserId(arg_31_1, var_31_0)
+	end
+
+	return var_31_0
 end
 
-function slot0.isOpen(slot0)
+function var_0_0.isOpen(arg_32_0)
 	return OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Tower)
 end
 
-function slot0.isBossTowerOpen(slot0)
-	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossTowerOpen)) <= (TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0) and slot2.passLayerId or 0)
+function var_0_0.isBossTowerOpen(arg_33_0)
+	local var_33_0 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossTowerOpen)
+	local var_33_1 = TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0)
+
+	return (var_33_1 and var_33_1.passLayerId or 0) >= tonumber(var_33_0)
 end
 
-function slot0.isTimeLimitTowerOpen(slot0)
-	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TimeLimitOpenLayerNum)) <= (TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0) and slot2.passLayerId or 0)
+function var_0_0.isTimeLimitTowerOpen(arg_34_0)
+	local var_34_0 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.TimeLimitOpenLayerNum)
+	local var_34_1 = TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0)
+
+	return (var_34_1 and var_34_1.passLayerId or 0) >= tonumber(var_34_0)
 end
 
-function slot0.isTowerStoreOpen(slot0)
-	return tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.StoreOpen)) <= (TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0) and slot2.passLayerId or 0)
+function var_0_0.isTowerStoreOpen(arg_35_0)
+	local var_35_0 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.StoreOpen)
+	local var_35_1 = TowerModel.instance:getTowerInfoById(TowerEnum.TowerType.Normal, 0)
+
+	return (var_35_1 and var_35_1.passLayerId or 0) >= tonumber(var_35_0)
 end
 
-function slot0.checkMopUpReddotShow(slot0)
-	RedDotRpc.instance:clientAddRedDotGroupList({
+function var_0_0.checkMopUpReddotShow(arg_36_0)
+	local var_36_0 = TowerPermanentModel.instance:checkCanShowMopUpReddot() and 1 or 0
+	local var_36_1 = {
 		{
 			uid = 0,
 			id = RedDotEnum.DotNode.TowerMopUp,
-			value = TowerPermanentModel.instance:checkCanShowMopUpReddot() and 1 or 0
+			value = var_36_0
 		}
-	}, true)
+	}
+
+	RedDotRpc.instance:clientAddRedDotGroupList(var_36_1, true)
 end
 
-function slot0.checkReddotHasNewUpdateTower(slot0)
-	slot1 = slot0:isTimeLimitTowerOpen()
-	slot3 = TowerEnum.LockKey
+function var_0_0.checkReddotHasNewUpdateTower(arg_37_0)
+	local var_37_0 = arg_37_0:isTimeLimitTowerOpen()
+	local var_37_1 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
+	local var_37_2 = TowerEnum.LockKey
 
-	if TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() then
-		slot3 = TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewTimeLimitOpen, slot2.id, slot2, TowerEnum.LockKey)
+	if var_37_1 then
+		var_37_2 = TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewTimeLimitOpen, var_37_1.id, var_37_1, TowerEnum.LockKey)
 	end
 
-	slot4 = slot1 and slot2 and (not slot3 or slot3 == TowerEnum.LockKey)
-	slot5 = slot0:isBossTowerOpen()
-	slot6 = false
+	local var_37_3 = var_37_0 and var_37_1 and (not var_37_2 or var_37_2 == TowerEnum.LockKey)
+	local var_37_4 = arg_37_0:isBossTowerOpen()
+	local var_37_5 = false
+	local var_37_6 = TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)
 
-	for slot11, slot12 in ipairs(TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)) do
-		if TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewBossOpen, slot12.towerId, slot12, TowerEnum.LockKey) == TowerEnum.LockKey and TowerEnum.UnlockKey == TowerEnum.UnlockKey then
-			slot6 = true
+	for iter_37_0, iter_37_1 in ipairs(var_37_6) do
+		local var_37_7 = TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewBossOpen, iter_37_1.towerId, iter_37_1, TowerEnum.LockKey)
+		local var_37_8 = TowerEnum.UnlockKey
+
+		if var_37_7 == TowerEnum.LockKey and var_37_8 == TowerEnum.UnlockKey then
+			var_37_5 = true
 
 			break
 		end
 	end
 
-	return slot4 or slot6 and slot5
+	return var_37_3 or var_37_5 and var_37_4
 end
 
-function slot0.checkNewUpdateTowerRddotShow(slot0)
-	RedDotRpc.instance:clientAddRedDotGroupList({
+function var_0_0.checkNewUpdateTowerRddotShow(arg_38_0)
+	local var_38_0 = arg_38_0:checkReddotHasNewUpdateTower() and 1 or 0
+	local var_38_1 = {
 		{
 			uid = 0,
 			id = RedDotEnum.DotNode.TowerNewUpdate,
-			value = slot0:checkReddotHasNewUpdateTower() and 1 or 0
+			value = var_38_0
 		}
-	}, true)
+	}
+
+	RedDotRpc.instance:clientAddRedDotGroupList(var_38_1, true)
 end
 
-function slot0.dailyReddotRefresh(slot0)
-	slot0:checkMopUpReddotShow()
-	slot0:checkNewUpdateTowerRddotShow()
+function var_0_0.dailyReddotRefresh(arg_39_0)
+	arg_39_0:checkMopUpReddotShow()
+	arg_39_0:checkNewUpdateTowerRddotShow()
 end
 
-function slot0._onDailyRefresh(slot0)
+function var_0_0._onDailyRefresh(arg_40_0)
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Tower) then
-		TowerRpc.instance:sendGetTowerInfoRequest(slot0.towerTaskDataRequest, slot0)
+		TowerRpc.instance:sendGetTowerInfoRequest(arg_40_0.towerTaskDataRequest, arg_40_0)
 	end
 end
 
-function slot0.towerTaskDataRequest(slot0)
+function var_0_0.towerTaskDataRequest(arg_41_0)
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Tower
-	}, slot0.dailyRefresh, slot0)
+	}, arg_41_0.dailyRefresh, arg_41_0)
 end
 
-function slot0.dailyRefresh(slot0)
+function var_0_0.dailyRefresh(arg_42_0)
 	StoreRpc.instance:sendGetStoreInfosRequest(StoreEnum.TowerStore)
-	uv0.instance:dispatchEvent(TowerEvent.DailyReresh)
+	var_0_0.instance:dispatchEvent(TowerEvent.DailyReresh)
 end
 
-function slot0.saveNewUpdateTowerReddot(slot0)
-	if TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() then
-		TowerModel.instance:setLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewTimeLimitOpen, slot1.id, slot1, TowerEnum.UnlockKey)
+function var_0_0.saveNewUpdateTowerReddot(arg_43_0)
+	local var_43_0 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
+
+	if var_43_0 then
+		TowerModel.instance:setLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewTimeLimitOpen, var_43_0.id, var_43_0, TowerEnum.UnlockKey)
 	end
 
-	for slot6, slot7 in ipairs(TowerModel.instance:getTowerOpenList(TowerEnum.TowerType.Boss)) do
-		TowerModel.instance:setLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewBossOpen, slot7.towerId, slot7, TowerEnum.UnlockKey)
-	end
-end
+	local var_43_1 = TowerModel.instance:getTowerOpenList(TowerEnum.TowerType.Boss)
 
-function slot0.checkTowerIsEnd(slot0, slot1, slot2)
-	if not TowerModel.instance:getTowerOpenInfo(slot1, slot2) or slot3.status ~= TowerEnum.TowerStatus.Open then
-		MessageBoxController.instance:showSystemMsgBox(slot1 == TowerEnum.TowerType.Boss and MessageBoxIdDefine.TowerEnd or MessageBoxIdDefine.TimeLimitTowerEnd, MsgBoxEnum.BoxType.Yes, uv0.yesCallback)
+	for iter_43_0, iter_43_1 in ipairs(var_43_1) do
+		TowerModel.instance:setLocalPrefsState(TowerEnum.LocalPrefsKey.ReddotNewBossOpen, iter_43_1.towerId, iter_43_1, TowerEnum.UnlockKey)
 	end
 end
 
-function slot0.yesCallback()
+function var_0_0.checkTowerIsEnd(arg_44_0, arg_44_1, arg_44_2)
+	local var_44_0 = TowerModel.instance:getTowerOpenInfo(arg_44_1, arg_44_2)
+
+	if not var_44_0 or var_44_0.status ~= TowerEnum.TowerStatus.Open then
+		local var_44_1 = arg_44_1 == TowerEnum.TowerType.Boss and MessageBoxIdDefine.TowerEnd or MessageBoxIdDefine.TimeLimitTowerEnd
+
+		MessageBoxController.instance:showSystemMsgBox(var_44_1, MsgBoxEnum.BoxType.Yes, var_0_0.yesCallback)
+	end
+end
+
+function var_0_0.yesCallback()
 	NavigateButtonsView.homeClick()
-	uv0.instance:openMainView()
+	var_0_0.instance:openMainView()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

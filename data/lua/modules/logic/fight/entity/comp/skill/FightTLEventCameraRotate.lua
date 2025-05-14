@@ -1,14 +1,18 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventCameraRotate", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventCameraRotate", package.seeall)
 
-slot0 = class("FightTLEventCameraRotate", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventCameraRotate", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	local var_1_0 = tonumber(arg_1_3[1]) or 0
+	local var_1_1 = tonumber(arg_1_3[2]) or 0
+	local var_1_2 = arg_1_3[3] == "1"
+
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		slot7 = GameSceneMgr.instance:getCurScene().camera
+		local var_1_3 = GameSceneMgr.instance:getCurScene().camera
 
-		slot7:setEaseTime(slot3[3] == "1" and 0 or slot2)
-		slot7:setRotate(tonumber(slot3[1]) or 0, tonumber(slot3[2]) or 0)
+		var_1_3:setEaseTime(var_1_2 and 0 or arg_1_2)
+		var_1_3:setRotate(var_1_0, var_1_1)
 	end
 end
 
-return slot0
+return var_0_0

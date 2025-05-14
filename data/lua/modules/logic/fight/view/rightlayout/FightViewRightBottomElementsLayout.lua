@@ -1,66 +1,69 @@
-module("modules.logic.fight.view.rightlayout.FightViewRightBottomElementsLayout", package.seeall)
+﻿module("modules.logic.fight.view.rightlayout.FightViewRightBottomElementsLayout", package.seeall)
 
-slot0 = class("FightViewRightBottomElementsLayout", BaseView)
+local var_0_0 = class("FightViewRightBottomElementsLayout", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0.goRightBottomRoot = gohelper.findChild(slot0.viewGO, "root/right_elements/bottom")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.goRightBottomRoot = gohelper.findChild(arg_1_0.viewGO, "root/right_elements/bottom")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RightBottomElements_ShowElement, slot0.showElement, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RightBottomElements_HideElement, slot0.hideElement, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.RightBottomElements_ShowElement, arg_2_0.showElement, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.RightBottomElements_HideElement, arg_2_0.hideElement, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0.showElementDict = {}
-	slot0.elementGoDict = slot0:getUserDataTb_()
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0.showElementDict = {}
+	arg_4_0.elementGoDict = arg_4_0:getUserDataTb_()
 
-	for slot4, slot5 in pairs(FightRightBottomElementEnum.Elements) do
-		slot6 = gohelper.findChild(slot0.goRightBottomRoot, FightRightBottomElementEnum.ElementsNodeName[slot5])
-		slot0.elementGoDict[slot5] = slot6
+	for iter_4_0, iter_4_1 in pairs(FightRightBottomElementEnum.Elements) do
+		local var_4_0 = gohelper.findChild(arg_4_0.goRightBottomRoot, FightRightBottomElementEnum.ElementsNodeName[iter_4_1])
 
-		gohelper.setAsLastSibling(slot6)
-		gohelper.setActive(slot6, false)
+		arg_4_0.elementGoDict[iter_4_1] = var_4_0
 
-		slot8 = FightRightBottomElementEnum.ElementsSizeDict[slot5]
+		gohelper.setAsLastSibling(var_4_0)
+		gohelper.setActive(var_4_0, false)
 
-		recthelper.setSize(slot6:GetComponent(gohelper.Type_RectTransform), slot8.x, slot8.y)
+		local var_4_1 = var_4_0:GetComponent(gohelper.Type_RectTransform)
+		local var_4_2 = FightRightBottomElementEnum.ElementsSizeDict[iter_4_1]
+
+		recthelper.setSize(var_4_1, var_4_2.x, var_4_2.y)
 	end
 end
 
-function slot0.getElementContainer(slot0, slot1)
-	return slot0.elementGoDict[slot1]
+function var_0_0.getElementContainer(arg_5_0, arg_5_1)
+	return arg_5_0.elementGoDict[arg_5_1]
 end
 
-function slot0.showElement(slot0, slot1)
-	slot0.showElementDict[slot1] = true
+function var_0_0.showElement(arg_6_0, arg_6_1)
+	arg_6_0.showElementDict[arg_6_1] = true
 
-	slot0:refreshLayout()
+	arg_6_0:refreshLayout()
 end
 
-function slot0.hideElement(slot0, slot1)
-	slot0.showElementDict[slot1] = nil
+function var_0_0.hideElement(arg_7_0, arg_7_1)
+	arg_7_0.showElementDict[arg_7_1] = nil
 
-	slot0:refreshLayout()
+	arg_7_0:refreshLayout()
 end
 
-function slot0.refreshLayout(slot0)
-	for slot4, slot5 in ipairs(FightRightBottomElementEnum.Priority) do
-		slot6 = slot0.showElementDict[slot5]
+function var_0_0.refreshLayout(arg_8_0)
+	for iter_8_0, iter_8_1 in ipairs(FightRightBottomElementEnum.Priority) do
+		local var_8_0 = arg_8_0.showElementDict[iter_8_1]
 
-		gohelper.setActive(slot0.elementGoDict[slot5], slot6)
+		gohelper.setActive(arg_8_0.elementGoDict[iter_8_1], var_8_0)
 
-		if slot6 then
-			gohelper.setAsFirstSibling(slot0.elementGoDict[slot5])
+		if var_8_0 then
+			gohelper.setAsFirstSibling(arg_8_0.elementGoDict[iter_8_1])
 		end
 	end
 end
 
-return slot0
+return var_0_0

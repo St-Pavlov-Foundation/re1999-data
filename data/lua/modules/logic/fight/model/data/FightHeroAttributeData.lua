@@ -1,15 +1,15 @@
-module("modules.logic.fight.model.data.FightHeroAttributeData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightHeroAttributeData", package.seeall)
 
-slot0 = FightDataClass("FightHeroAttributeData")
+local var_0_0 = FightDataClass("FightHeroAttributeData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.hp = slot1.hp
-	slot0.attack = slot1.attack
-	slot0.defense = slot1.defense
-	slot0.mdefense = slot1.mdefense
-	slot0.technic = slot1.technic
-	slot0.multiHpIdx = slot1.multiHpIdx
-	slot0.multiHpNum = slot1.multiHpNum
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.hp = arg_1_1.hp
+	arg_1_0.attack = arg_1_1.attack
+	arg_1_0.defense = arg_1_1.defense
+	arg_1_0.mdefense = arg_1_1.mdefense
+	arg_1_0.technic = arg_1_1.technic
+	arg_1_0.multiHpIdx = arg_1_1.multiHpIdx
+	arg_1_0.multiHpNum = arg_1_1.multiHpNum
 end
 
-return slot0
+return var_0_0

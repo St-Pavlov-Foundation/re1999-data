@@ -1,86 +1,88 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.skill.SkillBase", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.skill.SkillBase", package.seeall)
 
-slot0 = class("SkillBase")
+local var_0_0 = class("SkillBase")
 
-function slot0.ctor(slot0)
-	slot0._id = 0
-	slot0._configId = 0
-	slot0._cd = 0
-	slot0._entity = nil
-	slot0._skillType = LengZhou6Enum.SkillType.passive
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._id = 0
+	arg_1_0._configId = 0
+	arg_1_0._cd = 0
+	arg_1_0._entity = nil
+	arg_1_0._skillType = LengZhou6Enum.SkillType.passive
 end
 
-function slot0.init(slot0, slot1, slot2)
-	slot0._id = slot1
-	slot0._configId = slot2
-	slot0._config = LengZhou6Config.instance:getEliminateBattleSkill(slot2)
-	slot0._cd = slot0._config.cd
+function var_0_0.init(arg_2_0, arg_2_1, arg_2_2)
+	arg_2_0._id = arg_2_1
+	arg_2_0._configId = arg_2_2
+	arg_2_0._config = LengZhou6Config.instance:getEliminateBattleSkill(arg_2_2)
+	arg_2_0._cd = arg_2_0._config.cd
 
-	slot0:_initEffect()
+	arg_2_0:_initEffect()
 end
 
-function slot0.getConfig(slot0)
-	return slot0._config
+function var_0_0.getConfig(arg_3_0)
+	return arg_3_0._config
 end
 
-function slot0.getConfigId(slot0)
-	return slot0._configId
+function var_0_0.getConfigId(arg_4_0)
+	return arg_4_0._configId
 end
 
-function slot0._initEffect(slot0)
-	slot0._triggerPoint = slot0._config.triggerPoint
+function var_0_0._initEffect(arg_5_0)
+	local var_5_0 = arg_5_0._config.effect
 
-	if not string.nilorempty(slot0._config.effect) then
-		slot0._effect = string.split(slot1, "#")
+	arg_5_0._triggerPoint = arg_5_0._config.triggerPoint
+
+	if not string.nilorempty(var_5_0) then
+		arg_5_0._effect = string.split(var_5_0, "#")
 	end
 end
 
-function slot0.getEffect(slot0)
-	return slot0._effect
+function var_0_0.getEffect(arg_6_0)
+	return arg_6_0._effect
 end
 
-function slot0.initEntity(slot0, slot1)
-	slot0._entity = slot1
+function var_0_0.initEntity(arg_7_0, arg_7_1)
+	arg_7_0._entity = arg_7_1
 end
 
-function slot0.getEntityCamp(slot0)
-	if slot0._entity then
-		return slot0._entity:getCamp()
+function var_0_0.getEntityCamp(arg_8_0)
+	if arg_8_0._entity then
+		return arg_8_0._entity:getCamp()
 	end
 
 	return -1
 end
 
-function slot0.getSkillType(slot0)
-	return slot0._skillType
+function var_0_0.getSkillType(arg_9_0)
+	return arg_9_0._skillType
 end
 
-function slot0.getCd(slot0)
-	return slot0._cd
+function var_0_0.getCd(arg_10_0)
+	return arg_10_0._cd
 end
 
-function slot0.setCd(slot0, slot1)
-	slot0._cd = slot1
+function var_0_0.setCd(arg_11_0, arg_11_1)
+	arg_11_0._cd = arg_11_1
 
-	if slot0._cd < 0 then
-		slot0._cd = 0
+	if arg_11_0._cd < 0 then
+		arg_11_0._cd = 0
 	end
 end
 
-function slot0.updateCD(slot0)
-	slot0._cd = slot0._cd - 1
+function var_0_0.updateCD(arg_12_0)
+	arg_12_0._cd = arg_12_0._cd - 1
 
-	if slot0._cd < 0 then
-		slot0._cd = 0
+	if arg_12_0._cd < 0 then
+		arg_12_0._cd = 0
 	end
 end
 
-function slot0.execute(slot0)
-	if slot0._cd == 0 then
-		slot0._cd = slot0._config.cd
+function var_0_0.execute(arg_13_0)
+	if arg_13_0._cd == 0 then
+		arg_13_0._cd = arg_13_0._config.cd
 
 		return true
 	end
 end
 
-return slot0
+return var_0_0

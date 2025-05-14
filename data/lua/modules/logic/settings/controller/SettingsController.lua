@@ -1,47 +1,55 @@
-module("modules.logic.settings.controller.SettingsController", package.seeall)
+﻿module("modules.logic.settings.controller.SettingsController", package.seeall)
 
-slot0 = class("SettingsController", BaseController)
+local var_0_0 = class("SettingsController", BaseController)
 
-function slot0.openView(slot0)
-	ViewMgr.instance:openView(ViewName.SettingsView, {
+function var_0_0.openView(arg_1_0)
+	local var_1_0 = {
 		cateList = SettingsModel.instance:getSettingsCategoryList()
-	})
+	}
+
+	ViewMgr.instance:openView(ViewName.SettingsView, var_1_0)
 end
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_2_0)
+	return
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_3_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
-	AudioMgr.instance:registerCallback(AudioMgr.Evt_ChangeFinish, slot0._onChangeFinish, slot0)
-	LoginController.instance:registerCallback(LoginEvent.OnLoginEnterMainScene, slot0._onLoginFinish, slot0)
+function var_0_0.addConstEvents(arg_4_0)
+	AudioMgr.instance:registerCallback(AudioMgr.Evt_ChangeFinish, arg_4_0._onChangeFinish, arg_4_0)
+	LoginController.instance:registerCallback(LoginEvent.OnLoginEnterMainScene, arg_4_0._onLoginFinish, arg_4_0)
 end
 
-function slot0.reInit(slot0)
-	slot0:checkRecordLogout()
+function var_0_0.reInit(arg_5_0)
+	arg_5_0:checkRecordLogout()
 end
 
-function slot0.changeLangTxt(slot0)
+function var_0_0.changeLangTxt(arg_6_0)
 	ViewMgr.instance:closeAllViews({
 		ViewName.SettingsView
 	})
 	ViewDestroyMgr.instance:destroyImmediately()
-	GameGCMgr.instance:dispatchEvent(GameGCEvent.ResGC, slot0)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.ResGC, arg_6_0)
 	ViewMgr.instance:openView(ViewName.MainView)
-	uv0.instance:dispatchEvent(SettingsEvent.OnChangeLangTxt)
+	var_0_0.instance:dispatchEvent(SettingsEvent.OnChangeLangTxt)
 end
 
-function slot0.getStoryVoiceType(slot0)
-	if PlayerPrefsHelper.getString(PlayerPrefsKey.VoiceTypeKey_Story) == nil then
-		PlayerPrefsHelper.setString(PlayerPrefsKey.VoiceTypeKey_Story, GameConfig:GetCurVoiceShortcut())
+function var_0_0.getStoryVoiceType(arg_7_0)
+	local var_7_0 = PlayerPrefsHelper.getString(PlayerPrefsKey.VoiceTypeKey_Story)
+
+	if var_7_0 == nil then
+		var_7_0 = GameConfig:GetCurVoiceShortcut()
+
+		PlayerPrefsHelper.setString(PlayerPrefsKey.VoiceTypeKey_Story, var_7_0)
 	end
 
-	return slot1
+	return var_7_0
 end
 
-function slot0.checkRecordLogout(slot0)
+function var_0_0.checkRecordLogout(arg_8_0)
 	logNormal("SettingsController:checkRecordLogout()")
 
 	if not SDKMgr.isSupportRecord or not SDKMgr.instance:isSupportRecord() then
@@ -55,22 +63,31 @@ function slot0.checkRecordLogout(slot0)
 	SDKMgr.instance:hideRecordBubble()
 end
 
-function slot0._onLoginFinish(slot0)
+function var_0_0._onLoginFinish(arg_9_0)
 	logNormal("SettingsController:_onLoginFinish()")
 
-	if SettingsShowHelper.canShowRecordVideo() and SettingsModel.instance:getRecordVideo() then
+	local var_9_0 = SettingsModel.instance:getRecordVideo()
+
+	if SettingsShowHelper.canShowRecordVideo() and var_9_0 then
 		SDKMgr.instance:showRecordBubble()
 	end
 
-	if SDKMgr.instance:isEmulator() and PlayerPrefsHelper.getNumber(PlayerPrefsKey.EmulatorVideoCompatible, 0) ~= 2 then
-		PlayerPrefsHelper.setNumber(PlayerPrefsKey.EmulatorVideoCompatible, slot3)
-		SettingsModel.instance:setVideoCompatible(slot3 == 1)
+	if SDKMgr.instance:isEmulator() then
+		local var_9_1 = PlayerPrefsHelper.getNumber(PlayerPrefsKey.EmulatorVideoCompatible, 0)
+		local var_9_2 = 2
+
+		if var_9_1 ~= var_9_2 then
+			PlayerPrefsHelper.setNumber(PlayerPrefsKey.EmulatorVideoCompatible, var_9_2)
+			SettingsModel.instance:setVideoCompatible(var_9_2 == 1)
+		end
 	end
 end
 
-function slot0.checkSwitchRecordVideo(slot0)
+function var_0_0.checkSwitchRecordVideo(arg_10_0)
 	if SettingsShowHelper.canShowRecordVideo() then
-		if not SettingsModel.instance:getRecordVideo() then
+		local var_10_0 = not SettingsModel.instance:getRecordVideo()
+
+		if var_10_0 then
 			if BootNativeUtil.isAndroid() then
 				SDKMgr.instance:requestReadAndWritePermission()
 			end
@@ -86,7 +103,7 @@ function slot0.checkSwitchRecordVideo(slot0)
 			SDKMgr.instance:hideRecordBubble()
 		end
 
-		SettingsModel.instance:setRecordVideo(slot1)
+		SettingsModel.instance:setRecordVideo(var_10_0)
 
 		return true
 	end
@@ -94,10 +111,10 @@ function slot0.checkSwitchRecordVideo(slot0)
 	return false
 end
 
-function slot0._onChangeFinish(slot0)
-	slot0._inSwitch = false
+function var_0_0._onChangeFinish(arg_11_0)
+	arg_11_0._inSwitch = false
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

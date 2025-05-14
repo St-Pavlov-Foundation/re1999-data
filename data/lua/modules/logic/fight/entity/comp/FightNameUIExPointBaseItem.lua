@@ -1,7 +1,8 @@
-module("modules.logic.fight.entity.comp.FightNameUIExPointBaseItem", package.seeall)
+﻿module("modules.logic.fight.entity.comp.FightNameUIExPointBaseItem", package.seeall)
 
-slot0 = class("FightNameUIExPointBaseItem", UserDataDispose)
-slot0.AnimName = {
+local var_0_0 = class("FightNameUIExPointBaseItem", UserDataDispose)
+
+var_0_0.AnimName = {
 	LockClose = "lock_close",
 	Lost = "fightname_expoint_out",
 	Add = "fightname_expoint_in",
@@ -13,336 +14,354 @@ slot0.AnimName = {
 	Client = "fightname_expoint_flash",
 	UsingSkillExplosion = "withholding_open"
 }
-slot0.AnimNameDuration = {
-	[slot0.AnimName.Add] = 0.5
+var_0_0.AnimNameDuration = {
+	[var_0_0.AnimName.Add] = 0.5
 }
-slot0.ExPointType = {
+var_0_0.ExPointType = {
 	Extra = 2,
 	Normal = 1
 }
 
-function slot0.getType(slot0)
-	return uv0.ExPointType.Normal
+function var_0_0.getType(arg_1_0)
+	return var_0_0.ExPointType.Normal
 end
 
-function slot0.init(slot0, slot1)
-	slot0:__onInit()
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0:__onInit()
 
-	slot0.exPointGo = slot1
+	arg_2_0.exPointGo = arg_2_1
 
-	gohelper.setActive(slot0.exPointGo, true)
+	gohelper.setActive(arg_2_0.exPointGo, true)
 
-	slot0.goFull = gohelper.findChild(slot0.exPointGo, "full")
-	slot0.imageFull = slot0.goFull:GetComponent(gohelper.Type_Image)
+	arg_2_0.goFull = gohelper.findChild(arg_2_0.exPointGo, "full")
+	arg_2_0.imageFull = arg_2_0.goFull:GetComponent(gohelper.Type_Image)
 
-	slot0:_initEffectNode()
+	arg_2_0:_initEffectNode()
 
-	slot0.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0.exPointGo)
-	slot0.animator = slot0.exPointGo:GetComponent(gohelper.Type_Animator)
-	slot0.state = FightEnum.ExPointState.Empty
+	arg_2_0.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_2_0.exPointGo)
+	arg_2_0.animator = arg_2_0.exPointGo:GetComponent(gohelper.Type_Animator)
+	arg_2_0.state = FightEnum.ExPointState.Empty
 
-	slot0:initHandle()
+	arg_2_0:initHandle()
 end
 
-function slot0._initEffectNode(slot0)
-	slot0.goEffectExPoint = gohelper.findChild(slot0.exPointGo, "effectexpoint")
-	slot0.goEffectIn = gohelper.findChild(slot0.goEffectExPoint, "in")
-	slot0.goEffectLoop = gohelper.findChild(slot0.goEffectExPoint, "loop")
-	slot0.goEffectOut = gohelper.findChild(slot0.goEffectExPoint, "out")
-	slot0.goEffectAll = gohelper.findChild(slot0.goEffectExPoint, "all")
-	slot0.goEffectWithHolding = gohelper.findChild(slot0.goEffectExPoint, "withholding")
-	slot0.goEffectLock = gohelper.findChild(slot0.goEffectExPoint, "lock")
+function var_0_0._initEffectNode(arg_3_0)
+	arg_3_0.goEffectExPoint = gohelper.findChild(arg_3_0.exPointGo, "effectexpoint")
+	arg_3_0.goEffectIn = gohelper.findChild(arg_3_0.goEffectExPoint, "in")
+	arg_3_0.goEffectLoop = gohelper.findChild(arg_3_0.goEffectExPoint, "loop")
+	arg_3_0.goEffectOut = gohelper.findChild(arg_3_0.goEffectExPoint, "out")
+	arg_3_0.goEffectAll = gohelper.findChild(arg_3_0.goEffectExPoint, "all")
+	arg_3_0.goEffectWithHolding = gohelper.findChild(arg_3_0.goEffectExPoint, "withholding")
+	arg_3_0.goEffectLock = gohelper.findChild(arg_3_0.goEffectExPoint, "lock")
 end
 
-function slot0.resetToEmpty(slot0)
-	slot0.animatorPlayer:Stop()
+function var_0_0.resetToEmpty(arg_4_0)
+	arg_4_0.animatorPlayer:Stop()
 
-	slot0.animator.enabled = false
-	slot0.imageFull.color = Color.white
+	arg_4_0.animator.enabled = false
+	arg_4_0.imageFull.color = Color.white
 
-	gohelper.setActive(slot0.goFull, false)
-	gohelper.setActive(slot0.goEffectIn, false)
-	gohelper.setActive(slot0.goEffectLoop, false)
-	gohelper.setActive(slot0.goEffectOut, false)
-	gohelper.setActive(slot0.goEffectAll, false)
-	gohelper.setActive(slot0.goEffectWithHolding, false)
-	gohelper.setActive(slot0.goEffectLock, false)
+	gohelper.setActive(arg_4_0.goFull, false)
+	gohelper.setActive(arg_4_0.goEffectIn, false)
+	gohelper.setActive(arg_4_0.goEffectLoop, false)
+	gohelper.setActive(arg_4_0.goEffectOut, false)
+	gohelper.setActive(arg_4_0.goEffectAll, false)
+	gohelper.setActive(arg_4_0.goEffectWithHolding, false)
+	gohelper.setActive(arg_4_0.goEffectLock, false)
 end
 
-function slot0.setIndex(slot0, slot1)
-	slot0.index = slot1
+function var_0_0.setIndex(arg_5_0, arg_5_1)
+	arg_5_0.index = arg_5_1
 end
 
-function slot0.setMgr(slot0, slot1)
-	slot0.mgr = slot1
+function var_0_0.setMgr(arg_6_0, arg_6_1)
+	arg_6_0.mgr = arg_6_1
 end
 
-function slot0.playAnimToLastFrame(slot0, slot1)
-	slot0.animator.enabled = true
+function var_0_0.playAnimToLastFrame(arg_7_0, arg_7_1)
+	arg_7_0.animator.enabled = true
 
-	slot0.animatorPlayer:Stop()
-	slot0.animator:Play(slot1, 0, 1)
+	arg_7_0.animatorPlayer:Stop()
+	arg_7_0.animator:Play(arg_7_1, 0, 1)
 end
 
-function slot0.initHandle(slot0)
-	slot0.directSetStateHandleDict = {
-		[FightEnum.ExPointState.Empty] = slot0.directSetEmptyState,
-		[FightEnum.ExPointState.Server] = slot0.directSetServerState,
-		[FightEnum.ExPointState.Client] = slot0.directSetClientState,
-		[FightEnum.ExPointState.ServerFull] = slot0.directSetServerFullState,
-		[FightEnum.ExPointState.UsingUnique] = slot0.directSetUsingUniqueState,
-		[FightEnum.ExPointState.Lock] = slot0.directSetLockState,
-		[FightEnum.ExPointState.Stored] = slot0.directSetStoredState
+function var_0_0.initHandle(arg_8_0)
+	arg_8_0.directSetStateHandleDict = {
+		[FightEnum.ExPointState.Empty] = arg_8_0.directSetEmptyState,
+		[FightEnum.ExPointState.Server] = arg_8_0.directSetServerState,
+		[FightEnum.ExPointState.Client] = arg_8_0.directSetClientState,
+		[FightEnum.ExPointState.ServerFull] = arg_8_0.directSetServerFullState,
+		[FightEnum.ExPointState.UsingUnique] = arg_8_0.directSetUsingUniqueState,
+		[FightEnum.ExPointState.Lock] = arg_8_0.directSetLockState,
+		[FightEnum.ExPointState.Stored] = arg_8_0.directSetStoredState
 	}
-	slot0.switchToStateHandleDict = {
-		[FightEnum.ExPointState.Empty] = slot0.switchToEmptyState,
-		[FightEnum.ExPointState.Server] = slot0.switchToServerState,
-		[FightEnum.ExPointState.Client] = slot0.switchToClientState,
-		[FightEnum.ExPointState.ServerFull] = slot0.switchToServerFullState,
-		[FightEnum.ExPointState.UsingUnique] = slot0.switchToUsingUniqueState,
-		[FightEnum.ExPointState.Lock] = slot0.switchToLockState,
-		[FightEnum.ExPointState.Stored] = slot0.switchToStoredState
+	arg_8_0.switchToStateHandleDict = {
+		[FightEnum.ExPointState.Empty] = arg_8_0.switchToEmptyState,
+		[FightEnum.ExPointState.Server] = arg_8_0.switchToServerState,
+		[FightEnum.ExPointState.Client] = arg_8_0.switchToClientState,
+		[FightEnum.ExPointState.ServerFull] = arg_8_0.switchToServerFullState,
+		[FightEnum.ExPointState.UsingUnique] = arg_8_0.switchToUsingUniqueState,
+		[FightEnum.ExPointState.Lock] = arg_8_0.switchToLockState,
+		[FightEnum.ExPointState.Stored] = arg_8_0.switchToStoredState
 	}
 end
 
-function slot0.updateExPoint(slot0)
-	slot0:directSetState(slot0.mgr:getPointCurState(slot0.index))
+function var_0_0.updateExPoint(arg_9_0)
+	local var_9_0 = arg_9_0.mgr:getPointCurState(arg_9_0.index)
+
+	arg_9_0:directSetState(var_9_0)
 end
 
-function slot0.switchToNextState(slot0)
-	if not slot0.nextState then
+function var_0_0.switchToNextState(arg_10_0)
+	if not arg_10_0.nextState then
 		return
 	end
 
-	slot0:stopSwitchToNextState()
+	arg_10_0:stopSwitchToNextState()
 
-	slot0.nextState = nil
+	local var_10_0 = arg_10_0.nextState
 
-	slot0:directSetState(slot0.nextState)
+	arg_10_0.nextState = nil
+
+	arg_10_0:directSetState(var_10_0)
 end
 
-function slot0.setNextState(slot0, slot1)
-	slot0.nextState = slot1
+function var_0_0.setNextState(arg_11_0, arg_11_1)
+	arg_11_0.nextState = arg_11_1
 
-	slot0:log("set next state : " .. slot1)
+	arg_11_0:log("set next state : " .. arg_11_1)
 end
 
-function slot0.delaySwitchToNextState(slot0, slot1, slot2)
-	slot0:stopSwitchToNextState()
-	slot0:setNextState(slot1)
-	TaskDispatcher.runDelay(slot0.switchToNextState, slot0, slot2)
+function var_0_0.delaySwitchToNextState(arg_12_0, arg_12_1, arg_12_2)
+	arg_12_0:stopSwitchToNextState()
+	arg_12_0:setNextState(arg_12_1)
+	TaskDispatcher.runDelay(arg_12_0.switchToNextState, arg_12_0, arg_12_2)
 end
 
-function slot0.stopSwitchToNextState(slot0)
-	TaskDispatcher.cancelTask(slot0.switchToNextState, slot0)
+function var_0_0.stopSwitchToNextState(arg_13_0)
+	TaskDispatcher.cancelTask(arg_13_0.switchToNextState, arg_13_0)
 end
 
-function slot0.log(slot0, slot1)
+function var_0_0.log(arg_14_0, arg_14_1)
+	return
 end
 
-function slot0.directSetState(slot0, slot1)
-	slot0:switchToNextState()
-	slot0:log("direct set state : " .. slot1)
+function var_0_0.directSetState(arg_15_0, arg_15_1)
+	arg_15_0:switchToNextState()
+	arg_15_0:log("direct set state : " .. arg_15_1)
 
-	slot0.state = slot1
+	local var_15_0 = arg_15_0.state
 
-	slot0.directSetStateHandleDict[slot0.state](slot0, slot0.state)
+	arg_15_0.state = arg_15_1
+
+	arg_15_0.directSetStateHandleDict[arg_15_0.state](arg_15_0, var_15_0)
 end
 
-function slot0.switchToState(slot0, slot1)
-	slot0:switchToNextState()
-	slot0:log("switch to state : " .. slot1)
+function var_0_0.switchToState(arg_16_0, arg_16_1)
+	arg_16_0:switchToNextState()
+	arg_16_0:log("switch to state : " .. arg_16_1)
 
-	slot0.state = slot1
+	local var_16_0 = arg_16_0.state
 
-	slot0.switchToStateHandleDict[slot0.state](slot0, slot0.state)
+	arg_16_0.state = arg_16_1
+
+	arg_16_0.switchToStateHandleDict[arg_16_0.state](arg_16_0, var_16_0)
 end
 
-function slot0.getCurState(slot0)
-	return slot0.state
+function var_0_0.getCurState(arg_17_0)
+	return arg_17_0.state
 end
 
-function slot0.playAnim(slot0, slot1, slot2, slot3, slot4)
-	slot0:setNextState(slot4 or slot0.mgr:getPointCurState(slot0.index))
+function var_0_0.playAnim(arg_18_0, arg_18_1, arg_18_2, arg_18_3, arg_18_4)
+	arg_18_0:setNextState(arg_18_4 or arg_18_0.mgr:getPointCurState(arg_18_0.index))
 
-	if slot0.exPointGo.activeInHierarchy then
-		slot0.animator.enabled = true
+	arg_18_2 = arg_18_2 or arg_18_0.switchToNextState
+	arg_18_3 = arg_18_3 or arg_18_0
 
-		slot0.animatorPlayer:Play(slot1, slot2 or slot0.switchToNextState, slot3 or slot0)
+	if arg_18_0.exPointGo.activeInHierarchy then
+		arg_18_0.animator.enabled = true
+
+		arg_18_0.animatorPlayer:Play(arg_18_1, arg_18_2, arg_18_3)
 	else
-		slot0:switchToNextState()
+		arg_18_0:switchToNextState()
 	end
 end
 
-function slot0.playAnimNoCallback(slot0, slot1)
-	if slot0.exPointGo.activeInHierarchy then
-		slot0.animator.enabled = true
+function var_0_0.playAnimNoCallback(arg_19_0, arg_19_1)
+	if arg_19_0.exPointGo.activeInHierarchy then
+		arg_19_0.animator.enabled = true
 
-		slot0.animatorPlayer:Play(slot1)
+		arg_19_0.animatorPlayer:Play(arg_19_1)
 	end
 end
 
-function slot0.playAddPointEffect(slot0, slot1, slot2)
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.playAddPointEffect(arg_20_0, arg_20_1, arg_20_2)
+	arg_20_1 = arg_20_1 or FightEnum.ExPointState.Server
 
-	if slot2 then
-		slot0:setNextState(slot1 or FightEnum.ExPointState.Server)
-		slot0:playAnimNoCallback(uv0.AnimName.Add)
-		TaskDispatcher.runDelay(slot0.switchToNextState, slot0, slot2)
+	gohelper.setActive(arg_20_0.goFull, true)
+
+	if arg_20_2 then
+		arg_20_0:setNextState(arg_20_1)
+		arg_20_0:playAnimNoCallback(var_0_0.AnimName.Add)
+		TaskDispatcher.runDelay(arg_20_0.switchToNextState, arg_20_0, arg_20_2)
 	else
-		slot0:playAnim(uv0.AnimName.Add, slot0.switchToNextState, slot0, slot1)
+		arg_20_0:playAnim(var_0_0.AnimName.Add, arg_20_0.switchToNextState, arg_20_0, arg_20_1)
 	end
 
-	if FightBuffHelper.checkPlayDuDuGuAddExPointEffect(slot0.mgr.entity) then
-		slot7 = "v2a3_ddg/ddg_innate_03"
-		slot8 = ModuleEnum.SpineHangPointRoot
+	local var_20_0 = arg_20_0.mgr.entity
 
-		if lua_fight_sp_effect_ddg.configDict[slot3:getMO().skin] then
-			slot7 = slot6.addExPointEffect
-			slot8 = slot6.addExPointHang
+	if FightBuffHelper.checkPlayDuDuGuAddExPointEffect(var_20_0) then
+		local var_20_1 = var_20_0:getMO().skin
+		local var_20_2 = lua_fight_sp_effect_ddg.configDict[var_20_1]
+		local var_20_3 = "v2a3_ddg/ddg_innate_03"
+		local var_20_4 = ModuleEnum.SpineHangPointRoot
+
+		if var_20_2 then
+			var_20_3 = var_20_2.addExPointEffect
+			var_20_4 = var_20_2.addExPointHang
 		end
 
-		slot3.uniqueEffect:addHangEffect(slot7, slot8, nil, 1):setLocalPos(0, 0, 0)
+		var_20_0.uniqueEffect:addHangEffect(var_20_3, var_20_4, nil, 1):setLocalPos(0, 0, 0)
 	end
 end
 
-function slot0.playRemoveStoredEffect(slot0)
-	gohelper.setActive(slot0.goFull, true)
-	slot0:playAnim(uv0.AnimName.StoredLost)
+function var_0_0.playRemoveStoredEffect(arg_21_0)
+	gohelper.setActive(arg_21_0.goFull, true)
+	arg_21_0:playAnim(var_0_0.AnimName.StoredLost)
 end
 
-function slot0.directSetEmptyState(slot0, slot1)
-	slot0:resetToEmpty()
+function var_0_0.directSetEmptyState(arg_22_0, arg_22_1)
+	arg_22_0:resetToEmpty()
 end
 
-function slot0.directSetServerState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.directSetServerState(arg_23_0, arg_23_1)
+	arg_23_0:resetToEmpty()
+	gohelper.setActive(arg_23_0.goFull, true)
 end
 
-function slot0.directSetClientState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.directSetClientState(arg_24_0, arg_24_1)
+	arg_24_0:resetToEmpty()
+	gohelper.setActive(arg_24_0.goFull, true)
 
-	slot0.animator.enabled = true
+	arg_24_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.Client)
+	arg_24_0.animatorPlayer:Play(var_0_0.AnimName.Client)
 end
 
-function slot0.directSetServerFullState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
-	slot0:playAnimToLastFrame(uv0.AnimName.Loop)
+function var_0_0.directSetServerFullState(arg_25_0, arg_25_1)
+	arg_25_0:resetToEmpty()
+	gohelper.setActive(arg_25_0.goFull, true)
+	arg_25_0:playAnimToLastFrame(var_0_0.AnimName.Loop)
 end
 
-function slot0.directSetUsingUniqueState(slot0, slot1)
-	if slot1 == slot0.state then
+function var_0_0.directSetUsingUniqueState(arg_26_0, arg_26_1)
+	if arg_26_1 == arg_26_0.state then
 		return
 	end
 
-	slot0:resetToEmpty()
+	arg_26_0:resetToEmpty()
 
-	slot0.animator.enabled = true
+	arg_26_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.UsingSkillExplosion)
+	arg_26_0.animatorPlayer:Play(var_0_0.AnimName.UsingSkillExplosion)
 end
 
-function slot0.directSetLockState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, false)
-	slot0:playAnimToLastFrame(uv0.AnimName.LockOpen)
+function var_0_0.directSetLockState(arg_27_0, arg_27_1)
+	arg_27_0:resetToEmpty()
+	gohelper.setActive(arg_27_0.goFull, false)
+	arg_27_0:playAnimToLastFrame(var_0_0.AnimName.LockOpen)
 end
 
-function slot0.directSetStoredState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, false)
-	slot0:playAnimToLastFrame(uv0.AnimName.StoredAdd)
+function var_0_0.directSetStoredState(arg_28_0, arg_28_1)
+	arg_28_0:resetToEmpty()
+	gohelper.setActive(arg_28_0.goFull, false)
+	arg_28_0:playAnimToLastFrame(var_0_0.AnimName.StoredAdd)
 end
 
-function slot0.switchToEmptyState(slot0, slot1)
-	slot0:resetToEmpty()
+function var_0_0.switchToEmptyState(arg_29_0, arg_29_1)
+	arg_29_0:resetToEmpty()
 
-	if slot1 == FightEnum.ExPointState.Lock then
-		slot0.animator.enabled = true
+	if arg_29_1 == FightEnum.ExPointState.Lock then
+		arg_29_0.animator.enabled = true
 
-		slot0.animatorPlayer:Play(uv0.AnimName.LockClose)
-	elseif slot1 == FightEnum.ExPointState.Lock then
-		slot0.animator.enabled = true
+		arg_29_0.animatorPlayer:Play(var_0_0.AnimName.LockClose)
+	elseif arg_29_1 == FightEnum.ExPointState.Lock then
+		arg_29_0.animator.enabled = true
 
-		slot0.animatorPlayer:Play(uv0.AnimName.Lost)
+		arg_29_0.animatorPlayer:Play(var_0_0.AnimName.Lost)
 	end
 end
 
-function slot0.switchToServerState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.switchToServerState(arg_30_0, arg_30_1)
+	arg_30_0:resetToEmpty()
+	gohelper.setActive(arg_30_0.goFull, true)
 end
 
-function slot0.switchToClientState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.switchToClientState(arg_31_0, arg_31_1)
+	arg_31_0:resetToEmpty()
+	gohelper.setActive(arg_31_0.goFull, true)
 
-	slot0.animator.enabled = true
+	arg_31_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.Client)
+	arg_31_0.animatorPlayer:Play(var_0_0.AnimName.Client)
 end
 
-function slot0.switchToServerFullState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, true)
+function var_0_0.switchToServerFullState(arg_32_0, arg_32_1)
+	arg_32_0:resetToEmpty()
+	gohelper.setActive(arg_32_0.goFull, true)
 
-	slot0.animator.enabled = true
+	arg_32_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.Loop)
+	arg_32_0.animatorPlayer:Play(var_0_0.AnimName.Loop)
 end
 
-function slot0.switchToUsingUniqueState(slot0, slot1)
-	if slot1 == slot0.state then
+function var_0_0.switchToUsingUniqueState(arg_33_0, arg_33_1)
+	if arg_33_1 == arg_33_0.state then
 		return
 	end
 
-	slot0:resetToEmpty()
+	arg_33_0:resetToEmpty()
 
-	slot0.animator.enabled = true
+	arg_33_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.UsingSkillExplosion)
+	arg_33_0.animatorPlayer:Play(var_0_0.AnimName.UsingSkillExplosion)
 end
 
-function slot0.switchToLockState(slot0, slot1)
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, false)
+function var_0_0.switchToLockState(arg_34_0, arg_34_1)
+	arg_34_0:resetToEmpty()
+	gohelper.setActive(arg_34_0.goFull, false)
 
-	slot0.animator.enabled = true
+	arg_34_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.LockOpen)
+	arg_34_0.animatorPlayer:Play(var_0_0.AnimName.LockOpen)
 end
 
-function slot0.switchToStoredState(slot0, slot1)
-	if slot1 == slot0.state then
+function var_0_0.switchToStoredState(arg_35_0, arg_35_1)
+	if arg_35_1 == arg_35_0.state then
 		return
 	end
 
-	slot0:resetToEmpty()
-	gohelper.setActive(slot0.goFull, false)
+	arg_35_0:resetToEmpty()
+	gohelper.setActive(arg_35_0.goFull, false)
 
-	slot0.animator.enabled = true
+	arg_35_0.animator.enabled = true
 
-	slot0.animatorPlayer:Play(uv0.AnimName.StoredAdd)
+	arg_35_0.animatorPlayer:Play(var_0_0.AnimName.StoredAdd)
 end
 
-function slot0.recycle(slot0, slot1)
-	gohelper.addChild(slot1, slot0.exPointGo)
+function var_0_0.recycle(arg_36_0, arg_36_1)
+	gohelper.addChild(arg_36_1, arg_36_0.exPointGo)
 end
 
-function slot0.getPointGo(slot0)
-	return slot0.exPointGo
+function var_0_0.getPointGo(arg_37_0)
+	return arg_37_0.exPointGo
 end
 
-function slot0.destroy(slot0)
-	slot0:stopSwitchToNextState()
-	slot0.animatorPlayer:Stop()
-	gohelper.destroy(slot0.exPointGo)
-	slot0:__onDispose()
+function var_0_0.destroy(arg_38_0)
+	arg_38_0:stopSwitchToNextState()
+	arg_38_0.animatorPlayer:Stop()
+	gohelper.destroy(arg_38_0.exPointGo)
+	arg_38_0:__onDispose()
 end
 
-return slot0
+return var_0_0

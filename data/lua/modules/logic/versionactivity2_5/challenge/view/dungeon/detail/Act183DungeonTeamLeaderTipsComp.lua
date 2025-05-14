@@ -1,36 +1,40 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonTeamLeaderTipsComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonTeamLeaderTipsComp", package.seeall)
 
-slot0 = class("Act183DungeonTeamLeaderTipsComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonTeamLeaderTipsComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._txtleadertips = gohelper.findChildText(slot0.go, "txt_LeaderTips")
+	arg_1_0._txtleadertips = gohelper.findChildText(arg_1_0.go, "txt_LeaderTips")
 
-	SkillHelper.addHyperLinkClick(slot0._txtleadertips.gameObject)
+	SkillHelper.addHyperLinkClick(arg_1_0._txtleadertips.gameObject)
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.checkIsVisible(slot0)
-	return Act183Helper.isEpisodeHasTeamLeader(slot0._episodeId)
+function var_0_0.checkIsVisible(arg_4_0)
+	return Act183Helper.isEpisodeHasTeamLeader(arg_4_0._episodeId)
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
-	slot0:refreshLeaderTips()
+function var_0_0.show(arg_5_0)
+	var_0_0.super.show(arg_5_0)
+	arg_5_0:refreshLeaderTips()
 end
 
-function slot0.refreshLeaderTips(slot0)
-	slot0._txtleadertips.text = SkillHelper.buildDesc(Act183Config.instance:getLeaderSkillDesc(slot0._episodeId))
+function var_0_0.refreshLeaderTips(arg_6_0)
+	local var_6_0 = Act183Config.instance:getLeaderSkillDesc(arg_6_0._episodeId)
+
+	arg_6_0._txtleadertips.text = SkillHelper.buildDesc(var_6_0)
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_7_0)
+	var_0_0.super.onDestroy(arg_7_0)
 end
 
-return slot0
+return var_0_0

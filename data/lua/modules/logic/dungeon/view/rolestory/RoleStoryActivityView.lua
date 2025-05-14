@@ -1,129 +1,149 @@
-module("modules.logic.dungeon.view.rolestory.RoleStoryActivityView", package.seeall)
+﻿module("modules.logic.dungeon.view.rolestory.RoleStoryActivityView", package.seeall)
 
-slot0 = class("RoleStoryActivityView", BaseView)
+local var_0_0 = class("RoleStoryActivityView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._actViewGO = gohelper.findChild(slot0.viewGO, "actview")
-	slot0.btnMonster = gohelper.findChildButtonWithAudio(slot0._actViewGO, "BG/#simage_frame")
-	slot0.simageMonster = gohelper.findChildSingleImage(slot0._actViewGO, "BG/#simage_frame/#simage_photo")
-	slot0.itemPos = gohelper.findChild(slot0._actViewGO, "BG/itemPos")
-	slot0.timeTxt = gohelper.findChildTextMesh(slot0._actViewGO, "timebg/#txt_time")
-	slot0.btnEnter = gohelper.findChildButtonWithAudio(slot0._actViewGO, "#btn_enter")
-	slot0.goEnterRed = gohelper.findChild(slot0._actViewGO, "#btn_enter/#go_reddot")
-	slot0.txtTitle = gohelper.findChildTextMesh(slot0._actViewGO, "BG/title/ani/#txt_title")
-	slot0.txtTitleEn = gohelper.findChildTextMesh(slot0._actViewGO, "BG/title/ani/#txt_en")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._actViewGO = gohelper.findChild(arg_1_0.viewGO, "actview")
+	arg_1_0.btnMonster = gohelper.findChildButtonWithAudio(arg_1_0._actViewGO, "BG/#simage_frame")
+	arg_1_0.simageMonster = gohelper.findChildSingleImage(arg_1_0._actViewGO, "BG/#simage_frame/#simage_photo")
+	arg_1_0.itemPos = gohelper.findChild(arg_1_0._actViewGO, "BG/itemPos")
+	arg_1_0.timeTxt = gohelper.findChildTextMesh(arg_1_0._actViewGO, "timebg/#txt_time")
+	arg_1_0.btnEnter = gohelper.findChildButtonWithAudio(arg_1_0._actViewGO, "#btn_enter")
+	arg_1_0.goEnterRed = gohelper.findChild(arg_1_0._actViewGO, "#btn_enter/#go_reddot")
+	arg_1_0.txtTitle = gohelper.findChildTextMesh(arg_1_0._actViewGO, "BG/title/ani/#txt_title")
+	arg_1_0.txtTitleEn = gohelper.findChildTextMesh(arg_1_0._actViewGO, "BG/title/ani/#txt_en")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0.btnEnter:AddClickListener(slot0._btnenterOnClick, slot0)
-	slot0.btnMonster:AddClickListener(slot0._btnenterOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0.btnEnter:AddClickListener(arg_2_0._btnenterOnClick, arg_2_0)
+	arg_2_0.btnMonster:AddClickListener(arg_2_0._btnenterOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0.btnEnter:RemoveClickListener()
-	slot0.btnMonster:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0.btnEnter:RemoveClickListener()
+	arg_3_0.btnMonster:RemoveClickListener()
 end
 
-function slot0._editableInitView(slot0)
-	RedDotController.instance:addRedDot(slot0.goEnterRed, RedDotEnum.DotNode.RoleStoryChallenge)
+function var_0_0._editableInitView(arg_4_0)
+	RedDotController.instance:addRedDot(arg_4_0.goEnterRed, RedDotEnum.DotNode.RoleStoryChallenge)
 end
 
-function slot0._btnscoreOnClick(slot0)
+function var_0_0._btnscoreOnClick(arg_5_0)
 	ViewMgr.instance:openView(ViewName.RoleStoryRewardView)
 end
 
-function slot0._btnenterOnClick(slot0)
+function var_0_0._btnenterOnClick(arg_6_0)
 	RoleStoryController.instance:dispatchEvent(RoleStoryEvent.ChangeMainViewShow, false)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_7_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_8_0)
+	return
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_9_0)
+	return
 end
 
-function slot0.refreshView(slot0)
-	slot0.storyId = RoleStoryModel.instance:getCurActStoryId()
-	slot0.storyMo = RoleStoryModel.instance:getById(slot0.storyId)
+function var_0_0.refreshView(arg_10_0)
+	arg_10_0.storyId = RoleStoryModel.instance:getCurActStoryId()
+	arg_10_0.storyMo = RoleStoryModel.instance:getById(arg_10_0.storyId)
 
-	if not slot0.storyMo then
+	if not arg_10_0.storyMo then
 		return
 	end
 
-	slot0:refreshMonsterItem()
-	slot0:refreshRoleItem()
-	slot0:refreshLeftTime()
-	slot0:refreshTitle()
-	TaskDispatcher.cancelTask(slot0.refreshLeftTime, slot0)
-	TaskDispatcher.runRepeat(slot0.refreshLeftTime, slot0, 1)
+	arg_10_0:refreshMonsterItem()
+	arg_10_0:refreshRoleItem()
+	arg_10_0:refreshLeftTime()
+	arg_10_0:refreshTitle()
+	TaskDispatcher.cancelTask(arg_10_0.refreshLeftTime, arg_10_0)
+	TaskDispatcher.runRepeat(arg_10_0.refreshLeftTime, arg_10_0, 1)
 end
 
-function slot0.refreshTitle(slot0)
-	if not slot0.storyMo then
+function var_0_0.refreshTitle(arg_11_0)
+	if not arg_11_0.storyMo then
 		return
 	end
 
-	slot1 = slot0.storyMo.cfg.name
-	slot3 = GameUtil.utf8sub(slot1, 1, 1)
-	slot4 = ""
-	slot5 = ""
+	local var_11_0 = arg_11_0.storyMo.cfg.name
+	local var_11_1 = GameUtil.utf8len(var_11_0)
+	local var_11_2 = GameUtil.utf8sub(var_11_0, 1, 1)
+	local var_11_3 = ""
+	local var_11_4 = ""
 
-	if GameUtil.utf8len(slot1) > 1 then
-		slot4 = GameUtil.utf8sub(slot1, 2, 2)
+	if var_11_1 > 1 then
+		var_11_3 = GameUtil.utf8sub(var_11_0, 2, 2)
 	end
 
-	if slot2 > 3 then
-		slot5 = GameUtil.utf8sub(slot1, 4, slot2 - 3)
+	if var_11_1 > 3 then
+		var_11_4 = GameUtil.utf8sub(var_11_0, 4, var_11_1 - 3)
 	end
 
-	slot0.txtTitle.text = string.format("<size=99>%s</size><size=70>%s</size>%s", slot3, slot4, slot5)
-	slot0.txtTitleEn.text = slot0.storyMo.cfg.nameEn
+	arg_11_0.txtTitle.text = string.format("<size=99>%s</size><size=70>%s</size>%s", var_11_2, var_11_3, var_11_4)
+	arg_11_0.txtTitleEn.text = arg_11_0.storyMo.cfg.nameEn
 end
 
-function slot0.refreshMonsterItem(slot0)
-	if not slot0.storyMo then
+function var_0_0.refreshMonsterItem(arg_12_0)
+	if not arg_12_0.storyMo then
 		return
 	end
 
-	slot0.simageMonster:LoadImage(string.format("singlebg/dungeon/rolestory_photo_singlebg/%s_2.png", slot0.storyMo.cfg.monster_pic))
+	local var_12_0 = arg_12_0.storyMo.cfg.monster_pic
+	local var_12_1 = string.format("singlebg/dungeon/rolestory_photo_singlebg/%s_2.png", var_12_0)
+
+	arg_12_0.simageMonster:LoadImage(var_12_1)
 end
 
-function slot0.refreshRoleItem(slot0)
-	if not slot0.roleItem then
-		slot1 = slot0:getResInst(slot0.viewContainer:getSetting().otherRes.itemRes, slot0.itemPos)
-		slot0.roleItem = MonoHelper.addNoUpdateLuaComOnceToGo(slot1, RoleStoryActivityItem)
+function var_0_0.refreshRoleItem(arg_13_0)
+	if not arg_13_0.roleItem then
+		local var_13_0 = arg_13_0:getResInst(arg_13_0.viewContainer:getSetting().otherRes.itemRes, arg_13_0.itemPos)
 
-		slot0.roleItem:initInternal(slot1, slot0)
+		arg_13_0.roleItem = MonoHelper.addNoUpdateLuaComOnceToGo(var_13_0, RoleStoryActivityItem)
+
+		arg_13_0.roleItem:initInternal(var_13_0, arg_13_0)
 	end
 
-	slot0.roleItem:onUpdateMO(slot0.storyMo)
+	arg_13_0.roleItem:onUpdateMO(arg_13_0.storyMo)
 end
 
-function slot0.refreshLeftTime(slot0)
-	if not slot0.storyMo then
+function var_0_0.refreshLeftTime(arg_14_0)
+	local var_14_0 = arg_14_0.storyMo
+
+	if not var_14_0 then
 		return
 	end
 
-	slot2, slot3 = slot1:getActTime()
+	local var_14_1, var_14_2 = var_14_0:getActTime()
+	local var_14_3 = var_14_2 - ServerTime.now()
 
-	if slot3 - ServerTime.now() > 0 then
-		slot5, slot6, slot7, slot8 = TimeUtil.secondsToDDHHMMSS(slot4)
-		slot9 = nil
-		slot0.timeTxt.text = string.format("%s%s", luaLang("activity_remain"), (slot5 <= 0 or string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", slot5, luaLang("time_day"), slot6, luaLang("time_hour2"))) and (slot6 <= 0 or string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", slot6, luaLang("time_hour2"), slot7, luaLang("time_minute2"))) and string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", slot7, luaLang("time_minute2"), slot8, luaLang("time_second")))
+	if var_14_3 > 0 then
+		local var_14_4, var_14_5, var_14_6, var_14_7 = TimeUtil.secondsToDDHHMMSS(var_14_3)
+		local var_14_8
+
+		if var_14_4 > 0 then
+			var_14_8 = string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", var_14_4, luaLang("time_day"), var_14_5, luaLang("time_hour2"))
+		elseif var_14_5 > 0 then
+			var_14_8 = string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", var_14_5, luaLang("time_hour2"), var_14_6, luaLang("time_minute2"))
+		else
+			var_14_8 = string.format("<color=#f09a5a>%s</color>%s<color=#f09a5a>%s</color>%s", var_14_6, luaLang("time_minute2"), var_14_7, luaLang("time_second"))
+		end
+
+		arg_14_0.timeTxt.text = string.format("%s%s", luaLang("activity_remain"), var_14_8)
 	else
-		TaskDispatcher.cancelTask(slot0.refreshLeftTime, slot0)
+		TaskDispatcher.cancelTask(arg_14_0.refreshLeftTime, arg_14_0)
 	end
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0.refreshLeftTime, slot0)
+function var_0_0.onDestroyView(arg_15_0)
+	TaskDispatcher.cancelTask(arg_15_0.refreshLeftTime, arg_15_0)
 end
 
-return slot0
+return var_0_0

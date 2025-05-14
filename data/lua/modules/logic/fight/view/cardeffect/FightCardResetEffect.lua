@@ -1,56 +1,65 @@
-module("modules.logic.fight.view.cardeffect.FightCardResetEffect", package.seeall)
+﻿module("modules.logic.fight.view.cardeffect.FightCardResetEffect", package.seeall)
 
-slot0 = class("FightCardResetEffect", BaseWork)
-slot2 = 1 * 0.033
+local var_0_0 = class("FightCardResetEffect", BaseWork)
+local var_0_1 = 1
+local var_0_2 = var_0_1 * 0.033
 
-function slot0.onStart(slot0, slot1)
-	TaskDispatcher.runDelay(slot0.onDelayDone, slot0, 1)
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	TaskDispatcher.runDelay(arg_1_0.onDelayDone, arg_1_0, 1)
 
-	slot0._dt = uv0 / FightModel.instance:getUISpeed()
-	slot0.flow = FightWorkFlowSequence.New()
+	arg_1_0._dt = var_0_2 / FightModel.instance:getUISpeed()
+	arg_1_0.flow = FightWorkFlowSequence.New()
 
-	slot0.flow:registWork(FightWorkSendEvent, FightEvent.CorrectHandCardScale)
+	local var_1_0 = arg_1_0.flow
 
-	slot3 = slot0.context.view.viewContainer.fightViewHandCard._handCardItemList
+	var_1_0:registWork(FightWorkSendEvent, FightEvent.CorrectHandCardScale)
 
-	if slot1.curIndex2OriginHandCardIndex then
-		for slot8, slot9 in ipairs(slot3) do
-			slot11 = slot9.cardInfoMO
+	local var_1_1 = arg_1_0.context.view.viewContainer.fightViewHandCard._handCardItemList
 
-			if slot1.curIndex2OriginHandCardIndex[slot8] then
-				slot2:registWork(FightWorkFlowParallel):registWork(FightTweenWork, {
+	if arg_1_1.curIndex2OriginHandCardIndex then
+		local var_1_2 = var_1_0:registWork(FightWorkFlowParallel)
+
+		for iter_1_0, iter_1_1 in ipairs(var_1_1) do
+			local var_1_3 = iter_1_1.go
+			local var_1_4 = iter_1_1.cardInfoMO
+			local var_1_5 = arg_1_1.curIndex2OriginHandCardIndex[iter_1_0]
+
+			if var_1_5 then
+				local var_1_6 = FightViewHandCard.calcCardPosX(var_1_5)
+
+				var_1_2:registWork(FightTweenWork, {
 					type = "DOAnchorPos",
 					toy = 0,
-					tr = slot9.go.transform,
-					tox = FightViewHandCard.calcCardPosX(slot12),
-					t = slot0._dt * 4
+					tr = var_1_3.transform,
+					tox = var_1_6,
+					t = arg_1_0._dt * 4
 				})
 			end
 		end
 	end
 
-	slot2:registWork(FightWorkSendEvent, FightEvent.UpdateHandCards)
-	slot2:registFinishCallback(slot0._onWorkDone, slot0)
-	slot2:start()
+	var_1_0:registWork(FightWorkSendEvent, FightEvent.UpdateHandCards)
+	var_1_0:registFinishCallback(arg_1_0._onWorkDone, arg_1_0)
+	var_1_0:start()
 end
 
-function slot0.onDelayDone(slot0)
+function var_0_0.onDelayDone(arg_2_0)
 	FightController.instance:dispatchEvent(FightEvent.UpdateHandCards)
-	slot0:onDone(true)
+	arg_2_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0.onDelayDone, slot0)
+function var_0_0.clearWork(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0.onDelayDone, arg_3_0)
 
-	if slot0.flow then
-		slot0.flow:disposeSelf()
+	if arg_3_0.flow then
+		arg_3_0.flow:disposeSelf()
 
-		slot0.flow = nil
+		arg_3_0.flow = nil
 	end
 end
 
-function slot0._onWorkDone(slot0)
-	slot0:onDone(true)
+function var_0_0._onWorkDone(arg_4_0)
+	arg_4_0:onDone(true)
 end
 
-return slot0
+return var_0_0

@@ -1,84 +1,85 @@
-module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightEntityMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightEntityMo", package.seeall)
 
-slot0 = pureTable("DiceHeroFightEntityMo")
+local var_0_0 = pureTable("DiceHeroFightEntityMo")
 
-function slot0.init(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.id = slot1.id
-	slot0.status = slot1.status
-	slot0.hp = tonumber(slot1.hp) or 0
-	slot0.shield = tonumber(slot1.shield) or 0
-	slot0.power = tonumber(slot1.power) or 0
-	slot0.maxHp = tonumber(slot1.maxHp) or 0
-	slot0.maxShield = tonumber(slot1.maxShield) or 0
-	slot0.maxPower = tonumber(slot1.maxPower) or 0
-	slot0.buffs = {}
-	slot0.buffsByUid = {}
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.id = arg_1_1.id
+	arg_1_0.status = arg_1_1.status
+	arg_1_0.hp = tonumber(arg_1_1.hp) or 0
+	arg_1_0.shield = tonumber(arg_1_1.shield) or 0
+	arg_1_0.power = tonumber(arg_1_1.power) or 0
+	arg_1_0.maxHp = tonumber(arg_1_1.maxHp) or 0
+	arg_1_0.maxShield = tonumber(arg_1_1.maxShield) or 0
+	arg_1_0.maxPower = tonumber(arg_1_1.maxPower) or 0
+	arg_1_0.buffs = {}
+	arg_1_0.buffsByUid = {}
 
-	if slot0.hp > 0 then
-		for slot5, slot6 in ipairs(slot1.buffContainer.buffs) do
-			slot7 = DiceHeroFightBuffMo.New()
+	if arg_1_0.hp > 0 then
+		for iter_1_0, iter_1_1 in ipairs(arg_1_1.buffContainer.buffs) do
+			local var_1_0 = DiceHeroFightBuffMo.New()
 
-			slot7:init(slot6)
+			var_1_0:init(iter_1_1)
 
-			if slot7.co.visible == 1 then
-				table.insert(slot0.buffs, slot7)
+			if var_1_0.co.visible == 1 then
+				table.insert(arg_1_0.buffs, var_1_0)
 			end
 
-			slot0.buffsByUid[slot6.uid] = slot7
+			arg_1_0.buffsByUid[iter_1_1.uid] = var_1_0
 		end
 	end
 
-	slot0.relicIds = slot1.relicIds
-	slot0.behaviors = {}
+	arg_1_0.relicIds = arg_1_1.relicIds
+	arg_1_0.behaviors = {}
 end
 
-function slot0.setHp(slot0, slot1)
-	slot0.hp = slot1
+function var_0_0.setHp(arg_2_0, arg_2_1)
+	arg_2_0.hp = arg_2_1
 
-	if slot0.hp <= 0 then
-		slot0.behaviors = {}
-		slot0.buffs = {}
-		slot0.buffsByUid = {}
+	if arg_2_0.hp <= 0 then
+		arg_2_0.behaviors = {}
+		arg_2_0.buffs = {}
+		arg_2_0.buffsByUid = {}
 	end
 end
 
-function slot0.setSkills(slot0, slot1)
-	slot0.skills = slot1
+function var_0_0.setSkills(arg_3_0, arg_3_1)
+	arg_3_0.skills = arg_3_1
 end
 
-function slot0.clearBehavior(slot0)
-	slot0.behaviors = {}
+function var_0_0.clearBehavior(arg_4_0)
+	arg_4_0.behaviors = {}
 end
 
-function slot0.addBehavior(slot0, slot1, slot2)
-	if slot0.hp <= 0 then
+function var_0_0.addBehavior(arg_5_0, arg_5_1, arg_5_2)
+	if arg_5_0.hp <= 0 then
 		return
 	end
 
-	if not slot0.behaviors.type then
-		slot0:setBehaviorData(slot0.behaviors, slot1, slot2)
+	if not arg_5_0.behaviors.type then
+		arg_5_0:setBehaviorData(arg_5_0.behaviors, arg_5_1, arg_5_2)
 	else
-		slot0.behaviors.exList = slot0.behaviors.exList or {}
-		slot3 = {}
+		arg_5_0.behaviors.exList = arg_5_0.behaviors.exList or {}
 
-		slot0:setBehaviorData(slot3, slot1, slot2)
-		table.insert(slot0.behaviors.exList, slot3)
+		local var_5_0 = {}
+
+		arg_5_0:setBehaviorData(var_5_0, arg_5_1, arg_5_2)
+		table.insert(arg_5_0.behaviors.exList, var_5_0)
 	end
 end
 
-function slot0.setBehaviorData(slot0, slot1, slot2, slot3)
-	slot1.type = slot2.type
-	slot1.value = slot2.value
-	slot1.isToSelf = slot2.fromId == slot2.targetIds[1]
-	slot1.isToHero = slot3 == slot2.targetIds[1]
-	slot1.isToAll = #slot2.targetIds > 1
-	slot1.isToFriend = not slot1.isToAll and not slot1.isToSelf and not slot1.isToHero
+function var_0_0.setBehaviorData(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
+	arg_6_1.type = arg_6_2.type
+	arg_6_1.value = arg_6_2.value
+	arg_6_1.isToSelf = arg_6_2.fromId == arg_6_2.targetIds[1]
+	arg_6_1.isToHero = arg_6_3 == arg_6_2.targetIds[1]
+	arg_6_1.isToAll = #arg_6_2.targetIds > 1
+	arg_6_1.isToFriend = not arg_6_1.isToAll and not arg_6_1.isToSelf and not arg_6_1.isToHero
 end
 
-function slot0.isMixDice(slot0)
-	for slot4, slot5 in pairs(slot0.buffsByUid) do
-		if slot5.co.effect == DiceHeroEnum.SkillEffectType.DiceMix then
+function var_0_0.isMixDice(arg_7_0)
+	for iter_7_0, iter_7_1 in pairs(arg_7_0.buffsByUid) do
+		if iter_7_1.co.effect == DiceHeroEnum.SkillEffectType.DiceMix then
 			return true
 		end
 	end
@@ -86,69 +87,71 @@ function slot0.isMixDice(slot0)
 	return false
 end
 
-function slot0.isBanSkillCard(slot0, slot1)
-	for slot5, slot6 in pairs(slot0.buffsByUid) do
-		if slot6.co.effect == DiceHeroEnum.SkillEffectType.BanSkillCard then
-			slot7 = tonumber(slot6.co.param) or 0
+function var_0_0.isBanSkillCard(arg_8_0, arg_8_1)
+	for iter_8_0, iter_8_1 in pairs(arg_8_0.buffsByUid) do
+		if iter_8_1.co.effect == DiceHeroEnum.SkillEffectType.BanSkillCard then
+			local var_8_0 = tonumber(iter_8_1.co.param) or 0
 
-			return slot7 == slot1 or slot7 == 0
+			return var_8_0 == arg_8_1 or var_8_0 == 0
 		end
 	end
 
 	return false
 end
 
-function slot0.addOrUpdateBuff(slot0, slot1)
-	if slot0.hp <= 0 then
+function var_0_0.addOrUpdateBuff(arg_9_0, arg_9_1)
+	if arg_9_0.hp <= 0 then
 		return
 	end
 
-	if slot0.buffsByUid[slot1.uid] then
-		slot0.buffsByUid[slot1.uid]:init(slot1)
+	if arg_9_0.buffsByUid[arg_9_1.uid] then
+		arg_9_0.buffsByUid[arg_9_1.uid]:init(arg_9_1)
 	else
-		slot2 = DiceHeroFightBuffMo.New()
+		local var_9_0 = DiceHeroFightBuffMo.New()
 
-		slot2:init(slot1)
+		var_9_0:init(arg_9_1)
 
-		slot0.buffsByUid[slot1.uid] = slot2
+		arg_9_0.buffsByUid[arg_9_1.uid] = var_9_0
 
-		if slot2.co.visible == 1 then
-			table.insert(slot0.buffs, slot2)
+		if var_9_0.co.visible == 1 then
+			table.insert(arg_9_0.buffs, var_9_0)
 		end
 	end
 end
 
-function slot0.isAddLayer(slot0, slot1)
-	if not slot0.buffsByUid[slot1.uid] then
+function var_0_0.isAddLayer(arg_10_0, arg_10_1)
+	local var_10_0 = arg_10_0.buffsByUid[arg_10_1.uid]
+
+	if not var_10_0 then
 		return true
 	end
 
-	return slot2.layer < slot1.layer
+	return var_10_0.layer < arg_10_1.layer
 end
 
-function slot0.removeBuff(slot0, slot1)
-	if slot0.buffsByUid[slot1] then
-		tabletool.removeValue(slot0.buffs, slot0.buffsByUid[slot1])
+function var_0_0.removeBuff(arg_11_0, arg_11_1)
+	if arg_11_0.buffsByUid[arg_11_1] then
+		tabletool.removeValue(arg_11_0.buffs, arg_11_0.buffsByUid[arg_11_1])
 
-		slot0.buffsByUid[slot1] = nil
+		arg_11_0.buffsByUid[arg_11_1] = nil
 	end
 end
 
-function slot0.canUseHeroSkill(slot0)
-	if slot0.power < slot0.maxPower then
+function var_0_0.canUseHeroSkill(arg_12_0)
+	if arg_12_0.power < arg_12_0.maxPower then
 		return false
 	end
 
-	if slot0:isBanSkillCard(DiceHeroEnum.CardType.Hero) then
+	if arg_12_0:isBanSkillCard(DiceHeroEnum.CardType.Hero) then
 		return false
 	end
 
-	if not slot0.skills then
+	if not arg_12_0.skills then
 		return false
 	end
 
-	for slot4, slot5 in ipairs(slot0.skills) do
-		if slot5.co.spiritskilltype == DiceHeroEnum.HeroCardType.ActiveSkill then
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0.skills) do
+		if iter_12_1.co.spiritskilltype == DiceHeroEnum.HeroCardType.ActiveSkill then
 			return true
 		end
 	end
@@ -156,21 +159,21 @@ function slot0.canUseHeroSkill(slot0)
 	return false
 end
 
-function slot0.canUsePassiveSkill(slot0)
-	if slot0.power <= 0 then
+function var_0_0.canUsePassiveSkill(arg_13_0)
+	if arg_13_0.power <= 0 then
 		return
 	end
 
-	if slot0:isBanSkillCard(DiceHeroEnum.CardType.Hero) then
+	if arg_13_0:isBanSkillCard(DiceHeroEnum.CardType.Hero) then
 		return false
 	end
 
-	if not slot0.skills then
+	if not arg_13_0.skills then
 		return false
 	end
 
-	for slot4, slot5 in ipairs(slot0.skills) do
-		if slot5.co.spiritskilltype == DiceHeroEnum.HeroCardType.PassiveSkill then
+	for iter_13_0, iter_13_1 in ipairs(arg_13_0.skills) do
+		if iter_13_1.co.spiritskilltype == DiceHeroEnum.HeroCardType.PassiveSkill then
 			return true
 		end
 	end
@@ -178,9 +181,9 @@ function slot0.canUsePassiveSkill(slot0)
 	return false
 end
 
-function slot0.haveBuff2(slot0)
-	for slot4, slot5 in pairs(slot0.buffsByUid) do
-		if slot5.co.id == 2 then
+function var_0_0.haveBuff2(arg_14_0)
+	for iter_14_0, iter_14_1 in pairs(arg_14_0.buffsByUid) do
+		if iter_14_1.co.id == 2 then
 			return true
 		end
 	end
@@ -188,4 +191,4 @@ function slot0.haveBuff2(slot0)
 	return false
 end
 
-return slot0
+return var_0_0

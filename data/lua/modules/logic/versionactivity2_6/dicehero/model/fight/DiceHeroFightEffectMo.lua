@@ -1,25 +1,25 @@
-module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightEffectMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightEffectMo", package.seeall)
 
-slot0 = pureTable("DiceHeroFightEffectMo")
+local var_0_0 = pureTable("DiceHeroFightEffectMo")
 
-function slot0.init(slot0, slot1, slot2)
-	slot0.effectType = slot1.effectType
-	slot0.fromId = slot1.fromId
-	slot0.targetId = slot1.targetId
-	slot0.effectNum = tonumber(slot1.effectNum) or 0
-	slot0.extraData = slot1.extraData
-	slot0.nextFightStep = DiceHeroFightStepMo.New()
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.effectType = arg_1_1.effectType
+	arg_1_0.fromId = arg_1_1.fromId
+	arg_1_0.targetId = arg_1_1.targetId
+	arg_1_0.effectNum = tonumber(arg_1_1.effectNum) or 0
+	arg_1_0.extraData = arg_1_1.extraData
+	arg_1_0.nextFightStep = DiceHeroFightStepMo.New()
 
-	slot0.nextFightStep:init(slot1.nextFightStep)
+	arg_1_0.nextFightStep:init(arg_1_1.nextFightStep)
 
-	slot0.buff = DiceHeroFightBuffMo.New()
+	arg_1_0.buff = DiceHeroFightBuffMo.New()
 
-	slot0.buff:init(slot1.buff)
+	arg_1_0.buff:init(arg_1_1.buff)
 
-	slot0.targetIds = slot1.targetIds
-	slot0.skillCards = slot1.skillCards
-	slot0.diceBox = slot1.diceBox
-	slot0.parent = slot2
+	arg_1_0.targetIds = arg_1_1.targetIds
+	arg_1_0.skillCards = arg_1_1.skillCards
+	arg_1_0.diceBox = arg_1_1.diceBox
+	arg_1_0.parent = arg_1_2
 end
 
-return slot0
+return var_0_0

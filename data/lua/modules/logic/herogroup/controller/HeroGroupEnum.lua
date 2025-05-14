@@ -1,10 +1,11 @@
-module("modules.logic.herogroup.controller.HeroGroupEnum", package.seeall)
+﻿module("modules.logic.herogroup.controller.HeroGroupEnum", package.seeall)
 
-slot0 = _M
-slot0.GroupType = {
+local var_0_0 = _M
+
+var_0_0.GroupType = {
 	WeekWalk_2 = 1
 }
-slot0.saveOldVersion = 1
-slot0.saveTrialVersion = 2
+var_0_0.saveOldVersion = 1
+var_0_0.saveTrialVersion = 2
 
-return slot0
+return var_0_0

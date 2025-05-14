@@ -1,52 +1,54 @@
-module("modules.logic.fight.view.FightDouQuQuStarView", package.seeall)
+﻿module("modules.logic.fight.view.FightDouQuQuStarView", package.seeall)
 
-slot0 = class("FightDouQuQuStarView", FightBaseView)
+local var_0_0 = class("FightDouQuQuStarView", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.img = gohelper.findChildImage(slot0.viewGO, "root/quality/bg/#image_quality")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.img = gohelper.findChildImage(arg_1_0.viewGO, "root/quality/bg/#image_quality")
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.onConstructor(arg_3_0, arg_3_1)
+	arg_3_0.entityMO = arg_3_1
 end
 
-function slot0.refreshEntityMO(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.refreshEntityMO(arg_4_0, arg_4_1)
+	arg_4_0.entityMO = arg_4_1
 
-	if slot0.viewGO then
-		slot0:refreshStar()
+	if arg_4_0.viewGO then
+		arg_4_0:refreshStar()
 	end
 end
 
-function slot0.onOpen(slot0)
-	slot0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
+function var_0_0.onOpen(arg_5_0)
+	arg_5_0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
 
-	slot0:refreshStar()
+	arg_5_0:refreshStar()
 end
 
-function slot0.refreshStar(slot0)
-	slot2 = 0
+function var_0_0.refreshStar(arg_6_0)
+	local var_6_0 = arg_6_0.customData.teamAHeroInfo
+	local var_6_1 = 0
 
-	for slot6, slot7 in pairs(slot0.customData.teamAHeroInfo) do
-		if tonumber(slot6) == slot0.entityMO.modelId then
-			slot2 = string.splitToNumber(slot7, "#")[1]
+	for iter_6_0, iter_6_1 in pairs(var_6_0) do
+		if tonumber(iter_6_0) == arg_6_0.entityMO.modelId then
+			var_6_1 = string.splitToNumber(iter_6_1, "#")[1]
 
 			break
 		end
 	end
 
-	if slot2 == 0 then
-		gohelper.setActive(slot0.viewGO, false)
+	if var_6_1 == 0 then
+		gohelper.setActive(arg_6_0.viewGO, false)
 
 		return
 	end
 
-	gohelper.setActive(slot0.viewGO, true)
+	gohelper.setActive(arg_6_0.viewGO, true)
 
-	slot0.img.fillAmount = slot2 / Activity191Enum.CharacterMaxStar
+	arg_6_0.img.fillAmount = var_6_1 / Activity191Enum.CharacterMaxStar
 end
 
-return slot0
+return var_0_0

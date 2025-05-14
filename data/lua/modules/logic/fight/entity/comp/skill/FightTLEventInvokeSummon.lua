@@ -1,50 +1,59 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventInvokeSummon", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventInvokeSummon", package.seeall)
 
-slot0 = class("FightTLEventInvokeSummon", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventInvokeSummon", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	slot0.summonList = {}
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	arg_1_0.summonList = {}
 
-	slot0:getStepDataSummon(slot1)
+	arg_1_0:getStepDataSummon(arg_1_1)
 
-	if #slot0.summonList < 1 then
+	if #arg_1_0.summonList < 1 then
 		return
 	end
 
-	slot4 = slot0:com_registFlowParallel()
+	local var_1_0 = arg_1_0:com_registFlowParallel()
+	local var_1_1 = FightStepBuilder.ActEffectWorkCls[FightEnum.EffectType.SUMMON]
 
-	for slot9, slot10 in ipairs(slot0.summonList) do
-		slot4:registWork(FightStepBuilder.ActEffectWorkCls[FightEnum.EffectType.SUMMON], slot10[1], slot10[2])
+	for iter_1_0, iter_1_1 in ipairs(arg_1_0.summonList) do
+		local var_1_2 = iter_1_1[1]
+		local var_1_3 = iter_1_1[2]
+
+		var_1_0:registWork(var_1_1, var_1_2, var_1_3)
 	end
 
-	slot0:addWork2TimelineFinishWork(slot4)
-	slot4:start()
+	arg_1_0:addWork2TimelineFinishWork(var_1_0)
+	var_1_0:start()
 end
 
-function slot0.getStepDataSummon(slot0, slot1)
-	if not (slot1 and slot1.actEffect) then
+function var_0_0.getStepDataSummon(arg_2_0, arg_2_1)
+	local var_2_0 = arg_2_1 and arg_2_1.actEffect
+
+	if not var_2_0 then
 		return
 	end
 
-	for slot6, slot7 in ipairs(slot2) do
-		if slot7.effectType == FightEnum.EffectType.SUMMON then
-			table.insert(slot0.summonList, {
-				slot1,
-				slot7
+	for iter_2_0, iter_2_1 in ipairs(var_2_0) do
+		if iter_2_1.effectType == FightEnum.EffectType.SUMMON then
+			table.insert(arg_2_0.summonList, {
+				arg_2_1,
+				iter_2_1
 			})
-		elseif slot7.effectType == FightEnum.EffectType.FIGHTSTEP then
-			slot0:getStepDataSummon(slot7.fightStep)
+		elseif iter_2_1.effectType == FightEnum.EffectType.FIGHTSTEP then
+			arg_2_0:getStepDataSummon(iter_2_1.fightStep)
 		end
 	end
 end
 
-function slot0.onTrackEnd(slot0)
+function var_0_0.onTrackEnd(arg_3_0)
+	return
 end
 
-function slot0.onDestructor(slot0)
+function var_0_0.onDestructor(arg_4_0)
+	return
 end
 
-function slot0.dispose(slot0)
+function var_0_0.dispose(arg_5_0)
+	return
 end
 
-return slot0
+return var_0_0

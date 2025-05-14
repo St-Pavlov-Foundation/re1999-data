@@ -1,407 +1,461 @@
-module("modules.logic.settings.view.SettingsLanguageView", package.seeall)
+﻿module("modules.logic.settings.view.SettingsLanguageView", package.seeall)
 
-slot0 = class("SettingsLanguageView", BaseView)
+local var_0_0 = class("SettingsLanguageView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btndownload = gohelper.findChildButtonWithAudio(slot0.viewGO, "download/#btn_download")
-	slot0._godownload = gohelper.findChild(slot0.viewGO, "download/#btn_download/#go_download")
-	slot0._godownloading = gohelper.findChild(slot0.viewGO, "download/#btn_download/#go_downloading")
-	slot0._txtdownloadingprogress = gohelper.findChildText(slot0.viewGO, "download/#btn_download/#go_downloading/#txt_downloadingprogress")
-	slot0._gotxtlang = gohelper.findChild(slot0.viewGO, "#go_lang/#go_txtlang")
-	slot0._govoicelang = gohelper.findChild(slot0.viewGO, "#go_lang/#go_voicelang")
-	slot0._godropnode = gohelper.findChild(slot0.viewGO, "dropnode")
-	slot0._gostoryvoicelang = gohelper.findChild(slot0.viewGO, "#go_lang/#go_storyvoicelang")
-	slot0._godesc = gohelper.findChild(slot0.viewGO, "#go_lang/#go_voicelang/#go_desc")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "#go_lang/#go_voicelang/#go_desc/#txt_desc")
-	slot0._btncustomvoice = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_lang/#go_voicelang/#btn_go")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btndownload = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "download/#btn_download")
+	arg_1_0._godownload = gohelper.findChild(arg_1_0.viewGO, "download/#btn_download/#go_download")
+	arg_1_0._godownloading = gohelper.findChild(arg_1_0.viewGO, "download/#btn_download/#go_downloading")
+	arg_1_0._txtdownloadingprogress = gohelper.findChildText(arg_1_0.viewGO, "download/#btn_download/#go_downloading/#txt_downloadingprogress")
+	arg_1_0._gotxtlang = gohelper.findChild(arg_1_0.viewGO, "#go_lang/#go_txtlang")
+	arg_1_0._govoicelang = gohelper.findChild(arg_1_0.viewGO, "#go_lang/#go_voicelang")
+	arg_1_0._godropnode = gohelper.findChild(arg_1_0.viewGO, "dropnode")
+	arg_1_0._gostoryvoicelang = gohelper.findChild(arg_1_0.viewGO, "#go_lang/#go_storyvoicelang")
+	arg_1_0._godesc = gohelper.findChild(arg_1_0.viewGO, "#go_lang/#go_voicelang/#go_desc")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "#go_lang/#go_voicelang/#go_desc/#txt_desc")
+	arg_1_0._btncustomvoice = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_lang/#go_voicelang/#btn_go")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btndownload:AddClickListener(slot0._btndownloadOnClick, slot0)
-	slot0._btncustomvoice:AddClickListener(slot0._btnCustomRoleVoiceOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btndownload:AddClickListener(arg_2_0._btndownloadOnClick, arg_2_0)
+	arg_2_0._btncustomvoice:AddClickListener(arg_2_0._btnCustomRoleVoiceOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btndownload:RemoveClickListener()
-	slot0._btncustomvoice:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btndownload:RemoveClickListener()
+	arg_3_0._btncustomvoice:RemoveClickListener()
 end
 
-function slot0._btndownloadOnClick(slot0)
+function var_0_0._btndownloadOnClick(arg_4_0)
 	SettingsVoicePackageController.instance:openVoicePackageView()
 end
 
-function slot0._btnCustomRoleVoiceOnClick(slot0)
+function var_0_0._btnCustomRoleVoiceOnClick(arg_5_0)
 	SettingsRoleVoiceController.instance:openSettingRoleVoiceView()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._voiceDropDownGo = gohelper.findChild(slot0._godropnode, "dropvoicelang")
-	slot0._txtvoiceDrop = gohelper.findChildText(slot0._voiceDropDownGo, "Label")
-	slot0._voiceClick = gohelper.getClickWithAudio(slot0._voiceDropDownGo, AudioEnum.UI.play_ui_set_click)
+function var_0_0._editableInitView(arg_6_0)
+	arg_6_0._voiceDropDownGo = gohelper.findChild(arg_6_0._godropnode, "dropvoicelang")
+	arg_6_0._txtvoiceDrop = gohelper.findChildText(arg_6_0._voiceDropDownGo, "Label")
+	arg_6_0._voiceClick = gohelper.getClickWithAudio(arg_6_0._voiceDropDownGo, AudioEnum.UI.play_ui_set_click)
 
-	slot0._voiceClick:AddClickListener(slot0._onvoiceClick, slot0)
+	arg_6_0._voiceClick:AddClickListener(arg_6_0._onvoiceClick, arg_6_0)
 
-	slot0._voiceDropDownItemListGo = gohelper.findChild(slot0._voiceDropDownGo, "Template")
-	slot0._voiceDropDownItemContainer = gohelper.findChild(slot0._voiceDropDownItemListGo, "Viewport/Content")
-	slot0._voiceItemGo = gohelper.findChild(slot0._voiceDropDownItemContainer, "Item")
+	arg_6_0._voiceDropDownItemListGo = gohelper.findChild(arg_6_0._voiceDropDownGo, "Template")
+	arg_6_0._voiceDropDownItemContainer = gohelper.findChild(arg_6_0._voiceDropDownItemListGo, "Viewport/Content")
+	arg_6_0._voiceItemGo = gohelper.findChild(arg_6_0._voiceDropDownItemContainer, "Item")
 
-	gohelper.setActive(slot0._voiceItemGo, false)
+	gohelper.setActive(arg_6_0._voiceItemGo, false)
 
-	slot0._voiceDropDownTouchEventMgr = TouchEventMgrHepler.getTouchEventMgr(slot0._voiceDropDownItemListGo)
+	arg_6_0._voiceDropDownTouchEventMgr = TouchEventMgrHepler.getTouchEventMgr(arg_6_0._voiceDropDownItemListGo)
 
-	slot0._voiceDropDownTouchEventMgr:SetIgnoreUI(true)
-	slot0._voiceDropDownTouchEventMgr:SetOnlyTouch(true)
-	slot0._voiceDropDownTouchEventMgr:SetOnClickCb(slot0._hideVoice, slot0)
+	arg_6_0._voiceDropDownTouchEventMgr:SetIgnoreUI(true)
+	arg_6_0._voiceDropDownTouchEventMgr:SetOnlyTouch(true)
+	arg_6_0._voiceDropDownTouchEventMgr:SetOnClickCb(arg_6_0._hideVoice, arg_6_0)
 
-	slot0._voiceItemList = {}
-	slot0._langItemList = {}
+	arg_6_0._voiceItemList = {}
+	arg_6_0._langItemList = {}
 
-	slot0:_refreshVoiceDropDown()
+	arg_6_0:_refreshVoiceDropDown()
 
-	slot0._langDropDownGo = gohelper.findChild(slot0._godropnode, "droplang")
-	slot0._txtLangDrop = gohelper.findChildText(slot0._langDropDownGo, "Label")
-	slot0._langClick = gohelper.getClickWithAudio(slot0._langDropDownGo, AudioEnum.UI.play_ui_set_click)
+	arg_6_0._langDropDownGo = gohelper.findChild(arg_6_0._godropnode, "droplang")
+	arg_6_0._txtLangDrop = gohelper.findChildText(arg_6_0._langDropDownGo, "Label")
+	arg_6_0._langClick = gohelper.getClickWithAudio(arg_6_0._langDropDownGo, AudioEnum.UI.play_ui_set_click)
 
-	slot0._langClick:AddClickListener(slot0._onlangDropClick, slot0)
+	arg_6_0._langClick:AddClickListener(arg_6_0._onlangDropClick, arg_6_0)
 
-	slot0._langDropDownItemListGo = gohelper.findChild(slot0._langDropDownGo, "Template")
-	slot0._langDropDownItemContainer = gohelper.findChild(slot0._langDropDownItemListGo, "Viewport/Content")
-	slot0._langItemGo = gohelper.findChild(slot0._langDropDownItemContainer, "Item")
+	arg_6_0._langDropDownItemListGo = gohelper.findChild(arg_6_0._langDropDownGo, "Template")
+	arg_6_0._langDropDownItemContainer = gohelper.findChild(arg_6_0._langDropDownItemListGo, "Viewport/Content")
+	arg_6_0._langItemGo = gohelper.findChild(arg_6_0._langDropDownItemContainer, "Item")
 
-	gohelper.setActive(slot0._langItemGo, false)
+	gohelper.setActive(arg_6_0._langItemGo, false)
 
-	slot0._langDropDownTouchEventMgr = TouchEventMgrHepler.getTouchEventMgr(slot0._langDropDownItemListGo)
+	arg_6_0._langDropDownTouchEventMgr = TouchEventMgrHepler.getTouchEventMgr(arg_6_0._langDropDownItemListGo)
 
-	slot0._langDropDownTouchEventMgr:SetIgnoreUI(true)
-	slot0._langDropDownTouchEventMgr:SetOnlyTouch(true)
-	slot0._langDropDownTouchEventMgr:SetOnClickCb(slot0._hideLang, slot0)
-	slot0:_refreshLangDropDown()
+	arg_6_0._langDropDownTouchEventMgr:SetIgnoreUI(true)
+	arg_6_0._langDropDownTouchEventMgr:SetOnlyTouch(true)
+	arg_6_0._langDropDownTouchEventMgr:SetOnClickCb(arg_6_0._hideLang, arg_6_0)
+	arg_6_0:_refreshLangDropDown()
 
-	slot0.trVoiceDropArrow = gohelper.findChildComponent(slot0._voiceDropDownGo, "arrow", typeof(UnityEngine.Transform))
-	slot0.trLangDropArrow = gohelper.findChildComponent(slot0._langDropDownGo, "arrow", typeof(UnityEngine.Transform))
-	slot2 = GameLanguageMgr.instance:getStoryIndexByShortCut(slot0._allLangTypes[slot0._curLangTxtIndex + 1])
+	arg_6_0.trVoiceDropArrow = gohelper.findChildComponent(arg_6_0._voiceDropDownGo, "arrow", typeof(UnityEngine.Transform))
+	arg_6_0.trLangDropArrow = gohelper.findChildComponent(arg_6_0._langDropDownGo, "arrow", typeof(UnityEngine.Transform))
 
-	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(slot2)
-	PlayerPrefsHelper.setNumber("StoryTxtLanType", slot2 - 1)
+	local var_6_0 = arg_6_0._allLangTypes[arg_6_0._curLangTxtIndex + 1]
+	local var_6_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(var_6_0)
+
+	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(var_6_1)
+	PlayerPrefsHelper.setNumber("StoryTxtLanType", var_6_1 - 1)
 end
 
-function slot0._refreshVoiceDropDown(slot0)
-	slot0._allVoiceTypes = {}
-	slot0._allStoryVoiceTypes = {}
-	slot0._allStoryVoiceTypesStr = {}
-	slot1 = GameConfig:GetCurVoiceShortcut()
-	slot2 = SettingsController.instance:getStoryVoiceType()
-	slot0._curVoiceIndex = 0
-	slot0._curStoryVoiceIndex = 0
+function var_0_0._refreshVoiceDropDown(arg_7_0)
+	arg_7_0._allVoiceTypes = {}
+	arg_7_0._allStoryVoiceTypes = {}
+	arg_7_0._allStoryVoiceTypesStr = {}
 
-	for slot8 = 1, #HotUpdateVoiceMgr.instance:getSupportVoiceLangs() do
-		if slot3[slot8] == GameConfig:GetDefaultVoiceShortcut() then
-			table.insert(slot0._allVoiceTypes, 1, slot9)
+	local var_7_0 = GameConfig:GetCurVoiceShortcut()
+	local var_7_1 = SettingsController.instance:getStoryVoiceType()
+
+	arg_7_0._curVoiceIndex = 0
+	arg_7_0._curStoryVoiceIndex = 0
+
+	local var_7_2 = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+	local var_7_3 = GameConfig:GetDefaultVoiceShortcut()
+
+	for iter_7_0 = 1, #var_7_2 do
+		local var_7_4 = var_7_2[iter_7_0]
+
+		if var_7_4 == var_7_3 then
+			table.insert(arg_7_0._allVoiceTypes, 1, var_7_4)
 		elseif OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.AudioDownload) then
-			table.insert(slot0._allVoiceTypes, slot9)
+			table.insert(arg_7_0._allVoiceTypes, var_7_4)
 		end
 	end
 
-	slot0._curVoiceIndex = (tabletool.indexOf(slot0._allVoiceTypes, slot1) or 1) - 1
+	arg_7_0._curVoiceIndex = (tabletool.indexOf(arg_7_0._allVoiceTypes, var_7_0) or 1) - 1
 
-	slot0:_refreshVoiceDropDownStr()
+	arg_7_0:_refreshVoiceDropDownStr()
 end
 
-function slot0._refreshLangDropDown(slot0)
-	slot0._allLangTypes = {}
-	slot0._allLangTypesStr = {}
-	slot0._curLangTxtIndex = 0
+function var_0_0._refreshLangDropDown(arg_8_0)
+	local var_8_0 = GameConfig:GetSupportedLangShortcuts()
 
-	for slot6 = 0, GameConfig:GetSupportedLangShortcuts().Length - 1 do
-		if OpenConfig.instance:isOpenLangTxt(slot1[slot6]) then
-			table.insert(slot0._allLangTypes, slot7)
-			table.insert(slot0._allLangTypesStr, SettingsConfig.instance:getSettingLang(slot7))
+	arg_8_0._allLangTypes = {}
+	arg_8_0._allLangTypesStr = {}
 
-			if slot7 == GameConfig:GetCurLangShortcut() then
-				logNormal("cur lang index = " .. #slot0._allLangTypes)
+	local var_8_1 = GameConfig:GetCurLangShortcut()
 
-				slot0._curLangTxtIndex = #slot0._allLangTypes - 1
+	arg_8_0._curLangTxtIndex = 0
+
+	for iter_8_0 = 0, var_8_0.Length - 1 do
+		local var_8_2 = var_8_0[iter_8_0]
+
+		if OpenConfig.instance:isOpenLangTxt(var_8_2) then
+			table.insert(arg_8_0._allLangTypes, var_8_2)
+			table.insert(arg_8_0._allLangTypesStr, SettingsConfig.instance:getSettingLang(var_8_2))
+
+			if var_8_2 == var_8_1 then
+				logNormal("cur lang index = " .. #arg_8_0._allLangTypes)
+
+				arg_8_0._curLangTxtIndex = #arg_8_0._allLangTypes - 1
 			end
 		end
 	end
 
-	slot0:_refreshLangDropDownStr()
+	arg_8_0:_refreshLangDropDownStr()
 end
 
-function slot0._refreshLangDropDownStr(slot0)
-	slot1 = GameConfig:GetCurLangShortcut()
+function var_0_0._refreshLangDropDownStr(arg_9_0)
+	local var_9_0 = GameConfig:GetCurLangShortcut()
 
-	for slot5, slot6 in ipairs(slot0._allLangTypes) do
-		slot7 = slot0._allLangTypesStr[slot5]
+	for iter_9_0, iter_9_1 in ipairs(arg_9_0._allLangTypes) do
+		local var_9_1 = arg_9_0._allLangTypesStr[iter_9_0]
 
-		if slot6 == slot1 then
-			slot0._txtLangDrop.text = string.format("<color=#c3beb6ff>%s</color>", slot7)
-			slot7 = string.format("<color=#efb785ff>%s</color>", slot7)
+		if iter_9_1 == var_9_0 then
+			arg_9_0._txtLangDrop.text = string.format("<color=#c3beb6ff>%s</color>", var_9_1)
+			var_9_1 = string.format("<color=#efb785ff>%s</color>", var_9_1)
 		else
-			slot7 = string.format("<color=#c3beb6ff>%s</color>", slot7)
+			var_9_1 = string.format("<color=#c3beb6ff>%s</color>", var_9_1)
 		end
 
-		if slot0._langItemList[slot5] == nil then
-			slot8 = slot0:getUserDataTb_()
-			slot8.go = gohelper.cloneInPlace(slot0._langItemGo, "Item" .. slot5)
-			slot8.goselected = gohelper.findChild(slot8.go, "BG")
-			slot8.goxian = gohelper.findChild(slot8.go, "xian")
-			slot8.txt = gohelper.findChildText(slot8.go, "Text")
-			slot8.btn = gohelper.getClickWithAudio(slot8.go, AudioEnum.UI.play_ui_plot_common)
+		local var_9_2 = arg_9_0._langItemList[iter_9_0]
 
-			slot8.btn:AddClickListener(function (slot0)
-				transformhelper.setLocalScale(uv0.trLangDropArrow, 1, 1, 1)
-				uv0:_onChangeLangTxtType(uv1 - 1)
-			end, slot8)
+		if var_9_2 == nil then
+			var_9_2 = arg_9_0:getUserDataTb_()
+			var_9_2.go = gohelper.cloneInPlace(arg_9_0._langItemGo, "Item" .. iter_9_0)
+			var_9_2.goselected = gohelper.findChild(var_9_2.go, "BG")
+			var_9_2.goxian = gohelper.findChild(var_9_2.go, "xian")
+			var_9_2.txt = gohelper.findChildText(var_9_2.go, "Text")
+			var_9_2.btn = gohelper.getClickWithAudio(var_9_2.go, AudioEnum.UI.play_ui_plot_common)
 
-			slot0._langItemList[slot5] = slot8
+			var_9_2.btn:AddClickListener(function(arg_10_0)
+				transformhelper.setLocalScale(arg_9_0.trLangDropArrow, 1, 1, 1)
+				arg_9_0:_onChangeLangTxtType(iter_9_0 - 1)
+			end, var_9_2)
+
+			arg_9_0._langItemList[iter_9_0] = var_9_2
 		end
 
-		slot8.txt.text = slot7
+		var_9_2.txt.text = var_9_1
 
-		gohelper.setActive(slot8.goselected, slot6 == slot1)
-		gohelper.setActive(slot8.go, true)
-		gohelper.setActive(slot8.goxian, slot5 ~= #slot0._allLangTypes)
+		gohelper.setActive(var_9_2.goselected, iter_9_1 == var_9_0)
+		gohelper.setActive(var_9_2.go, true)
+		gohelper.setActive(var_9_2.goxian, iter_9_0 ~= #arg_9_0._allLangTypes)
 	end
 
-	for slot5 = #slot0._allLangTypes + 1, #slot0._allLangTypes do
-		gohelper.setActive(slot0._allLangTypes[slot5].go, false)
+	for iter_9_2 = #arg_9_0._allLangTypes + 1, #arg_9_0._allLangTypes do
+		gohelper.setActive(arg_9_0._allLangTypes[iter_9_2].go, false)
 	end
 
-	recthelper.setHeight(slot0._langDropDownItemListGo.transform, #slot0._allLangTypes * 84)
+	local var_9_3 = #arg_9_0._allLangTypes * 84
+
+	recthelper.setHeight(arg_9_0._langDropDownItemListGo.transform, var_9_3)
 end
 
-function slot0._refreshVoiceDropDownStr(slot0)
-	slot1 = GameConfig:GetCurVoiceShortcut()
+function var_0_0._refreshVoiceDropDownStr(arg_11_0)
+	local var_11_0 = GameConfig:GetCurVoiceShortcut()
 
-	for slot5, slot6 in ipairs(slot0._allVoiceTypes) do
-		slot7 = luaLang(slot6)
-		slot8 = SettingsVoicePackageModel.instance:getPackInfo(slot6)
+	for iter_11_0, iter_11_1 in ipairs(arg_11_0._allVoiceTypes) do
+		local var_11_1 = luaLang(iter_11_1)
+		local var_11_2 = SettingsVoicePackageModel.instance:getPackInfo(iter_11_1)
 
-		if slot6 == slot1 then
-			slot0._curVoiceIndex = slot5 - 1
-			slot0._txtvoiceDrop.text = string.format("<color=#c3beb6ff>%s</color>", slot7)
-			slot7 = string.format("<color=#efb785ff>%s</color>", slot7)
-		elseif slot8 and slot8:needDownload() then
-			slot9, slot10, slot11 = slot8:getLeftSizeMBorGB()
-			slot7 = string.format("<color=#c3beb666>%s%s</color>", slot7, string.format("(%.2f%s)", slot9, slot11))
+		if iter_11_1 == var_11_0 then
+			arg_11_0._curVoiceIndex = iter_11_0 - 1
+			arg_11_0._txtvoiceDrop.text = string.format("<color=#c3beb6ff>%s</color>", var_11_1)
+			var_11_1 = string.format("<color=#efb785ff>%s</color>", var_11_1)
+		elseif var_11_2 and var_11_2:needDownload() then
+			local var_11_3, var_11_4, var_11_5 = var_11_2:getLeftSizeMBorGB()
+
+			var_11_1 = string.format("<color=#c3beb666>%s%s</color>", var_11_1, string.format("(%.2f%s)", var_11_3, var_11_5))
 		else
-			slot7 = string.format("<color=#c3beb6ff>%s</color>", slot7)
+			var_11_1 = string.format("<color=#c3beb6ff>%s</color>", var_11_1)
 		end
 
-		if slot0._voiceItemList[slot5] == nil then
-			slot9 = slot0:getUserDataTb_()
-			slot9.go = gohelper.cloneInPlace(slot0._voiceItemGo, "Item" .. slot5)
-			slot9.goselected = gohelper.findChild(slot9.go, "BG")
-			slot9.goxian = gohelper.findChild(slot9.go, "xian")
-			slot9.txt = gohelper.findChildText(slot9.go, "Text")
-			slot9.btn = gohelper.getClickWithAudio(slot9.go, AudioEnum.UI.play_ui_plot_common)
+		local var_11_6 = arg_11_0._voiceItemList[iter_11_0]
 
-			slot9.btn:AddClickListener(function (slot0)
-				transformhelper.setLocalScale(uv0.trVoiceDropArrow, 1, 1, 1)
-				uv0:_onChangeVoiceType(uv1 - 1)
-			end, slot9)
+		if var_11_6 == nil then
+			var_11_6 = arg_11_0:getUserDataTb_()
+			var_11_6.go = gohelper.cloneInPlace(arg_11_0._voiceItemGo, "Item" .. iter_11_0)
+			var_11_6.goselected = gohelper.findChild(var_11_6.go, "BG")
+			var_11_6.goxian = gohelper.findChild(var_11_6.go, "xian")
+			var_11_6.txt = gohelper.findChildText(var_11_6.go, "Text")
+			var_11_6.btn = gohelper.getClickWithAudio(var_11_6.go, AudioEnum.UI.play_ui_plot_common)
 
-			slot0._voiceItemList[slot5] = slot9
+			var_11_6.btn:AddClickListener(function(arg_12_0)
+				transformhelper.setLocalScale(arg_11_0.trVoiceDropArrow, 1, 1, 1)
+				arg_11_0:_onChangeVoiceType(iter_11_0 - 1)
+			end, var_11_6)
+
+			arg_11_0._voiceItemList[iter_11_0] = var_11_6
 		end
 
-		slot9.txt.text = slot7
+		var_11_6.txt.text = var_11_1
 
-		gohelper.setActive(slot9.goselected, slot6 == slot1)
-		gohelper.setActive(slot9.go, true)
-		gohelper.setActive(slot9.goxian, slot5 ~= #slot0._allVoiceTypes)
+		gohelper.setActive(var_11_6.goselected, iter_11_1 == var_11_0)
+		gohelper.setActive(var_11_6.go, true)
+		gohelper.setActive(var_11_6.goxian, iter_11_0 ~= #arg_11_0._allVoiceTypes)
 	end
 
-	for slot5 = #slot0._allVoiceTypes + 1, #slot0._voiceItemList do
-		gohelper.setActive(slot0._voiceItemList[slot5].go, false)
+	for iter_11_2 = #arg_11_0._allVoiceTypes + 1, #arg_11_0._voiceItemList do
+		gohelper.setActive(arg_11_0._voiceItemList[iter_11_2].go, false)
 	end
 
-	recthelper.setHeight(slot0._voiceDropDownItemListGo.transform, #slot0._allVoiceTypes * 84)
-	slot0:_updateVoiceTips()
+	local var_11_7 = #arg_11_0._allVoiceTypes * 84
+
+	recthelper.setHeight(arg_11_0._voiceDropDownItemListGo.transform, var_11_7)
+	arg_11_0:_updateVoiceTips()
 end
 
-function slot0._onChangeVoiceType(slot0, slot1)
-	logNormal("_onChangeVoiceType index = " .. slot1)
+function var_0_0._onChangeVoiceType(arg_13_0, arg_13_1)
+	logNormal("_onChangeVoiceType index = " .. arg_13_1)
 
-	if slot0._curVoiceIndex == slot1 then
+	if arg_13_0._curVoiceIndex == arg_13_1 then
 		return
 	end
 
-	slot0._toChangeVoiceTypeIdx = slot1
+	arg_13_0._toChangeVoiceTypeIdx = arg_13_1
 
-	GameFacade.showMessageBox(MessageBoxIdDefine.SettingAllRoleVoice, MsgBoxEnum.BoxType.Yes_No, slot0._doChangeVoiceTypeAction, nil, , slot0, nil, , luaLang(slot0._allVoiceTypes[slot1 + 1]))
+	local var_13_0 = arg_13_0._allVoiceTypes[arg_13_1 + 1]
+	local var_13_1 = luaLang(var_13_0)
+
+	GameFacade.showMessageBox(MessageBoxIdDefine.SettingAllRoleVoice, MsgBoxEnum.BoxType.Yes_No, arg_13_0._doChangeVoiceTypeAction, nil, nil, arg_13_0, nil, nil, var_13_1)
 end
 
-function slot0._doChangeVoiceTypeAction(slot0)
-	if SettingsVoicePackageModel.instance:getPackInfo(slot0._allVoiceTypes[slot0._toChangeVoiceTypeIdx + 1]) and slot3:needDownload() then
-		SettingsVoicePackageController.instance:tryDownload(slot3, true)
+function var_0_0._doChangeVoiceTypeAction(arg_14_0)
+	local var_14_0 = arg_14_0._toChangeVoiceTypeIdx
+	local var_14_1 = arg_14_0._allVoiceTypes[var_14_0 + 1]
+	local var_14_2 = SettingsVoicePackageModel.instance:getPackInfo(var_14_1)
+
+	if var_14_2 and var_14_2:needDownload() then
+		SettingsVoicePackageController.instance:tryDownload(var_14_2, true)
 	else
-		slot0:addEventCb(AudioMgr.instance, AudioMgr.Evt_ChangeFinish, slot0._onChangeFinish, slot0)
+		arg_14_0:addEventCb(AudioMgr.instance, AudioMgr.Evt_ChangeFinish, arg_14_0._onChangeFinish, arg_14_0)
 
-		slot0._curVoiceIndex = slot1
+		arg_14_0._curVoiceIndex = var_14_0
 
-		if slot2 then
-			SettingsVoicePackageController.instance:switchVoiceType(slot2, "in_settings")
-			slot0:_refreshVoiceDropDownStr()
+		if var_14_1 then
+			SettingsVoicePackageController.instance:switchVoiceType(var_14_1, "in_settings")
+			arg_14_0:_refreshVoiceDropDownStr()
 
-			for slot8, slot9 in pairs(HeroModel.instance:getAllHero()) do
-				slot11, slot12, slot13 = SettingsRoleVoiceModel.instance:getCharVoiceLangPrefValue(slot9.heroId)
+			local var_14_3 = HeroModel.instance:getAllHero()
 
-				if not slot13 then
-					SettingsRoleVoiceModel.instance:setCharVoiceLangPrefValue(slot2, slot9.heroId)
+			for iter_14_0, iter_14_1 in pairs(var_14_3) do
+				local var_14_4 = iter_14_1.heroId
+				local var_14_5, var_14_6, var_14_7 = SettingsRoleVoiceModel.instance:getCharVoiceLangPrefValue(var_14_4)
+
+				if not var_14_7 then
+					SettingsRoleVoiceModel.instance:setCharVoiceLangPrefValue(var_14_1, iter_14_1.heroId)
 				end
 			end
 		else
-			logError("_onChangeVoiceType error  index =" .. slot0._curVoiceIndex)
+			logError("_onChangeVoiceType error  index =" .. arg_14_0._curVoiceIndex)
 		end
 	end
 
-	gohelper.setActive(slot0._voiceDropDownItemListGo, false)
+	gohelper.setActive(arg_14_0._voiceDropDownItemListGo, false)
 end
 
-function slot0._updateVoiceTips(slot0)
-	slot2 = SettingsConfig.instance:getVoiceTips(GameConfig:GetCurVoiceShortcut())
-	slot0._txtdesc.text = slot2
+function var_0_0._updateVoiceTips(arg_15_0)
+	local var_15_0 = GameConfig:GetCurVoiceShortcut()
+	local var_15_1 = SettingsConfig.instance:getVoiceTips(var_15_0)
 
-	gohelper.setActive(slot0._godesc, string.nilorempty(slot2) == false)
+	arg_15_0._txtdesc.text = var_15_1
+
+	gohelper.setActive(arg_15_0._godesc, string.nilorempty(var_15_1) == false)
 end
 
-function slot0._onChangeFinish(slot0)
-	slot0:removeEventCb(AudioMgr.instance, AudioMgr.Evt_ChangeFinish, slot0._onChangeFinish, slot0)
+function var_0_0._onChangeFinish(arg_16_0)
+	arg_16_0:removeEventCb(AudioMgr.instance, AudioMgr.Evt_ChangeFinish, arg_16_0._onChangeFinish, arg_16_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_select)
 	GameFacade.showToast(ToastEnum.SettingCharVoiceLang)
 end
 
-function slot0._onChangeStoryVoiceType(slot0, slot1)
-	logNormal("_onChangeStoryVoiceType index = " .. slot1)
+function var_0_0._onChangeStoryVoiceType(arg_17_0, arg_17_1)
+	logNormal("_onChangeStoryVoiceType index = " .. arg_17_1)
 
-	if slot0._curStoryVoiceIndex == slot1 then
+	if arg_17_0._curStoryVoiceIndex == arg_17_1 then
 		return
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_select)
 
-	slot0._curStoryVoiceIndex = slot1
+	arg_17_0._curStoryVoiceIndex = arg_17_1
 
-	if slot0._allStoryVoiceTypes[slot0._curStoryVoiceIndex + 1] then
-		PlayerPrefsHelper.setString(PlayerPrefsKey.VoiceTypeKey_Story, slot2)
-		PlayerPrefsHelper.setNumber("StoryAudioLanType", GameLanguageMgr.instance:getStoryIndexByShortCut(slot2) - 1)
+	local var_17_0 = arg_17_0._allStoryVoiceTypes[arg_17_0._curStoryVoiceIndex + 1]
+
+	if var_17_0 then
+		PlayerPrefsHelper.setString(PlayerPrefsKey.VoiceTypeKey_Story, var_17_0)
+
+		local var_17_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(var_17_0)
+
+		PlayerPrefsHelper.setNumber("StoryAudioLanType", var_17_1 - 1)
 		PlayerPrefsHelper.save()
-		slot0:_refreshLangDropDownStr()
+		arg_17_0:_refreshLangDropDownStr()
 	else
-		logError("_onChangeVoiceType error  index =" .. slot0._curStoryVoiceIndex)
+		logError("_onChangeVoiceType error  index =" .. arg_17_0._curStoryVoiceIndex)
 	end
 end
 
-function slot0._onChangeLangTxtType(slot0, slot1)
-	logNormal("_onChangeLangTxtType index = " .. slot1)
+function var_0_0._onChangeLangTxtType(arg_18_0, arg_18_1)
+	logNormal("_onChangeLangTxtType index = " .. arg_18_1)
 
-	if slot0._curLangTxtIndex == slot1 then
+	if arg_18_0._curLangTxtIndex == arg_18_1 then
 		return
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_select)
 
-	slot0._curLangTxtIndex = slot1
-	slot2 = slot0._allLangTypes[slot0._curLangTxtIndex + 1]
+	arg_18_0._curLangTxtIndex = arg_18_1
 
-	LangSettings.instance:SetCurLangType(slot2)
+	local var_18_0 = arg_18_0._allLangTypes[arg_18_0._curLangTxtIndex + 1]
 
-	slot3 = GameLanguageMgr.instance:getStoryIndexByShortCut(slot2)
+	LangSettings.instance:SetCurLangType(var_18_0)
 
-	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(slot3)
-	PlayerPrefsHelper.setNumber("StoryTxtLanType", slot3 - 1)
-	slot0:_refreshLangDropDownStr()
+	local var_18_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(var_18_0)
+
+	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(var_18_1)
+	PlayerPrefsHelper.setNumber("StoryTxtLanType", var_18_1 - 1)
+	arg_18_0:_refreshLangDropDownStr()
 	SettingsController.instance:changeLangTxt()
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_19_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, slot0._refreshVoiceDropDown, slot0)
-	slot0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, slot0._refreshVoiceDropDown, slot0)
-	slot0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, slot0._onPackItemStateChange, slot0)
-	slot0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, slot0._refreshVoiceDropDownStr, slot0)
-	gohelper.setActive(slot0._btndownload.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.AudioDownload))
-	gohelper.setActive(slot0._govoicelang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsVoiceLang))
-	gohelper.setActive(slot0._gotxtlang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsTxtLang))
-	gohelper.setActive(slot0._gostoryvoicelang, false)
-	gohelper.setActive(slot0._godownload, true)
-	gohelper.setActive(slot0._godownloading, false)
+function var_0_0.onOpen(arg_20_0)
+	arg_20_0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, arg_20_0._refreshVoiceDropDown, arg_20_0)
+	arg_20_0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, arg_20_0._refreshVoiceDropDown, arg_20_0)
+	arg_20_0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, arg_20_0._onPackItemStateChange, arg_20_0)
+	arg_20_0:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, arg_20_0._refreshVoiceDropDownStr, arg_20_0)
+	gohelper.setActive(arg_20_0._btndownload.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.AudioDownload))
+	gohelper.setActive(arg_20_0._govoicelang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsVoiceLang))
+	gohelper.setActive(arg_20_0._gotxtlang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsTxtLang))
+	gohelper.setActive(arg_20_0._gostoryvoicelang, false)
+	gohelper.setActive(arg_20_0._godownload, true)
+	gohelper.setActive(arg_20_0._godownloading, false)
 end
 
-function slot0._onPackItemStateChange(slot0)
-	slot0:_refreshVoiceDropDownStr()
+function var_0_0._onPackItemStateChange(arg_21_0)
+	arg_21_0:_refreshVoiceDropDownStr()
 end
 
-function slot0._onlangDropClick(slot0)
-	transformhelper.setLocalScale(slot0.trLangDropArrow, 1, -1, 1)
-	gohelper.setActive(slot0._langDropDownItemListGo, true)
+function var_0_0._onlangDropClick(arg_22_0)
+	transformhelper.setLocalScale(arg_22_0.trLangDropArrow, 1, -1, 1)
+	gohelper.setActive(arg_22_0._langDropDownItemListGo, true)
 end
 
-function slot0._onvoiceClick(slot0)
+function var_0_0._onvoiceClick(arg_23_0)
 	SettingsVoicePackageController.instance:onSettingVoiceDropDown()
-	transformhelper.setLocalScale(slot0.trVoiceDropArrow, 1, -1, 1)
-	gohelper.setActive(slot0._voiceDropDownItemListGo, true)
+	transformhelper.setLocalScale(arg_23_0.trVoiceDropArrow, 1, -1, 1)
+	gohelper.setActive(arg_23_0._voiceDropDownItemListGo, true)
 end
 
-function slot0._hideVoice(slot0)
-	transformhelper.setLocalScale(slot0.trVoiceDropArrow, 1, 1, 1)
-	gohelper.setActive(slot0._voiceDropDownItemListGo, false)
+function var_0_0._hideVoice(arg_24_0)
+	transformhelper.setLocalScale(arg_24_0.trVoiceDropArrow, 1, 1, 1)
+	gohelper.setActive(arg_24_0._voiceDropDownItemListGo, false)
 end
 
-function slot0._hideLang(slot0)
-	transformhelper.setLocalScale(slot0.trLangDropArrow, 1, 1, 1)
-	gohelper.setActive(slot0._langDropDownItemListGo, false)
+function var_0_0._hideLang(arg_25_0)
+	transformhelper.setLocalScale(arg_25_0.trLangDropArrow, 1, 1, 1)
+	gohelper.setActive(arg_25_0._langDropDownItemListGo, false)
 end
 
-function slot0._onstoryVoiceClick(slot0)
-	slot0:_cleanXian(slot0._storyVoiceDropDown)
+function var_0_0._onstoryVoiceClick(arg_26_0)
+	arg_26_0:_cleanXian(arg_26_0._storyVoiceDropDown)
 end
 
-function slot0._cleanXian(slot0, slot1)
-	recthelper.setHeight(gohelper.findChild(slot1.gameObject, "Dropdown List").transform, recthelper.getHeight(gohelper.findChild(slot1.gameObject, "Dropdown List/Viewport/Content").transform))
+function var_0_0._cleanXian(arg_27_0, arg_27_1)
+	local var_27_0 = gohelper.findChild(arg_27_1.gameObject, "Dropdown List").transform
+	local var_27_1 = gohelper.findChild(arg_27_1.gameObject, "Dropdown List/Viewport/Content").transform
+	local var_27_2 = recthelper.getHeight(var_27_1)
 
-	if gohelper.findChild(slot1.gameObject, "Dropdown List/Viewport/Content").transform then
-		gohelper.setActive(gohelper.findChild(slot5:GetChild(slot5.childCount - 1).gameObject, "xian"), false)
+	recthelper.setHeight(var_27_0, var_27_2)
+
+	local var_27_3 = gohelper.findChild(arg_27_1.gameObject, "Dropdown List/Viewport/Content").transform
+
+	if var_27_3 then
+		local var_27_4 = var_27_3.childCount - 1
+		local var_27_5 = var_27_3:GetChild(var_27_4).gameObject
+		local var_27_6 = gohelper.findChild(var_27_5, "xian")
+
+		gohelper.setActive(var_27_6, false)
 	end
 end
 
-function slot0.onClose(slot0)
-	slot0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, slot0._refreshVoiceDropDown, slot0)
-	slot0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, slot0._refreshVoiceDropDown, slot0)
-	slot0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, slot0._refreshVoiceDropDownStr, slot0)
-	slot0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, slot0._refreshVoiceDropDownStr, slot0)
+function var_0_0.onClose(arg_28_0)
+	arg_28_0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, arg_28_0._refreshVoiceDropDown, arg_28_0)
+	arg_28_0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, arg_28_0._refreshVoiceDropDown, arg_28_0)
+	arg_28_0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, arg_28_0._refreshVoiceDropDownStr, arg_28_0)
+	arg_28_0:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, arg_28_0._refreshVoiceDropDownStr, arg_28_0)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._voiceClick:RemoveClickListener()
-	slot0._langClick:RemoveClickListener()
+function var_0_0.onDestroyView(arg_29_0)
+	arg_29_0._voiceClick:RemoveClickListener()
+	arg_29_0._langClick:RemoveClickListener()
 
-	if not gohelper.isNil(slot0._voiceDropDownTouchEventMgr) then
-		TouchEventMgrHepler.remove(slot0._voiceDropDownTouchEventMgr)
+	if not gohelper.isNil(arg_29_0._voiceDropDownTouchEventMgr) then
+		TouchEventMgrHepler.remove(arg_29_0._voiceDropDownTouchEventMgr)
 	end
 
-	if not gohelper.isNil(slot0._langDropDownTouchEventMgr) then
-		TouchEventMgrHepler.remove(slot0._langDropDownTouchEventMgr)
+	if not gohelper.isNil(arg_29_0._langDropDownTouchEventMgr) then
+		TouchEventMgrHepler.remove(arg_29_0._langDropDownTouchEventMgr)
 	end
 
-	if slot0._voiceItemList and #slot0._voiceItemList > 0 then
-		for slot4 = 1, #slot0._voiceItemList do
-			slot0._voiceItemList[slot4].btn:RemoveClickListener()
+	if arg_29_0._voiceItemList and #arg_29_0._voiceItemList > 0 then
+		for iter_29_0 = 1, #arg_29_0._voiceItemList do
+			arg_29_0._voiceItemList[iter_29_0].btn:RemoveClickListener()
 		end
 	end
 
-	if slot0._langItemList and #slot0._langItemList > 0 then
-		for slot4 = 1, #slot0._langItemList do
-			slot0._langItemList[slot4].btn:RemoveClickListener()
+	if arg_29_0._langItemList and #arg_29_0._langItemList > 0 then
+		for iter_29_1 = 1, #arg_29_0._langItemList do
+			arg_29_0._langItemList[iter_29_1].btn:RemoveClickListener()
 		end
 	end
 end
 
-return slot0
+return var_0_0

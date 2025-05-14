@@ -1,35 +1,44 @@
-module("modules.logic.fight.system.work.FightWorkFightParamChange330", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkFightParamChange330", package.seeall)
 
-slot0 = class("FightWorkFightParamChange330", FightEffectBase)
-slot0.tempWorkKeyDict = {}
+local var_0_0 = class("FightWorkFightParamChange330", FightEffectBase)
 
-function slot0.onStart(slot0)
-	slot0.sequenceFlow = slot0:com_registWorkDoneFlowSequence()
-	slot0.param = FightDataHelper.fieldMgr.param
+var_0_0.tempWorkKeyDict = {}
 
-	tabletool.clear(uv0.tempWorkKeyDict)
+function var_0_0.onStart(arg_1_0)
+	arg_1_0.sequenceFlow = arg_1_0:com_registWorkDoneFlowSequence()
+	arg_1_0.param = FightDataHelper.fieldMgr.param
 
-	for slot6, slot7 in ipairs(GameUtil.splitString2(slot0.actEffectData.reserveStr, true)) do
-		slot8 = slot7[1]
-		slot11 = slot0.param[slot8] - slot7[2]
+	local var_1_0 = GameUtil.splitString2(arg_1_0.actEffectData.reserveStr, true)
+	local var_1_1 = var_0_0.tempWorkKeyDict
 
-		if not (uv0.Param2WorkKey[slot8] and slot2[slot12]) then
-			if slot12 then
-				slot2[slot12] = true
+	tabletool.clear(var_1_1)
+
+	for iter_1_0, iter_1_1 in ipairs(var_1_0) do
+		local var_1_2 = iter_1_1[1]
+		local var_1_3 = iter_1_1[2]
+		local var_1_4 = arg_1_0.param[var_1_2]
+		local var_1_5 = var_1_4 - var_1_3
+		local var_1_6 = var_0_0.Param2WorkKey[var_1_2]
+
+		if not (var_1_6 and var_1_1[var_1_6]) then
+			if var_1_6 then
+				var_1_1[var_1_6] = true
 			end
 
-			if uv0.Key2Work[slot8] then
-				slot0.sequenceFlow:registWork(slot14, slot8, slot11, slot10, slot9)
+			local var_1_7 = var_0_0.Key2Work[var_1_2]
+
+			if var_1_7 then
+				arg_1_0.sequenceFlow:registWork(var_1_7, var_1_2, var_1_5, var_1_4, var_1_3)
 			else
-				slot0.sequenceFlow:registWork(FightWorkSendEvent, FightEvent.UpdateFightParam, slot8, slot11, slot10, slot9, slot0.actEffectData)
+				arg_1_0.sequenceFlow:registWork(FightWorkSendEvent, FightEvent.UpdateFightParam, var_1_2, var_1_5, var_1_4, var_1_3, arg_1_0.actEffectData)
 			end
 		end
 	end
 
-	slot0.sequenceFlow:start()
+	arg_1_0.sequenceFlow:start()
 end
 
-slot0.Key2Work = {
+var_0_0.Key2Work = {
 	[FightParamData.ParamKey.DoomsdayClock_Value] = FightParamChangeWork3,
 	[FightParamData.ParamKey.DoomsdayClock_Range1] = FightParamChangeWork4,
 	[FightParamData.ParamKey.DoomsdayClock_Range2] = FightParamChangeWork4,
@@ -38,20 +47,24 @@ slot0.Key2Work = {
 	[FightParamData.ParamKey.DoomsdayClock_Offset] = FightParamChangeWork4,
 	[FightParamData.ParamKey.ACT191_MIN_HP_RATE] = FightParamChangeWork9
 }
-slot1 = 0
-slot0.WorkKey = {
-	DoomsDayClockAreaChangeKey = function ()
-		uv0 = uv0 + 1
 
-		return uv0
-	end()
+local var_0_1 = 0
+
+local function var_0_2()
+	var_0_1 = var_0_1 + 1
+
+	return var_0_1
+end
+
+var_0_0.WorkKey = {
+	DoomsDayClockAreaChangeKey = var_0_2()
 }
-slot0.Param2WorkKey = {
-	[FightParamData.ParamKey.DoomsdayClock_Range1] = slot0.WorkKey.DoomsDayClockAreaChangeKey,
-	[FightParamData.ParamKey.DoomsdayClock_Range2] = slot0.WorkKey.DoomsDayClockAreaChangeKey,
-	[FightParamData.ParamKey.DoomsdayClock_Range3] = slot0.WorkKey.DoomsDayClockAreaChangeKey,
-	[FightParamData.ParamKey.DoomsdayClock_Range4] = slot0.WorkKey.DoomsDayClockAreaChangeKey,
-	[FightParamData.ParamKey.DoomsdayClock_Offset] = slot0.WorkKey.DoomsDayClockAreaChangeKey
+var_0_0.Param2WorkKey = {
+	[FightParamData.ParamKey.DoomsdayClock_Range1] = var_0_0.WorkKey.DoomsDayClockAreaChangeKey,
+	[FightParamData.ParamKey.DoomsdayClock_Range2] = var_0_0.WorkKey.DoomsDayClockAreaChangeKey,
+	[FightParamData.ParamKey.DoomsdayClock_Range3] = var_0_0.WorkKey.DoomsDayClockAreaChangeKey,
+	[FightParamData.ParamKey.DoomsdayClock_Range4] = var_0_0.WorkKey.DoomsDayClockAreaChangeKey,
+	[FightParamData.ParamKey.DoomsdayClock_Offset] = var_0_0.WorkKey.DoomsDayClockAreaChangeKey
 }
 
-return slot0
+return var_0_0

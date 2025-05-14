@@ -1,15 +1,15 @@
-module("modules.logic.fight.model.data.FightPlayerFinisherInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightPlayerFinisherInfoData", package.seeall)
 
-slot0 = FightDataClass("FightPlayerFinisherInfoData")
+local var_0_0 = FightDataClass("FightPlayerFinisherInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.skills = {}
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.skills = {}
 
-	for slot5, slot6 in ipairs(slot1.skills) do
-		table.insert(slot0.skills, FightPlayerFinisherSkillInfoData.New(slot6))
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.skills) do
+		table.insert(arg_1_0.skills, FightPlayerFinisherSkillInfoData.New(iter_1_1))
 	end
 
-	slot0.roundUseLimit = slot1.roundUseLimit
+	arg_1_0.roundUseLimit = arg_1_1.roundUseLimit
 end
 
-return slot0
+return var_0_0

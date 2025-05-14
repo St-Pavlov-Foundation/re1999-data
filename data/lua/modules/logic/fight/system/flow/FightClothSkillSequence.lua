@@ -1,32 +1,36 @@
-module("modules.logic.fight.system.flow.FightClothSkillSequence", package.seeall)
+﻿module("modules.logic.fight.system.flow.FightClothSkillSequence", package.seeall)
 
-slot0 = class("FightClothSkillSequence", BaseFightSequence)
+local var_0_0 = class("FightClothSkillSequence", BaseFightSequence)
 
-function slot0.buildFlow(slot0, slot1)
-	uv0.super.buildFlow(slot0)
+function var_0_0.buildFlow(arg_1_0, arg_1_1)
+	var_0_0.super.buildFlow(arg_1_0)
 
-	slot0.roundData = slot1
+	arg_1_0.roundData = arg_1_1
 
-	slot0:buildRoundFlows()
+	arg_1_0:buildRoundFlows()
 end
 
-function slot0.buildRoundFlows(slot0)
-	slot0:addWork(FunctionWork.New(function ()
+function var_0_0.buildRoundFlows(arg_2_0)
+	arg_2_0:addWork(FunctionWork.New(function()
 		FightController.instance:dispatchEvent(FightEvent.StartPlayClothSkill)
 	end))
 
-	if FightStepBuilder.buildStepWorkList(slot0.roundData and slot0.roundData.fightStep) then
-		for slot5, slot6 in ipairs(slot1) do
-			slot0:addWork(slot6)
+	local var_2_0 = FightStepBuilder.buildStepWorkList(arg_2_0.roundData and arg_2_0.roundData.fightStep)
+
+	if var_2_0 then
+		for iter_2_0, iter_2_1 in ipairs(var_2_0) do
+			arg_2_0:addWork(iter_2_1)
 		end
 	end
 
-	slot0:addWork(FunctionWork.New(function ()
-		FightDataMgr.instance:afterPlayRoundData(FightDataHelper.roundMgr:getRoundData())
+	arg_2_0:addWork(FunctionWork.New(function()
+		local var_4_0 = FightDataHelper.roundMgr:getRoundData()
+
+		FightDataMgr.instance:afterPlayRoundData(var_4_0)
 	end))
-	slot0:addWork(FunctionWork.New(function ()
+	arg_2_0:addWork(FunctionWork.New(function()
 		FightController.instance:dispatchEvent(FightEvent.AfterPlayClothSkill)
 	end))
 end
 
-return slot0
+return var_0_0

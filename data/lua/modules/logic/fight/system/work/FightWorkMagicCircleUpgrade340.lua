@@ -1,14 +1,16 @@
-module("modules.logic.fight.system.work.FightWorkMagicCircleUpgrade340", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkMagicCircleUpgrade340", package.seeall)
 
-slot0 = class("FightWorkMagicCircleUpgrade340", FightEffectBase)
+local var_0_0 = class("FightWorkMagicCircleUpgrade340", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if FightModel.instance:getMagicCircleInfo() then
-		slot1:refreshData(slot0.actEffectData.magicCircle)
-		FightController.instance:dispatchEvent(FightEvent.UpgradeMagicCircile, slot1)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = FightModel.instance:getMagicCircleInfo()
+
+	if var_1_0 then
+		var_1_0:refreshData(arg_1_0.actEffectData.magicCircle)
+		FightController.instance:dispatchEvent(FightEvent.UpgradeMagicCircile, var_1_0)
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

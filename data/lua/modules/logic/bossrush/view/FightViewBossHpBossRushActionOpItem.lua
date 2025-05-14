@@ -1,58 +1,71 @@
-module("modules.logic.bossrush.view.FightViewBossHpBossRushActionOpItem", package.seeall)
+﻿module("modules.logic.bossrush.view.FightViewBossHpBossRushActionOpItem", package.seeall)
 
-slot0 = class("FightViewBossHpBossRushActionOpItem", FightBaseView)
+local var_0_0 = class("FightViewBossHpBossRushActionOpItem", FightBaseView)
 
-function slot0.onInitView(slot0)
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:com_registFightEvent(FightEvent.ForbidBossRushHpChannelSkillOpItem, slot0._onForbidBossRushHpChannelSkillOpItem)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:com_registFightEvent(FightEvent.ForbidBossRushHpChannelSkillOpItem, arg_2_0._onForbidBossRushHpChannelSkillOpItem)
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_4_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_5_0)
+	return
 end
 
-function slot0._onForbidBossRushHpChannelSkillOpItem(slot0, slot1)
-	if slot1 == slot0._data then
-		slot0:refreshUI(slot0.viewGO, slot1)
+function var_0_0._onForbidBossRushHpChannelSkillOpItem(arg_6_0, arg_6_1)
+	if arg_6_1 == arg_6_0._data then
+		arg_6_0:refreshUI(arg_6_0.viewGO, arg_6_1)
 	end
 end
 
-function slot0.refreshUI(slot0, slot1, slot2)
-	slot0.viewGO = slot1
-	slot0._data = slot2
+function var_0_0.refreshUI(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0.viewGO = arg_7_1
+	arg_7_0._data = arg_7_2
 
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, "root/act"), slot2.skillId ~= 0)
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, "root/noAct"), slot5 == 0)
+	local var_7_0 = gohelper.findChild(arg_7_0.viewGO, "root/noAct")
+	local var_7_1 = gohelper.findChild(arg_7_0.viewGO, "root/act")
+	local var_7_2 = arg_7_2.skillId
 
-	if slot5 == 0 then
+	gohelper.setActive(var_7_1, var_7_2 ~= 0)
+	gohelper.setActive(var_7_0, var_7_2 == 0)
+
+	if var_7_2 == 0 then
 		return
 	end
 
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, "root/act/forbid"), slot2.isChannelPosedSkill and slot2.forbidden)
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, "root/act/round"), slot2.isChannelSkill)
+	local var_7_3 = gohelper.findChild(arg_7_0.viewGO, "root/act/round")
+	local var_7_4 = gohelper.findChildText(arg_7_0.viewGO, "root/act/round/num")
+	local var_7_5 = gohelper.findChild(arg_7_0.viewGO, "root/act/forbid")
 
-	gohelper.findChildText(slot0.viewGO, "root/act/round/num").text = slot2.round or 0
+	gohelper.setActive(var_7_5, arg_7_2.isChannelPosedSkill and arg_7_2.forbidden)
+	gohelper.setActive(var_7_3, arg_7_2.isChannelSkill)
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(slot4, FightOpItem):updateCardInfoMO({
-		uid = slot0.PARENT_VIEW._bossEntityMO.uid,
-		skillId = slot2.skillId
+	var_7_4.text = arg_7_2.round or 0
+
+	MonoHelper.addNoUpdateLuaComOnceToGo(var_7_1, FightOpItem):updateCardInfoMO({
+		uid = arg_7_0.PARENT_VIEW._bossEntityMO.uid,
+		skillId = arg_7_2.skillId
 	})
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_8_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_9_0)
+	return
 end
 
-return slot0
+return var_0_0

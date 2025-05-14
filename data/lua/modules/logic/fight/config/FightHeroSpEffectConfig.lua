@@ -1,11 +1,12 @@
-module("modules.logic.fight.config.FightHeroSpEffectConfig", package.seeall)
+﻿module("modules.logic.fight.config.FightHeroSpEffectConfig", package.seeall)
 
-slot0 = class("FightHeroSpEffectConfig", BaseConfig)
+local var_0_0 = class("FightHeroSpEffectConfig", BaseConfig)
 
-function slot0.ctor(slot0)
+function var_0_0.ctor(arg_1_0)
+	return
 end
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_2_0)
 	return {
 		"fight_sp_effect_kkny_bear_damage",
 		"fight_sp_effect_kkny_heal",
@@ -19,51 +20,62 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	return
 end
 
-function slot0.getBKLEAddBuffEffect(slot0, slot1)
-	if slot0.curSkin ~= slot1 then
-		slot0.curSkin = slot1
+function var_0_0.getBKLEAddBuffEffect(arg_4_0, arg_4_1)
+	if arg_4_0.curSkin ~= arg_4_1 then
+		arg_4_0.curSkin = arg_4_1
 
-		slot0:initBKLERandomList(slot1)
+		arg_4_0:initBKLERandomList(arg_4_1)
 	end
 
-	if #slot0.BKLEEffectList == 0 then
-		slot0:initBKLERandomList(slot1)
+	if #arg_4_0.BKLEEffectList == 0 then
+		arg_4_0:initBKLERandomList(arg_4_1)
 	end
 
-	if #slot0.BKLEEffectList <= 1 then
-		return table.remove(slot0.BKLEEffectList, 1)
+	local var_4_0 = #arg_4_0.BKLEEffectList
+
+	if var_4_0 <= 1 then
+		return table.remove(arg_4_0.BKLEEffectList, 1)
 	end
 
-	return table.remove(slot0.BKLEEffectList, math.random(1, slot2))
+	local var_4_1 = math.random(1, var_4_0)
+
+	return table.remove(arg_4_0.BKLEEffectList, var_4_1)
 end
 
-function slot0.initBKLERandomList(slot0, slot1)
-	slot0.BKLEEffectList = slot0.BKLEEffectList or {}
+function var_0_0.initBKLERandomList(arg_5_0, arg_5_1)
+	arg_5_0.BKLEEffectList = arg_5_0.BKLEEffectList or {}
 
-	tabletool.clear(slot0.BKLEEffectList)
+	tabletool.clear(arg_5_0.BKLEEffectList)
 
-	for slot7, slot8 in pairs(FightStrUtil.instance:getSplitCache(lua_fight_sp_effect_bkle.configDict[slot1].path, "|")) do
-		slot0.BKLEEffectList[slot7] = slot8
+	local var_5_0 = lua_fight_sp_effect_bkle.configDict[arg_5_1]
+	local var_5_1 = FightStrUtil.instance:getSplitCache(var_5_0.path, "|")
+
+	for iter_5_0, iter_5_1 in pairs(var_5_1) do
+		arg_5_0.BKLEEffectList[iter_5_0] = iter_5_1
 	end
 end
 
-function slot0.getLYEffectCo(slot0, slot1)
-	return lua_fight_sp_effect_ly.configDict[slot1] or lua_fight_sp_effect_ly.configDict[1]
+function var_0_0.getLYEffectCo(arg_6_0, arg_6_1)
+	return lua_fight_sp_effect_ly.configDict[arg_6_1] or lua_fight_sp_effect_ly.configDict[1]
 end
 
-function slot0.getRandomAlfASFDMissileRes(slot0)
-	if slot0.tempRandomList and #slot0.tempRandomList > 0 then
-		slot0.tempRandomList = slot0.tempRandomList
+function var_0_0.getRandomAlfASFDMissileRes(arg_7_0)
+	if arg_7_0.tempRandomList and #arg_7_0.tempRandomList > 0 then
+		arg_7_0.tempRandomList = arg_7_0.tempRandomList
 	else
-		slot0.tempRandomList = tabletool.copy(lua_fight_sp_effect_alf.configList)
+		arg_7_0.tempRandomList = tabletool.copy(lua_fight_sp_effect_alf.configList)
 	end
 
-	return table.remove(slot0.tempRandomList, math.random(#slot0.tempRandomList))
+	local var_7_0 = #arg_7_0.tempRandomList
+	local var_7_1 = math.random(var_7_0)
+
+	return table.remove(arg_7_0.tempRandomList, var_7_1)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

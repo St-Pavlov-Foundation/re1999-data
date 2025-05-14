@@ -1,7 +1,8 @@
-module("modules.logic.settings.model.SettingsModel", package.seeall)
+﻿module("modules.logic.settings.model.SettingsModel", package.seeall)
 
-slot0 = class("SettingsModel", BaseModel)
-slot0.ResolutionRatioWidthList = {
+local var_0_0 = class("SettingsModel", BaseModel)
+
+var_0_0.ResolutionRatioWidthList = {
 	15360,
 	7680,
 	3840,
@@ -14,656 +15,686 @@ slot0.ResolutionRatioWidthList = {
 	1024,
 	800
 }
-slot0.FrameRate = {
+var_0_0.FrameRate = {
 	30,
 	60,
 	120,
 	144
 }
 
-function slot0.onInit(slot0)
-	slot0._curCategoryId = 1
-	slot0._categoryList = {}
-	slot0.showHelper = slot0.showHelper or SettingsShowHelper.New()
-	slot1 = 80
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._curCategoryId = 1
+	arg_1_0._categoryList = {}
+	arg_1_0.showHelper = arg_1_0.showHelper or SettingsShowHelper.New()
+
+	local var_1_0 = 80
+	local var_1_1 = 100
 
 	if PlayerPrefsHelper.getNumber(PlayerPrefsKey.FirstBootForBetaTest, 0) == 1 or not BootNativeUtil.isStandalonePlayer() or SLFramework.FrameworkSettings.IsEditor then
-		slot0._musicValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsMusicValue, slot1)
-		slot0._voiceValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVoiceValue, slot1)
-		slot0._effectValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsEffectValue, slot1)
-		slot0._globalAudioVolume = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsGlobalAudioVolume, 100)
+		arg_1_0._musicValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsMusicValue, var_1_0)
+		arg_1_0._voiceValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVoiceValue, var_1_0)
+		arg_1_0._effectValue = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsEffectValue, var_1_0)
+		arg_1_0._globalAudioVolume = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsGlobalAudioVolume, var_1_1)
 	else
-		slot0._musicValue = slot1
-		slot0._voiceValue = slot1
-		slot0._effectValue = slot1
-		slot0._globalAudioVolume = slot2
-		slot0._pushStates = {}
+		arg_1_0._musicValue = var_1_0
+		arg_1_0._voiceValue = var_1_0
+		arg_1_0._effectValue = var_1_0
+		arg_1_0._globalAudioVolume = var_1_1
+		arg_1_0._pushStates = {}
 
 		PlayerPrefsHelper.setNumber(PlayerPrefsKey.FirstBootForBetaTest, 1)
 	end
 
-	slot0._musicValue = math.ceil(slot0._musicValue)
-	slot0._voiceValue = math.ceil(slot0._voiceValue)
-	slot0._effectValue = math.ceil(slot0._effectValue)
-	slot0._energyMode = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsEnergyMode, 0)
-	slot0._screenshotSwitch = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsScreenshotSwitch, BootNativeUtil.isAndroid() and 0 or 1)
-	slot0._minRate = 1.3333333333333333
-	slot0._maxRate = 2.4
+	arg_1_0._musicValue = math.ceil(arg_1_0._musicValue)
+	arg_1_0._voiceValue = math.ceil(arg_1_0._voiceValue)
+	arg_1_0._effectValue = math.ceil(arg_1_0._effectValue)
+	arg_1_0._energyMode = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsEnergyMode, 0)
+
+	local var_1_2 = BootNativeUtil.isAndroid() and 0 or 1
+
+	arg_1_0._screenshotSwitch = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsScreenshotSwitch, var_1_2)
+	arg_1_0._minRate = 1.3333333333333333
+	arg_1_0._maxRate = 2.4
 
 	if SLFramework.FrameworkSettings.IsEditor then
-		slot0._screenHeight = UnityEngine.Screen.height
-		slot0._screenWidth = UnityEngine.Screen.width
+		arg_1_0._screenWidth, arg_1_0._screenHeight = UnityEngine.Screen.width, UnityEngine.Screen.height
 	elseif BootNativeUtil.isWindows() then
-		slot0:initRateAndSystemSize()
-		slot0:initWindowsResolution()
-		slot0:initResolutionRationDataList()
+		arg_1_0:initRateAndSystemSize()
+		arg_1_0:initWindowsResolution()
+		arg_1_0:initResolutionRationDataList()
 	else
-		slot0._screenHeight = UnityEngine.Screen.height
-		slot0._screenWidth = UnityEngine.Screen.width
+		arg_1_0._screenWidth, arg_1_0._screenHeight = UnityEngine.Screen.width, UnityEngine.Screen.height
 	end
 
-	slot0.limitedRoleMO = SettingsLimitedRoleMO.New()
+	arg_1_0.limitedRoleMO = SettingsLimitedRoleMO.New()
 end
 
-function slot0.reInit(slot0)
-	slot0.limitedRoleMO:reInit()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0.limitedRoleMO:reInit()
 end
 
-function slot0.initRateAndSystemSize(slot0)
-	slot0._systemScreenWidth, slot0._systemScreenHeight = BootNativeUtil.getDisplayResolution()
-	slot0._curRate = slot0._systemScreenWidth / slot0._systemScreenHeight
+function var_0_0.initRateAndSystemSize(arg_3_0)
+	arg_3_0._systemScreenWidth, arg_3_0._systemScreenHeight = BootNativeUtil.getDisplayResolution()
+	arg_3_0._curRate = arg_3_0._systemScreenWidth / arg_3_0._systemScreenHeight
 
-	if slot0._curRate < slot0._minRate then
-		slot0._systemScreenHeight = slot0._systemScreenWidth / slot0._minRate
-		slot0._curRate = slot0._minRate
+	if arg_3_0._curRate < arg_3_0._minRate then
+		arg_3_0._systemScreenHeight = arg_3_0._systemScreenWidth / arg_3_0._minRate
+		arg_3_0._curRate = arg_3_0._minRate
 	end
 
-	if slot0._maxRate < slot0._curRate then
-		slot0._systemScreenWidth = slot0._systemScreenHeight * slot0._maxRate
-		slot0._curRate = slot0._maxRate
+	if arg_3_0._curRate > arg_3_0._maxRate then
+		arg_3_0._systemScreenWidth = arg_3_0._systemScreenHeight * arg_3_0._maxRate
+		arg_3_0._curRate = arg_3_0._maxRate
 	end
 end
 
-function slot0.initResolutionRationDataList(slot0)
-	slot0._resolutionRatioDataList = {}
+function var_0_0.initResolutionRationDataList(arg_4_0)
+	arg_4_0._resolutionRatioDataList = {}
 
 	if SLFramework.FrameworkSettings.IsEditor then
-		slot0:_appendResolutionData(UnityEngine.Screen.width, UnityEngine.Screen.height, false)
+		arg_4_0:_appendResolutionData(UnityEngine.Screen.width, UnityEngine.Screen.height, false)
 
 		return
 	end
 
-	slot2 = UnityEngine.Screen.currentResolution.width
+	local var_4_0 = UnityEngine.Screen.currentResolution.width
 
-	if slot0._resolutionRatioDataList and #slot0._resolutionRatioDataList >= 1 and slot0._resolutionRatioDataList[1] == slot2 then
+	if arg_4_0._resolutionRatioDataList and #arg_4_0._resolutionRatioDataList >= 1 and arg_4_0._resolutionRatioDataList[1] == var_4_0 then
 		return
 	end
 
-	slot7 = math.floor(slot2 / slot0._curRate)
-	slot8 = true
+	local var_4_1 = math.floor(var_4_0 / arg_4_0._curRate)
 
-	slot0:_appendResolutionData(slot2, slot7, slot8)
+	arg_4_0:_appendResolutionData(var_4_0, var_4_1, true)
 
-	for slot7, slot8 in ipairs(uv0.ResolutionRatioWidthList) do
-		if slot8 <= slot0._systemScreenWidth and slot8 <= slot2 then
-			slot0:_appendResolutionData(slot8, math.floor(slot8 / slot0._curRate), false)
+	for iter_4_0, iter_4_1 in ipairs(var_0_0.ResolutionRatioWidthList) do
+		if iter_4_1 <= arg_4_0._systemScreenWidth and iter_4_1 <= var_4_0 then
+			local var_4_2 = math.floor(iter_4_1 / arg_4_0._curRate)
+
+			arg_4_0:_appendResolutionData(iter_4_1, var_4_2, false)
 		end
 	end
 
-	slot4, slot5 = slot0:getCurrentDropDownIndex()
+	local var_4_3, var_4_4 = arg_4_0:getCurrentDropDownIndex()
 
-	if slot5 then
-		slot6, slot7, slot8 = slot0:getCurrentResolutionWHAndIsFull()
+	if var_4_4 then
+		local var_4_5, var_4_6, var_4_7 = arg_4_0:getCurrentResolutionWHAndIsFull()
 
-		slot0:_appendResolutionData(slot6, slot7, slot8)
+		arg_4_0:_appendResolutionData(var_4_5, var_4_6, var_4_7)
 	end
 end
 
-function slot0.initWindowsResolution(slot0)
+function var_0_0.initWindowsResolution(arg_5_0)
 	if SLFramework.FrameworkSettings.IsEditor then
-		slot0._screenHeight = UnityEngine.Screen.height
-		slot0._screenWidth = UnityEngine.Screen.width
+		arg_5_0._screenWidth, arg_5_0._screenHeight = UnityEngine.Screen.width, UnityEngine.Screen.height
 
-		slot0:_setIsFullScreen(false)
+		arg_5_0:_setIsFullScreen(false)
 
-		slot0._resolutionRatio = slot0:_resolutionStr(slot0._screenWidth, slot0._screenHeight)
+		arg_5_0._resolutionRatio = arg_5_0:_resolutionStr(arg_5_0._screenWidth, arg_5_0._screenHeight)
 	else
-		slot0._resolutionRatio = PlayerPrefsHelper.getString(PlayerPrefsKey.ResolutionRatio, nil)
+		arg_5_0._resolutionRatio = PlayerPrefsHelper.getString(PlayerPrefsKey.ResolutionRatio, nil)
 
-		slot0:_setIsFullScreen(PlayerPrefsHelper.getNumber(PlayerPrefsKey.FullScreenKey, ModuleEnum.FullScreenState.On) == ModuleEnum.FullScreenState.On)
+		local var_5_0 = PlayerPrefsHelper.getNumber(PlayerPrefsKey.FullScreenKey, ModuleEnum.FullScreenState.On)
 
-		if slot0:isFullScreen() then
-			slot2 = UnityEngine.Screen.currentResolution
-			slot0._screenWidth = slot2.width
-			slot0._screenHeight = slot2.height
+		arg_5_0:_setIsFullScreen(var_5_0 == ModuleEnum.FullScreenState.On)
+
+		if arg_5_0:isFullScreen() then
+			local var_5_1 = UnityEngine.Screen.currentResolution
+
+			arg_5_0._screenWidth = var_5_1.width
+			arg_5_0._screenHeight = var_5_1.height
 		else
-			slot2 = not string.nilorempty(slot0._resolutionRatio) and slot0._resolutionRatio ~= "nil"
-			slot3 = slot2 and string.splitToNumber(slot0._resolutionRatio, "*") or {
+			local var_5_2 = not string.nilorempty(arg_5_0._resolutionRatio) and arg_5_0._resolutionRatio ~= "nil"
+			local var_5_3 = var_5_2 and string.splitToNumber(arg_5_0._resolutionRatio, "*") or {
 				1920,
 				1080
 			}
+			local var_5_4 = UnityEngine.Screen.width
 
-			if slot2 and UnityEngine.Screen.width <= slot3[1] then
-				slot0._screenWidth = slot3[1]
-				slot0._screenHeight = slot3[2]
+			if var_5_2 and var_5_4 <= var_5_3[1] then
+				arg_5_0._screenWidth = var_5_3[1]
+				arg_5_0._screenHeight = var_5_3[2]
 			else
-				slot5 = math.floor(slot4 / slot0._curRate)
-				slot0._screenWidth = slot4
-				slot0._screenHeight = slot5
-				slot0._resolutionRatio = slot0:_resolutionStr(slot4, slot5)
+				local var_5_5 = math.floor(var_5_4 / arg_5_0._curRate)
+
+				arg_5_0._screenWidth = var_5_4
+				arg_5_0._screenHeight = var_5_5
+				arg_5_0._resolutionRatio = arg_5_0:_resolutionStr(var_5_4, var_5_5)
 			end
 		end
 	end
 
-	slot0:setResolutionRatio()
+	arg_5_0:setResolutionRatio()
 end
 
-function slot0.getCurCategoryId(slot0)
-	return slot0._curCategoryId
+function var_0_0.getCurCategoryId(arg_6_0)
+	return arg_6_0._curCategoryId
 end
 
-function slot0.setCurCategoryId(slot0, slot1)
-	slot0._curCategoryId = slot1
+function var_0_0.setCurCategoryId(arg_7_0, arg_7_1)
+	arg_7_0._curCategoryId = arg_7_1
 end
 
-function slot0.setSettingsCategoryList(slot0, slot1)
-	slot0._categoryList = slot1
+function var_0_0.setSettingsCategoryList(arg_8_0, arg_8_1)
+	arg_8_0._categoryList = arg_8_1
 end
 
-function slot0.getSettingsCategoryList(slot0)
-	slot0._categoryList = {}
+function var_0_0.getSettingsCategoryList(arg_9_0)
+	arg_9_0._categoryList = {}
 
-	for slot4, slot5 in ipairs(SettingsEnum.CategoryList) do
-		if slot0:canShowCategory(slot5) then
-			table.insert(slot0._categoryList, slot5)
+	for iter_9_0, iter_9_1 in ipairs(SettingsEnum.CategoryList) do
+		if arg_9_0:canShowCategory(iter_9_1) then
+			table.insert(arg_9_0._categoryList, iter_9_1)
 		end
 	end
 
-	return slot0._categoryList
+	return arg_9_0._categoryList
 end
 
-function slot0.canShowCategory(slot0, slot1)
-	slot2 = #slot1.openIds == 0 and slot1.showIds == nil or false
+function var_0_0.canShowCategory(arg_10_0, arg_10_1)
+	local var_10_0 = #arg_10_1.openIds == 0 and arg_10_1.showIds == nil or false
 
-	for slot6, slot7 in pairs(slot1.openIds) do
-		if OpenModel.instance:isFuncBtnShow(slot7) then
-			slot2 = true
+	for iter_10_0, iter_10_1 in pairs(arg_10_1.openIds) do
+		if OpenModel.instance:isFuncBtnShow(iter_10_1) then
+			var_10_0 = true
 
 			break
 		end
 	end
 
-	if not slot2 and slot1.showIds then
-		for slot6, slot7 in pairs(slot1.showIds) do
-			if slot0.showHelper:canShow(slot7) then
-				slot2 = true
+	if not var_10_0 and arg_10_1.showIds then
+		for iter_10_2, iter_10_3 in pairs(arg_10_1.showIds) do
+			if arg_10_0.showHelper:canShow(iter_10_3) then
+				var_10_0 = true
 
 				break
 			end
 		end
 	end
 
-	if slot1.hideOnGamepadModle and GamepadController.instance:isOpen() then
-		slot2 = false
+	if arg_10_1.hideOnGamepadModle and GamepadController.instance:isOpen() then
+		var_10_0 = false
 	end
 
-	return slot2
+	return var_10_0
 end
 
-function slot0.isBilibili()
-	slot0 = SDKMgr.instance:getChannelId() and tostring(slot0)
+function var_0_0.isBilibili()
+	local var_11_0 = SDKMgr.instance:getChannelId()
 
-	return not string.nilorempty(slot0) and slot0 == "101"
+	var_11_0 = var_11_0 and tostring(var_11_0)
+
+	return not string.nilorempty(var_11_0) and var_11_0 == "101"
 end
 
-function slot0.getScreenshotSwitch(slot0)
-	return slot0._screenshotSwitch > 0
+function var_0_0.getScreenshotSwitch(arg_12_0)
+	return arg_12_0._screenshotSwitch > 0
 end
 
-function slot0.setScreenshotSwitch(slot0, slot1)
-	slot0._screenshotSwitch = slot1 and 1 or 0
+function var_0_0.setScreenshotSwitch(arg_13_0, arg_13_1)
+	arg_13_0._screenshotSwitch = arg_13_1 and 1 or 0
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsScreenshotSwitch, slot0._screenshotSwitch)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsScreenshotSwitch, arg_13_0._screenshotSwitch)
 end
 
-function slot0.changeEnergyMode(slot0)
-	if slot0._energyMode == 1 then
-		slot0._energyMode = 0
+function var_0_0.changeEnergyMode(arg_14_0)
+	if arg_14_0._energyMode == 1 then
+		arg_14_0._energyMode = 0
 
-		GameGlobalMgr.instance:getScreenState():setLocalQuality(slot0:getModelGraphicsQuality())
-		GameGlobalMgr.instance:getScreenState():setTargetFrameRate(slot0._frameRate)
+		GameGlobalMgr.instance:getScreenState():setLocalQuality(arg_14_0:getModelGraphicsQuality())
+		GameGlobalMgr.instance:getScreenState():setTargetFrameRate(arg_14_0._frameRate)
 	else
-		slot0._energyMode = 1
+		arg_14_0._energyMode = 1
 
 		GameGlobalMgr.instance:getScreenState():setLocalQuality(ModuleEnum.Performance.Low)
 		GameGlobalMgr.instance:getScreenState():setTargetFrameRate(ModuleEnum.TargetFrameRate.Low)
 	end
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsEnergyMode, slot0._energyMode)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsEnergyMode, arg_14_0._energyMode)
 end
 
-function slot0.getEnergyMode(slot0)
-	return slot0._energyMode
+function var_0_0.getEnergyMode(arg_15_0)
+	return arg_15_0._energyMode
 end
 
-function slot0.getMusicValue(slot0)
-	return slot0._musicValue
+function var_0_0.getMusicValue(arg_16_0)
+	return arg_16_0._musicValue
 end
 
-function slot0.setMusicValue(slot0, slot1)
-	slot0._musicValue = slot1
+function var_0_0.setMusicValue(arg_17_0, arg_17_1)
+	arg_17_0._musicValue = arg_17_1
 
-	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Music_Volume, slot1)
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsMusicValue, slot0._musicValue)
+	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Music_Volume, arg_17_1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsMusicValue, arg_17_0._musicValue)
 end
 
-function slot0.getVoiceValue(slot0)
-	return slot0._voiceValue
+function var_0_0.getVoiceValue(arg_18_0)
+	return arg_18_0._voiceValue
 end
 
-function slot0.setVoiceValue(slot0, slot1)
-	slot0._voiceValue = slot1
+function var_0_0.setVoiceValue(arg_19_0, arg_19_1)
+	arg_19_0._voiceValue = arg_19_1
 
-	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Voc_Volume, slot1)
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVoiceValue, slot0._voiceValue)
+	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Voc_Volume, arg_19_1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVoiceValue, arg_19_0._voiceValue)
 
-	if slot0._voiceValue > 0 then
+	if arg_19_0._voiceValue > 0 then
 		AudioMgr.instance:setState(AudioMgr.instance:getIdFromString("Voc_Volume_M"), AudioMgr.instance:getIdFromString("no"))
 	else
 		AudioMgr.instance:setState(AudioMgr.instance:getIdFromString("Voc_Volume_M"), AudioMgr.instance:getIdFromString("yes"))
 	end
 end
 
-function slot0.getEffectValue(slot0)
-	return slot0._effectValue
+function var_0_0.getEffectValue(arg_20_0)
+	return arg_20_0._effectValue
 end
 
-function slot0.setEffectValue(slot0, slot1)
-	slot0._effectValue = slot1
+function var_0_0.setEffectValue(arg_21_0, arg_21_1)
+	arg_21_0._effectValue = arg_21_1
 
-	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.SFX_Volume, slot1)
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsEffectValue, slot0._effectValue)
+	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.SFX_Volume, arg_21_1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsEffectValue, arg_21_0._effectValue)
 end
 
-function slot0.getGlobalAudioVolume(slot0)
-	return slot0._globalAudioVolume
+function var_0_0.getGlobalAudioVolume(arg_22_0)
+	return arg_22_0._globalAudioVolume
 end
 
-function slot0.setGlobalAudioVolume(slot0, slot1)
-	slot0._globalAudioVolume = slot1
+function var_0_0.setGlobalAudioVolume(arg_23_0, arg_23_1)
+	arg_23_0._globalAudioVolume = arg_23_1
 
-	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Global_Volume, slot1)
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsGlobalAudioVolume, slot0._globalAudioVolume)
+	AudioMgr.instance:setRTPCValue(AudioEnum.Volume.Global_Volume, arg_23_1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsGlobalAudioVolume, arg_23_0._globalAudioVolume)
 end
 
-function slot0.getRealGraphicsQuality(slot0)
+function var_0_0.getRealGraphicsQuality(arg_24_0)
 	return GameGlobalMgr.instance:getScreenState():getLocalQuality()
 end
 
-function slot0.getModelGraphicsQuality(slot0)
-	if not slot0._graphicsQuality then
-		slot0._graphicsQuality = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsGraphicsQuality, slot0:getRecommendQuality())
+function var_0_0.getModelGraphicsQuality(arg_25_0)
+	if not arg_25_0._graphicsQuality then
+		arg_25_0._graphicsQuality = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsGraphicsQuality, arg_25_0:getRecommendQuality())
 	end
 
-	return slot0._graphicsQuality
+	return arg_25_0._graphicsQuality
 end
 
-function slot0.setGraphicsQuality(slot0, slot1)
-	slot0._graphicsQuality = slot1
+function var_0_0.setGraphicsQuality(arg_26_0, arg_26_1)
+	arg_26_0._graphicsQuality = arg_26_1
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsGraphicsQuality, slot0._graphicsQuality)
-	GameGlobalMgr.instance:getScreenState():setLocalQuality(slot1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsGraphicsQuality, arg_26_0._graphicsQuality)
+	GameGlobalMgr.instance:getScreenState():setLocalQuality(arg_26_1)
 end
 
-function slot0.getRecommendQuality(slot0)
+function var_0_0.getRecommendQuality(arg_27_0)
 	return HardwareUtil.getPerformanceGrade()
 end
 
-function slot0.getRealTargetFrameRate(slot0)
+function var_0_0.getRealTargetFrameRate(arg_28_0)
 	return GameGlobalMgr.instance:getScreenState():getTargetFrameRate()
 end
 
-function slot0.getModelTargetFrameRate(slot0)
-	if not slot0._frameRate then
-		slot0._frameRate = GameGlobalMgr.instance:getScreenState():getTargetFrameRate()
+function var_0_0.getModelTargetFrameRate(arg_29_0)
+	if not arg_29_0._frameRate then
+		arg_29_0._frameRate = GameGlobalMgr.instance:getScreenState():getTargetFrameRate()
 	end
 
-	return slot0._frameRate
+	return arg_29_0._frameRate
 end
 
-function slot0.setTargetFrameRate(slot0, slot1)
-	slot0._frameRate = slot1
+function var_0_0.setTargetFrameRate(arg_30_0, arg_30_1)
+	arg_30_0._frameRate = arg_30_1
 
-	GameGlobalMgr.instance:getScreenState():setTargetFrameRate(slot1)
+	GameGlobalMgr.instance:getScreenState():setTargetFrameRate(arg_30_1)
 end
 
-function slot0._setIsFullScreen(slot0, slot1)
-	slot0._isFullScreen = slot1 and ModuleEnum.FullScreenState.On or ModuleEnum.FullScreenState.Off
+function var_0_0._setIsFullScreen(arg_31_0, arg_31_1)
+	arg_31_0._isFullScreen = arg_31_1 and ModuleEnum.FullScreenState.On or ModuleEnum.FullScreenState.Off
 end
 
-function slot0._setScreenWidthAndHeight(slot0, slot1)
+function var_0_0._setScreenWidthAndHeight(arg_32_0, arg_32_1)
 	if not BootNativeUtil.isWindows() then
 		return false
 	end
 
-	if slot0._systemScreenWidth < string.splitToNumber(slot1, "*")[1] or slot0._systemScreenHeight < slot2[2] then
+	local var_32_0 = string.splitToNumber(arg_32_1, "*")
+
+	if var_32_0[1] > arg_32_0._systemScreenWidth or var_32_0[2] > arg_32_0._systemScreenHeight then
 		GameFacade.showToast(ToastEnum.SetScreenWidthAndHeightFail)
 
 		return false
 	end
 
-	slot0._screenWidth = slot2[1]
-	slot0._screenHeight = slot2[2]
+	arg_32_0._screenWidth = var_32_0[1]
+	arg_32_0._screenHeight = var_32_0[2]
 
-	slot0:_setIsFullScreen(false)
+	arg_32_0:_setIsFullScreen(false)
 
-	slot0._resolutionRatio = slot1
+	arg_32_0._resolutionRatio = arg_32_1
 
-	slot0:setResolutionRatio()
+	arg_32_0:setResolutionRatio()
 
 	return true
 end
 
-function slot0.getResolutionRatio(slot0)
-	return slot0._resolutionRatio
+function var_0_0.getResolutionRatio(arg_33_0)
+	return arg_33_0._resolutionRatio
 end
 
-function slot0.setResolutionRatio(slot0)
-	PlayerPrefsHelper.setString(PlayerPrefsKey.ResolutionRatio, slot0._resolutionRatio)
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.FullScreenKey, slot0._isFullScreen)
-	ZProj.GameHelper.SetResolutionRatio(slot0._screenWidth, slot0._screenHeight, slot0:isFullScreen())
-	GameGlobalMgr.instance:dispatchEvent(GameStateEvent.OnScreenResize, slot0._screenWidth, slot0._screenHeight)
+function var_0_0.setResolutionRatio(arg_34_0)
+	PlayerPrefsHelper.setString(PlayerPrefsKey.ResolutionRatio, arg_34_0._resolutionRatio)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.FullScreenKey, arg_34_0._isFullScreen)
+	ZProj.GameHelper.SetResolutionRatio(arg_34_0._screenWidth, arg_34_0._screenHeight, arg_34_0:isFullScreen())
+	GameGlobalMgr.instance:dispatchEvent(GameStateEvent.OnScreenResize, arg_34_0._screenWidth, arg_34_0._screenHeight)
 end
 
-function slot0.getCurrentScreenResolutionRatio(slot0)
-	return slot0._screenWidth / slot0._screenHeight
+function var_0_0.getCurrentScreenResolutionRatio(arg_35_0)
+	return arg_35_0._screenWidth / arg_35_0._screenHeight
 end
 
-function slot0.getCurrentScreenSize(slot0)
-	return slot0._screenWidth, slot0._screenHeight
+function var_0_0.getCurrentScreenSize(arg_36_0)
+	return arg_36_0._screenWidth, arg_36_0._screenHeight
 end
 
-function slot0.isFullScreen(slot0)
-	return slot0._isFullScreen == ModuleEnum.FullScreenState.On
+function var_0_0.isFullScreen(arg_37_0)
+	return arg_37_0._isFullScreen == ModuleEnum.FullScreenState.On
 end
 
-function slot0.setFullChange(slot0, slot1)
-	slot0._isFullScreen = slot1
+function var_0_0.setFullChange(arg_38_0, arg_38_1)
+	arg_38_0._isFullScreen = arg_38_1
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.FullScreenKey, slot1)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.FullScreenKey, arg_38_1)
 
-	if slot0:isFullScreen() then
-		ZProj.GameHelper.SetResolutionRatio(slot0._systemScreenWidth, slot0._systemScreenHeight, true)
+	if arg_38_0:isFullScreen() then
+		ZProj.GameHelper.SetResolutionRatio(arg_38_0._systemScreenWidth, arg_38_0._systemScreenHeight, true)
 	else
-		ZProj.GameHelper.SetResolutionRatio(slot0._screenWidth, slot0._screenHeight, false)
+		ZProj.GameHelper.SetResolutionRatio(arg_38_0._screenWidth, arg_38_0._screenHeight, false)
 	end
 end
 
-function slot0.getScreenSizeMinRate(slot0)
-	return slot0._minRate
+function var_0_0.getScreenSizeMinRate(arg_39_0)
+	return arg_39_0._minRate
 end
 
-function slot0.getScreenSizeMaxRate(slot0)
-	return slot0._maxRate
+function var_0_0.getScreenSizeMaxRate(arg_40_0)
+	return arg_40_0._maxRate
 end
 
-function slot0.checkInitRecordVideo(slot0)
-	if slot0._isRecordVideo ~= nil then
+function var_0_0.checkInitRecordVideo(arg_41_0)
+	if arg_41_0._isRecordVideo ~= nil then
 		return
 	end
 
 	if not OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsRecordVideo) then
-		slot0._isRecordVideo = 0
+		arg_41_0._isRecordVideo = 0
 
 		return
 	end
 
-	slot0._isRecordVideo = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsRecordVideo, 0)
+	arg_41_0._isRecordVideo = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsRecordVideo, 0)
 end
 
-function slot0.setRecordVideo(slot0, slot1)
-	slot0:checkInitRecordVideo()
+function var_0_0.setRecordVideo(arg_42_0, arg_42_1)
+	arg_42_0:checkInitRecordVideo()
 
-	slot0._isRecordVideo = slot1 and 1 or 0
+	arg_42_0._isRecordVideo = arg_42_1 and 1 or 0
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsRecordVideo, slot0._isRecordVideo)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsRecordVideo, arg_42_0._isRecordVideo)
 end
 
-function slot0.getRecordVideo(slot0)
-	slot0:checkInitRecordVideo()
+function var_0_0.getRecordVideo(arg_43_0)
+	arg_43_0:checkInitRecordVideo()
 
-	return slot0._isRecordVideo == 1
+	return arg_43_0._isRecordVideo == 1
 end
 
-function slot0.setVideoCompatible(slot0, slot1)
-	slot0._isVideoCompatible = slot1 and 1 or 0
+function var_0_0.setVideoCompatible(arg_44_0, arg_44_1)
+	arg_44_0._isVideoCompatible = arg_44_1 and 1 or 0
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVideoCompatible, slot0._isVideoCompatible)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVideoCompatible, arg_44_0._isVideoCompatible)
 end
 
-function slot0.getVideoCompatible(slot0)
-	if slot0._isVideoCompatible == nil then
-		slot0._isVideoCompatible = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVideoCompatible, 0)
+function var_0_0.getVideoCompatible(arg_45_0)
+	if arg_45_0._isVideoCompatible == nil then
+		arg_45_0._isVideoCompatible = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVideoCompatible, 0)
 	end
 
-	return slot0._isVideoCompatible == 1
+	return arg_45_0._isVideoCompatible == 1
 end
 
-function slot0.setVideoHDMode(slot0, slot1)
-	slot0._isVideoHDMode = slot1 and 1 or 0
+function var_0_0.setVideoHDMode(arg_46_0, arg_46_1)
+	arg_46_0._isVideoHDMode = arg_46_1 and 1 or 0
 
-	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVideoHDMode, slot0._isVideoHDMode)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVideoHDMode, arg_46_0._isVideoHDMode)
 end
 
-function slot0.getVideoHDMode(slot0)
+function var_0_0.getVideoHDMode(arg_47_0)
 	if not PlayerPrefsHelper.hasKey(PlayerPrefsKey.SettingsVideoHDMode) and BootNativeUtil.isWindows() then
-		slot0:setVideoHDMode(true)
+		arg_47_0:setVideoHDMode(true)
 	end
 
-	if SettingsVoicePackageModel.instance:getPackInfo("res-HD") and slot1:needDownload() then
-		slot0:setVideoHDMode(false)
+	local var_47_0 = SettingsVoicePackageModel.instance:getPackInfo("res-HD")
+
+	if var_47_0 and var_47_0:needDownload() then
+		arg_47_0:setVideoHDMode(false)
 	end
 
-	if slot0._isVideoHDMode == nil then
-		slot0._isVideoHDMode = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVideoHDMode, 0)
+	if arg_47_0._isVideoHDMode == nil then
+		arg_47_0._isVideoHDMode = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVideoHDMode, 0)
 	end
 
-	return slot0._isVideoHDMode == 1
+	return arg_47_0._isVideoHDMode == 1
 end
 
-function slot0.setPushState(slot0, slot1)
-	slot0._pushStates = {}
+function var_0_0.setPushState(arg_48_0, arg_48_1)
+	arg_48_0._pushStates = {}
 
-	for slot5, slot6 in ipairs(slot1) do
-		slot0._pushStates[slot6.type] = {
-			type = slot6.type,
-			param = slot6.param
-		}
+	for iter_48_0, iter_48_1 in ipairs(arg_48_1) do
+		arg_48_0._pushStates[iter_48_1.type] = {}
+		arg_48_0._pushStates[iter_48_1.type].type = iter_48_1.type
+		arg_48_0._pushStates[iter_48_1.type].param = iter_48_1.param
 	end
 end
 
-function slot0.updatePushState(slot0, slot1, slot2)
-	if not slot0._pushStates[slot1] then
-		slot0._pushStates[slot1] = {
-			type = slot1
-		}
+function var_0_0.updatePushState(arg_49_0, arg_49_1, arg_49_2)
+	if not arg_49_0._pushStates[arg_49_1] then
+		arg_49_0._pushStates[arg_49_1] = {}
+		arg_49_0._pushStates[arg_49_1].type = arg_49_1
 	end
 
-	slot0._pushStates[slot1].param = slot2
+	arg_49_0._pushStates[arg_49_1].param = arg_49_2
 end
 
-function slot0.isPushTypeOn(slot0, slot1)
-	return SDKMgr.instance:isNotificationEnable() and (slot0._pushStates[slot1] and slot0._pushStates[slot1].param == "1")
+function var_0_0.isPushTypeOn(arg_50_0, arg_50_1)
+	local var_50_0 = SDKMgr.instance:isNotificationEnable()
+	local var_50_1 = arg_50_0._pushStates[arg_50_1] and arg_50_0._pushStates[arg_50_1].param == "1"
+
+	return var_50_0 and var_50_1
 end
 
-function slot0.isTypeOn(slot0, slot1)
-	return slot0._pushStates[slot1] and slot0._pushStates[slot1].param == "1"
+function var_0_0.isTypeOn(arg_51_0, arg_51_1)
+	return arg_51_0._pushStates[arg_51_1] and arg_51_0._pushStates[arg_51_1].param == "1"
 end
 
-function slot0._resolutionStr(slot0, slot1, slot2)
-	return string.format("%s * %s", slot1, slot2)
+function var_0_0._resolutionStr(arg_52_0, arg_52_1, arg_52_2)
+	return string.format("%s * %s", arg_52_1, arg_52_2)
 end
 
-function slot0.getResolutionRatioStrList(slot0)
-	slot0:initResolutionRationDataList()
+function var_0_0.getResolutionRatioStrList(arg_53_0)
+	arg_53_0:initResolutionRationDataList()
 
-	slot1 = {}
+	local var_53_0 = {}
 
-	for slot5, slot6 in ipairs(slot0._resolutionRatioDataList) do
-		slot7 = slot0:_resolutionStr(slot6.width, slot6.height)
+	for iter_53_0, iter_53_1 in ipairs(arg_53_0._resolutionRatioDataList) do
+		local var_53_1 = arg_53_0:_resolutionStr(iter_53_1.width, iter_53_1.height)
 
-		if slot6.isFullscreen then
-			slot7 = luaLang("settings_fullscreen")
+		if iter_53_1.isFullscreen then
+			var_53_1 = luaLang("settings_fullscreen")
 		end
 
-		table.insert(slot1, slot7)
+		table.insert(var_53_0, var_53_1)
 	end
 
-	return slot1
+	return var_53_0
 end
 
-function slot0._appendResolutionData(slot0, slot1, slot2, slot3)
-	table.insert(slot0._resolutionRatioDataList, {
-		width = slot1,
-		height = slot2,
-		isFullscreen = slot3
+function var_0_0._appendResolutionData(arg_54_0, arg_54_1, arg_54_2, arg_54_3)
+	table.insert(arg_54_0._resolutionRatioDataList, {
+		width = arg_54_1,
+		height = arg_54_2,
+		isFullscreen = arg_54_3
 	})
 end
 
-function slot0.setScreenResolutionByIndex(slot0, slot1)
+function var_0_0.setScreenResolutionByIndex(arg_55_0, arg_55_1)
 	if not BootNativeUtil.isWindows() then
 		return false
 	end
 
-	if not slot0._resolutionRatioDataList then
+	if not arg_55_0._resolutionRatioDataList then
 		return false
 	end
 
-	if not slot0._resolutionRatioDataList[slot1] then
-		GameFacade.showToastString("error index:" .. slot1)
+	local var_55_0 = arg_55_0._resolutionRatioDataList[arg_55_1]
+
+	if not var_55_0 then
+		GameFacade.showToastString("error index:" .. arg_55_1)
 
 		return false
 	end
 
-	slot0._screenWidth = slot2.width
-	slot0._screenHeight = slot2.height
+	arg_55_0._screenWidth = var_55_0.width
+	arg_55_0._screenHeight = var_55_0.height
 
-	slot0:_setIsFullScreen(slot2.isFullscreen)
+	arg_55_0:_setIsFullScreen(var_55_0.isFullscreen)
 
-	slot0._resolutionRatio = slot0:_resolutionStr(slot0._screenWidth, slot0._screenHeight)
+	arg_55_0._resolutionRatio = arg_55_0:_resolutionStr(arg_55_0._screenWidth, arg_55_0._screenHeight)
 
-	slot0:setResolutionRatio()
+	arg_55_0:setResolutionRatio()
 
 	return true
 end
 
-function slot0.getCurrentResolutionWHAndIsFull(slot0)
-	if not slot0._resolutionRatio then
-		slot0:initWindowsResolution()
+function var_0_0.getCurrentResolutionWHAndIsFull(arg_56_0)
+	if not arg_56_0._resolutionRatio then
+		arg_56_0:initWindowsResolution()
 	end
 
-	if not string.splitToNumber(slot0._resolutionRatio, "*") then
+	local var_56_0 = string.splitToNumber(arg_56_0._resolutionRatio, "*")
+
+	if not var_56_0 then
 		return 0, 0, false
 	end
 
-	return slot1[1], slot1[2], slot0:isFullScreen()
+	local var_56_1 = arg_56_0:isFullScreen()
+
+	return var_56_0[1], var_56_0[2], var_56_1
 end
 
-function slot0.getCurrentDropDownIndex(slot0)
-	slot1, slot2, slot3 = slot0:getCurrentResolutionWHAndIsFull()
+function var_0_0.getCurrentDropDownIndex(arg_57_0)
+	local var_57_0, var_57_1, var_57_2 = arg_57_0:getCurrentResolutionWHAndIsFull()
 
-	if slot3 then
+	if var_57_2 then
 		return 0
 	end
 
-	for slot7, slot8 in ipairs(slot0._resolutionRatioDataList or {}) do
-		if not slot8.isFullscreen and slot1 == slot8.width and slot2 == slot8.height then
-			return slot7 - 1
+	for iter_57_0, iter_57_1 in ipairs(arg_57_0._resolutionRatioDataList or {}) do
+		if not iter_57_1.isFullscreen and var_57_0 == iter_57_1.width and var_57_1 == iter_57_1.height then
+			return iter_57_0 - 1
 		end
 	end
 
 	return 0, true
 end
 
-function slot0.getCurrentFrameRateIndex(slot0)
-	for slot5, slot6 in ipairs(uv0.FrameRate) do
-		if slot0:getModelTargetFrameRate() == slot6 then
-			return slot5
+function var_0_0.getCurrentFrameRateIndex(arg_58_0)
+	local var_58_0 = arg_58_0:getModelTargetFrameRate()
+
+	for iter_58_0, iter_58_1 in ipairs(var_0_0.FrameRate) do
+		if var_58_0 == iter_58_1 then
+			return iter_58_0
 		end
 	end
 
 	return 1
 end
 
-function slot0.setModelTargetFrameRate(slot0, slot1)
-	if uv0.FrameRate[slot1 + 1] then
-		logNormal("设置帧率: ", slot2)
-		slot0:setTargetFrameRate(slot2)
+function var_0_0.setModelTargetFrameRate(arg_59_0, arg_59_1)
+	local var_59_0 = var_0_0.FrameRate[arg_59_1 + 1]
+
+	if var_59_0 then
+		logNormal("设置帧率: ", var_59_0)
+		arg_59_0:setTargetFrameRate(var_59_0)
 	end
 end
 
-function slot0.isNatives(slot0)
-	return not slot0:isOverseas()
+function var_0_0.isNatives(arg_60_0)
+	return not arg_60_0:isOverseas()
 end
 
-function slot0.isOverseas(slot0)
-	if slot0.__isOverseas == nil then
-		if tostring(SDKMgr.instance:getGameId()) == "50001" then
-			slot0.__isOverseas = false
+function var_0_0.isOverseas(arg_61_0)
+	if arg_61_0.__isOverseas == nil then
+		local var_61_0 = SDKMgr.instance:getGameId()
+
+		if tostring(var_61_0) == "50001" then
+			arg_61_0.__isOverseas = false
 		else
-			slot0.__isOverseas = true
+			arg_61_0.__isOverseas = true
 		end
 	end
 
-	return slot0.__isOverseas
+	return arg_61_0.__isOverseas
 end
 
-function slot0.getRegion(slot0)
-	if slot0:isNatives() then
+function var_0_0.getRegion(arg_62_0)
+	if arg_62_0:isNatives() then
 		return RegionEnum.zh
 	else
 		return GameConfig:GetCurRegionType()
 	end
 end
 
-function slot0.isZhRegion(slot0)
-	return slot0:getRegion() == RegionEnum.zh
+function var_0_0.isZhRegion(arg_63_0)
+	return arg_63_0:getRegion() == RegionEnum.zh
 end
 
-function slot0.isJpRegion(slot0)
-	return slot0:getRegion() == RegionEnum.jp
+function var_0_0.isJpRegion(arg_64_0)
+	return arg_64_0:getRegion() == RegionEnum.jp
 end
 
-function slot0.isEnRegion(slot0)
-	return slot0:getRegion() == RegionEnum.en
+function var_0_0.isEnRegion(arg_65_0)
+	return arg_65_0:getRegion() == RegionEnum.en
 end
 
-function slot0.isTwRegion(slot0)
-	return slot0:getRegion() == RegionEnum.tw
+function var_0_0.isTwRegion(arg_66_0)
+	return arg_66_0:getRegion() == RegionEnum.tw
 end
 
-function slot0.isKrRegion(slot0)
-	return slot0:getRegion() == RegionEnum.ko
+function var_0_0.isKrRegion(arg_67_0)
+	return arg_67_0:getRegion() == RegionEnum.ko
 end
 
-function slot0.getRegionShortcut(slot0)
-	return RegionEnum.shortcutTab[slot0:getRegion()] or "en"
+function var_0_0.getRegionShortcut(arg_68_0)
+	return RegionEnum.shortcutTab[arg_68_0:getRegion()] or "en"
 end
 
-function slot0.extractByRegion(slot0, slot1)
-	if string.nilorempty(slot1) then
-		return slot1
+function var_0_0.extractByRegion(arg_69_0, arg_69_1)
+	if string.nilorempty(arg_69_1) then
+		return arg_69_1
 	end
 
-	for slot7, slot8 in ipairs(GameUtil.splitString2(slot1, false)) do
-		if slot8[1] == slot0:getRegionShortcut() then
-			return slot8[2]
+	local var_69_0 = GameUtil.splitString2(arg_69_1, false)
+	local var_69_1 = arg_69_0:getRegionShortcut()
+
+	for iter_69_0, iter_69_1 in ipairs(var_69_0) do
+		if iter_69_1[1] == var_69_1 then
+			return iter_69_1[2]
 		end
 	end
 
-	return slot1
+	return arg_69_1
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

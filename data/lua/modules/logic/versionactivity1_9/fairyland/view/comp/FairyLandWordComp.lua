@@ -1,130 +1,141 @@
-module("modules.logic.versionactivity1_9.fairyland.view.comp.FairyLandWordComp", package.seeall)
+﻿module("modules.logic.versionactivity1_9.fairyland.view.comp.FairyLandWordComp", package.seeall)
 
-slot0 = class("FairyLandWordComp", LuaCompBase)
-slot0.WordInterval = 3.5
-slot0.WordTxtPosYOffset = 5
-slot0.WordTxtPosXOffset = 2
-slot0.WordTxtInterval = 0.1
-slot0.WordTxtOpen = 0.5
-slot0.WordTxtIdle = 1.1
-slot0.WordTxtClose = 0.5
-slot0.WordLine2Delay = 1
+local var_0_0 = class("FairyLandWordComp", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0._co = slot1.co
-	slot0._res1 = slot1.res1
-	slot0._res2 = slot1.res2
+var_0_0.WordInterval = 3.5
+var_0_0.WordTxtPosYOffset = 5
+var_0_0.WordTxtPosXOffset = 2
+var_0_0.WordTxtInterval = 0.1
+var_0_0.WordTxtOpen = 0.5
+var_0_0.WordTxtIdle = 1.1
+var_0_0.WordTxtClose = 0.5
+var_0_0.WordLine2Delay = 1
+
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._co = arg_1_1.co
+	arg_1_0._res1 = arg_1_1.res1
+	arg_1_0._res2 = arg_1_1.res2
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
 
-	slot0:createTxt()
+	arg_2_0:createTxt()
 end
 
-function slot0.createTxt(slot0)
-	slot1 = uv0.WordTxtOpen + uv0.WordTxtIdle + uv0.WordTxtClose
-	slot0._allAnimWork = {}
-	slot3 = string.format("——%s", slot0._co.answer)
-	slot4 = LuaUtil.getUCharArr(slot0._co.question) or {}
-	slot5 = 0
-	slot6 = 1
+function var_0_0.createTxt(arg_3_0)
+	local var_3_0 = var_0_0.WordTxtOpen + var_0_0.WordTxtIdle + var_0_0.WordTxtClose
 
-	for slot10 = 1, #slot4 do
-		slot11, slot12 = slot0:getRes(slot0.go, slot0._res1)
-		slot12.text = slot4[slot10]
+	arg_3_0._allAnimWork = {}
 
-		transformhelper.setLocalPosXY(slot11.transform, slot5, slot6 % 2 == 1 and -uv0.WordTxtPosYOffset or uv0.WordTxtPosYOffset)
+	local var_3_1 = arg_3_0._co.question
+	local var_3_2 = string.format("——%s", arg_3_0._co.answer)
+	local var_3_3 = LuaUtil.getUCharArr(var_3_1) or {}
+	local var_3_4 = 0
+	local var_3_5 = 1
 
-		slot5 = slot5 + slot12.preferredWidth + uv0.WordTxtPosXOffset
+	for iter_3_0 = 1, #var_3_3 do
+		local var_3_6, var_3_7 = arg_3_0:getRes(arg_3_0.go, arg_3_0._res1)
 
-		table.insert(slot0._allAnimWork, {
+		var_3_7.text = var_3_3[iter_3_0]
+
+		transformhelper.setLocalPosXY(var_3_6.transform, var_3_4, var_3_5 % 2 == 1 and -var_0_0.WordTxtPosYOffset or var_0_0.WordTxtPosYOffset)
+
+		var_3_4 = var_3_4 + var_3_7.preferredWidth + var_0_0.WordTxtPosXOffset
+
+		table.insert(arg_3_0._allAnimWork, {
 			playAnim = "open",
-			anim = slot11,
-			time = (slot6 - 1) * uv0.WordTxtInterval
+			anim = var_3_6,
+			time = (var_3_5 - 1) * var_0_0.WordTxtInterval
 		})
 
-		slot6 = slot6 + 1
+		var_3_5 = var_3_5 + 1
 	end
 
-	slot7 = LuaUtil.getUCharArr(slot3) or {}
+	local var_3_8 = LuaUtil.getUCharArr(var_3_2) or {}
 
-	for slot11 = 1, #slot7 do
-		slot12, slot13 = slot0:getRes(slot0.go, slot0._res2)
-		slot13.text = slot7[slot11]
+	for iter_3_1 = 1, #var_3_8 do
+		local var_3_9, var_3_10 = arg_3_0:getRes(arg_3_0.go, arg_3_0._res2)
 
-		transformhelper.setLocalPosXY(slot12.transform, slot5, slot6 % 2 == 1 and -uv0.WordTxtPosYOffset or uv0.WordTxtPosYOffset)
+		var_3_10.text = var_3_8[iter_3_1]
 
-		slot5 = slot5 + slot13.preferredWidth + uv0.WordTxtPosXOffset
+		transformhelper.setLocalPosXY(var_3_9.transform, var_3_4, var_3_5 % 2 == 1 and -var_0_0.WordTxtPosYOffset or var_0_0.WordTxtPosYOffset)
 
-		table.insert(slot0._allAnimWork, {
+		var_3_4 = var_3_4 + var_3_10.preferredWidth + var_0_0.WordTxtPosXOffset
+
+		table.insert(arg_3_0._allAnimWork, {
 			playAnim = "open",
-			anim = slot12,
-			time = (slot6 - 1) * uv0.WordTxtInterval
+			anim = var_3_9,
+			time = (var_3_5 - 1) * var_0_0.WordTxtInterval
 		})
 
-		slot6 = slot6 + 1
+		var_3_5 = var_3_5 + 1
 	end
 
-	slot8 = slot1 + uv0.WordTxtInterval * (#slot4 - 1)
-	slot9 = 0
+	local var_3_11 = var_3_0 + var_0_0.WordTxtInterval * (#var_3_3 - 1)
+	local var_3_12 = 0
 
-	if #slot7 > 0 then
-		slot9 = slot1 + uv0.WordTxtInterval * (#slot7 - 1)
+	if #var_3_8 > 0 then
+		var_3_12 = var_3_0 + var_0_0.WordTxtInterval * (#var_3_8 - 1)
 	end
 
-	slot10 = math.max(slot8, slot9)
+	local var_3_13 = math.max(var_3_11, var_3_12)
 
-	table.sort(slot0._allAnimWork, uv0.sortAnim)
-	recthelper.setAnchor(slot0.go.transform, -slot5 + 40, 0)
-	slot0:nextStep()
+	table.sort(arg_3_0._allAnimWork, var_0_0.sortAnim)
+	recthelper.setAnchor(arg_3_0.go.transform, -var_3_4 + 40, 0)
+	arg_3_0:nextStep()
 end
 
-function slot0.nextStep(slot0)
-	TaskDispatcher.cancelTask(slot0.nextStep, slot0)
+function var_0_0.nextStep(arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0.nextStep, arg_4_0)
 
-	if not table.remove(slot0._allAnimWork, 1) then
+	local var_4_0 = table.remove(arg_4_0._allAnimWork, 1)
+
+	if not var_4_0 then
 		return
 	end
 
-	if slot1.destroy then
-		gohelper.destroy(slot0.go)
+	if var_4_0.destroy then
+		gohelper.destroy(arg_4_0.go)
 
 		return
-	elseif slot1.playAnim == "open" then
-		slot1.anim.enabled = true
+	elseif var_4_0.playAnim == "open" then
+		var_4_0.anim.enabled = true
 	else
-		slot1.anim:Play(slot1.playAnim, 0, 0)
+		var_4_0.anim:Play(var_4_0.playAnim, 0, 0)
 	end
 
-	if not slot0._allAnimWork[1] then
+	local var_4_1 = arg_4_0._allAnimWork[1]
+
+	if not var_4_1 then
 		return
 	end
 
-	TaskDispatcher.runDelay(slot0.nextStep, slot0, slot2.time - slot1.time)
+	TaskDispatcher.runDelay(arg_4_0.nextStep, arg_4_0, var_4_1.time - var_4_0.time)
 end
 
-function slot0.sortAnim(slot0, slot1)
-	return slot0.time < slot1.time
+function var_0_0.sortAnim(arg_5_0, arg_5_1)
+	return arg_5_0.time < arg_5_1.time
 end
 
-slot1 = typeof(UnityEngine.Animator)
+local var_0_1 = typeof(UnityEngine.Animator)
 
-function slot0.getRes(slot0, slot1, slot2)
-	slot3 = gohelper.clone(slot2, slot1)
-	slot5 = slot3:GetComponent(uv0)
+function var_0_0.getRes(arg_6_0, arg_6_1, arg_6_2)
+	local var_6_0 = gohelper.clone(arg_6_2, arg_6_1)
+	local var_6_1 = gohelper.findChildTextMesh(var_6_0, "txt")
+	local var_6_2 = var_6_0:GetComponent(var_0_1)
 
-	gohelper.setActive(slot3, true)
-	slot5:Play("open", 0, 0)
-	slot5:Update(0)
+	gohelper.setActive(var_6_0, true)
+	var_6_2:Play("open", 0, 0)
+	var_6_2:Update(0)
 
-	slot5.enabled = false
+	var_6_2.enabled = false
 
-	return slot5, gohelper.findChildTextMesh(slot3, "txt")
+	return var_6_2, var_6_1
 end
 
-function slot0.onDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0.nextStep, slot0)
+function var_0_0.onDestroy(arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.nextStep, arg_7_0)
 end
 
-return slot0
+return var_0_0

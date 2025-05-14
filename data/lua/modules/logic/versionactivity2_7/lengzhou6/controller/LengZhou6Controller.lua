@@ -1,140 +1,161 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6Controller", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6Controller", package.seeall)
 
-slot0 = class("LengZhou6Controller", BaseController)
+local var_0_0 = class("LengZhou6Controller", BaseController)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_2_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	slot0.showEpisodeId = nil
+function var_0_0.reInit(arg_4_0)
+	arg_4_0.showEpisodeId = nil
 end
 
-function slot0.enterLevelView(slot0, slot1)
-	LengZhou6Rpc.instance:sendGetAct190InfoRequest(slot1)
+function var_0_0.enterLevelView(arg_5_0, arg_5_1)
+	LengZhou6Rpc.instance:sendGetAct190InfoRequest(arg_5_1)
 end
 
-function slot0.clickEpisode(slot0, slot1)
-	slot2 = LengZhou6Model.instance:getAct190Id()
+function var_0_0.clickEpisode(arg_6_0, arg_6_1)
+	local var_6_0 = LengZhou6Model.instance:getAct190Id()
 
 	if not LengZhou6Model.instance:isAct190Open(true) then
 		return
 	end
 
-	if not LengZhou6Model.instance:isUnlockEpisode(slot1) then
+	if not LengZhou6Model.instance:isUnlockEpisode(arg_6_1) then
 		GameFacade.showToast(ToastEnum.Activity142PreEpisodeNotClear)
 
 		return
 	end
 
-	slot0:dispatchEvent(LengZhou6Event.OnClickEpisode, slot2, slot1)
+	arg_6_0:dispatchEvent(LengZhou6Event.OnClickEpisode, var_6_0, arg_6_1)
 end
 
-function slot0.enterEpisode(slot0, slot1)
+function var_0_0.enterEpisode(arg_7_0, arg_7_1)
 	LengZhou6Enum.enterGM = false
 
-	if not LengZhou6Model.instance:getCurActId() or slot1 == nil then
+	local var_7_0 = LengZhou6Model.instance:getCurActId()
+
+	if not var_7_0 or arg_7_1 == nil then
 		return
 	end
 
-	LengZhou6Model.instance:setCurEpisodeId(slot1)
+	local var_7_1 = LengZhou6Config.instance:getEpisodeConfig(var_7_0, arg_7_1)
 
-	if LengZhou6Config.instance:getEpisodeConfig(slot2, slot1).storyBefore ~= 0 then
-		StoryController.instance:playStory(slot4, nil, slot0._enterGame, slot0)
+	LengZhou6Model.instance:setCurEpisodeId(arg_7_1)
+
+	local var_7_2 = var_7_1.storyBefore
+
+	if var_7_2 ~= 0 then
+		StoryController.instance:playStory(var_7_2, nil, arg_7_0._enterGame, arg_7_0)
 	else
-		slot0:_enterGame()
+		arg_7_0:_enterGame()
 	end
 end
 
-function slot0._enterGame(slot0)
-	if LengZhou6Config.instance:getEpisodeConfig(LengZhou6Model.instance:getCurActId(), LengZhou6Model.instance:getCurEpisodeId()).eliminateLevelId ~= 0 then
-		LengZhou6GameController.instance:enterLevel(slot1, slot2)
+function var_0_0._enterGame(arg_8_0)
+	local var_8_0 = LengZhou6Model.instance:getCurActId()
+	local var_8_1 = LengZhou6Model.instance:getCurEpisodeId()
+
+	if LengZhou6Config.instance:getEpisodeConfig(var_8_0, var_8_1).eliminateLevelId ~= 0 then
+		LengZhou6GameController.instance:enterLevel(var_8_0, var_8_1)
 	else
-		slot0:finishLevel(slot2)
-		slot0:dispatchEvent(LengZhou6Event.OnClickCloseGameView)
+		arg_8_0:finishLevel(var_8_1)
+		arg_8_0:dispatchEvent(LengZhou6Event.OnClickCloseGameView)
 	end
 end
 
-function slot0.restartGame(slot0)
-	if LengZhou6Config.instance:getEpisodeConfig(LengZhou6Model.instance:getCurActId(), LengZhou6Model.instance:getCurEpisodeId()).eliminateLevelId ~= 0 then
-		LengZhou6GameController.instance:restartLevel(slot1, slot2)
+function var_0_0.restartGame(arg_9_0)
+	local var_9_0 = LengZhou6Model.instance:getCurActId()
+	local var_9_1 = LengZhou6Model.instance:getCurEpisodeId()
+
+	if LengZhou6Config.instance:getEpisodeConfig(var_9_0, var_9_1).eliminateLevelId ~= 0 then
+		LengZhou6GameController.instance:restartLevel(var_9_0, var_9_1)
 	end
 end
 
-function slot0.openLengZhou6LevelView(slot0)
-	slot0.showEpisodeId = nil
+function var_0_0.openLengZhou6LevelView(arg_10_0)
+	arg_10_0.showEpisodeId = nil
 
 	ViewMgr.instance:openView(ViewName.LengZhou6LevelView)
 end
 
-function slot0.finishLevel(slot0, slot1, slot2)
-	if LengZhou6Model.instance:getEpisodeInfoMo(slot1) ~= nil then
-		LengZhou6Rpc.instance:sendAct190FinishEpisodeRequest(slot1, slot2)
+function var_0_0.finishLevel(arg_11_0, arg_11_1, arg_11_2)
+	local var_11_0 = LengZhou6Model.instance:getEpisodeInfoMo(arg_11_1)
+
+	if var_11_0 ~= nil then
+		LengZhou6Rpc.instance:sendAct190FinishEpisodeRequest(arg_11_1, arg_11_2)
 	end
 
-	if slot3 ~= nil and slot2 ~= nil then
-		slot3:setProgress(slot2)
-	end
-end
-
-function slot0.onFinishEpisode(slot0, slot1)
-	if not slot1 then
-		return
-	end
-
-	slot0.showEpisodeId = slot1.episodeId
-
-	LengZhou6Model.instance:onFinishActInfo(slot1)
-
-	if slot1.activityId == LengZhou6Model.instance:getAct190Id() then
-		slot0:_playStoryClear(slot3)
+	if var_11_0 ~= nil and arg_11_2 ~= nil then
+		var_11_0:setProgress(arg_11_2)
 	end
 end
 
-function slot0._playStoryClear(slot0, slot1)
-	if not LengZhou6Model.instance:isFinishedEpisode(slot1) then
+function var_0_0.onFinishEpisode(arg_12_0, arg_12_1)
+	if not arg_12_1 then
 		return
 	end
 
-	slot4 = LengZhou6Model.instance:getCurEpisodeId()
+	local var_12_0 = arg_12_1.activityId
+	local var_12_1 = arg_12_1.episodeId
 
-	if LengZhou6Model.instance:getCurActId() == nil then
+	arg_12_0.showEpisodeId = var_12_1
+
+	LengZhou6Model.instance:onFinishActInfo(arg_12_1)
+
+	if var_12_0 == LengZhou6Model.instance:getAct190Id() then
+		arg_12_0:_playStoryClear(var_12_1)
+	end
+end
+
+function var_0_0._playStoryClear(arg_13_0, arg_13_1)
+	if not LengZhou6Model.instance:isFinishedEpisode(arg_13_1) then
 		return
 	end
 
-	slot5 = 0
+	local var_13_0 = LengZhou6Model.instance:getCurActId()
+	local var_13_1 = LengZhou6Model.instance:getCurEpisodeId()
 
-	if slot4 ~= nil then
-		slot5 = LengZhou6Config.instance:getEpisodeConfig(slot3, slot4).storyClear
+	if var_13_0 == nil then
+		return
 	end
 
-	if slot5 ~= 0 then
-		StoryController.instance:playStory(slot5, nil, slot0.showFinishEffect, slot0)
+	local var_13_2 = 0
+
+	if var_13_1 ~= nil then
+		var_13_2 = LengZhou6Config.instance:getEpisodeConfig(var_13_0, var_13_1).storyClear
+	end
+
+	if var_13_2 ~= 0 then
+		StoryController.instance:playStory(var_13_2, nil, arg_13_0.showFinishEffect, arg_13_0)
 	else
-		slot0:showFinishEffect()
+		arg_13_0:showFinishEffect()
 	end
 end
 
-function slot0.showFinishEffect(slot0)
-	slot0:dispatchEvent(LengZhou6Event.OnFinishEpisode, slot0.showEpisodeId)
+function var_0_0.showFinishEffect(arg_14_0)
+	arg_14_0:dispatchEvent(LengZhou6Event.OnFinishEpisode, arg_14_0.showEpisodeId)
 
-	slot0.showEpisodeId = nil
+	arg_14_0.showEpisodeId = nil
 end
 
-function slot0.openTaskView(slot0)
+function var_0_0.openTaskView(arg_15_0)
 	LengZhou6TaskListModel.instance:clear()
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Activity190
-	}, slot0._realOpenTaskView, slot0)
+	}, arg_15_0._realOpenTaskView, arg_15_0)
 end
 
-function slot0._realOpenTaskView(slot0, slot1, slot2, slot3)
-	if slot2 ~= 0 then
+function var_0_0._realOpenTaskView(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	if arg_16_2 ~= 0 then
 		return
 	end
 
@@ -142,11 +163,11 @@ function slot0._realOpenTaskView(slot0, slot1, slot2, slot3)
 	ViewMgr.instance:openView(ViewName.LengZhou6TaskView)
 end
 
-function slot0.isNeedForceDrop(slot0)
+function var_0_0.isNeedForceDrop(arg_17_0)
 	return GuideModel.instance:isGuideRunning(27201)
 end
 
-function slot0.getFixChessPos(slot0)
+function var_0_0.getFixChessPos(arg_18_0)
 	if GuideModel.instance:isGuideRunning(27202) then
 		return true, {
 			x = 2,
@@ -157,6 +178,6 @@ function slot0.getFixChessPos(slot0)
 	return false, nil
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

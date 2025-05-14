@@ -1,89 +1,105 @@
-module("modules.logic.versionactivity2_6.xugouji.rpc.Activity188Rpc", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.rpc.Activity188Rpc", package.seeall)
 
-slot0 = class("Activity188Rpc", BaseRpc)
+local var_0_0 = class("Activity188Rpc", BaseRpc)
 
-function slot0.sendGet188InfosRequest(slot0, slot1, slot2, slot3)
-	slot4 = Activity188Module_pb.GetAct188InfoRequest()
-	slot4.activityId = slot1
+function var_0_0.sendGet188InfosRequest(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	local var_1_0 = Activity188Module_pb.GetAct188InfoRequest()
 
-	slot0:sendMsg(slot4, slot2, slot3)
+	var_1_0.activityId = arg_1_1
+
+	arg_1_0:sendMsg(var_1_0, arg_1_2, arg_1_3)
 end
 
-function slot0.onReceiveGetAct188InfoReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		Activity188Model.instance:onGetActInfoReply(slot2.episodes)
+function var_0_0.onReceiveGetAct188InfoReply(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_1 == 0 then
+		Activity188Model.instance:onGetActInfoReply(arg_2_2.episodes)
 	end
 end
 
-function slot0.sendAct188EnterEpisodeRequest(slot0, slot1, slot2, slot3, slot4)
-	slot5 = Activity188Module_pb.Act188EnterEpisodeRequest()
-	slot5.activityId = slot1
-	slot5.episodeId = slot2
+function var_0_0.sendAct188EnterEpisodeRequest(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
+	local var_3_0 = Activity188Module_pb.Act188EnterEpisodeRequest()
 
-	slot0:sendMsg(slot5, slot3, slot4)
+	var_3_0.activityId = arg_3_1
+	var_3_0.episodeId = arg_3_2
+
+	arg_3_0:sendMsg(var_3_0, arg_3_3, arg_3_4)
 end
 
-function slot0.onReceiveAct188EnterEpisodeReply(slot0, slot1, slot2)
-	if slot1 == 0 then
+function var_0_0.onReceiveAct188EnterEpisodeReply(arg_4_0, arg_4_1, arg_4_2)
+	if arg_4_1 == 0 then
+		local var_4_0 = arg_4_2.act188Game
+		local var_4_1 = arg_4_2.episodeId
+
 		Activity188Model.instance:clearGameInfo()
 		Activity188Model.instance:setTurn(true)
-		Activity188Model.instance:setCurEpisodeId(slot2.episodeId)
-		Activity188Model.instance:onAct188GameInfoUpdate(slot2.act188Game)
+		Activity188Model.instance:setCurEpisodeId(var_4_1)
+		Activity188Model.instance:onAct188GameInfoUpdate(var_4_0)
 	end
 end
 
-function slot0.SetEpisodePushCallback(slot0, slot1, slot2)
-	slot0._episodePushCb = slot1
-	slot0._episodePushCbObj = slot2
+function var_0_0.SetEpisodePushCallback(arg_5_0, arg_5_1, arg_5_2)
+	arg_5_0._episodePushCb = arg_5_1
+	arg_5_0._episodePushCbObj = arg_5_2
 end
 
-function slot0.onReceiveAct188EpisodePush(slot0, slot1, slot2)
-	if slot1 == 0 then
-		for slot7, slot8 in ipairs(slot2.episodes) do
-			Activity188Model.instance:onEpisodeInfoUpdate(slot8.episodeId, slot8.isFinished)
+function var_0_0.onReceiveAct188EpisodePush(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_1 == 0 then
+		local var_6_0 = arg_6_2.episodes
+
+		for iter_6_0, iter_6_1 in ipairs(var_6_0) do
+			local var_6_1 = iter_6_1.episodeId
+			local var_6_2 = iter_6_1.isFinished
+
+			Activity188Model.instance:onEpisodeInfoUpdate(var_6_1, var_6_2)
 		end
 
-		if slot0._episodePushCb then
-			slot0._episodePushCb(slot0._episodePushCbObj)
+		if arg_6_0._episodePushCb then
+			arg_6_0._episodePushCb(arg_6_0._episodePushCbObj)
 		end
 	end
 end
 
-function slot0.sendAct188StoryRequest(slot0, slot1, slot2, slot3, slot4)
-	slot5 = Activity188Module_pb.Act188StoryRequest()
-	slot5.activityId = slot1
-	slot5.episodeId = slot2
+function var_0_0.sendAct188StoryRequest(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4)
+	local var_7_0 = Activity188Module_pb.Act188StoryRequest()
 
-	slot0:sendMsg(slot5, slot3, slot4)
+	var_7_0.activityId = arg_7_1
+	var_7_0.episodeId = arg_7_2
+
+	arg_7_0:sendMsg(var_7_0, arg_7_3, arg_7_4)
 end
 
-function slot0.onReceiveAct188StoryReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		Activity188Model.instance:onStoryEpisodeFinish(slot2.episodeId)
+function var_0_0.onReceiveAct188StoryReply(arg_8_0, arg_8_1, arg_8_2)
+	if arg_8_1 == 0 then
+		local var_8_0 = arg_8_2.episodeId
+
+		Activity188Model.instance:onStoryEpisodeFinish(var_8_0)
 	end
 end
 
-function slot0.sendAct188ReverseCardRequest(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = Activity188Module_pb.Act188ReverseCardRequest()
-	slot6.activityId = slot1
-	slot6.episodeId = slot2
-	slot6.uid = slot3
+function var_0_0.sendAct188ReverseCardRequest(arg_9_0, arg_9_1, arg_9_2, arg_9_3, arg_9_4, arg_9_5)
+	local var_9_0 = Activity188Module_pb.Act188ReverseCardRequest()
 
-	slot0:sendMsg(slot6, slot4, slot5)
+	var_9_0.activityId = arg_9_1
+	var_9_0.episodeId = arg_9_2
+	var_9_0.uid = arg_9_3
+
+	arg_9_0:sendMsg(var_9_0, arg_9_4, arg_9_5)
 end
 
-function slot0.onReceiveAct188ReverseCardReply(slot0, slot1, slot2)
-	if slot1 == 0 then
-		-- Nothing
+function var_0_0.onReceiveAct188ReverseCardReply(arg_10_0, arg_10_1, arg_10_2)
+	if arg_10_1 == 0 then
+		-- block empty
 	end
 end
 
-function slot0.onReceiveAct188StepPush(slot0, slot1, slot2)
-	if slot1 == 0 then
-		XugoujiGameStepController.instance:insertStepList(slot2.steps)
+function var_0_0.onReceiveAct188StepPush(arg_11_0, arg_11_1, arg_11_2)
+	if arg_11_1 == 0 then
+		local var_11_0 = arg_11_2.steps
+
+		XugoujiGameStepController.instance:insertStepList(var_11_0)
 	end
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,9 +1,9 @@
-module("modules.logic.versionactivity2_7.lengzhou6.define.LengZhou6ViewDefine", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.define.LengZhou6ViewDefine", package.seeall)
 
-slot0 = class("LengZhou6ViewDefine")
+local var_0_0 = class("LengZhou6ViewDefine")
 
-function slot0.init(slot0)
-	slot0.LengZhou6TaskView = {
+function var_0_0.init(arg_1_0)
+	arg_1_0.LengZhou6TaskView = {
 		destroy = 0,
 		container = "LengZhou6TaskViewContainer",
 		mainRes = "ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_taskview.prefab",
@@ -20,7 +20,7 @@ function slot0.init(slot0)
 			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_taskitem.prefab"
 		}
 	}
-	slot0.LengZhou6GameView = {
+	arg_1_0.LengZhou6GameView = {
 		destroy = 0,
 		container = "LengZhou6GameViewContainer",
 		mainRes = "ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_gameview.prefab",
@@ -40,7 +40,7 @@ function slot0.init(slot0)
 			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_effectitem.prefab"
 		}
 	}
-	slot0.LengZhou6GameResult = {
+	arg_1_0.LengZhou6GameResult = {
 		destroy = 0,
 		container = "LengZhou6GameResultContainer",
 		mainRes = "ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_resultview.prefab",
@@ -50,7 +50,7 @@ function slot0.init(slot0)
 			"ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_resultview.prefab"
 		}
 	}
-	slot0.LengZhou6LevelView = {
+	arg_1_0.LengZhou6LevelView = {
 		destroy = 0,
 		container = "LengZhou6LevelViewContainer",
 		mainRes = "ui/viewres/versionactivity_2_7/v2a7_hissabeth/v2a7_hissabeth_levelview.prefab",
@@ -69,4 +69,4 @@ function slot0.init(slot0)
 	}
 end
 
-return slot0
+return var_0_0

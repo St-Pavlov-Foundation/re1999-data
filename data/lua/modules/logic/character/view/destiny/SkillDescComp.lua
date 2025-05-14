@@ -1,212 +1,267 @@
-module("modules.logic.character.view.destiny.SkillDescComp", package.seeall)
+﻿module("modules.logic.character.view.destiny.SkillDescComp", package.seeall)
 
-slot0 = class("SkillDescComp", LuaCompBase)
-slot1 = "SkillDescComp"
-slot2 = "#7e99d0"
-slot3 = {}
-slot4 = "▩rich_replace▩"
-slot5 = 0
-slot6 = {}
-slot7 = "▩bracket_replace▩"
-slot8 = 0
+local var_0_0 = class("SkillDescComp", LuaCompBase)
+local var_0_1 = "SkillDescComp"
+local var_0_2 = "#7e99d0"
+local var_0_3 = {}
+local var_0_4 = "▩rich_replace▩"
+local var_0_5 = 0
+local var_0_6 = {}
+local var_0_7 = "▩bracket_replace▩"
+local var_0_8 = 0
 
-function slot0.init(slot0, slot1)
-	slot0.viewGO = slot1
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.viewGO = arg_1_1
 end
 
-function slot0.updateInfo(slot0, slot1, slot2, slot3)
-	slot0._txtComp = slot1
-	slot0._heroId = slot3
+function var_0_0.updateInfo(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	arg_2_0._txtComp = arg_2_1
+	arg_2_0._heroId = arg_2_3
 
-	if slot0._skillNameList ~= nil then
-		tabletool.clear(slot0._skillNameList)
+	if arg_2_0._skillNameList ~= nil then
+		tabletool.clear(arg_2_0._skillNameList)
 	end
 
-	slot0._hyperLinkClick = gohelper.onceAddComponent(slot0.viewGO, typeof(ZProj.TMPHyperLinkClick))
+	arg_2_2 = arg_2_0:_replaceSkillTag(arg_2_2, "▩(%d)%%s")
+	arg_2_2 = arg_2_0:addLink(arg_2_2)
+	arg_2_2 = arg_2_0:filterBracketText(arg_2_2)
+	arg_2_2 = arg_2_0:addNumColor(arg_2_2)
+	arg_2_2 = arg_2_0:revertBracketText(arg_2_2)
+	arg_2_2 = arg_2_0:_revertSkillName(arg_2_2, 1)
+	arg_2_0._hyperLinkClick = gohelper.onceAddComponent(arg_2_0.viewGO, typeof(ZProj.TMPHyperLinkClick))
 
-	slot0._hyperLinkClick:SetClickListener(slot0._onHyperLinkClick, slot0)
+	arg_2_0._hyperLinkClick:SetClickListener(arg_2_0._onHyperLinkClick, arg_2_0)
 
-	slot0._txtComp.text = slot0:_revertSkillName(slot0:revertBracketText(slot0:addNumColor(slot0:filterBracketText(slot0:addLink(slot0:_replaceSkillTag(slot2, "▩(%d)%%s"))))), 1)
-	slot0._fixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(slot0.viewGO.gameObject, FixTmpBreakLine)
+	arg_2_0._txtComp.text = arg_2_2
+	arg_2_0._fixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(arg_2_0.viewGO.gameObject, FixTmpBreakLine)
 
-	slot0._fixTmpBreakLine:refreshTmpContent(slot0.viewGO)
+	arg_2_0._fixTmpBreakLine:refreshTmpContent(arg_2_0.viewGO)
 
-	slot0.heroMo = HeroModel.instance:getByHeroId(slot3)
+	arg_2_0.heroMo = HeroModel.instance:getByHeroId(arg_2_3)
 
-	if not slot0.heroMo then
-		slot0.heroMo = HeroMo.New()
-		slot8 = HeroConfig.instance:getHeroCO(slot0._heroId)
+	if not arg_2_0.heroMo then
+		arg_2_0.heroMo = HeroMo.New()
 
-		slot0.heroMo:init({}, slot8)
+		local var_2_0 = HeroConfig.instance:getHeroCO(arg_2_0._heroId)
 
-		slot0.heroMo.passiveSkillLevel = {}
+		arg_2_0.heroMo:init({}, var_2_0)
 
-		for slot8 = 1, 3 do
-			table.insert(slot0.heroMo.passiveSkillLevel, slot8)
+		arg_2_0.heroMo.passiveSkillLevel = {}
+
+		for iter_2_0 = 1, 3 do
+			table.insert(arg_2_0.heroMo.passiveSkillLevel, iter_2_0)
 		end
 	end
 end
 
-function slot0.setTipParam(slot0, slot1, slot2)
-	slot0._skillTipAnchorX = slot1
-	slot0._buffTipAnchor = slot2
+function var_0_0.setTipParam(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0._skillTipAnchorX = arg_3_1
+	arg_3_0._buffTipAnchor = arg_3_2
 end
 
-function slot0._replaceSkillTag(slot0, slot1, slot2)
-	slot3, slot4, slot5 = string.find(slot1, slot2)
+function var_0_0._replaceSkillTag(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0, var_4_1, var_4_2 = string.find(arg_4_1, arg_4_2)
 
-	if not slot3 then
-		return slot1
+	if not var_4_0 then
+		return arg_4_1
 	end
 
-	slot6 = nil
+	local var_4_3 = tonumber(var_4_2)
+	local var_4_4
 
-	if not ((tonumber(slot5) ~= 0 or SkillConfig.instance:getpassiveskillsCO(slot0._heroId)[1].skillPassive) and SkillConfig.instance:getHeroBaseSkillIdDict(slot0._heroId)[slot5]) then
-		logError("没找到当前角色的技能：heroId:" .. slot0._heroId .. "  skillindex:" .. slot5)
-
-		return slot1
+	if var_4_3 == 0 then
+		var_4_4 = SkillConfig.instance:getpassiveskillsCO(arg_4_0._heroId)[1].skillPassive
+	else
+		var_4_4 = SkillConfig.instance:getHeroBaseSkillIdDict(arg_4_0._heroId)[var_4_3]
 	end
 
-	slot9 = lua_skill.configDict[slot6].name and string.format("<color=%s><link=\"skillIndex=%s\">【%s】</link></color>", uv0, slot5, slot7) or ""
+	if not var_4_4 then
+		logError("没找到当前角色的技能：heroId:" .. arg_4_0._heroId .. "  skillindex:" .. var_4_3)
 
-	if not slot0._skillNameList then
-		slot0._skillNameList = {}
+		return arg_4_1
 	end
 
-	table.insert(slot0._skillNameList, slot9)
+	local var_4_5 = lua_skill.configDict[var_4_4].name
+	local var_4_6 = "<color=%s><link=\"skillIndex=%s\">【%s】</link></color>"
+	local var_4_7 = var_4_5 and string.format(var_4_6, var_0_2, var_4_3, var_4_5) or ""
 
-	return slot0:_replaceSkillTag(string.gsub(slot1, slot2, uv1, 1), slot2)
-end
-
-function slot0._revertSkillName(slot0, slot1, slot2)
-	if not string.find(slot1, uv0) then
-		return slot1
+	if not arg_4_0._skillNameList then
+		arg_4_0._skillNameList = {}
 	end
 
-	if not slot0._skillNameList[slot2] then
-		return slot1
+	table.insert(arg_4_0._skillNameList, var_4_7)
+
+	arg_4_1 = string.gsub(arg_4_1, arg_4_2, var_0_1, 1)
+
+	return arg_4_0:_replaceSkillTag(arg_4_1, arg_4_2)
+end
+
+function var_0_0._revertSkillName(arg_5_0, arg_5_1, arg_5_2)
+	if not string.find(arg_5_1, var_0_1) then
+		return arg_5_1
 	end
 
-	return slot0:_revertSkillName(string.gsub(slot1, uv0, slot4, 1), slot2 + 1)
-end
+	local var_5_0 = arg_5_0._skillNameList[arg_5_2]
 
-function slot0.addLink(slot0, slot1)
-	return string.gsub(string.gsub(slot1, "%[(.-)%]", slot0.addLinkCb1), "【(.-)】", slot0.addLinkCb2)
-end
-
-function slot9(slot0, slot1)
-	slot1 = SkillHelper.removeRichTag(slot1)
-
-	if not SkillConfig.instance:getSkillEffectDescCoByName(slot1) then
-		return slot1
+	if not var_5_0 then
+		return arg_5_1
 	end
 
-	slot3 = uv0
-	slot1 = string.format(slot0, slot1)
+	arg_5_1 = string.gsub(arg_5_1, var_0_1, var_5_0, 1)
 
-	if not slot2.notAddLink or slot2.notAddLink == 0 then
-		return string.format("<color=%s><u><link=%s>%s</link></u></color>", slot3, slot2.id, slot1)
+	return arg_5_0:_revertSkillName(arg_5_1, arg_5_2 + 1)
+end
+
+function var_0_0.addLink(arg_6_0, arg_6_1)
+	arg_6_1 = string.gsub(arg_6_1, "%[(.-)%]", arg_6_0.addLinkCb1)
+	arg_6_1 = string.gsub(arg_6_1, "【(.-)】", arg_6_0.addLinkCb2)
+
+	return arg_6_1
+end
+
+local function var_0_9(arg_7_0, arg_7_1)
+	local var_7_0 = SkillConfig.instance:getSkillEffectDescCoByName(arg_7_1)
+
+	arg_7_1 = SkillHelper.removeRichTag(arg_7_1)
+
+	if not var_7_0 then
+		return arg_7_1
 	end
 
-	return string.format("<color=%s>%s</color>", slot3, slot1)
+	local var_7_1 = var_0_2
+
+	arg_7_1 = string.format(arg_7_0, arg_7_1)
+
+	if not var_7_0.notAddLink or var_7_0.notAddLink == 0 then
+		return string.format("<color=%s><u><link=%s>%s</link></u></color>", var_7_1, var_7_0.id, arg_7_1)
+	end
+
+	return string.format("<color=%s>%s</color>", var_7_1, arg_7_1)
 end
 
-function slot0.addLinkCb1(slot0)
-	return uv0("[%s]", slot0)
+function var_0_0.addLinkCb1(arg_8_0)
+	local var_8_0 = "[%s]"
+
+	return var_0_9(var_8_0, arg_8_0)
 end
 
-function slot0.addLinkCb2(slot0)
-	return uv0("【%s】", slot0)
+function var_0_0.addLinkCb2(arg_9_0)
+	local var_9_0 = "【%s】"
+
+	return var_0_9(var_9_0, arg_9_0)
 end
 
-function slot0.addNumColor(slot0, slot1)
-	return slot0:revertRichText(string.gsub(slot0:filterRichText(slot1), "[+-]?[%d%./%%]+", SkillHelper.getColorFormat("#deaa79", "%1")))
+function var_0_0.addNumColor(arg_10_0, arg_10_1)
+	arg_10_1 = arg_10_0:filterRichText(arg_10_1)
+
+	local var_10_0 = SkillHelper.getColorFormat("#deaa79", "%1")
+
+	arg_10_1 = string.gsub(arg_10_1, "[+-]?[%d%./%%]+", var_10_0)
+	arg_10_1 = arg_10_0:revertRichText(arg_10_1)
+
+	return arg_10_1
 end
 
-function slot0.replaceColorFunc(slot0)
-	if string.find(slot0, "[<>]") then
-		return slot0
+function var_0_0.replaceColorFunc(arg_11_0)
+	if string.find(arg_11_0, "[<>]") then
+		return arg_11_0
 	end
 end
 
-function slot0.filterRichText(slot0, slot1)
-	tabletool.clear(uv0)
+function var_0_0.filterRichText(arg_12_0, arg_12_1)
+	tabletool.clear(var_0_3)
 
-	return string.gsub(slot1, "(<.->)", slot0._filterRichText)
+	arg_12_1 = string.gsub(arg_12_1, "(<.->)", arg_12_0._filterRichText)
+
+	return arg_12_1
 end
 
-function slot0._filterRichText(slot0)
-	table.insert(uv0, slot0)
+function var_0_0._filterRichText(arg_13_0)
+	table.insert(var_0_3, arg_13_0)
 
-	return uv1
+	return var_0_4
 end
 
-function slot0.revertRichText(slot0, slot1)
-	uv0 = 0
+function var_0_0.revertRichText(arg_14_0, arg_14_1)
+	var_0_5 = 0
+	arg_14_1 = string.gsub(arg_14_1, var_0_4, arg_14_0._revertRichText)
 
-	tabletool.clear(uv2)
+	tabletool.clear(var_0_3)
 
-	return string.gsub(slot1, uv1, slot0._revertRichText)
+	return arg_14_1
 end
 
-function slot0._revertRichText(slot0)
-	uv0 = uv0 + 1
+function var_0_0._revertRichText(arg_15_0)
+	var_0_5 = var_0_5 + 1
 
-	return uv1[uv0] or ""
+	return var_0_3[var_0_5] or ""
 end
 
-function slot0.filterBracketText(slot0, slot1)
-	tabletool.clear(uv0)
+function var_0_0.filterBracketText(arg_16_0, arg_16_1)
+	tabletool.clear(var_0_6)
 
-	return string.gsub(string.gsub(slot1, "【.-】", slot0._filterBracketText), "%[.-%]", slot0._filterBracketText)
+	arg_16_1 = string.gsub(arg_16_1, "【.-】", arg_16_0._filterBracketText)
+	arg_16_1 = string.gsub(arg_16_1, "%[.-%]", arg_16_0._filterBracketText)
+
+	return arg_16_1
 end
 
-function slot0._filterBracketText(slot0)
-	table.insert(uv0, slot0)
+function var_0_0._filterBracketText(arg_17_0)
+	table.insert(var_0_6, arg_17_0)
 
-	return uv1
+	return var_0_7
 end
 
-function slot0.revertBracketText(slot0, slot1)
-	uv0 = 0
+function var_0_0.revertBracketText(arg_18_0, arg_18_1)
+	var_0_8 = 0
+	arg_18_1 = string.gsub(arg_18_1, var_0_7, arg_18_0._reverBracketText)
 
-	tabletool.clear(uv2)
+	tabletool.clear(var_0_6)
 
-	return string.gsub(slot1, uv1, slot0._reverBracketText)
+	return arg_18_1
 end
 
-function slot0._reverBracketText(slot0)
-	uv0 = uv0 + 1
+function var_0_0._reverBracketText(arg_19_0)
+	var_0_8 = var_0_8 + 1
 
-	return uv1[uv0] or ""
+	return var_0_6[var_0_8] or ""
 end
 
-function slot0._onHyperLinkClick(slot0, slot1, slot2)
+function var_0_0._onHyperLinkClick(arg_20_0, arg_20_1, arg_20_2)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 
-	if not (string.match(slot1, "skillIndex=(%d)") and tonumber(slot3)) then
-		CommonBuffTipController.instance:openCommonTipViewWithCustomPos(tonumber(slot1), slot0._buffTipAnchor or CommonBuffTipEnum.Anchor[ViewName.CharacterExSkillView], CommonBuffTipEnum.Pivot.Right)
-	elseif slot3 == 0 then
-		CharacterController.instance:openCharacterTipView({
-			tag = "passiveskill",
-			heroid = slot0._heroId,
-			tipPos = Vector2.New(-292, -51.1),
-			anchorParams = {
-				Vector2.New(1, 0.5),
-				Vector2.New(1, 0.5)
-			},
-			buffTipsX = -776,
-			heroMo = slot0.heroMo
-		})
+	local var_20_0 = string.match(arg_20_1, "skillIndex=(%d)")
+
+	var_20_0 = var_20_0 and tonumber(var_20_0)
+
+	if not var_20_0 then
+		CommonBuffTipController.instance:openCommonTipViewWithCustomPos(tonumber(arg_20_1), arg_20_0._buffTipAnchor or CommonBuffTipEnum.Anchor[ViewName.CharacterExSkillView], CommonBuffTipEnum.Pivot.Right)
+	elseif var_20_0 == 0 then
+		local var_20_1 = {}
+
+		var_20_1.tag = "passiveskill"
+		var_20_1.heroid = arg_20_0._heroId
+		var_20_1.tipPos = Vector2.New(-292, -51.1)
+		var_20_1.anchorParams = {
+			Vector2.New(1, 0.5),
+			Vector2.New(1, 0.5)
+		}
+		var_20_1.buffTipsX = -776
+		var_20_1.heroMo = arg_20_0.heroMo
+
+		CharacterController.instance:openCharacterTipView(var_20_1)
 	else
-		ViewMgr.instance:openView(ViewName.SkillTipView, {
-			super = slot3 == 3,
-			skillIdList = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(slot0._heroId)[slot3],
-			monsterName = HeroConfig.instance:getHeroCO(slot0._heroId).name,
-			anchorX = slot0._skillTipAnchorX,
-			heroMo = slot0.heroMo
-		})
+		local var_20_2 = {}
+		local var_20_3 = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(arg_20_0._heroId)
+
+		var_20_2.super = var_20_0 == 3
+		var_20_2.skillIdList = var_20_3[var_20_0]
+		var_20_2.monsterName = HeroConfig.instance:getHeroCO(arg_20_0._heroId).name
+		var_20_2.anchorX = arg_20_0._skillTipAnchorX
+		var_20_2.heroMo = arg_20_0.heroMo
+
+		ViewMgr.instance:openView(ViewName.SkillTipView, var_20_2)
 	end
 end
 
-return slot0
+return var_0_0

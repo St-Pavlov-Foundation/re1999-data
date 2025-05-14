@@ -1,76 +1,76 @@
-module("modules.logic.tower.view.TowerMainEntryView", package.seeall)
+﻿module("modules.logic.tower.view.TowerMainEntryView", package.seeall)
 
-slot0 = class("TowerMainEntryView", BaseView)
+local var_0_0 = class("TowerMainEntryView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._simageFullBG = gohelper.findChildSingleImage(slot0.viewGO, "#simage_FullBG")
-	slot0._simageTitle = gohelper.findChildSingleImage(slot0.viewGO, "#simage_Title")
-	slot0._gotimeLimitEpisode = gohelper.findChild(slot0.viewGO, "limitTimeEpisode")
-	slot0._gotimeLimitTaskInfo = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo")
-	slot0._txttimeLimitNum = gohelper.findChildText(slot0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo/#txt_timeLimitNum")
-	slot0._golimitTimeTips = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_limitTimeTips")
-	slot0._golimitTimeHasNew = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeHasNew")
-	slot0._golimitTimeUpdateTime = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeUpdateTime")
-	slot0._txtlimitTimeUpdateTime = gohelper.findChildText(slot0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeUpdateTime/#txt_limitTimeUpdateTime")
-	slot0._btnlimitTime = gohelper.findChildButtonWithAudio(slot0.viewGO, "limitTimeEpisode/#btn_limitTime")
-	slot0._gobossEpisode = gohelper.findChild(slot0.viewGO, "bossEpisode")
-	slot0._gobossTaskInfo = gohelper.findChild(slot0.viewGO, "bossEpisode/layout/#go_bossTaskInfo")
-	slot0._txtbossNum = gohelper.findChildText(slot0.viewGO, "bossEpisode/layout/#go_bossTaskInfo/#txt_bossNum")
-	slot0._gobossTips = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossTips")
-	slot0._gobossHasNew = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossTips/#go_bossHasNew")
-	slot0._gobossUpdateTime = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossTips/#go_bossUpdateTime")
-	slot0._txtbossUpdateTime = gohelper.findChildText(slot0.viewGO, "bossEpisode/#go_bossTips/#go_bossUpdateTime/#txt_bossUpdateTime")
-	slot0._gobossContent = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossContent")
-	slot0._gobossItem = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossContent/#go_bossItem")
-	slot0._goSelected = gohelper.findChild(slot0.viewGO, "bossEpisode/#go_bossContent/#go_bossItem/#go_Selected")
-	slot0._btnboss = gohelper.findChildButtonWithAudio(slot0.viewGO, "bossEpisode/#btn_boss")
-	slot0._gorewards = gohelper.findChild(slot0.viewGO, "Reward/scroll_reward/Viewport/#go_rewards")
-	slot0._btnStart = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Start")
-	slot0._btnLock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Lock")
-	slot0._txtlockTip = gohelper.findChildText(slot0.viewGO, "#btn_Lock/#txt_lockTip")
-	slot0._goreddot = gohelper.findChild(slot0.viewGO, "#btn_Start/#go_reddot")
-	slot0._goupdateReddot = gohelper.findChild(slot0.viewGO, "black/#go_updateReddot")
-	slot0._gostore = gohelper.findChild(slot0.viewGO, "store")
-	slot0._gostoreTime = gohelper.findChild(slot0.viewGO, "store/time")
-	slot0._txtstoreTime = gohelper.findChildText(slot0.viewGO, "store/time/#txt_storeTime")
-	slot0._txtstoreName = gohelper.findChildText(slot0.viewGO, "store/#txt_storeName")
-	slot0._txtcoinNum = gohelper.findChildText(slot0.viewGO, "store/#txt_coinNum")
-	slot0._imagecoin = gohelper.findChildImage(slot0.viewGO, "store/#txt_coinNum/#image_coin")
-	slot0._btnstore = gohelper.findChildButtonWithAudio(slot0.viewGO, "store/#btn_store")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
+	arg_1_0._simageTitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_Title")
+	arg_1_0._gotimeLimitEpisode = gohelper.findChild(arg_1_0.viewGO, "limitTimeEpisode")
+	arg_1_0._gotimeLimitTaskInfo = gohelper.findChild(arg_1_0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo")
+	arg_1_0._txttimeLimitNum = gohelper.findChildText(arg_1_0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo/#txt_timeLimitNum")
+	arg_1_0._golimitTimeTips = gohelper.findChild(arg_1_0.viewGO, "limitTimeEpisode/#go_limitTimeTips")
+	arg_1_0._golimitTimeHasNew = gohelper.findChild(arg_1_0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeHasNew")
+	arg_1_0._golimitTimeUpdateTime = gohelper.findChild(arg_1_0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeUpdateTime")
+	arg_1_0._txtlimitTimeUpdateTime = gohelper.findChildText(arg_1_0.viewGO, "limitTimeEpisode/#go_limitTimeTips/#go_limitTimeUpdateTime/#txt_limitTimeUpdateTime")
+	arg_1_0._btnlimitTime = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "limitTimeEpisode/#btn_limitTime")
+	arg_1_0._gobossEpisode = gohelper.findChild(arg_1_0.viewGO, "bossEpisode")
+	arg_1_0._gobossTaskInfo = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/layout/#go_bossTaskInfo")
+	arg_1_0._txtbossNum = gohelper.findChildText(arg_1_0.viewGO, "bossEpisode/layout/#go_bossTaskInfo/#txt_bossNum")
+	arg_1_0._gobossTips = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossTips")
+	arg_1_0._gobossHasNew = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossTips/#go_bossHasNew")
+	arg_1_0._gobossUpdateTime = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossTips/#go_bossUpdateTime")
+	arg_1_0._txtbossUpdateTime = gohelper.findChildText(arg_1_0.viewGO, "bossEpisode/#go_bossTips/#go_bossUpdateTime/#txt_bossUpdateTime")
+	arg_1_0._gobossContent = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossContent")
+	arg_1_0._gobossItem = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossContent/#go_bossItem")
+	arg_1_0._goSelected = gohelper.findChild(arg_1_0.viewGO, "bossEpisode/#go_bossContent/#go_bossItem/#go_Selected")
+	arg_1_0._btnboss = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bossEpisode/#btn_boss")
+	arg_1_0._gorewards = gohelper.findChild(arg_1_0.viewGO, "Reward/scroll_reward/Viewport/#go_rewards")
+	arg_1_0._btnStart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Start")
+	arg_1_0._btnLock = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Lock")
+	arg_1_0._txtlockTip = gohelper.findChildText(arg_1_0.viewGO, "#btn_Lock/#txt_lockTip")
+	arg_1_0._goreddot = gohelper.findChild(arg_1_0.viewGO, "#btn_Start/#go_reddot")
+	arg_1_0._goupdateReddot = gohelper.findChild(arg_1_0.viewGO, "black/#go_updateReddot")
+	arg_1_0._gostore = gohelper.findChild(arg_1_0.viewGO, "store")
+	arg_1_0._gostoreTime = gohelper.findChild(arg_1_0.viewGO, "store/time")
+	arg_1_0._txtstoreTime = gohelper.findChildText(arg_1_0.viewGO, "store/time/#txt_storeTime")
+	arg_1_0._txtstoreName = gohelper.findChildText(arg_1_0.viewGO, "store/#txt_storeName")
+	arg_1_0._txtcoinNum = gohelper.findChildText(arg_1_0.viewGO, "store/#txt_coinNum")
+	arg_1_0._imagecoin = gohelper.findChildImage(arg_1_0.viewGO, "store/#txt_coinNum/#image_coin")
+	arg_1_0._btnstore = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "store/#btn_store")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnlimitTime:AddClickListener(slot0._btnlimitTimeOnClick, slot0)
-	slot0._btnboss:AddClickListener(slot0._btnbossOnClick, slot0)
-	slot0._btnStart:AddClickListener(slot0._btnStartOnClick, slot0)
-	slot0._btnstore:AddClickListener(slot0._btnstoreOnClick, slot0)
-	slot0:addEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0, LuaEventSystem.Low)
-	slot0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshTaskInfo, slot0)
-	slot0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRequestData, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnlimitTime:AddClickListener(arg_2_0._btnlimitTimeOnClick, arg_2_0)
+	arg_2_0._btnboss:AddClickListener(arg_2_0._btnbossOnClick, arg_2_0)
+	arg_2_0._btnStart:AddClickListener(arg_2_0._btnStartOnClick, arg_2_0)
+	arg_2_0._btnstore:AddClickListener(arg_2_0._btnstoreOnClick, arg_2_0)
+	arg_2_0:addEventCb(TowerController.instance, TowerEvent.LocalKeyChange, arg_2_0.onLocalKeyChange, arg_2_0)
+	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_2_0._onCloseView, arg_2_0, LuaEventSystem.Low)
+	arg_2_0:addEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, arg_2_0.refreshTaskInfo, arg_2_0)
+	arg_2_0:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, arg_2_0.refreshStore, arg_2_0)
+	arg_2_0:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, arg_2_0.refreshStore, arg_2_0)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_2_0.dailyRequestData, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnlimitTime:RemoveClickListener()
-	slot0._btnboss:RemoveClickListener()
-	slot0._btnStart:RemoveClickListener()
-	slot0._btnstore:RemoveClickListener()
-	slot0:removeEventCb(TowerController.instance, TowerEvent.LocalKeyChange, slot0.onLocalKeyChange, slot0)
-	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0._onCloseView, slot0, LuaEventSystem.Low)
-	slot0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, slot0.refreshTaskInfo, slot0)
-	slot0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, slot0.refreshStore, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, slot0.refreshStore, slot0)
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRequestData, slot0)
-	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnlimitTime:RemoveClickListener()
+	arg_3_0._btnboss:RemoveClickListener()
+	arg_3_0._btnStart:RemoveClickListener()
+	arg_3_0._btnstore:RemoveClickListener()
+	arg_3_0:removeEventCb(TowerController.instance, TowerEvent.LocalKeyChange, arg_3_0.onLocalKeyChange, arg_3_0)
+	arg_3_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_3_0._onCloseView, arg_3_0, LuaEventSystem.Low)
+	arg_3_0:removeEventCb(TowerController.instance, TowerEvent.TowerTaskUpdated, arg_3_0.refreshTaskInfo, arg_3_0)
+	arg_3_0:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, arg_3_0.refreshStore, arg_3_0)
+	arg_3_0:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, arg_3_0.refreshStore, arg_3_0)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_3_0.dailyRequestData, arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0.refreshTowerState, arg_3_0)
 end
 
-function slot0._btnlimitTimeOnClick(slot0)
+function var_0_0._btnlimitTimeOnClick(arg_4_0)
 	if not TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() then
 		return
 	end
@@ -78,9 +78,11 @@ function slot0._btnlimitTimeOnClick(slot0)
 	TowerController.instance:openTowerTimeLimitLevelView()
 end
 
-function slot0._btnbossOnClick(slot0)
+function var_0_0._btnbossOnClick(arg_5_0)
 	if not TowerController.instance:isBossTowerOpen() then
-		GameFacade.showToast(ToastEnum.TowerBossLockTips, TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossTowerOpen))
+		local var_5_0 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossTowerOpen)
+
+		GameFacade.showToast(ToastEnum.TowerBossLockTips, var_5_0)
 
 		return
 	end
@@ -92,273 +94,340 @@ function slot0._btnbossOnClick(slot0)
 	ViewMgr.instance:openView(ViewName.TowerBossSelectView)
 end
 
-function slot0._btnStartOnClick(slot0)
+function var_0_0._btnStartOnClick(arg_6_0)
 	TowerController.instance:openMainView()
 end
 
-function slot0._btnstoreOnClick(slot0)
+function var_0_0._btnstoreOnClick(arg_7_0)
 	TowerController.instance:openTowerStoreView()
 end
 
-function slot0.onLocalKeyChange(slot0)
-	slot0:refreshBossNewTag()
+function var_0_0.onLocalKeyChange(arg_8_0)
+	arg_8_0:refreshBossNewTag()
 end
 
-function slot0._onCloseView(slot0, slot1)
-	if slot1 == "TowerMainView" then
-		slot0:refreshTowerState()
+function var_0_0._onCloseView(arg_9_0, arg_9_1)
+	if arg_9_1 == "TowerMainView" then
+		arg_9_0:refreshTowerState()
 	end
 end
 
-function slot0.dailyRequestData(slot0)
-	TowerRpc.instance:sendGetTowerInfoRequest(slot0.towerTaskDataRequest, slot0)
+function var_0_0.dailyRequestData(arg_10_0)
+	TowerRpc.instance:sendGetTowerInfoRequest(arg_10_0.towerTaskDataRequest, arg_10_0)
 end
 
-function slot0.towerTaskDataRequest(slot0)
+function var_0_0.towerTaskDataRequest(arg_11_0)
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.Tower
-	}, slot0.dailyRefresh, slot0)
+	}, arg_11_0.dailyRefresh, arg_11_0)
 end
 
-function slot0.dailyRefresh(slot0)
-	slot0:refreshUI()
+function var_0_0.dailyRefresh(arg_12_0)
+	arg_12_0:refreshUI()
 	TowerController.instance:dispatchEvent(TowerEvent.DailyReresh)
 end
 
-function slot0._editableInitView(slot0)
-	slot0.rewardItemTab = slot0:getUserDataTb_()
-	slot0.bossItemTab = slot0:getUserDataTb_()
-	slot0._animView = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+function var_0_0._editableInitView(arg_13_0)
+	arg_13_0.rewardItemTab = arg_13_0:getUserDataTb_()
+	arg_13_0.bossItemTab = arg_13_0:getUserDataTb_()
+	arg_13_0._animView = arg_13_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
-	TowerTaskModel.instance:setTaskInfoList(TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Tower) or {})
+	local var_13_0 = TaskModel.instance:getAllUnlockTasks(TaskEnum.TaskType.Tower) or {}
+
+	TowerTaskModel.instance:setTaskInfoList(var_13_0)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_14_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0._animView:Play(UIAnimationName.Open, 0, 0)
+function var_0_0.onOpen(arg_15_0)
+	arg_15_0._animView:Play(UIAnimationName.Open, 0, 0)
 
-	slot0.actId = ActivityEnum.Activity.Tower
-	slot0.actConfig = ActivityConfig.instance:getActivityCo(slot0.actId)
+	arg_15_0.actId = ActivityEnum.Activity.Tower
+	arg_15_0.actConfig = ActivityConfig.instance:getActivityCo(arg_15_0.actId)
 
-	slot0:refreshUI()
-	RedDotController.instance:addRedDot(slot0._goreddot, RedDotEnum.DotNode.TowerMainEntry)
-	RedDotController.instance:addRedDot(slot0._goupdateReddot, RedDotEnum.DotNode.TowerNewUpdate)
+	arg_15_0:refreshUI()
+	RedDotController.instance:addRedDot(arg_15_0._goreddot, RedDotEnum.DotNode.TowerMainEntry)
+	RedDotController.instance:addRedDot(arg_15_0._goupdateReddot, RedDotEnum.DotNode.TowerNewUpdate)
 	TowerController.instance:saveNewUpdateTowerReddot()
 	TowerController.instance:dispatchEvent(TowerEvent.RefreshTowerReddot)
 	TowerController.instance:checkNewUpdateTowerRddotShow()
 end
 
-function slot0.refreshUI(slot0)
-	slot0:refreshReward()
+function var_0_0.refreshUI(arg_16_0)
+	arg_16_0:refreshReward()
 
-	slot0.isTowerOpen = TowerController.instance:isOpen()
+	arg_16_0.isTowerOpen = TowerController.instance:isOpen()
 
-	gohelper.setActive(slot0._btnStart.gameObject, slot0.isTowerOpen)
-	gohelper.setActive(slot0._btnLock.gameObject, not slot0.isTowerOpen)
+	gohelper.setActive(arg_16_0._btnStart.gameObject, arg_16_0.isTowerOpen)
+	gohelper.setActive(arg_16_0._btnLock.gameObject, not arg_16_0.isTowerOpen)
 
-	if slot0.isTowerOpen then
-		slot0:refreshEntranceUI()
-		slot0:refreshBossInfo()
-		slot0:refreshBossNewTag()
-		slot0:refreshTowerState()
-		slot0:refreshTaskInfo()
-		slot0:refreshStore()
-		TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
-		TaskDispatcher.runRepeat(slot0.refreshTowerState, slot0, 1)
+	if arg_16_0.isTowerOpen then
+		arg_16_0:refreshEntranceUI()
+		arg_16_0:refreshBossInfo()
+		arg_16_0:refreshBossNewTag()
+		arg_16_0:refreshTowerState()
+		arg_16_0:refreshTaskInfo()
+		arg_16_0:refreshStore()
+		TaskDispatcher.cancelTask(arg_16_0.refreshTowerState, arg_16_0)
+		TaskDispatcher.runRepeat(arg_16_0.refreshTowerState, arg_16_0, 1)
 	else
-		gohelper.setActive(slot0._gobossEpisode, false)
-		gohelper.setActive(slot0._gotimeLimitEpisode, false)
+		gohelper.setActive(arg_16_0._gobossEpisode, false)
+		gohelper.setActive(arg_16_0._gotimeLimitEpisode, false)
 
-		slot1, slot2, slot3 = ActivityHelper.getActivityStatusAndToast(slot0.actId)
+		local var_16_0, var_16_1, var_16_2 = ActivityHelper.getActivityStatusAndToast(arg_16_0.actId)
 
-		if slot1 ~= ActivityEnum.ActivityStatus.Normal then
-			slot0._txtlockTip.text = GameUtil.getSubPlaceholderLuaLang(ToastConfig.instance:getToastCO(slot2).tips, slot3)
+		if var_16_0 ~= ActivityEnum.ActivityStatus.Normal then
+			local var_16_3 = ToastConfig.instance:getToastCO(var_16_1).tips
+			local var_16_4 = GameUtil.getSubPlaceholderLuaLang(var_16_3, var_16_2)
+
+			arg_16_0._txtlockTip.text = var_16_4
 		end
 	end
 end
 
-function slot0.refreshEntranceUI(slot0)
-	gohelper.setActive(slot0._gobossEpisode, TowerController.instance:isBossTowerOpen())
-	gohelper.setActive(slot0._gotimeLimitEpisode, TowerController.instance:isTimeLimitTowerOpen())
+function var_0_0.refreshEntranceUI(arg_17_0)
+	local var_17_0 = TowerController.instance:isBossTowerOpen()
+
+	gohelper.setActive(arg_17_0._gobossEpisode, var_17_0)
+
+	local var_17_1 = TowerController.instance:isTimeLimitTowerOpen()
+
+	gohelper.setActive(arg_17_0._gotimeLimitEpisode, var_17_1)
 end
 
-function slot0.refreshTaskInfo(slot0)
-	slot0._gotimeLimitTaskInfo = gohelper.findChild(slot0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo")
-	slot0._txttimeLimitNum = gohelper.findChildText(slot0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo/#txt_timeLimitNum")
+function var_0_0.refreshTaskInfo(arg_18_0)
+	local var_18_0 = TowerTaskModel.instance:getCurTaskList(TowerEnum.TowerType.Limited)
 
-	if not TowerTaskModel.instance:getCurTaskList(TowerEnum.TowerType.Limited) or #slot1 == 0 then
-		gohelper.setActive(slot0._gotimeLimitTaskInfo, false)
+	arg_18_0._gotimeLimitTaskInfo = gohelper.findChild(arg_18_0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo")
+	arg_18_0._txttimeLimitNum = gohelper.findChildText(arg_18_0.viewGO, "limitTimeEpisode/#go_timeLimitTaskInfo/#txt_timeLimitNum")
+
+	if not var_18_0 or #var_18_0 == 0 then
+		gohelper.setActive(arg_18_0._gotimeLimitTaskInfo, false)
 	else
-		gohelper.setActive(slot0._gotimeLimitTaskInfo, true)
+		gohelper.setActive(arg_18_0._gotimeLimitTaskInfo, true)
 
-		slot0._txttimeLimitNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot1), #slot1)
+		local var_18_1 = TowerTaskModel.instance:getTaskItemRewardCount(var_18_0)
+
+		arg_18_0._txttimeLimitNum.text = string.format("%s/%s", var_18_1, #var_18_0)
 	end
 
-	if not TowerTaskModel.instance.bossTaskList or #slot2 == 0 then
-		gohelper.setActive(slot0._gobossTaskInfo, false)
+	local var_18_2 = TowerTaskModel.instance.bossTaskList
+
+	if not var_18_2 or #var_18_2 == 0 then
+		gohelper.setActive(arg_18_0._gobossTaskInfo, false)
 	else
-		gohelper.setActive(slot0._gobossTaskInfo, true)
+		gohelper.setActive(arg_18_0._gobossTaskInfo, true)
 
-		slot3 = {}
+		local var_18_3 = {}
 
-		for slot7, slot8 in pairs(slot2) do
-			for slot12 = 1, #slot8 do
-				table.insert(slot3, slot8[slot12])
+		for iter_18_0, iter_18_1 in pairs(var_18_2) do
+			for iter_18_2 = 1, #iter_18_1 do
+				table.insert(var_18_3, iter_18_1[iter_18_2])
 			end
 		end
 
-		slot0._txtbossNum.text = string.format("%s/%s", TowerTaskModel.instance:getTaskItemRewardCount(slot3), #slot3)
+		local var_18_4 = TowerTaskModel.instance:getTaskItemRewardCount(var_18_3)
+
+		arg_18_0._txtbossNum.text = string.format("%s/%s", var_18_4, #var_18_3)
 	end
 end
 
-function slot0.refreshBossInfo(slot0)
-	slot2 = {}
+function var_0_0.refreshBossInfo(arg_19_0)
+	local var_19_0 = TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)
+	local var_19_1 = {}
 
-	if #TowerModel.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open) > 0 then
-		table.sort(slot1, TowerAssistBossModel.sortBossList)
+	if #var_19_0 > 0 then
+		table.sort(var_19_0, TowerAssistBossModel.sortBossList)
 
-		for slot6 = 1, 3 do
-			if slot1[slot6] then
-				table.insert(slot2, slot1[slot6])
+		for iter_19_0 = 1, 3 do
+			if var_19_0[iter_19_0] then
+				table.insert(var_19_1, var_19_0[iter_19_0])
 			end
 		end
 	end
 
-	slot0.bossEpisodeMo = TowerModel.instance:getEpisodeMoByTowerType(TowerEnum.TowerType.Boss)
+	arg_19_0.bossEpisodeMo = TowerModel.instance:getEpisodeMoByTowerType(TowerEnum.TowerType.Boss)
 
-	gohelper.CreateObjList(slot0, slot0.bossItemShow, slot2, slot0._gobossContent, slot0._gobossItem)
+	gohelper.CreateObjList(arg_19_0, arg_19_0.bossItemShow, var_19_1, arg_19_0._gobossContent, arg_19_0._gobossItem)
 end
 
-function slot0.refreshBossNewTag(slot0)
-	gohelper.setActive(slot0._gobossHasNew, TowerModel.instance:hasNewBossOpen())
+function var_0_0.refreshBossNewTag(arg_20_0)
+	local var_20_0 = TowerModel.instance:hasNewBossOpen()
+
+	gohelper.setActive(arg_20_0._gobossHasNew, var_20_0)
 end
 
-function slot0.bossItemShow(slot0, slot1, slot2, slot3)
-	if not slot0.bossItemTab[slot3] then
-		slot0.bossItemTab[slot3] = {}
+function var_0_0.bossItemShow(arg_21_0, arg_21_1, arg_21_2, arg_21_3)
+	local var_21_0 = arg_21_0.bossItemTab[arg_21_3]
+
+	if not var_21_0 then
+		var_21_0 = {}
+		arg_21_0.bossItemTab[arg_21_3] = var_21_0
 	end
 
-	slot4.go = slot1
-	slot4.simageEnemy = gohelper.findChildSingleImage(slot4.go, "Mask/image_bossIcon")
-	slot4.goSelected = gohelper.findChild(slot4.go, "#go_Selected")
+	var_21_0.go = arg_21_1
+	var_21_0.simageEnemy = gohelper.findChildSingleImage(var_21_0.go, "Mask/image_bossIcon")
+	var_21_0.goSelected = gohelper.findChild(var_21_0.go, "#go_Selected")
 
-	slot4.simageEnemy:LoadImage(ResUrl.monsterHeadIcon(FightConfig.instance:getSkinCO(TowerConfig.instance:getAssistBossConfig(TowerConfig.instance:getBossTowerConfig(slot2.id).bossId).skinId).headIcon))
-	gohelper.setActive(slot4.goSelected, not slot0.bossEpisodeMo:isPassAllUnlockLayers(slot2.id))
+	local var_21_1 = TowerConfig.instance:getBossTowerConfig(arg_21_2.id).bossId
+	local var_21_2 = TowerConfig.instance:getAssistBossConfig(var_21_1)
+	local var_21_3 = FightConfig.instance:getSkinCO(var_21_2.skinId)
+
+	var_21_0.simageEnemy:LoadImage(ResUrl.monsterHeadIcon(var_21_3.headIcon))
+
+	local var_21_4 = arg_21_0.bossEpisodeMo:isPassAllUnlockLayers(arg_21_2.id)
+
+	gohelper.setActive(var_21_0.goSelected, not var_21_4)
 end
 
-function slot0.refreshReward(slot0)
-	for slot6, slot7 in ipairs(GameUtil.splitString2(slot0.actConfig.activityBonus, true)) do
-		if not slot0.rewardItemTab[slot6] then
-			slot0.rewardItemTab[slot6] = {
-				itemIcon = IconMgr.instance:getCommonPropItemIcon(slot0._gorewards)
+function var_0_0.refreshReward(arg_22_0)
+	local var_22_0 = arg_22_0.actConfig.activityBonus
+	local var_22_1 = GameUtil.splitString2(var_22_0, true)
+
+	for iter_22_0, iter_22_1 in ipairs(var_22_1) do
+		local var_22_2 = arg_22_0.rewardItemTab[iter_22_0]
+
+		if not var_22_2 then
+			var_22_2 = {
+				itemIcon = IconMgr.instance:getCommonPropItemIcon(arg_22_0._gorewards)
 			}
+			arg_22_0.rewardItemTab[iter_22_0] = var_22_2
 		end
 
-		slot8.itemIcon:setMOValue(slot7[1], slot7[2], slot7[3] or 0)
-		slot8.itemIcon:isShowCount(false)
-		slot8.itemIcon:setHideLvAndBreakFlag(true)
-		slot8.itemIcon:hideEquipLvAndBreak(true)
+		var_22_2.itemIcon:setMOValue(iter_22_1[1], iter_22_1[2], iter_22_1[3] or 0)
+		var_22_2.itemIcon:isShowCount(false)
+		var_22_2.itemIcon:setHideLvAndBreakFlag(true)
+		var_22_2.itemIcon:hideEquipLvAndBreak(true)
 	end
 
-	for slot6 = #slot2 + 1, #slot0.rewardItemTab do
-		if slot0.rewardItemTab[slot6] then
-			gohelper.setActive(slot7.itemIcon.gameObject, false)
+	for iter_22_2 = #var_22_1 + 1, #arg_22_0.rewardItemTab do
+		local var_22_3 = arg_22_0.rewardItemTab[iter_22_2]
+
+		if var_22_3 then
+			gohelper.setActive(var_22_3.itemIcon.gameObject, false)
 		end
 	end
 end
 
-function slot0.refreshTowerState(slot0)
-	if TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower() then
-		slot2 = slot1.nextTime / 1000 - ServerTime.now()
-		slot3, slot4 = TimeUtil.secondToRoughTime2(slot2)
-		slot0._txtlimitTimeUpdateTime.text = slot2 > 0 and GameUtil.getSubPlaceholderLuaLang(luaLang("towertimelimit_refreshtime"), {
-			slot3,
-			slot4
-		}) or ""
-		slot6 = not TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewTimeLimitOpen, slot1.id, slot1, TowerEnum.LockKey) or slot5 == TowerEnum.LockKey
+function var_0_0.refreshTowerState(arg_23_0)
+	local var_23_0 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
 
-		gohelper.setActive(slot0._golimitTimeHasNew, slot6)
-		gohelper.setActive(slot0._golimitTimeUpdateTime, not slot6 and slot2 > 0)
+	if var_23_0 then
+		local var_23_1 = var_23_0.nextTime / 1000 - ServerTime.now()
+		local var_23_2, var_23_3 = TimeUtil.secondToRoughTime2(var_23_1)
+
+		arg_23_0._txtlimitTimeUpdateTime.text = var_23_1 > 0 and GameUtil.getSubPlaceholderLuaLang(luaLang("towertimelimit_refreshtime"), {
+			var_23_2,
+			var_23_3
+		}) or ""
+
+		local var_23_4 = TowerModel.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewTimeLimitOpen, var_23_0.id, var_23_0, TowerEnum.LockKey)
+		local var_23_5 = not var_23_4 or var_23_4 == TowerEnum.LockKey
+
+		gohelper.setActive(arg_23_0._golimitTimeHasNew, var_23_5)
+		gohelper.setActive(arg_23_0._golimitTimeUpdateTime, not var_23_5 and var_23_1 > 0)
 	else
-		if TowerModel.instance:getFirstUnOpenTowerInfo(TowerEnum.TowerType.Limited) then
-			slot4, slot5 = TimeUtil.secondToRoughTime2(slot2.nextTime / 1000 - ServerTime.now())
-			slot0._txtlimitTimeUpdateTime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("towermain_entranceTimeUnlock"), {
-				slot4,
-				slot5
+		local var_23_6 = TowerModel.instance:getFirstUnOpenTowerInfo(TowerEnum.TowerType.Limited)
+
+		if var_23_6 then
+			local var_23_7 = var_23_6.nextTime / 1000 - ServerTime.now()
+			local var_23_8, var_23_9 = TimeUtil.secondToRoughTime2(var_23_7)
+
+			arg_23_0._txtlimitTimeUpdateTime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("towermain_entranceTimeUnlock"), {
+				var_23_8,
+				var_23_9
 			})
 		else
-			slot0._txtlimitTimeUpdateTime.text = luaLang("towermain_entrancelock")
+			arg_23_0._txtlimitTimeUpdateTime.text = luaLang("towermain_entrancelock")
 		end
 
-		gohelper.setActive(slot0._golimitTimeHasNew, false)
-		gohelper.setActive(slot0._golimitTimeUpdateTime, true)
+		gohelper.setActive(arg_23_0._golimitTimeHasNew, false)
+		gohelper.setActive(arg_23_0._golimitTimeUpdateTime, true)
 	end
 
-	slot2 = TowerModel.instance:hasNewBossOpen()
+	local var_23_10 = TowerModel.instance:hasNewBossOpen()
 
 	if TowerModel.instance:checkHasOpenStateTower(TowerEnum.TowerType.Boss) then
-		slot5 = -1
+		local var_23_11 = TowerModel.instance:getTowerOpenList(TowerEnum.TowerType.Boss)
+		local var_23_12 = -1
 
-		for slot9, slot10 in ipairs(TowerModel.instance:getTowerOpenList(TowerEnum.TowerType.Boss)) do
-			if slot5 > slot10.nextTime / 1000 - ServerTime.now() or slot5 <= 0 then
-				slot5 = slot11
+		for iter_23_0, iter_23_1 in ipairs(var_23_11) do
+			local var_23_13 = iter_23_1.nextTime / 1000 - ServerTime.now()
+
+			if var_23_13 < var_23_12 or var_23_12 <= 0 then
+				var_23_12 = var_23_13
 			end
 		end
 
-		slot6, slot7 = TimeUtil.secondToRoughTime2(slot5)
-		slot0._txtbossUpdateTime.text = slot5 > 0 and GameUtil.getSubPlaceholderLuaLang(luaLang("towertimelimit_refreshtime"), {
-			slot6,
-			slot7
+		local var_23_14, var_23_15 = TimeUtil.secondToRoughTime2(var_23_12)
+
+		arg_23_0._txtbossUpdateTime.text = var_23_12 > 0 and GameUtil.getSubPlaceholderLuaLang(luaLang("towertimelimit_refreshtime"), {
+			var_23_14,
+			var_23_15
 		}) or luaLang("towermain_entrancelock")
 
-		gohelper.setActive(slot0._gobossHasNew, slot2)
-		gohelper.setActive(slot0._gobossUpdateTime, not slot2 and slot5 > 0)
+		gohelper.setActive(arg_23_0._gobossHasNew, var_23_10)
+		gohelper.setActive(arg_23_0._gobossUpdateTime, not var_23_10 and var_23_12 > 0)
 	else
-		if TowerModel.instance:getFirstUnOpenTowerInfo(TowerEnum.TowerType.Boss) then
-			slot6, slot7 = TimeUtil.secondToRoughTime2(slot4.nextTime / 1000 - ServerTime.now())
-			slot0._txtbossUpdateTime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("towermain_entranceTimeUnlock"), {
-				slot6,
-				slot7
+		local var_23_16 = TowerModel.instance:getFirstUnOpenTowerInfo(TowerEnum.TowerType.Boss)
+
+		if var_23_16 then
+			local var_23_17 = var_23_16.nextTime / 1000 - ServerTime.now()
+			local var_23_18, var_23_19 = TimeUtil.secondToRoughTime2(var_23_17)
+
+			arg_23_0._txtbossUpdateTime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("towermain_entranceTimeUnlock"), {
+				var_23_18,
+				var_23_19
 			})
 		else
-			slot0._txtbossUpdateTime.text = luaLang("towermain_entrancelock")
+			arg_23_0._txtbossUpdateTime.text = luaLang("towermain_entrancelock")
 		end
 
-		gohelper.setActive(slot0._gobossHasNew, false)
-		gohelper.setActive(slot0._gobossUpdateTime, true)
+		gohelper.setActive(arg_23_0._gobossHasNew, false)
+		gohelper.setActive(arg_23_0._gobossUpdateTime, true)
 	end
 
-	slot0:refreshStoreTime()
+	arg_23_0:refreshStoreTime()
 end
 
-function slot0.refreshStore(slot0)
-	gohelper.setActive(slot0._gostore, TowerController.instance:isTowerStoreOpen())
-	UISpriteSetMgr.instance:setCurrencyItemSprite(slot0._imagecoin, TowerStoreModel.instance:getCurrencyIcon())
+function var_0_0.refreshStore(arg_24_0)
+	local var_24_0 = TowerController.instance:isTowerStoreOpen()
 
-	slot0._txtcoinNum.text = TowerStoreModel.instance:getCurrencyCount()
+	gohelper.setActive(arg_24_0._gostore, var_24_0)
 
-	slot0:refreshStoreTime()
+	local var_24_1 = TowerStoreModel.instance:getCurrencyIcon()
+
+	UISpriteSetMgr.instance:setCurrencyItemSprite(arg_24_0._imagecoin, var_24_1)
+
+	local var_24_2 = TowerStoreModel.instance:getCurrencyCount()
+
+	arg_24_0._txtcoinNum.text = var_24_2
+
+	arg_24_0:refreshStoreTime()
 end
 
-function slot0.refreshStoreTime(slot0)
-	slot1 = TowerStoreModel.instance:isUpdateStoreEmpty()
+function var_0_0.refreshStoreTime(arg_25_0)
+	local var_25_0 = TowerStoreModel.instance:isUpdateStoreEmpty()
 
-	gohelper.setActive(slot0._gostoreTime, not slot1)
+	gohelper.setActive(arg_25_0._gostoreTime, not var_25_0)
 
-	if slot1 then
+	if var_25_0 then
 		return
 	end
 
-	slot0._txtstoreTime.text = TowerStoreModel.instance:getUpdateStoreRemainTime()
+	local var_25_1 = TowerStoreModel.instance:getUpdateStoreRemainTime()
+
+	arg_25_0._txtstoreTime.text = var_25_1
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0.refreshTowerState, slot0)
+function var_0_0.onClose(arg_26_0)
+	TaskDispatcher.cancelTask(arg_26_0.refreshTowerState, arg_26_0)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_27_0)
+	return
 end
 
-return slot0
+return var_0_0

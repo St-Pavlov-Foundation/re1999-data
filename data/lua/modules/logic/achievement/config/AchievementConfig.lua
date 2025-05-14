@@ -1,14 +1,14 @@
-module("modules.logic.achievement.config.AchievementConfig", package.seeall)
+﻿module("modules.logic.achievement.config.AchievementConfig", package.seeall)
 
-slot0 = class("AchievementConfig", BaseConfig)
+local var_0_0 = class("AchievementConfig", BaseConfig)
 
-function slot0.ctor(slot0)
-	slot0._achievementConfig = nil
-	slot0._achievementGroupConfig = nil
-	slot0._achievementTaskConfig = nil
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._achievementConfig = nil
+	arg_1_0._achievementGroupConfig = nil
+	arg_1_0._achievementTaskConfig = nil
 end
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_2_0)
 	return {
 		"achievement",
 		"achievement_group",
@@ -16,292 +16,317 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot1 == "achievement" then
-		slot0:buildAchievementCfgs(slot2)
-	elseif slot1 == "achievement_group" then
-		slot0._achievementGroupConfig = slot2
-	elseif slot1 == "achievement_task" then
-		slot0._achievementTaskConfig = slot2
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	if arg_3_1 == "achievement" then
+		arg_3_0:buildAchievementCfgs(arg_3_2)
+	elseif arg_3_1 == "achievement_group" then
+		arg_3_0._achievementGroupConfig = arg_3_2
+	elseif arg_3_1 == "achievement_task" then
+		arg_3_0._achievementTaskConfig = arg_3_2
 
-		slot0:initAchievementTask()
+		arg_3_0:initAchievementTask()
 	end
 end
 
-function slot0.buildAchievementCfgs(slot0, slot1)
-	slot0._achievementConfig = slot1
+function var_0_0.buildAchievementCfgs(arg_4_0, arg_4_1)
+	arg_4_0._achievementConfig = arg_4_1
 
-	slot0:initAchievementStateDict()
+	arg_4_0:initAchievementStateDict()
 end
 
-function slot0.initAchievementStateDict(slot0)
-	slot0._achievementState = {}
-	slot0._waitOnlineList = {}
-	slot0._waitOfflineList = {}
+function var_0_0.initAchievementStateDict(arg_5_0)
+	arg_5_0._achievementState = {}
+	arg_5_0._waitOnlineList = {}
+	arg_5_0._waitOfflineList = {}
 
-	for slot4, slot5 in pairs(AchievementEnum.AchievementState) do
-		slot0._achievementState[slot5] = {}
+	for iter_5_0, iter_5_1 in pairs(AchievementEnum.AchievementState) do
+		arg_5_0._achievementState[iter_5_1] = {}
 	end
 end
 
-function slot0.initWaitAchievements(slot0)
-	slot0:initAchievementStateDict()
+function var_0_0.initWaitAchievements(arg_6_0)
+	arg_6_0:initAchievementStateDict()
 
-	for slot4, slot5 in ipairs(slot0._achievementConfig.configList) do
-		slot6, slot7, slot8 = slot0:checkAchievementState(slot5)
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0._achievementConfig.configList) do
+		local var_6_0, var_6_1, var_6_2 = arg_6_0:checkAchievementState(iter_6_1)
 
-		table.insert(slot0._achievementState[slot6], slot5)
+		table.insert(arg_6_0._achievementState[var_6_0], iter_6_1)
 
-		if slot7 then
-			table.insert(slot0._waitOnlineList, slot5)
+		if var_6_1 then
+			table.insert(arg_6_0._waitOnlineList, iter_6_1)
 		end
 
-		if slot8 then
-			table.insert(slot0._waitOfflineList, slot5)
+		if var_6_2 then
+			table.insert(arg_6_0._waitOfflineList, iter_6_1)
 		end
 	end
 end
 
-function slot0.checkAchievementState(slot0, slot1)
-	slot3 = slot1.endTime
-	slot4, slot5 = nil
-	slot6 = AchievementEnum.AchievementState.Online
+function var_0_0.checkAchievementState(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_1.startTime
+	local var_7_1 = arg_7_1.endTime
+	local var_7_2
+	local var_7_3
+	local var_7_4 = AchievementEnum.AchievementState.Online
 
-	if not string.nilorempty(slot1.startTime) then
-		slot4 = TimeUtil.stringToTimestamp(slot2) + ServerTime.clientToServerOffset() - ServerTime.now()
+	if not string.nilorempty(var_7_0) then
+		var_7_2 = TimeUtil.stringToTimestamp(var_7_0) + ServerTime.clientToServerOffset()
+		var_7_2 = var_7_2 - ServerTime.now()
 	end
 
-	if not string.nilorempty(slot3) then
-		slot5 = TimeUtil.stringToTimestamp(slot3) + ServerTime.clientToServerOffset() - ServerTime.now()
+	if not string.nilorempty(var_7_1) then
+		var_7_3 = TimeUtil.stringToTimestamp(var_7_1) + ServerTime.clientToServerOffset()
+		var_7_3 = var_7_3 - ServerTime.now()
 	end
 
-	if slot4 and slot5 and slot5 <= slot4 then
-		logError("成就下架时间不可早于或等于成就上架时间,成就id = " .. slot1.id)
+	if var_7_2 and var_7_3 and var_7_3 <= var_7_2 then
+		logError("成就下架时间不可早于或等于成就上架时间,成就id = " .. arg_7_1.id)
 	end
 
-	slot8 = slot5 and slot5 > 0
+	local var_7_5 = var_7_2 and var_7_2 > 0
+	local var_7_6 = var_7_3 and var_7_3 > 0
 
-	if slot4 and slot4 > 0 or slot5 and slot5 < 0 then
-		slot6 = AchievementEnum.AchievementState.Offline
+	if var_7_5 or var_7_3 and var_7_3 < 0 then
+		var_7_4 = AchievementEnum.AchievementState.Offline
 	end
 
-	return slot6, slot7, slot8
+	return var_7_4, var_7_5, var_7_6
 end
 
-function slot0.initAchievementTask(slot0)
-	slot0._taskFirstLevelDict = {}
+function var_0_0.initAchievementTask(arg_8_0)
+	arg_8_0._taskFirstLevelDict = {}
 
-	for slot4, slot5 in ipairs(slot0._achievementTaskConfig.configList) do
-		if (slot0._taskFirstLevelDict[slot5.achievementId] or slot5) and slot5.level < slot6.level then
-			slot6 = slot5
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0._achievementTaskConfig.configList) do
+		local var_8_0 = arg_8_0._taskFirstLevelDict[iter_8_1.achievementId] or iter_8_1
+
+		if var_8_0 and var_8_0.level > iter_8_1.level then
+			var_8_0 = iter_8_1
 		end
 
-		slot0._taskFirstLevelDict[slot5.achievementId] = slot6
+		arg_8_0._taskFirstLevelDict[iter_8_1.achievementId] = var_8_0
 	end
 end
 
-function slot0.getAchievement(slot0, slot1)
-	return slot0._achievementConfig.configDict[slot1]
+function var_0_0.getAchievement(arg_9_0, arg_9_1)
+	return arg_9_0._achievementConfig.configDict[arg_9_1]
 end
 
-function slot0.getTask(slot0, slot1)
-	return slot0._achievementTaskConfig.configDict[slot1]
+function var_0_0.getTask(arg_10_0, arg_10_1)
+	return arg_10_0._achievementTaskConfig.configDict[arg_10_1]
 end
 
-function slot0.getGroup(slot0, slot1)
-	return slot0._achievementGroupConfig.configDict[slot1]
+function var_0_0.getGroup(arg_11_0, arg_11_1)
+	return arg_11_0._achievementGroupConfig.configDict[arg_11_1]
 end
 
-function slot0.getGroupName(slot0, slot1)
-	if not uv0.instance:getGroup(slot1) then
-		return luaLang(AchievementEnum.SpGroupNameLangId[slot1])
+function var_0_0.getGroupName(arg_12_0, arg_12_1)
+	local var_12_0 = var_0_0.instance:getGroup(arg_12_1)
+
+	if not var_12_0 then
+		return luaLang(AchievementEnum.SpGroupNameLangId[arg_12_1])
 	end
 
-	return slot2 and slot2.name
+	return var_12_0 and var_12_0.name
 end
 
-function slot0.getAchievementFirstTask(slot0, slot1)
-	return slot0._taskFirstLevelDict[slot1]
+function var_0_0.getAchievementFirstTask(arg_13_0, arg_13_1)
+	return arg_13_0._taskFirstLevelDict[arg_13_1]
 end
 
-function slot0.getTaskByAchievementLevel(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot0._achievementTaskConfig.configList) do
-		if slot7.achievementId == slot1 and slot7.level == slot2 then
-			return slot7
+function var_0_0.getTaskByAchievementLevel(arg_14_0, arg_14_1, arg_14_2)
+	for iter_14_0, iter_14_1 in ipairs(arg_14_0._achievementTaskConfig.configList) do
+		if iter_14_1.achievementId == arg_14_1 and iter_14_1.level == arg_14_2 then
+			return iter_14_1
 		end
 	end
 
 	return nil
 end
 
-function slot0.getAchievementMaxLevelTask(slot0, slot1)
-	slot2 = {}
+function var_0_0.getAchievementMaxLevelTask(arg_15_0, arg_15_1)
+	local var_15_0 = {}
 
-	for slot6, slot7 in ipairs(slot0._achievementTaskConfig.configList) do
-		if slot7.achievementId == slot1 then
-			table.insert(slot2, slot7)
+	for iter_15_0, iter_15_1 in ipairs(arg_15_0._achievementTaskConfig.configList) do
+		if iter_15_1.achievementId == arg_15_1 then
+			table.insert(var_15_0, iter_15_1)
 		end
 	end
 
-	table.sort(slot2, slot0.achievementTaskSortFuncByLevel)
+	table.sort(var_15_0, arg_15_0.achievementTaskSortFuncByLevel)
 
-	return slot2[1]
+	return var_15_0[1]
 end
 
-function slot0.achievementTaskSortFuncByLevel(slot0, slot1)
-	if slot0.level ~= slot1.level then
-		return slot1.level < slot0.level
+function var_0_0.achievementTaskSortFuncByLevel(arg_16_0, arg_16_1)
+	if arg_16_0.level ~= arg_16_1.level then
+		return arg_16_0.level > arg_16_1.level
 	end
 
-	return slot0.id < slot1.id
+	return arg_16_0.id < arg_16_1.id
 end
 
-function slot0.getAchievementsByGroupId(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.getAchievementsByGroupId(arg_17_0, arg_17_1, arg_17_2)
+	local var_17_0 = {}
 
-	for slot7, slot8 in ipairs(slot0._achievementConfig.configList) do
-		if slot8.groupId == slot1 then
-			table.insert(slot3, slot8)
+	for iter_17_0, iter_17_1 in ipairs(arg_17_0._achievementConfig.configList) do
+		if iter_17_1.groupId == arg_17_1 then
+			table.insert(var_17_0, iter_17_1)
 		end
 	end
 
-	table.sort(slot3, slot2 or uv0.achievmentSortFuncInGroup)
+	arg_17_2 = arg_17_2 or var_0_0.achievmentSortFuncInGroup
 
-	return slot3
+	table.sort(var_17_0, arg_17_2)
+
+	return var_17_0
 end
 
-function slot0.achievmentSortFuncInGroup(slot0, slot1)
-	if slot0.order ~= slot1.order then
-		return slot0.order < slot1.order
+function var_0_0.achievmentSortFuncInGroup(arg_18_0, arg_18_1)
+	if arg_18_0.order ~= arg_18_1.order then
+		return arg_18_0.order < arg_18_1.order
 	else
-		return slot0.id < slot1.id
+		return arg_18_0.id < arg_18_1.id
 	end
 end
 
-function slot0.getTasksByAchievementId(slot0, slot1)
-	slot2 = {}
+function var_0_0.getTasksByAchievementId(arg_19_0, arg_19_1)
+	local var_19_0 = {}
 
-	for slot6, slot7 in ipairs(slot0._achievementTaskConfig.configList) do
-		if slot7.achievementId == slot1 then
-			table.insert(slot2, slot7)
+	for iter_19_0, iter_19_1 in ipairs(arg_19_0._achievementTaskConfig.configList) do
+		if iter_19_1.achievementId == arg_19_1 then
+			table.insert(var_19_0, iter_19_1)
 		end
 	end
 
-	return slot2
+	return var_19_0
 end
 
-function slot0.getAllAchievements(slot0)
-	return slot0._achievementConfig.configList
+function var_0_0.getAllAchievements(arg_20_0)
+	return arg_20_0._achievementConfig.configList
 end
 
-function slot0.getOnlineAchievements(slot0)
-	return slot0._achievementState[AchievementEnum.AchievementState.Online]
+function var_0_0.getOnlineAchievements(arg_21_0)
+	return arg_21_0._achievementState[AchievementEnum.AchievementState.Online]
 end
 
-function slot0.getAllTasks(slot0)
-	return slot0._achievementTaskConfig.configList
+function var_0_0.getAllTasks(arg_22_0)
+	return arg_22_0._achievementTaskConfig.configList
 end
 
-function slot0.getCategoryAchievementMap(slot0)
-	slot1 = {
-		[slot5] = {}
-	}
+function var_0_0.getCategoryAchievementMap(arg_23_0)
+	local var_23_0 = {}
 
-	for slot5, slot6 in ipairs(AchievementEnum.Type) do
-		-- Nothing
+	for iter_23_0, iter_23_1 in ipairs(AchievementEnum.Type) do
+		var_23_0[iter_23_0] = {}
 	end
 
-	if slot0:getOnlineAchievements() then
-		for slot6, slot7 in ipairs(slot2) do
-			slot1[slot7.category] = slot1[slot7.category] or {}
+	local var_23_1 = arg_23_0:getOnlineAchievements()
 
-			table.insert(slot1[slot7.category], slot7)
+	if var_23_1 then
+		for iter_23_2, iter_23_3 in ipairs(var_23_1) do
+			var_23_0[iter_23_3.category] = var_23_0[iter_23_3.category] or {}
+
+			local var_23_2 = var_23_0[iter_23_3.category]
+
+			table.insert(var_23_2, iter_23_3)
 		end
 	end
 
-	return slot1
+	return var_23_0
 end
 
-function slot0.getGroupBgUrl(slot0, slot1, slot2, slot3)
-	if slot0:getGroupEditConfigData(slot1, slot2) then
-		return slot3 and slot4.groupUpgradeBgUrl or slot4.groupNormalBgUrl
+function var_0_0.getGroupBgUrl(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
+	local var_24_0 = arg_24_0:getGroupEditConfigData(arg_24_1, arg_24_2)
+
+	if var_24_0 then
+		return arg_24_3 and var_24_0.groupUpgradeBgUrl or var_24_0.groupNormalBgUrl
 	end
 end
 
-function slot0.getAchievementPosAndScaleInGroup(slot0, slot1, slot2, slot3)
-	if slot0:getGroupEditConfigData(slot1, slot3) and slot4.id[slot2] then
-		return slot4.pX[slot2], slot4.pY[slot2], slot4.sX[slot2], slot4.sY[slot2]
+function var_0_0.getAchievementPosAndScaleInGroup(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
+	local var_25_0 = arg_25_0:getGroupEditConfigData(arg_25_1, arg_25_3)
+
+	if var_25_0 and var_25_0.id[arg_25_2] then
+		return var_25_0.pX[arg_25_2], var_25_0.pY[arg_25_2], var_25_0.sX[arg_25_2], var_25_0.sY[arg_25_2]
 	end
 end
 
-function slot0.getGroupTitleColorConfig(slot0, slot1, slot2)
-	if slot0:getGroupEditConfigData(slot1, slot2) and slot3.groupTitleColor then
-		return slot3.groupTitleColor
+function var_0_0.getGroupTitleColorConfig(arg_26_0, arg_26_1, arg_26_2)
+	local var_26_0 = arg_26_0:getGroupEditConfigData(arg_26_1, arg_26_2)
+
+	if var_26_0 and var_26_0.groupTitleColor then
+		return var_26_0.groupTitleColor
 	end
 end
 
-function slot0.getGroupParamIdTab(slot0, slot1, slot2)
-	if slot0:getGroupEditConfigData(slot1, slot2) and slot3.id then
-		return slot3.id
+function var_0_0.getGroupParamIdTab(arg_27_0, arg_27_1, arg_27_2)
+	local var_27_0 = arg_27_0:getGroupEditConfigData(arg_27_1, arg_27_2)
+
+	if var_27_0 and var_27_0.id then
+		return var_27_0.id
 	end
 end
 
-function slot0.getGroupEditConfigData(slot0, slot1, slot2)
-	slot0._groupParamTab = slot0._groupParamTab or {}
+function var_0_0.getGroupEditConfigData(arg_28_0, arg_28_1, arg_28_2)
+	arg_28_0._groupParamTab = arg_28_0._groupParamTab or {}
 
-	if not slot0._groupParamTab[slot1] then
-		slot0._groupParamTab[slot1] = {}
+	if not arg_28_0._groupParamTab[arg_28_1] then
+		arg_28_0._groupParamTab[arg_28_1] = {}
 	end
 
-	if not slot0._groupParamTab[slot1][slot2] then
-		slot3 = slot0:getGroup(slot1)
+	if not arg_28_0._groupParamTab[arg_28_1][arg_28_2] then
+		local var_28_0 = arg_28_0:getGroup(arg_28_1)
 
-		if slot2 == AchievementEnum.GroupParamType.List then
-			if not string.nilorempty(slot3.uiListParam) then
-				slot0._groupParamTab[slot1][slot2] = cjson.decode(slot3.uiListParam)
+		if arg_28_2 == AchievementEnum.GroupParamType.List then
+			if not string.nilorempty(var_28_0.uiListParam) then
+				arg_28_0._groupParamTab[arg_28_1][arg_28_2] = cjson.decode(var_28_0.uiListParam)
 			end
-		elseif slot2 == AchievementEnum.GroupParamType.Player and not string.nilorempty(slot3.uiPlayerParam) then
-			slot0._groupParamTab[slot1][slot2] = cjson.decode(slot3.uiPlayerParam)
+		elseif arg_28_2 == AchievementEnum.GroupParamType.Player and not string.nilorempty(var_28_0.uiPlayerParam) then
+			arg_28_0._groupParamTab[arg_28_1][arg_28_2] = cjson.decode(var_28_0.uiPlayerParam)
 		end
 	end
 
-	return slot0._groupParamTab[slot1][slot2]
+	return arg_28_0._groupParamTab[arg_28_1][arg_28_2]
 end
 
-function slot0.getWaitOnlineAchievementList(slot0)
-	return slot0._waitOnlineList
+function var_0_0.getWaitOnlineAchievementList(arg_29_0)
+	return arg_29_0._waitOnlineList
 end
 
-function slot0.getWaitOfflineAchievementList(slot0)
-	return slot0._waitOfflineList
+function var_0_0.getWaitOfflineAchievementList(arg_30_0)
+	return arg_30_0._waitOfflineList
 end
 
-function slot0.getStateAchievement(slot0, slot1)
-	return slot0._achievementState and slot0._achievementState[slot1]
+function var_0_0.getStateAchievement(arg_31_0, arg_31_1)
+	return arg_31_0._achievementState and arg_31_0._achievementState[arg_31_1]
 end
 
-function slot0.updateAchievementStateInternal(slot0, slot1, slot2, slot3)
-	if slot0:getStateAchievement(slot2) then
-		tabletool.removeValue(slot4, slot1)
+function var_0_0.updateAchievementStateInternal(arg_32_0, arg_32_1, arg_32_2, arg_32_3)
+	local var_32_0 = arg_32_0:getStateAchievement(arg_32_2)
+
+	if var_32_0 then
+		tabletool.removeValue(var_32_0, arg_32_1)
 	end
 
-	table.insert(slot0:getStateAchievement(slot3), slot1)
+	local var_32_1 = arg_32_0:getStateAchievement(arg_32_3)
+
+	table.insert(var_32_1, arg_32_1)
 end
 
-function slot0.onAchievementArriveOnlineTime(slot0, slot1)
-	slot2 = slot0:getAchievement(slot1)
+function var_0_0.onAchievementArriveOnlineTime(arg_33_0, arg_33_1)
+	local var_33_0 = arg_33_0:getAchievement(arg_33_1)
 
-	slot0:updateAchievementStateInternal(slot2, AchievementEnum.AchievementState.Offline, AchievementEnum.AchievementState.Online)
-	tabletool.removeValue(slot0._waitOnlineList, slot2)
+	arg_33_0:updateAchievementStateInternal(var_33_0, AchievementEnum.AchievementState.Offline, AchievementEnum.AchievementState.Online)
+	tabletool.removeValue(arg_33_0._waitOnlineList, var_33_0)
 end
 
-function slot0.onAchievementArriveOfflineTime(slot0, slot1)
-	slot2 = slot0:getAchievement(slot1)
+function var_0_0.onAchievementArriveOfflineTime(arg_34_0, arg_34_1)
+	local var_34_0 = arg_34_0:getAchievement(arg_34_1)
 
-	slot0:updateAchievementStateInternal(slot2, AchievementEnum.AchievementState.Online, AchievementEnum.AchievementState.Offline)
-	tabletool.removeValue(slot0._waitOfflineList, slot2)
+	arg_34_0:updateAchievementStateInternal(var_34_0, AchievementEnum.AchievementState.Online, AchievementEnum.AchievementState.Offline)
+	tabletool.removeValue(arg_34_0._waitOfflineList, var_34_0)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,25 +1,25 @@
-module("modules.logic.versionactivity2_7.dungeon.view.map.VersionActivity2_7DungeonMapViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.dungeon.view.map.VersionActivity2_7DungeonMapViewContainer", package.seeall)
 
-slot0 = class("VersionActivity2_7DungeonMapViewContainer", VersionActivityFixedDungeonMapViewContainer)
+local var_0_0 = class("VersionActivity2_7DungeonMapViewContainer", VersionActivityFixedDungeonMapViewContainer)
 
-function slot0.buildViews(slot0)
-	slot0.mapScene = VersionActivity2_7DungeonMapScene.New()
-	slot0.mapSceneElements = VersionActivityFixedHelper.getVersionActivityDungeonMapSceneElements().New()
-	slot0.mapView = VersionActivityFixedHelper.getVersionActivityDungeonMapView().New()
-	slot0.mapEpisodeView = VersionActivityFixedHelper.getVersionActivityDungeonMapEpisodeView().New()
-	slot0.interactView = VersionActivityFixedHelper.getVersionActivityDungeonMapInteractView().New()
-	slot0.mapElementReward = DungeonMapElementReward.New()
+function var_0_0.buildViews(arg_1_0)
+	arg_1_0.mapScene = VersionActivity2_7DungeonMapScene.New()
+	arg_1_0.mapSceneElements = VersionActivityFixedHelper.getVersionActivityDungeonMapSceneElements().New()
+	arg_1_0.mapView = VersionActivityFixedHelper.getVersionActivityDungeonMapView().New()
+	arg_1_0.mapEpisodeView = VersionActivityFixedHelper.getVersionActivityDungeonMapEpisodeView().New()
+	arg_1_0.interactView = VersionActivityFixedHelper.getVersionActivityDungeonMapInteractView().New()
+	arg_1_0.mapElementReward = DungeonMapElementReward.New()
 
 	return {
 		VersionActivityFixedHelper.getVersionActivityDungeonMapHoleView().New(),
-		slot0.mapScene,
-		slot0.mapSceneElements,
-		slot0.mapView,
-		slot0.mapEpisodeView,
-		slot0.interactView,
-		slot0.mapElementReward,
+		arg_1_0.mapScene,
+		arg_1_0.mapSceneElements,
+		arg_1_0.mapView,
+		arg_1_0.mapEpisodeView,
+		arg_1_0.interactView,
+		arg_1_0.mapElementReward,
 		TabViewGroup.New(1, "#go_topleft")
 	}
 end
 
-return slot0
+return var_0_0

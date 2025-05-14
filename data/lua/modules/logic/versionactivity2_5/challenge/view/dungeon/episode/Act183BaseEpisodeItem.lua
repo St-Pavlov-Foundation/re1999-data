@@ -1,168 +1,196 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183BaseEpisodeItem", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183BaseEpisodeItem", package.seeall)
 
-slot0 = class("Act183BaseEpisodeItem", LuaCompBase)
+local var_0_0 = class("Act183BaseEpisodeItem", LuaCompBase)
 
-function slot0.Get(slot0, slot1)
-	slot4 = slot1:getConfigOrder()
-	slot6 = Act183Enum.EpisodeClsType[Act183Helper.getEpisodeClsKey(slot1:getGroupType(), slot1:getEpisodeType())]
-	slot8 = gohelper.findChild(slot0, slot6.getItemParentPath(slot4))
-	slot13 = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot6.getItemTemplateGo(slot0, slot6.getItemTemplatePath()), slot8, "item_" .. slot4), slot6)
-	slot13.parentGo = slot8
+function var_0_0.Get(arg_1_0, arg_1_1)
+	local var_1_0 = arg_1_1:getEpisodeType()
+	local var_1_1 = arg_1_1:getGroupType()
+	local var_1_2 = arg_1_1:getConfigOrder()
+	local var_1_3 = Act183Helper.getEpisodeClsKey(var_1_1, var_1_0)
+	local var_1_4 = Act183Enum.EpisodeClsType[var_1_3]
+	local var_1_5 = var_1_4.getItemParentPath(var_1_2)
+	local var_1_6 = gohelper.findChild(arg_1_0, var_1_5)
+	local var_1_7 = var_1_4.getItemTemplatePath()
+	local var_1_8 = var_1_4.getItemTemplateGo(arg_1_0, var_1_7)
+	local var_1_9 = "item_" .. var_1_2
+	local var_1_10 = gohelper.clone(var_1_8, var_1_6, var_1_9)
+	local var_1_11 = MonoHelper.addNoUpdateLuaComOnceToGo(var_1_10, var_1_4)
 
-	slot13:initPosAndRotation()
+	var_1_11.parentGo = var_1_6
 
-	return slot13
+	var_1_11:initPosAndRotation()
+
+	return var_1_11
 end
 
-function slot0.getItemParentPath(slot0)
+function var_0_0.getItemParentPath(arg_2_0)
 	return ""
 end
 
-function slot0.getItemTemplateGo(slot0, slot1)
-	return gohelper.findChild(slot0, slot1)
+function var_0_0.getItemTemplateGo(arg_3_0, arg_3_1)
+	return (gohelper.findChild(arg_3_0, arg_3_1))
 end
 
-function slot0.getItemTemplatePath(slot0)
+function var_0_0.getItemTemplatePath(arg_4_0)
 	return ""
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._golock = gohelper.findChild(slot0.go, "go_lock")
-	slot0._gounlock = gohelper.findChild(slot0.go, "go_unlock")
-	slot0._gofinish = gohelper.findChild(slot0.go, "go_finish")
-	slot0._gocheck = gohelper.findChild(slot0.go, "go_finish/image")
-	slot0._btnclick = gohelper.findChildButton(slot0.go, "btn_click")
-	slot0._goselect = gohelper.findChild(slot0.go, "go_select")
-	slot0._simageicon = gohelper.findChildSingleImage(slot0.go, "image_icon")
-	slot0._animfinish = gohelper.onceAddComponent(slot0._gofinish, gohelper.Type_Animator)
-	slot0._starItemTab = slot0:getUserDataTb_()
+function var_0_0.init(arg_5_0, arg_5_1)
+	arg_5_0.go = arg_5_1
+	arg_5_0._golock = gohelper.findChild(arg_5_0.go, "go_lock")
+	arg_5_0._gounlock = gohelper.findChild(arg_5_0.go, "go_unlock")
+	arg_5_0._gofinish = gohelper.findChild(arg_5_0.go, "go_finish")
+	arg_5_0._gocheck = gohelper.findChild(arg_5_0.go, "go_finish/image")
+	arg_5_0._btnclick = gohelper.findChildButton(arg_5_0.go, "btn_click")
+	arg_5_0._goselect = gohelper.findChild(arg_5_0.go, "go_select")
+	arg_5_0._simageicon = gohelper.findChildSingleImage(arg_5_0.go, "image_icon")
+	arg_5_0._animfinish = gohelper.onceAddComponent(arg_5_0._gofinish, gohelper.Type_Animator)
+	arg_5_0._starItemTab = arg_5_0:getUserDataTb_()
 end
 
-function slot0.initPosAndRotation(slot0)
-	if gohelper.isNil(gohelper.findChild(slot0.parentGo, "positions")) then
+function var_0_0.initPosAndRotation(arg_6_0)
+	local var_6_0 = gohelper.findChild(arg_6_0.parentGo, "positions")
+
+	if gohelper.isNil(var_6_0) then
 		return
 	end
 
-	for slot7 = 1, slot1.transform.childCount do
-		slot0:setTranPosition(slot2:GetChild(slot7 - 1))
+	local var_6_1 = var_6_0.transform
+	local var_6_2 = var_6_1.childCount
+
+	for iter_6_0 = 1, var_6_2 do
+		local var_6_3 = var_6_1:GetChild(iter_6_0 - 1)
+
+		arg_6_0:setTranPosition(var_6_3)
 	end
 end
 
-function slot0.setTranPosition(slot0, slot1)
-	if gohelper.isNil(gohelper.findChild(slot0.go, slot1.gameObject.name)) then
-		logError(string.format("设置关卡ui坐标失败 节点不存在 rootName = %s, goPath = %s", slot0.parentGo.name, slot2))
+function var_0_0.setTranPosition(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_1.gameObject.name
+	local var_7_1 = gohelper.findChild(arg_7_0.go, var_7_0)
+
+	if gohelper.isNil(var_7_1) then
+		logError(string.format("设置关卡ui坐标失败 节点不存在 rootName = %s, goPath = %s", arg_7_0.parentGo.name, var_7_0))
 
 		return
 	end
 
-	slot4, slot5 = recthelper.getAnchor(slot1)
-	slot6, slot7, slot8 = transformhelper.getLocalRotation(slot1)
+	local var_7_2, var_7_3 = recthelper.getAnchor(arg_7_1)
+	local var_7_4, var_7_5, var_7_6 = transformhelper.getLocalRotation(arg_7_1)
 
-	recthelper.setAnchor(slot3.transform, slot4 or 0, slot5 or 0)
-	transformhelper.setLocalRotation(slot3.transform, slot6, slot7, slot8)
+	recthelper.setAnchor(var_7_1.transform, var_7_2 or 0, var_7_3 or 0)
+	transformhelper.setLocalRotation(var_7_1.transform, var_7_4, var_7_5, var_7_6)
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._btnclick:AddClickListener(slot0._btnclickOnClick, slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnClickEpisode, slot0._onSelectEpisode, slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.EpisodeStartPlayFinishAnim, slot0._checkPlayFinishAnim, slot0)
+function var_0_0.addEventListeners(arg_8_0)
+	arg_8_0._btnclick:AddClickListener(arg_8_0._btnclickOnClick, arg_8_0)
+	arg_8_0:addEventCb(Act183Controller.instance, Act183Event.OnClickEpisode, arg_8_0._onSelectEpisode, arg_8_0)
+	arg_8_0:addEventCb(Act183Controller.instance, Act183Event.EpisodeStartPlayFinishAnim, arg_8_0._checkPlayFinishAnim, arg_8_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnclick:RemoveClickListener()
+function var_0_0.removeEventListeners(arg_9_0)
+	arg_9_0._btnclick:RemoveClickListener()
 end
 
-function slot0._btnclickOnClick(slot0)
+function var_0_0._btnclickOnClick(arg_10_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_ClickEpisode)
-	Act183Controller.instance:dispatchEvent(Act183Event.OnClickEpisode, slot0._episodeId)
+	Act183Controller.instance:dispatchEvent(Act183Event.OnClickEpisode, arg_10_0._episodeId)
 end
 
-function slot0._onSelectEpisode(slot0, slot1)
-	slot0:onSelect(slot1 == slot0._episodeId)
+function var_0_0._onSelectEpisode(arg_11_0, arg_11_1)
+	arg_11_0:onSelect(arg_11_1 == arg_11_0._episodeId)
 end
 
-function slot0.onSelect(slot0, slot1)
-	gohelper.setActive(slot0._goselect, slot1)
+function var_0_0.onSelect(arg_12_0, arg_12_1)
+	gohelper.setActive(arg_12_0._goselect, arg_12_1)
 end
 
-function slot0.onUpdateMo(slot0, slot1)
-	slot0._episodeMo = slot1
-	slot0._status = slot1:getStatus()
-	slot0._episodeId = slot1:getEpisodeId()
-	slot0._isFinishedButNotNew = slot0._status == Act183Enum.EpisodeStatus.Finished and Act183Model.instance:getNewFinishEpisodeId() ~= slot0._episodeId
+function var_0_0.onUpdateMo(arg_13_0, arg_13_1)
+	arg_13_0._episodeMo = arg_13_1
+	arg_13_0._status = arg_13_1:getStatus()
+	arg_13_0._episodeId = arg_13_1:getEpisodeId()
 
-	gohelper.setActive(slot0._goselect, false)
-	gohelper.setActive(slot0._golock, slot0._status == Act183Enum.EpisodeStatus.Locked)
-	gohelper.setActive(slot0._gounlock, slot0._status ~= Act183Enum.EpisodeStatus.Locked)
-	gohelper.setActive(slot0._gofinish, slot0._isFinishedButNotNew)
-	Act183Helper.setEpisodeIcon(slot0._episodeId, slot0._status, slot0._simageicon)
-	slot0:setVisible(true)
+	local var_13_0 = Act183Model.instance:getNewFinishEpisodeId()
+
+	arg_13_0._isFinishedButNotNew = arg_13_0._status == Act183Enum.EpisodeStatus.Finished and var_13_0 ~= arg_13_0._episodeId
+
+	gohelper.setActive(arg_13_0._goselect, false)
+	gohelper.setActive(arg_13_0._golock, arg_13_0._status == Act183Enum.EpisodeStatus.Locked)
+	gohelper.setActive(arg_13_0._gounlock, arg_13_0._status ~= Act183Enum.EpisodeStatus.Locked)
+	gohelper.setActive(arg_13_0._gofinish, arg_13_0._isFinishedButNotNew)
+	Act183Helper.setEpisodeIcon(arg_13_0._episodeId, arg_13_0._status, arg_13_0._simageicon)
+	arg_13_0:setVisible(true)
 end
 
-function slot0.getConfigOrder(slot0)
-	slot1 = slot0._episodeMo and slot0._episodeMo:getConfig()
+function var_0_0.getConfigOrder(arg_14_0)
+	local var_14_0 = arg_14_0._episodeMo and arg_14_0._episodeMo:getConfig()
 
-	return slot1 and slot1.order
+	return var_14_0 and var_14_0.order
 end
 
-function slot0.setVisible(slot0, slot1)
-	gohelper.setActive(slot0.go, slot1)
+function var_0_0.setVisible(arg_15_0, arg_15_1)
+	gohelper.setActive(arg_15_0.go, arg_15_1)
 end
 
-function slot0.getIconTran(slot0)
-	return slot0._simageicon.transform
+function var_0_0.getIconTran(arg_16_0)
+	return arg_16_0._simageicon.transform
 end
 
-function slot0.playFinishAnim(slot0)
-	gohelper.setActive(slot0._gofinish, true)
-	slot0._animfinish:Play("in", 0, 0)
+function var_0_0.playFinishAnim(arg_17_0)
+	gohelper.setActive(arg_17_0._gofinish, true)
+	arg_17_0._animfinish:Play("in", 0, 0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_EpisodeFinished)
 end
 
-function slot0._checkPlayFinishAnim(slot0, slot1)
-	if slot0._episodeId ~= slot1 then
+function var_0_0._checkPlayFinishAnim(arg_18_0, arg_18_1)
+	if arg_18_0._episodeId ~= arg_18_1 then
 		return
 	end
 
-	slot0:playFinishAnim()
+	arg_18_0:playFinishAnim()
 end
 
-function slot0.refreshPassStarList(slot0, slot1)
-	if slot0._status ~= Act183Enum.EpisodeStatus.Finished then
+function var_0_0.refreshPassStarList(arg_19_0, arg_19_1)
+	if arg_19_0._status ~= Act183Enum.EpisodeStatus.Finished then
 		return
 	end
 
-	slot3 = slot0._episodeMo and slot0._episodeMo:getFinishStarCount() or 0
-	slot4 = {}
+	local var_19_0 = arg_19_0._episodeMo and arg_19_0._episodeMo:getTotalStarCount() or 0
+	local var_19_1 = arg_19_0._episodeMo and arg_19_0._episodeMo:getFinishStarCount() or 0
+	local var_19_2 = {}
 
-	for slot8 = 1, slot0._episodeMo and slot0._episodeMo:getTotalStarCount() or 0 do
-		if not slot0._starItemTab[slot8] then
-			slot9 = slot0:getUserDataTb_()
-			slot9.go = gohelper.cloneInPlace(slot1, "star_" .. slot8)
-			slot9.imagestar = slot9.go:GetComponent(gohelper.Type_Image)
-			slot0._starItemTab[slot8] = slot9
+	for iter_19_0 = 1, var_19_0 do
+		local var_19_3 = arg_19_0._starItemTab[iter_19_0]
+
+		if not var_19_3 then
+			var_19_3 = arg_19_0:getUserDataTb_()
+			var_19_3.go = gohelper.cloneInPlace(arg_19_1, "star_" .. iter_19_0)
+			var_19_3.imagestar = var_19_3.go:GetComponent(gohelper.Type_Image)
+			arg_19_0._starItemTab[iter_19_0] = var_19_3
 		end
 
-		UISpriteSetMgr.instance:setCommonSprite(slot9.imagestar, "zhuxianditu_pt_xingxing_001", true)
-		SLFramework.UGUI.GuiHelper.SetColor(slot9.imagestar, slot8 <= slot3 and "#F77040" or "#87898C")
-		gohelper.setActive(slot9.go, true)
+		local var_19_4 = iter_19_0 <= var_19_1 and "#F77040" or "#87898C"
 
-		slot4[slot9] = true
+		UISpriteSetMgr.instance:setCommonSprite(var_19_3.imagestar, "zhuxianditu_pt_xingxing_001", true)
+		SLFramework.UGUI.GuiHelper.SetColor(var_19_3.imagestar, var_19_4)
+		gohelper.setActive(var_19_3.go, true)
+
+		var_19_2[var_19_3] = true
 	end
 
-	for slot8, slot9 in pairs(slot0._starItemTab) do
-		if not slot4[slot9] then
-			gohelper.setActive(slot9.go, false)
+	for iter_19_1, iter_19_2 in pairs(arg_19_0._starItemTab) do
+		if not var_19_2[iter_19_2] then
+			gohelper.setActive(iter_19_2.go, false)
 		end
 	end
 end
 
-function slot0.destroySelf(slot0)
-	gohelper.destroy(slot0.go)
+function var_0_0.destroySelf(arg_20_0)
+	gohelper.destroy(arg_20_0.go)
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_21_0)
+	return
 end
 
-return slot0
+return var_0_0

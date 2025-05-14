@@ -1,119 +1,129 @@
-module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandLevelItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandLevelItem", package.seeall)
 
-slot0 = class("CooperGarlandLevelItem", LuaCompBase)
+local var_0_0 = class("CooperGarlandLevelItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0._go = slot1
-	slot0._goType1 = gohelper.findChild(slot0._go, "#go_Type1")
-	slot0._goIcon = gohelper.findChild(slot0._go, "#go_Type1/image_Stage")
-	slot0._goType2 = gohelper.findChild(slot0._go, "#go_Type2")
-	slot0._goSPIcon = gohelper.findChild(slot0._go, "#go_Type2/image_Stage")
-	slot0._goStageItem = gohelper.findChild(slot0._go, "#go_Type1/#go_StageItem")
-	slot0._imageStageItem = gohelper.findChildImage(slot0._go, "#go_Type1/#go_StageItem")
-	slot0.spStageList = slot0:getUserDataTb_()
-	slot0.spStageImageList = slot0:getUserDataTb_()
-	slot2 = nil
-	slot3 = 0
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._go = arg_1_1
+	arg_1_0._goType1 = gohelper.findChild(arg_1_0._go, "#go_Type1")
+	arg_1_0._goIcon = gohelper.findChild(arg_1_0._go, "#go_Type1/image_Stage")
+	arg_1_0._goType2 = gohelper.findChild(arg_1_0._go, "#go_Type2")
+	arg_1_0._goSPIcon = gohelper.findChild(arg_1_0._go, "#go_Type2/image_Stage")
+	arg_1_0._goStageItem = gohelper.findChild(arg_1_0._go, "#go_Type1/#go_StageItem")
+	arg_1_0._imageStageItem = gohelper.findChildImage(arg_1_0._go, "#go_Type1/#go_StageItem")
+	arg_1_0.spStageList = arg_1_0:getUserDataTb_()
+	arg_1_0.spStageImageList = arg_1_0:getUserDataTb_()
+
+	local var_1_0
+	local var_1_1 = 0
 
 	repeat
-		if gohelper.findChild(slot0._go, string.format("#go_Type2/#go_StageItem%s", slot3 + 1)) then
-			slot0.spStageList[slot3] = slot2
-			slot0.spStageImageList[slot3] = slot2:GetComponent(gohelper.Type_Image)
+		var_1_1 = var_1_1 + 1
+
+		local var_1_2 = gohelper.findChild(arg_1_0._go, string.format("#go_Type2/#go_StageItem%s", var_1_1))
+
+		if var_1_2 then
+			arg_1_0.spStageList[var_1_1] = var_1_2
+			arg_1_0.spStageImageList[var_1_1] = var_1_2:GetComponent(gohelper.Type_Image)
 		end
-	until gohelper.isNil(slot2)
+	until gohelper.isNil(var_1_2)
 
-	slot0._goSelected = gohelper.findChild(slot0._go, "#go_Selected")
-	slot0._goLocked = gohelper.findChild(slot0._go, "#go_Locked")
-	slot0._goStar1 = gohelper.findChild(slot0._go, "Stars/#go_Star1")
-	slot0._goStar2 = gohelper.findChild(slot0._go, "Stars/#go_Star2")
-	slot0._goStar3 = gohelper.findChild(slot0._go, "Stars/#go_Star3")
-	slot0._imageStageNum = gohelper.findChildImage(slot0._go, "#image_StageNum")
-	slot0._txtStageName = gohelper.findChildText(slot0._go, "#txt_StageName")
-	slot0._btnclick = gohelper.getClickWithDefaultAudio(slot0._go)
-	slot0._animator = gohelper.findChildAnim(slot0._go, "")
+	arg_1_0._goSelected = gohelper.findChild(arg_1_0._go, "#go_Selected")
+	arg_1_0._goLocked = gohelper.findChild(arg_1_0._go, "#go_Locked")
+	arg_1_0._goStar1 = gohelper.findChild(arg_1_0._go, "Stars/#go_Star1")
+	arg_1_0._goStar2 = gohelper.findChild(arg_1_0._go, "Stars/#go_Star2")
+	arg_1_0._goStar3 = gohelper.findChild(arg_1_0._go, "Stars/#go_Star3")
+	arg_1_0._imageStageNum = gohelper.findChildImage(arg_1_0._go, "#image_StageNum")
+	arg_1_0._txtStageName = gohelper.findChildText(arg_1_0._go, "#txt_StageName")
+	arg_1_0._btnclick = gohelper.getClickWithDefaultAudio(arg_1_0._go)
+	arg_1_0._animator = gohelper.findChildAnim(arg_1_0._go, "")
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._btnclick:AddClickListener(slot0._btnclickOnClick, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnAct192InfoUpdate, slot0.refreshUI, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0._btnclick:AddClickListener(arg_2_0._btnclickOnClick, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnAct192InfoUpdate, arg_2_0.refreshUI, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnclick:RemoveClickListener()
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnAct192InfoUpdate, slot0.refreshUI, slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._btnclick:RemoveClickListener()
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnAct192InfoUpdate, arg_3_0.refreshUI, arg_3_0)
 end
 
-function slot0._btnclickOnClick(slot0)
-	CooperGarlandController.instance:clickEpisode(slot0.actId, slot0.episodeId)
+function var_0_0._btnclickOnClick(arg_4_0)
+	CooperGarlandController.instance:clickEpisode(arg_4_0.actId, arg_4_0.episodeId)
 end
 
-function slot0.setData(slot0, slot1, slot2, slot3, slot4)
-	slot0.actId = slot1
-	slot0.episodeId = slot2
-	slot0.index = slot3
-	slot0.gameIndex = slot4
+function var_0_0.setData(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)
+	arg_5_0.actId = arg_5_1
+	arg_5_0.episodeId = arg_5_2
+	arg_5_0.index = arg_5_3
+	arg_5_0.gameIndex = arg_5_4
 
-	slot0:setInfo()
-	slot0:refreshUI()
+	arg_5_0:setInfo()
+	arg_5_0:refreshUI()
 end
 
-function slot0.setInfo(slot0)
-	slot0._txtStageName.text = CooperGarlandConfig.instance:getEpisodeName(slot0.actId, slot0.episodeId)
+function var_0_0.setInfo(arg_6_0)
+	arg_6_0._txtStageName.text = CooperGarlandConfig.instance:getEpisodeName(arg_6_0.actId, arg_6_0.episodeId)
 
-	UISpriteSetMgr.instance:setV2a7CooperGarlandSprite(slot0._imageStageNum, string.format("v2a7_coopergarland_level_stage_0%s", slot0.index))
+	UISpriteSetMgr.instance:setV2a7CooperGarlandSprite(arg_6_0._imageStageNum, string.format("v2a7_coopergarland_level_stage_0%s", arg_6_0.index))
 
-	if slot0.gameIndex then
-		for slot4, slot5 in ipairs(slot0.spStageList) do
-			gohelper.setActive(slot5, slot0.gameIndex == slot4)
+	if arg_6_0.gameIndex then
+		for iter_6_0, iter_6_1 in ipairs(arg_6_0.spStageList) do
+			gohelper.setActive(iter_6_1, arg_6_0.gameIndex == iter_6_0)
 		end
 	end
 
-	gohelper.setActive(slot0._goType1, not slot0.gameIndex)
-	gohelper.setActive(slot0._goType2, slot0.gameIndex)
+	gohelper.setActive(arg_6_0._goType1, not arg_6_0.gameIndex)
+	gohelper.setActive(arg_6_0._goType2, arg_6_0.gameIndex)
 end
 
-function slot0.refreshUI(slot0, slot1)
-	slot0:refreshStatus(slot1)
-	slot0:refreshSelected()
+function var_0_0.refreshUI(arg_7_0, arg_7_1)
+	arg_7_0:refreshStatus(arg_7_1)
+	arg_7_0:refreshSelected()
 end
 
-function slot0.refreshStatus(slot0, slot1)
-	slot2 = false
+function var_0_0.refreshStatus(arg_8_0, arg_8_1)
+	local var_8_0 = false
+	local var_8_1 = CooperGarlandModel.instance:isUnlockEpisode(arg_8_0.actId, arg_8_0.episodeId)
 
-	if CooperGarlandModel.instance:isUnlockEpisode(slot0.actId, slot0.episodeId) then
-		slot2 = CooperGarlandModel.instance:isFinishedEpisode(slot0.actId, slot0.episodeId)
+	if var_8_1 then
+		var_8_0 = CooperGarlandModel.instance:isFinishedEpisode(arg_8_0.actId, arg_8_0.episodeId)
 	end
 
-	gohelper.setActive(slot0._goStar1, not slot2)
-	gohelper.setActive(slot0._goStar2, slot2 and not slot0.gameIndex)
-	gohelper.setActive(slot0._goStar3, slot2 and slot0.gameIndex)
+	gohelper.setActive(arg_8_0._goStar1, not var_8_0)
+	gohelper.setActive(arg_8_0._goStar2, var_8_0 and not arg_8_0.gameIndex)
+	gohelper.setActive(arg_8_0._goStar3, var_8_0 and arg_8_0.gameIndex)
 
-	if slot0.gameIndex then
-		SLFramework.UGUI.GuiHelper.SetColor(slot0.spStageImageList[slot0.gameIndex], slot3 and "#FFFFFF" or "#969696")
-		ZProj.UGUIHelper.SetGrayscale(slot0.spStageList[slot0.gameIndex], not slot3)
-		ZProj.UGUIHelper.SetGrayscale(slot0._goSPIcon, not slot3)
+	local var_8_2 = var_8_1 and "#FFFFFF" or "#969696"
+
+	if arg_8_0.gameIndex then
+		SLFramework.UGUI.GuiHelper.SetColor(arg_8_0.spStageImageList[arg_8_0.gameIndex], var_8_2)
+		ZProj.UGUIHelper.SetGrayscale(arg_8_0.spStageList[arg_8_0.gameIndex], not var_8_1)
+		ZProj.UGUIHelper.SetGrayscale(arg_8_0._goSPIcon, not var_8_1)
 	else
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._imageStageItem, slot4)
-		ZProj.UGUIHelper.SetGrayscale(slot0._goStageItem, not slot3)
-		ZProj.UGUIHelper.SetGrayscale(slot0._goIcon, not slot3)
+		SLFramework.UGUI.GuiHelper.SetColor(arg_8_0._imageStageItem, var_8_2)
+		ZProj.UGUIHelper.SetGrayscale(arg_8_0._goStageItem, not var_8_1)
+		ZProj.UGUIHelper.SetGrayscale(arg_8_0._goIcon, not var_8_1)
 	end
 
-	SLFramework.UGUI.GuiHelper.SetColor(slot0._imageStageNum, slot3 and "#FFFFFF" or "#C8C8C8")
-	ZProj.UGUIHelper.SetGrayscale(slot0._imageStageNum.gameObject, not slot3)
-	gohelper.setActive(slot0._goLocked, not slot3)
-	slot0:_playAnim(slot1)
+	SLFramework.UGUI.GuiHelper.SetColor(arg_8_0._imageStageNum, var_8_1 and "#FFFFFF" or "#C8C8C8")
+	ZProj.UGUIHelper.SetGrayscale(arg_8_0._imageStageNum.gameObject, not var_8_1)
+	gohelper.setActive(arg_8_0._goLocked, not var_8_1)
+	arg_8_0:_playAnim(arg_8_1)
 end
 
-function slot0._playAnim(slot0, slot1)
-	if string.nilorempty(slot1) then
+function var_0_0._playAnim(arg_9_0, arg_9_1)
+	if string.nilorempty(arg_9_1) then
 		return
 	end
 
-	slot0._animator:Play(slot1, 0, 0)
+	arg_9_0._animator:Play(arg_9_1, 0, 0)
 end
 
-function slot0.refreshSelected(slot0)
-	gohelper.setActive(slot0._goSelected, CooperGarlandModel.instance:isNewestEpisode(slot0.actId, slot0.episodeId))
+function var_0_0.refreshSelected(arg_10_0)
+	local var_10_0 = CooperGarlandModel.instance:isNewestEpisode(arg_10_0.actId, arg_10_0.episodeId)
+
+	gohelper.setActive(arg_10_0._goSelected, var_10_0)
 end
 
-return slot0
+return var_0_0

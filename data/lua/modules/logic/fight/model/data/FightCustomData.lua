@@ -1,20 +1,22 @@
-module("modules.logic.fight.model.data.FightCustomData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightCustomData", package.seeall)
 
-slot0 = FightDataClass("FightCustomData")
-slot0.CustomDataType = {
+local var_0_0 = FightDataClass("FightCustomData")
+
+var_0_0.CustomDataType = {
 	Act191 = 3,
 	WeekwalkVer2 = 2,
 	Act183 = 1
 }
-slot1 = {
-	[slot0.CustomDataType.Act183] = true,
-	[slot0.CustomDataType.Act191] = true
+
+local var_0_1 = {
+	[var_0_0.CustomDataType.Act183] = true,
+	[var_0_0.CustomDataType.Act191] = true
 }
 
-function slot0.onConstructor(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		slot0[slot6.type] = uv0[slot6.type] and cjson.decode(slot6.data) or slot6.data
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1) do
+		arg_1_0[iter_1_1.type] = var_0_1[iter_1_1.type] and cjson.decode(iter_1_1.data) or iter_1_1.data
 	end
 end
 
-return slot0
+return var_0_0

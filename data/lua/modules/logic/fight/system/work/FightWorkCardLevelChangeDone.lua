@@ -1,9 +1,9 @@
-module("modules.logic.fight.system.work.FightWorkCardLevelChangeDone", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCardLevelChangeDone", package.seeall)
 
-slot0 = class("FightWorkCardLevelChangeDone", BaseWork)
+local var_0_0 = class("FightWorkCardLevelChangeDone", BaseWork)
 
-function slot0.onStart(slot0)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

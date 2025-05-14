@@ -1,128 +1,134 @@
-module("modules.logic.fight.system.work.FightWorkTimelineItem", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkTimelineItem", package.seeall)
 
-slot0 = class("FightWorkTimelineItem", FightWorkItem)
+local var_0_0 = class("FightWorkTimelineItem", FightWorkItem)
 
-function slot0.onConstructor(slot0, slot1, slot2, slot3)
-	slot0.entity = slot1
-	slot0.timelineName = slot2
-	slot0.fightStepData = slot3
-	slot0.skillId = slot0.fightStepData.actId
+function var_0_0.onConstructor(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	arg_1_0.entity = arg_1_1
+	arg_1_0.timelineName = arg_1_2
+	arg_1_0.fightStepData = arg_1_3
+	arg_1_0.skillId = arg_1_0.fightStepData.actId
 end
 
-function slot0.onStart(slot0)
-	slot0.timelineUrl = ResUrl.getSkillTimeline(slot0.timelineName)
+function var_0_0.onStart(arg_2_0)
+	local var_2_0 = FightHelper.getRolesTimelinePath(arg_2_0.timelineName)
 
-	slot0:com_loadAsset(FightHelper.getRolesTimelinePath(slot0.timelineName), slot0.onTimelineLoaded, slot0)
-	slot0:cancelFightWorkSafeTimer()
+	arg_2_0.timelineUrl = ResUrl.getSkillTimeline(arg_2_0.timelineName)
+
+	arg_2_0:com_loadAsset(var_2_0, arg_2_0.onTimelineLoaded, arg_2_0)
+	arg_2_0:cancelFightWorkSafeTimer()
 end
 
-function slot0.onTimelineLoaded(slot0, slot1, slot2)
-	if not slot1 then
-		logError("timeline资源加载失败,路径:" .. slot0.timelineUrl)
-		slot0:onDone(true)
+function var_0_0.onTimelineLoaded(arg_3_0, arg_3_1, arg_3_2)
+	if not arg_3_1 then
+		logError("timeline资源加载失败,路径:" .. arg_3_0.timelineUrl)
+		arg_3_0:onDone(true)
 
 		return
 	end
 
-	slot0.assetLoader = slot2
+	arg_3_0.assetLoader = arg_3_2
 
-	FightHelper.logForPCSkillEditor("播放timeline:" .. slot0.timelineName)
-	slot0:startTimeline()
+	FightHelper.logForPCSkillEditor("播放timeline:" .. arg_3_0.timelineName)
+	arg_3_0:startTimeline()
 end
 
-function slot0.dealSpeed(slot0)
-	FightHelper.setBossSkillSpeed(slot0.entity.id)
-	FightHelper.setTimelineExclusiveSpeed(slot0.timelineName)
+function var_0_0.dealSpeed(arg_4_0)
+	FightHelper.setBossSkillSpeed(arg_4_0.entity.id)
+	FightHelper.setTimelineExclusiveSpeed(arg_4_0.timelineName)
 	FightModel.instance:updateRTPCSpeed()
 end
 
-function slot0.startTimeline(slot0)
-	slot0:dealSpeed()
+function var_0_0.startTimeline(arg_5_0)
+	arg_5_0:dealSpeed()
 
-	slot0._startTime = Time.time
+	arg_5_0._startTime = Time.time
 
-	slot0:beforePlayTimeline()
+	arg_5_0:beforePlayTimeline()
 
-	slot0.timelineItem = slot0:newClass(FightSkillTimelineItem, slot0)
+	arg_5_0.timelineItem = arg_5_0:newClass(FightSkillTimelineItem, arg_5_0)
 
-	slot0.timelineItem:play()
-	FightMsgMgr.sendMsg(FightMsgId.PlayTimelineSkill, slot0.entity, slot0.skillId, slot0.fightStepData, slot0.timelineName)
-	FightController.instance:dispatchEvent(FightEvent.OnSkillPlayStart, slot0.entity, slot0.skillId, slot0.fightStepData, slot0.timelineName)
+	arg_5_0.timelineItem:play()
+	FightMsgMgr.sendMsg(FightMsgId.PlayTimelineSkill, arg_5_0.entity, arg_5_0.skillId, arg_5_0.fightStepData, arg_5_0.timelineName)
+	FightController.instance:dispatchEvent(FightEvent.OnSkillPlayStart, arg_5_0.entity, arg_5_0.skillId, arg_5_0.fightStepData, arg_5_0.timelineName)
 end
 
-function slot0.sameSkillPlaying(slot0)
+function var_0_0.sameSkillPlaying(arg_6_0)
 	return false
 end
 
-function slot0.onUpdate(slot0)
-	if slot0.timelineItem then
-		slot0.timelineItem:onUpdate()
+function var_0_0.onUpdate(arg_7_0)
+	if arg_7_0.timelineItem then
+		arg_7_0.timelineItem:onUpdate()
 	end
 end
 
-function slot0.setTimeScale(slot0, slot1)
-	if slot0.timelineItem then
-		slot0.timelineItem:setTimeScale(slot1)
+function var_0_0.setTimeScale(arg_8_0, arg_8_1)
+	if arg_8_0.timelineItem then
+		arg_8_0.timelineItem:setTimeScale(arg_8_1)
 	end
 end
 
-function slot0.getBinder(slot0)
-	return slot0.timelineItem and slot0.timelineItem.binder
+function var_0_0.getBinder(arg_9_0)
+	return arg_9_0.timelineItem and arg_9_0.timelineItem.binder
 end
 
-function slot0.skipSkill(slot0)
-	slot0.timelineItem:skipSkill()
-	slot0.timelineItem:onTimelineEnd()
+function var_0_0.skipSkill(arg_10_0)
+	arg_10_0.timelineItem:skipSkill()
+	arg_10_0.timelineItem:onTimelineEnd()
 end
 
-function slot0.onTimelineFinish(slot0)
-	if not slot0.skipAfterTimelineFunc then
-		slot0:afterPlayTimeline()
+function var_0_0.onTimelineFinish(arg_11_0)
+	if not arg_11_0.skipAfterTimelineFunc then
+		arg_11_0:afterPlayTimeline()
 	end
 
 	CameraMgr.instance:getCameraShake():StopShake()
 	FightHelper.cancelBossSkillSpeed()
 	FightHelper.cancelExclusiveSpeed()
 	FightModel.instance:updateRTPCSpeed()
-	FightMsgMgr.sendMsg(FightMsgId.PlayTimelineSkillFinish, slot0.entity, slot0.skillId, slot0.fightStepData, slot0._timelineName)
-	FightController.instance:dispatchEvent(FightEvent.OnSkillPlayFinish, slot0.entity, slot0.skillId, slot0.fightStepData, slot0._timelineName)
+	FightMsgMgr.sendMsg(FightMsgId.PlayTimelineSkillFinish, arg_11_0.entity, arg_11_0.skillId, arg_11_0.fightStepData, arg_11_0._timelineName)
+	FightController.instance:dispatchEvent(FightEvent.OnSkillPlayFinish, arg_11_0.entity, arg_11_0.skillId, arg_11_0.fightStepData, arg_11_0._timelineName)
 
-	if not slot0.IS_DISPOSED then
-		slot0:onDone(true)
+	if not arg_11_0.IS_DISPOSED then
+		arg_11_0:onDone(true)
 	end
 end
 
-function slot0.afterPlayTimeline(slot0)
-	FightSkillMgr.instance:afterTimeline(slot0.entity, slot0.fightStepData)
-	slot0:_resetTargetHp()
+function var_0_0.afterPlayTimeline(arg_12_0)
+	FightSkillMgr.instance:afterTimeline(arg_12_0.entity, arg_12_0.fightStepData)
+	arg_12_0:_resetTargetHp()
 
-	if slot0.timelineItem then
-		slot0:_checkFloatTable(slot0.timelineItem.timelineContext.floatNum, "伤害")
-		slot0:_checkFloatTable(slot0.timelineItem.timelineContext.healFloatNum, "回血")
+	if arg_12_0.timelineItem then
+		arg_12_0:_checkFloatTable(arg_12_0.timelineItem.timelineContext.floatNum, "伤害")
+		arg_12_0:_checkFloatTable(arg_12_0.timelineItem.timelineContext.healFloatNum, "回血")
 	end
 
-	if slot0.entity.buff then
-		slot0.entity.buff:showBuffEffects("before_skill_timeline")
+	if arg_12_0.entity.buff then
+		arg_12_0.entity.buff:showBuffEffects("before_skill_timeline")
 	end
 
-	if slot0._hide_defenders_buff_effect then
-		FightHelper.revertDefenderBuffEffect(slot0._hide_defenders_buff_effect, "before_skill_timeline")
+	if arg_12_0._hide_defenders_buff_effect then
+		FightHelper.revertDefenderBuffEffect(arg_12_0._hide_defenders_buff_effect, "before_skill_timeline")
 
-		slot0._hide_defenders_buff_effect = nil
+		arg_12_0._hide_defenders_buff_effect = nil
 	end
 
 	if not FightSkillMgr.instance:isPlayingAnyTimeline() then
 		FightFloatMgr.instance:resetInterval()
-		slot0:_cancelSideRenderOrder()
+		arg_12_0:_cancelSideRenderOrder()
 		GameSceneMgr.instance:getCurScene().camera:enablePostProcessSmooth(false)
 
-		if slot0.fightStepData.hasPlayTimelineCamera then
+		if arg_12_0.fightStepData.hasPlayTimelineCamera then
 			GameSceneMgr.instance:getCurScene().camera:resetParam()
 		end
 
 		GameSceneMgr.instance:getCurScene().entityMgr.enableSpineRotate = true
 
-		if not slot0.entity:getMO() or not slot1:isPassiveSkill(slot0.skillId) then
+		local var_12_0 = arg_12_0.entity:getMO()
+
+		if var_12_0 and var_12_0:isPassiveSkill(arg_12_0.skillId) then
+			-- block empty
+		else
 			GameSceneMgr.instance:getCurScene().level:setFrontVisible(true)
 		end
 
@@ -132,70 +138,86 @@ function slot0.afterPlayTimeline(slot0)
 	end
 end
 
-function slot0.beforePlayTimeline(slot0)
-	slot0:setSideRenderOrder()
+function var_0_0.beforePlayTimeline(arg_13_0)
+	arg_13_0:setSideRenderOrder()
 
-	if slot0.entity.buff then
-		slot0.entity.buff:hideLoopEffects("before_skill_timeline")
+	if arg_13_0.entity.buff then
+		arg_13_0.entity.buff:hideLoopEffects("before_skill_timeline")
 	end
 
-	slot4 = "before_skill_timeline"
+	for iter_13_0, iter_13_1 in pairs(FightHelper.hideDefenderBuffEffect(arg_13_0.fightStepData, "before_skill_timeline")) do
+		arg_13_0.hide_defenders_buff_effect = arg_13_0.hide_defenders_buff_effect or {}
 
-	for slot4, slot5 in pairs(FightHelper.hideDefenderBuffEffect(slot0.fightStepData, slot4)) do
-		slot0.hide_defenders_buff_effect = slot0.hide_defenders_buff_effect or {}
-
-		table.insert(slot0.hide_defenders_buff_effect, slot5)
+		table.insert(arg_13_0.hide_defenders_buff_effect, iter_13_1)
 	end
 
 	if not FightSkillMgr.instance:isPlayingAnyTimeline() then
-		if not slot0.entity.skill:sameSkillPlaying() then
+		if not arg_13_0.entity.skill:sameSkillPlaying() then
 			FightFloatMgr.instance:removeInterval()
 		end
 
-		if not slot0.entity:getMO() or not slot1:isPassiveSkill(slot0.skillId) then
+		local var_13_0 = arg_13_0.entity:getMO()
+
+		if var_13_0 and var_13_0:isPassiveSkill(arg_13_0.skillId) then
+			-- block empty
+		else
 			GameSceneMgr.instance:getCurScene().level:setFrontVisible(false)
 		end
 	end
 
-	FightSkillMgr.instance:beforeTimeline(slot0.entity, slot0.fightStepData)
+	FightSkillMgr.instance:beforeTimeline(arg_13_0.entity, arg_13_0.fightStepData)
 end
 
-function slot0.setSideRenderOrder(slot0)
-	for slot6, slot7 in ipairs(FightHelper.getSideEntitys(slot0.entity:getSide(), true)) do
-		slot8 = nil
+function var_0_0.setSideRenderOrder(arg_14_0)
+	local var_14_0 = FightHelper.getSideEntitys(arg_14_0.entity:getSide(), true)
+	local var_14_1 = FightModel.instance:getFightParam().battleId
 
-		if FightEnum.AtkRenderOrderIgnore[FightModel.instance:getFightParam().battleId] and slot9[slot7:getSide()] and tabletool.indexOf(slot10, slot7:getMO().position) then
-			slot8 = true
+	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
+		local var_14_2
+		local var_14_3 = FightEnum.AtkRenderOrderIgnore[var_14_1]
+
+		if var_14_3 then
+			local var_14_4 = var_14_3[iter_14_1:getSide()]
+
+			if var_14_4 and tabletool.indexOf(var_14_4, iter_14_1:getMO().position) then
+				var_14_2 = true
+			end
 		end
 
-		if not slot8 then
-			slot1[slot6] = slot7.id
+		if not var_14_2 then
+			var_14_0[iter_14_0] = iter_14_1.id
 		end
 	end
 
-	for slot7, slot8 in pairs(FightRenderOrderMgr.sortOrder(FightEnum.RenderOrderType.StandPos, slot1)) do
-		FightRenderOrderMgr.instance:setOrder(slot7, FightEnum.TopOrderFactor + slot8 - 1)
+	local var_14_5 = FightRenderOrderMgr.sortOrder(FightEnum.RenderOrderType.StandPos, var_14_0)
+
+	for iter_14_2, iter_14_3 in pairs(var_14_5) do
+		FightRenderOrderMgr.instance:setOrder(iter_14_2, FightEnum.TopOrderFactor + iter_14_3 - 1)
 	end
 end
 
-function slot0._cancelSideRenderOrder(slot0)
-	for slot5, slot6 in ipairs(FightHelper.getAllEntitys(slot0.entity:getSide())) do
-		FightRenderOrderMgr.instance:cancelOrder(slot6.id)
+function var_0_0._cancelSideRenderOrder(arg_15_0)
+	local var_15_0 = FightHelper.getAllEntitys(arg_15_0.entity:getSide())
+
+	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
+		FightRenderOrderMgr.instance:cancelOrder(iter_15_1.id)
 	end
 
 	FightRenderOrderMgr.instance:setSortType(FightEnum.RenderOrderType.StandPos)
 end
 
-function slot0._resetTargetHp(slot0)
-	for slot4, slot5 in ipairs(slot0.fightStepData.actEffect) do
-		if FightHelper.getEntity(slot5.targetId) and slot6.nameUI then
-			slot6.nameUI:resetHp()
+function var_0_0._resetTargetHp(arg_16_0)
+	for iter_16_0, iter_16_1 in ipairs(arg_16_0.fightStepData.actEffect) do
+		local var_16_0 = FightHelper.getEntity(iter_16_1.targetId)
+
+		if var_16_0 and var_16_0.nameUI then
+			var_16_0.nameUI:resetHp()
 		end
 	end
 end
 
-function slot0._checkFloatTable(slot0, slot1, slot2)
-	if not slot1 then
+function var_0_0._checkFloatTable(arg_17_0, arg_17_1, arg_17_2)
+	if not arg_17_1 then
 		return
 	end
 
@@ -211,10 +233,10 @@ function slot0._checkFloatTable(slot0, slot1, slot2)
 		return
 	end
 
-	for slot6, slot7 in pairs(slot1) do
-		for slot11, slot12 in pairs(slot7) do
-			if math.abs(slot12.ratio - 1) > 0.0001 then
-				logError("技能" .. slot2 .. "系数之和为" .. slot12.ratio .. " " .. slot0.timelineName)
+	for iter_17_0, iter_17_1 in pairs(arg_17_1) do
+		for iter_17_2, iter_17_3 in pairs(iter_17_1) do
+			if math.abs(iter_17_3.ratio - 1) > 0.0001 then
+				logError("技能" .. arg_17_2 .. "系数之和为" .. iter_17_3.ratio .. " " .. arg_17_0.timelineName)
 			end
 
 			return
@@ -222,7 +244,8 @@ function slot0._checkFloatTable(slot0, slot1, slot2)
 	end
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_18_0)
+	return
 end
 
-return slot0
+return var_0_0

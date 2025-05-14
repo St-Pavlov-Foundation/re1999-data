@@ -1,28 +1,30 @@
-module("modules.logic.advance.view.testtask.TestTaskMainBtnItem", package.seeall)
+﻿module("modules.logic.advance.view.testtask.TestTaskMainBtnItem", package.seeall)
 
-slot0 = class("TestTaskMainBtnItem", ActCenterItemBase)
+local var_0_0 = class("TestTaskMainBtnItem", ActCenterItemBase)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, gohelper.cloneInPlace(slot1))
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, gohelper.cloneInPlace(arg_1_1))
 
-	slot0._btnitem = gohelper.getClick(gohelper.findChild(slot0.go, "bg"))
+	local var_1_0 = gohelper.findChild(arg_1_0.go, "bg")
+
+	arg_1_0._btnitem = gohelper.getClick(var_1_0)
 end
 
-function slot0.onInit(slot0, slot1)
-	slot0:_refreshItem()
+function var_0_0.onInit(arg_2_0, arg_2_1)
+	arg_2_0:_refreshItem()
 end
 
-function slot0.onClick(slot0)
+function var_0_0.onClick(arg_3_0)
 	TestTaskController.instance:openTestTaskView()
 end
 
-function slot0._refreshItem(slot0)
-	UISpriteSetMgr.instance:setMainSprite(slot0._imgitem, "icon_3")
-	RedDotController.instance:addRedDot(slot0._goactivityreddot, RedDotEnum.DotNode.TestTaskBtn)
+function var_0_0._refreshItem(arg_4_0)
+	UISpriteSetMgr.instance:setMainSprite(arg_4_0._imgitem, "icon_3")
+	RedDotController.instance:addRedDot(arg_4_0._goactivityreddot, RedDotEnum.DotNode.TestTaskBtn)
 end
 
-function slot0.isShowRedDot(slot0)
+function var_0_0.isShowRedDot(arg_5_0)
 	return RedDotModel.instance:isDotShow(RedDotEnum.DotNode.TestTaskBtn)
 end
 
-return slot0
+return var_0_0

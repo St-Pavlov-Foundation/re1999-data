@@ -1,179 +1,206 @@
-module("modules.versionactivitybase.fixed.dungeon.model.VersionActivityFixedDungeonModel", package.seeall)
+﻿module("modules.versionactivitybase.fixed.dungeon.model.VersionActivityFixedDungeonModel", package.seeall)
 
-slot0 = class("VersionActivityFixedDungeonModel", BaseModel)
+local var_0_0 = class("VersionActivityFixedDungeonModel", BaseModel)
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_1_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	slot0:init()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:init()
 end
 
-function slot0.init(slot0)
-	slot0:setLastEpisodeId()
-	slot0:setShowInteractView()
+function var_0_0.init(arg_3_0)
+	arg_3_0:setLastEpisodeId()
+	arg_3_0:setShowInteractView()
 end
 
-function slot0.setLastEpisodeId(slot0, slot1)
-	slot0.lastEpisodeId = slot1
+function var_0_0.setLastEpisodeId(arg_4_0, arg_4_1)
+	arg_4_0.lastEpisodeId = arg_4_1
 end
 
-function slot0.getLastEpisodeId(slot0)
-	return slot0.lastEpisodeId
+function var_0_0.getLastEpisodeId(arg_5_0)
+	return arg_5_0.lastEpisodeId
 end
 
-function slot0.setShowInteractView(slot0, slot1)
-	slot0.isShowInteractView = slot1
+function var_0_0.setShowInteractView(arg_6_0, arg_6_1)
+	arg_6_0.isShowInteractView = arg_6_1
 end
 
-function slot0.checkIsShowInteractView(slot0)
-	return slot0.isShowInteractView
+function var_0_0.checkIsShowInteractView(arg_7_0)
+	return arg_7_0.isShowInteractView
 end
 
-function slot0.setIsNotShowNewElement(slot0, slot1)
-	slot0.notShowNewElement = slot1
+function var_0_0.setIsNotShowNewElement(arg_8_0, arg_8_1)
+	arg_8_0.notShowNewElement = arg_8_1
 end
 
-function slot0.isNotShowNewElement(slot0)
-	return slot0.notShowNewElement
+function var_0_0.isNotShowNewElement(arg_9_0)
+	return arg_9_0.notShowNewElement
 end
 
-function slot0.setMapNeedTweenState(slot0, slot1)
-	slot0.isMapNeedTween = slot1
+function var_0_0.setMapNeedTweenState(arg_10_0, arg_10_1)
+	arg_10_0.isMapNeedTween = arg_10_1
 end
 
-function slot0.getMapNeedTweenState(slot0)
-	return slot0.isMapNeedTween
+function var_0_0.getMapNeedTweenState(arg_11_0)
+	return arg_11_0.isMapNeedTween
 end
 
-function slot0.getElementCoList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getElementCoList(arg_12_0, arg_12_1)
+	local var_12_0 = {}
+	local var_12_1 = DungeonMapModel.instance:getAllElements()
 
-	for slot7, slot8 in pairs(DungeonMapModel.instance:getAllElements()) do
-		if DungeonConfig.instance:getChapterMapElement(slot8) and lua_chapter_map.configDict[slot9.mapId] and slot10.chapterId == VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Story and slot1 == slot9.mapId then
-			table.insert(slot2, slot9)
+	for iter_12_0, iter_12_1 in pairs(var_12_1) do
+		local var_12_2 = DungeonConfig.instance:getChapterMapElement(iter_12_1)
+		local var_12_3 = var_12_2 and lua_chapter_map.configDict[var_12_2.mapId]
+
+		if var_12_3 and var_12_3.chapterId == VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Story and arg_12_1 == var_12_2.mapId then
+			table.insert(var_12_0, var_12_2)
 		end
 	end
 
-	return slot2
+	return var_12_0
 end
 
-function slot0.getElementCoListWithFinish(slot0, slot1)
-	slot2 = {}
+function var_0_0.getElementCoListWithFinish(arg_13_0, arg_13_1)
+	local var_13_0 = {}
+	local var_13_1 = arg_13_0:getAllNormalElementCoList(arg_13_1)
 
-	for slot7, slot8 in pairs(slot0:getAllNormalElementCoList(slot1)) do
-		slot9 = slot8.id
+	for iter_13_0, iter_13_1 in pairs(var_13_1) do
+		local var_13_2 = iter_13_1.id
+		local var_13_3 = lua_chapter_map.configDict[iter_13_1.mapId]
 
-		if lua_chapter_map.configDict[slot8.mapId] and slot10.chapterId == VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Story then
-			if slot1 == slot8.mapId and DungeonMapModel.instance:elementIsFinished(slot9) and not DungeonMapModel.instance:getElementById(slot9) then
-				table.insert(slot2, slot8)
+		if var_13_3 and var_13_3.chapterId == VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Story then
+			local var_13_4 = DungeonMapModel.instance:elementIsFinished(var_13_2)
+			local var_13_5 = DungeonMapModel.instance:getElementById(var_13_2)
+
+			if arg_13_1 == iter_13_1.mapId and var_13_4 and not var_13_5 then
+				table.insert(var_13_0, iter_13_1)
 			end
 		end
 	end
 
-	return slot2, slot3
+	return var_13_0, var_13_1
 end
 
-function slot0.getAllNormalElementCoList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getAllNormalElementCoList(arg_14_0, arg_14_1)
+	local var_14_0 = {}
+	local var_14_1 = DungeonConfig.instance:getMapElements(arg_14_1)
 
-	if DungeonConfig.instance:getMapElements(slot1) then
-		for slot7, slot8 in pairs(slot3) do
-			table.insert(slot2, slot8)
+	if var_14_1 then
+		for iter_14_0, iter_14_1 in pairs(var_14_1) do
+			table.insert(var_14_0, iter_14_1)
 		end
 	end
 
-	return slot2
+	return var_14_0
 end
 
-function slot0.setDungeonBaseMo(slot0, slot1)
-	slot0.actDungeonBaseMo = slot1
+function var_0_0.setDungeonBaseMo(arg_15_0, arg_15_1)
+	arg_15_0.actDungeonBaseMo = arg_15_1
 end
 
-function slot0.getDungeonBaseMo(slot0)
-	return slot0.actDungeonBaseMo
+function var_0_0.getDungeonBaseMo(arg_16_0)
+	return arg_16_0.actDungeonBaseMo
 end
 
-function slot0.getInitEpisodeId(slot0)
-	slot3 = 0
-	slot4 = 0
+function var_0_0.getInitEpisodeId(arg_17_0)
+	local var_17_0 = VersionActivityFixedHelper.getVersionActivityDungeonEnum()
+	local var_17_1 = DungeonConfig.instance:getChapterEpisodeCOList(var_17_0.DungeonChapterId.Story)
+	local var_17_2 = 0
+	local var_17_3 = 0
 
-	for slot8, slot9 in ipairs(DungeonConfig.instance:getChapterEpisodeCOList(VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Story)) do
-		slot10 = DungeonModel.instance:isUnlock(slot9)
+	for iter_17_0, iter_17_1 in ipairs(var_17_1) do
+		local var_17_4 = DungeonModel.instance:isUnlock(iter_17_1)
 
-		if DungeonModel.instance.isBattleEpisode(slot9) then
-			slot4 = slot9.id < slot4 and slot4 or slot9.id
+		if DungeonModel.instance.isBattleEpisode(iter_17_1) then
+			var_17_3 = var_17_3 > iter_17_1.id and var_17_3 or iter_17_1.id
 		end
 
-		if slot10 and slot3 < slot9.id then
-			slot3 = slot9.id
+		if var_17_4 and var_17_2 < iter_17_1.id then
+			var_17_2 = iter_17_1.id
 		end
 	end
 
-	if DungeonModel.instance:chapterIsPass(slot1.DungeonChapterId.Story) then
-		slot3 = slot4
+	if DungeonModel.instance:chapterIsPass(var_17_0.DungeonChapterId.Story) then
+		var_17_2 = var_17_3
 	end
 
-	return slot3
+	return var_17_2
 end
 
-slot1 = 1
-slot2 = 0
+local var_0_1 = 1
+local var_0_2 = 0
 
-function slot0.isNeedPlayHardModeUnlockAnimation(slot0, slot1)
-	if VersionActivityFixedHelper.getVersionActivityDungeonController().instance:getPlayerPrefs(VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.HasPlayedUnlockHardModeBtnAnim, uv0) ~= uv1 then
-		return VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(slot1 or VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon)
+function var_0_0.isNeedPlayHardModeUnlockAnimation(arg_18_0, arg_18_1)
+	local var_18_0 = VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.HasPlayedUnlockHardModeBtnAnim
+
+	if VersionActivityFixedHelper.getVersionActivityDungeonController().instance:getPlayerPrefs(var_18_0, var_0_2) ~= var_0_1 then
+		local var_18_1 = arg_18_1 or VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
+
+		return (VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(var_18_1))
 	end
 end
 
-function slot0.savePlayerPrefsPlayHardModeUnlockAnimation(slot0)
-	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:savePlayerPrefs(VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.HasPlayedUnlockHardModeBtnAnim, uv0)
+function var_0_0.savePlayerPrefsPlayHardModeUnlockAnimation(arg_19_0)
+	local var_19_0 = VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.HasPlayedUnlockHardModeBtnAnim
+
+	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:savePlayerPrefs(var_19_0, var_0_1)
 end
 
-function slot0.isTipHardModeUnlockOpen(slot0, slot1)
-	if slot1 ~= VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon then
+function var_0_0.isTipHardModeUnlockOpen(arg_20_0, arg_20_1)
+	if arg_20_1 ~= VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon then
 		return
 	end
 
-	if VersionActivityFixedHelper.getVersionActivityDungeonController().instance:getPlayerPrefs(VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.OpenHardModeUnlockTip, uv0) ~= uv1 then
-		return VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(slot1)
+	local var_20_0 = VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.OpenHardModeUnlockTip
+
+	if VersionActivityFixedHelper.getVersionActivityDungeonController().instance:getPlayerPrefs(var_20_0, var_0_2) ~= var_0_1 then
+		return (VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(arg_20_1))
 	end
 end
 
-function slot0.setTipHardModeUnlockOpen(slot0)
-	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:savePlayerPrefs(VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.OpenHardModeUnlockTip, uv0)
-	slot0:refreshVersionActivityEnterRedDot()
+function var_0_0.setTipHardModeUnlockOpen(arg_21_0)
+	local var_21_0 = VersionActivityFixedHelper.getVersionActivityDungeonEnum().PlayerPrefsKey.OpenHardModeUnlockTip
+
+	VersionActivityFixedHelper.getVersionActivityDungeonController().instance:savePlayerPrefs(var_21_0, var_0_1)
+	arg_21_0:refreshVersionActivityEnterRedDot()
 end
 
-function slot0.refreshVersionActivityEnterRedDot(slot0)
-	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, {
+function var_0_0.refreshVersionActivityEnterRedDot(arg_22_0)
+	local var_22_0 = {
 		[RedDotEnum.DotNode.VersionActivityEnterRedDot] = true
-	})
+	}
+
+	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, var_22_0)
 end
 
-function slot0.getHardModeCurrenyNum(slot0, slot1)
-	slot3 = 0
-	slot4 = 0
+function var_0_0.getHardModeCurrenyNum(arg_23_0, arg_23_1)
+	local var_23_0 = DungeonConfig.instance:getChapterEpisodeCOList(arg_23_1)
+	local var_23_1 = 0
+	local var_23_2 = 0
 
-	for slot8, slot9 in ipairs(DungeonConfig.instance:getChapterEpisodeCOList(slot1)) do
-		slot10 = DungeonModel.instance:getEpisodeInfo(slot9.id)
+	for iter_23_0, iter_23_1 in ipairs(var_23_0) do
+		local var_23_3 = DungeonModel.instance:getEpisodeInfo(iter_23_1.id)
+		local var_23_4 = DungeonModel.instance:getEpisodeFirstBonus(iter_23_1.id)
 
-		if DungeonModel.instance:getEpisodeFirstBonus(slot9.id) then
-			for slot15, slot16 in ipairs(slot11) do
-				if tonumber(slot16[1]) == MaterialEnum.MaterialType.Currency and tonumber(slot16[2]) == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
-					if slot10 and slot10.star ~= DungeonEnum.StarType.None then
-						slot3 = slot3 + tonumber(slot16[3])
+		if var_23_4 then
+			for iter_23_2, iter_23_3 in ipairs(var_23_4) do
+				if tonumber(iter_23_3[1]) == MaterialEnum.MaterialType.Currency and tonumber(iter_23_3[2]) == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
+					if var_23_3 and var_23_3.star ~= DungeonEnum.StarType.None then
+						var_23_1 = var_23_1 + tonumber(iter_23_3[3])
 					end
 
-					slot4 = slot4 + tonumber(slot16[3])
+					var_23_2 = var_23_2 + tonumber(iter_23_3[3])
 				end
 			end
 		end
 	end
 
-	return slot3, slot4
+	return var_23_1, var_23_2
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

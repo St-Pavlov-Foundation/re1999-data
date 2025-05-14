@@ -1,73 +1,84 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191CharacterDestinyView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191CharacterDestinyView", package.seeall)
 
-slot0 = class("Act191CharacterDestinyView", BaseView)
+local var_0_0 = class("Act191CharacterDestinyView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._imageicon = gohelper.findChildImage(slot0.viewGO, "root/#image_icon")
-	slot0._txtstonename = gohelper.findChildText(slot0.viewGO, "root/#txt_stonename")
-	slot0._simagestone = gohelper.findChildSingleImage(slot0.viewGO, "root/go_stone/#simage_stone")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._imageicon = gohelper.findChildImage(arg_1_0.viewGO, "root/#image_icon")
+	arg_1_0._txtstonename = gohelper.findChildText(arg_1_0.viewGO, "root/#txt_stonename")
+	arg_1_0._simagestone = gohelper.findChildSingleImage(arg_1_0.viewGO, "root/go_stone/#simage_stone")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_topleft")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0._goeffect = gohelper.findChild(slot0.viewGO, "root/effectItem")
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._goeffect = gohelper.findChild(arg_4_0.viewGO, "root/effectItem")
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_5_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0.config = slot0.viewParam.config
-	slot0.stoneId = slot0.viewParam.stoneId
-	slot0._levelCos = CharacterDestinyConfig.instance:getDestinyFacetCo(slot0.stoneId)
-	slot0.conusmeCo = CharacterDestinyConfig.instance:getDestinyFacetConsumeCo(slot0.stoneId)
-	slot0._effectItems = slot0:getUserDataTb_()
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0.config = arg_6_0.viewParam.config
+	arg_6_0.stoneId = arg_6_0.viewParam.stoneId
+	arg_6_0._levelCos = CharacterDestinyConfig.instance:getDestinyFacetCo(arg_6_0.stoneId)
+	arg_6_0.conusmeCo = CharacterDestinyConfig.instance:getDestinyFacetConsumeCo(arg_6_0.stoneId)
+	arg_6_0._effectItems = arg_6_0:getUserDataTb_()
 
-	for slot4 = 1, CharacterDestinyEnum.EffectItemCount do
-		slot5 = gohelper.findChild(slot0._goeffect, slot4)
-		slot6 = slot0:getUserDataTb_()
-		slot6.go = slot5
-		slot6.txt = gohelper.findChildText(slot5, "txt_dec")
-		slot6.canvasgroup = slot5:GetComponent(typeof(UnityEngine.CanvasGroup))
-		slot0._effectItems[slot4] = slot6
+	for iter_6_0 = 1, CharacterDestinyEnum.EffectItemCount do
+		local var_6_0 = gohelper.findChild(arg_6_0._goeffect, iter_6_0)
+		local var_6_1 = arg_6_0:getUserDataTb_()
+
+		var_6_1.go = var_6_0
+		var_6_1.txt = gohelper.findChildText(var_6_0, "txt_dec")
+		var_6_1.canvasgroup = var_6_0:GetComponent(typeof(UnityEngine.CanvasGroup))
+		arg_6_0._effectItems[iter_6_0] = var_6_1
 	end
 
-	slot0:_refreshStoneItem()
+	arg_6_0:_refreshStoneItem()
 end
 
-function slot0._refreshStoneItem(slot0)
-	for slot4, slot5 in ipairs(slot0._effectItems) do
-		slot5.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(slot5.txt.gameObject, Act191SkillDescComp)
+function var_0_0._refreshStoneItem(arg_7_0)
+	for iter_7_0, iter_7_1 in ipairs(arg_7_0._effectItems) do
+		local var_7_0 = arg_7_0._levelCos[iter_7_0]
 
-		slot5.skillDesc:updateInfo(slot5.txt, slot0._levelCos[slot4].desc, slot0.config)
-		slot5.skillDesc:setTipParam(0, Vector2(300, 100))
+		iter_7_1.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(iter_7_1.txt.gameObject, Act191SkillDescComp)
+
+		iter_7_1.skillDesc:updateInfo(iter_7_1.txt, var_7_0.desc, arg_7_0.config)
+		iter_7_1.skillDesc:setTipParam(0, Vector2(300, 100))
 	end
 
-	slot0._txtstonename.text = slot0.conusmeCo.name
+	arg_7_0._txtstonename.text = arg_7_0.conusmeCo.name
 
-	slot0._simagestone:LoadImage(ResUrl.getDestinyIcon(slot0.conusmeCo.icon))
+	local var_7_1 = ResUrl.getDestinyIcon(arg_7_0.conusmeCo.icon)
 
-	slot2 = CharacterDestinyEnum.SlotTend[slot0.conusmeCo.tend]
+	arg_7_0._simagestone:LoadImage(var_7_1)
 
-	UISpriteSetMgr.instance:setUiCharacterSprite(slot0._imageicon, slot2.TitleIconName)
+	local var_7_2 = CharacterDestinyEnum.SlotTend[arg_7_0.conusmeCo.tend]
+	local var_7_3 = var_7_2.TitleIconName
 
-	slot0._txtstonename.color = GameUtil.parseColor(slot2.TitleColor)
+	UISpriteSetMgr.instance:setUiCharacterSprite(arg_7_0._imageicon, var_7_3)
+
+	arg_7_0._txtstonename.color = GameUtil.parseColor(var_7_2.TitleColor)
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_8_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_9_0)
+	return
 end
 
-return slot0
+return var_0_0

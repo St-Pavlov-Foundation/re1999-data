@@ -1,56 +1,61 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191CollectionEditListModel", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191CollectionEditListModel", package.seeall)
 
-slot0 = class("Act191CollectionEditListModel", ListScrollModel)
+local var_0_0 = class("Act191CollectionEditListModel", ListScrollModel)
 
-function slot0.initData(slot0, slot1)
-	slot0.specialItem = slot1
-	slot2 = {}
+function var_0_0.initData(arg_1_0, arg_1_1)
+	arg_1_0.specialItem = arg_1_1
 
-	for slot7, slot8 in ipairs(Activity191Model.instance:getActInfo():getGameInfo().warehouseInfo.item) do
-		slot10, slot11 = slot3:isItemInTeam(({
-			uid = slot8.uid,
-			itemId = slot8.itemId
-		}).uid)
+	local var_1_0 = {}
+	local var_1_1 = Activity191Model.instance:getActInfo():getGameInfo()
 
-		if slot10 then
-			slot9.inTeam = slot9.uid == slot0.specialItem and 2 or 1
+	for iter_1_0, iter_1_1 in ipairs(var_1_1.warehouseInfo.item) do
+		local var_1_2 = {
+			uid = iter_1_1.uid,
+			itemId = iter_1_1.itemId
+		}
+		local var_1_3, var_1_4 = var_1_1:isItemInTeam(var_1_2.uid)
 
-			if slot11 and slot11 ~= 0 then
-				slot9.heroId = slot11
+		if var_1_3 then
+			var_1_2.inTeam = var_1_2.uid == arg_1_0.specialItem and 2 or 1
+
+			if var_1_4 and var_1_4 ~= 0 then
+				var_1_2.heroId = var_1_4
 			end
 		else
-			slot9.inTeam = 0
+			var_1_2.inTeam = 0
 		end
 
-		slot2[#slot2 + 1] = slot9
+		var_1_0[#var_1_0 + 1] = var_1_2
 	end
 
-	table.sort(slot2, function (slot0, slot1)
-		return slot1.inTeam < slot0.inTeam
+	table.sort(var_1_0, function(arg_2_0, arg_2_1)
+		return arg_2_0.inTeam > arg_2_1.inTeam
 	end)
-	slot0:setList(slot2)
+	arg_1_0:setList(var_1_0)
 
-	if slot0.specialItem and slot0.specialItem ~= 0 then
-		slot0:selectItem(slot0.specialItem, true)
+	if arg_1_0.specialItem and arg_1_0.specialItem ~= 0 then
+		arg_1_0:selectItem(arg_1_0.specialItem, true)
 	else
 		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickCollectionGroupItem)
 	end
 end
 
-function slot0.selectItem(slot0, slot1, slot2)
-	for slot7, slot8 in ipairs(slot0:getList()) do
-		if slot8.uid == slot1 then
-			slot0:selectCell(slot7, slot2)
+function var_0_0.selectItem(arg_3_0, arg_3_1, arg_3_2)
+	local var_3_0 = arg_3_0:getList()
+
+	for iter_3_0, iter_3_1 in ipairs(var_3_0) do
+		if iter_3_1.uid == arg_3_1 then
+			arg_3_0:selectCell(iter_3_0, arg_3_2)
 
 			break
 		end
 	end
 
-	if not slot2 then
+	if not arg_3_2 then
 		Activity191Controller.instance:dispatchEvent(Activity191Event.OnClickCollectionGroupItem)
 	end
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

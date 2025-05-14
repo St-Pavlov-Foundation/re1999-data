@@ -1,21 +1,21 @@
-module("modules.logic.weekwalk_2.view.WeekWalk_2HeroGroupHeroItem", package.seeall)
+﻿module("modules.logic.weekwalk_2.view.WeekWalk_2HeroGroupHeroItem", package.seeall)
 
-slot0 = class("WeekWalk_2HeroGroupHeroItem", HeroGroupHeroItem)
+local var_0_0 = class("WeekWalk_2HeroGroupHeroItem", HeroGroupHeroItem)
 
-function slot0.checkWeekWalkCd(slot0)
-	if slot0._heroMO ~= nil and slot0.monsterCO == nil then
-		if WeekWalk_2Model.instance:getCurMapHeroCd(slot0._heroMO.config.id) > 0 then
-			slot0._playDeathAnim = true
+function var_0_0.checkWeekWalkCd(arg_1_0)
+	if arg_1_0._heroMO ~= nil and arg_1_0.monsterCO == nil then
+		if WeekWalk_2Model.instance:getCurMapHeroCd(arg_1_0._heroMO.config.id) > 0 then
+			arg_1_0._playDeathAnim = true
 
-			slot0:playAnim("herogroup_hero_deal")
+			arg_1_0:playAnim("herogroup_hero_deal")
 
-			slot0.tweenid = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.5, slot0.setGrayFactor, nil, slot0)
+			arg_1_0.tweenid = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.5, arg_1_0.setGrayFactor, nil, arg_1_0)
 
-			return slot0._heroMO.id
+			return arg_1_0._heroMO.id
 		else
-			slot0._commonHeroCard:setGrayScale(false)
+			arg_1_0._commonHeroCard:setGrayScale(false)
 		end
 	end
 end
 
-return slot0
+return var_0_0

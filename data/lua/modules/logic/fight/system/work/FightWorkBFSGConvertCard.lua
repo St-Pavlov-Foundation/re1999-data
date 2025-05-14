@@ -1,26 +1,30 @@
-module("modules.logic.fight.system.work.FightWorkBFSGConvertCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkBFSGConvertCard", package.seeall)
 
-slot0 = class("FightWorkBFSGConvertCard", FightEffectBase)
+local var_0_0 = class("FightWorkBFSGConvertCard", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if not FightCardDataHelper.cardChangeIsMySide(arg_1_0.actEffectData) then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	if FightDataHelper.handCardMgr.handCard[slot0.actEffectData.effectNum] then
-		FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, slot2)
+	local var_1_0 = FightDataHelper.handCardMgr.handCard
+	local var_1_1 = arg_1_0.actEffectData.effectNum
+
+	if var_1_0[var_1_1] then
+		FightController.instance:dispatchEvent(FightEvent.RefreshOneHandCard, var_1_1)
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_2_0)
+	arg_2_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

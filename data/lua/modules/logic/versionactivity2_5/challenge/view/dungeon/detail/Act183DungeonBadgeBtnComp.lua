@@ -1,92 +1,99 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBadgeBtnComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBadgeBtnComp", package.seeall)
 
-slot0 = class("Act183DungeonBadgeBtnComp", Act183DungeonBaseComp)
-slot1 = {
+local var_0_0 = class("Act183DungeonBadgeBtnComp", Act183DungeonBaseComp)
+local var_0_1 = {
 	660,
 	-416
 }
-slot2 = {
+local var_0_2 = {
 	445,
 	-416
 }
-slot3 = {
+local var_0_3 = {
 	445,
 	-416
 }
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._btnbadge = gohelper.getClickWithDefaultAudio(slot0.go)
-	slot0._imagebadgebtn = gohelper.onceAddComponent(slot0.go, gohelper.Type_Image)
-	slot0._txtusebadgenum = gohelper.findChildText(slot0.go, "#txt_usebadgenum")
-	slot0._readyUseBadgeNum = 0
+	arg_1_0._btnbadge = gohelper.getClickWithDefaultAudio(arg_1_0.go)
+	arg_1_0._imagebadgebtn = gohelper.onceAddComponent(arg_1_0.go, gohelper.Type_Image)
+	arg_1_0._txtusebadgenum = gohelper.findChildText(arg_1_0.go, "#txt_usebadgenum")
+	arg_1_0._readyUseBadgeNum = 0
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateSelectBadgeNum, slot0._onUpdateSelectBadgeNum, slot0)
-	slot0._btnbadge:AddClickListener(slot0._btnbadgeOnClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateSelectBadgeNum, arg_2_0._onUpdateSelectBadgeNum, arg_2_0)
+	arg_2_0._btnbadge:AddClickListener(arg_2_0._btnbadgeOnClick, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnbadge:RemoveClickListener()
+function var_0_0.removeEventListeners(arg_3_0)
+	arg_3_0._btnbadge:RemoveClickListener()
 end
 
-function slot0._btnbadgeOnClick(slot0)
-	if slot0.mgr:getComp(Act183DungeonSelectBadgeComp) then
-		slot1:_onUpdateBadgeDetailVisible(true, slot0._readyUseBadgeNum)
+function var_0_0._btnbadgeOnClick(arg_4_0)
+	local var_4_0 = arg_4_0.mgr:getComp(Act183DungeonSelectBadgeComp)
+
+	if var_4_0 then
+		var_4_0:_onUpdateBadgeDetailVisible(true, arg_4_0._readyUseBadgeNum)
 	end
 
-	Act183Controller.instance:dispatchEvent(Act183Event.OnUpdateBadgeDetailVisible, true, slot0._readyUseBadgeNum)
+	Act183Controller.instance:dispatchEvent(Act183Event.OnUpdateBadgeDetailVisible, true, arg_4_0._readyUseBadgeNum)
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_5_0, arg_5_1)
+	var_0_0.super.updateInfo(arg_5_0, arg_5_1)
 
-	slot0._totalBadgeNum = Act183Model.instance:getActInfo() and slot2:getBadgeNum() or 0
-	slot0._useBadgeNum = slot0._episodeMo:getUseBadgeNum()
-	slot0._readyUseBadgeNum = slot0._useBadgeNum or 0
+	local var_5_0 = Act183Model.instance:getActInfo()
+
+	arg_5_0._totalBadgeNum = var_5_0 and var_5_0:getBadgeNum() or 0
+	arg_5_0._useBadgeNum = arg_5_0._episodeMo:getUseBadgeNum()
+	arg_5_0._readyUseBadgeNum = arg_5_0._useBadgeNum or 0
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._status ~= Act183Enum.EpisodeStatus.Locked and slot0._totalBadgeNum > 0 and slot0._groupType == Act183Enum.GroupType.NormalMain
+function var_0_0.checkIsVisible(arg_6_0)
+	return arg_6_0._status ~= Act183Enum.EpisodeStatus.Locked and arg_6_0._totalBadgeNum > 0 and arg_6_0._groupType == Act183Enum.GroupType.NormalMain
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
+function var_0_0.show(arg_7_0)
+	var_0_0.super.show(arg_7_0)
 
-	slot1 = uv1
+	local var_7_0 = var_0_3
+	local var_7_1 = arg_7_0.mgr:isCompVisible(Act183DungeonRepressBtnComp)
 
-	if slot0.mgr:isCompVisible(Act183DungeonRestartBtnComp) then
-		slot1 = slot0.mgr:isCompVisible(Act183DungeonRepressBtnComp) and uv2 or uv3
+	if arg_7_0.mgr:isCompVisible(Act183DungeonRestartBtnComp) then
+		var_7_0 = var_7_1 and var_0_1 or var_0_2
 	end
 
-	recthelper.setAnchor(slot0.tran, slot1[1], slot1[2])
-	slot0:_refreshBadgeNum()
+	recthelper.setAnchor(arg_7_0.tran, var_7_0[1], var_7_0[2])
+	arg_7_0:_refreshBadgeNum()
 end
 
-function slot0._refreshBadgeNum(slot0)
-	slot1 = slot0._readyUseBadgeNum and slot0._readyUseBadgeNum > 0
+function var_0_0._refreshBadgeNum(arg_8_0)
+	local var_8_0 = arg_8_0._readyUseBadgeNum and arg_8_0._readyUseBadgeNum > 0
 
-	gohelper.setActive(slot0._txtusebadgenum.gameObject, slot1)
+	gohelper.setActive(arg_8_0._txtusebadgenum.gameObject, var_8_0)
 
-	slot0._txtusebadgenum.text = slot0._readyUseBadgeNum
+	arg_8_0._txtusebadgenum.text = arg_8_0._readyUseBadgeNum
 
-	UISpriteSetMgr.instance:setChallengeSprite(slot0._imagebadgebtn, slot1 and "v2a5_challenge_dungeon_iconbtn2" or "v2a5_challenge_dungeon_iconbtn1")
+	local var_8_1 = var_8_0 and "v2a5_challenge_dungeon_iconbtn2" or "v2a5_challenge_dungeon_iconbtn1"
+
+	UISpriteSetMgr.instance:setChallengeSprite(arg_8_0._imagebadgebtn, var_8_1)
 end
 
-function slot0._onUpdateSelectBadgeNum(slot0, slot1, slot2)
-	if slot0._episodeId ~= slot1 then
+function var_0_0._onUpdateSelectBadgeNum(arg_9_0, arg_9_1, arg_9_2)
+	if arg_9_0._episodeId ~= arg_9_1 then
 		return
 	end
 
-	slot0._readyUseBadgeNum = slot2 or 0
+	arg_9_0._readyUseBadgeNum = arg_9_2 or 0
 
-	slot0:refresh()
+	arg_9_0:refresh()
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_10_0)
+	var_0_0.super.onDestroy(arg_10_0)
 end
 
-return slot0
+return var_0_0

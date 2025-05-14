@@ -1,8 +1,8 @@
-module("modules.logic.summon.config.SummonConfig", package.seeall)
+﻿module("modules.logic.summon.config.SummonConfig", package.seeall)
 
-slot0 = class("SummonConfig", BaseConfig)
+local var_0_0 = class("SummonConfig", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"summon_pool",
 		"summon",
@@ -13,81 +13,88 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_2_0)
+	return
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot1 == "summon_equip_detail" then
-		slot0:_initEquipDetails()
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	if arg_3_1 == "summon_equip_detail" then
+		arg_3_0:_initEquipDetails()
 	end
 end
 
-function slot0._initEquipDetails(slot0)
-	slot0._equipPoolDict = {}
+function var_0_0._initEquipDetails(arg_4_0)
+	arg_4_0._equipPoolDict = {}
 
-	for slot5, slot6 in ipairs(lua_summon_equip_detail.configList) do
-		slot0._equipPoolDict[slot6.poolId] = slot0._equipPoolDict[slot6.poolId] or {}
-		slot0._equipPoolDict[slot6.poolId][slot6.location] = slot6
+	local var_4_0 = lua_summon_equip_detail.configList
+
+	for iter_4_0, iter_4_1 in ipairs(var_4_0) do
+		arg_4_0._equipPoolDict[iter_4_1.poolId] = arg_4_0._equipPoolDict[iter_4_1.poolId] or {}
+		arg_4_0._equipPoolDict[iter_4_1.poolId][iter_4_1.location] = iter_4_1
 	end
 end
 
-function slot0.getSummonPoolList(slot0)
+function var_0_0.getSummonPoolList(arg_5_0)
 	return lua_summon_pool.configList
 end
 
-function slot0.getSummon(slot0, slot1)
-	return lua_summon.configDict[slot1]
+function var_0_0.getSummon(arg_6_0, arg_6_1)
+	return lua_summon.configDict[arg_6_1]
 end
 
-function slot0.getCharacterDetailConfig(slot0, slot1)
-	return lua_summon_character.configDict[slot1]
+function var_0_0.getCharacterDetailConfig(arg_7_0, arg_7_1)
+	return lua_summon_character.configDict[arg_7_1]
 end
 
-function slot0.getPoolDetailConfig(slot0, slot1)
-	return lua_summon_pool_detail.configDict[slot1]
+function var_0_0.getPoolDetailConfig(arg_8_0, arg_8_1)
+	return lua_summon_pool_detail.configDict[arg_8_1]
 end
 
-function slot0.getPoolDetailConfigList(slot0)
+function var_0_0.getPoolDetailConfigList(arg_9_0)
 	return lua_summon_pool_detail.configList
 end
 
-function slot0.getEquipDetailByPoolId(slot0, slot1)
-	return slot0._equipPoolDict[slot1]
+function var_0_0.getEquipDetailByPoolId(arg_10_0, arg_10_1)
+	return arg_10_0._equipPoolDict[arg_10_1]
 end
 
-function slot0.getSummonPool(slot0, slot1)
-	return lua_summon_pool.configDict[slot1]
+function var_0_0.getSummonPool(arg_11_0, arg_11_1)
+	return lua_summon_pool.configDict[arg_11_1]
 end
 
-function slot0.getSummonLuckyBag(slot0, slot1)
-	if not slot0._pool2luckyBagMap then
-		slot0._pool2luckyBagMap = {}
+function var_0_0.getSummonLuckyBag(arg_12_0, arg_12_1)
+	if not arg_12_0._pool2luckyBagMap then
+		arg_12_0._pool2luckyBagMap = {}
 	end
 
-	if not slot0._pool2luckyBagMap[slot1] then
-		slot2 = slot2 or {}
+	local var_12_0 = arg_12_0._pool2luckyBagMap[arg_12_1]
 
-		if uv0.instance:getSummon(slot1) then
-			for slot7, slot8 in pairs(slot3) do
-				if not string.nilorempty(slot8.luckyBagId) then
-					tabletool.addValues(slot2, string.splitToNumber(slot8.luckyBagId, "#"))
+	if not var_12_0 then
+		var_12_0 = var_12_0 or {}
+
+		local var_12_1 = var_0_0.instance:getSummon(arg_12_1)
+
+		if var_12_1 then
+			for iter_12_0, iter_12_1 in pairs(var_12_1) do
+				if not string.nilorempty(iter_12_1.luckyBagId) then
+					tabletool.addValues(var_12_0, string.splitToNumber(iter_12_1.luckyBagId, "#"))
 				end
 			end
 		end
 
-		slot0._pool2luckyBagMap[slot1] = slot2
+		arg_12_0._pool2luckyBagMap[arg_12_1] = var_12_0
 	end
 
-	return slot2
+	return var_12_0
 end
 
-function slot0.getLuckyBag(slot0, slot1, slot2)
-	if lua_lucky_bag_heroes.configDict[slot1] then
-		return lua_lucky_bag_heroes.configDict[slot1][slot2]
+function var_0_0.getLuckyBag(arg_13_0, arg_13_1, arg_13_2)
+	if lua_lucky_bag_heroes.configDict[arg_13_1] then
+		return lua_lucky_bag_heroes.configDict[arg_13_1][arg_13_2]
 	end
 end
 
-function slot0.getLuckyBagHeroIds(slot0, slot1, slot2)
+function var_0_0.getLuckyBagHeroIds(arg_14_0, arg_14_1, arg_14_2)
 	if VersionValidator.instance:isInReviewing() then
 		if #lua_app_include.configList > 0 then
 			return lua_app_include.configList[1].character
@@ -96,102 +103,128 @@ function slot0.getLuckyBagHeroIds(slot0, slot1, slot2)
 		end
 	end
 
-	if not slot0._luckyBagHerosMap then
-		slot0._luckyBagHerosMap = {}
+	if not arg_14_0._luckyBagHerosMap then
+		arg_14_0._luckyBagHerosMap = {}
 	end
 
-	if not slot0._luckyBagHerosMap[slot1] then
-		slot0._luckyBagHerosMap[slot1] = {}
+	if not arg_14_0._luckyBagHerosMap[arg_14_1] then
+		arg_14_0._luckyBagHerosMap[arg_14_1] = {}
 	end
 
-	if not slot0._luckyBagHerosMap[slot1][slot2] then
-		if slot0:getLuckyBag(slot1, slot2) then
-			slot3 = string.splitToNumber(slot4.heroChoices, "#")
+	local var_14_0 = arg_14_0._luckyBagHerosMap[arg_14_1][arg_14_2]
+
+	if not var_14_0 then
+		local var_14_1 = arg_14_0:getLuckyBag(arg_14_1, arg_14_2)
+
+		if var_14_1 then
+			var_14_0 = string.splitToNumber(var_14_1.heroChoices, "#")
 		else
-			logError("summon luckyBag config not found, id = " .. tostring(slot2))
+			logError("summon luckyBag config not found, id = " .. tostring(arg_14_2))
 
-			slot3 = {}
+			var_14_0 = {}
 		end
 
-		slot0._luckyBagHerosMap[slot1][slot2] = slot3
+		arg_14_0._luckyBagHerosMap[arg_14_1][arg_14_2] = var_14_0
 	end
 
-	return slot3
+	return var_14_0
 end
 
-function slot0.getValidPoolList(slot0)
-	slot2 = {}
+function var_0_0.getValidPoolList(arg_15_0)
+	local var_15_0 = arg_15_0:getSummonPoolList()
+	local var_15_1 = {}
 
-	for slot6, slot7 in ipairs(slot0:getSummonPoolList()) do
-		if not string.nilorempty(slot7.customClz) and not string.nilorempty(slot7.prefabPath) then
-			table.insert(slot2, slot7)
+	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
+		if not string.nilorempty(iter_15_1.customClz) and not string.nilorempty(iter_15_1.prefabPath) then
+			table.insert(var_15_1, iter_15_1)
 		end
 	end
 
-	table.sort(slot2, function (slot0, slot1)
-		if slot0.priority == slot1.priority then
-			return slot0.id < slot1.id
+	table.sort(var_15_1, function(arg_16_0, arg_16_1)
+		if arg_16_0.priority == arg_16_1.priority then
+			return arg_16_0.id < arg_16_1.id
 		end
 
-		return slot1.priority < slot0.priority
+		return arg_16_0.priority > arg_16_1.priority
 	end)
 
-	return slot2
+	return var_15_1
 end
 
-function slot0.getSummonSSRTimes(slot0)
-	if slot0 then
-		uv0.instance.ssrTimesMap = uv0.instance.ssrTimesMap or {}
+function var_0_0.getSummonSSRTimes(arg_17_0)
+	if arg_17_0 then
+		var_0_0.instance.ssrTimesMap = var_0_0.instance.ssrTimesMap or {}
 
-		if not uv0.instance.ssrTimesMap[slot0.id] and #string.split(slot0.awardTime, "|") >= 2 then
-			uv0.instance.ssrTimesMap[slot0.id] = tonumber(slot2[2])
+		local var_17_0 = var_0_0.instance.ssrTimesMap[arg_17_0.id]
+
+		if not var_17_0 then
+			local var_17_1 = string.split(arg_17_0.awardTime, "|")
+
+			if #var_17_1 >= 2 then
+				var_17_0 = tonumber(var_17_1[2])
+				var_0_0.instance.ssrTimesMap[arg_17_0.id] = var_17_0
+			end
 		end
 
-		return slot1
+		return var_17_0
 	end
 
 	return nil
 end
 
-function slot0.getRewardItems(slot0, slot1, slot2, slot3)
-	slot5 = nil
+function var_0_0.getRewardItems(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
+	local var_18_0 = {}
+	local var_18_1
+	local var_18_2 = HeroConfig.instance:getHeroCO(arg_18_1)
 
-	if slot2 <= 0 then
-		slot5 = HeroConfig.instance:getHeroCO(slot1).firstItem
+	if arg_18_2 <= 0 then
+		var_18_1 = var_18_2.firstItem
 
-		if slot3 then
-			table.insert({}, {
+		if arg_18_3 then
+			local var_18_3 = {
 				type = MaterialEnum.MaterialType.Hero,
-				id = slot1,
-				quantity = 1
-			})
+				id = arg_18_1
+			}
+
+			var_18_3.quantity = 1
+
+			table.insert(var_18_0, var_18_3)
 		end
+	elseif arg_18_2 < CommonConfig.instance:getConstNum(ConstEnum.HeroDuplicateGetCount) - 1 then
+		var_18_1 = var_18_2.duplicateItem
 	else
-		slot5 = (slot2 >= CommonConfig.instance:getConstNum(ConstEnum.HeroDuplicateGetCount) - 1 or slot6.duplicateItem) and slot6.duplicateItem2
+		var_18_1 = var_18_2.duplicateItem2
 	end
 
-	if not string.nilorempty(slot5) then
-		for slot11, slot12 in ipairs(string.split(slot5, "|")) do
-			slot14 = string.split(slot12, "#")
+	if not string.nilorempty(var_18_1) then
+		local var_18_4 = string.split(var_18_1, "|")
 
-			table.insert(slot4, {
-				type = tonumber(slot14[1]),
-				id = tonumber(slot14[2]),
-				quantity = tonumber(slot14[3])
-			})
+		for iter_18_0, iter_18_1 in ipairs(var_18_4) do
+			local var_18_5 = {}
+			local var_18_6 = string.split(iter_18_1, "#")
+
+			var_18_5.type = tonumber(var_18_6[1])
+			var_18_5.id = tonumber(var_18_6[2])
+			var_18_5.quantity = tonumber(var_18_6[3])
+
+			table.insert(var_18_0, var_18_5)
 		end
 	end
 
-	return slot4
+	return var_18_0
 end
 
-function slot0.canShowSingleFree(slot0, slot1)
-	return slot0:getSummonPool(slot1) ~= nil and slot2.totalFreeCount ~= nil and slot2.totalFreeCount > 0
+function var_0_0.canShowSingleFree(arg_19_0, arg_19_1)
+	local var_19_0 = arg_19_0:getSummonPool(arg_19_1)
+
+	return var_19_0 ~= nil and var_19_0.totalFreeCount ~= nil and var_19_0.totalFreeCount > 0
 end
 
-function slot0.isLuckyBagPoolExist(slot0)
-	for slot5, slot6 in pairs(slot0:getSummonPoolList()) do
-		if slot6.type == SummonEnum.Type.LuckyBag then
+function var_0_0.isLuckyBagPoolExist(arg_20_0)
+	local var_20_0 = arg_20_0:getSummonPoolList()
+
+	for iter_20_0, iter_20_1 in pairs(var_20_0) do
+		if iter_20_1.type == SummonEnum.Type.LuckyBag then
 			return true
 		end
 	end
@@ -199,42 +232,48 @@ function slot0.isLuckyBagPoolExist(slot0)
 	return false
 end
 
-function slot0.poolIsLuckyBag(slot0)
-	if uv0.instance:getSummonPool(slot0) then
-		return uv0.poolTypeIsLuckyBag(slot1.type)
+function var_0_0.poolIsLuckyBag(arg_21_0)
+	local var_21_0 = var_0_0.instance:getSummonPool(arg_21_0)
+
+	if var_21_0 then
+		return var_0_0.poolTypeIsLuckyBag(var_21_0.type)
 	end
 
 	return false
 end
 
-function slot0.poolTypeIsLuckyBag(slot0)
-	return slot0 == SummonEnum.Type.LuckyBag
+function var_0_0.poolTypeIsLuckyBag(arg_22_0)
+	return arg_22_0 == SummonEnum.Type.LuckyBag
 end
 
-function slot0.getSummonDetailIdByHeroId(slot0, slot1)
-	for slot5, slot6 in ipairs(lua_summon_character.configList) do
-		if slot6.heroId == slot1 then
-			return slot6.id
+function var_0_0.getSummonDetailIdByHeroId(arg_23_0, arg_23_1)
+	for iter_23_0, iter_23_1 in ipairs(lua_summon_character.configList) do
+		if iter_23_1.heroId == arg_23_1 then
+			return iter_23_1.id
 		end
 	end
 end
 
-function slot0.isStrongCustomChoice(slot0, slot1)
-	if uv0.instance:getSummonPool(slot1) then
-		return slot2.type == SummonEnum.Type.StrongCustomOnePick
+function var_0_0.isStrongCustomChoice(arg_24_0, arg_24_1)
+	local var_24_0 = var_0_0.instance:getSummonPool(arg_24_1)
+
+	if var_24_0 then
+		return var_24_0.type == SummonEnum.Type.StrongCustomOnePick
 	end
 
 	return false
 end
 
-function slot0.getStrongCustomChoiceIds(slot0, slot1)
-	if uv0.instance:getSummonPool(slot1) and slot2.type == SummonEnum.Type.StrongCustomOnePick then
-		return string.splitToNumber(slot2.param, "#")
+function var_0_0.getStrongCustomChoiceIds(arg_25_0, arg_25_1)
+	local var_25_0 = var_0_0.instance:getSummonPool(arg_25_1)
+
+	if var_25_0 and var_25_0.type == SummonEnum.Type.StrongCustomOnePick then
+		return string.splitToNumber(var_25_0.param, "#")
 	end
 
 	return nil
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

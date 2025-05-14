@@ -1,117 +1,122 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6StatHelper", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6StatHelper", package.seeall)
 
-slot0 = class("LengZhou6StatHelper")
+local var_0_0 = class("LengZhou6StatHelper")
 
-function slot0.ctor(slot0)
-	slot0._episodeId = nil
-	slot0._endless_library_round = 0
-	slot0._result = nil
-	slot0._beginTime = 0
-	slot0._useRound = 0
-	slot0._playerHp = 0
-	slot0._enemyHp = 0
-	slot0._skill_ids = {}
-	slot0._skill_usages = {}
-	slot0._isEndless = false
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._episodeId = nil
+	arg_1_0._endless_library_round = 0
+	arg_1_0._result = nil
+	arg_1_0._beginTime = 0
+	arg_1_0._useRound = 0
+	arg_1_0._playerHp = 0
+	arg_1_0._enemyHp = 0
+	arg_1_0._skill_ids = {}
+	arg_1_0._skill_usages = {}
+	arg_1_0._isEndless = false
 end
 
-function slot0.enterGame(slot0)
-	slot0._episodeId = LengZhou6Model.instance:getCurEpisodeId()
+function var_0_0.enterGame(arg_2_0)
+	arg_2_0._episodeId = LengZhou6Model.instance:getCurEpisodeId()
 
-	if LengZhou6Model.instance:getEpisodeInfoMo(slot0._episodeId) then
-		slot0._isEndless = slot1:isEndlessEpisode()
+	local var_2_0 = LengZhou6Model.instance:getEpisodeInfoMo(arg_2_0._episodeId)
+
+	if var_2_0 then
+		arg_2_0._isEndless = var_2_0:isEndlessEpisode()
 	end
 
-	slot0._beginTime = os.time()
-	slot0._useRound = 0
+	arg_2_0._beginTime = os.time()
+	arg_2_0._useRound = 0
 
-	tabletool.clear(slot0._skill_ids)
-	tabletool.clear(slot0._skill_usages)
+	tabletool.clear(arg_2_0._skill_ids)
+	tabletool.clear(arg_2_0._skill_usages)
 end
 
-function slot0.setGameResult(slot0, slot1)
-	slot0._result = slot1
+function var_0_0.setGameResult(arg_3_0, arg_3_1)
+	arg_3_0._result = arg_3_1
 end
 
-function slot0.updateRound(slot0)
-	slot0._useRound = slot0._useRound + 1
+function var_0_0.updateRound(arg_4_0)
+	arg_4_0._useRound = arg_4_0._useRound + 1
 end
 
-function slot0.addUseSkillId(slot0, slot1)
-	if slot1 == nil then
+function var_0_0.addUseSkillId(arg_5_0, arg_5_1)
+	if arg_5_1 == nil then
 		return
 	end
 
-	slot2 = true
+	local var_5_0 = true
 
-	for slot6, slot7 in ipairs(slot0._skill_ids) do
-		if slot7 == slot1 then
-			slot2 = false
+	for iter_5_0, iter_5_1 in ipairs(arg_5_0._skill_ids) do
+		if iter_5_1 == arg_5_1 then
+			var_5_0 = false
 
 			break
 		end
 	end
 
-	if slot2 then
-		table.insert(slot0._skill_ids, slot1)
+	if var_5_0 then
+		table.insert(arg_5_0._skill_ids, arg_5_1)
 	end
 end
 
-function slot0.addUseSkillInfo(slot0, slot1)
-	if slot1 == nil then
+function var_0_0.addUseSkillInfo(arg_6_0, arg_6_1)
+	if arg_6_1 == nil then
 		return
 	end
 
-	slot2 = true
+	local var_6_0 = true
 
-	for slot6 = 1, #slot0._skill_usages do
-		if slot0._skill_usages[slot6].skill_id == slot1 then
-			slot7.skill_num = slot7.skill_num + 1
-			slot2 = false
+	for iter_6_0 = 1, #arg_6_0._skill_usages do
+		local var_6_1 = arg_6_0._skill_usages[iter_6_0]
+
+		if var_6_1.skill_id == arg_6_1 then
+			var_6_1.skill_num = var_6_1.skill_num + 1
+			var_6_0 = false
 
 			break
 		end
 	end
 
-	if slot2 then
-		table.insert(slot0._skill_usages, {
+	if var_6_0 then
+		table.insert(arg_6_0._skill_usages, {
 			skill_num = 1,
-			skill_id = slot1
+			skill_id = arg_6_1
 		})
 	end
 end
 
-function slot0.setPlayerAndEnemyHp(slot0, slot1, slot2)
-	slot0._playerHp = slot1
-	slot0._enemyHp = slot2
+function var_0_0.setPlayerAndEnemyHp(arg_7_0, arg_7_1, arg_7_2)
+	arg_7_0._playerHp = arg_7_1
+	arg_7_0._enemyHp = arg_7_2
 end
 
-function slot0.sendGameExit(slot0)
-	slot2 = LengZhou6GameModel.instance:getEnemy()
+function var_0_0.sendGameExit(arg_8_0)
+	local var_8_0 = LengZhou6GameModel.instance:getPlayer()
+	local var_8_1 = LengZhou6GameModel.instance:getEnemy()
 
-	if LengZhou6GameModel.instance:getPlayer() and slot2 then
-		slot0:setPlayerAndEnemyHp(slot1:getHp(), slot2:getHp())
+	if var_8_0 and var_8_1 then
+		arg_8_0:setPlayerAndEnemyHp(var_8_0:getHp(), var_8_1:getHp())
 	end
 
-	slot3 = ""
+	local var_8_2 = ""
 
-	if slot0._isEndless then
-		slot3 = tostring(LengZhou6GameModel.instance:getEndLessModelLayer())
+	if arg_8_0._isEndless then
+		var_8_2 = tostring(LengZhou6GameModel.instance:getEndLessModelLayer())
 	end
 
 	StatController.instance:track(StatEnum.EventName.ExitHissabethActivity, {
-		[StatEnum.EventProperties.LengZhou6_EpisodeId] = tostring(slot0._episodeId),
-		[StatEnum.EventProperties.LengZhou6_EndlessLibraryRound] = slot3,
-		[StatEnum.EventProperties.LengZhou6_Result] = tostring(slot0._result),
-		[StatEnum.EventProperties.LengZhou6_UseTime] = os.time() - slot0._beginTime,
-		[StatEnum.EventProperties.LengZhou6_TotalRound] = slot0._useRound,
-		[StatEnum.EventProperties.LengZhou6_OurRemainingHP] = slot0._playerHp,
-		[StatEnum.EventProperties.LengZhou6_EnemyRemainingHP] = slot0._enemyHp,
-		[StatEnum.EventProperties.LengZhou6_SkillId] = slot0._skill_ids,
-		[StatEnum.EventProperties.LengZhou6_SkillUsage] = slot0._skill_usages
+		[StatEnum.EventProperties.LengZhou6_EpisodeId] = tostring(arg_8_0._episodeId),
+		[StatEnum.EventProperties.LengZhou6_EndlessLibraryRound] = var_8_2,
+		[StatEnum.EventProperties.LengZhou6_Result] = tostring(arg_8_0._result),
+		[StatEnum.EventProperties.LengZhou6_UseTime] = os.time() - arg_8_0._beginTime,
+		[StatEnum.EventProperties.LengZhou6_TotalRound] = arg_8_0._useRound,
+		[StatEnum.EventProperties.LengZhou6_OurRemainingHP] = arg_8_0._playerHp,
+		[StatEnum.EventProperties.LengZhou6_EnemyRemainingHP] = arg_8_0._enemyHp,
+		[StatEnum.EventProperties.LengZhou6_SkillId] = arg_8_0._skill_ids,
+		[StatEnum.EventProperties.LengZhou6_SkillUsage] = arg_8_0._skill_usages
 	})
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

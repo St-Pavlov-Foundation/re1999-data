@@ -1,11 +1,11 @@
-module("modules.logic.fight.model.data.FightPowerInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightPowerInfoData", package.seeall)
 
-slot0 = FightDataClass("FightPowerInfoData")
+local var_0_0 = FightDataClass("FightPowerInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.powerId = slot1.powerId
-	slot0.num = slot1.num
-	slot0.max = slot1.max
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.powerId = arg_1_1.powerId
+	arg_1_0.num = arg_1_1.num
+	arg_1_0.max = arg_1_1.max
 end
 
-return slot0
+return var_0_0

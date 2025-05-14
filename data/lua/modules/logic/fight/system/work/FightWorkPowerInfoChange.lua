@@ -1,10 +1,13 @@
-module("modules.logic.fight.system.work.FightWorkPowerInfoChange", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkPowerInfoChange", package.seeall)
 
-slot0 = class("FightWorkPowerInfoChange", FightEffectBase)
+local var_0_0 = class("FightWorkPowerInfoChange", FightEffectBase)
 
-function slot0.onStart(slot0)
-	slot0:com_sendFightEvent(FightEvent.PowerInfoChange, slot0.actEffectData.targetId, slot0.actEffectData.powerInfo.powerId)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0.actEffectData.targetId
+	local var_1_1 = arg_1_0.actEffectData.powerInfo.powerId
+
+	arg_1_0:com_sendFightEvent(FightEvent.PowerInfoChange, var_1_0, var_1_1)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

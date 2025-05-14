@@ -1,216 +1,232 @@
-module("modules.logic.tower.model.TowerAssistBossMo", package.seeall)
+﻿module("modules.logic.tower.model.TowerAssistBossMo", package.seeall)
 
-slot0 = pureTable("TowerAssistBossMo")
+local var_0_0 = pureTable("TowerAssistBossMo")
 
-function slot0.init(slot0, slot1)
-	slot0.id = slot1
-	slot0.level = 0
-	slot0.talentPoint = 0
-	slot0.useTalentPlan = 1
-	slot0.customPlanCount = 1
-	slot0.trialLevel = 0
-	slot0.trialTalentPlan = 0
-	slot0.isTemp = false
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.id = arg_1_1
+	arg_1_0.level = 0
+	arg_1_0.talentPoint = 0
+	arg_1_0.useTalentPlan = 1
+	arg_1_0.customPlanCount = 1
+	arg_1_0.trialLevel = 0
+	arg_1_0.trialTalentPlan = 0
+	arg_1_0.isTemp = false
 end
 
-function slot0.setTrialInfo(slot0, slot1, slot2)
-	slot0.trialLevel = slot1
-	slot0.trialTalentPlan = slot2
+function var_0_0.setTrialInfo(arg_2_0, arg_2_1, arg_2_2)
+	arg_2_0.trialLevel = arg_2_1
+	arg_2_0.trialTalentPlan = arg_2_2
 end
 
-function slot0.onTowerActiveTalent(slot0, slot1)
-	slot0:addTalentId(slot1.talentId)
+function var_0_0.onTowerActiveTalent(arg_3_0, arg_3_1)
+	arg_3_0:addTalentId(arg_3_1.talentId)
 
-	slot0.talentPoint = slot1.talentPoint
-	slot0.talentPlanDict[slot0.useTalentPlan].talentPoint = slot0.talentPoint
+	arg_3_0.talentPoint = arg_3_1.talentPoint
+	arg_3_0.talentPlanDict[arg_3_0.useTalentPlan].talentPoint = arg_3_0.talentPoint
 end
 
-function slot0.onTowerResetTalent(slot0, slot1)
-	slot0.talentPoint = slot1.talentPoint
+function var_0_0.onTowerResetTalent(arg_4_0, arg_4_1)
+	arg_4_0.talentPoint = arg_4_1.talentPoint
 
-	if slot1.talentId == 0 then
-		slot0:initTalentIds()
+	if arg_4_1.talentId == 0 then
+		arg_4_0:initTalentIds()
 
-		slot0.talentPlanDict[slot0.useTalentPlan].talentIds = slot0.talentIdList
-		slot0.talentPlanDict[slot0.useTalentPlan].talentPoint = slot0.talentPoint
+		arg_4_0.talentPlanDict[arg_4_0.useTalentPlan].talentIds = arg_4_0.talentIdList
+		arg_4_0.talentPlanDict[arg_4_0.useTalentPlan].talentPoint = arg_4_0.talentPoint
 	else
-		slot0:removeTalentId(slot1.talentId)
+		arg_4_0:removeTalentId(arg_4_1.talentId)
 	end
 end
 
-function slot0.updateInfo(slot0, slot1)
-	slot0.level = slot1.level
-	slot0.useTalentPlan = slot1.useTalentPlan or 1
+function var_0_0.updateInfo(arg_5_0, arg_5_1)
+	arg_5_0.level = arg_5_1.level
+	arg_5_0.useTalentPlan = arg_5_1.useTalentPlan or 1
 
-	slot0:initTalentPlanInfos(slot1.talentPlans)
-	slot0:refreshTalent()
+	arg_5_0:initTalentPlanInfos(arg_5_1.talentPlans)
+	arg_5_0:refreshTalent()
 end
 
-function slot0.refreshTalent(slot0)
-	slot0:initCurTalentInfo()
-	slot0:initTalentIds(slot0.talentIds)
+function var_0_0.refreshTalent(arg_6_0)
+	arg_6_0:initCurTalentInfo()
+	arg_6_0:initTalentIds(arg_6_0.talentIds)
 end
 
-function slot0.initCurTalentInfo(slot0)
-	slot0.customPlanCount = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount))
+function var_0_0.initCurTalentInfo(arg_7_0)
+	local var_7_0 = arg_7_0.trialTalentPlan > 0 and arg_7_0.trialTalentPlan or arg_7_0.useTalentPlan
 
-	if (slot0.trialTalentPlan > 0 and slot0.trialTalentPlan or slot0.useTalentPlan) <= slot0.customPlanCount then
-		slot0.talentIds = slot0.talentPlanDict and slot0.talentPlanDict[slot1].talentIds or {}
-		slot0.talentPoint = slot0.talentPlanDict and slot0.talentPlanDict[slot1].talentPoint or 0
+	arg_7_0.customPlanCount = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount))
+
+	if var_7_0 <= arg_7_0.customPlanCount then
+		arg_7_0.talentIds = arg_7_0.talentPlanDict and arg_7_0.talentPlanDict[var_7_0].talentIds or {}
+		arg_7_0.talentPoint = arg_7_0.talentPlanDict and arg_7_0.talentPlanDict[var_7_0].talentPoint or 0
 	else
-		slot0.talentIds = TowerConfig.instance:getTalentPlanNodeIds(slot0.id, slot0.trialTalentPlan > 0 and slot0.trialTalentPlan or slot0.useTalentPlan, slot0.trialLevel > 0 and slot0.trialLevel or slot0.level)
+		arg_7_0.talentIds = TowerConfig.instance:getTalentPlanNodeIds(arg_7_0.id, arg_7_0.trialTalentPlan > 0 and arg_7_0.trialTalentPlan or arg_7_0.useTalentPlan, arg_7_0.trialLevel > 0 and arg_7_0.trialLevel or arg_7_0.level)
 
-		slot0:initTalentIds(slot0.talentIds)
+		local var_7_1 = TowerConfig.instance:getAllTalentPoint(arg_7_0.id, arg_7_0.trialLevel > 0 and arg_7_0.trialLevel or arg_7_0.level)
 
-		slot0.talentPoint = TowerConfig.instance:getAllTalentPoint(slot0.id, slot0.trialLevel > 0 and slot0.trialLevel or slot0.level) - slot0:getCurCostTalentPoint()
+		arg_7_0:initTalentIds(arg_7_0.talentIds)
+
+		arg_7_0.talentPoint = var_7_1 - arg_7_0:getCurCostTalentPoint()
 	end
 end
 
-function slot0.initTalentIds(slot0, slot1)
-	slot0.talentIdDict = {}
-	slot0.talentIdList = {}
-	slot0.talentIdCount = 0
+function var_0_0.initTalentIds(arg_8_0, arg_8_1)
+	arg_8_0.talentIdDict = {}
+	arg_8_0.talentIdList = {}
+	arg_8_0.talentIdCount = 0
 
-	if slot1 then
-		for slot5 = 1, #slot1 do
-			slot0:addTalentId(slot1[slot5])
+	if arg_8_1 then
+		for iter_8_0 = 1, #arg_8_1 do
+			arg_8_0:addTalentId(arg_8_1[iter_8_0])
 		end
 	end
 end
 
-function slot0.addTalentId(slot0, slot1)
-	if not slot1 or slot0:isActiveTalent(slot1) then
+function var_0_0.addTalentId(arg_9_0, arg_9_1)
+	if not arg_9_1 or arg_9_0:isActiveTalent(arg_9_1) then
 		return
 	end
 
-	slot0.talentIdCount = slot0.talentIdCount + 1
-	slot0.talentIdDict[slot1] = 1
-	slot0.talentIdList[slot0.talentIdCount] = slot1
+	arg_9_0.talentIdCount = arg_9_0.talentIdCount + 1
+	arg_9_0.talentIdDict[arg_9_1] = 1
+	arg_9_0.talentIdList[arg_9_0.talentIdCount] = arg_9_1
 
-	if slot0.talentPlanDict and slot0.useTalentPlan <= slot0.customPlanCount then
-		slot0.talentPlanDict[slot0.useTalentPlan].talentIds = slot0.talentIdList
+	if arg_9_0.talentPlanDict and arg_9_0.useTalentPlan <= arg_9_0.customPlanCount then
+		arg_9_0.talentPlanDict[arg_9_0.useTalentPlan].talentIds = arg_9_0.talentIdList
 	end
 end
 
-function slot0.removeTalentId(slot0, slot1)
-	if not slot1 or not slot0:isActiveTalent(slot1) then
+function var_0_0.removeTalentId(arg_10_0, arg_10_1)
+	if not arg_10_1 or not arg_10_0:isActiveTalent(arg_10_1) then
 		return
 	end
 
-	slot0.talentIdCount = slot0.talentIdCount - 1
-	slot0.talentIdDict[slot1] = nil
+	arg_10_0.talentIdCount = arg_10_0.talentIdCount - 1
+	arg_10_0.talentIdDict[arg_10_1] = nil
 
-	tabletool.removeValue(slot0.talentIdList, slot1)
+	tabletool.removeValue(arg_10_0.talentIdList, arg_10_1)
 
-	if slot0.useTalentPlan <= slot0.customPlanCount then
-		slot0.talentPlanDict[slot0.useTalentPlan].talentIds = slot0.talentIdList
+	if arg_10_0.useTalentPlan <= arg_10_0.customPlanCount then
+		arg_10_0.talentPlanDict[arg_10_0.useTalentPlan].talentIds = arg_10_0.talentIdList
 	end
 end
 
-function slot0.isActiveTalent(slot0, slot1)
-	return slot0.talentIdDict[slot1] ~= nil
+function var_0_0.isActiveTalent(arg_11_0, arg_11_1)
+	return arg_11_0.talentIdDict[arg_11_1] ~= nil
 end
 
-function slot0.getTalentPoint(slot0)
-	return slot0.talentPoint
+function var_0_0.getTalentPoint(arg_12_0)
+	return arg_12_0.talentPoint
 end
 
-function slot0.getTalentTree(slot0)
-	if not slot0.talentTree then
-		slot0.talentTree = TowerTalentTree.New()
+function var_0_0.getTalentTree(arg_13_0)
+	if not arg_13_0.talentTree then
+		arg_13_0.talentTree = TowerTalentTree.New()
 
-		slot0.talentTree:initTree(slot0, TowerConfig.instance:getAssistTalentConfig().configDict[slot0.id])
+		local var_13_0 = TowerConfig.instance:getAssistTalentConfig().configDict[arg_13_0.id]
+
+		arg_13_0.talentTree:initTree(arg_13_0, var_13_0)
 	end
 
-	return slot0.talentTree
+	return arg_13_0.talentTree
 end
 
-function slot0.getTalentActiveCount(slot0)
-	return slot0:getCurCostTalentPoint(), slot0.talentPoint
+function var_0_0.getTalentActiveCount(arg_14_0)
+	return arg_14_0:getCurCostTalentPoint(), arg_14_0.talentPoint
 end
 
-function slot0.getCurCostTalentPoint(slot0)
-	for slot5, slot6 in ipairs(slot0.talentIdList) do
-		slot1 = 0 + TowerConfig.instance:getAssistTalentConfigById(slot0.id, slot6).consume
+function var_0_0.getCurCostTalentPoint(arg_15_0)
+	local var_15_0 = 0
+
+	for iter_15_0, iter_15_1 in ipairs(arg_15_0.talentIdList) do
+		var_15_0 = var_15_0 + TowerConfig.instance:getAssistTalentConfigById(arg_15_0.id, iter_15_1).consume
 	end
 
-	return slot1
+	return var_15_0
 end
 
-function slot0.hasTalentCanActive(slot0)
-	if slot0.customPlanCount < slot0.useTalentPlan then
+function var_0_0.hasTalentCanActive(arg_16_0)
+	if arg_16_0.useTalentPlan > arg_16_0.customPlanCount then
 		return false
 	end
 
-	return slot0:getTalentTree():hasTalentCanActive()
+	return arg_16_0:getTalentTree():hasTalentCanActive()
 end
 
-function slot0.initTalentPlanInfos(slot0, slot1)
-	slot0.talentPlanDict = {}
+function var_0_0.initTalentPlanInfos(arg_17_0, arg_17_1)
+	arg_17_0.talentPlanDict = {}
 
-	for slot6 = 1, TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount) do
-		if not slot1[slot6] then
-			slot7 = {
+	local var_17_0 = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount)
+
+	for iter_17_0 = 1, var_17_0 do
+		local var_17_1 = arg_17_1[iter_17_0]
+
+		if not var_17_1 then
+			var_17_1 = {
 				talentIds = {}
 			}
 
-			logWarn("boss" .. slot0.id .. "天赋方案数据为空" .. slot6)
+			logWarn("boss" .. arg_17_0.id .. "天赋方案数据为空" .. iter_17_0)
 		end
 
-		slot8 = {
-			planId = slot7.planId or slot6,
-			talentPoint = slot7.talentPoint or TowerConfig.instance:getAllTalentPoint(slot0.id, slot0.trialLevel > 0 and slot0.trialLevel or slot0.level),
-			planName = string.nilorempty(slot7.planName) and GameUtil.getSubPlaceholderLuaLang(luaLang("towerbosstalentplan"), {
-				slot6
-			}) or slot7.planName,
+		local var_17_2 = {
+			planId = var_17_1.planId or iter_17_0,
+			talentPoint = var_17_1.talentPoint or TowerConfig.instance:getAllTalentPoint(arg_17_0.id, arg_17_0.trialLevel > 0 and arg_17_0.trialLevel or arg_17_0.level),
+			planName = string.nilorempty(var_17_1.planName) and GameUtil.getSubPlaceholderLuaLang(luaLang("towerbosstalentplan"), {
+				iter_17_0
+			}) or var_17_1.planName,
 			talentIds = {}
 		}
 
-		for slot12, slot13 in ipairs(slot7.talentIds) do
-			table.insert(slot8.talentIds, slot13)
+		for iter_17_1, iter_17_2 in ipairs(var_17_1.talentIds) do
+			table.insert(var_17_2.talentIds, iter_17_2)
 		end
 
-		slot0.talentPlanDict[slot8.planId] = slot8
+		arg_17_0.talentPlanDict[var_17_2.planId] = var_17_2
 	end
 end
 
-function slot0.renameTalentPlan(slot0, slot1)
-	if slot0.talentPlanDict[slot0.useTalentPlan] then
-		slot2.planName = slot1
+function var_0_0.renameTalentPlan(arg_18_0, arg_18_1)
+	local var_18_0 = arg_18_0.talentPlanDict[arg_18_0.useTalentPlan]
+
+	if var_18_0 then
+		var_18_0.planName = arg_18_1
 	end
 end
 
-function slot0.getTalentPlanInfos(slot0)
-	return slot0.talentPlanDict
+function var_0_0.getTalentPlanInfos(arg_19_0)
+	return arg_19_0.talentPlanDict
 end
 
-function slot0.setCurUseTalentPlan(slot0, slot1, slot2)
-	if slot2 then
-		slot0.trialTalentPlan = slot1
+function var_0_0.setCurUseTalentPlan(arg_20_0, arg_20_1, arg_20_2)
+	if arg_20_2 then
+		arg_20_0.trialTalentPlan = arg_20_1
 	else
-		slot0.useTalentPlan = slot1
-		slot0.trialTalentPlan = 0
+		arg_20_0.useTalentPlan = arg_20_1
+		arg_20_0.trialTalentPlan = 0
 	end
 
-	slot0:refreshTalent()
+	arg_20_0:refreshTalent()
 end
 
-function slot0.getCurUseTalentPlan(slot0)
-	return slot0.useTalentPlan
+function var_0_0.getCurUseTalentPlan(arg_21_0)
+	return arg_21_0.useTalentPlan
 end
 
-function slot0.setTempState(slot0, slot1)
-	slot0.isTemp = slot1
+function var_0_0.setTempState(arg_22_0, arg_22_1)
+	arg_22_0.isTemp = arg_22_1
 end
 
-function slot0.getTempState(slot0)
-	return slot0.isTemp
+function var_0_0.getTempState(arg_23_0)
+	return arg_23_0.isTemp
 end
 
-function slot0.isSelectedSystemTalentPlan(slot0)
-	slot0.customPlanCount = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount))
+function var_0_0.isSelectedSystemTalentPlan(arg_24_0)
+	local var_24_0 = arg_24_0.trialTalentPlan > 0 and arg_24_0.trialTalentPlan or arg_24_0.useTalentPlan
 
-	return slot0.customPlanCount < (slot0.trialTalentPlan > 0 and slot0.trialTalentPlan or slot0.useTalentPlan)
+	arg_24_0.customPlanCount = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.CustomTalentPlanCount))
+
+	return var_24_0 > arg_24_0.customPlanCount
 end
 
-return slot0
+return var_0_0

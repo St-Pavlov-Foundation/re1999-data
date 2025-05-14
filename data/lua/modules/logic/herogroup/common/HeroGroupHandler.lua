@@ -1,7 +1,8 @@
-module("modules.logic.herogroup.common.HeroGroupHandler", package.seeall)
+﻿module("modules.logic.herogroup.common.HeroGroupHandler", package.seeall)
 
-slot0 = class("HeroGroupHandler")
-slot0.EpisodeTypeDict = {
+local var_0_0 = class("HeroGroupHandler")
+
+var_0_0.EpisodeTypeDict = {
 	[DungeonEnum.EpisodeType.TowerPermanent] = 1,
 	[DungeonEnum.EpisodeType.TowerBoss] = 1,
 	[DungeonEnum.EpisodeType.TowerLimited] = 1,
@@ -9,119 +10,152 @@ slot0.EpisodeTypeDict = {
 	[DungeonEnum.EpisodeType.Act183] = 1
 }
 
-function slot0.checkIsEpisodeType(slot0)
-	return uv0.EpisodeTypeDict[slot0] ~= nil
+function var_0_0.checkIsEpisodeType(arg_1_0)
+	return var_0_0.EpisodeTypeDict[arg_1_0] ~= nil
 end
 
-function slot0.checkIsEpisodeTypeByEpisodeId(slot0)
-	return uv0.checkIsEpisodeType(DungeonConfig.instance:getEpisodeCO(slot0).type)
+function var_0_0.checkIsEpisodeTypeByEpisodeId(arg_2_0)
+	local var_2_0 = DungeonConfig.instance:getEpisodeCO(arg_2_0).type
+
+	return var_0_0.checkIsEpisodeType(var_2_0)
 end
 
-function slot0.checkIsTowerEpisodeByEpisodeId(slot0)
-	if not DungeonConfig.instance:getEpisodeCO(slot0) then
+function var_0_0.checkIsTowerEpisodeByEpisodeId(arg_3_0)
+	local var_3_0 = DungeonConfig.instance:getEpisodeCO(arg_3_0)
+
+	if not var_3_0 then
 		return false
 	end
 
-	return slot1.type == DungeonEnum.EpisodeType.TowerPermanent or slot2 == DungeonEnum.EpisodeType.TowerBoss or slot2 == DungeonEnum.EpisodeType.TowerLimited
+	local var_3_1 = var_3_0.type
+
+	return var_3_1 == DungeonEnum.EpisodeType.TowerPermanent or var_3_1 == DungeonEnum.EpisodeType.TowerBoss or var_3_1 == DungeonEnum.EpisodeType.TowerLimited
 end
 
-function slot0.getTowerBossSnapShot(slot0)
-	return ModuleEnum.HeroGroupSnapshotType.TowerBoss, {
-		TowerConfig.instance:getBossTowerIdByEpisodeId(slot0)
+function var_0_0.getTowerBossSnapShot(arg_4_0)
+	local var_4_0 = ModuleEnum.HeroGroupSnapshotType.TowerBoss
+	local var_4_1 = TowerConfig.instance:getBossTowerIdByEpisodeId(arg_4_0)
+
+	return var_4_0, {
+		var_4_1
 	}
 end
 
-function slot0.getTowerPermanentSnapShot(slot0)
-	return ModuleEnum.HeroGroupSnapshotType.TowerPermanentAndLimit, {
+function var_0_0.getTowerPermanentSnapShot(arg_5_0)
+	local var_5_0 = ModuleEnum.HeroGroupSnapshotType.TowerPermanentAndLimit
+	local var_5_1 = {
 		1,
 		2,
 		3,
 		4
 	}
+
+	return var_5_0, var_5_1
 end
 
-function slot0.getAct183SnapShot(slot0)
-	return Act183Helper.getEpisodeSnapShotType(slot0), {
+function var_0_0.getAct183SnapShot(arg_6_0)
+	return Act183Helper.getEpisodeSnapShotType(arg_6_0), {
 		1
 	}
 end
 
-slot0.getSnapShotHandleFunc = {
-	[DungeonEnum.EpisodeType.TowerPermanent] = slot0.getTowerPermanentSnapShot,
-	[DungeonEnum.EpisodeType.TowerBoss] = slot0.getTowerBossSnapShot,
-	[DungeonEnum.EpisodeType.TowerLimited] = slot0.getTowerPermanentSnapShot,
-	[DungeonEnum.EpisodeType.Act183] = slot0.getAct183SnapShot
+var_0_0.getSnapShotHandleFunc = {
+	[DungeonEnum.EpisodeType.TowerPermanent] = var_0_0.getTowerPermanentSnapShot,
+	[DungeonEnum.EpisodeType.TowerBoss] = var_0_0.getTowerBossSnapShot,
+	[DungeonEnum.EpisodeType.TowerLimited] = var_0_0.getTowerPermanentSnapShot,
+	[DungeonEnum.EpisodeType.Act183] = var_0_0.getAct183SnapShot
 }
 
-function slot0.getSnapShot(slot0)
-	if uv0.getSnapShotHandleFunc[DungeonConfig.instance:getEpisodeCO(slot0).type] then
-		return slot3(slot0)
+function var_0_0.getSnapShot(arg_7_0)
+	local var_7_0 = DungeonConfig.instance:getEpisodeCO(arg_7_0).type
+	local var_7_1 = var_0_0.getSnapShotHandleFunc[var_7_0]
+
+	if var_7_1 then
+		return var_7_1(arg_7_0)
 	end
 end
 
-function slot0.getTowerTrialHeros(slot0)
-	return TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason()) and slot2.heroIds
+function var_0_0.getTowerTrialHeros(arg_8_0)
+	local var_8_0 = TowerModel.instance:getTrialHeroSeason()
+	local var_8_1 = TowerConfig.instance:getHeroTrialConfig(var_8_0)
+
+	return var_8_1 and var_8_1.heroIds
 end
 
-slot0.getTrialHerosHandleFunc = {
-	[DungeonEnum.EpisodeType.TowerPermanent] = slot0.getTowerTrialHeros,
-	[DungeonEnum.EpisodeType.TowerBoss] = slot0.getTowerTrialHeros,
-	[DungeonEnum.EpisodeType.TowerLimited] = slot0.getTowerTrialHeros
+var_0_0.getTrialHerosHandleFunc = {
+	[DungeonEnum.EpisodeType.TowerPermanent] = var_0_0.getTowerTrialHeros,
+	[DungeonEnum.EpisodeType.TowerBoss] = var_0_0.getTowerTrialHeros,
+	[DungeonEnum.EpisodeType.TowerLimited] = var_0_0.getTowerTrialHeros
 }
 
-function slot0.getTrialHeros(slot0)
-	if uv0.getTrialHerosHandleFunc[DungeonConfig.instance:getEpisodeCO(slot0).type] then
-		return slot3(slot0)
+function var_0_0.getTrialHeros(arg_9_0)
+	local var_9_0 = DungeonConfig.instance:getEpisodeCO(arg_9_0).type
+	local var_9_1 = var_0_0.getTrialHerosHandleFunc[var_9_0]
+
+	if var_9_1 then
+		return var_9_1(arg_9_0)
 	else
-		return (HeroGroupModel.instance.battleId and lua_battle.configDict[slot4]).trialHeros
+		local var_9_2 = HeroGroupModel.instance.battleId
+
+		return (var_9_2 and lua_battle.configDict[var_9_2]).trialHeros
 	end
 end
 
-function slot0.setTowerHeroListData(slot0)
-	if HeroGroupSnapshotModel.instance:getCurGroup() then
-		for slot5, slot6 in ipairs(slot1.heroList) do
-			if tonumber(slot6) < 0 then
-				slot7 = -tonumber(slot6)
+function var_0_0.setTowerHeroListData(arg_10_0)
+	local var_10_0 = HeroGroupSnapshotModel.instance:getCurGroup()
 
-				if HeroGroupTrialModel.instance:getById(slot6) then
-					slot7 = slot8.trialCo.id
+	if var_10_0 then
+		for iter_10_0, iter_10_1 in ipairs(var_10_0.heroList) do
+			if tonumber(iter_10_1) < 0 then
+				local var_10_1 = -tonumber(iter_10_1)
+				local var_10_2 = HeroGroupTrialModel.instance:getById(iter_10_1)
+
+				if var_10_2 then
+					var_10_1 = var_10_2.trialCo.id
 				end
 
-				slot9 = TowerModel.instance:getTrialHeroSeason() > 0
-				slot12 = slot9 and tabletool.indexOf(slot9 and string.splitToNumber(TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason()).heroIds, "|") or {}, slot7) and tonumber(slot7) > 0
-				slot13 = slot12 and lua_hero_trial.configDict[slot7][0] or {}
-				slot1.heroList[slot5] = slot12 and tostring(tonumber(slot13.id .. "." .. slot13.trialTemplate) - 1099511627776.0) or "0"
+				local var_10_3 = TowerModel.instance:getTrialHeroSeason() > 0
+				local var_10_4 = TowerConfig.instance:getHeroTrialConfig(TowerModel.instance:getTrialHeroSeason())
+				local var_10_5 = var_10_3 and string.splitToNumber(var_10_4.heroIds, "|") or {}
+				local var_10_6 = var_10_3 and tabletool.indexOf(var_10_5, var_10_1) and tonumber(var_10_1) > 0
+				local var_10_7 = var_10_6 and lua_hero_trial.configDict[var_10_1][0] or {}
+				local var_10_8 = var_10_6 and tostring(tonumber(var_10_7.id .. "." .. var_10_7.trialTemplate) - 1099511627776) or "0"
 
-				if slot12 then
-					if not slot1.trialDict then
-						slot1.trialDict = {}
+				var_10_0.heroList[iter_10_0] = var_10_8
+
+				if var_10_6 then
+					if not var_10_0.trialDict then
+						var_10_0.trialDict = {}
 					end
 
-					if not slot1.trialDict[slot5] then
-						slot1.trialDict[slot5] = {}
+					if not var_10_0.trialDict[iter_10_0] then
+						var_10_0.trialDict[iter_10_0] = {}
 					end
 
-					slot1.trialDict[slot5][1] = slot13.id
+					var_10_0.trialDict[iter_10_0][1] = var_10_7.id
 				end
 			end
 		end
 	end
 end
 
-slot0.getHeroListDataHandlerFunc = {
-	[DungeonEnum.EpisodeType.TowerPermanent] = slot0.setTowerHeroListData,
-	[DungeonEnum.EpisodeType.TowerBoss] = slot0.setTowerHeroListData,
-	[DungeonEnum.EpisodeType.TowerLimited] = slot0.setTowerHeroListData
+var_0_0.getHeroListDataHandlerFunc = {
+	[DungeonEnum.EpisodeType.TowerPermanent] = var_0_0.setTowerHeroListData,
+	[DungeonEnum.EpisodeType.TowerBoss] = var_0_0.setTowerHeroListData,
+	[DungeonEnum.EpisodeType.TowerLimited] = var_0_0.setTowerHeroListData
 }
 
-function slot0.hanldeHeroListData(slot0)
-	if not slot0 then
+function var_0_0.hanldeHeroListData(arg_11_0)
+	if not arg_11_0 then
 		return
 	end
 
-	if uv0.getHeroListDataHandlerFunc[DungeonConfig.instance:getEpisodeCO(slot0).type] then
-		return slot3(slot0)
+	local var_11_0 = DungeonConfig.instance:getEpisodeCO(arg_11_0).type
+	local var_11_1 = var_0_0.getHeroListDataHandlerFunc[var_11_0]
+
+	if var_11_1 then
+		return var_11_1(arg_11_0)
 	end
 end
 
-return slot0
+return var_0_0

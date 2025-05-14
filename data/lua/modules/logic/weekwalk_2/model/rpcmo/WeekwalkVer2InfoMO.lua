@@ -1,68 +1,78 @@
-module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2InfoMO", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.rpcmo.WeekwalkVer2InfoMO", package.seeall)
 
-slot0 = pureTable("WeekwalkVer2InfoMO")
+local var_0_0 = pureTable("WeekwalkVer2InfoMO")
 
-function slot0.init(slot0, slot1)
-	slot0.timeId = slot1.timeId
-	slot0.startTime = slot1.startTime / 1000
-	slot0.endTime = slot1.endTime / 1000
-	slot0.popRule = slot1.popRule
-	slot0.layerInfos = GameUtil.rpcInfosToMap(slot1.layerInfos, WeekwalkVer2LayerInfoMO)
-	slot0.prevSettle = nil
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.timeId = arg_1_1.timeId
+	arg_1_0.startTime = arg_1_1.startTime / 1000
+	arg_1_0.endTime = arg_1_1.endTime / 1000
+	arg_1_0.popRule = arg_1_1.popRule
+	arg_1_0.layerInfos = GameUtil.rpcInfosToMap(arg_1_1.layerInfos, WeekwalkVer2LayerInfoMO)
+	arg_1_0.prevSettle = nil
 
-	if slot1:HasField("prevSettle") then
-		slot0.prevSettle = WeekwalkVer2PrevSettleInfoMO.New()
+	if arg_1_1:HasField("prevSettle") then
+		arg_1_0.prevSettle = WeekwalkVer2PrevSettleInfoMO.New()
 
-		slot0.prevSettle:init(slot1.prevSettle)
+		arg_1_0.prevSettle:init(arg_1_1.prevSettle)
 	end
 
-	slot0.isPopSettle = slot0.prevSettle and slot0.prevSettle.show
-	slot0.snapshotInfos = GameUtil.rpcInfosToMap(slot1.snapshotInfos or {}, WeekwalkVer2SnapshotInfoMO, "no")
-	slot0._layerInfosMap = {}
+	arg_1_0.isPopSettle = arg_1_0.prevSettle and arg_1_0.prevSettle.show
+	arg_1_0.snapshotInfos = GameUtil.rpcInfosToMap(arg_1_1.snapshotInfos or {}, WeekwalkVer2SnapshotInfoMO, "no")
+	arg_1_0._layerInfosMap = {}
 
-	for slot5, slot6 in pairs(slot0.layerInfos) do
-		slot0._layerInfosMap[slot6:getLayer()] = slot6
+	for iter_1_0, iter_1_1 in pairs(arg_1_0.layerInfos) do
+		arg_1_0._layerInfosMap[iter_1_1:getLayer()] = iter_1_1
 	end
 
-	slot0.issueId = lua_weekwalk_ver2_time.configDict[slot0.timeId] and slot2.issueId
+	local var_1_0 = lua_weekwalk_ver2_time.configDict[arg_1_0.timeId]
 
-	if not slot0.issueId then
-		logError("WeekwalkVer2InfoMO weekwalk_ver2_time configDict not find timeId:" .. tostring(slot0.timeId))
+	arg_1_0.issueId = var_1_0 and var_1_0.issueId
+
+	if not arg_1_0.issueId then
+		logError("WeekwalkVer2InfoMO weekwalk_ver2_time configDict not find timeId:" .. tostring(arg_1_0.timeId))
 	end
 end
 
-function slot0.getOptionSkills(slot0)
-	if slot0._skillList and slot0._skillList._timeId == slot0.timeId then
-		return slot0._skillList
+function var_0_0.getOptionSkills(arg_2_0)
+	if arg_2_0._skillList and arg_2_0._skillList._timeId == arg_2_0.timeId then
+		return arg_2_0._skillList
 	end
 
-	slot0._skillList = string.splitToNumber(lua_weekwalk_ver2_time.configDict[slot0.timeId].optionalSkills, "#")
-	slot0._skillList._timeId = slot0.timeId
+	local var_2_0 = lua_weekwalk_ver2_time.configDict[arg_2_0.timeId]
 
-	return slot0._skillList
+	arg_2_0._skillList = string.splitToNumber(var_2_0.optionalSkills, "#")
+	arg_2_0._skillList._timeId = arg_2_0.timeId
+
+	return arg_2_0._skillList
 end
 
-function slot0.getHeroGroupSkill(slot0, slot1)
-	return slot0.snapshotInfos[slot1] and slot2:getChooseSkillId()
+function var_0_0.getHeroGroupSkill(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_0.snapshotInfos[arg_3_1]
+
+	return var_3_0 and var_3_0:getChooseSkillId()
 end
 
-function slot0.setHeroGroupSkill(slot0, slot1, slot2)
-	if not slot0.snapshotInfos[slot1] then
-		slot3 = WeekwalkVer2SnapshotInfoMO.New()
-		slot3.no = slot1
-		slot0.snapshotInfos[slot1] = slot3
+function var_0_0.setHeroGroupSkill(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0 = arg_4_0.snapshotInfos[arg_4_1]
+
+	if not var_4_0 then
+		var_4_0 = WeekwalkVer2SnapshotInfoMO.New()
+		var_4_0.no = arg_4_1
+		arg_4_0.snapshotInfos[arg_4_1] = var_4_0
 	end
 
-	slot3:setChooseSkillId(slot2)
+	var_4_0:setChooseSkillId(arg_4_2)
 end
 
-function slot0.isOpen(slot0)
-	return slot0.startTime <= ServerTime.now() and slot1 <= slot0.endTime
+function var_0_0.isOpen(arg_5_0)
+	local var_5_0 = ServerTime.now()
+
+	return var_5_0 >= arg_5_0.startTime and var_5_0 <= arg_5_0.endTime
 end
 
-function slot0.allLayerPass(slot0)
-	for slot4, slot5 in pairs(slot0.layerInfos) do
-		if not slot5.allPass then
+function var_0_0.allLayerPass(arg_6_0)
+	for iter_6_0, iter_6_1 in pairs(arg_6_0.layerInfos) do
+		if not iter_6_1.allPass then
 			return false
 		end
 	end
@@ -70,24 +80,26 @@ function slot0.allLayerPass(slot0)
 	return true
 end
 
-function slot0.setLayerInfo(slot0, slot1)
-	slot0.layerInfos[slot1.id]:init(slot1)
+function var_0_0.setLayerInfo(arg_7_0, arg_7_1)
+	arg_7_0.layerInfos[arg_7_1.id]:init(arg_7_1)
 end
 
-function slot0.getLayerInfo(slot0, slot1)
-	return slot0.layerInfos[slot1]
+function var_0_0.getLayerInfo(arg_8_0, arg_8_1)
+	return arg_8_0.layerInfos[arg_8_1]
 end
 
-function slot0.getLayerInfoByLayerIndex(slot0, slot1)
-	return slot0._layerInfosMap[slot1]
+function var_0_0.getLayerInfoByLayerIndex(arg_9_0, arg_9_1)
+	return arg_9_0._layerInfosMap[arg_9_1]
 end
 
-function slot0.getNotFinishedMap(slot0)
-	for slot4 = WeekWalk_2Enum.MaxLayer, 1, -1 do
-		if slot0._layerInfosMap[slot4] and slot5.unlock then
-			return slot5, slot4
+function var_0_0.getNotFinishedMap(arg_10_0)
+	for iter_10_0 = WeekWalk_2Enum.MaxLayer, 1, -1 do
+		local var_10_0 = arg_10_0._layerInfosMap[iter_10_0]
+
+		if var_10_0 and var_10_0.unlock then
+			return var_10_0, iter_10_0
 		end
 	end
 end
 
-return slot0
+return var_0_0

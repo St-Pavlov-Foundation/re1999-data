@@ -1,125 +1,133 @@
-module("modules.logic.gm.view.GMCommandHistoryView", package.seeall)
+﻿module("modules.logic.gm.view.GMCommandHistoryView", package.seeall)
 
-slot0 = class("GMCommandHistoryView", BaseView)
-slot0.LevelType = "人物等级"
-slot0.HeroAttr = "英雄提升"
-slot0.ClickItem = "ClickItem"
-slot0.Return = "Return"
+local var_0_0 = class("GMCommandHistoryView", BaseView)
 
-function slot0.ctor(slot0)
+var_0_0.LevelType = "人物等级"
+var_0_0.HeroAttr = "英雄提升"
+var_0_0.ClickItem = "ClickItem"
+var_0_0.Return = "Return"
+
+function var_0_0.ctor(arg_1_0)
+	return
 end
 
-function slot0.onInitView(slot0)
-	slot0._maskGO = gohelper.findChild(slot0.viewGO, "addItem")
-	slot0._inpItem = SLFramework.UGUI.InputFieldWrap.GetWithPath(slot0.viewGO, "viewport/content/item1/inpText")
+function var_0_0.onInitView(arg_2_0)
+	arg_2_0._maskGO = gohelper.findChild(arg_2_0.viewGO, "addItem")
+	arg_2_0._inpItem = SLFramework.UGUI.InputFieldWrap.GetWithPath(arg_2_0.viewGO, "viewport/content/item1/inpText")
 
-	slot0:_hideScroll()
+	arg_2_0:_hideScroll()
 end
 
-function slot0.addEvents(slot0)
-	SLFramework.UGUI.UIClickListener.Get(slot0._inpItem.gameObject):AddClickListener(slot0._onClickInpItem, slot0, nil)
-	SLFramework.UGUI.UIClickListener.Get(slot0._maskGO):AddClickListener(slot0._onClickMask, slot0, nil)
-	slot0._inpItem:AddOnValueChanged(slot0._onInpValueChanged, slot0)
+function var_0_0.addEvents(arg_3_0)
+	SLFramework.UGUI.UIClickListener.Get(arg_3_0._inpItem.gameObject):AddClickListener(arg_3_0._onClickInpItem, arg_3_0, nil)
+	SLFramework.UGUI.UIClickListener.Get(arg_3_0._maskGO):AddClickListener(arg_3_0._onClickMask, arg_3_0, nil)
+	arg_3_0._inpItem:AddOnValueChanged(arg_3_0._onInpValueChanged, arg_3_0)
 end
 
-function slot0.removeEvents(slot0)
-	SLFramework.UGUI.UIClickListener.Get(slot0._inpItem.gameObject):RemoveClickListener()
-	SLFramework.UGUI.UIClickListener.Get(slot0._maskGO):RemoveClickListener()
-	slot0._inpItem:RemoveOnValueChanged()
+function var_0_0.removeEvents(arg_4_0)
+	SLFramework.UGUI.UIClickListener.Get(arg_4_0._inpItem.gameObject):RemoveClickListener()
+	SLFramework.UGUI.UIClickListener.Get(arg_4_0._maskGO):RemoveClickListener()
+	arg_4_0._inpItem:RemoveOnValueChanged()
 end
 
-function slot0.onOpen(slot0)
-	GMController.instance:registerCallback(uv0.ClickItem, slot0._onClickItem, slot0)
+function var_0_0.onOpen(arg_5_0)
+	GMController.instance:registerCallback(var_0_0.ClickItem, arg_5_0._onClickItem, arg_5_0)
 end
 
-function slot0.onClose(slot0)
-	GMController.instance:unregisterCallback(uv0.ClickItem, slot0._onClickItem, slot0)
+function var_0_0.onClose(arg_6_0)
+	GMController.instance:unregisterCallback(var_0_0.ClickItem, arg_6_0._onClickItem, arg_6_0)
 end
 
-function slot0._onClickInpItem(slot0)
-	slot0:_showScroll()
+function var_0_0._onClickInpItem(arg_7_0)
+	arg_7_0:_showScroll()
 end
 
-function slot0._onClickMask(slot0)
-	slot0:_hideScroll()
+function var_0_0._onClickMask(arg_8_0)
+	arg_8_0:_hideScroll()
 end
 
-function slot0._showScroll(slot0)
-	gohelper.setActive(slot0._maskGO, true)
-	recthelper.setAnchorX(slot0._maskGO.transform, -600)
-	slot0:_showDefaultItems()
+function var_0_0._showScroll(arg_9_0)
+	gohelper.setActive(arg_9_0._maskGO, true)
+	recthelper.setAnchorX(arg_9_0._maskGO.transform, -600)
+	arg_9_0:_showDefaultItems()
 end
 
-function slot0._hideScroll(slot0)
-	gohelper.setActive(slot0._maskGO, false)
-	recthelper.setAnchorX(slot0._maskGO.transform, 0)
+function var_0_0._hideScroll(arg_10_0)
+	gohelper.setActive(arg_10_0._maskGO, false)
+	recthelper.setAnchorX(arg_10_0._maskGO.transform, 0)
 	GMAddItemModel.instance:clear()
 end
 
-slot1 = "左ctrl + 点击删除对应记录"
+local var_0_1 = "左ctrl + 点击删除对应记录"
 
-function slot0._onClickItem(slot0, slot1)
-	if slot1.type then
+function var_0_0._onClickItem(arg_11_0, arg_11_1)
+	if arg_11_1.type then
 		return
 	end
 
-	if slot1.name == uv0 then
+	if arg_11_1.name == var_0_1 then
 		return
 	end
 
 	if UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftControl) then
-		GMCommandHistoryModel.instance:removeCommandHistory(slot1.name)
-		slot0:_showDefaultItems()
+		GMCommandHistoryModel.instance:removeCommandHistory(arg_11_1.name)
+		arg_11_0:_showDefaultItems()
 
 		return
 	end
 
-	slot0._inpItem:SetText(slot1.name)
-	slot0:_hideScroll()
+	arg_11_0._inpItem:SetText(arg_11_1.name)
+	arg_11_0:_hideScroll()
 end
 
-function slot0._onInpValueChanged(slot0, slot1)
-	if string.nilorempty(slot1) then
-		slot0:_showDefaultItems()
+function var_0_0._onInpValueChanged(arg_12_0, arg_12_1)
+	if string.nilorempty(arg_12_1) then
+		arg_12_0:_showDefaultItems()
 	else
-		slot0:_showTargetItems()
+		arg_12_0:_showTargetItems()
 	end
 end
 
-function slot0._showDefaultItems(slot0)
-	if #GMCommandHistoryModel.instance:getCommandHistory() == 0 then
-		slot0:_hideScroll()
+function var_0_0._showDefaultItems(arg_13_0)
+	local var_13_0 = GMCommandHistoryModel.instance:getCommandHistory()
+
+	if #var_13_0 == 0 then
+		arg_13_0:_hideScroll()
 
 		return
 	end
 
-	slot2 = {
+	local var_13_1 = {
 		{
-			name = uv0
+			name = var_0_1
 		}
 	}
 
-	for slot6, slot7 in ipairs(slot1) do
-		table.insert(slot2, {
-			name = slot7
+	for iter_13_0, iter_13_1 in ipairs(var_13_0) do
+		table.insert(var_13_1, {
+			name = iter_13_1
 		})
 	end
 
-	GMAddItemModel.instance:setList(slot2)
+	GMAddItemModel.instance:setList(var_13_1)
 end
 
-function slot0._showTargetItems(slot0)
-	slot3 = {}
+function var_0_0._showTargetItems(arg_14_0)
+	local var_14_0 = GMCommandHistoryModel.instance:getCommandHistory()
+	local var_14_1 = arg_14_0._inpItem:GetText()
+	local var_14_2 = {}
 
-	for slot7 = 1, #GMCommandHistoryModel.instance:getCommandHistory() do
-		if string.find(slot1[slot7], slot0._inpItem:GetText()) then
-			table.insert(slot3, {
-				name = slot8
+	for iter_14_0 = 1, #var_14_0 do
+		local var_14_3 = var_14_0[iter_14_0]
+
+		if string.find(var_14_3, var_14_1) then
+			table.insert(var_14_2, {
+				name = var_14_3
 			})
 		end
 	end
 
-	GMAddItemModel.instance:setList(slot3)
+	GMAddItemModel.instance:setList(var_14_2)
 end
 
-return slot0
+return var_0_0

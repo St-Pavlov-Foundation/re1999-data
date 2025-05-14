@@ -1,179 +1,208 @@
-module("modules.ugui.textmeshpro.TMPFadeIn", package.seeall)
+﻿module("modules.ugui.textmeshpro.TMPFadeIn", package.seeall)
 
-slot0 = class("TMPFadeIn", LuaCompBase)
-slot1 = 0.03
+local var_0_0 = class("TMPFadeIn", LuaCompBase)
+local var_0_1 = 0.03
 
-function slot0.init(slot0, slot1)
-	slot0._contentGO = slot1
-	slot0._norDiaGO = gohelper.findChild(slot1, "go_normalcontent")
-	slot0._txtcontentcn = gohelper.findChildText(slot0._norDiaGO, "txt_contentcn")
-	slot0._conMat = slot0._txtcontentcn.fontMaterial
-	slot2 = UnityEngine.Shader
-	slot0._LineMinYId = slot2.PropertyToID("_LineMinY")
-	slot0._LineMaxYId = slot2.PropertyToID("_LineMaxY")
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._contentGO = arg_1_1
+	arg_1_0._norDiaGO = gohelper.findChild(arg_1_1, "go_normalcontent")
+	arg_1_0._txtcontentcn = gohelper.findChildText(arg_1_0._norDiaGO, "txt_contentcn")
+	arg_1_0._conMat = arg_1_0._txtcontentcn.fontMaterial
+
+	local var_1_0 = UnityEngine.Shader
+
+	arg_1_0._LineMinYId = var_1_0.PropertyToID("_LineMinY")
+	arg_1_0._LineMaxYId = var_1_0.PropertyToID("_LineMaxY")
 end
 
-function slot0.hideDialog(slot0)
-	if slot0._conTweenId then
-		ZProj.TweenHelper.KillById(slot0._conTweenId)
+function var_0_0.hideDialog(arg_2_0)
+	if arg_2_0._conTweenId then
+		ZProj.TweenHelper.KillById(arg_2_0._conTweenId)
 
-		slot0._conTweenId = nil
+		arg_2_0._conTweenId = nil
 	end
 
-	gohelper.setActive(slot0._norDiaGO, false)
+	gohelper.setActive(arg_2_0._norDiaGO, false)
 
-	slot1, slot2, slot3 = transformhelper.getLocalPos(slot0._txtcontentcn.transform)
+	local var_2_0, var_2_1, var_2_2 = transformhelper.getLocalPos(arg_2_0._txtcontentcn.transform)
 
-	transformhelper.setLocalPos(slot0._txtcontentcn.transform, slot1, slot2, 1)
+	transformhelper.setLocalPos(arg_2_0._txtcontentcn.transform, var_2_0, var_2_1, 1)
 end
 
-function slot0.playNormalText(slot0, slot1, slot2, slot3)
-	slot0._conMat:EnableKeyword("_GRADUAL_ON")
+function var_0_0.playNormalText(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
+	arg_3_0._conMat:EnableKeyword("_GRADUAL_ON")
 
-	slot4 = UnityEngine.Screen.height
+	local var_3_0 = UnityEngine.Screen.height
 
-	slot0._conMat:SetFloat(slot0._LineMinYId, slot4)
-	slot0._conMat:SetFloat(slot0._LineMaxYId, slot4)
-	gohelper.setActive(slot0._norDiaGO, true)
+	arg_3_0._conMat:SetFloat(arg_3_0._LineMinYId, var_3_0)
+	arg_3_0._conMat:SetFloat(arg_3_0._LineMaxYId, var_3_0)
+	gohelper.setActive(arg_3_0._norDiaGO, true)
 
-	slot0._txt = slot1
-	slot0._finishCallback = slot2
-	slot0._finishCallbackObj = slot3
-	slot5, slot6, slot7 = transformhelper.getLocalPos(slot0._txtcontentcn.transform)
+	arg_3_0._txt = arg_3_1
+	arg_3_0._finishCallback = arg_3_2
+	arg_3_0._finishCallbackObj = arg_3_3
 
-	transformhelper.setLocalPos(slot0._txtcontentcn.transform, slot5, slot6, 1)
+	local var_3_1, var_3_2, var_3_3 = transformhelper.getLocalPos(arg_3_0._txtcontentcn.transform)
 
-	slot0._txtcontentcn.text = slot0._txt
+	transformhelper.setLocalPos(arg_3_0._txtcontentcn.transform, var_3_1, var_3_2, 1)
 
-	TaskDispatcher.runDelay(slot0._delayShow, slot0, 0)
+	arg_3_0._txtcontentcn.text = arg_3_0._txt
+
+	TaskDispatcher.runDelay(arg_3_0._delayShow, arg_3_0, 0)
 end
 
-function slot0._delayShow(slot0)
-	slot1 = CameraMgr.instance:getUICamera()
-	slot2 = slot0._txtcontentcn:GetTextInfo(slot0._txt)
-	slot0._textInfo = slot2
-	slot0._lineInfoList = {}
-	slot3 = 0
-	slot4 = slot0._txtcontentcn.transform
+function var_0_0._delayShow(arg_4_0)
+	local var_4_0 = CameraMgr.instance:getUICamera()
+	local var_4_1 = arg_4_0._txtcontentcn:GetTextInfo(arg_4_0._txt)
 
-	for slot8 = 1, slot2.lineCount do
-		slot9 = slot2.lineInfo[slot8 - 1]
-		slot10 = slot3 + 1
-		slot3 = slot3 + slot9.visibleCharacterCount
-		slot11 = slot0._textInfo.characterInfo
-		slot12 = slot11[slot9.firstVisibleCharacterIndex]
-		slot13 = slot11[slot9.lastVisibleCharacterIndex]
-		slot17 = slot1:WorldToScreenPoint(slot4:TransformPoint(slot12.topLeft)).y
+	arg_4_0._textInfo = var_4_1
+	arg_4_0._lineInfoList = {}
 
-		for slot21 = slot9.firstVisibleCharacterIndex, slot9.lastVisibleCharacterIndex do
-			if slot1:WorldToScreenPoint(slot4:TransformPoint(slot11[slot21].bottomLeft)).y < slot1:WorldToScreenPoint(slot4:TransformPoint(slot12.bottomLeft)).y then
-				slot16 = slot23.y
+	local var_4_2 = 0
+	local var_4_3 = arg_4_0._txtcontentcn.transform
+
+	for iter_4_0 = 1, var_4_1.lineCount do
+		local var_4_4 = var_4_1.lineInfo[iter_4_0 - 1]
+		local var_4_5 = var_4_2 + 1
+
+		var_4_2 = var_4_2 + var_4_4.visibleCharacterCount
+
+		local var_4_6 = arg_4_0._textInfo.characterInfo
+		local var_4_7 = var_4_6[var_4_4.firstVisibleCharacterIndex]
+		local var_4_8 = var_4_6[var_4_4.lastVisibleCharacterIndex]
+		local var_4_9 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_7.bottomLeft))
+		local var_4_10 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_7.topLeft))
+		local var_4_11 = var_4_9.y
+		local var_4_12 = var_4_10.y
+
+		for iter_4_1 = var_4_4.firstVisibleCharacterIndex, var_4_4.lastVisibleCharacterIndex do
+			local var_4_13 = var_4_6[iter_4_1]
+			local var_4_14 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_13.bottomLeft))
+
+			if var_4_11 > var_4_14.y then
+				var_4_11 = var_4_14.y
 			end
 
-			if slot17 < slot1:WorldToScreenPoint(slot4:TransformPoint(slot22.topLeft)).y then
-				slot17 = slot24.y
+			local var_4_15 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_13.topLeft))
+
+			if var_4_12 < var_4_15.y then
+				var_4_12 = var_4_15.y
 			end
 		end
 
-		slot14.y = slot16
-		slot15.y = slot17
+		var_4_9.y = var_4_11
+		var_4_10.y = var_4_12
 
-		table.insert(slot0._lineInfoList, {
-			slot9,
-			slot10,
-			slot3,
-			slot14,
-			slot15,
-			slot1:WorldToScreenPoint(slot4:TransformPoint(slot13.bottomRight))
+		local var_4_16 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_8.bottomRight))
+
+		table.insert(arg_4_0._lineInfoList, {
+			var_4_4,
+			var_4_5,
+			var_4_2,
+			var_4_9,
+			var_4_10,
+			var_4_16
 		})
 	end
 
-	slot0._contentX, slot0._contentY, _ = transformhelper.getLocalPos(slot0._txtcontentcn.transform)
-	slot0._curLine = nil
-	slot5 = uv0 * slot3
+	arg_4_0._contentX, arg_4_0._contentY, _ = transformhelper.getLocalPos(arg_4_0._txtcontentcn.transform)
+	arg_4_0._curLine = nil
 
-	if slot0._conTweenId then
-		ZProj.TweenHelper.KillById(slot0._conTweenId)
+	local var_4_17 = var_0_1 * var_4_2
 
-		slot0._conTweenId = nil
+	if arg_4_0._conTweenId then
+		ZProj.TweenHelper.KillById(arg_4_0._conTweenId)
+
+		arg_4_0._conTweenId = nil
 	end
 
-	slot0._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, slot3, slot5, slot0._conUpdate, slot0.conFinished, slot0)
+	arg_4_0._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, var_4_2, var_4_17, arg_4_0._conUpdate, arg_4_0.conFinished, arg_4_0)
 end
 
-function slot0._conUpdate(slot0, slot1)
-	slot2 = UnityEngine.Screen.width
+function var_0_0._conUpdate(arg_5_0, arg_5_1)
+	local var_5_0 = UnityEngine.Screen.width
 
-	for slot6, slot7 in ipairs(slot0._lineInfoList) do
-		slot8 = slot7[1]
-		slot10 = slot7[3]
+	for iter_5_0, iter_5_1 in ipairs(arg_5_0._lineInfoList) do
+		local var_5_1 = iter_5_1[1]
+		local var_5_2 = iter_5_1[2]
+		local var_5_3 = iter_5_1[3]
 
-		if slot7[2] <= slot1 and slot1 <= slot10 and slot9 ~= slot10 then
-			slot11 = slot7[4]
-			slot13 = slot7[6]
+		if var_5_2 <= arg_5_1 and arg_5_1 <= var_5_3 and var_5_2 ~= var_5_3 then
+			local var_5_4 = iter_5_1[4]
+			local var_5_5 = iter_5_1[5]
+			local var_5_6 = iter_5_1[6]
 
-			if slot0._curLine ~= slot6 then
-				slot0._curLine = slot6
+			if arg_5_0._curLine ~= iter_5_0 then
+				arg_5_0._curLine = iter_5_0
 
-				slot0._conMat:SetFloat(slot0._LineMinYId, slot11.y)
-				slot0._conMat:SetFloat(slot0._LineMaxYId, slot7[5].y)
+				arg_5_0._conMat:SetFloat(arg_5_0._LineMinYId, var_5_4.y)
+				arg_5_0._conMat:SetFloat(arg_5_0._LineMaxYId, var_5_5.y)
 
-				slot14 = slot0._txtcontentcn.gameObject
+				local var_5_7 = arg_5_0._txtcontentcn.gameObject
 
-				gohelper.setActive(slot14, false)
-				gohelper.setActive(slot14, true)
+				gohelper.setActive(var_5_7, false)
+				gohelper.setActive(var_5_7, true)
 			end
 
-			transformhelper.setLocalPos(slot0._txtcontentcn.transform, slot0._contentX, slot0._contentY, 1 - Mathf.Lerp(slot11.x, slot13.x, (slot1 - slot9) / (slot10 - slot9)) / slot2)
+			local var_5_8 = (arg_5_1 - var_5_2) / (var_5_3 - var_5_2)
+			local var_5_9 = Mathf.Lerp(var_5_4.x, var_5_6.x, var_5_8)
+
+			transformhelper.setLocalPos(arg_5_0._txtcontentcn.transform, arg_5_0._contentX, arg_5_0._contentY, 1 - var_5_9 / var_5_0)
 		end
 	end
 end
 
-function slot0.isPlaying(slot0)
-	return slot0._conTweenId and true or false
+function var_0_0.isPlaying(arg_6_0)
+	return arg_6_0._conTweenId and true or false
 end
 
-function slot0.conFinished(slot0)
-	if slot0._conTweenId then
-		ZProj.TweenHelper.KillById(slot0._conTweenId)
+function var_0_0.conFinished(arg_7_0)
+	if arg_7_0._conTweenId then
+		ZProj.TweenHelper.KillById(arg_7_0._conTweenId)
 
-		slot0._conTweenId = nil
+		arg_7_0._conTweenId = nil
 	end
 
-	slot0:_disable_GRADUAL_ON()
+	arg_7_0:_disable_GRADUAL_ON()
 
-	slot1, slot2, slot3 = transformhelper.getLocalPos(slot0._txtcontentcn.transform)
+	local var_7_0, var_7_1, var_7_2 = transformhelper.getLocalPos(arg_7_0._txtcontentcn.transform)
 
-	transformhelper.setLocalPos(slot0._txtcontentcn.transform, slot1, slot2, 0)
+	transformhelper.setLocalPos(arg_7_0._txtcontentcn.transform, var_7_0, var_7_1, 0)
 
-	if slot0._finishCallback then
-		slot0._finishCallback(slot0._finishCallbackObj)
+	if arg_7_0._finishCallback then
+		arg_7_0._finishCallback(arg_7_0._finishCallbackObj)
 	end
 end
 
-function slot0._disable_GRADUAL_ON(slot0)
-	if slot0._txtcontentcn.gameObject:GetComponentsInChildren(gohelper.Type_TMP_SubMeshUI, true) then
-		for slot6 = 0, slot1.Length - 1 do
-			if not gohelper.isNil(slot1[slot6].sharedMaterial) then
-				slot8:DisableKeyword("_GRADUAL_ON")
-				slot8:SetFloat(slot0._LineMinYId, 0)
-				slot8:SetFloat(slot0._LineMaxYId, 0)
+function var_0_0._disable_GRADUAL_ON(arg_8_0)
+	local var_8_0 = arg_8_0._txtcontentcn.gameObject:GetComponentsInChildren(gohelper.Type_TMP_SubMeshUI, true)
+
+	if var_8_0 then
+		local var_8_1 = var_8_0.Length
+
+		for iter_8_0 = 0, var_8_1 - 1 do
+			local var_8_2 = var_8_0[iter_8_0].sharedMaterial
+
+			if not gohelper.isNil(var_8_2) then
+				var_8_2:DisableKeyword("_GRADUAL_ON")
+				var_8_2:SetFloat(arg_8_0._LineMinYId, 0)
+				var_8_2:SetFloat(arg_8_0._LineMaxYId, 0)
 			end
 		end
 	end
 
-	slot0._conMat:DisableKeyword("_GRADUAL_ON")
-	slot0._conMat:SetFloat(slot0._LineMinYId, 0)
-	slot0._conMat:SetFloat(slot0._LineMaxYId, 0)
+	arg_8_0._conMat:DisableKeyword("_GRADUAL_ON")
+	arg_8_0._conMat:SetFloat(arg_8_0._LineMinYId, 0)
+	arg_8_0._conMat:SetFloat(arg_8_0._LineMaxYId, 0)
 end
 
-function slot0.onDestroy(slot0)
-	slot0:onDestroyView()
+function var_0_0.onDestroy(arg_9_0)
+	arg_9_0:onDestroyView()
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0._delayShow, slot0)
-	GameUtil.onDestroyViewMember_TweenId(slot0, "_conTweenId")
+function var_0_0.onDestroyView(arg_10_0)
+	TaskDispatcher.cancelTask(arg_10_0._delayShow, arg_10_0)
+	GameUtil.onDestroyViewMember_TweenId(arg_10_0, "_conTweenId")
 end
 
-return slot0
+return var_0_0

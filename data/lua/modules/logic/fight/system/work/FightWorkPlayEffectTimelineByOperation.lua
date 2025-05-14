@@ -1,83 +1,91 @@
-module("modules.logic.fight.system.work.FightWorkPlayEffectTimelineByOperation", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkPlayEffectTimelineByOperation", package.seeall)
 
-slot0 = class("FightWorkPlayEffectTimelineByOperation", FightWorkItem)
+local var_0_0 = class("FightWorkPlayEffectTimelineByOperation", FightWorkItem)
 
-function slot0.onConstructor(slot0, slot1, slot2, slot3, slot4)
-	slot0.actEffectData = slot1
-	slot0.param = slot2
-	slot0.originFightStepData = slot3
-	slot0.SAFETIME = 30
-	slot0.timelineDic = slot4
+function var_0_0.onConstructor(arg_1_0, arg_1_1, arg_1_2, arg_1_3, arg_1_4)
+	arg_1_0.actEffectData = arg_1_1
+	arg_1_0.param = arg_1_2
+	arg_1_0.originFightStepData = arg_1_3
+	arg_1_0.SAFETIME = 30
+	arg_1_0.timelineDic = arg_1_4
 end
 
-function slot0.onStart(slot0)
-	slot0:com_registFightEvent(FightEvent.OnSkillPlayFinish, slot0._onSkillPlayFinish, LuaEventSystem.Low)
+function var_0_0.onStart(arg_2_0)
+	arg_2_0:com_registFightEvent(FightEvent.OnSkillPlayFinish, arg_2_0._onSkillPlayFinish, LuaEventSystem.Low)
 end
 
-function slot0._onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot3 == slot0.fightStepData then
-		slot0:onDone(true)
+function var_0_0._onSkillPlayFinish(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
+	if arg_3_3 == arg_3_0.fightStepData then
+		arg_3_0:onDone(true)
 	end
 end
 
-function slot0.sortTimelineDic(slot0, slot1, slot2)
-	return slot1.count < slot2.count
+function var_0_0.sortTimelineDic(arg_4_0, arg_4_1, arg_4_2)
+	return arg_4_1.count < arg_4_2.count
 end
 
-function slot0.playTimeline(slot0)
-	if slot0.played then
+function var_0_0.playTimeline(arg_5_0)
+	if arg_5_0.played then
 		return
 	end
 
-	slot0.played = true
-	slot1 = {
+	arg_5_0.played = true
+
+	local var_5_0 = {
 		actId = 0,
 		actEffect = {
-			slot0.actEffectData
+			arg_5_0.actEffectData
 		},
-		fromId = slot0.originFightStepData.fromId,
-		toId = slot0.actEffectData.targetId,
+		fromId = arg_5_0.originFightStepData.fromId,
+		toId = arg_5_0.actEffectData.targetId,
 		actType = FightEnum.ActType.SKILL,
 		stepUid = FightTLEventEntityVisible.latestStepUid or 0
 	}
-	slot0.param.count = (slot0.param.count or 0) + 1
-	slot3 = {}
+	local var_5_1 = (arg_5_0.param.count or 0) + 1
 
-	for slot7, slot8 in pairs(slot0.timelineDic) do
-		table.insert(slot3, {
-			count = slot7,
-			timelineList = slot8
+	arg_5_0.param.count = var_5_1
+
+	local var_5_2 = {}
+
+	for iter_5_0, iter_5_1 in pairs(arg_5_0.timelineDic) do
+		table.insert(var_5_2, {
+			count = iter_5_0,
+			timelineList = iter_5_1
 		})
 	end
 
-	table.sort(slot3, uv0.sortTimelineDic)
+	table.sort(var_5_2, var_0_0.sortTimelineDic)
 
-	slot4 = nil
+	local var_5_3
 
-	for slot8, slot9 in ipairs(slot3) do
-		if slot2 <= slot9.count and #slot9.timelineList > 0 then
-			slot4 = slot9.timelineList[math.random(1, #slot9.timelineList)]
+	for iter_5_2, iter_5_3 in ipairs(var_5_2) do
+		if var_5_1 <= iter_5_3.count and #iter_5_3.timelineList > 0 then
+			var_5_3 = iter_5_3.timelineList[math.random(1, #iter_5_3.timelineList)]
 		end
 	end
 
-	if not slot4 then
-		slot0:onDone(true)
+	if not var_5_3 then
+		arg_5_0:onDone(true)
 
 		return
 	end
 
-	if not FightHelper.getEntity("0") then
-		slot0:onDone(true)
+	local var_5_4 = FightHelper.getEntity("0")
+
+	if not var_5_4 then
+		arg_5_0:onDone(true)
 
 		return
 	end
 
-	slot0.fightStepData = slot1
-	slot1.playerOperationCountForPlayEffectTimeline = slot2
-	slot6 = slot5.skill:registTimelineWork(slot4, slot1)
-	slot6.skipAfterTimelineFunc = true
+	arg_5_0.fightStepData = var_5_0
+	var_5_0.playerOperationCountForPlayEffectTimeline = var_5_1
 
-	slot6:start()
+	local var_5_5 = var_5_4.skill:registTimelineWork(var_5_3, var_5_0)
+
+	var_5_5.skipAfterTimelineFunc = true
+
+	var_5_5:start()
 end
 
-return slot0
+return var_0_0

@@ -1,18 +1,18 @@
-module("modules.logic.fight.model.data.FightTempDataMgr", package.seeall)
+﻿module("modules.logic.fight.model.data.FightTempDataMgr", package.seeall)
 
-slot0 = FightDataClass("FightTempDataMgr", FightDataMgrBase)
+local var_0_0 = FightDataClass("FightTempDataMgr", FightDataMgrBase)
 
-function slot0.onConstructor(slot0)
-	slot0.hasNextWave = false
-	slot0.combineCount = 0
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.hasNextWave = false
+	arg_1_0.combineCount = 0
 end
 
-function slot0.onCancelOperation(slot0)
-	slot0.combineCount = 0
+function var_0_0.onCancelOperation(arg_2_0)
+	arg_2_0.combineCount = 0
 end
 
-function slot0.onStageChanged(slot0)
-	slot0.combineCount = 0
+function var_0_0.onStageChanged(arg_3_0)
+	arg_3_0.combineCount = 0
 end
 
-return slot0
+return var_0_0

@@ -1,15 +1,16 @@
-module("modules.logic.versionactivity2_7.lengzhou6.define.EliminateEnum_2_7", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.define.EliminateEnum_2_7", package.seeall)
 
-slot0 = class("EliminateEnum_2_7", EliminateEnum)
-slot0.MaxBuffCount = 50
-slot0.ChessType = {
+local var_0_0 = class("EliminateEnum_2_7", EliminateEnum)
+
+var_0_0.MaxBuffCount = 50
+var_0_0.ChessType = {
 	beast = "beast",
 	cliff = "cliff",
 	stone = "stone",
 	tree = "tree",
 	star = "star"
 }
-slot0.ChessIndexToType = {
+var_0_0.ChessIndexToType = {
 	nil,
 	nil,
 	nil,
@@ -18,57 +19,57 @@ slot0.ChessIndexToType = {
 	"beast",
 	"tree",
 	"cliff",
-	[9.0] = "star",
-	[10.0] = "stone"
+	[9] = "star",
+	[10] = "stone"
 }
-slot0.ChessTypeToIndex = {
+var_0_0.ChessTypeToIndex = {
 	beast = 6,
 	cliff = 8,
 	stone = 10,
 	tree = 7,
 	star = 9
 }
-slot0.eliminateType = {
+var_0_0.eliminateType = {
 	five = "five",
 	three = "three",
 	base = "base",
 	four = "four",
 	cross = "cross"
 }
-slot0.AllChessType = {
+var_0_0.AllChessType = {
 	"beast",
 	"tree",
 	"cliff",
 	"star"
 }
-slot0.AllChessID = {
+var_0_0.AllChessID = {
 	6,
 	7,
 	8,
 	9
 }
-slot0.ChessWidth = 120
-slot0.ChessHeight = 122
-slot0.ChessIntervalX = 2
-slot0.ChessIntervalY = 2
-slot0.MaxRow = 6
-slot0.MaxCol = 6
-slot0.AssessShowTime = LengZhou6Config.instance:getEliminateBattleCost(26) / 1000
-slot0.UpdateDamageStepTime = 1
-slot0.DieStepTime = 0.3
-slot0.AssessLevel = {
+var_0_0.ChessWidth = 120
+var_0_0.ChessHeight = 122
+var_0_0.ChessIntervalX = 2
+var_0_0.ChessIntervalY = 2
+var_0_0.MaxRow = 6
+var_0_0.MaxCol = 6
+var_0_0.AssessShowTime = LengZhou6Config.instance:getEliminateBattleCost(26) / 1000
+var_0_0.UpdateDamageStepTime = 1
+var_0_0.DieStepTime = 0.3
+var_0_0.AssessLevel = {
 	3,
 	5,
 	7,
 	10
 }
-slot0.AssessLevelToImageName = {
+var_0_0.AssessLevelToImageName = {
 	"v2a7_hissabeth_game_paneltips3",
 	"v2a7_hissabeth_game_paneltips4",
 	"v2a7_hissabeth_game_paneltips5",
 	"v2a7_hissabeth_game_paneltips6"
 }
-slot0.SpecialChessImage = {
+var_0_0.SpecialChessImage = {
 	frost = LengZhou6Config.instance:getEliminateBattleCostStr(23),
 	pollution = LengZhou6Config.instance:getEliminateBattleCostStr(22),
 	beast = LengZhou6Config.instance:getEliminateBattleCostStr(18),
@@ -76,14 +77,14 @@ slot0.SpecialChessImage = {
 	cliff = LengZhou6Config.instance:getEliminateBattleCostStr(21),
 	star = LengZhou6Config.instance:getEliminateBattleCostStr(20)
 }
-slot0.ChessEffect = {
+var_0_0.ChessEffect = {
 	frost = "frost",
 	pollution = "pollution"
 }
-slot0.SpecialChessAni = {
+var_0_0.SpecialChessAni = {
 	frost = "freeze",
 	pollution = "glitch"
 }
-slot0.InitDropTime = 0.1
+var_0_0.InitDropTime = 0.1
 
-return slot0
+return var_0_0

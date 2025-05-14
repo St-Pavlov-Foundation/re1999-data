@@ -1,18 +1,18 @@
-module("modules.logic.battlepass.view.BpSPMainBtnItem", package.seeall)
+﻿module("modules.logic.battlepass.view.BpSPMainBtnItem", package.seeall)
 
-slot0 = class("BpSPMainBtnItem", ActCenterItemBase)
+local var_0_0 = class("BpSPMainBtnItem", ActCenterItemBase)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, gohelper.cloneInPlace(slot1))
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, gohelper.cloneInPlace(arg_1_1))
 end
 
-function slot0.onInit(slot0, slot1)
-	slot0._btnitem = gohelper.getClickWithAudio(slot0._imgGo, AudioEnum.UI.play_ui_role_pieces_open)
+function var_0_0.onInit(arg_2_0, arg_2_1)
+	arg_2_0._btnitem = gohelper.getClickWithAudio(arg_2_0._imgGo, AudioEnum.UI.play_ui_role_pieces_open)
 
-	slot0:_refreshItem()
+	arg_2_0:_refreshItem()
 end
 
-function slot0.onClick(slot0)
+function var_0_0.onClick(arg_3_0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.BP) then
 		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.BP))
 
@@ -22,22 +22,32 @@ function slot0.onClick(slot0)
 	BpController.instance:openBattlePassView(true)
 end
 
-function slot0._refreshItem(slot0)
-	UISpriteSetMgr.instance:setMainSprite(slot0._imgitem, ActivityModel.showActivityEffect() and ActivityConfig.instance:getMainActAtmosphereConfig().mainViewActBtnPrefix .. "icon_6" or "icon_6", true)
+function var_0_0._refreshItem(arg_4_0)
+	local var_4_0 = ActivityModel.showActivityEffect()
+	local var_4_1 = ActivityConfig.instance:getMainActAtmosphereConfig()
+	local var_4_2 = var_4_0 and var_4_1.mainViewActBtnPrefix .. "icon_6" or "icon_6"
 
-	if not slot1 and ActivityConfig.instance:getMainActAtmosphereConfig() then
-		for slot8, slot9 in ipairs(slot4.mainViewActBtn) do
-			if gohelper.findChild(slot0.go, slot9) then
-				gohelper.setActive(slot10, slot1)
+	UISpriteSetMgr.instance:setMainSprite(arg_4_0._imgitem, var_4_2, true)
+
+	if not var_4_0 then
+		local var_4_3 = ActivityConfig.instance:getMainActAtmosphereConfig()
+
+		if var_4_3 then
+			for iter_4_0, iter_4_1 in ipairs(var_4_3.mainViewActBtn) do
+				local var_4_4 = gohelper.findChild(arg_4_0.go, iter_4_1)
+
+				if var_4_4 then
+					gohelper.setActive(var_4_4, var_4_0)
+				end
 			end
 		end
 	end
 
-	slot0._redDot = RedDotController.instance:addRedDot(slot0._goactivityreddot, RedDotEnum.DotNode.BattlePassSPMain)
+	arg_4_0._redDot = RedDotController.instance:addRedDot(arg_4_0._goactivityreddot, RedDotEnum.DotNode.BattlePassSPMain)
 end
 
-function slot0.isShowRedDot(slot0)
-	return slot0._redDot and slot0._redDot.isShowRedDot
+function var_0_0.isShowRedDot(arg_5_0)
+	return arg_5_0._redDot and arg_5_0._redDot.isShowRedDot
 end
 
-return slot0
+return var_0_0

@@ -1,4 +1,4 @@
-setNeedLoadModule("modules.proto.AchievementModule_pb", "AchievementModule_pb")
+﻿setNeedLoadModule("modules.proto.AchievementModule_pb", "AchievementModule_pb")
 setNeedLoadModule("modules.proto.Activity101Module_pb", "Activity101Module_pb")
 setNeedLoadModule("modules.proto.Activity104Module_pb", "Activity104Module_pb")
 setNeedLoadModule("modules.proto.Activity106Module_pb", "Activity106Module_pb")

@@ -1,187 +1,224 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191HeroTipView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191HeroTipView", package.seeall)
 
-slot0 = class("Act191HeroTipView", BaseView)
+local var_0_0 = class("Act191HeroTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Close")
-	slot0._goRoot = gohelper.findChild(slot0.viewGO, "#go_Root")
-	slot0._goTagItem = gohelper.findChild(slot0.viewGO, "#go_Root/#go_TagItem")
-	slot0._goSingleHero = gohelper.findChild(slot0.viewGO, "#go_Root/#go_SingleHero")
-	slot0._goSingleTagContent = gohelper.findChild(slot0.viewGO, "#go_Root/#go_SingleHero/#go_SingleTagContent")
-	slot0._goMultiHero = gohelper.findChild(slot0.viewGO, "#go_Root/#go_MultiHero")
-	slot0._goMultiTagContent = gohelper.findChild(slot0.viewGO, "#go_Root/#go_MultiHero/#go_MultiTagContent")
-	slot0._btnBuy = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Root/#btn_Buy")
-	slot0._txtBuyCost = gohelper.findChildText(slot0.viewGO, "#go_Root/#btn_Buy/#txt_BuyCost")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Close")
+	arg_1_0._goRoot = gohelper.findChild(arg_1_0.viewGO, "#go_Root")
+	arg_1_0._goTagItem = gohelper.findChild(arg_1_0.viewGO, "#go_Root/#go_TagItem")
+	arg_1_0._goSingleHero = gohelper.findChild(arg_1_0.viewGO, "#go_Root/#go_SingleHero")
+	arg_1_0._goSingleTagContent = gohelper.findChild(arg_1_0.viewGO, "#go_Root/#go_SingleHero/#go_SingleTagContent")
+	arg_1_0._goMultiHero = gohelper.findChild(arg_1_0.viewGO, "#go_Root/#go_MultiHero")
+	arg_1_0._goMultiTagContent = gohelper.findChild(arg_1_0.viewGO, "#go_Root/#go_MultiHero/#go_MultiTagContent")
+	arg_1_0._btnBuy = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Root/#btn_Buy")
+	arg_1_0._txtBuyCost = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/#btn_Buy/#txt_BuyCost")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
-	slot0._btnBuy:AddClickListener(slot0._btnBuyOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
+	arg_2_0._btnBuy:AddClickListener(arg_2_0._btnBuyOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClose:RemoveClickListener()
-	slot0._btnBuy:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClose:RemoveClickListener()
+	arg_3_0._btnBuy:RemoveClickListener()
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._btnBuyOnClick(slot0)
-	if Activity191Model.instance:getActInfo():getGameInfo().coin < slot0.viewParam.cost then
+function var_0_0._btnBuyOnClick(arg_5_0)
+	if Activity191Model.instance:getActInfo():getGameInfo().coin < arg_5_0.viewParam.cost then
 		GameFacade.showToast(ToastEnum.Act174CoinNotEnough)
 
 		return
 	end
 
-	Activity191Rpc.instance:sendBuyIn191ShopRequest(slot0.actId, slot0.viewParam.index, slot0._buyReply, slot0)
+	Activity191Rpc.instance:sendBuyIn191ShopRequest(arg_5_0.actId, arg_5_0.viewParam.index, arg_5_0._buyReply, arg_5_0)
 end
 
-function slot0._buyReply(slot0, slot1, slot2)
-	if slot2 == 0 then
-		GameFacade.showToast(slot0.viewParam.toastId, slot0.roleCoList[1].name)
-		slot0:closeThis()
+function var_0_0._buyReply(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_2 == 0 then
+		GameFacade.showToast(arg_6_0.viewParam.toastId, arg_6_0.roleCoList[1].name)
+		arg_6_0:closeThis()
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.characterInfo = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goRoot, Act191CharacterInfo)
-	slot0.fetterIconItemList = {}
+function var_0_0._editableInitView(arg_7_0)
+	arg_7_0.actId = Activity191Model.instance:getCurActId()
+	arg_7_0.characterInfo = MonoHelper.addNoUpdateLuaComOnceToGo(arg_7_0._goRoot, Act191CharacterInfo)
+	arg_7_0.fetterIconItemList = {}
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:refreshUI()
+function var_0_0.onUpdateParam(arg_8_0)
+	arg_8_0:refreshUI()
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
+function var_0_0.onOpen(arg_9_0)
+	Act191StatController.instance:onViewOpen(arg_9_0.viewName)
 
-	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x - 100, 8)
+	if arg_9_0.viewParam.pos then
+		local var_9_0 = recthelper.rectToRelativeAnchorPos(arg_9_0.viewParam.pos, arg_9_0.viewGO.transform)
+
+		recthelper.setAnchor(arg_9_0._goRoot.transform, var_9_0.x - 100, 8)
 	end
 
-	slot0:refreshUI()
+	arg_9_0:refreshUI()
 end
 
-function slot0.onClose(slot0)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose(), slot0.roleCoList[1].name)
+function var_0_0.onClose(arg_10_0)
+	local var_10_0 = arg_10_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_10_0.viewName, var_10_0, arg_10_0.roleCoList[1].name)
 end
 
-function slot0.refreshUI(slot0)
-	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
+function var_0_0.refreshUI(arg_11_0)
+	gohelper.setActive(arg_11_0._btnClose, not arg_11_0.viewParam.notShowBg)
 
-	if slot0.viewParam.showBuy then
-		slot0:refreshCost()
-		gohelper.setActive(slot0._btnBuy, true)
+	if arg_11_0.viewParam.showBuy then
+		arg_11_0:refreshCost()
+		gohelper.setActive(arg_11_0._btnBuy, true)
 	else
-		gohelper.setActive(slot0._btnBuy, false)
+		gohelper.setActive(arg_11_0._btnBuy, false)
 	end
 
-	slot0.heroCnt = #slot0.viewParam.heroList
-	slot0.roleCoList = {
-		Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[1])
-	}
-	slot1 = slot0.roleCoList[1]
+	arg_11_0.heroCnt = #arg_11_0.viewParam.heroList
+	arg_11_0.roleCoList = {}
+	arg_11_0.roleCoList[1] = Activity191Config.instance:getRoleCo(arg_11_0.viewParam.heroList[1])
 
-	gohelper.findChildSingleImage(slot0._goSingleHero, "character/heroicon"):LoadImage(Activity191Helper.getHeadIconSmall(slot1))
-	UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot0._goSingleHero, "character/rare"), "act174_roleframe_" .. tostring(slot1.quality))
-	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "character/career"), "lssx_" .. slot1.career)
-	UISpriteSetMgr.instance:setCommonSprite(gohelper.findChildImage(slot0._goSingleHero, "image_dmgtype"), "dmgtype" .. tostring(slot1.dmgType))
+	local var_11_0 = arg_11_0.roleCoList[1]
+	local var_11_1 = gohelper.findChildImage(arg_11_0._goSingleHero, "character/rare")
+	local var_11_2 = gohelper.findChildSingleImage(arg_11_0._goSingleHero, "character/heroicon")
+	local var_11_3 = gohelper.findChildImage(arg_11_0._goSingleHero, "character/career")
+	local var_11_4 = gohelper.findChildImage(arg_11_0._goSingleHero, "image_dmgtype")
+	local var_11_5 = gohelper.findChildText(arg_11_0._goSingleHero, "name/txt_name")
+	local var_11_6 = Activity191Helper.getHeadIconSmall(var_11_0)
 
-	gohelper.findChildText(slot0._goSingleHero, "name/txt_name").text = slot1.name
+	var_11_2:LoadImage(var_11_6)
+	UISpriteSetMgr.instance:setAct174Sprite(var_11_1, "act174_roleframe_" .. tostring(var_11_0.quality))
+	UISpriteSetMgr.instance:setCommonSprite(var_11_3, "lssx_" .. var_11_0.career)
+	UISpriteSetMgr.instance:setCommonSprite(var_11_4, "dmgtype" .. tostring(var_11_0.dmgType))
 
-	slot0:refreshFetter(slot1)
-	slot0.characterInfo:setData(slot1)
-	gohelper.setActive(slot0._goSingleHero, true)
-	gohelper.setActive(slot0._goMultiHero, false)
+	var_11_5.text = var_11_0.name
+
+	arg_11_0:refreshFetter(var_11_0)
+	arg_11_0.characterInfo:setData(var_11_0)
+	gohelper.setActive(arg_11_0._goSingleHero, true)
+	gohelper.setActive(arg_11_0._goMultiHero, false)
 
 	if false then
-		slot0.characterItemList = {}
+		arg_11_0.characterItemList = {}
 
-		for slot4 = 1, 3 do
-			slot5 = slot0:getUserDataTb_()
-			slot5.frame = gohelper.findChild(slot0._goMultiHero, "selectframe/selectframe" .. slot4)
-			slot5.go = gohelper.findChild(slot0._goMultiHero, "character" .. slot4)
-			slot0.roleCoList[slot4] = Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[slot4])
+		for iter_11_0 = 1, 3 do
+			local var_11_7 = arg_11_0:getUserDataTb_()
 
-			if slot0.roleCoList[slot4] then
-				slot5.rare = gohelper.findChildImage(slot5.go, "rare")
-				slot5.heroIcon = gohelper.findChildSingleImage(slot5.go, "heroicon")
-				slot5.career = gohelper.findChildImage(slot5.go, "career")
+			var_11_7.frame = gohelper.findChild(arg_11_0._goMultiHero, "selectframe/selectframe" .. iter_11_0)
+			var_11_7.go = gohelper.findChild(arg_11_0._goMultiHero, "character" .. iter_11_0)
 
-				slot0:addClickCb(gohelper.findButtonWithAudio(slot5.go), slot0.onClickRole, slot0, slot4)
-				UISpriteSetMgr.instance:setAct174Sprite(slot5.rare, "act174_roleframe_" .. tostring(slot7.quality))
-				UISpriteSetMgr.instance:setCommonSprite(slot5.career, "lssx_" .. slot7.career)
-				slot5.heroIcon:LoadImage(Activity191Helper.getHeadIconSmall(slot7))
+			local var_11_8 = arg_11_0.viewParam.heroList[iter_11_0]
+
+			arg_11_0.roleCoList[iter_11_0] = Activity191Config.instance:getRoleCo(var_11_8)
+
+			local var_11_9 = arg_11_0.roleCoList[iter_11_0]
+
+			if var_11_9 then
+				var_11_7.rare = gohelper.findChildImage(var_11_7.go, "rare")
+				var_11_7.heroIcon = gohelper.findChildSingleImage(var_11_7.go, "heroicon")
+				var_11_7.career = gohelper.findChildImage(var_11_7.go, "career")
+
+				local var_11_10 = gohelper.findButtonWithAudio(var_11_7.go)
+
+				arg_11_0:addClickCb(var_11_10, arg_11_0.onClickRole, arg_11_0, iter_11_0)
+				UISpriteSetMgr.instance:setAct174Sprite(var_11_7.rare, "act174_roleframe_" .. tostring(var_11_9.quality))
+				UISpriteSetMgr.instance:setCommonSprite(var_11_7.career, "lssx_" .. var_11_9.career)
+
+				local var_11_11 = Activity191Helper.getHeadIconSmall(var_11_9)
+
+				var_11_7.heroIcon:LoadImage(var_11_11)
 			else
-				gohelper.setActive(slot5.go, false)
+				gohelper.setActive(var_11_7.go, false)
 			end
 
-			table.insert(slot0.characterItemList, slot5)
+			table.insert(arg_11_0.characterItemList, var_11_7)
 		end
 
-		slot0:onClickRole(1)
-		gohelper.setActive(slot0._goSingleHero, false)
-		gohelper.setActive(slot0._goMultiHero, true)
+		arg_11_0:onClickRole(1)
+		gohelper.setActive(arg_11_0._goSingleHero, false)
+		gohelper.setActive(arg_11_0._goMultiHero, true)
 	end
 
-	gohelper.setActive(slot0._goTagItem, false)
+	gohelper.setActive(arg_11_0._goTagItem, false)
 end
 
-function slot0.onClickRole(slot0, slot1)
-	if slot1 == slot0.selectedIndex then
+function var_0_0.onClickRole(arg_12_0, arg_12_1)
+	if arg_12_1 == arg_12_0.selectedIndex then
 		return
 	end
 
-	if not gohelper.isNil(slot0.characterItemList[slot1] and slot2.frame) then
-		gohelper.setAsLastSibling(slot3)
+	local var_12_0 = arg_12_0.characterItemList[arg_12_1]
+	local var_12_1 = var_12_0 and var_12_0.frame
+
+	if not gohelper.isNil(var_12_1) then
+		gohelper.setAsLastSibling(var_12_1)
 	end
 
-	slot0.selectedIndex = slot1
-	slot5 = Activity191Config.instance:getRoleCo(slot0.viewParam.heroList[slot1])
+	arg_12_0.selectedIndex = arg_12_1
 
-	slot0:refreshFetter(slot5, true)
-	slot0.characterInfo:setData(slot5)
+	local var_12_2 = arg_12_0.viewParam.heroList[arg_12_1]
+	local var_12_3 = Activity191Config.instance:getRoleCo(var_12_2)
+
+	arg_12_0:refreshFetter(var_12_3, true)
+	arg_12_0.characterInfo:setData(var_12_3)
 end
 
-function slot0.refreshCost(slot0)
-	if Activity191Model.instance:getActInfo():getGameInfo().coin < slot0.viewParam.cost then
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtBuyCost, "#be4343")
+function var_0_0.refreshCost(arg_13_0)
+	local var_13_0 = arg_13_0.viewParam.cost
+
+	if var_13_0 > Activity191Model.instance:getActInfo():getGameInfo().coin then
+		SLFramework.UGUI.GuiHelper.SetColor(arg_13_0._txtBuyCost, "#be4343")
 	else
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtBuyCost, "#211f1f")
+		SLFramework.UGUI.GuiHelper.SetColor(arg_13_0._txtBuyCost, "#211f1f")
 	end
 
-	slot0._txtBuyCost.text = slot1
+	arg_13_0._txtBuyCost.text = var_13_0
 end
 
-function slot0.refreshFetter(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot0.fetterIconItemList) do
-		gohelper.setActive(slot7.go, false)
+function var_0_0.refreshFetter(arg_14_0, arg_14_1, arg_14_2)
+	for iter_14_0, iter_14_1 in ipairs(arg_14_0.fetterIconItemList) do
+		gohelper.setActive(iter_14_1.go, false)
 	end
 
-	for slot7, slot8 in ipairs(string.split(slot1.tag, "#")) do
-		if not slot0.fetterIconItemList[slot7] then
-			slot0.fetterIconItemList[slot7] = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.clone(slot0._goTagItem, slot0._goSingleTagContent), Act191FetterIconItem)
+	local var_14_0 = string.split(arg_14_1.tag, "#")
+
+	for iter_14_2, iter_14_3 in ipairs(var_14_0) do
+		local var_14_1 = arg_14_0.fetterIconItemList[iter_14_2]
+
+		if not var_14_1 then
+			local var_14_2 = gohelper.clone(arg_14_0._goTagItem, arg_14_0._goSingleTagContent)
+
+			var_14_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_14_2, Act191FetterIconItem)
+			arg_14_0.fetterIconItemList[iter_14_2] = var_14_1
 		end
 
-		slot9:setData(slot8)
-		slot9:setExtraParam({
-			fromView = slot0.viewName
+		var_14_1:setData(iter_14_3)
+		var_14_1:setExtraParam({
+			fromView = arg_14_0.viewName
 		})
 
-		if slot0.viewParam.preview then
-			slot9:setPreview()
+		if arg_14_0.viewParam.preview then
+			var_14_1:setPreview()
 		end
 
-		gohelper.addChild(slot2 and slot0._goMultiTagContent or slot0._goSingleTagContent, slot9.go)
-		gohelper.setActive(slot9.go, true)
+		local var_14_3 = arg_14_2 and arg_14_0._goMultiTagContent or arg_14_0._goSingleTagContent
+
+		gohelper.addChild(var_14_3, var_14_1.go)
+		gohelper.setActive(var_14_1.go, true)
 	end
 end
 
-return slot0
+return var_0_0

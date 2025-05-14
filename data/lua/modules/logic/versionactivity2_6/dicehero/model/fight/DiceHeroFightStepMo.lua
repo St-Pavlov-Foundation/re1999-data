@@ -1,27 +1,30 @@
-module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightStepMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightStepMo", package.seeall)
 
-slot0 = pureTable("DiceHeroFightStepMo")
+local var_0_0 = pureTable("DiceHeroFightStepMo")
 
-function slot0.init(slot0, slot1)
-	slot0.actionType = slot1.actionType
-	slot0.reasonId = slot1.reasonId
-	slot0.fromId = slot1.fromId
-	slot0.toId = slot1.toId
-	slot0.effect = {}
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.actionType = arg_1_1.actionType
+	arg_1_0.reasonId = arg_1_1.reasonId
+	arg_1_0.fromId = arg_1_1.fromId
+	arg_1_0.toId = arg_1_1.toId
+	arg_1_0.effect = {}
 
-	for slot5, slot6 in ipairs(slot1.effect) do
-		slot0.effect[slot5] = DiceHeroFightEffectMo.New()
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.effect) do
+		arg_1_0.effect[iter_1_0] = DiceHeroFightEffectMo.New()
 
-		slot0.effect[slot5]:init(slot6, slot0)
+		arg_1_0.effect[iter_1_0]:init(iter_1_1, arg_1_0)
 	end
 
-	slot0.isByCard = false
-	slot0.isByHero = false
+	arg_1_0.isByCard = false
+	arg_1_0.isByHero = false
 
-	if slot0.actionType == 1 then
-		slot0.isByCard = DiceHeroFightModel.instance:getGameData().skillCardsBySkillId[tonumber(slot0.reasonId)] and slot3.co.type ~= DiceHeroEnum.CardType.Hero
-		slot0.isByHero = slot2.allyHero.uid == slot0.fromId
+	if arg_1_0.actionType == 1 then
+		local var_1_0 = DiceHeroFightModel.instance:getGameData()
+		local var_1_1 = var_1_0.skillCardsBySkillId[tonumber(arg_1_0.reasonId)]
+
+		arg_1_0.isByCard = var_1_1 and var_1_1.co.type ~= DiceHeroEnum.CardType.Hero
+		arg_1_0.isByHero = var_1_0.allyHero.uid == arg_1_0.fromId
 	end
 end
 
-return slot0
+return var_0_0

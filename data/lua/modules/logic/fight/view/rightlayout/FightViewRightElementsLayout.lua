@@ -1,130 +1,140 @@
-module("modules.logic.fight.view.rightlayout.FightViewRightElementsLayout", package.seeall)
+﻿module("modules.logic.fight.view.rightlayout.FightViewRightElementsLayout", package.seeall)
 
-slot0 = class("FightViewRightElementsLayout", BaseView)
+local var_0_0 = class("FightViewRightElementsLayout", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0.goRightRoot = gohelper.findChild(slot0.viewGO, "root/right_elements/top")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.goRightRoot = gohelper.findChild(arg_1_0.viewGO, "root/right_elements/top")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RightElements_ShowElement, slot0.showElement, slot0)
-	slot0:addEventCb(FightController.instance, FightEvent.RightElements_HideElement, slot0.hideElement, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.RightElements_ShowElement, arg_2_0.showElement, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.RightElements_HideElement, arg_2_0.hideElement, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0.showElementDict = {}
-	slot0.preShowElementDict = {}
-	slot0.tempElementHeightDict = {}
-	slot0.tweenIdList = {}
-	slot0.elementGoDict = slot0:getUserDataTb_()
-	slot0.elementRectTrDict = slot0:getUserDataTb_()
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0.showElementDict = {}
+	arg_4_0.preShowElementDict = {}
+	arg_4_0.tempElementHeightDict = {}
+	arg_4_0.tweenIdList = {}
+	arg_4_0.elementGoDict = arg_4_0:getUserDataTb_()
+	arg_4_0.elementRectTrDict = arg_4_0:getUserDataTb_()
 
-	for slot4, slot5 in pairs(FightRightElementEnum.Elements) do
-		slot6 = gohelper.findChild(slot0.goRightRoot, FightRightElementEnum.ElementsNodeName[slot5])
-		slot0.elementGoDict[slot5] = slot6
-		slot0.elementRectTrDict[slot5] = slot6:GetComponent(gohelper.Type_RectTransform)
+	for iter_4_0, iter_4_1 in pairs(FightRightElementEnum.Elements) do
+		local var_4_0 = gohelper.findChild(arg_4_0.goRightRoot, FightRightElementEnum.ElementsNodeName[iter_4_1])
 
-		gohelper.setAsLastSibling(slot6)
-		gohelper.setActive(slot6, false)
+		arg_4_0.elementGoDict[iter_4_1] = var_4_0
+		arg_4_0.elementRectTrDict[iter_4_1] = var_4_0:GetComponent(gohelper.Type_RectTransform)
 
-		slot7 = FightRightElementEnum.ElementsSizeDict[slot5]
+		gohelper.setAsLastSibling(var_4_0)
+		gohelper.setActive(var_4_0, false)
 
-		recthelper.setSize(slot0.elementRectTrDict[slot5], slot7.x, slot7.y)
+		local var_4_1 = FightRightElementEnum.ElementsSizeDict[iter_4_1]
+
+		recthelper.setSize(arg_4_0.elementRectTrDict[iter_4_1], var_4_1.x, var_4_1.y)
 	end
 
-	slot0.maxHeight = recthelper.getHeight(slot0.goRightRoot:GetComponent(gohelper.Type_RectTransform))
+	local var_4_2 = arg_4_0.goRightRoot:GetComponent(gohelper.Type_RectTransform)
+
+	arg_4_0.maxHeight = recthelper.getHeight(var_4_2)
 end
 
-function slot0.getElementContainer(slot0, slot1)
-	return slot0.elementGoDict[slot1]
+function var_0_0.getElementContainer(arg_5_0, arg_5_1)
+	return arg_5_0.elementGoDict[arg_5_1]
 end
 
-function slot0.showElement(slot0, slot1, slot2)
-	slot0.showElementDict[slot1] = true
-	slot0.tempElementHeightDict[slot1] = slot2
+function var_0_0.showElement(arg_6_0, arg_6_1, arg_6_2)
+	arg_6_0.showElementDict[arg_6_1] = true
+	arg_6_0.tempElementHeightDict[arg_6_1] = arg_6_2
 
-	slot0:refreshLayout()
+	arg_6_0:refreshLayout()
 end
 
-function slot0.hideElement(slot0, slot1)
-	slot0.showElementDict[slot1] = nil
-	slot0.tempElementHeightDict[slot1] = nil
+function var_0_0.hideElement(arg_7_0, arg_7_1)
+	arg_7_0.showElementDict[arg_7_1] = nil
+	arg_7_0.tempElementHeightDict[arg_7_1] = nil
 
-	slot0:refreshLayout()
+	arg_7_0:refreshLayout()
 end
 
-function slot0.refreshLayout(slot0)
-	slot0:clearTweenId()
+function var_0_0.refreshLayout(arg_8_0)
+	arg_8_0:clearTweenId()
 
-	slot1 = 0
-	slot2 = 0
-	slot4 = 0
+	local var_8_0 = 0
+	local var_8_1 = 0
+	local var_8_2 = 0
+	local var_8_3 = 0
 
-	for slot8, slot9 in ipairs(FightRightElementEnum.Priority) do
-		if slot0.showElementDict[slot9] then
-			gohelper.setActive(slot0.elementGoDict[slot9], true)
+	for iter_8_0, iter_8_1 in ipairs(FightRightElementEnum.Priority) do
+		local var_8_4 = arg_8_0.showElementDict[iter_8_1]
 
-			slot11 = slot0:getElementWidth(slot9)
+		if var_8_4 then
+			gohelper.setActive(arg_8_0.elementGoDict[iter_8_1], true)
 
-			if slot4 < 1 or slot2 + slot0:getElementHeight(slot9) <= slot0.maxHeight then
-				if 0 < slot11 then
-					slot3 = slot11
+			local var_8_5 = arg_8_0:getElementWidth(iter_8_1)
+			local var_8_6 = arg_8_0:getElementHeight(iter_8_1)
+
+			if var_8_3 < 1 or var_8_1 + var_8_6 <= arg_8_0.maxHeight then
+				if var_8_2 < var_8_5 then
+					var_8_2 = var_8_5
 				end
 			else
-				slot1 = slot1 + slot3
-				slot2 = 0
-				slot4 = 0
+				var_8_0 = var_8_0 + var_8_2
+				var_8_1 = 0
+				var_8_3 = 0
 			end
 
-			recthelper.setSize(slot0.elementRectTrDict[slot9], slot11, slot12)
+			recthelper.setSize(arg_8_0.elementRectTrDict[iter_8_1], var_8_5, var_8_6)
 
-			if slot0.preShowElementDict[slot9] then
-				table.insert(slot0.tweenIdList, ZProj.TweenHelper.DOAnchorPos(slot0.elementRectTrDict[slot9], -slot1, -slot2, FightRightElementEnum.AnchorTweenDuration))
+			if arg_8_0.preShowElementDict[iter_8_1] then
+				local var_8_7 = ZProj.TweenHelper.DOAnchorPos(arg_8_0.elementRectTrDict[iter_8_1], -var_8_0, -var_8_1, FightRightElementEnum.AnchorTweenDuration)
+
+				table.insert(arg_8_0.tweenIdList, var_8_7)
 			else
-				recthelper.setAnchor(slot0.elementRectTrDict[slot9], -slot1, -slot2)
+				recthelper.setAnchor(arg_8_0.elementRectTrDict[iter_8_1], -var_8_0, -var_8_1)
 			end
 
-			slot4 = slot4 + 1
-			slot2 = slot2 + slot12
+			var_8_3 = var_8_3 + 1
+			var_8_1 = var_8_1 + var_8_6
 
-			gohelper.setAsLastSibling(slot0.elementGoDict[slot9])
+			gohelper.setAsLastSibling(arg_8_0.elementGoDict[iter_8_1])
 		else
-			gohelper.setActive(slot0.elementGoDict[slot9], false)
+			gohelper.setActive(arg_8_0.elementGoDict[iter_8_1], false)
 		end
 
-		slot0.preShowElementDict[slot9] = slot10
+		arg_8_0.preShowElementDict[iter_8_1] = var_8_4
 	end
 end
 
-function slot0.getElementHeight(slot0, slot1)
-	if slot0.tempElementHeightDict[slot1] then
-		return slot0.tempElementHeightDict[slot1]
+function var_0_0.getElementHeight(arg_9_0, arg_9_1)
+	if arg_9_0.tempElementHeightDict[arg_9_1] then
+		return arg_9_0.tempElementHeightDict[arg_9_1]
 	end
 
-	return FightRightElementEnum.ElementsSizeDict[slot1].y
+	return FightRightElementEnum.ElementsSizeDict[arg_9_1].y
 end
 
-function slot0.getElementWidth(slot0, slot1)
-	return FightRightElementEnum.ElementsSizeDict[slot1].x
+function var_0_0.getElementWidth(arg_10_0, arg_10_1)
+	return FightRightElementEnum.ElementsSizeDict[arg_10_1].x
 end
 
-function slot0.clearTweenId(slot0)
-	for slot4, slot5 in ipairs(slot0.tweenIdList) do
-		ZProj.TweenHelper.KillById(slot5)
+function var_0_0.clearTweenId(arg_11_0)
+	for iter_11_0, iter_11_1 in ipairs(arg_11_0.tweenIdList) do
+		ZProj.TweenHelper.KillById(iter_11_1)
 	end
 
-	tabletool.clear(slot0.tweenIdList)
+	tabletool.clear(arg_11_0.tweenIdList)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0:clearTweenId()
+function var_0_0.onDestroyView(arg_12_0)
+	arg_12_0:clearTweenId()
 end
 
-return slot0
+return var_0_0

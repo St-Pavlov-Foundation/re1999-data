@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity2_7.lengzhou6.config.LengZhou6Config", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.config.LengZhou6Config", package.seeall)
 
-slot0 = class("LengZhou6Config", BaseConfig)
+local var_0_0 = class("LengZhou6Config", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"activity190_episode",
 		"activity190_task",
@@ -18,84 +18,85 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onInit(slot0)
-	slot0._eliminateBattleDamage = {}
-	slot0._eliminateBattleHeal = {}
-	slot0._skillIdToSpecialAttr = nil
-	slot0._enemyRandomIdsConfig = nil
-	slot0._selectEnemyIds = nil
+function var_0_0.onInit(arg_2_0)
+	arg_2_0._eliminateBattleDamage = {}
+	arg_2_0._eliminateBattleHeal = {}
+	arg_2_0._skillIdToSpecialAttr = nil
+	arg_2_0._enemyRandomIdsConfig = nil
+	arg_2_0._selectEnemyIds = nil
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	return
 end
 
-function slot0.getEpisodeConfig(slot0, slot1, slot2)
-	return lua_activity190_episode.configDict[slot1][slot2]
+function var_0_0.getEpisodeConfig(arg_4_0, arg_4_1, arg_4_2)
+	return lua_activity190_episode.configDict[arg_4_1][arg_4_2]
 end
 
-function slot0.getEliminateBattleEliminateBlocks(slot0, slot1, slot2)
-	slot3 = lua_eliminate_battle_eliminateblocks.configDict[slot1]
+function var_0_0.getEliminateBattleEliminateBlocks(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = lua_eliminate_battle_eliminateblocks.configDict[arg_5_1]
 
-	if slot1 == nil or slot2 == nil or slot3 == nil then
-		logError("getEliminateBattleEliminateBlocks error eliminateName or eliminateType is nil" .. tostring(slot1) .. tostring(slot2))
+	if arg_5_1 == nil or arg_5_2 == nil or var_5_0 == nil then
+		logError("getEliminateBattleEliminateBlocks error eliminateName or eliminateType is nil" .. tostring(arg_5_1) .. tostring(arg_5_2))
 	end
 
-	if slot3 == nil then
+	if var_5_0 == nil then
 		return nil
 	end
 
-	return slot3[slot2]
+	return var_5_0[arg_5_2]
 end
 
-function slot0.getEliminateBattleEnemy(slot0, slot1)
-	return lua_eliminate_battle_enemy.configDict[slot1]
+function var_0_0.getEliminateBattleEnemy(arg_6_0, arg_6_1)
+	return lua_eliminate_battle_enemy.configDict[arg_6_1]
 end
 
-function slot0.getEliminateBattleEnemyBehavior(slot0, slot1)
-	return lua_eliminate_battle_enemybehavior.configDict[slot1]
+function var_0_0.getEliminateBattleEnemyBehavior(arg_7_0, arg_7_1)
+	return lua_eliminate_battle_enemybehavior.configDict[arg_7_1]
 end
 
-function slot0.getEliminateBattleCharacter(slot0, slot1)
-	return lua_eliminate_battle_character.configDict[slot1]
+function var_0_0.getEliminateBattleCharacter(arg_8_0, arg_8_1)
+	return lua_eliminate_battle_character.configDict[arg_8_1]
 end
 
-function slot0.getEliminateBattleSkill(slot0, slot1)
-	return lua_eliminate_battle_skill.configDict[slot1]
+function var_0_0.getEliminateBattleSkill(arg_9_0, arg_9_1)
+	return lua_eliminate_battle_skill.configDict[arg_9_1]
 end
 
-function slot0.getEliminateBattleBuff(slot0, slot1)
-	return lua_eliminate_battle_buff.configDict[slot1]
+function var_0_0.getEliminateBattleBuff(arg_10_0, arg_10_1)
+	return lua_eliminate_battle_buff.configDict[arg_10_1]
 end
 
-function slot0.getTaskByActId(slot0, slot1)
-	if slot0._taskList == nil then
-		slot0._taskList = {}
+function var_0_0.getTaskByActId(arg_11_0, arg_11_1)
+	if arg_11_0._taskList == nil then
+		arg_11_0._taskList = {}
 
-		for slot5, slot6 in ipairs(lua_activity190_task.configList) do
-			if slot6.activityId == slot1 then
-				table.insert(slot0._taskList, slot6)
+		for iter_11_0, iter_11_1 in ipairs(lua_activity190_task.configList) do
+			if iter_11_1.activityId == arg_11_1 then
+				table.insert(arg_11_0._taskList, iter_11_1)
 			end
 		end
 	end
 
-	return slot0._taskList
+	return arg_11_0._taskList
 end
 
-function slot0.getPlayerAllSkillId(slot0)
-	slot1 = {}
+function var_0_0.getPlayerAllSkillId(arg_12_0)
+	local var_12_0 = {}
 
-	for slot5, slot6 in ipairs(lua_eliminate_battle_skill.configList) do
-		if slot6.type == LengZhou6Enum.SkillType.active or slot6.type == LengZhou6Enum.SkillType.passive and not uv0.instance:isPlayerChessPassive(slot6.id) then
-			table.insert(slot1, slot6.id)
+	for iter_12_0, iter_12_1 in ipairs(lua_eliminate_battle_skill.configList) do
+		if iter_12_1.type == LengZhou6Enum.SkillType.active or iter_12_1.type == LengZhou6Enum.SkillType.passive and not var_0_0.instance:isPlayerChessPassive(iter_12_1.id) then
+			table.insert(var_12_0, iter_12_1.id)
 		end
 	end
 
-	return slot1
+	return var_12_0
 end
 
-function slot0.isPlayerChessPassive(slot0, slot1)
-	for slot5 = 1, 4 do
-		if uv0.instance:getEliminateBattleCost(slot5) == slot1 then
+function var_0_0.isPlayerChessPassive(arg_13_0, arg_13_1)
+	for iter_13_0 = 1, 4 do
+		if var_0_0.instance:getEliminateBattleCost(iter_13_0) == arg_13_1 then
 			return true
 		end
 	end
@@ -103,190 +104,221 @@ function slot0.isPlayerChessPassive(slot0, slot1)
 	return false
 end
 
-function slot0.getEnemyRandomIdsConfig(slot0, slot1)
-	if slot0._enemyRandomIdsConfig == nil then
-		slot0._enemyRandomIdsConfig = {}
-		slot0._enemyEndlessLibraryRound = {}
+function var_0_0.getEnemyRandomIdsConfig(arg_14_0, arg_14_1)
+	if arg_14_0._enemyRandomIdsConfig == nil then
+		arg_14_0._enemyRandomIdsConfig = {}
+		arg_14_0._enemyEndlessLibraryRound = {}
 
-		for slot6 = 1, #lua_eliminate_battle_endless_library_round.configList do
-			slot7 = slot2[slot6]
+		local var_14_0 = lua_eliminate_battle_endless_library_round.configList
 
-			table.insert(slot0._enemyEndlessLibraryRound, string.splitToNumber(slot7.endlessLibraryRound, "#")[2])
-			table.insert(slot0._enemyRandomIdsConfig, string.splitToNumber(slot7.randomIds, "#"))
+		for iter_14_0 = 1, #var_14_0 do
+			local var_14_1 = var_14_0[iter_14_0]
+			local var_14_2 = string.splitToNumber(var_14_1.endlessLibraryRound, "#")
+			local var_14_3 = string.splitToNumber(var_14_1.randomIds, "#")
+
+			table.insert(arg_14_0._enemyEndlessLibraryRound, var_14_2[2])
+			table.insert(arg_14_0._enemyRandomIdsConfig, var_14_3)
 		end
 	end
 
-	return slot0._enemyRandomIdsConfig[slot0:recordEnemyLastRandomId(slot1)]
+	local var_14_4 = arg_14_0:recordEnemyLastRandomId(arg_14_1)
+
+	return arg_14_0._enemyRandomIdsConfig[var_14_4]
 end
 
-function slot0.getEnemyRandomRealIndex(slot0, slot1)
-	if slot0._enemyEndlessLibraryRound == nil then
+function var_0_0.getEnemyRandomRealIndex(arg_15_0, arg_15_1)
+	if arg_15_0._enemyEndlessLibraryRound == nil then
 		return 1
 	end
 
-	for slot5 = 1, #slot0._enemyEndlessLibraryRound do
-		if slot1 <= slot0._enemyEndlessLibraryRound[slot5] then
-			return slot5
+	for iter_15_0 = 1, #arg_15_0._enemyEndlessLibraryRound do
+		if arg_15_1 <= arg_15_0._enemyEndlessLibraryRound[iter_15_0] then
+			return iter_15_0
 		end
 	end
 end
 
-function slot0.recordEnemyLastRandomId(slot0, slot1)
-	slot2 = slot0:getEnemyRandomRealIndex(slot1)
+function var_0_0.recordEnemyLastRandomId(arg_16_0, arg_16_1)
+	local var_16_0 = arg_16_0:getEnemyRandomRealIndex(arg_16_1)
 
-	if slot0._lastEnemyRoundIndex ~= nil and slot2 ~= slot0._lastEnemyRoundIndex then
-		slot0:clearSetSelectEnemyRandomId()
+	if arg_16_0._lastEnemyRoundIndex ~= nil and var_16_0 ~= arg_16_0._lastEnemyRoundIndex then
+		arg_16_0:clearSetSelectEnemyRandomId()
 	end
 
-	slot0._lastEnemyRoundIndex = slot2
+	arg_16_0._lastEnemyRoundIndex = var_16_0
 
-	return slot2
+	return var_16_0
 end
 
-function slot0.setSelectEnemyRandomId(slot0, slot1, slot2)
-	if slot2 == nil then
+function var_0_0.setSelectEnemyRandomId(arg_17_0, arg_17_1, arg_17_2)
+	if arg_17_2 == nil then
 		return
 	end
 
-	if slot0._selectEnemyIds == nil then
-		slot0._selectEnemyIds = {}
+	if arg_17_0._selectEnemyIds == nil then
+		arg_17_0._selectEnemyIds = {}
 	end
 
-	slot0._selectEnemyIds[slot2] = (slot0._selectEnemyIds[slot2] or 0) + 1
+	local var_17_0 = arg_17_0._selectEnemyIds[arg_17_2] or 0
 
-	if slot0._selectEnemyIds[slot2] == 2 then
-		slot4 = slot0:getEnemyRandomRealIndex(slot1)
+	arg_17_0._selectEnemyIds[arg_17_2] = var_17_0 + 1
 
-		if slot0._enemyRandomIdsConfig ~= nil then
-			for slot9 = 1, #slot0._enemyRandomIdsConfig[slot4] do
-				if slot5[slot9] == slot2 then
-					table.remove(slot5, slot9)
+	if arg_17_0._selectEnemyIds[arg_17_2] == 2 then
+		local var_17_1 = arg_17_0:getEnemyRandomRealIndex(arg_17_1)
+
+		if arg_17_0._enemyRandomIdsConfig ~= nil then
+			local var_17_2 = arg_17_0._enemyRandomIdsConfig[var_17_1]
+
+			for iter_17_0 = 1, #var_17_2 do
+				if var_17_2[iter_17_0] == arg_17_2 then
+					table.remove(var_17_2, iter_17_0)
 
 					break
 				end
 			end
 
-			slot0._enemyRandomIdsConfig[slot4] = slot5
+			arg_17_0._enemyRandomIdsConfig[var_17_1] = var_17_2
 		end
 	end
 end
 
-function slot0.clearSetSelectEnemyRandomId(slot0)
-	slot0._selectEnemyIds = nil
+function var_0_0.clearSetSelectEnemyRandomId(arg_18_0)
+	arg_18_0._selectEnemyIds = nil
 end
 
-function slot0.getEliminateBattleCost(slot0, slot1)
-	return tonumber(lua_eliminate_battle_cost.configDict[slot1].value or 0)
+function var_0_0.getEliminateBattleCost(arg_19_0, arg_19_1)
+	local var_19_0 = lua_eliminate_battle_cost.configDict[arg_19_1].value or 0
+
+	return tonumber(var_19_0)
 end
 
-function slot0.getEliminateBattleCostStr(slot0, slot1)
-	return lua_eliminate_battle_cost.configDict[slot1].value
+function var_0_0.getEliminateBattleCostStr(arg_20_0, arg_20_1)
+	return lua_eliminate_battle_cost.configDict[arg_20_1].value
 end
 
-function slot0.getComboThreshold(slot0)
-	return slot0:getEliminateBattleCost(27)
+function var_0_0.getComboThreshold(arg_21_0)
+	return (arg_21_0:getEliminateBattleCost(27))
 end
 
-function slot0.getAllSpecialAttr(slot0)
-	if slot0._skillIdToSpecialAttr == nil then
-		slot0._skillIdToSpecialAttr = {}
+function var_0_0.getAllSpecialAttr(arg_22_0)
+	if arg_22_0._skillIdToSpecialAttr == nil then
+		arg_22_0._skillIdToSpecialAttr = {}
 
-		for slot4 = 28, 31 do
-			if not string.nilorempty(slot0:getEliminateBattleCostStr(slot4)) then
-				slot6 = string.split(slot5, "#")
-				slot0._skillIdToSpecialAttr[tonumber(slot6[1])] = {
-					effect = slot6[2],
-					chessType = slot6[3],
-					value = tonumber(slot6[4])
+		for iter_22_0 = 28, 31 do
+			local var_22_0 = arg_22_0:getEliminateBattleCostStr(iter_22_0)
+
+			if not string.nilorempty(var_22_0) then
+				local var_22_1 = string.split(var_22_0, "#")
+				local var_22_2 = tonumber(var_22_1[1])
+				local var_22_3 = var_22_1[2]
+				local var_22_4 = var_22_1[3]
+				local var_22_5 = tonumber(var_22_1[4])
+
+				arg_22_0._skillIdToSpecialAttr[var_22_2] = {
+					effect = var_22_3,
+					chessType = var_22_4,
+					value = var_22_5
 				}
 			end
 		end
 	end
 
-	return slot0._skillIdToSpecialAttr
+	return arg_22_0._skillIdToSpecialAttr
 end
 
-function slot0.getEliminateBattleEndlessMode(slot0, slot1)
-	if slot0._battleEndLessMode == nil then
-		slot0._battleEndLessMode = {}
+function var_0_0.getEliminateBattleEndlessMode(arg_23_0, arg_23_1)
+	if arg_23_0._battleEndLessMode == nil then
+		arg_23_0._battleEndLessMode = {}
 	end
 
-	if slot0._battleEndLessMode[slot1] == nil then
-		if lua_eliminate_battle_endless_mode.configDict[slot1] == nil then
+	if arg_23_0._battleEndLessMode[arg_23_1] == nil then
+		local var_23_0 = lua_eliminate_battle_endless_mode.configDict[arg_23_1]
+
+		if var_23_0 == nil then
 			return nil
 		end
 
-		for slot7 = 1, 5 do
-			if not string.nilorempty(slot2["skill" .. slot7]) then
-				-- Nothing
+		local var_23_1 = {
+			hp = tonumber(var_23_0.hpUp)
+		}
+
+		for iter_23_0 = 1, 5 do
+			local var_23_2 = var_23_0["skill" .. iter_23_0]
+			local var_23_3 = var_23_0["powerUp" .. iter_23_0]
+
+			if not string.nilorempty(var_23_2) then
+				var_23_1[var_23_2] = tonumber(var_23_3)
 			end
 		end
 
-		slot0._battleEndLessMode[slot1] = {
-			hp = tonumber(slot2.hpUp),
-			[slot8] = tonumber(slot2["powerUp" .. slot7])
-		}
+		arg_23_0._battleEndLessMode[arg_23_1] = var_23_1
 	end
 
-	return slot0._battleEndLessMode[slot1]
+	return arg_23_0._battleEndLessMode[arg_23_1]
 end
 
-function slot0.getDamageValue(slot0, slot1, slot2)
-	if slot0._eliminateBattleDamage == nil then
-		slot0._eliminateBattleDamage = {}
+function var_0_0.getDamageValue(arg_24_0, arg_24_1, arg_24_2)
+	if arg_24_0._eliminateBattleDamage == nil then
+		arg_24_0._eliminateBattleDamage = {}
 	end
 
-	if slot0._eliminateBattleDamage[slot1] == nil then
-		slot0._eliminateBattleDamage[slot1] = {}
+	if arg_24_0._eliminateBattleDamage[arg_24_1] == nil then
+		arg_24_0._eliminateBattleDamage[arg_24_1] = {}
 	end
 
-	if slot0._eliminateBattleDamage[slot1][slot2] == nil then
-		slot3 = {
-			slot5[1],
-			slot5[2]
-		}
+	if arg_24_0._eliminateBattleDamage[arg_24_1][arg_24_2] == nil then
+		local var_24_0 = {}
+		local var_24_1 = arg_24_0:getEliminateBattleEliminateBlocks(arg_24_1, arg_24_2)
 
-		if slot0:getEliminateBattleEliminateBlocks(slot1, slot2) ~= nil then
-			slot5 = string.splitToNumber(slot4.damageRate, "#")
+		if var_24_1 ~= nil then
+			local var_24_2 = string.splitToNumber(var_24_1.damageRate, "#")
+
+			var_24_0[1] = var_24_2[1]
+			var_24_0[2] = var_24_2[2]
 		end
 
-		slot0._eliminateBattleDamage[slot1][slot2] = slot3
+		arg_24_0._eliminateBattleDamage[arg_24_1][arg_24_2] = var_24_0
 	end
 
-	return slot0._eliminateBattleDamage[slot1][slot2][1] or 0, slot3[2] or 0
+	local var_24_3 = arg_24_0._eliminateBattleDamage[arg_24_1][arg_24_2]
+
+	return var_24_3[1] or 0, var_24_3[2] or 0
 end
 
-function slot0.getHealValue(slot0, slot1, slot2)
-	if slot0._eliminateBattleHeal == nil then
-		slot0._eliminateBattleHeal = {}
+function var_0_0.getHealValue(arg_25_0, arg_25_1, arg_25_2)
+	if arg_25_0._eliminateBattleHeal == nil then
+		arg_25_0._eliminateBattleHeal = {}
 	end
 
-	if slot0._eliminateBattleHeal[slot1] == nil then
-		slot0._eliminateBattleHeal[slot1] = {}
+	if arg_25_0._eliminateBattleHeal[arg_25_1] == nil then
+		arg_25_0._eliminateBattleHeal[arg_25_1] = {}
 	end
 
-	if slot0._eliminateBattleHeal[slot1][slot2] == nil then
-		slot3 = {
-			slot5[1],
-			slot5[2]
-		}
+	if arg_25_0._eliminateBattleHeal[arg_25_1][arg_25_2] == nil then
+		local var_25_0 = {}
+		local var_25_1 = arg_25_0:getEliminateBattleEliminateBlocks(arg_25_1, arg_25_2)
 
-		if slot0:getEliminateBattleEliminateBlocks(slot1, slot2) ~= nil then
-			slot5 = string.splitToNumber(slot4.healRate, "#")
+		if var_25_1 ~= nil then
+			local var_25_2 = string.splitToNumber(var_25_1.healRate, "#")
+
+			var_25_0[1] = var_25_2[1]
+			var_25_0[2] = var_25_2[2]
 		end
 
-		slot0._eliminateBattleHeal[slot1][slot2] = slot3
+		arg_25_0._eliminateBattleHeal[arg_25_1][arg_25_2] = var_25_0
 	end
 
-	return slot0._eliminateBattleHeal[slot1][slot2][1] or 0, slot3[2] or 0
+	local var_25_3 = arg_25_0._eliminateBattleHeal[arg_25_1][arg_25_2]
+
+	return var_25_3[1] or 0, var_25_3[2] or 0
 end
 
-function slot0.clearLevelCache(slot0)
-	slot0._enemyRandomIdsConfig = nil
-	slot0._enemyEndlessLibraryRound = nil
-	slot0._selectEnemyIds = nil
+function var_0_0.clearLevelCache(arg_26_0)
+	arg_26_0._enemyRandomIdsConfig = nil
+	arg_26_0._enemyEndlessLibraryRound = nil
+	arg_26_0._selectEnemyIds = nil
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

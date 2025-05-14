@@ -1,90 +1,95 @@
-module("modules.logic.fight.entity.comp.buff.FightBuffAddCardContinueChannel", package.seeall)
+﻿module("modules.logic.fight.entity.comp.buff.FightBuffAddCardContinueChannel", package.seeall)
 
-slot0 = class("FightBuffAddCardContinueChannel")
-slot0.RecordCount2BuffEffect = {
+local var_0_0 = class("FightBuffAddCardContinueChannel")
+
+var_0_0.RecordCount2BuffEffect = {
 	nil,
 	"buff/alf_kpjp_2",
 	"buff/alf_kpjp_3",
 	"buff/alf_kpjp_4"
 }
 
-function slot0.onBuffStart(slot0, slot1, slot2)
-	slot0.entity = slot1
-	slot0.buffUid = slot2.uid
+function var_0_0.onBuffStart(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.entity = arg_1_1
+	arg_1_0.buffUid = arg_1_2.uid
 
-	FightController.instance:registerCallback(FightEvent.ALF_AddRecordCardUI, slot0.onUpdateRecordCard, slot0)
+	FightController.instance:registerCallback(FightEvent.ALF_AddRecordCardUI, arg_1_0.onUpdateRecordCard, arg_1_0)
 
-	slot0.effectRes, slot0.recordCount = slot0:getEffectRes(slot2)
-	slot0.loader = MultiAbLoader.New()
+	arg_1_0.effectRes, arg_1_0.recordCount = arg_1_0:getEffectRes(arg_1_2)
+	arg_1_0.loader = MultiAbLoader.New()
 
-	slot0.loader:addPath(FightHelper.getEffectUrlWithLod(slot0.effectRes))
-	slot0.loader:startLoad(slot0.createEffect, slot0)
+	arg_1_0.loader:addPath(FightHelper.getEffectUrlWithLod(arg_1_0.effectRes))
+	arg_1_0.loader:startLoad(arg_1_0.createEffect, arg_1_0)
 end
 
-function slot0.getEffectRes(slot0, slot1)
-	slot4 = 0
+function var_0_0.getEffectRes(arg_2_0, arg_2_1)
+	local var_2_0 = arg_2_1:getCO()
+	local var_2_1 = FightStrUtil.instance:getSplitString2Cache(var_2_0.features, true)
+	local var_2_2 = 0
 
-	for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot1:getCO().features, true)) do
-		if slot9[1] == 923 then
-			slot4 = slot9[3]
+	for iter_2_0, iter_2_1 in ipairs(var_2_1) do
+		if iter_2_1[1] == 923 then
+			var_2_2 = iter_2_1[3]
 
 			break
 		end
 	end
 
-	if not uv0.RecordCount2BuffEffect[slot4] then
-		logError("阿莱夫 没有找到对应数量的特效 ： " .. tostring(slot4))
+	local var_2_3 = var_0_0.RecordCount2BuffEffect[var_2_2]
 
-		return uv0.RecordCount2BuffEffect[2], 2
+	if not var_2_3 then
+		logError("阿莱夫 没有找到对应数量的特效 ： " .. tostring(var_2_2))
+
+		return var_0_0.RecordCount2BuffEffect[2], 2
 	end
 
-	return slot5, slot4
+	return var_2_3, var_2_2
 end
 
-function slot0.createEffect(slot0, slot1)
-	slot0.effectWrap = slot0.entity.effect:addHangEffect(slot0.effectRes, ModuleEnum.SpineHangPointRoot)
+function var_0_0.createEffect(arg_3_0, arg_3_1)
+	arg_3_0.effectWrap = arg_3_0.entity.effect:addHangEffect(arg_3_0.effectRes, ModuleEnum.SpineHangPointRoot)
 
-	slot0.effectWrap:setLocalPos(0, 0, 0)
-	FightRenderOrderMgr.instance:onAddEffectWrap(slot0.entity.id, slot0.effectWrap)
-	slot0.entity.buff:addLoopBuff(slot0.effectWrap)
-	slot0:refreshEffect()
+	arg_3_0.effectWrap:setLocalPos(0, 0, 0)
+	FightRenderOrderMgr.instance:onAddEffectWrap(arg_3_0.entity.id, arg_3_0.effectWrap)
+	arg_3_0.entity.buff:addLoopBuff(arg_3_0.effectWrap)
+	arg_3_0:refreshEffect()
 end
 
-function slot0.onBuffEnd(slot0)
-	slot0:clear()
+function var_0_0.onBuffEnd(arg_4_0)
+	arg_4_0:clear()
 end
 
-function slot0.clear(slot0)
-	slot0:resetMat()
-	slot0:clearTextureLoader()
+function var_0_0.clear(arg_5_0)
+	arg_5_0:resetMat()
+	arg_5_0:clearTextureLoader()
 
-	if slot0.loader then
-		slot0.loader:dispose()
+	if arg_5_0.loader then
+		arg_5_0.loader:dispose()
 
-		slot0.loader = nil
+		arg_5_0.loader = nil
 	end
 
-	if slot0.effectWrap then
-		slot0.entity.buff:removeLoopBuff(slot0.effectWrap)
-		slot0.entity.effect:removeEffect(slot0.effectWrap)
-		FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0.entity.id, slot0.effectWrap)
+	if arg_5_0.effectWrap then
+		arg_5_0.entity.buff:removeLoopBuff(arg_5_0.effectWrap)
+		arg_5_0.entity.effect:removeEffect(arg_5_0.effectWrap)
+		FightRenderOrderMgr.instance:onRemoveEffectWrap(arg_5_0.entity.id, arg_5_0.effectWrap)
 
-		slot0.effectWrap = nil
+		arg_5_0.effectWrap = nil
 	end
 
-	FightController.instance:unregisterCallback(FightEvent.ALF_AddRecordCardUI, slot0.onUpdateRecordCard, slot0)
+	FightController.instance:unregisterCallback(FightEvent.ALF_AddRecordCardUI, arg_5_0.onUpdateRecordCard, arg_5_0)
 end
 
-function slot0.dispose(slot0)
-	slot0:clear()
+function var_0_0.dispose(arg_6_0)
+	arg_6_0:clear()
 end
 
-function slot0.onUpdateRecordCard(slot0)
-	slot0:refreshEffect()
+function var_0_0.onUpdateRecordCard(arg_7_0)
+	arg_7_0:refreshEffect()
 end
 
-slot0.PreFix = "root/l_boli"
-slot0.RecordCountNameDict = {
+var_0_0.PreFix = "root/l_boli"
+var_0_0.RecordCountNameDict = {
 	[2] = {
 		"l_boli01_di",
 		"l_boli01_di03"
@@ -102,79 +107,111 @@ slot0.RecordCountNameDict = {
 	}
 }
 
-function slot0.clearTextureLoader(slot0)
-	if slot0.textureLoader then
-		slot0.textureLoader:dispose()
+function var_0_0.clearTextureLoader(arg_8_0)
+	if arg_8_0.textureLoader then
+		arg_8_0.textureLoader:dispose()
 
-		slot0.textureLoader = nil
+		arg_8_0.textureLoader = nil
 	end
 end
 
-function slot0.getAlfCacheSkillList(slot0)
-	if slot0.entity.heroCustomComp and slot0.entity.heroCustomComp:getCustomComp() then
-		return slot1:getCacheSkillList()
+function var_0_0.getAlfCacheSkillList(arg_9_0)
+	local var_9_0 = arg_9_0.entity.heroCustomComp and arg_9_0.entity.heroCustomComp:getCustomComp()
+
+	if var_9_0 then
+		return var_9_0:getCacheSkillList()
 	end
 end
 
-function slot0.refreshEffect(slot0)
-	if not slot0.effectWrap then
+function var_0_0.refreshEffect(arg_10_0)
+	if not arg_10_0.effectWrap then
 		return
 	end
 
-	slot0:clearTextureLoader()
+	arg_10_0:clearTextureLoader()
 
-	slot0.skillResList = slot0.skillResList or {}
+	arg_10_0.skillResList = arg_10_0.skillResList or {}
 
-	tabletool.clear(slot0.skillResList)
+	tabletool.clear(arg_10_0.skillResList)
 
-	if not slot0:getAlfCacheSkillList() then
-		slot0:resetMat()
+	local var_10_0 = arg_10_0:getAlfCacheSkillList()
 
-		return
-	end
-
-	if #slot1 < 2 then
-		slot0:resetMat()
+	if not var_10_0 then
+		arg_10_0:resetMat()
 
 		return
 	end
 
-	slot0.textureLoader = MultiAbLoader.New()
+	if #var_10_0 < 2 then
+		arg_10_0:resetMat()
 
-	for slot5 = 2, #slot1 do
-		if not string.nilorempty(lua_skill.configDict[slot1[slot5]] and slot6.icon) then
-			slot8 = ResUrl.getSkillIcon(slot7)
+		return
+	end
 
-			slot0.textureLoader:addPath(slot8)
-			table.insert(slot0.skillResList, slot8)
+	arg_10_0.textureLoader = MultiAbLoader.New()
+
+	for iter_10_0 = 2, #var_10_0 do
+		local var_10_1 = lua_skill.configDict[var_10_0[iter_10_0]]
+		local var_10_2 = var_10_1 and var_10_1.icon
+
+		if not string.nilorempty(var_10_2) then
+			local var_10_3 = ResUrl.getSkillIcon(var_10_2)
+
+			arg_10_0.textureLoader:addPath(var_10_3)
+			table.insert(arg_10_0.skillResList, var_10_3)
 		else
-			table.insert(slot0.skillResList, nil)
+			table.insert(arg_10_0.skillResList, nil)
 		end
 	end
 
-	slot0.textureLoader:startLoad(slot0._refreshEffect, slot0)
+	arg_10_0.textureLoader:startLoad(arg_10_0._refreshEffect, arg_10_0)
 end
 
-function slot0._refreshEffect(slot0)
-	for slot6 = 1, slot0.recordCount do
-		slot11 = slot0.skillResList[slot6] and slot0.textureLoader:getAssetItem(slot10)
+function var_0_0._refreshEffect(arg_11_0)
+	local var_11_0 = var_0_0.RecordCountNameDict[arg_11_0.recordCount]
+	local var_11_1 = arg_11_0.effectWrap.effectGO
 
-		if gohelper.findChild(slot0.effectWrap.effectGO, string.format("%s/%s/mask", uv0.PreFix, uv0.RecordCountNameDict[slot0.recordCount][slot6])) and slot9:GetComponent(gohelper.Type_Render) and slot13.material then
-			slot14:SetTexture("_MainTex", slot11 and slot11:GetResource())
+	for iter_11_0 = 1, arg_11_0.recordCount do
+		local var_11_2 = var_11_0[iter_11_0]
+		local var_11_3 = string.format("%s/%s/mask", var_0_0.PreFix, var_11_2)
+		local var_11_4 = gohelper.findChild(var_11_1, var_11_3)
+		local var_11_5 = arg_11_0.skillResList[iter_11_0]
+		local var_11_6 = var_11_5 and arg_11_0.textureLoader:getAssetItem(var_11_5)
+		local var_11_7 = var_11_6 and var_11_6:GetResource()
+
+		if var_11_4 then
+			local var_11_8 = var_11_4:GetComponent(gohelper.Type_Render)
+			local var_11_9 = var_11_8 and var_11_8.material
+
+			if var_11_9 then
+				var_11_9:SetTexture("_MainTex", var_11_7)
+			end
 		end
 	end
 end
 
-function slot0.resetMat(slot0)
-	if not slot0.effectWrap then
+function var_0_0.resetMat(arg_12_0)
+	if not arg_12_0.effectWrap then
 		return
 	end
 
-	for slot6 = 1, slot0.recordCount do
-		if gohelper.findChild(slot0.effectWrap.effectGO, string.format("%s/%s/mask", uv0.PreFix, uv0.RecordCountNameDict[slot0.recordCount][slot6])) and slot9:GetComponent(gohelper.Type_Render) and slot10.material then
-			slot11:SetTexture("_MainTex", nil)
+	local var_12_0 = var_0_0.RecordCountNameDict[arg_12_0.recordCount]
+	local var_12_1 = arg_12_0.effectWrap.effectGO
+
+	for iter_12_0 = 1, arg_12_0.recordCount do
+		local var_12_2 = var_12_0[iter_12_0]
+		local var_12_3 = string.format("%s/%s/mask", var_0_0.PreFix, var_12_2)
+		local var_12_4 = gohelper.findChild(var_12_1, var_12_3)
+
+		if var_12_4 then
+			local var_12_5 = var_12_4:GetComponent(gohelper.Type_Render)
+			local var_12_6 = var_12_5 and var_12_5.material
+
+			if var_12_6 then
+				var_12_6:SetTexture("_MainTex", nil)
+			end
 		end
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,29 +1,34 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessArrange_XYStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessArrange_XYStep", package.seeall)
 
-slot0 = class("EliminateChessArrange_XYStep", EliminateChessStepBase)
+local var_0_0 = class("EliminateChessArrange_XYStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
-	if slot0._data == nil or #slot0._data < 1 then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if arg_1_0._data == nil or #arg_1_0._data < 1 then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	for slot4, slot5 in ipairs(slot0._data) do
-		if slot5.viewItem ~= nil then
-			LengZhou6EliminateChessItemController.instance:updateChessItem(slot5.x, slot5.y, slot8)
-		else
-			slot9 = LengZhou6EliminateChessItemController.instance:getChessItem(slot6, slot7)
-			slot10 = slot9:getData()
-			slot11 = slot10.x
-			slot12 = slot10.y
+	for iter_1_0, iter_1_1 in ipairs(arg_1_0._data) do
+		local var_1_0 = iter_1_1.x
+		local var_1_1 = iter_1_1.y
+		local var_1_2 = iter_1_1.viewItem
 
-			LengZhou6EliminateChessItemController.instance:updateChessItem(slot6, slot7, LengZhou6EliminateChessItemController.instance:getChessItem(slot11, slot12))
-			LengZhou6EliminateChessItemController.instance:updateChessItem(slot11, slot12, slot9)
+		if var_1_2 ~= nil then
+			LengZhou6EliminateChessItemController.instance:updateChessItem(var_1_0, var_1_1, var_1_2)
+		else
+			local var_1_3 = LengZhou6EliminateChessItemController.instance:getChessItem(var_1_0, var_1_1)
+			local var_1_4 = var_1_3:getData()
+			local var_1_5 = var_1_4.x
+			local var_1_6 = var_1_4.y
+			local var_1_7 = LengZhou6EliminateChessItemController.instance:getChessItem(var_1_5, var_1_6)
+
+			LengZhou6EliminateChessItemController.instance:updateChessItem(var_1_0, var_1_1, var_1_7)
+			LengZhou6EliminateChessItemController.instance:updateChessItem(var_1_5, var_1_6, var_1_3)
 		end
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

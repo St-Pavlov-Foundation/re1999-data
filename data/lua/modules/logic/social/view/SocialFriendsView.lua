@@ -1,355 +1,379 @@
-module("modules.logic.social.view.SocialFriendsView", package.seeall)
+﻿module("modules.logic.social.view.SocialFriendsView", package.seeall)
 
-slot0 = class("SocialFriendsView", BaseView)
+local var_0_0 = class("SocialFriendsView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._gohas = gohelper.findChild(slot0.viewGO, "#go_has")
-	slot0._gono = gohelper.findChild(slot0.viewGO, "#go_no")
-	slot0._simagecharbg = gohelper.findChildSingleImage(slot0.viewGO, "#go_has/right/#simage_chartbg")
-	slot0._goSkinbg = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_skinbg")
-	slot0._gomessage = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_message")
-	slot0._btnselect = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click")
-	slot0._goselect = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click/selected")
-	slot0._gounselect = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/btn_click/unselect")
-	slot0._gotips = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips")
-	slot0._btnclosetips = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips/#btn_close")
-	slot0._inputsend = gohelper.findChildTextMeshInputField(slot0.viewGO, "#go_has/right/#go_message/send/#input_send")
-	slot0._scrollmessage = gohelper.findChildScrollRect(slot0.viewGO, "#go_has/right/#go_message/#scroll_message")
-	slot0._gocontent = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_message/#scroll_message/viewport/#go_content")
-	slot0._btnsend = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_has/right/#go_message/send/#btn_send")
-	slot0._txtcd = gohelper.findChildText(slot0.viewGO, "#go_has/right/#go_message/send/#btn_send/#txt_cd")
-	slot0._txtname = gohelper.findChildText(slot0.viewGO, "#go_has/right/#txt_name")
-	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._isSelectBtn = false
-	slot0._isSelfBg = true
-	slot0._isopen = false
-	slot0._selectitemList = {}
-	slot0._currentselectbg = nil
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gohas = gohelper.findChild(arg_1_0.viewGO, "#go_has")
+	arg_1_0._gono = gohelper.findChild(arg_1_0.viewGO, "#go_no")
+	arg_1_0._simagecharbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_has/right/#simage_chartbg")
+	arg_1_0._goSkinbg = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_skinbg")
+	arg_1_0._gomessage = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_message")
+	arg_1_0._btnselect = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_has/right/#go_settingbackground/btn_click")
+	arg_1_0._goselect = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_settingbackground/btn_click/selected")
+	arg_1_0._gounselect = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_settingbackground/btn_click/unselect")
+	arg_1_0._gotips = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_settingbackground/go_tips")
+	arg_1_0._btnclosetips = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_has/right/#go_settingbackground/go_tips/#btn_close")
+	arg_1_0._inputsend = gohelper.findChildTextMeshInputField(arg_1_0.viewGO, "#go_has/right/#go_message/send/#input_send")
+	arg_1_0._scrollmessage = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_has/right/#go_message/#scroll_message")
+	arg_1_0._gocontent = gohelper.findChild(arg_1_0.viewGO, "#go_has/right/#go_message/#scroll_message/viewport/#go_content")
+	arg_1_0._btnsend = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_has/right/#go_message/send/#btn_send")
+	arg_1_0._txtcd = gohelper.findChildText(arg_1_0.viewGO, "#go_has/right/#go_message/send/#btn_send/#txt_cd")
+	arg_1_0._txtname = gohelper.findChildText(arg_1_0.viewGO, "#go_has/right/#txt_name")
+	arg_1_0._animator = arg_1_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	arg_1_0._isSelectBtn = false
+	arg_1_0._isSelfBg = true
+	arg_1_0._isopen = false
+	arg_1_0._selectitemList = {}
+	arg_1_0._currentselectbg = nil
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnsend:AddClickListener(slot0._btnsendOnClick, slot0)
-	slot0._btnselect:AddClickListener(slot0._btnselectOnClick, slot0)
-	slot0._btnclosetips:AddClickListener(slot0._btnclosetipsOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnsend:AddClickListener(arg_2_0._btnsendOnClick, arg_2_0)
+	arg_2_0._btnselect:AddClickListener(arg_2_0._btnselectOnClick, arg_2_0)
+	arg_2_0._btnclosetips:AddClickListener(arg_2_0._btnclosetipsOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnsend:RemoveClickListener()
-	slot0._btnselect:RemoveClickListener()
-	slot0._btnclosetips:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnsend:RemoveClickListener()
+	arg_3_0._btnselect:RemoveClickListener()
+	arg_3_0._btnclosetips:RemoveClickListener()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._friendChatCD = nil
-	slot0._txtcd.text = luaLang("social_chat_send")
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._friendChatCD = nil
+	arg_4_0._txtcd.text = luaLang("social_chat_send")
 
-	slot0._simagecharbg:LoadImage(ResUrl.getSocialIcon("img_chat_bg.png"))
+	arg_4_0._simagecharbg:LoadImage(ResUrl.getSocialIcon("img_chat_bg.png"))
 
-	slot0.skinkey = PlayerPrefsKey.SocialFriendsViewSelectOwnSkin .. tostring(PlayerModel.instance:getPlayinfo().userId)
-	slot0._isSelfBg = PlayerPrefsHelper.getNumber(slot0.skinkey, SocialEnum.SelectEnum.Self) == SocialEnum.SelectEnum.Self
+	arg_4_0.skinkey = PlayerPrefsKey.SocialFriendsViewSelectOwnSkin .. tostring(PlayerModel.instance:getPlayinfo().userId)
+	arg_4_0._isSelfBg = PlayerPrefsHelper.getNumber(arg_4_0.skinkey, SocialEnum.SelectEnum.Self) == SocialEnum.SelectEnum.Self
 
-	slot0:_refreshSelect()
+	arg_4_0:_refreshSelect()
 
-	for slot4 = 1, 2 do
-		slot5 = slot0:getUserDataTb_()
-		slot5.go = gohelper.findChild(slot0.viewGO, "#go_has/right/#go_settingbackground/go_tips/bg/item" .. slot4)
-		slot5.btn = gohelper.findChildButton(slot5.go, "#btn_option")
-		slot5.goselect = gohelper.findChild(slot5.go, "txt_option/selected")
-		slot5.gounselect = gohelper.findChild(slot5.go, "txt_option/unselect")
-		slot5.isSelf = slot4 == SocialEnum.SelectEnum.Self
+	for iter_4_0 = 1, 2 do
+		local var_4_0 = arg_4_0:getUserDataTb_()
 
-		slot5.btn:AddClickListener(slot0.selectUseSkin, slot0, slot5.isSelf)
-		table.insert(slot0._selectitemList, slot5)
-		gohelper.setActive(slot5.goselect, slot5.isSelf == slot0._isSelfBg)
-		gohelper.setActive(slot5.gounselect, slot5.isSelf ~= slot0._isSelfBg)
+		var_4_0.go = gohelper.findChild(arg_4_0.viewGO, "#go_has/right/#go_settingbackground/go_tips/bg/item" .. iter_4_0)
+		var_4_0.btn = gohelper.findChildButton(var_4_0.go, "#btn_option")
+		var_4_0.goselect = gohelper.findChild(var_4_0.go, "txt_option/selected")
+		var_4_0.gounselect = gohelper.findChild(var_4_0.go, "txt_option/unselect")
+		var_4_0.isSelf = iter_4_0 == SocialEnum.SelectEnum.Self
+
+		var_4_0.btn:AddClickListener(arg_4_0.selectUseSkin, arg_4_0, var_4_0.isSelf)
+		table.insert(arg_4_0._selectitemList, var_4_0)
+		gohelper.setActive(var_4_0.goselect, var_4_0.isSelf == arg_4_0._isSelfBg)
+		gohelper.setActive(var_4_0.gounselect, var_4_0.isSelf ~= arg_4_0._isSelfBg)
 	end
 end
 
-function slot0._btnselectOnClick(slot0)
-	slot0._isSelectBtn = not slot0._isSelectBtn
+function var_0_0._btnselectOnClick(arg_5_0)
+	arg_5_0._isSelectBtn = not arg_5_0._isSelectBtn
 
-	slot0:_refreshSelect()
+	arg_5_0:_refreshSelect()
 end
 
-function slot0._btnclosetipsOnClick(slot0)
-	slot0._isSelectBtn = false
+function var_0_0._btnclosetipsOnClick(arg_6_0)
+	arg_6_0._isSelectBtn = false
 
-	slot0:_refreshSelect()
+	arg_6_0:_refreshSelect()
 end
 
-function slot0._refreshSelect(slot0)
-	gohelper.setActive(slot0._goselect, slot0._isSelectBtn)
-	gohelper.setActive(slot0._gounselect, not slot0._isSelectBtn)
-	gohelper.setActive(slot0._gotips, slot0._isSelectBtn)
+function var_0_0._refreshSelect(arg_7_0)
+	gohelper.setActive(arg_7_0._goselect, arg_7_0._isSelectBtn)
+	gohelper.setActive(arg_7_0._gounselect, not arg_7_0._isSelectBtn)
+	gohelper.setActive(arg_7_0._gotips, arg_7_0._isSelectBtn)
 end
 
-function slot0._loadBg(slot0)
-	slot1 = PlayerCardModel.instance:getPlayerCardSkinId()
+function var_0_0._loadBg(arg_8_0)
+	local var_8_0 = PlayerCardModel.instance:getPlayerCardSkinId()
 
-	if not slot0._isSelfBg then
-		if not slot0._selectFriend then
+	if not arg_8_0._isSelfBg then
+		if not arg_8_0._selectFriend then
 			return
 		end
 
-		slot1 = SocialModel.instance:getPlayerMO(slot0._selectFriend).bg
+		var_8_0 = SocialModel.instance:getPlayerMO(arg_8_0._selectFriend).bg
 	end
 
-	if slot1 == slot0._currentselectbg then
+	if var_8_0 == arg_8_0._currentselectbg then
 		return
 	end
 
-	if slot0._goskinEffect then
-		gohelper.destroy(slot0._goskinEffect)
+	if arg_8_0._goskinEffect then
+		gohelper.destroy(arg_8_0._goskinEffect)
 
-		slot0._goskinEffect = nil
+		arg_8_0._goskinEffect = nil
 	end
 
-	if slot1 and slot1 ~= 0 then
-		slot0._hasSkin = true
-		slot0._skinPath = string.format("ui/viewres/player/playercard/playercardskinpreview_%s.prefab", slot1)
-		slot0._loader = MultiAbLoader.New()
+	if var_8_0 and var_8_0 ~= 0 then
+		arg_8_0._hasSkin = true
+		arg_8_0._skinPath = string.format("ui/viewres/player/playercard/playercardskinpreview_%s.prefab", var_8_0)
+		arg_8_0._loader = MultiAbLoader.New()
 
-		slot0._loader:addPath(slot0._skinPath)
-		slot0._loader:startLoad(slot0._onLoadFinish, slot0)
+		arg_8_0._loader:addPath(arg_8_0._skinPath)
+		arg_8_0._loader:startLoad(arg_8_0._onLoadFinish, arg_8_0)
 	else
-		slot0._hasSkin = false
+		arg_8_0._hasSkin = false
 	end
 
-	gohelper.setActive(slot0._goSkinbg, slot0._hasSkin)
-	gohelper.setActive(slot0._simagecharbg.gameObject, not slot0._hasSkin)
+	gohelper.setActive(arg_8_0._goSkinbg, arg_8_0._hasSkin)
+	gohelper.setActive(arg_8_0._simagecharbg.gameObject, not arg_8_0._hasSkin)
 
-	if slot0._isopen and not slot0._hasSkin then
-		slot0._animator.enabled = true
+	if arg_8_0._isopen and not arg_8_0._hasSkin then
+		arg_8_0._animator.enabled = true
 
-		slot0._animator:Play("open", 0, 0)
+		arg_8_0._animator:Play("open", 0, 0)
 	end
 
-	slot0._currentselectbg = slot1
+	arg_8_0._currentselectbg = var_8_0
 end
 
-function slot0._onLoadFinish(slot0)
-	slot0._goskinEffect = gohelper.clone(slot0._loader:getAssetItem(slot0._skinPath):GetResource(slot0._skinPath), slot0._goSkinbg)
-	slot0._animator.enabled = true
+function var_0_0._onLoadFinish(arg_9_0)
+	local var_9_0 = arg_9_0._loader:getAssetItem(arg_9_0._skinPath):GetResource(arg_9_0._skinPath)
 
-	slot0._animator:Play("open", 0, 0)
+	arg_9_0._goskinEffect = gohelper.clone(var_9_0, arg_9_0._goSkinbg)
+	arg_9_0._animator.enabled = true
+
+	arg_9_0._animator:Play("open", 0, 0)
 end
 
-function slot0._btnsendOnClick(slot0)
-	if slot0._friendChatCD then
+function var_0_0._btnsendOnClick(arg_10_0)
+	if arg_10_0._friendChatCD then
 		GameFacade.showToast(ToastEnum.SocialFriends1)
 
 		return
 	end
 
-	if string.nilorempty(slot0._inputsend:GetText()) then
+	local var_10_0 = arg_10_0._inputsend:GetText()
+
+	if string.nilorempty(var_10_0) then
 		GameFacade.showToast(ToastEnum.SocialFriends2)
 
 		return
 	end
 
-	if string.nilorempty(string.gsub(slot1, " ", "")) then
+	local var_10_1 = string.gsub(var_10_0, " ", "")
+
+	if string.nilorempty(var_10_1) then
 		GameFacade.showToast(ToastEnum.SocialFriends2)
-		slot0._inputsend:SetText("")
+		arg_10_0._inputsend:SetText("")
 
 		return
 	end
 
-	slot0._friendChatCD = SocialEnum.FriendChatCD
-	slot0._txtcd.text = string.format("%ds", math.ceil(slot0._friendChatCD))
-	slot0._tweenId = ZProj.TweenHelper.DOTweenFloat(SocialEnum.FriendChatCD, 0, SocialEnum.FriendChatCD, slot0._onTimeUpdate, slot0._onTimeEnd, slot0, nil, EaseType.Linear)
-	slot0._scrollmessage.verticalNormalizedPosition = 0
-	slot3 = 0
-	slot4 = ""
+	arg_10_0._friendChatCD = SocialEnum.FriendChatCD
+	arg_10_0._txtcd.text = string.format("%ds", math.ceil(arg_10_0._friendChatCD))
+	arg_10_0._tweenId = ZProj.TweenHelper.DOTweenFloat(SocialEnum.FriendChatCD, 0, SocialEnum.FriendChatCD, arg_10_0._onTimeUpdate, arg_10_0._onTimeEnd, arg_10_0, nil, EaseType.Linear)
+	arg_10_0._scrollmessage.verticalNormalizedPosition = 0
 
-	if slot0._preSendInfo and slot0._preSendInfo.recipientId == slot0._selectFriend then
-		slot3 = slot0._preSendInfo.msgType
-		slot4 = slot0._preSendInfo.extData
+	local var_10_2 = 0
+	local var_10_3 = ""
 
-		slot0:_clearPreSendInfo()
+	if arg_10_0._preSendInfo and arg_10_0._preSendInfo.recipientId == arg_10_0._selectFriend then
+		var_10_2 = arg_10_0._preSendInfo.msgType
+		var_10_3 = arg_10_0._preSendInfo.extData
+
+		arg_10_0:_clearPreSendInfo()
 	end
 
-	ChatRpc.instance:sendSendMsgRequest(SocialEnum.ChannelType.Friend, slot0._selectFriend, slot1, slot3, slot4, slot0._onSendMsgReply, slot0)
+	ChatRpc.instance:sendSendMsgRequest(SocialEnum.ChannelType.Friend, arg_10_0._selectFriend, var_10_0, var_10_2, var_10_3, arg_10_0._onSendMsgReply, arg_10_0)
 end
 
-function slot0._onSendMsgReply(slot0, slot1, slot2, slot3)
-	if slot2 == 0 then
-		slot0._inputsend:SetText("")
+function var_0_0._onSendMsgReply(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	if arg_11_2 == 0 then
+		arg_11_0._inputsend:SetText("")
 
-		if slot0._preSendInfo and slot3.recipientId == slot4.recipientId and slot3.msgType == slot3.msgType then
-			slot0:_clearPreSendInfo()
+		local var_11_0 = arg_11_0._preSendInfo
+
+		if var_11_0 and arg_11_3.recipientId == var_11_0.recipientId and arg_11_3.msgType == arg_11_3.msgType then
+			arg_11_0:_clearPreSendInfo()
 		end
 	end
 end
 
-function slot0._clearPreSendInfo(slot0)
-	slot0._preSendInfo = nil
+function var_0_0._clearPreSendInfo(arg_12_0)
+	arg_12_0._preSendInfo = nil
 
-	if slot0.viewParam and slot0.viewParam.preSendInfo then
-		slot0.viewParam.preSendInfo = nil
+	if arg_12_0.viewParam and arg_12_0.viewParam.preSendInfo then
+		arg_12_0.viewParam.preSendInfo = nil
 	end
 end
 
-function slot0._onTimeUpdate(slot0, slot1)
-	slot0._friendChatCD = slot1
-	slot0._txtcd.text = string.format("%ds", math.ceil(slot0._friendChatCD))
+function var_0_0._onTimeUpdate(arg_13_0, arg_13_1)
+	arg_13_0._friendChatCD = arg_13_1
+	arg_13_0._txtcd.text = string.format("%ds", math.ceil(arg_13_0._friendChatCD))
 end
 
-function slot0._onTimeEnd(slot0)
-	slot0._friendChatCD = nil
-	slot0._txtcd.text = luaLang("social_chat_send")
-	slot0._tweenId = nil
+function var_0_0._onTimeEnd(arg_14_0)
+	arg_14_0._friendChatCD = nil
+	arg_14_0._txtcd.text = luaLang("social_chat_send")
+	arg_14_0._tweenId = nil
 end
 
-function slot0.onOpen(slot0)
-	slot0:addEventCb(SocialController.instance, SocialEvent.FriendsInfoChanged, slot0._refreshUI, slot0)
-	slot0:addEventCb(SocialController.instance, SocialEvent.SelectFriend, slot0._refreshMessageView, slot0)
-	slot0:addEventCb(SocialController.instance, SocialEvent.MessageInfoChanged, slot0._refreshMessageView, slot0)
-	slot0:addEventCb(SocialController.instance, SocialEvent.AddUnknownFriend, slot0._onAddUnknownFriend, slot0)
-	slot0:addEventCb(SocialController.instance, SocialEvent.FriendDescChange, slot0._ondescChange, slot0)
+function var_0_0.onOpen(arg_15_0)
+	arg_15_0:addEventCb(SocialController.instance, SocialEvent.FriendsInfoChanged, arg_15_0._refreshUI, arg_15_0)
+	arg_15_0:addEventCb(SocialController.instance, SocialEvent.SelectFriend, arg_15_0._refreshMessageView, arg_15_0)
+	arg_15_0:addEventCb(SocialController.instance, SocialEvent.MessageInfoChanged, arg_15_0._refreshMessageView, arg_15_0)
+	arg_15_0:addEventCb(SocialController.instance, SocialEvent.AddUnknownFriend, arg_15_0._onAddUnknownFriend, arg_15_0)
+	arg_15_0:addEventCb(SocialController.instance, SocialEvent.FriendDescChange, arg_15_0._ondescChange, arg_15_0)
 	SocialListModel.instance:sortFriendList()
 	FriendRpc.instance:sendGetFriendInfoListRequest()
 
-	if slot0._notFirst then
-		slot0:_refreshUI()
+	if arg_15_0._notFirst then
+		arg_15_0:_refreshUI()
 	else
-		slot0:_refreshUI(true)
+		arg_15_0:_refreshUI(true)
 	end
 
-	slot0._notFirst = true
-	slot0._preSendInfo = nil
+	arg_15_0._notFirst = true
+	arg_15_0._preSendInfo = nil
 
-	if slot0.viewParam and slot0.viewParam.preSendInfo then
-		slot0._preSendInfo = slot0.viewParam.preSendInfo
+	if arg_15_0.viewParam and arg_15_0.viewParam.preSendInfo then
+		arg_15_0._preSendInfo = arg_15_0.viewParam.preSendInfo
 
-		slot0._inputsend:SetText(slot0._preSendInfo.content)
+		arg_15_0._inputsend:SetText(arg_15_0._preSendInfo.content)
 	end
 
-	slot0:_loadBg()
+	arg_15_0:_loadBg()
 
-	slot0._isopen = true
+	arg_15_0._isopen = true
 end
 
-function slot0.selectUseSkin(slot0, slot1)
-	if slot1 then
-		slot0._isSelfBg = true
+function var_0_0.selectUseSkin(arg_16_0, arg_16_1)
+	if arg_16_1 then
+		arg_16_0._isSelfBg = true
 
-		PlayerPrefsHelper.setNumber(slot0.skinkey, SocialEnum.SelectEnum.Self)
+		PlayerPrefsHelper.setNumber(arg_16_0.skinkey, SocialEnum.SelectEnum.Self)
 	else
-		slot0._isSelfBg = false
+		arg_16_0._isSelfBg = false
 
-		PlayerPrefsHelper.setNumber(slot0.skinkey, SocialEnum.SelectEnum.Friend)
+		PlayerPrefsHelper.setNumber(arg_16_0.skinkey, SocialEnum.SelectEnum.Friend)
 	end
 
-	slot0:_loadBg()
+	arg_16_0:_loadBg()
 
-	for slot5, slot6 in ipairs(slot0._selectitemList) do
-		gohelper.setActive(slot6.goselect, slot6.isSelf == slot0._isSelfBg)
-		gohelper.setActive(slot6.gounselect, slot6.isSelf ~= slot0._isSelfBg)
+	for iter_16_0, iter_16_1 in ipairs(arg_16_0._selectitemList) do
+		gohelper.setActive(iter_16_1.goselect, iter_16_1.isSelf == arg_16_0._isSelfBg)
+		gohelper.setActive(iter_16_1.gounselect, iter_16_1.isSelf ~= arg_16_0._isSelfBg)
 	end
 
-	slot0:_btnclosetipsOnClick()
+	arg_16_0:_btnclosetipsOnClick()
 end
 
-function slot0._onAddUnknownFriend(slot0)
+function var_0_0._onAddUnknownFriend(arg_17_0)
 	FriendRpc.instance:sendGetFriendInfoListRequest()
 end
 
-function slot0.onClose(slot0)
-	slot0:removeEventCb(SocialController.instance, SocialEvent.FriendsInfoChanged, slot0._refreshUI, slot0)
-	slot0:removeEventCb(SocialController.instance, SocialEvent.SelectFriend, slot0._refreshMessageView, slot0)
-	slot0:removeEventCb(SocialController.instance, SocialEvent.MessageInfoChanged, slot0._refreshMessageView, slot0)
-	slot0:removeEventCb(SocialController.instance, SocialEvent.AddUnknownFriend, slot0._onAddUnknownFriend, slot0)
-	slot0:removeEventCb(SocialController.instance, SocialEvent.FriendDescChange, slot0._ondescChange, slot0)
+function var_0_0.onClose(arg_18_0)
+	arg_18_0:removeEventCb(SocialController.instance, SocialEvent.FriendsInfoChanged, arg_18_0._refreshUI, arg_18_0)
+	arg_18_0:removeEventCb(SocialController.instance, SocialEvent.SelectFriend, arg_18_0._refreshMessageView, arg_18_0)
+	arg_18_0:removeEventCb(SocialController.instance, SocialEvent.MessageInfoChanged, arg_18_0._refreshMessageView, arg_18_0)
+	arg_18_0:removeEventCb(SocialController.instance, SocialEvent.AddUnknownFriend, arg_18_0._onAddUnknownFriend, arg_18_0)
+	arg_18_0:removeEventCb(SocialController.instance, SocialEvent.FriendDescChange, arg_18_0._ondescChange, arg_18_0)
 end
 
-function slot0._refreshUI(slot0, slot1)
-	slot2 = SocialModel.instance:getFriendsCount()
+function var_0_0._refreshUI(arg_19_0, arg_19_1)
+	local var_19_0 = SocialModel.instance:getFriendsCount()
 
-	if not slot1 then
-		gohelper.setActive(slot0._gohas, slot2 > 0)
-		gohelper.setActive(slot0._gono, slot2 <= 0)
+	if not arg_19_1 then
+		gohelper.setActive(arg_19_0._gohas, var_19_0 > 0)
+		gohelper.setActive(arg_19_0._gono, var_19_0 <= 0)
 	else
-		gohelper.setActive(slot0._gohas, slot2 > 0)
-		gohelper.setActive(slot0._gono, false)
+		gohelper.setActive(arg_19_0._gohas, var_19_0 > 0)
+		gohelper.setActive(arg_19_0._gono, false)
 	end
 
-	if not SocialModel.instance:getSelectFriend() and SocialListModel.instance:getModel(SocialEnum.Type.Friend):getList() and #slot4 > 0 then
-		SocialModel.instance:setSelectFriend(slot4[1].userId)
-	end
-
-	slot0:_refreshMessageView()
-end
-
-function slot0._refreshMessageView(slot0)
 	if not SocialModel.instance:getSelectFriend() then
-		gohelper.setActive(slot0._gomessage, false)
+		local var_19_1 = SocialListModel.instance:getModel(SocialEnum.Type.Friend):getList()
 
-		slot0._txtname.text = ""
-		slot0._selectFriend = nil
+		if var_19_1 and #var_19_1 > 0 then
+			local var_19_2 = var_19_1[1]
 
-		return
-	end
-
-	gohelper.setActive(slot0._gomessage, true)
-	SocialMessageModel.instance:clearMessageUnread(SocialEnum.ChannelType.Friend, slot1)
-
-	slot2 = recthelper.getHeight(slot0._gocontent.transform) <= recthelper.getHeight(slot0._scrollmessage.transform) or slot0._scrollmessage.verticalNormalizedPosition <= 0.01 or slot0._selectFriend ~= slot1
-
-	if slot0._selectFriend ~= slot1 then
-		slot0._inputsend:SetText("")
-
-		if slot0._preSendInfo and slot0._preSendInfo.recipientId == slot0._selectFriend then
-			slot0:_clearPreSendInfo()
+			SocialModel.instance:setSelectFriend(var_19_2.userId)
 		end
 	end
 
-	slot0._selectFriend = slot1
-
-	slot0:_ondescChange()
-	SocialMessageListModel.instance:setMessageList(SocialMessageModel.instance:getSocialMessageMOList(SocialEnum.ChannelType.Friend, slot0._selectFriend))
-
-	if slot2 then
-		slot0._scrollmessage.verticalNormalizedPosition = 0
-	end
-
-	slot0:selectUseSkin(slot0._isSelfBg)
+	arg_19_0:_refreshMessageView()
 end
 
-function slot0._ondescChange(slot0, slot1)
-	if slot1 and slot1 ~= slot0._selectFriend then
+function var_0_0._refreshMessageView(arg_20_0)
+	local var_20_0 = SocialModel.instance:getSelectFriend()
+
+	if not var_20_0 then
+		gohelper.setActive(arg_20_0._gomessage, false)
+
+		arg_20_0._txtname.text = ""
+		arg_20_0._selectFriend = nil
+
 		return
 	end
 
-	if string.nilorempty(SocialModel.instance:getPlayerMO(slot0._selectFriend).desc) then
-		slot0._txtname.text = tostring(slot2.name)
+	gohelper.setActive(arg_20_0._gomessage, true)
+	SocialMessageModel.instance:clearMessageUnread(SocialEnum.ChannelType.Friend, var_20_0)
+
+	local var_20_1 = recthelper.getHeight(arg_20_0._scrollmessage.transform) >= recthelper.getHeight(arg_20_0._gocontent.transform) or arg_20_0._scrollmessage.verticalNormalizedPosition <= 0.01 or arg_20_0._selectFriend ~= var_20_0
+
+	if arg_20_0._selectFriend ~= var_20_0 then
+		arg_20_0._inputsend:SetText("")
+
+		if arg_20_0._preSendInfo and arg_20_0._preSendInfo.recipientId == arg_20_0._selectFriend then
+			arg_20_0:_clearPreSendInfo()
+		end
+	end
+
+	arg_20_0._selectFriend = var_20_0
+
+	arg_20_0:_ondescChange()
+
+	local var_20_2 = SocialMessageModel.instance:getSocialMessageMOList(SocialEnum.ChannelType.Friend, arg_20_0._selectFriend)
+
+	SocialMessageListModel.instance:setMessageList(var_20_2)
+
+	if var_20_1 then
+		arg_20_0._scrollmessage.verticalNormalizedPosition = 0
+	end
+
+	arg_20_0:selectUseSkin(arg_20_0._isSelfBg)
+end
+
+function var_0_0._ondescChange(arg_21_0, arg_21_1)
+	if arg_21_1 and arg_21_1 ~= arg_21_0._selectFriend then
+		return
+	end
+
+	local var_21_0 = SocialModel.instance:getPlayerMO(arg_21_0._selectFriend)
+
+	if string.nilorempty(var_21_0.desc) then
+		arg_21_0._txtname.text = tostring(var_21_0.name)
 	else
-		slot0._txtname.text = slot2.desc
+		arg_21_0._txtname.text = var_21_0.desc
 	end
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_22_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
-	if slot0._tweenId then
-		ZProj.TweenHelper.KillById(slot0._tweenId)
+function var_0_0.onDestroyView(arg_23_0)
+	if arg_23_0._tweenId then
+		ZProj.TweenHelper.KillById(arg_23_0._tweenId)
 	end
 
-	if slot0._loader then
-		slot0._loader:dispose()
+	if arg_23_0._loader then
+		arg_23_0._loader:dispose()
 
-		slot0._loader = nil
+		arg_23_0._loader = nil
 	end
 
-	for slot4, slot5 in ipairs(slot0._selectitemList) do
-		slot5.btn:RemoveClickListener()
+	for iter_23_0, iter_23_1 in ipairs(arg_23_0._selectitemList) do
+		iter_23_1.btn:RemoveClickListener()
 	end
 
-	slot0._simagecharbg:UnLoadImage()
+	arg_23_0._simagecharbg:UnLoadImage()
 end
 
-return slot0
+return var_0_0

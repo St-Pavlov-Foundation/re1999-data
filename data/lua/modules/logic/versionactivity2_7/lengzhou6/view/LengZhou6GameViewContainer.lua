@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameViewContainer", package.seeall)
 
-slot0 = class("LengZhou6GameViewContainer", BaseViewContainer)
+local var_0_0 = class("LengZhou6GameViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
+function var_0_0.buildViews(arg_1_0)
 	return {
 		LengZhou6GameView.New(),
 		TabViewGroup.New(1, "#go_btns"),
@@ -10,25 +10,32 @@ function slot0.buildViews(slot0)
 	}
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot0.navigationView = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		local var_2_0 = arg_2_0:_getHelpId()
+
+		arg_2_0.navigationView = NavigateButtonsView.New({
 			true,
 			false,
-			slot0:_getHelpId() ~= nil
-		}, slot2)
+			var_2_0 ~= nil
+		}, var_2_0)
 
-		slot0.navigationView:setOverrideClose(slot0._overrideClose, slot0)
+		arg_2_0.navigationView:setOverrideClose(arg_2_0._overrideClose, arg_2_0)
 
 		return {
-			slot0.navigationView
+			arg_2_0.navigationView
 		}
 	end
 end
 
-function slot0._overrideClose(slot0)
-	if LengZhou6Model.instance:getEpisodeInfoMo(LengZhou6Model.instance:getCurEpisodeId()) then
-		LengZhou6StatHelper.instance:setGameResult(slot2:isEndlessEpisode() and LengZhou6Enum.GameResult.infiniteCancel or LengZhou6Enum.GameResult.normalCancel)
+function var_0_0._overrideClose(arg_3_0)
+	local var_3_0 = LengZhou6Model.instance:getCurEpisodeId()
+	local var_3_1 = LengZhou6Model.instance:getEpisodeInfoMo(var_3_0)
+
+	if var_3_1 then
+		local var_3_2 = var_3_1:isEndlessEpisode() and LengZhou6Enum.GameResult.infiniteCancel or LengZhou6Enum.GameResult.normalCancel
+
+		LengZhou6StatHelper.instance:setGameResult(var_3_2)
 	end
 
 	LengZhou6GameController.instance:levelGame(true)
@@ -36,18 +43,20 @@ function slot0._overrideClose(slot0)
 	LengZhou6StatHelper.instance:sendGameExit()
 end
 
-function slot0.refreshHelpId(slot0)
-	if slot0:_getHelpId() ~= nil and slot0.navigationView ~= nil then
-		slot0.navigationView:setHelpId(slot1)
+function var_0_0.refreshHelpId(arg_4_0)
+	local var_4_0 = arg_4_0:_getHelpId()
+
+	if var_4_0 ~= nil and arg_4_0.navigationView ~= nil then
+		arg_4_0.navigationView:setHelpId(var_4_0)
 	end
 end
 
-function slot0._getHelpId(slot0)
+function var_0_0._getHelpId(arg_5_0)
 	return 2500200
 end
 
-function slot0.onContainerInit(slot0)
-	slot0:addEventCb(HelpController.instance, HelpEvent.RefreshHelp, slot0.refreshHelpId, slot0)
+function var_0_0.onContainerInit(arg_6_0)
+	arg_6_0:addEventCb(HelpController.instance, HelpEvent.RefreshHelp, arg_6_0.refreshHelpId, arg_6_0)
 end
 
-return slot0
+return var_0_0

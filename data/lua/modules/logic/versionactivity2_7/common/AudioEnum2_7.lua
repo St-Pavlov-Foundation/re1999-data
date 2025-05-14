@@ -1,18 +1,19 @@
-module("modules.logic.versionactivity2_7.common.AudioEnum2_7", package.seeall)
+﻿module("modules.logic.versionactivity2_7.common.AudioEnum2_7", package.seeall)
 
-slot0 = _M
-slot0.VersionActivity2_7Enter = {
+local var_0_0 = _M
+
+var_0_0.VersionActivity2_7Enter = {
 	play_ui_yuzhou_open = 20270002,
 	play_ui_qiutu_revelation_open = 20270003
 }
-slot0.VersionActivity2_7SpaceBGM = {
+var_0_0.VersionActivity2_7SpaceBGM = {
 	play_2_7_yuzhou_ui_checkinspace = 3270033,
 	play_2_7_yuzhou_ui_checkoutspace = 3270034,
 	play_2_7_yuzhou_ui_checkpoint_amb_space = 3270031,
 	stop_2_7_yuzhou_ui_checkpoint_amb_space = 3270032
 }
-slot0.CooperGarlandBallRTPC = "ball_speed"
-slot0.CooperGarland = {
+var_0_0.CooperGarlandBallRTPC = "ball_speed"
+var_0_0.CooperGarland = {
 	play_ui_yuzhou_cube_turn = 20270016,
 	stop_ui_yuzhou_ball_loop = 20270015,
 	play_ui_yuzhou_ball_trap = 20270018,
@@ -33,7 +34,7 @@ slot0.CooperGarland = {
 	play_ui_yuzhou_level_unlock = 20270012,
 	play_ui_yuzhou_ball_reset = 20270020
 }
-slot0.LengZhou6 = {
+var_0_0.LengZhou6 = {
 	play_ui_yuzhou_lzl_explosion = 20270040,
 	play_ui_yuzhou_lzl_fail = 20270039,
 	play_ui_yuzhou_lzl_loading = 20270033,
@@ -47,7 +48,7 @@ slot0.LengZhou6 = {
 	play_ui_yuzhou_lzl_refresh = 20270037,
 	play_ui_yuzhou_lzl_boom = 20270035
 }
-slot0.Act191 = {
+var_0_0.Act191 = {
 	play_ui_yuzhou_dqq_earn_gold = 20270046,
 	play_ui_yuzhou_dqq_pmgressbar_02 = 20270043,
 	play_ui_yuzhou_dqq_panel_close = 20270047,
@@ -57,11 +58,11 @@ slot0.Act191 = {
 	play_ui_yuzhou_dqq_pmgressbar_01 = 20270042,
 	play_ui_yuzhou_dqq_equip_creation = 20270049
 }
-slot0.WarmUp = {
+var_0_0.WarmUp = {
 	play_ui_yuzhou_fax_print = 20270060,
 	play_ui_min_day_night = 20220210,
 	play_ui_yuzhou_fax_beep = 20270059,
 	play_ui_yuzhou_fax_earcap = 20270058
 }
 
-return slot0
+return var_0_0

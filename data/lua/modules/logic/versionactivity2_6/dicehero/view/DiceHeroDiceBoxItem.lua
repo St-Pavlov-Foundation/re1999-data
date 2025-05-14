@@ -1,226 +1,252 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroDiceBoxItem", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroDiceBoxItem", package.seeall)
 
-slot0 = class("DiceHeroDiceBoxItem", LuaCompBase)
+local var_0_0 = class("DiceHeroDiceBoxItem", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0._parentView = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._parentView = arg_1_1
 end
 
-function slot0.init(slot0, slot1)
-	slot0._goreroll = gohelper.findChild(slot1, "#go_reroll")
-	slot0._goend = gohelper.findChild(slot1, "#go_end")
-	slot0._godices = gohelper.findChild(slot1, "dices")
-	slot0._btnreroll = gohelper.findChildButtonWithAudio(slot1, "#go_reroll/#btn_reroll")
-	slot0._btnconfirm = gohelper.findChildButtonWithAudio(slot1, "#go_reroll/#btn_confirm")
-	slot0._goconfirmeffect = gohelper.findChild(slot1, "#go_reroll/#btn_confirm/#hint")
-	slot0._btnskip = gohelper.findChildButtonWithAudio(slot1, "#go_reroll/#btn_skip")
-	slot0._btnend = gohelper.findChildButtonWithAudio(slot1, "#go_end/#btn_endround")
-	slot0._goendeffect = gohelper.findChild(slot1, "#go_end/#btn_endround/#hint")
-	slot0._btnusecard = gohelper.findChildButtonWithAudio(slot1, "#go_end/#btn_usecard")
-	slot0._txtrollnum = gohelper.findChildTextMesh(slot1, "#go_reroll/#btn_reroll/#txt_rollnum")
-	slot0._selectDict = {}
-	slot0._dices = {}
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0._goreroll = gohelper.findChild(arg_2_1, "#go_reroll")
+	arg_2_0._goend = gohelper.findChild(arg_2_1, "#go_end")
+	arg_2_0._godices = gohelper.findChild(arg_2_1, "dices")
+	arg_2_0._btnreroll = gohelper.findChildButtonWithAudio(arg_2_1, "#go_reroll/#btn_reroll")
+	arg_2_0._btnconfirm = gohelper.findChildButtonWithAudio(arg_2_1, "#go_reroll/#btn_confirm")
+	arg_2_0._goconfirmeffect = gohelper.findChild(arg_2_1, "#go_reroll/#btn_confirm/#hint")
+	arg_2_0._btnskip = gohelper.findChildButtonWithAudio(arg_2_1, "#go_reroll/#btn_skip")
+	arg_2_0._btnend = gohelper.findChildButtonWithAudio(arg_2_1, "#go_end/#btn_endround")
+	arg_2_0._goendeffect = gohelper.findChild(arg_2_1, "#go_end/#btn_endround/#hint")
+	arg_2_0._btnusecard = gohelper.findChildButtonWithAudio(arg_2_1, "#go_end/#btn_usecard")
+	arg_2_0._txtrollnum = gohelper.findChildTextMesh(arg_2_1, "#go_reroll/#btn_reroll/#txt_rollnum")
+	arg_2_0._selectDict = {}
+	arg_2_0._dices = {}
 
-	for slot6 = 1, 12 do
-		slot7 = gohelper.findChild(slot0._godices, tostring(slot6))
-		slot0._dices[slot6] = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._parentView:getResInst(slot0._parentView.viewContainer._viewSetting.otherRes.diceitem, slot7), DiceHeroDiceItem, {
-			index = slot6
+	local var_2_0 = arg_2_0._parentView.viewContainer._viewSetting.otherRes.diceitem
+
+	for iter_2_0 = 1, 12 do
+		local var_2_1 = gohelper.findChild(arg_2_0._godices, tostring(iter_2_0))
+		local var_2_2 = gohelper.findChildButton(var_2_1, "")
+		local var_2_3 = arg_2_0._parentView:getResInst(var_2_0, var_2_1)
+
+		arg_2_0._dices[iter_2_0] = MonoHelper.addNoUpdateLuaComOnceToGo(var_2_3, DiceHeroDiceItem, {
+			index = iter_2_0
 		})
 
-		slot0:addClickCb(gohelper.findChildButton(slot7, ""), slot0._onDiceClick, slot0, slot6)
+		arg_2_0:addClickCb(var_2_2, arg_2_0._onDiceClick, arg_2_0, iter_2_0)
 	end
 
-	if lua_dice_level.configDict[DiceHeroModel.instance.lastEnterLevelId] then
-		if DiceHeroModel.instance:getGameInfo(slot4.chapter).currLevel ~= slot3 or slot5.allPass then
-			gohelper.setActive(slot0._btnskip, true)
+	local var_2_4 = DiceHeroModel.instance.lastEnterLevelId
+	local var_2_5 = lua_dice_level.configDict[var_2_4]
+
+	if var_2_5 then
+		local var_2_6 = DiceHeroModel.instance:getGameInfo(var_2_5.chapter)
+
+		if var_2_6.currLevel ~= var_2_4 or var_2_6.allPass then
+			gohelper.setActive(arg_2_0._btnskip, true)
 		else
-			gohelper.setActive(slot0._btnskip, false)
+			gohelper.setActive(arg_2_0._btnskip, false)
 		end
 	else
-		gohelper.setActive(slot0._btnskip, false)
+		gohelper.setActive(arg_2_0._btnskip, false)
 	end
 
-	slot0:onProgressUpdate()
-	slot0:updateRollNum()
+	arg_2_0:onProgressUpdate()
+	arg_2_0:updateRollNum()
 end
 
-function slot0.addEventListeners(slot0)
-	slot0._btnreroll:AddClickListener(slot0._onClickReroll, slot0)
-	slot0._btnconfirm:AddClickListener(slot0._onClickConfirm, slot0)
-	slot0._btnend:AddClickListener(slot0._onClickEnd, slot0)
-	slot0._btnskip:AddClickListener(slot0._onClickSkip, slot0)
-	slot0._btnusecard:AddClickListener(slot0._onClickUseCard, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.ConfirmDice, slot0.onProgressUpdate, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.StepEnd, slot0.onStepEnd, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, slot0.onSkillCardSelectChange, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, slot0.updateUseCardStatu, slot0)
+function var_0_0.addEventListeners(arg_3_0)
+	arg_3_0._btnreroll:AddClickListener(arg_3_0._onClickReroll, arg_3_0)
+	arg_3_0._btnconfirm:AddClickListener(arg_3_0._onClickConfirm, arg_3_0)
+	arg_3_0._btnend:AddClickListener(arg_3_0._onClickEnd, arg_3_0)
+	arg_3_0._btnskip:AddClickListener(arg_3_0._onClickSkip, arg_3_0)
+	arg_3_0._btnusecard:AddClickListener(arg_3_0._onClickUseCard, arg_3_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.ConfirmDice, arg_3_0.onProgressUpdate, arg_3_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.StepEnd, arg_3_0.onStepEnd, arg_3_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, arg_3_0.onSkillCardSelectChange, arg_3_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, arg_3_0.updateUseCardStatu, arg_3_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	slot0._btnreroll:RemoveClickListener()
-	slot0._btnconfirm:RemoveClickListener()
-	slot0._btnend:RemoveClickListener()
-	slot0._btnskip:RemoveClickListener()
-	slot0._btnusecard:RemoveClickListener()
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.ConfirmDice, slot0.onProgressUpdate, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.StepEnd, slot0.onStepEnd, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, slot0.onSkillCardSelectChange, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, slot0.updateUseCardStatu, slot0)
+function var_0_0.removeEventListeners(arg_4_0)
+	arg_4_0._btnreroll:RemoveClickListener()
+	arg_4_0._btnconfirm:RemoveClickListener()
+	arg_4_0._btnend:RemoveClickListener()
+	arg_4_0._btnskip:RemoveClickListener()
+	arg_4_0._btnusecard:RemoveClickListener()
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.ConfirmDice, arg_4_0.onProgressUpdate, arg_4_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.StepEnd, arg_4_0.onStepEnd, arg_4_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, arg_4_0.onSkillCardSelectChange, arg_4_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, arg_4_0.updateUseCardStatu, arg_4_0)
 end
 
-function slot0.onStepEnd(slot0, slot1)
-	for slot5 = 1, 12 do
-		slot0._dices[slot5]:onStepEnd(slot1)
+function var_0_0.onStepEnd(arg_5_0, arg_5_1)
+	for iter_5_0 = 1, 12 do
+		arg_5_0._dices[iter_5_0]:onStepEnd(arg_5_1)
 	end
 
-	slot0:onProgressUpdate()
-	slot0:updateRollNum()
-	slot0:checkEndEffect()
+	arg_5_0:onProgressUpdate()
+	arg_5_0:updateRollNum()
+	arg_5_0:checkEndEffect()
 
-	if DiceHeroFightModel.instance:getGameData().diceBox.resetTimes <= 0 and not slot2.confirmed and DiceHeroFightModel.instance.finishResult == DiceHeroEnum.GameStatu.None then
-		slot0:_onClickConfirm()
-	end
-end
+	local var_5_0 = DiceHeroFightModel.instance:getGameData()
 
-function slot0.startRoll(slot0)
-	slot0._selectDict = {}
-
-	for slot4 = 1, 12 do
-		slot0._dices[slot4]:startRoll()
+	if var_5_0.diceBox.resetTimes <= 0 and not var_5_0.confirmed and DiceHeroFightModel.instance.finishResult == DiceHeroEnum.GameStatu.None then
+		arg_5_0:_onClickConfirm()
 	end
 end
 
-function slot0.updateRollNum(slot0)
-	if DiceHeroFightModel.instance:getGameData().diceBox.resetTimes > 0 then
-		slot0._txtrollnum.text = slot1.resetTimes .. "/" .. slot1.maxResetTimes
+function var_0_0.startRoll(arg_6_0)
+	arg_6_0._selectDict = {}
+
+	for iter_6_0 = 1, 12 do
+		arg_6_0._dices[iter_6_0]:startRoll()
+	end
+end
+
+function var_0_0.updateRollNum(arg_7_0)
+	local var_7_0 = DiceHeroFightModel.instance:getGameData().diceBox
+
+	if var_7_0.resetTimes > 0 then
+		arg_7_0._txtrollnum.text = var_7_0.resetTimes .. "/" .. var_7_0.maxResetTimes
 	else
-		slot0._txtrollnum.text = "<color=#cd5353>" .. slot1.resetTimes .. "</color>/" .. slot1.maxResetTimes
+		arg_7_0._txtrollnum.text = "<color=#cd5353>" .. var_7_0.resetTimes .. "</color>/" .. var_7_0.maxResetTimes
 	end
 
-	gohelper.setActive(slot0._goconfirmeffect, slot1.resetTimes <= 0)
+	gohelper.setActive(arg_7_0._goconfirmeffect, var_7_0.resetTimes <= 0)
 end
 
-function slot0.onProgressUpdate(slot0)
-	slot1 = DiceHeroFightModel.instance:getGameData()
+function var_0_0.onProgressUpdate(arg_8_0)
+	local var_8_0 = DiceHeroFightModel.instance:getGameData()
 
-	gohelper.setActive(slot0._goreroll, not slot1.confirmed)
-	gohelper.setActive(slot0._goend, slot1.confirmed)
+	gohelper.setActive(arg_8_0._goreroll, not var_8_0.confirmed)
+	gohelper.setActive(arg_8_0._goend, var_8_0.confirmed)
 
-	if slot1.confirmed then
-		slot0:checkEndEffect()
+	if var_8_0.confirmed then
+		arg_8_0:checkEndEffect()
 	end
 end
 
-function slot0.checkEndEffect(slot0)
-	slot1 = true
+function var_0_0.checkEndEffect(arg_9_0)
+	local var_9_0 = true
+	local var_9_1 = DiceHeroFightModel.instance:getGameData()
 
-	for slot6, slot7 in pairs(DiceHeroFightModel.instance:getGameData().skillCards) do
-		if slot7:canSelect() then
-			slot1 = false
+	for iter_9_0, iter_9_1 in pairs(var_9_1.skillCards) do
+		if iter_9_1:canSelect() then
+			var_9_0 = false
 
 			break
 		end
 	end
 
-	gohelper.setActive(slot0._goendeffect, slot1)
+	gohelper.setActive(arg_9_0._goendeffect, var_9_0)
 end
 
-function slot0._onDiceClick(slot0, slot1)
+function var_0_0._onDiceClick(arg_10_0, arg_10_1)
 	if DiceHeroHelper.instance:isInFlow() then
 		return
 	end
 
-	if not slot0._dices[slot1].diceMo or slot2.deleted then
+	local var_10_0 = arg_10_0._dices[arg_10_1].diceMo
+
+	if not var_10_0 or var_10_0.deleted then
 		return
 	end
 
-	slot3 = DiceHeroFightModel.instance:getGameData()
-	slot4 = slot3.curSelectCardMo
+	local var_10_1 = DiceHeroFightModel.instance:getGameData()
+	local var_10_2 = var_10_1.curSelectCardMo
 
-	if not slot3.confirmed then
-		if slot2.status ~= DiceHeroEnum.DiceStatu.Normal then
+	if not var_10_1.confirmed then
+		if var_10_0.status ~= DiceHeroEnum.DiceStatu.Normal then
 			return
 		end
 
-		if slot0._selectDict[slot1] then
-			slot0._selectDict[slot1] = nil
+		if arg_10_0._selectDict[arg_10_1] then
+			arg_10_0._selectDict[arg_10_1] = nil
 
-			slot0._dices[slot1]:setSelect(false)
+			arg_10_0._dices[arg_10_1]:setSelect(false)
 			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardunready)
 		else
-			slot0._selectDict[slot1] = true
+			arg_10_0._selectDict[arg_10_1] = true
 
-			slot0._dices[slot1]:setSelect(true)
+			arg_10_0._dices[arg_10_1]:setSelect(true)
 			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardready)
 		end
 	else
-		if not slot4 then
+		if not var_10_2 then
 			return
 		end
 
-		if slot2.status == DiceHeroEnum.DiceStatu.HardLock then
+		if var_10_0.status == DiceHeroEnum.DiceStatu.HardLock then
 			return
 		end
 
-		if slot0._selectDict[slot1] then
-			slot4:removeDice(slot2.uid)
-		elseif not slot4:addDice(slot2.uid) then
+		if arg_10_0._selectDict[arg_10_1] then
+			var_10_2:removeDice(var_10_0.uid)
+		elseif not var_10_2:addDice(var_10_0.uid) then
 			return
 		end
 
-		if slot0._selectDict[slot1] then
-			slot0._selectDict[slot1] = nil
+		if arg_10_0._selectDict[arg_10_1] then
+			arg_10_0._selectDict[arg_10_1] = nil
 
 			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardunready)
 		else
-			slot0._selectDict[slot1] = true
+			arg_10_0._selectDict[arg_10_1] = true
 
 			AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_cardready)
 		end
 
-		slot5 = slot4:getCanUseDiceUidDict()
+		local var_10_3 = var_10_2:getCanUseDiceUidDict()
 
-		for slot9 = 1, 12 do
-			if slot0._dices[slot9].diceMo and not slot0._dices[slot9].diceMo.deleted then
-				if slot0._selectDict[slot9] then
-					slot0._dices[slot9]:setSelect(true)
+		for iter_10_0 = 1, 12 do
+			if arg_10_0._dices[iter_10_0].diceMo and not arg_10_0._dices[iter_10_0].diceMo.deleted then
+				if arg_10_0._selectDict[iter_10_0] then
+					arg_10_0._dices[iter_10_0]:setSelect(true)
 				else
-					slot0._dices[slot9]:setSelect(false, slot5[slot0._dices[slot9].diceMo.uid] and true or false)
+					arg_10_0._dices[iter_10_0]:setSelect(false, var_10_3[arg_10_0._dices[iter_10_0].diceMo.uid] and true or false)
 				end
 			end
 		end
 	end
 end
 
-function slot0._onClickUseCard(slot0)
-	if not DiceHeroFightModel.instance:getGameData().curSelectCardMo then
+function var_0_0._onClickUseCard(arg_11_0)
+	local var_11_0 = DiceHeroFightModel.instance:getGameData()
+	local var_11_1 = var_11_0.curSelectCardMo
+
+	if not var_11_1 then
 		return
 	end
 
-	slot3, slot4 = slot2:canUse()
+	local var_11_2, var_11_3 = var_11_1:canUse()
 
-	if not slot3 then
+	if not var_11_2 then
 		return
 	end
 
-	DiceHeroRpc.instance:sendDiceHeroUseSkill(DiceHeroEnum.SkillType.Normal, slot2.skillId, slot1.curSelectEnemyMo and slot1.curSelectEnemyMo.uid or "", slot4, slot3 > 0 and slot3 - 1 or slot3)
+	local var_11_4 = var_11_0.curSelectEnemyMo and var_11_0.curSelectEnemyMo.uid or ""
+
+	DiceHeroRpc.instance:sendDiceHeroUseSkill(DiceHeroEnum.SkillType.Normal, var_11_1.skillId, var_11_4, var_11_3, var_11_2 > 0 and var_11_2 - 1 or var_11_2)
 end
 
-function slot0.onSkillCardSelectChange(slot0)
-	if not DiceHeroFightModel.instance:getGameData().confirmed then
+function var_0_0.onSkillCardSelectChange(arg_12_0)
+	local var_12_0 = DiceHeroFightModel.instance:getGameData()
+
+	if not var_12_0.confirmed then
 		return
 	end
 
-	slot0._selectDict = {}
+	arg_12_0._selectDict = {}
 
-	if slot1.curSelectCardMo then
-		slot3, slot4 = slot2:isMatchMin(true)
+	local var_12_1 = var_12_0.curSelectCardMo
 
-		if slot3 then
-			for slot8, slot9 in ipairs(slot4) do
-				for slot13 = 1, 12 do
-					if slot0._dices[slot13].diceMo and slot0._dices[slot13].diceMo.uid == slot9 and slot2:addDice(slot9) then
-						slot0._selectDict[slot13] = true
+	if var_12_1 then
+		local var_12_2, var_12_3 = var_12_1:isMatchMin(true)
+
+		if var_12_2 then
+			for iter_12_0, iter_12_1 in ipairs(var_12_3) do
+				for iter_12_2 = 1, 12 do
+					if arg_12_0._dices[iter_12_2].diceMo and arg_12_0._dices[iter_12_2].diceMo.uid == iter_12_1 and var_12_1:addDice(iter_12_1) then
+						arg_12_0._selectDict[iter_12_2] = true
 
 						break
 					end
@@ -229,43 +255,48 @@ function slot0.onSkillCardSelectChange(slot0)
 		end
 	end
 
-	slot3 = slot2 and slot2:getCanUseDiceUidDict()
+	local var_12_4 = var_12_1 and var_12_1:getCanUseDiceUidDict()
 
-	for slot7 = 1, 12 do
-		if slot0._dices[slot7].diceMo and not slot0._dices[slot7].diceMo.deleted then
-			slot8 = nil
+	for iter_12_3 = 1, 12 do
+		if arg_12_0._dices[iter_12_3].diceMo and not arg_12_0._dices[iter_12_3].diceMo.deleted then
+			local var_12_5
 
-			if slot3 then
-				slot8 = slot3[slot0._dices[slot7].diceMo.uid] and true or false
+			if var_12_4 then
+				var_12_5 = var_12_4[arg_12_0._dices[iter_12_3].diceMo.uid] and true or false
 			end
 
-			if slot0._selectDict[slot7] then
-				slot0._dices[slot7]:setSelect(true)
+			if arg_12_0._selectDict[iter_12_3] then
+				arg_12_0._dices[iter_12_3]:setSelect(true)
 			else
-				slot0._dices[slot7]:setSelect(false, slot8)
+				arg_12_0._dices[iter_12_3]:setSelect(false, var_12_5)
 			end
 		end
 	end
 
-	slot0:updateUseCardStatu()
+	arg_12_0:updateUseCardStatu()
 end
 
-function slot0.updateUseCardStatu(slot0)
-	gohelper.setActive(slot0._btnusecard, false)
+function var_0_0.updateUseCardStatu(arg_13_0)
+	gohelper.setActive(arg_13_0._btnusecard, false)
 
-	return
+	do return end
 
-	if not DiceHeroFightModel.instance:getGameData().curSelectCardMo then
-		gohelper.setActive(slot0._btnusecard, false)
+	local var_13_0 = DiceHeroFightModel.instance:getGameData().curSelectCardMo
+
+	if not var_13_0 then
+		gohelper.setActive(arg_13_0._btnusecard, false)
 
 		return
 	end
 
-	gohelper.setActive(slot0._btnusecard, true)
-	ZProj.UGUIHelper.SetGrayscale(slot0._btnusecard.gameObject, not (slot1:canUse() and true or false))
+	gohelper.setActive(arg_13_0._btnusecard, true)
+
+	local var_13_1 = var_13_0:canUse() and true or false
+
+	ZProj.UGUIHelper.SetGrayscale(arg_13_0._btnusecard.gameObject, not var_13_1)
 end
 
-function slot0._onClickReroll(slot0)
+function var_0_0._onClickReroll(arg_14_0)
 	if DiceHeroHelper.instance:isInFlow() then
 		return
 	end
@@ -276,81 +307,83 @@ function slot0._onClickReroll(slot0)
 		return
 	end
 
-	slot2 = {}
+	local var_14_0 = {}
 
-	for slot6 in pairs(slot0._selectDict) do
-		table.insert(slot2, DiceHeroFightModel.instance:getGameData().diceBox.dices[slot6].uid)
+	for iter_14_0 in pairs(arg_14_0._selectDict) do
+		local var_14_1 = DiceHeroFightModel.instance:getGameData().diceBox.dices[iter_14_0]
+
+		table.insert(var_14_0, var_14_1.uid)
 	end
 
-	if not slot2[1] then
+	if not var_14_0[1] then
 		GameFacade.showToast(ToastEnum.DiceHeroNoSelectDice)
 
 		return
 	end
 
-	DiceHeroRpc.instance:sendDiceHeroResetDice(slot2, slot0._onReroll, slot0)
+	DiceHeroRpc.instance:sendDiceHeroResetDice(var_14_0, arg_14_0._onReroll, arg_14_0)
 end
 
-function slot0._onClickConfirm(slot0)
+function var_0_0._onClickConfirm(arg_15_0)
 	if DiceHeroHelper.instance:isInFlow() then
 		return
 	end
 
-	DiceHeroRpc.instance:sendDiceHeroConfirmDice(slot0._onConfirmEnd, slot0)
+	DiceHeroRpc.instance:sendDiceHeroConfirmDice(arg_15_0._onConfirmEnd, arg_15_0)
 end
 
-function slot0._onConfirmEnd(slot0, slot1, slot2, slot3)
-	if slot2 ~= 0 then
+function var_0_0._onConfirmEnd(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	if arg_16_2 ~= 0 then
 		return
 	end
 
-	slot0:onSkillCardSelectChange()
+	arg_16_0:onSkillCardSelectChange()
 end
 
-function slot0._onClickEnd(slot0)
+function var_0_0._onClickEnd(arg_17_0)
 	if DiceHeroHelper.instance:isInFlow() then
 		return
 	end
 
 	DiceHeroRpc.instance:sendDiceHeroEndRound()
-	gohelper.setActive(slot0._goend, false)
+	gohelper.setActive(arg_17_0._goend, false)
 end
 
-function slot0._onClickSkip(slot0)
-	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.DiceHeroSkipFight, MsgBoxEnum.BoxType.Yes_No, slot0._closeGameView, nil, , slot0)
+function var_0_0._onClickSkip(arg_18_0)
+	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.DiceHeroSkipFight, MsgBoxEnum.BoxType.Yes_No, arg_18_0._closeGameView, nil, nil, arg_18_0)
 end
 
-function slot0._closeGameView(slot0)
+function var_0_0._closeGameView(arg_19_0)
 	ViewMgr.instance:closeView(ViewName.DiceHeroGameView)
 end
 
-function slot0._onReroll(slot0, slot1, slot2, slot3)
-	if slot2 ~= 0 then
+function var_0_0._onReroll(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
+	if arg_20_2 ~= 0 then
 		return
 	end
 
-	DiceHeroFightModel.instance:getGameData().diceBox:init(slot3.diceBox)
+	DiceHeroFightModel.instance:getGameData().diceBox:init(arg_20_3.diceBox)
 	DiceHeroFightModel.instance:getGameData():onStepEnd()
-	slot0:updateRollNum()
+	arg_20_0:updateRollNum()
+	UIBlockHelper.instance:startBlock("DiceHeroDiceBoxItem_reroll", 0.6)
 
-	slot7 = 0.6
+	for iter_20_0 = 1, 12 do
+		arg_20_0._dices[iter_20_0]:setSelect(false)
 
-	UIBlockHelper.instance:startBlock("DiceHeroDiceBoxItem_reroll", slot7)
+		if arg_20_0._selectDict[iter_20_0] then
+			local var_20_0 = DiceHeroFightModel.instance:getGameData().diceBox.dices[iter_20_0]
 
-	for slot7 = 1, 12 do
-		slot0._dices[slot7]:setSelect(false)
-
-		if slot0._selectDict[slot7] then
-			slot0._dices[slot7]:playRefresh(DiceHeroFightModel.instance:getGameData().diceBox.dices[slot7])
+			arg_20_0._dices[iter_20_0]:playRefresh(var_20_0)
 		end
 	end
 
-	slot0._selectDict = {}
+	arg_20_0._selectDict = {}
 
 	DiceHeroController.instance:dispatchEvent(DiceHeroEvent.RerollDice)
 end
 
-function slot0.onDestroy(slot0)
+function var_0_0.onDestroy(arg_21_0)
+	return
 end
 
-return slot0
+return var_0_0

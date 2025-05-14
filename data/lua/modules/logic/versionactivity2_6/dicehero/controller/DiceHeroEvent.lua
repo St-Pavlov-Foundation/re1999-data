@@ -1,18 +1,19 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.DiceHeroEvent", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.DiceHeroEvent", package.seeall)
 
-slot0 = _M
-slot1 = GameUtil.getUniqueTb()
-slot0.OneClickClaimReward = slot1()
-slot0.InfoUpdate = slot1()
-slot0.ConfirmDice = slot1()
-slot0.RerollDice = slot1()
-slot0.StepStart = slot1()
-slot0.StepEnd = slot1()
-slot0.SkillCardSelectChange = slot1()
-slot0.SkillCardDiceChange = slot1()
-slot0.EnemySelectChange = slot1()
-slot0.RoundEnd = slot1()
-slot0.OnDamage = slot1()
-slot0.DiceHeroGuideRoundInfo = slot1()
+local var_0_0 = _M
+local var_0_1 = GameUtil.getUniqueTb()
 
-return slot0
+var_0_0.OneClickClaimReward = var_0_1()
+var_0_0.InfoUpdate = var_0_1()
+var_0_0.ConfirmDice = var_0_1()
+var_0_0.RerollDice = var_0_1()
+var_0_0.StepStart = var_0_1()
+var_0_0.StepEnd = var_0_1()
+var_0_0.SkillCardSelectChange = var_0_1()
+var_0_0.SkillCardDiceChange = var_0_1()
+var_0_0.EnemySelectChange = var_0_1()
+var_0_0.RoundEnd = var_0_1()
+var_0_0.OnDamage = var_0_1()
+var_0_0.DiceHeroGuideRoundInfo = var_0_1()
+
+return var_0_0

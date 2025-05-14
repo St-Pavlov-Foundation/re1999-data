@@ -1,48 +1,53 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6EliminateChessItemController", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.LengZhou6EliminateChessItemController", package.seeall)
 
-slot0 = class("LengZhou6EliminateChessItemController", EliminateChessItemController)
+local var_0_0 = class("LengZhou6EliminateChessItemController", EliminateChessItemController)
 
-function slot0.InitChess(slot0)
-	if LocalEliminateChessModel.instance:getAllCell() == nil then
+function var_0_0.InitChess(arg_1_0)
+	local var_1_0 = LocalEliminateChessModel.instance:getAllCell()
+
+	if var_1_0 == nil then
 		return
 	end
 
-	for slot5 = 1, #slot1 do
-		if slot0._chess[slot5] == nil then
-			slot0._chess[slot5] = {}
+	for iter_1_0 = 1, #var_1_0 do
+		if arg_1_0._chess[iter_1_0] == nil then
+			arg_1_0._chess[iter_1_0] = {}
 		end
 
-		for slot10 = 1, #slot1[slot5] do
-			slot12 = slot0:createChess(slot5, slot10)
+		local var_1_1 = var_1_0[iter_1_0]
 
-			slot12:initData(slot6[slot10])
+		for iter_1_1 = 1, #var_1_1 do
+			local var_1_2 = var_1_1[iter_1_1]
+			local var_1_3 = arg_1_0:createChess(iter_1_0, iter_1_1)
 
-			slot0._chess[slot5][slot10] = slot12
+			var_1_3:initData(var_1_2)
+
+			arg_1_0._chess[iter_1_0][iter_1_1] = var_1_3
 		end
 	end
 end
 
-function slot0.createChess(slot0, slot1, slot2)
-	slot3 = slot0:getChessItemGo(string.format("chess_%d_%d", slot1, slot2), slot1, slot2)
-	slot4 = MonoHelper.addNoUpdateLuaComOnceToGo(slot3, EliminateChessItem2_7, slot0)
+function var_0_0.createChess(arg_2_0, arg_2_1, arg_2_2)
+	local var_2_0 = arg_2_0:getChessItemGo(string.format("chess_%d_%d", arg_2_1, arg_2_2), arg_2_1, arg_2_2)
+	local var_2_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_2_0, EliminateChessItem2_7, arg_2_0)
 
-	slot4:init(slot3)
+	var_2_1:init(var_2_0)
 
-	return slot4
+	return var_2_1
 end
 
-function slot0.tempClearAllChess(slot0)
-	for slot4, slot5 in pairs(slot0._chess) do
-		for slot9, slot10 in pairs(slot5) do
-			if slot10 ~= nil then
-				slot10:onDestroy()
+function var_0_0.tempClearAllChess(arg_3_0)
+	for iter_3_0, iter_3_1 in pairs(arg_3_0._chess) do
+		for iter_3_2, iter_3_3 in pairs(iter_3_1) do
+			if iter_3_3 ~= nil then
+				iter_3_3:onDestroy()
 			end
 		end
 	end
 
-	tabletool.clear(slot0._chess)
+	tabletool.clear(arg_3_0._chess)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

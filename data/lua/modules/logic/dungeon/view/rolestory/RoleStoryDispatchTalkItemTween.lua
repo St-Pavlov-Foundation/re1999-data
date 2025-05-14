@@ -1,201 +1,229 @@
-module("modules.logic.dungeon.view.rolestory.RoleStoryDispatchTalkItemTween", package.seeall)
+﻿module("modules.logic.dungeon.view.rolestory.RoleStoryDispatchTalkItemTween", package.seeall)
 
-slot0 = class("RoleStoryDispatchTalkItemTween", UserDataDispose)
+local var_0_0 = class("RoleStoryDispatchTalkItemTween", UserDataDispose)
 
-function slot0.ctor(slot0)
-	slot0:__onInit()
+function var_0_0.ctor(arg_1_0)
+	arg_1_0:__onInit()
 end
 
-function slot0.playTween(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot0:killTween()
+function var_0_0.playTween(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4, arg_2_5)
+	arg_2_0:killTween()
 
-	slot0.callback = slot3
-	slot0.callbackObj = slot4
-	slot0.text = slot1
-	slot0.content = slot2
-	slot0.scrollContent = slot5
+	arg_2_0.callback = arg_2_3
+	arg_2_0.callbackObj = arg_2_4
+	arg_2_0.text = arg_2_1
+	arg_2_0.content = arg_2_2
+	arg_2_0.scrollContent = arg_2_5
 
-	TaskDispatcher.runDelay(slot0._delayShow, slot0, 0.05)
+	TaskDispatcher.runDelay(arg_2_0._delayShow, arg_2_0, 0.05)
 end
 
-function slot0._delayShow(slot0)
-	slot0:initText()
+function var_0_0._delayShow(arg_3_0)
+	arg_3_0:initText()
 
-	slot0.canvasGroup.alpha = 1
-	slot0.tweenId = ZProj.TweenHelper.DOTweenFloat(1, slot0.characterCount, slot0.delayTime, slot0.frameCallback, slot0.onTextFinished, slot0, nil, EaseType.Linear)
+	arg_3_0.canvasGroup.alpha = 1
+	arg_3_0.tweenId = ZProj.TweenHelper.DOTweenFloat(1, arg_3_0.characterCount, arg_3_0.delayTime, arg_3_0.frameCallback, arg_3_0.onTextFinished, arg_3_0, nil, EaseType.Linear)
 
-	slot0:moveContent()
+	arg_3_0:moveContent()
 end
 
-function slot0.moveContent(slot0)
-	slot1 = slot0.scrollContent.transform
-	slot2 = recthelper.getHeight(slot1.parent)
-	slot0.moveId = ZProj.TweenHelper.DOAnchorPosY(slot1, math.max(math.max(recthelper.getHeight(slot1) - slot2, 0), recthelper.getAnchorY(slot0.transform.parent) + recthelper.getHeight(slot0.transform.parent) - slot2), slot0.delayTime * 0.8, nil, , , EaseType.Linear)
+function var_0_0.moveContent(arg_4_0)
+	local var_4_0 = arg_4_0.scrollContent.transform
+	local var_4_1 = recthelper.getHeight(var_4_0.parent)
+	local var_4_2 = recthelper.getHeight(var_4_0)
+	local var_4_3 = math.max(var_4_2 - var_4_1, 0)
+	local var_4_4 = recthelper.getAnchorY(arg_4_0.transform.parent) + recthelper.getHeight(arg_4_0.transform.parent)
+	local var_4_5 = math.max(var_4_3, var_4_4 - var_4_1)
+
+	arg_4_0.moveId = ZProj.TweenHelper.DOAnchorPosY(var_4_0, var_4_5, arg_4_0.delayTime * 0.8, nil, nil, nil, EaseType.Linear)
 end
 
-function slot0._doCallback(slot0)
-	slot0.callback = nil
-	slot0.callbackObj = nil
+function var_0_0._doCallback(arg_5_0)
+	local var_5_0 = arg_5_0.callback
+	local var_5_1 = arg_5_0.callbackObj
 
-	if slot0.callback then
-		slot1(slot0.callbackObj)
+	arg_5_0.callback = nil
+	arg_5_0.callbackObj = nil
+
+	if var_5_0 then
+		var_5_0(var_5_1)
 	end
 end
 
-function slot0.frameCallback(slot0, slot1)
-	slot2 = UnityEngine.Screen.width
-	slot3 = CameraMgr.instance:getUICamera()
+function var_0_0.frameCallback(arg_6_0, arg_6_1)
+	local var_6_0 = UnityEngine.Screen.width
+	local var_6_1 = CameraMgr.instance:getUICamera()
 
-	for slot7, slot8 in ipairs(slot0.lineInfoList) do
-		slot9 = slot8[1]
-		slot11 = slot8[3]
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0.lineInfoList) do
+		local var_6_2 = iter_6_1[1]
+		local var_6_3 = iter_6_1[2]
+		local var_6_4 = iter_6_1[3]
 
-		if slot8[2] <= slot1 and slot1 <= slot11 then
-			slot12 = slot0.textInfo.characterInfo
-			slot14 = slot12[slot9.lastVisibleCharacterIndex]
-			slot15 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot12[slot9.firstVisibleCharacterIndex].bottomLeft))
-			slot16 = slot15
+		if var_6_3 <= arg_6_1 and arg_6_1 <= var_6_4 then
+			local var_6_5 = arg_6_0.textInfo.characterInfo
+			local var_6_6 = var_6_5[var_6_2.firstVisibleCharacterIndex]
+			local var_6_7 = var_6_5[var_6_2.lastVisibleCharacterIndex]
+			local var_6_8 = var_6_1:WorldToScreenPoint(arg_6_0.transform:TransformPoint(var_6_6.bottomLeft))
+			local var_6_9 = var_6_8
+			local var_6_10 = var_6_8.y
 
-			for slot21 = slot9.firstVisibleCharacterIndex, slot9.lastVisibleCharacterIndex do
-				if slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot12[slot21].bottomLeft)).y < slot15.y then
-					slot17 = slot23.y
+			for iter_6_2 = var_6_2.firstVisibleCharacterIndex, var_6_2.lastVisibleCharacterIndex do
+				local var_6_11 = var_6_5[iter_6_2]
+				local var_6_12 = var_6_1:WorldToScreenPoint(arg_6_0.transform:TransformPoint(var_6_11.bottomLeft))
+
+				if var_6_10 > var_6_12.y then
+					var_6_10 = var_6_12.y
 				end
 			end
 
-			slot16.y = slot17
-			slot18 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot13.topLeft))
-			slot19 = slot18
+			var_6_9.y = var_6_10
 
-			for slot24 = slot9.firstVisibleCharacterIndex, slot9.lastVisibleCharacterIndex do
-				if slot18.y < slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot12[slot24].topLeft)).y then
-					slot20 = slot26.y
+			local var_6_13 = var_6_1:WorldToScreenPoint(arg_6_0.transform:TransformPoint(var_6_6.topLeft))
+			local var_6_14 = var_6_13
+			local var_6_15 = var_6_13.y
+
+			for iter_6_3 = var_6_2.firstVisibleCharacterIndex, var_6_2.lastVisibleCharacterIndex do
+				local var_6_16 = var_6_5[iter_6_3]
+				local var_6_17 = var_6_1:WorldToScreenPoint(arg_6_0.transform:TransformPoint(var_6_16.topLeft))
+
+				if var_6_15 < var_6_17.y then
+					var_6_15 = var_6_17.y
 				end
 			end
 
-			slot19.y = slot20
-			slot21 = slot3:WorldToScreenPoint(slot0.transform:TransformPoint(slot14.bottomRight))
+			var_6_14.y = var_6_15
 
-			if slot7 == 1 then
-				slot0._conMat:SetFloat(slot0._LineMinYId, slot16.y)
+			local var_6_18 = var_6_1:WorldToScreenPoint(arg_6_0.transform:TransformPoint(var_6_7.bottomRight))
 
-				slot25 = slot19.y + 10
+			if iter_6_0 == 1 then
+				arg_6_0._conMat:SetFloat(arg_6_0._LineMinYId, var_6_9.y)
+				arg_6_0._conMat:SetFloat(arg_6_0._LineMaxYId, var_6_14.y + 10)
 
-				slot0._conMat:SetFloat(slot0._LineMaxYId, slot25)
-
-				for slot25, slot26 in pairs(slot0._subMeshs) do
-					if slot26.materialForRendering then
-						slot26.materialForRendering:SetFloat(slot0._LineMinYId, slot16.y)
-						slot26.materialForRendering:SetFloat(slot0._LineMaxYId, slot19.y + 10)
-						slot26.materialForRendering:EnableKeyword("_GRADUAL_ON")
+				for iter_6_4, iter_6_5 in pairs(arg_6_0._subMeshs) do
+					if iter_6_5.materialForRendering then
+						iter_6_5.materialForRendering:SetFloat(arg_6_0._LineMinYId, var_6_9.y)
+						iter_6_5.materialForRendering:SetFloat(arg_6_0._LineMaxYId, var_6_14.y + 10)
+						iter_6_5.materialForRendering:EnableKeyword("_GRADUAL_ON")
 					end
 				end
 			else
-				slot0._conMat:SetFloat(slot0._LineMinYId, slot16.y)
+				arg_6_0._conMat:SetFloat(arg_6_0._LineMinYId, var_6_9.y)
+				arg_6_0._conMat:SetFloat(arg_6_0._LineMaxYId, var_6_14.y)
 
-				slot25 = slot19.y
-
-				slot0._conMat:SetFloat(slot0._LineMaxYId, slot25)
-
-				for slot25, slot26 in pairs(slot0._subMeshs) do
-					if slot26.materialForRendering then
-						slot26.materialForRendering:SetFloat(slot0._LineMinYId, slot16.y)
-						slot26.materialForRendering:SetFloat(slot0._LineMaxYId, slot19.y)
-						slot26.materialForRendering:EnableKeyword("_GRADUAL_ON")
+				for iter_6_6, iter_6_7 in pairs(arg_6_0._subMeshs) do
+					if iter_6_7.materialForRendering then
+						iter_6_7.materialForRendering:SetFloat(arg_6_0._LineMinYId, var_6_9.y)
+						iter_6_7.materialForRendering:SetFloat(arg_6_0._LineMaxYId, var_6_14.y)
+						iter_6_7.materialForRendering:EnableKeyword("_GRADUAL_ON")
 					end
 				end
 			end
 
-			slot22 = slot0.gameObject
+			local var_6_19 = arg_6_0.gameObject
 
-			gohelper.setActive(slot22, false)
-			gohelper.setActive(slot22, true)
-			transformhelper.setLocalPos(slot0.transform, slot0._contentX, slot0._contentY, 1 - Mathf.Lerp(slot16.x - 10, slot21.x + 10, slot10 == slot11 and 1 or (slot1 - slot10) / (slot11 - slot10)) / slot2)
+			gohelper.setActive(var_6_19, false)
+			gohelper.setActive(var_6_19, true)
+
+			local var_6_20 = var_6_3 == var_6_4 and 1 or (arg_6_1 - var_6_3) / (var_6_4 - var_6_3)
+			local var_6_21 = 1 - Mathf.Lerp(var_6_9.x - 10, var_6_18.x + 10, var_6_20) / var_6_0
+
+			transformhelper.setLocalPos(arg_6_0.transform, arg_6_0._contentX, arg_6_0._contentY, var_6_21)
 		end
 	end
 end
 
-function slot0.onTextFinished(slot0)
-	slot0:killTween()
+function var_0_0.onTextFinished(arg_7_0)
+	arg_7_0:killTween()
 
-	slot1, slot7, slot3 = transformhelper.getLocalPos(slot0.transform)
-	slot8 = 0
+	local var_7_0, var_7_1, var_7_2 = transformhelper.getLocalPos(arg_7_0.transform)
 
-	transformhelper.setLocalPos(slot0.transform, slot1, slot7, slot8)
-	slot0._conMat:DisableKeyword("_GRADUAL_ON")
+	transformhelper.setLocalPos(arg_7_0.transform, var_7_0, var_7_1, 0)
+	arg_7_0._conMat:DisableKeyword("_GRADUAL_ON")
 
-	for slot7, slot8 in pairs(slot0._subMeshs) do
-		if slot8.materialForRendering then
-			slot8.materialForRendering:DisableKeyword("_GRADUAL_ON")
+	for iter_7_0, iter_7_1 in pairs(arg_7_0._subMeshs) do
+		if iter_7_1.materialForRendering then
+			iter_7_1.materialForRendering:DisableKeyword("_GRADUAL_ON")
 		end
 	end
 
-	slot0:_doCallback()
+	arg_7_0:_doCallback()
 end
 
-function slot0.initText(slot0)
-	slot0.transform = slot0.text.transform
-	slot0.gameObject = slot0.text.gameObject
-	slot0.canvasGroup = slot0.gameObject:GetComponent(typeof(UnityEngine.CanvasGroup))
-	slot0._subMeshs = {}
-	slot0._conMat = slot0.text.fontMaterial
+function var_0_0.initText(arg_8_0)
+	arg_8_0.transform = arg_8_0.text.transform
+	arg_8_0.gameObject = arg_8_0.text.gameObject
+	arg_8_0.canvasGroup = arg_8_0.gameObject:GetComponent(typeof(UnityEngine.CanvasGroup))
+	arg_8_0._subMeshs = {}
+	arg_8_0._conMat = arg_8_0.text.fontMaterial
 
-	slot0._conMat:EnableKeyword("_GRADUAL_ON")
-	slot0._conMat:DisableKeyword("_DISSOLVE_ON")
+	arg_8_0._conMat:EnableKeyword("_GRADUAL_ON")
+	arg_8_0._conMat:DisableKeyword("_DISSOLVE_ON")
 
-	slot1 = UnityEngine.Shader
-	slot0._LineMinYId = slot1.PropertyToID("_LineMinY")
-	slot0._LineMaxYId = slot1.PropertyToID("_LineMaxY")
-	slot0._contentX, slot0._contentY, _ = transformhelper.getLocalPos(slot0.transform)
+	local var_8_0 = UnityEngine.Shader
 
-	if slot0.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true) then
-		slot3 = slot2:GetEnumerator()
+	arg_8_0._LineMinYId = var_8_0.PropertyToID("_LineMinY")
+	arg_8_0._LineMaxYId = var_8_0.PropertyToID("_LineMaxY")
+	arg_8_0._contentX, arg_8_0._contentY, _ = transformhelper.getLocalPos(arg_8_0.transform)
 
-		while slot3:MoveNext() do
-			table.insert(slot0._subMeshs, slot3.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI)))
+	local var_8_1 = arg_8_0.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+
+	if var_8_1 then
+		local var_8_2 = var_8_1:GetEnumerator()
+
+		while var_8_2:MoveNext() do
+			local var_8_3 = var_8_2.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
+
+			table.insert(arg_8_0._subMeshs, var_8_3)
 		end
 	end
 
-	slot0.textInfo = slot0.text:GetTextInfo(slot0.content)
-	slot0.lineInfoList = {}
-	slot3 = 0
+	arg_8_0.textInfo = arg_8_0.text:GetTextInfo(arg_8_0.content)
+	arg_8_0.lineInfoList = {}
 
-	for slot7 = 1, slot0.textInfo.lineCount do
-		slot8 = slot0.textInfo.lineInfo[slot7 - 1]
+	local var_8_4 = 0
 
-		table.insert(slot0.lineInfoList, {
-			slot8,
-			slot3 + 1,
-			slot3 + slot8.visibleCharacterCount
+	for iter_8_0 = 1, arg_8_0.textInfo.lineCount do
+		local var_8_5 = arg_8_0.textInfo.lineInfo[iter_8_0 - 1]
+		local var_8_6 = var_8_4 + 1
+
+		var_8_4 = var_8_4 + var_8_5.visibleCharacterCount
+
+		table.insert(arg_8_0.lineInfoList, {
+			var_8_5,
+			var_8_6,
+			var_8_4
 		})
 	end
 
-	slot0.characterCount = slot3
-	slot0.delayTime = slot0:getDelayTime(slot3)
+	arg_8_0.characterCount = var_8_4
+	arg_8_0.delayTime = arg_8_0:getDelayTime(var_8_4)
 end
 
-function slot0.getDelayTime(slot0, slot1)
-	return 0.08 * slot1 / 4
+function var_0_0.getDelayTime(arg_9_0, arg_9_1)
+	local var_9_0 = 4
+
+	return 0.08 * arg_9_1 / var_9_0
 end
 
-function slot0.killTween(slot0)
-	if slot0.tweenId then
-		ZProj.TweenHelper.KillById(slot0.tweenId)
+function var_0_0.killTween(arg_10_0)
+	if arg_10_0.tweenId then
+		ZProj.TweenHelper.KillById(arg_10_0.tweenId)
 
-		slot0.tweenId = nil
+		arg_10_0.tweenId = nil
 	end
 
-	if slot0.moveId then
-		ZProj.TweenHelper.KillById(slot0.moveId)
+	if arg_10_0.moveId then
+		ZProj.TweenHelper.KillById(arg_10_0.moveId)
 
-		slot0.moveId = nil
+		arg_10_0.moveId = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0._delayShow, slot0)
+	TaskDispatcher.cancelTask(arg_10_0._delayShow, arg_10_0)
 end
 
-function slot0.destroy(slot0)
-	slot0:killTween()
-	slot0:__onDispose()
+function var_0_0.destroy(arg_11_0)
+	arg_11_0:killTween()
+	arg_11_0:__onDispose()
 end
 
-return slot0
+return var_0_0

@@ -1,11 +1,11 @@
-module("modules.logic.tips.view.FightBloodPoolTipViewContainer", package.seeall)
+﻿module("modules.logic.tips.view.FightBloodPoolTipViewContainer", package.seeall)
 
-slot0 = class("FightBloodPoolTipViewContainer", BaseViewContainer)
+local var_0_0 = class("FightBloodPoolTipViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
+function var_0_0.buildViews(arg_1_0)
 	return {
 		FightBloodPoolTipView.New()
 	}
 end
 
-return slot0
+return var_0_0

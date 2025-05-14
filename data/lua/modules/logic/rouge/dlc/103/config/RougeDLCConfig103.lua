@@ -1,22 +1,22 @@
-module("modules.logic.rouge.dlc.103.config.RougeDLCConfig103", package.seeall)
+﻿module("modules.logic.rouge.dlc.103.config.RougeDLCConfig103", package.seeall)
 
-slot0 = class("RougeDLCConfig103", BaseConfig)
+local var_0_0 = class("RougeDLCConfig103", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"rouge_map_rule",
 		"rouge_monster_rule"
 	}
 end
 
-function slot0.getMapRuleConfig(slot0, slot1)
-	return lua_rouge_map_rule.configDict[slot1]
+function var_0_0.getMapRuleConfig(arg_2_0, arg_2_1)
+	return lua_rouge_map_rule.configDict[arg_2_1]
 end
 
-function slot0.getMonsterRuleConfig(slot0, slot1)
-	return lua_rouge_monster_rule.configDict[slot1]
+function var_0_0.getMonsterRuleConfig(arg_3_0, arg_3_1)
+	return lua_rouge_monster_rule.configDict[arg_3_1]
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

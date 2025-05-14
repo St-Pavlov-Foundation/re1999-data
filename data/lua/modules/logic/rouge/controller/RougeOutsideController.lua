@@ -1,136 +1,150 @@
-module("modules.logic.rouge.controller.RougeOutsideController", package.seeall)
+﻿module("modules.logic.rouge.controller.RougeOutsideController", package.seeall)
 
-slot0 = class("RougeOutsideController", BaseController)
+local var_0_0 = class("RougeOutsideController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0._model = RougeOutsideModel.instance
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._model = RougeOutsideModel.instance
 end
 
-function slot0.addConstEvents(slot0)
-	OpenController.instance:registerCallback(OpenEvent.GetOpenInfoSuccess, slot0._onGetOpenInfoSuccess, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0)
-	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
+function var_0_0.addConstEvents(arg_2_0)
+	OpenController.instance:registerCallback(OpenEvent.GetOpenInfoSuccess, arg_2_0._onGetOpenInfoSuccess, arg_2_0)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_2_0._onDailyRefresh, arg_2_0)
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, arg_2_0._updateRelateDotInfo, arg_2_0)
 end
 
-function slot0.reInit(slot0)
-	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
+function var_0_0.reInit(arg_3_0)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, arg_3_0._updateRelateDotInfo, arg_3_0)
 end
 
-function slot0._onGetOpenInfoSuccess(slot0)
-	if OpenModel.instance:isFunctionUnlock(slot0._model:config():openUnlockId()) then
+function var_0_0._onGetOpenInfoSuccess(arg_4_0)
+	local var_4_0 = arg_4_0._model:config():openUnlockId()
+
+	if OpenModel.instance:isFunctionUnlock(var_4_0) then
 		return
 	end
 
-	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, slot0._onNewFuncUnlock, slot0)
+	OpenController.instance:registerCallback(OpenEvent.NewFuncUnlock, arg_4_0._onNewFuncUnlock, arg_4_0)
 end
 
-function slot0._updateRelateDotInfo(slot0, slot1)
-	if not slot0:isOpen() or not slot1 or not slot1[RedDotEnum.DotNode.RougeDLCNew] then
+function var_0_0._updateRelateDotInfo(arg_5_0, arg_5_1)
+	if not arg_5_0:isOpen() or not arg_5_1 or not arg_5_1[RedDotEnum.DotNode.RougeDLCNew] then
 		return
 	end
 
-	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, slot0._updateRelateDotInfo, slot0)
-	slot0:initDLCReddotInfo()
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, arg_5_0._updateRelateDotInfo, arg_5_0)
+	arg_5_0:initDLCReddotInfo()
 end
 
-function slot0._onDailyRefresh(slot0)
-	if not slot0:isOpen() then
+function var_0_0._onDailyRefresh(arg_6_0)
+	if not arg_6_0:isOpen() then
 		return
 	end
 
-	slot0:sendRpcToGetOutsideInfo()
+	arg_6_0:sendRpcToGetOutsideInfo()
 end
 
-function slot0.sendRpcToGetOutsideInfo(slot0)
-	RougeOutsideRpc.instance:sendGetRougeOutSideInfoRequest(slot0._model:season())
+function var_0_0.sendRpcToGetOutsideInfo(arg_7_0)
+	local var_7_0 = arg_7_0._model:season()
+
+	RougeOutsideRpc.instance:sendGetRougeOutSideInfoRequest(var_7_0)
 end
 
-function slot0.checkOutSideStageInfo(slot0)
+function var_0_0.checkOutSideStageInfo(arg_8_0)
+	return
 end
 
-function slot0._onNewFuncUnlock(slot0, slot1)
-	slot4 = false
+function var_0_0._onNewFuncUnlock(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0._model:config():openUnlockId()
+	local var_9_1 = false
 
-	for slot8, slot9 in ipairs(slot1) do
-		if slot9 == slot0._model:config():openUnlockId() then
-			slot4 = true
+	for iter_9_0, iter_9_1 in ipairs(arg_9_1) do
+		if iter_9_1 == var_9_0 then
+			var_9_1 = true
 
 			break
 		end
 	end
 
-	if not slot4 then
+	if not var_9_1 then
 		return
 	end
 
-	slot0._model:setIsNewUnlockDifficulty(1, true)
-	slot0:sendRpcToGetOutsideInfo()
-	slot0:initDLCReddotInfo()
+	arg_9_0._model:setIsNewUnlockDifficulty(1, true)
+	arg_9_0:sendRpcToGetOutsideInfo()
+	arg_9_0:initDLCReddotInfo()
 end
 
-function slot0.isOpen(slot0)
-	return slot0._model:isUnlock()
+function var_0_0.isOpen(arg_10_0)
+	return arg_10_0._model:isUnlock()
 end
 
-function slot0.initDLCReddotInfo(slot0)
-	slot1 = slot0:_createDLCReddotInfo(RougeDLCEnum.DLCEnum.DLC_103)
+function var_0_0.initDLCReddotInfo(arg_11_0)
+	local var_11_0 = arg_11_0:_createDLCReddotInfo(RougeDLCEnum.DLCEnum.DLC_103)
+	local var_11_1 = arg_11_0:_createDLCEntryReddotInfo({
+		var_11_0
+	})
+	local var_11_2 = {
+		var_11_0,
+		var_11_1
+	}
 
-	RedDotRpc.instance:clientAddRedDotGroupList({
-		slot1,
-		slot0:_createDLCEntryReddotInfo({
-			slot1
-		})
-	}, true)
+	RedDotRpc.instance:clientAddRedDotGroupList(var_11_2, true)
 end
 
-function slot0._createDLCReddotInfo(slot0, slot1)
-	if not slot1 or slot1 == 0 then
+function var_0_0._createDLCReddotInfo(arg_12_0, arg_12_1)
+	if not arg_12_1 or arg_12_1 == 0 then
 		return
 	end
+
+	local var_12_0 = arg_12_0:checkIsDLCNotRead(arg_12_1) and 1 or 0
 
 	return {
 		id = RedDotEnum.DotNode.RougeDLCNew,
-		uid = slot1,
-		value = slot0:checkIsDLCNotRead(slot1) and 1 or 0
+		uid = arg_12_1,
+		value = var_12_0
 	}
 end
 
-function slot0.checkIsDLCNotRead(slot0, slot1)
-	return string.nilorempty(PlayerPrefsHelper.getString(slot0:_generateNewReadDLCInLocalKey(slot1), ""))
+function var_0_0.checkIsDLCNotRead(arg_13_0, arg_13_1)
+	local var_13_0 = arg_13_0:_generateNewReadDLCInLocalKey(arg_13_1)
+
+	return (string.nilorempty(PlayerPrefsHelper.getString(var_13_0, "")))
 end
 
-function slot0._createDLCEntryReddotInfo(slot0, slot1)
-	slot2 = {
+function var_0_0._createDLCEntryReddotInfo(arg_14_0, arg_14_1)
+	local var_14_0 = {
 		uid = 0,
 		value = 0,
 		id = RedDotEnum.DotNode.RougeDLCNew
 	}
 
-	if slot1 then
-		for slot6, slot7 in ipairs(slot1) do
-			if slot7.value and slot7.value > 0 then
-				slot2.value = 1
+	if arg_14_1 then
+		for iter_14_0, iter_14_1 in ipairs(arg_14_1) do
+			if iter_14_1.value and iter_14_1.value > 0 then
+				var_14_0.value = 1
 
 				break
 			end
 		end
 	end
 
-	return slot2
+	return var_14_0
 end
 
-function slot0.saveNewReadDLCInLocal(slot0, slot1)
-	if not slot1 or slot1 == 0 then
+function var_0_0.saveNewReadDLCInLocal(arg_15_0, arg_15_1)
+	if not arg_15_1 or arg_15_1 == 0 then
 		return
 	end
 
-	PlayerPrefsHelper.setString(slot0:_generateNewReadDLCInLocalKey(slot1), "true")
+	local var_15_0 = arg_15_0:_generateNewReadDLCInLocalKey(arg_15_1)
+
+	PlayerPrefsHelper.setString(var_15_0, "true")
 end
 
-function slot0._generateNewReadDLCInLocalKey(slot0, slot1)
-	return string.format("%s#%s#%s", PlayerPrefsKey.RougeHasReadDLCId, PlayerModel.instance:getMyUserId(), slot1)
+function var_0_0._generateNewReadDLCInLocalKey(arg_16_0, arg_16_1)
+	return (string.format("%s#%s#%s", PlayerPrefsKey.RougeHasReadDLCId, PlayerModel.instance:getMyUserId(), arg_16_1))
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,8 +1,9 @@
-module("modules.logic.versionactivity2_7.towergift.controller.DestinyStoneGiftPickChoiceEvent", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.controller.DestinyStoneGiftPickChoiceEvent", package.seeall)
 
-slot0 = _M
-slot0.onCustomPickComplete = 1
-slot0.onCustomPickListChanged = 2
-slot0.hadStoneUp = 3
+local var_0_0 = _M
 
-return slot0
+var_0_0.onCustomPickComplete = 1
+var_0_0.onCustomPickListChanged = 2
+var_0_0.hadStoneUp = 3
+
+return var_0_0

@@ -1,20 +1,20 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.buff.LengZhou6BuffUtils", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.buff.LengZhou6BuffUtils", package.seeall)
 
-slot0 = class("LengZhou6BuffUtils")
-slot1 = {
+local var_0_0 = class("LengZhou6BuffUtils")
+local var_0_1 = {
 	[1001] = PoisoningBuff,
 	[1002] = StiffBuff,
 	[1003] = DamageBuff
 }
 
-function slot0.createBuff(slot0)
-	if uv0[slot0] == nil then
-		logError("LengZhou6BuffUtils.createBuff: buffIdToBuff[id] == nil, id = " .. slot0)
+function var_0_0.createBuff(arg_1_0)
+	if var_0_1[arg_1_0] == nil then
+		logError("LengZhou6BuffUtils.createBuff: buffIdToBuff[id] == nil, id = " .. arg_1_0)
 	end
 
-	return uv0[slot0]:New()
+	return var_0_1[arg_1_0]:New()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

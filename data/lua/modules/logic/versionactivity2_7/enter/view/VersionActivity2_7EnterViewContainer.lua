@@ -1,15 +1,15 @@
-module("modules.logic.versionactivity2_7.enter.view.VersionActivity2_7EnterViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.enter.view.VersionActivity2_7EnterViewContainer", package.seeall)
 
-slot0 = class("VersionActivity2_7EnterViewContainer", VersionActivityFixedEnterViewContainer)
+local var_0_0 = class("VersionActivity2_7EnterViewContainer", VersionActivityFixedEnterViewContainer)
 
-function slot0.getViews(slot0)
+function var_0_0.getViews(arg_1_0)
 	return {
 		VersionActivityFixedHelper.getVersionActivityEnterView().New(),
 		VersionActivity2_7EnterBgmView.New()
 	}
 end
 
-function slot0.getMultiViews(slot0)
+function var_0_0.getMultiViews(arg_2_0)
 	return {
 		VersionActivity2_7DungeonEnterView.New(),
 		V2a7_Act191EnterView.New(),
@@ -21,4 +21,4 @@ function slot0.getMultiViews(slot0)
 	}
 end
 
-return slot0
+return var_0_0

@@ -1,157 +1,178 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroDiceItem", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroDiceItem", package.seeall)
 
-slot0 = class("DiceHeroDiceItem", LuaCompBase)
+local var_0_0 = class("DiceHeroDiceItem", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0._index = slot1.index
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._index = arg_1_1.index
 end
 
-slot1 = {
+local var_0_1 = {
 	Vector3(90, 0, 0),
 	Vector3(90, 90, 0),
 	Vector3(90, 180, 0),
 	Vector3(90, -90, 0),
 	Vector3(0, 0, 0),
-	Vector3(180, 0, 0)
+	(Vector3(180, 0, 0))
 }
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._anim = gohelper.findChildAnim(slot1, "")
-	slot0._goselect = gohelper.findChild(slot1, "#go_select")
-	slot0._imagenum = gohelper.findChildImage(slot1, "#image_num")
-	slot0._imageicon = gohelper.findChildImage(slot1, "#simage_dice")
-	slot0._golimitlock = gohelper.findChild(slot1, "#go_lock")
-	slot0._golock = gohelper.findChild(slot1, "#go_limitlock")
-	slot0._golight = gohelper.findChild(slot1, "#go_light")
-	slot0._gogray = gohelper.findChild(slot1, "#go_gray")
-	slot0._diceRoot = gohelper.findChild(slot1, "touzi_ani/touzi").transform
-	slot0._uimeshes = slot0:getUserDataTb_()
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0._anim = gohelper.findChildAnim(arg_2_1, "")
+	arg_2_0._goselect = gohelper.findChild(arg_2_1, "#go_select")
+	arg_2_0._imagenum = gohelper.findChildImage(arg_2_1, "#image_num")
+	arg_2_0._imageicon = gohelper.findChildImage(arg_2_1, "#simage_dice")
+	arg_2_0._golimitlock = gohelper.findChild(arg_2_1, "#go_lock")
+	arg_2_0._golock = gohelper.findChild(arg_2_1, "#go_limitlock")
+	arg_2_0._golight = gohelper.findChild(arg_2_1, "#go_light")
+	arg_2_0._gogray = gohelper.findChild(arg_2_1, "#go_gray")
+	arg_2_0._diceRoot = gohelper.findChild(arg_2_1, "touzi_ani/touzi").transform
+	arg_2_0._uimeshes = arg_2_0:getUserDataTb_()
 
-	for slot5 = 0, slot0._diceRoot.childCount - 1 do
-		slot0._uimeshes[tonumber(slot0._diceRoot:GetChild(slot5).gameObject.name) or 1] = slot6:GetComponent(typeof(UIMesh))
+	for iter_2_0 = 0, arg_2_0._diceRoot.childCount - 1 do
+		local var_2_0 = arg_2_0._diceRoot:GetChild(iter_2_0).gameObject
+		local var_2_1 = tonumber(var_2_0.name) or 1
+
+		arg_2_0._uimeshes[var_2_1] = var_2_0:GetComponent(typeof(UIMesh))
 	end
 
-	slot0:_refresh(true)
+	arg_2_0:_refresh(true)
 end
 
-function slot0.onStepEnd(slot0, slot1)
-	slot0:_refresh(slot1)
+function var_0_0.onStepEnd(arg_3_0, arg_3_1)
+	arg_3_0:_refresh(arg_3_1)
 end
 
-function slot0._refresh(slot0, slot1)
-	if DiceHeroFightModel.instance:getGameData().diceBox.dices[slot0._index] and not slot2.deleted then
-		slot0:updateInfo(slot2, slot1)
-	elseif slot0.diceMo then
-		slot0.diceMo = nil
+function var_0_0._refresh(arg_4_0, arg_4_1)
+	local var_4_0 = DiceHeroFightModel.instance:getGameData().diceBox.dices[arg_4_0._index]
 
-		slot0._anim:Play("out")
+	if var_4_0 and not var_4_0.deleted then
+		arg_4_0:updateInfo(var_4_0, arg_4_1)
+	elseif arg_4_0.diceMo then
+		arg_4_0.diceMo = nil
+
+		arg_4_0._anim:Play("out")
 	else
-		slot0._anim:Play("out", 0, 1)
+		arg_4_0._anim:Play("out", 0, 1)
 	end
 end
 
-function slot0.updateInfo(slot0, slot1, slot2)
-	if (not slot0.diceMo or slot0.diceMo.deleted or slot0.diceMo.uid ~= slot1.uid) and not DiceHeroFightModel.instance.tempRoundEnd and not slot2 then
-		slot0._anim:Play("in", 0, 0)
+function var_0_0.updateInfo(arg_5_0, arg_5_1, arg_5_2)
+	if (not arg_5_0.diceMo or arg_5_0.diceMo.deleted or arg_5_0.diceMo.uid ~= arg_5_1.uid) and not DiceHeroFightModel.instance.tempRoundEnd and not arg_5_2 then
+		arg_5_0._anim:Play("in", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
 	end
 
-	if slot0.diceMo then
-		DiceHeroHelper.instance:unregisterDice(slot0.diceMo.uid)
+	if arg_5_0.diceMo then
+		DiceHeroHelper.instance:unregisterDice(arg_5_0.diceMo.uid)
 	end
 
-	DiceHeroHelper.instance:registerDice(slot1.uid, slot0)
+	DiceHeroHelper.instance:registerDice(arg_5_1.uid, arg_5_0)
 
-	slot0.diceMo = slot1
+	arg_5_0.diceMo = arg_5_1
 
-	if uv0[slot1.num] then
-		transformhelper.setLocalRotation(slot0._diceRoot, slot3.x, slot3.y, slot3.z)
+	local var_5_0 = var_0_1[arg_5_1.num]
+
+	if var_5_0 then
+		transformhelper.setLocalRotation(arg_5_0._diceRoot, var_5_0.x, var_5_0.y, var_5_0.z)
 	end
 
-	if lua_dice.configDict[slot1.diceId] then
-		for slot9, slot10 in pairs(slot0._uimeshes) do
-			if lua_dice_suit.configDict[string.splitToNumber(slot4.suitList, "#")[slot9]] and DiceHeroHelper.instance:getDiceTexture(slot11.icon) then
-				slot10.texture = slot12
+	local var_5_1 = lua_dice.configDict[arg_5_1.diceId]
 
-				slot10:SetMaterialDirty()
+	if var_5_1 then
+		local var_5_2 = string.splitToNumber(var_5_1.suitList, "#")
+
+		for iter_5_0, iter_5_1 in pairs(arg_5_0._uimeshes) do
+			local var_5_3 = lua_dice_suit.configDict[var_5_2[iter_5_0]]
+
+			if var_5_3 then
+				local var_5_4 = DiceHeroHelper.instance:getDiceTexture(var_5_3.icon)
+
+				if var_5_4 then
+					iter_5_1.texture = var_5_4
+
+					iter_5_1:SetMaterialDirty()
+				end
 			end
 		end
 	end
 
-	slot0:refreshLock()
-	slot0:setSelect(false)
+	arg_5_0:refreshLock()
+	arg_5_0:setSelect(false)
 end
 
-function slot0.refreshLock(slot0)
-	gohelper.setActive(slot0._golock, slot0.diceMo.status == DiceHeroEnum.DiceStatu.SoftLock)
-	gohelper.setActive(slot0._golimitlock, slot0.diceMo.status == DiceHeroEnum.DiceStatu.HardLock)
+function var_0_0.refreshLock(arg_6_0)
+	gohelper.setActive(arg_6_0._golock, arg_6_0.diceMo.status == DiceHeroEnum.DiceStatu.SoftLock)
+	gohelper.setActive(arg_6_0._golimitlock, arg_6_0.diceMo.status == DiceHeroEnum.DiceStatu.HardLock)
 end
 
-function slot0.setSelect(slot0, slot1, slot2)
-	gohelper.setActive(slot0._goselect, slot1)
+function var_0_0.setSelect(arg_7_0, arg_7_1, arg_7_2)
+	local var_7_0 = arg_7_0.diceMo and arg_7_0.diceMo.status == DiceHeroEnum.DiceStatu.HardLock
 
-	if slot2 == nil then
-		gohelper.setActive(slot0._golight, false)
-		gohelper.setActive(slot0._gogray, slot0.diceMo and slot0.diceMo.status == DiceHeroEnum.DiceStatu.HardLock)
+	gohelper.setActive(arg_7_0._goselect, arg_7_1)
+
+	if arg_7_2 == nil then
+		gohelper.setActive(arg_7_0._golight, false)
+		gohelper.setActive(arg_7_0._gogray, var_7_0)
 	else
-		gohelper.setActive(slot0._golight, slot2)
-		gohelper.setActive(slot0._gogray, not slot2 or slot3)
+		gohelper.setActive(arg_7_0._golight, arg_7_2)
+		gohelper.setActive(arg_7_0._gogray, not arg_7_2 or var_7_0)
 	end
 end
 
-function slot0.markDeleted(slot0)
-	if not slot0.diceMo then
+function var_0_0.markDeleted(arg_8_0)
+	if not arg_8_0.diceMo then
 		return
 	end
 
-	slot0.diceMo.deleted = true
+	arg_8_0.diceMo.deleted = true
 
-	slot0._anim:Play("out", 0, 0)
-	slot0:setSelect(false)
+	arg_8_0._anim:Play("out", 0, 0)
+	arg_8_0:setSelect(false)
 end
 
-function slot0.playRefresh(slot0, slot1)
-	slot0.diceMo = slot1
+function var_0_0.playRefresh(arg_9_0, arg_9_1)
+	arg_9_0.diceMo = arg_9_1
 
 	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
-	slot0._anim:Play("refresh", 0, 0)
+	arg_9_0._anim:Play("refresh", 0, 0)
 
-	slot2, slot3, slot4 = transformhelper.getLocalRotation(slot0._diceRoot)
+	local var_9_0, var_9_1, var_9_2 = transformhelper.getLocalRotation(arg_9_0._diceRoot)
 
-	ZProj.TweenHelper.DOLocalRotate(slot0._diceRoot, slot2 + math.random(100, 200), slot3 + math.random(100, 200), slot4 + math.random(100, 200), 0.2, slot0._delayTweenRotate, slot0, nil, EaseType.Linear)
-	TaskDispatcher.runDelay(slot0._refresh, slot0, 0.6)
+	ZProj.TweenHelper.DOLocalRotate(arg_9_0._diceRoot, var_9_0 + math.random(100, 200), var_9_1 + math.random(100, 200), var_9_2 + math.random(100, 200), 0.2, arg_9_0._delayTweenRotate, arg_9_0, nil, EaseType.Linear)
+	TaskDispatcher.runDelay(arg_9_0._refresh, arg_9_0, 0.6)
 end
 
-function slot0._delayTweenRotate(slot0)
-	slot1, slot2, slot3 = transformhelper.getLocalRotation(slot0._diceRoot)
+function var_0_0._delayTweenRotate(arg_10_0)
+	local var_10_0, var_10_1, var_10_2 = transformhelper.getLocalRotation(arg_10_0._diceRoot)
 
-	ZProj.TweenHelper.DOLocalRotate(slot0._diceRoot, slot1 + math.random(100, 200), slot2 + math.random(100, 200), slot3 + math.random(100, 200), 0.2, slot0._delayTweenRotate2, slot0, nil, EaseType.Linear)
+	ZProj.TweenHelper.DOLocalRotate(arg_10_0._diceRoot, var_10_0 + math.random(100, 200), var_10_1 + math.random(100, 200), var_10_2 + math.random(100, 200), 0.2, arg_10_0._delayTweenRotate2, arg_10_0, nil, EaseType.Linear)
 end
 
-function slot0._delayTweenRotate2(slot0)
-	if uv0[slot0.diceMo.num] then
-		ZProj.TweenHelper.DOLocalRotate(slot0._diceRoot, slot1.x, slot1.y, slot1.z, 0.2, nil, , , EaseType.Linear)
+function var_0_0._delayTweenRotate2(arg_11_0)
+	local var_11_0 = var_0_1[arg_11_0.diceMo.num]
+
+	if var_11_0 then
+		ZProj.TweenHelper.DOLocalRotate(arg_11_0._diceRoot, var_11_0.x, var_11_0.y, var_11_0.z, 0.2, nil, nil, nil, EaseType.Linear)
 	end
 end
 
-function slot0.startRoll(slot0)
-	if not slot0.diceMo or slot0.diceMo.deleted then
-		slot0._anim:Play("out", 0, 1)
+function var_0_0.startRoll(arg_12_0)
+	if not arg_12_0.diceMo or arg_12_0.diceMo.deleted then
+		arg_12_0._anim:Play("out", 0, 1)
 
 		return
 	end
 
-	slot0._anim:Play("in", 0, 0)
+	arg_12_0._anim:Play("in", 0, 0)
 	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_roll)
 end
 
-function slot0.onDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0._refresh, slot0)
+function var_0_0.onDestroy(arg_13_0)
+	TaskDispatcher.cancelTask(arg_13_0._refresh, arg_13_0)
 
-	if slot0.diceMo then
-		DiceHeroHelper.instance:unregisterDice(slot0.diceMo.uid)
+	if arg_13_0.diceMo then
+		DiceHeroHelper.instance:unregisterDice(arg_13_0.diceMo.uid)
 	end
 end
 
-return slot0
+return var_0_0

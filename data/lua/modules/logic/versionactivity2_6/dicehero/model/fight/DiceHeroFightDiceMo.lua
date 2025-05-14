@@ -1,15 +1,15 @@
-module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightDiceMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.fight.DiceHeroFightDiceMo", package.seeall)
 
-slot0 = pureTable("DiceHeroFightDiceMo")
+local var_0_0 = pureTable("DiceHeroFightDiceMo")
 
-function slot0.init(slot0, slot1, slot2)
-	slot0.index = slot2
-	slot0.uid = slot1.uid
-	slot0.status = slot1.status
-	slot0.suitId = slot1.suitId
-	slot0.num = slot1.num
-	slot0.diceId = slot1.diceId
-	slot0.deleted = slot1.deleted
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.index = arg_1_2
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.status = arg_1_1.status
+	arg_1_0.suitId = arg_1_1.suitId
+	arg_1_0.num = arg_1_1.num
+	arg_1_0.diceId = arg_1_1.diceId
+	arg_1_0.deleted = arg_1_1.deleted
 end
 
-return slot0
+return var_0_0

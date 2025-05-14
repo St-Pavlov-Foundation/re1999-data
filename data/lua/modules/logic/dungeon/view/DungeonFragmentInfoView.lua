@@ -1,48 +1,48 @@
-module("modules.logic.dungeon.view.DungeonFragmentInfoView", package.seeall)
+﻿module("modules.logic.dungeon.view.DungeonFragmentInfoView", package.seeall)
 
-slot0 = class("DungeonFragmentInfoView", BaseView)
-slot1 = -40
+local var_0_0 = class("DungeonFragmentInfoView", BaseView)
+local var_0_1 = -40
 
-function slot0.onInitView(slot0)
-	slot0._btnclose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_close")
-	slot0._go1 = gohelper.findChild(slot0.viewGO, "#go_1")
-	slot0._txttitlecn = gohelper.findChildText(slot0.viewGO, "#go_1/#txt_titlecn")
-	slot0._scrollcontent = gohelper.findChildScrollRect(slot0.viewGO, "#go_1/#scroll_content")
-	slot0._txtcontent = gohelper.findChildText(slot0.viewGO, "#go_1/#scroll_content/Viewport/Content/#txt_content")
-	slot0._gochatarea = gohelper.findChild(slot0.viewGO, "#go_1/#scroll_content/Viewport/Content/#go_chatarea")
-	slot0._layoutchatarea = slot0._gochatarea:GetComponent(typeof(UnityEngine.UI.VerticalLayoutGroup))
-	slot0._gochatitem = gohelper.findChild(slot0.viewGO, "#go_1/#scroll_content/Viewport/Content/#go_chatarea/#go_chatitem")
-	slot0._gobottommask = gohelper.findChild(slot0.viewGO, "#go_1/#scroll_content/#go_bottommask")
-	slot0._simagefragmenticon = gohelper.findChildSingleImage(slot0.viewGO, "#go_1/#simage_fragmenticon")
-	slot0._go3 = gohelper.findChild(slot0.viewGO, "#go_3")
-	slot0._txttitle3 = gohelper.findChildText(slot0.viewGO, "#go_3/#txt_title3")
-	slot0._scrollcontent3 = gohelper.findChildScrollRect(slot0.viewGO, "#go_3/#scroll_content3")
-	slot0._txtinfo3 = gohelper.findChildText(slot0.viewGO, "#go_3/#scroll_content3/Viewport/Content/#txt_info3")
-	slot0._go4 = gohelper.findChild(slot0.viewGO, "#go_4")
-	slot0._txttitle4 = gohelper.findChildText(slot0.viewGO, "#go_4/#txt_title4")
-	slot0._scrollcontent4 = gohelper.findChildScrollRect(slot0.viewGO, "#go_4/#scroll_content4")
-	slot0._txtinfo4 = gohelper.findChildText(slot0.viewGO, "#go_4/#scroll_content4/Viewport/Content/#txt_info4")
-	slot0._go5 = gohelper.findChild(slot0.viewGO, "#go_5")
-	slot0._txttitle5 = gohelper.findChildText(slot0.viewGO, "#go_5/#txt_titlecn")
-	slot0._scrollcontent5 = gohelper.findChildScrollRect(slot0.viewGO, "#go_5/#scroll_content")
-	slot0._txtinfo5 = gohelper.findChildText(slot0.viewGO, "#go_5/#scroll_content/Viewport/Content/#txt_content")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnclose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_close")
+	arg_1_0._go1 = gohelper.findChild(arg_1_0.viewGO, "#go_1")
+	arg_1_0._txttitlecn = gohelper.findChildText(arg_1_0.viewGO, "#go_1/#txt_titlecn")
+	arg_1_0._scrollcontent = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_1/#scroll_content")
+	arg_1_0._txtcontent = gohelper.findChildText(arg_1_0.viewGO, "#go_1/#scroll_content/Viewport/Content/#txt_content")
+	arg_1_0._gochatarea = gohelper.findChild(arg_1_0.viewGO, "#go_1/#scroll_content/Viewport/Content/#go_chatarea")
+	arg_1_0._layoutchatarea = arg_1_0._gochatarea:GetComponent(typeof(UnityEngine.UI.VerticalLayoutGroup))
+	arg_1_0._gochatitem = gohelper.findChild(arg_1_0.viewGO, "#go_1/#scroll_content/Viewport/Content/#go_chatarea/#go_chatitem")
+	arg_1_0._gobottommask = gohelper.findChild(arg_1_0.viewGO, "#go_1/#scroll_content/#go_bottommask")
+	arg_1_0._simagefragmenticon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_1/#simage_fragmenticon")
+	arg_1_0._go3 = gohelper.findChild(arg_1_0.viewGO, "#go_3")
+	arg_1_0._txttitle3 = gohelper.findChildText(arg_1_0.viewGO, "#go_3/#txt_title3")
+	arg_1_0._scrollcontent3 = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_3/#scroll_content3")
+	arg_1_0._txtinfo3 = gohelper.findChildText(arg_1_0.viewGO, "#go_3/#scroll_content3/Viewport/Content/#txt_info3")
+	arg_1_0._go4 = gohelper.findChild(arg_1_0.viewGO, "#go_4")
+	arg_1_0._txttitle4 = gohelper.findChildText(arg_1_0.viewGO, "#go_4/#txt_title4")
+	arg_1_0._scrollcontent4 = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_4/#scroll_content4")
+	arg_1_0._txtinfo4 = gohelper.findChildText(arg_1_0.viewGO, "#go_4/#scroll_content4/Viewport/Content/#txt_info4")
+	arg_1_0._go5 = gohelper.findChild(arg_1_0.viewGO, "#go_5")
+	arg_1_0._txttitle5 = gohelper.findChildText(arg_1_0.viewGO, "#go_5/#txt_titlecn")
+	arg_1_0._scrollcontent5 = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_5/#scroll_content")
+	arg_1_0._txtinfo5 = gohelper.findChildText(arg_1_0.viewGO, "#go_5/#scroll_content/Viewport/Content/#txt_content")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnclose:AddClickListener(slot0._btncloseOnClick, slot0)
-	slot0._scrollcontent:AddOnValueChanged(slot0._onValueChnaged, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnclose:AddClickListener(arg_2_0._btncloseOnClick, arg_2_0)
+	arg_2_0._scrollcontent:AddOnValueChanged(arg_2_0._onValueChnaged, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnclose:RemoveClickListener()
-	slot0._scrollcontent:RemoveOnValueChanged()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnclose:RemoveClickListener()
+	arg_3_0._scrollcontent:RemoveOnValueChanged()
 end
 
-slot0.FragmentInfoTypeMap = {
+var_0_0.FragmentInfoTypeMap = {
 	1,
 	1,
 	3,
@@ -50,164 +50,186 @@ slot0.FragmentInfoTypeMap = {
 	5
 }
 
-function slot0._btncloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btncloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._pauseColor = GameUtil.parseColor("#3D3939")
-	slot0._playColor = GameUtil.parseColor("#946747")
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0._pauseColor = GameUtil.parseColor("#3D3939")
+	arg_5_0._playColor = GameUtil.parseColor("#946747")
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_6_0)
+	return
 end
 
-function slot0._showDialog(slot0, slot1, slot2, slot3, slot4)
-	slot5 = gohelper.cloneInPlace(slot0._gochatitem)
+function var_0_0._showDialog(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4)
+	local var_7_0 = gohelper.cloneInPlace(arg_7_0._gochatitem)
 
-	gohelper.setActive(slot5, true)
+	gohelper.setActive(var_7_0, true)
 
-	gohelper.findChildText(slot5, "name").text = not string.nilorempty(slot3) and slot3 .. ":" or ""
+	local var_7_1 = gohelper.findChildText(var_7_0, "name")
 
-	if not slot3 then
-		gohelper.setActive(gohelper.findChild(slot5, "usericon"), true)
+	var_7_1.text = not string.nilorempty(arg_7_3) and arg_7_3 .. ":" or ""
+
+	if not arg_7_3 then
+		local var_7_2 = gohelper.findChild(var_7_0, "usericon")
+
+		gohelper.setActive(var_7_2, true)
 	end
 
-	gohelper.findChildText(slot5, "info").text = slot2
+	local var_7_3 = gohelper.findChildText(var_7_0, "info")
 
-	if gohelper.findChildButtonWithAudio(slot5, "play") and slot4 and slot4 > 0 then
-		gohelper.setActive(slot9.gameObject, true)
-		slot0:_initBtn(slot9, gohelper.findChildButtonWithAudio(slot5, "pause"), slot4, slot6, slot8)
+	var_7_3.text = arg_7_2
+
+	local var_7_4 = gohelper.findChildButtonWithAudio(var_7_0, "play")
+	local var_7_5 = gohelper.findChildButtonWithAudio(var_7_0, "pause")
+
+	if var_7_4 and arg_7_4 and arg_7_4 > 0 then
+		gohelper.setActive(var_7_4.gameObject, true)
+		arg_7_0:_initBtn(var_7_4, var_7_5, arg_7_4, var_7_1, var_7_3)
 	end
 end
 
-function slot0._initBtn(slot0, slot1, slot2, slot3, slot4, slot5)
-	table.insert(slot0._btnList, {
-		slot1,
-		slot2,
-		slot3,
-		slot4,
-		slot5
+function var_0_0._initBtn(arg_8_0, arg_8_1, arg_8_2, arg_8_3, arg_8_4, arg_8_5)
+	table.insert(arg_8_0._btnList, {
+		arg_8_1,
+		arg_8_2,
+		arg_8_3,
+		arg_8_4,
+		arg_8_5
 	})
-	slot1:AddClickListener(slot0._onPlay, slot0, slot3)
-	slot2:AddClickListener(slot0._onPause, slot0, slot3)
+	arg_8_1:AddClickListener(arg_8_0._onPlay, arg_8_0, arg_8_3)
+	arg_8_2:AddClickListener(arg_8_0._onPause, arg_8_0, arg_8_3)
 end
 
-function slot0._onPlay(slot0, slot1)
-	slot0:_stopAudio()
+function var_0_0._onPlay(arg_9_0, arg_9_1)
+	arg_9_0:_stopAudio()
 
-	slot0._audioId = slot1
+	arg_9_0._audioId = arg_9_1
 
-	if not slot0._audioParam then
-		slot0._audioParam = AudioParam.New()
+	if not arg_9_0._audioParam then
+		arg_9_0._audioParam = AudioParam.New()
 	end
 
-	slot0._audioParam.callback = slot0._onAudioStop
-	slot0._audioParam.callbackTarget = slot0
+	arg_9_0._audioParam.callback = arg_9_0._onAudioStop
+	arg_9_0._audioParam.callbackTarget = arg_9_0
 
-	AudioEffectMgr.instance:playAudio(slot0._audioId, slot0._audioParam)
-	slot0:_refreshBtnStatus(slot1, true)
+	AudioEffectMgr.instance:playAudio(arg_9_0._audioId, arg_9_0._audioParam)
+	arg_9_0:_refreshBtnStatus(arg_9_1, true)
 end
 
-function slot0._onPause(slot0, slot1)
-	slot0:_stopAudio()
-	slot0:_refreshBtnStatus(slot1, false)
+function var_0_0._onPause(arg_10_0, arg_10_1)
+	arg_10_0:_stopAudio()
+	arg_10_0:_refreshBtnStatus(arg_10_1, false)
 end
 
-function slot0._onAudioStop(slot0, slot1)
-	slot0._audioId = nil
+function var_0_0._onAudioStop(arg_11_0, arg_11_1)
+	arg_11_0._audioId = nil
 
-	slot0:_refreshBtnStatus(slot1, false)
+	arg_11_0:_refreshBtnStatus(arg_11_1, false)
 end
 
-function slot0._refreshBtnStatus(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot0._btnList) do
-		if slot1 == slot7[3] then
-			gohelper.setActive(slot7[1].gameObject, not slot2)
-			gohelper.setActive(slot7[2].gameObject, slot2)
+function var_0_0._refreshBtnStatus(arg_12_0, arg_12_1, arg_12_2)
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0._btnList) do
+		local var_12_0 = iter_12_1[1]
+		local var_12_1 = iter_12_1[2]
+		local var_12_2 = iter_12_1[3]
+		local var_12_3 = iter_12_1[4]
+		local var_12_4 = iter_12_1[5]
 
-			slot7[4].color = slot2 and slot0._playColor or slot0._pauseColor
-			slot7[5].color = slot2 and slot0._playColor or slot0._pauseColor
+		if arg_12_1 == var_12_2 then
+			gohelper.setActive(var_12_0.gameObject, not arg_12_2)
+			gohelper.setActive(var_12_1.gameObject, arg_12_2)
+
+			var_12_3.color = arg_12_2 and arg_12_0._playColor or arg_12_0._pauseColor
+			var_12_4.color = arg_12_2 and arg_12_0._playColor or arg_12_0._pauseColor
 		else
-			gohelper.setActive(slot8.gameObject, true)
-			gohelper.setActive(slot9.gameObject, false)
+			gohelper.setActive(var_12_0.gameObject, true)
+			gohelper.setActive(var_12_1.gameObject, false)
 
-			slot11.color = slot0._pauseColor
-			slot12.color = slot0._pauseColor
+			var_12_3.color = arg_12_0._pauseColor
+			var_12_4.color = arg_12_0._pauseColor
 		end
 	end
 end
 
-function slot0._stopAudio(slot0)
-	if slot0._audioId then
-		AudioEffectMgr.instance:stopAudio(slot0._audioId)
+function var_0_0._stopAudio(arg_13_0)
+	if arg_13_0._audioId then
+		AudioEffectMgr.instance:stopAudio(arg_13_0._audioId)
 
-		slot0._audioId = nil
+		arg_13_0._audioId = nil
 	end
 end
 
-function slot0._generateDialogByHandbook(slot0)
-	slot3 = {}
+function var_0_0._generateDialogByHandbook(arg_14_0)
+	local var_14_0 = HandbookConfig.instance:getDialogByFragment(arg_14_0._fragmentId)
+	local var_14_1 = lua_chapter_map_element_dialog.configDict[var_14_0]
+	local var_14_2 = {}
 
-	for slot7, slot8 in pairs(lua_chapter_map_element_dialog.configDict[HandbookConfig.instance:getDialogByFragment(slot0._fragmentId)]) do
-		table.insert(slot3, slot8)
+	for iter_14_0, iter_14_1 in pairs(var_14_1) do
+		table.insert(var_14_2, iter_14_1)
 	end
 
-	table.sort(slot3, function (slot0, slot1)
-		return slot0.stepId < slot1.stepId
+	table.sort(var_14_2, function(arg_15_0, arg_15_1)
+		return arg_15_0.stepId < arg_15_1.stepId
 	end)
 
-	slot4 = {
-		[tonumber(slot9)] = true
-	}
+	local var_14_3 = {}
 
-	for slot8, slot9 in ipairs(slot0._dialogIdList) do
-		-- Nothing
+	for iter_14_2, iter_14_3 in ipairs(arg_14_0._dialogIdList) do
+		var_14_3[tonumber(iter_14_3)] = true
 	end
 
-	slot5 = {}
-	slot6 = 1
+	local var_14_4 = {}
+	local var_14_5 = 1
 
-	while slot6 <= #slot3 do
-		slot6 = slot0:_getSelectorResult(slot6, slot3, slot5, slot4, true) + 1
+	while var_14_5 <= #var_14_2 do
+		var_14_5 = arg_14_0:_getSelectorResult(var_14_5, var_14_2, var_14_4, var_14_3, true)
+		var_14_5 = var_14_5 + 1
 	end
 
-	slot7 = true
+	local var_14_6 = true
 
-	for slot11, slot12 in ipairs(slot5) do
-		slot0:_showDialog(nil, slot12.text, slot12.speaker, slot12.audio)
+	for iter_14_4, iter_14_5 in ipairs(var_14_4) do
+		arg_14_0:_showDialog(nil, iter_14_5.text, iter_14_5.speaker, iter_14_5.audio)
 
-		if slot12.audio and slot12.audio > 0 then
-			slot7 = false
+		if iter_14_5.audio and iter_14_5.audio > 0 then
+			var_14_6 = false
 		end
 	end
 
-	slot8 = 0
+	local var_14_7 = 0
 
-	if slot7 then
-		slot8 = uv0
+	if var_14_6 then
+		var_14_7 = var_0_1
 	end
 
-	slot0._layoutchatarea.padding.left = slot8
+	arg_14_0._layoutchatarea.padding.left = var_14_7
 end
 
-function slot0._getSelectorResult(slot0, slot1, slot2, slot3, slot4, slot5)
-	while slot1 <= #slot2 do
-		if slot2[slot1].type == "dialog" and slot5 then
-			table.insert(slot3, {
-				text = slot6.content,
-				speaker = slot6.speaker,
-				audio = slot6.audio
+function var_0_0._getSelectorResult(arg_16_0, arg_16_1, arg_16_2, arg_16_3, arg_16_4, arg_16_5)
+	while arg_16_1 <= #arg_16_2 do
+		local var_16_0 = arg_16_2[arg_16_1]
+
+		if var_16_0.type == "dialog" and arg_16_5 then
+			table.insert(arg_16_3, {
+				text = var_16_0.content,
+				speaker = var_16_0.speaker,
+				audio = var_16_0.audio
 			})
-		elseif slot6.type == "selector" then
-			slot1 = slot0:_getSelectorResult(slot1 + 1, slot2, slot3, slot4, slot4[tonumber(slot6.param)])
-		elseif slot6.type == "selectorend" then
-			return slot1
-		elseif slot6.type == "options" then
-			for slot12, slot13 in ipairs(string.splitToNumber(slot6.param, "#")) do
-				if slot4[slot13] then
-					table.insert(slot3, {
-						text = string.format("<color=#c95318>\"%s\"</color>", string.split(slot6.content, "#")[slot12])
+		elseif var_16_0.type == "selector" then
+			arg_16_1 = arg_16_0:_getSelectorResult(arg_16_1 + 1, arg_16_2, arg_16_3, arg_16_4, arg_16_4[tonumber(var_16_0.param)])
+		elseif var_16_0.type == "selectorend" then
+			return arg_16_1
+		elseif var_16_0.type == "options" then
+			local var_16_1 = string.splitToNumber(var_16_0.param, "#")
+			local var_16_2 = string.split(var_16_0.content, "#")
+
+			for iter_16_0, iter_16_1 in ipairs(var_16_1) do
+				if arg_16_4[iter_16_1] then
+					table.insert(arg_16_3, {
+						text = string.format("<color=#c95318>\"%s\"</color>", var_16_2[iter_16_0])
 					})
 
 					break
@@ -215,126 +237,133 @@ function slot0._getSelectorResult(slot0, slot1, slot2, slot3, slot4, slot5)
 			end
 		end
 
-		slot1 = slot1 + 1
+		arg_16_1 = arg_16_1 + 1
 	end
 
-	return slot1
+	return arg_16_1
 end
 
-function slot0.onOpen(slot0)
-	slot0._btnList = slot0:getUserDataTb_()
-	slot0._elementId = slot0.viewParam.elementId
-	slot0._fragmentId = slot0.viewParam.fragmentId
-	slot0._dialogIdList = slot0.viewParam.dialogIdList
-	slot0._isFromHandbook = slot0.viewParam.isFromHandbook
-	slot0._notShowToast = slot0.viewParam.notShowToast
-	slot1 = lua_chapter_map_fragment.configDict[slot0._fragmentId]
+function var_0_0.onOpen(arg_17_0)
+	arg_17_0._btnList = arg_17_0:getUserDataTb_()
+	arg_17_0._elementId = arg_17_0.viewParam.elementId
+	arg_17_0._fragmentId = arg_17_0.viewParam.fragmentId
+	arg_17_0._dialogIdList = arg_17_0.viewParam.dialogIdList
+	arg_17_0._isFromHandbook = arg_17_0.viewParam.isFromHandbook
+	arg_17_0._notShowToast = arg_17_0.viewParam.notShowToast
 
-	for slot5 = 1, 5 do
-		slot6 = uv0.FragmentInfoTypeMap[slot5] or 1
+	local var_17_0 = lua_chapter_map_fragment.configDict[arg_17_0._fragmentId]
 
-		gohelper.setActive(slot0["_go" .. slot6], slot6 == (uv0.FragmentInfoTypeMap[slot1.type] or 1))
+	for iter_17_0 = 1, 5 do
+		local var_17_1 = var_0_0.FragmentInfoTypeMap[iter_17_0] or 1
+
+		gohelper.setActive(arg_17_0["_go" .. var_17_1], var_17_1 == (var_0_0.FragmentInfoTypeMap[var_17_0.type] or 1))
 	end
 
-	if uv0["fragmentInfoShowHandleFunc" .. (uv0.FragmentInfoTypeMap[slot1.type] and slot1.type or 1)] then
-		slot3(slot0, slot1)
+	local var_17_2 = var_0_0.FragmentInfoTypeMap[var_17_0.type] and var_17_0.type or 1
+	local var_17_3 = var_0_0["fragmentInfoShowHandleFunc" .. var_17_2]
+
+	if var_17_3 then
+		var_17_3(arg_17_0, var_17_0)
 	end
 
-	if not DungeonEnum.NotPopFragmentToastDict[slot0._fragmentId] and not slot0._isFromHandbook and not slot0._notShowToast then
-		if slot1.toastId and slot4 ~= 0 then
-			GameFacade.showToast(slot4)
+	if not DungeonEnum.NotPopFragmentToastDict[arg_17_0._fragmentId] and not arg_17_0._isFromHandbook and not arg_17_0._notShowToast then
+		local var_17_4 = var_17_0.toastId
+
+		if var_17_4 and var_17_4 ~= 0 then
+			GameFacade.showToast(var_17_4)
 		else
-			GameFacade.showToast(ToastEnum.DungeonFragmentInfo, slot1.title)
+			GameFacade.showToast(ToastEnum.DungeonFragmentInfo, var_17_0.title)
 		end
 	end
 
-	if not string.nilorempty(slot1.res) then
-		slot0._simagefragmenticon:LoadImage(ResUrl.getDungeonFragmentIcon(slot1.res))
+	if not string.nilorempty(var_17_0.res) then
+		arg_17_0._simagefragmenticon:LoadImage(ResUrl.getDungeonFragmentIcon(var_17_0.res))
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.Meilanni.play_ui_mln_unlock)
 end
 
-function slot0._onValueChnaged(slot0, slot1)
-	gohelper.setActive(slot0._gobottommask, gohelper.getRemindFourNumberFloat(slot0._scrollcontent.verticalNormalizedPosition) > 0)
+function var_0_0._onValueChnaged(arg_18_0, arg_18_1)
+	gohelper.setActive(arg_18_0._gobottommask, gohelper.getRemindFourNumberFloat(arg_18_0._scrollcontent.verticalNormalizedPosition) > 0)
 end
 
-function slot0.onClose(slot0)
-	slot0:_stopAudio()
+function var_0_0.onClose(arg_19_0)
+	arg_19_0:_stopAudio()
 
-	if slot0._elementId then
-		DungeonController.instance:dispatchEvent(DungeonEvent.onGuideCloseFragmentInfoView, slot0._elementId)
+	if arg_19_0._elementId then
+		DungeonController.instance:dispatchEvent(DungeonEvent.onGuideCloseFragmentInfoView, arg_19_0._elementId)
 	end
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._simagefragmenticon:UnLoadImage()
+function var_0_0.onDestroyView(arg_20_0)
+	arg_20_0._simagefragmenticon:UnLoadImage()
 
-	for slot4, slot5 in ipairs(slot0._btnList) do
-		slot5[1]:RemoveClickListener()
-		slot5[2]:RemoveClickListener()
+	for iter_20_0, iter_20_1 in ipairs(arg_20_0._btnList) do
+		iter_20_1[1]:RemoveClickListener()
+		iter_20_1[2]:RemoveClickListener()
 	end
 end
 
-function slot0.fragmentInfoShowHandleFunc1(slot0, slot1)
-	slot0._txtcontent.text = slot1.content
-	slot0._txttitlecn.text = slot1.title
+function var_0_0.fragmentInfoShowHandleFunc1(arg_21_0, arg_21_1)
+	arg_21_0._txtcontent.text = arg_21_1.content
+	arg_21_0._txttitlecn.text = arg_21_1.title
 
-	gohelper.setActive(slot0._txtcontent.gameObject, true)
+	gohelper.setActive(arg_21_0._txtcontent.gameObject, true)
 end
 
-function slot0.fragmentInfoShowHandleFunc2(slot0, slot1)
-	slot0._txttitlecn.text = slot1.title
-	slot0._txtcontent.text = slot1.content
+function var_0_0.fragmentInfoShowHandleFunc2(arg_22_0, arg_22_1)
+	arg_22_0._txttitlecn.text = arg_22_1.title
+	arg_22_0._txtcontent.text = arg_22_1.content
 
-	gohelper.setActive(slot0._txtcontent.gameObject, true)
-	gohelper.setActive(slot0._gochatarea, true)
+	gohelper.setActive(arg_22_0._txtcontent.gameObject, true)
+	gohelper.setActive(arg_22_0._gochatarea, true)
 
-	if slot0._isFromHandbook and slot0._dialogIdList then
-		slot0:_generateDialogByHandbook()
+	if arg_22_0._isFromHandbook and arg_22_0._dialogIdList then
+		arg_22_0:_generateDialogByHandbook()
 	else
-		slot2 = true
+		local var_22_0 = true
+		local var_22_1 = DungeonMapModel.instance:getDialog()
 
-		for slot7, slot8 in ipairs(DungeonMapModel.instance:getDialog()) do
-			slot0:_showDialog(slot8[1], slot8[2], slot8[3], slot8[4])
+		for iter_22_0, iter_22_1 in ipairs(var_22_1) do
+			arg_22_0:_showDialog(iter_22_1[1], iter_22_1[2], iter_22_1[3], iter_22_1[4])
 
-			if slot8[4] and slot8[4] > 0 then
-				slot2 = false
+			if iter_22_1[4] and iter_22_1[4] > 0 then
+				var_22_0 = false
 			end
 		end
 
-		slot4 = 0
+		local var_22_2 = 0
 
-		if slot2 then
-			slot4 = uv0
+		if var_22_0 then
+			var_22_2 = var_0_1
 		end
 
-		slot0._layoutchatarea.padding.left = slot4
+		arg_22_0._layoutchatarea.padding.left = var_22_2
 
 		DungeonMapModel.instance:clearDialog()
 		DungeonMapModel.instance:clearDialogId()
 	end
 end
 
-function slot0.fragmentInfoShowHandleFunc3(slot0, slot1)
-	slot0._txtinfo3.text = slot1.content
-	slot0._txttitle3.text = slot1.title
+function var_0_0.fragmentInfoShowHandleFunc3(arg_23_0, arg_23_1)
+	arg_23_0._txtinfo3.text = arg_23_1.content
+	arg_23_0._txttitle3.text = arg_23_1.title
 
-	gohelper.setActive(slot0._txtinfo3.gameObject, true)
+	gohelper.setActive(arg_23_0._txtinfo3.gameObject, true)
 end
 
-function slot0.fragmentInfoShowHandleFunc4(slot0, slot1)
-	slot0._txtinfo4.text = slot1.content
-	slot0._txttitle4.text = slot1.title
+function var_0_0.fragmentInfoShowHandleFunc4(arg_24_0, arg_24_1)
+	arg_24_0._txtinfo4.text = arg_24_1.content
+	arg_24_0._txttitle4.text = arg_24_1.title
 
-	gohelper.setActive(slot0._txtinfo4.gameObject, true)
+	gohelper.setActive(arg_24_0._txtinfo4.gameObject, true)
 end
 
-function slot0.fragmentInfoShowHandleFunc5(slot0, slot1)
-	slot0._txtinfo5.text = slot1.content
-	slot0._txttitle5.text = slot1.title
+function var_0_0.fragmentInfoShowHandleFunc5(arg_25_0, arg_25_1)
+	arg_25_0._txtinfo5.text = arg_25_1.content
+	arg_25_0._txttitle5.text = arg_25_1.title
 
-	gohelper.setActive(slot0._txtinfo5.gameObject, true)
+	gohelper.setActive(arg_25_0._txtinfo5.gameObject, true)
 end
 
-return slot0
+return var_0_0

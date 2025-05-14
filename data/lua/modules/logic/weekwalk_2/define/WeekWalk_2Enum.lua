@@ -1,29 +1,30 @@
-module("modules.logic.weekwalk_2.define.WeekWalk_2Enum", package.seeall)
+﻿module("modules.logic.weekwalk_2.define.WeekWalk_2Enum", package.seeall)
 
-slot0 = _M
-slot0.episodeId = 2600101
-slot0.MaxLayer = 4
-slot0.MaxStar = 3
-slot0.FirstDeepLayer = 1
-slot0.LayerStatus = {
+local var_0_0 = _M
+
+var_0_0.episodeId = 2600101
+var_0_0.MaxLayer = 4
+var_0_0.MaxStar = 3
+var_0_0.FirstDeepLayer = 1
+var_0_0.LayerStatus = {
 	Pass = 2,
 	UnLock = 0,
 	Lock = 1
 }
-slot0.BattleIndex = {
+var_0_0.BattleIndex = {
 	Second = 2,
 	First = 1
 }
-slot0.TaskType = {
+var_0_0.TaskType = {
 	Season = 6,
 	Month = 5,
 	Once = 3
 }
-slot0.BattleStatus = {
+var_0_0.BattleStatus = {
 	Finished = 1,
 	UnFinished = 0
 }
-slot0.CupType = {
+var_0_0.CupType = {
 	None2 = 5,
 	Platinum = 4,
 	Copper = 1,
@@ -31,20 +32,20 @@ slot0.CupType = {
 	Silver = 2,
 	None = 0
 }
-slot0.LineValue = {
+var_0_0.LineValue = {
 	1,
 	0.7,
 	0.3,
 	0
 }
-slot0.OnceAnimType = {
+var_0_0.OnceAnimType = {
 	FightBuffNew = 5,
 	RuleNew = 2,
 	BuffNew = 3,
 	ResultReview = 4,
 	UnlockEpisode = 1
 }
-slot0.ResultAnimIndex = {
+var_0_0.ResultAnimIndex = {
 	Defence = 3,
 	Attack = 1,
 	Health = 2,
@@ -52,4 +53,4 @@ slot0.ResultAnimIndex = {
 	RoleData = 4
 }
 
-return slot0
+return var_0_0

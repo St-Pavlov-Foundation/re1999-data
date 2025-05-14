@@ -1,12 +1,13 @@
-module("modules.logic.versionactivity2_7.act191.controller.Activity191Event", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.controller.Activity191Event", package.seeall)
 
-slot0 = _M
-slot1 = GameUtil.getUniqueTb()
-slot0.UpdateGameInfo = slot1()
-slot0.UpdateBadgeMo = slot1()
-slot0.EndGame = slot1()
-slot0.UpdateTeamInfo = slot1()
-slot0.OnClickHeroEditItem = slot1()
-slot0.OnClickCollectionGroupItem = slot1()
+local var_0_0 = _M
+local var_0_1 = GameUtil.getUniqueTb()
 
-return slot0
+var_0_0.UpdateGameInfo = var_0_1()
+var_0_0.UpdateBadgeMo = var_0_1()
+var_0_0.EndGame = var_0_1()
+var_0_0.UpdateTeamInfo = var_0_1()
+var_0_0.OnClickHeroEditItem = var_0_1()
+var_0_0.OnClickCollectionGroupItem = var_0_1()
+
+return var_0_0

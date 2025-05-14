@@ -1,30 +1,32 @@
-module("modules.logic.tower.model.TowerOpenMo", package.seeall)
+﻿module("modules.logic.tower.model.TowerOpenMo", package.seeall)
 
-slot0 = pureTable("TowerOpenMo")
+local var_0_0 = pureTable("TowerOpenMo")
 
-function slot0.init(slot0, slot1)
-	slot0.id = slot1
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.id = arg_1_1
 end
 
-function slot0.updateInfo(slot0, slot1)
-	slot0.type = slot1.type
-	slot0.towerId = slot1.towerId
-	slot0.id = slot1.towerId
-	slot0.status = slot1.status
-	slot0.round = slot1.round
-	slot0.nextTime = slot1.nextTime
-	slot0.towerStartTime = tonumber(slot1.towerStartTime)
-	slot0.taskEndTime = tonumber(slot1.taskEndTime)
+function var_0_0.updateInfo(arg_2_0, arg_2_1)
+	arg_2_0.type = arg_2_1.type
+	arg_2_0.towerId = arg_2_1.towerId
+	arg_2_0.id = arg_2_1.towerId
+	arg_2_0.status = arg_2_1.status
+	arg_2_0.round = arg_2_1.round
+	arg_2_0.nextTime = arg_2_1.nextTime
+	arg_2_0.towerStartTime = tonumber(arg_2_1.towerStartTime)
+	arg_2_0.taskEndTime = tonumber(arg_2_1.taskEndTime)
 end
 
-function slot0.getTaskRemainTime(slot0, slot1)
-	if slot0.taskEndTime / 1000 - ServerTime.now() > 0 then
-		slot3, slot4 = TimeUtil.secondToRoughTime(slot2, slot1)
+function var_0_0.getTaskRemainTime(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_0.taskEndTime / 1000 - ServerTime.now()
 
-		return slot3, slot4
+	if var_3_0 > 0 then
+		local var_3_1, var_3_2 = TimeUtil.secondToRoughTime(var_3_0, arg_3_1)
+
+		return var_3_1, var_3_2
 	else
 		return nil
 	end
 end
 
-return slot0
+return var_0_0

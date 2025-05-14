@@ -1,54 +1,64 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.XugoujiGameStepController", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.XugoujiGameStepController", package.seeall)
 
-slot0 = class("XugoujiGameStepController", BaseController)
-slot1 = VersionActivity2_6Enum.ActivityId.Xugouji
+local var_0_0 = class("XugoujiGameStepController", BaseController)
+local var_0_1 = VersionActivity2_6Enum.ActivityId.Xugouji
 
-function slot0.ctor(slot0)
-	slot0._stepList = {}
-	slot0._stepPool = nil
-	slot0._curStep = nil
-	slot0.muteAutoNext = false
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._stepList = {}
+	arg_1_0._stepPool = nil
+	arg_1_0._curStep = nil
+	arg_1_0.muteAutoNext = false
 end
 
-function slot0.insertStepList(slot0, slot1)
+function var_0_0.insertStepList(arg_2_0, arg_2_1)
 	Activity188Model.instance:setGameState(XugoujiEnum.GameStatus.UnOperatable)
 
-	for slot6 = 1, #slot1 do
-		slot0:insertStep(slot1[slot6])
+	local var_2_0 = #arg_2_1
+
+	for iter_2_0 = 1, var_2_0 do
+		local var_2_1 = arg_2_1[iter_2_0]
+
+		arg_2_0:insertStep(var_2_1)
 	end
 end
 
-function slot0.insertStep(slot0, slot1)
-	if slot0:buildStep(slot1) then
-		slot0._stepList = slot0._stepList or {}
+function var_0_0.insertStep(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_0:buildStep(arg_3_1)
 
-		table.insert(slot0._stepList, slot2)
+	if var_3_0 then
+		arg_3_0._stepList = arg_3_0._stepList or {}
+
+		table.insert(arg_3_0._stepList, var_3_0)
 	end
 
-	if slot0._curStep == nil then
-		slot0:nextStep()
+	if arg_3_0._curStep == nil then
+		arg_3_0:nextStep()
 	end
 end
 
-function slot0.insertStepListClient(slot0, slot1, slot2)
-	for slot7 = 1, #slot1 do
-		if slot0:buildStepClient(slot1[slot7]) then
-			slot0._stepList = slot0._stepList or {}
+function var_0_0.insertStepListClient(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0 = #arg_4_1
 
-			if slot2 then
-				table.insert(slot0._stepList, slot7, slot8)
+	for iter_4_0 = 1, var_4_0 do
+		local var_4_1 = arg_4_0:buildStepClient(arg_4_1[iter_4_0])
+
+		if var_4_1 then
+			arg_4_0._stepList = arg_4_0._stepList or {}
+
+			if arg_4_2 then
+				table.insert(arg_4_0._stepList, iter_4_0, var_4_1)
 			else
-				table.insert(slot0._stepList, slot8)
+				table.insert(arg_4_0._stepList, var_4_1)
 			end
 		end
 
-		if slot0._curStep == nil then
-			slot0:nextStep()
+		if arg_4_0._curStep == nil then
+			arg_4_0:nextStep()
 		end
 	end
 end
 
-slot0.StepClzMap = {
+var_0_0.StepClzMap = {
 	[XugoujiEnum.GameStepType.HpUpdate] = XugoujiGameStepHpUpdate,
 	[XugoujiEnum.GameStepType.UpdateCardStatus] = XugoujiGameStepCardUpdate,
 	[XugoujiEnum.GameStepType.Result] = XugoujiGameStepResult,
@@ -63,111 +73,124 @@ slot0.StepClzMap = {
 	[XugoujiEnum.GameStepType.GameReStart] = XugoujiGameStepGameReStart
 }
 
-function slot0.buildStep(slot0, slot1)
-	if cjson.decode(slot1.param).stepType == XugoujiEnum.GameStepType.HpUpdate then
-		if slot2.isSelf then
-			Activity188Model.instance:checkHpZero(slot2.hpChange)
+function var_0_0.buildStep(arg_5_0, arg_5_1)
+	local var_5_0 = cjson.decode(arg_5_1.param)
+
+	if var_5_0.stepType == XugoujiEnum.GameStepType.HpUpdate then
+		local var_5_1 = var_5_0.isSelf
+		local var_5_2 = var_5_0.hpChange
+
+		if var_5_1 then
+			Activity188Model.instance:checkHpZero(var_5_2)
 		end
 	end
 
-	if uv0.StepClzMap[slot2.stepType] then
-		slot4 = nil
-		slot0._stepPool = slot0._stepPool or {}
+	local var_5_3 = var_0_0.StepClzMap[var_5_0.stepType]
 
-		if slot0._stepPool[slot3] ~= nil and #slot0._stepPool[slot3] >= 1 then
-			slot5 = #slot0._stepPool[slot3]
-			slot4 = slot0._stepPool[slot3][slot5]
-			slot0._stepPool[slot3][slot5] = nil
+	if var_5_3 then
+		local var_5_4
+
+		arg_5_0._stepPool = arg_5_0._stepPool or {}
+
+		if arg_5_0._stepPool[var_5_3] ~= nil and #arg_5_0._stepPool[var_5_3] >= 1 then
+			local var_5_5 = #arg_5_0._stepPool[var_5_3]
+
+			var_5_4 = arg_5_0._stepPool[var_5_3][var_5_5]
+			arg_5_0._stepPool[var_5_3][var_5_5] = nil
 		else
-			slot4 = slot3.New()
+			var_5_4 = var_5_3.New()
 		end
 
-		slot4:init(slot2)
+		var_5_4:init(var_5_0)
 
-		return slot4
+		return var_5_4
 	end
 end
 
-function slot0.buildStepClient(slot0, slot1)
-	if uv0.StepClzMap[slot1.stepType] then
-		slot3 = nil
-		slot0._stepPool = slot0._stepPool or {}
+function var_0_0.buildStepClient(arg_6_0, arg_6_1)
+	local var_6_0 = var_0_0.StepClzMap[arg_6_1.stepType]
 
-		if slot0._stepPool[slot2] ~= nil and #slot0._stepPool[slot2] >= 1 then
-			slot4 = #slot0._stepPool[slot2]
-			slot3 = slot0._stepPool[slot2][slot4]
-			slot0._stepPool[slot2][slot4] = nil
+	if var_6_0 then
+		local var_6_1
+
+		arg_6_0._stepPool = arg_6_0._stepPool or {}
+
+		if arg_6_0._stepPool[var_6_0] ~= nil and #arg_6_0._stepPool[var_6_0] >= 1 then
+			local var_6_2 = #arg_6_0._stepPool[var_6_0]
+
+			var_6_1 = arg_6_0._stepPool[var_6_0][var_6_2]
+			arg_6_0._stepPool[var_6_0][var_6_2] = nil
 		else
-			slot3 = slot2.New()
+			var_6_1 = var_6_0.New()
 		end
 
-		slot3:init(slot1)
+		var_6_1:init(arg_6_1)
 
-		return slot3
+		return var_6_1
 	end
 end
 
-function slot0.nextStep(slot0)
-	slot0:recycleCurStep()
+function var_0_0.nextStep(arg_7_0)
+	arg_7_0:recycleCurStep()
 
-	slot0._doingStepAction = slot0._stepList and #slot0._stepList > 0
+	arg_7_0._doingStepAction = arg_7_0._stepList and #arg_7_0._stepList > 0
 
-	if not slot0._doingStepAction then
+	if not arg_7_0._doingStepAction then
 		Activity188Model.instance:setGameState(XugoujiEnum.GameStatus.Operatable)
 	end
 
-	if not slot0._isStepStarting then
-		slot0._isStepStarting = true
+	if not arg_7_0._isStepStarting then
+		arg_7_0._isStepStarting = true
 
-		while slot0._curStep == nil and slot0._stepList and #slot0._stepList > 0 do
-			slot0._curStep = slot0._stepList[1]
+		while arg_7_0._curStep == nil and arg_7_0._stepList and #arg_7_0._stepList > 0 do
+			arg_7_0._curStep = arg_7_0._stepList[1]
 
-			table.remove(slot0._stepList, 1)
-			slot0._curStep:start()
+			table.remove(arg_7_0._stepList, 1)
+			arg_7_0._curStep:start()
 		end
 
-		slot0._isStepStarting = false
+		arg_7_0._isStepStarting = false
 	end
 end
 
-function slot0.recycleCurStep(slot0)
-	if slot0._curStep then
-		slot0._curStep:dispose()
+function var_0_0.recycleCurStep(arg_8_0)
+	if arg_8_0._curStep then
+		arg_8_0._curStep:dispose()
 
-		slot0._stepPool[slot0._curStep.class] = slot0._stepPool[slot0._curStep.class] or {}
+		arg_8_0._stepPool[arg_8_0._curStep.class] = arg_8_0._stepPool[arg_8_0._curStep.class] or {}
 
-		table.insert(slot0._stepPool[slot0._curStep.class], slot0._curStep)
+		table.insert(arg_8_0._stepPool[arg_8_0._curStep.class], arg_8_0._curStep)
 
-		slot0._curStep = nil
+		arg_8_0._curStep = nil
 	end
 end
 
-function slot0.disposeAllStep(slot0)
-	if slot0._curStep then
-		slot0._curStep:dispose()
+function var_0_0.disposeAllStep(arg_9_0)
+	if arg_9_0._curStep then
+		arg_9_0._curStep:dispose()
 
-		slot0._curStep = nil
+		arg_9_0._curStep = nil
 	end
 
-	if slot0._stepList then
-		for slot4, slot5 in pairs(slot0._stepList) do
-			slot5:dispose()
+	if arg_9_0._stepList then
+		for iter_9_0, iter_9_1 in pairs(arg_9_0._stepList) do
+			iter_9_1:dispose()
 		end
 
-		slot0._stepList = nil
+		arg_9_0._stepList = nil
 	end
 
-	slot0._stepPool = nil
-	slot0._isStepStarting = false
+	arg_9_0._stepPool = nil
+	arg_9_0._isStepStarting = false
 end
 
-function slot0.clear(slot0)
-	slot0._stepList = nil
-	slot0._curStep = nil
+function var_0_0.clear(arg_10_0)
+	arg_10_0._stepList = nil
+	arg_10_0._curStep = nil
 
-	slot0:disposeAllStep()
+	arg_10_0:disposeAllStep()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

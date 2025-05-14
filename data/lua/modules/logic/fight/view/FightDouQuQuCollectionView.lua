@@ -1,48 +1,54 @@
-module("modules.logic.fight.view.FightDouQuQuCollectionView", package.seeall)
+﻿module("modules.logic.fight.view.FightDouQuQuCollectionView", package.seeall)
 
-slot0 = class("FightDouQuQuCollectionView", FightBaseView)
+local var_0_0 = class("FightDouQuQuCollectionView", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.collectionObjList = {}
-	slot0.simage_iconList = {}
-	slot0.img_rareList = {}
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.collectionObjList = {}
+	arg_1_0.simage_iconList = {}
+	arg_1_0.img_rareList = {}
 
-	for slot4 = 1, 2 do
-		table.insert(slot0.collectionObjList, gohelper.findChild(slot0.viewGO, "root/collection" .. slot4))
-		table.insert(slot0.simage_iconList, gohelper.findChildSingleImage(slot0.viewGO, "root/collection" .. slot4 .. "/simage_Icon"))
-		table.insert(slot0.img_rareList, gohelper.findChildImage(slot0.viewGO, "root/collection" .. slot4 .. "/image_Rare"))
+	for iter_1_0 = 1, 2 do
+		table.insert(arg_1_0.collectionObjList, gohelper.findChild(arg_1_0.viewGO, "root/collection" .. iter_1_0))
+		table.insert(arg_1_0.simage_iconList, gohelper.findChildSingleImage(arg_1_0.viewGO, "root/collection" .. iter_1_0 .. "/simage_Icon"))
+		table.insert(arg_1_0.img_rareList, gohelper.findChildImage(arg_1_0.viewGO, "root/collection" .. iter_1_0 .. "/image_Rare"))
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.onConstructor(arg_3_0, arg_3_1)
+	arg_3_0.entityMO = arg_3_1
 end
 
-function slot0.refreshEntityMO(slot0, slot1)
-	slot0.entityMO = slot1
+function var_0_0.refreshEntityMO(arg_4_0, arg_4_1)
+	arg_4_0.entityMO = arg_4_1
 
-	if slot0.viewGO then
-		slot0:refreshCollection()
+	if arg_4_0.viewGO then
+		arg_4_0:refreshCollection()
 	end
 end
 
-function slot0.onOpen(slot0)
-	slot0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
+function var_0_0.onOpen(arg_5_0)
+	arg_5_0.customData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
 
-	slot0:refreshCollection()
+	arg_5_0:refreshCollection()
 end
 
-function slot0.refreshCollection(slot0)
-	slot2 = {}
+function var_0_0.refreshCollection(arg_6_0)
+	local var_6_0 = arg_6_0.entityMO.side == FightEnum.EntitySide.MySide and arg_6_0.customData.teamAHeroInfo or arg_6_0.customData.teamBHeroInfo
+	local var_6_1 = {}
 
-	for slot6, slot7 in pairs(slot0.entityMO.side == FightEnum.EntitySide.MySide and slot0.customData.teamAHeroInfo or slot0.customData.teamBHeroInfo) do
-		if tonumber(slot6) == slot0.entityMO.modelId then
-			for slot12 = 2, #string.splitToNumber(slot7, "#") do
-				if tonumber(slot8[slot12]) ~= 0 then
-					table.insert(slot2, slot13)
+	for iter_6_0, iter_6_1 in pairs(var_6_0) do
+		if tonumber(iter_6_0) == arg_6_0.entityMO.modelId then
+			local var_6_2 = string.splitToNumber(iter_6_1, "#")
+
+			for iter_6_2 = 2, #var_6_2 do
+				local var_6_3 = tonumber(var_6_2[iter_6_2])
+
+				if var_6_3 ~= 0 then
+					table.insert(var_6_1, var_6_3)
 				end
 			end
 
@@ -50,46 +56,52 @@ function slot0.refreshCollection(slot0)
 		end
 	end
 
-	if #slot2 == 0 then
-		gohelper.setActive(slot0.viewGO, false)
+	if #var_6_1 == 0 then
+		gohelper.setActive(arg_6_0.viewGO, false)
 
 		return
 	end
 
-	gohelper.setActive(slot0.viewGO, true)
+	gohelper.setActive(arg_6_0.viewGO, true)
 
-	for slot6 = 1, #slot0.collectionObjList do
-		slot7 = slot0.collectionObjList[slot6]
+	for iter_6_3 = 1, #arg_6_0.collectionObjList do
+		local var_6_4 = arg_6_0.collectionObjList[iter_6_3]
+		local var_6_5 = var_6_1[iter_6_3]
 
-		if slot2[slot6] then
-			gohelper.setActive(slot7, true)
+		if var_6_5 then
+			gohelper.setActive(var_6_4, true)
 
-			slot9 = Activity191Config.instance:getCollectionCo(slot8)
+			local var_6_6 = Activity191Config.instance:getCollectionCo(var_6_5)
 
-			UISpriteSetMgr.instance:setAct174Sprite(slot0.img_rareList[slot6], "act174_propitembg_" .. slot9.rare)
-			slot0.simage_iconList[slot6]:LoadImage(ResUrl.getRougeSingleBgCollection(slot9.icon))
-			slot0:com_registClick(gohelper.getClickWithDefaultAudio(slot7), slot0.onItemClick, slot8)
+			UISpriteSetMgr.instance:setAct174Sprite(arg_6_0.img_rareList[iter_6_3], "act174_propitembg_" .. var_6_6.rare)
+			arg_6_0.simage_iconList[iter_6_3]:LoadImage(ResUrl.getRougeSingleBgCollection(var_6_6.icon))
+
+			local var_6_7 = gohelper.getClickWithDefaultAudio(var_6_4)
+
+			arg_6_0:com_registClick(var_6_7, arg_6_0.onItemClick, var_6_5)
 		else
-			gohelper.setActive(slot7, false)
+			gohelper.setActive(var_6_4, false)
 		end
 	end
 end
 
-function slot0.onItemClick(slot0, slot1)
-	slot2 = false
+function var_0_0.onItemClick(arg_7_0, arg_7_1)
+	local var_7_0 = false
 
-	for slot6, slot7 in ipairs(slot0.customData.updateCollectionIds) do
-		if slot7 == slot1 then
-			slot2 = true
+	for iter_7_0, iter_7_1 in ipairs(arg_7_0.customData.updateCollectionIds) do
+		if iter_7_1 == arg_7_1 then
+			var_7_0 = true
 
 			break
 		end
 	end
 
-	Activity191Controller.instance:openCollectionTipView({
-		itemId = slot1,
-		enhance = slot2
-	})
+	local var_7_1 = {
+		itemId = arg_7_1,
+		enhance = var_7_0
+	}
+
+	Activity191Controller.instance:openCollectionTipView(var_7_1)
 end
 
-return slot0
+return var_0_0

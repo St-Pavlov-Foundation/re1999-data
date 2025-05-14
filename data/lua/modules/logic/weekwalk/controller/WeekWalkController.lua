@@ -1,22 +1,23 @@
-module("modules.logic.weekwalk.controller.WeekWalkController", package.seeall)
+﻿module("modules.logic.weekwalk.controller.WeekWalkController", package.seeall)
 
-slot0 = class("WeekWalkController", BaseController)
+local var_0_0 = class("WeekWalkController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0:clear()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:clear()
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_2_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
-	TaskController.instance:registerCallback(TaskEvent.SetTaskList, slot0._refreshTaskData, slot0)
-	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, slot0._refreshTaskData, slot0)
-	uv0.instance:registerCallback(WeekWalkEvent.OnGetInfo, slot0.startCheckTime, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._onDailyRefresh, slot0, LuaEventSystem.Low)
+function var_0_0.addConstEvents(arg_3_0)
+	TaskController.instance:registerCallback(TaskEvent.SetTaskList, arg_3_0._refreshTaskData, arg_3_0)
+	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, arg_3_0._refreshTaskData, arg_3_0)
+	var_0_0.instance:registerCallback(WeekWalkEvent.OnGetInfo, arg_3_0.startCheckTime, arg_3_0)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_3_0._onDailyRefresh, arg_3_0, LuaEventSystem.Low)
 end
 
-function slot0._onDailyRefresh(slot0)
+function var_0_0._onDailyRefresh(arg_4_0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk) then
 		return
 	end
@@ -27,189 +28,202 @@ function slot0._onDailyRefresh(slot0)
 	WeekwalkRpc.instance:sendGetWeekwalkInfoRequest()
 end
 
-function slot0.startCheckTime(slot0)
-	TaskDispatcher.runRepeat(slot0._checkTime, slot0, 1)
+function var_0_0.startCheckTime(arg_5_0)
+	TaskDispatcher.runRepeat(arg_5_0._checkTime, arg_5_0, 1)
 end
 
-function slot0.stopCheckTime(slot0)
-	TaskDispatcher.cancelTask(slot0._checkTime, slot0)
+function var_0_0.stopCheckTime(arg_6_0)
+	TaskDispatcher.cancelTask(arg_6_0._checkTime, arg_6_0)
 end
 
-function slot0._checkTime(slot0)
-	if not WeekWalkModel.instance:getInfo() or not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk) then
-		slot0:stopCheckTime()
+function var_0_0._checkTime(arg_7_0)
+	local var_7_0 = WeekWalkModel.instance:getInfo()
+
+	if not var_7_0 or not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk) then
+		arg_7_0:stopCheckTime()
 
 		return
 	end
 
-	if slot1.endTime - ServerTime.now() <= 0 then
-		slot0:stopCheckTime()
+	if var_7_0.endTime - ServerTime.now() <= 0 then
+		arg_7_0:stopCheckTime()
 
 		if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
 			WeekWalkModel.instance:addOldInfo()
 		end
 
-		slot0:_recordRequestTimes()
+		arg_7_0:_recordRequestTimes()
 
-		if slot0._maxRequestTimes < slot0._requestTimes then
+		if arg_7_0._requestTimes > arg_7_0._maxRequestTimes then
 			logError("sendGetWeekwalkInfoRequest too many times")
 
 			return
 		end
 
-		slot0:requestTask(true)
+		arg_7_0:requestTask(true)
 		WeekwalkRpc.instance:sendGetWeekwalkInfoRequest()
 
 		return
 	end
 
-	slot0:_clearRequestTimes()
+	arg_7_0:_clearRequestTimes()
 end
 
-function slot0._recordRequestTimes(slot0)
-	slot0._requestTimes = slot0._requestTimes or 0
-	slot0._requestTimes = slot0._requestTimes + 1
+function var_0_0._recordRequestTimes(arg_8_0)
+	arg_8_0._requestTimes = arg_8_0._requestTimes or 0
+	arg_8_0._requestTimes = arg_8_0._requestTimes + 1
 end
 
-function slot0._clearRequestTimes(slot0)
-	slot0._requestTimes = 0
+function var_0_0._clearRequestTimes(arg_9_0)
+	arg_9_0._requestTimes = 0
 end
 
-function slot0.reInit(slot0)
-	slot0:clear()
+function var_0_0.reInit(arg_10_0)
+	arg_10_0:clear()
 end
 
-function slot0.clear(slot0)
-	slot0._requestTask = false
-	slot0._requestTimes = 0
-	slot0._maxRequestTimes = 3
+function var_0_0.clear(arg_11_0)
+	arg_11_0._requestTask = false
+	arg_11_0._requestTimes = 0
+	arg_11_0._maxRequestTimes = 3
 end
 
-function slot0._refreshTaskData(slot0)
+function var_0_0._refreshTaskData(arg_12_0)
 	WeekWalkTaskListModel.instance:updateTaskList()
-	slot0:dispatchEvent(WeekWalkEvent.OnWeekwalkTaskUpdate)
+	arg_12_0:dispatchEvent(WeekWalkEvent.OnWeekwalkTaskUpdate)
 end
 
-function slot0.getTaskEndTime(slot0)
-	for slot5, slot6 in ipairs(TaskConfig.instance:getWeekWalkTaskList(slot0)) do
-		return WeekWalkTaskListModel.instance:getTaskMo(slot6.id) and slot7.expiryTime
+function var_0_0.getTaskEndTime(arg_13_0)
+	local var_13_0 = TaskConfig.instance:getWeekWalkTaskList(arg_13_0)
+
+	for iter_13_0, iter_13_1 in ipairs(var_13_0) do
+		local var_13_1 = WeekWalkTaskListModel.instance:getTaskMo(iter_13_1.id)
+
+		return var_13_1 and var_13_1.expiryTime
 	end
 end
 
-function slot0.requestTask(slot0, slot1)
-	if slot0._requestTask and not slot1 then
+function var_0_0.requestTask(arg_14_0, arg_14_1)
+	if arg_14_0._requestTask and not arg_14_1 then
 		return
 	end
 
-	slot0._requestTask = true
+	arg_14_0._requestTask = true
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.WeekWalk
 	})
 end
 
-function slot0.openWeekWalkCharacterView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkCharacterView, slot1, slot2)
+function var_0_0.openWeekWalkCharacterView(arg_15_0, arg_15_1, arg_15_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkCharacterView, arg_15_1, arg_15_2)
 end
 
-function slot0.openWeekWalkTarotView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkTarotView, slot1, slot2)
+function var_0_0.openWeekWalkTarotView(arg_16_0, arg_16_1, arg_16_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkTarotView, arg_16_1, arg_16_2)
 end
 
-function slot0.openWeekWalkReviveView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkReviveView, slot1, slot2)
+function var_0_0.openWeekWalkReviveView(arg_17_0, arg_17_1, arg_17_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkReviveView, arg_17_1, arg_17_2)
 end
 
-function slot0.openWeekWalkRuleView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkRuleView, slot1, slot2)
+function var_0_0.openWeekWalkRuleView(arg_18_0, arg_18_1, arg_18_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkRuleView, arg_18_1, arg_18_2)
 end
 
-function slot0.openWeekWalkShallowSettlementView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkShallowSettlementView, slot1, slot2)
+function var_0_0.openWeekWalkShallowSettlementView(arg_19_0, arg_19_1, arg_19_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkShallowSettlementView, arg_19_1, arg_19_2)
 end
 
-function slot0.openWeekWalkDeepLayerNoticeView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkDeepLayerNoticeView, slot1, slot2)
+function var_0_0.openWeekWalkDeepLayerNoticeView(arg_20_0, arg_20_1, arg_20_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkDeepLayerNoticeView, arg_20_1, arg_20_2)
 end
 
-function slot0.checkOpenWeekWalkDeepLayerNoticeView(slot0, slot1, slot2)
-	if WeekWalkEnum.FirstDeepLayer <= WeekWalkModel.instance:getMaxLayerId() or GuideController.instance:isForbidGuides() or GuideModel.instance:isGuideFinish(GuideEnum.GuideId.WeekWalkDeep) then
-		slot0:openWeekWalkDeepLayerNoticeView()
+function var_0_0.checkOpenWeekWalkDeepLayerNoticeView(arg_21_0, arg_21_1, arg_21_2)
+	if WeekWalkModel.instance:getMaxLayerId() >= WeekWalkEnum.FirstDeepLayer or GuideController.instance:isForbidGuides() or GuideModel.instance:isGuideFinish(GuideEnum.GuideId.WeekWalkDeep) then
+		arg_21_0:openWeekWalkDeepLayerNoticeView()
 	end
 end
 
-function slot0.openWeekWalkView(slot0, slot1, slot2)
-	if not (slot1 or {}).mapId then
-		slot3 = FightModel.instance:getBattleId()
+function var_0_0.openWeekWalkView(arg_22_0, arg_22_1, arg_22_2)
+	arg_22_1 = arg_22_1 or {}
+
+	if not arg_22_1.mapId then
+		local var_22_0 = FightModel.instance:getBattleId()
 
 		FightModel.instance:clearBattleId()
 
-		slot1.mapId = WeekWalkModel.instance:getCurMapId()
+		arg_22_1.mapId = WeekWalkModel.instance:getCurMapId()
 	end
 
-	if slot1.mapId then
-		WeekWalkModel.instance:setCurMapId(slot1.mapId)
+	if arg_22_1.mapId then
+		WeekWalkModel.instance:setCurMapId(arg_22_1.mapId)
 	end
 
-	ViewMgr.instance:openView(ViewName.WeekWalkView, slot1, slot2)
+	ViewMgr.instance:openView(ViewName.WeekWalkView, arg_22_1, arg_22_2)
 end
 
-function slot0.openWeekWalkDegradeView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkDegradeView, slot1, slot2)
+function var_0_0.openWeekWalkDegradeView(arg_23_0, arg_23_1, arg_23_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkDegradeView, arg_23_1, arg_23_2)
 end
 
-function slot0.openWeekWalkDialogView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkDialogView, slot1, slot2)
+function var_0_0.openWeekWalkDialogView(arg_24_0, arg_24_1, arg_24_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkDialogView, arg_24_1, arg_24_2)
 end
 
-function slot0.openWeekWalkQuestionView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkQuestionView, slot1, slot2)
+function var_0_0.openWeekWalkQuestionView(arg_25_0, arg_25_1, arg_25_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkQuestionView, arg_25_1, arg_25_2)
 end
 
-function slot0.openWeekWalkResetView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkResetView, slot1, slot2)
+function var_0_0.openWeekWalkResetView(arg_26_0, arg_26_1, arg_26_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkResetView, arg_26_1, arg_26_2)
 end
 
-function slot0.openWeekWalkLayerView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkLayerView, slot1, slot2)
+function var_0_0.openWeekWalkLayerView(arg_27_0, arg_27_1, arg_27_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkLayerView, arg_27_1, arg_27_2)
 end
 
-function slot0.openWeekWalkRewardView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkRewardView, slot1, slot2)
+function var_0_0.openWeekWalkRewardView(arg_28_0, arg_28_1, arg_28_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkRewardView, arg_28_1, arg_28_2)
 end
 
-function slot0.openWeekWalkLayerRewardView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkLayerRewardView, slot1, slot2)
+function var_0_0.openWeekWalkLayerRewardView(arg_29_0, arg_29_1, arg_29_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkLayerRewardView, arg_29_1, arg_29_2)
 end
 
-function slot0.openWeekWalkEnemyInfoView(slot0, slot1, slot2)
+function var_0_0.openWeekWalkEnemyInfoView(arg_30_0, arg_30_1, arg_30_2)
 	logError("废弃 view")
 end
 
-function slot0.openWeekWalkBuffBindingView(slot0, slot1, slot2)
-	ViewMgr.instance:openView(ViewName.WeekWalkBuffBindingView, slot1, slot2)
+function var_0_0.openWeekWalkBuffBindingView(arg_31_0, arg_31_1, arg_31_2)
+	ViewMgr.instance:openView(ViewName.WeekWalkBuffBindingView, arg_31_1, arg_31_2)
 end
 
-function slot0.openWeekWalkRespawnView(slot0, slot1, slot2)
+function var_0_0.openWeekWalkRespawnView(arg_32_0, arg_32_1, arg_32_2)
 	if WeekWalkModel.instance:getInfo():haveDeathHero() then
-		ViewMgr.instance:openView(ViewName.WeekWalkRespawnView, slot1, slot2)
+		ViewMgr.instance:openView(ViewName.WeekWalkRespawnView, arg_32_1, arg_32_2)
 	else
 		GameFacade.showToast(ToastEnum.AdventureRespawn)
 	end
 end
 
-function slot0.enterWeekwalkFight(slot0, slot1)
-	slot5 = WeekWalkEnum.episodeId
-	DungeonModel.instance.curLookEpisodeId = slot5
+function var_0_0.enterWeekwalkFight(arg_33_0, arg_33_1)
+	local var_33_0 = WeekWalkModel.instance:getCurMapId()
+	local var_33_1 = WeekWalkModel.instance:getElementInfo(var_33_0, arg_33_1):getBattleId()
+	local var_33_2 = WeekWalkEnum.episodeId
 
-	DungeonFightController.instance:enterWeekwalkFight(DungeonConfig.instance:getEpisodeCO(slot5).chapterId, slot5, WeekWalkModel.instance:getElementInfo(WeekWalkModel.instance:getCurMapId(), slot1):getBattleId())
+	DungeonModel.instance.curLookEpisodeId = var_33_2
+
+	local var_33_3 = DungeonConfig.instance:getEpisodeCO(var_33_2)
+
+	DungeonFightController.instance:enterWeekwalkFight(var_33_3.chapterId, var_33_2, var_33_1)
 end
 
-function slot0.jumpWeekWalkDeepLayerView(slot0, slot1, slot2)
-	slot0._jumpCallback = slot1
-	slot0._jumpCallbackTarget = slot2
+function var_0_0.jumpWeekWalkDeepLayerView(arg_34_0, arg_34_1, arg_34_2)
+	arg_34_0._jumpCallback = arg_34_1
+	arg_34_0._jumpCallbackTarget = arg_34_2
 
-	module_views_preloader.preloadMultiView(slot0._preloadCallback, slot0, {
+	module_views_preloader.preloadMultiView(arg_34_0._preloadCallback, arg_34_0, {
 		ViewName.DungeonView,
 		ViewName.WeekWalkLayerView
 	}, {
@@ -217,26 +231,29 @@ function slot0.jumpWeekWalkDeepLayerView(slot0, slot1, slot2)
 	})
 end
 
-function slot0._preloadCallback(slot0)
+function var_0_0._preloadCallback(arg_35_0)
 	WeekWalkModel.instance:setSkipShowSettlementView(true)
 	DungeonModel.instance:changeCategory(DungeonEnum.ChapterType.WeekWalk)
 	DungeonController.instance:enterDungeonView()
-	TaskDispatcher.runDelay(slot0._delayOpenLayerView, slot0, 0)
+	TaskDispatcher.runDelay(arg_35_0._delayOpenLayerView, arg_35_0, 0)
 
-	slot0._jumpCallback = nil
-	slot0._jumpCallbackTarget = nil
+	local var_35_0 = arg_35_0._jumpCallback
+	local var_35_1 = arg_35_0._jumpCallbackTarget
 
-	if slot0._jumpCallback then
-		slot1(slot0._jumpCallbackTarget)
+	arg_35_0._jumpCallback = nil
+	arg_35_0._jumpCallbackTarget = nil
+
+	if var_35_0 then
+		var_35_0(var_35_1)
 	end
 end
 
-function slot0._delayOpenLayerView(slot0)
-	uv0.instance:openWeekWalkLayerView({
+function var_0_0._delayOpenLayerView(arg_36_0)
+	var_0_0.instance:openWeekWalkLayerView({
 		layerId = 11
 	})
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,26 +1,27 @@
-module("modules.logic.versionactivity2_7.lengzhou6.config.LengZhou6EliminateConfig", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.config.LengZhou6EliminateConfig", package.seeall)
 
-slot0 = class("LengZhou6EliminateConfig", EliminateConfig)
+local var_0_0 = class("LengZhou6EliminateConfig", EliminateConfig)
 
-function slot0._initEliminateChessConfig(slot0)
-	uv0.super._initEliminateChessConfig(slot0)
+function var_0_0._initEliminateChessConfig(arg_1_0)
+	var_0_0.super._initEliminateChessConfig(arg_1_0)
 
-	slot0._eliminateLevelConfig = {}
+	arg_1_0._eliminateLevelConfig = {}
 
-	for slot4 = 1, #T_lua_eliminate_level do
-		slot5 = T_lua_eliminate_level[slot4]
-		slot0._eliminateLevelConfig[slot5.id] = slot5
+	for iter_1_0 = 1, #T_lua_eliminate_level do
+		local var_1_0 = T_lua_eliminate_level[iter_1_0]
+
+		arg_1_0._eliminateLevelConfig[var_1_0.id] = var_1_0
 	end
 end
 
-function slot0.getEliminateChessLevelConfig(slot0, slot1)
-	if slot0._eliminateLevelConfig == nil then
-		slot0:_initEliminateChessConfig()
+function var_0_0.getEliminateChessLevelConfig(arg_2_0, arg_2_1)
+	if arg_2_0._eliminateLevelConfig == nil then
+		arg_2_0:_initEliminateChessConfig()
 	end
 
-	return slot0._eliminateLevelConfig[slot1] and slot0._eliminateLevelConfig[slot1].chess or ""
+	return arg_2_0._eliminateLevelConfig[arg_2_1] and arg_2_0._eliminateLevelConfig[arg_2_1].chess or ""
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

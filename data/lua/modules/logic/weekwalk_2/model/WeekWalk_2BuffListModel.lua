@@ -1,78 +1,99 @@
-module("modules.logic.weekwalk_2.model.WeekWalk_2BuffListModel", package.seeall)
+﻿module("modules.logic.weekwalk_2.model.WeekWalk_2BuffListModel", package.seeall)
 
-slot0 = class("WeekWalk_2BuffListModel", ListScrollModel)
+local var_0_0 = class("WeekWalk_2BuffListModel", ListScrollModel)
 
-function slot0.getPrevBattleSkillId()
-	slot0 = WeekWalk_2Model.instance:getCurMapInfo()
+function var_0_0.getPrevBattleSkillId()
+	local var_1_0 = WeekWalk_2Model.instance:getCurMapInfo()
+	local var_1_1 = HeroGroupModel.instance.battleId
+	local var_1_2 = var_1_0:getBattleInfoByBattleId(var_1_1)
+	local var_1_3 = var_1_0:getBattleInfo(var_1_2.index - 1)
 
-	return slot0:getBattleInfo(slot0:getBattleInfoByBattleId(HeroGroupModel.instance.battleId).index - 1) and slot3:getChooseSkillId()
+	return var_1_3 and var_1_3:getChooseSkillId()
 end
 
-function slot0.getCurHeroGroupSkillId()
-	if uv0._getCurHeroGroupSkillId() then
-		if not tabletool.indexOf(WeekWalk_2Model.instance:getInfo():getOptionSkills(), slot0) or WeekWalk_2Model.instance:getCurMapInfo():getChooseSkillNum() < slot5 then
-			slot0 = nil
+function var_0_0.getCurHeroGroupSkillId()
+	local var_2_0 = var_0_0._getCurHeroGroupSkillId()
+
+	if var_2_0 then
+		local var_2_1 = WeekWalk_2Model.instance:getCurMapInfo():getChooseSkillNum()
+		local var_2_2 = WeekWalk_2Model.instance:getInfo():getOptionSkills()
+		local var_2_3 = tabletool.indexOf(var_2_2, var_2_0)
+
+		if not var_2_3 or var_2_1 < var_2_3 then
+			var_2_0 = nil
 		end
 	end
 
-	return slot0
+	return var_2_0
 end
 
-function slot0._getCurHeroGroupSkillId()
-	slot1 = WeekWalk_2Model.instance:getInfo() and slot0:getHeroGroupSkill(HeroGroupModel.instance.curGroupSelectIndex)
+function var_0_0._getCurHeroGroupSkillId()
+	local var_3_0 = WeekWalk_2Model.instance:getInfo()
+	local var_3_1 = var_3_0 and var_3_0:getHeroGroupSkill(HeroGroupModel.instance.curGroupSelectIndex)
 
-	return slot1 ~= uv0.getPrevBattleSkillId() and slot1 or nil
+	return var_3_1 ~= var_0_0.getPrevBattleSkillId() and var_3_1 or nil
 end
 
-function slot0.initBuffList(slot0, slot1)
-	slot5 = #string.split(lua_weekwalk_ver2_time.configDict[WeekWalk_2Model.instance:getTimeId()].optionalSkills, "#")
+function var_0_0.initBuffList(arg_4_0, arg_4_1)
+	local var_4_0 = WeekWalk_2Model.instance:getTimeId()
+	local var_4_1 = lua_weekwalk_ver2_time.configDict[var_4_0]
+	local var_4_2 = string.split(var_4_1.optionalSkills, "#")
+	local var_4_3 = #var_4_2
 
-	if slot1 then
-		slot5 = WeekWalk_2Model.instance:getCurMapInfo():getChooseSkillNum()
+	if arg_4_1 then
+		var_4_3 = WeekWalk_2Model.instance:getCurMapInfo():getChooseSkillNum()
 	end
 
-	for slot10, slot11 in ipairs(slot4) do
-		if slot10 <= slot5 then
-			if lua_weekwalk_ver2_skill.configDict[tonumber(slot11)] then
-				table.insert({}, slot13)
+	local var_4_4 = {}
+
+	for iter_4_0, iter_4_1 in ipairs(var_4_2) do
+		local var_4_5 = tonumber(iter_4_1)
+
+		if iter_4_0 <= var_4_3 then
+			local var_4_6 = lua_weekwalk_ver2_skill.configDict[var_4_5]
+
+			if var_4_6 then
+				table.insert(var_4_4, var_4_6)
 			end
 		else
 			break
 		end
 	end
 
-	slot0.prevBattleSkillId = nil
-	slot0.isBattle = slot1
-	slot7 = 1
+	arg_4_0.prevBattleSkillId = nil
+	arg_4_0.isBattle = arg_4_1
 
-	if slot1 then
-		slot0.prevBattleSkillId = uv0.getPrevBattleSkillId()
-		slot8 = uv0.getCurHeroGroupSkillId()
+	local var_4_7 = 1
 
-		if slot0.prevBattleSkillId then
-			for slot12, slot13 in ipairs(slot6) do
-				if slot0.prevBattleSkillId == slot13.id then
-					table.remove(slot6, slot12)
-					table.insert(slot6, slot13)
+	if arg_4_1 then
+		arg_4_0.prevBattleSkillId = var_0_0.getPrevBattleSkillId()
+
+		local var_4_8 = var_0_0.getCurHeroGroupSkillId()
+
+		if arg_4_0.prevBattleSkillId then
+			for iter_4_2, iter_4_3 in ipairs(var_4_4) do
+				if arg_4_0.prevBattleSkillId == iter_4_3.id then
+					table.remove(var_4_4, iter_4_2)
+					table.insert(var_4_4, iter_4_3)
 
 					break
 				end
 			end
 		end
 
-		for slot12, slot13 in ipairs(slot6) do
-			if slot8 == slot13.id then
-				slot7 = slot12
+		for iter_4_4, iter_4_5 in ipairs(var_4_4) do
+			if var_4_8 == iter_4_5.id then
+				var_4_7 = iter_4_4
 
 				break
 			end
 		end
 	end
 
-	slot0:setList(slot6)
-	slot0:selectCell(slot7, true)
+	arg_4_0:setList(var_4_4)
+	arg_4_0:selectCell(var_4_7, true)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

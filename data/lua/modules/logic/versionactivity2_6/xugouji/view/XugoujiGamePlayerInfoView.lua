@@ -1,312 +1,352 @@
-module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGamePlayerInfoView", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGamePlayerInfoView", package.seeall)
 
-slot0 = class("XugoujiGamePlayerInfoView", BaseView)
-slot1 = VersionActivity2_6Enum.ActivityId.Xugouji
-slot2 = 0.35
+local var_0_0 = class("XugoujiGamePlayerInfoView", BaseView)
+local var_0_1 = VersionActivity2_6Enum.ActivityId.Xugouji
+local var_0_2 = 0.35
 
-function slot0.onInitView(slot0)
-	slot0._goPlayerInfo = gohelper.findChild(slot0.viewGO, "#go_cameraMain/Left/Role")
-	slot0._imagePlayerIcon = gohelper.findChildImage(slot0._goPlayerInfo, "Role/image/#simage_Role")
-	slot0._txtPlayerHP = gohelper.findChildText(slot0._goPlayerInfo, "Role/image_RoleHPNumBG/#txt_RoleHP")
-	slot0._imagePlayerHP = gohelper.findChildImage(slot0._goPlayerInfo, "Role/image_RoleHPBG/#image_RoleHPFG")
-	slot0._goHp = gohelper.findChild(slot0._goPlayerInfo, "#go_HP")
-	slot0._textHpDiff = gohelper.findChildText(slot0._goPlayerInfo, "#go_HP/#txt_HP")
-	slot0._goBuffRoot = gohelper.findChild(slot0._goPlayerInfo, "#go_Buff")
-	slot0._goBuffItem = gohelper.findChild(slot0._goBuffRoot, "#go_Buff")
-	slot0._txtRemainTime = gohelper.findChildText(slot0._goPlayerInfo, "Remain/#txt_RemainValue")
-	slot0._txtGotPairNum = gohelper.findChildText(slot0._goPlayerInfo, "Pairs/#txt_PairsValue")
-	slot0._skillRoot = gohelper.findChild(slot0._goPlayerInfo, "#go_ViewSkillTips")
-	slot0._skillItemRoot = gohelper.findChild(slot0._goPlayerInfo, "#go_ViewSkillTips/image_TipsBG")
-	slot0._skillItem = gohelper.findChild(slot0._skillRoot, "image_TipsBG/#go_Item")
-	slot0._btnPlayerIcon = gohelper.findChildButtonWithAudio(slot0._goPlayerInfo, "Role/image/#simage_Role")
-	slot0._btnSkill = gohelper.findChildButtonWithAudio(slot0._goPlayerInfo, "Role/#btn_Skill")
-	slot0._btnSkillTipsHide = gohelper.findChildButtonWithAudio(slot0._skillRoot, "#btnSkillTipsHide")
-	slot0._skillTipsAnimator = ZProj.ProjAnimatorPlayer.Get(slot0._skillRoot)
-	slot0._btnBuff = gohelper.findChildButtonWithAudio(slot0._goPlayerInfo, "#go_Buff")
-	slot0._buffInfoRoot = gohelper.findChild(slot0._goPlayerInfo, "bufftipsview")
-	slot0._goBuffInfoContent = gohelper.findChild(slot0._buffInfoRoot, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content")
-	slot0._goBuffInfoItem = gohelper.findChild(slot0._buffInfoRoot, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content/#go_buffitem")
-	slot0._btnBuffInfoClose = gohelper.findChildButtonWithAudio(slot0._buffInfoRoot, "#btn_buffTipsHide")
-	slot0._goDamageEffect = gohelper.findChild(slot0._goPlayerInfo, "#go_damage")
-	slot0._viewAnimator = ZProj.ProjAnimatorPlayer.Get(slot0.viewGO)
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goPlayerInfo = gohelper.findChild(arg_1_0.viewGO, "#go_cameraMain/Left/Role")
+	arg_1_0._imagePlayerIcon = gohelper.findChildImage(arg_1_0._goPlayerInfo, "Role/image/#simage_Role")
+	arg_1_0._txtPlayerHP = gohelper.findChildText(arg_1_0._goPlayerInfo, "Role/image_RoleHPNumBG/#txt_RoleHP")
+	arg_1_0._imagePlayerHP = gohelper.findChildImage(arg_1_0._goPlayerInfo, "Role/image_RoleHPBG/#image_RoleHPFG")
+	arg_1_0._goHp = gohelper.findChild(arg_1_0._goPlayerInfo, "#go_HP")
+	arg_1_0._textHpDiff = gohelper.findChildText(arg_1_0._goPlayerInfo, "#go_HP/#txt_HP")
+	arg_1_0._goBuffRoot = gohelper.findChild(arg_1_0._goPlayerInfo, "#go_Buff")
+	arg_1_0._goBuffItem = gohelper.findChild(arg_1_0._goBuffRoot, "#go_Buff")
+	arg_1_0._txtRemainTime = gohelper.findChildText(arg_1_0._goPlayerInfo, "Remain/#txt_RemainValue")
+	arg_1_0._txtGotPairNum = gohelper.findChildText(arg_1_0._goPlayerInfo, "Pairs/#txt_PairsValue")
+	arg_1_0._skillRoot = gohelper.findChild(arg_1_0._goPlayerInfo, "#go_ViewSkillTips")
+	arg_1_0._skillItemRoot = gohelper.findChild(arg_1_0._goPlayerInfo, "#go_ViewSkillTips/image_TipsBG")
+	arg_1_0._skillItem = gohelper.findChild(arg_1_0._skillRoot, "image_TipsBG/#go_Item")
+	arg_1_0._btnPlayerIcon = gohelper.findChildButtonWithAudio(arg_1_0._goPlayerInfo, "Role/image/#simage_Role")
+	arg_1_0._btnSkill = gohelper.findChildButtonWithAudio(arg_1_0._goPlayerInfo, "Role/#btn_Skill")
+	arg_1_0._btnSkillTipsHide = gohelper.findChildButtonWithAudio(arg_1_0._skillRoot, "#btnSkillTipsHide")
+	arg_1_0._skillTipsAnimator = ZProj.ProjAnimatorPlayer.Get(arg_1_0._skillRoot)
+	arg_1_0._btnBuff = gohelper.findChildButtonWithAudio(arg_1_0._goPlayerInfo, "#go_Buff")
+	arg_1_0._buffInfoRoot = gohelper.findChild(arg_1_0._goPlayerInfo, "bufftipsview")
+	arg_1_0._goBuffInfoContent = gohelper.findChild(arg_1_0._buffInfoRoot, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content")
+	arg_1_0._goBuffInfoItem = gohelper.findChild(arg_1_0._buffInfoRoot, "root/#go_buffinfocontainer/buff/#scroll_buff/viewport/content/#go_buffitem")
+	arg_1_0._btnBuffInfoClose = gohelper.findChildButtonWithAudio(arg_1_0._buffInfoRoot, "#btn_buffTipsHide")
+	arg_1_0._goDamageEffect = gohelper.findChild(arg_1_0._goPlayerInfo, "#go_damage")
+	arg_1_0._viewAnimator = ZProj.ProjAnimatorPlayer.Get(arg_1_0.viewGO)
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnPlayerIcon:AddClickListener(slot0._onPlayerIconClick, slot0)
-	slot0._btnSkill:AddClickListener(slot0._onSkillClick, slot0)
-	slot0._btnBuff:AddClickListener(slot0._onBuffClick, slot0)
-	slot0._btnSkillTipsHide:AddClickListener(slot0._onSkillHideClick, slot0)
-	slot0._btnBuffInfoClose:AddClickListener(slot0._onBuffInfoCloseClick, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.HpUpdated, slot0._onHpUpdated, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.OperateTimeUpdated, slot0._onOperateCard, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.TurnChanged, slot0._onTurnChanged, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.GotActiveCard, slot0._refreshCardPair, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.BuffUpdated, slot0._onBuffsUpdated, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.GameRestart, slot0._onGameReStart, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.AutoShowSkillTips, slot0._onShowGameTips, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.AutoHideSkillTips, slot0._autoHideSkillTips, slot0)
-	slot0:addEventCb(XugoujiController.instance, XugoujiEvent.NewCards, slot0._onRefreshCards, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnPlayerIcon:AddClickListener(arg_2_0._onPlayerIconClick, arg_2_0)
+	arg_2_0._btnSkill:AddClickListener(arg_2_0._onSkillClick, arg_2_0)
+	arg_2_0._btnBuff:AddClickListener(arg_2_0._onBuffClick, arg_2_0)
+	arg_2_0._btnSkillTipsHide:AddClickListener(arg_2_0._onSkillHideClick, arg_2_0)
+	arg_2_0._btnBuffInfoClose:AddClickListener(arg_2_0._onBuffInfoCloseClick, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.HpUpdated, arg_2_0._onHpUpdated, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.OperateTimeUpdated, arg_2_0._onOperateCard, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.TurnChanged, arg_2_0._onTurnChanged, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.GotActiveCard, arg_2_0._refreshCardPair, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.BuffUpdated, arg_2_0._onBuffsUpdated, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.GameRestart, arg_2_0._onGameReStart, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.AutoShowSkillTips, arg_2_0._onShowGameTips, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.AutoHideSkillTips, arg_2_0._autoHideSkillTips, arg_2_0)
+	arg_2_0:addEventCb(XugoujiController.instance, XugoujiEvent.NewCards, arg_2_0._onRefreshCards, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnPlayerIcon:RemoveClickListener()
-	slot0._btnSkill:RemoveClickListener()
-	slot0._btnBuff:RemoveClickListener()
-	slot0._btnSkillTipsHide:RemoveClickListener()
-	slot0._btnBuffInfoClose:RemoveClickListener()
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.HpUpdated, slot0._onHpUpdated, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.OperateTimeUpdated, slot0._onOperateCard, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.TurnChanged, slot0._onTurnChanged, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.GotActiveCard, slot0._refreshCardPair, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.BuffUpdated, slot0._onBuffsUpdated, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.GameRestart, slot0._onGameReStart, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.AutoShowSkillTips, slot0._onShowGameTips, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.AutoHideSkillTips, slot0._autoHideSkillTips, slot0)
-	slot0:removeEventCb(XugoujiController.instance, XugoujiEvent.NewCards, slot0._onRefreshCards, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnPlayerIcon:RemoveClickListener()
+	arg_3_0._btnSkill:RemoveClickListener()
+	arg_3_0._btnBuff:RemoveClickListener()
+	arg_3_0._btnSkillTipsHide:RemoveClickListener()
+	arg_3_0._btnBuffInfoClose:RemoveClickListener()
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.HpUpdated, arg_3_0._onHpUpdated, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.OperateTimeUpdated, arg_3_0._onOperateCard, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.TurnChanged, arg_3_0._onTurnChanged, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.GotActiveCard, arg_3_0._refreshCardPair, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.BuffUpdated, arg_3_0._onBuffsUpdated, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.GameRestart, arg_3_0._onGameReStart, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.AutoShowSkillTips, arg_3_0._onShowGameTips, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.AutoHideSkillTips, arg_3_0._autoHideSkillTips, arg_3_0)
+	arg_3_0:removeEventCb(XugoujiController.instance, XugoujiEvent.NewCards, arg_3_0._onRefreshCards, arg_3_0)
 end
 
-function slot0._onPlayerIconClick(slot0)
-	if XugoujiGameStepController.instance then
-		slot1:nextStep()
+function var_0_0._onPlayerIconClick(arg_4_0)
+	local var_4_0 = XugoujiGameStepController.instance
+
+	if var_4_0 then
+		var_4_0:nextStep()
 	end
 end
 
-function slot0._onSkillClick(slot0)
-	if not slot0._gameCfg then
-		slot0._gameCfg = Activity188Config.instance:getGameCfg(uv0, Activity188Model.instance:getCurGameId())
+function var_0_0._onSkillClick(arg_5_0)
+	if not arg_5_0._gameCfg then
+		local var_5_0 = Activity188Model.instance:getCurGameId()
+
+		arg_5_0._gameCfg = Activity188Config.instance:getGameCfg(var_0_1, var_5_0)
 	end
 
-	slot0._abilityCfgList = {
+	arg_5_0._abilityCfgList = {
 		{
 			title = true
 		}
 	}
-	slot0._abilityIdList = Activity188Model.instance:getPlayerAbilityIds()
+	arg_5_0._abilityIdList = Activity188Model.instance:getPlayerAbilityIds()
 
-	for slot4, slot5 in ipairs(slot0._abilityIdList) do
-		slot0._abilityCfgList[slot4 + 1] = Activity188Config.instance:getAbilityCfg(uv0, slot5)
+	for iter_5_0, iter_5_1 in ipairs(arg_5_0._abilityIdList) do
+		local var_5_1 = Activity188Config.instance:getAbilityCfg(var_0_1, iter_5_1)
+
+		arg_5_0._abilityCfgList[iter_5_0 + 1] = var_5_1
 	end
 
-	gohelper.setActive(slot0._skillRoot, true)
-	gohelper.setActive(slot0._btnSkillTipsHide.gameObject, true)
-	slot0._skillTipsAnimator:Play(UIAnimationName.Open, nil, )
-	gohelper.CreateObjList(slot0, slot0._createSkillItem, slot0._abilityCfgList, slot0._skillItemRoot, slot0._skillItem)
+	gohelper.setActive(arg_5_0._skillRoot, true)
+	gohelper.setActive(arg_5_0._btnSkillTipsHide.gameObject, true)
+	arg_5_0._skillTipsAnimator:Play(UIAnimationName.Open, nil, nil)
+	gohelper.CreateObjList(arg_5_0, arg_5_0._createSkillItem, arg_5_0._abilityCfgList, arg_5_0._skillItemRoot, arg_5_0._skillItem)
 end
 
-function slot0._onSkillHideClick(slot0)
+function var_0_0._onSkillHideClick(arg_6_0)
 	XugoujiController.instance:dispatchEvent(XugoujiEvent.HideSkillTips)
-	gohelper.setActive(slot0._btnSkillTipsHide.gameObject, false)
-	slot0._skillTipsAnimator:Play(UIAnimationName.Close, slot0.onSkillTipsCloseAniFinish, slot0)
+	gohelper.setActive(arg_6_0._btnSkillTipsHide.gameObject, false)
+	arg_6_0._skillTipsAnimator:Play(UIAnimationName.Close, arg_6_0.onSkillTipsCloseAniFinish, arg_6_0)
 end
 
-function slot0.onSkillTipsCloseAniFinish(slot0)
-	gohelper.setActive(slot0._skillRoot, false)
+function var_0_0.onSkillTipsCloseAniFinish(arg_7_0)
+	gohelper.setActive(arg_7_0._skillRoot, false)
 end
 
-function slot0._onBuffClick(slot0)
-	slot0._buffDataList = Activity188Model.instance:getBuffs(true)
+function var_0_0._onBuffClick(arg_8_0)
+	arg_8_0._buffDataList = Activity188Model.instance:getBuffs(true)
 
-	if not slot0._buffDataList or #slot0._buffDataList == 0 then
+	if not arg_8_0._buffDataList or #arg_8_0._buffDataList == 0 then
 		return
 	end
 
-	for slot5, slot6 in ipairs(slot0._buffDataList) do
-		-- Nothing
-	end
-
-	gohelper.setActive(slot0._buffInfoRoot, true)
-	gohelper.CreateObjList(slot0, slot0._createBuffInfoItem, {
+	local var_8_0 = {
 		{
 			bg = true
-		},
-		[slot5 + 1] = slot6
-	}, slot0._goBuffInfoContent, slot0._goBuffInfoItem)
+		}
+	}
+
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0._buffDataList) do
+		var_8_0[iter_8_0 + 1] = iter_8_1
+	end
+
+	gohelper.setActive(arg_8_0._buffInfoRoot, true)
+	gohelper.CreateObjList(arg_8_0, arg_8_0._createBuffInfoItem, var_8_0, arg_8_0._goBuffInfoContent, arg_8_0._goBuffInfoItem)
 end
 
-function slot0._onBuffInfoCloseClick(slot0)
-	gohelper.setActive(slot0._buffInfoRoot, false)
+function var_0_0._onBuffInfoCloseClick(arg_9_0)
+	gohelper.setActive(arg_9_0._buffInfoRoot, false)
 end
 
-function slot0._onHpUpdated(slot0)
-	slot0:_refreshPlayerHP()
+function var_0_0._onHpUpdated(arg_10_0)
+	arg_10_0:_refreshPlayerHP()
 end
 
-function slot0._onOperateCard(slot0)
-	slot0:_refreshOperateLeftTime()
+function var_0_0._onOperateCard(arg_11_0)
+	arg_11_0:_refreshOperateLeftTime()
 end
 
-function slot0._onTurnChanged(slot0)
-	slot0:_refreshOperateLeftTime()
+function var_0_0._onTurnChanged(arg_12_0)
+	arg_12_0:_refreshOperateLeftTime()
 end
 
-function slot0._onGotCardPair(slot0)
-	slot0:_refreshOperateLeftTime()
+function var_0_0._onGotCardPair(arg_13_0)
+	arg_13_0:_refreshOperateLeftTime()
 end
 
-function slot0._onBuffsUpdated(slot0, slot1)
-	if not slot1 then
+function var_0_0._onBuffsUpdated(arg_14_0, arg_14_1)
+	if not arg_14_1 then
 		return
 	end
 
-	slot0:_refreshBuffList()
+	arg_14_0:_refreshBuffList()
 end
 
-function slot0._onGameReStart(slot0)
-	slot0:_refreshBuffList()
-	slot0:_refreshOperateLeftTime()
+function var_0_0._onGameReStart(arg_15_0)
+	arg_15_0:_refreshBuffList()
+	arg_15_0:_refreshOperateLeftTime()
 
-	slot0._initialHP = Activity188Model.instance:getPlayerInitialHP()
+	arg_15_0._initialHP = Activity188Model.instance:getPlayerInitialHP()
 
-	slot0:_refreshPlayerHP()
-	slot0:_refreshSkillBtn()
+	arg_15_0:_refreshPlayerHP()
+	arg_15_0:_refreshSkillBtn()
 end
 
-function slot0._onShowGameTips(slot0)
-	slot0:_onSkillClick()
+function var_0_0._onShowGameTips(arg_16_0)
+	arg_16_0:_onSkillClick()
 end
 
-function slot0._autoHideSkillTips(slot0)
-	slot0:_onSkillHideClick()
+function var_0_0._autoHideSkillTips(arg_17_0)
+	arg_17_0:_onSkillHideClick()
 end
 
-function slot0._onRefreshCards(slot0)
-	slot0:_refreshCardPair()
+function var_0_0._onRefreshCards(arg_18_0)
+	arg_18_0:_refreshCardPair()
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_19_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:_refreshBuffList()
-	slot0:_refreshOperateLeftTime()
+function var_0_0.onOpen(arg_20_0)
+	arg_20_0:_refreshBuffList()
+	arg_20_0:_refreshOperateLeftTime()
 
-	slot0._initialHP = Activity188Model.instance:getPlayerInitialHP()
-	slot0._txtPlayerHP.text = Activity188Model.instance:getCurHP()
-	slot0._imagePlayerHP.fillAmount = 1
+	arg_20_0._initialHP = Activity188Model.instance:getPlayerInitialHP()
+	arg_20_0._txtPlayerHP.text = Activity188Model.instance:getCurHP()
+	arg_20_0._imagePlayerHP.fillAmount = 1
 
-	slot0:_refreshPlayerHP()
-	slot0:_refreshSkillBtn()
+	arg_20_0:_refreshPlayerHP()
+	arg_20_0:_refreshSkillBtn()
 end
 
-function slot0._refreshPlayerHP(slot0)
-	if tonumber(slot0._txtPlayerHP.text) == tonumber(Activity188Model.instance:getCurHP()) then
+function var_0_0._refreshPlayerHP(arg_21_0)
+	local var_21_0 = tonumber(arg_21_0._txtPlayerHP.text)
+	local var_21_1 = tonumber(Activity188Model.instance:getCurHP())
+
+	if var_21_0 == var_21_1 then
 		return
 	end
 
-	if slot2 < slot1 and not slot0._showingDamage then
-		slot0._showingDamage = true
+	if var_21_1 < var_21_0 and not arg_21_0._showingDamage then
+		arg_21_0._showingDamage = true
 
-		TaskDispatcher.runDelay(slot0._resetShowDemageEffect, slot0, 2.5)
-		gohelper.setActive(slot0._goDamageEffect, false)
-		gohelper.setActive(slot0._goDamageEffect, true)
+		TaskDispatcher.runDelay(arg_21_0._resetShowDemageEffect, arg_21_0, 2.5)
+		gohelper.setActive(arg_21_0._goDamageEffect, false)
+		gohelper.setActive(arg_21_0._goDamageEffect, true)
 		AudioMgr.instance:trigger(AudioEnum2_6.Xugouji.playerDamage)
-		slot0._viewAnimator:Play("damage2", nil, )
+		arg_21_0._viewAnimator:Play("damage2", nil, nil)
 	end
 
-	slot0._txtPlayerHP.text = slot2
+	arg_21_0._txtPlayerHP.text = var_21_1
 
-	ZProj.TweenHelper.DOFillAmount(slot0._imagePlayerHP, slot2 / slot0._initialHP, uv0)
-	gohelper.setActive(slot0._goHp, true)
+	local var_21_2 = var_21_1 / arg_21_0._initialHP
 
-	slot0._textHpDiff.text = slot2 - slot1 < 0 and slot4 or "+" .. slot4
+	ZProj.TweenHelper.DOFillAmount(arg_21_0._imagePlayerHP, var_21_2, var_0_2)
+	gohelper.setActive(arg_21_0._goHp, true)
 
-	SLFramework.UGUI.GuiHelper.SetColor(slot0._textHpDiff, slot4 < 0 and "#E57279" or "#7AC886")
-	TaskDispatcher.cancelTask(slot0._delayHideHpChange, slot0)
-	TaskDispatcher.runDelay(slot0._delayHideHpChange, slot0, 1)
+	local var_21_3 = var_21_1 - var_21_0
+
+	arg_21_0._textHpDiff.text = var_21_3 < 0 and var_21_3 or "+" .. var_21_3
+
+	SLFramework.UGUI.GuiHelper.SetColor(arg_21_0._textHpDiff, var_21_3 < 0 and "#E57279" or "#7AC886")
+	TaskDispatcher.cancelTask(arg_21_0._delayHideHpChange, arg_21_0)
+	TaskDispatcher.runDelay(arg_21_0._delayHideHpChange, arg_21_0, 1)
 end
 
-function slot0._resetShowDemageEffect(slot0)
-	slot0._showingDamage = false
+function var_0_0._resetShowDemageEffect(arg_22_0)
+	arg_22_0._showingDamage = false
 end
 
-function slot0._delayHideHpChange(slot0)
-	gohelper.setActive(slot0._goHp, false)
+function var_0_0._delayHideHpChange(arg_23_0)
+	gohelper.setActive(arg_23_0._goHp, false)
 end
 
-function slot0._refreshOperateLeftTime(slot0)
-	slot0._txtRemainTime.text = Activity188Model.instance:getCurTurnOperateTime()
+function var_0_0._refreshOperateLeftTime(arg_24_0)
+	local var_24_0 = Activity188Model.instance:getCurTurnOperateTime()
+
+	arg_24_0._txtRemainTime.text = var_24_0
 end
 
-function slot0._refreshSkillBtn(slot0)
-	if not slot0._gameCfg then
-		slot0._gameCfg = Activity188Config.instance:getGameCfg(uv0, Activity188Model.instance:getCurGameId())
+function var_0_0._refreshSkillBtn(arg_25_0)
+	if not arg_25_0._gameCfg then
+		local var_25_0 = Activity188Model.instance:getCurGameId()
+
+		arg_25_0._gameCfg = Activity188Config.instance:getGameCfg(var_0_1, var_25_0)
 	end
 
-	slot0._abilityIdList = Activity188Model.instance:getPlayerAbilityIds()
+	arg_25_0._abilityIdList = Activity188Model.instance:getPlayerAbilityIds()
 
-	gohelper.setActive(slot0._btnSkill.gameObject, #slot0._abilityIdList > 0)
+	gohelper.setActive(arg_25_0._btnSkill.gameObject, #arg_25_0._abilityIdList > 0)
 end
 
-function slot0._refreshCardPair(slot0)
-	slot0._txtGotPairNum.text = Activity188Model.instance:getCurPairCount()
+function var_0_0._refreshCardPair(arg_26_0)
+	local var_26_0 = Activity188Model.instance:getCurPairCount()
+
+	arg_26_0._txtGotPairNum.text = var_26_0
 end
 
-function slot0._refreshBuffList(slot0)
-	slot0._buffDataList = Activity188Model.instance:getBuffs(true)
+function var_0_0._refreshBuffList(arg_27_0)
+	arg_27_0._buffDataList = Activity188Model.instance:getBuffs(true)
 
-	gohelper.CreateObjList(slot0, slot0._createBuffItem, slot0._buffDataList, slot0._goBuffRoot, slot0._goBuffItem)
+	gohelper.CreateObjList(arg_27_0, arg_27_0._createBuffItem, arg_27_0._buffDataList, arg_27_0._goBuffRoot, arg_27_0._goBuffItem)
 end
 
-function slot0._createBuffItem(slot0, slot1, slot2, slot3)
-	gohelper.setActive(slot1, true)
+function var_0_0._createBuffItem(arg_28_0, arg_28_1, arg_28_2, arg_28_3)
+	gohelper.setActive(arg_28_1, true)
 
-	if not string.nilorempty(Activity188Config.instance:getBuffCfg(uv0, slot2.buffId).icon) then
-		if slot6 ~= "0" then
-			UISpriteSetMgr.instance:setBuffSprite(gohelper.findChildImage(slot1, "#image_BuffIcon"), tonumber(slot6))
-		end
+	local var_28_0 = gohelper.findChildImage(arg_28_1, "#image_BuffIcon")
+	local var_28_1 = Activity188Config.instance:getBuffCfg(var_0_1, arg_28_2.buffId)
+	local var_28_2 = var_28_1.icon
+
+	if string.nilorempty(var_28_2) or var_28_2 == "0" then
+		-- block empty
+	else
+		UISpriteSetMgr.instance:setBuffSprite(var_28_0, tonumber(var_28_2))
 	end
 
-	gohelper.setActive(gohelper.findChildText(slot1, "#txt_Num").gameObject, slot5.laminate == XugoujiEnum.BuffType.Round or slot5.laminate == XugoujiEnum.BuffType.Layer)
+	local var_28_3 = arg_28_2.layer
+	local var_28_4 = gohelper.findChildText(arg_28_1, "#txt_Num")
 
-	slot8.text = slot2.layer
+	gohelper.setActive(var_28_4.gameObject, var_28_1.laminate == XugoujiEnum.BuffType.Round or var_28_1.laminate == XugoujiEnum.BuffType.Layer)
+
+	var_28_4.text = var_28_3
 end
 
-function slot0._createSkillItem(slot0, slot1, slot2, slot3)
-	gohelper.setActive(slot1, true)
+function var_0_0._createSkillItem(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
+	gohelper.setActive(arg_29_1, true)
 
-	if slot2.title then
+	if arg_29_2.title then
 		return
 	end
 
-	slot6 = gohelper.findChildImage(slot1, "#image_Icon")
-	gohelper.findChildText(slot1, "txt_Descr").text = slot2.desc
+	local var_29_0 = gohelper.findChildText(arg_29_1, "txt_Descr")
+	local var_29_1 = gohelper.findChildImage(arg_29_1, "#image_Icon")
+
+	var_29_0.text = arg_29_2.desc
 end
 
-function slot0._createBuffInfoItem(slot0, slot1, slot2, slot3)
-	gohelper.setActive(slot1, true)
+function var_0_0._createBuffInfoItem(arg_30_0, arg_30_1, arg_30_2, arg_30_3)
+	gohelper.setActive(arg_30_1, true)
 
-	if slot2.bg then
+	if arg_30_2.bg then
 		return
 	end
 
-	slot4 = Activity188Config.instance:getBuffCfg(uv0, slot2.buffId)
-	gohelper.findChildText(slot1, "title/txt_name").text = slot4.name
+	local var_30_0 = Activity188Config.instance:getBuffCfg(var_0_1, arg_30_2.buffId)
+	local var_30_1 = var_30_0.icon
+	local var_30_2 = gohelper.findChildText(arg_30_1, "title/txt_name")
+	local var_30_3 = gohelper.findChildImage(arg_30_1, "title/simage_Icon")
 
-	if not string.nilorempty(slot4.icon) and slot5 == "0" then
-		UISpriteSetMgr.instance:setBuffSprite(gohelper.findChildImage(slot1, "title/simage_Icon"), tonumber(slot5))
+	var_30_2.text = var_30_0.name
+
+	if not string.nilorempty(var_30_1) and var_30_1 == "0" then
+		UISpriteSetMgr.instance:setBuffSprite(var_30_3, tonumber(var_30_1))
 	end
 
-	gohelper.findChildText(slot1, "txt_desc").text = slot4.desc
-	slot9 = gohelper.findChildText(slot1, "title/txt_name/go_tag/bg/txt_tagname")
-	slot11 = ""
+	gohelper.findChildText(arg_30_1, "txt_desc").text = var_30_0.desc
 
-	if slot4.laminate == XugoujiEnum.BuffType.Round then
-		slot11 = formatLuaLang("x_round", slot2.layer)
-	elseif slot4.laminate == XugoujiEnum.BuffType.Layer then
-		slot11 = GameUtil.getSubPlaceholderLuaLang(luaLang("mopup_layer"), {
-			slot10
+	local var_30_4 = gohelper.findChildText(arg_30_1, "title/txt_name/go_tag/bg/txt_tagname")
+	local var_30_5 = arg_30_2.layer
+	local var_30_6 = ""
+
+	if var_30_0.laminate == XugoujiEnum.BuffType.Round then
+		var_30_6 = formatLuaLang("x_round", var_30_5)
+	elseif var_30_0.laminate == XugoujiEnum.BuffType.Layer then
+		var_30_6 = GameUtil.getSubPlaceholderLuaLang(luaLang("mopup_layer"), {
+			var_30_5
 		})
 	else
-		gohelper.setActive(gohelper.findChild(slot1, "title/txt_name/go_tag"), false)
+		local var_30_7 = gohelper.findChild(arg_30_1, "title/txt_name/go_tag")
+
+		gohelper.setActive(var_30_7, false)
 	end
 
-	slot9.text = slot11
+	var_30_4.text = var_30_6
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_31_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_32_0)
+	return
 end
 
-return slot0
+return var_0_0

@@ -1,95 +1,100 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroGroupItem1", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191HeroGroupItem1", package.seeall)
 
-slot0 = class("Act191HeroGroupItem1", LuaCompBase)
+local var_0_0 = class("Act191HeroGroupItem1", LuaCompBase)
 
-function slot0.ctor(slot0, slot1)
-	slot0.handleView = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.handleView = arg_1_1
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.goEmpty = gohelper.findChild(slot1, "go_Empty")
-	slot0.goHero = gohelper.findChild(slot1, "go_Hero")
-	slot0.btnClick = gohelper.findChildButton(slot1, "btn_Click")
-	slot0.loader = PrefabInstantiate.Create(slot0.goHero)
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
+	arg_2_0.goEmpty = gohelper.findChild(arg_2_1, "go_Empty")
+	arg_2_0.goHero = gohelper.findChild(arg_2_1, "go_Hero")
+	arg_2_0.btnClick = gohelper.findChildButton(arg_2_1, "btn_Click")
+	arg_2_0.loader = PrefabInstantiate.Create(arg_2_0.goHero)
 
-	slot0.loader:startLoad(Activity191Enum.PrefabPath.HeroHeadItem, slot0.onLoadCallBack, slot0)
+	arg_2_0.loader:startLoad(Activity191Enum.PrefabPath.HeroHeadItem, arg_2_0.onLoadCallBack, arg_2_0)
 
-	slot0.enableClick = true
+	arg_2_0.enableClick = true
 end
 
-function slot0.onLoadCallBack(slot0)
-	if slot0.loader:getInstGO() then
-		slot0.heroHeadItem = MonoHelper.addNoUpdateLuaComOnceToGo(slot1, Act191HeroHeadItem, {
+function var_0_0.onLoadCallBack(arg_3_0)
+	local var_3_0 = arg_3_0.loader:getInstGO()
+
+	if var_3_0 then
+		arg_3_0.heroHeadItem = MonoHelper.addNoUpdateLuaComOnceToGo(var_3_0, Act191HeroHeadItem, {
 			exSkill = true
 		})
 
-		if slot0.needFresh then
-			slot0.heroHeadItem:setData(slot0.heroId)
+		if arg_3_0.needFresh then
+			arg_3_0.heroHeadItem:setData(arg_3_0.heroId)
 
-			slot0.needFresh = false
+			arg_3_0.needFresh = false
 		end
 	end
 end
 
-function slot0.addEventListeners(slot0)
-	if slot0.btnClick then
-		slot0:addClickCb(slot0.btnClick, slot0.onClick, slot0)
+function var_0_0.addEventListeners(arg_4_0)
+	if arg_4_0.btnClick then
+		arg_4_0:addClickCb(arg_4_0.btnClick, arg_4_0.onClick, arg_4_0)
 	end
 end
 
-function slot0.setData(slot0, slot1)
-	slot0.heroId = slot1
+function var_0_0.setData(arg_5_0, arg_5_1)
+	arg_5_0.heroId = arg_5_1
 
-	if slot1 and slot1 ~= 0 then
-		if slot0.heroHeadItem then
-			slot0.heroHeadItem:setData(slot1)
+	if arg_5_1 and arg_5_1 ~= 0 then
+		if arg_5_0.heroHeadItem then
+			arg_5_0.heroHeadItem:setData(arg_5_1)
 
-			slot0.needFresh = false
+			arg_5_0.needFresh = false
 		else
-			slot0.needFresh = true
+			arg_5_0.needFresh = true
 		end
 
-		gohelper.setActive(slot0.goEmpty, false)
-		gohelper.setActive(slot0.goHero, true)
+		gohelper.setActive(arg_5_0.goEmpty, false)
+		gohelper.setActive(arg_5_0.goHero, true)
 	else
-		gohelper.setActive(slot0.goEmpty, true)
-		gohelper.setActive(slot0.goHero, false)
+		gohelper.setActive(arg_5_0.goEmpty, true)
+		gohelper.setActive(arg_5_0.goHero, false)
 	end
 end
 
-function slot0.setIndex(slot0, slot1)
-	slot0._index = slot1
+function var_0_0.setIndex(arg_6_0, arg_6_1)
+	arg_6_0._index = arg_6_1
 end
 
-function slot0.setClickEnable(slot0, slot1)
-	slot0.enableClick = slot1
+function var_0_0.setClickEnable(arg_7_0, arg_7_1)
+	arg_7_0.enableClick = arg_7_1
 end
 
-function slot0.onClick(slot0)
-	if not slot0.enableClick or slot0.handleView and slot0.handleView._nowDragingIndex then
+function var_0_0.onClick(arg_8_0)
+	if not arg_8_0.enableClick or arg_8_0.handleView and arg_8_0.handleView._nowDragingIndex then
 		return
 	end
 
-	if slot0.param then
-		slot1 = ""
+	if arg_8_0.param then
+		local var_8_0 = ""
 
-		if slot0.heroHeadItem and slot0.heroHeadItem.config then
-			slot1 = slot0.heroHeadItem.config.name
+		if arg_8_0.heroHeadItem and arg_8_0.heroHeadItem.config then
+			var_8_0 = arg_8_0.heroHeadItem.config.name
 		end
 
-		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("heroClick_%s_%s_%s", slot0.param.type, slot0._index, slot1))
+		Act191StatController.instance:statButtonClick(arg_8_0.param.fromView, string.format("heroClick_%s_%s_%s", arg_8_0.param.type, arg_8_0._index, var_8_0))
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
-	ViewMgr.instance:openView(ViewName.Act191HeroEditView, {
-		index = slot0._index,
-		heroId = slot0.heroId
-	})
+
+	local var_8_1 = {
+		index = arg_8_0._index,
+		heroId = arg_8_0.heroId
+	}
+
+	ViewMgr.instance:openView(ViewName.Act191HeroEditView, var_8_1)
 end
 
-function slot0.setExtraParam(slot0, slot1)
-	slot0.param = slot1
+function var_0_0.setExtraParam(arg_9_0, arg_9_1)
+	arg_9_0.param = arg_9_1
 end
 
-return slot0
+return var_0_0

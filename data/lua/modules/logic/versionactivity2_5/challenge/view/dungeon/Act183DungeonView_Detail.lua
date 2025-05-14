@@ -1,193 +1,196 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.Act183DungeonView_Detail", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.Act183DungeonView_Detail", package.seeall)
 
-slot0 = class("Act183DungeonView_Detail", BaseView)
-slot1 = 0.1
+local var_0_0 = class("Act183DungeonView_Detail", BaseView)
+local var_0_1 = 0.1
 
-function slot0.onInitView(slot0)
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "root/#go_topleft")
-	slot0._gonormaltype = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_normaltype")
-	slot0._goselectnormal = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_normaltype/#go_selectnormal")
-	slot0._gounselectnormal = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_normaltype/#go_unselectnormal")
-	slot0._gohardtype = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_hardtype")
-	slot0._goselecthard = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_hardtype/#go_selecthard")
-	slot0._gounselecthard = gohelper.findChild(slot0.viewGO, "root/left/mode/#go_hardtype/#go_unselecthard")
-	slot0._btnclicknormal = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/left/mode/#go_normaltype/#btn_clicknormal")
-	slot0._btnclickhard = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/left/mode/#go_hardtype/#btn_clickhard")
-	slot0._btntask = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/left/#btn_task")
-	slot0._goepisodecontainer = gohelper.findChild(slot0.viewGO, "root/middle/#go_episodecontainer")
-	slot0._gonormalepisode = gohelper.findChild(slot0.viewGO, "root/middle/#go_episodecontainer/#go_normalepisode")
-	slot0._gobossepisode = gohelper.findChild(slot0.viewGO, "root/middle/#go_episodecontainer/#go_bossepisode")
-	slot0._btnreset = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/top/bar/#btn_reset")
-	slot0._godetail = gohelper.findChild(slot0.viewGO, "root/right/#go_detail")
-	slot0._btnclosedetail = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/#btn_closedetail")
-	slot0._gonormal = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_normal")
-	slot0._gohard = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_hard")
-	slot0._scrolldetail = gohelper.findChildScrollRect(slot0.viewGO, "root/right/#go_detail/#scroll_detail")
-	slot0._txttitle = gohelper.findChildText(slot0.viewGO, "root/right/#go_detail/title/#txt_title")
-	slot0._txtdesc = gohelper.findChildText(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/top/#txt_desc")
-	slot0._godone = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/title/#go_done")
-	slot0._goconditions = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions")
-	slot0._imageconditionstar = gohelper.findChildImage(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/top/title/#image_conditionstar")
-	slot0._goconditiondescs = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/#go_conditiondescs")
-	slot0._txtconditionitem = gohelper.findChildText(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/#go_conditiondescs/#txt_conditionitem")
-	slot0._gobaserulecontainer = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer")
-	slot0._gobadgerules = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_badgerules")
-	slot0._gobadgeruleitem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_badgerules/#go_badgeruleitem")
-	slot0._gobaserules = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_baserules")
-	slot0._gobaseruleitem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_baserules/#go_baseruleitem")
-	slot0._goescaperulecontainer = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer")
-	slot0._goescaperules = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer/#go_escaperules")
-	slot0._goescaperuleitem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer/#go_escaperules/#go_escaperuleitem")
-	slot0._gorewardcontainer = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer")
-	slot0._gorewards = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer/#go_rewards")
-	slot0._gorewarditem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer/#go_rewards/#go_rewarditem")
-	slot0._btnstart = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#btn_start")
-	slot0._btnrestart = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#btn_restart")
-	slot0._btnbadge = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#btn_badge")
-	slot0._golock = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_lock")
-	slot0._txtusebadgenum = gohelper.findChildText(slot0.viewGO, "root/right/#go_detail/#btn_badge/#txt_usebadgenum")
-	slot0._gobadgedetail = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_badgedetail")
-	slot0._btnclosebadge = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#go_badgedetail/#btn_closebadge")
-	slot0._btnresetbadge = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#go_badgedetail/#go_badges/#btn_resetbadge")
-	slot0._gobadgeitem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_badgedetail/#go_badges/#go_badgeitem")
-	slot0._btnrepress = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#btn_repress")
-	slot0._gosetrepresshero = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero")
-	slot0._simagerepressheroicon = gohelper.findChildSingleImage(slot0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero/#simage_repressheroicon")
-	slot0._imagecareer = gohelper.findChildImage(slot0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero/#image_Career")
-	slot0._gorepressresult = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult")
-	slot0._gohasrepress = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_hasrepress")
-	slot0._gounrepress = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_unrepress")
-	slot0._gorepressrules = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_repressrules")
-	slot0._gorepressruleitem = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_repressrules/#go_repressruleitem")
-	slot0._gorepressheropos = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_hasrepress/#go_repressheropos")
-	slot0._btnresetepisode = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/#btn_resetepisode")
-	slot0._btninfo = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/right/#go_detail/title/#btn_Info")
-	slot0._goleadertips = gohelper.findChild(slot0.viewGO, "root/right/#go_detail/#go_LeaderTips")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "root/#go_topleft")
+	arg_1_0._gonormaltype = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_normaltype")
+	arg_1_0._goselectnormal = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_normaltype/#go_selectnormal")
+	arg_1_0._gounselectnormal = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_normaltype/#go_unselectnormal")
+	arg_1_0._gohardtype = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_hardtype")
+	arg_1_0._goselecthard = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_hardtype/#go_selecthard")
+	arg_1_0._gounselecthard = gohelper.findChild(arg_1_0.viewGO, "root/left/mode/#go_hardtype/#go_unselecthard")
+	arg_1_0._btnclicknormal = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/left/mode/#go_normaltype/#btn_clicknormal")
+	arg_1_0._btnclickhard = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/left/mode/#go_hardtype/#btn_clickhard")
+	arg_1_0._btntask = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/left/#btn_task")
+	arg_1_0._goepisodecontainer = gohelper.findChild(arg_1_0.viewGO, "root/middle/#go_episodecontainer")
+	arg_1_0._gonormalepisode = gohelper.findChild(arg_1_0.viewGO, "root/middle/#go_episodecontainer/#go_normalepisode")
+	arg_1_0._gobossepisode = gohelper.findChild(arg_1_0.viewGO, "root/middle/#go_episodecontainer/#go_bossepisode")
+	arg_1_0._btnreset = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/top/bar/#btn_reset")
+	arg_1_0._godetail = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail")
+	arg_1_0._btnclosedetail = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_closedetail")
+	arg_1_0._gonormal = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_normal")
+	arg_1_0._gohard = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_hard")
+	arg_1_0._scrolldetail = gohelper.findChildScrollRect(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail")
+	arg_1_0._txttitle = gohelper.findChildText(arg_1_0.viewGO, "root/right/#go_detail/title/#txt_title")
+	arg_1_0._txtdesc = gohelper.findChildText(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/top/#txt_desc")
+	arg_1_0._godone = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/title/#go_done")
+	arg_1_0._goconditions = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions")
+	arg_1_0._imageconditionstar = gohelper.findChildImage(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/top/title/#image_conditionstar")
+	arg_1_0._goconditiondescs = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/#go_conditiondescs")
+	arg_1_0._txtconditionitem = gohelper.findChildText(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_conditions/#go_conditiondescs/#txt_conditionitem")
+	arg_1_0._gobaserulecontainer = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer")
+	arg_1_0._gobadgerules = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_badgerules")
+	arg_1_0._gobadgeruleitem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_badgerules/#go_badgeruleitem")
+	arg_1_0._gobaserules = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_baserules")
+	arg_1_0._gobaseruleitem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_baserulecontainer/#go_baserules/#go_baseruleitem")
+	arg_1_0._goescaperulecontainer = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer")
+	arg_1_0._goescaperules = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer/#go_escaperules")
+	arg_1_0._goescaperuleitem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_escaperulecontainer/#go_escaperules/#go_escaperuleitem")
+	arg_1_0._gorewardcontainer = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer")
+	arg_1_0._gorewards = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer/#go_rewards")
+	arg_1_0._gorewarditem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_rewardcontainer/#go_rewards/#go_rewarditem")
+	arg_1_0._btnstart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#btn_start")
+	arg_1_0._btnrestart = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#btn_restart")
+	arg_1_0._btnbadge = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#btn_badge")
+	arg_1_0._golock = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_lock")
+	arg_1_0._txtusebadgenum = gohelper.findChildText(arg_1_0.viewGO, "root/right/#go_detail/#btn_badge/#txt_usebadgenum")
+	arg_1_0._gobadgedetail = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_badgedetail")
+	arg_1_0._btnclosebadge = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#go_badgedetail/#btn_closebadge")
+	arg_1_0._btnresetbadge = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#go_badgedetail/#go_badges/#btn_resetbadge")
+	arg_1_0._gobadgeitem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_badgedetail/#go_badges/#go_badgeitem")
+	arg_1_0._btnrepress = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#btn_repress")
+	arg_1_0._gosetrepresshero = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero")
+	arg_1_0._simagerepressheroicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero/#simage_repressheroicon")
+	arg_1_0._imagecareer = gohelper.findChildImage(arg_1_0.viewGO, "root/right/#go_detail/#btn_repress/#go_setrepresshero/#image_Career")
+	arg_1_0._gorepressresult = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult")
+	arg_1_0._gohasrepress = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_hasrepress")
+	arg_1_0._gounrepress = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_unrepress")
+	arg_1_0._gorepressrules = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_repressrules")
+	arg_1_0._gorepressruleitem = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_repressrules/#go_repressruleitem")
+	arg_1_0._gorepressheropos = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#scroll_detail/Viewport/Content/#go_repressresult/#go_hasrepress/#go_repressheropos")
+	arg_1_0._btnresetepisode = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/#btn_resetepisode")
+	arg_1_0._btninfo = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/right/#go_detail/title/#btn_Info")
+	arg_1_0._goleadertips = gohelper.findChild(arg_1_0.viewGO, "root/right/#go_detail/#go_LeaderTips")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnclosedetail:AddClickListener(slot0._btnclosedetailOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnclosedetail:AddClickListener(arg_2_0._btnclosedetailOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnclosedetail:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnclosedetail:RemoveClickListener()
 end
 
-function slot0._btnclosedetailOnClick(slot0)
-	slot0:setDetailVisible(false)
+function var_0_0._btnclosedetailOnClick(arg_4_0)
+	arg_4_0:setDetailVisible(false)
 	Act183Controller.instance:dispatchEvent(Act183Event.OnClickEpisode)
 end
 
-function slot0._editableInitView(slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnClickEpisode, slot0._onClickEpisode, slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, slot0._onUpdateRepressInfo, slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateGroupInfo, slot0._onUpdateGroupInfo, slot0)
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0:addEventCb(Act183Controller.instance, Act183Event.OnClickEpisode, arg_5_0._onClickEpisode, arg_5_0)
+	arg_5_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, arg_5_0._onUpdateRepressInfo, arg_5_0)
+	arg_5_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateGroupInfo, arg_5_0._onUpdateGroupInfo, arg_5_0)
 
-	slot0._animator = gohelper.onceAddComponent(slot0.viewGO, gohelper.Type_Animator)
-	slot0._compMgr = MonoHelper.addLuaComOnceToGo(slot0._godetail, Act183DungeonCompMgr)
+	arg_5_0._animator = gohelper.onceAddComponent(arg_5_0.viewGO, gohelper.Type_Animator)
+	arg_5_0._compMgr = MonoHelper.addLuaComOnceToGo(arg_5_0._godetail, Act183DungeonCompMgr)
 
-	slot0._compMgr:addComp(slot0._godetail, Act183DungeonDescComp, true)
-	slot0._compMgr:addComp(slot0._goconditions, Act183DungeonConditionComp, true)
-	slot0._compMgr:addComp(slot0._gobaserulecontainer, Act183DungeonBaseAndBadgeRuleComp, true)
-	slot0._compMgr:addComp(slot0._gorewardcontainer, Act183DungeonRewardRuleComp, true)
-	slot0._compMgr:addComp(slot0._goescaperulecontainer, Act183DungeonEscapeRuleComp, true)
-	slot0._compMgr:addComp(slot0._gorepressresult, Act183DungeonRepressResultComp, true)
-	slot0._compMgr:addComp(slot0._btnstart.gameObject, Act183DungeonStartBtnComp, true)
-	slot0._compMgr:addComp(slot0._gobadgedetail, Act183DungeonSelectBadgeComp, true)
-	slot0._compMgr:addComp(slot0._btnrepress.gameObject, Act183DungeonRepressBtnComp, false)
-	slot0._compMgr:addComp(slot0._btnrestart.gameObject, Act183DungeonRestartBtnComp, false)
-	slot0._compMgr:addComp(slot0._btnresetepisode.gameObject, Act183DungeonResetBtnComp, false)
-	slot0._compMgr:addComp(slot0._golock, Act183DungeonLockBtnComp, false)
-	slot0._compMgr:addComp(slot0._btnbadge.gameObject, Act183DungeonBadgeBtnComp, false)
-	slot0._compMgr:addComp(slot0._goleadertips, Act183DungeonTeamLeaderTipsComp, false)
-	slot0:setDetailVisible(false)
+	arg_5_0._compMgr:addComp(arg_5_0._godetail, Act183DungeonDescComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._goconditions, Act183DungeonConditionComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._gobaserulecontainer, Act183DungeonBaseAndBadgeRuleComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._gorewardcontainer, Act183DungeonRewardRuleComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._goescaperulecontainer, Act183DungeonEscapeRuleComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._gorepressresult, Act183DungeonRepressResultComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._btnstart.gameObject, Act183DungeonStartBtnComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._gobadgedetail, Act183DungeonSelectBadgeComp, true)
+	arg_5_0._compMgr:addComp(arg_5_0._btnrepress.gameObject, Act183DungeonRepressBtnComp, false)
+	arg_5_0._compMgr:addComp(arg_5_0._btnrestart.gameObject, Act183DungeonRestartBtnComp, false)
+	arg_5_0._compMgr:addComp(arg_5_0._btnresetepisode.gameObject, Act183DungeonResetBtnComp, false)
+	arg_5_0._compMgr:addComp(arg_5_0._golock, Act183DungeonLockBtnComp, false)
+	arg_5_0._compMgr:addComp(arg_5_0._btnbadge.gameObject, Act183DungeonBadgeBtnComp, false)
+	arg_5_0._compMgr:addComp(arg_5_0._goleadertips, Act183DungeonTeamLeaderTipsComp, false)
+	arg_5_0:setDetailVisible(false)
 end
 
-function slot0._onClickEpisode(slot0, slot1)
-	if not slot1 then
+function var_0_0._onClickEpisode(arg_6_0, arg_6_1)
+	if not arg_6_1 then
 		return
 	end
 
-	if slot0._expand and slot0._episodeId ~= slot1 then
-		slot0._animator:Play("rightswitch", 0, 0)
+	if arg_6_0._expand and arg_6_0._episodeId ~= arg_6_1 then
+		arg_6_0._animator:Play("rightswitch", 0, 0)
 	end
 
-	slot0._nextEpisodeMo = Act183Model.instance:getEpisodeMoById(slot1)
+	arg_6_0._nextEpisodeMo = Act183Model.instance:getEpisodeMoById(arg_6_1)
 
-	if not slot0._nextEpisodeMo then
+	if not arg_6_0._nextEpisodeMo then
 		return
 	end
 
 	UIBlockMgrExtend.setNeedCircleMv(false)
 	UIBlockMgr.instance:startBlock("Act183DungeonView_Detail_SwitchEpisode")
-	TaskDispatcher.cancelTask(slot0.switchEpisodeDetail, slot0)
-	TaskDispatcher.runDelay(slot0.switchEpisodeDetail, slot0, uv0)
+	TaskDispatcher.cancelTask(arg_6_0.switchEpisodeDetail, arg_6_0)
+	TaskDispatcher.runDelay(arg_6_0.switchEpisodeDetail, arg_6_0, var_0_1)
 end
 
-function slot0.switchEpisodeDetail(slot0)
-	slot0:refreshEpisodeDetail(slot0._nextEpisodeMo)
+function var_0_0.switchEpisodeDetail(arg_7_0)
+	arg_7_0:refreshEpisodeDetail(arg_7_0._nextEpisodeMo)
 	UIBlockMgrExtend.setNeedCircleMv(true)
 	UIBlockMgr.instance:endBlock("Act183DungeonView_Detail_SwitchEpisode")
 end
 
-function slot0._onUpdateRepressInfo(slot0, slot1, slot2)
-	if not slot0._expand or slot0._episodeId ~= slot1 then
+function var_0_0._onUpdateRepressInfo(arg_8_0, arg_8_1, arg_8_2)
+	if not arg_8_0._expand or arg_8_0._episodeId ~= arg_8_1 then
 		return
 	end
 
-	slot0:refreshEpisodeDetail(slot2)
+	arg_8_0:refreshEpisodeDetail(arg_8_2)
 end
 
-function slot0._onUpdateGroupInfo(slot0)
-	if not slot0._expand or not slot0._episodeId then
+function var_0_0._onUpdateGroupInfo(arg_9_0)
+	if not arg_9_0._expand or not arg_9_0._episodeId then
 		return
 	end
 
-	slot0:refreshEpisodeDetail(Act183Model.instance:getEpisodeMoById(slot0._episodeId))
+	local var_9_0 = Act183Model.instance:getEpisodeMoById(arg_9_0._episodeId)
+
+	arg_9_0:refreshEpisodeDetail(var_9_0)
 end
 
-function slot0.refreshEpisodeDetail(slot0, slot1)
-	slot2 = slot1 ~= nil
+function var_0_0.refreshEpisodeDetail(arg_10_0, arg_10_1)
+	local var_10_0 = arg_10_1 ~= nil
 
-	slot0:setDetailVisible(slot2)
+	arg_10_0:setDetailVisible(var_10_0)
 
-	if not slot2 then
+	if not var_10_0 then
 		return
 	end
 
-	slot0._episodeId = slot1:getEpisodeId()
+	arg_10_0._episodeId = arg_10_1:getEpisodeId()
 
-	slot0._compMgr:onUpdateMO(slot1)
+	arg_10_0._compMgr:onUpdateMO(arg_10_1)
 end
 
-function slot0.setDetailVisible(slot0, slot1)
-	if slot0._expand and not slot1 then
-		slot0._animator:Play("rightclose", 0, 0)
-	elseif not slot0._expand and slot1 then
-		slot0._animator:Play("rightopen", 0, 0)
+function var_0_0.setDetailVisible(arg_11_0, arg_11_1)
+	if arg_11_0._expand and not arg_11_1 then
+		arg_11_0._animator:Play("rightclose", 0, 0)
+	elseif not arg_11_0._expand and arg_11_1 then
+		arg_11_0._animator:Play("rightopen", 0, 0)
 	end
 
-	slot0._expand = slot1
+	arg_11_0._expand = arg_11_1
 
-	gohelper.setActive(slot0._godetail, slot0._expand)
-	gohelper.setActive(slot0._btnclosedetail.gameObject, slot0._expand)
+	gohelper.setActive(arg_11_0._godetail, arg_11_0._expand)
+	gohelper.setActive(arg_11_0._btnclosedetail.gameObject, arg_11_0._expand)
 
-	if not slot1 then
-		slot0._episodeId = nil
+	if not arg_11_1 then
+		arg_11_0._episodeId = nil
 	end
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_12_0)
 	UIBlockMgrExtend.setNeedCircleMv(true)
 	UIBlockMgr.instance:endBlock("Act183DungeonView_Detail_SwitchEpisode")
-	TaskDispatcher.cancelTask(slot0.switchEpisodeDetail, slot0)
+	TaskDispatcher.cancelTask(arg_12_0.switchEpisodeDetail, arg_12_0)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_13_0)
+	return
 end
 
-return slot0
+return var_0_0

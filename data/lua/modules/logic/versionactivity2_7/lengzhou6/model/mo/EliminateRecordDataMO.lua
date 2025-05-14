@@ -1,29 +1,31 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.mo.EliminateRecordDataMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.mo.EliminateRecordDataMO", package.seeall)
 
-slot0 = class("EliminateRecordDataMO")
+local var_0_0 = class("EliminateRecordDataMO")
 
-function slot0.ctor(slot0)
-	slot0._eliminateTypeMap = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._eliminateTypeMap = {}
 end
 
-function slot0.setEliminateType(slot0, slot1, slot2, slot3, slot4)
-	if slot0._eliminateTypeMap[slot1] == nil then
-		slot0._eliminateTypeMap[slot1] = {}
+function var_0_0.setEliminateType(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4)
+	if arg_2_0._eliminateTypeMap[arg_2_1] == nil then
+		arg_2_0._eliminateTypeMap[arg_2_1] = {}
 	end
 
-	table.insert(slot0._eliminateTypeMap[slot1], {
-		eliminateType = slot2,
-		eliminateCount = slot3,
-		spEliminateCount = slot4
-	})
+	local var_2_0 = {
+		eliminateType = arg_2_2,
+		eliminateCount = arg_2_3,
+		spEliminateCount = arg_2_4
+	}
+
+	table.insert(arg_2_0._eliminateTypeMap[arg_2_1], var_2_0)
 end
 
-function slot0.getEliminateTypeMap(slot0)
-	return slot0._eliminateTypeMap
+function var_0_0.getEliminateTypeMap(arg_3_0)
+	return arg_3_0._eliminateTypeMap
 end
 
-function slot0.clearRecord(slot0)
-	tabletool.clear(slot0._eliminateTypeMap)
+function var_0_0.clearRecord(arg_4_0)
+	tabletool.clear(arg_4_0._eliminateTypeMap)
 end
 
-return slot0
+return var_0_0

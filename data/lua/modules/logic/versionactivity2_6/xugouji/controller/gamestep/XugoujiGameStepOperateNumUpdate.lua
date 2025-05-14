@@ -1,21 +1,22 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepOperateNumUpdate", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepOperateNumUpdate", package.seeall)
 
-slot0 = class("XugoujiGameStepOperateNumUpdate", XugoujiGameStepBase)
-slot1 = VersionActivity2_6Enum.ActivityId.Xugouji
+local var_0_0 = class("XugoujiGameStepOperateNumUpdate", XugoujiGameStepBase)
+local var_0_1 = VersionActivity2_6Enum.ActivityId.Xugouji
 
-function slot0.start(slot0)
-	slot2 = slot0._stepData.isSelf
+function var_0_0.start(arg_1_0)
+	local var_1_0 = arg_1_0._stepData.remainReverseCount
+	local var_1_1 = arg_1_0._stepData.isSelf
 
-	Activity188Model.instance:setCurTurnOperateTime(slot0._stepData.remainReverseCount, not slot2)
+	Activity188Model.instance:setCurTurnOperateTime(var_1_0, not var_1_1)
 	XugoujiController.instance:dispatchEvent(XugoujiEvent.OperateTimeUpdated)
 
-	if slot2 then
-		Activity188Model.instance:setGameViewState(slot1 == 0 and XugoujiEnum.GameViewState.PlayerOperaDisplay or XugoujiEnum.GameViewState.PlayerOperating)
+	if var_1_1 then
+		Activity188Model.instance:setGameViewState(var_1_0 == 0 and XugoujiEnum.GameViewState.PlayerOperaDisplay or XugoujiEnum.GameViewState.PlayerOperating)
 	else
-		Activity188Model.instance:setGameViewState(slot1 == 0 and XugoujiEnum.GameViewState.EnemyOperaDisplay or XugoujiEnum.GameViewState.EnemyOperatingng)
+		Activity188Model.instance:setGameViewState(var_1_0 == 0 and XugoujiEnum.GameViewState.EnemyOperaDisplay or XugoujiEnum.GameViewState.EnemyOperatingng)
 	end
 
-	slot0:finish()
+	arg_1_0:finish()
 end
 
-return slot0
+return var_0_0

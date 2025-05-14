@@ -1,7 +1,8 @@
-module("modules.logic.fight.entity.comp.FightSkillComp", package.seeall)
+﻿module("modules.logic.fight.entity.comp.FightSkillComp", package.seeall)
 
-slot0 = class("FightSkillComp", LuaCompBase)
-slot0.FrameEventHandlerCls = {
+local var_0_0 = class("FightSkillComp", LuaCompBase)
+
+var_0_0.FrameEventHandlerCls = {
 	[0] = FightTLEventMove,
 	FightTLEventTargetEffect,
 	FightTLEventAtkSpineLookDir,
@@ -60,230 +61,278 @@ slot0.FrameEventHandlerCls = {
 	[1001] = FightTLEventObjFly
 }
 
-function slot0.ctor(slot0, slot1)
-	slot0.entity = slot1
-	slot0.timeScale = 1
-	slot0.workComp = FightWorkComponent.New()
-	slot0.sameSkillParam = {}
-	slot0.sameSkillStartParam = {}
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.entity = arg_1_1
+	arg_1_0.timeScale = 1
+	arg_1_0.workComp = FightWorkComponent.New()
+	arg_1_0.sameSkillParam = {}
+	arg_1_0.sameSkillStartParam = {}
 end
 
-function slot0.playTimeline(slot0, slot1, slot2)
-	if not slot0:registTimelineWork(slot1, slot2) then
+function var_0_0.playTimeline(arg_2_0, arg_2_1, arg_2_2)
+	local var_2_0 = arg_2_0:registTimelineWork(arg_2_1, arg_2_2)
+
+	if not var_2_0 then
 		return
 	end
 
-	slot3:start()
+	var_2_0:start()
 end
 
-function slot0.registTimelineWork(slot0, slot1, slot2)
-	return slot0.workComp:registWork(FightWorkTimelineItem, slot0.entity, slot1, slot2)
+function var_0_0.registTimelineWork(arg_3_0, arg_3_1, arg_3_2)
+	return arg_3_0.workComp:registWork(FightWorkTimelineItem, arg_3_0.entity, arg_3_1, arg_3_2)
 end
 
-function slot0.registPlaySkillWork(slot0, slot1, slot2)
-	FightHelper.logForPCSkillEditor("++++++++++++++++ entityId_ " .. slot0.entity.id .. " play skill_" .. slot1)
+function var_0_0.registPlaySkillWork(arg_4_0, arg_4_1, arg_4_2)
+	FightHelper.logForPCSkillEditor("++++++++++++++++ entityId_ " .. arg_4_0.entity.id .. " play skill_" .. arg_4_1)
 
-	if slot2 == nil then
+	if arg_4_2 == nil then
 		logError("找不到fightStepData, 请检查代码")
 
 		return
 	end
 
-	if not lua_skill.configDict[slot1] then
-		logError("技能表找不到id:" .. slot1)
+	if not lua_skill.configDict[arg_4_1] then
+		logError("技能表找不到id:" .. arg_4_1)
 
 		return
 	end
 
-	slot5 = slot0.entity:getMO() and slot4.skin
+	local var_4_0 = arg_4_0.entity:getMO()
+	local var_4_1 = var_4_0 and var_4_0.skin
 
-	if slot2 and slot4 and slot2.fromId == slot4.id then
-		slot5 = FightHelper.processSkinByStepData(slot2, slot4)
+	if arg_4_2 and var_4_0 and arg_4_2.fromId == var_4_0.id then
+		var_4_1 = FightHelper.processSkinByStepData(arg_4_2, var_4_0)
 	end
 
-	return slot0:registTimelineWork(FightHelper.detectReplaceTimeline(FightConfig.instance:getSkinSkillTimeline(slot5, slot1), slot2), slot2)
+	local var_4_2 = FightHelper.detectReplaceTimeline(FightConfig.instance:getSkinSkillTimeline(var_4_1, arg_4_1), arg_4_2)
+
+	return (arg_4_0:registTimelineWork(var_4_2, arg_4_2))
 end
 
-function slot0.playSkill(slot0, slot1, slot2)
-	if not slot0:registPlaySkillWork(slot1, slot2) then
+function var_0_0.playSkill(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = arg_5_0:registPlaySkillWork(arg_5_1, arg_5_2)
+
+	if not var_5_0 then
 		return
 	end
 
-	slot3:start()
+	var_5_0:start()
 end
 
-function slot0.skipSkill(slot0)
-	for slot5, slot6 in ipairs(slot0.workComp:getAliveWorkList()) do
-		slot6:skipSkill()
+function var_0_0.skipSkill(arg_6_0)
+	local var_6_0 = arg_6_0.workComp:getAliveWorkList()
+
+	for iter_6_0, iter_6_1 in ipairs(var_6_0) do
+		iter_6_1:skipSkill()
 	end
 end
 
-function slot0.stopSkill(slot0)
-	for slot5, slot6 in ipairs(slot0.workComp:getAliveWorkList()) do
-		slot6:disposeSelf()
+function var_0_0.stopSkill(arg_7_0)
+	local var_7_0 = arg_7_0.workComp:getAliveWorkList()
+
+	for iter_7_0, iter_7_1 in ipairs(var_7_0) do
+		iter_7_1:disposeSelf()
 	end
 end
 
-function slot0.isLastWork(slot0, slot1)
-	return slot1 == slot0:getLastWork()
+function var_0_0.isLastWork(arg_8_0, arg_8_1)
+	return arg_8_1 == arg_8_0:getLastWork()
 end
 
-function slot0.getLastWork(slot0)
-	slot1 = slot0.workComp:getAliveWorkList()
+function var_0_0.getLastWork(arg_9_0)
+	local var_9_0 = arg_9_0.workComp:getAliveWorkList()
 
-	return slot1[#slot1]
+	return var_9_0[#var_9_0]
 end
 
-function slot0.getBinder(slot0)
-	if not slot0:getLastWork() then
+function var_0_0.getBinder(arg_10_0)
+	local var_10_0 = arg_10_0:getLastWork()
+
+	if not var_10_0 then
 		return
 	end
 
-	return slot1:getBinder()
+	return (var_10_0:getBinder())
 end
 
-function slot0.getCurTimelineDuration(slot0)
-	return slot0:getBinder() and slot1:GetDuration() or 0
+function var_0_0.getCurTimelineDuration(arg_11_0)
+	local var_11_0 = arg_11_0:getBinder()
+
+	return var_11_0 and var_11_0:GetDuration() or 0
 end
 
-function slot0.getCurFrameFloat(slot0)
-	if not slot0:getBinder() then
+function var_0_0.getCurFrameFloat(arg_12_0)
+	local var_12_0 = arg_12_0:getBinder()
+
+	if not var_12_0 then
 		return
 	end
 
-	return slot1.CurFrameFloat
+	return var_12_0.CurFrameFloat
 end
 
-function slot0.getFrameFloatByTime(slot0, slot1)
-	if not slot0:getBinder() then
+function var_0_0.getFrameFloatByTime(arg_13_0, arg_13_1)
+	local var_13_0 = arg_13_0:getBinder()
+
+	if not var_13_0 then
 		return
 	end
 
-	return slot2:GetFrameFloatByTime(slot1)
+	return var_13_0:GetFrameFloatByTime(arg_13_1)
 end
 
-function slot0.setTimeScale(slot0, slot1)
-	slot0.timeScale = slot1
+function var_0_0.setTimeScale(arg_14_0, arg_14_1)
+	arg_14_0.timeScale = arg_14_1
 
-	for slot6, slot7 in ipairs(slot0.workComp:getAliveWorkList()) do
-		slot7:setTimeScale(slot1)
+	local var_14_0 = arg_14_0.workComp:getAliveWorkList()
+
+	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
+		iter_14_1:setTimeScale(arg_14_1)
 	end
 end
 
-function slot0.onUpdate(slot0)
-	if not slot0.workComp then
+function var_0_0.onUpdate(arg_15_0)
+	if not arg_15_0.workComp then
 		return
 	end
 
-	for slot5, slot6 in ipairs(slot0.workComp:getAliveWorkList()) do
-		slot6:onUpdate()
+	local var_15_0 = arg_15_0.workComp:getAliveWorkList()
+
+	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
+		iter_15_1:onUpdate()
 	end
 end
 
-function slot0.beforeDestroy(slot0)
-	slot0:stopSkill()
-	slot0.workComp:disposeSelf()
+function var_0_0.beforeDestroy(arg_16_0)
+	arg_16_0:stopSkill()
+	arg_16_0.workComp:disposeSelf()
 
-	slot0.workComp = nil
+	arg_16_0.workComp = nil
 end
 
-function slot0.onDestroy(slot0)
-	slot0.sameSkillParam = nil
+function var_0_0.onDestroy(arg_17_0)
+	arg_17_0.sameSkillParam = nil
 end
 
-function slot0.recordSameSkillStartParam(slot0, slot1, slot2)
-	slot0.sameSkillStartParam[slot1.stepUid] = slot2
+function var_0_0.recordSameSkillStartParam(arg_18_0, arg_18_1, arg_18_2)
+	arg_18_0.sameSkillStartParam[arg_18_1.stepUid] = arg_18_2
 end
 
-function slot0.recordFilterAtkEffect(slot0, slot1, slot2)
-	if not slot0.sameSkillParam[slot2.stepUid] then
-		slot0.sameSkillParam[slot2.stepUid] = {}
+function var_0_0.recordFilterAtkEffect(arg_19_0, arg_19_1, arg_19_2)
+	local var_19_0 = arg_19_0.sameSkillParam[arg_19_2.stepUid]
+
+	if not var_19_0 then
+		var_19_0 = {}
+		arg_19_0.sameSkillParam[arg_19_2.stepUid] = var_19_0
 	end
 
-	slot3.filter_atk_effects = {}
+	var_19_0.filter_atk_effects = {}
 
-	for slot8, slot9 in ipairs(string.split(slot1, "#")) do
-		slot3.filter_atk_effects[slot9] = true
+	local var_19_1 = string.split(arg_19_1, "#")
+
+	for iter_19_0, iter_19_1 in ipairs(var_19_1) do
+		var_19_0.filter_atk_effects[iter_19_1] = true
 	end
 end
 
-function slot0.atkEffectNeedFilter(slot0, slot1, slot2)
-	if not slot0.sameSkillParam[slot2.stepUid] then
+function var_0_0.atkEffectNeedFilter(arg_20_0, arg_20_1, arg_20_2)
+	local var_20_0 = arg_20_0.sameSkillParam[arg_20_2.stepUid]
+
+	if not var_20_0 then
 		return
 	end
 
-	if slot3.filter_atk_effects and slot3.filter_atk_effects[slot1] then
+	if var_20_0.filter_atk_effects and var_20_0.filter_atk_effects[arg_20_1] then
 		return true
 	end
 
 	return false
 end
 
-function slot0.recordFilterFlyEffect(slot0, slot1, slot2)
-	if not slot0.sameSkillParam[slot2.stepUid] then
-		slot0.sameSkillParam[slot2.stepUid] = {}
+function var_0_0.recordFilterFlyEffect(arg_21_0, arg_21_1, arg_21_2)
+	local var_21_0 = arg_21_0.sameSkillParam[arg_21_2.stepUid]
+
+	if not var_21_0 then
+		var_21_0 = {}
+		arg_21_0.sameSkillParam[arg_21_2.stepUid] = var_21_0
 	end
 
-	slot3.filter_fly_effects = {}
+	var_21_0.filter_fly_effects = {}
 
-	for slot8, slot9 in ipairs(string.split(slot1, "#")) do
-		slot3.filter_fly_effects[slot9] = true
+	local var_21_1 = string.split(arg_21_1, "#")
+
+	for iter_21_0, iter_21_1 in ipairs(var_21_1) do
+		var_21_0.filter_fly_effects[iter_21_1] = true
 	end
 end
 
-function slot0.flyEffectNeedFilter(slot0, slot1, slot2)
-	if not slot0.sameSkillParam[slot2.stepUid] then
+function var_0_0.flyEffectNeedFilter(arg_22_0, arg_22_1, arg_22_2)
+	local var_22_0 = arg_22_0.sameSkillParam[arg_22_2.stepUid]
+
+	if not var_22_0 then
 		return
 	end
 
-	if slot3.filter_fly_effects and slot3.filter_fly_effects[slot1] then
+	if var_22_0.filter_fly_effects and var_22_0.filter_fly_effects[arg_22_1] then
 		return true
 	end
 
 	return false
 end
 
-function slot0.clearSameSkillParam(slot0, slot1)
-	if not slot0.sameSkillParam[slot1.stepUid] then
+function var_0_0.clearSameSkillParam(arg_23_0, arg_23_1)
+	local var_23_0 = arg_23_0.sameSkillParam[arg_23_1.stepUid]
+
+	if not var_23_0 then
 		return
 	end
 
-	slot3 = slot2.preStepData
+	local var_23_1 = var_23_0.preStepData
 
-	while slot3 do
-		slot3 = slot0.sameSkillParam[slot3.stepUid] and slot0.sameSkillParam[slot4.stepUid].preStepData
-		slot0.sameSkillStartParam[slot4.stepUid] = nil
-		slot0.sameSkillParam[slot4.stepUid] = nil
+	while var_23_1 do
+		local var_23_2 = var_23_1
 
-		for slot9, slot10 in ipairs(slot0.workComp:getAliveWorkList()) do
-			if slot10.fightStepData == slot4 then
-				slot10:onDone(true)
+		var_23_1 = arg_23_0.sameSkillParam[var_23_2.stepUid] and arg_23_0.sameSkillParam[var_23_2.stepUid].preStepData
+		arg_23_0.sameSkillStartParam[var_23_2.stepUid] = nil
+		arg_23_0.sameSkillParam[var_23_2.stepUid] = nil
+
+		local var_23_3 = arg_23_0.workComp:getAliveWorkList()
+
+		for iter_23_0, iter_23_1 in ipairs(var_23_3) do
+			if iter_23_1.fightStepData == var_23_2 then
+				iter_23_1:onDone(true)
 			end
 		end
 	end
 
-	slot0.sameSkillParam[slot1.stepUid] = nil
+	arg_23_0.sameSkillParam[arg_23_1.stepUid] = nil
 end
 
-function slot0.stopCurTimelineWaitPlaySameSkill(slot0, slot1, slot2, slot3, slot4, slot5)
-	if not slot0:getLastWork() then
+function var_0_0.stopCurTimelineWaitPlaySameSkill(arg_24_0, arg_24_1, arg_24_2, arg_24_3, arg_24_4, arg_24_5)
+	local var_24_0 = arg_24_0:getLastWork()
+
+	if not var_24_0 then
 		return
 	end
 
-	if not slot0.sameSkillParam[slot5.stepUid] then
-		slot0.sameSkillParam[slot5.stepUid] = {}
+	local var_24_1 = arg_24_0.sameSkillParam[arg_24_5.stepUid]
+
+	if not var_24_1 then
+		var_24_1 = {}
+		arg_24_0.sameSkillParam[arg_24_5.stepUid] = var_24_1
 	end
 
-	slot7.curAnimState = slot2
-	slot7.audio_id = slot3
-	slot7.preStepData = slot4
-	slot7.startParam = slot0.sameSkillStartParam[slot4.stepUid]
+	var_24_1.curAnimState = arg_24_2
+	var_24_1.audio_id = arg_24_3
+	var_24_1.preStepData = arg_24_4
+	var_24_1.startParam = arg_24_0.sameSkillStartParam[arg_24_4.stepUid]
 
-	slot6.timelineItem:stopCurTimelineWaitPlaySameSkill(slot1, slot2)
+	var_24_0.timelineItem:stopCurTimelineWaitPlaySameSkill(arg_24_1, arg_24_2)
 end
 
-function slot0.sameSkillPlaying(slot0)
-	return tabletool.len(slot0.sameSkillParam) > 0
+function var_0_0.sameSkillPlaying(arg_25_0)
+	return tabletool.len(arg_25_0.sameSkillParam) > 0
 end
 
-return slot0
+return var_0_0

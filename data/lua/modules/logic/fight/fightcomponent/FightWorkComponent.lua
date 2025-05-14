@@ -1,73 +1,73 @@
-module("modules.logic.fight.fightcomponent.FightWorkComponent", package.seeall)
+﻿module("modules.logic.fight.fightcomponent.FightWorkComponent", package.seeall)
 
-slot0 = class("FightWorkComponent", FightBaseClass)
+local var_0_0 = class("FightWorkComponent", FightBaseClass)
 
-function slot0.onConstructor(slot0)
-	slot0.workList = {}
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.workList = {}
 end
 
-function slot0.registWork(slot0, slot1, ...)
-	slot2 = slot0:newClass(slot1, ...)
+function var_0_0.registWork(arg_2_0, arg_2_1, ...)
+	local var_2_0 = arg_2_0:newClass(arg_2_1, ...)
 
-	table.insert(slot0.workList, slot2)
-	slot2:registFinishCallback(slot0.onOneWorkFinish, slot0)
+	table.insert(arg_2_0.workList, var_2_0)
+	var_2_0:registFinishCallback(arg_2_0.onOneWorkFinish, arg_2_0)
 
-	return slot2
+	return var_2_0
 end
 
-function slot0.playWork(slot0, slot1, ...)
-	slot2 = slot0:newClass(slot1, ...)
+function var_0_0.playWork(arg_3_0, arg_3_1, ...)
+	local var_3_0 = arg_3_0:newClass(arg_3_1, ...)
 
-	table.insert(slot0.workList, slot2)
-	slot2:registFinishCallback(slot0.onOneWorkFinish, slot0)
+	table.insert(arg_3_0.workList, var_3_0)
+	var_3_0:registFinishCallback(arg_3_0.onOneWorkFinish, arg_3_0)
 
-	return slot2:start()
+	return var_3_0:start()
 end
 
-function slot0.addWork(slot0, slot1)
-	table.insert(slot0.workList, slot1)
-	slot1:registFinishCallback(slot0.onOneWorkFinish, slot0)
+function var_0_0.addWork(arg_4_0, arg_4_1)
+	table.insert(arg_4_0.workList, arg_4_1)
+	arg_4_1:registFinishCallback(arg_4_0.onOneWorkFinish, arg_4_0)
 
-	return slot1
+	return arg_4_1
 end
 
-function slot0.onOneWorkFinish(slot0)
-	slot0:com_registSingleTimer(slot0.clearDeadWork, 1)
+function var_0_0.onOneWorkFinish(arg_5_0)
+	arg_5_0:com_registSingleTimer(arg_5_0.clearDeadWork, 1)
 end
 
-function slot0.clearDeadWork(slot0)
-	for slot4 = #slot0.workList, 1, -1 do
-		if slot0.workList[slot4].IS_DISPOSED then
-			table.remove(slot0.workList, slot4)
+function var_0_0.clearDeadWork(arg_6_0)
+	for iter_6_0 = #arg_6_0.workList, 1, -1 do
+		if arg_6_0.workList[iter_6_0].IS_DISPOSED then
+			table.remove(arg_6_0.workList, iter_6_0)
 		end
 	end
 end
 
-function slot0.getWorkList(slot0)
-	return slot0.workList
+function var_0_0.getWorkList(arg_7_0)
+	return arg_7_0.workList
 end
 
-function slot0.getAliveWorkList(slot0)
-	slot1 = {}
+function var_0_0.getAliveWorkList(arg_8_0)
+	local var_8_0 = {}
 
-	for slot5, slot6 in ipairs(slot0.workList) do
-		if not slot6.WORKFINISHED and not slot6.IS_DISPOSED then
-			table.insert(slot1, slot6)
+	for iter_8_0, iter_8_1 in ipairs(arg_8_0.workList) do
+		if not iter_8_1.WORKFINISHED and not iter_8_1.IS_DISPOSED then
+			table.insert(var_8_0, iter_8_1)
 		end
 	end
 
-	return slot1
+	return var_8_0
 end
 
-function slot0.disposeAllWork(slot0)
-	slot0:disposeObjectList(slot0.workList)
-	slot0:onOneWorkFinish()
+function var_0_0.disposeAllWork(arg_9_0)
+	arg_9_0:disposeObjectList(arg_9_0.workList)
+	arg_9_0:onOneWorkFinish()
 end
 
-function slot0.onDestructor(slot0)
-	slot0:disposeObjectList(slot0.workList)
+function var_0_0.onDestructor(arg_10_0)
+	arg_10_0:disposeObjectList(arg_10_0.workList)
 
-	slot0.workList = nil
+	arg_10_0.workList = nil
 end
 
-return slot0
+return var_0_0

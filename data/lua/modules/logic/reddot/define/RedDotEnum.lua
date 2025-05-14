@@ -1,7 +1,8 @@
-module("modules.logic.reddot.define.RedDotEnum", package.seeall)
+﻿module("modules.logic.reddot.define.RedDotEnum", package.seeall)
 
-slot0 = _M
-slot0.DotNode = {
+local var_0_0 = _M
+
+var_0_0.DotNode = {
 	AddFriendTab = 1007,
 	TowerTask = 2307,
 	VersionActivityEnterRedDot = 15,
@@ -252,7 +253,7 @@ slot0.DotNode = {
 	MailBtn = 1002,
 	RougeDLCNew = 2605
 }
-slot0.Style = {
+var_0_0.Style = {
 	Normal2 = 4,
 	RoomNewSkin = 9,
 	ObliqueNewTag = 6,
@@ -264,4 +265,4 @@ slot0.Style = {
 	Normal = 1
 }
 
-return slot0
+return var_0_0

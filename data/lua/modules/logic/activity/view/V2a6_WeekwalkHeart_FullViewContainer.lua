@@ -1,17 +1,17 @@
-module("modules.logic.activity.view.V2a6_WeekwalkHeart_FullViewContainer", package.seeall)
+﻿module("modules.logic.activity.view.V2a6_WeekwalkHeart_FullViewContainer", package.seeall)
 
-slot0 = class("V2a6_WeekwalkHeart_FullViewContainer", Activity189BaseViewContainer)
+local var_0_0 = class("V2a6_WeekwalkHeart_FullViewContainer", Activity189BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, V2a6_WeekwalkHeart_FullView.New())
+	table.insert(var_1_0, V2a6_WeekwalkHeart_FullView.New())
 
-	return slot1
+	return var_1_0
 end
 
-function slot0.actId(slot0)
+function var_0_0.actId(arg_2_0)
 	return ActivityEnum.Activity.V2a6_WeekwalkHeart
 end
 
-return slot0
+return var_0_0

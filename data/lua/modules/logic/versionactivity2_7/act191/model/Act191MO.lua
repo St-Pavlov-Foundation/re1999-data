@@ -1,92 +1,96 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191MO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191MO", package.seeall)
 
-slot0 = pureTable("Act191MO")
+local var_0_0 = pureTable("Act191MO")
 
-function slot0.ctor(slot0)
-	slot0.triggerEffectPushList = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0.triggerEffectPushList = {}
 end
 
-function slot0.initBadgeInfo(slot0, slot1)
-	slot0.badgeMoDic = {}
-	slot0.badgeScoreChangeDic = {}
+function var_0_0.initBadgeInfo(arg_2_0, arg_2_1)
+	arg_2_0.badgeMoDic = {}
+	arg_2_0.badgeScoreChangeDic = {}
 
-	for slot6, slot7 in pairs(lua_activity191_badge.configDict[slot1]) do
-		slot8 = Act191BadgeMO.New()
+	local var_2_0 = lua_activity191_badge.configDict[arg_2_1]
 
-		slot8:init(slot7)
+	for iter_2_0, iter_2_1 in pairs(var_2_0) do
+		local var_2_1 = Act191BadgeMO.New()
 
-		slot0.badgeMoDic[slot6] = slot8
+		var_2_1:init(iter_2_1)
+
+		arg_2_0.badgeMoDic[iter_2_0] = var_2_1
 	end
 end
 
-function slot0.init(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1.badgeInfoList) do
-		slot0.badgeMoDic[slot6.id]:update(slot6)
+function var_0_0.init(arg_3_0, arg_3_1)
+	for iter_3_0, iter_3_1 in ipairs(arg_3_1.badgeInfoList) do
+		arg_3_0.badgeMoDic[iter_3_1.id]:update(iter_3_1)
 	end
 
-	slot0.gameInfo = Act191GameMO.New()
+	arg_3_0.gameInfo = Act191GameMO.New()
 
-	slot0.gameInfo:init(slot1.gameInfo)
+	arg_3_0.gameInfo:init(arg_3_1.gameInfo)
 	Activity191Controller.instance:dispatchEvent(Activity191Event.UpdateBadgeMo)
 end
 
-function slot0.updateGameInfo(slot0, slot1)
-	slot0.gameInfo:update(slot1)
+function var_0_0.updateGameInfo(arg_4_0, arg_4_1)
+	arg_4_0.gameInfo:update(arg_4_1)
 	Activity191Controller.instance:dispatchEvent(Activity191Event.UpdateGameInfo)
 end
 
-function slot0.getGameInfo(slot0)
-	return slot0.gameInfo
+function var_0_0.getGameInfo(arg_5_0)
+	return arg_5_0.gameInfo
 end
 
-function slot0.triggerEffectPush(slot0, slot1)
-	slot0.triggerEffectPushList[#slot0.triggerEffectPushList + 1] = slot1
+function var_0_0.triggerEffectPush(arg_6_0, arg_6_1)
+	arg_6_0.triggerEffectPushList[#arg_6_0.triggerEffectPushList + 1] = arg_6_1
 end
 
-function slot0.clearTriggerEffectPush(slot0)
-	tabletool.clear(slot0.triggerEffectPushList)
+function var_0_0.clearTriggerEffectPush(arg_7_0)
+	tabletool.clear(arg_7_0.triggerEffectPushList)
 end
 
-function slot0.getGameEndInfo(slot0)
-	return slot0.gameEndInfo
+function var_0_0.getGameEndInfo(arg_8_0)
+	return arg_8_0.gameEndInfo
 end
 
-function slot0.setEnfInfo(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1.badgeInfoList) do
-		slot7 = slot6.id
-		slot0.badgeScoreChangeDic[slot7] = slot6.count - slot0.badgeMoDic[slot7].count
+function var_0_0.setEnfInfo(arg_9_0, arg_9_1)
+	for iter_9_0, iter_9_1 in ipairs(arg_9_1.badgeInfoList) do
+		local var_9_0 = iter_9_1.id
+		local var_9_1 = arg_9_0.badgeMoDic[var_9_0]
 
-		slot0.badgeMoDic[slot7]:update(slot6)
+		arg_9_0.badgeScoreChangeDic[var_9_0] = iter_9_1.count - var_9_1.count
+
+		arg_9_0.badgeMoDic[var_9_0]:update(iter_9_1)
 	end
 
-	slot0.gameEndInfo = slot1
+	arg_9_0.gameEndInfo = arg_9_1
 
 	Activity191Controller.instance:dispatchEvent(Activity191Event.UpdateBadgeMo)
 end
 
-function slot0.getBadgeScoreChangeDic(slot0)
-	return slot0.badgeScoreChangeDic
+function var_0_0.getBadgeScoreChangeDic(arg_10_0)
+	return arg_10_0.badgeScoreChangeDic
 end
 
-function slot0.clearEndInfo(slot0)
-	slot0.gameEndInfo = nil
+function var_0_0.clearEndInfo(arg_11_0)
+	arg_11_0.gameEndInfo = nil
 
-	tabletool.clear(slot0.badgeScoreChangeDic)
-	slot0:clearTriggerEffectPush()
+	tabletool.clear(arg_11_0.badgeScoreChangeDic)
+	arg_11_0:clearTriggerEffectPush()
 end
 
-function slot0.getBadgeMoList(slot0)
-	slot1 = {}
+function var_0_0.getBadgeMoList(arg_12_0)
+	local var_12_0 = {}
 
-	for slot5, slot6 in pairs(slot0.badgeMoDic) do
-		slot1[#slot1 + 1] = slot6
+	for iter_12_0, iter_12_1 in pairs(arg_12_0.badgeMoDic) do
+		var_12_0[#var_12_0 + 1] = iter_12_1
 	end
 
-	table.sort(slot1, function (slot0, slot1)
-		return slot0.id < slot1.id
+	table.sort(var_12_0, function(arg_13_0, arg_13_1)
+		return arg_13_0.id < arg_13_1.id
 	end)
 
-	return slot1
+	return var_12_0
 end
 
-return slot0
+return var_0_0

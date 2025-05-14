@@ -1,15 +1,15 @@
-module("modules.logic.fight.system.work.FightWorkCreateBloodPool333", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCreateBloodPool333", package.seeall)
 
-slot0 = class("FightWorkCreateBloodPool333", FightEffectBase)
+local var_0_0 = class("FightWorkCreateBloodPool333", FightEffectBase)
 
-function slot0.onStart(slot0)
-	slot1 = slot0.actEffectData.effectNum
-	slot2 = FightDataHelper.teamDataMgr
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0.actEffectData.effectNum
+	local var_1_1 = FightDataHelper.teamDataMgr
 
-	slot2:checkBloodPoolExist(slot1)
-	slot2[slot1].bloodPool:changeMaxValue(slot0.actEffectData.effectNum1)
-	FightController.instance:dispatchEvent(FightEvent.BloodPool_OnCreate, slot1)
-	slot0:onDone(true)
+	var_1_1:checkBloodPoolExist(var_1_0)
+	var_1_1[var_1_0].bloodPool:changeMaxValue(arg_1_0.actEffectData.effectNum1)
+	FightController.instance:dispatchEvent(FightEvent.BloodPool_OnCreate, var_1_0)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

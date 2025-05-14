@@ -1,12 +1,12 @@
-module("modules.logic.main.controller.work.MainFightReconnectWork", package.seeall)
+﻿module("modules.logic.main.controller.work.MainFightReconnectWork", package.seeall)
 
-slot0 = class("MainFightReconnectWork", BaseWork)
+local var_0_0 = class("MainFightReconnectWork", BaseWork)
 
-function slot0.onStart(slot0, slot1)
+function var_0_0.onStart(arg_1_0, arg_1_1)
 	if GameSceneMgr.instance:getCurSceneType() ~= SceneType.Main or GameSceneMgr.instance:isClosing() then
 		FightModel.instance.needFightReconnect = false
 
-		slot0:onDone(true)
+		arg_1_0:onDone(true)
 
 		return
 	end
@@ -16,105 +16,119 @@ function slot0.onStart(slot0, slot1)
 			Activity191Rpc.instance:sendGetAct191InfoRequest(VersionActivity2_7Enum.ActivityId.Act191)
 		end
 
-		if FightModel.instance:getFightReason().type == FightEnum.FightReason.None then
+		local var_1_0 = FightModel.instance:getFightReason()
+
+		if var_1_0.type == FightEnum.FightReason.None then
 			FightRpc.instance:sendEndFightRequest(false)
-			slot0:onDone(true)
+			arg_1_0:onDone(true)
+		elseif var_1_0.type == FightEnum.FightReason.Dungeon then
+			local var_1_1 = arg_1_0
+
+			GameFacade.showMessageBox(MessageBoxIdDefine.FightSureToReconnect, MsgBoxEnum.BoxType.Yes_No, function()
+				var_1_1:_onConfirm()
+			end, function()
+				var_1_1:_onCancel()
+			end)
+		elseif var_1_0.type == FightEnum.FightReason.DungeonRecord then
+			GameFacade.showMessageBox(MessageBoxIdDefine.FightSureToReconnect, MsgBoxEnum.BoxType.Yes_No, function()
+				FightReplayModel.instance:setReconnectReplay(true)
+				arg_1_0:_onConfirm()
+			end, function()
+				arg_1_0:_onCancel()
+			end)
 		else
-			if slot2.type == FightEnum.FightReason.Dungeon then
-				slot3 = slot0
+			logError("reconnect type not implement: " .. (var_1_0.type or "nil"))
+			arg_1_0:_onCancel()
 
-				GameFacade.showMessageBox(MessageBoxIdDefine.FightSureToReconnect, MsgBoxEnum.BoxType.Yes_No, function ()
-					uv0:_onConfirm()
-				end, function ()
-					uv0:_onCancel()
-				end)
-
-				return
-			end
-
-			if slot2.type == FightEnum.FightReason.DungeonRecord then
-				GameFacade.showMessageBox(MessageBoxIdDefine.FightSureToReconnect, MsgBoxEnum.BoxType.Yes_No, function ()
-					FightReplayModel.instance:setReconnectReplay(true)
-					uv0:_onConfirm()
-				end, function ()
-					uv0:_onCancel()
-				end)
-			else
-				logError("reconnect type not implement: " .. (slot2.type or "nil"))
-				slot0:_onCancel()
-
-				FightModel.instance.needFightReconnect = false
-			end
+			FightModel.instance.needFightReconnect = false
 		end
 	else
-		slot0:onDone(true)
+		arg_1_0:onDone(true)
 	end
 end
 
-function slot0._onConfirm(slot0)
-	TaskDispatcher.runDelay(slot0._onDelayDone, slot0, 20)
-	GameSceneMgr.instance:registerCallback(SceneType.Fight, slot0._onEnterFightScene, slot0)
+function var_0_0._onConfirm(arg_6_0)
+	TaskDispatcher.runDelay(arg_6_0._onDelayDone, arg_6_0, 20)
+	GameSceneMgr.instance:registerCallback(SceneType.Fight, arg_6_0._onEnterFightScene, arg_6_0)
 
-	slot2 = FightModel.instance:getFightReason().episodeId
+	local var_6_0 = FightModel.instance:getFightReason()
+	local var_6_1 = var_6_0.episodeId
 
-	DungeonModel.instance:SetSendChapterEpisodeId(nil, slot2)
+	DungeonModel.instance:SetSendChapterEpisodeId(nil, var_6_1)
 
-	if DungeonConfig.instance:getEpisodeCO(slot2).type == DungeonEnum.EpisodeType.TowerPermanent then
-		if TowerModel.instance:getCurPermanentMo() then
-			TowerPermanentModel.instance:setLocalPassLayer(slot4.passLayerId)
+	local var_6_2 = DungeonConfig.instance:getEpisodeCO(var_6_1)
+
+	if var_6_2.type == DungeonEnum.EpisodeType.TowerPermanent then
+		local var_6_3 = TowerModel.instance:getCurPermanentMo()
+
+		if var_6_3 then
+			TowerPermanentModel.instance:setLocalPassLayer(var_6_3.passLayerId)
 		end
-	elseif slot3.type == DungeonEnum.EpisodeType.TowerLimited then
-		if TowerAssistBossModel.instance:getById(FightModel.instance.last_fightGroup.assistBossId) then
-			slot5:setTempState(slot5.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)))
+	elseif var_6_2.type == DungeonEnum.EpisodeType.TowerLimited then
+		local var_6_4 = FightModel.instance.last_fightGroup.assistBossId
+		local var_6_5 = TowerAssistBossModel.instance:getById(var_6_4)
+		local var_6_6 = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+
+		if var_6_5 then
+			var_6_5:setTempState(var_6_6 > var_6_5.level)
 		end
 
-		TowerAssistBossModel.instance:getTempUnlockTrialBossMO(slot4)
+		TowerAssistBossModel.instance:getTempUnlockTrialBossMO(var_6_4)
 	end
 
-	if DungeonConfig.instance:isLeiMiTeBeiChapterType(slot3) then
-		FightController.instance:setFightParamByEpisodeId(slot2, slot1.type == FightEnum.FightReason.DungeonRecord, slot1.multiplication)
-	elseif slot3.type == DungeonEnum.EpisodeType.WeekWalk then
-		WeekWalkModel.instance:setCurMapId(slot1.layerId)
-		WeekWalkModel.instance:setBattleElementId(slot1.elementId)
-		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
-	elseif slot3.type == DungeonEnum.EpisodeType.WeekWalk_2 then
-		WeekWalk_2Model.instance:setCurMapId(slot1.layerId)
-		WeekWalk_2Model.instance:setBattleElementId(slot1.elementId)
-		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
-	elseif slot3.type == DungeonEnum.EpisodeType.Meilanni then
-		FightController.instance:setFightParamByEpisodeBattleId(slot2, FightModel.instance:getBattleId())
+	if DungeonConfig.instance:isLeiMiTeBeiChapterType(var_6_2) then
+		local var_6_7 = var_6_0.type == FightEnum.FightReason.DungeonRecord
 
-		slot5 = slot1.eventEpisodeId and lua_activity108_episode.configDict[slot4]
+		FightController.instance:setFightParamByEpisodeId(var_6_1, var_6_7, var_6_0.multiplication)
+	elseif var_6_2.type == DungeonEnum.EpisodeType.WeekWalk then
+		WeekWalkModel.instance:setCurMapId(var_6_0.layerId)
+		WeekWalkModel.instance:setBattleElementId(var_6_0.elementId)
+		FightController.instance:setFightParamByEpisodeBattleId(var_6_1, FightModel.instance:getBattleId())
+	elseif var_6_2.type == DungeonEnum.EpisodeType.WeekWalk_2 then
+		WeekWalk_2Model.instance:setCurMapId(var_6_0.layerId)
+		WeekWalk_2Model.instance:setBattleElementId(var_6_0.elementId)
+		FightController.instance:setFightParamByEpisodeBattleId(var_6_1, FightModel.instance:getBattleId())
+	elseif var_6_2.type == DungeonEnum.EpisodeType.Meilanni then
+		FightController.instance:setFightParamByEpisodeBattleId(var_6_1, FightModel.instance:getBattleId())
 
-		MeilanniModel.instance:setCurMapId(slot5 and slot5.mapId)
+		local var_6_8 = var_6_0.eventEpisodeId
+		local var_6_9 = var_6_8 and lua_activity108_episode.configDict[var_6_8]
+		local var_6_10 = var_6_9 and var_6_9.mapId
+
+		MeilanniModel.instance:setCurMapId(var_6_10)
 		Activity108Rpc.instance:sendGet108InfosRequest(MeilanniEnum.activityId)
-	elseif slot3.type == DungeonEnum.EpisodeType.Dog then
-		FightController.instance:setFightParamByEpisodeBattleId(slot1.episodeId, slot1.battleId)
-	elseif slot3.type == DungeonEnum.EpisodeType.YaXian then
+	elseif var_6_2.type == DungeonEnum.EpisodeType.Dog then
+		FightController.instance:setFightParamByEpisodeBattleId(var_6_0.episodeId, var_6_0.battleId)
+	elseif var_6_2.type == DungeonEnum.EpisodeType.YaXian then
 		FightController.instance:setFightParamByEpisodeBattleId(YaXianGameEnum.EpisodeId, FightModel.instance:getBattleId())
-	elseif SeasonHeroGroupHandler.checkIsSeasonTypeByEpisodeId(slot2) then
-		SeasonFightHandler.checkProcessFightReconnect(slot1)
+	elseif SeasonHeroGroupHandler.checkIsSeasonTypeByEpisodeId(var_6_1) then
+		SeasonFightHandler.checkProcessFightReconnect(var_6_0)
 	else
-		FightController.instance:setFightParamByEpisodeId(slot2, slot1.type == FightEnum.FightReason.DungeonRecord, slot1.multiplication and slot6 > 0 and slot6 or 1, slot1.battleId)
-		HeroGroupModel.instance:setParam(slot1.battleId, slot2, false, true)
+		local var_6_11 = var_6_0.type == FightEnum.FightReason.DungeonRecord
+		local var_6_12 = var_6_0.multiplication
+
+		var_6_12 = var_6_12 and var_6_12 > 0 and var_6_12 or 1
+
+		FightController.instance:setFightParamByEpisodeId(var_6_1, var_6_11, var_6_12, var_6_0.battleId)
+		HeroGroupModel.instance:setParam(var_6_0.battleId, var_6_1, false, true)
 	end
 
 	FightModel.instance:updateMySide(FightModel.instance.last_fightGroup)
 	FightController.instance:enterFightScene()
 end
 
-function slot0._onCancel(slot0)
+function var_0_0._onCancel(arg_7_0)
 	DungeonFightController.instance:sendEndFightRequest(true)
 	FightModel.instance:clear()
-	slot0:onDone(true)
+	arg_7_0:onDone(true)
 end
 
-function slot0._onEnterFightScene(slot0)
-	slot0:removeEnterFightListener()
-	TaskDispatcher.runRepeat(slot0._onCheckEnterMainView, slot0, 0.5)
+function var_0_0._onEnterFightScene(arg_8_0)
+	arg_8_0:removeEnterFightListener()
+	TaskDispatcher.runRepeat(arg_8_0._onCheckEnterMainView, arg_8_0, 0.5)
 end
 
-function slot0._onCheckEnterMainView(slot0)
+function var_0_0._onCheckEnterMainView(arg_9_0)
 	if not MainController.instance:isInMainView() then
 		return
 	end
@@ -128,24 +142,24 @@ function slot0._onCheckEnterMainView(slot0)
 	end
 
 	if not ViewMgr.instance:hasOpenFullView() and ViewMgr.instance:isOpen(ViewName.MainView) then
-		TaskDispatcher.cancelTask(slot0._onCheckEnterMainView, slot0)
-		slot0:onDone(true)
+		TaskDispatcher.cancelTask(arg_9_0._onCheckEnterMainView, arg_9_0)
+		arg_9_0:onDone(true)
 	end
 end
 
-function slot0._onDelayDone(slot0)
+function var_0_0._onDelayDone(arg_10_0)
 	logError("战斗重连超时，打开下一个Popup")
-	slot0:onDone(true)
+	arg_10_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	slot0:removeEnterFightListener()
-	TaskDispatcher.cancelTask(slot0._onCheckEnterMainView, slot0)
+function var_0_0.clearWork(arg_11_0)
+	arg_11_0:removeEnterFightListener()
+	TaskDispatcher.cancelTask(arg_11_0._onCheckEnterMainView, arg_11_0)
 end
 
-function slot0.removeEnterFightListener(slot0)
-	TaskDispatcher.cancelTask(slot0._onDelayDone, slot0)
-	GameSceneMgr.instance:unregisterCallback(SceneType.Fight, slot0._onEnterFightScene, slot0)
+function var_0_0.removeEnterFightListener(arg_12_0)
+	TaskDispatcher.cancelTask(arg_12_0._onDelayDone, arg_12_0)
+	GameSceneMgr.instance:unregisterCallback(SceneType.Fight, arg_12_0._onEnterFightScene, arg_12_0)
 end
 
-return slot0
+return var_0_0

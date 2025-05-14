@@ -1,11 +1,11 @@
-module("modules.logic.versionactivity2_7.dungeon.view.map.V2a7LoadingSpaceViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.dungeon.view.map.V2a7LoadingSpaceViewContainer", package.seeall)
 
-slot0 = class("V2a7LoadingSpaceViewContainer", BaseViewContainer)
+local var_0_0 = class("V2a7LoadingSpaceViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
+function var_0_0.buildViews(arg_1_0)
 	return {
 		V2a7LoadingSpaceView.New()
 	}
 end
 
-return slot0
+return var_0_0

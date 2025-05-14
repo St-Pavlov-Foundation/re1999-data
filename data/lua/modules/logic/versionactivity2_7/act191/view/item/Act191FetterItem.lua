@@ -1,70 +1,73 @@
-module("modules.logic.versionactivity2_7.act191.view.item.Act191FetterItem", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.item.Act191FetterItem", package.seeall)
 
-slot0 = class("Act191FetterItem", LuaCompBase)
+local var_0_0 = class("Act191FetterItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0.imageRare = gohelper.findChildImage(slot1, "bg")
-	slot0.goEffect2 = gohelper.findChild(slot1, "effect2")
-	slot0.goEffect3 = gohelper.findChild(slot1, "effect3")
-	slot0.goEffect4 = gohelper.findChild(slot1, "effect4")
-	slot0.goEffect5 = gohelper.findChild(slot1, "effect5")
-	slot0.imageIcon = gohelper.findChildImage(slot1, "icon")
-	slot0.txtCnt = gohelper.findChildText(slot1, "count")
-	slot0.btnClick = gohelper.findChildButtonWithAudio(slot1, "clickArea")
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0.imageRare = gohelper.findChildImage(arg_1_1, "bg")
+	arg_1_0.goEffect2 = gohelper.findChild(arg_1_1, "effect2")
+	arg_1_0.goEffect3 = gohelper.findChild(arg_1_1, "effect3")
+	arg_1_0.goEffect4 = gohelper.findChild(arg_1_1, "effect4")
+	arg_1_0.goEffect5 = gohelper.findChild(arg_1_1, "effect5")
+	arg_1_0.imageIcon = gohelper.findChildImage(arg_1_1, "icon")
+	arg_1_0.txtCnt = gohelper.findChildText(arg_1_1, "count")
+	arg_1_0.btnClick = gohelper.findChildButtonWithAudio(arg_1_1, "clickArea")
 end
 
-function slot0.addEventListeners(slot0)
-	slot0:addClickCb(slot0.btnClick, slot0.onClick, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	arg_2_0:addClickCb(arg_2_0.btnClick, arg_2_0.onClick, arg_2_0)
 end
 
-function slot0.setData(slot0, slot1, slot2)
-	slot0.config = slot1
+function var_0_0.setData(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_0.config = arg_3_1
 
-	if slot1.level ~= 0 then
-		slot0.txtCnt.text = string.format("%d/%d", slot2, Activity191Config.instance:getRelationMaxCo(slot0.config.tag).activeNum)
+	local var_3_0 = Activity191Config.instance:getRelationMaxCo(arg_3_0.config.tag)
+
+	if arg_3_1.level ~= 0 then
+		arg_3_0.txtCnt.text = string.format("%d/%d", arg_3_2, var_3_0.activeNum)
 	else
-		slot0.txtCnt.text = string.format("<color=#ed7f7f>%d</color><color=#838383>/%d</color>", slot2, slot3.activeNum)
+		arg_3_0.txtCnt.text = string.format("<color=#ed7f7f>%d</color><color=#838383>/%d</color>", arg_3_2, var_3_0.activeNum)
 	end
 
-	slot7 = "act174_shop_tag_" .. slot0.config.tagBg
+	UISpriteSetMgr.instance:setAct174Sprite(arg_3_0.imageRare, "act174_shop_tag_" .. arg_3_0.config.tagBg)
 
-	UISpriteSetMgr.instance:setAct174Sprite(slot0.imageRare, slot7)
-
-	for slot7 = 2, 5 do
-		gohelper.setActive(slot0["goEffect" .. slot7], slot7 == slot0.config.tagBg)
+	for iter_3_0 = 2, 5 do
+		gohelper.setActive(arg_3_0["goEffect" .. iter_3_0], iter_3_0 == arg_3_0.config.tagBg)
 	end
 
-	ZProj.UGUIHelper.SetGrayscale(slot0.imageIcon.gameObject, slot1.level == 0)
+	ZProj.UGUIHelper.SetGrayscale(arg_3_0.imageIcon.gameObject, arg_3_1.level == 0)
 
-	slot5 = slot0.imageIcon.color
-	slot5.a = slot1.level == 0 and 0.5 or 1
-	slot0.imageIcon.color = slot5
+	local var_3_1
 
-	Activity191Helper.setFetterIcon(slot0.imageIcon, slot0.config.icon)
+	var_3_1.a, var_3_1 = arg_3_1.level == 0 and 0.5 or 1, arg_3_0.imageIcon.color
+	arg_3_0.imageIcon.color = var_3_1
+
+	Activity191Helper.setFetterIcon(arg_3_0.imageIcon, arg_3_0.config.icon)
 end
 
-function slot0.onClick(slot0)
-	if slot0.param then
-		Act191StatController.instance:statButtonClick(slot0.param.fromView, string.format("clickArea_%s_%s", slot0.param.index, slot0.config.name))
+function var_0_0.onClick(arg_4_0)
+	if arg_4_0.param then
+		Act191StatController.instance:statButtonClick(arg_4_0.param.fromView, string.format("clickArea_%s_%s", arg_4_0.param.index, arg_4_0.config.name))
 	end
 
-	Activity191Controller.instance:openFetterTipView({
-		tag = slot0.config.tag,
-		isEnemy = slot0.isEnemy
-	})
+	local var_4_0 = {
+		tag = arg_4_0.config.tag,
+		isEnemy = arg_4_0.isEnemy
+	}
+
+	Activity191Controller.instance:openFetterTipView(var_4_0)
 end
 
-function slot0.setEnemyView(slot0)
-	slot0.isEnemy = true
+function var_0_0.setEnemyView(arg_5_0)
+	arg_5_0.isEnemy = true
 end
 
-function slot0.setClickEnable(slot0, slot1)
-	gohelper.setActive(slot0.btnClick, slot1)
+function var_0_0.setClickEnable(arg_6_0, arg_6_1)
+	gohelper.setActive(arg_6_0.btnClick, arg_6_1)
 end
 
-function slot0.setExtraParam(slot0, slot1)
-	slot0.param = slot1
+function var_0_0.setExtraParam(arg_7_0, arg_7_1)
+	arg_7_0.param = arg_7_1
 end
 
-return slot0
+return var_0_0

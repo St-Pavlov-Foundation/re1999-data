@@ -1,36 +1,36 @@
-module("modules.logic.fight.system.work.asfd.effectwork.FightWorkAllocateCardEnergy", package.seeall)
+﻿module("modules.logic.fight.system.work.asfd.effectwork.FightWorkAllocateCardEnergy", package.seeall)
 
-slot0 = class("FightWorkAllocateCardEnergy", FightEffectBase)
+local var_0_0 = class("FightWorkAllocateCardEnergy", FightEffectBase)
 
-function slot0.onConstructor(slot0)
-	slot0.SAFETIME = 3
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.SAFETIME = 3
 end
 
-slot0.AllocateEnum = {
+var_0_0.AllocateEnum = {
 	Clear = 0,
 	Allocate = 1
 }
 
-function slot0.onStart(slot0)
-	if slot0.actEffectData.effectNum1 ~= uv0.AllocateEnum.Allocate then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_2_0)
+	if arg_2_0.actEffectData.effectNum1 ~= var_0_0.AllocateEnum.Allocate then
+		arg_2_0:onDone(true)
 
 		return
 	end
 
-	FightController.instance:registerCallback(FightEvent.ASFD_AllocateCardEnergyDone, slot0.allocateCardEnergyDone, slot0)
+	FightController.instance:registerCallback(FightEvent.ASFD_AllocateCardEnergyDone, arg_2_0.allocateCardEnergyDone, arg_2_0)
 	FightController.instance:dispatchEvent(FightEvent.ASFD_StartAllocateCardEnergy)
 end
 
-slot0.ASFDOpenTime = 0.5
+var_0_0.ASFDOpenTime = 0.5
 
-function slot0.allocateCardEnergyDone(slot0)
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, uv0.ASFDOpenTime / FightModel.instance:getUISpeed())
+function var_0_0.allocateCardEnergyDone(arg_3_0)
+	TaskDispatcher.runDelay(arg_3_0._delayDone, arg_3_0, var_0_0.ASFDOpenTime / FightModel.instance:getUISpeed())
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ASFD_AllocateCardEnergyDone, slot0.allocateCardEnergyDone, slot0)
+function var_0_0.clearWork(arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0._delayDone, arg_4_0)
+	FightController.instance:unregisterCallback(FightEvent.ASFD_AllocateCardEnergyDone, arg_4_0.allocateCardEnergyDone, arg_4_0)
 end
 
-return slot0
+return var_0_0

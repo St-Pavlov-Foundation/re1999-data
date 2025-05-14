@@ -1,197 +1,222 @@
-module("modules.logic.fight.view.magiccircle.FightMagicCircleElectric", package.seeall)
+﻿module("modules.logic.fight.view.magiccircle.FightMagicCircleElectric", package.seeall)
 
-slot0 = class("FightMagicCircleElectric", FightMagicCircleBaseItem)
+local var_0_0 = class("FightMagicCircleElectric", FightMagicCircleBaseItem)
 
-function slot0.getUIType(slot0)
+function var_0_0.getUIType(arg_1_0)
 	return FightEnum.MagicCircleUIType.Electric
 end
 
-function slot0.initView(slot0)
-	slot0.rectTr = slot0.go:GetComponent(gohelper.Type_RectTransform)
-	slot4 = gohelper.Type_Animator
-	slot0.sliderAnimator = gohelper.findChildComponent(slot0.go, "slider", slot4)
-	slot0.textSlider = gohelper.findChildText(slot0.go, "slider/sliderbg/#txt_slidernum")
-	slot0.goRoundHero = gohelper.findChild(slot0.go, "slider/round/hero")
-	slot0.roundNumHero = gohelper.findChildText(slot0.go, "slider/round/hero/#txt_round")
-	slot0.goRoundEnemy = gohelper.findChild(slot0.go, "slider/round/enemy")
-	slot0.roundNumEnemy = gohelper.findChildText(slot0.go, "slider/round/enemy/#txt_round")
-	slot0.imageSliderFlash = gohelper.findChildImage(slot0.go, "slider/sliderbg/slider_flashbg")
-	slot0.imageSliderFlash.fillAmount = 0
-	slot0.imageSlider = slot0:getUserDataTb_()
+function var_0_0.initView(arg_2_0)
+	arg_2_0.rectTr = arg_2_0.go:GetComponent(gohelper.Type_RectTransform)
+	arg_2_0.sliderAnimator = gohelper.findChildComponent(arg_2_0.go, "slider", gohelper.Type_Animator)
+	arg_2_0.textSlider = gohelper.findChildText(arg_2_0.go, "slider/sliderbg/#txt_slidernum")
+	arg_2_0.goRoundHero = gohelper.findChild(arg_2_0.go, "slider/round/hero")
+	arg_2_0.roundNumHero = gohelper.findChildText(arg_2_0.go, "slider/round/hero/#txt_round")
+	arg_2_0.goRoundEnemy = gohelper.findChild(arg_2_0.go, "slider/round/enemy")
+	arg_2_0.roundNumEnemy = gohelper.findChildText(arg_2_0.go, "slider/round/enemy/#txt_round")
+	arg_2_0.imageSliderFlash = gohelper.findChildImage(arg_2_0.go, "slider/sliderbg/slider_flashbg")
+	arg_2_0.imageSliderFlash.fillAmount = 0
+	arg_2_0.imageSlider = arg_2_0:getUserDataTb_()
 
-	for slot4 = 1, 3 do
-		slot5 = gohelper.findChildImage(slot0.go, "slider/sliderbg/slider_level" .. slot4)
-		slot0.imageSlider[slot4] = slot5
-		slot5.fillAmount = 0
+	for iter_2_0 = 1, 3 do
+		local var_2_0 = gohelper.findChildImage(arg_2_0.go, "slider/sliderbg/slider_level" .. iter_2_0)
 
-		gohelper.setActive(slot5.gameObject, true)
+		arg_2_0.imageSlider[iter_2_0] = var_2_0
+		var_2_0.fillAmount = 0
+
+		gohelper.setActive(var_2_0.gameObject, true)
 	end
 
-	slot0.energyList = {}
+	arg_2_0.energyList = {}
 
-	for slot4 = 1, 3 do
-		slot0.energyList[slot4] = slot0:getUserDataTb_()
+	for iter_2_1 = 1, 3 do
+		local var_2_1 = arg_2_0:getUserDataTb_()
 
-		for slot10 = 1, 3 do
-			table.insert(slot5, gohelper.findChild(gohelper.findChild(slot0.go, "slider/energy/" .. slot4), "light" .. slot10))
+		arg_2_0.energyList[iter_2_1] = var_2_1
+
+		local var_2_2 = gohelper.findChild(arg_2_0.go, "slider/energy/" .. iter_2_1)
+
+		for iter_2_2 = 1, 3 do
+			table.insert(var_2_1, gohelper.findChild(var_2_2, "light" .. iter_2_2))
 		end
 	end
 
-	slot0._click = gohelper.findChildClickWithDefaultAudio(slot0.go, "btn")
+	arg_2_0._click = gohelper.findChildClickWithDefaultAudio(arg_2_0.go, "btn")
 
-	slot0._click:AddClickListener(slot0.onClickSelf, slot0)
+	arg_2_0._click:AddClickListener(arg_2_0.onClickSelf, arg_2_0)
 
-	slot0.levelVxDict = slot0:getUserDataTb_()
-	slot0.levelVxDict[1] = gohelper.findChild(slot0.go, "slider/vx/1")
-	slot0.levelVxDict[2] = gohelper.findChild(slot0.go, "slider/vx/2")
-	slot0.levelVxDict[3] = gohelper.findChild(slot0.go, "slider/vx/3")
+	arg_2_0.levelVxDict = arg_2_0:getUserDataTb_()
+	arg_2_0.levelVxDict[1] = gohelper.findChild(arg_2_0.go, "slider/vx/1")
+	arg_2_0.levelVxDict[2] = gohelper.findChild(arg_2_0.go, "slider/vx/2")
+	arg_2_0.levelVxDict[3] = gohelper.findChild(arg_2_0.go, "slider/vx/3")
 
-	slot0:addEventCb(FightController.instance, FightEvent.UpgradeMagicCircile, slot0.onUpgradeMagicCircle, slot0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.UpgradeMagicCircile, arg_2_0.onUpgradeMagicCircle, arg_2_0)
 end
 
-slot0.Upgrade2AnimatorName = {
-	[2.0] = "upgrade_01",
-	[3.0] = "upgrade_02"
+var_0_0.Upgrade2AnimatorName = {
+	[2] = "upgrade_01",
+	[3] = "upgrade_02"
 }
 
-function slot0.onUpgradeMagicCircle(slot0, slot1)
-	slot2 = lua_magic_circle.configDict[slot1.magicCircleId]
+function var_0_0.onUpgradeMagicCircle(arg_3_0, arg_3_1)
+	local var_3_0 = lua_magic_circle.configDict[arg_3_1.magicCircleId]
+	local var_3_1 = arg_3_1.electricLevel
+	local var_3_2 = arg_3_0.Upgrade2AnimatorName[var_3_1]
 
-	if slot0.Upgrade2AnimatorName[slot1.electricLevel] then
-		slot0.sliderAnimator:Play(slot4, 0, 0)
+	if var_3_2 then
+		arg_3_0.sliderAnimator:Play(var_3_2, 0, 0)
 	end
 
-	slot0.preProgress = 0
+	arg_3_0.preProgress = 0
 
-	slot0:refreshUI(slot1, slot2)
+	arg_3_0:refreshUI(arg_3_1, var_3_0)
 	AudioMgr.instance:trigger(20270001)
 end
 
-function slot0.onClickSelf(slot0)
-	FightController.instance:dispatchEvent(FightEvent.OnClickMagicCircleText, recthelper.getHeight(slot0.rectTr), slot0.rectTr.position)
+function var_0_0.onClickSelf(arg_4_0)
+	local var_4_0 = recthelper.getHeight(arg_4_0.rectTr)
+	local var_4_1 = arg_4_0.rectTr.position
+
+	FightController.instance:dispatchEvent(FightEvent.OnClickMagicCircleText, var_4_0, var_4_1)
 end
 
-function slot0.onCreateMagic(slot0, slot1, slot2)
-	uv0.super.onCreateMagic(slot0, slot1, slot2)
+function var_0_0.onCreateMagic(arg_5_0, arg_5_1, arg_5_2)
+	var_0_0.super.onCreateMagic(arg_5_0, arg_5_1, arg_5_2)
 	AudioMgr.instance:trigger(20270001)
 end
 
-function slot0.refreshUI(slot0, slot1, slot2)
-	slot0.magicMo = slot1
-	slot0.magicConfig = slot2
+function var_0_0.refreshUI(arg_6_0, arg_6_1, arg_6_2)
+	arg_6_0.magicMo = arg_6_1
+	arg_6_0.magicConfig = arg_6_2
 
-	slot0:refreshRound(slot1, slot2)
-	slot0:refreshSlider(slot1, slot2)
-	slot0:refreshEnergy(slot1, slot2)
+	arg_6_0:refreshRound(arg_6_1, arg_6_2)
+	arg_6_0:refreshSlider(arg_6_1, arg_6_2)
+	arg_6_0:refreshEnergy(arg_6_1, arg_6_2)
 end
 
-function slot0.refreshRound(slot0, slot1, slot2)
-	slot3 = slot1.round == -1 and "∞" or slot1.round
-	slot0.roundNumHero.text = slot3
-	slot0.roundNumEnemy.text = slot3
+function var_0_0.refreshRound(arg_7_0, arg_7_1, arg_7_2)
+	local var_7_0 = arg_7_1.round == -1 and "∞" or arg_7_1.round
 
-	gohelper.setActive(slot0.goRoundHero, FightHelper.getMagicSide(slot1.createUid) == FightEnum.EntitySide.MySide)
-	gohelper.setActive(slot0.goRoundEnemy, slot4 == FightEnum.EntitySide.EnemySide)
+	arg_7_0.roundNumHero.text = var_7_0
+	arg_7_0.roundNumEnemy.text = var_7_0
+
+	local var_7_1 = FightHelper.getMagicSide(arg_7_1.createUid)
+
+	gohelper.setActive(arg_7_0.goRoundHero, var_7_1 == FightEnum.EntitySide.MySide)
+	gohelper.setActive(arg_7_0.goRoundEnemy, var_7_1 == FightEnum.EntitySide.EnemySide)
 end
 
-slot0.FillAmountDuration = 0.5
+var_0_0.FillAmountDuration = 0.5
 
-function slot0.refreshSlider(slot0, slot1, slot2)
-	if not slot0.preProgress then
-		slot0:refreshSliderByProgressAndLevel(slot1.electricProgress, slot1.electricLevel)
-		slot0:showCurLevelVx()
+function var_0_0.refreshSlider(arg_8_0, arg_8_1, arg_8_2)
+	if not arg_8_0.preProgress then
+		arg_8_0:refreshSliderByProgressAndLevel(arg_8_1.electricProgress, arg_8_1.electricLevel)
+		arg_8_0:showCurLevelVx()
 
-		slot0.preProgress = slot1.electricProgress
-		slot0.preLevel = slot1.electricLevel
+		arg_8_0.preProgress = arg_8_1.electricProgress
+		arg_8_0.preLevel = arg_8_1.electricLevel
 
 		return
 	end
 
-	slot3 = slot1.electricProgress
-	slot0.preProgress = slot3
+	local var_8_0 = arg_8_1.electricProgress
+	local var_8_1 = arg_8_0.preProgress
 
-	slot0:clearTween()
+	arg_8_0.preProgress = var_8_0
 
-	slot0.tweenId = ZProj.TweenHelper.DOTweenFloat(slot0.preProgress, slot3, uv0.FillAmountDuration, slot0.tweenProgress, slot0.onTweenFinish, slot0)
+	arg_8_0:clearTween()
+
+	arg_8_0.tweenId = ZProj.TweenHelper.DOTweenFloat(var_8_1, var_8_0, var_0_0.FillAmountDuration, arg_8_0.tweenProgress, arg_8_0.onTweenFinish, arg_8_0)
 end
 
-function slot0.tweenProgress(slot0, slot1)
-	slot0:refreshSliderByProgressAndLevel(math.floor(slot1), slot0.magicMo.electricLevel)
+function var_0_0.tweenProgress(arg_9_0, arg_9_1)
+	arg_9_1 = math.floor(arg_9_1)
+
+	local var_9_0 = arg_9_0.magicMo.electricLevel
+
+	arg_9_0:refreshSliderByProgressAndLevel(arg_9_1, var_9_0)
 end
 
-function slot0.refreshSliderByProgressAndLevel(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot0.imageSlider) do
-		if slot6 == slot2 then
-			if slot6 == 3 then
-				slot0.textSlider.text = "MAX"
-				slot7.fillAmount = 1
+function var_0_0.refreshSliderByProgressAndLevel(arg_10_0, arg_10_1, arg_10_2)
+	for iter_10_0, iter_10_1 in ipairs(arg_10_0.imageSlider) do
+		if iter_10_0 == arg_10_2 then
+			if iter_10_0 == 3 then
+				arg_10_0.textSlider.text = "MAX"
+				iter_10_1.fillAmount = 1
 			else
-				slot9 = 0
+				local var_10_0 = lua_fight_dnsz.configList[arg_10_2 + 1]
+				local var_10_1 = 0
 
-				if lua_fight_dnsz.configList[slot2 + 1] then
-					slot9 = slot8.progress
+				if var_10_0 then
+					var_10_1 = var_10_0.progress
 				end
 
-				slot7.fillAmount = slot1 / slot9
-				slot0.textSlider.text = string.format("%s/<#E3E3E3>%s</COLOR>", slot1, slot9)
+				iter_10_1.fillAmount = arg_10_1 / var_10_1
+				arg_10_0.textSlider.text = string.format("%s/<#E3E3E3>%s</COLOR>", arg_10_1, var_10_1)
 			end
 		else
-			slot7.fillAmount = 0
+			iter_10_1.fillAmount = 0
 		end
 	end
 end
 
-function slot0.onTweenFinish(slot0)
-	slot0:showCurLevelVx()
-	slot0:clearTween()
+function var_0_0.onTweenFinish(arg_11_0)
+	arg_11_0:showCurLevelVx()
+	arg_11_0:clearTween()
 end
 
-function slot0.showCurLevelVx(slot0)
-	for slot5, slot6 in pairs(slot0.levelVxDict) do
-		gohelper.setActive(slot6, slot5 <= slot0.magicMo.electricLevel)
+function var_0_0.showCurLevelVx(arg_12_0)
+	local var_12_0 = arg_12_0.magicMo.electricLevel
+
+	for iter_12_0, iter_12_1 in pairs(arg_12_0.levelVxDict) do
+		gohelper.setActive(iter_12_1, iter_12_0 <= var_12_0)
 	end
 end
 
-function slot0.refreshEnergy(slot0, slot1, slot2)
-	slot3 = slot1.electricLevel
+function var_0_0.refreshEnergy(arg_13_0, arg_13_1, arg_13_2)
+	local var_13_0 = arg_13_1.electricLevel
 
-	for slot7, slot8 in ipairs(slot0.energyList) do
-		for slot12, slot13 in ipairs(slot8) do
-			gohelper.setActive(slot13, slot7 <= slot3 and slot12 == slot3)
+	for iter_13_0, iter_13_1 in ipairs(arg_13_0.energyList) do
+		for iter_13_2, iter_13_3 in ipairs(iter_13_1) do
+			gohelper.setActive(iter_13_3, iter_13_0 <= var_13_0 and iter_13_2 == var_13_0)
 		end
 	end
 end
 
-function slot0.getLevelByProgress(slot0, slot1)
-	for slot7 = #lua_fight_dnsz.configList, 1, -1 do
-		if slot2[slot7].progress <= slot1 then
-			return slot8.level
+function var_0_0.getLevelByProgress(arg_14_0, arg_14_1)
+	local var_14_0 = lua_fight_dnsz.configList
+
+	for iter_14_0 = #var_14_0, 1, -1 do
+		local var_14_1 = var_14_0[iter_14_0]
+
+		if arg_14_1 >= var_14_1.progress then
+			return var_14_1.level
 		end
 	end
 
 	return 1
 end
 
-function slot0.getLevelCo(slot0, slot1)
-	return lua_fight_dnsz.configDict[slot1] or lua_fight_dnsz.configDict[1]
+function var_0_0.getLevelCo(arg_15_0, arg_15_1)
+	return lua_fight_dnsz.configDict[arg_15_1] or lua_fight_dnsz.configDict[1]
 end
 
-function slot0.clearTween(slot0)
-	if slot0.tweenId then
-		ZProj.TweenHelper.KillById(slot0.tweenId)
+function var_0_0.clearTween(arg_16_0)
+	if arg_16_0.tweenId then
+		ZProj.TweenHelper.KillById(arg_16_0.tweenId)
 
-		slot0.tweenId = nil
+		arg_16_0.tweenId = nil
 	end
 end
 
-function slot0.destroy(slot0)
-	slot0:clearTween()
+function var_0_0.destroy(arg_17_0)
+	arg_17_0:clearTween()
 
-	if slot0._click then
-		slot0._click:RemoveClickListener()
+	if arg_17_0._click then
+		arg_17_0._click:RemoveClickListener()
 	end
 
-	uv0.super.destroy(slot0)
+	var_0_0.super.destroy(arg_17_0)
 end
 
-return slot0
+return var_0_0

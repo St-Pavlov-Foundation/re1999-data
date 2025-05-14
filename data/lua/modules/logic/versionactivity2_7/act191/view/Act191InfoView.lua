@@ -1,220 +1,257 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191InfoView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191InfoView", package.seeall)
 
-slot0 = class("Act191InfoView", BaseView)
+local var_0_0 = class("Act191InfoView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._goroleitem = gohelper.findChild(slot0.viewGO, "right/scroll_rule/Viewport/go_content/role/#go_roleitem")
-	slot0._gocollectionitem = gohelper.findChild(slot0.viewGO, "right/scroll_rule/Viewport/go_content/collection/#go_collectionitem")
-	slot0._gobuffitem = gohelper.findChild(slot0.viewGO, "right/scroll_rule/Viewport/go_content/buff/#go_buffitem")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._goroleitem = gohelper.findChild(arg_1_0.viewGO, "right/scroll_rule/Viewport/go_content/role/#go_roleitem")
+	arg_1_0._gocollectionitem = gohelper.findChild(arg_1_0.viewGO, "right/scroll_rule/Viewport/go_content/collection/#go_collectionitem")
+	arg_1_0._gobuffitem = gohelper.findChild(arg_1_0.viewGO, "right/scroll_rule/Viewport/go_content/buff/#go_buffitem")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_topleft")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0.onClickModalMask(slot0)
-	if slot0.openViewName then
-		slot0:closeTipView()
+function var_0_0.onClickModalMask(arg_4_0)
+	if arg_4_0.openViewName then
+		arg_4_0:closeTipView()
 
 		return
 	end
 
-	slot0:closeThis()
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	slot0.anim = gohelper.findChild(slot0.viewGO, "right"):GetComponent(gohelper.Type_Animator)
-	slot0._txtRule2 = gohelper.findChildText(slot0.viewGO, "right/simage_rightbg/txt_rule2")
-	slot0.rightTr = gohelper.findChild(slot0.viewGO, "right").transform
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.anim = gohelper.findChild(arg_5_0.viewGO, "right"):GetComponent(gohelper.Type_Animator)
+	arg_5_0._txtRule2 = gohelper.findChildText(arg_5_0.viewGO, "right/simage_rightbg/txt_rule2")
+	arg_5_0.rightTr = gohelper.findChild(arg_5_0.viewGO, "right").transform
 end
 
-function slot0.onOpen(slot0)
-	Act191StatController.instance:onViewOpen(slot0.viewName)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, slot0.onViewClose, slot0)
+function var_0_0.onOpen(arg_6_0)
+	Act191StatController.instance:onViewOpen(arg_6_0.viewName)
+	arg_6_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_6_0.onViewClose, arg_6_0)
 
-	slot0.actId = Activity191Model.instance:getCurActId()
-	slot0.actInfo = Activity191Model.instance:getActInfo()
+	arg_6_0.actId = Activity191Model.instance:getCurActId()
+	arg_6_0.actInfo = Activity191Model.instance:getActInfo()
 
-	slot0:initCharacterItem()
-	slot0:initCollectionItem()
-	slot0:initBuffItem()
+	arg_6_0:initCharacterItem()
+	arg_6_0:initCollectionItem()
+	arg_6_0:initBuffItem()
 end
 
-function slot0.onClose(slot0)
-	slot0:closeTipView()
+function var_0_0.onClose(arg_7_0)
+	arg_7_0:closeTipView()
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_mln_unlock)
-	Act191StatController.instance:statViewClose(slot0.viewName, slot0.viewContainer:isManualClose())
+
+	local var_7_0 = arg_7_0.viewContainer:isManualClose()
+
+	Act191StatController.instance:statViewClose(arg_7_0.viewName, var_7_0)
 end
 
-function slot0.initCharacterItem(slot0)
-	slot0.characterItemList = {}
+function var_0_0.initCharacterItem(arg_8_0)
+	arg_8_0.characterItemList = {}
 
-	for slot5, slot6 in ipairs(Activity191Config.instance:getShowRoleCoList()) do
-		slot7 = slot0:getUserDataTb_()
-		slot7.config = slot6
-		slot8 = gohelper.cloneInPlace(slot0._goroleitem)
+	local var_8_0 = Activity191Config.instance:getShowRoleCoList()
 
-		slot0:addClickCb(gohelper.findButtonWithAudio(slot8), slot0.clickCharacterItem, slot0, slot5)
+	for iter_8_0, iter_8_1 in ipairs(var_8_0) do
+		local var_8_1 = arg_8_0:getUserDataTb_()
 
-		slot7.heroIcon = gohelper.findChildSingleImage(slot8, "heroicon")
-		slot7.goSelect = gohelper.findChild(slot8, "go_select")
+		var_8_1.config = iter_8_1
 
-		slot7.heroIcon:LoadImage(Activity191Helper.getHeadIconSmall(slot6))
-		UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot8, "rare"), "act174_roleframe_" .. tostring(slot6.quality))
+		local var_8_2 = gohelper.cloneInPlace(arg_8_0._goroleitem)
+		local var_8_3 = gohelper.findButtonWithAudio(var_8_2)
 
-		slot0.characterItemList[slot5] = slot7
+		arg_8_0:addClickCb(var_8_3, arg_8_0.clickCharacterItem, arg_8_0, iter_8_0)
+
+		local var_8_4 = gohelper.findChildImage(var_8_2, "rare")
+
+		var_8_1.heroIcon = gohelper.findChildSingleImage(var_8_2, "heroicon")
+		var_8_1.goSelect = gohelper.findChild(var_8_2, "go_select")
+
+		var_8_1.heroIcon:LoadImage(Activity191Helper.getHeadIconSmall(iter_8_1))
+		UISpriteSetMgr.instance:setAct174Sprite(var_8_4, "act174_roleframe_" .. tostring(iter_8_1.quality))
+
+		arg_8_0.characterItemList[iter_8_0] = var_8_1
 	end
 
-	gohelper.setActive(slot0._goroleitem, false)
+	gohelper.setActive(arg_8_0._goroleitem, false)
 end
 
-function slot0.clickCharacterItem(slot0, slot1)
-	if slot0.characterItemList[slot1] == slot0.selectItem then
-		slot0:closeTipView()
-		slot0:refreshSelect()
+function var_0_0.clickCharacterItem(arg_9_0, arg_9_1)
+	local var_9_0 = arg_9_0.characterItemList[arg_9_1]
+
+	if var_9_0 == arg_9_0.selectItem then
+		arg_9_0:closeTipView()
+		arg_9_0:refreshSelect()
 	else
-		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191HeroTipView then
-			ViewMgr.instance:closeView(slot0.openViewName, false, true)
+		if arg_9_0.openViewName and arg_9_0.openViewName ~= ViewName.Act191HeroTipView then
+			ViewMgr.instance:closeView(arg_9_0.openViewName, false, true)
 		end
 
-		slot0.openViewName = ViewName.Act191HeroTipView
+		arg_9_0.openViewName = ViewName.Act191HeroTipView
 
-		Activity191Controller.instance:openHeroTipView({
+		local var_9_1 = {
 			preview = true,
 			notShowBg = true,
 			heroList = {
-				slot2.config.id
+				var_9_0.config.id
 			},
-			pos = slot0.rightTr.position
-		})
-		slot0:refreshSelect(slot2)
+			pos = arg_9_0.rightTr.position
+		}
+
+		Activity191Controller.instance:openHeroTipView(var_9_1)
+		arg_9_0:refreshSelect(var_9_0)
 	end
 end
 
-function slot0.initCollectionItem(slot0)
-	slot0.collectionItemList = {}
-	slot1 = lua_activity191_collection.configList
+function var_0_0.initCollectionItem(arg_10_0)
+	arg_10_0.collectionItemList = {}
 
-	table.sort(slot1, function (slot0, slot1)
-		return slot0.rare < slot1.rare
+	local var_10_0 = lua_activity191_collection.configList
+
+	table.sort(var_10_0, function(arg_11_0, arg_11_1)
+		return arg_11_0.rare < arg_11_1.rare
 	end)
 
-	for slot5, slot6 in ipairs(slot1) do
-		slot7 = slot0:getUserDataTb_()
-		slot7.config = slot6
-		slot8 = gohelper.cloneInPlace(slot0._gocollectionitem)
+	for iter_10_0, iter_10_1 in ipairs(var_10_0) do
+		local var_10_1 = arg_10_0:getUserDataTb_()
 
-		slot0:addClickCb(gohelper.findButtonWithAudio(slot8), slot0.clickCollectionItem, slot0, slot5)
+		var_10_1.config = iter_10_1
 
-		slot7.collectionIcon = gohelper.findChildSingleImage(slot8, "collectionicon")
-		slot7.goSelect = gohelper.findChild(slot8, "go_select")
+		local var_10_2 = gohelper.cloneInPlace(arg_10_0._gocollectionitem)
+		local var_10_3 = gohelper.findButtonWithAudio(var_10_2)
 
-		UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot8, "rare"), "act174_propitembg_" .. slot6.rare)
-		slot7.collectionIcon:LoadImage(ResUrl.getRougeSingleBgCollection(slot6.icon))
+		arg_10_0:addClickCb(var_10_3, arg_10_0.clickCollectionItem, arg_10_0, iter_10_0)
 
-		slot0.collectionItemList[slot5] = slot7
+		local var_10_4 = gohelper.findChildImage(var_10_2, "rare")
+
+		var_10_1.collectionIcon = gohelper.findChildSingleImage(var_10_2, "collectionicon")
+		var_10_1.goSelect = gohelper.findChild(var_10_2, "go_select")
+
+		UISpriteSetMgr.instance:setAct174Sprite(var_10_4, "act174_propitembg_" .. iter_10_1.rare)
+		var_10_1.collectionIcon:LoadImage(ResUrl.getRougeSingleBgCollection(iter_10_1.icon))
+
+		arg_10_0.collectionItemList[iter_10_0] = var_10_1
 	end
 
-	gohelper.setActive(slot0._gocollectionitem, false)
+	gohelper.setActive(arg_10_0._gocollectionitem, false)
 end
 
-function slot0.clickCollectionItem(slot0, slot1)
-	if slot0.collectionItemList[slot1] == slot0.selectItem then
-		slot0:closeTipView()
-		slot0:refreshSelect()
+function var_0_0.clickCollectionItem(arg_12_0, arg_12_1)
+	local var_12_0 = arg_12_0.collectionItemList[arg_12_1]
+
+	if var_12_0 == arg_12_0.selectItem then
+		arg_12_0:closeTipView()
+		arg_12_0:refreshSelect()
 	else
-		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191CollectionTipView then
-			ViewMgr.instance:closeView(slot0.openViewName, false, true)
+		if arg_12_0.openViewName and arg_12_0.openViewName ~= ViewName.Act191CollectionTipView then
+			ViewMgr.instance:closeView(arg_12_0.openViewName, false, true)
 		end
 
-		slot0.openViewName = ViewName.Act191CollectionTipView
+		arg_12_0.openViewName = ViewName.Act191CollectionTipView
 
-		Activity191Controller.instance:openCollectionTipView({
+		local var_12_1 = {
 			notShowBg = true,
-			itemId = slot2.config.id,
-			pos = slot0.rightTr.position
-		})
-		slot0:refreshSelect(slot2)
+			itemId = var_12_0.config.id,
+			pos = arg_12_0.rightTr.position
+		}
+
+		Activity191Controller.instance:openCollectionTipView(var_12_1)
+		arg_12_0:refreshSelect(var_12_0)
 	end
 end
 
-function slot0.initBuffItem(slot0)
-	slot0.buffItemList = {}
+function var_0_0.initBuffItem(arg_13_0)
+	arg_13_0.buffItemList = {}
 
-	for slot5, slot6 in ipairs(lua_activity191_enhance.configList) do
-		slot7 = slot0:getUserDataTb_()
-		slot7.config = slot6
-		slot8 = gohelper.cloneInPlace(slot0._gobuffitem)
+	local var_13_0 = lua_activity191_enhance.configList
 
-		slot0:addClickCb(gohelper.findButtonWithAudio(slot8), slot0.clickBuffItem, slot0, slot5)
+	for iter_13_0, iter_13_1 in ipairs(var_13_0) do
+		local var_13_1 = arg_13_0:getUserDataTb_()
 
-		slot7.buffIcon = gohelper.findChildSingleImage(slot8, "bufficon")
+		var_13_1.config = iter_13_1
 
-		slot7.buffIcon:LoadImage(ResUrl.getAct174BuffIcon(slot6.icon))
+		local var_13_2 = gohelper.cloneInPlace(arg_13_0._gobuffitem)
+		local var_13_3 = gohelper.findButtonWithAudio(var_13_2)
 
-		slot7.goSelect = gohelper.findChild(slot8, "go_select")
+		arg_13_0:addClickCb(var_13_3, arg_13_0.clickBuffItem, arg_13_0, iter_13_0)
 
-		UISpriteSetMgr.instance:setAct174Sprite(gohelper.findChildImage(slot8, "rare"), "act174_propitembg_3")
+		local var_13_4 = gohelper.findChildImage(var_13_2, "rare")
 
-		slot0.buffItemList[slot5] = slot7
+		var_13_1.buffIcon = gohelper.findChildSingleImage(var_13_2, "bufficon")
+
+		var_13_1.buffIcon:LoadImage(ResUrl.getAct174BuffIcon(iter_13_1.icon))
+
+		var_13_1.goSelect = gohelper.findChild(var_13_2, "go_select")
+
+		UISpriteSetMgr.instance:setAct174Sprite(var_13_4, "act174_propitembg_3")
+
+		arg_13_0.buffItemList[iter_13_0] = var_13_1
 	end
 
-	gohelper.setActive(slot0._gobuffitem, false)
+	gohelper.setActive(arg_13_0._gobuffitem, false)
 end
 
-function slot0.clickBuffItem(slot0, slot1)
-	if slot0.buffItemList[slot1] == slot0.selectItem then
-		slot0:closeTipView()
-		slot0:refreshSelect()
+function var_0_0.clickBuffItem(arg_14_0, arg_14_1)
+	local var_14_0 = arg_14_0.buffItemList[arg_14_1]
+
+	if var_14_0 == arg_14_0.selectItem then
+		arg_14_0:closeTipView()
+		arg_14_0:refreshSelect()
 	else
-		if slot0.openViewName and slot0.openViewName ~= ViewName.Act191EnhanceTipView then
-			ViewMgr.instance:closeView(slot0.openViewName, false, true)
+		if arg_14_0.openViewName and arg_14_0.openViewName ~= ViewName.Act191EnhanceTipView then
+			ViewMgr.instance:closeView(arg_14_0.openViewName, false, true)
 		end
 
-		slot0.openViewName = ViewName.Act191EnhanceTipView
+		arg_14_0.openViewName = ViewName.Act191EnhanceTipView
 
-		Activity191Controller.instance:openEnhanceTipView({
+		local var_14_1 = {
 			notShowBg = true,
-			co = slot2.config,
-			pos = slot0.rightTr.position
-		})
-		slot0:refreshSelect(slot2)
+			co = var_14_0.config,
+			pos = arg_14_0.rightTr.position
+		}
+
+		Activity191Controller.instance:openEnhanceTipView(var_14_1)
+		arg_14_0:refreshSelect(var_14_0)
 	end
 end
 
-function slot0.refreshSelect(slot0, slot1)
-	if slot0.selectItem then
-		gohelper.setActive(slot0.selectItem.goSelect, false)
+function var_0_0.refreshSelect(arg_15_0, arg_15_1)
+	if arg_15_0.selectItem then
+		gohelper.setActive(arg_15_0.selectItem.goSelect, false)
 	end
 
-	if slot1 then
-		gohelper.setActive(slot1.goSelect, true)
+	if arg_15_1 then
+		gohelper.setActive(arg_15_1.goSelect, true)
 	end
 
-	slot0.selectItem = slot1
+	arg_15_0.selectItem = arg_15_1
 end
 
-function slot0.closeTipView(slot0)
-	if ViewMgr.instance:isOpen(slot0.openViewName) then
-		ViewMgr.instance:closeView(slot0.openViewName, false, true)
+function var_0_0.closeTipView(arg_16_0)
+	if ViewMgr.instance:isOpen(arg_16_0.openViewName) then
+		ViewMgr.instance:closeView(arg_16_0.openViewName, false, true)
 	end
 
-	slot0.openViewName = nil
+	arg_16_0.openViewName = nil
 end
 
-function slot0.onViewClose(slot0, slot1)
-	if slot0.openViewName == slot1 then
-		slot0:refreshSelect()
+function var_0_0.onViewClose(arg_17_0, arg_17_1)
+	if arg_17_0.openViewName == arg_17_1 then
+		arg_17_0:refreshSelect()
 
-		slot0.openViewName = nil
+		arg_17_0.openViewName = nil
 	end
 end
 
-return slot0
+return var_0_0

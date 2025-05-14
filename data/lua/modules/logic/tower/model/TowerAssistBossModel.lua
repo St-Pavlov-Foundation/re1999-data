@@ -1,127 +1,163 @@
-module("modules.logic.tower.model.TowerAssistBossModel", package.seeall)
+﻿module("modules.logic.tower.model.TowerAssistBossModel", package.seeall)
 
-slot0 = class("TowerAssistBossModel", BaseModel)
+local var_0_0 = class("TowerAssistBossModel", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0:reInit()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:reInit()
 end
 
-function slot0.reInit(slot0)
-	slot0.tempBossDict = {}
+function var_0_0.reInit(arg_2_0)
+	arg_2_0.tempBossDict = {}
 end
 
-function slot0.updateAssistBossInfo(slot0, slot1)
-	if not slot0:getById(slot1.id) then
-		slot3 = TowerAssistBossMo.New()
+function var_0_0.updateAssistBossInfo(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_1.id
+	local var_3_1 = arg_3_0:getById(var_3_0)
 
-		slot3:init(slot2)
-		slot0:addAtLast(slot3)
+	if not var_3_1 then
+		var_3_1 = TowerAssistBossMo.New()
+
+		var_3_1:init(var_3_0)
+		arg_3_0:addAtLast(var_3_1)
 	end
 
-	slot3:setTempState(false)
-	slot3:updateInfo(slot1)
+	var_3_1:setTempState(false)
+	var_3_1:updateInfo(arg_3_1)
 end
 
-function slot0.onTowerActiveTalent(slot0, slot1)
-	if slot0:getById(slot1.bossId) then
-		slot3:onTowerActiveTalent(slot1)
-	end
-end
+function var_0_0.onTowerActiveTalent(arg_4_0, arg_4_1)
+	local var_4_0 = arg_4_1.bossId
+	local var_4_1 = arg_4_0:getById(var_4_0)
 
-function slot0.onTowerResetTalent(slot0, slot1)
-	if slot0:getById(slot1.bossId) then
-		slot3:onTowerResetTalent(slot1)
-	end
-end
-
-function slot0.getBoss(slot0, slot1)
-	if not (slot0:getById(slot1) or slot0.tempBossDict[slot1]) then
-		slot2 = TowerAssistBossMo.New()
-
-		slot2:init(slot1)
-		slot2:initTalentIds()
-
-		slot0.tempBossDict[slot1] = slot2
-	end
-
-	return slot2
-end
-
-function slot0.onTowerRenameTalentPlan(slot0, slot1)
-	if slot0:getById(slot1.bossId) then
-		slot3:renameTalentPlan(slot1.planName)
+	if var_4_1 then
+		var_4_1:onTowerActiveTalent(arg_4_1)
 	end
 end
 
-function slot0.cleanTrialLevel(slot0)
-	for slot5, slot6 in ipairs(slot0:getList()) do
-		slot6:setTrialInfo(0, slot6.useTalentPlan)
+function var_0_0.onTowerResetTalent(arg_5_0, arg_5_1)
+	local var_5_0 = arg_5_1.bossId
+	local var_5_1 = arg_5_0:getById(var_5_0)
+
+	if var_5_1 then
+		var_5_1:onTowerResetTalent(arg_5_1)
 	end
 end
 
-function slot0.getLimitedTrialBossSaveKey(slot0, slot1)
-	return "TowerLimitedTrialBoss" .. TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower().towerId .. "_" .. slot1.id
+function var_0_0.getBoss(arg_6_0, arg_6_1)
+	local var_6_0 = arg_6_0:getById(arg_6_1) or arg_6_0.tempBossDict[arg_6_1]
+
+	if not var_6_0 then
+		var_6_0 = TowerAssistBossMo.New()
+
+		var_6_0:init(arg_6_1)
+		var_6_0:initTalentIds()
+
+		arg_6_0.tempBossDict[arg_6_1] = var_6_0
+	end
+
+	return var_6_0
 end
 
-function slot0.setLimitedTrialBossInfo(slot0, slot1)
-	slot1:setTrialInfo(tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)), slot0:getLimitedTrialBossLocalPlan(slot1))
-	slot1:refreshTalent()
+function var_0_0.onTowerRenameTalentPlan(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_1.bossId
+	local var_7_1 = arg_7_0:getById(var_7_0)
+
+	if var_7_1 then
+		var_7_1:renameTalentPlan(arg_7_1.planName)
+	end
 end
 
-function slot0.getLimitedTrialBossLocalPlan(slot0, slot1)
-	return TowerController.instance:getPlayerPrefs(slot0:getLimitedTrialBossSaveKey(slot1), TowerConfig.instance:getAllTalentPlanConfig(slot1.id)[1].planId)
+function var_0_0.cleanTrialLevel(arg_8_0)
+	local var_8_0 = arg_8_0:getList()
+
+	for iter_8_0, iter_8_1 in ipairs(var_8_0) do
+		iter_8_1:setTrialInfo(0, iter_8_1.useTalentPlan)
+	end
 end
 
-function slot0.getLimitedTrialBossTalentPlan(slot0, slot1)
-	slot2 = 0
-	slot5 = slot0:getBoss(HeroGroupModel.instance:getCurGroupMO() and slot3:getAssistBossId() or FightModel.instance.last_fightGroup.assistBossId)
+function var_0_0.getLimitedTrialBossSaveKey(arg_9_0, arg_9_1)
+	local var_9_0 = TowerTimeLimitLevelModel.instance:getCurOpenTimeLimitTower()
 
-	if slot1.towerType == TowerEnum.TowerType.Limited then
-		return slot5 and slot5.trialTalentPlan > 0 and slot5.level < tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)) and slot5.trialTalentPlan or 0
+	return "TowerLimitedTrialBoss" .. var_9_0.towerId .. "_" .. arg_9_1.id
+end
+
+function var_0_0.setLimitedTrialBossInfo(arg_10_0, arg_10_1)
+	local var_10_0 = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+	local var_10_1 = arg_10_0:getLimitedTrialBossLocalPlan(arg_10_1)
+
+	arg_10_1:setTrialInfo(var_10_0, var_10_1)
+	arg_10_1:refreshTalent()
+end
+
+function var_0_0.getLimitedTrialBossLocalPlan(arg_11_0, arg_11_1)
+	local var_11_0 = arg_11_0:getLimitedTrialBossSaveKey(arg_11_1)
+	local var_11_1 = TowerConfig.instance:getAllTalentPlanConfig(arg_11_1.id)[1].planId
+
+	return (TowerController.instance:getPlayerPrefs(var_11_0, var_11_1))
+end
+
+function var_0_0.getLimitedTrialBossTalentPlan(arg_12_0, arg_12_1)
+	local var_12_0 = 0
+	local var_12_1 = HeroGroupModel.instance:getCurGroupMO()
+	local var_12_2 = var_12_1 and var_12_1:getAssistBossId() or FightModel.instance.last_fightGroup.assistBossId
+	local var_12_3 = arg_12_0:getBoss(var_12_2)
+
+	if arg_12_1.towerType == TowerEnum.TowerType.Limited then
+		local var_12_4 = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+
+		var_12_0 = var_12_3 and var_12_3.trialTalentPlan > 0 and var_12_4 > var_12_3.level and var_12_3.trialTalentPlan or 0
+
+		return var_12_0
 	else
-		return slot5 and slot5.useTalentPlan or 0
+		return var_12_3 and var_12_3.useTalentPlan or 0
 	end
 
-	return slot2
+	return var_12_0
 end
 
-function slot0.getTempUnlockTrialBossMO(slot0, slot1)
-	if not slot1 or slot1 == 0 then
+function var_0_0.getTempUnlockTrialBossMO(arg_13_0, arg_13_1)
+	if not arg_13_1 or arg_13_1 == 0 then
 		return
 	end
 
-	if not slot0:getById(slot1) then
-		slot2 = slot0:buildTempUnlockTrialBossMO(slot1)
+	local var_13_0 = arg_13_0:getById(arg_13_1)
 
-		slot0:addAtLast(slot2)
+	if not var_13_0 then
+		var_13_0 = arg_13_0:buildTempUnlockTrialBossMO(arg_13_1)
 
-		return slot2
-	elseif slot2 and slot2:getTempState() then
-		return slot0:buildTempUnlockTrialBossMO(slot1, slot2)
+		arg_13_0:addAtLast(var_13_0)
+
+		return var_13_0
+	elseif var_13_0 and var_13_0:getTempState() then
+		return arg_13_0:buildTempUnlockTrialBossMO(arg_13_1, var_13_0)
 	end
 end
 
-function slot0.buildTempUnlockTrialBossMO(slot0, slot1, slot2)
-	slot3 = slot2 or TowerAssistBossMo.New()
+function var_0_0.buildTempUnlockTrialBossMO(arg_14_0, arg_14_1, arg_14_2)
+	local var_14_0 = arg_14_2 or TowerAssistBossMo.New()
 
-	slot3:init(slot1)
-	slot3:setTempState(true)
-	slot3:setTrialInfo(tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel)), slot0:getLimitedTrialBossLocalPlan({
-		id = slot1
-	}))
-	slot3:refreshTalent()
+	var_14_0:init(arg_14_1)
+	var_14_0:setTempState(true)
 
-	return slot3
+	local var_14_1 = tonumber(TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BalanceBossLevel))
+	local var_14_2 = arg_14_0:getLimitedTrialBossLocalPlan({
+		id = arg_14_1
+	})
+
+	var_14_0:setTrialInfo(var_14_1, var_14_2)
+	var_14_0:refreshTalent()
+
+	return var_14_0
 end
 
-function slot0.sortBossList(slot0, slot1)
-	if slot0.towerStartTime ~= slot1.towerStartTime then
-		return slot1.towerStartTime < slot0.towerStartTime
+function var_0_0.sortBossList(arg_15_0, arg_15_1)
+	if arg_15_0.towerStartTime ~= arg_15_1.towerStartTime then
+		return arg_15_0.towerStartTime > arg_15_1.towerStartTime
 	else
-		return slot0.towerId < slot1.towerId
+		return arg_15_0.towerId < arg_15_1.towerId
 	end
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

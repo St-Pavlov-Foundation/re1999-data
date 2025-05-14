@@ -1,21 +1,23 @@
-module("modules.logic.fight.system.work.FightWorkAct174UseCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkAct174UseCard", package.seeall)
 
-slot0 = class("FightWorkAct174UseCard", FightEffectBase)
+local var_0_0 = class("FightWorkAct174UseCard", FightEffectBase)
 
-function slot0.onConstructor(slot0)
-	slot0.skipAutoPlayData = true
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.skipAutoPlayData = true
 end
 
-function slot0.onStart(slot0)
-	slot0:com_registTimer(slot0._delayAfterPerformance, 5)
-	slot0:com_registFightEvent(FightEvent.PlayCardOver, slot0._onPlayCardOver)
+function var_0_0.onStart(arg_2_0)
+	local var_2_0 = arg_2_0.actEffectData.effectNum
+
+	arg_2_0:com_registTimer(arg_2_0._delayAfterPerformance, 5)
+	arg_2_0:com_registFightEvent(FightEvent.PlayCardOver, arg_2_0._onPlayCardOver)
 	FightViewPartVisible.set(false, true, true, false, false)
-	slot0:com_sendFightEvent(FightEvent.PlayHandCard, slot0.actEffectData.effectNum)
+	arg_2_0:com_sendFightEvent(FightEvent.PlayHandCard, var_2_0)
 end
 
-function slot0._onPlayCardOver(slot0)
-	slot0:com_sendFightEvent(FightEvent.RefreshHandCard)
-	slot0:onDone(true)
+function var_0_0._onPlayCardOver(arg_3_0)
+	arg_3_0:com_sendFightEvent(FightEvent.RefreshHandCard)
+	arg_3_0:onDone(true)
 end
 
-return slot0
+return var_0_0

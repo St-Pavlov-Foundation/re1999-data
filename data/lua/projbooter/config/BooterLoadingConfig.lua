@@ -1,12 +1,6 @@
-module("projbooter.config.BooterLoadingConfig", package.seeall)
+﻿module("projbooter.config.BooterLoadingConfig", package.seeall)
 
-function booterLoadingConfig()
-	return uv0
-end
-
-setGlobal("booterLoadingConfig", booterLoadingConfig)
-
-return {
+local var_0_0 = {
 	{
 		titleen = "The Storm",
 		bg = "originbg1",
@@ -61,10 +55,14 @@ return {
 		id = 7,
 		title = "芝诺军备学院",
 		weight = 100,
-		desc = [[
-服从，坚定，从不退怯。
-以优补优，主张融合神秘学界武装力量与人类社会武装力量的组织。
-作为鸽子屋的常备军队活动于世界各地，同时担负着筛选与培育下一代战斗力量的责任。
-在《视界线公约》签署后陆续与各国签订引渡条约，接收来自于不同国家的适龄儿童，进行系统战术训练。]]
+		desc = "服从，坚定，从不退怯。\n以优补优，主张融合神秘学界武装力量与人类社会武装力量的组织。\n作为鸽子屋的常备军队活动于世界各地，同时担负着筛选与培育下一代战斗力量的责任。\n在《视界线公约》签署后陆续与各国签订引渡条约，接收来自于不同国家的适龄儿童，进行系统战术训练。"
 	}
 }
+
+function booterLoadingConfig()
+	return var_0_0
+end
+
+setGlobal("booterLoadingConfig", booterLoadingConfig)
+
+return var_0_0

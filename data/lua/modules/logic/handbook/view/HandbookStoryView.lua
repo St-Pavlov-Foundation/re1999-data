@@ -1,257 +1,285 @@
-module("modules.logic.handbook.view.HandbookStoryView", package.seeall)
+﻿module("modules.logic.handbook.view.HandbookStoryView", package.seeall)
 
-slot0 = class("HandbookStoryView", BaseView)
+local var_0_0 = class("HandbookStoryView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._simagebg = gohelper.findChildSingleImage(slot0.viewGO, "#simage_bg")
-	slot0._goline = gohelper.findChild(slot0.viewGO, "#scroll_storylist/viewport/content/linelayout/#go_line")
-	slot0._btnswitch = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_switch")
-	slot0._gochapteritem = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content/#go_chapteritem")
-	slot0._scrollchapterlist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_chapterlist")
-	slot0._transcontentchapterlist = gohelper.findChild(slot0.viewGO, "#scroll_chapterlist/viewport/content").transform
-	slot0._scrollstorylist = gohelper.findChildScrollRect(slot0.viewGO, "#scroll_storylist")
-	slot0._anim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simagebg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_bg")
+	arg_1_0._goline = gohelper.findChild(arg_1_0.viewGO, "#scroll_storylist/viewport/content/linelayout/#go_line")
+	arg_1_0._btnswitch = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_switch")
+	arg_1_0._gochapteritem = gohelper.findChild(arg_1_0.viewGO, "#scroll_chapterlist/viewport/content/#go_chapteritem")
+	arg_1_0._scrollchapterlist = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_chapterlist")
+	arg_1_0._transcontentchapterlist = gohelper.findChild(arg_1_0.viewGO, "#scroll_chapterlist/viewport/content").transform
+	arg_1_0._scrollstorylist = gohelper.findChildScrollRect(arg_1_0.viewGO, "#scroll_storylist")
+	arg_1_0._anim = arg_1_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnswitch:AddClickListener(slot0._btnswitchOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnswitch:AddClickListener(arg_2_0._btnswitchOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnswitch:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnswitch:RemoveClickListener()
 end
 
-function slot0._btnswitchOnClick(slot0)
+function var_0_0._btnswitchOnClick(arg_4_0)
 	HandbookController.instance:openCGView()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._goStoryListContent = gohelper.findChild(slot0.viewGO, "#scroll_storylist/viewport/content")
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0._goStoryListContent = gohelper.findChild(arg_5_0.viewGO, "#scroll_storylist/viewport/content")
 
-	gohelper.setActive(slot0._gochapteritem, false)
+	gohelper.setActive(arg_5_0._gochapteritem, false)
 
-	slot0._chapterItemList = {}
-	slot0._storyItemList = slot0:getUserDataTb_()
-	slot0._delayStoryAnimList = slot0:getUserDataTb_()
+	arg_5_0._chapterItemList = {}
+	arg_5_0._storyItemList = arg_5_0:getUserDataTb_()
+	arg_5_0._delayStoryAnimList = arg_5_0:getUserDataTb_()
 
-	gohelper.setActive(slot0._goline.gameObject, false)
+	gohelper.setActive(arg_5_0._goline.gameObject, false)
 
-	slot0._lineSingleImageList = slot0:getUserDataTb_()
-	slot0._lineAnimList = slot0:getUserDataTb_()
+	arg_5_0._lineSingleImageList = arg_5_0:getUserDataTb_()
+	arg_5_0._lineAnimList = arg_5_0:getUserDataTb_()
 
-	slot0._simagebg:LoadImage(ResUrl.getStoryBg("story_bg/bg/huashengdunguangchang.jpg"))
+	arg_5_0._simagebg:LoadImage(ResUrl.getStoryBg("story_bg/bg/huashengdunguangchang.jpg"))
 
-	slot0.itemPrefab = slot0:_getStoryItemPrefab()
+	arg_5_0.itemPrefab = arg_5_0:_getStoryItemPrefab()
 
-	gohelper.addUIClickAudio(slot0._btnswitch.gameObject, AudioEnum.UI.play_ui_screenplay_plot_switch)
+	gohelper.addUIClickAudio(arg_5_0._btnswitch.gameObject, AudioEnum.UI.play_ui_screenplay_plot_switch)
 end
 
-function slot0.onOpen(slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, slot0._onOpenViewFinish, slot0)
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, arg_6_0._onOpenViewFinish, arg_6_0)
 
-	slot0._playLineAnim = true
+	arg_6_0._playLineAnim = true
 
-	slot0:_refreshUI()
+	arg_6_0:_refreshUI()
 
-	if slot0.viewParam then
-		slot0._selectChapter = slot0.viewParam
+	if arg_6_0.viewParam then
+		arg_6_0._selectChapter = arg_6_0.viewParam
 
-		slot0:_openselectItem()
-		slot0:_focusItem()
+		arg_6_0:_openselectItem()
+		arg_6_0:_focusItem()
 	end
 end
 
-function slot0._openselectItem(slot0)
-	slot0:_btnclickOnClick(slot0._chapterItemList[slot0._selectChapter])
+function var_0_0._openselectItem(arg_7_0)
+	local var_7_0 = arg_7_0._chapterItemList[arg_7_0._selectChapter]
+
+	arg_7_0:_btnclickOnClick(var_7_0)
 end
 
-function slot0._focusItem(slot0)
-	slot3 = 120
+function var_0_0._focusItem(arg_8_0)
+	local var_8_0 = recthelper.getHeight(arg_8_0._scrollchapterlist.transform)
+	local var_8_1 = 150
+	local var_8_2 = 120
+	local var_8_3 = (#arg_8_0._chapterItemList - 1) * var_8_2 + var_8_1 - var_8_0
 
-	if (#slot0._chapterItemList - 1) * slot3 + 150 - recthelper.getHeight(slot0._scrollchapterlist.transform) >= (slot0._selectChapter - 1) * slot3 then
-		recthelper.setAnchorY(slot0._transcontentchapterlist, (slot0._selectChapter - 1) * slot3)
+	if var_8_3 >= (arg_8_0._selectChapter - 1) * var_8_2 then
+		recthelper.setAnchorY(arg_8_0._transcontentchapterlist, (arg_8_0._selectChapter - 1) * var_8_2)
 	else
-		recthelper.setAnchorY(slot0._transcontentchapterlist, slot6)
+		recthelper.setAnchorY(arg_8_0._transcontentchapterlist, var_8_3)
 	end
 end
 
-function slot0._getStoryItemPrefab(slot0)
-	slot1 = ViewMgr.instance:getContainer(ViewName.HandbookStoryView)
+function var_0_0._getStoryItemPrefab(arg_9_0)
+	local var_9_0 = ViewMgr.instance:getContainer(ViewName.HandbookStoryView)
+	local var_9_1 = var_9_0:getSetting().otherRes[1]
 
-	return slot1._abLoader:getAssetItem(slot1:getSetting().otherRes[1]):GetResource()
+	return (var_9_0._abLoader:getAssetItem(var_9_1):GetResource())
 end
 
-function slot0.onOpenFinish(slot0)
-	slot0._anim.enabled = true
+function var_0_0.onOpenFinish(arg_10_0)
+	arg_10_0._anim.enabled = true
 end
 
-function slot0._onOpenViewFinish(slot0, slot1)
-	if slot1 == ViewName.HandbookCGView then
+function var_0_0._onOpenViewFinish(arg_11_0, arg_11_1)
+	if arg_11_1 == ViewName.HandbookCGView then
 		ViewMgr.instance:closeView(ViewName.HandbookStoryView, true)
 	end
 end
 
-function slot0._refreshLine(slot0, slot1)
-	for slot8 = 1, math.ceil((170 + slot1 * 480 - 58 * (slot1 - 1)) / recthelper.getWidth(slot0._goline.transform)) do
-		if not slot0._lineSingleImageList[slot8] then
-			slot10 = gohelper.cloneInPlace(slot0._goline, "item" .. slot8)
-			slot9 = gohelper.getSingleImage(slot10)
+function var_0_0._refreshLine(arg_12_0, arg_12_1)
+	local var_12_0 = 170 + arg_12_1 * 480 - 58 * (arg_12_1 - 1)
+	local var_12_1 = recthelper.getWidth(arg_12_0._goline.transform)
+	local var_12_2 = math.ceil(var_12_0 / var_12_1)
 
-			slot9:LoadImage(ResUrl.getHandbookBg("bg_timeline"))
-			table.insert(slot0._lineSingleImageList, slot9)
-			table.insert(slot0._lineAnimList, slot10:GetComponent(typeof(UnityEngine.Animation)))
+	for iter_12_0 = 1, var_12_2 do
+		local var_12_3 = arg_12_0._lineSingleImageList[iter_12_0]
+
+		if not var_12_3 then
+			local var_12_4 = gohelper.cloneInPlace(arg_12_0._goline, "item" .. iter_12_0)
+			local var_12_5 = var_12_4:GetComponent(typeof(UnityEngine.Animation))
+
+			var_12_3 = gohelper.getSingleImage(var_12_4)
+
+			var_12_3:LoadImage(ResUrl.getHandbookBg("bg_timeline"))
+			table.insert(arg_12_0._lineSingleImageList, var_12_3)
+			table.insert(arg_12_0._lineAnimList, var_12_5)
 		end
 
-		gohelper.setActive(slot9.gameObject, true)
+		gohelper.setActive(var_12_3.gameObject, true)
 
-		if slot0._playLineAnim then
-			slot0._lineAnimList[slot8]:Play()
+		if arg_12_0._playLineAnim then
+			arg_12_0._lineAnimList[iter_12_0]:Play()
 
-			slot0._playLineAnim = false
+			arg_12_0._playLineAnim = false
 		end
 	end
 
-	for slot8 = slot4 + 1, #slot0._lineSingleImageList do
-		gohelper.setActive(slot0._lineSingleImageList[slot8].gameObject, false)
-		slot0._lineAnimList[slot8]:Stop()
+	for iter_12_1 = var_12_2 + 1, #arg_12_0._lineSingleImageList do
+		local var_12_6 = arg_12_0._lineSingleImageList[iter_12_1]
+
+		gohelper.setActive(var_12_6.gameObject, false)
+		arg_12_0._lineAnimList[iter_12_1]:Stop()
 	end
 end
 
-function slot0._refreshUI(slot0)
-	slot1 = {}
+function var_0_0._refreshUI(arg_13_0)
+	local var_13_0 = {}
+	local var_13_1 = HandbookConfig.instance:getStoryChapterList()
 
-	for slot6, slot7 in pairs(HandbookConfig.instance:getStoryChapterList()) do
-		if HandbookModel.instance:getStoryGroupUnlockCount(slot7.id) > 0 then
-			table.insert(slot1, slot7.id)
+	for iter_13_0, iter_13_1 in pairs(var_13_1) do
+		if HandbookModel.instance:getStoryGroupUnlockCount(iter_13_1.id) > 0 then
+			table.insert(var_13_0, iter_13_1.id)
 		end
 	end
 
-	for slot6 = 1, #slot1 do
-		slot7 = slot1[slot6]
+	for iter_13_2 = 1, #var_13_0 do
+		local var_13_2 = var_13_0[iter_13_2]
+		local var_13_3 = arg_13_0._chapterItemList[iter_13_2]
 
-		if not slot0._chapterItemList[slot6] then
-			slot8 = slot0:getUserDataTb_()
-			slot8.go = gohelper.cloneInPlace(slot0._gochapteritem, "item" .. slot6)
-			slot8.gobeselected = gohelper.findChild(slot8.go, "beselected")
-			slot8.gounselected = gohelper.findChild(slot8.go, "unselected")
-			slot8.chapternamecn1 = gohelper.findChildText(slot8.go, "beselected/chapternamecn")
-			slot8.chapternameen1 = gohelper.findChildText(slot8.go, "beselected/chapternameen")
-			slot8.chapternamecn2 = gohelper.findChildText(slot8.go, "unselected/chapternamecn")
-			slot8.chapternameen2 = gohelper.findChildText(slot8.go, "unselected/chapternameen")
-			slot8.btnclick = gohelper.findChildButtonWithAudio(slot8.go, "btnclick", AudioEnum.UI.Play_UI_Universal_Click)
+		if not var_13_3 then
+			var_13_3 = arg_13_0:getUserDataTb_()
+			var_13_3.go = gohelper.cloneInPlace(arg_13_0._gochapteritem, "item" .. iter_13_2)
+			var_13_3.gobeselected = gohelper.findChild(var_13_3.go, "beselected")
+			var_13_3.gounselected = gohelper.findChild(var_13_3.go, "unselected")
+			var_13_3.chapternamecn1 = gohelper.findChildText(var_13_3.go, "beselected/chapternamecn")
+			var_13_3.chapternameen1 = gohelper.findChildText(var_13_3.go, "beselected/chapternameen")
+			var_13_3.chapternamecn2 = gohelper.findChildText(var_13_3.go, "unselected/chapternamecn")
+			var_13_3.chapternameen2 = gohelper.findChildText(var_13_3.go, "unselected/chapternameen")
+			var_13_3.btnclick = gohelper.findChildButtonWithAudio(var_13_3.go, "btnclick", AudioEnum.UI.Play_UI_Universal_Click)
 
-			slot8.btnclick:AddClickListener(slot0._btnclickOnClick, slot0, slot8)
-			table.insert(slot0._chapterItemList, slot8)
+			var_13_3.btnclick:AddClickListener(arg_13_0._btnclickOnClick, arg_13_0, var_13_3)
+			table.insert(arg_13_0._chapterItemList, var_13_3)
 		end
 
-		slot8.storyChapterId = slot7
-		slot9 = HandbookConfig.instance:getStoryChapterConfig(slot7)
-		slot8.chapternamecn1.text = slot9.name
-		slot8.chapternamecn2.text = slot9.name
-		slot8.chapternameen1.text = slot9.nameEn
-		slot8.chapternameen2.text = slot9.nameEn
+		var_13_3.storyChapterId = var_13_2
 
-		gohelper.setActive(slot8.go, true)
+		local var_13_4 = HandbookConfig.instance:getStoryChapterConfig(var_13_2)
+
+		var_13_3.chapternamecn1.text = var_13_4.name
+		var_13_3.chapternamecn2.text = var_13_4.name
+		var_13_3.chapternameen1.text = var_13_4.nameEn
+		var_13_3.chapternameen2.text = var_13_4.nameEn
+
+		gohelper.setActive(var_13_3.go, true)
 	end
 
-	for slot6 = #slot1 + 1, #slot0._chapterItemList do
-		gohelper.setActive(slot0._chapterItemList[slot6].go, false)
+	for iter_13_3 = #var_13_0 + 1, #arg_13_0._chapterItemList do
+		local var_13_5 = arg_13_0._chapterItemList[iter_13_3]
+
+		gohelper.setActive(var_13_5.go, false)
 	end
 
-	if #slot0._chapterItemList > 0 then
-		slot0:_btnclickOnClick(slot0._chapterItemList[1])
+	if #arg_13_0._chapterItemList > 0 then
+		arg_13_0:_btnclickOnClick(arg_13_0._chapterItemList[1])
 	else
 		HandbookStoryListModel.instance:clearStoryList()
 	end
 end
 
-function slot0._btnclickOnClick(slot0, slot1)
-	slot7 = slot1.storyChapterId
+function var_0_0._btnclickOnClick(arg_14_0, arg_14_1)
+	local var_14_0 = arg_14_1.storyChapterId
+	local var_14_1 = HandbookConfig.instance:getStoryGroupList()
 
-	HandbookStoryListModel.instance:setStoryList(HandbookConfig.instance:getStoryGroupList(), slot7)
+	HandbookStoryListModel.instance:setStoryList(var_14_1, var_14_0)
 
-	for slot7, slot8 in ipairs(slot0._chapterItemList) do
-		gohelper.setActive(slot8.gobeselected, slot2 == slot8.storyChapterId)
-		gohelper.setActive(slot8.gounselected, slot2 ~= slot8.storyChapterId)
+	for iter_14_0, iter_14_1 in ipairs(arg_14_0._chapterItemList) do
+		gohelper.setActive(iter_14_1.gobeselected, var_14_0 == iter_14_1.storyChapterId)
+		gohelper.setActive(iter_14_1.gounselected, var_14_0 ~= iter_14_1.storyChapterId)
 	end
 
-	slot0:_refreshLine(HandbookModel.instance:getStoryGroupUnlockCount(slot2))
+	local var_14_2 = HandbookModel.instance:getStoryGroupUnlockCount(var_14_0)
 
-	slot0._scrollstorylist.horizontalNormalizedPosition = 0
+	arg_14_0:_refreshLine(var_14_2)
 
-	slot0:_cloneStoryItem()
+	arg_14_0._scrollstorylist.horizontalNormalizedPosition = 0
+
+	arg_14_0:_cloneStoryItem()
 end
 
-function slot0._cloneStoryItem(slot0)
-	slot0:_stopStoryItemEnterAnim()
+function var_0_0._cloneStoryItem(arg_15_0)
+	arg_15_0:_stopStoryItemEnterAnim()
 
-	slot1 = HandbookStoryListModel.instance:getStoryList()
-	slot0.storyItemMoList = slot1
+	local var_15_0 = HandbookStoryListModel.instance:getStoryList()
 
-	for slot5, slot6 in ipairs(slot1) do
-		if not slot0._storyItemList[slot5] then
-			slot7 = {
-				go = gohelper.clone(slot0.itemPrefab, slot0._goStoryListContent, "item" .. slot5)
+	arg_15_0.storyItemMoList = var_15_0
+
+	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
+		local var_15_1 = arg_15_0._storyItemList[iter_15_0]
+
+		if not var_15_1 then
+			var_15_1 = {
+				go = gohelper.clone(arg_15_0.itemPrefab, arg_15_0._goStoryListContent, "item" .. iter_15_0)
 			}
-			slot7.anim = slot7.go:GetComponent(typeof(UnityEngine.Animator))
-			slot7.item = MonoHelper.addNoUpdateLuaComOnceToGo(slot7.go, HandbookStoryItem, slot0)
-			slot7.anim.enabled = false
+			var_15_1.anim = var_15_1.go:GetComponent(typeof(UnityEngine.Animator))
+			var_15_1.item = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_1.go, HandbookStoryItem, arg_15_0)
+			var_15_1.anim.enabled = false
 
-			table.insert(slot0._storyItemList, slot7)
+			table.insert(arg_15_0._storyItemList, var_15_1)
 		end
 
-		gohelper.setActive(slot7.go, false)
-		slot7.item:onInitView(slot7.go)
-		slot7.item:onUpdateMO(slot6)
+		gohelper.setActive(var_15_1.go, false)
+		var_15_1.item:onInitView(var_15_1.go)
+		var_15_1.item:onUpdateMO(iter_15_1)
 	end
 
-	slot0.playedAnimIndex = 0
+	arg_15_0.playedAnimIndex = 0
 
-	slot0:_showStoryItemEnterAnim()
+	arg_15_0:_showStoryItemEnterAnim()
 end
 
-function slot0._stopStoryItemEnterAnim(slot0)
-	TaskDispatcher.cancelTask(slot0._showStoryItemEnterAnim, slot0)
+function var_0_0._stopStoryItemEnterAnim(arg_16_0)
+	TaskDispatcher.cancelTask(arg_16_0._showStoryItemEnterAnim, arg_16_0)
 
-	for slot4, slot5 in ipairs(slot0._storyItemList) do
-		slot5.anim.enabled = false
+	for iter_16_0, iter_16_1 in ipairs(arg_16_0._storyItemList) do
+		iter_16_1.anim.enabled = false
 
-		gohelper.setActive(slot5.go, false)
+		gohelper.setActive(iter_16_1.go, false)
 	end
 end
 
-function slot0._showStoryItemEnterAnim(slot0)
-	if slot0.playedAnimIndex >= #slot0.storyItemMoList then
+function var_0_0._showStoryItemEnterAnim(arg_17_0)
+	if arg_17_0.playedAnimIndex >= #arg_17_0.storyItemMoList then
 		return
 	end
 
-	slot0.playedAnimIndex = slot0.playedAnimIndex + 1
+	arg_17_0.playedAnimIndex = arg_17_0.playedAnimIndex + 1
 
-	gohelper.setActive(slot0._storyItemList[slot0.playedAnimIndex].go, true)
+	gohelper.setActive(arg_17_0._storyItemList[arg_17_0.playedAnimIndex].go, true)
 
-	slot0._storyItemList[slot0.playedAnimIndex].anim.enabled = true
+	arg_17_0._storyItemList[arg_17_0.playedAnimIndex].anim.enabled = true
 
-	TaskDispatcher.runDelay(slot0._showStoryItemEnterAnim, slot0, 0.03)
+	TaskDispatcher.runDelay(arg_17_0._showStoryItemEnterAnim, arg_17_0, 0.03)
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0._showStoryItemEnterAnim, slot0)
+function var_0_0.onClose(arg_18_0)
+	TaskDispatcher.cancelTask(arg_18_0._showStoryItemEnterAnim, arg_18_0)
 end
 
-function slot0.onDestroyView(slot0)
-	for slot4, slot5 in ipairs(slot0._lineSingleImageList) do
-		slot5:UnLoadImage()
+function var_0_0.onDestroyView(arg_19_0)
+	for iter_19_0, iter_19_1 in ipairs(arg_19_0._lineSingleImageList) do
+		iter_19_1:UnLoadImage()
 	end
 
-	for slot4, slot5 in ipairs(slot0._chapterItemList) do
-		slot5.btnclick:RemoveClickListener()
+	for iter_19_2, iter_19_3 in ipairs(arg_19_0._chapterItemList) do
+		iter_19_3.btnclick:RemoveClickListener()
 	end
 
-	slot0._simagebg:UnLoadImage()
+	arg_19_0._simagebg:UnLoadImage()
 end
 
-return slot0
+return var_0_0

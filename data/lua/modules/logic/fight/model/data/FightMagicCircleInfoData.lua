@@ -1,13 +1,13 @@
-module("modules.logic.fight.model.data.FightMagicCircleInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightMagicCircleInfoData", package.seeall)
 
-slot0 = FightDataClass("FightMagicCircleInfoData")
+local var_0_0 = FightDataClass("FightMagicCircleInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.magicCircleId = slot1.magicCircleId
-	slot0.round = slot1.round
-	slot0.createUid = slot1.createUid
-	slot0.electricLevel = slot1.electricLevel
-	slot0.electricProgress = slot1.electricProgress
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.magicCircleId = arg_1_1.magicCircleId
+	arg_1_0.round = arg_1_1.round
+	arg_1_0.createUid = arg_1_1.createUid
+	arg_1_0.electricLevel = arg_1_1.electricLevel
+	arg_1_0.electricProgress = arg_1_1.electricProgress
 end
 
-return slot0
+return var_0_0

@@ -1,176 +1,211 @@
-module("modules.logic.weekwalk_2.rpc.Weekwalk_2Rpc", package.seeall)
+﻿module("modules.logic.weekwalk_2.rpc.Weekwalk_2Rpc", package.seeall)
 
-slot0 = class("Weekwalk_2Rpc", BaseRpc)
+local var_0_0 = class("Weekwalk_2Rpc", BaseRpc)
 
-function slot0.sendWeekwalkVer2GetInfoRequest(slot0, slot1, slot2)
-	return slot0:sendMsg(WeekwalkVer2Module_pb.WeekwalkVer2GetInfoRequest(), slot1, slot2)
+function var_0_0.sendWeekwalkVer2GetInfoRequest(arg_1_0, arg_1_1, arg_1_2)
+	local var_1_0 = WeekwalkVer2Module_pb.WeekwalkVer2GetInfoRequest()
+
+	return arg_1_0:sendMsg(var_1_0, arg_1_1, arg_1_2)
 end
 
-function slot0.onReceiveWeekwalkVer2GetInfoReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2GetInfoReply(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_1 ~= 0 then
 		return
 	end
 
-	WeekWalk_2Model.instance:initInfo(slot2.info)
+	local var_2_0 = arg_2_2.info
+
+	WeekWalk_2Model.instance:initInfo(var_2_0)
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnGetInfo)
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnWeekwalkInfoChange)
 end
 
-function slot0.sendWeekwalkVer2HeroRecommendRequest(slot0, slot1, slot2, slot3, slot4)
-	slot5 = WeekwalkVer2Module_pb.WeekwalkVer2HeroRecommendRequest()
-	slot5.elementId = slot1
-	slot5.layerId = slot2
+function var_0_0.sendWeekwalkVer2HeroRecommendRequest(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
+	local var_3_0 = WeekwalkVer2Module_pb.WeekwalkVer2HeroRecommendRequest()
 
-	slot0:sendMsg(slot5, slot3, slot4)
+	var_3_0.elementId = arg_3_1
+	var_3_0.layerId = arg_3_2
+
+	arg_3_0:sendMsg(var_3_0, arg_3_3, arg_3_4)
 end
 
-function slot0.onReceiveWeekwalkVer2HeroRecommendReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2HeroRecommendReply(arg_4_0, arg_4_1, arg_4_2)
+	if arg_4_1 ~= 0 then
 		return
 	end
 
-	slot3 = slot2.racommends
+	local var_4_0 = arg_4_2.racommends
 end
 
-function slot0.sendWeekwalkVer2ResetLayerRequest(slot0, slot1, slot2, slot3, slot4)
-	slot5 = WeekwalkVer2Module_pb.WeekwalkVer2ResetLayerRequest()
-	slot5.layerId = slot1
-	slot5.battleId = slot2
+function var_0_0.sendWeekwalkVer2ResetLayerRequest(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)
+	local var_5_0 = WeekwalkVer2Module_pb.WeekwalkVer2ResetLayerRequest()
 
-	slot0:sendMsg(slot5, slot3, slot4)
+	var_5_0.layerId = arg_5_1
+	var_5_0.battleId = arg_5_2
+
+	arg_5_0:sendMsg(var_5_0, arg_5_3, arg_5_4)
 end
 
-function slot0.onReceiveWeekwalkVer2ResetLayerReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2ResetLayerReply(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_1 ~= 0 then
 		return
 	end
 
-	WeekWalk_2Model.instance:getInfo():setLayerInfo(slot2.layerInfo)
+	local var_6_0 = arg_6_2.layerInfo
+
+	WeekWalk_2Model.instance:getInfo():setLayerInfo(var_6_0)
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnWeekwalkResetLayer)
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnWeekwalkInfoChange)
 	GameFacade.showToast(ToastEnum.WeekwalkResetLayer)
 end
 
-function slot0.sendWeekwalkVer2ChangeHeroGroupSelectRequest(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot6 = WeekwalkVer2Module_pb.WeekwalkVer2ChangeHeroGroupSelectRequest()
-	slot6.layerId = slot1
-	slot6.battleId = slot2
-	slot6.select = slot3
+function var_0_0.sendWeekwalkVer2ChangeHeroGroupSelectRequest(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4, arg_7_5)
+	local var_7_0 = WeekwalkVer2Module_pb.WeekwalkVer2ChangeHeroGroupSelectRequest()
 
-	slot0:sendMsg(slot6, slot4, slot5)
+	var_7_0.layerId = arg_7_1
+	var_7_0.battleId = arg_7_2
+	var_7_0.select = arg_7_3
+
+	arg_7_0:sendMsg(var_7_0, arg_7_4, arg_7_5)
 end
 
-function slot0.onReceiveWeekwalkVer2ChangeHeroGroupSelectReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2ChangeHeroGroupSelectReply(arg_8_0, arg_8_1, arg_8_2)
+	if arg_8_1 ~= 0 then
 		return
 	end
 
-	if WeekWalk_2Model.instance:getBattleInfo(slot2.layerId, slot2.battleId) then
-		slot6.heroGroupSelect = slot2.select
+	local var_8_0 = arg_8_2.layerId
+	local var_8_1 = arg_8_2.battleId
+	local var_8_2 = arg_8_2.select
+	local var_8_3 = WeekWalk_2Model.instance:getBattleInfo(var_8_0, var_8_1)
+
+	if var_8_3 then
+		var_8_3.heroGroupSelect = var_8_2
 	end
 end
 
-function slot0.sendWeekwalkVer2ChooseSkillRequest(slot0, slot1, slot2, slot3, slot4)
-	WeekwalkVer2Module_pb.WeekwalkVer2ChooseSkillRequest().no = slot1
+function var_0_0.sendWeekwalkVer2ChooseSkillRequest(arg_9_0, arg_9_1, arg_9_2, arg_9_3, arg_9_4)
+	local var_9_0 = WeekwalkVer2Module_pb.WeekwalkVer2ChooseSkillRequest()
 
-	if slot2 then
-		for slot9, slot10 in ipairs(slot2) do
-			table.insert(slot5.skillIds, slot10)
+	var_9_0.no = arg_9_1
+
+	if arg_9_2 then
+		for iter_9_0, iter_9_1 in ipairs(arg_9_2) do
+			table.insert(var_9_0.skillIds, iter_9_1)
 		end
 	end
 
-	slot0:sendMsg(slot5, slot3, slot4)
+	arg_9_0:sendMsg(var_9_0, arg_9_3, arg_9_4)
 end
 
-function slot0.onReceiveWeekwalkVer2ChooseSkillReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2ChooseSkillReply(arg_10_0, arg_10_1, arg_10_2)
+	if arg_10_1 ~= 0 then
 		return
 	end
 
-	if WeekWalk_2Model.instance:getInfo() then
-		slot5:setHeroGroupSkill(slot2.no, slot2.skillIds)
+	local var_10_0 = arg_10_2.no
+	local var_10_1 = arg_10_2.skillIds
+	local var_10_2 = WeekWalk_2Model.instance:getInfo()
+
+	if var_10_2 then
+		var_10_2:setHeroGroupSkill(var_10_0, var_10_1)
 		WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnBuffSetupReply)
 	end
 end
 
-function slot0.sendWeekwalkVer2GetSettleInfoRequest(slot0, slot1, slot2)
-	slot0:sendMsg(WeekwalkVer2Module_pb.WeekwalkVer2GetSettleInfoRequest(), slot1, slot2)
+function var_0_0.sendWeekwalkVer2GetSettleInfoRequest(arg_11_0, arg_11_1, arg_11_2)
+	local var_11_0 = WeekwalkVer2Module_pb.WeekwalkVer2GetSettleInfoRequest()
+
+	arg_11_0:sendMsg(var_11_0, arg_11_1, arg_11_2)
 end
 
-function slot0.onReceiveWeekwalkVer2GetSettleInfoReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2GetSettleInfoReply(arg_12_0, arg_12_1, arg_12_2)
+	if arg_12_1 ~= 0 then
 		return
 	end
 
-	WeekWalk_2Model.instance:initSettleInfo(slot2.settleInfo)
+	local var_12_0 = arg_12_2.settleInfo
+
+	WeekWalk_2Model.instance:initSettleInfo(var_12_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2HeartResultView()
 end
 
-function slot0.sendWeekwalkVer2MarkPreSettleRequest(slot0, slot1, slot2)
-	slot0:sendMsg(WeekwalkVer2Module_pb.WeekwalkVer2MarkPreSettleRequest(), slot1, slot2)
+function var_0_0.sendWeekwalkVer2MarkPreSettleRequest(arg_13_0, arg_13_1, arg_13_2)
+	local var_13_0 = WeekwalkVer2Module_pb.WeekwalkVer2MarkPreSettleRequest()
+
+	arg_13_0:sendMsg(var_13_0, arg_13_1, arg_13_2)
 end
 
-function slot0.onReceiveWeekwalkVer2MarkPreSettleReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2MarkPreSettleReply(arg_14_0, arg_14_1, arg_14_2)
+	if arg_14_1 ~= 0 then
 		return
 	end
 end
 
-function slot0.sendWeekwalkVer2MarkPopRuleRequest(slot0, slot1, slot2)
-	slot0:sendMsg(WeekwalkVer2Module_pb.WeekwalkVer2MarkPopRuleRequest(), slot1, slot2)
+function var_0_0.sendWeekwalkVer2MarkPopRuleRequest(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0 = WeekwalkVer2Module_pb.WeekwalkVer2MarkPopRuleRequest()
+
+	arg_15_0:sendMsg(var_15_0, arg_15_1, arg_15_2)
 end
 
-function slot0.onReceiveWeekwalkVer2MarkPopRuleReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2MarkPopRuleReply(arg_16_0, arg_16_1, arg_16_2)
+	if arg_16_1 ~= 0 then
 		return
 	end
 end
 
-function slot0.sendWeekwalkVer2MarkShowFinishedRequest(slot0, slot1, slot2, slot3)
-	slot4 = WeekwalkVer2Module_pb.WeekwalkVer2MarkShowFinishedRequest()
-	slot4.layerId = slot1
+function var_0_0.sendWeekwalkVer2MarkShowFinishedRequest(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	local var_17_0 = WeekwalkVer2Module_pb.WeekwalkVer2MarkShowFinishedRequest()
 
-	slot0:sendMsg(slot4, slot2, slot3)
+	var_17_0.layerId = arg_17_1
+
+	arg_17_0:sendMsg(var_17_0, arg_17_2, arg_17_3)
 end
 
-function slot0.onReceiveWeekwalkVer2MarkShowFinishedReply(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2MarkShowFinishedReply(arg_18_0, arg_18_1, arg_18_2)
+	if arg_18_1 ~= 0 then
 		return
 	end
 
-	slot3 = slot2.layerId
+	local var_18_0 = arg_18_2.layerId
 end
 
-function slot0.onReceiveWeekwalkVer2InfoUpdatePush(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2InfoUpdatePush(arg_19_0, arg_19_1, arg_19_2)
+	if arg_19_1 ~= 0 then
 		return
 	end
 
-	WeekWalk_2Model.instance:updateInfo(slot2.info)
+	local var_19_0 = arg_19_2.info
+
+	WeekWalk_2Model.instance:updateInfo(var_19_0)
 	WeekWalk_2Model.instance:clearSettleInfo()
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnWeekwalkInfoUpdate)
 	WeekWalk_2Controller.instance:dispatchEvent(WeekWalk_2Event.OnWeekwalkInfoChange)
 end
 
-function slot0.onReceiveWeekwalkVer2SettleInfoUpdatePush(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2SettleInfoUpdatePush(arg_20_0, arg_20_1, arg_20_2)
+	if arg_20_1 ~= 0 then
 		return
 	end
 
-	WeekWalk_2Model.instance:initSettleInfo(slot2.settleInfo)
+	local var_20_0 = arg_20_2.settleInfo
+
+	WeekWalk_2Model.instance:initSettleInfo(var_20_0)
 end
 
-function slot0.onReceiveWeekwalkVer2FightSettlePush(slot0, slot1, slot2)
-	if slot1 ~= 0 then
+function var_0_0.onReceiveWeekwalkVer2FightSettlePush(arg_21_0, arg_21_1, arg_21_2)
+	if arg_21_1 ~= 0 then
 		return
 	end
 
-	slot3 = slot2.layerId
-	slot4 = slot2.battleId
+	local var_21_0 = arg_21_2.layerId
+	local var_21_1 = arg_21_2.battleId
+	local var_21_2 = arg_21_2.result
+	local var_21_3 = arg_21_2.cupInfos
 
-	WeekWalk_2Model.instance:initFightSettleInfo(slot2.result, slot2.cupInfos)
+	WeekWalk_2Model.instance:initFightSettleInfo(var_21_2, var_21_3)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

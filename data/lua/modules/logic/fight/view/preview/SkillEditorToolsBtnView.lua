@@ -1,137 +1,162 @@
-module("modules.logic.fight.view.preview.SkillEditorToolsBtnView", package.seeall)
+﻿module("modules.logic.fight.view.preview.SkillEditorToolsBtnView", package.seeall)
 
-slot0 = class("SkillEditorToolsBtnView", BaseViewExtended)
+local var_0_0 = class("SkillEditorToolsBtnView", BaseViewExtended)
 
-function slot0.onInitView(slot0)
-	slot0._btntools = gohelper.findChildButton(slot0.viewGO, "right/btn_tools")
-	slot0._toolsBtnList = gohelper.findChild(slot0.viewGO, "right/go_tool_btn_list")
-	slot0._btnModel = gohelper.findChildButton(slot0.viewGO, "right/go_tool_btn_list/btn_model")
-	slot0._gotoolroot = gohelper.findChild(slot0.viewGO, "go_tool_root")
-	slot0._gotoolviewmodel = gohelper.findChild(slot0.viewGO, "go_tool_root/go_tool_view_model")
-	slot0._btnText = gohelper.findChildText(slot0.viewGO, "right/btn_tools/Text")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btntools = gohelper.findChildButton(arg_1_0.viewGO, "right/btn_tools")
+	arg_1_0._toolsBtnList = gohelper.findChild(arg_1_0.viewGO, "right/go_tool_btn_list")
+	arg_1_0._btnModel = gohelper.findChildButton(arg_1_0.viewGO, "right/go_tool_btn_list/btn_model")
+	arg_1_0._gotoolroot = gohelper.findChild(arg_1_0.viewGO, "go_tool_root")
+	arg_1_0._gotoolviewmodel = gohelper.findChild(arg_1_0.viewGO, "go_tool_root/go_tool_view_model")
+	arg_1_0._btnText = gohelper.findChildText(arg_1_0.viewGO, "right/btn_tools/Text")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btntools:AddClickListener(slot0._onBtnTools, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btntools:AddClickListener(arg_2_0._onBtnTools, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btntools:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btntools:RemoveClickListener()
 
-	if slot0._btns then
-		for slot4, slot5 in ipairs(slot0._btns) do
-			slot5:RemoveClickListener()
+	if arg_3_0._btns then
+		for iter_3_0, iter_3_1 in ipairs(arg_3_0._btns) do
+			iter_3_1:RemoveClickListener()
 		end
 
-		slot0._btns = nil
+		arg_3_0._btns = nil
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0:addToolBtn("改伤害", slot0._onClickDamage)
-	slot0:addToolBtn("角色描边", slot0._onClickOutline)
-	slot0:addToolBtn("开启出牌镜头", slot0._onClickPlayCardCameraAni)
-	slot0:addToolBtn("移除术阵特效", slot0._onClickSuZhenSwitch)
-	slot0:addToolBtn("诺蒂卡衔接测试", slot0._onClickNuoDiKaXianJie)
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0:addToolBtn("改伤害", arg_4_0._onClickDamage)
+	arg_4_0:addToolBtn("角色描边", arg_4_0._onClickOutline)
+	arg_4_0:addToolBtn("开启出牌镜头", arg_4_0._onClickPlayCardCameraAni)
+	arg_4_0:addToolBtn("移除术阵特效", arg_4_0._onClickSuZhenSwitch)
+	arg_4_0:addToolBtn("诺蒂卡衔接测试", arg_4_0._onClickNuoDiKaXianJie)
 end
 
-function slot0._onClickNuoDiKaXianJie(slot0)
+function var_0_0._onClickNuoDiKaXianJie(arg_5_0)
 	ViewMgr.instance:openView(ViewName.GMFightNuoDiKaXianJieCeShi)
 end
 
-function slot0._onClickDamage(slot0)
-	CommonInputMO.New().title = "请输入伤害数值"
-	slot1.defaultInput = SkillEditorStepBuilder.customDamage and slot2 > 0 and slot2 or SkillEditorStepBuilder.defaultDamage
+function var_0_0._onClickDamage(arg_6_0)
+	local var_6_0 = CommonInputMO.New()
 
-	function slot1.sureCallback(slot0)
+	var_6_0.title = "请输入伤害数值"
+
+	local var_6_1 = SkillEditorStepBuilder.customDamage
+	local var_6_2 = SkillEditorStepBuilder.defaultDamage
+
+	var_6_0.defaultInput = var_6_1 and var_6_1 > 0 and var_6_1 or var_6_2
+
+	function var_6_0.sureCallback(arg_7_0)
 		GameFacade.closeInputBox()
 
-		if tonumber(slot0) and slot1 > 0 then
-			GameFacade.showToast(ToastEnum.IconId, "伤害调整为 " .. slot0)
+		local var_7_0 = tonumber(arg_7_0)
 
-			SkillEditorStepBuilder.customDamage = slot1
-		elseif string.nilorempty(slot0) then
+		if var_7_0 and var_7_0 > 0 then
+			GameFacade.showToast(ToastEnum.IconId, "伤害调整为 " .. arg_7_0)
+
+			SkillEditorStepBuilder.customDamage = var_7_0
+		elseif string.nilorempty(arg_7_0) then
 			SkillEditorStepBuilder.customDamage = nil
 		end
 	end
 
-	GameFacade.openInputBox(slot1)
+	GameFacade.openInputBox(var_6_0)
 end
 
-function slot0._onClickOutline(slot0)
+function var_0_0._onClickOutline(arg_8_0)
 	SkillEditorMgr.instance:dispatchEvent(SkillEditorMgr.OnClickOutline)
 end
 
-function slot0._onClickPlayCardCameraAni(slot0, slot1)
-	slot0._playCardCameraAniPlaying = not slot0._playCardCameraAniPlaying
-	slot1.text = slot0._playCardCameraAniPlaying and "关闭出牌镜头" or "开启出牌镜头"
+function var_0_0._onClickPlayCardCameraAni(arg_9_0, arg_9_1)
+	arg_9_0._playCardCameraAniPlaying = not arg_9_0._playCardCameraAniPlaying
+	arg_9_1.text = arg_9_0._playCardCameraAniPlaying and "关闭出牌镜头" or "开启出牌镜头"
 
-	FightController.instance:dispatchEvent(FightEvent.SkillEditorPlayCardCameraAni, slot0._playCardCameraAniPlaying)
+	FightController.instance:dispatchEvent(FightEvent.SkillEditorPlayCardCameraAni, arg_9_0._playCardCameraAniPlaying)
 end
 
-function slot0._onClickSuZhenSwitch(slot0)
-	if FightModel.instance:getMagicCircleInfo() and FightHelper.getEntity(FightEntityScene.MySideId) and lua_magic_circle.configDict[slot1.magicCircleId] then
-		slot2.effect:removeEffectByEffectName(slot3.loopEffect)
+function var_0_0._onClickSuZhenSwitch(arg_10_0)
+	local var_10_0 = FightModel.instance:getMagicCircleInfo()
+
+	if var_10_0 then
+		local var_10_1 = FightHelper.getEntity(FightEntityScene.MySideId)
+
+		if var_10_1 then
+			local var_10_2 = lua_magic_circle.configDict[var_10_0.magicCircleId]
+
+			if var_10_2 then
+				var_10_1.effect:removeEffectByEffectName(var_10_2.loopEffect)
+			end
+		end
 	end
 end
 
-function slot0.addToolBtn(slot0, slot1, slot2, slot3)
-	slot4 = gohelper.cloneInPlace(slot0._btnModel.gameObject, slot1)
+function var_0_0.addToolBtn(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	local var_11_0 = gohelper.cloneInPlace(arg_11_0._btnModel.gameObject, arg_11_1)
 
-	gohelper.setActive(slot4, true)
+	gohelper.setActive(var_11_0, true)
 
-	slot5 = gohelper.getClick(slot4)
-	slot6 = gohelper.findChildText(slot4, "Text")
+	local var_11_1 = gohelper.getClick(var_11_0)
+	local var_11_2 = gohelper.findChildText(var_11_0, "Text")
 
-	slot5:AddClickListener(slot2, slot3 or slot0, slot6)
+	var_11_1:AddClickListener(arg_11_2, arg_11_3 or arg_11_0, var_11_2)
 
-	slot6.text = slot1
-	slot0._btns = slot0._btns or {}
+	var_11_2.text = arg_11_1
+	arg_11_0._btns = arg_11_0._btns or {}
 
-	table.insert(slot0._btns, slot5)
+	table.insert(arg_11_0._btns, var_11_1)
 
-	return slot4
+	return var_11_0
 end
 
-function slot0.addToolViewObj(slot0, slot1)
-	return gohelper.cloneInPlace(slot0._gotoolviewmodel, slot1)
+function var_0_0.addToolViewObj(arg_12_0, arg_12_1)
+	return (gohelper.cloneInPlace(arg_12_0._gotoolviewmodel, arg_12_1))
 end
 
-function slot0.onRefreshViewParam(slot0)
+function var_0_0.onRefreshViewParam(arg_13_0)
+	return
 end
 
-function slot0._onBtnTools(slot0)
-	slot0._listState = not slot0._listState
+function var_0_0._onBtnTools(arg_14_0)
+	arg_14_0._listState = not arg_14_0._listState
 
-	gohelper.setActive(slot0._toolsBtnList, slot0._listState)
+	gohelper.setActive(arg_14_0._toolsBtnList, arg_14_0._listState)
 
-	slot0._btnText.text = slot0._listState and "close" or "tools"
+	arg_14_0._btnText.text = arg_14_0._listState and "close" or "tools"
 
-	for slot5 = 0, slot0._gotoolroot.transform.childCount - 1 do
-		gohelper.setActive(slot0._gotoolroot.transform:GetChild(slot5).gameObject, false)
+	local var_14_0 = arg_14_0._gotoolroot.transform.childCount
+
+	for iter_14_0 = 0, var_14_0 - 1 do
+		local var_14_1 = arg_14_0._gotoolroot.transform:GetChild(iter_14_0).gameObject
+
+		gohelper.setActive(var_14_1, false)
 	end
 end
 
-function slot0.hideToolsBtnList(slot0)
-	gohelper.setActive(slot0._toolsBtnList, false)
+function var_0_0.hideToolsBtnList(arg_15_0)
+	gohelper.setActive(arg_15_0._toolsBtnList, false)
 end
 
-function slot0.onOpen(slot0)
-	slot0._listState = true
+function var_0_0.onOpen(arg_16_0)
+	arg_16_0._listState = true
 
-	slot0:_onBtnTools()
-	slot0:openSubView(SkillEditorToolsChangeVariant, slot0.viewGO)
-	slot0:openSubView(SkillEditorToolsChangeQuality, slot0.viewGO)
+	arg_16_0:_onBtnTools()
+	arg_16_0:openSubView(SkillEditorToolsChangeVariant, arg_16_0.viewGO)
+	arg_16_0:openSubView(SkillEditorToolsChangeQuality, arg_16_0.viewGO)
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_17_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_18_0)
+	return
 end
 
-return slot0
+return var_0_0

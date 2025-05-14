@@ -1,311 +1,362 @@
-module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandGameScene", package.seeall)
+﻿module("modules.logic.versionactivity2_7.coopergarland.view.CooperGarlandGameScene", package.seeall)
 
-slot0 = class("CooperGarlandGameScene", BaseView)
-slot1 = 0.83
-slot2 = 1.8
+local var_0_0 = class("CooperGarlandGameScene", BaseView)
+local var_0_1 = 0.83
+local var_0_2 = 1.8
 
-function slot0.onInitView(slot0)
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+function var_0_0.onInitView(arg_1_0)
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.ChangePanelAngle, slot0._onChangePanelAngle, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, slot0._onPlayEnterNextRoundAnim, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, slot0._onRemoveModeChange, slot0)
-	slot0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, slot0._onResetGame, slot0)
-	slot0:addEventCb(GuideController.instance, GuideEvent.FinishGuide, slot0._onFinishGuide, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.ChangePanelAngle, arg_2_0._onChangePanelAngle, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, arg_2_0._onPlayEnterNextRoundAnim, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, arg_2_0._onRemoveModeChange, arg_2_0)
+	arg_2_0:addEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, arg_2_0._onResetGame, arg_2_0)
+	arg_2_0:addEventCb(GuideController.instance, GuideEvent.FinishGuide, arg_2_0._onFinishGuide, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	if slot0._panelAnimEvent then
-		slot0._panelAnimEvent:RemoveEventListener("panelIn")
+function var_0_0.removeEvents(arg_3_0)
+	if arg_3_0._panelAnimEvent then
+		arg_3_0._panelAnimEvent:RemoveEventListener("panelIn")
 	end
 
-	if slot0._sceneAnimEvent then
-		slot0._sceneAnimEvent:RemoveEventListener("showBall")
+	if arg_3_0._sceneAnimEvent then
+		arg_3_0._sceneAnimEvent:RemoveEventListener("showBall")
 	end
 
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.ChangePanelAngle, slot0._onChangePanelAngle, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, slot0._onPlayEnterNextRoundAnim, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, slot0._onRemoveModeChange, slot0)
-	slot0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, slot0._onResetGame, slot0)
-	slot0:removeEventCb(GuideController.instance, GuideEvent.FinishGuide, slot0._onFinishGuide, slot0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.ChangePanelAngle, arg_3_0._onChangePanelAngle, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.PlayEnterNextRoundAnim, arg_3_0._onPlayEnterNextRoundAnim, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnRemoveModeChange, arg_3_0._onRemoveModeChange, arg_3_0)
+	arg_3_0:removeEventCb(CooperGarlandController.instance, CooperGarlandEvent.OnResetGame, arg_3_0._onResetGame, arg_3_0)
+	arg_3_0:removeEventCb(GuideController.instance, GuideEvent.FinishGuide, arg_3_0._onFinishGuide, arg_3_0)
 end
 
-function slot0._onChangePanelAngle(slot0, slot1, slot2, slot3, slot4)
-	if gohelper.isNil(slot0._transCube) then
+function var_0_0._onChangePanelAngle(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)
+	if gohelper.isNil(arg_4_0._transCube) then
 		return
 	end
 
-	if not slot4 and (CooperGarlandGameModel.instance:getIsStopGame() or GuideModel.instance:isDoingClickGuide() and not GuideController.instance:isForbidGuides() or not CooperGarlandGameModel.instance:getSceneOpenAnimShowBall()) then
+	local var_4_0 = GuideModel.instance:isDoingClickGuide()
+	local var_4_1 = GuideController.instance:isForbidGuides()
+	local var_4_2 = var_4_0 and not var_4_1
+	local var_4_3 = CooperGarlandGameModel.instance:getIsStopGame()
+	local var_4_4 = CooperGarlandGameModel.instance:getSceneOpenAnimShowBall()
+
+	if not arg_4_4 and (var_4_3 or var_4_2 or not var_4_4) then
 		return
 	end
 
-	TaskDispatcher.cancelTask(slot0._lerpRotation, slot0)
+	local var_4_5 = arg_4_2 * arg_4_0._cubeMaxAngle
+	local var_4_6 = -arg_4_1 * arg_4_0._cubeMaxAngle
 
-	if slot3 and slot3 > 0 then
-		slot0._targetLerpAngle = {
-			x = slot2 * slot0._cubeMaxAngle,
-			y = -slot1 * slot0._cubeMaxAngle,
-			lerpScale = slot3
+	TaskDispatcher.cancelTask(arg_4_0._lerpRotation, arg_4_0)
+
+	if arg_4_3 and arg_4_3 > 0 then
+		arg_4_0._targetLerpAngle = {
+			x = var_4_5,
+			y = var_4_6,
+			lerpScale = arg_4_3
 		}
 
-		TaskDispatcher.runRepeat(slot0._lerpRotation, slot0, 0.01)
+		TaskDispatcher.runRepeat(arg_4_0._lerpRotation, arg_4_0, 0.01)
 	else
-		transformhelper.setLocalRotation(slot0._transCube, slot10, slot11, 0)
+		transformhelper.setLocalRotation(arg_4_0._transCube, var_4_5, var_4_6, 0)
 	end
 end
 
-function slot0._lerpRotation(slot0)
-	slot1, slot2 = transformhelper.getLocalRotation(slot0._transCube)
-	slot3 = slot0._targetLerpAngle and slot0._targetLerpAngle.x
-	slot4 = slot0._targetLerpAngle and slot0._targetLerpAngle.y
+function var_0_0._lerpRotation(arg_5_0)
+	local var_5_0, var_5_1 = transformhelper.getLocalRotation(arg_5_0._transCube)
+	local var_5_2 = arg_5_0._targetLerpAngle and arg_5_0._targetLerpAngle.x
+	local var_5_3 = arg_5_0._targetLerpAngle and arg_5_0._targetLerpAngle.y
 
-	if not slot0._targetLerpAngle or slot1 == slot3 and slot2 == slot4 then
-		slot0._targetLerpAngle = nil
+	if not arg_5_0._targetLerpAngle or var_5_0 == var_5_2 and var_5_1 == var_5_3 then
+		arg_5_0._targetLerpAngle = nil
 
-		TaskDispatcher.cancelTask(slot0._lerpRotation, slot0)
+		TaskDispatcher.cancelTask(arg_5_0._lerpRotation, arg_5_0)
 
 		return
 	end
 
-	transformhelper.setLocalRotationLerp(slot0._transCube, slot3, slot4, 0, Time.deltaTime * slot0._targetLerpAngle.lerpScale)
+	transformhelper.setLocalRotationLerp(arg_5_0._transCube, var_5_2, var_5_3, 0, Time.deltaTime * arg_5_0._targetLerpAngle.lerpScale)
 end
 
-function slot0._onPlayEnterNextRoundAnim(slot0)
-	slot1 = false
+function var_0_0._onPlayEnterNextRoundAnim(arg_6_0)
+	local var_6_0 = false
 
-	if slot0._sceneAnimator then
-		slot0._sceneAnimator:Play("switch", 0, 0)
+	if arg_6_0._sceneAnimator then
+		arg_6_0._sceneAnimator:Play("switch", 0, 0)
 
-		slot1 = true
+		var_6_0 = true
 
 		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_pkls_star_light)
 	end
 
-	if not string.nilorempty(CooperGarlandConfig.instance:getCubeSwitchAnim(CooperGarlandGameModel.instance:getGameId())) and slot0._cubeAnimator and slot0._cubeAnimatorPlayer then
-		TaskDispatcher.cancelTask(slot0._playCubeSwitchAnim, slot0)
-		TaskDispatcher.runDelay(slot0._playCubeSwitchAnim, slot0, uv0)
+	local var_6_1 = CooperGarlandGameModel.instance:getGameId()
+	local var_6_2 = CooperGarlandConfig.instance:getCubeSwitchAnim(var_6_1)
 
-		slot1 = true
+	if not string.nilorempty(var_6_2) and arg_6_0._cubeAnimator and arg_6_0._cubeAnimatorPlayer then
+		TaskDispatcher.cancelTask(arg_6_0._playCubeSwitchAnim, arg_6_0)
+		TaskDispatcher.runDelay(arg_6_0._playCubeSwitchAnim, arg_6_0, var_0_1)
+
+		var_6_0 = true
 	end
 
-	if slot1 then
+	if var_6_0 then
 		TaskDispatcher.cancelTask(CooperGarlandController.enterNextRound, CooperGarlandController.instance)
-		TaskDispatcher.runDelay(CooperGarlandController.enterNextRound, CooperGarlandController.instance, uv1)
+		TaskDispatcher.runDelay(CooperGarlandController.enterNextRound, CooperGarlandController.instance, var_0_2)
 	else
 		CooperGarlandController.instance:enterNextRound()
 	end
 
-	slot0:refresh()
+	arg_6_0:refresh()
 end
 
-function slot0._playCubeSwitchAnim(slot0)
-	slot0._cubeAnimator.enabled = true
+function var_0_0._playCubeSwitchAnim(arg_7_0)
+	local var_7_0 = CooperGarlandGameModel.instance:getGameId()
+	local var_7_1 = CooperGarlandConfig.instance:getCubeSwitchAnim(var_7_0)
+
+	arg_7_0._cubeAnimator.enabled = true
 
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_cube_turn)
-	slot0._cubeAnimatorPlayer:Play(CooperGarlandConfig.instance:getCubeSwitchAnim(CooperGarlandGameModel.instance:getGameId()), slot0._playCubeAnimFinished, slot0)
+	arg_7_0._cubeAnimatorPlayer:Play(var_7_1, arg_7_0._playCubeAnimFinished, arg_7_0)
 end
 
-function slot0._onRemoveModeChange(slot0)
-	slot0:refresh()
+function var_0_0._onRemoveModeChange(arg_8_0)
+	arg_8_0:refresh()
 end
 
-function slot0._onResetGame(slot0)
-	slot0:refresh()
+function var_0_0._onResetGame(arg_9_0)
+	arg_9_0:refresh()
 end
 
-function slot0._onFinishGuide(slot0, slot1)
-	if CooperGarlandConfig.instance:getStoryCompId(CooperGarlandGameModel.instance:getMapId(), slot1) then
-		CooperGarlandGameEntityMgr.instance:removeComp(slot3)
+function var_0_0._onFinishGuide(arg_10_0, arg_10_1)
+	local var_10_0 = CooperGarlandGameModel.instance:getMapId()
+	local var_10_1 = CooperGarlandConfig.instance:getStoryCompId(var_10_0, arg_10_1)
+
+	if var_10_1 then
+		CooperGarlandGameEntityMgr.instance:removeComp(var_10_1)
 		CooperGarlandController.instance:setStopGame(false)
 	end
 end
 
-function slot0._editableInitView(slot0)
-	slot0._targetLerpAngle = nil
-	slot0._originalFOV = nil
-	slot0._cubeMaxAngle = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubeMaxAngle, true)
-	slot0._originalGravity = UnityEngine.Physics.gravity
-	UnityEngine.Physics.gravity = Vector3.New(0, 0, CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.Gravity, true))
+function var_0_0._editableInitView(arg_11_0)
+	arg_11_0._targetLerpAngle = nil
+	arg_11_0._originalFOV = nil
+	arg_11_0._cubeMaxAngle = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubeMaxAngle, true)
+	arg_11_0._originalGravity = UnityEngine.Physics.gravity
 
-	slot0:createScene()
-	MainCameraMgr.instance:addView(slot0.viewName, slot0.initCamera, nil, slot0)
+	local var_11_0 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.Gravity, true)
+
+	UnityEngine.Physics.gravity = Vector3.New(0, 0, var_11_0)
+
+	arg_11_0:createScene()
+	MainCameraMgr.instance:addView(arg_11_0.viewName, arg_11_0.initCamera, nil, arg_11_0)
 end
 
-function slot0.initCamera(slot0)
-	slot1 = CameraMgr.instance:getMainCamera()
-	slot2 = CameraMgr.instance:getMainCameraTrs()
+function var_0_0.initCamera(arg_12_0)
+	local var_12_0 = CameraMgr.instance:getMainCamera()
+	local var_12_1 = CameraMgr.instance:getMainCameraTrs()
 
-	if not slot0._originalFOV then
-		slot0._originalFOV = slot1.fieldOfView
+	if not arg_12_0._originalFOV then
+		arg_12_0._originalFOV = var_12_0.fieldOfView
 	end
 
-	slot3 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CameraFOV, true)
-	slot1.fieldOfView = Mathf.Clamp(slot3 * 1.7777777777777777 * UnityEngine.Screen.height / UnityEngine.Screen.width, slot3, CooperGarlandEnum.Const.CameraMaxFov)
+	local var_12_2 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CameraFOV, true)
+	local var_12_3 = 1.7777777777777777 * (UnityEngine.Screen.height / UnityEngine.Screen.width)
 
-	transformhelper.setLocalPos(slot2, 0, 0, CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CameraPosZ, true))
-	transformhelper.setLocalRotation(slot2, 0, 0, 0)
+	var_12_0.fieldOfView = Mathf.Clamp(var_12_2 * var_12_3, var_12_2, CooperGarlandEnum.Const.CameraMaxFov)
+
+	local var_12_4 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CameraPosZ, true)
+
+	transformhelper.setLocalPos(var_12_1, 0, 0, var_12_4)
+	transformhelper.setLocalRotation(var_12_1, 0, 0, 0)
 end
 
-function slot0.createScene(slot0)
-	slot0._sceneRoot = UnityEngine.GameObject.New(slot0.__cname)
+function var_0_0.createScene(arg_13_0)
+	local var_13_0 = CameraMgr.instance:getSceneRoot()
 
-	gohelper.addChild(CameraMgr.instance:getSceneRoot(), slot0._sceneRoot)
+	arg_13_0._sceneRoot = UnityEngine.GameObject.New(arg_13_0.__cname)
 
-	slot3, slot4, slot5 = transformhelper.getLocalPos(CameraMgr.instance:getMainCameraTrs().parent)
+	gohelper.addChild(var_13_0, arg_13_0._sceneRoot)
 
-	transformhelper.setLocalPos(slot0._sceneRoot.transform, 0, slot4, 0)
+	local var_13_1 = CameraMgr.instance:getMainCameraTrs().parent
+	local var_13_2, var_13_3, var_13_4 = transformhelper.getLocalPos(var_13_1)
 
-	if slot0._loader then
-		slot0._loader:dispose()
+	transformhelper.setLocalPos(arg_13_0._sceneRoot.transform, 0, var_13_3, 0)
+
+	if arg_13_0._loader then
+		arg_13_0._loader:dispose()
 	end
 
-	slot0._loader = PrefabInstantiate.Create(slot0._sceneRoot)
+	arg_13_0._loader = PrefabInstantiate.Create(arg_13_0._sceneRoot)
 
-	if not string.nilorempty(CooperGarlandConfig.instance:getScenePath(CooperGarlandGameModel.instance:getGameId())) then
+	local var_13_5 = CooperGarlandGameModel.instance:getGameId()
+	local var_13_6 = CooperGarlandConfig.instance:getScenePath(var_13_5)
+
+	if not string.nilorempty(var_13_6) then
 		UIBlockMgr.instance:startBlock(CooperGarlandEnum.BlockKey.LoadGameSceneRes)
-		slot0._loader:startLoad(slot7, slot0._onLoadSceneFinish, slot0)
+		arg_13_0._loader:startLoad(var_13_6, arg_13_0._onLoadSceneFinish, arg_13_0)
 	end
 end
 
-function slot0._onLoadSceneFinish(slot0)
+function var_0_0._onLoadSceneFinish(arg_14_0)
 	UIBlockMgr.instance:endBlock(CooperGarlandEnum.BlockKey.LoadGameSceneRes)
 
-	if not slot0._loader then
+	if not arg_14_0._loader then
 		return
 	end
 
-	slot0._sceneGo = slot0._loader:getInstGO()
-	slot0._sceneAnimator = slot0._sceneGo:GetComponent(typeof(UnityEngine.Animator))
-	slot0._sceneAnimEvent = slot0._sceneGo:GetComponent(gohelper.Type_AnimationEventWrap)
+	arg_14_0._sceneGo = arg_14_0._loader:getInstGO()
+	arg_14_0._sceneAnimator = arg_14_0._sceneGo:GetComponent(typeof(UnityEngine.Animator))
+	arg_14_0._sceneAnimEvent = arg_14_0._sceneGo:GetComponent(gohelper.Type_AnimationEventWrap)
 
-	slot0._sceneAnimEvent:AddEventListener("showBall", slot0._onShowBall, slot0)
+	arg_14_0._sceneAnimEvent:AddEventListener("showBall", arg_14_0._onShowBall, arg_14_0)
 
-	slot0._cubeGo = gohelper.findChild(slot0._sceneGo, "#go_cube")
-	slot0._transCube = slot0._cubeGo.transform
-	slot0._cubeAnimator = slot0._cubeGo:GetComponent(typeof(UnityEngine.Animator))
-	slot0._cubeAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(slot0._cubeGo)
-	slot2 = string.splitToNumber(CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubePos), "#")
+	arg_14_0._cubeGo = gohelper.findChild(arg_14_0._sceneGo, "#go_cube")
+	arg_14_0._transCube = arg_14_0._cubeGo.transform
+	arg_14_0._cubeAnimator = arg_14_0._cubeGo:GetComponent(typeof(UnityEngine.Animator))
+	arg_14_0._cubeAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_14_0._cubeGo)
 
-	transformhelper.setLocalPos(slot0._transCube, slot2[1], slot2[2], slot2[3])
+	local var_14_0 = CooperGarlandConfig.instance:getAct192Const(CooperGarlandEnum.ConstId.CubePos)
+	local var_14_1 = string.splitToNumber(var_14_0, "#")
 
-	slot0._uiNode = gohelper.findChild(slot0._sceneGo, "#go_cube/#go_ui")
+	transformhelper.setLocalPos(arg_14_0._transCube, var_14_1[1], var_14_1[2], var_14_1[3])
 
-	CooperGarlandGameEntityMgr.instance:tryInitMap(slot0._uiNode, gohelper.findChild(slot0._sceneGo, "#go_cube/#go_ball"), slot0._onInitMap, slot0)
+	arg_14_0._uiNode = gohelper.findChild(arg_14_0._sceneGo, "#go_cube/#go_ui")
 
-	slot4 = "open"
+	local var_14_2 = gohelper.findChild(arg_14_0._sceneGo, "#go_cube/#go_ball")
 
-	if slot0._cubeAnimatorPlayer and slot0._cubeAnimator then
-		if string.nilorempty(CooperGarlandConfig.instance:getCubeOpenAnim(CooperGarlandGameModel.instance:getGameId())) then
-			slot0:_playCubeAnimFinished()
+	CooperGarlandGameEntityMgr.instance:tryInitMap(arg_14_0._uiNode, var_14_2, arg_14_0._onInitMap, arg_14_0)
+
+	local var_14_3 = "open"
+	local var_14_4 = CooperGarlandGameModel.instance:getGameId()
+	local var_14_5 = CooperGarlandConfig.instance:getCubeOpenAnim(var_14_4)
+
+	if arg_14_0._cubeAnimatorPlayer and arg_14_0._cubeAnimator then
+		if string.nilorempty(var_14_5) then
+			arg_14_0:_playCubeAnimFinished()
 		else
-			slot4 = "open1"
+			var_14_3 = "open1"
 
 			AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_cube_turn)
-			slot0._cubeAnimatorPlayer:Play(slot6, slot0._playCubeAnimFinished, slot0)
+			arg_14_0._cubeAnimatorPlayer:Play(var_14_5, arg_14_0._playCubeAnimFinished, arg_14_0)
 		end
 	end
 
-	if slot0._sceneAnimator then
-		slot0._sceneAnimator:Play(slot4, 0, 0)
+	if arg_14_0._sceneAnimator then
+		arg_14_0._sceneAnimator:Play(var_14_3, 0, 0)
 	end
 end
 
-function slot0._onInitMap(slot0)
-	if gohelper.isNil(CooperGarlandGameEntityMgr.instance:getPanelGo()) then
+function var_0_0._onInitMap(arg_15_0)
+	local var_15_0 = CooperGarlandGameEntityMgr.instance:getPanelGo()
+
+	if gohelper.isNil(var_15_0) then
 		return
 	end
 
-	slot0._panelCanvas = slot1:GetComponent(typeof(UnityEngine.Canvas))
+	arg_15_0._panelCanvas = var_15_0:GetComponent(typeof(UnityEngine.Canvas))
 
-	if CameraMgr.instance:getMainCamera() then
-		slot0._panelCanvas.worldCamera = slot2
+	local var_15_1 = CameraMgr.instance:getMainCamera()
+
+	if var_15_1 then
+		arg_15_0._panelCanvas.worldCamera = var_15_1
 	end
 
-	slot0._simgPanel = gohelper.findChildSingleImage(slot1, "")
+	arg_15_0._simgPanel = gohelper.findChildSingleImage(var_15_0, "")
 
-	if slot0._simgPanel then
-		slot0._simgPanel:LoadImage(CooperGarlandConfig.instance:getPanelImage(CooperGarlandGameModel.instance:getGameId()))
+	if arg_15_0._simgPanel then
+		local var_15_2 = CooperGarlandGameModel.instance:getGameId()
+		local var_15_3 = CooperGarlandConfig.instance:getPanelImage(var_15_2)
+
+		arg_15_0._simgPanel:LoadImage(var_15_3)
 	end
 
-	slot0._goRemoveModeMask = gohelper.findChild(slot1, "#go_removeModeMask")
-	slot0._panelAnimEvent = slot1:GetComponent(gohelper.Type_AnimationEventWrap)
+	arg_15_0._goRemoveModeMask = gohelper.findChild(var_15_0, "#go_removeModeMask")
+	arg_15_0._panelAnimEvent = var_15_0:GetComponent(gohelper.Type_AnimationEventWrap)
 
-	slot0._panelAnimEvent:AddEventListener("panelIn", slot0._onPanelIn, slot0)
-	slot0:refresh()
+	arg_15_0._panelAnimEvent:AddEventListener("panelIn", arg_15_0._onPanelIn, arg_15_0)
+	arg_15_0:refresh()
 end
 
-function slot0._playCubeAnimFinished(slot0)
-	if slot0._cubeAnimator then
-		slot0._cubeAnimator.enabled = false
+function var_0_0._playCubeAnimFinished(arg_16_0)
+	if arg_16_0._cubeAnimator then
+		arg_16_0._cubeAnimator.enabled = false
 	end
 end
 
-function slot0._onPanelIn(slot0)
+function var_0_0._onPanelIn(arg_17_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_level_next)
 end
 
-function slot0._onShowBall(slot0)
+function var_0_0._onShowBall(arg_18_0)
 	CooperGarlandGameModel.instance:setSceneOpenAnimShowBall(true)
 	CooperGarlandGameEntityMgr.instance:resetBall()
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_19_0)
+	return
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_20_0)
+	return
 end
 
-function slot0.refresh(slot0)
-	slot0:refreshRemoveModeMask()
+function var_0_0.refresh(arg_21_0)
+	arg_21_0:refreshRemoveModeMask()
 end
 
-function slot0.refreshRemoveModeMask(slot0)
-	gohelper.setActive(slot0._goRemoveModeMask, CooperGarlandGameModel.instance:getIsRemoveMode())
+function var_0_0.refreshRemoveModeMask(arg_22_0)
+	local var_22_0 = CooperGarlandGameModel.instance:getIsRemoveMode()
+
+	gohelper.setActive(arg_22_0._goRemoveModeMask, var_22_0)
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0._lerpRotation, slot0)
-	TaskDispatcher.cancelTask(slot0._playCubeSwitchAnim, slot0)
+function var_0_0.onClose(arg_23_0)
+	TaskDispatcher.cancelTask(arg_23_0._lerpRotation, arg_23_0)
+	TaskDispatcher.cancelTask(arg_23_0._playCubeSwitchAnim, arg_23_0)
 	TaskDispatcher.cancelTask(CooperGarlandController.enterNextRound, CooperGarlandController.instance)
 end
 
-function slot0.onDestroyView(slot0)
-	if slot0._loader then
-		slot0._loader:dispose()
+function var_0_0.onDestroyView(arg_24_0)
+	if arg_24_0._loader then
+		arg_24_0._loader:dispose()
 
-		slot0._loader = nil
+		arg_24_0._loader = nil
 	end
 
-	if slot0._simgPanel then
-		slot0._simgPanel:UnLoadImage()
+	if arg_24_0._simgPanel then
+		arg_24_0._simgPanel:UnLoadImage()
 	end
 
-	if slot0._sceneRoot then
-		gohelper.destroy(slot0._sceneRoot)
+	if arg_24_0._sceneRoot then
+		gohelper.destroy(arg_24_0._sceneRoot)
 
-		slot0._sceneRoot = nil
+		arg_24_0._sceneRoot = nil
 	end
 
-	slot0:resetCamera()
+	arg_24_0:resetCamera()
 
-	UnityEngine.Physics.gravity = slot0._originalGravity
-	slot0._originalGravity = nil
+	UnityEngine.Physics.gravity = arg_24_0._originalGravity
+	arg_24_0._originalGravity = nil
 
 	UIBlockMgr.instance:endBlock(CooperGarlandEnum.BlockKey.LoadGameSceneRes)
 end
 
-slot3 = 35
+local var_0_3 = 35
 
-function slot0.resetCamera(slot0)
-	CameraMgr.instance:getMainCamera().fieldOfView = slot0._originalFOV or uv0
+function var_0_0.resetCamera(arg_25_0)
+	local var_25_0 = CameraMgr.instance:getMainCamera()
+	local var_25_1 = CameraMgr.instance:getMainCameraTrs()
 
-	transformhelper.setLocalPos(CameraMgr.instance:getMainCameraTrs(), 0, 0, 0)
+	var_25_0.fieldOfView = arg_25_0._originalFOV or var_0_3
 
-	slot0._originalFOV = nil
+	transformhelper.setLocalPos(var_25_1, 0, 0, 0)
+
+	arg_25_0._originalFOV = nil
 end
 
-return slot0
+return var_0_0

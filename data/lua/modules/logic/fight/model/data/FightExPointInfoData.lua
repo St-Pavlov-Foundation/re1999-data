@@ -1,17 +1,17 @@
-module("modules.logic.fight.model.data.FightExPointInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightExPointInfoData", package.seeall)
 
-slot0 = FightDataClass("FightExPointInfoData")
+local var_0_0 = FightDataClass("FightExPointInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.exPoint = slot1.exPoint
-	slot0.powerInfos = {}
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.exPoint = arg_1_1.exPoint
+	arg_1_0.powerInfos = {}
 
-	for slot5, slot6 in ipairs(slot1.powerInfos) do
-		table.insert(slot0.powerInfos, FightPowerInfoData.New(slot6))
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.powerInfos) do
+		table.insert(arg_1_0.powerInfos, FightPowerInfoData.New(iter_1_1))
 	end
 
-	slot0.currentHp = slot1.currentHp
+	arg_1_0.currentHp = arg_1_1.currentHp
 end
 
-return slot0
+return var_0_0

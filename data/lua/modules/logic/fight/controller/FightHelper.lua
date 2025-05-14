@@ -1,798 +1,927 @@
-module("modules.logic.fight.controller.FightHelper", package.seeall)
+﻿module("modules.logic.fight.controller.FightHelper", package.seeall)
 
-slot0 = _M
-slot1 = 1000001
-slot2 = -1000001
-slot3 = Vector2.zero
+local var_0_0 = _M
+local var_0_1 = 1000001
+local var_0_2 = -1000001
+local var_0_3 = Vector2.zero
 
-function slot0.getEntityStanceId(slot0, slot1)
-	slot2 = FightEnum.MySideDefaultStanceId
+function var_0_0.getEntityStanceId(arg_1_0, arg_1_1)
+	local var_1_0 = FightEnum.MySideDefaultStanceId
 
-	if slot0 and slot0.side == FightEnum.EntitySide.MySide then
-		slot4 = FightModel.instance:getFightParam() and slot3.battleId
+	if arg_1_0 and arg_1_0.side == FightEnum.EntitySide.MySide then
+		local var_1_1 = FightModel.instance:getFightParam()
+		local var_1_2 = var_1_1 and var_1_1.battleId
+		local var_1_3 = var_1_2 and lua_battle.configDict[var_1_2]
 
-		if slot4 and lua_battle.configDict[slot4] and not string.nilorempty(slot5.myStance) and not tonumber(slot5.myStance) then
-			if #FightStrUtil.instance:getSplitToNumberCache(slot5.myStance, "#") > 0 then
-				slot1 = slot1 or FightModel.instance:getCurWaveId()
-				slot2 = slot6[slot1 <= #slot6 and slot1 or #slot6]
-			else
-				logError("站位配置有误，战斗id = " .. slot3.battleId)
+		if var_1_3 and not string.nilorempty(var_1_3.myStance) then
+			var_1_0 = tonumber(var_1_3.myStance)
+
+			if not var_1_0 then
+				local var_1_4 = FightStrUtil.instance:getSplitToNumberCache(var_1_3.myStance, "#")
+
+				if #var_1_4 > 0 then
+					arg_1_1 = arg_1_1 or FightModel.instance:getCurWaveId()
+					var_1_0 = var_1_4[arg_1_1 <= #var_1_4 and arg_1_1 or #var_1_4]
+				else
+					logError("站位配置有误，战斗id = " .. var_1_1.battleId)
+				end
 			end
 		end
 
 		if SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
-			slot2 = SkillEditorMgr.instance.stance_id
+			var_1_0 = SkillEditorMgr.instance.stance_id
 		end
 	else
-		slot2 = lua_monster_group.configDict[FightModel.instance:getCurMonsterGroupId()] and slot4.stanceId or FightEnum.EnemySideDefaultStanceId
+		local var_1_5 = FightModel.instance:getCurMonsterGroupId()
+		local var_1_6 = lua_monster_group.configDict[var_1_5]
+
+		var_1_0 = var_1_6 and var_1_6.stanceId or FightEnum.EnemySideDefaultStanceId
 
 		if SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
-			slot2 = SkillEditorMgr.instance.enemy_stance_id
+			var_1_0 = SkillEditorMgr.instance.enemy_stance_id
 		end
 	end
 
-	return slot2
+	return var_1_0
 end
 
-function slot0.getEntityStandPos(slot0, slot1)
-	if slot0:isAssistBoss() then
-		return uv0.getAssistBossStandPos(slot0, slot1)
+function var_0_0.getEntityStandPos(arg_2_0, arg_2_1)
+	if arg_2_0:isAssistBoss() then
+		return var_0_0.getAssistBossStandPos(arg_2_0, arg_2_1)
 	end
 
-	if FightEntityDataHelper.isPlayerUid(slot0.uid) then
+	if FightEntityDataHelper.isPlayerUid(arg_2_0.uid) then
 		return 0, 0, 0, 1
 	end
 
-	if not lua_stance.configDict[uv0.getEntityStanceId(slot0, slot1)] then
-		if slot0.side == FightEnum.EntitySide.MySide then
-			logError("我方用了不存在的站位，战斗id=" .. (FightModel.instance:getFightParam() and slot4.battleId or "nil") .. "， 站位id=" .. slot2)
+	local var_2_0 = var_0_0.getEntityStanceId(arg_2_0, arg_2_1)
+	local var_2_1 = lua_stance.configDict[var_2_0]
+
+	if not var_2_1 then
+		if arg_2_0.side == FightEnum.EntitySide.MySide then
+			local var_2_2 = FightModel.instance:getFightParam()
+			local var_2_3 = var_2_2 and var_2_2.battleId
+
+			logError("我方用了不存在的站位，战斗id=" .. (var_2_3 or "nil") .. "， 站位id=" .. var_2_0)
 		else
-			logError("敌方用了不存在的站位，怪物组=" .. (FightModel.instance:getCurMonsterGroupId() or "nil") .. "， 站位id=" .. slot2)
+			local var_2_4 = FightModel.instance:getCurMonsterGroupId()
+
+			logError("敌方用了不存在的站位，怪物组=" .. (var_2_4 or "nil") .. "， 站位id=" .. var_2_0)
 		end
 	end
 
-	slot5 = nil
+	local var_2_5 = FightDataHelper.entityMgr:isSub(arg_2_0.uid)
+	local var_2_6
 
-	if FightDataHelper.entityMgr:isSub(slot0.uid) and not slot3.subPos1 or not slot3["pos" .. slot0.position] or not slot5[1] or not slot5[2] or not slot5[3] then
+	if var_2_5 then
+		var_2_6 = var_2_1.subPos1
+	else
+		var_2_6 = var_2_1["pos" .. arg_2_0.position]
+	end
+
+	if not var_2_6 or not var_2_6[1] or not var_2_6[2] or not var_2_6[3] then
 		if isDebugBuild then
-			logError("stance pos nil: stance_" .. (slot2 or "nil") .. " posIndex_" .. (slot0.position or "nil"))
+			logError("stance pos nil: stance_" .. (var_2_0 or "nil") .. " posIndex_" .. (arg_2_0.position or "nil"))
 		end
 
 		return 0, 0, 0, 1
 	end
 
-	return slot5[1], slot5[2], slot5[3], slot5[4] or 1
+	local var_2_7 = var_2_6[4] or 1
+
+	return var_2_6[1], var_2_6[2], var_2_6[3], var_2_7
 end
 
-function slot0.getAssistBossStandPos(slot0, slot1)
-	if not (lua_assist_boss_stance.configDict[slot0.skin] and slot5[FightModel.instance:getFightParam():getScene(slot1 or FightModel.instance:getCurWaveId())] or slot5 and slot5[0]) then
-		logError(string.format("协助boss站位表未配置 皮肤id：%s, 场景id : %s", slot3, slot4))
+function var_0_0.getAssistBossStandPos(arg_3_0, arg_3_1)
+	arg_3_1 = arg_3_1 or FightModel.instance:getCurWaveId()
+
+	local var_3_0 = FightModel.instance:getFightParam()
+	local var_3_1 = arg_3_0.skin
+	local var_3_2 = var_3_0:getScene(arg_3_1)
+	local var_3_3 = lua_assist_boss_stance.configDict[var_3_1]
+	local var_3_4 = var_3_3 and var_3_3[var_3_2]
+
+	var_3_4 = var_3_4 or var_3_3 and var_3_3[0]
+
+	if not var_3_4 then
+		logError(string.format("协助boss站位表未配置 皮肤id：%s, 场景id : %s", var_3_1, var_3_2))
 
 		return 9.4, 0, -2.75, 0.9
 	end
 
-	slot7 = slot6.position
+	local var_3_5 = var_3_4.position
 
-	return slot7[1], slot7[2], slot7[3], slot6.scale
+	return var_3_5[1], var_3_5[2], var_3_5[3], var_3_4.scale
 end
 
-function slot0.getSpineLookDir(slot0)
-	return slot0 == FightEnum.EntitySide.MySide and SpineLookDir.Left or SpineLookDir.Right
+function var_0_0.getSpineLookDir(arg_4_0)
+	return arg_4_0 == FightEnum.EntitySide.MySide and SpineLookDir.Left or SpineLookDir.Right
 end
 
-function slot0.getEntitySpineLookDir(slot0)
-	if slot0 then
-		if FightConfig.instance:getSkinCO(slot0.skin) and slot2.flipX and slot2.flipX == 1 then
-			return slot0.side == FightEnum.EntitySide.MySide and SpineLookDir.Right or SpineLookDir.Left
+function var_0_0.getEntitySpineLookDir(arg_5_0)
+	if arg_5_0 then
+		local var_5_0 = arg_5_0.side
+		local var_5_1 = FightConfig.instance:getSkinCO(arg_5_0.skin)
+
+		if var_5_1 and var_5_1.flipX and var_5_1.flipX == 1 then
+			return var_5_0 == FightEnum.EntitySide.MySide and SpineLookDir.Right or SpineLookDir.Left
 		else
-			return slot1 == FightEnum.EntitySide.MySide and SpineLookDir.Left or SpineLookDir.Right
+			return var_5_0 == FightEnum.EntitySide.MySide and SpineLookDir.Left or SpineLookDir.Right
 		end
 	end
 end
 
-function slot0.getEffectLookDir(slot0)
-	return slot0 == FightEnum.EntitySide.MySide and FightEnum.EffectLookDir.Left or FightEnum.EffectLookDir.Right
+function var_0_0.getEffectLookDir(arg_6_0)
+	return arg_6_0 == FightEnum.EntitySide.MySide and FightEnum.EffectLookDir.Left or FightEnum.EffectLookDir.Right
 end
 
-function slot0.getEffectLookDirQuaternion(slot0)
-	if slot0 == FightEnum.EntitySide.MySide then
+function var_0_0.getEffectLookDirQuaternion(arg_7_0)
+	if arg_7_0 == FightEnum.EntitySide.MySide then
 		return FightEnum.RotationQuaternion.Zero
 	else
 		return FightEnum.RotationQuaternion.Ohae
 	end
 end
 
-function slot0.getEntity(slot0)
+function var_0_0.getEntity(arg_8_0)
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		return GameSceneMgr.instance:getCurScene().entityMgr:getEntity(slot0)
+		return GameSceneMgr.instance:getCurScene().entityMgr:getEntity(arg_8_0)
 	end
 end
 
-function slot0.getDefenders(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.getDefenders(arg_9_0, arg_9_1, arg_9_2)
+	local var_9_0 = {}
 
-	for slot7, slot8 in ipairs(slot0.actEffect) do
-		slot9 = false
+	for iter_9_0, iter_9_1 in ipairs(arg_9_0.actEffect) do
+		local var_9_1 = false
 
-		if slot2 and slot2[slot8.effectType] then
-			slot9 = true
+		if arg_9_2 and arg_9_2[iter_9_1.effectType] then
+			var_9_1 = true
 		end
 
-		if slot8.effectType == FightEnum.EffectType.SHIELD and not uv0.checkShieldHit(slot8) then
-			slot9 = true
+		if iter_9_1.effectType == FightEnum.EffectType.SHIELD and not var_0_0.checkShieldHit(iter_9_1) then
+			var_9_1 = true
 		end
 
-		if not slot9 then
-			if uv0.getEntity(slot8.targetId) then
-				table.insert(slot3, slot10)
+		if not var_9_1 then
+			local var_9_2 = var_0_0.getEntity(iter_9_1.targetId)
+
+			if var_9_2 then
+				table.insert(var_9_0, var_9_2)
 			else
-				logNormal("get defender fail, entity not exist: " .. slot8.targetId)
+				logNormal("get defender fail, entity not exist: " .. iter_9_1.targetId)
 			end
 		end
 	end
 
-	if slot1 and not tabletool.indexOf(slot3, uv0.getEntity(slot0.toId)) then
-		table.insert(slot3, slot4)
+	if arg_9_1 then
+		local var_9_3 = var_0_0.getEntity(arg_9_0.toId)
+
+		if not tabletool.indexOf(var_9_0, var_9_3) then
+			table.insert(var_9_0, var_9_3)
+		end
 	end
 
-	return slot3
+	return var_9_0
 end
 
-function slot0.getPreloadAssetItem(slot0)
+function var_0_0.getPreloadAssetItem(arg_10_0)
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		return FightPreloadController.instance:getFightAssetItem(slot0)
+		return FightPreloadController.instance:getFightAssetItem(arg_10_0)
 	end
 end
 
-function slot0.getEnemySideEntitys(slot0, slot1)
-	if uv0.getEntity(slot0) then
-		if slot2:getSide() == FightEnum.EntitySide.EnemySide then
-			return uv0.getSideEntitys(FightEnum.EntitySide.MySide, slot1)
-		elseif slot3 == FightEnum.EntitySide.MySide then
-			return uv0.getSideEntitys(FightEnum.EntitySide.EnemySide, slot1)
+function var_0_0.getEnemySideEntitys(arg_11_0, arg_11_1)
+	local var_11_0 = var_0_0.getEntity(arg_11_0)
+
+	if var_11_0 then
+		local var_11_1 = var_11_0:getSide()
+
+		if var_11_1 == FightEnum.EntitySide.EnemySide then
+			return var_0_0.getSideEntitys(FightEnum.EntitySide.MySide, arg_11_1)
+		elseif var_11_1 == FightEnum.EntitySide.MySide then
+			return var_0_0.getSideEntitys(FightEnum.EntitySide.EnemySide, arg_11_1)
 		end
 	end
 
 	return {}
 end
 
-function slot0.getSideEntitys(slot0, slot1)
-	slot2 = {}
+function var_0_0.getSideEntitys(arg_12_0, arg_12_1)
+	local var_12_0 = {}
+	local var_12_1 = GameSceneMgr.instance:getCurScene().entityMgr
+	local var_12_2 = arg_12_0 == FightEnum.EntitySide.MySide and SceneTag.UnitPlayer or SceneTag.UnitMonster
+	local var_12_3 = var_12_1:getTagUnitDict(var_12_2)
 
-	if GameSceneMgr.instance:getCurScene().entityMgr:getTagUnitDict(slot0 == FightEnum.EntitySide.MySide and SceneTag.UnitPlayer or SceneTag.UnitMonster) then
-		for slot9, slot10 in pairs(slot5) do
-			if not FightDataHelper.entityMgr:isAssistBoss(slot10.id) and (slot1 or not FightDataHelper.entityMgr:isSub(slot10.id)) then
-				table.insert(slot2, slot10)
+	if var_12_3 then
+		for iter_12_0, iter_12_1 in pairs(var_12_3) do
+			if not FightDataHelper.entityMgr:isAssistBoss(iter_12_1.id) and (arg_12_1 or not FightDataHelper.entityMgr:isSub(iter_12_1.id)) then
+				table.insert(var_12_0, iter_12_1)
 			end
 		end
 	end
 
-	return slot2
+	return var_12_0
 end
 
-function slot0.getSubEntity(slot0)
-	if GameSceneMgr.instance:getCurScene().entityMgr:getTagUnitDict(slot0 == FightEnum.EntitySide.MySide and SceneTag.UnitPlayer or SceneTag.UnitMonster) then
-		for slot7, slot8 in pairs(slot3) do
-			if not slot8.isDead and FightDataHelper.entityMgr:isSub(slot8.id) then
-				return slot8
+function var_0_0.getSubEntity(arg_13_0)
+	local var_13_0 = GameSceneMgr.instance:getCurScene().entityMgr
+	local var_13_1 = arg_13_0 == FightEnum.EntitySide.MySide and SceneTag.UnitPlayer or SceneTag.UnitMonster
+	local var_13_2 = var_13_0:getTagUnitDict(var_13_1)
+
+	if var_13_2 then
+		for iter_13_0, iter_13_1 in pairs(var_13_2) do
+			if not iter_13_1.isDead and FightDataHelper.entityMgr:isSub(iter_13_1.id) then
+				return iter_13_1
 			end
 		end
 	end
 end
 
-function slot0.getAllEntitys()
-	slot0 = {}
+function var_0_0.getAllEntitys()
+	local var_14_0 = {}
 
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		slot1 = GameSceneMgr.instance:getCurScene().entityMgr
-		slot3 = slot1:getTagUnitDict(SceneTag.UnitMonster)
+		local var_14_1 = GameSceneMgr.instance:getCurScene().entityMgr
+		local var_14_2 = var_14_1:getTagUnitDict(SceneTag.UnitPlayer)
+		local var_14_3 = var_14_1:getTagUnitDict(SceneTag.UnitMonster)
 
-		if slot1:getTagUnitDict(SceneTag.UnitPlayer) then
-			for slot7, slot8 in pairs(slot2) do
-				table.insert(slot0, slot8)
+		if var_14_2 then
+			for iter_14_0, iter_14_1 in pairs(var_14_2) do
+				table.insert(var_14_0, iter_14_1)
 			end
 		end
 
-		if slot3 then
-			for slot7, slot8 in pairs(slot3) do
-				table.insert(slot0, slot8)
+		if var_14_3 then
+			for iter_14_2, iter_14_3 in pairs(var_14_3) do
+				table.insert(var_14_0, iter_14_3)
 			end
 		end
 	end
 
-	return slot0
+	return var_14_0
 end
 
-function slot0.isAllEntityDead(slot0)
-	slot1 = true
-	slot2 = nil
+function var_0_0.isAllEntityDead(arg_15_0)
+	local var_15_0 = true
+	local var_15_1
 
-	for slot6, slot7 in ipairs((not slot0 or uv0.getSideEntitys(slot0, true)) and uv0.getAllEntitys()) do
-		if not slot7.isDead then
-			slot1 = false
+	if arg_15_0 then
+		var_15_1 = var_0_0.getSideEntitys(arg_15_0, true)
+	else
+		var_15_1 = var_0_0.getAllEntitys()
+	end
+
+	for iter_15_0, iter_15_1 in ipairs(var_15_1) do
+		if not iter_15_1.isDead then
+			var_15_0 = false
 		end
 	end
 
-	return slot1
+	return var_15_0
 end
 
-function slot0.getAllEntitysContainUnitNpc()
-	slot0 = {}
+function var_0_0.getAllEntitysContainUnitNpc()
+	local var_16_0 = {}
 
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
-		slot1 = GameSceneMgr.instance:getCurScene().entityMgr
+		local var_16_1 = GameSceneMgr.instance:getCurScene().entityMgr
+		local var_16_2 = var_16_1:getTagUnitDict(SceneTag.UnitPlayer)
+		local var_16_3 = var_16_1:getTagUnitDict(SceneTag.UnitMonster)
+		local var_16_4 = var_16_1:getTagUnitDict(SceneTag.UnitNpc)
 
-		LuaUtil.mergeTable(slot0, slot1:getTagUnitDict(SceneTag.UnitPlayer), slot1:getTagUnitDict(SceneTag.UnitMonster), slot1:getTagUnitDict(SceneTag.UnitNpc))
+		LuaUtil.mergeTable(var_16_0, var_16_2, var_16_3, var_16_4)
 	end
 
-	return slot0
+	return var_16_0
 end
 
-function slot0.validEntityEffectType(slot0)
-	if slot0 == FightEnum.EffectType.EXPOINTCHANGE then
+function var_0_0.validEntityEffectType(arg_17_0)
+	if arg_17_0 == FightEnum.EffectType.EXPOINTCHANGE then
 		return false
 	end
 
-	if slot0 == FightEnum.EffectType.INDICATORCHANGE then
+	if arg_17_0 == FightEnum.EffectType.INDICATORCHANGE then
 		return false
 	end
 
-	if slot0 == FightEnum.EffectType.POWERCHANGE then
+	if arg_17_0 == FightEnum.EffectType.POWERCHANGE then
 		return false
 	end
 
 	return true
 end
 
-function slot0.getRelativeEntityIdDict(slot0, slot1)
-	if slot0.fromId then
-		-- Nothing
+function var_0_0.getRelativeEntityIdDict(arg_18_0, arg_18_1)
+	local var_18_0 = {}
+
+	if arg_18_0.fromId then
+		var_18_0[arg_18_0.fromId] = true
 	end
 
-	if slot0.toId then
-		slot2[slot0.toId] = true
+	if arg_18_0.toId then
+		var_18_0[arg_18_0.toId] = true
 	end
 
-	for slot6, slot7 in ipairs(slot0.actEffect) do
-		slot8 = false
+	for iter_18_0, iter_18_1 in ipairs(arg_18_0.actEffect) do
+		local var_18_1 = false
 
-		if slot1 and slot1[slot7.effectType] then
-			slot8 = true
+		if arg_18_1 and arg_18_1[iter_18_1.effectType] then
+			var_18_1 = true
 		end
 
-		if slot7.effectType == FightEnum.EffectType.SHIELD and not uv0.checkShieldHit(slot7) then
-			slot8 = true
+		if iter_18_1.effectType == FightEnum.EffectType.SHIELD and not var_0_0.checkShieldHit(iter_18_1) then
+			var_18_1 = true
 		end
 
-		if not slot8 and slot7.effectType ~= FightEnum.EffectType.EXPOINTCHANGE and slot7.targetId then
-			slot2[slot7.targetId] = true
+		if not var_18_1 and iter_18_1.effectType ~= FightEnum.EffectType.EXPOINTCHANGE and iter_18_1.targetId then
+			var_18_0[iter_18_1.targetId] = true
 		end
 	end
 
-	return {
-		[slot0.fromId] = true
-	}
+	return var_18_0
 end
 
-function slot0.getSkillTargetEntitys(slot0, slot1)
-	slot2 = {}
+function var_0_0.getSkillTargetEntitys(arg_19_0, arg_19_1)
+	local var_19_0 = {}
 
-	for slot6, slot7 in ipairs(slot0.actEffect) do
-		slot8 = false
+	for iter_19_0, iter_19_1 in ipairs(arg_19_0.actEffect) do
+		local var_19_1 = false
 
-		if slot1 and slot1[slot7.effectType] then
-			slot8 = true
+		if arg_19_1 and arg_19_1[iter_19_1.effectType] then
+			var_19_1 = true
 		end
 
-		if slot7.effectType == FightEnum.EffectType.SHIELD and not uv0.checkShieldHit(slot7) then
-			slot8 = true
+		if iter_19_1.effectType == FightEnum.EffectType.SHIELD and not var_0_0.checkShieldHit(iter_19_1) then
+			var_19_1 = true
 		end
 
-		if not slot8 and slot7.effectType ~= FightEnum.EffectType.EXPOINTCHANGE and uv0.getEntity(slot7.targetId) and not tabletool.indexOf(slot2, slot9) then
-			table.insert(slot2, slot9)
+		if not var_19_1 and iter_19_1.effectType ~= FightEnum.EffectType.EXPOINTCHANGE then
+			local var_19_2 = var_0_0.getEntity(iter_19_1.targetId)
+
+			if var_19_2 and not tabletool.indexOf(var_19_0, var_19_2) then
+				table.insert(var_19_0, var_19_2)
+			end
 		end
 	end
 
-	return slot2
+	return var_19_0
 end
 
-function slot0.getTargetLimits(slot0, slot1, slot2)
-	slot4 = uv0.getSideEntitys(slot0, false)
-	slot5 = uv0.getSideEntitys(slot0 == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide, false)
-	slot7 = {}
+function var_0_0.getTargetLimits(arg_20_0, arg_20_1, arg_20_2)
+	local var_20_0 = arg_20_0 == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+	local var_20_1 = var_0_0.getSideEntitys(arg_20_0, false)
+	local var_20_2 = var_0_0.getSideEntitys(var_20_0, false)
+	local var_20_3 = lua_skill.configDict[arg_20_1]
+	local var_20_4 = {}
 
-	if not lua_skill.configDict[slot1] then
-		for slot11, slot12 in ipairs(slot5) do
-			table.insert(slot7, slot12.id)
+	if not var_20_3 then
+		for iter_20_0, iter_20_1 in ipairs(var_20_2) do
+			table.insert(var_20_4, iter_20_1.id)
 		end
 
-		logError("no target limits, skillId_" .. slot1)
-	elseif slot6.targetLimit == FightEnum.TargetLimit.None then
-		-- Nothing
-	elseif slot6.targetLimit == FightEnum.TargetLimit.EnemySide then
-		for slot11, slot12 in ipairs(slot5) do
-			table.insert(slot7, slot12.id)
+		logError("no target limits, skillId_" .. arg_20_1)
+	elseif var_20_3.targetLimit == FightEnum.TargetLimit.None then
+		-- block empty
+	elseif var_20_3.targetLimit == FightEnum.TargetLimit.EnemySide then
+		for iter_20_2, iter_20_3 in ipairs(var_20_2) do
+			table.insert(var_20_4, iter_20_3.id)
 		end
-	elseif slot6.targetLimit == FightEnum.TargetLimit.MySide then
-		for slot11, slot12 in ipairs(slot4) do
-			table.insert(slot7, slot12.id)
+	elseif var_20_3.targetLimit == FightEnum.TargetLimit.MySide then
+		for iter_20_4, iter_20_5 in ipairs(var_20_1) do
+			table.insert(var_20_4, iter_20_5.id)
 		end
 	else
-		for slot11, slot12 in ipairs(slot5) do
-			table.insert(slot7, slot12.id)
+		for iter_20_6, iter_20_7 in ipairs(var_20_2) do
+			table.insert(var_20_4, iter_20_7.id)
 		end
 
-		logError("target limit type not implement:" .. slot6.targetLimit .. " skillId = " .. slot1)
+		logError("target limit type not implement:" .. var_20_3.targetLimit .. " skillId = " .. arg_20_1)
 	end
 
-	if slot6.logicTarget == 3 then
-		if slot2 then
-			for slot12 = #slot7, 1, -1 do
-				if slot7[slot12] == slot8 then
-					table.remove(slot7, slot12)
+	if var_20_3.logicTarget == 3 then
+		local var_20_5 = arg_20_2
+
+		if var_20_5 then
+			for iter_20_8 = #var_20_4, 1, -1 do
+				if var_20_4[iter_20_8] == var_20_5 then
+					table.remove(var_20_4, iter_20_8)
 				end
 			end
 		end
-	elseif slot6.logicTarget == 1 then
-		for slot11 = 1, FightEnum.MaxBehavior do
-			if FightStrUtil.instance:getSplitCache(slot6["behavior" .. slot11], "#")[1] == "60032" then
-				for slot17 = #slot7, 1, -1 do
-					if FightDataHelper.entityMgr:getById(slot7[slot17]) and (#slot18.skillGroup1 == 0 or #slot18.skillGroup2 == 0) then
-						table.remove(slot7, slot17)
+	elseif var_20_3.logicTarget == 1 then
+		for iter_20_9 = 1, FightEnum.MaxBehavior do
+			local var_20_6 = var_20_3["behavior" .. iter_20_9]
+
+			if FightStrUtil.instance:getSplitCache(var_20_6, "#")[1] == "60032" then
+				for iter_20_10 = #var_20_4, 1, -1 do
+					local var_20_7 = FightDataHelper.entityMgr:getById(var_20_4[iter_20_10])
+
+					if var_20_7 and (#var_20_7.skillGroup1 == 0 or #var_20_7.skillGroup2 == 0) then
+						table.remove(var_20_4, iter_20_10)
 					end
 				end
 			end
 		end
 	end
 
-	return slot7
+	return var_20_4
 end
 
-function slot0.getEntityWorldTopPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
-	slot3, slot4, slot5 = uv0.getProcessEntitySpinePos(slot0)
+function var_0_0.getEntityWorldTopPos(arg_21_0)
+	local var_21_0, var_21_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_21_0)
+	local var_21_2, var_21_3, var_21_4 = var_0_0.getProcessEntitySpinePos(arg_21_0)
 
-	return slot3 + slot2.x, slot4 + slot2.y + slot1.y / 2, slot5
+	return var_21_2 + var_21_1.x, var_21_3 + var_21_1.y + var_21_0.y / 2, var_21_4
 end
 
-function slot0.getEntityWorldCenterPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
-	slot3, slot4, slot5 = uv0.getProcessEntitySpinePos(slot0)
+function var_0_0.getEntityWorldCenterPos(arg_22_0)
+	local var_22_0, var_22_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_22_0)
+	local var_22_2, var_22_3, var_22_4 = var_0_0.getProcessEntitySpinePos(arg_22_0)
 
-	return slot3 + slot2.x, slot4 + slot2.y, slot5
+	return var_22_2 + var_22_1.x, var_22_3 + var_22_1.y, var_22_4
 end
 
-function slot0.getEntityHangPointPos(slot0, slot1)
-	slot2 = slot0:getHangPoint(slot1).transform.position
+function var_0_0.getEntityHangPointPos(arg_23_0, arg_23_1)
+	local var_23_0 = arg_23_0:getHangPoint(arg_23_1).transform.position
 
-	return slot2.x, slot2.y, slot2.z
+	return var_23_0.x, var_23_0.y, var_23_0.z
 end
 
-function slot0.getEntityWorldBottomPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
-	slot3, slot4, slot5 = uv0.getProcessEntitySpinePos(slot0)
+function var_0_0.getEntityWorldBottomPos(arg_24_0)
+	local var_24_0, var_24_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_24_0)
+	local var_24_2, var_24_3, var_24_4 = var_0_0.getProcessEntitySpinePos(arg_24_0)
 
-	return slot3 + slot2.x, slot4 + slot2.y - slot1.y / 2, slot5
+	return var_24_2 + var_24_1.x, var_24_3 + var_24_1.y - var_24_0.y / 2, var_24_4
 end
 
-function slot0.getEntityLocalTopPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
+function var_0_0.getEntityLocalTopPos(arg_25_0)
+	local var_25_0, var_25_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_25_0)
 
-	return slot2.x, slot2.y + slot1.y / 2, 0
+	return var_25_1.x, var_25_1.y + var_25_0.y / 2, 0
 end
 
-function slot0.getEntityLocalCenterPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
+function var_0_0.getEntityLocalCenterPos(arg_26_0)
+	local var_26_0, var_26_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_26_0)
 
-	return slot2.x, slot2.y, 0
+	return var_26_1.x, var_26_1.y, 0
 end
 
-function slot0.getEntityLocalBottomPos(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
+function var_0_0.getEntityLocalBottomPos(arg_27_0)
+	local var_27_0, var_27_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_27_0)
 
-	return slot2.x, slot2.y - slot1.y / 2, 0
+	return var_27_1.x, var_27_1.y - var_27_0.y / 2, 0
 end
 
-function slot0.getEntityBoxSizeOffsetV2(slot0)
-	if uv0.isAssembledMonster(slot0) then
-		slot2 = lua_fight_assembled_monster.configDict[slot0:getMO().skin]
+function var_0_0.getEntityBoxSizeOffsetV2(arg_28_0)
+	if var_0_0.isAssembledMonster(arg_28_0) then
+		local var_28_0 = arg_28_0:getMO()
+		local var_28_1 = lua_fight_assembled_monster.configDict[var_28_0.skin]
 
 		return {
-			x = slot2.virtualSpineSize[1],
-			y = slot2.virtualSpineSize[2]
-		}, uv1
+			x = var_28_1.virtualSpineSize[1],
+			y = var_28_1.virtualSpineSize[2]
+		}, var_0_3
 	end
 
-	if slot0.spine and slot0.spine:getSpineGO() and slot1:GetComponent("BoxCollider2D") then
-		slot3, slot4, slot5 = transformhelper.getLocalScale(slot0.go.transform)
-		slot6 = slot2.size
-		slot7 = slot2.offset
-		slot7.x = slot7.x * slot3
-		slot7.y = slot7.y * slot4
+	local var_28_2 = arg_28_0.spine and arg_28_0.spine:getSpineGO()
 
-		if slot0.spine:getLookDir() == SpineLookDir.Right then
-			slot7.x = -slot7.x
+	if var_28_2 then
+		local var_28_3 = var_28_2:GetComponent("BoxCollider2D")
+
+		if var_28_3 then
+			local var_28_4, var_28_5, var_28_6 = transformhelper.getLocalScale(arg_28_0.go.transform)
+			local var_28_7 = var_28_3.size
+			local var_28_8 = var_28_3.offset
+
+			var_28_8.x = var_28_8.x * var_28_4
+			var_28_8.y = var_28_8.y * var_28_5
+
+			if arg_28_0.spine:getLookDir() == SpineLookDir.Right then
+				var_28_8.x = -var_28_8.x
+			end
+
+			var_28_7.x = var_28_7.x * var_28_4
+			var_28_7.y = var_28_7.y * var_28_5
+
+			return var_28_7, var_28_8
 		end
-
-		slot6.x = slot6.x * slot3
-		slot6.y = slot6.y * slot4
-
-		return slot6, slot7
 	end
 
-	return uv1, uv1
+	return var_0_3, var_0_3
 end
 
-function slot0.getModelSize(slot0)
-	slot1, slot2 = uv0.getEntityBoxSizeOffsetV2(slot0)
+function var_0_0.getModelSize(arg_29_0)
+	local var_29_0, var_29_1 = var_0_0.getEntityBoxSizeOffsetV2(arg_29_0)
+	local var_29_2 = var_29_0.x + var_29_0.y
 
-	if slot1.x + slot1.y > 14 then
+	if var_29_2 > 14 then
 		return 4
-	elseif slot3 > 7 then
+	elseif var_29_2 > 7 then
 		return 3
-	elseif slot3 > 3 then
+	elseif var_29_2 > 3 then
 		return 2
 	else
 		return 1
 	end
 end
 
-function slot0.getEffectUrlWithLod(slot0)
-	return ResUrl.getEffect(slot0)
+function var_0_0.getEffectUrlWithLod(arg_30_0)
+	return ResUrl.getEffect(arg_30_0)
 end
 
-function slot0.tempNewStepProto(slot0)
-	slot1 = {}
+function var_0_0.tempNewStepProto(arg_31_0)
+	local var_31_0 = {}
 
-	setmetatable(slot1, {
-		__index = slot0
+	setmetatable(var_31_0, {
+		__index = arg_31_0
 	})
 
-	slot1.actEffect = {}
+	local var_31_1 = {}
 
-	for slot6, slot7 in ipairs(slot0.actEffect) do
-		slot8 = {}
+	var_31_0.actEffect = var_31_1
 
-		setmetatable(slot8, {
-			__index = slot7
+	for iter_31_0, iter_31_1 in ipairs(arg_31_0.actEffect) do
+		local var_31_2 = {}
+
+		setmetatable(var_31_2, {
+			__index = iter_31_1
 		})
-		table.insert(slot2, slot8)
+		table.insert(var_31_1, var_31_2)
 
-		if slot7.effectType == FightEnum.EffectType.FIGHTSTEP then
-			slot8.fightStep = uv0.tempNewStepProto(slot7.fightStep)
+		if iter_31_1.effectType == FightEnum.EffectType.FIGHTSTEP then
+			var_31_2.fightStep = var_0_0.tempNewStepProto(iter_31_1.fightStep)
 		end
 	end
 
-	return slot1
+	return var_31_0
 end
 
-function slot0.tempProcessStepListProto(slot0)
-	slot1 = {}
+function var_0_0.tempProcessStepListProto(arg_32_0)
+	local var_32_0 = {}
 
-	for slot5, slot6 in ipairs(slot0) do
-		table.insert(slot1, uv0.tempNewStepProto(slot6))
+	for iter_32_0, iter_32_1 in ipairs(arg_32_0) do
+		local var_32_1 = var_0_0.tempNewStepProto(iter_32_1)
+
+		table.insert(var_32_0, var_32_1)
 	end
 
-	return slot1
+	return var_32_0
 end
 
-slot4 = 0
-slot5 = 0
+local var_0_4 = 0
+local var_0_5 = 0
 
-function slot0.processRoundStep(slot0)
-	uv1 = 0
-	uv2 = 0
-	slot1 = {}
+function var_0_0.processRoundStep(arg_33_0)
+	arg_33_0 = var_0_0.tempProcessStepListProto(arg_33_0)
+	var_0_4 = 0
+	var_0_5 = 0
 
-	for slot5, slot6 in ipairs(uv0.tempProcessStepListProto(slot0)) do
-		uv0.addRoundStep(slot1, slot6)
+	local var_33_0 = {}
+
+	for iter_33_0, iter_33_1 in ipairs(arg_33_0) do
+		var_0_0.addRoundStep(var_33_0, iter_33_1)
 	end
 
-	return slot1
+	return var_33_0
 end
 
-function slot0.addRoundStep(slot0, slot1)
-	table.insert(slot0, slot1)
-	uv0.detectStepEffect(slot0, slot1.actEffect)
+function var_0_0.addRoundStep(arg_34_0, arg_34_1)
+	table.insert(arg_34_0, arg_34_1)
+	var_0_0.detectStepEffect(arg_34_0, arg_34_1.actEffect)
 end
 
-function slot0.detectStepEffect(slot0, slot1)
-	if slot1 and #slot1 > 0 then
-		slot2 = 1
+function var_0_0.detectStepEffect(arg_35_0, arg_35_1)
+	if arg_35_1 and #arg_35_1 > 0 then
+		local var_35_0 = 1
 
-		while slot1[slot2] do
-			if slot1[slot2].effectType == FightEnum.EffectType.SPLITSTART then
-				uv0 = uv0 + 1
-			elseif slot3.effectType == FightEnum.EffectType.SPLITEND then
-				uv0 = uv0 - 1
+		while arg_35_1[var_35_0] do
+			local var_35_1 = arg_35_1[var_35_0]
+
+			if var_35_1.effectType == FightEnum.EffectType.SPLITSTART then
+				var_0_4 = var_0_4 + 1
+			elseif var_35_1.effectType == FightEnum.EffectType.SPLITEND then
+				var_0_4 = var_0_4 - 1
 			end
 
-			if slot3.effectType == FightEnum.EffectType.FIGHTSTEP then
-				if uv0 > 0 then
-					table.remove(slot1, slot2)
+			if var_35_1.effectType == FightEnum.EffectType.FIGHTSTEP then
+				if var_0_4 > 0 then
+					table.remove(arg_35_1, var_35_0)
 
-					slot2 = slot2 - 1
-					uv1 = uv1 + 1
+					var_35_0 = var_35_0 - 1
+					var_0_5 = var_0_5 + 1
 
-					uv2.addRoundStep(slot0, slot3.fightStep)
+					var_0_0.addRoundStep(arg_35_0, var_35_1.fightStep)
 
-					uv1 = uv1 - 1
-				elseif slot3.fightStep.fakeTimeline then
-					uv2.addRoundStep(slot0, slot3.fightStep)
-				elseif slot4.actType == FightEnum.ActType.SKILL then
-					if uv2.needAddRoundStep(slot4) then
-						uv2.addRoundStep(slot0, slot3.fightStep)
-					else
-						uv2.detectStepEffect(slot0, slot4.actEffect)
-					end
-				elseif slot4.actType == FightEnum.ActType.CHANGEHERO then
-					uv2.addRoundStep(slot0, slot3.fightStep)
-				elseif slot4.actType == FightEnum.ActType.CHANGEWAVE then
-					uv2.addRoundStep(slot0, slot3.fightStep)
+					var_0_5 = var_0_5 - 1
 				else
-					uv2.detectStepEffect(slot0, slot4.actEffect)
+					local var_35_2 = var_35_1.fightStep
+
+					if var_35_2.fakeTimeline then
+						var_0_0.addRoundStep(arg_35_0, var_35_1.fightStep)
+					elseif var_35_2.actType == FightEnum.ActType.SKILL then
+						if var_0_0.needAddRoundStep(var_35_2) then
+							var_0_0.addRoundStep(arg_35_0, var_35_1.fightStep)
+						else
+							var_0_0.detectStepEffect(arg_35_0, var_35_2.actEffect)
+						end
+					elseif var_35_2.actType == FightEnum.ActType.CHANGEHERO then
+						var_0_0.addRoundStep(arg_35_0, var_35_1.fightStep)
+					elseif var_35_2.actType == FightEnum.ActType.CHANGEWAVE then
+						var_0_0.addRoundStep(arg_35_0, var_35_1.fightStep)
+					else
+						var_0_0.detectStepEffect(arg_35_0, var_35_2.actEffect)
+					end
 				end
-			elseif uv0 > 0 and uv1 == 0 then
-				table.remove(slot1, slot2)
+			elseif var_0_4 > 0 and var_0_5 == 0 then
+				table.remove(arg_35_1, var_35_0)
 
-				slot2 = slot2 - 1
+				var_35_0 = var_35_0 - 1
 
-				table.insert(slot0, {
-					actType = FightEnum.ActType.EFFECT,
-					fromId = "0",
-					toId = "0",
-					actId = 0,
-					actEffect = {
-						slot3
-					},
-					cardIndex = 0,
-					supportHeroId = 0,
-					fakeTimeline = false
-				})
+				local var_35_3 = {
+					actType = FightEnum.ActType.EFFECT
+				}
+
+				var_35_3.fromId = "0"
+				var_35_3.toId = "0"
+				var_35_3.actId = 0
+				var_35_3.actEffect = {
+					var_35_1
+				}
+				var_35_3.cardIndex = 0
+				var_35_3.supportHeroId = 0
+				var_35_3.fakeTimeline = false
+
+				table.insert(arg_35_0, var_35_3)
 			end
 
-			slot2 = slot2 + 1
+			var_35_0 = var_35_0 + 1
 		end
 	end
 end
 
-function slot0.needAddRoundStep(slot0)
-	if slot0 then
-		if uv0.isTimelineStep(slot0) then
+function var_0_0.needAddRoundStep(arg_36_0)
+	if arg_36_0 then
+		if var_0_0.isTimelineStep(arg_36_0) then
 			return true
-		elseif slot0.actType == FightEnum.ActType.CHANGEHERO then
+		elseif arg_36_0.actType == FightEnum.ActType.CHANGEHERO then
 			return true
-		elseif slot0.actType == FightEnum.ActType.CHANGEWAVE then
+		elseif arg_36_0.actType == FightEnum.ActType.CHANGEWAVE then
 			return true
 		end
 	end
 end
 
-function slot0.buildInfoMOs(slot0, slot1)
-	slot2 = {}
+function var_0_0.buildInfoMOs(arg_37_0, arg_37_1)
+	local var_37_0 = {}
 
-	for slot6, slot7 in ipairs(slot0) do
-		slot8 = slot1.New()
+	for iter_37_0, iter_37_1 in ipairs(arg_37_0) do
+		local var_37_1 = arg_37_1.New()
 
-		slot8:init(slot7)
-		table.insert(slot2, slot8)
+		var_37_1:init(iter_37_1)
+		table.insert(var_37_0, var_37_1)
 	end
 
-	return slot2
+	return var_37_0
 end
 
-function slot0.logForPCSkillEditor(slot0)
+function var_0_0.logForPCSkillEditor(arg_38_0)
 	if not SkillEditorMgr.instance.inEditMode or SLFramework.FrameworkSettings.IsEditor then
-		logNormal(slot0)
+		logNormal(arg_38_0)
 	end
 end
 
-function slot0.getEffectLabel(slot0, slot1)
-	if gohelper.isNil(slot0) then
+function var_0_0.getEffectLabel(arg_39_0, arg_39_1)
+	if gohelper.isNil(arg_39_0) then
 		return
 	end
 
-	if not slot0:GetComponentsInChildren(typeof(ZProj.EffectLabel)) or slot2.Length <= 0 then
+	local var_39_0 = arg_39_0:GetComponentsInChildren(typeof(ZProj.EffectLabel))
+
+	if not var_39_0 or var_39_0.Length <= 0 then
 		return
 	end
 
-	slot3 = {}
+	local var_39_1 = {}
 
-	for slot7 = 0, slot2.Length - 1 do
-		slot8 = slot2[slot7]
+	for iter_39_0 = 0, var_39_0.Length - 1 do
+		local var_39_2 = var_39_0[iter_39_0]
 
-		if not slot1 or slot8.label == slot1 then
-			table.insert(slot3, slot8)
+		if not arg_39_1 or var_39_2.label == arg_39_1 then
+			table.insert(var_39_1, var_39_2)
 		end
 	end
 
-	return slot3
+	return var_39_1
 end
 
-function slot0.shouUIPoisoningEffect(slot0)
-	if FightConfig.instance:hasBuffFeature(slot0, FightEnum.BuffType_Dot) and lua_skill_buff.configDict[slot0] and lua_fight_buff_use_poison_ui_effect.configDict[slot2.typeId] then
-		return true
+function var_0_0.shouUIPoisoningEffect(arg_40_0)
+	if FightConfig.instance:hasBuffFeature(arg_40_0, FightEnum.BuffType_Dot) then
+		local var_40_0 = lua_skill_buff.configDict[arg_40_0]
+
+		if var_40_0 and lua_fight_buff_use_poison_ui_effect.configDict[var_40_0.typeId] then
+			return true
+		end
 	end
 
 	return false
 end
 
-function slot0.dealDirectActEffectData(slot0, slot1, slot2)
-	slot3 = uv0.filterActEffect(slot0, slot2)
-	slot4 = #slot3
-	slot5 = {}
+function var_0_0.dealDirectActEffectData(arg_41_0, arg_41_1, arg_41_2)
+	local var_41_0 = var_0_0.filterActEffect(arg_41_0, arg_41_2)
+	local var_41_1 = #var_41_0
+	local var_41_2 = {}
 
-	if slot3[slot1] then
-		slot5 = slot3[slot1]
-	elseif slot4 > 0 then
-		slot5 = slot3[slot4]
+	if var_41_0[arg_41_1] then
+		var_41_2 = var_41_0[arg_41_1]
+	elseif var_41_1 > 0 then
+		var_41_2 = var_41_0[var_41_1]
 	end
 
-	return slot5
+	return var_41_2
 end
 
-function slot0.filterActEffect(slot0, slot1)
-	slot2 = {}
-	slot3 = {}
-	slot4 = {}
+function var_0_0.filterActEffect(arg_42_0, arg_42_1)
+	local var_42_0 = {}
+	local var_42_1 = {}
+	local var_42_2 = {}
 
-	for slot8, slot9 in ipairs(slot0) do
-		slot11 = false
+	for iter_42_0, iter_42_1 in ipairs(arg_42_0) do
+		local var_42_3 = iter_42_1
+		local var_42_4 = false
 
-		if slot9.effectType == FightEnum.EffectType.SHIELD and not uv0.checkShieldHit(slot10) then
-			slot11 = true
+		if var_42_3.effectType == FightEnum.EffectType.SHIELD and not var_0_0.checkShieldHit(var_42_3) then
+			var_42_4 = true
 		end
 
-		if not slot11 and slot1[slot9.effectType] then
-			if not slot3[slot9.targetId] then
-				slot3[slot9.targetId] = {}
+		if not var_42_4 and arg_42_1[iter_42_1.effectType] then
+			if not var_42_1[iter_42_1.targetId] then
+				var_42_1[iter_42_1.targetId] = {}
 
-				table.insert(slot4, slot9.targetId)
+				table.insert(var_42_2, iter_42_1.targetId)
 			end
 
-			table.insert(slot3[slot9.targetId], slot9)
+			table.insert(var_42_1[iter_42_1.targetId], iter_42_1)
 		end
 	end
 
-	for slot8, slot9 in ipairs(slot4) do
-		slot2[slot8] = slot3[slot9]
+	for iter_42_2, iter_42_3 in ipairs(var_42_2) do
+		var_42_0[iter_42_2] = var_42_1[iter_42_3]
 	end
 
-	return slot2
+	return var_42_0
 end
 
-function slot0.detectAttributeCounter()
-	slot1, slot2 = uv0.getAttributeCounter(FightModel.instance:getFightParam().monsterGroupIds, GameSceneMgr.instance:isSpScene())
+function var_0_0.detectAttributeCounter()
+	local var_43_0 = FightModel.instance:getFightParam()
+	local var_43_1, var_43_2 = var_0_0.getAttributeCounter(var_43_0.monsterGroupIds, GameSceneMgr.instance:isSpScene())
 
-	return slot1, slot2
+	return var_43_1, var_43_2
 end
 
-function slot0.getAttributeCounter(slot0, slot1)
-	slot2 = nil
-	slot3 = {}
+function var_0_0.getAttributeCounter(arg_44_0, arg_44_1)
+	local var_44_0
+	local var_44_1 = {}
 
-	for slot7, slot8 in ipairs(slot0) do
-		if not string.nilorempty(lua_monster_group.configDict[slot8].bossId) then
-			slot2 = lua_monster_group.configDict[slot8].bossId
+	for iter_44_0, iter_44_1 in ipairs(arg_44_0) do
+		if not string.nilorempty(lua_monster_group.configDict[iter_44_1].bossId) then
+			local var_44_2 = lua_monster_group.configDict[iter_44_1].bossId
 		end
 
-		for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot8].monster, "#")) do
-			if not lua_monster.configDict[slot14] then
-				logError("怪物表找不到id:" .. slot14)
+		local var_44_3 = FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[iter_44_1].monster, "#")
+
+		for iter_44_2, iter_44_3 in ipairs(var_44_3) do
+			if not lua_monster.configDict[iter_44_3] then
+				logError("怪物表找不到id:" .. iter_44_3)
 			end
 
-			if lua_monster.configDict[slot14].career ~= 5 and slot15 ~= 6 then
-				slot3[slot15] = (slot3[slot15] or 0) + 1
+			local var_44_4 = lua_monster.configDict[iter_44_3].career
 
-				if uv0.isBossId(lua_monster_group.configDict[slot8].bossId, slot14) then
-					slot3[slot15] = (slot3[slot15] or 0) + 1
+			if var_44_4 ~= 5 and var_44_4 ~= 6 then
+				var_44_1[var_44_4] = (var_44_1[var_44_4] or 0) + 1
+
+				if var_0_0.isBossId(lua_monster_group.configDict[iter_44_1].bossId, iter_44_3) then
+					var_44_1[var_44_4] = (var_44_1[var_44_4] or 0) + 1
 				end
 			end
 		end
 	end
 
-	slot4 = {}
+	local var_44_5 = {}
+	local var_44_6 = {}
 
-	if slot1 then
-		return slot4, {}
+	if arg_44_1 then
+		return var_44_5, var_44_6
 	end
 
-	if #slot4 == 0 then
-		slot7 = 0
-		slot8 = {}
+	if #var_44_5 == 0 then
+		local var_44_7 = 0
+		local var_44_8 = 0
+		local var_44_9 = {}
+		local var_44_10 = {}
 
-		for slot13, slot14 in pairs(slot3) do
-			if slot14 >= 2 then
-				slot6 = 0 + 1
+		for iter_44_4, iter_44_5 in pairs(var_44_1) do
+			if iter_44_5 >= 2 then
+				var_44_7 = var_44_7 + 1
 
-				table.insert({}, slot13)
+				table.insert(var_44_10, iter_44_4)
 			else
-				slot7 = slot7 + 1
+				var_44_8 = var_44_8 + 1
 
-				table.insert(slot8, slot13)
+				table.insert(var_44_9, iter_44_4)
 			end
 		end
 
-		if slot6 == 1 then
-			table.insert(slot4, FightConfig.instance:restrainedBy(slot9[1]))
-			table.insert(slot5, FightConfig.instance:restrained(slot9[1]))
-		elseif slot6 == 2 then
-			if uv0.checkHadRestrain(slot9[1], slot9[2]) then
-				table.insert(slot4, FightConfig.instance:restrainedBy(slot9[1]))
-				table.insert(slot4, FightConfig.instance:restrainedBy(slot9[2]))
-				table.insert(slot5, FightConfig.instance:restrained(slot9[1]))
-				table.insert(slot5, FightConfig.instance:restrained(slot9[2]))
+		if var_44_7 == 1 then
+			table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_10[1]))
+			table.insert(var_44_6, FightConfig.instance:restrained(var_44_10[1]))
+		elseif var_44_7 == 2 then
+			if var_0_0.checkHadRestrain(var_44_10[1], var_44_10[2]) then
+				table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_10[1]))
+				table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_10[2]))
+				table.insert(var_44_6, FightConfig.instance:restrained(var_44_10[1]))
+				table.insert(var_44_6, FightConfig.instance:restrained(var_44_10[2]))
 			end
-		elseif slot6 == 0 then
-			if slot7 == 1 then
-				table.insert(slot4, FightConfig.instance:restrainedBy(slot8[1]))
-				table.insert(slot5, FightConfig.instance:restrained(slot8[1]))
-			elseif slot7 == 2 and uv0.checkHadRestrain(slot8[1], slot8[2]) then
-				table.insert(slot4, FightConfig.instance:restrainedBy(slot8[1]))
-				table.insert(slot4, FightConfig.instance:restrainedBy(slot8[2]))
-				table.insert(slot5, FightConfig.instance:restrained(slot8[1]))
-				table.insert(slot5, FightConfig.instance:restrained(slot8[2]))
+		elseif var_44_7 == 0 then
+			if var_44_8 == 1 then
+				table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_9[1]))
+				table.insert(var_44_6, FightConfig.instance:restrained(var_44_9[1]))
+			elseif var_44_8 == 2 and var_0_0.checkHadRestrain(var_44_9[1], var_44_9[2]) then
+				table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_9[1]))
+				table.insert(var_44_5, FightConfig.instance:restrainedBy(var_44_9[2]))
+				table.insert(var_44_6, FightConfig.instance:restrained(var_44_9[1]))
+				table.insert(var_44_6, FightConfig.instance:restrained(var_44_9[2]))
 			end
 		end
 	end
 
-	for slot9 = #slot5, 1, -1 do
-		if tabletool.indexOf(slot4, slot5[1]) then
-			table.remove(slot5, slot9)
+	for iter_44_6 = #var_44_6, 1, -1 do
+		if tabletool.indexOf(var_44_5, var_44_6[1]) then
+			table.remove(var_44_6, iter_44_6)
 		end
 	end
 
-	return slot4, slot5
+	return var_44_5, var_44_6
 end
 
-function slot0.checkHadRestrain(slot0, slot1)
-	return FightConfig.instance:getRestrain(slot0, slot1) > 1000 or FightConfig.instance:getRestrain(slot1, slot0) > 1000
+function var_0_0.checkHadRestrain(arg_45_0, arg_45_1)
+	return FightConfig.instance:getRestrain(arg_45_0, arg_45_1) > 1000 or FightConfig.instance:getRestrain(arg_45_1, arg_45_0) > 1000
 end
 
-function slot0.setMonsterGuideFocusState(slot0)
-	PlayerPrefsHelper.setNumber(FightWorkSkillOrBuffFocusMonster.getPlayerPrefKey(slot0), 1)
+function var_0_0.setMonsterGuideFocusState(arg_46_0)
+	local var_46_0 = FightWorkSkillOrBuffFocusMonster.getPlayerPrefKey(arg_46_0)
 
-	if not string.nilorempty(slot0.completeWithGroup) then
-		for slot6, slot7 in ipairs(FightStrUtil.instance:getSplitCache(slot0.completeWithGroup, "|")) do
-			slot8 = FightStrUtil.instance:getSplitToNumberCache(slot7, "#")
+	PlayerPrefsHelper.setNumber(var_46_0, 1)
 
-			if FightConfig.instance:getMonsterGuideFocusConfig(slot8[1], slot8[2], slot8[3], slot8[4]) then
-				PlayerPrefsHelper.setNumber(FightWorkSkillOrBuffFocusMonster.getPlayerPrefKey(slot9), 1)
+	if not string.nilorempty(arg_46_0.completeWithGroup) then
+		local var_46_1 = FightStrUtil.instance:getSplitCache(arg_46_0.completeWithGroup, "|")
+
+		for iter_46_0, iter_46_1 in ipairs(var_46_1) do
+			local var_46_2 = FightStrUtil.instance:getSplitToNumberCache(iter_46_1, "#")
+			local var_46_3 = FightConfig.instance:getMonsterGuideFocusConfig(var_46_2[1], var_46_2[2], var_46_2[3], var_46_2[4])
+
+			if var_46_3 then
+				local var_46_4 = FightWorkSkillOrBuffFocusMonster.getPlayerPrefKey(var_46_3)
+
+				PlayerPrefsHelper.setNumber(var_46_4, 1)
 			else
-				logError("怪物指引图表找不到id：", slot8[1], slot8[2], slot8[3], slot8[4])
+				logError("怪物指引图表找不到id：", var_46_2[1], var_46_2[2], var_46_2[3], var_46_2[4])
 			end
 		end
 	end
 end
 
-function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
-	if string.nilorempty(slot1) or slot1 == "0" then
+function var_0_0.detectTimelinePlayEffectCondition(arg_47_0, arg_47_1, arg_47_2)
+	if string.nilorempty(arg_47_1) or arg_47_1 == "0" then
 		return true
 	end
 
-	if slot1 == "1" then
-		slot3 = false
+	if arg_47_1 == "1" then
+		local var_47_0 = false
 
-		for slot7, slot8 in pairs(slot0.actEffect) do
-			if slot8.effectType == FightEnum.EffectType.DEAD then
-				slot3 = true
+		for iter_47_0, iter_47_1 in pairs(arg_47_0.actEffect) do
+			if iter_47_1.effectType == FightEnum.EffectType.DEAD then
+				var_47_0 = true
 			end
 		end
 
-		return slot3
+		return var_47_0
 	end
 
-	if FightStrUtil.instance:getSplitToNumberCache(slot1, "#")[1] == 2 then
-		for slot8, slot9 in ipairs(slot0.actEffect) do
-			if slot9.effectType == FightEnum.EffectType.MISS or slot9.effectType == FightEnum.EffectType.DAMAGE or slot9.effectType == FightEnum.EffectType.CRIT or slot9.effectType == FightEnum.EffectType.SHIELD then
-				slot10 = uv0.getEntity(slot9.targetId)
+	local var_47_1 = FightStrUtil.instance:getSplitToNumberCache(arg_47_1, "#")
+	local var_47_2 = var_47_1[1]
 
-				for slot14 = 2, #slot3 do
-					if slot2 then
-						if slot2 == slot10 and uv0.detectEntityIncludeBuffType(slot10, slot3[slot14]) then
+	if var_47_2 == 2 then
+		for iter_47_2, iter_47_3 in ipairs(arg_47_0.actEffect) do
+			if iter_47_3.effectType == FightEnum.EffectType.MISS or iter_47_3.effectType == FightEnum.EffectType.DAMAGE or iter_47_3.effectType == FightEnum.EffectType.CRIT or iter_47_3.effectType == FightEnum.EffectType.SHIELD then
+				local var_47_3 = var_0_0.getEntity(iter_47_3.targetId)
+
+				for iter_47_4 = 2, #var_47_1 do
+					if arg_47_2 then
+						if arg_47_2 == var_47_3 and var_0_0.detectEntityIncludeBuffType(var_47_3, var_47_1[iter_47_4]) then
 							return true
 						end
-					elseif uv0.detectEntityIncludeBuffType(slot10, slot3[slot14]) then
+					elseif var_0_0.detectEntityIncludeBuffType(var_47_3, var_47_1[iter_47_4]) then
 						return true
 					end
 				end
@@ -800,23 +929,29 @@ function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
 		end
 	end
 
-	if slot4 == 3 and uv0.getEntity(slot0.fromId) then
-		for slot9 = 2, #slot3 do
-			if uv0.detectEntityIncludeBuffType(slot5, slot3[slot9]) then
-				return true
+	if var_47_2 == 3 then
+		local var_47_4 = var_0_0.getEntity(arg_47_0.fromId)
+
+		if var_47_4 then
+			for iter_47_5 = 2, #var_47_1 do
+				if var_0_0.detectEntityIncludeBuffType(var_47_4, var_47_1[iter_47_5]) then
+					return true
+				end
 			end
 		end
 	end
 
-	if slot4 == 4 then
-		for slot8, slot9 in ipairs(slot0.actEffect) do
-			if slot9.effectType == FightEnum.EffectType.MISS or slot9.effectType == FightEnum.EffectType.DAMAGE or slot9.effectType == FightEnum.EffectType.CRIT or slot9.effectType == FightEnum.EffectType.SHIELD then
-				for slot14 = 2, #slot3 do
-					if slot2 then
-						if slot2 == uv0.getEntity(slot9.targetId) and slot2.buff and slot2.buff:haveBuffId(slot3[slot14]) then
+	if var_47_2 == 4 then
+		for iter_47_6, iter_47_7 in ipairs(arg_47_0.actEffect) do
+			if iter_47_7.effectType == FightEnum.EffectType.MISS or iter_47_7.effectType == FightEnum.EffectType.DAMAGE or iter_47_7.effectType == FightEnum.EffectType.CRIT or iter_47_7.effectType == FightEnum.EffectType.SHIELD then
+				local var_47_5 = var_0_0.getEntity(iter_47_7.targetId)
+
+				for iter_47_8 = 2, #var_47_1 do
+					if arg_47_2 then
+						if arg_47_2 == var_47_5 and arg_47_2.buff and arg_47_2.buff:haveBuffId(var_47_1[iter_47_8]) then
 							return true
 						end
-					elseif slot10.buff and slot10.buff:haveBuffId(slot3[slot14]) then
+					elseif var_47_5.buff and var_47_5.buff:haveBuffId(var_47_1[iter_47_8]) then
 						return true
 					end
 				end
@@ -824,35 +959,49 @@ function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
 		end
 	end
 
-	if slot4 == 5 and uv0.getEntity(slot0.fromId) and slot5.buff then
-		for slot9 = 2, #slot3 do
-			if slot5.buff:haveBuffId(slot3[slot9]) then
-				return true
+	if var_47_2 == 5 then
+		local var_47_6 = var_0_0.getEntity(arg_47_0.fromId)
+
+		if var_47_6 and var_47_6.buff then
+			for iter_47_9 = 2, #var_47_1 do
+				if var_47_6.buff:haveBuffId(var_47_1[iter_47_9]) then
+					return true
+				end
 			end
 		end
 	end
 
-	if slot4 == 6 then
-		for slot8, slot9 in ipairs(slot0.actEffect) do
-			if slot9.effectType == FightEnum.EffectType.MISS or slot9.effectType == FightEnum.EffectType.DAMAGE or slot9.effectType == FightEnum.EffectType.CRIT or slot9.effectType == FightEnum.EffectType.SHIELD then
-				for slot14 = 2, #slot3 do
-					if slot2 then
-						if slot2 == uv0.getEntity(slot9.targetId) and slot2:getMO() and slot15.skin == slot3[slot14] then
+	if var_47_2 == 6 then
+		for iter_47_10, iter_47_11 in ipairs(arg_47_0.actEffect) do
+			if iter_47_11.effectType == FightEnum.EffectType.MISS or iter_47_11.effectType == FightEnum.EffectType.DAMAGE or iter_47_11.effectType == FightEnum.EffectType.CRIT or iter_47_11.effectType == FightEnum.EffectType.SHIELD then
+				local var_47_7 = var_0_0.getEntity(iter_47_11.targetId)
+
+				for iter_47_12 = 2, #var_47_1 do
+					if arg_47_2 then
+						if arg_47_2 == var_47_7 then
+							local var_47_8 = arg_47_2:getMO()
+
+							if var_47_8 and var_47_8.skin == var_47_1[iter_47_12] then
+								return true
+							end
+						end
+					else
+						local var_47_9 = var_47_7:getMO()
+
+						if var_47_9 and var_47_9.skin == var_47_1[iter_47_12] then
 							return true
 						end
-					elseif slot10:getMO() and slot15.skin == slot3[slot14] then
-						return true
 					end
 				end
 			end
 		end
 	end
 
-	if slot4 == 7 then
-		for slot8, slot9 in ipairs(slot0.actEffect) do
-			if slot9.targetId == slot0.fromId and slot9.configEffect == slot3[2] then
-				if slot9.configEffect == 30011 then
-					if slot9.effectNum ~= 0 then
+	if var_47_2 == 7 then
+		for iter_47_13, iter_47_14 in ipairs(arg_47_0.actEffect) do
+			if iter_47_14.targetId == arg_47_0.fromId and iter_47_14.configEffect == var_47_1[2] then
+				if iter_47_14.configEffect == 30011 then
+					if iter_47_14.effectNum ~= 0 then
 						return true
 					end
 				else
@@ -862,11 +1011,11 @@ function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
 		end
 	end
 
-	if slot4 == 8 then
-		for slot8, slot9 in ipairs(slot0.actEffect) do
-			if slot9.targetId ~= slot0.fromId and slot9.configEffect == slot3[2] then
-				if slot9.configEffect == 30011 then
-					if slot9.effectNum ~= 0 then
+	if var_47_2 == 8 then
+		for iter_47_15, iter_47_16 in ipairs(arg_47_0.actEffect) do
+			if iter_47_16.targetId ~= arg_47_0.fromId and iter_47_16.configEffect == var_47_1[2] then
+				if iter_47_16.configEffect == 30011 then
+					if iter_47_16.effectNum ~= 0 then
 						return true
 					end
 				else
@@ -876,32 +1025,44 @@ function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
 		end
 	end
 
-	if slot4 == 9 then
-		if uv0.getEntity(slot0.fromId) and slot5.buff then
-			for slot9 = 2, #slot3 do
-				if slot5.buff:haveBuffId(slot3[slot9]) then
+	if var_47_2 == 9 then
+		local var_47_10 = var_0_0.getEntity(arg_47_0.fromId)
+
+		if var_47_10 and var_47_10.buff then
+			for iter_47_17 = 2, #var_47_1 do
+				if var_47_10.buff:haveBuffId(var_47_1[iter_47_17]) then
 					return false
 				end
 			end
 
 			return true
 		end
-	elseif slot4 == 10 then
-		if slot0.playerOperationCountForPlayEffectTimeline and slot3[2] == slot5 then
+	elseif var_47_2 == 10 then
+		local var_47_11 = arg_47_0.playerOperationCountForPlayEffectTimeline
+
+		if var_47_11 and var_47_1[2] == var_47_11 then
 			return true
 		end
-	elseif slot4 == 11 then
-		if FightDataHelper.entityMgr:getById(slot0.fromId) and slot7:getPowerInfo(FightEnum.PowerType.Power) then
-			if slot3[2] == 1 then
-				return slot3[3] < slot8.num
-			elseif slot5 == 2 then
-				return slot8.num < slot6
-			elseif slot5 == 3 then
-				return slot8.num == slot6
-			elseif slot5 == 4 then
-				return slot6 <= slot8.num
-			elseif slot5 == 5 then
-				return slot8.num <= slot6
+	elseif var_47_2 == 11 then
+		local var_47_12 = var_47_1[2]
+		local var_47_13 = var_47_1[3]
+		local var_47_14 = FightDataHelper.entityMgr:getById(arg_47_0.fromId)
+
+		if var_47_14 then
+			local var_47_15 = var_47_14:getPowerInfo(FightEnum.PowerType.Power)
+
+			if var_47_15 then
+				if var_47_12 == 1 then
+					return var_47_13 < var_47_15.num
+				elseif var_47_12 == 2 then
+					return var_47_13 > var_47_15.num
+				elseif var_47_12 == 3 then
+					return var_47_15.num == var_47_13
+				elseif var_47_12 == 4 then
+					return var_47_13 <= var_47_15.num
+				elseif var_47_12 == 5 then
+					return var_47_13 >= var_47_15.num
+				end
 			end
 		end
 	end
@@ -909,87 +1070,103 @@ function slot0.detectTimelinePlayEffectCondition(slot0, slot1, slot2)
 	return false
 end
 
-function slot0.detectEntityIncludeBuffType(slot0, slot1, slot2)
-	slot3 = slot0 and slot0:getMO()
+function var_0_0.detectEntityIncludeBuffType(arg_48_0, arg_48_1, arg_48_2)
+	local var_48_0 = arg_48_0 and arg_48_0:getMO()
 
-	for slot7, slot8 in ipairs(slot2 or slot3 and slot3:getBuffList() or {}) do
-		if slot1 == lua_skill_bufftype.configDict[lua_skill_buff.configDict[slot8.buffId].typeId].type then
+	arg_48_2 = arg_48_2 or var_48_0 and var_48_0:getBuffList() or {}
+
+	for iter_48_0, iter_48_1 in ipairs(arg_48_2) do
+		local var_48_1 = lua_skill_buff.configDict[iter_48_1.buffId]
+
+		if arg_48_1 == lua_skill_bufftype.configDict[var_48_1.typeId].type then
 			return true
 		end
 	end
 end
 
-function slot0.hideDefenderBuffEffect(slot0, slot1)
-	slot3 = {}
+function var_0_0.hideDefenderBuffEffect(arg_49_0, arg_49_1)
+	local var_49_0 = lua_skin_monster_hide_buff_effect.configDict[arg_49_0.actId]
+	local var_49_1 = {}
 
-	if lua_skin_monster_hide_buff_effect.configDict[slot0.actId] then
-		slot4 = {}
-		slot5 = nil
+	if var_49_0 then
+		local var_49_2 = {}
+		local var_49_3
 
-		if slot2.effectName == "all" then
-			slot5 = true
+		if var_49_0.effectName == "all" then
+			var_49_3 = true
 		end
 
-		slot6 = FightStrUtil.instance:getSplitCache(slot2.effectName, "#")
-		slot8 = {}
+		local var_49_4 = FightStrUtil.instance:getSplitCache(var_49_0.effectName, "#")
+		local var_49_5 = var_0_0.getDefenders(arg_49_0, true)
+		local var_49_6 = {}
 
-		for slot12, slot13 in ipairs(uv0.getDefenders(slot0, true)) do
-			if not slot8[slot13.id] then
-				slot8[slot13.id] = true
+		for iter_49_0, iter_49_1 in ipairs(var_49_5) do
+			if not var_49_6[iter_49_1.id] then
+				var_49_6[iter_49_1.id] = true
 
-				if uv0.isAssembledMonster(slot13) then
-					for slot18, slot19 in ipairs(uv0.getSideEntitys(slot13:getSide())) do
-						if uv0.isAssembledMonster(slot19) and not slot8[slot19.id] then
-							slot8[slot19.id] = true
+				if var_0_0.isAssembledMonster(iter_49_1) then
+					local var_49_7 = var_0_0.getSideEntitys(iter_49_1:getSide())
 
-							table.insert(slot7, slot19)
+					for iter_49_2, iter_49_3 in ipairs(var_49_7) do
+						if var_0_0.isAssembledMonster(iter_49_3) and not var_49_6[iter_49_3.id] then
+							var_49_6[iter_49_3.id] = true
+
+							table.insert(var_49_5, iter_49_3)
 						end
 					end
 				end
 			end
 		end
 
-		for slot12, slot13 in ipairs(slot7) do
-			if slot5 and slot13.skinSpineEffect then
-				slot3[slot13.id] = slot13.id
+		for iter_49_4, iter_49_5 in ipairs(var_49_5) do
+			if var_49_3 then
+				local var_49_8 = iter_49_5.skinSpineEffect
 
-				if slot14._effectWrapDict then
-					for slot18, slot19 in pairs(slot14._effectWrapDict) do
-						table.insert(slot4, slot19)
+				if var_49_8 then
+					var_49_1[iter_49_5.id] = iter_49_5.id
+
+					if var_49_8._effectWrapDict then
+						for iter_49_6, iter_49_7 in pairs(var_49_8._effectWrapDict) do
+							table.insert(var_49_2, iter_49_7)
+						end
 					end
 				end
 			end
 
-			if slot13.buff and slot13.buff._buffEffectDict then
-				for slot18, slot19 in pairs(slot14) do
-					if slot5 then
-						slot3[slot13.id] = slot13.id
+			local var_49_9 = iter_49_5.buff and iter_49_5.buff._buffEffectDict
 
-						table.insert(slot4, slot19)
+			if var_49_9 then
+				for iter_49_8, iter_49_9 in pairs(var_49_9) do
+					if var_49_3 then
+						var_49_1[iter_49_5.id] = iter_49_5.id
+
+						table.insert(var_49_2, iter_49_9)
 					else
-						for slot23, slot24 in ipairs(slot6) do
-							if uv0.getEffectUrlWithLod(slot24) == slot19.path then
-								slot3[slot13.id] = slot13.id
+						for iter_49_10, iter_49_11 in ipairs(var_49_4) do
+							if var_0_0.getEffectUrlWithLod(iter_49_11) == iter_49_9.path then
+								var_49_1[iter_49_5.id] = iter_49_5.id
 
-								table.insert(slot4, slot19)
+								table.insert(var_49_2, iter_49_9)
 							end
 						end
 					end
 				end
 			end
 
-			if slot13.buff and slot13.buff._loopBuffEffectWrapDict then
-				for slot19, slot20 in pairs(slot15) do
-					if slot5 then
-						slot3[slot13.id] = slot13.id
+			local var_49_10 = iter_49_5.buff and iter_49_5.buff._loopBuffEffectWrapDict
 
-						table.insert(slot4, slot20)
+			if var_49_10 then
+				for iter_49_12, iter_49_13 in pairs(var_49_10) do
+					if var_49_3 then
+						var_49_1[iter_49_5.id] = iter_49_5.id
+
+						table.insert(var_49_2, iter_49_13)
 					else
-						for slot24, slot25 in ipairs(slot6) do
-							if uv0.getEffectUrlWithLod(slot25) == slot20.path then
-								slot3[slot13.id] = slot13.id
+						for iter_49_14, iter_49_15 in ipairs(var_49_4) do
+							if var_0_0.getEffectUrlWithLod(iter_49_15) == iter_49_13.path then
+								var_49_1[iter_49_5.id] = iter_49_5.id
 
-								table.insert(slot4, slot20)
+								table.insert(var_49_2, iter_49_13)
 							end
 						end
 					end
@@ -997,111 +1174,134 @@ function slot0.hideDefenderBuffEffect(slot0, slot1)
 			end
 		end
 
-		slot10 = {
-			[uv0.getEffectUrlWithLod(slot15)] = true
-		}
+		local var_49_11 = FightStrUtil.instance:getSplitCache(var_49_0.exceptEffect, "#")
+		local var_49_12 = {}
 
-		for slot14, slot15 in ipairs(FightStrUtil.instance:getSplitCache(slot2.exceptEffect, "#")) do
-			-- Nothing
+		for iter_49_16, iter_49_17 in ipairs(var_49_11) do
+			var_49_12[var_0_0.getEffectUrlWithLod(iter_49_17)] = true
 		end
 
-		for slot14, slot15 in ipairs(slot4) do
-			if not slot10[slot4[slot14].path] then
-				slot16:setActive(false, slot1)
+		for iter_49_18, iter_49_19 in ipairs(var_49_2) do
+			local var_49_13 = var_49_2[iter_49_18]
+
+			if not var_49_12[var_49_13.path] then
+				var_49_13:setActive(false, arg_49_1)
 			end
 		end
 	end
 
-	return slot3
+	return var_49_1
 end
 
-function slot0.revertDefenderBuffEffect(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0) do
-		if uv0.getEntity(slot6) then
-			if slot7.buff then
-				slot7.buff:showBuffEffects(slot1)
+function var_0_0.revertDefenderBuffEffect(arg_50_0, arg_50_1)
+	for iter_50_0, iter_50_1 in ipairs(arg_50_0) do
+		local var_50_0 = var_0_0.getEntity(iter_50_1)
+
+		if var_50_0 then
+			if var_50_0.buff then
+				var_50_0.buff:showBuffEffects(arg_50_1)
 			end
 
-			if slot7.skinSpineEffect then
-				slot7.skinSpineEffect:showEffects(slot1)
+			if var_50_0.skinSpineEffect then
+				var_50_0.skinSpineEffect:showEffects(arg_50_1)
 			end
 		end
 	end
 end
 
-function slot0.getEffectAbPath(slot0)
-	if GameResMgr.IsFromEditorDir or string.find(slot0, "/buff/") then
-		return slot0
+function var_0_0.getEffectAbPath(arg_51_0)
+	if GameResMgr.IsFromEditorDir or string.find(arg_51_0, "/buff/") then
+		return arg_51_0
 	else
-		if isDebugBuild and string.find(slot0, "always") then
-			logError(slot0)
+		if isDebugBuild and string.find(arg_51_0, "always") then
+			logError(arg_51_0)
 		end
 
-		return SLFramework.FileHelper.GetUnityPath(System.IO.Path.GetDirectoryName(slot0))
+		return SLFramework.FileHelper.GetUnityPath(System.IO.Path.GetDirectoryName(arg_51_0))
 	end
 end
 
-function slot0.getRolesTimelinePath(slot0)
+function var_0_0.getRolesTimelinePath(arg_52_0)
 	if GameResMgr.IsFromEditorDir then
-		return ResUrl.getSkillTimeline(slot0)
+		return ResUrl.getSkillTimeline(arg_52_0)
 	else
 		return ResUrl.getRolesTimeline()
 	end
 end
 
-function slot0.getCameraAniPath(slot0)
+function var_0_0.getCameraAniPath(arg_53_0)
 	if GameResMgr.IsFromEditorDir then
-		return ResUrl.getCameraAnim(slot0)
+		return ResUrl.getCameraAnim(arg_53_0)
 	else
 		return ResUrl.getCameraAnimABUrl()
 	end
 end
 
-function slot0.getEntityAniPath(slot0)
+function var_0_0.getEntityAniPath(arg_54_0)
 	if GameResMgr.IsFromEditorDir then
-		return ResUrl.getEntityAnim(slot0)
+		return ResUrl.getEntityAnim(arg_54_0)
 	else
 		return ResUrl.getEntityAnimABUrl()
 	end
 end
 
-function slot0.refreshCombinativeMonsterScaleAndPos(slot0, slot1)
-	if not slot0:getMO() then
+function var_0_0.refreshCombinativeMonsterScaleAndPos(arg_55_0, arg_55_1)
+	local var_55_0 = arg_55_0:getMO()
+
+	if not var_55_0 then
 		return
 	end
 
-	if not FightConfig.instance:getSkinCO(slot2.skin) or slot3.canHide ~= 1 then
+	local var_55_1 = FightConfig.instance:getSkinCO(var_55_0.skin)
+
+	if var_55_1 and var_55_1.canHide == 1 then
+		-- block empty
+	else
 		return
 	end
 
-	slot5 = nil
+	local var_55_2 = var_0_0.getSideEntitys(arg_55_0:getSide())
+	local var_55_3
 
-	for slot9, slot10 in ipairs(uv0.getSideEntitys(slot0:getSide())) do
-		slot10:setScale(slot1)
+	for iter_55_0, iter_55_1 in ipairs(var_55_2) do
+		iter_55_1:setScale(arg_55_1)
 
-		if slot10:getMO() and FightConfig.instance:getSkinCO(slot11.skin) and slot12.mainBody == 1 then
-			slot5 = slot10
+		local var_55_4 = iter_55_1:getMO()
+
+		if var_55_4 then
+			local var_55_5 = FightConfig.instance:getSkinCO(var_55_4.skin)
+
+			if var_55_5 and var_55_5.mainBody == 1 then
+				var_55_3 = iter_55_1
+			end
 		end
 	end
 
-	if slot5 then
-		slot6, slot7, slot8 = uv0.getEntityStandPos(slot5:getMO())
-		slot9, slot10, slot11 = transformhelper.getPos(slot5.go.transform)
+	if var_55_3 then
+		local var_55_6, var_55_7, var_55_8 = var_0_0.getEntityStandPos(var_55_3:getMO())
+		local var_55_9, var_55_10, var_55_11 = transformhelper.getPos(var_55_3.go.transform)
 
-		for slot15, slot16 in ipairs(slot4) do
-			if slot16 ~= slot5 then
-				slot17, slot18, slot19 = uv0.getEntityStandPos(slot16:getMO())
+		for iter_55_2, iter_55_3 in ipairs(var_55_2) do
+			if iter_55_3 ~= var_55_3 then
+				local var_55_12, var_55_13, var_55_14 = var_0_0.getEntityStandPos(iter_55_3:getMO())
+				local var_55_15 = var_55_12 - var_55_6
+				local var_55_16 = var_55_13 - var_55_7
+				local var_55_17 = var_55_14 - var_55_8
 
-				transformhelper.setPos(slot16.go.transform, (slot17 - slot6) * slot1 + slot9, (slot18 - slot7) * slot1 + slot10, (slot19 - slot8) * slot1 + slot11)
+				transformhelper.setPos(iter_55_3.go.transform, var_55_15 * arg_55_1 + var_55_9, var_55_16 * arg_55_1 + var_55_10, var_55_17 * arg_55_1 + var_55_11)
 			end
 		end
 	end
 end
 
-function slot0.getEntityDefaultIdleAniName(slot0)
-	if slot0:getMO() and slot1.modelId == 3025 then
-		for slot6, slot7 in ipairs(uv0.getSideEntitys(slot0:getSide(), true)) do
-			if slot7:getMO().modelId == 3028 then
+function var_0_0.getEntityDefaultIdleAniName(arg_56_0)
+	local var_56_0 = arg_56_0:getMO()
+
+	if var_56_0 and var_56_0.modelId == 3025 then
+		local var_56_1 = var_0_0.getSideEntitys(arg_56_0:getSide(), true)
+
+		for iter_56_0, iter_56_1 in ipairs(var_56_1) do
+			if iter_56_1:getMO().modelId == 3028 then
 				return SpineAnimState.idle_special
 			end
 		end
@@ -1110,19 +1310,19 @@ function slot0.getEntityDefaultIdleAniName(slot0)
 	return SpineAnimState.idle1
 end
 
-slot0.XingTiSpineUrl2Special = {
+var_0_0.XingTiSpineUrl2Special = {
 	["roles/500502_xingti2hao/500502_xingti2hao_fight.prefab"] = "roles/500502_xingti2hao_special/500502_xingti2hao_special_fight.prefab",
 	["roles/500503_xingti2hao/500503_xingti2hao_fight.prefab"] = "roles/500503_xingti2hao_special/500503_xingti2hao_special_fight.prefab",
 	["roles/500501_xingti2hao/500501_xingti2hao_fight.prefab"] = "roles/500501_xingti2hao_special/500501_xingti2hao_special_fight.prefab"
 }
 
-function slot0.preloadXingTiSpecialUrl(slot0)
-	if uv0.isShowTogether(FightEnum.EntitySide.MySide, {
+function var_0_0.preloadXingTiSpecialUrl(arg_57_0)
+	if var_0_0.isShowTogether(FightEnum.EntitySide.MySide, {
 		3025,
 		3028
 	}) then
-		for slot5, slot6 in ipairs(slot0) do
-			if slot6 == 3025 then
+		for iter_57_0, iter_57_1 in ipairs(arg_57_0) do
+			if iter_57_1 == 3025 then
 				return 2
 			end
 		end
@@ -1131,50 +1331,69 @@ function slot0.preloadXingTiSpecialUrl(slot0)
 	end
 end
 
-function slot0.detectXingTiSpecialUrl(slot0)
-	if slot0:isMySide() then
-		return uv0.isShowTogether(slot0:getSide(), {
+function var_0_0.detectXingTiSpecialUrl(arg_58_0)
+	if arg_58_0:isMySide() then
+		local var_58_0 = arg_58_0:getSide()
+
+		return var_0_0.isShowTogether(var_58_0, {
 			3025,
 			3028
 		})
 	end
 end
 
-function slot0.isShowTogether(slot0, slot1)
-	for slot7, slot8 in ipairs(FightDataHelper.entityMgr:getSideList(slot0)) do
-		if tabletool.indexOf(slot1, slot8.modelId) then
-			slot3 = 0 + 1
+function var_0_0.isShowTogether(arg_59_0, arg_59_1)
+	local var_59_0 = FightDataHelper.entityMgr:getSideList(arg_59_0)
+	local var_59_1 = 0
+
+	for iter_59_0, iter_59_1 in ipairs(var_59_0) do
+		if tabletool.indexOf(arg_59_1, iter_59_1.modelId) then
+			var_59_1 = var_59_1 + 1
 		end
 	end
 
-	if slot3 == #slot1 then
+	if var_59_1 == #arg_59_1 then
 		return true
 	end
 end
 
-function slot0.getPredeductionExpoint(slot0)
-	slot1 = 0
+function var_0_0.getPredeductionExpoint(arg_60_0)
+	local var_60_0 = 0
 
-	if FightModel.instance:getCurStage() == FightEnum.Stage.Card and uv0.getEntity(slot0) then
-		for slot8, slot9 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
-			if slot0 == slot9.belongToEntityId and slot9:isPlayCard() and FightCardDataHelper.isBigSkill(slot9.skillId) and not FightCardDataHelper.isSkill3(slot9.cardInfoMO) then
-				slot1 = slot1 + slot2:getMO():getUniqueSkillPoint()
+	if FightModel.instance:getCurStage() == FightEnum.Stage.Card then
+		local var_60_1 = var_0_0.getEntity(arg_60_0)
+
+		if var_60_1 then
+			local var_60_2 = var_60_1:getMO()
+			local var_60_3 = FightDataHelper.operationDataMgr:getOpList()
+
+			for iter_60_0, iter_60_1 in ipairs(var_60_3) do
+				if arg_60_0 == iter_60_1.belongToEntityId and iter_60_1:isPlayCard() and FightCardDataHelper.isBigSkill(iter_60_1.skillId) and not FightCardDataHelper.isSkill3(iter_60_1.cardInfoMO) then
+					var_60_0 = var_60_0 + var_60_2:getUniqueSkillPoint()
+				end
 			end
 		end
 	end
 
-	return slot1
+	return var_60_0
 end
 
-function slot0.setBossSkillSpeed(slot0)
-	if uv0.getEntity(slot0) and slot1:getMO() and lua_monster_skin.configDict[slot2.skin] and slot3.bossSkillSpeed == 1 then
-		FightModel.instance.useBossSkillSpeed = true
+function var_0_0.setBossSkillSpeed(arg_61_0)
+	local var_61_0 = var_0_0.getEntity(arg_61_0)
+	local var_61_1 = var_61_0 and var_61_0:getMO()
 
-		FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
+	if var_61_1 then
+		local var_61_2 = lua_monster_skin.configDict[var_61_1.skin]
+
+		if var_61_2 and var_61_2.bossSkillSpeed == 1 then
+			FightModel.instance.useBossSkillSpeed = true
+
+			FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
+		end
 	end
 end
 
-function slot0.cancelBossSkillSpeed()
+function var_0_0.cancelBossSkillSpeed()
 	if FightModel.instance.useBossSkillSpeed then
 		FightModel.instance.useBossSkillSpeed = false
 
@@ -1182,15 +1401,20 @@ function slot0.cancelBossSkillSpeed()
 	end
 end
 
-function slot0.setTimelineExclusiveSpeed(slot0)
-	if lua_fight_timeline_speed.configDict[slot0] then
-		FightModel.instance.useExclusiveSpeed = FightStrUtil.instance:getSplitToNumberCache(slot1.speed, "#")[FightModel.instance:getUserSpeed()]
+function var_0_0.setTimelineExclusiveSpeed(arg_63_0)
+	local var_63_0 = lua_fight_timeline_speed.configDict[arg_63_0]
+
+	if var_63_0 then
+		local var_63_1 = FightModel.instance:getUserSpeed()
+		local var_63_2 = FightStrUtil.instance:getSplitToNumberCache(var_63_0.speed, "#")
+
+		FightModel.instance.useExclusiveSpeed = var_63_2[var_63_1]
 
 		FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
 	end
 end
 
-function slot0.cancelExclusiveSpeed()
+function var_0_0.cancelExclusiveSpeed()
 	if FightModel.instance.useExclusiveSpeed then
 		FightModel.instance.useExclusiveSpeed = false
 
@@ -1198,540 +1422,692 @@ function slot0.cancelExclusiveSpeed()
 	end
 end
 
-function slot0.needPlayTransitionAni(slot0, slot1)
-	if slot0 and slot0:getMO() and lua_fight_transition_act.configDict[slot2.skin] and slot4[slot0.spine:getAnimState()] and slot4[slot5][slot1] then
-		return true, slot4[slot5][slot1].transitionAct
+function var_0_0.needPlayTransitionAni(arg_65_0, arg_65_1)
+	local var_65_0 = arg_65_0 and arg_65_0:getMO()
+
+	if var_65_0 then
+		local var_65_1 = var_65_0.skin
+		local var_65_2 = lua_fight_transition_act.configDict[var_65_1]
+
+		if var_65_2 then
+			local var_65_3 = arg_65_0.spine:getAnimState()
+
+			if var_65_2[var_65_3] and var_65_2[var_65_3][arg_65_1] then
+				return true, var_65_2[var_65_3][arg_65_1].transitionAct
+			end
+		end
 	end
 end
 
-function slot0._stepBuffDealStackedBuff(slot0, slot1, slot2, slot3)
-	slot4 = false
+function var_0_0._stepBuffDealStackedBuff(arg_66_0, arg_66_1, arg_66_2, arg_66_3)
+	local var_66_0 = false
 
-	if slot3 and slot3.actEffectData and not FightSkillBuffMgr.instance:hasPlayBuff(slot5) and lua_skill_buff.configDict[slot5.buff.buffId] and slot6.id == slot2.id and slot5.effectType == FightEnum.EffectType.BUFFADD then
-		slot4 = true
+	if arg_66_3 then
+		local var_66_1 = arg_66_3.actEffectData
+
+		if var_66_1 and not FightSkillBuffMgr.instance:hasPlayBuff(var_66_1) then
+			local var_66_2 = lua_skill_buff.configDict[var_66_1.buff.buffId]
+
+			if var_66_2 and var_66_2.id == arg_66_2.id and var_66_1.effectType == FightEnum.EffectType.BUFFADD then
+				var_66_0 = true
+			end
+		end
 	end
 
-	table.insert(slot1, FunctionWork.New(function ()
-		if uv0.getEntity(uv1) then
-			slot0.buff.lockFloat = uv2
+	table.insert(arg_66_1, FunctionWork.New(function()
+		local var_67_0 = var_0_0.getEntity(arg_66_0)
+
+		if var_67_0 then
+			var_67_0.buff.lockFloat = var_66_0
 		end
 	end))
-	table.insert(slot1, WorkWaitSeconds.New(0.01))
+	table.insert(arg_66_1, WorkWaitSeconds.New(0.01))
 end
 
-function slot0.hideAllEntity()
-	for slot4, slot5 in ipairs(uv0.getAllEntitys()) do
-		slot5:setActive(false, true)
-		slot5:setVisibleByPos(false)
-		slot5:setAlpha(0, 0)
+function var_0_0.hideAllEntity()
+	local var_68_0 = var_0_0.getAllEntitys()
+
+	for iter_68_0, iter_68_1 in ipairs(var_68_0) do
+		iter_68_1:setActive(false, true)
+		iter_68_1:setVisibleByPos(false)
+		iter_68_1:setAlpha(0, 0)
 	end
 end
 
-function slot0.isBossId(slot0, slot1)
-	for slot6, slot7 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot0, "#")) do
-		if slot1 == slot7 then
+function var_0_0.isBossId(arg_69_0, arg_69_1)
+	local var_69_0 = FightStrUtil.instance:getSplitToNumberCache(arg_69_0, "#")
+
+	for iter_69_0, iter_69_1 in ipairs(var_69_0) do
+		if arg_69_1 == iter_69_1 then
 			return true
 		end
 	end
 end
 
-function slot0.getCurBossId()
-	slot1 = FightModel.instance:getCurMonsterGroupId() and lua_monster_group.configDict[slot0]
+function var_0_0.getCurBossId()
+	local var_70_0 = FightModel.instance:getCurMonsterGroupId()
+	local var_70_1 = var_70_0 and lua_monster_group.configDict[var_70_0]
 
-	return slot1 and not string.nilorempty(slot1.bossId) and slot1.bossId or nil
+	return var_70_1 and not string.nilorempty(var_70_1.bossId) and var_70_1.bossId or nil
 end
 
-function slot0.setEffectEntitySide(slot0, slot1)
+function var_0_0.setEffectEntitySide(arg_71_0, arg_71_1)
 	if FightModel.instance:getVersion() >= 1 then
 		return
 	end
 
-	if slot0.targetId == FightEntityScene.MySideId then
-		slot1.side = FightEnum.EntitySide.MySide
+	local var_71_0 = arg_71_0.targetId
+
+	if var_71_0 == FightEntityScene.MySideId then
+		arg_71_1.side = FightEnum.EntitySide.MySide
 
 		return
-	elseif slot3 == FightEntityScene.EnemySideId then
-		slot1.side = FightEnum.EntitySide.EnemySide
+	elseif var_71_0 == FightEntityScene.EnemySideId then
+		arg_71_1.side = FightEnum.EntitySide.EnemySide
 
 		return
 	end
 
-	if FightDataHelper.entityMgr:getById(slot3) then
-		slot1.side = slot4.side
+	local var_71_1 = FightDataHelper.entityMgr:getById(var_71_0)
+
+	if var_71_1 then
+		arg_71_1.side = var_71_1.side
 	end
 end
 
-function slot0.preloadZongMaoShaLiMianJu(slot0, slot1)
-	if uv0.getZongMaoShaLiMianJuPath(slot0) then
-		table.insert(slot1, slot2)
+function var_0_0.preloadZongMaoShaLiMianJu(arg_72_0, arg_72_1)
+	local var_72_0 = var_0_0.getZongMaoShaLiMianJuPath(arg_72_0)
+
+	if var_72_0 then
+		table.insert(arg_72_1, var_72_0)
 	end
 end
 
-function slot0.setZongMaoShaLiMianJuSpineUrl(slot0, slot1)
-	if uv0.getZongMaoShaLiMianJuPath(slot0) then
-		slot1[slot2] = true
+function var_0_0.setZongMaoShaLiMianJuSpineUrl(arg_73_0, arg_73_1)
+	local var_73_0 = var_0_0.getZongMaoShaLiMianJuPath(arg_73_0)
+
+	if var_73_0 then
+		arg_73_1[var_73_0] = true
 	end
 end
 
-function slot0.getZongMaoShaLiMianJuPath(slot0)
-	if lua_skin.configDict[slot0] and slot1.characterId == 3072 then
-		slot2 = string.format("roles/v1a3_%d_zongmaoshali_m/%d_zongmaoshali_m_fight.prefab", slot0, slot0)
+function var_0_0.getZongMaoShaLiMianJuPath(arg_74_0)
+	local var_74_0 = lua_skin.configDict[arg_74_0]
 
-		if slot1.id == 307203 then
-			slot2 = "roles/v2a2_307203_zmsl_m/307203_zmsl_m_fight.prefab"
+	if var_74_0 and var_74_0.characterId == 3072 then
+		local var_74_1 = string.format("roles/v1a3_%d_zongmaoshali_m/%d_zongmaoshali_m_fight.prefab", arg_74_0, arg_74_0)
+
+		if var_74_0.id == 307203 then
+			var_74_1 = "roles/v2a2_307203_zmsl_m/307203_zmsl_m_fight.prefab"
 		end
 
-		return slot2
+		return var_74_1
 	end
 end
 
-function slot0.getEnemyEntityByMonsterId(slot0)
-	for slot5, slot6 in ipairs(uv0.getSideEntitys(FightEnum.EntitySide.EnemySide)) do
-		if slot6:getMO() and slot7.modelId == slot0 then
-			return slot6
+function var_0_0.getEnemyEntityByMonsterId(arg_75_0)
+	local var_75_0 = var_0_0.getSideEntitys(FightEnum.EntitySide.EnemySide)
+
+	for iter_75_0, iter_75_1 in ipairs(var_75_0) do
+		local var_75_1 = iter_75_1:getMO()
+
+		if var_75_1 and var_75_1.modelId == arg_75_0 then
+			return iter_75_1
 		end
 	end
 end
 
-function slot0.sortAssembledMonster(slot0)
-	if slot0:getByIndex(1) and lua_fight_assembled_monster.configDict[slot1.skin] then
-		slot0:sort(uv0.sortAssembledMonsterFunc)
+function var_0_0.sortAssembledMonster(arg_76_0)
+	local var_76_0 = arg_76_0:getByIndex(1)
+
+	if var_76_0 and lua_fight_assembled_monster.configDict[var_76_0.skin] then
+		arg_76_0:sort(var_0_0.sortAssembledMonsterFunc)
 	end
 end
 
-function slot0.sortAssembledMonsterFunc(slot0, slot1)
-	if slot0 and lua_fight_assembled_monster.configDict[slot0.skin] and not (slot1 and lua_fight_assembled_monster.configDict[slot1.skin]) then
+function var_0_0.sortAssembledMonsterFunc(arg_77_0, arg_77_1)
+	local var_77_0 = arg_77_0 and lua_fight_assembled_monster.configDict[arg_77_0.skin]
+	local var_77_1 = arg_77_1 and lua_fight_assembled_monster.configDict[arg_77_1.skin]
+
+	if var_77_0 and not var_77_1 then
 		return true
-	elseif not slot2 and slot3 then
+	elseif not var_77_0 and var_77_1 then
 		return false
-	elseif slot2 and slot3 then
-		return slot2.part < slot3.part
+	elseif var_77_0 and var_77_1 then
+		return var_77_0.part < var_77_1.part
 	else
-		return tonumber(slot1.id) < tonumber(slot0.id)
+		return tonumber(arg_77_0.id) > tonumber(arg_77_1.id)
 	end
 end
 
-function slot0.sortBuffReplaceSpineActConfig(slot0, slot1)
-	return slot1.priority < slot0.priority
+function var_0_0.sortBuffReplaceSpineActConfig(arg_78_0, arg_78_1)
+	return arg_78_0.priority > arg_78_1.priority
 end
 
-function slot0.processEntityActionName(slot0, slot1, slot2)
-	if not slot1 then
+function var_0_0.processEntityActionName(arg_79_0, arg_79_1, arg_79_2)
+	if not arg_79_1 then
 		return
 	end
 
-	if slot0:getMO() and lua_fight_buff_replace_spine_act.configDict[slot3.skin] then
-		slot5 = {}
+	local var_79_0 = arg_79_0:getMO()
 
-		for slot9, slot10 in pairs(slot4) do
-			for slot14, slot15 in pairs(slot10) do
-				table.insert(slot5, slot15)
+	if var_79_0 then
+		local var_79_1 = lua_fight_buff_replace_spine_act.configDict[var_79_0.skin]
+
+		if var_79_1 then
+			local var_79_2 = {}
+
+			for iter_79_0, iter_79_1 in pairs(var_79_1) do
+				for iter_79_2, iter_79_3 in pairs(iter_79_1) do
+					table.insert(var_79_2, iter_79_3)
+				end
 			end
-		end
 
-		table.sort(slot5, uv0.sortBuffReplaceSpineActConfig)
+			table.sort(var_79_2, var_0_0.sortBuffReplaceSpineActConfig)
 
-		if slot0.buff then
-			for slot10, slot11 in ipairs(slot5) do
-				if slot6:haveBuffId(slot11.buffId) then
-					for slot16, slot17 in ipairs(slot11.combination) do
-						if slot6:haveBuffId(slot17) then
-							slot12 = 0 + 1
+			local var_79_3 = arg_79_0.buff
+
+			if var_79_3 then
+				for iter_79_4, iter_79_5 in ipairs(var_79_2) do
+					if var_79_3:haveBuffId(iter_79_5.buffId) then
+						local var_79_4 = 0
+
+						for iter_79_6, iter_79_7 in ipairs(iter_79_5.combination) do
+							if var_79_3:haveBuffId(iter_79_7) then
+								var_79_4 = var_79_4 + 1
+							end
+						end
+
+						if var_79_4 == #iter_79_5.combination and arg_79_0.spine and arg_79_0.spine:hasAnimation(arg_79_1 .. iter_79_5.suffix) then
+							arg_79_1 = arg_79_1 .. iter_79_5.suffix
+
+							break
 						end
 					end
+				end
+			end
+		end
+	end
 
-					if slot12 == #slot11.combination and slot0.spine and slot0.spine:hasAnimation(slot1 .. slot11.suffix) then
-						slot1 = slot1 .. slot11.suffix
+	if arg_79_1 and var_79_0 then
+		local var_79_5 = lua_fight_skin_special_behaviour.configDict[var_79_0.skin]
 
-						break
+		if var_79_5 then
+			local var_79_6 = arg_79_0.buff
+
+			if var_79_6 then
+				local var_79_7 = arg_79_1
+
+				if string.find(var_79_7, "hit") then
+					var_79_7 = "hit"
+				end
+
+				if not string.nilorempty(var_79_5[var_79_7]) then
+					local var_79_8 = GameUtil.splitString2(var_79_5[var_79_7])
+
+					for iter_79_8, iter_79_9 in ipairs(var_79_8) do
+						local var_79_9 = tonumber(iter_79_9[1])
+
+						if var_79_6:haveBuffId(var_79_9) then
+							arg_79_1 = iter_79_9[2]
+						end
 					end
 				end
 			end
 		end
 	end
 
-	if slot1 and slot3 and lua_fight_skin_special_behaviour.configDict[slot3.skin] and slot0.buff then
-		if string.find(slot1, "hit") then
-			slot6 = "hit"
-		end
+	if var_0_0.isAssembledMonster(arg_79_0) and arg_79_1 == "hit" then
+		local var_79_10 = arg_79_0:getPartIndex()
 
-		if not string.nilorempty(slot4[slot6]) then
-			for slot11, slot12 in ipairs(GameUtil.splitString2(slot4[slot6])) do
-				if slot5:haveBuffId(tonumber(slot12[1])) then
-					slot1 = slot12[2]
-				end
-			end
-		end
-	end
+		if arg_79_2 then
+			for iter_79_10, iter_79_11 in ipairs(arg_79_2.actEffect) do
+				if FightTLEventDefHit.directCharacterHitEffectType[iter_79_11.effectType] and iter_79_11.targetId ~= arg_79_0.id then
+					local var_79_11 = var_0_0.getEntity(iter_79_11.targetId)
 
-	if uv0.isAssembledMonster(slot0) and slot1 == "hit" then
-		slot4 = slot0:getPartIndex()
-
-		if slot2 then
-			for slot8, slot9 in ipairs(slot2.actEffect) do
-				if FightTLEventDefHit.directCharacterHitEffectType[slot9.effectType] and slot9.targetId ~= slot0.id and (isTypeOf(uv0.getEntity(slot9.targetId), FightEntityAssembledMonsterMain) or isTypeOf(slot10, FightEntityAssembledMonsterSub)) then
-					return slot1
+					if isTypeOf(var_79_11, FightEntityAssembledMonsterMain) or isTypeOf(var_79_11, FightEntityAssembledMonsterSub) then
+						return arg_79_1
+					end
 				end
 			end
 		end
 
-		slot1 = string.format("%s_part_%d", slot1, slot4)
+		arg_79_1 = string.format("%s_part_%d", arg_79_1, var_79_10)
 	end
 
-	return slot1
+	return arg_79_1
 end
 
-function slot0.getProcessEntityStancePos(slot0)
-	slot1, slot2, slot3 = uv0.getEntityStandPos(slot0)
+function var_0_0.getProcessEntityStancePos(arg_80_0)
+	local var_80_0, var_80_1, var_80_2 = var_0_0.getEntityStandPos(arg_80_0)
+	local var_80_3 = var_0_0.getEntity(arg_80_0.id)
 
-	if uv0.getEntity(slot0.id) and uv0.isAssembledMonster(slot4) then
-		slot6 = lua_fight_assembled_monster.configDict[slot0.skin].virtualStance
+	if var_80_3 and var_0_0.isAssembledMonster(var_80_3) then
+		local var_80_4 = lua_fight_assembled_monster.configDict[arg_80_0.skin].virtualStance
 
-		return slot1 + slot6[1], slot2 + slot6[2], slot3 + slot6[3]
+		return var_80_0 + var_80_4[1], var_80_1 + var_80_4[2], var_80_2 + var_80_4[3]
 	end
 
-	return slot1, slot2, slot3
+	return var_80_0, var_80_1, var_80_2
 end
 
-function slot0.isAssembledMonster(slot0)
-	if isTypeOf(slot0, FightEntityAssembledMonsterMain) or isTypeOf(slot0, FightEntityAssembledMonsterSub) then
+function var_0_0.isAssembledMonster(arg_81_0)
+	if isTypeOf(arg_81_0, FightEntityAssembledMonsterMain) or isTypeOf(arg_81_0, FightEntityAssembledMonsterSub) then
 		return true
 	end
 end
 
-function slot0.getProcessEntitySpinePos(slot0)
-	slot1, slot2, slot3 = transformhelper.getPos(slot0.go.transform)
+function var_0_0.getProcessEntitySpinePos(arg_82_0)
+	local var_82_0, var_82_1, var_82_2 = transformhelper.getPos(arg_82_0.go.transform)
 
-	if uv0.isAssembledMonster(slot0) then
-		slot5 = lua_fight_assembled_monster.configDict[slot0:getMO().skin]
-		slot1 = slot1 + slot5.virtualStance[1]
-		slot2 = slot2 + slot5.virtualStance[2]
-		slot3 = slot3 + slot5.virtualStance[3]
+	if var_0_0.isAssembledMonster(arg_82_0) then
+		local var_82_3 = arg_82_0:getMO()
+		local var_82_4 = lua_fight_assembled_monster.configDict[var_82_3.skin]
+
+		var_82_0 = var_82_0 + var_82_4.virtualStance[1]
+		var_82_1 = var_82_1 + var_82_4.virtualStance[2]
+		var_82_2 = var_82_2 + var_82_4.virtualStance[3]
 	end
 
-	return slot1, slot2, slot3
+	return var_82_0, var_82_1, var_82_2
 end
 
-function slot0.getProcessEntitySpineLocalPos(slot0)
-	if uv0.isAssembledMonster(slot0) then
-		slot5 = lua_fight_assembled_monster.configDict[slot0:getMO().skin]
-		slot1 = 0 + slot5.virtualStance[1]
-		slot2 = 0 + slot5.virtualStance[2]
-		slot3 = 0 + slot5.virtualStance[3]
+function var_0_0.getProcessEntitySpineLocalPos(arg_83_0)
+	local var_83_0 = 0
+	local var_83_1 = 0
+	local var_83_2 = 0
+
+	if var_0_0.isAssembledMonster(arg_83_0) then
+		local var_83_3 = arg_83_0:getMO()
+		local var_83_4 = lua_fight_assembled_monster.configDict[var_83_3.skin]
+
+		var_83_0 = var_83_0 + var_83_4.virtualStance[1]
+		var_83_1 = var_83_1 + var_83_4.virtualStance[2]
+		var_83_2 = var_83_2 + var_83_4.virtualStance[3]
 	end
 
-	return slot1, slot2, slot3
+	return var_83_0, var_83_1, var_83_2
 end
 
-slot6 = {}
+local var_0_6 = {}
 
-function slot0.getAssembledEffectPosOfSpineHangPointRoot(slot0, slot1)
-	if uv0[slot1] then
+function var_0_0.getAssembledEffectPosOfSpineHangPointRoot(arg_84_0, arg_84_1)
+	if var_0_6[arg_84_1] then
 		return 0, 0, 0
 	end
 
-	return uv1.getProcessEntitySpineLocalPos(slot0)
+	return var_0_0.getProcessEntitySpineLocalPos(arg_84_0)
 end
 
-function slot0.processBuffEffectPath(slot0, slot1, slot2, slot3, slot4)
-	if lua_fight_effect_buff_skin.configDict[slot2] then
-		slot5 = (not slot5[1] or slot5[1]) and slot5[2]
+function var_0_0.processBuffEffectPath(arg_85_0, arg_85_1, arg_85_2, arg_85_3, arg_85_4)
+	local var_85_0 = lua_fight_effect_buff_skin.configDict[arg_85_2]
 
-		for slot11, slot12 in ipairs(uv0.getSideEntitys(slot1:getSide(), true)) do
-			if slot12:getMO() and slot5[slot13.skin] and not string.nilorempty(slot5[slot14][slot3]) then
-				return slot5[slot14][slot3], slot5[slot14].audio ~= 0 and slot15 or slot4, slot5[slot14]
+	if var_85_0 then
+		local var_85_1 = arg_85_1:getSide()
+
+		if var_85_0[1] then
+			var_85_1 = FightEnum.EntitySide.MySide == var_85_1 and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+			var_85_0 = var_85_0[1]
+		else
+			var_85_0 = var_85_0[2]
+		end
+
+		local var_85_2 = var_0_0.getSideEntitys(var_85_1, true)
+
+		for iter_85_0, iter_85_1 in ipairs(var_85_2) do
+			local var_85_3 = iter_85_1:getMO()
+
+			if var_85_3 then
+				local var_85_4 = var_85_3.skin
+
+				if var_85_0[var_85_4] and not string.nilorempty(var_85_0[var_85_4][arg_85_3]) then
+					local var_85_5 = var_85_0[var_85_4].audio
+
+					return var_85_0[var_85_4][arg_85_3], var_85_5 ~= 0 and var_85_5 or arg_85_4, var_85_0[var_85_4]
+				end
 			end
 		end
 	end
 
-	return slot0, slot4
+	return arg_85_0, arg_85_4
 end
 
-function slot0.filterBuffEffectBySkin(slot0, slot1, slot2, slot3)
-	if not lua_fight_buff_effect_to_skin.configDict[slot0] then
-		return slot2, slot3
+function var_0_0.filterBuffEffectBySkin(arg_86_0, arg_86_1, arg_86_2, arg_86_3)
+	local var_86_0 = lua_fight_buff_effect_to_skin.configDict[arg_86_0]
+
+	if not var_86_0 then
+		return arg_86_2, arg_86_3
 	end
 
-	slot5 = slot1 and slot1:getMO()
+	local var_86_1 = arg_86_1 and arg_86_1:getMO()
+	local var_86_2 = var_86_1 and var_86_1.skin
 
-	if not (slot5 and slot5.skin) then
+	if not var_86_2 then
 		return "", 0
 	end
 
-	if tabletool.indexOf(FightStrUtil.instance:getSplitToNumberCache(slot4.skinIdList, "|"), slot6) then
-		return slot2, slot3
+	local var_86_3 = FightStrUtil.instance:getSplitToNumberCache(var_86_0.skinIdList, "|")
+
+	if tabletool.indexOf(var_86_3, var_86_2) then
+		return arg_86_2, arg_86_3
 	end
 
 	return "", 0
 end
 
-function slot0.getBuffListForReplaceTimeline(slot0, slot1, slot2)
-	if slot0 and slot0.simulate == 1 then
-		slot3 = uv0.simulateFightStepData(slot2, uv0.getEntitysCloneBuff(slot1))
+function var_0_0.getBuffListForReplaceTimeline(arg_87_0, arg_87_1, arg_87_2)
+	local var_87_0 = var_0_0.getEntitysCloneBuff(arg_87_1)
+
+	if arg_87_0 and arg_87_0.simulate == 1 then
+		var_87_0 = var_0_0.simulateFightStepData(arg_87_2, var_87_0)
 	end
 
-	slot4 = {}
+	local var_87_1 = {}
 
-	for slot8, slot9 in pairs(slot3) do
-		tabletool.addValues(slot4, slot9)
+	for iter_87_0, iter_87_1 in pairs(var_87_0) do
+		tabletool.addValues(var_87_1, iter_87_1)
 	end
 
-	return slot4
+	return var_87_1
 end
 
-function slot0.getTimelineListByName(slot0, slot1)
-	slot2 = slot0
-	slot3 = {}
+function var_0_0.getTimelineListByName(arg_88_0, arg_88_1)
+	local var_88_0 = arg_88_0
+	local var_88_1 = {}
+	local var_88_2 = lua_fight_replace_timeline.configDict[arg_88_0]
 
-	if lua_fight_replace_timeline.configDict[slot0] then
-		for slot8, slot9 in pairs(slot4) do
-			if FightStrUtil.instance:getSplitCache(slot9.condition, "#")[1] == "5" then
-				for slot16 = 2, #slot10 do
+	if var_88_2 then
+		for iter_88_0, iter_88_1 in pairs(var_88_2) do
+			local var_88_3 = FightStrUtil.instance:getSplitCache(iter_88_1.condition, "#")
+
+			if var_88_3[1] == "5" then
+				local var_88_4 = {}
+
+				for iter_88_2 = 2, #var_88_3 do
+					var_88_4[tonumber(var_88_3[iter_88_2])] = true
 				end
 
-				if ({
-					[tonumber(slot10[slot16])] = true
-				})[slot1] then
-					slot2 = slot9.timeline
+				if var_88_4[arg_88_1] then
+					var_88_0 = iter_88_1.timeline
 				end
 			else
-				table.insert(slot3, slot9.timeline)
+				table.insert(var_88_1, iter_88_1.timeline)
 			end
 		end
 	end
 
-	table.insert(slot3, slot2)
+	table.insert(var_88_1, var_88_0)
 
-	return slot3
+	return var_88_1
 end
 
-slot7 = {}
+local var_0_7 = {}
 
-function slot0.detectReplaceTimeline(slot0, slot1)
-	if lua_fight_replace_timeline.configDict[slot0] then
-		slot3 = {}
+function var_0_0.detectReplaceTimeline(arg_89_0, arg_89_1)
+	local var_89_0 = lua_fight_replace_timeline.configDict[arg_89_0]
 
-		for slot7, slot8 in pairs(slot2) do
-			table.insert(slot3, slot8)
+	if var_89_0 then
+		local var_89_1 = {}
+
+		for iter_89_0, iter_89_1 in pairs(var_89_0) do
+			table.insert(var_89_1, iter_89_1)
 		end
 
-		table.sort(slot3, uv0.sortReplaceTimelineConfig)
+		table.sort(var_89_1, var_0_0.sortReplaceTimelineConfig)
 
-		for slot7, slot8 in ipairs(slot3) do
-			slot9 = {
-				[slot1.fromId] = FightDataHelper.entityMgr:getById(slot1.fromId)
-			}
+		for iter_89_2, iter_89_3 in ipairs(var_89_1) do
+			local var_89_2 = {}
 
-			if slot8.target == 1 then
-				-- Nothing
-			elseif slot8.target == 2 then
-				slot9[slot1.toId] = FightDataHelper.entityMgr:getById(slot1.toId)
-			elseif slot8.target == 3 or slot8.target == 4 then
-				slot10 = nil
-				slot12 = FightDataHelper.entityMgr
-				slot16 = slot8.target == 4
+			if iter_89_3.target == 1 then
+				var_89_2[arg_89_1.fromId] = FightDataHelper.entityMgr:getById(arg_89_1.fromId)
+			elseif iter_89_3.target == 2 then
+				var_89_2[arg_89_1.toId] = FightDataHelper.entityMgr:getById(arg_89_1.toId)
+			elseif iter_89_3.target == 3 or iter_89_3.target == 4 then
+				local var_89_3
+				local var_89_4 = arg_89_1.fromId
 
-				for slot16, slot17 in ipairs(slot12:getSideList((slot1.fromId ~= FightEntityScene.MySideId or FightEnum.EntitySide.MySide) and (slot11 ~= FightEntityScene.EnemySideId or FightEnum.EntitySide.EnemySide) and (not FightDataHelper.entityMgr:getById(slot1.fromId) or slot12.side) and FightEnum.EntitySide.MySide, nil, slot16)) do
-					slot9[slot17.id] = slot17
+				if var_89_4 == FightEntityScene.MySideId then
+					var_89_3 = FightEnum.EntitySide.MySide
+				elseif var_89_4 == FightEntityScene.EnemySideId then
+					var_89_3 = FightEnum.EntitySide.EnemySide
+				else
+					local var_89_5 = FightDataHelper.entityMgr:getById(arg_89_1.fromId)
+
+					if var_89_5 then
+						var_89_3 = var_89_5.side
+					else
+						var_89_3 = FightEnum.EntitySide.MySide
+					end
+				end
+
+				local var_89_6 = FightDataHelper.entityMgr:getSideList(var_89_3, nil, iter_89_3.target == 4)
+
+				for iter_89_4, iter_89_5 in ipairs(var_89_6) do
+					var_89_2[iter_89_5.id] = iter_89_5
 				end
 			end
 
-			if FightStrUtil.instance:getSplitCache(slot8.condition, "#")[1] == "1" then
-				for slot18, slot19 in ipairs(uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) do
-					if slot19.buffId == tonumber(slot10[2]) and tonumber(slot10[3]) <= slot19.count then
-						return slot8.timeline
+			local var_89_7 = FightStrUtil.instance:getSplitCache(iter_89_3.condition, "#")
+			local var_89_8 = var_89_7[1]
+
+			if var_89_8 == "1" then
+				local var_89_9 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+				local var_89_10 = tonumber(var_89_7[2])
+				local var_89_11 = tonumber(var_89_7[3])
+
+				for iter_89_6, iter_89_7 in ipairs(var_89_9) do
+					if iter_89_7.buffId == var_89_10 and var_89_11 <= iter_89_7.count then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "2" then
-				for slot15, slot16 in pairs(slot1.actEffect) do
-					if slot16.effectType == FightEnum.EffectType.DEAD then
-						return slot8.timeline
+			elseif var_89_8 == "2" then
+				for iter_89_8, iter_89_9 in pairs(arg_89_1.actEffect) do
+					if iter_89_9.effectType == FightEnum.EffectType.DEAD then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "3" then
-				for slot16 = 2, #slot10 do
-					if uv0.detectEntityIncludeBuffType(nil, tonumber(slot10[slot16]), uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) then
-						return slot8.timeline
+			elseif var_89_8 == "3" then
+				local var_89_12 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+
+				for iter_89_10 = 2, #var_89_7 do
+					if var_0_0.detectEntityIncludeBuffType(nil, tonumber(var_89_7[iter_89_10]), var_89_12) then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "4" then
-				slot12 = {
-					[tonumber(slot10[slot16])] = true
-				}
+			elseif var_89_8 == "4" then
+				local var_89_13 = {}
 
-				for slot16 = 2, #slot10 do
+				for iter_89_11 = 2, #var_89_7 do
+					var_89_13[tonumber(var_89_7[iter_89_11])] = true
 				end
 
-				for slot17, slot18 in ipairs(uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) do
-					if slot12[slot18.buffId] then
-						return slot8.timeline
+				local var_89_14 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+
+				for iter_89_12, iter_89_13 in ipairs(var_89_14) do
+					if var_89_13[iter_89_13.buffId] then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "5" then
-				slot12 = {
-					[tonumber(slot10[slot16])] = true
-				}
+			elseif var_89_8 == "5" then
+				local var_89_15 = {}
 
-				for slot16 = 2, #slot10 do
+				for iter_89_14 = 2, #var_89_7 do
+					var_89_15[tonumber(var_89_7[iter_89_14])] = true
 				end
 
-				for slot16, slot17 in pairs(slot9) do
-					slot18 = slot17.skin
+				for iter_89_15, iter_89_16 in pairs(var_89_2) do
+					local var_89_16 = iter_89_16.skin
 
-					if slot8.target == 1 then
-						slot18 = uv0.processSkinByStepData(slot1, slot17)
+					if iter_89_3.target == 1 then
+						var_89_16 = var_0_0.processSkinByStepData(arg_89_1, iter_89_16)
 					end
 
-					if slot17 and slot12[slot18] then
-						return slot8.timeline
+					if iter_89_16 and var_89_15[var_89_16] then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "6" then
-				slot12 = {
-					[tonumber(slot10[slot16])] = true
-				}
+			elseif var_89_8 == "6" then
+				local var_89_17 = {}
 
-				for slot16 = 2, #slot10 do
+				for iter_89_17 = 2, #var_89_7 do
+					var_89_17[tonumber(var_89_7[iter_89_17])] = true
 				end
 
-				for slot16, slot17 in ipairs(slot1.actEffect) do
-					if slot9[slot17.targetId] and slot12[slot17.configEffect] then
-						return slot8.timeline
+				for iter_89_18, iter_89_19 in ipairs(arg_89_1.actEffect) do
+					if var_89_2[iter_89_19.targetId] and var_89_17[iter_89_19.configEffect] then
+						return iter_89_3.timeline
 					end
 				end
-			elseif slot11 == "7" then
-				slot12 = {
-					[tonumber(slot10[slot16])] = true
-				}
+			elseif var_89_8 == "7" then
+				local var_89_18 = {}
 
-				for slot16 = 2, #slot10 do
+				for iter_89_20 = 2, #var_89_7 do
+					var_89_18[tonumber(var_89_7[iter_89_20])] = true
 				end
 
-				for slot17, slot18 in ipairs(uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) do
-					if slot12[slot18.buffId] then
-						return slot0
+				local var_89_19 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+
+				for iter_89_21, iter_89_22 in ipairs(var_89_19) do
+					if var_89_18[iter_89_22.buffId] then
+						return arg_89_0
 					end
 				end
 
-				return slot8.timeline
-			elseif slot11 == "8" then
-				slot12 = tonumber(slot10[2])
-				slot13 = tonumber(slot10[3])
-				slot14 = uv0.getEntitysCloneBuff(slot9)
+				return iter_89_3.timeline
+			elseif var_89_8 == "8" then
+				local var_89_20 = tonumber(var_89_7[2])
+				local var_89_21 = tonumber(var_89_7[3])
+				local var_89_22 = var_0_0.getEntitysCloneBuff(var_89_2)
 
-				if slot8.simulate == 1 then
-					for slot19, slot20 in ipairs(uv0.getBuffListForReplaceTimeline(nil, slot9, slot1)) do
-						if slot20.buffId == slot12 and slot13 <= slot20.count then
-							return slot8.timeline
+				if iter_89_3.simulate == 1 then
+					local var_89_23 = var_0_0.getBuffListForReplaceTimeline(nil, var_89_2, arg_89_1)
+
+					for iter_89_23, iter_89_24 in ipairs(var_89_23) do
+						if iter_89_24.buffId == var_89_20 and var_89_21 <= iter_89_24.count then
+							return iter_89_3.timeline
 						end
 					end
 
-					if uv0.simulateFightStepData(slot1, slot14, uv0.detectBuffCountEnough, {
-						buffId = slot12,
-						count = slot13
+					if var_0_0.simulateFightStepData(arg_89_1, var_89_22, var_0_0.detectBuffCountEnough, {
+						buffId = var_89_20,
+						count = var_89_21
 					}) == true then
-						return slot8.timeline
+						return iter_89_3.timeline
 					end
 				else
-					for slot19, slot20 in ipairs(uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) do
-						if slot20.buffId == slot12 and slot13 <= slot20.count then
-							return slot8.timeline
+					local var_89_24 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+
+					for iter_89_25, iter_89_26 in ipairs(var_89_24) do
+						if iter_89_26.buffId == var_89_20 and var_89_21 <= iter_89_26.count then
+							return iter_89_3.timeline
 						end
 					end
 				end
-			elseif slot11 == "9" then
-				slot12 = {}
+			elseif var_89_8 == "9" then
+				local var_89_25 = {}
 
-				for slot16, slot17 in ipairs(slot3) do
-					slot18 = tonumber(string.split(slot17.condition, "#")[2])
+				for iter_89_27, iter_89_28 in ipairs(var_89_1) do
+					local var_89_26 = tonumber(string.split(iter_89_28.condition, "#")[2])
 
-					for slot22, slot23 in pairs(slot9) do
-						slot24 = slot23.skin
+					for iter_89_29, iter_89_30 in pairs(var_89_2) do
+						local var_89_27 = iter_89_30.skin
 
-						if slot8.target == 1 then
-							slot24 = uv0.processSkinByStepData(slot1, slot23)
+						if iter_89_3.target == 1 then
+							var_89_27 = var_0_0.processSkinByStepData(arg_89_1, iter_89_30)
 						end
 
-						if slot24 == slot18 then
-							table.insert(slot12, slot17)
+						if var_89_27 == var_89_26 then
+							table.insert(var_89_25, iter_89_28)
 						end
 					end
 				end
 
-				if #slot12 > 1 then
+				local var_89_28 = #var_89_25
+
+				if var_89_28 > 1 then
+					local var_89_29 = var_0_7[arg_89_0]
+
 					while true do
-						if math.random(1, slot13) ~= uv1[slot0] then
-							uv1[slot0] = slot15
+						local var_89_30 = math.random(1, var_89_28)
 
-							return slot12[slot15].timeline
+						if var_89_30 ~= var_89_29 then
+							var_0_7[arg_89_0] = var_89_30
+
+							return var_89_25[var_89_30].timeline
 						end
 					end
-				elseif slot13 > 0 then
-					return slot12[1].timeline
+				elseif var_89_28 > 0 then
+					return var_89_25[1].timeline
 				end
-			elseif slot11 == "10" then
-				if tonumber(slot10[2]) == 1 then
-					if slot1.fromId == slot1.toId then
-						return slot8.timeline
+			elseif var_89_8 == "10" then
+				local var_89_31 = tonumber(var_89_7[2])
+
+				if var_89_31 == 1 then
+					if arg_89_1.fromId == arg_89_1.toId then
+						return iter_89_3.timeline
 					end
-				elseif slot12 == 2 and slot1.fromId ~= slot1.toId then
-					return slot8.timeline
+				elseif var_89_31 == 2 and arg_89_1.fromId ~= arg_89_1.toId then
+					return iter_89_3.timeline
 				end
-			elseif slot11 == "11" then
-				slot12 = {
-					[tonumber(slot10[slot17])] = true
-				}
-				slot13 = tonumber(slot10[2])
+			elseif var_89_8 == "11" then
+				local var_89_32 = {}
+				local var_89_33 = tonumber(var_89_7[2])
 
-				for slot17 = 3, #slot10 do
+				for iter_89_31 = 3, #var_89_7 do
+					var_89_32[tonumber(var_89_7[iter_89_31])] = true
 				end
 
-				for slot17, slot18 in pairs(slot9) do
-					slot19 = slot18.skin
+				for iter_89_32, iter_89_33 in pairs(var_89_2) do
+					local var_89_34 = iter_89_33.skin
 
-					if slot8.target == 1 then
-						slot19 = uv0.processSkinByStepData(slot1, slot18)
+					if iter_89_3.target == 1 then
+						var_89_34 = var_0_0.processSkinByStepData(arg_89_1, iter_89_33)
 					end
 
-					if slot13 == slot19 then
-						for slot24, slot25 in ipairs(uv0.getBuffListForReplaceTimeline(slot8, slot9, slot1)) do
-							if slot12[slot25.buffId] then
-								return slot8.timeline
+					if var_89_33 == var_89_34 then
+						local var_89_35 = var_0_0.getBuffListForReplaceTimeline(iter_89_3, var_89_2, arg_89_1)
+
+						for iter_89_34, iter_89_35 in ipairs(var_89_35) do
+							if var_89_32[iter_89_35.buffId] then
+								return iter_89_3.timeline
 							end
 						end
 					end
 				end
-			elseif slot11 == "12" then
-				slot12 = {
-					[tonumber(slot10[slot16])] = true
-				}
+			elseif var_89_8 == "12" then
+				local var_89_36 = {}
 
-				for slot16 = 2, #slot10 - 1 do
+				for iter_89_36 = 2, #var_89_7 - 1 do
+					var_89_36[tonumber(var_89_7[iter_89_36])] = true
 				end
 
-				for slot16, slot17 in pairs(slot9) do
-					slot18 = slot17.skin
+				for iter_89_37, iter_89_38 in pairs(var_89_2) do
+					local var_89_37 = iter_89_38.skin
 
-					if slot8.target == 1 then
-						slot18 = uv0.processSkinByStepData(slot1, slot17)
+					if iter_89_3.target == 1 then
+						var_89_37 = var_0_0.processSkinByStepData(arg_89_1, iter_89_38)
 					end
 
-					if slot17 and slot12[slot18] then
-						if slot10[#slot10] == "1" then
-							if slot1.fromId == slot1.toId then
-								return slot8.timeline
-							end
-						elseif slot19 == "2" then
-							slot21 = FightDataHelper.entityMgr:getById(slot1.toId)
+					if iter_89_38 and var_89_36[var_89_37] then
+						local var_89_38 = var_89_7[#var_89_7]
 
-							if FightDataHelper.entityMgr:getById(slot1.fromId) and slot21 and slot20.id ~= slot21.id and slot20.side == slot21.side then
-								return slot8.timeline
+						if var_89_38 == "1" then
+							if arg_89_1.fromId == arg_89_1.toId then
+								return iter_89_3.timeline
 							end
-						elseif slot19 == "3" then
-							slot21 = FightDataHelper.entityMgr:getById(slot1.toId)
+						elseif var_89_38 == "2" then
+							local var_89_39 = FightDataHelper.entityMgr:getById(arg_89_1.fromId)
+							local var_89_40 = FightDataHelper.entityMgr:getById(arg_89_1.toId)
 
-							if FightDataHelper.entityMgr:getById(slot1.fromId) and slot21 and slot20.side ~= slot21.side then
-								return slot8.timeline
+							if var_89_39 and var_89_40 and var_89_39.id ~= var_89_40.id and var_89_39.side == var_89_40.side then
+								return iter_89_3.timeline
+							end
+						elseif var_89_38 == "3" then
+							local var_89_41 = FightDataHelper.entityMgr:getById(arg_89_1.fromId)
+							local var_89_42 = FightDataHelper.entityMgr:getById(arg_89_1.toId)
+
+							if var_89_41 and var_89_42 and var_89_41.side ~= var_89_42.side then
+								return iter_89_3.timeline
 							end
 						end
 					end
@@ -1740,1155 +2116,1427 @@ function slot0.detectReplaceTimeline(slot0, slot1)
 		end
 	end
 
-	return slot0
+	return arg_89_0
 end
 
-function slot0.detectBuffCountEnough(slot0, slot1)
-	for slot7, slot8 in ipairs(slot0) do
-		if slot1.buffId == slot8.buffId and slot1.count <= slot8.count then
+function var_0_0.detectBuffCountEnough(arg_90_0, arg_90_1)
+	local var_90_0 = arg_90_1.buffId
+	local var_90_1 = arg_90_1.count
+
+	for iter_90_0, iter_90_1 in ipairs(arg_90_0) do
+		if var_90_0 == iter_90_1.buffId and var_90_1 <= iter_90_1.count then
 			return true
 		end
 	end
 end
 
-function slot0.simulateFightStepData(slot0, slot1, slot2, slot3)
-	for slot7, slot8 in ipairs(slot0.actEffect) do
-		slot12 = slot1 and slot1[slot9]
+function var_0_0.simulateFightStepData(arg_91_0, arg_91_1, arg_91_2, arg_91_3)
+	for iter_91_0, iter_91_1 in ipairs(arg_91_0.actEffect) do
+		local var_91_0 = iter_91_1.targetId
+		local var_91_1 = var_0_0.getEntity(var_91_0)
+		local var_91_2 = var_91_1 and var_91_1:getMO()
+		local var_91_3 = arg_91_1 and arg_91_1[var_91_0]
 
-		if uv0.getEntity(slot8.targetId) and slot10:getMO() and slot12 then
-			if slot8.effectType == FightEnum.EffectType.BUFFADD then
-				if not slot11:getBuffMO(slot8.buff.uid) then
-					slot14 = FightBuffMO.New()
+		if var_91_2 and var_91_3 then
+			if iter_91_1.effectType == FightEnum.EffectType.BUFFADD then
+				if not var_91_2:getBuffMO(iter_91_1.buff.uid) then
+					local var_91_4 = FightBuffMO.New()
 
-					slot14:init(slot8.buff, slot8.targetId)
-					table.insert(slot12, slot14)
+					var_91_4:init(iter_91_1.buff, iter_91_1.targetId)
+					table.insert(var_91_3, var_91_4)
 				end
 
-				if slot2 and slot2(slot12, slot3) then
+				if arg_91_2 and arg_91_2(var_91_3, arg_91_3) then
 					return true
 				end
-			elseif slot8.effectType == FightEnum.EffectType.BUFFDEL or slot8.effectType == FightEnum.EffectType.BUFFDELNOEFFECT then
-				for slot16, slot17 in ipairs(slot12) do
-					if slot17.uid == slot8.buff.uid then
-						table.remove(slot12, slot16)
+			elseif iter_91_1.effectType == FightEnum.EffectType.BUFFDEL or iter_91_1.effectType == FightEnum.EffectType.BUFFDELNOEFFECT then
+				for iter_91_2, iter_91_3 in ipairs(var_91_3) do
+					if iter_91_3.uid == iter_91_1.buff.uid then
+						table.remove(var_91_3, iter_91_2)
 
 						break
 					end
 				end
 
-				if slot2 and slot2(slot12, slot3) then
+				if arg_91_2 and arg_91_2(var_91_3, arg_91_3) then
 					return true
 				end
-			elseif slot8.effectType == FightEnum.EffectType.BUFFUPDATE then
-				for slot16, slot17 in ipairs(slot12) do
-					if slot17.uid == slot8.buff.uid then
-						slot17:init(slot8.buff, slot9)
+			elseif iter_91_1.effectType == FightEnum.EffectType.BUFFUPDATE then
+				for iter_91_4, iter_91_5 in ipairs(var_91_3) do
+					if iter_91_5.uid == iter_91_1.buff.uid then
+						iter_91_5:init(iter_91_1.buff, var_91_0)
 					end
 				end
 
-				if slot2 and slot2(slot12, slot3) then
+				if arg_91_2 and arg_91_2(var_91_3, arg_91_3) then
 					return true
 				end
 			end
 		end
 	end
 
-	return slot1
+	return arg_91_1
 end
 
-function slot0.getEntitysCloneBuff(slot0)
-	slot1 = {}
+function var_0_0.getEntitysCloneBuff(arg_92_0)
+	local var_92_0 = {}
 
-	for slot5, slot6 in pairs(slot0) do
-		slot7 = {}
+	for iter_92_0, iter_92_1 in pairs(arg_92_0) do
+		local var_92_1 = {}
+		local var_92_2 = iter_92_1:getBuffList()
 
-		for slot12, slot13 in ipairs(slot6:getBuffList()) do
-			table.insert(slot7, slot13:clone())
+		for iter_92_2, iter_92_3 in ipairs(var_92_2) do
+			local var_92_3 = iter_92_3:clone()
+
+			table.insert(var_92_1, var_92_3)
 		end
 
-		slot1[slot6.id] = slot7
+		var_92_0[iter_92_1.id] = var_92_1
 	end
 
-	return slot1
+	return var_92_0
 end
 
-function slot0.sortReplaceTimelineConfig(slot0, slot1)
-	return slot0.priority < slot1.priority
+function var_0_0.sortReplaceTimelineConfig(arg_93_0, arg_93_1)
+	return arg_93_0.priority < arg_93_1.priority
 end
 
-function slot0.getMagicSide(slot0)
-	if FightDataHelper.entityMgr:getById(slot0) then
-		return slot1.side
-	elseif slot0 == FightEntityScene.MySideId then
+function var_0_0.getMagicSide(arg_94_0)
+	local var_94_0 = FightDataHelper.entityMgr:getById(arg_94_0)
+
+	if var_94_0 then
+		return var_94_0.side
+	elseif arg_94_0 == FightEntityScene.MySideId then
 		return FightEnum.EntitySide.MySide
-	elseif slot0 == FightEntityScene.EnemySideId then
+	elseif arg_94_0 == FightEntityScene.EnemySideId then
 		return FightEnum.EntitySide.EnemySide
 	end
 
 	return FightEnum.EntitySide.MySide
 end
 
-function slot0.isBossRushChannelSkill(slot0)
-	if lua_skill.configDict[slot0] and lua_skill_effect.configDict[slot1.skillEffect] then
-		for slot7 = 1, FightEnum.MaxBehavior do
-			if not string.nilorempty(slot3["behavior" .. slot7]) and FightStrUtil.instance:getSplitCache(slot8, "#")[1] == "1" and lua_skill_buff.configDict[tonumber(slot9[2])] and FightStrUtil.instance:getSplitCache(slot11.features, "#")[1] == "742" then
-				return true, tonumber(slot12[2]), tonumber(slot12[5])
+function var_0_0.isBossRushChannelSkill(arg_95_0)
+	local var_95_0 = lua_skill.configDict[arg_95_0]
+
+	if var_95_0 then
+		local var_95_1 = var_95_0.skillEffect
+		local var_95_2 = lua_skill_effect.configDict[var_95_1]
+
+		if var_95_2 then
+			for iter_95_0 = 1, FightEnum.MaxBehavior do
+				local var_95_3 = var_95_2["behavior" .. iter_95_0]
+
+				if not string.nilorempty(var_95_3) then
+					local var_95_4 = FightStrUtil.instance:getSplitCache(var_95_3, "#")
+
+					if var_95_4[1] == "1" then
+						local var_95_5 = tonumber(var_95_4[2])
+						local var_95_6 = lua_skill_buff.configDict[var_95_5]
+
+						if var_95_6 then
+							local var_95_7 = FightStrUtil.instance:getSplitCache(var_95_6.features, "#")
+
+							if var_95_7[1] == "742" then
+								return true, tonumber(var_95_7[2]), tonumber(var_95_7[5])
+							end
+						end
+					end
+				end
 			end
 		end
 	end
 end
 
-function slot0.processEntitySkin(slot0, slot1)
-	if HeroModel.instance:getById(slot1) and slot2.skin > 0 then
-		return slot2.skin
+function var_0_0.processEntitySkin(arg_96_0, arg_96_1)
+	local var_96_0 = HeroModel.instance:getById(arg_96_1)
+
+	if var_96_0 and var_96_0.skin > 0 then
+		return var_96_0.skin
 	end
 
-	return slot0
+	return arg_96_0
 end
 
-function slot0.isPlayerCardSkill(slot0)
-	if not slot0.cardIndex then
+function var_0_0.isPlayerCardSkill(arg_97_0)
+	if not arg_97_0.cardIndex then
 		return
 	end
 
-	if slot0.cardIndex == 0 then
+	if arg_97_0.cardIndex == 0 then
 		return
 	end
 
-	if slot0.fromId == FightEntityScene.MySideId then
+	local var_97_0 = arg_97_0.fromId
+
+	if var_97_0 == FightEntityScene.MySideId then
 		return true
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot1) then
+	local var_97_1 = FightDataHelper.entityMgr:getById(var_97_0)
+
+	if not var_97_1 then
 		return
 	end
 
-	return slot2.teamType == FightEnum.TeamType.MySide
+	return var_97_1.teamType == FightEnum.TeamType.MySide
 end
 
-function slot0.isEnemyCardSkill(slot0)
-	if not slot0.cardIndex then
+function var_0_0.isEnemyCardSkill(arg_98_0)
+	if not arg_98_0.cardIndex then
 		return
 	end
 
-	if slot0.cardIndex == 0 then
+	if arg_98_0.cardIndex == 0 then
 		return
 	end
 
-	if slot0.fromId == FightEntityScene.EnemySideId then
+	local var_98_0 = arg_98_0.fromId
+
+	if var_98_0 == FightEntityScene.EnemySideId then
 		return true
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot1) then
+	local var_98_1 = FightDataHelper.entityMgr:getById(var_98_0)
+
+	if not var_98_1 then
 		return
 	end
 
-	return slot2.teamType == FightEnum.TeamType.EnemySide
+	return var_98_1.teamType == FightEnum.TeamType.EnemySide
 end
 
-function slot0.buildMonsterA2B(slot0, slot1, slot2, slot3)
-	slot2:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.BeforeMonsterA2B, slot1.modelId))
+function var_0_0.buildMonsterA2B(arg_99_0, arg_99_1, arg_99_2, arg_99_3)
+	local var_99_0 = lua_fight_boss_evolution_client.configDict[arg_99_1.skin]
 
-	if lua_fight_boss_evolution_client.configDict[slot1.skin] then
-		slot2:addWork(Work2FightWork.New(FightWorkPlayTimeline, slot0, slot4.timeline))
+	arg_99_2:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.BeforeMonsterA2B, arg_99_1.modelId))
 
-		if slot4.nextSkinId ~= 0 then
-			slot2:registWork(FightWorkFunction, uv0.setBossEvolution, uv0, slot0, slot4)
+	if var_99_0 then
+		arg_99_2:addWork(Work2FightWork.New(FightWorkPlayTimeline, arg_99_0, var_99_0.timeline))
+
+		if var_99_0.nextSkinId ~= 0 then
+			arg_99_2:registWork(FightWorkFunction, var_0_0.setBossEvolution, var_0_0, arg_99_0, var_99_0)
 		else
-			slot2:registWork(FightWorkFunction, uv0.removeEntity, slot0.id)
+			arg_99_2:registWork(FightWorkFunction, var_0_0.removeEntity, arg_99_0.id)
 		end
 	end
 
-	if slot3 then
-		slot2:addWork(slot3)
+	if arg_99_3 then
+		arg_99_2:addWork(arg_99_3)
 	end
 
-	slot2:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.AfterMonsterA2B, slot1.modelId))
+	arg_99_2:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.AfterMonsterA2B, arg_99_1.modelId))
 end
 
-function slot0.removeEntity(slot0)
-	if uv0.getEntity(slot0) then
-		GameSceneMgr.instance:getCurScene().entityMgr:removeUnit(slot2:getTag(), slot2.id)
-	end
-end
+function var_0_0.removeEntity(arg_100_0)
+	local var_100_0 = GameSceneMgr.instance:getCurScene().entityMgr
+	local var_100_1 = var_0_0.getEntity(arg_100_0)
 
-function slot0.setBossEvolution(slot0, slot1, slot2)
-	FightController.instance:dispatchEvent(FightEvent.SetBossEvolution, slot1, slot2.nextSkinId)
-	FightMsgMgr.sendMsg(FightMsgId.SetBossEvolution, slot1, slot2.nextSkinId)
-
-	if uv0.getEntity(slot1.id) == slot1 then
-		GameSceneMgr.instance:getCurScene().entityMgr:removeUnitData(slot1:getTag(), slot1.id)
+	if var_100_1 then
+		var_100_0:removeUnit(var_100_1:getTag(), var_100_1.id)
 	end
 end
 
-function slot0.buildDeadPerformanceWork(slot0, slot1)
-	slot2 = FlowSequence.New()
+function var_0_0.setBossEvolution(arg_101_0, arg_101_1, arg_101_2)
+	FightController.instance:dispatchEvent(FightEvent.SetBossEvolution, arg_101_1, arg_101_2.nextSkinId)
+	FightMsgMgr.sendMsg(FightMsgId.SetBossEvolution, arg_101_1, arg_101_2.nextSkinId)
 
-	for slot6 = 1, FightEnum.DeadPerformanceMaxNum do
-		slot8 = slot0["actParam" .. slot6]
+	local var_101_0 = GameSceneMgr.instance:getCurScene().entityMgr
 
-		if slot0["actType" .. slot6] == 0 then
+	if var_0_0.getEntity(arg_101_1.id) == arg_101_1 then
+		var_101_0:removeUnitData(arg_101_1:getTag(), arg_101_1.id)
+	end
+end
+
+function var_0_0.buildDeadPerformanceWork(arg_102_0, arg_102_1)
+	local var_102_0 = FlowSequence.New()
+
+	for iter_102_0 = 1, FightEnum.DeadPerformanceMaxNum do
+		local var_102_1 = arg_102_0["actType" .. iter_102_0]
+		local var_102_2 = arg_102_0["actParam" .. iter_102_0]
+
+		if var_102_1 == 0 then
 			break
 		end
 
-		if slot7 == 1 then
-			slot2:addWork(FightWorkPlayTimeline.New(slot1, slot8))
-		elseif slot7 == 2 then
-			slot2:addWork(FightWorkNormalDialog.New(FightViewDialog.Type.DeadPerformanceNoCondition, tonumber(slot8)))
+		if var_102_1 == 1 then
+			var_102_0:addWork(FightWorkPlayTimeline.New(arg_102_1, var_102_2))
+		elseif var_102_1 == 2 then
+			var_102_0:addWork(FightWorkNormalDialog.New(FightViewDialog.Type.DeadPerformanceNoCondition, tonumber(var_102_2)))
 		end
 	end
 
-	return slot2
+	return var_102_0
 end
 
-function slot0.compareData(slot0, slot1, slot2)
-	if type(slot0) == "function" then
+function var_0_0.compareData(arg_103_0, arg_103_1, arg_103_2)
+	local var_103_0 = type(arg_103_0)
+
+	if var_103_0 == "function" then
 		return true
-	elseif slot3 == "table" then
-		for slot7, slot8 in pairs(slot0) do
-			slot9 = false
+	elseif var_103_0 == "table" then
+		for iter_103_0, iter_103_1 in pairs(arg_103_0) do
+			local var_103_1 = false
 
-			if type(slot7) == "table" then
-				slot9 = true
+			if type(iter_103_0) == "table" then
+				var_103_1 = true
 			end
 
-			if slot2 and slot2[slot7] then
-				slot9 = true
+			if arg_103_2 and arg_103_2[iter_103_0] then
+				var_103_1 = true
 			end
 
-			if not slot1 then
+			if not arg_103_1 then
 				return false
 			end
 
-			if type(slot1) ~= "table" then
+			if type(arg_103_1) ~= "table" then
 				return false
 			end
 
-			if not slot9 and not uv0.compareData(slot8, slot1[slot7], slot2) then
-				return false, slot7, slot8, slot1[slot7]
+			if not var_103_1 and not var_0_0.compareData(iter_103_1, arg_103_1[iter_103_0], arg_103_2) then
+				return false, iter_103_0, iter_103_1, arg_103_1[iter_103_0]
 			end
 		end
 
 		return true
 	else
-		return slot0 == slot1
+		return arg_103_0 == arg_103_1
 	end
 end
 
-slot8 = 0
+local var_0_8 = 0
 
-function slot0.logStr(slot0, slot1)
-	slot2 = ""
-	uv0 = 0
+function var_0_0.logStr(arg_104_0, arg_104_1)
+	local var_104_0 = ""
 
-	return type(slot0) == "table" and slot2 .. uv1.logTable(slot0, slot1) or slot2 .. tostring(slot0)
-end
+	var_0_8 = 0
 
-function slot0.logTable(slot0, slot1)
-	slot2 = "" .. "{\n"
-	uv0 = uv0 + 1
-	slot3 = tabletool.len(slot0)
-	slot4 = 0
-
-	for slot8, slot9 in pairs(slot0) do
-		slot10 = false
-
-		if slot1 and slot1[slot8] then
-			slot10 = true
-		end
-
-		if not slot10 then
-			for slot14 = 1, uv0 do
-				slot2 = slot2 .. "\t"
-			end
-
-			slot2 = slot2 .. slot8 .. " = "
-
-			if slot3 > slot4 + 1 then
-				slot2 = (type(slot9) == "table" and slot2 .. uv1.logTable(slot9, slot1) or slot2 .. tostring(slot9)) .. ","
-			end
-
-			slot2 = slot2 .. "\n"
-		end
-	end
-
-	uv0 = uv0 - 1
-
-	for slot8 = 1, uv0 do
-		slot2 = slot2 .. "\t"
-	end
-
-	return slot2 .. "}"
-end
-
-function slot0.deepCopySimpleWithMeta(slot0, slot1)
-	if type(slot0) ~= "table" then
-		return slot0
+	if type(arg_104_0) == "table" then
+		var_104_0 = var_104_0 .. var_0_0.logTable(arg_104_0, arg_104_1)
 	else
-		slot2 = {}
+		var_104_0 = var_104_0 .. tostring(arg_104_0)
+	end
 
-		for slot6, slot7 in pairs(slot0) do
-			slot8 = false
+	return var_104_0
+end
 
-			if slot1 and slot1[slot6] then
-				slot8 = true
+function var_0_0.logTable(arg_105_0, arg_105_1)
+	local var_105_0 = "" .. "{\n"
+
+	var_0_8 = var_0_8 + 1
+
+	local var_105_1 = tabletool.len(arg_105_0)
+	local var_105_2 = 0
+
+	for iter_105_0, iter_105_1 in pairs(arg_105_0) do
+		local var_105_3 = false
+
+		if arg_105_1 and arg_105_1[iter_105_0] then
+			var_105_3 = true
+		end
+
+		if not var_105_3 then
+			for iter_105_2 = 1, var_0_8 do
+				var_105_0 = var_105_0 .. "\t"
 			end
 
-			if not slot8 then
-				slot2[slot6] = uv0.deepCopySimpleWithMeta(slot7, slot1)
-			end
-		end
+			var_105_0 = var_105_0 .. iter_105_0 .. " = "
 
-		if getmetatable(slot0) then
-			setmetatable(slot2, slot3)
-		end
-
-		return slot2
-	end
-end
-
-function slot0.getPassiveSkill(slot0, slot1)
-	if not FightDataHelper.entityMgr:getById(slot0) then
-		return slot1
-	end
-
-	for slot7, slot8 in pairs(slot2.upgradedOptions) do
-		if lua_hero_upgrade_options.configDict[slot8] and not string.nilorempty(slot9.replacePassiveSkill) then
-			for slot14, slot15 in ipairs(GameUtil.splitString2(slot9.replacePassiveSkill, true)) do
-				if slot1 == slot15[1] and slot2:isPassiveSkill(slot15[2]) then
-					return slot15[2]
-				end
-			end
-		end
-	end
-
-	return slot1
-end
-
-function slot0.isSupportCard(slot0)
-	if slot0.cardType == FightEnum.CardType.SUPPORT_NORMAL or slot0.cardType == FightEnum.CardType.SUPPORT_EX then
-		return true
-	end
-end
-
-function slot0.curIsRougeFight()
-	if not FightModel.instance:getFightParam() then
-		return false
-	end
-
-	return DungeonConfig.instance:getChapterCO(slot0.chapterId) and slot2.type == DungeonEnum.ChapterType.Rouge
-end
-
-function slot0.processSkinByStepData(slot0, slot1)
-	slot1 = slot1 or FightDataHelper.entityMgr:getById(slot0.fromId)
-
-	if slot0.supportHeroId ~= 0 and slot1 and slot1.modelId ~= slot2 then
-		if uv0.curIsRougeFight() and RougeModel.instance:getTeamInfo() and slot3:getAssistHeroMo(slot2) then
-			return slot4.skin
-		end
-
-		if HeroModel.instance:getByHeroId(slot2) and slot3.skin > 0 then
-			return slot3.skin
-		elseif lua_character.configDict[slot2] then
-			return slot4.skinId
-		end
-	end
-
-	return slot1 and slot1.skin or 0
-end
-
-function slot0.processSkinId(slot0, slot1)
-	if (slot1.cardType == FightEnum.CardType.SUPPORT_NORMAL or slot1.cardType == FightEnum.CardType.SUPPORT_EX) and slot1.heroId ~= slot0.modelId then
-		if HeroModel.instance:getByHeroId(slot1.heroId) and slot2.skin > 0 then
-			return slot2.skin
-		elseif lua_character.configDict[slot1.heroId] then
-			return slot3.skinId
-		end
-	end
-
-	return slot0.skin
-end
-
-function slot0.processNextSkillId(slot0)
-	if DungeonConfig.instance:getEpisodeCO(DungeonModel.instance.curSendEpisodeId) and slot1.type == DungeonEnum.EpisodeType.Rouge and FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.SupportHeroSkill) then
-		for slot6, slot7 in pairs(cjson.decode(slot2)) do
-			if slot7.skill1 then
-				for slot11, slot12 in ipairs(slot7.skill1) do
-					slot13 = slot7.skill1[slot11 + 1]
-
-					if slot12 == slot0 and slot13 then
-						return slot13
-					end
-				end
-			end
-
-			if slot7.skill2 then
-				for slot11, slot12 in ipairs(slot7.skill2) do
-					slot13 = slot7.skill2[slot11 + 1]
-
-					if slot12 == slot0 and slot13 then
-						return slot13
-					end
-				end
-			end
-		end
-	end
-end
-
-function slot0.isTimelineStep(slot0)
-	if slot0 and slot0.actType == FightEnum.ActType.SKILL and not string.nilorempty(FightConfig.instance:getSkinSkillTimeline(FightDataHelper.entityMgr:getById(slot0.fromId) and slot1.skin, slot0.actId)) then
-		return true
-	end
-end
-
-function slot0.getClickEntity(slot0, slot1, slot2)
-	table.sort(slot0, uv0.sortEntityList)
-
-	for slot6, slot7 in ipairs(slot0) do
-		if slot7:getMO() then
-			slot9, slot10, slot11, slot12, slot13, slot14, slot15, slot16 = nil
-
-			if isTypeOf(uv0.getEntity(slot8.id), FightEntityAssembledMonsterMain) or isTypeOf(slot17, FightEntityAssembledMonsterSub) then
-				slot18 = lua_fight_assembled_monster.configDict[slot8.skin]
-				slot19, slot20, slot21 = transformhelper.getPos(slot7.go.transform)
-				slot19 = slot19 + slot18.virtualSpinePos[1]
-				slot20 = slot20 + slot18.virtualSpinePos[2]
-				slot21 = slot21 + slot18.virtualSpinePos[3]
-				slot15, slot16 = recthelper.worldPosToAnchorPosXYZ(slot19, slot20, slot21, slot1)
-				slot22 = slot18.virtualSpineSize[1] * 0.5
-				slot23 = slot18.virtualSpineSize[2] * 0.5
-				slot30, slot31, slot32 = recthelper.worldPosToAnchorPosXYZ(slot19 - slot22, slot20 - slot23, slot21, slot1)
-				slot33, slot34, slot35 = recthelper.worldPosToAnchorPosXYZ(slot19 + slot22, slot20 + slot23, slot21, slot1)
-				slot9 = (slot33 - slot30) / 2
-				slot10 = slot15 - slot9
-				slot11 = slot15 + slot9
-				slot12 = (slot34 - slot31) / 2
-				slot13 = slot16 - slot12
-				slot14 = slot16 + slot12
+			if type(iter_105_1) == "table" then
+				var_105_0 = var_105_0 .. var_0_0.logTable(iter_105_1, arg_105_1)
 			else
-				slot18, slot19, slot20, slot21 = uv0.calcRect(slot7, slot1)
+				var_105_0 = var_105_0 .. tostring(iter_105_1)
+			end
 
-				if slot7:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle) then
-					slot23, slot24, slot25 = transformhelper.getPos(slot22.transform)
-					slot15, slot16 = recthelper.worldPosToAnchorPosXYZ(slot23, slot24, slot25, slot1)
-				else
-					slot15 = (slot18 + slot20) / 2
-					slot16 = (slot19 + slot21) / 2
+			var_105_2 = var_105_2 + 1
+
+			if var_105_2 < var_105_1 then
+				var_105_0 = var_105_0 .. ","
+			end
+
+			var_105_0 = var_105_0 .. "\n"
+		end
+	end
+
+	var_0_8 = var_0_8 - 1
+
+	for iter_105_3 = 1, var_0_8 do
+		var_105_0 = var_105_0 .. "\t"
+	end
+
+	return var_105_0 .. "}"
+end
+
+function var_0_0.deepCopySimpleWithMeta(arg_106_0, arg_106_1)
+	if type(arg_106_0) ~= "table" then
+		return arg_106_0
+	else
+		local var_106_0 = {}
+
+		for iter_106_0, iter_106_1 in pairs(arg_106_0) do
+			local var_106_1 = false
+
+			if arg_106_1 and arg_106_1[iter_106_0] then
+				var_106_1 = true
+			end
+
+			if not var_106_1 then
+				var_106_0[iter_106_0] = var_0_0.deepCopySimpleWithMeta(iter_106_1, arg_106_1)
+			end
+		end
+
+		local var_106_2 = getmetatable(arg_106_0)
+
+		if var_106_2 then
+			setmetatable(var_106_0, var_106_2)
+		end
+
+		return var_106_0
+	end
+end
+
+function var_0_0.getPassiveSkill(arg_107_0, arg_107_1)
+	local var_107_0 = FightDataHelper.entityMgr:getById(arg_107_0)
+
+	if not var_107_0 then
+		return arg_107_1
+	end
+
+	local var_107_1 = var_107_0.upgradedOptions
+
+	for iter_107_0, iter_107_1 in pairs(var_107_1) do
+		local var_107_2 = lua_hero_upgrade_options.configDict[iter_107_1]
+
+		if var_107_2 and not string.nilorempty(var_107_2.replacePassiveSkill) then
+			local var_107_3 = GameUtil.splitString2(var_107_2.replacePassiveSkill, true)
+
+			for iter_107_2, iter_107_3 in ipairs(var_107_3) do
+				if arg_107_1 == iter_107_3[1] and var_107_0:isPassiveSkill(iter_107_3[2]) then
+					return iter_107_3[2]
+				end
+			end
+		end
+	end
+
+	return arg_107_1
+end
+
+function var_0_0.isSupportCard(arg_108_0)
+	if arg_108_0.cardType == FightEnum.CardType.SUPPORT_NORMAL or arg_108_0.cardType == FightEnum.CardType.SUPPORT_EX then
+		return true
+	end
+end
+
+function var_0_0.curIsRougeFight()
+	local var_109_0 = FightModel.instance:getFightParam()
+
+	if not var_109_0 then
+		return false
+	end
+
+	local var_109_1 = var_109_0.chapterId
+	local var_109_2 = DungeonConfig.instance:getChapterCO(var_109_1)
+
+	return var_109_2 and var_109_2.type == DungeonEnum.ChapterType.Rouge
+end
+
+function var_0_0.processSkinByStepData(arg_110_0, arg_110_1)
+	arg_110_1 = arg_110_1 or FightDataHelper.entityMgr:getById(arg_110_0.fromId)
+
+	local var_110_0 = arg_110_0.supportHeroId
+
+	if var_110_0 ~= 0 and arg_110_1 and arg_110_1.modelId ~= var_110_0 then
+		if var_0_0.curIsRougeFight() then
+			local var_110_1 = RougeModel.instance:getTeamInfo()
+			local var_110_2 = var_110_1 and var_110_1:getAssistHeroMo(var_110_0)
+
+			if var_110_2 then
+				return var_110_2.skin
+			end
+		end
+
+		local var_110_3 = HeroModel.instance:getByHeroId(var_110_0)
+
+		if var_110_3 and var_110_3.skin > 0 then
+			return var_110_3.skin
+		else
+			local var_110_4 = lua_character.configDict[var_110_0]
+
+			if var_110_4 then
+				return var_110_4.skinId
+			end
+		end
+	end
+
+	return arg_110_1 and arg_110_1.skin or 0
+end
+
+function var_0_0.processSkinId(arg_111_0, arg_111_1)
+	if (arg_111_1.cardType == FightEnum.CardType.SUPPORT_NORMAL or arg_111_1.cardType == FightEnum.CardType.SUPPORT_EX) and arg_111_1.heroId ~= arg_111_0.modelId then
+		local var_111_0 = HeroModel.instance:getByHeroId(arg_111_1.heroId)
+
+		if var_111_0 and var_111_0.skin > 0 then
+			return var_111_0.skin
+		else
+			local var_111_1 = lua_character.configDict[arg_111_1.heroId]
+
+			if var_111_1 then
+				return var_111_1.skinId
+			end
+		end
+	end
+
+	return arg_111_0.skin
+end
+
+function var_0_0.processNextSkillId(arg_112_0)
+	local var_112_0 = DungeonConfig.instance:getEpisodeCO(DungeonModel.instance.curSendEpisodeId)
+
+	if var_112_0 and var_112_0.type == DungeonEnum.EpisodeType.Rouge then
+		local var_112_1 = FightModel.instance:getRougeExData(FightEnum.ExIndexForRouge.SupportHeroSkill)
+
+		if var_112_1 then
+			local var_112_2 = cjson.decode(var_112_1)
+
+			for iter_112_0, iter_112_1 in pairs(var_112_2) do
+				if iter_112_1.skill1 then
+					for iter_112_2, iter_112_3 in ipairs(iter_112_1.skill1) do
+						local var_112_3 = iter_112_1.skill1[iter_112_2 + 1]
+
+						if iter_112_3 == arg_112_0 and var_112_3 then
+							return var_112_3
+						end
+					end
 				end
 
-				slot26 = lua_monster_skin.configDict[slot8.skin] and slot25.clickBoxUnlimit == 1
-				slot9 = Mathf.Clamp(math.abs(slot18 - slot20), 150, slot26 and 800 or 200) / 2
-				slot10 = slot15 - slot9
-				slot11 = slot15 + slot9
-				slot12 = Mathf.Clamp(math.abs(slot19 - slot21), 150, slot26 and 800 or 500) / 2
-				slot13 = slot16 - slot12
-				slot14 = slot16 + slot12
-			end
+				if iter_112_1.skill2 then
+					for iter_112_4, iter_112_5 in ipairs(iter_112_1.skill2) do
+						local var_112_4 = iter_112_1.skill2[iter_112_4 + 1]
 
-			slot18, slot19 = recthelper.screenPosToAnchorPos2(slot2, slot1)
-
-			if slot10 <= slot18 and slot18 <= slot11 and slot13 <= slot19 and slot19 <= slot14 then
-				return slot7.id, slot15, slot16
+						if iter_112_5 == arg_112_0 and var_112_4 then
+							return var_112_4
+						end
+					end
+				end
 			end
 		end
 	end
 end
 
-function slot0.calcRect(slot0, slot1)
-	if not slot0 then
-		return 10000, 10000, 10000, 10000
+function var_0_0.isTimelineStep(arg_113_0)
+	if arg_113_0 and arg_113_0.actType == FightEnum.ActType.SKILL then
+		local var_113_0 = FightDataHelper.entityMgr:getById(arg_113_0.fromId)
+		local var_113_1 = var_113_0 and var_113_0.skin
+		local var_113_2 = FightConfig.instance:getSkinSkillTimeline(var_113_1, arg_113_0.actId)
+
+		if not string.nilorempty(var_113_2) then
+			return true
+		end
 	end
-
-	if not slot0:getHangPoint(ModuleEnum.SpineHangPoint.BodyStatic) then
-		return 10000, 10000, 10000, 10000
-	end
-
-	slot3, slot4, slot5 = transformhelper.getPos(slot2.transform)
-	slot6, slot7 = uv0.getEntityBoxSizeOffsetV2(slot0)
-	slot8 = slot0:isMySide() and 1 or -1
-	slot9, slot10 = recthelper.worldPosToAnchorPosXYZ(slot3 - slot6.x * 0.5, slot4 - slot6.y * 0.5 * slot8, slot5, slot1)
-	slot11, slot12 = recthelper.worldPosToAnchorPosXYZ(slot3 + slot6.x * 0.5, slot4 + slot6.y * 0.5 * slot8, slot5, slot1)
-
-	return slot9, slot10, slot11, slot12
 end
 
-function slot0.sortEntityList(slot0, slot1)
-	if (isTypeOf(slot0, FightEntityAssembledMonsterMain) or isTypeOf(slot0, FightEntityAssembledMonsterSub)) and (isTypeOf(slot1, FightEntityAssembledMonsterMain) or isTypeOf(slot1, FightEntityAssembledMonsterSub)) then
-		return lua_fight_assembled_monster.configDict[slot1:getMO().skin].clickIndex < lua_fight_assembled_monster.configDict[slot0:getMO().skin].clickIndex
-	elseif slot4 and not slot5 then
+function var_0_0.getClickEntity(arg_114_0, arg_114_1, arg_114_2)
+	table.sort(arg_114_0, var_0_0.sortEntityList)
+
+	for iter_114_0, iter_114_1 in ipairs(arg_114_0) do
+		local var_114_0 = iter_114_1:getMO()
+
+		if var_114_0 then
+			local var_114_1
+			local var_114_2
+			local var_114_3
+			local var_114_4
+			local var_114_5
+			local var_114_6
+			local var_114_7
+			local var_114_8
+			local var_114_9 = var_0_0.getEntity(var_114_0.id)
+
+			if isTypeOf(var_114_9, FightEntityAssembledMonsterMain) or isTypeOf(var_114_9, FightEntityAssembledMonsterSub) then
+				local var_114_10 = lua_fight_assembled_monster.configDict[var_114_0.skin]
+				local var_114_11, var_114_12, var_114_13 = transformhelper.getPos(iter_114_1.go.transform)
+				local var_114_14 = var_114_11 + var_114_10.virtualSpinePos[1]
+				local var_114_15 = var_114_12 + var_114_10.virtualSpinePos[2]
+				local var_114_16 = var_114_13 + var_114_10.virtualSpinePos[3]
+
+				var_114_7, var_114_8 = recthelper.worldPosToAnchorPosXYZ(var_114_14, var_114_15, var_114_16, arg_114_1)
+
+				local var_114_17 = var_114_10.virtualSpineSize[1] * 0.5
+				local var_114_18 = var_114_10.virtualSpineSize[2] * 0.5
+				local var_114_19 = var_114_14 - var_114_17
+				local var_114_20 = var_114_15 - var_114_18
+				local var_114_21 = var_114_16
+				local var_114_22 = var_114_14 + var_114_17
+				local var_114_23 = var_114_15 + var_114_18
+				local var_114_24 = var_114_16
+				local var_114_25, var_114_26, var_114_27 = recthelper.worldPosToAnchorPosXYZ(var_114_19, var_114_20, var_114_21, arg_114_1)
+				local var_114_28, var_114_29, var_114_30 = recthelper.worldPosToAnchorPosXYZ(var_114_22, var_114_23, var_114_24, arg_114_1)
+				local var_114_31 = (var_114_28 - var_114_25) / 2
+
+				var_114_2 = var_114_7 - var_114_31
+				var_114_3 = var_114_7 + var_114_31
+
+				local var_114_32 = (var_114_29 - var_114_26) / 2
+
+				var_114_5 = var_114_8 - var_114_32
+				var_114_6 = var_114_8 + var_114_32
+			else
+				local var_114_33, var_114_34, var_114_35, var_114_36 = var_0_0.calcRect(iter_114_1, arg_114_1)
+				local var_114_37 = iter_114_1:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
+
+				if var_114_37 then
+					local var_114_38, var_114_39, var_114_40 = transformhelper.getPos(var_114_37.transform)
+
+					var_114_7, var_114_8 = recthelper.worldPosToAnchorPosXYZ(var_114_38, var_114_39, var_114_40, arg_114_1)
+				else
+					var_114_7 = (var_114_33 + var_114_35) / 2
+					var_114_8 = (var_114_34 + var_114_36) / 2
+				end
+
+				local var_114_41 = math.abs(var_114_33 - var_114_35)
+				local var_114_42 = math.abs(var_114_34 - var_114_36)
+				local var_114_43 = lua_monster_skin.configDict[var_114_0.skin]
+				local var_114_44 = var_114_43 and var_114_43.clickBoxUnlimit == 1
+				local var_114_45 = var_114_44 and 800 or 200
+				local var_114_46 = var_114_44 and 800 or 500
+				local var_114_47 = Mathf.Clamp(var_114_41, 150, var_114_45)
+				local var_114_48 = Mathf.Clamp(var_114_42, 150, var_114_46)
+				local var_114_49 = var_114_47 / 2
+
+				var_114_2 = var_114_7 - var_114_49
+				var_114_3 = var_114_7 + var_114_49
+
+				local var_114_50 = var_114_48 / 2
+
+				var_114_5 = var_114_8 - var_114_50
+				var_114_6 = var_114_8 + var_114_50
+			end
+
+			local var_114_51, var_114_52 = recthelper.screenPosToAnchorPos2(arg_114_2, arg_114_1)
+
+			if var_114_2 <= var_114_51 and var_114_51 <= var_114_3 and var_114_5 <= var_114_52 and var_114_52 <= var_114_6 then
+				return iter_114_1.id, var_114_7, var_114_8
+			end
+		end
+	end
+end
+
+function var_0_0.calcRect(arg_115_0, arg_115_1)
+	if not arg_115_0 then
+		return 10000, 10000, 10000, 10000
+	end
+
+	local var_115_0 = arg_115_0:getHangPoint(ModuleEnum.SpineHangPoint.BodyStatic)
+
+	if not var_115_0 then
+		return 10000, 10000, 10000, 10000
+	end
+
+	local var_115_1, var_115_2, var_115_3 = transformhelper.getPos(var_115_0.transform)
+	local var_115_4, var_115_5 = var_0_0.getEntityBoxSizeOffsetV2(arg_115_0)
+	local var_115_6 = arg_115_0:isMySide() and 1 or -1
+	local var_115_7, var_115_8 = recthelper.worldPosToAnchorPosXYZ(var_115_1 - var_115_4.x * 0.5, var_115_2 - var_115_4.y * 0.5 * var_115_6, var_115_3, arg_115_1)
+	local var_115_9, var_115_10 = recthelper.worldPosToAnchorPosXYZ(var_115_1 + var_115_4.x * 0.5, var_115_2 + var_115_4.y * 0.5 * var_115_6, var_115_3, arg_115_1)
+
+	return var_115_7, var_115_8, var_115_9, var_115_10
+end
+
+function var_0_0.sortEntityList(arg_116_0, arg_116_1)
+	local var_116_0 = arg_116_0:getMO()
+	local var_116_1 = arg_116_1:getMO()
+	local var_116_2 = isTypeOf(arg_116_0, FightEntityAssembledMonsterMain) or isTypeOf(arg_116_0, FightEntityAssembledMonsterSub)
+	local var_116_3 = isTypeOf(arg_116_1, FightEntityAssembledMonsterMain) or isTypeOf(arg_116_1, FightEntityAssembledMonsterSub)
+
+	if var_116_2 and var_116_3 then
+		local var_116_4 = lua_fight_assembled_monster.configDict[var_116_0.skin]
+		local var_116_5 = lua_fight_assembled_monster.configDict[var_116_1.skin]
+
+		return var_116_4.clickIndex > var_116_5.clickIndex
+	elseif var_116_2 and not var_116_3 then
 		return true
-	elseif not slot4 and slot5 then
+	elseif not var_116_2 and var_116_3 then
 		return false
 	else
-		slot6, slot7, slot8 = uv0.getEntityStandPos(slot2)
-		slot9, slot10, slot11 = uv0.getEntityStandPos(slot3)
+		local var_116_6, var_116_7, var_116_8 = var_0_0.getEntityStandPos(var_116_0)
+		local var_116_9, var_116_10, var_116_11 = var_0_0.getEntityStandPos(var_116_1)
 
-		if slot8 ~= slot11 then
-			return slot8 < slot11
+		if var_116_8 ~= var_116_11 then
+			return var_116_8 < var_116_11
 		else
-			return tonumber(slot3.id) < tonumber(slot2.id)
+			return tonumber(var_116_0.id) > tonumber(var_116_1.id)
 		end
 	end
 end
 
-function slot0.sortNextRoundGetCardConfig(slot0, slot1)
-	return slot1.priority < slot0.priority
+function var_0_0.sortNextRoundGetCardConfig(arg_117_0, arg_117_1)
+	return arg_117_0.priority > arg_117_1.priority
 end
 
-function slot0.sortNextRoundGetCard(slot0, slot1)
-	return slot0.index < slot1.index
+function var_0_0.sortNextRoundGetCard(arg_118_0, arg_118_1)
+	return arg_118_0.index < arg_118_1.index
 end
 
-function slot0.getNextRoundGetCardList()
-	slot0 = {}
-	slot1 = {}
+function var_0_0.getNextRoundGetCardList()
+	local var_119_0 = {}
+	local var_119_1 = {}
+	local var_119_2 = FightDataHelper.operationDataMgr:getOpList()
 
-	for slot6, slot7 in ipairs(FightDataHelper.operationDataMgr:getOpList()) do
-		if slot7:isPlayCard() and lua_fight_next_round_get_card.configDict[slot7.skillId] then
-			slot10 = {}
+	for iter_119_0, iter_119_1 in ipairs(var_119_2) do
+		if iter_119_1:isPlayCard() then
+			local var_119_3 = iter_119_1.skillId
+			local var_119_4 = lua_fight_next_round_get_card.configDict[var_119_3]
 
-			for slot14, slot15 in pairs(slot9) do
-				table.insert(slot10, slot15)
-			end
+			if var_119_4 then
+				local var_119_5 = {}
 
-			table.sort(slot10, uv0.sortNextRoundGetCardConfig)
+				for iter_119_2, iter_119_3 in pairs(var_119_4) do
+					table.insert(var_119_5, iter_119_3)
+				end
 
-			for slot14, slot15 in ipairs(slot10) do
-				if uv0.checkNextRoundCardCondition(slot7, slot15.condition) then
-					if slot15.exclusion ~= 0 then
-						slot0[slot15.exclusion] = slot0[slot15.exclusion] or {}
-						slot0[slot15.exclusion].index = slot6
-						slot0[slot15.exclusion].skillId = slot15.skillId
-						slot0[slot15.exclusion].entityId = slot7.belongToEntityId
-						slot0[slot15.exclusion].tempCard = slot15.tempCard
+				table.sort(var_119_5, var_0_0.sortNextRoundGetCardConfig)
+
+				for iter_119_4, iter_119_5 in ipairs(var_119_5) do
+					local var_119_6 = iter_119_5.condition
+
+					if var_0_0.checkNextRoundCardCondition(iter_119_1, var_119_6) then
+						if iter_119_5.exclusion ~= 0 then
+							var_119_0[iter_119_5.exclusion] = var_119_0[iter_119_5.exclusion] or {}
+							var_119_0[iter_119_5.exclusion].index = iter_119_0
+							var_119_0[iter_119_5.exclusion].skillId = iter_119_5.skillId
+							var_119_0[iter_119_5.exclusion].entityId = iter_119_1.belongToEntityId
+							var_119_0[iter_119_5.exclusion].tempCard = iter_119_5.tempCard
+
+							break
+						end
+
+						local var_119_7 = {
+							index = iter_119_0,
+							skillId = iter_119_5.skillId,
+							entityId = iter_119_1.belongToEntityId,
+							tempCard = iter_119_5.tempCard
+						}
+
+						table.insert(var_119_1, var_119_7)
 
 						break
 					end
-
-					table.insert(slot1, {
-						index = slot6,
-						skillId = slot15.skillId,
-						entityId = slot7.belongToEntityId,
-						tempCard = slot15.tempCard
-					})
-
-					break
 				end
 			end
 		end
 	end
 
-	for slot6, slot7 in pairs(slot0) do
-		table.insert(slot1, slot7)
+	for iter_119_6, iter_119_7 in pairs(var_119_0) do
+		table.insert(var_119_1, iter_119_7)
 	end
 
-	table.sort(slot1, uv0.sortNextRoundGetCard)
+	table.sort(var_119_1, var_0_0.sortNextRoundGetCard)
 
-	slot3 = {}
+	local var_119_8 = {}
 
-	for slot7, slot8 in ipairs(slot1) do
-		for slot13, slot14 in ipairs(string.splitToNumber(slot8.skillId, "#")) do
-			table.insert(slot3, FightCardInfoData.New({
-				uid = slot8.entityId,
-				skillId = slot14,
-				tempCard = slot8.tempCard
-			}))
+	for iter_119_8, iter_119_9 in ipairs(var_119_1) do
+		local var_119_9 = string.splitToNumber(iter_119_9.skillId, "#")
+
+		for iter_119_10, iter_119_11 in ipairs(var_119_9) do
+			local var_119_10 = {
+				uid = iter_119_9.entityId,
+				skillId = iter_119_11,
+				tempCard = iter_119_9.tempCard
+			}
+			local var_119_11 = FightCardInfoData.New(var_119_10)
+
+			table.insert(var_119_8, var_119_11)
 		end
 	end
 
-	return slot3
+	return var_119_8
 end
 
-function slot0.checkNextRoundCardCondition(slot0, slot1)
-	if string.nilorempty(slot1) then
+function var_0_0.checkNextRoundCardCondition(arg_120_0, arg_120_1)
+	if string.nilorempty(arg_120_1) then
 		return true
 	end
 
-	if #string.split(slot1, "&") > 1 then
-		for slot7, slot8 in ipairs(slot2) do
-			if uv0.checkNextRoundCardSingleCondition(slot0, slot8) then
-				slot3 = 0 + 1
+	local var_120_0 = string.split(arg_120_1, "&")
+
+	if #var_120_0 > 1 then
+		local var_120_1 = 0
+
+		for iter_120_0, iter_120_1 in ipairs(var_120_0) do
+			if var_0_0.checkNextRoundCardSingleCondition(arg_120_0, iter_120_1) then
+				var_120_1 = var_120_1 + 1
 			end
 		end
 
-		return slot3 == #slot2
+		return var_120_1 == #var_120_0
 	else
-		return uv0.checkNextRoundCardSingleCondition(slot0, slot2[1])
+		return var_0_0.checkNextRoundCardSingleCondition(arg_120_0, var_120_0[1])
 	end
 end
 
-function slot0.checkNextRoundCardSingleCondition(slot0, slot1)
-	slot4 = uv0.getEntity(slot0.belongToEntityId) and slot3:getMO()
+function var_0_0.checkNextRoundCardSingleCondition(arg_121_0, arg_121_1)
+	local var_121_0 = arg_121_0.belongToEntityId
+	local var_121_1 = var_0_0.getEntity(var_121_0)
+	local var_121_2 = var_121_1 and var_121_1:getMO()
+	local var_121_3 = string.split(arg_121_1, "#")
 
-	if string.split(slot1, "#")[1] == "1" then
-		if slot5[2] and slot4 then
-			slot6, slot7 = HeroConfig.instance:getShowLevel(slot4.level)
+	if var_121_3[1] == "1" then
+		if var_121_3[2] and var_121_2 then
+			local var_121_4, var_121_5 = HeroConfig.instance:getShowLevel(var_121_2.level)
 
-			if tonumber(slot5[2]) <= slot7 - 1 then
+			if var_121_5 - 1 >= tonumber(var_121_3[2]) then
 				return true
 			end
 		end
-	elseif slot5[1] == "2" and slot5[2] and slot4 then
-		return slot4.exSkillLevel == tonumber(slot5[2])
+	elseif var_121_3[1] == "2" and var_121_3[2] and var_121_2 then
+		return var_121_2.exSkillLevel == tonumber(var_121_3[2])
 	end
 end
 
-function slot0.checkShieldHit(slot0)
-	if slot0.effectNum1 == FightEnum.EffectType.SHAREHURT then
+function var_0_0.checkShieldHit(arg_122_0)
+	if arg_122_0.effectNum1 == FightEnum.EffectType.SHAREHURT then
 		return false
 	end
 
 	return true
 end
 
-slot0.SkillEditorHp = 2000
+var_0_0.SkillEditorHp = 2000
 
-function slot0.buildMySideFightEntityMOList(slot0)
-	slot1 = FightEnum.EntitySide.MySide
-	slot2 = {
-		[slot7] = slot8.heroId
-	}
-	slot3 = {
-		[slot7] = slot8.skin
-	}
+function var_0_0.buildMySideFightEntityMOList(arg_123_0)
+	local var_123_0 = FightEnum.EntitySide.MySide
+	local var_123_1 = {}
+	local var_123_2 = {}
 
-	for slot7 = 1, SkillEditorMgr.instance.stance_count_limit do
-		if HeroModel.instance:getById(slot0.mySideUids[slot7]) then
-			-- Nothing
+	for iter_123_0 = 1, SkillEditorMgr.instance.stance_count_limit do
+		local var_123_3 = HeroModel.instance:getById(arg_123_0.mySideUids[iter_123_0])
+
+		if var_123_3 then
+			var_123_1[iter_123_0] = var_123_3.heroId
+			var_123_2[iter_123_0] = var_123_3.skin
 		end
 	end
 
-	slot4 = {}
-	slot5 = {}
+	local var_123_4 = {}
+	local var_123_5 = {}
 
-	for slot9, slot10 in ipairs(slot0.mySideSubUids) do
-		if HeroModel.instance:getById(slot10) then
-			table.insert(slot4, slot11.heroId)
-			table.insert(slot5, slot11.skin)
+	for iter_123_1, iter_123_2 in ipairs(arg_123_0.mySideSubUids) do
+		local var_123_6 = HeroModel.instance:getById(iter_123_2)
+
+		if var_123_6 then
+			table.insert(var_123_4, var_123_6.heroId)
+			table.insert(var_123_5, var_123_6.skin)
 		end
 	end
 
-	return uv0.buildHeroEntityMOList(slot1, slot2, slot3, slot4, slot5)
+	return var_0_0.buildHeroEntityMOList(var_123_0, var_123_1, var_123_2, var_123_4, var_123_5)
 end
 
-function slot0.getEmptyFightEntityMO(slot0, slot1, slot2, slot3)
-	if not slot1 or slot1 == 0 then
+function var_0_0.getEmptyFightEntityMO(arg_124_0, arg_124_1, arg_124_2, arg_124_3)
+	if not arg_124_1 or arg_124_1 == 0 then
 		return
 	end
 
-	slot4 = lua_character.configDict[slot1]
-	slot5 = FightEntityMO.New()
-	slot5.id = tostring(slot0)
-	slot5.uid = slot5.id
-	slot5.modelId = slot1 or 0
-	slot5.entityType = 1
-	slot5.exPoint = 0
-	slot5.side = FightEnum.EntitySide.MySide
-	slot5.currentHp = 0
-	slot5.attrMO = uv0._buildAttr(slot4)
-	slot5.skillIds = uv0._buildHeroSkills(slot4)
-	slot5.shieldValue = 0
-	slot5.level = slot2 or 1
-	slot5.skin = slot3 or slot4.skinId
+	local var_124_0 = lua_character.configDict[arg_124_1]
+	local var_124_1 = FightEntityMO.New()
 
-	if not string.nilorempty(slot4.powerMax) then
-		slot6 = FightStrUtil.instance:getSplitToNumberCache(slot4.powerMax, "#")
+	var_124_1.id = tostring(arg_124_0)
+	var_124_1.uid = var_124_1.id
+	var_124_1.modelId = arg_124_1 or 0
+	var_124_1.entityType = 1
+	var_124_1.exPoint = 0
+	var_124_1.side = FightEnum.EntitySide.MySide
+	var_124_1.currentHp = 0
+	var_124_1.attrMO = var_0_0._buildAttr(var_124_0)
+	var_124_1.skillIds = var_0_0._buildHeroSkills(var_124_0)
+	var_124_1.shieldValue = 0
+	var_124_1.level = arg_124_2 or 1
+	var_124_1.skin = arg_124_3 or var_124_0.skinId
 
-		slot5:setPowerInfos({
+	if not string.nilorempty(var_124_0.powerMax) then
+		local var_124_2 = FightStrUtil.instance:getSplitToNumberCache(var_124_0.powerMax, "#")
+		local var_124_3 = {
 			{
 				num = 0,
-				powerId = slot6[1],
-				max = slot6[2]
+				powerId = var_124_2[1],
+				max = var_124_2[2]
 			}
-		})
+		}
+
+		var_124_1:setPowerInfos(var_124_3)
 	end
 
-	return slot5
+	return var_124_1
 end
 
-function slot0.buildHeroEntityMOList(slot0, slot1, slot2, slot3, slot4)
-	slot7 = {}
+function var_0_0.buildHeroEntityMOList(arg_125_0, arg_125_1, arg_125_2, arg_125_3, arg_125_4)
+	local function var_125_0(arg_126_0, arg_126_1)
+		local var_126_0 = FightEntityMO.New()
 
-	for slot12 = 1, slot1 and #slot1 or SkillEditorMgr.instance.stance_count_limit do
-		if slot1[slot12] and slot13 ~= 0 then
-			if lua_character.configDict[slot13] then
-				function (slot0, slot1)
-					slot2 = FightEntityMO.New()
-					slot2.id = tostring(uv0)
-					slot2.uid = slot2.id
-					slot2.modelId = slot0 or 0
-					slot2.entityType = 1
-					slot2.exPoint = 0
-					slot2.side = uv1
-					slot2.currentHp = uv2.SkillEditorHp
-					slot2.attrMO = uv2._buildAttr(slot1)
-					slot2.skillIds = uv2._buildHeroSkills(slot1)
-					slot2.shieldValue = 0
-					slot2.level = 1
-					slot2.storedExPoint = 0
+		var_126_0.id = tostring(var_0_1)
+		var_126_0.uid = var_126_0.id
+		var_126_0.modelId = arg_126_0 or 0
+		var_126_0.entityType = 1
+		var_126_0.exPoint = 0
+		var_126_0.side = arg_125_0
+		var_126_0.currentHp = var_0_0.SkillEditorHp
+		var_126_0.attrMO = var_0_0._buildAttr(arg_126_1)
+		var_126_0.skillIds = var_0_0._buildHeroSkills(arg_126_1)
+		var_126_0.shieldValue = 0
+		var_126_0.level = 1
+		var_126_0.storedExPoint = 0
 
-					if not string.nilorempty(slot1.powerMax) then
-						slot3 = FightStrUtil.instance:getSplitToNumberCache(slot1.powerMax, "#")
+		if not string.nilorempty(arg_126_1.powerMax) then
+			local var_126_1 = FightStrUtil.instance:getSplitToNumberCache(arg_126_1.powerMax, "#")
+			local var_126_2 = {
+				{
+					num = 0,
+					powerId = var_126_1[1],
+					max = var_126_1[2]
+				}
+			}
 
-						slot2:setPowerInfos({
-							{
-								num = 0,
-								powerId = slot3[1],
-								max = slot3[2]
-							}
-						})
-					end
+			var_126_0:setPowerInfos(var_126_2)
+		end
 
-					uv0 = uv0 + 1
+		var_0_1 = var_0_1 + 1
 
-					return slot2
-				end(slot13, slot14).position = slot12
-				slot15.skin = slot2 and slot2[slot12] or slot14.skinId
+		return var_126_0
+	end
 
-				table.insert({}, slot15)
+	local var_125_1 = {}
+	local var_125_2 = {}
+	local var_125_3 = arg_125_1 and #arg_125_1 or SkillEditorMgr.instance.stance_count_limit
+
+	for iter_125_0 = 1, var_125_3 do
+		local var_125_4 = arg_125_1[iter_125_0]
+
+		if var_125_4 and var_125_4 ~= 0 then
+			local var_125_5 = lua_character.configDict[var_125_4]
+
+			if var_125_5 then
+				local var_125_6 = var_125_0(var_125_4, var_125_5)
+
+				var_125_6.position = iter_125_0
+				var_125_6.skin = arg_125_2 and arg_125_2[iter_125_0] or var_125_5.skinId
+
+				table.insert(var_125_1, var_125_6)
 			else
-				logError(string.format("%s%d号站位的角色配置已被删除，角色id=%d", slot0 == FightEnum.EntitySide.MySide and "我方" or "敌方", slot12, slot13))
+				local var_125_7 = arg_125_0 == FightEnum.EntitySide.MySide and "我方" or "敌方"
+
+				logError(string.format("%s%d号站位的角色配置已被删除，角色id=%d", var_125_7, iter_125_0, var_125_4))
 			end
 		end
 	end
 
-	if slot3 then
-		for slot12, slot13 in ipairs(slot3) do
-			if lua_character.configDict[slot13] then
-				slot5(slot13, slot14).position = -1
-				slot15.skin = slot4 and slot4[slot12] or slot14.skinId
+	if arg_125_3 then
+		for iter_125_1, iter_125_2 in ipairs(arg_125_3) do
+			local var_125_8 = lua_character.configDict[iter_125_2]
 
-				table.insert(slot7, slot15)
+			if var_125_8 then
+				local var_125_9 = var_125_0(iter_125_2, var_125_8)
+
+				var_125_9.position = -1
+				var_125_9.skin = arg_125_4 and arg_125_4[iter_125_1] or var_125_8.skinId
+
+				table.insert(var_125_2, var_125_9)
 			else
-				logError((slot0 == FightEnum.EntitySide.MySide and "我方" or "敌方") .. "替补角色的配置已被删除，角色id=" .. slot13)
+				local var_125_10 = arg_125_0 == FightEnum.EntitySide.MySide and "我方" or "敌方"
+
+				logError(var_125_10 .. "替补角色的配置已被删除，角色id=" .. iter_125_2)
 			end
 		end
 	end
 
-	return slot6, slot7
+	return var_125_1, var_125_2
 end
 
-function slot0.buildEnemySideFightEntityMOList(slot0, slot1)
-	slot4 = lua_monster_group.configDict[slot0.monsterGroupIds[slot1]]
+function var_0_0.buildEnemySideFightEntityMOList(arg_127_0, arg_127_1)
+	local var_127_0 = FightEnum.EntitySide.EnemySide
+	local var_127_1 = arg_127_0.monsterGroupIds[arg_127_1]
+	local var_127_2 = lua_monster_group.configDict[var_127_1]
+	local var_127_3 = FightStrUtil.instance:getSplitToNumberCache(var_127_2.monster, "#")
+	local var_127_4 = var_127_2.subMonsters
 
-	return uv0.buildMonsterEntityMOList(FightEnum.EntitySide.EnemySide, FightStrUtil.instance:getSplitToNumberCache(slot4.monster, "#"), slot4.subMonsters)
+	return var_0_0.buildMonsterEntityMOList(var_127_0, var_127_3, var_127_4)
 end
 
-function slot0.buildMonsterEntityMOList(slot0, slot1, slot2)
-	slot4 = {}
+function var_0_0.buildMonsterEntityMOList(arg_128_0, arg_128_1, arg_128_2)
+	local var_128_0 = {}
+	local var_128_1 = {}
 
-	for slot8 = 1, SkillEditorMgr.instance.enemy_stance_count_limit do
-		if slot1[slot8] and slot9 ~= 0 then
-			if lua_monster.configDict[slot9] then
-				slot11 = FightEntityMO.New()
-				slot11.id = tostring(uv0)
-				slot11.uid = slot11.id
-				slot11.modelId = slot9
-				slot11.position = slot8
-				slot11.entityType = 2
-				slot11.exPoint = 0
-				slot11.skin = slot10.skinId
-				slot11.side = slot0
-				slot11.currentHp = uv1.SkillEditorHp
-				slot11.attrMO = uv1._buildAttr(slot10)
-				slot11.skillIds = uv1._buildMonsterSkills(slot10)
-				slot11.shieldValue = 0
-				slot11.level = 1
-				slot11.storedExPoint = 0
-				uv0 = uv0 - 1
+	for iter_128_0 = 1, SkillEditorMgr.instance.enemy_stance_count_limit do
+		local var_128_2 = arg_128_1[iter_128_0]
 
-				table.insert({}, slot11)
+		if var_128_2 and var_128_2 ~= 0 then
+			local var_128_3 = lua_monster.configDict[var_128_2]
+
+			if var_128_3 then
+				local var_128_4 = FightEntityMO.New()
+
+				var_128_4.id = tostring(var_0_2)
+				var_128_4.uid = var_128_4.id
+				var_128_4.modelId = var_128_2
+				var_128_4.position = iter_128_0
+				var_128_4.entityType = 2
+				var_128_4.exPoint = 0
+				var_128_4.skin = var_128_3.skinId
+				var_128_4.side = arg_128_0
+				var_128_4.currentHp = var_0_0.SkillEditorHp
+				var_128_4.attrMO = var_0_0._buildAttr(var_128_3)
+				var_128_4.skillIds = var_0_0._buildMonsterSkills(var_128_3)
+				var_128_4.shieldValue = 0
+				var_128_4.level = 1
+				var_128_4.storedExPoint = 0
+				var_0_2 = var_0_2 - 1
+
+				table.insert(var_128_0, var_128_4)
 			else
-				logError(string.format("%s%d号站位的怪物配置已被删除，怪物id=%d", slot0 == FightEnum.EntitySide.MySide and "我方" or "敌方", slot8, slot9))
+				local var_128_5 = arg_128_0 == FightEnum.EntitySide.MySide and "我方" or "敌方"
+
+				logError(string.format("%s%d号站位的怪物配置已被删除，怪物id=%d", var_128_5, iter_128_0, var_128_2))
 			end
 		end
 	end
 
-	if slot2 then
-		for slot8, slot9 in ipairs(slot2) do
-			if lua_monster.configDict[slot9] then
-				slot11 = FightEntityMO.New()
-				slot11.id = tostring(uv0)
-				slot11.uid = slot11.id
-				slot11.modelId = slot9
-				slot11.position = 5
-				slot11.entityType = 2
-				slot11.exPoint = 0
-				slot11.skin = slot10.skinId
-				slot11.side = slot0
-				slot11.currentHp = uv1.SkillEditorHp
-				slot11.attrMO = uv1._buildAttr(slot10)
-				slot11.skillIds = uv1._buildMonsterSkills(slot10)
-				slot11.shieldValue = 0
-				slot11.level = 1
-				uv0 = uv0 - 1
+	if arg_128_2 then
+		for iter_128_1, iter_128_2 in ipairs(arg_128_2) do
+			local var_128_6 = lua_monster.configDict[iter_128_2]
 
-				table.insert(slot4, slot11)
+			if var_128_6 then
+				local var_128_7 = FightEntityMO.New()
+
+				var_128_7.id = tostring(var_0_2)
+				var_128_7.uid = var_128_7.id
+				var_128_7.modelId = iter_128_2
+				var_128_7.position = 5
+				var_128_7.entityType = 2
+				var_128_7.exPoint = 0
+				var_128_7.skin = var_128_6.skinId
+				var_128_7.side = arg_128_0
+				var_128_7.currentHp = var_0_0.SkillEditorHp
+				var_128_7.attrMO = var_0_0._buildAttr(var_128_6)
+				var_128_7.skillIds = var_0_0._buildMonsterSkills(var_128_6)
+				var_128_7.shieldValue = 0
+				var_128_7.level = 1
+				var_0_2 = var_0_2 - 1
+
+				table.insert(var_128_1, var_128_7)
 			else
-				logError((slot0 == FightEnum.EntitySide.MySide and "我方" or "敌方") .. "替补怪物的配置已被删除，怪物id=" .. slot9)
+				local var_128_8 = arg_128_0 == FightEnum.EntitySide.MySide and "我方" or "敌方"
+
+				logError(var_128_8 .. "替补怪物的配置已被删除，怪物id=" .. iter_128_2)
 			end
 		end
 	end
 
-	return slot3, slot4
+	return var_128_0, var_128_1
 end
 
-function slot0.buildSkills(slot0)
-	if lua_character.configDict[slot0] then
-		return uv0._buildHeroSkills(slot1)
+function var_0_0.buildSkills(arg_129_0)
+	local var_129_0 = lua_character.configDict[arg_129_0]
+
+	if var_129_0 then
+		return var_0_0._buildHeroSkills(var_129_0)
 	end
 
-	if lua_monster.configDict[slot0] then
-		return uv0._buildMonsterSkills(slot2)
+	local var_129_1 = lua_monster.configDict[arg_129_0]
+
+	if var_129_1 then
+		return var_0_0._buildMonsterSkills(var_129_1)
 	end
 end
 
-function slot0._buildHeroSkills(slot0)
-	slot1 = {}
+function var_0_0._buildHeroSkills(arg_130_0)
+	local var_130_0 = {}
+	local var_130_1 = lua_character.configDict[arg_130_0.id]
 
-	if lua_character.configDict[slot0.id] then
-		for slot7, slot8 in pairs(GameUtil.splitString2(slot2.skill, true)) do
-			for slot12 = 2, #slot8 do
-				if slot8[slot12] ~= 0 then
-					table.insert(slot1, slot8[slot12])
+	if var_130_1 then
+		local var_130_2 = GameUtil.splitString2(var_130_1.skill, true)
+
+		for iter_130_0, iter_130_1 in pairs(var_130_2) do
+			for iter_130_2 = 2, #iter_130_1 do
+				if iter_130_1[iter_130_2] ~= 0 then
+					table.insert(var_130_0, iter_130_1[iter_130_2])
 				else
-					logError(slot0.id .. " 角色技能id=0，检查下角色表-角色")
+					logError(arg_130_0.id .. " 角色技能id=0，检查下角色表-角色")
 				end
 			end
 		end
 	end
 
-	if slot2.exSkill ~= 0 then
-		table.insert(slot1, slot2.exSkill)
+	if var_130_1.exSkill ~= 0 then
+		table.insert(var_130_0, var_130_1.exSkill)
 	end
 
-	if lua_skill_ex_level.configDict[slot0.id] then
-		for slot7, slot8 in pairs(slot3) do
-			if slot8.skillEx ~= 0 then
-				table.insert(slot1, slot8.skillEx)
+	local var_130_3 = lua_skill_ex_level.configDict[arg_130_0.id]
+
+	if var_130_3 then
+		for iter_130_3, iter_130_4 in pairs(var_130_3) do
+			if iter_130_4.skillEx ~= 0 then
+				table.insert(var_130_0, iter_130_4.skillEx)
 			end
 		end
 	end
 
-	if lua_skill_passive_level.configDict[slot0.id] then
-		for slot8, slot9 in pairs(slot4) do
-			if slot9.skillPassive ~= 0 then
-				table.insert(slot1, slot9.skillPassive)
+	local var_130_4 = lua_skill_passive_level.configDict[arg_130_0.id]
+
+	if var_130_4 then
+		for iter_130_5, iter_130_6 in pairs(var_130_4) do
+			if iter_130_6.skillPassive ~= 0 then
+				table.insert(var_130_0, iter_130_6.skillPassive)
 			else
-				logError(slot0.id .. " 角色被动技能id=0，检查下角色养成表-被动升级")
+				logError(arg_130_0.id .. " 角色被动技能id=0，检查下角色养成表-被动升级")
 			end
 		end
 	end
 
-	return slot1
+	return var_130_0
 end
 
-function slot0._buildMonsterSkills(slot0)
-	slot1 = {}
+function var_0_0._buildMonsterSkills(arg_131_0)
+	local var_131_0 = {}
 
-	if not string.nilorempty(slot0.activeSkill) then
-		slot6 = "|"
-		slot7 = "#"
+	if not string.nilorempty(arg_131_0.activeSkill) then
+		local var_131_1 = FightStrUtil.instance:getSplitString2Cache(arg_131_0.activeSkill, true, "|", "#")
 
-		for slot6, slot7 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot0.activeSkill, true, slot6, slot7)) do
-			for slot11, slot12 in ipairs(slot7) do
-				if lua_skill.configDict[slot12] then
-					table.insert(slot1, slot12)
+		for iter_131_0, iter_131_1 in ipairs(var_131_1) do
+			for iter_131_2, iter_131_3 in ipairs(iter_131_1) do
+				if lua_skill.configDict[iter_131_3] then
+					table.insert(var_131_0, iter_131_3)
 				end
 			end
 		end
 	end
 
-	if slot0.uniqueSkill and #slot0.uniqueSkill > 0 then
-		for slot5, slot6 in ipairs(slot0.uniqueSkill) do
-			table.insert(slot1, slot6)
+	if arg_131_0.uniqueSkill and #arg_131_0.uniqueSkill > 0 then
+		for iter_131_4, iter_131_5 in ipairs(arg_131_0.uniqueSkill) do
+			table.insert(var_131_0, iter_131_5)
 		end
 	end
 
-	tabletool.addValues(slot1, FightConfig.instance:getPassiveSkills(slot0.id))
+	tabletool.addValues(var_131_0, FightConfig.instance:getPassiveSkills(arg_131_0.id))
 
-	return slot1
+	return var_131_0
 end
 
-function slot0._buildAttr(slot0)
-	slot1 = HeroAttributeMO.New()
-	slot1.hp = uv0.SkillEditorHp
-	slot1.attack = 100
-	slot1.defense = 100
-	slot1.crit = 100
-	slot1.crit_damage = 100
-	slot1.multiHpNum = 0
-	slot1.multiHpIdx = 0
+function var_0_0._buildAttr(arg_132_0)
+	local var_132_0 = HeroAttributeMO.New()
 
-	return slot1
+	var_132_0.hp = var_0_0.SkillEditorHp
+	var_132_0.attack = 100
+	var_132_0.defense = 100
+	var_132_0.crit = 100
+	var_132_0.crit_damage = 100
+	var_132_0.multiHpNum = 0
+	var_132_0.multiHpIdx = 0
+
+	return var_132_0
 end
 
-function slot0.getEpisodeRecommendLevel(slot0, slot1)
-	if not DungeonConfig.instance:getEpisodeBattleId(slot0) then
+function var_0_0.getEpisodeRecommendLevel(arg_133_0, arg_133_1)
+	local var_133_0 = DungeonConfig.instance:getEpisodeBattleId(arg_133_0)
+
+	if not var_133_0 then
 		return 0
 	end
 
-	return uv0.getBattleRecommendLevel(slot2, slot1)
+	return var_0_0.getBattleRecommendLevel(var_133_0, arg_133_1)
 end
 
-function slot0.getBattleRecommendLevel(slot0, slot1)
-	slot2 = slot1 and "levelEasy" or "level"
+function var_0_0.getBattleRecommendLevel(arg_134_0, arg_134_1)
+	local var_134_0 = arg_134_1 and "levelEasy" or "level"
+	local var_134_1 = lua_battle.configDict[arg_134_0]
 
-	if not lua_battle.configDict[slot0] then
+	if not var_134_1 then
 		return 0
 	end
 
-	slot4 = {}
-	slot5 = {}
-	slot6, slot7 = nil
-	slot11 = slot3.monsterGroupIds
-	slot12 = "#"
+	local var_134_2 = {}
+	local var_134_3 = {}
+	local var_134_4
+	local var_134_5
 
-	for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot11, slot12)) do
-		slot16 = "#"
+	for iter_134_0, iter_134_1 in ipairs(FightStrUtil.instance:getSplitToNumberCache(var_134_1.monsterGroupIds, "#")) do
+		local var_134_6 = lua_monster_group.configDict[iter_134_1].bossId
+		local var_134_7 = FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[iter_134_1].monster, "#")
 
-		for slot16, slot17 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[slot12].monster, slot16)) do
-			if uv0.isBossId(lua_monster_group.configDict[slot12].bossId, slot17) then
-				table.insert(slot5, slot17)
+		for iter_134_2, iter_134_3 in ipairs(var_134_7) do
+			if var_0_0.isBossId(var_134_6, iter_134_3) then
+				table.insert(var_134_3, iter_134_3)
 			else
-				table.insert(slot4, slot17)
+				table.insert(var_134_2, iter_134_3)
 			end
 		end
 	end
 
-	if #slot5 > 0 then
-		return lua_monster.configDict[slot5[1]][slot2]
-	elseif #slot4 > 0 then
-		for slot12, slot13 in ipairs(slot4) do
-			slot8 = 0 + lua_monster.configDict[slot13][slot2]
+	if #var_134_3 > 0 then
+		return lua_monster.configDict[var_134_3[1]][var_134_0]
+	elseif #var_134_2 > 0 then
+		local var_134_8 = 0
+
+		for iter_134_4, iter_134_5 in ipairs(var_134_2) do
+			var_134_8 = var_134_8 + lua_monster.configDict[iter_134_5][var_134_0]
 		end
 
-		return math.ceil(slot8 / #slot4)
+		return math.ceil(var_134_8 / #var_134_2)
 	else
 		return 0
 	end
 end
 
-function slot0.initBuildSceneAndLevelHandle()
-	if uv0.buildSceneAndLevelHandleDict then
+function var_0_0.initBuildSceneAndLevelHandle()
+	if var_0_0.buildSceneAndLevelHandleDict then
 		return
 	end
 
-	uv0.buildSceneAndLevelHandleDict = {
-		[DungeonEnum.EpisodeType.Cachot] = uv0.buildCachotSceneAndLevel,
-		[DungeonEnum.EpisodeType.Rouge] = uv0.buildRougeSceneAndLevel
+	var_0_0.buildSceneAndLevelHandleDict = {
+		[DungeonEnum.EpisodeType.Cachot] = var_0_0.buildCachotSceneAndLevel,
+		[DungeonEnum.EpisodeType.Rouge] = var_0_0.buildRougeSceneAndLevel
 	}
 end
 
-function slot0.buildDefaultSceneAndLevel(slot0, slot1)
-	slot2 = {}
-	slot3 = {}
+function var_0_0.buildDefaultSceneAndLevel(arg_136_0, arg_136_1)
+	local var_136_0 = {}
+	local var_136_1 = {}
+	local var_136_2 = lua_battle.configDict[arg_136_1].sceneIds
+	local var_136_3 = string.splitToNumber(var_136_2, "#")
 
-	for slot10, slot11 in ipairs(string.splitToNumber(lua_battle.configDict[slot1].sceneIds, "#")) do
-		table.insert(slot2, slot11)
-		table.insert(slot3, SceneConfig.instance:getSceneLevelCOs(slot11)[1].id)
+	for iter_136_0, iter_136_1 in ipairs(var_136_3) do
+		local var_136_4 = SceneConfig.instance:getSceneLevelCOs(iter_136_1)[1].id
+
+		table.insert(var_136_0, iter_136_1)
+		table.insert(var_136_1, var_136_4)
 	end
 
-	return slot2, slot3
+	return var_136_0, var_136_1
 end
 
-function slot0.buildCachotSceneAndLevel(slot0, slot1)
-	slot2 = 0
+function var_0_0.buildCachotSceneAndLevel(arg_137_0, arg_137_1)
+	local var_137_0 = 0
+	local var_137_1 = V1a6_CachotRoomModel.instance:getNowBattleEventMo()
 
-	if V1a6_CachotRoomModel.instance:getNowBattleEventMo() and lua_rogue_event_fight.configDict[slot3:getEventCo().eventId].isChangeScene ~= 1 then
-		slot2 = V1a6_CachotModel.instance:getRogueInfo().layer
+	if var_137_1 and lua_rogue_event_fight.configDict[var_137_1:getEventCo().eventId].isChangeScene ~= 1 then
+		var_137_0 = V1a6_CachotModel.instance:getRogueInfo().layer
 	end
 
-	if slot2 > 0 then
-		if V1a6_CachotEventConfig.instance:getSceneIdByLayer(slot2) then
-			slot5 = {}
-			slot6 = {}
+	if var_137_0 > 0 then
+		local var_137_2 = V1a6_CachotEventConfig.instance:getSceneIdByLayer(var_137_0)
 
-			table.insert(slot5, slot4.sceneId)
-			table.insert(slot6, slot4.levelId)
+		if var_137_2 then
+			local var_137_3 = {}
+			local var_137_4 = {}
 
-			return slot5, slot6
+			table.insert(var_137_3, var_137_2.sceneId)
+			table.insert(var_137_4, var_137_2.levelId)
+
+			return var_137_3, var_137_4
 		else
-			logError("肉鸽战斗场景配置不存在" .. slot2)
+			logError("肉鸽战斗场景配置不存在" .. var_137_0)
 
-			return uv0.buildDefaultSceneAndLevel(slot0, slot1)
+			return var_0_0.buildDefaultSceneAndLevel(arg_137_0, arg_137_1)
 		end
 	else
-		return uv0.buildDefaultSceneAndLevel(slot0, slot1)
+		return var_0_0.buildDefaultSceneAndLevel(arg_137_0, arg_137_1)
 	end
 end
 
-function slot0.buildRougeSceneAndLevel(slot0, slot1)
-	slot4 = RougeMapHelper.isFightEvent(RougeMapModel.instance:getCurEvent() and slot2.type) and lua_rouge_fight_event.configDict[slot2.id]
+function var_0_0.buildRougeSceneAndLevel(arg_138_0, arg_138_1)
+	local var_138_0 = RougeMapModel.instance:getCurEvent()
+	local var_138_1 = var_138_0 and var_138_0.type
+	local var_138_2 = RougeMapHelper.isFightEvent(var_138_1) and lua_rouge_fight_event.configDict[var_138_0.id]
 
-	if slot4 and slot4.isChangeScene == 1 then
-		slot8 = slot6 and slot6.levelId
+	if var_138_2 and var_138_2.isChangeScene == 1 then
+		local var_138_3 = RougeMapModel.instance:getLayerCo()
+		local var_138_4 = var_138_3 and var_138_3.sceneId
+		local var_138_5 = var_138_3 and var_138_3.levelId
 
-		if (RougeMapModel.instance:getLayerCo() and slot6.sceneId) ~= 0 and slot8 ~= 0 then
+		if var_138_4 ~= 0 and var_138_5 ~= 0 then
 			return {
-				slot7
+				var_138_4
 			}, {
-				slot8
+				var_138_5
 			}
 		end
 
-		logError(string.format("layerId : %s, config Incorrect, sceneId : %s, levelId : %s", slot6 and slot6.id, slot7, slot8))
+		logError(string.format("layerId : %s, config Incorrect, sceneId : %s, levelId : %s", var_138_3 and var_138_3.id, var_138_4, var_138_5))
 
-		return uv0.buildDefaultSceneAndLevel(slot0, slot1)
+		return var_0_0.buildDefaultSceneAndLevel(arg_138_0, arg_138_1)
 	else
-		return uv0.buildDefaultSceneAndLevel(slot0, slot1)
+		return var_0_0.buildDefaultSceneAndLevel(arg_138_0, arg_138_1)
 	end
 end
 
-function slot0.buildSceneAndLevel(slot0, slot1)
-	uv0.initBuildSceneAndLevelHandle()
+function var_0_0.buildSceneAndLevel(arg_139_0, arg_139_1)
+	var_0_0.initBuildSceneAndLevelHandle()
 
-	return lua_episode.configDict[slot0] and uv0.buildSceneAndLevelHandleDict[slot2.type] or uv0.buildDefaultSceneAndLevel(slot0, slot1)
+	local var_139_0 = lua_episode.configDict[arg_139_0]
+	local var_139_1 = var_139_0 and var_0_0.buildSceneAndLevelHandleDict[var_139_0.type]
+
+	var_139_1 = var_139_1 or var_0_0.buildDefaultSceneAndLevel
+
+	return var_139_1(arg_139_0, arg_139_1)
 end
 
-function slot0.getStressStatus(slot0)
-	if not slot0 then
+function var_0_0.getStressStatus(arg_140_0)
+	if not arg_140_0 then
 		logError("stress is nil")
 
 		return FightEnum.Status.Positive
 	end
 
-	for slot4 = 1, 2 do
-		if slot0 <= FightEnum.StressThreshold[slot4] then
-			return slot4
+	for iter_140_0 = 1, 2 do
+		if arg_140_0 <= FightEnum.StressThreshold[iter_140_0] then
+			return iter_140_0
 		end
 	end
 
 	return nil
 end
 
-function slot0.getResistanceKeyById(slot0)
-	if not uv0.resistanceId2KeyDict then
-		uv0.resistanceId2KeyDict = {}
+function var_0_0.getResistanceKeyById(arg_141_0)
+	if not var_0_0.resistanceId2KeyDict then
+		var_0_0.resistanceId2KeyDict = {}
 
-		for slot4, slot5 in pairs(FightEnum.Resistance) do
-			uv0.resistanceId2KeyDict[slot5] = slot4
+		for iter_141_0, iter_141_1 in pairs(FightEnum.Resistance) do
+			var_0_0.resistanceId2KeyDict[iter_141_1] = iter_141_0
 		end
 	end
 
-	return uv0.resistanceId2KeyDict[slot0]
+	return var_0_0.resistanceId2KeyDict[arg_141_0]
 end
 
-function slot0.canAddPoint(slot0)
-	if not slot0 then
+function var_0_0.canAddPoint(arg_142_0)
+	if not arg_142_0 then
 		return false
 	end
 
-	if slot0:hasBuffFeature(FightEnum.BuffType_TransferAddExPoint) then
+	if arg_142_0:hasBuffFeature(FightEnum.BuffType_TransferAddExPoint) then
 		return false
 	end
 
-	if slot0:hasBuffFeature(FightEnum.ExPointCantAdd) then
+	if arg_142_0:hasBuffFeature(FightEnum.ExPointCantAdd) then
 		return false
 	end
 
 	return true
 end
 
-function slot0.getEntityName(slot0)
-	slot1 = slot0 and slot0:getMO()
+function var_0_0.getEntityName(arg_143_0)
+	local var_143_0 = arg_143_0 and arg_143_0:getMO()
+	local var_143_1 = var_143_0 and var_143_0:getEntityName()
 
-	return tostring(slot1 and slot1:getEntityName())
+	return tostring(var_143_1)
 end
 
-function slot0.getEntityById(slot0)
-	return uv0.getEntityName(uv0.getEntity(slot0))
+function var_0_0.getEntityById(arg_144_0)
+	local var_144_0 = var_0_0.getEntity(arg_144_0)
+
+	return var_0_0.getEntityName(var_144_0)
 end
 
-function slot0.isSameCardMo(slot0, slot1)
-	if slot0 == slot1 then
+function var_0_0.isSameCardMo(arg_145_0, arg_145_1)
+	if arg_145_0 == arg_145_1 then
 		return true
 	end
 
-	if not slot0 or not slot1 then
+	if not arg_145_0 or not arg_145_1 then
 		return false
 	end
 
-	return slot0.clientData.custom_enemyCardIndex == slot1.clientData.custom_enemyCardIndex
+	return arg_145_0.clientData.custom_enemyCardIndex == arg_145_1.clientData.custom_enemyCardIndex
 end
 
-function slot0.getAssitHeroInfoByUid(slot0, slot1)
-	if FightDataHelper.entityMgr:getById(slot0) and slot2:isCharacter() then
+function var_0_0.getAssitHeroInfoByUid(arg_146_0, arg_146_1)
+	local var_146_0 = FightDataHelper.entityMgr:getById(arg_146_0)
+
+	if var_146_0 and var_146_0:isCharacter() then
+		local var_146_1 = HeroConfig.instance:getHeroCO(var_146_0.modelId)
+
 		return {
-			skin = slot2.skin,
-			level = slot2.level,
-			config = HeroConfig.instance:getHeroCO(slot2.modelId)
+			skin = var_146_0.skin,
+			level = var_146_0.level,
+			config = var_146_1
 		}
 	end
 end
 
-function slot0.canSelectEnemyEntity(slot0)
-	if not slot0 then
+function var_0_0.canSelectEnemyEntity(arg_147_0)
+	if not arg_147_0 then
 		return false
 	end
 
-	if not FightDataHelper.entityMgr:getById(slot0) then
+	local var_147_0 = FightDataHelper.entityMgr:getById(arg_147_0)
+
+	if not var_147_0 then
 		return false
 	end
 
-	if slot1.side == FightEnum.EntitySide.MySide then
+	if var_147_0.side == FightEnum.EntitySide.MySide then
 		return false
 	end
 
-	if slot1:hasBuffFeature(FightEnum.BuffType_CantSelect) then
+	if var_147_0:hasBuffFeature(FightEnum.BuffType_CantSelect) then
 		return false
 	end
 
-	if slot1:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
+	if var_147_0:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
 		return false
 	end
 
 	return true
 end
 
-function slot0.clearNoUseEffect()
-	for slot4, slot5 in pairs(FightEffectPool.releaseUnuseEffect()) do
-		FightPreloadController.instance:releaseAsset(slot4)
+function var_0_0.clearNoUseEffect()
+	local var_148_0 = FightEffectPool.releaseUnuseEffect()
+
+	for iter_148_0, iter_148_1 in pairs(var_148_0) do
+		FightPreloadController.instance:releaseAsset(iter_148_0)
 	end
 
 	GameGCMgr.instance:dispatchEvent(GameGCEvent.FullGC)
 end
 
-function slot0.isASFDSkill(slot0)
-	return slot0 == FightASFDConfig.instance.skillId
+function var_0_0.isASFDSkill(arg_149_0)
+	return arg_149_0 == FightASFDConfig.instance.skillId
 end
 
-function slot0.isPreDeleteSkill(slot0)
-	slot1 = slot0 and lua_skill.configDict[slot0]
+function var_0_0.isPreDeleteSkill(arg_150_0)
+	local var_150_0 = arg_150_0 and lua_skill.configDict[arg_150_0]
 
-	return slot1 and slot1.icon == FightEnum.CardIconId.PreDelete
+	return var_150_0 and var_150_0.icon == FightEnum.CardIconId.PreDelete
 end
 
-function slot0.getASFDMgr()
-	slot1 = GameSceneMgr.instance:getCurScene() and slot0.mgr
+function var_0_0.getASFDMgr()
+	local var_151_0 = GameSceneMgr.instance:getCurScene()
+	local var_151_1 = var_151_0 and var_151_0.mgr
 
-	return slot1 and slot1:getASFDMgr()
+	return var_151_1 and var_151_1:getASFDMgr()
 end
 
-function slot0.getEntityCareer(slot0)
-	slot1 = slot0 and FightDataHelper.entityMgr:getById(slot0)
+function var_0_0.getEntityCareer(arg_152_0)
+	local var_152_0 = arg_152_0 and FightDataHelper.entityMgr:getById(arg_152_0)
 
-	return slot1 and slot1:getCareer() or 0
+	return var_152_0 and var_152_0:getCareer() or 0
 end
 
-function slot0.isRestrain(slot0, slot1)
-	return (FightConfig.instance:getRestrain(uv0.getEntityCareer(slot0), uv0.getEntityCareer(slot1)) or 1000) > 1000
+function var_0_0.isRestrain(arg_153_0, arg_153_1)
+	local var_153_0 = var_0_0.getEntityCareer(arg_153_0)
+	local var_153_1 = var_0_0.getEntityCareer(arg_153_1)
+
+	return (FightConfig.instance:getRestrain(var_153_0, var_153_1) or 1000) > 1000
 end
 
-slot0.tempEntityMoList = {}
+var_0_0.tempEntityMoList = {}
 
-function slot0.hasSkinId(slot0)
-	slot1 = uv0.tempEntityMoList
+function var_0_0.hasSkinId(arg_154_0)
+	local var_154_0 = var_0_0.tempEntityMoList
 
-	tabletool.clear(slot1)
+	tabletool.clear(var_154_0)
 
-	for slot6, slot7 in ipairs(FightDataHelper.entityMgr:getMyNormalList(slot1)) do
-		if slot7.originSkin == slot0 then
+	local var_154_1 = FightDataHelper.entityMgr:getMyNormalList(var_154_0)
+
+	for iter_154_0, iter_154_1 in ipairs(var_154_1) do
+		if iter_154_1.originSkin == arg_154_0 then
 			return true
 		end
 	end
@@ -2896,12 +3544,12 @@ function slot0.hasSkinId(slot0)
 	return false
 end
 
-function slot0.getBloodPoolSkillId()
+function var_0_0.getBloodPoolSkillId()
 	return tonumber(lua_fight_xcjl_const.configDict[4].value)
 end
 
-function slot0.isBloodPoolSkill(slot0)
-	return slot0 == uv0.getBloodPoolSkillId()
+function var_0_0.isBloodPoolSkill(arg_156_0)
+	return arg_156_0 == var_0_0.getBloodPoolSkillId()
 end
 
-return slot0
+return var_0_0

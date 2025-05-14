@@ -1,16 +1,17 @@
-module("modules.logic.versionactivity1_2.jiexika.model.Activity114FeaturesModel", package.seeall)
+﻿module("modules.logic.versionactivity1_2.jiexika.model.Activity114FeaturesModel", package.seeall)
 
-slot0 = class("Activity114FeaturesModel", ListScrollModel)
+local var_0_0 = class("Activity114FeaturesModel", ListScrollModel)
 
-function slot0.onFeatureListUpdate(slot0, slot1)
-	for slot6 = 1, #slot1 do
+function var_0_0.onFeatureListUpdate(arg_1_0, arg_1_1)
+	local var_1_0 = {}
+
+	for iter_1_0 = 1, #arg_1_1 do
+		var_1_0[iter_1_0] = Activity114Config.instance:getFeatureCo(Activity114Model.instance.id, arg_1_1[iter_1_0])
 	end
 
-	slot0:setList({
-		[slot6] = Activity114Config.instance:getFeatureCo(Activity114Model.instance.id, slot1[slot6])
-	})
+	arg_1_0:setList(var_1_0)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

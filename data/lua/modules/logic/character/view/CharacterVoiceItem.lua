@@ -1,116 +1,124 @@
-module("modules.logic.character.view.CharacterVoiceItem", package.seeall)
+﻿module("modules.logic.character.view.CharacterVoiceItem", package.seeall)
 
-slot0 = class("CharacterVoiceItem", ListScrollCellExtend)
-slot1 = "voiceview_item_in"
+local var_0_0 = class("CharacterVoiceItem", ListScrollCellExtend)
+local var_0_1 = "voiceview_item_in"
 
-function slot0.onInitView(slot0)
-	slot0._itemclick = SLFramework.UGUI.UIClickListener.Get(slot0.viewGO)
-	slot0._itemAnimator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._goplayicon = gohelper.findChild(slot0.viewGO, "#go_playicon")
-	slot0._gostopicon = gohelper.findChild(slot0.viewGO, "#go_stopicon")
-	slot0._golockicon = gohelper.findChild(slot0.viewGO, "#go_lockicon")
-	slot0._txtvoicename = gohelper.findChildText(slot0.viewGO, "voice/#txt_voicename")
-	slot0._govoiceicon = gohelper.findChild(slot0.viewGO, "#go_voiceicon")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._itemclick = SLFramework.UGUI.UIClickListener.Get(arg_1_0.viewGO)
+	arg_1_0._itemAnimator = arg_1_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	arg_1_0._goplayicon = gohelper.findChild(arg_1_0.viewGO, "#go_playicon")
+	arg_1_0._gostopicon = gohelper.findChild(arg_1_0.viewGO, "#go_stopicon")
+	arg_1_0._golockicon = gohelper.findChild(arg_1_0.viewGO, "#go_lockicon")
+	arg_1_0._txtvoicename = gohelper.findChildText(arg_1_0.viewGO, "voice/#txt_voicename")
+	arg_1_0._govoiceicon = gohelper.findChild(arg_1_0.viewGO, "#go_voiceicon")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._itemclick:AddClickListener(slot0._itemOnClick, slot0)
-	slot0:addEventCb(CharacterController.instance, CharacterEvent.ChangeVoiceLang, slot0._onChangeCharVoiceLang, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._itemclick:AddClickListener(arg_2_0._itemOnClick, arg_2_0)
+	arg_2_0:addEventCb(CharacterController.instance, CharacterEvent.ChangeVoiceLang, arg_2_0._onChangeCharVoiceLang, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._itemclick:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._itemclick:RemoveClickListener()
 end
 
-function slot0._itemOnClick(slot0)
-	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._audioId) then
+function var_0_0._itemOnClick(arg_4_0)
+	if CharacterDataModel.instance:isCurHeroAudioLocked(arg_4_0._audioId) then
 		return
 	end
 
-	if CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._audioId) then
-		CharacterController.instance:dispatchEvent(CharacterEvent.StopVoice, slot0._audioId)
+	if CharacterDataModel.instance:isCurHeroAudioPlaying(arg_4_0._audioId) then
+		CharacterController.instance:dispatchEvent(CharacterEvent.StopVoice, arg_4_0._audioId)
 	else
-		slot0:_setRandomVoiceId()
-		CharacterDataModel.instance:setPlayingInfo(slot0._audioId, slot0._defaultAudioId)
-		CharacterController.instance:dispatchEvent(CharacterEvent.PlayVoice, slot0._audioId)
+		arg_4_0:_setRandomVoiceId()
+		CharacterDataModel.instance:setPlayingInfo(arg_4_0._audioId, arg_4_0._defaultAudioId)
+		CharacterController.instance:dispatchEvent(CharacterEvent.PlayVoice, arg_4_0._audioId)
 	end
 end
 
-function slot0._setRandomVoiceId(slot0)
-	if not slot0._multiVoiceList then
-		slot7 = SkinConfig.instance:getSkinCo(HeroModel.instance:getByHeroId(slot0._mo.heroId).skin).id
-		slot0._multiVoiceList = {}
+function var_0_0._setRandomVoiceId(arg_5_0)
+	if not arg_5_0._multiVoiceList then
+		local var_5_0 = HeroModel.instance:getByHeroId(arg_5_0._mo.heroId)
+		local var_5_1 = SkinConfig.instance:getSkinCo(var_5_0.skin)
+		local var_5_2 = CharacterDataConfig.instance:getCharacterTypeVoicesCO(arg_5_0._mo.heroId, CharacterEnum.VoiceType.MultiVoice, var_5_1.id)
 
-		for slot7, slot8 in ipairs(CharacterDataConfig.instance:getCharacterTypeVoicesCO(slot0._mo.heroId, CharacterEnum.VoiceType.MultiVoice, slot7)) do
-			if tonumber(slot8.param) == slot0._defaultAudioId then
-				table.insert(slot0._multiVoiceList, slot8)
+		arg_5_0._multiVoiceList = {}
+
+		for iter_5_0, iter_5_1 in ipairs(var_5_2) do
+			if tonumber(iter_5_1.param) == arg_5_0._defaultAudioId then
+				table.insert(arg_5_0._multiVoiceList, iter_5_1)
 			end
 		end
 	end
 
-	slot1 = nil
+	local var_5_3
 
-	if #slot0._multiVoiceList > 0 and math.random() > 0.5 then
-		slot1 = slot0._multiVoiceList[math.random(#slot0._multiVoiceList)] and slot2.audio
+	if #arg_5_0._multiVoiceList > 0 and math.random() > 0.5 then
+		local var_5_4 = arg_5_0._multiVoiceList[math.random(#arg_5_0._multiVoiceList)]
+
+		var_5_3 = var_5_4 and var_5_4.audio
 	end
 
-	slot0._audioId = slot1 or slot0._defaultAudioId
+	arg_5_0._audioId = var_5_3 or arg_5_0._defaultAudioId
 end
 
-function slot0._editableInitView(slot0)
+function var_0_0._editableInitView(arg_6_0)
+	return
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0._mo = slot1
-	slot0._multiVoiceList = nil
-	slot0._defaultAudioId = slot0._mo.id
-	slot0._audioId = CharacterDataModel.instance:getPlayingAudioId(slot0._defaultAudioId) or slot0._defaultAudioId
+function var_0_0.onUpdateMO(arg_7_0, arg_7_1)
+	arg_7_0._mo = arg_7_1
+	arg_7_0._multiVoiceList = nil
+	arg_7_0._defaultAudioId = arg_7_0._mo.id
+	arg_7_0._audioId = CharacterDataModel.instance:getPlayingAudioId(arg_7_0._defaultAudioId) or arg_7_0._defaultAudioId
 
-	transformhelper.setLocalScale(slot0._gostopicon.transform, 1, 1, 1)
-	slot0:_refreshItem()
+	transformhelper.setLocalScale(arg_7_0._gostopicon.transform, 1, 1, 1)
+	arg_7_0:_refreshItem()
 end
 
-function slot0._refreshItem(slot0)
-	slot0._itemAnimator.enabled = CharacterVoiceModel.instance:isNeedItemAni()
+function var_0_0._refreshItem(arg_8_0)
+	arg_8_0._itemAnimator.enabled = CharacterVoiceModel.instance:isNeedItemAni()
 
-	if CharacterDataModel.instance:isCurHeroAudioLocked(slot0._audioId) then
-		gohelper.setActive(slot0._golockicon, true)
-		gohelper.setActive(slot0._goplayicon, false)
-		gohelper.setActive(slot0._gostopicon, false)
-		gohelper.setActive(slot0._govoiceicon, false)
-		SLFramework.UGUI.GuiHelper.SetColor(slot0._txtvoicename, "#9D9D9D")
+	if CharacterDataModel.instance:isCurHeroAudioLocked(arg_8_0._audioId) then
+		gohelper.setActive(arg_8_0._golockicon, true)
+		gohelper.setActive(arg_8_0._goplayicon, false)
+		gohelper.setActive(arg_8_0._gostopicon, false)
+		gohelper.setActive(arg_8_0._govoiceicon, false)
+		SLFramework.UGUI.GuiHelper.SetColor(arg_8_0._txtvoicename, "#9D9D9D")
 
-		slot1 = HeroModel.instance:getByHeroId(slot0._mo.heroId)
-		slot0._txtvoicename.text = CharacterDataConfig.instance:getConditionStringName(slot0._mo)
+		local var_8_0 = HeroModel.instance:getByHeroId(arg_8_0._mo.heroId)
+
+		arg_8_0._txtvoicename.text = CharacterDataConfig.instance:getConditionStringName(arg_8_0._mo)
 	else
-		slot1 = CharacterDataModel.instance:isCurHeroAudioPlaying(slot0._audioId)
+		local var_8_1 = CharacterDataModel.instance:isCurHeroAudioPlaying(arg_8_0._audioId)
 
-		gohelper.setActive(slot0._golockicon, false)
-		gohelper.setActive(slot0._goplayicon, not slot1)
-		gohelper.setActive(slot0._gostopicon, slot1)
-		gohelper.setActive(slot0._govoiceicon, slot1)
+		gohelper.setActive(arg_8_0._golockicon, false)
+		gohelper.setActive(arg_8_0._goplayicon, not var_8_1)
+		gohelper.setActive(arg_8_0._gostopicon, var_8_1)
+		gohelper.setActive(arg_8_0._govoiceicon, var_8_1)
 
-		if slot1 then
-			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtvoicename, "#C66030")
+		if var_8_1 then
+			SLFramework.UGUI.GuiHelper.SetColor(arg_8_0._txtvoicename, "#C66030")
 		else
-			SLFramework.UGUI.GuiHelper.SetColor(slot0._txtvoicename, "#E2E1DF")
+			SLFramework.UGUI.GuiHelper.SetColor(arg_8_0._txtvoicename, "#E2E1DF")
 		end
 
-		slot0._txtvoicename.text = " " .. slot0._mo.name
+		arg_8_0._txtvoicename.text = " " .. arg_8_0._mo.name
 	end
 end
 
-function slot0._onChangeCharVoiceLang(slot0)
-	slot0._itemAnimator.enabled = CharacterVoiceModel.instance:isNeedItemAni()
+function var_0_0._onChangeCharVoiceLang(arg_9_0)
+	arg_9_0._itemAnimator.enabled = CharacterVoiceModel.instance:isNeedItemAni()
 
-	slot0._itemAnimator:Play(uv0, 0, 0)
+	arg_9_0._itemAnimator:Play(var_0_1, 0, 0)
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_10_0)
+	return
 end
 
-return slot0
+return var_0_0

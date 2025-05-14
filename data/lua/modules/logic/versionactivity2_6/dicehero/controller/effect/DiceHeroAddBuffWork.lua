@@ -1,41 +1,43 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroAddBuffWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroAddBuffWork", package.seeall)
 
-slot0 = class("DiceHeroAddBuffWork", DiceHeroBaseEffectWork)
+local var_0_0 = class("DiceHeroAddBuffWork", DiceHeroBaseEffectWork)
 
-function slot0.onStart(slot0, slot1)
-	slot4 = 0
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	local var_1_0 = arg_1_0._effectMo.targetId
+	local var_1_1 = DiceHeroHelper.instance:getEntity(var_1_0)
+	local var_1_2 = 0
 
-	if not DiceHeroHelper.instance:getEntity(slot0._effectMo.targetId) then
-		logError("找不到实体" .. slot2)
+	if not var_1_1 then
+		logError("找不到实体" .. var_1_0)
 	else
-		slot3:addOrUpdateBuff(slot0._effectMo.buff)
+		var_1_1:addOrUpdateBuff(arg_1_0._effectMo.buff)
 
-		if slot0._effectMo.buff.co.visible == 1 then
-			if slot0._effectMo.buff.co.tag == 1 then
+		if arg_1_0._effectMo.buff.co.visible == 1 then
+			if arg_1_0._effectMo.buff.co.tag == 1 then
 				AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_buff)
-				slot3:showEffect(1)
+				var_1_1:showEffect(1)
 			else
 				AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_debuff)
-				slot3:showEffect(2)
+				var_1_1:showEffect(2)
 			end
 
-			slot4 = 0.5
+			var_1_2 = 0.5
 		end
 	end
 
-	if slot4 > 0 then
-		TaskDispatcher.runDelay(slot0._delayDone, slot0, slot4)
+	if var_1_2 > 0 then
+		TaskDispatcher.runDelay(arg_1_0._delayDone, arg_1_0, var_1_2)
 	else
-		slot0:onDone(true)
+		arg_1_0:onDone(true)
 	end
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_2_0)
+	arg_2_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
+function var_0_0.clearWork(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0._delayDone, arg_3_0)
 end
 
-return slot0
+return var_0_0

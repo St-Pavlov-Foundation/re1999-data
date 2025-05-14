@@ -1,74 +1,74 @@
-module("modules.logic.fight.config.FightRightElementEnum", package.seeall)
+﻿module("modules.logic.fight.config.FightRightElementEnum", package.seeall)
 
-slot0 = _M
-slot1 = 0
+local var_0_0 = _M
+local var_0_1 = 0
 
-function slot2()
-	uv0 = uv0 + 1
+local function var_0_2()
+	var_0_1 = var_0_1 + 1
 
-	return uv0
+	return var_0_1
 end
 
-slot0.Elements = {
-	BossRush = slot2(),
-	CharSupport = slot2(),
-	MelodyLevel = slot2(),
-	MelodySkill = slot2(),
-	RougeCoin = slot2(),
-	RougeGongMing = slot2(),
-	RougeTongPin = slot2(),
-	AssistBoss = slot2(),
-	AssistBossScore = slot2(),
-	DoomsdayClock = slot2(),
-	Dice = slot2(),
-	DouQuQuCoin = slot2(),
-	DouQuQuHunting = slot2()
+var_0_0.Elements = {
+	BossRush = var_0_2(),
+	CharSupport = var_0_2(),
+	MelodyLevel = var_0_2(),
+	MelodySkill = var_0_2(),
+	RougeCoin = var_0_2(),
+	RougeGongMing = var_0_2(),
+	RougeTongPin = var_0_2(),
+	AssistBoss = var_0_2(),
+	AssistBossScore = var_0_2(),
+	DoomsdayClock = var_0_2(),
+	Dice = var_0_2(),
+	DouQuQuCoin = var_0_2(),
+	DouQuQuHunting = var_0_2()
 }
-slot0.Priority = {
-	slot0.Elements.Dice,
-	slot0.Elements.BossRush,
-	slot0.Elements.MelodyLevel,
-	slot0.Elements.MelodySkill,
-	slot0.Elements.AssistBossScore,
-	slot0.Elements.AssistBoss,
-	slot0.Elements.DoomsdayClock,
-	slot0.Elements.DouQuQuCoin,
-	slot0.Elements.DouQuQuHunting,
-	slot0.Elements.RougeCoin,
-	slot0.Elements.RougeGongMing,
-	slot0.Elements.RougeTongPin,
-	slot0.Elements.CharSupport
+var_0_0.Priority = {
+	var_0_0.Elements.Dice,
+	var_0_0.Elements.BossRush,
+	var_0_0.Elements.MelodyLevel,
+	var_0_0.Elements.MelodySkill,
+	var_0_0.Elements.AssistBossScore,
+	var_0_0.Elements.AssistBoss,
+	var_0_0.Elements.DoomsdayClock,
+	var_0_0.Elements.DouQuQuCoin,
+	var_0_0.Elements.DouQuQuHunting,
+	var_0_0.Elements.RougeCoin,
+	var_0_0.Elements.RougeGongMing,
+	var_0_0.Elements.RougeTongPin,
+	var_0_0.Elements.CharSupport
 }
-slot0.ElementsSizeDict = {
-	[slot0.Elements.Dice] = Vector2(540, 150),
-	[slot0.Elements.BossRush] = Vector2(200, 135),
-	[slot0.Elements.CharSupport] = Vector2(200, 130),
-	[slot0.Elements.MelodyLevel] = Vector2(300, 50),
-	[slot0.Elements.MelodySkill] = Vector2(200, 175),
-	[slot0.Elements.RougeCoin] = Vector2(220, 84),
-	[slot0.Elements.RougeGongMing] = Vector2(327, 111),
-	[slot0.Elements.RougeTongPin] = Vector2(412.9, 111),
-	[slot0.Elements.AssistBoss] = Vector2(200, 200),
-	[slot0.Elements.AssistBossScore] = Vector2(200, 100),
-	[slot0.Elements.DoomsdayClock] = Vector2(200, 350),
-	[slot0.Elements.DouQuQuCoin] = Vector2(400, 80),
-	[slot0.Elements.DouQuQuHunting] = Vector2(220, 148)
+var_0_0.ElementsSizeDict = {
+	[var_0_0.Elements.Dice] = Vector2(540, 150),
+	[var_0_0.Elements.BossRush] = Vector2(200, 135),
+	[var_0_0.Elements.CharSupport] = Vector2(200, 130),
+	[var_0_0.Elements.MelodyLevel] = Vector2(300, 50),
+	[var_0_0.Elements.MelodySkill] = Vector2(200, 175),
+	[var_0_0.Elements.RougeCoin] = Vector2(220, 84),
+	[var_0_0.Elements.RougeGongMing] = Vector2(327, 111),
+	[var_0_0.Elements.RougeTongPin] = Vector2(412.9, 111),
+	[var_0_0.Elements.AssistBoss] = Vector2(200, 200),
+	[var_0_0.Elements.AssistBossScore] = Vector2(200, 100),
+	[var_0_0.Elements.DoomsdayClock] = Vector2(200, 350),
+	[var_0_0.Elements.DouQuQuCoin] = Vector2(400, 80),
+	[var_0_0.Elements.DouQuQuHunting] = Vector2(220, 148)
 }
-slot0.ElementsNodeName = {
-	[slot0.Elements.BossRush] = "bossrush_score",
-	[slot0.Elements.CharSupport] = "#go_charsupport",
-	[slot0.Elements.MelodyLevel] = "melody_level",
-	[slot0.Elements.MelodySkill] = "melody_skill",
-	[slot0.Elements.RougeCoin] = "rougeCoin",
-	[slot0.Elements.RougeGongMing] = "rougeGongMing",
-	[slot0.Elements.RougeTongPin] = "rougeTongPin",
-	[slot0.Elements.AssistBoss] = "assistboss",
-	[slot0.Elements.AssistBossScore] = "assistbossscore",
-	[slot0.Elements.DoomsdayClock] = "doomsdayclock",
-	[slot0.Elements.Dice] = "dice",
-	[slot0.Elements.DouQuQuCoin] = "douququCoin",
-	[slot0.Elements.DouQuQuHunting] = "douququHunting"
+var_0_0.ElementsNodeName = {
+	[var_0_0.Elements.BossRush] = "bossrush_score",
+	[var_0_0.Elements.CharSupport] = "#go_charsupport",
+	[var_0_0.Elements.MelodyLevel] = "melody_level",
+	[var_0_0.Elements.MelodySkill] = "melody_skill",
+	[var_0_0.Elements.RougeCoin] = "rougeCoin",
+	[var_0_0.Elements.RougeGongMing] = "rougeGongMing",
+	[var_0_0.Elements.RougeTongPin] = "rougeTongPin",
+	[var_0_0.Elements.AssistBoss] = "assistboss",
+	[var_0_0.Elements.AssistBossScore] = "assistbossscore",
+	[var_0_0.Elements.DoomsdayClock] = "doomsdayclock",
+	[var_0_0.Elements.Dice] = "dice",
+	[var_0_0.Elements.DouQuQuCoin] = "douququCoin",
+	[var_0_0.Elements.DouQuQuHunting] = "douququHunting"
 }
-slot0.AnchorTweenDuration = 0.2
+var_0_0.AnchorTweenDuration = 0.2
 
-return slot0
+return var_0_0

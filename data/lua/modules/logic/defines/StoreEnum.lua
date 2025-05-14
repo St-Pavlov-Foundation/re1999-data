@@ -1,14 +1,15 @@
-module("modules.logic.defines.StoreEnum", package.seeall)
+﻿module("modules.logic.defines.StoreEnum", package.seeall)
 
-slot0 = _M
-slot0.ChargeStoreTabId = 410
-slot0.LimitType = {
+local var_0_0 = _M
+
+var_0_0.ChargeStoreTabId = 410
+var_0_0.LimitType = {
 	Default = 1,
 	Currency = 3,
 	CurrencyChanged = 4,
 	BuyLimit = 2
 }
-slot0.Discount = {
+var_0_0.Discount = {
 	Recommend = "101",
 	Activity = "103",
 	Hot = "102",
@@ -17,13 +18,13 @@ slot0.Discount = {
 	Flash = "104",
 	Super = "105"
 }
-slot0.RefreshTime = {
+var_0_0.RefreshTime = {
 	Day = 1,
 	Week = 2,
 	Month = 3,
 	Forever = 0
 }
-slot0.ChargeRefreshTime = {
+var_0_0.ChargeRefreshTime = {
 	Day = 3,
 	Week = 4,
 	Month = 5,
@@ -32,8 +33,8 @@ slot0.ChargeRefreshTime = {
 	Level = 7,
 	None = 0
 }
-slot0.LittleMonthCardGoodsId = 811450
-slot0.StoreId = {
+var_0_0.LittleMonthCardGoodsId = 811450
+var_0_0.StoreId = {
 	Charge = 410,
 	PubbleCharge = 411,
 	LimitStore = 112,
@@ -58,8 +59,8 @@ slot0.StoreId = {
 	Skin = 510,
 	GlowCharge = 412
 }
-slot0.DefaultTabId = slot0.StoreId.RecommendStore
-slot0.RecommendSubStoreId = {
+var_0_0.DefaultTabId = var_0_0.StoreId.RecommendStore
+var_0_0.RecommendSubStoreId = {
 	StoreRoleSkinView = 801,
 	GiftrecommendView1 = 803,
 	MonthCardId = 711,
@@ -70,7 +71,7 @@ slot0.RecommendSubStoreId = {
 	GiftPacksView = 713,
 	ChargeView = 712
 }
-slot0.RecommendRelationType = {
+var_0_0.RecommendRelationType = {
 	OtherRecommendClose = 3,
 	PackageStoreGoodsNoBuy = 6,
 	StoreGoods = 5,
@@ -78,50 +79,50 @@ slot0.RecommendRelationType = {
 	Summon = 1,
 	PackageStoreGoods = 2
 }
-slot0.AdjustOrderType = {
+var_0_0.AdjustOrderType = {
 	MonthCard = 1,
 	BattlePass = 2,
 	Normal = 0
 }
-slot0.GroupOrderType = {
+var_0_0.GroupOrderType = {
 	GroupC = 3,
 	GroupA = 1,
 	GroupD = 4,
 	GroupB = 2
 }
-slot0.MonthCardGoodsId = 610001
-slot0.SeasonCardGoodsId = 811467
-slot0.NewbiePackId = 811422
-slot0.NormalRoomTicket = 600001
-slot0.TopRoomTicket = 600002
-slot0.SummonSimulationPick = "v2a2_03"
-slot0.MonthCardStatus = {
+var_0_0.MonthCardGoodsId = 610001
+var_0_0.SeasonCardGoodsId = 811467
+var_0_0.NewbiePackId = 811422
+var_0_0.NormalRoomTicket = 600001
+var_0_0.TopRoomTicket = 600002
+var_0_0.SummonSimulationPick = "v2a2_03"
+var_0_0.MonthCardStatus = {
 	NotEnoughOneDay = 0,
 	NotEnoughThreeDay = 3,
 	NotPurchase = -1
 }
-slot0.Need4RDEpisodeId = 9999
-slot0.StoreChargeType = {
+var_0_0.Need4RDEpisodeId = 9999
+var_0_0.StoreChargeType = {
 	DailyReleasePackage = 4,
 	Optional = 5,
 	MonthCard = 2
 }
-slot0.Prefab = {
+var_0_0.Prefab = {
 	RoomStore = 6,
 	ChargeStore = 2,
 	PackageStore = 4,
 	NormalStore = 1,
 	SkinStore = 3
 }
-slot0.BossRushStore = {
+var_0_0.BossRushStore = {
 	NormalStore = 901,
 	ManeTrust = 900,
 	UpdateStore = 902
 }
-slot0.TowerStore = {
+var_0_0.TowerStore = {
 	UpdateStore = 302,
 	NormalStore = 301,
 	MainStore = 300
 }
 
-return slot0
+return var_0_0

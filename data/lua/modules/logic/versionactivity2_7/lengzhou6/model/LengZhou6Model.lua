@@ -1,194 +1,231 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.LengZhou6Model", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.LengZhou6Model", package.seeall)
 
-slot0 = class("LengZhou6Model", BaseModel)
+local var_0_0 = class("LengZhou6Model", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0._actInfoMap = {}
-	slot0._actNewestEpisodeDict = {}
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._actInfoMap = {}
+	arg_1_0._actNewestEpisodeDict = {}
 end
 
-function slot0.reInit(slot0)
-	slot0._actInfoMap = {}
-	slot0._actNewestEpisodeDict = {}
+function var_0_0.reInit(arg_2_0)
+	arg_2_0._actInfoMap = {}
+	arg_2_0._actNewestEpisodeDict = {}
 end
 
-function slot0.onGetActInfo(slot0, slot1)
-	slot0._activityId = slot1.activityId
+function var_0_0.onGetActInfo(arg_3_0, arg_3_1)
+	arg_3_0._activityId = arg_3_1.activityId
 
-	if not slot1.episodes or #slot2 <= 0 then
+	local var_3_0 = arg_3_1.episodes
+
+	if not var_3_0 or #var_3_0 <= 0 then
 		return
 	end
 
-	if slot0._actInfoMap == nil or tabletool.len(slot0._actInfoMap) == 0 then
-		if slot0._actInfoMap == nil then
-			slot0._actInfoMap = {}
+	if arg_3_0._actInfoMap == nil or tabletool.len(arg_3_0._actInfoMap) == 0 then
+		if arg_3_0._actInfoMap == nil then
+			arg_3_0._actInfoMap = {}
 		end
 
-		for slot7, slot8 in pairs(lua_activity190_episode.configDict[slot0._activityId]) do
-			if slot0._actInfoMap[slot7] == nil then
-				slot9 = LengZhou6InfoMo.New()
+		local var_3_1 = lua_activity190_episode.configDict[arg_3_0._activityId]
 
-				slot9:init(slot0:getCurActId(), slot7, false)
+		for iter_3_0, iter_3_1 in pairs(var_3_1) do
+			if arg_3_0._actInfoMap[iter_3_0] == nil then
+				local var_3_2 = LengZhou6InfoMo.New()
 
-				slot0._actInfoMap[slot7] = slot9
+				var_3_2:init(arg_3_0:getCurActId(), iter_3_0, false)
+
+				arg_3_0._actInfoMap[iter_3_0] = var_3_2
 			end
 		end
 	end
 
-	for slot6, slot7 in ipairs(slot2) do
-		slot0._actInfoMap[slot7.episodeId]:updateInfo(slot7)
+	for iter_3_2, iter_3_3 in ipairs(var_3_0) do
+		local var_3_3 = iter_3_3.episodeId
+
+		arg_3_0._actInfoMap[var_3_3]:updateInfo(iter_3_3)
 	end
 
-	slot0:updateNewestEpisode()
+	arg_3_0:updateNewestEpisode()
 end
 
-function slot0.onFinishActInfo(slot0, slot1)
-	slot0._activityId = slot1.activityId
+function var_0_0.onFinishActInfo(arg_4_0, arg_4_1)
+	arg_4_0._activityId = arg_4_1.activityId
 
-	if slot1.episodeId == nil then
+	local var_4_0 = arg_4_1.episodeId
+
+	if var_4_0 == nil then
 		return
 	end
 
-	if slot0._actInfoMap ~= nil and slot0._actInfoMap[slot2] then
-		slot3:updateIsFinish(true)
-		slot3:updateProgress(slot1.progress)
+	if arg_4_0._actInfoMap ~= nil then
+		local var_4_1 = arg_4_0._actInfoMap[var_4_0]
+
+		if var_4_1 then
+			var_4_1:updateIsFinish(true)
+			var_4_1:updateProgress(arg_4_1.progress)
+		end
 	end
 end
 
-function slot0.onPushActInfo(slot0, slot1)
-	slot0._activityId = slot1.activityId
+function var_0_0.onPushActInfo(arg_5_0, arg_5_1)
+	arg_5_0._activityId = arg_5_1.activityId
 
-	if not slot1.episodes or #slot2 <= 0 then
+	local var_5_0 = arg_5_1.episodes
+
+	if not var_5_0 or #var_5_0 <= 0 then
 		return
 	end
 
-	if slot0._actInfoMap == nil or tabletool.len(slot0._actInfoMap) == 0 then
-		if slot0._actInfoMap == nil then
-			slot0._actInfoMap = {}
+	if arg_5_0._actInfoMap == nil or tabletool.len(arg_5_0._actInfoMap) == 0 then
+		if arg_5_0._actInfoMap == nil then
+			arg_5_0._actInfoMap = {}
 		end
 
-		for slot7, slot8 in pairs(lua_activity190_episode.configDict[slot0._activityId]) do
-			if slot0._actInfoMap[slot7] == nil then
-				slot9 = LengZhou6InfoMo.New()
+		local var_5_1 = lua_activity190_episode.configDict[arg_5_0._activityId]
 
-				slot9:init(slot0:getCurActId(), slot7, false)
+		for iter_5_0, iter_5_1 in pairs(var_5_1) do
+			if arg_5_0._actInfoMap[iter_5_0] == nil then
+				local var_5_2 = LengZhou6InfoMo.New()
 
-				slot0._actInfoMap[slot7] = slot9
+				var_5_2:init(arg_5_0:getCurActId(), iter_5_0, false)
+
+				arg_5_0._actInfoMap[iter_5_0] = var_5_2
 			end
 		end
 	end
 
-	for slot6, slot7 in ipairs(slot2) do
-		if slot0._actInfoMap[slot0._actInfoMap[slot7.episodeId].preEpisodeId] then
-			slot0._actInfoMap[slot10]:updateIsFinish(true)
+	for iter_5_2, iter_5_3 in ipairs(var_5_0) do
+		local var_5_3 = iter_5_3.episodeId
+		local var_5_4 = arg_5_0._actInfoMap[var_5_3].preEpisodeId
+
+		if arg_5_0._actInfoMap[var_5_4] then
+			arg_5_0._actInfoMap[var_5_4]:updateIsFinish(true)
 		end
 	end
 
-	slot0:updateNewestEpisode()
+	arg_5_0:updateNewestEpisode()
 end
 
-function slot0.updateNewestEpisode(slot0)
-	slot1, slot2 = nil
+function var_0_0.updateNewestEpisode(arg_6_0)
+	local var_6_0
+	local var_6_1
 
-	for slot6, slot7 in pairs(slot0._actInfoMap) do
-		if slot0:isUnlockEpisode(slot6) and not slot0:isFinishedEpisode(slot6) then
-			slot1 = slot6
+	for iter_6_0, iter_6_1 in pairs(arg_6_0._actInfoMap) do
+		local var_6_2 = arg_6_0:isUnlockEpisode(iter_6_0)
+		local var_6_3 = arg_6_0:isFinishedEpisode(iter_6_0)
+
+		if var_6_2 and not var_6_3 then
+			var_6_0 = iter_6_0
 		end
 
-		if slot0._actInfoMap[slot6]:isEndlessEpisode() then
-			slot2 = slot6
+		if arg_6_0._actInfoMap[iter_6_0]:isEndlessEpisode() then
+			var_6_1 = iter_6_0
 		end
 	end
 
-	if slot1 == nil then
-		slot0._actNewestEpisodeDict[slot0:getCurActId()] = slot2
+	local var_6_4 = arg_6_0:getCurActId()
+
+	if var_6_0 == nil then
+		arg_6_0._actNewestEpisodeDict[var_6_4] = var_6_1
 	else
-		slot0._actNewestEpisodeDict[slot3] = slot1
+		arg_6_0._actNewestEpisodeDict[var_6_4] = var_6_0
 	end
 end
 
-function slot0.getAllEpisodeIds(slot0)
-	slot2 = {}
+function var_0_0.getAllEpisodeIds(arg_7_0)
+	local var_7_0 = lua_activity190_episode.configDict[arg_7_0._activityId]
+	local var_7_1 = {}
 
-	for slot6, slot7 in pairs(lua_activity190_episode.configDict[slot0._activityId]) do
-		table.insert(slot2, slot6)
+	for iter_7_0, iter_7_1 in pairs(var_7_0) do
+		table.insert(var_7_1, iter_7_0)
 	end
 
-	table.sort(slot2, function (slot0, slot1)
-		return slot0 < slot1
+	table.sort(var_7_1, function(arg_8_0, arg_8_1)
+		return arg_8_0 < arg_8_1
 	end)
 
-	return slot2
+	return var_7_1
 end
 
-function slot0.getEpisodeInfoMo(slot0, slot1)
-	return slot0._actInfoMap[slot1]
+function var_0_0.getEpisodeInfoMo(arg_9_0, arg_9_1)
+	return arg_9_0._actInfoMap[arg_9_1]
 end
 
-function slot0.getActInfoDic(slot0)
-	return slot0._actInfoMap
+function var_0_0.getActInfoDic(arg_10_0)
+	return arg_10_0._actInfoMap
 end
 
-function slot0.isEpisodeFinish(slot0, slot1)
-	if slot0._actInfoMap[slot1] == nil then
+function var_0_0.isEpisodeFinish(arg_11_0, arg_11_1)
+	local var_11_0 = arg_11_0._actInfoMap[arg_11_1]
+
+	if var_11_0 == nil then
 		return false
 	end
 
-	return slot2.isFinish
+	return var_11_0.isFinish
 end
 
-function slot0.setCurEpisodeId(slot0, slot1)
-	slot0._curEpisodeId = slot1
+function var_0_0.setCurEpisodeId(arg_12_0, arg_12_1)
+	arg_12_0._curEpisodeId = arg_12_1
 end
 
-function slot0.getCurEpisodeId(slot0)
-	return slot0._curEpisodeId
+function var_0_0.getCurEpisodeId(arg_13_0)
+	return arg_13_0._curEpisodeId
 end
 
-function slot0.getCurActId(slot0)
-	return slot0._activityId
+function var_0_0.getCurActId(arg_14_0)
+	return arg_14_0._activityId
 end
 
-function slot0.getEpisodeIsEndLess(slot0, slot1)
-	if not string.nilorempty(slot1.enemyId) then
-		return slot2 == "2"
+function var_0_0.getEpisodeIsEndLess(arg_15_0, arg_15_1)
+	local var_15_0 = arg_15_1.enemyId
+
+	if not string.nilorempty(var_15_0) then
+		return var_15_0 == "2"
 	end
 
 	return false
 end
 
-function slot0.getAct190Id(slot0)
+function var_0_0.getAct190Id(arg_16_0)
 	return VersionActivity2_7Enum.ActivityId.LengZhou6
 end
 
-function slot0.isAct190Open(slot0, slot1)
-	slot3, slot4, slot5 = nil
+function var_0_0.isAct190Open(arg_17_0, arg_17_1)
+	local var_17_0 = arg_17_0:getAct190Id()
+	local var_17_1
+	local var_17_2
+	local var_17_3
 
-	if ActivityModel.instance:getActivityInfo()[slot0:getAct190Id()] then
-		slot3, slot4, slot5 = ActivityHelper.getActivityStatusAndToast(slot2)
+	if ActivityModel.instance:getActivityInfo()[var_17_0] then
+		var_17_1, var_17_2, var_17_3 = ActivityHelper.getActivityStatusAndToast(var_17_0)
 	else
-		slot4 = ToastEnum.ActivityEnd
+		var_17_2 = ToastEnum.ActivityEnd
 	end
 
-	if slot1 and slot4 then
-		GameFacade.showToast(slot4, slot5)
+	if arg_17_1 and var_17_2 then
+		GameFacade.showToast(var_17_2, var_17_3)
 	end
 
-	return slot3 == ActivityEnum.ActivityStatus.Normal
+	return var_17_1 == ActivityEnum.ActivityStatus.Normal
 end
 
-function slot0.isUnlockEpisode(slot0, slot1)
-	return slot0._actInfoMap[slot1] ~= nil and slot2:unLock()
+function var_0_0.isUnlockEpisode(arg_18_0, arg_18_1)
+	local var_18_0 = arg_18_0._actInfoMap[arg_18_1]
+
+	return var_18_0 ~= nil and var_18_0:unLock()
 end
 
-function slot0.isFinishedEpisode(slot0, slot1)
-	return slot0._actInfoMap[slot1] ~= nil and slot2.isFinish
+function var_0_0.isFinishedEpisode(arg_19_0, arg_19_1)
+	local var_19_0 = arg_19_0._actInfoMap[arg_19_1]
+
+	return var_19_0 ~= nil and var_19_0.isFinish
 end
 
-function slot0.getNewestEpisodeId(slot0, slot1)
-	return slot0._actNewestEpisodeDict[slot1]
+function var_0_0.getNewestEpisodeId(arg_20_0, arg_20_1)
+	return arg_20_0._actNewestEpisodeDict[arg_20_1]
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

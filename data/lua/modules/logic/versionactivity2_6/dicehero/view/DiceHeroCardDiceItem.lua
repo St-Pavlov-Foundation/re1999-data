@@ -1,61 +1,65 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroCardDiceItem", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroCardDiceItem", package.seeall)
 
-slot0 = class("DiceHeroCardDiceItem", LuaCompBase)
+local var_0_0 = class("DiceHeroCardDiceItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0._icon = gohelper.findChildImage(slot1, "")
-	slot0._txtdicenum = gohelper.findChildTextMesh(slot1, "#txt_dicenum")
-	slot0._goselect = gohelper.findChild(slot1, "#go_select")
-	slot0._canvasGroup = gohelper.onceAddComponent(slot1, typeof(UnityEngine.CanvasGroup))
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0._icon = gohelper.findChildImage(arg_1_1, "")
+	arg_1_0._txtdicenum = gohelper.findChildTextMesh(arg_1_1, "#txt_dicenum")
+	arg_1_0._goselect = gohelper.findChild(arg_1_1, "#go_select")
+	arg_1_0._canvasGroup = gohelper.onceAddComponent(arg_1_1, typeof(UnityEngine.CanvasGroup))
 end
 
-function slot0.addEventListeners(slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, slot0.refreshUI, slot0)
-	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, slot0.refreshUI, slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardSelectChange, arg_2_0.refreshUI, arg_2_0)
+	DiceHeroController.instance:registerCallback(DiceHeroEvent.SkillCardDiceChange, arg_2_0.refreshUI, arg_2_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, slot0.refreshUI, slot0)
-	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, slot0.refreshUI, slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardSelectChange, arg_3_0.refreshUI, arg_3_0)
+	DiceHeroController.instance:unregisterCallback(DiceHeroEvent.SkillCardDiceChange, arg_3_0.refreshUI, arg_3_0)
 end
 
-function slot0.initData(slot0, slot1, slot2, slot3)
-	slot0._ruleInfo = slot1
-	slot0._cardMo = slot2
-	slot0._index = slot3
-	slot5 = slot0._ruleInfo[2]
+function var_0_0.initData(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
+	arg_4_0._ruleInfo = arg_4_1
+	arg_4_0._cardMo = arg_4_2
+	arg_4_0._index = arg_4_3
 
-	if slot0._ruleInfo[1] == 0 then
-		slot4 = 8
+	local var_4_0 = arg_4_0._ruleInfo[1]
+	local var_4_1 = arg_4_0._ruleInfo[2]
+
+	if var_4_0 == 0 then
+		var_4_0 = 8
 	end
 
-	slot7 = lua_dice_point.configDict[slot5]
+	local var_4_2 = lua_dice_suit.configDict[var_4_0]
+	local var_4_3 = lua_dice_point.configDict[var_4_1]
 
-	if lua_dice_suit.configDict[slot4] then
-		slot8 = string.split(slot6.icon2, "#")
+	if var_4_2 then
+		local var_4_4 = string.split(var_4_2.icon2, "#")
+		local var_4_5 = arg_4_2.matchNums[1] or 0
 
-		UISpriteSetMgr.instance:setDiceHeroSprite(slot0._icon, (slot2.matchNums[1] or 0) < slot0._index and slot8[2] or slot8[1])
+		UISpriteSetMgr.instance:setDiceHeroSprite(arg_4_0._icon, var_4_5 < arg_4_0._index and var_4_4[2] or var_4_4[1])
 	end
 
-	if slot7 then
-		slot0._txtdicenum.text = slot7.txt
+	if var_4_3 then
+		arg_4_0._txtdicenum.text = var_4_3.txt
 	end
 
-	slot0:refreshUI()
+	arg_4_0:refreshUI()
 end
 
-function slot0.refreshUI(slot0)
-	if DiceHeroFightModel.instance:getGameData().curSelectCardMo == slot0._cardMo then
-		slot2 = slot0._cardMo.curSelectUids[slot0._index]
+function var_0_0.refreshUI(arg_5_0)
+	if DiceHeroFightModel.instance:getGameData().curSelectCardMo == arg_5_0._cardMo then
+		local var_5_0 = arg_5_0._cardMo.curSelectUids[arg_5_0._index]
 
-		gohelper.setActive(slot0._goselect, slot2)
+		gohelper.setActive(arg_5_0._goselect, var_5_0)
 
-		slot0._canvasGroup.alpha = slot2 and 1 or 0.4
+		arg_5_0._canvasGroup.alpha = var_5_0 and 1 or 0.4
 	else
-		gohelper.setActive(slot0._goselect, false)
+		gohelper.setActive(arg_5_0._goselect, false)
 
-		slot0._canvasGroup.alpha = 1
+		arg_5_0._canvasGroup.alpha = 1
 	end
 end
 
-return slot0
+return var_0_0

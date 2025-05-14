@@ -1,155 +1,167 @@
-module("modules.logic.fight.view.stress.StressNormalBehavior", package.seeall)
+﻿module("modules.logic.fight.view.stress.StressNormalBehavior", package.seeall)
 
-slot0 = class("StressNormalBehavior", StressBehaviorBase)
-slot0.BehaviourAnimDuration = 1
-slot0.Behaviour2AudioId = {
+local var_0_0 = class("StressNormalBehavior", StressBehaviorBase)
+
+var_0_0.BehaviourAnimDuration = 1
+var_0_0.Behaviour2AudioId = {
 	[FightEnum.StressBehaviour.Meltdown] = 20211405,
 	[FightEnum.StressBehaviour.Resolute] = 20211404
 }
 
-function slot0.initUI(slot0)
-	slot0.stressText = gohelper.findChildText(slot0.instanceGo, "#txt_stress")
-	slot0.goBlue = gohelper.findChild(slot0.instanceGo, "blue")
-	slot0.goRed = gohelper.findChild(slot0.instanceGo, "red")
-	slot0.goBroken = gohelper.findChild(slot0.instanceGo, "broken")
-	slot0.goStaunch = gohelper.findChild(slot0.instanceGo, "staunch")
-	slot0.click = gohelper.findChildClickWithDefaultAudio(slot0.instanceGo, "#go_clickarea")
+function var_0_0.initUI(arg_1_0)
+	arg_1_0.stressText = gohelper.findChildText(arg_1_0.instanceGo, "#txt_stress")
+	arg_1_0.goBlue = gohelper.findChild(arg_1_0.instanceGo, "blue")
+	arg_1_0.goRed = gohelper.findChild(arg_1_0.instanceGo, "red")
+	arg_1_0.goBroken = gohelper.findChild(arg_1_0.instanceGo, "broken")
+	arg_1_0.goStaunch = gohelper.findChild(arg_1_0.instanceGo, "staunch")
+	arg_1_0.click = gohelper.findChildClickWithDefaultAudio(arg_1_0.instanceGo, "#go_clickarea")
 
-	slot0.click:AddClickListener(slot0.onClickStress, slot0)
+	arg_1_0.click:AddClickListener(arg_1_0.onClickStress, arg_1_0)
 
-	slot0.statusDict = {
-		[FightEnum.Status.Positive] = slot0:createStatusItem(slot0.goBlue),
-		[FightEnum.Status.Negative] = slot0:createStatusItem(slot0.goRed)
-	}
-	slot0.animGoDict = slot0:getUserDataTb_()
-	slot0.animGoDict[FightEnum.StressBehaviour.Meltdown] = slot0.goBroken
-	slot0.animGoDict[FightEnum.StressBehaviour.Resolute] = slot0.goStaunch
+	arg_1_0.statusDict = {}
+	arg_1_0.statusDict[FightEnum.Status.Positive] = arg_1_0:createStatusItem(arg_1_0.goBlue)
+	arg_1_0.statusDict[FightEnum.Status.Negative] = arg_1_0:createStatusItem(arg_1_0.goRed)
+	arg_1_0.animGoDict = arg_1_0:getUserDataTb_()
+	arg_1_0.animGoDict[FightEnum.StressBehaviour.Meltdown] = arg_1_0.goBroken
+	arg_1_0.animGoDict[FightEnum.StressBehaviour.Resolute] = arg_1_0.goStaunch
 end
 
-function slot0.createStatusItem(slot0, slot1)
-	slot2 = slot0:getUserDataTb_()
-	slot2.go = slot1
-	slot2.txtStress = gohelper.findChildText(slot2.go, "add/#txt_stress")
-	slot2.animator = slot2.go:GetComponent(gohelper.Type_Animator)
+function var_0_0.createStatusItem(arg_2_0, arg_2_1)
+	local var_2_0 = arg_2_0:getUserDataTb_()
 
-	return slot2
+	var_2_0.go = arg_2_1
+	var_2_0.txtStress = gohelper.findChildText(var_2_0.go, "add/#txt_stress")
+	var_2_0.animator = var_2_0.go:GetComponent(gohelper.Type_Animator)
+
+	return var_2_0
 end
 
-function slot0.onClickStress(slot0)
+function var_0_0.onClickStress(arg_3_0)
 	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
 		return
 	end
 
-	if slot0.entity:getMO().side == FightEnum.EntitySide.MySide then
-		StressTipController.instance:openHeroStressTip(slot2:getCO())
+	local var_3_0 = arg_3_0.entity:getMO()
+
+	if var_3_0.side == FightEnum.EntitySide.MySide then
+		StressTipController.instance:openHeroStressTip(var_3_0:getCO())
 	else
-		StressTipController.instance:openMonsterStressTip(slot2:getCO())
+		StressTipController.instance:openMonsterStressTip(var_3_0:getCO())
 	end
 end
 
-function slot0.refreshUI(slot0)
-	slot0.stressText.text = slot0:getCurStress()
+function var_0_0.refreshUI(arg_4_0)
+	local var_4_0 = arg_4_0:getCurStress()
 
-	slot0:updateStatus()
+	arg_4_0.stressText.text = var_4_0
+
+	arg_4_0:updateStatus()
 end
 
-function slot0.updateStatus(slot0)
-	slot0:resetGo()
+function var_0_0.updateStatus(arg_5_0)
+	arg_5_0:resetGo()
 
-	slot0.status = FightHelper.getStressStatus(slot0:getCurStress())
+	local var_5_0 = arg_5_0:getCurStress()
 
-	if slot0.status and slot0.statusDict[slot0.status] then
-		gohelper.setActive(slot2.go, true)
+	arg_5_0.status = FightHelper.getStressStatus(var_5_0)
+
+	local var_5_1 = arg_5_0.status and arg_5_0.statusDict[arg_5_0.status]
+
+	if var_5_1 then
+		gohelper.setActive(var_5_1.go, true)
 	end
 end
 
-function slot0.resetGo(slot0)
-	gohelper.setActive(slot0.goBlue, false)
-	gohelper.setActive(slot0.goRed, false)
-	gohelper.setActive(slot0.goBroken, false)
-	gohelper.setActive(slot0.goStaunch, false)
+function var_0_0.resetGo(arg_6_0)
+	gohelper.setActive(arg_6_0.goBlue, false)
+	gohelper.setActive(arg_6_0.goRed, false)
+	gohelper.setActive(arg_6_0.goBroken, false)
+	gohelper.setActive(arg_6_0.goStaunch, false)
 end
 
-function slot0.onPowerChange(slot0, slot1, slot2, slot3, slot4)
-	if slot0.playBehaviouring then
+function var_0_0.onPowerChange(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4)
+	if arg_7_0.playBehaviouring then
 		return
 	end
 
-	if slot0.entityId ~= slot1 then
+	if arg_7_0.entityId ~= arg_7_1 then
 		return
 	end
 
-	if FightEnum.PowerType.Stress ~= slot2 then
+	if FightEnum.PowerType.Stress ~= arg_7_2 then
 		return
 	end
 
-	if slot3 == slot4 then
+	if arg_7_3 == arg_7_4 then
 		return
 	end
 
-	slot0:refreshUI()
-	slot0:playStressValueChangeAnim()
+	arg_7_0:refreshUI()
+	arg_7_0:playStressValueChangeAnim()
 end
 
-function slot0.playStressValueChangeAnim(slot0)
-	if slot0.playBehaviouring then
+function var_0_0.playStressValueChangeAnim(arg_8_0)
+	if arg_8_0.playBehaviouring then
 		return
 	end
 
-	if not slot0.status then
+	if not arg_8_0.status then
 		return
 	end
 
-	if slot0.statusDict[slot0.status] then
-		slot1.animator:Play("up", 0, 0)
+	local var_8_0 = arg_8_0.statusDict[arg_8_0.status]
 
-		slot1.txtStress.text = slot0:getCurStress()
+	if var_8_0 then
+		var_8_0.animator:Play("up", 0, 0)
+
+		var_8_0.txtStress.text = arg_8_0:getCurStress()
 	else
-		slot0:log(string.format("压力值item为nil。cur status : %s, cur stress : %s", slot0.status, slot0:getCurStress()))
+		arg_8_0:log(string.format("压力值item为nil。cur status : %s, cur stress : %s", arg_8_0.status, arg_8_0:getCurStress()))
 	end
 end
 
-function slot0.triggerStressBehaviour(slot0, slot1, slot2)
-	if slot0.entityId ~= slot1 then
+function var_0_0.triggerStressBehaviour(arg_9_0, arg_9_1, arg_9_2)
+	if arg_9_0.entityId ~= arg_9_1 then
 		return
 	end
 
-	if FightEnum.StressBehaviour.Resolute ~= slot2 and FightEnum.StressBehaviour.Meltdown ~= slot2 then
+	if FightEnum.StressBehaviour.Resolute ~= arg_9_2 and FightEnum.StressBehaviour.Meltdown ~= arg_9_2 then
 		return
 	end
 
-	slot0:resetGo()
+	arg_9_0:resetGo()
 
-	slot4 = slot0.Behaviour2AudioId[slot2]
+	local var_9_0 = arg_9_0.animGoDict[arg_9_2]
+	local var_9_1 = arg_9_0.Behaviour2AudioId[arg_9_2]
 
-	if not slot0.animGoDict[slot2] then
-		slot0:log(string.format("没找到对应行为动画节点，behaviour is : %s", slot2))
+	if not var_9_0 then
+		arg_9_0:log(string.format("没找到对应行为动画节点，behaviour is : %s", arg_9_2))
 
-		slot3 = slot0.animGoDict[FightEnum.StressBehaviour.Meltdown]
-		slot4 = slot0.Behaviour2AudioId[FightEnum.StressBehaviour.Meltdown]
+		var_9_0 = arg_9_0.animGoDict[FightEnum.StressBehaviour.Meltdown]
+		var_9_1 = arg_9_0.Behaviour2AudioId[FightEnum.StressBehaviour.Meltdown]
 	end
 
-	slot0.playBehaviouring = true
+	arg_9_0.playBehaviouring = true
 
-	gohelper.setActive(slot3, true)
-	FightAudioMgr.instance:playAudio(slot4)
-	TaskDispatcher.runDelay(slot0.onBehaviourDone, slot0, uv0.BehaviourAnimDuration)
+	gohelper.setActive(var_9_0, true)
+	FightAudioMgr.instance:playAudio(var_9_1)
+	TaskDispatcher.runDelay(arg_9_0.onBehaviourDone, arg_9_0, var_0_0.BehaviourAnimDuration)
 end
 
-function slot0.onBehaviourDone(slot0)
-	slot0.playBehaviouring = false
+function var_0_0.onBehaviourDone(arg_10_0)
+	arg_10_0.playBehaviouring = false
 
-	slot0:refreshUI()
-	slot0:playStressValueChangeAnim()
+	arg_10_0:refreshUI()
+	arg_10_0:playStressValueChangeAnim()
 end
 
-function slot0.beforeDestroy(slot0)
-	TaskDispatcher.cancelTask(slot0.onBehaviourDone, slot0)
-	slot0.click:RemoveClickListener()
+function var_0_0.beforeDestroy(arg_11_0)
+	TaskDispatcher.cancelTask(arg_11_0.onBehaviourDone, arg_11_0)
+	arg_11_0.click:RemoveClickListener()
 
-	slot0.click = nil
+	arg_11_0.click = nil
 
-	slot0:__onDispose()
+	arg_11_0:__onDispose()
 end
 
-return slot0
+return var_0_0

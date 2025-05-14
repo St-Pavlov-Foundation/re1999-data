@@ -1,725 +1,820 @@
-module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.view.LengZhou6GameView", package.seeall)
 
-slot0 = class("LengZhou6GameView", BaseView)
+local var_0_0 = class("LengZhou6GameView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._simageFullBG = gohelper.findChildSingleImage(slot0.viewGO, "#simage_FullBG")
-	slot0._goRight = gohelper.findChild(slot0.viewGO, "#go_Right")
-	slot0._simageGrid = gohelper.findChildSingleImage(slot0.viewGO, "#go_Right/#simage_Grid")
-	slot0._goTimes = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Times")
-	slot0._btnLeft = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Right/#go_Times/#btn_Left")
-	slot0._txtTimes = gohelper.findChildText(slot0.viewGO, "#go_Right/#go_Times/#txt_Times")
-	slot0._btnRight = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Right/#go_Times/#btn_Right")
-	slot0._goChessBG = gohelper.findChild(slot0.viewGO, "#go_Right/#go_ChessBG")
-	slot0._gochessBoard = gohelper.findChild(slot0.viewGO, "#go_Right/#go_ChessBG/#go_chessBoard")
-	slot0._gochess = gohelper.findChild(slot0.viewGO, "#go_Right/#go_ChessBG/#go_chess")
-	slot0._btnclick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Right/#go_ChessBG/#go_chess/#btn_click")
-	slot0._goChessEffect = gohelper.findChild(slot0.viewGO, "#go_Right/#go_ChessEffect")
-	slot0._goLoading = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Loading")
-	slot0._sliderloading = gohelper.findChildSlider(slot0.viewGO, "#go_Right/#go_Loading/#slider_loading")
-	slot0._goContinue = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Continue")
-	slot0._simageMask = gohelper.findChildSingleImage(slot0.viewGO, "#go_Right/#go_Continue/#simage_Mask")
-	slot0._btnContinue = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_Right/#go_Continue/#btn_Continue")
-	slot0._goMask = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Mask")
-	slot0._goAssess = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Assess")
-	slot0._imageAssess = gohelper.findChildImage(slot0.viewGO, "#go_Right/#go_Assess/#image_Assess")
-	slot0._goAssess2 = gohelper.findChild(slot0.viewGO, "#go_Right/#go_Assess2")
-	slot0._imageAssess2 = gohelper.findChildImage(slot0.viewGO, "#go_Right/#go_Assess2/#image_Assess2")
-	slot0._txtNum = gohelper.findChildText(slot0.viewGO, "#go_Right/#go_Assess2/#txt_Num")
-	slot0._goEnemy = gohelper.findChild(slot0.viewGO, "Left/#go_Enemy")
-	slot0._txtenemySkillTitle = gohelper.findChildText(slot0.viewGO, "Left/#go_Enemy/#txt_enemy_SkillTitle")
-	slot0._imageEnemyHeadIcon = gohelper.findChildImage(slot0.viewGO, "Left/#go_Enemy/Head/#image_Enemy_HeadIcon")
-	slot0._txtEnemyLife = gohelper.findChildText(slot0.viewGO, "Left/#go_Enemy/Life/#txt_EnemyLife")
-	slot0._goTarget = gohelper.findChild(slot0.viewGO, "Left/#go_Target")
-	slot0._simageHeadIcon = gohelper.findChildSingleImage(slot0.viewGO, "Left/#go_Target/go_Head/#simage_HeadIcon")
-	slot0._txtendlessnum = gohelper.findChildText(slot0.viewGO, "Left/#go_Target/go_Endless/#txt_endless_num")
-	slot0._goSelf = gohelper.findChild(slot0.viewGO, "Left/#go_Self")
-	slot0._simagePlayerHeadIcon = gohelper.findChildSingleImage(slot0.viewGO, "Left/#go_Self/Head/#simage_Player_HeadIcon")
-	slot0._txtSelfLife = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/Life/#txt_SelfLife")
-	slot0._btnskillDescClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "Left/#go_Self/#btn_skillDescClose")
-	slot0._goChooseSkillTips = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_ChooseSkillTips")
-	slot0._goUseSkillTips = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips")
-	slot0._txtSkillDescr = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr")
-	slot0._txtSkillName = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/#txt_SkillName")
-	slot0._txtRound = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/#txt_Round")
-	slot0._btnuseSkill = gohelper.findChildButtonWithAudio(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/Title/#btn_useSkill")
-	slot0._goEnemySkillTips = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_EnemySkillTips")
-	slot0._txtEnemySkillDescr = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_EnemySkillTips/image_TipsBG/#txt_Enemy_SkillDescr")
-	slot0._txtEnemySkillName = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_EnemySkillTips/image_TipsBG/#txt_Enemy_SkillDescr/#txt_Enemy_SkillName")
-	slot0._goEnemyBuffTips = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_EnemyBuffTips")
-	slot0._txtEnemyBuffDescr = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_EnemyBuffTips/image_TipsBG/#txt_Enemy_BuffDescr")
-	slot0._txtEnemyBuffName = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_EnemyBuffTips/image_TipsBG/#txt_Enemy_BuffDescr/#txt_Enemy_BuffName")
-	slot0._goPlayerBuffTips = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_PlayerBuffTips")
-	slot0._txtPlayerBuffDescr = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_PlayerBuffTips/image_TipsBG/#txt_Player_BuffDescr")
-	slot0._txtPlayerBuffName = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/#go_PlayerBuffTips/image_TipsBG/#txt_Player_BuffDescr/#txt_Player_BuffName")
-	slot0._goCombos = gohelper.findChild(slot0.viewGO, "#go_Combos")
-	slot0._imageComboFire = gohelper.findChildImage(slot0.viewGO, "#go_Combos/#image_ComboFire")
-	slot0._txtComboNum = gohelper.findChildText(slot0.viewGO, "#go_Combos/#txt_ComboNum")
-	slot0._txtComboNum1 = gohelper.findChildText(slot0.viewGO, "#go_Combos/#txt_ComboNum1")
-	slot0._goChangeTips = gohelper.findChild(slot0.viewGO, "#go_ChangeTips")
-	slot0._goSkillRelease = gohelper.findChild(slot0.viewGO, "#go_SkillRelease")
-	slot0._gorectMask = gohelper.findChild(slot0.viewGO, "#go_SkillRelease/#go_rectMask")
-	slot0._txtskillTipDesc = gohelper.findChildText(slot0.viewGO, "#go_SkillRelease/#txt_skillTipDesc")
-	slot0._gobtns = gohelper.findChild(slot0.viewGO, "#go_btns")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
+	arg_1_0._goRight = gohelper.findChild(arg_1_0.viewGO, "#go_Right")
+	arg_1_0._simageGrid = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_Right/#simage_Grid")
+	arg_1_0._goTimes = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Times")
+	arg_1_0._btnLeft = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Right/#go_Times/#btn_Left")
+	arg_1_0._txtTimes = gohelper.findChildText(arg_1_0.viewGO, "#go_Right/#go_Times/#txt_Times")
+	arg_1_0._btnRight = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Right/#go_Times/#btn_Right")
+	arg_1_0._goChessBG = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_ChessBG")
+	arg_1_0._gochessBoard = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_ChessBG/#go_chessBoard")
+	arg_1_0._gochess = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_ChessBG/#go_chess")
+	arg_1_0._btnclick = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Right/#go_ChessBG/#go_chess/#btn_click")
+	arg_1_0._goChessEffect = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_ChessEffect")
+	arg_1_0._goLoading = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Loading")
+	arg_1_0._sliderloading = gohelper.findChildSlider(arg_1_0.viewGO, "#go_Right/#go_Loading/#slider_loading")
+	arg_1_0._goContinue = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Continue")
+	arg_1_0._simageMask = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_Right/#go_Continue/#simage_Mask")
+	arg_1_0._btnContinue = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_Right/#go_Continue/#btn_Continue")
+	arg_1_0._goMask = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Mask")
+	arg_1_0._goAssess = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Assess")
+	arg_1_0._imageAssess = gohelper.findChildImage(arg_1_0.viewGO, "#go_Right/#go_Assess/#image_Assess")
+	arg_1_0._goAssess2 = gohelper.findChild(arg_1_0.viewGO, "#go_Right/#go_Assess2")
+	arg_1_0._imageAssess2 = gohelper.findChildImage(arg_1_0.viewGO, "#go_Right/#go_Assess2/#image_Assess2")
+	arg_1_0._txtNum = gohelper.findChildText(arg_1_0.viewGO, "#go_Right/#go_Assess2/#txt_Num")
+	arg_1_0._goEnemy = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Enemy")
+	arg_1_0._txtenemySkillTitle = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Enemy/#txt_enemy_SkillTitle")
+	arg_1_0._imageEnemyHeadIcon = gohelper.findChildImage(arg_1_0.viewGO, "Left/#go_Enemy/Head/#image_Enemy_HeadIcon")
+	arg_1_0._txtEnemyLife = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Enemy/Life/#txt_EnemyLife")
+	arg_1_0._goTarget = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Target")
+	arg_1_0._simageHeadIcon = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/#go_Target/go_Head/#simage_HeadIcon")
+	arg_1_0._txtendlessnum = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Target/go_Endless/#txt_endless_num")
+	arg_1_0._goSelf = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self")
+	arg_1_0._simagePlayerHeadIcon = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/#go_Self/Head/#simage_Player_HeadIcon")
+	arg_1_0._txtSelfLife = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/Life/#txt_SelfLife")
+	arg_1_0._btnskillDescClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#go_Self/#btn_skillDescClose")
+	arg_1_0._goChooseSkillTips = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self/#go_ChooseSkillTips")
+	arg_1_0._goUseSkillTips = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self/#go_UseSkillTips")
+	arg_1_0._txtSkillDescr = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr")
+	arg_1_0._txtSkillName = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/#txt_SkillName")
+	arg_1_0._txtRound = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/#txt_Round")
+	arg_1_0._btnuseSkill = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/Title/#btn_useSkill")
+	arg_1_0._goEnemySkillTips = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self/#go_EnemySkillTips")
+	arg_1_0._txtEnemySkillDescr = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_EnemySkillTips/image_TipsBG/#txt_Enemy_SkillDescr")
+	arg_1_0._txtEnemySkillName = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_EnemySkillTips/image_TipsBG/#txt_Enemy_SkillDescr/#txt_Enemy_SkillName")
+	arg_1_0._goEnemyBuffTips = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self/#go_EnemyBuffTips")
+	arg_1_0._txtEnemyBuffDescr = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_EnemyBuffTips/image_TipsBG/#txt_Enemy_BuffDescr")
+	arg_1_0._txtEnemyBuffName = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_EnemyBuffTips/image_TipsBG/#txt_Enemy_BuffDescr/#txt_Enemy_BuffName")
+	arg_1_0._goPlayerBuffTips = gohelper.findChild(arg_1_0.viewGO, "Left/#go_Self/#go_PlayerBuffTips")
+	arg_1_0._txtPlayerBuffDescr = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_PlayerBuffTips/image_TipsBG/#txt_Player_BuffDescr")
+	arg_1_0._txtPlayerBuffName = gohelper.findChildText(arg_1_0.viewGO, "Left/#go_Self/#go_PlayerBuffTips/image_TipsBG/#txt_Player_BuffDescr/#txt_Player_BuffName")
+	arg_1_0._goCombos = gohelper.findChild(arg_1_0.viewGO, "#go_Combos")
+	arg_1_0._imageComboFire = gohelper.findChildImage(arg_1_0.viewGO, "#go_Combos/#image_ComboFire")
+	arg_1_0._txtComboNum = gohelper.findChildText(arg_1_0.viewGO, "#go_Combos/#txt_ComboNum")
+	arg_1_0._txtComboNum1 = gohelper.findChildText(arg_1_0.viewGO, "#go_Combos/#txt_ComboNum1")
+	arg_1_0._goChangeTips = gohelper.findChild(arg_1_0.viewGO, "#go_ChangeTips")
+	arg_1_0._goSkillRelease = gohelper.findChild(arg_1_0.viewGO, "#go_SkillRelease")
+	arg_1_0._gorectMask = gohelper.findChild(arg_1_0.viewGO, "#go_SkillRelease/#go_rectMask")
+	arg_1_0._txtskillTipDesc = gohelper.findChildText(arg_1_0.viewGO, "#go_SkillRelease/#txt_skillTipDesc")
+	arg_1_0._gobtns = gohelper.findChild(arg_1_0.viewGO, "#go_btns")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnskillDescClose:AddClickListener(slot0._btnskillDescCloseOnClick, slot0)
-	slot0._btnuseSkill:AddClickListener(slot0._btnuseSkillOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnskillDescClose:AddClickListener(arg_2_0._btnskillDescCloseOnClick, arg_2_0)
+	arg_2_0._btnuseSkill:AddClickListener(arg_2_0._btnuseSkillOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnskillDescClose:RemoveClickListener()
-	slot0._btnuseSkill:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnskillDescClose:RemoveClickListener()
+	arg_3_0._btnuseSkill:RemoveClickListener()
 end
 
-function slot0._btnskillDescCloseOnClick(slot0)
-	slot0:closeSkillTips()
-	slot0:closeChooseSkillTips()
-	slot0:closeBuffTips()
+function var_0_0._btnskillDescCloseOnClick(arg_4_0)
+	arg_4_0:closeSkillTips()
+	arg_4_0:closeChooseSkillTips()
+	arg_4_0:closeBuffTips()
 end
 
-function slot0._btnuseSkillOnClick(slot0)
-	if slot0._playerCurSkillCanUse then
-		slot0:releaseSkill()
+function var_0_0._btnuseSkillOnClick(arg_5_0)
+	if arg_5_0._playerCurSkillCanUse then
+		arg_5_0:releaseSkill()
 	end
 end
 
-slot1 = ZProj.UIEffectsCollection
+local var_0_1 = ZProj.UIEffectsCollection
 
-function slot0._editableInitView(slot0)
-	slot0._goPlayerSkillParent = gohelper.findChild(slot0.viewGO, "Left/#go_Self/Scroll View/Viewport/Content")
-	slot0._goEnemySkillParent = gohelper.findChild(slot0.viewGO, "Left/#go_Enemy/Scroll View/Viewport/Content")
-	slot0._goPlayerChooseSkillParent = gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_ChooseSkillTips/Scroll View/Viewport/Content")
-	slot0._imageUseSkillEffectCollection = uv0.Get(gohelper.findChild(slot0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/Title/#btn_useSkill"))
-	slot0._combosTr = slot0._goCombos.transform
-	slot0._combosAnim = slot0._goCombos:GetComponent(typeof(UnityEngine.Animator))
-	slot0._goChooseSkillTipsAnim = slot0._goChooseSkillTips:GetComponent(typeof(UnityEngine.Animator))
-	slot0._playerDamageGo = gohelper.findChild(slot0.viewGO, "Left/#go_Self/Life/damage")
-	slot0._playerDamageText = gohelper.findChildText(slot0.viewGO, "Left/#go_Self/Life/damage/x/txtNum")
-	slot0._enemyDamageGo = gohelper.findChild(slot0.viewGO, "Left/#go_Enemy/Life/damage")
-	slot0._enemyDamageText = gohelper.findChildText(slot0.viewGO, "Left/#go_Enemy/Life/damage/x/txtNum")
+function var_0_0._editableInitView(arg_6_0)
+	arg_6_0._goPlayerSkillParent = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Self/Scroll View/Viewport/Content")
+	arg_6_0._goEnemySkillParent = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Enemy/Scroll View/Viewport/Content")
+	arg_6_0._goPlayerChooseSkillParent = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Self/#go_ChooseSkillTips/Scroll View/Viewport/Content")
 
-	gohelper.setActive(slot0._playerDamageGo, false)
-	gohelper.setActive(slot0._enemyDamageGo, false)
+	local var_6_0 = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Self/#go_UseSkillTips/image_TipsBG/#txt_SkillDescr/Title/#btn_useSkill")
 
-	slot0._enemyBuffParent = gohelper.findChild(slot0.viewGO, "Left/#go_Enemy/Life/EnemyBuff")
-	slot0._playerBuffParent = gohelper.findChild(slot0.viewGO, "Left/#go_Self/Life/PlayerBuff")
-	slot0._playerAni = slot0._goSelf:GetComponent(gohelper.Type_Animator)
-	slot0._enemyAni = slot0._goEnemy:GetComponent(gohelper.Type_Animator)
+	arg_6_0._imageUseSkillEffectCollection = var_0_1.Get(var_6_0)
+	arg_6_0._combosTr = arg_6_0._goCombos.transform
+	arg_6_0._combosAnim = arg_6_0._goCombos:GetComponent(typeof(UnityEngine.Animator))
+	arg_6_0._goChooseSkillTipsAnim = arg_6_0._goChooseSkillTips:GetComponent(typeof(UnityEngine.Animator))
+	arg_6_0._playerDamageGo = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Self/Life/damage")
+	arg_6_0._playerDamageText = gohelper.findChildText(arg_6_0.viewGO, "Left/#go_Self/Life/damage/x/txtNum")
+	arg_6_0._enemyDamageGo = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Enemy/Life/damage")
+	arg_6_0._enemyDamageText = gohelper.findChildText(arg_6_0.viewGO, "Left/#go_Enemy/Life/damage/x/txtNum")
+
+	gohelper.setActive(arg_6_0._playerDamageGo, false)
+	gohelper.setActive(arg_6_0._enemyDamageGo, false)
+
+	arg_6_0._enemyBuffParent = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Enemy/Life/EnemyBuff")
+	arg_6_0._playerBuffParent = gohelper.findChild(arg_6_0.viewGO, "Left/#go_Self/Life/PlayerBuff")
+	arg_6_0._playerAni = arg_6_0._goSelf:GetComponent(gohelper.Type_Animator)
+	arg_6_0._enemyAni = arg_6_0._goEnemy:GetComponent(gohelper.Type_Animator)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_7_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:initView()
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateGameInfo, slot0.updateGameInfo, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateEliminateDamage, slot0.updateEliminateDamage, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateEnemySkill, slot0.updateEnemySkill, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdatePlayerSkill, slot0.updatePlayerSkill, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.OnClickSkill, slot0.onClickSkill, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.FinishReleaseSkill, slot0.cancelPlayerSkill, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UseEnemySkill, slot0.useEnemySkill, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.ShowCombos, slot0.showCombos, slot0)
-	slot0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.ShowEnemyEffect, slot0.showEnemyEffect, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.EnemySkillRound, slot0.enemySkillRound, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.OnEndlessChangeSelectState, slot0.endLessModelRefreshView, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.ShowSelectView, slot0.showSelectView, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.PlayerSelectFinish, slot0._playerSkillSelectFinish, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.GameReStart, slot0._gameReStart, slot0)
-	slot0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.RefreshBuffItem, slot0.refreshBuffItem, slot0)
-	slot0:addEventCb(LengZhou6Controller.instance, LengZhou6Event.OnClickBuff, slot0.onClickBuff, slot0)
+function var_0_0.onOpen(arg_8_0)
+	arg_8_0:initView()
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateGameInfo, arg_8_0.updateGameInfo, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateEliminateDamage, arg_8_0.updateEliminateDamage, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdateEnemySkill, arg_8_0.updateEnemySkill, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UpdatePlayerSkill, arg_8_0.updatePlayerSkill, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.OnClickSkill, arg_8_0.onClickSkill, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.FinishReleaseSkill, arg_8_0.cancelPlayerSkill, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.UseEnemySkill, arg_8_0.useEnemySkill, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.ShowCombos, arg_8_0.showCombos, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6EliminateController.instance, LengZhou6Event.ShowEnemyEffect, arg_8_0.showEnemyEffect, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.EnemySkillRound, arg_8_0.enemySkillRound, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.OnEndlessChangeSelectState, arg_8_0.endLessModelRefreshView, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.ShowSelectView, arg_8_0.showSelectView, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.PlayerSelectFinish, arg_8_0._playerSkillSelectFinish, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.GameReStart, arg_8_0._gameReStart, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6GameController.instance, LengZhou6Event.RefreshBuffItem, arg_8_0.refreshBuffItem, arg_8_0)
+	arg_8_0:addEventCb(LengZhou6Controller.instance, LengZhou6Event.OnClickBuff, arg_8_0.onClickBuff, arg_8_0)
 end
 
-function slot0.initView(slot0)
+function var_0_0.initView(arg_9_0)
 	AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_level_open)
 
-	slot2 = LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite
+	local var_9_0 = LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite
 
-	slot0:initHeroAndEnemyIcon()
-	slot0:updateGameInfo()
-	slot0:updateEliminateDamage()
-	slot0:initPlayerSKillView(not slot2)
-	slot0:initEnemySKillView()
-	slot0:updatePlayerSkill()
-	slot0:enemySkillRound()
-	gohelper.setActive(slot0._goUseSkillTips, false)
-	gohelper.setActive(slot0._btnskillDescClose.gameObject, false)
-	gohelper.setActive(slot0._goSelected, false)
-	gohelper.setActive(slot0._goTarget, slot2)
+	arg_9_0:initHeroAndEnemyIcon()
+	arg_9_0:updateGameInfo()
+	arg_9_0:updateEliminateDamage()
+	arg_9_0:initPlayerSKillView(not var_9_0)
+	arg_9_0:initEnemySKillView()
+	arg_9_0:updatePlayerSkill()
+	arg_9_0:enemySkillRound()
+	gohelper.setActive(arg_9_0._goUseSkillTips, false)
+	gohelper.setActive(arg_9_0._btnskillDescClose.gameObject, false)
+	gohelper.setActive(arg_9_0._goSelected, false)
+	gohelper.setActive(arg_9_0._goTarget, var_9_0)
 
-	if slot2 then
-		slot0:initSelectView()
+	if var_9_0 then
+		arg_9_0:initSelectView()
 	end
 
-	slot0:closeChooseSkillTips()
-	slot0:endLessModelRefreshView(true)
+	arg_9_0:closeChooseSkillTips()
+	arg_9_0:endLessModelRefreshView(true)
 end
 
-function slot0.initHeroAndEnemyIcon(slot0)
-	UISpriteSetMgr.instance:setHisSaBethSprite(slot0._imageEnemyHeadIcon, LengZhou6Config.instance:getEliminateBattleCostStr(25))
-	slot0._simagePlayerHeadIcon:LoadImage(ResUrl.getHeadIconSmall(LengZhou6Config.instance:getEliminateBattleCostStr(24)))
+function var_0_0.initHeroAndEnemyIcon(arg_10_0)
+	local var_10_0 = LengZhou6Config.instance:getEliminateBattleCostStr(24)
+	local var_10_1 = LengZhou6Config.instance:getEliminateBattleCostStr(25)
+
+	UISpriteSetMgr.instance:setHisSaBethSprite(arg_10_0._imageEnemyHeadIcon, var_10_1)
+	arg_10_0._simagePlayerHeadIcon:LoadImage(ResUrl.getHeadIconSmall(var_10_0))
 end
 
-slot2 = ""
+local var_0_2 = ""
 
-function slot0.updateGameInfo(slot0)
-	slot0._txtEnemyLife.text = LengZhou6GameModel.instance:getEnemy():getHp()
-	slot0._txtSelfLife.text = LengZhou6GameModel.instance:getPlayer():getHp()
+function var_0_0.updateGameInfo(arg_11_0)
+	local var_11_0 = LengZhou6GameModel.instance:getPlayer()
+	local var_11_1 = LengZhou6GameModel.instance:getEnemy()
 
-	gohelper.setActive(slot0._goCombos, false)
+	arg_11_0._txtEnemyLife.text = var_11_1:getHp()
+	arg_11_0._txtSelfLife.text = var_11_0:getHp()
 
-	slot4 = LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.normal
-	slot0._txtendlessnum.text = LengZhou6GameModel.instance:getEndLessModelLayer() or LengZhou6Enum.DefaultEndLessBeginRound
+	gohelper.setActive(arg_11_0._goCombos, false)
 
-	slot0:refreshBuffItem()
+	local var_11_2
+
+	var_11_2 = LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.normal
+	arg_11_0._txtendlessnum.text = LengZhou6GameModel.instance:getEndLessModelLayer() or LengZhou6Enum.DefaultEndLessBeginRound
+
+	arg_11_0:refreshBuffItem()
 end
 
-function slot0.enemySkillRound(slot0, slot1)
-	if slot1 == nil then
-		slot1 = LengZhou6GameModel.instance:getEnemy():getAction():calCurResidueCd()
+function var_0_0.enemySkillRound(arg_12_0, arg_12_1)
+	if arg_12_1 == nil then
+		arg_12_1 = LengZhou6GameModel.instance:getEnemy():getAction():calCurResidueCd()
 	end
 
-	slot3 = math.max(slot1 - 1, 0)
+	local var_12_0 = arg_12_1 <= 1
+	local var_12_1 = math.max(arg_12_1 - 1, 0)
 
-	if slot1 <= 1 then
-		slot0._txtenemySkillTitle.text = luaLang("lengZhou6_enemy_skill_title_2")
+	if var_12_0 then
+		arg_12_0._txtenemySkillTitle.text = luaLang("lengZhou6_enemy_skill_title_2")
 	else
-		slot0._txtenemySkillTitle.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("lengZhou6_enemy_skill_title"), slot3)
+		arg_12_0._txtenemySkillTitle.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("lengZhou6_enemy_skill_title"), var_12_1)
 	end
 
-	if slot0._enemySkillList == nil then
+	if arg_12_0._enemySkillList == nil then
 		return
 	end
 
-	for slot7 = 1, #slot0._enemySkillList do
-		if slot0._enemySkillList[slot7] then
-			slot8:showEnemySkillRound(slot2)
+	for iter_12_0 = 1, #arg_12_0._enemySkillList do
+		local var_12_2 = arg_12_0._enemySkillList[iter_12_0]
+
+		if var_12_2 then
+			var_12_2:showEnemySkillRound(var_12_0)
 		end
 	end
 end
 
-function slot0.endLessModelRefreshView(slot0, slot1)
-	gohelper.setActive(slot0._goChangeTips, false)
+function var_0_0.endLessModelRefreshView(arg_13_0, arg_13_1)
+	local var_13_0 = LengZhou6GameModel.instance:getBattleModel()
 
-	if LengZhou6GameModel.instance:getBattleModel() == LengZhou6Enum.BattleModel.infinite then
-		slot3 = LengZhou6GameModel.instance:getEndLessBattleProgress()
-		slot4 = 0.1
+	gohelper.setActive(arg_13_0._goChangeTips, false)
 
-		if slot1 then
-			slot4 = LengZhou6Enum.openViewAniTime
+	if var_13_0 == LengZhou6Enum.BattleModel.infinite then
+		local var_13_1 = LengZhou6GameModel.instance:getEndLessBattleProgress()
+		local var_13_2 = 0.1
+
+		if arg_13_1 then
+			var_13_2 = LengZhou6Enum.openViewAniTime
 		end
 
-		TaskDispatcher.runDelay(slot0.showChangeTips, slot0, slot4)
+		TaskDispatcher.runDelay(arg_13_0.showChangeTips, arg_13_0, var_13_2)
 
-		if slot3 == LengZhou6Enum.BattleProgress.selectFinish then
-			slot0:updateGameInfo()
+		local var_13_3 = var_13_1 == LengZhou6Enum.BattleProgress.selectFinish
+
+		if var_13_3 then
+			arg_13_0:updateGameInfo()
 		end
 
-		slot0:initPlayerSKillView(slot5)
-		slot0:closeSkillTips()
-		slot0:cancelPlayerSkill()
-		slot0:updateEnemySkill(true)
-		slot0:enemySkillRound()
+		arg_13_0:initPlayerSKillView(var_13_3)
+		arg_13_0:closeSkillTips()
+		arg_13_0:cancelPlayerSkill()
+		arg_13_0:updateEnemySkill(true)
+		arg_13_0:enemySkillRound()
 	end
 end
 
-function slot0.showChangeTips(slot0)
-	TaskDispatcher.cancelTask(slot0.showChangeTips, slot0)
-	gohelper.setActive(slot0._goChangeTips, LengZhou6GameModel.instance:getEndLessBattleProgress() == LengZhou6Enum.BattleProgress.selectSkill)
-	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.EnterGameLevel, LengZhou6Model.instance:getCurEpisodeId())
+function var_0_0.showChangeTips(arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0.showChangeTips, arg_14_0)
+
+	local var_14_0 = LengZhou6GameModel.instance:getEndLessBattleProgress()
+
+	gohelper.setActive(arg_14_0._goChangeTips, var_14_0 == LengZhou6Enum.BattleProgress.selectSkill)
+
+	local var_14_1 = LengZhou6Model.instance:getCurEpisodeId()
+
+	LengZhou6Controller.instance:dispatchEvent(LengZhou6Event.EnterGameLevel, var_14_1)
 end
 
-function slot0.updateEliminateDamage(slot0)
-	slot3 = false
+function var_0_0.updateEliminateDamage(arg_15_0)
+	local var_15_0 = LengZhou6GameModel.instance:getEnemy():getCurDiff()
+	local var_15_1 = false
 
-	if LengZhou6GameModel.instance:getEnemy():getCurDiff() and math.abs(slot2) > 0 then
-		slot0:setCombosActive(true)
+	if var_15_0 and math.abs(var_15_0) > 0 then
+		arg_15_0:setCombosActive(true)
 
-		slot0._enemyDamageText.text = "-" .. math.abs(slot2)
+		arg_15_0._enemyDamageText.text = "-" .. math.abs(var_15_0)
 
-		gohelper.setActive(slot0._enemyDamageGo, true)
-		slot0._enemyAni:Play("damage", 0, 0)
+		gohelper.setActive(arg_15_0._enemyDamageGo, true)
+		arg_15_0._enemyAni:Play("damage", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_hp)
 
-		slot3 = true
+		var_15_1 = true
 	else
-		slot0:setCombosActive(false)
+		arg_15_0:setCombosActive(false)
 	end
 
-	if LengZhou6GameModel.instance:getPlayer():getCurDiff() and math.abs(slot5) > 0 then
-		slot0._playerDamageText.text = "+" .. math.abs(slot5)
+	local var_15_2 = LengZhou6GameModel.instance:getPlayer():getCurDiff()
 
-		gohelper.setActive(slot0._playerDamageGo, true)
+	if var_15_2 and math.abs(var_15_2) > 0 then
+		arg_15_0._playerDamageText.text = "+" .. math.abs(var_15_2)
 
-		slot3 = true
+		gohelper.setActive(arg_15_0._playerDamageGo, true)
+
+		var_15_1 = true
 	end
 
-	if slot3 then
-		TaskDispatcher.cancelTask(slot0._onMoveEnd, slot0)
-		TaskDispatcher.runDelay(slot0._onMoveEnd, slot0, EliminateEnum_2_7.UpdateDamageStepTime)
+	if var_15_1 then
+		TaskDispatcher.cancelTask(arg_15_0._onMoveEnd, arg_15_0)
+		TaskDispatcher.runDelay(arg_15_0._onMoveEnd, arg_15_0, EliminateEnum_2_7.UpdateDamageStepTime)
 	else
-		slot0:_onMoveEnd()
+		arg_15_0:_onMoveEnd()
 	end
 end
 
-function slot0._onMoveEnd(slot0)
-	gohelper.setActive(slot0._enemyDamageGo, false)
-	gohelper.setActive(slot0._playerDamageGo, false)
-	TaskDispatcher.cancelTask(slot0._onMoveEnd, slot0)
-	slot0:setCombosActive(false)
+function var_0_0._onMoveEnd(arg_16_0)
+	gohelper.setActive(arg_16_0._enemyDamageGo, false)
+	gohelper.setActive(arg_16_0._playerDamageGo, false)
+	TaskDispatcher.cancelTask(arg_16_0._onMoveEnd, arg_16_0)
+	arg_16_0:setCombosActive(false)
 
-	slot0._txtEnemyLife.text = LengZhou6GameModel.instance:getEnemy():getHp()
-	slot0._txtSelfLife.text = LengZhou6GameModel.instance:getPlayer():getHp()
+	local var_16_0 = LengZhou6GameModel.instance:getEnemy()
 
-	slot0._enemyAni:Play("idle", 0, 0)
+	arg_16_0._txtEnemyLife.text = var_16_0:getHp()
+
+	local var_16_1 = LengZhou6GameModel.instance:getPlayer()
+
+	arg_16_0._txtSelfLife.text = var_16_1:getHp()
+
+	arg_16_0._enemyAni:Play("idle", 0, 0)
 end
 
-function slot0.showCombos(slot0, slot1)
-	slot2 = slot1 or 0
-	slot4 = LengZhou6Config.instance:getComboThreshold() <= slot2
-	slot0._txtComboNum.text = slot2
-	slot0._txtComboNum1.text = slot2
+function var_0_0.showCombos(arg_17_0, arg_17_1)
+	local var_17_0 = arg_17_1 or 0
+	local var_17_1 = var_17_0 >= LengZhou6Config.instance:getComboThreshold()
 
-	if slot0._comboActive then
-		slot0._combosAnim:Play("up", 0, 0)
+	arg_17_0._txtComboNum.text = var_17_0
+	arg_17_0._txtComboNum1.text = var_17_0
+
+	if arg_17_0._comboActive then
+		arg_17_0._combosAnim:Play("up", 0, 0)
 	end
 
-	slot0:setCombosActive(slot2 > 0)
-	gohelper.setActive(slot0._imageComboFire.gameObject, slot4)
+	arg_17_0:setCombosActive(var_17_0 > 0)
+	gohelper.setActive(arg_17_0._imageComboFire.gameObject, var_17_1)
 end
 
-function slot0.setCombosActive(slot0, slot1)
-	if slot0._comboActive ~= nil and slot0._comboActive == slot1 then
+function var_0_0.setCombosActive(arg_18_0, arg_18_1)
+	if arg_18_0._comboActive ~= nil and arg_18_0._comboActive == arg_18_1 then
 		return
 	end
 
-	gohelper.setActive(slot0._goCombos, slot1)
+	gohelper.setActive(arg_18_0._goCombos, arg_18_1)
 
-	slot0._comboActive = slot1
+	arg_18_0._comboActive = arg_18_1
 end
 
-function slot0.initPlayerSKillView(slot0, slot1)
-	if slot0._playerSkillList == nil then
-		slot0._playerSkillList = slot0:getUserDataTb_()
+function var_0_0.initPlayerSKillView(arg_19_0, arg_19_1)
+	if arg_19_0._playerSkillList == nil then
+		arg_19_0._playerSkillList = arg_19_0:getUserDataTb_()
 	end
 
-	slot4 = LengZhou6GameModel.instance:getSelectSkillIdList()
-	slot5 = slot0.viewContainer:getSetting().otherRes[1]
+	local var_19_0 = LengZhou6GameModel.instance:getPlayer():getActiveSkills()
+	local var_19_1 = LengZhou6GameModel.instance:getSelectSkillIdList()
+	local var_19_2 = arg_19_0.viewContainer:getSetting().otherRes[1]
 
-	for slot9 = 1, LengZhou6Enum.PlayerSkillMaxCount do
-		slot10, slot11 = nil
+	for iter_19_0 = 1, LengZhou6Enum.PlayerSkillMaxCount do
+		local var_19_3
+		local var_19_4
 
-		if slot1 then
-			slot10 = LengZhou6GameModel.instance:getPlayer():getActiveSkills()[slot9]
+		if arg_19_1 then
+			var_19_3 = var_19_0[iter_19_0]
 		else
-			slot11 = slot4[slot9]
+			var_19_4 = var_19_1[iter_19_0]
 		end
 
-		if slot0._playerSkillList[slot9] == nil then
-			slot13 = slot0:getResInst(slot5, slot0._goPlayerSkillParent)
+		local var_19_5 = arg_19_0._playerSkillList[iter_19_0]
 
-			gohelper.setActive(slot13, true)
-			table.insert(slot0._playerSkillList, MonoHelper.addNoUpdateLuaComOnceToGo(slot13, LengZhou6SkillItem))
+		if var_19_5 == nil then
+			local var_19_6 = arg_19_0:getResInst(var_19_2, arg_19_0._goPlayerSkillParent)
+
+			var_19_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_19_6, LengZhou6SkillItem)
+
+			gohelper.setActive(var_19_6, true)
+			table.insert(arg_19_0._playerSkillList, var_19_5)
 		end
 
-		if slot12 ~= nil then
-			slot12:initSkill(slot10, slot9)
+		if var_19_5 ~= nil then
+			var_19_5:initSkill(var_19_3, iter_19_0)
 
-			if slot10 == nil then
-				slot12:initSkillConfigId(slot11)
+			if var_19_3 == nil then
+				var_19_5:initSkillConfigId(var_19_4)
 			end
 
-			slot12:initCamp(LengZhou6Enum.entityCamp.player)
-			slot12:selectIsFinish(slot1)
-			slot12:refreshState()
+			var_19_5:initCamp(LengZhou6Enum.entityCamp.player)
+			var_19_5:selectIsFinish(arg_19_1)
+			var_19_5:refreshState()
 		end
 	end
 end
 
-function slot0.updatePlayerSkill(slot0)
-	if slot0._playerSkillList ~= nil then
-		for slot4 = 1, #slot0._playerSkillList do
-			if slot0._playerSkillList[slot4] then
-				slot5:updateSkillInfo()
+function var_0_0.updatePlayerSkill(arg_20_0)
+	if arg_20_0._playerSkillList ~= nil then
+		for iter_20_0 = 1, #arg_20_0._playerSkillList do
+			local var_20_0 = arg_20_0._playerSkillList[iter_20_0]
+
+			if var_20_0 then
+				var_20_0:updateSkillInfo()
 			end
 		end
 	end
 end
 
-function slot0.initEnemySKillView(slot0)
-	if slot0._enemySkillList == nil then
-		slot0._enemySkillList = slot0:getUserDataTb_()
+function var_0_0.initEnemySKillView(arg_21_0)
+	if arg_21_0._enemySkillList == nil then
+		arg_21_0._enemySkillList = arg_21_0:getUserDataTb_()
 	end
 
-	slot2 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
+	local var_21_0 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
+	local var_21_1 = arg_21_0.viewContainer:getSetting().otherRes[1]
 
-	for slot7 = 1, 3 do
-		slot8 = slot2 and slot2[slot7]
+	for iter_21_0 = 1, 3 do
+		local var_21_2 = var_21_0 and var_21_0[iter_21_0]
+		local var_21_3 = arg_21_0._enemySkillList[iter_21_0]
 
-		if slot0._enemySkillList[slot7] == nil then
-			slot10 = slot0:getResInst(slot0.viewContainer:getSetting().otherRes[1], slot0._goEnemySkillParent)
-			slot9 = MonoHelper.addNoUpdateLuaComOnceToGo(slot10, LengZhou6SkillItem)
+		if var_21_3 == nil then
+			local var_21_4 = arg_21_0:getResInst(var_21_1, arg_21_0._goEnemySkillParent)
 
-			gohelper.setActive(slot10, true)
+			var_21_3 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_4, LengZhou6SkillItem)
+
+			gohelper.setActive(var_21_4, true)
 		end
 
-		slot9:initSkill(slot8)
-		slot9:initCamp(LengZhou6Enum.entityCamp.enemy)
-		slot9:refreshState()
-		table.insert(slot0._enemySkillList, slot9)
+		var_21_3:initSkill(var_21_2)
+		var_21_3:initCamp(LengZhou6Enum.entityCamp.enemy)
+		var_21_3:refreshState()
+		table.insert(arg_21_0._enemySkillList, var_21_3)
 	end
 end
 
-function slot0.updateEnemySkill(slot0, slot1)
-	slot3 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
+function var_0_0.updateEnemySkill(arg_22_0, arg_22_1)
+	local var_22_0 = LengZhou6GameModel.instance:getEnemy():getCurSkillList()
 
-	for slot7 = 1, 3 do
-		slot8 = slot3 and slot3[slot7] or nil
-		slot9 = slot0._enemySkillList[slot7]
+	for iter_22_0 = 1, 3 do
+		local var_22_1 = var_22_0 and var_22_0[iter_22_0] or nil
+		local var_22_2 = arg_22_0._enemySkillList[iter_22_0]
 
-		slot9:initSkill(slot8)
-		slot9:refreshState()
+		var_22_2:initSkill(var_22_1)
+		var_22_2:refreshState()
 
-		if slot8 ~= nil and not slot1 then
+		if var_22_1 ~= nil and not arg_22_1 then
 			AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_refresh)
 		end
 	end
 end
 
-function slot0.useEnemySkill(slot0, slot1)
-	for slot5 = 1, #slot0._enemySkillList do
-		slot0._enemySkillList[slot5]:useSkill(slot1)
+function var_0_0.useEnemySkill(arg_23_0, arg_23_1)
+	for iter_23_0 = 1, #arg_23_0._enemySkillList do
+		arg_23_0._enemySkillList[iter_23_0]:useSkill(arg_23_1)
 	end
 end
 
-function slot0.onClickSkill(slot0, slot1)
-	if slot1 == nil then
+function var_0_0.onClickSkill(arg_24_0, arg_24_1)
+	if arg_24_1 == nil then
 		return
 	end
 
-	if slot1:getSkillType() == LengZhou6Enum.SkillType.enemyActive then
-		slot0:_showEnemySkillDesc(slot1)
+	if arg_24_1:getSkillType() == LengZhou6Enum.SkillType.enemyActive then
+		arg_24_0:_showEnemySkillDesc(arg_24_1)
 	else
-		slot0:_showPlayerSkillDesc(slot1)
+		arg_24_0:_showPlayerSkillDesc(arg_24_1)
 	end
 
-	gohelper.setActive(slot0._btnskillDescClose.gameObject, true)
+	gohelper.setActive(arg_24_0._btnskillDescClose.gameObject, true)
 end
 
-function slot0._showEnemySkillDesc(slot0, slot1)
-	if slot1 == nil then
+function var_0_0._showEnemySkillDesc(arg_25_0, arg_25_1)
+	if arg_25_1 == nil then
 		return
 	end
 
-	slot0._txtEnemySkillDescr.text = slot1:getSkillDesc()
-	slot0._txtEnemySkillName.text = slot1:getConfig().name
+	arg_25_0._txtEnemySkillDescr.text = arg_25_1:getSkillDesc()
+	arg_25_0._txtEnemySkillName.text = arg_25_1:getConfig().name
 
-	gohelper.setActive(slot0._goEnemySkillTips, true)
+	gohelper.setActive(arg_25_0._goEnemySkillTips, true)
 end
 
-function slot0._showPlayerSkillDesc(slot0, slot1)
-	slot0._playerCurSkill = slot1
-	slot2 = slot1:getConfig()
-	slot0._txtSkillDescr.text = slot2.desc
-	slot3 = slot1:getCd()
+function var_0_0._showPlayerSkillDesc(arg_26_0, arg_26_1)
+	arg_26_0._playerCurSkill = arg_26_1
 
-	if slot2.type == LengZhou6Enum.SkillType.active then
-		slot0._txtRound.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("lengZhou6_skill_round"), slot1:getConfig().cd)
+	local var_26_0 = arg_26_1:getConfig()
+
+	arg_26_0._txtSkillDescr.text = var_26_0.desc
+
+	local var_26_1 = arg_26_1:getCd()
+	local var_26_2 = var_26_0.type == LengZhou6Enum.SkillType.active
+
+	if var_26_2 then
+		arg_26_0._txtRound.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("lengZhou6_skill_round"), arg_26_1:getConfig().cd)
 	else
-		slot0._txtRound.text = luaLang("lengZhou6_skill_round_end")
+		arg_26_0._txtRound.text = luaLang("lengZhou6_skill_round_end")
 	end
 
-	slot0._txtSkillName.text = slot2.name
-	slot0._playerCurSkillCanUse = slot3 == 0 and slot4
+	arg_26_0._txtSkillName.text = var_26_0.name
+	arg_26_0._playerCurSkillCanUse = var_26_1 == 0 and var_26_2
 
-	if slot0._imageUseSkillEffectCollection ~= nil then
-		slot0._imageUseSkillEffectCollection:SetGray(not slot0._playerCurSkillCanUse)
+	if arg_26_0._imageUseSkillEffectCollection ~= nil then
+		arg_26_0._imageUseSkillEffectCollection:SetGray(not arg_26_0._playerCurSkillCanUse)
 	end
 
-	gohelper.setActive(slot0._btnuseSkill.gameObject, slot4)
-	gohelper.setActive(slot0._goUseSkillTips, true)
+	gohelper.setActive(arg_26_0._btnuseSkill.gameObject, var_26_2)
+	gohelper.setActive(arg_26_0._goUseSkillTips, true)
 end
 
-function slot0.closeSkillTips(slot0)
-	gohelper.setActive(slot0._goUseSkillTips, false)
-	gohelper.setActive(slot0._btnskillDescClose.gameObject, false)
-	gohelper.setActive(slot0._goEnemySkillTips, false)
+function var_0_0.closeSkillTips(arg_27_0)
+	gohelper.setActive(arg_27_0._goUseSkillTips, false)
+	gohelper.setActive(arg_27_0._btnskillDescClose.gameObject, false)
+	gohelper.setActive(arg_27_0._goEnemySkillTips, false)
 end
 
-function slot0.releaseSkill(slot0)
-	if slot0._playerCurSkill ~= nil then
-		if slot0._playerCurSkill:paramIsFull() then
-			slot0._playerCurSkill:execute()
+function var_0_0.releaseSkill(arg_28_0)
+	if arg_28_0._playerCurSkill ~= nil then
+		if arg_28_0._playerCurSkill:paramIsFull() then
+			arg_28_0._playerCurSkill:execute()
 
-			slot0._playerCurSkill = nil
+			arg_28_0._playerCurSkill = nil
 		else
-			slot0:initCharacterSkill()
-			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ReleaseSkill, slot0._playerCurSkill)
+			arg_28_0:initCharacterSkill()
+			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.ReleaseSkill, arg_28_0._playerCurSkill)
 		end
 	end
 
-	slot0:closeSkillTips()
+	arg_28_0:closeSkillTips()
 end
 
-function slot0.cancelPlayerSkill(slot0)
-	slot0._playerCurSkill = nil
+function var_0_0.cancelPlayerSkill(arg_29_0)
+	arg_29_0._playerCurSkill = nil
 
 	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.CancelSkill)
-	slot0:hideSkillRelease()
+	arg_29_0:hideSkillRelease()
 end
 
-function slot0.hideSkillRelease(slot0)
-	if slot0._skillReleaseView ~= nil then
-		gohelper.setActive(slot0._goSkillRelease, false)
+function var_0_0.hideSkillRelease(arg_30_0)
+	if arg_30_0._skillReleaseView ~= nil then
+		gohelper.setActive(arg_30_0._goSkillRelease, false)
 	end
 end
 
-function slot0.initCharacterSkill(slot0)
-	if slot0._skillReleaseView == nil then
-		slot0._skillReleaseView = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._goSkillRelease, LengZhou6EliminatePlayerSkill)
+function var_0_0.initCharacterSkill(arg_31_0)
+	if arg_31_0._skillReleaseView == nil then
+		arg_31_0._skillReleaseView = MonoHelper.addNoUpdateLuaComOnceToGo(arg_31_0._goSkillRelease, LengZhou6EliminatePlayerSkill)
 	end
 
-	slot1 = slot0._goChessBG.transform
+	local var_31_0 = arg_31_0._goChessBG.transform
+	local var_31_1 = recthelper.getWidth(var_31_0)
+	local var_31_2 = recthelper.getHeight(var_31_0)
 
-	slot0._skillReleaseView:setTargetTrAndHoleSize(slot1, recthelper.getWidth(slot1), recthelper.getHeight(slot1), -56, 325)
-	slot0._skillReleaseView:setClickCb(slot0.cancelPlayerSkill, slot0)
-	gohelper.setActive(slot0._goSkillRelease, true)
+	arg_31_0._skillReleaseView:setTargetTrAndHoleSize(var_31_0, var_31_1, var_31_2, -56, 325)
+	arg_31_0._skillReleaseView:setClickCb(arg_31_0.cancelPlayerSkill, arg_31_0)
+	gohelper.setActive(arg_31_0._goSkillRelease, true)
 end
 
-function slot0.initSelectView(slot0)
-	if slot0._allSelectSkillItemList == nil then
-		slot0._allSelectSkillItemList = slot0:getUserDataTb_()
+function var_0_0.initSelectView(arg_32_0)
+	if arg_32_0._allSelectSkillItemList == nil then
+		arg_32_0._allSelectSkillItemList = arg_32_0:getUserDataTb_()
 	end
 
-	for slot6 = 1, #LengZhou6Config.instance:getPlayerAllSkillId() do
-		slot7 = slot1[slot6]
+	local var_32_0 = LengZhou6Config.instance:getPlayerAllSkillId()
+	local var_32_1 = arg_32_0.viewContainer:getSetting().otherRes[2]
 
-		if slot0._allSelectSkillItemList[slot6] == nil then
-			slot9 = slot0:getResInst(slot0.viewContainer:getSetting().otherRes[2], slot0._goPlayerChooseSkillParent, slot7)
+	for iter_32_0 = 1, #var_32_0 do
+		local var_32_2 = var_32_0[iter_32_0]
+		local var_32_3 = arg_32_0._allSelectSkillItemList[iter_32_0]
 
-			table.insert(slot0._allSelectSkillItemList, MonoHelper.addNoUpdateLuaComOnceToGo(slot9, LengZhou6PlayerSelectSkillItem))
-			gohelper.setActive(slot9, true)
+		if var_32_3 == nil then
+			local var_32_4 = arg_32_0:getResInst(var_32_1, arg_32_0._goPlayerChooseSkillParent, var_32_2)
+
+			var_32_3 = MonoHelper.addNoUpdateLuaComOnceToGo(var_32_4, LengZhou6PlayerSelectSkillItem)
+
+			table.insert(arg_32_0._allSelectSkillItemList, var_32_3)
+			gohelper.setActive(var_32_4, true)
 		end
 
-		slot8:initSkill(slot7)
+		var_32_3:initSkill(var_32_2)
 	end
 end
 
-function slot0.showSelectView(slot0, slot1)
-	if slot0._allSelectSkillItemList == nil or tabletool.len(slot0._allSelectSkillItemList) == 0 then
+function var_0_0.showSelectView(arg_33_0, arg_33_1)
+	if arg_33_0._allSelectSkillItemList == nil or tabletool.len(arg_33_0._allSelectSkillItemList) == 0 then
 		return
 	end
 
-	slot2 = LengZhou6Config.instance:getPlayerAllSkillId()
+	local var_33_0 = LengZhou6Config.instance:getPlayerAllSkillId()
 
-	for slot6 = 1, #slot0._allSelectSkillItemList do
-		slot0._allSelectSkillItemList[slot6]:initSelectIndex(slot1)
+	for iter_33_0 = 1, #arg_33_0._allSelectSkillItemList do
+		arg_33_0._allSelectSkillItemList[iter_33_0]:initSelectIndex(arg_33_1)
 	end
 
-	table.sort(slot2, function (slot0, slot1)
-		if LengZhou6GameModel.instance:isSelectSkill(slot0) and not LengZhou6GameModel.instance:isSelectSkill(slot1) then
+	table.sort(var_33_0, function(arg_34_0, arg_34_1)
+		local var_34_0 = LengZhou6GameModel.instance:isSelectSkill(arg_34_0)
+		local var_34_1 = LengZhou6GameModel.instance:isSelectSkill(arg_34_1)
+
+		if var_34_0 and not var_34_1 then
 			return false
-		elseif not slot2 and slot3 then
+		elseif not var_34_0 and var_34_1 then
 			return true
 		else
-			return slot0 < slot1
+			return arg_34_0 < arg_34_1
 		end
 	end)
 
-	for slot6 = 1, #slot2 do
-		slot0._allSelectSkillItemList[slot6]:initSkill(slot2[slot6])
+	for iter_33_1 = 1, #var_33_0 do
+		local var_33_1 = var_33_0[iter_33_1]
+
+		arg_33_0._allSelectSkillItemList[iter_33_1]:initSkill(var_33_1)
 	end
 
-	slot0:setChooseSkillActive(true)
-	gohelper.setActive(slot0._btnskillDescClose.gameObject, true)
+	arg_33_0:setChooseSkillActive(true)
+	gohelper.setActive(arg_33_0._btnskillDescClose.gameObject, true)
 end
 
-function slot0.setChooseSkillActive(slot0, slot1)
-	if slot0._lastChooseActive ~= nil and slot0._lastActive == slot1 then
+function var_0_0.setChooseSkillActive(arg_35_0, arg_35_1)
+	if arg_35_0._lastChooseActive ~= nil and arg_35_0._lastActive == arg_35_1 then
 		return
 	end
 
-	if slot1 then
-		gohelper.setActive(slot0._goChooseSkillTips, true)
-		slot0._goChooseSkillTipsAnim:Play("open", 0, 0)
+	if arg_35_1 then
+		gohelper.setActive(arg_35_0._goChooseSkillTips, true)
+		arg_35_0._goChooseSkillTipsAnim:Play("open", 0, 0)
 
-		slot0._lastChooseActive = slot1
+		arg_35_0._lastChooseActive = arg_35_1
 	else
-		slot0._goChooseSkillTipsAnim:Play("close", 0, 0)
-		TaskDispatcher.runDelay(slot0._setChooseSkillTipsFalse, slot0, 0.167)
+		arg_35_0._goChooseSkillTipsAnim:Play("close", 0, 0)
+		TaskDispatcher.runDelay(arg_35_0._setChooseSkillTipsFalse, arg_35_0, 0.167)
 	end
 end
 
-function slot0._setChooseSkillTipsFalse(slot0)
-	gohelper.setActive(slot0._goChooseSkillTips, false)
+function var_0_0._setChooseSkillTipsFalse(arg_36_0)
+	gohelper.setActive(arg_36_0._goChooseSkillTips, false)
 
-	slot0._lastChooseActive = false
+	arg_36_0._lastChooseActive = false
 end
 
-function slot0._playerSkillSelectFinish(slot0, slot1, slot2)
-	slot0:closeChooseSkillTips()
+function var_0_0._playerSkillSelectFinish(arg_37_0, arg_37_1, arg_37_2)
+	arg_37_0:closeChooseSkillTips()
 
-	if slot0._playerSkillList ~= nil and slot0._playerSkillList[slot1] ~= nil then
-		slot3:initSkillConfigId(slot2)
-		slot3:initCamp(LengZhou6Enum.entityCamp.player)
-		slot3:refreshState()
+	if arg_37_0._playerSkillList ~= nil then
+		local var_37_0 = arg_37_0._playerSkillList[arg_37_1]
+
+		if var_37_0 ~= nil then
+			var_37_0:initSkillConfigId(arg_37_2)
+			var_37_0:initCamp(LengZhou6Enum.entityCamp.player)
+			var_37_0:refreshState()
+		end
 	end
 end
 
-function slot0.closeChooseSkillTips(slot0)
-	slot0:setChooseSkillActive(false)
-	gohelper.setActive(slot0._btnskillDescClose.gameObject, false)
+function var_0_0.closeChooseSkillTips(arg_38_0)
+	arg_38_0:setChooseSkillActive(false)
+	gohelper.setActive(arg_38_0._btnskillDescClose.gameObject, false)
 end
 
-function slot0.showEnemyEffect(slot0, slot1)
-	if slot1 == LengZhou6Enum.SkillEffect.DealsDamage then
-		slot0._playerDamageText.text = LengZhou6GameModel.instance:getPlayer():getCurDiff()
+function var_0_0.showEnemyEffect(arg_39_0, arg_39_1)
+	if arg_39_1 == LengZhou6Enum.SkillEffect.DealsDamage then
+		local var_39_0 = LengZhou6GameModel.instance:getPlayer():getCurDiff()
 
-		gohelper.setActive(slot0._playerDamageGo, true)
-		slot0._playerAni:Play("damage", 0, 0)
+		arg_39_0._playerDamageText.text = var_39_0
+
+		gohelper.setActive(arg_39_0._playerDamageGo, true)
+		arg_39_0._playerAni:Play("damage", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_hp)
-		TaskDispatcher.cancelTask(slot0._showPlayerEffectEnd, slot0)
-		TaskDispatcher.runDelay(slot0._showPlayerEffectEnd, slot0, LengZhou6Enum.EnemySkillTime)
+		TaskDispatcher.cancelTask(arg_39_0._showPlayerEffectEnd, arg_39_0)
+		TaskDispatcher.runDelay(arg_39_0._showPlayerEffectEnd, arg_39_0, LengZhou6Enum.EnemySkillTime)
 	end
 
-	if slot1 == LengZhou6Enum.SkillEffect.Heal then
-		slot0._enemyDamageText.text = LengZhou6GameModel.instance:getEnemy():getCurDiff() > 0 and string.format("+%s", slot3)
+	if arg_39_1 == LengZhou6Enum.SkillEffect.Heal then
+		local var_39_1 = LengZhou6GameModel.instance:getEnemy():getCurDiff()
 
-		gohelper.setActive(slot0._enemyDamageGo, true)
-		TaskDispatcher.cancelTask(slot0._showEnemyEffectEnd, slot0)
-		TaskDispatcher.runDelay(slot0._showEnemyEffectEnd, slot0, LengZhou6Enum.EnemySkillTime)
+		arg_39_0._enemyDamageText.text = var_39_1 > 0 and string.format("+%s", var_39_1)
+
+		gohelper.setActive(arg_39_0._enemyDamageGo, true)
+		TaskDispatcher.cancelTask(arg_39_0._showEnemyEffectEnd, arg_39_0)
+		TaskDispatcher.runDelay(arg_39_0._showEnemyEffectEnd, arg_39_0, LengZhou6Enum.EnemySkillTime)
 	end
 
-	if slot1 == LengZhou6Enum.BuffEffect.poison then
-		slot0._enemyDamageText.text = LengZhou6GameModel.instance:getEnemy():getCurDiff() > 0 and string.format("+%s", slot3) or slot3
+	if arg_39_1 == LengZhou6Enum.BuffEffect.poison then
+		local var_39_2 = LengZhou6GameModel.instance:getEnemy():getCurDiff()
 
-		gohelper.setActive(slot0._enemyDamageGo, true)
-		slot0._enemyAni:Play("damage", 0, 0)
+		arg_39_0._enemyDamageText.text = var_39_2 > 0 and string.format("+%s", var_39_2) or var_39_2
+
+		gohelper.setActive(arg_39_0._enemyDamageGo, true)
+		arg_39_0._enemyAni:Play("damage", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum2_7.LengZhou6.play_ui_yuzhou_lzl_hp)
 
-		slot4 = LengZhou6GameModel.instance:getEnemy()
+		local var_39_3 = LengZhou6GameModel.instance:getEnemy()
 
-		TaskDispatcher.cancelTask(slot0._showEnemyEffectEnd, slot0)
-		TaskDispatcher.runDelay(slot0._showEnemyEffectEnd, slot0, LengZhou6Enum.EnemyBuffEffectShowTime)
+		TaskDispatcher.cancelTask(arg_39_0._showEnemyEffectEnd, arg_39_0)
+		TaskDispatcher.runDelay(arg_39_0._showEnemyEffectEnd, arg_39_0, LengZhou6Enum.EnemyBuffEffectShowTime)
 	end
 end
 
-function slot0._showPlayerEffectEnd(slot0)
-	gohelper.setActive(slot0._playerDamageGo, false)
+function var_0_0._showPlayerEffectEnd(arg_40_0)
+	gohelper.setActive(arg_40_0._playerDamageGo, false)
 
-	slot0._txtSelfLife.text = LengZhou6GameModel.instance:getPlayer():getHp()
+	local var_40_0 = LengZhou6GameModel.instance:getPlayer()
 
-	slot0._playerAni:Play("idle", 0, 0)
+	arg_40_0._txtSelfLife.text = var_40_0:getHp()
+
+	arg_40_0._playerAni:Play("idle", 0, 0)
 end
 
-function slot0._showEnemyEffectEnd(slot0)
-	gohelper.setActive(slot0._enemyDamageGo, false)
+function var_0_0._showEnemyEffectEnd(arg_41_0)
+	gohelper.setActive(arg_41_0._enemyDamageGo, false)
 
-	slot0._txtEnemyLife.text = LengZhou6GameModel.instance:getEnemy():getHp()
+	local var_41_0 = LengZhou6GameModel.instance:getEnemy()
 
-	slot0._enemyAni:Play("idle", 0, 0)
+	arg_41_0._txtEnemyLife.text = var_41_0:getHp()
+
+	arg_41_0._enemyAni:Play("idle", 0, 0)
 end
 
-function slot0.refreshBuffItem(slot0)
-	slot0:_refreshPlayerBuffItem()
-	slot0:_refreshEnemyBuffItem()
+function var_0_0.refreshBuffItem(arg_42_0)
+	arg_42_0:_refreshPlayerBuffItem()
+	arg_42_0:_refreshEnemyBuffItem()
 end
 
-function slot0._refreshPlayerBuffItem(slot0)
-	if slot0._playerBuffItems == nil then
-		slot0._playerBuffItems = slot0:getUserDataTb_()
+function var_0_0._refreshPlayerBuffItem(arg_43_0)
+	if arg_43_0._playerBuffItems == nil then
+		arg_43_0._playerBuffItems = arg_43_0:getUserDataTb_()
 	end
 
-	for slot7 = 1, math.max(tabletool.len(LengZhou6GameModel.instance:getPlayer():getBuffs()), tabletool.len(slot0._playerBuffItems)) do
-		slot9 = slot2[slot7]
+	local var_43_0 = LengZhou6GameModel.instance:getPlayer():getBuffs()
+	local var_43_1 = math.max(tabletool.len(var_43_0), tabletool.len(arg_43_0._playerBuffItems))
 
-		if slot0._playerBuffItems[slot7] == nil then
-			table.insert(slot0._playerBuffItems, MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(slot0.viewContainer:getSetting().otherRes[3], slot0._playerBuffParent), LengZhou6BuffItem))
+	for iter_43_0 = 1, var_43_1 do
+		local var_43_2 = arg_43_0._playerBuffItems[iter_43_0]
+		local var_43_3 = var_43_0[iter_43_0]
+
+		if var_43_2 == nil then
+			local var_43_4 = arg_43_0:getResInst(arg_43_0.viewContainer:getSetting().otherRes[3], arg_43_0._playerBuffParent)
+
+			var_43_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_43_4, LengZhou6BuffItem)
+
+			table.insert(arg_43_0._playerBuffItems, var_43_2)
 		end
 
-		if slot8 ~= nil then
-			slot10 = slot0._playerBuffParent
+		if var_43_2 ~= nil then
+			local var_43_5 = arg_43_0._playerBuffParent
 
-			if slot9 ~= nil and slot9._configId == 1001 then
-				slot10 = slot0._enemyBuffParent
+			if var_43_3 ~= nil and var_43_3._configId == 1001 then
+				var_43_5 = arg_43_0._enemyBuffParent
 			end
 
-			slot8:changeParent(slot10)
+			var_43_2:changeParent(var_43_5)
 		end
 
-		if slot8 ~= nil then
-			slot8:updateBuffItem(slot9)
-		end
-	end
-end
-
-function slot0._refreshEnemyBuffItem(slot0)
-	if slot0._enemyBuffItems == nil then
-		slot0._enemyBuffItems = slot0:getUserDataTb_()
-	end
-
-	for slot7 = 1, math.max(tabletool.len(LengZhou6GameModel.instance:getEnemy():getBuffs()), tabletool.len(slot0._enemyBuffItems)) do
-		if slot0._enemyBuffItems[slot7] == nil and slot2[slot7] ~= nil then
-			slot10 = slot0:getResInst(slot0.viewContainer:getSetting().otherRes[3], slot0._enemyBuffParent)
-
-			gohelper.setActive(slot10, true)
-			table.insert(slot0._enemyBuffItems, MonoHelper.addNoUpdateLuaComOnceToGo(slot10, LengZhou6BuffItem))
-		end
-
-		if slot8 ~= nil then
-			slot8:updateBuffItem(slot9)
+		if var_43_2 ~= nil then
+			var_43_2:updateBuffItem(var_43_3)
 		end
 	end
 end
 
-function slot0.onClickBuff(slot0, slot1)
-	if slot1 == nil then
+function var_0_0._refreshEnemyBuffItem(arg_44_0)
+	if arg_44_0._enemyBuffItems == nil then
+		arg_44_0._enemyBuffItems = arg_44_0:getUserDataTb_()
+	end
+
+	local var_44_0 = LengZhou6GameModel.instance:getEnemy():getBuffs()
+	local var_44_1 = math.max(tabletool.len(var_44_0), tabletool.len(arg_44_0._enemyBuffItems))
+
+	for iter_44_0 = 1, var_44_1 do
+		local var_44_2 = arg_44_0._enemyBuffItems[iter_44_0]
+		local var_44_3 = var_44_0[iter_44_0]
+
+		if var_44_2 == nil and var_44_3 ~= nil then
+			local var_44_4 = arg_44_0:getResInst(arg_44_0.viewContainer:getSetting().otherRes[3], arg_44_0._enemyBuffParent)
+
+			var_44_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_44_4, LengZhou6BuffItem)
+
+			gohelper.setActive(var_44_4, true)
+			table.insert(arg_44_0._enemyBuffItems, var_44_2)
+		end
+
+		if var_44_2 ~= nil then
+			var_44_2:updateBuffItem(var_44_3)
+		end
+	end
+end
+
+function var_0_0.onClickBuff(arg_45_0, arg_45_1)
+	if arg_45_1 == nil then
 		return
 	end
 
-	if LengZhou6Config.instance:getEliminateBattleBuff(slot1) then
-		if slot1 == 1001 or slot1 == 1002 then
-			slot0._txtEnemyBuffDescr.text = slot2.desc
-			slot0._txtEnemyBuffName.text = slot2.name
+	local var_45_0 = LengZhou6Config.instance:getEliminateBattleBuff(arg_45_1)
 
-			gohelper.setActive(slot0._goEnemyBuffTips, true)
+	if var_45_0 then
+		if arg_45_1 == 1001 or arg_45_1 == 1002 then
+			arg_45_0._txtEnemyBuffDescr.text = var_45_0.desc
+			arg_45_0._txtEnemyBuffName.text = var_45_0.name
+
+			gohelper.setActive(arg_45_0._goEnemyBuffTips, true)
 		end
 
-		if slot1 == 1003 then
-			slot0._txtPlayerBuffDescr.text = slot2.desc
-			slot0._txtPlayerBuffName.text = slot2.name
+		if arg_45_1 == 1003 then
+			arg_45_0._txtPlayerBuffDescr.text = var_45_0.desc
+			arg_45_0._txtPlayerBuffName.text = var_45_0.name
 
-			gohelper.setActive(slot0._goPlayerBuffTips, true)
+			gohelper.setActive(arg_45_0._goPlayerBuffTips, true)
 		end
 
-		gohelper.setActive(slot0._btnskillDescClose.gameObject, true)
+		gohelper.setActive(arg_45_0._btnskillDescClose.gameObject, true)
 	end
 end
 
-function slot0.closeBuffTips(slot0)
-	gohelper.setActive(slot0._goEnemyBuffTips, false)
-	gohelper.setActive(slot0._goPlayerBuffTips, false)
+function var_0_0.closeBuffTips(arg_46_0)
+	gohelper.setActive(arg_46_0._goEnemyBuffTips, false)
+	gohelper.setActive(arg_46_0._goPlayerBuffTips, false)
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0._onMoveEnd, slot0)
-	TaskDispatcher.cancelTask(slot0.showChangeTips, slot0)
-	TaskDispatcher.cancelTask(slot0._showEffectEnd, slot0)
-	TaskDispatcher.cancelTask(slot0._showPlayerEffectEnd, slot0)
-	TaskDispatcher.cancelTask(slot0._showEnemyEffectEnd, slot0)
+function var_0_0.onClose(arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0._onMoveEnd, arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0.showChangeTips, arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0._showEffectEnd, arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0._showPlayerEffectEnd, arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0._showEnemyEffectEnd, arg_47_0)
 end
 
-function slot0._gameReStart(slot0)
-	slot0:initView()
+function var_0_0._gameReStart(arg_48_0)
+	arg_48_0:initView()
 end
 
-function slot0.onDestroyView(slot0)
+function var_0_0.onDestroyView(arg_49_0)
+	return
 end
 
-return slot0
+return var_0_0

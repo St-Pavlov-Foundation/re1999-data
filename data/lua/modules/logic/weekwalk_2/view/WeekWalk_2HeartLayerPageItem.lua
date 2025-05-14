@@ -1,233 +1,255 @@
-module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerPageItem", package.seeall)
+﻿module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerPageItem", package.seeall)
 
-slot0 = class("WeekWalk_2HeartLayerPageItem", ListScrollCellExtend)
+local var_0_0 = class("WeekWalk_2HeartLayerPageItem", ListScrollCellExtend)
 
-function slot0.onInitView(slot0)
-	slot0._gounlock = gohelper.findChild(slot0.viewGO, "#go_unlock")
-	slot0._btnclick = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_unlock/#btn_click")
-	slot0._simageicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_unlock/#btn_click/#simage_icon")
-	slot0._golock = gohelper.findChild(slot0.viewGO, "#go_lock")
-	slot0._btnlock = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_lock/#btn_lock")
-	slot0._simagelockicon = gohelper.findChildSingleImage(slot0.viewGO, "#go_lock/#btn_lock/#simage_lockicon")
-	slot0._gochallenge = gohelper.findChild(slot0.viewGO, "#go_challenge")
-	slot0._gofinish = gohelper.findChild(slot0.viewGO, "#go_finish")
-	slot0._txtname = gohelper.findChildText(slot0.viewGO, "info/#txt_name")
-	slot0._txtprogress = gohelper.findChildText(slot0.viewGO, "info/#txt_progress")
-	slot0._btnreward = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_reward")
-	slot0._gorewardIcon = gohelper.findChild(slot0.viewGO, "#btn_reward/#go_rewardIcon")
-	slot0._gonormalIcon = gohelper.findChild(slot0.viewGO, "#btn_reward/#go_normalIcon")
-	slot0._gorewardfinish = gohelper.findChild(slot0.viewGO, "#btn_reward/#go_rewardfinish")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gounlock = gohelper.findChild(arg_1_0.viewGO, "#go_unlock")
+	arg_1_0._btnclick = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_unlock/#btn_click")
+	arg_1_0._simageicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_unlock/#btn_click/#simage_icon")
+	arg_1_0._golock = gohelper.findChild(arg_1_0.viewGO, "#go_lock")
+	arg_1_0._btnlock = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_lock/#btn_lock")
+	arg_1_0._simagelockicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_lock/#btn_lock/#simage_lockicon")
+	arg_1_0._gochallenge = gohelper.findChild(arg_1_0.viewGO, "#go_challenge")
+	arg_1_0._gofinish = gohelper.findChild(arg_1_0.viewGO, "#go_finish")
+	arg_1_0._txtname = gohelper.findChildText(arg_1_0.viewGO, "info/#txt_name")
+	arg_1_0._txtprogress = gohelper.findChildText(arg_1_0.viewGO, "info/#txt_progress")
+	arg_1_0._btnreward = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_reward")
+	arg_1_0._gorewardIcon = gohelper.findChild(arg_1_0.viewGO, "#btn_reward/#go_rewardIcon")
+	arg_1_0._gonormalIcon = gohelper.findChild(arg_1_0.viewGO, "#btn_reward/#go_normalIcon")
+	arg_1_0._gorewardfinish = gohelper.findChild(arg_1_0.viewGO, "#btn_reward/#go_rewardfinish")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnclick:AddClickListener(slot0._btnclickOnClick, slot0)
-	slot0._btnlock:AddClickListener(slot0._btnlockOnClick, slot0)
-	slot0._btnreward:AddClickListener(slot0._btnrewardOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnclick:AddClickListener(arg_2_0._btnclickOnClick, arg_2_0)
+	arg_2_0._btnlock:AddClickListener(arg_2_0._btnlockOnClick, arg_2_0)
+	arg_2_0._btnreward:AddClickListener(arg_2_0._btnrewardOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnclick:RemoveClickListener()
-	slot0._btnlock:RemoveClickListener()
-	slot0._btnreward:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnclick:RemoveClickListener()
+	arg_3_0._btnlock:RemoveClickListener()
+	arg_3_0._btnreward:RemoveClickListener()
 end
 
-function slot0._btnclickOnClick(slot0)
+function var_0_0._btnclickOnClick(arg_4_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2HeartView({
-		mapId = slot0._layerInfo.id
+		mapId = arg_4_0._layerInfo.id
 	})
 end
 
-function slot0._btnlockOnClick(slot0)
+function var_0_0._btnlockOnClick(arg_5_0)
 	GameFacade.showToast(ToastEnum.WeekWalkLayerPage)
 end
 
-function slot0._btndetailOnClick(slot0)
+function var_0_0._btndetailOnClick(arg_6_0)
+	return
 end
 
-function slot0._btnrewardOnClick(slot0)
+function var_0_0._btnrewardOnClick(arg_7_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2LayerRewardView({
-		mapId = slot0._layerInfo.id
+		mapId = arg_7_0._layerInfo.id
 	})
 end
 
-function slot0._editableInitView(slot0)
-	gohelper.setActive(slot0._gofinish, false)
-	gohelper.setActive(slot0._gochallenge, false)
+function var_0_0._editableInitView(arg_8_0)
+	gohelper.setActive(arg_8_0._gofinish, false)
+	gohelper.setActive(arg_8_0._gochallenge, false)
 
-	slot0._animator = slot0.viewGO:GetComponent("Animator")
+	arg_8_0._animator = arg_8_0.viewGO:GetComponent("Animator")
 end
 
-function slot0._initChildNodes(slot0, slot1)
-	if slot0._starsList1 then
+function var_0_0._initChildNodes(arg_9_0, arg_9_1)
+	if arg_9_0._starsList1 then
 		return
 	end
 
-	gohelper.setActive(gohelper.findChild(slot0.viewGO, string.format("info/type%s", slot1)), true)
+	local var_9_0 = gohelper.findChild(arg_9_0.viewGO, string.format("info/type%s", arg_9_1))
 
-	slot0._txtbattlename = gohelper.findChildText(slot0.viewGO, string.format("info/type%s/txt_battlename", slot1))
-	slot0._txtnameen = gohelper.findChildText(slot0.viewGO, string.format("info/type%s/txt_nameen", slot1))
-	slot0._txtindex = gohelper.findChildText(slot0.viewGO, string.format("info/type%s/txt_index", slot1))
-	slot0._go1 = gohelper.findChild(slot0.viewGO, string.format("info/type%s/go_star/starlist/go_icons1/go_1", slot1))
-	slot0._go2 = gohelper.findChild(slot0.viewGO, string.format("info/type%s/go_star/starlist/go_icons2/go_2", slot1))
-	slot0._starsList1 = slot0:getUserDataTb_()
-	slot0._starsList2 = slot0:getUserDataTb_()
+	gohelper.setActive(var_9_0, true)
 
-	slot0:_initStarsList(slot0._starsList1, slot0._go1)
-	slot0:_initStarsList(slot0._starsList2, slot0._go2)
+	arg_9_0._txtbattlename = gohelper.findChildText(arg_9_0.viewGO, string.format("info/type%s/txt_battlename", arg_9_1))
+	arg_9_0._txtnameen = gohelper.findChildText(arg_9_0.viewGO, string.format("info/type%s/txt_nameen", arg_9_1))
+	arg_9_0._txtindex = gohelper.findChildText(arg_9_0.viewGO, string.format("info/type%s/txt_index", arg_9_1))
+	arg_9_0._go1 = gohelper.findChild(arg_9_0.viewGO, string.format("info/type%s/go_star/starlist/go_icons1/go_1", arg_9_1))
+	arg_9_0._go2 = gohelper.findChild(arg_9_0.viewGO, string.format("info/type%s/go_star/starlist/go_icons2/go_2", arg_9_1))
+	arg_9_0._starsList1 = arg_9_0:getUserDataTb_()
+	arg_9_0._starsList2 = arg_9_0:getUserDataTb_()
+
+	arg_9_0:_initStarsList(arg_9_0._starsList1, arg_9_0._go1)
+	arg_9_0:_initStarsList(arg_9_0._starsList2, arg_9_0._go2)
 end
 
-function slot0._initStarsList(slot0, slot1, slot2)
-	gohelper.setActive(slot2, false)
+function var_0_0._initStarsList(arg_10_0, arg_10_1, arg_10_2)
+	gohelper.setActive(arg_10_2, false)
 
-	for slot6 = 1, WeekWalk_2Enum.MaxStar do
-		slot7 = gohelper.cloneInPlace(slot2)
+	for iter_10_0 = 1, WeekWalk_2Enum.MaxStar do
+		local var_10_0 = gohelper.cloneInPlace(arg_10_2)
 
-		gohelper.setActive(slot7, true)
+		gohelper.setActive(var_10_0, true)
 
-		slot8 = gohelper.findChildImage(slot7, "icon")
-		slot8.enabled = false
+		local var_10_1 = gohelper.findChildImage(var_10_0, "icon")
 
-		table.insert(slot1, slot0._layerView:getResInst(slot0._layerView.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot8.gameObject))
+		var_10_1.enabled = false
+
+		local var_10_2 = arg_10_0._layerView:getResInst(arg_10_0._layerView.viewContainer._viewSetting.otherRes.weekwalkheart_star, var_10_1.gameObject)
+
+		table.insert(arg_10_1, var_10_2)
 	end
 end
 
-function slot0._editableAddEvents(slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, slot0._onWeekwalkTaskUpdate, slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, slot0._onChangeInfo, slot0)
+function var_0_0._editableAddEvents(arg_11_0)
+	arg_11_0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, arg_11_0._onWeekwalkTaskUpdate, arg_11_0)
+	arg_11_0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, arg_11_0._onChangeInfo, arg_11_0)
 end
 
-function slot0._editableRemoveEvents(slot0)
-	slot0:removeEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, slot0._onWeekwalkTaskUpdate, slot0)
-	slot0:removeEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, slot0._onChangeInfo, slot0)
+function var_0_0._editableRemoveEvents(arg_12_0)
+	arg_12_0:removeEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, arg_12_0._onWeekwalkTaskUpdate, arg_12_0)
+	arg_12_0:removeEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, arg_12_0._onChangeInfo, arg_12_0)
 end
 
-function slot0._onChangeInfo(slot0)
-	slot0:_updateStatus()
+function var_0_0._onChangeInfo(arg_13_0)
+	arg_13_0:_updateStatus()
 end
 
-function slot0._onWeekwalkTaskUpdate(slot0)
-	slot0:_updateStatus()
+function var_0_0._onWeekwalkTaskUpdate(arg_14_0)
+	arg_14_0:_updateStatus()
 end
 
-function slot0.setFakeUnlock(slot0, slot1)
-	slot0._fakeUnlock = slot1
+function var_0_0.setFakeUnlock(arg_15_0, arg_15_1)
+	arg_15_0._fakeUnlock = arg_15_1
 
-	slot0:_updateStatus()
+	arg_15_0:_updateStatus()
 end
 
-function slot0.playUnlockAnim(slot0)
-	gohelper.setActive(slot0._gounlock, true)
-	gohelper.setActive(slot0._golock, true)
-	slot0._animator:Play("unlock", 0, 0)
-	TaskDispatcher.runDelay(slot0._unlockAnimDone, slot0, 1.5)
+function var_0_0.playUnlockAnim(arg_16_0)
+	gohelper.setActive(arg_16_0._gounlock, true)
+	gohelper.setActive(arg_16_0._golock, true)
+	arg_16_0._animator:Play("unlock", 0, 0)
+	TaskDispatcher.runDelay(arg_16_0._unlockAnimDone, arg_16_0, 1.5)
 	AudioMgr.instance:trigger(AudioEnum2_6.WeekWalk_2.play_ui_fight_artificial_unlock)
 end
 
-function slot0._unlockAnimDone(slot0)
-	gohelper.setActive(slot0._golock, false)
+function var_0_0._unlockAnimDone(arg_17_0)
+	gohelper.setActive(arg_17_0._golock, false)
 end
 
-function slot0.getIndex(slot0)
-	return slot0._index
+function var_0_0.getIndex(arg_18_0)
+	return arg_18_0._index
 end
 
-function slot0.getLayerId(slot0)
-	return slot0._layerInfo and slot0._layerInfo.id
+function var_0_0.getLayerId(arg_19_0)
+	return arg_19_0._layerInfo and arg_19_0._layerInfo.id
 end
 
-function slot0.onUpdateMO(slot0, slot1)
-	slot0._index = slot1.index
-	slot0._layerView = slot1.layerView
-	slot0._typeIndex = slot0._index == 4 and 1 or slot0._index
-	slot0._fakeUnlock = true
+function var_0_0.onUpdateMO(arg_20_0, arg_20_1)
+	arg_20_0._index = arg_20_1.index
+	arg_20_0._layerView = arg_20_1.layerView
+	arg_20_0._typeIndex = arg_20_0._index == 4 and 1 or arg_20_0._index
+	arg_20_0._fakeUnlock = true
 
-	slot0:_initChildNodes(slot0._typeIndex)
-	slot0:_updateStatus()
+	arg_20_0:_initChildNodes(arg_20_0._typeIndex)
+	arg_20_0:_updateStatus()
 end
 
-function slot0._updateStatus(slot0)
-	slot0._layerInfo = WeekWalk_2Model.instance:getLayerInfoByLayerIndex(slot0._index)
-	slot0._layerSceneConfig = slot0._layerInfo.sceneConfig
-	slot0._isUnLock = slot0._layerInfo.unlock and slot0._fakeUnlock
+function var_0_0._updateStatus(arg_21_0)
+	arg_21_0._layerInfo = WeekWalk_2Model.instance:getLayerInfoByLayerIndex(arg_21_0._index)
+	arg_21_0._layerSceneConfig = arg_21_0._layerInfo.sceneConfig
+	arg_21_0._isUnLock = arg_21_0._layerInfo.unlock and arg_21_0._fakeUnlock
 
-	gohelper.setActive(slot0._golock, not slot0._isUnLock)
-	gohelper.setActive(slot0._gounlock, slot0._isUnLock)
+	gohelper.setActive(arg_21_0._golock, not arg_21_0._isUnLock)
+	gohelper.setActive(arg_21_0._gounlock, arg_21_0._isUnLock)
 
-	slot0._txtbattlename.text = slot0._layerSceneConfig.battleName
-	slot0._txtnameen.text = slot0._layerSceneConfig.name_en
-	slot0._txtname.text = slot0._layerSceneConfig.name
-	slot0._txtindex.text = tostring(slot0._index)
-	slot1 = string.format("weekwalkheart_stage%s", slot0._layerInfo.config.layer)
+	arg_21_0._txtbattlename.text = arg_21_0._layerSceneConfig.battleName
+	arg_21_0._txtnameen.text = arg_21_0._layerSceneConfig.name_en
+	arg_21_0._txtname.text = arg_21_0._layerSceneConfig.name
+	arg_21_0._txtindex.text = tostring(arg_21_0._index)
 
-	slot0._simageicon:LoadImage(ResUrl.getWeekWalkLayerIcon(slot1))
-	slot0._simagelockicon:LoadImage(ResUrl.getWeekWalkLayerIcon(slot1))
-	slot0:_updateStars()
-	slot0:_updateRewardStatus()
-	slot0:_updateProgress()
+	local var_21_0 = string.format("weekwalkheart_stage%s", arg_21_0._layerInfo.config.layer)
 
-	slot4 = slot0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.First).status == WeekWalk_2Enum.BattleStatus.Finished and slot0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second).status == WeekWalk_2Enum.BattleStatus.Finished
+	arg_21_0._simageicon:LoadImage(ResUrl.getWeekWalkLayerIcon(var_21_0))
+	arg_21_0._simagelockicon:LoadImage(ResUrl.getWeekWalkLayerIcon(var_21_0))
+	arg_21_0:_updateStars()
+	arg_21_0:_updateRewardStatus()
+	arg_21_0:_updateProgress()
 
-	gohelper.setActive(slot0._gofinish, slot4)
-	gohelper.setActive(slot0._gochallenge, not slot4 and slot0._isUnLock)
+	local var_21_1 = arg_21_0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.First)
+	local var_21_2 = arg_21_0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second)
+	local var_21_3 = var_21_1.status == WeekWalk_2Enum.BattleStatus.Finished and var_21_2.status == WeekWalk_2Enum.BattleStatus.Finished
+
+	gohelper.setActive(arg_21_0._gofinish, var_21_3)
+	gohelper.setActive(arg_21_0._gochallenge, not var_21_3 and arg_21_0._isUnLock)
 end
 
-function slot0._updateProgress(slot0)
-	slot2 = 0
-	slot3 = 0
+function var_0_0._updateProgress(arg_22_0)
+	local var_22_0 = WeekWalk_2Config.instance:getWeekWalkRewardList(arg_22_0._layerInfo.config.layer)
+	local var_22_1 = 0
+	local var_22_2 = 0
 
-	if WeekWalk_2Config.instance:getWeekWalkRewardList(slot0._layerInfo.config.layer) then
-		for slot7, slot8 in pairs(slot1) do
-			if lua_task_weekwalk_ver2.configDict[slot7] and WeekWalk_2TaskListModel.instance:checkPeriods(slot9) then
-				slot3 = slot3 + slot8
+	if var_22_0 then
+		for iter_22_0, iter_22_1 in pairs(var_22_0) do
+			local var_22_3 = lua_task_weekwalk_ver2.configDict[iter_22_0]
 
-				if WeekWalk_2TaskListModel.instance:getTaskMo(slot7) and lua_task_weekwalk_ver2.configDict[slot7].maxFinishCount <= slot10.finishCount then
-					slot2 = slot2 + slot8
+			if var_22_3 and WeekWalk_2TaskListModel.instance:checkPeriods(var_22_3) then
+				var_22_2 = var_22_2 + iter_22_1
+
+				local var_22_4 = WeekWalk_2TaskListModel.instance:getTaskMo(iter_22_0)
+				local var_22_5 = lua_task_weekwalk_ver2.configDict[iter_22_0]
+
+				if var_22_4 and var_22_4.finishCount >= var_22_5.maxFinishCount then
+					var_22_1 = var_22_1 + iter_22_1
 				end
 			end
 		end
 	end
 
-	slot0._txtprogress.text = string.format("%s/%s", slot2, slot3)
-	slot0._txtprogress.alpha = slot3 <= slot2 and 0.45 or 1
+	arg_22_0._txtprogress.text = string.format("%s/%s", var_22_1, var_22_2)
+	arg_22_0._txtprogress.alpha = var_22_2 <= var_22_1 and 0.45 or 1
 end
 
-function slot0._updateRewardStatus(slot0)
-	gohelper.setActive(slot0._btnreward, true)
+function var_0_0._updateRewardStatus(arg_23_0)
+	gohelper.setActive(arg_23_0._btnreward, true)
 
-	slot3, slot4 = WeekWalk_2TaskListModel.instance:canGetRewardNum(WeekWalk_2Enum.TaskType.Season, slot0._layerInfo.id)
-	slot5 = slot3 > 0
+	local var_23_0 = arg_23_0._layerInfo.id
+	local var_23_1 = WeekWalk_2Enum.TaskType.Season
+	local var_23_2, var_23_3 = WeekWalk_2TaskListModel.instance:canGetRewardNum(var_23_1, var_23_0)
+	local var_23_4 = var_23_2 > 0
 
-	gohelper.setActive(slot0._gorewardIcon, slot5)
-	gohelper.setActive(slot0._gorewardfinish, not slot5 and slot4 <= 0)
-	gohelper.setActive(slot0._gonormalIcon, not slot5 and slot4 > 0)
+	gohelper.setActive(arg_23_0._gorewardIcon, var_23_4)
+	gohelper.setActive(arg_23_0._gorewardfinish, not var_23_4 and var_23_3 <= 0)
+	gohelper.setActive(arg_23_0._gonormalIcon, not var_23_4 and var_23_3 > 0)
 end
 
-function slot0._updateStars(slot0)
-	slot0:_updateStarList(slot0._starsList1, slot0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.First))
-	slot0:_updateStarList(slot0._starsList2, slot0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second))
+function var_0_0._updateStars(arg_24_0)
+	local var_24_0 = arg_24_0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.First)
+	local var_24_1 = arg_24_0._layerInfo:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second)
+
+	arg_24_0:_updateStarList(arg_24_0._starsList1, var_24_0)
+	arg_24_0:_updateStarList(arg_24_0._starsList2, var_24_1)
 end
 
-function slot0._updateStarList(slot0, slot1, slot2)
-	for slot6, slot7 in ipairs(slot1) do
-		slot10 = (slot2:getCupInfo(slot6) and slot8.result or 0) > 0
+function var_0_0._updateStarList(arg_25_0, arg_25_1, arg_25_2)
+	for iter_25_0, iter_25_1 in ipairs(arg_25_1) do
+		local var_25_0 = arg_25_2:getCupInfo(iter_25_0)
+		local var_25_1 = (var_25_0 and var_25_0.result or 0) > 0
 
-		gohelper.setActive(slot7, slot10)
+		gohelper.setActive(iter_25_1, var_25_1)
 
-		if slot10 then
-			WeekWalk_2Helper.setCupEffect(slot7, slot8)
+		if var_25_1 then
+			WeekWalk_2Helper.setCupEffect(iter_25_1, var_25_0)
 		end
 	end
 end
 
-function slot0.onSelect(slot0, slot1)
+function var_0_0.onSelect(arg_26_0, arg_26_1)
+	return
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0._unlockAnimDone, slot0)
+function var_0_0.onDestroyView(arg_27_0)
+	TaskDispatcher.cancelTask(arg_27_0._unlockAnimDone, arg_27_0)
 end
 
-return slot0
+return var_0_0

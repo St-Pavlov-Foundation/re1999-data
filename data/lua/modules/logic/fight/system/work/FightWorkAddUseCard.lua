@@ -1,33 +1,40 @@
-module("modules.logic.fight.system.work.FightWorkAddUseCard", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkAddUseCard", package.seeall)
 
-slot0 = class("FightWorkAddUseCard", FightEffectBase)
+local var_0_0 = class("FightWorkAddUseCard", FightEffectBase)
 
-function slot0.onStart(slot0)
-	if not FightCardDataHelper.cardChangeIsMySide(slot0.actEffectData) then
-		slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	if not FightCardDataHelper.cardChangeIsMySide(arg_1_0.actEffectData) then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	if slot0.actEffectData.effectNum - 1 > #FightPlayCardModel.instance:getUsedCards() then
-		slot1 = #slot2 + 1
+	local var_1_0 = arg_1_0.actEffectData.effectNum
+	local var_1_1 = FightPlayCardModel.instance:getUsedCards()
+
+	if var_1_0 - 1 > #var_1_1 then
+		var_1_0 = #var_1_1 + 1
 	end
 
 	FightViewPartVisible.set(false, false, false, false, true)
-	FightPlayCardModel.instance:addUseCard(slot1, slot0.actEffectData.cardInfo, slot0.actEffectData.effectNum1)
-	FightController.instance:dispatchEvent(FightEvent.AddUseCard, slot1)
-	slot0:com_registTimer(slot0._delayAfterPerformance, slot0:getWaitTime() / FightModel.instance:getUISpeed())
+	FightPlayCardModel.instance:addUseCard(var_1_0, arg_1_0.actEffectData.cardInfo, arg_1_0.actEffectData.effectNum1)
+	FightController.instance:dispatchEvent(FightEvent.AddUseCard, var_1_0)
+
+	local var_1_2 = arg_1_0:getWaitTime()
+
+	arg_1_0:com_registTimer(arg_1_0._delayAfterPerformance, var_1_2 / FightModel.instance:getUISpeed())
 end
 
-function slot0.getWaitTime(slot0)
-	if FightHeroALFComp.ALFSkillDict[slot0.actEffectData.effectNum1] then
+function var_0_0.getWaitTime(arg_2_0)
+	if FightHeroALFComp.ALFSkillDict[arg_2_0.actEffectData.effectNum1] then
 		return 1.8
 	end
 
 	return 0.5
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

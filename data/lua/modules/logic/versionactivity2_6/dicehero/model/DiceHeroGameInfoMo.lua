@@ -1,29 +1,32 @@
-module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroGameInfoMo", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroGameInfoMo", package.seeall)
 
-slot0 = pureTable("DiceHeroGameInfoMo")
+local var_0_0 = pureTable("DiceHeroGameInfoMo")
 
-function slot0.init(slot0, slot1)
-	slot0.chapter = slot1.chapter
-	slot0.heroBaseInfo = DiceHeroHeroBaseInfoMo.New()
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.chapter = arg_1_1.chapter
+	arg_1_0.heroBaseInfo = DiceHeroHeroBaseInfoMo.New()
 
-	slot0.heroBaseInfo:init(slot1.heroBaseInfo)
+	arg_1_0.heroBaseInfo:init(arg_1_1.heroBaseInfo)
 
-	slot0.rewardItems = {}
+	arg_1_0.rewardItems = {}
 
-	for slot5, slot6 in pairs(slot1.panel.rewardItems) do
-		slot0.rewardItems[slot5] = DiceHeroRewardMo.New()
+	for iter_1_0, iter_1_1 in pairs(arg_1_1.panel.rewardItems) do
+		arg_1_0.rewardItems[iter_1_0] = DiceHeroRewardMo.New()
 
-		slot0.rewardItems[slot5]:init(slot6)
+		arg_1_0.rewardItems[iter_1_0]:init(iter_1_1)
 	end
 
-	slot0.allLevelCos = DiceHeroConfig.instance:getLevelCos(slot0.chapter)
-	slot0.co = slot0.allLevelCos[#slot1.passLevelIds + 1] or slot0.allLevelCos[slot2] or slot0.allLevelCos[1]
-	slot0.currLevel = slot0.co and slot0.co.id or 0
-	slot0.allPass = slot2 == #slot0.allLevelCos
+	arg_1_0.allLevelCos = DiceHeroConfig.instance:getLevelCos(arg_1_0.chapter)
+
+	local var_1_0 = #arg_1_1.passLevelIds
+
+	arg_1_0.co = arg_1_0.allLevelCos[var_1_0 + 1] or arg_1_0.allLevelCos[var_1_0] or arg_1_0.allLevelCos[1]
+	arg_1_0.currLevel = arg_1_0.co and arg_1_0.co.id or 0
+	arg_1_0.allPass = var_1_0 == #arg_1_0.allLevelCos
 end
 
-function slot0.hasReward(slot0)
-	return #slot0.rewardItems > 0
+function var_0_0.hasReward(arg_2_0)
+	return #arg_2_0.rewardItems > 0
 end
 
-return slot0
+return var_0_0

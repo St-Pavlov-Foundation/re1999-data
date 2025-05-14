@@ -1,51 +1,57 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroDamageWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroDamageWork", package.seeall)
 
-slot0 = class("DiceHeroDamageWork", DiceHeroBaseEffectWork)
+local var_0_0 = class("DiceHeroDamageWork", DiceHeroBaseEffectWork)
 
-function slot0.onStart(slot0, slot1)
-	slot0._isFromCard = slot0._effectMo.parent.isByCard
-	slot0._isByHero = DiceHeroFightModel.instance:getGameData().allyHero.uid == slot0._effectMo.fromId
-	slot3 = DiceHeroHelper.instance:getEntity(slot0._effectMo.fromId)
-	slot4 = DiceHeroHelper.instance:getEntity(slot0._effectMo.targetId)
-	slot0._targetPos = slot4:getPos()
-	slot0._targetItem = slot4
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	local var_1_0 = DiceHeroFightModel.instance:getGameData()
 
-	if slot0._isByHero and slot0._isFromCard and string.nilorempty(slot0._effectMo.extraData) then
-		slot0._effectItem = DiceHeroHelper.instance:doEffect(2, DiceHeroHelper.instance:getCard(tonumber(slot0._effectMo.parent.reasonId)):getPos(), slot0._targetPos)
+	arg_1_0._isFromCard = arg_1_0._effectMo.parent.isByCard
+	arg_1_0._isByHero = var_1_0.allyHero.uid == arg_1_0._effectMo.fromId
+
+	local var_1_1 = DiceHeroHelper.instance:getEntity(arg_1_0._effectMo.fromId)
+	local var_1_2 = DiceHeroHelper.instance:getEntity(arg_1_0._effectMo.targetId)
+
+	arg_1_0._targetPos = var_1_2:getPos()
+	arg_1_0._targetItem = var_1_2
+
+	if arg_1_0._isByHero and arg_1_0._isFromCard and string.nilorempty(arg_1_0._effectMo.extraData) then
+		local var_1_3 = DiceHeroHelper.instance:getCard(tonumber(arg_1_0._effectMo.parent.reasonId))
+
+		arg_1_0._effectItem = DiceHeroHelper.instance:doEffect(2, var_1_3:getPos(), arg_1_0._targetPos)
 	else
-		slot0._effectItem = DiceHeroHelper.instance:doEffect(slot0._isByHero and 2 or 3, slot3:getPos(), slot0._targetPos)
+		arg_1_0._effectItem = DiceHeroHelper.instance:doEffect(arg_1_0._isByHero and 2 or 3, var_1_1:getPos(), arg_1_0._targetPos)
 	end
 
 	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_shot)
-	TaskDispatcher.runDelay(slot0._delayShowDamage, slot0, 0.5)
+	TaskDispatcher.runDelay(arg_1_0._delayShowDamage, arg_1_0, 0.5)
 end
 
-function slot0._delayShowDamage(slot0)
-	DiceHeroController.instance:dispatchEvent(DiceHeroEvent.OnDamage, slot0._isByHero)
+function var_0_0._delayShowDamage(arg_2_0)
+	DiceHeroController.instance:dispatchEvent(DiceHeroEvent.OnDamage, arg_2_0._isByHero)
 	AudioMgr.instance:trigger(AudioEnum2_6.DiceHero.play_ui_wenming_shotimp)
-	slot0._targetItem:showEffect(4)
-	TaskDispatcher.runDelay(slot0._delayShowNum, slot0, 0.5)
-	TaskDispatcher.runDelay(slot0._delayFinish, slot0, 1)
+	arg_2_0._targetItem:showEffect(4)
+	TaskDispatcher.runDelay(arg_2_0._delayShowNum, arg_2_0, 0.5)
+	TaskDispatcher.runDelay(arg_2_0._delayFinish, arg_2_0, 1)
 end
 
-function slot0._delayShowNum(slot0)
-	slot0._effectItem:initData(1, slot0._targetPos, nil, slot0._effectMo.effectNum)
+function var_0_0._delayShowNum(arg_3_0)
+	arg_3_0._effectItem:initData(1, arg_3_0._targetPos, nil, arg_3_0._effectMo.effectNum)
 end
 
-function slot0._delayFinish(slot0)
-	slot0:onDone(true)
+function var_0_0._delayFinish(arg_4_0)
+	arg_4_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
-	if slot0._effectItem then
-		DiceHeroHelper.instance:returnEffectItemToPool(slot0._effectItem)
+function var_0_0.clearWork(arg_5_0)
+	if arg_5_0._effectItem then
+		DiceHeroHelper.instance:returnEffectItemToPool(arg_5_0._effectItem)
 
-		slot0._effectItem = nil
+		arg_5_0._effectItem = nil
 	end
 
-	TaskDispatcher.cancelTask(slot0._delayShowDamage, slot0)
-	TaskDispatcher.cancelTask(slot0._delayShowNum, slot0)
-	TaskDispatcher.cancelTask(slot0._delayFinish, slot0)
+	TaskDispatcher.cancelTask(arg_5_0._delayShowDamage, arg_5_0)
+	TaskDispatcher.cancelTask(arg_5_0._delayShowNum, arg_5_0)
+	TaskDispatcher.cancelTask(arg_5_0._delayFinish, arg_5_0)
 end
 
-return slot0
+return var_0_0

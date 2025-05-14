@@ -1,44 +1,47 @@
-module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroEffectItem", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.view.DiceHeroEffectItem", package.seeall)
 
-slot0 = class("DiceHeroEffectItem", LuaCompBase)
+local var_0_0 = class("DiceHeroEffectItem", LuaCompBase)
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
-	slot0._trans = slot1.transform
-	slot0._godamage = gohelper.findChild(slot1, "damage")
-	slot0._txtdamage = gohelper.findChildText(slot1, "damage/x/txtNum")
-	slot0._goshield = gohelper.findChild(slot1, "shield")
-	slot0._txtshield = gohelper.findChildText(slot1, "shield/x/txtNum")
-	slot0._gohero = gohelper.findChild(slot1, "#go_hpFlyItem_hero")
-	slot0._goenemy = gohelper.findChild(slot1, "#go_hpFlyItem_enemy")
-	slot0._goeffectenergy = gohelper.findChild(slot1, "#go_hpFlyItem_energy")
-	slot0._goeffectshield = gohelper.findChild(slot1, "#go_hpFlyItem_shield")
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.go = arg_1_1
+	arg_1_0._trans = arg_1_1.transform
+	arg_1_0._godamage = gohelper.findChild(arg_1_1, "damage")
+	arg_1_0._txtdamage = gohelper.findChildText(arg_1_1, "damage/x/txtNum")
+	arg_1_0._goshield = gohelper.findChild(arg_1_1, "shield")
+	arg_1_0._txtshield = gohelper.findChildText(arg_1_1, "shield/x/txtNum")
+	arg_1_0._gohero = gohelper.findChild(arg_1_1, "#go_hpFlyItem_hero")
+	arg_1_0._goenemy = gohelper.findChild(arg_1_1, "#go_hpFlyItem_enemy")
+	arg_1_0._goeffectenergy = gohelper.findChild(arg_1_1, "#go_hpFlyItem_energy")
+	arg_1_0._goeffectshield = gohelper.findChild(arg_1_1, "#go_hpFlyItem_shield")
 end
 
-function slot0.initData(slot0, slot1, slot2, slot3, slot4)
-	ZProj.TweenHelper.KillByObj(slot0._trans)
-	gohelper.setActive(slot0._godamage, slot1 == 1)
-	gohelper.setActive(slot0._gohero, slot1 == 2)
-	gohelper.setActive(slot0._goenemy, slot1 == 3)
-	gohelper.setActive(slot0._goshield, slot1 == 4)
-	gohelper.setActive(slot0._goeffectenergy, slot1 == 5)
-	gohelper.setActive(slot0._goeffectshield, slot1 == 6)
-	transformhelper.setPos(slot0._trans, slot2.x, slot2.y, slot2.z)
+function var_0_0.initData(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4)
+	ZProj.TweenHelper.KillByObj(arg_2_0._trans)
+	gohelper.setActive(arg_2_0._godamage, arg_2_1 == 1)
+	gohelper.setActive(arg_2_0._gohero, arg_2_1 == 2)
+	gohelper.setActive(arg_2_0._goenemy, arg_2_1 == 3)
+	gohelper.setActive(arg_2_0._goshield, arg_2_1 == 4)
+	gohelper.setActive(arg_2_0._goeffectenergy, arg_2_1 == 5)
+	gohelper.setActive(arg_2_0._goeffectshield, arg_2_1 == 6)
+	transformhelper.setPos(arg_2_0._trans, arg_2_2.x, arg_2_2.y, arg_2_2.z)
 
-	if slot1 == 1 then
-		slot0._txtdamage.text = slot4
+	if arg_2_1 == 1 then
+		arg_2_0._txtdamage.text = arg_2_4
 
-		transformhelper.setLocalRotation(slot0._trans, 0, 0, 0)
-	elseif slot1 == 4 then
-		slot0._txtshield.text = slot4
+		transformhelper.setLocalRotation(arg_2_0._trans, 0, 0, 0)
+	elseif arg_2_1 == 4 then
+		arg_2_0._txtshield.text = arg_2_4
 
-		transformhelper.setLocalRotation(slot0._trans, 0, 0, 0)
+		transformhelper.setLocalRotation(arg_2_0._trans, 0, 0, 0)
 	else
-		slot5 = slot0._trans.parent:InverseTransformPoint(slot3)
+		local var_2_0 = arg_2_0._trans.parent:InverseTransformPoint(arg_2_3)
 
-		ZProj.TweenHelper.DOLocalMove(slot0._trans, slot5.x, slot5.y, slot5.z, 0.5)
-		transformhelper.setLocalRotation(slot0._trans, 0, 0, math.deg(math.atan2(slot3.y - slot2.y, slot3.x - slot2.x)) + 180)
+		ZProj.TweenHelper.DOLocalMove(arg_2_0._trans, var_2_0.x, var_2_0.y, var_2_0.z, 0.5)
+
+		local var_2_1 = math.deg(math.atan2(arg_2_3.y - arg_2_2.y, arg_2_3.x - arg_2_2.x)) + 180
+
+		transformhelper.setLocalRotation(arg_2_0._trans, 0, 0, var_2_1)
 	end
 end
 
-return slot0
+return var_0_0

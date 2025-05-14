@@ -1,78 +1,90 @@
-module("modules.logic.tips.view.stress.FightFocusAct183StressComp", package.seeall)
+﻿module("modules.logic.tips.view.stress.FightFocusAct183StressComp", package.seeall)
 
-slot0 = class("FightFocusAct183StressComp", FightFocusStressCompBase)
-slot0.PrefabPath = FightNameUIStressMgr.PrefabPath
+local var_0_0 = class("FightFocusAct183StressComp", FightFocusStressCompBase)
 
-function slot0.getUiType(slot0)
+var_0_0.PrefabPath = FightNameUIStressMgr.PrefabPath
+
+function var_0_0.getUiType(arg_1_0)
 	return FightNameUIStressMgr.UiType.Act183
 end
 
-function slot0.initUI(slot0)
-	slot0.stressText = gohelper.findChildText(slot0.instanceGo, "#txt_stress")
-	slot0.goYellow = gohelper.findChild(slot0.instanceGo, "yellow")
-	slot0.goBroken = gohelper.findChild(slot0.instanceGo, "broken")
-	slot0.click = gohelper.findChildClickWithDefaultAudio(slot0.instanceGo, "#go_clickarea")
+function var_0_0.initUI(arg_2_0)
+	arg_2_0.stressText = gohelper.findChildText(arg_2_0.instanceGo, "#txt_stress")
+	arg_2_0.goYellow = gohelper.findChild(arg_2_0.instanceGo, "yellow")
+	arg_2_0.goBroken = gohelper.findChild(arg_2_0.instanceGo, "broken")
+	arg_2_0.click = gohelper.findChildClickWithDefaultAudio(arg_2_0.instanceGo, "#go_clickarea")
 
-	slot0.click:AddClickListener(slot0.onClickStress, slot0)
+	arg_2_0.click:AddClickListener(arg_2_0.onClickStress, arg_2_0)
 end
 
-function slot0.onClickStress(slot0)
-	if not slot0.entityMo then
+function var_0_0.onClickStress(arg_3_0)
+	if not arg_3_0.entityMo then
 		return
 	end
 
-	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183] and slot1.stressIdentity[slot0.entityMo.id] then
-		StressTipController.instance:openAct183StressTip(slot2)
+	local var_3_0 = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183]
 
-		return
+	if var_3_0 then
+		local var_3_1 = var_3_0.stressIdentity[arg_3_0.entityMo.id]
+
+		if var_3_1 then
+			StressTipController.instance:openAct183StressTip(var_3_1)
+
+			return
+		end
 	end
 
-	slot3 = slot0.entityMo:getCO() and lua_monster_skill_template.configDict[slot2.skillTemplate]
+	local var_3_2 = arg_3_0.entityMo:getCO()
+	local var_3_3 = var_3_2 and lua_monster_skill_template.configDict[var_3_2.skillTemplate]
+	local var_3_4 = var_3_3 and var_3_3.identity
 
-	if not (slot3 and slot3.identity) then
+	if not var_3_4 then
 		return
 	end
 
 	StressTipController.instance:openAct183StressTip({
-		slot4
+		var_3_4
 	})
 end
 
-function slot0.refreshStress(slot0, slot1)
-	if not slot0.loaded then
-		slot0.cacheEntityMo = slot1
+function var_0_0.refreshStress(arg_4_0, arg_4_1)
+	if not arg_4_0.loaded then
+		arg_4_0.cacheEntityMo = arg_4_1
 
 		return
 	end
 
-	if not slot1 then
-		slot0:hide()
+	if not arg_4_1 then
+		arg_4_0:hide()
 
 		return
 	end
 
-	if not slot1:hasStress() then
-		slot0:hide()
+	if not arg_4_1:hasStress() then
+		arg_4_0:hide()
 
 		return
 	end
 
-	slot0:show()
+	arg_4_0:show()
 
-	slot0.entityMo = slot1
-	slot3 = slot1:getPowerInfo(FightEnum.PowerType.Stress) and slot2.num or 0
-	slot0.stressText.text = slot3
+	arg_4_0.entityMo = arg_4_1
 
-	gohelper.setActive(slot0.goYellow, slot3 <= StressAct183Behavior.StressThreshold)
-	gohelper.setActive(slot0.goBroken, StressAct183Behavior.StressThreshold < slot3)
+	local var_4_0 = arg_4_1:getPowerInfo(FightEnum.PowerType.Stress)
+	local var_4_1 = var_4_0 and var_4_0.num or 0
+
+	arg_4_0.stressText.text = var_4_1
+
+	gohelper.setActive(arg_4_0.goYellow, var_4_1 <= StressAct183Behavior.StressThreshold)
+	gohelper.setActive(arg_4_0.goBroken, var_4_1 > StressAct183Behavior.StressThreshold)
 end
 
-function slot0.destroy(slot0)
-	slot0.click:RemoveClickListener()
+function var_0_0.destroy(arg_5_0)
+	arg_5_0.click:RemoveClickListener()
 
-	slot0.click = nil
+	arg_5_0.click = nil
 
-	uv0.super.destroy(slot0)
+	var_0_0.super.destroy(arg_5_0)
 end
 
-return slot0
+return var_0_0

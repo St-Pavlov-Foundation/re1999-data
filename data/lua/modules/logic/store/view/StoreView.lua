@@ -1,395 +1,445 @@
-module("modules.logic.store.view.StoreView", package.seeall)
+﻿module("modules.logic.store.view.StoreView", package.seeall)
 
-slot0 = class("StoreView", BaseView)
+local var_0_0 = class("StoreView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._simagebg = gohelper.findChildSingleImage(slot0.viewGO, "#go_store/bg/#simage_bg")
-	slot0._simagelefticon = gohelper.findChildSingleImage(slot0.viewGO, "#go_store/bg/#simage_lefticon")
-	slot0._simagerighticon = gohelper.findChildSingleImage(slot0.viewGO, "#go_store/bg/#simage_righticon")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._simagebg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_store/bg/#simage_bg")
+	arg_1_0._simagelefticon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_store/bg/#simage_lefticon")
+	arg_1_0._simagerighticon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_store/bg/#simage_righticon")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
+function var_0_0.addEvents(arg_2_0)
+	return
 end
 
-function slot0.removeEvents(slot0)
+function var_0_0.removeEvents(arg_3_0)
+	return
 end
 
-function slot0._editableInitView(slot0)
-	slot0._viewAnim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	slot0._gobigTypeItem = gohelper.findChild(slot0.viewGO, "scroll_bigType/viewport/content/#go_bigTypeItem")
-	slot0._gobigTypeItem1 = gohelper.findChild(slot0.viewGO, "scroll_bigType/viewport/content/#go_bigTypeItem1")
-	slot0._bigTypeItemContent = gohelper.findChild(slot0.viewGO, "scroll_bigType/viewport/content").transform
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._viewAnim = arg_4_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	arg_4_0._gobigTypeItem = gohelper.findChild(arg_4_0.viewGO, "scroll_bigType/viewport/content/#go_bigTypeItem")
+	arg_4_0._gobigTypeItem1 = gohelper.findChild(arg_4_0.viewGO, "scroll_bigType/viewport/content/#go_bigTypeItem1")
+	arg_4_0._bigTypeItemContent = gohelper.findChild(arg_4_0.viewGO, "scroll_bigType/viewport/content").transform
 
-	slot0._simagebg:LoadImage(ResUrl.getStoreBottomBgIcon("full/shangcheng_bj"))
-	slot0._simagelefticon:LoadImage(ResUrl.getStoreBottomBgIcon("bg_leftdown2"))
-	slot0._simagerighticon:LoadImage(ResUrl.getStoreBottomBgIcon("bg_right3"))
+	arg_4_0._simagebg:LoadImage(ResUrl.getStoreBottomBgIcon("full/shangcheng_bj"))
+	arg_4_0._simagelefticon:LoadImage(ResUrl.getStoreBottomBgIcon("bg_leftdown2"))
+	arg_4_0._simagerighticon:LoadImage(ResUrl.getStoreBottomBgIcon("bg_right3"))
 
-	slot0._scrollbigType = gohelper.findChildScrollRect(slot0.viewGO, "scroll_bigType")
-	slot0._tabsContainer = {}
+	arg_4_0._scrollbigType = gohelper.findChildScrollRect(arg_4_0.viewGO, "scroll_bigType")
+	arg_4_0._tabsContainer = {}
 
-	for slot5 = 1, #StoreModel.instance:getFirstTabs(true, true) do
-		slot6 = slot0:getUserDataTb_()
-		slot6.go = gohelper.cloneInPlace(slot0._gobigTypeItem, "bigTypeItem" .. slot5)
-		slot6.reddot = gohelper.findChild(slot6.go, "go_tabreddot")
-		slot6.reddotNormalType = gohelper.findChild(slot6.go, "go_tabreddot/type1")
-		slot6.reddotActType = gohelper.findChild(slot6.go, "go_tabreddot/type9")
-		slot6.goselected = gohelper.findChild(slot6.go, "go_selected")
-		slot6.iconselected = gohelper.findChildImage(slot6.goselected, "itemicon2")
-		slot6.gounselected = gohelper.findChild(slot6.go, "go_unselected")
-		slot6.iconunselected = gohelper.findChildImage(slot6.gounselected, "itemicon1")
-		slot6.txtnamecn1 = gohelper.findChildText(slot6.go, "go_selected/txt_itemcn2")
-		slot6.txtnameen1 = gohelper.findChildText(slot6.go, "go_selected/txt_itemen2")
-		slot6.txtnamecn2 = gohelper.findChildText(slot6.go, "go_unselected/txt_itemcn1")
-		slot6.txtnameen2 = gohelper.findChildText(slot6.go, "go_unselected/txt_itemen1")
-		slot6.clickArea = gohelper.findChild(slot6.go, "clickArea")
-		slot6.godeadline = gohelper.findChild(slot6.go, "go_deadline")
-		slot6.godeadlineEffect = gohelper.findChild(slot6.godeadline, "#effect")
-		slot6.txttime = gohelper.findChildText(slot6.godeadline, "#txt_time")
-		slot6.txtformat = gohelper.findChildText(slot6.godeadline, "#txt_time/#txt_format")
-		slot6.imagetimebg = gohelper.findChildImage(slot6.godeadline, "timebg")
-		slot6.imagetimeicon = gohelper.findChildImage(slot6.godeadline, "#txt_time/timeicon")
-		slot6.btn = gohelper.getClickWithAudio(slot6.clickArea, AudioEnum.UI.play_ui_plot_common)
+	local var_4_0 = #StoreModel.instance:getFirstTabs(true, true)
 
-		slot6.btn:AddClickListener(function (slot0)
-			slot1 = slot0.tabId
+	for iter_4_0 = 1, var_4_0 do
+		local var_4_1 = arg_4_0:getUserDataTb_()
 
-			uv0:_refreshTabs(slot1)
-			StoreController.instance:statSwitchStore(slot1)
-		end, slot6)
-		table.insert(slot0._tabsContainer, slot6)
+		var_4_1.go = gohelper.cloneInPlace(arg_4_0._gobigTypeItem, "bigTypeItem" .. iter_4_0)
+		var_4_1.reddot = gohelper.findChild(var_4_1.go, "go_tabreddot")
+		var_4_1.reddotNormalType = gohelper.findChild(var_4_1.go, "go_tabreddot/type1")
+		var_4_1.reddotActType = gohelper.findChild(var_4_1.go, "go_tabreddot/type9")
+		var_4_1.goselected = gohelper.findChild(var_4_1.go, "go_selected")
+		var_4_1.iconselected = gohelper.findChildImage(var_4_1.goselected, "itemicon2")
+		var_4_1.gounselected = gohelper.findChild(var_4_1.go, "go_unselected")
+		var_4_1.iconunselected = gohelper.findChildImage(var_4_1.gounselected, "itemicon1")
+		var_4_1.txtnamecn1 = gohelper.findChildText(var_4_1.go, "go_selected/txt_itemcn2")
+		var_4_1.txtnameen1 = gohelper.findChildText(var_4_1.go, "go_selected/txt_itemen2")
+		var_4_1.txtnamecn2 = gohelper.findChildText(var_4_1.go, "go_unselected/txt_itemcn1")
+		var_4_1.txtnameen2 = gohelper.findChildText(var_4_1.go, "go_unselected/txt_itemen1")
+		var_4_1.clickArea = gohelper.findChild(var_4_1.go, "clickArea")
+		var_4_1.godeadline = gohelper.findChild(var_4_1.go, "go_deadline")
+		var_4_1.godeadlineEffect = gohelper.findChild(var_4_1.godeadline, "#effect")
+		var_4_1.txttime = gohelper.findChildText(var_4_1.godeadline, "#txt_time")
+		var_4_1.txtformat = gohelper.findChildText(var_4_1.godeadline, "#txt_time/#txt_format")
+		var_4_1.imagetimebg = gohelper.findChildImage(var_4_1.godeadline, "timebg")
+		var_4_1.imagetimeicon = gohelper.findChildImage(var_4_1.godeadline, "#txt_time/timeicon")
+		var_4_1.btn = gohelper.getClickWithAudio(var_4_1.clickArea, AudioEnum.UI.play_ui_plot_common)
+
+		var_4_1.btn:AddClickListener(function(arg_5_0)
+			local var_5_0 = arg_5_0.tabId
+
+			arg_4_0:_refreshTabs(var_5_0)
+			StoreController.instance:statSwitchStore(var_5_0)
+		end, var_4_1)
+		table.insert(arg_4_0._tabsContainer, var_4_1)
 	end
 
-	slot2 = slot0:getUserDataTb_()
-	slot2.go = slot0._gobigTypeItem1
-	slot2.reddot = gohelper.findChild(slot2.go, "go_tabreddot")
-	slot2.goselected = gohelper.findChild(slot2.go, "go_selected")
-	slot2.iconselected = gohelper.findChildImage(slot2.goselected, "itemicon2")
-	slot2.gounselected = gohelper.findChild(slot2.go, "go_unselected")
-	slot2.iconunselected = gohelper.findChildImage(slot2.gounselected, "itemicon1")
-	slot2.txtnamecn1 = gohelper.findChildText(slot2.go, "go_selected/txt_itemcn2")
-	slot2.txtnameen1 = gohelper.findChildText(slot2.go, "go_selected/txt_itemen2")
-	slot2.txtnamecn2 = gohelper.findChildText(slot2.go, "go_unselected/txt_itemcn1")
-	slot2.txtnameen2 = gohelper.findChildText(slot2.go, "go_unselected/txt_itemen1")
-	slot2.clickArea = gohelper.findChild(slot2.go, "clickArea")
-	slot2.btn = gohelper.getClickWithAudio(slot2.clickArea, AudioEnum.UI.play_ui_plot_common)
+	local var_4_2 = arg_4_0:getUserDataTb_()
 
-	slot2.btn:AddClickListener(function (slot0)
-		slot1 = slot0.tabId
+	var_4_2.go = arg_4_0._gobigTypeItem1
+	var_4_2.reddot = gohelper.findChild(var_4_2.go, "go_tabreddot")
+	var_4_2.goselected = gohelper.findChild(var_4_2.go, "go_selected")
+	var_4_2.iconselected = gohelper.findChildImage(var_4_2.goselected, "itemicon2")
+	var_4_2.gounselected = gohelper.findChild(var_4_2.go, "go_unselected")
+	var_4_2.iconunselected = gohelper.findChildImage(var_4_2.gounselected, "itemicon1")
+	var_4_2.txtnamecn1 = gohelper.findChildText(var_4_2.go, "go_selected/txt_itemcn2")
+	var_4_2.txtnameen1 = gohelper.findChildText(var_4_2.go, "go_selected/txt_itemen2")
+	var_4_2.txtnamecn2 = gohelper.findChildText(var_4_2.go, "go_unselected/txt_itemcn1")
+	var_4_2.txtnameen2 = gohelper.findChildText(var_4_2.go, "go_unselected/txt_itemen1")
+	var_4_2.clickArea = gohelper.findChild(var_4_2.go, "clickArea")
+	var_4_2.btn = gohelper.getClickWithAudio(var_4_2.clickArea, AudioEnum.UI.play_ui_plot_common)
 
-		uv0:_refreshTabs(slot1)
-		StoreController.instance:statSwitchStore(slot1)
-	end, slot2)
+	var_4_2.btn:AddClickListener(function(arg_6_0)
+		local var_6_0 = arg_6_0.tabId
 
-	slot0._tabTableSP1 = slot2
+		arg_4_0:_refreshTabs(var_6_0)
+		StoreController.instance:statSwitchStore(var_6_0)
+	end, var_4_2)
 
-	gohelper.setActive(slot0._gobigTypeItem, false)
-	gohelper.setActive(slot0._gobigTypeItem1, false)
+	arg_4_0._tabTableSP1 = var_4_2
+
+	gohelper.setActive(arg_4_0._gobigTypeItem, false)
+	gohelper.setActive(arg_4_0._gobigTypeItem1, false)
 end
 
-function slot0._refreshTabs(slot0, slot1, slot2)
-	StoreController.instance:readTab(slot1)
+function var_0_0._refreshTabs(arg_7_0, arg_7_1, arg_7_2)
+	StoreController.instance:readTab(arg_7_1)
 
-	slot3 = nil
+	local var_7_0
 
-	if StoreModel.instance:isTabOpen(slot1) == false then
-		slot2 = nil
-		slot1 = StoreModel.instance:getFirstTabs(true, true)[1].id
+	if StoreModel.instance:isTabOpen(arg_7_1) == false then
+		arg_7_2 = nil
+		var_7_0 = StoreModel.instance:getFirstTabs(true, true)
+		arg_7_1 = var_7_0[1].id
 	end
 
-	slot4 = slot0._selectFirstTabId == nil
-	slot0._selectFirstTabId = StoreEnum.DefaultTabId
-	slot0._selectFirstTabId = StoreModel.instance:jumpTabIdToSelectTabId(slot1)
+	local var_7_1 = arg_7_0._selectFirstTabId == nil
+	local var_7_2 = arg_7_0._selectFirstTabId
 
-	slot0.viewContainer:selectTabView(slot1, slot0._selectFirstTabId, slot2, slot0._selectFirstTabId == slot0._selectFirstTabId)
+	arg_7_0._selectFirstTabId = StoreEnum.DefaultTabId
+	arg_7_0._selectFirstTabId = StoreModel.instance:jumpTabIdToSelectTabId(arg_7_1)
 
-	slot6 = math.min(#(slot3 or StoreModel.instance:getFirstTabs(true, true)), #slot0._tabsContainer)
+	arg_7_0.viewContainer:selectTabView(arg_7_1, arg_7_0._selectFirstTabId, arg_7_2, var_7_2 == arg_7_0._selectFirstTabId)
 
-	if slot5 == slot0._selectFirstTabId and slot0._totalTabCount == slot6 then
+	var_7_0 = var_7_0 or StoreModel.instance:getFirstTabs(true, true)
+
+	local var_7_3 = math.min(#var_7_0, #arg_7_0._tabsContainer)
+
+	if var_7_2 == arg_7_0._selectFirstTabId and arg_7_0._totalTabCount == var_7_3 then
 		return
 	end
 
-	slot0._totalTabCount = slot6
+	arg_7_0._totalTabCount = var_7_3
 
-	if slot3 and #slot3 > 0 then
-		slot0._needCountdown = false
-		slot10 = #slot0._tabsContainer
+	if var_7_0 and #var_7_0 > 0 then
+		arg_7_0._needCountdown = false
 
-		for slot10 = 1, math.min(#slot3, slot10) do
-			slot12 = slot0._tabsContainer[slot10]
+		for iter_7_0 = 1, math.min(#var_7_0, #arg_7_0._tabsContainer) do
+			local var_7_4 = var_7_0[iter_7_0]
+			local var_7_5 = arg_7_0._tabsContainer[iter_7_0]
 
-			if slot3[slot10].id == StoreEnum.DefaultTabId then
-				gohelper.setSibling(slot0._tabTableSP1.go, gohelper.getSibling(slot0._tabsContainer[slot10].go))
-				gohelper.setActive(slot0._tabsContainer[slot10].go, false)
+			if var_7_4.id == StoreEnum.DefaultTabId then
+				var_7_5 = arg_7_0._tabTableSP1
+
+				local var_7_6 = gohelper.getSibling(arg_7_0._tabsContainer[iter_7_0].go)
+
+				gohelper.setSibling(var_7_5.go, var_7_6)
+				gohelper.setActive(arg_7_0._tabsContainer[iter_7_0].go, false)
 			end
 
-			slot12.tabId = slot11.id
-			slot13 = slot11.id == slot0._selectFirstTabId
-			slot12.txtnamecn1.text = slot11.name
-			slot12.txtnamecn2.text = slot11.name
-			slot12.txtnameen1.text = slot11.nameEn
-			slot12.txtnameen2.text = slot11.nameEn
+			var_7_5.tabId = var_7_4.id
 
-			UISpriteSetMgr.instance:setStoreGoodsSprite(slot12.iconselected, slot12.tabId)
-			UISpriteSetMgr.instance:setStoreGoodsSprite(slot12.iconunselected, slot12.tabId)
-			gohelper.setActive(slot12.goselected, slot13)
-			gohelper.setActive(slot12.gounselected, not slot13)
-			gohelper.setActive(slot12.go, true)
-			slot0:refreshTimeDeadline(slot11, slot12)
+			local var_7_7 = var_7_4.id == arg_7_0._selectFirstTabId
 
-			if slot13 then
-				slot0:_handleTabSet(slot10, slot4)
+			var_7_5.txtnamecn1.text = var_7_4.name
+			var_7_5.txtnamecn2.text = var_7_4.name
+			var_7_5.txtnameen1.text = var_7_4.nameEn
+			var_7_5.txtnameen2.text = var_7_4.nameEn
+
+			UISpriteSetMgr.instance:setStoreGoodsSprite(var_7_5.iconselected, var_7_5.tabId)
+			UISpriteSetMgr.instance:setStoreGoodsSprite(var_7_5.iconunselected, var_7_5.tabId)
+			gohelper.setActive(var_7_5.goselected, var_7_7)
+			gohelper.setActive(var_7_5.gounselected, not var_7_7)
+			gohelper.setActive(var_7_5.go, true)
+			arg_7_0:refreshTimeDeadline(var_7_4, var_7_5)
+
+			if var_7_7 then
+				arg_7_0:_handleTabSet(iter_7_0, var_7_1)
 			end
 		end
 
-		slot0:checkCountdownStatus()
+		arg_7_0:checkCountdownStatus()
 
-		for slot10 = #slot3 + 1, #slot0._tabsContainer do
-			gohelper.setActive(slot0._tabsContainer[slot10].go, false)
+		for iter_7_1 = #var_7_0 + 1, #arg_7_0._tabsContainer do
+			gohelper.setActive(arg_7_0._tabsContainer[iter_7_1].go, false)
 		end
 	else
-		for slot10 = 1, #slot0._tabsContainer do
-			gohelper.setActive(slot0._tabsContainer[slot10].go, false)
+		for iter_7_2 = 1, #arg_7_0._tabsContainer do
+			gohelper.setActive(arg_7_0._tabsContainer[iter_7_2].go, false)
 		end
 	end
 end
 
-function slot0.refreshTimeDeadline(slot0, slot1, slot2)
-	if not slot2.godeadline or gohelper.isNil(slot2.godeadline) or slot1 == nil then
+function var_0_0.refreshTimeDeadline(arg_8_0, arg_8_1, arg_8_2)
+	if not arg_8_2.godeadline or gohelper.isNil(arg_8_2.godeadline) or arg_8_1 == nil then
 		return
 	end
 
-	slot3 = false
-	slot5 = false
+	local var_8_0 = false
+	local var_8_1 = StoreModel.instance:isTabMainRedDotShow(arg_8_1.id)
+	local var_8_2 = false
 
-	if slot1.id == StoreEnum.StoreId.SummonExchange then
-		if slot1.id ~= slot0._selectFirstTabId and not StoreModel.instance:isTabMainRedDotShow(slot1.id) and StoreHelper.getRemainExpireTimeDeep(slot1) and slot6 > 0 and slot6 <= TimeUtil.OneDaySecond * 7 then
-			gohelper.setActive(slot2.godeadline, true)
-			gohelper.setActive(slot2.txttime.gameObject, true)
+	if arg_8_1.id == StoreEnum.StoreId.SummonExchange then
+		if arg_8_1.id ~= arg_8_0._selectFirstTabId and not var_8_1 then
+			local var_8_3 = StoreHelper.getRemainExpireTimeDeep(arg_8_1)
 
-			slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
+			if var_8_3 and var_8_3 > 0 and var_8_3 <= TimeUtil.OneDaySecond * 7 then
+				gohelper.setActive(arg_8_2.godeadline, true)
+				gohelper.setActive(arg_8_2.txttime.gameObject, true)
 
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
-			gohelper.setActive(slot2.godeadlineEffect, not slot3)
+				local var_8_4
 
-			slot5 = true
+				arg_8_2.txttime.text, arg_8_2.txtformat.text, var_8_4 = TimeUtil.secondToRoughTime(math.floor(var_8_3), true)
+
+				UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimebg, var_8_4 and "daojishi_01" or "daojishi_02")
+				UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimeicon, var_8_4 and "daojishiicon_01" or "daojishiicon_02")
+				SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txttime, var_8_4 and "#98D687" or "#E99B56")
+				SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txtformat, var_8_4 and "#98D687" or "#E99B56")
+				gohelper.setActive(arg_8_2.godeadlineEffect, not var_8_4)
+
+				var_8_2 = true
+			end
 		end
-	elseif slot1.id == StoreEnum.StoreId.DecorateStore then
-		if slot1.id ~= slot0._selectFirstTabId and not slot4 and StoreHelper.getRemainExpireTimeDeepByStoreId(slot1.id) and slot6 > 0 then
-			gohelper.setActive(slot2.godeadline, true)
-			gohelper.setActive(slot2.txttime.gameObject, true)
+	elseif arg_8_1.id == StoreEnum.StoreId.DecorateStore then
+		if arg_8_1.id ~= arg_8_0._selectFirstTabId and not var_8_1 then
+			local var_8_5 = StoreHelper.getRemainExpireTimeDeepByStoreId(arg_8_1.id)
 
-			slot2.txttime.text, slot2.txtformat.text, slot11 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
+			if var_8_5 and var_8_5 > 0 then
+				gohelper.setActive(arg_8_2.godeadline, true)
+				gohelper.setActive(arg_8_2.txttime.gameObject, true)
 
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot11 and "daojishi_01" or "daojishi_02")
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
-			gohelper.setActive(slot2.godeadlineEffect, not slot3)
+				local var_8_6
 
-			slot5 = true
+				arg_8_2.txttime.text, arg_8_2.txtformat.text, var_8_6 = TimeUtil.secondToRoughTime(math.floor(var_8_5), true)
+
+				UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimebg, var_8_6 and "daojishi_01" or "daojishi_02")
+				UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimeicon, var_8_6 and "daojishiicon_01" or "daojishiicon_02")
+				SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txttime, var_8_6 and "#98D687" or "#E99B56")
+				SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txtformat, var_8_6 and "#98D687" or "#E99B56")
+				gohelper.setActive(arg_8_2.godeadlineEffect, not var_8_6)
+
+				var_8_2 = true
+			end
 		end
-	elseif StoreEnum.StoreId.Skin == slot1.storeId then
-		slot6 = 0
+	elseif StoreEnum.StoreId.Skin == arg_8_1.storeId then
+		local var_8_7 = 0
+		local var_8_8 = ItemModel.instance:getItemsBySubType(ItemEnum.SubType.SkinTicket)
 
-		if ItemModel.instance:getItemsBySubType(ItemEnum.SubType.SkinTicket)[1] and ItemModel.instance:getItemConfigAndIcon(MaterialEnum.MaterialType.Item, slot7[1].id) and not string.nilorempty(slot8.expireTime) and math.floor(TimeUtil.stringToTimestamp(slot8.expireTime) - ServerTime.now()) >= 0 and slot10 <= 259200 then
-			slot6 = slot10
+		if var_8_8[1] then
+			local var_8_9 = ItemModel.instance:getItemConfigAndIcon(MaterialEnum.MaterialType.Item, var_8_8[1].id)
+
+			if var_8_9 and not string.nilorempty(var_8_9.expireTime) then
+				local var_8_10 = TimeUtil.stringToTimestamp(var_8_9.expireTime)
+				local var_8_11 = math.floor(var_8_10 - ServerTime.now())
+
+				if var_8_11 >= 0 and var_8_11 <= 259200 then
+					var_8_7 = var_8_11
+				end
+			end
 		end
 
-		if slot6 > 0 then
-			gohelper.setActive(slot2.godeadline, true)
-			gohelper.setActive(slot2.txttime.gameObject, true)
+		if var_8_7 > 0 then
+			gohelper.setActive(arg_8_2.godeadline, true)
+			gohelper.setActive(arg_8_2.txttime.gameObject, true)
 
-			slot2.txttime.text, slot2.txtformat.text, slot12 = TimeUtil.secondToRoughTime(math.floor(slot6), true)
+			local var_8_12
 
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimebg, slot12 and "daojishi_01" or "daojishi_02")
-			UISpriteSetMgr.instance:setCommonSprite(slot2.imagetimeicon, slot3 and "daojishiicon_01" or "daojishiicon_02")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txttime, slot3 and "#98D687" or "#E99B56")
-			SLFramework.UGUI.GuiHelper.SetColor(slot2.txtformat, slot3 and "#98D687" or "#E99B56")
-			gohelper.setActive(slot2.godeadlineEffect, not slot3)
+			arg_8_2.txttime.text, arg_8_2.txtformat.text, var_8_12 = TimeUtil.secondToRoughTime(math.floor(var_8_7), true)
 
-			slot5 = true
+			UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimebg, var_8_12 and "daojishi_01" or "daojishi_02")
+			UISpriteSetMgr.instance:setCommonSprite(arg_8_2.imagetimeicon, var_8_12 and "daojishiicon_01" or "daojishiicon_02")
+			SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txttime, var_8_12 and "#98D687" or "#E99B56")
+			SLFramework.UGUI.GuiHelper.SetColor(arg_8_2.txtformat, var_8_12 and "#98D687" or "#E99B56")
+			gohelper.setActive(arg_8_2.godeadlineEffect, not var_8_12)
+
+			var_8_2 = true
 		else
-			gohelper.setActive(slot2.godeadline, false)
-			gohelper.setActive(slot2.txttime.gameObject, false)
+			gohelper.setActive(arg_8_2.godeadline, false)
+			gohelper.setActive(arg_8_2.txttime.gameObject, false)
 		end
 	else
-		gohelper.setActive(slot2.godeadline, false)
-		gohelper.setActive(slot2.txttime.gameObject, false)
+		gohelper.setActive(arg_8_2.godeadline, false)
+		gohelper.setActive(arg_8_2.txttime.gameObject, false)
 	end
 
-	slot0._needCountdown = slot5
+	arg_8_0._needCountdown = var_8_2
 end
 
-function slot0.onOpen(slot0)
-	if not StoreModel.instance:isTabOpen(slot0.viewParam and slot0.viewParam.jumpTab or StoreEnum.DefaultTabId) then
-		slot1 = StoreEnum.DefaultTabId
+function var_0_0.onOpen(arg_9_0)
+	local var_9_0 = arg_9_0.viewParam and arg_9_0.viewParam.jumpTab or StoreEnum.DefaultTabId
+
+	if not StoreModel.instance:isTabOpen(var_9_0) then
+		var_9_0 = StoreEnum.DefaultTabId
 	end
 
-	slot0:_refreshTabs(slot1, slot0.viewParam.jumpGoodsId)
-	slot0:_onRefreshRedDot()
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0._OnDailyRefresh, slot0)
-	slot0:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, slot0._onRefreshRedDot, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onStoreInfoChanged, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, slot0._onRefreshRedDot, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, slot0._onPlayStoreInAnim, slot0)
-	slot0:addEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, slot0._onPlayStoreOutAnim, slot0)
-	StoreController.instance:statSwitchStore(slot1)
+	arg_9_0:_refreshTabs(var_9_0, arg_9_0.viewParam.jumpGoodsId)
+	arg_9_0:_onRefreshRedDot()
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_9_0._OnDailyRefresh, arg_9_0)
+	arg_9_0:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, arg_9_0._onRefreshRedDot, arg_9_0)
+	arg_9_0:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_9_0._onStoreInfoChanged, arg_9_0)
+	arg_9_0:addEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, arg_9_0._onRefreshRedDot, arg_9_0)
+	arg_9_0:addEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, arg_9_0._onPlayStoreInAnim, arg_9_0)
+	arg_9_0:addEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, arg_9_0._onPlayStoreOutAnim, arg_9_0)
+	StoreController.instance:statSwitchStore(var_9_0)
 end
 
-function slot0._onPlayStoreInAnim(slot0)
-	slot0._viewAnim:Play("storeview_show", 0, 0)
+function var_0_0._onPlayStoreInAnim(arg_10_0)
+	arg_10_0._viewAnim:Play("storeview_show", 0, 0)
 end
 
-function slot0._onPlayStoreOutAnim(slot0)
-	slot0._viewAnim:Play("storeview_hide", 0, 0)
+function var_0_0._onPlayStoreOutAnim(arg_11_0)
+	arg_11_0._viewAnim:Play("storeview_hide", 0, 0)
 end
 
-function slot0._onRefreshRedDot(slot0)
-	slot0._needCountdown = false
+function var_0_0._onRefreshRedDot(arg_12_0)
+	arg_12_0._needCountdown = false
 
-	for slot4, slot5 in pairs(slot0._tabsContainer) do
-		slot6, slot7 = StoreModel.instance:isTabMainRedDotShow(slot5.tabId)
+	for iter_12_0, iter_12_1 in pairs(arg_12_0._tabsContainer) do
+		local var_12_0, var_12_1 = StoreModel.instance:isTabMainRedDotShow(iter_12_1.tabId)
 
-		gohelper.setActive(slot5.reddot, slot6)
-		gohelper.setActive(slot5.reddotNormalType, not slot7)
-		gohelper.setActive(slot5.reddotActType, slot7)
-		slot0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(slot5.tabId), slot5)
+		gohelper.setActive(iter_12_1.reddot, var_12_0)
+		gohelper.setActive(iter_12_1.reddotNormalType, not var_12_1)
+		gohelper.setActive(iter_12_1.reddotActType, var_12_1)
+		arg_12_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_12_1.tabId), iter_12_1)
 	end
 
-	slot0:checkCountdownStatus()
-	gohelper.setActive(slot0._tabTableSP1.reddot, StoreModel.instance:isTabMainRedDotShow(slot0._tabTableSP1.tabId))
+	arg_12_0:checkCountdownStatus()
+	gohelper.setActive(arg_12_0._tabTableSP1.reddot, StoreModel.instance:isTabMainRedDotShow(arg_12_0._tabTableSP1.tabId))
 end
 
-function slot0._OnDailyRefresh(slot0)
+function var_0_0._OnDailyRefresh(arg_13_0)
 	ChargeRpc.instance:sendGetChargeInfoRequest()
-	StoreRpc.instance:sendGetStoreInfosRequest(nil, slot0._handleDailyRefreshReceive, slot0)
+	StoreRpc.instance:sendGetStoreInfosRequest(nil, arg_13_0._handleDailyRefreshReceive, arg_13_0)
 end
 
-function slot0._onStoreInfoChanged(slot0)
-	slot0:_onRefreshRedDot()
+function var_0_0._onStoreInfoChanged(arg_14_0)
+	arg_14_0:_onRefreshRedDot()
 
-	slot2 = #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0
+	local var_14_0 = #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0
 
-	if slot0._hasDecorateGoods and slot2 then
-		slot0:closeThis()
+	if arg_14_0._hasDecorateGoods and var_14_0 then
+		arg_14_0:closeThis()
 	end
 
-	slot0._hasDecorateGoods = not slot2
+	arg_14_0._hasDecorateGoods = not var_14_0
 end
 
-function slot0._handleDailyRefreshReceive(slot0)
-	slot0:_refreshTabs(slot0._selectFirstTabId)
-	slot0:_onRefreshRedDot()
+function var_0_0._handleDailyRefreshReceive(arg_15_0)
+	arg_15_0:_refreshTabs(arg_15_0._selectFirstTabId)
+	arg_15_0:_onRefreshRedDot()
 end
 
-function slot0.checkCountdownStatus(slot0)
-	if slot0._needCountdown and not slot0._countdownRepeat then
-		TaskDispatcher.runRepeat(slot0.refreshCountdown, slot0, 1)
+function var_0_0.checkCountdownStatus(arg_16_0)
+	if arg_16_0._needCountdown and not arg_16_0._countdownRepeat then
+		TaskDispatcher.runRepeat(arg_16_0.refreshCountdown, arg_16_0, 1)
 
-		slot0._countdownRepeat = true
-	elseif not slot0._needCountdown and slot0._countdownRepeat then
-		TaskDispatcher.cancelTask(slot0.refreshCountdown, slot0)
+		arg_16_0._countdownRepeat = true
+	elseif not arg_16_0._needCountdown and arg_16_0._countdownRepeat then
+		TaskDispatcher.cancelTask(arg_16_0.refreshCountdown, arg_16_0)
 
-		slot0._countdownRepeat = false
+		arg_16_0._countdownRepeat = false
 	end
 end
 
-function slot0.refreshCountdown(slot0)
-	if not slot0._tabsContainer then
+function var_0_0.refreshCountdown(arg_17_0)
+	if not arg_17_0._tabsContainer then
 		return
 	end
 
-	for slot4, slot5 in pairs(slot0._tabsContainer) do
-		if slot5.tabId then
-			slot0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(slot5.tabId), slot5)
+	for iter_17_0, iter_17_1 in pairs(arg_17_0._tabsContainer) do
+		if iter_17_1.tabId then
+			arg_17_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_17_1.tabId), iter_17_1)
 		end
 	end
 end
 
-function slot0.onClose(slot0)
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0._OnDailyRefresh, slot0)
-	slot0:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, slot0._onRefreshRedDot, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, slot0._onStoreInfoChanged, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, slot0._onRefreshRedDot, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, slot0._onPlayStoreInAnim, slot0)
-	slot0:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, slot0._onPlayStoreOutAnim, slot0)
+function var_0_0.onClose(arg_18_0)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_18_0._OnDailyRefresh, arg_18_0)
+	arg_18_0:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, arg_18_0._onRefreshRedDot, arg_18_0)
+	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_18_0._onStoreInfoChanged, arg_18_0)
+	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, arg_18_0._onRefreshRedDot, arg_18_0)
+	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, arg_18_0._onPlayStoreInAnim, arg_18_0)
+	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, arg_18_0._onPlayStoreOutAnim, arg_18_0)
 	StoreController.instance:statExitStore()
 
-	slot0._needCountdown = false
+	arg_18_0._needCountdown = false
 
-	slot0:checkCountdownStatus()
-	slot0:killTween()
+	arg_18_0:checkCountdownStatus()
+	arg_18_0:killTween()
 end
 
-function slot0.onUpdateParam(slot0)
-	if not StoreModel.instance:isTabOpen(slot0.viewParam and slot0.viewParam.jumpTab or StoreEnum.DefaultTabId) then
-		slot1 = StoreEnum.DefaultTabId
+function var_0_0.onUpdateParam(arg_19_0)
+	local var_19_0 = arg_19_0.viewParam and arg_19_0.viewParam.jumpTab or StoreEnum.DefaultTabId
+
+	if not StoreModel.instance:isTabOpen(var_19_0) then
+		var_19_0 = StoreEnum.DefaultTabId
 	end
 
-	slot0:_refreshTabs(slot1, slot0.viewParam.jumpGoodsId)
+	arg_19_0:_refreshTabs(var_19_0, arg_19_0.viewParam.jumpGoodsId)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._simagebg:UnLoadImage()
-	slot0._simagelefticon:UnLoadImage()
-	slot0._simagerighticon:UnLoadImage()
+function var_0_0.onDestroyView(arg_20_0)
+	arg_20_0._simagebg:UnLoadImage()
+	arg_20_0._simagelefticon:UnLoadImage()
+	arg_20_0._simagerighticon:UnLoadImage()
 
-	if slot0._tabsContainer and #slot0._tabsContainer > 0 then
-		for slot4 = 1, #slot0._tabsContainer do
-			slot0._tabsContainer[slot4].btn:RemoveClickListener()
+	if arg_20_0._tabsContainer and #arg_20_0._tabsContainer > 0 then
+		for iter_20_0 = 1, #arg_20_0._tabsContainer do
+			arg_20_0._tabsContainer[iter_20_0].btn:RemoveClickListener()
 		end
 	end
 
-	slot0._tabTableSP1.btn:RemoveClickListener()
+	arg_20_0._tabTableSP1.btn:RemoveClickListener()
 end
 
-slot0.TweenTime = 0.1
-slot0.OffY = 19
-slot0.ItemH = 120
-slot0.ItemSpace = -6.5
-slot0.ListH = 764.5
+var_0_0.TweenTime = 0.1
+var_0_0.OffY = 19
+var_0_0.ItemH = 120
+var_0_0.ItemSpace = -6.5
+var_0_0.ListH = 764.5
 
-function slot0._handleTabSet(slot0, slot1, slot2)
-	slot3 = uv0.OffY + (uv0.ItemH + uv0.ItemSpace) * 6
+function var_0_0._handleTabSet(arg_21_0, arg_21_1, arg_21_2)
+	local var_21_0 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * 6
+	local var_21_1 = recthelper.getAnchorY(arg_21_0._bigTypeItemContent)
+	local var_21_2 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * (arg_21_1 - 1)
 
-	if recthelper.getAnchorY(slot0._bigTypeItemContent) > uv0.OffY + (uv0.ItemH + uv0.ItemSpace) * (slot1 - 1) - uv0.OffY or slot5 + uv0.ItemH > slot4 + uv0.ListH then
-		if slot4 < slot5 - uv0.OffY then
-			slot6 = slot5 - uv0.ListH + uv0.ItemH - uv0.OffY
+	if var_21_1 > var_21_2 - var_0_0.OffY or var_21_2 + var_0_0.ItemH > var_21_1 + var_0_0.ListH then
+		local var_21_3 = var_21_2 - var_0_0.OffY
+
+		if var_21_1 < var_21_3 then
+			var_21_3 = var_21_2 - var_0_0.ListH + var_0_0.ItemH - var_0_0.OffY
 		end
 
-		if slot2 then
-			recthelper.setAnchorY(slot0._bigTypeItemContent, slot6)
+		if arg_21_2 then
+			recthelper.setAnchorY(arg_21_0._bigTypeItemContent, var_21_3)
 		else
-			slot0:killTween()
+			arg_21_0:killTween()
 
-			slot0._tweenIdCategory = ZProj.TweenHelper.DOTweenFloat(slot4, slot6, uv0.TweenTime, slot0.onTweenCategory, slot0.onTweenFinishCategory, slot0)
+			arg_21_0._tweenIdCategory = ZProj.TweenHelper.DOTweenFloat(var_21_1, var_21_3, var_0_0.TweenTime, arg_21_0.onTweenCategory, arg_21_0.onTweenFinishCategory, arg_21_0)
 		end
 	end
 end
 
-function slot0.onTweenCategory(slot0, slot1)
-	if not gohelper.isNil(slot0._scrollbigType) then
-		recthelper.setAnchorY(slot0._bigTypeItemContent, slot1)
+function var_0_0.onTweenCategory(arg_22_0, arg_22_1)
+	if not gohelper.isNil(arg_22_0._scrollbigType) then
+		recthelper.setAnchorY(arg_22_0._bigTypeItemContent, arg_22_1)
 	end
 end
 
-function slot0.onTweenFinishCategory(slot0)
-	slot0:killTween()
+function var_0_0.onTweenFinishCategory(arg_23_0)
+	arg_23_0:killTween()
 end
 
-function slot0.killTween(slot0)
-	if slot0._tweenIdCategory then
-		ZProj.TweenHelper.KillById(slot0._tweenIdCategory)
+function var_0_0.killTween(arg_24_0)
+	if arg_24_0._tweenIdCategory then
+		ZProj.TweenHelper.KillById(arg_24_0._tweenIdCategory)
 
-		slot0._tweenIdCategory = nil
+		arg_24_0._tweenIdCategory = nil
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,17 +1,18 @@
-module("modules.logic.fight.system.work.FightWorkCardsPush", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkCardsPush", package.seeall)
 
-slot0 = class("FightWorkCardsPush", FightEffectBase)
+local var_0_0 = class("FightWorkCardsPush", FightEffectBase)
 
-function slot0.onStart(slot0)
+function var_0_0.onStart(arg_1_0)
 	FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-function slot0._delayDone(slot0)
-	slot0:onDone(true)
+function var_0_0._delayDone(arg_2_0)
+	arg_2_0:onDone(true)
 end
 
-function slot0.clearWork(slot0)
+function var_0_0.clearWork(arg_3_0)
+	return
 end
 
-return slot0
+return var_0_0

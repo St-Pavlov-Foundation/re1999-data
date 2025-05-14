@@ -1,50 +1,52 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBaseRuleComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBaseRuleComp", package.seeall)
 
-slot0 = class("Act183DungeonBaseRuleComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonBaseRuleComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._gobaseruleitem = gohelper.findChild(slot0.go, "#go_baseruleitem")
-	slot0._baseRuleItemTab = slot0:getUserDataTb_()
+	arg_1_0._gobaseruleitem = gohelper.findChild(arg_1_0.go, "#go_baseruleitem")
+	arg_1_0._baseRuleItemTab = arg_1_0:getUserDataTb_()
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
+function var_0_0.updateInfo(arg_4_0, arg_4_1)
+	var_0_0.super.updateInfo(arg_4_0, arg_4_1)
 
-	slot0._baseRules = Act183Config.instance:getEpisodeAllRuleDesc(slot0._episodeId)
+	arg_4_0._baseRules = Act183Config.instance:getEpisodeAllRuleDesc(arg_4_0._episodeId)
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._baseRules and #slot0._baseRules > 0
+function var_0_0.checkIsVisible(arg_5_0)
+	return arg_5_0._baseRules and #arg_5_0._baseRules > 0
 end
 
-function slot0.show(slot0)
-	uv0.super.show(slot0)
-	slot0:createObjList(slot0._baseRules, slot0._baseRuleItemTab, slot0._gobaseruleitem, slot0._initBaseRuleItemFunc, slot0._refreshBaseRuleItemFunc, slot0._defaultItemFreeFunc)
+function var_0_0.show(arg_6_0)
+	var_0_0.super.show(arg_6_0)
+	arg_6_0:createObjList(arg_6_0._baseRules, arg_6_0._baseRuleItemTab, arg_6_0._gobaseruleitem, arg_6_0._initBaseRuleItemFunc, arg_6_0._refreshBaseRuleItemFunc, arg_6_0._defaultItemFreeFunc)
 end
 
-function slot0._initBaseRuleItemFunc(slot0, slot1)
-	slot1.txtdesc = gohelper.findChildText(slot1.go, "txt_desc")
-	slot1.imageicon = gohelper.findChildImage(slot1.go, "image_icon")
+function var_0_0._initBaseRuleItemFunc(arg_7_0, arg_7_1)
+	arg_7_1.txtdesc = gohelper.findChildText(arg_7_1.go, "txt_desc")
+	arg_7_1.imageicon = gohelper.findChildImage(arg_7_1.go, "image_icon")
 
-	SkillHelper.addHyperLinkClick(slot1.txtdesc)
+	SkillHelper.addHyperLinkClick(arg_7_1.txtdesc)
 end
 
-function slot0._refreshBaseRuleItemFunc(slot0, slot1, slot2, slot3)
-	slot1.txtdesc.text = SkillHelper.buildDesc(slot2)
+function var_0_0._refreshBaseRuleItemFunc(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	arg_8_1.txtdesc.text = SkillHelper.buildDesc(arg_8_2)
 
-	Act183Helper.setRuleIcon(slot0._episodeId, slot3, slot1.imageicon)
+	Act183Helper.setRuleIcon(arg_8_0._episodeId, arg_8_3, arg_8_1.imageicon)
 end
 
-function slot0.onDestroy(slot0)
-	uv0.super.onDestroy(slot0)
+function var_0_0.onDestroy(arg_9_0)
+	var_0_0.super.onDestroy(arg_9_0)
 end
 
-return slot0
+return var_0_0

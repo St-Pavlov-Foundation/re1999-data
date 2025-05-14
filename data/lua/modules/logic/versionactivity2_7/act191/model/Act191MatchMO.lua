@@ -1,143 +1,190 @@
-module("modules.logic.versionactivity2_7.act191.model.Act191MatchMO", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.model.Act191MatchMO", package.seeall)
 
-slot0 = pureTable("Act191MatchMO")
+local var_0_0 = pureTable("Act191MatchMO")
 
-function slot0.init(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.rank = slot1.rank
-	slot0.robot = slot1.robot
-	slot0.playerUid = slot1.playerUid
-	slot0.heroMap = slot1.heroMap
-	slot0.subHeroMap = slot1.subHeroMap
-	slot0.enhanceSet = slot1.enhanceSet
-	slot0.wareHouseInfo = slot1.warehouseInfo
+function var_0_0.init(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.rank = arg_1_1.rank
+	arg_1_0.robot = arg_1_1.robot
+	arg_1_0.playerUid = arg_1_1.playerUid
+	arg_1_0.heroMap = arg_1_1.heroMap
+	arg_1_0.subHeroMap = arg_1_1.subHeroMap
+	arg_1_0.enhanceSet = arg_1_1.enhanceSet
+	arg_1_0.wareHouseInfo = arg_1_1.warehouseInfo
 end
 
-function slot0.getRoleCo(slot0, slot1)
-	if slot0.robot then
-		return Activity191Config.instance:getRoleCo(slot1)
-	elseif slot0:getHeroInfo(slot1, true) then
-		return Activity191Config.instance:getRoleCoByNativeId(slot1, slot2.star)
-	end
-end
-
-function slot0.getHeroInfo(slot0, slot1, slot2)
-	slot3 = slot0.wareHouseInfo.heroInfoMap[tostring(slot1)]
-
-	if slot2 and not slot3 then
-		logError("enemyHeroInfo not found" .. slot1)
-	end
-
-	return slot3
-end
-
-function slot0.getItemCo(slot0, slot1)
-	slot2 = nil
-
-	return Activity191Config.instance:getCollectionCo(slot0.robot and slot1 or slot0:getItemInfo(slot1).itemId)
-end
-
-function slot0.getItemInfo(slot0, slot1)
-	if slot0.wareHouseInfo.itemInfoMap[tostring(slot1)] then
-		return slot2
+function var_0_0.getRoleCo(arg_2_0, arg_2_1)
+	if arg_2_0.robot then
+		return Activity191Config.instance:getRoleCo(arg_2_1)
 	else
-		logError("enemyItemInfo not found" .. slot1)
+		local var_2_0 = arg_2_0:getHeroInfo(arg_2_1, true)
+
+		if var_2_0 then
+			return Activity191Config.instance:getRoleCoByNativeId(arg_2_1, var_2_0.star)
+		end
 	end
 end
 
-function slot0.getTeamFetterCntDic(slot0)
-	slot1 = {}
+function var_0_0.getHeroInfo(arg_3_0, arg_3_1, arg_3_2)
+	arg_3_1 = tostring(arg_3_1)
 
-	for slot5, slot6 in pairs(slot0.heroMap) do
-		if slot6.heroId ~= 0 then
-			for slot12, slot13 in ipairs(string.split(slot0:getRoleCo(slot6.heroId).tag, "#")) do
-				if slot1[slot13] then
-					slot1[slot13] = slot1[slot13] + 1
+	local var_3_0 = arg_3_0.wareHouseInfo.heroInfoMap[arg_3_1]
+
+	if arg_3_2 and not var_3_0 then
+		logError("enemyHeroInfo not found" .. arg_3_1)
+	end
+
+	return var_3_0
+end
+
+function var_0_0.getItemCo(arg_4_0, arg_4_1)
+	local var_4_0
+
+	if arg_4_0.robot then
+		var_4_0 = arg_4_1
+	else
+		var_4_0 = arg_4_0:getItemInfo(arg_4_1).itemId
+	end
+
+	return Activity191Config.instance:getCollectionCo(var_4_0)
+end
+
+function var_0_0.getItemInfo(arg_5_0, arg_5_1)
+	arg_5_1 = tostring(arg_5_1)
+
+	local var_5_0 = arg_5_0.wareHouseInfo.itemInfoMap[arg_5_1]
+
+	if var_5_0 then
+		return var_5_0
+	else
+		logError("enemyItemInfo not found" .. arg_5_1)
+	end
+end
+
+function var_0_0.getTeamFetterCntDic(arg_6_0)
+	local var_6_0 = {}
+
+	for iter_6_0, iter_6_1 in pairs(arg_6_0.heroMap) do
+		if iter_6_1.heroId ~= 0 then
+			local var_6_1 = arg_6_0:getRoleCo(iter_6_1.heroId)
+			local var_6_2 = string.split(var_6_1.tag, "#")
+
+			for iter_6_2, iter_6_3 in ipairs(var_6_2) do
+				if var_6_0[iter_6_3] then
+					var_6_0[iter_6_3] = var_6_0[iter_6_3] + 1
 				else
-					slot1[slot13] = 1
+					var_6_0[iter_6_3] = 1
 				end
 			end
 
-			if slot6.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot6.itemUid1).tag) then
-				for slot13, slot14 in ipairs(string.split(slot9.tag, "#")) do
-					if slot1[slot14] then
-						slot1[slot14] = slot1[slot14] + 1
-					else
-						slot1[slot14] = 1
+			if iter_6_1.itemUid1 ~= 0 then
+				local var_6_3 = arg_6_0:getItemCo(iter_6_1.itemUid1)
+
+				if not string.nilorempty(var_6_3.tag) then
+					local var_6_4 = string.split(var_6_3.tag, "#")
+
+					for iter_6_4, iter_6_5 in ipairs(var_6_4) do
+						if var_6_0[iter_6_5] then
+							var_6_0[iter_6_5] = var_6_0[iter_6_5] + 1
+						else
+							var_6_0[iter_6_5] = 1
+						end
 					end
 				end
 			end
 		end
 	end
 
-	for slot5, slot6 in pairs(slot0.subHeroMap) do
-		for slot12, slot13 in ipairs(string.split(slot0:getRoleCo(slot6).tag, "#")) do
-			if slot1[slot13] then
-				slot1[slot13] = slot1[slot13] + 1
+	for iter_6_6, iter_6_7 in pairs(arg_6_0.subHeroMap) do
+		local var_6_5 = arg_6_0:getRoleCo(iter_6_7)
+		local var_6_6 = string.split(var_6_5.tag, "#")
+
+		for iter_6_8, iter_6_9 in ipairs(var_6_6) do
+			if var_6_0[iter_6_9] then
+				var_6_0[iter_6_9] = var_6_0[iter_6_9] + 1
 			else
-				slot1[slot13] = 1
+				var_6_0[iter_6_9] = 1
 			end
 		end
 	end
 
-	return slot1
+	return var_6_0
 end
 
-function slot0.getFetterHeroList(slot0, slot1)
-	slot2 = {}
+function var_0_0.getFetterHeroList(arg_7_0, arg_7_1)
+	local var_7_0 = {}
+	local var_7_1 = lua_activity191_role.configList
 
-	for slot7, slot8 in ipairs(lua_activity191_role.configList) do
-		if slot8.star == 1 then
-			slot9 = 0
-			slot10 = 0
+	for iter_7_0, iter_7_1 in ipairs(var_7_1) do
+		if iter_7_1.star == 1 then
+			local var_7_2 = 0
+			local var_7_3 = 0
 
-			if slot0.robot and slot0:isHeroInTeam(slot8.id) or not slot0.robot and slot0:isHeroInTeam(slot8.roleId) then
-				slot10 = 2
-			elseif not slot0.robot and slot0:getHeroInfo(slot8.roleId) then
-				slot10 = 1
+			if arg_7_0.robot and arg_7_0:isHeroInTeam(iter_7_1.id) or not arg_7_0.robot and arg_7_0:isHeroInTeam(iter_7_1.roleId) then
+				var_7_3 = 2
+			elseif not arg_7_0.robot and arg_7_0:getHeroInfo(iter_7_1.roleId) then
+				var_7_3 = 1
 			end
 
-			if tabletool.indexOf(string.split(slot8.tag, "#"), slot1) then
-				slot2[#slot2 + 1] = {
-					config = slot8,
-					inBag = slot10,
-					transfer = slot9
+			local var_7_4 = string.split(iter_7_1.tag, "#")
+
+			if tabletool.indexOf(var_7_4, arg_7_1) then
+				local var_7_5 = {
+					config = iter_7_1,
+					inBag = var_7_3,
+					transfer = var_7_2
 				}
-			elseif slot0:getBattleHeroInfoInTeam(slot8.roleId) and slot12.itemUid1 ~= 0 and not string.nilorempty(slot0:getItemCo(slot12.itemUid1).tag) and tabletool.indexOf(string.split(slot13.tag, "#"), slot1) then
-				slot2[#slot2 + 1] = {
-					inBag = 2,
-					transfer = 1,
-					config = slot8
-				}
+
+				var_7_0[#var_7_0 + 1] = var_7_5
+			else
+				local var_7_6 = arg_7_0:getBattleHeroInfoInTeam(iter_7_1.roleId)
+
+				if var_7_6 and var_7_6.itemUid1 ~= 0 then
+					local var_7_7 = arg_7_0:getItemCo(var_7_6.itemUid1)
+
+					if not string.nilorempty(var_7_7.tag) then
+						local var_7_8 = string.split(var_7_7.tag, "#")
+
+						if tabletool.indexOf(var_7_8, arg_7_1) then
+							local var_7_9 = {
+								inBag = 2,
+								transfer = 1,
+								config = iter_7_1
+							}
+
+							var_7_0[#var_7_0 + 1] = var_7_9
+						end
+					end
+				end
 			end
 		end
 	end
 
-	table.sort(slot2, Activity191Helper.sortFetterHeroList)
+	table.sort(var_7_0, Activity191Helper.sortFetterHeroList)
 
-	return slot2
+	return var_7_0
 end
 
-function slot0.isHeroInTeam(slot0, slot1)
-	for slot5, slot6 in pairs(slot0.heroMap) do
-		if slot6.heroId == slot1 then
+function var_0_0.isHeroInTeam(arg_8_0, arg_8_1)
+	for iter_8_0, iter_8_1 in pairs(arg_8_0.heroMap) do
+		if iter_8_1.heroId == arg_8_1 then
 			return true
 		end
 	end
 
-	for slot5, slot6 in pairs(slot0.subHeroMap) do
-		if slot6 == slot1 then
+	for iter_8_2, iter_8_3 in pairs(arg_8_0.subHeroMap) do
+		if iter_8_3 == arg_8_1 then
 			return true
 		end
 	end
 end
 
-function slot0.getBattleHeroInfoInTeam(slot0, slot1)
-	for slot5, slot6 in pairs(slot0.heroMap) do
-		if slot6.heroId == slot1 then
-			return slot6
+function var_0_0.getBattleHeroInfoInTeam(arg_9_0, arg_9_1)
+	for iter_9_0, iter_9_1 in pairs(arg_9_0.heroMap) do
+		if iter_9_1.heroId == arg_9_1 then
+			return iter_9_1
 		end
 	end
 end
 
-return slot0
+return var_0_0

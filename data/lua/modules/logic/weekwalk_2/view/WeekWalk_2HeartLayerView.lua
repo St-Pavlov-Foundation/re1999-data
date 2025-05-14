@@ -1,220 +1,251 @@
-module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerView", package.seeall)
+﻿module("modules.logic.weekwalk_2.view.WeekWalk_2HeartLayerView", package.seeall)
 
-slot0 = class("WeekWalk_2HeartLayerView", BaseView)
+local var_0_0 = class("WeekWalk_2HeartLayerView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._gocontent = gohelper.findChild(slot0.viewGO, "#go_content")
-	slot0._goheart = gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart")
-	slot0._gocountdown = gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart/#go_countdown")
-	slot0._txtcountday = gohelper.findChildText(slot0.viewGO, "bottom_left/#go_heart/#go_countdown/bg/#txt_countday")
-	slot0._goexcept = gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart/#go_except")
-	slot0._btnreward = gohelper.findChildButtonWithAudio(slot0.viewGO, "bottom_left/#go_heart/#btn_reward")
-	slot0._gobubble = gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart/#btn_reward/#go_bubble")
-	slot0._simageicon = gohelper.findChildSingleImage(slot0.viewGO, "bottom_left/#go_heart/#btn_reward/#go_bubble/#simage_icon")
-	slot0._goruleIcon = gohelper.findChild(slot0.viewGO, "#go_ruleIcon")
-	slot0._btnruleIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_ruleIcon/#btn_ruleIcon")
-	slot0._gorulenew = gohelper.findChild(slot0.viewGO, "#go_ruleIcon/#go_rulenew")
-	slot0._gobuffIcon = gohelper.findChild(slot0.viewGO, "#go_buffIcon")
-	slot0._btnbuffIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_buffIcon/#btn_buffIcon")
-	slot0._gobuffnew = gohelper.findChild(slot0.viewGO, "#go_buffIcon/#go_buffnew")
-	slot0._goreviewIcon = gohelper.findChild(slot0.viewGO, "#go_reviewIcon")
-	slot0._btnreviewIcon = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_reviewIcon/#btn_reviewIcon")
-	slot0._txtdetaildesc = gohelper.findChildText(slot0.viewGO, "bottom_right/#txt_detaildesc")
-	slot0._goitem = gohelper.findChild(slot0.viewGO, "bottom_right/badgelist/#go_item")
-	slot0._simagebgimgnext = gohelper.findChildSingleImage(slot0.viewGO, "transition/ani/#simage_bgimg_next")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._gocontent = gohelper.findChild(arg_1_0.viewGO, "#go_content")
+	arg_1_0._goheart = gohelper.findChild(arg_1_0.viewGO, "bottom_left/#go_heart")
+	arg_1_0._gocountdown = gohelper.findChild(arg_1_0.viewGO, "bottom_left/#go_heart/#go_countdown")
+	arg_1_0._txtcountday = gohelper.findChildText(arg_1_0.viewGO, "bottom_left/#go_heart/#go_countdown/bg/#txt_countday")
+	arg_1_0._goexcept = gohelper.findChild(arg_1_0.viewGO, "bottom_left/#go_heart/#go_except")
+	arg_1_0._btnreward = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bottom_left/#go_heart/#btn_reward")
+	arg_1_0._gobubble = gohelper.findChild(arg_1_0.viewGO, "bottom_left/#go_heart/#btn_reward/#go_bubble")
+	arg_1_0._simageicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "bottom_left/#go_heart/#btn_reward/#go_bubble/#simage_icon")
+	arg_1_0._goruleIcon = gohelper.findChild(arg_1_0.viewGO, "#go_ruleIcon")
+	arg_1_0._btnruleIcon = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_ruleIcon/#btn_ruleIcon")
+	arg_1_0._gorulenew = gohelper.findChild(arg_1_0.viewGO, "#go_ruleIcon/#go_rulenew")
+	arg_1_0._gobuffIcon = gohelper.findChild(arg_1_0.viewGO, "#go_buffIcon")
+	arg_1_0._btnbuffIcon = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_buffIcon/#btn_buffIcon")
+	arg_1_0._gobuffnew = gohelper.findChild(arg_1_0.viewGO, "#go_buffIcon/#go_buffnew")
+	arg_1_0._goreviewIcon = gohelper.findChild(arg_1_0.viewGO, "#go_reviewIcon")
+	arg_1_0._btnreviewIcon = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_reviewIcon/#btn_reviewIcon")
+	arg_1_0._txtdetaildesc = gohelper.findChildText(arg_1_0.viewGO, "bottom_right/#txt_detaildesc")
+	arg_1_0._goitem = gohelper.findChild(arg_1_0.viewGO, "bottom_right/badgelist/#go_item")
+	arg_1_0._simagebgimgnext = gohelper.findChildSingleImage(arg_1_0.viewGO, "transition/ani/#simage_bgimg_next")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnreward:AddClickListener(slot0._btnrewardOnClick, slot0)
-	slot0._btnruleIcon:AddClickListener(slot0._btnruleIconOnClick, slot0)
-	slot0._btnbuffIcon:AddClickListener(slot0._btnbuffIconOnClick, slot0)
-	slot0._btnreviewIcon:AddClickListener(slot0._btnreviewIconOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnreward:AddClickListener(arg_2_0._btnrewardOnClick, arg_2_0)
+	arg_2_0._btnruleIcon:AddClickListener(arg_2_0._btnruleIconOnClick, arg_2_0)
+	arg_2_0._btnbuffIcon:AddClickListener(arg_2_0._btnbuffIconOnClick, arg_2_0)
+	arg_2_0._btnreviewIcon:AddClickListener(arg_2_0._btnreviewIconOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnreward:RemoveClickListener()
-	slot0._btnruleIcon:RemoveClickListener()
-	slot0._btnbuffIcon:RemoveClickListener()
-	slot0._btnreviewIcon:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnreward:RemoveClickListener()
+	arg_3_0._btnruleIcon:RemoveClickListener()
+	arg_3_0._btnbuffIcon:RemoveClickListener()
+	arg_3_0._btnreviewIcon:RemoveClickListener()
 end
 
-function slot0._btnrewardOnClick(slot0)
+function var_0_0._btnrewardOnClick(arg_4_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2LayerRewardView({
 		mapId = 0
 	})
 end
 
-function slot0._btnreviewIconOnClick(slot0)
+function var_0_0._btnreviewIconOnClick(arg_5_0)
 	Weekwalk_2Rpc.instance:sendWeekwalkVer2GetSettleInfoRequest()
 end
 
-function slot0._btnruleIconOnClick(slot0)
+function var_0_0._btnruleIconOnClick(arg_6_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2RuleView()
 end
 
-function slot0._btnbuffIconOnClick(slot0)
+function var_0_0._btnbuffIconOnClick(arg_7_0)
 	WeekWalk_2Controller.instance:openWeekWalk_2HeartBuffView()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._rewardAnimator = slot0._btnreward.gameObject:GetComponent(typeof(UnityEngine.Animator))
+function var_0_0._editableInitView(arg_8_0)
+	arg_8_0._rewardAnimator = arg_8_0._btnreward.gameObject:GetComponent(typeof(UnityEngine.Animator))
 
-	gohelper.setActive(slot0._goitem, false)
-	slot0:_initPage()
+	gohelper.setActive(arg_8_0._goitem, false)
+	arg_8_0:_initPage()
 end
 
-function slot0._initItemList(slot0)
-	if slot0._itemList then
+function var_0_0._initItemList(arg_9_0)
+	if arg_9_0._itemList then
 		return
 	end
 
-	slot0._itemList = slot0:getUserDataTb_()
+	arg_9_0._itemList = arg_9_0:getUserDataTb_()
 
-	for slot4 = 1, WeekWalk_2Enum.MaxLayer do
-		slot5 = gohelper.cloneInPlace(slot0._goitem)
+	for iter_9_0 = 1, WeekWalk_2Enum.MaxLayer do
+		local var_9_0 = gohelper.cloneInPlace(arg_9_0._goitem)
 
-		gohelper.setActive(slot5, true)
+		gohelper.setActive(var_9_0, true)
 
-		slot6 = gohelper.findChildImage(slot5, "badgelayout/1/icon")
-		slot7 = gohelper.findChildImage(slot5, "badgelayout/2/icon")
-		slot8 = gohelper.findChildText(slot5, "chapternum")
-		slot8.text = slot4
-		slot6.enabled = false
-		slot7.enabled = false
-		slot0._itemList[slot4] = {
-			icon1Effect = slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot6.gameObject),
-			icon2Effect = slot0:getResInst(slot0.viewContainer._viewSetting.otherRes.weekwalkheart_star, slot7.gameObject),
-			txt = slot8
+		local var_9_1 = gohelper.findChildImage(var_9_0, "badgelayout/1/icon")
+		local var_9_2 = gohelper.findChildImage(var_9_0, "badgelayout/2/icon")
+		local var_9_3 = gohelper.findChildText(var_9_0, "chapternum")
+
+		var_9_3.text = iter_9_0
+
+		local var_9_4 = arg_9_0:getResInst(arg_9_0.viewContainer._viewSetting.otherRes.weekwalkheart_star, var_9_1.gameObject)
+		local var_9_5 = arg_9_0:getResInst(arg_9_0.viewContainer._viewSetting.otherRes.weekwalkheart_star, var_9_2.gameObject)
+
+		var_9_1.enabled = false
+		var_9_2.enabled = false
+		arg_9_0._itemList[iter_9_0] = {
+			icon1Effect = var_9_4,
+			icon2Effect = var_9_5,
+			txt = var_9_3
 		}
 	end
 
-	slot0:_updateItemList()
+	arg_9_0:_updateItemList()
 end
 
-function slot0._updateItemList(slot0)
-	for slot4 = 1, WeekWalk_2Enum.MaxLayer do
-		slot5 = slot0._itemList[slot4]
-		slot7 = slot5.icon2Effect
-		slot8 = slot0._info:getLayerInfoByLayerIndex(slot4)
-		slot10 = slot8:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second)
+function var_0_0._updateItemList(arg_10_0)
+	for iter_10_0 = 1, WeekWalk_2Enum.MaxLayer do
+		local var_10_0 = arg_10_0._itemList[iter_10_0]
+		local var_10_1 = var_10_0.icon1Effect
+		local var_10_2 = var_10_0.icon2Effect
+		local var_10_3 = arg_10_0._info:getLayerInfoByLayerIndex(iter_10_0)
+		local var_10_4 = var_10_3:getBattleInfo(WeekWalk_2Enum.BattleIndex.First)
+		local var_10_5 = var_10_3:getBattleInfo(WeekWalk_2Enum.BattleIndex.Second)
 
-		if slot8:getBattleInfo(WeekWalk_2Enum.BattleIndex.First) then
-			WeekWalk_2Helper.setCupEffectByResult(slot5.icon1Effect, slot9:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2)
+		if var_10_4 then
+			local var_10_6 = var_10_4:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2
+
+			WeekWalk_2Helper.setCupEffectByResult(var_10_1, var_10_6)
 		end
 
-		if slot10 then
-			WeekWalk_2Helper.setCupEffectByResult(slot7, slot10:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2)
+		if var_10_5 then
+			local var_10_7 = var_10_5:getCupMaxResult() == WeekWalk_2Enum.CupType.Platinum and WeekWalk_2Enum.CupType.Platinum or WeekWalk_2Enum.CupType.None2
+
+			WeekWalk_2Helper.setCupEffectByResult(var_10_2, var_10_7)
 		end
 	end
 end
 
-function slot0._initPage(slot0)
-	slot0._layerPage = MonoHelper.addNoUpdateLuaComOnceToGo(slot0:getResInst(slot0.viewContainer._viewSetting.otherRes[1], slot0._gocontent), WeekWalk_2HeartLayerPage, slot0)
+function var_0_0._initPage(arg_11_0)
+	local var_11_0 = arg_11_0:getResInst(arg_11_0.viewContainer._viewSetting.otherRes[1], arg_11_0._gocontent)
+
+	arg_11_0._layerPage = MonoHelper.addNoUpdateLuaComOnceToGo(var_11_0, WeekWalk_2HeartLayerPage, arg_11_0)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_12_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnGetInfo, slot0._onGetInfo, slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, slot0._onChangeInfo, slot0)
-	slot0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, slot0._onWeekwalk_2TaskUpdate, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, slot0._onOpenView, slot0)
-	slot0:_showDeadline()
-	slot0:_initItemList()
-	slot0:_onWeekwalk_2TaskUpdate()
-	slot0:_updateNewFlag()
+function var_0_0.onOpen(arg_13_0)
+	arg_13_0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnGetInfo, arg_13_0._onGetInfo, arg_13_0)
+	arg_13_0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkInfoChange, arg_13_0._onChangeInfo, arg_13_0)
+	arg_13_0:addEventCb(WeekWalk_2Controller.instance, WeekWalk_2Event.OnWeekwalkTaskUpdate, arg_13_0._onWeekwalk_2TaskUpdate, arg_13_0)
+	arg_13_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, arg_13_0._onOpenView, arg_13_0)
+	arg_13_0:_showDeadline()
+	arg_13_0:_initItemList()
+	arg_13_0:_onWeekwalk_2TaskUpdate()
+	arg_13_0:_updateNewFlag()
 end
 
-function slot0.onOpenFinish(slot0)
-	if not not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, slot0._info.timeId) then
+function var_0_0.onOpenFinish(arg_14_0)
+	local var_14_0 = arg_14_0._info.timeId
+
+	if not not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, var_14_0) then
 		return
 	end
 
-	WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, slot1)
+	WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.ResultReview, var_14_0)
 
-	if slot0._goreviewIcon:GetComponent(typeof(UnityEngine.Animator)) then
-		slot3:Play("open", 0, 0)
+	local var_14_1 = arg_14_0._goreviewIcon:GetComponent(typeof(UnityEngine.Animator))
+
+	if var_14_1 then
+		var_14_1:Play("open", 0, 0)
 	end
 end
 
-function slot0._updateNewFlag(slot0)
-	slot1 = slot0._info.timeId
+function var_0_0._updateNewFlag(arg_15_0)
+	local var_15_0 = arg_15_0._info.timeId
+	local var_15_1 = not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, var_15_0)
+	local var_15_2 = not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, var_15_0)
 
-	gohelper.setActive(slot0._gorulenew, not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, slot1))
-	gohelper.setActive(slot0._gobuffnew, not WeekWalk_2Controller.hasOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, slot1))
+	gohelper.setActive(arg_15_0._gorulenew, var_15_1)
+	gohelper.setActive(arg_15_0._gobuffnew, var_15_2)
 end
 
-function slot0._onOpenView(slot0, slot1)
-	if slot1 == ViewName.WeekWalk_2HeartBuffView then
-		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, slot0._info.timeId)
-		slot0:_updateNewFlag()
-	elseif slot1 == ViewName.WeekWalk_2RuleView then
-		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, slot0._info.timeId)
-		slot0:_updateNewFlag()
+function var_0_0._onOpenView(arg_16_0, arg_16_1)
+	if arg_16_1 == ViewName.WeekWalk_2HeartBuffView then
+		local var_16_0 = arg_16_0._info.timeId
+
+		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.BuffNew, var_16_0)
+		arg_16_0:_updateNewFlag()
+	elseif arg_16_1 == ViewName.WeekWalk_2RuleView then
+		local var_16_1 = arg_16_0._info.timeId
+
+		WeekWalk_2Controller.setOnceActionKey(WeekWalk_2Enum.OnceAnimType.RuleNew, var_16_1)
+		arg_16_0:_updateNewFlag()
 	end
 end
 
-function slot0._onWeekwalk_2TaskUpdate(slot0)
-	slot2, slot3 = WeekWalk_2TaskListModel.instance:canGetRewardNum(WeekWalk_2Enum.TaskType.Once)
+function var_0_0._onWeekwalk_2TaskUpdate(arg_17_0)
+	local var_17_0 = WeekWalk_2Enum.TaskType.Once
+	local var_17_1, var_17_2 = WeekWalk_2TaskListModel.instance:canGetRewardNum(var_17_0)
+	local var_17_3 = var_17_1 > 0
 
-	gohelper.setActive(slot0._gobubble, true)
+	gohelper.setActive(arg_17_0._gobubble, true)
 
-	slot0._gobubbleReddot = slot0._gobubbleReddot or gohelper.findChild(slot0.viewGO, "bottom_left/#go_heart/#btn_reward/reddot")
+	arg_17_0._gobubbleReddot = arg_17_0._gobubbleReddot or gohelper.findChild(arg_17_0.viewGO, "bottom_left/#go_heart/#btn_reward/reddot")
 
-	gohelper.setActive(slot0._gobubbleReddot, slot2 > 0)
+	gohelper.setActive(arg_17_0._gobubbleReddot, var_17_3)
 
-	if slot0._rewardAnimator then
-		slot0._rewardAnimator:Play(slot4 and "reward" or "idle")
+	if arg_17_0._rewardAnimator then
+		arg_17_0._rewardAnimator:Play(var_17_3 and "reward" or "idle")
 	end
 
-	if slot2 == 0 and slot3 == 0 then
-		gohelper.setActive(slot0._btnreward, false)
+	if var_17_1 == 0 and var_17_2 == 0 then
+		gohelper.setActive(arg_17_0._btnreward, false)
 	end
 end
 
-function slot0._onChangeInfo(slot0)
-	slot0:_updateItemList()
-	slot0:_showReviewIcon()
+function var_0_0._onChangeInfo(arg_18_0)
+	arg_18_0:_updateItemList()
+	arg_18_0:_showReviewIcon()
 end
 
-function slot0._onGetInfo(slot0)
-	slot0:_showDeadline()
+function var_0_0._onGetInfo(arg_19_0)
+	arg_19_0:_showDeadline()
 end
 
-function slot0._showDeadline(slot0)
-	TaskDispatcher.cancelTask(slot0._onRefreshDeadline, slot0)
+function var_0_0._showDeadline(arg_20_0)
+	TaskDispatcher.cancelTask(arg_20_0._onRefreshDeadline, arg_20_0)
 
-	slot0._info = WeekWalk_2Model.instance:getInfo()
-	slot0._endTime = slot0._info.endTime
+	arg_20_0._info = WeekWalk_2Model.instance:getInfo()
+	arg_20_0._endTime = arg_20_0._info.endTime
 
-	TaskDispatcher.runRepeat(slot0._onRefreshDeadline, slot0, 1)
-	slot0:_onRefreshDeadline()
-	slot0:_showReviewIcon()
+	TaskDispatcher.runRepeat(arg_20_0._onRefreshDeadline, arg_20_0, 1)
+	arg_20_0:_onRefreshDeadline()
+	arg_20_0:_showReviewIcon()
 end
 
-function slot0._showReviewIcon(slot0)
-	gohelper.setActive(slot0._goreviewIcon, slot0._info:allLayerPass())
+function var_0_0._showReviewIcon(arg_21_0)
+	gohelper.setActive(arg_21_0._goreviewIcon, arg_21_0._info:allLayerPass())
 end
 
-function slot0._onRefreshDeadline(slot0)
-	if slot0._endTime - ServerTime.now() <= 0 then
-		TaskDispatcher.cancelTask(slot0._onRefreshDeadline, slot0)
+function var_0_0._onRefreshDeadline(arg_22_0)
+	local var_22_0 = arg_22_0._endTime - ServerTime.now()
+
+	if var_22_0 <= 0 then
+		TaskDispatcher.cancelTask(arg_22_0._onRefreshDeadline, arg_22_0)
 	end
 
-	slot3, slot4 = TimeUtil.secondToRoughTime2(math.floor(slot1))
-	slot0._txtcountday.text = luaLang("p_dungeonweekwalkview_device") .. slot3 .. slot4
+	local var_22_1 = luaLang("p_dungeonweekwalkview_device")
+	local var_22_2, var_22_3 = TimeUtil.secondToRoughTime2(math.floor(var_22_0))
+
+	arg_22_0._txtcountday.text = var_22_1 .. var_22_2 .. var_22_3
 end
 
-function slot0.onClose(slot0)
+function var_0_0.onClose(arg_23_0)
+	return
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0._onRefreshDeadline, slot0)
+function var_0_0.onDestroyView(arg_24_0)
+	TaskDispatcher.cancelTask(arg_24_0._onRefreshDeadline, arg_24_0)
 end
 
-return slot0
+return var_0_0

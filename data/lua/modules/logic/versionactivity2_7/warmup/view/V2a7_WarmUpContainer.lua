@@ -1,239 +1,249 @@
-module("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_7.warmup.view.V2a7_WarmUpContainer", package.seeall)
 
-slot0 = class("V2a7_WarmUpContainer", Activity125WarmUpViewBaseContainer)
-slot1 = {
+local var_0_0 = class("V2a7_WarmUpContainer", Activity125WarmUpViewBaseContainer)
+local var_0_1 = {
 	Done = 1999,
 	None = 0
 }
-slot2 = "v2a7_warmup_pic_%s"
+local var_0_2 = "v2a7_warmup_pic_%s"
 
-function slot0.getImgResUrl(slot0, slot1)
-	return ResUrl.getV2a7WarmUpSingleBg(string.format(uv0, slot1))
+function var_0_0.getImgResUrl(arg_1_0, arg_1_1)
+	local var_1_0 = string.format(var_0_2, arg_1_1)
+
+	return ResUrl.getV2a7WarmUpSingleBg(var_1_0)
 end
 
-function slot0.buildViews(slot0)
-	slot0._warmUp = V2a7_WarmUp.New()
-	slot0._warmUpLeftView = V2a7_WarmUpLeftView.New()
+function var_0_0.buildViews(arg_2_0)
+	arg_2_0._warmUp = V2a7_WarmUp.New()
+	arg_2_0._warmUpLeftView = V2a7_WarmUpLeftView.New()
 
 	return {
-		slot0._warmUp,
-		slot0._warmUpLeftView
+		arg_2_0._warmUp,
+		arg_2_0._warmUpLeftView
 	}
 end
 
-function slot0.onContainerInit(slot0)
-	slot0._needWaitCount = 0
-	slot0.__isWaitingPlayHasGetAnim = false
+function var_0_0.onContainerInit(arg_3_0)
+	arg_3_0._needWaitCount = 0
+	arg_3_0.__isWaitingPlayHasGetAnim = false
 
-	uv0.super.onContainerInit(slot0)
+	var_0_0.super.onContainerInit(arg_3_0)
 
-	slot0._tweenSwitchContext = {
+	arg_3_0._tweenSwitchContext = {
 		lastEpisode = false,
 		curEpisodeId = false
 	}
 end
 
-function slot0.onContainerOpen(slot0)
-	slot0._warmUp:setBlock_scroll(false)
-	uv0.super.onContainerOpen(slot0)
+function var_0_0.onContainerOpen(arg_4_0)
+	arg_4_0._warmUp:setBlock_scroll(false)
+	var_0_0.super.onContainerOpen(arg_4_0)
 
-	if slot0._needWaitCount > 0 then
-		slot0:tryTweenDesc()
+	if arg_4_0._needWaitCount > 0 then
+		arg_4_0:tryTweenDesc()
 	end
 end
 
-function slot0.onContainerClose(slot0)
+function var_0_0.onContainerClose(arg_5_0)
 	UIBlockMgrExtend.setNeedCircleMv(true)
-	uv0.super.onContainerClose(slot0)
+	var_0_0.super.onContainerClose(arg_5_0)
 end
 
-function slot0.onContainerDestroy(slot0)
-	slot0:setCurSelectEpisodeIdSlient(nil)
+function var_0_0.onContainerDestroy(arg_6_0)
+	arg_6_0:setCurSelectEpisodeIdSlient(nil)
 
-	slot0._needWaitCount = 0
-	slot0._isPlaying = false
+	arg_6_0._needWaitCount = 0
+	arg_6_0._isPlaying = false
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Stop_UI_Bus)
-	uv0.super:onContainerDestroy()
+	var_0_0.super:onContainerDestroy()
 end
 
-function slot0.onContainerCloseFinish(slot0)
-	slot0:_play_stop_UI_Bus()
+function var_0_0.onContainerCloseFinish(arg_7_0)
+	arg_7_0:_play_stop_UI_Bus()
 end
 
-function slot0.onDataUpdateFirst(slot0)
-	slot0._warmUp:onDataUpdateFirst()
-	slot0._warmUpLeftView:onDataUpdateFirst()
+function var_0_0.onDataUpdateFirst(arg_8_0)
+	arg_8_0._warmUp:onDataUpdateFirst()
+	arg_8_0._warmUpLeftView:onDataUpdateFirst()
 end
 
-function slot0.onDataUpdate(slot0)
-	slot0._warmUp:onDataUpdate()
-	slot0._warmUpLeftView:onDataUpdate()
+function var_0_0.onDataUpdate(arg_9_0)
+	arg_9_0._warmUp:onDataUpdate()
+	arg_9_0._warmUpLeftView:onDataUpdate()
 end
 
-function slot0.onDataUpdateDoneFirst(slot0)
-	slot0:tryTweenDesc()
+function var_0_0.onDataUpdateDoneFirst(arg_10_0)
+	arg_10_0:tryTweenDesc()
 end
 
-function slot0.onSwitchEpisode(slot0)
-	slot0.__isWaitingPlayHasGetAnim = false
+function var_0_0.onSwitchEpisode(arg_11_0)
+	arg_11_0.__isWaitingPlayHasGetAnim = false
 
-	slot0:_play_stop_UI_Bus()
-	slot0._warmUp:setBlock_scroll(false)
-	slot0._warmUp:onSwitchEpisode()
-	slot0._warmUpLeftView:onSwitchEpisode()
+	arg_11_0:_play_stop_UI_Bus()
+	arg_11_0._warmUp:setBlock_scroll(false)
+	arg_11_0._warmUp:onSwitchEpisode()
+	arg_11_0._warmUpLeftView:onSwitchEpisode()
 end
 
-function slot0.onUpdateActivity(slot0)
-	if slot0._isPlaying then
-		slot0:setLocalIsPlayCur()
-		slot0._warmUp:onUpdateActivity()
+function var_0_0.onUpdateActivity(arg_12_0)
+	if arg_12_0._isPlaying then
+		arg_12_0:setLocalIsPlayCur()
+		arg_12_0._warmUp:onUpdateActivity()
 
-		slot0._isPlaying = false
+		arg_12_0._isPlaying = false
 	end
 end
 
-function slot0.episode2Index(slot0, slot1)
-	return slot0._warmUp:episode2Index(slot1)
+function var_0_0.episode2Index(arg_13_0, arg_13_1)
+	return arg_13_0._warmUp:episode2Index(arg_13_1)
 end
 
-function slot0.switchTabWithAnim(slot0, slot1, slot2)
-	if slot0._tweenSwitchContext.lastEpisode then
+function var_0_0.switchTabWithAnim(arg_14_0, arg_14_1, arg_14_2)
+	if arg_14_0._tweenSwitchContext.lastEpisode then
 		return
 	end
 
-	if not slot2 then
-		slot0._tweenSwitchContext.lastEpisode = false
-		slot0._tweenSwitchContext.curEpisodeId = false
+	if not arg_14_2 then
+		arg_14_0._tweenSwitchContext.lastEpisode = false
+		arg_14_0._tweenSwitchContext.curEpisodeId = false
 
 		return
 	end
 
-	slot0._isPlaying = false
-	slot0._tweenSwitchContext.lastEpisode = slot1
-	slot0._tweenSwitchContext.curEpisodeId = slot2
+	arg_14_0._isPlaying = false
+	arg_14_0._tweenSwitchContext.lastEpisode = arg_14_1
+	arg_14_0._tweenSwitchContext.curEpisodeId = arg_14_2
 
-	slot0._warmUp:tweenSwitch(function ()
-		uv0._tweenSwitchContext.lastEpisode = false
+	arg_14_0._warmUp:tweenSwitch(function()
+		arg_14_0._tweenSwitchContext.lastEpisode = false
 	end)
 end
 
-function slot0.switchTabNoAnim(slot0, slot1, slot2)
-	slot0._tweenSwitchContext.lastEpisode = false
-	slot0._tweenSwitchContext.curEpisodeId = false
+function var_0_0.switchTabNoAnim(arg_16_0, arg_16_1, arg_16_2)
+	arg_16_2 = arg_16_2 or arg_16_0._tweenSwitchContext.curEpisodeId
+	arg_16_0._tweenSwitchContext.lastEpisode = false
+	arg_16_0._tweenSwitchContext.curEpisodeId = false
 
-	slot0:setCurSelectEpisodeIdSlient(slot2 or slot0._tweenSwitchContext.curEpisodeId)
+	arg_16_0:setCurSelectEpisodeIdSlient(arg_16_2)
 	Activity125Controller.instance:dispatchEvent(Activity125Event.SwitchEpisode)
 end
 
-function slot0.sendFinishAct125EpisodeRequest(slot0, ...)
-	slot0.__isWaitingPlayHasGetAnim = true
+function var_0_0.sendFinishAct125EpisodeRequest(arg_17_0, ...)
+	arg_17_0.__isWaitingPlayHasGetAnim = true
 
-	uv0.super.sendFinishAct125EpisodeRequest(slot0, ...)
+	var_0_0.super.sendFinishAct125EpisodeRequest(arg_17_0, ...)
 end
 
-function slot0.onCloseViewFinish(slot0, slot1)
-	if slot1 ~= ViewName.CommonPropView then
+function var_0_0.onCloseViewFinish(arg_18_0, arg_18_1)
+	if arg_18_1 ~= ViewName.CommonPropView then
 		return
 	end
 
-	slot0._warmUp:playRewardItemsHasGetAnim()
+	arg_18_0._warmUp:playRewardItemsHasGetAnim()
 
-	slot0.__isWaitingPlayHasGetAnim = false
+	arg_18_0.__isWaitingPlayHasGetAnim = false
 end
 
-function slot0.isWaitingPlayHasGetAnim(slot0)
-	return slot0.__isWaitingPlayHasGetAnim
+function var_0_0.isWaitingPlayHasGetAnim(arg_19_0)
+	return arg_19_0.__isWaitingPlayHasGetAnim
 end
 
-function slot0.tryTweenDesc(slot0)
-	slot0._needWaitCount = 0
-	slot1, slot2 = slot0:getRLOCCur()
+function var_0_0.tryTweenDesc(arg_20_0)
+	arg_20_0._needWaitCount = 0
 
-	if slot1 then
+	local var_20_0, var_20_1 = arg_20_0:getRLOCCur()
+
+	if var_20_0 then
 		return
 	end
 
-	if slot2 then
+	if var_20_1 then
 		return
 	end
 
-	if not slot0:checkIsDone() then
+	if not arg_20_0:checkIsDone() then
 		return
 	end
 
-	slot0:setLocalIsPlayCurByUser()
-	slot0:openDesc()
+	arg_20_0:setLocalIsPlayCurByUser()
+	arg_20_0:openDesc()
 end
 
-function slot0.checkIsDone(slot0, slot1)
-	if slot0:getRLOCCur() then
+function var_0_0.checkIsDone(arg_21_0, arg_21_1)
+	if arg_21_0:getRLOCCur() then
 		return true
 	end
 
-	return slot0:getState(slot1 or slot0:getCurSelectedEpisode()) == uv0.Done
+	arg_21_1 = arg_21_1 or arg_21_0:getCurSelectedEpisode()
+
+	return arg_21_0:getState(arg_21_1) == var_0_1.Done
 end
 
-function slot0.openDesc(slot0)
-	slot0._warmUp:setBlock_scroll(true)
-	slot0:addNeedWaitCount()
-	slot0._warmUp:openDesc(function ()
-		uv0._isPlaying = false
+function var_0_0.openDesc(arg_22_0)
+	arg_22_0._warmUp:setBlock_scroll(true)
+	arg_22_0:addNeedWaitCount()
+	arg_22_0._warmUp:openDesc(function()
+		arg_22_0._isPlaying = false
 
-		uv0:onAnimDone()
-		uv0._warmUp:setBlock_scroll(false)
+		arg_22_0:onAnimDone()
+		arg_22_0._warmUp:setBlock_scroll(false)
 	end)
 end
 
-function slot0.setNeedWaitCount(slot0, slot1)
-	slot0._needWaitCount = slot1 or 1
+function var_0_0.setNeedWaitCount(arg_24_0, arg_24_1)
+	arg_24_0._needWaitCount = arg_24_1 or 1
 end
 
-function slot0.addNeedWaitCount(slot0)
-	slot0:setNeedWaitCount(slot0._needWaitCount and slot0._needWaitCount + 1 or 1)
+function var_0_0.addNeedWaitCount(arg_25_0)
+	arg_25_0:setNeedWaitCount(arg_25_0._needWaitCount and arg_25_0._needWaitCount + 1 or 1)
 end
 
-function slot0.onAnimDone(slot0)
-	slot0._needWaitCount = slot0._needWaitCount - 1
+function var_0_0.onAnimDone(arg_26_0)
+	arg_26_0._needWaitCount = arg_26_0._needWaitCount - 1
 
-	if slot0._needWaitCount > 0 then
+	if arg_26_0._needWaitCount > 0 then
 		return
 	end
 
-	slot0:setLocalIsPlayCur()
-	slot0._warmUp:_refresh()
+	arg_26_0:setLocalIsPlayCur()
+	arg_26_0._warmUp:_refresh()
 end
 
-slot3 = "Act125Episode|"
+local var_0_3 = "Act125Episode|"
 
-function slot0._getPrefsKey(slot0, slot1)
-	return slot0:getPrefsKeyPrefix() .. uv0 .. tostring(slot1)
+function var_0_0._getPrefsKey(arg_27_0, arg_27_1)
+	return arg_27_0:getPrefsKeyPrefix() .. var_0_3 .. tostring(arg_27_1)
 end
 
-function slot0.saveState(slot0, slot1, slot2)
-	slot0:saveInt(slot0:_getPrefsKey(slot1), slot2 or uv0.None)
+function var_0_0.saveState(arg_28_0, arg_28_1, arg_28_2)
+	local var_28_0 = arg_28_0:_getPrefsKey(arg_28_1)
+
+	arg_28_0:saveInt(var_28_0, arg_28_2 or var_0_1.None)
 end
 
-function slot0.getState(slot0, slot1, slot2)
-	return slot0:getInt(slot0:_getPrefsKey(slot1), slot2 or uv0.None)
+function var_0_0.getState(arg_29_0, arg_29_1, arg_29_2)
+	local var_29_0 = arg_29_0:_getPrefsKey(arg_29_1)
+
+	return arg_29_0:getInt(var_29_0, arg_29_2 or var_0_1.None)
 end
 
-function slot0.saveStateDone(slot0, slot1, slot2)
-	slot0:saveState(slot1, slot2 and uv0.Done or uv0.None)
+function var_0_0.saveStateDone(arg_30_0, arg_30_1, arg_30_2)
+	arg_30_0:saveState(arg_30_1, arg_30_2 and var_0_1.Done or var_0_1.None)
 
-	if slot2 then
-		slot0:onAnimDone()
+	if arg_30_2 then
+		arg_30_0:onAnimDone()
 	end
 end
 
-function slot0.setLocalIsPlayCurByUser(slot0)
-	slot0._isPlaying = true
+function var_0_0.setLocalIsPlayCurByUser(arg_31_0)
+	arg_31_0._isPlaying = true
 end
 
-function slot0._play_stop_UI_Bus(slot0)
-	if not slot0._isPlaying then
+function var_0_0._play_stop_UI_Bus(arg_32_0)
+	if not arg_32_0._isPlaying then
 		AudioMgr.instance:trigger(AudioEnum.UI.Stop_UI_Bus)
 	end
 end
 
-return slot0
+return var_0_0

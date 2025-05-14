@@ -1,203 +1,215 @@
-module("modules.logic.fight.system.work.FightWorkStepSkill", package.seeall)
+﻿module("modules.logic.fight.system.work.FightWorkStepSkill", package.seeall)
 
-slot0 = class("FightWorkStepSkill", BaseWork)
-slot1 = 1
-slot2 = 0.01
-slot3 = 0
+local var_0_0 = class("FightWorkStepSkill", BaseWork)
+local var_0_1 = 1
+local var_0_2 = 0.01
+local var_0_3 = 0
 
-function slot0.ctor(slot0, slot1)
-	slot0.fightStepData = slot1
-	slot0._id = uv0
-	uv0 = uv0 + 1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.fightStepData = arg_1_1
+	arg_1_0._id = var_0_1
+	var_0_1 = var_0_1 + 1
 end
 
-function slot0.onStart(slot0)
-	FightController.instance:registerCallback(FightEvent.ForceEndSkillStep, slot0._forceEndSkillStep, slot0)
+function var_0_0.onStart(arg_2_0)
+	FightController.instance:registerCallback(FightEvent.ForceEndSkillStep, arg_2_0._forceEndSkillStep, arg_2_0)
 
-	slot0._attacker = FightHelper.getEntity(slot0.fightStepData.fromId)
+	arg_2_0._attacker = FightHelper.getEntity(arg_2_0.fightStepData.fromId)
 
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 20)
+	TaskDispatcher.runDelay(arg_2_0._delayDone, arg_2_0, 20)
 
-	if not slot0._attacker then
-		slot0:onDone(true)
+	if not arg_2_0._attacker then
+		arg_2_0:onDone(true)
 
 		return
 	end
 
-	slot0._skillId = slot0.fightStepData.actId
+	arg_2_0._skillId = arg_2_0.fightStepData.actId
 
-	if string.nilorempty(FightConfig.instance:getSkinSkillTimeline(slot0._attacker:getMO() and slot1.skin, slot0._skillId)) then
-		slot0:onDone(true)
+	local var_2_0 = arg_2_0._attacker:getMO()
+	local var_2_1 = var_2_0 and var_2_0.skin
+	local var_2_2 = FightConfig.instance:getSkinSkillTimeline(var_2_1, arg_2_0._skillId)
+
+	if string.nilorempty(var_2_2) then
+		arg_2_0:onDone(true)
 
 		return
 	end
 
-	FightController.instance:registerCallback(FightEvent.BeforeDestroyEntity, slot0._onBeforeDestroyEntity, slot0)
-	slot0:_canPlaySkill()
+	FightController.instance:registerCallback(FightEvent.BeforeDestroyEntity, arg_2_0._onBeforeDestroyEntity, arg_2_0)
+	arg_2_0:_canPlaySkill()
 end
 
-function slot0._canPlaySkill(slot0)
-	uv0.needWaitBeforeSkill = nil
+function var_0_0._canPlaySkill(arg_3_0)
+	var_0_0.needWaitBeforeSkill = nil
 
-	FightController.instance:dispatchEvent(FightEvent.BeforeSkillDialog, slot0._skillId)
+	FightController.instance:dispatchEvent(FightEvent.BeforeSkillDialog, arg_3_0._skillId)
 
-	if uv0.needWaitBeforeSkill then
-		TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-		FightController.instance:registerCallback(FightEvent.DialogContinueSkill, slot0._canPlaySkill2, slot0)
+	if var_0_0.needWaitBeforeSkill then
+		TaskDispatcher.cancelTask(arg_3_0._delayDone, arg_3_0)
+		FightController.instance:registerCallback(FightEvent.DialogContinueSkill, arg_3_0._canPlaySkill2, arg_3_0)
 	else
-		slot0:_canPlaySkill2()
+		arg_3_0:_canPlaySkill2()
 	end
 end
 
-function slot0._canPlaySkill2(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 20)
-	FightController.instance:unregisterCallback(FightEvent.DialogContinueSkill, slot0._canPlaySkill2, slot0)
+function var_0_0._canPlaySkill2(arg_4_0)
+	TaskDispatcher.cancelTask(arg_4_0._delayDone, arg_4_0)
+	TaskDispatcher.runDelay(arg_4_0._delayDone, arg_4_0, 20)
+	FightController.instance:unregisterCallback(FightEvent.DialogContinueSkill, arg_4_0._canPlaySkill2, arg_4_0)
 
 	if FightModel.instance:getVersion() >= 1 then
-		if FightHelper.isPlayerCardSkill(slot0.fightStepData) then
-			if FightPlayCardModel.instance:getCurIndex() < slot0.fightStepData.cardIndex - 1 then
-				FightController.instance:dispatchEvent(FightEvent.InvalidPreUsedCard, slot0.fightStepData.cardIndex)
-				TaskDispatcher.runDelay(slot0._delayAfterDissolveCard, slot0, 1 / FightModel.instance:getUISpeed())
+		if FightHelper.isPlayerCardSkill(arg_4_0.fightStepData) then
+			if arg_4_0.fightStepData.cardIndex - 1 > FightPlayCardModel.instance:getCurIndex() then
+				FightController.instance:dispatchEvent(FightEvent.InvalidPreUsedCard, arg_4_0.fightStepData.cardIndex)
+				TaskDispatcher.runDelay(arg_4_0._delayAfterDissolveCard, arg_4_0, 1 / FightModel.instance:getUISpeed())
 
 				return
 			end
 
-			FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, slot0._attacker, slot0._skillId, slot0.fightStepData)
+			FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, arg_4_0._attacker, arg_4_0._skillId, arg_4_0.fightStepData)
 		end
 
-		slot0:_playSkill(slot0._skillId)
+		arg_4_0:_playSkill(arg_4_0._skillId)
 	else
-		slot5 = FightPlayCardModel.instance:getClientLeftSkillOpList() and slot4[#slot4]
+		local var_4_0 = not arg_4_0.fightStepData.editorPlaySkill
+		local var_4_1 = arg_4_0._attacker:isMySide() and FightCardDataHelper.isActiveSkill(arg_4_0.fightStepData.fromId, arg_4_0._skillId)
+		local var_4_2 = FightPlayCardModel.instance:getClientLeftSkillOpList()
+		local var_4_3 = var_4_2 and var_4_2[#var_4_2]
+		local var_4_4 = var_4_3 and arg_4_0._skillId == var_4_3.skillId
 
-		if not slot0.fightStepData.editorPlaySkill and (slot0._attacker:isMySide() and FightCardDataHelper.isActiveSkill(slot0.fightStepData.fromId, slot0._skillId) or slot5 and slot0._skillId == slot5.skillId) then
-			if uv0 + uv1 - Time.realtimeSinceStartup > 0 then
-				TaskDispatcher.runDelay(slot0._toPlaySkill, slot0, slot7)
+		if var_4_0 and (var_4_1 or var_4_4) then
+			local var_4_5 = var_0_3 + var_0_2 - Time.realtimeSinceStartup
+
+			if var_4_5 > 0 then
+				TaskDispatcher.runDelay(arg_4_0._toPlaySkill, arg_4_0, var_4_5)
 			else
-				slot0:_toPlaySkill()
+				arg_4_0:_toPlaySkill()
 			end
 		else
-			slot0:_playSkill(slot0._skillId)
+			arg_4_0:_playSkill(arg_4_0._skillId)
 		end
 	end
 end
 
-function slot0._delayAfterDissolveCard(slot0)
-	FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, slot0._attacker, slot0._skillId, slot0.fightStepData)
-	slot0:_playSkill(slot0._skillId)
+function var_0_0._delayAfterDissolveCard(arg_5_0)
+	FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, arg_5_0._attacker, arg_5_0._skillId, arg_5_0.fightStepData)
+	arg_5_0:_playSkill(arg_5_0._skillId)
 end
 
-function slot0._delayPlaySkill(slot0)
-	slot0:_playSkill(slot0._skillId)
+function var_0_0._delayPlaySkill(arg_6_0)
+	arg_6_0:_playSkill(arg_6_0._skillId)
 end
 
-function slot0._toPlaySkill(slot0)
-	FightController.instance:registerCallback(FightEvent.ToPlaySkill, slot0._playSkill, slot0)
-	FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, slot0._attacker, slot0._skillId, slot0.fightStepData)
+function var_0_0._toPlaySkill(arg_7_0)
+	FightController.instance:registerCallback(FightEvent.ToPlaySkill, arg_7_0._playSkill, arg_7_0)
+	FightController.instance:dispatchEvent(FightEvent.BeforePlaySkill, arg_7_0._attacker, arg_7_0._skillId, arg_7_0.fightStepData)
 end
 
-function slot0._playSkill(slot0, slot1)
-	if slot1 ~= slot0.fightStepData.actId then
-		slot0:onDone(true)
+function var_0_0._playSkill(arg_8_0, arg_8_1)
+	if arg_8_1 ~= arg_8_0.fightStepData.actId then
+		arg_8_0:onDone(true)
 
 		return
 	end
 
-	if slot0.fightStepData.fromId == "0" or slot0._attacker then
-		FightController.instance:unregisterCallback(FightEvent.ToPlaySkill, slot0._playSkill, slot0)
+	if arg_8_0.fightStepData.fromId == "0" or arg_8_0._attacker then
+		FightController.instance:unregisterCallback(FightEvent.ToPlaySkill, arg_8_0._playSkill, arg_8_0)
 
-		if slot0._attacker.skill:registPlaySkillWork(slot0._skillId, slot0.fightStepData) then
-			slot2:registFinishCallback(slot0.onWorkTimelineFinish, slot0)
-			TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-			slot2:start()
+		local var_8_0 = arg_8_0._attacker.skill:registPlaySkillWork(arg_8_0._skillId, arg_8_0.fightStepData)
+
+		if var_8_0 then
+			var_8_0:registFinishCallback(arg_8_0.onWorkTimelineFinish, arg_8_0)
+			TaskDispatcher.cancelTask(arg_8_0._delayDone, arg_8_0)
+			var_8_0:start()
 		else
-			slot0:onDone(true)
+			arg_8_0:onDone(true)
 		end
 	else
-		logError("attacker entity not exist, can't play skill " .. slot0._skillId)
-		slot0:onDone(true)
+		logError("attacker entity not exist, can't play skill " .. arg_8_0._skillId)
+		arg_8_0:onDone(true)
 	end
 end
 
-function slot0.onWorkTimelineFinish(slot0)
-	if slot0.status ~= WorkStatus.Done then
-		slot0:_removeEvents()
+function var_0_0.onWorkTimelineFinish(arg_9_0)
+	if arg_9_0.status ~= WorkStatus.Done then
+		arg_9_0:_removeEvents()
 
-		uv0 = Time.realtimeSinceStartup
-		uv1.needStopSkillEnd = nil
+		var_0_3 = Time.realtimeSinceStartup
+		var_0_0.needStopSkillEnd = nil
 
 		FightController.instance:dispatchEvent(FightEvent.FightDialog, FightViewDialog.Type.HPRateAfterSkillNP)
 		FightController.instance:dispatchEvent(FightEvent.FightDialog, FightViewDialog.Type.HPRateAfterSkillP)
 
-		if uv1.needStopSkillEnd then
-			TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-			FightController.instance:registerCallback(FightEvent.FightDialogEnd, slot0._onFightDialogEnd, slot0)
+		if var_0_0.needStopSkillEnd then
+			TaskDispatcher.cancelTask(arg_9_0._delayDone, arg_9_0)
+			FightController.instance:registerCallback(FightEvent.FightDialogEnd, arg_9_0._onFightDialogEnd, arg_9_0)
 		elseif FightModel.instance:getVersion() >= 1 then
-			if FightHelper.isPlayerCardSkill(slot0.fightStepData) then
-				TaskDispatcher.runDelay(slot0._delayAfterSkillEnd, slot0, 0.3 / FightModel.instance:getUISpeed())
+			if FightHelper.isPlayerCardSkill(arg_9_0.fightStepData) then
+				TaskDispatcher.runDelay(arg_9_0._delayAfterSkillEnd, arg_9_0, 0.3 / FightModel.instance:getUISpeed())
 			else
-				slot0:onDone(true)
+				arg_9_0:onDone(true)
 			end
 		else
-			slot0:onDone(true)
+			arg_9_0:onDone(true)
 		end
 	end
 end
 
-function slot0._delayAfterSkillEnd(slot0)
-	slot0:onDone(true)
+function var_0_0._delayAfterSkillEnd(arg_10_0)
+	arg_10_0:onDone(true)
 end
 
-function slot0._onFightDialogEnd(slot0)
-	slot0:onDone(true)
+function var_0_0._onFightDialogEnd(arg_11_0)
+	arg_11_0:onDone(true)
 end
 
-function slot0._forceEndSkillStep(slot0, slot1)
-	if slot1 == slot0.fightStepData then
-		slot0:_removeEvents()
-		slot0:onDone(true)
+function var_0_0._forceEndSkillStep(arg_12_0, arg_12_1)
+	if arg_12_1 == arg_12_0.fightStepData then
+		arg_12_0:_removeEvents()
+		arg_12_0:onDone(true)
 	end
 end
 
-function slot0._delayDone(slot0)
-	logError("skill play timeout, skillId = " .. slot0._skillId)
-	slot0:_removeEvents()
-	FightController.instance:dispatchEvent(FightEvent.FightWorkStepSkillTimeout, slot0.fightStepData)
+function var_0_0._delayDone(arg_13_0)
+	logError("skill play timeout, skillId = " .. arg_13_0._skillId)
+	arg_13_0:_removeEvents()
+	FightController.instance:dispatchEvent(FightEvent.FightWorkStepSkillTimeout, arg_13_0.fightStepData)
 end
 
-function slot0._removeEvents(slot0)
-	TaskDispatcher.cancelTask(slot0._delayAfterDissolveCard, slot0)
-	TaskDispatcher.cancelTask(slot0._delayPlaySkill, slot0)
-	TaskDispatcher.cancelTask(slot0._delayAfterSkillEnd, slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
-	TaskDispatcher.cancelTask(slot0._toPlaySkill, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ToPlaySkill, slot0._playSkill, slot0)
-	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, slot0._forceEndSkillStep, slot0)
-	FightController.instance:unregisterCallback(FightEvent.DialogContinueSkill, slot0._canPlaySkill2, slot0)
-	FightController.instance:unregisterCallback(FightEvent.FightDialogEnd, slot0._onFightDialogEnd, slot0)
-	FightController.instance:unregisterCallback(FightEvent.BeforeDestroyEntity, slot0._onBeforeDestroyEntity, slot0)
+function var_0_0._removeEvents(arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._delayAfterDissolveCard, arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._delayPlaySkill, arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._delayAfterSkillEnd, arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._delayDone, arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._toPlaySkill, arg_14_0)
+	FightController.instance:unregisterCallback(FightEvent.ToPlaySkill, arg_14_0._playSkill, arg_14_0)
+	FightController.instance:unregisterCallback(FightEvent.ForceEndSkillStep, arg_14_0._forceEndSkillStep, arg_14_0)
+	FightController.instance:unregisterCallback(FightEvent.DialogContinueSkill, arg_14_0._canPlaySkill2, arg_14_0)
+	FightController.instance:unregisterCallback(FightEvent.FightDialogEnd, arg_14_0._onFightDialogEnd, arg_14_0)
+	FightController.instance:unregisterCallback(FightEvent.BeforeDestroyEntity, arg_14_0._onBeforeDestroyEntity, arg_14_0)
 end
 
-function slot0._onBeforeDestroyEntity(slot0, slot1)
-	if slot0._attacker and slot0._attacker.id == slot1.id then
-		slot0:onDone(true)
+function var_0_0._onBeforeDestroyEntity(arg_15_0, arg_15_1)
+	if arg_15_0._attacker and arg_15_0._attacker.id == arg_15_1.id then
+		arg_15_0:onDone(true)
 	end
 end
 
-function slot0.onStop(slot0)
-	uv0.super.onStop(slot0)
+function var_0_0.onStop(arg_16_0)
+	var_0_0.super.onStop(arg_16_0)
 
-	if slot0._attacker and slot0._attacker.skill then
-		slot0._attacker.skill:stopSkill()
+	if arg_16_0._attacker and arg_16_0._attacker.skill then
+		arg_16_0._attacker.skill:stopSkill()
 	end
 end
 
-function slot0.onResume(slot0)
+function var_0_0.onResume(arg_17_0)
 	logError("skill step can't resume")
 end
 
-function slot0.clearWork(slot0)
-	slot0:_removeEvents()
+function var_0_0.clearWork(arg_18_0)
+	arg_18_0:_removeEvents()
 end
 
-return slot0
+return var_0_0

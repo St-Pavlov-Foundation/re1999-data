@@ -1,58 +1,60 @@
-module("modules.logic.signin.controller.SignInController", package.seeall)
+﻿module("modules.logic.signin.controller.SignInController", package.seeall)
 
-slot0 = class("SignInController", BaseController)
+local var_0_0 = class("SignInController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0._curMonth = 0
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._curMonth = 0
 end
 
-function slot0.reInit(slot0)
-	slot0:stopCheckEnterMainView()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:stopCheckEnterMainView()
 end
 
-function slot0.addConstEvents(slot0)
-	MainController.instance:registerCallback(MainEvent.OnFuncUnlockRefresh, slot0._onFuncUnlock, slot0)
-	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, slot0._onCheckSignIn, slot0)
-	GuideController.instance:registerCallback(GuideEvent.FinishGuideLastStep, slot0._onCheckSignIn, slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	MainController.instance:registerCallback(MainEvent.OnFuncUnlockRefresh, arg_3_0._onFuncUnlock, arg_3_0)
+	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, arg_3_0._onCheckSignIn, arg_3_0)
+	GuideController.instance:registerCallback(GuideEvent.FinishGuideLastStep, arg_3_0._onCheckSignIn, arg_3_0)
 end
 
-function slot0._onFuncUnlock(slot0)
+function var_0_0._onFuncUnlock(arg_4_0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.SignIn) then
 		return
 	end
 
-	slot0:_onCheckSignIn()
+	arg_4_0:_onCheckSignIn()
 end
 
-function slot0._onCheckSignIn(slot0, slot1)
-	if GuideController.instance:isGuiding() and slot1 ~= GuideModel.instance:lastForceGuideId() then
-		slot0:stopCheckEnterMainView()
+function var_0_0._onCheckSignIn(arg_5_0, arg_5_1)
+	if GuideController.instance:isGuiding() and arg_5_1 ~= GuideModel.instance:lastForceGuideId() then
+		arg_5_0:stopCheckEnterMainView()
 
 		return
 	end
 
-	slot0:stopCheckEnterMainView()
+	arg_5_0:stopCheckEnterMainView()
 
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.SignIn) then
 		return
 	end
 
-	slot2 = SignInModel.instance:getCurDate()
+	local var_5_0 = SignInModel.instance:getCurDate()
 
 	if ViewMgr.instance:isOpen(ViewName.SignInView) or ViewMgr.instance:isOpen(ViewName.SignInDetailView) then
-		if SignInModel.instance:getSignTargetDate()[1] ~= tonumber(slot2.year) or slot3[2] ~= tonumber(slot2.month) or slot3[3] ~= tonumber(slot2.day) then
-			SignInModel.instance:setTargetDate(tonumber(slot2.year), tonumber(slot2.month), tonumber(slot2.day))
+		local var_5_1 = SignInModel.instance:getSignTargetDate()
 
-			slot0._curMonth = slot2.month
+		if var_5_1[1] ~= tonumber(var_5_0.year) or var_5_1[2] ~= tonumber(var_5_0.month) or var_5_1[3] ~= tonumber(var_5_0.day) then
+			SignInModel.instance:setTargetDate(tonumber(var_5_0.year), tonumber(var_5_0.month), tonumber(var_5_0.day))
 
-			slot0:sendGetSignInInfoRequestIfUnlock()
+			arg_5_0._curMonth = var_5_0.month
+
+			arg_5_0:sendGetSignInInfoRequestIfUnlock()
 		end
 	else
-		TaskDispatcher.runRepeat(slot0._onCheckEnterMainView, slot0, 0.5)
+		TaskDispatcher.runRepeat(arg_5_0._onCheckEnterMainView, arg_5_0, 0.5)
 	end
 end
 
-function slot0._onCheckEnterMainView(slot0)
+function var_0_0._onCheckEnterMainView(arg_6_0)
 	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.MainViewGuideBlock) then
 		return
 	end
@@ -61,8 +63,10 @@ function slot0._onCheckEnterMainView(slot0)
 		return
 	end
 
-	if SignInModel.instance:isSignDayRewardGet(SignInModel.instance:getCurDate().day) then
-		slot0:stopCheckEnterMainView()
+	local var_6_0 = SignInModel.instance:getCurDate()
+
+	if SignInModel.instance:isSignDayRewardGet(var_6_0.day) then
+		arg_6_0:stopCheckEnterMainView()
 
 		return
 	end
@@ -77,68 +81,76 @@ function slot0._onCheckEnterMainView(slot0)
 
 	if not ViewMgr.instance:hasOpenFullView() and ViewMgr.instance:isOpen(ViewName.MainView) then
 		SignInModel.instance:setAutoSign(true)
-		slot0:sendGetSignInInfoRequestIfUnlock()
-		slot0:openSignInDetailView({
-			isBirthday = false
-		})
-		slot0:stopCheckEnterMainView()
+		arg_6_0:sendGetSignInInfoRequestIfUnlock()
 
-		slot0._curMonth = slot3.month
+		local var_6_1 = {}
+
+		var_6_1.isBirthday = false
+
+		arg_6_0:openSignInDetailView(var_6_1)
+		arg_6_0:stopCheckEnterMainView()
+
+		arg_6_0._curMonth = var_6_0.month
 	end
 end
 
-function slot0.stopCheckEnterMainView(slot0)
-	TaskDispatcher.cancelTask(slot0._onCheckEnterMainView, slot0)
+function var_0_0.stopCheckEnterMainView(arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0._onCheckEnterMainView, arg_7_0)
 end
 
-function slot0.openSignInView(slot0, slot1)
-	slot2 = SignInModel.instance:getCurDate()
+function var_0_0.openSignInView(arg_8_0, arg_8_1)
+	local var_8_0 = SignInModel.instance:getCurDate()
 
-	SignInModel.instance:setTargetDate(tonumber(slot2.year), tonumber(slot2.month), tonumber(slot2.day))
-	ViewMgr.instance:openView(ViewName.SignInView, slot1)
+	SignInModel.instance:setTargetDate(tonumber(var_8_0.year), tonumber(var_8_0.month), tonumber(var_8_0.day))
+	ViewMgr.instance:openView(ViewName.SignInView, arg_8_1)
 end
 
-function slot0.openSignInDetailView(slot0, slot1)
-	if SignInModel.instance:isSignDayRewardGet(SignInModel.instance:getCurDate().day) then
-		slot0:openSignInView(slot1)
+function var_0_0.openSignInDetailView(arg_9_0, arg_9_1)
+	local var_9_0 = SignInModel.instance:getCurDate()
+
+	if SignInModel.instance:isSignDayRewardGet(var_9_0.day) then
+		arg_9_0:openSignInView(arg_9_1)
 
 		return
 	end
 
-	SignInModel.instance:setTargetDate(tonumber(slot2.year), tonumber(slot2.month), tonumber(slot2.day))
-	ViewMgr.instance:openView(ViewName.SignInDetailView, {
-		isBirthday = slot1.isBirthday,
-		callback = slot1.callback,
-		callbackObj = slot1.callbackObj
-	})
+	local var_9_1 = {
+		isBirthday = arg_9_1.isBirthday,
+		callback = arg_9_1.callback,
+		callbackObj = arg_9_1.callbackObj
+	}
+
+	SignInModel.instance:setTargetDate(tonumber(var_9_0.year), tonumber(var_9_0.month), tonumber(var_9_0.day))
+	ViewMgr.instance:openView(ViewName.SignInDetailView, var_9_1)
 end
 
-function slot0.setSigninReward(slot0, slot1)
-	if slot0:checkIsBirthdayBlock(slot1) then
-		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, slot1)
+function var_0_0.setSigninReward(arg_10_0, arg_10_1)
+	if arg_10_0:checkIsBirthdayBlock(arg_10_1) then
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, arg_10_1)
 	elseif SignInModel.instance:checkDailyAllowanceIsOpen() then
 		if not SignInModel.instance:checkIsFirstGoldDay() then
-			slot2 = SigninRewardMo.New()
+			local var_10_0 = SigninRewardMo.New()
+			local var_10_1 = SignInModel.instance:getDailyAllowanceBonus()
 
-			if SignInModel.instance:getDailyAllowanceBonus() then
-				slot4 = string.splitToNumber(slot3, "#")
+			if var_10_1 then
+				local var_10_2 = string.splitToNumber(var_10_1, "#")
 
-				slot2:initValue(slot4[1], slot4[2], slot4[3], nil, true)
-				table.insert(slot1, slot2)
+				var_10_0:initValue(var_10_2[1], var_10_2[2], var_10_2[3], nil, true)
+				table.insert(arg_10_1, var_10_0)
 			end
 
-			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, slot1)
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, arg_10_1)
 		else
-			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, slot1)
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, arg_10_1)
 		end
 	else
-		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, slot1)
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, arg_10_1)
 	end
 end
 
-function slot0.checkIsBirthdayBlock(slot0, slot1)
-	for slot5, slot6 in pairs(slot1) do
-		if slot6 and slot6.materilType == MaterialEnum.MaterialType.SpecialBlock then
+function var_0_0.checkIsBirthdayBlock(arg_11_0, arg_11_1)
+	for iter_11_0, iter_11_1 in pairs(arg_11_1) do
+		if iter_11_1 and iter_11_1.materilType == MaterialEnum.MaterialType.SpecialBlock then
 			return true
 		end
 	end
@@ -146,7 +158,7 @@ function slot0.checkIsBirthdayBlock(slot0, slot1)
 	return false
 end
 
-function slot0.sendGetSignInInfoRequestIfUnlock(slot0)
+function var_0_0.sendGetSignInInfoRequestIfUnlock(arg_12_0)
 	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.SignIn) then
 		return
 	end
@@ -154,6 +166,6 @@ function slot0.sendGetSignInInfoRequestIfUnlock(slot0)
 	SignInRpc.instance:sendGetSignInInfoRequest()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

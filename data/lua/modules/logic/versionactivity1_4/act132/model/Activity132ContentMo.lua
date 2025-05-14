@@ -1,13 +1,13 @@
-module("modules.logic.versionactivity1_4.act132.model.Activity132ContentMo", package.seeall)
+﻿module("modules.logic.versionactivity1_4.act132.model.Activity132ContentMo", package.seeall)
 
-slot0 = class("Activity132ContentMo")
+local var_0_0 = class("Activity132ContentMo")
 
-function slot0.ctor(slot0, slot1)
-	slot0.activityId = slot1.activityId
-	slot0.contentId = slot1.contentId
-	slot0.content = slot1.content
-	slot0.condition = slot1.condition
-	slot0.unlockDesc = slot1.unlockDesc
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.activityId = arg_1_1.activityId
+	arg_1_0.contentId = arg_1_1.contentId
+	arg_1_0.content = arg_1_1.content
+	arg_1_0.condition = arg_1_1.condition
+	arg_1_0.unlockDesc = arg_1_1.unlockDesc
 end
 
-return slot0
+return var_0_0

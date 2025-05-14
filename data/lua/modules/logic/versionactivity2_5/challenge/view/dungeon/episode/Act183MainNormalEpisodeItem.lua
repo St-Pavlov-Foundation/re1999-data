@@ -1,108 +1,110 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183MainNormalEpisodeItem", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.episode.Act183MainNormalEpisodeItem", package.seeall)
 
-slot0 = class("Act183MainNormalEpisodeItem", Act183BaseEpisodeItem)
+local var_0_0 = class("Act183MainNormalEpisodeItem", Act183BaseEpisodeItem)
 
-function slot0.getItemParentPath(slot0)
-	return "root/middle/#go_episodecontainer/go_point" .. slot0
+function var_0_0.getItemParentPath(arg_1_0)
+	return "root/middle/#go_episodecontainer/go_point" .. arg_1_0
 end
 
-function slot0.getItemTemplatePath(slot0)
+function var_0_0.getItemTemplatePath(arg_2_0)
 	return "root/middle/#go_episodecontainer/#go_normalepisode"
 end
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_3_0, arg_3_1)
+	var_0_0.super.init(arg_3_0, arg_3_1)
 
-	slot0._goinfo = gohelper.findChild(slot0.go, "Info")
-	slot0._imagerule1 = gohelper.findChildImage(slot0.go, "Info/rules/image_rule1")
-	slot0._gorepress1 = gohelper.findChild(slot0.go, "Info/rules/image_rule1/go_repress1")
-	slot0._imagerule2 = gohelper.findChildImage(slot0.go, "Info/rules/image_rule2")
-	slot0._gorepress2 = gohelper.findChild(slot0.go, "Info/rules/image_rule2/go_repress2")
-	slot0._imageindex = gohelper.findChildImage(slot0.go, "go_finish/image_index")
-	slot0._imagecondition = gohelper.findChildImage(slot0.go, "Info/image_condition")
-	slot0._goescape1 = gohelper.findChild(slot0.go, "Info/rules/image_rule1/go_repressbutterfly1")
-	slot0._goescape2 = gohelper.findChild(slot0.go, "Info/rules/image_rule2/go_repressbutterfly2")
-	slot0._gostars = gohelper.findChild(slot0.go, "go_finish/go_stars")
-	slot0._gostaritem = gohelper.findChild(slot0.go, "go_finish/go_stars/stars/go_staritem")
-	slot0._animrepress1 = gohelper.onceAddComponent(slot0._gorepress1, gohelper.Type_Animator)
-	slot0._animrepress2 = gohelper.onceAddComponent(slot0._gorepress2, gohelper.Type_Animator)
-	slot0._animescape1 = gohelper.onceAddComponent(slot0._goescape1, gohelper.Type_Animator)
-	slot0._animescape2 = gohelper.onceAddComponent(slot0._goescape2, gohelper.Type_Animator)
-	slot0._animcondition = gohelper.onceAddComponent(slot0._imagecondition, gohelper.Type_Animator)
+	arg_3_0._goinfo = gohelper.findChild(arg_3_0.go, "Info")
+	arg_3_0._imagerule1 = gohelper.findChildImage(arg_3_0.go, "Info/rules/image_rule1")
+	arg_3_0._gorepress1 = gohelper.findChild(arg_3_0.go, "Info/rules/image_rule1/go_repress1")
+	arg_3_0._imagerule2 = gohelper.findChildImage(arg_3_0.go, "Info/rules/image_rule2")
+	arg_3_0._gorepress2 = gohelper.findChild(arg_3_0.go, "Info/rules/image_rule2/go_repress2")
+	arg_3_0._imageindex = gohelper.findChildImage(arg_3_0.go, "go_finish/image_index")
+	arg_3_0._imagecondition = gohelper.findChildImage(arg_3_0.go, "Info/image_condition")
+	arg_3_0._goescape1 = gohelper.findChild(arg_3_0.go, "Info/rules/image_rule1/go_repressbutterfly1")
+	arg_3_0._goescape2 = gohelper.findChild(arg_3_0.go, "Info/rules/image_rule2/go_repressbutterfly2")
+	arg_3_0._gostars = gohelper.findChild(arg_3_0.go, "go_finish/go_stars")
+	arg_3_0._gostaritem = gohelper.findChild(arg_3_0.go, "go_finish/go_stars/stars/go_staritem")
+	arg_3_0._animrepress1 = gohelper.onceAddComponent(arg_3_0._gorepress1, gohelper.Type_Animator)
+	arg_3_0._animrepress2 = gohelper.onceAddComponent(arg_3_0._gorepress2, gohelper.Type_Animator)
+	arg_3_0._animescape1 = gohelper.onceAddComponent(arg_3_0._goescape1, gohelper.Type_Animator)
+	arg_3_0._animescape2 = gohelper.onceAddComponent(arg_3_0._goescape2, gohelper.Type_Animator)
+	arg_3_0._animcondition = gohelper.onceAddComponent(arg_3_0._imagecondition, gohelper.Type_Animator)
 
-	Act183Helper.setEpisodeConditionStar(slot0._imagecondition, true)
+	Act183Helper.setEpisodeConditionStar(arg_3_0._imagecondition, true)
 end
 
-function slot0.addEventListeners(slot0)
-	uv0.super.addEventListeners(slot0)
-	slot0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, slot0._onUpdateRepressInfo, slot0)
+function var_0_0.addEventListeners(arg_4_0)
+	var_0_0.super.addEventListeners(arg_4_0)
+	arg_4_0:addEventCb(Act183Controller.instance, Act183Event.OnUpdateRepressInfo, arg_4_0._onUpdateRepressInfo, arg_4_0)
 end
 
-function slot0.removeEventListeners(slot0)
-	uv0.super.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_5_0)
+	var_0_0.super.removeEventListeners(arg_5_0)
 end
 
-function slot0._onUpdateRepressInfo(slot0, slot1, slot2)
-	if slot0._episodeId ~= slot1 then
+function var_0_0._onUpdateRepressInfo(arg_6_0, arg_6_1, arg_6_2)
+	if arg_6_0._episodeId ~= arg_6_1 then
 		return
 	end
 
-	slot0:refreshRules()
-	slot0:playRepressAnim()
+	arg_6_0:refreshRules()
+	arg_6_0:playRepressAnim()
 end
 
-function slot0.onUpdateMo(slot0, slot1)
-	uv0.super.onUpdateMo(slot0, slot1)
+function var_0_0.onUpdateMo(arg_7_0, arg_7_1)
+	var_0_0.super.onUpdateMo(arg_7_0, arg_7_1)
 
-	if slot0._status == Act183Enum.EpisodeStatus.Finished then
-		UISpriteSetMgr.instance:setChallengeSprite(slot0._imageindex, "v2a5_challenge_dungeon_level_" .. slot1:getPassOrder())
+	if arg_7_0._status == Act183Enum.EpisodeStatus.Finished then
+		local var_7_0 = "v2a5_challenge_dungeon_level_" .. arg_7_1:getPassOrder()
+
+		UISpriteSetMgr.instance:setChallengeSprite(arg_7_0._imageindex, var_7_0)
 	end
 
-	slot0._isAllConditionPass = slot0._episodeMo:isAllConditionPass()
+	arg_7_0._isAllConditionPass = arg_7_0._episodeMo:isAllConditionPass()
 
-	slot0._animcondition:Play(slot0._isAllConditionPass and "lighted" or "gray", 0, 0)
-	slot0:refreshRules()
-	slot0:refreshPassStarList(slot0._gostaritem)
+	arg_7_0._animcondition:Play(arg_7_0._isAllConditionPass and "lighted" or "gray", 0, 0)
+	arg_7_0:refreshRules()
+	arg_7_0:refreshPassStarList(arg_7_0._gostaritem)
 end
 
-function slot0.refreshRules(slot0)
-	Act183Helper.setRuleIcon(slot0._episodeId, 1, slot0._imagerule1)
-	Act183Helper.setRuleIcon(slot0._episodeId, 2, slot0._imagerule2)
+function var_0_0.refreshRules(arg_8_0)
+	Act183Helper.setRuleIcon(arg_8_0._episodeId, 1, arg_8_0._imagerule1)
+	Act183Helper.setRuleIcon(arg_8_0._episodeId, 2, arg_8_0._imagerule2)
 
-	slot0._rule1status = slot0._episodeMo:getRuleStatus(1)
-	slot0._rule2status = slot0._episodeMo:getRuleStatus(2)
+	arg_8_0._rule1status = arg_8_0._episodeMo:getRuleStatus(1)
+	arg_8_0._rule2status = arg_8_0._episodeMo:getRuleStatus(2)
 
-	gohelper.setActive(slot0._gorepress1, slot0._rule1status == Act183Enum.RuleStatus.Repress)
-	gohelper.setActive(slot0._gorepress2, slot0._rule2status == Act183Enum.RuleStatus.Repress)
-	gohelper.setActive(slot0._goescape1, slot0._rule1status == Act183Enum.RuleStatus.Escape)
-	gohelper.setActive(slot0._goescape2, slot0._rule2status == Act183Enum.RuleStatus.Escape)
+	gohelper.setActive(arg_8_0._gorepress1, arg_8_0._rule1status == Act183Enum.RuleStatus.Repress)
+	gohelper.setActive(arg_8_0._gorepress2, arg_8_0._rule2status == Act183Enum.RuleStatus.Repress)
+	gohelper.setActive(arg_8_0._goescape1, arg_8_0._rule1status == Act183Enum.RuleStatus.Escape)
+	gohelper.setActive(arg_8_0._goescape2, arg_8_0._rule2status == Act183Enum.RuleStatus.Escape)
 end
 
-function slot0.playFinishAnim(slot0)
-	uv0.super.playFinishAnim(slot0)
-	slot0:playRepressAnim()
-	slot0:playAllConditionPassAnim()
+function var_0_0.playFinishAnim(arg_9_0)
+	var_0_0.super.playFinishAnim(arg_9_0)
+	arg_9_0:playRepressAnim()
+	arg_9_0:playAllConditionPassAnim()
 	AudioMgr.instance:trigger(AudioEnum.UI.Act183_EpisodeFinished_Star)
 end
 
-function slot0.playRepressAnim(slot0)
-	if slot0._rule1status == Act183Enum.RuleStatus.Repress then
-		slot0._animrepress1:Play("in", 0, 0)
+function var_0_0.playRepressAnim(arg_10_0)
+	if arg_10_0._rule1status == Act183Enum.RuleStatus.Repress then
+		arg_10_0._animrepress1:Play("in", 0, 0)
 	else
-		slot0._animescape1:Play("in", 0, 0)
+		arg_10_0._animescape1:Play("in", 0, 0)
 	end
 
-	if slot0._rule2status == Act183Enum.RuleStatus.Repress then
-		slot0._animrepress2:Play("in", 0, 0)
+	if arg_10_0._rule2status == Act183Enum.RuleStatus.Repress then
+		arg_10_0._animrepress2:Play("in", 0, 0)
 	else
-		slot0._animescape2:Play("in", 0, 0)
+		arg_10_0._animescape2:Play("in", 0, 0)
 	end
 end
 
-function slot0.playAllConditionPassAnim(slot0)
-	if slot0._isAllConditionPass then
-		slot0._animcondition:Play("light", 0, 0)
+function var_0_0.playAllConditionPassAnim(arg_11_0)
+	if arg_11_0._isAllConditionPass then
+		arg_11_0._animcondition:Play("light", 0, 0)
 	end
 end
 
-return slot0
+return var_0_0

@@ -1,96 +1,108 @@
-module("modules.logic.fight.entity.comp.skill.FightTLEventSceneMask", package.seeall)
+﻿module("modules.logic.fight.entity.comp.skill.FightTLEventSceneMask", package.seeall)
 
-slot0 = class("FightTLEventSceneMask", FightTimelineTrackItem)
+local var_0_0 = class("FightTLEventSceneMask", FightTimelineTrackItem)
 
-function slot0.onTrackStart(slot0, slot1, slot2, slot3)
-	slot4 = ResUrl.getEffect(slot3[1])
-	slot0._colorStr = slot3[2]
+function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	local var_1_0 = ResUrl.getEffect(arg_1_3[1])
 
-	if not string.nilorempty(slot3[3]) and string.split(slot5, "#") and #slot6 > 0 then
-		slot0._fadeInTime = tonumber(slot6[1]) or 0.15
-		slot0._fadeOutTime = slot6[2] and tonumber(slot6[2]) or slot0._fadeInTime
+	arg_1_0._colorStr = arg_1_3[2]
+
+	local var_1_1 = arg_1_3[3]
+
+	if not string.nilorempty(var_1_1) then
+		local var_1_2 = string.split(var_1_1, "#")
+
+		if var_1_2 and #var_1_2 > 0 then
+			arg_1_0._fadeInTime = tonumber(var_1_2[1]) or 0.15
+			arg_1_0._fadeOutTime = var_1_2[2] and tonumber(var_1_2[2]) or arg_1_0._fadeInTime
+		end
 	end
 
-	slot0._color = GameUtil.parseColor(slot0._colorStr)
+	arg_1_0._color = GameUtil.parseColor(arg_1_0._colorStr)
 
-	if slot0._fadeInTime and slot0._fadeInTime > 0 then
-		slot0._fadeInId = ZProj.TweenHelper.DOTweenFloat(0, slot0._color.a, slot0._fadeInTime, slot0._tweenFrameCb, nil, slot0)
-		slot0._color = Color.New(slot0._color.r, slot0._color.g, slot0._color.b, 0)
+	if arg_1_0._fadeInTime and arg_1_0._fadeInTime > 0 then
+		arg_1_0._fadeInId = ZProj.TweenHelper.DOTweenFloat(0, arg_1_0._color.a, arg_1_0._fadeInTime, arg_1_0._tweenFrameCb, nil, arg_1_0)
+		arg_1_0._color = Color.New(arg_1_0._color.r, arg_1_0._color.g, arg_1_0._color.b, 0)
 	end
 
-	if slot0._fadeOutTime and slot0._fadeOutTime > 0 then
-		TaskDispatcher.runDelay(slot0._fadeOut, slot0, slot2 - slot0._fadeOutTime)
+	if arg_1_0._fadeOutTime and arg_1_0._fadeOutTime > 0 then
+		TaskDispatcher.runDelay(arg_1_0._fadeOut, arg_1_0, arg_1_2 - arg_1_0._fadeOutTime)
 	end
 
-	slot0._effectWrap = FightEffectPool.getEffect(slot4, FightEnum.EntitySide.BothSide, slot0._onEffectLoaded, slot0, gohelper.findChild(CameraMgr.instance:getMainCameraGO(), "scenemask"))
+	local var_1_3 = CameraMgr.instance:getMainCameraGO()
+	local var_1_4 = gohelper.findChild(var_1_3, "scenemask")
 
-	slot0._effectWrap:setLayer(UnityLayer.Unit)
+	arg_1_0._effectWrap = FightEffectPool.getEffect(var_1_0, FightEnum.EntitySide.BothSide, arg_1_0._onEffectLoaded, arg_1_0, var_1_4)
+
+	arg_1_0._effectWrap:setLayer(UnityLayer.Unit)
 end
 
-function slot0.onTrackEnd(slot0)
-	slot0:_clear()
+function var_0_0.onTrackEnd(arg_2_0)
+	arg_2_0:_clear()
 end
 
-function slot0._fadeOut(slot0)
-	if slot0._fadeInId then
-		ZProj.TweenHelper.KillById(slot0._fadeInId)
+function var_0_0._fadeOut(arg_3_0)
+	if arg_3_0._fadeInId then
+		ZProj.TweenHelper.KillById(arg_3_0._fadeInId)
 	end
 
-	slot0._fadeOutId = ZProj.TweenHelper.DOTweenFloat(slot0._color.a, 0, slot0._fadeOutTime, slot0._tweenFrameCb, nil, slot0)
+	arg_3_0._fadeOutId = ZProj.TweenHelper.DOTweenFloat(arg_3_0._color.a, 0, arg_3_0._fadeOutTime, arg_3_0._tweenFrameCb, nil, arg_3_0)
 end
 
-function slot0._tweenFrameCb(slot0, slot1)
-	slot0._color.a = slot1
+function var_0_0._tweenFrameCb(arg_4_0, arg_4_1)
+	arg_4_0._color.a = arg_4_1
 
-	slot0:_setMaskColor()
+	arg_4_0:_setMaskColor()
 end
 
-function slot0.onDestructor(slot0)
-	slot0:_clear()
+function var_0_0.onDestructor(arg_5_0)
+	arg_5_0:_clear()
 end
 
-function slot0._onEffectLoaded(slot0, slot1, slot2)
-	if not slot2 then
+function var_0_0._onEffectLoaded(arg_6_0, arg_6_1, arg_6_2)
+	if not arg_6_2 then
 		return
 	end
 
-	if slot1.effectGO:GetComponent("MeshRenderer") then
-		slot0._material = slot3.material
+	local var_6_0 = arg_6_1.effectGO:GetComponent("MeshRenderer")
 
-		if slot0._material:HasProperty(MaterialUtil._MaskColorId) then
-			slot0:_setMaskColor()
+	if var_6_0 then
+		arg_6_0._material = var_6_0.material
+
+		if arg_6_0._material:HasProperty(MaterialUtil._MaskColorId) then
+			arg_6_0:_setMaskColor()
 		end
 	end
 end
 
-function slot0._setMaskColor(slot0)
-	if slot0._material then
-		slot0._material:SetColor(MaterialUtil._MaskColorId, slot0._color)
+function var_0_0._setMaskColor(arg_7_0)
+	if arg_7_0._material then
+		arg_7_0._material:SetColor(MaterialUtil._MaskColorId, arg_7_0._color)
 	end
 end
 
-function slot0._clear(slot0)
-	TaskDispatcher.cancelTask(slot0._fadeOut, slot0)
+function var_0_0._clear(arg_8_0)
+	TaskDispatcher.cancelTask(arg_8_0._fadeOut, arg_8_0)
 
-	if slot0._fadeInId then
-		ZProj.TweenHelper.KillById(slot0._fadeInId)
+	if arg_8_0._fadeInId then
+		ZProj.TweenHelper.KillById(arg_8_0._fadeInId)
 
-		slot0._fadeInId = nil
+		arg_8_0._fadeInId = nil
 	end
 
-	if slot0._fadeOutId then
-		ZProj.TweenHelper.KillById(slot0._fadeOutId)
+	if arg_8_0._fadeOutId then
+		ZProj.TweenHelper.KillById(arg_8_0._fadeOutId)
 
-		slot0._fadeOutId = nil
+		arg_8_0._fadeOutId = nil
 	end
 
-	if slot0._effectWrap then
-		FightEffectPool.returnEffect(slot0._effectWrap)
+	if arg_8_0._effectWrap then
+		FightEffectPool.returnEffect(arg_8_0._effectWrap)
 
-		slot0._effectWrap = nil
+		arg_8_0._effectWrap = nil
 	end
 
-	slot0._material = nil
+	arg_8_0._material = nil
 end
 
-return slot0
+return var_0_0

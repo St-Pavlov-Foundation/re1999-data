@@ -1,60 +1,64 @@
-module("modules.logic.versionactivity1_4.act129.view.Activity129ViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity1_4.act129.view.Activity129ViewContainer", package.seeall)
 
-slot0 = class("Activity129ViewContainer", BaseViewContainer)
+local var_0_0 = class("Activity129ViewContainer", BaseViewContainer)
 
-function slot0.buildViews(slot0)
-	slot1 = {}
-	slot0.heroView = Activity129HeroView.New()
-	slot0.entranceView = Activity129EntranceView.New()
-	slot0.rewardView = Activity129RewardView.New()
+function var_0_0.buildViews(arg_1_0)
+	local var_1_0 = {}
 
-	table.insert(slot1, slot0.heroView)
-	table.insert(slot1, slot0.entranceView)
-	table.insert(slot1, slot0.rewardView)
-	table.insert(slot1, Activity129View.New())
-	table.insert(slot1, Activity129PrizeView.New())
-	table.insert(slot1, Activity129ResultView.New())
-	table.insert(slot1, TabViewGroup.New(1, "#go_BackBtns"))
-	table.insert(slot1, TabViewGroup.New(2, "#go_CurrenyBar"))
+	arg_1_0.heroView = Activity129HeroView.New()
+	arg_1_0.entranceView = Activity129EntranceView.New()
+	arg_1_0.rewardView = Activity129RewardView.New()
 
-	return slot1
+	table.insert(var_1_0, arg_1_0.heroView)
+	table.insert(var_1_0, arg_1_0.entranceView)
+	table.insert(var_1_0, arg_1_0.rewardView)
+	table.insert(var_1_0, Activity129View.New())
+	table.insert(var_1_0, Activity129PrizeView.New())
+	table.insert(var_1_0, Activity129ResultView.New())
+	table.insert(var_1_0, TabViewGroup.New(1, "#go_BackBtns"))
+	table.insert(var_1_0, TabViewGroup.New(2, "#go_CurrenyBar"))
+
+	return var_1_0
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot0._navigateButtonsView = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		arg_2_0._navigateButtonsView = NavigateButtonsView.New({
 			true,
 			true,
 			false
 		})
 
-		slot0._navigateButtonsView:setOverrideClose(slot0.overrideClose, slot0)
+		arg_2_0._navigateButtonsView:setOverrideClose(arg_2_0.overrideClose, arg_2_0)
 
 		return {
-			slot0._navigateButtonsView
+			arg_2_0._navigateButtonsView
 		}
 	end
 
-	if slot1 == 2 then
-		slot0.currencyView = CurrencyView.New({
-			Activity129Config.instance:getConstValue1(slot0.viewParam.actId, Activity129Enum.ConstEnum.CostId)
-		})
-		slot0.currencyView.foreHideBtn = true
+	if arg_2_1 == 2 then
+		local var_2_0 = Activity129Config.instance:getConstValue1(arg_2_0.viewParam.actId, Activity129Enum.ConstEnum.CostId)
+		local var_2_1 = {
+			var_2_0
+		}
+
+		arg_2_0.currencyView = CurrencyView.New(var_2_1)
+		arg_2_0.currencyView.foreHideBtn = true
 
 		return {
-			slot0.currencyView
+			arg_2_0.currencyView
 		}
 	end
 end
 
-function slot0.overrideClose(slot0)
+function var_0_0.overrideClose(arg_3_0)
 	if Activity129Model.instance:getSelectPoolId() then
 		Activity129Model.instance:setSelectPoolId()
 
 		return
 	end
 
-	slot0:closeThis()
+	arg_3_0:closeThis()
 end
 
-return slot0
+return var_0_0

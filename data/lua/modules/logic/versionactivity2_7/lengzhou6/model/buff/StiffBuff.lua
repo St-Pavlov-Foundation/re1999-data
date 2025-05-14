@@ -1,23 +1,23 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.buff.StiffBuff", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.buff.StiffBuff", package.seeall)
 
-slot0 = class("StiffBuff", BuffBase)
+local var_0_0 = class("StiffBuff", BuffBase)
 
-function slot0.init(slot0, slot1, slot2)
-	uv0.super.init(slot0, slot1, slot2)
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	var_0_0.super.init(arg_1_0, arg_1_1, arg_1_2)
 end
 
-function slot0.execute(slot0, slot1)
-	if slot1 == nil then
+function var_0_0.execute(arg_2_0, arg_2_1)
+	if arg_2_1 == nil then
 		return false
 	end
 
-	if slot0._layerCount == 0 then
+	if arg_2_0._layerCount == 0 then
 		return false
 	end
 
-	slot0:addCount(-1)
+	arg_2_0:addCount(-1)
 
 	return true
 end
 
-return slot0
+return var_0_0

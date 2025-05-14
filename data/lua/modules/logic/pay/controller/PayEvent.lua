@@ -1,10 +1,11 @@
-module("modules.logic.pay.controller.PayEvent", package.seeall)
+﻿module("modules.logic.pay.controller.PayEvent", package.seeall)
 
-slot0 = _M
-slot0.GetSignFailed = 1
-slot0.GetSignSuccess = 2
-slot0.PayFinished = 11
-slot0.PayFailed = 12
-slot0.PayInfoChanged = 13
+local var_0_0 = _M
 
-return slot0
+var_0_0.GetSignFailed = 1
+var_0_0.GetSignSuccess = 2
+var_0_0.PayFinished = 11
+var_0_0.PayFailed = 12
+var_0_0.PayInfoChanged = 13
+
+return var_0_0

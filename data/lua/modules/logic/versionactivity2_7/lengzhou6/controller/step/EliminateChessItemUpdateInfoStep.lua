@@ -1,23 +1,25 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessItemUpdateInfoStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessItemUpdateInfoStep", package.seeall)
 
-slot0 = class("EliminateChessItemUpdateInfoStep", EliminateChessStepBase)
+local var_0_0 = class("EliminateChessItemUpdateInfoStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
-	slot2 = slot0._data.y
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0._data.x
+	local var_1_1 = arg_1_0._data.y
 
-	if slot0._data.x == nil or slot2 == nil then
-		slot0:onDone(true)
+	if var_1_0 == nil or var_1_1 == nil then
+		arg_1_0:onDone(true)
 
 		return
 	end
 
-	slot4 = LengZhou6EliminateChessItemController.instance:getChessItem(slot1, slot2)
+	local var_1_2 = LocalEliminateChessModel.instance:changeCellId(var_1_0, var_1_1, EliminateEnum_2_7.ChessTypeToIndex.stone)
+	local var_1_3 = LengZhou6EliminateChessItemController.instance:getChessItem(var_1_0, var_1_1)
 
-	if LocalEliminateChessModel.instance:changeCellId(slot1, slot2, EliminateEnum_2_7.ChessTypeToIndex.stone) ~= nil and slot4 ~= nil then
-		slot4:initData(slot3)
+	if var_1_2 ~= nil and var_1_3 ~= nil then
+		var_1_3:initData(var_1_2)
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

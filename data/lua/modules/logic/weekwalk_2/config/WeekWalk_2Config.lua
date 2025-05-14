@@ -1,8 +1,8 @@
-module("modules.logic.weekwalk_2.config.WeekWalk_2Config", package.seeall)
+﻿module("modules.logic.weekwalk_2.config.WeekWalk_2Config", package.seeall)
 
-slot0 = class("WeekWalk_2Config", BaseConfig)
+local var_0_0 = class("WeekWalk_2Config", BaseConfig)
 
-function slot0.reqConfigNames(slot0)
+function var_0_0.reqConfigNames(arg_1_0)
 	return {
 		"weekwalk_ver2",
 		"weekwalk_ver2_const",
@@ -17,77 +17,95 @@ function slot0.reqConfigNames(slot0)
 	}
 end
 
-function slot0.onInit(slot0)
+function var_0_0.onInit(arg_2_0)
+	return
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot1 == "task_weekwalk_ver2" then
-		slot0:_initWeekWalkTask()
+function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
+	if arg_3_1 == "task_weekwalk_ver2" then
+		arg_3_0:_initWeekWalkTask()
 
 		return
 	end
 
-	if slot1 == "weekwalk_ver2_cup" then
-		slot0:_initWeekWalkCup()
+	if arg_3_1 == "weekwalk_ver2_cup" then
+		arg_3_0:_initWeekWalkCup()
 
 		return
 	end
 end
 
-function slot0._initWeekWalkCup(slot0)
-	slot0._cupInfoMap = {}
+function var_0_0._initWeekWalkCup(arg_4_0)
+	arg_4_0._cupInfoMap = {}
 
-	for slot4, slot5 in ipairs(lua_weekwalk_ver2_cup.configList) do
-		slot0._cupInfoMap[slot5.layerId] = slot0._cupInfoMap[slot5.layerId] or {}
-		slot6[slot5.fightType] = slot0._cupInfoMap[slot5.layerId][slot5.fightType] or {}
+	for iter_4_0, iter_4_1 in ipairs(lua_weekwalk_ver2_cup.configList) do
+		arg_4_0._cupInfoMap[iter_4_1.layerId] = arg_4_0._cupInfoMap[iter_4_1.layerId] or {}
 
-		table.insert(slot6[slot5.fightType], slot5)
+		local var_4_0 = arg_4_0._cupInfoMap[iter_4_1.layerId]
+
+		var_4_0[iter_4_1.fightType] = var_4_0[iter_4_1.fightType] or {}
+
+		table.insert(var_4_0[iter_4_1.fightType], iter_4_1)
 	end
 end
 
-function slot0.getCupTask(slot0, slot1, slot2)
-	return slot0._cupInfoMap[slot1] and slot3[slot2]
+function var_0_0.getCupTask(arg_5_0, arg_5_1, arg_5_2)
+	local var_5_0 = arg_5_0._cupInfoMap[arg_5_1]
+
+	return var_5_0 and var_5_0[arg_5_2]
 end
 
-function slot0.getWeekWalkTaskList(slot0, slot1)
-	return slot0._taskTypeList[slot1]
+function var_0_0.getWeekWalkTaskList(arg_6_0, arg_6_1)
+	return arg_6_0._taskTypeList[arg_6_1]
 end
 
-function slot0._initWeekWalkTask(slot0)
-	slot0._taskRewardList = {}
-	slot0._taskTypeList = {}
+function var_0_0._initWeekWalkTask(arg_7_0)
+	arg_7_0._taskRewardList = {}
+	arg_7_0._taskTypeList = {}
 
-	for slot4, slot5 in ipairs(lua_task_weekwalk_ver2.configList) do
-		slot6 = slot0._taskTypeList[slot5.minTypeId] or {}
+	for iter_7_0, iter_7_1 in ipairs(lua_task_weekwalk_ver2.configList) do
+		local var_7_0 = arg_7_0._taskTypeList[iter_7_1.minTypeId] or {}
 
-		table.insert(slot6, slot5)
+		table.insert(var_7_0, iter_7_1)
 
-		slot0._taskTypeList[slot5.minTypeId] = slot6
+		arg_7_0._taskTypeList[iter_7_1.minTypeId] = var_7_0
 
-		slot0:_initTaskReward(slot5)
+		arg_7_0:_initTaskReward(iter_7_1)
 	end
 end
 
-function slot0._initTaskReward(slot0, slot1)
-	slot2 = nil
+function var_0_0._initTaskReward(arg_8_0, arg_8_1)
+	local var_8_0
 
-	if not ((slot1.listenerType ~= "WeekwalkVer2SeasonCup" or tonumber(slot1.listenerParam)) and tonumber(slot1.layerId)) then
+	if arg_8_1.listenerType == "WeekwalkVer2SeasonCup" then
+		var_8_0 = tonumber(arg_8_1.listenerParam)
+	else
+		var_8_0 = tonumber(arg_8_1.layerId)
+	end
+
+	if not var_8_0 then
 		return
 	end
 
-	slot0._taskRewardList[slot2] = slot0._taskRewardList[slot2] or {}
+	local var_8_1 = arg_8_1.bonus
 
-	for slot8 = 1, #string.split(slot1.bonus, "|") do
-		if string.splitToNumber(slot4[slot8], "#")[1] == MaterialEnum.MaterialType.Currency and slot9[2] == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
-			slot0._taskRewardList[slot2][slot1.id] = slot9[3]
+	arg_8_0._taskRewardList[var_8_0] = arg_8_0._taskRewardList[var_8_0] or {}
+
+	local var_8_2 = string.split(var_8_1, "|")
+
+	for iter_8_0 = 1, #var_8_2 do
+		local var_8_3 = string.splitToNumber(var_8_2[iter_8_0], "#")
+
+		if var_8_3[1] == MaterialEnum.MaterialType.Currency and var_8_3[2] == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
+			arg_8_0._taskRewardList[var_8_0][arg_8_1.id] = var_8_3[3]
 		end
 	end
 end
 
-function slot0.getWeekWalkRewardList(slot0, slot1)
-	return slot0._taskRewardList[slot1]
+function var_0_0.getWeekWalkRewardList(arg_9_0, arg_9_1)
+	return arg_9_0._taskRewardList[arg_9_1]
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

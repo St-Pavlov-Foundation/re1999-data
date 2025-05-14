@@ -1,8 +1,8 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessUpdateGameInfoStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessUpdateGameInfoStep", package.seeall)
 
-slot0 = class("EliminateChessUpdateGameInfoStep", EliminateChessStepBase)
+local var_0_0 = class("EliminateChessUpdateGameInfoStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
+function var_0_0.onStart(arg_1_0)
 	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UpdateGameInfo)
 	LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UpdatePlayerSkill)
 	LocalEliminateChessModel.instance:updateSpEffectCd()
@@ -12,10 +12,12 @@ function slot0.onStart(slot0)
 	if LengZhou6GameModel.instance:gameIsOver() then
 		LengZhou6GameController.instance:gameEnd()
 	else
-		LengZhou6EliminateController.instance:buildSeqFlow(EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateCheckAndRefresh))
+		local var_1_0 = EliminateStepUtil.createStep(EliminateEnum.StepWorkType.EliminateCheckAndRefresh)
+
+		LengZhou6EliminateController.instance:buildSeqFlow(var_1_0)
 	end
 
-	slot0:_onDone()
+	arg_1_0:_onDone()
 end
 
-return slot0
+return var_0_0

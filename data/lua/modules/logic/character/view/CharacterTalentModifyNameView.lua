@@ -1,104 +1,111 @@
-module("modules.logic.character.view.CharacterTalentModifyNameView", package.seeall)
+﻿module("modules.logic.character.view.CharacterTalentModifyNameView", package.seeall)
 
-slot0 = class("CharacterTalentModifyNameView", BaseView)
+local var_0_0 = class("CharacterTalentModifyNameView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "bottom/#btn_close")
-	slot0._btnSure = gohelper.findChildButtonWithAudio(slot0.viewGO, "bottom/#btn_sure")
-	slot0._input = gohelper.findChildTextMeshInputField(slot0.viewGO, "message/#input_signature")
-	slot0._btncleanname = gohelper.findChildButtonWithAudio(slot0.viewGO, "message/#btn_cleanname")
-	slot0._simagerightbg = gohelper.findChildSingleImage(slot0.viewGO, "window/#simage_rightbg")
-	slot0._simageleftbg = gohelper.findChildSingleImage(slot0.viewGO, "window/#simage_leftbg")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bottom/#btn_close")
+	arg_1_0._btnSure = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bottom/#btn_sure")
+	arg_1_0._input = gohelper.findChildTextMeshInputField(arg_1_0.viewGO, "message/#input_signature")
+	arg_1_0._btncleanname = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "message/#btn_cleanname")
+	arg_1_0._simagerightbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "window/#simage_rightbg")
+	arg_1_0._simageleftbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "window/#simage_leftbg")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClose:AddClickListener(slot0._onBtnClose, slot0)
-	slot0._btnSure:AddClickListener(slot0._onBtnSure, slot0)
-	slot0._btncleanname:AddClickListener(slot0._onBtnClean, slot0)
-	slot0:addEventCb(CharacterController.instance, CharacterEvent.RenameTalentTemplateReply, slot0._onRenameTalentTemplateReply, slot0)
-	slot0._input:AddOnValueChanged(slot0._onValueChanged, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._onBtnClose, arg_2_0)
+	arg_2_0._btnSure:AddClickListener(arg_2_0._onBtnSure, arg_2_0)
+	arg_2_0._btncleanname:AddClickListener(arg_2_0._onBtnClean, arg_2_0)
+	arg_2_0:addEventCb(CharacterController.instance, CharacterEvent.RenameTalentTemplateReply, arg_2_0._onRenameTalentTemplateReply, arg_2_0)
+	arg_2_0._input:AddOnValueChanged(arg_2_0._onValueChanged, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClose:RemoveClickListener()
-	slot0._btnSure:RemoveClickListener()
-	slot0._btncleanname:RemoveClickListener()
-	slot0._input:RemoveOnValueChanged()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClose:RemoveClickListener()
+	arg_3_0._btnSure:RemoveClickListener()
+	arg_3_0._btncleanname:RemoveClickListener()
+	arg_3_0._input:RemoveOnValueChanged()
 end
 
-function slot0._editableInitView(slot0)
-	slot0._simageleftbg:LoadImage(ResUrl.getCommonIcon("bg_1"))
-	slot0._simagerightbg:LoadImage(ResUrl.getCommonIcon("bg_2"))
+function var_0_0._editableInitView(arg_4_0)
+	arg_4_0._simageleftbg:LoadImage(ResUrl.getCommonIcon("bg_1"))
+	arg_4_0._simagerightbg:LoadImage(ResUrl.getCommonIcon("bg_2"))
 end
 
-function slot0.onRefreshViewParam(slot0)
+function var_0_0.onRefreshViewParam(arg_5_0)
+	return
 end
 
-function slot0._onRenameTalentTemplateReply(slot0)
-	slot0:_onBtnClose()
+function var_0_0._onRenameTalentTemplateReply(arg_6_0)
+	arg_6_0:_onBtnClose()
 	GameFacade.showToast(ToastEnum.PlayerModifyChangeName)
 end
 
-function slot0._onBtnClose(slot0)
-	slot0:closeThis()
+function var_0_0._onBtnClose(arg_7_0)
+	arg_7_0:closeThis()
 end
 
-function slot0._onBtnClean(slot0)
-	slot0._input:SetText("")
+function var_0_0._onBtnClean(arg_8_0)
+	arg_8_0._input:SetText("")
 end
 
-function slot0._onBtnSure(slot0)
-	if string.nilorempty(slot0._input:GetText()) then
+function var_0_0._onBtnSure(arg_9_0)
+	local var_9_0 = arg_9_0._input:GetText()
+
+	if string.nilorempty(var_9_0) then
 		return
 	end
 
-	if GameUtil.utf8len(slot1) > 6 then
+	if GameUtil.utf8len(var_9_0) > 6 then
 		GameFacade.showToast(ToastEnum.InformPlayerCharLen)
 
 		return
 	end
 
-	HeroRpc.instance:RenameTalentTemplateRequest(slot0._heroId, slot0._templateId, GameUtil.trimInput(slot1))
+	local var_9_1 = GameUtil.trimInput(var_9_0)
+
+	HeroRpc.instance:RenameTalentTemplateRequest(arg_9_0._heroId, arg_9_0._templateId, var_9_1)
 end
 
-function slot0._onValueChanged(slot0)
-	gohelper.setActive(slot0._btncleanname, not string.nilorempty(slot0._input:GetText()))
+function var_0_0._onValueChanged(arg_10_0)
+	local var_10_0 = arg_10_0._input:GetText()
+
+	gohelper.setActive(arg_10_0._btncleanname, not string.nilorempty(var_10_0))
 end
 
-function slot0.onOpen(slot0)
+function var_0_0.onOpen(arg_11_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_petrus_exchange_element_get)
 
-	slot0._heroId = slot0.viewParam[1]
-	slot0._templateId = slot0.viewParam[2]
-	slot0._blurTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.35, slot0._onFrame, slot0._onFinish, slot0, nil, EaseType.Linear)
+	arg_11_0._heroId = arg_11_0.viewParam[1]
+	arg_11_0._templateId = arg_11_0.viewParam[2]
+	arg_11_0._blurTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.35, arg_11_0._onFrame, arg_11_0._onFinish, arg_11_0, nil, EaseType.Linear)
 
-	gohelper.setActive(slot0._btncleanname, false)
+	gohelper.setActive(arg_11_0._btncleanname, false)
 end
 
-function slot0._onFrame(slot0, slot1)
-	PostProcessingMgr.instance:setBlurWeight(slot1)
+function var_0_0._onFrame(arg_12_0, arg_12_1)
+	PostProcessingMgr.instance:setBlurWeight(arg_12_1)
 end
 
-function slot0._onFinish(slot0)
+function var_0_0._onFinish(arg_13_0)
 	PostProcessingMgr.instance:setBlurWeight(1)
 end
 
-function slot0.onClose(slot0)
-	if slot0._blurTweenId then
+function var_0_0.onClose(arg_14_0)
+	if arg_14_0._blurTweenId then
 		PostProcessingMgr.instance:setBlurWeight(1)
-		ZProj.TweenHelper.KillById(slot0._blurTweenId)
+		ZProj.TweenHelper.KillById(arg_14_0._blurTweenId)
 
-		slot0._blurTweenId = nil
+		arg_14_0._blurTweenId = nil
 	end
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._simagerightbg:UnLoadImage()
-	slot0._simageleftbg:UnLoadImage()
+function var_0_0.onDestroyView(arg_15_0)
+	arg_15_0._simagerightbg:UnLoadImage()
+	arg_15_0._simageleftbg:UnLoadImage()
 end
 
-return slot0
+return var_0_0

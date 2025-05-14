@@ -1,46 +1,48 @@
-module("modules.logic.fight.model.data.FightStepData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightStepData", package.seeall)
 
-slot0 = FightDataClass("FightStepData")
-slot1 = 1
+local var_0_0 = FightDataClass("FightStepData")
+local var_0_1 = 1
 
-function slot0.onConstructor(slot0, slot1)
-	slot0:initClientParam()
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0:initClientParam()
 
-	if not slot1 then
+	if not arg_1_1 then
 		return
 	end
 
-	slot0.actType = slot1.actType
-	slot0.fromId = slot1.fromId
-	slot0.toId = slot1.toId
-	slot0.actId = slot1.actId
-	slot0.actEffect = slot0:buildActEffect(slot1.actEffect)
-	slot0.cardIndex = slot1.cardIndex or 0
-	slot0.supportHeroId = slot1.supportHeroId or 0
-	slot0.fakeTimeline = slot1.fakeTimeline
+	arg_1_0.actType = arg_1_1.actType
+	arg_1_0.fromId = arg_1_1.fromId
+	arg_1_0.toId = arg_1_1.toId
+	arg_1_0.actId = arg_1_1.actId
+	arg_1_0.actEffect = arg_1_0:buildActEffect(arg_1_1.actEffect)
+	arg_1_0.cardIndex = arg_1_1.cardIndex or 0
+	arg_1_0.supportHeroId = arg_1_1.supportHeroId or 0
+	arg_1_0.fakeTimeline = arg_1_1.fakeTimeline
 end
 
-function slot0.initClientParam(slot0)
-	slot0.stepUid = uv0
-	uv0 = uv0 + 1
-	slot0.atkAudioId = nil
-	slot0.editorPlaySkill = nil
-	slot0.isParallelStep = false
-	slot0.cusParam_lockTimelineTypes = nil
-	slot0.cus_Param_invokeSpineActTimelineEnd = nil
-	slot0.hasPlay = nil
-	slot0.custom_stepIndex = nil
-	slot0.custom_ingoreParallelSkill = nil
+function var_0_0.initClientParam(arg_2_0)
+	arg_2_0.stepUid = var_0_1
+	var_0_1 = var_0_1 + 1
+	arg_2_0.atkAudioId = nil
+	arg_2_0.editorPlaySkill = nil
+	arg_2_0.isParallelStep = false
+	arg_2_0.cusParam_lockTimelineTypes = nil
+	arg_2_0.cus_Param_invokeSpineActTimelineEnd = nil
+	arg_2_0.hasPlay = nil
+	arg_2_0.custom_stepIndex = nil
+	arg_2_0.custom_ingoreParallelSkill = nil
 end
 
-function slot0.buildActEffect(slot0, slot1)
-	slot2 = {}
+function var_0_0.buildActEffect(arg_3_0, arg_3_1)
+	local var_3_0 = {}
 
-	for slot6, slot7 in ipairs(slot1) do
-		table.insert(slot2, FightActEffectData.New(slot7))
+	for iter_3_0, iter_3_1 in ipairs(arg_3_1) do
+		local var_3_1 = FightActEffectData.New(iter_3_1)
+
+		table.insert(var_3_0, var_3_1)
 	end
 
-	return slot2
+	return var_3_0
 end
 
-return slot0
+return var_0_0

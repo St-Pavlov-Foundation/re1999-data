@@ -1,68 +1,76 @@
-module("modules.logic.versionactivity2_7.act191.view.Act191EnhanceTipView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.act191.view.Act191EnhanceTipView", package.seeall)
 
-slot0 = class("Act191EnhanceTipView", BaseView)
+local var_0_0 = class("Act191EnhanceTipView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btnClose = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_Close")
-	slot0._goRoot = gohelper.findChild(slot0.viewGO, "#go_Root")
-	slot0._simageIcon = gohelper.findChildSingleImage(slot0.viewGO, "#go_Root/#simage_Icon")
-	slot0._txtName = gohelper.findChildText(slot0.viewGO, "#go_Root/#txt_Name")
-	slot0._txtDesc = gohelper.findChildText(slot0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Close")
+	arg_1_0._goRoot = gohelper.findChild(arg_1_0.viewGO, "#go_Root")
+	arg_1_0._simageIcon = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_Root/#simage_Icon")
+	arg_1_0._txtName = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/#txt_Name")
+	arg_1_0._txtDesc = gohelper.findChildText(arg_1_0.viewGO, "#go_Root/scroll_desc/Viewport/go_desccontent/#txt_Desc")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnClose:AddClickListener(slot0._btnCloseOnClick, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnClose:AddClickListener(arg_2_0._btnCloseOnClick, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnClose:RemoveClickListener()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnClose:RemoveClickListener()
 end
 
-function slot0._btnCloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btnCloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._editableInitView(slot0)
-	slot0.actId = Activity191Model.instance:getCurActId()
+function var_0_0._editableInitView(arg_5_0)
+	arg_5_0.actId = Activity191Model.instance:getCurActId()
 end
 
-function slot0.onOpen(slot0)
-	gohelper.setActive(slot0._btnClose, not slot0.viewParam.notShowBg)
+function var_0_0.onOpen(arg_6_0)
+	gohelper.setActive(arg_6_0._btnClose, not arg_6_0.viewParam.notShowBg)
 
-	if slot0.viewParam.pos then
-		recthelper.setAnchor(slot0._goRoot.transform, recthelper.rectToRelativeAnchorPos(slot0.viewParam.pos, slot0.viewGO.transform).x + 85, 8)
+	if arg_6_0.viewParam.pos then
+		local var_6_0 = recthelper.rectToRelativeAnchorPos(arg_6_0.viewParam.pos, arg_6_0.viewGO.transform)
+
+		recthelper.setAnchor(arg_6_0._goRoot.transform, var_6_0.x + 85, 8)
 	end
 
-	if slot0.viewParam.co then
-		slot0._simageIcon:LoadImage(ResUrl.getAct174BuffIcon(slot1.icon))
+	local var_6_1 = arg_6_0.viewParam.co
 
-		slot0._txtName.text = slot1.name
-		slot0._txtDesc.text = slot1.desc
+	if var_6_1 then
+		arg_6_0._simageIcon:LoadImage(ResUrl.getAct174BuffIcon(var_6_1.icon))
 
-		if lua_activity191_effect.configDict[string.splitToNumber(slot1.effects, "|")[1]] then
-			if slot4.type == Activity191Enum.EffectType.EnhanceHero then
-				slot0._txtDesc.text = Activity191Helper.buildDesc(SkillHelper.addLink(slot1.desc), Activity191Enum.HyperLinkPattern.EnhanceDestiny, slot4.typeParam)
+		arg_6_0._txtName.text = var_6_1.name
+		arg_6_0._txtDesc.text = var_6_1.desc
 
-				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkDestiny)
-			elseif slot4.type == Activity191Enum.EffectType.EnhanceItem then
-				slot0._txtDesc.text = Activity191Helper.buildDesc(slot2, Activity191Enum.HyperLinkPattern.EnhanceItem, slot4.typeParam .. "#")
+		local var_6_2 = SkillHelper.addLink(var_6_1.desc)
+		local var_6_3 = string.splitToNumber(var_6_1.effects, "|")[1]
+		local var_6_4 = lua_activity191_effect.configDict[var_6_3]
 
-				SkillHelper.addHyperLinkClick(slot0._txtDesc, Activity191Helper.clickHyperLinkItem)
+		if var_6_4 then
+			if var_6_4.type == Activity191Enum.EffectType.EnhanceHero then
+				arg_6_0._txtDesc.text = Activity191Helper.buildDesc(var_6_2, Activity191Enum.HyperLinkPattern.EnhanceDestiny, var_6_4.typeParam)
+
+				SkillHelper.addHyperLinkClick(arg_6_0._txtDesc, Activity191Helper.clickHyperLinkDestiny)
+			elseif var_6_4.type == Activity191Enum.EffectType.EnhanceItem then
+				arg_6_0._txtDesc.text = Activity191Helper.buildDesc(var_6_2, Activity191Enum.HyperLinkPattern.EnhanceItem, var_6_4.typeParam .. "#")
+
+				SkillHelper.addHyperLinkClick(arg_6_0._txtDesc, Activity191Helper.clickHyperLinkItem)
 			else
-				slot0._txtDesc.text = slot2
+				arg_6_0._txtDesc.text = var_6_2
 			end
 		else
-			slot0._txtDesc.text = slot2
+			arg_6_0._txtDesc.text = var_6_2
 		end
 	end
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:onOpen()
+function var_0_0.onUpdateParam(arg_7_0)
+	arg_7_0:onOpen()
 end
 
-return slot0
+return var_0_0

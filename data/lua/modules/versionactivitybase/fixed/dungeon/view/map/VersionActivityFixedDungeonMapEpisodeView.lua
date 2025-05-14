@@ -1,382 +1,409 @@
-module("modules.versionactivitybase.fixed.dungeon.view.map.VersionActivityFixedDungeonMapEpisodeView", package.seeall)
+﻿module("modules.versionactivitybase.fixed.dungeon.view.map.VersionActivityFixedDungeonMapEpisodeView", package.seeall)
 
-slot0 = class("VersionActivityFixedDungeonMapEpisodeView", BaseView)
-slot1 = 0.5
-slot2 = -240
-slot3 = 0.41
-slot4 = 1.7
-slot5 = 0
-slot6 = 1
-slot7 = 0.2
-slot8 = -260
+local var_0_0 = class("VersionActivityFixedDungeonMapEpisodeView", BaseView)
+local var_0_1 = 0.5
+local var_0_2 = -240
+local var_0_3 = 0.41
+local var_0_4 = 1.7
+local var_0_5 = 0
+local var_0_6 = 1
+local var_0_7 = 0.2
+local var_0_8 = -260
 
-function slot0.onInitView(slot0)
-	slot0.goScrollRect = gohelper.findChild(slot0.viewGO, "#scroll_content")
-	slot0.scrollRect = gohelper.findChild(slot0.viewGO, "#scroll_content"):GetComponent(typeof(UnityEngine.UI.ScrollRect))
-	slot0._audioScroll = MonoHelper.addLuaComOnceToGo(slot0.scrollRect.gameObject, DungeonMapEpisodeAudio, slot0.scrollRect)
-	slot0._drag = SLFramework.UGUI.UIDragListener.Get(slot0.scrollRect.gameObject)
-	slot0._touch = SLFramework.UGUI.UIClickListener.Get(slot0.scrollRect.gameObject)
-	slot0._gochaptercontentitem = gohelper.findChild(slot0.viewGO, "#scroll_content/#go_chaptercontentitem")
-	slot0._btnstorymode = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_switchmodecontainer/#go_storymode/#btn_storyMode")
-	slot0._gostorymodeNormal = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_storymode/#image_storyModeIcon/go_normal")
-	slot0._gostorymodeSelect = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_storymode/#image_storyModeIcon/go_select")
-	slot0._hardModeBtnAnimator = gohelper.findChildComponent(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode", gohelper.Type_Animator)
-	slot0._btnhardmode = gohelper.findChildButtonWithAudio(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#btn_hardMode")
-	slot0._gohardmodeNormal = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_normal")
-	slot0._gohardmodeSelect = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_select")
-	slot0._gohardmodelock = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_locked")
-	slot0._hardModeLockTip = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeLock")
-	slot0._hardModeCurrency = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeUnLock")
-	slot0._hardModeUnlockvx = gohelper.findChild(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/#go_hardModeUnLock")
-	slot0._txthardModeCurrency = gohelper.findChildText(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeUnLock/#txt_num")
-	slot0._txtHardModeUnlockTime = gohelper.findChildText(slot0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeLock/#txt_unlockTime")
-	slot0._goexcessive = gohelper.findChild(slot0.viewGO, "#go_excessive")
-	slot0.excessiveAnimator = slot0._goexcessive:GetComponent(gohelper.Type_Animator)
-	slot0._cghardModeCurrency = slot0._hardModeCurrency:GetComponent(typeof(UnityEngine.CanvasGroup))
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.goScrollRect = gohelper.findChild(arg_1_0.viewGO, "#scroll_content")
+	arg_1_0.scrollRect = gohelper.findChild(arg_1_0.viewGO, "#scroll_content"):GetComponent(typeof(UnityEngine.UI.ScrollRect))
+	arg_1_0._audioScroll = MonoHelper.addLuaComOnceToGo(arg_1_0.scrollRect.gameObject, DungeonMapEpisodeAudio, arg_1_0.scrollRect)
+	arg_1_0._drag = SLFramework.UGUI.UIDragListener.Get(arg_1_0.scrollRect.gameObject)
+	arg_1_0._touch = SLFramework.UGUI.UIClickListener.Get(arg_1_0.scrollRect.gameObject)
+	arg_1_0._gochaptercontentitem = gohelper.findChild(arg_1_0.viewGO, "#scroll_content/#go_chaptercontentitem")
+	arg_1_0._btnstorymode = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_switchmodecontainer/#go_storymode/#btn_storyMode")
+	arg_1_0._gostorymodeNormal = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_storymode/#image_storyModeIcon/go_normal")
+	arg_1_0._gostorymodeSelect = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_storymode/#image_storyModeIcon/go_select")
+	arg_1_0._hardModeBtnAnimator = gohelper.findChildComponent(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode", gohelper.Type_Animator)
+	arg_1_0._btnhardmode = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#btn_hardMode")
+	arg_1_0._gohardmodeNormal = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_normal")
+	arg_1_0._gohardmodeSelect = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_select")
+	arg_1_0._gohardmodelock = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/go_locked")
+	arg_1_0._hardModeLockTip = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeLock")
+	arg_1_0._hardModeCurrency = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeUnLock")
+	arg_1_0._hardModeUnlockvx = gohelper.findChild(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#image_hardModeIcon/#go_hardModeUnLock")
+	arg_1_0._txthardModeCurrency = gohelper.findChildText(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeUnLock/#txt_num")
+	arg_1_0._txtHardModeUnlockTime = gohelper.findChildText(arg_1_0.viewGO, "#go_switchmodecontainer/#go_hardmode/#go_hardModeLock/#txt_unlockTime")
+	arg_1_0._goexcessive = gohelper.findChild(arg_1_0.viewGO, "#go_excessive")
+	arg_1_0.excessiveAnimator = arg_1_0._goexcessive:GetComponent(gohelper.Type_Animator)
+	arg_1_0._cghardModeCurrency = arg_1_0._hardModeCurrency:GetComponent(typeof(UnityEngine.CanvasGroup))
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0:addEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnModeChange, slot0.onModeChange, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:addEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnModeChange, arg_2_0.onModeChange, arg_2_0)
 
-	slot1 = VersionActivityFixedHelper.getVersionActivityDungeonController()
+	local var_2_0 = VersionActivityFixedHelper.getVersionActivityDungeonController()
 
-	slot0:addEventCb(slot1.instance, VersionActivityFixedDungeonEvent.OnClickElement, slot0.hideUI, slot0)
-	slot0:addEventCb(slot1.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, slot0.showUI, slot0)
-	slot0:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, slot0._onUpdateDungeonInfo, slot0)
-	slot0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinish, slot0)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRefresh, slot0)
-	slot0._btnstorymode:AddClickListener(slot0.btnStoryModeClick, slot0)
-	slot0._btnhardmode:AddClickListener(slot0.btnHardModeClick, slot0)
-	slot0._drag:AddDragBeginListener(slot0._onDragBeginHandler, slot0)
-	slot0._drag:AddDragEndListener(slot0._onDragEndHandler, slot0)
-	slot0._touch:AddClickDownListener(slot0._onClickDownHandler, slot0)
+	arg_2_0:addEventCb(var_2_0.instance, VersionActivityFixedDungeonEvent.OnClickElement, arg_2_0.hideUI, arg_2_0)
+	arg_2_0:addEventCb(var_2_0.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, arg_2_0.showUI, arg_2_0)
+	arg_2_0:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, arg_2_0._onUpdateDungeonInfo, arg_2_0)
+	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_2_0._onCloseViewFinish, arg_2_0)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_2_0.dailyRefresh, arg_2_0)
+	arg_2_0._btnstorymode:AddClickListener(arg_2_0.btnStoryModeClick, arg_2_0)
+	arg_2_0._btnhardmode:AddClickListener(arg_2_0.btnHardModeClick, arg_2_0)
+	arg_2_0._drag:AddDragBeginListener(arg_2_0._onDragBeginHandler, arg_2_0)
+	arg_2_0._drag:AddDragEndListener(arg_2_0._onDragEndHandler, arg_2_0)
+	arg_2_0._touch:AddClickDownListener(arg_2_0._onClickDownHandler, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0:removeEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnModeChange, slot0.onModeChange, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0:removeEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnModeChange, arg_3_0.onModeChange, arg_3_0)
 
-	slot1 = VersionActivityFixedHelper.getVersionActivityDungeonController()
+	local var_3_0 = VersionActivityFixedHelper.getVersionActivityDungeonController()
 
-	slot0:removeEventCb(slot1.instance, VersionActivityFixedDungeonEvent.OnClickElement, slot0.hideUI, slot0)
-	slot0:removeEventCb(slot1.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, slot0.showUI, slot0)
-	slot0:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, slot0._onUpdateDungeonInfo, slot0)
-	slot0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, slot0._onCloseViewFinish, slot0)
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, slot0.dailyRefresh, slot0)
-	slot0._btnstorymode:RemoveClickListener()
-	slot0._btnhardmode:RemoveClickListener()
-	slot0._drag:RemoveDragBeginListener()
-	slot0._drag:RemoveDragEndListener()
-	slot0._touch:RemoveClickDownListener()
+	arg_3_0:removeEventCb(var_3_0.instance, VersionActivityFixedDungeonEvent.OnClickElement, arg_3_0.hideUI, arg_3_0)
+	arg_3_0:removeEventCb(var_3_0.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, arg_3_0.showUI, arg_3_0)
+	arg_3_0:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, arg_3_0._onUpdateDungeonInfo, arg_3_0)
+	arg_3_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_3_0._onCloseViewFinish, arg_3_0)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_3_0.dailyRefresh, arg_3_0)
+	arg_3_0._btnstorymode:RemoveClickListener()
+	arg_3_0._btnhardmode:RemoveClickListener()
+	arg_3_0._drag:RemoveDragBeginListener()
+	arg_3_0._drag:RemoveDragEndListener()
+	arg_3_0._touch:RemoveClickDownListener()
 end
 
-function slot0._editableInitView(slot0)
-	gohelper.setActive(slot0._gochaptercontentitem, false)
-	gohelper.setActive(slot0._goexcessive, true)
-	recthelper.setAnchorY(slot0.goScrollRect.transform, uv0)
+function var_0_0._editableInitView(arg_4_0)
+	gohelper.setActive(arg_4_0._gochaptercontentitem, false)
+	gohelper.setActive(arg_4_0._goexcessive, true)
+	recthelper.setAnchorY(arg_4_0.goScrollRect.transform, var_0_2)
 
-	slot0.scrollRect:GetComponent(typeof(ZProj.LimitedScrollRect)).scrollSpeed = uv1
+	arg_4_0.scrollRect:GetComponent(typeof(ZProj.LimitedScrollRect)).scrollSpeed = var_0_1
 end
 
-function slot0.onUpdateParam(slot0)
-	slot0:refreshModeNode()
-	slot0.chapterLayout:refreshEpisodeNodes()
-	slot0:playOnOpenAnimation()
+function var_0_0.onUpdateParam(arg_5_0)
+	arg_5_0:refreshModeNode()
+	arg_5_0.chapterLayout:refreshEpisodeNodes()
+	arg_5_0:playOnOpenAnimation()
 end
 
-function slot0.onOpen(slot0)
-	slot0:initChapterEpisodes()
-	slot0:refreshModeNode()
-	TaskDispatcher.runRepeat(slot0.refreshModeLockText, slot0, TimeUtil.OneMinuteSecond)
-	slot0:_refreshHardModeVx()
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0:initChapterEpisodes()
+	arg_6_0:refreshModeNode()
+	TaskDispatcher.runRepeat(arg_6_0.refreshModeLockText, arg_6_0, TimeUtil.OneMinuteSecond)
+	arg_6_0:_refreshHardModeVx()
 end
 
-function slot0.onOpenFinish(slot0)
-	slot0:playUnlockAnimation(true)
+function var_0_0.onOpenFinish(arg_7_0)
+	arg_7_0:playUnlockAnimation(true)
 end
 
-function slot0.refreshModeNode(slot0)
-	slot3 = VersionActivityDungeonBaseEnum.DungeonMode.Hard
+function var_0_0.refreshModeNode(arg_8_0)
+	local var_8_0 = arg_8_0.activityDungeonMo.mode
+	local var_8_1 = VersionActivityDungeonBaseEnum.DungeonMode.Story
+	local var_8_2 = VersionActivityDungeonBaseEnum.DungeonMode.Hard
 
-	gohelper.setActive(slot0._gostorymodeSelect, slot0.activityDungeonMo.mode == VersionActivityDungeonBaseEnum.DungeonMode.Story)
-	gohelper.setActive(slot0._gostorymodeNormal, slot1 ~= slot2)
-	gohelper.setActive(slot0._gohardmodeSelect, slot1 == slot3)
-	gohelper.setActive(slot0._gohardmodeNormal, slot1 ~= slot3)
-	slot0:refreshModeLockText()
+	gohelper.setActive(arg_8_0._gostorymodeSelect, var_8_0 == var_8_1)
+	gohelper.setActive(arg_8_0._gostorymodeNormal, var_8_0 ~= var_8_1)
+	gohelper.setActive(arg_8_0._gohardmodeSelect, var_8_0 == var_8_2)
+	gohelper.setActive(arg_8_0._gohardmodeNormal, var_8_0 ~= var_8_2)
+	arg_8_0:refreshModeLockText()
 
-	if slot3 then
-		slot0:_refreshHardModeVx()
+	if var_8_2 then
+		arg_8_0:_refreshHardModeVx()
 	end
 end
 
-function slot0.initChapterEpisodes(slot0)
-	slot0._uiLoader = MultiAbLoader.New()
+function var_0_0.initChapterEpisodes(arg_9_0)
+	arg_9_0._uiLoader = MultiAbLoader.New()
 
-	slot0._uiLoader:addPath(slot0.activityDungeonMo:getLayoutPrefabUrl())
-	slot0._uiLoader:startLoad(slot0.onLoadLayoutFinish, slot0)
+	local var_9_0 = arg_9_0.activityDungeonMo:getLayoutPrefabUrl()
+
+	arg_9_0._uiLoader:addPath(var_9_0)
+	arg_9_0._uiLoader:startLoad(arg_9_0.onLoadLayoutFinish, arg_9_0)
 end
 
-function slot0.onLoadLayoutFinish(slot0)
-	slot0.goChapterContent = gohelper.cloneInPlace(slot0._gochaptercontentitem, "#go_chaptercontent")
+function var_0_0.onLoadLayoutFinish(arg_10_0)
+	arg_10_0.goChapterContent = gohelper.cloneInPlace(arg_10_0._gochaptercontentitem, "#go_chaptercontent")
 
-	gohelper.setAsLastSibling(slot0.goChapterContent)
-	gohelper.setActive(slot0.goChapterContent, true)
+	gohelper.setAsLastSibling(arg_10_0.goChapterContent)
+	gohelper.setActive(arg_10_0.goChapterContent, true)
 
-	slot0.scrollRect.content = slot0.goChapterContent.transform
-	slot0.scrollRect.velocity = Vector2(0, 0)
-	slot0.scrollRect.horizontalNormalizedPosition = 0
-	slot1 = slot0.activityDungeonMo:getLayoutPrefabUrl()
-	slot0.chapterLayout = slot0.activityDungeonMo:getLayoutClass().New()
-	slot0.chapterLayout.viewContainer = slot0.viewContainer
-	slot0.chapterLayout.activityDungeonMo = slot0.activityDungeonMo
+	arg_10_0.scrollRect.content = arg_10_0.goChapterContent.transform
+	arg_10_0.scrollRect.velocity = Vector2(0, 0)
+	arg_10_0.scrollRect.horizontalNormalizedPosition = 0
 
-	slot0.chapterLayout:initView(gohelper.clone(slot0._uiLoader:getAssetItem(slot1):GetResource(slot1), slot0.goChapterContent), {
-		goChapterContent = slot0.goChapterContent
+	local var_10_0 = arg_10_0.activityDungeonMo:getLayoutPrefabUrl()
+	local var_10_1 = arg_10_0._uiLoader:getAssetItem(var_10_0):GetResource(var_10_0)
+	local var_10_2 = gohelper.clone(var_10_1, arg_10_0.goChapterContent)
+
+	arg_10_0.chapterLayout = arg_10_0.activityDungeonMo:getLayoutClass().New()
+	arg_10_0.chapterLayout.viewContainer = arg_10_0.viewContainer
+	arg_10_0.chapterLayout.activityDungeonMo = arg_10_0.activityDungeonMo
+
+	arg_10_0.chapterLayout:initView(var_10_2, {
+		goChapterContent = arg_10_0.goChapterContent
 	})
-	slot0.chapterLayout:refreshEpisodeNodes()
-	slot0:playOnOpenAnimation()
+	arg_10_0.chapterLayout:refreshEpisodeNodes()
+	arg_10_0:playOnOpenAnimation()
 end
 
-function slot0.refreshModeLockText(slot0)
-	slot3 = false
+function var_0_0.refreshModeLockText(arg_11_0)
+	local var_11_0 = VersionActivityConfig.instance:getAct113DungeonChapterOpenTimeStamp(VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Hard)
+	local var_11_1 = ServerTime.now()
+	local var_11_2 = false
 
-	if ServerTime.now() < VersionActivityConfig.instance:getAct113DungeonChapterOpenTimeStamp(VersionActivityFixedHelper.getVersionActivityDungeonEnum().DungeonChapterId.Hard) then
-		slot4 = slot1 - slot2
-		slot7 = Mathf.Floor(slot4 % TimeUtil.OneDaySecond / TimeUtil.OneHourSecond)
+	if var_11_1 < var_11_0 then
+		local var_11_3 = var_11_0 - var_11_1
+		local var_11_4 = Mathf.Floor(var_11_3 / TimeUtil.OneDaySecond)
+		local var_11_5 = var_11_3 % TimeUtil.OneDaySecond
+		local var_11_6 = Mathf.Floor(var_11_5 / TimeUtil.OneHourSecond)
+		local var_11_7 = ActivityModel.instance:getActivityInfo()[VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon]
 
-		if Mathf.Floor(slot4 / TimeUtil.OneDaySecond) > 0 then
-			if slot7 > 0 then
-				slot9 = GameUtil.getSubPlaceholderLuaLang(luaLang("hournum"), {
-					ActivityModel.instance:getActivityInfo()[VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon]:getRemainTimeStr2(slot4),
-					slot7
+		if var_11_4 > 0 then
+			local var_11_8 = var_11_7:getRemainTimeStr2(var_11_3)
+
+			if var_11_6 > 0 then
+				var_11_8 = GameUtil.getSubPlaceholderLuaLang(luaLang("hournum"), {
+					var_11_8,
+					var_11_6
 				})
 			end
 
-			slot0._txtHardModeUnlockTime.text = string.format(luaLang("seasonmainview_timeopencondition"), slot9)
+			arg_11_0._txtHardModeUnlockTime.text = string.format(luaLang("seasonmainview_timeopencondition"), var_11_8)
 		else
-			slot0._txtHardModeUnlockTime.text = string.format(luaLang("seasonmainview_timeopencondition"), slot8:getRemainTimeStr4(slot4))
+			arg_11_0._txtHardModeUnlockTime.text = string.format(luaLang("seasonmainview_timeopencondition"), var_11_7:getRemainTimeStr4(var_11_3))
 		end
 
-		gohelper.setActive(slot0._hardModeLockTip, true)
-		gohelper.setActive(slot0._gohardmodelock, true)
+		gohelper.setActive(arg_11_0._hardModeLockTip, true)
+		gohelper.setActive(arg_11_0._gohardmodelock, true)
 	else
-		slot4, slot5 = DungeonModel.instance:chapterIsUnLock(slot0.activityDungeonMo.activityDungeonConfig.hardChapterId)
+		local var_11_9, var_11_10 = DungeonModel.instance:chapterIsUnLock(arg_11_0.activityDungeonMo.activityDungeonConfig.hardChapterId)
 
-		if slot4 then
-			gohelper.setActive(slot0._hardModeLockTip, false)
-			gohelper.setActive(slot0._gohardmodelock, false)
+		if var_11_9 then
+			gohelper.setActive(arg_11_0._hardModeLockTip, false)
+			gohelper.setActive(arg_11_0._gohardmodelock, false)
 
-			slot3 = true
+			var_11_2 = true
 		else
-			slot6 = DungeonConfig.instance:getEpisodeCO(slot5)
-			slot0._txtHardModeUnlockTime.text = string.format(luaLang("versionactivity1_3_hardlocktip"), DungeonConfig.instance:getChapterCO(slot6.chapterId).chapterIndex .. "-" .. DungeonConfig.instance:getChapterEpisodeIndexWithSP(slot6.chapterId, slot5))
+			local var_11_11 = DungeonConfig.instance:getEpisodeCO(var_11_10)
+			local var_11_12 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(var_11_11.chapterId, var_11_10)
+			local var_11_13 = DungeonConfig.instance:getChapterCO(var_11_11.chapterId).chapterIndex
 
-			gohelper.setActive(slot0._hardModeLockTip, true)
-			gohelper.setActive(slot0._gohardmodelock, true)
+			arg_11_0._txtHardModeUnlockTime.text = string.format(luaLang("versionactivity1_3_hardlocktip"), var_11_13 .. "-" .. var_11_12)
+
+			gohelper.setActive(arg_11_0._hardModeLockTip, true)
+			gohelper.setActive(arg_11_0._gohardmodelock, true)
 		end
 	end
 
-	slot0:_refreshHardModeCurrency(slot3)
+	arg_11_0:_refreshHardModeCurrency(var_11_2)
 end
 
-function slot0.onModeChange(slot0)
-	slot0:refreshModeNode()
-	slot0.chapterLayout:playAnimation("switch")
-	slot0.chapterLayout:refreshEpisodeNodes()
+function var_0_0.onModeChange(arg_12_0)
+	arg_12_0:refreshModeNode()
+	arg_12_0.chapterLayout:playAnimation("switch")
+	arg_12_0.chapterLayout:refreshEpisodeNodes()
 end
 
-function slot0.showUI(slot0)
-	slot0:setLayoutVisible(true)
+function var_0_0.showUI(arg_13_0)
+	arg_13_0:setLayoutVisible(true)
 end
 
-function slot0.hideUI(slot0)
-	slot0:setLayoutVisible(false)
+function var_0_0.hideUI(arg_14_0)
+	arg_14_0:setLayoutVisible(false)
 end
 
-function slot0.setLayoutVisible(slot0, slot1)
-	if not slot0.chapterLayout then
+function var_0_0.setLayoutVisible(arg_15_0, arg_15_1)
+	if not arg_15_0.chapterLayout then
 		return
 	end
 
-	if slot0._episodeListTweenId then
-		ZProj.TweenHelper.KillById(slot0._episodeListTweenId)
+	if arg_15_0._episodeListTweenId then
+		ZProj.TweenHelper.KillById(arg_15_0._episodeListTweenId)
 
-		slot0._episodeListTweenId = nil
+		arg_15_0._episodeListTweenId = nil
 	end
 
-	slot2 = slot0.chapterLayout.viewGO.transform
-	slot3 = uv0
+	local var_15_0 = arg_15_0.chapterLayout.viewGO.transform
+	local var_15_1 = var_0_8
 
-	if slot1 then
-		slot3 = slot0.chapterLayout.defaultY
+	if arg_15_1 then
+		var_15_1 = arg_15_0.chapterLayout.defaultY
 	end
 
-	slot0._episodeListTweenId = ZProj.TweenHelper.DOAnchorPosY(slot2, slot3, uv1)
+	arg_15_0._episodeListTweenId = ZProj.TweenHelper.DOAnchorPosY(var_15_0, var_15_1, var_0_7)
 end
 
-function slot0._onUpdateDungeonInfo(slot0)
-	if slot0.chapterLayout then
-		slot0.chapterLayout:refreshEpisodeNodes()
+function var_0_0._onUpdateDungeonInfo(arg_16_0)
+	if arg_16_0.chapterLayout then
+		arg_16_0.chapterLayout:refreshEpisodeNodes()
 	end
 
-	slot0:refreshModeNode()
-	slot0:playUnlockAnimation()
+	arg_16_0:refreshModeNode()
+	arg_16_0:playUnlockAnimation()
 end
 
-function slot0._onCloseViewFinish(slot0, slot1)
-	if slot1 == slot0.viewName then
+function var_0_0._onCloseViewFinish(arg_17_0, arg_17_1)
+	if arg_17_1 == arg_17_0.viewName then
 		return
 	end
 
-	slot0:playUnlockAnimation()
+	arg_17_0:playUnlockAnimation()
 end
 
-function slot0.dailyRefresh(slot0)
-	slot0:refreshModeNode()
-	slot0:playUnlockAnimation()
+function var_0_0.dailyRefresh(arg_18_0)
+	arg_18_0:refreshModeNode()
+	arg_18_0:playUnlockAnimation()
 end
 
-function slot0.btnStoryModeClick(slot0)
-	slot0:changeEpisodeMode(VersionActivityDungeonBaseEnum.DungeonMode.Story)
+function var_0_0.btnStoryModeClick(arg_19_0)
+	arg_19_0:changeEpisodeMode(VersionActivityDungeonBaseEnum.DungeonMode.Story)
 end
 
-function slot0.btnHardModeClick(slot0)
-	slot1, slot2, slot3 = slot0:checkHardModeIsOpen()
+function var_0_0.btnHardModeClick(arg_20_0)
+	local var_20_0, var_20_1, var_20_2 = arg_20_0:checkHardModeIsOpen()
 
-	if not slot1 then
-		GameFacade.showToast(slot2, slot3)
+	if not var_20_0 then
+		GameFacade.showToast(var_20_1, var_20_2)
 
 		return
 	end
 
-	slot0:changeEpisodeMode(VersionActivityDungeonBaseEnum.DungeonMode.Hard)
+	arg_20_0:changeEpisodeMode(VersionActivityDungeonBaseEnum.DungeonMode.Hard)
 	VersionActivityFixedDungeonModel.instance:setTipHardModeUnlockOpen()
 end
 
-function slot0.checkHardModeIsOpen(slot0)
-	return VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapterAndGetToast(VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon)
+function var_0_0.checkHardModeIsOpen(arg_21_0)
+	local var_21_0 = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
+
+	return VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapterAndGetToast(var_21_0)
 end
 
-function slot0.changeEpisodeMode(slot0, slot1)
-	if not slot0.chapterLayout or slot1 == slot0.activityDungeonMo.mode then
+function var_0_0.changeEpisodeMode(arg_22_0, arg_22_1)
+	if not arg_22_0.chapterLayout or arg_22_1 == arg_22_0.activityDungeonMo.mode then
 		return
 	end
 
-	slot0.scrollRect.velocity = Vector2(0, 0)
+	arg_22_0.scrollRect.velocity = Vector2(0, 0)
 
-	if slot1 == VersionActivityDungeonBaseEnum.DungeonMode.Story then
-		slot0.excessiveAnimator:Play("story")
+	if arg_22_1 == VersionActivityDungeonBaseEnum.DungeonMode.Story then
+		arg_22_0.excessiveAnimator:Play("story")
 	else
-		slot0.excessiveAnimator:Play("hard")
+		arg_22_0.excessiveAnimator:Play("hard")
 	end
 
-	slot0.activityDungeonMo.mode = slot1
+	arg_22_0.activityDungeonMo.mode = arg_22_1
 
-	TaskDispatcher.runDelay(slot0.directChangeMode, slot0, uv0)
+	TaskDispatcher.runDelay(arg_22_0.directChangeMode, arg_22_0, var_0_3)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_pkls_game_reopen)
 end
 
-function slot0.directChangeMode(slot0)
-	slot0.activityDungeonMo:changeMode(slot0.activityDungeonMo.mode)
+function var_0_0.directChangeMode(arg_23_0)
+	arg_23_0.activityDungeonMo:changeMode(arg_23_0.activityDungeonMo.mode)
 end
 
-function slot0._onDragBeginHandler(slot0)
-	slot0._audioScroll:onDragBegin()
+function var_0_0._onDragBeginHandler(arg_24_0)
+	arg_24_0._audioScroll:onDragBegin()
 end
 
-function slot0._onDragEndHandler(slot0)
-	slot0._audioScroll:onDragEnd()
+function var_0_0._onDragEndHandler(arg_25_0)
+	arg_25_0._audioScroll:onDragEnd()
 end
 
-function slot0._onClickDownHandler(slot0)
-	slot0._audioScroll:onClickDown()
+function var_0_0._onClickDownHandler(arg_26_0)
+	arg_26_0._audioScroll:onClickDown()
 end
 
-function slot0.playOnOpenAnimation(slot0)
-	slot0.chapterLayout:playAnimation(UIAnimationName.Open)
+function var_0_0.playOnOpenAnimation(arg_27_0)
+	arg_27_0.chapterLayout:playAnimation(UIAnimationName.Open)
 
-	if slot0.viewContainer.viewParam.needSelectFocusItem then
-		slot0.chapterLayout:setSelectEpisodeId(slot0.activityDungeonMo.episodeId)
+	if arg_27_0.viewContainer.viewParam.needSelectFocusItem then
+		arg_27_0.chapterLayout:setSelectEpisodeId(arg_27_0.activityDungeonMo.episodeId)
 	else
-		slot0.chapterLayout:playEpisodeItemAnimation("in")
+		arg_27_0.chapterLayout:playEpisodeItemAnimation("in")
 	end
 end
 
-function slot0.playUnlockAnimation(slot0, slot1)
-	if not ViewHelper.instance:checkViewOnTheTop(slot0.viewName) then
+function var_0_0.playUnlockAnimation(arg_28_0, arg_28_1)
+	if not ViewHelper.instance:checkViewOnTheTop(arg_28_0.viewName) then
 		return
 	end
 
 	if VersionActivityFixedDungeonModel.instance:isNeedPlayHardModeUnlockAnimation() then
 		VersionActivityFixedDungeonModel.instance:savePlayerPrefsPlayHardModeUnlockAnimation()
 
-		if slot0._hardModeBtnAnimator then
-			slot0._hardModeBtnAnimator:Play(UIAnimationName.Unlock, 0, 0)
-			TaskDispatcher.runDelay(slot0._unlockAniDone, slot0, uv0)
+		if arg_28_0._hardModeBtnAnimator then
+			arg_28_0._hardModeBtnAnimator:Play(UIAnimationName.Unlock, 0, 0)
+			TaskDispatcher.runDelay(arg_28_0._unlockAniDone, arg_28_0, var_0_4)
 
 			return
 		end
 	end
 
-	if slot1 then
-		slot0:_unlockAniDone()
+	if arg_28_1 then
+		arg_28_0:_unlockAniDone()
 	end
 end
 
-function slot0._refreshHardModeCurrency(slot0, slot1)
-	slot2, slot3 = VersionActivityFixedDungeonModel.instance:getHardModeCurrenyNum(slot0.activityDungeonMo.activityDungeonConfig.hardChapterId)
-	slot0._txthardModeCurrency.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("activitymap_hardmode_reward_count"), slot2, slot3)
+function var_0_0._refreshHardModeCurrency(arg_29_0, arg_29_1)
+	local var_29_0, var_29_1 = VersionActivityFixedDungeonModel.instance:getHardModeCurrenyNum(arg_29_0.activityDungeonMo.activityDungeonConfig.hardChapterId)
+	local var_29_2 = luaLang("activitymap_hardmode_reward_count")
 
-	gohelper.setActive(slot0._hardModeCurrency, slot1)
+	arg_29_0._txthardModeCurrency.text = GameUtil.getSubPlaceholderLuaLangTwoParam(var_29_2, var_29_0, var_29_1)
 
-	slot0._cghardModeCurrency.alpha = slot0.activityDungeonMo.mode == VersionActivityDungeonBaseEnum.DungeonMode.Hard and 1 or 0.5
+	gohelper.setActive(arg_29_0._hardModeCurrency, arg_29_1)
+
+	local var_29_3 = arg_29_0.activityDungeonMo.mode == VersionActivityDungeonBaseEnum.DungeonMode.Hard and 1 or 0.5
+
+	arg_29_0._cghardModeCurrency.alpha = var_29_3
 end
 
-function slot0._refreshHardModeVx(slot0)
-	slot2 = VersionActivityFixedDungeonModel.instance:isTipHardModeUnlockOpen(VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon)
+function var_0_0._refreshHardModeVx(arg_30_0)
+	local var_30_0 = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
+	local var_30_1 = VersionActivityFixedDungeonModel.instance:isTipHardModeUnlockOpen(var_30_0)
 
-	gohelper.setActive(slot0._hardModeUnlockvx, slot2)
+	gohelper.setActive(arg_30_0._hardModeUnlockvx, var_30_1)
 
-	if slot2 then
+	if var_30_1 then
 		VersionActivityFixedDungeonModel.instance:refreshVersionActivityEnterRedDot()
 	end
 end
 
-function slot0._unlockAniDone(slot0)
-	if not VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon) then
+function var_0_0._unlockAniDone(arg_31_0)
+	local var_31_0 = VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
+
+	if not VersionActivityDungeonBaseController.instance:isOpenActivityHardDungeonChapter(var_31_0) then
 		return
 	end
 
 	VersionActivityDungeonBaseController.instance:dispatchEvent(VersionActivityDungeonEvent.OnHardUnlockAnimDone)
 end
 
-function slot0.onDestroyView(slot0)
-	TaskDispatcher.cancelTask(slot0.refreshModeLockText, slot0)
-	TaskDispatcher.cancelTask(slot0.directChangeMode, slot0)
-	TaskDispatcher.cancelTask(slot0._unlockAniDone, slot0)
+function var_0_0.onDestroyView(arg_32_0)
+	TaskDispatcher.cancelTask(arg_32_0.refreshModeLockText, arg_32_0)
+	TaskDispatcher.cancelTask(arg_32_0.directChangeMode, arg_32_0)
+	TaskDispatcher.cancelTask(arg_32_0._unlockAniDone, arg_32_0)
 
-	if slot0._uiLoader then
-		slot0._uiLoader:dispose()
+	if arg_32_0._uiLoader then
+		arg_32_0._uiLoader:dispose()
 	end
 
-	if slot0.chapterLayout then
-		slot0.chapterLayout:destroyView()
+	if arg_32_0.chapterLayout then
+		arg_32_0.chapterLayout:destroyView()
 
-		slot0.chapterLayout = nil
+		arg_32_0.chapterLayout = nil
 	end
 
-	if slot0._audioScroll then
-		slot0._audioScroll:dispose()
+	if arg_32_0._audioScroll then
+		arg_32_0._audioScroll:dispose()
 
-		slot0._audioScroll = nil
+		arg_32_0._audioScroll = nil
 	end
 
-	if slot0._episodeListTweenId then
-		ZProj.TweenHelper.KillById(slot0._episodeListTweenId)
+	if arg_32_0._episodeListTweenId then
+		ZProj.TweenHelper.KillById(arg_32_0._episodeListTweenId)
 	end
 end
 
-return slot0
+return var_0_0

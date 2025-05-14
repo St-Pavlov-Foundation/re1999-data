@@ -1,4 +1,4 @@
-return {
+﻿return {
 	{
 		strId = "stone",
 		id = 10,

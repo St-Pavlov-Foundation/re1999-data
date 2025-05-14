@@ -1,9 +1,9 @@
-module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameViewContainer", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.view.XugoujiGameViewContainer", package.seeall)
 
-slot0 = class("XugoujiGameViewContainer", BaseViewContainer)
-slot1 = 0.35
+local var_0_0 = class("XugoujiGameViewContainer", BaseViewContainer)
+local var_0_1 = 0.35
 
-function slot0.buildViews(slot0)
+function var_0_0.buildViews(arg_1_0)
 	return {
 		XugoujiGameView.New(),
 		XugoujiGamePlayerInfoView.New(),
@@ -12,78 +12,80 @@ function slot0.buildViews(slot0)
 	}
 end
 
-function slot0.buildTabViews(slot0, slot1)
-	if slot1 == 1 then
-		slot2 = NavigateButtonsView.New({
+function var_0_0.buildTabViews(arg_2_0, arg_2_1)
+	if arg_2_1 == 1 then
+		local var_2_0 = NavigateButtonsView.New({
 			true,
 			true,
 			false
 		})
 
-		slot2:setOverrideClose(slot0._overrideCloseAction, slot0)
-		slot2:setOverrideHome(slot0._overrideClickHome, slot0)
+		var_2_0:setOverrideClose(arg_2_0._overrideCloseAction, arg_2_0)
+		var_2_0:setOverrideHome(arg_2_0._overrideClickHome, arg_2_0)
 
 		return {
-			slot2
+			var_2_0
 		}
 	end
 end
 
-function slot0._overrideCloseAction(slot0)
+function var_0_0._overrideCloseAction(arg_3_0)
 	if Activity188Model.instance:isGameGuideMode() then
 		return
 	end
 
-	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, slot0._playAniAndClose, nil, , slot0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, arg_3_0._playAniAndClose, nil, nil, arg_3_0)
 end
 
-function slot0._overrideClickHome(slot0)
+function var_0_0._overrideClickHome(arg_4_0)
 	if Activity188Model.instance:isGameGuideMode() then
 		return
 	end
 
-	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, slot0._playAniAndGoHome, nil, , slot0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, arg_4_0._playAniAndGoHome, nil, nil, arg_4_0)
 end
 
-function slot0._playAniAndClose(slot0)
-	if slot0._isClosing then
+function var_0_0._playAniAndClose(arg_5_0)
+	if arg_5_0._isClosing then
 		return
 	end
 
-	if not slot0._anim then
-		slot0._anim = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	if not arg_5_0._anim then
+		arg_5_0._anim = arg_5_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	end
 
-	slot0._anim:Play("out", 0, 0)
+	arg_5_0._anim:Play("out", 0, 0)
 	XugoujiController.instance:manualExitGame()
 
-	slot0._isClosing = true
+	arg_5_0._isClosing = true
 
-	TaskDispatcher.runDelay(slot0._closeAction, slot0, uv0)
+	TaskDispatcher.runDelay(arg_5_0._closeAction, arg_5_0, var_0_1)
 end
 
-function slot0._closeAction(slot0)
+function var_0_0._closeAction(arg_6_0)
 	XugoujiController.instance:manualExitGame()
 	XugoujiController.instance:sendExitGameStat()
-	slot0:closeThis()
+	arg_6_0:closeThis()
 end
 
-function slot0._playAniAndGoHome(slot0)
+function var_0_0._playAniAndGoHome(arg_7_0)
 	XugoujiController.instance:manualExitGame()
 	XugoujiController.instance:sendExitGameStat()
 	NavigateButtonsView.homeClick()
 end
 
-function slot0.defaultOverrideCloseCheck(slot0, slot1, slot2)
-	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, function ()
-		uv0(uv1)
-	end)
+function var_0_0.defaultOverrideCloseCheck(arg_8_0, arg_8_1, arg_8_2)
+	local function var_8_0()
+		arg_8_1(arg_8_2)
+	end
+
+	GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, var_8_0)
 
 	return false
 end
 
-function slot0.setVisibleInternal(slot0, slot1)
-	uv0.super.setVisibleInternal(slot0, slot1)
+function var_0_0.setVisibleInternal(arg_10_0, arg_10_1)
+	var_0_0.super.setVisibleInternal(arg_10_0, arg_10_1)
 end
 
-return slot0
+return var_0_0

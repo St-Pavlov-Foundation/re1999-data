@@ -1,55 +1,59 @@
-module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroModel", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.model.DiceHeroModel", package.seeall)
 
-slot0 = class("DiceHeroModel", BaseModel)
+local var_0_0 = class("DiceHeroModel", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0.unlockChapterIds = {}
-	slot0.gameInfos = {}
-	slot0.guideChapter = 0
-	slot0.guideLevel = 0
-	slot0.isUnlockNewChapter = false
-	slot0.talkId = 0
-	slot0.stepId = 0
+function var_0_0.onInit(arg_1_0)
+	arg_1_0.unlockChapterIds = {}
+	arg_1_0.gameInfos = {}
+	arg_1_0.guideChapter = 0
+	arg_1_0.guideLevel = 0
+	arg_1_0.isUnlockNewChapter = false
+	arg_1_0.talkId = 0
+	arg_1_0.stepId = 0
 end
 
-function slot0.reInit(slot0)
-	slot0:onInit()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:onInit()
 end
 
-function slot0.initInfo(slot0, slot1)
-	slot0.gameInfos = {}
-	slot2 = slot0.unlockChapterIds
-	slot0.unlockChapterIds = {
-		[1.0] = true
+function var_0_0.initInfo(arg_3_0, arg_3_1)
+	arg_3_0.gameInfos = {}
+
+	local var_3_0 = arg_3_0.unlockChapterIds
+
+	arg_3_0.unlockChapterIds = {
+		[1] = true
 	}
 
-	for slot6, slot7 in ipairs(slot1.gameInfo) do
-		slot0.gameInfos[slot7.chapter] = DiceHeroGameInfoMo.New()
+	for iter_3_0, iter_3_1 in ipairs(arg_3_1.gameInfo) do
+		arg_3_0.gameInfos[iter_3_1.chapter] = DiceHeroGameInfoMo.New()
 
-		slot0.gameInfos[slot7.chapter]:init(slot7)
+		arg_3_0.gameInfos[iter_3_1.chapter]:init(iter_3_1)
 
-		if slot0.gameInfos[slot7.chapter].allPass then
-			slot0.unlockChapterIds[slot7.chapter + 1] = true
+		if arg_3_0.gameInfos[iter_3_1.chapter].allPass then
+			arg_3_0.unlockChapterIds[iter_3_1.chapter + 1] = true
 		end
 	end
 
-	slot0.isUnlockNewChapter = #slot2 ~= #slot0.unlockChapterIds
+	arg_3_0.isUnlockNewChapter = #var_3_0 ~= #arg_3_0.unlockChapterIds
 
 	DiceHeroController.instance:dispatchEvent(DiceHeroEvent.InfoUpdate)
 end
 
-function slot0.getGameInfo(slot0, slot1)
-	return slot0.gameInfos[slot1 or 1]
+function var_0_0.getGameInfo(arg_4_0, arg_4_1)
+	return arg_4_0.gameInfos[arg_4_1 or 1]
 end
 
-function slot0.hasReward(slot0, slot1)
-	if not slot0.gameInfos[slot1 or 1] then
+function var_0_0.hasReward(arg_5_0, arg_5_1)
+	arg_5_1 = arg_5_1 or 1
+
+	if not arg_5_0.gameInfos[arg_5_1] then
 		return false
 	end
 
-	return slot0.gameInfos[slot1]:hasReward()
+	return arg_5_0.gameInfos[arg_5_1]:hasReward()
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

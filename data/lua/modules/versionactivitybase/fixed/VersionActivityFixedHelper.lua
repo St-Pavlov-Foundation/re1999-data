@@ -1,292 +1,364 @@
-module("modules.versionactivitybase.fixed.VersionActivityFixedHelper", package.seeall)
+﻿module("modules.versionactivitybase.fixed.VersionActivityFixedHelper", package.seeall)
 
-slot0 = class("VersionActivityFixedHelper")
-slot1 = {
+local var_0_0 = class("VersionActivityFixedHelper")
+local var_0_1 = {
 	big = 2,
 	small = 7
 }
-slot2 = nil
-slot3 = "%s_%s"
-slot4 = "V%sa%s"
-slot5 = "v%sa%s"
+local var_0_2
+local var_0_3 = "%s_%s"
+local var_0_4 = "V%sa%s"
+local var_0_5 = "v%sa%s"
 
-function slot6(slot0, slot1)
-	return slot0 or uv0.big, slot1 or uv0.small
+local function var_0_6(arg_1_0, arg_1_1)
+	return arg_1_0 or var_0_1.big, arg_1_1 or var_0_1.small
 end
 
-function slot7(slot0, slot1, slot2, slot3)
-	slot4, slot5 = uv0(slot2, slot3)
+local function var_0_7(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
+	arg_2_2, arg_2_3 = var_0_6(arg_2_2, arg_2_3)
 
-	return string.format(slot0, string.format(slot1, slot4, slot5))
+	local var_2_0 = string.format(arg_2_1, arg_2_2, arg_2_3)
+
+	return string.format(arg_2_0, var_2_0)
 end
 
-function slot8(slot0, slot1)
-	slot0, slot1 = uv0(slot0, slot1)
+local function var_0_8(arg_3_0, arg_3_1)
+	arg_3_0, arg_3_1 = var_0_6(arg_3_0, arg_3_1)
 
-	if not uv1 then
-		uv1 = {}
+	if not var_0_2 then
+		var_0_2 = {}
 	end
 
-	if not uv1[slot0] then
-		uv1[slot0] = {}
+	if not var_0_2[arg_3_0] then
+		var_0_2[arg_3_0] = {}
 	end
 
-	if not uv1[slot0][slot1] then
-		uv1[slot0][slot1] = {}
+	if not var_0_2[arg_3_0][arg_3_1] then
+		var_0_2[arg_3_0][arg_3_1] = {}
 	end
 
-	return uv1[slot0][slot1]
+	return var_0_2[arg_3_0][arg_3_1]
 end
 
-function slot0.setMainActivitySprite(slot0, slot1, slot2, slot3, slot4)
-	slot5, slot6 = uv0(slot3, slot4)
+function var_0_0.setMainActivitySprite(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)
+	arg_4_3, arg_4_4 = var_0_6(arg_4_3, arg_4_4)
 
-	if not uv1(slot5, slot6)._MainActivitySpriteFunc then
-		uv4[slot3][slot4]._MainActivitySpriteFunc = uv2("set%sMainActivitySprite", uv3, slot3, slot4)
+	local var_4_0 = var_0_8(arg_4_3, arg_4_4)._MainActivitySpriteFunc
+
+	if not var_4_0 then
+		var_4_0 = var_0_7("set%sMainActivitySprite", var_0_4, arg_4_3, arg_4_4)
+		var_0_2[arg_4_3][arg_4_4]._MainActivitySpriteFunc = var_4_0
 	end
 
-	UISpriteSetMgr.instance[slot6](UISpriteSetMgr.instance, slot0, slot1, slot2)
+	UISpriteSetMgr.instance[var_4_0](UISpriteSetMgr.instance, arg_4_0, arg_4_1, arg_4_2)
 end
 
-function slot0.setDungeonSprite(slot0, slot1, slot2, slot3, slot4)
-	slot5, slot6 = uv0(slot3, slot4)
+function var_0_0.setDungeonSprite(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)
+	arg_5_3, arg_5_4 = var_0_6(arg_5_3, arg_5_4)
 
-	if not uv1(slot5, slot6)._DungeonSpriteFunc then
-		uv4[slot3][slot4]._DungeonSpriteFunc = uv2("set%sDungeonSprite", uv3, slot3, slot4)
+	local var_5_0 = var_0_8(arg_5_3, arg_5_4)._DungeonSpriteFunc
+
+	if not var_5_0 then
+		var_5_0 = var_0_7("set%sDungeonSprite", var_0_4, arg_5_3, arg_5_4)
+		var_0_2[arg_5_3][arg_5_4]._DungeonSpriteFunc = var_5_0
 	end
 
-	UISpriteSetMgr.instance[slot6](UISpriteSetMgr.instance, slot0, slot1, slot2)
+	UISpriteSetMgr.instance[var_5_0](UISpriteSetMgr.instance, arg_5_0, arg_5_1, arg_5_2)
 end
 
-function slot0.getVersionActivityEnum(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityEnum(arg_6_0, arg_6_1)
+	arg_6_0, arg_6_1 = var_0_6(arg_6_0, arg_6_1)
 
-	if not uv1(slot2, slot3)._Enum then
-		uv4[slot0][slot1]._Enum = _G[uv2("VersionActivity%sEnum", uv3, slot0, slot1)]
+	local var_6_0 = var_0_8(arg_6_0, arg_6_1)._Enum
+
+	if not var_6_0 then
+		local var_6_1 = var_0_7("VersionActivity%sEnum", var_0_3, arg_6_0, arg_6_1)
+
+		var_6_0 = _G[var_6_1]
+		var_0_2[arg_6_0][arg_6_1]._Enum = var_6_0
 	end
 
-	return slot3
+	return var_6_0
 end
 
-function slot0.getVersionActivityEnterViewName(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityEnterViewName(arg_7_0, arg_7_1)
+	arg_7_0, arg_7_1 = var_0_6(arg_7_0, arg_7_1)
 
-	if not uv1(slot2, slot3)._EnterViewName then
-		uv4[slot0][slot1]._EnterViewName = ViewName[uv2("VersionActivity%sEnterView", uv3, slot0, slot1)]
+	local var_7_0 = var_0_8(arg_7_0, arg_7_1)._EnterViewName
+
+	if not var_7_0 then
+		local var_7_1 = var_0_7("VersionActivity%sEnterView", var_0_3, arg_7_0, arg_7_1)
+
+		var_7_0 = ViewName[var_7_1]
+		var_0_2[arg_7_0][arg_7_1]._EnterViewName = var_7_0
 	end
 
-	return slot3
+	return var_7_0
 end
 
-function slot0.getVersionActivityStoreViewName(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityStoreViewName(arg_8_0, arg_8_1)
+	arg_8_0, arg_8_1 = var_0_6(arg_8_0, arg_8_1)
 
-	if not uv1(slot2, slot3)._StoreViewName then
-		uv4[slot0][slot1]._StoreViewName = ViewName[uv2("VersionActivity%sStoreView", uv3, slot0, slot1)]
+	local var_8_0 = var_0_8(arg_8_0, arg_8_1)._StoreViewName
+
+	if not var_8_0 then
+		local var_8_1 = var_0_7("VersionActivity%sStoreView", var_0_3, arg_8_0, arg_8_1)
+
+		var_8_0 = ViewName[var_8_1]
+		var_0_2[arg_8_0][arg_8_1]._StoreViewName = var_8_0
 	end
 
-	return slot3
+	return var_8_0
 end
 
-function slot0.getVersionActivityTaskViewName(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityTaskViewName(arg_9_0, arg_9_1)
+	arg_9_0, arg_9_1 = var_0_6(arg_9_0, arg_9_1)
 
-	if not uv1(slot2, slot3)._TaskViewName then
-		uv4[slot0][slot1]._TaskViewName = ViewName[uv2("VersionActivity%sTaskView", uv3, slot0, slot1)]
+	local var_9_0 = var_0_8(arg_9_0, arg_9_1)._TaskViewName
+
+	if not var_9_0 then
+		local var_9_1 = var_0_7("VersionActivity%sTaskView", var_0_3, arg_9_0, arg_9_1)
+
+		var_9_0 = ViewName[var_9_1]
+		var_0_2[arg_9_0][arg_9_1]._TaskViewName = var_9_0
 	end
 
-	return slot3
+	return var_9_0
 end
 
-function slot0.getVersionActivityDungeonEnum(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityDungeonEnum(arg_10_0, arg_10_1)
+	arg_10_0, arg_10_1 = var_0_6(arg_10_0, arg_10_1)
 
-	if not uv1(slot2, slot3)._DungeonEnum then
-		uv4[slot0][slot1]._DungeonEnum = _G[uv2("VersionActivity%sDungeonEnum", uv3, slot0, slot1)]
+	local var_10_0 = var_0_8(arg_10_0, arg_10_1)._DungeonEnum
+
+	if not var_10_0 then
+		local var_10_1 = var_0_7("VersionActivity%sDungeonEnum", var_0_3, arg_10_0, arg_10_1)
+
+		var_10_0 = _G[var_10_1]
+		var_0_2[arg_10_0][arg_10_1]._DungeonEnum = var_10_0
 	end
 
-	return slot3
+	return var_10_0
 end
 
-function slot0.getVersionActivityDungeonMapViewName(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityDungeonMapViewName(arg_11_0, arg_11_1)
+	arg_11_0, arg_11_1 = var_0_6(arg_11_0, arg_11_1)
 
-	if not uv1(slot2, slot3)._DungeonMapViewName then
-		uv4[slot0][slot1]._DungeonMapViewName = ViewName[uv2("VersionActivity%sDungeonMapView", uv3, slot0, slot1)]
+	local var_11_0 = var_0_8(arg_11_0, arg_11_1)._DungeonMapViewName
+
+	if not var_11_0 then
+		local var_11_1 = var_0_7("VersionActivity%sDungeonMapView", var_0_3, arg_11_0, arg_11_1)
+
+		var_11_0 = ViewName[var_11_1]
+		var_0_2[arg_11_0][arg_11_1]._DungeonMapViewName = var_11_0
 	end
 
-	return slot3
+	return var_11_0
 end
 
-function slot0.getVersionActivityDungeonMapLevelViewName(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityDungeonMapLevelViewName(arg_12_0, arg_12_1)
+	arg_12_0, arg_12_1 = var_0_6(arg_12_0, arg_12_1)
 
-	if not uv1(slot2, slot3)._DungeonMapLevelView then
-		uv4[slot0][slot1]._DungeonMapLevelView = ViewName[uv2("VersionActivity%sDungeonMapLevelView", uv3, slot0, slot1)]
+	local var_12_0 = var_0_8(arg_12_0, arg_12_1)._DungeonMapLevelView
+
+	if not var_12_0 then
+		local var_12_1 = var_0_7("VersionActivity%sDungeonMapLevelView", var_0_3, arg_12_0, arg_12_1)
+
+		var_12_0 = ViewName[var_12_1]
+		var_0_2[arg_12_0][arg_12_1]._DungeonMapLevelView = var_12_0
 	end
 
-	return slot3
+	return var_12_0
 end
 
-function slot0.getVersionActivityDungeonEnterReddotId(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityDungeonEnterReddotId(arg_13_0, arg_13_1)
+	arg_13_0, arg_13_1 = var_0_6(arg_13_0, arg_13_1)
 
-	if not uv1(slot2, slot3)._DungeonEnter then
-		uv4[slot0][slot1]._DungeonEnter = RedDotEnum.DotNode[uv2("%sDungeonEnter", uv3, slot0, slot1)]
+	local var_13_0 = var_0_8(arg_13_0, arg_13_1)._DungeonEnter
+
+	if not var_13_0 then
+		local var_13_1 = var_0_7("%sDungeonEnter", var_0_4, arg_13_0, arg_13_1)
+
+		var_13_0 = RedDotEnum.DotNode[var_13_1]
+		var_0_2[arg_13_0][arg_13_1]._DungeonEnter = var_13_0
 	end
 
-	return slot3
+	return var_13_0
 end
 
-function slot0.getVersionActivityDungeonTaskReddotId(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityDungeonTaskReddotId(arg_14_0, arg_14_1)
+	arg_14_0, arg_14_1 = var_0_6(arg_14_0, arg_14_1)
 
-	if not uv1(slot2, slot3)._DungeonEnter then
-		uv4[slot0][slot1]._DungeonEnter = RedDotEnum.DotNode[uv2("%sDungeonTask", uv3, slot0, slot1)]
+	local var_14_0 = var_0_8(arg_14_0, arg_14_1)._DungeonEnter
+
+	if not var_14_0 then
+		local var_14_1 = var_0_7("%sDungeonTask", var_0_4, arg_14_0, arg_14_1)
+
+		var_14_0 = RedDotEnum.DotNode[var_14_1]
+		var_0_2[arg_14_0][arg_14_1]._DungeonEnter = var_14_0
 	end
 
-	return slot3
+	return var_14_0
 end
 
-function slot0.getVersionActivityCurrencyType(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityCurrencyType(arg_15_0, arg_15_1)
+	arg_15_0, arg_15_1 = var_0_6(arg_15_0, arg_15_1)
 
-	if not uv1(slot2, slot3)._CurrencyType then
-		uv4[slot0][slot1]._CurrencyType = CurrencyEnum.CurrencyType[uv2("%sDungeon", uv3, slot0, slot1)]
+	local var_15_0 = var_0_8(arg_15_0, arg_15_1)._CurrencyType
+
+	if not var_15_0 then
+		local var_15_1 = var_0_7("%sDungeon", var_0_4, arg_15_0, arg_15_1)
+
+		var_15_0 = CurrencyEnum.CurrencyType[var_15_1]
+		var_0_2[arg_15_0][arg_15_1]._CurrencyType = var_15_0
 	end
 
-	return slot3
+	return var_15_0
 end
 
-function slot0.getVersionActivityAudioBgmLayer(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityAudioBgmLayer(arg_16_0, arg_16_1)
+	arg_16_0, arg_16_1 = var_0_6(arg_16_0, arg_16_1)
 
-	if not uv1(slot2, slot3)._AudioBgmLayer then
-		uv4[slot0][slot1]._AudioBgmLayer = AudioBgmEnum.Layer[uv2("VersionActivity%sMain", uv3, slot0, slot1)]
+	local var_16_0 = var_0_8(arg_16_0, arg_16_1)._AudioBgmLayer
+
+	if not var_16_0 then
+		local var_16_1 = var_0_7("VersionActivity%sMain", var_0_3, arg_16_0, arg_16_1)
+
+		var_16_0 = AudioBgmEnum.Layer[var_16_1]
+		var_0_2[arg_16_0][arg_16_1]._AudioBgmLayer = var_16_0
 	end
 
-	return slot3
+	return var_16_0
 end
 
-function slot0.getVersionActivityStoreRareIcon(slot0, slot1)
-	slot2, slot3 = uv0(slot0, slot1)
+function var_0_0.getVersionActivityStoreRareIcon(arg_17_0, arg_17_1)
+	arg_17_0, arg_17_1 = var_0_6(arg_17_0, arg_17_1)
 
-	if not uv1(slot2, slot3)._StoreRareIcon then
-		uv4[slot0][slot1]._StoreRareIcon = uv2("%s_store_quality_", uv3, slot0, slot1)
+	local var_17_0 = var_0_8(arg_17_0, arg_17_1)._StoreRareIcon
+
+	if not var_17_0 then
+		var_17_0 = var_0_7("%s_store_quality_", var_0_5, arg_17_0, arg_17_1)
+		var_0_2[arg_17_0][arg_17_1]._StoreRareIcon = var_17_0
 	end
 
-	return slot3
+	return var_17_0
 end
 
-function slot0._getFixed(slot0, slot1, slot2)
-	slot3, slot4 = uv0(slot0, slot1)
+function var_0_0._getFixed(arg_18_0, arg_18_1, arg_18_2)
+	arg_18_0, arg_18_1 = var_0_6(arg_18_0, arg_18_1)
 
-	if not uv1(slot3, slot4)[slot2] then
-		slot5 = "VersionActivity%s" .. slot2
-		uv4[slot0][slot1][slot2] = _G[uv2(slot5, uv3, slot0, slot1)] or _G[string.format(slot5, "Fixed")]
+	local var_18_0 = var_0_8(arg_18_0, arg_18_1)[arg_18_2]
+
+	if not var_18_0 then
+		local var_18_1 = "VersionActivity%s" .. arg_18_2
+		local var_18_2 = var_0_7(var_18_1, var_0_3, arg_18_0, arg_18_1)
+		local var_18_3 = string.format(var_18_1, "Fixed")
+
+		var_18_0 = _G[var_18_2] or _G[var_18_3]
+		var_0_2[arg_18_0][arg_18_1][arg_18_2] = var_18_0
 	end
 
-	return slot4
+	return var_18_0
 end
 
-function slot0.getVersionActivityEnterController(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "EnterController")
+function var_0_0.getVersionActivityEnterController(arg_19_0, arg_19_1)
+	return var_0_0._getFixed(arg_19_0, arg_19_1, "EnterController")
 end
 
-function slot0.getVersionActivityDungeonController(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonController")
+function var_0_0.getVersionActivityDungeonController(arg_20_0, arg_20_1)
+	return var_0_0._getFixed(arg_20_0, arg_20_1, "DungeonController")
 end
 
-function slot0.getVersionActivityDungeonMapElement(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapElement")
+function var_0_0.getVersionActivityDungeonMapElement(arg_21_0, arg_21_1)
+	return var_0_0._getFixed(arg_21_0, arg_21_1, "DungeonMapElement")
 end
 
-function slot0.getVersionActivityDungeonMapHoleView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapHoleView")
+function var_0_0.getVersionActivityDungeonMapHoleView(arg_22_0, arg_22_1)
+	return var_0_0._getFixed(arg_22_0, arg_22_1, "DungeonMapHoleView")
 end
 
-function slot0.getVersionActivityDungeonMapScene(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapScene")
+function var_0_0.getVersionActivityDungeonMapScene(arg_23_0, arg_23_1)
+	return var_0_0._getFixed(arg_23_0, arg_23_1, "DungeonMapScene")
 end
 
-function slot0.getVersionActivityDungeonMapSceneElements(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapSceneElements")
+function var_0_0.getVersionActivityDungeonMapSceneElements(arg_24_0, arg_24_1)
+	return var_0_0._getFixed(arg_24_0, arg_24_1, "DungeonMapSceneElements")
 end
 
-function slot0.getVersionActivityDungeonMapChapterLayout(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapChapterLayout")
+function var_0_0.getVersionActivityDungeonMapChapterLayout(arg_25_0, arg_25_1)
+	return var_0_0._getFixed(arg_25_0, arg_25_1, "DungeonMapChapterLayout")
 end
 
-function slot0.getVersionActivityDungeonMapEpisodeItem(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapEpisodeItem")
+function var_0_0.getVersionActivityDungeonMapEpisodeItem(arg_26_0, arg_26_1)
+	return var_0_0._getFixed(arg_26_0, arg_26_1, "DungeonMapEpisodeItem")
 end
 
-function slot0.getVersionActivityDungeonMapEpisodeView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapEpisodeView")
+function var_0_0.getVersionActivityDungeonMapEpisodeView(arg_27_0, arg_27_1)
+	return var_0_0._getFixed(arg_27_0, arg_27_1, "DungeonMapEpisodeView")
 end
 
-function slot0.getVersionActivityDungeonMapFinishElement(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapFinishElement")
+function var_0_0.getVersionActivityDungeonMapFinishElement(arg_28_0, arg_28_1)
+	return var_0_0._getFixed(arg_28_0, arg_28_1, "DungeonMapFinishElement")
 end
 
-function slot0.getVersionActivityDungeonMapInteractView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapInteractView")
+function var_0_0.getVersionActivityDungeonMapInteractView(arg_29_0, arg_29_1)
+	return var_0_0._getFixed(arg_29_0, arg_29_1, "DungeonMapInteractView")
 end
 
-function slot0.getVersionActivityDungeonMapView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapView")
+function var_0_0.getVersionActivityDungeonMapView(arg_30_0, arg_30_1)
+	return var_0_0._getFixed(arg_30_0, arg_30_1, "DungeonMapView")
 end
 
-function slot0.getVersionActivityDungeonMapLevelView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonMapLevelView")
+function var_0_0.getVersionActivityDungeonMapLevelView(arg_31_0, arg_31_1)
+	return var_0_0._getFixed(arg_31_0, arg_31_1, "DungeonMapLevelView")
 end
 
-function slot0.getVersionActivityStoreGoodsItem(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "StoreGoodsItem")
+function var_0_0.getVersionActivityStoreGoodsItem(arg_32_0, arg_32_1)
+	return var_0_0._getFixed(arg_32_0, arg_32_1, "StoreGoodsItem")
 end
 
-function slot0.getVersionActivityStoreItem(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "StoreItem")
+function var_0_0.getVersionActivityStoreItem(arg_33_0, arg_33_1)
+	return var_0_0._getFixed(arg_33_0, arg_33_1, "StoreItem")
 end
 
-function slot0.getVersionActivityStoreView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "StoreView")
+function var_0_0.getVersionActivityStoreView(arg_34_0, arg_34_1)
+	return var_0_0._getFixed(arg_34_0, arg_34_1, "StoreView")
 end
 
-function slot0.getVersionActivityTaskItem(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "TaskItem")
+function var_0_0.getVersionActivityTaskItem(arg_35_0, arg_35_1)
+	return var_0_0._getFixed(arg_35_0, arg_35_1, "TaskItem")
 end
 
-function slot0.getVersionActivityTaskView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "TaskView")
+function var_0_0.getVersionActivityTaskView(arg_36_0, arg_36_1)
+	return var_0_0._getFixed(arg_36_0, arg_36_1, "TaskView")
 end
 
-function slot0.getVersionActivityDungeonEnterView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "DungeonEnterView")
+function var_0_0.getVersionActivityDungeonEnterView(arg_37_0, arg_37_1)
+	return var_0_0._getFixed(arg_37_0, arg_37_1, "DungeonEnterView")
 end
 
-function slot0.getVersionActivitySubAnimatorComp(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "SubAnimatorComp")
+function var_0_0.getVersionActivitySubAnimatorComp(arg_38_0, arg_38_1)
+	return var_0_0._getFixed(arg_38_0, arg_38_1, "SubAnimatorComp")
 end
 
-function slot0.getVersionActivityEnterBgmView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "EnterBgmView")
+function var_0_0.getVersionActivityEnterBgmView(arg_39_0, arg_39_1)
+	return var_0_0._getFixed(arg_39_0, arg_39_1, "EnterBgmView")
 end
 
-function slot0.getVersionActivityEnterView(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "EnterView")
+function var_0_0.getVersionActivityEnterView(arg_40_0, arg_40_1)
+	return var_0_0._getFixed(arg_40_0, arg_40_1, "EnterView")
 end
 
-function slot0.getVersionActivityEnterViewTabItem1(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "EnterViewTabItem1")
+function var_0_0.getVersionActivityEnterViewTabItem1(arg_41_0, arg_41_1)
+	return var_0_0._getFixed(arg_41_0, arg_41_1, "EnterViewTabItem1")
 end
 
-function slot0.getVersionActivityEnterViewTabItem2(slot0, slot1)
-	return uv0._getFixed(slot0, slot1, "EnterViewTabItem2")
+function var_0_0.getVersionActivityEnterViewTabItem2(arg_42_0, arg_42_1)
+	return var_0_0._getFixed(arg_42_0, arg_42_1, "EnterViewTabItem2")
 end
 
-function slot0.isTargetVersion(slot0, slot1)
-	return uv0.big == slot0 and uv0.small == slot1
+function var_0_0.isTargetVersion(arg_43_0, arg_43_1)
+	return var_0_1.big == arg_43_0 and var_0_1.small == arg_43_1
 end
 
-return slot0
+return var_0_0

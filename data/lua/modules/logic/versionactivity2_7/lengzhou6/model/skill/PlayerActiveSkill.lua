@@ -1,46 +1,51 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.skill.PlayerActiveSkill", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.skill.PlayerActiveSkill", package.seeall)
 
-slot0 = class("PlayerActiveSkill", SkillBase)
+local var_0_0 = class("PlayerActiveSkill", SkillBase)
 
-function slot0.init(slot0, slot1, slot2)
-	uv0.super.init(slot0, slot1, slot2)
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
+	var_0_0.super.init(arg_1_0, arg_1_1, arg_1_2)
 
-	slot0._skillParams = {}
-	slot0._skillParamCount = 0
+	arg_1_0._skillParams = {}
+	arg_1_0._skillParamCount = 0
 
-	if slot0._effect[1] == "EliminationCross" or slot0._effect[1] == "EliminationRange" then
-		slot0._skillParamCount = 2
+	if arg_1_0._effect[1] == "EliminationCross" or arg_1_0._effect[1] == "EliminationRange" then
+		arg_1_0._skillParamCount = 2
 	end
 
-	slot0._skillType = LengZhou6Enum.SkillType.active
+	arg_1_0._skillType = LengZhou6Enum.SkillType.active
 end
 
-function slot0.setParams(slot0, slot1, slot2)
-	table.insert(slot0._skillParams, slot1)
-	table.insert(slot0._skillParams, slot2)
+function var_0_0.setParams(arg_2_0, arg_2_1, arg_2_2)
+	table.insert(arg_2_0._skillParams, arg_2_1)
+	table.insert(arg_2_0._skillParams, arg_2_2)
 end
 
-function slot0.clearParams(slot0)
-	tabletool.clear(slot0._skillParams)
+function var_0_0.clearParams(arg_3_0)
+	tabletool.clear(arg_3_0._skillParams)
 end
 
-function slot0.paramIsFull(slot0)
-	return #slot0._skillParams == slot0._skillParamCount
+function var_0_0.paramIsFull(arg_4_0)
+	return #arg_4_0._skillParams == arg_4_0._skillParamCount
 end
 
-function slot0.execute(slot0)
-	if uv0.super.execute(slot0) and slot0:paramIsFull() and LengZhou6EffectUtils.instance:getHandleFunc(slot0._effect[1]) ~= nil then
-		if #slot0._skillParams ~= 0 then
-			slot3(slot0._skillParams[1], slot0._skillParams[2])
-		else
-			slot3(slot0._effect)
+function var_0_0.execute(arg_5_0)
+	if var_0_0.super.execute(arg_5_0) and arg_5_0:paramIsFull() then
+		local var_5_0 = arg_5_0._effect[1]
+		local var_5_1 = LengZhou6EffectUtils.instance:getHandleFunc(var_5_0)
+
+		if var_5_1 ~= nil then
+			if #arg_5_0._skillParams ~= 0 then
+				var_5_1(arg_5_0._skillParams[1], arg_5_0._skillParams[2])
+			else
+				var_5_1(arg_5_0._effect)
+			end
+
+			arg_5_0:clearParams()
+			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UpdatePlayerSkill)
+			LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.FinishReleaseSkill)
+			LengZhou6StatHelper.instance:addUseSkillInfo(arg_5_0:getConfigId())
 		end
-
-		slot0:clearParams()
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.UpdatePlayerSkill)
-		LengZhou6EliminateController.instance:dispatchEvent(LengZhou6Event.FinishReleaseSkill)
-		LengZhou6StatHelper.instance:addUseSkillInfo(slot0:getConfigId())
 	end
 end
 
-return slot0
+return var_0_0

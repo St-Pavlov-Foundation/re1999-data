@@ -1,46 +1,48 @@
-module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBaseAndBadgeRuleComp", package.seeall)
+﻿module("modules.logic.versionactivity2_5.challenge.view.dungeon.detail.Act183DungeonBaseAndBadgeRuleComp", package.seeall)
 
-slot0 = class("Act183DungeonBaseAndBadgeRuleComp", Act183DungeonBaseComp)
+local var_0_0 = class("Act183DungeonBaseAndBadgeRuleComp", Act183DungeonBaseComp)
 
-function slot0.init(slot0, slot1)
-	uv0.super.init(slot0, slot1)
+function var_0_0.init(arg_1_0, arg_1_1)
+	var_0_0.super.init(arg_1_0, arg_1_1)
 
-	slot0._gobadgerules = gohelper.findChild(slot0.go, "#go_badgerules")
-	slot0._gobaserules = gohelper.findChild(slot0.go, "#go_baserules")
-	slot0._badgeRuleComp = MonoHelper.addLuaComOnceToGo(slot0._gobadgerules, Act183DungeonBadgeRuleComp)
-	slot0._baseRuleComp = MonoHelper.addLuaComOnceToGo(slot0._gobaserules, Act183DungeonBaseRuleComp)
-	slot0._badgeRuleComp.container = slot0
-	slot0._baseRuleComp.container = slot0
+	arg_1_0._gobadgerules = gohelper.findChild(arg_1_0.go, "#go_badgerules")
+	arg_1_0._gobaserules = gohelper.findChild(arg_1_0.go, "#go_baserules")
+	arg_1_0._badgeRuleComp = MonoHelper.addLuaComOnceToGo(arg_1_0._gobadgerules, Act183DungeonBadgeRuleComp)
+	arg_1_0._baseRuleComp = MonoHelper.addLuaComOnceToGo(arg_1_0._gobaserules, Act183DungeonBaseRuleComp)
+	arg_1_0._badgeRuleComp.container = arg_1_0
+	arg_1_0._baseRuleComp.container = arg_1_0
 end
 
-function slot0.addEventListeners(slot0)
+function var_0_0.addEventListeners(arg_2_0)
+	return
 end
 
-function slot0.removeEventListeners(slot0)
+function var_0_0.removeEventListeners(arg_3_0)
+	return
 end
 
-function slot0.updateInfo(slot0, slot1)
-	uv0.super.updateInfo(slot0, slot1)
-	slot0._badgeRuleComp:updateInfo(slot1)
-	slot0._baseRuleComp:updateInfo(slot1)
+function var_0_0.updateInfo(arg_4_0, arg_4_1)
+	var_0_0.super.updateInfo(arg_4_0, arg_4_1)
+	arg_4_0._badgeRuleComp:updateInfo(arg_4_1)
+	arg_4_0._baseRuleComp:updateInfo(arg_4_1)
 end
 
-function slot0.refresh(slot0)
-	uv0.super.refresh(slot0)
-	slot0._badgeRuleComp:refresh()
-	slot0._baseRuleComp:refresh()
+function var_0_0.refresh(arg_5_0)
+	var_0_0.super.refresh(arg_5_0)
+	arg_5_0._badgeRuleComp:refresh()
+	arg_5_0._baseRuleComp:refresh()
 end
 
-function slot0.checkIsVisible(slot0)
-	return slot0._badgeRuleComp:checkIsVisible() or slot0._baseRuleComp:checkIsVisible()
+function var_0_0.checkIsVisible(arg_6_0)
+	return arg_6_0._badgeRuleComp:checkIsVisible() or arg_6_0._baseRuleComp:checkIsVisible()
 end
 
-function slot0.focus(slot0, slot1)
-	if slot1 then
-		return slot0._badgeRuleComp:focus()
+function var_0_0.focus(arg_7_0, arg_7_1)
+	if arg_7_1 then
+		return arg_7_0._badgeRuleComp:focus()
 	end
 
-	return slot0._baseRuleComp:focus()
+	return arg_7_0._baseRuleComp:focus()
 end
 
-return slot0
+return var_0_0

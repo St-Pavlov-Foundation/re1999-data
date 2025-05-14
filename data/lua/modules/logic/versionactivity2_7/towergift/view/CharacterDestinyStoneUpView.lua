@@ -1,239 +1,263 @@
-module("modules.logic.versionactivity2_7.towergift.view.CharacterDestinyStoneUpView", package.seeall)
+﻿module("modules.logic.versionactivity2_7.towergift.view.CharacterDestinyStoneUpView", package.seeall)
 
-slot0 = class("CharacterDestinyStoneUpView", BaseView)
+local var_0_0 = class("CharacterDestinyStoneUpView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._godrag = gohelper.findChild(slot0.viewGO, "#go_drag")
-	slot0._imageicon = gohelper.findChildImage(slot0.viewGO, "root/#image_icon")
-	slot0._txtstonename = gohelper.findChildText(slot0.viewGO, "root/#txt_stonename")
-	slot0._gostone = gohelper.findChild(slot0.viewGO, "root/#go_stone")
-	slot0._gooncefull = gohelper.findChild(slot0.viewGO, "root/btn/#go_oncefull")
-	slot0._btnoncefull = gohelper.findChildButtonWithAudio(slot0.viewGO, "root/btn/#go_oncefull/#btn_oncefull")
-	slot0._gohasoncefull = gohelper.findChild(slot0.viewGO, "root/btn/#go_hasoncefull")
-	slot0._gopoint = gohelper.findChild(slot0.viewGO, "root/point/#go_point")
-	slot0._gotopleft = gohelper.findChild(slot0.viewGO, "#go_topleft")
-	slot0._animator = slot0.viewGO:GetComponent(typeof(UnityEngine.Animator))
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._godrag = gohelper.findChild(arg_1_0.viewGO, "#go_drag")
+	arg_1_0._imageicon = gohelper.findChildImage(arg_1_0.viewGO, "root/#image_icon")
+	arg_1_0._txtstonename = gohelper.findChildText(arg_1_0.viewGO, "root/#txt_stonename")
+	arg_1_0._gostone = gohelper.findChild(arg_1_0.viewGO, "root/#go_stone")
+	arg_1_0._gooncefull = gohelper.findChild(arg_1_0.viewGO, "root/btn/#go_oncefull")
+	arg_1_0._btnoncefull = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/btn/#go_oncefull/#btn_oncefull")
+	arg_1_0._gohasoncefull = gohelper.findChild(arg_1_0.viewGO, "root/btn/#go_hasoncefull")
+	arg_1_0._gopoint = gohelper.findChild(arg_1_0.viewGO, "root/point/#go_point")
+	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "#go_topleft")
+	arg_1_0._animator = arg_1_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btnoncefull:AddClickListener(slot0._btnoncefullOnClick, slot0)
-	slot0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, slot0._onUnlockStoneReply, slot0)
-	slot0:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btnoncefull:AddClickListener(arg_2_0._btnoncefullOnClick, arg_2_0)
+	arg_2_0:addEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, arg_2_0._onUnlockStoneReply, arg_2_0)
+	arg_2_0:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, arg_2_0._onItemChanged, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btnoncefull:RemoveClickListener()
-	slot0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, slot0._onUnlockStoneReply, slot0)
-	slot0:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, slot0._onItemChanged, slot0)
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btnoncefull:RemoveClickListener()
+	arg_3_0:removeEventCb(CharacterDestinyController.instance, CharacterDestinyEvent.OnUnlockStoneReply, arg_3_0._onUnlockStoneReply, arg_3_0)
+	arg_3_0:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, arg_3_0._onItemChanged, arg_3_0)
 end
 
-function slot0._btnoncefullOnClick(slot0)
-	GameFacade.showMessageBox(MessageBoxIdDefine.CharacterDestinyStoneUpView, MsgBoxEnum.BoxType.Yes_No, slot0._useStoneUpTicket, nil, , slot0, nil, )
+function var_0_0._btnoncefullOnClick(arg_4_0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.CharacterDestinyStoneUpView, MsgBoxEnum.BoxType.Yes_No, arg_4_0._useStoneUpTicket, nil, nil, arg_4_0, nil, nil)
 end
 
-function slot0._useCallback(slot0)
+function var_0_0._useCallback(arg_5_0)
+	return
 end
 
-function slot0._useStoneUpTicket(slot0)
-	slot1 = {}
+function var_0_0._useStoneUpTicket(arg_6_0)
+	local var_6_0 = {}
+	local var_6_1 = {
+		materialId = TowerGiftEnum.StoneUpTicketId
+	}
 
-	table.insert(slot1, {
-		materialId = TowerGiftEnum.StoneUpTicketId,
-		quantity = 1
-	})
-	ItemRpc.instance:sendUseItemRequest(slot1, slot0._curStoneMo.stoneId)
+	var_6_1.quantity = 1
+
+	table.insert(var_6_0, var_6_1)
+	ItemRpc.instance:sendUseItemRequest(var_6_0, arg_6_0._curStoneMo.stoneId)
 end
 
-function slot0._onItemChanged(slot0)
-	gohelper.setActive(slot0._gooncefull, false)
-	gohelper.setActive(slot0._gohasoncefull, true)
-	slot0:_playAnim()
+function var_0_0._onItemChanged(arg_7_0)
+	gohelper.setActive(arg_7_0._gooncefull, false)
+	gohelper.setActive(arg_7_0._gohasoncefull, true)
+	arg_7_0:_playAnim()
 	DestinyStoneGiftPickChoiceController.instance:dispatchEvent(DestinyStoneGiftPickChoiceEvent.hadStoneUp)
 end
 
-function slot0._playAnim(slot0)
-	if slot0._isSlotMaxLevel then
-		slot0._animator:Play("allup", 0, 0)
-		slot0:_refreshStoneItem()
-	elseif not slot0._curStoneMo.isUnlock then
-		slot0._animator:Play("allup", 0, 0)
+function var_0_0._playAnim(arg_8_0)
+	if arg_8_0._isSlotMaxLevel then
+		arg_8_0._animator:Play("allup", 0, 0)
+		arg_8_0:_refreshStoneItem()
+	elseif not arg_8_0._curStoneMo.isUnlock then
+		arg_8_0._animator:Play("allup", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum.CharacterDestinyStone.play_ui_fate_slots_unlock)
 
-		function slot0._cb()
-			TaskDispatcher.cancelTask(uv0._cb, uv0)
+		function arg_8_0._cb()
+			TaskDispatcher.cancelTask(arg_8_0._cb, arg_8_0)
 			AudioMgr.instance:trigger(AudioEnum.VersionActivity2_2BPSP.play_ui_checkpoint_doom_disappear)
 		end
 
-		TaskDispatcher.runDelay(slot0._cb, slot0, 2.6)
-		slot0:_refreshStoneItem()
+		TaskDispatcher.runDelay(arg_8_0._cb, arg_8_0, 2.6)
+		arg_8_0:_refreshStoneItem()
 	else
-		slot0._animator:Play("allup", 0, 0)
-		TaskDispatcher.runDelay(slot0._onPlayAnimBack, slot0, 2.6)
+		arg_8_0._animator:Play("allup", 0, 0)
+		TaskDispatcher.runDelay(arg_8_0._onPlayAnimBack, arg_8_0, 2.6)
 	end
 end
 
-function slot0._onPlayAnimBack(slot0)
-	TaskDispatcher.cancelTask(slot0._onPlayAnimBack, slot0)
+function var_0_0._onPlayAnimBack(arg_10_0)
+	TaskDispatcher.cancelTask(arg_10_0._onPlayAnimBack, arg_10_0)
 
-	if slot0._effectItems then
-		for slot4, slot5 in ipairs(slot0._effectItems) do
-			gohelper.setActive(slot5.gounlock, slot0._heroMO.destinyStoneMo:isCanPlayAttrUnlockAnim(slot0._curStoneMo.stoneId, slot4))
+	if arg_10_0._effectItems then
+		for iter_10_0, iter_10_1 in ipairs(arg_10_0._effectItems) do
+			local var_10_0 = arg_10_0._heroMO.destinyStoneMo:isCanPlayAttrUnlockAnim(arg_10_0._curStoneMo.stoneId, iter_10_0)
+
+			gohelper.setActive(iter_10_1.gounlock, var_10_0)
 		end
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.VersionActivity2_2BPSP.play_ui_checkpoint_doom_disappear)
-	slot0:_refreshStoneItem()
+	arg_10_0:_refreshStoneItem()
 end
 
-function slot0._onUnlockStoneReply(slot0, slot1, slot2)
-	if slot0._curStoneMo then
-		slot0._curStoneMo:refresUnlock(true)
+function var_0_0._onUnlockStoneReply(arg_11_0, arg_11_1, arg_11_2)
+	if arg_11_0._curStoneMo then
+		arg_11_0._curStoneMo:refresUnlock(true)
 	end
 
-	slot0:_refreshStoneItem()
-	gohelper.setActive(slot0._root, true)
-	gohelper.setActive(slot0._gounlockstone, false)
+	arg_11_0:_refreshStoneItem()
+	gohelper.setActive(arg_11_0._root, true)
+	gohelper.setActive(arg_11_0._gounlockstone, false)
 end
 
-function slot0._editableInitView(slot0)
-	slot0._simagestone = gohelper.findChildSingleImage(slot0.viewGO, "root/#go_stone/#simage_stone")
-	slot0._simagepre = gohelper.findChildSingleImage(slot0.viewGO, "root/#go_prestone/#btn_prestone")
-	slot0._simagenext = gohelper.findChildSingleImage(slot0.viewGO, "root/#go_nextstone/#btn_nextstone")
-	slot0._gounlockstone = gohelper.findChild(slot0.viewGO, "unlockstone")
-	slot0._root = gohelper.findChild(slot0.viewGO, "root")
-	slot0._goeffect = gohelper.findChild(slot0.viewGO, "root/effectItem")
-	slot0._imgstone = gohelper.findChildImage(slot0.viewGO, "root/#go_stone/#simage_stone")
-	slot0._goEquip = gohelper.findChild(slot0.viewGO, "root/#go_stone/#equip")
-	slot0._animRoot = slot0._root:GetComponent(typeof(UnityEngine.Animator))
-	slot0._animPlayerRoot = ZProj.ProjAnimatorPlayer.Get(slot0._root)
-	slot0._animPlayerUnlockStone = ZProj.ProjAnimatorPlayer.Get(slot0._gounlockstone)
-	slot0._drag = SLFramework.UGUI.UIDragListener.Get(slot0._godrag.gameObject)
+function var_0_0._editableInitView(arg_12_0)
+	arg_12_0._simagestone = gohelper.findChildSingleImage(arg_12_0.viewGO, "root/#go_stone/#simage_stone")
+	arg_12_0._simagepre = gohelper.findChildSingleImage(arg_12_0.viewGO, "root/#go_prestone/#btn_prestone")
+	arg_12_0._simagenext = gohelper.findChildSingleImage(arg_12_0.viewGO, "root/#go_nextstone/#btn_nextstone")
+	arg_12_0._gounlockstone = gohelper.findChild(arg_12_0.viewGO, "unlockstone")
+	arg_12_0._root = gohelper.findChild(arg_12_0.viewGO, "root")
+	arg_12_0._goeffect = gohelper.findChild(arg_12_0.viewGO, "root/effectItem")
+	arg_12_0._imgstone = gohelper.findChildImage(arg_12_0.viewGO, "root/#go_stone/#simage_stone")
+	arg_12_0._goEquip = gohelper.findChild(arg_12_0.viewGO, "root/#go_stone/#equip")
+	arg_12_0._animRoot = arg_12_0._root:GetComponent(typeof(UnityEngine.Animator))
+	arg_12_0._animPlayerRoot = ZProj.ProjAnimatorPlayer.Get(arg_12_0._root)
+	arg_12_0._animPlayerUnlockStone = ZProj.ProjAnimatorPlayer.Get(arg_12_0._gounlockstone)
+	arg_12_0._drag = SLFramework.UGUI.UIDragListener.Get(arg_12_0._godrag.gameObject)
 end
 
-function slot0.onUpdateParam(slot0)
+function var_0_0.onUpdateParam(arg_13_0)
+	return
 end
 
-function slot0._addEvents(slot0)
+function var_0_0._addEvents(arg_14_0)
+	return
 end
 
-function slot0._removeEvents(slot0)
+function var_0_0._removeEvents(arg_15_0)
+	return
 end
 
-function slot0.onOpen(slot0)
-	slot0:_addEvents()
+function var_0_0.onOpen(arg_16_0)
+	arg_16_0:_addEvents()
 
-	slot0._effectItems = slot0:getUserDataTb_()
+	arg_16_0._effectItems = arg_16_0:getUserDataTb_()
 
-	for slot4 = 1, CharacterDestinyEnum.EffectItemCount do
-		slot5 = gohelper.findChild(slot0._goeffect, slot4)
-		slot6 = slot0:getUserDataTb_()
-		slot6.go = slot5
-		slot6.lockicon = gohelper.findChildImage(slot5, "#txt_dec/#go_lockicon")
-		slot6.unlockicon = gohelper.findChildImage(slot5, "#txt_dec/#go_unlockicon")
-		slot6.txt = gohelper.findChildText(slot5, "#txt_dec")
-		slot6.gounlock = gohelper.findChild(slot5, "#unlock")
-		slot6.canvasgroup = slot5:GetComponent(typeof(UnityEngine.CanvasGroup))
-		slot0._effectItems[slot4] = slot6
+	for iter_16_0 = 1, CharacterDestinyEnum.EffectItemCount do
+		local var_16_0 = gohelper.findChild(arg_16_0._goeffect, iter_16_0)
+		local var_16_1 = arg_16_0:getUserDataTb_()
+
+		var_16_1.go = var_16_0
+		var_16_1.lockicon = gohelper.findChildImage(var_16_0, "#txt_dec/#go_lockicon")
+		var_16_1.unlockicon = gohelper.findChildImage(var_16_0, "#txt_dec/#go_unlockicon")
+		var_16_1.txt = gohelper.findChildText(var_16_0, "#txt_dec")
+		var_16_1.gounlock = gohelper.findChild(var_16_0, "#unlock")
+		var_16_1.canvasgroup = var_16_0:GetComponent(typeof(UnityEngine.CanvasGroup))
+		arg_16_0._effectItems[iter_16_0] = var_16_1
 	end
 
-	slot0._heroMO = slot0.viewParam.heroMo
-	slot0._curStoneMo = slot0.viewParam.stoneMo
-	slot0._destinyStoneMo = slot0._heroMO.destinyStoneMo
-	slot0._isSlotMaxLevel = slot0._destinyStoneMo:isSlotMaxLevel()
+	arg_16_0._heroMO = arg_16_0.viewParam.heroMo
+	arg_16_0._curStoneMo = arg_16_0.viewParam.stoneMo
+	arg_16_0._destinyStoneMo = arg_16_0._heroMO.destinyStoneMo
+	arg_16_0._isSlotMaxLevel = arg_16_0._destinyStoneMo:isSlotMaxLevel()
 
-	if slot0._curStoneMo then
-		if not slot0._unlockStoneView then
-			slot0._unlockStoneView = MonoHelper.addNoUpdateLuaComOnceToGo(slot0._gounlockstone, CharacterDestinyUnlockStoneComp)
+	if arg_16_0._curStoneMo then
+		if not arg_16_0._unlockStoneView then
+			arg_16_0._unlockStoneView = MonoHelper.addNoUpdateLuaComOnceToGo(arg_16_0._gounlockstone, CharacterDestinyUnlockStoneComp)
 
-			slot0._unlockStoneView:setStoneView(slot0)
+			arg_16_0._unlockStoneView:setStoneView(arg_16_0)
 		end
 
-		slot0._unlockStoneView:onUpdateMo(slot0._heroMO.heroId, slot0._curStoneMo.stoneId)
-		slot0:_refreshStoneItem()
+		arg_16_0._unlockStoneView:onUpdateMo(arg_16_0._heroMO.heroId, arg_16_0._curStoneMo.stoneId)
+		arg_16_0:_refreshStoneItem()
 	end
 
-	gohelper.setActive(slot0._root, true)
+	gohelper.setActive(arg_16_0._root, true)
 end
 
-function slot0._refreshStoneItem(slot0)
-	if slot0._curStoneMo then
-		slot0._levelCos = slot0._curStoneMo:getFacetCo()
-		slot1 = slot0._curStoneMo.conusmeCo
+function var_0_0._refreshStoneItem(arg_17_0)
+	if arg_17_0._curStoneMo then
+		arg_17_0._levelCos = arg_17_0._curStoneMo:getFacetCo()
 
-		if slot0._levelCos then
-			for slot5, slot6 in ipairs(slot0._effectItems) do
-				slot6.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(slot6.txt.gameObject, SkillDescComp)
+		local var_17_0 = arg_17_0._curStoneMo.conusmeCo
 
-				slot6.skillDesc:updateInfo(slot6.txt, slot0._levelCos[slot5].desc, slot0._heroMO.heroId)
-				slot6.skillDesc:setTipParam(0, Vector2(300, 100))
+		if arg_17_0._levelCos then
+			for iter_17_0, iter_17_1 in ipairs(arg_17_0._effectItems) do
+				local var_17_1 = arg_17_0._levelCos[iter_17_0]
 
-				slot8 = slot0._curStoneMo.isUnlock and slot5 <= slot0._heroMO.destinyStoneMo.rank
-				slot9 = slot6.txt.color
-				slot9.a = slot8 and 1 or 0.43
-				slot6.txt.color = slot9
+				iter_17_1.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(iter_17_1.txt.gameObject, SkillDescComp)
 
-				if slot8 then
-					slot10 = slot6.unlockicon.color
-					slot10.a = slot8 and 1 or 0.43
-					slot6.unlockicon.color = slot10
+				iter_17_1.skillDesc:updateInfo(iter_17_1.txt, var_17_1.desc, arg_17_0._heroMO.heroId)
+				iter_17_1.skillDesc:setTipParam(0, Vector2(300, 100))
+
+				local var_17_2 = arg_17_0._curStoneMo.isUnlock and iter_17_0 <= arg_17_0._heroMO.destinyStoneMo.rank
+				local var_17_3 = iter_17_1.txt.color
+
+				var_17_3.a = var_17_2 and 1 or 0.43
+				iter_17_1.txt.color = var_17_3
+
+				if var_17_2 then
+					local var_17_4 = iter_17_1.unlockicon.color
+
+					var_17_4.a = var_17_2 and 1 or 0.43
+					iter_17_1.unlockicon.color = var_17_4
 				else
-					slot10 = slot6.lockicon.color
-					slot10.a = slot8 and 1 or 0.43
-					slot6.lockicon.color = slot10
+					local var_17_5 = iter_17_1.lockicon.color
+
+					var_17_5.a = var_17_2 and 1 or 0.43
+					iter_17_1.lockicon.color = var_17_5
 				end
 
-				gohelper.setActive(slot6.lockicon.gameObject, not slot8)
-				gohelper.setActive(slot6.unlockicon.gameObject, slot8)
+				gohelper.setActive(iter_17_1.lockicon.gameObject, not var_17_2)
+				gohelper.setActive(iter_17_1.unlockicon.gameObject, var_17_2)
 			end
 		end
 
-		gohelper.setActive(slot0._goEquip, slot0._curStoneMo.isUse)
+		gohelper.setActive(arg_17_0._goEquip, arg_17_0._curStoneMo.isUse)
 
-		if slot1 then
-			slot0._txtstonename.text, slot3 = slot0._curStoneMo:getNameAndIcon()
+		if var_17_0 then
+			local var_17_6, var_17_7 = arg_17_0._curStoneMo:getNameAndIcon()
 
-			slot0._simagestone:LoadImage(slot3)
+			arg_17_0._txtstonename.text = var_17_6
 
-			slot4 = CharacterDestinyEnum.SlotTend[slot1.tend]
+			arg_17_0._simagestone:LoadImage(var_17_7)
 
-			UISpriteSetMgr.instance:setUiCharacterSprite(slot0._imageicon, slot4.TitleIconName)
+			local var_17_8 = CharacterDestinyEnum.SlotTend[var_17_0.tend]
+			local var_17_9 = var_17_8.TitleIconName
 
-			slot0._txtstonename.color = GameUtil.parseColor(slot4.TitleColor)
+			UISpriteSetMgr.instance:setUiCharacterSprite(arg_17_0._imageicon, var_17_9)
+
+			arg_17_0._txtstonename.color = GameUtil.parseColor(var_17_8.TitleColor)
 		end
 
-		slot0._imgstone.color = slot0._curStoneMo.isUnlock and Color.white or Color(0.5, 0.5, 0.5, 1)
+		local var_17_10 = arg_17_0._curStoneMo.isUnlock and Color.white or Color(0.5, 0.5, 0.5, 1)
+
+		arg_17_0._imgstone.color = var_17_10
 	end
 
-	if not slot0._pointItems then
-		slot0._pointItems = slot0:getUserDataTb_()
+	if not arg_17_0._pointItems then
+		arg_17_0._pointItems = arg_17_0:getUserDataTb_()
 	end
 end
 
-function slot0._getPointItem(slot0, slot1)
-	if not slot0._pointItems[slot1] then
-		slot2 = slot0:getUserDataTb_()
-		slot3 = gohelper.cloneInPlace(slot0._gopoint, slot1)
-		slot2.go = slot3
-		slot2.normal = gohelper.findChild(slot3, "normal")
-		slot2.select = gohelper.findChild(slot3, "select")
-		slot0._pointItems[slot1] = slot2
+function var_0_0._getPointItem(arg_18_0, arg_18_1)
+	local var_18_0 = arg_18_0._pointItems[arg_18_1]
+
+	if not var_18_0 then
+		var_18_0 = arg_18_0:getUserDataTb_()
+
+		local var_18_1 = gohelper.cloneInPlace(arg_18_0._gopoint, arg_18_1)
+
+		var_18_0.go = var_18_1
+		var_18_0.normal = gohelper.findChild(var_18_1, "normal")
+		var_18_0.select = gohelper.findChild(var_18_1, "select")
+		arg_18_0._pointItems[arg_18_1] = var_18_0
 	end
 
-	return slot2
+	return var_18_0
 end
 
-function slot0.onClose(slot0)
-	TaskDispatcher.cancelTask(slot0._cb, slot0)
-	TaskDispatcher.cancelTask(slot0._onPlayAnimBack, slot0)
+function var_0_0.onClose(arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._cb, arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._onPlayAnimBack, arg_19_0)
 end
 
-function slot0.onDestroyView(slot0)
-	slot0:_removeEvents()
-	slot0._simagestone:UnLoadImage()
+function var_0_0.onDestroyView(arg_20_0)
+	arg_20_0:_removeEvents()
+	arg_20_0._simagestone:UnLoadImage()
 end
 
-return slot0
+return var_0_0

@@ -1,84 +1,84 @@
-module("modules.logic.achievement.model.mo.AchievementTileMO", package.seeall)
+﻿module("modules.logic.achievement.model.mo.AchievementTileMO", package.seeall)
 
-slot0 = pureTable("AchievementTileMO")
+local var_0_0 = pureTable("AchievementTileMO")
 
-function slot0.init(slot0, slot1, slot2, slot3)
-	slot0.achievementCfgs = slot1
-	slot0.groupId = slot2
-	slot0.count = slot1 and #slot1 or 0
-	slot0.isGroupTop = slot3
-	slot0.isFold = false
-	slot0.firstAchievementCo = slot1 and slot1[1]
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	arg_1_0.achievementCfgs = arg_1_1
+	arg_1_0.groupId = arg_1_2
+	arg_1_0.count = arg_1_1 and #arg_1_1 or 0
+	arg_1_0.isGroupTop = arg_1_3
+	arg_1_0.isFold = false
+	arg_1_0.firstAchievementCo = arg_1_1 and arg_1_1[1]
 end
 
-function slot0.getLineHeightFunction(slot0, slot1, slot2)
-	if slot2 then
-		if slot0.isGroupTop then
+function var_0_0.getLineHeightFunction(arg_2_0, arg_2_1, arg_2_2)
+	if arg_2_2 then
+		if arg_2_0.isGroupTop then
 			return AchievementEnum.SpGroupTitleBarHeight
 		else
 			return 0
 		end
-	elseif slot0.groupId == 0 then
+	elseif arg_2_0.groupId == 0 then
 		return AchievementEnum.MainTileLineItemHeight
 	else
-		if AchievementUtils.isGamePlayGroup(slot0.firstAchievementCo.id) then
-			return (slot0.isGroupTop and AchievementEnum.SpGroupTitleBarHeight or 0) + AchievementEnum.MainTileLineItemHeight
+		if AchievementUtils.isGamePlayGroup(arg_2_0.firstAchievementCo.id) then
+			return (arg_2_0.isGroupTop and AchievementEnum.SpGroupTitleBarHeight or 0) + AchievementEnum.MainTileLineItemHeight
 		end
 
 		return AchievementEnum.MainTileGroupItemHeight
 	end
 end
 
-function slot0.getAchievementType(slot0)
-	return slot0.groupId and slot0.groupId ~= 0 and AchievementEnum.AchievementType.Group or AchievementEnum.AchievementType.Single
+function var_0_0.getAchievementType(arg_3_0)
+	return arg_3_0.groupId and arg_3_0.groupId ~= 0 and AchievementEnum.AchievementType.Group or AchievementEnum.AchievementType.Single
 end
 
-function slot0.isAchievementMatch(slot0, slot1, slot2)
-	slot3 = false
+function var_0_0.isAchievementMatch(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0 = false
 
-	if slot1 == AchievementEnum.AchievementType.Single then
-		if slot0.achievementCfgs then
-			for slot7, slot8 in ipairs(slot0.achievementCfgs) do
-				if slot8.id == slot2 then
-					slot3 = true
+	if arg_4_1 == AchievementEnum.AchievementType.Single then
+		if arg_4_0.achievementCfgs then
+			for iter_4_0, iter_4_1 in ipairs(arg_4_0.achievementCfgs) do
+				if iter_4_1.id == arg_4_2 then
+					var_4_0 = true
 
 					break
 				end
 			end
 		end
 	else
-		slot3 = slot2 == slot0.groupId
+		var_4_0 = arg_4_2 == arg_4_0.groupId
 	end
 
-	return slot3
+	return var_4_0
 end
 
-function slot0.overrideLineHeight(slot0, slot1)
-	slot0._cellHeight = slot1
+function var_0_0.overrideLineHeight(arg_5_0, arg_5_1)
+	arg_5_0._cellHeight = arg_5_1
 end
 
-function slot0.clearOverrideLineHeight(slot0)
-	slot0._cellHeight = nil
+function var_0_0.clearOverrideLineHeight(arg_6_0)
+	arg_6_0._cellHeight = nil
 end
 
-function slot0.getLineHeight(slot0, slot1, slot2)
-	if slot0._cellHeight then
-		return slot0._cellHeight
+function var_0_0.getLineHeight(arg_7_0, arg_7_1, arg_7_2)
+	if arg_7_0._cellHeight then
+		return arg_7_0._cellHeight
 	end
 
-	return slot0:getLineHeightFunction(slot1, slot2)
+	return (arg_7_0:getLineHeightFunction(arg_7_1, arg_7_2))
 end
 
-function slot0.setIsFold(slot0, slot1)
-	slot0.isFold = slot1
+function var_0_0.setIsFold(arg_8_0, arg_8_1)
+	arg_8_0.isFold = arg_8_1
 end
 
-function slot0.getIsFold(slot0)
-	return slot0.isFold
+function var_0_0.getIsFold(arg_9_0)
+	return arg_9_0.isFold
 end
 
-function slot0.getGroupId(slot0)
-	return slot0.groupId
+function var_0_0.getGroupId(arg_10_0)
+	return arg_10_0.groupId
 end
 
-return slot0
+return var_0_0

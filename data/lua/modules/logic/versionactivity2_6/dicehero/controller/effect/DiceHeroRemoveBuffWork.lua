@@ -1,15 +1,18 @@
-module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroRemoveBuffWork", package.seeall)
+﻿module("modules.logic.versionactivity2_6.dicehero.controller.effect.DiceHeroRemoveBuffWork", package.seeall)
 
-slot0 = class("DiceHeroRemoveBuffWork", DiceHeroBaseEffectWork)
+local var_0_0 = class("DiceHeroRemoveBuffWork", DiceHeroBaseEffectWork)
 
-function slot0.onStart(slot0, slot1)
-	if not DiceHeroHelper.instance:getEntity(slot0._effectMo.fromId) then
-		logError("找不到实体" .. slot2)
+function var_0_0.onStart(arg_1_0, arg_1_1)
+	local var_1_0 = arg_1_0._effectMo.fromId
+	local var_1_1 = DiceHeroHelper.instance:getEntity(var_1_0)
+
+	if not var_1_1 then
+		logError("找不到实体" .. var_1_0)
 	else
-		slot3:removeBuff(slot0._effectMo.targetId)
+		var_1_1:removeBuff(arg_1_0._effectMo.targetId)
 	end
 
-	slot0:onDone(true)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

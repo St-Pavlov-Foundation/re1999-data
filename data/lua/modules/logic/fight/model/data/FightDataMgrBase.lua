@@ -1,20 +1,25 @@
-module("modules.logic.fight.model.data.FightDataMgrBase", package.seeall)
+﻿module("modules.logic.fight.model.data.FightDataMgrBase", package.seeall)
 
-slot0 = FightDataClass("FightDataMgrBase")
+local var_0_0 = FightDataClass("FightDataMgrBase")
 
-function slot0.updateData(slot0, slot1)
+function var_0_0.updateData(arg_1_0, arg_1_1)
+	return
 end
 
-function slot0.onCancelOperation(slot0)
+function var_0_0.onCancelOperation(arg_2_0)
+	return
 end
 
-function slot0.onEnterStage(slot0, slot1)
+function var_0_0.onEnterStage(arg_3_0, arg_3_1)
+	return
 end
 
-function slot0.onExitStage(slot0, slot1)
+function var_0_0.onExitStage(arg_4_0, arg_4_1)
+	return
 end
 
-function slot0.onStageChanged(slot0, slot1, slot2)
+function var_0_0.onStageChanged(arg_5_0, arg_5_1, arg_5_2)
+	return
 end
 
-return slot0
+return var_0_0

@@ -1,19 +1,19 @@
-module("modules.logic.fight.model.data.FightEnhanceInfoBoxData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightEnhanceInfoBoxData", package.seeall)
 
-slot0 = FightDataClass("FightEnhanceInfoBoxData")
+local var_0_0 = FightDataClass("FightEnhanceInfoBoxData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.canUpgradeIds = {}
-	slot0.upgradedOptions = {}
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.canUpgradeIds = {}
+	arg_1_0.upgradedOptions = {}
 
-	for slot5, slot6 in ipairs(slot1.canUpgradeIds) do
-		table.insert(slot0.canUpgradeIds, slot6)
+	for iter_1_0, iter_1_1 in ipairs(arg_1_1.canUpgradeIds) do
+		table.insert(arg_1_0.canUpgradeIds, iter_1_1)
 	end
 
-	for slot5, slot6 in ipairs(slot1.upgradedOptions) do
-		table.insert(slot0.upgradedOptions, slot6)
+	for iter_1_2, iter_1_3 in ipairs(arg_1_1.upgradedOptions) do
+		table.insert(arg_1_0.upgradedOptions, iter_1_3)
 	end
 end
 
-return slot0
+return var_0_0

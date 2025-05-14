@@ -1,10 +1,10 @@
-module("modules.logic.fight.model.data.FightHeroSpAttributeInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightHeroSpAttributeInfoData", package.seeall)
 
-slot0 = FightDataClass("FightHeroSpAttributeInfoData")
+local var_0_0 = FightDataClass("FightHeroSpAttributeInfoData")
 
-function slot0.onConstructor(slot0, slot1)
-	slot0.uid = slot1.uid
-	slot0.attribute = FightHeroSpAttributeData.New(slot1.attribute)
+function var_0_0.onConstructor(arg_1_0, arg_1_1)
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.attribute = FightHeroSpAttributeData.New(arg_1_1.attribute)
 end
 
-return slot0
+return var_0_0

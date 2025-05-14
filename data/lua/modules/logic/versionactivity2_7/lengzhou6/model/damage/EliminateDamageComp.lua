@@ -1,106 +1,109 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.damage.EliminateDamageComp", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.damage.EliminateDamageComp", package.seeall)
 
-slot0 = class("EliminateDamageComp", HpCompBase)
+local var_0_0 = class("EliminateDamageComp", HpCompBase)
 
-function slot0.ctor(slot0)
-	slot0._baseDamage = 0
-	slot0._exDamage = 0
-	slot0._damageRate = 0
-	slot0._normalEliminateDamageRate = 0
-	slot0._FourEliminateDamageRate = 0
-	slot0._FiveEliminateDamageRate = 0
-	slot0._CrossEliminateDamageRate = 0
-	slot0._eliminateTypeExDamage = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._baseDamage = 0
+	arg_1_0._exDamage = 0
+	arg_1_0._damageRate = 0
+	arg_1_0._normalEliminateDamageRate = 0
+	arg_1_0._FourEliminateDamageRate = 0
+	arg_1_0._FiveEliminateDamageRate = 0
+	arg_1_0._CrossEliminateDamageRate = 0
+	arg_1_0._eliminateTypeExDamage = {}
 end
 
-function slot0.reset(slot0)
-	slot0._baseDamage = 0
-	slot0._exDamage = 0
-	slot0._damageRate = 0
-	slot0._normalEliminateDamageRate = 0
-	slot0._FourEliminateDamageRate = 0
-	slot0._FiveEliminateDamageRate = 0
-	slot0._CrossEliminateDamageRate = 0
-	slot0._eliminateTypeExDamage = {}
+function var_0_0.reset(arg_2_0)
+	arg_2_0._baseDamage = 0
+	arg_2_0._exDamage = 0
+	arg_2_0._damageRate = 0
+	arg_2_0._normalEliminateDamageRate = 0
+	arg_2_0._FourEliminateDamageRate = 0
+	arg_2_0._FiveEliminateDamageRate = 0
+	arg_2_0._CrossEliminateDamageRate = 0
+	arg_2_0._eliminateTypeExDamage = {}
 end
 
-function slot0.setSpEliminateRate(slot0, slot1, slot2, slot3)
-	slot0._FourEliminateDamageRate = slot1 / 1000
-	slot0._CrossEliminateDamageRate = slot2 / 1000
-	slot0._FiveEliminateDamageRate = slot3 / 1000
+function var_0_0.setSpEliminateRate(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
+	arg_3_0._FourEliminateDamageRate = arg_3_1 / 1000
+	arg_3_0._CrossEliminateDamageRate = arg_3_2 / 1000
+	arg_3_0._FiveEliminateDamageRate = arg_3_3 / 1000
 end
 
-function slot0.setEliminateTypeExDamage(slot0, slot1, slot2)
-	slot0._eliminateTypeExDamage[slot1] = slot2
+function var_0_0.setEliminateTypeExDamage(arg_4_0, arg_4_1, arg_4_2)
+	arg_4_0._eliminateTypeExDamage[arg_4_1] = arg_4_2
 end
 
-function slot0.setExDamage(slot0, slot1)
-	slot0._exDamage = slot1
+function var_0_0.setExDamage(arg_5_0, arg_5_1)
+	arg_5_0._exDamage = arg_5_1
 end
 
-function slot0.setDamageRate(slot0, slot1)
-	slot0._damageRate = slot1 / 1000
+function var_0_0.setDamageRate(arg_6_0, arg_6_1)
+	arg_6_0._damageRate = arg_6_1 / 1000
 end
 
-slot1 = "\n"
+local var_0_1 = "\n"
 
-function slot0.damage(slot0, slot1)
-	slot2 = 0
+function var_0_0.damage(arg_7_0, arg_7_1)
+	local var_7_0 = 0
+	local var_7_1 = arg_7_1:getEliminateTypeMap()
 
-	for slot7, slot8 in pairs(slot1:getEliminateTypeMap()) do
-		slot9 = 0
+	for iter_7_0, iter_7_1 in pairs(var_7_1) do
+		local var_7_2 = 0
 
-		for slot13, slot14 in pairs(slot8) do
-			if not string.nilorempty(slot7) and slot7 ~= EliminateEnum_2_7.ChessType.stone then
-				slot17 = slot14.spEliminateCount
-				slot18, slot19 = LengZhou6Config.instance:getDamageValue(slot7, slot14.eliminateType)
-				slot20 = slot0._exDamage
+		for iter_7_2, iter_7_3 in pairs(iter_7_1) do
+			if not string.nilorempty(iter_7_0) and iter_7_0 ~= EliminateEnum_2_7.ChessType.stone then
+				local var_7_3 = iter_7_3.eliminateType
+				local var_7_4 = iter_7_3.eliminateCount
+				local var_7_5 = iter_7_3.spEliminateCount
+				local var_7_6, var_7_7 = LengZhou6Config.instance:getDamageValue(iter_7_0, var_7_3)
+				local var_7_8 = arg_7_0._exDamage
 
-				if slot19 ~= nil and (slot15 == EliminateEnum_2_7.eliminateType.cross or slot15 == EliminateEnum_2_7.eliminateType.five) then
-					slot19 = (slot14.eliminateCount - 5) * slot19
+				if var_7_7 ~= nil and (var_7_3 == EliminateEnum_2_7.eliminateType.cross or var_7_3 == EliminateEnum_2_7.eliminateType.five) then
+					var_7_7 = (var_7_4 - 5) * var_7_7
 				end
 
-				if slot15 == EliminateEnum_2_7.eliminateType.four then
-					slot9 = slot0._FourEliminateDamageRate
+				if var_7_3 == EliminateEnum_2_7.eliminateType.four then
+					var_7_2 = arg_7_0._FourEliminateDamageRate
 				end
 
-				if slot15 == EliminateEnum_2_7.eliminateType.five then
-					slot9 = slot0._FiveEliminateDamageRate
+				if var_7_3 == EliminateEnum_2_7.eliminateType.five then
+					var_7_2 = arg_7_0._FiveEliminateDamageRate
 				end
 
-				if slot15 == EliminateEnum_2_7.eliminateType.cross then
-					slot9 = slot0._CrossEliminateDamageRate
+				if var_7_3 == EliminateEnum_2_7.eliminateType.cross then
+					var_7_2 = arg_7_0._CrossEliminateDamageRate
 				end
 
-				if slot15 == EliminateEnum_2_7.eliminateType.base then
-					slot18 = slot18 * slot16
-					slot20 = 0
+				if var_7_3 == EliminateEnum_2_7.eliminateType.base then
+					var_7_6 = var_7_6 * var_7_4
+					var_7_8 = 0
 				end
 
-				if slot17 ~= 0 and slot0._eliminateTypeExDamage[slot7] ~= nil then
-					slot19 = slot19 + slot0._eliminateTypeExDamage[slot7] * slot17
+				if var_7_5 ~= 0 and arg_7_0._eliminateTypeExDamage[iter_7_0] ~= nil then
+					var_7_7 = var_7_7 + arg_7_0._eliminateTypeExDamage[iter_7_0] * var_7_5
 				end
 
-				if slot18 ~= 0 then
+				if var_7_6 ~= 0 then
 					if isDebugBuild then
-						uv0 = uv0 .. "eliminateId = " .. slot7 .. " eliminateType = " .. slot15 .. " eliminateCount = " .. slot16 .. " spEliminateCount = " .. slot17 .. " baseDamage = " .. slot18 .. " baseExDamage = " .. slot19 .. " exDamage = " .. slot20 .. " damageRate = " .. slot9 .. "\n"
+						var_0_1 = var_0_1 .. "eliminateId = " .. iter_7_0 .. " eliminateType = " .. var_7_3 .. " eliminateCount = " .. var_7_4 .. " spEliminateCount = " .. var_7_5 .. " baseDamage = " .. var_7_6 .. " baseExDamage = " .. var_7_7 .. " exDamage = " .. var_7_8 .. " damageRate = " .. var_7_2 .. "\n"
 					end
 
-					slot2 = slot2 + (slot18 + slot19 + slot20) * (1 + slot9)
+					var_7_0 = var_7_0 + (var_7_6 + var_7_7 + var_7_8) * (1 + var_7_2)
 				end
 			end
 		end
 	end
 
 	if isDebugBuild then
-		logNormal("消除伤害详情 = " .. uv0)
+		logNormal("消除伤害详情 = " .. var_0_1)
 
-		uv0 = "\n"
+		var_0_1 = "\n"
 
-		logNormal("消除单次伤害 = " .. slot2)
+		logNormal("消除单次伤害 = " .. var_7_0)
 	end
 
-	return slot2
+	return var_7_0
 end
 
-return slot0
+return var_0_0

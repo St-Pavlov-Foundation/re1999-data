@@ -1,22 +1,22 @@
-module("modules.logic.fight.system.work.asfd.FightWorkASFDPullOut", package.seeall)
+﻿module("modules.logic.fight.system.work.asfd.FightWorkASFDPullOut", package.seeall)
 
-slot0 = class("FightWorkASFDPullOut", BaseWork)
+local var_0_0 = class("FightWorkASFDPullOut", BaseWork)
 
-function slot0.ctor(slot0, slot1)
-	slot0.fightStepData = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.fightStepData = arg_1_1
 end
 
-function slot0.onStart(slot0)
-	FightController.instance:dispatchEvent(FightEvent.ASFD_PullOut, slot0.fightStepData)
-	TaskDispatcher.runDelay(slot0._delayDone, slot0, 0.3)
+function var_0_0.onStart(arg_2_0)
+	FightController.instance:dispatchEvent(FightEvent.ASFD_PullOut, arg_2_0.fightStepData)
+	TaskDispatcher.runDelay(arg_2_0._delayDone, arg_2_0, 0.3)
 end
 
-function slot0.clearWork(slot0)
-	TaskDispatcher.cancelTask(slot0._delayDone, slot0)
+function var_0_0.clearWork(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0._delayDone, arg_3_0)
 end
 
-function slot0._delayDone(slot0)
-	return slot0:onDone(true)
+function var_0_0._delayDone(arg_4_0)
+	return arg_4_0:onDone(true)
 end
 
-return slot0
+return var_0_0

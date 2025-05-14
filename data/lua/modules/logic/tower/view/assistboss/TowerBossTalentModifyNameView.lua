@@ -1,81 +1,87 @@
-module("modules.logic.tower.view.assistboss.TowerBossTalentModifyNameView", package.seeall)
+﻿module("modules.logic.tower.view.assistboss.TowerBossTalentModifyNameView", package.seeall)
 
-slot0 = class("TowerBossTalentModifyNameView", BaseView)
+local var_0_0 = class("TowerBossTalentModifyNameView", BaseView)
 
-function slot0.onInitView(slot0)
-	slot0._btncloseView = gohelper.findChildButtonWithAudio(slot0.viewGO, "#btn_closeView")
-	slot0._simagerightbg = gohelper.findChildSingleImage(slot0.viewGO, "window/#simage_rightbg")
-	slot0._simageleftbg = gohelper.findChildSingleImage(slot0.viewGO, "window/#simage_leftbg")
-	slot0._btnclose = gohelper.findChildButtonWithAudio(slot0.viewGO, "bottom/#btn_close")
-	slot0._btnsure = gohelper.findChildButtonWithAudio(slot0.viewGO, "bottom/#btn_sure")
-	slot0._input = gohelper.findChildTextMeshInputField(slot0.viewGO, "message/#input_signature")
-	slot0._txttext = gohelper.findChildText(slot0.viewGO, "message/#input_signature/textarea/#txt_text")
-	slot0._btncleanname = gohelper.findChildButtonWithAudio(slot0.viewGO, "message/#btn_cleanname")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0._btncloseView = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_closeView")
+	arg_1_0._simagerightbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "window/#simage_rightbg")
+	arg_1_0._simageleftbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "window/#simage_leftbg")
+	arg_1_0._btnclose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bottom/#btn_close")
+	arg_1_0._btnsure = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "bottom/#btn_sure")
+	arg_1_0._input = gohelper.findChildTextMeshInputField(arg_1_0.viewGO, "message/#input_signature")
+	arg_1_0._txttext = gohelper.findChildText(arg_1_0.viewGO, "message/#input_signature/textarea/#txt_text")
+	arg_1_0._btncleanname = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "message/#btn_cleanname")
 
-	if slot0._editableInitView then
-		slot0:_editableInitView()
+	if arg_1_0._editableInitView then
+		arg_1_0:_editableInitView()
 	end
 end
 
-function slot0.addEvents(slot0)
-	slot0._btncloseView:AddClickListener(slot0._btncloseOnClick, slot0)
-	slot0._btnclose:AddClickListener(slot0._btncloseOnClick, slot0)
-	slot0._btnsure:AddClickListener(slot0._btnsureOnClick, slot0)
-	slot0._btncleanname:AddClickListener(slot0._btncleannameOnClick, slot0)
-	slot0._input:AddOnValueChanged(slot0._onInputValueChanged, slot0)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0._btncloseView:AddClickListener(arg_2_0._btncloseOnClick, arg_2_0)
+	arg_2_0._btnclose:AddClickListener(arg_2_0._btncloseOnClick, arg_2_0)
+	arg_2_0._btnsure:AddClickListener(arg_2_0._btnsureOnClick, arg_2_0)
+	arg_2_0._btncleanname:AddClickListener(arg_2_0._btncleannameOnClick, arg_2_0)
+	arg_2_0._input:AddOnValueChanged(arg_2_0._onInputValueChanged, arg_2_0)
 end
 
-function slot0.removeEvents(slot0)
-	slot0._btncloseView:RemoveClickListener()
-	slot0._btnclose:RemoveClickListener()
-	slot0._btnsure:RemoveClickListener()
-	slot0._btncleanname:RemoveClickListener()
-	slot0._input:RemoveOnValueChanged()
+function var_0_0.removeEvents(arg_3_0)
+	arg_3_0._btncloseView:RemoveClickListener()
+	arg_3_0._btnclose:RemoveClickListener()
+	arg_3_0._btnsure:RemoveClickListener()
+	arg_3_0._btncleanname:RemoveClickListener()
+	arg_3_0._input:RemoveOnValueChanged()
 end
 
-function slot0._btncloseOnClick(slot0)
-	slot0:closeThis()
+function var_0_0._btncloseOnClick(arg_4_0)
+	arg_4_0:closeThis()
 end
 
-function slot0._btnsureOnClick(slot0)
-	if string.nilorempty(slot0._input:GetText()) then
+function var_0_0._btnsureOnClick(arg_5_0)
+	local var_5_0 = arg_5_0._input:GetText()
+
+	if string.nilorempty(var_5_0) then
 		return
 	end
 
-	if GameUtil.utf8len(slot1) > 6 then
+	if GameUtil.utf8len(var_5_0) > 6 then
 		GameFacade.showToast(ToastEnum.InformPlayerCharLen)
 
 		return
 	end
 
-	TowerRpc.instance:sendTowerRenameTalentPlanRequest(slot0.bossId, GameUtil.trimInput(slot1), slot0._onRenameTalentReply, slot0)
+	local var_5_1 = GameUtil.trimInput(var_5_0)
+
+	TowerRpc.instance:sendTowerRenameTalentPlanRequest(arg_5_0.bossId, var_5_1, arg_5_0._onRenameTalentReply, arg_5_0)
 end
 
-function slot0._onRenameTalentReply(slot0)
-	slot0:_btncloseOnClick()
+function var_0_0._onRenameTalentReply(arg_6_0)
+	arg_6_0:_btncloseOnClick()
 	GameFacade.showToast(ToastEnum.PlayerModifyChangeName)
 end
 
-function slot0._btncleannameOnClick(slot0)
-	slot0._input:SetText("")
+function var_0_0._btncleannameOnClick(arg_7_0)
+	arg_7_0._input:SetText("")
 end
 
-function slot0._onInputValueChanged(slot0)
-	gohelper.setActive(slot0._btncleanname, not string.nilorempty(slot0._input:GetText()))
+function var_0_0._onInputValueChanged(arg_8_0)
+	local var_8_0 = arg_8_0._input:GetText()
+
+	gohelper.setActive(arg_8_0._btncleanname, not string.nilorempty(var_8_0))
 end
 
-function slot0._editableInitView(slot0)
-	slot0._simageleftbg:LoadImage(ResUrl.getCommonIcon("bg_1"))
-	slot0._simagerightbg:LoadImage(ResUrl.getCommonIcon("bg_2"))
+function var_0_0._editableInitView(arg_9_0)
+	arg_9_0._simageleftbg:LoadImage(ResUrl.getCommonIcon("bg_1"))
+	arg_9_0._simagerightbg:LoadImage(ResUrl.getCommonIcon("bg_2"))
 end
 
-function slot0.onOpen(slot0)
-	slot0.bossId = slot0.viewParam.bossId
+function var_0_0.onOpen(arg_10_0)
+	arg_10_0.bossId = arg_10_0.viewParam.bossId
 end
 
-function slot0.onDestroyView(slot0)
-	slot0._simagerightbg:UnLoadImage()
-	slot0._simageleftbg:UnLoadImage()
+function var_0_0.onDestroyView(arg_11_0)
+	arg_11_0._simagerightbg:UnLoadImage()
+	arg_11_0._simageleftbg:UnLoadImage()
 end
 
-return slot0
+return var_0_0

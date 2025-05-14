@@ -1,164 +1,173 @@
-module("modules.logic.fight.system.work.FightEffectBase", package.seeall)
+﻿module("modules.logic.fight.system.work.FightEffectBase", package.seeall)
 
-slot0 = class("FightEffectBase", FightWorkItem)
+local var_0_0 = class("FightEffectBase", FightWorkItem)
 
-function slot0.onConstructor(slot0)
-	slot0.skipAutoPlayData = false
+function var_0_0.onConstructor(arg_1_0)
+	arg_1_0.skipAutoPlayData = false
 end
 
-function slot0.onAwake(slot0, slot1, slot2)
-	uv0.super.onAwake(slot0, slot1, slot2)
+function var_0_0.onAwake(arg_2_0, arg_2_1, arg_2_2)
+	var_0_0.super.onAwake(arg_2_0, arg_2_1, arg_2_2)
 
-	slot0.fightStepData = slot1
-	slot0.actEffectData = slot2
+	arg_2_0.fightStepData = arg_2_1
+	arg_2_0.actEffectData = arg_2_2
 end
 
-function slot0._fightWorkSafeTimer(slot0)
-	if slot0.fightStepData then
-		logError(string.format("战斗保底 fightwork ondone, className = %s , 步骤类型:%s, actId:%s", slot0.__cname, slot0.fightStepData.actType, slot0.fightStepData.actId))
+function var_0_0._fightWorkSafeTimer(arg_3_0)
+	if arg_3_0.fightStepData then
+		local var_3_0 = string.format("战斗保底 fightwork ondone, className = %s , 步骤类型:%s, actId:%s", arg_3_0.__cname, arg_3_0.fightStepData.actType, arg_3_0.fightStepData.actId)
+
+		logError(var_3_0)
 	end
 
-	slot0:onDone(false)
+	arg_3_0:onDone(false)
 end
 
-function slot0.start(slot0, slot1)
-	if slot0.actEffectData then
-		if slot0.actEffectData:isDone() then
-			slot0:onDone(true)
+function var_0_0.start(arg_4_0, arg_4_1)
+	if arg_4_0.actEffectData then
+		if arg_4_0.actEffectData:isDone() then
+			arg_4_0:onDone(true)
 
 			return
 		else
-			xpcall(slot0.beforePlayEffectData, __G__TRACKBACK__, slot0)
+			xpcall(arg_4_0.beforePlayEffectData, __G__TRACKBACK__, arg_4_0)
 
-			if not slot0.skipAutoPlayData then
-				slot0:playEffectData()
+			if not arg_4_0.skipAutoPlayData then
+				arg_4_0:playEffectData()
 			end
 		end
 	end
 
-	return uv0.super.start(slot0, slot1)
+	return var_0_0.super.start(arg_4_0, arg_4_1)
 end
 
-function slot0.getEffectData(slot0)
-	return slot0.actEffectData
+function var_0_0.getEffectData(arg_5_0)
+	return arg_5_0.actEffectData
 end
 
-function slot0.beforeStart(slot0)
-	if slot0.actEffectData then
-		FightController.instance:dispatchEvent(FightEvent.InvokeFightWorkEffectType, slot0.actEffectData.effectType)
+function var_0_0.beforeStart(arg_6_0)
+	if arg_6_0.actEffectData then
+		FightController.instance:dispatchEvent(FightEvent.InvokeFightWorkEffectType, arg_6_0.actEffectData.effectType)
 	end
 
-	FightSkillBehaviorMgr.instance:playSkillEffectBehavior(slot0.fightStepData, slot0.actEffectData)
+	FightSkillBehaviorMgr.instance:playSkillEffectBehavior(arg_6_0.fightStepData, arg_6_0.actEffectData)
 end
 
-function slot0.playEffectData(slot0)
-	FightDataHelper.playEffectData(slot0.actEffectData)
+function var_0_0.playEffectData(arg_7_0)
+	FightDataHelper.playEffectData(arg_7_0.actEffectData)
 end
 
-function slot0.beforePlayEffectData(slot0)
+function var_0_0.beforePlayEffectData(arg_8_0)
+	return
 end
 
-function slot0.beforeClearWork(slot0)
+function var_0_0.beforeClearWork(arg_9_0)
+	return
 end
 
-function slot0.getAdjacentSameEffectList(slot0, slot1, slot2)
-	slot3 = {}
+function var_0_0.getAdjacentSameEffectList(arg_10_0, arg_10_1, arg_10_2)
+	local var_10_0 = {}
 
-	table.insert(slot3, {
-		actEffectData = slot0.actEffectData,
-		fightStepData = slot0.fightStepData
+	table.insert(var_10_0, {
+		actEffectData = arg_10_0.actEffectData,
+		fightStepData = arg_10_0.fightStepData
 	})
-	xpcall(slot0.detectAdjacentSameEffect, __G__TRACKBACK__, slot0, slot3, slot1, slot2)
+	xpcall(arg_10_0.detectAdjacentSameEffect, __G__TRACKBACK__, arg_10_0, var_10_0, arg_10_1, arg_10_2)
 
-	return slot3
+	return var_10_0
 end
 
-function slot0.detectAdjacentSameEffect(slot0, slot1, slot2, slot3)
-	slot4 = slot0.actEffectData.nextActEffectData
+function var_0_0.detectAdjacentSameEffect(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	local var_11_0 = arg_11_0.actEffectData.nextActEffectData
 
-	while slot4 do
-		slot5 = slot4.effectType
+	while var_11_0 do
+		local var_11_1 = var_11_0.effectType
 
-		if slot2 and slot2[slot5] then
-			if not slot4:isDone() then
-				table.insert(slot1, {
-					actEffectData = slot4,
-					fightStepData = slot0.fightStepData
+		if arg_11_2 and arg_11_2[var_11_1] then
+			if not var_11_0:isDone() then
+				table.insert(arg_11_1, {
+					actEffectData = var_11_0,
+					fightStepData = arg_11_0.fightStepData
 				})
 			end
 
-			if slot5 == FightEnum.EffectType.FIGHTSTEP then
-				slot4 = slot4.fightStepNextActEffectData
+			if var_11_1 == FightEnum.EffectType.FIGHTSTEP then
+				var_11_0 = var_11_0.fightStepNextActEffectData
 			else
-				slot4 = slot4.nextActEffectData
+				var_11_0 = var_11_0.nextActEffectData
 			end
-		elseif slot5 == slot0.actEffectData.effectType then
-			if not slot4:isDone() then
-				table.insert(slot1, {
-					actEffectData = slot4,
-					fightStepData = slot0.fightStepData
+		elseif var_11_1 == arg_11_0.actEffectData.effectType then
+			if not var_11_0:isDone() then
+				table.insert(arg_11_1, {
+					actEffectData = var_11_0,
+					fightStepData = arg_11_0.fightStepData
 				})
 			end
 
-			slot4 = slot4.nextActEffectData
-		elseif slot5 == FightEnum.EffectType.FIGHTSTEP then
-			slot4 = slot4.nextActEffectData
+			var_11_0 = var_11_0.nextActEffectData
+		elseif var_11_1 == FightEnum.EffectType.FIGHTSTEP then
+			var_11_0 = var_11_0.nextActEffectData
 		else
-			return slot1
+			return arg_11_1
 		end
 	end
 
-	if slot3 then
-		if not FightDataHelper.roundMgr:getRoundData() then
+	if arg_11_3 then
+		local var_11_2 = FightDataHelper.roundMgr:getRoundData()
+
+		if not var_11_2 then
 			logError("找不到roundData")
 
-			return slot1
+			return arg_11_1
 		end
 
-		slot6 = slot5.fightStep
+		local var_11_3 = var_11_2.fightStep
 
-		if not slot0.fightStepData.custom_stepIndex then
-			return slot1
+		if not arg_11_0.fightStepData.custom_stepIndex then
+			return arg_11_1
 		end
 
-		slot8 = slot6[slot0.fightStepData.custom_stepIndex + 1]
+		local var_11_4 = arg_11_0.fightStepData.custom_stepIndex + 1
+		local var_11_5 = var_11_3[var_11_4]
 
-		while slot8 do
-			if FightHelper.isTimelineStep(slot8) then
-				return slot1
+		while var_11_5 do
+			if FightHelper.isTimelineStep(var_11_5) then
+				return arg_11_1
 			end
 
-			if #slot8.actEffect == 0 then
-				slot8 = slot6[slot7 + 1]
-			elseif slot0:addSameEffectDetectNextStep(slot1, slot2, slot8) then
-				slot8 = slot6[slot7 + 1]
+			if #var_11_5.actEffect == 0 then
+				var_11_4 = var_11_4 + 1
+				var_11_5 = var_11_3[var_11_4]
+			elseif arg_11_0:addSameEffectDetectNextStep(arg_11_1, arg_11_2, var_11_5) then
+				var_11_4 = var_11_4 + 1
+				var_11_5 = var_11_3[var_11_4]
 			else
-				return slot1
+				return arg_11_1
 			end
 		end
 	end
 
-	return slot1
+	return arg_11_1
 end
 
-function slot0.addSameEffectDetectNextStep(slot0, slot1, slot2, slot3)
-	for slot7, slot8 in ipairs(slot3.actEffect) do
-		if slot2 and slot2[slot8.effectType] then
-			if not slot8:isDone() then
-				table.insert(slot1, {
-					actEffectData = slot8,
-					fightStepData = slot3
+function var_0_0.addSameEffectDetectNextStep(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
+	for iter_12_0, iter_12_1 in ipairs(arg_12_3.actEffect) do
+		if arg_12_2 and arg_12_2[iter_12_1.effectType] then
+			if not iter_12_1:isDone() then
+				table.insert(arg_12_1, {
+					actEffectData = iter_12_1,
+					fightStepData = arg_12_3
 				})
 			end
-		elseif slot8.effectType == slot0.actEffectData.effectType then
-			if not slot8:isDone() then
-				table.insert(slot1, {
-					actEffectData = slot8,
-					fightStepData = slot3
+		elseif iter_12_1.effectType == arg_12_0.actEffectData.effectType then
+			if not iter_12_1:isDone() then
+				table.insert(arg_12_1, {
+					actEffectData = iter_12_1,
+					fightStepData = arg_12_3
 				})
 			end
-		elseif slot8.effectType == FightEnum.EffectType.FIGHTSTEP then
-			if not slot0:addSameEffectDetectNextStep(slot1, slot2, slot8.fightStep) then
+		elseif iter_12_1.effectType == FightEnum.EffectType.FIGHTSTEP then
+			if not arg_12_0:addSameEffectDetectNextStep(arg_12_1, arg_12_2, iter_12_1.fightStep) then
 				return false
 			end
 		else
@@ -169,4 +178,4 @@ function slot0.addSameEffectDetectNextStep(slot0, slot1, slot2, slot3)
 	return true
 end
 
-return slot0
+return var_0_0

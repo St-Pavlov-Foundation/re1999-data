@@ -1,46 +1,50 @@
-module("modules.logic.fight.entity.comp.FightHeroCustomComp", package.seeall)
+﻿module("modules.logic.fight.entity.comp.FightHeroCustomComp", package.seeall)
 
-slot0 = class("FightHeroCustomComp", LuaCompBase)
-slot0.HeroId2CustomComp = {
+local var_0_0 = class("FightHeroCustomComp", LuaCompBase)
+
+var_0_0.HeroId2CustomComp = {
 	[3113] = FightHeroALFComp
 }
 
-function slot0.ctor(slot0, slot1)
-	slot0.entity = slot1
+function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0.entity = arg_1_1
 end
 
-function slot0.init(slot0, slot1)
-	slot0.go = slot1
+function var_0_0.init(arg_2_0, arg_2_1)
+	arg_2_0.go = arg_2_1
 
-	if uv0.HeroId2CustomComp[slot0.entity:getMO().modelId] then
-		slot0.customComp = slot3.New(slot0.entity)
+	local var_2_0 = arg_2_0.entity:getMO()
+	local var_2_1 = var_0_0.HeroId2CustomComp[var_2_0.modelId]
 
-		slot0.customComp:init(slot1)
+	if var_2_1 then
+		arg_2_0.customComp = var_2_1.New(arg_2_0.entity)
+
+		arg_2_0.customComp:init(arg_2_1)
 	end
 end
 
-function slot0.addEventListeners(slot0)
-	if slot0.customComp then
-		slot0.customComp:addEventListeners()
+function var_0_0.addEventListeners(arg_3_0)
+	if arg_3_0.customComp then
+		arg_3_0.customComp:addEventListeners()
 	end
 end
 
-function slot0.removeEventListeners(slot0)
-	if slot0.customComp then
-		slot0.customComp:removeEventListeners()
+function var_0_0.removeEventListeners(arg_4_0)
+	if arg_4_0.customComp then
+		arg_4_0.customComp:removeEventListeners()
 	end
 end
 
-function slot0.getCustomComp(slot0)
-	return slot0.customComp
+function var_0_0.getCustomComp(arg_5_0)
+	return arg_5_0.customComp
 end
 
-function slot0.onDestroy(slot0)
-	if slot0.customComp then
-		slot0.customComp:onDestroy()
+function var_0_0.onDestroy(arg_6_0)
+	if arg_6_0.customComp then
+		arg_6_0.customComp:onDestroy()
 
-		slot0.customComp = nil
+		arg_6_0.customComp = nil
 	end
 end
 
-return slot0
+return var_0_0

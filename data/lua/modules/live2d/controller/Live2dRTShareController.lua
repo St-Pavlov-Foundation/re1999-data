@@ -1,288 +1,322 @@
-module("modules.live2d.controller.Live2dRTShareController", package.seeall)
+﻿module("modules.live2d.controller.Live2dRTShareController", package.seeall)
 
-slot0 = class("Live2dRTShareController", BaseController)
-slot1 = UnityEngine.SystemInfo
+local var_0_0 = class("Live2dRTShareController", BaseController)
+local var_0_1 = UnityEngine.SystemInfo
 
-function slot0.onInit(slot0)
-	slot0:reInit()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:reInit()
 end
 
-function slot0.reInit(slot0)
-	slot0:_clearAll()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:_clearAll()
 end
 
-function slot0._clearAll(slot0)
-	TaskDispatcher.cancelTask(slot0._checkRT, slot0)
+function var_0_0._clearAll(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0._checkRT, arg_3_0)
 
-	slot0._minType = CharacterVoiceEnum.RTShareType.Normal
-	slot0._maxType = CharacterVoiceEnum.RTShareType.FullScreen
-	slot0._debugLog = false
-	slot0._clearTime = nil
+	arg_3_0._minType = CharacterVoiceEnum.RTShareType.Normal
+	arg_3_0._maxType = CharacterVoiceEnum.RTShareType.FullScreen
+	arg_3_0._debugLog = false
+	arg_3_0._clearTime = nil
 
-	if slot0._typeInfoList and slot0._typeRTList then
-		slot0:clearAllRT()
+	if arg_3_0._typeInfoList and arg_3_0._typeRTList then
+		arg_3_0:clearAllRT()
 	end
 
-	slot0._typeInfoList = {}
-	slot0._typeRTList = {}
+	arg_3_0._typeInfoList = {}
+	arg_3_0._typeRTList = {}
 end
 
-function slot0.addConstEvents(slot0)
-	GameSceneMgr.instance:registerCallback(SceneEventName.ExitScene, slot0._onExistScene, slot0)
+function var_0_0.addConstEvents(arg_4_0)
+	GameSceneMgr.instance:registerCallback(SceneEventName.ExitScene, arg_4_0._onExistScene, arg_4_0)
 end
 
-function slot0._onExistScene(slot0)
-	slot0:_clearAll()
+function var_0_0._onExistScene(arg_5_0)
+	arg_5_0:_clearAll()
 end
 
-function slot0.clearAllRT(slot0)
-	for slot4 = slot0._maxType, slot0._minType, -1 do
-		if slot0:_getRTInfoList(slot4).rt then
-			UnityEngine.RenderTexture.ReleaseTemporary(slot5.rt)
-			slot0:_replaceRT(slot4)
+function var_0_0.clearAllRT(arg_6_0)
+	for iter_6_0 = arg_6_0._maxType, arg_6_0._minType, -1 do
+		local var_6_0 = arg_6_0:_getRTInfoList(iter_6_0)
 
-			slot5.rt = nil
+		if var_6_0.rt then
+			UnityEngine.RenderTexture.ReleaseTemporary(var_6_0.rt)
+			arg_6_0:_replaceRT(iter_6_0)
 
-			if slot0._debugLog then
-				logError(string.format("Live2dRTShareController:clearAllRT shareType:%s", slot4))
+			var_6_0.rt = nil
+
+			if arg_6_0._debugLog then
+				logError(string.format("Live2dRTShareController:clearAllRT shareType:%s", iter_6_0))
 			end
 		end
 
-		slot5.orthographicSize = nil
+		var_6_0.orthographicSize = nil
 	end
 end
 
-function slot0._replaceRT(slot0, slot1)
-	slot0._defaultRT = slot0._defaultRT or UnityEngine.RenderTexture.GetTemporary(8, 8, 0, UnityEngine.RenderTextureFormat.ARGB32)
+function var_0_0._replaceRT(arg_7_0, arg_7_1)
+	arg_7_0._defaultRT = arg_7_0._defaultRT or UnityEngine.RenderTexture.GetTemporary(8, 8, 0, UnityEngine.RenderTextureFormat.ARGB32)
 
-	for slot6, slot7 in ipairs(slot0:_getTypeInfoList(slot1)) do
-		if not gohelper.isNil(slot7.camera) then
-			slot7.camera.targetTexture = slot0._defaultRT
+	local var_7_0 = arg_7_0:_getTypeInfoList(arg_7_1)
 
-			if not gohelper.isNil(slot7.image) then
-				slot7.image.texture = nil
+	for iter_7_0, iter_7_1 in ipairs(var_7_0) do
+		if not gohelper.isNil(iter_7_1.camera) then
+			iter_7_1.camera.targetTexture = arg_7_0._defaultRT
 
-				recthelper.setSize(slot7.image.rectTransform, 0, 0)
+			if not gohelper.isNil(iter_7_1.image) then
+				iter_7_1.image.texture = nil
+
+				recthelper.setSize(iter_7_1.image.rectTransform, 0, 0)
 			end
 		end
 	end
 end
 
-function slot0._getRT(slot0, slot1, slot2, slot3, slot4, slot5)
-	if slot0:_getRTInfoList(slot3).orthographicSize ~= slot2 then
-		slot0:clearAllRT()
+function var_0_0._getRT(arg_8_0, arg_8_1, arg_8_2, arg_8_3, arg_8_4, arg_8_5)
+	local var_8_0 = arg_8_0:_getRTInfoList(arg_8_3)
 
-		slot6.orthographicSize = slot2
+	if var_8_0.orthographicSize ~= arg_8_2 then
+		arg_8_0:clearAllRT()
 
-		if slot3 == CharacterVoiceEnum.RTShareType.FullScreen then
-			slot6.rt = slot1.targetTexture
+		var_8_0.orthographicSize = arg_8_2
 
-			if slot0._debugLog then
-				logError(string.format("Live2dRTShareController:_reuseRT orthographicSize:%s shareType:%s", slot2, slot3))
+		if arg_8_3 == CharacterVoiceEnum.RTShareType.FullScreen then
+			var_8_0.rt = arg_8_1.targetTexture
+
+			if arg_8_0._debugLog then
+				logError(string.format("Live2dRTShareController:_reuseRT orthographicSize:%s shareType:%s", arg_8_2, arg_8_3))
 			end
 		else
-			slot6.rt = slot0:_createRT(slot2, slot3, slot4, slot5)
+			var_8_0.rt = arg_8_0:_createRT(arg_8_2, arg_8_3, arg_8_4, arg_8_5)
 		end
 	end
 
-	return slot6.rt
+	return var_8_0.rt
 end
 
-function slot0._getTextureSizeByCameraSize(slot0, slot1)
-	slot2, slot3 = GuiLive2d.GetScaleByDevice()
+function var_0_0._getTextureSizeByCameraSize(arg_9_0, arg_9_1)
+	local var_9_0, var_9_1 = GuiLive2d.GetScaleByDevice()
 
-	return GuiLive2d.getTextureSizeByCameraSize(slot1) * slot3 * slot2
+	return GuiLive2d.getTextureSizeByCameraSize(arg_9_1) * var_9_1 * var_9_0
 end
 
-function slot0._getTextureSize(slot0, slot1, slot2, slot3, slot4)
-	if slot0:_isBloomType(slot2) and CharacterVoiceEnum.BloomCameraSize[slot3] then
-		return slot0:_getTextureSizeByCameraSize(slot5)
+function var_0_0._getTextureSize(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4)
+	if arg_10_0:_isBloomType(arg_10_2) then
+		local var_10_0 = CharacterVoiceEnum.BloomCameraSize[arg_10_3]
+
+		if var_10_0 then
+			return arg_10_0:_getTextureSizeByCameraSize(var_10_0)
+		end
 	end
 
-	return slot0:_getTextureSizeByCameraSize(slot1)
+	return arg_10_0:_getTextureSizeByCameraSize(arg_10_1)
 end
 
-function slot0._createRT(slot0, slot1, slot2, slot3, slot4)
-	if uv0.maxTextureSize < slot0:_getTextureSize(slot1, slot2, slot3, slot4) then
-		slot5 = slot6
+function var_0_0._createRT(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_4)
+	local var_11_0 = arg_11_0:_getTextureSize(arg_11_1, arg_11_2, arg_11_3, arg_11_4)
+	local var_11_1 = var_0_1.maxTextureSize
+
+	if var_11_1 < var_11_0 then
+		var_11_0 = var_11_1
 	end
 
-	if slot0._debugLog then
-		logError(string.format("Live2dRTShareController:_createRT orthographicSize:%s textureSize:%s shareType:%s", slot1, slot5, slot2))
+	if arg_11_0._debugLog then
+		logError(string.format("Live2dRTShareController:_createRT orthographicSize:%s textureSize:%s shareType:%s", arg_11_1, var_11_0, arg_11_2))
 	end
 
-	if slot2 == CharacterVoiceEnum.RTShareType.BloomOpen then
-		return UnityEngine.RenderTexture.GetTemporary(slot5, slot5, 0, UnityEngine.RenderTextureFormat.ARGBHalf)
+	if arg_11_2 == CharacterVoiceEnum.RTShareType.BloomOpen then
+		return UnityEngine.RenderTexture.GetTemporary(var_11_0, var_11_0, 0, UnityEngine.RenderTextureFormat.ARGBHalf)
 	end
 
-	return UnityEngine.RenderTexture.GetTemporary(slot5, slot5, 0, UnityEngine.RenderTextureFormat.ARGB32)
+	return UnityEngine.RenderTexture.GetTemporary(var_11_0, var_11_0, 0, UnityEngine.RenderTextureFormat.ARGB32)
 end
 
-function slot0._getRTInfoList(slot0, slot1)
-	if not slot0._typeRTList[slot1] then
-		slot0._typeRTList[slot1] = {}
+function var_0_0._getRTInfoList(arg_12_0, arg_12_1)
+	local var_12_0 = arg_12_0._typeRTList[arg_12_1]
+
+	if not var_12_0 then
+		var_12_0 = {}
+		arg_12_0._typeRTList[arg_12_1] = var_12_0
 	end
 
-	return slot2
+	return var_12_0
 end
 
-function slot0._getTypeInfoList(slot0, slot1)
-	if not slot0._typeInfoList[slot1] then
-		slot0._typeInfoList[slot1] = {}
+function var_0_0._getTypeInfoList(arg_13_0, arg_13_1)
+	local var_13_0 = arg_13_0._typeInfoList[arg_13_1]
+
+	if not var_13_0 then
+		var_13_0 = {}
+		arg_13_0._typeInfoList[arg_13_1] = var_13_0
 	end
 
-	return slot2
+	return var_13_0
 end
 
-function slot0.addShareInfo(slot0, slot1, slot2, slot3, slot4, slot5, slot6)
-	if not slot1 or not slot2 or not slot3 or not slot4 or not slot5 then
-		logError(string.format("addShareInfo error camera:%s image:%s shareType:%s heroId:%s skinId:%s", slot1, slot2, slot3, slot4, slot5))
+function var_0_0.addShareInfo(arg_14_0, arg_14_1, arg_14_2, arg_14_3, arg_14_4, arg_14_5, arg_14_6)
+	if not arg_14_1 or not arg_14_2 or not arg_14_3 or not arg_14_4 or not arg_14_5 then
+		logError(string.format("addShareInfo error camera:%s image:%s shareType:%s heroId:%s skinId:%s", arg_14_1, arg_14_2, arg_14_3, arg_14_4, arg_14_5))
 
 		return
 	end
 
-	if slot0._minType > slot3 or slot3 > slot0._maxType then
-		logError(string.format("addShareInfo error shareType:%s", slot3))
+	if not (arg_14_3 >= arg_14_0._minType) or not (arg_14_3 <= arg_14_0._maxType) then
+		logError(string.format("addShareInfo error shareType:%s", arg_14_3))
 
 		return
 	end
 
-	slot6 = slot6 or 0
+	arg_14_6 = arg_14_6 or 0
 
-	for slot11, slot12 in ipairs(slot0:_getTypeInfoList(slot3)) do
-		if slot12.camera == slot1 and slot12.image == slot2 then
-			logError(string.format("addShareInfo error same camera:%s image:%s shareType:%s", slot1, slot2, slot3))
+	local var_14_0 = arg_14_0:_getTypeInfoList(arg_14_3)
+
+	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
+		if iter_14_1.camera == arg_14_1 and iter_14_1.image == arg_14_2 then
+			logError(string.format("addShareInfo error same camera:%s image:%s shareType:%s", arg_14_1, arg_14_2, arg_14_3))
 
 			return
 		end
 	end
 
-	table.insert(slot7, {
-		camera = slot1,
-		orthographicSize = slot1.orthographicSize,
-		textureSize = slot0:_getTextureSizeByCameraSize(slot1.orthographicSize),
-		image = slot2,
-		shareType = slot3,
-		heroId = slot4,
-		skinId = slot5,
-		priority = slot6
+	table.insert(var_14_0, {
+		camera = arg_14_1,
+		orthographicSize = arg_14_1.orthographicSize,
+		textureSize = arg_14_0:_getTextureSizeByCameraSize(arg_14_1.orthographicSize),
+		image = arg_14_2,
+		shareType = arg_14_3,
+		heroId = arg_14_4,
+		skinId = arg_14_5,
+		priority = arg_14_6
 	})
 
-	if slot3 == CharacterVoiceEnum.RTShareType.Normal then
-		slot0:_sortNormalList(slot7)
+	if arg_14_3 == CharacterVoiceEnum.RTShareType.Normal then
+		arg_14_0:_sortNormalList(var_14_0)
 	end
 
-	if slot0._debugLog then
-		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s priority:%s", slot1, slot1.orthographicSize, slot2, slot3, #slot7, slot6))
+	if arg_14_0._debugLog then
+		logError(string.format("addShareInfo camera:%s orthographicSize:%s image:%s shareType:%s num:%s priority:%s", arg_14_1, arg_14_1.orthographicSize, arg_14_2, arg_14_3, #var_14_0, arg_14_6))
 	end
 
-	slot0._clearTime = nil
+	arg_14_0._clearTime = nil
 
-	slot0:_checkRT()
-	TaskDispatcher.cancelTask(slot0._checkRT, slot0)
-	TaskDispatcher.runRepeat(slot0._checkRT, slot0, 0)
+	arg_14_0:_checkRT()
+	TaskDispatcher.cancelTask(arg_14_0._checkRT, arg_14_0)
+	TaskDispatcher.runRepeat(arg_14_0._checkRT, arg_14_0, 0)
 end
 
-function slot0._sortNormalList(slot0, slot1)
-	slot3 = 0
+function var_0_0._sortNormalList(arg_15_0, arg_15_1)
+	local var_15_0 = 0
+	local var_15_1 = 0
 
-	for slot7, slot8 in ipairs(slot1) do
-		if 0 <= slot8.priority then
-			slot2 = slot8.priority
-			slot3 = slot7
+	for iter_15_0, iter_15_1 in ipairs(arg_15_1) do
+		if var_15_0 <= iter_15_1.priority then
+			var_15_0 = iter_15_1.priority
+			var_15_1 = iter_15_0
 		end
 	end
 
-	if slot2 > 0 then
-		table.remove(slot1, slot3)
-		table.insert(slot1, slot1[slot3])
+	if var_15_0 > 0 then
+		local var_15_2 = arg_15_1[var_15_1]
+
+		table.remove(arg_15_1, var_15_1)
+		table.insert(arg_15_1, var_15_2)
 	end
 end
 
-function slot0._getTopInfoList(slot0)
-	for slot4 = slot0._maxType, slot0._minType, -1 do
-		if #slot0:_getTypeInfoList(slot4) > 0 then
-			return slot5, slot4
+function var_0_0._getTopInfoList(arg_16_0)
+	for iter_16_0 = arg_16_0._maxType, arg_16_0._minType, -1 do
+		local var_16_0 = arg_16_0:_getTypeInfoList(iter_16_0)
+
+		if #var_16_0 > 0 then
+			return var_16_0, iter_16_0
 		end
 	end
 
-	return slot0:_getTypeInfoList(slot0._minType), slot0._minType
+	return arg_16_0:_getTypeInfoList(arg_16_0._minType), arg_16_0._minType
 end
 
-function slot0._isBloomType(slot0, slot1)
-	return slot1 == CharacterVoiceEnum.RTShareType.BloomClose or slot1 == CharacterVoiceEnum.RTShareType.BloomOpen
+function var_0_0._isBloomType(arg_17_0, arg_17_1)
+	return arg_17_1 == CharacterVoiceEnum.RTShareType.BloomClose or arg_17_1 == CharacterVoiceEnum.RTShareType.BloomOpen
 end
 
-function slot0._checkRT(slot0)
-	slot1, slot2 = slot0:_getTopInfoList()
+function var_0_0._checkRT(arg_18_0)
+	local var_18_0, var_18_1 = arg_18_0:_getTopInfoList()
 
-	if #slot1 == 0 then
-		slot0._clearTime = slot0._clearTime or Time.time
+	if #var_18_0 == 0 then
+		arg_18_0._clearTime = arg_18_0._clearTime or Time.time
 
-		if Time.time - slot0._clearTime > 1 then
-			TaskDispatcher.cancelTask(slot0._checkRT, slot0)
+		if Time.time - arg_18_0._clearTime > 1 then
+			TaskDispatcher.cancelTask(arg_18_0._checkRT, arg_18_0)
 
-			slot0._clearTime = nil
+			arg_18_0._clearTime = nil
 
-			slot0:clearAllRT()
+			arg_18_0:clearAllRT()
 		end
 
 		return
 	end
 
-	slot3 = nil
+	local var_18_2
 
-	for slot7 = #slot1, 1, -1 do
-		if gohelper.isNil(slot1[slot7].camera) or gohelper.isNil(slot8.image) then
-			table.remove(slot1, slot7)
+	for iter_18_0 = #var_18_0, 1, -1 do
+		local var_18_3 = var_18_0[iter_18_0]
 
-			slot8 = nil
+		if gohelper.isNil(var_18_3.camera) or gohelper.isNil(var_18_3.image) then
+			table.remove(var_18_0, iter_18_0)
 
-			if slot0._debugLog then
-				logError(string.format("Live2dRTShareController:_checkRT remove frame:%s index:%s shareType:%s remain:%s", Time.frameCount, slot7, slot2, #slot1))
+			var_18_3 = nil
+
+			if arg_18_0._debugLog then
+				logError(string.format("Live2dRTShareController:_checkRT remove frame:%s index:%s shareType:%s remain:%s", Time.frameCount, iter_18_0, var_18_1, #var_18_0))
 			end
 		end
 
-		if slot8 and slot2 == CharacterVoiceEnum.RTShareType.Normal then
-			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType, slot8.heroId, slot8.skinId)
-			slot8.camera.targetTexture = slot9
-			slot8.image.texture = slot9
+		if var_18_3 and var_18_1 == CharacterVoiceEnum.RTShareType.Normal then
+			local var_18_4 = arg_18_0:_getRT(var_18_3.camera, var_18_3.orthographicSize, var_18_3.shareType, var_18_3.heroId, var_18_3.skinId)
 
-			slot8.image:SetNativeSize()
+			var_18_3.camera.targetTexture = var_18_4
+			var_18_3.image.texture = var_18_4
 
-			slot3 = slot8
+			var_18_3.image:SetNativeSize()
+
+			var_18_2 = var_18_3
 
 			break
-		elseif slot8 and slot8.image.gameObject.activeInHierarchy then
-			slot9 = slot0:_getRT(slot8.camera, slot8.orthographicSize, slot8.shareType, slot8.heroId, slot8.skinId)
-			slot8.camera.targetTexture = slot9
-			slot8.image.texture = slot9
-			slot10 = slot9.width
-			slot11 = slot9.height
+		elseif var_18_3 and var_18_3.image.gameObject.activeInHierarchy then
+			local var_18_5 = arg_18_0:_getRT(var_18_3.camera, var_18_3.orthographicSize, var_18_3.shareType, var_18_3.heroId, var_18_3.skinId)
 
-			if slot0:_isBloomType(slot2) then
-				slot12 = slot8.textureSize
-				slot10 = slot12
-				slot11 = slot12
+			var_18_3.camera.targetTexture = var_18_5
+			var_18_3.image.texture = var_18_5
+
+			local var_18_6 = var_18_5.width
+			local var_18_7 = var_18_5.height
+
+			if arg_18_0:_isBloomType(var_18_1) then
+				local var_18_8 = var_18_3.textureSize
+
+				var_18_6 = var_18_8
+				var_18_7 = var_18_8
 			end
 
-			recthelper.setSize(slot8.image.rectTransform, slot10, slot11)
+			recthelper.setSize(var_18_3.image.rectTransform, var_18_6, var_18_7)
 
-			slot3 = slot8
+			var_18_2 = var_18_3
 
 			break
 		end
 	end
 
-	for slot7, slot8 in ipairs(slot1) do
-		if not gohelper.isNil(slot8.camera) then
-			slot8.camera.enabled = slot8 == slot3
+	for iter_18_1, iter_18_2 in ipairs(var_18_0) do
+		local var_18_9 = iter_18_2 == var_18_2
+
+		if not gohelper.isNil(iter_18_2.camera) then
+			iter_18_2.camera.enabled = var_18_9
 		end
 	end
 
-	slot0._clearTime = nil
+	arg_18_0._clearTime = nil
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

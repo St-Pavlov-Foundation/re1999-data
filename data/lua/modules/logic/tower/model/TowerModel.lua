@@ -1,409 +1,470 @@
-module("modules.logic.tower.model.TowerModel", package.seeall)
+﻿module("modules.logic.tower.model.TowerModel", package.seeall)
 
-slot0 = class("TowerModel", BaseModel)
+local var_0_0 = class("TowerModel", BaseModel)
 
-function slot0.onInit(slot0)
-	slot0:reInit()
+function var_0_0.onInit(arg_1_0)
+	arg_1_0:reInit()
 end
 
-function slot0.reInit(slot0)
-	slot0:clearTowerData()
+function var_0_0.reInit(arg_2_0)
+	arg_2_0:clearTowerData()
 
-	slot0.fightParam = {}
-	slot0.fightFinishParam = {}
-	slot0.localPrefsDict = {}
+	arg_2_0.fightParam = {}
+	arg_2_0.fightFinishParam = {}
+	arg_2_0.localPrefsDict = {}
 end
 
-function slot0.clearTowerData(slot0)
-	slot0.towerOpenMap = {}
-	slot0.towerOpenList = {}
-	slot0.towerInfoMap = {}
-	slot0.towerInfoList = {}
-	slot0.curTowerType = nil
+function var_0_0.clearTowerData(arg_3_0)
+	arg_3_0.towerOpenMap = {}
+	arg_3_0.towerOpenList = {}
+	arg_3_0.towerInfoMap = {}
+	arg_3_0.towerInfoList = {}
+	arg_3_0.curTowerType = nil
 end
 
-function slot0.onReceiveTowerBattleFinishPush(slot0, slot1)
-	slot0.fightFinishParam.towerType = slot1.type
-	slot0.fightFinishParam.towerId = slot1.towerId
-	slot0.fightFinishParam.layerId = slot1.layerId
-	slot0.fightFinishParam.difficulty = slot1.difficulty
-	slot0.fightFinishParam.score = slot1.score
-	slot0.fightFinishParam.bossLevel = slot1.bossLevel
-	slot0.fightFinishParam.teamLevel = slot1.teamLevel
-	slot0.fightFinishParam.layer = slot1.layer
-	slot0.fightFinishParam.historyHighScore = slot1.historyHighScore
+function var_0_0.onReceiveTowerBattleFinishPush(arg_4_0, arg_4_1)
+	arg_4_0.fightFinishParam.towerType = arg_4_1.type
+	arg_4_0.fightFinishParam.towerId = arg_4_1.towerId
+	arg_4_0.fightFinishParam.layerId = arg_4_1.layerId
+	arg_4_0.fightFinishParam.difficulty = arg_4_1.difficulty
+	arg_4_0.fightFinishParam.score = arg_4_1.score
+	arg_4_0.fightFinishParam.bossLevel = arg_4_1.bossLevel
+	arg_4_0.fightFinishParam.teamLevel = arg_4_1.teamLevel
+	arg_4_0.fightFinishParam.layer = arg_4_1.layer
+	arg_4_0.fightFinishParam.historyHighScore = arg_4_1.historyHighScore
 end
 
-function slot0.getFightFinishParam(slot0)
-	return slot0.fightFinishParam
+function var_0_0.getFightFinishParam(arg_5_0)
+	return arg_5_0.fightFinishParam
 end
 
-function slot0.clearFightFinishParam(slot0)
-	slot0.fightFinishParam = {}
+function var_0_0.clearFightFinishParam(arg_6_0)
+	arg_6_0.fightFinishParam = {}
 end
 
-function slot0.onReceiveGetTowerInfoReply(slot0, slot1)
-	slot0:clearTowerData()
+function var_0_0.onReceiveGetTowerInfoReply(arg_7_0, arg_7_1)
+	arg_7_0:clearTowerData()
 	TowerAssistBossModel.instance:clear()
-	slot0:setTowerOpenInfo(slot1)
-	slot0:setTowerInfo(slot1)
-	slot0:updateMopUpTimes(slot1.mopUpTimes)
-	slot0:updateTrialHeroSeason(slot1.trialHeroSeason)
+	arg_7_0:setTowerOpenInfo(arg_7_1)
+	arg_7_0:setTowerInfo(arg_7_1)
+	arg_7_0:updateMopUpTimes(arg_7_1.mopUpTimes)
+	arg_7_0:updateTrialHeroSeason(arg_7_1.trialHeroSeason)
 
-	for slot5 = 1, #slot1.assistBosses do
-		TowerAssistBossModel.instance:updateAssistBossInfo(slot1.assistBosses[slot5])
+	for iter_7_0 = 1, #arg_7_1.assistBosses do
+		TowerAssistBossModel.instance:updateAssistBossInfo(arg_7_1.assistBosses[iter_7_0])
 	end
 
 	TowerPermanentModel.instance:InitData()
 end
 
-function slot0.setTowerOpenInfo(slot0, slot1)
-	if #slot1.towerOpens == 0 then
+function var_0_0.setTowerOpenInfo(arg_8_0, arg_8_1)
+	if #arg_8_1.towerOpens == 0 then
 		logError("towerOpenInfo not exit")
 
 		return
 	end
 
-	for slot5, slot6 in ipairs(slot1.towerOpens) do
-		slot8 = slot6.towerId
-		slot9 = slot6.round
+	for iter_8_0, iter_8_1 in ipairs(arg_8_1.towerOpens) do
+		local var_8_0 = iter_8_1.type
+		local var_8_1 = iter_8_1.towerId
+		local var_8_2 = iter_8_1.round
+		local var_8_3 = arg_8_0.towerOpenMap[var_8_0]
 
-		if not slot0.towerOpenMap[slot6.type] then
-			slot0.towerOpenMap[slot7] = {}
+		if not var_8_3 then
+			var_8_3 = {}
+			arg_8_0.towerOpenMap[var_8_0] = var_8_3
 		end
 
-		if not slot10[slot8] then
-			slot10[slot8] = {}
+		local var_8_4 = var_8_3[var_8_1]
+
+		if not var_8_4 then
+			var_8_4 = {}
+			var_8_3[var_8_1] = var_8_4
 		end
 
-		if not slot11[slot9] then
-			slot12 = TowerOpenMo.New()
-			slot11[slot9] = slot12
+		local var_8_5 = var_8_4[var_8_2]
 
-			slot0:addTowerOpenList(slot7, slot12)
+		if not var_8_5 then
+			var_8_5 = TowerOpenMo.New()
+			var_8_4[var_8_2] = var_8_5
+
+			arg_8_0:addTowerOpenList(var_8_0, var_8_5)
 		end
 
-		slot12:updateInfo(slot6)
+		var_8_5:updateInfo(iter_8_1)
 	end
 end
 
-function slot0.addTowerOpenList(slot0, slot1, slot2)
-	if not slot0.towerOpenList[slot1] then
-		slot0.towerOpenList[slot1] = {}
+function var_0_0.addTowerOpenList(arg_9_0, arg_9_1, arg_9_2)
+	if not arg_9_0.towerOpenList[arg_9_1] then
+		arg_9_0.towerOpenList[arg_9_1] = {}
 	end
 
-	table.insert(slot0.towerOpenList[slot1], slot2)
+	table.insert(arg_9_0.towerOpenList[arg_9_1], arg_9_2)
 end
 
-function slot0.getTowerOpenList(slot0, slot1)
-	return slot0.towerOpenList[slot1] or {}
+function var_0_0.getTowerOpenList(arg_10_0, arg_10_1)
+	return arg_10_0.towerOpenList[arg_10_1] or {}
 end
 
-function slot0.getTowerOpenInfoByRound(slot0, slot1, slot2, slot3)
-	if not (slot0.towerOpenMap[slot1] and slot4[slot2]) then
+function var_0_0.getTowerOpenInfoByRound(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	local var_11_0 = arg_11_0.towerOpenMap[arg_11_1]
+	local var_11_1 = var_11_0 and var_11_0[arg_11_2]
+
+	if not var_11_1 then
 		return
 	end
 
-	return slot5[slot3]
+	return var_11_1[arg_11_3]
 end
 
-function slot0.getTowerOpenInfo(slot0, slot1, slot2, slot3)
-	if slot3 == nil then
-		slot3 = TowerEnum.TowerStatus.Open
+function var_0_0.getTowerOpenInfo(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
+	if arg_12_3 == nil then
+		arg_12_3 = TowerEnum.TowerStatus.Open
 	end
 
-	if not (slot0.towerOpenMap[slot1] and slot4[slot2]) then
+	local var_12_0 = arg_12_0.towerOpenMap[arg_12_1]
+	local var_12_1 = var_12_0 and var_12_0[arg_12_2]
+
+	if not var_12_1 then
 		return
 	end
 
-	for slot9, slot10 in pairs(slot5) do
-		if slot10.status == slot3 then
-			return slot10
+	for iter_12_0, iter_12_1 in pairs(var_12_1) do
+		if iter_12_1.status == arg_12_3 then
+			return iter_12_1
 		end
 	end
 end
 
-function slot0.setTowerInfo(slot0, slot1)
-	if #slot1.towers == 0 then
+function var_0_0.setTowerInfo(arg_13_0, arg_13_1)
+	if #arg_13_1.towers == 0 then
 		logError("towerInfo not exit")
 
 		return
 	end
 
-	for slot5, slot6 in ipairs(slot1.towers) do
-		slot8 = slot6.towerId
+	for iter_13_0, iter_13_1 in ipairs(arg_13_1.towers) do
+		local var_13_0 = iter_13_1.type
+		local var_13_1 = iter_13_1.towerId
+		local var_13_2 = arg_13_0.towerInfoMap[var_13_0]
 
-		if not slot0.towerInfoMap[slot6.type] then
-			slot0.towerInfoMap[slot7] = {}
+		if not var_13_2 then
+			var_13_2 = {}
+			arg_13_0.towerInfoMap[var_13_0] = var_13_2
 		end
 
-		if not slot9[slot8] then
-			slot10 = TowerMo.New()
-			slot9[slot8] = slot10
+		if not var_13_2[var_13_1] then
+			local var_13_3 = TowerMo.New()
 
-			slot0:addTowerInfoList(slot7, slot10)
+			var_13_2[var_13_1] = var_13_3
+
+			arg_13_0:addTowerInfoList(var_13_0, var_13_3)
 		end
 
-		slot0.towerInfoMap[slot7][slot8]:updateInfo(slot6)
+		arg_13_0.towerInfoMap[var_13_0][var_13_1]:updateInfo(iter_13_1)
 	end
 end
 
-function slot0.addTowerInfoList(slot0, slot1, slot2)
-	if not slot0.towerInfoList[slot1] then
-		slot0.towerInfoList[slot1] = {}
+function var_0_0.addTowerInfoList(arg_14_0, arg_14_1, arg_14_2)
+	if not arg_14_0.towerInfoList[arg_14_1] then
+		arg_14_0.towerInfoList[arg_14_1] = {}
 	end
 
-	table.insert(slot0.towerInfoList[slot1], slot2)
+	table.insert(arg_14_0.towerInfoList[arg_14_1], arg_14_2)
 end
 
-function slot0.getTowerInfoList(slot0, slot1)
-	return slot0.towerInfoList[slot1]
+function var_0_0.getTowerInfoList(arg_15_0, arg_15_1)
+	return arg_15_0.towerInfoList[arg_15_1]
 end
 
-function slot0.getTowerInfoById(slot0, slot1, slot2)
-	if not slot0.towerInfoMap[slot1] then
+function var_0_0.getTowerInfoById(arg_16_0, arg_16_1, arg_16_2)
+	if not arg_16_0.towerInfoMap[arg_16_1] then
 		return
 	end
 
-	return slot0.towerInfoMap[slot1][slot2]
+	return arg_16_0.towerInfoMap[arg_16_1][arg_16_2]
 end
 
-function slot0.getTowerListByStatus(slot0, slot1, slot2)
-	if slot2 == nil then
-		slot2 = TowerEnum.TowerStatus.Open
+function var_0_0.getTowerListByStatus(arg_17_0, arg_17_1, arg_17_2)
+	if arg_17_2 == nil then
+		arg_17_2 = TowerEnum.TowerStatus.Open
 	end
 
-	slot4 = {}
+	local var_17_0 = arg_17_0:getTowerOpenList(arg_17_1)
+	local var_17_1 = {}
 
-	for slot8, slot9 in pairs(slot0:getTowerOpenList(slot1)) do
-		if slot9.status == slot2 then
-			table.insert(slot4, slot9)
+	for iter_17_0, iter_17_1 in pairs(var_17_0) do
+		if iter_17_1.status == arg_17_2 then
+			table.insert(var_17_1, iter_17_1)
 		end
 	end
 
-	return slot4
+	return var_17_1
 end
 
-function slot0.getCurPermanentMo(slot0)
-	if slot0.towerInfoMap[TowerEnum.TowerType.Normal] then
-		return slot0.towerInfoMap[slot1][TowerEnum.PermanentTowerId]
+function var_0_0.getCurPermanentMo(arg_18_0)
+	local var_18_0 = TowerEnum.TowerType.Normal
+
+	if arg_18_0.towerInfoMap[var_18_0] then
+		return arg_18_0.towerInfoMap[var_18_0][TowerEnum.PermanentTowerId]
 	else
 		logError("towerInfoMap is Empty")
 	end
 end
 
-function slot0.initEpisodes(slot0)
-	if slot0.towerEpisodeMap then
+function var_0_0.initEpisodes(arg_19_0)
+	if arg_19_0.towerEpisodeMap then
 		return
 	end
 
-	slot0.towerEpisodeMap = {}
+	arg_19_0.towerEpisodeMap = {}
 
-	slot0:_initEpisode(TowerEnum.TowerType.Boss, TowerConfig.instance.bossTowerEpisodeConfig)
+	arg_19_0:_initEpisode(TowerEnum.TowerType.Boss, TowerConfig.instance.bossTowerEpisodeConfig)
 end
 
-function slot0._initEpisode(slot0, slot1, slot2)
-	slot3 = TowerEpisodeMo.New()
+function var_0_0._initEpisode(arg_20_0, arg_20_1, arg_20_2)
+	local var_20_0 = TowerEpisodeMo.New()
 
-	slot3:init(slot1, slot2)
+	var_20_0:init(arg_20_1, arg_20_2)
 
-	slot0.towerEpisodeMap[slot1] = slot3
+	arg_20_0.towerEpisodeMap[arg_20_1] = var_20_0
 end
 
-function slot0.getEpisodeMoByTowerType(slot0, slot1)
-	slot0:initEpisodes()
+function var_0_0.getEpisodeMoByTowerType(arg_21_0, arg_21_1)
+	arg_21_0:initEpisodes()
 
-	return slot0.towerEpisodeMap[slot1]
+	return arg_21_0.towerEpisodeMap[arg_21_1]
 end
 
-function slot0.setRecordFightParam(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot0.fightParam.towerType = slot1
-	slot0.fightParam.towerId = slot2
-	slot0.fightParam.layerId = slot3
-	slot0.fightParam.difficulty = slot4
-	slot0.fightParam.episodeId = slot5
+function var_0_0.setRecordFightParam(arg_22_0, arg_22_1, arg_22_2, arg_22_3, arg_22_4, arg_22_5)
+	arg_22_0.fightParam.towerType = arg_22_1
+	arg_22_0.fightParam.towerId = arg_22_2
+	arg_22_0.fightParam.layerId = arg_22_3
+	arg_22_0.fightParam.difficulty = arg_22_4
+	arg_22_0.fightParam.episodeId = arg_22_5
 
-	slot0:refreshHeroGroupInfo()
+	arg_22_0:refreshHeroGroupInfo()
 end
 
-function slot0.refreshHeroGroupInfo(slot0)
-	slot3 = slot0.fightParam.layerId
-	slot4 = slot0.fightParam.difficulty
-	slot5 = slot0.fightParam.episodeId
-	slot7, slot8, slot9, slot10, slot11, slot12, slot13, slot14 = nil
+function var_0_0.refreshHeroGroupInfo(arg_23_0)
+	local var_23_0 = arg_23_0.fightParam.towerType
+	local var_23_1 = arg_23_0.fightParam.towerId
+	local var_23_2 = arg_23_0.fightParam.layerId
+	local var_23_3 = arg_23_0.fightParam.difficulty
+	local var_23_4 = arg_23_0.fightParam.episodeId
+	local var_23_5 = arg_23_0:getTowerInfoById(var_23_0, var_23_1)
+	local var_23_6
+	local var_23_7
+	local var_23_8
+	local var_23_9
+	local var_23_10
+	local var_23_11
+	local var_23_12
+	local var_23_13
 
-	if slot0:getTowerInfoById(slot0.fightParam.towerType, slot0.fightParam.towerId) then
-		slot7, slot16 = slot6:isHeroGroupLock(slot3, slot5)
+	if var_23_5 then
+		local var_23_14, var_23_15 = var_23_5:isHeroGroupLock(var_23_2, var_23_4)
 
-		if slot16 then
-			slot8 = slot16.heroIds
-			slot9 = slot16.assistBossId
-			slot10 = slot16.equipUids
-			slot14 = slot16.trialHeroIds
+		var_23_6 = var_23_14
+
+		if var_23_15 then
+			var_23_7 = var_23_15.heroIds
+			var_23_8 = var_23_15.assistBossId
+			var_23_9 = var_23_15.equipUids
+			var_23_13 = var_23_15.trialHeroIds
 		end
 
-		slot11, slot12, slot13 = slot6:getBanHeroAndBoss(slot3, slot4, slot5)
+		var_23_10, var_23_11, var_23_12 = var_23_5:getBanHeroAndBoss(var_23_2, var_23_3, var_23_4)
 	end
 
-	slot0.fightParam.isHeroGroupLock = slot7
-	slot0.fightParam.heros = slot8
-	slot0.fightParam.equipUids = slot10
-	slot0.fightParam.trialHeros = slot14
-	slot0.fightParam.herosDict = {}
+	arg_23_0.fightParam.isHeroGroupLock = var_23_6
+	arg_23_0.fightParam.heros = var_23_7
+	arg_23_0.fightParam.equipUids = var_23_9
+	arg_23_0.fightParam.trialHeros = var_23_13
+	arg_23_0.fightParam.herosDict = {}
 
-	if slot8 then
-		for slot18 = 1, #slot8 do
-			slot0.fightParam.herosDict[slot8[slot18]] = 1
+	if var_23_7 then
+		for iter_23_0 = 1, #var_23_7 do
+			arg_23_0.fightParam.herosDict[var_23_7[iter_23_0]] = 1
 		end
 	end
 
-	slot0.fightParam.assistBoss = slot9
-	slot0.fightParam.banHeroDict = slot11
-	slot0.fightParam.banAssistBossDict = slot12
-	slot0.fightParam.banTrialDict = slot13
+	arg_23_0.fightParam.assistBoss = var_23_8
+	arg_23_0.fightParam.banHeroDict = var_23_10
+	arg_23_0.fightParam.banAssistBossDict = var_23_11
+	arg_23_0.fightParam.banTrialDict = var_23_12
 end
 
-function slot0.getRecordFightParam(slot0)
-	return slot0.fightParam
+function var_0_0.getRecordFightParam(arg_24_0)
+	return arg_24_0.fightParam
 end
 
-function slot0.updateMopUpTimes(slot0, slot1)
-	slot0.mopUpTimes = slot1
+function var_0_0.updateMopUpTimes(arg_25_0, arg_25_1)
+	arg_25_0.mopUpTimes = arg_25_1
 end
 
-function slot0.getMopUpTimes(slot0)
-	return slot0.mopUpTimes
+function var_0_0.getMopUpTimes(arg_26_0)
+	return arg_26_0.mopUpTimes
 end
 
-function slot0.updateTrialHeroSeason(slot0, slot1)
-	slot0.trialHeroSeason = slot1
+function var_0_0.updateTrialHeroSeason(arg_27_0, arg_27_1)
+	arg_27_0.trialHeroSeason = arg_27_1
 end
 
-function slot0.getTrialHeroSeason(slot0)
-	return slot0.trialHeroSeason
+function var_0_0.getTrialHeroSeason(arg_28_0)
+	return arg_28_0.trialHeroSeason
 end
 
-function slot0.resetTowerSubEpisode(slot0, slot1)
-	slot4 = slot1.layerInfo
-	slot5 = slot0:getTowerInfoById(slot1.towerType, slot1.towerId)
+function var_0_0.resetTowerSubEpisode(arg_29_0, arg_29_1)
+	local var_29_0 = arg_29_1.towerType
+	local var_29_1 = arg_29_1.towerId
+	local var_29_2 = arg_29_1.layerInfo
+	local var_29_3 = arg_29_0:getTowerInfoById(var_29_0, var_29_1)
 
-	slot5:resetLayerInfos(slot4)
-	slot5:resetLayerScore(slot4)
-	slot5:updateHistoryHighScore(slot1.historyHighScore)
+	var_29_3:resetLayerInfos(var_29_2)
+	var_29_3:resetLayerScore(var_29_2)
+	var_29_3:updateHistoryHighScore(arg_29_1.historyHighScore)
 end
 
-function slot0.getTowerInfoList(slot0, slot1)
-	if not slot0.towerInfoMap[slot1] then
+function var_0_0.getTowerInfoList(arg_30_0, arg_30_1)
+	if not arg_30_0.towerInfoMap[arg_30_1] then
 		logError("towerInfoMap is Empty")
 
 		return {}
 	end
 
-	if not slot0.towerInfoList[slot1] then
-		slot0.towerInfoList[slot1] = {}
+	if not arg_30_0.towerInfoList[arg_30_1] then
+		arg_30_0.towerInfoList[arg_30_1] = {}
 
-		for slot5, slot6 in pairs(slot0.towerInfoMap[slot1]) do
-			table.insert(slot0.towerInfoList[slot1], slot6)
+		for iter_30_0, iter_30_1 in pairs(arg_30_0.towerInfoMap[arg_30_1]) do
+			table.insert(arg_30_0.towerInfoList[arg_30_1], iter_30_1)
 		end
 
-		table.sort(slot0.towerInfoList[slot1], function (slot0, slot1)
-			return slot0.towerId < slot1.towerId
+		table.sort(arg_30_0.towerInfoList[arg_30_1], function(arg_31_0, arg_31_1)
+			return arg_31_0.towerId < arg_31_1.towerId
 		end)
 	end
 
-	return slot0.towerInfoList[slot1]
+	return arg_30_0.towerInfoList[arg_30_1]
 end
 
-function slot0.getLocalPrefsTab(slot0, slot1, slot2)
-	if not slot0.localPrefsDict[slot0:prefabKeyPrefs(slot1, slot2)] then
-		slot4 = {}
+function var_0_0.getLocalPrefsTab(arg_32_0, arg_32_1, arg_32_2)
+	local var_32_0 = arg_32_0:prefabKeyPrefs(arg_32_1, arg_32_2)
 
-		if GameUtil.splitString2(TowerController.instance:getPlayerPrefs(slot3), true) then
-			for slot10, slot11 in ipairs(slot6) do
-				slot4[slot11[1]] = slot11[2]
+	if not arg_32_0.localPrefsDict[var_32_0] then
+		local var_32_1 = {}
+		local var_32_2 = TowerController.instance:getPlayerPrefs(var_32_0)
+		local var_32_3 = GameUtil.splitString2(var_32_2, true)
+
+		if var_32_3 then
+			for iter_32_0, iter_32_1 in ipairs(var_32_3) do
+				var_32_1[iter_32_1[1]] = iter_32_1[2]
 			end
 		end
 
-		slot0.localPrefsDict[slot3] = slot4
+		arg_32_0.localPrefsDict[var_32_0] = var_32_1
 	end
 
-	return slot0.localPrefsDict[slot3]
+	return arg_32_0.localPrefsDict[var_32_0]
 end
 
-function slot0.getLocalPrefsState(slot0, slot1, slot2, slot3, slot4)
-	return slot0:getLocalPrefsTab(slot1, slot3)[slot2] or slot4
+function var_0_0.getLocalPrefsState(arg_33_0, arg_33_1, arg_33_2, arg_33_3, arg_33_4)
+	return arg_33_0:getLocalPrefsTab(arg_33_1, arg_33_3)[arg_33_2] or arg_33_4
 end
 
-function slot0.setLocalPrefsState(slot0, slot1, slot2, slot3, slot4)
-	if slot0:getLocalPrefsTab(slot1, slot3)[slot2] == slot4 then
+function var_0_0.setLocalPrefsState(arg_34_0, arg_34_1, arg_34_2, arg_34_3, arg_34_4)
+	local var_34_0 = arg_34_0:getLocalPrefsTab(arg_34_1, arg_34_3)
+
+	if var_34_0[arg_34_2] == arg_34_4 then
 		return
 	end
 
-	slot5[slot2] = slot4
-	slot6 = {}
+	var_34_0[arg_34_2] = arg_34_4
 
-	for slot10, slot11 in pairs(slot5) do
-		table.insert(slot6, string.format("%s#%s", slot10, slot11))
+	local var_34_1 = {}
+
+	for iter_34_0, iter_34_1 in pairs(var_34_0) do
+		table.insert(var_34_1, string.format("%s#%s", iter_34_0, iter_34_1))
 	end
 
-	TowerController.instance:setPlayerPrefs(slot0:prefabKeyPrefs(slot1, slot3), table.concat(slot6, "|"))
+	local var_34_2 = table.concat(var_34_1, "|")
+	local var_34_3 = arg_34_0:prefabKeyPrefs(arg_34_1, arg_34_3)
+
+	TowerController.instance:setPlayerPrefs(var_34_3, var_34_2)
 end
 
-function slot0.prefabKeyPrefs(slot0, slot1, slot2)
-	if string.nilorempty(slot1) then
-		return slot1
+function var_0_0.prefabKeyPrefs(arg_35_0, arg_35_1, arg_35_2)
+	if string.nilorempty(arg_35_1) then
+		return arg_35_1
 	end
 
-	slot3 = slot2.type
-	slot4 = slot2.towerId
-	slot5 = slot2.round
+	local var_35_0 = arg_35_2.type
+	local var_35_1 = arg_35_2.towerId
+	local var_35_2 = arg_35_2.round
 
-	if slot1 == TowerEnum.LocalPrefsKey.NewBossOpen then
-		slot5 = 1
+	if arg_35_1 == TowerEnum.LocalPrefsKey.NewBossOpen then
+		var_35_2 = 1
 	end
 
-	return string.format("Tower_%s_%s_%s_%s", slot1, slot3, slot4, slot5)
+	return (string.format("Tower_%s_%s_%s_%s", arg_35_1, var_35_0, var_35_1, var_35_2))
 end
 
-function slot0.hasNewBossOpen(slot0)
-	slot1 = false
+function var_0_0.hasNewBossOpen(arg_36_0)
+	local var_36_0 = false
+	local var_36_1 = var_0_0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)
 
-	for slot6, slot7 in ipairs(uv0.instance:getTowerListByStatus(TowerEnum.TowerType.Boss, TowerEnum.TowerStatus.Open)) do
-		if uv0.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewBossOpen, slot7.towerId, slot7, TowerEnum.LockKey) == TowerEnum.LockKey and TowerEnum.UnlockKey == TowerEnum.UnlockKey then
-			slot1 = true
+	for iter_36_0, iter_36_1 in ipairs(var_36_1) do
+		local var_36_2 = var_0_0.instance:getLocalPrefsState(TowerEnum.LocalPrefsKey.NewBossOpen, iter_36_1.towerId, iter_36_1, TowerEnum.LockKey)
+		local var_36_3 = TowerEnum.UnlockKey
+
+		if var_36_2 == TowerEnum.LockKey and var_36_3 == TowerEnum.UnlockKey then
+			var_36_0 = true
 
 			break
 		end
 	end
 
-	return slot1
+	return var_36_0
 end
 
-function slot0.isHeroLocked(slot0, slot1)
-	return slot0:getRecordFightParam().herosDict and slot3[slot1] ~= nil
+function var_0_0.isHeroLocked(arg_37_0, arg_37_1)
+	local var_37_0 = arg_37_0:getRecordFightParam().herosDict
+
+	return var_37_0 and var_37_0[arg_37_1] ~= nil
 end
 
-function slot0.isBossLocked(slot0, slot1)
-	return slot0:getRecordFightParam().assistBoss == slot1
+function var_0_0.isBossLocked(arg_38_0, arg_38_1)
+	return arg_38_0:getRecordFightParam().assistBoss == arg_38_1
 end
 
-function slot0.isHeroBan(slot0, slot1)
-	return slot0:getRecordFightParam().banHeroDict and slot3[slot1] ~= nil
+function var_0_0.isHeroBan(arg_39_0, arg_39_1)
+	local var_39_0 = arg_39_0:getRecordFightParam().banHeroDict
+
+	return var_39_0 and var_39_0[arg_39_1] ~= nil
 end
 
-function slot0.isBossBan(slot0, slot1)
-	return slot0:getRecordFightParam().banAssistBossDict and slot3[slot1] ~= nil
+function var_0_0.isBossBan(arg_40_0, arg_40_1)
+	local var_40_0 = arg_40_0:getRecordFightParam().banAssistBossDict
+
+	return var_40_0 and var_40_0[arg_40_1] ~= nil
 end
 
-function slot0.isTrialHeroBan(slot0, slot1)
-	return slot0:getRecordFightParam().banTrialDict and slot3[slot1] ~= nil
+function var_0_0.isTrialHeroBan(arg_41_0, arg_41_1)
+	local var_41_0 = arg_41_0:getRecordFightParam().banTrialDict
+
+	return var_41_0 and var_41_0[arg_41_1] ~= nil
 end
 
-function slot0.isLimitTowerBossBan(slot0, slot1, slot2, slot3)
-	if slot1 == TowerEnum.TowerType.Limited then
-		if TowerConfig.instance:getTowerLimitedTimeCo(slot2) then
-			for slot9, slot10 in ipairs(string.splitToNumber(slot4.bossPool, "#")) do
-				if slot10 == slot3 then
+function var_0_0.isLimitTowerBossBan(arg_42_0, arg_42_1, arg_42_2, arg_42_3)
+	if arg_42_1 == TowerEnum.TowerType.Limited then
+		local var_42_0 = TowerConfig.instance:getTowerLimitedTimeCo(arg_42_2)
+
+		if var_42_0 then
+			local var_42_1 = string.splitToNumber(var_42_0.bossPool, "#")
+
+			for iter_42_0, iter_42_1 in ipairs(var_42_1) do
+				if iter_42_1 == arg_42_3 then
 					return false
 				end
 			end
@@ -413,15 +474,17 @@ function slot0.isLimitTowerBossBan(slot0, slot1, slot2, slot3)
 	end
 end
 
-function slot0.isInTowerBattle(slot0)
-	slot2 = HeroGroupModel.instance.episodeId and lua_episode.configDict[slot1]
+function var_0_0.isInTowerBattle(arg_43_0)
+	local var_43_0 = HeroGroupModel.instance.episodeId
+	local var_43_1 = var_43_0 and lua_episode.configDict[var_43_0]
+	local var_43_2 = var_43_1 and var_43_1.type
 
-	return slot0:isTowerEpisode(slot2 and slot2.type)
+	return arg_43_0:isTowerEpisode(var_43_2)
 end
 
-function slot0.isTowerEpisode(slot0, slot1)
-	if not slot0._towerEpisodeTypeDefine then
-		slot0._towerEpisodeTypeDefine = {
+function var_0_0.isTowerEpisode(arg_44_0, arg_44_1)
+	if not arg_44_0._towerEpisodeTypeDefine then
+		arg_44_0._towerEpisodeTypeDefine = {
 			[DungeonEnum.EpisodeType.TowerPermanent] = 1,
 			[DungeonEnum.EpisodeType.TowerBoss] = 1,
 			[DungeonEnum.EpisodeType.TowerLimited] = 1,
@@ -429,12 +492,14 @@ function slot0.isTowerEpisode(slot0, slot1)
 		}
 	end
 
-	return slot0._towerEpisodeTypeDefine[slot1] ~= nil
+	return arg_44_0._towerEpisodeTypeDefine[arg_44_1] ~= nil
 end
 
-function slot0.checkHasOpenStateTower(slot0, slot1)
-	for slot6, slot7 in ipairs(slot0:getTowerOpenList(slot1)) do
-		if slot7.status == TowerEnum.TowerStatus.Open then
+function var_0_0.checkHasOpenStateTower(arg_45_0, arg_45_1)
+	local var_45_0 = arg_45_0:getTowerOpenList(arg_45_1)
+
+	for iter_45_0, iter_45_1 in ipairs(var_45_0) do
+		if iter_45_1.status == TowerEnum.TowerStatus.Open then
 			return true
 		end
 	end
@@ -442,51 +507,59 @@ function slot0.checkHasOpenStateTower(slot0, slot1)
 	return false
 end
 
-function slot0.getFirstUnOpenTowerInfo(slot0, slot1)
-	if not slot0:checkHasOpenStateTower(slot1) then
-		slot2 = -1
-		slot3 = nil
+function var_0_0.getFirstUnOpenTowerInfo(arg_46_0, arg_46_1)
+	if not arg_46_0:checkHasOpenStateTower(arg_46_1) then
+		local var_46_0 = -1
+		local var_46_1
+		local var_46_2 = arg_46_0:getTowerOpenList(arg_46_1)
 
-		for slot8, slot9 in ipairs(slot0:getTowerOpenList(slot1)) do
-			if slot9.status == TowerEnum.TowerStatus.Ready then
-				slot10 = slot9.nextTime
+		for iter_46_0, iter_46_1 in ipairs(var_46_2) do
+			if iter_46_1.status == TowerEnum.TowerStatus.Ready then
+				local var_46_3 = iter_46_1.nextTime
 
-				if slot2 == -1 or slot10 < slot2 then
-					slot2 = slot10
-					slot3 = slot9
+				if var_46_0 == -1 or var_46_3 < var_46_0 then
+					var_46_0 = var_46_3
+					var_46_1 = iter_46_1
 				end
 			end
 		end
 
-		return slot3
+		return var_46_1
 	end
 end
 
-function slot0.isBossOpen(slot0, slot1)
-	if not TowerConfig.instance:getAssistBossConfig(slot1) then
+function var_0_0.isBossOpen(arg_47_0, arg_47_1)
+	local var_47_0 = TowerConfig.instance:getAssistBossConfig(arg_47_1)
+
+	if not var_47_0 then
 		return false
 	end
 
-	if not TowerConfig.instance:getBossTimeTowerConfig(slot2.towerId, 1) then
+	local var_47_1 = var_47_0.towerId
+	local var_47_2 = TowerConfig.instance:getBossTimeTowerConfig(var_47_1, 1)
+
+	if not var_47_2 then
 		return false
 	end
 
-	return TimeUtil.stringToTimestamp(string.format("%s 5:0:0", slot4.startTime)) <= ServerTime.now()
+	local var_47_3 = string.format("%s 5:0:0", var_47_2.startTime)
+
+	return TimeUtil.stringToTimestamp(var_47_3) <= ServerTime.now()
 end
 
-function slot0.setCurTowerType(slot0, slot1)
-	slot0.curTowerType = slot1
+function var_0_0.setCurTowerType(arg_48_0, arg_48_1)
+	arg_48_0.curTowerType = arg_48_1
 end
 
-function slot0.getCurTowerType(slot0)
-	return slot0.curTowerType
+function var_0_0.getCurTowerType(arg_49_0)
+	return arg_49_0.curTowerType
 end
 
-function slot0.cleanTrialData(slot0)
+function var_0_0.cleanTrialData(arg_50_0)
 	TowerAssistBossModel.instance:cleanTrialLevel()
-	slot0:setCurTowerType(nil)
+	arg_50_0:setCurTowerType(nil)
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

@@ -1,48 +1,50 @@
-module("modules.logic.fight.view.FightDouQuQuCoinView", package.seeall)
+﻿module("modules.logic.fight.view.FightDouQuQuCoinView", package.seeall)
 
-slot0 = class("FightDouQuQuCoinView", FightBaseView)
+local var_0_0 = class("FightDouQuQuCoinView", FightBaseView)
 
-function slot0.onInitView(slot0)
-	slot0.coinText = gohelper.findChildText(slot0.viewGO, "root/#txt_CoinCnt1")
-	slot0.changeText = gohelper.findChildText(slot0.viewGO, "root/#txt_num")
-	slot0.addEffect = gohelper.findChild(slot0.viewGO, "root/#add")
-	slot0.subEffect = gohelper.findChild(slot0.viewGO, "root/#subtract")
+function var_0_0.onInitView(arg_1_0)
+	arg_1_0.coinText = gohelper.findChildText(arg_1_0.viewGO, "root/#txt_CoinCnt1")
+	arg_1_0.changeText = gohelper.findChildText(arg_1_0.viewGO, "root/#txt_num")
+	arg_1_0.addEffect = gohelper.findChild(arg_1_0.viewGO, "root/#add")
+	arg_1_0.subEffect = gohelper.findChild(arg_1_0.viewGO, "root/#subtract")
 
-	gohelper.setActive(slot0.addEffect, false)
-	gohelper.setActive(slot0.subEffect, false)
+	gohelper.setActive(arg_1_0.addEffect, false)
+	gohelper.setActive(arg_1_0.subEffect, false)
 
-	slot0.changeText.text = ""
+	arg_1_0.changeText.text = ""
 end
 
-function slot0.addEvents(slot0)
-	slot0:com_registFightEvent(FightEvent.UpdateFightParam, slot0.onUpdateFightParam)
+function var_0_0.addEvents(arg_2_0)
+	arg_2_0:com_registFightEvent(FightEvent.UpdateFightParam, arg_2_0.onUpdateFightParam)
 end
 
-function slot0.onUpdateFightParam(slot0, slot1, slot2, slot3, slot4)
-	if slot1 ~= FightParamData.ParamKey.ACT191_COIN then
+function var_0_0.onUpdateFightParam(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
+	if arg_3_1 ~= FightParamData.ParamKey.ACT191_COIN then
 		return
 	end
 
-	slot0.changeText.text = -slot4
+	arg_3_0.changeText.text = -arg_3_4
 
-	gohelper.setActive(slot0.subEffect, false)
-	gohelper.setActive(slot0.subEffect, true)
-	slot0:com_registSingleTimer(slot0.hideEffect, 1)
-	slot0:com_scrollNumTween(slot0.coinText, slot2, slot3, 0.5)
+	gohelper.setActive(arg_3_0.subEffect, false)
+	gohelper.setActive(arg_3_0.subEffect, true)
+	arg_3_0:com_registSingleTimer(arg_3_0.hideEffect, 1)
+	arg_3_0:com_scrollNumTween(arg_3_0.coinText, arg_3_2, arg_3_3, 0.5)
 end
 
-function slot0.hideEffect(slot0)
-	gohelper.setActive(slot0.subEffect, false)
+function var_0_0.hideEffect(arg_4_0)
+	gohelper.setActive(arg_4_0.subEffect, false)
 
-	slot0.changeText.text = ""
+	arg_4_0.changeText.text = ""
 end
 
-function slot0.refreshData(slot0)
-	slot0.coinText.text = FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_COIN]
+function var_0_0.refreshData(arg_5_0)
+	local var_5_0 = FightDataHelper.fieldMgr.param[FightParamData.ParamKey.ACT191_COIN]
+
+	arg_5_0.coinText.text = var_5_0
 end
 
-function slot0.onOpen(slot0)
-	slot0:refreshData()
+function var_0_0.onOpen(arg_6_0)
+	arg_6_0:refreshData()
 end
 
-return slot0
+return var_0_0

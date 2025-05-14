@@ -1,44 +1,48 @@
-module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.controller.V2a7_SelfSelectSix_PickChoiceController", package.seeall)
+﻿module("modules.logic.versionactivity2_7.v2a7_selfselectsix_1.controller.V2a7_SelfSelectSix_PickChoiceController", package.seeall)
 
-slot0 = class("V2a7_SelfSelectSix_PickChoiceController", BaseController)
+local var_0_0 = class("V2a7_SelfSelectSix_PickChoiceController", BaseController)
 
-function slot0.onInit(slot0)
-	slot0._pickHandler = nil
-	slot0._pickHandlerObj = nil
-	slot0._showMsgBoxFunc = nil
-	slot0._showMsgBoxFuncObj = nil
-	slot0._tmpViewParam = nil
+function var_0_0.onInit(arg_1_0)
+	arg_1_0._pickHandler = nil
+	arg_1_0._pickHandlerObj = nil
+	arg_1_0._showMsgBoxFunc = nil
+	arg_1_0._showMsgBoxFuncObj = nil
+	arg_1_0._tmpViewParam = nil
 end
 
-function slot0.onInitFinish(slot0)
+function var_0_0.onInitFinish(arg_2_0)
+	return
 end
 
-function slot0.addConstEvents(slot0)
+function var_0_0.addConstEvents(arg_3_0)
+	return
 end
 
-function slot0.reInit(slot0)
-	slot0:onInit()
+function var_0_0.reInit(arg_4_0)
+	arg_4_0:onInit()
 end
 
-function slot0.openCustomPickChoiceView(slot0, slot1, slot2, slot3, slot4, slot5, slot6, slot7)
-	slot0._pickHandler = slot2
-	slot0._pickHandlerObj = slot3
-	slot0._showMsgBoxFunc = slot5
-	slot0._showMsgBoxFuncObj = slot6
+function var_0_0.openCustomPickChoiceView(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4, arg_5_5, arg_5_6, arg_5_7)
+	arg_5_0._pickHandler = arg_5_2
+	arg_5_0._pickHandlerObj = arg_5_3
+	arg_5_0._showMsgBoxFunc = arg_5_5
+	arg_5_0._showMsgBoxFuncObj = arg_5_6
 
-	V2a7_SelfSelectSix_PickChoiceListModel.instance:initData(slot1, slot7)
-	ViewMgr.instance:openView(ViewName.V2a7_SelfSelectSix_PickChoiceView, slot4)
+	V2a7_SelfSelectSix_PickChoiceListModel.instance:initData(arg_5_1, arg_5_7)
+	ViewMgr.instance:openView(ViewName.V2a7_SelfSelectSix_PickChoiceView, arg_5_4)
 end
 
-function slot0.onOpenView(slot0)
-	slot0:dispatchEvent(V2a7_SelfSelectSix_PickChoiceEvent.onCustomPickListChanged)
+function var_0_0.onOpenView(arg_6_0)
+	arg_6_0:dispatchEvent(V2a7_SelfSelectSix_PickChoiceEvent.onCustomPickListChanged)
 end
 
-function slot0.setSelect(slot0, slot1)
-	slot4 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getMaxSelectCount()
+function var_0_0.setSelect(arg_7_0, arg_7_1)
+	local var_7_0 = V2a7_SelfSelectSix_PickChoiceListModel.instance:isHeroIdSelected(arg_7_1)
+	local var_7_1 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectCount()
+	local var_7_2 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getMaxSelectCount()
 
-	if not V2a7_SelfSelectSix_PickChoiceListModel.instance:isHeroIdSelected(slot1) and slot4 <= V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectCount() then
-		if slot4 > 1 then
+	if not var_7_0 and var_7_2 <= var_7_1 then
+		if var_7_2 > 1 then
 			GameFacade.showToast(ToastEnum.CustomPickPleaseCancel)
 
 			return
@@ -47,68 +51,84 @@ function slot0.setSelect(slot0, slot1)
 		end
 	end
 
-	V2a7_SelfSelectSix_PickChoiceListModel.instance:setSelectId(slot1)
-	slot0:dispatchEvent(V2a7_SelfSelectSix_PickChoiceEvent.onCustomPickListChanged)
+	V2a7_SelfSelectSix_PickChoiceListModel.instance:setSelectId(arg_7_1)
+	arg_7_0:dispatchEvent(V2a7_SelfSelectSix_PickChoiceEvent.onCustomPickListChanged)
 end
 
-function slot0.tryChoice(slot0, slot1)
-	slot2 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getMaxSelectCount()
+function var_0_0.tryChoice(arg_8_0, arg_8_1)
+	local var_8_0 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getMaxSelectCount()
+	local var_8_1 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectCount()
 
-	if not V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectCount() or slot2 < slot3 then
+	if not var_8_1 or var_8_0 < var_8_1 then
 		return false
 	end
 
-	if slot3 < slot2 then
+	if var_8_1 < var_8_0 then
 		GameFacade.showToast(ToastEnum.NoChoiceHero)
 
 		return false
 	end
 
-	slot0._tmpViewParam = slot1
+	arg_8_0._tmpViewParam = arg_8_1
 
-	if slot0._showMsgBoxFunc then
-		if slot0._showMsgBoxFuncObj then
-			slot0._showMsgBoxFunc(slot0._showMsgBoxFuncObj, slot0.realChoice, slot0)
+	if arg_8_0._showMsgBoxFunc then
+		if arg_8_0._showMsgBoxFuncObj then
+			arg_8_0._showMsgBoxFunc(arg_8_0._showMsgBoxFuncObj, arg_8_0.realChoice, arg_8_0)
 		else
-			slot0._showMsgBoxFunc(slot0.realChoice, slot0)
+			arg_8_0._showMsgBoxFunc(arg_8_0.realChoice, arg_8_0)
 		end
 	else
-		slot4 = nil
-		slot5 = false
+		local var_8_2
+		local var_8_3 = false
+		local var_8_4 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectIds()
 
-		if V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectIds() then
-			for slot10, slot11 in ipairs(slot6) do
-				if not slot5 and HeroModel.instance:getByHeroId(slot11) then
-					slot5 = true
+		if var_8_4 then
+			for iter_8_0, iter_8_1 in ipairs(var_8_4) do
+				local var_8_5 = HeroModel.instance:getByHeroId(iter_8_1)
+
+				if not var_8_3 and var_8_5 then
+					var_8_3 = true
 				end
 
-				if HeroConfig.instance:getHeroCO(slot11) then
-					slot14 = slot13 and slot13.name or ""
-					slot4 = string.nilorempty(slot4) and slot14 or GameUtil.getSubPlaceholderLuaLang(luaLang("custompickchoice_select_heros"), {
-						slot14,
-						slot14
-					})
+				local var_8_6 = HeroConfig.instance:getHeroCO(iter_8_1)
+
+				if var_8_6 then
+					local var_8_7 = var_8_6 and var_8_6.name or ""
+
+					if string.nilorempty(var_8_2) then
+						var_8_2 = var_8_7
+					else
+						var_8_2 = GameUtil.getSubPlaceholderLuaLang(luaLang("custompickchoice_select_heros"), {
+							var_8_2,
+							var_8_7
+						})
+					end
 				end
 			end
 		end
 
-		GameFacade.showMessageBox(slot5 and MessageBoxIdDefine.CustomPickChoiceHasHero or MessageBoxIdDefine.CustomPickChoiceConfirm, MsgBoxEnum.BoxType.Yes_No, slot0.realChoice, nil, , slot0, nil, , slot4)
+		local var_8_8 = var_8_3 and MessageBoxIdDefine.CustomPickChoiceHasHero or MessageBoxIdDefine.CustomPickChoiceConfirm
+
+		GameFacade.showMessageBox(var_8_8, MsgBoxEnum.BoxType.Yes_No, arg_8_0.realChoice, nil, nil, arg_8_0, nil, nil, var_8_2)
 	end
 end
 
-function slot0.realChoice(slot0)
-	if not slot0._pickHandler then
+function var_0_0.realChoice(arg_9_0)
+	if not arg_9_0._pickHandler then
 		return
 	end
 
-	slot0._pickHandler(slot0._pickHandlerObj, slot0._tmpViewParam, V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectIds())
+	local var_9_0 = V2a7_SelfSelectSix_PickChoiceListModel.instance:getSelectIds()
 
-	slot0._tmpViewParam = nil
+	arg_9_0._pickHandler(arg_9_0._pickHandlerObj, arg_9_0._tmpViewParam, var_9_0)
+
+	arg_9_0._tmpViewParam = nil
 end
 
-function slot0.onCloseView(slot0)
+function var_0_0.onCloseView(arg_10_0)
+	return
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

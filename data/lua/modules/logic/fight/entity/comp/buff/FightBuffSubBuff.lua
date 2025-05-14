@@ -1,160 +1,173 @@
-module("modules.logic.fight.entity.comp.buff.FightBuffSubBuff", package.seeall)
+﻿module("modules.logic.fight.entity.comp.buff.FightBuffSubBuff", package.seeall)
 
-slot0 = class("FightBuffSubBuff")
+local var_0_0 = class("FightBuffSubBuff")
 
-function slot0.onBuffStart(slot0, slot1, slot2)
-	slot0.entity = slot1
-	slot0.entityId = slot1.id
-	slot0.existCount = 0
-	slot0.effectList = {}
+function var_0_0.onBuffStart(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.entity = arg_1_1
+	arg_1_0.entityId = arg_1_1.id
+	arg_1_0.existCount = 0
+	arg_1_0.effectList = {}
 
-	FightController.instance:registerCallback(FightEvent.ASFD_PullOut, slot0.pullOutAllEffect, slot0)
-	slot0:tryCreateALFResidualEffect(slot2)
+	FightController.instance:registerCallback(FightEvent.ASFD_PullOut, arg_1_0.pullOutAllEffect, arg_1_0)
+	arg_1_0:tryCreateALFResidualEffect(arg_1_2)
 end
 
-function slot0.log(slot0, slot1, slot2)
-	logError(string.format("[%s] entityId : %s, entityName : %s, subBuffComp : %s, buffUid : %s, buffCoId : %s, buffName : %s, buffLayer : %s", slot1, slot0.entityId, FightHelper.getEntityName(slot0.entity), slot0, slot2 and slot2.uid, slot2 and slot2.buffId, slot2 and slot2:getCO().name, slot2 and slot2.layer))
+function var_0_0.log(arg_2_0, arg_2_1, arg_2_2)
+	logError(string.format("[%s] entityId : %s, entityName : %s, subBuffComp : %s, buffUid : %s, buffCoId : %s, buffName : %s, buffLayer : %s", arg_2_1, arg_2_0.entityId, FightHelper.getEntityName(arg_2_0.entity), arg_2_0, arg_2_2 and arg_2_2.uid, arg_2_2 and arg_2_2.buffId, arg_2_2 and arg_2_2:getCO().name, arg_2_2 and arg_2_2.layer))
 end
 
-function slot0.onBuffUpdate(slot0, slot1)
-	slot0:tryCreateALFResidualEffect(slot1)
+function var_0_0.onBuffUpdate(arg_3_0, arg_3_1)
+	arg_3_0:tryCreateALFResidualEffect(arg_3_1)
 end
 
-function slot0.tryCreateALFResidualEffect(slot0, slot1)
-	while slot0.existCount < slot1.layer do
-		if not FightDataHelper.ASFDDataMgr:checkCanAddALFResidual(slot0.entityId) then
+function var_0_0.tryCreateALFResidualEffect(arg_4_0, arg_4_1)
+	while arg_4_0.existCount < arg_4_1.layer do
+		if not FightDataHelper.ASFDDataMgr:checkCanAddALFResidual(arg_4_0.entityId) then
 			break
 		end
 
-		slot3 = nil
-		slot3 = (not FightDataHelper.ASFDDataMgr:popEntityResidualData(slot0.entityId) or not slot2.missileRes or lua_fight_sp_effect_alf.configDict[slot2.missileRes]) and FightHeroSpEffectConfig.instance:getRandomAlfASFDMissileRes()
+		local var_4_0 = FightDataHelper.ASFDDataMgr:popEntityResidualData(arg_4_0.entityId)
+		local var_4_1
 
-		if not string.nilorempty(slot3 and slot3.residualRes) then
-			slot5 = slot0.entity.effect:addHangEffect(slot4, ModuleEnum.SpineHangPoint.mountbody)
+		if var_4_0 and var_4_0.missileRes then
+			var_4_1 = lua_fight_sp_effect_alf.configDict[var_4_0.missileRes]
+		else
+			var_4_1 = FightHeroSpEffectConfig.instance:getRandomAlfASFDMissileRes()
+		end
 
-			FightRenderOrderMgr.instance:addEffectWrapByOrder(slot0.entityId, slot5, FightRenderOrderMgr.MaxOrder)
-			slot5:setLocalPos(0, 0, 0)
+		local var_4_2 = var_4_1 and var_4_1.residualRes
 
-			slot6 = slot2 and slot2.startPos
-			slot7 = slot2 and slot2.endPos
-			slot8 = nil
-			slot8 = (not slot6 or not slot7 or FightASFDHelper.getZRotation(slot6.x, slot6.y, slot7.x, slot7.y)) and math.random(-30, 30)
+		if not string.nilorempty(var_4_2) then
+			local var_4_3 = arg_4_0.entity.effect:addHangEffect(var_4_2, ModuleEnum.SpineHangPoint.mountbody)
 
-			slot0:setRotation(slot5.containerGO.transform, slot8)
-			table.insert(slot0.effectList, {
-				slot5,
-				slot3,
-				slot8
+			FightRenderOrderMgr.instance:addEffectWrapByOrder(arg_4_0.entityId, var_4_3, FightRenderOrderMgr.MaxOrder)
+			var_4_3:setLocalPos(0, 0, 0)
+
+			local var_4_4 = var_4_0 and var_4_0.startPos
+			local var_4_5 = var_4_0 and var_4_0.endPos
+			local var_4_6
+
+			if var_4_4 and var_4_5 then
+				var_4_6 = FightASFDHelper.getZRotation(var_4_4.x, var_4_4.y, var_4_5.x, var_4_5.y)
+			else
+				var_4_6 = math.random(-30, 30)
+			end
+
+			arg_4_0:setRotation(var_4_3.containerGO.transform, var_4_6)
+			table.insert(arg_4_0.effectList, {
+				var_4_3,
+				var_4_1,
+				var_4_6
 			})
-			slot0.entity.buff:addLoopBuff(slot5)
+			arg_4_0.entity.buff:addLoopBuff(var_4_3)
 		end
 
-		slot0.existCount = slot0.existCount + 1
+		arg_4_0.existCount = arg_4_0.existCount + 1
 
-		FightDataHelper.ASFDDataMgr:addALFResidual(slot0.entityId, 1)
+		FightDataHelper.ASFDDataMgr:addALFResidual(arg_4_0.entityId, 1)
 	end
 end
 
-function slot0.pullOutAllEffect(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0.effectList) do
-		slot7 = slot6[1]
-		slot8 = slot6[2]
-		slot9 = slot6[3]
+function var_0_0.pullOutAllEffect(arg_5_0, arg_5_1)
+	for iter_5_0, iter_5_1 in ipairs(arg_5_0.effectList) do
+		local var_5_0 = iter_5_1[1]
+		local var_5_1 = iter_5_1[2]
+		local var_5_2 = iter_5_1[3]
 
-		if slot0.entity then
-			slot0.entity.buff:removeLoopBuff(slot7)
-			slot0.entity.effect:removeEffect(slot7)
+		if arg_5_0.entity then
+			arg_5_0.entity.buff:removeLoopBuff(var_5_0)
+			arg_5_0.entity.effect:removeEffect(var_5_0)
 		end
 
-		FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0.entityId, slot7)
+		FightRenderOrderMgr.instance:onRemoveEffectWrap(arg_5_0.entityId, var_5_0)
 
-		if slot8 then
-			slot10 = slot0.entity.effect:addHangEffect(slot8.pullOutRes, ModuleEnum.SpineHangPoint.mountmiddle, nil, 1)
+		if var_5_1 then
+			local var_5_3 = arg_5_0.entity.effect:addHangEffect(var_5_1.pullOutRes, ModuleEnum.SpineHangPoint.mountmiddle, nil, 1)
 
-			slot10:setLocalPos(0, 0, 0)
-			FightRenderOrderMgr.instance:addEffectWrapByOrder(slot0.entityId, slot10, FightRenderOrderMgr.MaxOrder)
-			slot0:setRotation(slot10.containerGO.transform, slot9)
-			slot0:playAudio(slot8.audioId)
+			var_5_3:setLocalPos(0, 0, 0)
+			FightRenderOrderMgr.instance:addEffectWrapByOrder(arg_5_0.entityId, var_5_3, FightRenderOrderMgr.MaxOrder)
+			arg_5_0:setRotation(var_5_3.containerGO.transform, var_5_2)
+			arg_5_0:playAudio(var_5_1.audioId)
 		end
 	end
 
-	FightDataHelper.ASFDDataMgr:removeALFResidual(slot0.entityId, #slot0.effectList)
-	tabletool.clear(slot0.effectList)
+	FightDataHelper.ASFDDataMgr:removeALFResidual(arg_5_0.entityId, #arg_5_0.effectList)
+	tabletool.clear(arg_5_0.effectList)
 end
 
-function slot0.setRotation(slot0, slot1, slot2)
-	slot4, slot5, slot6 = transformhelper.getLocalRotation(slot1.parent)
+function var_0_0.setRotation(arg_6_0, arg_6_1, arg_6_2)
+	local var_6_0 = arg_6_1.parent
+	local var_6_1, var_6_2, var_6_3 = transformhelper.getLocalRotation(var_6_0)
 
-	transformhelper.setLocalRotation(slot1, 0, 0, 180 - slot2 + slot6)
+	arg_6_2 = 180 - arg_6_2 + var_6_3
+
+	transformhelper.setLocalRotation(arg_6_1, 0, 0, arg_6_2)
 end
 
-function slot0.playAudio(slot0, slot1)
-	if not slot1 then
+function var_0_0.playAudio(arg_7_0, arg_7_1)
+	if not arg_7_1 then
 		return
 	end
 
-	if slot1 ~= 0 then
-		AudioMgr.instance:trigger(slot1)
+	if arg_7_1 ~= 0 then
+		AudioMgr.instance:trigger(arg_7_1)
 	end
 end
 
-function slot0.onOpenView(slot0, slot1)
-	if slot1 == ViewName.FightFocusView then
-		slot0:setEffectActive(false)
+function var_0_0.onOpenView(arg_8_0, arg_8_1)
+	if arg_8_1 == ViewName.FightFocusView then
+		arg_8_0:setEffectActive(false)
 	end
 end
 
-function slot0.onCloseViewFinish(slot0, slot1)
-	if slot1 == ViewName.FightFocusView then
-		slot0:setEffectActive(true)
+function var_0_0.onCloseViewFinish(arg_9_0, arg_9_1)
+	if arg_9_1 == ViewName.FightFocusView then
+		arg_9_0:setEffectActive(true)
 	end
 end
 
-function slot0.onSkillPlayStart(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
-		slot0:setEffectActive(false)
+function var_0_0.onSkillPlayStart(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	if arg_10_1:getMO() and FightCardDataHelper.isBigSkill(arg_10_2) then
+		arg_10_0:setEffectActive(false)
 	end
 end
 
-function slot0.onSkillPlayFinish(slot0, slot1, slot2, slot3)
-	if slot1:getMO() and FightCardDataHelper.isBigSkill(slot2) then
-		slot0:setEffectActive(true)
+function var_0_0.onSkillPlayFinish(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	if arg_11_1:getMO() and FightCardDataHelper.isBigSkill(arg_11_2) then
+		arg_11_0:setEffectActive(true)
 	end
 end
 
-function slot0.setEffectActive(slot0, slot1)
-	for slot5, slot6 in ipairs(slot0.effectList) do
-		slot6[1]:setActive(slot1)
+function var_0_0.setEffectActive(arg_12_0, arg_12_1)
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0.effectList) do
+		iter_12_1[1]:setActive(arg_12_1)
 	end
 end
 
-function slot0.clear(slot0)
-	slot4 = slot0.pullOutAllEffect
-	slot5 = slot0
+function var_0_0.clear(arg_13_0)
+	FightController.instance:unregisterCallback(FightEvent.ASFD_PullOut, arg_13_0.pullOutAllEffect, arg_13_0)
 
-	FightController.instance:unregisterCallback(FightEvent.ASFD_PullOut, slot4, slot5)
+	for iter_13_0, iter_13_1 in ipairs(arg_13_0.effectList) do
+		local var_13_0 = iter_13_1[1]
 
-	for slot4, slot5 in ipairs(slot0.effectList) do
-		slot6 = slot5[1]
-
-		if slot0.entity then
-			slot0.entity.buff:removeLoopBuff(slot6)
-			slot0.entity.effect:removeEffect(slot6)
+		if arg_13_0.entity then
+			arg_13_0.entity.buff:removeLoopBuff(var_13_0)
+			arg_13_0.entity.effect:removeEffect(var_13_0)
 		end
 
-		FightRenderOrderMgr.instance:onRemoveEffectWrap(slot0.entityId, slot6)
+		FightRenderOrderMgr.instance:onRemoveEffectWrap(arg_13_0.entityId, var_13_0)
 	end
 
-	FightDataHelper.ASFDDataMgr:removeALFResidual(slot0.entityId, #slot0.effectList)
-	tabletool.clear(slot0.effectList)
+	FightDataHelper.ASFDDataMgr:removeALFResidual(arg_13_0.entityId, #arg_13_0.effectList)
+	tabletool.clear(arg_13_0.effectList)
 end
 
-function slot0.onBuffEnd(slot0)
-	slot0:clear()
+function var_0_0.onBuffEnd(arg_14_0)
+	arg_14_0:clear()
 end
 
-function slot0.dispose(slot0)
-	slot0:clear()
+function var_0_0.dispose(arg_15_0)
+	arg_15_0:clear()
 end
 
-return slot0
+return var_0_0

@@ -1,14 +1,19 @@
-module("modules.logic.bossrush.view.v1a6.taskachievement.V1a6_BossRush_TabViewGroup", package.seeall)
+﻿module("modules.logic.bossrush.view.v1a6.taskachievement.V1a6_BossRush_TabViewGroup", package.seeall)
 
-slot0 = class("V1a6_BossRush_TabViewGroup", TabViewGroup)
+local var_0_0 = class("V1a6_BossRush_TabViewGroup", TabViewGroup)
 
-function slot0._setVisible(slot0, slot1, slot2)
-	if not slot0._tabCanvasGroup[slot1] then
-		slot0._tabCanvasGroup[slot1] = gohelper.onceAddComponent(slot0._tabViews[slot1].viewGO, typeof(UnityEngine.CanvasGroup))
+function var_0_0._setVisible(arg_1_0, arg_1_1, arg_1_2)
+	local var_1_0 = arg_1_0._tabCanvasGroup[arg_1_1]
+
+	if not var_1_0 then
+		local var_1_1 = arg_1_0._tabViews[arg_1_1].viewGO
+
+		var_1_0 = gohelper.onceAddComponent(var_1_1, typeof(UnityEngine.CanvasGroup))
+		arg_1_0._tabCanvasGroup[arg_1_1] = var_1_0
 	end
 
-	slot3.interactable = slot2
-	slot3.blocksRaycasts = slot2
+	var_1_0.interactable = arg_1_2
+	var_1_0.blocksRaycasts = arg_1_2
 end
 
-return slot0
+return var_0_0

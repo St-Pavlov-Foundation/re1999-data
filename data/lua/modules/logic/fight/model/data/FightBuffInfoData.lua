@@ -1,42 +1,45 @@
-module("modules.logic.fight.model.data.FightBuffInfoData", package.seeall)
+﻿module("modules.logic.fight.model.data.FightBuffInfoData", package.seeall)
 
-slot0 = FightDataClass("FightBuffInfoData")
+local var_0_0 = FightDataClass("FightBuffInfoData")
 
-function slot0.onConstructor(slot0, slot1, slot2)
-	slot0.time = tonumber(slot1.uid)
-	slot0.entityId = slot2
-	slot0.buffId = slot1.buffId
-	slot0.duration = slot1.duration
-	slot0.uid = slot1.uid
-	slot0.exInfo = slot1.exInfo
-	slot0.fromUid = slot1.fromUid
-	slot0.count = slot1.count
-	slot0.actCommonParams = slot1.actCommonParams
-	slot0.layer = slot1.layer
-	slot0.type = slot1.type
+function var_0_0.onConstructor(arg_1_0, arg_1_1, arg_1_2)
+	arg_1_0.time = tonumber(arg_1_1.uid)
+	arg_1_0.entityId = arg_1_2
+	arg_1_0.buffId = arg_1_1.buffId
+	arg_1_0.duration = arg_1_1.duration
+	arg_1_0.uid = arg_1_1.uid
+	arg_1_0.exInfo = arg_1_1.exInfo
+	arg_1_0.fromUid = arg_1_1.fromUid
+	arg_1_0.count = arg_1_1.count
+	arg_1_0.actCommonParams = arg_1_1.actCommonParams
+	arg_1_0.layer = arg_1_1.layer
+	arg_1_0.type = arg_1_1.type
 
-	if not slot0:getCO() then
-		logError("buff表找不到id:" .. slot0.buffId)
+	local var_1_0 = arg_1_0:getCO()
+
+	if not var_1_0 then
+		logError("buff表找不到id:" .. arg_1_0.buffId)
 	end
 
-	slot0.name = slot3 and slot3.name or ""
-	slot0.clientNum = 0
+	arg_1_0.name = var_1_0 and var_1_0.name or ""
+	arg_1_0.clientNum = 0
 end
 
-function slot0.clone(slot0)
-	slot1 = uv0.New(slot0)
-	slot1.clientNum = slot0.clientNum
-	slot0._last_clone_mo = slot1
+function var_0_0.clone(arg_2_0)
+	local var_2_0 = var_0_0.New(arg_2_0)
 
-	return slot1
+	var_2_0.clientNum = arg_2_0.clientNum
+	arg_2_0._last_clone_mo = var_2_0
+
+	return var_2_0
 end
 
-function slot0.getCO(slot0)
-	return lua_skill_buff.configDict[slot0.buffId]
+function var_0_0.getCO(arg_3_0)
+	return lua_skill_buff.configDict[arg_3_0.buffId]
 end
 
-function slot0.setClientNum(slot0, slot1)
-	slot0.clientNum = slot1
+function var_0_0.setClientNum(arg_4_0, arg_4_1)
+	arg_4_0.clientNum = arg_4_1
 end
 
-return slot0
+return var_0_0

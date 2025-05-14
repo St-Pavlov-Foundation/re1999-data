@@ -1,10 +1,12 @@
-module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessCheckStep", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.controller.step.EliminateChessCheckStep", package.seeall)
 
-slot0 = class("EliminateChessCheckStep", EliminateChessStepBase)
+local var_0_0 = class("EliminateChessCheckStep", EliminateChessStepBase)
 
-function slot0.onStart(slot0)
-	LengZhou6EliminateController.instance:eliminateCheck(slot0._data)
-	slot0:onDone(true)
+function var_0_0.onStart(arg_1_0)
+	local var_1_0 = arg_1_0._data
+
+	LengZhou6EliminateController.instance:eliminateCheck(var_1_0)
+	arg_1_0:onDone(true)
 end
 
-return slot0
+return var_0_0

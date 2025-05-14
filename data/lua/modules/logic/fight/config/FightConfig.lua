@@ -1,23 +1,23 @@
-module("modules.logic.fight.config.FightConfig", package.seeall)
+﻿module("modules.logic.fight.config.FightConfig", package.seeall)
 
-slot0 = class("FightConfig", BaseConfig)
+local var_0_0 = class("FightConfig", BaseConfig)
 
-function slot0.ctor(slot0)
-	slot0._skillCurrCardLvDict = nil
-	slot0._skillNextCardLvDict = nil
-	slot0._skillPrevCardLvDict = nil
-	slot0._skillHeroIdDict = nil
-	slot0._skillMonsterIdDict = nil
-	slot0._skinSkillTLDict = nil
-	slot0._buffFeatureDict = {}
-	slot0._buffFeatureDictDict = {}
-	slot0._buffId2FeatureIdList = {}
-	slot0._restrainDict = nil
-	slot0._monsterId2UniqueId = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._skillCurrCardLvDict = nil
+	arg_1_0._skillNextCardLvDict = nil
+	arg_1_0._skillPrevCardLvDict = nil
+	arg_1_0._skillHeroIdDict = nil
+	arg_1_0._skillMonsterIdDict = nil
+	arg_1_0._skinSkillTLDict = nil
+	arg_1_0._buffFeatureDict = {}
+	arg_1_0._buffFeatureDictDict = {}
+	arg_1_0._buffId2FeatureIdList = {}
+	arg_1_0._restrainDict = nil
+	arg_1_0._monsterId2UniqueId = {}
 end
 
-function slot0.reqConfigNames(slot0)
-	slot1 = {
+function var_0_0.reqConfigNames(arg_2_0)
+	local var_2_0 = {
 		"card_description",
 		"stance",
 		"character",
@@ -113,187 +113,217 @@ function slot0.reqConfigNames(slot0)
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then
-		table.insert(slot1, "activity174_test_bot")
-		table.insert(slot1, "activity174_test_role")
+		table.insert(var_2_0, "activity174_test_bot")
+		table.insert(var_2_0, "activity174_test_role")
 	end
 
-	return slot1
+	return var_2_0
 end
 
-function slot0.getSkinCO(slot0, slot1)
-	return lua_skin.configDict[slot1] or lua_monster_skin.configDict[slot1]
+function var_0_0.getSkinCO(arg_3_0, arg_3_1)
+	return lua_skin.configDict[arg_3_1] or lua_monster_skin.configDict[arg_3_1]
 end
 
-function slot0.getAudioId(slot0, slot1, slot2)
-	slot4 = slot0:getSkinCO(slot1) and slot3.showTemplate
+function var_0_0.getAudioId(arg_4_0, arg_4_1, arg_4_2)
+	local var_4_0 = arg_4_0:getSkinCO(arg_4_1)
+	local var_4_1 = var_4_0 and var_4_0.showTemplate
+	local var_4_2 = var_4_1 and lua_fight_voice.configDict[var_4_1]
 
-	if slot4 and lua_fight_voice.configDict[slot4] then
-		return slot5["audio_type" .. slot2]
+	if var_4_2 then
+		return var_4_2["audio_type" .. arg_4_2]
 	end
 end
 
-function slot0.onConfigLoaded(slot0, slot1, slot2)
-	if slot1 == "fight_effect" then
-		slot0._restrainDict = {}
+function var_0_0.onConfigLoaded(arg_5_0, arg_5_1, arg_5_2)
+	if arg_5_1 == "fight_effect" then
+		arg_5_0._restrainDict = {}
 
-		for slot6, slot7 in ipairs(slot2.configList) do
-			slot0._restrainDict[slot7.id] = {}
+		for iter_5_0, iter_5_1 in ipairs(arg_5_2.configList) do
+			local var_5_0 = {}
 
-			for slot12 = 1, 6 do
-				slot8[slot12] = slot7["career" .. slot12]
+			arg_5_0._restrainDict[iter_5_1.id] = var_5_0
+
+			for iter_5_2 = 1, 6 do
+				var_5_0[iter_5_2] = iter_5_1["career" .. iter_5_2]
 			end
 		end
-	elseif slot1 == "skill" then
-		slot0._hasLoadSkill = true
+	elseif arg_5_1 == "skill" then
+		arg_5_0._hasLoadSkill = true
 
-		slot0:_rebuildSkillEffect()
-	elseif slot1 == "skill_effect" then
-		slot0._hasLoadSkillEffect = true
+		arg_5_0:_rebuildSkillEffect()
+	elseif arg_5_1 == "skill_effect" then
+		arg_5_0._hasLoadSkillEffect = true
 
-		slot0:_rebuildSkillEffect()
-	elseif slot1 == "monster" then
-		slot0._hasLoadMonster = true
+		arg_5_0:_rebuildSkillEffect()
+	elseif arg_5_1 == "monster" then
+		arg_5_0._hasLoadMonster = true
 
-		slot0:_rebuildMonsterSkin()
-	elseif slot1 == "skin" then
-		slot0._hasLoadSkin = true
+		arg_5_0:_rebuildMonsterSkin()
+	elseif arg_5_1 == "skin" then
+		arg_5_0._hasLoadSkin = true
 
-		slot0:_rebuildMonsterSkin()
-	elseif slot1 == "skill_buff" then
-		-- Nothing
-	elseif slot1 == "fight_buff_reject_act" then
-		slot0:_dealFightBuffRejectAct()
-	elseif slot1 == "monster_group" then
-		slot0:_checkMonsterGroupBoss0()
-	elseif slot1 == "skin_spine_action" then
-		-- Nothing
+		arg_5_0:_rebuildMonsterSkin()
+	elseif arg_5_1 == "skill_buff" then
+		-- block empty
+	elseif arg_5_1 == "fight_buff_reject_act" then
+		arg_5_0:_dealFightBuffRejectAct()
+	elseif arg_5_1 == "monster_group" then
+		arg_5_0:_checkMonsterGroupBoss0()
+	elseif arg_5_1 == "skin_spine_action" then
+		-- block empty
 	end
 end
 
-function slot0._rebuildSkillEffect(slot0)
-	if not slot0._hasLoadSkill or not slot0._hasLoadSkillEffect then
+function var_0_0._rebuildSkillEffect(arg_6_0)
+	if not arg_6_0._hasLoadSkill or not arg_6_0._hasLoadSkillEffect then
 		return
 	end
 
-	for slot6, slot7 in ipairs(lua_skill.configList) do
-		setmetatable(slot7, {
-			__index = function (slot0, slot1)
-				if not uv0.__index(slot0, slot1) then
-					if lua_skill_effect.configDict[slot0.skillEffect] then
-						if isDebugBuild or SLFramework.FrameworkSettings.IsEditor then
-							if slot1 == "desc" and not uv1.instance:isSetDescFlag() then
-								logError("获取调用效果 desc 字段， 必须使用 FightConfig.getSkillEffectDesc 函数")
-							end
+	local var_6_0 = getmetatable(lua_skill.configList[1])
+	local var_6_1 = {
+		__index = function(arg_7_0, arg_7_1)
+			local var_7_0 = var_6_0.__index(arg_7_0, arg_7_1)
 
-							slot2 = slot4[slot1]
-						else
-							slot2 = slot4[slot1]
+			if not var_7_0 then
+				local var_7_1 = arg_7_0.skillEffect
+				local var_7_2 = lua_skill_effect.configDict[var_7_1]
+
+				if var_7_2 then
+					if isDebugBuild or SLFramework.FrameworkSettings.IsEditor then
+						if arg_7_1 == "desc" and not var_0_0.instance:isSetDescFlag() then
+							logError("获取调用效果 desc 字段， 必须使用 FightConfig.getSkillEffectDesc 函数")
 						end
-					else
-						logError(slot0.id .. " 技能效果模版不存在：" .. slot3)
-					end
-				end
 
-				return slot2
-			end,
-			__newindex = getmetatable(lua_skill.configList[1]).__newindex
-		})
+						var_7_0 = var_7_2[arg_7_1]
+					else
+						var_7_0 = var_7_2[arg_7_1]
+					end
+				else
+					logError(arg_7_0.id .. " 技能效果模版不存在：" .. var_7_1)
+				end
+			end
+
+			return var_7_0
+		end,
+		__newindex = var_6_0.__newindex
+	}
+
+	for iter_6_0, iter_6_1 in ipairs(lua_skill.configList) do
+		setmetatable(iter_6_1, var_6_1)
 	end
 
-	slot0:_rebuildSkillEffectTab()
+	arg_6_0:_rebuildSkillEffectTab()
 end
 
-slot1 = {
-	[10151011.0] = true,
-	[10161131.0] = true,
-	[10161141.0] = true,
-	[10161011.0] = true,
-	[10151111.0] = true,
-	[10161021.0] = true,
-	[10141141.0] = true,
-	[10151114.0] = true,
-	[10141131.0] = true,
-	[81261201.0] = true,
-	[81251201.0] = true,
-	[10161111.0] = true,
-	[10151113.0] = true,
-	[10141101.0] = true,
-	[10141111.0] = true,
-	[10161121.0] = true,
-	[10141102.0] = true,
-	[10141121.0] = true,
-	[10151112.0] = true,
-	[10151012.0] = true
+local var_0_1 = {
+	[10151011] = true,
+	[10161131] = true,
+	[10161141] = true,
+	[10161011] = true,
+	[10151111] = true,
+	[10161021] = true,
+	[10141141] = true,
+	[10151114] = true,
+	[10141131] = true,
+	[81261201] = true,
+	[81251201] = true,
+	[10161111] = true,
+	[10151113] = true,
+	[10141101] = true,
+	[10141111] = true,
+	[10161121] = true,
+	[10141102] = true,
+	[10141121] = true,
+	[10151112] = true,
+	[10151012] = true
 }
 
-function slot0._rebuildMonsterSkin(slot0)
-	if not slot0._hasLoadMonster or not slot0._hasLoadSkin then
+function var_0_0._rebuildMonsterSkin(arg_8_0)
+	if not arg_8_0._hasLoadMonster or not arg_8_0._hasLoadSkin then
 		return
 	end
 
-	for slot6, slot7 in ipairs(lua_monster.configList) do
-		setmetatable(slot7, {
-			__index = function (slot0, slot1)
-				slot2 = uv0.__index(slot0, slot1)
+	local var_8_0 = getmetatable(lua_monster.configList[1])
+	local var_8_1 = {
+		__index = function(arg_9_0, arg_9_1)
+			local var_9_0 = var_8_0.__index(arg_9_0, arg_9_1)
 
-				if slot1 == "career" then
-					if slot2 and slot2 > 0 then
-						return slot2
-					end
-				elseif slot2 then
-					return slot2
+			if arg_9_1 == "career" then
+				if var_9_0 and var_9_0 > 0 then
+					return var_9_0
 				end
+			elseif var_9_0 then
+				return var_9_0
+			end
 
-				if not lua_monster_skill_template.configDict[slot0.skillTemplate] then
-					logError(slot0.id .. " 技能效果模版不存在：" .. slot3)
+			local var_9_1 = arg_9_0.skillTemplate
+			local var_9_2 = lua_monster_skill_template.configDict[var_9_1]
 
-					return nil
-				end
+			if not var_9_2 then
+				logError(arg_9_0.id .. " 技能效果模版不存在：" .. var_9_1)
 
-				if slot4[slot1] then
-					if slot1 == "uniqueSkill" then
-						slot6 = slot0.uniqueSkillLevel
+				return nil
+			end
 
-						if not uv1._monsterId2UniqueId[slot0.id] then
-							slot7 = {}
-							slot8 = nil
-							slot9 = FightStrUtil.instance:getSplitCache(slot4.uniqueSkill, "|")
+			local var_9_3 = var_9_2[arg_9_1]
 
-							if lua_fight_monster_unique_index.configDict[slot5] then
-								slot6 = slot10.index
-							end
+			if var_9_3 then
+				if arg_9_1 == "uniqueSkill" then
+					local var_9_4 = arg_9_0.id
+					local var_9_5 = arg_9_0.uniqueSkillLevel
 
-							for slot14, slot15 in ipairs(slot9) do
-								table.insert(slot7, slot8[slot6 <= #FightStrUtil.instance:getSplitToNumberCache(slot15, "#") and slot6 or #slot8])
-							end
+					if not arg_8_0._monsterId2UniqueId[var_9_4] then
+						local var_9_6 = {}
+						local var_9_7
+						local var_9_8 = FightStrUtil.instance:getSplitCache(var_9_2.uniqueSkill, "|")
+						local var_9_9 = lua_fight_monster_unique_index.configDict[var_9_4]
 
-							uv1._monsterId2UniqueId[slot5] = slot7
+						if var_9_9 then
+							var_9_5 = var_9_9.index
 						end
 
-						slot2 = uv1._monsterId2UniqueId[slot5]
+						for iter_9_0, iter_9_1 in ipairs(var_9_8) do
+							local var_9_10 = FightStrUtil.instance:getSplitToNumberCache(iter_9_1, "#")
+
+							table.insert(var_9_6, var_9_10[var_9_5 <= #var_9_10 and var_9_5 or #var_9_10])
+						end
+
+						arg_8_0._monsterId2UniqueId[var_9_4] = var_9_6
 					end
 
-					return slot2
+					var_9_3 = arg_8_0._monsterId2UniqueId[var_9_4]
 				end
 
-				return uv2.instance:getSkinCO(slot0.skinId)[slot1]
-			end,
-			__newindex = getmetatable(lua_monster.configList[1]).__newindex
-		})
+				return var_9_3
+			end
+
+			local var_9_11 = arg_9_0.skinId
+
+			return var_0_0.instance:getSkinCO(var_9_11)[arg_9_1]
+		end,
+		__newindex = var_8_0.__newindex
+	}
+
+	for iter_8_0, iter_8_1 in ipairs(lua_monster.configList) do
+		setmetatable(iter_8_1, var_8_1)
 	end
 
 	if isDebugBuild then
-		slot0:checkMonsterEffectPath()
-		slot0:checkSkinEffectPath()
+		arg_8_0:checkMonsterEffectPath()
+		arg_8_0:checkSkinEffectPath()
 	end
 end
 
-function slot0.checkMonsterEffectPath(slot0)
-	for slot4, slot5 in ipairs(lua_monster.configList) do
-		if not string.nilorempty(slot5.effect) then
-			for slot11, slot12 in ipairs(string.split(slot6, "#")) do
-				if not string.match(slot12, "^buff/") then
-					logError(string.format("怪物表 id ： %s, 特效配置不在buff目录下. effect : %s", slot5.id, slot5.effect))
+function var_0_0.checkMonsterEffectPath(arg_10_0)
+	for iter_10_0, iter_10_1 in ipairs(lua_monster.configList) do
+		local var_10_0 = iter_10_1.effect
+
+		if not string.nilorempty(var_10_0) then
+			local var_10_1 = string.split(var_10_0, "#")
+
+			for iter_10_2, iter_10_3 in ipairs(var_10_1) do
+				if not string.match(iter_10_3, "^buff/") then
+					logError(string.format("怪物表 id ： %s, 特效配置不在buff目录下. effect : %s", iter_10_1.id, iter_10_1.effect))
 
 					break
 				end
@@ -302,12 +332,16 @@ function slot0.checkMonsterEffectPath(slot0)
 	end
 end
 
-function slot0.checkSkinEffectPath(slot0)
-	for slot4, slot5 in ipairs(lua_skin.configList) do
-		if not string.nilorempty(slot5.effect) then
-			for slot11, slot12 in ipairs(string.split(slot6, "#")) do
-				if not string.match(slot12, "^buff/") then
-					logError(string.format("皮肤表 id ： %s, 特效配置不在buff目录下. effect : %s", slot5.id, slot5.effect))
+function var_0_0.checkSkinEffectPath(arg_11_0)
+	for iter_11_0, iter_11_1 in ipairs(lua_skin.configList) do
+		local var_11_0 = iter_11_1.effect
+
+		if not string.nilorempty(var_11_0) then
+			local var_11_1 = string.split(var_11_0, "#")
+
+			for iter_11_2, iter_11_3 in ipairs(var_11_1) do
+				if not string.match(iter_11_3, "^buff/") then
+					logError(string.format("皮肤表 id ： %s, 特效配置不在buff目录下. effect : %s", iter_11_1.id, iter_11_1.effect))
 
 					break
 				end
@@ -316,537 +350,639 @@ function slot0.checkSkinEffectPath(slot0)
 	end
 end
 
-function slot0.checkSpineBornPath(slot0)
-	for slot4, slot5 in ipairs(lua_skin_spine_action.configList) do
-		if slot5.actionName == SpineAnimState.born and not string.nilorempty(slot5.effect) then
-			for slot11, slot12 in ipairs(FightStrUtil.instance:getSplitCache(slot6, "#")) do
-				if not string.match(slot12, "^buff/") then
-					logError(string.format("皮肤表, 战斗动作表现表 id ： %s, born 特效 配置不在buff目录下. effect : %s", slot5.id, slot5.effect))
+function var_0_0.checkSpineBornPath(arg_12_0)
+	for iter_12_0, iter_12_1 in ipairs(lua_skin_spine_action.configList) do
+		if iter_12_1.actionName == SpineAnimState.born then
+			local var_12_0 = iter_12_1.effect
 
-					break
+			if not string.nilorempty(var_12_0) then
+				local var_12_1 = FightStrUtil.instance:getSplitCache(var_12_0, "#")
+
+				for iter_12_2, iter_12_3 in ipairs(var_12_1) do
+					if not string.match(iter_12_3, "^buff/") then
+						logError(string.format("皮肤表, 战斗动作表现表 id ： %s, born 特效 配置不在buff目录下. effect : %s", iter_12_1.id, iter_12_1.effect))
+
+						break
+					end
 				end
 			end
 		end
 	end
 end
 
-function slot0.getSkinSkillTimeline(slot0, slot1, slot2)
-	slot0:_checkskinSkill()
+function var_0_0.getSkinSkillTimeline(arg_13_0, arg_13_1, arg_13_2)
+	arg_13_0:_checkskinSkill()
 
-	if slot1 and slot0._skinSkillTLDict[slot1] and slot3[slot2] then
-		return slot4
+	local var_13_0 = arg_13_1 and arg_13_0._skinSkillTLDict[arg_13_1]
+
+	if var_13_0 then
+		local var_13_1 = var_13_0[arg_13_2]
+
+		if var_13_1 then
+			return var_13_1
+		end
 	end
 
-	if not lua_skill.configDict[slot2] then
-		logError("skill config not exist: " .. slot2)
+	local var_13_2 = lua_skill.configDict[arg_13_2]
+
+	if not var_13_2 then
+		logError("skill config not exist: " .. arg_13_2)
 
 		return
 	end
 
-	return slot4.timeline
+	return var_13_2.timeline
 end
 
-function slot0._filterSpeicalSkillIds(slot0, slot1, slot2)
-	slot3 = {}
-	slot4 = {}
+function var_0_0._filterSpeicalSkillIds(arg_14_0, arg_14_1, arg_14_2)
+	local var_14_0 = {}
+	local var_14_1 = {}
 
-	for slot8 = 1, #slot1 do
-		if lua_skill_specialbuff.configDict[slot1[slot8]] then
-			if lua_skill_specialbuff.configDict[slot9].isSpecial == 1 then
-				table.insert(slot3, slot1[slot8])
+	for iter_14_0 = 1, #arg_14_1 do
+		local var_14_2 = arg_14_1[iter_14_0]
+
+		if lua_skill_specialbuff.configDict[var_14_2] then
+			if lua_skill_specialbuff.configDict[var_14_2].isSpecial == 1 then
+				table.insert(var_14_0, arg_14_1[iter_14_0])
 			else
-				table.insert(slot4, slot1[slot8])
+				table.insert(var_14_1, arg_14_1[iter_14_0])
 			end
 		else
-			table.insert(slot4, slot1[slot8])
+			table.insert(var_14_1, arg_14_1[iter_14_0])
 		end
 	end
 
-	return slot2 and slot3 or slot4
+	return arg_14_2 and var_14_0 or var_14_1
 end
 
-function slot0.getSkillLv(slot0, slot1)
-	slot0:_checkSkill()
+function var_0_0.getSkillLv(arg_15_0, arg_15_1)
+	arg_15_0:_checkSkill()
 
-	if not lua_skill.configDict[slot1] then
-		logError("技能表找不到id:" .. tostring(slot1))
+	local var_15_0 = lua_skill.configDict[arg_15_1]
+
+	if not var_15_0 then
+		logError("技能表找不到id:" .. tostring(arg_15_1))
 
 		return 1
 	end
 
-	if lua_skill_next.configDict[slot1] then
-		return slot2.skillRank
+	if lua_skill_next.configDict[arg_15_1] then
+		return var_15_0.skillRank
 	end
 
-	if FightCardDataHelper.isBigSkill(slot1) then
+	if FightCardDataHelper.isBigSkill(arg_15_1) then
 		return FightEnum.UniqueSkillCardLv
 	end
 
-	if slot1 == FightEnum.UniversalCard1 then
+	if arg_15_1 == FightEnum.UniversalCard1 then
 		return 1
-	elseif slot1 == FightEnum.UniversalCard2 then
+	elseif arg_15_1 == FightEnum.UniversalCard2 then
 		return 2
 	end
 
-	return slot2.skillRank
+	return var_15_0.skillRank
 end
 
-function slot0.getSkillNextLvId(slot0, slot1)
-	slot0:_checkSkill()
+function var_0_0.getSkillNextLvId(arg_16_0, arg_16_1)
+	arg_16_0:_checkSkill()
 
-	return slot0._skillNextCardLvDict[slot1]
+	return arg_16_0._skillNextCardLvDict[arg_16_1]
 end
 
-function slot0.getSkillPrevLvId(slot0, slot1)
-	slot0:_checkSkill()
+function var_0_0.getSkillPrevLvId(arg_17_0, arg_17_1)
+	arg_17_0:_checkSkill()
 
-	return slot0._skillPrevCardLvDict[slot1]
+	return arg_17_0._skillPrevCardLvDict[arg_17_1]
 end
 
-function slot0.isActiveSkill(slot0, slot1)
-	if slot1 <= 0 then
+function var_0_0.isActiveSkill(arg_18_0, arg_18_1)
+	if arg_18_1 <= 0 then
 		return false
 	end
 
-	slot0:_checkSkill()
+	arg_18_0:_checkSkill()
 
-	if slot0._skillHeroIdDict[slot1] or slot0._skillMonsterIdDict[slot1] then
+	if arg_18_0._skillHeroIdDict[arg_18_1] or arg_18_0._skillMonsterIdDict[arg_18_1] then
 		return true
 	end
 
 	return false
 end
 
-function slot0.getRestrain(slot0, slot1, slot2)
-	if slot0._restrainDict[slot1] then
-		return slot3[slot2]
+function var_0_0.getRestrain(arg_19_0, arg_19_1, arg_19_2)
+	local var_19_0 = arg_19_0._restrainDict[arg_19_1]
+
+	if var_19_0 then
+		return var_19_0[arg_19_2]
 	end
 end
 
-function slot0.getBuffTag(slot0, slot1)
-	slot2 = nil
+function var_0_0.getBuffTag(arg_20_0, arg_20_1)
+	local var_20_0
 
-	for slot6, slot7 in ipairs(lua_skill_buff.configList) do
-		if slot7.name == slot1 then
-			slot2 = slot7.typeId
+	for iter_20_0, iter_20_1 in ipairs(lua_skill_buff.configList) do
+		if iter_20_1.name == arg_20_1 then
+			var_20_0 = iter_20_1.typeId
 
 			break
 		end
 	end
 
-	if not slot2 then
+	if not var_20_0 then
 		return ""
 	end
 
-	if lua_skill_bufftype.configDict[slot2] and lua_skill_buff_desc.configDict[slot3.type] then
-		return slot4.name
+	local var_20_1 = lua_skill_bufftype.configDict[var_20_0]
+	local var_20_2 = var_20_1 and lua_skill_buff_desc.configDict[var_20_1.type]
+
+	if var_20_2 then
+		return var_20_2.name
 	end
 
 	return ""
 end
 
-function slot0.restrainedBy(slot0, slot1)
-	if not slot0._restrainDict then
+function var_0_0.restrainedBy(arg_21_0, arg_21_1)
+	if not arg_21_0._restrainDict then
 		return nil
 	end
 
-	for slot5, slot6 in pairs(slot0._restrainDict) do
-		if slot6[slot1] and slot6[slot1] > 1000 then
-			return slot5
+	for iter_21_0, iter_21_1 in pairs(arg_21_0._restrainDict) do
+		if iter_21_1[arg_21_1] and iter_21_1[arg_21_1] > 1000 then
+			return iter_21_0
 		end
 	end
 
 	return nil
 end
 
-function slot0.restrained(slot0, slot1)
-	if not slot0._restrainDict[slot1] then
+function var_0_0.restrained(arg_22_0, arg_22_1)
+	local var_22_0 = arg_22_0._restrainDict[arg_22_1]
+
+	if not var_22_0 then
 		return nil
 	end
 
-	for slot6, slot7 in pairs(slot2) do
-		if slot7 > 1000 then
-			return slot6
+	for iter_22_0, iter_22_1 in pairs(var_22_0) do
+		if iter_22_1 > 1000 then
+			return iter_22_0
 		end
 	end
 
 	return nil
 end
 
-function slot0.getSkillHeroId(slot0, slot1)
-	slot0:_checkSkill()
+function var_0_0.getSkillHeroId(arg_23_0, arg_23_1)
+	arg_23_0:_checkSkill()
 
-	return slot0._skillHeroIdDict[slot1]
+	return arg_23_0._skillHeroIdDict[arg_23_1]
 end
 
-function slot0.setSkillDict(slot0, slot1, slot2, slot3, slot4, slot5)
-	slot0._skillCurrCardLvDict = slot1
-	slot0._skillNextCardLvDict = slot2
-	slot0._skillPrevCardLvDict = slot3
-	slot0._skillHeroIdDict = slot4
-	slot0._skillMonsterIdDict = slot5
-	slot0.parseSkill = true
+function var_0_0.setSkillDict(arg_24_0, arg_24_1, arg_24_2, arg_24_3, arg_24_4, arg_24_5)
+	arg_24_0._skillCurrCardLvDict = arg_24_1
+	arg_24_0._skillNextCardLvDict = arg_24_2
+	arg_24_0._skillPrevCardLvDict = arg_24_3
+	arg_24_0._skillHeroIdDict = arg_24_4
+	arg_24_0._skillMonsterIdDict = arg_24_5
+	arg_24_0.parseSkill = true
 end
 
-function slot0.isParsedSkill(slot0)
-	return slot0.parseSkill
+function var_0_0.isParsedSkill(arg_25_0)
+	return arg_25_0.parseSkill
 end
 
-function slot0._checkSkill(slot0)
-	if slot0.parseSkill then
+function var_0_0._checkSkill(arg_26_0)
+	if arg_26_0.parseSkill then
 		return
 	end
 
-	slot0.parseSkill = true
-	slot0._skillCurrCardLvDict = {}
-	slot0._skillNextCardLvDict = {}
-	slot0._skillPrevCardLvDict = {}
-	slot0._skillHeroIdDict = {}
-	slot0._skillMonsterIdDict = {}
+	arg_26_0.parseSkill = true
+	arg_26_0._skillCurrCardLvDict = {}
+	arg_26_0._skillNextCardLvDict = {}
+	arg_26_0._skillPrevCardLvDict = {}
+	arg_26_0._skillHeroIdDict = {}
+	arg_26_0._skillMonsterIdDict = {}
 
-	for slot4, slot5 in ipairs(lua_character.configList) do
-		if not string.nilorempty(slot5.skill) then
-			for slot10, slot11 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot5.skill, true)) do
-				slot12 = slot11[2]
-				slot13 = slot11[3]
-				slot14 = slot11[4]
-				slot0._skillCurrCardLvDict[slot12] = 1
-				slot0._skillCurrCardLvDict[slot13] = 2
-				slot0._skillCurrCardLvDict[slot14] = 3
-				slot0._skillNextCardLvDict[slot12] = slot13
-				slot0._skillNextCardLvDict[slot13] = slot14
-				slot0._skillPrevCardLvDict[slot13] = slot12
-				slot0._skillPrevCardLvDict[slot14] = slot13
-				slot15 = slot5.id
-				slot0._skillHeroIdDict[slot12] = slot15
-				slot0._skillHeroIdDict[slot13] = slot15
-				slot0._skillHeroIdDict[slot14] = slot15
+	for iter_26_0, iter_26_1 in ipairs(lua_character.configList) do
+		if not string.nilorempty(iter_26_1.skill) then
+			local var_26_0 = FightStrUtil.instance:getSplitString2Cache(iter_26_1.skill, true)
+
+			for iter_26_2, iter_26_3 in ipairs(var_26_0) do
+				local var_26_1 = iter_26_3[2]
+				local var_26_2 = iter_26_3[3]
+				local var_26_3 = iter_26_3[4]
+
+				arg_26_0._skillCurrCardLvDict[var_26_1] = 1
+				arg_26_0._skillCurrCardLvDict[var_26_2] = 2
+				arg_26_0._skillCurrCardLvDict[var_26_3] = 3
+				arg_26_0._skillNextCardLvDict[var_26_1] = var_26_2
+				arg_26_0._skillNextCardLvDict[var_26_2] = var_26_3
+				arg_26_0._skillPrevCardLvDict[var_26_2] = var_26_1
+				arg_26_0._skillPrevCardLvDict[var_26_3] = var_26_2
+
+				local var_26_4 = iter_26_1.id
+
+				arg_26_0._skillHeroIdDict[var_26_1] = var_26_4
+				arg_26_0._skillHeroIdDict[var_26_2] = var_26_4
+				arg_26_0._skillHeroIdDict[var_26_3] = var_26_4
 			end
 		end
 	end
 
-	for slot4, slot5 in ipairs(lua_skill_ex_level.configList) do
-		slot6 = slot5.heroId
+	for iter_26_4, iter_26_5 in ipairs(lua_skill_ex_level.configList) do
+		local var_26_5 = iter_26_5.heroId
+		local var_26_6 = iter_26_5.skillGroup1
 
-		if not string.nilorempty(slot5.skillGroup1) then
-			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot7, "|")) do
-				slot0._skillHeroIdDict[slot13] = slot6
-				slot0._skillCurrCardLvDict[slot13] = slot12
+		if not string.nilorempty(var_26_6) then
+			local var_26_7 = FightStrUtil.instance:getSplitToNumberCache(var_26_6, "|")
+
+			for iter_26_6, iter_26_7 in ipairs(var_26_7) do
+				arg_26_0._skillHeroIdDict[iter_26_7] = var_26_5
+				arg_26_0._skillCurrCardLvDict[iter_26_7] = iter_26_6
 			end
 		end
 
-		if not string.nilorempty(slot5.skillGroup2) then
-			for slot13, slot14 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot8, "|")) do
-				slot0._skillHeroIdDict[slot14] = slot6
-				slot0._skillCurrCardLvDict[slot14] = slot13
+		local var_26_8 = iter_26_5.skillGroup2
+
+		if not string.nilorempty(var_26_8) then
+			local var_26_9 = FightStrUtil.instance:getSplitToNumberCache(var_26_8, "|")
+
+			for iter_26_8, iter_26_9 in ipairs(var_26_9) do
+				arg_26_0._skillHeroIdDict[iter_26_9] = var_26_5
+				arg_26_0._skillCurrCardLvDict[iter_26_9] = iter_26_8
 			end
 		end
 
-		slot0._skillHeroIdDict[slot5.skillEx] = slot6
+		local var_26_10 = iter_26_5.skillEx
+
+		arg_26_0._skillHeroIdDict[var_26_10] = var_26_5
 	end
 
-	for slot4, slot5 in ipairs(lua_monster.configList) do
-		slot6 = slot5.id
+	for iter_26_10, iter_26_11 in ipairs(lua_monster.configList) do
+		local var_26_11 = iter_26_11.id
+		local var_26_12 = FightStrUtil.instance:getSplitString2Cache(iter_26_11.activeSkill, true, "|", "#")
 
-		if FightStrUtil.instance:getSplitString2Cache(slot5.activeSkill, true, "|", "#") then
-			for slot11, slot12 in ipairs(slot7) do
-				slot13 = 1
+		if var_26_12 then
+			for iter_26_12, iter_26_13 in ipairs(var_26_12) do
+				local var_26_13 = 1
 
-				for slot17, slot18 in ipairs(slot12) do
-					if lua_skill.configDict[slot18] then
-						slot0._skillMonsterIdDict[slot18] = slot6
-						slot0._skillCurrCardLvDict[slot18] = slot13
-						slot13 = slot13 + 1
+				for iter_26_14, iter_26_15 in ipairs(iter_26_13) do
+					if lua_skill.configDict[iter_26_15] then
+						arg_26_0._skillMonsterIdDict[iter_26_15] = var_26_11
+						arg_26_0._skillCurrCardLvDict[iter_26_15] = var_26_13
+						var_26_13 = var_26_13 + 1
 					end
 				end
 			end
 		end
 
-		if slot5.uniqueSkill and #slot8 > 0 then
-			for slot12, slot13 in ipairs(slot8) do
-				slot0._skillMonsterIdDict[slot13] = slot6
+		local var_26_14 = iter_26_11.uniqueSkill
+
+		if var_26_14 and #var_26_14 > 0 then
+			for iter_26_16, iter_26_17 in ipairs(var_26_14) do
+				arg_26_0._skillMonsterIdDict[iter_26_17] = var_26_11
 			end
 		end
 	end
 end
 
-function slot0._checkskinSkill(slot0)
-	if slot0._skinSkillTLDict then
+function var_0_0._checkskinSkill(arg_27_0)
+	if arg_27_0._skinSkillTLDict then
 		return
 	end
 
-	slot0._skinSkillTLDict = {}
+	arg_27_0._skinSkillTLDict = {}
 
-	slot0:_doCheckskinSkill(lua_skin.configList)
-	slot0:_doCheckskinSkill(lua_monster_skin.configList)
+	arg_27_0:_doCheckskinSkill(lua_skin.configList)
+	arg_27_0:_doCheckskinSkill(lua_monster_skin.configList)
 end
 
-function slot0._doCheckskinSkill(slot0, slot1)
-	for slot5, slot6 in ipairs(slot1) do
-		if not string.nilorempty(slot6.skills) then
-			slot12 = "|"
-			slot13 = "#"
+function var_0_0._doCheckskinSkill(arg_28_0, arg_28_1)
+	for iter_28_0, iter_28_1 in ipairs(arg_28_1) do
+		if not string.nilorempty(iter_28_1.skills) then
+			local var_28_0 = {}
+			local var_28_1 = FightStrUtil.instance:getSplitString2Cache(iter_28_1.skills, false, "|", "#")
 
-			for slot12, slot13 in ipairs(FightStrUtil.instance:getSplitString2Cache(slot6.skills, false, slot12, slot13)) do
-				if tonumber(slot13[1]) and slot13[2] then
-					-- Nothing
+			for iter_28_2, iter_28_3 in ipairs(var_28_1) do
+				local var_28_2 = tonumber(iter_28_3[1])
+				local var_28_3 = iter_28_3[2]
+
+				if var_28_2 and var_28_3 then
+					var_28_0[var_28_2] = var_28_3
 				end
 			end
 
-			slot0._skinSkillTLDict[slot6.id] = {
-				[slot14] = slot15
-			}
+			arg_28_0._skinSkillTLDict[iter_28_1.id] = var_28_0
 		end
 	end
 end
 
-function slot0.getSkillEffectCO(slot0, slot1)
-	return lua_skill.configDict[slot1] and lua_skill_effect.configDict[slot2.skillEffect]
+function var_0_0.getSkillEffectCO(arg_29_0, arg_29_1)
+	local var_29_0 = lua_skill.configDict[arg_29_1]
+
+	return var_29_0 and lua_skill_effect.configDict[var_29_0.skillEffect]
 end
 
-function slot0.getPassiveSkills(slot0, slot1)
-	slot2 = nil
+function var_0_0.getPassiveSkills(arg_30_0, arg_30_1)
+	local var_30_0
+	local var_30_1 = lua_monster.configDict[arg_30_1]
 
-	if lua_monster.configDict[slot1] and slot3.passiveSkill then
-		slot4 = "|"
+	if var_30_1 and var_30_1.passiveSkill then
+		local var_30_2 = "|"
 
-		if string.find(slot3.passiveSkill, "#") then
-			slot4 = "#"
+		if string.find(var_30_1.passiveSkill, "#") then
+			var_30_2 = "#"
 		end
 
-		slot8 = slot3.passiveSkill
+		var_30_0 = tabletool.copy(FightStrUtil.instance:getSplitToNumberCache(var_30_1.passiveSkill, var_30_2))
 
-		for slot8 = #tabletool.copy(FightStrUtil.instance:getSplitToNumberCache(slot8, slot4)), slot3.passiveSkillCount + 1, -1 do
-			slot2[slot8] = nil
-		end
-	end
-
-	if not string.nilorempty(slot3.passiveSkillsEx) then
-		slot4 = "|"
-
-		if string.find(slot3.passiveSkillsEx, "#") then
-			slot4 = "#"
-		end
-
-		for slot9, slot10 in ipairs(FightStrUtil.instance:getSplitToNumberCache(slot3.passiveSkillsEx, slot4)) do
-			table.insert(slot2 or {}, slot10)
+		for iter_30_0 = #var_30_0, var_30_1.passiveSkillCount + 1, -1 do
+			var_30_0[iter_30_0] = nil
 		end
 	end
 
-	return slot2
-end
+	if not string.nilorempty(var_30_1.passiveSkillsEx) then
+		local var_30_3 = "|"
 
-function slot0.getPassiveSkillsAfterUIFilter(slot0, slot1)
-	slot3 = uv0.instance:getPassiveSkills(slot1)
+		if string.find(var_30_1.passiveSkillsEx, "#") then
+			var_30_3 = "#"
+		end
 
-	for slot8, slot9 in ipairs(FightStrUtil.instance:getSplitToNumberCache(lua_monster.configDict[slot1].uiFilterSkill, "|")) do
-		if tabletool.indexOf(slot3, slot9) then
-			table.remove(slot3, slot10)
+		local var_30_4 = FightStrUtil.instance:getSplitToNumberCache(var_30_1.passiveSkillsEx, var_30_3)
+
+		for iter_30_1, iter_30_2 in ipairs(var_30_4) do
+			var_30_0 = var_30_0 or {}
+
+			table.insert(var_30_0, iter_30_2)
 		end
 	end
 
-	return slot3
+	return var_30_0
 end
 
-function slot0.getMonsterGuideFocusConfig(slot0, slot1, slot2, slot3, slot4)
-	if lua_monster_guide_focus.configDict[slot1] and lua_monster_guide_focus.configDict[slot1][slot2] and lua_monster_guide_focus.configDict[slot1][slot2][slot3] then
-		return lua_monster_guide_focus.configDict[slot1][slot2][slot3][slot4]
+function var_0_0.getPassiveSkillsAfterUIFilter(arg_31_0, arg_31_1)
+	local var_31_0 = lua_monster.configDict[arg_31_1]
+	local var_31_1 = var_0_0.instance:getPassiveSkills(arg_31_1)
+	local var_31_2 = FightStrUtil.instance:getSplitToNumberCache(var_31_0.uiFilterSkill, "|")
+
+	for iter_31_0, iter_31_1 in ipairs(var_31_2) do
+		local var_31_3 = tabletool.indexOf(var_31_1, iter_31_1)
+
+		if var_31_3 then
+			table.remove(var_31_1, var_31_3)
+		end
+	end
+
+	return var_31_1
+end
+
+function var_0_0.getMonsterGuideFocusConfig(arg_32_0, arg_32_1, arg_32_2, arg_32_3, arg_32_4)
+	if lua_monster_guide_focus.configDict[arg_32_1] and lua_monster_guide_focus.configDict[arg_32_1][arg_32_2] and lua_monster_guide_focus.configDict[arg_32_1][arg_32_2][arg_32_3] then
+		return lua_monster_guide_focus.configDict[arg_32_1][arg_32_2][arg_32_3][arg_32_4]
 	end
 end
 
-function slot0.getNewMonsterConfig(slot0, slot1)
-	return not string.nilorempty(slot1.highPriorityName) or not string.nilorempty(slot1.highPriorityNameEng) or not string.nilorempty(slot1.highPriorityDes)
+function var_0_0.getNewMonsterConfig(arg_33_0, arg_33_1)
+	return not string.nilorempty(arg_33_1.highPriorityName) or not string.nilorempty(arg_33_1.highPriorityNameEng) or not string.nilorempty(arg_33_1.highPriorityDes)
 end
 
-function slot0.getMonsterName(slot0, slot1)
-	return slot0:getNewMonsterConfig(slot1) and slot1.highPriorityName or slot1.name
+function var_0_0.getMonsterName(arg_34_0, arg_34_1)
+	return arg_34_0:getNewMonsterConfig(arg_34_1) and arg_34_1.highPriorityName or arg_34_1.name
 end
 
-function slot0.getBuffFeatures(slot0, slot1)
-	if not slot0._buffFeatureDictDict[slot1] then
-		slot2 = {}
+function var_0_0.getBuffFeatures(arg_35_0, arg_35_1)
+	local var_35_0 = arg_35_0._buffFeatureDictDict[arg_35_1]
 
-		if lua_skill_buff.configDict[slot1] and string.split(slot3.features, "|") then
-			for slot8, slot9 in ipairs(slot4) do
-				if tonumber(string.split(slot9, "#")[1]) and lua_buff_act.configDict[slot11] and slot12.type then
-					slot2[slot12.type] = {
-						featureType = slot12.type,
-						featureStr = slot9
-					}
+	if not var_35_0 then
+		var_35_0 = {}
+
+		local var_35_1 = lua_skill_buff.configDict[arg_35_1]
+
+		if var_35_1 then
+			local var_35_2 = string.split(var_35_1.features, "|")
+
+			if var_35_2 then
+				for iter_35_0, iter_35_1 in ipairs(var_35_2) do
+					local var_35_3 = string.split(iter_35_1, "#")
+					local var_35_4 = tonumber(var_35_3[1])
+					local var_35_5 = var_35_4 and lua_buff_act.configDict[var_35_4]
+
+					if var_35_5 and var_35_5.type then
+						var_35_0[var_35_5.type] = {
+							featureType = var_35_5.type,
+							featureStr = iter_35_1
+						}
+					end
 				end
 			end
 		end
 
-		slot0._buffFeatureDictDict[slot1] = slot2
+		arg_35_0._buffFeatureDictDict[arg_35_1] = var_35_0
 	end
 
-	return slot2
+	return var_35_0
 end
 
-function slot0.hasBuffFeature(slot0, slot1, slot2)
-	return slot0:getBuffFeatures(slot1)[slot2]
+function var_0_0.hasBuffFeature(arg_36_0, arg_36_1, arg_36_2)
+	return arg_36_0:getBuffFeatures(arg_36_1)[arg_36_2]
 end
 
-function slot0.getSkinSpineActionDict(slot0, slot1, slot2)
-	if not slot0:getSkinCO(slot1) then
+function var_0_0.getSkinSpineActionDict(arg_37_0, arg_37_1, arg_37_2)
+	local var_37_0 = arg_37_0:getSkinCO(arg_37_1)
+
+	if not var_37_0 then
 		return
 	end
 
-	slot5 = lua_skin_spine_action.configDict[slot3.showTemplate]
+	local var_37_1 = var_37_0.showTemplate
+	local var_37_2 = lua_skin_spine_action.configDict[var_37_1]
 
-	if slot2 and slot5 and not slot5[slot2] then
-		slot5 = nil
+	if arg_37_2 and var_37_2 and not var_37_2[arg_37_2] then
+		var_37_2 = nil
 	end
 
-	if not slot5 and lua_skin.configDict[slot4] and uv0.instance:getSkinCO(slot3.id - slot3.id % 10 + 1) then
-		slot5 = lua_skin_spine_action.configDict[slot7.showTemplate]
+	if not var_37_2 and lua_skin.configDict[var_37_1] then
+		local var_37_3 = var_37_0.id - var_37_0.id % 10 + 1
+		local var_37_4 = var_0_0.instance:getSkinCO(var_37_3)
+
+		if var_37_4 then
+			var_37_2 = lua_skin_spine_action.configDict[var_37_4.showTemplate]
+		end
 	end
 
-	return slot5
+	return var_37_2
 end
 
-function slot0.getSummonedConfig(slot0, slot1, slot2)
-	return lua_summoned.configDict[slot1] and lua_summoned.configDict[slot1][slot2]
+function var_0_0.getSummonedConfig(arg_38_0, arg_38_1, arg_38_2)
+	return lua_summoned.configDict[arg_38_1] and lua_summoned.configDict[arg_38_1][arg_38_2]
 end
 
-function slot0.getRejectActBuffTypeList(slot0, slot1)
-	return slot0._rejectSpineAct and slot0._rejectSpineAct[slot1]
+function var_0_0.getRejectActBuffTypeList(arg_39_0, arg_39_1)
+	return arg_39_0._rejectSpineAct and arg_39_0._rejectSpineAct[arg_39_1]
 end
 
-function slot0._dealFightBuffRejectAct(slot0)
-	slot0._rejectSpineAct = {}
+function var_0_0._dealFightBuffRejectAct(arg_40_0)
+	arg_40_0._rejectSpineAct = {}
 
-	for slot4, slot5 in ipairs(lua_fight_buff_reject_act.configList) do
-		for slot10, slot11 in ipairs(string.split(slot5.rejectAct, "#")) do
-			slot0._rejectSpineAct[slot11] = slot0._rejectSpineAct[slot11] or {}
+	for iter_40_0, iter_40_1 in ipairs(lua_fight_buff_reject_act.configList) do
+		local var_40_0 = string.split(iter_40_1.rejectAct, "#")
 
-			table.insert(slot0._rejectSpineAct[slot11], slot5.id)
+		for iter_40_2, iter_40_3 in ipairs(var_40_0) do
+			arg_40_0._rejectSpineAct[iter_40_3] = arg_40_0._rejectSpineAct[iter_40_3] or {}
+
+			table.insert(arg_40_0._rejectSpineAct[iter_40_3], iter_40_1.id)
 		end
 	end
 end
 
-function slot0._checkMonsterGroupBoss0(slot0)
+function var_0_0._checkMonsterGroupBoss0(arg_41_0)
 	if isDebugBuild then
-		slot1 = nil
+		local var_41_0
 
-		for slot5, slot6 in ipairs(lua_monster_group.configList) do
-			if slot6.bossId == "0" then
-				table.insert(slot1 or {}, slot6.id)
+		for iter_41_0, iter_41_1 in ipairs(lua_monster_group.configList) do
+			if iter_41_1.bossId == "0" then
+				var_41_0 = var_41_0 or {}
+
+				table.insert(var_41_0, iter_41_1.id)
 			end
 		end
 
-		if slot1 then
-			logError("以下怪物组配错了 bossId = 0，请检查是否有误\n" .. table.concat(slot1, ","))
+		if var_41_0 then
+			logError("以下怪物组配错了 bossId = 0，请检查是否有误\n" .. table.concat(var_41_0, ","))
 		end
 	end
 end
 
-slot0.DescNameTag = "{name}"
+var_0_0.DescNameTag = "{name}"
 
-function slot0.getSkillEffectDesc(slot0, slot1, slot2)
-	if not slot2 then
+function var_0_0.getSkillEffectDesc(arg_42_0, arg_42_1, arg_42_2)
+	if not arg_42_2 then
 		return ""
 	end
 
 	if isDebugBuild or SLFramework.FrameworkSettings.IsEditor then
-		slot0:setGetDescFlag(true)
-		slot0:setGetDescFlag(false)
+		arg_42_0:setGetDescFlag(true)
 
-		if string.match(slot2.desc, uv0.DescNameTag) and string.nilorempty(slot1) then
-			logError("monster name is nil or empty str, please check !!!" .. string.format("effectId : %s, effect desc : %s", slot2.id, slot3))
+		local var_42_0 = arg_42_2.desc
 
-			return slot3
+		arg_42_0:setGetDescFlag(false)
+
+		if string.match(var_42_0, var_0_0.DescNameTag) and string.nilorempty(arg_42_1) then
+			local var_42_1 = "monster name is nil or empty str, please check !!!" .. string.format("effectId : %s, effect desc : %s", arg_42_2.id, var_42_0)
+
+			logError(var_42_1)
+
+			return var_42_0
 		end
 
-		if string.nilorempty(slot1) then
-			return slot3
+		if string.nilorempty(arg_42_1) then
+			return var_42_0
 		end
 
-		return string.gsub(slot3, uv0.DescNameTag, slot1)
+		return string.gsub(var_42_0, var_0_0.DescNameTag, arg_42_1)
 	end
 
-	slot3 = slot2.desc
+	local var_42_2 = arg_42_2.desc
 
-	if string.nilorempty(slot1) then
-		return slot3
+	if string.nilorempty(arg_42_1) then
+		return var_42_2
 	end
 
-	return string.gsub(slot3, uv0.DescNameTag, slot1)
+	return string.gsub(var_42_2, var_0_0.DescNameTag, arg_42_1)
 end
 
-function slot0.getEntitySkillDesc(slot0, slot1, slot2, slot3)
-	if not (slot2 or lua_skill.configDict[slot3]) then
-		if slot3 then
-			logError("技能表找不到id : " .. tostring(slot3))
+function var_0_0.getEntitySkillDesc(arg_43_0, arg_43_1, arg_43_2, arg_43_3)
+	arg_43_2 = arg_43_2 or lua_skill.configDict[arg_43_3]
+
+	if not arg_43_2 then
+		if arg_43_3 then
+			logError("技能表找不到id : " .. tostring(arg_43_3))
 		end
 
 		return ""
 	end
 
-	return slot0:getSkillEffectDesc(slot0:getEntityName(slot1), slot2)
+	local var_43_0 = arg_43_0:getEntityName(arg_43_1)
+
+	return arg_43_0:getSkillEffectDesc(var_43_0, arg_43_2)
 end
 
-function slot0.getEntityName(slot0, slot1)
-	slot3 = FightDataHelper.entityMgr:getById(slot1) and slot2:getCO()
+function var_0_0.getEntityName(arg_44_0, arg_44_1)
+	local var_44_0 = FightDataHelper.entityMgr:getById(arg_44_1)
+	local var_44_1 = var_44_0 and var_44_0:getCO()
 
-	return slot3 and slot3.name or ""
+	return var_44_1 and var_44_1.name or ""
 end
 
-function slot0._rebuildSkillEffectTab(slot0)
+function var_0_0._rebuildSkillEffectTab(arg_45_0)
 	if isDebugBuild or SLFramework.FrameworkSettings.IsEditor then
-		for slot6, slot7 in ipairs(lua_skill_effect.configList) do
-			setmetatable(slot7, {
-				__index = function (slot0, slot1)
-					if slot1 == "desc" and not uv0.instance:isSetDescFlag() then
-						logError("获取调用效果 desc 字段， 必须使用 FightConfig.getSkillEffectDesc 函数")
-					end
+		local var_45_0 = getmetatable(lua_skill_effect.configList[1])
+		local var_45_1 = {
+			__index = function(arg_46_0, arg_46_1)
+				if arg_46_1 == "desc" and not var_0_0.instance:isSetDescFlag() then
+					logError("获取调用效果 desc 字段， 必须使用 FightConfig.getSkillEffectDesc 函数")
+				end
 
-					return uv1.__index(slot0, slot1)
-				end,
-				__newindex = getmetatable(lua_skill_effect.configList[1]).__newindex
-			})
+				return var_45_0.__index(arg_46_0, arg_46_1)
+			end,
+			__newindex = var_45_0.__newindex
+		}
+
+		for iter_45_0, iter_45_1 in ipairs(lua_skill_effect.configList) do
+			setmetatable(iter_45_1, var_45_1)
 		end
 	end
 end
 
-function slot0.setGetDescFlag(slot0, slot1)
-	slot0.descFlag = slot1
+function var_0_0.setGetDescFlag(arg_47_0, arg_47_1)
+	arg_47_0.descFlag = arg_47_1
 end
 
-function slot0.isSetDescFlag(slot0)
-	return slot0.descFlag
+function var_0_0.isSetDescFlag(arg_48_0)
+	return arg_48_0.descFlag
 end
 
-function slot0.getMultiHpListByMonsterId(slot0, slot1, slot2)
-	if not lua_monster.configDict[slot1] then
+function var_0_0.getMultiHpListByMonsterId(arg_49_0, arg_49_1, arg_49_2)
+	local var_49_0 = lua_monster.configDict[arg_49_1]
+
+	if not var_49_0 then
 		return nil
 	end
 
-	slot4 = CharacterDataConfig.instance:getMonsterHp(slot1, slot2)
+	local var_49_1 = CharacterDataConfig.instance:getMonsterHp(arg_49_1, arg_49_2)
+	local var_49_2 = lua_monster_skill_template.configDict[var_49_0.skillTemplate]
 
-	if lua_monster_skill_template.configDict[slot3.skillTemplate] and slot5.instance > 0 and lua_monster_instance.configDict[slot5.instance] and slot6.multiHp > 1 then
-		slot7 = {}
+	if var_49_2 and var_49_2.instance > 0 then
+		local var_49_3 = lua_monster_instance.configDict[var_49_2.instance]
 
-		for slot11 = 1, slot6.multiHp do
-			table.insert(slot7, slot4)
+		if var_49_3 and var_49_3.multiHp > 1 then
+			local var_49_4 = {}
+
+			for iter_49_0 = 1, var_49_3.multiHp do
+				table.insert(var_49_4, var_49_1)
+			end
+
+			return var_49_4
 		end
-
-		return slot7
 	end
 
-	if string.nilorempty(lua_monster_template.configDict[slot3.template] and slot6.multiHp) then
+	local var_49_5 = lua_monster_template.configDict[var_49_0.template]
+	local var_49_6 = var_49_5 and var_49_5.multiHp
+
+	if string.nilorempty(var_49_6) then
 		return nil
 	end
 
-	slot9 = {}
+	local var_49_7 = #string.split(var_49_6, "#")
+	local var_49_8 = {}
 
-	for slot13 = 1, #string.split(slot7, "#") do
-		table.insert(slot9, slot4)
+	for iter_49_1 = 1, var_49_7 do
+		table.insert(var_49_8, var_49_1)
 	end
 
-	return slot9
+	return var_49_8
 end
 
-slot0.instance = slot0.New()
+var_0_0.instance = var_0_0.New()
 
-return slot0
+return var_0_0

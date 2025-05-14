@@ -1,14 +1,17 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.damage.HpCompBase", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.damage.HpCompBase", package.seeall)
 
-slot0 = class("HpCompBase")
+local var_0_0 = class("HpCompBase")
 
-function slot0.reset(slot0)
+function var_0_0.reset(arg_1_0)
+	return
 end
 
-function slot0.damage(slot0, slot1)
+function var_0_0.damage(arg_2_0, arg_2_1)
+	return
 end
 
-function slot0.treatment(slot0, slot1)
+function var_0_0.treatment(arg_3_0, arg_3_1)
+	return
 end
 
-return slot0
+return var_0_0

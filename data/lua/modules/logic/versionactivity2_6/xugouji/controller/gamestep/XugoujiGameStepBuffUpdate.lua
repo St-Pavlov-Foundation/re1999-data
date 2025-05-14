@@ -1,17 +1,18 @@
-module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepBuffUpdate", package.seeall)
+﻿module("modules.logic.versionactivity2_6.xugouji.controller.gamestep.XugoujiGameStepBuffUpdate", package.seeall)
 
-slot0 = class("XugoujiGameStepBuffUpdate", XugoujiGameStepBase)
+local var_0_0 = class("XugoujiGameStepBuffUpdate", XugoujiGameStepBase)
 
-function slot0.start(slot0)
-	slot1 = slot0._stepData.isSelf
+function var_0_0.start(arg_1_0)
+	local var_1_0 = arg_1_0._stepData.isSelf
+	local var_1_1 = arg_1_0._stepData.buffs
 
-	Activity188Model.instance:setBuffs(slot0._stepData.buffs, slot1)
-	XugoujiController.instance:dispatchEvent(XugoujiEvent.BuffUpdated, slot1)
-	slot0:finish()
+	Activity188Model.instance:setBuffs(var_1_1, var_1_0)
+	XugoujiController.instance:dispatchEvent(XugoujiEvent.BuffUpdated, var_1_0)
+	arg_1_0:finish()
 end
 
-function slot0.finish(slot0)
-	uv0.super.finish(slot0)
+function var_0_0.finish(arg_2_0)
+	var_0_0.super.finish(arg_2_0)
 end
 
-return slot0
+return var_0_0

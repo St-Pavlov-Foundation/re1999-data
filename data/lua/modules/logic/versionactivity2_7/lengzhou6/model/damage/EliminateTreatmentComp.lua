@@ -1,74 +1,77 @@
-module("modules.logic.versionactivity2_7.lengzhou6.model.damage.EliminateTreatmentComp", package.seeall)
+﻿module("modules.logic.versionactivity2_7.lengzhou6.model.damage.EliminateTreatmentComp", package.seeall)
 
-slot0 = class("EliminateTreatmentComp", HpCompBase)
+local var_0_0 = class("EliminateTreatmentComp", HpCompBase)
 
-function slot0.ctor(slot0)
-	slot0._baseTreatment = 0
-	slot0._exTreatment = 0
-	slot0._treatmentRate = 0
-	slot0._eliminateTypeExTreatment = {}
+function var_0_0.ctor(arg_1_0)
+	arg_1_0._baseTreatment = 0
+	arg_1_0._exTreatment = 0
+	arg_1_0._treatmentRate = 0
+	arg_1_0._eliminateTypeExTreatment = {}
 end
 
-function slot0.reset(slot0)
-	slot0._baseTreatment = 0
-	slot0._exTreatment = 0
-	slot0._treatmentRate = 0
-	slot0._eliminateTypeExTreatment = {}
+function var_0_0.reset(arg_2_0)
+	arg_2_0._baseTreatment = 0
+	arg_2_0._exTreatment = 0
+	arg_2_0._treatmentRate = 0
+	arg_2_0._eliminateTypeExTreatment = {}
 end
 
-function slot0.setExTreatment(slot0, slot1)
-	slot0._exTreatment = slot1
+function var_0_0.setExTreatment(arg_3_0, arg_3_1)
+	arg_3_0._exTreatment = arg_3_1
 end
 
-function slot0.setEliminateTypeExTreatment(slot0, slot1, slot2)
-	slot0._eliminateTypeExTreatment[slot1] = slot2
+function var_0_0.setEliminateTypeExTreatment(arg_4_0, arg_4_1, arg_4_2)
+	arg_4_0._eliminateTypeExTreatment[arg_4_1] = arg_4_2
 end
 
-function slot0.setTreatmentRate(slot0, slot1)
-	slot0._treatmentRate = slot1 / 1000
+function var_0_0.setTreatmentRate(arg_5_0, arg_5_1)
+	arg_5_0._treatmentRate = arg_5_1 / 1000
 end
 
-slot1 = "\n"
+local var_0_1 = "\n"
 
-function slot0.treatment(slot0, slot1)
-	slot2 = 0
+function var_0_0.treatment(arg_6_0, arg_6_1)
+	local var_6_0 = 0
+	local var_6_1 = arg_6_1:getEliminateTypeMap()
 
-	for slot7, slot8 in pairs(slot1:getEliminateTypeMap()) do
-		for slot12, slot13 in pairs(slot8) do
-			if not string.nilorempty(slot7) and slot7 ~= EliminateEnum_2_7.ChessType.stone then
-				slot16 = slot13.spEliminateCount
-				slot17, slot18 = LengZhou6Config.instance:getHealValue(slot7, slot13.eliminateType)
+	for iter_6_0, iter_6_1 in pairs(var_6_1) do
+		for iter_6_2, iter_6_3 in pairs(iter_6_1) do
+			if not string.nilorempty(iter_6_0) and iter_6_0 ~= EliminateEnum_2_7.ChessType.stone then
+				local var_6_2 = iter_6_3.eliminateType
+				local var_6_3 = iter_6_3.eliminateCount
+				local var_6_4 = iter_6_3.spEliminateCount
+				local var_6_5, var_6_6 = LengZhou6Config.instance:getHealValue(iter_6_0, var_6_2)
 
-				if slot18 ~= nil and (slot14 == EliminateEnum_2_7.eliminateType.cross or slot14 == EliminateEnum_2_7.eliminateType.five) then
-					slot18 = (slot13.eliminateCount - 5) * slot18
+				if var_6_6 ~= nil and (var_6_2 == EliminateEnum_2_7.eliminateType.cross or var_6_2 == EliminateEnum_2_7.eliminateType.five) then
+					var_6_6 = (var_6_3 - 5) * var_6_6
 				end
 
-				if slot14 == EliminateEnum_2_7.eliminateType.base then
-					slot17 = slot17 * slot15
+				if var_6_2 == EliminateEnum_2_7.eliminateType.base then
+					var_6_5 = var_6_5 * var_6_3
 				end
 
-				if slot16 ~= 0 and slot0._eliminateTypeExTreatment[slot7] ~= nil then
-					slot18 = slot18 + slot0._eliminateTypeExTreatment[slot7] * slot16
+				if var_6_4 ~= 0 and arg_6_0._eliminateTypeExTreatment[iter_6_0] ~= nil then
+					var_6_6 = var_6_6 + arg_6_0._eliminateTypeExTreatment[iter_6_0] * var_6_4
 				end
 
 				if isDebugBuild then
-					uv0 = uv0 .. "eliminateId = " .. slot7 .. " eliminateType = " .. slot14 .. " eliminateCount = " .. slot15 .. " spEliminateCount = " .. slot16 .. " baseTreatment = " .. slot17 .. " baseExTreatment = " .. slot18 .. "\n"
+					var_0_1 = var_0_1 .. "eliminateId = " .. iter_6_0 .. " eliminateType = " .. var_6_2 .. " eliminateCount = " .. var_6_3 .. " spEliminateCount = " .. var_6_4 .. " baseTreatment = " .. var_6_5 .. " baseExTreatment = " .. var_6_6 .. "\n"
 				end
 
-				slot2 = slot2 + (slot17 + slot0._exTreatment + slot18) * (1 + slot0._treatmentRate)
+				var_6_0 = var_6_0 + (var_6_5 + arg_6_0._exTreatment + var_6_6) * (1 + arg_6_0._treatmentRate)
 			end
 		end
 	end
 
 	if isDebugBuild then
-		logNormal("消除治疗计算详情 = " .. uv0)
+		logNormal("消除治疗计算详情 = " .. var_0_1)
 
-		uv0 = "\n"
+		var_0_1 = "\n"
 
-		logNormal("消除单次治疗 = ：" .. slot2)
+		logNormal("消除单次治疗 = ：" .. var_6_0)
 	end
 
-	return slot2
+	return var_6_0
 end
 
-return slot0
+return var_0_0
