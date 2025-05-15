@@ -186,7 +186,7 @@ function var_0_0._editableInitView(arg_15_0)
 end
 
 function var_0_0.onOpen(arg_16_0)
-	arg_16_0._isStoryMode = arg_16_0.viewParam and arg_16_0.viewParam.storyMode
+	arg_16_0._isStoryMode = arg_16_0.viewParam and LuaUtil.isTable(arg_16_0.viewParam) and arg_16_0.viewParam.storyMode
 
 	arg_16_0:refreshSkinStoryView(arg_16_0._isStoryMode)
 end

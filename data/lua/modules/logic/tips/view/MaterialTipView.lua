@@ -742,7 +742,9 @@ function var_0_0._btnuseOnClick(arg_24_0)
 		end
 
 		if #var_24_13 > 0 then
-			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView)
+			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView, {
+				materialId = var_24_0
+			})
 		else
 			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
 		end

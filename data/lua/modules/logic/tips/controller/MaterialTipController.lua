@@ -76,7 +76,9 @@ function var_0_0.showMaterialInfoWithData(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 			heroId = arg_4_2
 		})
 	elseif arg_4_1 == MaterialEnum.MaterialType.HeroSkin then
-		CharacterController.instance:openCharacterSkinTipView(arg_4_2)
+		CharacterController.instance:openCharacterSkinTipView({
+			skinId = arg_4_2
+		})
 	elseif arg_4_1 == MaterialEnum.MaterialType.Equip then
 		EquipController.instance:openEquipView({
 			equipId = arg_4_2

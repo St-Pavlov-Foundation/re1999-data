@@ -34,7 +34,7 @@ function var_0_0.openGroupFightView(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 
 	local var_4_4 = HeroGroupModel.instance:getCurGroupMO()
 
-	if arg_4_0:changeToDefaultEquip() and not var_4_4.temp then
+	if arg_4_0:changeToDefaultEquip() and var_4_4 and not var_4_4.temp then
 		HeroGroupModel.instance:saveCurGroupData(function()
 			arg_4_0:_openGroupView()
 		end)
@@ -42,7 +42,7 @@ function var_0_0.openGroupFightView(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 		return
 	end
 
-	if HeroGroupModel.instance.heroGroupType == ModuleEnum.HeroGroupType.Trial then
+	if HeroGroupModel.instance.heroGroupType == ModuleEnum.HeroGroupType.Trial and var_4_4 then
 		var_4_4:saveData()
 	end
 
@@ -127,8 +127,8 @@ end
 
 function var_0_0.changeToDefaultEquip(arg_9_0)
 	local var_9_0 = HeroGroupModel.instance:getCurGroupMO()
-	local var_9_1 = var_9_0.equips
-	local var_9_2 = var_9_0.heroList
+	local var_9_1 = var_9_0 and var_9_0.equips or {}
+	local var_9_2 = var_9_0 and var_9_0.heroList or {}
 	local var_9_3
 	local var_9_4
 	local var_9_5 = false
