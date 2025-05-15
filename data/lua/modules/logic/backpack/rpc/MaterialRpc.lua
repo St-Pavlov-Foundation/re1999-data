@@ -158,6 +158,10 @@ function var_0_0._onReceiveMaterialChangePush(arg_6_0, arg_6_1, arg_6_2, arg_6_3
 		LifeCircleController.instance:openLifeCircleRewardView(arg_6_2)
 	elseif var_6_0 == MaterialEnum.GetApproach.AutoChessRankReward or var_6_0 == MaterialEnum.GetApproach.AutoChessPveReward then
 		AutoChessController.instance:addPopupView(ViewName.CommonPropView, arg_6_2)
+	elseif var_6_0 == MaterialEnum.GetApproach.Activity197View then
+		Activity197Controller.instance:setRummageReward(ViewName.CommonPropView, arg_6_2)
+	elseif var_6_0 == MaterialEnum.GetApproach.SkinCoupon then
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.SkinCouponTipView, ViewName.SkinCouponTipView, arg_6_2)
 	else
 		arg_6_0:_onReceiveMaterialChangePush_default(arg_6_1, arg_6_2, arg_6_3, arg_6_4, arg_6_5)
 	end
@@ -192,22 +196,32 @@ function var_0_0._onReceiveMaterialChangePush_default(arg_7_0, arg_7_1, arg_7_2,
 
 			return
 		end
-	end
 
-	local var_7_2 = #arg_7_2
+		local var_7_2 = FightUISwitchModel.instance:getStyleMoByItemId(arg_7_2[1].materilId)
 
-	if var_7_2 ~= 0 and arg_7_2[1].materilType == MaterialEnum.MaterialType.Critter then
-		CritterController.instance:popUpCritterGetView()
+		if var_7_2 then
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.FightUISwitchEquipView, {
+				mo = var_7_2
+			})
 
-		if var_7_2 == 1 then
 			return
 		end
 	end
 
-	local var_7_3 = ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg)
+	local var_7_3 = #arg_7_2
 
-	if var_7_3 and #var_7_3 > 0 then
-		for iter_7_0, iter_7_1 in ipairs(var_7_3) do
+	if var_7_3 ~= 0 and arg_7_2[1].materilType == MaterialEnum.MaterialType.Critter then
+		CritterController.instance:popUpCritterGetView()
+
+		if var_7_3 == 1 then
+			return
+		end
+	end
+
+	local var_7_4 = ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg)
+
+	if var_7_4 and #var_7_4 > 0 then
+		for iter_7_0, iter_7_1 in ipairs(var_7_4) do
 			if #arg_7_2 == 1 and iter_7_1.id == arg_7_2[1].materilId then
 				PlayerCardController.instance:ShowChangeBgSkin(iter_7_1.id)
 			end

@@ -65,6 +65,8 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 		"scenes/v2a0_m_s15_sj/",
 		"singlebg/storybg/story_atcg/2_7/",
 		"singlebg/storybg/story_atcg/2_6/",
+		"singlebg/storybg/story_atcg/2_8/",
+		"singlebg/storybg/story_bg/2_8/",
 		"singlebg/dungeon/fragmenticon/"
 	}
 	local var_1_1 = {

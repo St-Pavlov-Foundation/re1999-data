@@ -1,0 +1,2752 @@
+[
+  {
+    "id": 110001,
+    "groupId": 1,
+    "pos": 1,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：进步者",
+    "desc1": "初始储备+200",
+    "desc2": "严谨的第一步，前进踏出的第一个平稳的脚印。"
+  },
+  {
+    "id": 110002,
+    "groupId": 1,
+    "pos": 2,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：履行规章",
+    "desc1": "初始储备+200",
+    "desc2": "因为散漫而需制定规章。"
+  },
+  {
+    "id": 110003,
+    "groupId": 1,
+    "pos": 3,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：践行制度",
+    "desc1": "每次抵达避难处时，储备+50",
+    "desc2": "因为懒散而需确定制度。"
+  },
+  {
+    "id": 110004,
+    "groupId": 1,
+    "pos": 4,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：模块化",
+    "desc1": "每次抵达避难处时，储备+50",
+    "desc2": "模块化，避险分责的最优解。"
+  },
+  {
+    "id": 110005,
+    "groupId": 1,
+    "pos": 5,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：效率至上",
+    "desc1": "每名演习角色，额外提升20演习负重",
+    "desc2": "谨慎并非固步不前。"
+  },
+  {
+    "id": 110006,
+    "groupId": 1,
+    "pos": 6,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：人情味",
+    "desc1": "每名演习角色，额外提升20演习负重",
+    "desc2": "个人情绪很重要。"
+  },
+  {
+    "id": 110007,
+    "groupId": 1,
+    "pos": 7,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：做四休三！",
+    "desc1": "地图中出现的漫游助理数量+1，并点亮",
+    "desc2": "拉普拉斯人也需要休息！"
+  },
+  {
+    "id": 110008,
+    "groupId": 1,
+    "pos": 8,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：行为协议",
+    "desc1": "地图中出现的漫游助理数量+1，并点亮",
+    "desc2": "按部就班，一切都会走上正确的轨迹。"
+  },
+  {
+    "id": 120001,
+    "groupId": 2,
+    "pos": 1,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：缜密思考",
+    "desc1": "演习地图中，在战斗后恢复30单位时间",
+    "desc2": "每一种可能都是一条林间小径。"
+  },
+  {
+    "id": 120002,
+    "groupId": 2,
+    "pos": 2,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：选择判断",
+    "desc1": "演习地图中，在战斗后恢复30单位时间",
+    "desc2": "现在，又是一个十字路口。我们总不能事事都指望罗马金币吧？"
+  },
+  {
+    "id": 120003,
+    "groupId": 2,
+    "pos": 3,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：思维脑图",
+    "desc1": "地图内额外生成逃跑魔精事件+1，并点亮",
+    "desc2": "任何论点都从一到终。"
+  },
+  {
+    "id": 120004,
+    "groupId": 2,
+    "pos": 4,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：行动分支",
+    "desc1": "地图内额外生成逃跑魔精事件+1，并点亮",
+    "desc2": "很多论点都紧密相连。"
+  },
+  {
+    "id": 120005,
+    "groupId": 2,
+    "pos": 5,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：归纳推理",
+    "desc1": "演习地图中，在战斗胜利后研究资料+50",
+    "desc2": "特别也是普世的一部分。"
+  },
+  {
+    "id": 120006,
+    "groupId": 2,
+    "pos": 6,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：演绎推理",
+    "desc1": "演习地图中，在战斗胜利后研究资料+50",
+    "desc2": "而普世也是特别的温床。"
+  },
+  {
+    "id": 120007,
+    "groupId": 2,
+    "pos": 7,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：论点",
+    "desc1": "初始从3件随机盒中之物选择1件",
+    "desc2": "自我主张存在于每一颗大脑里，或者别的什么里。"
+  },
+  {
+    "id": 120008,
+    "groupId": 2,
+    "pos": 8,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：有效论证",
+    "desc1": "初始从3件随机盒中之物选择1件",
+    "desc2": "在无数结论的支撑下最终我们找到了真理。"
+  },
+  {
+    "id": 130001,
+    "groupId": 3,
+    "pos": 1,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：甄别",
+    "desc1": "失败撤离时的损失降低50%",
+    "desc2": "选择目标犹如大海捞针，但是我们做到了。"
+  },
+  {
+    "id": 130002,
+    "groupId": 3,
+    "pos": 2,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：专注力",
+    "desc1": "失败撤离时的损失降低50%",
+    "desc2": "据我所知，在座的各位应该都没有多动症，对吧？"
+  },
+  {
+    "id": 130003,
+    "groupId": 3,
+    "pos": 3,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：纷扰",
+    "desc1": "视野范围+1",
+    "desc2": "杂音在每一次的思绪震颤之间，它平等地扰动着每一个学者。"
+  },
+  {
+    "id": 130004,
+    "groupId": 3,
+    "pos": 4,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：杂论",
+    "desc1": "视野范围+1",
+    "desc2": "众说纷纭，总有蛛丝马迹可查询一二。"
+  },
+  {
+    "id": 130005,
+    "groupId": 3,
+    "pos": 5,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：视线收拢",
+    "desc1": "地图内额外生成随机的钱袋事件+1，并点亮",
+    "desc2": "聚焦目光，看向前方。"
+  },
+  {
+    "id": 130006,
+    "groupId": 3,
+    "pos": 6,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：思考收束",
+    "desc1": "地图内额外生成随机的钱袋事件+1，并点亮",
+    "desc2": "收束思想，凝聚为一。"
+  },
+  {
+    "id": 130007,
+    "groupId": 3,
+    "pos": 7,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：明确目标",
+    "desc1": "地图内额外生成随机的搜刮事件+1，并点亮",
+    "desc2": "就这一条路了，试试一条路走到黑怎么样？"
+  },
+  {
+    "id": 130008,
+    "groupId": 3,
+    "pos": 8,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：心无旁骛",
+    "desc1": "地图内额外生成随机的搜刮事件+1，并点亮",
+    "desc2": "不要有过多的思考，它会让你踌躇不前；亦不要有过多的目标，它会让你如履薄冰。"
+  },
+  {
+    "id": 140001,
+    "groupId": 4,
+    "pos": 1,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：想象力",
+    "desc1": "抵抗力上限+20",
+    "desc2": "我们看着鸟儿飞翔，才会有“飞行者一号”。"
+  },
+  {
+    "id": 140002,
+    "groupId": 4,
+    "pos": 2,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：巧合",
+    "desc1": "抵抗力上限+20",
+    "desc2": "为什么要在1966年6月3日出海?"
+  },
+  {
+    "id": 140003,
+    "groupId": 4,
+    "pos": 3,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：结果大于一切",
+    "desc1": "搜刮完成时，全队抵抗力+5",
+    "desc2": "先得有蛋，然后我们只需要证明还有一只鸡就行。"
+  },
+  {
+    "id": 140004,
+    "groupId": 4,
+    "pos": 4,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：实践出真知",
+    "desc1": "搜刮完成时，全队抵抗力+5",
+    "desc2": "不行不行，先得有鸡，才能证明蛋是蛋。"
+  },
+  {
+    "id": 140005,
+    "groupId": 4,
+    "pos": 5,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：规矩之外",
+    "desc1": "漫游助理的每日储备消耗降低15%",
+    "desc2": "只需要一点小小的越界……"
+  },
+  {
+    "id": 140006,
+    "groupId": 4,
+    "pos": 6,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：意料之内",
+    "desc1": "漫游助理的每日储备消耗降低15%",
+    "desc2": "哈，这些我早就想到了！"
+  },
+  {
+    "id": 140007,
+    "groupId": 4,
+    "pos": 7,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：灵光乍现",
+    "desc1": "初始获得研究资料、材料、储备+100",
+    "desc2": "我有一个想法。假如一株曼德拉草外面裹上盐……"
+  },
+  {
+    "id": 140008,
+    "groupId": 4,
+    "pos": 8,
+    "versions": "",
+    "seasons": "",
+    "name": "思维：灵机一动",
+    "desc1": "初始获得研究资料、材料、储备+100",
+    "desc2": "大楼可以躲避“暴雨”？那只要这个大楼足够大……"
+  },
+  {
+    "id": 110101,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "危机领袖-2",
+    "desc1": "招募漫游助理时，物品计算价值提升200%，并会获得漫游助理的赠礼",
+    "desc2": "/"
+  },
+  {
+    "id": 110102,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "危机领袖-4",
+    "desc1": "进入演习，获得2个【生命雷达】【时间沙漏】",
+    "desc2": "/"
+  },
+  {
+    "id": 110103,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "危机领袖-8",
+    "desc1": "获得思维涌动【侧方支援】：战斗中会出现支援单位，可以对其下达仪式指令；冷却2回合",
+    "desc2": "/"
+  },
+  {
+    "id": 120101,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "战斗专家-2",
+    "desc1": "搜刮怪物战利品后，会有新的漫游助理出现在地图上并点亮",
+    "desc2": "/"
+  },
+  {
+    "id": 120102,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "战斗专家-4",
+    "desc1": "主基地等级达到4时，每次进入演习地图都可以从3件盒中之物中随机选择1件",
+    "desc2": "/"
+  },
+  {
+    "id": 120103,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "战斗专家-8",
+    "desc1": "获得思维涌动【引爆标记】：对敌方全体回合结束时，受到本回合受到伤害的50%的本源伤害；冷却3回合",
+    "desc2": "/"
+  },
+  {
+    "id": 130101,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "冒险精神-2",
+    "desc1": "进入地图时，点亮逃离点的位置",
+    "desc2": "/"
+  },
+  {
+    "id": 130102,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "冒险精神-4",
+    "desc1": "进入演习，获得3个【短途飞行器】",
+    "desc2": "/"
+  },
+  {
+    "id": 130103,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "冒险精神-8",
+    "desc1": "获得思维涌动【第一愿望】：选择一名友方，行动力+1，回合开始时，获得2张自身的3阶咒语，持续3回合；冷却3回合",
+    "desc2": "/"
+  },
+  {
+    "id": 140101,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "疾病抵御-2",
+    "desc1": "进入演习，获得道具2个【超载驱动Ⅰ】【治疗健康】",
+    "desc2": "/"
+  },
+  {
+    "id": 140102,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "疾病抵御-4",
+    "desc1": "处于污染中的抵抗力损失降低50%；演习角色，若抵抗力超过40，可解除永久健康异常；",
+    "desc2": "/"
+  },
+  {
+    "id": 140103,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "疾病抵御-8",
+    "desc1": "获得思维涌动【昂扬祝福】：手牌上限+2，己方全体获得【昂扬】，持续2回合；冷却4回合",
+    "desc2": "/"
+  },
+  {
+    "id": 21011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "视野遮蔽",
+    "desc1": "基础可见范围-1",
+    "desc2": "/"
+  },
+  {
+    "id": 21012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "视野遮蔽",
+    "desc1": "基础可见范围-2",
+    "desc2": "/"
+  },
+  {
+    "id": 21013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "视野遮蔽",
+    "desc1": "基础可见范围-3",
+    "desc2": "/"
+  },
+  {
+    "id": 21014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "视野遮蔽",
+    "desc1": "基础可见范围-4",
+    "desc2": "/"
+  },
+  {
+    "id": 21015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "视野遮蔽",
+    "desc1": "基础可见范围-5",
+    "desc2": "/"
+  },
+  {
+    "id": 21021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "健康损失",
+    "desc1": "进入演习地图时，损失10%当前抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 21023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "健康损失",
+    "desc1": "进入演习地图时，损失15%当前抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 21025,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "健康损失",
+    "desc1": "进入演习地图时，损失20%当前抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 21031,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "天降惊喜",
+    "desc1": "移动时有1%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc2": "/"
+  },
+  {
+    "id": 21032,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "天降惊喜",
+    "desc1": "移动时有2%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc2": "/"
+  },
+  {
+    "id": 21033,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "天降惊喜",
+    "desc1": "移动时有3%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc2": "/"
+  },
+  {
+    "id": 21034,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "天降惊喜",
+    "desc1": "移动时有4%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc2": "/"
+  },
+  {
+    "id": 21035,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "天降惊喜",
+    "desc1": "移动时有5%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc2": "/"
+  },
+  {
+    "id": 21041,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预期提升",
+    "desc1": "招募漫游助理时，物品价值降低10%",
+    "desc2": "/"
+  },
+  {
+    "id": 21042,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预期提升",
+    "desc1": "招募漫游助理时，物品价值降低20%",
+    "desc2": "/"
+  },
+  {
+    "id": 21043,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预期提升",
+    "desc1": "招募漫游助理时，物品价值降低30%",
+    "desc2": "/"
+  },
+  {
+    "id": 21044,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预期提升",
+    "desc1": "招募漫游助理时，物品价值降低40%",
+    "desc2": "/"
+  },
+  {
+    "id": 21045,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预期提升",
+    "desc1": "招募漫游助理时，物品价值降低50%",
+    "desc2": "/"
+  },
+  {
+    "id": 21051,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "污染指数",
+    "desc1": "处于暴雨中行动时，抵抗力额外降低2",
+    "desc2": "/"
+  },
+  {
+    "id": 21053,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "污染指数",
+    "desc1": "处于暴雨中行动时，抵抗力额外降低3",
+    "desc2": "/"
+  },
+  {
+    "id": 21055,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "污染指数",
+    "desc1": "处于暴雨中行动时，抵抗力额外降低4",
+    "desc2": "/"
+  },
+  {
+    "id": 21065,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "失败代价",
+    "desc1": "演习失败时，完全损失所有演习物品",
+    "desc2": "/"
+  },
+  {
+    "id": 21071,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "获取困难",
+    "desc1": "搜刮耗时额外提升10%",
+    "desc2": "/"
+  },
+  {
+    "id": 21073,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "获取困难",
+    "desc1": "搜刮耗时额外提升20%",
+    "desc2": "/"
+  },
+  {
+    "id": 21075,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "获取困难",
+    "desc1": "搜刮耗时额外提升30%",
+    "desc2": "/"
+  },
+  {
+    "id": 21081,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "运载困难",
+    "desc1": "角色的演习负重降低10%",
+    "desc2": "/"
+  },
+  {
+    "id": 21083,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "运载困难",
+    "desc1": "角色的演习负重降低20%",
+    "desc2": "/"
+  },
+  {
+    "id": 21085,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "运载困难",
+    "desc1": "角色的演习负重降低30%",
+    "desc2": "/"
+  },
+  {
+    "id": 22011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "若演习战斗结束回合超过8，上阵角色失去10%最大抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 22013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "若演习战斗结束回合超过7，上阵角色失去10%最大抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 22015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "若演习战斗结束回合超过6，上阵角色失去10%最大抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 22021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "理智侵蚀",
+    "desc1": "演习战斗中，怪物会在第10回合开始获得5层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "理智侵蚀",
+    "desc1": "演习战斗中，怪物会在第8回合开始获得5层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22025,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "理智侵蚀",
+    "desc1": "演习战斗中，怪物会在第6回合开始获得5层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22031,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨夜猎手",
+    "desc1": "第6天开始，演习剩余时间不足1小时后，地图会生成【死神】怪物，强制追踪玩家（高强度BOSS）",
+    "desc2": "/"
+  },
+  {
+    "id": 22033,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨夜猎手",
+    "desc1": "第6天开始，演习剩余时间不足2小时后，地图会生成【死神】怪物，强制追踪玩家（高强度BOSS）",
+    "desc2": "/"
+  },
+  {
+    "id": 22035,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨夜猎手",
+    "desc1": "第6天开始，演习剩余时间不足3小时后，地图会生成【死神】怪物，强制追踪玩家（高强度BOSS）",
+    "desc2": "/"
+  },
+  {
+    "id": 22040,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第6天为最终之日，将迎来1次入侵",
+    "desc2": "/"
+  },
+  {
+    "id": 22041,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第8天为最终之日，将迎来2次入侵",
+    "desc2": "/"
+  },
+  {
+    "id": 22042,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第9天为最终之日，将迎来2次入侵",
+    "desc2": "/"
+  },
+  {
+    "id": 22043,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第10天为最终之日，将迎来3次入侵，入侵怪物变强大了",
+    "desc2": "/"
+  },
+  {
+    "id": 22044,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第11天为最终之日，将迎来3次入侵，入侵怪物更为强大了",
+    "desc2": "/"
+  },
+  {
+    "id": 22045,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "雨期将至",
+    "desc1": "第12天为最终之日，将迎来3次入侵，入侵怪物强得可怕",
+    "desc2": "/"
+  },
+  {
+    "id": 22051,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵强化",
+    "desc1": "BOSS入侵时，初始获得5层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22052,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵强化",
+    "desc1": "BOSS入侵时，初始获得10层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22053,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵强化",
+    "desc1": "BOSS入侵时，初始获得15层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22054,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵强化",
+    "desc1": "BOSS入侵时，初始获得20层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22055,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵强化",
+    "desc1": "BOSS入侵时，初始获得25层【秽蚀升格】",
+    "desc2": "/"
+  },
+  {
+    "id": 22061,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "精英强化",
+    "desc1": "地图会额外出现少量的精英战斗",
+    "desc2": "/"
+  },
+  {
+    "id": 22063,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "精英强化",
+    "desc1": "地图会额外出现中量的精英战斗",
+    "desc2": "/"
+  },
+  {
+    "id": 22065,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "精英强化",
+    "desc1": "地图会额外出现大量的精英战斗",
+    "desc2": "/"
+  },
+  {
+    "id": 22071,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "演习强化",
+    "desc1": "演习战斗，怪物行动力+1",
+    "desc2": "/"
+  },
+  {
+    "id": 22073,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "演习强化",
+    "desc1": "演习战斗，怪物行动力+2",
+    "desc2": "/"
+  },
+  {
+    "id": 22083,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "重伤演化",
+    "desc1": "演习战斗失败，额外损失100%抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 22085,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "重伤演化",
+    "desc1": "演习战斗失败，额外损失200%抵抗力",
+    "desc2": "/"
+  },
+  {
+    "id": 23012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自然损耗",
+    "desc1": "每日储备消耗提升10%",
+    "desc2": "/"
+  },
+  {
+    "id": 23013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自然损耗",
+    "desc1": "每日储备消耗提升20%",
+    "desc2": "/"
+  },
+  {
+    "id": 23014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自然损耗",
+    "desc1": "每日储备消耗提升30%",
+    "desc2": "/"
+  },
+  {
+    "id": 23015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自然损耗",
+    "desc1": "每日储备消耗提升40%",
+    "desc2": "/"
+  },
+  {
+    "id": 23022,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "建造损耗",
+    "desc1": "建造、修缮建筑的消耗提升25%",
+    "desc2": "/"
+  },
+  {
+    "id": 23023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "建造损耗",
+    "desc1": "建造、修缮建筑的消耗提升50%",
+    "desc2": "/"
+  },
+  {
+    "id": 23024,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "建造损耗",
+    "desc1": "建造、修缮建筑的消耗提升75%",
+    "desc2": "/"
+  },
+  {
+    "id": 23025,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "建造损耗",
+    "desc1": "建造、修缮建筑的消耗提升100%",
+    "desc2": "/"
+  },
+  {
+    "id": 23031,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "苛捐杂税",
+    "desc1": "购买商品时，价格上升20%",
+    "desc2": "/"
+  },
+  {
+    "id": 23032,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "苛捐杂税",
+    "desc1": "购买商品时，价格上升40%",
+    "desc2": "/"
+  },
+  {
+    "id": 23033,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "苛捐杂税",
+    "desc1": "购买商品时，价格上升60%",
+    "desc2": "/"
+  },
+  {
+    "id": 23034,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "苛捐杂税",
+    "desc1": "购买商品时，价格上升80%",
+    "desc2": "/"
+  },
+  {
+    "id": 23035,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "苛捐杂税",
+    "desc1": "购买商品时，价格上升100%",
+    "desc2": "/"
+  },
+  {
+    "id": 23041,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "价值贬损",
+    "desc1": "出售商品时，价格降低10%",
+    "desc2": "/"
+  },
+  {
+    "id": 23042,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "价值贬损",
+    "desc1": "出售商品时，价格降低20%",
+    "desc2": "/"
+  },
+  {
+    "id": 23043,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "价值贬损",
+    "desc1": "出售商品时，价格降低30%",
+    "desc2": "/"
+  },
+  {
+    "id": 23044,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "价值贬损",
+    "desc1": "出售商品时，价格降低40%",
+    "desc2": "/"
+  },
+  {
+    "id": 23045,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "价值贬损",
+    "desc1": "出售商品时，价格降低50%",
+    "desc2": "/"
+  },
+  {
+    "id": 24010,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "平衡模式",
+    "desc1": "角色等级/共鸣等级/心相等级提升至150/12/60，新手的第一图时间减少14小时",
+    "desc2": "/"
+  },
+  {
+    "id": 24011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "平衡模式",
+    "desc1": "角色等级/共鸣等级/心相等级提升至150/12/60",
+    "desc2": "/"
+  },
+  {
+    "id": 24012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "平衡模式",
+    "desc1": "角色等级/共鸣等级/心相等级提升至121/10/50",
+    "desc2": "/"
+  },
+  {
+    "id": 24021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自定义难度",
+    "desc1": "",
+    "desc2": "/"
+  },
+  {
+    "id": 24022,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "模板2难度",
+    "desc1": "",
+    "desc2": "/"
+  },
+  {
+    "id": 24023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "模板3难度",
+    "desc1": "",
+    "desc2": "/"
+  },
+  {
+    "id": 24024,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "模板4难度",
+    "desc1": "",
+    "desc2": "/"
+  },
+  {
+    "id": 24031,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "友好视野1",
+    "desc1": "进入地图时，会点亮撤离点、搜刮事件，其他事件会用？标记，初始获得1个NPC，暴雨降低抵抗力的值削减50%，进入游戏，在周围生成特殊搜刮",
+    "desc2": "/"
+  },
+  {
+    "id": 24032,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "友好视野2",
+    "desc1": "进入地图时，会点亮撤离点，其他事件会用？标记",
+    "desc2": "/"
+  },
+  {
+    "id": 24033,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "友好视野3",
+    "desc1": "进入地图时，会点亮撤离点",
+    "desc2": "/"
+  },
+  {
+    "id": 553001,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "恶徒指虎",
+    "desc1": "距离自身最近的1个普通、精英怪物变为搜刮事件",
+    "desc2": "/"
+  },
+  {
+    "id": 553002,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "惊喜胶囊α",
+    "desc1": "点亮1处未被发现的漫游助理所在位置",
+    "desc2": "/"
+  },
+  {
+    "id": 553003,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "惊喜胶囊β",
+    "desc1": "点亮1处未被发现的怪物所在位置",
+    "desc2": "/"
+  },
+  {
+    "id": 553004,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "惊喜胶囊γ",
+    "desc1": "点亮1处未被发现的遗迹所在位置",
+    "desc2": "/"
+  },
+  {
+    "id": 553005,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "小鬼的袋子",
+    "desc1": "随机获得2个【快捷道具】",
+    "desc2": "/"
+  },
+  {
+    "id": 553006,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "甘蔗糖汁",
+    "desc1": "使用后，全体角色的抵抗力增加20点",
+    "desc2": "/"
+  },
+  {
+    "id": 553007,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "倒置沙漏",
+    "desc1": "恢复60单位时间，不可超过上限",
+    "desc2": "/"
+  },
+  {
+    "id": 553008,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "“理性助理”Ⅰ",
+    "desc1": "全体演习角色失去5抵抗力，自选2个快捷道具，其中必定包含【超载驱动Ⅱ】",
+    "desc2": "/"
+  },
+  {
+    "id": 553009,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "“理性助理”Ⅱ",
+    "desc1": "全体演习角色失去10抵抗力，自选2个快捷道具，其中必定包含【超载驱动Ⅲ】",
+    "desc2": "/"
+  },
+  {
+    "id": 553010,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "“理性助理”Ⅲ",
+    "desc1": "全体演习角色失去20抵抗力，自选2个快捷道具，其中必定包含【超载驱动Ⅲ】",
+    "desc2": "/"
+  },
+  {
+    "id": 553011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "嘲弄假面",
+    "desc1": "使用后谁也不知道会发生什么？获得自己/获得装备/漫游助理生成在自身周围/获得储备、材料/随机传送/失去抵抗力/直达逃离点/获得垃圾",
+    "desc2": "/"
+  },
+  {
+    "id": 553012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "寻踪纸鹤",
+    "desc1": "传送到逃离点周围1~3格",
+    "desc2": ""
+  },
+  {
+    "id": 553013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "水果箱",
+    "desc1": "靠近怪物时，不会被察觉；追踪中的怪物会丢失目标，持续10格",
+    "desc2": ""
+  },
+  {
+    "id": 901001,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "抵抗力默认技能",
+    "desc1": "玩家默认获得战中技能：抵抗力等于0时，对自己killTarget",
+    "desc2": "/"
+  },
+  {
+    "id": 901002,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "世界等级默认属性",
+    "desc1": "根据当前世界等级，动态为怪物添加对应的属性规则加成。1，2，3属性，4暴雨侵蚀，5属性，6随机1名怪物狂暴",
+    "desc2": "/"
+  },
+  {
+    "id": 901003,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "地图下雨机制",
+    "desc1": "处于下雨区域，第1回合开始下雨；进入地图，点亮高价值事件",
+    "desc2": "/"
+  },
+  {
+    "id": 901004,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "特殊修正机制",
+    "desc1": "世界等级2，3，4，5，6 开始时，可探索时间会降低",
+    "desc2": "/"
+  },
+  {
+    "id": 900001,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "NPC特性校验",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900002,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "事件校验",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900003,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "每符合tag的Npc触发",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900004,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "所处地图类",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900005,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "每污染触发",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900006,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "物品确认",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900007,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "触发掉落",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900008,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "变更抵抗力",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900009,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "入侵模板",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900010,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "获得技能",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "获得规则",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "事件生成(ID)",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "事件生成(类型）",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "Npc离开",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "Npc获得",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900016,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "临时容器修正",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900017,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "永久容器修正",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900018,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "绝对位置装备特征值",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900019,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "相对位置装备特征值",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900020,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "生效次数计数",
+    "desc1": "",
+    "desc2": ""
+  },
+  {
+    "id": 900021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "平衡至150级，共鸣12级",
+    "desc1": "待补充",
+    "desc2": "待补充"
+  },
+  {
+    "id": 202001,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "鹰眼",
+    "desc1": "参与演习时,视野+1",
+    "desc2": ""
+  },
+  {
+    "id": 202002,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "耐力",
+    "desc1": "参与演习时,队伍负重+50%(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202003,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "猎人",
+    "desc1": "参与演习时,搜刮时间-10%",
+    "desc2": ""
+  },
+  {
+    "id": 202004,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "宝箱搜刮",
+    "desc1": "搜刮板条箱、集装箱、青铜宝箱后,额外获得30储备",
+    "desc2": ""
+  },
+  {
+    "id": 202005,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "战斗搜刮",
+    "desc1": "搜刮战斗掉落的物资后,额外获得30材料",
+    "desc2": ""
+  },
+  {
+    "id": 202006,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "觅食者",
+    "desc1": "参与演习时,演习结束储备+100;驻守时每天储备+20(驻守效果可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202007,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "拾荒者",
+    "desc1": "参与演习时,演习结束材料+100;驻守时每天材料+20(驻守效果可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202008,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "收集者",
+    "desc1": "参与演习时,演习结束研究资料+100;驻守时每天研究资料+20(驻守效果可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202009,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "鼓舞",
+    "desc1": "进入战斗时,我方全体激情+2",
+    "desc2": ""
+  },
+  {
+    "id": 202010,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "陷阱",
+    "desc1": "进入战斗时,敌方全体失去15%最大生命",
+    "desc2": ""
+  },
+  {
+    "id": 202011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "道具-飞行",
+    "desc1": "为演习队伍准备1个短途飞行道具;若自身参与演习,额外获得1个",
+    "desc2": ""
+  },
+  {
+    "id": 202012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[金蝉脱壳]",
+    "desc1": "参与演习时,为队伍准备1个逃脱道具",
+    "desc2": ""
+  },
+  {
+    "id": 202013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[点石成金]",
+    "desc1": "为演习队伍准备1个点金手道具;若自身参与演习,额外获得1个",
+    "desc2": ""
+  },
+  {
+    "id": 202014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[运气宝箱]",
+    "desc1": "为演习队伍准备1个百宝箱道具;若自身参与演习,额外获得1个",
+    "desc2": ""
+  },
+  {
+    "id": 202015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[时间停滞]",
+    "desc1": "为演习队伍准备2个时间凝固器道具;若自身参与演习,额外获得2个",
+    "desc2": ""
+  },
+  {
+    "id": 202016,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[一箭双雕]",
+    "desc1": "搜刮后,30%概率获得1个盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 202017,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[数据收集]",
+    "desc1": "每次演习后,获得1个盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 202018,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "[生物电扰乱]",
+    "desc1": "战斗中回合结束时,赋予敌方全体[属性削弱集合]中的3种状态,持续3回合",
+    "desc2": ""
+  },
+  {
+    "id": 202021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "执政者",
+    "desc1": "颁布法令时,可选项+1(3变4)",
+    "desc2": ""
+  },
+  {
+    "id": 202023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "还价",
+    "desc1": "商店购买时,价格降低5%;商店出售时,价格提升5%(可以叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202024,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "工程师",
+    "desc1": "避难处建造/修缮时,材料消耗-5%(可以叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202025,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "计划供给",
+    "desc1": "避难处每日储备消耗-5%(可以叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202026,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "保养",
+    "desc1": "抵抗力回复提升20%",
+    "desc2": ""
+  },
+  {
+    "id": 202027,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "健康指导",
+    "desc1": "演习时,抵抗力下降降低30%",
+    "desc2": ""
+  },
+  {
+    "id": 202028,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "独行侠",
+    "desc1": "每天获得随机物资(最多叠加3次)",
+    "desc2": ""
+  },
+  {
+    "id": 202029,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "行商",
+    "desc1": "每天带回1个随机盒中之物(最多叠加3次)",
+    "desc2": ""
+  },
+  {
+    "id": 202030,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "大商人",
+    "desc1": "每天带回3个随机道具(物资,盒中之物,最多叠加3次)",
+    "desc2": ""
+  },
+  {
+    "id": 202101,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "大胃王",
+    "desc1": "每天额外消耗3%储备(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202102,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "小爱好",
+    "desc1": "每天额外消耗3%材料(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202103,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "高薪",
+    "desc1": "每天额外消耗3%研究资料(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202104,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "资料补贴",
+    "desc1": "参与演习时,消耗5%仓库研究资料(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202105,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "食物补贴",
+    "desc1": "参与演习时,消耗5%仓库储备(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202106,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "材料补贴",
+    "desc1": "参与演习时,消耗5%仓库材料(可叠加)",
+    "desc2": ""
+  },
+  {
+    "id": 202203,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "膝盖中箭",
+    "desc1": "演习中,移动耗时提升50%",
+    "desc2": ""
+  },
+  {
+    "id": 201001,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "第六感",
+    "desc1": "演习开始时,获得居民雷达、怪物雷达，宝藏雷达各2个",
+    "desc2": ""
+  },
+  {
+    "id": 201002,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "好眼力",
+    "desc1": "视野+2",
+    "desc2": ""
+  },
+  {
+    "id": 201003,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "科技援助",
+    "desc1": "演习开始时,获得5个迷雾驱散道具",
+    "desc2": ""
+  },
+  {
+    "id": 201004,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "小马识途",
+    "desc1": "演习剩余时间不足12小时后,移动耗时-50%",
+    "desc2": ""
+  },
+  {
+    "id": 201005,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "打扫机器人",
+    "desc1": "搜刮耗时-30%",
+    "desc2": ""
+  },
+  {
+    "id": 201006,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "自动打包机",
+    "desc1": "负重-50%,搜刮耗时-100%",
+    "desc2": ""
+  },
+  {
+    "id": 201007,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "道具-有备而来",
+    "desc1": "演习开始时,获得短程飞行、点金手各3个",
+    "desc2": ""
+  },
+  {
+    "id": 201008,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "道具-加时",
+    "desc1": "演习开始时,获得3个时间恢复道具",
+    "desc2": ""
+  },
+  {
+    "id": 201009,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "全能收集",
+    "desc1": "获得的所有研究资料/材料/储备增加25%",
+    "desc2": ""
+  },
+  {
+    "id": 201010,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "深入研究",
+    "desc1": "获得的所有研究资料+60%",
+    "desc2": ""
+  },
+  {
+    "id": 201011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "大基建",
+    "desc1": "获得的所有材料+60%",
+    "desc2": ""
+  },
+  {
+    "id": 201012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "杂交水稻",
+    "desc1": "获得的所有储备+60%",
+    "desc2": ""
+  },
+  {
+    "id": 201013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "速通",
+    "desc1": "成功逃脱后,根据剩余时间获得物资奖励",
+    "desc2": ""
+  },
+  {
+    "id": 201014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "利息",
+    "desc1": "每次演习结束时,研究资料、储备、材料增加剩余量的20%",
+    "desc2": ""
+  },
+  {
+    "id": 201015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "特殊工作令",
+    "desc1": "每次演习结束时,获得未参与演习漫游助理数量*20的研究资料、储备、材料",
+    "desc2": ""
+  },
+  {
+    "id": 201016,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "未来承诺",
+    "desc1": "购买时,研究资料消耗-30%,出售时,研究资料获得+30%",
+    "desc2": ""
+  },
+  {
+    "id": 201017,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "高屋建瓴",
+    "desc1": "避难处建造/修缮时,材料消耗-30%",
+    "desc2": ""
+  },
+  {
+    "id": 201018,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "计划饮食",
+    "desc1": "避难处每日储备消耗-30%",
+    "desc2": ""
+  },
+  {
+    "id": 201019,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "外援",
+    "desc1": "邀请一位漫游助理到避难处,拥有特性[领袖][权威][数据收集]",
+    "desc2": ""
+  },
+  {
+    "id": 201020,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "额外携带位",
+    "desc1": "演习可携带漫游助理+2",
+    "desc2": ""
+  },
+  {
+    "id": 201021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "深思熟虑",
+    "desc1": "第7天时,可再次选择1组法令颁布(1换2,但延迟)",
+    "desc2": ""
+  },
+  {
+    "id": 201022,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案",
+    "desc1": "激活后演习时可能生成特殊事件[终极解密],每次完成会在最终决战时弱化入侵BOSS",
+    "desc2": ""
+  },
+  {
+    "id": 2010221,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案弱化1",
+    "desc1": "最终决战时,BOSS进入战斗失去10%最大生命",
+    "desc2": ""
+  },
+  {
+    "id": 2010222,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案弱化2",
+    "desc1": "最终决战时,BOSS进入战斗失去10%最大生命",
+    "desc2": ""
+  },
+  {
+    "id": 2010223,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案弱化3",
+    "desc1": "最终决战时,BOSS进入战斗失去10%最大生命",
+    "desc2": ""
+  },
+  {
+    "id": 2010224,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案弱化4",
+    "desc1": "最终决战时,BOSS进入战斗失去10%最大生命",
+    "desc2": ""
+  },
+  {
+    "id": 2010225,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "终极答案弱化5",
+    "desc1": "最终决战时,BOSS进入战斗失去10%最大生命;若获得全部答案,则BOSS额外失去40%生命",
+    "desc2": ""
+  },
+  {
+    "id": 201023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "随机支援",
+    "desc1": "获得随机5个精巧盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201024,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "通用支援",
+    "desc1": "获得随机4个通用精巧盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201025,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "混沌支援",
+    "desc1": "获得随机4个强化[混沌]的精巧盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201026,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "怒火支援",
+    "desc1": "获得随机4个强化[怒火]的精巧盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201027,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "连锁支援",
+    "desc1": "获得随机4个强化[连锁]的精巧盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201028,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "奇思妙想",
+    "desc1": "获得随机1个妙想盒中之物",
+    "desc2": ""
+  },
+  {
+    "id": 201029,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "法拉第的开拓",
+    "desc1": "获得精巧[电能]造物[满月黑光灯][曼德拉电池][静电隔板]",
+    "desc2": ""
+  },
+  {
+    "id": 201030,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "麦克斯韦的融合",
+    "desc1": "获得精巧[电能]造物[罗马电鳐][硫磺球][引雷风筝]",
+    "desc2": ""
+  },
+  {
+    "id": 201031,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "特斯拉的实用",
+    "desc1": "获得精巧[电能]造物[黄油猫][特斯拉电圈][曼德拉电池]",
+    "desc2": ""
+  },
+  {
+    "id": 201032,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "马斯克的买卖",
+    "desc1": "获得随机4个精巧[电能]造物",
+    "desc2": ""
+  },
+  {
+    "id": 201033,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "启明星",
+    "desc1": "获得精巧[启示]造物[龙骨牌][红砖灰][六颗橡子]",
+    "desc2": ""
+  },
+  {
+    "id": 201034,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "引路人",
+    "desc1": "获得精巧[启示]造物[雅拉瓜壁虎琥珀][灵感提词器][必要的“知识”]",
+    "desc2": ""
+  },
+  {
+    "id": 201035,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "预言家",
+    "desc1": "获得精巧[启示]造物[红砖灰][月光的触感][硬质星光]",
+    "desc2": ""
+  },
+  {
+    "id": 201036,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "虚无天启",
+    "desc1": "获得随机4个精巧[启示]造物",
+    "desc2": ""
+  },
+  {
+    "id": 201037,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "第一滴血",
+    "desc1": "获得精巧[薪血]造物[石榴汁样品][忒修斯碎片][契约匕首]",
+    "desc2": ""
+  },
+  {
+    "id": 201038,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "血河奔流",
+    "desc1": "获得精巧[薪血]造物[瓶装异象][枯萎亚麻布][魔精笼]",
+    "desc2": ""
+  },
+  {
+    "id": 201039,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "红海翻腾",
+    "desc1": "获得精巧[薪血]造物[忒修斯碎片][奉献之卵][碎裂的后槽牙]",
+    "desc2": ""
+  },
+  {
+    "id": 201040,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "不竭之源",
+    "desc1": "获得随机4个精巧[薪血]造物",
+    "desc2": ""
+  },
+  {
+    "id": 201041,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "精力充沛",
+    "desc1": "获得精巧[额外行动]造物[思维增压器][拉普拉斯工学鞋][可疑的可可豆]",
+    "desc2": ""
+  },
+  {
+    "id": 201042,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "衔尾之蛇",
+    "desc1": "获得精巧[额外行动]造物[焦黑的乌鸦羽][神秘学起搏器][樵夫帽]",
+    "desc2": ""
+  },
+  {
+    "id": 201043,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "加速宣言",
+    "desc1": "获得精巧[额外行动]造物[拉普拉斯工学鞋][烤熟的鹿角兔][木屑黑面包]",
+    "desc2": ""
+  },
+  {
+    "id": 201044,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "多点突破",
+    "desc1": "获得随机4个精巧[[额外行动]造物",
+    "desc2": ""
+  },
+  {
+    "id": 201045,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "仪式准备",
+    "desc1": "获得精巧[仪式]造物[拉普拉斯充电桩][智能火把][灵感烧瓶]",
+    "desc2": ""
+  },
+  {
+    "id": 201046,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "仪式咏唱",
+    "desc1": "获得精巧[仪式]造物[仪式卷轴][浑浊的算命杯][贪水壶]",
+    "desc2": ""
+  },
+  {
+    "id": 201047,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "激情澎湃",
+    "desc1": "获得精巧[仪式]造物[智能火把][接骨木浓缩液][贝加尔湖泥]",
+    "desc2": ""
+  },
+  {
+    "id": 201048,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "多点突破",
+    "desc1": "获得随机4个精巧[仪式]造物",
+    "desc2": ""
+  },
+  {
+    "id": 201049,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "有备无患",
+    "desc1": "进入战斗时,我方全体激情+5",
+    "desc2": ""
+  },
+  {
+    "id": 201050,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "潮汐",
+    "desc1": "回合开始时,我方激情+3;每2回合结束时,我方激情-3",
+    "desc2": ""
+  },
+  {
+    "id": 201051,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "出其不意",
+    "desc1": "额外行动时,穿透率+50%",
+    "desc2": ""
+  },
+  {
+    "id": 201052,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "保底",
+    "desc1": "失去灵光时,50%概率灵光+1",
+    "desc2": ""
+  },
+  {
+    "id": 201053,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "硬控",
+    "desc1": "赋予的控制状态持续回合+1",
+    "desc2": ""
+  },
+  {
+    "id": 301011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "电话亭-休息加负重100，演习结束消失",
+    "desc1": "额外负重增加200",
+    "desc2": ""
+  },
+  {
+    "id": 301012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "进入演习时，动态生成1070166，1070168，1070170",
+    "desc2": ""
+  },
+  {
+    "id": 301013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，在接取任务后，进入地图2时，必定在出生点附近6格内生成事件1070302",
+    "desc2": ""
+  },
+  {
+    "id": 301014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，在接取任务后，进入地图3时，必定在出生点附近6格内生成事件1070303",
+    "desc2": ""
+  },
+  {
+    "id": 301015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，在接取任务后，进入地图4时，必定在出生点附近6格内生成事件1070304",
+    "desc2": ""
+  },
+  {
+    "id": 301016,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，在接取任务后，进入地图5时，必定在出生点附近6格内生成事件1070305",
+    "desc2": ""
+  },
+  {
+    "id": 301017,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，在接取任务后，进入地图6时，必定在出生点附近6格内生成事件1070306",
+    "desc2": ""
+  },
+  {
+    "id": 301018,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件1070208",
+    "desc2": ""
+  },
+  {
+    "id": 301019,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件107020202",
+    "desc2": ""
+  },
+  {
+    "id": 301020,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件107021401",
+    "desc2": ""
+  },
+  {
+    "id": 301021,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件107021801",
+    "desc2": ""
+  },
+  {
+    "id": 301022,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件107021802",
+    "desc2": ""
+  },
+  {
+    "id": 301023,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "生成事件天赋，进入任意地图，必定在出生点附近6格内生成事件107021803",
+    "desc2": ""
+  },
+  {
+    "id": 401011,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "创伤加成+3%（最多购买10次）",
+    "desc2": ""
+  },
+  {
+    "id": 401012,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "受创减免+3%（最多购买10次）",
+    "desc2": ""
+  },
+  {
+    "id": 401013,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "吸血率+2%（最多购买5次）",
+    "desc2": ""
+  },
+  {
+    "id": 401014,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "手牌上限+1（最多购买2次）",
+    "desc2": ""
+  },
+  {
+    "id": 401015,
+    "groupId": -1,
+    "pos": 0,
+    "versions": "",
+    "seasons": "",
+    "name": "",
+    "desc1": "行动力+1（最多购买1次）",
+    "desc2": ""
+  }
+]

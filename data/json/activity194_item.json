@@ -1,0 +1,51 @@
+[
+  {
+    "itemId": 20001,
+    "isUse": 1,
+    "buffId": "40011",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_zhinanzhen.png",
+    "name": "极地指南针"
+  },
+  {
+    "itemId": 20002,
+    "isUse": 0,
+    "buffId": "40012",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_jiareqi.png",
+    "name": "取暖器"
+  },
+  {
+    "itemId": 20003,
+    "isUse": 0,
+    "buffId": "40013",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_zhi.png",
+    "name": "洇湿的纸条"
+  },
+  {
+    "itemId": 20004,
+    "isUse": 0,
+    "buffId": "40014",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_jiareqiplus.png",
+    "name": "专用取暖器"
+  },
+  {
+    "itemId": 20005,
+    "isUse": 0,
+    "buffId": "40016",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_shoudian.png",
+    "name": "手电筒"
+  },
+  {
+    "itemId": 20006,
+    "isUse": 1,
+    "buffId": "40017",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_dongyu.png",
+    "name": "冻鱼"
+  },
+  {
+    "itemId": 20007,
+    "isUse": 0,
+    "buffId": "40018",
+    "picture": "singlebg/v2a8_molideer_singlebg/item/icon_duijiangji.png",
+    "name": "松果对讲机"
+  }
+]

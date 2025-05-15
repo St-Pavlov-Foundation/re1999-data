@@ -433,116 +433,124 @@ function var_0_0._checkPlayGlitch(arg_17_0, arg_17_1)
 	local var_17_2 = string.gsub(var_17_1, "</glitch>", "")
 	local var_17_3 = arg_17_0._txtcontentcn:GetTextInfo(var_17_2)
 	local var_17_4 = {}
-	local var_17_5 = gohelper.findChild(arg_17_0._glitchGo, "part_up"):GetComponent(typeof(UnityEngine.ParticleSystem))
+	local var_17_5 = gohelper.findChild(arg_17_0._glitchGo, "part_screen")
 
-	table.insert(var_17_4, var_17_5)
+	gohelper.setActive(var_17_5, false)
 
-	local var_17_6 = gohelper.findChild(arg_17_0._glitchGo, "part_down")
+	local var_17_6 = gohelper.findChild(arg_17_0._glitchGo, "part_up")
+
+	gohelper.setActive(var_17_6, true)
+
 	local var_17_7 = var_17_6:GetComponent(typeof(UnityEngine.ParticleSystem))
 
 	table.insert(var_17_4, var_17_7)
-	gohelper.setActive(var_17_6, var_17_3.lineCount > 1)
 
-	local var_17_8 = CameraMgr.instance:getUICamera()
-	local var_17_9 = var_17_3.characterInfo
-	local var_17_10 = recthelper.getWidth(arg_17_0._txtcontentcn.transform) + 121.8684
-	local var_17_11 = {}
-	local var_17_12 = string.split(arg_17_1, "\n")
+	local var_17_8 = gohelper.findChild(arg_17_0._glitchGo, "part_down")
+	local var_17_9 = var_17_8:GetComponent(typeof(UnityEngine.ParticleSystem))
 
-	if #var_17_12 > 1 then
-		for iter_17_0 = 1, #var_17_12 do
-			local var_17_13 = var_17_12[iter_17_0]
-			local var_17_14 = string.find(var_17_13, "<glitch>")
-			local var_17_15 = string.find(var_17_13, "<glitch>")
-			local var_17_16 = {}
+	table.insert(var_17_4, var_17_9)
+	gohelper.setActive(var_17_8, var_17_3.lineCount > 1)
 
-			if not var_17_15 then
-				var_17_16.hasGlitch = false
+	local var_17_10 = CameraMgr.instance:getUICamera()
+	local var_17_11 = var_17_3.characterInfo
+	local var_17_12 = recthelper.getWidth(arg_17_0._txtcontentcn.transform) + 121.8684
+	local var_17_13 = {}
+	local var_17_14 = string.split(arg_17_1, "\n")
 
-				table.insert(var_17_11, var_17_16)
+	if #var_17_14 > 1 then
+		for iter_17_0 = 1, #var_17_14 do
+			local var_17_15 = var_17_14[iter_17_0]
+			local var_17_16 = string.find(var_17_15, "<glitch>")
+			local var_17_17 = string.find(var_17_15, "<glitch>")
+			local var_17_18 = {}
+
+			if not var_17_17 then
+				var_17_18.hasGlitch = false
+
+				table.insert(var_17_13, var_17_18)
 			else
-				local var_17_17 = string.sub(var_17_13, 1, var_17_14 - 1)
-				local var_17_18 = string.gsub(var_17_13, "<glitch>", "")
-				local var_17_19 = string.find(var_17_18, "</glitch>")
-				local var_17_20 = string.sub(var_17_18, 1, var_17_19 - 1)
-				local var_17_21 = string.gsub(var_17_18, "</glitch>", "")
-				local var_17_22 = var_17_3.lineInfo[iter_17_0 - 1]
+				local var_17_19 = string.sub(var_17_15, 1, var_17_16 - 1)
+				local var_17_20 = string.gsub(var_17_15, "<glitch>", "")
+				local var_17_21 = string.find(var_17_20, "</glitch>")
+				local var_17_22 = string.sub(var_17_20, 1, var_17_21 - 1)
+				local var_17_23 = string.gsub(var_17_20, "</glitch>", "")
+				local var_17_24 = var_17_3.lineInfo[iter_17_0 - 1]
 
-				var_17_16.hasGlitch = true
-				var_17_16.firstCharacterIndex = var_17_22.firstCharacterIndex
-				var_17_16.startIndex = utf8.len(var_17_17)
-				var_17_16.endIndex = utf8.len(var_17_20)
-				var_17_16.lineTxt = var_17_21
-				var_17_16.glitchTxt = var_17_13
+				var_17_18.hasGlitch = true
+				var_17_18.firstCharacterIndex = var_17_24.firstCharacterIndex
+				var_17_18.startIndex = utf8.len(var_17_19)
+				var_17_18.endIndex = utf8.len(var_17_22)
+				var_17_18.lineTxt = var_17_23
+				var_17_18.glitchTxt = var_17_15
 
-				table.insert(var_17_11, var_17_16)
+				table.insert(var_17_13, var_17_18)
 			end
 		end
 	else
 		for iter_17_1 = 1, var_17_3.lineCount do
-			local var_17_23 = var_17_3.lineInfo[iter_17_1 - 1]
-			local var_17_24 = LuaUtil.subString(var_17_2, var_17_23.firstCharacterIndex + 1, var_17_23.firstCharacterIndex + var_17_23.characterCount + 1)
-			local var_17_25 = iter_17_1 > 1 and var_17_11[iter_17_1 - 1].endIndex + 1 or 0
-			local var_17_26 = string.len(var_17_24) + string.len("<glitch>")
-			local var_17_27 = iter_17_1 > 1 and string.gsub(arg_17_1, var_17_11[iter_17_1 - 1].glitchTxt, "") or string.sub(arg_17_1, var_17_25, var_17_26)
-			local var_17_28 = string.find(var_17_27, "<glitch>")
-			local var_17_29 = var_17_28 and string.len(var_17_24) + string.len("<glitch>") + string.len("</glitch>") or string.len(var_17_24)
-			local var_17_30 = iter_17_1 > 1 and string.gsub(arg_17_1, var_17_11[iter_17_1 - 1].glitchTxt, "") or string.sub(arg_17_1, var_17_25, var_17_29)
-			local var_17_31 = string.find(var_17_30, "<glitch>")
-			local var_17_32 = {}
+			local var_17_25 = var_17_3.lineInfo[iter_17_1 - 1]
+			local var_17_26 = LuaUtil.subString(var_17_2, var_17_25.firstCharacterIndex + 1, var_17_25.firstCharacterIndex + var_17_25.characterCount + 1)
+			local var_17_27 = iter_17_1 > 1 and var_17_13[iter_17_1 - 1].endIndex + 1 or 0
+			local var_17_28 = string.len(var_17_26) + string.len("<glitch>")
+			local var_17_29 = iter_17_1 > 1 and string.gsub(arg_17_1, var_17_13[iter_17_1 - 1].glitchTxt, "") or string.sub(arg_17_1, var_17_27, var_17_28)
+			local var_17_30 = string.find(var_17_29, "<glitch>")
+			local var_17_31 = var_17_30 and string.len(var_17_26) + string.len("<glitch>") + string.len("</glitch>") or string.len(var_17_26)
+			local var_17_32 = iter_17_1 > 1 and string.gsub(arg_17_1, var_17_13[iter_17_1 - 1].glitchTxt, "") or string.sub(arg_17_1, var_17_27, var_17_31)
+			local var_17_33 = string.find(var_17_32, "<glitch>")
+			local var_17_34 = {}
 
-			if not var_17_28 then
-				var_17_32.hasGlitch = false
+			if not var_17_30 then
+				var_17_34.hasGlitch = false
 
-				table.insert(var_17_11, var_17_32)
+				table.insert(var_17_13, var_17_34)
 			else
-				local var_17_33 = string.sub(var_17_30, 1, var_17_31 - 1)
-				local var_17_34 = string.gsub(var_17_30, "<glitch>", "")
-				local var_17_35 = string.find(var_17_34, "</glitch>")
-				local var_17_36 = string.sub(var_17_34, 1, var_17_35 - 1)
+				local var_17_35 = string.sub(var_17_32, 1, var_17_33 - 1)
+				local var_17_36 = string.gsub(var_17_32, "<glitch>", "")
+				local var_17_37 = string.find(var_17_36, "</glitch>")
+				local var_17_38 = string.sub(var_17_36, 1, var_17_37 - 1)
 
-				var_17_32.hasGlitch = true
-				var_17_32.firstCharacterIndex = var_17_23.firstCharacterIndex
-				var_17_32.startIndex = utf8.len(var_17_33)
-				var_17_32.endIndex = utf8.len(var_17_36)
-				var_17_32.lineTxt = var_17_24
-				var_17_32.glitchTxt = var_17_30
+				var_17_34.hasGlitch = true
+				var_17_34.firstCharacterIndex = var_17_25.firstCharacterIndex
+				var_17_34.startIndex = utf8.len(var_17_35)
+				var_17_34.endIndex = utf8.len(var_17_38)
+				var_17_34.lineTxt = var_17_26
+				var_17_34.glitchTxt = var_17_32
 
-				table.insert(var_17_11, var_17_32)
+				table.insert(var_17_13, var_17_34)
 			end
 		end
 	end
 
-	for iter_17_2 = 1, #var_17_11 do
-		local var_17_37, var_17_38, var_17_39 = transformhelper.getLocalPos(var_17_4[iter_17_2].transform)
+	for iter_17_2 = 1, #var_17_13 do
+		local var_17_39, var_17_40, var_17_41 = transformhelper.getLocalPos(var_17_4[iter_17_2].transform)
 
-		if not var_17_11[iter_17_2].hasGlitch then
-			transformhelper.setLocalPos(var_17_4[iter_17_2].transform, -10000, var_17_38, var_17_39)
+		if not var_17_13[iter_17_2].hasGlitch then
+			transformhelper.setLocalPos(var_17_4[iter_17_2].transform, -10000, var_17_40, var_17_41)
 		else
-			local var_17_40 = var_17_9[0]
-			local var_17_41 = var_17_9[var_17_11[iter_17_2].startIndex]
-			local var_17_42 = var_17_9[var_17_11[iter_17_2].endIndex - 1]
-			local var_17_43 = var_17_8:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_40.bottomLeft))
-			local var_17_44 = var_17_8:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_41.bottomLeft))
-			local var_17_45 = var_17_8:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_42.bottomRight))
-			local var_17_46 = UnityEngine.Screen.width
-			local var_17_47 = UnityEngine.Screen.height
-			local var_17_48 = math.min(1, 0.9 * var_17_46 / (1.6 * var_17_47))
-			local var_17_49 = 1080 * (var_17_44.x - var_17_43.x) / (var_17_47 * var_17_48)
-			local var_17_50 = 1144.8 * (var_17_45.x - var_17_44.x) / (var_17_47 * var_17_48)
-			local var_17_51 = var_17_49 / var_17_10
-			local var_17_52 = var_17_50 / var_17_10
-			local var_17_53 = 647 * (2 * var_17_51 + var_17_52)
-			local var_17_54, var_17_55, var_17_56 = transformhelper.getLocalPos(var_17_4[iter_17_2].transform)
+			local var_17_42 = var_17_11[0]
+			local var_17_43 = var_17_11[var_17_13[iter_17_2].startIndex]
+			local var_17_44 = var_17_11[var_17_13[iter_17_2].endIndex - 1]
+			local var_17_45 = var_17_10:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_42.bottomLeft))
+			local var_17_46 = var_17_10:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_43.bottomLeft))
+			local var_17_47 = var_17_10:WorldToScreenPoint(arg_17_0._txtcontentcn.transform:TransformPoint(var_17_44.bottomRight))
+			local var_17_48 = UnityEngine.Screen.width
+			local var_17_49 = UnityEngine.Screen.height
+			local var_17_50 = math.min(1, 0.9 * var_17_48 / (1.6 * var_17_49))
+			local var_17_51 = 1080 * (var_17_46.x - var_17_45.x) / (var_17_49 * var_17_50)
+			local var_17_52 = 1144.8 * (var_17_47.x - var_17_46.x) / (var_17_49 * var_17_50)
+			local var_17_53 = var_17_51 / var_17_12
+			local var_17_54 = var_17_52 / var_17_12
+			local var_17_55 = 647 * (2 * var_17_53 + var_17_54)
+			local var_17_56, var_17_57, var_17_58 = transformhelper.getLocalPos(var_17_4[iter_17_2].transform)
 
-			transformhelper.setLocalPos(var_17_4[iter_17_2].transform, var_17_53, var_17_55, var_17_56)
+			transformhelper.setLocalPos(var_17_4[iter_17_2].transform, var_17_55, var_17_57, var_17_58)
 
-			local var_17_57 = 12 * var_17_52 * var_17_48
-			local var_17_58 = 0.4 * var_17_48
+			local var_17_59 = 12 * var_17_54 * var_17_50
+			local var_17_60 = 0.4 * var_17_50
 
-			var_17_4[iter_17_2].shape.scale = Vector3(var_17_57, var_17_58, 0)
+			var_17_4[iter_17_2].shape.scale = Vector3(var_17_59, var_17_60, 0)
 
-			ZProj.ParticleSystemHelper.SetMaxParticles(var_17_4[iter_17_2], math.floor(30 * var_17_52))
+			ZProj.ParticleSystemHelper.SetMaxParticles(var_17_4[iter_17_2], math.floor(30 * var_17_54))
 		end
 	end
 end

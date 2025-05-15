@@ -39,6 +39,9 @@ local var_0_0 = {
 	PlayAtOperationView = GameUtil.getMsgId(),
 	RegistPlayAtOperationView = GameUtil.getMsgId(),
 	EntrustFightWork = GameUtil.getMsgId(),
+	GetDeadEntityMgr = GameUtil.getMsgId(),
+	GetExPointView = GameUtil.getMsgId(),
+	OperationForPlayEffect = GameUtil.getMsgId(),
 	GMDouQuQuSkip2IndexRound = GameUtil.getMsgId()
 }
 local var_0_1 = {}

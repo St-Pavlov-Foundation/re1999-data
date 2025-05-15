@@ -2,11 +2,8 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	prefabPath = 2,
-	priority = 5,
-	endTime = 4,
 	id = 1,
-	startTime = 3
+	prefabPath = 2
 }
 local var_0_2 = {
 	"id"

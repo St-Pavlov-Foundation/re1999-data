@@ -127,7 +127,7 @@ end
 function var_0_0.getEFunLoginUrl(arg_12_0, arg_12_1)
 	local var_12_0 = SDKMgr.instance:getUserInfoExtraParams()
 	local var_12_1 = {
-		arg_12_1 .. "?" .. string.format("userId=%s", var_12_0.userId)
+		arg_12_1 .. "&" .. string.format("userId=%s", var_12_0.userId)
 	}
 
 	table.insert(var_12_1, string.format("sign=%s", var_12_0.sign))

@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "无踪绿野",
+    "enName": "MAP1",
+    "desc": "这里人迹罕至，却事故频发，最后一切都被绿色吞噬了。",
+    "abPath": "map06",
+    "useScene": 108011,
+    "effect": " ",
+    "effectDesc": "新手演习的首选场所|但请不要对收获有过多的期待",
+    "mapGroup": 10000,
+    "pic": "survival_map_pic01",
+    "lightPram": 0
+  },
+  {
+    "id": 2,
+    "name": "黑色孤城",
+    "enName": "MAP2",
+    "desc": "遵纪守法，助人为乐——这是城市宣传海报上写的。",
+    "abPath": "map04",
+    "useScene": 159011,
+    "effect": " ",
+    "effectDesc": "我方全体每次行动后,获得1层【虚弱】|5回合后,每回合开始获得3层【污染】,持续3回合|大量遗留的报废汽车|青铜宝箱、集装箱也有相当多的目击报告",
+    "mapGroup": 20000,
+    "pic": "survival_map_pic02",
+    "lightPram": 0
+  },
+  {
+    "id": 3,
+    "name": "丝绒森林",
+    "enName": "MAP3",
+    "desc": "菌毯与灌木无异，都是埋葬生命的好去处。",
+    "abPath": "map05",
+    "useScene": 158011,
+    "effect": "",
+    "effectDesc": "回合开始时,我方全体所有咒语变为【预备咒语】|5回合后,每回合开始获得4层【伤口感染】|大量遗留的青铜宝箱|板条箱、集装箱也有相当多的目击报告",
+    "mapGroup": 30000,
+    "pic": "survival_map_pic03",
+    "lightPram": 0
+  },
+  {
+    "id": 4,
+    "name": "哭嚎雪原",
+    "enName": "MAP4",
+    "desc": "冰天雪地的极端天气，坚持！",
+    "abPath": "map03",
+    "useScene": 22201,
+    "effect": "",
+    "effectDesc": "回合开始时,我方全体获得10层【燃烧】|5回合后,每回合开始获得5层【灼热伤口】|大量遗留的集装箱|板条箱、破旧马车也有相当多的目击报告",
+    "mapGroup": 40000,
+    "pic": "survival_map_pic04",
+    "lightPram": 1
+  },
+  {
+    "id": 5,
+    "name": "夕阳荒土",
+    "enName": "MAP5",
+    "desc": "热情似火的无人区，牛仔与淘金者的聚集地。",
+    "abPath": "map01",
+    "useScene": 183011,
+    "effect": "",
+    "effectDesc": "我方全体每次行动后,获得1层【冻痕】|5回合后,每回合开始额外获得2层【冻痕】|大量遗留的板条箱|破旧马车、废弃汽车也有相当多的目击报告",
+    "mapGroup": 50000,
+    "pic": "survival_map_pic05",
+    "lightPram": 0
+  },
+  {
+    "id": 6,
+    "name": "静谧海湾",
+    "enName": "MAP6",
+    "desc": "沙滩，游泳，夏日……这里只占了一个沙滩。",
+    "abPath": "map02",
+    "useScene": 178011,
+    "effect": "",
+    "effectDesc": "回合开始时,我方全体失去20%当前生命|5回合后,每回合开始额外失去30%最大生命|各类遗留物的目击报告都较多|没有数量特别突出的遗留物",
+    "mapGroup": 60000,
+    "pic": "survival_map_pic06",
+    "lightPram": 0
+  }
+]

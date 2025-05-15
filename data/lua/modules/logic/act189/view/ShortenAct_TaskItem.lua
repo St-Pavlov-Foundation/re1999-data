@@ -49,6 +49,12 @@ function var_0_0._btnnotfinishbgOnClick(arg_5_0)
 		return
 	end
 
+	if arg_5_0._isLimit then
+		arg_5_0:_showToast()
+
+		return
+	end
+
 	if GameFacade.jump(var_5_1) then
 		if ViewMgr.instance:isOpen(ViewName.ShortenAct_PanelView) then
 			ViewMgr.instance:closeView(ViewName.ShortenAct_PanelView)
@@ -273,6 +279,8 @@ function var_0_0._secondAnimationDone(arg_23_0)
 end
 
 function var_0_0._setActive_limite(arg_24_0, arg_24_1)
+	arg_24_0._isLimit = arg_24_1
+
 	gohelper.setActive(arg_24_0._golimit, arg_24_1)
 end
 

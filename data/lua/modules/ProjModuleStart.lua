@@ -15,7 +15,6 @@ function var_0_0.start(arg_1_0)
 
 		arg_1_0:init()
 	else
-		BootLoadingView.instance:show(0.9, booterLang("loading_res"))
 		arg_1_0:resCheck()
 	end
 end

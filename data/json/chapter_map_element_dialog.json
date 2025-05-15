@@ -15784,5 +15784,1184 @@
     "audio": 0,
     "speaker": "",
     "content": ""
+  },
+  {
+    "id": 46,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800001,
+    "speaker": "？？？",
+    "content": "你做到了，从美利坚到巴西，再到澳大利亚。"
+  },
+  {
+    "id": 46,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800002,
+    "speaker": "？？？",
+    "content": "然后在南太平洋上畅游一番，途径阿根廷，现在你终于站在了这片土地上。"
+  },
+  {
+    "id": 46,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800003,
+    "speaker": "？？？",
+    "content": "你的敌人节节败退，避无可避，退守南极，而导致这一切的只是一个命令——"
+  },
+  {
+    "id": 46,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800004,
+    "speaker": "？？？",
+    "content": "“找到那个作家。”"
+  },
+  {
+    "id": 46,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800005,
+    "speaker": "？？？",
+    "content": "没有方案，没有地点，没有时限，支援人数不超过一个班。"
+  },
+  {
+    "id": 46,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800006,
+    "speaker": "？？？",
+    "content": "我不禁想要向你学习，是什么让你像刚入伍的年轻人一样富有行动力？"
+  },
+  {
+    "id": 46,
+    "stepId": 7,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "我不知道#军人就是要遵守命令"
+  },
+  {
+    "id": 46,
+    "stepId": 8,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 46,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800007,
+    "speaker": "？？？",
+    "content": "那我有一个推测，或许这就是你的神秘术。"
+  },
+  {
+    "id": 46,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800008,
+    "speaker": "？？？",
+    "content": "永远自觉地遵守一本命中注定的行动纲领，以满足他者的窥视欲望。"
+  },
+  {
+    "id": 46,
+    "stepId": 11,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 46,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800009,
+    "speaker": "？？？",
+    "content": "我必须提醒你一声，你不是军人，你连童子军都不是。"
+  },
+  {
+    "id": 46,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800010,
+    "speaker": "？？？",
+    "content": "你不必用军人的标准要求自己。"
+  },
+  {
+    "id": 46,
+    "stepId": 14,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 46,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800011,
+    "speaker": "？？？",
+    "content": "这是一份个人建议，服从命令之前好好想想自己为什么要这么做。"
+  },
+  {
+    "id": 46,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800012,
+    "speaker": "？？？",
+    "content": "毕竟你接下来可能要闯入敌人的大本营。"
+  },
+  {
+    "id": 46,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800013,
+    "speaker": "？？？",
+    "content": "在这种情况下依然缺乏自我思考的人，往往会变成炮灰。"
+  },
+  {
+    "id": 46,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800014,
+    "speaker": "？？？",
+    "content": "所以把这个疑问放在心里吧——你究竟为什么要找那个作家？"
+  },
+  {
+    "id": 47,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800015,
+    "speaker": "？？？",
+    "content": "回过头，捂住口鼻。"
+  },
+  {
+    "id": 47,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800016,
+    "speaker": "？？？",
+    "content": "如果你没有做好心理准备，我不建议你亲自检查这里。"
+  },
+  {
+    "id": 47,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800017,
+    "speaker": "？？？",
+    "content": "一群业余人士把这里弄得一团糟。"
+  },
+  {
+    "id": 47,
+    "stepId": 4,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "为我描述这里#我必须亲眼看到"
+  },
+  {
+    "id": 47,
+    "stepId": 5,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 47,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800018,
+    "speaker": "？？？",
+    "content": "隐喻并不是我的本行，不过算了。"
+  },
+  {
+    "id": 47,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800019,
+    "speaker": "？？？",
+    "content": "几块奶油蛋糕被糊在墙上，野狗撕碎的面包撒了满地。"
+  },
+  {
+    "id": 47,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800020,
+    "speaker": "？？？",
+    "content": "还有草莓果酱。草莓果酱和辣椒酱到处都是，该死，我好像踩到了一颗烂葡萄。"
+  },
+  {
+    "id": 47,
+    "stepId": 9,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 47,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800021,
+    "speaker": "？？？",
+    "content": "那么如你所见，这里有过不止一个人。"
+  },
+  {
+    "id": 47,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800022,
+    "speaker": "？？？",
+    "content": "但现在谁也说不清到底有过几个人。"
+  },
+  {
+    "id": 47,
+    "stepId": 12,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 47,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800023,
+    "speaker": "？？？",
+    "content": "稍有正义感的人都不会允许这种事发生。"
+  },
+  {
+    "id": 47,
+    "stepId": 14,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "你在讽刺谁？"
+  },
+  {
+    "id": 47,
+    "stepId": 15,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 47,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800024,
+    "speaker": "？？？",
+    "content": "我只是个服从命令的士兵，没资格用善恶观去讽刺谁，不过我可以就忠诚心发表些看法。"
+  },
+  {
+    "id": 47,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800025,
+    "speaker": "？？？",
+    "content": "保持忠诚在指挥官英明神武时并不难，大部分士兵都能做到。"
+  },
+  {
+    "id": 47,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800026,
+    "speaker": "？？？",
+    "content": "相对的，指挥官越是无能或难以理解，忠诚就越是难得。"
+  },
+  {
+    "id": 47,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800027,
+    "speaker": "？？？",
+    "content": "要炫耀自己的忠诚，就应当忠于一个疯狂、愚蠢、不可理喻的指挥官，并清楚自己的行为。"
+  },
+  {
+    "id": 47,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800028,
+    "speaker": "？？？",
+    "content": "而那名中尉，她离绝对忠诚还差得远。"
+  },
+  {
+    "id": 47,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800029,
+    "speaker": "？？？",
+    "content": "她看到这些时一定强忍着吐意。"
+  },
+  {
+    "id": 47,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800030,
+    "speaker": "？？？",
+    "content": "呵，年轻人。"
+  },
+  {
+    "id": 47,
+    "stepId": 23,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 48,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800031,
+    "speaker": "？？？",
+    "content": "你终于通过了这关，我本以为会很轻松。"
+  },
+  {
+    "id": 48,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800032,
+    "speaker": "？？？",
+    "content": "要知道，答案曾在你面前出现很多次——用双手蒙住自己的双眼，你的敌人最爱干的事。"
+  },
+  {
+    "id": 48,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800033,
+    "speaker": "？？？",
+    "content": "手的作用就是控制，这是一路以来的第三课。"
+  },
+  {
+    "id": 48,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800034,
+    "speaker": "？？？",
+    "content": "至于前两课，其实你已经见过消化系统和排泄管道了，重新描述会让报告变得很长，建议直接回顾过往记录。"
+  },
+  {
+    "id": 48,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800035,
+    "speaker": "？？？",
+    "content": "回到正题，你在这次行军中差点因眼球侦察兵的错误情报而死亡。"
+  },
+  {
+    "id": 48,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800036,
+    "speaker": "？？？",
+    "content": "幸好大脑指挥部反应迅速，才没有导致最坏的结果。"
+  },
+  {
+    "id": 48,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800037,
+    "speaker": "？？？",
+    "content": "为了避免类似情况再次发生，你应该设立副指挥部来进行纠错。"
+  },
+  {
+    "id": 48,
+    "stepId": 8,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "交给心脏吧#我相信我的嘴"
+  },
+  {
+    "id": 48,
+    "stepId": 9,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 48,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800038,
+    "speaker": "？？？",
+    "content": "永不停息的战略要道，调度血液的必经之地，激动时还会剧烈跳动。"
+  },
+  {
+    "id": 48,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800039,
+    "speaker": "？？？",
+    "content": "它确实是大脑之外最可靠的器官，也不得不可靠。"
+  },
+  {
+    "id": 48,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800040,
+    "speaker": "？？？",
+    "content": "可惜，它还是不要有自己的思想比较好，机械式振动或快或慢都会招致毁灭。"
+  },
+  {
+    "id": 48,
+    "stepId": 13,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 48,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800041,
+    "speaker": "？？？",
+    "content": "我们亲爱的关隘道口，决定哪些思想能离开，哪些营养能进入。"
+  },
+  {
+    "id": 48,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800042,
+    "speaker": "？？？",
+    "content": "整副身体都仰仗它来与外部交涉。"
+  },
+  {
+    "id": 48,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800043,
+    "speaker": "？？？",
+    "content": "所以决不能让它自行做主，不然祸端和疾病都会在这里汇聚。"
+  },
+  {
+    "id": 48,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 48,
+    "stepId": 18,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "你该去当文学批评家"
+  },
+  {
+    "id": 48,
+    "stepId": 19,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 48,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800044,
+    "speaker": "？？？",
+    "content": "像文艺复兴时期的艺术家一样说话并非我的本意。"
+  },
+  {
+    "id": 48,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800045,
+    "speaker": "？？？",
+    "content": "可我必须如此隐晦地告知你，正如米开朗基罗的名作所暗示的一样。"
+  },
+  {
+    "id": 48,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800046,
+    "speaker": "？？？",
+    "content": "创造人的关键部位也许是智慧的栖息地，或者生命的诞生地……"
+  },
+  {
+    "id": 48,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800047,
+    "speaker": "？？？",
+    "content": "这下你应该稍微能看懂些艺术了。"
+  },
+  {
+    "id": 48,
+    "stepId": 24,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 49,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 0,
+    "speaker": "？？？",
+    "content": "……"
+  },
+  {
+    "id": 49,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800048,
+    "speaker": "？？？",
+    "content": "好了，我的默哀结束了。"
+  },
+  {
+    "id": 49,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800049,
+    "speaker": "？？？",
+    "content": "我不是什么虔诚信徒，也算不上无神论者，但我尊重她的牺牲。"
+  },
+  {
+    "id": 49,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800050,
+    "speaker": "？？？",
+    "content": "虽然她的行为实际上愚蠢且不知所谓。"
+  },
+  {
+    "id": 49,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800051,
+    "speaker": "？？？",
+    "content": "可正如我之前所说，忠于一些愚蠢的意志恰恰能证明一个人的忠诚。"
+  },
+  {
+    "id": 49,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800052,
+    "speaker": "？？？",
+    "content": "不论是为了家族使命，还是探索精神，或者是那个睡前童话故事。她都死得其所。"
+  },
+  {
+    "id": 49,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800053,
+    "speaker": "？？？",
+    "content": "死得愚蠢但忠实。"
+  },
+  {
+    "id": 49,
+    "stepId": 8,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "这一切发生得太快了#你是个冷血的家伙"
+  },
+  {
+    "id": 49,
+    "stepId": 9,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 49,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800054,
+    "speaker": "？？？",
+    "content": "你经历了这么多牺牲，居然还期望每一次都有充足的铺垫？"
+  },
+  {
+    "id": 49,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800055,
+    "speaker": "？？？",
+    "content": "抱歉，我可不会夸奖一位多愁善感的指挥官。"
+  },
+  {
+    "id": 49,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800056,
+    "speaker": "？？？",
+    "content": "如果我是你的上级，恐怕会要求你把心挖出来，给那些老兵做个榜样。"
+  },
+  {
+    "id": 49,
+    "stepId": 13,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 49,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800057,
+    "speaker": "？？？",
+    "content": "行了，你我都知道这里并非她的终点。"
+  },
+  {
+    "id": 49,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800058,
+    "speaker": "？？？",
+    "content": "对她这样忠于信念的人来说，赴死不过是实现永生。"
+  },
+  {
+    "id": 49,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800059,
+    "speaker": "？？？",
+    "content": "而且她可不是那群割掉舌头的盲信者，恐怕如今她正和自己的信念会谈。"
+  },
+  {
+    "id": 49,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 49,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800060,
+    "speaker": "？？？",
+    "content": "趁着门仍敞开，赶紧与她会合吧。"
+  },
+  {
+    "id": 49,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800061,
+    "speaker": "？？？",
+    "content": "否则你就要被她永远甩下了。"
+  },
+  {
+    "id": 50,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800062,
+    "speaker": "？？？",
+    "content": "永不间断的大雨会导致大洪水，一个显而易见的结果。"
+  },
+  {
+    "id": 50,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800063,
+    "speaker": "？？？",
+    "content": "这是最后的报告了——人和飞鸟的时代已经结束，接下来将是鱼的时代。"
+  },
+  {
+    "id": 50,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800064,
+    "speaker": "？？？",
+    "content": "不过鱼还要再等等，因为你，世界毁灭被推迟了大约一小时。"
+  },
+  {
+    "id": 50,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800065,
+    "speaker": "？？？",
+    "content": "现在全世界的人都欠你一小时，直径多大的功勋章才配得上你？"
+  },
+  {
+    "id": 50,
+    "stepId": 5,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "一定还有办法#快闭嘴吧"
+  },
+  {
+    "id": 50,
+    "stepId": 6,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 50,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800066,
+    "speaker": "？？？",
+    "content": "是的，就算雨伞不管用，你也还有一艘方舟。"
+  },
+  {
+    "id": 50,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800067,
+    "speaker": "？？？",
+    "content": "像以往保存有生力量时那样，让有资格的动物乘上方舟。"
+  },
+  {
+    "id": 50,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800068,
+    "speaker": "？？？",
+    "content": "你就还可以继续战斗下去。"
+  },
+  {
+    "id": 50,
+    "stepId": 10,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 50,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800069,
+    "speaker": "？？？",
+    "content": "请让我完成我最后的任务，即使你不愿意听。"
+  },
+  {
+    "id": 50,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800070,
+    "speaker": "？？？",
+    "content": "得益于万有引力，地势较高处的居民可以在洪水中存活久一些。"
+  },
+  {
+    "id": 50,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800071,
+    "speaker": "？？？",
+    "content": "你还有时间抱着橙色小狗叙叙旧，看着世界末日从一个极点漫向另一个极点。"
+  },
+  {
+    "id": 50,
+    "stepId": 14,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 50,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800072,
+    "speaker": "？？？",
+    "content": "或者……你可以像个军人一样，遵守命令直到最后一刻。"
+  },
+  {
+    "id": 50,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800073,
+    "speaker": "？？？",
+    "content": "“找到那个作家。”"
+  },
+  {
+    "id": 50,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800074,
+    "speaker": "？？？",
+    "content": "这个任务的重要性已经不言而喻了。"
+  },
+  {
+    "id": 51,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800075,
+    "speaker": "？？？",
+    "content": "你又一次溺水了，真让人感到怀念。"
+  },
+  {
+    "id": 51,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800076,
+    "speaker": "？？？",
+    "content": "别激动，你还不能起身，就这样躺着听报告就行。"
+  },
+  {
+    "id": 51,
+    "stepId": 3,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "哦？最后的报告怎么了？#我的脸颊有些温热感"
+  },
+  {
+    "id": 51,
+    "stepId": 4,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 51,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800077,
+    "speaker": "？？？",
+    "content": "呃……"
+  },
+  {
+    "id": 51,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800078,
+    "speaker": "？？？",
+    "content": "好吧，你成功挖苦到了我。"
+  },
+  {
+    "id": 51,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800079,
+    "speaker": "？？？",
+    "content": "你做到了，英明神武的救世主，你在最后一刻力挽狂澜拯救了世界。"
+  },
+  {
+    "id": 51,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800080,
+    "speaker": "？？？",
+    "content": "连我也没有预料到会这样，满意了么？我们来听报告吧。"
+  },
+  {
+    "id": 51,
+    "stepId": 9,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 51,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800081,
+    "speaker": "？？？",
+    "content": "那是你忠实的橙色小狗在舔舐你的伤口，她正竭尽所能地唤醒你——这当然是隐喻，我想我不用多做解释。"
+  },
+  {
+    "id": 51,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800082,
+    "speaker": "？？？",
+    "content": "这也是你还不能醒来的原因之一，盐水会滴入你的眼睛。"
+  },
+  {
+    "id": 51,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800083,
+    "speaker": "？？？",
+    "content": "大家都会因此尴尬，所以静下心来听我说。"
+  },
+  {
+    "id": 51,
+    "stepId": 13,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 51,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800084,
+    "speaker": "？？？",
+    "content": "你会再度溺水的主要原因并不是你仍然不会游泳。"
+  },
+  {
+    "id": 51,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800085,
+    "speaker": "？？？",
+    "content": "而是你宁死也要抱着这台纺车导致的。"
+  },
+  {
+    "id": 51,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800086,
+    "speaker": "？？？",
+    "content": "纺车就是纺车，即使它能纺出金线，你也已经有一台了。"
+  },
+  {
+    "id": 51,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800087,
+    "speaker": "？？？",
+    "content": "可惜拥有两台纺车并不会提高工作效率，毕竟原材料有限，工人又只有你一个。"
+  },
+  {
+    "id": 51,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800088,
+    "speaker": "？？？",
+    "content": "就算拆掉它，这些烂木头零件也不适配你的纺车，外观相似并不代表是同一单位。"
+  },
+  {
+    "id": 51,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800089,
+    "speaker": "？？？",
+    "content": "不管是纺车，还是动物，又或者是父子母女，都是这样。"
+  },
+  {
+    "id": 51,
+    "stepId": 20,
+    "type": "options",
+    "param": "3#4",
+    "audio": 0,
+    "speaker": "",
+    "content": "我得起来了#我受够了，让我安静会儿"
+  },
+  {
+    "id": 51,
+    "stepId": 21,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 51,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800090,
+    "speaker": "？？？",
+    "content": "再等一会儿吧，橙色小狗正在捡回你的帽子。"
+  },
+  {
+    "id": 51,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800091,
+    "speaker": "？？？",
+    "content": "那是她在所有急救措施以外唯一能想到的办法。"
+  },
+  {
+    "id": 51,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800092,
+    "speaker": "？？？",
+    "content": "她会这么天真且迷信可是很难得的，你我都应该配合她。"
+  },
+  {
+    "id": 51,
+    "stepId": 25,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 51,
+    "stepId": 26,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800093,
+    "speaker": "？？？",
+    "content": "你值得片刻的安息，尊贵的救世主。"
+  },
+  {
+    "id": 51,
+    "stepId": 27,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800094,
+    "speaker": "？？？",
+    "content": "暂时忘记外面一片狼藉的战场，放松一下吧。"
+  },
+  {
+    "id": 51,
+    "stepId": 28,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800095,
+    "speaker": "？？？",
+    "content": "不过也别睡太久，橙色小狗正在捡回你的帽子。"
+  },
+  {
+    "id": 51,
+    "stepId": 29,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800096,
+    "speaker": "？？？",
+    "content": "如果到时候你还不醒，我不敢想象她会做出什么。"
+  },
+  {
+    "id": 51,
+    "stepId": 30,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
   }
 ]

@@ -188,15 +188,17 @@ function var_0_0._checkIsShowRed_ActivityBeginner(arg_16_0, arg_16_1, arg_16_2)
 	for iter_16_0, iter_16_1 in pairs(var_16_0) do
 		arg_16_0._curActId = iter_16_1
 
+		local var_16_1 = ActivityConfig.instance:getActivityCo(iter_16_1).typeId
+
 		if iter_16_1 == DoubleDropModel.instance:getActId() and string.nilorempty(arg_16_0:getActivityShowRedDotData(iter_16_1)) then
 			return true
 		end
 
 		if iter_16_1 == ActivityEnum.Activity.DreamShow then
-			local var_16_1 = TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow)
-			local var_16_2 = var_16_1 and var_16_1[1]
+			local var_16_2 = TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow)
+			local var_16_3 = var_16_2 and var_16_2[1]
 
-			if var_16_2 and var_16_2.config and var_16_2.finishCount < var_16_2.config.maxFinishCount and string.nilorempty(arg_16_0:getActivityShowRedDotData(iter_16_1)) then
+			if var_16_3 and var_16_3.config and var_16_3.finishCount < var_16_3.config.maxFinishCount and string.nilorempty(arg_16_0:getActivityShowRedDotData(iter_16_1)) then
 				return true
 			end
 		end
@@ -206,10 +208,6 @@ function var_0_0._checkIsShowRed_ActivityBeginner(arg_16_0, arg_16_1, arg_16_2)
 		end
 
 		if iter_16_1 == ActivityEnum.Activity.Activity1_8WarmUp and Activity125Controller.instance:checkActRed1(iter_16_1) then
-			return true
-		end
-
-		if (iter_16_1 == ActivityEnum.Activity.Activity1_9WarmUp or iter_16_1 == ActivityEnum.Activity.V2a0_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a1_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a2_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a3_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a5_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a6_WarmUp or iter_16_1 == ActivityEnum.Activity.V2a7_WarmUp) and Activity125Controller.instance:checkActRed2(iter_16_1) then
 			return true
 		end
 
@@ -224,6 +222,14 @@ function var_0_0._checkIsShowRed_ActivityBeginner(arg_16_0, arg_16_1, arg_16_2)
 		if iter_16_1 == VersionActivity2_2Enum.ActivityId.LimitDecorate and ActivityBeginnerController.instance:checkFirstEnter(iter_16_1) then
 			return true
 		end
+
+		if var_16_1 == ActivityEnum.ActivityTypeID.Act125 and Activity125Controller.instance:checkActRed2(iter_16_1) then
+			return true
+		end
+
+		if var_16_1 == ActivityEnum.ActivityTypeID.Act201 and ActivityBeginnerController.instance:checkFirstEnter(iter_16_1) then
+			return true
+		end
 	end
 
 	return false
@@ -236,6 +242,8 @@ function var_0_0._checkActivityShowRedDotData(arg_17_0, arg_17_1)
 		local var_17_0 = ActivityModel.instance:getCenterActivities(ActivityEnum.ActivityType.Beginner)
 
 		for iter_17_0, iter_17_1 in pairs(var_17_0) do
+			local var_17_1 = ActivityConfig.instance:getActivityCo(iter_17_1).typeId
+
 			arg_17_0._curActId = iter_17_1
 
 			if iter_17_1 == DoubleDropModel.instance:getActId() and string.nilorempty(arg_17_0:getActivityShowRedDotData(iter_17_1)) then
@@ -245,10 +253,10 @@ function var_0_0._checkActivityShowRedDotData(arg_17_0, arg_17_1)
 			end
 
 			if iter_17_1 == ActivityEnum.Activity.DreamShow then
-				local var_17_1 = TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow)
-				local var_17_2 = var_17_1 and var_17_1[1]
+				local var_17_2 = TaskModel.instance:getTaskMoList(TaskEnum.TaskType.ActivityShow, ActivityEnum.Activity.DreamShow)
+				local var_17_3 = var_17_2 and var_17_2[1]
 
-				if var_17_2 and var_17_2.config and var_17_2.finishCount < var_17_2.config.maxFinishCount and string.nilorempty(arg_17_0:getActivityShowRedDotData(iter_17_1)) then
+				if var_17_3 and var_17_3.config and var_17_3.finishCount < var_17_3.config.maxFinishCount and string.nilorempty(arg_17_0:getActivityShowRedDotData(iter_17_1)) then
 					arg_17_0:_showRedDotType(arg_17_1, iter_17_1)
 
 					return
@@ -298,6 +306,12 @@ function var_0_0._checkActivityShowRedDotData(arg_17_0, arg_17_1)
 			end
 
 			if iter_17_1 == ActivityEnum.Activity.V2a4_WarmUp and Activity125Controller.instance:checkActRed3(iter_17_1) then
+				arg_17_0:_showRedDotType(arg_17_1, iter_17_1)
+
+				return
+			end
+
+			if var_17_1 == ActivityEnum.ActivityTypeID.Act201 and ActivityBeginnerController.instance:checkFirstEnter(iter_17_1) then
 				arg_17_0:_showRedDotType(arg_17_1, iter_17_1)
 
 				return

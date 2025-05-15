@@ -216,8 +216,8 @@ function var_0_0.onOpen(arg_13_0)
 
 	arg_13_0:_initTemplateList()
 
-	arg_13_0._txttalentcn.text = luaLang("talent_charactertalentlevelup_leveltxt" .. CharacterEnum.TalentTxtByHeroType[arg_13_0.hero_mo_data.config.heroType])
-	arg_13_0._txttalentEn.text = luaLang("talent_charactertalentchess_staten" .. CharacterEnum.TalentTxtByHeroType[arg_13_0.hero_mo_data.config.heroType])
+	arg_13_0._txttalentcn.text = luaLang("talent_charactertalentlevelup_leveltxt" .. arg_13_0.hero_mo_data:getTalentTxtByHeroType())
+	arg_13_0._txttalentEn.text = luaLang("talent_charactertalentchess_staten" .. arg_13_0.hero_mo_data:getTalentTxtByHeroType())
 
 	arg_13_0:_refreshStyleTag()
 
@@ -1488,7 +1488,7 @@ end
 function var_0_0._initTemplateList(arg_65_0)
 	table.sort(arg_65_0.hero_mo_data.talentTemplates, var_0_0.sortTemplate)
 
-	local var_65_0 = luaLang("talent_charactertalentchess_template" .. CharacterEnum.TalentTxtByHeroType[arg_65_0.hero_mo_data.config.heroType])
+	local var_65_0 = luaLang("talent_charactertalentchess_template" .. arg_65_0.hero_mo_data:getTalentTxtByHeroType())
 	local var_65_1 = {}
 	local var_65_2 = TalentStyleModel.instance:isUnlockStyleSystem(arg_65_0.hero_mo_data.talent)
 
@@ -1629,7 +1629,7 @@ end
 function var_0_0._showTemplateName(arg_76_0)
 	for iter_76_0, iter_76_1 in ipairs(arg_76_0.hero_mo_data.talentTemplates) do
 		if iter_76_1.id == arg_76_0.hero_mo_data.useTalentTemplateId then
-			local var_76_0 = luaLang("talent_charactertalentchess_template" .. CharacterEnum.TalentTxtByHeroType[arg_76_0.hero_mo_data.config.heroType])
+			local var_76_0 = luaLang("talent_charactertalentchess_template" .. arg_76_0.hero_mo_data:getTalentTxtByHeroType())
 			local var_76_1 = string.nilorempty(iter_76_1.name) and var_76_0 .. arg_76_0._curSelectTemplateIndex or iter_76_1.name
 			local var_76_2 = TalentStyleModel.instance:getTalentStyle(arg_76_0._mainCubeId, iter_76_1.style)
 			local var_76_3 = var_76_2 and var_76_2._styleCo and var_76_2._styleCo.tagicon

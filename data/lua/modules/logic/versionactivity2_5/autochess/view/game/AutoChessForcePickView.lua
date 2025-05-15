@@ -34,7 +34,7 @@ function var_0_0._btnGiveUpOnClick(arg_5_0)
 end
 
 function var_0_0._yesCallback(arg_6_0)
-	local var_6_0 = AutoChessModel.instance:getCurModuleId()
+	local var_6_0 = AutoChessModel.instance.moduleId
 
 	AutoChessRpc.instance:sendAutoChessMallRegionSelectItemRequest(var_6_0, 0)
 	arg_6_0:closeThis()
@@ -82,23 +82,24 @@ function var_0_0.refreshUI(arg_13_0)
 	arg_13_0._txtTip.text = luaLang("autochess_forcepick_tip")
 
 	if var_13_0 ~= 0 then
-		local var_13_1 = AutoChessConfig.instance:getChessCoByItemId(arg_13_0.freeMall.items[1].id)
-		local var_13_2 = luaLang("autochess_forcepick_warningtip")
+		local var_13_1 = arg_13_0.freeMall.items[1]
+		local var_13_2 = AutoChessConfig.instance:getChessCfgById(var_13_1.chess.id, var_13_1.chess.star)
+		local var_13_3 = luaLang("autochess_forcepick_warningtip")
 
-		arg_13_0._txtWarningTip.text = GameUtil.getSubPlaceholderLuaLangOneParam(var_13_2, var_13_1.name)
+		arg_13_0._txtWarningTip.text = GameUtil.getSubPlaceholderLuaLangOneParam(var_13_3, var_13_2.name)
 	end
 
-	local var_13_3 = arg_13_0.freeMall.selectItems
+	local var_13_4 = arg_13_0.freeMall.selectItems
 
-	for iter_13_0, iter_13_1 in ipairs(var_13_3) do
-		local var_13_4 = arg_13_0:getResInst(AutoChessEnum.ChessCardPath, arg_13_0._goCardRoot, "card" .. iter_13_1)
-		local var_13_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_13_4, AutoChessCard)
-		local var_13_6 = {
+	for iter_13_0, iter_13_1 in ipairs(var_13_4) do
+		local var_13_5 = arg_13_0:getResInst(AutoChessStrEnum.ResPath.ChessCard, arg_13_0._goCardRoot, "card" .. iter_13_1)
+		local var_13_6 = MonoHelper.addNoUpdateLuaComOnceToGo(var_13_5, AutoChessCard)
+		local var_13_7 = {
 			type = AutoChessCard.ShowType.ForcePick,
 			itemId = iter_13_1
 		}
 
-		var_13_5:setData(var_13_6)
+		var_13_6:setData(var_13_7)
 	end
 
 	gohelper.setActive(arg_13_0._txtTip, var_13_0 == 0)

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "新进司辰",
+    "nameHexColor": "#6A6A6A"
+  },
+  {
+    "id": 2,
+    "name": "回归司辰",
+    "nameHexColor": "#494A5E"
+  },
+  {
+    "id": 3,
+    "name": "活跃司辰",
+    "nameHexColor": "#474D42"
+  }
+]

@@ -345,8 +345,12 @@ local var_0_3 = {
 }
 
 function var_0_0.getNum2Chinese(arg_17_0)
+	if not LangSettings.instance:isZh() then
+		return arg_17_0
+	end
+
 	if arg_17_0 < 10 then
-		return var_0_2[arg_17_0]
+		return var_0_2[arg_17_0] or arg_17_0
 	else
 		local var_17_0 = var_0_2
 		local var_17_1 = var_0_3

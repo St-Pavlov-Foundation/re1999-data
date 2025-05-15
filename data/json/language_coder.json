@@ -6086,5 +6086,537 @@
   {
     "id": "v2a7_newbie_storyprocess_locate_item_finish",
     "lang": "角色<#FFA044>已解锁</color>（故事章节▩1%s已通过）"
+  },
+  {
+    "id": "survival_choice_costtime",
+    "lang": "▩1%s分钟"
+  },
+  {
+    "id": "survival_choice_currencyGE",
+    "lang": "需要▩1%s多于▩2%s"
+  },
+  {
+    "id": "survival_choice_currencyLT",
+    "lang": "需要▩1%s少于▩2%s"
+  },
+  {
+    "id": "survival_choice_enthusiastic_get",
+    "lang": "人文主义将提升"
+  },
+  {
+    "id": "survival_choice_enthusiastic_cost",
+    "lang": "人文主义将降低"
+  },
+  {
+    "id": "survival_choice_recruitmentNPC",
+    "lang": "需要满足招募条件"
+  },
+  {
+    "id": "survival_choice_getitem",
+    "lang": "获得：▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_choice_costitem",
+    "lang": "消耗：▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_choice_changehealth",
+    "lang": "全队抵抗力▩1%s"
+  },
+  {
+    "id": "survival_choice_item_noenough",
+    "lang": "所需物品不足"
+  },
+  {
+    "id": "survival_mainview_teamhealth",
+    "lang": "研究小组抵抗力状态：▩1%s"
+  },
+  {
+    "id": "survival_filter_material",
+    "lang": "材料"
+  },
+  {
+    "id": "survival_filter_equip",
+    "lang": "盒中之物"
+  },
+  {
+    "id": "survival_filter_consume",
+    "lang": "消耗品"
+  },
+  {
+    "id": "survival_sort_mass",
+    "lang": "重量"
+  },
+  {
+    "id": "survival_sort_worth",
+    "lang": "价值"
+  },
+  {
+    "id": "survival_sort_type",
+    "lang": "类别"
+  },
+  {
+    "id": "survival_sort_time",
+    "lang": "获得时间"
+  },
+  {
+    "id": "survival_bag_have",
+    "lang": "已拥有：▩1%s"
+  },
+  {
+    "id": "survival_bag_remain",
+    "lang": "丢弃后：▩1%s"
+  },
+  {
+    "id": "survival_bag_place",
+    "lang": "放入后：▩1%s"
+  },
+  {
+    "id": "survival_baginfo_effect",
+    "lang": "效果"
+  },
+  {
+    "id": "survival_baginfo_info",
+    "lang": "信息"
+  },
+  {
+    "id": "survival_npcselectview_inteam",
+    "lang": "编队中"
+  },
+  {
+    "id": "survival_npcselectview_cantuse",
+    "lang": "无法使用"
+  },
+  {
+    "id": "survival_log_additem",
+    "lang": "获得了▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_log_removeitem",
+    "lang": "失去了▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_log_addnpc",
+    "lang": "▩1%s加入了小队"
+  },
+  {
+    "id": "survival_log_removenpc",
+    "lang": "▩1%s离开了小队"
+  },
+  {
+    "id": "survival_log_addcurrency",
+    "lang": "获得了▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_log_removecurrency",
+    "lang": "消耗了▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_log_removecurrency_shelter",
+    "lang": "预支了营地▩1%s×▩2%s"
+  },
+  {
+    "id": "survival_log_addheart",
+    "lang": "人文主义提升了▩1%s"
+  },
+  {
+    "id": "survival_log_removeheart",
+    "lang": "人文主义下降了▩1%s"
+  },
+  {
+    "id": "survival_log_taskbegin",
+    "lang": "任务【▩1%s】开始"
+  },
+  {
+    "id": "survival_log_taskfail",
+    "lang": "任务【▩1%s】失败"
+  },
+  {
+    "id": "survival_log_teamhealthadd",
+    "lang": "全队抵抗力+▩1%s"
+  },
+  {
+    "id": "survival_log_teamhealthsub",
+    "lang": "全队抵抗力-▩1%s"
+  },
+  {
+    "id": "survival_log_herohealthadd",
+    "lang": "▩1%s抵抗力+▩2%s"
+  },
+  {
+    "id": "survival_log_heaohealthsub",
+    "lang": "▩1%s抵抗力-▩2%s"
+  },
+  {
+    "id": "survival_reward_title",
+    "lang": "获得奖励"
+  },
+  {
+    "id": "survival_reward_npc_title",
+    "lang": "招募成员"
+  },
+  {
+    "id": "survival_reward_select_title",
+    "lang": "选择▩1%s个奖励"
+  },
+  {
+    "id": "survivalselectdifficultyview_txt_assess",
+    "lang": "难度系数：%s"
+  },
+  {
+    "id": "survival_commititemview_worth",
+    "lang": "价值▩1%s，松开即可放入"
+  },
+  {
+    "id": "survival_mainview_beginshrink",
+    "lang": "暴雨将于▩1%s开始"
+  },
+  {
+    "id": "survival_mainview_endshrink",
+    "lang": "暴雨将于▩1%s停止"
+  },
+  {
+    "id": "survival_mainview_lastshrink",
+    "lang": "暴雨已经无法停止"
+  },
+  {
+    "id": "survival_mainview_useitem_tips",
+    "lang": "点击空白区域取消使用道具"
+  },
+  {
+    "id": "survival_talentview_lock",
+    "lang": "装配思维达到▩1%s个可解锁"
+  },
+  {
+    "id": "survival_resultview_time",
+    "lang": "▩1%s：▩2%s"
+  },
+  {
+    "id": "survival_resultview_loss",
+    "lang": "在暴雨中迷失，收益损失▩1%s%"
+  },
+  {
+    "id": "survival_eventview_commititem",
+    "lang": "需要："
+  },
+  {
+    "id": "survival_eventview_rewarditem",
+    "lang": "获得："
+  },
+  {
+    "id": "survival_eventview_npcrecr",
+    "lang": "招募"
+  },
+  {
+    "id": "survival_eventview_leave",
+    "lang": "离开"
+  },
+  {
+    "id": "survivaltaskview_collection_txt",
+    "lang": "你选择了 <#C16614>%s</color>帮助任务执行，这将影响到你的表现。"
+  },
+  {
+    "id": "survivalbuildingmanageview_buildinglock_txt",
+    "lang": "未解锁"
+  },
+  {
+    "id": "survivalbuildingmanageview_unbuild_txt",
+    "lang": "待建造"
+  },
+  {
+    "id": "survivalbuildingmanageview_buildinglock_reason1",
+    "lang": "入住漫游助理人数达到%s"
+  },
+  {
+    "id": "survivalbuildingmanageview_buildinglock_reason2",
+    "lang": "▩1%s等级Lv.▩2%s解锁"
+  },
+  {
+    "id": "fight_get_secret_key",
+    "lang": "获得密钥"
+  },
+  {
+    "id": "survival_herogroup_round",
+    "lang": "轮次▩1%s"
+  },
+  {
+    "id": "TurnBackFullView_title",
+    "lang": "应邀清单"
+  },
+  {
+    "id": "survival_decreevote_tips_agree",
+    "lang": "%s <color=#6F9C78>赞成决策</color>"
+  },
+  {
+    "id": "survival_decreevote_tips_disagree",
+    "lang": "%s <color=#BB5D5D>反对决策</color>"
+  },
+  {
+    "id": "anniversary_typingtips_1",
+    "lang": "一如咒语灵验，正确的词将得到回应"
+  },
+  {
+    "id": "anniversary_typingtips_2",
+    "lang": "谁的名字在时间中熠熠闪光"
+  },
+  {
+    "id": "anniversary_typingtips_3",
+    "lang": "是的，你记得那精彩的一章"
+  },
+  {
+    "id": "anniversary_typingtips_4",
+    "lang": "纸是字的船，不妨去播报信息处看看"
+  },
+  {
+    "id": "anniversary_typingtips_5",
+    "lang": "并非这样的组合"
+  },
+  {
+    "id": "anniversary_typingtips_6",
+    "lang": "你已窥探这一密语"
+  },
+  {
+    "id": "survival_mainview_foodcost_speed",
+    "lang": "<#CC7A52>%s</color>/天"
+  },
+  {
+    "id": "survival_mainview_monster_begin",
+    "lang": "%s天后入侵"
+  },
+  {
+    "id": "survival_mainview_monster_end",
+    "lang": "%s天后驱逐"
+  },
+  {
+    "id": "survival_recruitview_demand_tips",
+    "lang": "选择<color=#bf5d31>▩1%s</color>/▩2%s需求特性，下次演习后即可招募"
+  },
+  {
+    "id": "survival_recruitview_menber_tips",
+    "lang": "选择<color=#bf5d31>▩1%s</color>/▩2%s需求特性"
+  },
+  {
+    "id": "survivalcompositeview_equip_tip1",
+    "lang": "可获得<color=#60ab6c>绿色</color>以上盒中之物"
+  },
+  {
+    "id": "survivalcompositeview_equip_tip2",
+    "lang": "可获得<color=#63c3f0>寻常</color>品质以上盒中之物"
+  },
+  {
+    "id": "survivalcompositeview_equip_tip3",
+    "lang": "可获得<color=#ab8dd8>精巧</color>品质以上盒中之物"
+  },
+  {
+    "id": "survivalcompositeview_equip_tip4",
+    "lang": "可获得<color=#f59540>妙想</color>品质盒中之物"
+  },
+  {
+    "id": "survivalcompositeview_equip_tip5",
+    "lang": "可获得<color=#f59540>橙色</color>品质以上盒中之物"
+  },
+  {
+    "id": "survivalceremonyopeningview_txt_1",
+    "lang": "你选择了<color=#bf5d31>▩1%s</color>思维执行任务，这将影响你的表现。"
+  },
+  {
+    "id": "survivalceremonyopeningview_txt_2",
+    "lang": "选择<color=#bf5d31>思维</color>以帮助任务执行，这将影响你的表现。"
+  },
+  {
+    "id": "V2a8_DragonBoat_RewardItem_txt_unlockTips",
+    "lang": "%s天后可制作"
+  },
+  {
+    "id": "V2a8_DragonBoat_RewardItem_txt_unlockTips_do_sth",
+    "lang": "制作药浴获得药方"
+  },
+  {
+    "id": "survivalceremonyclosingview_survivalTime",
+    "lang": "你在模拟生存中艰难生存了<color=#A04114>▩1%s</color>天，历经万难，顺利完成任务。"
+  },
+  {
+    "id": "survivalceremonyclosingview_extraTarget",
+    "lang": "完成<color=#A04114>▩1%s</color>个委托"
+  },
+  {
+    "id": "survivalceremonyclosingview_collection",
+    "lang": "你一共收集了<color=#A04114>▩1%s</color>个盒中之物"
+  },
+  {
+    "id": "anniversary_activitytip_1",
+    "lang": "找到了<color=#A04114>▩1%s</color>枚“拿来”的钥匙"
+  },
+  {
+    "id": "roomblockgift_colloctcount1",
+    "lang": "<#D87173>▩1%s</color>/▩2%s"
+  },
+  {
+    "id": "roomblockgift_colloctcount2",
+    "lang": "▩1%s/▩2%s"
+  },
+  {
+    "id": "roomblockgift_select",
+    "lang": "已选：▩1%s"
+  },
+  {
+    "id": "roombuildinggift_placingrange",
+    "lang": "占地范围"
+  },
+  {
+    "id": "SurvivalShelterChooseNpcItem_Tips",
+    "lang": "已经被选择"
+  },
+  {
+    "id": "survival_mainview_monster_fight",
+    "lang": "必须驱逐入侵怪物"
+  },
+  {
+    "id": "survivalreportview_npc_empty",
+    "lang": "助理们相当满足，今天没有人离开避难处。"
+  },
+  {
+    "id": "survivalreportview_npc",
+    "lang": "<color=#C26817>▩2%s</color>对你非常失望，离开了避难处。"
+  },
+  {
+    "id": "survivalreportview_monster_empty",
+    "lang": "目前没有入侵的怪物，又安然无恙的度过了一天。"
+  },
+  {
+    "id": "survivalreportview_monster",
+    "lang": "<color=#C26817>▩1%s</color>天后需要击败入侵怪物<color=#C26817>▩2%s</color>。"
+  },
+  {
+    "id": "survivalreportview_build_empty",
+    "lang": "避难处完好无损，没有任何损失。"
+  },
+  {
+    "id": "survivalreportview_build",
+    "lang": "<color=#C26817>▩1%s</color>被入侵怪物破坏了"
+  },
+  {
+    "id": "survivalreportview_score",
+    "lang": "本次演习带回<color=#C26817>▩1%s</color>获得<color=#C26817>▩2%s</color>点完成度。"
+  },
+  {
+    "id": "Activity2ndCollectionPageView_EnterMaxStr",
+    "lang": "输入上限为20个字符"
+  },
+  {
+    "id": "autochesscard_growup_tip",
+    "lang": "（还剩▩1%s回合）"
+  },
+  {
+    "id": "shelterHeroGroupFightView_item",
+    "lang": "第▩1%s波次"
+  },
+  {
+    "id": "anniversary_bonus_rule",
+    "lang": "在活动期间内，司辰可以选择范围内的已拥有的角色获取造像。\n包括以下角色：槲寄生、红弩箭、未锈铠、苏芙比、星锑、百夫长、泥鯭的士、兔毛手袋、远旅、温妮弗雷德、\n新巴别塔、牙仙、洁西卡、梅兰妮、皮克勒斯、伽菈波那、鬃毛沙砾、37、6、可燃点、爱兹拉、葛天、马库斯、\n伊索尔德、北方哨歌、维拉、塞梅尔维斯、卡卡尼亚、J、环状水星、阿尔古斯、蓝手帕、洛佩拉、笃笃骨、纸信圈儿、\n芭卡洛儿、图图石子、菲林士多、乌尔里希。\n当范围内角色的造像全部获取，则可邀请角色再会，并转化为28个大容量迷途之声。"
+  },
+  {
+    "id": "anniversary_activity_tip2",
+    "lang": "找到了实验室的“头奖”，解锁了下一个实验室！"
+  },
+  {
+    "id": "acttime_from_to",
+    "lang": "活动时间：▩1%s—▩2%s"
+  },
+  {
+    "id": "anniversary_bonus_max",
+    "lang": "塑造已满"
+  },
+  {
+    "id": "anniversary_activity_name",
+    "lang": "▩1%s号实验室"
+  },
+  {
+    "id": "fightuiswitch_classify_1",
+    "lang": "咒语结算效果"
+  },
+  {
+    "id": "fightuiswitch_classify_2",
+    "lang": "咒语格式"
+  },
+  {
+    "id": "fightuiswitch_obtaintime",
+    "lang": "获取时间：▩1%s"
+  },
+  {
+    "id": "survivalceremonyclosingview_item",
+    "lang": "本次演算收获物资"
+  },
+  {
+    "id": "molideer_interludeview_txt_title",
+    "lang": "第▩1%s回合"
+  },
+  {
+    "id": "molideer_execution_change_tips",
+    "lang": "小队的行动力<color=#E99B56>▩1%s</color>"
+  },
+  {
+    "id": "molideer_team_add_tips",
+    "lang": "<color=#E99B56>▩1%s</color>加入了队伍"
+  },
+  {
+    "id": "molideer_item_add_tips",
+    "lang": "获得<color=#E99B56>▩1%s</color>"
+  },
+  {
+    "id": "autochess_leaderbuffview_energy",
+    "lang": "电能层数：▩1%s"
+  },
+  {
+    "id": "autochess_leaderbuffview_fire",
+    "lang": "火种层数：▩1%s"
+  },
+  {
+    "id": "ShelterMapEventView_looktask",
+    "lang": "查看"
+  },
+  {
+    "id": "autochess_mainview_timetip",
+    "lang": "▩1%s后轮换规则"
+  },
+  {
+    "id": "taluo_show_character_name",
+    "lang": "——▩1%s"
+  },
+  {
+    "id": "survival_SurvivalMonsterEventView_tips",
+    "lang": "需要在▩1%s天后击退"
+  },
+  {
+    "id": "handbookskinview_playername",
+    "lang": "▩1%s的博物馆"
+  },
+  {
+    "id": "survivalreportview_score_buildItem",
+    "lang": "▩1%s个建材"
+  },
+  {
+    "id": "survivalreportview_score_foodItem",
+    "lang": "▩1%s个食物"
+  },
+  {
+    "id": "survivalreportview_score_equipItem",
+    "lang": "▩1%s个漫游行装"
+  },
+  {
+    "id": "survivalreportview_score_goldItem",
+    "lang": "▩1%s个金币"
+  },
+  {
+    "id": "survivalreportview_score_otherItem",
+    "lang": "▩1%s个物品"
+  },
+  {
+    "id": "survivalreportview_score_npc",
+    "lang": "▩1%s位助理"
+  },
+  {
+    "id": "survivalreportview_monster_today",
+    "lang": "<color=#C26817>今天</color>需要击败入侵怪物<color=#C26817>▩1%s</color>。"
   }
 ]

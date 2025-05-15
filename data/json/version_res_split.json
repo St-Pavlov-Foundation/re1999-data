@@ -716,5 +716,96 @@
       "ui/viewres/versionactivity_1_6/v1a6_talent"
     ],
     "uiPath": []
+  },
+  {
+    "id": 19,
+    "audio": [
+      3200138,
+      3200139
+    ],
+    "chapter": [
+      19601,
+      19602,
+      19603,
+      19604
+    ],
+    "guide": [],
+    "story": [
+      1960101,
+      1960102,
+      1960103,
+      1960104,
+      1960105,
+      1960106,
+      1960107,
+      1960108,
+      1960301,
+      1960302,
+      1960303,
+      1960304,
+      1960305,
+      1960306,
+      1960307,
+      1960308
+    ],
+    "folderPath": [],
+    "videoPath": [],
+    "path": [],
+    "uiFolder": [
+      "ui/viewres/versionactivity_1_9/v1a9_dungeon",
+      "ui/viewres/versionactivity_1_9/v1a9_kakania",
+      "ui/viewres/versionactivity_1_9/v1a9_lucy"
+    ],
+    "uiPath": []
+  },
+  {
+    "id": 20,
+    "audio": [
+      3200157,
+      3200158
+    ],
+    "chapter": [
+      20101,
+      20201,
+      20301,
+      20401,
+      20601,
+      20602,
+      20603,
+      20604
+    ],
+    "guide": [
+      20010
+    ],
+    "story": [
+      2060101,
+      2060102,
+      2060103,
+      2060104,
+      2060105,
+      2060106,
+      2060107,
+      2060108,
+      2060301,
+      2060302,
+      2060303,
+      2060304,
+      2060305,
+      2060306,
+      2060307,
+      2060308
+    ],
+    "folderPath": [],
+    "videoPath": [
+      "2_0_pv"
+    ],
+    "path": [],
+    "uiFolder": [
+      "ui/viewres/versionactivity_2_0/v2a0_dungeon",
+      "ui/viewres/versionactivity_2_0/v2a0_enter",
+      "ui/viewres/versionactivity_2_0/v2a0_joe",
+      "ui/viewres/versionactivity_2_0/v2a0_mercuria"
+    ],
+    "uiPath": []
   }
 ]

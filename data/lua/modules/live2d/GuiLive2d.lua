@@ -421,7 +421,7 @@ end
 
 function var_0_0.setShareRT(arg_36_0, arg_36_1, arg_36_2)
 	arg_36_0._shareRT = arg_36_1
-	arg_36_0._rtPriority = arg_36_2
+	arg_36_0._rtViewName = arg_36_2
 end
 
 function var_0_0.getTextureSizeByCameraSize(arg_37_0)
@@ -501,7 +501,7 @@ function var_0_0._loadL2dResFinish(arg_40_0)
 			var_40_4:SetNativeSize()
 		end
 
-		Live2dRTShareController.instance:addShareInfo(var_40_1, var_40_4, arg_40_0._shareRT, arg_40_0._heroId, arg_40_0._skinId, arg_40_0._rtPriority)
+		Live2dRTShareController.instance:addShareInfo(var_40_1, var_40_4, arg_40_0._shareRT, arg_40_0._heroId, arg_40_0._skinId, arg_40_0._rtViewName)
 	end
 
 	local var_40_5 = arg_40_0._guiL2dLoader:getAssetItem(var_0_2)

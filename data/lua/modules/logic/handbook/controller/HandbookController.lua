@@ -122,16 +122,55 @@ function var_0_0.isFirstHandbook(arg_13_0)
 	return PlayerPrefsHelper.getNumber(var_13_1, 0) <= 0
 end
 
-function var_0_0.openHandbookWeekWalkMapView(arg_14_0, arg_14_1)
-	arg_14_0._openViewParam = arg_14_1
+function var_0_0.markNotFirstHandbookSkin(arg_14_0)
+	local var_14_0 = PlayerModel.instance:getMyUserId()
+	local var_14_1 = PlayerPrefsKey.FirstSkinHandbook .. tostring(var_14_0)
 
-	WeekwalkRpc.instance:sendGetWeekwalkEndRequest(arg_14_0._getWeekWalkEndReply, arg_14_0)
+	PlayerPrefsHelper.setNumber(var_14_1, 1)
+	arg_14_0:dispatchEvent(HandbookEvent.EnterHandbookSkin)
 end
 
-function var_0_0._getWeekWalkEndReply(arg_15_0)
-	ViewMgr.instance:openView(ViewName.HandbookWeekWalkMapView, arg_15_0._openViewParam)
+function var_0_0.isFirstHandbookSkin(arg_15_0)
+	local var_15_0 = PlayerModel.instance:getMyUserId()
+	local var_15_1 = PlayerPrefsKey.FirstSkinHandbook .. tostring(var_15_0)
 
-	arg_15_0._openViewParam = nil
+	return PlayerPrefsHelper.getNumber(var_15_1, 0) <= 0
+end
+
+function var_0_0.openHandbookWeekWalkMapView(arg_16_0, arg_16_1)
+	arg_16_0._openViewParam = arg_16_1
+
+	WeekwalkRpc.instance:sendGetWeekwalkEndRequest(arg_16_0._getWeekWalkEndReply, arg_16_0)
+end
+
+function var_0_0._getWeekWalkEndReply(arg_17_0)
+	ViewMgr.instance:openView(ViewName.HandbookWeekWalkMapView, arg_17_0._openViewParam)
+
+	arg_17_0._openViewParam = nil
+end
+
+function var_0_0.openHandbookSkinView(arg_18_0, arg_18_1)
+	ViewMgr.instance:openView(ViewName.HandbookSkinView, arg_18_1)
+end
+
+function var_0_0.statSkinTab(arg_19_0, arg_19_1)
+	StatController.instance:track(StatEnum.EventName.SkinCollectionTab, {
+		[StatEnum.EventProperties.Skin_TabId] = arg_19_1
+	})
+end
+
+function var_0_0.statSkinSuiteId(arg_20_0, arg_20_1)
+	StatController.instance:track(StatEnum.EventName.SkinCollectionTab, {
+		[StatEnum.EventProperties.Skin_SuiteId] = arg_20_1
+	})
+end
+
+function var_0_0.statSkinSuitDetail(arg_21_0, arg_21_1)
+	local var_21_0 = HandbookConfig.instance:getSkinSuitCfg(arg_21_1)
+
+	if var_21_0 then
+		StatViewController.instance:track(string.format("%s-%s", StatViewNameEnum.OtherViewName.HandbookSkinSuitDetailView, var_21_0.name or arg_21_1), StatViewNameEnum.OtherViewName.HandbookSkinView)
+	end
 end
 
 var_0_0.instance = var_0_0.New()

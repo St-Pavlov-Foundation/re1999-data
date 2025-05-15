@@ -1,9 +1,17 @@
 ﻿module("modules.logic.fight.FightObject", package.seeall)
 
 local var_0_0 = class("FightObject")
+local var_0_1 = __G__TRACKBACK__
+local var_0_2 = table
+local var_0_3 = xpcall
+local var_0_4 = rawget
 
 function var_0_0.onConstructor(arg_1_0)
-	return
+	arg_1_0.PARENT_ROOT_CLASS = nil
+	arg_1_0.INSTANTIATE_CLASS_LIST = nil
+	arg_1_0.COMPONENT_LIST = nil
+	arg_1_0.IS_RELEASING = nil
+	arg_1_0.IS_DISPOSED = nil
 end
 
 function var_0_0.onAwake(arg_2_0, ...)
@@ -41,7 +49,7 @@ function var_0_0.newClass(arg_6_0, arg_6_1, ...)
 
 	var_6_0.PARENT_ROOT_CLASS = arg_6_0
 
-	table.insert(arg_6_0.INSTANTIATE_CLASS_LIST, var_6_0)
+	var_0_2.insert(arg_6_0.INSTANTIATE_CLASS_LIST, var_6_0)
 
 	return var_6_0
 end
@@ -59,7 +67,7 @@ function var_0_0.addComponent(arg_7_0, arg_7_1)
 
 	var_7_0.PARENT_ROOT_CLASS = arg_7_0
 
-	table.insert(arg_7_0.COMPONENT_LIST, var_7_0)
+	var_0_2.insert(arg_7_0.COMPONENT_LIST, var_7_0)
 
 	return var_7_0
 end
@@ -81,7 +89,7 @@ function var_0_0.disposeSelf(arg_9_0)
 
 	local var_9_0 = arg_9_0.keyword_gameObject
 
-	xpcall(arg_9_0.disposeSelfInternal, __G__TRACKBACK__, arg_9_0)
+	var_0_3(arg_9_0.disposeSelfInternal, var_0_1, arg_9_0)
 
 	if var_9_0 then
 		gohelper.destroy(var_9_0)
@@ -101,7 +109,7 @@ function var_0_0.initializationInternal(arg_11_0, arg_11_1, arg_11_2, ...)
 		arg_11_0:initializationInternal(var_11_0, arg_11_2, ...)
 	end
 
-	local var_11_1 = rawget(arg_11_1, "onConstructor")
+	local var_11_1 = var_0_4(arg_11_1, "onConstructor")
 
 	if var_11_1 then
 		return var_11_1(arg_11_2, ...)
@@ -118,10 +126,10 @@ function var_0_0.disposeSelfInternal(arg_12_0)
 		arg_12_0:releaseChildRoot()
 	end
 
-	arg_12_0:releaseSelf()
+	var_0_3(arg_12_0.releaseSelf, var_0_1, arg_12_0)
 	arg_12_0:destructorInternal(arg_12_0.class, arg_12_0)
 
-	return arg_12_0:onDestructorFinish()
+	return var_0_3(arg_12_0.onDestructorFinish, var_0_1, arg_12_0)
 end
 
 function var_0_0.clearDeadInstantiatedClass(arg_13_0)
@@ -148,7 +156,7 @@ function var_0_0.internalClearDeadInstantiatedClass(arg_14_0)
 	if var_14_0 then
 		for iter_14_0 = #var_14_0, 1, -1 do
 			if var_14_0[iter_14_0].IS_DISPOSED then
-				table.remove(var_14_0, iter_14_0)
+				var_0_2.remove(var_14_0, iter_14_0)
 			end
 		end
 	end
@@ -217,10 +225,10 @@ function var_0_0.releaseChildRoot(arg_16_0)
 end
 
 function var_0_0.destructorInternal(arg_17_0, arg_17_1, arg_17_2)
-	local var_17_0 = rawget(arg_17_1, "onDestructor")
+	local var_17_0 = var_0_4(arg_17_1, "onDestructor")
 
 	if var_17_0 then
-		var_17_0(arg_17_2)
+		var_0_3(var_17_0, var_0_1, arg_17_2)
 	end
 
 	local var_17_1 = arg_17_1.super

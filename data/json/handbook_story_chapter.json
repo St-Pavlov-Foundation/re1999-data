@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "type": 1,
     "order": 0,
     "name": "此即明日",
     "nameEn": "This is Tomorrow",
@@ -8,6 +9,7 @@
   },
   {
     "id": 2,
+    "type": 1,
     "order": 0,
     "name": "在我们的时代里",
     "nameEn": "In Our Time",
@@ -15,6 +17,7 @@
   },
   {
     "id": 3,
+    "type": 1,
     "order": 0,
     "name": "夜色温柔",
     "nameEn": "Tender is the Night",
@@ -22,6 +25,7 @@
   },
   {
     "id": 4,
+    "type": 1,
     "order": 0,
     "name": "故事一无所有",
     "nameEn": "Nouvelles et Textes pour rien ",
@@ -29,6 +33,7 @@
   },
   {
     "id": 5,
+    "type": 1,
     "order": 0,
     "name": "老虎的金黄",
     "nameEn": "El oro de los tigres",
@@ -36,6 +41,7 @@
   },
   {
     "id": 6,
+    "type": 1,
     "order": 0,
     "name": "洞穴的囚徒",
     "nameEn": "The Prisoner in The Cave",
@@ -43,6 +49,7 @@
   },
   {
     "id": 7,
+    "type": 1,
     "order": 0,
     "name": "星",
     "nameEn": "The Star",
@@ -50,6 +57,7 @@
   },
   {
     "id": 1001,
+    "type": 2,
     "order": 0,
     "name": "戏剧与戏剧",
     "nameEn": "The Master of Theatrics",
@@ -57,6 +65,7 @@
   },
   {
     "id": 1002,
+    "type": 2,
     "order": 0,
     "name": "奥利弗的故事",
     "nameEn": "The Story of Oliver",
@@ -64,6 +73,7 @@
   },
   {
     "id": 1003,
+    "type": 2,
     "order": 0,
     "name": "直到长夜下旬",
     "nameEn": "The Long Night Singing Its Dirges",
@@ -71,6 +81,7 @@
   },
   {
     "id": 1004,
+    "type": 2,
     "order": 0,
     "name": "美梦后记",
     "nameEn": "After the Good Dream",
@@ -78,6 +89,7 @@
   },
   {
     "id": 1005,
+    "type": 2,
     "order": 0,
     "name": "庸碌喜剧",
     "nameEn": "Pulp Comedy",
@@ -85,6 +97,7 @@
   },
   {
     "id": 1006,
+    "type": 2,
     "order": 0,
     "name": "重返人间",
     "nameEn": "Back to Earth",
@@ -92,6 +105,7 @@
   },
   {
     "id": 1007,
+    "type": 2,
     "order": 0,
     "name": "第九条美德",
     "nameEn": "The Ninth Virtue",
@@ -99,6 +113,7 @@
   },
   {
     "id": 1008,
+    "type": 2,
     "order": 0,
     "name": "齿轮的意志",
     "nameEn": "The Will of Gears",
@@ -106,6 +121,7 @@
   },
   {
     "id": 8,
+    "type": 1,
     "order": 0,
     "name": "今夜星光灿烂",
     "nameEn": "E lucevan le stelle",
@@ -113,6 +129,7 @@
   },
   {
     "id": 1009,
+    "type": 2,
     "order": 0,
     "name": "致温妮弗雷德",
     "nameEn": "To Wennifred",
@@ -120,6 +137,7 @@
   },
   {
     "id": 1010,
+    "type": 2,
     "order": 0,
     "name": "风吹乌哈拉",
     "nameEn": "The Winds of Juhalerat",
@@ -127,6 +145,7 @@
   },
   {
     "id": 1011,
+    "type": 2,
     "order": 0,
     "name": "字母的研究",
     "nameEn": "Finding Xavier",
@@ -134,6 +153,7 @@
   },
   {
     "id": 1012,
+    "type": 2,
     "order": 0,
     "name": "第三种苏醒",
     "nameEn": "The Third Circumstance",
@@ -141,6 +161,7 @@
   },
   {
     "id": 9,
+    "type": 1,
     "order": 0,
     "name": "孤独之歌",
     "nameEn": "Vereinsamt",
@@ -148,6 +169,7 @@
   },
   {
     "id": 1013,
+    "type": 2,
     "order": 0,
     "name": "淑女的守则",
     "nameEn": "The Lady's Etiquette",
@@ -155,6 +177,7 @@
   },
   {
     "id": 1014,
+    "type": 2,
     "order": 0,
     "name": "只有泉水知道",
     "nameEn": "Only Water Springs Know",
@@ -162,6 +185,7 @@
   },
   {
     "id": 1015,
+    "type": 2,
     "order": 0,
     "name": "起火点",
     "nameEn": "Where the Fire Starts",
@@ -169,6 +193,7 @@
   },
   {
     "id": 1016,
+    "type": 2,
     "order": 0,
     "name": "当和平盛放",
     "nameEn": "When Peace Blooms",
@@ -176,6 +201,7 @@
   },
   {
     "id": 1017,
+    "type": 2,
     "order": 0,
     "name": "乘法轴上的一天",
     "nameEn": "A Day Plotted Logarithmically",
@@ -183,6 +209,7 @@
   },
   {
     "id": 1018,
+    "type": 2,
     "order": 0,
     "name": "长夜未逝",
     "nameEn": "A Night Without End",
@@ -190,6 +217,7 @@
   },
   {
     "id": 10,
+    "type": 1,
     "order": 0,
     "name": "忧郁的热带",
     "nameEn": "Tristes Tropiques",
@@ -197,6 +225,7 @@
   },
   {
     "id": 1019,
+    "type": 2,
     "order": 0,
     "name": "黄金与悲喜剧",
     "nameEn": "A Fool's Gold",
@@ -204,6 +233,7 @@
   },
   {
     "id": 1020,
+    "type": 2,
     "order": 0,
     "name": "最佳乐队",
     "nameEn": "The Best Band in Town",
@@ -211,6 +241,7 @@
   },
   {
     "id": 1021,
+    "type": 2,
     "order": 0,
     "name": "鬼马探灵记",
     "nameEn": "The Ghost Master",
@@ -218,6 +249,7 @@
   },
   {
     "id": 11,
+    "type": 1,
     "order": 0,
     "name": "疯癫与文明",
     "nameEn": "Folie et Déraison",
@@ -225,6 +257,7 @@
   },
   {
     "id": 1022,
+    "type": 2,
     "order": 0,
     "name": "最后的电影",
     "nameEn": "The Last Film",
@@ -232,9 +265,34 @@
   },
   {
     "id": 1023,
+    "type": 2,
     "order": 0,
     "name": "海风的往事",
     "nameEn": "The Sea Breeze Still Whispers",
+    "year": ""
+  },
+  {
+    "id": 12,
+    "type": 1,
+    "order": 0,
+    "name": "复乐园",
+    "nameEn": "Paradise Regained",
+    "year": "1991"
+  },
+  {
+    "id": 3001,
+    "type": 3,
+    "order": 0,
+    "name": "黄昏的音序",
+    "nameEn": "A Series of Dusks",
+    "year": ""
+  },
+  {
+    "id": 1024,
+    "type": 2,
+    "order": 0,
+    "name": "在路上",
+    "nameEn": "Away From Home",
     "year": ""
   }
 ]

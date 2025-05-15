@@ -31,15 +31,21 @@ function var_0_0.onOpen(arg_2_0)
 		table.insert(var_2_0, var_2_2)
 	end
 
+	local var_2_3 = FightDataHelper.entityMgr:getVorpalith()
+
+	if var_2_3 then
+		table.insert(var_2_0, var_2_3)
+	end
+
 	FightDataHelper.entityMgr:getNormalList(FightEnum.EntitySide.EnemySide, var_2_0, true)
 	FightDataHelper.entityMgr:getSubList(FightEnum.EntitySide.EnemySide, var_2_0, true)
 	FightDataHelper.entityMgr:getSpList(FightEnum.EntitySide.EnemySide, var_2_0, true)
 	FightDataHelper.entityMgr:getEnemyPlayerList(var_2_0, true)
 
-	local var_2_3 = FightDataHelper.entityMgr:getASFDEntityMo(FightEnum.EntitySide.EnemySide)
+	local var_2_4 = FightDataHelper.entityMgr:getASFDEntityMo(FightEnum.EntitySide.EnemySide)
 
-	if var_2_3 then
-		table.insert(var_2_0, var_2_3)
+	if var_2_4 then
+		table.insert(var_2_0, var_2_4)
 	end
 
 	arg_2_0:setList(var_2_0)

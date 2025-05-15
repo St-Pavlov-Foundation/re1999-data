@@ -5,12 +5,14 @@ local var_0_0 = FightDataClass("FightCustomData")
 var_0_0.CustomDataType = {
 	Act191 = 3,
 	WeekwalkVer2 = 2,
-	Act183 = 1
+	Act183 = 1,
+	Survival = 4
 }
 
 local var_0_1 = {
 	[var_0_0.CustomDataType.Act183] = true,
-	[var_0_0.CustomDataType.Act191] = true
+	[var_0_0.CustomDataType.Act191] = true,
+	[var_0_0.CustomDataType.Survival] = true
 }
 
 function var_0_0.onConstructor(arg_1_0, arg_1_1)

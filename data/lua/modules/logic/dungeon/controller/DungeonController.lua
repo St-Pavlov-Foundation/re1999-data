@@ -14,6 +14,7 @@ function var_0_0.addConstEvents(arg_3_0)
 	arg_3_0:registerCallback(DungeonEvent.OnFocusEpisode, arg_3_0._onFocusEpisode, arg_3_0)
 	arg_3_0:registerCallback(DungeonEvent.OnSetResScrollPos, arg_3_0._onSetResScrollPos, arg_3_0)
 	arg_3_0:registerCallback(DungeonEvent.OnGuideUnlockNewChapter, arg_3_0._onGuideUnlockNewChapter, arg_3_0)
+	arg_3_0:registerCallback(DungeonEvent.OnGuideFocusNormalChapter, arg_3_0._onGuideFocusNormalChapter, arg_3_0)
 	arg_3_0:registerCallback(DungeonEvent.OnHideCircleMv, arg_3_0._onHideCircleMv, arg_3_0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_3_0._onDailyRefresh, arg_3_0)
 	FightController.instance:registerCallback(FightEvent.PushEndFight, arg_3_0._pushEndFight, arg_3_0)
@@ -107,19 +108,27 @@ function var_0_0._onHideCircleMv(arg_10_0)
 	UIBlockMgrExtend.setNeedCircleMv(false)
 end
 
-function var_0_0._onGuideUnlockNewChapter(arg_11_0, arg_11_1)
-	arg_11_1 = tonumber(arg_11_1)
+function var_0_0._onGuideFocusNormalChapter(arg_11_0, arg_11_1)
+	local var_11_0 = tonumber(arg_11_1)
 
-	if arg_11_1 ~= 101 then
-		DungeonModel.instance.unlockNewChapterId = arg_11_1
+	if var_11_0 then
+		DungeonMainStoryModel.instance:saveClickChapterId(var_11_0)
+	end
+end
+
+function var_0_0._onGuideUnlockNewChapter(arg_12_0, arg_12_1)
+	arg_12_1 = tonumber(arg_12_1)
+
+	if arg_12_1 ~= 101 then
+		DungeonModel.instance.unlockNewChapterId = arg_12_1
 		DungeonModel.instance.chapterTriggerNewChapter = false
 
 		return
 	end
 
-	local var_11_0 = PlayerModel.instance:getSimpleProperty(PlayerEnum.SimpleProperty.ChapterUnlockEffect)
+	local var_12_0 = PlayerModel.instance:getSimpleProperty(PlayerEnum.SimpleProperty.ChapterUnlockEffect)
 
-	if not string.nilorempty(var_11_0) then
+	if not string.nilorempty(var_12_0) then
 		TaskDispatcher.runDelay(function()
 			var_0_0.instance:dispatchEvent(DungeonEvent.OnUnlockNewChapterAnimFinish)
 		end, nil, 0)
@@ -130,414 +139,414 @@ function var_0_0._onGuideUnlockNewChapter(arg_11_0, arg_11_1)
 	PlayerRpc.instance:sendSetSimplePropertyRequest(PlayerEnum.SimpleProperty.ChapterUnlockEffect, "1")
 
 	DungeonModel.instance.chapterTriggerNewChapter = true
-	DungeonModel.instance.unlockNewChapterId = arg_11_1
+	DungeonModel.instance.unlockNewChapterId = arg_12_1
 end
 
-function var_0_0._onSetResScrollPos(arg_13_0, arg_13_1)
-	DungeonModel.instance.resScrollPosX = arg_13_1
+function var_0_0._onSetResScrollPos(arg_14_0, arg_14_1)
+	DungeonModel.instance.resScrollPosX = arg_14_1
 end
 
-function var_0_0._onFocusEpisode(arg_14_0, arg_14_1)
-	DungeonModel.instance:setLastSendEpisodeId(tonumber(arg_14_1))
+function var_0_0._onFocusEpisode(arg_15_0, arg_15_1)
+	DungeonModel.instance:setLastSendEpisodeId(tonumber(arg_15_1))
 end
 
-function var_0_0.enterDungeonView(arg_15_0, arg_15_1, arg_15_2)
-	if arg_15_1 then
+function var_0_0.enterDungeonView(arg_16_0, arg_16_1, arg_16_2)
+	if arg_16_1 then
 		DungeonModel.instance:initModel()
 	end
 
-	local var_15_0 = {
-		fromMainView = arg_15_2
+	local var_16_0 = {
+		fromMainView = arg_16_2
 	}
 
-	return arg_15_0:openDungeonView(var_15_0, false)
+	return arg_16_0:openDungeonView(var_16_0, false)
 end
 
-function var_0_0.jumpDungeon(arg_16_0, arg_16_1)
-	local var_16_0 = {}
+function var_0_0.jumpDungeon(arg_17_0, arg_17_1)
+	local var_17_0 = {}
 
-	if not arg_16_1 then
-		return var_16_0
+	if not arg_17_1 then
+		return var_17_0
 	end
 
-	local var_16_1 = arg_16_1.chapterType
-	local var_16_2 = arg_16_1.chapterId
-	local var_16_3 = arg_16_1.episodeId
+	local var_17_1 = arg_17_1.chapterType
+	local var_17_2 = arg_17_1.chapterId
+	local var_17_3 = arg_17_1.episodeId
 
-	DungeonModel.instance.lastSendEpisodeId = var_16_3
+	DungeonModel.instance.lastSendEpisodeId = var_17_3
 
-	if not var_16_1 then
-		return var_16_0
+	if not var_17_1 then
+		return var_17_0
 	end
 
-	local var_16_4
+	local var_17_4
 
-	if var_16_1 == DungeonEnum.ChapterType.Hard then
-		local var_16_5 = DungeonConfig.instance:getEpisodeCO(var_16_3)
+	if var_17_1 == DungeonEnum.ChapterType.Hard then
+		local var_17_5 = DungeonConfig.instance:getEpisodeCO(var_17_3)
 
-		if not var_16_5 then
+		if not var_17_5 then
 			logError("不能直接跳困难章节,可以配合困难关卡跳转")
 
-			return var_16_0
+			return var_17_0
 		end
 
-		local var_16_6 = DungeonConfig.instance:getEpisodeCO(var_16_5.preEpisode)
+		local var_17_6 = DungeonConfig.instance:getEpisodeCO(var_17_5.preEpisode)
 
-		if not var_16_6 then
-			return var_16_0
+		if not var_17_6 then
+			return var_17_0
 		end
 
-		var_16_1, var_16_2, var_16_3 = DungeonConfig.instance:getChapterCO(var_16_6.chapterId).type, var_16_6.chapterId, var_16_6.id
-		var_16_4 = true
+		var_17_1, var_17_2, var_17_3 = DungeonConfig.instance:getChapterCO(var_17_6.chapterId).type, var_17_6.chapterId, var_17_6.id
+		var_17_4 = true
 	end
 
-	if var_16_1 == DungeonEnum.ChapterType.Newbie then
+	if var_17_1 == DungeonEnum.ChapterType.Newbie then
 		logError("不能跳新手章节")
 
-		return var_16_0
+		return var_17_0
 	end
 
-	DungeonModel.instance:changeCategory(var_16_1)
+	DungeonModel.instance:changeCategory(var_17_1)
 
-	if not DungeonConfig.instance:getChapterCO(var_16_2) then
-		table.insert(var_16_0, ViewName.DungeonView)
-		arg_16_0:openDungeonView(nil)
+	if not DungeonConfig.instance:getChapterCO(var_17_2) then
+		table.insert(var_17_0, ViewName.DungeonView)
+		arg_17_0:openDungeonView(nil)
 
-		return var_16_0
+		return var_17_0
 	end
 
-	if DungeonModel.instance:chapterIsLock(var_16_2) then
-		table.insert(var_16_0, ViewName.DungeonView)
-		arg_16_0:openDungeonView(nil)
+	if DungeonModel.instance:chapterIsLock(var_17_2) then
+		table.insert(var_17_0, ViewName.DungeonView)
+		arg_17_0:openDungeonView(nil)
 
-		return var_16_0
+		return var_17_0
 	end
 
-	local var_16_7 = {
-		chapterId = var_16_2,
-		episodeId = var_16_3
+	local var_17_7 = {
+		chapterId = var_17_2,
+		episodeId = var_17_3
 	}
 
-	table.insert(var_16_0, arg_16_0:getDungeonChapterViewName(var_16_2))
+	table.insert(var_17_0, arg_17_0:getDungeonChapterViewName(var_17_2))
 
-	local var_16_8 = var_16_3 and DungeonConfig.instance:getEpisodeCO(var_16_3)
+	local var_17_8 = var_17_3 and DungeonConfig.instance:getEpisodeCO(var_17_3)
 
-	if not var_16_8 then
-		arg_16_0:openDungeonChapterView(var_16_7)
+	if not var_17_8 then
+		arg_17_0:openDungeonChapterView(var_17_7)
 
-		return var_16_0
+		return var_17_0
 	end
 
-	DungeonModel.instance.curLookChapterId = var_16_2
+	DungeonModel.instance.curLookChapterId = var_17_2
 
-	local var_16_9 = arg_16_0:jumpChapterAndLevel(var_16_2, var_16_8, var_16_7, var_16_4, arg_16_1.isNoShowMapLevel)
+	local var_17_9 = arg_17_0:jumpChapterAndLevel(var_17_2, var_17_8, var_17_7, var_17_4, arg_17_1.isNoShowMapLevel)
 
-	if var_16_9 then
-		table.insert(var_16_0, var_16_9)
+	if var_17_9 then
+		table.insert(var_17_0, var_17_9)
 	end
-
-	return var_16_0
-end
-
-function var_0_0.jumpChapterAndLevel(arg_17_0, arg_17_1, arg_17_2, arg_17_3, arg_17_4, arg_17_5)
-	local var_17_0 = arg_17_0:generateLevelViewParam(arg_17_2, arg_17_4, true)
-	local var_17_1 = {}
-	local var_17_2 = {}
-
-	arg_17_3 = arg_17_3 or {}
-	arg_17_3.notOpenHelp = true
-	DungeonModel.instance.jumpEpisodeId = arg_17_3.episodeId
-
-	function var_17_2.openFunction()
-		arg_17_0:openDungeonChapterView(arg_17_3, true)
-	end
-
-	var_17_2.waitOpenViewName = arg_17_0:getDungeonChapterViewName(arg_17_1)
-
-	table.insert(var_17_1, var_17_2)
-
-	if not arg_17_5 then
-		local var_17_3 = {
-			openFunction = function()
-				arg_17_0:generateLevelViewParam(arg_17_2, arg_17_4)
-			end
-		}
-
-		table.insert(var_17_1, var_17_3)
-	end
-
-	module_views_preloader.DungeonChapterAndLevelView(function()
-		OpenMultiView.openView(var_17_1)
-	end, arg_17_1, var_17_0)
 
 	return var_17_0
 end
 
-function var_0_0.generateLevelViewParam(arg_21_0, arg_21_1, arg_21_2, arg_21_3)
-	local var_21_0
-	local var_21_1 = DungeonModel.instance:getEpisodeInfo(arg_21_1.id) or nil
+function var_0_0.jumpChapterAndLevel(arg_18_0, arg_18_1, arg_18_2, arg_18_3, arg_18_4, arg_18_5)
+	local var_18_0 = arg_18_0:generateLevelViewParam(arg_18_2, arg_18_4, true)
+	local var_18_1 = {}
+	local var_18_2 = {}
 
-	if not var_21_1 then
-		return var_21_0
+	arg_18_3 = arg_18_3 or {}
+	arg_18_3.notOpenHelp = true
+	DungeonModel.instance.jumpEpisodeId = arg_18_3.episodeId
+
+	function var_18_2.openFunction()
+		arg_18_0:openDungeonChapterView(arg_18_3, true)
 	end
 
-	local var_21_2, var_21_3 = DungeonConfig.instance:getChapterIndex(DungeonModel.instance.curChapterType, DungeonModel.instance.curLookChapterId)
-	local var_21_4 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(DungeonModel.instance.curLookChapterId, arg_21_1.id)
+	var_18_2.waitOpenViewName = arg_18_0:getDungeonChapterViewName(arg_18_1)
 
-	return (arg_21_0:enterLevelView({
-		arg_21_1,
-		var_21_1,
-		var_21_2,
-		var_21_4,
-		arg_21_2,
-		true
-	}, arg_21_3))
+	table.insert(var_18_1, var_18_2)
+
+	if not arg_18_5 then
+		local var_18_3 = {
+			openFunction = function()
+				arg_18_0:generateLevelViewParam(arg_18_2, arg_18_4)
+			end
+		}
+
+		table.insert(var_18_1, var_18_3)
+	end
+
+	module_views_preloader.DungeonChapterAndLevelView(function()
+		OpenMultiView.openView(var_18_1)
+	end, arg_18_1, var_18_0)
+
+	return var_18_0
 end
 
-function var_0_0.enterLevelView(arg_22_0, arg_22_1, arg_22_2)
+function var_0_0.generateLevelViewParam(arg_22_0, arg_22_1, arg_22_2, arg_22_3)
 	local var_22_0
-	local var_22_1 = arg_22_1[1]
+	local var_22_1 = DungeonModel.instance:getEpisodeInfo(arg_22_1.id) or nil
 
 	if not var_22_1 then
-		logError("找不到配置")
-
 		return var_22_0
 	end
 
-	if DungeonModel.isBattleEpisode(var_22_1) then
-		if not arg_22_2 then
-			var_0_0.instance:openDungeonLevelView(arg_22_1)
-		end
+	local var_22_2, var_22_3 = DungeonConfig.instance:getChapterIndex(DungeonModel.instance.curChapterType, DungeonModel.instance.curLookChapterId)
+	local var_22_4 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(DungeonModel.instance.curLookChapterId, arg_22_1.id)
 
-		var_22_0 = arg_22_0:getDungeonLevelViewName(var_22_1.chapterId)
-	elseif var_22_1.type == DungeonEnum.EpisodeType.Story then
-		if not arg_22_2 then
-			var_0_0.instance:openDungeonLevelView(arg_22_1)
-		end
-
-		var_22_0 = arg_22_0:getDungeonLevelViewName(var_22_1.chapterId)
-	elseif var_22_1.type == DungeonEnum.EpisodeType.Decrypt and (arg_22_2 or true) then
-		var_22_0 = ViewName.DungeonPuzzleChangeColorView
-	end
-
-	return var_22_0
+	return (arg_22_0:enterLevelView({
+		arg_22_1,
+		var_22_1,
+		var_22_2,
+		var_22_4,
+		arg_22_2,
+		true
+	}, arg_22_3))
 end
 
-function var_0_0.canJumpDungeonType(arg_23_0, arg_23_1)
-	local var_23_0 = true
-	local var_23_1 = DungeonEnum.ChapterType.Normal
+function var_0_0.enterLevelView(arg_23_0, arg_23_1, arg_23_2)
+	local var_23_0
+	local var_23_1 = arg_23_1[1]
 
-	if arg_23_1 == JumpEnum.DungeonChapterType.Gold then
-		var_23_1 = DungeonEnum.ChapterType.Gold
-		var_23_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.GainDungeon)
-	elseif arg_23_1 == JumpEnum.DungeonChapterType.Resource then
-		var_23_1 = DungeonEnum.ChapterType.Break
-		var_23_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.ResDungeon)
-	elseif arg_23_1 == JumpEnum.DungeonChapterType.WeekWalk then
-		var_23_1 = DungeonEnum.ChapterType.WeekWalk
-		var_23_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk)
-	elseif arg_23_1 == JumpEnum.DungeonChapterType.Explore then
-		var_23_1 = DungeonEnum.ChapterType.Explore
-		var_23_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Explore)
+	if not var_23_1 then
+		logError("找不到配置")
+
+		return var_23_0
 	end
 
-	if var_23_0 and DungeonModel.instance:getChapterListOpenTimeValid(var_23_1) then
+	if DungeonModel.isBattleEpisode(var_23_1) then
+		if not arg_23_2 then
+			var_0_0.instance:openDungeonLevelView(arg_23_1)
+		end
+
+		var_23_0 = arg_23_0:getDungeonLevelViewName(var_23_1.chapterId)
+	elseif var_23_1.type == DungeonEnum.EpisodeType.Story then
+		if not arg_23_2 then
+			var_0_0.instance:openDungeonLevelView(arg_23_1)
+		end
+
+		var_23_0 = arg_23_0:getDungeonLevelViewName(var_23_1.chapterId)
+	elseif var_23_1.type == DungeonEnum.EpisodeType.Decrypt and (arg_23_2 or true) then
+		var_23_0 = ViewName.DungeonPuzzleChangeColorView
+	end
+
+	return var_23_0
+end
+
+function var_0_0.canJumpDungeonType(arg_24_0, arg_24_1)
+	local var_24_0 = true
+	local var_24_1 = DungeonEnum.ChapterType.Normal
+
+	if arg_24_1 == JumpEnum.DungeonChapterType.Gold then
+		var_24_1 = DungeonEnum.ChapterType.Gold
+		var_24_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.GainDungeon)
+	elseif arg_24_1 == JumpEnum.DungeonChapterType.Resource then
+		var_24_1 = DungeonEnum.ChapterType.Break
+		var_24_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.ResDungeon)
+	elseif arg_24_1 == JumpEnum.DungeonChapterType.WeekWalk then
+		var_24_1 = DungeonEnum.ChapterType.WeekWalk
+		var_24_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk)
+	elseif arg_24_1 == JumpEnum.DungeonChapterType.Explore then
+		var_24_1 = DungeonEnum.ChapterType.Explore
+		var_24_0 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Explore)
+	end
+
+	if var_24_0 and DungeonModel.instance:getChapterListOpenTimeValid(var_24_1) then
 		return true
 	end
 
 	return false
 end
 
-function var_0_0.canJumpDungeonChapter(arg_24_0, arg_24_1)
-	local var_24_0 = DungeonConfig.instance:getChapterCO(arg_24_1)
+function var_0_0.canJumpDungeonChapter(arg_25_0, arg_25_1)
+	local var_25_0 = DungeonConfig.instance:getChapterCO(arg_25_1)
 
-	if not var_24_0 then
+	if not var_25_0 then
 		return false
 	end
 
-	local var_24_1 = var_24_0.type
-	local var_24_2 = JumpEnum.DungeonChapterType.Story
-	local var_24_3 = true
+	local var_25_1 = var_25_0.type
+	local var_25_2 = JumpEnum.DungeonChapterType.Story
+	local var_25_3 = true
 
-	if var_24_1 == DungeonEnum.ChapterType.Gold or var_24_1 == DungeonEnum.ChapterType.Exp or var_24_1 == DungeonEnum.ChapterType.Equip then
-		var_24_2 = JumpEnum.DungeonChapterType.Gold
+	if var_25_1 == DungeonEnum.ChapterType.Gold or var_25_1 == DungeonEnum.ChapterType.Exp or var_25_1 == DungeonEnum.ChapterType.Equip then
+		var_25_2 = JumpEnum.DungeonChapterType.Gold
 
-		if var_24_1 == DungeonEnum.ChapterType.Gold then
-			var_24_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.GoldDungeon)
-		elseif var_24_1 == DungeonEnum.ChapterType.Exp then
-			var_24_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.ExperienceDungeon)
-		elseif var_24_1 == DungeonEnum.ChapterType.Equip then
-			var_24_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.EquipDungeon)
-		elseif var_24_1 == DungeonEnum.ChapterType.Buildings then
-			var_24_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Buildings)
+		if var_25_1 == DungeonEnum.ChapterType.Gold then
+			var_25_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.GoldDungeon)
+		elseif var_25_1 == DungeonEnum.ChapterType.Exp then
+			var_25_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.ExperienceDungeon)
+		elseif var_25_1 == DungeonEnum.ChapterType.Equip then
+			var_25_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.EquipDungeon)
+		elseif var_25_1 == DungeonEnum.ChapterType.Buildings then
+			var_25_3 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Buildings)
 		end
-	elseif var_24_1 == DungeonEnum.ChapterType.Break then
-		var_24_2 = JumpEnum.DungeonChapterType.Resource
+	elseif var_25_1 == DungeonEnum.ChapterType.Break then
+		var_25_2 = JumpEnum.DungeonChapterType.Resource
 	end
 
-	if arg_24_0:canJumpDungeonType(var_24_2) and var_24_3 and not DungeonModel.instance:chapterIsLock(arg_24_1) and DungeonModel.instance:getChapterOpenTimeValid(var_24_0) then
+	if arg_25_0:canJumpDungeonType(var_25_2) and var_25_3 and not DungeonModel.instance:chapterIsLock(arg_25_1) and DungeonModel.instance:getChapterOpenTimeValid(var_25_0) then
 		return true
 	end
 
 	return false
 end
 
-function var_0_0.openDungeonEquipEntryView(arg_25_0, arg_25_1, arg_25_2)
-	ViewMgr.instance:openView(ViewName.DungeonEquipEntryView, arg_25_1, arg_25_2)
+function var_0_0.openDungeonEquipEntryView(arg_26_0, arg_26_1, arg_26_2)
+	ViewMgr.instance:openView(ViewName.DungeonEquipEntryView, arg_26_1, arg_26_2)
 
 	return ViewName.DungeonEquipEntryView
 end
 
-function var_0_0.openDungeonView(arg_26_0, arg_26_1, arg_26_2)
-	ViewMgr.instance:openView(ViewName.DungeonView, arg_26_1, arg_26_2)
+function var_0_0.openDungeonView(arg_27_0, arg_27_1, arg_27_2)
+	ViewMgr.instance:openView(ViewName.DungeonView, arg_27_1, arg_27_2)
 
 	return ViewName.DungeonView
 end
 
-function var_0_0.openDungeonMapTaskView(arg_27_0, arg_27_1, arg_27_2)
-	ViewMgr.instance:openView(ViewName.DungeonMapTaskView, arg_27_1, arg_27_2)
+function var_0_0.openDungeonMapTaskView(arg_28_0, arg_28_1, arg_28_2)
+	ViewMgr.instance:openView(ViewName.DungeonMapTaskView, arg_28_1, arg_28_2)
 
 	return ViewName.DungeonMapTaskView
 end
 
-function var_0_0.openDungeonChapterView(arg_28_0, arg_28_1, arg_28_2)
-	if arg_28_1 and arg_28_1.chapterId then
-		DungeonModel.instance.curLookChapterId = arg_28_1.chapterId
+function var_0_0.openDungeonChapterView(arg_29_0, arg_29_1, arg_29_2)
+	if arg_29_1 and arg_29_1.chapterId then
+		DungeonModel.instance.curLookChapterId = arg_29_1.chapterId
 	end
 
-	local var_28_0 = DungeonConfig.instance:getChapterCO(arg_28_1.chapterId)
+	local var_29_0 = DungeonConfig.instance:getChapterCO(arg_29_1.chapterId)
 
-	if var_28_0.type == DungeonEnum.ChapterType.WeekWalk then
-		WeekWalkController.instance:openWeekWalkView(arg_28_1, arg_28_2)
+	if var_29_0.type == DungeonEnum.ChapterType.WeekWalk then
+		WeekWalkController.instance:openWeekWalkView(arg_29_1, arg_29_2)
 
 		return ViewName.WeekWalkView
-	elseif var_28_0.type == DungeonEnum.ChapterType.WeekWalk_2 then
-		WeekWalk_2Controller.instance:openWeekWalk_2HeartView(arg_28_1, arg_28_2)
+	elseif var_29_0.type == DungeonEnum.ChapterType.WeekWalk_2 then
+		WeekWalk_2Controller.instance:openWeekWalk_2HeartView(arg_29_1, arg_29_2)
 
 		return ViewName.WeekWalk_2HeartView
-	elseif var_28_0.type == DungeonEnum.ChapterType.Season or var_28_0.type == DungeonEnum.ChapterType.SeasonRetail or var_28_0.type == DungeonEnum.ChapterType.SeasonSpecial then
+	elseif var_29_0.type == DungeonEnum.ChapterType.Season or var_29_0.type == DungeonEnum.ChapterType.SeasonRetail or var_29_0.type == DungeonEnum.ChapterType.SeasonSpecial then
 		Activity104Controller.instance:openSeasonMainView()
 
 		return ViewName.SeasonMainView
-	elseif var_28_0.type == DungeonEnum.ChapterType.Season123 or var_28_0.type == DungeonEnum.ChapterType.Season123Retail then
+	elseif var_29_0.type == DungeonEnum.ChapterType.Season123 or var_29_0.type == DungeonEnum.ChapterType.Season123Retail then
 		Season123Controller.instance:openMainViewFromFightScene()
 
 		return Season123Controller.instance:getEpisodeListViewName()
-	elseif var_28_0.id == HeroInvitationEnum.ChapterId then
-		arg_28_0._lastChapterId = arg_28_1.chapterId
+	elseif var_29_0.id == HeroInvitationEnum.ChapterId then
+		arg_29_0._lastChapterId = arg_29_1.chapterId
 
-		DungeonModel.instance:changeCategory(var_28_0.type, false)
+		DungeonModel.instance:changeCategory(var_29_0.type, false)
 		HeroInvitationRpc.instance:sendGetHeroInvitationInfoRequest()
-		ViewMgr.instance:openView(ViewName.HeroInvitationDungeonMapView, arg_28_1, arg_28_2)
+		ViewMgr.instance:openView(ViewName.HeroInvitationDungeonMapView, arg_29_1, arg_29_2)
 
 		return ViewName.HeroInvitationDungeonMapView
 	end
 
-	arg_28_0._lastChapterId = arg_28_1.chapterId
+	arg_29_0._lastChapterId = arg_29_1.chapterId
 
-	DungeonModel.instance:changeCategory(var_28_0.type, false)
-	ViewMgr.instance:openView(ViewName.DungeonMapView, arg_28_1, arg_28_2)
+	DungeonModel.instance:changeCategory(var_29_0.type, false)
+	ViewMgr.instance:openView(ViewName.DungeonMapView, arg_29_1, arg_29_2)
 
 	return ViewName.DungeonMapView
 end
 
-function var_0_0.getDungeonChapterViewName(arg_29_0, arg_29_1)
-	if arg_29_1 == HeroInvitationEnum.ChapterId then
+function var_0_0.getDungeonChapterViewName(arg_30_0, arg_30_1)
+	if arg_30_1 == HeroInvitationEnum.ChapterId then
 		return ViewName.HeroInvitationDungeonMapView
 	end
 
 	return ViewName.DungeonMapView
 end
 
-function var_0_0.getDungeonLevelViewName(arg_30_0, arg_30_1)
+function var_0_0.getDungeonLevelViewName(arg_31_0, arg_31_1)
 	return ViewName.DungeonMapLevelView
 end
 
-function var_0_0.openDungeonCumulativeRewardsView(arg_31_0, arg_31_1, arg_31_2)
-	ViewMgr.instance:openView(ViewName.DungeonCumulativeRewardsView, arg_31_1, arg_31_2)
+function var_0_0.openDungeonCumulativeRewardsView(arg_32_0, arg_32_1, arg_32_2)
+	ViewMgr.instance:openView(ViewName.DungeonCumulativeRewardsView, arg_32_1, arg_32_2)
 end
 
-function var_0_0.openDungeonLevelView(arg_32_0, arg_32_1, arg_32_2)
+function var_0_0.openDungeonLevelView(arg_33_0, arg_33_1, arg_33_2)
 	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.SkipShowDungeonMapLevelView) then
 		GuideModel.instance:setFlag(GuideModel.GuideFlag.SkipShowDungeonMapLevelView, nil)
 
 		return
 	end
 
-	local var_32_0 = arg_32_1[1]
+	local var_33_0 = arg_33_1[1]
 
-	DungeonModel.instance.curLookEpisodeId = var_32_0.id
+	DungeonModel.instance.curLookEpisodeId = var_33_0.id
 
-	ViewMgr.instance:openView(ViewName.DungeonMapLevelView, arg_32_1, arg_32_2)
+	ViewMgr.instance:openView(ViewName.DungeonMapLevelView, arg_33_1, arg_33_2)
 end
 
-function var_0_0.openDungeonMonsterView(arg_33_0, arg_33_1, arg_33_2)
-	ViewMgr.instance:openView(ViewName.DungeonMonsterView, arg_33_1, arg_33_2)
+function var_0_0.openDungeonMonsterView(arg_34_0, arg_34_1, arg_34_2)
+	ViewMgr.instance:openView(ViewName.DungeonMonsterView, arg_34_1, arg_34_2)
 end
 
-function var_0_0.openDungeonRewardView(arg_34_0, arg_34_1, arg_34_2)
-	ViewMgr.instance:openView(ViewName.DungeonRewardView, arg_34_1, arg_34_2)
+function var_0_0.openDungeonRewardView(arg_35_0, arg_35_1, arg_35_2)
+	ViewMgr.instance:openView(ViewName.DungeonRewardView, arg_35_1, arg_35_2)
 end
 
-function var_0_0.openDungeonElementRewardView(arg_35_0, arg_35_1, arg_35_2)
-	ViewMgr.instance:openView(ViewName.DungeonElementRewardView, arg_35_1, arg_35_2)
+function var_0_0.openDungeonElementRewardView(arg_36_0, arg_36_1, arg_36_2)
+	ViewMgr.instance:openView(ViewName.DungeonElementRewardView, arg_36_1, arg_36_2)
 end
 
-function var_0_0.openDungeonStoryView(arg_36_0, arg_36_1, arg_36_2)
-	ViewMgr.instance:openView(ViewName.DungeonStoryView, arg_36_1, arg_36_2)
+function var_0_0.openDungeonStoryView(arg_37_0, arg_37_1, arg_37_2)
+	ViewMgr.instance:openView(ViewName.DungeonStoryView, arg_37_1, arg_37_2)
 end
 
-function var_0_0.onStartLevelOrStoryChange(arg_37_0)
+function var_0_0.onStartLevelOrStoryChange(arg_38_0)
 	DungeonModel.instance:startCheckUnlockChapter()
-	arg_37_0:_onStartCheckUnlockContent()
+	arg_38_0:_onStartCheckUnlockContent()
 end
 
-function var_0_0.onEndLevelOrStoryChange(arg_38_0)
+function var_0_0.onEndLevelOrStoryChange(arg_39_0)
 	DungeonModel.instance:endCheckUnlockChapter()
-	arg_38_0:_onEndCheckUnlockContent()
+	arg_39_0:_onEndCheckUnlockContent()
 end
 
-function var_0_0._onStartCheckUnlockContent(arg_39_0)
+function var_0_0._onStartCheckUnlockContent(arg_40_0)
 	if not DungeonModel.instance.curSendEpisodeId then
 		return
 	end
 
-	arg_39_0._hasAllPass = DungeonModel.instance:hasPassLevelAndStory(DungeonModel.instance.curSendEpisodeId)
+	arg_40_0._hasAllPass = DungeonModel.instance:hasPassLevelAndStory(DungeonModel.instance.curSendEpisodeId)
 end
 
-function var_0_0._onEndCheckUnlockContent(arg_40_0)
+function var_0_0._onEndCheckUnlockContent(arg_41_0)
 	if not DungeonModel.instance.curSendEpisodeId then
 		return
 	end
 
-	local var_40_0 = DungeonModel.instance:hasPassLevelAndStory(DungeonModel.instance.curSendEpisodeId)
+	local var_41_0 = DungeonModel.instance:hasPassLevelAndStory(DungeonModel.instance.curSendEpisodeId)
 
-	if var_40_0 and var_40_0 ~= arg_40_0._hasAllPass then
+	if var_41_0 and var_41_0 ~= arg_41_0._hasAllPass then
 		var_0_0.instance:showUnlockContentToast(DungeonModel.instance.curSendEpisodeId)
 	end
 end
 
-function var_0_0.showUnlockContentToast(arg_41_0, arg_41_1)
-	local var_41_0 = DungeonChapterUnlockItem.getUnlockContentList(arg_41_1, true)
+function var_0_0.showUnlockContentToast(arg_42_0, arg_42_1)
+	local var_42_0 = DungeonChapterUnlockItem.getUnlockContentList(arg_42_1, true)
 
-	for iter_41_0, iter_41_1 in ipairs(var_41_0) do
-		if DungeonConfig.instance:getChapterCO(lua_episode.configDict[arg_41_1].chapterId).type ~= DungeonEnum.ChapterType.TeachNote then
-			GameFacade.showToast(ToastEnum.IconId, iter_41_1)
+	for iter_42_0, iter_42_1 in ipairs(var_42_0) do
+		if DungeonConfig.instance:getChapterCO(lua_episode.configDict[arg_42_1].chapterId).type ~= DungeonEnum.ChapterType.TeachNote then
+			GameFacade.showToast(ToastEnum.IconId, iter_42_1)
 		end
 	end
 end
 
-function var_0_0.needShowDungeonView(arg_42_0)
+function var_0_0.needShowDungeonView(arg_43_0)
 	if not DungeonModel.instance.curSendEpisodeId then
 		return
 	end
 
-	local var_42_0 = DungeonConfig.instance:getEpisodeCO(DungeonModel.instance.curSendEpisodeId)
+	local var_43_0 = DungeonConfig.instance:getEpisodeCO(DungeonModel.instance.curSendEpisodeId)
 
-	if var_42_0 then
-		local var_42_1 = DungeonConfig.instance:getChapterCO(var_42_0.chapterId)
+	if var_43_0 then
+		local var_43_1 = DungeonConfig.instance:getChapterCO(var_43_0.chapterId)
 
-		if var_42_1 and var_42_1.type == DungeonEnum.ChapterType.Newbie then
+		if var_43_1 and var_43_1.type == DungeonEnum.ChapterType.Newbie then
 			return
 		end
 
@@ -549,7 +558,7 @@ function var_0_0.needShowDungeonView(arg_42_0)
 			return
 		end
 
-		if var_42_1.type == DungeonEnum.ChapterType.DreamTailNormal or var_42_1.type == DungeonEnum.ChapterType.DreamTailHard then
+		if var_43_1.type == DungeonEnum.ChapterType.DreamTailNormal or var_43_1.type == DungeonEnum.ChapterType.DreamTailHard then
 			return true
 		end
 
@@ -559,11 +568,11 @@ function var_0_0.needShowDungeonView(arg_42_0)
 			return
 		end
 
-		if var_42_0.type == DungeonEnum.EpisodeType.Dog then
+		if var_43_0.type == DungeonEnum.EpisodeType.Dog then
 			return
 		end
 
-		if var_42_0.type == DungeonEnum.EpisodeType.RoleStoryChallenge and not RoleStoryModel.instance:checkActStoryOpen() then
+		if var_43_0.type == DungeonEnum.EpisodeType.RoleStoryChallenge and not RoleStoryModel.instance:checkActStoryOpen() then
 			return
 		end
 
@@ -571,67 +580,7 @@ function var_0_0.needShowDungeonView(arg_42_0)
 	end
 end
 
-function var_0_0.enterTeachNote(arg_43_0, arg_43_1)
-	if not arg_43_1 then
-		return nil
-	end
-
-	local var_43_0 = DungeonConfig.instance:getEpisodeCO(arg_43_1)
-
-	if not var_43_0 then
-		return nil
-	end
-
-	if DungeonConfig.instance:getChapterCO(var_43_0.chapterId).type ~= DungeonEnum.ChapterType.TeachNote then
-		return nil
-	end
-
-	if not TeachNoteModel.instance:isTeachNoteEnterFight() then
-		return
-	else
-		if TeachNoteModel.instance:isDetailEnter() and DungeonModel.instance:hasPassLevel(arg_43_1) then
-			return
-		end
-
-		DungeonModel.instance.curLookChapterId = var_43_0.chapterId
-	end
-
-	arg_43_0:enterDungeonView(true)
-
-	if TeachNoteModel.instance:isTeachNoteChapter(DungeonModel.instance.curLookChapterId) then
-		DungeonModel.instance.curSendEpisodeId = DungeonModel.instance.curLookEpisodeIdId
-
-		if TeachNoteModel.instance:isTeachNoteEnterFight() then
-			arg_43_0:openDungeonChapterView({
-				chapterId = arg_43_0._lastChapterId
-			}, true)
-
-			if TeachNoteModel.instance:isDetailEnter() then
-				TeachNoteModel.instance:setTeachNoteEnterFight(false)
-
-				return TeachNoteController.instance:enterTeachNoteDetailView(arg_43_1)
-			else
-				TeachNoteModel.instance:setTeachNoteEnterFight(false)
-
-				return TeachNoteController.instance:enterTeachNoteView(arg_43_1)
-			end
-		else
-			if not arg_43_0._lastChapterId then
-				arg_43_0._lastChapterId = 101
-			end
-
-			return arg_43_0:openDungeonChapterView({
-				chapterId = arg_43_0._lastChapterId
-			}, true)
-		end
-	else
-		return arg_43_0:openDungeonChapterView({
-			chapterId = DungeonModel.instance.curLookChapterId
-		}, true)
-	end
-end
-
-function var_0_0.enterSpecialEquipEpisode(arg_44_0, arg_44_1)
+function var_0_0.enterTeachNote(arg_44_0, arg_44_1)
 	if not arg_44_1 then
 		return nil
 	end
@@ -642,39 +591,99 @@ function var_0_0.enterSpecialEquipEpisode(arg_44_0, arg_44_1)
 		return nil
 	end
 
-	if var_44_0.type ~= DungeonEnum.EpisodeType.SpecialEquip then
+	if DungeonConfig.instance:getChapterCO(var_44_0.chapterId).type ~= DungeonEnum.ChapterType.TeachNote then
 		return nil
 	end
 
-	local var_44_1 = DungeonChapterListModel.instance:getOpenTimeValidEquipChapterId()
-	local var_44_2 = DungeonConfig.instance:getChapterCO(var_44_1)
-	local var_44_3 = var_44_2.type
-
-	DungeonModel.instance:changeCategory(var_44_3, true)
-
-	local var_44_4 = arg_44_0:enterDungeonView()
-
-	if DungeonModel.instance:getChapterOpenTimeValid(var_44_2) then
-		var_44_4 = arg_44_0:openDungeonChapterView({
-			chapterId = var_44_1
-		}, true)
-
-		if DungeonMapModel.instance:isUnlockSpChapter(var_44_0.chapterId) then
-			var_44_4 = arg_44_0:openDungeonEquipEntryView(var_44_0.chapterId)
+	if not TeachNoteModel.instance:isTeachNoteEnterFight() then
+		return
+	else
+		if TeachNoteModel.instance:isDetailEnter() and DungeonModel.instance:hasPassLevel(arg_44_1) then
+			return
 		end
+
+		DungeonModel.instance.curLookChapterId = var_44_0.chapterId
 	end
 
-	return var_44_4
+	arg_44_0:enterDungeonView(true)
+
+	if TeachNoteModel.instance:isTeachNoteChapter(DungeonModel.instance.curLookChapterId) then
+		DungeonModel.instance.curSendEpisodeId = DungeonModel.instance.curLookEpisodeIdId
+
+		if TeachNoteModel.instance:isTeachNoteEnterFight() then
+			arg_44_0:openDungeonChapterView({
+				chapterId = arg_44_0._lastChapterId
+			}, true)
+
+			if TeachNoteModel.instance:isDetailEnter() then
+				TeachNoteModel.instance:setTeachNoteEnterFight(false)
+
+				return TeachNoteController.instance:enterTeachNoteDetailView(arg_44_1)
+			else
+				TeachNoteModel.instance:setTeachNoteEnterFight(false)
+
+				return TeachNoteController.instance:enterTeachNoteView(arg_44_1)
+			end
+		else
+			if not arg_44_0._lastChapterId then
+				arg_44_0._lastChapterId = 101
+			end
+
+			return arg_44_0:openDungeonChapterView({
+				chapterId = arg_44_0._lastChapterId
+			}, true)
+		end
+	else
+		return arg_44_0:openDungeonChapterView({
+			chapterId = DungeonModel.instance.curLookChapterId
+		}, true)
+	end
 end
 
-function var_0_0.enterVerisonActivity(arg_45_0, arg_45_1)
+function var_0_0.enterSpecialEquipEpisode(arg_45_0, arg_45_1)
+	if not arg_45_1 then
+		return nil
+	end
+
 	local var_45_0 = DungeonConfig.instance:getEpisodeCO(arg_45_1)
 
 	if not var_45_0 then
 		return nil
 	end
 
-	if var_45_0.type == DungeonEnum.EpisodeType.Meilanni then
+	if var_45_0.type ~= DungeonEnum.EpisodeType.SpecialEquip then
+		return nil
+	end
+
+	local var_45_1 = DungeonChapterListModel.instance:getOpenTimeValidEquipChapterId()
+	local var_45_2 = DungeonConfig.instance:getChapterCO(var_45_1)
+	local var_45_3 = var_45_2.type
+
+	DungeonModel.instance:changeCategory(var_45_3, true)
+
+	local var_45_4 = arg_45_0:enterDungeonView()
+
+	if DungeonModel.instance:getChapterOpenTimeValid(var_45_2) then
+		var_45_4 = arg_45_0:openDungeonChapterView({
+			chapterId = var_45_1
+		}, true)
+
+		if DungeonMapModel.instance:isUnlockSpChapter(var_45_0.chapterId) then
+			var_45_4 = arg_45_0:openDungeonEquipEntryView(var_45_0.chapterId)
+		end
+	end
+
+	return var_45_4
+end
+
+function var_0_0.enterVerisonActivity(arg_46_0, arg_46_1)
+	local var_46_0 = DungeonConfig.instance:getEpisodeCO(arg_46_1)
+
+	if not var_46_0 then
+		return nil
+	end
+
+	if var_46_0.type == DungeonEnum.EpisodeType.Meilanni then
 		if MeilanniController.instance:activityIsEnd() then
 			ViewMgr.instance:openView(ViewName.MainView)
 
@@ -690,14 +699,14 @@ function var_0_0.enterVerisonActivity(arg_45_0, arg_45_1)
 	end
 end
 
-function var_0_0.enterRoleStoryChallenge(arg_46_0, arg_46_1)
-	local var_46_0 = DungeonConfig.instance:getEpisodeCO(arg_46_1)
+function var_0_0.enterRoleStoryChallenge(arg_47_0, arg_47_1)
+	local var_47_0 = DungeonConfig.instance:getEpisodeCO(arg_47_1)
 
-	if not var_46_0 then
+	if not var_47_0 then
 		return nil
 	end
 
-	if var_46_0.type == DungeonEnum.EpisodeType.RoleStoryChallenge then
+	if var_47_0.type == DungeonEnum.EpisodeType.RoleStoryChallenge then
 		RoleStoryController.instance:openRoleStoryDispatchMainView({
 			1
 		})
@@ -705,10 +714,10 @@ function var_0_0.enterRoleStoryChallenge(arg_46_0, arg_46_1)
 		return ViewName.RoleStoryDispatchMainView
 	end
 
-	if DungeonConfig.instance:getChapterCO(var_46_0.chapterId).type == DungeonEnum.ChapterType.RoleStory then
-		local var_46_1 = RoleStoryConfig.instance:getStoryIdByChapterId(var_46_0.chapterId)
+	if DungeonConfig.instance:getChapterCO(var_47_0.chapterId).type == DungeonEnum.ChapterType.RoleStory then
+		local var_47_1 = RoleStoryConfig.instance:getStoryIdByChapterId(var_47_0.chapterId)
 
-		if not RoleStoryModel.instance:isInResident(var_46_1) then
+		if not RoleStoryModel.instance:isInResident(var_47_1) then
 			RoleStoryController.instance:openRoleStoryDispatchMainView({
 				clickItem = true
 			})
@@ -718,183 +727,190 @@ function var_0_0.enterRoleStoryChallenge(arg_46_0, arg_46_1)
 	end
 end
 
-function var_0_0.showDungeonView(arg_47_0)
+function var_0_0.showDungeonView(arg_48_0)
 	DungeonModel.instance.lastSendEpisodeId = DungeonModel.instance.curSendEpisodeId
 
 	if not DungeonModel.instance.curSendEpisodeId then
 		return
 	end
 
-	local var_47_0 = DungeonModel.instance.curSendEpisodeId
+	local var_48_0 = DungeonModel.instance.curSendEpisodeId
 
 	DungeonModel.instance.curSendEpisodeId = nil
 
-	local var_47_1 = arg_47_0:enterSpecialEquipEpisode(var_47_0)
+	local var_48_1 = arg_48_0:enterSpecialEquipEpisode(var_48_0)
 
-	if var_47_1 then
-		return var_47_1
+	if var_48_1 then
+		return var_48_1
 	end
 
-	local var_47_2 = arg_47_0:enterTeachNote(var_47_0)
+	local var_48_2 = arg_48_0:enterTeachNote(var_48_0)
 
-	if var_47_2 then
-		return var_47_2
+	if var_48_2 then
+		return var_48_2
 	end
 
-	local var_47_3 = arg_47_0:enterVerisonActivity(var_47_0)
+	local var_48_3 = arg_48_0:enterVerisonActivity(var_48_0)
 
-	if var_47_3 then
-		return var_47_3
+	if var_48_3 then
+		return var_48_3
 	end
 
-	local var_47_4 = arg_47_0:enterRoleStoryChallenge(var_47_0)
+	local var_48_4 = arg_48_0:enterRoleStoryChallenge(var_48_0)
 
-	if var_47_4 then
-		return var_47_4
+	if var_48_4 then
+		return var_48_4
 	end
 
-	local var_47_5 = arg_47_0:enterFairyLandView(var_47_0)
+	local var_48_5 = arg_48_0:enterFairyLandView(var_48_0)
 
-	if var_47_5 then
-		return var_47_5
+	if var_48_5 then
+		return var_48_5
 	end
 
-	local var_47_6 = arg_47_0:enterTowerView(var_47_0)
+	local var_48_6 = arg_48_0:enterBossStoryView(var_48_0)
 
-	if var_47_6 then
-		return var_47_6
+	if var_48_6 then
+		return var_48_6
 	end
 
-	local var_47_7 = var_47_0 and DungeonConfig.instance:getElementEpisode(var_47_0)
-	local var_47_8 = false
+	local var_48_7 = arg_48_0:enterTowerView(var_48_0)
 
-	if var_47_7 then
-		DungeonMapModel.instance.lastElementBattleId = var_47_0
-		var_47_0 = var_47_7
-		var_47_8 = true
+	if var_48_7 then
+		return var_48_7
 	end
 
-	DungeonModel.instance.lastSendEpisodeId = var_47_0
+	local var_48_8 = var_48_0 and DungeonConfig.instance:getElementEpisode(var_48_0)
+	local var_48_9 = false
 
-	local var_47_9 = DungeonConfig.instance:getEpisodeCO(var_47_0)
+	if var_48_8 then
+		DungeonMapModel.instance.lastElementBattleId = var_48_0
+		var_48_0 = var_48_8
+		var_48_9 = true
+	end
 
-	if var_47_9 then
-		local var_47_10 = DungeonConfig.instance:getChapterCO(var_47_9.chapterId)
+	DungeonModel.instance.lastSendEpisodeId = var_48_0
 
-		if var_47_10 and var_47_10.type == DungeonEnum.ChapterType.Newbie then
+	local var_48_10 = DungeonConfig.instance:getEpisodeCO(var_48_0)
+
+	if var_48_10 then
+		local var_48_11 = DungeonConfig.instance:getChapterCO(var_48_10.chapterId)
+
+		if var_48_11 and var_48_11.type == DungeonEnum.ChapterType.Newbie then
 			return
 		end
 
-		if var_47_10.type == DungeonEnum.ChapterType.Explore then
-			return arg_47_0:enterDungeonView()
+		if var_48_11.type == DungeonEnum.ChapterType.Explore then
+			return arg_48_0:enterDungeonView()
 		end
 
-		local var_47_11 = var_47_10.type
+		local var_48_12 = var_48_11.type
 
-		if var_47_11 == DungeonEnum.ChapterType.Hard then
-			var_47_11 = DungeonEnum.ChapterType.Normal
+		if var_48_12 == DungeonEnum.ChapterType.Hard then
+			var_48_12 = DungeonEnum.ChapterType.Normal
 		end
 
-		DungeonModel.instance:changeCategory(var_47_11, true)
+		DungeonModel.instance:changeCategory(var_48_12, true)
 
-		local var_47_12 = arg_47_0:enterDungeonView()
+		local var_48_13 = arg_48_0:enterDungeonView()
 
-		if DungeonModel.instance:getChapterOpenTimeValid(var_47_10) then
-			var_47_12 = arg_47_0:openDungeonChapterView({
-				chapterId = var_47_10.id
+		if DungeonModel.instance:getChapterOpenTimeValid(var_48_11) then
+			var_48_13 = arg_48_0:openDungeonChapterView({
+				chapterId = var_48_11.id
 			}, true)
 
 			if DungeonModel.instance.curSendEpisodePass or GuideController.instance:isGuiding() then
 				-- block empty
-			elseif not var_47_8 and arg_47_0:_showLevelView(var_47_11) then
-				var_47_12 = var_0_0.instance:generateLevelViewParam(var_47_9, nil)
+			elseif not var_48_9 and arg_48_0:_showLevelView(var_48_12) then
+				var_48_13 = var_0_0.instance:generateLevelViewParam(var_48_10, nil)
 			end
 		end
 
-		return var_47_12
+		return var_48_13
 	end
 end
 
-function var_0_0._showLevelView(arg_48_0, arg_48_1)
-	return arg_48_1 ~= DungeonEnum.ChapterType.WeekWalk and arg_48_1 ~= DungeonEnum.ChapterType.Season and arg_48_1 ~= DungeonEnum.ChapterType.WeekWalk_2
+function var_0_0._showLevelView(arg_49_0, arg_49_1)
+	return arg_49_1 ~= DungeonEnum.ChapterType.WeekWalk and arg_49_1 ~= DungeonEnum.ChapterType.Season and arg_49_1 ~= DungeonEnum.ChapterType.WeekWalk_2
 end
 
-function var_0_0.onReceiveEndDungeonReply(arg_49_0, arg_49_1, arg_49_2)
-	if arg_49_1 ~= 0 then
+function var_0_0.onReceiveEndDungeonReply(arg_50_0, arg_50_1, arg_50_2)
+	if arg_50_1 ~= 0 then
 		return
 	end
 
-	local var_49_0 = {
-		dataList = arg_49_2.firstBonus
+	local var_50_0 = {
+		dataList = arg_50_2.firstBonus
 	}
 
-	if arg_49_0:isStoryDungeonType(arg_49_2.episodeId) and #arg_49_2.firstBonus > 0 then
-		MaterialRpc.instance:onReceiveMaterialChangePush(arg_49_1, var_49_0)
+	if arg_50_0:isStoryDungeonType(arg_50_2.episodeId) and #arg_50_2.firstBonus > 0 then
+		MaterialRpc.instance:onReceiveMaterialChangePush(arg_50_1, var_50_0)
 	end
 end
 
-function var_0_0.isStoryDungeonType(arg_50_0, arg_50_1)
-	local var_50_0 = DungeonConfig.instance:getEpisodeCO(arg_50_1)
+function var_0_0.isStoryDungeonType(arg_51_0, arg_51_1)
+	local var_51_0 = DungeonConfig.instance:getEpisodeCO(arg_51_1)
 
-	if var_50_0 and var_50_0.type == DungeonEnum.EpisodeType.Story then
+	if var_51_0 and var_51_0.type == DungeonEnum.EpisodeType.Story then
 		return true
 	end
 
 	return false
 end
 
-function var_0_0.getEpisodeName(arg_51_0)
-	local var_51_0 = arg_51_0.chapterId
-	local var_51_1 = lua_chapter.configDict[var_51_0]
-	local var_51_2 = arg_51_0.id
-	local var_51_3 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(var_51_0, var_51_2)
+function var_0_0.getEpisodeName(arg_52_0)
+	local var_52_0 = arg_52_0.chapterId
+	local var_52_1 = lua_chapter.configDict[var_52_0]
+	local var_52_2 = arg_52_0.id
+	local var_52_3 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(var_52_0, var_52_2)
 
-	if arg_51_0.type == DungeonEnum.EpisodeType.Sp then
-		return "SP-" .. var_51_3
+	if arg_52_0.type == DungeonEnum.EpisodeType.Sp then
+		return "SP-" .. var_52_3
 	else
-		return (string.format("%s-%s", var_51_1.chapterIndex, var_51_3))
+		return (string.format("%s-%s", var_52_1.chapterIndex, var_52_3))
 	end
 end
 
-function var_0_0.openDungeonChangeMapStatusView(arg_52_0, arg_52_1)
-	ViewMgr.instance:openView(ViewName.DungeonChangeMapStatusView, arg_52_1)
+function var_0_0.openDungeonChangeMapStatusView(arg_53_0, arg_53_1)
+	ViewMgr.instance:openView(ViewName.DungeonChangeMapStatusView, arg_53_1)
 end
 
-function var_0_0.openPutCubeGameView(arg_53_0, arg_53_1)
-	ViewMgr.instance:openView(ViewName.PutCubeGameView, arg_53_1)
+function var_0_0.openPutCubeGameView(arg_54_0, arg_54_1)
+	ViewMgr.instance:openView(ViewName.PutCubeGameView, arg_54_1)
 end
 
-function var_0_0.openOuijaGameView(arg_54_0, arg_54_1)
-	ViewMgr.instance:openView(ViewName.DungeonPuzzleOuijaView, arg_54_1)
+function var_0_0.openOuijaGameView(arg_55_0, arg_55_1)
+	ViewMgr.instance:openView(ViewName.DungeonPuzzleOuijaView, arg_55_1)
 end
 
-function var_0_0.queryBgm(arg_55_0, arg_55_1)
-	local var_55_0, var_55_1, var_55_2, var_55_3, var_55_4 = DungeonModel.instance:getChapterListTypes()
+function var_0_0.queryBgm(arg_56_0, arg_56_1)
+	local var_56_0, var_56_1, var_56_2, var_56_3, var_56_4 = DungeonModel.instance:getChapterListTypes()
 
-	if var_55_3 then
-		arg_55_1:setClearPauseBgm(true)
+	if var_56_3 then
+		arg_56_1:setClearPauseBgm(true)
 
 		return AudioBgmEnum.Layer.DungeonWeekWalk
 	end
 
-	arg_55_1:setClearPauseBgm(false)
+	arg_56_1:setClearPauseBgm(false)
+	AudioBgmManager.instance:modifyBgm(AudioBgmEnum.Layer.Dungeon, AudioEnum.UI.Play_UI_Slippage_Music, AudioEnum.UI.Stop_UIMusic)
 
 	return AudioBgmEnum.Layer.Dungeon
 end
 
-function var_0_0.enterFairyLandView(arg_56_0, arg_56_1)
-	if DungeonModel.instance.curSendEpisodePass and (arg_56_1 == 10712 or arg_56_1 == 718) and OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FairyLand) then
+function var_0_0.enterFairyLandView(arg_57_0, arg_57_1)
+	if DungeonModel.instance.curSendEpisodePass and (arg_57_1 == 10712 or arg_57_1 == 718) and OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FairyLand) then
 		if DungeonMapModel.instance:elementIsFinished(FairyLandEnum.ElementId) then
 			return
 		end
 
-		arg_56_0:enterDungeonView()
+		arg_57_0:enterDungeonView()
 
-		local var_56_0 = DungeonConfig.instance:getEpisodeCO(arg_56_1)
-		local var_56_1 = DungeonConfig.instance:getChapterCO(var_56_0.chapterId)
+		local var_57_0 = DungeonConfig.instance:getEpisodeCO(arg_57_1)
+		local var_57_1 = DungeonConfig.instance:getChapterCO(var_57_0.chapterId)
 
-		arg_56_0:openDungeonChapterView({
-			chapterId = var_56_1.id
+		arg_57_0:openDungeonChapterView({
+			chapterId = var_57_1.id
 		}, true)
 		FairyLandController.instance:openFairyLandView()
 
@@ -904,61 +920,123 @@ function var_0_0.enterFairyLandView(arg_56_0, arg_56_1)
 	end
 end
 
-function var_0_0.enterTowerView(arg_57_0, arg_57_1)
-	local var_57_0 = DungeonConfig.instance:getEpisodeCO(arg_57_1)
+function var_0_0.enterBossStoryView(arg_58_0, arg_58_1)
+	local var_58_0 = DungeonConfig.instance:getEpisodeCO(arg_58_1)
 
-	if not var_57_0 then
+	if var_58_0 and var_58_0.chapterId == DungeonEnum.ChapterId.BossStory then
+		local var_58_1 = 11023
+
+		DungeonModel.instance.lastSendEpisodeId = var_58_1
+
+		arg_58_0:enterDungeonView()
+
+		local var_58_2 = DungeonConfig.instance:getEpisodeCO(var_58_1)
+		local var_58_3 = DungeonConfig.instance:getChapterCO(var_58_2.chapterId)
+		local var_58_4 = arg_58_0:openDungeonChapterView({
+			chapterId = var_58_3.id
+		}, true)
+
+		if DungeonModel.instance:chapterIsPass(DungeonEnum.ChapterId.BossStory) then
+			return var_58_4
+		end
+
+		return VersionActivity2_8DungeonBossController.instance:openVersionActivity2_8BossStoryEnterView()
+	end
+end
+
+function var_0_0.enterTowerView(arg_59_0, arg_59_1)
+	local var_59_0 = DungeonConfig.instance:getEpisodeCO(arg_59_1)
+
+	if not var_59_0 then
 		return nil
 	end
 
-	local var_57_1
+	local var_59_1
 
-	if var_57_0.type == DungeonEnum.EpisodeType.TowerPermanent then
-		var_57_1 = {
+	if var_59_0.type == DungeonEnum.EpisodeType.TowerPermanent then
+		var_59_1 = {
 			jumpId = TowerEnum.JumpId.TowerPermanent
 		}
 	end
 
-	if var_57_0.type == DungeonEnum.EpisodeType.TowerBoss then
-		var_57_1 = {
+	if var_59_0.type == DungeonEnum.EpisodeType.TowerBoss then
+		var_59_1 = {
 			jumpId = TowerEnum.JumpId.TowerBoss
 		}
 
-		local var_57_2 = TowerModel.instance:getRecordFightParam()
+		local var_59_2 = TowerModel.instance:getRecordFightParam()
 
-		var_57_1.towerId = var_57_2 and var_57_2.towerId
+		var_59_1.towerId = var_59_2 and var_59_2.towerId
 
-		local var_57_3 = TowerModel.instance:getFightFinishParam()
+		local var_59_3 = TowerModel.instance:getFightFinishParam()
 
-		if var_57_3 and var_57_3.towerType == TowerEnum.TowerType.Boss then
-			var_57_1.passLayerId = var_57_3 and var_57_3.layerId
+		if var_59_3 and var_59_3.towerType == TowerEnum.TowerType.Boss then
+			var_59_1.passLayerId = var_59_3 and var_59_3.layerId
 		end
 	end
 
-	if var_57_0.type == DungeonEnum.EpisodeType.TowerLimited then
-		var_57_1 = {
+	if var_59_0.type == DungeonEnum.EpisodeType.TowerLimited then
+		var_59_1 = {
 			jumpId = TowerEnum.JumpId.TowerLimited
 		}
 	end
 
-	if var_57_0.type == DungeonEnum.EpisodeType.TowerBossTeach then
-		var_57_1 = {
+	if var_59_0.type == DungeonEnum.EpisodeType.TowerBossTeach then
+		var_59_1 = {
 			jumpId = TowerEnum.JumpId.TowerBossTeach
 		}
 
-		local var_57_4 = TowerModel.instance:getRecordFightParam()
+		local var_59_4 = TowerModel.instance:getRecordFightParam()
 
-		var_57_1.towerId = var_57_4 and var_57_4.towerId
+		var_59_1.towerId = var_59_4 and var_59_4.towerId
 	end
 
-	if var_57_1 then
+	if var_59_1 then
 		TowerModel.instance:clearFightFinishParam()
 		DungeonModel.instance:changeCategory(DungeonEnum.ChapterType.Normal)
-		arg_57_0:enterDungeonView()
-		TowerController.instance:openMainView(var_57_1)
+		arg_59_0:enterDungeonView()
+		TowerController.instance:openMainView(var_59_1)
 
 		return ViewName.TowerMainView
 	end
+end
+
+function var_0_0.closePreviewChapterDungeonMapViewActEnd(arg_60_0, arg_60_1)
+	if arg_60_1 ~= ViewName.DungeonMapView then
+		return true
+	end
+
+	local var_60_0 = DungeonModel.instance.curLookChapterId
+
+	if not var_60_0 then
+		return false
+	end
+
+	local var_60_1 = DungeonConfig.instance:getChapterCO(var_60_0)
+
+	if var_60_1 and var_60_1.eaActivityId ~= 0 and not DungeonMainStoryModel.instance:isPreviewChapter(var_60_0) then
+		return true
+	end
+
+	return false
+end
+
+function var_0_0.closePreviewChapterViewActEnd(arg_61_0, arg_61_1)
+	local var_61_0 = DungeonConfig.instance:getChapterCO(arg_61_1)
+
+	if not (var_61_0 and var_61_0.eaActivityId ~= 0) then
+		return false
+	end
+
+	if var_61_0.eaActivityId ~= arg_61_0 then
+		return false
+	end
+
+	if DungeonMainStoryModel.instance:isPreviewChapter(arg_61_1) then
+		return false
+	end
+
+	return true
 end
 
 var_0_0.instance = var_0_0.New()

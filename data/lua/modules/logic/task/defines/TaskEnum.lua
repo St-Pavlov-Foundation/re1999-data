@@ -29,6 +29,7 @@ var_0_0.TaskType = {
 	Activity145 = 28,
 	Activity106 = 8,
 	Novice = 4,
+	Activity194 = 58,
 	Activity142 = 27,
 	Activity134 = 25,
 	Activity119 = 14,

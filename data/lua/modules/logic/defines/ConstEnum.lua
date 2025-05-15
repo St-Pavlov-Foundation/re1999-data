@@ -115,5 +115,6 @@ var_0_0.RoomCritterNameLimit = 2503
 var_0_0.SeasonCardTipsDesc = 2505
 var_0_0.MainSceneChangeCD = 2506
 var_0_0.BpShowBonusLvs = 2601
+var_0_0.BPSkinFaceViewSkinId = 28124
 
 return var_0_0

@@ -1,0 +1,614 @@
+[
+  {
+    "optionId": 1000101,
+    "name": "快速前行",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#1",
+    "optionResultId": 1000201
+  },
+  {
+    "optionId": 1000102,
+    "name": "谨慎前行",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000202
+  },
+  {
+    "optionId": 1000103,
+    "name": "快速搜索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#1",
+    "optionResultId": 1000203
+  },
+  {
+    "optionId": 1000104,
+    "name": "仔细搜索",
+    "conditionDesc": "<color=#9C3E09>花费▩1%s回合</color>，完成后获取<color=#9C3E09>补充物资</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩1%s回合</color>，完成后行动力▩2%s\n推进<color=#9C3E09>探索目标</color>进度",
+    "optionRestriction": "",
+    "effect": "5#2",
+    "optionResultId": 1000204
+  },
+  {
+    "optionId": 1000105,
+    "name": "设置驻地",
+    "conditionDesc": "达成<color=#9C3E09>探索目标</color>",
+    "optionDesc": "达成<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10",
+    "optionResultId": 1000205
+  },
+  {
+    "optionId": 1000106,
+    "name": "安置队伍后出发",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#1",
+    "optionResultId": 1000206
+  },
+  {
+    "optionId": 1000109,
+    "name": "为企鹅包扎伤口",
+    "conditionDesc": "企鹅下方的地板<color=#9C3E09>似乎有什么东西</color>\n<color=#9C3E09>花费▩2%s回合</color>，达成<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>达成<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#1",
+    "optionResultId": 1000209
+  },
+  {
+    "optionId": 1000115,
+    "name": "思考如何修理它",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000215
+  },
+  {
+    "optionId": 1000116,
+    "name": "请莫莉德尔修理",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>获得一项<color=#9C3E09>新道具\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>，获得道具<color=#9C3E09>▩4%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000216
+  },
+  {
+    "optionId": 1000117,
+    "name": "花费人力快速搜索",
+    "conditionDesc": "解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-30",
+    "optionResultId": 1000217
+  },
+  {
+    "optionId": 1000118,
+    "name": "花费时间仔细搜索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000218
+  },
+  {
+    "optionId": 1000119,
+    "name": "请莫莉德尔修好控制台",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000219
+  },
+  {
+    "optionId": 1000120,
+    "name": "标记地点",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>达成<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>达成<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#3",
+    "optionResultId": 1000220
+  },
+  {
+    "optionId": 1000121,
+    "name": "前往探索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000221
+  },
+  {
+    "optionId": 1000123,
+    "name": "继续探索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000223
+  },
+  {
+    "optionId": 1000124,
+    "name": "视而不见",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000224
+  },
+  {
+    "optionId": 1000125,
+    "name": "检查行囊",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，获得一项<color=#9C3E09>新道具</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择，获得道具<color=#9C3E09>▩2%s</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30005",
+    "effect": "",
+    "optionResultId": 1000225
+  },
+  {
+    "optionId": 1000122,
+    "name": "拿取物资",
+    "conditionDesc": "获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩1%s",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000222
+  },
+  {
+    "optionId": 1000126,
+    "name": "前往探索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#3",
+    "optionResultId": 1000226
+  },
+  {
+    "optionId": 1000127,
+    "name": "视而不见",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000227
+  },
+  {
+    "optionId": 1000128,
+    "name": "收编队伍",
+    "conditionDesc": "获得一个<color=#9C3E09>小队成员</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "获得小队▩1%s，推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000228
+  },
+  {
+    "optionId": 1000129,
+    "name": "赠予物资",
+    "conditionDesc": "获得一项<color=#9C3E09>新道具</color>\n获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩1%s，获得道具<color=#9C3E09>▩3%s</color>",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000229
+  },
+  {
+    "optionId": 1000130,
+    "name": "稍作休息",
+    "conditionDesc": "获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩1%s",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000230
+  },
+  {
+    "optionId": 1000131,
+    "name": "派企鹅进行侦查",
+    "conditionDesc": "<color=#9C3E09>▩1%s、▩2%s</color>可选择\n<color=#9C3E09>花费▩4%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s、▩2%s</color>可选择\n<color=#9C3E09>花费▩4%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30003#30004",
+    "effect": "1#-20|5#2",
+    "optionResultId": 1000231
+  },
+  {
+    "optionId": 1000132,
+    "name": "将冻鱼储存起来",
+    "conditionDesc": "获取<color=#9C3E09>补充物资</color>\n达成<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "行动力▩1%s，达成<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000232
+  },
+  {
+    "optionId": 1000133,
+    "name": "请企鹅帮忙制作冻鱼",
+    "conditionDesc": "<color=#9C3E09>花费▩1%s回合</color>，完成后获取<color=#9C3E09>补充物资</color>\n达成<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩1%s回合</color>，完成后行动力▩2%s，达成<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "",
+    "effect": "5#2",
+    "optionResultId": 1000233
+  },
+  {
+    "optionId": 1000134,
+    "name": "快速探索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#2",
+    "optionResultId": 1000234
+  },
+  {
+    "optionId": 1000135,
+    "name": "小心探索",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000235
+  },
+  {
+    "optionId": 1000136,
+    "name": "破除冰面",
+    "conditionDesc": "<color=#9C3E09>除嚼嚼松果外的小队</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>\n",
+    "optionDesc": "<color=#9C3E09>除嚼嚼松果外的小队</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30004#30009",
+    "effect": "1#-30|5#2",
+    "optionResultId": 1000236
+  },
+  {
+    "optionId": 1000137,
+    "name": "与嚼嚼松果合作",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000237
+  },
+  {
+    "optionId": 1000138,
+    "name": "伏击重塑之手",
+    "conditionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10",
+    "optionResultId": 1000238
+  },
+  {
+    "optionId": 1000139,
+    "name": "设置观测点",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000239
+  },
+  {
+    "optionId": 1000140,
+    "name": "一次合作！",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000240
+  },
+  {
+    "optionId": 1000141,
+    "name": "视而不见",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000241
+  },
+  {
+    "optionId": 1000142,
+    "name": "拖住重塑之手",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000242
+  },
+  {
+    "optionId": 1000143,
+    "name": "吸引重塑之手",
+    "conditionDesc": "解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-30",
+    "optionResultId": 1000243
+  },
+  {
+    "optionId": 1000144,
+    "name": "伏击重塑之手",
+    "conditionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10",
+    "optionResultId": 1000244
+  },
+  {
+    "optionId": 1000145,
+    "name": "让莫莉德尔勘探",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "1#-20|5#3",
+    "optionResultId": 1000245
+  },
+  {
+    "optionId": 1000146,
+    "name": "让嚼嚼松果和企鹅们勘探",
+    "conditionDesc": "<color=#9C3E09>嚼嚼松果和企鹅们</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>嚼嚼松果和企鹅们</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30009#30004#30006",
+    "effect": "1#-10|5#2",
+    "optionResultId": 1000246
+  },
+  {
+    "optionId": 1000147,
+    "name": "开始行动",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000247
+  },
+  {
+    "optionId": 1000148,
+    "name": "设置观测点",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#2",
+    "optionResultId": 1000248
+  },
+  {
+    "optionId": 1000149,
+    "name": "吸引重塑之手",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10|5#4",
+    "optionResultId": 1000249
+  },
+  {
+    "optionId": 1000150,
+    "name": "稍事休息",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-20|5#2",
+    "optionResultId": 1000250
+  },
+  {
+    "optionId": 1000151,
+    "name": "伏击重塑之手",
+    "conditionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "",
+    "effect": "1#-10",
+    "optionResultId": 1000251
+  },
+  {
+    "optionId": 1000152,
+    "name": "出发探索",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-30|5#2",
+    "optionResultId": 1000252
+  },
+  {
+    "optionId": 1000153,
+    "name": "安置戴维德",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-30|5#2",
+    "optionResultId": 1000253
+  },
+  {
+    "optionId": 1000154,
+    "name": "安置伤员",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-30|5#1",
+    "optionResultId": 1000254
+  },
+  {
+    "optionId": 1000155,
+    "name": "安置伤员",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-30|5#1",
+    "optionResultId": 1000255
+  },
+  {
+    "optionId": 1000156,
+    "name": "安置戴维德",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-30|5#2",
+    "optionResultId": 1000256
+  },
+  {
+    "optionId": 1000157,
+    "name": "呼叫白手套队长",
+    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "5#1",
+    "optionResultId": 1000257
+  },
+  {
+    "optionId": 1000158,
+    "name": "将纸条拼好",
+    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "5#2|1#-10",
+    "optionResultId": 1000258
+  },
+  {
+    "optionId": 1000159,
+    "name": "请莫莉德尔将其恢复原状",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩2%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30002",
+    "effect": "5#1|1#-10",
+    "optionResultId": 1000259
+  },
+  {
+    "optionId": 1000160,
+    "name": "视而不见",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "1#30002#30006",
+    "effect": "",
+    "optionResultId": 1000260
+  },
+  {
+    "optionId": 1000161,
+    "name": "前往调查",
+    "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>推进<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "1#-10|5#1",
+    "optionResultId": 1000261
+  },
+  {
+    "optionId": 1000162,
+    "name": "无视",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "1#30002#30006",
+    "effect": "",
+    "optionResultId": 1000262
+  },
+  {
+    "optionId": 1000163,
+    "name": "查看戴维德留下的信息",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，获得一项<color=#9C3E09>新道具</color>\n达成<color=#9C3E09>额外探索目标</color>",
+    "optionDesc": "<color=#9C3E09>▩1%s</color>可选择，获得道具<color=#9C3E09>▩2%s</color>\n达成<color=#9C3E09>额外探索目标</color>",
+    "optionRestriction": "1#30008",
+    "effect": "",
+    "optionResultId": 1000263
+  },
+  {
+    "optionId": 1000169,
+    "name": "放弃通信",
+    "conditionDesc": "获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩3%s",
+    "optionRestriction": "1#30002#30006",
+    "effect": "",
+    "optionResultId": 1000269
+  },
+  {
+    "optionId": 1000164,
+    "name": "给予企鹅们1条冻鱼",
+    "conditionDesc": "失去道具<color=#9C3E09>▩3%s</color>，解锁一处<color=#9C3E09>新地点</color>",
+    "optionDesc": "失去道具<color=#9C3E09>▩3%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "2#-1#20006",
+    "optionResultId": 1000264
+  },
+  {
+    "optionId": 1000165,
+    "name": "无视它们",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "1#30002#30006",
+    "effect": "",
+    "optionResultId": 1000265
+  },
+  {
+    "optionId": 1000166,
+    "name": "绒毛公爵？？",
+    "conditionDesc": "听起来似乎是嚼嚼松果的企鹅朋友\n失去道具<color=#9C3E09>▩3%s</color>，解锁一处<color=#9C3E09>新地点</color>",
+    "optionDesc": "失去道具<color=#9C3E09>▩3%s</color>\n推进<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "2#-1#20006",
+    "optionResultId": 1000266
+  },
+  {
+    "optionId": 1000167,
+    "name": "无视这条信息",
+    "conditionDesc": "获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩4%s",
+    "optionRestriction": "1#30002#30006",
+    "effect": "",
+    "optionResultId": 1000267
+  },
+  {
+    "optionId": 1000168,
+    "name": "呼叫白手套队长",
+    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "optionRestriction": "1#30002#30006",
+    "effect": "5#1",
+    "optionResultId": 1000268
+  },
+  {
+    "optionId": 1000301,
+    "name": "进入帐篷获取物资",
+    "conditionDesc": "这可能比较危险，可能获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "行动力▩1%s",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000401
+  },
+  {
+    "optionId": 1000302,
+    "name": "使用工具从外侧获取物资",
+    "conditionDesc": "这可能比较稳妥，<color=#9C3E09>花费▩1%s回合</color>，可能获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "<color=#9C3E09>花费▩1%s回合</color>，行动力▩2%s",
+    "optionRestriction": "",
+    "effect": "5#2",
+    "optionResultId": 1000402
+  },
+  {
+    "optionId": 1000303,
+    "name": "持续观察",
+    "conditionDesc": "我们不知道重塑之手在打什么主意",
+    "optionDesc": "行动力▩1%s",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000403
+  },
+  {
+    "optionId": 1000304,
+    "name": "视而不见",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000404
+  },
+  {
+    "optionId": 1000305,
+    "name": "稍事休息",
+    "conditionDesc": "<color=#9C3E09>花费▩1%s回合</color>，获取<color=#9C3E09>补充物资</color>",
+    "optionDesc": "<color=#9C3E09>花费▩1%s回合</color>，行动力▩2%s",
+    "optionRestriction": "",
+    "effect": "5#2",
+    "optionResultId": 1000405
+  },
+  {
+    "optionId": 1000306,
+    "name": "继续探索",
+    "conditionDesc": "结束该事件",
+    "optionDesc": "结束该事件",
+    "optionRestriction": "",
+    "effect": "",
+    "optionResultId": 1000406
+  }
+]

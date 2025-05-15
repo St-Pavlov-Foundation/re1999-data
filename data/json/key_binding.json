@@ -409,8 +409,8 @@
     "hud": 4,
     "id": 5,
     "description": "查看角色信任对话",
-    "key": "F4",
-    "editable": 1
+    "key": "",
+    "editable": 0
   },
   {
     "hud": 4,

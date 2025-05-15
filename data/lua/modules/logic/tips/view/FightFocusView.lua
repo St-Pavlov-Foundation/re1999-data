@@ -24,6 +24,8 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._goresistance = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/enemy/#go_resistance")
 	arg_1_0._txthp = gohelper.findChildText(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/#txt_hp")
 	arg_1_0._sliderhp = gohelper.findChildSlider(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/#slider_hp")
+	arg_1_0.reduceHpGo = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/reducehp")
+	arg_1_0.reduceHpImage = arg_1_0.reduceHpGo:GetComponent(gohelper.Type_Image)
 	arg_1_0._goattributeroot = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_attribute_root")
 	arg_1_0._btnattribute = gohelper.findChildButton(arg_1_0.viewGO, "fightinfocontainer/#go_attribute_root/#btn_attribute")
 	arg_1_0._scrollbuff = gohelper.findChildScrollRect(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/#scroll_buff")
@@ -76,6 +78,18 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0.go_fetter = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/go_fetter")
 	arg_1_0.go_quality = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/go_quality")
 	arg_1_0.go_collection = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_infoView/content/player/#go_collection")
+	arg_1_0.skillTipsRoot = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/skilltipview")
+
+	gohelper.setAsLastSibling(arg_1_0.skillTipsRoot)
+
+	arg_1_0.goSurvivalHealth = gohelper.findChild(arg_1_0.viewGO, "fightinfocontainer/#go_survivalHealth")
+	arg_1_0.rectSurvivalHealth = arg_1_0.goSurvivalHealth:GetComponent(gohelper.Type_RectTransform)
+
+	gohelper.setActive(arg_1_0.goSurvivalHealth, false)
+
+	arg_1_0.txtHealth = gohelper.findChildText(arg_1_0.viewGO, "fightinfocontainer/#go_survivalHealth/#txt_survivalHealth")
+	arg_1_0.imageHealth = gohelper.findChildImage(arg_1_0.viewGO, "fightinfocontainer/#go_survivalHealth/#image_icon")
+	arg_1_0.healthClick = gohelper.findChildClickWithDefaultAudio(arg_1_0.viewGO, "fightinfocontainer/#go_survivalHealth/#btn_click")
 
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()
@@ -91,6 +105,7 @@ function var_0_0.addEvents(arg_2_0)
 	arg_2_0._btnSwitchEnemy:AddClickListener(arg_2_0._onSwitchEnemy, arg_2_0)
 	arg_2_0._btnSwitchMember:AddClickListener(arg_2_0._onSwitchMember, arg_2_0)
 	arg_2_0._btnBuffMore:AddClickListener(arg_2_0._onBtnBuffMore, arg_2_0)
+	arg_2_0.healthClick:AddClickListener(arg_2_0.onClickHealth, arg_2_0)
 	arg_2_0:com_registFightEvent(FightEvent.onReceiveEntityInfoReply, arg_2_0._onReceiveEntityInfoReply)
 end
 
@@ -104,6 +119,7 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btnSwitchEnemy:RemoveClickListener()
 	arg_3_0._btnSwitchMember:RemoveClickListener()
 	arg_3_0._btnBuffMore:RemoveClickListener()
+	arg_3_0.healthClick:RemoveClickListener()
 	arg_3_0:_releasePassiveSkillGOs()
 end
 
@@ -559,6 +575,7 @@ function var_0_0._refreshInfo(arg_25_0, arg_25_1)
 	arg_25_0:_refreshResistance()
 	arg_25_0:refreshStress(arg_25_0._entityMO)
 	gohelper.setActive(arg_25_0._goplayerequipinfo, false)
+	arg_25_0:refreshHealth(arg_25_0._entityMO)
 end
 
 var_0_0.StressUiType2Cls = {
@@ -713,13 +730,16 @@ function var_0_0._refreshCharacterInfo(arg_31_0, arg_31_1)
 	arg_31_0:_refreshSkill(var_31_4)
 	arg_31_0:_refreshAttrList(arg_31_0:_getHeroBaseAttr(var_31_1))
 	arg_31_0:refreshStress(arg_31_0._entityMO)
+	arg_31_0:refreshHealth(arg_31_0._entityMO)
 end
 
 function var_0_0._refreshHeroEquipInfo(arg_32_0, arg_32_1)
 	local var_32_0
 	local var_32_1
 
-	if tonumber(arg_32_1.uid) < 0 then
+	if arg_32_1.equipRecord then
+		var_32_0 = arg_32_1:getEquipMo()
+	elseif tonumber(arg_32_1.uid) < 0 then
 		if tonumber(arg_32_1.equipUid) > 0 then
 			var_32_0 = EquipModel.instance:getEquip(arg_32_1.equipUid)
 		elseif tonumber(arg_32_1.equipUid) < 0 then
@@ -959,6 +979,8 @@ function var_0_0._refreshCharacterPassiveSkill(arg_41_0, arg_41_1)
 	local var_41_3 = {}
 	local var_41_4 = arg_41_0:getPassiveSkillList(arg_41_1)
 
+	HeroDestinyStoneMO.replaceSkillList(var_41_4, arg_41_1.destinyStone, arg_41_1.destinyRank)
+
 	if var_41_4 and #var_41_4 > 0 then
 		gohelper.setActive(arg_41_0._goplayerpassive, true)
 
@@ -1109,21 +1131,24 @@ function var_0_0._refreshSuper(arg_45_0, arg_45_1)
 				return
 			end
 
-			gohelper.setActive(var_45_3.go, true)
-
 			local var_45_4 = arg_45_1[iter_45_0]
-			local var_45_5 = lua_skill.configDict[var_45_4]
 
-			var_45_3.icon:LoadImage(ResUrl.getSkillIcon(var_45_5.icon))
+			if var_45_4 ~= 0 then
+				local var_45_5 = lua_skill.configDict[var_45_4]
 
-			local var_45_6 = {}
+				var_45_3.icon:LoadImage(ResUrl.getSkillIcon(var_45_5.icon))
 
-			var_45_6.super = true
-			var_45_6.skillIdList = {
-				var_45_4
-			}
-			var_45_6.skillIndex = CharacterEnum.skillIndex.SkillEx
-			var_45_3.info = var_45_6
+				local var_45_6 = {}
+
+				var_45_6.super = true
+				var_45_6.skillIdList = {
+					var_45_4
+				}
+				var_45_6.skillIndex = CharacterEnum.skillIndex.SkillEx
+				var_45_3.info = var_45_6
+			end
+
+			gohelper.setActive(var_45_3.go, var_45_4 ~= 0)
 		end
 	end
 
@@ -1281,17 +1306,28 @@ end
 function var_0_0.onClickPassiveHyperLink(arg_50_0, arg_50_1, arg_50_2)
 	arg_50_0.commonBuffTipAnchorPos = arg_50_0.commonBuffTipAnchorPos or Vector2(-387.28, 168.6)
 
-	CommonBuffTipController:openCommonTipViewWithCustomPos(arg_50_1, arg_50_0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Right)
+	local var_50_0 = FightConfig.instance:getEntityName(arg_50_0._curSelectId)
+
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(arg_50_1, arg_50_0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Right, var_50_0)
 end
 
 function var_0_0._refreshHp(arg_51_0, arg_51_1)
-	local var_51_0 = math.max(arg_51_1.currentHp, 0)
-	local var_51_1 = arg_51_1.attrMO and math.max(arg_51_1.attrMO.hp, 0)
-	local var_51_2 = var_51_1 > 0 and var_51_0 / var_51_1 or 0
+	local var_51_0 = arg_51_1:getLockMaxHpRate()
+	local var_51_1, var_51_2 = arg_51_1:getHpAndShieldFillAmount()
+	local var_51_3 = math.max(arg_51_1.currentHp, 0)
+	local var_51_4 = (arg_51_1.attrMO and math.max(arg_51_1.attrMO.hp, 0)) * var_51_0
 
-	arg_51_0._txthp.text = string.format("%d/%d", var_51_0, var_51_1)
+	arg_51_0._txthp.text = string.format("%d/%d", var_51_3, var_51_4)
 
-	arg_51_0._sliderhp:SetValue(var_51_2)
+	arg_51_0._sliderhp:SetValue(var_51_1)
+
+	local var_51_5 = var_51_0 < 1
+
+	gohelper.setActive(arg_51_0.reduceHpGo, var_51_5)
+
+	if var_51_5 then
+		arg_51_0.reduceHpImage.fillAmount = Mathf.Clamp01(1 - var_51_0)
+	end
 end
 
 function var_0_0._refreshBuff(arg_52_0, arg_52_1)
@@ -1403,6 +1439,16 @@ function var_0_0.refreshScrollEnemy(arg_56_0)
 		else
 			transformhelper.setLocalRotation(var_56_1.imageIcon.transform, 0, 0, 0)
 		end
+
+		local var_56_4 = FightHelper.getSurvivalEntityHealth(iter_56_1.id)
+
+		gohelper.setActive(var_56_1.healthGo, var_56_4 ~= nil)
+
+		if var_56_4 then
+			local var_56_5 = FightNameUIHealthComp.getHealthIcon(var_56_4)
+
+			UISpriteSetMgr.instance:setFightSprite(var_56_1.healthTag, var_56_5, true)
+		end
 	end
 
 	for iter_56_2 = #arg_56_0._entityList + 1, #arg_56_0.enemyItemList do
@@ -1455,11 +1501,14 @@ function var_0_0.createEnemyItem(arg_58_0)
 	var_58_0.imageIcon = gohelper.findChildImage(var_58_0.go, "item/icon")
 	var_58_0.goBossTag = gohelper.findChild(var_58_0.go, "item/bosstag")
 	var_58_0.imageCareer = gohelper.findChildImage(var_58_0.go, "item/career")
+	var_58_0.healthTag = gohelper.findChildImage(var_58_0.go, "item/healthTag")
+	var_58_0.healthGo = var_58_0.healthTag.gameObject
 	var_58_0.goSelectFrame = gohelper.findChild(var_58_0.go, "item/go_selectframe")
 	var_58_0.subTag = gohelper.findChild(var_58_0.go, "item/#go_SubTag")
 	var_58_0.btnClick = gohelper.findChildButtonWithAudio(var_58_0.go, "item/btn_click")
 
 	var_58_0.btnClick:AddClickListener(arg_58_0.onClickEnemyItem, arg_58_0, var_58_0)
+	gohelper.setActive(var_58_0.healthGo, false)
 	table.insert(arg_58_0.enemyItemList, var_58_0)
 
 	return var_58_0
@@ -1567,7 +1616,9 @@ end
 function var_0_0.onClickHyperLink(arg_65_0, arg_65_1, arg_65_2)
 	arg_65_0.commonBuffTipAnchorPos = arg_65_0.commonBuffTipAnchorPos or Vector2(-389.14, 168.4)
 
-	CommonBuffTipController:openCommonTipViewWithCustomPos(arg_65_1, arg_65_0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Right)
+	local var_65_0 = FightConfig.instance:getEntityName(arg_65_0._curSelectId)
+
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(arg_65_1, arg_65_0.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Right, var_65_0)
 end
 
 function var_0_0._detectBossMultiHp(arg_66_0, arg_66_1)
@@ -1880,7 +1931,15 @@ function var_0_0.refreshDouQuQuFetter(arg_79_0)
 end
 
 function var_0_0.refreshDouQuQuStar(arg_80_0)
-	gohelper.setActive(arg_80_0.levelRoot, false)
+	local var_80_0 = FightDataHelper.fieldMgr.customData
+
+	if not var_80_0 then
+		return
+	end
+
+	if var_80_0[FightCustomData.CustomDataType.Act191] then
+		gohelper.setActive(arg_80_0.levelRoot, false)
+	end
 end
 
 function var_0_0.refreshDouQuQuCollection(arg_81_0)
@@ -1899,6 +1958,46 @@ function var_0_0.refreshDouQuQuCollection(arg_81_0)
 			arg_81_0.douQuQuCollectionView = arg_81_0:com_openSubView(FightDouQuQuCollectionView, "ui/viewres/fight/fight_act191collectionview.prefab", arg_81_0.go_collection, arg_81_0._entityMO)
 		end
 	end
+end
+
+var_0_0.HealthInterval = -50
+
+function var_0_0.onClickHealth(arg_82_0)
+	local var_82_0 = arg_82_0._entityMO and FightHelper.getSurvivalEntityHealth(arg_82_0._entityMO.id)
+
+	if not var_82_0 then
+		return
+	end
+
+	local var_82_1 = FightNameUIHealthComp.getCurHealthStatus(var_82_0)
+	local var_82_2 = FightNameUIHealthComp.getHealthTitle(var_82_1)
+	local var_82_3 = FightNameUIHealthComp.getHealthDesc(var_82_1)
+	local var_82_4 = recthelper.getWidth(arg_82_0.rectSurvivalHealth)
+	local var_82_5 = recthelper.getHeight(arg_82_0.rectSurvivalHealth)
+	local var_82_6 = recthelper.uiPosToScreenPos(arg_82_0.rectSurvivalHealth)
+
+	var_82_6.x = var_82_6.x + var_82_4 / 2 + var_0_0.HealthInterval
+	var_82_6.y = var_82_6.y + var_82_5 / 2
+
+	FightCommonTipController.instance:openCommonView(var_82_2, var_82_3, var_82_6)
+end
+
+function var_0_0.refreshHealth(arg_83_0, arg_83_1)
+	local var_83_0 = arg_83_1 and FightHelper.getSurvivalEntityHealth(arg_83_1.id)
+
+	if not var_83_0 then
+		gohelper.setActive(arg_83_0.goSurvivalHealth, false)
+
+		return
+	end
+
+	gohelper.setActive(arg_83_0.goSurvivalHealth, true)
+
+	arg_83_0.txtHealth.text = string.format("%d/%d", var_83_0, FightHelper.getSurvivalMaxHealth() or 120)
+
+	local var_83_1 = FightNameUIHealthComp.getHealthIcon(var_83_0)
+
+	UISpriteSetMgr.instance:setFightSprite(arg_83_0.imageHealth, var_83_1, true)
 end
 
 return var_0_0

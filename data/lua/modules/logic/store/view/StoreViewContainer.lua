@@ -348,4 +348,39 @@ function var_0_0.setVisibleInternal(arg_17_0, arg_17_1)
 	StoreController.instance:dispatchEvent(StoreEvent.SetVisibleInternal, arg_17_1)
 end
 
+function var_0_0.sortSkinStoreSiblingIndex(arg_18_0)
+	local var_18_0 = arg_18_0._ScrollViewSkinStore and arg_18_0._ScrollViewSkinStore._cellCompDict
+	local var_18_1
+
+	if var_18_0 then
+		local var_18_2 = 0
+
+		for iter_18_0, iter_18_1 in pairs(var_18_0) do
+			if iter_18_0 and iter_18_0._mo and iter_18_0._isUniqueSkin and iter_18_0:_isUniqueSkin() then
+				var_18_1 = var_18_1 or {}
+
+				table.insert(var_18_1, iter_18_0)
+			end
+
+			var_18_2 = var_18_2 + 1
+		end
+	end
+
+	if var_18_1 then
+		table.sort(var_18_1, var_0_0._sortSkinGoodsItem)
+
+		for iter_18_2 = #var_18_1, 1, -1 do
+			local var_18_3 = var_18_1[iter_18_2]
+
+			gohelper.setAsLastSibling(var_18_3.parentViewGO)
+		end
+	end
+end
+
+function var_0_0._sortSkinGoodsItem(arg_19_0, arg_19_1)
+	if arg_19_0._index ~= arg_19_1._index then
+		return arg_19_0._index < arg_19_1._index
+	end
+end
+
 return var_0_0

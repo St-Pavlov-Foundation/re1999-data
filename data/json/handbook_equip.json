@@ -640,5 +640,23 @@
     "order": 0,
     "equipId": 1440,
     "desc": ""
+  },
+  {
+    "id": 5048,
+    "order": 0,
+    "equipId": 1548,
+    "desc": ""
+  },
+  {
+    "id": 5050,
+    "order": 0,
+    "equipId": 1550,
+    "desc": ""
+  },
+  {
+    "id": 4041,
+    "order": 0,
+    "equipId": 1441,
+    "desc": ""
   }
 ]

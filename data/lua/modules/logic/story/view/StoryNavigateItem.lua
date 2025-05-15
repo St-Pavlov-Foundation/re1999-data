@@ -168,18 +168,21 @@ function var_0_0._chapterStartOut(arg_10_0)
 end
 
 function var_0_0.showChapterEnd(arg_11_0, arg_11_1)
+	local var_11_0 = PostProcessingMgr.instance:getCaptureView()
+
+	gohelper.setActive(var_11_0, false)
 	gohelper.setActive(arg_11_0._goepisode, false)
 	gohelper.setActive(arg_11_0._gochapter, true)
 	gohelper.setActive(arg_11_0._goclose, true)
 	gohelper.setActive(arg_11_0._goopen, false)
 
-	local var_11_0 = arg_11_1.navigateTxts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
+	local var_11_1 = arg_11_1.navigateTxts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
 
-	if var_11_0 == "" then
-		var_11_0 = arg_11_1.navigateChapterEn
+	if var_11_1 == "" then
+		var_11_1 = arg_11_1.navigateChapterEn
 	end
 
-	arg_11_0._txtchaptercloseNum.text = var_11_0
+	arg_11_0._txtchaptercloseNum.text = var_11_1
 
 	if arg_11_0._chapterCloseVideoPlayer then
 		arg_11_0._chapterCloseVideoPlayer:Stop()
@@ -189,9 +192,9 @@ function var_0_0.showChapterEnd(arg_11_0, arg_11_1)
 	end
 
 	if gohelper.isNil(arg_11_0._chapterCloseVideoGO) then
-		local var_11_1, var_11_2, var_11_3 = AvProMgr.instance:getVideoPlayer(arg_11_0._gochapterclosevideo)
+		local var_11_2, var_11_3, var_11_4 = AvProMgr.instance:getVideoPlayer(arg_11_0._gochapterclosevideo)
 
-		arg_11_0._chapterCloseVideoGO = var_11_3
+		arg_11_0._chapterCloseVideoGO = var_11_4
 	end
 
 	arg_11_0._chapterCloseDisplayUGUI = gohelper.onceAddComponent(arg_11_0._chapterCloseVideoGO, AvProMgr.Type_DisplayUGUI)
@@ -205,6 +208,9 @@ function var_0_0.showChapterEnd(arg_11_0, arg_11_1)
 end
 
 function var_0_0._chapterEndOut(arg_12_0)
+	local var_12_0 = PostProcessingMgr.instance:getCaptureView()
+
+	gohelper.setActive(var_12_0, true)
 	AudioEffectMgr.instance:stopAudio(AudioEnum.Story.Play_Chapter_End)
 	TaskDispatcher.cancelTask(arg_12_0._chapterEndOut, arg_12_0)
 end
@@ -264,6 +270,9 @@ function var_0_0.clear(arg_17_0)
 end
 
 function var_0_0.destroy(arg_18_0)
+	local var_18_0 = PostProcessingMgr.instance:getCaptureView()
+
+	gohelper.setActive(var_18_0, true)
 	AudioEffectMgr.instance:stopAudio(AudioEnum.Story.Play_Chapter_Start)
 	AudioEffectMgr.instance:stopAudio(AudioEnum.Story.Play_Chapter_End)
 	TaskDispatcher.cancelTask(arg_18_0._mapOut, arg_18_0)

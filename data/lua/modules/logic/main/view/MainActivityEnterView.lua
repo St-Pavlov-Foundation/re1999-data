@@ -248,7 +248,8 @@ function var_0_0.getEnterViewActIdList(arg_21_0)
 			[ActivityEnum.VersionActivityIdDict.Activity1_7] = VersionActivity1_7Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity1_8] = VersionActivity1_8Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity1_9] = VersionActivity1_9Enum.EnterViewActIdListWithRedDot,
-			[ActivityEnum.VersionActivityIdDict.Activity2_7] = VersionActivity2_7Enum.EnterViewActIdListWithRedDot
+			[ActivityEnum.VersionActivityIdDict.Activity2_7] = VersionActivity2_7Enum.EnterViewActIdListWithRedDot,
+			[ActivityEnum.VersionActivityIdDict.Activity2_8] = VersionActivity2_8Enum.EnterViewActIdListWithRedDot
 		}
 	end
 
@@ -302,7 +303,8 @@ function var_0_0.getActivityEnterHandleFunc(arg_24_0, arg_24_1)
 			[ActivityEnum.VersionActivityIdDict.Activity2_3] = VersionActivity2_3EnterController.instance,
 			[ActivityEnum.VersionActivityIdDict.Activity2_4] = VersionActivity2_4EnterController.instance,
 			[ActivityEnum.VersionActivityIdDict.Activity2_5] = VersionActivity2_5EnterController.instance,
-			[ActivityEnum.VersionActivityIdDict.Activity2_6] = VersionActivity2_6EnterController.instance
+			[ActivityEnum.VersionActivityIdDict.Activity2_6] = VersionActivity2_6EnterController.instance,
+			[ActivityEnum.VersionActivityIdDict.Activity2_8] = VersionActivity2_8EnterController.instance
 		}
 	end
 

@@ -2,7 +2,7 @@
 
 local var_0_0 = class("SkillDescComp", LuaCompBase)
 local var_0_1 = "SkillDescComp"
-local var_0_2 = "#7e99d0"
+local var_0_2
 local var_0_3 = {}
 local var_0_4 = "▩rich_replace▩"
 local var_0_5 = 0
@@ -83,7 +83,7 @@ function var_0_0._replaceSkillTag(arg_4_0, arg_4_1, arg_4_2)
 
 	local var_4_5 = lua_skill.configDict[var_4_4].name
 	local var_4_6 = "<color=%s><link=\"skillIndex=%s\">【%s】</link></color>"
-	local var_4_7 = var_4_5 and string.format(var_4_6, var_0_2, var_4_3, var_4_5) or ""
+	local var_4_7 = var_4_5 and string.format(var_4_6, arg_4_0:getLinkColor(), var_4_3, var_4_5) or ""
 
 	if not arg_4_0._skillNameList then
 		arg_4_0._skillNameList = {}
@@ -113,8 +113,10 @@ function var_0_0._revertSkillName(arg_5_0, arg_5_1, arg_5_2)
 end
 
 function var_0_0.addLink(arg_6_0, arg_6_1)
+	var_0_2 = arg_6_0:getLinkColor()
 	arg_6_1 = string.gsub(arg_6_1, "%[(.-)%]", arg_6_0.addLinkCb1)
 	arg_6_1 = string.gsub(arg_6_1, "【(.-)】", arg_6_0.addLinkCb2)
+	var_0_2 = nil
 
 	return arg_6_1
 end
@@ -154,7 +156,7 @@ end
 function var_0_0.addNumColor(arg_10_0, arg_10_1)
 	arg_10_1 = arg_10_0:filterRichText(arg_10_1)
 
-	local var_10_0 = SkillHelper.getColorFormat("#deaa79", "%1")
+	local var_10_0 = SkillHelper.getColorFormat(arg_10_0:getNumberColor(), "%1")
 
 	arg_10_1 = string.gsub(arg_10_1, "[+-]?[%d%./%%]+", var_10_0)
 	arg_10_1 = arg_10_0:revertRichText(arg_10_1)
@@ -162,105 +164,113 @@ function var_0_0.addNumColor(arg_10_0, arg_10_1)
 	return arg_10_1
 end
 
-function var_0_0.replaceColorFunc(arg_11_0)
-	if string.find(arg_11_0, "[<>]") then
-		return arg_11_0
+function var_0_0.getNumberColor(arg_11_0)
+	return "#deaa79"
+end
+
+function var_0_0.getLinkColor(arg_12_0)
+	return "#7e99d0"
+end
+
+function var_0_0.replaceColorFunc(arg_13_0)
+	if string.find(arg_13_0, "[<>]") then
+		return arg_13_0
 	end
 end
 
-function var_0_0.filterRichText(arg_12_0, arg_12_1)
+function var_0_0.filterRichText(arg_14_0, arg_14_1)
 	tabletool.clear(var_0_3)
 
-	arg_12_1 = string.gsub(arg_12_1, "(<.->)", arg_12_0._filterRichText)
-
-	return arg_12_1
-end
-
-function var_0_0._filterRichText(arg_13_0)
-	table.insert(var_0_3, arg_13_0)
-
-	return var_0_4
-end
-
-function var_0_0.revertRichText(arg_14_0, arg_14_1)
-	var_0_5 = 0
-	arg_14_1 = string.gsub(arg_14_1, var_0_4, arg_14_0._revertRichText)
-
-	tabletool.clear(var_0_3)
+	arg_14_1 = string.gsub(arg_14_1, "(<.->)", arg_14_0._filterRichText)
 
 	return arg_14_1
 end
 
-function var_0_0._revertRichText(arg_15_0)
+function var_0_0._filterRichText(arg_15_0)
+	table.insert(var_0_3, arg_15_0)
+
+	return var_0_4
+end
+
+function var_0_0.revertRichText(arg_16_0, arg_16_1)
+	var_0_5 = 0
+	arg_16_1 = string.gsub(arg_16_1, var_0_4, arg_16_0._revertRichText)
+
+	tabletool.clear(var_0_3)
+
+	return arg_16_1
+end
+
+function var_0_0._revertRichText(arg_17_0)
 	var_0_5 = var_0_5 + 1
 
 	return var_0_3[var_0_5] or ""
 end
 
-function var_0_0.filterBracketText(arg_16_0, arg_16_1)
+function var_0_0.filterBracketText(arg_18_0, arg_18_1)
 	tabletool.clear(var_0_6)
 
-	arg_16_1 = string.gsub(arg_16_1, "【.-】", arg_16_0._filterBracketText)
-	arg_16_1 = string.gsub(arg_16_1, "%[.-%]", arg_16_0._filterBracketText)
-
-	return arg_16_1
-end
-
-function var_0_0._filterBracketText(arg_17_0)
-	table.insert(var_0_6, arg_17_0)
-
-	return var_0_7
-end
-
-function var_0_0.revertBracketText(arg_18_0, arg_18_1)
-	var_0_8 = 0
-	arg_18_1 = string.gsub(arg_18_1, var_0_7, arg_18_0._reverBracketText)
-
-	tabletool.clear(var_0_6)
+	arg_18_1 = string.gsub(arg_18_1, "【.-】", arg_18_0._filterBracketText)
+	arg_18_1 = string.gsub(arg_18_1, "%[.-%]", arg_18_0._filterBracketText)
 
 	return arg_18_1
 end
 
-function var_0_0._reverBracketText(arg_19_0)
+function var_0_0._filterBracketText(arg_19_0)
+	table.insert(var_0_6, arg_19_0)
+
+	return var_0_7
+end
+
+function var_0_0.revertBracketText(arg_20_0, arg_20_1)
+	var_0_8 = 0
+	arg_20_1 = string.gsub(arg_20_1, var_0_7, arg_20_0._reverBracketText)
+
+	tabletool.clear(var_0_6)
+
+	return arg_20_1
+end
+
+function var_0_0._reverBracketText(arg_21_0)
 	var_0_8 = var_0_8 + 1
 
 	return var_0_6[var_0_8] or ""
 end
 
-function var_0_0._onHyperLinkClick(arg_20_0, arg_20_1, arg_20_2)
+function var_0_0._onHyperLinkClick(arg_22_0, arg_22_1, arg_22_2)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 
-	local var_20_0 = string.match(arg_20_1, "skillIndex=(%d)")
+	local var_22_0 = string.match(arg_22_1, "skillIndex=(%d)")
 
-	var_20_0 = var_20_0 and tonumber(var_20_0)
+	var_22_0 = var_22_0 and tonumber(var_22_0)
 
-	if not var_20_0 then
-		CommonBuffTipController.instance:openCommonTipViewWithCustomPos(tonumber(arg_20_1), arg_20_0._buffTipAnchor or CommonBuffTipEnum.Anchor[ViewName.CharacterExSkillView], CommonBuffTipEnum.Pivot.Right)
-	elseif var_20_0 == 0 then
-		local var_20_1 = {}
+	if not var_22_0 then
+		CommonBuffTipController.instance:openCommonTipViewWithCustomPos(tonumber(arg_22_1), arg_22_0._buffTipAnchor or CommonBuffTipEnum.Anchor[ViewName.CharacterExSkillView], CommonBuffTipEnum.Pivot.Right)
+	elseif var_22_0 == 0 then
+		local var_22_1 = {}
 
-		var_20_1.tag = "passiveskill"
-		var_20_1.heroid = arg_20_0._heroId
-		var_20_1.tipPos = Vector2.New(-292, -51.1)
-		var_20_1.anchorParams = {
+		var_22_1.tag = "passiveskill"
+		var_22_1.heroid = arg_22_0._heroId
+		var_22_1.tipPos = Vector2.New(-292, -51.1)
+		var_22_1.anchorParams = {
 			Vector2.New(1, 0.5),
 			Vector2.New(1, 0.5)
 		}
-		var_20_1.buffTipsX = -776
-		var_20_1.heroMo = arg_20_0.heroMo
+		var_22_1.buffTipsX = -776
+		var_22_1.heroMo = arg_22_0.heroMo
 
-		CharacterController.instance:openCharacterTipView(var_20_1)
+		CharacterController.instance:openCharacterTipView(var_22_1)
 	else
-		local var_20_2 = {}
-		local var_20_3 = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(arg_20_0._heroId)
+		local var_22_2 = {}
+		local var_22_3 = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(arg_22_0._heroId)
 
-		var_20_2.super = var_20_0 == 3
-		var_20_2.skillIdList = var_20_3[var_20_0]
-		var_20_2.monsterName = HeroConfig.instance:getHeroCO(arg_20_0._heroId).name
-		var_20_2.anchorX = arg_20_0._skillTipAnchorX
-		var_20_2.heroMo = arg_20_0.heroMo
+		var_22_2.super = var_22_0 == 3
+		var_22_2.skillIdList = var_22_3[var_22_0]
+		var_22_2.monsterName = HeroConfig.instance:getHeroCO(arg_22_0._heroId).name
+		var_22_2.anchorX = arg_22_0._skillTipAnchorX
+		var_22_2.heroMo = arg_22_0.heroMo
 
-		ViewMgr.instance:openView(ViewName.SkillTipView, var_20_2)
+		ViewMgr.instance:openView(ViewName.SkillTipView, var_22_2)
 	end
 end
 

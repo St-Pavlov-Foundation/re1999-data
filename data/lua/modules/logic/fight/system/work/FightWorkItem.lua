@@ -5,10 +5,15 @@ local var_0_0 = class("FightWorkItem", FightBaseClass)
 function var_0_0.onConstructor(arg_1_0)
 	arg_1_0.CALLBACK = {}
 	arg_1_0.SAFETIME = 0.5
+	arg_1_0.WORK_IS_FINISHED = nil
+	arg_1_0.STARTED = nil
+	arg_1_0.SAFETIMER = nil
+	arg_1_0.FIGHT_WORK_ENTRUSTED = nil
+	arg_1_0.SUCCEEDED = nil
 end
 
 function var_0_0.start(arg_2_0, arg_2_1)
-	if arg_2_0.WORKFINISHED then
+	if arg_2_0.WORK_IS_FINISHED then
 		logError("work已经结束了,但是又被调用了start,请检查代码,类名:" .. arg_2_0.__cname)
 
 		return
@@ -125,7 +130,7 @@ function var_0_0.clearWork(arg_16_0)
 end
 
 function var_0_0.registFinishCallback(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
-	if arg_17_0.IS_DISPOSED or arg_17_0.WORKFINISHED then
+	if arg_17_0.IS_DISPOSED or arg_17_0.WORK_IS_FINISHED then
 		return arg_17_1(arg_17_2, arg_17_3)
 	end
 
@@ -151,14 +156,14 @@ function var_0_0.onDestructorFinish(arg_19_0)
 end
 
 function var_0_0.playCallback(arg_20_0, arg_20_1)
-	if arg_20_0.WORKFINISHED or arg_20_0.STARTED then
+	if arg_20_0.WORK_IS_FINISHED or arg_20_0.STARTED then
 		local var_20_0 = arg_20_0.SUCCEEDED and true or false
 		local var_20_1 = #arg_20_1
 
 		for iter_20_0, iter_20_1 in ipairs(arg_20_1) do
-			local var_20_2 = arg_20_0.WORKFINISHED
+			local var_20_2 = arg_20_0.WORK_IS_FINISHED
 
-			if not arg_20_0.WORKFINISHED and arg_20_0.STARTED then
+			if not arg_20_0.WORK_IS_FINISHED and arg_20_0.STARTED then
 				local var_20_3 = iter_20_1.handle
 
 				if isTypeOf(var_20_3, FightBaseClass) and not var_20_3.IS_RELEASING then
@@ -200,13 +205,13 @@ function var_0_0.onDone(arg_21_0, arg_21_1)
 		return
 	end
 
-	if arg_21_0.WORKFINISHED then
+	if arg_21_0.WORK_IS_FINISHED then
 		logError("work已经完成了,但是又被调用了onDone,请检查代码,类名:" .. arg_21_0.__cname)
 
 		return
 	end
 
-	arg_21_0.WORKFINISHED = true
+	arg_21_0.WORK_IS_FINISHED = true
 	arg_21_0.SUCCEEDED = arg_21_1
 
 	return arg_21_0:disposeSelf()
@@ -231,12 +236,16 @@ function var_0_0.onDoneAndKeepPlay(arg_22_0)
 	end
 end
 
-function var_0_0.disposeSelf(arg_23_0)
-	if arg_23_0.FIGHT_WORK_ENTRUSTED then
+function var_0_0.isAlive(arg_23_0)
+	return not arg_23_0.IS_DISPOSED and not arg_23_0.WORK_IS_FINISHED
+end
+
+function var_0_0.disposeSelf(arg_24_0)
+	if arg_24_0.FIGHT_WORK_ENTRUSTED then
 		return
 	end
 
-	var_0_0.super.disposeSelf(arg_23_0)
+	var_0_0.super.disposeSelf(arg_24_0)
 end
 
 return var_0_0

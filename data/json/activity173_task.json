@@ -124,5 +124,23 @@
     "bonus": "26#4#50|2#2503#50",
     "jumpId": 0,
     "activityId": 12589
+  },
+  {
+    "id": 2800001,
+    "isOnline": 1,
+    "minType": "",
+    "name": "翻找仓库进度",
+    "desc": "对实验室仓库进行深度翻找后，似乎能获得什么好东西？",
+    "listenerType": "Act173Global",
+    "listenerParam": "12880",
+    "maxProgress": 19990000,
+    "sortId": 0,
+    "prepose": "",
+    "openLimit": "",
+    "bonusMail": 0,
+    "params": "",
+    "bonus": "18#281001#1",
+    "jumpId": 0,
+    "activityId": 12880
   }
 ]

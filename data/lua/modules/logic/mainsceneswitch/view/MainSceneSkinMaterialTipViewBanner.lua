@@ -278,39 +278,74 @@ function var_0_0._updateInfoItemUI(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
 
 	gohelper.setActive(var_24_0._gotag, true)
 
-	local var_24_2 = MainSceneSwitchConfig.instance:getConfigByItemId(arg_24_2)
+	if var_24_1.subType == ItemEnum.SubType.MainSceneSkin then
+		local var_24_2 = MainSceneSwitchConfig.instance:getConfigByItemId(arg_24_2)
 
-	var_24_0._sceneSkinId = var_24_2.id
+		var_24_0._sceneSkinId = var_24_2.id
 
-	var_24_0._simageinfobg:LoadImage(ResUrl.getMainSceneSwitchIcon(var_24_2.previewIcon))
+		var_24_0._simageinfobg:LoadImage(ResUrl.getMainSceneSwitchIcon(var_24_2.previewIcon))
+	elseif var_24_1.subType == ItemEnum.SubType.FightCard then
+		arg_24_0:_addClickFightUI(var_24_0._btn, arg_24_2)
+
+		local var_24_3 = FightUISwitchModel.instance:getStyleMoByItemId(arg_24_2)
+
+		if var_24_3 then
+			local var_24_4 = var_24_3:getConfig()
+
+			if var_24_4 and not string.nilorempty(var_24_4.previewImage) then
+				var_24_0._simageinfobg:LoadImage(ResUrl.getMainSceneSwitchIcon(var_24_4.previewImage))
+			end
+		end
+	elseif var_24_1.subType == ItemEnum.SubType.FightFloatType then
+		arg_24_0:_addClickFightUI(var_24_0._btn, arg_24_2)
+
+		local var_24_5 = FightUISwitchModel.instance:getStyleMoByItemId(arg_24_2)
+
+		if var_24_5 then
+			local var_24_6 = var_24_5:getConfig()
+
+			if var_24_6 and not string.nilorempty(var_24_6.previewImage) then
+				var_24_0._simageinfobg:LoadImage(ResUrl.getMainSceneSwitchIcon(var_24_6.previewImage))
+			end
+		end
+	end
+
+	arg_24_0.itemCo = var_24_1
 end
 
-function var_0_0.onUpdateParam(arg_25_0)
-	arg_25_0._infoItemDataList = {}
-
-	tabletool.addValues(arg_25_0._infoItemDataList, arg_25_0:_getItemDataList())
-	arg_25_0:_refreshUI()
-	arg_25_0:_startAutoSwitch()
+function var_0_0._addClickFightUI(arg_25_0, arg_25_1, arg_25_2)
+	arg_25_1:RemoveClickListener()
+	arg_25_1:AddClickListener(function()
+		FightUISwitchController.instance:openSceneView(arg_25_2)
+	end, arg_25_0)
 end
 
-function var_0_0.onOpen(arg_26_0)
-	arg_26_0._infoItemDataList = {}
+function var_0_0.onUpdateParam(arg_27_0)
+	arg_27_0._infoItemDataList = {}
 
-	tabletool.addValues(arg_26_0._infoItemDataList, arg_26_0:_getItemDataList())
-	arg_26_0:_refreshUI()
-	arg_26_0:_startAutoSwitch()
+	tabletool.addValues(arg_27_0._infoItemDataList, arg_27_0:_getItemDataList())
+	arg_27_0:_refreshUI()
+	arg_27_0:_startAutoSwitch()
 end
 
-function var_0_0.onClose(arg_27_0)
+function var_0_0.onOpen(arg_28_0)
+	arg_28_0._infoItemDataList = {}
+
+	tabletool.addValues(arg_28_0._infoItemDataList, arg_28_0:_getItemDataList())
+	arg_28_0:_refreshUI()
+	arg_28_0:_startAutoSwitch()
+end
+
+function var_0_0.onClose(arg_29_0)
 	return
 end
 
-function var_0_0.onDestroyView(arg_28_0)
-	TaskDispatcher.cancelTask(arg_28_0._onSwitch, arg_28_0)
+function var_0_0.onDestroyView(arg_30_0)
+	TaskDispatcher.cancelTask(arg_30_0._onSwitch, arg_30_0)
 
-	for iter_28_0, iter_28_1 in ipairs(arg_28_0._infoItemTbList) do
-		iter_28_1._simageinfobg:UnLoadImage()
-		iter_28_1._btn:RemoveClickListener()
+	for iter_30_0, iter_30_1 in ipairs(arg_30_0._infoItemTbList) do
+		iter_30_1._simageinfobg:UnLoadImage()
+		iter_30_1._btn:RemoveClickListener()
 	end
 end
 

@@ -65,6 +65,7 @@ function var_0_0._editableInitView(arg_4_0)
 	arg_4_0._gomooncardup = gohelper.findChild(arg_4_0.viewGO, "#go_mooncardup")
 	arg_4_0._gomaterialup = gohelper.findChild(arg_4_0.viewGO, "#go_materialup")
 	arg_4_0._gocobranded = gohelper.findChild(arg_4_0.viewGO, "#go_cobranded")
+	arg_4_0._gotxtv2a8_09 = gohelper.findChild(arg_4_0.viewGO, "txt_v2a8_09")
 end
 
 function var_0_0._onClick(arg_5_0)
@@ -321,6 +322,7 @@ function var_0_0.onUpdateMO(arg_9_0, arg_9_1)
 	arg_9_0:_onUpdateMO_coBrandedTag(arg_9_1)
 	arg_9_0:_onUpdateMO_gosummonSimulationPickFX(arg_9_1)
 	arg_9_0:refreshSkinTips(arg_9_1)
+	gohelper.setActive(arg_9_0._gotxtv2a8_09, PackageStoreEnum.AnimHeadDict[arg_9_1.goodsId])
 end
 
 function var_0_0.showMonthCardTips(arg_10_0)

@@ -94,7 +94,7 @@
     "round": 3,
     "isPermanent": 0,
     "startTime": "2025-03-10",
-    "endTime": "",
+    "endTime": "2025-05-19",
     "taskGroupId": 900103,
     "taskEndTime": "2025-04-20",
     "isOnline": 1
@@ -114,7 +114,7 @@
     "round": 2,
     "isPermanent": 0,
     "startTime": "2025-04-07",
-    "endTime": "",
+    "endTime": "2025-06-02",
     "taskGroupId": 900502,
     "taskEndTime": "2025-05-18",
     "isOnline": 1
@@ -137,6 +137,26 @@
     "endTime": "",
     "taskGroupId": 900403,
     "taskEndTime": "2025-06-16",
+    "isOnline": 1
+  },
+  {
+    "towerId": 1,
+    "round": 4,
+    "isPermanent": 0,
+    "startTime": "2025-05-19",
+    "endTime": "2025-06-29",
+    "taskGroupId": 900104,
+    "taskEndTime": "2025-06-29",
+    "isOnline": 1
+  },
+  {
+    "towerId": 5,
+    "round": 3,
+    "isPermanent": 0,
+    "startTime": "2025-06-02",
+    "endTime": "2025-07-13",
+    "taskGroupId": 900503,
+    "taskEndTime": "2025-07-13",
     "isOnline": 1
   }
 ]

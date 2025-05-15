@@ -4,6 +4,7 @@ local var_0_0 = class("GMController", BaseController)
 
 var_0_0.debugViewGO = nil
 var_0_0.Event = {
+	OnRecvGMMsg = 3,
 	ChangeSelectHeroItem = 2
 }
 var_0_0.GMNodesPrefabUrl = "ui/viewres/gm/gmnodes.prefab"
@@ -711,6 +712,34 @@ function var_0_0.createASFDEmitter(arg_44_0, arg_44_1)
 	;(var_44_3 and var_44_3.entityMgr):addASFDUnit()
 
 	return var_44_1
+end
+
+function var_0_0.getFightFloatPath(arg_45_0)
+	return arg_45_0.fightFloatPath
+end
+
+function var_0_0.setFightFloatPath(arg_46_0, arg_46_1)
+	arg_46_0.fightFloatPath = arg_46_1
+end
+
+function var_0_0.replaceGetFloatPathFunc(arg_47_0)
+	if arg_47_0.replaced then
+		return
+	end
+
+	arg_47_0.srcGetFightFloatPathFunc = FightFloatMgr.getFloatPrefab
+	FightFloatMgr.getFloatPrefab = var_0_0.getFightFloatPathFunc
+	arg_47_0.replaced = true
+end
+
+function var_0_0.getFightFloatPathFunc(arg_48_0)
+	local var_48_0 = var_0_0.instance:getFightFloatPath()
+
+	if var_48_0 then
+		return ResUrl.getSceneUIPrefab("fight", var_48_0)
+	end
+
+	return var_0_0.instance.srcGetFightFloatPathFunc(arg_48_0)
 end
 
 var_0_0.instance = var_0_0.New()

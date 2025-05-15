@@ -67,6 +67,7 @@ var_0_0.RecommendSubStoreId = {
 	GiftrecommendView2 = 804,
 	BpEnterView = 714,
 	StoreBlockPackageView = 802,
+	New6StarsChoose = 816,
 	StoreSkinBagView = 721,
 	GiftPacksView = 713,
 	ChargeView = 712
@@ -123,6 +124,9 @@ var_0_0.TowerStore = {
 	UpdateStore = 302,
 	NormalStore = 301,
 	MainStore = 300
+}
+var_0_0.StoreTabId = {
+	Skin = 500
 }
 
 return var_0_0

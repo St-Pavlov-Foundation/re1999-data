@@ -1,0 +1,17 @@
+[
+  {
+    "typeId": 1,
+    "name": "主线剧情",
+    "nameEn": "MAIN STORY"
+  },
+  {
+    "typeId": 2,
+    "name": "角色故事",
+    "nameEn": "ANECDOTES"
+  },
+  {
+    "typeId": 3,
+    "name": "局外演绎",
+    "nameEn": "THE WINDOW TO OTHER WORLDS"
+  }
+]

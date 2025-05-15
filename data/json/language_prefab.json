@@ -19366,5 +19366,1261 @@
   {
     "id": "p_act191herogroupview_txt_add",
     "lang": "候场选手每增加1个，入场选手最大生命+5%；\n候场选手每增加1塑，最大生命加成额外+5%"
+  },
+  {
+    "id": "p_a9_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "飞渡往日"
+  },
+  {
+    "id": "p_a9_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "犹在镜中"
+  },
+  {
+    "id": "p_a10_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "旧金山小子"
+  },
+  {
+    "id": "p_a10_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "第一千夜"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Weight",
+    "lang": "负重"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Member",
+    "lang": "选择成员"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Next",
+    "lang": "下一步"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Assist",
+    "lang": "协助"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Assist2",
+    "lang": "解除"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Partner",
+    "lang": "漫游助理"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Team",
+    "lang": "队伍"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Leader",
+    "lang": "乌尔里希"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Attr1",
+    "lang": "严谨"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Attr2",
+    "lang": "漫游行装"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_Start",
+    "lang": "开始演习"
+  },
+  {
+    "id": "p_survivalinitteamitem_txt_dead",
+    "lang": "无法行动"
+  },
+  {
+    "id": "p_survivalinitteamitem_txt_UnSelected",
+    "lang": "——  未选择  ——"
+  },
+  {
+    "id": "p_survivalinitteamitem_txt_Locked",
+    "lang": "——  未解锁  ——"
+  },
+  {
+    "id": "p_survivalselectdifficultyview_txt_select",
+    "lang": "选择难度"
+  },
+  {
+    "id": "p_survivaltaskview_tab1",
+    "lang": "核心任务"
+  },
+  {
+    "id": "p_survivaltaskview_tab2",
+    "lang": "助理请求"
+  },
+  {
+    "id": "p_survivaltaskview_tab3",
+    "lang": "决策任务"
+  },
+  {
+    "id": "p_survivaltaskview_tab4",
+    "lang": "演习任务"
+  },
+  {
+    "id": "p_survivaltaskview_main_txt1",
+    "lang": "核心任务如果失败，演算将前功尽弃。"
+  },
+  {
+    "id": "p_survivaltaskview_main_txt2",
+    "lang": "力所能及地建设避难处。"
+  },
+  {
+    "id": "p_survivalequipview_txt_Assess",
+    "lang": "总评价"
+  },
+  {
+    "id": "p_survivalequipview_txt_Overview",
+    "lang": "总览"
+  },
+  {
+    "id": "p_survivalequipview_txt_UnEquip",
+    "lang": "一键卸下"
+  },
+  {
+    "id": "p_survivalequipview_txt_Equip",
+    "lang": "快捷装备"
+  },
+  {
+    "id": "p_survivalequipoverview_txt_Title",
+    "lang": "盒中之物总览"
+  },
+  {
+    "id": "p_survivalpartnermanageview_txt_Title",
+    "lang": "助理信息"
+  },
+  {
+    "id": "p_survivalbuildingmanageview_txt_Title",
+    "lang": "建筑信息"
+  },
+  {
+    "id": "p_survivalbuildingmanageview_txt_Fire",
+    "lang": "纪念碑"
+  },
+  {
+    "id": "p_survivalbuildingmanageview_txt_Destroyed",
+    "lang": "损坏"
+  },
+  {
+    "id": "p_survivaltentmanageview_txt_Partner",
+    "lang": "选择助理"
+  },
+  {
+    "id": "p_survivaltentmanageview_txt_Select",
+    "lang": "快捷选择"
+  },
+  {
+    "id": "p_survivaltentmanageview_txt_Destoryed",
+    "lang": "被破坏"
+  },
+  {
+    "id": "p_survivaltentmanageview_txt_Rest",
+    "lang": "露天茶水间"
+  },
+  {
+    "id": "p_survivaltentmanageview_txt_Tips",
+    "lang": "放置需要回复健康的小队成员。"
+  },
+  {
+    "id": "p_survivalbuildingmanageview_txt_Tent",
+    "lang": "员工宿舍"
+  },
+  {
+    "id": "p_survivaltalentoverview_txt_Title",
+    "lang": "思维总览"
+  },
+  {
+    "id": "p_survivaltalentoverview_txt_Base",
+    "lang": "基础属性"
+  },
+  {
+    "id": "p_survivaltalentoverview_txt_skill",
+    "lang": "思维能力"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_nextattr",
+    "lang": "【下级效果】"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_join",
+    "lang": "入住宿舍"
+  },
+  {
+    "id": "p_v2a8_molideer_game_txt_Next",
+    "lang": "下回合"
+  },
+  {
+    "id": "p_v2a8_molideer_game_txt_Turns",
+    "lang": "回合"
+  },
+  {
+    "id": "p_v2a8_molideer_bottom_txt_Title",
+    "lang": "选择派遣的小队"
+  },
+  {
+    "id": "p_v2a8_molideer_bottom_txt_WithdrawTitle",
+    "lang": "派遣中"
+  },
+  {
+    "id": "p_v2a8_molideer_bottom_txt_Action",
+    "lang": "行动力"
+  },
+  {
+    "id": "p_v2a8_molideer_bottom_txt_Dispatch",
+    "lang": "派遣"
+  },
+  {
+    "id": "p_v2a8_molideer_bottom_txt_Withdraw",
+    "lang": "撤回"
+  },
+  {
+    "id": "p_survivaldecreeitem_txt_Announcement",
+    "lang": "公示中"
+  },
+  {
+    "id": "p_survivaldecreeitem_txt_Vote",
+    "lang": "寻找支持者"
+  },
+  {
+    "id": "p_survivaldecreeitem_txt_Finished",
+    "lang": "颁布完成"
+  },
+  {
+    "id": "p_survivaldecreeitem_txt_AddTips",
+    "lang": "未选择决策"
+  },
+  {
+    "id": "p_survivaldecreevote_txt_Title",
+    "lang": "投票阶段"
+  },
+  {
+    "id": "p_survivaldecreevote_txt_Disagree",
+    "lang": "反对"
+  },
+  {
+    "id": "p_survivaldecreevote_txt_Agree",
+    "lang": "赞成"
+  },
+  {
+    "id": "p_survivaldecreevote_txt_Rate",
+    "lang": "赞成率"
+  },
+  {
+    "id": "p_survivaldecreeselect_txt_LeaderTitle",
+    "lang": "组长的决策"
+  },
+  {
+    "id": "p_survivaldecreeselect_txt_SelectTitle",
+    "lang": "选择一个决策"
+  },
+  {
+    "id": "p_survivaldecreeselect_txt_Add",
+    "lang": "公布"
+  },
+  {
+    "id": "p_dungeonchapteritem_txt_first",
+    "lang": "预演"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance0",
+    "lang": "周年来函"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance1",
+    "lang": "年度报告"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance2",
+    "lang": "黑白64方格"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance3",
+    "lang": "等待笛沙格"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance4",
+    "lang": "特邀嘉宾再访"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance5",
+    "lang": "不规范“实验”"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance6",
+    "lang": "参与活动获得周年收藏品"
+  },
+  {
+    "id": "p_v2a8_activity2ndcollectionpageview_txt_Entrance4Tips",
+    "lang": "自选【常驻征集】六星造像"
+  },
+  {
+    "id": "p_v2a8_activity2ndrewardview_txt_firstPrice",
+    "lang": "“头奖”"
+  },
+  {
+    "id": "p_v2a8_activity3ndrewardview_txt_Search",
+    "lang": "翻找"
+  },
+  {
+    "id": "p_v2a8_activity2ndrewardview_txt_name",
+    "lang": "试做型“星锑”播放器"
+  },
+  {
+    "id": "p_v2a8_activity5ndrewardview_txt_progress",
+    "lang": "全服累计探索进度："
+  },
+  {
+    "id": "p_v2a8_activity6ndrewardview_txt_Search2",
+    "lang": "全部探索"
+  },
+  {
+    "id": "p_v2a8_activity2ndinvitationview_txt_Descr",
+    "lang": "在你的注视下，又一段时光成为过去，这是周年庆典活动为此准备的纪念品，其中包含着对你的谢意。\n时间重叠、飞跃、令人恍惚，纵使经历背叛与分离，音乐也依然在世界的尽头响起，愿未来也能与你同行。"
+  },
+  {
+    "id": "p_v2a8_survival_enterview_txt_Enter",
+    "lang": "开始模拟"
+  },
+  {
+    "id": "p_v2a8_survival_enterview_txt_Continue",
+    "lang": "继续模拟"
+  },
+  {
+    "id": "p_v2a8_survival_enterview_txt_booty",
+    "lang": "模拟生存战利品"
+  },
+  {
+    "id": "p_autochessmainview_txt_history",
+    "lang": "翻斗历程"
+  },
+  {
+    "id": "p_autochessmainview_txt_book",
+    "lang": "贴纸簿"
+  },
+  {
+    "id": "p_autocrazymodetipsview_txt_start",
+    "lang": "开始"
+  },
+  {
+    "id": "p_autochessrecordview_txt_player",
+    "lang": "我方"
+  },
+  {
+    "id": "p_autochessrecordview_txt_enemy",
+    "lang": "敌方"
+  },
+  {
+    "id": "p_autochesspvpenterview_txt_title",
+    "lang": "友谊第二"
+  },
+  {
+    "id": "p_autochesspvpenterview_txt_Record",
+    "lang": "对决记录"
+  },
+  {
+    "id": "p_autochesspvpenterview_txt_AddFriend",
+    "lang": "加好友"
+  },
+  {
+    "id": "p_autochesspvpenterview_txt_empty",
+    "lang": "暂无好友"
+  },
+  {
+    "id": "p_survivaldecreevoteview_txt_bubble",
+    "lang": "这是一个艰难的决定，我希望大家都能理解并且赞成。"
+  },
+  {
+    "id": "p_v2a8_gift_fullview_txt_dec",
+    "lang": "点击聚焦并捕捉剪影中的风景，按下快门，获得酬劳"
+  },
+  {
+    "id": "p_v2a8_gift_fullview_txt_shot",
+    "lang": "寻觅"
+  },
+  {
+    "id": "p_v2a8_gift_fullview_txt_Fail",
+    "lang": "回忆愈加模糊"
+  },
+  {
+    "id": "p_v2a8_gift_fullview_txt_Success",
+    "lang": "明晰记忆锚点"
+  },
+  {
+    "id": "p_autochessbooklevelpreview_txt_title",
+    "lang": "棋子预览"
+  },
+  {
+    "id": "p_survivaleventview_txt_Commit",
+    "lang": "是否提交下列道具？"
+  },
+  {
+    "id": "p_v2a8_survival_enterview_txt_Enter2",
+    "lang": "<size=67>进</size>入模拟"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_Title1",
+    "lang": "招募需求"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_Title2",
+    "lang": "招募"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_Recruit",
+    "lang": "招募"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_Refresh",
+    "lang": "换一批"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_StandbyTips",
+    "lang": "下次演习归来即可招募"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_MemberTips",
+    "lang": "选择<color=#bf5d31>1</color>个助理招募"
+  },
+  {
+    "id": "p_survivalshelterrecruitview_txt_CloseRecruit",
+    "lang": "放弃招募"
+  },
+  {
+    "id": "p_survivalcompositeview_txt_title",
+    "lang": "选择<#EDA73A>2</color>个材料合成盒中之物"
+  },
+  {
+    "id": "p_survivalcompositeview_txt_select",
+    "lang": "选择材料"
+  },
+  {
+    "id": "p_survivalcompositeview_txt_composite",
+    "lang": "合成"
+  },
+  {
+    "id": "p_survivalcompositesuccessview_txt",
+    "lang": "成功"
+  },
+  {
+    "id": "p_survivalceremonyopeningview_txt",
+    "lang": "暴雨来临前，白方每个部门都有一套严格的紧急预案，但唯独拉普拉斯科算中心执行的最糟糕。\n这帮天才们各有各的想法：冒险出去做实验的，疯狂收集非对称核素R的，优先避难的，不要命地抢救设备的……他们谁也说服不了谁。\n因此，出台一份具有说服力的《雨前紧急状况应对指南》迫在眉睫！"
+  },
+  {
+    "id": "p_v2a3_destiny_preview_txt_new",
+    "lang": "新闪念追加"
+  },
+  {
+    "id": "p_v2a8_dragonboat_rewarditem_txt_unlockTips",
+    "lang": "制作药浴获得药方"
+  },
+  {
+    "id": "p_normalstoreview_txt_sort",
+    "lang": "已有角色"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_build",
+    "lang": "建造"
+  },
+  {
+    "id": "p_v2a8_versionsummonselfselectsixhalfview2_txt_dec2",
+    "lang": "活动期间可选1名6星角色概率UP！！！\n选定后不能变更"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_levup",
+    "lang": "升级"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_repair",
+    "lang": "修理"
+  },
+  {
+    "id": "p_v2a8_selfselectcharacterview_txt_title",
+    "lang": "特邀嘉宾再访"
+  },
+  {
+    "id": "p_v2a8_selfselectcharacterview_txt_title2",
+    "lang": "自选六星造像"
+  },
+  {
+    "id": "p_v2a8_selfselectcharacterview_txt_dec",
+    "lang": "自选【常驻征集】中已拥有角色的<#EA9B56>六星造像</color>一份！\n若全部【常驻征集】的六星角色塑造已满，则在选择后自动转换为大容量<#EA9B56>迷途之声</color>。"
+  },
+  {
+    "id": "p_v2a8_selfselectcharacterview_txt_dec2",
+    "lang": "再访嘉宾名录"
+  },
+  {
+    "id": "p_v2a8_nuodika_infosview_txt_ItemTitle1",
+    "lang": "敌人"
+  },
+  {
+    "id": "p_v2a8_nuodika_infosview_txt_ItemTitle2",
+    "lang": "地形"
+  },
+  {
+    "id": "p_v2a8_nuodika_infosview_txt_ItemTitle3",
+    "lang": "道具"
+  },
+  {
+    "id": "p_v2a8_versionsummontxt_Tips",
+    "lang": "活动期间，可获得十全调·【神话咫尺之处】"
+  },
+  {
+    "id": "p_skillcopingview_txt_Coping",
+    "lang": "应变"
+  },
+  {
+    "id": "p_skillcopingview_txt_Title",
+    "lang": "神秘术应变选择"
+  },
+  {
+    "id": "p_v2a8_dragonboat_fullview_txt_tips",
+    "lang": "领取3次奖励后解锁"
+  },
+  {
+    "id": "p_v2a8_dragonboat_fullview_txt_tips2",
+    "lang": "来自神秘东方的炼金古方，现在正是验证它们效力的时候。艾草、蒲草，还有佩兰……\n谁愿意做第一个尝试的人？以下秘方由泥鯭的士提供。"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_bag",
+    "lang": "\"露西\"号拖车"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_empty",
+    "lang": "暂未获得物品"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_empty2",
+    "lang": "选择或拖动物品放置到提交区"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_shop",
+    "lang": "提交"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_value",
+    "lang": "需求价值"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_commit",
+    "lang": "提交"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_tips",
+    "lang": "松开即可放入"
+  },
+  {
+    "id": "p_survivalcommititemview_txt_put",
+    "lang": "放入"
+  },
+  {
+    "id": "p_roomblockgiftchoiceview_txt_title",
+    "lang": "选择兑换以下任意一座孤屿或建筑"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_gotoequip",
+    "lang": "去装备"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_search",
+    "lang": "搜刮"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_sell",
+    "lang": "出售"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_place",
+    "lang": "置入"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_unplace",
+    "lang": "取出"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_remove",
+    "lang": "丢弃"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_leave",
+    "lang": "请离"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_map",
+    "lang": "地图"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_bag",
+    "lang": "\"露西\"号拖车"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_task",
+    "lang": "任务列表"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_team",
+    "lang": "研究小组"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_equip",
+    "lang": "漫游行装"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_contamination",
+    "lang": "污染中！"
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_fail",
+    "lang": "仓促撤离"
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_success",
+    "lang": "成功回归"
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_txt_title1",
+    "lang": "撤离地点:"
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_txt_title2",
+    "lang": "存活时间："
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_txt_title3",
+    "lang": "队伍："
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_txt_title4",
+    "lang": "收益"
+  },
+  {
+    "id": "p_survivalmapresultpanelview_txt_txt_collect",
+    "lang": "物品"
+  },
+  {
+    "id": "p_survivalmapsearchview_txt_all",
+    "lang": "搜刮全部"
+  },
+  {
+    "id": "p_survivalmonstereventview_txt_Npc",
+    "lang": "协助助理"
+  },
+  {
+    "id": "p_survivalmonstereventview_txt_Fight",
+    "lang": "击退"
+  },
+  {
+    "id": "p_survivalnpcstationview_txt_Tips",
+    "lang": "选择符合特性的助理协助"
+  },
+  {
+    "id": "p_survivalnpcstationview_txt_titledec",
+    "lang": "怪物效果"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_goto",
+    "lang": "寻找"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_rest",
+    "lang": "入住"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_join3",
+    "lang": "加入小队"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_join2",
+    "lang": "移出小队"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_rest2",
+    "lang": "入住"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_Destroyed",
+    "lang": "损坏"
+  },
+  {
+    "id": "p_survivalrewardchooseview_txt_confirm",
+    "lang": "确认拿走"
+  },
+  {
+    "id": "p_survivalselectdifficultyview_txt_Difficulty",
+    "lang": "困难"
+  },
+  {
+    "id": "p_survivalselectdifficultyview_txt_Add",
+    "lang": "添加风险模拟"
+  },
+  {
+    "id": "p_survivalshopview_txt_empty",
+    "lang": "选择商品购买或出售"
+  },
+  {
+    "id": "p_survivalshopview_txt_empty2",
+    "lang": "商品已售罄"
+  },
+  {
+    "id": "p_survivalshopview_txt_shop",
+    "lang": "商店"
+  },
+  {
+    "id": "p_survivalshopview_txt_day",
+    "lang": "一天后刷新"
+  },
+  {
+    "id": "p_survivalsmallmapview_txt_title",
+    "lang": "地图勘察"
+  },
+  {
+    "id": "p_v2a8_molideer_interludeview_txt_title",
+    "lang": "开始探索"
+  },
+  {
+    "id": "p_v2a8_dungeonenterview_txt_newunlock",
+    "lang": "最新章节解锁"
+  },
+  {
+    "id": "p_v2a8_dungeonexploreview_txt_Tips",
+    "lang": "心灵眼眸"
+  },
+  {
+    "id": "p_v2a8_dungeonexploreview_txt_Tips2",
+    "lang": "迷失感："
+  },
+  {
+    "id": "p_v2a8_dungeonexploreview_txt",
+    "lang": "<size=42>重</size>涉洪流"
+  },
+  {
+    "id": "p_v2a8_dungeonbossactivityview_txt_tag",
+    "lang": "重映版"
+  },
+  {
+    "id": "p_v2a8_dungeonbossactivityview_txt_enter",
+    "lang": "开始重映"
+  },
+  {
+    "id": "p_survivaltalentinfoview_txt_effect",
+    "lang": "效果"
+  },
+  {
+    "id": "p_survivaltalentinfoview_txt_info",
+    "lang": "信息"
+  },
+  {
+    "id": "p_survivaltalentinfoview_txt_equiped",
+    "lang": "镶嵌"
+  },
+  {
+    "id": "p_survivaltalentinfoview_txt_unequip",
+    "lang": "卸下"
+  },
+  {
+    "id": "p_survivaltalentrewardview_txt_title",
+    "lang": "思维片段获得"
+  },
+  {
+    "id": "p_survivaltaskview_txt_tips",
+    "lang": "点击追踪其中一条任务，再次点击取消"
+  },
+  {
+    "id": "p_survivaltaskview_txt_select",
+    "lang": "正在追踪"
+  },
+  {
+    "id": "p_survivalbootychooseview_txt_Title",
+    "lang": "选择战利品"
+  },
+  {
+    "id": "p_survivalbootychooseview_txt_dec",
+    "lang": "选择漫游行装及漫游助理带入到下次模拟"
+  },
+  {
+    "id": "p_survivalbootychooseview_txt_title2",
+    "lang": "漫游行装"
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_Title",
+    "lang": "演习报告"
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_title2",
+    "lang": "参与助理"
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_title3",
+    "lang": "击败入侵怪物"
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_title4",
+    "lang": "存活天数"
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_title5",
+    "lang": "额外目标："
+  },
+  {
+    "id": "p_survivalceremonyclosingview_txt_title6",
+    "lang": "总评价"
+  },
+  {
+    "id": "p_survivalequipoverview_txt_Frequency",
+    "lang": "总%s"
+  },
+  {
+    "id": "p_survivalceremonyopeningview_txt_title",
+    "lang": "演习开始"
+  },
+  {
+    "id": "p_survivalceremonyopeningview_txt_enter",
+    "lang": "开始模拟"
+  },
+  {
+    "id": "p_survivalcompositesuccessview_txt_success",
+    "lang": "合成成功"
+  },
+  {
+    "id": "p_survivalmainview_txt_targetTitle",
+    "lang": "主要任务"
+  },
+  {
+    "id": "p_survivalmainview_txt_warehouse",
+    "lang": "研究小组"
+  },
+  {
+    "id": "p_survivalmainview_txt_talent",
+    "lang": "思维"
+  },
+  {
+    "id": "p_survivalmainview_txt_title",
+    "lang": "每日食材消耗"
+  },
+  {
+    "id": "p_survivalmainview_txt_npc",
+    "lang": "漫游助理"
+  },
+  {
+    "id": "p_survivalmainview_txt_build",
+    "lang": "建筑"
+  },
+  {
+    "id": "p_survivalmainview_txt_law",
+    "lang": "决策"
+  },
+  {
+    "id": "p_survivalmainview_txt_Warehouse",
+    "lang": "仓储"
+  },
+  {
+    "id": "p_survivalreportview_txt_Title",
+    "lang": "避难处报告"
+  },
+  {
+    "id": "p_survivalshelterrewardview_txt_dec",
+    "lang": "思绪亦是一种资源。它可从路径中获取，又可扭转为你获取所需的路径。"
+  },
+  {
+    "id": "p_autochesscrazymodetipview_txt_dec",
+    "lang": "狂暴模式提示文本待定"
+  },
+  {
+    "id": "p_autochessfriendlistview_txt_tips",
+    "lang": "选择对决好友"
+  },
+  {
+    "id": "p_autochessmallview_txt_tips",
+    "lang": "点击目标释放"
+  },
+  {
+    "id": "p_autochesspvpsettleview_txt_save",
+    "lang": "是否保存队伍？"
+  },
+  {
+    "id": "p_autochesspvpsettleview_txt_tips2",
+    "lang": "原队伍信息将被替换"
+  },
+  {
+    "id": "p_autochesspvpsettleview_txt_confirmed",
+    "lang": "已确定"
+  },
+  {
+    "id": "p_autochessbookview_txt_tab1",
+    "lang": "棋子"
+  },
+  {
+    "id": "p_autochessbookview_txt_tab2",
+    "lang": "棋手"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_select",
+    "lang": "选择"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview2_roletxt3",
+    "lang": "叩响天宇一角"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview2_rolename3",
+    "lang": "乌尔里希"
+  },
+  {
+    "id": "p_roomblockgiftchoiceview_txt_hasget",
+    "lang": "已集齐"
+  },
+  {
+    "id": "p_v2a8_autochess_enterview_txt_tips",
+    "lang": "新增火山棋子、尤提姆贴纸补充包；全新玩法【翻斗狂欢赛】【友谊第二】"
+  },
+  {
+    "id": "p_v2a5_autochess_help_6_txt_1",
+    "lang": "本次玩法中，棋手会和<#FF906A>专属尤提姆</color>共同参与对战，他们的能力各不相同。\n合理构建队伍轻松击败对手。"
+  },
+  {
+    "id": "p_v2a5_autochess_help_7_txt_1",
+    "lang": "加入新栖息地——<#FF906A>火山</color>，更多的策略搭配等待棋手研究"
+  },
+  {
+    "id": "p_v2a5_autochess_help_8_txt_1",
+    "lang": "通过<#FF906A>专属贴纸箱</color>和<#FF906A>惊喜贴纸箱</color>即可获得尤提姆贴纸并且参与对战"
+  },
+  {
+    "id": "p_v2a5_autochess_help_9_txt_1",
+    "lang": "拖动"
+  },
+  {
+    "id": "p_v2a5_autochess_help_9_txt_2",
+    "lang": "消耗："
+  },
+  {
+    "id": "p_v2a5_autochess_help_9_txt_3",
+    "lang": "花费3缪斯币可以购买一个棋子"
+  },
+  {
+    "id": "p_v2a5_autochess_help_9_txt_4",
+    "lang": "出售棋子可以获得1缪斯币"
+  },
+  {
+    "id": "p_v2a5_autochess_help_10_txt_1",
+    "lang": "花费少量缪斯币可以侦察下一轮对手阵容。若本轮没有使用，则下一轮消耗费用减少"
+  },
+  {
+    "id": "p_v2a5_autochess_help_10_txt_2",
+    "lang": "在合适时候使用棋手技能可以让对战事半功倍"
+  },
+  {
+    "id": "p_v2a5_autochess_help_10_txt_3",
+    "lang": "无消耗"
+  },
+  {
+    "id": "p_v2a8_activity2ndrewardview_txt_tips",
+    "lang": "被迫留下的星锑船长渴望冒险，如果不能去往南极，或许在实验室里探险也未尝不可！"
+  },
+  {
+    "id": "p_handbook_skin",
+    "lang": "<size=65>窗</size>中侧写"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview_txt_shopnamecn1",
+    "lang": "乐园的赠礼"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview_txt_shopnamecn2",
+    "lang": "求索的收获"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview2_txt_shopnamecn1",
+    "lang": "极点的赠礼"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview2_txt_shopnamecn2",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview2_txt_shopnamecn3",
+    "lang": "乐园的赠礼"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview3_txt_shopnamecn1",
+    "lang": "浴兰日"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview3_txt_shopnamecn2",
+    "lang": "蒲月热销"
+  },
+  {
+    "id": "p_v2a8_giftrecommendview3_txt_shopnamecn3",
+    "lang": "蒲月酬宾"
+  },
+  {
+    "id": "p_storenew6starschooseview_txt_Role1",
+    "lang": "芭卡洛儿"
+  },
+  {
+    "id": "p_storenew6starschooseview_txt_Role2",
+    "lang": "乌尔里希"
+  },
+  {
+    "id": "p_storenew6starschooseview_txt_Role3",
+    "lang": "纸信圈儿"
+  },
+  {
+    "id": "p_storenew6starschooseview_txt_Char",
+    "lang": "自选六星角色×1"
+  },
+  {
+    "id": "p_storenew6starschooseview_txt_Prop",
+    "lang": "独一律×10"
+  },
+  {
+    "id": "p_bpfaceview2_txt_dec1",
+    "lang": "《叩响天宇一角》智者宣称：圆即完满。 世界嘲笑：椭圆也是。"
+  },
+  {
+    "id": "p_bpfaceview2_txt_dec2",
+    "lang": "前往衣着风尚"
+  },
+  {
+    "id": "p_v2a8_anniversary_activity_tip1",
+    "lang": "每消耗30细胞活性换取1“好点子”，使用1个“好点子”探索实验室可获取5把“拿来”的钥匙。"
+  },
+  {
+    "id": "p_v2a8_anniversary_activity_tip2",
+    "lang": "当全服累计探索进度满时，可获得周年限定收藏品奖励！"
+  },
+  {
+    "id": "p_v2a5_challenge_dungeonview_notreset",
+    "lang": "该关卡无法重置"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_roletxt1",
+    "lang": "拉曼却幻想"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_rolename1",
+    "lang": "虚构集"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_roletxt2",
+    "lang": "生如行棋"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_rolename2",
+    "lang": "露西"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_roletxt3",
+    "lang": "宇宙之壳"
+  },
+  {
+    "id": "p_v2a8_storeroleskinview_rolename3",
+    "lang": "库珀花环"
+  },
+  {
+    "id": "p_skilltipview_txt_supplement",
+    "lang": "咒语补充"
+  },
+  {
+    "id": "p_v2a8_selfselectsix_pickchoiceview_txt_tips1",
+    "lang": "请在以下名录中选择1名角色提升塑造"
+  },
+  {
+    "id": "p_v2a8_storeblockpackageview_name",
+    "lang": "无人方舟"
+  },
+  {
+    "id": "p_survivalpartnermanageinfoview_txt_leave",
+    "lang": "离开宿舍"
+  },
+  {
+    "id": "p_mainsceneswitchview_title_3",
+    "lang": "咒语辉光"
+  },
+  {
+    "id": "p_v2a8_skin_getpanelview_txt_title",
+    "lang": "追加奖励！"
+  },
+  {
+    "id": "p_v2a8_skin_panelview_txt_tips",
+    "lang": "活动期间内，登录可领取价值365粹雨滴的「成衣订购惠选」。\n购买【衣着风尚】内的任意衣着，可再获得一份！"
+  },
+  {
+    "id": "p_v2a5_challenge_help_9_txt_1",
+    "lang": "<color=#ff906a>「雨迹追查」</color>和<color=#ff906a>「雨痕处治」</color>中，共有<color=#ff906a>5个关卡</color>可供挑战，每通关一个关卡，进度加1，所有关卡通关时，进度为5"
+  },
+  {
+    "id": "p_v2a5_challenge_help_10_txt_1",
+    "lang": "<color=#ff906a>「雨迹追查」</color>和<color=#ff906a>「雨痕处治」</color>为两个不同的难度，雨痕处治难度更高，完成雨痕处治中的任务，雨迹追查中的对应任务也会视为完成\n<color=#ff906a>「雨痕处治」</color>中无法激活雨痕防护信标，无法使用支援角色"
+  },
+  {
+    "id": "p_v2a5_challenge_help_11_txt_1",
+    "lang": "<color=#ff906a>「雨迹追查」</color>和<color=#ff906a>「雨痕处治」</color>中，可直接挑战最终关卡，挑战最终关卡时，未通关关卡中的所有雨痕效应，均会对最终关卡产生效应影响。若最终关卡通关，进度视为5，未通关的其他关卡均视为通关"
+  },
+  {
+    "id": "p_v2a5_challenge_help_12_txt_1",
+    "lang": "<color=#ff906a>「日常出勤」</color>中，可直接挑战<color=#ff906a>精英关卡</color>，挑战胜利，则<color=#ff906a>进度视为3</color>\n直接挑战精英关卡时，未通关关卡中的所有雨痕效应，均会对精英关卡产生效应影响"
+  },
+  {
+    "id": "p_survivalbootychooseview_txt_title_item",
+    "lang": "收集物资"
+  },
+  {
+    "id": "p_survivalmapresultview_txt_npc",
+    "lang": "助理"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_1",
+    "lang": "放弃演习会损失大部分收获，请一惠而后行"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_2",
+    "lang": "任务列表会记录当前需要优先完成的事项"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_3",
+    "lang": "参与演习的成员状态可以通过这里查看。\n对于地图中比研究小组等级低的怪物，可以直接击败并且获得奖励"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_4",
+    "lang": "漫游行装惠加强参与演习成员的能力，并且战斗中会有强力的效果"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_5",
+    "lang": "点击打开地图总览"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_6",
+    "lang": "日志会记录在演习过程中发生的事情"
+  },
+  {
+    "id": "p_v2a8_survival_help_1_txt_7",
+    "lang": "演习中收集到的道具会存放到拖车处。\n使用快捷道具可以令演习事半功倍"
+  },
+  {
+    "id": "p_v2a8_survival_help_2_txt_1",
+    "lang": "地图中有各式各样的事件等待乌尔里希发现和处理。他们会给予丰厚的奖励，也会有不同的漫游助理加入。"
+  },
+  {
+    "id": "p_v2a8_survival_help_2_txt_2",
+    "lang": "抵达撤离点可以结束演习回到避难处"
+  },
+  {
+    "id": "p_v2a8_survival_help_3_txt_1",
+    "lang": "暴雨会在特定的时间到来，我们需要在暴雨完全侵蚀地图前撤离，否则演习将会失败。"
+  },
+  {
+    "id": "p_v2a8_survival_help_3_txt_2",
+    "lang": "小队成员在暴雨中会降低抵抗值。请减少在暴雨中逗留的时间。"
+  },
+  {
+    "id": "p_v2a8_survival_help_4_txt_1",
+    "lang": "收集到的盒中之物可以装配到漫游行装中，通过链式反应会依次增强后续的增益。仔细研究可以获得更强的增益加成。"
+  },
+  {
+    "id": "p_v2a8_survival_help_4_txt_2",
+    "lang": "当然乌尔里希也有自己对于这些玩意儿的理解，我们也可以直接使用他的方案。"
+  },
+  {
+    "id": "p_v2a8_survival_help_5_txt_1",
+    "lang": "本次参与演习的角色数量越多，负重上限越高。\n能收集携带的道具也越多。"
+  },
+  {
+    "id": "p_v2a8_survival_help_5_txt_2",
+    "lang": "部分危险行为会导致角色的抵抗力下降。抵抗力下降到一定的程度，会对角色造成不可逆的负面影响。抵抗力为0的角色会无法参与大部分的内容。"
+  },
+  {
+    "id": "p_v2a8_survival_help_6_txt_1",
+    "lang": "助理入住后，每天需要消耗补给。当补给不足时，助理有可能会离开避难处。"
+  },
+  {
+    "id": "p_v2a8_survival_help_6_txt_2",
+    "lang": "助理带回避难处后，如果当前宿舍有空位，会自动入住到宿舍中。如果没有将助理及时安排入住，他们有可能会因为过于失望而离开。"
+  },
+  {
+    "id": "p_v2a8_survival_help_6_txt_3",
+    "lang": "每位助理会有不同的特性，对于模拟演算会有不同的增益效果。"
+  },
+  {
+    "id": "p_v2a8_survival_help_7_txt_1",
+    "lang": "当公开会场建造成功后乌尔里希可以通过这里颁布不同的决策。\n当然，这些决策需要助理们的支持。尽量公布他们觉得合理的决定吧。"
+  },
+  {
+    "id": "p_v2a8_survival_help_8_txt_1",
+    "lang": "入侵的怪物会在特定的天数到来。集合所有力量击败他，否则本次演算将会彻底失败"
+  },
+  {
+    "id": "p_v2a8_survival_help_8_txt_2",
+    "lang": "每次入侵，怪物会携带对应的增益效果。我们需要认真应对。"
+  },
+  {
+    "id": "p_v2a8_survival_help_9_txt_1",
+    "lang": "入侵怪物的增益效果可以通过助理协助消除，尝试使用符合特性的助理消除这些增益效果。"
+  },
+  {
+    "id": "p_survivalview_txt_reward",
+    "lang": "手册完成度"
+  },
+  {
+    "id": "p_survivalview_txt_talent",
+    "lang": "思维"
+  },
+  {
+    "id": "p_autochesspvpenterview_Player_emptyGroup_txt_empty",
+    "lang": "暂无阵容"
+  },
+  {
+    "id": "p_autochesspvpenterview_Player_emptyGroup_txt_fight",
+    "lang": "去箱中对决"
+  },
+  {
+    "id": "p_autochesspvpenterview_Enemy_emptyGroup_txt_empty",
+    "lang": "好友暂无阵容"
+  },
+  {
+    "id": "p_packagestoregoodsview_txt_v2a8_09",
+    "lang": "限定动态头像"
+  },
+  {
+    "id": "p_v2a8_dungeonexploreview_txt_cooling",
+    "lang": "休息中"
+  },
+  {
+    "id": "p_autochessrecordview_txt_tips",
+    "lang": "最多保存10条对战记录"
+  },
+  {
+    "id": "p_survivalmapmainview_txt_box",
+    "lang": "天赋魔盒"
+  },
+  {
+    "id": "p_survivalmonstereventview_txt_recommend",
+    "lang": "推荐行装评分："
+  },
+  {
+    "id": "p_survivalmonstereventview_txt_current",
+    "lang": "当前行装评分："
+  },
+  {
+    "id": "p_survivalbossinvadeview_txt_invade",
+    "lang": "<size=105>强</size>敌入侵"
+  },
+  {
+    "id": "p_survivaltaskpanelview_txt_title",
+    "lang": "<size=105>触</size>发事件"
+  },
+  {
+    "id": "p_survivalmainview_txt_start",
+    "lang": "出发"
+  },
+  {
+    "id": "p_survivalmonstereventview_txt_Watch",
+    "lang": "去查看"
   }
 ]

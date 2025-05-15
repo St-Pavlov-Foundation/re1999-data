@@ -1502,5 +1502,53 @@
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
     "sources": ""
+  },
+  {
+    "id": 2801,
+    "name": "冰岩标本",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2801",
+    "smallIcon": "",
+    "useDesc": "自极地的冰岩上凿下的标本，等待接受进一步的研究。用于在“雪橇速递”兑换奖励商品。\n仅限[复乐园]活动举办期间使用。",
+    "desc": "它自地底而来，被熔融、折叠、挤压，沉入水底，又浮上海面。然而，总有人能从中读出，那些关于上一个冰河时代或是更久远年月的秘密。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
+  },
+  {
+    "id": 2881,
+    "name": "“好点子”",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2881",
+    "smallIcon": "",
+    "useDesc": "可在“不规范‘实验’”活动中使用，使用后可获得“拿来”的钥匙。活动期间内，每消耗30点活性可获得1个“好点子”。",
+    "desc": "",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
+  },
+  {
+    "id": 2882,
+    "name": "“拿来”的钥匙",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2882",
+    "smallIcon": "",
+    "useDesc": "可在“不规范‘实验’”活动中使用，活动期间内，可消耗“拿来”的钥匙获取奖励。",
+    "desc": "",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": ""
   }
 ]

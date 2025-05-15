@@ -155,7 +155,7 @@ function var_0_0._editableInitView(arg_4_0)
 
 	arg_4_0._uiSpine = GuiModelAgent.Create(arg_4_0._gospine, true)
 
-	arg_4_0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal)
+	arg_4_0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, arg_4_0.viewName)
 
 	arg_4_0._rareStars = arg_4_0:getUserDataTb_()
 
@@ -446,6 +446,15 @@ function var_0_0._onCloseFullView(arg_21_0, arg_21_1)
 	end
 
 	arg_21_0:_setModelVisible(arg_21_0.viewContainer._isVisible)
+
+	if arg_21_1 == ViewName.CharacterRankUpResultView then
+		arg_21_0:_checkPlaySpecialBodyMotion()
+
+		if arg_21_0._skillContainer then
+			arg_21_0._skillContainer:checkShowReplaceBeforeSkillUI()
+		end
+	end
+
 	arg_21_0:_checkGuide()
 end
 
@@ -710,6 +719,10 @@ function var_0_0.onOpen(arg_46_0)
 	arg_46_0:_refreshView()
 	NavigateMgr.instance:addEscape(ViewName.CharacterView, arg_46_0._btncloseOnClick, arg_46_0)
 	arg_46_0:_checkGuide()
+
+	if arg_46_0._skillContainer then
+		arg_46_0._skillContainer:checkShowReplaceBeforeSkillUI()
+	end
 end
 
 function var_0_0._refreshRedDot(arg_47_0)
@@ -875,6 +888,11 @@ function var_0_0._onDragEnd(arg_57_0, arg_57_1, arg_57_2)
 			arg_57_0._spineNeedHide = true
 
 			arg_57_0:_refreshView()
+
+			if arg_57_0._skillContainer then
+				arg_57_0._skillContainer:checkShowReplaceBeforeSkillUI()
+			end
+
 			CharacterController.instance:dispatchEvent(CharacterEvent.RefreshDefaultEquip, arg_57_0._heroMO)
 			CharacterController.instance:dispatchEvent(CharacterEvent.OnSwitchSpine, arg_57_0._heroMO)
 		end
@@ -892,6 +910,11 @@ function var_0_0._onDragEnd(arg_57_0, arg_57_1, arg_57_2)
 			arg_57_0._spineNeedHide = true
 
 			arg_57_0:_refreshView()
+
+			if arg_57_0._skillContainer then
+				arg_57_0._skillContainer:checkShowReplaceBeforeSkillUI()
+			end
+
 			CharacterController.instance:dispatchEvent(CharacterEvent.RefreshDefaultEquip, arg_57_0._heroMO)
 			CharacterController.instance:dispatchEvent(CharacterEvent.OnSwitchSpine, arg_57_0._heroMO)
 
@@ -1060,6 +1083,10 @@ function var_0_0._playSpineVoice(arg_64_0)
 		return
 	end
 
+	if arg_64_0:_checkPlaySpecialBodyMotion() then
+		return
+	end
+
 	arg_64_0._uiSpine:playVoice(arg_64_0._greetingVoices[1], nil, arg_64_0._txtanacn, arg_64_0._txtanaen, arg_64_0._gocontentbg)
 end
 
@@ -1181,8 +1208,8 @@ function var_0_0._refreshInfo(arg_68_0)
 
 	arg_68_0._txtnamecn.text = arg_68_0._heroMO:getHeroName()
 	arg_68_0._txtnameen.text = arg_68_0._heroMO.config.nameEng
-	arg_68_0._txttalentcn.text = luaLang("talent_character_talentcn" .. CharacterEnum.TalentTxtByHeroType[arg_68_0._heroMO.config.heroType])
-	arg_68_0._txttalenten.text = luaLang("talent_character_talenten" .. CharacterEnum.TalentTxtByHeroType[arg_68_0._heroMO.config.heroType])
+	arg_68_0._txttalentcn.text = luaLang("talent_character_talentcn" .. arg_68_0._heroMO:getTalentTxtByHeroType())
+	arg_68_0._txttalenten.text = luaLang("talent_character_talenten" .. arg_68_0._heroMO:getTalentTxtByHeroType())
 end
 
 function var_0_0._getFaithPercent(arg_69_0)
@@ -1517,6 +1544,11 @@ function var_0_0.onClose(arg_85_0)
 	arg_85_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_85_0._onCloseViewFinish, arg_85_0)
 	arg_85_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, arg_85_0._onCloseFullView, arg_85_0)
 	arg_85_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_85_0._onCloseView, arg_85_0)
+
+	if arg_85_0._skillContainer then
+		arg_85_0._skillContainer:onFinishreplaceSkillAnim()
+		arg_85_0._skillContainer:clearDelay()
+	end
 end
 
 function var_0_0.onUpdateParam(arg_86_0)
@@ -1584,6 +1616,29 @@ function var_0_0.onDestroyView(arg_93_0)
 	TaskDispatcher.cancelTask(arg_93_0._delaySetModelHide, arg_93_0)
 	TaskDispatcher.cancelTask(arg_93_0._playSpineVoice, arg_93_0)
 	UnityEngine.Shader.DisableKeyword("_CLIPALPHA_ON")
+end
+
+function var_0_0._checkPlaySpecialBodyMotion(arg_94_0)
+	local var_94_0, var_94_1, var_94_2 = CharacterModel.instance:isCanPlayReplaceSkillAnim(arg_94_0._heroMO)
+
+	if var_94_0 and var_94_2 and not string.nilorempty(var_94_2.specialLive2d) then
+		local var_94_3 = string.split(var_94_2.specialLive2d, "#")
+
+		if not string.nilorempty(var_94_3[3]) then
+			local var_94_4 = "b_" .. var_94_3[3]
+			local var_94_5 = var_94_3[4] and tonumber(var_94_3[4]) or 0
+
+			local function var_94_6()
+				arg_94_0._uiSpine:setActionEventCb(nil, arg_94_0)
+				arg_94_0:_playSpineVoice()
+			end
+
+			arg_94_0._uiSpine:playSpecialMotion(var_94_4, false, var_94_5)
+			arg_94_0._uiSpine:setActionEventCb(var_94_6, arg_94_0)
+
+			return true
+		end
+	end
 end
 
 return var_0_0

@@ -13,6 +13,40 @@ function var_0_0.getCharacterItemCountByName(arg_2_0)
 	return var_0_0.characterItemCounts[arg_2_0] or 1
 end
 
+var_0_0.preloadLists.SummonCharacterProbUpVer286 = {
+	"singlebg/summon/heroversion_2_0/joe/v2a0_joe_role1.png",
+	"singlebg/summon/heroversion_2_0/joe/full/v2a0_joe_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer285 = {
+	"singlebg/summon/heroversion_2_4/v2a4_bakaluoer/v2a4_summon_bakaluoer_decbg1.png",
+	"singlebg/summon/heroversion_2_4/v2a4_bakaluoer/v2a4_summon_bakaluoer_role1.png",
+	"singlebg/summon/heroversion_2_5/v2a5_feilinshiduo/v2a5_summon_feilinshiduo_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer284 = {
+	"singlebg/summon/heroversion_2_0/mercury/v2a0_mercury_role1.png",
+	"singlebg/summon/heroversion_2_0/mercury/full/v2a0_mercury_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer283 = {
+	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_fontbg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_role.png",
+	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer282 = {
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_rolebg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_decbg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_fullbg.png"
+}
+var_0_0.preloadLists.SummonStrongOneCustomPick28 = {
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_2_8/v2a8_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer281 = {
+	"singlebg/summon/heroversion_1_9/lucy/v1a9_lucy_decbg2.png",
+	"singlebg/summon/heroversion_1_9/lucy/v1a9_lucy_rolebg.png",
+	"singlebg/summon/heroversion_1_9/lucy/v1a9_lucy_decbg1.png",
+	"singlebg/summon/heroversion_1_9/lucy/v1a9_lucy_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer265 = {
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_dec4.png",
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",

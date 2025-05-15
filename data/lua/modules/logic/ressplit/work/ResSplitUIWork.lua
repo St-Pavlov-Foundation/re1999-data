@@ -4,7 +4,6 @@ local var_0_0 = class("ResSplitUIWork", BaseWork)
 
 function var_0_0.onStart(arg_1_0, arg_1_1)
 	local var_1_0 = {
-		"achievement",
 		"activity",
 		"backpack",
 		"battlepass",

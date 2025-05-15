@@ -68,7 +68,7 @@ function var_0_0.onDownloadProgress(arg_3_0, arg_3_1, arg_3_2)
 	local var_3_3 = HotUpdateMgr.instance:_fixSizeStr(arg_3_0._allSize)
 	local var_3_4 = string.format(booterLang("mass_download_Progress"), arg_3_1, var_3_3)
 
-	BootLoadingView.instance:show(var_3_2, var_3_4)
+	HotUpdateProgress.instance:setProgressDownloadRes(var_3_2, var_3_4)
 end
 
 function var_0_0.onDownloadFinish(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)

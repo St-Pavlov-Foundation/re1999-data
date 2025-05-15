@@ -127,6 +127,12 @@ end
 
 function var_0_0._onNormalGoodsClick(arg_9_0)
 	if arg_9_0._hascloth then
+		if ItemModel.instance:getItemConfig(arg_9_0._itemType, arg_9_0._itemId).subType == ItemEnum.SubType.RoomBlockGift and StoreConfig.instance:getGoodsConfig(arg_9_0._mo.goodsId).maxBuyCount - arg_9_0._mo.buyCount > 0 then
+			StoreController.instance:openNormalGoodsView(arg_9_0._mo)
+
+			return
+		end
+
 		GameFacade.showToast(ToastEnum.NormalStoreGoodsHasCloth)
 	elseif arg_9_0._soldout then
 		GameFacade.showToast(ToastEnum.ActivityNoRemainBuyCount)
@@ -324,6 +330,7 @@ function var_0_0.refreshNormalGoods(arg_16_0)
 
 	if string.nilorempty(var_16_23) then
 		gohelper.setActive(arg_16_0._txtCost2Num.gameObject, false)
+		gohelper.setActive(arg_16_0._goline, false)
 
 		arg_16_0._txtmaterialNum.fontSize = 36
 		arg_16_0._txtCost2Num.fontSize = 36
@@ -420,7 +427,11 @@ function var_0_0.refreshNormalGoods(arg_16_0)
 	gohelper.setActive(arg_16_0._btnPath.gameObject, not arg_16_0._hascloth)
 
 	if arg_16_0._hascloth then
-		gohelper.setActive(arg_16_0._gohas, true)
+		if var_16_12.subType == ItemEnum.SubType.RoomBlockGift and var_16_41 > 0 then
+			gohelper.setActive(arg_16_0._gohas, false)
+		else
+			gohelper.setActive(arg_16_0._gohas, true)
+		end
 	elseif arg_16_0._soldout then
 		gohelper.setActive(arg_16_0._gosoldout, true)
 		gohelper.setActive(arg_16_0._goherofull, false)

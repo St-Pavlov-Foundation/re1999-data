@@ -286,7 +286,8 @@ end
 
 local var_0_1 = {
 	[PlayerEnum.SimpleProperty.SkinState] = KeyValueSimplePropertyMO,
-	[PlayerEnum.SimpleProperty.MainSceneSkinRedDot] = KeyValueSimplePropertyMO
+	[PlayerEnum.SimpleProperty.MainSceneSkinRedDot] = KeyValueSimplePropertyMO,
+	[PlayerEnum.SimpleProperty.NuoDiKaNewSkill] = KeyValueSimplePropertyMO
 }
 
 function var_0_0._getSimplePropMo(arg_26_0, arg_26_1)

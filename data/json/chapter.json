@@ -2,6 +2,8 @@
   {
     "id": 101,
     "name": "在我们的时代里",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "1ST",
     "name_En": "In Our Time",
     "desc": "",
@@ -30,6 +32,8 @@
   {
     "id": 102,
     "name": "夜色温柔",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "2ND",
     "name_En": "Tender is the Night",
     "desc": "",
@@ -58,6 +62,8 @@
   {
     "id": 103,
     "name": "故事一无所有",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "3RD",
     "name_En": "Nouvelles et Textes pour rien ",
     "desc": "",
@@ -86,6 +92,8 @@
   {
     "id": 104,
     "name": "老虎的金黄",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "4TH",
     "name_En": "El oro de los tigres",
     "desc": "",
@@ -114,6 +122,8 @@
   {
     "id": 201,
     "name": "在我们的时代里",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "1ST",
     "name_En": "In Our Time",
     "desc": "",
@@ -142,6 +152,8 @@
   {
     "id": 202,
     "name": "夜色温柔",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "2ND",
     "name_En": "Tender is the Night",
     "desc": "",
@@ -170,6 +182,8 @@
   {
     "id": 203,
     "name": "故事一无所有",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "3RD",
     "name_En": "Nouvelles et Textes pour rien ",
     "desc": "",
@@ -198,6 +212,8 @@
   {
     "id": 204,
     "name": "老虎的金黄",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "4TH",
     "name_En": "El oro de los tigres",
     "desc": "",
@@ -226,6 +242,8 @@
   {
     "id": 301,
     "name": "此即明日",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "This Is Tomorrow",
     "desc": "",
@@ -254,6 +272,8 @@
   {
     "id": 302,
     "name": "分支交互战斗",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -282,6 +302,8 @@
   {
     "id": 401,
     "name": "尘埃运动",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LP",
     "name_En": "The Poussiere",
     "desc": "",
@@ -310,6 +332,8 @@
   {
     "id": 501,
     "name": "铸币美学",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MA",
     "name_En": "Mintage Aesthetics",
     "desc": "",
@@ -338,6 +362,8 @@
   {
     "id": 601,
     "name": "意志解析",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PA",
     "name_En": "Psychugram Analysis",
     "desc": "",
@@ -366,6 +392,8 @@
   {
     "id": 701,
     "name": "群山之声",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "ME",
     "name_En": "Mountain Echos",
     "desc": "",
@@ -394,6 +422,8 @@
   {
     "id": 702,
     "name": "星陨之所",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SL",
     "name_En": "Starfall Locale",
     "desc": "",
@@ -422,6 +452,8 @@
   {
     "id": 703,
     "name": "深林之形",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SS",
     "name_En": "Sylvanus Shape",
     "desc": "",
@@ -450,6 +482,8 @@
   {
     "id": 704,
     "name": "荒兽之野",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BW",
     "name_En": "Brutes Wilds",
     "desc": "",
@@ -478,6 +512,8 @@
   {
     "id": 801,
     "name": "???",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "HES",
     "name_En": "HES",
     "desc": "",
@@ -506,6 +542,8 @@
   {
     "id": 802,
     "name": "???",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "HES",
     "name_En": "HES",
     "desc": "",
@@ -534,6 +572,8 @@
   {
     "id": 803,
     "name": "???",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "HES",
     "name_En": "HES",
     "desc": "",
@@ -562,6 +602,8 @@
   {
     "id": 804,
     "name": "???",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "HES",
     "name_En": "HES",
     "desc": "",
@@ -590,6 +632,8 @@
   {
     "id": 901,
     "name": "人工梦游",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "ASM",
     "name_En": "ASM",
     "desc": "",
@@ -618,6 +662,8 @@
   {
     "id": 1001,
     "name": "丰收时令",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "HP",
     "name_En": "Harvest Prime",
     "desc": "",
@@ -646,6 +692,8 @@
   {
     "id": 1101,
     "name": "制敌律则",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -674,6 +722,8 @@
   {
     "id": 1102,
     "name": "咒语阶次",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -702,6 +752,8 @@
   {
     "id": 1103,
     "name": "控制艺术",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -730,6 +782,8 @@
   {
     "id": 1104,
     "name": "行动主义",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -758,6 +812,8 @@
   {
     "id": 1105,
     "name": "律的调校",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -786,6 +842,8 @@
   {
     "id": 1106,
     "name": "策略推演",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -814,6 +872,8 @@
   {
     "id": 1107,
     "name": "后验之路",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TH",
     "name_En": "Book",
     "desc": "",
@@ -842,6 +902,8 @@
   {
     "id": 1201,
     "name": "?",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "ASW",
     "name_En": "ASW",
     "desc": "",
@@ -870,6 +932,8 @@
   {
     "id": 1401,
     "name": "阿勒夫克姆遗闻",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "E",
     "name_En": "Aleflechem Hearsay",
     "desc": "根深蒂固的大树之下。<br>那苔藓与阴暗的墙角，曾诞生最伟大的绿意。",
@@ -898,6 +962,8 @@
   {
     "id": 9901,
     "name": "主线",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -926,6 +992,8 @@
   {
     "id": 9910,
     "name": "人工梦游",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -954,6 +1022,8 @@
   {
     "id": 9920,
     "name": "训练",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -982,6 +1052,8 @@
   {
     "id": 9930,
     "name": "?",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -1010,6 +1082,8 @@
   {
     "id": 9990,
     "name": "?",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -1038,6 +1112,8 @@
   {
     "id": 9991,
     "name": "?",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Sim",
     "name_En": "Simulation",
     "desc": "",
@@ -1066,6 +1142,8 @@
   {
     "id": 10000,
     "name": "?",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1094,6 +1172,8 @@
   {
     "id": 11011,
     "name": "昨日金杯",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1122,6 +1202,8 @@
   {
     "id": 11021,
     "name": "昨日金杯",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1150,6 +1232,8 @@
   {
     "id": 11031,
     "name": "昨日金杯",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1178,6 +1262,8 @@
   {
     "id": 11101,
     "name": "雷米特杯失窃案",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TRC",
     "name_En": "The Rimet Cup",
     "desc": "",
@@ -1206,6 +1292,8 @@
   {
     "id": 11201,
     "name": "雷米特杯失窃案",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TRC",
     "name_En": "The Rimet Cup",
     "desc": "",
@@ -1234,6 +1322,8 @@
   {
     "id": 11301,
     "name": "雷米特杯失窃案",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TRC",
     "name_En": "The Rimet Cup",
     "desc": "",
@@ -1262,6 +1352,8 @@
   {
     "id": 11401,
     "name": "雷米特杯失窃案",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TRC",
     "name_En": "The Rimet Cup",
     "desc": "",
@@ -1290,6 +1382,8 @@
   {
     "id": 11501,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MLN",
     "name_En": "Activity",
     "desc": "",
@@ -1318,6 +1412,8 @@
   {
     "id": 11601,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PKLS",
     "name_En": "Activity",
     "desc": "",
@@ -1346,6 +1442,8 @@
   {
     "id": 11102,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1374,6 +1472,8 @@
   {
     "id": 12011,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1402,6 +1502,8 @@
   {
     "id": 12021,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1430,6 +1532,8 @@
   {
     "id": 12031,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1458,6 +1562,8 @@
   {
     "id": 12101,
     "name": "绿湖噩梦",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GLN",
     "name_En": "Green Lake Nightmare",
     "desc": "",
@@ -1486,6 +1592,8 @@
   {
     "id": 12201,
     "name": "绿湖噩梦",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GLN",
     "name_En": "Green Lake Nightmare",
     "desc": "",
@@ -1514,6 +1622,8 @@
   {
     "id": 12301,
     "name": "绿湖噩梦",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GLN",
     "name_En": "Green Lake Nightmare",
     "desc": "",
@@ -1542,6 +1652,8 @@
   {
     "id": 12401,
     "name": "绿湖噩梦",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GLN",
     "name_En": "Green Lake Nightmare",
     "desc": "",
@@ -1570,6 +1682,8 @@
   {
     "id": 12501,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JXK",
     "name_En": "Activity",
     "desc": "",
@@ -1598,6 +1712,8 @@
   {
     "id": 12601,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "YX",
     "name_En": "Activity",
     "desc": "",
@@ -1626,6 +1742,8 @@
   {
     "id": 12701,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "AC",
     "name_En": "Activity",
     "desc": "",
@@ -1654,6 +1772,8 @@
   {
     "id": 12801,
     "name": "梦的尾声",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1682,6 +1802,8 @@
   {
     "id": 12901,
     "name": "梦的尾声",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1710,6 +1832,8 @@
   {
     "id": 12102,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1738,6 +1862,8 @@
   {
     "id": 13101,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMP",
     "name_En": "Journey to Mor Pankh",
     "desc": "",
@@ -1766,6 +1892,8 @@
   {
     "id": 13102,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMP",
     "name_En": "Journey to Mor Pankh",
     "desc": "",
@@ -1794,6 +1922,8 @@
   {
     "id": 13201,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMP",
     "name_En": "Journey to Mor Pankh",
     "desc": "",
@@ -1822,6 +1952,8 @@
   {
     "id": 13301,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMP",
     "name_En": "Journey to Mor Pankh",
     "desc": "",
@@ -1850,6 +1982,8 @@
   {
     "id": 13401,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMP",
     "name_En": "Journey to Mor Pankh",
     "desc": "",
@@ -1878,6 +2012,8 @@
   {
     "id": 13501,
     "name": "行至摩卢旁卡",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "JMD",
     "name_En": "Journey to Mor Pankh Daily",
     "desc": "",
@@ -1906,6 +2042,8 @@
   {
     "id": 13701,
     "name": "鬃毛角色活动临时配置！！！",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1934,6 +2072,8 @@
   {
     "id": 13801,
     "name": "尘埃与星的边界临时配置！！！",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1962,6 +2102,8 @@
   {
     "id": 13901,
     "name": "寒舍小试",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -1990,6 +2132,8 @@
   {
     "id": 13902,
     "name": "寒舍小试",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2018,6 +2162,8 @@
   {
     "id": 13011,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2046,6 +2192,8 @@
   {
     "id": 13021,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2074,6 +2222,8 @@
   {
     "id": 13031,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2102,6 +2252,8 @@
   {
     "id": 105,
     "name": "洞穴的囚徒",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "5TH",
     "name_En": "The Prisoner in The Cave",
     "desc": "",
@@ -2130,6 +2282,8 @@
   {
     "id": 205,
     "name": "洞穴的囚徒",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "5TH",
     "name_En": "The Prisoner in The Cave",
     "desc": "",
@@ -2158,6 +2312,8 @@
   {
     "id": 310,
     "name": "星",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "5SP",
     "name_En": "The Star",
     "desc": "",
@@ -2186,6 +2342,8 @@
   {
     "id": 14101,
     "name": "证明启示",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GKD",
     "name_En": "Inspiration from the Proofs",
     "desc": "",
@@ -2214,6 +2372,8 @@
   {
     "id": 1901,
     "name": "奥利弗的故事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TSOO",
     "name_En": "The Story of Oliver",
     "desc": "",
@@ -2242,6 +2402,8 @@
   {
     "id": 1902,
     "name": "戏剧与戏剧",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TMOT",
     "name_En": "The Master of Theatrics",
     "desc": "",
@@ -2270,6 +2432,8 @@
   {
     "id": 2101,
     "name": "轶事挑战",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2298,6 +2462,8 @@
   {
     "id": 14011,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2326,6 +2492,8 @@
   {
     "id": 14021,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2354,6 +2522,8 @@
   {
     "id": 14031,
     "name": "夜访幽谭",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2382,6 +2552,8 @@
   {
     "id": 128001,
     "name": "BossRush经典",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2410,6 +2582,8 @@
   {
     "id": 128002,
     "name": "BossRush无尽",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2438,6 +2612,8 @@
   {
     "id": 14601,
     "name": "",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TX",
     "name_En": "Activity",
     "desc": "",
@@ -2466,6 +2642,8 @@
   {
     "id": 15101,
     "name": "复兴！乌卢鲁运动会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "RUG",
     "name_En": "Revival! The Uluru Games",
     "desc": "",
@@ -2494,6 +2672,8 @@
   {
     "id": 15102,
     "name": "复兴！乌卢鲁运动会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FG",
     "name_En": "Revival! The Uluru Games",
     "desc": "",
@@ -2522,6 +2702,8 @@
   {
     "id": 15201,
     "name": "复兴！乌卢鲁运动会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "RUG",
     "name_En": "Revival! The Uluru Games",
     "desc": "",
@@ -2550,6 +2732,8 @@
   {
     "id": 15301,
     "name": "复兴！乌卢鲁运动会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "RUG",
     "name_En": "Revival! The Uluru Games",
     "desc": "",
@@ -2578,6 +2762,8 @@
   {
     "id": 15401,
     "name": "复兴！乌卢鲁运动会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "RUG",
     "name_En": "Revival! The Uluru Games",
     "desc": "",
@@ -2606,6 +2792,8 @@
   {
     "id": 15011,
     "name": "跑者史诗",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2634,6 +2822,8 @@
   {
     "id": 15021,
     "name": "跑者史诗",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2662,6 +2852,8 @@
   {
     "id": 15031,
     "name": "跑者史诗",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -2690,6 +2882,8 @@
   {
     "id": 1903,
     "name": "直到长夜下旬",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TLD",
     "name_En": "The Long Night Singing Its Dirges",
     "desc": "",
@@ -2718,6 +2912,8 @@
   {
     "id": 1904,
     "name": "美梦后记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "AGD",
     "name_En": "After the Good Dream",
     "desc": "",
@@ -2746,6 +2942,8 @@
   {
     "id": 1402,
     "name": "轮齿之史",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "E",
     "name_En": "The History of the Gears",
     "desc": "我们都记得那个顺时针的时代。<br>在锈蚀与尘埃之中，在沉寂降临前——",
@@ -2774,6 +2972,8 @@
   {
     "id": 16101,
     "name": "朔日手记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "NS",
     "name_En": "Notes on Shuòrì",
     "desc": "",
@@ -2802,6 +3002,8 @@
   {
     "id": 16201,
     "name": "朔日手记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "NS",
     "name_En": "Notes on Shuòrì",
     "desc": "",
@@ -2830,6 +3032,8 @@
   {
     "id": 16301,
     "name": "朔日手记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "NS",
     "name_En": "Notes on Shuòrì",
     "desc": "",
@@ -2858,6 +3062,8 @@
   {
     "id": 16401,
     "name": "朔日手记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "NS",
     "name_En": "Notes on Shuòrì",
     "desc": "",
@@ -2886,6 +3092,8 @@
   {
     "id": 16501,
     "name": "朔日手记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "Lv",
     "name_En": "Notes on Shuòrì",
     "desc": "",
@@ -2914,6 +3122,8 @@
   {
     "id": 16601,
     "name": "曲香蒙求",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LT",
     "name_En": "Light to the Tavern",
     "desc": "",
@@ -2942,6 +3152,8 @@
   {
     "id": 16602,
     "name": "曲香蒙求",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LT",
     "name_En": "Light to the Tavern",
     "desc": "",
@@ -2970,6 +3182,8 @@
   {
     "id": 16603,
     "name": "天下有风",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FW",
     "name_En": "Flowing in the Wind",
     "desc": "",
@@ -2998,6 +3212,8 @@
   {
     "id": 16604,
     "name": "天下有风",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FW",
     "name_En": "Flowing in the Wind",
     "desc": "",
@@ -3026,6 +3242,8 @@
   {
     "id": 16701,
     "name": "山麓的回音",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "ETM",
     "name_En": "ECHOES IN THE MOUNTAIN",
     "desc": "",
@@ -3054,6 +3272,8 @@
   {
     "id": 16011,
     "name": "围城漫谈",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TBT",
     "name_En": "The Story of a Besieged Town",
     "desc": "",
@@ -3082,6 +3302,8 @@
   {
     "id": 16021,
     "name": "围城漫谈",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TBT",
     "name_En": "The Story of a Besieged Town",
     "desc": "",
@@ -3110,6 +3332,8 @@
   {
     "id": 16031,
     "name": "围城漫谈",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TBT",
     "name_En": "The Story of a Besieged Town",
     "desc": "",
@@ -3138,6 +3362,8 @@
   {
     "id": 1905,
     "name": "庸碌喜剧",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PCD",
     "name_En": "Pulp Comedy Dirges",
     "desc": "",
@@ -3166,6 +3392,8 @@
   {
     "id": 1906,
     "name": "重返人间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BTE",
     "name_En": "Back to Earth",
     "desc": "",
@@ -3194,6 +3422,8 @@
   {
     "id": 106,
     "name": "今夜星光灿烂",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "6TH",
     "name_En": "E lucevan le stelle",
     "desc": "",
@@ -3222,6 +3452,8 @@
   {
     "id": 206,
     "name": "今夜星光灿烂",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "6TH",
     "name_En": "E lucevan le stelle",
     "desc": "",
@@ -3250,6 +3482,8 @@
   {
     "id": 17011,
     "name": "环形之外",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BTR",
     "name_En": "Beyond the Ring",
     "desc": "",
@@ -3278,6 +3512,8 @@
   {
     "id": 17021,
     "name": "环形之外",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BTR",
     "name_En": "Beyond the Ring",
     "desc": "",
@@ -3306,6 +3542,8 @@
   {
     "id": 17031,
     "name": "环形之外",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BTR",
     "name_En": "Beyond the Ring",
     "desc": "",
@@ -3334,6 +3572,8 @@
   {
     "id": 17701,
     "name": "小房间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TSR",
     "name_En": "The Small Room",
     "desc": "",
@@ -3362,6 +3602,8 @@
   {
     "id": 17702,
     "name": "小房间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TSR",
     "name_En": "The Small Room",
     "desc": "",
@@ -3390,6 +3632,8 @@
   {
     "id": 17703,
     "name": "灯塔集",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TTL",
     "name_En": "The Tall Lighthouse",
     "desc": "",
@@ -3418,6 +3662,8 @@
   {
     "id": 17704,
     "name": "灯塔集",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TTL",
     "name_En": "The Tall Lighthouse",
     "desc": "",
@@ -3446,6 +3692,8 @@
   {
     "id": 1907,
     "name": "第九条美德",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TNV",
     "name_En": "The Ninth Virtue",
     "desc": "",
@@ -3474,6 +3722,8 @@
   {
     "id": 1908,
     "name": "齿轮的意志",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TWG",
     "name_En": "The Will of Gears",
     "desc": "",
@@ -3502,6 +3752,8 @@
   {
     "id": 18101,
     "name": "再见，来亚什基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FR",
     "name_En": "Farewell, Rayashki",
     "desc": "",
@@ -3530,6 +3782,8 @@
   {
     "id": 18102,
     "name": "再见，来亚什基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FG",
     "name_En": "Farewell, Rayashki",
     "desc": "",
@@ -3558,6 +3812,8 @@
   {
     "id": 18201,
     "name": "再见，来亚什基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FR",
     "name_En": "Farewell, Rayashki",
     "desc": "",
@@ -3586,6 +3842,8 @@
   {
     "id": 18301,
     "name": "再见，来亚什基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FR",
     "name_En": "Farewell, Rayashki",
     "desc": "",
@@ -3614,6 +3872,8 @@
   {
     "id": 18401,
     "name": "再见，来亚什基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FR",
     "name_En": "Farewell, Rayashki",
     "desc": "",
@@ -3642,6 +3902,8 @@
   {
     "id": 18601,
     "name": "黎明依旧到来",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "DAU",
     "name_En": "Dawn Arrives as Usual",
     "desc": "",
@@ -3670,6 +3932,8 @@
   {
     "id": 18602,
     "name": "黎明依旧到来",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "DAU",
     "name_En": "Dawn Arrives as Usual",
     "desc": "",
@@ -3698,6 +3962,8 @@
   {
     "id": 18603,
     "name": "银线结",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SK",
     "name_En": "Silver Knot",
     "desc": "",
@@ -3726,6 +3992,8 @@
   {
     "id": 18604,
     "name": "银线结",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SK",
     "name_En": "Silver Knot",
     "desc": "",
@@ -3754,6 +4022,8 @@
   {
     "id": 1909,
     "name": "致温妮弗雷德",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TW",
     "name_En": "To Wennifred",
     "desc": "",
@@ -3782,6 +4052,8 @@
   {
     "id": 1910,
     "name": "风吹乌哈拉",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TWJ",
     "name_En": "The Winds OF Juhalerat",
     "desc": "",
@@ -3810,6 +4082,8 @@
   {
     "id": 18011,
     "name": "极地人间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PT",
     "name_En": "Polar Town",
     "desc": "",
@@ -3838,6 +4112,8 @@
   {
     "id": 18021,
     "name": "极地人间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PT",
     "name_En": "Polar Town",
     "desc": "",
@@ -3866,6 +4142,8 @@
   {
     "id": 107,
     "name": "孤独之歌",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "Vereinsamt",
     "desc": "",
@@ -3894,6 +4172,8 @@
   {
     "id": 207,
     "name": "孤独之歌",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "Vereinsamt",
     "desc": "",
@@ -3922,6 +4202,8 @@
   {
     "id": 311,
     "name": "去往新世界",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "To the New World",
     "desc": "",
@@ -3950,6 +4232,8 @@
   {
     "id": 1403,
     "name": "尘灰以下",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "E",
     "name_En": "Under the Dirt",
     "desc": "一份将尘埃与泥土化为贵重之物的秘方。\n借此跃过狭缝之后，回头的人发现，\n那儿本就是一片空旷。",
@@ -3978,6 +4262,8 @@
   {
     "id": 19101,
     "name": "孤独之歌",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "Vereinsamt",
     "desc": "",
@@ -4006,6 +4292,8 @@
   {
     "id": 19102,
     "name": "孤独之歌",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "Vereinsamt",
     "desc": "",
@@ -4034,6 +4322,8 @@
   {
     "id": 4,
     "name": "老虎的金黄",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "4TH",
     "name_En": "El oro de los tigres",
     "desc": "",
@@ -4062,6 +4352,8 @@
   {
     "id": 5,
     "name": "洞穴的囚徒",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "5TH",
     "name_En": "The Prisoner in The Cave",
     "desc": "",
@@ -4090,6 +4382,8 @@
   {
     "id": 6,
     "name": "今夜星光灿烂",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "6TH",
     "name_En": "E lucevan le stelle",
     "desc": "",
@@ -4118,6 +4412,8 @@
   {
     "id": 7,
     "name": "孤独之歌",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "7TH",
     "name_En": "Vereinsamt",
     "desc": "",
@@ -4146,6 +4442,8 @@
   {
     "id": 19601,
     "name": "飞渡往日",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Flying to the Past",
     "desc": "",
@@ -4174,6 +4472,8 @@
   {
     "id": 19602,
     "name": "飞渡往日",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Flying to the Past",
     "desc": "",
@@ -4202,6 +4502,8 @@
   {
     "id": 19603,
     "name": "犹在镜中",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Through the Glass",
     "desc": "",
@@ -4230,6 +4532,8 @@
   {
     "id": 19604,
     "name": "犹在镜中",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Through the Glass",
     "desc": "",
@@ -4258,6 +4562,8 @@
   {
     "id": 1911,
     "name": "小春雀儿",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FX",
     "name_En": "Finding Xavier",
     "desc": "",
@@ -4286,6 +4592,8 @@
   {
     "id": 1912,
     "name": "塞梅尔维斯",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TTC",
     "name_En": "The Third Circumstance",
     "desc": "",
@@ -4314,6 +4622,8 @@
   {
     "id": 2901,
     "name": "黄昏的音序",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "A Series of Dusks",
     "desc": "",
@@ -4342,6 +4652,8 @@
   {
     "id": 19011,
     "name": "盗火者们",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Fire Thieves",
     "desc": "",
@@ -4370,6 +4682,8 @@
   {
     "id": 19021,
     "name": "盗火者们",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Fire Thieves",
     "desc": "",
@@ -4398,6 +4712,8 @@
   {
     "id": 20101,
     "name": "飞驰！明日之城",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Floor it! To the Golden City",
     "desc": "",
@@ -4426,6 +4742,8 @@
   {
     "id": 20102,
     "name": "飞驰！明日之城",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Floor it! To the Golden City",
     "desc": "",
@@ -4454,6 +4772,8 @@
   {
     "id": 20201,
     "name": "飞驰！明日之城",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Floor it! To the Golden City",
     "desc": "",
@@ -4482,6 +4802,8 @@
   {
     "id": 20301,
     "name": "飞驰！明日之城",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Floor it! To the Golden City",
     "desc": "",
@@ -4510,6 +4832,8 @@
   {
     "id": 20401,
     "name": "飞驰！明日之城",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FT",
     "name_En": "Floor it! To the Golden City",
     "desc": "",
@@ -4538,6 +4862,8 @@
   {
     "id": 1913,
     "name": "淑女的守则",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TLE",
     "name_En": "The Lady's Etiquette",
     "desc": "",
@@ -4566,6 +4892,8 @@
   {
     "id": 1914,
     "name": "只有泉水知道",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "WPK",
     "name_En": "Only Water Springs Know",
     "desc": "",
@@ -4594,6 +4922,8 @@
   {
     "id": 20601,
     "name": "旧金山小子",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "The San Francisco Kids",
     "desc": "",
@@ -4622,6 +4952,8 @@
   {
     "id": 20602,
     "name": "旧金山小子",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "The San Francisco Kids",
     "desc": "",
@@ -4650,6 +4982,8 @@
   {
     "id": 20603,
     "name": "第一千夜",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "On the Thousandth Night",
     "desc": "",
@@ -4678,6 +5012,8 @@
   {
     "id": 20604,
     "name": "第一千夜",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "On the Thousandth Night",
     "desc": "",
@@ -4706,6 +5042,8 @@
   {
     "id": 20011,
     "name": "午夜驰行",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MM",
     "name_En": "Midnight Mayhem",
     "desc": "",
@@ -4734,6 +5072,8 @@
   {
     "id": 20021,
     "name": "午夜驰行",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MM",
     "name_En": "Midnight Mayhem",
     "desc": "",
@@ -4762,6 +5102,8 @@
   {
     "id": 1915,
     "name": "起火点",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "WFS",
     "name_En": "Where the Fire Starts",
     "desc": "",
@@ -4790,6 +5132,8 @@
   {
     "id": 1916,
     "name": "权利归花儿",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FP",
     "name_En": "Flower Power",
     "desc": "",
@@ -4818,6 +5162,8 @@
   {
     "id": 21101,
     "name": "77号往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "THH",
     "name_En": "Route 77: The Haunted Highway",
     "desc": "",
@@ -4846,6 +5192,8 @@
   {
     "id": 21102,
     "name": "77号往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "THH",
     "name_En": "Route 77: The Haunted Highway",
     "desc": "",
@@ -4874,6 +5222,8 @@
   {
     "id": 21201,
     "name": "77号往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "THH",
     "name_En": "Route 77: The Haunted Highway",
     "desc": "",
@@ -4902,6 +5252,8 @@
   {
     "id": 21301,
     "name": "77号往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "THH",
     "name_En": "Route 77: The Haunted Highway",
     "desc": "",
@@ -4930,6 +5282,8 @@
   {
     "id": 21401,
     "name": "77号往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "THH",
     "name_En": "Route 77: The Haunted Highway",
     "desc": "",
@@ -4958,6 +5312,8 @@
   {
     "id": 21011,
     "name": "沿路逸话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SR",
     "name_En": "Stories on the Route",
     "desc": "",
@@ -4986,6 +5342,8 @@
   {
     "id": 21021,
     "name": "沿路逸话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SR",
     "name_En": "Stories on the Route",
     "desc": "",
@@ -5014,6 +5372,8 @@
   {
     "id": 21900,
     "name": "蓝手帕试用",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5042,6 +5402,8 @@
   {
     "id": 21910,
     "name": "红墙",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TRW",
     "name_En": "The Red Wall",
     "desc": "",
@@ -5070,6 +5432,8 @@
   {
     "id": 8,
     "name": "忧郁的热带",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "8TH",
     "name_En": "Tristes Tropiques",
     "desc": "",
@@ -5080,7 +5444,7 @@
     "openDay": "",
     "openLevel": 1,
     "rewardPoint": 0,
-    "preChapter": 7,
+    "preChapter": 101,
     "elementList": "",
     "canPlayOpenMv": 1,
     "canUseDouble": 1,
@@ -5098,6 +5462,8 @@
   {
     "id": 108,
     "name": "忧郁的热带",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "8TH",
     "name_En": "Tristes Tropiques",
     "desc": "",
@@ -5108,7 +5474,7 @@
     "openDay": "",
     "openLevel": 1,
     "rewardPoint": 0,
-    "preChapter": 107,
+    "preChapter": 101,
     "elementList": "",
     "canPlayOpenMv": 1,
     "canUseDouble": 1,
@@ -5126,6 +5492,8 @@
   {
     "id": 208,
     "name": "忧郁的热带",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "8TH",
     "name_En": "Tristes Tropiques",
     "desc": "",
@@ -5154,6 +5522,8 @@
   {
     "id": 22011,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MM",
     "name_En": "Midnight Mayhem",
     "desc": "",
@@ -5182,6 +5552,8 @@
   {
     "id": 22021,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MM",
     "name_En": "Midnight Mayhem",
     "desc": "",
@@ -5210,6 +5582,8 @@
   {
     "id": 22031,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "MM",
     "name_En": "Midnight Mayhem",
     "desc": "",
@@ -5238,6 +5612,8 @@
   {
     "id": 1917,
     "name": "乘法轴上的一天",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "DPL",
     "name_En": "A Day Plotted Logarithmically",
     "desc": "",
@@ -5266,6 +5642,8 @@
   {
     "id": 1918,
     "name": "长夜未逝",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "NWE",
     "name_En": "A Night Without End",
     "desc": "",
@@ -5294,6 +5672,8 @@
   {
     "id": 22900,
     "name": "十月无晴天",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "The Overcast October",
     "desc": "",
@@ -5322,6 +5702,8 @@
   {
     "id": 22910,
     "name": "向雨林深处",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Into the Rainforest",
     "desc": "",
@@ -5350,6 +5732,8 @@
   {
     "id": 22911,
     "name": "向雨林深处",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Into the Rainforest",
     "desc": "",
@@ -5378,6 +5762,8 @@
   {
     "id": 23101,
     "name": "圣火纪行：东区黎明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LD",
     "name_En": "Chronicles of Uluru: London Dawning",
     "desc": "",
@@ -5406,6 +5792,8 @@
   {
     "id": 23201,
     "name": "圣火纪行：东区黎明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LD",
     "name_En": "Chronicles of Uluru: London Dawning",
     "desc": "",
@@ -5434,6 +5822,8 @@
   {
     "id": 23301,
     "name": "圣火纪行：东区黎明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LD",
     "name_En": "Chronicles of Uluru: London Dawning",
     "desc": "",
@@ -5462,6 +5852,8 @@
   {
     "id": 23401,
     "name": "圣火纪行：东区黎明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LD",
     "name_En": "Chronicles of Uluru: London Dawning",
     "desc": "",
@@ -5490,6 +5882,8 @@
   {
     "id": 23501,
     "name": "太阳的背面",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Shadow of the Sun",
     "desc": "",
@@ -5518,6 +5912,8 @@
   {
     "id": 23601,
     "name": "夜游十字街",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Night Escapades on Cross Street",
     "desc": "",
@@ -5546,6 +5942,8 @@
   {
     "id": 23900,
     "name": "太阳的背面",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Shadow of the Sun",
     "desc": "",
@@ -5574,6 +5972,8 @@
   {
     "id": 23910,
     "name": "夜游十字街",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Shadow of the Sun",
     "desc": "",
@@ -5602,6 +6002,8 @@
   {
     "id": 9000,
     "name": "迷思海",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5630,6 +6032,8 @@
   {
     "id": 9010,
     "name": "回声屿",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5658,6 +6062,8 @@
   {
     "id": 9020,
     "name": "翻覆之舟",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5686,6 +6092,8 @@
   {
     "id": 1919,
     "name": "黄金与悲喜剧",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FG",
     "name_En": "A Fool's Gold",
     "desc": "",
@@ -5714,6 +6122,8 @@
   {
     "id": 23701,
     "name": "和平角斗场",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "PA",
     "name_En": "Puppet Arena",
     "desc": "",
@@ -5742,6 +6152,8 @@
   {
     "id": 23011,
     "name": "雾中盛会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5770,6 +6182,8 @@
   {
     "id": 23021,
     "name": "雾中盛会",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -5798,6 +6212,8 @@
   {
     "id": 24101,
     "name": "地球上最后的夜晚",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LEE",
     "name_En": "Last Evenings on Earth",
     "desc": "",
@@ -5826,6 +6242,8 @@
   {
     "id": 24201,
     "name": "地球上最后的夜晚",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LEE",
     "name_En": "Last Evenings on Earth",
     "desc": "",
@@ -5854,6 +6272,8 @@
   {
     "id": 24301,
     "name": "地球上最后的夜晚",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LEE",
     "name_En": "Last Evenings on Earth",
     "desc": "",
@@ -5882,6 +6302,8 @@
   {
     "id": 24401,
     "name": "地球上最后的夜晚",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LEE",
     "name_En": "Last Evenings on Earth",
     "desc": "",
@@ -5910,6 +6332,8 @@
   {
     "id": 24501,
     "name": "河港与海之间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Beyond the Coastline",
     "desc": "",
@@ -5938,6 +6362,8 @@
   {
     "id": 24900,
     "name": "河港与海之间",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Beyond the Coastline",
     "desc": "",
@@ -5966,6 +6392,8 @@
   {
     "id": 24910,
     "name": "努库泰澳兴建日",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Nukutaeao: Building Paradise!",
     "desc": "",
@@ -5994,6 +6422,8 @@
   {
     "id": 1920,
     "name": "最佳乐队",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "BBT",
     "name_En": "The  Best Band in Town",
     "desc": "",
@@ -6022,6 +6452,8 @@
   {
     "id": 24011,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6050,6 +6482,8 @@
   {
     "id": 24021,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6078,6 +6512,8 @@
   {
     "id": 25101,
     "name": "唐人街影话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SC",
     "name_En": "Showdown in Chinatown",
     "desc": "",
@@ -6106,6 +6542,8 @@
   {
     "id": 25201,
     "name": "唐人街影话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SC",
     "name_En": "Showdown in Chinatown",
     "desc": "",
@@ -6134,6 +6572,8 @@
   {
     "id": 25301,
     "name": "唐人街影话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SC",
     "name_En": "Showdown in Chinatown",
     "desc": "",
@@ -6162,6 +6602,8 @@
   {
     "id": 25401,
     "name": "唐人街影话",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "SC",
     "name_En": "Showdown in Chinatown",
     "desc": "",
@@ -6190,6 +6632,8 @@
   {
     "id": 183,
     "name": "警铃鸣响时",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "WAS",
     "name_En": "When the Alarm Sounds",
     "desc": "",
@@ -6212,12 +6656,14 @@
     "rewindChapterBg": 0,
     "ambientMusic": 0,
     "isHeroRecommend": 0,
-    "actId": 12704,
+    "actId": 12813,
     "episodeId": 0
   },
   {
     "id": 1921,
     "name": "鬼马探灵记",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GM",
     "name_En": "The Ghost Master",
     "desc": "",
@@ -6246,6 +6692,8 @@
   {
     "id": 25900,
     "name": "种瓜得瓜",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "Sow and Reap",
     "desc": "",
@@ -6274,6 +6722,8 @@
   {
     "id": 25910,
     "name": "洛基",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "The Great Trickster",
     "desc": "",
@@ -6302,6 +6752,8 @@
   {
     "id": 9,
     "name": "疯癫与文明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "9TH",
     "name_En": "Folie et Déraison",
     "desc": "",
@@ -6330,6 +6782,8 @@
   {
     "id": 109,
     "name": "疯癫与文明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "9TH",
     "name_En": "Folie et Déraison",
     "desc": "",
@@ -6358,6 +6812,8 @@
   {
     "id": 209,
     "name": "疯癫与文明",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "9TH",
     "name_En": "Folie et Déraison",
     "desc": "",
@@ -6386,6 +6842,8 @@
   {
     "id": 26001,
     "name": "新深眠测试1",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "ASM",
     "name_En": "ASM",
     "desc": "",
@@ -6414,6 +6872,8 @@
   {
     "id": 26910,
     "name": "答录机、蝴蝶、文学评论家",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "The Answering Machine, the Butterfly, and the Literary Critic",
     "desc": "",
@@ -6442,6 +6902,8 @@
   {
     "id": 26920,
     "name": "荣耀废墟与隐喻指南",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6470,6 +6932,8 @@
   {
     "id": 1922,
     "name": "最后的电影",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "LF",
     "name_En": "The Last Film",
     "desc": "",
@@ -6498,6 +6962,8 @@
   {
     "id": 26011,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6526,6 +6992,8 @@
   {
     "id": 26021,
     "name": "趋光性研究",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6554,6 +7022,8 @@
   {
     "id": 27101,
     "name": "1987宇宙组曲",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "CO",
     "name_En": "1987 Космическая Увертюра",
     "desc": "",
@@ -6582,6 +7052,8 @@
   {
     "id": 27201,
     "name": "1987宇宙组曲",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "CO",
     "name_En": "1987 Космическая Увертюра",
     "desc": "",
@@ -6610,6 +7082,8 @@
   {
     "id": 27301,
     "name": "1987宇宙组曲",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "CO",
     "name_En": "1987 Космическая Увертюра",
     "desc": "",
@@ -6638,6 +7112,8 @@
   {
     "id": 27401,
     "name": "1987宇宙组曲",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "CO",
     "name_En": "1987 Космическая Увертюра",
     "desc": "",
@@ -6666,6 +7142,8 @@
   {
     "id": 27501,
     "name": "匣中交流赛",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "FM",
     "name_En": "Friendly Match",
     "desc": "",
@@ -6694,6 +7172,8 @@
   {
     "id": 27601,
     "name": "间隔月",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "GM",
     "name_En": "Gap Month",
     "desc": "",
@@ -6722,6 +7202,8 @@
   {
     "id": 27701,
     "name": "末日与末日之后",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "DT",
     "name_En": "Doomsday & The Days After",
     "desc": "",
@@ -6750,6 +7232,8 @@
   {
     "id": 9030,
     "name": "第一道回声",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "",
     "name_En": "",
     "desc": "",
@@ -6778,6 +7262,8 @@
   {
     "id": 1923,
     "name": "海风的往事",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
     "chapterIndex": "TSW",
     "name_En": "The Sea Breeze Still Whispers",
     "desc": "",
@@ -6801,6 +7287,336 @@
     "ambientMusic": 0,
     "isHeroRecommend": 0,
     "actId": 12714,
+    "episodeId": 0
+  },
+  {
+    "id": 10,
+    "name": "复乐园",
+    "eaActivityId": 12802,
+    "dramaModeToMainChapterld": 110,
+    "chapterIndex": "10TH",
+    "name_En": "Paradise Regained",
+    "desc": "",
+    "year": "",
+    "chapterpic": "pic_110",
+    "type": 28,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 9,
+    "elementList": "",
+    "canPlayOpenMv": 1,
+    "canUseDouble": 1,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 1,
+    "actId": 0,
+    "episodeId": 1001
+  },
+  {
+    "id": 110,
+    "name": "复乐园",
+    "eaActivityId": 12802,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "10TH",
+    "name_En": "Paradise Regained",
+    "desc": "",
+    "year": "",
+    "chapterpic": "pic_110",
+    "type": 1,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 109,
+    "elementList": "",
+    "canPlayOpenMv": 1,
+    "canUseDouble": 1,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 1,
+    "actId": 0,
+    "episodeId": 11001
+  },
+  {
+    "id": 210,
+    "name": "复乐园",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "10TH",
+    "name_En": "Paradise Regained",
+    "desc": "",
+    "year": "",
+    "chapterpic": "pic_110",
+    "type": 2,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 1,
+    "actId": 0,
+    "episodeId": 21001
+  },
+  {
+    "id": 28101,
+    "name": "于洪流中",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "10TH",
+    "name_En": "Against the Flood",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 41,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": true,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 0,
+    "episodeId": 0
+  },
+  {
+    "id": 28102,
+    "name": "于洪流中",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "10TH",
+    "name_En": "Against the Flood",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 41,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 12812,
+    "episodeId": 0
+  },
+  {
+    "id": 28900,
+    "name": "虚无的倒影",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "",
+    "name_En": "In Her Own Reflection",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 202,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 12810,
+    "episodeId": 0
+  },
+  {
+    "id": 28910,
+    "name": "冰原时隙",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "",
+    "name_En": "A Moment on the White Expanse",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 202,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 12811,
+    "episodeId": 0
+  },
+  {
+    "id": 1924,
+    "name": "在路上",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "AFH",
+    "name_En": "Away From Home",
+    "desc": "",
+    "year": "",
+    "chapterpic": "pic_601",
+    "type": 19,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 12805,
+    "episodeId": 0
+  },
+  {
+    "id": 1280601,
+    "name": "《雨前漫游指南》",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "",
+    "name_En": "",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 39,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 0,
+    "episodeId": 0
+  },
+  {
+    "id": 1280602,
+    "name": "《雨前漫游指南》",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "",
+    "name_En": "",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 40,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 0,
+    "episodeId": 0
+  },
+  {
+    "id": 28201,
+    "name": "户外实验",
+    "eaActivityId": 0,
+    "dramaModeToMainChapterld": 0,
+    "chapterIndex": "",
+    "name_En": "",
+    "desc": "",
+    "year": "",
+    "chapterpic": "",
+    "type": 42,
+    "canReturn": 1,
+    "openDay": "",
+    "openLevel": 1,
+    "rewardPoint": 0,
+    "preChapter": 0,
+    "elementList": "",
+    "canPlayOpenMv": 0,
+    "canUseDouble": 0,
+    "canMakeTeam": 0,
+    "enterAfterFreeLimit": 0,
+    "challengeCountLimit": "",
+    "saveHeroGroup": false,
+    "navigationIcon": "",
+    "rewindChapterBg": 0,
+    "ambientMusic": 0,
+    "isHeroRecommend": 0,
+    "actId": 12811,
     "episodeId": 0
   }
 ]

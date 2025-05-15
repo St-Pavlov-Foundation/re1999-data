@@ -214,5 +214,17 @@
     "collectionBonus": "11#12705#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 2801,
+    "name": "极点的空白",
+    "nameEn": "The Pale Expanse",
+    "desc": "我们已抵达尽头，我们已回到初始，此时，一切尚还寂静着。",
+    "rewardIcon": "1701900",
+    "building": "12801|12802|12803",
+    "packages": "2801|2802|2803|2804",
+    "collectionBonus": "11#12803#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

@@ -72,6 +72,10 @@ function var_0_0.onConstructor(arg_1_0, arg_1_1)
 	if arg_1_1:HasField("bloodPool") then
 		arg_1_0.bloodPool = FightDataBloodPool.New(arg_1_1.bloodPool)
 	end
+
+	if arg_1_1:HasField("vorpalith") then
+		arg_1_0.vorpalith = FightEntityInfoData.New(arg_1_1.vorpalith)
+	end
 end
 
 return var_0_0

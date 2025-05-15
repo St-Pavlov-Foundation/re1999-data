@@ -945,4 +945,32 @@ function var_0_0.getRecommendEquip(arg_55_0)
 	return arg_55_0.recommendEquips
 end
 
+function var_0_0.getHeroType(arg_56_0)
+	local var_56_0 = lua_character_rank_replace.configDict[arg_56_0.heroId]
+
+	if var_56_0 then
+		local var_56_1 = lua_character_limited.configDict[arg_56_0.skin]
+
+		if var_56_1 and not string.nilorempty(var_56_1.specialLive2d) then
+			local var_56_2 = string.split(var_56_1.specialLive2d, "#")
+
+			if tonumber(var_56_2[1]) == 1 then
+				local var_56_3 = var_56_2[2] and tonumber(var_56_2[2]) or 3
+
+				if arg_56_0.rank > var_56_3 - 1 then
+					return var_56_0.heroType
+				end
+			end
+		end
+	end
+
+	return arg_56_0.config.heroType
+end
+
+function var_0_0.getTalentTxtByHeroType(arg_57_0)
+	local var_57_0 = arg_57_0:getHeroType()
+
+	return CharacterEnum.TalentTxtByHeroType[var_57_0]
+end
+
 return var_0_0

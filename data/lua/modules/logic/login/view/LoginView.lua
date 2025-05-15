@@ -174,13 +174,13 @@ function var_0_0._endSdkBlock(arg_12_0)
 	UIBlockMgr.instance:endBlock(UIBlockKey.SdkLogin)
 end
 
-function var_0_0._logout(arg_13_0)
+function var_0_0._logout(arg_13_0, arg_13_1)
 	if SDKMgr.instance:useSimulateLogin() then
 		ViewMgr.instance:openView(ViewName.SimulateLoginView)
 	else
 		arg_13_0._webLoginSuccess = nil
 
-		LoginController.instance:sdkLogout()
+		LoginController.instance:sdkLogout(arg_13_1)
 	end
 end
 
@@ -442,6 +442,7 @@ end
 function var_0_0._onClickAccount(arg_33_0)
 	GameFacade.showMessageBox(MessageBoxIdDefine.LogoutThisDevice, MsgBoxEnum.BoxType.Yes_No, function()
 		arg_33_0._delayLogout = true
+		arg_33_0._isUserManualLogout = true
 
 		arg_33_0:_showEnterGameBtn(false)
 		TaskDispatcher.runDelay(arg_33_0._delayForLogout, arg_33_0, 0.45)
@@ -449,10 +450,13 @@ function var_0_0._onClickAccount(arg_33_0)
 end
 
 function var_0_0._delayForLogout(arg_35_0)
+	local var_35_0 = arg_35_0._isUserManualLogout
+
+	arg_35_0._isUserManualLogout = false
 	arg_35_0._delayLogout = false
 
 	arg_35_0:_showEnterGameBtn(false)
-	arg_35_0:_logout()
+	arg_35_0:_logout(var_35_0)
 end
 
 function var_0_0._onClickNotice(arg_36_0)

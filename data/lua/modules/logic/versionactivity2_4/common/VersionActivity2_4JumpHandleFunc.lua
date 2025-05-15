@@ -44,6 +44,8 @@ function var_0_0.jumpTo12404(arg_6_0, arg_6_1)
 	VersionActivity2_4EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		PinballController.instance:openMainView()
 	end, nil, var_6_0)
+
+	return JumpEnum.JumpResult.Success
 end
 
 function var_0_0.jumpTo12405(arg_8_0, arg_8_1)
@@ -52,6 +54,8 @@ function var_0_0.jumpTo12405(arg_8_0, arg_8_1)
 	VersionActivity2_4EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		VersionActivity2_4MusicController.instance:openVersionActivity2_4MusicChapterView()
 	end, nil, var_8_0)
+
+	return JumpEnum.JumpResult.Success
 end
 
 function var_0_0.jumpTo11804(arg_10_0, arg_10_1)

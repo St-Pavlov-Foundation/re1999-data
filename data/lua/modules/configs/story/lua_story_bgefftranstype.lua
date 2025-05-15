@@ -232,5 +232,41 @@
 		"",
 		0,
 		""
+	},
+	{
+		26,
+		"融化出1.5",
+		"",
+		"v2a8_meltflow.prefab",
+		"",
+		0,
+		""
+	},
+	{
+		27,
+		"融化入1.5",
+		"",
+		"v2a8_meltflow_latter.prefab",
+		"",
+		0,
+		""
+	},
+	{
+		28,
+		"融化出2.5",
+		"",
+		"v2a8_meltflow_slow.prefab",
+		"",
+		0,
+		""
+	},
+	{
+		29,
+		"融化入2.5",
+		"",
+		"v2a8_meltflow_slow_latter.prefab",
+		"",
+		0,
+		""
 	}
 }

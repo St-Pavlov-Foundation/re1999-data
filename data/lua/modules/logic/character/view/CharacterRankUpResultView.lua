@@ -8,6 +8,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._gospine = gohelper.findChild(arg_1_0.viewGO, "spineContainer/#go_spine")
 	arg_1_0._gorighttop = gohelper.findChild(arg_1_0.viewGO, "#go_righttop")
 	arg_1_0._goranknormal = gohelper.findChild(arg_1_0.viewGO, "rank/#go_ranknormal")
+	arg_1_0._goimagemask = gohelper.findChild(arg_1_0.viewGO, "#scroll_info/image_mask")
 	arg_1_0._goeffect = gohelper.findChild(arg_1_0.viewGO, "#scroll_info/viewport/#go_effect")
 	arg_1_0._golevel = gohelper.findChild(arg_1_0._goeffect, "#go_level")
 	arg_1_0._goskill = gohelper.findChild(arg_1_0._goeffect, "#go_skill")
@@ -49,7 +50,7 @@ function var_0_0._editableInitView(arg_5_0)
 	arg_5_0._txtlevel = gohelper.findChildText(arg_5_0._goeffect, "#go_level")
 	arg_5_0._uiSpine = GuiModelAgent.Create(arg_5_0._gospine, true)
 
-	arg_5_0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, CharacterVoiceEnum.NormalPriority.CharacterRankUpResultView)
+	arg_5_0._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, arg_5_0.viewName)
 	arg_5_0._uiSpine:useRT()
 
 	arg_5_0._rareGos = arg_5_0:getUserDataTb_()
@@ -89,197 +90,251 @@ function var_0_0._editableInitView(arg_5_0)
 
 		table.insert(arg_5_0._attributeItems, var_5_1)
 	end
+
+	arg_5_0:_initSpecialEffectItem()
 end
 
-function var_0_0.onUpdateParam(arg_6_0)
+function var_0_0._initSpecialEffectItem(arg_6_0)
+	arg_6_0._specialEffectItem = arg_6_0:getUserDataTb_()
+
+	local var_6_0 = gohelper.findChild(arg_6_0._goeffect, "#go_SpecialEffect")
+	local var_6_1 = arg_6_0:getUserDataTb_()
+
+	var_6_1.go = var_6_0
+	var_6_1.txt = gohelper.findChildText(var_6_0, "#txt_SpecialEffect")
+	arg_6_0._specialEffectItem[1] = var_6_1
+
+	gohelper.setSibling(var_6_1.go, 0)
+
+	local var_6_2 = arg_6_0:getUserDataTb_()
+
+	var_6_2.go = gohelper.cloneInPlace(var_6_0)
+	var_6_2.txt = gohelper.findChildText(var_6_2.go, "#txt_SpecialEffect")
+
+	gohelper.setSibling(var_6_2.go, 1)
+
+	arg_6_0._specialEffectItem[2] = var_6_2
+end
+
+function var_0_0.onUpdateParam(arg_7_0)
 	return
 end
 
-function var_0_0.onOpen(arg_7_0)
-	arg_7_0.heroMo = HeroModel.instance:getByHeroId(arg_7_0.viewParam)
+function var_0_0.onOpen(arg_8_0)
+	arg_8_0.heroMo = HeroModel.instance:getByHeroId(arg_8_0.viewParam)
 
-	arg_7_0:_refreshView()
-	arg_7_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_7_0._onCloseViewFinish, arg_7_0, LuaEventSystem.Low)
-	arg_7_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, arg_7_0._onOpenViewFinish, arg_7_0, LuaEventSystem.Low)
+	arg_8_0:_refreshView()
+	arg_8_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_8_0._onCloseViewFinish, arg_8_0, LuaEventSystem.Low)
+	arg_8_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, arg_8_0._onOpenViewFinish, arg_8_0, LuaEventSystem.Low)
+	arg_8_0:_showMask()
 end
 
-function var_0_0._onOpenViewFinish(arg_8_0, arg_8_1)
-	if arg_8_1 == ViewName.CharacterSkinFullScreenView and arg_8_0._uiSpine then
-		arg_8_0._uiSpine:hideModelEffect()
-	end
-end
-
-function var_0_0._onCloseViewFinish(arg_9_0, arg_9_1)
-	if arg_9_1 == ViewName.CharacterSkinFullScreenView and arg_9_0._uiSpine then
-		arg_9_0._uiSpine:showModelEffect()
-	end
-end
-
-function var_0_0._refreshView(arg_10_0)
-	arg_10_0:_refreshSpine()
-	arg_10_0:_refreshRank()
-	arg_10_0:_refreshEffect()
-	arg_10_0:_refreshAttribute()
-end
-
-function var_0_0._refreshSpine(arg_11_0)
-	local var_11_0 = SkinConfig.instance:getSkinCo(arg_11_0.heroMo.skin)
-
-	arg_11_0._uiSpine:setResPath(var_11_0, arg_11_0._onSpineLoaded, arg_11_0)
-
-	local var_11_1 = var_11_0.characterRankUpViewOffset
-	local var_11_2
-
-	if string.nilorempty(var_11_1) then
-		var_11_2 = SkinConfig.instance:getSkinOffset(var_11_0.characterViewOffset)
-
-		local var_11_3 = CommonConfig.instance:getConstStr(ConstEnum.CharacterTitleViewOffset)
-		local var_11_4 = SkinConfig.instance:getSkinOffset(var_11_3)
-
-		var_11_2[1] = var_11_2[1] + var_11_4[1]
-		var_11_2[2] = var_11_2[2] + var_11_4[2]
-		var_11_2[3] = var_11_2[3] + var_11_4[3]
-	else
-		var_11_2 = SkinConfig.instance:getSkinOffset(var_11_1)
-	end
-
-	recthelper.setAnchor(arg_11_0._gospine.transform, tonumber(var_11_2[1]), tonumber(var_11_2[2]))
-	transformhelper.setLocalScale(arg_11_0._gospine.transform, tonumber(var_11_2[3]), tonumber(var_11_2[3]), tonumber(var_11_2[3]))
-end
-
-function var_0_0._refreshRank(arg_12_0)
-	local var_12_0 = arg_12_0.heroMo.rank
-	local var_12_1 = HeroConfig.instance:getMaxRank(arg_12_0.heroMo.config.rare)
-
-	for iter_12_0 = 1, 3 do
-		gohelper.setActive(arg_12_0._norrank.insights[iter_12_0].go, var_12_1 == iter_12_0)
-
-		for iter_12_1 = 1, iter_12_0 do
-			if iter_12_1 <= var_12_0 - 1 then
-				SLFramework.UGUI.GuiHelper.SetColor(arg_12_0._norrank.insights[iter_12_0].lights[iter_12_1]:GetComponent("Image"), "#f59d3d")
-			else
-				SLFramework.UGUI.GuiHelper.SetColor(arg_12_0._norrank.insights[iter_12_0].lights[iter_12_1]:GetComponent("Image"), "#646161")
-			end
-		end
-	end
-
-	gohelper.setActive(arg_12_0._norrank.eyes[1], var_12_1 ~= var_12_0 - 1)
-	gohelper.setActive(arg_12_0._norrank.eyes[2], var_12_1 == var_12_0 - 1)
-end
-
-function var_0_0._refreshEffect(arg_13_0)
-	local var_13_0 = SkillConfig.instance:getherorankCO(arg_13_0.heroMo.heroId, arg_13_0.heroMo.rank)
-
-	if not var_13_0 or var_13_0.effects == "" then
-		gohelper.setActive(arg_13_0._goeffect, false)
+function var_0_0._showMask(arg_9_0)
+	if arg_9_0.heroMo and CharacterVoiceEnum.RankUpResultShowMask[arg_9_0.heroMo.heroId] then
+		gohelper.setActive(arg_9_0._goimagemask, true)
 
 		return
 	end
 
-	gohelper.setActive(arg_13_0._goeffect, true)
-	gohelper.setActive(arg_13_0._txttalentlevel.gameObject, false)
-	gohelper.setActive(arg_13_0._golevel, false)
-	gohelper.setActive(arg_13_0._goskill, false)
-	gohelper.setActive(arg_13_0._btnheroDetail.gameObject, false)
+	gohelper.setActive(arg_9_0._goimagemask, false)
+end
 
-	local var_13_1 = string.split(var_13_0.effect, "|")
+function var_0_0._onOpenViewFinish(arg_10_0, arg_10_1)
+	if arg_10_1 == ViewName.CharacterSkinFullScreenView and arg_10_0._uiSpine then
+		arg_10_0._uiSpine:hideModelEffect()
+	end
+end
 
-	for iter_13_0 = 1, #var_13_1 do
-		local var_13_2 = string.splitToNumber(var_13_1[iter_13_0], "#")
+function var_0_0._onCloseViewFinish(arg_11_0, arg_11_1)
+	if arg_11_1 == ViewName.CharacterSkinFullScreenView and arg_11_0._uiSpine then
+		arg_11_0._uiSpine:showModelEffect()
+	end
+end
 
-		if var_13_2[1] == 1 then
-			gohelper.setActive(arg_13_0._golevel, true)
+function var_0_0._refreshView(arg_12_0)
+	arg_12_0:_refreshSpine()
+	arg_12_0:_refreshRank()
+	arg_12_0:_refreshEffect()
+	arg_12_0:_refreshAttribute()
+end
 
-			local var_13_3 = HeroConfig.instance:getShowLevel(tonumber(var_13_2[2]))
-			local var_13_4 = {
-				arg_13_0.heroMo.config.name,
-				tostring(var_13_3)
-			}
+function var_0_0._refreshSpine(arg_13_0)
+	local var_13_0 = SkinConfig.instance:getSkinCo(arg_13_0.heroMo.skin)
 
-			arg_13_0._txtlevel.text = GameUtil.getSubPlaceholderLuaLang(luaLang("character_rankupresult_levellimit"), var_13_4)
-		elseif var_13_2[1] == 2 then
-			gohelper.setActive(arg_13_0._goskill, true)
+	arg_13_0._uiSpine:setResPath(var_13_0, arg_13_0._onSpineLoaded, arg_13_0)
 
-			local var_13_5 = CharacterModel.instance:getMaxUnlockPassiveLevel(arg_13_0.heroMo.heroId)
-			local var_13_6 = SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(arg_13_0.heroMo.heroId, arg_13_0.heroMo.exSkillLevel)
+	local var_13_1 = var_13_0.characterRankUpViewOffset
+	local var_13_2
 
-			for iter_13_1, iter_13_2 in pairs(arg_13_0._rareGos) do
-				gohelper.setActive(iter_13_2, false)
+	if string.nilorempty(var_13_1) then
+		var_13_2 = SkinConfig.instance:getSkinOffset(var_13_0.characterViewOffset)
+
+		local var_13_3 = CommonConfig.instance:getConstStr(ConstEnum.CharacterTitleViewOffset)
+		local var_13_4 = SkinConfig.instance:getSkinOffset(var_13_3)
+
+		var_13_2[1] = var_13_2[1] + var_13_4[1]
+		var_13_2[2] = var_13_2[2] + var_13_4[2]
+		var_13_2[3] = var_13_2[3] + var_13_4[3]
+	else
+		var_13_2 = SkinConfig.instance:getSkinOffset(var_13_1)
+	end
+
+	recthelper.setAnchor(arg_13_0._gospine.transform, tonumber(var_13_2[1]), tonumber(var_13_2[2]))
+	transformhelper.setLocalScale(arg_13_0._gospine.transform, tonumber(var_13_2[3]), tonumber(var_13_2[3]), tonumber(var_13_2[3]))
+end
+
+function var_0_0._refreshRank(arg_14_0)
+	local var_14_0 = arg_14_0.heroMo.rank
+	local var_14_1 = HeroConfig.instance:getMaxRank(arg_14_0.heroMo.config.rare)
+
+	for iter_14_0 = 1, 3 do
+		gohelper.setActive(arg_14_0._norrank.insights[iter_14_0].go, var_14_1 == iter_14_0)
+
+		for iter_14_1 = 1, iter_14_0 do
+			if iter_14_1 <= var_14_0 - 1 then
+				SLFramework.UGUI.GuiHelper.SetColor(arg_14_0._norrank.insights[iter_14_0].lights[iter_14_1]:GetComponent("Image"), "#f59d3d")
+			else
+				SLFramework.UGUI.GuiHelper.SetColor(arg_14_0._norrank.insights[iter_14_0].lights[iter_14_1]:GetComponent("Image"), "#646161")
 			end
-
-			gohelper.setActive(arg_13_0._rareGos[var_13_5], true)
-
-			local var_13_7 = lua_skill.configDict[var_13_6[1].skillPassive].name
-
-			arg_13_0._txtskillRankUp.text = string.format(luaLang("character_rankupresult_skill"), tostring(var_13_7))
-
-			local var_13_8 = var_13_6[var_13_5].skillPassive
-			local var_13_9 = FightConfig.instance:getSkillEffectDesc(arg_13_0.heroMo:getHeroName(), lua_skill.configDict[var_13_8])
-
-			arg_13_0._txtskillDetail.text = HeroSkillModel.instance:skillDesToSpot(var_13_9, "#CE9358", "#CE9358")
-		elseif var_13_2[1] == 3 then
-			gohelper.setActive(arg_13_0._btnheroDetail.gameObject, true)
-
-			arg_13_0._skinId = var_13_2[2]
 		end
 	end
 
-	local var_13_10 = arg_13_0.heroMo.rank - 1
+	gohelper.setActive(arg_14_0._norrank.eyes[1], var_14_1 ~= var_14_0 - 1)
+	gohelper.setActive(arg_14_0._norrank.eyes[2], var_14_1 == var_14_0 - 1)
+end
 
-	gohelper.setActive(arg_13_0._txttalentlevel.gameObject, var_13_10 > 1)
+function var_0_0._refreshEffect(arg_15_0)
+	local var_15_0 = SkillConfig.instance:getherorankCO(arg_15_0.heroMo.heroId, arg_15_0.heroMo.rank)
 
-	if var_13_10 > 1 then
-		local var_13_11 = luaLang("talent_characterrankup_talentlevellimit" .. CharacterEnum.TalentTxtByHeroType[arg_13_0.heroMo.config.heroType])
+	if not var_15_0 or var_15_0.effects == "" then
+		gohelper.setActive(arg_15_0._goeffect, false)
 
-		arg_13_0._txttalentlevel.text = string.format(var_13_11, var_0_0.characterTalentLevel[var_13_10])
+		return
+	end
+
+	gohelper.setActive(arg_15_0._goeffect, true)
+	gohelper.setActive(arg_15_0._txttalentlevel.gameObject, false)
+	gohelper.setActive(arg_15_0._golevel, false)
+	gohelper.setActive(arg_15_0._goskill, false)
+	gohelper.setActive(arg_15_0._btnheroDetail.gameObject, false)
+
+	local var_15_1 = string.split(var_15_0.effect, "|")
+
+	for iter_15_0 = 1, #var_15_1 do
+		local var_15_2 = string.splitToNumber(var_15_1[iter_15_0], "#")
+
+		if var_15_2[1] == 1 then
+			gohelper.setActive(arg_15_0._golevel, true)
+
+			local var_15_3 = HeroConfig.instance:getShowLevel(tonumber(var_15_2[2]))
+			local var_15_4 = {
+				arg_15_0.heroMo.config.name,
+				tostring(var_15_3)
+			}
+
+			arg_15_0._txtlevel.text = GameUtil.getSubPlaceholderLuaLang(luaLang("character_rankupresult_levellimit"), var_15_4)
+		elseif var_15_2[1] == 2 then
+			gohelper.setActive(arg_15_0._goskill, true)
+
+			local var_15_5 = CharacterModel.instance:getMaxUnlockPassiveLevel(arg_15_0.heroMo.heroId)
+			local var_15_6 = SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(arg_15_0.heroMo.heroId, arg_15_0.heroMo.exSkillLevel)
+
+			for iter_15_1, iter_15_2 in pairs(arg_15_0._rareGos) do
+				gohelper.setActive(iter_15_2, false)
+			end
+
+			gohelper.setActive(arg_15_0._rareGos[var_15_5], true)
+
+			local var_15_7 = lua_skill.configDict[var_15_6[1].skillPassive]
+			local var_15_8 = var_15_7 and var_15_7.name or ""
+
+			arg_15_0._txtskillRankUp.text = string.format(luaLang("character_rankupresult_skill"), tostring(var_15_8))
+
+			local var_15_9 = var_15_6[var_15_5].skillPassive
+			local var_15_10 = FightConfig.instance:getSkillEffectDesc(arg_15_0.heroMo:getHeroName(), lua_skill.configDict[var_15_9])
+
+			arg_15_0._txtskillDetail.text = HeroSkillModel.instance:skillDesToSpot(var_15_10, "#CE9358", "#CE9358")
+		elseif var_15_2[1] == 3 then
+			gohelper.setActive(arg_15_0._btnheroDetail.gameObject, true)
+
+			arg_15_0._skinId = var_15_2[2]
+		end
+	end
+
+	local var_15_11 = arg_15_0.heroMo.rank - 1
+
+	gohelper.setActive(arg_15_0._txttalentlevel.gameObject, var_15_11 > 1)
+
+	if var_15_11 > 1 then
+		local var_15_12 = luaLang("talent_characterrankup_talentlevellimit" .. arg_15_0.heroMo:getTalentTxtByHeroType())
+
+		arg_15_0._txttalentlevel.text = string.format(var_15_12, var_0_0.characterTalentLevel[var_15_11])
+	end
+
+	arg_15_0:_refreshSpecialEffect()
+end
+
+function var_0_0._refreshSpecialEffect(arg_16_0)
+	local var_16_0 = CharacterModel.instance:getSpecialEffectDesc(arg_16_0.heroMo.skin, arg_16_0.heroMo.rank - 1)
+	local var_16_1 = 0
+
+	if var_16_0 then
+		for iter_16_0, iter_16_1 in ipairs(var_16_0) do
+			arg_16_0._specialEffectItem[iter_16_0].txt.text = iter_16_1
+			var_16_1 = var_16_1 + 1
+		end
+	end
+
+	for iter_16_2 = 1, #arg_16_0._specialEffectItem do
+		gohelper.setActive(arg_16_0._specialEffectItem[iter_16_2].go, iter_16_2 <= var_16_1)
 	end
 end
 
-function var_0_0._refreshAttribute(arg_14_0)
-	local var_14_0 = arg_14_0:getCurrentHeroAttribute()
-	local var_14_1 = arg_14_0:getHeroPreAttribute()
+function var_0_0._refreshAttribute(arg_17_0)
+	local var_17_0 = arg_17_0:getCurrentHeroAttribute()
+	local var_17_1 = arg_17_0:getHeroPreAttribute()
 
-	for iter_14_0, iter_14_1 in ipairs(arg_14_0._attributeItems) do
-		UISpriteSetMgr.instance:setCommonSprite(iter_14_1.icon, "icon_att_" .. CharacterEnum.BaseAttrIdList[iter_14_0])
+	for iter_17_0, iter_17_1 in ipairs(arg_17_0._attributeItems) do
+		UISpriteSetMgr.instance:setCommonSprite(iter_17_1.icon, "icon_att_" .. CharacterEnum.BaseAttrIdList[iter_17_0])
 
-		iter_14_1.preNumTxt.text = var_14_1[iter_14_0]
-		iter_14_1.curNumTxt.text = var_14_0[iter_14_0]
+		iter_17_1.preNumTxt.text = var_17_1[iter_17_0]
+		iter_17_1.curNumTxt.text = var_17_0[iter_17_0]
 	end
 end
 
-function var_0_0.getHeroPreAttribute(arg_15_0)
-	return arg_15_0:_getHeroAttribute(arg_15_0.heroMo.level - 1, arg_15_0.heroMo.rank - 1)
+function var_0_0.getHeroPreAttribute(arg_18_0)
+	return arg_18_0:_getHeroAttribute(arg_18_0.heroMo.level - 1, arg_18_0.heroMo.rank - 1)
 end
 
-function var_0_0.getCurrentHeroAttribute(arg_16_0)
-	return arg_16_0:_getHeroAttribute()
+function var_0_0.getCurrentHeroAttribute(arg_19_0)
+	return arg_19_0:_getHeroAttribute()
 end
 
-function var_0_0._getHeroAttribute(arg_17_0, arg_17_1, arg_17_2)
-	arg_17_1 = arg_17_1 or arg_17_0.heroMo.level
-	arg_17_2 = arg_17_2 or arg_17_0.heroMo.rank
+function var_0_0._getHeroAttribute(arg_20_0, arg_20_1, arg_20_2)
+	arg_20_1 = arg_20_1 or arg_20_0.heroMo.level
+	arg_20_2 = arg_20_2 or arg_20_0.heroMo.rank
 
-	local var_17_0
+	local var_20_0
 
-	if arg_17_0.heroMo:hasDefaultEquip() then
-		var_17_0 = {
-			arg_17_0.heroMo.defaultEquipUid
+	if arg_20_0.heroMo:hasDefaultEquip() then
+		var_20_0 = {
+			arg_20_0.heroMo.defaultEquipUid
 		}
 	end
 
-	return arg_17_0.heroMo:getTotalBaseAttrList(var_17_0, arg_17_1, arg_17_2)
+	return arg_20_0.heroMo:getTotalBaseAttrList(var_20_0, arg_20_1, arg_20_2)
 end
 
-function var_0_0.onClose(arg_18_0)
-	arg_18_0._simagecenterbg:UnLoadImage()
-	arg_18_0._uiSpine:setModelVisible(false)
+function var_0_0.onClose(arg_21_0)
+	arg_21_0._simagecenterbg:UnLoadImage()
+	arg_21_0._uiSpine:setModelVisible(false)
 end
 
-function var_0_0.onDestroyView(arg_19_0)
-	if arg_19_0._uiSpine then
-		arg_19_0._uiSpine:onDestroy()
+function var_0_0.onDestroyView(arg_22_0)
+	if arg_22_0._uiSpine then
+		arg_22_0._uiSpine:onDestroy()
 
-		arg_19_0._uiSpine = nil
+		arg_22_0._uiSpine = nil
 	end
 end
 

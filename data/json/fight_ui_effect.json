@@ -1,0 +1,82 @@
+[
+  {
+    "id": 10101,
+    "name": "一般伤害",
+    "res": "root/fightfloat/crit_damage"
+  },
+  {
+    "id": 10102,
+    "name": "克制伤害",
+    "res": "root/fightfloat/crit_restrain"
+  },
+  {
+    "id": 10103,
+    "name": "治疗",
+    "res": "root/fightfloat/crit_heal"
+  },
+  {
+    "id": 10104,
+    "name": "本源伤害",
+    "res": "root/fightfloat/crit_damage_origin"
+  },
+  {
+    "id": 10105,
+    "name": "附加伤害",
+    "res": "root/fightfloat/crit_additional_damage"
+  },
+  {
+    "id": 10106,
+    "name": "总伤害",
+    "res": "root/fightfloat/total_damage"
+  },
+  {
+    "id": 10201,
+    "name": "一般伤害",
+    "res": "root/fightfloat/crit_damage"
+  },
+  {
+    "id": 10202,
+    "name": "克制伤害",
+    "res": "root/fightfloat/crit_restrain"
+  },
+  {
+    "id": 10203,
+    "name": "治疗",
+    "res": "root/fightfloat/crit_heal"
+  },
+  {
+    "id": 10204,
+    "name": "本源伤害",
+    "res": "root/fightfloat/crit_damage_origin"
+  },
+  {
+    "id": 10205,
+    "name": "附加伤害",
+    "res": "root/fightfloat/crit_additional_damage"
+  },
+  {
+    "id": 10206,
+    "name": "总伤害",
+    "res": "root/fightfloat/total_damage"
+  },
+  {
+    "id": 20101,
+    "name": "开场效果",
+    "res": "root/#fapai"
+  },
+  {
+    "id": 20102,
+    "name": "出牌",
+    "res": "root/#chupai"
+  },
+  {
+    "id": 20201,
+    "name": "开场效果",
+    "res": "root/#fapai"
+  },
+  {
+    "id": 20202,
+    "name": "出牌",
+    "res": "root/#chupai"
+  }
+]

@@ -150,6 +150,10 @@ var_0_0.ActEffectWorkCls = {
 	[FightEnum.EffectType.COLDSATURDAYHURT] = FightWorkColdSaturdayHurt336,
 	[FightEnum.EffectType.NEWCHANGEWAVE] = FightWorkNewChangeWave337,
 	[FightEnum.EffectType.CLIENTEFFECT] = FightWorkClientEffect339,
+	[FightEnum.EffectType.NUODIKARANDOMATTACK] = FightWorkNuoDiKaRandomAttack341,
+	[FightEnum.EffectType.NUODIKATEAMATTACK] = FightWorkNuoDiKaTeamAttack342,
+	[FightEnum.EffectType.NUODIKARANDOMATTACKNUM] = FightWorkNuoDiKaRandomAttackNum349,
+	[FightEnum.EffectType.BUFFACTINFOUPDATE] = FightWorkBuffActInfoUpdate350,
 	[FightEnum.EffectType.CURE] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.DOT] = FightBuffTriggerEffect,
 	[FightEnum.EffectType.REBOUND] = FightBuffTriggerEffect,
@@ -171,8 +175,11 @@ var_0_0.ActEffectWorkCls = {
 	[FightEnum.EffectType.REDORBLUECOUNTEXSKILL] = FightWorkRedOrBlueCountExSkill,
 	[FightEnum.EffectType.TOCARDAREAREDORBLUE] = FightWorkToCardAreaRedOrBlue,
 	[FightEnum.EffectType.REDORBLUECHANGETRIGGER] = FightWorkRedOrBlueChangeTrigger,
+	[FightEnum.EffectType.TRIGGERANALYSIS] = FightWorkTriggerAnalysis343,
+	[FightEnum.EffectType.GETSECRETKEY] = FightWorkGetSecretKey344,
 	[FightEnum.EffectType.SAVEFIGHTRECORDUPDATE] = FightWorkSaveFightRecordUpdate,
-	[FightEnum.EffectType.ROUNDOFFSET] = FightWorkRoundOffset
+	[FightEnum.EffectType.ROUNDOFFSET] = FightWorkRoundOffset,
+	[FightEnum.EffectType.SURVIVALHEALTHCHANGE] = FightWorkSurvivalHealthChange345
 }
 var_0_0.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.ADDSPHANDCARD] = FightWorkAddSpHandCard320Container,
@@ -292,17 +299,24 @@ function var_0_0._buildSkillWork(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4, ar
 	local var_5_2 = FightConfig.instance:getSkinSkillTimeline(var_5_1, arg_5_1.actId)
 
 	if not string.nilorempty(var_5_2) then
-		if FightWorkFbStory.checkHasFbStory() then
+		local var_5_3 = FightWorkFbStory.checkHasFbStory()
+
+		if var_5_3 then
 			table.insert(arg_5_4, FightWorkFbStory.New(FightWorkFbStory.Type_BeforePlaySkill, arg_5_1.actId))
 		end
 
 		table.insert(arg_5_4, FightWorkShowEquipSkillEffect.New(arg_5_1, arg_5_3))
 
-		local var_5_3 = FightSkillFlow.New(arg_5_1)
+		local var_5_4 = FightSkillFlow.New(arg_5_1)
 
-		table.insert(arg_5_4, var_5_3)
-		table.insert(arg_5_5, var_5_3)
-		var_5_3:addAfterSkillEffects(var_0_0._buildEffectWorks(arg_5_1))
+		table.insert(arg_5_4, var_5_4)
+		table.insert(arg_5_5, var_5_4)
+		var_5_4:addAfterSkillEffects(var_0_0._buildEffectWorks(arg_5_1))
+
+		if var_5_3 then
+			table.insert(arg_5_4, FightWorkFbStory.New(FightWorkFbStory.Type_AfterPlaySkill, arg_5_1.actId))
+		end
+
 		table.insert(arg_5_4, FightParallelPlayNextSkillStep.New(arg_5_1, arg_5_2, arg_5_0))
 		table.insert(arg_5_4, FightNextSkillIsSameStep.New(arg_5_1, arg_5_2))
 

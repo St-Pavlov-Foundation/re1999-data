@@ -88,13 +88,13 @@ function var_0_0.checkedKey(arg_12_0, arg_12_1)
 end
 
 function var_0_0.setInputKey(arg_13_0)
-	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.PCInputKeyChange, MsgBoxEnum.BoxType.NO, arg_13_0._btnconfirmOnClick, arg_13_0._btncancelOnClick, nil, arg_13_0, arg_13_0, nil, arg_13_0._mo[PCInputModel.Configfield.description])
+	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.PCInputKeyChange, MsgBoxEnum.BoxType.NO, arg_13_0._btnconfirmOnClick, arg_13_0._btncancelOnClick, nil, arg_13_0, arg_13_0, nil, arg_13_0._mo.description)
 	arg_13_0:listenInputKey()
 end
 
 function var_0_0.setKey(arg_14_0, arg_14_1)
 	ViewMgr.instance:closeView(ViewName.MessageBoxView)
-	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.PCInputKeyConfirm, MsgBoxEnum.BoxType.Yes_No, arg_14_0._btnconfirmOnClick, arg_14_0._btncancelOnClick, nil, arg_14_0, arg_14_0, nil, arg_14_0._mo[PCInputModel.Configfield.description], PCInputController.instance:KeyNameToDescName(arg_14_1))
+	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.PCInputKeyConfirm, MsgBoxEnum.BoxType.Yes_No, arg_14_0._btnconfirmOnClick, arg_14_0._btncancelOnClick, nil, arg_14_0, arg_14_0, nil, arg_14_0._mo.description, PCInputController.instance:KeyNameToDescName(arg_14_1))
 
 	arg_14_0._modifyKey = arg_14_1
 end
@@ -122,7 +122,7 @@ function var_0_0.setKeyOccupied(arg_16_0, arg_16_1, arg_16_2)
 
 	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.PCInputKeySwap, MsgBoxEnum.BoxType.Yes_No, function()
 		arg_16_0:swapKey(arg_16_1, arg_16_2)
-	end, arg_16_0._btncancelOnClick, nil, nil, nil, nil, PCInputController.instance:KeyNameToDescName(arg_16_2), arg_16_1[PCInputModel.Configfield.description])
+	end, arg_16_0._btncancelOnClick, nil, nil, nil, nil, PCInputController.instance:KeyNameToDescName(arg_16_2), arg_16_1.description)
 end
 
 function var_0_0.swapKey(arg_18_0, arg_18_1, arg_18_2)

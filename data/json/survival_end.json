@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1001,
+    "name": "失败",
+    "type": 1,
+    "endDesc": "银色庇护所最终浸没在虚拟暴雨之中，但是好在这只是一次演习，我们还有重新再来的机会。这份不完美的演习记录已被编译成档案，等待着下一次重启。",
+    "unlock": "",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_1.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2001,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100001",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2002,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100012",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2003,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100022",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2004,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100033",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2005,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100043",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 2006,
+    "name": "正常结局",
+    "type": 2,
+    "endDesc": "你最终带领着所有人成功穿越了虚拟暴雨，但这是否能够证明组长在应对真正的暴雨时也能有如此出色的表现？或者说，让我们再试一次。",
+    "unlock": "finishTask#1#100053",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_3.png",
+    "order": 1,
+    "mainImg": ""
+  },
+  {
+    "id": 3001,
+    "name": "隐藏结局",
+    "type": 3,
+    "endDesc": "你与哑谜进行了”友好“的交流并达成了微妙的共识。随着本次演习的结束，你向拉普拉斯的各位展现了人文主义的光辉，也许这才是暴雨危机下尤为可贵的品质。",
+    "unlock": "finishTask#3#300007",
+    "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_2.png",
+    "order": 2,
+    "mainImg": ""
+  }
+]

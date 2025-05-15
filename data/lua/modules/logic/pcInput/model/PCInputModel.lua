@@ -77,7 +77,11 @@ function var_0_0.load(arg_4_0)
 	local var_4_1 = arg_4_0:loadFromConfig()
 
 	if var_4_0 and var_4_0 ~= "null" then
-		return arg_4_0:CheckConfigUpdate(cjson.decode(var_4_0), var_4_1)
+		local var_4_2 = cjson.decode(var_4_0)
+
+		GameUtil.removeJsonNull(var_4_2)
+
+		return arg_4_0:CheckConfigUpdate(var_4_2, var_4_1)
 	end
 
 	return var_4_1

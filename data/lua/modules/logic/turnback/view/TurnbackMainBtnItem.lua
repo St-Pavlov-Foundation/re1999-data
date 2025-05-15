@@ -6,7 +6,7 @@ function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
 	arg_1_0.turnbackId = arg_1_2
 	arg_1_0._hasSetRefreshTime = false
 
-	BpMainBtnItem.super.init(arg_1_0, gohelper.cloneInPlace(arg_1_1))
+	var_0_0.super.init(arg_1_0, gohelper.cloneInPlace(arg_1_1))
 end
 
 function var_0_0.onInit(arg_2_0, arg_2_1)

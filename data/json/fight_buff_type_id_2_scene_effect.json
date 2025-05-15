@@ -18,5 +18,15 @@
       0
     ],
     "reverseX": 0
+  },
+  {
+    "id": 32820009,
+    "effect": "buff/shuzhen_zaowu_jianyi_2",
+    "pos": [
+      0,
+      0,
+      0
+    ],
+    "reverseX": 0
   }
 ]

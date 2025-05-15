@@ -1,0 +1,50 @@
+[
+  {
+    "gameId": 2001,
+    "initialTeam": "30001",
+    "initialItem": "",
+    "eventGroup": 1,
+    "maxRoundLimit": 8,
+    "startEnergy": 70,
+    "winCondition": "2#8#1000105",
+    "winConditionStr": "▩1%s回合内，返回集合点。",
+    "extraCondition": "1#1000109",
+    "extraConditionStr": "绘制南极地形图。"
+  },
+  {
+    "gameId": 2002,
+    "initialTeam": "30002#30003#30004",
+    "initialItem": "20001#2",
+    "eventGroup": 2,
+    "maxRoundLimit": 7,
+    "startEnergy": 80,
+    "winCondition": "2#7#1000120",
+    "winConditionStr": "▩1%s回合内，寻找到安德烈小队的踪迹。",
+    "extraCondition": "3#1000132#1000133",
+    "extraConditionStr": "探索冰封之湖的秘密。"
+  },
+  {
+    "gameId": 2003,
+    "initialTeam": "30002#30009#30004#30006",
+    "initialItem": "20005#1",
+    "eventGroup": 3,
+    "maxRoundLimit": 99,
+    "startEnergy": 130,
+    "winCondition": "1#1000138#1000144#1000151",
+    "winConditionStr": "完成南极布防。",
+    "extraCondition": "2#10#1000138#1000144#1000151",
+    "extraConditionStr": "▩1%s回合内，完成南极布防。"
+  },
+  {
+    "gameId": 2004,
+    "initialTeam": "30002#30006",
+    "initialItem": "20006#2",
+    "eventGroup": 4,
+    "maxRoundLimit": 12,
+    "startEnergy": 140,
+    "winCondition": "4#12#1000157#1000168",
+    "winConditionStr": "▩1%s回合内，将伤员安置在帐篷中并汇报情况。",
+    "extraCondition": "1#1000163",
+    "extraConditionStr": "通过秘密频道，延长救援时间。"
+  }
+]

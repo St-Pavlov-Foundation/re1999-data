@@ -262,5 +262,13 @@
       "zh",
       "jp"
     ]
+  },
+  {
+    "name": "2_8_pv",
+    "supportLang": [
+      "en",
+      "zh",
+      "jp"
+    ]
   }
 ]

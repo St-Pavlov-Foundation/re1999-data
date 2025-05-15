@@ -48,10 +48,18 @@ function var_0_0.showMaterialInfoWithData(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 			return
 		end
 
+		if var_4_1.subType == ItemEnum.SubType.FightCard or var_4_1.subType == ItemEnum.SubType.FightFloatType then
+			ViewMgr.instance:openView(ViewName.MainSceneSkinMaterialTipView, arg_4_3)
+
+			return
+		end
+
 		if var_4_0 ~= true and MaterialEnum.SubTypePackages[var_4_1.subType] then
 			ViewMgr.instance:openView(ViewName.MaterialPackageTipView, arg_4_3)
 		elseif ItemEnum.RoomBackpackPropSubType[var_4_1.subType] then
 			ViewMgr.instance:openView(ViewName.RoomManufactureMaterialTipView, arg_4_3)
+		elseif var_4_1.subType == ItemEnum.SubType.PlayerBg and arg_4_2 == DecorateStoreEnum.SpecialGoodsId then
+			ViewMgr.instance:openView(ViewName.DecorateStoreGoodsTipView, arg_4_3)
 		else
 			ViewMgr.instance:openView(ViewName.MaterialTipView, arg_4_3)
 		end

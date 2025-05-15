@@ -124,6 +124,7 @@ function var_0_0._editableInitView(arg_7_0)
 	arg_7_0._gooffTag = gohelper.findChild(arg_7_0.viewGO, "view/propinfo/#simage_icon/#go_offTag")
 	arg_7_0._txtoff = gohelper.findChildText(arg_7_0.viewGO, "view/propinfo/#simage_icon/#go_offTag/#txt_off")
 	arg_7_0._gotxtCost = gohelper.findChildText(arg_7_0.viewGO, "view/propinfo/#btn_buy/cost/txt")
+	arg_7_0._gotxtv2a8_09 = gohelper.findChild(arg_7_0.viewGO, "view/propinfo/#simage_icon/txt_v2a8_09")
 	arg_7_0._seasoncardGo = gohelper.findChild(arg_7_0.viewGO, "view/seasoncard")
 
 	local var_7_0 = gohelper.findChild(arg_7_0._seasoncardGo, "reward")
@@ -138,7 +139,7 @@ function var_0_0._editableInitView(arg_7_0)
 end
 
 function var_0_0.onUpdateParam(arg_8_0)
-	return
+	arg_8_0:onOpen()
 end
 
 function var_0_0.onOpen(arg_9_0)
@@ -201,6 +202,7 @@ function var_0_0.onOpen(arg_9_0)
 
 	gohelper.setActive(arg_9_0._gonewbiePick, var_9_4)
 	arg_9_0:refreshSkinTips(arg_9_0._mo)
+	gohelper.setActive(arg_9_0._gotxtv2a8_09, PackageStoreEnum.AnimHeadDict[arg_9_0._mo.goodsId])
 end
 
 function var_0_0._refreshPriceArea(arg_10_0)

@@ -345,6 +345,9 @@ function var_0_0._onPlayFullText(arg_23_0, arg_23_1)
 		arg_23_0._frontItem:playTextFadeIn(arg_23_0._stepCo, arg_23_0._onFullTextShowFinished, arg_23_0)
 	elseif arg_23_0._stepCo.conversation.effType == StoryEnum.ConversationEffectType.WordByWord then
 		arg_23_0._frontItem:wordByWord(arg_23_0._stepCo, arg_23_0._onFullTextShowFinished, arg_23_0)
+	elseif arg_23_0._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Glitch then
+		arg_23_0._frontItem:playGlitch()
+		arg_23_0:_onFullTextShowFinished()
 	end
 end
 

@@ -128,7 +128,7 @@ function var_0_0._refreshItem(arg_6_0)
 			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4, nil, arg_6_0.checkActivityShowFirstEnter, arg_6_0)
 		elseif var_6_2 == VersionActivity2_2Enum.ActivityId.LimitDecorate then
 			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_8, var_6_2, arg_6_0.checkActivityShowFirstEnter, arg_6_0)
-		elseif var_6_2 == ActivityEnum.Activity.Activity1_9WarmUp or var_6_2 == ActivityEnum.Activity.V2a0_WarmUp or var_6_2 == ActivityEnum.Activity.V2a1_WarmUp or var_6_2 == ActivityEnum.Activity.V2a2_WarmUp or var_6_2 == ActivityEnum.Activity.V2a3_WarmUp or var_6_2 == ActivityEnum.Activity.RoomSign or var_6_2 == ActivityEnum.Activity.V2a5_WarmUp or var_6_2 == ActivityEnum.Activity.V2a6_WarmUp or var_6_2 == ActivityEnum.Activity.V2a7_WarmUp then
+		elseif var_6_2 == ActivityEnum.Activity.V2a4_WarmUp then
 			if arg_6_0._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(var_6_2)
 
@@ -139,8 +139,8 @@ function var_0_0._refreshItem(arg_6_0)
 				})
 			end
 
-			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4, nil, arg_6_0.checkIsV1A9WarmupRed, arg_6_0)
-		elseif var_6_2 == ActivityEnum.Activity.V2a4_WarmUp then
+			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4 ~= 0 and var_6_4 or RedDotEnum.DotNode.Activity125Task, nil, arg_6_0._checkIsV2a4WarmupRed, arg_6_0)
+		elseif var_6_5 == ActivityEnum.ActivityTypeID.Act125 then
 			if arg_6_0._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(var_6_2)
 
@@ -151,7 +151,7 @@ function var_0_0._refreshItem(arg_6_0)
 				})
 			end
 
-			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4 ~= 0 and var_6_4 or RedDotEnum.DotNode.Activity125Task, nil, arg_6_0._checkIsV2a4WarmupRed, arg_6_0)
+			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4, nil, arg_6_0.checkIsV1A9WarmupRed, arg_6_0)
 		elseif var_6_5 == ActivityEnum.ActivityTypeID.Act189 then
 			local var_6_14 = {
 				{
@@ -169,6 +169,8 @@ function var_0_0._refreshItem(arg_6_0)
 			}
 
 			RedDotController.instance:addMultiRedDot(arg_6_0._goreddot, var_6_14)
+		elseif var_6_5 == ActivityEnum.ActivityTypeID.Act201 then
+			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4, nil, arg_6_0.checkActivityShowFirstEnter, arg_6_0)
 		else
 			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_8, arg_6_0._mo.id)
 		end

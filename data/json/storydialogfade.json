@@ -282,5 +282,25 @@
   {
     "id": 71,
     "skipvideo": "2_7_activity_04"
+  },
+  {
+    "id": 72,
+    "skipvideo": "2_8_chapter10_01"
+  },
+  {
+    "id": 73,
+    "skipvideo": "2_8_chapter10_02"
+  },
+  {
+    "id": 74,
+    "skipvideo": "2_8_chapter10_03"
+  },
+  {
+    "id": 75,
+    "skipvideo": "2_8_chapter10_04"
+  },
+  {
+    "id": 76,
+    "skipvideo": "2_8_chapter10_05"
   }
 ]

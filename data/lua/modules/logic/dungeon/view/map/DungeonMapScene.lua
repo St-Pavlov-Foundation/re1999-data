@@ -410,388 +410,433 @@ function var_0_0._updateSwitchState(arg_30_0)
 	gohelper.setActive(arg_30_0._switchState2, var_30_0)
 end
 
-function var_0_0._preloadRes(arg_31_0, arg_31_1, arg_31_2, arg_31_3)
-	table.insert(arg_31_0, "ui/viewres/dungeon/chaptermap/chaptermapscenecanvas.prefab")
-	table.insert(arg_31_0, "ui/viewres/dungeon/chaptermap/dungeonmapinteractiveitem.prefab")
-
-	if arg_31_2 then
-		arg_31_1 = DungeonMapChapterLayout.getFocusMap(arg_31_2, arg_31_3)
-		DungeonMapModel.instance.preloadMapCfg = arg_31_1
+function var_0_0.getInteractiveItemPath(arg_31_0)
+	if arg_31_0 == DungeonEnum.ChapterId.Main1_10 then
+		return "ui/viewres/dungeon/chaptermap/dungeonmapinteractiveitem_110.prefab"
 	end
 
-	if not arg_31_1 then
+	return "ui/viewres/dungeon/chaptermap/dungeonmapinteractiveitem.prefab"
+end
+
+function var_0_0.getInteractiveItemCls(arg_32_0)
+	if arg_32_0 == DungeonEnum.ChapterId.Main1_10 then
+		return DungeonMapInteractiveItem110
+	end
+
+	return DungeonMapInteractiveItem
+end
+
+function var_0_0._preloadRes(arg_33_0, arg_33_1, arg_33_2, arg_33_3)
+	table.insert(arg_33_0, "ui/viewres/dungeon/chaptermap/chaptermapscenecanvas.prefab")
+	table.insert(arg_33_0, var_0_0.getInteractiveItemPath(arg_33_1.chapterId))
+
+	if arg_33_2 then
+		arg_33_1 = DungeonMapChapterLayout.getFocusMap(arg_33_2, arg_33_3)
+		DungeonMapModel.instance.preloadMapCfg = arg_33_1
+	end
+
+	if not arg_33_1 then
 		return
 	end
 
-	if not arg_31_2 then
-		if DungeonMapModel.instance.preloadMapCfg and DungeonMapModel.instance.preloadMapCfg ~= arg_31_1 then
-			logError(string.format("DungeonMapScene preload error preload:%s,normal:%s", DungeonMapModel.instance.preloadMapCfg.id, arg_31_1.id))
+	if not arg_33_2 then
+		if DungeonMapModel.instance.preloadMapCfg and DungeonMapModel.instance.preloadMapCfg ~= arg_33_1 then
+			logError(string.format("DungeonMapScene preload error preload:%s,normal:%s", DungeonMapModel.instance.preloadMapCfg.id, arg_33_1.id))
 		end
 
 		DungeonMapModel.instance.preloadMapCfg = nil
 	end
 
-	table.insert(arg_31_0, ResUrl.getDungeonMapRes(arg_31_1.res))
-	var_0_0._addAudioAndLight(arg_31_0, arg_31_1)
+	table.insert(arg_33_0, ResUrl.getDungeonMapRes(arg_33_1.res))
+	var_0_0._addAudioAndLight(arg_33_0, arg_33_1)
 end
 
-function var_0_0._addAudioAndLight(arg_32_0, arg_32_1)
-	if arg_32_1.chapterId == 103 then
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio_03.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light_03.prefab")
-	elseif arg_32_1.chapterId == 104 then
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio_04.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light_04.prefab")
-	elseif arg_32_1.chapterId == 105 then
-		table.insert(arg_32_0, "scenes/v1a4_m_s08_hddt/scenes_prefab/v1a4_m_s08_hddt_audio.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
-	elseif arg_32_1.chapterId == 310 then
-		table.insert(arg_32_0, "scenes/v1a4_m_s08_hddt_jz/scene_prefab/v1a4_m_s08_hddt_jz_audio.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
-	elseif arg_32_1.chapterId == DungeonEnum.ChapterId.Main1_6 then
-		table.insert(arg_32_0, "scenes/v1a7_m_s08_hddt/scenes_prefab/v1a7_m_s08_hddt_audio.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
+function var_0_0._addAudioAndLight(arg_34_0, arg_34_1)
+	if arg_34_1.chapterId == 103 then
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio_03.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light_03.prefab")
+	elseif arg_34_1.chapterId == 104 then
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio_04.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light_04.prefab")
+	elseif arg_34_1.chapterId == 105 then
+		table.insert(arg_34_0, "scenes/v1a4_m_s08_hddt/scenes_prefab/v1a4_m_s08_hddt_audio.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
+	elseif arg_34_1.chapterId == 310 then
+		table.insert(arg_34_0, "scenes/v1a4_m_s08_hddt_jz/scene_prefab/v1a4_m_s08_hddt_jz_audio.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
+	elseif arg_34_1.chapterId == DungeonEnum.ChapterId.Main1_6 then
+		table.insert(arg_34_0, "scenes/v1a7_m_s08_hddt/scenes_prefab/v1a7_m_s08_hddt_audio.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
 	else
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio.prefab")
-		table.insert(arg_32_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_audio.prefab")
+		table.insert(arg_34_0, "scenes/m_s08_hddt/scene_prefab/m_s08_hddt_light.prefab")
 	end
 end
 
-function var_0_0._disposeScene(arg_33_0)
-	arg_33_0._oldScenePos = arg_33_0._targetPos
-	arg_33_0._tempMapCfg = arg_33_0._mapCfg
+function var_0_0._disposeScene(arg_35_0)
+	arg_35_0._oldScenePos = arg_35_0._targetPos
+	arg_35_0._tempMapCfg = arg_35_0._mapCfg
 
 	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnDisposeScene)
 
-	if arg_33_0._sceneGo then
-		gohelper.destroy(arg_33_0._sceneGo)
+	if arg_35_0._sceneGo then
+		gohelper.destroy(arg_35_0._sceneGo)
 
-		arg_33_0._sceneGo = nil
+		arg_35_0._sceneGo = nil
 	end
 
-	arg_33_0._sceneTrans = nil
+	arg_35_0._sceneTrans = nil
 
-	if arg_33_0._mapLoader then
-		arg_33_0._mapLoader:dispose()
+	if arg_35_0._mapLoader then
+		arg_35_0._mapLoader:dispose()
 
-		arg_33_0._mapLoader = nil
+		arg_35_0._mapLoader = nil
 	end
 
-	TaskDispatcher.cancelTask(arg_33_0._addMapLight, arg_33_0)
-	TaskDispatcher.cancelTask(arg_33_0._addAllAudio, arg_33_0)
-	arg_33_0:_removeEffectAudio(true)
-	arg_33_0:_stopAreaAudio()
+	TaskDispatcher.cancelTask(arg_35_0._addMapLight, arg_35_0)
+	TaskDispatcher.cancelTask(arg_35_0._addAllAudio, arg_35_0)
+	arg_35_0:_removeEffectAudio(true)
+	arg_35_0:_stopAreaAudio()
 	AudioMgr.instance:trigger(AudioEnum.UI.stop_uinoise_bus)
 end
 
-function var_0_0._rebuildScene(arg_34_0)
-	arg_34_0:_changeMap(arg_34_0._tempMapCfg, true)
+function var_0_0._rebuildScene(arg_36_0)
+	arg_36_0:_changeMap(arg_36_0._tempMapCfg, true)
 
-	arg_34_0._tempMapCfg = nil
+	arg_36_0._tempMapCfg = nil
 end
 
-function var_0_0._removeEffectAudio(arg_35_0, arg_35_1)
-	if not arg_35_0._effectAudio then
+function var_0_0._removeEffectAudio(arg_37_0, arg_37_1)
+	if not arg_37_0._effectAudio then
 		return
 	end
 
-	if arg_35_0._effectAudio == arg_35_0._mapCfg.effectAudio and not arg_35_1 then
+	if arg_37_0._effectAudio == arg_37_0._mapCfg.effectAudio and not arg_37_1 then
 		return
 	end
 
 	AudioEffectMgr.instance:stopAudio(AudioEnum.Story.Play_Chapter_Start)
 
-	arg_35_0._effectAudio = nil
+	arg_37_0._effectAudio = nil
 end
 
-function var_0_0._addEffectAudio(arg_36_0)
-	if arg_36_0._effectAudio == arg_36_0._mapCfg.effectAudio or arg_36_0._mapCfg.effectAudio <= 0 then
+function var_0_0._addEffectAudio(arg_38_0)
+	if arg_38_0._effectAudio == arg_38_0._mapCfg.effectAudio or arg_38_0._mapCfg.effectAudio <= 0 then
 		return
 	end
 
-	arg_36_0._effectAudio = arg_36_0._mapCfg.effectAudio
+	arg_38_0._effectAudio = arg_38_0._mapCfg.effectAudio
 
 	AudioEffectMgr.instance:playAudio(AudioEnum.Story.Play_Chapter_Start)
 end
 
-function var_0_0._addMapLight(arg_37_0)
-	local var_37_0 = arg_37_0._mapLightUrl
-	local var_37_1 = arg_37_0._mapLoader:getAssetItem(var_37_0):GetResource(var_37_0)
+function var_0_0._addMapLight(arg_39_0)
+	local var_39_0 = arg_39_0._mapLightUrl
+	local var_39_1 = arg_39_0._mapLoader:getAssetItem(var_39_0):GetResource(var_39_0)
 
-	gohelper.clone(var_37_1, arg_37_0._sceneGo)
+	gohelper.clone(var_39_1, arg_39_0._sceneGo)
 	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnInitElements)
 	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnNormalDungeonInitElements)
 end
 
-function var_0_0._addMapAudio(arg_38_0)
-	if arg_38_0._mapAudioGo then
-		gohelper.addChild(arg_38_0._sceneGo, arg_38_0._mapAudioGo)
+function var_0_0._addMapAudio(arg_40_0)
+	if arg_40_0._mapAudioGo then
+		gohelper.addChild(arg_40_0._sceneGo, arg_40_0._mapAudioGo)
 
 		return
 	end
 
-	if arg_38_0._mapCfg.chapterId == DungeonEnum.ChapterId.Main1_6 and not arg_38_0.playingMain1_6Effect then
-		arg_38_0.playingMain1_6Effect = true
+	if arg_40_0._mapCfg.chapterId == DungeonEnum.ChapterId.Main1_6 and not arg_40_0.playingMain1_6Effect then
+		arg_40_0.playingMain1_6Effect = true
 
 		AudioEffectMgr.instance:playAudio(AudioEnum.Bgm.Main1_6Effect)
 	end
 
-	local var_38_0 = arg_38_0._mapAudioUrl
-	local var_38_1 = arg_38_0._mapLoader:getAssetItem(var_38_0):GetResource(var_38_0)
+	local var_40_0 = arg_40_0._mapAudioUrl
+	local var_40_1 = arg_40_0._mapLoader:getAssetItem(var_40_0):GetResource(var_40_0)
 
-	arg_38_0._mapAudioGo = gohelper.clone(var_38_1, arg_38_0._sceneGo, "audio")
+	arg_40_0._mapAudioGo = gohelper.clone(var_40_1, arg_40_0._sceneGo, "audio")
 
-	gohelper.addChild(arg_38_0._sceneGo, arg_38_0._mapAudioGo)
-	transformhelper.setLocalPos(arg_38_0._mapAudioGo.transform, 0, 0, 0)
+	gohelper.addChild(arg_40_0._sceneGo, arg_40_0._mapAudioGo)
+	transformhelper.setLocalPos(arg_40_0._mapAudioGo.transform, 0, 0, 0)
 
-	local var_38_2 = arg_38_0._mapCfg.areaAudio
+	local var_40_2 = arg_40_0._mapCfg.areaAudio
 
-	if string.nilorempty(var_38_2) then
+	if string.nilorempty(var_40_2) then
 		return
 	end
 
-	arg_38_0._curMapAreaAudio = var_38_2
+	arg_40_0._curMapAreaAudio = var_40_2
 
-	local var_38_3 = gohelper.findChild(arg_38_0._mapAudioGo, "audio")
+	local var_40_3 = gohelper.findChild(arg_40_0._mapAudioGo, "audio")
 
-	if var_38_2 == "all" then
-		local var_38_4 = var_38_3.transform
-		local var_38_5 = var_38_4.childCount
+	if var_40_2 == "all" then
+		local var_40_4 = var_40_3.transform
+		local var_40_5 = var_40_4.childCount
 
-		for iter_38_0 = 1, var_38_5 do
-			local var_38_6 = var_38_4:GetChild(iter_38_0 - 1)
+		for iter_40_0 = 1, var_40_5 do
+			local var_40_6 = var_40_4:GetChild(iter_40_0 - 1)
 
-			gohelper.setActive(var_38_6.gameObject, true)
+			gohelper.setActive(var_40_6.gameObject, true)
 		end
 
 		return
 	end
 
-	local var_38_7 = string.split(var_38_2, "#")
+	local var_40_7 = string.split(var_40_2, "#")
 
-	for iter_38_1, iter_38_2 in ipairs(var_38_7) do
-		local var_38_8 = gohelper.findChild(var_38_3, iter_38_2)
+	for iter_40_1, iter_40_2 in ipairs(var_40_7) do
+		local var_40_8 = gohelper.findChild(var_40_3, iter_40_2)
 
-		gohelper.setActive(var_38_8, true)
+		gohelper.setActive(var_40_8, true)
 	end
 end
 
-function var_0_0._initCanvas(arg_39_0)
-	local var_39_0 = arg_39_0._mapLoader:getAssetItem(arg_39_0._canvasUrl):GetResource(arg_39_0._canvasUrl)
+function var_0_0._initCanvas(arg_41_0)
+	local var_41_0 = arg_41_0._mapLoader:getAssetItem(arg_41_0._canvasUrl):GetResource(arg_41_0._canvasUrl)
 
-	arg_39_0._sceneCanvasGo = gohelper.clone(var_39_0, arg_39_0._sceneGo)
-	arg_39_0._sceneCanvas = arg_39_0._sceneCanvasGo:GetComponent("Canvas")
-	arg_39_0._sceneCanvas.worldCamera = CameraMgr.instance:getMainCamera()
-	arg_39_0._itemPrefab = arg_39_0._mapLoader:getAssetItem(arg_39_0._interactiveItemUrl):GetResource(arg_39_0._interactiveItemUrl)
+	arg_41_0._sceneCanvasGo = gohelper.clone(var_41_0, arg_41_0._sceneGo)
+	arg_41_0._sceneCanvas = arg_41_0._sceneCanvasGo:GetComponent("Canvas")
+	arg_41_0._sceneCanvas.worldCamera = CameraMgr.instance:getMainCamera()
+	arg_41_0._itemPrefab = arg_41_0._mapLoader:getAssetItem(arg_41_0._interactiveItemUrl):GetResource(arg_41_0._interactiveItemUrl)
 end
 
-function var_0_0.getInteractiveItem(arg_40_0)
-	arg_40_0._uiGo = gohelper.clone(arg_40_0._itemPrefab, arg_40_0._sceneCanvasGo)
-	arg_40_0._interactiveItem = MonoHelper.addLuaComOnceToGo(arg_40_0._uiGo, DungeonMapInteractiveItem)
+function var_0_0.getInteractiveItem(arg_42_0)
+	arg_42_0._uiGo = gohelper.clone(arg_42_0._itemPrefab, arg_42_0._sceneCanvasGo)
+	arg_42_0._interactiveItem = MonoHelper.addLuaComOnceToGo(arg_42_0._uiGo, var_0_0.getInteractiveItemCls(arg_42_0._mapCfg.chapterId))
 
-	gohelper.setActive(arg_40_0._uiGo, false)
+	gohelper.setActive(arg_42_0._uiGo, false)
 
-	return arg_40_0._interactiveItem
+	return arg_42_0._interactiveItem
 end
 
-function var_0_0.showInteractiveItem(arg_41_0)
-	return not gohelper.isNil(arg_41_0._uiGo)
+function var_0_0.showInteractiveItem(arg_43_0)
+	return not gohelper.isNil(arg_43_0._uiGo)
 end
 
-function var_0_0._initScene(arg_42_0)
-	arg_42_0._mapSize = gohelper.findChild(arg_42_0._sceneGo, "root/size"):GetComponentInChildren(typeof(UnityEngine.BoxCollider)).size
+function var_0_0._initScene(arg_44_0)
+	arg_44_0._mapSize = gohelper.findChild(arg_44_0._sceneGo, "root/size"):GetComponentInChildren(typeof(UnityEngine.BoxCollider)).size
 
-	local var_42_0
-	local var_42_1 = GameUtil.getAdapterScale()
+	local var_44_0
+	local var_44_1 = GameUtil.getAdapterScale()
 
-	if var_42_1 ~= 1 then
-		var_42_0 = ViewMgr.instance:getUILayer(UILayerName.Hud)
+	if var_44_1 ~= 1 then
+		var_44_0 = ViewMgr.instance:getUILayer(UILayerName.Hud)
 	else
-		var_42_0 = ViewMgr.instance:getUIRoot()
+		var_44_0 = ViewMgr.instance:getUIRoot()
 	end
 
-	local var_42_2 = var_42_0.transform:GetWorldCorners()
-	local var_42_3 = var_42_2[1] * var_42_1
-	local var_42_4 = var_42_2[3] * var_42_1
+	local var_44_2 = var_44_0.transform:GetWorldCorners()
+	local var_44_3 = var_44_2[1] * var_44_1
+	local var_44_4 = var_44_2[3] * var_44_1
 
-	arg_42_0._viewWidth = math.abs(var_42_4.x - var_42_3.x)
-	arg_42_0._viewHeight = math.abs(var_42_4.y - var_42_3.y)
-	arg_42_0._mapMinX = var_42_3.x - (arg_42_0._mapSize.x - arg_42_0._viewWidth)
-	arg_42_0._mapMaxX = var_42_3.x
-	arg_42_0._mapMinY = var_42_3.y
-	arg_42_0._mapMaxY = var_42_3.y + (arg_42_0._mapSize.y - arg_42_0._viewHeight)
+	arg_44_0._viewWidth = math.abs(var_44_4.x - var_44_3.x)
+	arg_44_0._viewHeight = math.abs(var_44_4.y - var_44_3.y)
+	arg_44_0._mapMinX = var_44_3.x - (arg_44_0._mapSize.x - arg_44_0._viewWidth)
+	arg_44_0._mapMaxX = var_44_3.x
+	arg_44_0._mapMinY = var_44_3.y
+	arg_44_0._mapMaxY = var_44_3.y + (arg_44_0._mapSize.y - arg_44_0._viewHeight)
 
-	if arg_42_0._oldScenePos then
-		arg_42_0._sceneTrans.localPosition = arg_42_0._oldScenePos
+	if arg_44_0._oldScenePos then
+		arg_44_0._sceneTrans.localPosition = arg_44_0._oldScenePos
 	end
 
-	arg_42_0:_setInitPos(arg_42_0._oldScenePos)
+	arg_44_0:_setInitPos(arg_44_0._oldScenePos)
 
-	arg_42_0._oldScenePos = nil
+	arg_44_0._oldScenePos = nil
 end
 
-function var_0_0._setInitPos(arg_43_0, arg_43_1)
-	if not arg_43_0._mapCfg then
+function var_0_0._setInitPos(arg_45_0, arg_45_1)
+	if not arg_45_0._mapCfg then
 		return
 	end
 
 	if ToughBattleModel.instance:getIsJumpActElement() then
 		DungeonMapModel.instance.directFocusElement = true
 
-		arg_43_0:_focusElementById(ToughBattleEnum.ActElementId)
+		arg_45_0:_focusElementById(ToughBattleEnum.ActElementId)
 
 		DungeonMapModel.instance.directFocusElement = false
 
 		return
 	end
 
-	local var_43_0 = arg_43_0._mapCfg.initPos
-	local var_43_1 = string.splitToNumber(var_43_0, "#")
+	if arg_45_0:_focusBossElement() then
+		return
+	end
 
-	arg_43_0:setScenePosSafety(Vector3(var_43_1[1], var_43_1[2], 0), arg_43_1)
+	local var_45_0 = arg_45_0._mapCfg.initPos
+	local var_45_1 = string.splitToNumber(var_45_0, "#")
+
+	arg_45_0:setScenePosSafety(Vector3(var_45_1[1], var_45_1[2], 0), arg_45_1)
 end
 
-function var_0_0.disposeOldMap(arg_44_0)
-	if arg_44_0._sceneTrans then
-		arg_44_0._oldScenePos = arg_44_0._sceneTrans.localPosition
+function var_0_0._focusBossElement(arg_46_0)
+	local var_46_0 = DungeonMapModel.instance:getElements(arg_46_0._mapCfg.id)
+	local var_46_1 = false
+
+	for iter_46_0, iter_46_1 in ipairs(var_46_0) do
+		if iter_46_1.id == VersionActivity2_8BossEnum.ElementId then
+			var_46_1 = true
+
+			break
+		end
+	end
+
+	if var_46_1 and (DungeonModel.instance:chapterIsPass(DungeonEnum.ChapterId.BossStory) or VersionActivity2_8BossModel.instance:isFocusElement()) then
+		VersionActivity2_8BossModel.instance:setFocusElement(false)
+
+		DungeonMapModel.instance.directFocusElement = true
+
+		arg_46_0:_focusElementById(VersionActivity2_8BossEnum.ElementId)
+
+		DungeonMapModel.instance.directFocusElement = false
+
+		return true
+	end
+end
+
+function var_0_0.disposeOldMap(arg_47_0)
+	if arg_47_0._sceneTrans then
+		arg_47_0._oldScenePos = arg_47_0._sceneTrans.localPosition
 	else
-		arg_44_0._oldScenePos = nil
+		arg_47_0._oldScenePos = nil
 	end
 
-	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnDisposeOldMap, arg_44_0.viewName)
+	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnDisposeOldMap, arg_47_0.viewName)
 
-	if arg_44_0._oldSceneGo then
-		gohelper.destroy(arg_44_0._oldSceneGo)
+	if arg_47_0._oldSceneGo then
+		gohelper.destroy(arg_47_0._oldSceneGo)
 
-		arg_44_0._oldSceneGo = nil
+		arg_47_0._oldSceneGo = nil
 	end
 
-	if arg_44_0._oldMapLoader then
-		arg_44_0._oldMapLoader:dispose()
+	if arg_47_0._oldMapLoader then
+		arg_47_0._oldMapLoader:dispose()
 
-		arg_44_0._oldMapLoader = nil
+		arg_47_0._oldMapLoader = nil
 	end
 
-	TaskDispatcher.cancelTask(arg_44_0._addAllAudio, arg_44_0)
-	arg_44_0:_removeEffectAudio()
-	TaskDispatcher.cancelTask(arg_44_0._addMapLight, arg_44_0)
+	TaskDispatcher.cancelTask(arg_47_0._addAllAudio, arg_47_0)
+	arg_47_0:_removeEffectAudio()
+	TaskDispatcher.cancelTask(arg_47_0._addMapLight, arg_47_0)
 end
 
-function var_0_0._stopAreaAudio(arg_45_0)
-	if arg_45_0._mapAudioGo then
-		gohelper.destroy(arg_45_0._mapAudioGo)
+function var_0_0._stopAreaAudio(arg_48_0)
+	if arg_48_0._mapAudioGo then
+		gohelper.destroy(arg_48_0._mapAudioGo)
 
-		arg_45_0._mapAudioGo = nil
+		arg_48_0._mapAudioGo = nil
 
 		AudioMgr.instance:trigger(AudioEnum.UI.stop_ui_noise_allarea)
 		AudioMgr.instance:trigger(AudioEnum.Bgm.Stop_FightingMusic)
 	end
 end
 
-function var_0_0._showMapTip(arg_46_0)
-	gohelper.setActive(arg_46_0._gotoptipsbg, false)
+function var_0_0._showMapTip(arg_49_0)
+	gohelper.setActive(arg_49_0._gotoptipsbg, false)
 end
 
-function var_0_0._hideMapTip(arg_47_0)
-	gohelper.setActive(arg_47_0._gotoptipsbg, false)
+function var_0_0._hideMapTip(arg_50_0)
+	gohelper.setActive(arg_50_0._gotoptipsbg, false)
 end
 
-function var_0_0.onOpen(arg_48_0)
-	arg_48_0._showSceneChangeAnimState = var_0_1.None
+function var_0_0.onOpen(arg_51_0)
+	arg_51_0._showSceneChangeAnimState = var_0_1.None
 
-	gohelper.setActive(arg_48_0._animchangeScene, false)
+	gohelper.setActive(arg_51_0._animchangeScene, false)
 end
 
-function var_0_0._onScreenResize(arg_49_0)
-	if arg_49_0._sceneGo then
-		arg_49_0:_initScene()
+function var_0_0._onScreenResize(arg_52_0)
+	if arg_52_0._sceneGo then
+		arg_52_0:_initScene()
 	end
 end
 
-function var_0_0._onStoryFinish(arg_50_0)
-	arg_50_0:_updateSwitchState()
+function var_0_0._onStoryFinish(arg_53_0)
+	arg_53_0:_updateSwitchState()
 end
 
-function var_0_0._focusElementById(arg_51_0, arg_51_1)
-	arg_51_1 = tonumber(arg_51_1)
+function var_0_0._focusElementById(arg_54_0, arg_54_1)
+	arg_54_1 = tonumber(arg_54_1)
 
-	local var_51_0, var_51_1 = arg_51_0:_getFocusPos(arg_51_1)
+	local var_54_0, var_54_1 = arg_54_0:_getFocusPos(arg_54_1)
 
-	arg_51_0:setScenePosSafety(Vector3(var_51_0, var_51_1, 0), not DungeonMapModel.instance.directFocusElement)
+	arg_54_0:setScenePosSafety(Vector3(var_54_0, var_54_1, 0), not DungeonMapModel.instance.directFocusElement)
 end
 
-function var_0_0._getFocusPos(arg_52_0, arg_52_1)
-	local var_52_0 = lua_chapter_map_element.configDict[arg_52_1]
-	local var_52_1 = string.splitToNumber(var_52_0.pos, "#")
-	local var_52_2 = var_52_1[1] or 0
-	local var_52_3 = var_52_1[2] or 0
-	local var_52_4 = string.splitToNumber(var_52_0.offsetPos, "#")
-	local var_52_5 = var_52_2 + (var_52_4[1] or 0)
-	local var_52_6 = var_52_3 + (var_52_4[2] or 0)
-	local var_52_7 = arg_52_0._mapMaxX - var_52_5 + arg_52_0._viewWidth / 2
-	local var_52_8 = arg_52_0._mapMinY - var_52_6 - arg_52_0._viewHeight / 2 + 2
+function var_0_0._getFocusPos(arg_55_0, arg_55_1)
+	local var_55_0 = lua_chapter_map_element.configDict[arg_55_1]
+	local var_55_1 = string.splitToNumber(var_55_0.pos, "#")
+	local var_55_2 = var_55_1[1] or 0
+	local var_55_3 = var_55_1[2] or 0
+	local var_55_4 = string.splitToNumber(var_55_0.offsetPos, "#")
+	local var_55_5 = var_55_2 + (var_55_4[1] or 0)
+	local var_55_6 = var_55_3 + (var_55_4[2] or 0)
+	local var_55_7 = arg_55_0._mapMaxX - var_55_5 + arg_55_0._viewWidth / 2
+	local var_55_8 = arg_55_0._mapMinY - var_55_6 - arg_55_0._viewHeight / 2 + 2
 
-	return var_52_7, var_52_8
+	return var_55_7, var_55_8
 end
 
-function var_0_0._OnChangeMap(arg_53_0, arg_53_1)
-	local var_53_0 = arg_53_1[1]
+function var_0_0._OnChangeMap(arg_56_0, arg_56_1)
+	local var_56_0 = arg_56_1[1]
 
-	arg_53_0._episodeConfig = arg_53_1[2]
+	arg_56_0._episodeConfig = arg_56_1[2]
 
-	if var_53_0 == arg_53_0._mapCfg then
-		arg_53_0:_setInitPos(true)
+	if var_56_0 == arg_56_0._mapCfg then
+		arg_56_0:_setInitPos(true)
 
 		return
 	end
 
-	arg_53_0:_changeMap(var_53_0)
+	arg_56_0:_changeMap(var_56_0)
 end
 
-function var_0_0._delaySendGuideEnterDungeonMapEvent(arg_54_0)
-	TaskDispatcher.runDelay(arg_54_0._sendGuideEnterDungeonMapEvent, arg_54_0, 0.5)
+function var_0_0._delaySendGuideEnterDungeonMapEvent(arg_57_0)
+	TaskDispatcher.runDelay(arg_57_0._sendGuideEnterDungeonMapEvent, arg_57_0, 0.5)
 end
 
-function var_0_0._sendGuideEnterDungeonMapEvent(arg_55_0)
-	local var_55_0 = arg_55_0.viewParam.chapterId
+function var_0_0._sendGuideEnterDungeonMapEvent(arg_58_0)
+	local var_58_0 = arg_58_0.viewParam.chapterId
 
-	DungeonController.instance:dispatchEvent(DungeonEvent.OnEnterDungeonMapView, var_55_0)
+	DungeonController.instance:dispatchEvent(DungeonEvent.OnEnterDungeonMapView, var_58_0)
 end
 
-function var_0_0._delaySendGuideEnterEpisodeDungeonMapView(arg_56_0)
-	TaskDispatcher.runDelay(arg_56_0._sendGuideEnterEpisodeDungeonMapView, arg_56_0, 0.1)
+function var_0_0._delaySendGuideEnterEpisodeDungeonMapView(arg_59_0)
+	TaskDispatcher.runDelay(arg_59_0._sendGuideEnterEpisodeDungeonMapView, arg_59_0, 0.1)
 end
 
-function var_0_0._sendGuideEnterEpisodeDungeonMapView(arg_57_0)
-	if arg_57_0._mapCfg then
-		DungeonController.instance:dispatchEvent(DungeonEvent.OnEnterEpisodeDungeonMapView, arg_57_0._mapCfg.id)
+function var_0_0._sendGuideEnterEpisodeDungeonMapView(arg_60_0)
+	if arg_60_0._mapCfg then
+		DungeonController.instance:dispatchEvent(DungeonEvent.OnEnterEpisodeDungeonMapView, arg_60_0._mapCfg.id)
 	end
 end
 
-function var_0_0.onClose(arg_58_0)
+function var_0_0.onClose(arg_61_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.stop_uinoise_bus)
 	AudioEffectMgr.instance:stopAudio(AudioEnum.Bgm.Main1_6Effect)
-	TaskDispatcher.cancelTask(arg_58_0._delayShowScene, arg_58_0)
-	TaskDispatcher.cancelTask(arg_58_0._delayCloseEnd, arg_58_0)
-	TaskDispatcher.cancelTask(arg_58_0._sendGuideEnterDungeonMapEvent, arg_58_0)
-	TaskDispatcher.cancelTask(arg_58_0._delaySendGuideEnterEpisodeDungeonMapView, arg_58_0)
-	gohelper.destroy(arg_58_0._sceneRoot)
-	arg_58_0:_stopAreaAudio()
-	arg_58_0:disposeOldMap()
-	arg_58_0:_removeEffectAudio(true)
+	TaskDispatcher.cancelTask(arg_61_0._delayShowScene, arg_61_0)
+	TaskDispatcher.cancelTask(arg_61_0._delayCloseEnd, arg_61_0)
+	TaskDispatcher.cancelTask(arg_61_0._sendGuideEnterDungeonMapEvent, arg_61_0)
+	TaskDispatcher.cancelTask(arg_61_0._delaySendGuideEnterEpisodeDungeonMapView, arg_61_0)
+	gohelper.destroy(arg_61_0._sceneRoot)
+	arg_61_0:_stopAreaAudio()
+	arg_61_0:disposeOldMap()
+	arg_61_0:_removeEffectAudio(true)
 
-	if arg_58_0._mapLoader then
-		arg_58_0._mapLoader:dispose()
+	if arg_61_0._mapLoader then
+		arg_61_0._mapLoader:dispose()
 	end
 
-	arg_58_0._drag:RemoveDragBeginListener()
-	arg_58_0._drag:RemoveDragListener()
-	arg_58_0._drag:RemoveDragEndListener()
-	arg_58_0:removeEvents()
+	arg_61_0._drag:RemoveDragBeginListener()
+	arg_61_0._drag:RemoveDragListener()
+	arg_61_0._drag:RemoveDragEndListener()
+	arg_61_0:removeEvents()
 end
 
-function var_0_0.onDestroyView(arg_59_0)
-	TaskDispatcher.cancelTask(arg_59_0._hideMapTip, arg_59_0)
+function var_0_0.onDestroyView(arg_62_0)
+	TaskDispatcher.cancelTask(arg_62_0._hideMapTip, arg_62_0)
 end
 
 return var_0_0

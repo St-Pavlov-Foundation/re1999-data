@@ -341,4 +341,32 @@ function var_0_0.commonCheck(arg_32_0)
 	end
 end
 
+function var_0_0.isMoLiDeErInEpisode(arg_33_0)
+	if string.nilorempty(arg_33_0) then
+		return false
+	end
+
+	local var_33_0 = tonumber(arg_33_0)
+
+	if not var_33_0 or var_33_0 == 0 then
+		return false
+	end
+
+	return var_33_0 == MoLiDeErModel.instance:getCurEpisodeId()
+end
+
+function var_0_0.isNuoDiKaEpisode(arg_34_0)
+	if string.nilorempty(arg_34_0) then
+		return false
+	end
+
+	local var_34_0 = tonumber(arg_34_0)
+
+	if not var_34_0 or var_34_0 == 0 then
+		return false
+	end
+
+	return var_34_0 == NuoDiKaModel.instance:getCurEpisode()
+end
+
 return var_0_0

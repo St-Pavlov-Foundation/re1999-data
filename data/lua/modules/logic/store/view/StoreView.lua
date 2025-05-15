@@ -285,6 +285,7 @@ function var_0_0.onOpen(arg_9_0)
 	arg_9_0:addEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, arg_9_0._onPlayStoreInAnim, arg_9_0)
 	arg_9_0:addEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, arg_9_0._onPlayStoreOutAnim, arg_9_0)
 	StoreController.instance:statSwitchStore(var_9_0)
+	arg_9_0:addEventCb(arg_9_0.viewContainer, StoreEvent.SkinGoodsItemChanged, arg_9_0._onSkinGoodsItemSibling, arg_9_0)
 end
 
 function var_0_0._onPlayStoreInAnim(arg_10_0)
@@ -295,105 +296,122 @@ function var_0_0._onPlayStoreOutAnim(arg_11_0)
 	arg_11_0._viewAnim:Play("storeview_hide", 0, 0)
 end
 
-function var_0_0._onRefreshRedDot(arg_12_0)
-	arg_12_0._needCountdown = false
+function var_0_0._onSkinGoodsItemSibling(arg_12_0)
+	if not arg_12_0._isHasSkinGoodsItemSibling then
+		arg_12_0._isHasSkinGoodsItemSibling = true
 
-	for iter_12_0, iter_12_1 in pairs(arg_12_0._tabsContainer) do
-		local var_12_0, var_12_1 = StoreModel.instance:isTabMainRedDotShow(iter_12_1.tabId)
-
-		gohelper.setActive(iter_12_1.reddot, var_12_0)
-		gohelper.setActive(iter_12_1.reddotNormalType, not var_12_1)
-		gohelper.setActive(iter_12_1.reddotActType, var_12_1)
-		arg_12_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_12_1.tabId), iter_12_1)
+		TaskDispatcher.runDelay(arg_12_0._onRunSkinGoodsItemSibling, arg_12_0, 0.1)
 	end
-
-	arg_12_0:checkCountdownStatus()
-	gohelper.setActive(arg_12_0._tabTableSP1.reddot, StoreModel.instance:isTabMainRedDotShow(arg_12_0._tabTableSP1.tabId))
 end
 
-function var_0_0._OnDailyRefresh(arg_13_0)
+function var_0_0._onRunSkinGoodsItemSibling(arg_13_0)
+	arg_13_0._isHasSkinGoodsItemSibling = false
+
+	if arg_13_0.viewContainer then
+		arg_13_0.viewContainer:sortSkinStoreSiblingIndex()
+	end
+end
+
+function var_0_0._onRefreshRedDot(arg_14_0)
+	arg_14_0._needCountdown = false
+
+	for iter_14_0, iter_14_1 in pairs(arg_14_0._tabsContainer) do
+		local var_14_0, var_14_1 = StoreModel.instance:isTabMainRedDotShow(iter_14_1.tabId)
+
+		gohelper.setActive(iter_14_1.reddot, var_14_0)
+		gohelper.setActive(iter_14_1.reddotNormalType, not var_14_1)
+		gohelper.setActive(iter_14_1.reddotActType, var_14_1)
+		arg_14_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_14_1.tabId), iter_14_1)
+	end
+
+	arg_14_0:checkCountdownStatus()
+	gohelper.setActive(arg_14_0._tabTableSP1.reddot, StoreModel.instance:isTabMainRedDotShow(arg_14_0._tabTableSP1.tabId))
+end
+
+function var_0_0._OnDailyRefresh(arg_15_0)
 	ChargeRpc.instance:sendGetChargeInfoRequest()
-	StoreRpc.instance:sendGetStoreInfosRequest(nil, arg_13_0._handleDailyRefreshReceive, arg_13_0)
+	StoreRpc.instance:sendGetStoreInfosRequest(nil, arg_15_0._handleDailyRefreshReceive, arg_15_0)
 end
 
-function var_0_0._onStoreInfoChanged(arg_14_0)
-	arg_14_0:_onRefreshRedDot()
+function var_0_0._onStoreInfoChanged(arg_16_0)
+	arg_16_0:_onRefreshRedDot()
 
-	local var_14_0 = #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0
+	local var_16_0 = #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) <= 0
 
-	if arg_14_0._hasDecorateGoods and var_14_0 then
-		arg_14_0:closeThis()
+	if arg_16_0._hasDecorateGoods and var_16_0 then
+		arg_16_0:closeThis()
 	end
 
-	arg_14_0._hasDecorateGoods = not var_14_0
+	arg_16_0._hasDecorateGoods = not var_16_0
 end
 
-function var_0_0._handleDailyRefreshReceive(arg_15_0)
-	arg_15_0:_refreshTabs(arg_15_0._selectFirstTabId)
-	arg_15_0:_onRefreshRedDot()
+function var_0_0._handleDailyRefreshReceive(arg_17_0)
+	arg_17_0:_refreshTabs(arg_17_0._selectFirstTabId)
+	arg_17_0:_onRefreshRedDot()
 end
 
-function var_0_0.checkCountdownStatus(arg_16_0)
-	if arg_16_0._needCountdown and not arg_16_0._countdownRepeat then
-		TaskDispatcher.runRepeat(arg_16_0.refreshCountdown, arg_16_0, 1)
+function var_0_0.checkCountdownStatus(arg_18_0)
+	if arg_18_0._needCountdown and not arg_18_0._countdownRepeat then
+		TaskDispatcher.runRepeat(arg_18_0.refreshCountdown, arg_18_0, 1)
 
-		arg_16_0._countdownRepeat = true
-	elseif not arg_16_0._needCountdown and arg_16_0._countdownRepeat then
-		TaskDispatcher.cancelTask(arg_16_0.refreshCountdown, arg_16_0)
+		arg_18_0._countdownRepeat = true
+	elseif not arg_18_0._needCountdown and arg_18_0._countdownRepeat then
+		TaskDispatcher.cancelTask(arg_18_0.refreshCountdown, arg_18_0)
 
-		arg_16_0._countdownRepeat = false
+		arg_18_0._countdownRepeat = false
 	end
 end
 
-function var_0_0.refreshCountdown(arg_17_0)
-	if not arg_17_0._tabsContainer then
+function var_0_0.refreshCountdown(arg_19_0)
+	if not arg_19_0._tabsContainer then
 		return
 	end
 
-	for iter_17_0, iter_17_1 in pairs(arg_17_0._tabsContainer) do
-		if iter_17_1.tabId then
-			arg_17_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_17_1.tabId), iter_17_1)
+	for iter_19_0, iter_19_1 in pairs(arg_19_0._tabsContainer) do
+		if iter_19_1.tabId then
+			arg_19_0:refreshTimeDeadline(StoreConfig.instance:getTabConfig(iter_19_1.tabId), iter_19_1)
 		end
 	end
 end
 
-function var_0_0.onClose(arg_18_0)
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_18_0._OnDailyRefresh, arg_18_0)
-	arg_18_0:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, arg_18_0._onRefreshRedDot, arg_18_0)
-	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_18_0._onStoreInfoChanged, arg_18_0)
-	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, arg_18_0._onRefreshRedDot, arg_18_0)
-	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, arg_18_0._onPlayStoreInAnim, arg_18_0)
-	arg_18_0:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, arg_18_0._onPlayStoreOutAnim, arg_18_0)
+function var_0_0.onClose(arg_20_0)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_20_0._OnDailyRefresh, arg_20_0)
+	arg_20_0:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, arg_20_0._onRefreshRedDot, arg_20_0)
+	arg_20_0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_20_0._onStoreInfoChanged, arg_20_0)
+	arg_20_0:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, arg_20_0._onRefreshRedDot, arg_20_0)
+	arg_20_0:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, arg_20_0._onPlayStoreInAnim, arg_20_0)
+	arg_20_0:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, arg_20_0._onPlayStoreOutAnim, arg_20_0)
 	StoreController.instance:statExitStore()
 
-	arg_18_0._needCountdown = false
+	arg_20_0._needCountdown = false
 
-	arg_18_0:checkCountdownStatus()
-	arg_18_0:killTween()
+	arg_20_0:checkCountdownStatus()
+	arg_20_0:killTween()
+	TaskDispatcher.cancelTask(arg_20_0._onRunSkinGoodsItemSibling, arg_20_0)
 end
 
-function var_0_0.onUpdateParam(arg_19_0)
-	local var_19_0 = arg_19_0.viewParam and arg_19_0.viewParam.jumpTab or StoreEnum.DefaultTabId
+function var_0_0.onUpdateParam(arg_21_0)
+	local var_21_0 = arg_21_0.viewParam and arg_21_0.viewParam.jumpTab or StoreEnum.DefaultTabId
 
-	if not StoreModel.instance:isTabOpen(var_19_0) then
-		var_19_0 = StoreEnum.DefaultTabId
+	if not StoreModel.instance:isTabOpen(var_21_0) then
+		var_21_0 = StoreEnum.DefaultTabId
 	end
 
-	arg_19_0:_refreshTabs(var_19_0, arg_19_0.viewParam.jumpGoodsId)
+	arg_21_0:_refreshTabs(var_21_0, arg_21_0.viewParam.jumpGoodsId)
 end
 
-function var_0_0.onDestroyView(arg_20_0)
-	arg_20_0._simagebg:UnLoadImage()
-	arg_20_0._simagelefticon:UnLoadImage()
-	arg_20_0._simagerighticon:UnLoadImage()
+function var_0_0.onDestroyView(arg_22_0)
+	arg_22_0._simagebg:UnLoadImage()
+	arg_22_0._simagelefticon:UnLoadImage()
+	arg_22_0._simagerighticon:UnLoadImage()
 
-	if arg_20_0._tabsContainer and #arg_20_0._tabsContainer > 0 then
-		for iter_20_0 = 1, #arg_20_0._tabsContainer do
-			arg_20_0._tabsContainer[iter_20_0].btn:RemoveClickListener()
+	if arg_22_0._tabsContainer and #arg_22_0._tabsContainer > 0 then
+		for iter_22_0 = 1, #arg_22_0._tabsContainer do
+			arg_22_0._tabsContainer[iter_22_0].btn:RemoveClickListener()
 		end
 	end
 
-	arg_20_0._tabTableSP1.btn:RemoveClickListener()
+	arg_22_0._tabTableSP1.btn:RemoveClickListener()
 end
 
 var_0_0.TweenTime = 0.1
@@ -402,43 +420,43 @@ var_0_0.ItemH = 120
 var_0_0.ItemSpace = -6.5
 var_0_0.ListH = 764.5
 
-function var_0_0._handleTabSet(arg_21_0, arg_21_1, arg_21_2)
-	local var_21_0 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * 6
-	local var_21_1 = recthelper.getAnchorY(arg_21_0._bigTypeItemContent)
-	local var_21_2 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * (arg_21_1 - 1)
+function var_0_0._handleTabSet(arg_23_0, arg_23_1, arg_23_2)
+	local var_23_0 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * 6
+	local var_23_1 = recthelper.getAnchorY(arg_23_0._bigTypeItemContent)
+	local var_23_2 = var_0_0.OffY + (var_0_0.ItemH + var_0_0.ItemSpace) * (arg_23_1 - 1)
 
-	if var_21_1 > var_21_2 - var_0_0.OffY or var_21_2 + var_0_0.ItemH > var_21_1 + var_0_0.ListH then
-		local var_21_3 = var_21_2 - var_0_0.OffY
+	if var_23_1 > var_23_2 - var_0_0.OffY or var_23_2 + var_0_0.ItemH > var_23_1 + var_0_0.ListH then
+		local var_23_3 = var_23_2 - var_0_0.OffY
 
-		if var_21_1 < var_21_3 then
-			var_21_3 = var_21_2 - var_0_0.ListH + var_0_0.ItemH - var_0_0.OffY
+		if var_23_1 < var_23_3 then
+			var_23_3 = var_23_2 - var_0_0.ListH + var_0_0.ItemH - var_0_0.OffY
 		end
 
-		if arg_21_2 then
-			recthelper.setAnchorY(arg_21_0._bigTypeItemContent, var_21_3)
+		if arg_23_2 then
+			recthelper.setAnchorY(arg_23_0._bigTypeItemContent, var_23_3)
 		else
-			arg_21_0:killTween()
+			arg_23_0:killTween()
 
-			arg_21_0._tweenIdCategory = ZProj.TweenHelper.DOTweenFloat(var_21_1, var_21_3, var_0_0.TweenTime, arg_21_0.onTweenCategory, arg_21_0.onTweenFinishCategory, arg_21_0)
+			arg_23_0._tweenIdCategory = ZProj.TweenHelper.DOTweenFloat(var_23_1, var_23_3, var_0_0.TweenTime, arg_23_0.onTweenCategory, arg_23_0.onTweenFinishCategory, arg_23_0)
 		end
 	end
 end
 
-function var_0_0.onTweenCategory(arg_22_0, arg_22_1)
-	if not gohelper.isNil(arg_22_0._scrollbigType) then
-		recthelper.setAnchorY(arg_22_0._bigTypeItemContent, arg_22_1)
+function var_0_0.onTweenCategory(arg_24_0, arg_24_1)
+	if not gohelper.isNil(arg_24_0._scrollbigType) then
+		recthelper.setAnchorY(arg_24_0._bigTypeItemContent, arg_24_1)
 	end
 end
 
-function var_0_0.onTweenFinishCategory(arg_23_0)
-	arg_23_0:killTween()
+function var_0_0.onTweenFinishCategory(arg_25_0)
+	arg_25_0:killTween()
 end
 
-function var_0_0.killTween(arg_24_0)
-	if arg_24_0._tweenIdCategory then
-		ZProj.TweenHelper.KillById(arg_24_0._tweenIdCategory)
+function var_0_0.killTween(arg_26_0)
+	if arg_26_0._tweenIdCategory then
+		ZProj.TweenHelper.KillById(arg_26_0._tweenIdCategory)
 
-		arg_24_0._tweenIdCategory = nil
+		arg_26_0._tweenIdCategory = nil
 	end
 end
 

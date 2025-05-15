@@ -92,6 +92,10 @@ function var_0_0.calculateMaxHeight(arg_9_0)
 	local var_9_1 = recthelper.getAnchorY(arg_9_0.rectTrScrollTip)
 
 	arg_9_0.maxHeight = var_9_0 / 2 + var_9_1 - CommonBuffTipEnum.BottomMargin
+
+	if arg_9_0.rectTrScrollTip.pivot.y == 0 then
+		arg_9_0.maxHeight = var_9_0 / 2 - var_9_1 - CommonBuffTipEnum.BottomMargin
+	end
 end
 
 function var_0_0.addBuffTip(arg_10_0, arg_10_1)
@@ -121,7 +125,7 @@ function var_0_0.addBuffTip(arg_10_0, arg_10_1)
 	local var_10_4 = SkillHelper.removeRichTag(var_10_3)
 
 	var_10_2.txtName.text = var_10_4
-	var_10_2.txtDesc.text = SkillHelper.getSkillDesc(nil, var_10_1)
+	var_10_2.txtDesc.text = SkillHelper.getSkillDesc(arg_10_0.viewParam.monsterName, var_10_1)
 
 	local var_10_5 = CommonBuffTipController.instance:getBuffTagName(var_10_3)
 	local var_10_6 = not string.nilorempty(var_10_5)

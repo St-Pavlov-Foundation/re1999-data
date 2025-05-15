@@ -45,6 +45,11 @@ function var_0_0.init(arg_2_0, arg_2_1)
 	arg_2_0._lockComp = MonoHelper.addLuaComOnceToGo(arg_2_0.go, FightViewHandCardItemLock, arg_2_0)
 	arg_2_0._loader = arg_2_0._loader or LoaderComponent.New()
 	arg_2_0._lockGO = gohelper.findChild(arg_2_0.go, "foranim/lock")
+
+	if FightCardDataHelper.getCardSkin() == 672801 then
+		var_0_0.replaceLockBg(arg_2_0._lockGO)
+	end
+
 	arg_2_0._cardConvertEffect = gohelper.findChild(arg_2_0.go, "foranim/cardConvertEffect")
 
 	arg_2_0:setASFDActive(true)
@@ -231,6 +236,9 @@ end
 
 function var_0_0.showKeytips(arg_19_0)
 	local var_19_0 = gohelper.findChild(arg_19_0.go, "foranim/card/#go_pcbtn")
+
+	gohelper.setActive(var_19_0, true)
+
 	local var_19_1 = #FightDataHelper.handCardMgr.handCard
 
 	if var_19_1 == 0 then
@@ -996,6 +1004,23 @@ function var_0_0._onClickThis(arg_44_0)
 	local var_44_4 = FightDataHelper.entityMgr:getSpList(FightEnum.EntitySide.MySide)
 	local var_44_5 = #var_44_3 + #var_44_4
 
+	if var_44_2 and var_44_2.effectTag == FightEnum.EffectTag.Choice then
+		local var_44_6 = lua_fight_card_choice.configDict[var_44_2.id]
+
+		if var_44_6 then
+			local var_44_7 = {
+				cardData = arg_44_0.cardInfoMO,
+				config = var_44_6,
+				callback = arg_44_0._toPlayCard,
+				handle = arg_44_0
+			}
+
+			ViewMgr.instance:openView(ViewName.FightPlayChoiceCardView, var_44_7)
+
+			return
+		end
+	end
+
 	if var_44_2 and FightEnum.ShowLogicTargetView[var_44_2.logicTarget] and var_44_2.targetLimit == FightEnum.TargetLimit.MySide then
 		if var_44_5 > 1 then
 			ViewMgr.instance:openView(ViewName.FightSkillTargetView, {
@@ -1018,10 +1043,10 @@ function var_0_0._onClickThis(arg_44_0)
 	arg_44_0:_toPlayCard()
 end
 
-function var_0_0._toPlayCard(arg_45_0, arg_45_1, arg_45_2)
+function var_0_0._toPlayCard(arg_45_0, arg_45_1, arg_45_2, arg_45_3)
 	GuideController.instance:dispatchEvent(GuideEvent.SpecialEventDone, GuideEnum.SpecialEventEnum.FightCardOp)
 	FightController.instance:dispatchEvent(FightEvent.BeforePlayHandCard, arg_45_0.index, arg_45_1)
-	FightController.instance:dispatchEvent(FightEvent.PlayHandCard, arg_45_0.index, arg_45_1, arg_45_2)
+	FightController.instance:dispatchEvent(FightEvent.PlayHandCard, arg_45_0.index, arg_45_1, arg_45_2, arg_45_3)
 end
 
 function var_0_0._onDragBegin(arg_46_0, arg_46_1, arg_46_2)
@@ -1203,7 +1228,7 @@ function var_0_0._simulateDragHandCardEnd(arg_53_0, arg_53_1, arg_53_2)
 	})
 end
 
-function var_0_0._simulatePlayHandCard(arg_54_0, arg_54_1, arg_54_2, arg_54_3)
+function var_0_0._simulatePlayHandCard(arg_54_0, arg_54_1, arg_54_2, arg_54_3, arg_54_4)
 	if not arg_54_0.cardInfoMO then
 		return
 	end
@@ -1212,7 +1237,7 @@ function var_0_0._simulatePlayHandCard(arg_54_0, arg_54_1, arg_54_2, arg_54_3)
 		return
 	end
 
-	arg_54_0:_toPlayCard(arg_54_2, arg_54_3)
+	arg_54_0:_toPlayCard(arg_54_2, arg_54_3, arg_54_4)
 end
 
 function var_0_0.playCardAni(arg_55_0, arg_55_1, arg_55_2)
@@ -1541,6 +1566,69 @@ function var_0_0.releaseSelf(arg_83_0)
 		arg_83_0._loader:releaseSelf()
 
 		arg_83_0._loader = nil
+	end
+end
+
+function var_0_0.replaceLockBg(arg_84_0)
+	if not arg_84_0 then
+		return
+	end
+
+	local var_84_0
+	local var_84_1
+
+	for iter_84_0 = 0, 4 do
+		local var_84_2 = iter_84_0 == 4
+		local var_84_3 = var_84_2 and "card_mask_big" or "card_mask_small"
+		local var_84_4 = var_84_2 and "bigskill" or "normal"
+		local var_84_5 = string.format("%s/%d/seal/ani/mask/di", var_84_4, iter_84_0)
+		local var_84_6 = gohelper.findChildImage(arg_84_0, var_84_5)
+
+		if var_84_6 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_6, var_84_3, true)
+		end
+
+		local var_84_7 = string.format("%s/%d/seal/notani/di", var_84_4, iter_84_0)
+		local var_84_8 = gohelper.findChildImage(arg_84_0, var_84_7)
+
+		if var_84_8 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_8, var_84_3, true)
+		end
+
+		local var_84_9 = string.format("%s/%d/sealing/ani/di", var_84_4, iter_84_0)
+		local var_84_10 = gohelper.findChildImage(arg_84_0, var_84_9)
+
+		if var_84_10 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_10, var_84_3, true)
+		end
+
+		local var_84_11 = string.format("%s/%d/sealing/ani/mask", var_84_4, iter_84_0)
+		local var_84_12 = gohelper.findChildImage(arg_84_0, var_84_11)
+
+		if var_84_12 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_12, var_84_3, true)
+		end
+
+		local var_84_13 = string.format("%s/%d/sealing/notani/di", var_84_4, iter_84_0)
+		local var_84_14 = gohelper.findChildImage(arg_84_0, var_84_13)
+
+		if var_84_14 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_14, var_84_3, true)
+		end
+
+		local var_84_15 = string.format("%s/%d/unseal/ani/di", var_84_4, iter_84_0)
+		local var_84_16 = gohelper.findChildImage(arg_84_0, var_84_15)
+
+		if var_84_16 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_16, var_84_3, true)
+		end
+
+		local var_84_17 = string.format("%s/%d/unseal/ani/mask/sanjiao", var_84_4, iter_84_0)
+		local var_84_18 = gohelper.findChildImage(arg_84_0, var_84_17)
+
+		if var_84_18 then
+			UISpriteSetMgr.instance:setFightSkillCardSprite(var_84_18, var_84_3, true)
+		end
 	end
 end
 

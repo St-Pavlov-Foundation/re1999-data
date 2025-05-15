@@ -16,7 +16,11 @@ function var_0_0.reqConfigNames(arg_2_0)
 		"fight_sp_effect_alf",
 		"fight_sp_effect_alf_timeline",
 		"fight_sp_effect_alf_add_card",
-		"fight_sp_effect_ddg"
+		"fight_sp_effect_ddg",
+		"fight_sp_effect_wuerlixi",
+		"fight_sp_effect_wuerlixi_timeline",
+		"fight_sp_effect_wuerlixi_float",
+		"fight_luxi_skin_effect"
 	}
 end
 

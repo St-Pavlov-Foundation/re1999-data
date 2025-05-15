@@ -120,4 +120,11 @@ function var_0_0.trackClickActivityJumpButton(arg_10_0)
 	StatController.instance:track(var_0_0.EventName.click_activity_jump_button, {})
 end
 
+function var_0_0.trackClickEnterActivityButton(arg_11_0, arg_11_1, arg_11_2)
+	StatController.instance:track(StatEnum.EventName.ButtonClick, {
+		[StatEnum.EventProperties.ViewName] = arg_11_1 or "",
+		[StatEnum.EventProperties.ButtonName] = arg_11_2 or ""
+	})
+end
+
 return var_0_0
