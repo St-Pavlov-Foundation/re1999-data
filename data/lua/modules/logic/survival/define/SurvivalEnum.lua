@@ -42,8 +42,10 @@ var_0_0.ConstId = {
 	CarryHeroMax = 18,
 	ExitCfgId = 9,
 	TotalTime = 1,
+	SurvivalHpFixRate_WorldLv = 3301,
 	TreasureCfgId = 19,
 	HeroHealth2 = 2302,
+	SurvivalHpFixRate_Hard = 3401,
 	ShowEffectUnitSubTypes = 22,
 	ShelterCompositeCost = 2601
 }
@@ -122,10 +124,11 @@ var_0_0.ItemSource = {
 	Commited = -5,
 	Equip = -2,
 	Map = 1,
-	Composite = -8,
+	Drop = -10,
 	ShopItem = -7,
 	Commit = -4,
 	Info = -9,
+	Composite = -8,
 	Search = -1,
 	ShopBag = -6,
 	EquipBag = -3,
@@ -438,6 +441,6 @@ var_0_0.SurvivalMonsterEventViewShowType = {
 	Watch = 1,
 	Normal = 0
 }
-var_0_0.MoveSpeed = 0.6
+var_0_0.MoveSpeed = 0.4
 
 return var_0_0

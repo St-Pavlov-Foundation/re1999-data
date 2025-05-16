@@ -49,19 +49,15 @@ function var_0_0.removeEvents(arg_3_0)
 end
 
 function var_0_0._btnWatchOnClick(arg_4_0)
-	arg_4_0.showType = SurvivalEnum.SurvivalMonsterEventViewShowType.Normal
+	arg_4_0:closeThis()
 
-	arg_4_0:_refreshState()
+	if arg_4_0._fight and arg_4_0._fight:canShowEntity() then
+		SurvivalMapHelper.instance:gotoMonster(arg_4_0._fight.fightId, nil, true)
+	end
 end
 
 function var_0_0._btncloseOnClick(arg_5_0)
-	if arg_5_0.showType == SurvivalEnum.SurvivalMonsterEventViewShowType.Normal then
-		arg_5_0:closeThis()
-	end
-
-	if arg_5_0.showType == SurvivalEnum.SurvivalMonsterEventViewShowType.Watch then
-		arg_5_0:_btnWatchOnClick()
-	end
+	arg_5_0:closeThis()
 end
 
 function var_0_0._btnclickOnClick(arg_6_0)
@@ -150,6 +146,7 @@ function var_0_0.refreshShowType(arg_16_0)
 	gohelper.setActive(arg_16_0._btnReset.gameObject, arg_16_0.showType == SurvivalEnum.SurvivalMonsterEventViewShowType.Normal)
 	gohelper.setActive(arg_16_0._btnFight.gameObject, arg_16_0.showType == SurvivalEnum.SurvivalMonsterEventViewShowType.Normal)
 	gohelper.setActive(arg_16_0._goNpc, arg_16_0.showType == SurvivalEnum.SurvivalMonsterEventViewShowType.Normal)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitBossEventView, arg_16_0.showType)
 end
 
 function var_0_0.updateView(arg_17_0)
@@ -173,7 +170,11 @@ function var_0_0.updateView(arg_17_0)
 
 	local var_17_4 = arg_17_0._fight.endTime - var_17_0.day
 
-	arg_17_0._txttips.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_SurvivalMonsterEventView_tips"), var_17_4)
+	if var_17_4 == 0 then
+		arg_17_0._txttips.text = luaLang("survivalmonstereventview_monster_toady")
+	else
+		arg_17_0._txttips.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_SurvivalMonsterEventView_tips"), var_17_4)
+	end
 
 	TaskDispatcher.runDelay(arg_17_0._updateNpcInfo, arg_17_0, 0.5)
 end
@@ -242,7 +243,7 @@ function var_0_0._updateNpcInfo(arg_20_0)
 		end
 
 		var_20_3:updateItem(var_20_4)
-		var_20_3:setIsCanEnterSelect(arg_20_0._fight:canSelectNpc())
+		var_20_3:setIsCanEnterSelect(arg_20_0._fight:canEnterSelectNpc())
 	end
 end
 

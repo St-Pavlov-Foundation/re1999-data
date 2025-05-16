@@ -7,6 +7,7 @@ function var_0_0.onInitView(arg_1_0)
 
 	arg_1_0._btnnext = gohelper.findChildButtonWithAudio(arg_1_0._root, "Right/#btn_next")
 	arg_1_0._txttitle = gohelper.findChildTextMesh(arg_1_0._root, "Right/txt_title")
+	arg_1_0._imagePic = gohelper.findChildSingleImage(arg_1_0._root, "Right/simage_pic")
 	arg_1_0._txtdesc = gohelper.findChildTextMesh(arg_1_0._root, "Right/scroll_desc/Viewport/#go_descContent/#txt_desc")
 	arg_1_0._goeffectdesc = gohelper.findChild(arg_1_0._root, "Right/scroll_desc/Viewport/#go_descContent/go_descitem")
 end
@@ -86,6 +87,8 @@ function var_0_0._refreshInfo(arg_7_0)
 	if not var_7_0 then
 		return
 	end
+
+	arg_7_0._imagePic:LoadImage(ResUrl.getSurvivalMapIcon(var_7_0.pic))
 
 	arg_7_0._txttitle.text = var_7_0.name
 	arg_7_0._txtdesc.text = var_7_0.desc

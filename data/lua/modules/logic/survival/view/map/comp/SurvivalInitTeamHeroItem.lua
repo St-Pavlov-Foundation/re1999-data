@@ -8,6 +8,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._goHeroRoot = gohelper.findChild(arg_1_1, "#go_HaveHero")
 	arg_1_0._goEmpty = gohelper.findChild(arg_1_1, "#go_Empty")
 	arg_1_0._goLock = gohelper.findChild(arg_1_1, "#go_Locked")
+	arg_1_0._goNew = gohelper.findChild(arg_1_1, "#go_New")
 	arg_1_0._goAssit = gohelper.findChild(arg_1_0._goHeroRoot, "assit")
 
 	local var_1_0 = gohelper.findChild(arg_1_0._goHeroRoot, "hero")
@@ -82,24 +83,28 @@ function var_0_0.setIsLock(arg_9_0, arg_9_1)
 	end
 end
 
-function var_0_0.showSelectEffect(arg_10_0)
-	arg_10_0._heroAnim:Play("open", 0, 0)
+function var_0_0.setNew(arg_10_0, arg_10_1)
+	gohelper.setActive(arg_10_0._goNew, arg_10_1)
 end
 
-function var_0_0._onClickThis(arg_11_0)
-	if arg_11_0._isTrial or arg_11_0._isLock then
+function var_0_0.showSelectEffect(arg_11_0)
+	arg_11_0._heroAnim:Play("open", 0, 0)
+end
+
+function var_0_0._onClickThis(arg_12_0)
+	if arg_12_0._isTrial or arg_12_0._isLock then
 		return
 	end
 
-	SurvivalMapModel.instance:getInitGroup().curClickHeroIndex = arg_11_0._index
+	SurvivalMapModel.instance:getInitGroup().curClickHeroIndex = arg_12_0._index
 
 	CharacterModel.instance:setCharacterList(false, CharacterEnum.FilterType.Survival)
 	SurvivalMapModel.instance:getInitGroup():initHeroList()
 	ViewMgr.instance:openView(ViewName.SurvivalInitHeroSelectView)
 end
 
-function var_0_0.onDestroy(arg_12_0)
-	arg_12_0._teamView = nil
+function var_0_0.onDestroy(arg_13_0)
+	arg_13_0._teamView = nil
 end
 
 return var_0_0

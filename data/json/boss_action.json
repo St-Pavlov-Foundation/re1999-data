@@ -1546,5 +1546,23 @@
     "monsterId": 80509451,
     "monsterSpeed": 1,
     "actionId": 80509451
+  },
+  {
+    "battleId": 80509111,
+    "monsterId": 805091111,
+    "monsterSpeed": 1,
+    "actionId": 805091111
+  },
+  {
+    "battleId": 80509111,
+    "monsterId": 805091112,
+    "monsterSpeed": 2,
+    "actionId": 805091112
+  },
+  {
+    "battleId": 80509111,
+    "monsterId": 805091113,
+    "monsterSpeed": 2,
+    "actionId": 805091112
   }
 ]

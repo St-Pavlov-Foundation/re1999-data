@@ -137,6 +137,12 @@ function var_0_0._btnstartOnClick(arg_13_0)
 		return
 	end
 
+	if tabletool.len(arg_13_0._initGroupMo.allSelectHeroMos) < arg_13_0._initGroupMo:getCarryHeroCount() then
+		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalHeroNoFull, MsgBoxEnum.BoxType.Yes_No, var_0_0.super._btnstartOnClick, nil, nil, arg_13_0, nil, nil)
+
+		return
+	end
+
 	var_0_0.super._btnstartOnClick(arg_13_0)
 end
 

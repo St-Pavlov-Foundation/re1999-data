@@ -185,8 +185,16 @@ function var_0_0.initEventProgressInfo(arg_18_0)
 	local var_18_1 = {}
 	local var_18_2 = MoLiDeErConfig.instance:getGameConfig(arg_18_0.gameId)
 
+	if arg_18_0.isEpisodeFinish and arg_18_0.passStar == -1 then
+		arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Main] = MoLiDeErEnum.ProgressRange.Failed
+		var_18_1[MoLiDeErEnum.TargetId.Main] = true
+
+		logNormal("莫莉德尔 角色活动 主目标失败")
+	end
+
 	if arg_18_0.isExtraStar then
-		arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] = 100
+		arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] = MoLiDeErEnum.ProgressRange.Success
+		var_18_0[MoLiDeErEnum.TargetId.Extra] = true
 	else
 		local var_18_3 = var_18_2.extraCondition
 
@@ -195,7 +203,7 @@ function var_0_0.initEventProgressInfo(arg_18_0)
 			local var_18_5 = var_18_4[1]
 
 			if (var_18_5 == MoLiDeErEnum.TargetConditionType.RoundLimitedFinishAll or var_18_5 == MoLiDeErEnum.TargetConditionType.RoundLimitedFinishAny) and var_18_4[2] < arg_18_0.currentRound then
-				arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] = -1
+				arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] = MoLiDeErEnum.ProgressRange.Failed
 				var_18_1[MoLiDeErEnum.TargetId.Extra] = true
 			end
 		end
@@ -235,6 +243,13 @@ function var_0_0.initEventProgressInfo(arg_18_0)
 				end
 			end
 		end
+	end
+
+	if arg_18_0.isEpisodeFinish and (arg_18_0.passStar == -1 or arg_18_0.passStar == 1) and arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] ~= MoLiDeErEnum.ProgressRange.Success then
+		arg_18_0._targetProgressDic[MoLiDeErEnum.TargetId.Extra] = MoLiDeErEnum.ProgressRange.Failed
+		var_18_1[MoLiDeErEnum.TargetId.Extra] = true
+
+		logNormal("莫莉德尔 角色活动 额外目标失败")
 	end
 
 	if arg_18_0._targetCompleteDic then

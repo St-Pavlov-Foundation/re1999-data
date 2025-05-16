@@ -7,6 +7,7 @@ function var_0_0.ctor(arg_1_0, arg_1_1)
 	arg_1_0.unitId = arg_1_1.unitId
 	arg_1_0.root1 = arg_1_1.root1
 	arg_1_0.root2 = arg_1_1.root2
+	arg_1_0.bubbleIconName = -1
 end
 
 function var_0_0.init(arg_2_0, arg_2_1)
@@ -73,11 +74,7 @@ function var_0_0.initFollower(arg_5_0)
 
 	local var_5_1 = false
 
-	if arg_5_0.unitType == SurvivalEnum.ShelterUnitType.Build then
-		if SurvivalShelterModel.instance:getWeekInfo():getBuildingInfo(arg_5_0.unitId):isEqualType(SurvivalEnum.BuildingType.Explore) then
-			var_5_1 = true
-		end
-	elseif arg_5_0.unitType == SurvivalEnum.ShelterUnitType.Player then
+	if arg_5_0.unitType == SurvivalEnum.ShelterUnitType.Player then
 		var_5_1 = true
 	end
 
@@ -254,69 +251,33 @@ function var_0_0.refreshBuildingInfo(arg_13_0)
 		return
 	end
 
-	local var_13_2 = var_13_1:isBuild()
+	local var_13_2 = var_13_1:getLevel()
+	local var_13_3 = var_13_1:isBuild()
 
-	if not var_13_2 and not var_13_0:isBuildingUnlock(var_13_1.buildingId, var_13_1.level + 1) then
+	if not var_13_3 and not var_13_0:isBuildingUnlock(var_13_1.buildingId, var_13_2 + 1) then
 		arg_13_0:setVisible(false)
 
 		return
 	end
 
 	arg_13_0:setVisible(true)
-	gohelper.setActive(arg_13_0.goBuildInfo, var_13_2)
+	gohelper.setActive(arg_13_0.goBuildInfo, var_13_3)
+	gohelper.setActive(arg_13_0.imagebubble, false)
 
-	if var_13_2 then
+	local var_13_4 = var_13_0:isBuildingCanLevup(var_13_1, var_13_2 + 1, false)
+
+	if var_13_3 then
 		if var_13_1.isSingleLevel then
 			arg_13_0.txtBuildInfo.text = var_13_1.baseCo.name
 		else
-			arg_13_0.txtBuildInfo.text = string.format("%s\n<size=28>LV:%s</size>", var_13_1.baseCo.name, var_13_1.level)
+			arg_13_0.txtBuildInfo.text = string.format("%s\n<size=28>LV:%s</size>", var_13_1.baseCo.name, var_13_2)
 		end
+
+		arg_13_0:setBubbleIcon()
+		gohelper.setActive(arg_13_0.goBuildLevelup, var_13_4)
+	else
+		arg_13_0:setBubbleIcon(var_13_4 and "survival_map_bubble_add")
 	end
-
-	if var_13_1:isEqualType(SurvivalEnum.BuildingType.Npc) then
-		arg_13_0:setBubbleIcon(var_13_2 and "survival_map_icon_20" or "survival_map_icon_21")
-
-		local var_13_3 = var_13_0:getRecruitInfo()
-		local var_13_4 = var_13_2 and var_13_3:isInRecruit()
-		local var_13_5 = var_13_2 and var_13_3:isCanRecruit()
-
-		gohelper.setActive(arg_13_0.goRest, var_13_4)
-
-		local var_13_6 = var_13_4 and 0.6 or 1
-
-		ZProj.UGUIHelper.SetColorAlpha(arg_13_0.imageicon, var_13_6)
-		gohelper.setActive(arg_13_0.goBuildLevelup, var_13_5)
-		gohelper.setActive(arg_13_0.goCanBuild, not var_13_2)
-		gohelper.setActive(arg_13_0.imagebubble, true)
-
-		return
-	end
-
-	gohelper.setActive(arg_13_0.imagebubble, var_13_2)
-
-	if not var_13_2 then
-		arg_13_0:setBubbleIcon("survival_map_bubble_add")
-
-		return
-	end
-
-	if var_13_1:isEqualType(SurvivalEnum.BuildingType.Explore) then
-		arg_13_0:setBubbleIcon("survival_map_icon_14")
-
-		return
-	end
-
-	if var_13_1:isEqualType(SurvivalEnum.BuildingType.Shop) then
-		arg_13_0:setBubbleIcon("survival_map_icon_15")
-
-		return
-	end
-
-	arg_13_0:setBubbleIcon("survival_map_icon_16")
-
-	local var_13_7 = var_13_0:isBuildingCanLevup(var_13_1, var_13_1.level + 1, false)
-
-	gohelper.setActive(arg_13_0.goBuildLevelup, var_13_7)
 end
 
 function var_0_0.setBubbleIcon(arg_14_0, arg_14_1)
@@ -330,7 +291,7 @@ function var_0_0.setBubbleIcon(arg_14_0, arg_14_1)
 
 	arg_14_0.bubbleIconName = arg_14_1
 
-	if string.nilorempty(arg_14_1) then
+	if not arg_14_1 or string.nilorempty(arg_14_1) then
 		gohelper.setActive(arg_14_0.imageicon, false)
 
 		return

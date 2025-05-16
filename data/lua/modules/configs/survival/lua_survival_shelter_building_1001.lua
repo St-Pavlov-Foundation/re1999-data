@@ -411,7 +411,7 @@
 		{
 			-3,
 			5,
-			false,
+			true,
 			4,
 			8,
 			{}
@@ -803,7 +803,7 @@
 		{
 			2,
 			1,
-			false,
+			true,
 			5,
 			8,
 			{}
@@ -884,21 +884,12 @@
 	},
 	{
 		{
-			-3,
-			5,
-			1,
-			10010601,
-			0,
-			1,
-			{}
-		},
-		{
 			0,
 			4,
 			4,
 			10010301,
 			0,
-			2,
+			1,
 			{
 				{
 					0,
@@ -920,7 +911,7 @@
 			5,
 			10010201,
 			1,
-			3,
+			2,
 			{
 				{
 					-5,
@@ -938,7 +929,7 @@
 			8,
 			10010401,
 			1,
-			4,
+			3,
 			{}
 		},
 		{
@@ -947,7 +938,7 @@
 			9,
 			10010703,
 			1,
-			5,
+			4,
 			{
 				{
 					2,
@@ -965,7 +956,7 @@
 			10,
 			10010702,
 			3,
-			5,
+			4,
 			{
 				{
 					-4,
@@ -983,7 +974,7 @@
 			11,
 			10010701,
 			4,
-			5,
+			4,
 			{
 				{
 					-1,
@@ -1001,7 +992,7 @@
 			13,
 			10010101,
 			4,
-			6,
+			5,
 			{
 				{
 					0,
@@ -1014,21 +1005,12 @@
 			}
 		},
 		{
-			2,
-			1,
-			14,
-			10011101,
-			2,
-			7,
-			{}
-		},
-		{
 			3,
 			2,
 			15,
 			10010501,
 			2,
-			8,
+			6,
 			{
 				{
 					2,
@@ -1046,13 +1028,11 @@
 		}
 	},
 	{
-		"survival/buiding/v2a8/building_chashuijian.prefab",
 		"survival/buiding/v2a8/building_jinianbei.prefab",
 		"survival/buiding/v2a8/building_xianxiangguan.prefab",
 		"survival/buiding/v2a8/building_xvqiuzhongxin.prefab",
 		"survival/buiding/v2a8/building_yuzhouyuancang_a.prefab",
 		"survival/buiding/v2a8/building_zhihuizhongxin.prefab",
-		"survival/buiding/v2a8/building_yingdi.prefab",
 		"survival/buiding/v2a8/building_chuansongfeichuan.prefab"
 	}
 }

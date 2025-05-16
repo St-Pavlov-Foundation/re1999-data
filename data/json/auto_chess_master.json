@@ -900,6 +900,26 @@
     "spUdimoGoodsId": 30026
   },
   {
+    "id": 31040,
+    "name": "虚构集",
+    "illustrationShow": 0,
+    "isSelf": false,
+    "hp": 40,
+    "image": "mjdz_30040_zl_06l_tl",
+    "unlockSkill": 0,
+    "skillId": 3004001,
+    "roundTriggerCountLimit": 1,
+    "totalTriggerCountLimit": 0,
+    "skillName": "",
+    "skillIcon": "30040",
+    "skillDesc": "主动：消耗3枚缪斯币，【探查】1个尤提姆贴纸",
+    "skillProgressDesc": "",
+    "skillLockDesc": "",
+    "udimoCase": "41003#0",
+    "spUdimo": 30040,
+    "spUdimoGoodsId": 30032
+  },
+  {
     "id": 11001,
     "name": "卡邦克鲁之王",
     "illustrationShow": 0,

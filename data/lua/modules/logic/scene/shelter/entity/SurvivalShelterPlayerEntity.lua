@@ -71,7 +71,7 @@ function var_0_0.getPos(arg_10_0)
 	return arg_10_0._playerPos
 end
 
-function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_4)
+function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_4, arg_11_5)
 	if not arg_11_1 or not next(arg_11_1) then
 		if arg_11_2 then
 			arg_11_2(arg_11_3, arg_11_4)
@@ -94,13 +94,13 @@ function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_
 	local var_11_2 = SurvivalAStarFindPath.instance:findNearestPath(var_11_0, arg_11_1, var_11_1, true)
 
 	if var_11_2 then
-		arg_11_0:moveToByPath(var_11_2, arg_11_2, arg_11_3, arg_11_4)
+		arg_11_0:moveToByPath(var_11_2, arg_11_2, arg_11_3, arg_11_4, arg_11_5)
 	elseif arg_11_2 then
 		arg_11_2(arg_11_3, arg_11_4)
 	end
 end
 
-function var_0_0.moveToByPos(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4)
+function var_0_0.moveToByPos(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4, arg_12_5)
 	local var_12_0 = arg_12_0:getPos()
 
 	if var_12_0 == arg_12_1 then
@@ -115,13 +115,13 @@ function var_0_0.moveToByPos(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4)
 	local var_12_2 = SurvivalAStarFindPath.instance:findPath(var_12_0, arg_12_1, var_12_1, true)
 
 	if var_12_2 then
-		arg_12_0:moveToByPath(var_12_2, arg_12_2, arg_12_3, arg_12_4)
+		arg_12_0:moveToByPath(var_12_2, arg_12_2, arg_12_3, arg_12_4, arg_12_5)
 	elseif arg_12_2 then
 		arg_12_2(arg_12_3, arg_12_4)
 	end
 end
 
-function var_0_0.moveToByPath(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4)
+function var_0_0.moveToByPath(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4, arg_13_5)
 	arg_13_0:stopMove()
 
 	arg_13_0._path = SurvivalHelper.instance:fitlterPath(arg_13_1)
@@ -130,6 +130,11 @@ function var_0_0.moveToByPath(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4)
 	arg_13_0._pathcallParam = arg_13_4
 
 	SurvivalMapHelper.instance:getScene().path:showPath(arg_13_0._path)
+
+	if arg_13_5 then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.CameraFollowerTarget, arg_13_0.go)
+	end
+
 	arg_13_0:_moveToNext()
 end
 
@@ -142,7 +147,7 @@ function var_0_0._moveToNext(arg_14_0)
 		arg_14_0._pathcallObj = nil
 		arg_14_0._pathcallParam = nil
 
-		arg_14_0:_endMove()
+		arg_14_0:_endMove(true)
 		SurvivalMapHelper.instance:getScene().path:hidePath()
 
 		return
@@ -178,7 +183,7 @@ function var_0_0._beginMove(arg_16_0)
 	arg_16_0._tweenId = ZProj.TweenHelper.DOLocalMove(arg_16_0.trans, var_16_0, var_16_1, var_16_2, var_16_6, arg_16_0._endMove, arg_16_0, nil, EaseType.Linear)
 end
 
-function var_0_0._endMove(arg_17_0)
+function var_0_0._endMove(arg_17_0, arg_17_1)
 	arg_17_0:playAnim("idle")
 
 	arg_17_0._targetPos = nil
@@ -199,6 +204,10 @@ function var_0_0._endMove(arg_17_0)
 
 	if var_17_0 then
 		var_17_0(var_17_1, var_17_2)
+	end
+
+	if arg_17_1 then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.CameraFollowerTarget)
 	end
 
 	arg_17_0:updateEntity()

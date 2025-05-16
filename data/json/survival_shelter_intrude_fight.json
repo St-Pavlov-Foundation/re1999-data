@@ -318,5 +318,21 @@
     "saveMonster": "80509451",
     "destructionLevel": "1000:500:500&500:200:250",
     "drop": 0
+  },
+  {
+    "id": 80509111,
+    "target": "击败【宇航员幽灵】",
+    "battleId": 80509111,
+    "score": 1000,
+    "image": "singlebg/survival_singlebg/monsterevent/survival_monsterevent_card_04.png",
+    "model": "survival/roles/prefab/monster_leader_hulimojing.prefab",
+    "scale": 200,
+    "gridType": 1,
+    "smallheadicon": "640301",
+    "name": "宇航员幽灵",
+    "desc": "被意外丢进玩具盒的宇航员幽灵，虽然他的任务是在战争爆发时对抗外星人，但目前看谁都像敌人。",
+    "saveMonster": "805091111",
+    "destructionLevel": "1000:500:500&500:200:250",
+    "drop": 0
   }
 ]

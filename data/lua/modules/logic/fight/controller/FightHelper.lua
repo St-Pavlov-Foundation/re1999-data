@@ -1264,7 +1264,7 @@ function var_0_0.revertDefenderBuffEffect(arg_52_0, arg_52_1)
 end
 
 function var_0_0.getEffectAbPath(arg_53_0)
-	if GameResMgr.IsFromEditorDir or string.find(arg_53_0, "/buff/") then
+	if GameResMgr.IsFromEditorDir or string.find(arg_53_0, "/buff/") or string.find(arg_53_0, "/always/") then
 		return arg_53_0
 	else
 		if isDebugBuild and string.find(arg_53_0, "always") then

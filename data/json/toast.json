@@ -8720,6 +8720,54 @@
     "notShow": 0
   },
   {
+    "id": -448,
+    "tips": "本次演习全程战斗创伤加成+3%",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -449,
+    "tips": "本次演习全程战斗受创减免+3%",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -450,
+    "tips": "本次演习全程战斗吸血率+2%",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -451,
+    "tips": "本次演习全程战斗手牌上限+1",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -452,
+    "tips": "本次演习全程战斗行动力+1",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -453,
+    "tips": "终于结束了一日的演习，全体成员抵抗力+20",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
     "id": 280001,
     "tips": "心灵眼眸生效中",
     "icon": 11,

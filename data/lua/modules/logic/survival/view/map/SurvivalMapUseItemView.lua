@@ -401,10 +401,12 @@ function var_0_0._onUseQuickItem(arg_21_0, arg_21_1)
 	arg_21_0.viewContainer:setCloseFunc(arg_21_0.cancelUseItem, arg_21_0)
 end
 
-function var_0_0._onSceneClick(arg_22_0, arg_22_1)
+function var_0_0._onSceneClick(arg_22_0, arg_22_1, arg_22_2)
 	if not SurvivalMapModel.instance.curUseItem then
 		return
 	end
+
+	arg_22_2.use = true
 
 	if tabletool.indexOf(arg_22_0._allCanUsePoints, arg_22_1) then
 		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(SurvivalMapModel.instance.curUseItem.uid, string.format("%d#%d", arg_22_1.q, arg_22_1.r))

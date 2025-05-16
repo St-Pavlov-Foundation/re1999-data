@@ -16,10 +16,12 @@ end
 
 function var_0_0.addEvents(arg_2_0)
 	var_0_0.super.addEvents(arg_2_0)
+	SurvivalController.instance:registerCallback(SurvivalEvent.CameraFollowerTarget, arg_2_0._onCameraFollowerTarget, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
 	var_0_0.super.removeEvents(arg_3_0)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.CameraFollowerTarget, arg_3_0._onCameraFollowerTarget, arg_3_0)
 end
 
 function var_0_0.calcSceneBoard(arg_4_0)
@@ -101,6 +103,10 @@ end
 
 function var_0_0.onSceneScaleChange(arg_9_0)
 	SurvivalMapHelper.instance:getSceneFogComp():updateTexture()
+end
+
+function var_0_0._onCameraFollowerTarget(arg_10_0, arg_10_1)
+	arg_10_0:setFollower(arg_10_1)
 end
 
 return var_0_0

@@ -76,7 +76,8 @@ function var_0_0.initJumpViewBelongScene(arg_7_0)
 		[JumpEnum.JumpView.SummonView] = SceneType.Main,
 		[JumpEnum.JumpView.V1a5Dungeon] = SceneType.Main,
 		[JumpEnum.JumpView.RoomView] = SceneType.Room,
-		[JumpEnum.JumpView.PushBox] = SceneType.PushBox
+		[JumpEnum.JumpView.PushBox] = SceneType.PushBox,
+		[JumpEnum.JumpView.ShelterBuilding] = SceneType.SurvivalShelter
 	}
 end
 

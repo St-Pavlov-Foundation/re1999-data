@@ -6567,39 +6567,6 @@
     "restart": 0
   },
   {
-    "id": 28502,
-    "desc": "探索引导-人物选择",
-    "isOnline": 1,
-    "trigger": "OpenView#SurvivalView",
-    "invalid": "ActivityEnd#12806",
-    "interruptFinish": 1,
-    "priority": 0,
-    "parallel": 1,
-    "restart": 0
-  },
-  {
-    "id": 28503,
-    "desc": "探索引导-NPC选择",
-    "isOnline": 1,
-    "trigger": "OpenView#SurvivalView",
-    "invalid": "ActivityEnd#12806",
-    "interruptFinish": 1,
-    "priority": 0,
-    "parallel": 1,
-    "restart": 0
-  },
-  {
-    "id": 28504,
-    "desc": "探索引导-总览",
-    "isOnline": 1,
-    "trigger": "OpenView#SurvivalView",
-    "invalid": "ActivityEnd#12806",
-    "interruptFinish": 1,
-    "priority": 0,
-    "parallel": 1,
-    "restart": 0
-  },
-  {
     "id": 28505,
     "desc": "探索引导-移动",
     "isOnline": 1,
@@ -6712,6 +6679,17 @@
   {
     "id": 28515,
     "desc": "探索引导-战斗等级",
+    "isOnline": 1,
+    "trigger": "OpenView#SurvivalView",
+    "invalid": "ActivityEnd#12806",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 28516,
+    "desc": "避难所引导-入侵Boss2",
     "isOnline": 1,
     "trigger": "OpenView#SurvivalView",
     "invalid": "ActivityEnd#12806",

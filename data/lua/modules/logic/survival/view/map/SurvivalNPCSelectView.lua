@@ -171,6 +171,8 @@ function var_0_0._onClickNpc(arg_12_0, arg_12_1)
 			arg_12_0:_refreshView()
 		else
 			GameFacade.showToast(ToastEnum.SurvivalNpcFull)
+
+			return
 		end
 	end
 

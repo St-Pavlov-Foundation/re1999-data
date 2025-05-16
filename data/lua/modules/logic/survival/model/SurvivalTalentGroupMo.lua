@@ -55,12 +55,22 @@ function var_0_0.getEquipTalents(arg_5_0)
 	return var_5_0
 end
 
-function var_0_0.sortCo(arg_6_0, arg_6_1)
-	if arg_6_0.pos ~= arg_6_1.pos then
-		return arg_6_0.pos < arg_6_1.pos
+function var_0_0.isEquipAll(arg_6_0)
+	for iter_6_0, iter_6_1 in ipairs(arg_6_0:getTalentCos()) do
+		if not arg_6_0.talents[iter_6_1.id] and arg_6_0:isTalentUnlock(iter_6_1.id) then
+			return false
+		end
 	end
 
-	return arg_6_0.id < arg_6_1.id
+	return true
+end
+
+function var_0_0.sortCo(arg_7_0, arg_7_1)
+	if arg_7_0.pos ~= arg_7_1.pos then
+		return arg_7_0.pos < arg_7_1.pos
+	end
+
+	return arg_7_0.id < arg_7_1.id
 end
 
 return var_0_0

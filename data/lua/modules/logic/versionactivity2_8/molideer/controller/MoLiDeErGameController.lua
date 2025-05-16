@@ -126,11 +126,11 @@ function var_0_0.onEpisodeInfoPush(arg_19_0, arg_19_1)
 			logNormal("莫莉德尔 角色活动 下一回合")
 			ViewMgr.instance:openView(ViewName.MoLiDeErInterludeView, {
 				isNextRound = true,
-				callback = arg_19_0.checkFinishEvent,
+				callback = arg_19_0.sendUIRefreshEvent,
 				callbackObj = arg_19_0
 			})
 		elseif var_19_3 == var_19_4 then
-			arg_19_0:checkFinishEvent(ViewName.MoLiDeErEventView)
+			arg_19_0:sendUIRefreshEvent()
 		else
 			logNormal("莫莉德尔 角色活动 重置")
 			ViewMgr.instance:openView(ViewName.MoLiDeErInterludeView)
@@ -141,14 +141,8 @@ function var_0_0.onEpisodeInfoPush(arg_19_0, arg_19_1)
 	end
 end
 
-function var_0_0.checkFinishEvent(arg_20_0)
-	local var_20_0 = MoLiDeErGameModel.instance:getCurGameInfo().newFinishEventList
-
-	if var_20_0 and #var_20_0 > 0 then
-		arg_20_0:dispatchEvent(MoLiDeErEvent.GameUIRefresh, true)
-	else
-		arg_20_0:checkFinish()
-	end
+function var_0_0.sendUIRefreshEvent(arg_20_0)
+	arg_20_0:dispatchEvent(MoLiDeErEvent.GameUIRefresh)
 end
 
 function var_0_0.showFinishEvent(arg_21_0, arg_21_1)
@@ -169,7 +163,7 @@ function var_0_0.showFinishEvent(arg_21_0, arg_21_1)
 			if arg_21_0._finishIndex >= #var_21_0 then
 				arg_21_0._finishIndex = nil
 
-				arg_21_0:onFinishEventShowEnd()
+				arg_21_0:dispatchEvent(MoLiDeErEvent.GameFinishEventShowEnd)
 
 				return
 			end
@@ -191,108 +185,77 @@ function var_0_0.showFinishEvent(arg_21_0, arg_21_1)
 		ViewMgr.instance:openView(ViewName.MoLiDeErEventView, var_21_2)
 		ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, arg_21_0.showFinishEvent, arg_21_0)
 	else
-		arg_21_0:onFinishEventShowEnd()
+		arg_21_0:dispatchEvent(MoLiDeErEvent.GameFinishEventShowEnd)
 	end
 end
 
-function var_0_0.onFinishEventShowEnd(arg_22_0)
-	local var_22_0 = MoLiDeErGameModel.instance:getCurGameInfo()
+function var_0_0.skipGame(arg_22_0)
+	local var_22_0 = MessageBoxIdDefine.MoLiDeErSkipGameTip
 
-	if var_22_0.isEpisodeFinish and var_22_0.passStar ~= 0 then
-		arg_22_0:onGameResult()
-	else
-		arg_22_0:dispatchEvent(MoLiDeErEvent.GameFinishEventShowEnd)
+	GameFacade.showMessageBox(var_22_0, MsgBoxEnum.BoxType.Yes_No, arg_22_0.realSendSkip, nil, nil, arg_22_0)
+end
+
+function var_0_0.realSendSkip(arg_23_0)
+	local var_23_0 = MoLiDeErModel.instance:getCurActId()
+	local var_23_1 = MoLiDeErModel.instance:getCurEpisodeId()
+
+	MoLiDeErRpc.instance:sendAct194SkipEpisodeRequest(var_23_0, var_23_1)
+end
+
+function var_0_0.onReceiveSkipGame(arg_24_0, arg_24_1, arg_24_2)
+	local var_24_0 = MoLiDeErModel.instance:getCurActId()
+	local var_24_1 = MoLiDeErModel.instance:getCurEpisodeId()
+
+	if var_24_0 == arg_24_1 and var_24_1 == arg_24_2 then
+		arg_24_0:onSuccessExit()
 	end
 end
 
-function var_0_0.checkFinish(arg_23_0)
-	local var_23_0 = MoLiDeErGameModel.instance:getCurGameInfo()
+function var_0_0.resetGame(arg_25_0)
+	local var_25_0 = MessageBoxIdDefine.MoLiDeErResetGameTip
 
-	if var_23_0.isEpisodeFinish and var_23_0.passStar ~= 0 then
-		arg_23_0:onGameResult()
-	else
-		arg_23_0:checkNewEvent()
-	end
+	GameFacade.showMessageBox(var_25_0, MsgBoxEnum.BoxType.Yes_No, arg_25_0.realResetGame, nil, nil, arg_25_0)
 end
 
-function var_0_0.onGameResult(arg_24_0)
-	ViewMgr.instance:openView(ViewName.MoLiDeErResultView)
+function var_0_0.realResetGame(arg_26_0)
+	local var_26_0 = MoLiDeErModel.instance:getCurActId()
+	local var_26_1 = MoLiDeErModel.instance:getCurEpisodeId()
+
+	MoLiDeErRpc.instance:sendAct194ResetEpisodeRequest(var_26_0, var_26_1)
 end
 
-function var_0_0.checkNewEvent(arg_25_0)
-	local var_25_0 = MoLiDeErGameModel.instance:getCurGameInfo().newEventList
-	local var_25_1 = var_25_0 ~= nil and var_25_0[1]
-
-	arg_25_0:dispatchEvent(MoLiDeErEvent.GameUIRefresh, var_25_1)
+function var_0_0.onResetGame(arg_27_0, arg_27_1, arg_27_2)
+	MoLiDeErGameModel.instance:resetGame(arg_27_1, arg_27_2)
 end
 
-function var_0_0.skipGame(arg_26_0)
-	local var_26_0 = MessageBoxIdDefine.MoLiDeErSkipGameTip
+function var_0_0.onSuccessExit(arg_28_0)
+	arg_28_0:dispatchEvent(MoLiDeErEvent.GameExit)
+	MoLiDeErController.instance:gameFinish()
 
-	GameFacade.showMessageBox(var_26_0, MsgBoxEnum.BoxType.Yes_No, arg_26_0.realSendSkip, nil, nil, arg_26_0)
-end
-
-function var_0_0.realSendSkip(arg_27_0)
-	local var_27_0 = MoLiDeErModel.instance:getCurActId()
-	local var_27_1 = MoLiDeErModel.instance:getCurEpisodeId()
-
-	MoLiDeErRpc.instance:sendAct194SkipEpisodeRequest(var_27_0, var_27_1)
-end
-
-function var_0_0.onReceiveSkipGame(arg_28_0, arg_28_1, arg_28_2)
 	local var_28_0 = MoLiDeErModel.instance:getCurActId()
 	local var_28_1 = MoLiDeErModel.instance:getCurEpisodeId()
 
-	if var_28_0 == arg_28_1 and var_28_1 == arg_28_2 then
-		arg_28_0:onSuccessExit()
-	end
+	MoLiDeErGameModel.instance:resetGame(var_28_0, var_28_1)
 end
 
-function var_0_0.resetGame(arg_29_0)
-	local var_29_0 = MessageBoxIdDefine.MoLiDeErResetGameTip
-
-	GameFacade.showMessageBox(var_29_0, MsgBoxEnum.BoxType.Yes_No, arg_29_0.realResetGame, nil, nil, arg_29_0)
+function var_0_0.onFailRestart(arg_29_0)
+	arg_29_0:restartGame()
 end
 
-function var_0_0.realResetGame(arg_30_0)
+function var_0_0.restartGame(arg_30_0)
 	local var_30_0 = MoLiDeErModel.instance:getCurActId()
 	local var_30_1 = MoLiDeErModel.instance:getCurEpisodeId()
 
-	MoLiDeErRpc.instance:sendAct194ResetEpisodeRequest(var_30_0, var_30_1)
+	arg_30_0:startGame(var_30_0, var_30_1)
 end
 
-function var_0_0.onResetGame(arg_31_0, arg_31_1, arg_31_2)
-	MoLiDeErGameModel.instance:resetGame(arg_31_1, arg_31_2)
-end
+function var_0_0.onFailExit(arg_31_0)
+	arg_31_0:dispatchEvent(MoLiDeErEvent.GameExit)
 
-function var_0_0.onSuccessExit(arg_32_0)
-	arg_32_0:dispatchEvent(MoLiDeErEvent.GameExit)
-	MoLiDeErController.instance:gameFinish()
+	local var_31_0 = MoLiDeErModel.instance:getCurActId()
+	local var_31_1 = MoLiDeErModel.instance:getCurEpisodeId()
 
-	local var_32_0 = MoLiDeErModel.instance:getCurActId()
-	local var_32_1 = MoLiDeErModel.instance:getCurEpisodeId()
-
-	MoLiDeErGameModel.instance:resetGame(var_32_0, var_32_1)
-end
-
-function var_0_0.onFailRestart(arg_33_0)
-	arg_33_0:restartGame()
-end
-
-function var_0_0.restartGame(arg_34_0)
-	local var_34_0 = MoLiDeErModel.instance:getCurActId()
-	local var_34_1 = MoLiDeErModel.instance:getCurEpisodeId()
-
-	arg_34_0:startGame(var_34_0, var_34_1)
-end
-
-function var_0_0.onFailExit(arg_35_0)
-	arg_35_0:dispatchEvent(MoLiDeErEvent.GameExit)
-
-	local var_35_0 = MoLiDeErModel.instance:getCurActId()
-	local var_35_1 = MoLiDeErModel.instance:getCurEpisodeId()
-
-	MoLiDeErGameModel.instance:resetGame(var_35_0, var_35_1)
+	MoLiDeErGameModel.instance:resetGame(var_31_0, var_31_1)
 end
 
 var_0_0.instance = var_0_0.New()

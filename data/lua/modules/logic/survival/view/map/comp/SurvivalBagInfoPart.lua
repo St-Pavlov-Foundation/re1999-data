@@ -8,6 +8,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0.parent = arg_1_1.transform.parent
 	arg_1_0._goinfo = gohelper.findChild(arg_1_1, "root/#go_info")
 	arg_1_0._goempty = gohelper.findChild(arg_1_1, "root/#go_empty")
+	arg_1_0._goquality5 = gohelper.findChild(arg_1_1, "root/#go_quality")
 	arg_1_0._goprice = gohelper.findChild(arg_1_1, "root/#go_info/top/right/price")
 	arg_1_0._txtprice = gohelper.findChildTextMesh(arg_1_1, "root/#go_info/top/right/price/#txt_price")
 	arg_1_0._goheavy = gohelper.findChild(arg_1_1, "root/#go_info/top/right/heavy")
@@ -20,6 +21,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._goitem = gohelper.findChild(arg_1_1, "root/#go_info/top/middle/collection")
 	arg_1_0._imageitem = gohelper.findChildSingleImage(arg_1_1, "root/#go_info/top/middle/collection/#simage_icon")
 	arg_1_0._imageitemrare = gohelper.findChildImage(arg_1_1, "root/#go_info/top/middle/collection/#image_quailty2")
+	arg_1_0._imageitemrare2 = gohelper.findChildImage(arg_1_1, "root/#go_info/top/middle/npc/#image_quailty2")
 	arg_1_0._btnremove = gohelper.findChildButtonWithAudio(arg_1_1, "root/#go_info/top/left/#btn_remove")
 	arg_1_0._btnleave = gohelper.findChildButtonWithAudio(arg_1_1, "root/#go_info/top/left/#btn_leave")
 	arg_1_0._goTips = gohelper.findChild(arg_1_1, "root/#go_info/top/left/go_tips")
@@ -91,6 +93,7 @@ function var_0_0.addEventListeners(arg_2_0)
 	arg_2_0._btnminnum:AddClickListener(arg_2_0._onMinNumClick, arg_2_0)
 	arg_2_0._btnselect:AddClickListener(arg_2_0._onSelectClick, arg_2_0)
 	arg_2_0._btnClose:AddClickListener(arg_2_0._onClickCloseTips, arg_2_0)
+	SurvivalController.instance:registerCallback(SurvivalEvent.OnEquipDescSimpleChange, arg_2_0.updateCenterShow, arg_2_0)
 end
 
 function var_0_0.removeEventListeners(arg_3_0)
@@ -118,6 +121,7 @@ function var_0_0.removeEventListeners(arg_3_0)
 	arg_3_0._btnminnum:RemoveClickListener()
 	arg_3_0._btnselect:RemoveClickListener()
 	arg_3_0._btnClose:RemoveClickListener()
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnEquipDescSimpleChange, arg_3_0.updateCenterShow, arg_3_0)
 end
 
 function var_0_0._onSelectClick(arg_4_0)
@@ -183,6 +187,8 @@ function var_0_0.updateMo(arg_13_0, arg_13_1)
 	else
 		arg_13_0:_refreshAll()
 	end
+
+	gohelper.setActive(arg_13_0._goquality5, arg_13_0.mo and arg_13_0.mo.co and arg_13_0.mo.co.rare == 5 and SurvivalEnum.ItemSource.Drop == arg_13_0.mo.source)
 end
 
 function var_0_0._refreshAll(arg_14_0)
@@ -221,66 +227,90 @@ function var_0_0.updateEquipTag(arg_17_0)
 end
 
 function var_0_0._createEquipTag(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
-	local var_18_0 = gohelper.findChildImage(arg_18_1, "#image_tag")
-	local var_18_1 = lua_survival_equip_found.configDict[arg_18_2]
+	local var_18_0 = gohelper.findChildButtonWithAudio(arg_18_1, "")
+	local var_18_1 = gohelper.findChildImage(arg_18_1, "#image_tag")
+	local var_18_2 = lua_survival_equip_found.configDict[arg_18_2]
 
-	if not var_18_1 then
+	if not var_18_2 then
 		return
 	end
 
-	UISpriteSetMgr.instance:setSurvivalSprite(var_18_0, var_18_1.icon4)
+	UISpriteSetMgr.instance:setSurvivalSprite(var_18_1, var_18_2.icon4)
+	arg_18_0:removeClickCb(var_18_0)
+	arg_18_0:addClickCb(var_18_0, arg_18_0._onClickTag, arg_18_0, {
+		co = var_18_2,
+		btn = var_18_0
+	})
 end
 
-function var_0_0.updateBaseInfo(arg_19_0)
-	local var_19_0 = luaLang("multiple")
+function var_0_0._onClickTag(arg_19_0, arg_19_1)
+	local var_19_0 = arg_19_1.btn.transform
+	local var_19_1 = var_19_0.lossyScale
+	local var_19_2 = var_19_0.position
+	local var_19_3 = recthelper.getWidth(var_19_0)
+	local var_19_4 = recthelper.getHeight(var_19_0)
 
-	arg_19_0._txtname.text = arg_19_0.mo.co.name
+	var_19_2.x = var_19_2.x - var_19_3 / 2 * var_19_1.x
+	var_19_2.y = var_19_2.y + var_19_4 / 2 * var_19_1.y
 
-	if arg_19_0.mo.count > 1 then
-		arg_19_0._txtnum.text = var_19_0 .. arg_19_0.mo.count
-	else
-		arg_19_0._txtnum.text = ""
-	end
-
-	local var_19_1 = arg_19_0:getItemSource()
-	local var_19_2 = var_19_1 == SurvivalEnum.ItemSource.Search or arg_19_0.mo.co.disposable == 0 and not arg_19_0.mo:isCurrency() and (var_19_1 == SurvivalEnum.ItemSource.Map or var_19_1 == SurvivalEnum.ItemSource.Shelter)
-
-	gohelper.setActive(arg_19_0._btnleave, var_19_2 and arg_19_0.mo.npcCo)
-	gohelper.setActive(arg_19_0._btntipleave, arg_19_0.mo.npcCo)
-	gohelper.setActive(arg_19_0._btnremove, var_19_2 and not arg_19_0.mo.npcCo)
-	gohelper.setActive(arg_19_0._btntipremove, not arg_19_0.mo.npcCo)
-	gohelper.setActive(arg_19_0._gonpc, arg_19_0.mo.npcCo)
-	gohelper.setActive(arg_19_0._goitem, not arg_19_0.mo.npcCo)
-
-	if arg_19_0.mo.npcCo then
-		UISpriteSetMgr.instance:setV2a2ChessSprite(arg_19_0._imagenpc, arg_19_0.mo.npcCo.headIcon, false)
-	else
-		UISpriteSetMgr.instance:setSurvivalSprite(arg_19_0._imageitemrare, "survival_bag_itemquality2_" .. arg_19_0.mo.co.rare, false)
-		arg_19_0._imageitem:LoadImage(ResUrl.getSurvivalItemIcon(arg_19_0.mo.co.icon))
-	end
-
-	arg_19_0:updateTipCountShow()
-	arg_19_0:updateBtnsShow()
-	arg_19_0:updateCenterShow()
+	ViewMgr.instance:openView(ViewName.SurvivalCurrencyTipView, {
+		arrow = "BL",
+		txt = arg_19_1.co.name,
+		pos = var_19_2
+	})
 end
 
-function var_0_0.updateTipCountShow(arg_20_0)
-	arg_20_0._inputtipnum:SetText(arg_20_0.mo.count)
+function var_0_0.updateBaseInfo(arg_20_0)
+	local var_20_0 = luaLang("multiple")
 
-	if arg_20_0.mo.count <= 1 then
-		gohelper.setActive(arg_20_0._gotipsnum, false)
-		gohelper.setActive(arg_20_0._txthave, false)
-		gohelper.setActive(arg_20_0._txtremain, false)
+	arg_20_0._txtname.text = arg_20_0.mo.co.name
+
+	if arg_20_0.mo.count > 1 then
+		arg_20_0._txtnum.text = var_20_0 .. arg_20_0.mo.count
 	else
-		gohelper.setActive(arg_20_0._gotipsnum, true)
+		arg_20_0._txtnum.text = ""
+	end
 
-		if arg_20_0:getItemSource() ~= SurvivalEnum.ItemSource.Search then
-			gohelper.setActive(arg_20_0._txthave, true)
-			gohelper.setActive(arg_20_0._txtremain, true)
-			arg_20_0:updateTipCount()
+	local var_20_1 = arg_20_0:getItemSource()
+	local var_20_2 = var_20_1 == SurvivalEnum.ItemSource.Search or arg_20_0.mo.co.disposable == 0 and not arg_20_0.mo:isCurrency() and (var_20_1 == SurvivalEnum.ItemSource.Map or var_20_1 == SurvivalEnum.ItemSource.Shelter)
+
+	gohelper.setActive(arg_20_0._btnleave, var_20_2 and arg_20_0.mo.npcCo)
+	gohelper.setActive(arg_20_0._btntipleave, arg_20_0.mo.npcCo)
+	gohelper.setActive(arg_20_0._btnremove, var_20_2 and not arg_20_0.mo.npcCo)
+	gohelper.setActive(arg_20_0._btntipremove, not arg_20_0.mo.npcCo)
+	gohelper.setActive(arg_20_0._gonpc, arg_20_0.mo.npcCo)
+	gohelper.setActive(arg_20_0._goitem, not arg_20_0.mo.npcCo)
+
+	if arg_20_0.mo.npcCo then
+		UISpriteSetMgr.instance:setV2a2ChessSprite(arg_20_0._imagenpc, arg_20_0.mo.npcCo.headIcon, false)
+		UISpriteSetMgr.instance:setSurvivalSprite(arg_20_0._imageitemrare2, "survival_bag_itemquality2_" .. arg_20_0.mo.npcCo.rare, false)
+	else
+		UISpriteSetMgr.instance:setSurvivalSprite(arg_20_0._imageitemrare, "survival_bag_itemquality2_" .. arg_20_0.mo.co.rare, false)
+		arg_20_0._imageitem:LoadImage(ResUrl.getSurvivalItemIcon(arg_20_0.mo.co.icon))
+	end
+
+	arg_20_0:updateTipCountShow()
+	arg_20_0:updateBtnsShow()
+	arg_20_0:updateCenterShow()
+end
+
+function var_0_0.updateTipCountShow(arg_21_0)
+	arg_21_0._inputtipnum:SetText(arg_21_0.mo.count)
+
+	if arg_21_0.mo.count <= 1 then
+		gohelper.setActive(arg_21_0._gotipsnum, false)
+		gohelper.setActive(arg_21_0._txthave, false)
+		gohelper.setActive(arg_21_0._txtremain, false)
+	else
+		gohelper.setActive(arg_21_0._gotipsnum, true)
+
+		if arg_21_0:getItemSource() ~= SurvivalEnum.ItemSource.Search then
+			gohelper.setActive(arg_21_0._txthave, true)
+			gohelper.setActive(arg_21_0._txtremain, true)
+			arg_21_0:updateTipCount()
 		else
-			gohelper.setActive(arg_20_0._txthave, false)
-			gohelper.setActive(arg_20_0._txtremain, false)
+			gohelper.setActive(arg_21_0._txthave, false)
+			gohelper.setActive(arg_21_0._txtremain, false)
 		end
 	end
 end
@@ -293,417 +323,428 @@ local var_0_1 = {
 	317.9
 }
 
-function var_0_0.updateBtnsShow(arg_21_0)
-	local var_21_0 = 1
+function var_0_0.updateBtnsShow(arg_22_0)
+	local var_22_0 = 1
 
-	arg_21_0._inputnum:SetText(arg_21_0.mo.count)
-	gohelper.setActive(arg_21_0._btngoequip, false)
-	gohelper.setActive(arg_21_0._btnuse, false)
-	gohelper.setActive(arg_21_0._btnequip, false)
-	gohelper.setActive(arg_21_0._btnunequip, false)
-	gohelper.setActive(arg_21_0._btnsearch, false)
-	gohelper.setActive(arg_21_0._btnsell, false)
-	gohelper.setActive(arg_21_0._btnbuy, false)
-	gohelper.setActive(arg_21_0._btnplace, false)
-	gohelper.setActive(arg_21_0._btnunplace, false)
-	gohelper.setActive(arg_21_0._gonum, false)
-	gohelper.setActive(arg_21_0._txtcount, false)
-	gohelper.setActive(arg_21_0._goicon1, false)
-	gohelper.setActive(arg_21_0._goicon2, false)
-	gohelper.setActive(arg_21_0._btnselect, false)
+	arg_22_0._inputnum:SetText(arg_22_0.mo.count)
+	gohelper.setActive(arg_22_0._btngoequip, false)
+	gohelper.setActive(arg_22_0._btnuse, false)
+	gohelper.setActive(arg_22_0._btnequip, false)
+	gohelper.setActive(arg_22_0._btnunequip, false)
+	gohelper.setActive(arg_22_0._btnsearch, false)
+	gohelper.setActive(arg_22_0._btnsell, false)
+	gohelper.setActive(arg_22_0._btnbuy, false)
+	gohelper.setActive(arg_22_0._btnplace, false)
+	gohelper.setActive(arg_22_0._btnunplace, false)
+	gohelper.setActive(arg_22_0._gonum, false)
+	gohelper.setActive(arg_22_0._txtcount, false)
+	gohelper.setActive(arg_22_0._goicon1, false)
+	gohelper.setActive(arg_22_0._goicon2, false)
+	gohelper.setActive(arg_22_0._btnselect, false)
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Search then
-		gohelper.setActive(arg_21_0._btnsearch, true)
-		gohelper.setActive(arg_21_0._gonum, arg_21_0.mo.count > 1)
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Search then
+		gohelper.setActive(arg_22_0._btnsearch, true)
+		gohelper.setActive(arg_22_0._gonum, arg_22_0.mo.count > 1)
 
-		var_21_0 = arg_21_0.mo.count > 1 and 3 or 2
+		var_22_0 = arg_22_0.mo.count > 1 and 3 or 2
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Map and not SurvivalMapModel.instance:getSceneMo().panel then
-		if arg_21_0.mo.equipCo then
-			var_21_0 = 2
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Map and not SurvivalMapModel.instance:getSceneMo().panel then
+		if arg_22_0.mo.equipCo then
+			var_22_0 = 2
 
-			gohelper.setActive(arg_21_0._btngoequip, true)
-		elseif arg_21_0.mo.co.type == SurvivalEnum.ItemType.Quick then
-			var_21_0 = 2
+			gohelper.setActive(arg_22_0._btngoequip, true)
+		elseif arg_22_0.mo.co.type == SurvivalEnum.ItemType.Quick then
+			var_22_0 = 2
 
-			gohelper.setActive(arg_21_0._btnuse, true)
+			gohelper.setActive(arg_22_0._btnuse, true)
 		end
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Equip then
-		var_21_0 = 2
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Equip then
+		var_22_0 = 2
 
-		gohelper.setActive(arg_21_0._btnunequip, true)
+		gohelper.setActive(arg_22_0._btnunequip, true)
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.EquipBag then
-		var_21_0 = 2
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.EquipBag then
+		var_22_0 = 2
 
-		gohelper.setActive(arg_21_0._btnequip, true)
+		gohelper.setActive(arg_22_0._btnequip, true)
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Commit then
-		gohelper.setActive(arg_21_0._txtcount, true)
-		gohelper.setActive(arg_21_0._goicon1, true)
-		gohelper.setActive(arg_21_0._gonum, arg_21_0.mo.count > 1)
-		gohelper.setActive(arg_21_0._btnplace, true)
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Commit then
+		gohelper.setActive(arg_22_0._txtcount, true)
+		gohelper.setActive(arg_22_0._goicon1, true)
+		gohelper.setActive(arg_22_0._gonum, arg_22_0.mo.count > 1)
+		gohelper.setActive(arg_22_0._btnplace, true)
 
-		var_21_0 = arg_21_0.mo.count > 1 and 4 or 5
+		var_22_0 = arg_22_0.mo.count > 1 and 4 or 5
 
-		arg_21_0._inputnum:SetText("1")
+		arg_22_0._inputnum:SetText("1")
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Commited then
-		gohelper.setActive(arg_21_0._txtcount, true)
-		gohelper.setActive(arg_21_0._goicon1, true)
-		gohelper.setActive(arg_21_0._gonum, arg_21_0.mo.count > 1)
-		gohelper.setActive(arg_21_0._btnunplace, true)
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Commited then
+		gohelper.setActive(arg_22_0._txtcount, true)
+		gohelper.setActive(arg_22_0._goicon1, true)
+		gohelper.setActive(arg_22_0._gonum, arg_22_0.mo.count > 1)
+		gohelper.setActive(arg_22_0._btnunplace, true)
 
-		var_21_0 = arg_21_0.mo.count > 1 and 4 or 5
+		var_22_0 = arg_22_0.mo.count > 1 and 4 or 5
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.Composite then
-		var_21_0 = 2
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.Composite then
+		var_22_0 = 2
 
-		gohelper.setActive(arg_21_0._btnselect, true)
+		gohelper.setActive(arg_22_0._btnselect, true)
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.ShopBag then
-		var_21_0 = 4
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.ShopBag then
+		var_22_0 = 4
 
-		gohelper.setActive(arg_21_0._txtcount, true)
-		gohelper.setActive(arg_21_0._goicon2, true)
-		gohelper.setActive(arg_21_0._gonum, true)
-		gohelper.setActive(arg_21_0._btnsell, true)
+		gohelper.setActive(arg_22_0._txtcount, true)
+		gohelper.setActive(arg_22_0._goicon2, true)
+		gohelper.setActive(arg_22_0._gonum, true)
+		gohelper.setActive(arg_22_0._btnsell, true)
 	end
 
-	if arg_21_0:getItemSource() == SurvivalEnum.ItemSource.ShopItem then
-		var_21_0 = 4
+	if arg_22_0:getItemSource() == SurvivalEnum.ItemSource.ShopItem then
+		var_22_0 = 4
 
-		gohelper.setActive(arg_21_0._txtcount, true)
-		gohelper.setActive(arg_21_0._goicon2, true)
-		gohelper.setActive(arg_21_0._gonum, true)
-		gohelper.setActive(arg_21_0._btnbuy, true)
-		arg_21_0._inputnum:SetText("1")
+		gohelper.setActive(arg_22_0._txtcount, true)
+		gohelper.setActive(arg_22_0._goicon2, true)
+		gohelper.setActive(arg_22_0._gonum, true)
+		gohelper.setActive(arg_22_0._btnbuy, true)
+		arg_22_0._inputnum:SetText("1")
 	end
 
-	recthelper.setHeight(arg_21_0._goscroll.transform, var_0_1[var_21_0])
-	arg_21_0:onInputValueChange()
+	recthelper.setHeight(arg_22_0._goscroll.transform, var_0_1[var_22_0])
+	arg_22_0:onInputValueChange()
 end
 
-function var_0_0.updateCenterShow(arg_22_0)
-	gohelper.setActive(arg_22_0._goscore, arg_22_0.mo.co.type == SurvivalEnum.ItemType.Equip)
+function var_0_0.updateCenterShow(arg_23_0)
+	if not arg_23_0.mo then
+		return
+	end
 
-	local var_22_0 = {}
+	gohelper.setActive(arg_23_0._goscore, arg_23_0.mo.co.type == SurvivalEnum.ItemType.Equip)
 
-	gohelper.setActive(arg_22_0._goFrequency, false)
+	local var_23_0 = {}
 
-	if arg_22_0.mo.equipCo then
-		local var_22_1, var_22_2 = arg_22_0.mo:getEquipScoreLevel()
+	gohelper.setActive(arg_23_0._goFrequency, false)
 
-		UISpriteSetMgr.instance:setSurvivalSprite(arg_22_0._imagescore, "survivalequip_scoreicon_" .. var_22_1)
+	if arg_23_0.mo.equipCo then
+		local var_23_1, var_23_2 = arg_23_0.mo:getEquipScoreLevel()
 
-		arg_22_0._txtscore.text = string.format("<color=%s>%s</color>", var_22_2, arg_22_0.mo.equipCo.score + arg_22_0.mo.exScore)
+		UISpriteSetMgr.instance:setSurvivalSprite(arg_23_0._imagescore, "survivalequip_scoreicon_" .. var_23_1)
 
-		if arg_22_0.mo.slotMo then
-			local var_22_3 = arg_22_0.mo.slotMo.parent.maxTagId
-			local var_22_4 = lua_survival_equip_found.configDict[var_22_3]
+		arg_23_0._txtscore.text = string.format("<color=%s>%s</color>", var_23_2, arg_23_0.mo.equipCo.score + arg_23_0.mo.exScore)
 
-			if var_22_4 then
-				gohelper.setActive(arg_22_0._goFrequency, true)
-				UISpriteSetMgr.instance:setSurvivalSprite(arg_22_0._imageFrequency, var_22_4.value)
+		if arg_23_0.mo.slotMo then
+			local var_23_3 = arg_23_0.mo.slotMo.parent.maxTagId
+			local var_23_4 = lua_survival_equip_found.configDict[var_23_3]
 
-				arg_22_0._txtFrequency.text = arg_22_0.mo.equipValues and arg_22_0.mo.equipValues[var_22_4.value] or 0
+			if var_23_4 then
+				gohelper.setActive(arg_23_0._goFrequency, true)
+				UISpriteSetMgr.instance:setSurvivalSprite(arg_23_0._imageFrequency, var_23_4.value)
 
-				local var_22_5 = lua_survival_attr.configDict[var_22_4.value]
+				arg_23_0._txtFrequency.text = arg_23_0.mo.equipValues and arg_23_0.mo.equipValues[var_23_4.value] or 0
 
-				arg_22_0._txtFrequencyName.text = var_22_5 and var_22_5.name or ""
+				local var_23_5 = lua_survival_attr.configDict[var_23_4.value]
+
+				arg_23_0._txtFrequencyName.text = var_23_5 and var_23_5.name or ""
 			end
 		end
 
-		local var_22_6 = arg_22_0.mo:getEquipEffectDesc()
+		local var_23_6 = arg_23_0.mo:getEquipEffectDesc()
 
-		var_22_0[1] = {
+		var_23_0[1] = {
 			icon = "survival_bag_title01",
 			desc = luaLang("survival_baginfo_effect"),
-			list2 = var_22_6
+			list2 = var_23_6
 		}
-		var_22_0[2] = {
+		var_23_0[2] = {
 			icon = "survival_bag_title01",
 			desc = luaLang("survival_baginfo_info"),
 			list = {
-				arg_22_0.mo.equipCo.desc
+				arg_23_0.mo.equipCo.desc
 			}
 		}
-	elseif arg_22_0.mo.npcCo then
-		local var_22_7 = string.splitToNumber(arg_22_0.mo.npcCo.tag, "#")
+	elseif arg_23_0.mo.npcCo then
+		local var_23_7 = string.splitToNumber(arg_23_0.mo.npcCo.tag, "#")
 
-		if var_22_7 then
-			for iter_22_0, iter_22_1 in ipairs(var_22_7) do
-				local var_22_8 = lua_survival_tag.configDict[iter_22_1]
+		if var_23_7 then
+			for iter_23_0, iter_23_1 in ipairs(var_23_7) do
+				local var_23_8 = lua_survival_tag.configDict[iter_23_1]
 
-				table.insert(var_22_0, {
-					icon = "survival_bag_title0" .. var_22_8.color,
-					desc = var_22_8.name,
+				table.insert(var_23_0, {
+					icon = "survival_bag_title0" .. var_23_8.color,
+					desc = var_23_8.name,
 					list = {
-						var_22_8.desc
+						var_23_8.desc
 					}
 				})
 			end
 		end
 	else
-		var_22_0[1] = {
+		var_23_0[1] = {
 			icon = "survival_bag_title01",
 			desc = luaLang("survival_baginfo_effect"),
 			list = {
-				arg_22_0.mo.co.desc1
+				arg_23_0.mo.co.desc1
 			}
 		}
-		var_22_0[2] = {
+		var_23_0[2] = {
 			icon = "survival_bag_title01",
 			desc = luaLang("survival_baginfo_info"),
 			list = {
-				arg_22_0.mo.co.desc2
+				arg_23_0.mo.co.desc2
 			}
 		}
 	end
 
-	gohelper.CreateObjList(arg_22_0, arg_22_0._createDescItems, var_22_0, nil, arg_22_0._goattritem)
+	gohelper.CreateObjList(arg_23_0, arg_23_0._createDescItems, var_23_0, nil, arg_23_0._goattritem)
 end
 
-function var_0_0._createDescItems(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
-	local var_23_0 = gohelper.findChildImage(arg_23_1, "#image_title")
-	local var_23_1 = gohelper.findChildTextMesh(arg_23_1, "#image_title/#txt_title")
-	local var_23_2 = gohelper.findChild(arg_23_1, "layout/#go_decitem")
-	local var_23_3 = gohelper.findChild(arg_23_1, "layout/#go_decitem2")
-	local var_23_4 = gohelper.findChild(arg_23_1, "layout/#go_decitem/#txt_desc")
-	local var_23_5 = gohelper.findChild(arg_23_1, "layout/#go_decitem2/#txt_desc")
+function var_0_0._createDescItems(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
+	local var_24_0 = gohelper.findChildImage(arg_24_1, "#image_title")
+	local var_24_1 = gohelper.findChildTextMesh(arg_24_1, "#image_title/#txt_title")
+	local var_24_2 = gohelper.findChildButtonWithAudio(arg_24_1, "#image_title/#txt_title/#btn_switch")
+	local var_24_3 = gohelper.findChild(arg_24_1, "layout/#go_decitem")
+	local var_24_4 = gohelper.findChild(arg_24_1, "layout/#go_decitem2")
+	local var_24_5 = gohelper.findChild(arg_24_1, "layout/#go_decitem/#txt_desc")
+	local var_24_6 = gohelper.findChild(arg_24_1, "layout/#go_decitem2/#txt_desc")
 
-	UISpriteSetMgr.instance:setSurvivalSprite(var_23_0, arg_23_2.icon)
+	UISpriteSetMgr.instance:setSurvivalSprite(var_24_0, arg_24_2.icon)
 
-	var_23_1.text = arg_23_2.desc
+	var_24_1.text = arg_24_2.desc
 
-	gohelper.setActive(var_23_2, arg_23_2.list)
-	gohelper.setActive(var_23_3, arg_23_2.list2)
+	gohelper.setActive(var_24_3, arg_24_2.list)
+	gohelper.setActive(var_24_4, arg_24_2.list2)
+	gohelper.setActive(var_24_2, arg_24_2.list2)
+	arg_24_0:addClickCb(var_24_2, arg_24_0._onClickSwitch, arg_24_0)
 
-	if arg_23_2.list then
-		gohelper.CreateObjList(arg_23_0, arg_23_0._createSubDescItems, arg_23_2.list, nil, var_23_4)
+	if arg_24_2.list then
+		gohelper.CreateObjList(arg_24_0, arg_24_0._createSubDescItems, arg_24_2.list, nil, var_24_5)
 	end
 
-	if arg_23_2.list2 then
-		gohelper.CreateObjList(arg_23_0, arg_23_0._createSubDescItems2, arg_23_2.list2, nil, var_23_5)
+	if arg_24_2.list2 then
+		gohelper.CreateObjList(arg_24_0, arg_24_0._createSubDescItems2, arg_24_2.list2, nil, var_24_6)
 	end
 end
 
-function var_0_0._createSubDescItems(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
-	gohelper.findChildTextMesh(arg_24_1, "").text = arg_24_2
+function var_0_0._onClickSwitch(arg_25_0)
+	SurvivalModel.instance:changeDescSimple()
 end
 
-function var_0_0._createSubDescItems2(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
-	local var_25_0 = gohelper.findChildTextMesh(arg_25_1, "")
-	local var_25_1 = gohelper.findChildImage(arg_25_1, "point")
+function var_0_0._createSubDescItems(arg_26_0, arg_26_1, arg_26_2, arg_26_3)
+	gohelper.findChildTextMesh(arg_26_1, "").text = arg_26_2
+end
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(var_25_0.gameObject, SurvivalSkillDescComp):updateInfo(var_25_0, arg_25_2[1], 3028)
+function var_0_0._createSubDescItems2(arg_27_0, arg_27_1, arg_27_2, arg_27_3)
+	local var_27_0 = gohelper.findChildTextMesh(arg_27_1, "")
+	local var_27_1 = gohelper.findChildImage(arg_27_1, "point")
 
-	local var_25_2 = arg_25_2[2]
+	MonoHelper.addNoUpdateLuaComOnceToGo(var_27_0.gameObject, SurvivalSkillDescComp):updateInfo(var_27_0, arg_27_2[1], 3028)
 
-	if arg_25_0:getItemSource() == SurvivalEnum.ItemSource.EquipBag then
-		var_25_2 = false
-	elseif arg_25_0:getItemSource() ~= SurvivalEnum.ItemSource.Equip then
-		var_25_2 = true
+	local var_27_2 = arg_27_2[2]
+
+	if arg_27_0:getItemSource() == SurvivalEnum.ItemSource.EquipBag then
+		var_27_2 = false
+	elseif arg_27_0:getItemSource() ~= SurvivalEnum.ItemSource.Equip then
+		var_27_2 = true
 	end
 
-	ZProj.UGUIHelper.SetColorAlpha(var_25_0, var_25_2 and 1 or 0.5)
+	ZProj.UGUIHelper.SetColorAlpha(var_27_0, var_27_2 and 1 or 0.5)
 
-	if var_25_2 then
-		var_25_1.color = GameUtil.parseColor("#000000")
+	if var_27_2 then
+		var_27_1.color = GameUtil.parseColor("#000000")
 	else
-		var_25_1.color = GameUtil.parseColor("#808080")
+		var_27_1.color = GameUtil.parseColor("#808080")
 	end
 end
 
-function var_0_0._removeItem(arg_26_0)
-	local var_26_0 = tonumber(arg_26_0._inputtipnum:GetText()) or 0
-	local var_26_1 = Mathf.Clamp(var_26_0, 1, arg_26_0.mo.count)
-
-	if arg_26_0:getItemSource() == SurvivalEnum.ItemSource.Search then
-		SurvivalMapModel.instance.isSearchRemove = true
-
-		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "2#" .. arg_26_0.mo.uid .. "#" .. var_26_1)
-	else
-		SurvivalWeekRpc.instance:sendSurvivalRemoveBagItem(arg_26_0.mo.source, arg_26_0.mo.uid, var_26_1)
-	end
-
-	gohelper.setActive(arg_26_0._goTips, false)
-end
-
-function var_0_0._ontipnuminputChange(arg_27_0)
-	local var_27_0 = tonumber(arg_27_0._inputtipnum:GetText()) or 0
-	local var_27_1 = Mathf.Clamp(var_27_0, 1, arg_27_0.mo.count)
-
-	if tostring(var_27_1) ~= arg_27_0._inputtipnum:GetText() then
-		arg_27_0._inputtipnum:SetText(tostring(var_27_1))
-		arg_27_0:updateTipCount()
-	end
-end
-
-function var_0_0._addtipnum(arg_28_0, arg_28_1)
-	local var_28_0 = (tonumber(arg_28_0._inputtipnum:GetText()) or 0) + arg_28_1
+function var_0_0._removeItem(arg_28_0)
+	local var_28_0 = tonumber(arg_28_0._inputtipnum:GetText()) or 0
 	local var_28_1 = Mathf.Clamp(var_28_0, 1, arg_28_0.mo.count)
 
-	arg_28_0._inputtipnum:SetText(tostring(var_28_1))
-	arg_28_0:updateTipCount()
+	if arg_28_0:getItemSource() == SurvivalEnum.ItemSource.Search then
+		SurvivalMapModel.instance.isSearchRemove = true
+
+		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "2#" .. arg_28_0.mo.uid .. "#" .. var_28_1)
+	else
+		SurvivalWeekRpc.instance:sendSurvivalRemoveBagItem(arg_28_0.mo.source, arg_28_0.mo.uid, var_28_1)
+	end
+
+	gohelper.setActive(arg_28_0._goTips, false)
 end
 
-function var_0_0.updateTipCount(arg_29_0)
-	if arg_29_0:getItemSource() == SurvivalEnum.ItemSource.Search then
+function var_0_0._ontipnuminputChange(arg_29_0)
+	local var_29_0 = tonumber(arg_29_0._inputtipnum:GetText()) or 0
+	local var_29_1 = Mathf.Clamp(var_29_0, 1, arg_29_0.mo.count)
+
+	if tostring(var_29_1) ~= arg_29_0._inputtipnum:GetText() then
+		arg_29_0._inputtipnum:SetText(tostring(var_29_1))
+		arg_29_0:updateTipCount()
+	end
+end
+
+function var_0_0._addtipnum(arg_30_0, arg_30_1)
+	local var_30_0 = (tonumber(arg_30_0._inputtipnum:GetText()) or 0) + arg_30_1
+	local var_30_1 = Mathf.Clamp(var_30_0, 1, arg_30_0.mo.count)
+
+	arg_30_0._inputtipnum:SetText(tostring(var_30_1))
+	arg_30_0:updateTipCount()
+end
+
+function var_0_0.updateTipCount(arg_31_0)
+	if arg_31_0:getItemSource() == SurvivalEnum.ItemSource.Search then
 		return
 	end
 
-	local var_29_0 = tonumber(arg_29_0._inputtipnum:GetText()) or 0
+	local var_31_0 = tonumber(arg_31_0._inputtipnum:GetText()) or 0
 
-	arg_29_0._txthave.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_have"), arg_29_0.mo.count)
-	arg_29_0._txtremain.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_remain"), arg_29_0.mo.count - var_29_0)
+	arg_31_0._txthave.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_have"), arg_31_0.mo.count)
+	arg_31_0._txtremain.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_remain"), arg_31_0.mo.count - var_31_0)
 end
 
-function var_0_0.setCurEquipSlot(arg_30_0, arg_30_1)
-	arg_30_0._slotId = arg_30_1
+function var_0_0.setCurEquipSlot(arg_32_0, arg_32_1)
+	arg_32_0._slotId = arg_32_1
 end
 
-function var_0_0._onEquipClick(arg_31_0)
-	if SurvivalShelterModel.instance:getWeekInfo().equipBox.slots[arg_31_0._slotId].level < arg_31_0.mo.equipLevel then
+function var_0_0._onEquipClick(arg_33_0)
+	if SurvivalShelterModel.instance:getWeekInfo().equipBox.slots[arg_33_0._slotId].level < arg_33_0.mo.equipLevel then
 		GameFacade.showToast(ToastEnum.SurvivalEquipLevelLimit)
 
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalEquipWear(arg_31_0._slotId or 1, arg_31_0.mo.uid)
+	SurvivalWeekRpc.instance:sendSurvivalEquipWear(arg_33_0._slotId or 1, arg_33_0.mo.uid)
 end
 
-function var_0_0._onUnEquipClick(arg_32_0)
-	SurvivalWeekRpc.instance:sendSurvivalEquipDemount(arg_32_0._slotId or 1)
+function var_0_0._onUnEquipClick(arg_34_0)
+	SurvivalWeekRpc.instance:sendSurvivalEquipDemount(arg_34_0._slotId or 1)
 end
 
-function var_0_0._onSearchClick(arg_33_0)
-	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "1#" .. arg_33_0.mo.uid .. "#" .. arg_33_0._inputnum:GetText())
+function var_0_0._onSearchClick(arg_35_0)
+	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "1#" .. arg_35_0.mo.uid .. "#" .. arg_35_0._inputnum:GetText())
 end
 
-function var_0_0._onSellClick(arg_34_0)
-	SurvivalWeekRpc.instance:sendSurvivalShopSellRequest(arg_34_0.mo.uid, tonumber(arg_34_0._inputnum:GetText()))
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "SellItem", arg_34_0.mo)
+function var_0_0._onSellClick(arg_36_0)
+	SurvivalWeekRpc.instance:sendSurvivalShopSellRequest(arg_36_0.mo.uid, tonumber(arg_36_0._inputnum:GetText()))
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "SellItem", arg_36_0.mo)
 end
 
-function var_0_0._onBuyClick(arg_35_0)
-	if not arg_35_0._canBuy then
+function var_0_0._onBuyClick(arg_37_0)
+	if not arg_37_0._canBuy then
 		GameFacade.showToast(ToastEnum.SurvivalNoMoney)
 
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalShopBuyRequest(arg_35_0.mo.uid, tonumber(arg_35_0._inputnum:GetText()))
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "BuyItem", arg_35_0.mo)
+	SurvivalWeekRpc.instance:sendSurvivalShopBuyRequest(arg_37_0.mo.uid, tonumber(arg_37_0._inputnum:GetText()))
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "BuyItem", arg_37_0.mo)
 end
 
-function var_0_0._onGoEquipClick(arg_36_0)
+function var_0_0._onGoEquipClick(arg_38_0)
 	ViewMgr.instance:openView(ViewName.SurvivalEquipView)
 end
 
-function var_0_0._onUseClick(arg_37_0)
+function var_0_0._onUseClick(arg_39_0)
 	if SurvivalMapHelper.instance:isInFlow() then
 		GameFacade.showToast(ToastEnum.SurvivalCantUseItem)
 
 		return
 	end
 
-	if SurvivalEnum.CustomUseItemSubType[arg_37_0.mo.co.subType] then
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnUseQuickItem, arg_37_0.mo)
+	if SurvivalEnum.CustomUseItemSubType[arg_39_0.mo.co.subType] then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnUseQuickItem, arg_39_0.mo)
 		ViewMgr.instance:closeAllPopupViews()
 	else
-		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(arg_37_0.mo.uid, "")
+		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(arg_39_0.mo.uid, "")
 	end
 
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Use", arg_37_0.mo)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Use", arg_39_0.mo)
 end
 
-function var_0_0._onPlaceClick(arg_38_0)
-	local var_38_0 = tonumber(arg_38_0._inputnum:GetText()) or 0
-
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Place", arg_38_0.mo, var_38_0)
-end
-
-function var_0_0._onUnPlaceClick(arg_39_0)
-	local var_39_0 = tonumber(arg_39_0._inputnum:GetText()) or 0
-
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "UnPlace", arg_39_0.mo, var_39_0)
-end
-
-function var_0_0._ontnuminputChange(arg_40_0)
+function var_0_0._onPlaceClick(arg_40_0)
 	local var_40_0 = tonumber(arg_40_0._inputnum:GetText()) or 0
-	local var_40_1 = Mathf.Clamp(var_40_0, 1, arg_40_0.mo.count)
 
-	if tostring(var_40_1) ~= arg_40_0._inputnum:GetText() then
-		arg_40_0._inputnum:SetText(tostring(var_40_1))
-	end
-
-	arg_40_0:onInputValueChange()
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Place", arg_40_0.mo, var_40_0)
 end
 
-function var_0_0._onAddNumClick(arg_41_0, arg_41_1)
-	local var_41_0 = (tonumber(arg_41_0._inputnum:GetText()) or 0) + arg_41_1
-	local var_41_1 = Mathf.Clamp(var_41_0, 1, arg_41_0.mo.count)
+function var_0_0._onUnPlaceClick(arg_41_0)
+	local var_41_0 = tonumber(arg_41_0._inputnum:GetText()) or 0
 
-	arg_41_0._inputnum:SetText(tostring(var_41_1))
-	arg_41_0:onInputValueChange()
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "UnPlace", arg_41_0.mo, var_41_0)
 end
 
-function var_0_0.onInputValueChange(arg_42_0)
+function var_0_0._ontnuminputChange(arg_42_0)
 	local var_42_0 = tonumber(arg_42_0._inputnum:GetText()) or 0
-	local var_42_1 = arg_42_0:getItemSource()
+	local var_42_1 = Mathf.Clamp(var_42_0, 1, arg_42_0.mo.count)
 
-	if var_42_1 == SurvivalEnum.ItemSource.Commit or var_42_1 == SurvivalEnum.ItemSource.Commited then
-		local var_42_2 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.NpcRecruitment, arg_42_0.mo.co.worth)
-
-		arg_42_0._txtcount.text = var_42_0 * var_42_2
+	if tostring(var_42_1) ~= arg_42_0._inputnum:GetText() then
+		arg_42_0._inputnum:SetText(tostring(var_42_1))
 	end
 
-	if var_42_1 == SurvivalEnum.ItemSource.ShopBag then
-		arg_42_0._txtcount.text = var_42_0 * arg_42_0.mo:getSellPrice()
-	end
-
-	if var_42_1 == SurvivalEnum.ItemSource.ShopItem then
-		local var_42_3 = SurvivalShelterModel.instance:getWeekInfo()
-		local var_42_4 = var_42_3.bag
-
-		if var_42_3.inSurvival then
-			var_42_4 = SurvivalMapModel.instance:getSceneMo().bag
-		end
-
-		local var_42_5 = var_42_4:getCurrencyNum(SurvivalEnum.CurrencyType.Gold)
-		local var_42_6 = var_42_0 * arg_42_0.mo:getBuyPrice()
-
-		arg_42_0._canBuy = var_42_6 <= var_42_5
-
-		if var_42_6 <= var_42_5 then
-			arg_42_0._txtcount.text = string.format("%d/%d", var_42_5, var_42_6)
-		else
-			arg_42_0._txtcount.text = string.format("<color=#ec4747>%d</color>/%d", var_42_5, var_42_6)
-		end
-	end
+	arg_42_0:onInputValueChange()
 end
 
-function var_0_0._onMaxNumClick(arg_43_0)
-	arg_43_0._inputnum:SetText(arg_43_0.mo.count)
+function var_0_0._onAddNumClick(arg_43_0, arg_43_1)
+	local var_43_0 = (tonumber(arg_43_0._inputnum:GetText()) or 0) + arg_43_1
+	local var_43_1 = Mathf.Clamp(var_43_0, 1, arg_43_0.mo.count)
+
+	arg_43_0._inputnum:SetText(tostring(var_43_1))
 	arg_43_0:onInputValueChange()
 end
 
-function var_0_0._onMinNumClick(arg_44_0)
-	arg_44_0._inputnum:SetText(1)
-	arg_44_0:onInputValueChange()
+function var_0_0.onInputValueChange(arg_44_0)
+	local var_44_0 = tonumber(arg_44_0._inputnum:GetText()) or 0
+	local var_44_1 = arg_44_0:getItemSource()
+
+	if var_44_1 == SurvivalEnum.ItemSource.Commit or var_44_1 == SurvivalEnum.ItemSource.Commited then
+		local var_44_2 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.NpcRecruitment, arg_44_0.mo.co.worth)
+
+		arg_44_0._txtcount.text = var_44_0 * var_44_2
+	end
+
+	if var_44_1 == SurvivalEnum.ItemSource.ShopBag then
+		arg_44_0._txtcount.text = var_44_0 * arg_44_0.mo:getSellPrice()
+	end
+
+	if var_44_1 == SurvivalEnum.ItemSource.ShopItem then
+		local var_44_3 = SurvivalShelterModel.instance:getWeekInfo()
+		local var_44_4 = var_44_3.bag
+
+		if var_44_3.inSurvival then
+			var_44_4 = SurvivalMapModel.instance:getSceneMo().bag
+		end
+
+		local var_44_5 = var_44_4:getCurrencyNum(SurvivalEnum.CurrencyType.Gold)
+		local var_44_6 = var_44_0 * arg_44_0.mo:getBuyPrice()
+
+		arg_44_0._canBuy = var_44_6 <= var_44_5
+
+		if var_44_6 <= var_44_5 then
+			arg_44_0._txtcount.text = string.format("%d/%d", var_44_5, var_44_6)
+		else
+			arg_44_0._txtcount.text = string.format("<color=#ec4747>%d</color>/%d", var_44_5, var_44_6)
+		end
+	end
 end
 
-function var_0_0.onDestroy(arg_45_0)
-	TaskDispatcher.cancelTask(arg_45_0._refreshAll, arg_45_0)
+function var_0_0._onMaxNumClick(arg_45_0)
+	arg_45_0._inputnum:SetText(arg_45_0.mo.count)
+	arg_45_0:onInputValueChange()
+end
+
+function var_0_0._onMinNumClick(arg_46_0)
+	arg_46_0._inputnum:SetText(1)
+	arg_46_0:onInputValueChange()
+end
+
+function var_0_0.onDestroy(arg_47_0)
+	TaskDispatcher.cancelTask(arg_47_0._refreshAll, arg_47_0)
 end
 
 return var_0_0

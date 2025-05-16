@@ -104,7 +104,7 @@ function var_0_0._onSelectFightUIStyle(arg_12_0, arg_12_1, arg_12_2)
 end
 
 function var_0_0._onUpdateItemList(arg_13_0)
-	return
+	arg_13_0:_refreshStyle()
 end
 
 function var_0_0._toSwitchTab(arg_14_0, arg_14_1, arg_14_2)

@@ -96,11 +96,17 @@ function var_0_0._btnGiveUpPOnClick(arg_9_0)
 			AutoChessRpc.instance:sendAutoChessGiveUpRequest(var_9_0)
 		end)
 	else
-		var_9_4 = var_9_4 < 0 and var_9_4 or "+" .. var_9_4
+		local var_9_7
+
+		if var_9_4 < 0 then
+			var_9_7 = string.format("<color=#9f342c>%s</color>", var_9_4)
+		else
+			var_9_7 = string.format("<color=#27682e>+%s</color>", var_9_4)
+		end
 
 		GameFacade.showMessageBox(MessageBoxIdDefine.AutoChessGiveUpTip1, MsgBoxEnum.BoxType.Yes_No, function()
 			AutoChessRpc.instance:sendAutoChessGiveUpRequest(var_9_0)
-		end, nil, nil, nil, nil, nil, var_9_4)
+		end, nil, nil, nil, nil, nil, var_9_7)
 	end
 end
 

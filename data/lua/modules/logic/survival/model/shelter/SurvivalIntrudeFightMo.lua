@@ -50,11 +50,15 @@ function var_0_0.canSelectNpc(arg_5_0)
 	return arg_5_0:canFight() and arg_5_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart
 end
 
-function var_0_0.getUseRoundByHeroId(arg_6_0, arg_6_1)
-	if arg_6_0.usedHeroId ~= nil then
-		for iter_6_0, iter_6_1 in pairs(arg_6_0.usedHeroId) do
-			if iter_6_0 == arg_6_1 then
-				return iter_6_1
+function var_0_0.canEnterSelectNpc(arg_6_0)
+	return arg_6_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart
+end
+
+function var_0_0.getUseRoundByHeroId(arg_7_0, arg_7_1)
+	if arg_7_0.usedHeroId ~= nil then
+		for iter_7_0, iter_7_1 in pairs(arg_7_0.usedHeroId) do
+			if iter_7_0 == arg_7_1 then
+				return iter_7_1
 			end
 		end
 	end
@@ -62,28 +66,28 @@ function var_0_0.getUseRoundByHeroId(arg_6_0, arg_6_1)
 	return nil
 end
 
-function var_0_0.canShowReset(arg_7_0)
-	return arg_7_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting or arg_7_0.status == SurvivalEnum.ShelterMonsterFightState.Fail
+function var_0_0.canShowReset(arg_8_0)
+	return arg_8_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting or arg_8_0.status == SurvivalEnum.ShelterMonsterFightState.Fail
 end
 
-function var_0_0.canShowFightBtn(arg_8_0)
-	return arg_8_0.status ~= SurvivalEnum.ShelterMonsterFightState.Fail
+function var_0_0.canShowFightBtn(arg_9_0)
+	return arg_9_0.status ~= SurvivalEnum.ShelterMonsterFightState.Fail
 end
 
-function var_0_0.canAbandon(arg_9_0)
-	return arg_9_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart or arg_9_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
+function var_0_0.canAbandon(arg_10_0)
+	return arg_10_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart or arg_10_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
 end
 
-function var_0_0.isFighting(arg_10_0)
-	return arg_10_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
+function var_0_0.isFighting(arg_11_0)
+	return arg_11_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
 end
 
-function var_0_0.setWin(arg_11_0)
-	arg_11_0.status = SurvivalEnum.ShelterMonsterFightState.Win
+function var_0_0.setWin(arg_12_0)
+	arg_12_0.status = SurvivalEnum.ShelterMonsterFightState.Win
 end
 
-function var_0_0.getBattleId(arg_12_0)
-	return arg_12_0.fightCo.battleId
+function var_0_0.getBattleId(arg_13_0)
+	return arg_13_0.fightCo.battleId
 end
 
 return var_0_0

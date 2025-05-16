@@ -24,8 +24,6 @@ function var_0_0.onInitView(arg_1_0)
 
 	gohelper.setActive(gohelper.findChild(arg_1_0.viewGO, "Top"), false)
 
-	arg_1_0._roleGo = nil
-	arg_1_0._eventGo = nil
 	arg_1_0._goinfo = gohelper.findChild(arg_1_0.viewGO, "Panel/#go_info")
 	arg_1_0._click = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_clicknext")
 	arg_1_0._goitemRoot = gohelper.findChild(arg_1_0.viewGO, "Panel/#scroll/viewport/content/#scroll_Reward")
@@ -33,8 +31,8 @@ function var_0_0.onInitView(arg_1_0)
 	gohelper.setActive(arg_1_0._goitemRoot, false)
 
 	arg_1_0._btns = {}
-	arg_1_0.rolePath = "node1/role"
-	arg_1_0.npcPath = "node1/npc"
+
+	arg_1_0:initCamera()
 end
 
 function var_0_0.addEvents(arg_2_0)
@@ -57,7 +55,14 @@ end
 function var_0_0.onOpen(arg_5_0)
 	arg_5_0:refreshParam()
 	arg_5_0:refreshView()
-	SurvivalMapHelper.instance:getSceneFogComp():setRainEnable(false)
+
+	local var_5_0 = GameSceneMgr.instance:getCurSceneType()
+
+	if var_5_0 == SceneType.SurvivalShelter then
+		SurvivalMapHelper.instance:getSceneFogComp():setRainEnable(false)
+	elseif var_5_0 == SceneType.Survival then
+		SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(false)
+	end
 end
 
 function var_0_0.refreshParam(arg_6_0)
@@ -72,6 +77,8 @@ function var_0_0.refreshParam(arg_6_0)
 	if arg_6_0.taskConfig and arg_6_0.taskConfig.title then
 		arg_6_0.title = arg_6_0.taskConfig.title
 	end
+
+	arg_6_0.eventID = arg_6_0.viewParam.eventID
 end
 
 function var_0_0.onUpdateParam(arg_7_0)
@@ -133,12 +140,14 @@ function var_0_0.nextStep(arg_10_0)
 
 	local var_10_2 = arg_10_0.curStepData.animType or 0
 
-	if var_10_2 == 0 then
-		arg_10_0._modelComp:playAnim(arg_10_0.rolePath, "idle")
-	elseif var_10_2 == 1 then
-		arg_10_0._modelComp:playAnim(arg_10_0.rolePath, "jump")
-	elseif var_10_2 == 2 then
-		arg_10_0._modelComp:playAnim(arg_10_0.rolePath, "jump2")
+	if arg_10_0._curHeroPath then
+		if var_10_2 == 0 then
+			arg_10_0._modelComp:playAnim(arg_10_0._curHeroPath, "idle")
+		elseif var_10_2 == 1 then
+			arg_10_0._modelComp:playAnim(arg_10_0._curHeroPath, "jump")
+		elseif var_10_2 == 2 then
+			arg_10_0._modelComp:playAnim(arg_10_0._curHeroPath, "jump2")
+		end
 	end
 end
 
@@ -264,114 +273,164 @@ end
 
 function var_0_0.onClose(arg_19_0)
 	TaskDispatcher.cancelTask(arg_19_0._autoShowDesc, arg_19_0)
-	SurvivalMapHelper.instance:getSceneFogComp():setRainEnable(true)
 end
 
-function var_0_0.refreshCamera(arg_20_0)
-	if not arg_20_0._modelComp then
-		arg_20_0._modelComp = MonoHelper.addNoUpdateLuaComOnceToGo(arg_20_0._imageModel, Survival3DModelComp, {
-			xOffset = 8000
-		})
+function var_0_0.onDestroyView(arg_20_0)
+	if sceneType == SceneType.SurvivalShelter then
+		SurvivalMapHelper.instance:getSceneFogComp():setRainEnable(true)
+	elseif sceneType == SceneType.Survival then
+		SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(true)
+	end
+end
 
-		local var_20_0 = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes)
+function var_0_0.refreshCamera(arg_21_0)
+	local var_21_0 = arg_21_0.unitResPath
+	local var_21_1
+	local var_21_2 = false
 
-		arg_20_0._roleGo = arg_20_0._modelComp:addModel(arg_20_0.rolePath, var_20_0)
+	if arg_21_0.eventID then
+		local var_21_3 = lua_survival_fight.configDict[arg_21_0.eventID] or SurvivalConfig.instance:getNpcConfig(arg_21_0.eventID, true)
+
+		var_21_3 = var_21_3 or lua_survival_search.configDict[arg_21_0.eventID]
+		var_21_3 = var_21_3 or lua_survival_mission.configDict[arg_21_0.eventID]
+
+		if var_21_3 then
+			var_21_0 = var_21_3.resource
+			var_21_1 = var_21_3.camera
+			var_21_2 = not string.nilorempty(var_21_3.grid)
+		end
 	end
 
-	if arg_20_0.unitResPath then
-		arg_20_0.goUnit = arg_20_0._modelComp:addModel(arg_20_0.npcPath, arg_20_0.unitResPath)
+	if var_21_0 and string.find(var_21_0, "^survival/buiding") then
+		if var_21_1 == 2 then
+			arg_21_0._curUnitPath = "node4/buiding3"
+		elseif var_21_1 == 3 then
+			arg_21_0._curUnitPath = "node5/buiding4"
+		elseif var_21_2 or var_21_1 == 1 then
+			arg_21_0._curUnitPath = "node3/buiding2"
+		else
+			arg_21_0._curUnitPath = "node2/buiding1"
+			arg_21_0._curHeroPath = "node2/role"
+		end
 	else
-		gohelper.setActive(arg_20_0.goUnit, false)
+		arg_21_0._curHeroPath = "node1/role"
+		arg_21_0._curUnitPath = "node1/npc"
 	end
+
+	if arg_21_0._curUnitPath then
+		arg_21_0._allResGo[arg_21_0._curUnitPath] = arg_21_0._modelComp:addModel(arg_21_0._curUnitPath, var_21_0)
+	end
+
+	arg_21_0:hideOtherModel()
 end
 
-function var_0_0.onClickOption(arg_21_0, arg_21_1)
-	arg_21_0:hideOption()
+function var_0_0.onClickOption(arg_22_0, arg_22_1)
+	arg_22_0:hideOption()
 
-	arg_21_0._eventIndex = 0
-	arg_21_0._eventList = GameUtil.splitString2(arg_21_1, false, ",", "#") or {}
+	arg_22_0._eventIndex = 0
+	arg_22_0._eventList = GameUtil.splitString2(arg_22_1, false, ",", "#") or {}
 
-	arg_21_0:_playNext()
+	arg_22_0:_playNext()
 end
 
-function var_0_0._playNext(arg_22_0)
-	arg_22_0._eventIndex = arg_22_0._eventIndex + 1
+function var_0_0._playNext(arg_23_0)
+	arg_23_0._eventIndex = arg_23_0._eventIndex + 1
 
-	local var_22_0 = arg_22_0._eventList[arg_22_0._eventIndex]
+	local var_23_0 = arg_23_0._eventList[arg_23_0._eventIndex]
 
-	if not var_22_0 then
-		arg_22_0:closeThis()
-
-		return
-	end
-
-	local var_22_1 = var_22_0[1]
-
-	if var_22_1 == "behavior" then
-		arg_22_0:gotoBehavior(tonumber(var_22_0[2]))
+	if not var_23_0 then
+		arg_23_0:closeThis()
 
 		return
 	end
 
-	if var_22_1 == "acceptTask" then
-		arg_22_0:acceptTask()
+	local var_23_1 = var_23_0[1]
+
+	if var_23_1 == "behavior" then
+		arg_23_0:gotoBehavior(tonumber(var_23_0[2]))
 
 		return
 	end
 
-	if var_22_1 == "tipDialog" then
-		TipDialogController.instance:openTipDialogView(tonumber(var_22_0[2]), arg_22_0._playNext, arg_22_0)
+	if var_23_1 == "acceptTask" then
+		arg_23_0:acceptTask()
 
 		return
 	end
 
-	if var_22_1 == "jumpTask" then
-		arg_22_0:jumpTask(tonumber(var_22_0[2]), tonumber(var_22_0[3]))
+	if var_23_1 == "tipDialog" then
+		TipDialogController.instance:openTipDialogView(tonumber(var_23_0[2]), arg_23_0._playNext, arg_23_0)
 
 		return
 	end
 
-	arg_22_0:closeThis()
-end
+	if var_23_1 == "jumpTask" then
+		arg_23_0:jumpTask(tonumber(var_23_0[2]), tonumber(var_23_0[3]))
 
-function var_0_0.jumpTask(arg_23_0, arg_23_1, arg_23_2)
-	ViewMgr.instance:openView(ViewName.ShelterTaskView, {
-		moduleId = arg_23_1,
-		taskId = arg_23_2
-	})
+		return
+	end
+
 	arg_23_0:closeThis()
 end
 
-function var_0_0.gotoBehavior(arg_24_0, arg_24_1)
-	local var_24_0 = lua_survival_behavior.configDict[arg_24_1]
-
-	if not var_24_0 then
-		arg_24_0:closeThis()
-
-		return
-	end
-
-	if not SurvivalMapHelper.instance:isBehaviorMeetCondition(var_24_0.condition, arg_24_0.conditionParam) then
-		logError("ShelterMapEvent behavior condition not meet behaviorId = " .. arg_24_1)
-		arg_24_0:closeThis()
-
-		return
-	end
-
-	arg_24_0.behaviorConfig = var_24_0
-
-	arg_24_0:startDialog()
+function var_0_0.jumpTask(arg_24_0, arg_24_1, arg_24_2)
+	ViewMgr.instance:openView(ViewName.ShelterTaskView, {
+		moduleId = arg_24_1,
+		taskId = arg_24_2
+	})
+	arg_24_0:closeThis()
 end
 
-function var_0_0.acceptTask(arg_25_0)
-	local var_25_0 = arg_25_0.itemMo and arg_25_0.itemMo.id
-	local var_25_1 = arg_25_0.behaviorConfig and arg_25_0.behaviorConfig.id
+function var_0_0.gotoBehavior(arg_25_0, arg_25_1)
+	local var_25_0 = lua_survival_behavior.configDict[arg_25_1]
 
-	if var_25_0 and var_25_1 then
-		SurvivalWeekRpc.instance:sendSurvivalNpcAcceptTaskRequest(var_25_0, var_25_1)
+	if not var_25_0 then
+		arg_25_0:closeThis()
+
+		return
 	end
 
-	arg_25_0:closeThis()
+	if not SurvivalMapHelper.instance:isBehaviorMeetCondition(var_25_0.condition, arg_25_0.conditionParam) then
+		logError("ShelterMapEvent behavior condition not meet behaviorId = " .. arg_25_1)
+		arg_25_0:closeThis()
+
+		return
+	end
+
+	arg_25_0.behaviorConfig = var_25_0
+
+	arg_25_0:startDialog()
+end
+
+function var_0_0.acceptTask(arg_26_0)
+	local var_26_0 = arg_26_0.itemMo and arg_26_0.itemMo.id
+	local var_26_1 = arg_26_0.behaviorConfig and arg_26_0.behaviorConfig.id
+
+	if var_26_0 and var_26_1 then
+		SurvivalWeekRpc.instance:sendSurvivalNpcAcceptTaskRequest(var_26_0, var_26_1)
+	end
+
+	arg_26_0:closeThis()
+end
+
+function var_0_0.initCamera(arg_27_0)
+	arg_27_0._modelComp = MonoHelper.addNoUpdateLuaComOnceToGo(arg_27_0._imageModel, Survival3DModelComp, {
+		xOffset = 8000
+	})
+
+	local var_27_0 = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes)
+
+	arg_27_0._allResGo = arg_27_0:getUserDataTb_()
+	arg_27_0._allResGo["node1/role"] = arg_27_0._modelComp:addModel("node1/role", var_27_0)
+	arg_27_0._allResGo["node2/role"] = arg_27_0._modelComp:addModel("node2/role", var_27_0)
+
+	arg_27_0:hideOtherModel()
+end
+
+function var_0_0.hideOtherModel(arg_28_0)
+	for iter_28_0, iter_28_1 in pairs(arg_28_0._allResGo) do
+		gohelper.setActive(iter_28_1, iter_28_0 == arg_28_0._curHeroPath or iter_28_0 == arg_28_0._curUnitPath)
+	end
 end
 
 return var_0_0

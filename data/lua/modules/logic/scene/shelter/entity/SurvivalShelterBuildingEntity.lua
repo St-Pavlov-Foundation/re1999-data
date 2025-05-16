@@ -152,43 +152,68 @@ function var_0_0.showBuildEffect(arg_14_0)
 end
 
 function var_0_0._showBuildEffect(arg_15_0)
-	if arg_15_0.buildEffect then
-		arg_15_0.buildEffect:dispose()
-
-		arg_15_0.buildEffect = nil
-	end
-
 	local var_15_0 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfo(arg_15_0.unitId)
 
 	if not var_15_0 then
 		return
 	end
 
-	local var_15_1 = var_15_0.level > 1 and SurvivalEnum.UnitEffectPath.Transfer2 or SurvivalEnum.UnitEffectPath.CreateUnit
-	local var_15_2, var_15_3, var_15_4 = arg_15_0:getCenterPos()
-	local var_15_5 = gohelper.create3d(arg_15_0.go, "effect")
+	local var_15_1 = var_15_0.level > 1
 
-	transformhelper.setPos(var_15_5.transform, var_15_2, 0, var_15_4)
-	transformhelper.setEulerAngles(var_15_5.transform, 0, 0, 0)
+	arg_15_0._effectDelayTime = var_15_1 and 2 or 1
 
-	local var_15_6 = PrefabInstantiate.Create(var_15_5)
+	local var_15_2 = var_15_1 and SurvivalEnum.UnitEffectPath.Transfer2 or SurvivalEnum.UnitEffectPath.CreateUnit
 
-	var_15_6:startLoad(var_15_1, arg_15_0._onBuildEffectLoaded, arg_15_0)
-
-	arg_15_0.buildEffect = var_15_6
+	arg_15_0:loadEffect(var_15_2)
 end
 
-function var_0_0._onBuildEffectLoaded(arg_16_0)
-	TaskDispatcher.runDelay(arg_16_0._onBuildEffectPlayFinish, arg_16_0, 1)
+function var_0_0.loadEffect(arg_16_0, arg_16_1)
+	if not arg_16_0.buildEffect then
+		local var_16_0, var_16_1, var_16_2 = arg_16_0:getCenterPos()
+		local var_16_3 = gohelper.create3d(arg_16_0.go, "effect")
+
+		transformhelper.setPos(var_16_3.transform, var_16_0, 0, var_16_2)
+		transformhelper.setEulerAngles(var_16_3.transform, 0, 0, 0)
+
+		arg_16_0.buildEffect = PrefabInstantiate.Create(var_16_3)
+	else
+		arg_16_0.buildEffect:dispose()
+	end
+
+	arg_16_0.buildEffect:startLoad(arg_16_1, arg_16_0._onBuildEffectLoaded, arg_16_0)
 end
 
-function var_0_0._onBuildEffectPlayFinish(arg_17_0)
-	arg_17_0:updateEntity(true)
+function var_0_0._onBuildEffectLoaded(arg_17_0)
+	if arg_17_0._effectDelayTime then
+		TaskDispatcher.runDelay(arg_17_0._onBuildEffectPlayFinish, arg_17_0, arg_17_0._effectDelayTime)
+	else
+		arg_17_0:_onBuildEffectPlayFinish()
+	end
 end
 
-function var_0_0.onDestroy(arg_18_0)
-	TaskDispatcher.cancelTask(arg_18_0._onBuildEffectPlayFinish, arg_18_0)
-	var_0_0.super.onDestroy(arg_18_0)
+function var_0_0._onBuildEffectPlayFinish(arg_18_0)
+	arg_18_0._effectDelayTime = nil
+
+	if arg_18_0.buildEffect then
+		arg_18_0.buildEffect:dispose()
+	end
+
+	arg_18_0:updateEntity(true)
+end
+
+function var_0_0.updateEntity(arg_19_0, arg_19_1)
+	if arg_19_0._effectDelayTime then
+		return
+	end
+
+	var_0_0.super.updateEntity(arg_19_0, arg_19_1)
+end
+
+function var_0_0.onDestroy(arg_20_0)
+	arg_20_0._effectDelayTime = nil
+
+	TaskDispatcher.cancelTask(arg_20_0._onBuildEffectPlayFinish, arg_20_0)
+	var_0_0.super.onDestroy(arg_20_0)
 end
 
 return var_0_0

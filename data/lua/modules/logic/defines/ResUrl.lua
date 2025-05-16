@@ -1513,32 +1513,36 @@ function var_0_0.getSurvivalTalentIcon(arg_353_0)
 	return string.format("singlebg/survival_singlebg/talent/%s.png", arg_353_0)
 end
 
-function var_0_0.getSurvivalNpcIcon(arg_354_0)
-	return string.format("singlebg/survival_singlebg/npc/%s.png", arg_354_0)
+function var_0_0.getSurvivalMapIcon(arg_354_0)
+	return string.format("singlebg/survival_singlebg/map/%s.png", arg_354_0)
 end
 
-function var_0_0.getSurvivalEquipIcon(arg_355_0)
-	return string.format("singlebg/survival_singlebg/equip/icon/%s.png", arg_355_0)
+function var_0_0.getSurvivalNpcIcon(arg_355_0)
+	return string.format("singlebg/survival_singlebg/npc/%s.png", arg_355_0)
 end
 
-function var_0_0.getNuoDiKaSingleBg(arg_356_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/%s.png", arg_356_0)
+function var_0_0.getSurvivalEquipIcon(arg_356_0)
+	return string.format("singlebg/survival_singlebg/equip/icon/%s.png", arg_356_0)
 end
 
-function var_0_0.getNuoDiKaItemIcon(arg_357_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/item/%s.png", arg_357_0)
+function var_0_0.getNuoDiKaSingleBg(arg_357_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/%s.png", arg_357_0)
 end
 
-function var_0_0.getNuoDiKaMonsterIcon(arg_358_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/monster/%s.png", arg_358_0)
+function var_0_0.getNuoDiKaItemIcon(arg_358_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/item/%s.png", arg_358_0)
 end
 
-function var_0_0.getActivity2ndTakePhotoSingleBg(arg_359_0)
-	return string.format("singlebg/v2a8_gift_singlebg/%s", arg_359_0)
+function var_0_0.getNuoDiKaMonsterIcon(arg_359_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/monster/%s.png", arg_359_0)
 end
 
-function var_0_0.getDecorateStoreBuyBannerFullPath(arg_360_0)
-	return string.format("singlebg_lang/txt_playercard_singlebg/%s.png", arg_360_0)
+function var_0_0.getActivity2ndTakePhotoSingleBg(arg_360_0)
+	return string.format("singlebg/v2a8_gift_singlebg/%s", arg_360_0)
+end
+
+function var_0_0.getDecorateStoreBuyBannerFullPath(arg_361_0)
+	return string.format("singlebg_lang/txt_playercard_singlebg/%s.png", arg_361_0)
 end
 
 return var_0_0

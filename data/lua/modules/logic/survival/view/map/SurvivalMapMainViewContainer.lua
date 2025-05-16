@@ -36,6 +36,8 @@ function var_0_0.setCloseFunc(arg_3_0, arg_3_1, arg_3_2)
 end
 
 function var_0_0.defaultOverrideCloseClick(arg_4_0)
+	SurvivalStatHelper.instance:statBtnClick("onClose", "SurvivalMapMainView")
+
 	if arg_4_0._closeFunc then
 		arg_4_0._closeFunc(arg_4_0._closeObj)
 

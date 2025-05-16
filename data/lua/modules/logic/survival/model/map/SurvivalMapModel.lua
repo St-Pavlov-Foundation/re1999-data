@@ -13,9 +13,10 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0.resultData = SurvivalResultMo.New()
 	arg_1_0._initGroupMo = SurvivalInitGroupModel.New()
 	arg_1_0.isSearchRemove = false
-	arg_1_0.save_mapScale = 1
+	arg_1_0.save_mapScale = 0.6
 	arg_1_0.isHealthSub = false
 	arg_1_0.isFightLvUp = false
+	arg_1_0.isFightEnter = false
 end
 
 function var_0_0.reInit(arg_2_0)

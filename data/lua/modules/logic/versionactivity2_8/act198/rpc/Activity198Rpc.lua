@@ -21,9 +21,7 @@ function var_0_0.onReceiveAct198CanGetPush(arg_3_0, arg_3_1, arg_3_2)
 
 	arg_3_0._actId = arg_3_2.activityId
 
-	if ActivityHelper.isOpen(arg_3_0._actId) then
-		arg_3_0:sendAct198GainRequest(arg_3_0._actId)
-	end
+	arg_3_0:sendAct198GainRequest(arg_3_0._actId)
 end
 
 var_0_0.instance = var_0_0.New()

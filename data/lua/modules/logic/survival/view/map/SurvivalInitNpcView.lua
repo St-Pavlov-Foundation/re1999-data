@@ -28,6 +28,16 @@ end
 
 function var_0_0.onViewShow(arg_5_0)
 	arg_5_0:_updateNPCList()
+
+	local var_5_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_5_1 = var_5_0.clientData.data.npcCount
+	local var_5_2 = arg_5_0._initGroupMo:getCarryNPCCount()
+
+	if var_5_1 ~= var_5_2 then
+		var_5_0.clientData.data.npcCount = var_5_2
+
+		var_5_0.clientData:saveDataToServer()
+	end
 end
 
 function var_0_0._initNPCItemList(arg_6_0)
@@ -53,19 +63,22 @@ end
 
 function var_0_0._updateNPCList(arg_7_0)
 	local var_7_0 = 0
+	local var_7_1 = SurvivalShelterModel.instance:getWeekInfo().clientData.data.npcCount
+	local var_7_2 = arg_7_0._initGroupMo:getCarryNPCCount()
 
 	for iter_7_0, iter_7_1 in ipairs(arg_7_0._npcItemList) do
 		if not iter_7_1._isLock then
-			local var_7_1 = arg_7_0._initGroupMo.allSelectNpcs[iter_7_0]
-			local var_7_2 = arg_7_0._isModify and var_7_1 and iter_7_1:getNpcMo() ~= var_7_1
+			local var_7_3 = arg_7_0._initGroupMo.allSelectNpcs[iter_7_0]
+			local var_7_4 = arg_7_0._isModify and var_7_3 and iter_7_1:getNpcMo() ~= var_7_3
 
-			iter_7_1:onUpdateMO(var_7_1)
+			iter_7_1:onUpdateMO(var_7_3)
+			iter_7_1:setNew(var_7_1 < iter_7_0 and iter_7_0 <= var_7_2)
 
-			if var_7_2 then
+			if var_7_4 then
 				iter_7_1:showSelectEffect()
 			end
 
-			if var_7_1 then
+			if var_7_3 then
 				var_7_0 = var_7_0 + 1
 			end
 		end

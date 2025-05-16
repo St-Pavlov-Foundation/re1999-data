@@ -65,13 +65,16 @@ function var_0_0._onUseFog(arg_5_0, arg_5_1)
 	arg_5_0.viewContainer:setCloseFunc(arg_5_0.cancelOpenFog, arg_5_0)
 end
 
-function var_0_0._onSceneClick(arg_6_0, arg_6_1)
+function var_0_0._onSceneClick(arg_6_0, arg_6_1, arg_6_2)
 	if not arg_6_0._choiceData then
 		return
 	end
 
+	arg_6_2.use = true
+
 	if tabletool.indexOf(arg_6_0._allCanUsePoints, arg_6_1) then
-		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, string.format("%d#%d#%d", arg_6_0._choiceData.id, arg_6_1.q, arg_6_1.r))
+		SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_6_0._choiceData.unitId, arg_6_0._choiceData.param)
+		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, string.format("%d#%d#%d", arg_6_0._choiceData.param, arg_6_1.q, arg_6_1.r))
 		arg_6_0:clearData()
 	else
 		arg_6_0:cancelOpenFog()

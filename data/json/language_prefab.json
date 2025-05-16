@@ -19465,7 +19465,7 @@
   },
   {
     "id": "p_survivaltaskview_main_txt2",
-    "lang": "力所能及地建设避难处。"
+    "lang": "力所能及地建设庇护所。"
   },
   {
     "id": "p_survivalequipview_txt_Assess",
@@ -19477,11 +19477,11 @@
   },
   {
     "id": "p_survivalequipview_txt_UnEquip",
-    "lang": "一键卸下"
+    "lang": "一键卸载"
   },
   {
     "id": "p_survivalequipview_txt_Equip",
-    "lang": "快捷装备"
+    "lang": "快捷装载"
   },
   {
     "id": "p_survivalequipoverview_txt_Title",
@@ -19921,7 +19921,7 @@
   },
   {
     "id": "p_survivalmapbaginfoview_txt_gotoequip",
-    "lang": "去装备"
+    "lang": "去装载"
   },
   {
     "id": "p_survivalmapbaginfoview_txt_search",
@@ -19993,7 +19993,7 @@
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_title4",
-    "lang": "收益"
+    "lang": "演习收益"
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_collect",
@@ -20117,7 +20117,7 @@
   },
   {
     "id": "p_survivaltalentinfoview_txt_unequip",
-    "lang": "卸下"
+    "lang": "卸载"
   },
   {
     "id": "p_survivaltalentrewardview_txt_title",
@@ -20185,7 +20185,7 @@
   },
   {
     "id": "p_survivalmainview_txt_targetTitle",
-    "lang": "主要任务"
+    "lang": "任务列表"
   },
   {
     "id": "p_survivalmainview_txt_warehouse",
@@ -20217,7 +20217,7 @@
   },
   {
     "id": "p_survivalreportview_txt_Title",
-    "lang": "避难处报告"
+    "lang": "庇护所报告"
   },
   {
     "id": "p_survivalshelterrewardview_txt_dec",
@@ -20509,7 +20509,7 @@
   },
   {
     "id": "p_v2a8_survival_help_2_txt_2",
-    "lang": "抵达撤离点可以结束演习回到避难处"
+    "lang": "抵达撤离点可以结束演习回到庇护所"
   },
   {
     "id": "p_v2a8_survival_help_3_txt_1",
@@ -20537,11 +20537,11 @@
   },
   {
     "id": "p_v2a8_survival_help_6_txt_1",
-    "lang": "助理入住后，每天需要消耗补给。当补给不足时，助理有可能会离开避难处。"
+    "lang": "助理入住后，每天需要消耗补给。当补给不足时，助理有可能会离开庇护所。"
   },
   {
     "id": "p_v2a8_survival_help_6_txt_2",
-    "lang": "助理带回避难处后，如果当前宿舍有空位，会自动入住到宿舍中。如果没有将助理及时安排入住，他们有可能会因为过于失望而离开。"
+    "lang": "助理带回庇护所后，如果当前宿舍有空位，会自动入住到宿舍中。如果没有将助理及时安排入住，他们有可能会因为过于失望而离开。"
   },
   {
     "id": "p_v2a8_survival_help_6_txt_3",
@@ -20622,5 +20622,9 @@
   {
     "id": "p_survivalmonstereventview_txt_Watch",
     "lang": "去查看"
+  },
+  {
+    "id": "p_survivalequipoverview_txt_switch",
+    "lang": "简略描述"
   }
 ]

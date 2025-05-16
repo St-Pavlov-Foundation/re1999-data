@@ -13,8 +13,12 @@ function var_0_0.getFightRuleView(arg_2_0)
 	return SurvivalHeroGroupFightView_Rule.New()
 end
 
-function var_0_0.addLastViews(arg_3_0, arg_3_1)
-	table.insert(arg_3_1, SurvivalHeroGroupEquipView.New())
+function var_0_0.getFightLevelView(arg_3_0)
+	return SurvivalHeroGroupFightView_Level.New()
+end
+
+function var_0_0.addLastViews(arg_4_0, arg_4_1)
+	table.insert(arg_4_1, SurvivalHeroGroupEquipView.New())
 end
 
 return var_0_0

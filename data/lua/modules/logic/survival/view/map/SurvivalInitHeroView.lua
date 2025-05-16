@@ -119,20 +119,23 @@ end
 
 function var_0_0._updateHeroList(arg_11_0)
 	local var_11_0 = 0
+	local var_11_1 = SurvivalShelterModel.instance:getWeekInfo().clientData.data.heroCount
+	local var_11_2 = arg_11_0._initGroupMo:getCarryHeroCount()
 
 	for iter_11_0, iter_11_1 in ipairs(arg_11_0._heroItemList) do
 		if not iter_11_1._isLock then
-			local var_11_1 = arg_11_0._initGroupMo.allSelectHeroMos[iter_11_0]
-			local var_11_2 = arg_11_0._isModify and var_11_1 and iter_11_1:getHeroMo() ~= var_11_1
+			local var_11_3 = arg_11_0._initGroupMo.allSelectHeroMos[iter_11_0]
+			local var_11_4 = arg_11_0._isModify and var_11_3 and iter_11_1:getHeroMo() ~= var_11_3
 
-			iter_11_1:setTrialValue(var_11_1 and arg_11_0._initGroupMo.assistHeroMo and var_11_1 == arg_11_0._initGroupMo.assistHeroMo.heroMO)
-			iter_11_1:onUpdateMO(var_11_1)
+			iter_11_1:setTrialValue(var_11_3 and arg_11_0._initGroupMo.assistHeroMo and var_11_3 == arg_11_0._initGroupMo.assistHeroMo.heroMO)
+			iter_11_1:onUpdateMO(var_11_3)
+			iter_11_1:setNew(var_11_1 < iter_11_0 and iter_11_0 <= var_11_2)
 
-			if var_11_2 then
+			if var_11_4 then
 				iter_11_1:showSelectEffect()
 			end
 
-			if var_11_1 then
+			if var_11_3 then
 				var_11_0 = var_11_0 + 1
 			end
 		end
@@ -153,6 +156,16 @@ end
 
 function var_0_0.onViewShow(arg_13_0)
 	arg_13_0:_updateHeroList()
+
+	local var_13_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_13_1 = var_13_0.clientData.data.heroCount
+	local var_13_2 = arg_13_0._initGroupMo:getCarryHeroCount()
+
+	if var_13_1 ~= var_13_2 then
+		var_13_0.clientData.data.heroCount = var_13_2
+
+		var_13_0.clientData:saveDataToServer()
+	end
 end
 
 function var_0_0._onViewClose(arg_14_0, arg_14_1)

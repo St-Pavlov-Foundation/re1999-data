@@ -463,6 +463,7 @@ function var_0_0.commitItems(arg_26_0)
 		var_26_0 = var_26_0 .. "#" .. table.concat(var_26_1, "&")
 	end
 
+	SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_26_0._choiceMo.unitId, arg_26_0._choiceMo.param)
 	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, var_26_0)
 	arg_26_0:closeThis()
 end

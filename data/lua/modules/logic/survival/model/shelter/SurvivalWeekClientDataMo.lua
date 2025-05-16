@@ -27,6 +27,14 @@ function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
 		end
 	end
 
+	if not var_1_0.heroCount or var_1_0.heroCount <= 0 then
+		var_1_0.heroCount = arg_1_2:getAttr(SurvivalEnum.AttrType.ExploreRoleNum)
+	end
+
+	if not var_1_0.npcCount or var_1_0.npcCount <= 0 then
+		var_1_0.npcCount = arg_1_2:getAttr(SurvivalEnum.AttrType.ExploreNpcNum)
+	end
+
 	arg_1_0.data = var_1_0
 
 	if var_1_1 and arg_1_2.day > 0 then

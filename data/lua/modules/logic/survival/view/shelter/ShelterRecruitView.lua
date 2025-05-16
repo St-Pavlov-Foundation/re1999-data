@@ -438,7 +438,7 @@ function var_0_0.refreshNpcAttrItem(arg_26_0, arg_26_1, arg_26_2)
 	arg_26_1.txtTitle.text = var_26_0.name
 	arg_26_1.txtDesc.text = var_26_0.desc
 
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_26_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_26_0.tagType))
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_26_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_26_0.color))
 end
 
 function var_0_0.onClose(arg_27_0)

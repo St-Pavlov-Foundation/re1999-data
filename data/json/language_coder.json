@@ -6312,6 +6312,14 @@
     "lang": "离开"
   },
   {
+    "id": "survival_equipoverview_simple",
+    "lang": "简略描述"
+  },
+  {
+    "id": "survival_equipoverview_exdesc",
+    "lang": "详细描述"
+  },
+  {
     "id": "survivaltaskview_collection_txt",
     "lang": "你选择了 <#C16614>%s</color>帮助任务执行，这将影响到你的表现。"
   },
@@ -6465,7 +6473,7 @@
   },
   {
     "id": "SurvivalShelterChooseNpcItem_Tips",
-    "lang": "已经被选择"
+    "lang": "已选择"
   },
   {
     "id": "survival_mainview_monster_fight",
@@ -6473,11 +6481,11 @@
   },
   {
     "id": "survivalreportview_npc_empty",
-    "lang": "助理们相当满足，今天没有人离开避难处。"
+    "lang": "助理们相当满足，今天没有人离开庇护所。"
   },
   {
     "id": "survivalreportview_npc",
-    "lang": "<color=#C26817>▩2%s</color>对你非常失望，离开了避难处。"
+    "lang": "<color=#C26817>▩2%s</color>对你非常失望，离开了庇护所。"
   },
   {
     "id": "survivalreportview_monster_empty",
@@ -6489,7 +6497,7 @@
   },
   {
     "id": "survivalreportview_build_empty",
-    "lang": "避难处完好无损，没有任何损失。"
+    "lang": "庇护所完好无损，没有任何损失。"
   },
   {
     "id": "survivalreportview_build",
@@ -6618,5 +6626,13 @@
   {
     "id": "survivalreportview_monster_today",
     "lang": "<color=#C26817>今天</color>需要击败入侵怪物<color=#C26817>▩1%s</color>。"
+  },
+  {
+    "id": "ShelterManagerInfoView_npc_foodcost",
+    "lang": "<color=#F7AA3F>-%s</color>/天"
+  },
+  {
+    "id": "survivalmonstereventview_monster_toady",
+    "lang": "需要立即击退"
   }
 ]

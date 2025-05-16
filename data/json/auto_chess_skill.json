@@ -11045,7 +11045,7 @@
     "countdown": 0,
     "condition1": "",
     "triggerPoint1": 110,
-    "effect1": "AddBuff#1002#-1#1#None#None#101",
+    "effect1": "AddBuff#1002#-1#1#None#LuShu#101",
     "roundTriggerLimit1": 0,
     "totalTriggerLimit1": 0,
     "condition2": "",

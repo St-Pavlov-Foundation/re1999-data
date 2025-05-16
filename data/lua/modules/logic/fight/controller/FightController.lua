@@ -136,6 +136,9 @@ function var_0_0.exitFightScene(arg_8_0)
 
 		if var_8_2.type == DungeonEnum.EpisodeType.Survival then
 			SurvivalMapHelper.instance:tryStartFlow("")
+
+			SurvivalMapModel.instance.isFightEnter = true
+
 			SurvivalController.instance:enterSurvivalMap()
 
 			return

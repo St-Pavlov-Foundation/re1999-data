@@ -46,4 +46,8 @@ function var_0_0.getDesc(arg_8_0)
 	return arg_8_0.co and arg_8_0.co.desc2
 end
 
+function var_0_0.setTaskFinish(arg_9_0)
+	arg_9_0.status = SurvivalEnum.TaskStatus.Finish
+end
+
 return var_0_0

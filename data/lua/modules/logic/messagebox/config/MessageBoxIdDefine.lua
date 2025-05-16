@@ -204,6 +204,7 @@ return {
 	SettingAllRoleVoice = 91002,
 	V1a5_WarmUpPlayingQuitCheck = 51104,
 	CooperGarlandExitGame = 260007,
+	SurvivalHeroNoFull = 280018,
 	WuErLiXiResetConfirm = 240023,
 	SurvivalBuildLevupTips = 280016,
 	RoomCritterTrainCurrencyInsufficiency = 220130,

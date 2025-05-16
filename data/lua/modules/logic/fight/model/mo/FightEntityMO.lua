@@ -899,24 +899,26 @@ function var_0_0.getLockMaxHpRate(arg_88_0)
 	return 1
 end
 
-function var_0_0.getHpAndShieldFillAmount(arg_89_0)
+function var_0_0.getHpAndShieldFillAmount(arg_89_0, arg_89_1, arg_89_2)
 	local var_89_0 = arg_89_0:getLockMaxHpRate()
 	local var_89_1 = (arg_89_0.attrMO and arg_89_0.attrMO.hp > 0 and arg_89_0.attrMO.hp or 1) * var_89_0
-	local var_89_2 = arg_89_0.currentHp / var_89_1 or 0
-	local var_89_3 = 0
+	local var_89_2 = arg_89_1 or arg_89_0.currentHp
+	local var_89_3 = arg_89_2 or arg_89_0.shieldValue
+	local var_89_4 = var_89_2 / var_89_1 or 0
+	local var_89_5 = 0
 
-	if var_89_1 >= arg_89_0.shieldValue + arg_89_0.currentHp then
-		var_89_2 = arg_89_0.currentHp / var_89_1
-		var_89_3 = (arg_89_0.shieldValue + arg_89_0.currentHp) / var_89_1
+	if var_89_1 >= var_89_3 + var_89_2 then
+		var_89_4 = var_89_2 / var_89_1
+		var_89_5 = (var_89_3 + var_89_2) / var_89_1
 	else
-		var_89_2 = arg_89_0.currentHp / (arg_89_0.currentHp + arg_89_0.shieldValue)
-		var_89_3 = 1
+		var_89_4 = var_89_2 / (var_89_2 + var_89_3)
+		var_89_5 = 1
 	end
 
-	local var_89_4 = var_89_2 * var_89_0
-	local var_89_5 = var_89_3 * var_89_0
+	local var_89_6 = var_89_4 * var_89_0
+	local var_89_7 = var_89_5 * var_89_0
 
-	return var_89_4, var_89_5
+	return var_89_6, var_89_7
 end
 
 return var_0_0

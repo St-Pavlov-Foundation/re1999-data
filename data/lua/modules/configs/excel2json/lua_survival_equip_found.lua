@@ -2,21 +2,23 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	id = 1,
-	name = 4,
-	value = 7,
+	icon2 = 6,
+	name = 5,
+	desc1 = 3,
+	value = 8,
 	desc = 2,
-	icon4 = 8,
-	icon3 = 6,
-	icon2 = 5,
-	icon = 3,
-	level = 9
+	icon4 = 9,
+	icon3 = 7,
+	id = 1,
+	icon = 4,
+	level = 10
 }
 local var_0_2 = {
 	"id"
 }
 local var_0_3 = {
-	name = 2,
+	desc1 = 2,
+	name = 3,
 	desc = 1
 }
 

@@ -38,6 +38,7 @@ function var_0_0._editableInitView(arg_5_0)
 end
 
 function var_0_0._onEnterClick(arg_6_0)
+	SurvivalStatHelper.instance:statBtnClick("_onEnterClick", "SurvivalEnterView")
 	ViewMgr.instance:openView(ViewName.SurvivalView)
 end
 
@@ -45,6 +46,7 @@ function var_0_0._btnAchievementOnClick(arg_7_0)
 	local var_7_0 = arg_7_0.config.achievementJumpId
 
 	JumpController.instance:jump(var_7_0)
+	SurvivalStatHelper.instance:statBtnClick("_btnAchievementOnClick", "SurvivalEnterView")
 end
 
 function var_0_0.everySecondCall(arg_8_0)
@@ -53,6 +55,7 @@ end
 
 function var_0_0._onRewardClick(arg_9_0)
 	ViewMgr.instance:openView(ViewName.SurvivalShelterRewardView)
+	SurvivalStatHelper.instance:statBtnClick("_onRewardClick", "SurvivalEnterView")
 end
 
 return var_0_0

@@ -63,6 +63,11 @@ function var_0_0.getEquipEffectDesc(arg_8_0)
 	end
 
 	local var_8_0 = arg_8_0.equipCo.effectDesc
+
+	if SurvivalModel.instance._isUseSimpleDesc == 1 then
+		var_8_0 = arg_8_0.equipCo.effectDesc2
+	end
+
 	local var_8_1 = arg_8_0.equipValues or {}
 	local var_8_2 = {}
 

@@ -28,7 +28,7 @@ function var_0_0.setEpisodeInfo(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)
 	if not arg_4_0._episodeInfoDic[arg_4_1][var_4_0] then
 		local var_4_2 = MoLiDeErGameMo.New()
 
-		var_4_2:init(arg_4_1, arg_4_2)
+		var_4_2:init(arg_4_1, arg_4_2, arg_4_3, arg_4_4)
 
 		arg_4_0._episodeInfoDic[arg_4_1][var_4_0] = var_4_2
 	else
@@ -88,13 +88,11 @@ function var_0_0.setEpisodeInfo(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)
 			end
 		end
 
-		var_4_3:init(arg_4_1, arg_4_2)
+		var_4_3:init(arg_4_1, arg_4_2, arg_4_3, arg_4_4)
 
 		var_4_3.newFinishEventList = var_4_4
 		var_4_3.newEventList = var_4_11
 		var_4_3.existEventList = var_4_12
-		var_4_3.passStar = arg_4_4
-		var_4_3.isEpisodeFinish = arg_4_3
 		var_4_3.newDispatchTeam = var_4_5
 		var_4_3.newDispatchEventDic = var_4_6
 		var_4_3.newBackTeam = var_4_7

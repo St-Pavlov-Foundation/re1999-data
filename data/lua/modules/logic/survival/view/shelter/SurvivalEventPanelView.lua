@@ -24,13 +24,12 @@ function var_0_0.onClickBtnClose(arg_4_0)
 		return
 	end
 
-	local var_4_2 = var_4_1.npcID
-	local var_4_3 = SurvivalConfig.instance:getNpcConfig(var_4_2)
+	local var_4_2 = var_4_1.eventID
 
 	ViewMgr.instance:openView(ViewName.ShelterMapEventView, {
 		moduleId = arg_4_0.moduleId,
 		taskConfig = var_4_1,
-		unitResPath = var_4_3 and var_4_3.resource
+		eventID = var_4_2
 	})
 end
 

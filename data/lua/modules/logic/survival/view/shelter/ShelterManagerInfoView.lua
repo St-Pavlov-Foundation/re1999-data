@@ -411,7 +411,7 @@ function var_0_0.refreshNpcCost(arg_26_0, arg_26_1)
 	local var_26_2 = string.splitToNumber(var_26_1[2], ":")[2] or 0
 	local var_26_3 = var_26_0:getAttr(SurvivalEnum.AttrType.NpcFoodCost, var_26_2)
 
-	arg_26_0.txtNpcCostTips.text = string.format("<color=#F7AA3F>-%s</color>/day", var_26_3)
+	arg_26_0.txtNpcCostTips.text = formatLuaLang("ShelterManagerInfoView_npc_foodcost", var_26_3)
 end
 
 function var_0_0._refreshNpcOnlyConfig(arg_27_0)
@@ -500,7 +500,7 @@ function var_0_0.refreshNpcAttrItem(arg_29_0, arg_29_1, arg_29_2)
 	arg_29_1.txtTitle.text = var_29_0.name
 	arg_29_1.txtDesc.text = var_29_0.desc
 
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_29_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_29_0.tagType))
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_29_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_29_0.color))
 end
 
 function var_0_0.showEmpty(arg_30_0)

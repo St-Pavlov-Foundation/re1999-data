@@ -30,6 +30,7 @@ end
 
 function var_0_0.defaultOverrideCloseClick(arg_3_0)
 	SurvivalController.instance:exitMap()
+	SurvivalStatHelper.instance:statBtnClick("OnClose", "SurvivalMainView")
 end
 
 function var_0_0.setMainViewVisible(arg_4_0, arg_4_1)

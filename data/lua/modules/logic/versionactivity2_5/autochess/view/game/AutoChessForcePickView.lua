@@ -51,16 +51,16 @@ function var_0_0._editableInitView(arg_8_0)
 end
 
 function var_0_0.onOpen(arg_9_0)
-	if not arg_9_0.viewParam then
-		return
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_qishou_confirm)
+
+	if arg_9_0.viewParam then
+		arg_9_0:addEventCb(AutoChessController.instance, AutoChessEvent.ForcePickReply, arg_9_0.closeThis, arg_9_0)
+
+		arg_9_0.freeMall = arg_9_0.viewParam
+
+		arg_9_0:refreshUI()
+		TaskDispatcher.runDelay(arg_9_0.delayDisabled, arg_9_0, 0.1)
 	end
-
-	arg_9_0:addEventCb(AutoChessController.instance, AutoChessEvent.ForcePickReply, arg_9_0.closeThis, arg_9_0)
-
-	arg_9_0.freeMall = arg_9_0.viewParam
-
-	arg_9_0:refreshUI()
-	TaskDispatcher.runDelay(arg_9_0.delayDisabled, arg_9_0, 0.1)
 end
 
 function var_0_0.delayDisabled(arg_10_0)

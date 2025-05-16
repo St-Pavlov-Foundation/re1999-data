@@ -1619,6 +1619,10 @@ function var_0_0.onDestroyView(arg_93_0)
 end
 
 function var_0_0._checkPlaySpecialBodyMotion(arg_94_0)
+	if not arg_94_0._heroMO:isOwnHero() then
+		return
+	end
+
 	local var_94_0, var_94_1, var_94_2 = CharacterModel.instance:isCanPlayReplaceSkillAnim(arg_94_0._heroMO)
 
 	if var_94_0 and var_94_2 and not string.nilorempty(var_94_2.specialLive2d) then
@@ -1629,8 +1633,13 @@ function var_0_0._checkPlaySpecialBodyMotion(arg_94_0)
 			local var_94_5 = var_94_3[4] and tonumber(var_94_3[4]) or 0
 
 			local function var_94_6()
-				arg_94_0._uiSpine:setActionEventCb(nil, arg_94_0)
-				arg_94_0:_playSpineVoice()
+				if arg_94_0._uiSpine then
+					arg_94_0._uiSpine:setActionEventCb(nil, arg_94_0)
+
+					if arg_94_0._greetingVoices and #arg_94_0._greetingVoices > 0 then
+						arg_94_0._uiSpine:playVoice(arg_94_0._greetingVoices[1], nil, arg_94_0._txtanacn, arg_94_0._txtanaen, arg_94_0._gocontentbg)
+					end
+				end
 			end
 
 			arg_94_0._uiSpine:playSpecialMotion(var_94_4, false, var_94_5)

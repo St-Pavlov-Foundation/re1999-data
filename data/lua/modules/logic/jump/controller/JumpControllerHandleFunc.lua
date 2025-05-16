@@ -1169,7 +1169,6 @@ end
 
 function var_0_0.jumpToAct1_5Dungeon(arg_88_0, arg_88_1, arg_88_2)
 	table.insert(arg_88_0.closeViewNames, ViewName.VersionActivity1_5DungeonMapLevelView)
-	table.insert(arg_88_0.waitOpenViewNames, ViewName.VersionActivity2_0EnterView)
 	VersionActivity2_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		if #arg_88_2 >= 3 then
 			local var_89_0 = arg_88_2[3]
@@ -1200,7 +1199,6 @@ function var_0_0.jumpToAct1_5Dungeon(arg_88_0, arg_88_1, arg_88_2)
 end
 
 function var_0_0.jumpToAct1_5DungeonStore(arg_90_0, arg_90_1, arg_90_2)
-	table.insert(arg_90_0.waitOpenViewNames, ViewName.VersionActivity2_0EnterView)
 	VersionActivity2_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		table.insert(arg_90_0.waitOpenViewNames, ViewName.ReactivityStoreView)
 		ReactivityController.instance:openReactivityStoreView(JumpEnum.ActIdEnum.Act1_5Dungeon)
@@ -1535,16 +1533,31 @@ function var_0_0.jumpToDiceHeroLevelView(arg_126_0, arg_126_1)
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpToTowerView(arg_127_0, arg_127_1)
-	local var_127_0 = string.splitToNumber(arg_127_1, "#")
-	local var_127_1 = var_127_0[2]
-	local var_127_2 = var_127_0[3]
-	local var_127_3 = {
-		towerType = var_127_1,
-		towerId = var_127_2
+function var_0_0.jumpToShelterBuilding(arg_127_0, arg_127_1)
+	if GameSceneMgr.instance:getCurSceneType() ~= SceneType.SurvivalShelter then
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local var_127_0 = string.splitToNumber(arg_127_1, "#")[2]
+	local var_127_1 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfoByBuildingId(var_127_0)
+
+	if var_127_1 then
+		SurvivalMapHelper.instance:gotoBuilding(var_127_1.id, nil, true)
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
+function var_0_0.jumpToTowerView(arg_128_0, arg_128_1)
+	local var_128_0 = string.splitToNumber(arg_128_1, "#")
+	local var_128_1 = var_128_0[2]
+	local var_128_2 = var_128_0[3]
+	local var_128_3 = {
+		towerType = var_128_1,
+		towerId = var_128_2
 	}
 
-	TowerController.instance:jumpView(var_127_3)
+	TowerController.instance:jumpView(var_128_3)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1596,7 +1609,8 @@ var_0_0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.PermanentMainView] = var_0_0.jumpToPermanentMainView,
 	[JumpEnum.JumpView.InvestigateView] = var_0_0.jumpToInvestigateView,
 	[JumpEnum.JumpView.InvestigateOpinionTabView] = var_0_0.jumpToInvestigateOpinionTabView,
-	[JumpEnum.JumpView.DiceHero] = var_0_0.jumpToDiceHeroLevelView
+	[JumpEnum.JumpView.DiceHero] = var_0_0.jumpToDiceHeroLevelView,
+	[JumpEnum.JumpView.ShelterBuilding] = var_0_0.jumpToShelterBuilding
 }
 var_0_0.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = var_0_0.jumpToAct117,

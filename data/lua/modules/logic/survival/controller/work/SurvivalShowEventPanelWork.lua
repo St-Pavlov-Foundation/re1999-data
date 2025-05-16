@@ -19,6 +19,10 @@ function var_0_0.onStart(arg_2_0, arg_2_1)
 
 	if var_2_0 == 1 then
 		SurvivalMapModel.instance:getSceneMo().panel = var_2_1
+
+		if not ViewMgr.instance:isOpen(ViewName.SurvivalMapEventView) and var_2_1.type == SurvivalEnum.PanelType.TreeEvent then
+			SurvivalStatHelper.instance:statSurvivalMapUnit("TriggerEvent", var_2_1.unitId)
+		end
 	elseif var_2_0 == 2 then
 		SurvivalShelterModel.instance:getWeekInfo().panel = var_2_1
 	end

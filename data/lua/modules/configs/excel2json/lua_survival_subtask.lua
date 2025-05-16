@@ -2,21 +2,22 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	versions = 6,
+	jump = 17,
 	failCondition = 14,
-	prepose = 13,
 	maintaskChange = 7,
-	group = 2,
-	progressCondition = 10,
+	dropShow = 16,
+	prepose = 13,
 	type = 4,
-	desc = 8,
 	autoDrop = 15,
+	desc = 8,
 	desc2 = 9,
 	needAccept = 12,
+	maxProgress = 11,
+	versions = 6,
+	group = 2,
+	progressCondition = 10,
 	seasons = 5,
 	id = 1,
-	maxProgress = 11,
-	dropShow = 16,
 	step = 3
 }
 local var_0_2 = {

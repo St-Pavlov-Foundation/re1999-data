@@ -314,20 +314,27 @@ function var_0_0.getIcon(arg_12_0, arg_12_1)
 	end
 
 	local var_12_0 = arg_12_1.unitType
+	local var_12_1 = arg_12_1.co.type
 
 	if arg_12_1.visionVal == 8 then
 		return "survival_smallmap_block_3_10"
 	elseif var_12_0 == SurvivalEnum.UnitType.Search then
-		if arg_12_1.extraParam == "true" then
-			return "survival_smallmap_block_3_4"
+		local var_12_2 = arg_12_1.extraParam == "true"
+
+		if var_12_1 == 392 then
+			return var_12_2 and "survival_smallmap_block_3_16" or "survival_smallmap_block_3_15"
 		else
-			return "survival_smallmap_block_3_3"
+			return var_12_2 and "survival_smallmap_block_3_4" or "survival_smallmap_block_3_3"
 		end
 	elseif var_12_0 == SurvivalEnum.UnitType.Battle then
-		if arg_12_1.co.type == 41 or arg_12_1.co.type == 43 then
-			return "survival_smallmap_block_3_6"
+		local var_12_3 = var_12_1 == 41 or var_12_1 == 43
+		local var_12_4 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
+		local var_12_5 = arg_12_1.co.fightLevel
+
+		if arg_12_1.co.skip == 1 and var_12_5 < var_12_4 then
+			return var_12_3 and "survival_smallmap_block_3_12" or "survival_smallmap_block_3_11"
 		else
-			return "survival_smallmap_block_3_7"
+			return var_12_3 and "survival_smallmap_block_3_7" or "survival_smallmap_block_3_6"
 		end
 	else
 		return var_0_5[var_12_0]

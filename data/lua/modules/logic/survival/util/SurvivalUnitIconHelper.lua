@@ -10,15 +10,17 @@ local var_0_4 = {
 	Door = 9,
 	Search = 3,
 	Treasure = 5,
-	NPC_High = 22,
-	Hero = 10,
+	NPC_High = 25,
+	Fight_Skip = 23,
 	Fight_Elite_Skip = 24,
 	Fight = 6,
 	Unknown = 11,
 	Fight_Elite = 7,
 	Exit = 8,
-	Fight_Skip = 23,
-	Searched = 4
+	Hero = 10,
+	Searched = 4,
+	Searched_High = 26,
+	Search_High = 27
 }
 local var_0_5 = {
 	Gold = {
@@ -52,7 +54,9 @@ local var_0_6 = {
 	[var_0_4.Unknown] = var_0_5.Green,
 	[var_0_4.NPC_High] = var_0_5.Gold,
 	[var_0_4.Fight_Skip] = var_0_5.Green,
-	[var_0_4.Fight_Elite_Skip] = var_0_5.Green
+	[var_0_4.Fight_Elite_Skip] = var_0_5.Green,
+	[var_0_4.Searched_High] = var_0_5.Gold,
+	[var_0_4.Search_High] = var_0_5.Gold
 }
 local var_0_7 = {
 	[SurvivalEnum.UnitType.Task] = var_0_4.Task,
@@ -76,16 +80,22 @@ function var_0_0.getUnitIconAndBg(arg_1_0, arg_1_1)
 		var_1_0 = var_0_8[var_1_2] or var_1_0
 
 		if var_1_1 == SurvivalEnum.UnitType.Search then
-			var_1_0 = arg_1_1.extraParam == "true" and var_0_4.Searched or var_0_4.Search
-		elseif var_1_1 == SurvivalEnum.UnitType.Battle then
-			local var_1_3 = var_1_2 == 41 or var_1_2 == 43
-			local var_1_4 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
-			local var_1_5 = arg_1_1.co.fightLevel
+			local var_1_3 = arg_1_1.extraParam == "true"
 
-			if arg_1_1.co.skip == 1 and var_1_5 < var_1_4 then
-				var_1_0 = var_1_3 and var_0_4.Fight_Elite_Skip or var_0_4.Fight_Skip
+			if var_1_2 == 392 then
+				var_1_0 = var_1_3 and var_0_4.Searched_High or var_0_4.Search_High
 			else
-				var_1_0 = var_1_3 and var_0_4.Fight_Elite or var_0_4.Fight
+				var_1_0 = var_1_3 and var_0_4.Searched or var_0_4.Search
+			end
+		elseif var_1_1 == SurvivalEnum.UnitType.Battle then
+			local var_1_4 = var_1_2 == 41 or var_1_2 == 43
+			local var_1_5 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
+			local var_1_6 = arg_1_1.co.fightLevel
+
+			if arg_1_1.co.skip == 1 and var_1_6 < var_1_5 then
+				var_1_0 = var_1_4 and var_0_4.Fight_Elite_Skip or var_0_4.Fight_Skip
+			else
+				var_1_0 = var_1_4 and var_0_4.Fight_Elite or var_0_4.Fight
 			end
 		end
 	end

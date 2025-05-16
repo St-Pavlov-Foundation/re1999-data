@@ -3,19 +3,21 @@
 local var_0_0 = {}
 local var_0_1 = {
 	score = 3,
-	effect = 7,
+	effect = 8,
 	group = 2,
-	tag = 6,
+	desc = 6,
 	effectDesc = 4,
+	tag = 7,
 	id = 1,
-	desc = 5
+	effectDesc2 = 5
 }
 local var_0_2 = {
 	"id"
 }
 local var_0_3 = {
 	effectDesc = 1,
-	desc = 2
+	desc = 3,
+	effectDesc2 = 2
 }
 
 function var_0_0.onLoad(arg_1_0)

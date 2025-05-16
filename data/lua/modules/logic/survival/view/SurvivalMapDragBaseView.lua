@@ -22,6 +22,7 @@ function var_0_0.addEvents(arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.TweenCameraFocus, arg_2_0._onTweenToPos, arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.GuideClickPos, arg_2_0._onGuideClickPos, arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.GuideTweenCameraPos, arg_2_0._onGuideTweenCameraPos, arg_2_0)
+	UpdateBeat:Add(arg_2_0._onUpdate, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
@@ -30,6 +31,7 @@ function var_0_0.removeEvents(arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.TweenCameraFocus, arg_3_0._onTweenToPos, arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.GuideClickPos, arg_3_0._onGuideClickPos, arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.GuideTweenCameraPos, arg_3_0._onGuideTweenCameraPos, arg_3_0)
+	UpdateBeat:Remove(arg_3_0._onUpdate, arg_3_0)
 end
 
 function var_0_0.onOpen(arg_4_0)
@@ -212,6 +214,43 @@ function var_0_0.setScenePosSafety(arg_22_0, arg_22_1)
 	arg_22_0._targetPos = arg_22_1
 
 	SurvivalMapHelper.instance:setFocusPos(arg_22_1.x, arg_22_1.y, arg_22_1.z)
+end
+
+function var_0_0.setFollower(arg_23_0, arg_23_1)
+	arg_23_0._followerTrs = nil
+
+	if not gohelper.isNil(arg_23_1) then
+		arg_23_0._followerTrs = arg_23_1.transform
+	end
+end
+
+function var_0_0._onUpdate(arg_24_0)
+	arg_24_0:_followerTarget(arg_24_0._followerTrs)
+end
+
+function var_0_0._followerTarget(arg_25_0, arg_25_1)
+	if gohelper.isNil(arg_25_1) then
+		return
+	end
+
+	if arg_25_0._followerPos == nil then
+		arg_25_0._followerPos = Vector3.zero
+	end
+
+	local var_25_0, var_25_1, var_25_2 = transformhelper.getPos(arg_25_1)
+
+	if arg_25_0:_equalsZero(var_25_0 - arg_25_0._followerPos.x) and arg_25_0:_equalsZero(var_25_1 - arg_25_0._followerPos.y) and arg_25_0:_equalsZero(var_25_2 - arg_25_0._followerPos.z) then
+		return
+	end
+
+	arg_25_0._followerPos:Set(var_25_0, var_25_1, var_25_2)
+	arg_25_0:setScenePosSafety(arg_25_0._followerPos)
+end
+
+function var_0_0._equalsZero(arg_26_0, arg_26_1)
+	local var_26_0 = 1e-06
+
+	return arg_26_1 >= -var_26_0 and arg_26_1 <= var_26_0
 end
 
 return var_0_0

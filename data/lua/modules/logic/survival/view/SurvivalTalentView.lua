@@ -32,7 +32,7 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btnunequipAll:RemoveClickListener()
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnTalentGroupBoxUpdate, arg_3_0.refreshViewByServer, arg_3_0)
 	CommonDragHelper.instance:unregisterDragObj(arg_3_0._gocontent)
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, arg_3_0.checkHavePopup, arg_3_0)
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, arg_3_0.onViewClose, arg_3_0)
 end
 
 function var_0_0._onClickOverView(arg_4_0)
@@ -67,6 +67,7 @@ function var_0_0.onOpen(arg_5_0)
 	arg_5_0:initCenterItems()
 
 	arg_5_0._groupSelects = arg_5_0:getUserDataTb_()
+	arg_5_0._groupRed = arg_5_0:getUserDataTb_()
 
 	gohelper.CreateObjList(arg_5_0, arg_5_0._createTalentGroupItem, arg_5_0._talentGroupList, nil, arg_5_0._gotypeitem)
 	arg_5_0:onTalentGroupClick(1, true)
@@ -74,25 +75,23 @@ function var_0_0.onOpen(arg_5_0)
 	local var_5_2 = arg_5_0._outSideMo.clientData.data.newTalents
 
 	if #var_5_2 > 0 then
-		for iter_5_0, iter_5_1 in ipairs(var_5_2) do
-			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalTalentGetView, {
-				talentId = iter_5_1
-			})
-		end
+		ViewMgr.instance:openView(ViewName.SurvivalTalentGetView, {
+			talents = var_5_2
+		})
 
 		arg_5_0._outSideMo.clientData.data.newTalents = {}
 
 		arg_5_0._outSideMo.clientData:saveDataToServer()
-		ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, arg_5_0.checkHavePopup, arg_5_0)
+		ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, arg_5_0.onViewClose, arg_5_0)
 	else
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
 	end
 end
 
-function var_0_0.checkHavePopup(arg_6_0)
-	if PopupController.instance:getPopupCount() <= 0 and not ViewMgr.instance:isOpen(ViewName.SurvivalTalentGetView) then
+function var_0_0.onViewClose(arg_6_0, arg_6_1)
+	if arg_6_1 == ViewName.SurvivalTalentGetView then
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
-		ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, arg_6_0.checkHavePopup, arg_6_0)
+		ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, arg_6_0.onViewClose, arg_6_0)
 	end
 end
 
@@ -205,13 +204,17 @@ function var_0_0._createTalentGroupItem(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
 	local var_12_1 = gohelper.findChild(arg_12_1, "#go_select")
 	local var_12_2 = gohelper.findChildTextMesh(arg_12_1, "#go_select/#txt_Type")
 	local var_12_3 = gohelper.findChildButtonWithAudio(arg_12_1, "#btn_click")
+	local var_12_4 = gohelper.findChild(arg_12_1, "#go_red")
 
 	arg_12_0._groupSelects[arg_12_3] = var_12_1
+	arg_12_0._groupRed[arg_12_3] = var_12_4
 
 	arg_12_0:addClickCb(var_12_3, arg_12_0.onTalentGroupClick, arg_12_0, arg_12_3)
 
 	var_12_0.text = arg_12_2.name
 	var_12_2.text = arg_12_2.name
+
+	gohelper.setActive(var_12_4, not arg_12_0._outSideMo.talentBox:getTalentGroup(arg_12_2.id):isEquipAll())
 end
 
 function var_0_0.onTalentGroupClick(arg_13_0, arg_13_1, arg_13_2)
@@ -314,6 +317,8 @@ function var_0_0.refreshView(arg_15_0, arg_15_1)
 			arg_15_0._animskill:Play("card_out", 0, 1)
 		end
 	end
+
+	gohelper.setActive(arg_15_0._groupRed[arg_15_0._curIndex], not arg_15_0._talentGroupMo:isEquipAll())
 end
 
 function var_0_0._onClickCloseInfo(arg_16_0)

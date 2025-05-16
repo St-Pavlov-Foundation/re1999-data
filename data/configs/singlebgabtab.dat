@@ -30729,6 +30729,9 @@
   "singlebg/v2a6_dungeon_singlebg/v2a6_dungeon_panelbg2.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a6_dungeon_singlebg/v2a6_dungeon_panelbg2.png"
   ],
+  "singlebg/v2a7_actinsights_singlebg/v2a7_actinsights_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a7_actinsights_singlebg/v2a7_actinsights_fullbg.png"
+  ],
   "singlebg/v2a7_selfselectsix_singlebg/v2a7_selfselectsix_fullbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a7_selfselectsix_singlebg/v2a7_selfselectsix_fullbg.png"
   ],
@@ -32111,6 +32114,9 @@
   ],
   "singlebg_lang/txt_v2a6_dicehero_singlebg/v2a6_dicehero_task_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a6_dicehero_singlebg/v2a6_dicehero_task_title.png"
+  ],
+  "singlebg_lang/txt_v2a7_actinsights_singlebg/v2a7_actinsights_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a7_actinsights_singlebg/v2a7_actinsights_title.png"
   ],
   "singlebg_lang/txt_v2a7_selfselectsix_singlebg/v2a7_selfselectsix_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a7_selfselectsix_singlebg/v2a7_selfselectsix_title.png"

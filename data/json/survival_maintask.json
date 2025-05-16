@@ -8,7 +8,7 @@
     "maintaskChange": "",
     "desc": "迫近的威胁Ⅰ",
     "desc2": "第3天击败入侵怪物<color=#ff0000>【宇航员幽灵】</color>",
-    "progressCondition": "intrudeWin#8050911",
+    "progressCondition": "intrudeWin#80509111",
     "maxProgress": 1,
     "needAccept": 0,
     "prepose": "100001",

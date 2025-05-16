@@ -176,15 +176,21 @@ function var_0_0.tryStartFlow(arg_4_0, arg_4_1)
 end
 
 function var_0_0.flowDone(arg_5_0)
+	local var_5_0 = false
+
 	if arg_5_0.flow and arg_5_0.flow.context.fastExecute then
 		SurvivalController.instance:exitMap()
-	else
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.onFlowEnd)
+
+		var_5_0 = true
 	end
 
 	arg_5_0.flow = nil
 	arg_5_0.serverFlow = nil
 	arg_5_0._steps = nil
+
+	if not var_5_0 then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.onFlowEnd)
+	end
 end
 
 function var_0_0.isInFlow(arg_6_0)
@@ -215,6 +221,7 @@ function var_0_0.tryShowEventView(arg_8_0, arg_8_1)
 	if var_8_1[1] then
 		for iter_8_0, iter_8_1 in ipairs(var_8_1) do
 			if iter_8_1.unitType == SurvivalEnum.UnitType.Treasure then
+				SurvivalStatHelper.instance:statSurvivalMapUnit("TriggerEvent", iter_8_1.id)
 				SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.TriggerEvent, tostring(iter_8_1.id))
 
 				return
@@ -228,6 +235,7 @@ function var_0_0.tryShowEventView(arg_8_0, arg_8_1)
 			pos = arg_8_1,
 			allUnitMo = var_8_1
 		})
+		SurvivalStatHelper.instance:statSurvivalMapUnit("TriggerEvent", var_8_1[1].id)
 	end
 end
 
@@ -396,7 +404,7 @@ function var_0_0.clear(arg_22_0)
 	arg_22_0._allEntity = {}
 end
 
-function var_0_0.gotoBuilding(arg_23_0, arg_23_1, arg_23_2)
+function var_0_0.gotoBuilding(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
 	local var_23_0 = arg_23_0:getScene()
 
 	if not var_23_0 then
@@ -414,7 +422,7 @@ function var_0_0.gotoBuilding(arg_23_0, arg_23_1, arg_23_2)
 
 	ViewMgr.instance:closeAllModalViews()
 	ViewMgr.instance:closeAllPopupViews()
-	var_23_3:moveToByPosList(var_23_2, arg_23_0.interactiveBuilding, arg_23_0, arg_23_1)
+	var_23_3:moveToByPosList(var_23_2, arg_23_0.interactiveBuilding, arg_23_0, arg_23_1, arg_23_3)
 end
 
 function var_0_0.interactiveBuilding(arg_24_0, arg_24_1)
@@ -590,7 +598,7 @@ function var_0_0.getShelterNpcBehaviorList(arg_28_0, arg_28_1)
 	return var_28_2
 end
 
-function var_0_0.gotoMonster(arg_29_0, arg_29_1, arg_29_2)
+function var_0_0.gotoMonster(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
 	local var_29_0 = arg_29_0:getScene()
 
 	if not var_29_0 then
@@ -608,7 +616,7 @@ function var_0_0.gotoMonster(arg_29_0, arg_29_1, arg_29_2)
 
 	ViewMgr.instance:closeAllModalViews()
 	ViewMgr.instance:closeAllPopupViews()
-	var_29_3:moveToByPos(arg_29_2 or var_29_2, arg_29_0.interactiveMonster, arg_29_0, arg_29_1)
+	var_29_3:moveToByPos(arg_29_2 or var_29_2, arg_29_0.interactiveMonster, arg_29_0, arg_29_1, arg_29_3)
 end
 
 function var_0_0.interactiveMonster(arg_30_0, arg_30_1)
@@ -652,6 +660,13 @@ function var_0_0.checkSingleCondition(arg_32_0, arg_32_1, arg_32_2)
 		local var_32_6 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_32_4)
 
 		return (var_32_6 and var_32_6:getTaskInfo(var_32_5)) == nil
+	elseif arg_32_1[1] == "finishTask" then
+		local var_32_7 = tonumber(arg_32_1[2])
+		local var_32_8 = tonumber(arg_32_1[3])
+		local var_32_9 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_32_7)
+		local var_32_10 = var_32_9 and var_32_9:getTaskInfo(var_32_8)
+
+		return var_32_10 and not var_32_10:isUnFinish() or false
 	end
 
 	return true

@@ -7,6 +7,7 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0._report = nil
 	arg_1_0._survivalSettleInfo = nil
 	arg_1_0._lastIndex = nil
+	arg_1_0._isUseSimpleDesc = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SurvivalDescSimply, 1)
 end
 
 function var_0_0.reInit(arg_2_0)
@@ -43,16 +44,23 @@ function var_0_0.getSurvivalSettleInfo(arg_9_0)
 	return arg_9_0._survivalSettleInfo
 end
 
-function var_0_0.setBossFightLastIndex(arg_10_0, arg_10_1)
-	arg_10_0._lastIndex = arg_10_1
+function var_0_0.changeDescSimple(arg_10_0)
+	arg_10_0._isUseSimpleDesc = 1 - arg_10_0._isUseSimpleDesc
+
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SurvivalDescSimply, arg_10_0._isUseSimpleDesc)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnEquipDescSimpleChange)
 end
 
-function var_0_0.getBossFightLastIndex(arg_11_0)
-	local var_11_0 = arg_11_0._lastIndex
+function var_0_0.setBossFightLastIndex(arg_11_0, arg_11_1)
+	arg_11_0._lastIndex = arg_11_1
+end
 
-	arg_11_0._lastIndex = nil
+function var_0_0.getBossFightLastIndex(arg_12_0)
+	local var_12_0 = arg_12_0._lastIndex
 
-	return var_11_0
+	arg_12_0._lastIndex = nil
+
+	return var_12_0
 end
 
 var_0_0.instance = var_0_0.New()

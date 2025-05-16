@@ -1381,7 +1381,7 @@ function var_0_0.getSpecialEffectDesc(arg_75_0, arg_75_1, arg_75_2)
 end
 
 function var_0_0.isNeedShowNewSkillReddot(arg_76_0, arg_76_1)
-	if not arg_76_1 then
+	if not arg_76_1 or not arg_76_1:isOwnHero() then
 		return
 	end
 

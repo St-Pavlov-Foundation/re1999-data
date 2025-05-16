@@ -517,7 +517,7 @@ function var_0_0._getFillAmount(arg_32_0)
 	end
 
 	local var_32_0 = arg_32_0._bossEntityMO
-	local var_32_1, var_32_2 = var_32_0:getHpAndShieldFillAmount()
+	local var_32_1, var_32_2 = var_32_0:getHpAndShieldFillAmount(arg_32_0._curHp, arg_32_0._curShield)
 	local var_32_3 = var_32_0.attrMO and var_32_0.attrMO.hp > 0 and var_32_0.attrMO.hp or 1
 	local var_32_4 = var_32_0.attrMO and var_32_0.attrMO.original_max_hp or 1
 

@@ -176,13 +176,8 @@ function var_0_0.refreshItemsAndNpcs(arg_10_0)
 			if not var_10_1:isEmpty() then
 				local var_10_2 = arg_10_0._resultMo.beforeChanges[var_10_1.uid]
 
-				if var_10_2 then
-					if var_10_2:isEmpty() then
-						iter_10_1:playSearch()
-						iter_10_1:playCloseAnim()
-					else
-						iter_10_1:playSearch()
-					end
+				if var_10_2 and var_10_2:isEmpty() then
+					iter_10_1:playCompose()
 				end
 			end
 		end
@@ -212,7 +207,7 @@ function var_0_0.showAfterItems(arg_12_0)
 				if var_12_1 then
 					if var_12_1:isEmpty() then
 						iter_12_1:playSearch()
-						iter_12_1:playCloseAnim()
+						iter_12_1:playCompose()
 					else
 						iter_12_1:playSearch()
 					end

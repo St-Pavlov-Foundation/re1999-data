@@ -20,6 +20,9 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 			id = iter_1_1.itemId,
 			count = iter_1_1.count
 		})
+
+		var_1_1.source = SurvivalEnum.ItemSource.Drop
+
 		table.insert(var_1_0, var_1_1)
 	end
 

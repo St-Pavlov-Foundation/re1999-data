@@ -88,6 +88,7 @@ function var_0_0._refreshView(arg_6_0)
 		gohelper.setActive(arg_6_0._golist, true)
 		gohelper.setActive(arg_6_0._click, false)
 		gohelper.setActive(arg_6_0._gobtn, true)
+		gohelper.setActive(arg_6_0._goitemRoot, false)
 		gohelper.CreateObjList(arg_6_0, arg_6_0._createEventItem, arg_6_0.viewParam.allUnitMo, nil, arg_6_0._eventItem, SurvivalEventViewItem)
 		arg_6_0:onEventSelectChange(1)
 	end
@@ -202,6 +203,7 @@ end
 
 function var_0_0.onClickOption(arg_14_0)
 	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.TriggerEvent, tostring(arg_14_0._curMo.id))
+	SurvivalStatHelper.instance:statSurvivalMapUnit("TriggerEvent", arg_14_0._curMo.id)
 end
 
 function var_0_0.updateChoiceByServer(arg_15_0, arg_15_1)
@@ -453,6 +455,7 @@ function var_0_0.onClickServerChoice(arg_24_0, arg_24_1, arg_24_2)
 		return
 	end
 
+	SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_24_2.unitId, arg_24_1)
 	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, tostring(arg_24_1))
 end
 

@@ -285,6 +285,12 @@ end
 
 function var_0_0.onReceiveSurvivalChooseBootyReply(arg_33_0, arg_33_1, arg_33_2)
 	if arg_33_1 == 0 then
+		local var_33_0 = SurvivalModel.instance:getOutSideInfo()
+
+		if var_33_0 then
+			var_33_0.inWeek = false
+		end
+
 		SurvivalOutSideRpc.instance:sendSurvivalOutSideGetInfo()
 	end
 end
@@ -350,6 +356,12 @@ function var_0_0.sendSurvivalUpgradeRequest(arg_41_0, arg_41_1, arg_41_2, arg_41
 
 	var_41_0.id = arg_41_1
 
+	local var_41_1 = SurvivalShelterModel.instance:getWeekInfo()
+
+	if var_41_1 then
+		var_41_1:lockBuildingLevel(arg_41_1)
+	end
+
 	return arg_41_0:sendMsg(var_41_0, arg_41_2, arg_41_3)
 end
 
@@ -358,7 +370,7 @@ function var_0_0.onReceiveSurvivalUpgradeReply(arg_42_0, arg_42_1, arg_42_2)
 		local var_42_0 = SurvivalShelterModel.instance:getWeekInfo()
 
 		if var_42_0 then
-			var_42_0:updateBuildingInfo(arg_42_2.building)
+			var_42_0:updateBuildingInfo(arg_42_2.building, true)
 			SurvivalController.instance:dispatchEvent(SurvivalEvent.OnBuildingInfoUpdate, arg_42_2.building.id)
 		end
 	end
@@ -792,7 +804,16 @@ end
 
 function var_0_0.onReceiveSurvivalReceiveTaskRewardReply(arg_87_0, arg_87_1, arg_87_2)
 	if arg_87_1 == 0 then
-		-- block empty
+		local var_87_0 = SurvivalShelterModel.instance:getWeekInfo()
+
+		if var_87_0 then
+			local var_87_1 = var_87_0.taskPanel:getTaskBoxMo(arg_87_2.moduleId):getTaskInfo(arg_87_2.taskId)
+
+			if var_87_1 then
+				var_87_1:setTaskFinish()
+				SurvivalController.instance:dispatchEvent(SurvivalEvent.OnTaskDataUpdate)
+			end
+		end
 	end
 end
 

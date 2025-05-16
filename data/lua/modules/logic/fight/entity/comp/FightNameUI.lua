@@ -630,7 +630,7 @@ end
 
 function var_0_0._getFillAmount(arg_46_0)
 	local var_46_0 = arg_46_0.entity:getMO()
-	local var_46_1, var_46_2 = var_46_0:getHpAndShieldFillAmount()
+	local var_46_1, var_46_2 = var_46_0:getHpAndShieldFillAmount(arg_46_0._curHp, arg_46_0._curShield)
 	local var_46_3 = var_46_0.attrMO and var_46_0.attrMO.original_max_hp or 1
 	local var_46_4 = var_46_0.attrMO and var_46_0.attrMO.hp > 0 and var_46_0.attrMO.hp or 1
 

@@ -21107,9 +21107,7 @@ var_0_0.VersionActivity2_8BossStoryEyeView = {
 	mainRes = "ui/viewres/versionactivity_2_8/v2a8_dungeonboss/v2a8_dungeonbossstoryeye.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Nomal,
-	otherRes = {
-		[1] = "effects/cameraanim/bossstory_eye_camera.controller"
-	}
+	preloader = module_views_preloader
 }
 var_0_0.VersionActivity2_8BossStoryEnterView = {
 	destroy = 0,

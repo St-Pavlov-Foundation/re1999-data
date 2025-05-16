@@ -2,7 +2,7 @@
 
 local var_0_0 = pureTable("SurvivalShelterBuildingMo")
 
-function var_0_0.init(arg_1_0, arg_1_1)
+function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
 	arg_1_0.id = arg_1_1.id
 	arg_1_0.buildingId = arg_1_1.buildingId
 	arg_1_0.level = arg_1_1.level
@@ -26,6 +26,10 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0.shop = SurvivalShopMo.New()
 
 	arg_1_0.shop:init(arg_1_1.shop)
+
+	if arg_1_2 then
+		arg_1_0._lockLevel = nil
+	end
 end
 
 function var_0_0.updateHeros(arg_2_0, arg_2_1)
@@ -159,6 +163,14 @@ function var_0_0.getRealLocalStatus(arg_20_0)
 	end
 
 	return SurvivalEnum.ShelterBuildingLocalStatus.UnBuild
+end
+
+function var_0_0.lockLevel(arg_21_0)
+	arg_21_0._lockLevel = arg_21_0.level
+end
+
+function var_0_0.getLevel(arg_22_0)
+	return arg_22_0._lockLevel or arg_22_0.level
 end
 
 return var_0_0

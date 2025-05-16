@@ -194,6 +194,10 @@ function var_0_0.updateItem(arg_13_0, arg_13_1, arg_13_2)
 	local var_13_0 = arg_13_2.moduleId == SurvivalEnum.TaskModule.MainTask
 	local var_13_1 = arg_13_2:isFinish()
 
+	if var_13_0 then
+		var_13_1 = not arg_13_2:isUnFinish()
+	end
+
 	gohelper.setActive(arg_13_1.goFinished, var_13_1)
 	gohelper.setActive(arg_13_1.goFinishing, var_13_0 and not var_13_1)
 	gohelper.setActive(arg_13_1.goUnfinish, not var_13_0 and not var_13_1)

@@ -15097,43 +15097,43 @@
   },
   {
     "id": 72800008,
-    "name": "电能<id:0>",
+    "name": "电能痕契<id:0>",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "布设中归属【电能】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击次数受【连锁】影响，攻击倍率受【怒火】影响，"
   },
   {
     "id": 72800009,
-    "name": "启示<id:0>",
+    "name": "启示痕契<id:0>",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "布设中归属【启示】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击次数受【混沌】影响，攻击倍率受【怒火】【混沌】影响，"
   },
   {
     "id": 72800010,
-    "name": "薪血<id:0>",
+    "name": "薪血痕契<id:0>",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "布设中归属【薪血】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌】影响，"
   },
   {
     "id": 72800011,
-    "name": "仪式<id:0>",
+    "name": "仪式痕契<id:0>",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "布设中归属【仪式】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌】【连锁】影响，"
   },
   {
     "id": 72800012,
-    "name": "额外行动<id:0>",
+    "name": "额外行动痕契<id:0>",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "布设中归属【额外行动】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击次数受【连锁】影响，攻击倍率受【怒火】影响，"
   },
   {
     "id": 72800013,
@@ -15182,6 +15182,46 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "到达一定阈值时可影响激活的痕契技能的效果"
+  },
+  {
+    "id": 72800019,
+    "name": "电能<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 72800020,
+    "name": "启示<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 72800021,
+    "name": "薪血<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 72800022,
+    "name": "仪式<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 72800023,
+    "name": "额外行动<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
   },
   {
     "id": 30862141,
@@ -15734,6 +15774,14 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "低水位洪水围绕战场，与引导之人的显兆战斗中的环境效果"
+  },
+  {
+    "id": 110240103,
+    "name": "回归的赐福",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击时，若目标携带【护盾】，则额外造成100%现实创伤"
   },
   {
     "id": 31200131,

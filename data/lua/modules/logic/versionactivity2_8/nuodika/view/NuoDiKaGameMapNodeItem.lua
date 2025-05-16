@@ -728,6 +728,13 @@ function var_0_0._endBlock(arg_50_0)
 	UIBlockMgr.instance:endBlock("enemyDead")
 	UIBlockMgr.instance:endBlock("itemScan")
 	UIBlockMgr.instance:endBlock("enemyHurt")
+	TaskDispatcher.cancelTask(arg_50_0._deadFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._scanFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._hurtFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._unlockAnimFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._unlockFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._enemyDeadUnlockFinished, arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._showInteractWarnFinished, arg_50_0)
 end
 
 function var_0_0.destroy(arg_51_0)

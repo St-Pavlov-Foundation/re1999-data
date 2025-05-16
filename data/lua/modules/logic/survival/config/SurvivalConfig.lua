@@ -361,10 +361,10 @@ function var_0_0.getLocalShelterEntityPosKey(arg_26_0, arg_26_1, arg_26_2, arg_2
 	return (string.format("shelter_entitypos_%s_%s_%s", arg_26_1, arg_26_2, arg_26_3))
 end
 
-function var_0_0.getNpcConfig(arg_27_0, arg_27_1)
+function var_0_0.getNpcConfig(arg_27_0, arg_27_1, arg_27_2)
 	local var_27_0 = lua_survival_npc.configDict[arg_27_1]
 
-	if var_27_0 == nil then
+	if var_27_0 == nil and not arg_27_2 then
 		logError(string.format("npc config is nil npcId:%s", arg_27_1))
 	end
 

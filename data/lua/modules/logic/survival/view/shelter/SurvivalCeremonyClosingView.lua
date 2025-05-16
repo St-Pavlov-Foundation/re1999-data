@@ -133,7 +133,30 @@ function var_0_0.onOpen(arg_7_0)
 		arg_7_0._report = cjson.decode(var_7_0)
 	end
 
-	arg_7_0._totalScore = arg_7_0._report.totalScore
+	arg_7_0._totalScore = arg_7_0._report.totalCount
+
+	SurvivalShelterChooseNpcListModel.instance:clearSelectList()
+	SurvivalShelterChooseEquipListModel.instance:clearSelectList()
+
+	local var_7_1 = arg_7_0._report.extraData
+
+	if not string.nilorempty(var_7_1) then
+		local var_7_2 = string.split(var_7_1, "|")
+		local var_7_3 = var_7_2[1]
+		local var_7_4 = var_7_2[2]
+
+		if not string.nilorempty(var_7_3) then
+			local var_7_5 = string.splitToNumber(var_7_3, "#")
+
+			SurvivalShelterChooseNpcListModel.instance:setNeedSelectNpcList(var_7_5)
+		end
+
+		if not string.nilorempty(var_7_4) then
+			local var_7_6 = string.splitToNumber(var_7_4, "#")
+
+			SurvivalShelterChooseEquipListModel.instance:setNeedSelectEquipList(var_7_6)
+		end
+	end
 
 	arg_7_0:_initView()
 end
@@ -221,7 +244,6 @@ function var_0_0._initNpc(arg_10_0)
 		end
 	end
 
-	SurvivalShelterChooseNpcListModel.instance:setNeedSelectNpcList(var_10_1)
 	arg_10_0:addShowStep(arg_10_0._animationNpc, var_0_2[2], arg_10_0._canvasGroupNpc)
 end
 
@@ -354,7 +376,6 @@ function var_0_0._initCollection(arg_15_0)
 
 	local var_15_1 = arg_15_0._report.itemId2Count
 	local var_15_2 = {}
-	local var_15_3 = {}
 
 	for iter_15_0, iter_15_1 in pairs(var_15_1) do
 		table.insert(var_15_2, iter_15_0)
@@ -366,38 +387,35 @@ function var_0_0._initCollection(arg_15_0)
 	gohelper.setActive(arg_15_0._item, false)
 
 	for iter_15_2 = 1, #var_15_2 do
-		local var_15_4 = var_15_1[var_15_2[iter_15_2]]
-		local var_15_5 = tonumber(var_15_2[iter_15_2])
-		local var_15_6 = SurvivalBagItemMo.New()
+		local var_15_3 = var_15_1[var_15_2[iter_15_2]]
+		local var_15_4 = tonumber(var_15_2[iter_15_2])
+		local var_15_5 = SurvivalBagItemMo.New()
 
-		var_15_6:init({
-			id = var_15_5,
-			count = var_15_4
+		var_15_5:init({
+			id = var_15_4,
+			count = var_15_3
 		})
 
-		if var_15_6.equipCo ~= nil then
-			local var_15_7 = arg_15_0.viewContainer:getSetting().otherRes.itemRes
-			local var_15_8 = arg_15_0:getResInst(var_15_7, arg_15_0._goCollectionLayout)
-			local var_15_9 = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_8, SurvivalBagItem)
+		if var_15_5.equipCo ~= nil then
+			local var_15_6 = arg_15_0.viewContainer:getSetting().otherRes.itemRes
+			local var_15_7 = arg_15_0:getResInst(var_15_6, arg_15_0._goCollectionLayout)
+			local var_15_8 = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_7, SurvivalBagItem)
 
-			var_15_9:updateMo(var_15_6)
-			var_15_9:setShowNum(true)
-			var_15_9:setItemSize(150, 150)
-			table.insert(var_15_3, var_15_5)
-			gohelper.setActive(var_15_8, true)
-			table.insert(arg_15_0._collectionItems, var_15_9)
+			var_15_8:updateMo(var_15_5)
+			var_15_8:setShowNum(true)
+			var_15_8:setItemSize(150, 150)
+			gohelper.setActive(var_15_7, true)
+			table.insert(arg_15_0._collectionItems, var_15_8)
 		end
 	end
 
-	local var_15_10 = arg_15_0._report.equipCount
+	local var_15_9 = arg_15_0._report.equipCount
 
-	if var_15_10 > 0 then
-		arg_15_0._txtCollection.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survivalceremonyclosingview_collection"), var_15_10)
-
-		SurvivalShelterChooseEquipListModel.instance:setNeedSelectEquipList(var_15_3)
+	if var_15_9 > 0 then
+		arg_15_0._txtCollection.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survivalceremonyclosingview_collection"), var_15_9)
 	end
 
-	gohelper.setActive(arg_15_0._txtCollection.gameObject, var_15_10 > 0)
+	gohelper.setActive(arg_15_0._txtCollection.gameObject, var_15_9 > 0)
 	arg_15_0:addShowStep(arg_15_0._animationCollection, var_0_2[6], arg_15_0._canvasGroupCollection)
 end
 

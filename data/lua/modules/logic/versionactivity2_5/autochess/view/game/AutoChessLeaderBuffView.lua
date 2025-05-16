@@ -4,6 +4,7 @@ local var_0_0 = class("AutoChessLeaderBuffView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._scrollDetail = gohelper.findChildScrollRect(arg_1_0.viewGO, "Detail/#scroll_Detail")
+	arg_1_0._goBg = gohelper.findChild(arg_1_0.viewGO, "Detail/#scroll_Detail/viewport/#go_Bg")
 	arg_1_0._goEnergy = gohelper.findChild(arg_1_0.viewGO, "Detail/#scroll_Detail/viewport/content/#go_Energy")
 	arg_1_0._txtEnergy = gohelper.findChildText(arg_1_0.viewGO, "Detail/#scroll_Detail/viewport/content/#go_Energy/#txt_Energy")
 	arg_1_0._txtEnergyDesc = gohelper.findChildText(arg_1_0.viewGO, "Detail/#scroll_Detail/viewport/content/#go_Energy/#txt_EnergyDesc")
@@ -33,52 +34,67 @@ function var_0_0.onClickModalMask(arg_4_0)
 end
 
 function var_0_0._editableInitView(arg_5_0)
-	SkillHelper.addHyperLinkClick(arg_5_0._txtEnergyDesc, arg_5_0.clcikHyperLink, arg_5_0)
-	SkillHelper.addHyperLinkClick(arg_5_0._txtFireDesc, arg_5_0.clcikHyperLink, arg_5_0)
+	SkillHelper.addHyperLinkClick(arg_5_0._txtEnergyDesc, arg_5_0.clickHyperLink, arg_5_0)
+	SkillHelper.addHyperLinkClick(arg_5_0._txtFireDesc, arg_5_0.clickHyperLink, arg_5_0)
 end
 
 function var_0_0.onOpen(arg_6_0)
-	local var_6_0 = arg_6_0.viewParam.position
-
-	recthelper.setAnchor(arg_6_0.viewGO.transform, var_6_0.x + 169, var_6_0.y + 380)
-
 	arg_6_0.chessMo = AutoChessModel.instance:getChessMo()
 
-	local var_6_1 = arg_6_0.chessMo.svrFight.mySideMaster
+	local var_6_0 = arg_6_0.chessMo.svrFight.mySideMaster
 
-	if AutoChessHelper.getBuffCnt(var_6_1.buffContainer.buffs, AutoChessEnum.EnergyBuffIds) == 0 then
+	if AutoChessHelper.getBuffCnt(var_6_0.buffContainer.buffs, AutoChessEnum.EnergyBuffIds) == 0 then
 		gohelper.setActive(arg_6_0._goEnergy, false)
 	else
 		arg_6_0._txtEnergy.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_energy"), 1)
 
-		local var_6_2 = AutoChessConfig.instance:getSkillEffectDesc(2)
+		local var_6_1 = AutoChessConfig.instance:getSkillEffectDesc(2)
 
-		arg_6_0._txtEnergyDesc.text = AutoChessHelper.buildSkillDesc(var_6_2.desc)
+		arg_6_0._txtEnergyDesc.text = AutoChessHelper.buildSkillDesc(var_6_1.desc)
 
 		gohelper.setActive(arg_6_0._goEnergy, true)
 	end
 
-	if AutoChessHelper.getBuffCnt(var_6_1.buffContainer.buffs, AutoChessEnum.FireBuffIds) == 0 then
+	if AutoChessHelper.getBuffCnt(var_6_0.buffContainer.buffs, AutoChessEnum.FireBuffIds) == 0 then
 		gohelper.setActive(arg_6_0._goFire, false)
 	else
 		arg_6_0._txtFire.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_fire"), 1)
 
-		local var_6_3 = AutoChessConfig.instance:getSkillEffectDesc(16)
+		local var_6_2 = AutoChessConfig.instance:getSkillEffectDesc(16)
 
-		arg_6_0._txtFireDesc.text = AutoChessHelper.buildSkillDesc(var_6_3.desc)
+		arg_6_0._txtFireDesc.text = AutoChessHelper.buildSkillDesc(var_6_2.desc)
 
 		gohelper.setActive(arg_6_0._goFire, true)
 	end
+
+	TaskDispatcher.runDelay(arg_6_0.delaySet, arg_6_0, 0.05)
 end
 
-function var_0_0.clcikHyperLink(arg_7_0, arg_7_1, arg_7_2)
-	local var_7_0 = AutoChessConfig.instance:getSkillEffectDesc(tonumber(arg_7_1))
+function var_0_0.onDestroyView(arg_7_0)
+	TaskDispatcher.cancelTask(arg_7_0.delaySet, arg_7_0)
+end
 
-	if var_7_0 then
-		arg_7_0._txtBuffName.text = var_7_0.name
-		arg_7_0._txtBuffDesc.text = var_7_0.desc
+function var_0_0.delaySet(arg_8_0)
+	local var_8_0 = arg_8_0._scrollDetail.content.gameObject.transform
+	local var_8_1 = recthelper.getHeight(var_8_0) + 36
 
-		gohelper.setActive(arg_7_0._goBuff, true)
+	var_8_1 = var_8_1 < 500 and var_8_1 or 500
+
+	recthelper.setHeight(arg_8_0._goBg.transform, var_8_1)
+
+	local var_8_2 = arg_8_0.viewParam.position
+
+	recthelper.setAnchor(arg_8_0.viewGO.transform, var_8_2.x + 180, var_8_2.y + var_8_1 - 80)
+end
+
+function var_0_0.clickHyperLink(arg_9_0, arg_9_1, arg_9_2)
+	local var_9_0 = AutoChessConfig.instance:getSkillEffectDesc(tonumber(arg_9_1))
+
+	if var_9_0 then
+		arg_9_0._txtBuffName.text = var_9_0.name
+		arg_9_0._txtBuffDesc.text = var_9_0.desc
+
+		gohelper.setActive(arg_9_0._goBuff, true)
 	end
 end
 

@@ -181,6 +181,7 @@ end
 
 function var_0_0._onContinueClick(arg_14_0)
 	SurvivalController.instance:enterShelterMap()
+	SurvivalStatHelper.instance:statBtnClick("_onContinueClick", "SurvivalView")
 end
 
 function var_0_0._onEnterClick(arg_15_0)
@@ -195,6 +196,8 @@ function var_0_0._onEnterClick(arg_15_0)
 	else
 		arg_15_0:_enterSurvival()
 	end
+
+	SurvivalStatHelper.instance:statBtnClick("_onEnterClick", "SurvivalView")
 end
 
 function var_0_0._enterSurvival(arg_16_0)
@@ -207,6 +210,7 @@ end
 
 function var_0_0._onAbortClick(arg_17_0)
 	GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalGiveUpWeek, MsgBoxEnum.BoxType.Yes_No, arg_17_0._sendGiveUp, nil, nil, arg_17_0, nil, nil)
+	SurvivalStatHelper.instance:statBtnClick("_onAbortClick", "SurvivalView")
 end
 
 function var_0_0._sendGiveUp(arg_18_0)
@@ -227,14 +231,18 @@ function var_0_0._onAchievementClick(arg_20_0)
 	else
 		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.Achievement))
 	end
+
+	SurvivalStatHelper.instance:statBtnClick("_onAchievementClick", "SurvivalView")
 end
 
 function var_0_0._onRewardClick(arg_21_0)
 	ViewMgr.instance:openView(ViewName.SurvivalShelterRewardView)
+	SurvivalStatHelper.instance:statBtnClick("_onRewardClick", "SurvivalView")
 end
 
 function var_0_0._onTalentClick(arg_22_0)
 	ViewMgr.instance:openView(ViewName.SurvivalTalentView)
+	SurvivalStatHelper.instance:statBtnClick("_onTalentClick", "SurvivalView")
 end
 
 function var_0_0.onClose(arg_23_0)

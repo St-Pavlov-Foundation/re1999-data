@@ -98,7 +98,7 @@ function var_0_0.updateItem(arg_10_0, arg_10_1, arg_10_2)
 		return
 	end
 
-	local var_10_0 = arg_10_2:isFinish()
+	local var_10_0 = not arg_10_2:isUnFinish()
 
 	gohelper.setActive(arg_10_1.goFinished, var_10_0)
 	gohelper.setActive(arg_10_1.goUnfinish, not var_10_0)

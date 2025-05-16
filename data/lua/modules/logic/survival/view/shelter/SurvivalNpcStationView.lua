@@ -46,11 +46,19 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btnCancel:RemoveClickListener()
 end
 
+local var_0_1 = ZProj.UIEffectsCollection
+
 function var_0_0._btnclickOnClick(arg_4_0)
 	arg_4_0:closeThis()
 end
 
 function var_0_0._btnNextOnClick(arg_5_0)
+	if not arg_5_0._fight:canSelectNpc() then
+		GameFacade.showToast(ToastEnum.SurvivalBossDotSelectNpc)
+
+		return
+	end
+
 	local var_5_0 = #SurvivalShelterNpcMonsterListModel.instance:getSelectList()
 	local var_5_1 = false
 	local var_5_2 = arg_5_0._fight.schemes
@@ -91,6 +99,8 @@ end
 function var_0_0._editableInitView(arg_9_0)
 	gohelper.setActive(arg_9_0._gobuffitem, false)
 	gohelper.setActive(arg_9_0._goNpcitem, false)
+
+	arg_9_0._nextUIEffect = var_0_1.Get(arg_9_0._btnNext.gameObject)
 end
 
 function var_0_0.onUpdateParam(arg_10_0)
@@ -108,6 +118,12 @@ function var_0_0.refreshView(arg_12_0)
 	SurvivalShelterNpcMonsterListModel.instance:refreshList()
 	arg_12_0:_refreshSchemes()
 	arg_12_0:_updateNpcInfo()
+
+	local var_12_0 = arg_12_0._fight:canSelectNpc()
+
+	if arg_12_0._nextUIEffect then
+		arg_12_0._nextUIEffect:SetGray(not var_12_0)
+	end
 end
 
 function var_0_0._refreshSchemes(arg_13_0)

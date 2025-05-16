@@ -216,6 +216,7 @@ function var_0_0.checkEnabled(arg_16_0)
 		arg_16_0._isMult = true
 
 		gohelper.setActive(arg_16_0._grid, not arg_16_0._isUnitMoving)
+		tabletool.revert(var_16_1)
 		gohelper.CreateObjList(arg_16_0, arg_16_0._createIcons, var_16_1, arg_16_0._grid, arg_16_0._item, nil, nil, nil, 0)
 	else
 		gohelper.setActive(arg_16_0._grid, false)

@@ -10,6 +10,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._goempty = gohelper.findChild(arg_1_1, "root/empty")
 	arg_1_0._btnClick = gohelper.findChildButtonWithAudio(arg_1_1, "root/btn_Click")
 	arg_1_0._txtnum = gohelper.findChildTextMesh(arg_1_1, "root/has/collection/#txt_num")
+	arg_1_0._goqulity5 = gohelper.findChild(arg_1_1, "root/has/collection/#go_qulity")
 	arg_1_0._goselect = gohelper.findChild(arg_1_1, "root/has/go_select")
 	arg_1_0._goitem = gohelper.findChild(arg_1_0._gonormal, "collection")
 	arg_1_0._imagerare = gohelper.findChildImage(arg_1_0._goitem, "image_Rare")
@@ -22,8 +23,11 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._goadd = gohelper.findChild(arg_1_0.goRoot, "add")
 	arg_1_0._goloading = gohelper.findChild(arg_1_1, "root/loading")
 	arg_1_0._gosearching = gohelper.findChild(arg_1_1, "root/searching")
+	arg_1_0._gocompose = gohelper.findChild(arg_1_1, "compose")
+	arg_1_0._goCollectionSelectTips = gohelper.findChild(arg_1_0._gonormal, "collection/#go_collection_select_Tips")
 
 	gohelper.setActive(arg_1_0._gotalent, false)
+	gohelper.setActive(arg_1_0._goCollectionSelectTips, false)
 
 	arg_1_0.defaultWidth = 172
 	arg_1_0.defaultHeight = 172
@@ -63,9 +67,14 @@ function var_0_0.updateMo(arg_5_0, arg_5_1)
 	gohelper.setActive(arg_5_0._gonormal, not var_5_1)
 
 	if not var_5_1 then
-		arg_5_0._animHas:Play("open", 0, 1)
+		if arg_5_1.co.rare == 5 then
+			arg_5_0._animHas:Play("opensp", 0, 1)
+		else
+			arg_5_0._animHas:Play("open", 0, 1)
+		end
 	end
 
+	gohelper.setActive(arg_5_0._gocompose, false)
 	gohelper.setActive(arg_5_0._goempty, var_5_1)
 	gohelper.setActive(arg_5_0._goadd, false)
 	gohelper.setActive(arg_5_0._gosurvivalequiptag, false)
@@ -78,6 +87,7 @@ function var_0_0.updateMo(arg_5_0, arg_5_1)
 		gohelper.setActive(arg_5_0._gonpc, var_5_2)
 		gohelper.setActive(arg_5_0._gosurvivalequiptag, var_5_3 and arg_5_1.bagReason == 1)
 		gohelper.setActive(arg_5_0._goitem, not var_5_2)
+		gohelper.setActive(arg_5_0._goqulity5, not var_5_2 and arg_5_1.co.rare == 5)
 
 		arg_5_0._txtnum.text = arg_5_0._mo.count
 
@@ -148,6 +158,12 @@ function var_0_0.showLoading(arg_12_0, arg_12_1)
 		gohelper.setActive(arg_12_0._gonormal, false)
 	else
 		arg_12_0:updateMo(arg_12_0._mo)
+
+		if arg_12_0._mo and arg_12_0._mo.co and arg_12_0._mo.co.rare == 5 then
+			arg_12_0._animHas:Play("opensp", 0, 0)
+		else
+			arg_12_0._animHas:Play("open", 0, 0)
+		end
 	end
 end
 
@@ -156,16 +172,21 @@ function var_0_0.playSearch(arg_13_0)
 	gohelper.setActive(arg_13_0._gosearching, true)
 end
 
-function var_0_0.setItemSize(arg_14_0, arg_14_1, arg_14_2)
-	local var_14_0 = arg_14_1 / arg_14_0.defaultWidth
-	local var_14_1 = arg_14_2 / arg_14_0.defaultHeight
-
-	recthelper.setSize(arg_14_0.go.transform, arg_14_1, arg_14_2)
-	transformhelper.setLocalScale(arg_14_0.goRoot.transform, var_14_0, var_14_1, 1)
+function var_0_0.playCompose(arg_14_0)
+	gohelper.setActive(arg_14_0._gocompose, false)
+	gohelper.setActive(arg_14_0._gocompose, true)
 end
 
-function var_0_0.playCloseAnim(arg_15_0)
-	arg_15_0._animHas:Play("close", 0, 0)
+function var_0_0.setItemSize(arg_15_0, arg_15_1, arg_15_2)
+	local var_15_0 = arg_15_1 / arg_15_0.defaultWidth
+	local var_15_1 = arg_15_2 / arg_15_0.defaultHeight
+
+	recthelper.setSize(arg_15_0.go.transform, arg_15_1, arg_15_2)
+	transformhelper.setLocalScale(arg_15_0.goRoot.transform, var_15_0, var_15_1, 1)
+end
+
+function var_0_0.playCloseAnim(arg_16_0)
+	arg_16_0._animHas:Play("close", 0, 0)
 end
 
 return var_0_0

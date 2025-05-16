@@ -613,6 +613,10 @@ function var_0_0.playEffect91(arg_91_0, arg_91_1)
 		return
 	end
 
+	if var_91_0.exPointType ~= FightEnum.ExPointType.Common then
+		return
+	end
+
 	var_91_0:changeExpointMaxAdd(arg_91_1.effectNum)
 end
 
@@ -800,6 +804,10 @@ function var_0_0.playEffect113(arg_113_0, arg_113_1)
 	local var_113_0 = arg_113_0:getTarEntityMO(arg_113_1)
 
 	if not var_113_0 then
+		return
+	end
+
+	if var_113_0.exPointType ~= FightEnum.ExPointType.Common then
 		return
 	end
 
@@ -1585,6 +1593,10 @@ function var_0_0.playEffect244(arg_198_0, arg_198_1)
 	end
 
 	if not var_198_0:hasBuffFeature(FightEnum.BuffType_SpExPointMaxAdd) then
+		return
+	end
+
+	if var_198_0.exPointType ~= FightEnum.ExPointType.Common then
 		return
 	end
 

@@ -3,6 +3,12 @@
 local var_0_0 = class("SurvivalSceneViewComp", BaseSceneComp)
 
 function var_0_0.onScenePrepared(arg_1_0, arg_1_1, arg_1_2)
+	if not SurvivalMapModel.instance.isFightEnter or not arg_1_0._beginDt then
+		arg_1_0._beginDt = ServerTime.now()
+	end
+
+	SurvivalMapModel.instance.isFightEnter = false
+
 	ViewMgr.instance:openView(ViewName.SurvivalMapMainView)
 
 	local var_1_0 = SurvivalMapModel.instance:getSceneMo()
@@ -34,7 +40,7 @@ function var_0_0._processGuideEvent(arg_3_0)
 		ViewName.GuideView,
 		ViewName.GuideView2,
 		ViewName.GuideStepEditor
-	}) then
+	}) and not SurvivalMapHelper.instance:isInFlow() then
 		local var_3_0 = false
 		local var_3_1 = SurvivalMapModel.instance:getSceneMo()
 
@@ -87,6 +93,17 @@ function var_0_0.onSceneClose(arg_5_0, arg_5_1, arg_5_2)
 	ViewMgr.instance:closeView(ViewName.SurvivalMapMainView)
 	ViewMgr.instance:closeView(ViewName.SurvivalToastView)
 	ViewMgr.instance:closeAllPopupViews()
+
+	if GameSceneMgr.instance:getNextSceneType() ~= SceneType.Fight then
+		local var_5_0 = SurvivalShelterModel.instance:getWeekInfo()
+		local var_5_1 = "settle"
+
+		if var_5_0 and var_5_0.inSurvival then
+			var_5_1 = "topleft"
+		end
+
+		SurvivalStatHelper.instance:statMapClose(ServerTime.now() - arg_5_0._beginDt, var_5_1)
+	end
 end
 
 return var_0_0

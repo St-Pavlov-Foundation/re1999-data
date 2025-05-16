@@ -132,25 +132,43 @@ function var_0_0.onOpen(arg_9_0)
 	arg_9_0._gameConfig = MoLiDeErGameModel.instance:getCurGameConfig()
 
 	MoLiDeErController.instance:statGameStart(arg_9_0._actId, arg_9_0._episodeId)
-	arg_9_0:refreshUI()
+	arg_9_0:refreshUI(false)
 end
 
 function var_0_0.refreshUI(arg_10_0, arg_10_1)
 	logNormal("莫莉德尔 角色活动 刷新主界面")
 
-	arg_10_0._infoMo = MoLiDeErGameModel.instance:getGameInfo(arg_10_0._actId, arg_10_0._episodeId)
+	local var_10_0 = MoLiDeErGameModel.instance:getGameInfo(arg_10_0._actId, arg_10_0._episodeId)
 
-	if not arg_10_1 then
-		arg_10_0:delayShowInfo()
-	end
+	arg_10_0._infoMo = var_10_0
+
+	local var_10_1 = var_10_0.newFinishEventList
+	local var_10_2 = var_10_0.newEventList
+	local var_10_3 = not arg_10_1 and (var_10_1 and var_10_1[1] or var_10_2 ~= nil and var_10_2[1])
+	local var_10_4 = var_10_0.isEpisodeFinish and var_10_0.passStar ~= 0
+
+	arg_10_0._isEpisodeEnd = var_10_4
+
+	local var_10_5 = var_10_3 and var_10_0.existEventList or var_10_0.eventInfos
 
 	arg_10_0:refreshState()
-	arg_10_0:refreshEvent(arg_10_1)
+	arg_10_0:refreshExistEvent(var_10_5)
+
+	if not var_10_3 then
+		arg_10_0:delayShowInfo()
+
+		if var_10_4 then
+			arg_10_0:_lockScreen(true, MoLiDeErEnum.DelayTime.BlackScreenTime3)
+		end
+
+		arg_10_0:checkTargetProgressFx()
+	else
+		arg_10_0:refreshFinishEvent()
+	end
 end
 
 function var_0_0.delayShowInfo(arg_11_0)
 	logNormal("莫莉德尔 角色活动 刷新信息")
-	arg_11_0:checkTargetProgressFx()
 	arg_11_0:refreshInfo()
 	arg_11_0:refreshTeam()
 end
@@ -246,7 +264,7 @@ function var_0_0.onTitleCountTimeEnd(arg_14_0)
 	arg_14_0._txtTurns.text = MoLiDeErHelper.getGameRoundTitleDesc(var_14_0, var_14_4)
 end
 
-function var_0_0.checkTargetProgressFx(arg_15_0, arg_15_1)
+function var_0_0.checkTargetProgressFx(arg_15_0)
 	local var_15_0 = MoLiDeErGameModel.instance:getCurGameInfo()
 	local var_15_1 = {}
 
@@ -323,215 +341,209 @@ end
 function var_0_0.onTargetFxAllShowEnd(arg_17_0)
 	TaskDispatcher.cancelTask(arg_17_0.onTargetFxAllShowEnd, arg_17_0)
 
-	local var_17_0 = arg_17_0._targetProgressFxCount > 0
-
-	arg_17_0:refreshTarget(var_17_0)
-
-	if var_17_0 then
+	if arg_17_0._targetProgressFxCount > 0 then
+		arg_17_0:refreshTarget(true)
 		TaskDispatcher.runDelay(arg_17_0.onTargetProgressAddFxShowEnd, arg_17_0, MoLiDeErEnum.DelayTime.TargetFxProgressAdd)
+	else
+		arg_17_0:onTargetProgressAddFxShowEnd()
 	end
 end
 
 function var_0_0.onTargetProgressAddFxShowEnd(arg_18_0)
 	TaskDispatcher.cancelTask(arg_18_0.onTargetProgressAddFxShowEnd, arg_18_0)
 	arg_18_0:refreshTarget()
+	arg_18_0:checkGameOver()
 end
 
-function var_0_0.refreshTarget(arg_19_0, arg_19_1)
-	local var_19_0 = MoLiDeErGameModel.instance:getCurGameInfo()
-	local var_19_1 = {
+function var_0_0.checkGameOver(arg_19_0)
+	local var_19_0 = arg_19_0._infoMo
+
+	if var_19_0.isEpisodeFinish and var_19_0.passStar ~= 0 then
+		TaskDispatcher.runDelay(arg_19_0.onGameOver, arg_19_0, 1)
+	end
+end
+
+function var_0_0.onGameOver(arg_20_0)
+	arg_20_0:_lockScreen(false)
+	TaskDispatcher.cancelTask(arg_20_0.onGameOver, arg_20_0)
+	ViewMgr.instance:openView(ViewName.MoLiDeErResultView)
+end
+
+function var_0_0.refreshTarget(arg_21_0, arg_21_1)
+	local var_21_0 = MoLiDeErGameModel.instance:getCurGameInfo()
+	local var_21_1 = {
 		MoLiDeErEnum.TargetId.Main,
 		MoLiDeErEnum.TargetId.Extra
 	}
-	local var_19_2 = arg_19_0._gameConfig
-	local var_19_3 = arg_19_0._targetItemList
-	local var_19_4 = arg_19_0._targetResultItemList
-	local var_19_5 = 0
-	local var_19_6 = 0
-	local var_19_7 = #var_19_4
-	local var_19_8 = #var_19_3
-	local var_19_9 = arg_19_0._gotarget.transform.parent.gameObject
+	local var_21_2 = arg_21_0._gameConfig
+	local var_21_3 = arg_21_0._targetItemList
+	local var_21_4 = arg_21_0._targetResultItemList
+	local var_21_5 = 0
+	local var_21_6 = 0
+	local var_21_7 = #var_21_4
+	local var_21_8 = #var_21_3
+	local var_21_9 = arg_21_0._gotarget.transform.parent.gameObject
 
-	for iter_19_0, iter_19_1 in ipairs(var_19_1) do
-		local var_19_10 = var_19_0:getTargetProgress(iter_19_1)
-		local var_19_11 = MoLiDeErHelper.getTargetState(var_19_10)
-		local var_19_12
-		local var_19_13 = false
+	for iter_21_0, iter_21_1 in ipairs(var_21_1) do
+		local var_21_10 = var_21_0:getTargetProgress(iter_21_1)
+		local var_21_11 = MoLiDeErHelper.getTargetState(var_21_10)
+		local var_21_12
+		local var_21_13 = false
 
-		if var_19_11 == MoLiDeErEnum.ProgressChangeType.Percentage or arg_19_1 then
-			var_19_6 = var_19_6 + 1
+		if var_21_11 == MoLiDeErEnum.ProgressChangeType.Percentage or arg_21_1 then
+			var_21_6 = var_21_6 + 1
 
-			if var_19_8 < var_19_6 then
-				local var_19_14 = gohelper.clone(arg_19_0._gotarget2, var_19_9)
+			if var_21_8 < var_21_6 then
+				local var_21_14 = gohelper.clone(arg_21_0._gotarget2, var_21_9)
 
-				var_19_12 = MonoHelper.addNoUpdateLuaComOnceToGo(var_19_14, MoLiDeErTargetItem)
+				var_21_12 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_14, MoLiDeErTargetItem)
 
-				table.insert(var_19_3, var_19_12)
+				table.insert(var_21_3, var_21_12)
 			else
-				var_19_12 = var_19_3[var_19_6]
+				var_21_12 = var_21_3[var_21_6]
 			end
 
-			var_19_13 = arg_19_0._targetProgressFxDic[iter_19_1] == true and arg_19_1
+			var_21_13 = arg_21_0._targetProgressFxDic[iter_21_1] == true and arg_21_1
 		else
-			var_19_5 = var_19_5 + 1
+			var_21_5 = var_21_5 + 1
 
-			if var_19_7 < var_19_5 then
-				local var_19_15 = gohelper.clone(arg_19_0._gotarget3, var_19_9)
+			if var_21_7 < var_21_5 then
+				local var_21_15 = gohelper.clone(arg_21_0._gotarget3, var_21_9)
 
-				var_19_12 = MonoHelper.addNoUpdateLuaComOnceToGo(var_19_15, MoLiDeErTargetResultItem)
+				var_21_12 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_15, MoLiDeErTargetResultItem)
 
-				table.insert(var_19_4, var_19_12)
+				table.insert(var_21_4, var_21_12)
 			else
-				var_19_12 = var_19_4[var_19_5]
+				var_21_12 = var_21_4[var_21_5]
 			end
 
-			var_19_13 = var_19_0:isNewCompleteTarget(iter_19_1) or var_19_0:isNewFailTarget(iter_19_1)
+			var_21_13 = var_21_0:isNewCompleteTarget(iter_21_1) or var_21_0:isNewFailTarget(iter_21_1)
 		end
 
-		local var_19_16 = iter_19_1 == MoLiDeErEnum.TargetId.Main and var_19_2.winConditionStr or var_19_2.extraConditionStr
-		local var_19_17 = iter_19_1 == MoLiDeErEnum.TargetId.Main and var_19_2.winCondition or var_19_2.extraCondition
+		local var_21_16 = iter_21_1 == MoLiDeErEnum.TargetId.Main and var_21_2.winConditionStr or var_21_2.extraConditionStr
+		local var_21_17 = iter_21_1 == MoLiDeErEnum.TargetId.Main and var_21_2.winCondition or var_21_2.extraCondition
 
-		var_19_12:setActive(true)
-		var_19_12:refreshUI(var_19_16, var_19_17, iter_19_1, var_19_0, var_19_13)
+		var_21_12:setActive(true)
+		var_21_12:refreshUI(var_21_16, var_21_17, iter_21_1, var_21_0, var_21_13)
 	end
 
-	if var_19_6 < var_19_8 then
-		for iter_19_2 = var_19_6 + 1, var_19_8 do
-			var_19_3[iter_19_2]:setActive(false)
+	if var_21_6 < var_21_8 then
+		for iter_21_2 = var_21_6 + 1, var_21_8 do
+			var_21_3[iter_21_2]:setActive(false)
 		end
 	end
 
-	if var_19_5 < var_19_7 then
-		for iter_19_3 = var_19_5 + 1, var_19_7 do
-			var_19_4[iter_19_3]:setActive(false)
+	if var_21_5 < var_21_7 then
+		for iter_21_3 = var_21_5 + 1, var_21_7 do
+			var_21_4[iter_21_3]:setActive(false)
 		end
 	end
 end
 
-function var_0_0.refreshEvent(arg_20_0, arg_20_1)
-	local var_20_0 = MoLiDeErGameModel.instance:getCurGameInfo()
-	local var_20_1 = arg_20_1 and var_20_0.existEventList or var_20_0.eventInfos
+function var_0_0.refreshExistEvent(arg_22_0, arg_22_1)
+	local var_22_0 = #arg_22_1
+	local var_22_1 = arg_22_0._eventItemList
+	local var_22_2 = #var_22_1
+	local var_22_3 = MoLiDeErGameModel.instance:getCurRound()
+	local var_22_4 = 0
 
-	arg_20_0:refreshExistEvent(var_20_1)
+	for iter_22_0, iter_22_1 in ipairs(arg_22_1) do
+		local var_22_5
 
-	if arg_20_1 then
-		arg_20_0:refreshFinishEvent()
-	end
-end
+		if var_22_2 < iter_22_0 then
+			local var_22_6 = gohelper.clone(arg_22_0._goeventItem, arg_22_0._goeventMap)
 
-function var_0_0.refreshExistEvent(arg_21_0, arg_21_1)
-	local var_21_0 = #arg_21_1
-	local var_21_1 = arg_21_0._eventItemList
-	local var_21_2 = #var_21_1
-	local var_21_3 = MoLiDeErGameModel.instance:getCurRound()
-	local var_21_4 = 0
+			var_22_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_22_6, MoLiDeErEventItem)
 
-	for iter_21_0, iter_21_1 in ipairs(arg_21_1) do
-		local var_21_5
-
-		if var_21_2 < iter_21_0 then
-			local var_21_6 = gohelper.clone(arg_21_0._goeventItem, arg_21_0._goeventMap)
-
-			var_21_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_6, MoLiDeErEventItem)
-
-			table.insert(var_21_1, var_21_5)
+			table.insert(var_22_1, var_22_5)
 		else
-			var_21_5 = var_21_1[iter_21_0]
+			var_22_5 = var_22_1[iter_22_0]
 		end
 
-		var_21_5:setActive(true)
+		var_22_5:setActive(true)
 
-		local var_21_7 = arg_21_0:checkTeamDispatchState(iter_21_1.eventId)
-		local var_21_8 = var_21_7 ~= MoLiDeErEnum.TeamDispatchState.Dispatching
+		local var_22_7 = arg_22_0:checkTeamDispatchState(iter_22_1.eventId)
+		local var_22_8 = var_22_7 ~= MoLiDeErEnum.TeamDispatchState.Dispatching
 
-		if var_21_7 == MoLiDeErEnum.TeamDispatchState.Dispatch then
-			var_21_4 = var_21_4 + 1
+		if var_22_7 == MoLiDeErEnum.TeamDispatchState.Dispatch then
+			var_22_4 = var_22_4 + 1
 		end
 
-		var_21_5:setData(iter_21_1.eventId, iter_21_1.isChose, iter_21_1.eventEndRound, var_21_3, iter_21_1.teamId, var_21_8)
-		MoLiDeErGameController.instance:dispatchEvent(MoLiDeErEvent.GuideNewEvent, iter_21_1.eventId)
+		var_22_5:setData(iter_22_1.eventId, iter_22_1.isChose, iter_22_1.eventEndRound, var_22_3, iter_22_1.teamId, var_22_8)
+		MoLiDeErGameController.instance:dispatchEvent(MoLiDeErEvent.GuideNewEvent, iter_22_1.eventId)
 	end
 
-	if var_21_4 > 0 then
+	if var_22_4 > 0 then
 		AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_leimi_decrypt_correct)
 	end
 
-	arg_21_0._existItemCount = var_21_0
+	arg_22_0._existItemCount = var_22_0
 
-	if var_21_0 < var_21_2 then
-		for iter_21_2 = var_21_0 + 1, var_21_2 do
-			local var_21_9 = var_21_1[iter_21_2]
+	if var_22_0 < var_22_2 then
+		for iter_22_2 = var_22_0 + 1, var_22_2 do
+			local var_22_9 = var_22_1[iter_22_2]
 
-			if var_21_9 == nil then
-				logError(string.format("索引越界 itemCount :%s  index: %s", iter_21_2, tostring(#var_21_1)))
+			if var_22_9 == nil then
+				logError(string.format("索引越界 itemCount :%s  index: %s", iter_22_2, tostring(#var_22_1)))
 			else
-				var_21_9:setActive(false)
+				var_22_9:setActive(false)
 			end
 		end
 	end
 end
 
-function var_0_0.refreshFinishEvent(arg_22_0)
-	arg_22_0:_lockScreen(true)
-	TaskDispatcher.runDelay(arg_22_0.forceCloseLock, arg_22_0, MoLiDeErEnum.DelayTime.BlackScreenTime)
+function var_0_0.refreshFinishEvent(arg_23_0)
+	arg_23_0:_lockScreen(true, MoLiDeErEnum.DelayTime.BlackScreenTime)
 
-	local var_22_0 = arg_22_0._infoMo.newFinishEventList
-	local var_22_1 = 0
+	local var_23_0 = arg_23_0._infoMo.newFinishEventList
+	local var_23_1 = 0
 
-	if var_22_0 and #var_22_0 > 0 then
-		local var_22_2 = arg_22_0._eventItemList
-		local var_22_3 = #var_22_2
-		local var_22_4 = MoLiDeErGameModel.instance:getCurRound()
+	if var_23_0 and #var_23_0 > 0 then
+		local var_23_2 = arg_23_0._eventItemList
+		local var_23_3 = #var_23_2
+		local var_23_4 = MoLiDeErGameModel.instance:getCurRound()
 
-		for iter_22_0, iter_22_1 in ipairs(var_22_0) do
-			local var_22_5 = iter_22_1.finishedEventId
+		for iter_23_0, iter_23_1 in ipairs(var_23_0) do
+			local var_23_5 = iter_23_1.finishedEventId
 
-			if var_22_5 ~= nil and var_22_5 ~= 0 then
-				var_22_1 = var_22_1 + 1
+			if var_23_5 ~= nil and var_23_5 ~= 0 then
+				var_23_1 = var_23_1 + 1
 
-				local var_22_6
-				local var_22_7 = var_22_1 + arg_22_0._existItemCount
+				local var_23_6
+				local var_23_7 = var_23_1 + arg_23_0._existItemCount
 
-				if var_22_3 < var_22_7 then
-					local var_22_8 = gohelper.clone(arg_22_0._goeventItem, arg_22_0._goeventMap)
+				if var_23_3 < var_23_7 then
+					local var_23_8 = gohelper.clone(arg_23_0._goeventItem, arg_23_0._goeventMap)
 
-					var_22_6 = MonoHelper.addNoUpdateLuaComOnceToGo(var_22_8, MoLiDeErEventItem)
+					var_23_6 = MonoHelper.addNoUpdateLuaComOnceToGo(var_23_8, MoLiDeErEventItem)
 
-					table.insert(var_22_2, var_22_6)
+					table.insert(var_23_2, var_23_6)
 				else
-					var_22_6 = var_22_2[var_22_7]
+					var_23_6 = var_23_2[var_23_7]
 				end
 
-				var_22_6:setActive(true)
-				var_22_6:setData(var_22_5, false, var_22_4, var_22_4, nil)
-				var_22_6:showAnim(MoLiDeErEnum.AnimName.GameViewEventItemFinish, true)
-				arg_22_0:checkTeamDispatchState(var_22_5)
+				var_23_6:setActive(true)
+				var_23_6:setData(var_23_5, false, var_23_4, var_23_4, nil)
+				var_23_6:showAnim(MoLiDeErEnum.AnimName.GameViewEventItemFinish, true)
+				arg_23_0:checkTeamDispatchState(var_23_5)
 			end
 		end
 	end
 
-	arg_22_0._finishItemCount = var_22_1
+	arg_23_0._finishItemCount = var_23_1
 
-	if var_22_1 > 0 then
+	if var_23_1 > 0 then
 		AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_yuzhou_level_lit)
-		TaskDispatcher.runDelay(arg_22_0.onFinishTaskShowTimeEnd, arg_22_0, MoLiDeErEnum.DelayTime.FinishEventShow)
+		TaskDispatcher.runDelay(arg_23_0.onFinishTaskShowTimeEnd, arg_23_0, MoLiDeErEnum.DelayTime.FinishEventShow)
 	else
-		arg_22_0:onFinishTaskShowTimeEnd()
+		arg_23_0:onFinishTaskShowTimeEnd()
 	end
-end
-
-function var_0_0.forceCloseLock(arg_23_0)
-	TaskDispatcher.cancelTask(arg_23_0.forceCloseLock, arg_23_0)
-	logError("莫莉德尔 角色活动 事件出现表现超时 已强制关闭遮罩")
-	arg_23_0:_lockScreen(false)
-	arg_23_0:refreshUI()
 end
 
 function var_0_0.onFinishTaskShowTimeEnd(arg_24_0)
 	TaskDispatcher.cancelTask(arg_24_0.onFinishTaskShowTimeEnd, arg_24_0)
 
 	if arg_24_0._finishItemCount > 0 then
-		TaskDispatcher.cancelTask(arg_24_0.forceCloseLock, arg_24_0)
 		arg_24_0:_lockScreen(false)
 		MoLiDeErGameController.instance:showFinishEvent()
 		logNormal("莫莉德尔 角色活动 事件角色动画播放完毕")
@@ -542,9 +554,6 @@ function var_0_0.onFinishTaskShowTimeEnd(arg_24_0)
 end
 
 function var_0_0.onFinishEventShowEnd(arg_25_0)
-	TaskDispatcher.cancelTask(arg_25_0.forceCloseLock, arg_25_0)
-	TaskDispatcher.runDelay(arg_25_0.forceCloseLock, arg_25_0, MoLiDeErEnum.DelayTime.BlackScreenTime2)
-	arg_25_0:_lockScreen(true)
 	arg_25_0:removeEventCb(MoLiDeErGameController.instance, MoLiDeErEvent.GameFinishEventShowEnd, arg_25_0.onFinishEventShowEnd, arg_25_0)
 
 	if arg_25_0._finishItemCount > 0 then
@@ -569,43 +578,67 @@ function var_0_0.onFinishEventShowEnd(arg_25_0)
 end
 
 function var_0_0.onFinishEventViewShowEnd(arg_26_0)
+	local var_26_0 = arg_26_0._infoMo
+	local var_26_1 = arg_26_0._isEpisodeEnd
+	local var_26_2 = var_26_1 and MoLiDeErEnum.DelayTime.BlackScreenTime3 or MoLiDeErEnum.DelayTime.BlackScreenTime2
+
+	arg_26_0:_lockScreen(true, var_26_2)
 	arg_26_0:delayShowInfo()
+	arg_26_0:checkTargetProgressFx()
 
-	local var_26_0 = 0
-	local var_26_1 = 0
-	local var_26_2 = arg_26_0._infoMo.newEventList
+	if var_26_1 then
+		local var_26_3 = arg_26_0._eventItemList
+		local var_26_4 = arg_26_0._existItemCount + 1
+		local var_26_5 = var_26_4 + arg_26_0._finishItemCount - 1
 
-	if #var_26_2 > 0 then
-		for iter_26_0, iter_26_1 in ipairs(var_26_2) do
-			local var_26_3 = iter_26_1.preEventId
-			local var_26_4 = MoLiDeErHelper.getPreEventId(iter_26_1.eventId)
+		for iter_26_0 = var_26_4, var_26_5 do
+			local var_26_6 = var_26_3[iter_26_0]
 
-			if var_26_3 ~= var_26_4 then
-				logError("莫莉德尔 角色活动 完成事件前置id不一致 前端：" .. tostring(var_26_4) .. " .. 后端：" .. tostring(var_26_3))
+			if var_26_6 == nil then
+				logError(string.format("索引越界 index:%s itemCount :%s  existCount: %s finishItemCount : %s", iter_26_0, tostring(#var_26_3), arg_26_0._existItemCount, arg_26_0._finishItemCount))
+			else
+				var_26_6:setActive(false)
+			end
+		end
+
+		return
+	end
+
+	local var_26_7 = 0
+	local var_26_8 = 0
+	local var_26_9 = var_26_0.newEventList
+
+	if #var_26_9 > 0 then
+		for iter_26_1, iter_26_2 in ipairs(var_26_9) do
+			local var_26_10 = iter_26_2.preEventId
+			local var_26_11 = MoLiDeErHelper.getPreEventId(iter_26_2.eventId)
+
+			if var_26_10 ~= var_26_11 then
+				logError("莫莉德尔 角色活动 完成事件前置id不一致 前端：" .. tostring(var_26_11) .. " .. 后端：" .. tostring(var_26_10))
 			end
 
-			if var_26_3 and var_26_3 ~= 0 then
-				var_26_0 = var_26_0 + 1
+			if var_26_10 and var_26_10 ~= 0 then
+				var_26_7 = var_26_7 + 1
 
-				local var_26_5 = MoLiDeErConfig.instance:getEventConfig(var_26_3)
-				local var_26_6 = MoLiDeErConfig.instance:getEventConfig(iter_26_1.eventId)
-				local var_26_7 = string.splitToNumber(var_26_5.position, "#")
-				local var_26_8 = string.splitToNumber(var_26_6.position, "#")
+				local var_26_12 = MoLiDeErConfig.instance:getEventConfig(var_26_10)
+				local var_26_13 = MoLiDeErConfig.instance:getEventConfig(iter_26_2.eventId)
+				local var_26_14 = string.splitToNumber(var_26_12.position, "#")
+				local var_26_15 = string.splitToNumber(var_26_13.position, "#")
 
-				if not MoLiDeErHelper.checkIsInSamePosition(var_26_7, var_26_8) then
-					logNormal("莫莉德尔 角色活动 显示延展路线效果 前置id: " .. tostring(var_26_3) .. "新事件id:" .. tostring(iter_26_1.eventId))
-					arg_26_0:doEventLineTween(var_26_7, var_26_8)
+				if not MoLiDeErHelper.checkIsInSamePosition(var_26_14, var_26_15) then
+					logNormal("莫莉德尔 角色活动 显示延展路线效果 前置id: " .. tostring(var_26_10) .. "新事件id:" .. tostring(iter_26_2.eventId))
+					arg_26_0:doEventLineTween(var_26_14, var_26_15)
 
-					var_26_1 = var_26_1 + 1
+					var_26_8 = var_26_8 + 1
 				end
 			end
 		end
 	end
 
-	if var_26_0 > 0 then
+	if var_26_7 > 0 then
 		TaskDispatcher.runDelay(arg_26_0.onNewTaskLineShowTimeEnd, arg_26_0, MoLiDeErEnum.DelayTime.NewEventShow)
 
-		if var_26_1 > 0 then
+		if var_26_8 > 0 then
 			AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_fuleyuan_lines_extend)
 		end
 	elseif arg_26_0._finishItemCount > 0 then
@@ -652,6 +685,7 @@ function var_0_0.onNewTaskLineShowTimeEnd(arg_27_0)
 			end
 
 			var_27_7:setActive(true)
+			var_27_7:setAtFirst()
 			var_27_7:setData(iter_27_2.eventId, iter_27_2.isChose, iter_27_2.eventEndRound, var_27_4, iter_27_2.teamId)
 			var_27_7:showAnim(MoLiDeErEnum.AnimName.GameViewEventItemOpen, true)
 			MoLiDeErGameController.instance:dispatchEvent(MoLiDeErEvent.GuideNewEvent, iter_27_2.eventId)
@@ -666,7 +700,6 @@ end
 
 function var_0_0.onNewTaskShowTimeEnd(arg_28_0)
 	TaskDispatcher.cancelTask(arg_28_0.onNewTaskShowTimeEnd, arg_28_0)
-	TaskDispatcher.cancelTask(arg_28_0.forceCloseLock, arg_28_0)
 	arg_28_0:_lockScreen(false)
 end
 
@@ -717,202 +750,212 @@ function var_0_0.onViewClose(arg_33_0, arg_33_1)
 	end
 end
 
-function var_0_0.onGameExit(arg_34_0)
-	arg_34_0:closeThis()
+function var_0_0.forceCloseLock(arg_34_0)
+	logError("莫莉德尔 角色活动 事件出现表现超时 已强制关闭遮罩")
+	arg_34_0:_lockScreen(false)
+	arg_34_0:refreshUI(true)
 end
 
-function var_0_0.onGameReset(arg_35_0)
-	arg_35_0:refreshUI()
+function var_0_0.onGameExit(arg_35_0)
+	arg_35_0:closeThis()
 end
 
-function var_0_0.onGameSkip(arg_36_0)
-	arg_36_0:closeThis()
+function var_0_0.onGameReset(arg_36_0)
+	arg_36_0:refreshUI(true)
 end
 
-function var_0_0._lockScreen(arg_37_0, arg_37_1)
-	if arg_37_1 then
+function var_0_0.onGameSkip(arg_37_0)
+	arg_37_0:closeThis()
+end
+
+function var_0_0._lockScreen(arg_38_0, arg_38_1, arg_38_2)
+	if arg_38_1 then
+		TaskDispatcher.runDelay(arg_38_0.forceCloseLock, arg_38_0, arg_38_2)
 		UIBlockMgrExtend.setNeedCircleMv(false)
 		UIBlockMgr.instance:startBlock("MoLiDeErGameView")
 		logNormal("莫莉德尔 角色活动 开始锁屏")
 	else
-		UIBlockMgr.instance:endBlock("MoLiDeErGameView")
+		TaskDispatcher.cancelTask(arg_38_0.forceCloseLock, arg_38_0)
 		UIBlockMgrExtend.setNeedCircleMv(true)
+		UIBlockMgr.instance:endBlock("MoLiDeErGameView")
 		logNormal("莫莉德尔 角色活动 结束锁屏")
 	end
 end
 
-function var_0_0.getOrReturnSolidLine(arg_38_0, arg_38_1)
-	if arg_38_1 == nil then
-		if arg_38_0._unUseLineSolidList[1] == nil then
-			arg_38_1 = gohelper.clone(arg_38_0._goLineVirtual, arg_38_0._goLineParent)
-		else
-			arg_38_1 = table.remove(arg_38_0._unUseLineSolidList)
-		end
-
-		table.insert(arg_38_0._useLineSolidList, arg_38_1)
-		gohelper.setActive(arg_38_1, true)
-
-		return arg_38_1
-	else
-		tabletool.removeValue(arg_38_0._useLineSolidList, arg_38_1)
-		table.insert(arg_38_0._unUseLineSolidList, arg_38_1)
-		gohelper.setActive(arg_38_1, false)
-	end
-end
-
-function var_0_0.getOrReturnTargetFxLine(arg_39_0, arg_39_1)
+function var_0_0.getOrReturnSolidLine(arg_39_0, arg_39_1)
 	if arg_39_1 == nil then
-		if arg_39_0._unUseTargetFxList[1] == nil then
-			arg_39_1 = gohelper.clone(arg_39_0._goTargetFx, arg_39_0._goeventMap)
+		if arg_39_0._unUseLineSolidList[1] == nil then
+			arg_39_1 = gohelper.clone(arg_39_0._goLineVirtual, arg_39_0._goLineParent)
 		else
-			arg_39_1 = table.remove(arg_39_0._unUseTargetFxList)
+			arg_39_1 = table.remove(arg_39_0._unUseLineSolidList)
 		end
 
-		table.insert(arg_39_0._useTargetFxList, arg_39_1)
+		table.insert(arg_39_0._useLineSolidList, arg_39_1)
 		gohelper.setActive(arg_39_1, true)
 
 		return arg_39_1
 	else
-		tabletool.removeValue(arg_39_0._useTargetFxList, arg_39_1)
-		table.insert(arg_39_0._unUseTargetFxList, arg_39_1)
+		tabletool.removeValue(arg_39_0._useLineSolidList, arg_39_1)
+		table.insert(arg_39_0._unUseLineSolidList, arg_39_1)
 		gohelper.setActive(arg_39_1, false)
 	end
 end
 
-function var_0_0.doEventLineTween(arg_40_0, arg_40_1, arg_40_2)
-	local var_40_0 = arg_40_1[1] + MoLiDeErEnum.EventCenterOffset.X
-	local var_40_1 = arg_40_1[2] + MoLiDeErEnum.EventCenterOffset.Y
-	local var_40_2 = arg_40_2[1] + MoLiDeErEnum.EventCenterOffset.X
-	local var_40_3 = arg_40_2[2] + MoLiDeErEnum.EventCenterOffset.Y
-	local var_40_4 = math.sqrt((var_40_0 - var_40_2)^2 + (var_40_1 - var_40_3)^2)
-	local var_40_5 = math.atan2(var_40_3 - var_40_1, var_40_2 - var_40_0) * (180 / math.pi)
+function var_0_0.getOrReturnTargetFxLine(arg_40_0, arg_40_1)
+	if arg_40_1 == nil then
+		if arg_40_0._unUseTargetFxList[1] == nil then
+			arg_40_1 = gohelper.clone(arg_40_0._goTargetFx, arg_40_0._goeventMap)
+		else
+			arg_40_1 = table.remove(arg_40_0._unUseTargetFxList)
+		end
 
-	logNormal("莫莉德尔角色活动 线条开始位置 angle: " .. tostring(var_40_5) .. "x: " .. tostring(var_40_0) .. "y: " .. tostring(var_40_1))
+		table.insert(arg_40_0._useTargetFxList, arg_40_1)
+		gohelper.setActive(arg_40_1, true)
 
-	local var_40_6 = arg_40_0:getOrReturnSolidLine()
-
-	transformhelper.setEulerAngles(var_40_6.transform, 0, 0, var_40_5)
-	transformhelper.setLocalPos(var_40_6.transform, var_40_0, var_40_1, 0)
-	recthelper.setWidth(var_40_6.transform, 0)
-	transformhelper.setLocalScale(var_40_6.transform, 1, 1, 1)
-
-	local var_40_7 = {
-		go = var_40_6,
-		posX = var_40_2,
-		posY = var_40_3
-	}
-	local var_40_8 = ZProj.TweenHelper.DOWidth(var_40_6.transform, var_40_4, MoLiDeErEnum.DelayTime.NewEventShow, arg_40_0.onTweenLineEnd, arg_40_0, var_40_7, EaseType.Linear)
-
-	table.insert(arg_40_0._tweenIdList, var_40_8)
-end
-
-function var_0_0.onTweenLineEnd(arg_41_0, arg_41_1)
-	arg_41_0:doEventLineTweenFade(arg_41_1)
-end
-
-function var_0_0.doEventLineTweenFade(arg_42_0, arg_42_1)
-	local var_42_0 = arg_42_1.go
-	local var_42_1, var_42_2, var_42_3 = transformhelper.getEulerAngles(var_42_0.transform)
-	local var_42_4
-
-	if var_42_3 < 180 then
-		var_42_4 = var_42_3 + 180
+		return arg_40_1
 	else
-		var_42_4 = var_42_3 - 180
-	end
-
-	transformhelper.setEulerAngles(var_42_0.transform, 0, 0, var_42_4)
-	transformhelper.setLocalScale(var_42_0.transform, 1, -1, 1)
-	transformhelper.setLocalPos(var_42_0.transform, arg_42_1.posX, arg_42_1.posY, 0)
-
-	local var_42_5 = ZProj.TweenHelper.DOWidth(var_42_0.transform, 0, MoLiDeErEnum.DelayTime.BlackEnd, arg_42_0.onTweenLineFadeEnd, arg_42_0, arg_42_1, EaseType.Linear)
-
-	table.insert(arg_42_0._tweenIdList, var_42_5)
-end
-
-function var_0_0.onTweenLineFadeEnd(arg_43_0, arg_43_1)
-	arg_43_0:getOrReturnSolidLine(arg_43_1.go)
-end
-
-function var_0_0.addTitleTips(arg_44_0, arg_44_1)
-	table.insert(arg_44_0._cacheMsgList, arg_44_1)
-
-	if not arg_44_0.hadTask then
-		arg_44_0:_showToast()
-		TaskDispatcher.runRepeat(arg_44_0._showToast, arg_44_0, arg_44_0._showNextToastInterval)
-
-		arg_44_0.hadTask = true
+		tabletool.removeValue(arg_40_0._useTargetFxList, arg_40_1)
+		table.insert(arg_40_0._unUseTargetFxList, arg_40_1)
+		gohelper.setActive(arg_40_1, false)
 	end
 end
 
-function var_0_0._showToast(arg_45_0)
-	local var_45_0 = table.remove(arg_45_0._cacheMsgList, 1)
+function var_0_0.doEventLineTween(arg_41_0, arg_41_1, arg_41_2)
+	local var_41_0 = arg_41_1[1] + MoLiDeErEnum.EventCenterOffset.X
+	local var_41_1 = arg_41_1[2] + MoLiDeErEnum.EventCenterOffset.Y
+	local var_41_2 = arg_41_2[1] + MoLiDeErEnum.EventCenterOffset.X
+	local var_41_3 = arg_41_2[2] + MoLiDeErEnum.EventCenterOffset.Y
+	local var_41_4 = math.sqrt((var_41_0 - var_41_2)^2 + (var_41_1 - var_41_3)^2)
+	local var_41_5 = math.atan2(var_41_3 - var_41_1, var_41_2 - var_41_0) * (180 / math.pi)
 
-	if not var_45_0 then
-		TaskDispatcher.cancelTask(arg_45_0._showToast, arg_45_0)
+	logNormal("莫莉德尔角色活动 线条开始位置 angle: " .. tostring(var_41_5) .. "x: " .. tostring(var_41_0) .. "y: " .. tostring(var_41_1))
 
-		arg_45_0.hadTask = false
+	local var_41_6 = arg_41_0:getOrReturnSolidLine()
+
+	transformhelper.setEulerAngles(var_41_6.transform, 0, 0, var_41_5)
+	transformhelper.setLocalPos(var_41_6.transform, var_41_0, var_41_1, 0)
+	recthelper.setWidth(var_41_6.transform, 0)
+	transformhelper.setLocalScale(var_41_6.transform, 1, 1, 1)
+
+	local var_41_7 = {
+		go = var_41_6,
+		posX = var_41_2,
+		posY = var_41_3
+	}
+	local var_41_8 = ZProj.TweenHelper.DOWidth(var_41_6.transform, var_41_4, MoLiDeErEnum.DelayTime.NewEventShow, arg_41_0.onTweenLineEnd, arg_41_0, var_41_7, EaseType.Linear)
+
+	table.insert(arg_41_0._tweenIdList, var_41_8)
+end
+
+function var_0_0.onTweenLineEnd(arg_42_0, arg_42_1)
+	arg_42_0:doEventLineTweenFade(arg_42_1)
+end
+
+function var_0_0.doEventLineTweenFade(arg_43_0, arg_43_1)
+	local var_43_0 = arg_43_1.go
+	local var_43_1, var_43_2, var_43_3 = transformhelper.getEulerAngles(var_43_0.transform)
+	local var_43_4
+
+	if var_43_3 < 180 then
+		var_43_4 = var_43_3 + 180
+	else
+		var_43_4 = var_43_3 - 180
+	end
+
+	transformhelper.setEulerAngles(var_43_0.transform, 0, 0, var_43_4)
+	transformhelper.setLocalScale(var_43_0.transform, 1, -1, 1)
+	transformhelper.setLocalPos(var_43_0.transform, arg_43_1.posX, arg_43_1.posY, 0)
+
+	local var_43_5 = ZProj.TweenHelper.DOWidth(var_43_0.transform, 0, MoLiDeErEnum.DelayTime.BlackEnd, arg_43_0.onTweenLineFadeEnd, arg_43_0, arg_43_1, EaseType.Linear)
+
+	table.insert(arg_43_0._tweenIdList, var_43_5)
+end
+
+function var_0_0.onTweenLineFadeEnd(arg_44_0, arg_44_1)
+	arg_44_0:getOrReturnSolidLine(arg_44_1.go)
+end
+
+function var_0_0.addTitleTips(arg_45_0, arg_45_1)
+	table.insert(arg_45_0._cacheMsgList, arg_45_1)
+
+	if not arg_45_0.hadTask then
+		arg_45_0:_showToast()
+		TaskDispatcher.runRepeat(arg_45_0._showToast, arg_45_0, arg_45_0._showNextToastInterval)
+
+		arg_45_0.hadTask = true
+	end
+end
+
+function var_0_0._showToast(arg_46_0)
+	local var_46_0 = table.remove(arg_46_0._cacheMsgList, 1)
+
+	if not var_46_0 then
+		TaskDispatcher.cancelTask(arg_46_0._showToast, arg_46_0)
+
+		arg_46_0.hadTask = false
 
 		return
 	end
 
-	local var_45_1 = table.remove(arg_45_0._unUsedTipsItem, 1)
+	local var_46_1 = table.remove(arg_46_0._unUsedTipsItem, 1)
 
-	if not var_45_1 then
-		local var_45_2 = gohelper.clone(arg_45_0._goTips, arg_45_0._goTipsParent)
+	if not var_46_1 then
+		local var_46_2 = gohelper.clone(arg_46_0._goTips, arg_46_0._goTipsParent)
 
-		var_45_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_45_2, MoLiDeErTipItem)
+		var_46_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_46_2, MoLiDeErTipItem)
 	end
 
-	local var_45_3
+	local var_46_3
 
-	if #arg_45_0._usedTipsItem >= arg_45_0._maxCount then
-		local var_45_4 = arg_45_0._usedTipsItem[1]
+	if #arg_46_0._usedTipsItem >= arg_46_0._maxCount then
+		local var_46_4 = arg_46_0._usedTipsItem[1]
 
-		arg_45_0:recycleToast(var_45_4, true)
+		arg_46_0:recycleToast(var_46_4, true)
 	end
 
-	table.insert(arg_45_0._usedTipsItem, var_45_1)
-	var_45_1:setMsg(var_45_0)
-	var_45_1:setActive(true)
-	var_45_1:appearAnimation()
+	table.insert(arg_46_0._usedTipsItem, var_46_1)
+	var_46_1:setMsg(var_46_0)
+	var_46_1:setActive(true)
+	var_46_1:appearAnimation()
 end
 
-function var_0_0.recycleToast(arg_46_0, arg_46_1)
-	local var_46_0 = tabletool.indexOf(arg_46_0._usedTipsItem, arg_46_1)
+function var_0_0.recycleToast(arg_47_0, arg_47_1)
+	local var_47_0 = tabletool.indexOf(arg_47_0._usedTipsItem, arg_47_1)
 
-	if var_46_0 then
-		table.remove(arg_46_0._usedTipsItem, var_46_0)
+	if var_47_0 then
+		table.remove(arg_47_0._usedTipsItem, var_47_0)
 	end
 
-	arg_46_1:reset()
-	table.insert(arg_46_0._unUsedTipsItem, arg_46_1)
+	arg_47_1:reset()
+	table.insert(arg_47_0._unUsedTipsItem, arg_47_1)
 end
 
-function var_0_0.onClose(arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0.onFinishTaskShowTimeEnd, arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0.onNewTaskLineShowTimeEnd, arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0.onNewTaskShowTimeEnd, arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0.onTitleCountTimeEnd, arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0._showToast, arg_47_0)
+function var_0_0.onClose(arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onFinishTaskShowTimeEnd, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onNewTaskLineShowTimeEnd, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onNewTaskShowTimeEnd, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onTitleCountTimeEnd, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0._showToast, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onGameOver, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.forceCloseLock, arg_48_0)
 	MoLiDeErGameModel.instance:resetSelect()
 
-	if arg_47_0._tweenIdList[1] then
-		for iter_47_0, iter_47_1 in ipairs(arg_47_0._tweenIdList) do
-			ZProj.TweenHelper.KillById(iter_47_1, false)
+	if arg_48_0._tweenIdList[1] then
+		for iter_48_0, iter_48_1 in ipairs(arg_48_0._tweenIdList) do
+			ZProj.TweenHelper.KillById(iter_48_1, false)
 		end
 	end
 
-	arg_47_0._tweenIdList = nil
+	arg_48_0._tweenIdList = nil
 
-	for iter_47_2, iter_47_3 in ipairs(arg_47_0._targetFxTweenList) do
-		ZProj.TweenHelper.KillById(iter_47_3)
+	for iter_48_2, iter_48_3 in ipairs(arg_48_0._targetFxTweenList) do
+		ZProj.TweenHelper.KillById(iter_48_3)
 	end
 
-	arg_47_0._targetFxTweenList = nil
+	arg_48_0._targetFxTweenList = nil
 end
 
-function var_0_0.onDestroyView(arg_48_0)
+function var_0_0.onDestroyView(arg_49_0)
 	return
 end
 

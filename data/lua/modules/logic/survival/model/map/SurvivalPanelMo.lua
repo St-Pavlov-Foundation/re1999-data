@@ -21,6 +21,9 @@ function var_0_0.init(arg_1_0, arg_1_1)
 		if arg_1_0.type == SurvivalEnum.PanelType.Search then
 			var_1_0.source = SurvivalEnum.ItemSource.Search
 			arg_1_0.items[var_1_0.uid] = var_1_0
+		elseif arg_1_0.type == SurvivalEnum.PanelType.DropSelect then
+			var_1_0.source = SurvivalEnum.ItemSource.Drop
+			arg_1_0.items[iter_1_0] = var_1_0
 		else
 			arg_1_0.items[iter_1_0] = var_1_0
 		end

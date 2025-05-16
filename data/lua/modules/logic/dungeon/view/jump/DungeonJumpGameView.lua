@@ -504,6 +504,11 @@ function var_0_0._onClickFight(arg_21_0)
 	end
 
 	local var_21_1 = tonumber(var_21_0.evenid)
+
+	if DungeonModel.instance:hasPassLevel(var_21_1) and var_21_0.toggled then
+		return
+	end
+
 	local var_21_2 = 0
 	local var_21_3 = DungeonConfig.instance:getEpisodeCO(var_21_1)
 

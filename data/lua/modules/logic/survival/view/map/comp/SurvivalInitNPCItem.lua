@@ -7,6 +7,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._goHaveNpc = gohelper.findChild(arg_1_1, "#go_HaveHero")
 	arg_1_0._goEmpty = gohelper.findChild(arg_1_1, "#go_Empty")
 	arg_1_0._goLock = gohelper.findChild(arg_1_1, "#go_Locked")
+	arg_1_0._goNew = gohelper.findChild(arg_1_1, "#go_New")
 	arg_1_0._clickThis = gohelper.getClick(arg_1_1)
 	arg_1_0._txtname = gohelper.findChildTextMesh(arg_1_0._goHaveNpc, "#txt_PartnerName")
 	arg_1_0._imagechess = gohelper.findChildImage(arg_1_0._goHaveNpc, "#image_Chess")
@@ -43,62 +44,66 @@ function var_0_0.setIsLock(arg_7_0, arg_7_1)
 	end
 end
 
-function var_0_0.onUpdateMO(arg_8_0, arg_8_1)
-	arg_8_0._npcMo = arg_8_1
+function var_0_0.setNew(arg_8_0, arg_8_1)
+	gohelper.setActive(arg_8_0._goNew, arg_8_1)
+end
 
-	local var_8_0 = arg_8_0._npcMo ~= nil
+function var_0_0.onUpdateMO(arg_9_0, arg_9_1)
+	arg_9_0._npcMo = arg_9_1
 
-	gohelper.setActive(arg_8_0._goEmpty, not var_8_0)
-	gohelper.setActive(arg_8_0._goHaveNpc, var_8_0)
+	local var_9_0 = arg_9_0._npcMo ~= nil
 
-	if var_8_0 then
-		local var_8_1 = arg_8_1.co
+	gohelper.setActive(arg_9_0._goEmpty, not var_9_0)
+	gohelper.setActive(arg_9_0._goHaveNpc, var_9_0)
 
-		if not var_8_1 then
+	if var_9_0 then
+		local var_9_1 = arg_9_1.co
+
+		if not var_9_1 then
 			return
 		end
 
-		arg_8_0._txtname.text = var_8_1.name
+		arg_9_0._txtname.text = var_9_1.name
 
-		UISpriteSetMgr.instance:setV2a2ChessSprite(arg_8_0._imagechess, var_8_1.headIcon, false)
+		UISpriteSetMgr.instance:setV2a2ChessSprite(arg_9_0._imagechess, var_9_1.headIcon, false)
 
-		local var_8_2 = string.splitToNumber(var_8_1.tag, "#") or {}
+		local var_9_2 = string.splitToNumber(var_9_1.tag, "#") or {}
 
-		gohelper.CreateObjList(arg_8_0, arg_8_0._createTagItem, var_8_2, nil, arg_8_0._goAttrItem)
+		gohelper.CreateObjList(arg_9_0, arg_9_0._createTagItem, var_9_2, nil, arg_9_0._goAttrItem)
 	end
 end
 
-function var_0_0._createTagItem(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
-	local var_9_0 = lua_survival_tag.configDict[arg_9_2]
+function var_0_0._createTagItem(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	local var_10_0 = lua_survival_tag.configDict[arg_10_2]
 
-	if not var_9_0 then
+	if not var_10_0 then
 		return
 	end
 
-	local var_9_1 = gohelper.findChildTextMesh(arg_9_1, "image_TitleBG/#txt_Title")
-	local var_9_2 = gohelper.findChildImage(arg_9_1, "image_TitleBG")
-	local var_9_3 = gohelper.findChildTextMesh(arg_9_1, "")
+	local var_10_1 = gohelper.findChildTextMesh(arg_10_1, "image_TitleBG/#txt_Title")
+	local var_10_2 = gohelper.findChildImage(arg_10_1, "image_TitleBG")
+	local var_10_3 = gohelper.findChildTextMesh(arg_10_1, "")
 
-	var_9_1.text = var_9_0.name
-	var_9_3.text = var_9_0.desc
+	var_10_1.text = var_10_0.name
+	var_10_3.text = var_10_0.desc
 
-	UISpriteSetMgr.instance:setSurvivalSprite(var_9_2, "survivalpartnerteam_attrbg" .. var_9_0.color, false)
+	UISpriteSetMgr.instance:setSurvivalSprite(var_10_2, "survivalpartnerteam_attrbg" .. var_10_0.color, false)
 end
 
-function var_0_0.showSelectEffect(arg_10_0)
+function var_0_0.showSelectEffect(arg_11_0)
 	return
 end
 
-function var_0_0._onClickThis(arg_11_0)
-	if arg_11_0._isLock then
+function var_0_0._onClickThis(arg_12_0)
+	if arg_12_0._isLock then
 		return
 	end
 
 	ViewMgr.instance:openView(ViewName.SurvivalNPCSelectView)
 end
 
-function var_0_0.onDestroy(arg_12_0)
-	arg_12_0._teamView = nil
+function var_0_0.onDestroy(arg_13_0)
+	arg_13_0._teamView = nil
 end
 
 return var_0_0

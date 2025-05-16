@@ -79,10 +79,11 @@ var_0_0.DelayTime = {
 	BlackEnd = 1.167,
 	BlackScreenTime = 4,
 	TipHide = 2,
-	TargetFxMove = 0.5,
+	BlackScreenTime3 = 4,
 	TargetFxProgressAdd = 1.5,
 	DescTextShowDelay = 0.05,
 	DescBtnShowDelay = 0.2,
+	TargetFxMove = 0.5,
 	FinishEventShow = 1.15,
 	ItemHideOrAppear = 0.8
 }
