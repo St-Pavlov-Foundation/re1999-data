@@ -325,6 +325,12 @@ function var_0_0._hardTrans(arg_18_0)
 end
 
 function var_0_0._refreshBg(arg_19_0)
+	if arg_19_0._lastCaptureTexture then
+		UnityEngine.RenderTexture.ReleaseTemporary(arg_19_0._lastCaptureTexture)
+
+		arg_19_0._lastCaptureTexture = nil
+	end
+
 	if not arg_19_0._simagebgimg then
 		return
 	end
@@ -1908,6 +1914,12 @@ function var_0_0._removeEvents(arg_114_0)
 end
 
 function var_0_0.onDestroyView(arg_115_0)
+	if arg_115_0._lastCaptureTexture then
+		UnityEngine.RenderTexture.ReleaseTemporary(arg_115_0._lastCaptureTexture)
+
+		arg_115_0._lastCaptureTexture = nil
+	end
+
 	arg_115_0:_clearBg()
 	arg_115_0:_actFullGrayUpdate(0.5)
 

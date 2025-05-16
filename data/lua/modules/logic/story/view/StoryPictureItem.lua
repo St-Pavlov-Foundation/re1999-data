@@ -347,17 +347,23 @@ function var_0_0._setFullPicture(arg_15_0)
 
 	arg_15_0._picParentGo.transform:SetParent(arg_15_0.viewGO.transform)
 
-	arg_15_0._picImg = gohelper.findChildImage(arg_15_0._picGo, "result")
+	local var_15_0 = arg_15_0._picGo:GetComponent(typeof(Coffee.UISoftMask.SoftMask))
 
-	local var_15_0 = SLFramework.UGUI.GuiHelper.ParseColor(arg_15_0._picCo.picColor)
+	recthelper.setSize(arg_15_0._picGo.transform, 3000, 2000)
 
-	arg_15_0._picImg.color = var_15_0
+	var_15_0.enabled = false
+	arg_15_0._picImg = arg_15_0._picGo:GetComponent(gohelper.Type_Image)
+	arg_15_0._picImg.sprite = nil
 
-	ZProj.TweenHelper.DOFadeCanvasGroup(arg_15_0._picGo, 0, var_15_0.a, arg_15_0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
-	recthelper.setSize(arg_15_0._picGo.transform, 2 * arg_15_0._picCo.cirRadius, 2 * arg_15_0._picCo.cirRadius)
-	transformhelper.setLocalPosXY(arg_15_0._picGo.transform, arg_15_0._picCo.pos[1], arg_15_0._picCo.pos[2])
-	transformhelper.setLocalScale(arg_15_0._picGo.transform, 1, 1, 1)
-	transformhelper.setLocalPosXY(arg_15_0._picImg.transform, -arg_15_0._picCo.pos[1], -arg_15_0._picCo.pos[2])
+	local var_15_1 = gohelper.findChild(arg_15_0._picGo, "result")
+
+	gohelper.setActive(var_15_1, false)
+
+	local var_15_2 = SLFramework.UGUI.GuiHelper.ParseColor(arg_15_0._picCo.picColor)
+
+	arg_15_0._picImg.color = var_15_2
+
+	ZProj.TweenHelper.DOFadeCanvasGroup(arg_15_0._picGo, 0, var_15_2.a, arg_15_0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
 end
 
 function var_0_0._onFullFocusPictureLoaded(arg_16_0)
