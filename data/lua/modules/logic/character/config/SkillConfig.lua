@@ -596,6 +596,10 @@ function var_0_0.getHeroBaseSkillIdDictByExSkillLevel(arg_42_0, arg_42_1, arg_42
 		return (arg_42_0:_checkDestinyEffect(var_42_0, arg_42_3))
 	end
 
+	if arg_42_1 == 3120 then
+		arg_42_3 = arg_42_3 or arg_42_3 or HeroModel.instance:getByHeroId(arg_42_1)
+	end
+
 	local var_42_1 = arg_42_3 and arg_42_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_42_3) - 1
 	local var_42_2 = arg_42_0:getHeroBaseSkillIdDict(arg_42_1, var_42_1)
 
