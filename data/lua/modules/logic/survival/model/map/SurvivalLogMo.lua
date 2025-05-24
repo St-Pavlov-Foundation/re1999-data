@@ -6,6 +6,7 @@ local var_0_1 = {
 	HeroHealth = 5,
 	Item = 1,
 	TaskChange = 3,
+	GetTalent = 6,
 	Currency = 2
 }
 
@@ -96,6 +97,8 @@ function var_0_0.init(arg_2_0, arg_2_1, arg_2_2)
 			SurvivalMapModel.instance.isHealthSub = true
 			arg_2_0.logStr = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_log_heaohealthsub"), var_2_12, -var_2_13)
 		end
+	elseif var_2_0[1] == var_0_1.GetTalent then
+		arg_2_0.logStr = luaLang("survival_log_gettalent")
 	end
 end
 

@@ -34,7 +34,7 @@ function var_0_0.refreshInfo(arg_4_0)
 	local var_4_0 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
 	local var_4_1 = arg_4_0._unitMo.co.fightLevel
 
-	gohelper.setActive(arg_4_0._fightArrow, var_4_1 < var_4_0 and arg_4_0._unitMo.co.skip == 1)
+	gohelper.setActive(arg_4_0._fightArrow, var_4_1 <= var_4_0 and arg_4_0._unitMo.co.skip == 1)
 	arg_4_0:updateIconAndBg()
 end
 

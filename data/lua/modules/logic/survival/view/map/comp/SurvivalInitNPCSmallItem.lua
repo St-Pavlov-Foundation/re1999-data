@@ -90,7 +90,8 @@ function var_0_0._onClickThis(arg_11_0)
 		return
 	end
 
-	ViewMgr.instance:openView(ViewName.SurvivalNPCSelectView)
+	AudioMgr.instance:trigger(AudioEnum.HeroGroupUI.Play_UI_Team_Open)
+	ViewMgr.instance:openView(ViewName.SurvivalNPCSelectView, arg_11_0._npcMo)
 end
 
 function var_0_0.hide(arg_12_0)

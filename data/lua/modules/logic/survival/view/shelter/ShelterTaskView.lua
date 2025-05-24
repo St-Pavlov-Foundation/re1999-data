@@ -30,6 +30,7 @@ function var_0_0.onTaskDataUpdate(arg_5_0)
 end
 
 function var_0_0.onOpen(arg_6_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_2)
 	arg_6_0:refreshParam()
 	arg_6_0:refreshView()
 end

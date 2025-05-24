@@ -23,9 +23,6 @@ function var_0_0.buildTabViews(arg_2_0, arg_2_1)
 			false
 		})
 
-		arg_2_0.navigateView:setOverrideClose(arg_2_0._overrideCloseFunc, arg_2_0)
-		arg_2_0.navigateView:setOverrideHome(arg_2_0.onClickHome, arg_2_0)
-
 		return {
 			arg_2_0.navigateView
 		}

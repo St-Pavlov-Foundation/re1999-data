@@ -6,9 +6,10 @@ local var_0_1 = {
 	name = 2,
 	order = 5,
 	des = 6,
+	show = 4,
+	iconRes = 9,
 	id = 1,
 	nameRes = 8,
-	show = 4,
 	nameEn = 3
 }
 local var_0_2 = {

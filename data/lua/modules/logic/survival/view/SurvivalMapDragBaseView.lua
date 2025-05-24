@@ -22,6 +22,7 @@ function var_0_0.addEvents(arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.TweenCameraFocus, arg_2_0._onTweenToPos, arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.GuideClickPos, arg_2_0._onGuideClickPos, arg_2_0)
 	SurvivalController.instance:registerCallback(SurvivalEvent.GuideTweenCameraPos, arg_2_0._onGuideTweenCameraPos, arg_2_0)
+	SurvivalController.instance:registerCallback(SurvivalEvent.ChangeCameraScale, arg_2_0._onChangeCameraScale, arg_2_0)
 	UpdateBeat:Add(arg_2_0._onUpdate, arg_2_0)
 end
 
@@ -31,6 +32,7 @@ function var_0_0.removeEvents(arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.TweenCameraFocus, arg_3_0._onTweenToPos, arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.GuideClickPos, arg_3_0._onGuideClickPos, arg_3_0)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.GuideTweenCameraPos, arg_3_0._onGuideTweenCameraPos, arg_3_0)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.ChangeCameraScale, arg_3_0._onChangeCameraScale, arg_3_0)
 	UpdateBeat:Remove(arg_3_0._onUpdate, arg_3_0)
 end
 
@@ -85,19 +87,20 @@ function var_0_0.onMultDrag(arg_11_0, arg_11_1, arg_11_2)
 	arg_11_0:_setScale(arg_11_0._scale + arg_11_2 * 0.01)
 end
 
-function var_0_0._setScale(arg_12_0, arg_12_1)
+function var_0_0._setScale(arg_12_0, arg_12_1, arg_12_2)
 	if not ViewHelper.instance:checkViewOnTheTop(arg_12_0.viewName, {
 		ViewName.SurvivalToastView
-	}) then
+	}) and not arg_12_2 then
 		return
 	end
 
 	arg_12_1 = Mathf.Clamp(arg_12_1, 0, 1)
 
-	if arg_12_1 == arg_12_0._scale then
+	if arg_12_1 == arg_12_0._scale and not arg_12_2 then
 		return
 	end
 
+	arg_12_0._lastScale = arg_12_0._scale
 	arg_12_0._scale = arg_12_1
 
 	SurvivalMapHelper.instance:setDistance(arg_12_0._maxDis - (arg_12_0._maxDis - arg_12_0._minDis) * arg_12_0._scale)
@@ -251,6 +254,22 @@ function var_0_0._equalsZero(arg_26_0, arg_26_1)
 	local var_26_0 = 1e-06
 
 	return arg_26_1 >= -var_26_0 and arg_26_1 <= var_26_0
+end
+
+function var_0_0._onChangeCameraScale(arg_27_0, arg_27_1, arg_27_2)
+	if arg_27_1 == nil then
+		arg_27_1 = arg_27_0._lastScale
+	end
+
+	if not arg_27_1 then
+		return
+	end
+
+	arg_27_0:_setScale(arg_27_1, true)
+
+	if not arg_27_2 then
+		SurvivalMapHelper.instance:applyDirectly()
+	end
 end
 
 return var_0_0

@@ -55,7 +55,7 @@ function var_0_0.onOpen(arg_6_0)
 			local var_6_2 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
 			local var_6_3 = gohelper.findChildText(var_6_2, "")
 
-			SkillHelper.addHyperLinkClick(var_6_3)
+			SkillHelper.addHyperLinkClick(var_6_3, Activity191Helper.clickHyperLinkSkill)
 
 			local var_6_4 = SkillHelper.addLink(iter_6_1.levelDesc)
 			local var_6_5 = Activity191Helper.buildDesc(var_6_4, Activity191Enum.HyperLinkPattern.SkillDesc)
@@ -92,7 +92,7 @@ function var_0_0.onOpen(arg_6_0)
 			local var_6_6 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
 			local var_6_7 = gohelper.findChildText(var_6_6, "")
 
-			SkillHelper.addHyperLinkClick(var_6_7)
+			SkillHelper.addHyperLinkClick(var_6_7, Activity191Helper.clickHyperLinkSkill)
 
 			local var_6_8 = SkillHelper.addLink(iter_6_3.levelDesc)
 			local var_6_9 = Activity191Helper.buildDesc(var_6_8, Activity191Enum.HyperLinkPattern.SkillDesc)
@@ -114,7 +114,7 @@ function var_0_0.onOpen(arg_6_0)
 			local var_6_11 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
 			local var_6_12 = gohelper.findChildText(var_6_11, "")
 
-			SkillHelper.addHyperLinkClick(var_6_12)
+			SkillHelper.addHyperLinkClick(var_6_12, Activity191Helper.clickHyperLinkSkill)
 
 			local var_6_13 = SkillHelper.addLink(iter_6_5.levelDesc)
 			local var_6_14 = Activity191Helper.buildDesc(var_6_13, Activity191Enum.HyperLinkPattern.SkillDesc)
@@ -141,7 +141,7 @@ function var_0_0.onOpen(arg_6_0)
 			local var_6_15 = gohelper.cloneInPlace(arg_6_0._goFetterDesc)
 			local var_6_16 = gohelper.findChildText(var_6_15, "")
 
-			SkillHelper.addHyperLinkClick(var_6_16)
+			SkillHelper.addHyperLinkClick(var_6_16, Activity191Helper.clickHyperLinkSkill)
 
 			local var_6_17 = SkillHelper.addLink(iter_6_7.levelDesc)
 			local var_6_18 = Activity191Helper.buildDesc(var_6_17, Activity191Enum.HyperLinkPattern.SkillDesc)

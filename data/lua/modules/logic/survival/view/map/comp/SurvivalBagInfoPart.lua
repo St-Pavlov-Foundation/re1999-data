@@ -66,6 +66,16 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_1, "root/#btn_close")
 
 	gohelper.setActive(arg_1_0._btnClose, false)
+
+	local var_1_0 = arg_1_1.transform.parent
+
+	if var_1_0 then
+		local var_1_1 = var_1_0.gameObject:GetComponentInParent(gohelper.Type_LimitedScrollRect)
+
+		if var_1_1 then
+			arg_1_0._goscroll:GetComponent(gohelper.Type_LimitedScrollRect).parentGameObject = var_1_1.gameObject
+		end
+	end
 end
 
 function var_0_0.addEventListeners(arg_2_0)
@@ -188,7 +198,14 @@ function var_0_0.updateMo(arg_13_0, arg_13_1)
 		arg_13_0:_refreshAll()
 	end
 
-	gohelper.setActive(arg_13_0._goquality5, arg_13_0.mo and arg_13_0.mo.co and arg_13_0.mo.co.rare == 5 and SurvivalEnum.ItemSource.Drop == arg_13_0.mo.source)
+	local var_13_1 = arg_13_0.mo and arg_13_0.mo.co and arg_13_0.mo.co.rare == 5 and (SurvivalEnum.ItemSource.Drop == arg_13_0.mo.source or SurvivalEnum.ItemSource.Search == arg_13_0.mo.source)
+
+	gohelper.setActive(arg_13_0._goquality5, arg_13_0.mo and arg_13_0.mo.co and arg_13_0.mo.co.rare == 5)
+
+	if var_13_1 then
+		arg_13_0._anim:Play("opensp", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_explore_senior)
+	end
 end
 
 function var_0_0._refreshAll(arg_14_0)
@@ -471,17 +488,17 @@ function var_0_0.updateCenterShow(arg_23_0)
 			}
 		}
 	elseif arg_23_0.mo.npcCo then
-		local var_23_7 = string.splitToNumber(arg_23_0.mo.npcCo.tag, "#")
+		local var_23_7, var_23_8 = SurvivalConfig.instance:getNpcConfigTag(arg_23_0.mo.npcCo.id)
 
-		if var_23_7 then
-			for iter_23_0, iter_23_1 in ipairs(var_23_7) do
-				local var_23_8 = lua_survival_tag.configDict[iter_23_1]
+		if var_23_8 then
+			for iter_23_0, iter_23_1 in ipairs(var_23_8) do
+				local var_23_9 = lua_survival_tag.configDict[iter_23_1]
 
 				table.insert(var_23_0, {
-					icon = "survival_bag_title0" .. var_23_8.color,
-					desc = var_23_8.name,
+					icon = "survival_bag_title0" .. var_23_9.color,
+					desc = var_23_9.name,
 					list = {
-						var_23_8.desc
+						var_23_9.desc
 					}
 				})
 			end
@@ -542,209 +559,242 @@ function var_0_0._createSubDescItems(arg_26_0, arg_26_1, arg_26_2, arg_26_3)
 end
 
 function var_0_0._createSubDescItems2(arg_27_0, arg_27_1, arg_27_2, arg_27_3)
-	local var_27_0 = gohelper.findChildTextMesh(arg_27_1, "")
-	local var_27_1 = gohelper.findChildImage(arg_27_1, "point")
+	local var_27_0 = gohelper.getClick(arg_27_1)
+	local var_27_1 = gohelper.findChildTextMesh(arg_27_1, "")
+	local var_27_2 = gohelper.findChildImage(arg_27_1, "point")
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(var_27_0.gameObject, SurvivalSkillDescComp):updateInfo(var_27_0, arg_27_2[1], 3028)
+	MonoHelper.addNoUpdateLuaComOnceToGo(var_27_1.gameObject, SurvivalSkillDescComp):updateInfo(var_27_1, arg_27_2[1], 3028)
+	arg_27_0:addClickCb(var_27_0, arg_27_0._onClickDesc, arg_27_0)
 
-	local var_27_2 = arg_27_2[2]
+	local var_27_3 = arg_27_2[2]
 
 	if arg_27_0:getItemSource() == SurvivalEnum.ItemSource.EquipBag then
-		var_27_2 = false
+		var_27_3 = false
 	elseif arg_27_0:getItemSource() ~= SurvivalEnum.ItemSource.Equip then
-		var_27_2 = true
+		var_27_3 = true
 	end
 
-	ZProj.UGUIHelper.SetColorAlpha(var_27_0, var_27_2 and 1 or 0.5)
+	ZProj.UGUIHelper.SetColorAlpha(var_27_1, var_27_3 and 1 or 0.5)
 
-	if var_27_2 then
-		var_27_1.color = GameUtil.parseColor("#000000")
+	if var_27_3 then
+		var_27_2.color = GameUtil.parseColor("#000000")
 	else
-		var_27_1.color = GameUtil.parseColor("#808080")
+		var_27_2.color = GameUtil.parseColor("#808080")
 	end
 end
 
-function var_0_0._removeItem(arg_28_0)
-	local var_28_0 = tonumber(arg_28_0._inputtipnum:GetText()) or 0
-	local var_28_1 = Mathf.Clamp(var_28_0, 1, arg_28_0.mo.count)
-
-	if arg_28_0:getItemSource() == SurvivalEnum.ItemSource.Search then
-		SurvivalMapModel.instance.isSearchRemove = true
-
-		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "2#" .. arg_28_0.mo.uid .. "#" .. var_28_1)
-	else
-		SurvivalWeekRpc.instance:sendSurvivalRemoveBagItem(arg_28_0.mo.source, arg_28_0.mo.uid, var_28_1)
-	end
-
-	gohelper.setActive(arg_28_0._goTips, false)
+function var_0_0.setClickDescCallback(arg_28_0, arg_28_1, arg_28_2, arg_28_3)
+	arg_28_0._clickDescCallback, arg_28_0._clickDescCallobj, arg_28_0._clickDescParam = arg_28_1, arg_28_2, arg_28_3
 end
 
-function var_0_0._ontipnuminputChange(arg_29_0)
-	local var_29_0 = tonumber(arg_29_0._inputtipnum:GetText()) or 0
-	local var_29_1 = Mathf.Clamp(var_29_0, 1, arg_29_0.mo.count)
-
-	if tostring(var_29_1) ~= arg_29_0._inputtipnum:GetText() then
-		arg_29_0._inputtipnum:SetText(tostring(var_29_1))
-		arg_29_0:updateTipCount()
+function var_0_0._onClickDesc(arg_29_0)
+	if arg_29_0._clickDescCallback then
+		arg_29_0._clickDescCallback(arg_29_0._clickDescCallobj, arg_29_0._clickDescParam)
 	end
 end
 
-function var_0_0._addtipnum(arg_30_0, arg_30_1)
-	local var_30_0 = (tonumber(arg_30_0._inputtipnum:GetText()) or 0) + arg_30_1
+function var_0_0._removeItem(arg_30_0)
+	local var_30_0 = tonumber(arg_30_0._inputtipnum:GetText()) or 0
 	local var_30_1 = Mathf.Clamp(var_30_0, 1, arg_30_0.mo.count)
 
-	arg_30_0._inputtipnum:SetText(tostring(var_30_1))
-	arg_30_0:updateTipCount()
+	if arg_30_0:getItemSource() == SurvivalEnum.ItemSource.Search then
+		SurvivalMapModel.instance.isSearchRemove = true
+
+		SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "2#" .. arg_30_0.mo.uid .. "#" .. var_30_1)
+	else
+		SurvivalWeekRpc.instance:sendSurvivalRemoveBagItem(arg_30_0.mo.source, arg_30_0.mo.uid, var_30_1)
+	end
+
+	gohelper.setActive(arg_30_0._goTips, false)
 end
 
-function var_0_0.updateTipCount(arg_31_0)
-	if arg_31_0:getItemSource() == SurvivalEnum.ItemSource.Search then
+function var_0_0._ontipnuminputChange(arg_31_0)
+	local var_31_0 = tonumber(arg_31_0._inputtipnum:GetText()) or 0
+	local var_31_1 = Mathf.Clamp(var_31_0, 1, arg_31_0.mo.count)
+
+	if tostring(var_31_1) ~= arg_31_0._inputtipnum:GetText() then
+		arg_31_0._inputtipnum:SetText(tostring(var_31_1))
+		arg_31_0:updateTipCount()
+	end
+end
+
+function var_0_0._addtipnum(arg_32_0, arg_32_1)
+	local var_32_0 = (tonumber(arg_32_0._inputtipnum:GetText()) or 0) + arg_32_1
+	local var_32_1 = Mathf.Clamp(var_32_0, 1, arg_32_0.mo.count)
+
+	arg_32_0._inputtipnum:SetText(tostring(var_32_1))
+	arg_32_0:updateTipCount()
+end
+
+function var_0_0.updateTipCount(arg_33_0)
+	if arg_33_0:getItemSource() == SurvivalEnum.ItemSource.Search then
 		return
 	end
 
-	local var_31_0 = tonumber(arg_31_0._inputtipnum:GetText()) or 0
+	local var_33_0 = tonumber(arg_33_0._inputtipnum:GetText()) or 0
 
-	arg_31_0._txthave.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_have"), arg_31_0.mo.count)
-	arg_31_0._txtremain.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_remain"), arg_31_0.mo.count - var_31_0)
+	arg_33_0._txthave.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_have"), arg_33_0.mo.count)
+	arg_33_0._txtremain.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_bag_remain"), arg_33_0.mo.count - var_33_0)
 end
 
-function var_0_0.setCurEquipSlot(arg_32_0, arg_32_1)
-	arg_32_0._slotId = arg_32_1
+function var_0_0.setCurEquipSlot(arg_34_0, arg_34_1)
+	arg_34_0._slotId = arg_34_1
 end
 
-function var_0_0._onEquipClick(arg_33_0)
-	if SurvivalShelterModel.instance:getWeekInfo().equipBox.slots[arg_33_0._slotId].level < arg_33_0.mo.equipLevel then
+function var_0_0._onEquipClick(arg_35_0)
+	if SurvivalShelterModel.instance:getWeekInfo().equipBox.slots[arg_35_0._slotId].level < arg_35_0.mo.equipLevel then
 		GameFacade.showToast(ToastEnum.SurvivalEquipLevelLimit)
 
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalEquipWear(arg_33_0._slotId or 1, arg_33_0.mo.uid)
+	SurvivalWeekRpc.instance:sendSurvivalEquipWear(arg_35_0._slotId or 1, arg_35_0.mo.uid)
 end
 
-function var_0_0._onUnEquipClick(arg_34_0)
-	SurvivalWeekRpc.instance:sendSurvivalEquipDemount(arg_34_0._slotId or 1)
+function var_0_0._onUnEquipClick(arg_36_0)
+	SurvivalWeekRpc.instance:sendSurvivalEquipDemount(arg_36_0._slotId or 1)
 end
 
-function var_0_0._onSearchClick(arg_35_0)
-	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "1#" .. arg_35_0.mo.uid .. "#" .. arg_35_0._inputnum:GetText())
+function var_0_0._onSearchClick(arg_37_0)
+	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.OperSearch, "1#" .. arg_37_0.mo.uid .. "#" .. arg_37_0._inputnum:GetText())
 end
 
-function var_0_0._onSellClick(arg_36_0)
-	SurvivalWeekRpc.instance:sendSurvivalShopSellRequest(arg_36_0.mo.uid, tonumber(arg_36_0._inputnum:GetText()))
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "SellItem", arg_36_0.mo)
+function var_0_0._onSellClick(arg_38_0)
+	SurvivalWeekRpc.instance:sendSurvivalShopSellRequest(arg_38_0.mo.uid, tonumber(arg_38_0._inputnum:GetText()))
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "SellItem", arg_38_0.mo)
 end
 
-function var_0_0._onBuyClick(arg_37_0)
-	if not arg_37_0._canBuy then
+function var_0_0._onBuyClick(arg_39_0)
+	if not arg_39_0._canBuy then
 		GameFacade.showToast(ToastEnum.SurvivalNoMoney)
 
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalShopBuyRequest(arg_37_0.mo.uid, tonumber(arg_37_0._inputnum:GetText()))
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "BuyItem", arg_37_0.mo)
+	SurvivalWeekRpc.instance:sendSurvivalShopBuyRequest(arg_39_0.mo.uid, tonumber(arg_39_0._inputnum:GetText()))
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "BuyItem", arg_39_0.mo)
 end
 
-function var_0_0._onGoEquipClick(arg_38_0)
+function var_0_0._onGoEquipClick(arg_40_0)
 	ViewMgr.instance:openView(ViewName.SurvivalEquipView)
 end
 
-function var_0_0._onUseClick(arg_39_0)
+function var_0_0._onUseClick(arg_41_0)
 	if SurvivalMapHelper.instance:isInFlow() then
 		GameFacade.showToast(ToastEnum.SurvivalCantUseItem)
 
 		return
 	end
 
-	if SurvivalEnum.CustomUseItemSubType[arg_39_0.mo.co.subType] then
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnUseQuickItem, arg_39_0.mo)
+	if SurvivalEnum.CustomUseItemSubType[arg_41_0.mo.co.subType] then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnUseQuickItem, arg_41_0.mo)
 		ViewMgr.instance:closeAllPopupViews()
+	elseif arg_41_0.mo.co.subType == SurvivalEnum.ItemSubType.Quick_Exit then
+		arg_41_0._exitItemMo = arg_41_0.mo
+
+		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalItemAbort, MsgBoxEnum.BoxType.Yes_No, arg_41_0._sendUseItem, nil, nil, arg_41_0, nil, nil)
 	else
-		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(arg_39_0.mo.uid, "")
+		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(arg_41_0.mo.uid, "")
 	end
 
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Use", arg_39_0.mo)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Use", arg_41_0.mo)
 end
 
-function var_0_0._onPlaceClick(arg_40_0)
-	local var_40_0 = tonumber(arg_40_0._inputnum:GetText()) or 0
-
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Place", arg_40_0.mo, var_40_0)
+function var_0_0._sendUseItem(arg_42_0)
+	SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(arg_42_0._exitItemMo.uid, "")
 end
 
-function var_0_0._onUnPlaceClick(arg_41_0)
-	local var_41_0 = tonumber(arg_41_0._inputnum:GetText()) or 0
+function var_0_0._onPlaceClick(arg_43_0)
+	local var_43_0 = tonumber(arg_43_0._inputnum:GetText()) or 0
 
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "UnPlace", arg_41_0.mo, var_41_0)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "Place", arg_43_0.mo, var_43_0)
 end
 
-function var_0_0._ontnuminputChange(arg_42_0)
-	local var_42_0 = tonumber(arg_42_0._inputnum:GetText()) or 0
-	local var_42_1 = Mathf.Clamp(var_42_0, 1, arg_42_0.mo.count)
-
-	if tostring(var_42_1) ~= arg_42_0._inputnum:GetText() then
-		arg_42_0._inputnum:SetText(tostring(var_42_1))
-	end
-
-	arg_42_0:onInputValueChange()
-end
-
-function var_0_0._onAddNumClick(arg_43_0, arg_43_1)
-	local var_43_0 = (tonumber(arg_43_0._inputnum:GetText()) or 0) + arg_43_1
-	local var_43_1 = Mathf.Clamp(var_43_0, 1, arg_43_0.mo.count)
-
-	arg_43_0._inputnum:SetText(tostring(var_43_1))
-	arg_43_0:onInputValueChange()
-end
-
-function var_0_0.onInputValueChange(arg_44_0)
+function var_0_0._onUnPlaceClick(arg_44_0)
 	local var_44_0 = tonumber(arg_44_0._inputnum:GetText()) or 0
-	local var_44_1 = arg_44_0:getItemSource()
 
-	if var_44_1 == SurvivalEnum.ItemSource.Commit or var_44_1 == SurvivalEnum.ItemSource.Commited then
-		local var_44_2 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.NpcRecruitment, arg_44_0.mo.co.worth)
-
-		arg_44_0._txtcount.text = var_44_0 * var_44_2
-	end
-
-	if var_44_1 == SurvivalEnum.ItemSource.ShopBag then
-		arg_44_0._txtcount.text = var_44_0 * arg_44_0.mo:getSellPrice()
-	end
-
-	if var_44_1 == SurvivalEnum.ItemSource.ShopItem then
-		local var_44_3 = SurvivalShelterModel.instance:getWeekInfo()
-		local var_44_4 = var_44_3.bag
-
-		if var_44_3.inSurvival then
-			var_44_4 = SurvivalMapModel.instance:getSceneMo().bag
-		end
-
-		local var_44_5 = var_44_4:getCurrencyNum(SurvivalEnum.CurrencyType.Gold)
-		local var_44_6 = var_44_0 * arg_44_0.mo:getBuyPrice()
-
-		arg_44_0._canBuy = var_44_6 <= var_44_5
-
-		if var_44_6 <= var_44_5 then
-			arg_44_0._txtcount.text = string.format("%d/%d", var_44_5, var_44_6)
-		else
-			arg_44_0._txtcount.text = string.format("<color=#ec4747>%d</color>/%d", var_44_5, var_44_6)
-		end
-	end
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnClickTipsBtn, "UnPlace", arg_44_0.mo, var_44_0)
 end
 
-function var_0_0._onMaxNumClick(arg_45_0)
-	arg_45_0._inputnum:SetText(arg_45_0.mo.count)
+function var_0_0._ontnuminputChange(arg_45_0)
+	local var_45_0 = tonumber(arg_45_0._inputnum:GetText()) or 0
+	local var_45_1 = Mathf.Clamp(var_45_0, 1, arg_45_0.mo.count)
+
+	if tostring(var_45_1) ~= arg_45_0._inputnum:GetText() then
+		arg_45_0._inputnum:SetText(tostring(var_45_1))
+	end
+
 	arg_45_0:onInputValueChange()
 end
 
-function var_0_0._onMinNumClick(arg_46_0)
-	arg_46_0._inputnum:SetText(1)
+function var_0_0._onAddNumClick(arg_46_0, arg_46_1)
+	local var_46_0 = (tonumber(arg_46_0._inputnum:GetText()) or 0) + arg_46_1
+	local var_46_1 = Mathf.Clamp(var_46_0, 1, arg_46_0.mo.count)
+
+	arg_46_0._inputnum:SetText(tostring(var_46_1))
 	arg_46_0:onInputValueChange()
 end
 
-function var_0_0.onDestroy(arg_47_0)
-	TaskDispatcher.cancelTask(arg_47_0._refreshAll, arg_47_0)
+function var_0_0.onInputValueChange(arg_47_0)
+	local var_47_0 = tonumber(arg_47_0._inputnum:GetText()) or 0
+	local var_47_1 = arg_47_0:getItemSource()
+
+	if var_47_1 == SurvivalEnum.ItemSource.Commit or var_47_1 == SurvivalEnum.ItemSource.Commited then
+		local var_47_2 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.NpcRecruitment, arg_47_0.mo.co.worth)
+
+		arg_47_0._txtcount.text = var_47_0 * var_47_2
+	end
+
+	if var_47_1 == SurvivalEnum.ItemSource.ShopBag then
+		arg_47_0._txtcount.text = var_47_0 * arg_47_0.mo:getSellPrice()
+	end
+
+	if var_47_1 == SurvivalEnum.ItemSource.ShopItem then
+		local var_47_3 = SurvivalShelterModel.instance:getWeekInfo()
+		local var_47_4 = var_47_3.bag
+
+		if var_47_3.inSurvival then
+			var_47_4 = SurvivalMapModel.instance:getSceneMo().bag
+		end
+
+		local var_47_5 = var_47_4:getCurrencyNum(SurvivalEnum.CurrencyType.Gold)
+		local var_47_6 = var_47_0 * arg_47_0.mo:getBuyPrice()
+
+		arg_47_0._canBuy = var_47_6 <= var_47_5
+
+		if var_47_6 <= var_47_5 then
+			arg_47_0._txtcount.text = string.format("%d/%d", var_47_5, var_47_6)
+		else
+			arg_47_0._txtcount.text = string.format("<color=#ec4747>%d</color>/%d", var_47_5, var_47_6)
+		end
+	end
+end
+
+function var_0_0._onMaxNumClick(arg_48_0)
+	local var_48_0 = arg_48_0.mo.count
+
+	if arg_48_0:getItemSource() == SurvivalEnum.ItemSource.ShopItem then
+		local var_48_1 = SurvivalMapHelper.instance:getBagMo():getCurrencyNum(SurvivalEnum.CurrencyType.Gold)
+		local var_48_2 = math.floor(var_48_1 / arg_48_0.mo:getBuyPrice())
+
+		if var_48_2 <= 0 then
+			var_48_2 = 1
+		end
+
+		var_48_0 = Mathf.Clamp(var_48_0, 1, var_48_2)
+	end
+
+	arg_48_0._inputnum:SetText(var_48_0)
+	arg_48_0:onInputValueChange()
+end
+
+function var_0_0._onMinNumClick(arg_49_0)
+	arg_49_0._inputnum:SetText(1)
+	arg_49_0:onInputValueChange()
+end
+
+function var_0_0.onDestroy(arg_50_0)
+	TaskDispatcher.cancelTask(arg_50_0._refreshAll, arg_50_0)
 end
 
 return var_0_0

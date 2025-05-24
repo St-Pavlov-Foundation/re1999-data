@@ -5,6 +5,8 @@ local var_0_0 = class("SurvivalShelterModel", BaseModel)
 function var_0_0.onInit(arg_1_0)
 	arg_1_0._weekInfo = nil
 	arg_1_0._bossFightId = nil
+	arg_1_0._needShowDestroy = nil
+	arg_1_0._needShowBossInvade = nil
 end
 
 function var_0_0.reInit(arg_2_0)
@@ -73,8 +75,6 @@ end
 function var_0_0.setNeedShowFightSuccess(arg_8_0, arg_8_1, arg_8_2)
 	arg_8_0._needShowDestroy = arg_8_1
 
-	PopupController.instance:setPause(ViewName.SurvivalGetRewardView, arg_8_1)
-
 	if arg_8_2 ~= nil then
 		arg_8_0._bossFightId = arg_8_2
 	end
@@ -82,6 +82,14 @@ end
 
 function var_0_0.getNeedShowFightSuccess(arg_9_0)
 	return arg_9_0._needShowDestroy, arg_9_0._bossFightId
+end
+
+function var_0_0.setNeedShowBossInvade(arg_10_0, arg_10_1)
+	arg_10_0._needShowBossInvade = arg_10_1
+end
+
+function var_0_0.getNeedShowBossInvade(arg_11_0)
+	return arg_11_0._needShowBossInvade
 end
 
 var_0_0.instance = var_0_0.New()

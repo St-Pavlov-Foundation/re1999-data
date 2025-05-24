@@ -149,7 +149,7 @@ function var_0_0.refreshList(arg_14_0, arg_14_1)
 	end
 
 	if #var_14_0 > 1 then
-		table.sort(var_14_0, arg_14_0.sort)
+		SurvivalBagSortHelper.sortItems(var_14_0, SurvivalEnum.ItemSortType.ItemReward, true)
 	end
 
 	arg_14_0:setList(var_14_0)

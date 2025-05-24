@@ -69,10 +69,14 @@ function var_0_0._showHideTips(arg_5_0)
 		else
 			arg_5_0._goshrinkTips:Play("open", 0, 0)
 		end
-	elseif arg_5_0._curIsSafe then
-		arg_5_0._gorestTips:Play("close", 0, 0)
 	else
-		arg_5_0._goshrinkTips:Play("close", 0, 0)
+		TaskDispatcher.cancelTask(arg_5_0._delayPlayTipsOpen, arg_5_0)
+
+		if arg_5_0._curIsSafe then
+			arg_5_0._gorestTips:Play("close", 0, 0)
+		else
+			arg_5_0._goshrinkTips:Play("close", 0, 0)
+		end
 	end
 end
 
@@ -156,7 +160,7 @@ function var_0_0._refreshGameTime(arg_6_0)
 		arg_6_0._sliderGos[iter_6_4] = var_6_11
 
 		if var_6_1 > iter_6_5.startTime and var_6_1 <= iter_6_5.endTime then
-			var_6_7 = iter_6_5.isSafe
+			var_6_7 = iter_6_5.isSafe or false
 			var_6_9 = iter_6_5.startTime
 			var_6_8 = var_6_10
 		end
@@ -165,14 +169,19 @@ function var_0_0._refreshGameTime(arg_6_0)
 	if arg_6_0._curIsSafe == nil then
 		arg_6_0._gorestTips:Play(var_6_7 and "open" or "close", 0, 1)
 		arg_6_0._goshrinkTips:Play(not var_6_7 and "open" or "close", 0, 1)
-	elseif arg_6_0._curIsSafe ~= var_6_7 and arg_6_0._isShowTips then
-		arg_6_0._gorestTips:Play("close", 0, 0)
-		arg_6_0._goshrinkTips:Play("close", 0, 0)
+	elseif arg_6_0._curIsSafe ~= var_6_7 then
+		TaskDispatcher.cancelTask(arg_6_0._delayPlayTipsOpen, arg_6_0)
 
-		if var_6_7 then
-			arg_6_0._gorestTips:Play("open", 0, 0)
-		else
-			arg_6_0._goshrinkTips:Play("open", 0, 0)
+		if arg_6_0._isShowTips then
+			if var_6_7 then
+				arg_6_0._goshrinkTips:Play("close", 0, 0)
+				arg_6_0._gorestTips:Play("close", 0, 1)
+			else
+				arg_6_0._gorestTips:Play("close", 0, 0)
+				arg_6_0._goshrinkTips:Play("close", 0, 1)
+			end
+
+			TaskDispatcher.runDelay(arg_6_0._delayPlayTipsOpen, arg_6_0, 0.167)
 		end
 	end
 
@@ -208,93 +217,109 @@ function var_0_0._refreshGameTime(arg_6_0)
 	end
 end
 
-function var_0_0.setTransY(arg_7_0, arg_7_1, arg_7_2)
-	local var_7_0 = arg_7_1.parent:InverseTransformPoint(arg_7_2.transform.position)
-	local var_7_1, var_7_2, var_7_3 = transformhelper.getLocalPos(arg_7_1)
-
-	transformhelper.setLocalPos(arg_7_1, var_7_0.x, var_7_2, var_7_3)
-end
-
-function var_0_0.inPoolAllItems(arg_8_0)
-	arg_8_0:inPoolItem(arg_8_0._icon1Pool, arg_8_0._icon1Inst)
-	arg_8_0:inPoolItem(arg_8_0._icon2Pool, arg_8_0._icon2Inst)
-	arg_8_0:inPoolItem(arg_8_0._sliderPool, arg_8_0._sliderInst)
-end
-
-function var_0_0.inPoolItem(arg_9_0, arg_9_1, arg_9_2)
-	for iter_9_0 = #arg_9_2, 1, -1 do
-		table.insert(arg_9_1, arg_9_2[iter_9_0])
-		gohelper.setActive(arg_9_2[iter_9_0], false)
-
-		arg_9_2[iter_9_0] = nil
-	end
-end
-
-function var_0_0.createItem(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
-	local var_10_0 = table.remove(arg_10_1) or gohelper.cloneInPlace(arg_10_3)
-
-	gohelper.setActive(var_10_0, true)
-	gohelper.setAsLastSibling(var_10_0)
-	table.insert(arg_10_2, var_10_0)
-
-	return var_10_0
-end
-
-function var_0_0._onCostTimeUpdate(arg_11_0)
-	if not arg_11_0._totalSliderWidth then
+function var_0_0._delayPlayTipsOpen(arg_7_0)
+	if not arg_7_0._isShowTips then
 		return
 	end
 
-	for iter_11_0, iter_11_1 in ipairs(arg_11_0._sliderDatas) do
-		arg_11_0:setSlider(arg_11_0._sliderGos[iter_11_0], arg_11_0._totalSliderWidth, iter_11_1)
-	end
-
-	if SurvivalMapModel.instance.showCostTime == 0 then
-		arg_11_0._flashTxtComp:setFlashTxt()
+	if arg_7_0._curIsSafe then
+		arg_7_0._gorestTips:Play("open", 0, 0)
 	else
-		local var_11_0 = SurvivalMapModel.instance:getSceneMo()
-		local var_11_1 = var_11_0.currMaxGameTime - var_11_0.gameTime - SurvivalMapModel.instance.showCostTime
-
-		if var_11_1 < 0 then
-			var_11_1 = 0
-		end
-
-		local var_11_2 = math.floor(var_11_1 / 60)
-		local var_11_3 = math.fmod(var_11_1, 60)
-
-		arg_11_0._flashTxtComp:setFlashTxt(string.format("%d:%02d", var_11_2, var_11_3))
+		arg_7_0._goshrinkTips:Play("open", 0, 0)
 	end
 end
 
-function var_0_0.setSlider(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
-	local var_12_0 = gohelper.findChildImage(arg_12_1, "#image_slider")
-	local var_12_1 = gohelper.findChildImage(arg_12_1, "#image_cost")
-	local var_12_2 = SurvivalMapModel.instance:getSceneMo()
-	local var_12_3 = (arg_12_3.endTime - arg_12_3.startTime) / (var_12_2.currMaxGameTime - var_12_2.addTime) * arg_12_2
+function var_0_0.setTransY(arg_8_0, arg_8_1, arg_8_2)
+	local var_8_0 = arg_8_1.parent:InverseTransformPoint(arg_8_2.transform.position)
+	local var_8_1, var_8_2, var_8_3 = transformhelper.getLocalPos(arg_8_1)
 
-	recthelper.setWidth(arg_12_1.transform, var_12_3)
+	transformhelper.setLocalPos(arg_8_1, var_8_0.x, var_8_2, var_8_3)
+end
 
-	local var_12_4 = var_12_2.currMaxGameTime - var_12_2.gameTime
-	local var_12_5 = var_12_4 - SurvivalMapModel.instance.showCostTime
+function var_0_0.inPoolAllItems(arg_9_0)
+	arg_9_0:inPoolItem(arg_9_0._icon1Pool, arg_9_0._icon1Inst)
+	arg_9_0:inPoolItem(arg_9_0._icon2Pool, arg_9_0._icon2Inst)
+	arg_9_0:inPoolItem(arg_9_0._sliderPool, arg_9_0._sliderInst)
+end
 
-	if var_12_4 >= arg_12_3.endTime then
-		var_12_0.fillAmount = 1
-	elseif var_12_4 <= arg_12_3.startTime then
-		var_12_0.fillAmount = 0
+function var_0_0.inPoolItem(arg_10_0, arg_10_1, arg_10_2)
+	for iter_10_0 = #arg_10_2, 1, -1 do
+		table.insert(arg_10_1, arg_10_2[iter_10_0])
+		gohelper.setActive(arg_10_2[iter_10_0], false)
+
+		arg_10_2[iter_10_0] = nil
+	end
+end
+
+function var_0_0.createItem(arg_11_0, arg_11_1, arg_11_2, arg_11_3)
+	local var_11_0 = table.remove(arg_11_1) or gohelper.cloneInPlace(arg_11_3)
+
+	gohelper.setActive(var_11_0, true)
+	gohelper.setAsLastSibling(var_11_0)
+	table.insert(arg_11_2, var_11_0)
+
+	return var_11_0
+end
+
+function var_0_0._onCostTimeUpdate(arg_12_0)
+	if not arg_12_0._totalSliderWidth then
+		return
+	end
+
+	for iter_12_0, iter_12_1 in ipairs(arg_12_0._sliderDatas) do
+		arg_12_0:setSlider(arg_12_0._sliderGos[iter_12_0], arg_12_0._totalSliderWidth, iter_12_1)
+	end
+
+	if SurvivalMapModel.instance.showCostTime == 0 then
+		arg_12_0._flashTxtComp:setFlashTxt()
 	else
-		var_12_0.fillAmount = (var_12_4 - arg_12_3.startTime) / (arg_12_3.endTime - arg_12_3.startTime)
+		local var_12_0 = SurvivalMapModel.instance:getSceneMo()
+		local var_12_1 = var_12_0.currMaxGameTime - var_12_0.gameTime - SurvivalMapModel.instance.showCostTime
+
+		if var_12_1 < 0 then
+			var_12_1 = 0
+		end
+
+		local var_12_2 = math.floor(var_12_1 / 60)
+		local var_12_3 = math.fmod(var_12_1, 60)
+
+		arg_12_0._flashTxtComp:setFlashTxt(string.format("%d:%02d", var_12_2, var_12_3))
+	end
+end
+
+function var_0_0.setSlider(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
+	local var_13_0 = gohelper.findChildImage(arg_13_1, "#image_slider")
+	local var_13_1 = gohelper.findChildImage(arg_13_1, "#image_cost")
+	local var_13_2 = SurvivalMapModel.instance:getSceneMo()
+	local var_13_3 = (arg_13_3.endTime - arg_13_3.startTime) / (var_13_2.currMaxGameTime - var_13_2.addTime) * arg_13_2
+
+	recthelper.setWidth(arg_13_1.transform, var_13_3)
+
+	local var_13_4 = var_13_2.currMaxGameTime - var_13_2.gameTime
+	local var_13_5 = var_13_4 - SurvivalMapModel.instance.showCostTime
+
+	if var_13_4 >= arg_13_3.endTime then
+		var_13_0.fillAmount = 1
+	elseif var_13_4 <= arg_13_3.startTime then
+		var_13_0.fillAmount = 0
+	else
+		var_13_0.fillAmount = (var_13_4 - arg_13_3.startTime) / (arg_13_3.endTime - arg_13_3.startTime)
 	end
 
-	local var_12_6 = 0
-	local var_12_7 = 0
+	local var_13_6 = 0
+	local var_13_7 = 0
 
-	if var_12_5 < arg_12_3.endTime and var_12_4 > arg_12_3.startTime and var_12_5 ~= var_12_4 then
-		var_12_6 = (math.min(arg_12_3.endTime, var_12_4) - math.max(arg_12_3.startTime, var_12_5)) / (arg_12_3.endTime - arg_12_3.startTime) * var_12_3
-		var_12_7 = (math.max(arg_12_3.startTime, var_12_5) - arg_12_3.startTime) / (arg_12_3.endTime - arg_12_3.startTime) * var_12_3
+	if var_13_5 < arg_13_3.endTime and var_13_4 > arg_13_3.startTime and var_13_5 ~= var_13_4 then
+		var_13_6 = (math.min(arg_13_3.endTime, var_13_4) - math.max(arg_13_3.startTime, var_13_5)) / (arg_13_3.endTime - arg_13_3.startTime) * var_13_3
+		var_13_7 = (math.max(arg_13_3.startTime, var_13_5) - arg_13_3.startTime) / (arg_13_3.endTime - arg_13_3.startTime) * var_13_3
 	end
 
-	recthelper.setWidth(var_12_1.transform, var_12_6)
-	recthelper.setAnchorX(var_12_1.transform, var_12_7)
+	recthelper.setWidth(var_13_1.transform, var_13_6)
+	recthelper.setAnchorX(var_13_1.transform, var_13_7)
+end
+
+function var_0_0.onClose(arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0._delayPlayTipsOpen, arg_14_0)
 end
 
 return var_0_0

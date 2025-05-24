@@ -30,6 +30,7 @@ function var_0_0.onClickAdd(arg_4_0)
 	end
 
 	GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalDecreeSelectTip, MsgBoxEnum.BoxType.Yes_No, function()
+		PopupController.instance:setPause(ViewName.SurvivalDecreeVoteView, true)
 		SurvivalWeekRpc.instance:sendSurvivalDecreeChoosePolicyRequest(arg_4_0.policyId, arg_4_0.policyIndex)
 	end)
 end

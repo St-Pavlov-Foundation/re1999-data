@@ -104,7 +104,7 @@ function var_0_0.setEntityDetailInfo(arg_7_0, arg_7_1)
 		return
 	end
 
-	local var_7_0 = arg_7_0._attrEntityDict[arg_7_1.id]
+	local var_7_0 = arg_7_0._attrEntityDict and arg_7_0._attrEntityDict[arg_7_1.id]
 
 	if not var_7_0 then
 		return

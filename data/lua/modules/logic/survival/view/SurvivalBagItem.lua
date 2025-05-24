@@ -21,9 +21,10 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._gosurvivalequiptag = gohelper.findChild(arg_1_0._gonormal, "go_tag")
 	arg_1_0._simagenpcicon = gohelper.findChildSingleImage(arg_1_0._gonpc, "simage_Icon")
 	arg_1_0._goadd = gohelper.findChild(arg_1_0.goRoot, "add")
+	arg_1_0._goput = gohelper.findChild(arg_1_0.goRoot, "put")
 	arg_1_0._goloading = gohelper.findChild(arg_1_1, "root/loading")
 	arg_1_0._gosearching = gohelper.findChild(arg_1_1, "root/searching")
-	arg_1_0._gocompose = gohelper.findChild(arg_1_1, "compose")
+	arg_1_0._gocompose = gohelper.findChild(arg_1_0.goRoot, "compose")
 	arg_1_0._goCollectionSelectTips = gohelper.findChild(arg_1_0._gonormal, "collection/#go_collection_select_Tips")
 
 	gohelper.setActive(arg_1_0._gotalent, false)
@@ -75,6 +76,8 @@ function var_0_0.updateMo(arg_5_0, arg_5_1)
 	end
 
 	gohelper.setActive(arg_5_0._gocompose, false)
+	gohelper.setActive(arg_5_0._gosearching, false)
+	gohelper.setActive(arg_5_0._goput, false)
 	gohelper.setActive(arg_5_0._goempty, var_5_1)
 	gohelper.setActive(arg_5_0._goadd, false)
 	gohelper.setActive(arg_5_0._gosurvivalequiptag, false)
@@ -161,6 +164,7 @@ function var_0_0.showLoading(arg_12_0, arg_12_1)
 
 		if arg_12_0._mo and arg_12_0._mo.co and arg_12_0._mo.co.rare == 5 then
 			arg_12_0._animHas:Play("opensp", 0, 0)
+			AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_sougua_4)
 		else
 			arg_12_0._animHas:Play("open", 0, 0)
 		end
@@ -177,16 +181,26 @@ function var_0_0.playCompose(arg_14_0)
 	gohelper.setActive(arg_14_0._gocompose, true)
 end
 
-function var_0_0.setItemSize(arg_15_0, arg_15_1, arg_15_2)
-	local var_15_0 = arg_15_1 / arg_15_0.defaultWidth
-	local var_15_1 = arg_15_2 / arg_15_0.defaultHeight
-
-	recthelper.setSize(arg_15_0.go.transform, arg_15_1, arg_15_2)
-	transformhelper.setLocalScale(arg_15_0.goRoot.transform, var_15_0, var_15_1, 1)
+function var_0_0.playPut(arg_15_0)
+	gohelper.setActive(arg_15_0._goput, false)
+	gohelper.setActive(arg_15_0._goput, true)
 end
 
-function var_0_0.playCloseAnim(arg_16_0)
-	arg_16_0._animHas:Play("close", 0, 0)
+function var_0_0.playComposeAnim(arg_16_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_teleport)
+	arg_16_0._animHas:Play("compose", 0, 0)
+end
+
+function var_0_0.setItemSize(arg_17_0, arg_17_1, arg_17_2)
+	local var_17_0 = arg_17_1 / arg_17_0.defaultWidth
+	local var_17_1 = arg_17_2 / arg_17_0.defaultHeight
+
+	recthelper.setSize(arg_17_0.go.transform, arg_17_1, arg_17_2)
+	transformhelper.setLocalScale(arg_17_0.goRoot.transform, var_17_0, var_17_1, 1)
+end
+
+function var_0_0.playCloseAnim(arg_18_0)
+	arg_18_0._animHas:Play("close", 0, 0)
 end
 
 return var_0_0

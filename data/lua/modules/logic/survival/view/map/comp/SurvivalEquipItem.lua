@@ -12,6 +12,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0._btnclick = gohelper.findChildButtonWithAudio(arg_1_1, "#btn_click")
 	arg_1_0._golock = gohelper.findChild(arg_1_1, "#go_lock")
 	arg_1_0._gonew = gohelper.findChild(arg_1_1, "#go_new")
+	arg_1_0._goput = gohelper.findChild(arg_1_1, "#put")
 	arg_1_0._goFrequency = gohelper.findChild(arg_1_1, "#go_drag/Frequency")
 	arg_1_0._imageFrequency = gohelper.findChildImage(arg_1_1, "#go_drag/Frequency/image_NumBG/#txt_Num/image_FrequencyIcon")
 	arg_1_0._txtFrequency = gohelper.findChildTextMesh(arg_1_1, "#go_drag/Frequency/image_NumBG/#txt_Num")
@@ -73,38 +74,46 @@ function var_0_0.setItemRes(arg_8_0, arg_8_1)
 end
 
 function var_0_0.initData(arg_9_0, arg_9_1, arg_9_2)
+	local var_9_0 = false
+
 	if not arg_9_2 and arg_9_0.mo and arg_9_1 and not arg_9_1.item:isEmpty() and arg_9_0.mo.item.uid ~= arg_9_1.item.uid then
-		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_put_2)
+		var_9_0 = true
 	end
 
 	arg_9_0.mo = arg_9_1
 
 	gohelper.setActive(arg_9_0.go, arg_9_1)
 
-	local var_9_0 = not arg_9_1 or arg_9_1.item:isEmpty()
-	local var_9_1 = arg_9_1 and arg_9_1.unlock
+	local var_9_1 = not arg_9_1 or arg_9_1.item:isEmpty()
+	local var_9_2 = arg_9_1 and arg_9_1.unlock
 
-	gohelper.setActive(arg_9_0._goitem, not var_9_0 and var_9_1)
-	gohelper.setActive(arg_9_0._goempty, var_9_0 and var_9_1)
-	gohelper.setActive(arg_9_0._golock, not var_9_1)
+	gohelper.setActive(arg_9_0._goitem, not var_9_1 and var_9_2)
+	gohelper.setActive(arg_9_0._goempty, var_9_1 and var_9_2)
+	gohelper.setActive(arg_9_0._golock, not var_9_2)
 	gohelper.setActive(arg_9_0._goFrequency, false)
 
-	if not var_9_0 then
+	if not var_9_1 then
 		arg_9_0._item:updateMo(arg_9_1.item)
 
-		local var_9_2 = arg_9_1.parent.maxTagId
-		local var_9_3 = lua_survival_equip_found.configDict[var_9_2]
+		local var_9_3 = arg_9_1.parent.maxTagId
+		local var_9_4 = lua_survival_equip_found.configDict[var_9_3]
 
-		if var_9_3 then
+		if var_9_4 then
 			gohelper.setActive(arg_9_0._goFrequency, true)
-			UISpriteSetMgr.instance:setSurvivalSprite(arg_9_0._imageFrequency, var_9_3.value)
+			UISpriteSetMgr.instance:setSurvivalSprite(arg_9_0._imageFrequency, var_9_4.value)
 
-			arg_9_0._txtFrequency.text = arg_9_0.mo.values[var_9_3.value] or 0
+			arg_9_0._txtFrequency.text = arg_9_0.mo.values[var_9_4.value] or 0
 		end
 	end
 
 	if arg_9_1 then
 		gohelper.setActive(arg_9_0._gonew, arg_9_1.newFlag)
+	end
+
+	if var_9_0 then
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_put_2)
+		gohelper.setActive(arg_9_0._goput, false)
+		gohelper.setActive(arg_9_0._goput, true)
 	end
 end
 

@@ -7,6 +7,7 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 
 	var_1_0.gameTime = arg_1_0._stepMo.paramInt[1] or 0
 	var_1_0.currMaxGameTime = arg_1_0._stepMo.paramInt[2] or 0
+	var_1_0.addTime = var_1_0.currMaxGameTime - tonumber((SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.TotalTime)))
 
 	local var_1_1 = arg_1_0._stepMo.paramInt[3] or SurvivalEnum.GameTimeUpdateReason.Normal
 

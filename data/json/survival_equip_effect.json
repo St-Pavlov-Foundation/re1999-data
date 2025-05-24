@@ -1,25 +1,5 @@
 [
   {
-    "id": 400101,
-    "effect": "skillStage#1001#10#1001#1",
-    "effect_score": "1001#15#200"
-  },
-  {
-    "id": 400102,
-    "effect": "skillStage#1001#10#1001#1",
-    "effect_score": "1001#15#200"
-  },
-  {
-    "id": 400103,
-    "effect": "skillStage#1001#10#1001#1",
-    "effect_score": "1001#15#200"
-  },
-  {
-    "id": 400104,
-    "effect": "skillStage#1001#10#1001#1",
-    "effect_score": "1001#15#200"
-  },
-  {
     "id": 1000001,
     "effect": "skillStage#1000#0#72800301#1",
     "effect_score": ""
@@ -415,6 +395,41 @@
     "effect_score": ""
   },
   {
+    "id": 1000080,
+    "effect": "ruleStage#1000#0#7280025#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000081,
+    "effect": "skillStage#1000#0#72800331#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000082,
+    "effect": "skillStage#1000#0#72800332#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000083,
+    "effect": "skillStage#1000#0#72800333#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000084,
+    "effect": "skillStage#1000#0#72800334#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000085,
+    "effect": "skillStage#1000#0#72800335#1",
+    "effect_score": ""
+  },
+  {
+    "id": 1000086,
+    "effect": "skillStage#1000#0#72800336#1",
+    "effect_score": ""
+  },
+  {
     "id": 1010001,
     "effect": "ruleStage#1000#0#7280001#1",
     "effect_score": ""
@@ -546,12 +561,12 @@
   },
   {
     "id": 1030008,
-    "effect": "skillStage#1009#1#72800373#1",
+    "effect": "skillStage#1009#1#72800371#1",
     "effect_score": ""
   },
   {
     "id": 1030009,
-    "effect": "skillStage#1009#1#72800379#1",
+    "effect": "skillStage#1009#1#72800373#1",
     "effect_score": ""
   },
   {

@@ -140,9 +140,11 @@ function var_0_0._editableInitView(arg_15_0)
 		var_15_1.btnAdd = gohelper.findChildButtonWithAudio(var_15_0, "empty/btn_add")
 		var_15_1.btnSwitch = gohelper.findChildButtonWithAudio(var_15_0, "has/btn_switch")
 		var_15_1.simage = gohelper.findChildSingleImage(var_15_0, "has/go_icon/image")
+		var_15_1.goSelect = gohelper.findChild(var_15_0, "#go_Selected")
 
 		var_15_1.btnAdd:AddClickListener(arg_15_0._setNpcSelectPos, arg_15_0, var_15_1.index)
 		var_15_1.btnSwitch:AddClickListener(arg_15_0._setNpcSelectPos, arg_15_0, var_15_1.index)
+		gohelper.setActive(var_15_1.goSelect, false)
 		table.insert(arg_15_0._allNpcPosItem, var_15_1)
 	end
 
@@ -199,6 +201,7 @@ function var_0_0.onOpen(arg_18_0)
 	arg_18_0._isSendSurvivalChoose = false
 
 	arg_18_0:addEventCb(SurvivalController.instance, SurvivalEvent.OnSelectFinish, arg_18_0.refreshSelectPanel, arg_18_0)
+	arg_18_0:addEventCb(SurvivalController.instance, SurvivalEvent.OnSetNpcSelectPos, arg_18_0._setNpcSelectPos, arg_18_0)
 end
 
 function var_0_0.refreshSelectPanel(arg_19_0)
@@ -227,25 +230,28 @@ function var_0_0._refreshNpcSelectPanel(arg_20_0)
 end
 
 function var_0_0.refreshSelectInfo(arg_21_0)
+	local var_21_0 = SurvivalShelterChooseNpcListModel.instance:getSelectPos()
+
 	for iter_21_0 = 1, var_0_1 do
-		local var_21_0 = arg_21_0._allNpcPosItem[iter_21_0]
-		local var_21_1 = SurvivalShelterChooseNpcListModel.instance:getSelectNpcByPos(iter_21_0)
-		local var_21_2 = var_21_1 == nil
+		local var_21_1 = arg_21_0._allNpcPosItem[iter_21_0]
+		local var_21_2 = SurvivalShelterChooseNpcListModel.instance:getSelectNpcByPos(iter_21_0)
+		local var_21_3 = var_21_2 == nil
 
-		if var_21_0 ~= nil then
-			gohelper.setActive(var_21_0.empty, var_21_2)
-			gohelper.setActive(var_21_0.has, not var_21_2)
+		if var_21_1 ~= nil then
+			gohelper.setActive(var_21_1.empty, var_21_3)
+			gohelper.setActive(var_21_1.has, not var_21_3)
+			gohelper.setActive(var_21_1.goSelect, var_21_0 == iter_21_0)
 
-			if not var_21_2 and (var_21_0.npcId == nil or var_21_0.npcId ~= var_21_1) then
-				local var_21_3 = SurvivalConfig.instance:getNpcConfig(var_21_1)
+			if not var_21_3 and (var_21_1.npcId == nil or var_21_1.npcId ~= var_21_2) then
+				local var_21_4 = SurvivalConfig.instance:getNpcConfig(var_21_2)
 
-				if var_21_3 and not string.nilorempty(var_21_3.smallIcon) then
-					local var_21_4 = ResUrl.getSurvivalNpcIcon(var_21_3.smallIcon)
+				if var_21_4 and not string.nilorempty(var_21_4.smallIcon) then
+					local var_21_5 = ResUrl.getSurvivalNpcIcon(var_21_4.smallIcon)
 
-					var_21_0.simage:LoadImage(var_21_4)
+					var_21_1.simage:LoadImage(var_21_5)
 				end
 
-				var_21_0.npcId = var_21_1
+				var_21_1.npcId = var_21_2
 			end
 		end
 	end
@@ -276,6 +282,8 @@ function var_0_0._setFilterCb(arg_23_0, arg_23_1)
 end
 
 function var_0_0._onFilterChange(arg_24_0, arg_24_1)
+	SurvivalShelterChooseNpcListModel.instance:setSelectNpc(nil)
+
 	arg_24_0._filterList = arg_24_1
 
 	arg_24_0:refreshSelectPanel()
@@ -344,9 +352,9 @@ function var_0_0._refreshEquipSelectPanel(arg_28_0)
 		return
 	end
 
-	arg_28_0:refreshEquipInfoView()
 	SurvivalShelterChooseEquipListModel.instance:refreshList(arg_28_0._equipFilterList)
 	arg_28_0._simpleList:setList(SurvivalShelterChooseEquipListModel.instance:getList())
+	arg_28_0:refreshEquipInfoView()
 end
 
 function var_0_0.refreshEquipSelectInfo(arg_29_0)
@@ -438,6 +446,8 @@ function var_0_0._setEquipFilterCb(arg_34_0, arg_34_1)
 end
 
 function var_0_0._onEquipFilterChange(arg_35_0, arg_35_1)
+	SurvivalShelterChooseEquipListModel.instance:setSelectEquip(nil)
+
 	arg_35_0._equipFilterList = arg_35_1
 
 	arg_35_0:refreshSelectPanel()

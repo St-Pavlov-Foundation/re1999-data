@@ -227,6 +227,8 @@ function var_0_0._initTalentTree(arg_12_0)
 			var_12_3.sImage:LoadImage(ResUrl.getSurvivalTalentIcon(var_12_1.icon))
 
 			var_12_3.goSelect = gohelper.findChildClickWithAudio(var_12_2, "go_select")
+			var_12_3.txtChoice = gohelper.findChildText(var_12_2, "#txt_choice")
+			var_12_3.txtNum = gohelper.findChildText(var_12_2, "#txt_num")
 			var_12_3.click = gohelper.findChildClickWithAudio(var_12_2, "go_click")
 			var_12_3.btnCheck = gohelper.findChildButtonWithAudio(var_12_2, "#btn_check")
 
@@ -236,6 +238,22 @@ function var_0_0._initTalentTree(arg_12_0)
 					talentCo = var_12_1
 				})
 			end, nil)
+
+			local var_12_4 = ""
+			local var_12_5 = SurvivalModel.instance:getOutSideInfo()
+
+			if var_12_5 then
+				local var_12_6 = var_12_5.talentBox:getTalentGroup(var_12_1.id)
+				local var_12_7 = #var_12_6:getEquipTalents()
+				local var_12_8 = var_12_6:getTalentCos()
+				local var_12_9 = tabletool.len(var_12_8)
+
+				var_12_4 = var_12_7 .. "/" .. var_12_9
+			end
+
+			var_12_3.txtChoice.text = var_12_1.name
+			var_12_3.txtNum.text = var_12_4
+
 			gohelper.setActive(var_12_3.goSelect, false)
 			gohelper.setActive(var_12_3.go, true)
 
@@ -256,6 +274,8 @@ function var_0_0.refreshSelect(arg_14_0, arg_14_1)
 
 		arg_14_0._txtbase.text = var_14_1.desc
 		var_14_0 = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survivalceremonyopeningview_txt_1"), var_14_1.name)
+
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_draw)
 	else
 		var_14_0 = luaLang("survivalceremonyopeningview_txt_2")
 	end

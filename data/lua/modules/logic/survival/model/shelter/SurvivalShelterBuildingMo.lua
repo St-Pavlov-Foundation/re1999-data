@@ -62,115 +62,119 @@ function var_0_0.isEqualType(arg_6_0, arg_6_1)
 	return arg_6_0.baseCo.type == arg_6_1
 end
 
-function var_0_0.isBuild(arg_7_0)
-	return arg_7_0.level > 0
+function var_0_0.getBuildingType(arg_7_0)
+	return arg_7_0.baseCo.type
 end
 
-function var_0_0.getNpcByPosition(arg_8_0, arg_8_1)
-	for iter_8_0, iter_8_1 in pairs(arg_8_0.npcs) do
-		if iter_8_1 == arg_8_1 then
-			return iter_8_0
+function var_0_0.isBuild(arg_8_0)
+	return arg_8_0.level > 0
+end
+
+function var_0_0.getNpcByPosition(arg_9_0, arg_9_1)
+	for iter_9_0, iter_9_1 in pairs(arg_9_0.npcs) do
+		if iter_9_1 == arg_9_1 then
+			return iter_9_0
 		end
 	end
 end
 
-function var_0_0.isNpcInBuilding(arg_9_0, arg_9_1)
-	return arg_9_0:getNpcPos(arg_9_1) ~= nil
+function var_0_0.isNpcInBuilding(arg_10_0, arg_10_1)
+	return arg_10_0:getNpcPos(arg_10_1) ~= nil
 end
 
-function var_0_0.getNpcPos(arg_10_0, arg_10_1)
-	return arg_10_0.npcs[arg_10_1]
+function var_0_0.getNpcPos(arg_11_0, arg_11_1)
+	return arg_11_0.npcs[arg_11_1]
 end
 
-function var_0_0.removeNpc(arg_11_0, arg_11_1)
-	arg_11_0.npcs[arg_11_1] = nil
+function var_0_0.removeNpc(arg_12_0, arg_12_1)
+	arg_12_0.npcs[arg_12_1] = nil
 end
 
-function var_0_0.addNpc(arg_12_0, arg_12_1, arg_12_2)
-	if arg_12_2 < 0 then
+function var_0_0.addNpc(arg_13_0, arg_13_1, arg_13_2)
+	if arg_13_2 < 0 then
 		return
 	end
 
-	arg_12_0.npcs[arg_12_1] = arg_12_2
+	arg_13_0.npcs[arg_13_1] = arg_13_2
 end
 
-function var_0_0.isHeroInBuilding(arg_13_0, arg_13_1)
-	return arg_13_0:getHeroPos(arg_13_1) ~= nil
+function var_0_0.isHeroInBuilding(arg_14_0, arg_14_1)
+	return arg_14_0:getHeroPos(arg_14_1) ~= nil
 end
 
-function var_0_0.getHeroPos(arg_14_0, arg_14_1)
-	return arg_14_0.heros[arg_14_1]
+function var_0_0.getHeroPos(arg_15_0, arg_15_1)
+	return arg_15_0.heros[arg_15_1]
 end
 
-function var_0_0.removeHero(arg_15_0, arg_15_1)
-	arg_15_0.heros[arg_15_1] = nil
+function var_0_0.removeHero(arg_16_0, arg_16_1)
+	arg_16_0.heros[arg_16_1] = nil
 end
 
-function var_0_0.addHero(arg_16_0, arg_16_1, arg_16_2)
-	arg_16_0.heros[arg_16_1] = arg_16_2
+function var_0_0.addHero(arg_17_0, arg_17_1, arg_17_2)
+	arg_17_0.heros[arg_17_1] = arg_17_2
 end
 
-function var_0_0.getAttr(arg_17_0, arg_17_1, arg_17_2)
-	local var_17_0 = arg_17_0.attrs[arg_17_1] or 0
+function var_0_0.getAttr(arg_18_0, arg_18_1, arg_18_2)
+	local var_18_0 = arg_18_0.attrs[arg_18_1] or 0
 
-	if SurvivalEnum.AttrTypePer[arg_17_1] then
-		arg_17_2 = arg_17_2 or 0
-		var_17_0 = math.floor(arg_17_2 * math.max(0, 1 + var_17_0 / 1000))
+	if SurvivalEnum.AttrTypePer[arg_18_1] then
+		arg_18_2 = arg_18_2 or 0
+		var_18_0 = math.floor(arg_18_2 * math.max(0, 1 + var_18_0 / 1000))
 	end
 
-	return var_17_0
+	return var_18_0
 end
 
-function var_0_0.refreshLocalStatus(arg_18_0)
-	arg_18_0._localStatus = arg_18_0:getRealLocalStatus()
+function var_0_0.refreshLocalStatus(arg_19_0)
+	arg_19_0._localStatus = arg_19_0:getRealLocalStatus()
 end
 
-function var_0_0.getLocalStatus(arg_19_0)
-	if arg_19_0._localStatus == nil then
-		arg_19_0:refreshLocalStatus()
+function var_0_0.getLocalStatus(arg_20_0)
+	if arg_20_0._localStatus == nil then
+		arg_20_0:refreshLocalStatus()
 
-		return arg_19_0._localStatus
+		return arg_20_0._localStatus
 	end
 
-	local var_19_0 = arg_19_0:getRealLocalStatus()
+	local var_20_0 = arg_20_0:getRealLocalStatus()
 
-	if arg_19_0._localStatus == var_19_0 then
-		return arg_19_0._localStatus
+	if arg_20_0._localStatus == var_20_0 then
+		return arg_20_0._localStatus
 	end
 
-	if arg_19_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.UnBuild and var_19_0 == SurvivalEnum.ShelterBuildingLocalStatus.Normal then
+	if arg_20_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.UnBuild and var_20_0 == SurvivalEnum.ShelterBuildingLocalStatus.Normal then
 		return SurvivalEnum.ShelterBuildingLocalStatus.UnBuildToNormal
 	end
 
-	if arg_19_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.Destroy and var_19_0 == SurvivalEnum.ShelterBuildingLocalStatus.Normal then
+	if arg_20_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.Destroy and var_20_0 == SurvivalEnum.ShelterBuildingLocalStatus.Normal then
 		return SurvivalEnum.ShelterBuildingLocalStatus.DestroyToNormal
 	end
 
-	if arg_19_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.Normal and var_19_0 == SurvivalEnum.ShelterBuildingLocalStatus.Destroy then
+	if arg_20_0._localStatus == SurvivalEnum.ShelterBuildingLocalStatus.Normal and var_20_0 == SurvivalEnum.ShelterBuildingLocalStatus.Destroy then
 		return SurvivalEnum.ShelterBuildingLocalStatus.NormalToDestroy
 	end
 
 	return SurvivalEnum.ShelterBuildingLocalStatus.Normal
 end
 
-function var_0_0.getRealLocalStatus(arg_20_0)
-	if arg_20_0:isDestoryed() then
+function var_0_0.getRealLocalStatus(arg_21_0)
+	if arg_21_0:isDestoryed() then
 		return SurvivalEnum.ShelterBuildingLocalStatus.Destroy
 	end
 
-	if arg_20_0:isBuild() then
+	if arg_21_0:isBuild() then
 		return SurvivalEnum.ShelterBuildingLocalStatus.Normal
 	end
 
 	return SurvivalEnum.ShelterBuildingLocalStatus.UnBuild
 end
 
-function var_0_0.lockLevel(arg_21_0)
-	arg_21_0._lockLevel = arg_21_0.level
+function var_0_0.lockLevel(arg_22_0)
+	arg_22_0._lockLevel = arg_22_0.level
 end
 
-function var_0_0.getLevel(arg_22_0)
-	return arg_22_0._lockLevel or arg_22_0.level
+function var_0_0.getLevel(arg_23_0)
+	return arg_23_0._lockLevel or arg_23_0.level
 end
 
 return var_0_0

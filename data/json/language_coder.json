@@ -6129,7 +6129,7 @@
   },
   {
     "id": "survival_mainview_teamhealth",
-    "lang": "研究小组抵抗力状态：▩1%s"
+    "lang": "抵抗力：▩1%s"
   },
   {
     "id": "survival_filter_material",
@@ -6185,7 +6185,7 @@
   },
   {
     "id": "survival_npcselectview_cantuse",
-    "lang": "无法使用"
+    "lang": "无法演习"
   },
   {
     "id": "survival_log_additem",
@@ -6248,6 +6248,10 @@
     "lang": "▩1%s抵抗力-▩2%s"
   },
   {
+    "id": "survival_log_gettalent",
+    "lang": "获得了缪斯的魔盒"
+  },
+  {
     "id": "survival_reward_title",
     "lang": "获得奖励"
   },
@@ -6261,7 +6265,7 @@
   },
   {
     "id": "survivalselectdifficultyview_txt_assess",
-    "lang": "难度系数：%s"
+    "lang": "完成度获取效率×%s"
   },
   {
     "id": "survival_commititemview_worth",
@@ -6289,7 +6293,7 @@
   },
   {
     "id": "survival_resultview_time",
-    "lang": "▩1%s：▩2%s"
+    "lang": "▩1%s时▩2%s分"
   },
   {
     "id": "survival_resultview_loss",
@@ -6321,7 +6325,7 @@
   },
   {
     "id": "survivaltaskview_collection_txt",
-    "lang": "你选择了 <#C16614>%s</color>帮助任务执行，这将影响到你的表现。"
+    "lang": "你选择了<#C16614>%s</color>思维进行本次演算。"
   },
   {
     "id": "survivalbuildingmanageview_buildinglock_txt",
@@ -6441,7 +6445,7 @@
   },
   {
     "id": "survivalceremonyclosingview_survivalTime",
-    "lang": "你在模拟生存中艰难生存了<color=#A04114>▩1%s</color>天，历经万难，顺利完成任务。"
+    "lang": "你在模拟生存中艰难生存了<color=#A04114>▩1%s</color>天。"
   },
   {
     "id": "survivalceremonyclosingview_extraTarget",
@@ -6477,7 +6481,7 @@
   },
   {
     "id": "survival_mainview_monster_fight",
-    "lang": "必须驱逐入侵怪物"
+    "lang": "击退强敌"
   },
   {
     "id": "survivalreportview_npc_empty",
@@ -6485,15 +6489,15 @@
   },
   {
     "id": "survivalreportview_npc",
-    "lang": "<color=#C26817>▩2%s</color>对你非常失望，离开了庇护所。"
+    "lang": "<color=#C26817>▩2%s</color>因为宿舍位置或储备不足而离开了庇护所。"
   },
   {
     "id": "survivalreportview_monster_empty",
-    "lang": "目前没有入侵的怪物，又安然无恙的度过了一天。"
+    "lang": "目前没有入侵怪物，又安然无恙的度过了一天。"
   },
   {
     "id": "survivalreportview_monster",
-    "lang": "<color=#C26817>▩1%s</color>天后需要击败入侵怪物<color=#C26817>▩2%s</color>。"
+    "lang": "<color=#ff0000>入侵怪物将在▩1%s天后到来。</color>"
   },
   {
     "id": "survivalreportview_build_empty",
@@ -6504,8 +6508,8 @@
     "lang": "<color=#C26817>▩1%s</color>被入侵怪物破坏了"
   },
   {
-    "id": "survivalreportview_score",
-    "lang": "本次演习带回<color=#C26817>▩1%s</color>获得<color=#C26817>▩2%s</color>点完成度。"
+    "id": "survivalreportview_score_success",
+    "lang": "演习成功，本日获得<color=#C26817>▩1%s</color>获得<color=#C26817>▩2%s</color>点完成度。"
   },
   {
     "id": "Activity2ndCollectionPageView_EnterMaxStr",
@@ -6593,7 +6597,7 @@
   },
   {
     "id": "survival_SurvivalMonsterEventView_tips",
-    "lang": "需要在▩1%s天后击退"
+    "lang": "需在▩1%s天后击退"
   },
   {
     "id": "handbookskinview_playername",
@@ -6601,11 +6605,11 @@
   },
   {
     "id": "survivalreportview_score_buildItem",
-    "lang": "▩1%s个建材"
+    "lang": "▩1%s个材料"
   },
   {
     "id": "survivalreportview_score_foodItem",
-    "lang": "▩1%s个食物"
+    "lang": "▩1%s份储备"
   },
   {
     "id": "survivalreportview_score_equipItem",
@@ -6613,19 +6617,19 @@
   },
   {
     "id": "survivalreportview_score_goldItem",
-    "lang": "▩1%s个金币"
+    "lang": "▩1%s份研究资料"
   },
   {
     "id": "survivalreportview_score_otherItem",
-    "lang": "▩1%s个物品"
+    "lang": "▩1%s个道具"
   },
   {
     "id": "survivalreportview_score_npc",
-    "lang": "▩1%s位助理"
+    "lang": "▩1%s名助理"
   },
   {
     "id": "survivalreportview_monster_today",
-    "lang": "<color=#C26817>今天</color>需要击败入侵怪物<color=#C26817>▩1%s</color>。"
+    "lang": "入侵怪物已经到来，必须立即击退。"
   },
   {
     "id": "ShelterManagerInfoView_npc_foodcost",
@@ -6633,6 +6637,18 @@
   },
   {
     "id": "survivalmonstereventview_monster_toady",
-    "lang": "需要立即击退"
+    "lang": "需立即击退"
+  },
+  {
+    "id": "survivalreportview_score_failed",
+    "lang": "演习失败，本日获得<color=#C26817>▩1%s</color>获得<color=#C26817>▩2%s</color>点完成度。"
+  },
+  {
+    "id": "survivalreportview_npc_new",
+    "lang": "新助理的到来本该令人喜悦，但宿舍已没有多余位置给<color=#C26817>▩1%s</color>入住。"
+  },
+  {
+    "id": "survival_shelter_quit_fight_confirm",
+    "lang": "退出会令本轮战斗失败，导致参战组员抵抗力减少，是否确认?"
   }
 ]

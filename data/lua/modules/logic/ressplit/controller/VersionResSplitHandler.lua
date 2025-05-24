@@ -2,6 +2,13 @@
 
 local var_0_0 = ResSplitEnum.VersionResEnum
 local var_0_1 = class("VersionResSplitHandler")
+local var_0_2 = {
+	{
+		resKey = "image",
+		format = "singlebg/storybg/%s",
+		luaName = "lua_cg"
+	}
+}
 
 function var_0_1.generateResSplitCfg(arg_1_0)
 	arg_1_0:_InitMapElementData()
@@ -301,6 +308,25 @@ function var_0_1._getResWhiteListDict(arg_5_0)
 		end
 	end
 
+	local var_5_5 = var_0_2
+
+	for iter_5_2 = 1, #var_5_5 do
+		local var_5_6 = var_5_5[iter_5_2]
+		local var_5_7 = _G[var_5_6.luaName]
+
+		if var_5_7 and var_5_7.configList then
+			local var_5_8 = var_5_7.configList
+
+			for iter_5_3, iter_5_4 in ipairs(var_5_8) do
+				local var_5_9 = iter_5_4[var_5_6.resKey]
+
+				if not string.nilorempty(var_5_9) then
+					var_5_4[string.format(var_5_6.format, iter_5_4[var_5_6.resKey])] = true
+				end
+			end
+		end
+	end
+
 	return var_5_4
 end
 
@@ -517,7 +543,7 @@ function var_0_1._fillSceneResByChatper(arg_17_0, arg_17_1, arg_17_2)
 	end
 end
 
-local var_0_2 = {
+local var_0_3 = {
 	tga = true,
 	prefab = true,
 	controller = true,
@@ -526,7 +552,7 @@ local var_0_2 = {
 	anim = true,
 	mat = true
 }
-local var_0_3 = {
+local var_0_4 = {
 	["font/"] = true
 }
 
@@ -540,7 +566,7 @@ function var_0_1._fillSceneDependRes(arg_18_0, arg_18_1, arg_18_2)
 		local var_18_2 = string.match(var_18_1, ".+%.(%w+)$")
 		local var_18_3 = false
 
-		for iter_18_1, iter_18_2 in pairs(var_0_3) do
+		for iter_18_1, iter_18_2 in pairs(var_0_4) do
 			if string.match(var_18_1, "font/") then
 				var_18_3 = true
 
@@ -551,7 +577,7 @@ function var_0_1._fillSceneDependRes(arg_18_0, arg_18_1, arg_18_2)
 		if not var_18_3 then
 			local var_18_4 = string.match(var_18_1, ".+%.(%w+)$")
 
-			if var_0_2[var_18_4] then
+			if var_0_3[var_18_4] then
 				local var_18_5 = string.gsub(var_18_1, SLFramework.FrameworkSettings.AssetRootDir .. "/", "")
 
 				arg_18_2:addResSplitInfo(ResSplitEnum.Path, var_0_0.ChapterSceneDepand, var_18_5)
@@ -714,7 +740,7 @@ function var_0_1._fillUIRes(arg_25_0, arg_25_1, arg_25_2)
 		local var_25_4 = var_25_3[iter_25_0]
 		local var_25_5 = false
 
-		for iter_25_1, iter_25_2 in pairs(var_0_3) do
+		for iter_25_1, iter_25_2 in pairs(var_0_4) do
 			if string.match(var_25_4, "font/") then
 				var_25_5 = true
 
@@ -725,7 +751,7 @@ function var_0_1._fillUIRes(arg_25_0, arg_25_1, arg_25_2)
 		if not var_25_5 then
 			local var_25_6 = string.match(var_25_4, ".+%.(%w+)$")
 
-			if var_0_2[var_25_6] then
+			if var_0_3[var_25_6] then
 				local var_25_7 = string.gsub(var_25_4, SLFramework.FrameworkSettings.AssetRootDir .. "/", "")
 
 				arg_25_2:addResSplitInfo(ResSplitEnum.Path, var_0_0.UIPrefabDepand, var_25_7)

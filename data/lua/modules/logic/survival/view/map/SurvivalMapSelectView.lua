@@ -73,6 +73,10 @@ function var_0_0.onClickMap(arg_5_0, arg_5_1, arg_5_2)
 	for iter_5_0 = 1, 6 do
 		arg_5_0._items[iter_5_0]:setIsSelect(iter_5_0 == arg_5_1)
 	end
+
+	if not arg_5_2 then
+		GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.SurvivalMapSelect, tostring(arg_5_1))
+	end
 end
 
 function var_0_0._delayPlayIn(arg_6_0)

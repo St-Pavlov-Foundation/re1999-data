@@ -138,9 +138,7 @@ end
 
 function var_0_0.exitGame(arg_20_0)
 	arg_20_0:statExitGame()
-
-	AutoChessModel.instance.episodeId = nil
-
+	AutoChessModel.instance:clearData()
 	ViewMgr.instance:closeView(ViewName.AutoChessMallView)
 	ViewMgr.instance:closeView(ViewName.AutoChessGameView)
 	AutoChessGameModel.instance:setUsingLeaderSkill(false)

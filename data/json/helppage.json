@@ -4462,7 +4462,7 @@
   {
     "id": 2809001,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "演习功能",
     "icon": "v2a8_survival_help_1",
     "iconText": "v2a8_survival_help_1",
@@ -4472,7 +4472,7 @@
   {
     "id": 2809002,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "演习事件",
     "icon": "v2a8_survival_help_2",
     "iconText": "v2a8_survival_help_2",
@@ -4482,7 +4482,7 @@
   {
     "id": 2809003,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "暴雨侵蚀",
     "icon": "v2a8_survival_help_3",
     "iconText": "v2a8_survival_help_3",
@@ -4492,7 +4492,7 @@
   {
     "id": 2809004,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "漫游行装",
     "icon": "v2a8_survival_help_4",
     "iconText": "v2a8_survival_help_4",
@@ -4502,17 +4502,17 @@
   {
     "id": 2809005,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "研究小组",
     "icon": "v2a8_survival_help_5",
     "iconText": "v2a8_survival_help_5",
-    "unlockGuideId": 28502,
+    "unlockGuideId": 28501,
     "isCn": 0
   },
   {
     "id": 2809006,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "漫游助理",
     "icon": "v2a8_survival_help_6",
     "iconText": "v2a8_survival_help_6",
@@ -4522,7 +4522,7 @@
   {
     "id": 2809007,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "组长的决策",
     "icon": "v2a8_survival_help_7",
     "iconText": "v2a8_survival_help_7",
@@ -4532,7 +4532,7 @@
   {
     "id": 2809008,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "入侵强敌",
     "icon": "v2a8_survival_help_8",
     "iconText": "v2a8_survival_help_8",
@@ -4542,11 +4542,11 @@
   {
     "id": 2809009,
     "title": "",
-    "type": 2,
+    "type": 1,
     "text": "助理协助",
     "icon": "v2a8_survival_help_9",
     "iconText": "v2a8_survival_help_9",
-    "unlockGuideId": 28514,
+    "unlockGuideId": 28516,
     "isCn": 0
   }
 ]

@@ -158,6 +158,7 @@ function var_0_0.createItem(arg_11_0, arg_11_1, arg_11_2)
 	var_11_0.txtUnFinishNum = gohelper.findChildTextMesh(var_11_0.goUnfinish, "#txt_num")
 	var_11_0.txtUnFinishDesc = gohelper.findChildTextMesh(var_11_0.goUnfinish, "#txt_task")
 	var_11_0.goUnfinishRewardContent = gohelper.findChild(var_11_0.goUnfinish, "#scroll_Reward/Viewport/Content")
+	var_11_0.anim = var_11_0.go:GetComponent(typeof(UnityEngine.Animator))
 	var_11_0.rewardList = {}
 
 	return var_11_0
@@ -188,6 +189,14 @@ function var_0_0.updateItem(arg_13_0, arg_13_1, arg_13_2)
 	gohelper.setActive(arg_13_1.go, arg_13_2 ~= nil)
 
 	if not arg_13_2 then
+		return
+	end
+
+	if arg_13_0.playRewardTaskId == arg_13_2.id then
+		arg_13_0.playRewardTaskId = nil
+
+		arg_13_0:playItemFinishAnim(arg_13_1)
+
 		return
 	end
 
@@ -253,8 +262,10 @@ function var_0_0.refreshRewardItem(arg_15_0, arg_15_1, arg_15_2, arg_15_3)
 
 		arg_15_1.itemIcon = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_2, SurvivalBagItem)
 
-		arg_15_1.itemIcon:setClickCallback(var_0_0.onClicRewardItem, arg_15_1)
+		arg_15_1.itemIcon:setClickCallback(arg_15_0.onClicRewardItem, arg_15_0)
 	end
+
+	arg_15_1.itemIcon._rewardItem = arg_15_1
 
 	arg_15_1.itemIcon:updateByItemId(var_15_0, var_15_1)
 	arg_15_1.itemIcon:setItemSize(100, 100)
@@ -289,24 +300,30 @@ function var_0_0.refreshTalent(arg_17_0)
 end
 
 function var_0_0.onClicRewardItem(arg_18_0, arg_18_1)
-	if not arg_18_0 then
-		return
-	end
-
-	local var_18_0 = arg_18_0.parentItem
+	local var_18_0 = arg_18_1._rewardItem
 
 	if not var_18_0 then
 		return
 	end
 
-	local var_18_1 = var_18_0.taskMo
+	local var_18_1 = var_18_0.parentItem
 
 	if not var_18_1 then
 		return
 	end
 
-	if var_18_1:isCangetReward() then
-		SurvivalWeekRpc.instance:sendSurvivalReceiveTaskRewardRequest(var_18_1.moduleId, var_18_1.id)
+	local var_18_2 = var_18_1.taskMo
+
+	if not var_18_2 then
+		return
+	end
+
+	if var_18_2:isCangetReward() then
+		PopupController.instance:setPause(arg_18_0.viewName, true)
+
+		arg_18_0.playRewardTaskId = var_18_2.id
+
+		SurvivalWeekRpc.instance:sendSurvivalReceiveTaskRewardRequest(var_18_2.moduleId, var_18_2.id)
 	else
 		ViewMgr.instance:openView(ViewName.SurvivalItemInfoView, {
 			itemMo = arg_18_1._mo
@@ -314,13 +331,33 @@ function var_0_0.onClicRewardItem(arg_18_0, arg_18_1)
 	end
 end
 
-function var_0_0.onClose(arg_19_0)
-	arg_19_0.simageCollection:UnLoadImage()
+function var_0_0.refreshAnimItem(arg_19_0)
+	if arg_19_0._animItem then
+		arg_19_0:updateItem(arg_19_0._animItem, arg_19_0._animItem.taskMo)
 
-	if arg_19_0.popupFlow then
-		arg_19_0.popupFlow:destroy()
+		arg_19_0._animItem = nil
+	end
 
-		arg_19_0.popupFlow = nil
+	PopupController.instance:setPause(arg_19_0.viewName, false)
+end
+
+function var_0_0.playItemFinishAnim(arg_20_0, arg_20_1)
+	arg_20_1.anim:Play("finished", 0, 0)
+
+	arg_20_0._animItem = arg_20_1
+
+	TaskDispatcher.runDelay(arg_20_0.refreshAnimItem, arg_20_0, 0.5)
+end
+
+function var_0_0.onClose(arg_21_0)
+	PopupController.instance:setPause(arg_21_0.viewName, false)
+	TaskDispatcher.cancelTask(arg_21_0.refreshAnimItem, arg_21_0)
+	arg_21_0.simageCollection:UnLoadImage()
+
+	if arg_21_0.popupFlow then
+		arg_21_0.popupFlow:destroy()
+
+		arg_21_0.popupFlow = nil
 	end
 end
 

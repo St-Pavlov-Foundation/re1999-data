@@ -25,6 +25,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._btntag1 = gohelper.findChildButtonWithAudio(arg_1_0._currencyroot, "tag1")
 	arg_1_0._btntag2 = gohelper.findChildButtonWithAudio(arg_1_0._currencyroot, "tag2")
 	arg_1_0._btntag3 = gohelper.findChildButtonWithAudio(arg_1_0._currencyroot, "tag3")
+	arg_1_0._anim = gohelper.findChildAnim(arg_1_0.viewGO, "")
 end
 
 function var_0_0.addEvents(arg_2_0)
@@ -74,6 +75,8 @@ function var_0_0.onOpen(arg_4_0)
 
 	if var_4_3 then
 		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_success_2)
+	else
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_fail_2)
 	end
 end
 
@@ -165,137 +168,158 @@ function var_0_0.refreshItemsAndNpcs(arg_10_0)
 	arg_10_0:refreshCurrency(false)
 	arg_10_0._simpleList:setList(arg_10_0._resultMo.firstItems)
 	gohelper.CreateObjList(arg_10_0, arg_10_0._createRightNpcItem, arg_10_0._resultMo.firstNpcs, nil, arg_10_0._gorightnpcitem)
+	TaskDispatcher.runDelay(arg_10_0._delayCheckChange, arg_10_0, 1)
+end
 
-	if arg_10_0._resultMo.haveChange1 then
+function var_0_0._delayCheckChange(arg_11_0)
+	if arg_11_0._resultMo.haveChange1 then
 		UIBlockHelper.instance:startBlock("SurvivalMapResultView_ItemEffect", 1)
-		TaskDispatcher.runDelay(arg_10_0._delayShowChangeItem, arg_10_0, 1)
+		TaskDispatcher.runDelay(arg_11_0._delayShowChangeItem, arg_11_0, 1)
 
-		for iter_10_0, iter_10_1 in pairs(arg_10_0._allItemComps) do
-			local var_10_1 = iter_10_1._mo
+		for iter_11_0, iter_11_1 in pairs(arg_11_0._allItemComps) do
+			local var_11_0 = iter_11_1._mo
 
-			if not var_10_1:isEmpty() then
-				local var_10_2 = arg_10_0._resultMo.beforeChanges[var_10_1.uid]
+			if not var_11_0:isEmpty() then
+				local var_11_1 = arg_11_0._resultMo.beforeChanges[var_11_0.uid]
 
-				if var_10_2 and var_10_2:isEmpty() then
-					iter_10_1:playCompose()
+				if var_11_1 and var_11_1:isEmpty() then
+					iter_11_1:playComposeAnim()
 				end
 			end
 		end
 	else
-		arg_10_0:showAfterItems()
+		arg_11_0:showAfterItems()
 	end
 end
 
-function var_0_0._delayShowChangeItem(arg_11_0)
-	tabletool.clear(arg_11_0._allItemComps)
-	arg_11_0._simpleList:setList(arg_11_0._resultMo.beforeItems)
-	gohelper.CreateObjList(arg_11_0, arg_11_0._createRightNpcItem, arg_11_0._resultMo.beforeNpcs, nil, arg_11_0._gorightnpcitem)
-	arg_11_0:showAfterItems()
+function var_0_0._delayShowChangeItem(arg_12_0)
+	tabletool.clear(arg_12_0._allItemComps)
+	arg_12_0._simpleList:setList(arg_12_0._resultMo.beforeItems)
+	gohelper.CreateObjList(arg_12_0, arg_12_0._createRightNpcItem, arg_12_0._resultMo.beforeNpcs, nil, arg_12_0._gorightnpcitem)
+	arg_12_0:showAfterItems()
 end
 
-function var_0_0.showAfterItems(arg_12_0)
-	if arg_12_0._resultMo.haveChange2 then
+function var_0_0.showAfterItems(arg_13_0)
+	if arg_13_0._resultMo.haveChange2 then
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_sougua_3)
 		UIBlockHelper.instance:startBlock("SurvivalMapResultView_ItemEffect", 1)
-		TaskDispatcher.runDelay(arg_12_0._delayShowAfterItem, arg_12_0, 1)
+		TaskDispatcher.runDelay(arg_13_0._delayShowAfterItem, arg_13_0, 1)
+		arg_13_0._anim:Play("searching", 0, 0)
 
-		for iter_12_0, iter_12_1 in pairs(arg_12_0._allItemComps) do
-			local var_12_0 = iter_12_1._mo
+		for iter_13_0, iter_13_1 in pairs(arg_13_0._allItemComps) do
+			local var_13_0 = iter_13_1._mo
 
-			if not var_12_0:isEmpty() then
-				local var_12_1 = arg_12_0._resultMo.afterChanges[var_12_0.uid]
+			if not var_13_0:isEmpty() then
+				local var_13_1 = arg_13_0._resultMo.afterChanges[var_13_0.uid]
 
-				if var_12_1 then
-					if var_12_1:isEmpty() then
-						iter_12_1:playSearch()
-						iter_12_1:playCompose()
+				if var_13_1 then
+					if var_13_1:isEmpty() then
+						iter_13_1:playSearch()
+						iter_13_1:playCompose()
 					else
-						iter_12_1:playSearch()
+						iter_13_1:playSearch()
 					end
 				end
 			end
 		end
 	else
-		arg_12_0:_onFinishShow()
+		arg_13_0:_onFinishShow()
 	end
 end
 
-function var_0_0._delayShowAfterItem(arg_13_0)
-	arg_13_0:refreshCurrency(true)
-	tabletool.clear(arg_13_0._allItemComps)
-	arg_13_0._simpleList:setList(arg_13_0._resultMo.afterItems)
-	gohelper.CreateObjList(arg_13_0, arg_13_0._createRightNpcItem, arg_13_0._resultMo.afterNpcs, nil, arg_13_0._gorightnpcitem)
-	arg_13_0:_onFinishShow()
+function var_0_0._delayShowAfterItem(arg_14_0)
+	arg_14_0:refreshCurrency(true)
+	tabletool.clear(arg_14_0._allItemComps)
+	arg_14_0._simpleList:setList(arg_14_0._resultMo.afterItems)
+	gohelper.CreateObjList(arg_14_0, arg_14_0._createRightNpcItem, arg_14_0._resultMo.afterNpcs, nil, arg_14_0._gorightnpcitem)
+	arg_14_0:_onFinishShow()
 end
 
-function var_0_0._onFinishShow(arg_14_0)
+function var_0_0._onFinishShow(arg_15_0)
 	return
 end
 
-function var_0_0._createItem(arg_15_0, arg_15_1, arg_15_2, arg_15_3)
-	local var_15_0 = arg_15_0.viewContainer._viewSetting.otherRes.itemRes
-	local var_15_1 = gohelper.findChild(arg_15_1, "inst") or arg_15_0:getResInst(var_15_0, arg_15_1, "inst")
-	local var_15_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_1, SurvivalBagItem)
+function var_0_0._createItem(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	local var_16_0 = arg_16_0.viewContainer._viewSetting.otherRes.itemRes
+	local var_16_1 = gohelper.findChild(arg_16_1, "inst") or arg_16_0:getResInst(var_16_0, arg_16_1, "inst")
+	local var_16_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_16_1, SurvivalBagItem)
 
-	var_15_2:updateMo(arg_15_2)
-	var_15_2:setClickCallback(arg_15_0._onClickItem, arg_15_0)
+	var_16_2:updateMo(arg_16_2)
+	var_16_2:setClickCallback(arg_16_0._onClickItem, arg_16_0)
 
-	arg_15_0._allItemComps[arg_15_3] = var_15_2
+	arg_16_0._allItemComps[arg_16_3] = var_16_2
 end
 
-function var_0_0._recycleItem(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
-	arg_16_0._allItemComps[arg_16_2] = nil
+function var_0_0._recycleItem(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
+	arg_17_0._allItemComps[arg_17_2] = nil
 end
 
-function var_0_0._onClickItem(arg_17_0, arg_17_1)
-	arg_17_0._infoPanel:updateMo(arg_17_1._mo)
+function var_0_0._onClickItem(arg_18_0, arg_18_1)
+	arg_18_0._infoPanel:updateMo(arg_18_1._mo)
 end
 
-function var_0_0._createRightNpcItem(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
-	local var_18_0 = gohelper.findChildImage(arg_18_1, "#simage_chess")
-	local var_18_1 = gohelper.findChildButtonWithAudio(arg_18_1, "")
+function var_0_0._createRightNpcItem(arg_19_0, arg_19_1, arg_19_2, arg_19_3)
+	local var_19_0 = gohelper.findChildImage(arg_19_1, "#simage_chess")
+	local var_19_1 = gohelper.findChildButtonWithAudio(arg_19_1, "")
 
-	UISpriteSetMgr.instance:setV2a2ChessSprite(var_18_0, arg_18_2.npcCo.headIcon, false)
-	arg_18_0:removeClickCb(var_18_1)
-	arg_18_0:addClickCb(var_18_1, arg_18_0._onClickNpc, arg_18_0, arg_18_2)
+	UISpriteSetMgr.instance:setV2a2ChessSprite(var_19_0, arg_19_2.npcCo.headIcon, false)
+	arg_19_0:removeClickCb(var_19_1)
+	arg_19_0:addClickCb(var_19_1, arg_19_0._onClickNpc, arg_19_0, arg_19_2)
 end
 
-function var_0_0._onClickNpc(arg_19_0, arg_19_1)
-	arg_19_0._infoPanel:updateMo(arg_19_1)
+function var_0_0._onClickNpc(arg_20_0, arg_20_1)
+	arg_20_0._infoPanel:updateMo(arg_20_1)
 end
 
-function var_0_0.refreshCurrency(arg_20_0, arg_20_1)
-	local var_20_0 = arg_20_1 and arg_20_0._resultMo.afterCurrencyItems or arg_20_0._resultMo.beforeCurrencyItems
-
-	for iter_20_0 = 1, 3 do
-		local var_20_1 = var_20_0[iter_20_0] or 0
-
-		arg_20_0["_txttag" .. iter_20_0].text = var_20_1
+function var_0_0.refreshCurrency(arg_21_0, arg_21_1)
+	if arg_21_1 then
+		arg_21_0._tweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.3, arg_21_0.setCurrItem, nil, arg_21_0)
+	else
+		arg_21_0:setCurrItem(0)
 	end
 end
 
-function var_0_0.onClickModalMask(arg_21_0)
-	arg_21_0:closeThis()
+function var_0_0.setCurrItem(arg_22_0, arg_22_1)
+	local var_22_0 = arg_22_0._resultMo.beforeCurrencyItems
+	local var_22_1 = arg_22_0._resultMo.afterCurrencyItems
+
+	for iter_22_0 = 1, 3 do
+		local var_22_2 = var_22_0[iter_22_0] or 0
+		local var_22_3 = var_22_1[iter_22_0] or 0
+		local var_22_4 = math.floor(var_22_2 + (var_22_3 - var_22_2) * arg_22_1)
+
+		arg_22_0["_txttag" .. iter_22_0].text = var_22_4
+	end
 end
 
-function var_0_0.onClose(arg_22_0)
-	TaskDispatcher.cancelTask(arg_22_0._delayShowChangeItem, arg_22_0)
-	TaskDispatcher.cancelTask(arg_22_0._delayShowAfterItem, arg_22_0)
+function var_0_0.onClickModalMask(arg_23_0)
+	arg_23_0:closeThis()
 end
 
-function var_0_0._openCurrencyTips(arg_23_0, arg_23_1)
-	local var_23_0 = arg_23_1.btn.transform
-	local var_23_1 = var_23_0.lossyScale
-	local var_23_2 = var_23_0.position
-	local var_23_3 = recthelper.getWidth(var_23_0)
-	local var_23_4 = recthelper.getHeight(var_23_0)
+function var_0_0.onClose(arg_24_0)
+	if arg_24_0._tweenId then
+		ZProj.TweenHelper.KillById(arg_24_0._tweenId)
+	end
 
-	var_23_2.x = var_23_2.x + var_23_3 / 2 * var_23_1.x
-	var_23_2.y = var_23_2.y - var_23_4 / 2 * var_23_1.y
+	TaskDispatcher.cancelTask(arg_24_0._delayShowChangeItem, arg_24_0)
+	TaskDispatcher.cancelTask(arg_24_0._delayShowAfterItem, arg_24_0)
+	TaskDispatcher.cancelTask(arg_24_0._delayCheckChange, arg_24_0)
+end
+
+function var_0_0._openCurrencyTips(arg_25_0, arg_25_1)
+	local var_25_0 = arg_25_1.btn.transform
+	local var_25_1 = var_25_0.lossyScale
+	local var_25_2 = var_25_0.position
+	local var_25_3 = recthelper.getWidth(var_25_0)
+	local var_25_4 = recthelper.getHeight(var_25_0)
+
+	var_25_2.x = var_25_2.x + var_25_3 / 2 * var_25_1.x
+	var_25_2.y = var_25_2.y - var_25_4 / 2 * var_25_1.y
 
 	ViewMgr.instance:openView(ViewName.SurvivalCurrencyTipView, {
 		arrow = "BL",
-		id = arg_23_1.id,
-		pos = var_23_2
+		id = arg_25_1.id,
+		pos = var_25_2
 	})
 end
 

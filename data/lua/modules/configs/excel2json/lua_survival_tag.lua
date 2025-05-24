@@ -2,11 +2,12 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	id = 1,
+	tagType = 5,
 	name = 2,
-	effect = 5,
-	color = 6,
-	tagType = 4,
+	effect = 6,
+	color = 7,
+	id = 1,
+	beHidden = 4,
 	desc = 3
 }
 local var_0_2 = {

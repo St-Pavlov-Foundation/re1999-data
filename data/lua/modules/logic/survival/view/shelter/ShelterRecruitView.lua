@@ -94,6 +94,8 @@ function var_0_0.onClickBtnRecuit(arg_7_0)
 	local var_7_7 = tabletool.len(arg_7_0.selectTags)
 
 	if var_7_7 == 0 or var_7_7 ~= var_7_6 then
+		GameFacade.showToast(ToastEnum.ShelterRecruitSelectNotEnough)
+
 		return
 	end
 
@@ -132,299 +134,282 @@ function var_0_0.onClickBtnMemberRecuit(arg_9_0)
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalRecruitNpcRequest(arg_9_0.selectNpcId)
+	SurvivalWeekRpc.instance:sendSurvivalRecruitNpcRequest(arg_9_0.selectNpcId, arg_9_0.onSurvivalRecruitNpc, arg_9_0)
 end
 
-function var_0_0.onClickBtnCloseRecruit(arg_10_0)
+function var_0_0.onSurvivalRecruitNpc(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	if arg_10_2 ~= 0 then
+		return
+	end
+
+	local var_10_0 = SurvivalBagItemMo.New()
+
+	var_10_0:init({
+		count = 1,
+		id = arg_10_0.selectNpcId
+	})
+
+	var_10_0.source = SurvivalEnum.ItemSource.Drop
+
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalGetRewardView, {
+		items = {
+			var_10_0
+		}
+	})
+	arg_10_0:closeThis()
+end
+
+function var_0_0.onClickBtnCloseRecruit(arg_11_0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalAbandonRecruitNpc, MsgBoxEnum.BoxType.Yes_No, arg_11_0._sendAbandonRecruitNpc, nil, nil, arg_11_0, nil, nil)
+end
+
+function var_0_0._sendAbandonRecruitNpc(arg_12_0)
 	SurvivalWeekRpc.instance:sendSurvivalAbandonRecruitNpcRequest()
+	arg_12_0:closeThis()
 end
 
-function var_0_0.onClickTag(arg_11_0, arg_11_1)
-	if not arg_11_0.recruitInfo then
+function var_0_0.onClickTag(arg_13_0, arg_13_1)
+	if not arg_13_0.recruitInfo then
 		return
 	end
 
-	local var_11_0 = arg_11_1.tagId
+	local var_13_0 = arg_13_1.tagId
 
-	if var_11_0 == nil or var_11_0 == 0 then
+	if var_13_0 == nil or var_13_0 == 0 then
 		return
 	end
 
-	if not arg_11_0.recruitInfo:isCanRecruit() then
+	if not arg_13_0.recruitInfo:isCanRecruit() then
 		return
 	end
 
-	if arg_11_0.selectTags[var_11_0] ~= nil then
-		arg_11_0.selectTags[var_11_0] = nil
+	if arg_13_0.selectTags[var_13_0] ~= nil then
+		arg_13_0.selectTags[var_13_0] = nil
 	else
-		if arg_11_0.recruitInfo.selectCount == tabletool.len(arg_11_0.selectTags) then
+		if arg_13_0.recruitInfo.selectCount == tabletool.len(arg_13_0.selectTags) then
 			return
 		end
 
-		arg_11_0.selectTags[var_11_0] = true
+		arg_13_0.selectTags[var_13_0] = true
 	end
 
-	arg_11_0:refreshTagList()
+	arg_13_0:refreshTagList()
 end
 
-function var_0_0.onClickNpc(arg_12_0, arg_12_1)
-	if not arg_12_1.data then
+function var_0_0.onClickNpc(arg_14_0, arg_14_1)
+	if not arg_14_1.data then
 		return
 	end
 
-	local var_12_0 = arg_12_1.data.npcId
+	local var_14_0 = arg_14_1.data.npcId
 
-	if var_12_0 == arg_12_0.selectNpcId then
-		arg_12_0.selectNpcId = 0
+	if var_14_0 == arg_14_0.selectNpcId then
+		arg_14_0.selectNpcId = 0
 	else
-		arg_12_0.selectNpcId = var_12_0
+		arg_14_0.selectNpcId = var_14_0
 	end
 
-	arg_12_0:refreshNpcList()
+	arg_14_0:refreshNpcList()
 end
 
-function var_0_0.onRecruitDataUpdate(arg_13_0)
-	arg_13_0:refreshView()
+function var_0_0.onRecruitDataUpdate(arg_15_0)
+	arg_15_0:refreshView()
 end
 
-function var_0_0.onOpen(arg_14_0)
-	arg_14_0:refreshView()
+function var_0_0.onOpen(arg_16_0)
+	arg_16_0:refreshView()
 end
 
-function var_0_0.refreshView(arg_15_0)
-	arg_15_0.recruitInfo = SurvivalShelterModel.instance:getWeekInfo():getRecruitInfo()
+function var_0_0.refreshView(arg_17_0)
+	arg_17_0.recruitInfo = SurvivalShelterModel.instance:getWeekInfo():getRecruitInfo()
 
-	if not arg_15_0.recruitInfo then
+	if not arg_17_0.recruitInfo then
 		return
 	end
 
-	local var_15_0 = arg_15_0.recruitInfo:isCanSelectNpc()
+	local var_17_0 = arg_17_0.recruitInfo:isCanSelectNpc()
 
-	gohelper.setActive(arg_15_0.goDemand, not var_15_0)
-	gohelper.setActive(arg_15_0.goMember, var_15_0)
+	gohelper.setActive(arg_17_0.goDemand, not var_17_0)
+	gohelper.setActive(arg_17_0.goMember, var_17_0)
 
-	if var_15_0 then
-		arg_15_0:refreshMemberView()
+	if var_17_0 then
+		arg_17_0:refreshMemberView()
 	else
-		arg_15_0:refreshDemandView()
+		arg_17_0:refreshDemandView()
 	end
 end
 
-function var_0_0.refreshDemandView(arg_16_0)
-	if arg_16_0.recruitInfo:isCanRecruit() then
-		gohelper.setActive(arg_16_0.goStandby, false)
-		gohelper.setActive(arg_16_0.goAnnounce, true)
-		arg_16_0:refreshDemandButton()
+function var_0_0.refreshDemandView(arg_18_0)
+	if arg_18_0.recruitInfo:isCanRecruit() then
+		gohelper.setActive(arg_18_0.goStandby, false)
+		gohelper.setActive(arg_18_0.goAnnounce, true)
+		arg_18_0:refreshDemandButton()
 	else
-		gohelper.setActive(arg_16_0.goStandby, true)
-		gohelper.setActive(arg_16_0.goAnnounce, false)
+		gohelper.setActive(arg_18_0.goStandby, true)
+		gohelper.setActive(arg_18_0.goAnnounce, false)
 	end
 
-	local var_16_0 = arg_16_0.recruitInfo.selectedTags
+	local var_18_0 = arg_18_0.recruitInfo.selectedTags
 
-	arg_16_0.selectTags = {}
+	arg_18_0.selectTags = {}
 
-	for iter_16_0, iter_16_1 in ipairs(var_16_0) do
-		arg_16_0.selectTags[iter_16_1] = true
+	for iter_18_0, iter_18_1 in ipairs(var_18_0) do
+		arg_18_0.selectTags[iter_18_1] = true
 	end
 
-	arg_16_0:refreshTagList()
+	arg_18_0:refreshTagList()
 end
 
-function var_0_0.refreshDemandButton(arg_17_0)
-	local var_17_0 = SurvivalShelterModel.instance:getWeekInfo()
-	local var_17_1 = arg_17_0.recruitInfo.config
-	local var_17_2 = arg_17_0.recruitInfo.canRefreshTimes > 0
+function var_0_0.refreshDemandButton(arg_19_0)
+	local var_19_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_19_1 = arg_19_0.recruitInfo.config
+	local var_19_2 = arg_19_0.recruitInfo.canRefreshTimes > 0
 
-	gohelper.setActive(arg_17_0.txtRefreshCost, not var_17_2)
+	gohelper.setActive(arg_19_0.txtRefreshCost, not var_19_2)
 
-	if not var_17_2 then
-		local var_17_3, var_17_4, var_17_5, var_17_6 = var_17_0.bag:costIsEnough(var_17_1 and var_17_1.refreshCost)
+	if not var_19_2 then
+		local var_19_3, var_19_4, var_19_5, var_19_6 = var_19_0.bag:costIsEnough(var_19_1 and var_19_1.refreshCost)
 
-		if var_17_3 then
-			arg_17_0.txtRefreshCost.text = string.format("%s/%s", var_17_6, var_17_5)
+		if var_19_3 then
+			arg_19_0.txtRefreshCost.text = tostring(var_19_5)
 		else
-			arg_17_0.txtRefreshCost.text = string.format("<color=#D74242>%s</color>/%s", var_17_6, var_17_5)
+			arg_19_0.txtRefreshCost.text = string.format("<color=#D74242>%s</color>", var_19_5)
 		end
 	end
 
-	local var_17_7, var_17_8, var_17_9, var_17_10 = var_17_0.bag:costIsEnough(var_17_1 and var_17_1.cost)
+	local var_19_7, var_19_8, var_19_9, var_19_10 = var_19_0.bag:costIsEnough(var_19_1 and var_19_1.cost)
 
-	if var_17_7 then
-		arg_17_0.txtRecuitCost.text = string.format("%s/%s", var_17_10, var_17_9)
+	if var_19_7 then
+		arg_19_0.txtRecuitCost.text = tostring(var_19_9)
 	else
-		arg_17_0.txtRecuitCost.text = string.format("<color=#D74242>%s</color>/%s", var_17_10, var_17_9)
+		arg_19_0.txtRecuitCost.text = string.format("<color=#D74242>%s</color>", var_19_9)
 	end
 end
 
-function var_0_0.refreshTagList(arg_18_0)
-	local var_18_0 = arg_18_0.recruitInfo.selectCount
-	local var_18_1 = tabletool.len(arg_18_0.selectTags)
-	local var_18_2 = arg_18_0.recruitInfo:isInRecruit()
-	local var_18_3 = var_18_0 == var_18_1 or var_18_2
-	local var_18_4 = arg_18_0.recruitInfo.tags
+function var_0_0.refreshTagList(arg_20_0)
+	local var_20_0 = arg_20_0.recruitInfo.selectCount
+	local var_20_1 = tabletool.len(arg_20_0.selectTags)
+	local var_20_2 = arg_20_0.recruitInfo:isInRecruit()
+	local var_20_3 = var_20_0 == var_20_1 or var_20_2
+	local var_20_4 = arg_20_0.recruitInfo.tags
 
-	for iter_18_0 = 1, math.max(#var_18_4, #arg_18_0.tagList) do
-		local var_18_5 = arg_18_0:getTagItem(iter_18_0)
+	for iter_20_0 = 1, math.max(#var_20_4, #arg_20_0.tagList) do
+		local var_20_5 = arg_20_0:getTagItem(iter_20_0)
 
-		arg_18_0:refreshTagItem(var_18_5, var_18_4[iter_18_0], var_18_3)
+		arg_20_0:refreshTagItem(var_20_5, var_20_4[iter_20_0], var_20_3)
 	end
 
-	if var_18_2 then
-		arg_18_0.txtDemandTips.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_recruitview_menber_tips"), var_18_1, var_18_0)
+	if var_20_2 then
+		arg_20_0.txtDemandTips.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_recruitview_menber_tips"), var_20_1, var_20_0)
 	else
-		arg_18_0.txtDemandTips.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_recruitview_demand_tips"), var_18_1, var_18_0)
+		arg_20_0.txtDemandTips.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_recruitview_demand_tips"), var_20_1, var_20_0)
+
+		ZProj.UGUIHelper.SetGrayscale(arg_20_0.btnRecuit.gameObject, not var_20_3)
 	end
 end
 
-function var_0_0.getTagItem(arg_19_0, arg_19_1)
-	local var_19_0 = arg_19_0.tagList[arg_19_1]
+function var_0_0.getTagItem(arg_21_0, arg_21_1)
+	local var_21_0 = arg_21_0.tagList[arg_21_1]
 
-	if not var_19_0 then
-		var_19_0 = arg_19_0:getUserDataTb_()
-		var_19_0.go = gohelper.cloneInPlace(arg_19_0.goTagItem, tostring(arg_19_1))
-		var_19_0.imageBg = gohelper.findChildImage(var_19_0.go, "#image_BG")
-		var_19_0.goSelect = gohelper.findChild(var_19_0.go, "#go_Selected")
-		var_19_0.txtTile = gohelper.findChildTextMesh(var_19_0.go, "#txt_Title")
-		var_19_0.txtDesc = gohelper.findChildTextMesh(var_19_0.go, "#txt_Descr")
-		var_19_0.canvasGroup = gohelper.onceAddComponent(var_19_0.go, typeof(UnityEngine.CanvasGroup))
-		var_19_0.goMask = gohelper.findChild(var_19_0.go, "mask")
-		var_19_0.btn = gohelper.findChildButtonWithAudio(var_19_0.go, "Click")
+	if not var_21_0 then
+		var_21_0 = arg_21_0:getUserDataTb_()
+		var_21_0.go = gohelper.cloneInPlace(arg_21_0.goTagItem, tostring(arg_21_1))
+		var_21_0.imageBg = gohelper.findChildImage(var_21_0.go, "#image_BG")
+		var_21_0.goSelect = gohelper.findChild(var_21_0.go, "#go_Selected")
+		var_21_0.txtTile = gohelper.findChildTextMesh(var_21_0.go, "#txt_Title")
+		var_21_0.txtDesc = gohelper.findChildTextMesh(var_21_0.go, "#txt_Descr")
+		var_21_0.canvasGroup = gohelper.onceAddComponent(var_21_0.go, typeof(UnityEngine.CanvasGroup))
+		var_21_0.goMask = gohelper.findChild(var_21_0.go, "mask")
+		var_21_0.btn = gohelper.findChildButtonWithAudio(var_21_0.go, "Click")
 
-		var_19_0.btn:AddClickListener(arg_19_0.onClickTag, arg_19_0, var_19_0)
+		var_21_0.btn:AddClickListener(arg_21_0.onClickTag, arg_21_0, var_21_0)
 
-		var_19_0.animator = var_19_0.go:GetComponent(gohelper.Type_Animator)
-		arg_19_0.tagList[arg_19_1] = var_19_0
+		var_21_0.animator = var_21_0.go:GetComponent(gohelper.Type_Animator)
+		arg_21_0.tagList[arg_21_1] = var_21_0
 	end
 
-	return var_19_0
+	return var_21_0
 end
 
-function var_0_0.refreshTagItem(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
-	arg_20_1.tagId = arg_20_2
+function var_0_0.refreshTagItem(arg_22_0, arg_22_1, arg_22_2, arg_22_3)
+	arg_22_1.tagId = arg_22_2
 
-	if not arg_20_2 then
-		gohelper.setActive(arg_20_1.go, false)
+	if not arg_22_2 then
+		gohelper.setActive(arg_22_1.go, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_20_1.go, true)
+	gohelper.setActive(arg_22_1.go, true)
 
-	local var_20_0 = SurvivalConfig.instance:getTagCo(arg_20_2)
+	local var_22_0 = SurvivalConfig.instance:getTagCo(arg_22_2)
 
-	if not var_20_0 then
+	if not var_22_0 then
 		return
 	end
 
-	arg_20_1.txtTile.text = var_20_0.name
-	arg_20_1.txtDesc.text = var_20_0.desc
+	arg_22_1.txtTile.text = var_22_0.name
+	arg_22_1.txtDesc.text = var_22_0.desc
 
-	local var_20_1 = arg_20_0.selectTags[arg_20_2]
+	local var_22_1 = arg_22_0.selectTags[arg_22_2]
 
-	gohelper.setActive(arg_20_1.goSelect, var_20_1)
+	gohelper.setActive(arg_22_1.goSelect, var_22_1)
 
-	local var_20_2 = arg_20_3 and not var_20_1 and 0.5 or 1
+	local var_22_2 = arg_22_3 and not var_22_1 and 0.5 or 1
 
-	arg_20_1.canvasGroup.alpha = var_20_2
+	arg_22_1.canvasGroup.alpha = var_22_2
 
-	gohelper.setActive(arg_20_1.goMask, var_20_2 ~= 1)
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_20_1.imageBg, string.format("survivalshelterrecruit_charbg%s", var_20_0.tagType))
+	gohelper.setActive(arg_22_1.goMask, var_22_2 ~= 1)
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_22_1.imageBg, string.format("survivalshelterrecruit_charbg%s", var_22_0.color))
 end
 
-function var_0_0.refreshMemberView(arg_21_0)
-	arg_21_0.selectNpcId = 0
+function var_0_0.refreshMemberView(arg_23_0)
+	arg_23_0.selectNpcId = 0
 
-	arg_21_0:refreshNpcList()
+	arg_23_0:refreshNpcList()
 end
 
-function var_0_0.refreshNpcList(arg_22_0)
-	local var_22_0 = arg_22_0.recruitInfo.goodList
+function var_0_0.refreshNpcList(arg_24_0)
+	local var_24_0 = arg_24_0.recruitInfo.goodList
 
-	for iter_22_0 = 1, math.max(#var_22_0, #arg_22_0.npcList) do
-		local var_22_1 = arg_22_0:getNpcItem(iter_22_0)
+	for iter_24_0 = 1, math.max(#var_24_0, #arg_24_0.npcList) do
+		local var_24_1 = arg_24_0:getNpcItem(iter_24_0)
 
-		arg_22_0:refreshNpcItem(var_22_1, var_22_0[iter_22_0])
+		arg_24_0:refreshNpcItem(var_24_1, var_24_0[iter_24_0])
 	end
 
-	local var_22_2 = arg_22_0.selectNpcId ~= nil and arg_22_0.selectNpcId ~= 0
+	local var_24_2 = arg_24_0.selectNpcId ~= nil and arg_24_0.selectNpcId ~= 0
 
-	ZProj.UGUIHelper.SetGrayscale(arg_22_0.btnMemberRecuit.gameObject, not var_22_2)
+	ZProj.UGUIHelper.SetGrayscale(arg_24_0.btnMemberRecuit.gameObject, not var_24_2)
 end
 
-function var_0_0.getNpcItem(arg_23_0, arg_23_1)
-	local var_23_0 = arg_23_0.npcList[arg_23_1]
-
-	if not var_23_0 then
-		var_23_0 = arg_23_0:getUserDataTb_()
-		var_23_0.go = gohelper.cloneInPlace(arg_23_0.goNpcItem, tostring(arg_23_1))
-		var_23_0.imageChess = gohelper.findChildImage(var_23_0.go, "#image_Chess")
-		var_23_0.txtName = gohelper.findChildTextMesh(var_23_0.go, "#txt_PartnerName")
-		var_23_0.goSelect = gohelper.findChild(var_23_0.go, "#go_Selected")
-		var_23_0.goAttrItem = gohelper.findChild(var_23_0.go, "Scroll View/Viewport/#go_content/#go_Attr")
-
-		gohelper.setActive(var_23_0.goAttrItem, false)
-
-		var_23_0.attrItemList = {}
-		var_23_0.btn = gohelper.findChildButtonWithAudio(var_23_0.go, "")
-
-		var_23_0.btn:AddClickListener(arg_23_0.onClickNpc, arg_23_0, var_23_0)
-
-		arg_23_0.npcList[arg_23_1] = var_23_0
-	end
-
-	return var_23_0
-end
-
-function var_0_0.refreshNpcItem(arg_24_0, arg_24_1, arg_24_2)
-	arg_24_1.data = arg_24_2
-
-	if not arg_24_2 then
-		gohelper.setActive(arg_24_1.go, false)
-
-		return
-	end
-
-	gohelper.setActive(arg_24_1.go, true)
-
-	local var_24_0 = arg_24_2.npcId
-	local var_24_1 = SurvivalConfig.instance:getNpcConfig(var_24_0)
-
-	gohelper.setActive(arg_24_1.goSelect, var_24_0 == arg_24_0.selectNpcId)
-
-	if not var_24_1 then
-		return
-	end
-
-	arg_24_1.txtName.text = var_24_1.name
-
-	UISpriteSetMgr.instance:setV2a2ChessSprite(arg_24_1.imageChess, var_24_1.headIcon)
-
-	local var_24_2 = string.splitToNumber(var_24_1.tag, "#")
-
-	for iter_24_0 = 1, math.max(#var_24_2, #arg_24_1.attrItemList) do
-		local var_24_3 = arg_24_0:getNpcAttrItem(arg_24_1, iter_24_0)
-
-		arg_24_0:refreshNpcAttrItem(var_24_3, var_24_2[iter_24_0])
-	end
-end
-
-function var_0_0.getNpcAttrItem(arg_25_0, arg_25_1, arg_25_2)
-	local var_25_0 = arg_25_1.attrItemList[arg_25_2]
+function var_0_0.getNpcItem(arg_25_0, arg_25_1)
+	local var_25_0 = arg_25_0.npcList[arg_25_1]
 
 	if not var_25_0 then
 		var_25_0 = arg_25_0:getUserDataTb_()
-		var_25_0.go = gohelper.cloneInPlace(arg_25_1.goAttrItem, tostring(arg_25_2))
-		var_25_0.txtTitle = gohelper.findChildTextMesh(var_25_0.go, "image_TitleBG/#txt_Title")
-		var_25_0.txtDesc = gohelper.findChildTextMesh(var_25_0.go, "")
-		var_25_0.imgTitle = gohelper.findChildImage(var_25_0.go, "image_TitleBG")
-		arg_25_1.attrItemList[arg_25_2] = var_25_0
+		var_25_0.go = gohelper.cloneInPlace(arg_25_0.goNpcItem, tostring(arg_25_1))
+		var_25_0.imageChess = gohelper.findChildImage(var_25_0.go, "#image_Chess")
+		var_25_0.txtName = gohelper.findChildTextMesh(var_25_0.go, "#txt_PartnerName")
+		var_25_0.goSelect = gohelper.findChild(var_25_0.go, "#go_Selected")
+		var_25_0.goAttrItem = gohelper.findChild(var_25_0.go, "Scroll View/Viewport/#go_content/#go_Attr")
+
+		gohelper.setActive(var_25_0.goAttrItem, false)
+
+		var_25_0.attrItemList = {}
+		var_25_0.btn = gohelper.findChildButtonWithAudio(var_25_0.go, "")
+
+		var_25_0.btn:AddClickListener(arg_25_0.onClickNpc, arg_25_0, var_25_0)
+
+		arg_25_0.npcList[arg_25_1] = var_25_0
 	end
 
 	return var_25_0
 end
 
-function var_0_0.refreshNpcAttrItem(arg_26_0, arg_26_1, arg_26_2)
+function var_0_0.refreshNpcItem(arg_26_0, arg_26_1, arg_26_2)
+	arg_26_1.data = arg_26_2
+
 	if not arg_26_2 then
 		gohelper.setActive(arg_26_1.go, false)
 
@@ -433,24 +418,70 @@ function var_0_0.refreshNpcAttrItem(arg_26_0, arg_26_1, arg_26_2)
 
 	gohelper.setActive(arg_26_1.go, true)
 
-	local var_26_0 = lua_survival_tag.configDict[arg_26_2]
+	local var_26_0 = arg_26_2.npcId
+	local var_26_1 = SurvivalConfig.instance:getNpcConfig(var_26_0)
 
-	arg_26_1.txtTitle.text = var_26_0.name
-	arg_26_1.txtDesc.text = var_26_0.desc
+	gohelper.setActive(arg_26_1.goSelect, var_26_0 == arg_26_0.selectNpcId)
 
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_26_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_26_0.color))
+	if not var_26_1 then
+		return
+	end
+
+	arg_26_1.txtName.text = var_26_1.name
+
+	UISpriteSetMgr.instance:setV2a2ChessSprite(arg_26_1.imageChess, var_26_1.headIcon)
+
+	local var_26_2, var_26_3 = SurvivalConfig.instance:getNpcConfigTag(var_26_0)
+
+	for iter_26_0 = 1, math.max(#var_26_3, #arg_26_1.attrItemList) do
+		local var_26_4 = arg_26_0:getNpcAttrItem(arg_26_1, iter_26_0)
+
+		arg_26_0:refreshNpcAttrItem(var_26_4, var_26_3[iter_26_0])
+	end
 end
 
-function var_0_0.onClose(arg_27_0)
-	for iter_27_0, iter_27_1 in pairs(arg_27_0.tagList) do
-		iter_27_1.btn:RemoveClickListener()
+function var_0_0.getNpcAttrItem(arg_27_0, arg_27_1, arg_27_2)
+	local var_27_0 = arg_27_1.attrItemList[arg_27_2]
+
+	if not var_27_0 then
+		var_27_0 = arg_27_0:getUserDataTb_()
+		var_27_0.go = gohelper.cloneInPlace(arg_27_1.goAttrItem, tostring(arg_27_2))
+		var_27_0.txtTitle = gohelper.findChildTextMesh(var_27_0.go, "image_TitleBG/#txt_Title")
+		var_27_0.txtDesc = gohelper.findChildTextMesh(var_27_0.go, "")
+		var_27_0.imgTitle = gohelper.findChildImage(var_27_0.go, "image_TitleBG")
+		arg_27_1.attrItemList[arg_27_2] = var_27_0
 	end
 
-	for iter_27_2, iter_27_3 in pairs(arg_27_0.npcList) do
-		iter_27_3.btn:RemoveClickListener()
+	return var_27_0
+end
+
+function var_0_0.refreshNpcAttrItem(arg_28_0, arg_28_1, arg_28_2)
+	if not arg_28_2 then
+		gohelper.setActive(arg_28_1.go, false)
+
+		return
 	end
 
-	TaskDispatcher.cancelTask(arg_27_0.refreshView, arg_27_0)
+	gohelper.setActive(arg_28_1.go, true)
+
+	local var_28_0 = lua_survival_tag.configDict[arg_28_2]
+
+	arg_28_1.txtTitle.text = var_28_0.name
+	arg_28_1.txtDesc.text = var_28_0.desc
+
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_28_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_28_0.color))
+end
+
+function var_0_0.onClose(arg_29_0)
+	for iter_29_0, iter_29_1 in pairs(arg_29_0.tagList) do
+		iter_29_1.btn:RemoveClickListener()
+	end
+
+	for iter_29_2, iter_29_3 in pairs(arg_29_0.npcList) do
+		iter_29_3.btn:RemoveClickListener()
+	end
+
+	TaskDispatcher.cancelTask(arg_29_0.refreshView, arg_29_0)
 end
 
 return var_0_0

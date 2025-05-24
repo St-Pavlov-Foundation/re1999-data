@@ -160,7 +160,8 @@ function var_0_0._showBuildEffect(arg_15_0)
 
 	local var_15_1 = var_15_0.level > 1
 
-	arg_15_0._effectDelayTime = var_15_1 and 2 or 1
+	arg_15_0._effectDelayTime = 1
+	arg_15_0._effectAudioId = var_15_1 and AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_transmit or AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_build
 
 	local var_15_2 = var_15_1 and SurvivalEnum.UnitEffectPath.Transfer2 or SurvivalEnum.UnitEffectPath.CreateUnit
 
@@ -184,6 +185,10 @@ function var_0_0.loadEffect(arg_16_0, arg_16_1)
 end
 
 function var_0_0._onBuildEffectLoaded(arg_17_0)
+	if arg_17_0._effectAudioId then
+		AudioMgr.instance:trigger(arg_17_0._effectAudioId)
+	end
+
 	if arg_17_0._effectDelayTime then
 		TaskDispatcher.runDelay(arg_17_0._onBuildEffectPlayFinish, arg_17_0, arg_17_0._effectDelayTime)
 	else

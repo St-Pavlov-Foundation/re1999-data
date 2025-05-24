@@ -16,7 +16,13 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 	end
 
 	if (arg_1_0._stepMo.paramInt[1] or 0) == 1002 then
-		arg_1_1.tryTrigger = var_1_0
+		if type(arg_1_1.tryTrigger) == "table" then
+			for iter_1_2 in pairs(var_1_0) do
+				arg_1_1.tryTrigger[iter_1_2] = true
+			end
+		else
+			arg_1_1.tryTrigger = var_1_0
+		end
 	end
 
 	arg_1_0:onDone(true)

@@ -32,16 +32,24 @@ function var_0_0.onUpdateParam(arg_6_0)
 end
 
 function var_0_0.onOpen(arg_7_0)
-	return
+	arg_7_0:addEventCb(ViewMgr.instance, ViewEvent.DestroyViewFinish, arg_7_0._destroyViewFinish, arg_7_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_warn)
 end
 
-function var_0_0.onClose(arg_8_0)
+function var_0_0._destroyViewFinish(arg_8_0, arg_8_1)
+	if arg_8_1 == ViewName.SurvivalLoadingView then
+		gohelper.setActive(arg_8_0.viewGO, false)
+		gohelper.setActive(arg_8_0.viewGO, true)
+	end
+end
+
+function var_0_0.onClose(arg_9_0)
 	ViewMgr.instance:openView(ViewName.SurvivalMonsterEventView, {
 		showType = SurvivalEnum.SurvivalMonsterEventViewShowType.Watch
 	})
 end
 
-function var_0_0.onDestroyView(arg_9_0)
+function var_0_0.onDestroyView(arg_10_0)
 	return
 end
 

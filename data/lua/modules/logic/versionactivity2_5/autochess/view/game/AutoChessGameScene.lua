@@ -511,6 +511,7 @@ function var_0_0.immediatelyFlowDone(arg_29_0)
 		arg_29_0.immediatelyFlow = nil
 	end
 
+	AutoChessController.instance:dispatchEvent(AutoChessEvent.ImmediatelyFlowFinish)
 	AutoChessHelper.lockScreen("AutoChessGameScene", false)
 end
 

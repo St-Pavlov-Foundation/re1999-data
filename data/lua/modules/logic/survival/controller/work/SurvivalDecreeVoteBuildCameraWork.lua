@@ -14,6 +14,7 @@ function var_0_0.onStart(arg_3_0)
 	local var_3_0, var_3_1, var_3_2 = SurvivalHelper.instance:hexPointToWorldPoint(arg_3_0.playerPos.q, arg_3_0.playerPos.r)
 
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.TweenCameraFocus, Vector3(var_3_0, var_3_1, var_3_2))
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.ChangeCameraScale, 0.44)
 	arg_3_0:onBuildFinish()
 end
 

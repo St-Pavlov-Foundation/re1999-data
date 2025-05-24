@@ -36,6 +36,7 @@ end
 function var_0_0.onOpen(arg_5_0)
 	arg_5_0:refreshParam()
 	arg_5_0:refreshView()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_gudu_win)
 end
 
 function var_0_0.onUpdateParam(arg_6_0)

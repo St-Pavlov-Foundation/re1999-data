@@ -366,6 +366,8 @@ function var_0_0.onIconClick(arg_27_0, arg_27_1)
 		AudioMgr.instance:trigger(AudioEnum.Handbook.play_ui_tujianskin_group_open)
 		HandbookController.instance:statSkinSuitDetail(arg_27_1)
 	end
+
+	arg_27_0:_refreshPoint()
 end
 
 function var_0_0.playSceneEnterAni(arg_28_0, arg_28_1)

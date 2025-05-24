@@ -6,7 +6,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._textPlayerName = gohelper.findChildText(arg_1_0.viewGO, "#txt_Name")
 	arg_1_0._playerHeadicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "HeroHeadIcon/#simage_headicon")
 	arg_1_0._playerBadge = gohelper.findChildText(arg_1_0.viewGO, "Badge/#txt_badge")
-	arg_1_0._btnSelectFriend = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_Check")
+	arg_1_0._btnSelectFriend = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btnClick")
 
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()

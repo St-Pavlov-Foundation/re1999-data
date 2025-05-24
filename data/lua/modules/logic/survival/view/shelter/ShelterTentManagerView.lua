@@ -82,14 +82,21 @@ end
 function var_0_0.onClickSmallItem(arg_10_0, arg_10_1)
 	local var_10_0 = arg_10_1.parentItem.data.buildingInfo
 	local var_10_1 = SurvivalShelterTentListModel.instance:setSelectBuildingId(var_10_0.id)
-	local var_10_2 = arg_10_1.index - 1
+	local var_10_2 = false
 
-	if SurvivalShelterTentListModel.instance:setSelectPos(var_10_2) or var_10_1 then
+	if not var_10_1 then
+		local var_10_3 = arg_10_1.index - 1
+
+		var_10_2 = SurvivalShelterTentListModel.instance:setSelectPos(var_10_3)
+	end
+
+	if var_10_2 or var_10_1 then
 		arg_10_0:refreshView()
 	end
 end
 
 function var_0_0.onOpen(arg_11_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_1)
 	SurvivalShelterTentListModel.instance:initViewParam(arg_11_0.viewParam)
 	arg_11_0:refreshFilter()
 	arg_11_0:refreshView()
@@ -415,7 +422,7 @@ function var_0_0.refreshNpcInfoView(arg_25_0)
 	arg_25_0.npcInfoView:refreshParam(var_25_2)
 end
 
-function var_0_0.onClose(arg_26_0)
+function var_0_0.onDestroyView(arg_26_0)
 	for iter_26_0, iter_26_1 in pairs(arg_26_0.itemList) do
 		iter_26_1.btn:RemoveClickListener()
 

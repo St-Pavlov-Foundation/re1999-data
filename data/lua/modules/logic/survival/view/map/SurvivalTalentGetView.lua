@@ -49,6 +49,12 @@ function var_0_0.nextStep(arg_6_0)
 	local var_6_2 = var_6_1.groupId
 	local var_6_3 = lua_survival_talent_group.configDict[var_6_2]
 
+	if not var_6_3 then
+		logError("没有天赋分支配置" .. tostring(var_6_2))
+
+		return
+	end
+
 	arg_6_0._imageicon:LoadImage(ResUrl.getSurvivalTalentIcon(var_6_3.folder .. "/icon_tianfu_" .. var_6_1.pos))
 
 	arg_6_0._txtname.text = var_6_1.name

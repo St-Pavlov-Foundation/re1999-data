@@ -160,10 +160,23 @@ function var_0_0.refreshMonster(arg_15_0)
 			var_15_3 = var_15_0.fightId
 		end
 
+		if var_15_2 then
+			local var_15_4 = ViewMgr.instance:getUILayer(UILayerName.PopUpTop)
+
+			gohelper.setActive(var_15_4, false)
+			PopupController.instance:setPause(ViewName.SurvivalGetRewardView, true)
+		end
+
 		arg_15_0:refreshEntity(SurvivalEnum.ShelterUnitType.Monster, var_15_3, var_15_1 or var_15_2)
 
-		if not var_15_2 then
+		if var_15_2 ~= nil and not var_15_2 then
+			local var_15_5 = ViewMgr.instance:getUILayer(UILayerName.PopUpTop)
+
+			gohelper.setActive(var_15_5, true)
+			PopupController.instance:setPause(ViewName.SurvivalGetRewardView, false)
 			arg_15_0:refreshEntity(SurvivalEnum.ShelterUnitType.Player, 0, true)
+			SurvivalController.instance:dispatchEvent(SurvivalEvent.BossPerformFinish)
+			SurvivalShelterModel.instance:setNeedShowFightSuccess(nil, nil)
 		end
 	end
 end

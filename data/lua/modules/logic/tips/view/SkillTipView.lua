@@ -63,6 +63,8 @@ function var_0_0.hideInfo(arg_6_0)
 		arg_6_0._normalSkillLevelComp.upgraded = false
 		arg_6_0._normalSkillLevelComp._upgradeSelectShow = false
 	end
+
+	arg_6_0._curSkillLevel = nil
 end
 
 function var_0_0._getLevelComp(arg_7_0, arg_7_1)
@@ -91,7 +93,10 @@ function var_0_0.initInfo(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
 
 	var_9_0.viewName = arg_9_0.viewName
 	var_9_0.entityId = arg_9_3
-	var_9_0.monsterName = var_9_0.monsterName or arg_9_0.monsterName
+
+	if arg_9_0.viewName == ViewName.FightFocusView then
+		var_9_0.monsterName = arg_9_0.monsterName
+	end
 
 	local var_9_1 = var_9_0.skillIdList
 
@@ -175,12 +180,14 @@ function var_0_0.onClickSkillItem(arg_12_0, arg_12_1)
 
 	arg_12_0._curSkillLevel = arg_12_1
 
+	if arg_12_0._normalSkillLevelComp then
+		arg_12_0._normalSkillLevelComp:_refreshSkill(arg_12_1)
+	end
+
 	if arg_12_0._skillTiplLevelComps and #arg_12_0._skillTiplLevelComps > 0 then
 		for iter_12_0, iter_12_1 in ipairs(arg_12_0._skillTiplLevelComps) do
 			iter_12_1:_refreshSkill(arg_12_1)
 		end
-	elseif arg_12_0._normalSkillLevelComp then
-		arg_12_0._normalSkillLevelComp:_refreshSkill(arg_12_1)
 	end
 end
 

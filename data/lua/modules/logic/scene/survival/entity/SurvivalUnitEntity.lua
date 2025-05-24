@@ -114,12 +114,6 @@ function var_0_0.tryRemove(arg_9_0, arg_9_1)
 end
 
 function var_0_0._delayDestroy(arg_10_0)
-	if arg_10_0._loader then
-		arg_10_0._loader:dispose()
-
-		arg_10_0._loader = nil
-	end
-
 	gohelper.destroy(arg_10_0.go)
 	arg_10_0:onDestroy()
 end
@@ -265,7 +259,7 @@ function var_0_0.updateIsShow(arg_22_0)
 	end
 
 	if arg_22_0._unitMo.id ~= 0 then
-		gohelper.setActive(arg_22_0._effectRoot, arg_22_0._curShowRes)
+		gohelper.setActive(arg_22_0._effectRoot, arg_22_0.isShow)
 	end
 
 	if arg_22_0._curShowRes ~= arg_22_0.isShow then
@@ -391,7 +385,13 @@ function var_0_0.playAnim(arg_28_0, arg_28_1)
 end
 
 function var_0_0.addEffect(arg_29_0, arg_29_1)
-	if arg_29_0._allEffects[arg_29_1] then
+	if not arg_29_0._allEffects or arg_29_0._allEffects[arg_29_1] then
+		return
+	end
+
+	if gohelper.isNil(arg_29_0._effectRoot) then
+		logError("SurvivalUnitEntity._effectRoot is nil")
+
 		return
 	end
 
@@ -404,7 +404,7 @@ function var_0_0.addEffect(arg_29_0, arg_29_1)
 end
 
 function var_0_0.removeEffect(arg_30_0, arg_30_1)
-	if not arg_30_0._allEffects[arg_30_1] then
+	if not arg_30_0._allEffects or not arg_30_0._allEffects[arg_30_1] then
 		return
 	end
 
@@ -415,6 +415,12 @@ function var_0_0.removeEffect(arg_30_0, arg_30_1)
 end
 
 function var_0_0.onDestroy(arg_31_0)
+	if arg_31_0._allEffects then
+		for iter_31_0, iter_31_1 in pairs(arg_31_0._allEffects) do
+			iter_31_1:dispose()
+		end
+	end
+
 	if arg_31_0._loader then
 		arg_31_0._loader:dispose()
 

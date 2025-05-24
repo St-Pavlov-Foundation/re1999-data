@@ -12,11 +12,13 @@ end
 function var_0_0.addEvents(arg_2_0)
 	var_0_0.super.addEvents(arg_2_0)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, arg_2_0._onViewClose, arg_2_0)
+	SurvivalController.instance:registerCallback(SurvivalEvent.OnNPCInTeamChange, arg_2_0._modifyNPCList, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
 	var_0_0.super.removeEvents(arg_3_0)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, arg_3_0._onViewClose, arg_3_0)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnNPCInTeamChange, arg_3_0._modifyNPCList, arg_3_0)
 end
 
 function var_0_0.onOpen(arg_4_0)
@@ -41,6 +43,10 @@ function var_0_0.onViewShow(arg_5_0)
 end
 
 function var_0_0._initNPCItemList(arg_6_0)
+	if arg_6_0._npcItemList then
+		return
+	end
+
 	arg_6_0._npcItemList = arg_6_0:getUserDataTb_()
 
 	local var_6_0 = arg_6_0.viewContainer:getSetting().otherRes.initNpcItem

@@ -25,6 +25,7 @@ function var_0_0.addEvents(arg_2_0)
 	arg_2_0._btntalent:AddClickListener(arg_2_0._btntalentOnClick, arg_2_0)
 	arg_2_0._btnequip:AddClickListener(arg_2_0._btnequipOnClick, arg_2_0)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, arg_2_0._onViewClose, arg_2_0)
+	SurvivalController.instance:registerCallback(SurvivalEvent.OnNPCInTeamChange, arg_2_0._modifyNPCList, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
@@ -33,6 +34,7 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btntalent:RemoveClickListener()
 	arg_3_0._btnequip:RemoveClickListener()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, arg_3_0._onViewClose, arg_3_0)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnNPCInTeamChange, arg_3_0._modifyNPCList, arg_3_0)
 end
 
 function var_0_0.onOpen(arg_4_0)
@@ -58,11 +60,10 @@ function var_0_0.updateTalentIcon(arg_5_0)
 		return
 	end
 
-	talentGroupId = var_5_0.talentBox.groupId
+	local var_5_1 = var_5_0.talentBox.groupId
+	local var_5_2 = lua_survival_talent_group.configDict[var_5_1]
 
-	local var_5_1 = lua_survival_talent_group.configDict[talentGroupId]
-
-	arg_5_0._imagetalentskill:LoadImage(ResUrl.getSurvivalTalentIcon(var_5_1.folder .. "/icon_1"))
+	arg_5_0._imagetalentskill:LoadImage(ResUrl.getSurvivalTalentIcon(var_5_2.folder .. "/icon_1"))
 end
 
 function var_0_0.onViewShow(arg_6_0)
@@ -147,6 +148,10 @@ function var_0_0._btnstartOnClick(arg_13_0)
 end
 
 function var_0_0._initHeroItemList(arg_14_0)
+	if arg_14_0._heroItemList then
+		return
+	end
+
 	arg_14_0._heroItemList = arg_14_0:getUserDataTb_()
 
 	local var_14_0 = arg_14_0.viewContainer:getSetting().otherRes.initHeroItemSmall
@@ -195,6 +200,10 @@ function var_0_0._updateHeroList(arg_15_0)
 end
 
 function var_0_0._initNPCItemList(arg_16_0)
+	if arg_16_0._npcItemList then
+		return
+	end
+
 	arg_16_0._npcItemList = arg_16_0:getUserDataTb_()
 
 	local var_16_0 = arg_16_0.viewContainer:getSetting().otherRes.initNpcItemSmall

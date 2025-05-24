@@ -47,4 +47,26 @@ function var_0_0.getBuildingById(arg_2_0, arg_2_1)
 	return arg_2_0.buildingDict[arg_2_1]
 end
 
+function var_0_0.getMainBuild(arg_3_0)
+	if arg_3_0.buildingDict == nil then
+		return nil
+	end
+
+	for iter_3_0, iter_3_1 in pairs(arg_3_0.buildingDict) do
+		if iter_3_1 then
+			local var_3_0 = lua_survival_building.configDict[iter_3_1.cfgId]
+
+			if var_3_0 then
+				for iter_3_2, iter_3_3 in pairs(var_3_0) do
+					if iter_3_3 and iter_3_3.type == SurvivalEnum.BuildingType.Base then
+						return iter_3_1
+					end
+				end
+			end
+		end
+	end
+
+	return nil
+end
+
 return var_0_0

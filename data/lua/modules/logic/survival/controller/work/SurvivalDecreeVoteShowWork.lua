@@ -11,6 +11,7 @@ function var_0_0.initParam(arg_2_0, arg_2_1)
 	arg_2_0.callback = arg_2_1.callback
 	arg_2_0.callbackObj = arg_2_1.callbackObj
 	arg_2_0.time = arg_2_1.time or 0
+	arg_2_0.audioId = arg_2_1.audioId
 end
 
 function var_0_0.onStart(arg_3_0)
@@ -18,6 +19,10 @@ function var_0_0.onStart(arg_3_0)
 
 	if arg_3_0.callback then
 		arg_3_0.callback(arg_3_0.callbackObj)
+	end
+
+	if arg_3_0.audioId then
+		AudioMgr.instance:trigger(arg_3_0.audioId)
 	end
 
 	TaskDispatcher.runDelay(arg_3_0.onBuildFinish, arg_3_0, arg_3_0.time)

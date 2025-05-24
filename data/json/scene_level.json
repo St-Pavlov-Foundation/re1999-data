@@ -6823,5 +6823,30 @@
     "bgm": 3200134,
     "ambientSound": 2300101,
     "sceneEffects": ""
+  },
+  {
+    "id": 222011,
+    "resName": "v1a8_m_s222_kqkcq_boss",
+    "sceneType": 1,
+    "sceneId": 222,
+    "cameraId": 0,
+    "cameraOffset": "[0,0.83,-2.64]",
+    "cardCamera": "",
+    "useBloom": 1,
+    "spineR": 0.7936543,
+    "spineG": 0.8082408,
+    "spineB": 0.8207547,
+    "bloomR": 0.867435,
+    "bloomG": 0.9053027,
+    "bloomB": 0.9528302,
+    "bloomA": 1.0,
+    "flickerSceneFactor": 0.38,
+    "bloomEffect": "",
+    "weatherEffect": 0,
+    "flyEffect": "",
+    "wadeEffect": "",
+    "bgm": 3210806,
+    "ambientSound": 3210804,
+    "sceneEffects": ""
   }
 ]

@@ -272,15 +272,19 @@ function var_0_0.onOpen(arg_21_0)
 	AutoChessGameModel.instance:setChessAvatar(arg_21_0._goChessAvatar)
 	arg_21_0:refreshUI()
 
-	if arg_21_0.viewParam and arg_21_0.viewParam.firstEnter then
-		if arg_21_0.moduleId == AutoChessEnum.ModuleId.PVP2 then
-			ViewMgr.instance:openView(ViewName.AutoChessCrazyModeTipView)
-		else
-			AutoChessController.instance:dispatchEvent(AutoChessEvent.ZTrigger28302)
+	if arg_21_0.viewParam then
+		if arg_21_0.viewParam.firstEnter then
+			if arg_21_0.moduleId == AutoChessEnum.ModuleId.PVP2 then
+				ViewMgr.instance:openView(ViewName.AutoChessCrazyModeTipView)
+			else
+				AutoChessController.instance:dispatchEvent(AutoChessEvent.ZTrigger28302)
+			end
 		end
-	else
-		arg_21_0:checkPopUp()
+
+		arg_21_0.startBuyEnd = true
 	end
+
+	arg_21_0:checkPopUp()
 end
 
 function var_0_0.onClose(arg_22_0)
@@ -567,9 +571,7 @@ function var_0_0.onForcePickReply(arg_44_0, arg_44_1)
 end
 
 function var_0_0.onMallRegionChange(arg_45_0)
-	arg_45_0.freeMall = AutoChessHelper.getMallRegionByType(arg_45_0.chessMo.svrMall.regions, AutoChessEnum.MallType.Free)
-
-	arg_45_0.freeItem:setData(arg_45_0.freeMall.mallId, arg_45_0.freeMall.items[1], true)
+	arg_45_0:refreshUI()
 	arg_45_0:checkForcePick()
 end
 

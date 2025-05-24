@@ -48,7 +48,7 @@ function var_0_0.onUpdateMO(arg_5_0, arg_5_1)
 	arg_5_0:refreshChapter()
 end
 
-function var_0_0.refreshReward(arg_6_0, arg_6_1)
+function var_0_0.refreshReward(arg_6_0)
 	local var_6_0 = arg_6_0.config
 	local var_6_1 = DungeonConfig.instance:getRewardItems(tonumber(var_6_0.reward))
 
@@ -75,8 +75,6 @@ function var_0_0.createRewardItem(arg_7_0, arg_7_1)
 
 	var_7_0.go = var_7_1
 	var_7_0.imagebg = gohelper.findChildImage(var_7_1, "bg")
-	var_7_0.simagereward = gohelper.findChildSingleImage(var_7_1, "simage_reward")
-	var_7_0.imagereward = gohelper.findChildImage(var_7_1, "simage_reward")
 	var_7_0.txtrewardcount = gohelper.findChildText(var_7_1, "txt_rewardcount")
 	var_7_0.goalreadygot = gohelper.findChild(var_7_1, "go_hasget")
 	var_7_0.gocanget = gohelper.findChild(var_7_1, "go_canget")
@@ -85,74 +83,86 @@ function var_0_0.createRewardItem(arg_7_0, arg_7_1)
 	var_7_0.btn:AddClickListener(arg_7_0.onClickItem, arg_7_0, var_7_0)
 
 	var_7_0.rewardAnim = var_7_0.go:GetComponent(typeof(UnityEngine.Animator))
-
-	function var_7_0.onLoadImageCallback(arg_8_0)
-		arg_8_0.imagereward:SetNativeSize()
-	end
+	var_7_0.goSp = gohelper.findChild(var_7_1, "reward_sp")
+	var_7_0.goNormal = gohelper.findChild(var_7_1, "goreward")
 
 	return var_7_0
 end
 
 local var_0_1 = Color.New(1, 1, 1, 1)
 
-function var_0_0.refreshRewardItem(arg_9_0, arg_9_1, arg_9_2)
-	arg_9_1.data = arg_9_2
+function var_0_0.refreshRewardItem(arg_8_0, arg_8_1, arg_8_2)
+	arg_8_1.data = arg_8_2
 
-	if not arg_9_2 then
-		gohelper.setActive(arg_9_1.go, false)
+	if not arg_8_2 then
+		gohelper.setActive(arg_8_1.go, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_9_1.go, true)
+	gohelper.setActive(arg_8_1.go, true)
 
-	local var_9_0 = arg_9_0.config
-	local var_9_1 = SurvivalModel.instance:getRewardState(var_9_0.id, var_9_0.score)
-	local var_9_2, var_9_3 = ItemModel.instance:getItemConfigAndIcon(arg_9_2[1], arg_9_2[2])
+	local var_8_0 = arg_8_0.config
+	local var_8_1 = SurvivalModel.instance:getRewardState(var_8_0.id, var_8_0.score)
+	local var_8_2, var_8_3 = ItemModel.instance:getItemConfigAndIcon(arg_8_2[1], arg_8_2[2])
 
-	if var_9_2 then
-		UISpriteSetMgr.instance:setSurvivalSprite(arg_9_1.imagebg, "survival_shelter_reward_quality_" .. var_9_2.rare)
+	if var_8_2 then
+		UISpriteSetMgr.instance:setSurvivalSprite(arg_8_1.imagebg, "survival_shelter_reward_quality_" .. var_8_2.rare)
 	end
 
-	if arg_9_2[1] == MaterialEnum.MaterialType.Equip then
-		var_9_3 = ResUrl.getHeroDefaultEquipIcon(var_9_2.icon)
+	if not arg_8_1.itemIcon then
+		arg_8_1.itemIcon = IconMgr.instance:getCommonPropItemIcon(arg_8_1.goNormal)
 	end
 
-	if var_9_3 then
-		arg_9_1.simagereward:LoadImage(var_9_3, arg_9_1.onLoadImageCallback, arg_9_1)
+	arg_8_1.itemIcon:setMOValue(arg_8_2[1], arg_8_2[2], arg_8_2[3], nil, true)
+
+	if arg_8_2[1] == MaterialEnum.MaterialType.Equip then
+		arg_8_1.itemIcon._equipIcon:_overrideLoadIconFunc(EquipHelper.getEquipDefaultIconLoadPath, arg_8_1.itemIcon._equipIcon)
+		arg_8_1.itemIcon._equipIcon:_loadIconImage()
 	end
 
-	arg_9_1.txtrewardcount.text = string.format("<size=25>x</size>%s", tostring(arg_9_2[3]))
+	arg_8_1.itemIcon:isShowQuality(false)
+	arg_8_1.itemIcon:isShowCount(false)
+	arg_8_1.itemIcon:hideEquipLvAndBreak(true)
 
-	gohelper.setActive(arg_9_1.goalreadygot, var_9_1 == 2)
-	gohelper.setActive(arg_9_1.gocanget, var_9_1 == 1)
+	arg_8_1.txtrewardcount.text = string.format("<size=25>x</size>%s", tostring(arg_8_2[3]))
 
-	if var_9_1 == 2 then
-		arg_9_1.rewardAnim.enabled = true
+	gohelper.setActive(arg_8_1.goalreadygot, var_8_1 == 2)
 
-		arg_9_1.rewardAnim:Play("dungeoncumulativerewardsitem_receiveenter")
-	elseif var_9_1 == 1 then
-		arg_9_1.rewardAnim.enabled = true
+	local var_8_4 = var_8_1 == 1
 
-		arg_9_1.rewardAnim:Play("dungeoncumulativerewardsitem_received")
+	gohelper.setActive(arg_8_1.gocanget, var_8_4)
+
+	local var_8_5 = arg_8_2[2] == 672801
+
+	gohelper.setActive(arg_8_1.goSp, var_8_5)
+	gohelper.setActive(arg_8_1.goNormal, not var_8_5)
+
+	if var_8_1 == 2 then
+		arg_8_1.rewardAnim.enabled = true
+
+		arg_8_1.rewardAnim:Play("dungeoncumulativerewardsitem_receiveenter")
+	elseif var_8_1 == 1 then
+		arg_8_1.rewardAnim.enabled = true
+
+		arg_8_1.rewardAnim:Play("dungeoncumulativerewardsitem_received")
 	else
-		arg_9_1.rewardAnim.enabled = false
-		arg_9_1.imagereward.color = var_0_1
-		arg_9_1.imagebg.color = var_0_1
+		arg_8_1.rewardAnim.enabled = false
+		arg_8_1.imagebg.color = var_0_1
 	end
 end
 
-function var_0_0.onClickItem(arg_10_0, arg_10_1)
-	if not arg_10_0.config then
+function var_0_0.onClickItem(arg_9_0, arg_9_1)
+	if not arg_9_0.config then
 		return
 	end
 
-	local var_10_0 = arg_10_0.config
+	local var_9_0 = arg_9_0.config
 
-	if SurvivalModel.instance:getRewardState(var_10_0.id, var_10_0.score) == 1 then
+	if SurvivalModel.instance:getRewardState(var_9_0.id, var_9_0.score) == 1 then
 		SurvivalOutSideRpc.instance:sendSurvivalOutSideGainReward(0)
-	elseif arg_10_1.data then
-		MaterialTipController.instance:showMaterialInfo(arg_10_1.data[1], arg_10_1.data[2])
+	elseif arg_9_1.data then
+		MaterialTipController.instance:showMaterialInfo(arg_9_1.data[1], arg_9_1.data[2])
 	end
 end
 
@@ -161,50 +171,49 @@ local var_0_3 = "#000000"
 local var_0_4 = "#994C3D"
 local var_0_5 = "#333333"
 
-function var_0_0.refreshChapter(arg_11_0)
-	local var_11_0 = arg_11_0.config
-	local var_11_1 = SurvivalModel.instance:getRewardState(var_11_0.id, var_11_0.score)
-	local var_11_2 = var_11_0.special == 1
-	local var_11_3 = "survival_shelter_reward_point2_0"
-	local var_11_4 = var_0_3
-	local var_11_5 = var_0_5
-	local var_11_6 = var_11_1 == 0
+function var_0_0.refreshChapter(arg_10_0)
+	local var_10_0 = arg_10_0.config
+	local var_10_1 = SurvivalModel.instance:getRewardState(var_10_0.id, var_10_0.score)
+	local var_10_2 = var_10_0.special == 1
+	local var_10_3 = "survival_shelter_reward_point2_0"
+	local var_10_4 = var_0_3
+	local var_10_5 = var_0_5
+	local var_10_6 = var_10_1 == 0
 
-	if var_11_6 then
-		var_11_3 = var_11_2 and "survival_shelter_reward_point1_0" or "survival_shelter_reward_point2_0"
+	if var_10_6 then
+		var_10_3 = var_10_2 and "survival_shelter_reward_point1_0" or "survival_shelter_reward_point2_0"
 	else
-		var_11_3 = var_11_2 and "survival_shelter_reward_point1_1" or "survival_shelter_reward_point2_1"
+		var_10_3 = var_10_2 and "survival_shelter_reward_point1_1" or "survival_shelter_reward_point2_1"
 
-		local var_11_7 = var_0_2
+		local var_10_7 = var_0_2
 
-		var_11_5 = var_0_4
+		var_10_5 = var_0_4
 	end
 
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_11_0._imagepoint, var_11_3)
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_10_0._imagepoint, var_10_3)
 
-	arg_11_0.txtScore.text = string.format("<color=%s>%s</color>", var_11_5, var_11_0.score)
-	arg_11_0.txtIndex.text = string.format("<color=%s>%02d</color>", var_11_5, arg_11_0._index)
+	arg_10_0.txtScore.text = string.format("<color=%s>%s</color>", var_10_5, var_10_0.score)
+	arg_10_0.txtIndex.text = string.format("<color=%s>%02d</color>", var_10_5, arg_10_0._index)
 
-	gohelper.setActive(arg_11_0._gospecial, var_11_2)
+	gohelper.setActive(arg_10_0._gospecial, var_10_2)
 
-	if var_11_2 then
-		gohelper.setActive(arg_11_0.goScoreBg, not var_11_6)
-		gohelper.setActive(arg_11_0.goScoreBgGrey, var_11_6)
+	if var_10_2 then
+		gohelper.setActive(arg_10_0.goScoreBg, not var_10_6)
+		gohelper.setActive(arg_10_0.goScoreBgGrey, var_10_6)
 	end
 end
 
-function var_0_0._editableInitView(arg_12_0)
+function var_0_0._editableInitView(arg_11_0)
 	return
 end
 
-function var_0_0.onDestroyView(arg_13_0)
-	if arg_13_0._rewardItems then
-		for iter_13_0, iter_13_1 in pairs(arg_13_0._rewardItems) do
-			iter_13_1.btn:RemoveClickListener()
-			iter_13_1.simagereward:UnLoadImage()
+function var_0_0.onDestroyView(arg_12_0)
+	if arg_12_0._rewardItems then
+		for iter_12_0, iter_12_1 in pairs(arg_12_0._rewardItems) do
+			iter_12_1.btn:RemoveClickListener()
 		end
 
-		arg_13_0._rewardItems = nil
+		arg_12_0._rewardItems = nil
 	end
 end
 

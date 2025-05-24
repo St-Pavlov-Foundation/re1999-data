@@ -28,9 +28,7 @@ function var_0_0._btnclickOnClick(arg_4_0)
 		return
 	end
 
-	if arg_4_0._npcId == nil then
-		ViewMgr.instance:openView(ViewName.SurvivalNpcStationView)
-	end
+	ViewMgr.instance:openView(ViewName.SurvivalNpcStationView)
 end
 
 function var_0_0.updateItem(arg_5_0, arg_5_1)
@@ -48,10 +46,16 @@ function var_0_0.updateItem(arg_5_0, arg_5_1)
 			arg_5_0._simagehero:LoadImage(var_5_1)
 		end
 	end
+
+	gohelper.setActive(arg_5_0._goempty, arg_5_0._showEmpty)
 end
 
 function var_0_0.setIsCanEnterSelect(arg_6_0, arg_6_1)
 	arg_6_0._isCanEnter = arg_6_1
+end
+
+function var_0_0.setNeedShowEmpty(arg_7_0, arg_7_1)
+	arg_7_0._showEmpty = arg_7_1
 end
 
 return var_0_0

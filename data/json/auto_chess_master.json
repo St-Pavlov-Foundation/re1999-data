@@ -875,7 +875,7 @@
     "skillDesc": "主动：使筹备计数+1，筹备完毕后在奖励区和怪物粘贴处都刷新出等级为3的棋子，一共需要筹备3次",
     "skillProgressDesc": "（还需要筹备▩1%s次）",
     "skillLockDesc": "",
-    "udimoCase": "41003#0",
+    "udimoCase": "41001#0",
     "spUdimo": 30007,
     "spUdimoGoodsId": 30006
   },

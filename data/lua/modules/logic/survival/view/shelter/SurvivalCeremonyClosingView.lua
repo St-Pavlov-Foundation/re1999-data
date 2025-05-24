@@ -12,6 +12,8 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._goEnding = gohelper.findChild(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Ending")
 	arg_1_0._simageending = gohelper.findChildSingleImage(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Ending/#simage_ending")
 	arg_1_0._txtending = gohelper.findChildText(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Ending/#txt_ending")
+	arg_1_0._goendingScore = gohelper.findChild(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Ending/#go_endingScore")
+	arg_1_0._txtendingScore = gohelper.findChildText(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Ending/#go_endingScore/#txt_endingScore")
 	arg_1_0._goNpc = gohelper.findChild(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Npc")
 	arg_1_0._gonpcitem = gohelper.findChild(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Npc/layout/#go_npcitem")
 	arg_1_0._imagenpc = gohelper.findChildImage(arg_1_0.viewGO, "#scroll_contentlist/viewport/content/#go_Npc/layout/#go_npcitem/#image_npc")
@@ -182,25 +184,30 @@ function var_0_0._initView(arg_8_0)
 end
 
 function var_0_0._initEnding(arg_9_0)
-	local var_9_0 = arg_9_0._report.endId
-	local var_9_1 = lua_survival_end.configDict[var_9_0]
-	local var_9_2 = var_9_1.endImg
+	local var_9_0 = arg_9_0:getScoreByType(var_0_3.winScore)
 
-	arg_9_0._simageending:LoadImage(var_9_2)
+	arg_9_0._txtendingScore.text = var_9_0
 
-	arg_9_0._txtending.text = var_9_1.endDesc
+	gohelper.setActive(arg_9_0._goendingScore, var_9_0 > 0)
+
+	local var_9_1 = arg_9_0._report.endId
+	local var_9_2 = lua_survival_end.configDict[var_9_1]
+	local var_9_3 = var_9_2.endImg
+
+	arg_9_0._simageending:LoadImage(var_9_3)
+
+	arg_9_0._txtending.text = var_9_2.endDesc
 
 	arg_9_0:addShowStep(arg_9_0._animationEnding, var_0_2[1], arg_9_0._canvasGroupEnding)
 end
 
-local var_0_5 = 2
-local var_0_6 = 9
-local var_0_7 = 0
+local var_0_5 = 9
+local var_0_6 = 0
 
 function var_0_0._initNpc(arg_10_0)
 	local var_10_0 = arg_10_0:getScoreByType(var_0_3.npc)
 
-	var_0_7 = 0
+	var_0_6 = 0
 
 	gohelper.setActive(arg_10_0._goNpc, var_10_0 > 0)
 
@@ -248,9 +255,9 @@ function var_0_0._initNpc(arg_10_0)
 end
 
 function var_0_0.getNpcLine(arg_11_0)
-	var_0_7 = var_0_7 + 1
+	var_0_6 = var_0_6 + 1
 
-	local var_11_0 = math.ceil(var_0_7 / var_0_6)
+	local var_11_0 = math.ceil(var_0_6 / var_0_5)
 
 	if arg_11_0._npcLines == nil then
 		arg_11_0._npcLines = arg_11_0:getUserDataTb_()
@@ -459,7 +466,7 @@ function var_0_0._initItem(arg_17_0)
 			count = var_17_4
 		})
 
-		if var_17_6.equipCo == nil then
+		if var_17_6.equipCo == nil and (not var_17_6:isCurrency() or var_17_6.co.subType ~= SurvivalEnum.CurrencyType.Enthusiastic) then
 			var_17_3 = var_17_3 + var_17_4
 
 			local var_17_7 = arg_17_0.viewContainer:getSetting().otherRes.itemRes

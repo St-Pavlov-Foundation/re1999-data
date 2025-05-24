@@ -196,7 +196,9 @@ function var_0_0._handleStarChange(arg_13_0)
 		var_13_0 = arg_13_0.chessMo:getChessPosition1(arg_13_0.effect.chess.uid)
 	end
 
-	var_13_0.chess = arg_13_0.effect.chess
+	if var_13_0 then
+		var_13_0.chess = arg_13_0.effect.chess
+	end
 
 	local var_13_1 = arg_13_0.mgr:getEntity(arg_13_0.effect.chess.uid)
 

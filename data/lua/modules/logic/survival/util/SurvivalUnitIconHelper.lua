@@ -92,7 +92,7 @@ function var_0_0.getUnitIconAndBg(arg_1_0, arg_1_1)
 			local var_1_5 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
 			local var_1_6 = arg_1_1.co.fightLevel
 
-			if arg_1_1.co.skip == 1 and var_1_6 < var_1_5 then
+			if arg_1_1.co.skip == 1 and var_1_6 <= var_1_5 then
 				var_1_0 = var_1_4 and var_0_4.Fight_Elite_Skip or var_0_4.Fight_Skip
 			else
 				var_1_0 = var_1_4 and var_0_4.Fight_Elite or var_0_4.Fight

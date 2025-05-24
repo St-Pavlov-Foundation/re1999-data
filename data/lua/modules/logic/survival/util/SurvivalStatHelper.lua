@@ -9,19 +9,22 @@ function var_0_0.statBtnClick(arg_1_0, arg_1_1, arg_1_2)
 	})
 end
 
-function var_0_0.statSurvivalMapUnit(arg_2_0, arg_2_1, arg_2_2, arg_2_3)
-	local var_2_0 = SurvivalMapModel.instance:getSceneMo().player.pos
+function var_0_0.statSurvivalMapUnit(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4)
+	local var_2_0 = SurvivalMapModel.instance:getSceneMo()
+	local var_2_1 = var_2_0.player.pos
+	local var_2_2 = var_2_0.unitsById[arg_2_2]
 
 	StatController.instance:track(StatEnum.EventName.SurvivalMapUnit, {
 		[StatEnum.EventProperties.SurvivalBaseObj] = arg_2_0:getWeekData(),
 		[StatEnum.EventProperties.SurvivalMapBaseObj] = arg_2_0:getMapData(),
 		[StatEnum.EventProperties.OperationType] = arg_2_1,
-		[StatEnum.EventProperties.EventId] = arg_2_2,
+		[StatEnum.EventProperties.EventId] = var_2_2 and var_2_2.cfgId,
+		[StatEnum.EventProperties.TreeId] = arg_2_4 or 0,
 		[StatEnum.EventProperties.OptionId] = arg_2_3,
 		[StatEnum.EventProperties.Position] = {
-			x = var_2_0.q,
-			y = var_2_0.r,
-			z = var_2_0.s
+			x = var_2_1.q,
+			y = var_2_1.r,
+			z = var_2_1.s
 		}
 	})
 end
@@ -76,7 +79,7 @@ function var_0_0.getMapData(arg_6_0)
 	local var_6_4 = {}
 
 	for iter_6_0, iter_6_1 in ipairs(var_6_0.units) do
-		table.insert(var_6_4, iter_6_1.id)
+		table.insert(var_6_4, iter_6_1.cfgId)
 	end
 
 	return {

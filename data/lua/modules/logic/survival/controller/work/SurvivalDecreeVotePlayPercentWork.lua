@@ -18,6 +18,7 @@ function var_0_0.initParam(arg_2_0, arg_2_1)
 end
 
 function var_0_0.onStart(arg_3_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_agree)
 	gohelper.setActive(arg_3_0.goVoteFinish, true)
 
 	arg_3_0.txtVotePercent.text = string.format("%s%%", arg_3_0.startValue)

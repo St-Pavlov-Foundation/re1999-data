@@ -278,10 +278,11 @@ function var_0_0.isEpisodeCanRestart(arg_23_0, arg_23_1)
 		return true
 	end
 
-	local var_23_2 = var_23_0:getPassOrder()
-	local var_23_3 = arg_23_0:findMaxPassOrder()
+	local var_23_2 = var_23_0:isSimulate()
+	local var_23_3 = var_23_0:getPassOrder()
+	local var_23_4 = arg_23_0:findMaxPassOrder()
 
-	return var_23_1 and var_23_2 == var_23_3
+	return var_23_1 and var_23_3 == var_23_4 and not var_23_2
 end
 
 function var_0_0.isEpisodeCanReset(arg_24_0, arg_24_1)

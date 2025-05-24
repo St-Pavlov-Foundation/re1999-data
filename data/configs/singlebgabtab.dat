@@ -27375,6 +27375,9 @@
   "singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen1.jpg.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen1.jpg"
   ],
+  "singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen4a.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen4a.jpg"
+  ],
   "singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen4_zone.png.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/smallbg/story_atcg/2_8/2_8_at_toumen4_zone.png"
   ],
@@ -27908,6 +27911,9 @@
   ],
   "singlebg/storybg/story_atcg/2_8/2_8_at_toumen3_zone.png.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/story_atcg/2_8/2_8_at_toumen3_zone.png"
+  ],
+  "singlebg/storybg/story_atcg/2_8/2_8_at_toumen4a.jpg.dat": [
+    "Assets/ZResourcesLib/singlebg/storybg/story_atcg/2_8/2_8_at_toumen4a.jpg"
   ],
   "singlebg/storybg/story_atcg/2_8/2_8_at_toumen4_zone.png.dat": [
     "Assets/ZResourcesLib/singlebg/storybg/story_atcg/2_8/2_8_at_toumen4_zone.png"
@@ -28854,6 +28860,9 @@
   "singlebg/survival_singlebg/collection/8250055.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8250055.png"
   ],
+  "singlebg/survival_singlebg/collection/8261010.png.dat": [
+    "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8261010.png"
+  ],
   "singlebg/survival_singlebg/collection/8320049.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8320049.png"
   ],
@@ -28862,6 +28871,12 @@
   ],
   "singlebg/survival_singlebg/collection/8330615.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8330615.png"
+  ],
+  "singlebg/survival_singlebg/collection/8330708.png.dat": [
+    "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8330708.png"
+  ],
+  "singlebg/survival_singlebg/collection/8350060.png.dat": [
+    "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8350060.png"
   ],
   "singlebg/survival_singlebg/collection/8350061.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/collection/8350061.png"
@@ -29486,6 +29501,9 @@
   ],
   "singlebg/survival_singlebg/npc/517820.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/npc/517820.png"
+  ],
+  "singlebg/survival_singlebg/npc/610401.png.dat": [
+    "Assets/ZResourcesLib/singlebg/survival_singlebg/npc/610401.png"
   ],
   "singlebg/survival_singlebg/npc/610801.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/npc/610801.png"

@@ -331,7 +331,7 @@ function var_0_0.getIcon(arg_12_0, arg_12_1)
 		local var_12_4 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.HeroFightLevel)
 		local var_12_5 = arg_12_1.co.fightLevel
 
-		if arg_12_1.co.skip == 1 and var_12_5 < var_12_4 then
+		if arg_12_1.co.skip == 1 and var_12_5 <= var_12_4 then
 			return var_12_3 and "survival_smallmap_block_3_12" or "survival_smallmap_block_3_11"
 		else
 			return var_12_3 and "survival_smallmap_block_3_7" or "survival_smallmap_block_3_6"

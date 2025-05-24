@@ -10,6 +10,12 @@ function var_0_0.onScenePrepared(arg_1_0, arg_1_1, arg_1_2)
 	local var_1_0 = SurvivalShelterModel.instance:getWeekInfo()
 
 	SurvivalMapHelper.instance:tryShowServerPanel(var_1_0.panel)
+
+	if SurvivalShelterModel.instance:getNeedShowBossInvade() then
+		SurvivalShelterModel.instance:setNeedShowBossInvade()
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalBossInvadeView)
+	end
+
 	TaskDispatcher.runDelay(arg_1_0._delayProcessGuideEvent, arg_1_0, 0.3)
 end
 

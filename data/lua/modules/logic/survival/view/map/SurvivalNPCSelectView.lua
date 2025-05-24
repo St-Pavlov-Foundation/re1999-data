@@ -1,7 +1,7 @@
 ﻿module("modules.logic.survival.view.map.SurvivalNPCSelectView", package.seeall)
 
 local var_0_0 = class("SurvivalNPCSelectView", BaseView)
-local var_0_1 = true
+local var_0_1 = false
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._btnClose = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "root/#btn_Close")
@@ -63,6 +63,18 @@ function var_0_0.onOpen(arg_5_0)
 
 	var_5_2:setOptionChangeCallback(arg_5_0._onFilterChange, arg_5_0)
 	var_5_2:setOptions(var_5_3)
+
+	if arg_5_0.viewParam then
+		local var_5_5 = tabletool.indexOf(arg_5_0._allNpcs, arg_5_0.viewParam)
+
+		if var_5_5 then
+			arg_5_0._curSelectIndex = var_5_5
+
+			gohelper.setActive(arg_5_0._gonpcinfo, true)
+			arg_5_0._infoPanel:updateMo(arg_5_0.viewParam)
+			gohelper.setActive(arg_5_0._npcSelects[arg_5_0._curSelectIndex], true)
+		end
+	end
 end
 
 function var_0_0.changeQuickSelect(arg_6_0)
@@ -76,25 +88,26 @@ function var_0_0.initNPCData(arg_7_0)
 	local var_7_0 = SurvivalShelterModel.instance:getWeekInfo()
 	local var_7_1 = {}
 	local var_7_2 = {}
-	local var_7_3 = SurvivalMapModel.instance:getInitGroup()
-	local var_7_4 = var_7_0:getNormalNpcList()
+	local var_7_3 = {}
+	local var_7_4 = SurvivalMapModel.instance:getInitGroup()
 
-	for iter_7_0, iter_7_1 in ipairs(var_7_4) do
-		local var_7_5 = var_7_0:getNpcInfo(iter_7_1)
-
-		if var_7_5 then
-			if tabletool.indexOf(var_7_3.allSelectNpcs, var_7_5) then
-				table.insert(var_7_1, var_7_5)
+	for iter_7_0, iter_7_1 in pairs(var_7_0.npcDict) do
+		if iter_7_1 then
+			if iter_7_1:getShelterNpcStatus() ~= SurvivalEnum.ShelterNpcStatus.InBuild then
+				table.insert(var_7_3, iter_7_1)
+			elseif tabletool.indexOf(var_7_4.allSelectNpcs, iter_7_1) then
+				table.insert(var_7_1, iter_7_1)
 			else
-				table.insert(var_7_2, var_7_5)
+				table.insert(var_7_2, iter_7_1)
 			end
 		end
 	end
 
 	tabletool.addValues(var_7_1, var_7_2)
+	tabletool.addValues(var_7_1, var_7_3)
 
 	arg_7_0._allNpcs = var_7_1
-	arg_7_0._initGroupMo = var_7_3
+	arg_7_0._initGroupMo = var_7_4
 end
 
 function var_0_0._onFilterChange(arg_8_0, arg_8_1)
@@ -124,26 +137,28 @@ end
 
 function var_0_0._createNPCItem(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
 	local var_10_0 = gohelper.findChildImage(arg_10_1, "#image_Chess")
-	local var_10_1 = gohelper.findChildTextMesh(arg_10_1, "#txt_PartnerName")
-	local var_10_2 = gohelper.findChild(arg_10_1, "#go_Selected")
-	local var_10_3 = gohelper.findChild(arg_10_1, "#go_Tips")
-	local var_10_4 = gohelper.findChildTextMesh(arg_10_1, "#go_Tips/#txt_TentName")
-	local var_10_5 = gohelper.findButtonWithAudio(arg_10_1)
+	local var_10_1 = gohelper.findChildImage(arg_10_1, "#image_quality")
+	local var_10_2 = gohelper.findChildTextMesh(arg_10_1, "#txt_PartnerName")
+	local var_10_3 = gohelper.findChild(arg_10_1, "#go_Selected")
+	local var_10_4 = gohelper.findChild(arg_10_1, "#go_Tips")
+	local var_10_5 = gohelper.findChildTextMesh(arg_10_1, "#go_Tips/#txt_TentName")
+	local var_10_6 = gohelper.findButtonWithAudio(arg_10_1)
 
-	arg_10_0._npcSelects[arg_10_3] = var_10_2
-	var_10_1.text = arg_10_2.co.name
+	arg_10_0._npcSelects[arg_10_3] = var_10_3
+	var_10_2.text = arg_10_2.co.name
 
 	if arg_10_2:getShelterNpcStatus() == SurvivalEnum.ShelterNpcStatus.InBuild then
-		var_10_4.text = luaLang("survival_npcselectview_inteam")
+		var_10_5.text = luaLang("survival_npcselectview_inteam")
 	else
-		var_10_4.text = luaLang("survival_npcselectview_cantuse")
+		var_10_5.text = luaLang("survival_npcselectview_cantuse")
 	end
 
+	UISpriteSetMgr.instance:setSurvivalSprite(var_10_1, string.format("survival_bag_itemquality2_%s", arg_10_2.co.rare))
 	UISpriteSetMgr.instance:setV2a2ChessSprite(var_10_0, arg_10_2.co.headIcon)
-	gohelper.setActive(var_10_3, arg_10_2:getShelterNpcStatus() ~= SurvivalEnum.ShelterNpcStatus.InBuild or tabletool.indexOf(arg_10_0._initGroupMo.allSelectNpcs, arg_10_2))
-	arg_10_0:removeClickCb(var_10_5)
-	arg_10_0:addClickCb(var_10_5, arg_10_0._onClickNpc, arg_10_0, arg_10_3)
-	gohelper.setActive(var_10_2, arg_10_0._curSelectIndex == arg_10_3)
+	gohelper.setActive(var_10_4, arg_10_2:getShelterNpcStatus() ~= SurvivalEnum.ShelterNpcStatus.InBuild or tabletool.indexOf(arg_10_0._initGroupMo.allSelectNpcs, arg_10_2))
+	arg_10_0:removeClickCb(var_10_6)
+	arg_10_0:addClickCb(var_10_6, arg_10_0._onClickNpc, arg_10_0, arg_10_3)
+	gohelper.setActive(var_10_3, arg_10_0._curSelectIndex == arg_10_3)
 end
 
 function var_0_0._onCellRecycle(arg_11_0, arg_11_1, arg_11_2, arg_11_3)

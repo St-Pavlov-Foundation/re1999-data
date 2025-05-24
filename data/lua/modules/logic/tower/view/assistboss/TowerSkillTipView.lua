@@ -253,7 +253,7 @@ end
 function var_0_0.updateMonsterName(arg_13_0)
 	arg_13_0.monsterName = arg_13_0.viewParam.monsterName
 
-	if string.nilorempty(arg_13_0.monsterName) then
+	if not arg_13_0.monsterName then
 		logError("TowerSkillTipView 缺少 monsterName 参数")
 
 		arg_13_0.monsterName = ""

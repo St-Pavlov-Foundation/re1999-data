@@ -92,7 +92,11 @@ function var_0_0.onClickGrid(arg_9_0, arg_9_1)
 	local var_9_0 = SurvivalModel.instance:getOutSideInfo()
 
 	if not (var_9_0 and var_9_0:isUnlockDifficulty(arg_9_1.config.id) or false) then
-		GameFacade.showToast(ToastEnum.SeasonEquipUnlock)
+		if string.nilorempty(arg_9_1.config.lockDesc) then
+			GameFacade.showToast(ToastEnum.SeasonEquipUnlock)
+		else
+			GameFacade.showToastString(arg_9_1.config.lockDesc)
+		end
 
 		return
 	end
@@ -138,9 +142,9 @@ end
 function var_0_0.refreshCustomView(arg_13_0)
 	local var_13_0 = SurvivalDifficultyModel.instance:getDifficultyId()
 
-	arg_13_0:refreshPanel(var_13_0)
 	arg_13_0.simageLevelPic:LoadImage("singlebg/survival_singlebg/difficulty/survivalselectdifficulty_levelpic_01.png")
 	arg_13_0:refreshCustomPanel()
+	arg_13_0:refreshPanel(var_13_0)
 end
 
 function var_0_0.refreshCustomPanel(arg_14_0)
@@ -206,17 +210,9 @@ function var_0_0.refreshFrame(arg_18_0, arg_18_1)
 end
 
 function var_0_0.refreshAssess(arg_19_0)
-	local var_19_0 = SurvivalDifficultyModel.instance:isCustomDifficulty()
+	local var_19_0 = SurvivalDifficultyModel.instance:getDifficultyAssess()
 
-	gohelper.setActive(arg_19_0.goDifficultyAssess, var_19_0)
-
-	if not var_19_0 then
-		return
-	end
-
-	local var_19_1 = SurvivalDifficultyModel.instance:getDifficultyAssess()
-
-	arg_19_0.txtDifficultyAssess.text = formatLuaLang("survivalselectdifficultyview_txt_assess", var_19_1)
+	arg_19_0.txtDifficultyAssess.text = formatLuaLang("survivalselectdifficultyview_txt_assess", var_19_0)
 end
 
 function var_0_0.refreshDifficultyList(arg_20_0)

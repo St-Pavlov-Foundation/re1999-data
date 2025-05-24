@@ -18,7 +18,7 @@ function var_0_0.assertGuideSatisfy(arg_2_0, arg_2_1, arg_2_2)
 end
 
 function var_0_0._characterLevelUp(arg_3_0)
-	if arg_3_0:_chechDestinyStone(arg_3_0.heroMo) then
+	if arg_3_0:_checkDestinyStone(arg_3_0.heroMo) then
 		local var_3_0 = arg_3_0.heroMo.destinyStoneMo
 
 		if var_3_0 and not var_3_0:isUnlockSlot() then
@@ -31,11 +31,19 @@ function var_0_0._onOpenView(arg_4_0, arg_4_1, arg_4_2)
 	if arg_4_1 == ViewName.CharacterView then
 		local var_4_0 = arg_4_2
 
-		if arg_4_0:_chechDestinyStone(var_4_0) then
+		if arg_4_0:_checkDestinyStone(var_4_0) then
 			local var_4_1 = var_4_0.destinyStoneMo
+			local var_4_2 = 23301
 
-			if var_4_1 and not var_4_1:isUnlockSlot() then
-				arg_4_0:checkStartGuide(23301)
+			if var_4_1:isUnlockSlot() then
+				local var_4_3 = GuideModel.instance:getById(var_4_2)
+
+				if var_4_3 and not (var_4_3.serverStepId == -1 and var_4_3.clientStepId == -1) then
+					GuideStepController.instance:clearFlow(var_4_2)
+					GuideModel.instance:remove(var_4_3)
+				end
+			else
+				arg_4_0:checkStartGuide(var_4_2)
 			end
 		end
 
@@ -43,14 +51,14 @@ function var_0_0._onOpenView(arg_4_0, arg_4_1, arg_4_2)
 	end
 
 	if arg_4_1 == ViewName.CharacterDestinySlotView then
-		local var_4_2 = arg_4_2.heroMo
+		local var_4_4 = arg_4_2.heroMo
 
-		if arg_4_0:_chechDestinyStone(var_4_2) then
-			local var_4_3 = var_4_2.destinyStoneMo
+		if arg_4_0:_checkDestinyStone(var_4_4) then
+			local var_4_5 = var_4_4.destinyStoneMo
 
-			if var_4_3 and var_4_3:isUnlockSlot() then
-				if var_4_3.curUseStoneId == 0 then
-					if not var_4_3.unlockStoneIds or #var_4_3.unlockStoneIds == 0 then
+			if var_4_5 and var_4_5:isUnlockSlot() then
+				if var_4_5.curUseStoneId == 0 then
+					if not var_4_5.unlockStoneIds or #var_4_5.unlockStoneIds == 0 then
 						arg_4_0:checkStartGuide(23302)
 					end
 				else
@@ -61,7 +69,7 @@ function var_0_0._onOpenView(arg_4_0, arg_4_1, arg_4_2)
 	end
 end
 
-function var_0_0._chechDestinyStone(arg_5_0, arg_5_1)
+function var_0_0._checkDestinyStone(arg_5_0, arg_5_1)
 	if not arg_5_1 or not arg_5_1:isOwnHero() then
 		return
 	end

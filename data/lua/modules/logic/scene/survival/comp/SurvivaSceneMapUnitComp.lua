@@ -75,7 +75,7 @@ function var_0_0.getWarmingRange(arg_5_0, arg_5_1)
 		return false
 	end
 
-	if arg_5_1.co.skip == 1 and arg_5_1.co.fightLevel < var_5_0:getAttr(SurvivalEnum.AttrType.HeroFightLevel) then
+	if arg_5_1.co.skip == 1 and arg_5_1.co.fightLevel <= var_5_0:getAttr(SurvivalEnum.AttrType.HeroFightLevel) then
 		return false
 	end
 

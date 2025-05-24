@@ -23,6 +23,7 @@ function var_0_0.onOpen(arg_4_0)
 end
 
 function var_0_0.onUpdateParam(arg_5_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_wangshi_argus_level_finish)
 	arg_5_0:_refreshView()
 end
 
@@ -40,7 +41,7 @@ end
 
 function var_0_0._createRewardItem(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
 	local var_7_0 = gohelper.findChild(arg_7_1, "go_select")
-	local var_7_1 = gohelper.findChildButtonWithAudio(arg_7_1, "#btn_click")
+	local var_7_1 = gohelper.findChildClickWithDefaultAudio(arg_7_1, "go_card")
 
 	gohelper.setActive(var_7_0, false)
 
@@ -56,7 +57,10 @@ function var_0_0._createRewardItem(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
 		var_7_2 = arg_7_0:getResInst(var_7_3, gohelper.findChild(arg_7_1, "go_card"), "inst")
 	end
 
-	MonoHelper.addNoUpdateLuaComOnceToGo(var_7_2, SurvivalBagInfoPart):updateMo(arg_7_2)
+	local var_7_4 = MonoHelper.addNoUpdateLuaComOnceToGo(var_7_2, SurvivalBagInfoPart)
+
+	var_7_4:updateMo(arg_7_2)
+	var_7_4:setClickDescCallback(arg_7_0._onBtnClick, arg_7_0, arg_7_3)
 end
 
 function var_0_0._onBtnClick(arg_8_0, arg_8_1)

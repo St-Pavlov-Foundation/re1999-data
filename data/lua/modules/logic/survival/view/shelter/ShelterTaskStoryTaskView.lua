@@ -86,6 +86,8 @@ function var_0_0.createItem(arg_9_0, arg_9_1, arg_9_2)
 	var_9_0.txtFinishedDesc = gohelper.findChildTextMesh(var_9_0.goFinished, "#txt_task")
 	var_9_0.goUnfinish = gohelper.findChild(var_9_0.go, "unfinish")
 	var_9_0.txtUnFinishDesc = gohelper.findChildTextMesh(var_9_0.goUnfinish, "#txt_task")
+	var_9_0.goFinishing = gohelper.findChild(var_9_0.go, "finishing")
+	var_9_0.txtFinishingDesc = gohelper.findChildTextMesh(var_9_0.goFinishing, "#txt_task")
 	var_9_0.anim = var_9_0.go:GetComponent(gohelper.Type_Animator)
 
 	return var_9_0
@@ -99,20 +101,22 @@ function var_0_0.updateItem(arg_10_0, arg_10_1, arg_10_2)
 	end
 
 	local var_10_0 = not arg_10_2:isUnFinish()
+	local var_10_1 = arg_10_2:isFail()
 
-	gohelper.setActive(arg_10_1.goFinished, var_10_0)
+	gohelper.setActive(arg_10_1.goFinished, var_10_0 and not var_10_1)
 	gohelper.setActive(arg_10_1.goUnfinish, not var_10_0)
+	gohelper.setActive(arg_10_1.goFinishing, var_10_0 and var_10_1)
 
-	local var_10_1 = arg_10_2.co
+	local var_10_2 = arg_10_2.co
 
 	if var_10_0 then
-		if arg_10_2:isFail() then
-			arg_10_1.txtFinishedDesc.text = var_10_1 and var_10_1.desc3 or ""
+		if var_10_1 then
+			arg_10_1.txtFinishingDesc.text = var_10_2 and var_10_2.desc3 or ""
 		else
-			arg_10_1.txtFinishedDesc.text = var_10_1 and var_10_1.desc2 or ""
+			arg_10_1.txtFinishedDesc.text = var_10_2 and var_10_2.desc2 or ""
 		end
 	else
-		arg_10_1.txtUnFinishDesc.text = var_10_1 and var_10_1.desc or ""
+		arg_10_1.txtUnFinishDesc.text = var_10_2 and var_10_2.desc or ""
 	end
 end
 

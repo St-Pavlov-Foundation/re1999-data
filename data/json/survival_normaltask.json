@@ -277,7 +277,7 @@
     "icon": "510401",
     "desc2": "向基金会成员打听少女的下落",
     "showInExplore": 0,
-    "progressCondition": "eventFinished#52#1070302",
+    "progressCondition": "eventFinished#73#107030203",
     "maxProgress": 1,
     "needAccept": 0,
     "prepose": "107030201",
@@ -285,7 +285,7 @@
     "uselessCondition": "",
     "autoDrop": 0,
     "dropShow": "",
-    "track": "5#1070302"
+    "track": "7#107030203"
   },
   {
     "id": 107030401,
@@ -295,7 +295,7 @@
     "icon": "618201",
     "desc2": "据说这名士兵遇到了突发情况，看看发生了什么",
     "showInExplore": 0,
-    "progressCondition": "eventFinished#52#107030401",
+    "progressCondition": "eventFinished#73#107030401",
     "maxProgress": 1,
     "needAccept": 1,
     "prepose": "",
@@ -303,7 +303,7 @@
     "uselessCondition": "",
     "autoDrop": 0,
     "dropShow": "",
-    "track": "5#107030401"
+    "track": "7#107030401"
   },
   {
     "id": 107030402,
@@ -360,27 +360,9 @@
     "track": "7#107015601"
   },
   {
-    "id": 107045601,
-    "group": 107045601,
-    "step": 1,
-    "desc": "轮回者",
-    "icon": "307601",
-    "desc2": "护送轮回者到祭坛",
-    "showInExplore": 0,
-    "progressCondition": "eventFinished#72#107015601",
-    "maxProgress": 1,
-    "needAccept": 1,
-    "prepose": "",
-    "failCondition": "",
-    "uselessCondition": "leaveExploreUseless",
-    "autoDrop": 0,
-    "dropShow": "",
-    "track": "7#107015601"
-  },
-  {
     "id": 107046401,
     "group": 1070464,
-    "step": 2,
+    "step": 1,
     "desc": "勇者专享",
     "icon": "517820",
     "desc2": "将信件送给外出的村民",
@@ -398,7 +380,7 @@
   {
     "id": 107046402,
     "group": 1070464,
-    "step": 3,
+    "step": 2,
     "desc": "村里最重要的任务",
     "icon": "517820",
     "desc2": "帮村民收集1份烤苦目糖",
@@ -436,7 +418,7 @@
     "group": 1070457,
     "step": 1,
     "desc": "电影桥段",
-    "icon": "307601",
+    "icon": "610401",
     "desc2": "护送黑发少女找到灯塔",
     "showInExplore": 0,
     "progressCondition": "eventFinished#72#1070174",

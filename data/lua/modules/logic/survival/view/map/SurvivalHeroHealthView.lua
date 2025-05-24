@@ -3,7 +3,9 @@
 local var_0_0 = class("SurvivalHeroHealthView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
+	arg_1_0._slider2 = gohelper.findChildImage(arg_1_0.viewGO, "Bottom/#go_resistance/bg2")
 	arg_1_0._imagebg = gohelper.findChildImage(arg_1_0.viewGO, "Bottom/#go_resistance/resistance")
+	arg_1_0._anim = arg_1_0._imagebg:GetComponent(typeof(UnityEngine.Animation))
 	arg_1_0._txtstatu = gohelper.findChildTextMesh(arg_1_0.viewGO, "Bottom/#go_resistance/resistance/#txt_resistance")
 	arg_1_0._scrollbar = gohelper.findChildScrollbar(arg_1_0.viewGO, "Bottom/#go_resistance/Scrollbar Horizon")
 end
@@ -56,8 +58,15 @@ function var_0_0._refreshHealth(arg_5_0)
 
 	arg_5_0._scrollbar:SetValue(var_5_6)
 
+	arg_5_0._slider2.fillAmount = var_5_6
 	arg_5_0._imagebg.color = GameUtil.parseColor(var_0_1[var_5_9] or var_0_1[1])
 	arg_5_0._txtstatu.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_mainview_teamhealth"), var_5_12)
+
+	if arg_5_0.state and var_5_9 ~= arg_5_0.state then
+		arg_5_0._anim:Play()
+	end
+
+	arg_5_0.state = var_5_9
 end
 
 return var_0_0

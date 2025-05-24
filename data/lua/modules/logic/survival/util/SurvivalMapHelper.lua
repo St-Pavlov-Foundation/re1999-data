@@ -264,12 +264,18 @@ function var_0_0.tryShowServerPanel(arg_9_0, arg_9_1, arg_9_2)
 			panel = arg_9_1
 		})
 	elseif var_9_0 == SurvivalEnum.PanelType.DropSelect then
-		ViewMgr.instance:closeAllPopupViews({
-			ViewName.SurvivalDropSelectView
-		})
-		ViewMgr.instance:openView(ViewName.SurvivalDropSelectView, {
-			panel = arg_9_1
-		})
+		if arg_9_0:isInShelterScene() then
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalDropSelectView, {
+				panel = arg_9_1
+			})
+		else
+			ViewMgr.instance:closeAllPopupViews({
+				ViewName.SurvivalDropSelectView
+			})
+			ViewMgr.instance:openView(ViewName.SurvivalDropSelectView, {
+				panel = arg_9_1
+			})
+		end
 	elseif var_9_0 == SurvivalEnum.PanelType.Store then
 		ViewMgr.instance:closeAllPopupViews({
 			ViewName.SurvivalShopView
@@ -334,43 +340,27 @@ function var_0_0.setRotate(arg_16_0, arg_16_1, arg_16_2)
 	end
 end
 
-function var_0_0.addEntity(arg_17_0, arg_17_1, arg_17_2)
-	arg_17_0._allEntity[arg_17_1] = arg_17_2
-end
+function var_0_0.applyDirectly(arg_17_0)
+	local var_17_0 = arg_17_0:getSceneCameraComp()
 
-function var_0_0.removeEntity(arg_18_0, arg_18_1)
-	arg_18_0._allEntity[arg_18_1] = nil
-end
-
-function var_0_0.getEntity(arg_19_0, arg_19_1)
-	return arg_19_0._allEntity[arg_19_1]
-end
-
-function var_0_0.getShopPanel(arg_20_0)
-	local var_20_0 = SurvivalShelterModel.instance:getWeekInfo()
-
-	if not var_20_0 then
-		return
-	end
-
-	if var_20_0.inSurvival then
-		local var_20_1 = SurvivalMapModel.instance:getSceneMo()
-
-		if not var_20_1 then
-			return
-		end
-
-		if var_20_1.panel and var_20_1.panel.type == SurvivalEnum.PanelType.Store then
-			return var_20_1.panel.shop, var_20_1.panel.uid
-		end
-	else
-		local var_20_2 = var_20_0:getBuildingInfoByBuildType(SurvivalEnum.BuildingType.Shop)
-
-		return var_20_2 and var_20_2.shop
+	if var_17_0 then
+		var_17_0:applyDirectly()
 	end
 end
 
-function var_0_0.getBagMo(arg_21_0)
+function var_0_0.addEntity(arg_18_0, arg_18_1, arg_18_2)
+	arg_18_0._allEntity[arg_18_1] = arg_18_2
+end
+
+function var_0_0.removeEntity(arg_19_0, arg_19_1)
+	arg_19_0._allEntity[arg_19_1] = nil
+end
+
+function var_0_0.getEntity(arg_20_0, arg_20_1)
+	return arg_20_0._allEntity[arg_20_1]
+end
+
+function var_0_0.getShopPanel(arg_21_0)
 	local var_21_0 = SurvivalShelterModel.instance:getWeekInfo()
 
 	if not var_21_0 then
@@ -384,245 +374,301 @@ function var_0_0.getBagMo(arg_21_0)
 			return
 		end
 
-		return var_21_1.bag
+		if var_21_1.panel and var_21_1.panel.type == SurvivalEnum.PanelType.Store then
+			return var_21_1.panel.shop, var_21_1.panel.uid
+		end
 	else
-		return var_21_0.bag
+		local var_21_2 = var_21_0:getBuildingInfoByBuildType(SurvivalEnum.BuildingType.Shop)
+
+		return var_21_2 and var_21_2.shop
 	end
 end
 
-function var_0_0.clear(arg_22_0)
-	if arg_22_0.flow then
-		arg_22_0.flow:onDestroyInternal()
+function var_0_0.getBagMo(arg_22_0)
+	local var_22_0 = SurvivalShelterModel.instance:getWeekInfo()
 
-		arg_22_0.flow = nil
+	if not var_22_0 then
+		return
+	end
+
+	if var_22_0.inSurvival then
+		local var_22_1 = SurvivalMapModel.instance:getSceneMo()
+
+		if not var_22_1 then
+			return
+		end
+
+		return var_22_1.bag
+	else
+		return var_22_0.bag
+	end
+end
+
+function var_0_0.isInShelterScene(arg_23_0)
+	return GameSceneMgr.instance:getCurSceneType() == SceneType.SurvivalShelter
+end
+
+function var_0_0.clear(arg_24_0)
+	if arg_24_0.flow then
+		arg_24_0.flow:onDestroyInternal()
+
+		arg_24_0.flow = nil
 	end
 
 	ViewMgr.instance:closeAllPopupViews()
 
-	arg_22_0._steps = nil
-	arg_22_0.serverFlow = nil
-	arg_22_0._allEntity = {}
+	arg_24_0._steps = nil
+	arg_24_0.serverFlow = nil
+	arg_24_0._allEntity = {}
 end
 
-function var_0_0.gotoBuilding(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
-	local var_23_0 = arg_23_0:getScene()
+function var_0_0.gotoBuilding(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
+	local var_25_0 = arg_25_0:getScene()
 
-	if not var_23_0 then
+	if not var_25_0 then
 		return
 	end
 
-	local var_23_1 = var_23_0.unit:getBuildEntity(arg_23_1)
+	local var_25_1 = var_25_0.unit:getBuildEntity(arg_25_1)
 
-	if not var_23_1 then
+	if not var_25_1 then
 		return
 	end
 
-	local var_23_2 = var_23_1.buildingCo.pointRangeList
-	local var_23_3 = var_23_0.unit:getPlayer()
+	local var_25_2 = var_25_1.buildingCo.pointRangeList
+	local var_25_3 = var_25_0.unit:getPlayer()
 
 	ViewMgr.instance:closeAllModalViews()
 	ViewMgr.instance:closeAllPopupViews()
-	var_23_3:moveToByPosList(var_23_2, arg_23_0.interactiveBuilding, arg_23_0, arg_23_1, arg_23_3)
+	var_25_3:moveToByPosList(var_25_2, arg_25_0.interactiveBuilding, arg_25_0, arg_25_1, arg_25_3)
 end
 
-function var_0_0.interactiveBuilding(arg_24_0, arg_24_1)
-	local var_24_0 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfo(arg_24_1)
+function var_0_0.interactiveBuilding(arg_26_0, arg_26_1)
+	local var_26_0 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfo(arg_26_1)
 
-	if not var_24_0 then
-		logError(string.format("建筑数据不存在，buildingId:%s not found", arg_24_1))
+	if not var_26_0 then
+		logError(string.format("建筑数据不存在，buildingId:%s not found", arg_26_1))
 
 		return
 	end
 
 	ViewMgr.instance:closeAllPopupViews()
 
-	if not var_24_0:isBuild() then
+	if not var_26_0:isBuild() then
 		ViewMgr.instance:openView(ViewName.ShelterRestManagerView, {
-			buildingId = arg_24_1
+			buildingId = arg_26_1
 		})
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Decree) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Decree) then
 		ViewMgr.instance:openView(ViewName.SurvivalDecreeView)
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Task) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Task) then
 		ViewMgr.instance:openView(ViewName.ShelterTaskView)
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Explore) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Explore) then
 		SurvivalController.instance:enterSurvival()
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Health) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Health) then
 		ViewMgr.instance:openView(ViewName.ShelterRestManagerView, {
-			buildingId = arg_24_1
+			buildingId = arg_26_1
 		})
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Tent) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Tent) then
 		ViewMgr.instance:openView(ViewName.ShelterTentManagerView, {
-			buildingId = arg_24_1
+			buildingId = arg_26_1
 		})
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Equipment) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Equipment) then
 		ViewMgr.instance:openView(ViewName.ShelterCompositeView)
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Npc) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Npc) then
 		ViewMgr.instance:openView(ViewName.ShelterRecruitView)
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Warehouse) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Warehouse) then
 		ViewMgr.instance:openView(ViewName.ShelterMapBagView)
 
 		return
 	end
 
-	if var_24_0:isEqualType(SurvivalEnum.BuildingType.Shop) then
+	if var_26_0:isEqualType(SurvivalEnum.BuildingType.Shop) then
 		ViewMgr.instance:openView(ViewName.SurvivalShopView)
 
 		return
 	end
 
 	ViewMgr.instance:openView(ViewName.ShelterRestManagerView, {
-		buildingId = arg_24_1
+		buildingId = arg_26_1
 	})
 end
 
-function var_0_0.gotoUnit(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
-	if arg_25_1 == SurvivalEnum.ShelterUnitType.Npc then
-		arg_25_0:gotoNpc(arg_25_2, arg_25_3)
+function var_0_0.gotoUnit(arg_27_0, arg_27_1, arg_27_2, arg_27_3)
+	if arg_27_1 == SurvivalEnum.ShelterUnitType.Npc then
+		arg_27_0:gotoNpc(arg_27_2, arg_27_3)
 
 		return
 	end
 
-	if arg_25_1 == SurvivalEnum.ShelterUnitType.Build then
-		arg_25_0:gotoBuilding(arg_25_2, arg_25_3)
+	if arg_27_1 == SurvivalEnum.ShelterUnitType.Build then
+		arg_27_0:gotoBuilding(arg_27_2, arg_27_3)
 
 		return
 	end
 
-	if arg_25_1 == SurvivalEnum.ShelterUnitType.Monster then
-		arg_25_0:gotoMonster(arg_25_2, arg_25_3)
+	if arg_27_1 == SurvivalEnum.ShelterUnitType.Monster then
+		arg_27_0:gotoMonster(arg_27_2, arg_27_3)
 
 		return
 	end
 end
 
-function var_0_0.gotoNpc(arg_26_0, arg_26_1, arg_26_2)
-	local var_26_0 = arg_26_0:getScene()
+function var_0_0.gotoNpc(arg_28_0, arg_28_1, arg_28_2)
+	local var_28_0 = arg_28_0:getScene()
 
-	if not var_26_0 then
+	if not var_28_0 then
 		return
 	end
 
-	local var_26_1 = var_26_0.unit:getNpcEntity(arg_26_1)
+	local var_28_1 = var_28_0.unit:getNpcEntity(arg_28_1)
 
-	if not var_26_1 then
+	if not var_28_1 then
 		return
 	end
 
-	local var_26_2 = var_26_1.pos
-	local var_26_3 = var_26_0.unit:getPlayer()
+	local var_28_2 = var_28_1.pos
+	local var_28_3 = var_28_0.unit:getPlayer()
 
 	ViewMgr.instance:closeAllModalViews()
 	ViewMgr.instance:closeAllPopupViews()
-	var_26_3:moveToByPos(arg_26_2 or var_26_2, arg_26_0.interactiveNpc, arg_26_0, arg_26_1)
+	var_28_3:moveToByPos(arg_28_2 or var_28_2, arg_28_0.interactiveNpc, arg_28_0, arg_28_1)
 end
 
-function var_0_0.interactiveNpc(arg_27_0, arg_27_1)
-	local var_27_0 = SurvivalShelterModel.instance:getWeekInfo():getNpcInfo(arg_27_1)
-	local var_27_1 = arg_27_0:getShelterNpcBehaviorList(arg_27_1)
+function var_0_0.interactiveNpc(arg_29_0, arg_29_1)
+	local var_29_0 = SurvivalShelterModel.instance:getWeekInfo():getNpcInfo(arg_29_1)
+	local var_29_1 = arg_29_0:getShelterNpcPriorityBehavior(arg_29_1)
 
-	if var_27_1[1] then
-		local var_27_2 = SurvivalBagItemMo.New()
+	if var_29_1 then
+		local var_29_2 = SurvivalBagItemMo.New()
 
-		var_27_2:init({
+		var_29_2:init({
 			count = 1,
-			id = var_27_0.id
+			id = var_29_0.id
 		})
 		ViewMgr.instance:closeAllPopupViews()
 
-		local var_27_3 = {
-			status = var_27_0:getShelterNpcStatus()
+		local var_29_3 = {
+			status = var_29_0:getShelterNpcStatus()
 		}
 
 		ViewMgr.instance:openView(ViewName.ShelterMapEventView, {
-			conditionParam = var_27_3,
-			title = var_27_0.co.name,
-			behaviorConfig = var_27_1[1],
-			unitResPath = var_27_0.co.resource,
-			itemMo = var_27_2
+			conditionParam = var_29_3,
+			title = var_29_0.co.name,
+			behaviorConfig = var_29_1,
+			unitResPath = var_29_0.co.resource,
+			itemMo = var_29_2
 		})
 	end
 end
 
-function var_0_0.getShelterNpcBehaviorList(arg_28_0, arg_28_1)
-	local var_28_0 = SurvivalShelterModel.instance:getWeekInfo():getNpcInfo(arg_28_1)
-	local var_28_1 = string.splitToNumber(var_28_0.co.surBehavior, "#")
-	local var_28_2 = {}
-	local var_28_3 = {
-		status = var_28_0:getShelterNpcStatus()
-	}
+function var_0_0.getShelterNpcPriorityBehavior(arg_30_0, arg_30_1)
+	local var_30_0 = arg_30_0:getShelterNpcBehaviorList(arg_30_1)
 
-	for iter_28_0, iter_28_1 in ipairs(var_28_1) do
-		local var_28_4 = lua_survival_behavior.configDict[iter_28_1]
+	if #var_30_0 == 0 then
+		return nil
+	end
 
-		if var_28_4 and arg_28_0:isBehaviorMeetCondition(var_28_4.condition, var_28_3) then
-			table.insert(var_28_2, var_28_4)
+	local var_30_1 = var_30_0[1].priority
+	local var_30_2 = {}
+
+	for iter_30_0, iter_30_1 in ipairs(var_30_0) do
+		if var_30_1 < iter_30_1.priority then
+			var_30_1 = iter_30_1.priority
+			var_30_2 = {
+				iter_30_1
+			}
+		elseif iter_30_1.priority == var_30_1 then
+			table.insert(var_30_2, iter_30_1)
 		end
 	end
 
-	if #var_28_2 > 1 then
-		table.sort(var_28_2, SortUtil.keyUpper("priority"))
+	if #var_30_2 == 1 then
+		return var_30_2[1]
+	else
+		return var_30_2[math.random(1, #var_30_2)]
 	end
-
-	return var_28_2
 end
 
-function var_0_0.gotoMonster(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
-	local var_29_0 = arg_29_0:getScene()
+function var_0_0.getShelterNpcBehaviorList(arg_31_0, arg_31_1)
+	local var_31_0 = SurvivalShelterModel.instance:getWeekInfo():getNpcInfo(arg_31_1)
+	local var_31_1 = string.splitToNumber(var_31_0.co.surBehavior, "#")
+	local var_31_2 = {}
+	local var_31_3 = {
+		status = var_31_0:getShelterNpcStatus()
+	}
 
-	if not var_29_0 then
+	for iter_31_0, iter_31_1 in ipairs(var_31_1) do
+		local var_31_4 = lua_survival_behavior.configDict[iter_31_1]
+
+		if var_31_4 and arg_31_0:isBehaviorMeetCondition(var_31_4.condition, var_31_3) then
+			table.insert(var_31_2, var_31_4)
+		end
+	end
+
+	if #var_31_2 > 1 then
+		table.sort(var_31_2, SortUtil.keyUpper("priority"))
+	end
+
+	return var_31_2
+end
+
+function var_0_0.gotoMonster(arg_32_0, arg_32_1, arg_32_2, arg_32_3)
+	local var_32_0 = arg_32_0:getScene()
+
+	if not var_32_0 then
 		return
 	end
 
-	local var_29_1 = var_29_0.unit:getMonsterEntity(arg_29_1)
+	local var_32_1 = var_32_0.unit:getMonsterEntity(arg_32_1)
 
-	if not var_29_1 then
+	if not var_32_1 then
 		return
 	end
 
-	local var_29_2 = var_29_1.pos
-	local var_29_3 = var_29_0.unit:getPlayer()
+	local var_32_2 = var_32_1.pos
+	local var_32_3 = var_32_0.unit:getPlayer()
 
 	ViewMgr.instance:closeAllModalViews()
 	ViewMgr.instance:closeAllPopupViews()
-	var_29_3:moveToByPos(arg_29_2 or var_29_2, arg_29_0.interactiveMonster, arg_29_0, arg_29_1, arg_29_3)
+	var_32_3:moveToByPos(arg_32_2 or var_32_2, arg_32_0.interactiveMonster, arg_32_0, arg_32_1, arg_32_3)
 end
 
-function var_0_0.interactiveMonster(arg_30_0, arg_30_1)
-	local var_30_0 = SurvivalShelterModel.instance:getWeekInfo():getMonsterFight()
+function var_0_0.interactiveMonster(arg_33_0, arg_33_1)
+	local var_33_0 = SurvivalShelterModel.instance:getWeekInfo():getMonsterFight()
 
-	if var_30_0 and var_30_0.fightId == arg_30_1 and var_30_0:canShowEntity() then
+	if var_33_0 and var_33_0.fightId == arg_33_1 and var_33_0:canShowEntity() then
 		ViewMgr.instance:closeAllPopupViews()
 		ViewMgr.instance:openView(ViewName.SurvivalMonsterEventView, {
 			showType = SurvivalEnum.SurvivalMonsterEventViewShowType.Normal
@@ -630,121 +676,167 @@ function var_0_0.interactiveMonster(arg_30_0, arg_30_1)
 	end
 end
 
-function var_0_0.isBehaviorMeetCondition(arg_31_0, arg_31_1, arg_31_2)
-	local var_31_0 = GameUtil.splitString2(arg_31_1, false)
+function var_0_0.isBehaviorMeetCondition(arg_34_0, arg_34_1, arg_34_2)
+	local var_34_0 = GameUtil.splitString2(arg_34_1, false)
 
-	for iter_31_0, iter_31_1 in ipairs(var_31_0) do
-		if arg_31_0:checkSingleCondition(iter_31_1, arg_31_2) then
-			return true
+	for iter_34_0, iter_34_1 in ipairs(var_34_0) do
+		if not arg_34_0:checkSingleCondition(iter_34_1, arg_34_2) then
+			return false
 		end
-	end
-end
-
-function var_0_0.checkSingleCondition(arg_32_0, arg_32_1, arg_32_2)
-	if not arg_32_1 then
-		return true
-	end
-
-	if arg_32_1[1] == "NpcStatus" then
-		return tonumber(arg_32_1[2]) == arg_32_2.status
-	elseif arg_32_1[1] == "unFinishTask" then
-		local var_32_0 = tonumber(arg_32_1[2])
-		local var_32_1 = tonumber(arg_32_1[3])
-		local var_32_2 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_32_0)
-		local var_32_3 = var_32_2 and var_32_2:getTaskInfo(var_32_1)
-
-		return var_32_3 and var_32_3:isUnFinish()
-	elseif arg_32_1[1] == "unAcceptTask" then
-		local var_32_4 = tonumber(arg_32_1[2])
-		local var_32_5 = tonumber(arg_32_1[3])
-		local var_32_6 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_32_4)
-
-		return (var_32_6 and var_32_6:getTaskInfo(var_32_5)) == nil
-	elseif arg_32_1[1] == "finishTask" then
-		local var_32_7 = tonumber(arg_32_1[2])
-		local var_32_8 = tonumber(arg_32_1[3])
-		local var_32_9 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_32_7)
-		local var_32_10 = var_32_9 and var_32_9:getTaskInfo(var_32_8)
-
-		return var_32_10 and not var_32_10:isUnFinish() or false
 	end
 
 	return true
 end
 
-function var_0_0.getLocalShelterEntityPosAndDir(arg_33_0, arg_33_1, arg_33_2)
-	local var_33_0 = SurvivalConfig.instance:getCurShelterMapId()
-	local var_33_1, var_33_2 = SurvivalConfig.instance:getLocalShelterEntityPosAndDir(var_33_0, arg_33_1, arg_33_2)
-
-	if not var_33_1 then
-		var_33_1, var_33_2 = arg_33_0:getRandomWalkPosAndDir()
-
-		SurvivalConfig.instance:saveLocalShelterEntityPosAndDir(var_33_0, arg_33_1, arg_33_2, var_33_1, var_33_2)
+function var_0_0.checkSingleCondition(arg_35_0, arg_35_1, arg_35_2)
+	if not arg_35_1 then
+		return true
 	end
 
-	return var_33_1, var_33_2
+	if arg_35_1[1] == "NpcStatus" then
+		return tonumber(arg_35_1[2]) == arg_35_2.status
+	elseif arg_35_1[1] == "unFinishTask" then
+		local var_35_0 = tonumber(arg_35_1[2])
+		local var_35_1 = tonumber(arg_35_1[3])
+		local var_35_2 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_35_0)
+		local var_35_3 = var_35_2 and var_35_2:getTaskInfo(var_35_1)
+
+		return var_35_3 and var_35_3:isUnFinish()
+	elseif arg_35_1[1] == "unAcceptTask" then
+		local var_35_4 = tonumber(arg_35_1[2])
+		local var_35_5 = tonumber(arg_35_1[3])
+		local var_35_6 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_35_4)
+
+		return (var_35_6 and var_35_6:getTaskInfo(var_35_5)) == nil
+	elseif arg_35_1[1] == "finishTask" then
+		local var_35_7 = tonumber(arg_35_1[2])
+		local var_35_8 = tonumber(arg_35_1[3])
+		local var_35_9 = SurvivalShelterModel.instance:getWeekInfo().taskPanel:getTaskBoxMo(var_35_7)
+		local var_35_10 = var_35_9 and var_35_9:getTaskInfo(var_35_8)
+
+		return var_35_10 and not var_35_10:isUnFinish() or false
+	end
+
+	return true
 end
 
-function var_0_0.getRandomWalkPosAndDir(arg_34_0)
-	if not arg_34_0:getScene() then
+function var_0_0.getLocalShelterEntityPosAndDir(arg_36_0, arg_36_1, arg_36_2, arg_36_3)
+	local var_36_0 = SurvivalConfig.instance:getCurShelterMapId()
+	local var_36_1, var_36_2 = SurvivalConfig.instance:getLocalShelterEntityPosAndDir(var_36_0, arg_36_1, arg_36_2)
+
+	if not var_36_1 then
+		var_36_1, var_36_2 = arg_36_0:getRandomWalkPosAndDir()
+
+		SurvivalConfig.instance:saveLocalShelterEntityPosAndDir(var_36_0, arg_36_1, arg_36_2, var_36_1, var_36_2)
+	end
+
+	if arg_36_3 then
+		local var_36_3 = SurvivalConfig.instance:getShelterMapCo():getMainBuild()
+
+		if var_36_3 then
+			var_36_2 = SurvivalHelper:getDirMustHave(var_36_1, var_36_3.pos)
+		end
+	end
+
+	return var_36_1, var_36_2
+end
+
+function var_0_0.getRandomWalkPosAndDir(arg_37_0)
+	if not arg_37_0:getScene() then
 		return
 	end
 
-	local var_34_0 = arg_34_0:getScene()
-	local var_34_1 = SurvivalConfig.instance:getShelterMapCo().walkables
-	local var_34_2 = {}
+	local var_37_0 = arg_37_0:getScene()
+	local var_37_1 = SurvivalConfig.instance:getShelterMapCo().walkables
+	local var_37_2 = {}
 
-	if var_34_0 then
-		var_34_0.unit:addUsedPos(var_34_2)
+	if var_37_0 then
+		var_37_0.unit:addUsedPos(var_37_2)
 	end
 
-	local var_34_3 = {}
+	local var_37_3 = {}
 
-	for iter_34_0, iter_34_1 in pairs(var_34_1) do
-		for iter_34_2, iter_34_3 in pairs(iter_34_1) do
-			if not SurvivalHelper.instance:isHaveNode(var_34_2, iter_34_3) then
-				table.insert(var_34_3, iter_34_3)
+	for iter_37_0, iter_37_1 in pairs(var_37_1) do
+		for iter_37_2, iter_37_3 in pairs(iter_37_1) do
+			if not SurvivalHelper.instance:isHaveNode(var_37_2, iter_37_3) then
+				table.insert(var_37_3, iter_37_3)
 			end
 		end
 	end
 
-	if #var_34_3 == 0 then
+	if #var_37_3 == 0 then
 		return nil
 	end
 
-	local var_34_4 = math.random(0, 5)
+	local var_37_4 = math.random(0, 5)
 
-	return var_34_3[math.random(1, #var_34_3)], var_34_4
+	return var_37_3[math.random(1, #var_37_3)], var_37_4
 end
 
-function var_0_0.getShelterEntity(arg_35_0, arg_35_1, arg_35_2)
-	local var_35_0 = arg_35_0:getScene()
+function var_0_0.getShelterEntity(arg_38_0, arg_38_1, arg_38_2)
+	local var_38_0 = arg_38_0:getScene()
 
-	if not var_35_0 then
+	if not var_38_0 then
 		return
 	end
 
-	return var_35_0.unit:getEntity(arg_35_1, arg_35_2)
+	return var_38_0.unit:getEntity(arg_38_1, arg_38_2)
 end
 
-function var_0_0.addShelterEntity(arg_36_0, arg_36_1, arg_36_2, arg_36_3)
-	local var_36_0 = arg_36_0:getScene()
+function var_0_0.addShelterEntity(arg_39_0, arg_39_1, arg_39_2, arg_39_3)
+	local var_39_0 = arg_39_0:getScene()
 
-	if not var_36_0 then
+	if not var_39_0 then
 		return
 	end
 
-	return var_36_0.unit:addEntity(arg_36_1, arg_36_2, arg_36_3)
+	return var_39_0.unit:addEntity(arg_39_1, arg_39_2, arg_39_3)
 end
 
-function var_0_0.getAllShelterEntity(arg_37_0)
-	local var_37_0 = arg_37_0:getScene()
+function var_0_0.getAllShelterEntity(arg_40_0)
+	local var_40_0 = arg_40_0:getScene()
 
-	if not var_37_0 then
+	if not var_40_0 then
 		return
 	end
 
-	return var_37_0.unit:getAllEntity()
+	return var_40_0.unit:getAllEntity()
+end
+
+function var_0_0.hideUnitVisible(arg_41_0, arg_41_1, arg_41_2)
+	local var_41_0 = arg_41_0:getAllShelterEntity()
+
+	for iter_41_0, iter_41_1 in pairs(var_41_0) do
+		if iter_41_0 == arg_41_1 and iter_41_1 then
+			for iter_41_2, iter_41_3 in pairs(iter_41_1) do
+				iter_41_3:setVisible(arg_41_2)
+			end
+		end
+	end
+end
+
+function var_0_0.refreshPlayerEntity(arg_42_0)
+	local var_42_0 = arg_42_0:getScene()
+
+	if not var_42_0 then
+		return
+	end
+
+	var_42_0.unit:refreshEntity(SurvivalEnum.ShelterUnitType.Player, 0, true)
+end
+
+function var_0_0.stopShelterPlayerMove(arg_43_0)
+	local var_43_0 = arg_43_0:getScene()
+
+	if not var_43_0 then
+		return
+	end
+
+	local var_43_1 = var_43_0.unit:getPlayer()
+
+	if var_43_1 then
+		var_43_1:stopMove()
+	end
 end
 
 var_0_0.instance = var_0_0.New()

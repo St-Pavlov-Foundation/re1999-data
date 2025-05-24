@@ -27,15 +27,12 @@ end
 function var_0_0.getShowList(arg_5_0)
 	local var_5_0 = {}
 	local var_5_1 = {}
-	local var_5_2 = {}
-	local var_5_3 = SurvivalShelterModel.instance:getWeekInfo().buildingDict
+	local var_5_2 = SurvivalShelterModel.instance:getWeekInfo().buildingDict
 
-	if var_5_3 then
-		for iter_5_0, iter_5_1 in pairs(var_5_3) do
+	if var_5_2 then
+		for iter_5_0, iter_5_1 in pairs(var_5_2) do
 			if iter_5_1:isEqualType(SurvivalEnum.BuildingType.Tent) then
 				table.insert(var_5_1, iter_5_1)
-			elseif iter_5_1:isEqualType(SurvivalEnum.BuildingType.Population) then
-				table.insert(var_5_2, iter_5_1)
 			else
 				table.insert(var_5_0, iter_5_1)
 			end
@@ -46,34 +43,30 @@ function var_0_0.getShowList(arg_5_0)
 		table.sort(var_5_0, SurvivalShelterBuildingMo.sort)
 	end
 
-	if #var_5_2 > 1 then
-		table.sort(var_5_2, SurvivalShelterBuildingMo.sort)
-	end
-
 	if #var_5_1 > 1 then
 		table.sort(var_5_1, SurvivalShelterBuildingMo.sort)
 	end
 
-	local var_5_4 = {}
-	local var_5_5 = 2
+	local var_5_3 = {}
+	local var_5_4 = 2
 
 	for iter_5_2, iter_5_3 in ipairs(var_5_0) do
-		local var_5_6 = math.floor((iter_5_2 - 1) / var_5_5) + 1
-		local var_5_7 = var_5_4[var_5_6]
+		local var_5_5 = math.floor((iter_5_2 - 1) / var_5_4) + 1
+		local var_5_6 = var_5_3[var_5_5]
 
-		if not var_5_7 then
-			var_5_7 = {}
-			var_5_4[var_5_6] = var_5_7
+		if not var_5_6 then
+			var_5_6 = {}
+			var_5_3[var_5_5] = var_5_6
 		end
 
-		table.insert(var_5_7, iter_5_3)
+		table.insert(var_5_6, iter_5_3)
 	end
 
 	if arg_5_0.selectBuildingId == nil or arg_5_0.selectBuildingId == 0 then
 		arg_5_0.selectBuildingId = var_5_0[1] and var_5_0[1].id
 	end
 
-	return var_5_4, var_5_2, var_5_1
+	return var_5_3, var_5_1
 end
 
 var_0_0.instance = var_0_0.New()

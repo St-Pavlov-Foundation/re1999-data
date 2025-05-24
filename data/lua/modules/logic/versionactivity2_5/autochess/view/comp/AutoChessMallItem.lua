@@ -40,6 +40,7 @@ end
 
 function var_0_0.addEventListeners(arg_4_0)
 	arg_4_0:addEventCb(AutoChessController.instance, AutoChessEvent.StartBuyStepFinih, arg_4_0.refreshLvup, arg_4_0)
+	arg_4_0:addEventCb(AutoChessController.instance, AutoChessEvent.ImmediatelyFlowFinish, arg_4_0.refreshLvup, arg_4_0)
 end
 
 function var_0_0.onDestroy(arg_5_0)
@@ -73,7 +74,7 @@ function var_0_0.setData(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
 
 			local var_6_1 = AutoChessModel.instance:getChessMo()
 
-			if arg_6_0.cost ~= 0 and var_6_1.svrFight.mySideMaster.id == AutoChessEnum.SpecialMaster.Role37 and AutoChessHelper.isPrimeNumber(arg_6_0.data.chess.battle) and AutoChessHelper.isPrimeNumber(arg_6_0.data.chess.hp) then
+			if arg_6_0.cost >= 1 and var_6_1.svrFight.mySideMaster.id == AutoChessEnum.SpecialMaster.Role37 and AutoChessHelper.isPrimeNumber(arg_6_0.data.chess.battle) and AutoChessHelper.isPrimeNumber(arg_6_0.data.chess.hp) then
 				arg_6_0.cost = arg_6_0.cost - 1
 			end
 
@@ -232,7 +233,7 @@ function var_0_0.checkBuy(arg_14_0, arg_14_1)
 			if var_14_7 then
 				local var_14_9 = var_14_6.chess
 
-				if var_14_8 or not var_14_8 and var_14_9.exp == var_14_9.maxExpLimit then
+				if not var_14_8 and var_14_9.exp == var_14_9.maxExpLimit then
 					GameFacade.showToast(ToastEnum.AutoChessExpMax)
 					ZProj.TweenHelper.DOAnchorPos(arg_14_0.transform, arg_14_0.startX, arg_14_0.startY, 0.2)
 
@@ -280,7 +281,7 @@ function var_0_0.initBuffEffect(arg_15_0)
 		arg_15_0.effectComp:playEffect(AutoChessEnum.Tag2EffectId[var_15_2])
 	end
 
-	if arg_15_0.isFree and arg_15_0.data.chess.star ~= 1 then
+	if arg_15_0.data.chess.star ~= 0 and arg_15_0.data.chess.star ~= 1 then
 		arg_15_0.effectComp:playEffect(50002)
 	end
 end

@@ -687,7 +687,7 @@ function var_0_0._refreshAttribute(arg_25_0)
 			var_25_1 = var_25_0.trialEquipMo
 		end
 
-		local var_25_2 = arg_25_0._heroMO:getTotalBaseAttrDict(arg_25_0._equips, nil, nil, true, var_25_1, SurvivalBalanceHelper.getHeroBalanceInfo)
+		local var_25_2 = arg_25_0._heroMO:getTotalBaseAttrDict(arg_25_0._equips, nil, nil, not arg_25_0._heroMO:isTrial(), var_25_1, SurvivalBalanceHelper.getHeroBalanceInfo)
 
 		for iter_25_0, iter_25_1 in ipairs(CharacterEnum.BaseAttrIdList) do
 			local var_25_3 = HeroConfig.instance:getHeroAttributeCO(iter_25_1)

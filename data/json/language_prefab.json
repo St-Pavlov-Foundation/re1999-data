@@ -17425,7 +17425,7 @@
   },
   {
     "id": "p_v2a5_challenge_settlementview_txt_dec1",
-    "lang": "总回合数"
+    "lang": "回合数"
   },
   {
     "id": "p_v2a5_challenge_taskonekeyitem_desc",
@@ -19461,15 +19461,15 @@
   },
   {
     "id": "p_survivaltaskview_main_txt1",
-    "lang": "核心任务如果失败，演算将前功尽弃。"
+    "lang": "入侵怪物会毁坏庇护所，必须全部击退。"
   },
   {
     "id": "p_survivaltaskview_main_txt2",
-    "lang": "力所能及地建设庇护所。"
+    "lang": "建设银色庇护所能够更高效地完成演习。"
   },
   {
     "id": "p_survivalequipview_txt_Assess",
-    "lang": "总评价"
+    "lang": "总评分"
   },
   {
     "id": "p_survivalequipview_txt_Overview",
@@ -19605,7 +19605,7 @@
   },
   {
     "id": "p_survivaldecreevote_txt_Rate",
-    "lang": "赞成率"
+    "lang": "通过进度"
   },
   {
     "id": "p_survivaldecreeselect_txt_LeaderTitle",
@@ -19805,7 +19805,7 @@
   },
   {
     "id": "p_survivalceremonyopeningview_txt",
-    "lang": "暴雨来临前，白方每个部门都有一套严格的紧急预案，但唯独拉普拉斯科算中心执行的最糟糕。\n这帮天才们各有各的想法：冒险出去做实验的，疯狂收集非对称核素R的，优先避难的，不要命地抢救设备的……他们谁也说服不了谁。\n因此，出台一份具有说服力的《雨前紧急状况应对指南》迫在眉睫！"
+    "lang": "    暴雨来临前，白方每个部门都有一套严格的紧急预案，但唯独拉普拉斯科算中心执行的最糟糕。\n    \n    这帮天才们各有各的想法：冒险出去做实验的，疯狂收集非对称核素R的，优先避难的，不要命地抢救设备的……他们谁也说服不了谁。\n\n    因此，出台一份具有说服力的《雨前紧急状况应对指南》迫在眉睫！而作为组长的你，必须通过演习收集暴雨相关信息，同时也需要击败入侵银色庇护所的怪物，从而完成这份指南。"
   },
   {
     "id": "p_v2a3_destiny_preview_txt_new",
@@ -19924,6 +19924,10 @@
     "lang": "去装载"
   },
   {
+    "id": "p_survivalmapbaginfoview_txt_equip",
+    "lang": "装载"
+  },
+  {
     "id": "p_survivalmapbaginfoview_txt_search",
     "lang": "搜刮"
   },
@@ -19981,15 +19985,15 @@
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_title1",
-    "lang": "撤离地点:"
+    "lang": "演习地点:"
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_title2",
-    "lang": "存活时间："
+    "lang": "演习时间："
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_title3",
-    "lang": "队伍："
+    "lang": "研究小组："
   },
   {
     "id": "p_survivalmapresultpanelview_txt_txt_title4",
@@ -20165,7 +20169,7 @@
   },
   {
     "id": "p_survivalceremonyclosingview_txt_title6",
-    "lang": "总评价"
+    "lang": "总评分"
   },
   {
     "id": "p_survivalequipoverview_txt_Frequency",
@@ -20221,7 +20225,7 @@
   },
   {
     "id": "p_survivalshelterrewardview_txt_dec",
-    "lang": "思绪亦是一种资源。它可从路径中获取，又可扭转为你获取所需的路径。"
+    "lang": "组长永远都会有“应急预案”。但是能否成功，谁说得准呢？"
   },
   {
     "id": "p_autochesscrazymodetipview_txt_dec",
@@ -20477,7 +20481,7 @@
   },
   {
     "id": "p_v2a8_survival_help_1_txt_1",
-    "lang": "放弃演习会损失大部分收获，请一惠而后行"
+    "lang": "放弃演习会损失部分收获，请三思而后行"
   },
   {
     "id": "p_v2a8_survival_help_1_txt_2",
@@ -20485,15 +20489,15 @@
   },
   {
     "id": "p_v2a8_survival_help_1_txt_3",
-    "lang": "参与演习的成员状态可以通过这里查看。\n对于地图中比研究小组等级低的怪物，可以直接击败并且获得奖励"
+    "lang": "参与演习的成员状态可以通过这里查看\n对于地图中部分比研究小组等级低的怪物，可以直接击败并且获得奖励"
   },
   {
     "id": "p_v2a8_survival_help_1_txt_4",
-    "lang": "漫游行装惠加强参与演习成员的能力，并且战斗中会有强力的效果"
+    "lang": "漫游行装可为战斗提供强力的效果"
   },
   {
     "id": "p_v2a8_survival_help_1_txt_5",
-    "lang": "点击打开地图总览"
+    "lang": "点击可打开演习地图"
   },
   {
     "id": "p_v2a8_survival_help_1_txt_6",
@@ -20501,31 +20505,31 @@
   },
   {
     "id": "p_v2a8_survival_help_1_txt_7",
-    "lang": "演习中收集到的道具会存放到拖车处。\n使用快捷道具可以令演习事半功倍"
+    "lang": "演习中收集到的道具会存放到拖车处\n使用快捷道具可以令演习事半功倍"
   },
   {
     "id": "p_v2a8_survival_help_2_txt_1",
-    "lang": "地图中有各式各样的事件等待乌尔里希发现和处理。他们会给予丰厚的奖励，也会有不同的漫游助理加入。"
+    "lang": "地图中有各式各样的事件等待发现和处理。他们会给予丰厚的奖励，也会有不同的漫游助理加入"
   },
   {
     "id": "p_v2a8_survival_help_2_txt_2",
-    "lang": "抵达撤离点可以结束演习回到庇护所"
+    "lang": "抵达撤离点，可以结束演习并回到庇护所"
   },
   {
     "id": "p_v2a8_survival_help_3_txt_1",
-    "lang": "暴雨会在特定的时间到来，我们需要在暴雨完全侵蚀地图前撤离，否则演习将会失败。"
+    "lang": "暴雨会在特定的时间到来，我们需要在暴雨完全侵蚀地图前撤离，否则演习将会失败"
   },
   {
     "id": "p_v2a8_survival_help_3_txt_2",
-    "lang": "小队成员在暴雨中会降低抵抗值。请减少在暴雨中逗留的时间。"
+    "lang": "小队成员在暴雨中会降低抵抗力。请减少在暴雨中逗留的时间"
   },
   {
     "id": "p_v2a8_survival_help_4_txt_1",
-    "lang": "收集到的盒中之物可以装配到漫游行装中，通过链式反应会依次增强后续的增益。仔细研究可以获得更强的增益加成。"
+    "lang": "收集到的盒中之物可以装配到漫游行装中，盒中之物的摆放顺序会影响漫游行装的效果。仔细研究可获得更强的加成"
   },
   {
     "id": "p_v2a8_survival_help_4_txt_2",
-    "lang": "当然乌尔里希也有自己对于这些玩意儿的理解，我们也可以直接使用他的方案。"
+    "lang": "当然组长也有对于盒中之物独特的理解，可以直接使用其方案。"
   },
   {
     "id": "p_v2a8_survival_help_5_txt_1",
@@ -20533,7 +20537,7 @@
   },
   {
     "id": "p_v2a8_survival_help_5_txt_2",
-    "lang": "部分危险行为会导致角色的抵抗力下降。抵抗力下降到一定的程度，会对角色造成不可逆的负面影响。抵抗力为0的角色会无法参与大部分的内容。"
+    "lang": "部分危险行为会导致角色的抵抗力下降。抵抗力下降到一定程度时，在战斗中会对角色造成负面影响。抵抗力为0的角色将无法参与演习"
   },
   {
     "id": "p_v2a8_survival_help_6_txt_1",
@@ -20541,27 +20545,27 @@
   },
   {
     "id": "p_v2a8_survival_help_6_txt_2",
-    "lang": "助理带回庇护所后，如果当前宿舍有空位，会自动入住到宿舍中。如果没有将助理及时安排入住，他们有可能会因为过于失望而离开。"
+    "lang": "助理带回庇护所后，如果当前员工宿舍有空位，会自动入住到宿舍中。如果没有将助理及时安排入住，他们有可能会因为过于失望而离开。"
   },
   {
     "id": "p_v2a8_survival_help_6_txt_3",
-    "lang": "每位助理会有不同的特性，对于模拟演算会有不同的增益效果。"
+    "lang": "每位助理会有不同的特性，对于模拟生存会有不同的增益效果。"
   },
   {
     "id": "p_v2a8_survival_help_7_txt_1",
-    "lang": "当公开会场建造成功后乌尔里希可以通过这里颁布不同的决策。\n当然，这些决策需要助理们的支持。尽量公布他们觉得合理的决定吧。"
+    "lang": "当公开会场建造成功后，组长可以颁布不同的决策。\n组长的决策需要漫游助理们投票决定是否通过。尽量颁布能满足大多数助理的决策吧"
   },
   {
     "id": "p_v2a8_survival_help_8_txt_1",
-    "lang": "入侵的怪物会在特定的天数到来。集合所有力量击败他，否则本次演算将会彻底失败"
+    "lang": "入侵怪物会在特定的天数到来。必须击败他，否则本次模拟生存将会彻底失败"
   },
   {
     "id": "p_v2a8_survival_help_8_txt_2",
-    "lang": "每次入侵，怪物会携带对应的增益效果。我们需要认真应对。"
+    "lang": "入侵怪物会携带对应的增益效果。我们需要认真应对"
   },
   {
     "id": "p_v2a8_survival_help_9_txt_1",
-    "lang": "入侵怪物的增益效果可以通过助理协助消除，尝试使用符合特性的助理消除这些增益效果。"
+    "lang": "增益效果可以通过助理协助消除，尝试使用符合特性的助理消除这些效果"
   },
   {
     "id": "p_survivalview_txt_reward",
@@ -20597,7 +20601,7 @@
   },
   {
     "id": "p_survivalmapmainview_txt_box",
-    "lang": "天赋魔盒"
+    "lang": "缪斯的魔盒"
   },
   {
     "id": "p_survivalmonstereventview_txt_recommend",
@@ -20617,7 +20621,7 @@
   },
   {
     "id": "p_survivalmainview_txt_start",
-    "lang": "出发"
+    "lang": "参与演习"
   },
   {
     "id": "p_survivalmonstereventview_txt_Watch",
@@ -20626,5 +20630,21 @@
   {
     "id": "p_survivalequipoverview_txt_switch",
     "lang": "简略描述"
+  },
+  {
+    "id": "p_survivalshelterresultpanelview_txt_success",
+    "lang": "漫游成功"
+  },
+  {
+    "id": "p_survivalshelterresultpanelview_txt_fail",
+    "lang": "漫游失败"
+  },
+  {
+    "id": "p_v2a8_warmup_txt_Reward",
+    "lang": "接收后领取"
+  },
+  {
+    "id": "p_v2a8_warmup_txt_tips",
+    "lang": "翻开书包取出书信"
   }
 ]

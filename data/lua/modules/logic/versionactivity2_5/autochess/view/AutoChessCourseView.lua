@@ -52,20 +52,24 @@ function var_0_0.onOpen(arg_6_0)
 		end)
 
 		for iter_6_0, iter_6_1 in ipairs(var_6_2) do
-			local var_6_3 = AutoChessConfig.instance:getChessCfgById(iter_6_1[1], 1)
-			local var_6_4 = gohelper.cloneInPlace(arg_6_0._goChessItem)
-			local var_6_5 = gohelper.findChildImage(var_6_4, "image_Bg")
+			local var_6_3 = AutoChessConfig.instance:getChessCfgById(iter_6_1[1])
+			local var_6_4, var_6_5 = next(var_6_3)
 
-			if var_6_3.type == AutoChessStrEnum.ChessType.Attack then
-				UISpriteSetMgr.instance:setAutoChessSprite(var_6_5, "v2a5_autochess_quality1_" .. var_6_3.levelFromMall)
-			else
-				UISpriteSetMgr.instance:setAutoChessSprite(var_6_5, "v2a5_autochess_quality2_" .. var_6_3.levelFromMall)
+			if var_6_5 then
+				local var_6_6 = gohelper.cloneInPlace(arg_6_0._goChessItem)
+				local var_6_7 = gohelper.findChildImage(var_6_6, "image_Bg")
+
+				if var_6_5.type == AutoChessStrEnum.ChessType.Attack then
+					UISpriteSetMgr.instance:setAutoChessSprite(var_6_7, "v2a5_autochess_quality1_" .. var_6_5.levelFromMall)
+				else
+					UISpriteSetMgr.instance:setAutoChessSprite(var_6_7, "v2a5_autochess_quality2_" .. var_6_5.levelFromMall)
+				end
+
+				local var_6_8 = gohelper.findChild(var_6_6, "Mesh")
+
+				MonoHelper.addNoUpdateLuaComOnceToGo(var_6_8, AutoChessMeshComp):setData(var_6_5.image)
+				gohelper.setActive(var_6_6, true)
 			end
-
-			local var_6_6 = gohelper.findChild(var_6_4, "Mesh")
-
-			MonoHelper.addNoUpdateLuaComOnceToGo(var_6_6, AutoChessMeshComp):setData(var_6_3.image)
-			gohelper.setActive(var_6_4, true)
 		end
 
 		arg_6_0._txtChessCnt.text = #var_6_2

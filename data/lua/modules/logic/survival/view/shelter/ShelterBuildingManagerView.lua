@@ -4,8 +4,6 @@ local var_0_0 = class("ShelterBuildingManagerView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0.goBase = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/#scroll_List/Viewport/Content/#go_Base")
-	arg_1_0.goFire = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/#scroll_List/Viewport/Content/#go_Fire")
-	arg_1_0.goFireGrid = gohelper.findChild(arg_1_0.goFire, "#go_GridExpand")
 	arg_1_0.goTent = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/#scroll_List/Viewport/Content/#go_Tent")
 	arg_1_0.goTentGrid = gohelper.findChild(arg_1_0.goTent, "#go_GridExpand")
 	arg_1_0.goBaseItem = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/#scroll_List/Viewport/Content/#go_Base/#go_BaseItem")
@@ -67,27 +65,20 @@ function var_0_0.refreshView(arg_8_0)
 end
 
 function var_0_0.refreshList(arg_9_0)
-	local var_9_0, var_9_1, var_9_2 = SurvivalShelterBuildingListModel.instance:getShowList()
+	local var_9_0, var_9_1 = SurvivalShelterBuildingListModel.instance:getShowList()
 
 	for iter_9_0 = 1, math.max(#var_9_0, #arg_9_0.baseItemList) do
-		local var_9_3 = arg_9_0:getBaseItem(iter_9_0)
+		local var_9_2 = arg_9_0:getBaseItem(iter_9_0)
 
-		arg_9_0:refreshBaseItem(var_9_3, var_9_0[iter_9_0])
+		arg_9_0:refreshBaseItem(var_9_2, var_9_0[iter_9_0])
 	end
 
-	local var_9_4 = #var_9_1
-	local var_9_5 = #var_9_2
+	local var_9_3 = #var_9_1
 
-	for iter_9_1 = 1, math.max(var_9_4 + var_9_5, #arg_9_0.smallItemList) do
-		if iter_9_1 <= var_9_4 then
-			local var_9_6 = arg_9_0:getSmallItem(iter_9_1, arg_9_0.goFireGrid)
+	for iter_9_1 = 1, math.max(var_9_3, #arg_9_0.smallItemList) do
+		local var_9_4 = arg_9_0:getSmallItem(iter_9_1, arg_9_0.goTentGrid)
 
-			arg_9_0:refreshSmallItem(var_9_6, var_9_1[iter_9_1])
-		else
-			local var_9_7 = arg_9_0:getSmallItem(iter_9_1, arg_9_0.goTentGrid)
-
-			arg_9_0:refreshSmallItem(var_9_7, var_9_2[iter_9_1 - var_9_4])
-		end
+		arg_9_0:refreshSmallItem(var_9_4, var_9_1[iter_9_1])
 	end
 end
 
@@ -145,6 +136,7 @@ function var_0_0.getBaseSmallItem(arg_12_0, arg_12_1, arg_12_2)
 
 		var_12_0.btn:AddClickListener(arg_12_0.onClickBaseSmallItem, arg_12_0, var_12_0)
 
+		var_12_0.goNew = gohelper.findChild(var_12_0.go, "#go_New")
 		arg_12_1.itemList[arg_12_2] = var_12_0
 	end
 
@@ -176,6 +168,7 @@ function var_0_0.getSmallItem(arg_14_0, arg_14_1, arg_14_2)
 
 		var_14_0.btn:AddClickListener(arg_14_0.onClickSmallItem, arg_14_0, var_14_0)
 
+		var_14_0.goNew = gohelper.findChild(var_14_0.go, "#go_New")
 		arg_14_0.smallItemList[arg_14_1] = var_14_0
 	else
 		gohelper.addChild(arg_14_2, var_14_0.go)
@@ -213,6 +206,7 @@ function var_0_0.refreshBuildingItem(arg_17_0, arg_17_1, arg_17_2)
 	local var_17_1 = var_17_0:isBuildingUnlock(arg_17_2.buildingId, arg_17_2.level + 1)
 	local var_17_2 = arg_17_2.level == 0
 	local var_17_3 = false
+	local var_17_4 = var_17_0:isBuildingCanLevup(arg_17_2, arg_17_2.level + 1, false)
 
 	if var_17_2 then
 		gohelper.setActive(arg_17_1.goLevUp, false)
@@ -232,8 +226,6 @@ function var_0_0.refreshBuildingItem(arg_17_0, arg_17_1, arg_17_2)
 
 		var_17_3 = true
 	else
-		local var_17_4 = var_17_0:isBuildingCanLevup(arg_17_2, arg_17_2.level + 1, false)
-
 		gohelper.setActive(arg_17_1.goLevUp, var_17_4)
 		gohelper.setActive(arg_17_1.goDestroyed, arg_17_2.status == SurvivalEnum.BuildingStatus.Destroy)
 		gohelper.setActive(arg_17_1.goAdd, false)
@@ -245,6 +237,7 @@ function var_0_0.refreshBuildingItem(arg_17_0, arg_17_1, arg_17_2)
 
 	arg_17_1.simageBuild:LoadImage(arg_17_2.baseCo.icon, var_0_0.onLoadedImage, arg_17_1)
 	ZProj.UGUIHelper.SetGrayscale(arg_17_1.goImageBuild, var_17_3)
+	gohelper.setActive(arg_17_1.goNew, var_17_2 and var_17_4)
 end
 
 function var_0_0.refreshInfoView(arg_18_0)

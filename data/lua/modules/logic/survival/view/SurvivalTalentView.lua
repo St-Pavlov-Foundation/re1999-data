@@ -84,13 +84,13 @@ function var_0_0.onOpen(arg_5_0)
 		arg_5_0._outSideMo.clientData:saveDataToServer()
 		ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, arg_5_0.onViewClose, arg_5_0)
 	else
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentViewOpenFinish)
 	end
 end
 
 function var_0_0.onViewClose(arg_6_0, arg_6_1)
 	if arg_6_1 == ViewName.SurvivalTalentGetView then
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentViewOpenFinish)
 		ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, arg_6_0.onViewClose, arg_6_0)
 	end
 end
@@ -225,6 +225,9 @@ function var_0_0.onTalentGroupClick(arg_13_0, arg_13_1, arg_13_2)
 	arg_13_0._curIndex = arg_13_1
 	arg_13_0._centerItems = arg_13_0._allItemRoots[arg_13_1]
 	arg_13_0._goput = arg_13_0._allPutEffect[arg_13_1]
+
+	gohelper.setActive(arg_13_0._goput, false)
+
 	arg_13_0._golight = arg_13_0._allLightEffect[arg_13_1]
 	arg_13_0._goactive = arg_13_0._allActiveEffect[arg_13_1]
 
@@ -358,7 +361,11 @@ function var_0_0._onClickEquipAll(arg_18_0)
 		end
 	end
 
-	if tabletool.len(arg_18_0._talentGroupMo.talents) == #var_18_0 then
+	local var_18_4 = tabletool.len(arg_18_0._talentGroupMo.talents)
+
+	GameFacade.showToast(ToastEnum.SurvivalOneKeyEquip)
+
+	if var_18_4 == #var_18_0 then
 		return
 	end
 
@@ -369,6 +376,14 @@ function var_0_0._onClickEquipAll(arg_18_0)
 end
 
 function var_0_0._onClickUnEquipAll(arg_19_0)
+	local var_19_0 = tabletool.len(arg_19_0._talentGroupMo.talents)
+
+	GameFacade.showToast(ToastEnum.SurvivalOneKeyUnEquip)
+
+	if var_19_0 <= 0 then
+		return
+	end
+
 	SurvivalOutSideRpc.instance:sendSurvivalOutSideAlterTalentGroup(arg_19_0._talentGroupMo.groupId)
 end
 

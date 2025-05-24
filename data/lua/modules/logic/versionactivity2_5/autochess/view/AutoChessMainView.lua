@@ -239,7 +239,7 @@ function var_0_0.refreshUI(arg_24_0)
 
 	ZProj.UGUIHelper.SetGrayscale(arg_24_0._btnPVP.gameObject, not var_24_0)
 	arg_24_0:refreshLeftTime()
-	TaskDispatcher.runRepeat(arg_24_0.refreshLeftTime, arg_24_0, TimeUtil.OneSecond)
+	TaskDispatcher.runRepeat(arg_24_0.refreshLeftTime, arg_24_0, TimeUtil.OneMinuteSecond)
 
 	if not arg_24_0.badgeItem then
 		local var_24_1 = arg_24_0:getResInst(AutoChessStrEnum.ResPath.BadgeItem, arg_24_0._goBadgeContent)
@@ -263,32 +263,25 @@ function var_0_0.refreshBtnStatus(arg_25_0)
 			local var_25_2 = AutoChessConfig.instance:getEpisodeCO(var_25_1)
 
 			arg_25_0._txtRoundE.text = string.format("%d/%d", var_25_0.currRound, var_25_2.maxRound)
-
-			gohelper.setActive(arg_25_0._goRoundE, true)
-		else
-			gohelper.setActive(arg_25_0._goRoundE, false)
 		end
 
-		if arg_25_0.crazyActId == Activity182Enum.CrazyActId.Crazy1 then
-			local var_25_3 = ActivityHelper.getActivityRemainTimeStr(arg_25_0.crazyActId)
-
-			arg_25_0._txtRuleTime.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_mainview_timetip"), var_25_3)
-
-			gohelper.setActive(arg_25_0._goRuleTime, true)
-		else
-			gohelper.setActive(arg_25_0._goRuleTime, false)
-		end
+		gohelper.setActive(arg_25_0._goRoundE, var_25_1 ~= 0)
+		gohelper.setActive(arg_25_0._goRuleTime, arg_25_0.crazyActId == Activity182Enum.CrazyActId.Crazy1)
+	else
+		gohelper.setActive(arg_25_0._btnGiveUpE, false)
+		gohelper.setActive(arg_25_0._goRoundE, false)
+		gohelper.setActive(arg_25_0._goRuleTime, false)
 	end
 
-	local var_25_4 = arg_25_0.actMo:getGameMo(arg_25_0.actId, AutoChessEnum.ModuleId.PVP)
-	local var_25_5 = var_25_4.episodeId
+	local var_25_3 = arg_25_0.actMo:getGameMo(arg_25_0.actId, AutoChessEnum.ModuleId.PVP)
+	local var_25_4 = var_25_3.episodeId
 
-	gohelper.setActive(arg_25_0._btnGiveUpP, var_25_4.start)
+	gohelper.setActive(arg_25_0._btnGiveUpP, var_25_3.start)
 
-	if var_25_5 ~= 0 then
-		local var_25_6 = AutoChessConfig.instance:getEpisodeCO(var_25_5)
+	if var_25_4 ~= 0 then
+		local var_25_5 = AutoChessConfig.instance:getEpisodeCO(var_25_4)
 
-		arg_25_0._txtRoundP.text = string.format("%d/%d", var_25_4.currRound, var_25_6.maxRound)
+		arg_25_0._txtRoundP.text = string.format("%d/%d", var_25_3.currRound, var_25_5.maxRound)
 
 		gohelper.setActive(arg_25_0._goRoundP, true)
 	else
@@ -298,6 +291,12 @@ end
 
 function var_0_0.refreshLeftTime(arg_26_0)
 	arg_26_0._txtLeftTime.text = ActivityHelper.getActivityRemainTimeStr(arg_26_0.actId)
+
+	if arg_26_0.crazyActId == Activity182Enum.CrazyActId.Crazy1 then
+		local var_26_0 = ActivityHelper.getActivityRemainTimeStr(arg_26_0.crazyActId)
+
+		arg_26_0._txtRuleTime.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_mainview_timetip"), var_26_0)
+	end
 end
 
 function var_0_0.refreshDoubleRankTip(arg_27_0)

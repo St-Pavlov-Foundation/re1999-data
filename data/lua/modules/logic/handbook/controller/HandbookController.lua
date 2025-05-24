@@ -123,18 +123,11 @@ function var_0_0.isFirstHandbook(arg_13_0)
 end
 
 function var_0_0.markNotFirstHandbookSkin(arg_14_0)
-	local var_14_0 = PlayerModel.instance:getMyUserId()
-	local var_14_1 = PlayerPrefsKey.FirstSkinHandbook .. tostring(var_14_0)
-
-	PlayerPrefsHelper.setNumber(var_14_1, 1)
-	arg_14_0:dispatchEvent(HandbookEvent.EnterHandbookSkin)
+	return
 end
 
 function var_0_0.isFirstHandbookSkin(arg_15_0)
-	local var_15_0 = PlayerModel.instance:getMyUserId()
-	local var_15_1 = PlayerPrefsKey.FirstSkinHandbook .. tostring(var_15_0)
-
-	return PlayerPrefsHelper.getNumber(var_15_1, 0) <= 0
+	return false
 end
 
 function var_0_0.openHandbookWeekWalkMapView(arg_16_0, arg_16_1)

@@ -115,6 +115,10 @@ function var_0_0._setQuitText(arg_7_0)
 			arg_7_0._descTxt.text = luaLang("rouge_quit_fight_confirm")
 
 			return
+		elseif var_7_0.type == DungeonEnum.EpisodeType.Shelter then
+			arg_7_0._descTxt.text = luaLang("survival_shelter_quit_fight_confirm")
+
+			return
 		end
 	end
 
@@ -342,6 +346,12 @@ function var_0_0._loadCondition(arg_21_0)
 		if var_21_4 and var_21_4.type == DungeonEnum.ChapterType.Simple then
 			return
 		end
+	end
+
+	if FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act183] then
+		arg_21_0:refresh183Condition()
+
+		return
 	end
 
 	local var_21_5 = DungeonConfig.instance:getEpisodeAdvancedConditionText(arg_21_0._episodeId, FightModel.instance:getBattleId())
@@ -766,14 +776,34 @@ function var_0_0.sortWeekWalkVer2Task(arg_37_0, arg_37_1)
 	return var_37_0.cupNo < var_37_1.cupNo
 end
 
-function var_0_0.onClose(arg_38_0)
+function var_0_0.refresh183Condition(arg_38_0)
+	gohelper.onceAddComponent(arg_38_0._gopasstarget, gohelper.Type_VerticalLayoutGroup).padding.bottom = -60
+
+	local var_38_0 = FightDataHelper.fieldMgr.episodeId
+	local var_38_1 = DungeonConfig.instance:getEpisodeAdvancedCondition(var_38_0)
+
+	if LuaUtil.isEmptyStr(var_38_1) == false then
+		local var_38_2 = string.splitToNumber(var_38_1, "|")
+
+		for iter_38_0, iter_38_1 in ipairs(var_38_2) do
+			local var_38_3 = lua_condition.configDict[iter_38_1]
+			local var_38_4 = gohelper.clone(arg_38_0._goconditionitemdesc, arg_38_0._goconditionitem, "platnumdesc")
+			local var_38_5 = arg_38_0:checkPlatCondition(iter_38_1)
+
+			arg_38_0:_setConditionText(var_38_4, var_38_3.desc, var_38_5)
+			arg_38_0:_setStarStatus(var_38_4, var_38_5)
+		end
+	end
+end
+
+function var_0_0.onClose(arg_39_0)
 	FightAudioMgr.instance:obscureBgm(false)
 end
 
-function var_0_0.onDestroyView(arg_39_0)
-	arg_39_0._simagetipbg:UnLoadImage()
-	arg_39_0._simagemaskbg:UnLoadImage()
-	arg_39_0._simagenumline:UnLoadImage()
+function var_0_0.onDestroyView(arg_40_0)
+	arg_40_0._simagetipbg:UnLoadImage()
+	arg_40_0._simagemaskbg:UnLoadImage()
+	arg_40_0._simagenumline:UnLoadImage()
 end
 
 return var_0_0

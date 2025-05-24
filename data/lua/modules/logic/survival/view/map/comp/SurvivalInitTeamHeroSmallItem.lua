@@ -122,6 +122,8 @@ function var_0_0._onClickThis(arg_12_0)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.HeroGroupUI.Play_UI_Team_Open)
+
 	SurvivalMapModel.instance:getInitGroup().curClickHeroIndex = arg_12_0._index
 
 	CharacterModel.instance:setCharacterList(false, CharacterEnum.FilterType.Survival)

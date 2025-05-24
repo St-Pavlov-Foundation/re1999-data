@@ -8,6 +8,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._imagetalentskill = gohelper.findChildSingleImage(arg_1_0.viewGO, "Panel/Left/image_Card/image_CardIcon")
 	arg_1_0._btnRight = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Panel/Left/Lv/#btn_Right")
 	arg_1_0._btnLeft = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Panel/Left/Lv/#btn_Left")
+	arg_1_0._txtName = gohelper.findChildTextMesh(arg_1_0.viewGO, "Panel/Left/#txt_Skill")
 	arg_1_0._golock = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/Layout/#go_Locked")
 	arg_1_0._txtLock = gohelper.findChildTextMesh(arg_1_0.viewGO, "Panel/Left/Layout/#go_Locked/#txt_Locked")
 	arg_1_0._txtDesc = gohelper.findChildTextMesh(arg_1_0.viewGO, "Panel/Left/Layout/#scroll_Descr/viewport/#txt_Descr")
@@ -62,6 +63,8 @@ function var_0_0.onOpen(arg_5_0)
 	local var_5_4 = var_5_0.talentBox:getTalentGroup(var_5_1)
 	local var_5_5 = lua_survival_talent_group.configDict[var_5_1]
 
+	arg_5_0._txtName.text = var_5_5.name
+
 	arg_5_0._imagetalentskill:LoadImage(ResUrl.getSurvivalTalentIcon(var_5_5.folder .. "/icon_1"))
 
 	var_5_2 = var_5_2 or var_5_4.talents
@@ -95,7 +98,15 @@ function var_0_0.onOpen(arg_5_0)
 		return
 	end
 
-	arg_5_0:onShowCollect(1)
+	local var_5_9 = 1
+
+	for iter_5_4, iter_5_5 in ipairs(arg_5_0._collectCos) do
+		if var_5_7 >= iter_5_5.num then
+			var_5_9 = iter_5_4
+		end
+	end
+
+	arg_5_0:onShowCollect(var_5_9)
 end
 
 function var_0_0.onClickArrow(arg_6_0, arg_6_1)

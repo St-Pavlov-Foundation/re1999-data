@@ -87,6 +87,7 @@ var_0_0.HelpId = {
 	Act183DungeonAndRepress = 2808004,
 	Survival = 2809008,
 	SeasonGuide803 = 152,
+	Shelter = 2809009,
 	VersionActivity_1_3_119 = 171,
 	Role37PuzzleViewHelp = 183,
 	Season166TrainHelp = 2200100,

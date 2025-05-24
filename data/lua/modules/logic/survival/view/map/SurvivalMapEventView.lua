@@ -40,8 +40,6 @@ function var_0_0.onOpen(arg_4_0)
 	local var_4_0 = true
 
 	if not arg_4_0._infoPanel then
-		var_4_0 = false
-
 		local var_4_1 = arg_4_0.viewContainer._viewSetting.otherRes.infoView
 		local var_4_2 = arg_4_0:getResInst(var_4_1, arg_4_0._goinfo)
 
@@ -64,6 +62,8 @@ function var_0_0.onOpen(arg_4_0)
 
 		gohelper.setActive(arg_4_0._gobtnitem, false)
 		arg_4_0:initCamera()
+	else
+		var_4_0 = false
 	end
 
 	SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(false)
@@ -203,7 +203,7 @@ end
 
 function var_0_0.onClickOption(arg_14_0)
 	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.TriggerEvent, tostring(arg_14_0._curMo.id))
-	SurvivalStatHelper.instance:statSurvivalMapUnit("TriggerEvent", arg_14_0._curMo.id)
+	SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_14_0._curMo.id, 1, 0)
 end
 
 function var_0_0.updateChoiceByServer(arg_15_0, arg_15_1)
@@ -272,6 +272,7 @@ function var_0_0.updateChoiceByServer(arg_15_0, arg_15_1)
 			conditionStr = var_15_11.condition,
 			resultStr = var_15_11.result,
 			unitId = var_15_2,
+			treeId = var_15_0.treeId,
 			otherParam = var_15_10
 		})
 
@@ -432,21 +433,24 @@ function var_0_0.showNpcInfo(arg_22_0)
 end
 
 function var_0_0.onClose(arg_23_0)
-	SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(true)
 	TaskDispatcher.cancelTask(arg_23_0._autoShowDesc, arg_23_0)
 	TaskDispatcher.cancelTask(arg_23_0.refreshView, arg_23_0)
 end
 
-function var_0_0.onClickServerChoice(arg_24_0, arg_24_1, arg_24_2)
-	if arg_24_2 and arg_24_2.npcWorthCheck then
-		ViewMgr.instance:openView(ViewName.SurvivalCommitItemView, arg_24_2)
+function var_0_0.onCloseFinish(arg_24_0)
+	SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(true)
+end
+
+function var_0_0.onClickServerChoice(arg_25_0, arg_25_1, arg_25_2)
+	if arg_25_2 and arg_25_2.npcWorthCheck then
+		ViewMgr.instance:openView(ViewName.SurvivalCommitItemView, arg_25_2)
 
 		return
 	end
 
-	if arg_24_2 and arg_24_2.openFogRange then
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnTreeOpenFog, arg_24_2)
-		arg_24_0:closeThis()
+	if arg_25_2 and arg_25_2.openFogRange then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnTreeOpenFog, arg_25_2)
+		arg_25_0:closeThis()
 
 		return
 	end
@@ -455,127 +459,127 @@ function var_0_0.onClickServerChoice(arg_24_0, arg_24_1, arg_24_2)
 		return
 	end
 
-	SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_24_2.unitId, arg_24_1)
-	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, tostring(arg_24_1))
+	SurvivalStatHelper.instance:statSurvivalMapUnit("SelectOption", arg_25_2.unitId, arg_25_1, arg_25_2.treeId)
+	SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.SelectOption, tostring(arg_25_1))
 end
 
-function var_0_0.onClickBogusBtn(arg_25_0, arg_25_1, arg_25_2)
-	arg_25_0._stepList = {}
-	arg_25_0._curDescIndex = 0
-	arg_25_0._curStepCo = nil
-	arg_25_0._txtDesc.text = ""
+function var_0_0.onClickBogusBtn(arg_26_0, arg_26_1, arg_26_2)
+	arg_26_0._stepList = {}
+	arg_26_0._curDescIndex = 0
+	arg_26_0._curStepCo = nil
+	arg_26_0._txtDesc.text = ""
 
-	local var_25_0 = {
-		arg_25_2
+	local var_26_0 = {
+		arg_26_2
 	}
 
-	if arg_25_2.exBogusData then
-		arg_25_2.exStr_bogus = arg_25_2.exBogusData.exStr
-		arg_25_2.isValid_bogus = arg_25_2.exBogusData.isValid
-		arg_25_2.exShowItemMos_bogus = arg_25_2.exBogusData.exShowItemMos
-		arg_25_2.exStepDesc_bogus = arg_25_2.exBogusData.exStepDesc
-		arg_25_2.exBogusData = nil
-		arg_25_2.useExBogusData = true
+	if arg_26_2.exBogusData then
+		arg_26_2.exStr_bogus = arg_26_2.exBogusData.exStr
+		arg_26_2.isValid_bogus = arg_26_2.exBogusData.isValid
+		arg_26_2.exShowItemMos_bogus = arg_26_2.exBogusData.exShowItemMos
+		arg_26_2.exStepDesc_bogus = arg_26_2.exBogusData.exStepDesc
+		arg_26_2.exBogusData = nil
+		arg_26_2.useExBogusData = true
 	else
-		arg_25_2.exStr = arg_25_2.exStr_bogus
-		arg_25_2.isValid = arg_25_2.isValid_bogus
+		arg_26_2.exStr = arg_26_2.exStr_bogus
+		arg_26_2.isValid = arg_26_2.isValid_bogus
 
-		if arg_25_2.useExBogusData then
-			arg_25_2.exShowItemMos = arg_25_2.exShowItemMos_bogus
-			arg_25_2.exStepDesc = arg_25_2.exStepDesc_bogus
-			arg_25_2.useExBogusData = nil
+		if arg_26_2.useExBogusData then
+			arg_26_2.exShowItemMos = arg_26_2.exShowItemMos_bogus
+			arg_26_2.exStepDesc = arg_26_2.exStepDesc_bogus
+			arg_26_2.useExBogusData = nil
 		end
 
-		arg_25_2.callback = arg_25_0.onClickServerChoice
+		arg_26_2.callback = arg_26_0.onClickServerChoice
 	end
 
-	var_25_0[2] = SurvivalChoiceMo.Create({
+	var_26_0[2] = SurvivalChoiceMo.Create({
 		param = true,
-		callback = arg_25_0.updateChoiceByServer,
-		callobj = arg_25_0,
+		callback = arg_26_0.updateChoiceByServer,
+		callobj = arg_26_0,
 		desc = luaLang("survival_eventview_leave"),
 		icon = SurvivalEnum.EventChoiceIcon.Return
 	})
 
-	table.insert(arg_25_0._stepList, {
-		descArr = GameUtil.getUCharArrWithoutRichTxt(arg_25_2.exStepDesc),
-		items = arg_25_2.exShowItemMos
+	table.insert(arg_26_0._stepList, {
+		descArr = GameUtil.getUCharArrWithoutRichTxt(arg_26_2.exStepDesc),
+		items = arg_26_2.exShowItemMos
 	})
-	gohelper.setActive(arg_25_0._gobtn, false)
-	arg_25_0:setBtnDatas(var_25_0)
-	arg_25_0:nextStep()
+	gohelper.setActive(arg_26_0._gobtn, false)
+	arg_26_0:setBtnDatas(var_26_0)
+	arg_26_0:nextStep()
 end
 
-function var_0_0.initCamera(arg_26_0)
-	arg_26_0._modelComp = MonoHelper.addNoUpdateLuaComOnceToGo(arg_26_0._imageModel, Survival3DModelComp, {
+function var_0_0.initCamera(arg_27_0)
+	arg_27_0._modelComp = MonoHelper.addNoUpdateLuaComOnceToGo(arg_27_0._imageModel, Survival3DModelComp, {
 		xOffset = 8000
 	})
 
-	local var_26_0 = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes)
+	local var_27_0 = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes)
 
-	arg_26_0._allResGo = arg_26_0:getUserDataTb_()
-	arg_26_0._allResGo["node1/role"] = arg_26_0._modelComp:addModel("node1/role", var_26_0)
-	arg_26_0._allResGo["node2/role"] = arg_26_0._modelComp:addModel("node2/role", var_26_0)
+	arg_27_0._allResGo = arg_27_0:getUserDataTb_()
+	arg_27_0._allResGo["node1/role"] = arg_27_0._modelComp:addModel("node1/role", var_27_0)
+	arg_27_0._allResGo["node2/role"] = arg_27_0._modelComp:addModel("node2/role", var_27_0)
 
-	arg_26_0:hideOtherModel()
+	arg_27_0:hideOtherModel()
 end
 
-function var_0_0.hideOtherModel(arg_27_0)
-	for iter_27_0, iter_27_1 in pairs(arg_27_0._allResGo) do
-		gohelper.setActive(iter_27_1, iter_27_0 == arg_27_0._curHeroPath or iter_27_0 == arg_27_0._curUnitPath)
+function var_0_0.hideOtherModel(arg_28_0)
+	for iter_28_0, iter_28_1 in pairs(arg_28_0._allResGo) do
+		gohelper.setActive(iter_28_1, iter_28_0 == arg_28_0._curHeroPath or iter_28_0 == arg_28_0._curUnitPath)
 	end
 end
 
-function var_0_0.setUnitMo(arg_28_0, arg_28_1)
-	gohelper.setActive(arg_28_0._btnNpc, arg_28_1.unitType == SurvivalEnum.UnitType.NPC)
+function var_0_0.setUnitMo(arg_29_0, arg_29_1)
+	gohelper.setActive(arg_29_0._btnNpc, arg_29_1.unitType == SurvivalEnum.UnitType.NPC)
 
-	if arg_28_1.unitType == SurvivalEnum.UnitType.NPC then
-		arg_28_0._npcItemMo = SurvivalBagItemMo.New()
+	if arg_29_1.unitType == SurvivalEnum.UnitType.NPC then
+		arg_29_0._npcItemMo = SurvivalBagItemMo.New()
 
-		local var_28_0 = SurvivalConfig.instance.npcIdToItemCo[arg_28_1.cfgId]
+		local var_29_0 = SurvivalConfig.instance.npcIdToItemCo[arg_29_1.cfgId]
 
-		arg_28_0._npcItemMo:init({
+		arg_29_0._npcItemMo:init({
 			count = 1,
-			id = var_28_0 and var_28_0.id or 0
+			id = var_29_0 and var_29_0.id or 0
 		})
 	end
 
-	local var_28_1 = arg_28_1:getResPath()
-	local var_28_2 = arg_28_1.unitType == SurvivalEnum.UnitType.Search
+	local var_29_1 = arg_29_1:getResPath()
+	local var_29_2 = arg_29_1.unitType == SurvivalEnum.UnitType.Search
 
-	arg_28_0._curHeroPath = nil
-	arg_28_0._curUnitPath = nil
+	arg_29_0._curHeroPath = nil
+	arg_29_0._curUnitPath = nil
 
-	if string.find(var_28_1, "^survival/buiding") then
-		if arg_28_1.co.camera == 2 then
-			arg_28_0._curUnitPath = "node4/buiding3"
-		elseif arg_28_1.co.camera == 3 then
-			arg_28_0._curUnitPath = "node5/buiding4"
-		elseif next(arg_28_1.exPoints) or arg_28_1.co.camera == 1 then
-			arg_28_0._curUnitPath = "node3/buiding2"
+	if string.find(var_29_1, "^survival/buiding") then
+		if arg_29_1.co.camera == 2 then
+			arg_29_0._curUnitPath = "node4/buiding3"
+		elseif arg_29_1.co.camera == 3 then
+			arg_29_0._curUnitPath = "node5/buiding4"
+		elseif next(arg_29_1.exPoints) or arg_29_1.co.camera == 1 then
+			arg_29_0._curUnitPath = "node3/buiding2"
 		else
-			arg_28_0._curUnitPath = "node2/buiding1"
-			arg_28_0._curHeroPath = "node2/role"
+			arg_29_0._curUnitPath = "node2/buiding1"
+			arg_29_0._curHeroPath = "node2/role"
 		end
 	else
-		arg_28_0._curHeroPath = "node1/role"
-		arg_28_0._curUnitPath = "node1/npc"
+		arg_29_0._curHeroPath = "node1/role"
+		arg_29_0._curUnitPath = "node1/npc"
 	end
 
-	if arg_28_0._curUnitPath then
-		arg_28_0._allResGo[arg_28_0._curUnitPath] = arg_28_0._modelComp:addModel(arg_28_0._curUnitPath, var_28_1)
+	if arg_29_0._curUnitPath then
+		arg_29_0._allResGo[arg_29_0._curUnitPath] = arg_29_0._modelComp:addModel(arg_29_0._curUnitPath, var_29_1)
 	end
 
-	if arg_28_0._curUnitPath then
-		arg_28_0._allResGo[arg_28_0._curUnitPath] = arg_28_0._modelComp:addModel(arg_28_0._curUnitPath, var_28_1)
+	if arg_29_0._curUnitPath then
+		arg_29_0._allResGo[arg_29_0._curUnitPath] = arg_29_0._modelComp:addModel(arg_29_0._curUnitPath, var_29_1)
 	end
 
-	if arg_28_0._curHeroPath then
-		arg_28_0._modelComp:setModelPathActive(arg_28_0._curHeroPath, "#go_effect", var_28_2)
-		arg_28_0._modelComp:playAnim(arg_28_0._curHeroPath, var_28_2 and "search" or "idle")
+	if arg_29_0._curHeroPath then
+		arg_29_0._modelComp:setModelPathActive(arg_29_0._curHeroPath, "#go_effect", var_29_2)
+		arg_29_0._modelComp:playAnim(arg_29_0._curHeroPath, var_29_2 and "search" or "idle")
 	end
 
-	arg_28_0:hideOtherModel()
+	arg_29_0:hideOtherModel()
 end
 
 return var_0_0

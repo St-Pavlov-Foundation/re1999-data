@@ -99,14 +99,19 @@ function var_0_0.setResByType(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
 			local var_5_1 = var_0_0.ResPaths.warming1
 			local var_5_2 = SurvivalMapModel.instance:getCurMapId()
 			local var_5_3 = lua_survival_map_group_mapping.configDict[var_5_2].id
+			local var_5_4 = SurvivalConfig.instance:getCopyCo(var_5_3)
 
-			if SurvivalConfig.instance:getCopyCo(var_5_3).id == 5 then
+			if not var_5_4 then
+				logError("没有找到配置" .. tostring(var_5_2) .. " >> " .. tostring(var_5_3))
+			end
+
+			if var_5_4.id == 5 then
 				var_5_1 = var_0_0.ResPaths.warming2
 			end
 
-			local var_5_4 = SurvivalMapHelper.instance:getBlockRes(var_5_1)
+			local var_5_5 = SurvivalMapHelper.instance:getBlockRes(var_5_1)
 
-			var_5_0 = gohelper.clone(var_5_4, arg_5_0._effectRoot)
+			var_5_0 = gohelper.clone(var_5_5, arg_5_0._effectRoot)
 
 			transformhelper.setLocalRotation(var_5_0.transform, 0, 30, 0)
 		end
@@ -114,9 +119,9 @@ function var_0_0.setResByType(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
 		var_5_0 = table.remove(arg_5_0._useitemPool)
 
 		if not var_5_0 then
-			local var_5_5 = SurvivalMapHelper.instance:getBlockRes(var_0_0.ResPaths.useitem)
+			local var_5_6 = SurvivalMapHelper.instance:getBlockRes(var_0_0.ResPaths.useitem)
 
-			var_5_0 = gohelper.clone(var_5_5, arg_5_0._effectRoot)
+			var_5_0 = gohelper.clone(var_5_6, arg_5_0._effectRoot)
 
 			transformhelper.setLocalRotation(var_5_0.transform, 0, 30, 0)
 		end
@@ -124,9 +129,9 @@ function var_0_0.setResByType(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
 
 	gohelper.setActive(var_5_0, true)
 
-	local var_5_6, var_5_7, var_5_8 = SurvivalHelper.instance:hexPointToWorldPoint(arg_5_2, arg_5_3)
+	local var_5_7, var_5_8, var_5_9 = SurvivalHelper.instance:hexPointToWorldPoint(arg_5_2, arg_5_3)
 
-	transformhelper.setLocalPos(var_5_0.transform, var_5_6, var_5_7, var_5_8)
+	transformhelper.setLocalPos(var_5_0.transform, var_5_7, var_5_8, var_5_9)
 
 	var_5_0.name = string.format("[%s,%s,%s]", arg_5_2, arg_5_3, -arg_5_2 - arg_5_3)
 

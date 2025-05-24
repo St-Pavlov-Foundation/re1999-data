@@ -231,6 +231,7 @@ function var_0_0.updateRed(arg_7_0)
 end
 
 function var_0_0._onClickFilterItem(arg_8_0, arg_8_1)
+	GameFacade.showToast(ToastEnum.SurvivalOneKeyEquip)
 	gohelper.setActive(arg_8_0._goonekeyEquipTips, false)
 	SurvivalWeekRpc.instance:sendSurvivalEquipOneKeyWear(arg_8_1.type)
 end
@@ -244,6 +245,7 @@ function var_0_0.oneKeyEquip(arg_10_0)
 end
 
 function var_0_0.oneKeyUnEquip(arg_11_0)
+	GameFacade.showToast(ToastEnum.SurvivalOneKeyUnEquip)
 	SurvivalWeekRpc.instance:sendSurvivalEquipOneKeyDemount()
 end
 
@@ -266,6 +268,8 @@ function var_0_0._onClickPlan(arg_13_0, arg_13_1)
 		return
 	end
 
+	arg_13_0._lockUpdate = true
+
 	SurvivalWeekRpc.instance:sendSurvivalEquipSwitchPlan(arg_13_1, arg_13_0._onServerSwitchPlan, arg_13_0)
 end
 
@@ -275,6 +279,8 @@ function var_0_0._onServerSwitchPlan(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
 		UIBlockHelper.instance:startBlock("SurvivalEquipView_swicth", 0.167)
 		TaskDispatcher.runDelay(arg_14_0.onChangePlanBySwitch, arg_14_0, 0.167)
 	end
+
+	arg_14_0._lockUpdate = false
 end
 
 function var_0_0.onChangePlanBySwitch(arg_15_0)
@@ -288,6 +294,10 @@ local var_0_1 = {
 }
 
 function var_0_0.onChangePlan(arg_16_0, arg_16_1)
+	if arg_16_0._lockUpdate then
+		return
+	end
+
 	if arg_16_0._planSelects then
 		for iter_16_0, iter_16_1 in pairs(arg_16_0._planSelects) do
 			gohelper.setActive(iter_16_1, arg_16_0._equipBox.currPlanId == iter_16_0)
@@ -393,6 +403,10 @@ function var_0_0.onMaxTagChange(arg_19_0, arg_19_1)
 			UISpriteSetMgr.instance:setSurvivalSprite(arg_19_0._imageFrequency, var_19_0.value)
 
 			arg_19_0._txtFrequency.text = arg_19_0._equipBox.values[var_19_0.value] or 0
+
+			arg_19_0._animskill:Play("equip_in", 0, 1)
+		else
+			arg_19_0._animskill:Play("empty_in", 0, 1)
 		end
 	elseif arg_19_0._preTagCo ~= var_19_0 then
 		arg_19_0._preLv = var_19_1
@@ -403,6 +417,12 @@ function var_0_0.onMaxTagChange(arg_19_0, arg_19_1)
 
 		arg_19_0._preTagCo = var_19_0
 	else
+		if var_19_0 then
+			UISpriteSetMgr.instance:setSurvivalSprite(arg_19_0._imageFrequency, var_19_0.value)
+
+			arg_19_0._txtFrequency.text = arg_19_0._equipBox.values[var_19_0.value] or 0
+		end
+
 		arg_19_0._nextLv = var_19_1
 
 		arg_19_0:_delayShowLevelAnim()

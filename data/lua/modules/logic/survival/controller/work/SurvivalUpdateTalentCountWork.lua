@@ -6,7 +6,9 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 	SurvivalMapModel.instance:getSceneMo().gainTalentNum = arg_1_0._stepMo.paramInt[1] or 0
 
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnTalentCountUpdate)
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
+
+	SurvivalMapModel.instance.isGetTalent = true
+
 	arg_1_0:onDone(true)
 end
 

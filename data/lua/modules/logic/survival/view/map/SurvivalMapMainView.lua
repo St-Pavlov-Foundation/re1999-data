@@ -16,6 +16,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._btnequip = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#btn_equip")
 	arg_1_0._goequipred = gohelper.findChild(arg_1_0.viewGO, "Left/#btn_equip/go_arrow")
 	arg_1_0._btnbox = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#btn_box")
+	arg_1_0._animbox = gohelper.findChildAnim(arg_1_0.viewGO, "Left/#btn_box")
 	arg_1_0._txtBoxNum = gohelper.findChildTextMesh(arg_1_0.viewGO, "Left/#btn_box/#txt_num")
 	arg_1_0._gotask = gohelper.findChild(arg_1_0.viewGO, "Left/#go_task")
 	arg_1_0._txtTask = gohelper.findChildTextMesh(arg_1_0.viewGO, "Left/#go_task/TaskView/Viewport/Content/#txt_task")
@@ -80,12 +81,12 @@ function var_0_0.onOpen(arg_4_0)
 	arg_4_0._targetPos = Vector3(var_4_0.player:getWorldPos())
 
 	SurvivalMapHelper.instance:setFocusPos(arg_4_0._targetPos.x, arg_4_0._targetPos.y, arg_4_0._targetPos.z)
-	arg_4_0:_setScale(SurvivalMapModel.instance.save_mapScale)
+	arg_4_0:_setScale(SurvivalMapModel.instance.save_mapScale, true)
 	arg_4_0:_refreshBagFull()
 	arg_4_0:_refreshCurTask()
 	arg_4_0:_refreshTeamLv()
 	arg_4_0:onRefreshViewState()
-	arg_4_0:onRefreshBoxNum()
+	arg_4_0:onRefreshBoxNum(true)
 	arg_4_0:updateEquipRed()
 	arg_4_0:refreshHelpBtnPos()
 end
@@ -102,10 +103,15 @@ function var_0_0.updateEquipRed(arg_6_0)
 	gohelper.setActive(arg_6_0._goequipred, SurvivalEquipRedDotHelper.instance.reddotType >= 0)
 end
 
-function var_0_0.onRefreshBoxNum(arg_7_0)
+function var_0_0.onRefreshBoxNum(arg_7_0, arg_7_1)
 	local var_7_0 = SurvivalMapModel.instance:getSceneMo()
 
 	arg_7_0._txtBoxNum.text = var_7_0.gainTalentNum
+
+	if not arg_7_1 then
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_award_all)
+		arg_7_0._animbox:Play("get", 0, 0)
+	end
 end
 
 function var_0_0.onRefreshViewState(arg_8_0)
@@ -139,7 +145,9 @@ function var_0_0._onClickBag(arg_11_0)
 end
 
 function var_0_0._onClickTask(arg_12_0)
-	ViewMgr.instance:openView(ViewName.ShelterTaskView)
+	ViewMgr.instance:openView(ViewName.ShelterTaskView, {
+		moduleId = SurvivalEnum.TaskModule.NormalTask
+	})
 	SurvivalStatHelper.instance:statBtnClick("_onClickTask", "SurvivalMapMainView")
 end
 
@@ -269,9 +277,13 @@ function var_0_0.onClickScene(arg_21_0, arg_21_1, arg_21_2)
 			SurvivalMapModel.instance:setShowTarget(arg_21_2)
 			table.insert(var_21_4, 1, var_21_1)
 			SurvivalMapHelper.instance:getScene().path:setPathListShow(var_21_4)
-			SurvivalMapModel.instance:setMoveToTarget()
+
+			if SurvivalMapModel.instance._targetPos ~= arg_21_2 then
+				SurvivalMapModel.instance:setMoveToTarget()
+			end
 		end
 	else
+		SurvivalMapModel.instance:setMoveToTarget()
 		SurvivalMapModel.instance:setShowTarget()
 	end
 end

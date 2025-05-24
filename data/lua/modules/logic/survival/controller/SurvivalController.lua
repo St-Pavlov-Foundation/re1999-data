@@ -65,8 +65,12 @@ end
 
 function var_0_0._onEnterSurvival(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
 	if arg_9_2 == 0 then
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.SurvivalLoadingView)
-		GameSceneMgr.instance:startScene(SceneType.Survival, 280001, 280001, true, true)
+		if GameSceneMgr.instance:getCurSceneType() ~= SceneType.Survival then
+			GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.SurvivalLoadingView)
+			GameSceneMgr.instance:startScene(SceneType.Survival, 280001, 280001, true, true)
+		else
+			logError("重复进入探索场景")
+		end
 	elseif GameSceneMgr.instance:getCurSceneType() == SceneType.Fight then
 		arg_9_0:exitMap()
 	end
@@ -107,9 +111,11 @@ function var_0_0.enterSurvivalShelterScene(arg_12_0)
 		GameSceneMgr.instance:closeScene(nil, nil, nil, true)
 		GameSceneMgr.instance:setPrevScene(var_12_1, var_12_2, var_12_3)
 		arg_12_0:tryEnterShelterFight()
-	else
+	elseif GameSceneMgr.instance:getCurSceneType() ~= SceneType.SurvivalShelter then
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.SurvivalLoadingView)
 		GameSceneMgr.instance:startScene(SceneType.SurvivalShelter, 280001, 280001, true, true)
+	else
+		logError("重复加载避难所场景")
 	end
 end
 
@@ -278,8 +284,8 @@ function var_0_0.enterSurvival(arg_25_0)
 		return
 	end
 
-	if var_25_0:getBuildingBtnStatus() == SurvivalEnum.ShelterBuildingBtnStatus.Levelup then
-		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalBuildLevupTips, MsgBoxEnum.BoxType.Yes_No, arg_25_0.openSurvivalInitTeamView, nil, nil, arg_25_0, nil, nil)
+	if var_25_0:isNpcWillLeave() then
+		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalNpcTips, MsgBoxEnum.BoxType.Yes_No, arg_25_0.openSurvivalInitTeamView, nil, nil, arg_25_0, nil, nil)
 
 		return
 	end

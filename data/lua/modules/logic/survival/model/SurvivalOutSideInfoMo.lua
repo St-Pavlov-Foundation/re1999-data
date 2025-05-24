@@ -78,15 +78,29 @@ function var_0_0.isUnlockDifficultyMod(arg_4_0, arg_4_1)
 		return false
 	end
 
+	if string.nilorempty(var_4_0.unlock) then
+		return true
+	end
+
 	local var_4_1 = string.split(var_4_0.unlock, "#")
 
 	if var_4_1[1] == "overDif" then
 		local var_4_2 = tonumber(var_4_1[2])
 
 		return arg_4_0:isPassDifficultyMod(var_4_2)
+	elseif var_4_1[1] == "hotfix2" then
+		local var_4_3 = string.splitToNumber(var_4_1[2], ",")
+
+		for iter_4_0, iter_4_1 in ipairs(var_4_3) do
+			if arg_4_0:isPassDifficultyMod(iter_4_1) then
+				return true
+			end
+		end
+	else
+		logError(string.format("undefine difficulty mod unlock condition : %s", var_4_0.unlock))
 	end
 
-	return true
+	return false
 end
 
 function var_0_0.isPassDifficultyMod(arg_5_0, arg_5_1)

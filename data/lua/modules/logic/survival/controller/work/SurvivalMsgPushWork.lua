@@ -36,7 +36,7 @@ function var_0_0.onReceiveSurvivalBagUpdatePush(arg_4_0, arg_4_1)
 
 		var_4_0.bag:addOrUpdateItems(arg_4_1.updateItems)
 		var_4_0.bag:removeItems(arg_4_1.delItemUids)
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnMapBagUpdate)
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnMapBagUpdate, arg_4_1)
 	elseif arg_4_1.type == SurvivalEnum.ItemSource.Shelter then
 		local var_4_1 = SurvivalShelterModel.instance:getWeekInfo()
 
@@ -46,7 +46,7 @@ function var_0_0.onReceiveSurvivalBagUpdatePush(arg_4_0, arg_4_1)
 
 		var_4_1.bag:addOrUpdateItems(arg_4_1.updateItems)
 		var_4_1.bag:removeItems(arg_4_1.delItemUids)
-		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnShelterBagUpdate)
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnShelterBagUpdate, arg_4_1)
 	end
 
 	SurvivalEquipRedDotHelper.instance:checkRed()

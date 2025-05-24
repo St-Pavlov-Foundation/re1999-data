@@ -13,6 +13,7 @@ function var_0_0.ctor(arg_1_0)
 	arg_1_0.resultStr = ""
 	arg_1_0.otherParam = ""
 	arg_1_0.unitId = 0
+	arg_1_0.treeId = 0
 
 	arg_1_0:clearValues()
 end
@@ -87,14 +88,12 @@ end
 
 function var_0_0.checkCondition_CostGameTime(arg_7_0, arg_7_1)
 	local var_7_0 = tonumber(arg_7_1) or 0
-	local var_7_1 = SurvivalMapModel.instance:getSceneMo()
+	local var_7_1 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.ChoiceCostTime, var_7_0)
+	local var_7_2 = SurvivalMapModel.instance:getSceneMo()
 
 	arg_7_0.isCostTime = true
-	arg_7_0.isValid = var_7_0 <= var_7_1.currMaxGameTime - var_7_1.gameTime
-
-	local var_7_2 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.ChoiceCostTime, var_7_0)
-
-	arg_7_0.exStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_choice_costtime"), var_7_2)
+	arg_7_0.isValid = var_7_1 <= var_7_2.currMaxGameTime - var_7_2.gameTime
+	arg_7_0.exStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("survival_choice_costtime"), var_7_1)
 end
 
 function var_0_0.checkCondition_AddHealth(arg_8_0, arg_8_1)

@@ -161,12 +161,20 @@ function var_0_0.updateBuildingInfos(arg_10_0, arg_10_1)
 		arg_10_0.buildingDict = {}
 	end
 
-	if not arg_10_1 then
-		return
+	local var_10_0 = {}
+
+	if arg_10_1 then
+		for iter_10_0 = 1, #arg_10_1 do
+			arg_10_0:updateBuildingInfo(arg_10_1[iter_10_0])
+
+			var_10_0[arg_10_1[iter_10_0].id] = true
+		end
 	end
 
-	for iter_10_0 = 1, #arg_10_1 do
-		arg_10_0:updateBuildingInfo(arg_10_1[iter_10_0])
+	for iter_10_1, iter_10_2 in pairs(arg_10_0.buildingDict) do
+		if not var_10_0[iter_10_1] then
+			arg_10_0.buildingDict[iter_10_1] = nil
+		end
 	end
 end
 
@@ -224,12 +232,20 @@ function var_0_0.updateNpcInfos(arg_17_0, arg_17_1)
 		arg_17_0.npcDict = {}
 	end
 
-	if not arg_17_1 then
-		return
+	local var_17_0 = {}
+
+	if arg_17_1 then
+		for iter_17_0 = 1, #arg_17_1 do
+			arg_17_0:updateNpcInfo(arg_17_1[iter_17_0])
+
+			var_17_0[arg_17_1[iter_17_0].id] = true
+		end
 	end
 
-	for iter_17_0 = 1, #arg_17_1 do
-		arg_17_0:updateNpcInfo(arg_17_1[iter_17_0])
+	for iter_17_1, iter_17_2 in pairs(arg_17_0.npcDict) do
+		if not var_17_0[iter_17_1] then
+			arg_17_0.npcDict[iter_17_1] = nil
+		end
 	end
 end
 
@@ -550,6 +566,42 @@ function var_0_0.getNormalNpcList(arg_42_0)
 	end
 
 	return var_42_0
+end
+
+function var_0_0.hasNewDecree(arg_43_0)
+	local var_43_0 = arg_43_0:getAttr(SurvivalEnum.AttrType.DecreeNum)
+	local var_43_1 = 2
+
+	for iter_43_0 = 1, var_43_1 do
+		local var_43_2 = var_43_0 < iter_43_0
+		local var_43_3 = arg_43_0:getDecreeBox():getDecreeInfo(iter_43_0)
+
+		if not var_43_2 and (not var_43_3 or var_43_3:isCurPolicyEmpty()) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function var_0_0.isNpcWillLeave(arg_44_0)
+	if arg_44_0:getNpcCost() > arg_44_0.bag:getItemCountPlus(SurvivalEnum.CurrencyType.Food) then
+		return true
+	end
+
+	local var_44_0 = false
+
+	if arg_44_0.npcDict then
+		for iter_44_0, iter_44_1 in pairs(arg_44_0.npcDict) do
+			if not arg_44_0:getNpcPostion(iter_44_0) then
+				var_44_0 = true
+
+				break
+			end
+		end
+	end
+
+	return var_44_0
 end
 
 return var_0_0

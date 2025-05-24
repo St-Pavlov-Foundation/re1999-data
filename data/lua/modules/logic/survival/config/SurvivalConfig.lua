@@ -11,6 +11,7 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0.outTalentGroupCo = {}
 	arg_1_0.talentCollectCos = {}
 	arg_1_0._npcConfigTags = {}
+	arg_1_0._npcConfigShowTags = {}
 end
 
 function var_0_0.reInit(arg_2_0)
@@ -29,7 +30,6 @@ function var_0_0.reqConfigNames(arg_3_0)
 		"survival_shelter_intrude_fight",
 		"survival_decree",
 		"survival_decreetask",
-		"survival_entry",
 		"survival_equip",
 		"survival_equip_found",
 		"survival_equip_slot",
@@ -68,7 +68,8 @@ function var_0_0.reqConfigNames(arg_3_0)
 		"survival_reward",
 		"survival_shop_item",
 		"survival_end",
-		"survival_equip_score"
+		"survival_equip_score",
+		"survival_shelter_intrude"
 	}
 end
 
@@ -252,24 +253,46 @@ function var_0_0.getShelterIntrudeSchemeConfig(arg_17_0, arg_17_1)
 end
 
 function var_0_0.getNpcConfigTag(arg_18_0, arg_18_1)
-	if arg_18_0._npcConfigTags == nil then
-		arg_18_0._npcConfigTags = {}
-	end
-
 	if not arg_18_0._npcConfigTags[arg_18_1] then
 		local var_18_0 = arg_18_0:getNpcConfig(arg_18_1)
 
 		if var_18_0 == nil then
-			return {}
+			return {}, {}
 		end
 
 		local var_18_1 = var_18_0.tag
-		local var_18_2 = string.splitToNumber(var_18_1, "#")
+		local var_18_2 = string.splitToNumber(var_18_1, "#") or {}
 
 		arg_18_0._npcConfigTags[arg_18_1] = var_18_2
+
+		local var_18_3 = {}
+
+		for iter_18_0, iter_18_1 in ipairs(var_18_2) do
+			local var_18_4 = lua_survival_tag.configDict[iter_18_1]
+			local var_18_5 = var_18_4 and var_18_4.beHidden
+			local var_18_6 = false
+
+			if not string.nilorempty(var_18_5) then
+				local var_18_7 = string.splitToNumber(var_18_5, "#")
+
+				for iter_18_2, iter_18_3 in ipairs(var_18_7) do
+					if tabletool.indexOf(var_18_2, iter_18_3) then
+						var_18_6 = true
+
+						break
+					end
+				end
+			end
+
+			if not var_18_6 then
+				table.insert(var_18_3, iter_18_1)
+			end
+		end
+
+		arg_18_0._npcConfigShowTags[arg_18_1] = var_18_3
 	end
 
-	return arg_18_0._npcConfigTags[arg_18_1]
+	return arg_18_0._npcConfigTags[arg_18_1], arg_18_0._npcConfigShowTags[arg_18_1]
 end
 
 function var_0_0.getMonsterBuffConfigTag(arg_19_0, arg_19_1)
@@ -358,7 +381,7 @@ function var_0_0.getLocalShelterEntityPosAndDir(arg_25_0, arg_25_1, arg_25_2, ar
 end
 
 function var_0_0.getLocalShelterEntityPosKey(arg_26_0, arg_26_1, arg_26_2, arg_26_3)
-	return (string.format("shelter_entitypos_%s_%s_%s", arg_26_1, arg_26_2, arg_26_3))
+	return (string.format("%s_shelter_entitypos_%s_%s_%s", PlayerModel.instance:getPlayinfo().userId, arg_26_1, arg_26_2, arg_26_3))
 end
 
 function var_0_0.getNpcConfig(arg_27_0, arg_27_1, arg_27_2)

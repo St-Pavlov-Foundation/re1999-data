@@ -1065,27 +1065,27 @@
   },
   {
     "id": 267,
-    "worthFix": 0
+    "worthFix": 2000
   },
   {
     "id": 268,
-    "worthFix": 0
+    "worthFix": 2000
   },
   {
     "id": 269,
-    "worthFix": 0
+    "worthFix": 3000
   },
   {
     "id": 270,
-    "worthFix": 0
+    "worthFix": 3000
   },
   {
     "id": 271,
-    "worthFix": 0
+    "worthFix": 4000
   },
   {
     "id": 272,
-    "worthFix": 0
+    "worthFix": 4000
   },
   {
     "id": 273,
@@ -1169,98 +1169,442 @@
   },
   {
     "id": 293,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 294,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 295,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 296,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 297,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 298,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 299,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 300,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 301,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 302,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 303,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 304,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 305,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 306,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 307,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 308,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 309,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 310,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 311,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 312,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 313,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 314,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 315,
-    "worthFix": 0
+    "worthFix": 1620
   },
   {
     "id": 316,
-    "worthFix": 0
+    "worthFix": 1620
+  },
+  {
+    "id": 317,
+    "worthFix": 1620
+  },
+  {
+    "id": 318,
+    "worthFix": 1620
+  },
+  {
+    "id": 319,
+    "worthFix": 1620
+  },
+  {
+    "id": 320,
+    "worthFix": 1620
+  },
+  {
+    "id": 321,
+    "worthFix": 1620
+  },
+  {
+    "id": 322,
+    "worthFix": 1620
+  },
+  {
+    "id": 323,
+    "worthFix": 1620
+  },
+  {
+    "id": 324,
+    "worthFix": 1620
+  },
+  {
+    "id": 325,
+    "worthFix": 1620
+  },
+  {
+    "id": 326,
+    "worthFix": 1620
+  },
+  {
+    "id": 327,
+    "worthFix": 1620
+  },
+  {
+    "id": 328,
+    "worthFix": 1620
+  },
+  {
+    "id": 329,
+    "worthFix": 1620
+  },
+  {
+    "id": 330,
+    "worthFix": 1620
+  },
+  {
+    "id": 331,
+    "worthFix": 1620
+  },
+  {
+    "id": 332,
+    "worthFix": 1620
+  },
+  {
+    "id": 333,
+    "worthFix": 1620
+  },
+  {
+    "id": 334,
+    "worthFix": 1620
+  },
+  {
+    "id": 335,
+    "worthFix": 1620
+  },
+  {
+    "id": 336,
+    "worthFix": 1620
+  },
+  {
+    "id": 337,
+    "worthFix": 1620
+  },
+  {
+    "id": 338,
+    "worthFix": 1620
+  },
+  {
+    "id": 339,
+    "worthFix": 1620
+  },
+  {
+    "id": 340,
+    "worthFix": 1620
+  },
+  {
+    "id": 341,
+    "worthFix": 1600
+  },
+  {
+    "id": 342,
+    "worthFix": 1600
+  },
+  {
+    "id": 343,
+    "worthFix": 1600
+  },
+  {
+    "id": 344,
+    "worthFix": 1600
+  },
+  {
+    "id": 345,
+    "worthFix": 1600
+  },
+  {
+    "id": 346,
+    "worthFix": 1600
+  },
+  {
+    "id": 347,
+    "worthFix": 1600
+  },
+  {
+    "id": 348,
+    "worthFix": 1600
+  },
+  {
+    "id": 349,
+    "worthFix": 1600
+  },
+  {
+    "id": 350,
+    "worthFix": 1600
+  },
+  {
+    "id": 351,
+    "worthFix": 1600
+  },
+  {
+    "id": 352,
+    "worthFix": 1600
+  },
+  {
+    "id": 353,
+    "worthFix": 1600
+  },
+  {
+    "id": 354,
+    "worthFix": 1600
+  },
+  {
+    "id": 355,
+    "worthFix": 1600
+  },
+  {
+    "id": 356,
+    "worthFix": 1600
+  },
+  {
+    "id": 357,
+    "worthFix": 1600
+  },
+  {
+    "id": 358,
+    "worthFix": 1600
+  },
+  {
+    "id": 359,
+    "worthFix": 1600
+  },
+  {
+    "id": 360,
+    "worthFix": 1600
+  },
+  {
+    "id": 361,
+    "worthFix": 1600
+  },
+  {
+    "id": 362,
+    "worthFix": 1600
+  },
+  {
+    "id": 363,
+    "worthFix": 1600
+  },
+  {
+    "id": 364,
+    "worthFix": 1600
+  },
+  {
+    "id": 365,
+    "worthFix": 1600
+  },
+  {
+    "id": 366,
+    "worthFix": 1600
+  },
+  {
+    "id": 367,
+    "worthFix": 1600
+  },
+  {
+    "id": 368,
+    "worthFix": 1600
+  },
+  {
+    "id": 369,
+    "worthFix": 1600
+  },
+  {
+    "id": 370,
+    "worthFix": 1600
+  },
+  {
+    "id": 371,
+    "worthFix": 1600
+  },
+  {
+    "id": 372,
+    "worthFix": 1600
+  },
+  {
+    "id": 373,
+    "worthFix": 1600
+  },
+  {
+    "id": 374,
+    "worthFix": 1600
+  },
+  {
+    "id": 375,
+    "worthFix": 1600
+  },
+  {
+    "id": 376,
+    "worthFix": 1600
+  },
+  {
+    "id": 377,
+    "worthFix": 1600
+  },
+  {
+    "id": 378,
+    "worthFix": 1600
+  },
+  {
+    "id": 379,
+    "worthFix": 1600
+  },
+  {
+    "id": 380,
+    "worthFix": 1600
+  },
+  {
+    "id": 381,
+    "worthFix": 1600
+  },
+  {
+    "id": 382,
+    "worthFix": 1600
+  },
+  {
+    "id": 383,
+    "worthFix": 1600
+  },
+  {
+    "id": 384,
+    "worthFix": 1600
+  },
+  {
+    "id": 385,
+    "worthFix": 1600
+  },
+  {
+    "id": 386,
+    "worthFix": 1600
+  },
+  {
+    "id": 387,
+    "worthFix": 1600
+  },
+  {
+    "id": 388,
+    "worthFix": 1600
+  },
+  {
+    "id": 389,
+    "worthFix": 1640
+  },
+  {
+    "id": 390,
+    "worthFix": 1640
+  },
+  {
+    "id": 391,
+    "worthFix": 1280
+  },
+  {
+    "id": 392,
+    "worthFix": 1280
+  },
+  {
+    "id": 393,
+    "worthFix": 1280
+  },
+  {
+    "id": 394,
+    "worthFix": 1280
+  },
+  {
+    "id": 395,
+    "worthFix": 1640
+  },
+  {
+    "id": 396,
+    "worthFix": 1280
+  },
+  {
+    "id": 397,
+    "worthFix": 1280
+  },
+  {
+    "id": 398,
+    "worthFix": 1280
+  },
+  {
+    "id": 399,
+    "worthFix": 1640
+  },
+  {
+    "id": 400,
+    "worthFix": 1280
+  },
+  {
+    "id": 401,
+    "worthFix": 1280
+  },
+  {
+    "id": 402,
+    "worthFix": 1280
   }
 ]

@@ -34,8 +34,20 @@ function var_0_0._refreshPowerShow(arg_6_0)
 	gohelper.setActive(arg_6_0._gopowercontent, false)
 end
 
-function var_0_0.onClose(arg_7_0)
-	var_0_0.super.onClose(arg_7_0)
+function var_0_0._onClickStart(arg_7_0)
+	if SurvivalEquipRedDotHelper.instance.reddotType >= 0 then
+		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalEnterFightEquipRed, MsgBoxEnum.BoxType.Yes_No, arg_7_0._realClickStart, nil, nil, arg_7_0, nil, nil)
+	else
+		var_0_0.super._onClickStart(arg_7_0)
+	end
+end
+
+function var_0_0._realClickStart(arg_8_0)
+	var_0_0.super._onClickStart(arg_8_0)
+end
+
+function var_0_0.onClose(arg_9_0)
+	var_0_0.super.onClose(arg_9_0)
 	HeroSingleGroupModel.instance:setMaxHeroCount()
 
 	HeroGroupTrialModel.instance.curBattleId = nil

@@ -73,6 +73,8 @@ end
 
 function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_4, arg_11_5)
 	if not arg_11_1 or not next(arg_11_1) then
+		arg_11_0:stopMove()
+
 		if arg_11_2 then
 			arg_11_2(arg_11_3, arg_11_4)
 		end
@@ -83,6 +85,8 @@ function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_
 	local var_11_0 = arg_11_0:getPos()
 
 	if tabletool.indexOf(arg_11_1, var_11_0) then
+		arg_11_0:stopMove()
+
 		if arg_11_2 then
 			arg_11_2(arg_11_3, arg_11_4)
 		end
@@ -95,8 +99,12 @@ function var_0_0.moveToByPosList(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_
 
 	if var_11_2 then
 		arg_11_0:moveToByPath(var_11_2, arg_11_2, arg_11_3, arg_11_4, arg_11_5)
-	elseif arg_11_2 then
-		arg_11_2(arg_11_3, arg_11_4)
+	else
+		arg_11_0:stopMove()
+
+		if arg_11_2 then
+			arg_11_2(arg_11_3, arg_11_4)
+		end
 	end
 end
 
@@ -104,6 +112,8 @@ function var_0_0.moveToByPos(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4, a
 	local var_12_0 = arg_12_0:getPos()
 
 	if var_12_0 == arg_12_1 then
+		arg_12_0:stopMove()
+
 		if arg_12_2 then
 			arg_12_2(arg_12_3, arg_12_4)
 		end
@@ -116,15 +126,19 @@ function var_0_0.moveToByPos(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4, a
 
 	if var_12_2 then
 		arg_12_0:moveToByPath(var_12_2, arg_12_2, arg_12_3, arg_12_4, arg_12_5)
-	elseif arg_12_2 then
-		arg_12_2(arg_12_3, arg_12_4)
+	else
+		arg_12_0:stopMove()
+
+		if arg_12_2 then
+			arg_12_2(arg_12_3, arg_12_4)
+		end
 	end
 end
 
 function var_0_0.moveToByPath(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4, arg_13_5)
 	arg_13_0:stopMove()
 
-	arg_13_0._path = SurvivalHelper.instance:fitlterPath(arg_13_1)
+	arg_13_0._path = arg_13_1
 	arg_13_0._pathcallback = arg_13_2
 	arg_13_0._pathcallObj = arg_13_3
 	arg_13_0._pathcallParam = arg_13_4
@@ -148,7 +162,6 @@ function var_0_0._moveToNext(arg_14_0)
 		arg_14_0._pathcallParam = nil
 
 		arg_14_0:_endMove(true)
-		SurvivalMapHelper.instance:getScene().path:hidePath()
 
 		return
 	end
@@ -174,6 +187,7 @@ function var_0_0.moveTo(arg_15_0, arg_15_1, arg_15_2, arg_15_3, arg_15_4)
 end
 
 function var_0_0._beginMove(arg_16_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_move)
 	arg_16_0:playAnim("run")
 
 	local var_16_0, var_16_1, var_16_2 = SurvivalHelper.instance:hexPointToWorldPoint(arg_16_0._targetPos.q, arg_16_0._targetPos.r)
@@ -208,6 +222,7 @@ function var_0_0._endMove(arg_17_0, arg_17_1)
 
 	if arg_17_1 then
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.CameraFollowerTarget)
+		SurvivalMapHelper.instance:getScene().path:hidePath()
 	end
 
 	arg_17_0:updateEntity()
@@ -230,6 +245,8 @@ function var_0_0.stopMove(arg_18_0)
 	arg_18_0._pathcallback = nil
 	arg_18_0._pathcallObj = nil
 	arg_18_0._pathcallParam = nil
+
+	SurvivalMapHelper.instance:getScene().path:hidePath()
 end
 
 function var_0_0.playAnim(arg_19_0, arg_19_1)
@@ -274,7 +291,7 @@ function var_0_0.canShow(arg_22_0)
 		for iter_22_0, iter_22_1 in pairs(var_22_0) do
 			if iter_22_0 ~= SurvivalEnum.ShelterUnitType.Player then
 				for iter_22_2, iter_22_3 in pairs(iter_22_1) do
-					if iter_22_3:isInPlayerPos() then
+					if iter_22_3:isVisible() and iter_22_3:isInPlayerPos() then
 						return false
 					end
 				end

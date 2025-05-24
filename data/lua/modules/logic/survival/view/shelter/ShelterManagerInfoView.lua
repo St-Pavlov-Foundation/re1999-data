@@ -117,45 +117,34 @@ end
 
 function var_0_0.onClickBtnNpcSelect(arg_11_0)
 	SurvivalShelterChooseNpcListModel.instance:setSelectNpcToPos(arg_11_0.showId)
+	arg_11_0:setNextSelectPos()
 end
 
 function var_0_0.onClickBtnNpcUnSelect(arg_12_0)
 	local var_12_0 = SurvivalShelterChooseNpcListModel.instance:npcIdIsSelect(arg_12_0.showId)
 
 	SurvivalShelterChooseNpcListModel.instance:setSelectNpcToPos(nil, var_12_0)
+	arg_12_0:setNextSelectPos()
 end
 
-function var_0_0.onClickBtnNpcReset(arg_13_0)
+function var_0_0.setNextSelectPos(arg_13_0)
+	local var_13_0 = SurvivalShelterChooseNpcListModel.instance:getNextCanSelectPosIndex()
+
+	if var_13_0 ~= nil then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnSetNpcSelectPos, var_13_0)
+	end
+end
+
+function var_0_0.onClickBtnNpcReset(arg_14_0)
+	ViewMgr.instance:closeView(ViewName.ShelterNpcManagerView)
 	ViewMgr.instance:openView(ViewName.ShelterTentManagerView)
 end
 
-function var_0_0.onClickBtnNpcGoto(arg_14_0)
-	SurvivalMapHelper.instance:gotoNpc(arg_14_0.showId)
+function var_0_0.onClickBtnNpcGoto(arg_15_0)
+	SurvivalMapHelper.instance:gotoNpc(arg_15_0.showId)
 end
 
-function var_0_0.onClickBtnBuildLevup(arg_15_0)
-	local var_15_0 = SurvivalShelterModel.instance:getWeekInfo()
-	local var_15_1 = var_15_0:getBuildingInfo(arg_15_0.showId)
-
-	if not var_15_1 then
-		return
-	end
-
-	local var_15_2 = SurvivalConfig.instance:getBuildingConfig(var_15_1.buildingId, var_15_1.level + 1, true)
-	local var_15_3, var_15_4, var_15_5, var_15_6 = var_15_0.bag:costIsEnough(var_15_2.lvUpCost, var_15_1, SurvivalEnum.AttrType.BuildCost)
-
-	if not var_15_3 then
-		local var_15_7 = lua_survival_item.configDict[var_15_4]
-
-		GameFacade.showToast(ToastEnum.DiamondBuy, var_15_7.name)
-
-		return
-	end
-
-	SurvivalWeekRpc.instance:sendSurvivalUpgradeRequest(var_15_1.id)
-end
-
-function var_0_0.onClickBtnBuild(arg_16_0)
+function var_0_0.onClickBtnBuildLevup(arg_16_0)
 	local var_16_0 = SurvivalShelterModel.instance:getWeekInfo()
 	local var_16_1 = var_16_0:getBuildingInfo(arg_16_0.showId)
 
@@ -174,10 +163,10 @@ function var_0_0.onClickBtnBuild(arg_16_0)
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalBuildRequest(var_16_1.id)
+	SurvivalWeekRpc.instance:sendSurvivalUpgradeRequest(var_16_1.id)
 end
 
-function var_0_0.onClickBtnBuildRepair(arg_17_0)
+function var_0_0.onClickBtnBuild(arg_17_0)
 	local var_17_0 = SurvivalShelterModel.instance:getWeekInfo()
 	local var_17_1 = var_17_0:getBuildingInfo(arg_17_0.showId)
 
@@ -185,8 +174,8 @@ function var_0_0.onClickBtnBuildRepair(arg_17_0)
 		return
 	end
 
-	local var_17_2 = SurvivalConfig.instance:getBuildingConfig(var_17_1.buildingId, var_17_1.level, true)
-	local var_17_3, var_17_4, var_17_5, var_17_6 = var_17_0.bag:costIsEnough(var_17_2.repairCost, var_17_1, SurvivalEnum.AttrType.RepairCost)
+	local var_17_2 = SurvivalConfig.instance:getBuildingConfig(var_17_1.buildingId, var_17_1.level + 1, true)
+	local var_17_3, var_17_4, var_17_5, var_17_6 = var_17_0.bag:costIsEnough(var_17_2.lvUpCost, var_17_1, SurvivalEnum.AttrType.BuildCost)
 
 	if not var_17_3 then
 		local var_17_7 = lua_survival_item.configDict[var_17_4]
@@ -196,322 +185,344 @@ function var_0_0.onClickBtnBuildRepair(arg_17_0)
 		return
 	end
 
-	SurvivalWeekRpc.instance:sendSurvivalRepairRequest(var_17_1.id)
+	SurvivalWeekRpc.instance:sendSurvivalBuildRequest(var_17_1.id)
 end
 
-function var_0_0.refreshParam(arg_18_0, arg_18_1)
-	arg_18_0.viewParam = arg_18_1 or {}
-	arg_18_0.showType = arg_18_0.viewParam.showType or SurvivalEnum.InfoShowType.None
-	arg_18_0.showId = arg_18_0.viewParam.showId or 0
-	arg_18_0.otherParam = arg_18_0.viewParam.otherParam or {}
+function var_0_0.onClickBtnBuildRepair(arg_18_0)
+	local var_18_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_18_1 = var_18_0:getBuildingInfo(arg_18_0.showId)
 
-	arg_18_0:refreshAnimName()
-	arg_18_0:refreshView()
-end
-
-function var_0_0.refreshAnimName(arg_19_0)
-	local var_19_0 = not arg_19_0.showId
-
-	arg_19_0.animName = nil
-
-	if var_19_0 then
-		arg_19_0.animName = UIAnimationName.Open
-	elseif arg_19_0.showId ~= arg_19_0.lastShowId or arg_19_0.showType ~= arg_19_0.lastShowType then
-		arg_19_0.animName = UIAnimationName.Switch
-		arg_19_0.delayRefreshTime = 0.167
+	if not var_18_1 then
+		return
 	end
 
-	arg_19_0.lastShowId = arg_19_0.showId
-	arg_19_0.lastShowType = arg_19_0.showType
+	local var_18_2 = SurvivalConfig.instance:getBuildingConfig(var_18_1.buildingId, var_18_1.level, true)
+	local var_18_3, var_18_4, var_18_5, var_18_6 = var_18_0.bag:costIsEnough(var_18_2.repairCost, var_18_1, SurvivalEnum.AttrType.RepairCost)
+
+	if not var_18_3 then
+		local var_18_7 = lua_survival_item.configDict[var_18_4]
+
+		GameFacade.showToast(ToastEnum.DiamondBuy, var_18_7.name)
+
+		return
+	end
+
+	SurvivalWeekRpc.instance:sendSurvivalRepairRequest(var_18_1.id)
 end
 
-function var_0_0.refreshView(arg_20_0)
-	if arg_20_0.animName then
-		arg_20_0.animator:Play(arg_20_0.animName, 0, 0)
-	end
+function var_0_0.refreshParam(arg_19_0, arg_19_1)
+	arg_19_0.viewParam = arg_19_1 or {}
+	arg_19_0.showType = arg_19_0.viewParam.showType or SurvivalEnum.InfoShowType.None
+	arg_19_0.showId = arg_19_0.viewParam.showId or 0
+	arg_19_0.otherParam = arg_19_0.viewParam.otherParam or {}
+
+	arg_19_0:refreshAnimName()
+	arg_19_0:refreshView()
+end
+
+function var_0_0.refreshAnimName(arg_20_0)
+	local var_20_0 = not arg_20_0.showId
 
 	arg_20_0.animName = nil
 
-	TaskDispatcher.cancelTask(arg_20_0.delayRefreshTime, arg_20_0)
-
-	if arg_20_0.delayRefreshTime then
-		TaskDispatcher.runDelay(arg_20_0.refreshInfo, arg_20_0, arg_20_0.delayRefreshTime)
-	else
-		arg_20_0:refreshInfo()
+	if var_20_0 then
+		arg_20_0.animName = UIAnimationName.Open
+	elseif arg_20_0.showId ~= arg_20_0.lastShowId or arg_20_0.showType ~= arg_20_0.lastShowType then
+		arg_20_0.animName = UIAnimationName.Switch
+		arg_20_0.delayRefreshTime = 0.167
 	end
 
-	arg_20_0.delayRefreshTime = nil
+	arg_20_0.lastShowId = arg_20_0.showId
+	arg_20_0.lastShowType = arg_20_0.showType
 end
 
-function var_0_0.refreshInfo(arg_21_0)
-	if arg_21_0.showType == SurvivalEnum.InfoShowType.Building then
-		arg_21_0:refreshBuilding()
-	elseif arg_21_0.showType == SurvivalEnum.InfoShowType.Npc or arg_21_0.showType == SurvivalEnum.InfoShowType.NpcOnlyConfig then
-		arg_21_0:refreshNpc()
-	else
-		arg_21_0:showEmpty()
+function var_0_0.refreshView(arg_21_0)
+	if arg_21_0.animName then
+		arg_21_0.animator:Play(arg_21_0.animName, 0, 0)
 	end
+
+	arg_21_0.animName = nil
+
+	TaskDispatcher.cancelTask(arg_21_0.refreshInfo, arg_21_0)
+
+	if arg_21_0.delayRefreshTime then
+		TaskDispatcher.runDelay(arg_21_0.refreshInfo, arg_21_0, arg_21_0.delayRefreshTime)
+	else
+		arg_21_0:refreshInfo()
+	end
+
+	arg_21_0.delayRefreshTime = nil
 end
 
-function var_0_0.refreshBuilding(arg_22_0)
-	local var_22_0 = SurvivalShelterModel.instance:getWeekInfo()
-	local var_22_1 = var_22_0:getBuildingInfo(arg_22_0.showId)
-
-	if not var_22_1 then
+function var_0_0.refreshInfo(arg_22_0)
+	if arg_22_0.showType == SurvivalEnum.InfoShowType.Building then
+		arg_22_0:refreshBuilding()
+	elseif arg_22_0.showType == SurvivalEnum.InfoShowType.Npc or arg_22_0.showType == SurvivalEnum.InfoShowType.NpcOnlyConfig then
+		arg_22_0:refreshNpc()
+	else
 		arg_22_0:showEmpty()
+	end
+end
+
+function var_0_0.refreshBuilding(arg_23_0)
+	local var_23_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_23_1 = var_23_0:getBuildingInfo(arg_23_0.showId)
+
+	if not var_23_1 then
+		arg_23_0:showEmpty()
 
 		return
 	end
 
-	gohelper.setActive(arg_22_0.goBuild, true)
-	gohelper.setActive(arg_22_0.goNpc, false)
-	gohelper.setActive(arg_22_0.goEmpty, false)
+	gohelper.setActive(arg_23_0.goBuild, true)
+	gohelper.setActive(arg_23_0.goNpc, false)
+	gohelper.setActive(arg_23_0.goEmpty, false)
 
-	local var_22_2 = var_22_1.level
-	local var_22_3 = var_22_2 + 1
-	local var_22_4 = SurvivalConfig.instance:getBuildingConfig(var_22_1.buildingId, var_22_2, true)
-	local var_22_5 = SurvivalConfig.instance:getBuildingConfig(var_22_1.buildingId, var_22_3, true)
+	local var_23_2 = var_23_1.level
+	local var_23_3 = var_23_2 + 1
+	local var_23_4 = SurvivalConfig.instance:getBuildingConfig(var_23_1.buildingId, var_23_2, true)
+	local var_23_5 = SurvivalConfig.instance:getBuildingConfig(var_23_1.buildingId, var_23_3, true)
 
-	arg_22_0.txtBuildName.text = var_22_1.baseCo.name
+	arg_23_0.txtBuildName.text = var_23_1.baseCo.name
 
-	local var_22_6, var_22_7 = var_22_0:isBuildingUnlock(var_22_1.buildingId, var_22_3, true)
-	local var_22_8 = not var_22_1:isBuild()
-	local var_22_9 = var_22_1.status == SurvivalEnum.BuildingStatus.Destroy
+	local var_23_6, var_23_7 = var_23_0:isBuildingUnlock(var_23_1.buildingId, var_23_3, true)
+	local var_23_8 = not var_23_1:isBuild()
+	local var_23_9 = var_23_1.status == SurvivalEnum.BuildingStatus.Destroy
 
-	gohelper.setActive(arg_22_0.goBuildDestroyed, var_22_9)
-	gohelper.setActive(arg_22_0.goBuildLocked, not var_22_6 and var_22_8)
-	arg_22_0.simageBuild:LoadImage(var_22_1.baseCo.icon, arg_22_0.onLoadedImage, arg_22_0)
-	ZProj.UGUIHelper.SetGrayscale(arg_22_0.goImageBuild, not var_22_6 and var_22_8)
-	gohelper.setActive(arg_22_0.btnBuildLevup, false)
-	gohelper.setActive(arg_22_0.btnBuild, false)
-	gohelper.setActive(arg_22_0.btnBuildRepair, false)
-	gohelper.setActive(arg_22_0.goBuildLock, false)
-	gohelper.setActive(arg_22_0.goBuildCost, false)
+	gohelper.setActive(arg_23_0.goBuildDestroyed, var_23_9)
+	gohelper.setActive(arg_23_0.goBuildLocked, not var_23_6 and var_23_8)
+	arg_23_0.simageBuild:LoadImage(var_23_1.baseCo.icon, arg_23_0.onLoadedImage, arg_23_0)
+	ZProj.UGUIHelper.SetGrayscale(arg_23_0.goImageBuild, not var_23_6 and var_23_8)
+	gohelper.setActive(arg_23_0.btnBuildLevup, false)
+	gohelper.setActive(arg_23_0.btnBuild, false)
+	gohelper.setActive(arg_23_0.btnBuildRepair, false)
+	gohelper.setActive(arg_23_0.goBuildLock, false)
+	gohelper.setActive(arg_23_0.goBuildCost, false)
 
-	if var_22_6 then
-		if var_22_8 then
-			gohelper.setActive(arg_22_0.btnBuild, true)
-			arg_22_0:refreshBuildCost(var_22_5 and var_22_5.lvUpCost, var_22_1, SurvivalEnum.AttrType.BuildCost)
-		elseif var_22_9 then
-			gohelper.setActive(arg_22_0.btnBuildRepair, true)
-			arg_22_0:refreshBuildCost(var_22_4 and var_22_4.repairCost, var_22_1, SurvivalEnum.AttrType.RepairCost)
+	if var_23_6 then
+		if var_23_8 then
+			gohelper.setActive(arg_23_0.btnBuild, true)
+			arg_23_0:refreshBuildCost(var_23_5 and var_23_5.lvUpCost, var_23_1, SurvivalEnum.AttrType.BuildCost)
+		elseif var_23_9 then
+			gohelper.setActive(arg_23_0.btnBuildRepair, true)
+			arg_23_0:refreshBuildCost(var_23_4 and var_23_4.repairCost, var_23_1, SurvivalEnum.AttrType.RepairCost)
 		else
-			gohelper.setActive(arg_22_0.btnBuildLevup, var_22_5 ~= nil)
-			arg_22_0:refreshBuildCost(var_22_5 and var_22_5.lvUpCost, var_22_1, SurvivalEnum.AttrType.BuildCost)
+			gohelper.setActive(arg_23_0.btnBuildLevup, var_23_5 ~= nil)
+			arg_23_0:refreshBuildCost(var_23_5 and var_23_5.lvUpCost, var_23_1, SurvivalEnum.AttrType.BuildCost)
 		end
 	else
-		gohelper.setActive(arg_22_0.goBuildLock, true)
+		gohelper.setActive(arg_23_0.goBuildLock, true)
 
-		arg_22_0.txtBuildLock.text = var_22_7
+		arg_23_0.txtBuildLock.text = var_23_7
 
-		gohelper.setActive(arg_22_0.goBuildLockBuild, var_22_8)
-		gohelper.setActive(arg_22_0.goBuildLockLevup, not var_22_8)
+		gohelper.setActive(arg_23_0.goBuildLockBuild, var_23_8)
+		gohelper.setActive(arg_23_0.goBuildLockLevup, not var_23_8)
 	end
 
-	local var_22_10 = var_22_1.level > 0 and var_22_5 ~= nil and not var_22_9
+	local var_23_10 = var_23_1.level > 0 and var_23_5 ~= nil and not var_23_9
 
-	gohelper.setActive(arg_22_0.goBuildAttrLevelup, var_22_10)
-	gohelper.setActive(arg_22_0.goBuildAttrLevel, not var_22_10)
-	gohelper.setActive(arg_22_0.goBuildAttrNext, var_22_10)
+	gohelper.setActive(arg_23_0.goBuildAttrLevelup, var_23_10)
+	gohelper.setActive(arg_23_0.goBuildAttrLevel, not var_23_10)
+	gohelper.setActive(arg_23_0.goBuildAttrNext, var_23_10)
 
-	arg_22_0.txtBuildAttrCurrentItem.text = var_22_4 and var_22_4.desc or var_22_5 and var_22_5.desc or ""
+	arg_23_0.txtBuildAttrCurrentItem.text = var_23_4 and var_23_4.desc or var_23_5 and var_23_5.desc or ""
 
-	if var_22_10 then
-		arg_22_0.txtBuildAttrNextItem.text = var_22_5.desc
-		arg_22_0.txtBuildLevel1.text = string.format("Lv.%s", var_22_2)
-		arg_22_0.txtBuildLevel2.text = string.format("Lv.%s", var_22_3)
+	if var_23_10 then
+		arg_23_0.txtBuildAttrNextItem.text = var_23_5.desc
+		arg_23_0.txtBuildLevel1.text = string.format("Lv.%s", var_23_2)
+		arg_23_0.txtBuildLevel2.text = string.format("Lv.%s", var_23_3)
 	else
-		arg_22_0.txtBuildLevel.text = string.format("Lv.%s", var_22_2)
+		arg_23_0.txtBuildLevel.text = string.format("Lv.%s", var_23_2)
 	end
 end
 
-function var_0_0.onLoadedImage(arg_23_0)
-	arg_23_0.imageBuild:SetNativeSize()
+function var_0_0.onLoadedImage(arg_24_0)
+	arg_24_0.imageBuild:SetNativeSize()
 end
 
-function var_0_0.refreshBuildCost(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
-	if string.nilorempty(arg_24_1) then
-		gohelper.setActive(arg_24_0.goBuildCost, false)
+function var_0_0.refreshBuildCost(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
+	if string.nilorempty(arg_25_1) then
+		gohelper.setActive(arg_25_0.goBuildCost, false)
 	else
-		gohelper.setActive(arg_24_0.goBuildCost, true)
+		gohelper.setActive(arg_25_0.goBuildCost, true)
 
-		local var_24_0, var_24_1, var_24_2, var_24_3 = SurvivalShelterModel.instance:getWeekInfo().bag:costIsEnough(arg_24_1, arg_24_2, arg_24_3)
+		local var_25_0, var_25_1, var_25_2, var_25_3 = SurvivalShelterModel.instance:getWeekInfo().bag:costIsEnough(arg_25_1, arg_25_2, arg_25_3)
 
-		if var_24_0 then
-			arg_24_0.txtBuildCost.text = string.format("%s/%s", var_24_3, var_24_2)
+		if var_25_0 then
+			arg_25_0.txtBuildCost.text = string.format("%s/%s", var_25_3, var_25_2)
 		else
-			arg_24_0.txtBuildCost.text = string.format("<color=#D74242>%s</color>/%s", var_24_3, var_24_2)
+			arg_25_0.txtBuildCost.text = string.format("<color=#D74242>%s</color>/%s", var_25_3, var_25_2)
 		end
 	end
 end
 
-function var_0_0.refreshNpc(arg_25_0)
-	if arg_25_0.showType == SurvivalEnum.InfoShowType.NpcOnlyConfig then
-		arg_25_0:_refreshNpcOnlyConfig()
+function var_0_0.refreshNpc(arg_26_0)
+	if arg_26_0.showType == SurvivalEnum.InfoShowType.NpcOnlyConfig then
+		arg_26_0:_refreshNpcOnlyConfig()
 
 		return
 	end
-
-	local var_25_0 = SurvivalShelterModel.instance:getWeekInfo()
-	local var_25_1 = var_25_0:getNpcInfo(arg_25_0.showId)
-
-	if not var_25_1 then
-		arg_25_0:showEmpty()
-
-		return
-	end
-
-	gohelper.setActive(arg_25_0.goBuild, false)
-	gohelper.setActive(arg_25_0.goNpc, true)
-	gohelper.setActive(arg_25_0.goEmpty, false)
-
-	local var_25_2 = arg_25_0.otherParam.tentBuildingId
-	local var_25_3 = arg_25_0.otherParam.tentBuildingPos
-	local var_25_4 = var_25_2 ~= nil and var_25_2 ~= 0
-	local var_25_5 = var_25_1.co
-
-	arg_25_0.txtNpcName.text = var_25_5.name
-
-	UISpriteSetMgr.instance:setV2a2ChessSprite(arg_25_0.imgNpcChess, var_25_5.headIcon)
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_25_0.imgNpcQuality, string.format("survival_bag_itemquality2_%s", var_25_5.rare))
-
-	arg_25_0.txtNpcInfo.text = var_25_5.npcDesc
-
-	local var_25_6, var_25_7 = var_25_0:getNpcPostion(arg_25_0.showId)
-	local var_25_8 = var_25_6 ~= nil
-
-	gohelper.setActive(arg_25_0.goNpcReset, not var_25_4 and var_25_8)
-	gohelper.setActive(arg_25_0.btnNpcGoto, not var_25_4 and var_25_8)
-	gohelper.setActive(arg_25_0.btnNpcReset, not var_25_4 and not var_25_8)
-
-	local var_25_9 = SurvivalConfig.instance:getNpcConfigTag(arg_25_0.showId)
-
-	for iter_25_0 = 1, math.max(#var_25_9, #arg_25_0.npcAttrList) do
-		local var_25_10 = arg_25_0:getNpcAttrItem(iter_25_0)
-
-		arg_25_0:refreshNpcAttrItem(var_25_10, var_25_9[iter_25_0])
-	end
-
-	gohelper.setActive(arg_25_0.btnNpcJoin, var_25_4 and var_25_2 ~= var_25_6)
-	gohelper.setActive(arg_25_0.btnNpcLeave, var_25_4 and var_25_2 == var_25_6)
-	arg_25_0:refreshNpcCost(var_25_5)
-end
-
-function var_0_0.refreshNpcCost(arg_26_0, arg_26_1)
-	if not arg_26_1 then
-		gohelper.setActive(arg_26_0.goNpcCost, false)
-
-		return
-	end
-
-	gohelper.setActive(arg_26_0.goNpcCost, true)
 
 	local var_26_0 = SurvivalShelterModel.instance:getWeekInfo()
-	local var_26_1 = string.split(arg_26_1.cost, "#")
-	local var_26_2 = string.splitToNumber(var_26_1[2], ":")[2] or 0
-	local var_26_3 = var_26_0:getAttr(SurvivalEnum.AttrType.NpcFoodCost, var_26_2)
+	local var_26_1 = var_26_0:getNpcInfo(arg_26_0.showId)
 
-	arg_26_0.txtNpcCostTips.text = formatLuaLang("ShelterManagerInfoView_npc_foodcost", var_26_3)
+	if not var_26_1 then
+		arg_26_0:showEmpty()
+
+		return
+	end
+
+	gohelper.setActive(arg_26_0.goBuild, false)
+	gohelper.setActive(arg_26_0.goNpc, true)
+	gohelper.setActive(arg_26_0.goEmpty, false)
+
+	local var_26_2 = arg_26_0.otherParam.tentBuildingId
+	local var_26_3 = arg_26_0.otherParam.tentBuildingPos
+	local var_26_4 = var_26_2 ~= nil and var_26_2 ~= 0
+	local var_26_5 = var_26_1.co
+
+	arg_26_0.txtNpcName.text = var_26_5.name
+
+	UISpriteSetMgr.instance:setV2a2ChessSprite(arg_26_0.imgNpcChess, var_26_5.headIcon)
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_26_0.imgNpcQuality, string.format("survival_bag_itemquality2_%s", var_26_5.rare))
+
+	arg_26_0.txtNpcInfo.text = var_26_5.npcDesc
+
+	local var_26_6, var_26_7 = var_26_0:getNpcPostion(arg_26_0.showId)
+	local var_26_8 = var_26_6 ~= nil
+
+	gohelper.setActive(arg_26_0.goNpcReset, not var_26_4 and var_26_8)
+	gohelper.setActive(arg_26_0.btnNpcGoto, not var_26_4 and var_26_8)
+	gohelper.setActive(arg_26_0.btnNpcReset, not var_26_4 and not var_26_8)
+
+	local var_26_9, var_26_10 = SurvivalConfig.instance:getNpcConfigTag(arg_26_0.showId)
+
+	for iter_26_0 = 1, math.max(#var_26_10, #arg_26_0.npcAttrList) do
+		local var_26_11 = arg_26_0:getNpcAttrItem(iter_26_0)
+
+		arg_26_0:refreshNpcAttrItem(var_26_11, var_26_10[iter_26_0])
+	end
+
+	gohelper.setActive(arg_26_0.btnNpcJoin, var_26_4 and var_26_2 ~= var_26_6)
+	gohelper.setActive(arg_26_0.btnNpcLeave, var_26_4 and var_26_2 == var_26_6)
+	arg_26_0:refreshNpcCost(var_26_5)
 end
 
-function var_0_0._refreshNpcOnlyConfig(arg_27_0)
-	gohelper.setActive(arg_27_0.goBuild, false)
-	gohelper.setActive(arg_27_0.goNpc, true)
-	gohelper.setActive(arg_27_0.goEmpty, false)
+function var_0_0.refreshNpcCost(arg_27_0, arg_27_1)
+	if not arg_27_1 then
+		gohelper.setActive(arg_27_0.goNpcCost, false)
 
-	local var_27_0 = SurvivalConfig.instance:getNpcConfig(arg_27_0.showId)
+		return
+	end
 
-	if var_27_0 then
-		arg_27_0.txtNpcName.text = var_27_0.name
+	gohelper.setActive(arg_27_0.goNpcCost, true)
 
-		if not string.nilorempty(var_27_0.headIcon) then
-			UISpriteSetMgr.instance:setV2a2ChessSprite(arg_27_0.imgNpcChess, var_27_0.headIcon)
+	local var_27_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_27_1 = string.split(arg_27_1.cost, "#")
+	local var_27_2 = string.splitToNumber(var_27_1[2], ":")[2] or 0
+	local var_27_3 = var_27_0:getAttr(SurvivalEnum.AttrType.NpcFoodCost, var_27_2)
+
+	arg_27_0.txtNpcCostTips.text = formatLuaLang("ShelterManagerInfoView_npc_foodcost", var_27_3)
+end
+
+function var_0_0._refreshNpcOnlyConfig(arg_28_0)
+	gohelper.setActive(arg_28_0.goBuild, false)
+	gohelper.setActive(arg_28_0.goNpc, true)
+	gohelper.setActive(arg_28_0.goEmpty, false)
+
+	local var_28_0 = SurvivalConfig.instance:getNpcConfig(arg_28_0.showId)
+
+	if var_28_0 then
+		arg_28_0.txtNpcName.text = var_28_0.name
+
+		if not string.nilorempty(var_28_0.headIcon) then
+			UISpriteSetMgr.instance:setV2a2ChessSprite(arg_28_0.imgNpcChess, var_28_0.headIcon)
 		end
 
-		UISpriteSetMgr.instance:setSurvivalSprite(arg_27_0.imgNpcQuality, string.format("survival_bag_itemquality2_%s", var_27_0.rare))
+		UISpriteSetMgr.instance:setSurvivalSprite(arg_28_0.imgNpcQuality, string.format("survival_bag_itemquality2_%s", var_28_0.rare))
 
-		arg_27_0.txtNpcInfo.text = var_27_0.npcDesc
+		arg_28_0.txtNpcInfo.text = var_28_0.npcDesc
 	end
 
-	gohelper.setActive(arg_27_0.goNpcReset, false)
-	gohelper.setActive(arg_27_0.btnNpcGoto, false)
-	gohelper.setActive(arg_27_0.btnNpcReset, false)
-	gohelper.setActive(arg_27_0.btnNpcJoin, false)
+	gohelper.setActive(arg_28_0.goNpcReset, false)
+	gohelper.setActive(arg_28_0.btnNpcGoto, false)
+	gohelper.setActive(arg_28_0.btnNpcReset, false)
+	gohelper.setActive(arg_28_0.btnNpcJoin, false)
 
-	local var_27_1 = SurvivalConfig.instance:getNpcConfigTag(arg_27_0.showId)
+	local var_28_1, var_28_2 = SurvivalConfig.instance:getNpcConfigTag(arg_28_0.showId)
 
-	for iter_27_0 = 1, math.max(#var_27_1, #arg_27_0.npcAttrList) do
-		local var_27_2 = arg_27_0:getNpcAttrItem(iter_27_0)
+	for iter_28_0 = 1, math.max(#var_28_2, #arg_28_0.npcAttrList) do
+		local var_28_3 = arg_28_0:getNpcAttrItem(iter_28_0)
 
-		arg_27_0:refreshNpcAttrItem(var_27_2, var_27_1[iter_27_0])
+		arg_28_0:refreshNpcAttrItem(var_28_3, var_28_2[iter_28_0])
 	end
 
-	local var_27_3 = arg_27_0.otherParam and arg_27_0.otherParam.showSelect or true
-	local var_27_4 = arg_27_0.otherParam and arg_27_0.otherParam.showUnSelect or true
-	local var_27_5 = SurvivalShelterChooseNpcListModel.instance:isQuickSelect()
+	local var_28_4 = arg_28_0.otherParam and arg_28_0.otherParam.showSelect or true
+	local var_28_5 = arg_28_0.otherParam and arg_28_0.otherParam.showUnSelect or true
+	local var_28_6 = SurvivalShelterChooseNpcListModel.instance:isQuickSelect()
 
-	if var_27_3 then
-		local var_27_6 = SurvivalShelterChooseNpcListModel.instance:npcIdIsSelect(arg_27_0.showId)
+	if var_28_4 then
+		local var_28_7 = SurvivalShelterChooseNpcListModel.instance:npcIdIsSelect(arg_28_0.showId)
 
-		gohelper.setActive(arg_27_0.btnNpcSelect, var_27_6 == nil and not var_27_5)
+		gohelper.setActive(arg_28_0.btnNpcSelect, var_28_7 == nil and not var_28_6)
 	end
 
-	if var_27_4 then
-		local var_27_7 = SurvivalShelterChooseNpcListModel.instance:npcIdIsSelect(arg_27_0.showId)
+	if var_28_5 then
+		local var_28_8 = SurvivalShelterChooseNpcListModel.instance:npcIdIsSelect(arg_28_0.showId)
 
-		gohelper.setActive(arg_27_0.btnNpcUnSelect, var_27_7 ~= nil and not var_27_5)
+		gohelper.setActive(arg_28_0.btnNpcUnSelect, var_28_8 ~= nil and not var_28_6)
 	end
 
-	arg_27_0:refreshNpcCost()
+	arg_28_0:refreshNpcCost()
 end
 
-function var_0_0.getNpcAttrItem(arg_28_0, arg_28_1)
-	local var_28_0 = arg_28_0.npcAttrList[arg_28_1]
+function var_0_0.getNpcAttrItem(arg_29_0, arg_29_1)
+	local var_29_0 = arg_29_0.npcAttrList[arg_29_1]
 
-	if not var_28_0 then
-		var_28_0 = arg_28_0:getUserDataTb_()
-		var_28_0.go = gohelper.cloneInPlace(arg_28_0.goNpcAttrItem, tostring(arg_28_1))
-		var_28_0.imgTitle = gohelper.findChildImage(var_28_0.go, "#image_title")
-		var_28_0.txtTitle = gohelper.findChildTextMesh(var_28_0.go, "#image_title/#txt_title")
-		var_28_0.txtDesc = gohelper.findChildTextMesh(var_28_0.go, "layout/#go_decitem/#txt_desc")
-		arg_28_0.npcAttrList[arg_28_1] = var_28_0
+	if not var_29_0 then
+		var_29_0 = arg_29_0:getUserDataTb_()
+		var_29_0.go = gohelper.cloneInPlace(arg_29_0.goNpcAttrItem, tostring(arg_29_1))
+		var_29_0.imgTitle = gohelper.findChildImage(var_29_0.go, "#image_title")
+		var_29_0.txtTitle = gohelper.findChildTextMesh(var_29_0.go, "#image_title/#txt_title")
+		var_29_0.txtDesc = gohelper.findChildTextMesh(var_29_0.go, "layout/#go_decitem/#txt_desc")
+		arg_29_0.npcAttrList[arg_29_1] = var_29_0
 	end
 
-	return var_28_0
+	return var_29_0
 end
 
-function var_0_0.refreshNpcAttrItem(arg_29_0, arg_29_1, arg_29_2)
-	if not arg_29_2 then
-		gohelper.setActive(arg_29_1.go, false)
+function var_0_0.refreshNpcAttrItem(arg_30_0, arg_30_1, arg_30_2)
+	if not arg_30_2 then
+		gohelper.setActive(arg_30_1.go, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_29_1.go, true)
+	gohelper.setActive(arg_30_1.go, true)
 
-	local var_29_0 = lua_survival_tag.configDict[arg_29_2]
+	local var_30_0 = lua_survival_tag.configDict[arg_30_2]
 
-	if var_29_0 == nil then
-		logError("tagId is nil" .. arg_29_2)
+	if var_30_0 == nil then
+		logError("tagId is nil" .. arg_30_2)
 
 		return
 	end
 
-	arg_29_1.txtTitle.text = var_29_0.name
-	arg_29_1.txtDesc.text = var_29_0.desc
+	arg_30_1.txtTitle.text = var_30_0.name
+	arg_30_1.txtDesc.text = var_30_0.desc
 
-	UISpriteSetMgr.instance:setSurvivalSprite(arg_29_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_29_0.color))
+	UISpriteSetMgr.instance:setSurvivalSprite(arg_30_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_30_0.color))
 end
 
-function var_0_0.showEmpty(arg_30_0)
-	gohelper.setActive(arg_30_0.goBuild, false)
-	gohelper.setActive(arg_30_0.goNpc, false)
-	gohelper.setActive(arg_30_0.goEmpty, true)
+function var_0_0.showEmpty(arg_31_0)
+	gohelper.setActive(arg_31_0.goBuild, false)
+	gohelper.setActive(arg_31_0.goNpc, false)
+	gohelper.setActive(arg_31_0.goEmpty, true)
 end
 
-function var_0_0.onDestroy(arg_31_0)
-	arg_31_0.simageBuild:UnLoadImage()
-	TaskDispatcher.cancelTask(arg_31_0.delayRefreshTime, arg_31_0)
+function var_0_0.onDestroy(arg_32_0)
+	arg_32_0.simageBuild:UnLoadImage()
+	TaskDispatcher.cancelTask(arg_32_0.refreshInfo, arg_32_0)
 end
 
 return var_0_0

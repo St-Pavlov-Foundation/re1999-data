@@ -11189,8 +11189,8 @@
   {
     "id": 2800215,
     "group": "tswf_40",
-    "materialType": 1,
-    "materialId": 111006,
+    "materialType": 9,
+    "materialId": 1000,
     "count": "1",
     "label": "guding",
     "shownum": 1
@@ -11732,6 +11732,51 @@
     "materialType": 2,
     "materialId": 5,
     "count": "10000",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2800276,
+    "group": "tswf_10",
+    "materialType": 1,
+    "materialId": 120012,
+    "count": "5",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2800277,
+    "group": "tswf_20",
+    "materialType": 1,
+    "materialId": 111003,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2800278,
+    "group": "tswf_30",
+    "materialType": 1,
+    "materialId": 120012,
+    "count": "5",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2800279,
+    "group": "tswf_40",
+    "materialType": 1,
+    "materialId": 111003,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 2800280,
+    "group": "tswf_50",
+    "materialType": 1,
+    "materialId": 120012,
+    "count": "5",
     "label": "guding",
     "shownum": 1
   }

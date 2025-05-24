@@ -97,6 +97,10 @@ function var_0_0._btnstartOnClick(arg_9_0)
 end
 
 function var_0_0._initHeroItemList(arg_10_0)
+	if arg_10_0._heroItemList then
+		return
+	end
+
 	arg_10_0._heroItemList = arg_10_0:getUserDataTb_()
 
 	local var_10_0 = arg_10_0.viewContainer:getSetting().otherRes.initHeroItem

@@ -74,8 +74,8 @@ function var_0_0.getDir(arg_6_0, arg_6_1, arg_6_2)
 	local var_6_0 = arg_6_2.q - arg_6_1.q
 	local var_6_1 = arg_6_2.r - arg_6_1.r
 	local var_6_2 = math.max(math.abs(var_6_0), math.abs(var_6_1))
-	local var_6_3 = var_6_0 / var_6_2
-	local var_6_4 = var_6_1 / var_6_2
+	local var_6_3 = math.floor(var_6_0 / var_6_2)
+	local var_6_4 = math.floor(var_6_1 / var_6_2)
 
 	for iter_6_0, iter_6_1 in pairs(SurvivalEnum.DirToPos) do
 		if iter_6_1.q == var_6_3 and iter_6_1.r == var_6_4 then
@@ -222,6 +222,22 @@ function var_0_0.isHaveNode(arg_15_0, arg_15_1, arg_15_2)
 	end
 
 	return arg_15_1[arg_15_2.q][arg_15_2.r]
+end
+
+function var_0_0.getDirMustHave(arg_16_0, arg_16_1, arg_16_2)
+	local var_16_0 = arg_16_2.q - arg_16_1.q
+	local var_16_1 = arg_16_2.r - arg_16_1.r
+	local var_16_2 = math.max(math.abs(var_16_0), math.abs(var_16_1))
+	local var_16_3 = math.floor(var_16_0 / var_16_2)
+	local var_16_4 = math.floor(var_16_1 / var_16_2)
+
+	for iter_16_0, iter_16_1 in pairs(SurvivalEnum.DirToPos) do
+		if iter_16_1.q == var_16_3 and iter_16_1.r == var_16_4 then
+			return iter_16_0
+		end
+	end
+
+	return SurvivalEnum.Dir.Right
 end
 
 var_0_0.instance = var_0_0.New()

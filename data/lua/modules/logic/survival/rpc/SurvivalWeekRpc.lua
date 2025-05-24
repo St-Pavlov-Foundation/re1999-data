@@ -111,7 +111,7 @@ function var_0_0.onReceiveSurvivalGetWeekInfoReply(arg_13_0, arg_13_1, arg_13_2)
 		SurvivalShelterModel.instance:setWeekData(arg_13_2.weekInfo)
 
 		if not var_13_0 and SurvivalShelterModel.instance:haveBoss() then
-			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalBossInvadeView)
+			SurvivalShelterModel.instance:setNeedShowBossInvade(true)
 		end
 	end
 end
@@ -124,7 +124,7 @@ function var_0_0.onReceiveSurvivalWeekInfoPush(arg_14_0, arg_14_1, arg_14_2)
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnWeekInfoUpdate)
 
 		if not var_14_0 and SurvivalShelterModel.instance:haveBoss() then
-			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalBossInvadeView)
+			SurvivalShelterModel.instance:setNeedShowBossInvade(true)
 		end
 	end
 end
@@ -217,13 +217,45 @@ function var_0_0.sendSurvivalEquipOneKeyWear(arg_25_0, arg_25_1, arg_25_2, arg_2
 	local var_25_0 = SurvivalWeekModule_pb.SurvivalEquipOneKeyWearRequest()
 
 	var_25_0.tagId = arg_25_1
+	arg_25_0.oneKeyTagId = arg_25_1
 
 	return arg_25_0:sendMsg(var_25_0, arg_25_2, arg_25_3)
 end
 
 function var_0_0.onReceiveSurvivalEquipOneKeyWearReply(arg_26_0, arg_26_1, arg_26_2)
 	if arg_26_1 == 0 then
-		-- block empty
+		local var_26_0 = SurvivalShelterModel.instance:getWeekInfo()
+
+		if not var_26_0 or not arg_26_0.oneKeyTagId then
+			return
+		end
+
+		local var_26_1 = var_26_0.equipBox.maxTagId
+
+		if var_26_1 ~= arg_26_0.oneKeyTagId then
+			local var_26_2 = true
+
+			for iter_26_0, iter_26_1 in pairs(var_26_0.equipBox.slots) do
+				if not iter_26_1.item:isEmpty() then
+					var_26_2 = false
+
+					break
+				end
+			end
+
+			if var_26_2 then
+				return
+			end
+
+			local var_26_3 = lua_survival_equip_found.configDict[arg_26_0.oneKeyTagId]
+			local var_26_4 = lua_survival_equip_found.configDict[var_26_1]
+
+			if not var_26_3 or not var_26_4 then
+				GameFacade.showToast(ToastEnum.SurvivalEquipTagNoEnough2)
+			else
+				GameFacade.showToast(ToastEnum.SurvivalEquipTagNoEnough, var_26_3.name, var_26_4.name)
+			end
+		end
 	end
 end
 
@@ -669,6 +701,8 @@ function var_0_0.onReceiveSurvivalDecreeChoosePolicyReply(arg_72_0, arg_72_1, ar
 
 			SurvivalController.instance:startDecreeVote(var_72_2)
 		end
+	else
+		PopupController.instance:setPause(ViewName.SurvivalDecreeVoteView, false)
 	end
 end
 

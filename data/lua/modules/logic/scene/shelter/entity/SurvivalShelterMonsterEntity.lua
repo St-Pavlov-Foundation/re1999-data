@@ -7,7 +7,7 @@ local var_0_3 = 3
 
 function var_0_0.Create(arg_1_0, arg_1_1, arg_1_2)
 	local var_1_0 = SurvivalShelterModel.instance:getNeedShowFightSuccess()
-	local var_1_1, var_1_2 = SurvivalMapHelper.instance:getLocalShelterEntityPosAndDir(arg_1_0, arg_1_1)
+	local var_1_1, var_1_2 = SurvivalMapHelper.instance:getLocalShelterEntityPosAndDir(arg_1_0, arg_1_1, true)
 
 	if var_1_0 then
 		var_1_1 = SurvivalShelterModel.instance:getPlayerMo().pos
@@ -179,12 +179,14 @@ function var_0_0.onEffectLoadedEnd(arg_14_0)
 		return
 	end
 
-	if not SurvivalShelterModel.instance:getNeedShowFightSuccess() then
-		local var_14_0 = arg_14_0._goEffect.transform
-		local var_14_1 = arg_14_0:getScale()
+	local var_14_0 = arg_14_0._goEffect.transform
+	local var_14_1 = arg_14_0:getScale()
 
-		transformhelper.setLocalScale(var_14_0, var_14_1, var_14_1, var_14_1)
-	else
+	transformhelper.setLocalScale(var_14_0, var_14_1, var_14_1, var_14_1)
+
+	if SurvivalShelterModel.instance:getNeedShowFightSuccess() then
+		transformhelper.setLocalPos(var_14_0, 0, -0.35, 0)
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_fight)
 		TaskDispatcher.runDelay(arg_14_0._showSuccessFinish, arg_14_0, var_0_3)
 	end
 end

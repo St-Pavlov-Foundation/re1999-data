@@ -373,58 +373,59 @@ function var_0_0.refreshMonsterInfoView(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
 	local var_24_7 = arg_24_3 and arg_24_0._goPlayerSnapChess or arg_24_0._goEnemySnapChess
 
 	for iter_24_4, iter_24_5 in ipairs(var_24_0) do
-		local var_24_8 = AutoChessConfig.instance:getChessCfgById(iter_24_5.chessId, 1)
+		local var_24_8 = AutoChessConfig.instance:getChessCfgById(iter_24_5.chessId)
+		local var_24_9 = var_24_8[next(var_24_8)]
 
 		if iter_24_4 <= 3 then
-			local var_24_9 = arg_24_0[var_24_6 .. iter_24_4]
+			local var_24_10 = arg_24_0[var_24_6 .. iter_24_4]
 
-			gohelper.setActive(var_24_9, true)
+			gohelper.setActive(var_24_10, true)
 
-			local var_24_10 = gohelper.findChild(var_24_9, "Mesh")
+			local var_24_11 = gohelper.findChild(var_24_10, "Mesh")
 
-			MonoHelper.addNoUpdateLuaComOnceToGo(var_24_10, AutoChessMeshComp):setData(var_24_8.image)
+			MonoHelper.addNoUpdateLuaComOnceToGo(var_24_11, AutoChessMeshComp):setData(var_24_9.image)
 		end
 
-		local var_24_11 = gohelper.cloneInPlace(var_24_7, iter_24_5.chessId)
+		local var_24_12 = gohelper.cloneInPlace(var_24_7, iter_24_5.chessId)
 
-		arg_24_0._chessGoList[#arg_24_0._chessGoList + 1] = var_24_11
+		arg_24_0._chessGoList[#arg_24_0._chessGoList + 1] = var_24_12
 
-		gohelper.setActive(var_24_11, true)
+		gohelper.setActive(var_24_12, true)
 
-		local var_24_12 = gohelper.findChild(var_24_11, "Mesh")
+		local var_24_13 = gohelper.findChild(var_24_12, "Mesh")
 
-		MonoHelper.addNoUpdateLuaComOnceToGo(var_24_12, AutoChessMeshComp):setData(var_24_8.image)
+		MonoHelper.addNoUpdateLuaComOnceToGo(var_24_13, AutoChessMeshComp):setData(var_24_9.image)
 
-		local var_24_13 = 0
-		local var_24_14
+		local var_24_14 = 0
+		local var_24_15
 
 		if arg_24_3 then
-			var_24_13 = var_0_2[iter_24_5.zoneId] + iter_24_5.idx * var_0_1[iter_24_5.zoneId]
-			var_24_14 = var_0_3[iter_24_5.zoneId]
+			var_24_14 = var_0_2[iter_24_5.zoneId] + iter_24_5.idx * var_0_1[iter_24_5.zoneId]
+			var_24_15 = var_0_3[iter_24_5.zoneId]
 		else
-			var_24_13 = var_0_4 + (iter_24_5.idx - 5) * var_0_6[iter_24_5.zoneId]
-			var_24_14 = var_0_5[iter_24_5.zoneId]
+			var_24_14 = var_0_4 + (iter_24_5.idx - 5) * var_0_6[iter_24_5.zoneId]
+			var_24_15 = var_0_5[iter_24_5.zoneId]
 		end
 
-		recthelper.setAnchor(var_24_11.transform, var_24_13, var_24_14)
+		recthelper.setAnchor(var_24_12.transform, var_24_14, var_24_15)
 
-		local var_24_15, var_24_16, var_24_17 = transformhelper.getLocalScale(var_24_11.transform)
+		local var_24_16, var_24_17, var_24_18 = transformhelper.getLocalScale(var_24_12.transform)
 
-		var_24_15 = arg_24_3 and -1 * var_24_15 or var_24_15
+		var_24_16 = arg_24_3 and -1 * var_24_16 or var_24_16
 
-		transformhelper.setLocalScale(var_24_11.transform, var_24_15, var_24_16, var_24_17)
+		transformhelper.setLocalScale(var_24_12.transform, var_24_16, var_24_17, var_24_18)
 	end
 
 	if not arg_24_2 then
 		return
 	end
 
-	local var_24_18 = arg_24_3 and arg_24_0._goPlayerLeaderMesh or arg_24_0._goEnemyLeaderMesh
-	local var_24_19 = arg_24_2.id
-	local var_24_20 = lua_auto_chess_master.configDict[var_24_19]
+	local var_24_19 = arg_24_3 and arg_24_0._goPlayerLeaderMesh or arg_24_0._goEnemyLeaderMesh
+	local var_24_20 = arg_24_2.id
+	local var_24_21 = lua_auto_chess_master.configDict[var_24_20]
 
-	if var_24_20 then
-		MonoHelper.addNoUpdateLuaComOnceToGo(var_24_18, AutoChessMeshComp):setData(var_24_20.image, false, true)
+	if var_24_21 then
+		MonoHelper.addNoUpdateLuaComOnceToGo(var_24_19, AutoChessMeshComp):setData(var_24_21.image, false, true)
 	end
 end
 

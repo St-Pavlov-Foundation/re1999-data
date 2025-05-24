@@ -21,6 +21,10 @@ function var_0_0.setHeroId(arg_2_0, arg_2_1)
 	local var_2_0 = SurvivalShelterModel.instance:getWeekInfo():getHeroMo(arg_2_1)
 	local var_2_1, var_2_2 = var_2_0:getCurState()
 
+	if var_2_2 > 0 and var_2_2 < 0.1 then
+		var_2_2 = 0.1
+	end
+
 	for iter_2_0 = 1, 3 do
 		gohelper.setActive(arg_2_0._states[iter_2_0], var_2_1 == iter_2_0)
 	end

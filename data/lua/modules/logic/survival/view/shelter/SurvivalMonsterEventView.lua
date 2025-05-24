@@ -88,17 +88,19 @@ function var_0_0._btnFightOnClick(arg_8_0)
 	if #SurvivalShelterNpcMonsterListModel.instance:getSelectList() == 0 then
 		arg_8_0:_noSelectNpcEnterFight()
 	else
-		arg_8_0:_enterFight()
+		arg_8_0:enterFight()
 	end
 end
 
 function var_0_0._noSelectNpcEnterFight(arg_9_0)
-	GameFacade.showOptionMessageBox(MessageBoxIdDefine.SurvivalMonsterSureNoSelectNpc, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, arg_9_0._noSelectNpcEnterFightOkCb, nil, nil, arg_9_0)
+	GameFacade.showOptionMessageBox(MessageBoxIdDefine.SurvivalMonsterSureNoSelectNpc, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, arg_9_0.enterFight, nil, nil, arg_9_0)
 end
 
-function var_0_0._noSelectNpcEnterFightOkCb(arg_10_0)
+function var_0_0.enterFight(arg_10_0)
 	if arg_10_0._fight.status == SurvivalEnum.ShelterMonsterFightState.NoStart then
-		SurvivalWeekRpc.instance:sendSurvivalIntrudeExterminateRequest(nil, arg_10_0._enterFight, arg_10_0)
+		local var_10_0 = SurvivalShelterNpcMonsterListModel.instance:getSelectList()
+
+		SurvivalWeekRpc.instance:sendSurvivalIntrudeExterminateRequest(var_10_0, arg_10_0._enterFight, arg_10_0)
 	else
 		arg_10_0:_enterFight()
 	end
@@ -124,6 +126,8 @@ function var_0_0._editableInitView(arg_13_0)
 
 	arg_13_0._goNpc = gohelper.findChild(arg_13_0.viewGO, "Panel/Npc")
 	arg_13_0._fightUIEffect = var_0_1.Get(arg_13_0._btnFight.gameObject)
+	arg_13_0._fightBtnAnchorX, arg_13_0._fightBtnAnchorY = recthelper.getAnchor(arg_13_0._btnFight.transform)
+	arg_13_0._resetBtnAnchorX, arg_13_0._resetBtnAnchorY = recthelper.getAnchor(arg_13_0._btnReset.transform)
 end
 
 function var_0_0.onUpdateParam(arg_14_0)
@@ -192,6 +196,15 @@ function var_0_0._refreshState(arg_18_0)
 	local var_18_1 = arg_18_0._fight:canShowFightBtn()
 
 	gohelper.setActive(arg_18_0._btnFight, var_18_1)
+
+	local var_18_2 = arg_18_0._resetBtnAnchorX
+	local var_18_3 = arg_18_0._resetBtnAnchorY
+
+	if not var_18_1 then
+		var_18_2, var_18_3 = arg_18_0._fightBtnAnchorX, arg_18_0._fightBtnAnchorY
+	end
+
+	recthelper.setAnchor(arg_18_0._btnReset.transform, var_18_2, var_18_3)
 end
 
 function var_0_0._initConfigInfo(arg_19_0)
@@ -242,8 +255,9 @@ function var_0_0._updateNpcInfo(arg_20_0)
 			table.insert(arg_20_0._repressNpcItems, var_20_3)
 		end
 
-		var_20_3:updateItem(var_20_4)
 		var_20_3:setIsCanEnterSelect(arg_20_0._fight:canEnterSelectNpc())
+		var_20_3:setNeedShowEmpty(arg_20_0._fight:canEnterSelectNpc())
+		var_20_3:updateItem(var_20_4)
 	end
 end
 
@@ -254,27 +268,37 @@ function var_0_0._refreshSchemes(arg_21_0)
 		arg_21_0._schemesItems = arg_21_0:getUserDataTb_()
 	end
 
+	local var_21_1 = arg_21_0._fight:isFighting()
+
 	for iter_21_0, iter_21_1 in pairs(var_21_0) do
-		local var_21_1 = arg_21_0._schemesItems[iter_21_0]
+		local var_21_2 = arg_21_0._schemesItems[iter_21_0]
 
-		if var_21_1 == nil then
-			local var_21_2 = gohelper.cloneInPlace(arg_21_0._gobuffitem)
+		if var_21_2 == nil then
+			local var_21_3 = gohelper.cloneInPlace(arg_21_0._gobuffitem)
 
-			var_21_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_2, SurvivalMonsterEventBuffItem)
+			var_21_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_21_3, SurvivalMonsterEventBuffItem)
 
-			var_21_1:initItem(iter_21_0)
+			var_21_2:initItem(iter_21_0)
 
-			arg_21_0._schemesItems[iter_21_0] = var_21_1
+			arg_21_0._schemesItems[iter_21_0] = var_21_2
 
-			gohelper.setActive(var_21_2, true)
+			gohelper.setActive(var_21_3, true)
 		end
 
-		var_21_1:updateItem(iter_21_1)
+		if not var_21_1 then
+			iter_21_1 = SurvivalShelterMonsterModel.instance:calBuffIsRepress(iter_21_0)
+		end
+
+		var_21_2:updateItem(iter_21_1)
 	end
 end
 
 function var_0_0.onClose(arg_22_0)
 	TaskDispatcher.cancelTask(arg_22_0._updateNpcInfo, arg_22_0)
+
+	if arg_22_0._fight:canEnterSelectNpc() then
+		SurvivalShelterNpcMonsterListModel.instance:setSelectNpcByList(nil)
+	end
 end
 
 function var_0_0.onDestroyView(arg_23_0)

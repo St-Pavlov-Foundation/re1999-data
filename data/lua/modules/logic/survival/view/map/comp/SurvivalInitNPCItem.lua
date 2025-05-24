@@ -67,9 +67,9 @@ function var_0_0.onUpdateMO(arg_9_0, arg_9_1)
 
 		UISpriteSetMgr.instance:setV2a2ChessSprite(arg_9_0._imagechess, var_9_1.headIcon, false)
 
-		local var_9_2 = string.splitToNumber(var_9_1.tag, "#") or {}
+		local var_9_2, var_9_3 = SurvivalConfig.instance:getNpcConfigTag(var_9_1.id)
 
-		gohelper.CreateObjList(arg_9_0, arg_9_0._createTagItem, var_9_2, nil, arg_9_0._goAttrItem)
+		gohelper.CreateObjList(arg_9_0, arg_9_0._createTagItem, var_9_3, nil, arg_9_0._goAttrItem)
 	end
 end
 
@@ -99,7 +99,8 @@ function var_0_0._onClickThis(arg_12_0)
 		return
 	end
 
-	ViewMgr.instance:openView(ViewName.SurvivalNPCSelectView)
+	AudioMgr.instance:trigger(AudioEnum.HeroGroupUI.Play_UI_Team_Open)
+	ViewMgr.instance:openView(ViewName.SurvivalNPCSelectView, arg_12_0._npcMo)
 end
 
 function var_0_0.onDestroy(arg_13_0)

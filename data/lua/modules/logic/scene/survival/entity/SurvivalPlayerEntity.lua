@@ -33,26 +33,23 @@ function var_0_0._onAttrUpdate(arg_5_0, arg_5_1)
 end
 
 function var_0_0.onMoveBegin(arg_6_0)
-	if not arg_6_0._isPlayingMove then
-		arg_6_0._isPlayingMove = true
-
-		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_move)
-	end
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_move)
 end
 
 function var_0_0.onMoveEnd(arg_7_0)
 	return
 end
 
-function var_0_0.playStopMoveAudio(arg_8_0)
-	if arg_8_0._isPlayingMove then
-		AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_move)
-
-		arg_8_0._isPlayingMove = nil
-	end
+function var_0_0._onResLoadEnd(arg_8_0)
+	var_0_0.super._onResLoadEnd(arg_8_0)
+	arg_8_0:onWarmingAttrUpdate()
 end
 
 function var_0_0.onWarmingAttrUpdate(arg_9_0)
+	if not arg_9_0._resGo then
+		return
+	end
+
 	local var_9_0 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.NoWarming) == 1 and 0.6 or 1
 
 	if var_9_0 == arg_9_0._finalAlpha then
@@ -127,6 +124,7 @@ function var_0_0.transferTo(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4)
 
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.TweenCameraFocus, Vector3(arg_13_0.x, arg_13_0.y, arg_13_0.z), 0.2)
 	arg_13_0:addEffect(SurvivalEnum.UnitEffectPath.Transfer1)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_transmit)
 	TaskDispatcher.runDelay(arg_13_0._tweenToTarget, arg_13_0, SurvivalEnum.UnitEffectTime[SurvivalEnum.UnitEffectPath.Transfer1])
 end
 
@@ -141,6 +139,7 @@ end
 
 function var_0_0._delayTransfer2(arg_15_0)
 	arg_15_0:addEffect(SurvivalEnum.UnitEffectPath.Transfer2)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_transmit_2)
 	arg_15_0:onPosChange(arg_15_0._targetPos)
 
 	local var_15_0, var_15_1, var_15_2 = SurvivalHelper.instance:hexPointToWorldPoint(arg_15_0._targetPos.q, arg_15_0._targetPos.r)
@@ -188,6 +187,7 @@ function var_0_0.flyTo(arg_17_0, arg_17_1, arg_17_2, arg_17_3, arg_17_4)
 
 	arg_17_0:playAnim("run")
 	arg_17_0:addEffect(SurvivalEnum.UnitEffectPath.Fly)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_move_fast)
 
 	local var_17_0 = SurvivalHelper.instance:getDistance(arg_17_1, arg_17_0._unitMo.pos) * SurvivalEnum.UnitEffectTime[SurvivalEnum.UnitEffectPath.Fly]
 	local var_17_1, var_17_2, var_17_3 = SurvivalHelper.instance:hexPointToWorldPoint(arg_17_0._targetPos.q, arg_17_0._targetPos.r)
@@ -201,6 +201,7 @@ end
 function var_0_0._flyEnd(arg_18_0)
 	arg_18_0:removeEffect(SurvivalEnum.UnitEffectPath.Fly)
 	arg_18_0:onPosChange(arg_18_0._targetPos)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_move_fast)
 	arg_18_0:playAnim("idle")
 
 	arg_18_0._targetPos = nil
@@ -222,10 +223,10 @@ function var_0_0._flyEnd(arg_18_0)
 end
 
 function var_0_0.onDestroy(arg_19_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_move_fast)
 	TaskDispatcher.cancelTask(arg_19_0._tweenToTarget, arg_19_0)
 	TaskDispatcher.cancelTask(arg_19_0._delayTransfer2, arg_19_0)
 	TaskDispatcher.cancelTask(arg_19_0._delayFinish, arg_19_0)
-	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_move)
 end
 
 return var_0_0

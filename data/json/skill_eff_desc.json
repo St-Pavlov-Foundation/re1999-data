@@ -14725,7 +14725,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "群体攻击，对2名敌方造成精神创伤；自身获得1层【癔症】"
+    "desc": "群体攻击，对2名敌方造成150%的精神创伤；自身获得1层【癔症】"
   },
   {
     "id": 31150111,
@@ -14744,6 +14744,30 @@
     "desc": "免疫【控制】,受创减免+1%,再生率+1%(最高叠加30层)"
   },
   {
+    "id": 12841011,
+    "name": "磁场力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击+10%(最多叠加5层)"
+  },
+  {
+    "id": 12841041,
+    "name": "灵光一闪",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击+3%,暴击率+3%,暴击创伤+3%,创伤加成+3%,穿透率+3%"
+  },
+  {
+    "id": 12841051,
+    "name": "仪式准备",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "释放至终的仪式时,最终伤害提升10%(可叠加)"
+  },
+  {
     "id": 32820005,
     "name": "适应性",
     "color": 1,
@@ -14757,7 +14781,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "创伤加成、受创减免+5%、全控制抗性提升2%，此状态对己方全体生效，不可驱散"
+    "desc": "创伤加成、受创减免+5%、全控制抗性提升2%（效果可叠加，不可驱散）"
   },
   {
     "id": 32820007,
@@ -14973,7 +14997,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "暴击率提升50%，暴击伤害提升50%，不可驱散"
+    "desc": "暴击率提升25%，暴击伤害提升25%，不可驱散"
   },
   {
     "id": 32806097,
@@ -15021,7 +15045,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "吸血率+2%，最多叠加5层，不可驱散"
+    "desc": "暴击创伤+6%，最多叠加5层，不可驱散"
   },
   {
     "id": 328210014,
@@ -15038,6 +15062,14 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "行动力+1，最多叠加1层，不可驱散"
+  },
+  {
+    "id": 32830003,
+    "name": "场外支持",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击时，创伤加成+2%，最多叠加99层，不可驱散"
   },
   {
     "id": 72800001,
@@ -15067,33 +15099,33 @@
     "id": 72800004,
     "name": "痕契之击lv1",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "对随机1名敌人造成创伤并使其陷入【溃势】，使下一次攻击升级成【痕契之击lv2】"
   },
   {
     "id": 72800005,
     "name": "痕契之击lv2",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "对随机1名敌人造成创伤并使其陷入【溃心】，使下一次攻击升级成【痕契之击lv3】"
   },
   {
     "id": 72800006,
     "name": "痕契之击lv3",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "对随机1名敌人造成创伤使下一次攻击变成【痕契之击lv1】，攻击后若目标同时持有【溃势】和【溃心】，则消耗【溃势】和【溃心】并对该目标追加【痕契之击lv4】。"
   },
   {
     "id": 72800007,
     "name": "痕契之击lv4",
     "color": 1,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "【痕契之击lv4】: 对目标造成创伤，必定暴击。"
   },
   {
     "id": 72800008,
@@ -15141,7 +15173,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "现实防御-1%，精神防御-1%"
+    "desc": "现实防御-1%，精神防御-1%（效果可叠加，最多叠加100层）"
   },
   {
     "id": 72800014,
@@ -15165,7 +15197,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "到达一定阈值时可影响激活的痕契技能的效果"
+    "desc": "①大幅度提升【电能痕契<id:0>】的效果\n②中等幅度提升【额外行动痕契<id:0>】的效果\n③小幅度提升【薪血痕契<id:0>】【仪式痕契<id:0>】的效果"
   },
   {
     "id": 72800017,
@@ -15173,7 +15205,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "到达一定阈值时可影响激活的痕契技能的效果"
+    "desc": "①极大幅度提升【薪血痕契<id:0>】的效果\n②小幅度提升【电能痕契<id:0>】【仪式痕契<id:0>】【启示痕契<id:0>】【额外行动痕契<id:0>】的效果"
   },
   {
     "id": 72800018,
@@ -15181,7 +15213,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "到达一定阈值时可影响激活的痕契技能的效果"
+    "desc": "①大幅度提升【启示痕契<id:0>】【仪式痕契<id:0>】的效果\n②小幅度提升【薪血痕契<id:0>】的效果"
   },
   {
     "id": 72800019,
@@ -15222,6 +15254,14 @@
     "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": ""
+  },
+  {
+    "id": 72800024,
+    "name": "缚力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力-10%，持续3回合（效果可叠加，每层时间独立计算，不可驱散）"
   },
   {
     "id": 30862141,

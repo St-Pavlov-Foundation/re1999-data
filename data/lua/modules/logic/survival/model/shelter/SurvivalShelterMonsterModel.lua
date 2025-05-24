@@ -20,13 +20,17 @@ function var_0_0.calBuffIsRepress(arg_1_0, arg_1_1)
 	end
 
 	local var_1_5 = SurvivalConfig.instance:getMonsterBuffConfigTag(arg_1_1)
-	local var_1_6 = true
+	local var_1_6 = false
 
-	for iter_1_2 = 1, #var_1_5 do
-		if var_1_1[var_1_5[iter_1_2]] == nil then
-			var_1_6 = false
+	if var_1_5 then
+		var_1_6 = true
 
-			break
+		for iter_1_2 = 1, #var_1_5 do
+			if var_1_1[var_1_5[iter_1_2]] == nil then
+				var_1_6 = false
+
+				break
+			end
 		end
 	end
 

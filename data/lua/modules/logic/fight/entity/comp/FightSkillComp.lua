@@ -58,6 +58,7 @@ var_0_0.FrameEventHandlerCls = {
 	FightTLEventSetFightViewPartVisible,
 	FightTLEventALFCardEffect,
 	FightTLEventPlayEffectByOperation,
+	FightTLEventEffectVisible,
 	[1001] = FightTLEventObjFly
 }
 

@@ -78,6 +78,8 @@ end
 
 function var_0_0.onStart(arg_5_0)
 	arg_5_0.go:GetComponent(typeof(SLFramework.LuaMonobehavier)).enabled = false
+
+	arg_5_0:checkEnabled()
 end
 
 function var_0_0.initFollow(arg_6_0)
@@ -168,10 +170,6 @@ function var_0_0._onMapPlayerPosChange(arg_12_0)
 end
 
 function var_0_0._onMapUnitPosChange(arg_13_0, arg_13_1, arg_13_2)
-	if arg_13_2.id ~= arg_13_0._unitMo.id then
-		return
-	end
-
 	arg_13_0:checkEnabled()
 end
 

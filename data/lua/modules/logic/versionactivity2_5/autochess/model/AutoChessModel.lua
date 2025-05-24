@@ -35,6 +35,13 @@ function var_0_0.svrSettleData(arg_5_0, arg_5_1)
 	arg_5_0.settleData = arg_5_1
 end
 
+function var_0_0.clearData(arg_6_0)
+	arg_6_0.actId = nil
+	arg_6_0.moduleId = nil
+	arg_6_0.episodeId = nil
+	arg_6_0.chessMo = nil
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

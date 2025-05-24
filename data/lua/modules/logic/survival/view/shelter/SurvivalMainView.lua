@@ -66,11 +66,13 @@ function var_0_0.onClickScene(arg_6_0, arg_6_1, arg_6_2)
 		return
 	end
 
-	if var_6_0.unit:checkClickUnit(arg_6_2) then
+	if not var_6_0.block:isClickBlock(arg_6_2) then
 		return
 	end
 
-	if not var_6_0.block:isClickBlock(arg_6_2) then
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_general_click)
+
+	if var_6_0.unit:checkClickUnit(arg_6_2) then
 		return
 	end
 
@@ -88,6 +90,7 @@ function var_0_0._setScale(arg_7_0, arg_7_1, arg_7_2)
 		return
 	end
 
+	arg_7_0._lastScale = arg_7_0._scale
 	arg_7_0._scale = arg_7_1
 
 	SurvivalMapHelper.instance:setDistance(arg_7_0._maxDis - (arg_7_0._maxDis - arg_7_0._minDis) * arg_7_0._scale)

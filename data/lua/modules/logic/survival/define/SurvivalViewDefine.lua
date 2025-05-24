@@ -41,7 +41,7 @@ function var_0_0.init(arg_1_0)
 		mainRes = "ui/viewres/survival/map/survivalview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Full,
-		anim = ViewAnim.Default,
+		anim = ViewAnim.Internal,
 		tabRes = {
 			{
 				{
@@ -272,7 +272,10 @@ function var_0_0.initMapDefine(arg_2_0)
 		container = "SurvivalLoadingViewContainer",
 		mainRes = "ui/viewres/survival/map/survivalloadingview.prefab",
 		layer = "TOP",
-		viewType = ViewType.Full
+		viewType = ViewType.Full,
+		otherRes = {
+			[1] = "singlebg/survival_singlebg/loading/survival_loading_fullbg.png"
+		}
 	}
 	arg_2_0.SurvivalSmallMapView = {
 		destroy = 0,
@@ -822,6 +825,15 @@ function var_0_0.initShelterDefine(arg_3_0)
 		container = "SurvivalBossInvadeViewContainer",
 		bgBlur = 1,
 		mainRes = "ui/viewres/survival/map/survivalbossinvadeview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default
+	}
+	arg_3_0.SurvivalShelterResultPanelView = {
+		destroy = 0,
+		container = "SurvivalShelterResultPanelViewContainer",
+		maskAlpha = 0,
+		mainRes = "ui/viewres/survival/shelter/survivalshelterresultpanelview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal,
 		anim = ViewAnim.Default

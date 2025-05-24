@@ -69,7 +69,7 @@ function var_0_0.savePosAndDir(arg_5_0)
 end
 
 function var_0_0.getLocalkKey(arg_6_0)
-	return (string.format("survival_shelter_playerpos_%s", arg_6_0.shelterMapId))
+	return (string.format("%s_survival_shelter_playerpos_%s", PlayerModel.instance:getPlayinfo().userId, arg_6_0.shelterMapId))
 end
 
 function var_0_0.deleteLocalData(arg_7_0)

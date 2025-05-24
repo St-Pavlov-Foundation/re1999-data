@@ -159,9 +159,7 @@ end
 
 function var_0_0._onUnlockStoneReply(arg_15_0, arg_15_1, arg_15_2)
 	if arg_15_0._curStoneMo then
-		local var_15_0 = arg_15_0._heroMO.destinyStoneMo:isUnlockStone(arg_15_0._curStoneMo)
-
-		arg_15_0._curStoneMo:refresUnlock(var_15_0)
+		arg_15_0._curStoneMo:refresUnlock(true)
 	end
 
 	arg_15_0:_refreshView()
@@ -172,19 +170,12 @@ function var_0_0._onUnlockStoneReply(arg_15_0, arg_15_1, arg_15_2)
 end
 
 function var_0_0._onUseStoneReply(arg_16_0, arg_16_1, arg_16_2)
-	if arg_16_0._curStoneMo then
-		local var_16_0 = arg_16_0._heroMO.destinyStoneMo:isUseStone(arg_16_0._curStoneMo)
-
-		arg_16_0._curStoneMo:refreshUse(var_16_0)
-	end
+	arg_16_0._heroMO.destinyStoneMo:refreshUseStone()
 
 	arg_16_0._curUseStoneId = arg_16_0._heroMO.destinyStoneMo.curUseStoneId
 
 	arg_16_0:_refreshBtn()
-
-	local var_16_1 = arg_16_0._heroMO.destinyStoneMo:isUseStone(arg_16_0._curStoneMo)
-
-	gohelper.setActive(arg_16_0._goEquip, var_16_1)
+	gohelper.setActive(arg_16_0._goEquip, arg_16_0._curStoneMo.isUse)
 end
 
 function var_0_0.onOpen(arg_17_0)
@@ -275,7 +266,7 @@ function var_0_0._refreshStoneItem(arg_19_0, arg_19_1)
 				iter_19_1.skillDesc:updateInfo(iter_19_1.txt, var_19_2.desc, arg_19_0._heroMO.heroId)
 				iter_19_1.skillDesc:setTipParam(0, Vector2(300, 100))
 
-				local var_19_3 = arg_19_0._heroMO.destinyStoneMo:isUnlockStone(arg_19_0._curStoneMo) and iter_19_0 <= arg_19_0._heroMO.destinyStoneMo.rank
+				local var_19_3 = arg_19_0._curStoneMo.isUnlock and iter_19_0 <= arg_19_0._heroMO.destinyStoneMo.rank
 				local var_19_4 = iter_19_1.txt.color
 
 				var_19_4.a = var_19_3 and 1 or 0.43
@@ -298,28 +289,26 @@ function var_0_0._refreshStoneItem(arg_19_0, arg_19_1)
 			end
 		end
 
-		local var_19_7 = arg_19_0._heroMO.destinyStoneMo:isUseStone(arg_19_0._curStoneMo)
-
-		gohelper.setActive(arg_19_0._goEquip, var_19_7)
+		gohelper.setActive(arg_19_0._goEquip, arg_19_0._curStoneMo.isUse)
 
 		if var_19_1 then
-			local var_19_8, var_19_9 = arg_19_0._curStoneMo:getNameAndIcon()
+			local var_19_7, var_19_8 = arg_19_0._curStoneMo:getNameAndIcon()
 
-			arg_19_0._txtstonename.text = var_19_8
+			arg_19_0._txtstonename.text = var_19_7
 
-			arg_19_0._simagestone:LoadImage(var_19_9)
+			arg_19_0._simagestone:LoadImage(var_19_8)
 
-			local var_19_10 = CharacterDestinyEnum.SlotTend[var_19_1.tend]
-			local var_19_11 = var_19_10.TitleIconName
+			local var_19_9 = CharacterDestinyEnum.SlotTend[var_19_1.tend]
+			local var_19_10 = var_19_9.TitleIconName
 
-			UISpriteSetMgr.instance:setUiCharacterSprite(arg_19_0._imageicon, var_19_11)
+			UISpriteSetMgr.instance:setUiCharacterSprite(arg_19_0._imageicon, var_19_10)
 
-			arg_19_0._txtstonename.color = GameUtil.parseColor(var_19_10.TitleColor)
+			arg_19_0._txtstonename.color = GameUtil.parseColor(var_19_9.TitleColor)
 		end
 
-		local var_19_12 = arg_19_0._heroMO.destinyStoneMo:isUseStone(arg_19_0._curStoneMo) and Color.white or Color(0.5, 0.5, 0.5, 1)
+		local var_19_11 = arg_19_0._curStoneMo.isUnlock and Color.white or Color(0.5, 0.5, 0.5, 1)
 
-		arg_19_0._imgstone.color = var_19_12
+		arg_19_0._imgstone.color = var_19_11
 
 		arg_19_0:_checkPlayAttrUnlockAnim(arg_19_0._curStoneMo.stoneId)
 	end
@@ -330,10 +319,10 @@ function var_0_0._refreshStoneItem(arg_19_0, arg_19_1)
 
 	if var_19_0 > 1 then
 		for iter_19_2 = 1, var_19_0 do
-			local var_19_13 = arg_19_0:_getPointItem(iter_19_2)
+			local var_19_12 = arg_19_0:_getPointItem(iter_19_2)
 
-			gohelper.setActive(var_19_13.select, arg_19_1 == iter_19_2)
-			gohelper.setActive(var_19_13.go, true)
+			gohelper.setActive(var_19_12.select, arg_19_1 == iter_19_2)
+			gohelper.setActive(var_19_12.go, true)
 		end
 	else
 		for iter_19_3, iter_19_4 in ipairs(arg_19_0._pointItems) do
@@ -352,7 +341,7 @@ function var_0_0._refreshConsume(arg_20_0)
 
 	local var_20_0 = arg_20_0._curStoneMo.conusmeCo
 
-	if not arg_20_0._heroMO.destinyStoneMo:isUnlockStone(arg_20_0._curStoneMo) then
+	if not arg_20_0._curStoneMo.isUnlock then
 		local var_20_1 = ItemModel.instance:getItemDataListByConfigStr(var_20_0.consume)
 
 		IconMgr.instance:getCommonPropItemIconList(arg_20_0, arg_20_0._onCostItemShow, var_20_1, arg_20_0._gounlockitem)
@@ -444,13 +433,13 @@ function var_0_0.onBeforeClickItem(arg_24_0, arg_24_1, arg_24_2)
 end
 
 function var_0_0._refreshBtn(arg_25_0)
-	if not arg_25_0._heroMO or not arg_25_0._heroMO.destinyStoneMo or not arg_25_0._curStoneMo then
+	if not arg_25_0._curStoneMo then
 		return
 	end
 
 	local var_25_0 = arg_25_0._heroMO.destinyStoneMo:isUnlockSlot()
-	local var_25_1 = arg_25_0._heroMO.destinyStoneMo:isUnlockStone(arg_25_0._curStoneMo)
-	local var_25_2 = arg_25_0._heroMO.destinyStoneMo:isUseStone(arg_25_0._curStoneMo)
+	local var_25_1 = arg_25_0._curStoneMo.isUnlock
+	local var_25_2 = arg_25_0._curStoneMo.isUse
 	local var_25_3 = arg_25_0._curUseStoneId ~= 0
 
 	gohelper.setActive(arg_25_0._gounlock.gameObject, var_25_0 and not var_25_1)

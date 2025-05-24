@@ -10,8 +10,9 @@ function var_0_0.onInitView(arg_1_0)
 	gohelper.setActive(arg_1_0.txtSurvivalHpCount.gameObject, true)
 
 	arg_1_0.bgHp = gohelper.findChildImage(arg_1_0.viewGO, "Alpha/bossHp/mask/container/unlimitedhp")
+	arg_1_0.bgHpGo = arg_1_0.bgHp.gameObject
 
-	gohelper.setActive(arg_1_0.bgHp.gameObject, true)
+	gohelper.setActive(arg_1_0.bgHpGo, true)
 
 	arg_1_0.shieldHp = arg_1_0._imgHpShield
 
@@ -238,21 +239,32 @@ var_0_0.Color = {
 function var_0_0.refreshHpColor(arg_16_0)
 	local var_16_0 = arg_16_0._bossEntityMO
 	local var_16_1 = var_16_0.attrMO and var_16_0.attrMO.hp > 0 and var_16_0.attrMO.hp or 1
-	local var_16_2 = arg_16_0.tweenHp / var_16_1
-	local var_16_3 = 1
+	local var_16_2 = arg_16_0.tweenHp
+
+	if var_16_2 <= arg_16_0.OneMaxHp then
+		SLFramework.UGUI.GuiHelper.SetColor(arg_16_0.hp, var_0_0.Color[1][1])
+		gohelper.setActive(arg_16_0.bgHpGo, false)
+
+		return
+	end
+
+	local var_16_3 = var_16_2 / var_16_1
+	local var_16_4 = 1
 
 	for iter_16_0, iter_16_1 in ipairs(var_0_0.Threshold) do
-		if var_16_2 <= iter_16_1 then
-			var_16_3 = iter_16_0
+		if var_16_3 <= iter_16_1 then
+			var_16_4 = iter_16_0
 
 			break
 		end
 	end
 
-	local var_16_4 = var_0_0.Color[var_16_3]
+	gohelper.setActive(arg_16_0.bgHpGo, true)
 
-	SLFramework.UGUI.GuiHelper.SetColor(arg_16_0.hp, var_16_4[1])
-	SLFramework.UGUI.GuiHelper.SetColor(arg_16_0.bgHp, var_16_4[2])
+	local var_16_5 = var_0_0.Color[var_16_4]
+
+	SLFramework.UGUI.GuiHelper.SetColor(arg_16_0.hp, var_16_5[1])
+	SLFramework.UGUI.GuiHelper.SetColor(arg_16_0.bgHp, var_16_5[2])
 end
 
 function var_0_0.clearHpTween(arg_17_0)

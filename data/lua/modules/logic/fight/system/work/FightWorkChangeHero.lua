@@ -37,7 +37,11 @@ function var_0_0.onStart(arg_1_0)
 		local var_1_1 = FightDataHelper.fieldMgr.episodeId
 		local var_1_2 = FightDataHelper.fieldMgr.battleId
 		local var_1_3 = arg_1_0._changedId
-		local var_1_4 = string.format(var_1_0, var_1_1, var_1_2, var_1_3)
+		local var_1_4 = string.format(var_1_0, var_1_1, var_1_2, var_1_3) .. "配队: "
+
+		for iter_1_0, iter_1_1 in pairs(FightDataHelper.entityMgr:getSideList(FightEnum.EntitySide.MySide, nil, true)) do
+			var_1_4 = var_1_4 .. iter_1_1:getEntityName() .. ","
+		end
 
 		logError(var_1_4)
 	end

@@ -72,133 +72,154 @@ function var_0_0.getSelectPos(arg_8_0)
 	return arg_8_0._selectPos
 end
 
-function var_0_0.setSelectNpc(arg_9_0, arg_9_1)
-	if arg_9_0.selectNpcId == arg_9_1 then
-		arg_9_0.selectNpcId = 0
+function var_0_0.getNextCanSelectPosIndex(arg_9_0)
+	if arg_9_0._pos2NpcId == nil then
+		return nil
+	end
+
+	for iter_9_0 = 1, 3 do
+		if arg_9_0._pos2NpcId[iter_9_0] == nil then
+			return iter_9_0
+		end
+	end
+
+	return nil
+end
+
+function var_0_0.setSelectNpc(arg_10_0, arg_10_1)
+	if arg_10_0.selectNpcId == arg_10_1 then
+		arg_10_0.selectNpcId = 0
 	else
-		arg_9_0.selectNpcId = arg_9_1
+		arg_10_0.selectNpcId = arg_10_1
 	end
 
 	return true
 end
 
-function var_0_0.getSelectNpc(arg_10_0)
-	return arg_10_0.selectNpcId
+function var_0_0.getSelectNpc(arg_11_0)
+	return arg_11_0.selectNpcId
 end
 
-function var_0_0.clearSelectList(arg_11_0)
-	if arg_11_0._npcList ~= nil then
-		tabletool.clear(arg_11_0._npcList)
+function var_0_0.clearSelectList(arg_12_0)
+	if arg_12_0._npcList ~= nil then
+		tabletool.clear(arg_12_0._npcList)
 	else
-		arg_11_0._npcList = {}
+		arg_12_0._npcList = {}
 	end
 end
 
-function var_0_0.setNeedSelectNpcList(arg_12_0, arg_12_1)
-	arg_12_0.selectNpcId = nil
-	arg_12_0._pos2NpcId = nil
-	arg_12_0._isQuickSelect = false
-	arg_12_0._selectPos = nil
+function var_0_0.setNeedSelectNpcList(arg_13_0, arg_13_1)
+	arg_13_0.selectNpcId = nil
+	arg_13_0._pos2NpcId = nil
+	arg_13_0._isQuickSelect = false
+	arg_13_0._selectPos = nil
 
-	if arg_12_1 == nil then
+	if arg_13_1 == nil then
 		return
 	end
 
-	arg_12_0:clearSelectList()
+	arg_13_0:clearSelectList()
 
-	for iter_12_0 = 1, #arg_12_1 do
-		local var_12_0 = arg_12_1[iter_12_0]
+	for iter_13_0 = 1, #arg_13_1 do
+		local var_13_0 = arg_13_1[iter_13_0]
 
-		if SurvivalConfig.instance:getNpcConfig(var_12_0).subType ~= SurvivalEnum.NpcSubType.Story then
-			local var_12_1 = SurvivalShelterNpcMo.New()
+		if SurvivalConfig.instance:getNpcConfig(var_13_0).subType ~= SurvivalEnum.NpcSubType.Story then
+			local var_13_1 = SurvivalShelterNpcMo.New()
 
-			var_12_1:init({
-				id = var_12_0
+			var_13_1:init({
+				id = var_13_0
 			})
-			table.insert(arg_12_0._npcList, var_12_1)
+			table.insert(arg_13_0._npcList, var_13_1)
 		end
 	end
 end
 
-function var_0_0.getShowList(arg_13_0)
-	return arg_13_0._npcList or {}
+function var_0_0.getShowList(arg_14_0)
+	return arg_14_0._npcList or {}
 end
 
-function var_0_0.filterNpc(arg_14_0, arg_14_1, arg_14_2)
-	if not arg_14_1 or not next(arg_14_1) then
+function var_0_0.filterNpc(arg_15_0, arg_15_1, arg_15_2)
+	if not arg_15_1 or not next(arg_15_1) then
 		return true
 	end
 
-	local var_14_0 = SurvivalConfig.instance:getNpcConfigTag(arg_14_2.id)
-	local var_14_1 = {}
+	local var_15_0 = SurvivalConfig.instance:getNpcConfigTag(arg_15_2.id)
+	local var_15_1 = {}
 
-	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
-		local var_14_2 = lua_survival_tag.configDict[iter_14_1]
+	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
+		local var_15_2 = lua_survival_tag.configDict[iter_15_1]
 
-		if var_14_2 then
-			var_14_1[var_14_2.tagType] = true
+		if var_15_2 then
+			var_15_1[var_15_2.tagType] = true
 		end
 	end
 
-	for iter_14_2, iter_14_3 in pairs(arg_14_1) do
-		if var_14_1[iter_14_3.type] then
+	for iter_15_2, iter_15_3 in pairs(arg_15_1) do
+		if var_15_1[iter_15_3.type] then
 			return true
 		end
 	end
 end
 
-function var_0_0.sort(arg_15_0, arg_15_1)
-	return arg_15_0.id < arg_15_1.id
+function var_0_0.sort(arg_16_0, arg_16_1)
+	local var_16_0 = arg_16_0.co.rare
+	local var_16_1 = arg_16_1.co.rare
+
+	if var_16_0 ~= var_16_1 then
+		return var_16_1 < var_16_0
+	end
+
+	return arg_16_0.id < arg_16_1.id
 end
 
-function var_0_0.refreshNpcList(arg_16_0, arg_16_1)
-	local var_16_0 = {}
+function var_0_0.refreshNpcList(arg_17_0, arg_17_1)
+	local var_17_0 = {}
 
-	if arg_16_0._npcList then
-		for iter_16_0 = 1, #arg_16_0._npcList do
-			local var_16_1 = arg_16_0._npcList[iter_16_0]
+	if arg_17_0._npcList then
+		for iter_17_0 = 1, #arg_17_0._npcList do
+			local var_17_1 = arg_17_0._npcList[iter_17_0]
 
-			if arg_16_0:filterNpc(arg_16_1, var_16_1) then
-				table.insert(var_16_0, var_16_1)
+			if arg_17_0:filterNpc(arg_17_1, var_17_1) then
+				table.insert(var_17_0, var_17_1)
 			end
 		end
 	end
 
-	if #var_16_0 > 1 then
-		table.sort(var_16_0, arg_16_0.sort)
+	if #var_17_0 > 1 then
+		table.sort(var_17_0, arg_17_0.sort)
 	end
 
-	arg_16_0:setList(var_16_0)
+	arg_17_0:setList(var_17_0)
 end
 
 local var_0_1 = 3
 
-function var_0_0.quickSelectNpc(arg_17_0, arg_17_1)
-	local var_17_0 = true
+function var_0_0.quickSelectNpc(arg_18_0, arg_18_1)
+	local var_18_0 = true
 
-	for iter_17_0 = 1, var_0_1 do
-		if arg_17_0._pos2NpcId and arg_17_0._pos2NpcId[iter_17_0] == arg_17_1 then
-			arg_17_0:setSelectNpcToPos(nil, iter_17_0)
-			arg_17_0:setSelectNpc(arg_17_1)
+	for iter_18_0 = 1, var_0_1 do
+		if arg_18_0._pos2NpcId and arg_18_0._pos2NpcId[iter_18_0] == arg_18_1 then
+			arg_18_0:setSelectNpcToPos(nil, iter_18_0)
+			arg_18_0:setSelectNpc(arg_18_1)
 
-			var_17_0 = false
+			var_18_0 = false
 		end
 	end
 
-	if var_17_0 then
-		local var_17_1 = 1
+	if var_18_0 then
+		local var_18_1 = 1
 
-		for iter_17_1 = 1, var_0_1 do
-			if arg_17_0._pos2NpcId == nil or arg_17_0._pos2NpcId[iter_17_1] == nil then
-				var_17_1 = iter_17_1
+		for iter_18_1 = 1, var_0_1 do
+			if arg_18_0._pos2NpcId == nil or arg_18_0._pos2NpcId[iter_18_1] == nil then
+				var_18_1 = iter_18_1
 
 				break
 			end
 		end
 
-		if arg_17_0._pos2NpcId == nil or arg_17_0._pos2NpcId[var_17_1] == nil then
-			arg_17_0:setSelectNpcToPos(arg_17_1, var_17_1)
-			arg_17_0:setSelectNpc(arg_17_1)
+		if arg_18_0._pos2NpcId == nil or arg_18_0._pos2NpcId[var_18_1] == nil then
+			arg_18_0:setSelectNpcToPos(arg_18_1, var_18_1)
+			arg_18_0:setSelectNpc(arg_18_1)
 		end
 	end
 

@@ -8,7 +8,7 @@ local var_0_3 = "donw_start"
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._skinItemRoot = gohelper.findChild(arg_1_0.viewGO, "#go_scroll/#go_storyStages")
 	arg_1_0._imageBg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
-	arg_1_0._imageSkinSuitGroupIcon = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/#image_Icon")
+	arg_1_0._imageSkinSuitGroupIcon = gohelper.findChildImage(arg_1_0.viewGO, "Left/#image_Icon")
 	arg_1_0._imageSkinSuitGroupEnIcon = gohelper.findChildImage(arg_1_0.viewGO, "Left/#image_TitleEn")
 	arg_1_0._textPlayerName = gohelper.findChildText(arg_1_0.viewGO, "title/#title_name")
 	arg_1_0._textName = gohelper.findChildText(arg_1_0.viewGO, "title/#name")
@@ -111,6 +111,7 @@ function var_0_0._refreshDesc(arg_12_0)
 	arg_12_0._txtFloorName.text = arg_12_0._skinThemeCfg.name
 
 	UISpriteSetMgr.instance:setSkinHandbook(arg_12_0._imageSkinSuitGroupEnIcon, arg_12_0._skinThemeCfg.nameRes, true)
+	UISpriteSetMgr.instance:setSkinHandbook(arg_12_0._imageSkinSuitGroupIcon, arg_12_0._skinThemeCfg.iconRes, true)
 end
 
 function var_0_0._createFloorItems(arg_13_0)

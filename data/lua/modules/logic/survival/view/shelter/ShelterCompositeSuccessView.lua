@@ -20,6 +20,8 @@ function var_0_0.onClickCloseBtn(arg_4_0)
 end
 
 function var_0_0.onOpen(arg_5_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_wangshi_argus_level_finish)
+
 	arg_5_0.itemMo = arg_5_0.viewParam and arg_5_0.viewParam.itemMo
 
 	arg_5_0:refreshView()

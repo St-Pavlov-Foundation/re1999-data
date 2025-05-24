@@ -25,18 +25,14 @@ function var_0_0._checkRed(arg_3_0)
 		return
 	end
 
-	local var_3_1 = true
+	local var_3_1 = false
 
 	for iter_3_0, iter_3_1 in ipairs(var_3_0.equipBox.slots) do
-		if not iter_3_1.item:isEmpty() then
-			var_3_1 = false
+		if iter_3_1.item:isEmpty() and iter_3_1.unlock then
+			var_3_1 = true
 
 			break
 		end
-	end
-
-	if not var_3_1 and var_3_0.equipBox.maxTagId == 0 then
-		return
 	end
 
 	local var_3_2 = false

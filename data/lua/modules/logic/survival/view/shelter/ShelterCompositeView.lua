@@ -125,6 +125,7 @@ function var_0_0.isSelectItem(arg_11_0, arg_11_1, arg_11_2)
 end
 
 function var_0_0.onOpen(arg_12_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_1)
 	arg_12_0:refreshParam()
 	arg_12_0:refreshView()
 end

@@ -143,32 +143,32 @@ function var_0_0.refreshGridItem(arg_8_0, arg_8_1, arg_8_2)
 		arg_8_1.allTags = {}
 	end
 
-	local var_8_3 = SurvivalConfig.instance:getNpcConfigTag(arg_8_2.id)
+	local var_8_3, var_8_4 = SurvivalConfig.instance:getNpcConfigTag(arg_8_2.id)
 
-	for iter_8_1 = 1, #var_8_3 do
-		local var_8_4 = var_8_3[iter_8_1]
+	for iter_8_1 = 1, #var_8_4 do
+		local var_8_5 = var_8_4[iter_8_1]
 
-		if var_8_4 then
-			local var_8_5 = lua_survival_tag.configDict[var_8_4]
+		if var_8_5 then
+			local var_8_6 = lua_survival_tag.configDict[var_8_5]
 
-			if var_8_5 ~= nil then
-				local var_8_6 = gohelper.cloneInPlace(arg_8_1.goTagItem, var_8_4)
-				local var_8_7 = gohelper.findChildImage(var_8_6, "#image_Type")
-				local var_8_8 = SurvivalEnum.ShelterTagColor[var_8_5.tagType]
+			if var_8_6 ~= nil then
+				local var_8_7 = gohelper.cloneInPlace(arg_8_1.goTagItem, var_8_5)
+				local var_8_8 = gohelper.findChildImage(var_8_7, "#image_Type")
+				local var_8_9 = SurvivalEnum.ShelterTagColor[var_8_6.tagType]
 
-				if var_8_8 then
-					local var_8_9 = GameUtil.parseColor(var_8_8)
+				if var_8_9 then
+					local var_8_10 = GameUtil.parseColor(var_8_9)
 
-					var_8_9.a = SurvivalShelterMonsterModel.instance:isNeedNpcTag(var_8_4) and 1 or var_0_1
-					var_8_7.color = var_8_9
+					var_8_10.a = SurvivalShelterMonsterModel.instance:isNeedNpcTag(var_8_5) and 1 or var_0_1
+					var_8_8.color = var_8_10
 				end
 
-				gohelper.findChildText(var_8_6, "#txt_Type").text = var_8_5.name
+				gohelper.findChildText(var_8_7, "#txt_Type").text = var_8_6.name
 
-				gohelper.setActive(var_8_6, true)
-				table.insert(arg_8_1.allTags, var_8_6)
+				gohelper.setActive(var_8_7, true)
+				table.insert(arg_8_1.allTags, var_8_7)
 			else
-				logError("SurvivalMonsterEventNpcItem:refreshGridItem tag config is nil, tagId = " .. tostring(var_8_4) .. " npcId = " .. tostring(arg_8_2.id))
+				logError("SurvivalMonsterEventNpcItem:refreshGridItem tag config is nil, tagId = " .. tostring(var_8_5) .. " npcId = " .. tostring(arg_8_2.id))
 			end
 		end
 	end

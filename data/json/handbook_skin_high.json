@@ -7,7 +7,8 @@
     "order": 1,
     "des": "大套组描述AAA",
     "scenePath": "",
-    "nameRes": ""
+    "nameRes": "",
+    "iconRes": ""
   },
   {
     "id": 10002,
@@ -17,7 +18,8 @@
     "order": 2,
     "des": "如何才能够在雨声中，做一个安详的美梦。",
     "scenePath": "",
-    "nameRes": ""
+    "nameRes": "",
+    "iconRes": ""
   },
   {
     "id": 10003,
@@ -27,7 +29,8 @@
     "order": 3,
     "des": "风景与故事，泡沫与浪花，漂浮在世界这片大海上。",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10003.prefab",
-    "nameRes": "skinhandbook_titletxt_06"
+    "nameRes": "skinhandbook_titletxt_06",
+    "iconRes": "skinhandbook_titleicon_06"
   },
   {
     "id": 10004,
@@ -37,7 +40,8 @@
     "order": 4,
     "des": "象征的力量，梦的力量，非真实流淌至真实的力量。",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10004.prefab",
-    "nameRes": "skinhandbook_titletxt_01"
+    "nameRes": "skinhandbook_titletxt_01",
+    "iconRes": "skinhandbook_titleicon_01"
   },
   {
     "id": 10005,
@@ -47,7 +51,8 @@
     "order": 5,
     "des": "音符与油彩窃窃私语，舞者的指尖在风中写下叙事长诗。",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10005.prefab",
-    "nameRes": "skinhandbook_titletxt_04"
+    "nameRes": "skinhandbook_titletxt_04",
+    "iconRes": "skinhandbook_titleicon_04"
   },
   {
     "id": 10006,
@@ -57,7 +62,8 @@
     "order": 6,
     "des": "那么，来点燃你身体中的那团火吧！",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10006.prefab",
-    "nameRes": "skinhandbook_titletxt_05"
+    "nameRes": "skinhandbook_titletxt_05",
+    "iconRes": "skinhandbook_titleicon_05"
   },
   {
     "id": 10007,
@@ -67,7 +73,8 @@
     "order": 7,
     "des": "短如一次小憩的珍贵时日，在晴日里，在和风中。\n疲惫、忙碌与烦心事禁止进入！",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10007.prefab",
-    "nameRes": "skinhandbook_titletxt_03"
+    "nameRes": "skinhandbook_titletxt_03",
+    "iconRes": "skinhandbook_titleicon_03"
   },
   {
     "id": 10008,
@@ -77,7 +84,8 @@
     "order": 8,
     "des": "大套组描述AAA",
     "scenePath": "",
-    "nameRes": ""
+    "nameRes": "",
+    "iconRes": ""
   },
   {
     "id": 10009,
@@ -87,7 +95,8 @@
     "order": 9,
     "des": "想踩中时代的步点？多看看旧杂志吧！\n部分人深谙此道，它们以螺旋形发展回归。",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10009.prefab",
-    "nameRes": "skinhandbook_titletxt_02"
+    "nameRes": "skinhandbook_titletxt_02",
+    "iconRes": "skinhandbook_titleicon_02"
   },
   {
     "id": 11001,
@@ -97,7 +106,8 @@
     "order": 10,
     "des": "从门扉徘徊至门扉，自故事辗转于故事，命运如此吹拂。",
     "scenePath": "",
-    "nameRes": ""
+    "nameRes": "",
+    "iconRes": ""
   },
   {
     "id": 12001,
@@ -107,6 +117,7 @@
     "order": 11,
     "des": "大套组描述AAA",
     "scenePath": "",
-    "nameRes": ""
+    "nameRes": "",
+    "iconRes": ""
   }
 ]

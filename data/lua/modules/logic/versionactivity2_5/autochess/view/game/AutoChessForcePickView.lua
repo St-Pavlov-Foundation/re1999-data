@@ -36,7 +36,10 @@ end
 function var_0_0._yesCallback(arg_6_0)
 	local var_6_0 = AutoChessModel.instance.moduleId
 
-	AutoChessRpc.instance:sendAutoChessMallRegionSelectItemRequest(var_6_0, 0)
+	if var_6_0 then
+		AutoChessRpc.instance:sendAutoChessMallRegionSelectItemRequest(var_6_0, 0)
+	end
+
 	arg_6_0:closeThis()
 end
 

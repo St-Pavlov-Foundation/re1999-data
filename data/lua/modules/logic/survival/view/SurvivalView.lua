@@ -18,6 +18,8 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._btnCloseFold = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#go_booty/#go_fold/#btn_close")
 	arg_1_0._goFold = gohelper.findChild(arg_1_0.viewGO, "Left/#go_booty/#go_fold")
 	arg_1_0._gored = gohelper.findChild(arg_1_0.viewGO, "Left/#btn_reward/#go_reddot")
+	arg_1_0.goCanget = gohelper.findChild(arg_1_0.viewGO, "Left/#btn_reward/#canget")
+	arg_1_0.goNormal = gohelper.findChild(arg_1_0.viewGO, "Left/#btn_reward/#normal")
 	arg_1_0._txtDifficulty = gohelper.findChildTextMesh(arg_1_0.viewGO, "Right/#btn_Continue/#go_difficult/#txt_difficult")
 	arg_1_0._txtDay = gohelper.findChildTextMesh(arg_1_0.viewGO, "Right/#btn_Continue/#go_difficult/#txt_days")
 	arg_1_0.bootyList = {}
@@ -63,144 +65,153 @@ end
 
 function var_0_0.onOpen(arg_6_0)
 	arg_6_0._imagetalentskill:LoadImage(ResUrl.getSurvivalTalentIcon("suit_01/icon_1"))
-	RedDotController.instance:addRedDot(arg_6_0._gored, RedDotEnum.DotNode.V2a8Survival)
+	RedDotController.instance:addRedDot(arg_6_0._gored, RedDotEnum.DotNode.V2a8Survival, false, arg_6_0._refreshRed, arg_6_0)
 	TaskDispatcher.runRepeat(arg_6_0.everySecondCall, arg_6_0, 0, -1)
 	arg_6_0:_refreshView()
 end
 
-function var_0_0.everySecondCall(arg_7_0)
-	if arg_7_0._txtLimitTime then
-		arg_7_0._txtLimitTime.text = ActivityHelper.getActivityRemainTimeStr(VersionActivity2_8Enum.ActivityId.Survival)
+function var_0_0._refreshRed(arg_7_0, arg_7_1)
+	arg_7_1:defaultRefreshDot()
+
+	local var_7_0 = arg_7_1.show
+
+	gohelper.setActive(arg_7_0.goCanget, var_7_0)
+	gohelper.setActive(arg_7_0.goNormal, not var_7_0)
+end
+
+function var_0_0.everySecondCall(arg_8_0)
+	if arg_8_0._txtLimitTime then
+		arg_8_0._txtLimitTime.text = ActivityHelper.getActivityRemainTimeStr(VersionActivity2_8Enum.ActivityId.Survival)
 	end
 end
 
-function var_0_0._refreshView(arg_8_0)
-	local var_8_0 = SurvivalModel.instance:getOutSideInfo()
+function var_0_0._refreshView(arg_9_0)
+	local var_9_0 = SurvivalModel.instance:getOutSideInfo()
 
-	gohelper.setActive(arg_8_0._btnabort, var_8_0.inWeek)
-	gohelper.setActive(arg_8_0._btnContinue, var_8_0.inWeek)
-	gohelper.setActive(arg_8_0._btnEnter, not var_8_0.inWeek)
+	gohelper.setActive(arg_9_0._btnabort, var_9_0.inWeek)
+	gohelper.setActive(arg_9_0._btnContinue, var_9_0.inWeek)
+	gohelper.setActive(arg_9_0._btnEnter, not var_9_0.inWeek)
 
-	if var_8_0.inWeek then
-		local var_8_1 = SurvivalShelterModel.instance:getWeekInfo()
-		local var_8_2 = var_8_1 and var_8_1.difficulty or var_8_0.currMod
-		local var_8_3 = var_8_1 and var_8_1.day or var_8_0.currDay
-		local var_8_4 = lua_survival_hardness_mod.configDict[var_8_2]
+	if var_9_0.inWeek then
+		local var_9_1 = SurvivalShelterModel.instance:getWeekInfo()
+		local var_9_2 = var_9_1 and var_9_1.difficulty or var_9_0.currMod
+		local var_9_3 = var_9_1 and var_9_1.day or var_9_0.currDay
+		local var_9_4 = lua_survival_hardness_mod.configDict[var_9_2]
 
-		arg_8_0._txtDifficulty.text = var_8_4 and var_8_4.name
-		arg_8_0._txtDay.text = formatLuaLang("versionactivity_1_2_114daydes", var_8_3)
+		arg_9_0._txtDifficulty.text = var_9_4 and var_9_4.name
+		arg_9_0._txtDay.text = formatLuaLang("versionactivity_1_2_114daydes", var_9_3)
 	end
 
-	arg_8_0:refreshEndBg()
-	arg_8_0:refreshBooty()
-	arg_8_0:updateTalentRed()
+	arg_9_0:refreshEndBg()
+	arg_9_0:refreshBooty()
+	arg_9_0:updateTalentRed()
 end
 
-function var_0_0.refreshEndBg(arg_9_0)
-	if not arg_9_0.endPart then
-		local var_9_0 = {
-			view = arg_9_0
+function var_0_0.refreshEndBg(arg_10_0)
+	if not arg_10_0.endPart then
+		local var_10_0 = {
+			view = arg_10_0
 		}
 
-		arg_9_0.endPart = MonoHelper.addNoUpdateLuaComOnceToGo(arg_9_0.viewGO, SurvivalEndPart, var_9_0)
+		arg_10_0.endPart = MonoHelper.addNoUpdateLuaComOnceToGo(arg_10_0.viewGO, SurvivalEndPart, var_10_0)
 	end
 
-	arg_9_0.endPart:refreshView()
+	arg_10_0.endPart:refreshView()
 end
 
-function var_0_0.refreshBooty(arg_10_0)
-	local var_10_0 = SurvivalModel.instance:getOutSideInfo()
-
-	if var_10_0.inWeek then
-		gohelper.setActive(arg_10_0._gobooty, false)
-
-		return
-	end
-
-	local var_10_1 = var_10_0:getBootyList()
-	local var_10_2 = #var_10_1 == 0
-
-	gohelper.setActive(arg_10_0._gobooty, not var_10_2)
-
-	if var_10_2 then
-		return
-	end
-
-	gohelper.setActive(arg_10_0._gobooty, true)
-
-	local var_10_3 = arg_10_0.viewContainer:getSetting().otherRes.itemRes
-	local var_10_4 = arg_10_0.goBootyContent
-
-	for iter_10_0 = 1, math.max(#var_10_1, #arg_10_0.bootyList) do
-		local var_10_5 = arg_10_0.bootyList[iter_10_0]
-
-		if not var_10_5 then
-			local var_10_6 = arg_10_0.viewContainer:getResInst(var_10_3, var_10_4, tostring(iter_10_0))
-
-			var_10_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_10_6, SurvivalBagItem)
-
-			var_10_5:setClickCallback(arg_10_0.onClickBootyItem, arg_10_0)
-
-			arg_10_0.bootyList[iter_10_0] = var_10_5
-		end
-
-		var_10_5:updateMo(var_10_1[iter_10_0])
-		var_10_5:setShowNum(false)
-		var_10_5:setItemSize(100, 100)
-	end
-end
-
-function var_0_0.updateTalentRed(arg_11_0)
+function var_0_0.refreshBooty(arg_11_0)
 	local var_11_0 = SurvivalModel.instance:getOutSideInfo()
 
-	if not var_11_0 then
+	if var_11_0.inWeek then
+		gohelper.setActive(arg_11_0._gobooty, false)
+
 		return
 	end
 
-	gohelper.setActive(arg_11_0._gotalentRed, not var_11_0.talentBox:isEquipAll())
+	local var_11_1 = var_11_0:getBootyList()
+	local var_11_2 = #var_11_1 == 0
+
+	gohelper.setActive(arg_11_0._gobooty, not var_11_2)
+
+	if var_11_2 then
+		return
+	end
+
+	gohelper.setActive(arg_11_0._gobooty, true)
+
+	local var_11_3 = arg_11_0.viewContainer:getSetting().otherRes.itemRes
+	local var_11_4 = arg_11_0.goBootyContent
+
+	for iter_11_0 = 1, math.max(#var_11_1, #arg_11_0.bootyList) do
+		local var_11_5 = arg_11_0.bootyList[iter_11_0]
+
+		if not var_11_5 then
+			local var_11_6 = arg_11_0.viewContainer:getResInst(var_11_3, var_11_4, tostring(iter_11_0))
+
+			var_11_5 = MonoHelper.addNoUpdateLuaComOnceToGo(var_11_6, SurvivalBagItem)
+
+			var_11_5:setClickCallback(arg_11_0.onClickBootyItem, arg_11_0)
+
+			arg_11_0.bootyList[iter_11_0] = var_11_5
+		end
+
+		var_11_5:updateMo(var_11_1[iter_11_0])
+		var_11_5:setShowNum(false)
+		var_11_5:setItemSize(100, 100)
+	end
 end
 
-function var_0_0.onClickBootyItem(arg_12_0, arg_12_1)
+function var_0_0.updateTalentRed(arg_12_0)
+	local var_12_0 = SurvivalModel.instance:getOutSideInfo()
+
+	if not var_12_0 then
+		return
+	end
+
+	gohelper.setActive(arg_12_0._gotalentRed, not var_12_0.talentBox:isEquipAll())
+end
+
+function var_0_0.onClickBootyItem(arg_13_0, arg_13_1)
 	ViewMgr.instance:openView(ViewName.SurvivalItemInfoView, {
-		itemMo = arg_12_1._mo,
-		goPanel = arg_12_0.goInfo
+		itemMo = arg_13_1._mo,
+		goPanel = arg_13_0.goInfo
 	})
 end
 
-function var_0_0.setFoldVisible(arg_13_0, arg_13_1)
-	if arg_13_0._foldVisible == arg_13_1 then
+function var_0_0.setFoldVisible(arg_14_0, arg_14_1)
+	if arg_14_0._foldVisible == arg_14_1 then
 		return
 	end
 
-	arg_13_0._foldVisible = arg_13_1
+	arg_14_0._foldVisible = arg_14_1
 
-	gohelper.setActive(arg_13_0._goFold, arg_13_1)
-	gohelper.setActive(arg_13_0._goImageFold, not arg_13_1)
-	gohelper.setActive(arg_13_0._goImageUnFold, arg_13_1)
+	gohelper.setActive(arg_14_0._goFold, arg_14_1)
+	gohelper.setActive(arg_14_0._goImageFold, not arg_14_1)
+	gohelper.setActive(arg_14_0._goImageUnFold, arg_14_1)
 end
 
-function var_0_0._onContinueClick(arg_14_0)
+function var_0_0._onContinueClick(arg_15_0)
 	SurvivalController.instance:enterShelterMap()
 	SurvivalStatHelper.instance:statBtnClick("_onContinueClick", "SurvivalView")
 end
 
-function var_0_0._onEnterClick(arg_15_0)
-	local var_15_0 = SurvivalModel.instance:getOutSideInfo()
+function var_0_0._onEnterClick(arg_16_0)
+	local var_16_0 = SurvivalModel.instance:getOutSideInfo()
 
-	if not var_15_0 then
+	if not var_16_0 then
 		return
 	end
 
-	if not var_15_0.talentBox:isEquipAll() then
-		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalHaveNoEquipTalent, MsgBoxEnum.BoxType.Yes_No, arg_15_0._enterSurvival, nil, nil, arg_15_0, nil, nil)
+	if not var_16_0.talentBox:isEquipAll() then
+		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalHaveNoEquipTalent, MsgBoxEnum.BoxType.Yes_No, arg_16_0._enterSurvival, nil, nil, arg_16_0, nil, nil)
 	else
-		arg_15_0:_enterSurvival()
+		arg_16_0:_enterSurvival()
 	end
 
 	SurvivalStatHelper.instance:statBtnClick("_onEnterClick", "SurvivalView")
 end
 
-function var_0_0._enterSurvival(arg_16_0)
+function var_0_0._enterSurvival(arg_17_0)
 	if SurvivalModel.instance:getOutSideInfo():isFirstPlay() then
 		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(SurvivalEnum.FirstPlayDifficulty)
 	else
@@ -208,26 +219,26 @@ function var_0_0._enterSurvival(arg_16_0)
 	end
 end
 
-function var_0_0._onAbortClick(arg_17_0)
-	GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalGiveUpWeek, MsgBoxEnum.BoxType.Yes_No, arg_17_0._sendGiveUp, nil, nil, arg_17_0, nil, nil)
+function var_0_0._onAbortClick(arg_18_0)
+	GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalGiveUpWeek, MsgBoxEnum.BoxType.Yes_No, arg_18_0._sendGiveUp, nil, nil, arg_18_0, nil, nil)
 	SurvivalStatHelper.instance:statBtnClick("_onAbortClick", "SurvivalView")
 end
 
-function var_0_0._sendGiveUp(arg_18_0)
-	SurvivalWeekRpc.instance:sendSurvivalGetWeekInfo(arg_18_0._onRecvWeekInfo, arg_18_0)
+function var_0_0._sendGiveUp(arg_19_0)
+	SurvivalWeekRpc.instance:sendSurvivalGetWeekInfo(arg_19_0._onRecvWeekInfo, arg_19_0)
 end
 
-function var_0_0._onRecvWeekInfo(arg_19_0, arg_19_1, arg_19_2, arg_19_3)
-	if arg_19_2 == 0 then
+function var_0_0._onRecvWeekInfo(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
+	if arg_20_2 == 0 then
 		SurvivalWeekRpc.instance:sendSurvivalAbandonWeek()
 	end
 end
 
-function var_0_0._onAchievementClick(arg_20_0)
+function var_0_0._onAchievementClick(arg_21_0)
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Achievement) then
-		local var_20_0 = ActivityConfig.instance:getActivityCo(VersionActivity2_8Enum.ActivityId.Survival).achievementJumpId
+		local var_21_0 = ActivityConfig.instance:getActivityCo(VersionActivity2_8Enum.ActivityId.Survival).achievementJumpId
 
-		JumpController.instance:jump(var_20_0)
+		JumpController.instance:jump(var_21_0)
 	else
 		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.Achievement))
 	end
@@ -235,18 +246,18 @@ function var_0_0._onAchievementClick(arg_20_0)
 	SurvivalStatHelper.instance:statBtnClick("_onAchievementClick", "SurvivalView")
 end
 
-function var_0_0._onRewardClick(arg_21_0)
+function var_0_0._onRewardClick(arg_22_0)
 	ViewMgr.instance:openView(ViewName.SurvivalShelterRewardView)
 	SurvivalStatHelper.instance:statBtnClick("_onRewardClick", "SurvivalView")
 end
 
-function var_0_0._onTalentClick(arg_22_0)
+function var_0_0._onTalentClick(arg_23_0)
 	ViewMgr.instance:openView(ViewName.SurvivalTalentView)
 	SurvivalStatHelper.instance:statBtnClick("_onTalentClick", "SurvivalView")
 end
 
-function var_0_0.onClose(arg_23_0)
-	TaskDispatcher.cancelTask(arg_23_0.everySecondCall, arg_23_0)
+function var_0_0.onClose(arg_24_0)
+	TaskDispatcher.cancelTask(arg_24_0.everySecondCall, arg_24_0)
 end
 
 return var_0_0

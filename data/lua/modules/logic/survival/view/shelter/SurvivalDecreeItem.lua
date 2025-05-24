@@ -64,24 +64,27 @@ end
 
 function var_0_0.refreshView(arg_9_0)
 	local var_9_0 = arg_9_0.mo and arg_9_0.mo:getCurStatus() or SurvivalEnum.ShelterDecreeStatus.Normal
-	local var_9_1 = SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.DecreeNum) < arg_9_0.decreeIndex
-	local var_9_2 = var_9_0 == SurvivalEnum.ShelterDecreeStatus.Normal
-	local var_9_3 = not var_9_1 and not var_9_2
-	local var_9_4 = not var_9_1 and var_9_2
+	local var_9_1 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_9_2 = var_9_1:getAttr(SurvivalEnum.AttrType.DecreeNum) < arg_9_0.decreeIndex
+	local var_9_3 = var_9_0 == SurvivalEnum.ShelterDecreeStatus.Normal
+	local var_9_4 = not var_9_2 and not var_9_3
+	local var_9_5 = not var_9_2 and var_9_3
 
-	gohelper.setActive(arg_9_0.goHas, var_9_3)
-	gohelper.setActive(arg_9_0.goAdd, var_9_4)
-	gohelper.setActive(arg_9_0.goLocked, var_9_1)
+	gohelper.setActive(arg_9_0.goHas, var_9_4)
+	gohelper.setActive(arg_9_0.goAdd, var_9_5)
+	gohelper.setActive(arg_9_0.goLocked, var_9_2)
 	gohelper.setActive(arg_9_0.goAnnouncement, false)
 
-	if var_9_3 then
+	if var_9_4 then
 		arg_9_0:refreshHas()
 	end
 
-	if var_9_1 then
-		local var_9_5 = SurvivalConfig.instance:getBuildingConfigByType(SurvivalEnum.BuildingType.Decree)
+	if var_9_2 then
+		local var_9_6 = var_9_1:getBuildingInfoByBuildType(SurvivalEnum.BuildingType.Decree)
+		local var_9_7 = var_9_6 and var_9_6.baseCo
+		local var_9_8 = var_9_7 and var_9_7.name or ""
 
-		arg_9_0.txtLocked.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survivalbuildingmanageview_buildinglock_reason2"), var_9_5 and var_9_5.name or "", arg_9_0.decreeIndex)
+		arg_9_0.txtLocked.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survivalbuildingmanageview_buildinglock_reason2"), var_9_8, arg_9_0.decreeIndex)
 	end
 end
 
@@ -175,6 +178,7 @@ end
 
 function var_0_0.onPlaySwitchAnimEnd(arg_14_0)
 	if PopupController.instance:isPause() then
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_decision)
 		PopupController.instance:setPause(ViewName.SurvivalDecreeVoteView, false)
 	end
 end

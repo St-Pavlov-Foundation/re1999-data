@@ -37,7 +37,7 @@ function var_0_0.update(arg_2_0, arg_2_1)
 	arg_2_0.score = arg_2_1.score
 
 	for iter_2_0, iter_2_1 in ipairs(arg_2_1.gameInfos) do
-		local var_2_0 = arg_2_0:getGameMo(iter_2_1.activityId, iter_2_1.module)
+		local var_2_0 = arg_2_0:getGameMo(iter_2_1.activityId, iter_2_1.module, true)
 
 		if not var_2_0 then
 			var_2_0 = AutoChessGameMO.New()
@@ -125,14 +125,16 @@ function var_0_0.clearRankUpMark(arg_13_0)
 	arg_13_0.newRankUp = false
 end
 
-function var_0_0.getGameMo(arg_14_0, arg_14_1, arg_14_2)
+function var_0_0.getGameMo(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
 	for iter_14_0, iter_14_1 in ipairs(arg_14_0.gameMos) do
 		if iter_14_1.activityId == arg_14_1 and iter_14_1.module == arg_14_2 then
 			return iter_14_1
 		end
 	end
 
-	logError(string.format("活动: %s 模块: %s 不存在Act182AutoChessGameInfo", arg_14_1, arg_14_2))
+	if not arg_14_3 then
+		logError(string.format("活动: %s 模块: %s 不存在Act182AutoChessGameInfo", arg_14_1, arg_14_2))
+	end
 end
 
 return var_0_0

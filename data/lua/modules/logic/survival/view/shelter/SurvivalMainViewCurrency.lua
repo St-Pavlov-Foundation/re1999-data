@@ -105,9 +105,18 @@ function var_0_0.getCurrencyItem(arg_13_0, arg_13_1)
 end
 
 function var_0_0.refreshCurrencyItem(arg_14_0, arg_14_1, arg_14_2)
-	local var_14_0 = SurvivalShelterModel.instance:getWeekInfo().bag:getItemCountPlus(arg_14_2)
+	local var_14_0 = SurvivalShelterModel.instance:getWeekInfo()
+	local var_14_1 = var_14_0.bag:getItemCountPlus(arg_14_2)
 
-	arg_14_1.txtNum.text = var_14_0
+	if arg_14_2 == SurvivalEnum.CurrencyType.Food then
+		if var_14_1 >= var_14_0:getNpcCost() then
+			arg_14_1.txtNum.text = var_14_1
+		else
+			arg_14_1.txtNum.text = string.format("<color=#ff0000>%s</color>", var_14_1)
+		end
+	else
+		arg_14_1.txtNum.text = var_14_1
+	end
 end
 
 function var_0_0.refreshSpeed(arg_15_0)

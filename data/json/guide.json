@@ -6556,6 +6556,17 @@
     "restart": 0
   },
   {
+    "id": 28601,
+    "desc": "皮肤图鉴功能",
+    "isOnline": 1,
+    "trigger": "EpisodeFinish#10316",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
     "id": 28501,
     "desc": "探索引导-地图选择",
     "isOnline": 1,
@@ -6690,6 +6701,28 @@
   {
     "id": 28516,
     "desc": "避难所引导-入侵Boss2",
+    "isOnline": 1,
+    "trigger": "OpenView#SurvivalView",
+    "invalid": "ActivityEnd#12806",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 28517,
+    "desc": "探索引导-快捷道具",
+    "isOnline": 1,
+    "trigger": "OpenView#SurvivalView",
+    "invalid": "ActivityEnd#12806",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 28518,
+    "desc": "避难所引导-科算中心",
     "isOnline": 1,
     "trigger": "OpenView#SurvivalView",
     "invalid": "ActivityEnd#12806",

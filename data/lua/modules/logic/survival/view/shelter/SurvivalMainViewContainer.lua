@@ -17,8 +17,8 @@ function var_0_0.buildTabViews(arg_2_0, arg_2_1)
 		local var_2_0 = NavigateButtonsView.New({
 			true,
 			false,
-			false
-		})
+			true
+		}, HelpEnum.HelpId.Shelter)
 
 		var_2_0:setOverrideClose(arg_2_0.defaultOverrideCloseClick, arg_2_0)
 

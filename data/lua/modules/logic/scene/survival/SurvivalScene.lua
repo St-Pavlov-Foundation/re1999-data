@@ -26,7 +26,6 @@ function var_0_0.onClose(arg_2_0)
 
 	var_0_0.super.onClose(arg_2_0)
 	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_dutiao_loop)
-	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_move)
 end
 
 return var_0_0

@@ -237,31 +237,47 @@ function var_0_0.showPreviewChapterFlag(arg_19_0, arg_19_1)
 		return false
 	end
 
-	if var_19_0.preChapter > 0 and DungeonModel.instance:chapterIsPass(var_19_0.preChapter) then
+	if var_19_0.preChapter > 0 and arg_19_0:_bothPreChaptersFinished(arg_19_1) then
 		return false
 	end
 
 	return true
 end
 
-function var_0_0.hasPreviewChapterHistory(arg_20_0, arg_20_1)
+function var_0_0._bothPreChaptersFinished(arg_20_0, arg_20_1)
+	local var_20_0 = DungeonConfig.instance:getPreviewChapterList(arg_20_1)
+
+	if var_20_0 then
+		for iter_20_0, iter_20_1 in ipairs(var_20_0) do
+			if iter_20_1.preChapter > 0 and not DungeonModel.instance:chapterLastEpisodeIsFinished(iter_20_1.preChapter) then
+				return false
+			end
+		end
+	else
+		return false
+	end
+
+	return true
+end
+
+function var_0_0.hasPreviewChapterHistory(arg_21_0, arg_21_1)
 	if not DungeonModel.instance:chapterIsPass(DungeonEnum.ChapterId.Main1_1) then
 		return false
 	end
 
-	local var_20_0 = DungeonConfig.instance:getChapterCO(arg_20_1)
+	local var_21_0 = DungeonConfig.instance:getChapterCO(arg_21_1)
 
-	if var_20_0 and var_20_0.eaActivityId ~= 0 then
-		local var_20_1 = DungeonConfig.instance:getPreviewChapterList(var_20_0.id)
+	if var_21_0 and var_21_0.eaActivityId ~= 0 then
+		if arg_21_0:_bothPreChaptersFinished(arg_21_1) then
+			return true
+		end
 
-		for iter_20_0, iter_20_1 in ipairs(var_20_1) do
-			if iter_20_1 and iter_20_1.preChapter > 0 and iter_20_1.dramaModeToMainChapterld == 0 and DungeonModel.instance:chapterIsPass(iter_20_1.preChapter) then
-				return true
-			end
+		local var_21_1 = DungeonConfig.instance:getPreviewChapterList(var_21_0.id)
 
-			local var_20_2 = DungeonConfig.instance:getChapterEpisodeCOList(iter_20_1.id)
+		for iter_21_0, iter_21_1 in ipairs(var_21_1) do
+			local var_21_2 = DungeonConfig.instance:getChapterEpisodeCOList(iter_21_1.id)
 
-			if var_20_2 and var_20_2[1] and DungeonModel.instance:hasPassLevel(var_20_2[1].id) then
+			if var_21_2 and var_21_2[1] and DungeonModel.instance:hasPassLevel(var_21_2[1].id) then
 				return true
 			end
 		end
@@ -270,18 +286,18 @@ function var_0_0.hasPreviewChapterHistory(arg_20_0, arg_20_1)
 	return false
 end
 
-function var_0_0.isPreviewChapter(arg_21_0, arg_21_1)
-	return arg_21_0:showPreviewChapterFlag(arg_21_1) or arg_21_0:hasPreviewChapterHistory(arg_21_1)
+function var_0_0.isPreviewChapter(arg_22_0, arg_22_1)
+	return arg_22_0:showPreviewChapterFlag(arg_22_1) or arg_22_0:hasPreviewChapterHistory(arg_22_1)
 end
 
-function var_0_0.hasKey(arg_22_0, arg_22_1)
-	local var_22_0 = var_0_0.getKey(arg_22_0, arg_22_1)
+function var_0_0.hasKey(arg_23_0, arg_23_1)
+	local var_23_0 = var_0_0.getKey(arg_23_0, arg_23_1)
 
-	return PlayerPrefsHelper.hasKey(var_22_0)
+	return PlayerPrefsHelper.hasKey(var_23_0)
 end
 
-function var_0_0.getKey(arg_23_0, arg_23_1)
-	return (string.format("%s%s_%s", arg_23_0, PlayerModel.instance:getPlayinfo().userId, arg_23_1))
+function var_0_0.getKey(arg_24_0, arg_24_1)
+	return (string.format("%s%s_%s", arg_24_0, PlayerModel.instance:getPlayinfo().userId, arg_24_1))
 end
 
 var_0_0.instance = var_0_0.New()

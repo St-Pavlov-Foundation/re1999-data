@@ -1624,12 +1624,268 @@
     "result": "JumpToNode|4"
   },
   {
+    "id": 105010101,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010101,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000002"
+  },
+  {
+    "id": 105010101,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010101,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010201,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010201,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000003"
+  },
+  {
+    "id": 105010201,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010201,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010301,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010301,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000006"
+  },
+  {
+    "id": 105010301,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010301,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010401,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010401,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000007"
+  },
+  {
+    "id": 105010401,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010401,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010501,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010501,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000010"
+  },
+  {
+    "id": 105010501,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010501,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010601,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010601,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000011"
+  },
+  {
+    "id": 105010601,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010601,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010701,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010701,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000014"
+  },
+  {
+    "id": 105010701,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010701,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
+    "id": 105010801,
+    "nodeId": 6,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "RecrNpc|"
+  },
+  {
+    "id": 105010801,
+    "nodeId": 5,
+    "desc": "交谈",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|111000015"
+  },
+  {
+    "id": 105010801,
+    "nodeId": 33,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 105010801,
+    "nodeId": 29,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|4"
+  },
+  {
     "id": 1070101,
     "nodeId": 4,
     "desc": "投币",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:100"
+    "result": "CostItem|1:168"
   },
   {
     "id": 1070101,
@@ -1653,7 +1909,7 @@
     "desc": "去看看",
     "icon": 15,
     "condition": "",
-    "result": "FinishMyself|true"
+    "result": "CreateEvent|7#107010101#1#1"
   },
   {
     "id": 1070102,
@@ -1669,7 +1925,7 @@
     "desc": "看看它要去哪",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "MoveToEvent|7#107010201"
   },
   {
     "id": 1070103,
@@ -1685,7 +1941,7 @@
     "desc": "看看它要去哪",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "MoveToEvent|7#107010301"
   },
   {
     "id": 107010301,
@@ -1693,7 +1949,7 @@
     "desc": "给他钱",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:100"
+    "result": "CostItem|1:50"
   },
   {
     "id": 107010301,
@@ -1725,7 +1981,7 @@
     "desc": "看看它要去哪",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "MoveToEvent|7#107010401"
   },
   {
     "id": 1070105,
@@ -1754,7 +2010,7 @@
   {
     "id": 107010502,
     "nodeId": 4,
-    "desc": "只是想和你聊聊",
+    "desc": "只是想聊聊",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107010504"
@@ -1829,7 +2085,7 @@
     "desc": "走吧",
     "icon": 15,
     "condition": "",
-    "result": "MoveToFree|37"
+    "result": "MoveToFree|392"
   },
   {
     "id": 1070106,
@@ -1877,10 +2133,90 @@
     "desc": "看看",
     "icon": 15,
     "condition": "",
-    "result": "OpenStore|10001"
+    "result": "OpenStore|20001"
   },
   {
     "id": 1070108,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107010801,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|20002"
+  },
+  {
+    "id": 107010801,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107010802,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|20003"
+  },
+  {
+    "id": 107010802,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107010803,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|20004"
+  },
+  {
+    "id": 107010803,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107010804,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|20005"
+  },
+  {
+    "id": 107010804,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107010805,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|20006"
+  },
+  {
+    "id": 107010805,
     "nodeId": 6,
     "desc": "离开",
     "icon": 15,
@@ -1986,10 +2322,10 @@
   {
     "id": 1070202,
     "nodeId": 22,
-    "desc": "投100",
+    "desc": "投128",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:100"
+    "result": "CostItem|1:128"
   },
   {
     "id": 1070202,
@@ -2125,7 +2461,7 @@
     "desc": "离开",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "MoveToEvent|4#107020301"
   },
   {
     "id": 1070203,
@@ -2237,7 +2573,7 @@
     "desc": "打筒牌",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107020403"
+    "result": "TriggerDialog|28026"
   },
   {
     "id": 1070204,
@@ -2245,7 +2581,7 @@
     "desc": "打万牌",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107020403"
+    "result": "TriggerDialog|28026"
   },
   {
     "id": 1070204,
@@ -2253,7 +2589,7 @@
     "desc": "打条牌",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107020403"
+    "result": "TriggerDialog|28026"
   },
   {
     "id": 1070204,
@@ -2353,54 +2689,6 @@
   },
   {
     "id": 1070204,
-    "nodeId": 86,
-    "desc": "继续",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
-    "nodeId": 87,
-    "desc": "不玩了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
-    "nodeId": 93,
-    "desc": "继续",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
-    "nodeId": 97,
-    "desc": "不玩了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
-    "nodeId": 100,
-    "desc": "继续",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
-    "nodeId": 104,
-    "desc": "不玩了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 1070204,
     "nodeId": 165,
     "desc": "彰显武力",
     "icon": 6,
@@ -2449,6 +2737,54 @@
   },
   {
     "id": 1070204,
+    "nodeId": 86,
+    "desc": "继续",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
+    "nodeId": 87,
+    "desc": "不玩了",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
+    "nodeId": 93,
+    "desc": "继续",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
+    "nodeId": 97,
+    "desc": "不玩了",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
+    "nodeId": 100,
+    "desc": "继续",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
+    "nodeId": 104,
+    "desc": "不玩了",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070204,
     "nodeId": 168,
     "desc": "取回我本该拥有的",
     "icon": 15,
@@ -2477,7 +2813,7 @@
     "desc": "许愿",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:50"
+    "result": "CostItem|1:100"
   },
   {
     "id": 1070205,
@@ -2501,7 +2837,7 @@
     "desc": "许愿",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:50"
+    "result": "CostItem|1:100"
   },
   {
     "id": 1070205,
@@ -2517,7 +2853,7 @@
     "desc": "许愿",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:50"
+    "result": "CostItem|1:100"
   },
   {
     "id": 1070205,
@@ -2533,7 +2869,7 @@
     "desc": "许愿",
     "icon": 15,
     "condition": "",
-    "result": "CreateEvent|4#107020504#1#2"
+    "result": "CostItem|1:100"
   },
   {
     "id": 107020503,
@@ -2565,7 +2901,7 @@
     "desc": "入场",
     "icon": 15,
     "condition": "",
-    "result": "JumpEvent|4#107020601"
+    "result": "TriggerDialog|28028"
   },
   {
     "id": 1070206,
@@ -2589,7 +2925,7 @@
     "desc": "罪名太滑稽了",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107020605"
+    "result": "TriggerDialog|28029"
   },
   {
     "id": 1070206,
@@ -2609,14 +2945,6 @@
   },
   {
     "id": 1070206,
-    "nodeId": 126,
-    "desc": "拉普拉斯似乎没有法务部",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107020607"
-  },
-  {
-    "id": 1070206,
     "nodeId": 128,
     "desc": "开始辩论",
     "icon": 15,
@@ -2625,11 +2953,11 @@
   },
   {
     "id": 1070206,
-    "nodeId": 131,
-    "desc": "离开法院",
+    "nodeId": 126,
+    "desc": "拉普拉斯似乎没有法务部",
     "icon": 15,
     "condition": "",
-    "result": "CostPointItem|20"
+    "result": "ChoiceList|107020607"
   },
   {
     "id": 1070206,
@@ -2638,6 +2966,14 @@
     "icon": 15,
     "condition": "",
     "result": "Drop|1070206"
+  },
+  {
+    "id": 1070206,
+    "nodeId": 131,
+    "desc": "离开法院",
+    "icon": 15,
+    "condition": "",
+    "result": "CostPointItem|20"
   },
   {
     "id": 1070207,
@@ -2661,7 +2997,7 @@
     "desc": "借钱给他",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:500"
+    "result": "CostItem|1:300"
   },
   {
     "id": 1070207,
@@ -2830,6 +3166,14 @@
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107021114"
+  },
+  {
+    "id": 1070211,
+    "nodeId": 203,
+    "desc": "我再想想",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 1070211,
@@ -3426,7 +3770,7 @@
   {
     "id": 1070217,
     "nodeId": 216,
-    "desc": "话多的代价",
+    "desc": "这难道就是话多的代价…",
     "icon": 15,
     "condition": "",
     "result": "JumpEvent|4#107021701"
@@ -3474,8 +3818,8 @@
   {
     "id": 1070217,
     "nodeId": 179,
-    "desc": "话多的代价",
-    "icon": 15,
+    "desc": "这难道就是话多的代价…",
+    "icon": 6,
     "condition": "",
     "result": "JumpEvent|4#107021701"
   },
@@ -3643,7 +3987,7 @@
     "id": 1070219,
     "nodeId": 177,
     "desc": "邮报断更了吗？",
-    "icon": 1,
+    "icon": 15,
     "condition": "",
     "result": "ChoiceList|107021904"
   },
@@ -4045,7 +4389,7 @@
     "desc": "你怎么会知道“暴雨”？",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107030103"
+    "result": "TriggerDialog|28001"
   },
   {
     "id": 1070301,
@@ -4121,51 +4465,11 @@
   },
   {
     "id": 1070302,
-    "nodeId": 7,
-    "desc": "询问少女的下落",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107030202"
-  },
-  {
-    "id": 1070302,
     "nodeId": 112,
     "desc": "你愿意跟我回庇护所吗？",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107030207"
-  },
-  {
-    "id": 1070302,
-    "nodeId": 89,
-    "desc": "找到了吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107030205"
-  },
-  {
-    "id": 1070302,
-    "nodeId": 85,
-    "desc": "好的",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 1070302,
-    "nodeId": 12,
-    "desc": "当然，我们会帮助你们",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107030203"
-  },
-  {
-    "id": 1070302,
-    "nodeId": 77,
-    "desc": "暂时离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
   },
   {
     "id": 1070302,
@@ -4184,7 +4488,47 @@
     "result": "None|"
   },
   {
-    "id": 1070302,
+    "id": 107030203,
+    "nodeId": 7,
+    "desc": "询问少女的下落",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107030202"
+  },
+  {
+    "id": 107030203,
+    "nodeId": 89,
+    "desc": "找到了吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107030205"
+  },
+  {
+    "id": 107030203,
+    "nodeId": 85,
+    "desc": "好的",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107030203,
+    "nodeId": 12,
+    "desc": "当然，我们会帮助你们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107030203"
+  },
+  {
+    "id": 107030203,
+    "nodeId": 77,
+    "desc": "暂时离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107030203,
     "nodeId": 91,
     "desc": "了解了，我去看看",
     "icon": 15,
@@ -4192,7 +4536,7 @@
     "result": "SettleState|6"
   },
   {
-    "id": 1070302,
+    "id": 107030203,
     "nodeId": 61,
     "desc": "好的",
     "icon": 15,
@@ -4205,7 +4549,7 @@
     "desc": "你听说过我们？",
     "icon": 15,
     "condition": "",
-    "result": "JumpEvent|4#107030301"
+    "result": "TriggerDialog|28002"
   },
   {
     "id": 107030302,
@@ -4229,7 +4573,7 @@
     "desc": "招募",
     "icon": 2,
     "condition": "",
-    "result": "RecrNpc|"
+    "result": "TriggerDialog|28013"
   },
   {
     "id": 1070304,
@@ -4261,7 +4605,7 @@
     "desc": "离开",
     "icon": 15,
     "condition": "",
-    "result": "CreateEvent|5#107030401#3#6"
+    "result": "CreateEvent|7#107030401#3#6"
   },
   {
     "id": 107030403,
@@ -4342,6 +4686,14 @@
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107030502"
+  },
+  {
+    "id": 1070305,
+    "nodeId": 123,
+    "desc": "跟上去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "MoveToEvent|7#107030501"
   },
   {
     "id": 1070305,
@@ -4493,7 +4845,7 @@
     "desc": "欢迎",
     "icon": 2,
     "condition": "",
-    "result": "RecrNpc|"
+    "result": "DeleteEvent|7#107030501"
   },
   {
     "id": 107030502,
@@ -4501,7 +4853,7 @@
     "desc": "再见",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "DeleteEvent|7#107030501"
   },
   {
     "id": 107030502,
@@ -4521,11 +4873,19 @@
   },
   {
     "id": 1070306,
+    "nodeId": 132,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1070306,
     "nodeId": 7,
     "desc": "再挖挖",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107030602"
+    "result": "TriggerDialog|28009"
   },
   {
     "id": 1070306,
@@ -4697,8 +5057,16 @@
   },
   {
     "id": 107040104,
+    "nodeId": 17,
+    "desc": "时间紧迫",
+    "icon": 6,
+    "condition": "",
+    "result": "CostPointItem|20"
+  },
+  {
+    "id": 107040104,
     "nodeId": 25,
-    "desc": "欺骗",
+    "desc": "或许您能亲自帮帮她",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107040111"
@@ -4709,23 +5077,15 @@
     "desc": "感谢",
     "icon": 15,
     "condition": "",
-    "result": "AcceptTask|4#107040105"
-  },
-  {
-    "id": 107040104,
-    "nodeId": 17,
-    "desc": "时间紧迫",
-    "icon": 6,
-    "condition": "",
-    "result": "CostPointItem|20"
+    "result": "Drop|107040106"
   },
   {
     "id": 107040104,
     "nodeId": 27,
-    "desc": "感谢",
+    "desc": "我们尽快动身吧",
     "icon": 15,
     "condition": "",
-    "result": "CostPointItem|20"
+    "result": "AcceptTask|4#107040105"
   },
   {
     "id": 107040106,
@@ -4741,7 +5101,7 @@
     "desc": "汪汪汪",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107040202"
+    "result": "Selector|"
   },
   {
     "id": 1070402,
@@ -4765,7 +5125,7 @@
     "desc": "汪",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107040203"
+    "result": "TriggerDialog|28020"
   },
   {
     "id": 1070402,
@@ -4773,7 +5133,7 @@
     "desc": "汪汪汪？",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107040203"
+    "result": "TriggerDialog|28020"
   },
   {
     "id": 1070402,
@@ -4781,7 +5141,55 @@
     "desc": "汪汪汪！",
     "icon": 15,
     "condition": "",
+    "result": "TriggerDialog|28020"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 45,
+    "desc": "汪",
+    "icon": 15,
+    "condition": "",
     "result": "ChoiceList|107040203"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 51,
+    "desc": "汪汪汪？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107040203"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 57,
+    "desc": "汪汪汪！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107040203"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 49,
+    "desc": "暂时离开",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 55,
+    "desc": "暂时离开",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070402,
+    "nodeId": 61,
+    "desc": "暂时离开",
+    "icon": 15,
+    "condition": "",
+    "result": "SettleState|5"
   },
   {
     "id": 1070402,
@@ -4789,28 +5197,28 @@
     "desc": "暂时离开",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "SettleState|5"
   },
   {
     "id": 1070402,
-    "nodeId": 19,
+    "nodeId": 32,
     "desc": "暂时离开",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "SettleState|5"
   },
   {
     "id": 1070402,
-    "nodeId": 22,
+    "nodeId": 37,
     "desc": "暂时离开",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "SettleState|5"
   },
   {
     "id": 107040201,
     "nodeId": 8,
-    "desc": "好吧，我来帮忙",
+    "desc": "没有，但我可以留意一下",
     "icon": 1,
     "condition": "",
     "result": "CreateEvent|7#107040202#6#8"
@@ -5029,11 +5437,11 @@
     "desc": "视而不见",
     "icon": 15,
     "condition": "",
-    "result": "JumpEvent|4#107040309"
+    "result": "TriggerDialog|28018"
   },
   {
     "id": 1070403,
-    "nodeId": 33,
+    "nodeId": 124,
     "desc": "好",
     "icon": 1,
     "condition": "",
@@ -5065,7 +5473,7 @@
   },
   {
     "id": 1070403,
-    "nodeId": 68,
+    "nodeId": 118,
     "desc": "好",
     "icon": 1,
     "condition": "",
@@ -5240,6 +5648,62 @@
     "result": "DeductHealth|20"
   },
   {
+    "id": 1070901,
+    "nodeId": 8,
+    "desc": "【电能】盒中之物",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|3307"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 9,
+    "desc": "【启示】盒中之物",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|3308"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 10,
+    "desc": "【薪血】盒中之物",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|3309"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 11,
+    "desc": "再看看",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|107090101"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 13,
+    "desc": "【额外行动】盒中之物",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|3310"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 14,
+    "desc": "【仪式】盒中之物",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|3311"
+  },
+  {
+    "id": 1070901,
+    "nodeId": 16,
+    "desc": "再看看",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|7"
+  },
+  {
     "id": 1070451,
     "nodeId": 4,
     "desc": "打下来",
@@ -5349,7 +5813,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045101,
@@ -5378,7 +5842,7 @@
   {
     "id": 107045101,
     "nodeId": 25,
-    "desc": "把光盘送给其他部门",
+    "desc": "把光盘送给哑谜",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107045106"
@@ -5397,7 +5861,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015102"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045101,
@@ -5461,7 +5925,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045102,
@@ -5474,7 +5938,7 @@
   {
     "id": 107045102,
     "nodeId": 5,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5490,7 +5954,7 @@
   {
     "id": 107045102,
     "nodeId": 25,
-    "desc": "把光盘送给其他部门",
+    "desc": "把光盘送给哑谜",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107045106"
@@ -5530,7 +5994,7 @@
   {
     "id": 107045102,
     "nodeId": 63,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5573,7 +6037,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045103,
@@ -5586,7 +6050,7 @@
   {
     "id": 107045103,
     "nodeId": 5,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5602,7 +6066,7 @@
   {
     "id": 107045103,
     "nodeId": 25,
-    "desc": "把光盘送给其他部门",
+    "desc": "把光盘送给哑谜",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107045106"
@@ -5642,7 +6106,7 @@
   {
     "id": 107045103,
     "nodeId": 63,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5685,7 +6149,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045104,
@@ -5698,7 +6162,7 @@
   {
     "id": 107045104,
     "nodeId": 5,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5714,7 +6178,7 @@
   {
     "id": 107045104,
     "nodeId": 25,
-    "desc": "把光盘送给其他部门",
+    "desc": "把光盘送给哑谜",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107045106"
@@ -5754,7 +6218,7 @@
   {
     "id": 107045104,
     "nodeId": 63,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5797,7 +6261,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 107045105,
@@ -5810,7 +6274,7 @@
   {
     "id": 107045105,
     "nodeId": 5,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5826,7 +6290,7 @@
   {
     "id": 107045105,
     "nodeId": 25,
-    "desc": "把光盘送给其他部门",
+    "desc": "把光盘送给哑谜",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|107045106"
@@ -5866,7 +6330,7 @@
   {
     "id": 107045105,
     "nodeId": 63,
-    "desc": "很遗憾，我们现在没有办法对付它",
+    "desc": "暂时不管",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045103"
@@ -5909,7 +6373,7 @@
     "desc": "确认",
     "icon": 15,
     "condition": "",
-    "result": "None|"
+    "result": "Drop|107015101"
   },
   {
     "id": 1070452,
@@ -5921,19 +6385,19 @@
   },
   {
     "id": 1070452,
-    "nodeId": 42,
-    "desc": "一幕完美的犯罪。",
+    "nodeId": 48,
+    "desc": "一幕传统的复兴。",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045203"
+    "result": "ChoiceList|107045207"
   },
   {
     "id": 1070452,
-    "nodeId": 43,
-    "desc": "一幕恐怖的真相。",
+    "nodeId": 47,
+    "desc": "一幕真理的思辨。",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045204"
+    "result": "ChoiceList|107045206"
   },
   {
     "id": 1070452,
@@ -5953,35 +6417,27 @@
   },
   {
     "id": 1070452,
-    "nodeId": 58,
+    "nodeId": 68,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015201"
+    "result": "Drop|107015202"
   },
   {
     "id": 1070452,
-    "nodeId": 59,
+    "nodeId": 66,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015201"
+    "result": "Drop|107015203"
   },
   {
     "id": 1070452,
-    "nodeId": 47,
-    "desc": "一幕真理的思辨。",
+    "nodeId": 43,
+    "desc": "一幕恐怖的真相。",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045206"
-  },
-  {
-    "id": 1070452,
-    "nodeId": 48,
-    "desc": "一幕传统的复兴。",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045207"
+    "result": "ChoiceList|107045204"
   },
   {
     "id": 1070452,
@@ -6001,19 +6457,19 @@
   },
   {
     "id": 1070452,
-    "nodeId": 66,
-    "desc": "确定",
+    "nodeId": 89,
+    "desc": "暂时离开",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015201"
+    "result": "None|"
   },
   {
     "id": 1070452,
-    "nodeId": 68,
+    "nodeId": 59,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015201"
+    "result": "Drop|107015204"
   },
   {
     "id": 1070452,
@@ -6021,7 +6477,7 @@
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015201"
+    "result": "Drop|107015205"
   },
   {
     "id": 1070454,
@@ -6033,19 +6489,11 @@
   },
   {
     "id": 1070454,
-    "nodeId": 42,
-    "desc": "问问有没有人",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045402"
-  },
-  {
-    "id": 1070454,
     "nodeId": 61,
     "desc": "离开这里",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045404"
+    "result": "None|"
   },
   {
     "id": 1070454,
@@ -6057,19 +6505,11 @@
   },
   {
     "id": 1070454,
-    "nodeId": 81,
-    "desc": "敲敲门",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107045410"
-  },
-  {
-    "id": 1070454,
     "nodeId": 84,
     "desc": "离开这里",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045404"
+    "result": "None|"
   },
   {
     "id": 1070454,
@@ -6081,63 +6521,87 @@
   },
   {
     "id": 1070454,
-    "nodeId": 57,
-    "desc": "确定",
+    "nodeId": 166,
+    "desc": "接受",
+    "icon": 1,
+    "condition": "",
+    "result": "AcceptTask|4#107015401"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 170,
+    "desc": "现在没空",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107045408"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 142,
+    "desc": "沉默，并推门",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045405"
   },
   {
     "id": 1070454,
-    "nodeId": 58,
-    "desc": "确定",
+    "nodeId": 115,
+    "desc": "回答",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045405"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 63,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
+    "result": "ChoiceList|107045403"
   },
   {
     "id": 1070454,
     "nodeId": 102,
-    "desc": "确定",
+    "desc": "拿走它身上的东西",
     "icon": 15,
     "condition": "",
     "result": "Drop|107015401"
   },
   {
     "id": 1070454,
-    "nodeId": 103,
-    "desc": "确定",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|107015402"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 86,
+    "nodeId": 172,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "None|"
+    "result": "SettleState|5"
   },
   {
     "id": 1070454,
-    "nodeId": 92,
-    "desc": "当然没问题",
+    "nodeId": 144,
+    "desc": "继续推",
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045406"
   },
   {
     "id": 1070454,
-    "nodeId": 96,
+    "nodeId": 139,
+    "desc": "有什么收获吗",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107045404"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 146,
+    "desc": "继续推",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107045407"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 119,
+    "desc": "接受",
+    "icon": 1,
+    "condition": "",
+    "result": "AcceptTask|4#107015401"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 123,
     "desc": "现在没空",
     "icon": 0,
     "condition": "",
@@ -6145,51 +6609,35 @@
   },
   {
     "id": 1070454,
-    "nodeId": 66,
-    "desc": "当然没问题",
+    "nodeId": 148,
+    "desc": "跟我回庇护所吧",
+    "icon": 2,
+    "condition": "",
+    "result": "ChoiceList|107045411"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 149,
+    "desc": "抱歉，我先走了",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107045406"
+    "result": "FinishMyself|false"
   },
   {
     "id": 1070454,
-    "nodeId": 67,
-    "desc": "现在没空",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045408"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 94,
-    "desc": "确定",
-    "icon": 1,
-    "condition": "",
-    "result": "AcceptTask|4#107015401"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 98,
-    "desc": "确定",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 69,
-    "desc": "确定",
-    "icon": 1,
-    "condition": "",
-    "result": "AcceptTask|4#107015401"
-  },
-  {
-    "id": 1070454,
-    "nodeId": 71,
+    "nodeId": 125,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "None|"
+    "result": "SettleState|5"
+  },
+  {
+    "id": 1070454,
+    "nodeId": 161,
+    "desc": "招募",
+    "icon": 2,
+    "condition": "",
+    "result": "AddItem|3064:1"
   },
   {
     "id": 107045401,
@@ -6197,7 +6645,7 @@
     "desc": "确定",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015401"
+    "result": "Drop|107015402"
   },
   {
     "id": 1070455,
@@ -6218,7 +6666,7 @@
   {
     "id": 1070455,
     "nodeId": 117,
-    "desc": "每个人都有想一个人呆着的时候，走吧。",
+    "desc": "每个人都有想独自呆着的时候",
     "icon": 0,
     "condition": "",
     "result": "Drop|107015503"
@@ -6245,15 +6693,15 @@
     "desc": "学点东西也挺好",
     "icon": 0,
     "condition": "",
-    "result": "CreateEvent|7#107015501#1#1"
+    "result": "SettleState|5"
   },
   {
     "id": 1070455,
     "nodeId": 65,
-    "desc": "认同他的话",
+    "desc": "帮助他逃跑",
     "icon": 0,
     "condition": "",
-    "result": "CreateEvent|7#107015502#1#1"
+    "result": "CreateEvent|7#107015501#1#1"
   },
   {
     "id": 107045501,
@@ -6293,7 +6741,7 @@
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "DeductHealth|20"
+    "result": "CostGameTime|30"
   },
   {
     "id": 107045501,
@@ -6309,63 +6757,7 @@
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "DeductHealth|20"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 94,
-    "desc": "Math！Math！",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045507"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 107,
-    "desc": "我也不学了！",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045506"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 96,
-    "desc": "120",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045509"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 101,
-    "desc": "150",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107045510"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 109,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "DeductHealth|20"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 98,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "Drop|107015501"
-  },
-  {
-    "id": 107045502,
-    "nodeId": 103,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "DeductHealth|20"
+    "result": "CostGameTime|30"
   },
   {
     "id": 1070456,
@@ -6421,7 +6813,7 @@
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "CreateEvent|7#107015601#2#10"
+    "result": "CreateEvent|7#107015601#4#7"
   },
   {
     "id": 107045601,
@@ -6433,7 +6825,23 @@
   },
   {
     "id": 107045601,
-    "nodeId": 80,
+    "nodeId": 149,
+    "desc": "暂时离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107045601,
+    "nodeId": 125,
+    "desc": "强行花时间点燃",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107045606"
+  },
+  {
+    "id": 107045601,
+    "nodeId": 135,
     "desc": "让轮回者点燃",
     "icon": 0,
     "condition": "",
@@ -6441,15 +6849,31 @@
   },
   {
     "id": 107045601,
+    "nodeId": 151,
+    "desc": "暂时离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107045601,
     "nodeId": 83,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "DeductHealth|20"
+    "result": "DeductHealth|30"
   },
   {
     "id": 107045601,
-    "nodeId": 86,
+    "nodeId": 127,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "DeductHealth|30"
+  },
+  {
+    "id": 107045601,
+    "nodeId": 137,
     "desc": "确定",
     "icon": 0,
     "condition": "",
@@ -6458,23 +6882,31 @@
   {
     "id": 107045602,
     "nodeId": 12,
-    "desc": "护送轮回者去圣火处",
+    "desc": "需要帮助吗",
     "icon": 15,
     "condition": "",
-    "result": "SettleState|4"
+    "result": "ChoiceList|107045608"
   },
   {
     "id": 107045602,
-    "nodeId": 13,
-    "desc": "先离开",
+    "nodeId": 26,
+    "desc": "加油",
     "icon": 15,
     "condition": "",
     "result": "None|"
   },
   {
     "id": 107045602,
-    "nodeId": 26,
-    "desc": "就快到了",
+    "nodeId": 50,
+    "desc": "我会陪你一起去",
+    "icon": 1,
+    "condition": "",
+    "result": "SettleState|4"
+  },
+  {
+    "id": 107045602,
+    "nodeId": 51,
+    "desc": "暂时没空",
     "icon": 15,
     "condition": "",
     "result": "None|"
@@ -6485,7 +6917,7 @@
     "desc": "和她一起去查看情况",
     "icon": 0,
     "condition": "",
-    "result": "CreateEvent|7#1070174#2#5"
+    "result": "SettleState|4"
   },
   {
     "id": 1070457,
@@ -6509,7 +6941,7 @@
     "desc": "确定",
     "icon": 15,
     "condition": "",
-    "result": "CreateEvent|7#1070174#2#5"
+    "result": "SettleState|4"
   },
   {
     "id": 107045701,
@@ -6526,6 +6958,14 @@
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107045705"
+  },
+  {
+    "id": 107045701,
+    "nodeId": 151,
+    "desc": "暂时离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 107045701,
@@ -6653,23 +7093,31 @@
     "desc": "远离这幅画",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|107045803"
+    "result": "None|"
   },
   {
     "id": 1070458,
     "nodeId": 9,
-    "desc": "确定",
+    "desc": "耐心感受",
     "icon": 15,
     "condition": "",
-    "result": "DeleteEvent|7#0"
+    "result": "CostGameTime|30"
   },
   {
     "id": 1070458,
-    "nodeId": 10,
-    "desc": "确定",
+    "nodeId": 18,
+    "desc": "还是走吧",
     "icon": 15,
     "condition": "",
     "result": "None|"
+  },
+  {
+    "id": 1070458,
+    "nodeId": 17,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "DeleteEvent|7#0"
   },
   {
     "id": 1070459,
@@ -6685,7 +7133,7 @@
     "desc": "祈祷",
     "icon": 0,
     "condition": "",
-    "result": "CostGameTime|10"
+    "result": "CostGameTime|20"
   },
   {
     "id": 1070459,
@@ -6709,7 +7157,7 @@
     "desc": "祈祷",
     "icon": 0,
     "condition": "",
-    "result": "CostGameTime|10"
+    "result": "CostGameTime|40"
   },
   {
     "id": 1070459,
@@ -6741,7 +7189,7 @@
     "desc": "祈祷",
     "icon": 0,
     "condition": "",
-    "result": "CostGameTime|10"
+    "result": "CostGameTime|60"
   },
   {
     "id": 1070459,
@@ -6777,11 +7225,19 @@
   },
   {
     "id": 1070460,
+    "nodeId": 76,
+    "desc": "暂时离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1070460,
     "nodeId": 57,
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "AddHealth|20"
+    "result": "AddHealth|40"
   },
   {
     "id": 1070460,
@@ -6797,7 +7253,7 @@
     "desc": "启动探测装置",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107046102"
+    "result": "RemoveFog|5#7"
   },
   {
     "id": 1070461,
@@ -6809,19 +7265,19 @@
   },
   {
     "id": 1070461,
-    "nodeId": 57,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "RemoveFog|5#7"
-  },
-  {
-    "id": 1070461,
     "nodeId": 58,
     "desc": "确定",
     "icon": 0,
     "condition": "",
     "result": "None|"
+  },
+  {
+    "id": 1070461,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "DeleteEvent|7#0"
   },
   {
     "id": 1070462,
@@ -6965,7 +7421,7 @@
     "desc": "接受任务",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107046409"
+    "result": "AcceptTask|4#107046402"
   },
   {
     "id": 107046401,
@@ -7021,7 +7477,7 @@
     "desc": "确定",
     "icon": 0,
     "condition": "",
-    "result": "None|"
+    "result": "PlayerMoveBack|"
   },
   {
     "id": 1070465,
@@ -7029,7 +7485,7 @@
     "desc": "同意",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107046502"
+    "result": "CostItem|100001:1"
   },
   {
     "id": 1070465,
@@ -7041,14 +7497,6 @@
   },
   {
     "id": 1070465,
-    "nodeId": 57,
-    "desc": "确定",
-    "icon": 0,
-    "condition": "",
-    "result": "Drop|1070165"
-  },
-  {
-    "id": 1070465,
     "nodeId": 58,
     "desc": "确定",
     "icon": 0,
@@ -7056,9 +7504,153 @@
     "result": "None|"
   },
   {
+    "id": 1070465,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010221"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|100001:1"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010222"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|100001:1"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010223"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|100001:1"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010224"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|100001:1"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010225"
+  },
+  {
     "id": 1071006,
-    "nodeId": 101,
-    "desc": "离开",
+    "nodeId": 105,
+    "desc": "敬拉普拉斯！",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100606"
+  },
+  {
+    "id": 1071006,
+    "nodeId": 106,
+    "desc": "工作也是战斗",
     "icon": 0,
     "condition": "",
     "result": "None|"
@@ -7072,9 +7664,33 @@
     "result": "AddTalent|301024"
   },
   {
+    "id": 1071006,
+    "nodeId": 109,
+    "desc": "【兽】灵感，咬坏枕头？",
+    "icon": 0,
+    "condition": "",
+    "result": "ConvertToEvent|4#107100610"
+  },
+  {
+    "id": 1071006,
+    "nodeId": 110,
+    "desc": "我再想想",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107100601,
+    "nodeId": 102,
+    "desc": "再敬拉普拉斯！",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100607"
+  },
+  {
     "id": 107100601,
     "nodeId": 103,
-    "desc": "离开",
+    "desc": "工作吧",
     "icon": 0,
     "condition": "",
     "result": "None|"
@@ -7088,9 +7704,33 @@
     "result": "DeleteTalent|301024#1"
   },
   {
+    "id": 107100601,
+    "nodeId": 104,
+    "desc": "【木】灵感，嘶嘶——",
+    "icon": 0,
+    "condition": "",
+    "result": "ConvertToEvent|4#107100611"
+  },
+  {
+    "id": 107100601,
+    "nodeId": 105,
+    "desc": "我再想想",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
     "id": 107100602,
     "nodeId": 102,
-    "desc": "离开",
+    "desc": "敬每一位",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100608"
+  },
+  {
+    "id": 107100602,
+    "nodeId": 107,
+    "desc": "工作更重要",
     "icon": 0,
     "condition": "",
     "result": "None|"
@@ -7104,108 +7744,20 @@
     "result": "DeleteTalent|301025#1"
   },
   {
-    "id": 1071003,
-    "nodeId": 7,
-    "desc": "第一个数",
+    "id": 107100602,
+    "nodeId": 108,
+    "desc": "【灵】灵感，摇滚女孩",
     "icon": 0,
     "condition": "",
-    "result": "ChoiceList|107100302"
+    "result": "ConvertToEvent|4#107100612"
   },
   {
-    "id": 1071003,
-    "nodeId": 12,
-    "desc": "第二个数",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107100302"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 61,
-    "desc": "第三个数",
-    "icon": 0,
-    "condition": "",
-    "result": "ChoiceList|107100304"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 125,
-    "desc": "离开",
+    "id": 107100602,
+    "nodeId": 101,
+    "desc": "我再想想…",
     "icon": 0,
     "condition": "",
     "result": "None|"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 105,
-    "desc": "你就是37！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107100306"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 111,
-    "desc": "默默离开",
-    "icon": 0,
-    "condition": "",
-    "result": "JumpToNode|5"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 114,
-    "desc": "你就是37！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107100305"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 120,
-    "desc": "默默离开",
-    "icon": 0,
-    "condition": "",
-    "result": "JumpToNode|5"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 63,
-    "desc": "你就是37！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|107100306"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 97,
-    "desc": "默默离开",
-    "icon": 0,
-    "condition": "",
-    "result": "JumpToNode|5"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 107,
-    "desc": "哈基数，你这家伙",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|107015501"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 116,
-    "desc": "赞美数学！",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|107015501"
-  },
-  {
-    "id": 1071003,
-    "nodeId": 99,
-    "desc": "哈基数，你这家伙",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|107015501"
   },
   {
     "id": 1071004,
@@ -7230,14 +7782,6 @@
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107100403"
-  },
-  {
-    "id": 1071004,
-    "nodeId": 125,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
   },
   {
     "id": 1071004,
@@ -7293,7 +7837,7 @@
     "desc": "回去该检查一下了",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100401"
   },
   {
     "id": 1071004,
@@ -7301,7 +7845,7 @@
     "desc": "这非常人道",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100402"
   },
   {
     "id": 1071004,
@@ -7309,7 +7853,7 @@
     "desc": "回去该检查一下了",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100401"
   },
   {
     "id": 1071005,
@@ -7341,7 +7885,7 @@
     "desc": "真可惜",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100501"
   },
   {
     "id": 1071005,
@@ -7349,7 +7893,39 @@
     "desc": "……",
     "icon": 15,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100501"
+  },
+  {
+    "id": 1071007,
+    "nodeId": 161,
+    "desc": "好的",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100701"
+  },
+  {
+    "id": 1071007,
+    "nodeId": 162,
+    "desc": "不了",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1071007,
+    "nodeId": 147,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1071007,
+    "nodeId": 157,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 1071007,
@@ -7377,22 +7953,6 @@
   },
   {
     "id": 1071007,
-    "nodeId": 147,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 1071007,
-    "nodeId": 157,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 1071007,
     "nodeId": 101,
     "desc": "……",
     "icon": 0,
@@ -7413,7 +7973,7 @@
     "desc": "聊胜于无",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
   },
   {
     "id": 1071007,
@@ -7445,7 +8005,7 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
   },
   {
     "id": 1071007,
@@ -7453,7 +8013,7 @@
     "desc": "呃，好的，先生？",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100705"
   },
   {
     "id": 1071007,
@@ -7461,7 +8021,39 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
+  },
+  {
+    "id": 107100701,
+    "nodeId": 164,
+    "desc": "好的",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100702"
+  },
+  {
+    "id": 107100701,
+    "nodeId": 165,
+    "desc": "我放弃",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107100701,
+    "nodeId": 147,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107100701,
+    "nodeId": 157,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 107100701,
@@ -7486,22 +8078,6 @@
     "icon": 0,
     "condition": "",
     "result": "Selector|"
-  },
-  {
-    "id": 107100701,
-    "nodeId": 147,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 107100701,
-    "nodeId": 157,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
   },
   {
     "id": 107100701,
@@ -7557,7 +8133,7 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
   },
   {
     "id": 107100701,
@@ -7565,7 +8141,7 @@
     "desc": "呃，好的，先生？",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100705"
   },
   {
     "id": 107100701,
@@ -7573,7 +8149,39 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
+  },
+  {
+    "id": 107100702,
+    "nodeId": 164,
+    "desc": "好的",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107100703"
+  },
+  {
+    "id": 107100702,
+    "nodeId": 163,
+    "desc": "不了",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107100702,
+    "nodeId": 147,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107100702,
+    "nodeId": 151,
+    "desc": "离开",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 107100702,
@@ -7598,22 +8206,6 @@
     "icon": 0,
     "condition": "",
     "result": "ChoiceList|107100705"
-  },
-  {
-    "id": 107100702,
-    "nodeId": 147,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 107100702,
-    "nodeId": 151,
-    "desc": "离开",
-    "icon": 0,
-    "condition": "",
-    "result": "None|"
   },
   {
     "id": 107100702,
@@ -7669,7 +8261,7 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
   },
   {
     "id": 107100702,
@@ -7677,7 +8269,7 @@
     "desc": "呃，好的，先生？",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100705"
   },
   {
     "id": 107100702,
@@ -7685,7 +8277,39 @@
     "desc": "……",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|1071007"
+  },
+  {
+    "id": 1071008,
+    "nodeId": 110,
+    "desc": "扭一下",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|1:100"
+  },
+  {
+    "id": 1071008,
+    "nodeId": 106,
+    "desc": "感觉有诈",
+    "icon": 0,
+    "condition": "",
+    "result": "CostItem|107100905:1"
+  },
+  {
+    "id": 1071008,
+    "nodeId": 112,
+    "desc": "算了",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1071008,
+    "nodeId": 118,
+    "desc": "收下大奖",
+    "icon": 0,
+    "condition": "",
+    "result": "Drop|107100802"
   },
   {
     "id": 1071008,
@@ -7693,7 +8317,15 @@
     "desc": "可惜",
     "icon": 0,
     "condition": "",
-    "result": "Drop|107015501"
+    "result": "Drop|107100801"
+  },
+  {
+    "id": 107100810,
+    "nodeId": 20,
+    "desc": "彼此彼此",
+    "icon": 0,
+    "condition": "",
+    "result": "NotifyEnterBattle|"
   },
   {
     "id": 1071009,
@@ -7710,6 +8342,30 @@
     "icon": 0,
     "condition": "",
     "result": "CostItem|107100902:1"
+  },
+  {
+    "id": 1071009,
+    "nodeId": 126,
+    "desc": "这就去找",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1071009001,
+    "nodeId": 66,
+    "desc": "下次见",
+    "icon": 15,
+    "condition": "",
+    "result": "AddTalent|301026"
+  },
+  {
+    "id": 1071009002,
+    "nodeId": 65,
+    "desc": "下次见",
+    "icon": 15,
+    "condition": "",
+    "result": "AddTalent|301026"
   },
   {
     "id": 107100901,
@@ -7736,12 +8392,68 @@
     "result": "None|"
   },
   {
+    "id": 107100903,
+    "nodeId": 128,
+    "desc": "购买",
+    "icon": 15,
+    "condition": "",
+    "result": "CostItem|1:200"
+  },
+  {
+    "id": 107100903,
+    "nodeId": 129,
+    "desc": "钱没带够",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1071009003,
+    "nodeId": 65,
+    "desc": "下次见",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteTalent|301026#1"
+  },
+  {
+    "id": 1071009004,
+    "nodeId": 65,
+    "desc": "下次见",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteTalent|301026#1"
+  },
+  {
     "id": 107100902,
     "nodeId": 69,
     "desc": "我这就去",
     "icon": 0,
     "condition": "",
     "result": "DeleteTalent|301027#1"
+  },
+  {
+    "id": 107100902,
+    "nodeId": 87,
+    "desc": "一起走吧",
+    "icon": 0,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 107100902,
+    "nodeId": 85,
+    "desc": "一起走吧",
+    "icon": 0,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 107100902,
+    "nodeId": 82,
+    "desc": "我这就去",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 107100904,

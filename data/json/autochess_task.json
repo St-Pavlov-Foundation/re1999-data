@@ -429,7 +429,7 @@
     "bonusMail": 0,
     "openLimit": "",
     "listenerType": "Act182TargetRank",
-    "listenerParam": "12504#3",
+    "listenerParam": "12807#3",
     "maxProgress": 1,
     "jumpId": 0,
     "bonus": "28901011"
@@ -444,7 +444,7 @@
     "bonusMail": 0,
     "openLimit": "",
     "listenerType": "Act182TargetRank",
-    "listenerParam": "12504#5",
+    "listenerParam": "12807#5",
     "maxProgress": 1,
     "jumpId": 0,
     "bonus": "28901012"
@@ -459,7 +459,7 @@
     "bonusMail": 0,
     "openLimit": "",
     "listenerType": "Act182TargetRank",
-    "listenerParam": "12504#7",
+    "listenerParam": "12807#7",
     "maxProgress": 1,
     "jumpId": 0,
     "bonus": "28901013"

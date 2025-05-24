@@ -141,7 +141,7 @@ end
 
 function var_0_0.refreshFirstAndAdvanceConditions(arg_8_0, arg_8_1)
 	local var_8_0 = Act183Helper.getEpisodeConditionDescList(arg_8_0._episodeId)
-	local var_8_1 = arg_8_0._fightResultMo:getFinishStarCount()
+	local var_8_1 = FightResultModel.instance.star
 	local var_8_2 = arg_8_0._hardMode and "zhuxianditu_kn_xingxing_002" or "zhuxianditu_pt_xingxing_001"
 	local var_8_3 = var_8_0 and #var_8_0 or 0
 	local var_8_4 = 0

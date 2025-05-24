@@ -10,6 +10,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._goScroll = gohelper.findChild(arg_1_0.viewGO, "Panel/#scroll_List")
 	arg_1_0._goScrollBig = gohelper.findChild(arg_1_0.viewGO, "Panel/#scroll_ListBig")
 	arg_1_0._godesc = gohelper.findChild(arg_1_0.viewGO, "Panel/Left/#scroll_Descr/viewport/Content/#txt_Descr")
+	arg_1_0._txtName = gohelper.findChildTextMesh(arg_1_0.viewGO, "Panel/Left/#txt_Name")
 	arg_1_0._txtTotalScore = gohelper.findChildTextMesh(arg_1_0.viewGO, "Panel/Left/Assess/image_NumBG/#txt_Num")
 	arg_1_0._imageScore = gohelper.findChildImage(arg_1_0.viewGO, "Panel/Left/Assess/image_NumBG/#txt_Num/image_AssessIon")
 	arg_1_0._imageFrequency = gohelper.findChildImage(arg_1_0.viewGO, "Panel/Left/Frequency/image_NumBG/#txt_Num/image_FrequencyIcon")
@@ -62,6 +63,10 @@ function var_0_0.onOpen(arg_4_0)
 	gohelper.setActive(arg_4_0._goScrollBig, not var_4_4)
 
 	arg_4_0._equipFoundCo = var_4_4
+
+	if var_4_4 then
+		arg_4_0._txtName.text = var_4_4.name
+	end
 
 	local var_4_5 = 0
 	local var_4_6 = {}

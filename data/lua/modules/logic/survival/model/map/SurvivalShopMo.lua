@@ -23,7 +23,7 @@ function var_0_0.removeItem(arg_2_0, arg_2_1, arg_2_2)
 				iter_2_1:ctor()
 			end
 
-			SurvivalController.instance:dispatchEvent(SurvivalEvent.OnShopItemUpdate)
+			SurvivalController.instance:dispatchEvent(SurvivalEvent.OnShopItemUpdate, iter_2_0, iter_2_1)
 
 			break
 		end

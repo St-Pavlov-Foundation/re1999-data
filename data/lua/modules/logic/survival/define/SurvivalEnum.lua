@@ -303,15 +303,15 @@ var_0_0.UnitEffectPath = {
 	CreateUnit = "survival/effects/prefab/v2a8_scene_bianshen.prefab",
 	UnitType42 = "survival/effects/prefab/v2a8_scene_smoke_01.prefab",
 	UnitType44 = "survival/effects/prefab/v2a8_scene_smoke_02.prefab",
-	Transfer2 = "survival/effects/prefab/v2a8_scene_chuansong_02.prefab",
+	Transfer2 = "survival/effects/prefab/v2a8_scene_chuansong_01.prefab",
 	FollowUnit = "survival/effects/prefab/v2a8_scene_jinguang.prefab",
-	Transfer1 = "survival/effects/prefab/v2a8_scene_chuansong_01.prefab"
+	Transfer1 = "survival/effects/prefab/v2a8_scene_chuansong_02.prefab"
 }
 var_0_0.UnitEffectTime = {
 	[var_0_0.UnitEffectPath.FastFight] = 1,
 	[var_0_0.UnitEffectPath.Fly] = 0.4,
-	[var_0_0.UnitEffectPath.Transfer1] = 2,
-	[var_0_0.UnitEffectPath.Transfer2] = 2,
+	[var_0_0.UnitEffectPath.Transfer1] = 0.8,
+	[var_0_0.UnitEffectPath.Transfer2] = 0.8,
 	[var_0_0.UnitEffectPath.CreateUnit] = 2
 }
 var_0_0.PlayerMoveReason = {
@@ -374,9 +374,9 @@ var_0_0.InfoShowType = {
 	None = 0
 }
 var_0_0.ShelterNpcStatus = {
-	InBuild = 0,
-	NotInBuild = 2,
-	InDestoryBuild = 1,
+	NotInBuild = 0,
+	InDestoryBuild = 2,
+	InBuild = 1,
 	OutSide = 3
 }
 var_0_0.ShelterUnitType = {

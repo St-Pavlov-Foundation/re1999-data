@@ -180,7 +180,8 @@ function var_0_0.buildDecreeItemWork(arg_12_0)
 
 	local var_12_1 = {
 		time = 0.333,
-		go = arg_12_0.decreeItemGO
+		go = arg_12_0.decreeItemGO,
+		audioId = AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_decide
 	}
 
 	arg_12_0.popupFlow:addWork(SurvivalDecreeVoteShowWork.New(var_12_1))
@@ -246,6 +247,7 @@ end
 
 function var_0_0.showNpcBubble(arg_18_0)
 	gohelper.setActive(arg_18_0.goBubbleRoot, true)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_discuss)
 end
 
 function var_0_0.buildToastWork(arg_19_0)
@@ -296,6 +298,10 @@ function var_0_0.onClose(arg_24_0)
 	arg_24_0:clearBubble()
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnDecreeVoteEnd)
 	ViewMgr.instance:openView(ViewName.SurvivalDecreeView)
+end
+
+function var_0_0.onDestroyView(arg_25_0)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.ChangeCameraScale)
 end
 
 return var_0_0

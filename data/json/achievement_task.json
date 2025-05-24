@@ -5198,7 +5198,7 @@
   {
     "id": 41210101,
     "achievementId": 412101,
-    "desc": "观看“复乐园”活动正篇。",
+    "desc": "观看第十章故事。",
     "extraDesc": "孩子啊孩子，撑着船儿离开吧。",
     "listenerType": "EpisodeFinish",
     "listenerParam": "11025",
@@ -5210,7 +5210,7 @@
   {
     "id": 41210102,
     "achievementId": 412101,
-    "desc": "满星完成“复乐园”活动正篇。",
+    "desc": "满星完成第十章故事。",
     "extraDesc": "愿你勇敢，愿你自由。",
     "listenerType": "ChapterAllStarAdvence",
     "listenerParam": "110",
@@ -5222,7 +5222,7 @@
   {
     "id": 41210103,
     "achievementId": 412101,
-    "desc": "满星完成“复乐园”活动【厄险】难度。",
+    "desc": "满星完成第十章【厄险】难度。",
     "extraDesc": "愿命运许诺一个重逢，在无数道路交会的时候。",
     "listenerType": "ChapterAllStarAdvence",
     "listenerParam": "210",
@@ -5234,7 +5234,7 @@
   {
     "id": 41210201,
     "achievementId": 412102,
-    "desc": "在“复乐园”活动正篇中完成10个任务。",
+    "desc": "完成第十章故事的10个里程碑任务。",
     "extraDesc": "《雪橇犬驾驶培训》第一条：与它们成为朋友。",
     "listenerType": "Activity113TaskCount",
     "listenerParam": "12802",
@@ -5246,7 +5246,7 @@
   {
     "id": 41210202,
     "achievementId": 412102,
-    "desc": "在“复乐园”活动正篇中完成20个任务。",
+    "desc": "完成第十章故事的20个里程碑任务。",
     "extraDesc": "在碎冰上失足？别慌张，或许正好砸中了遗址的入口。",
     "listenerType": "Activity113TaskCount",
     "listenerParam": "12802",
@@ -5462,7 +5462,7 @@
   {
     "id": 41220401,
     "achievementId": 412204,
-    "desc": "收集20个漫游行装",
+    "desc": "收集20个盒中之物",
     "extraDesc": "好吧，之前是奇怪的符号，现在是奇怪的物件。",
     "listenerType": "Act200CollectEquipNum",
     "listenerParam": "12806",
@@ -5474,7 +5474,7 @@
   {
     "id": 41220402,
     "achievementId": 412204,
-    "desc": "收集40个漫游行装",
+    "desc": "收集40个盒中之物",
     "extraDesc": "这些拼在一起真的有效果？",
     "listenerType": "Act200CollectEquipNum",
     "listenerParam": "12806",
@@ -5486,7 +5486,7 @@
   {
     "id": 41220403,
     "achievementId": 412204,
-    "desc": "收集100个漫游行装",
+    "desc": "收集100个盒中之物",
     "extraDesc": "我的，我的宝贝！",
     "listenerType": "Act200CollectEquipNum",
     "listenerParam": "12806",
@@ -5522,7 +5522,7 @@
   {
     "id": 41220601,
     "achievementId": 412206,
-    "desc": "演习中累计击败10个怪物",
+    "desc": "演习中累计完成10场战斗",
     "extraDesc": "拉普拉斯人不好斗。",
     "listenerType": "Act200SceneWinBattle",
     "listenerParam": "12806",
@@ -5534,7 +5534,7 @@
   {
     "id": 41220602,
     "achievementId": 412206,
-    "desc": "演习中累计击败20个怪物",
+    "desc": "演习中累计完成20场战斗",
     "extraDesc": "快将我的分析仪取来，我要去跟那个魔精比个高低！",
     "listenerType": "Act200SceneWinBattle",
     "listenerParam": "12806",

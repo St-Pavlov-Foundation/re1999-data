@@ -742,6 +742,34 @@ function var_0_0.getFightFloatPathFunc(arg_48_0)
 	return var_0_0.instance.srcGetFightFloatPathFunc(arg_48_0)
 end
 
+function var_0_0.getHeroMaxLevel(arg_49_0, arg_49_1)
+	arg_49_0.cacheHeroMaxLevelDict = arg_49_0.cacheHeroMaxLevelDict or {}
+
+	local var_49_0 = arg_49_0.cacheHeroMaxLevelDict[arg_49_1]
+
+	if var_49_0 then
+		return var_49_0
+	end
+
+	local var_49_1 = SkillConfig.instance:getherolevelsCO(arg_49_1)
+
+	if not var_49_1 then
+		return 0
+	end
+
+	local var_49_2 = 0
+
+	for iter_49_0, iter_49_1 in pairs(var_49_1) do
+		if var_49_2 < iter_49_1.level then
+			var_49_2 = iter_49_1.level
+		end
+	end
+
+	arg_49_0.cacheHeroMaxLevelDict[arg_49_1] = var_49_2
+
+	return var_49_2
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

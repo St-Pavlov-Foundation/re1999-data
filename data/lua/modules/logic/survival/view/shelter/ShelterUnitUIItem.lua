@@ -20,9 +20,11 @@ function var_0_0.init(arg_2_0, arg_2_1)
 	arg_2_0.animator = arg_2_0.rootGO:GetComponent(gohelper.Type_Animator)
 	arg_2_0.imagebubble = gohelper.findChildImage(arg_2_0.rootGO, "#image_bubble")
 	arg_2_0.imageicon = gohelper.findChildImage(arg_2_0.rootGO, "#image_icon")
+	arg_2_0.cgImg = gohelper.findChildComponent(arg_2_0.rootGO, "#image_icon", typeof(UnityEngine.CanvasGroup))
 	arg_2_0.goBuildLevelup = gohelper.findChild(arg_2_0.rootGO, "#go_levelUp")
 	arg_2_0.goCanBuild = gohelper.findChild(arg_2_0.rootGO, "#go_canBuild")
 	arg_2_0.goRest = gohelper.findChild(arg_2_0.rootGO, "#go_rest")
+	arg_2_0.goRecruitFinish = gohelper.findChild(arg_2_0.rootGO, "#go_finish")
 	arg_2_0.goBuildInfo = gohelper.findChild(arg_2_0.rootGO, "#go_Info")
 	arg_2_0.txtBuildInfo = gohelper.findChildTextMesh(arg_2_0.rootGO, "#go_Info/Info/#txt_Info")
 	arg_2_0.goMonster = gohelper.findChild(arg_2_0.rootGO, "monster")
@@ -177,9 +179,9 @@ function var_0_0.refreshNpcInfo(arg_10_0)
 	local var_10_1 = not var_10_0:isInPlayerPos()
 
 	if var_10_1 then
-		local var_10_2 = SurvivalMapHelper.instance:getShelterNpcBehaviorList(arg_10_0.unitId)
+		local var_10_2 = SurvivalMapHelper.instance:getShelterNpcPriorityBehavior(arg_10_0.unitId)
 
-		var_10_1 = var_10_2[1] and var_10_2[1].isMark == 1 or false
+		var_10_1 = var_10_2 and var_10_2.isMark == 1 or false
 	end
 
 	arg_10_0:setVisible(var_10_1)
@@ -262,22 +264,46 @@ function var_0_0.refreshBuildingInfo(arg_13_0)
 
 	arg_13_0:setVisible(true)
 	gohelper.setActive(arg_13_0.goBuildInfo, var_13_3)
-	gohelper.setActive(arg_13_0.imagebubble, false)
 
 	local var_13_4 = var_13_0:isBuildingCanLevup(var_13_1, var_13_2 + 1, false)
 
-	if var_13_3 then
-		if var_13_1.isSingleLevel then
-			arg_13_0.txtBuildInfo.text = var_13_1.baseCo.name
-		else
-			arg_13_0.txtBuildInfo.text = string.format("%s\n<size=28>LV:%s</size>", var_13_1.baseCo.name, var_13_2)
-		end
-
-		arg_13_0:setBubbleIcon()
-		gohelper.setActive(arg_13_0.goBuildLevelup, var_13_4)
-	else
+	if not var_13_3 then
 		arg_13_0:setBubbleIcon(var_13_4 and "survival_map_bubble_add")
+		gohelper.setActive(arg_13_0.imagebubble, false)
+
+		return
 	end
+
+	if var_13_1.isSingleLevel then
+		arg_13_0.txtBuildInfo.text = var_13_1.baseCo.name
+	else
+		arg_13_0.txtBuildInfo.text = string.format("%s\n<size=28>Lv.%s</size>", var_13_1.baseCo.name, var_13_2)
+	end
+
+	gohelper.setActive(arg_13_0.goBuildLevelup, var_13_4)
+
+	if var_13_1:isEqualType(SurvivalEnum.BuildingType.Npc) then
+		arg_13_0:setBubbleIcon("survival_map_icon_20")
+
+		local var_13_5 = var_13_0:getRecruitInfo()
+		local var_13_6 = var_13_5:isInRecruit()
+		local var_13_7 = var_13_5:isCanSelectNpc()
+
+		gohelper.setActive(arg_13_0.goRest, var_13_6)
+
+		local var_13_8 = var_13_6 and 0.6 or 1
+
+		arg_13_0.cgImg.alpha = var_13_8
+
+		gohelper.setActive(arg_13_0.goRecruitFinish, var_13_7)
+		gohelper.setActive(arg_13_0.goCanBuild, not var_13_6 and not var_13_7)
+		gohelper.setActive(arg_13_0.imagebubble, true)
+
+		return
+	end
+
+	arg_13_0:setBubbleIcon()
+	gohelper.setActive(arg_13_0.imagebubble, false)
 end
 
 function var_0_0.setBubbleIcon(arg_14_0, arg_14_1)

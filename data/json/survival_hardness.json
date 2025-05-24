@@ -8,11 +8,11 @@
     "level": 3,
     "optional": 1,
     "isShow": 0,
-    "icon": "21011",
+    "icon": "21013",
     "titile": "视线遮蔽Ⅰ",
-    "desc": "基础可见范围-1",
+    "desc": "基础视野-1",
     "scoreRate": 150,
-    "lockDesc": ""
+    "lockDesc": "完成度效率×1.5通关后解锁"
   },
   {
     "id": 21012,
@@ -23,11 +23,11 @@
     "level": 5,
     "optional": 1,
     "isShow": 0,
-    "icon": "21012",
+    "icon": "21015",
     "titile": "视线遮蔽Ⅱ",
-    "desc": "基础可见范围-2",
+    "desc": "基础视野-2",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.85通关后解锁"
   },
   {
     "id": 21013,
@@ -40,9 +40,9 @@
     "isShow": 0,
     "icon": "21013",
     "titile": "视线遮蔽Ⅲ",
-    "desc": "基础可见范围-3（废弃）",
+    "desc": "基础视野-3（废弃）",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 21014,
@@ -55,9 +55,9 @@
     "isShow": 0,
     "icon": "21014",
     "titile": "视线遮蔽Ⅳ",
-    "desc": "基础可见范围-4（废弃）",
+    "desc": "基础视野-4（废弃）",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 21015,
@@ -70,9 +70,9 @@
     "isShow": 0,
     "icon": "21015",
     "titile": "视线遮蔽Ⅴ",
-    "desc": "基础可见范围-5（废弃）",
+    "desc": "基础视野-5（废弃）",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 21021,
@@ -85,7 +85,7 @@
     "isShow": 0,
     "icon": "21021",
     "titile": "污染崩溃Ⅰ",
-    "desc": "进入探索地图时，损失10%当前抵抗力",
+    "desc": "进入演习地图时，损失10%当前抵抗力",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -100,9 +100,9 @@
     "isShow": 0,
     "icon": "21023",
     "titile": "污染崩溃Ⅱ",
-    "desc": "进入探索地图时，损失15%当前抵抗力",
+    "desc": "进入演习地图时，损失15%当前抵抗力",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.55通关后解锁"
   },
   {
     "id": 21025,
@@ -115,9 +115,9 @@
     "isShow": 0,
     "icon": "21025",
     "titile": "污染崩溃Ⅲ",
-    "desc": "进入探索地图时，损失20%当前抵抗力",
+    "desc": "进入演习地图时，损失20%当前抵抗力",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×2.9通关后解锁"
   },
   {
     "id": 21031,
@@ -130,7 +130,7 @@
     "isShow": 0,
     "icon": "21031",
     "titile": "垃圾成山Ⅰ",
-    "desc": "移动时有1%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc": "移动时有1%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -145,9 +145,9 @@
     "isShow": 0,
     "icon": "21032",
     "titile": "垃圾成山Ⅱ",
-    "desc": "移动时有2%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc": "移动时有2%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 21033,
@@ -160,9 +160,9 @@
     "isShow": 0,
     "icon": "21033",
     "titile": "垃圾成山Ⅲ",
-    "desc": "移动时有3%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc": "移动时有3%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.6通关后解锁"
   },
   {
     "id": 21034,
@@ -175,9 +175,9 @@
     "isShow": 0,
     "icon": "21034",
     "titile": "垃圾成山Ⅳ",
-    "desc": "移动时有4%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc": "移动时有4%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.45通关后解锁"
   },
   {
     "id": 21035,
@@ -190,9 +190,9 @@
     "isShow": 0,
     "icon": "21035",
     "titile": "垃圾成山Ⅴ",
-    "desc": "移动时有5%概率会获得无法丢弃的物品【无用的垃圾】",
+    "desc": "移动时有5%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×2.95通关后解锁"
   },
   {
     "id": 21041,
@@ -222,7 +222,7 @@
     "titile": "腐坏Ⅱ",
     "desc": "招募漫游助理时，物品价值降低20%",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 21043,
@@ -237,7 +237,7 @@
     "titile": "腐坏Ⅲ",
     "desc": "招募漫游助理时，物品价值降低30%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.65通关后解锁"
   },
   {
     "id": 21044,
@@ -252,7 +252,7 @@
     "titile": "腐坏Ⅳ",
     "desc": "招募漫游助理时，物品价值降低40%",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.5通关后解锁"
   },
   {
     "id": 21045,
@@ -267,7 +267,7 @@
     "titile": "腐坏Ⅴ",
     "desc": "招募漫游助理时，物品价值降低50%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3通关后解锁"
   },
   {
     "id": 21051,
@@ -280,7 +280,7 @@
     "isShow": 0,
     "icon": "21051",
     "titile": "雨浸Ⅰ",
-    "desc": "处于暴雨中行动时，抵抗力额外降低2",
+    "desc": "在暴雨中行动时，抵抗力额外降低2",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -295,9 +295,9 @@
     "isShow": 0,
     "icon": "21053",
     "titile": "雨浸Ⅱ",
-    "desc": "处于暴雨中行动时，抵抗力额外降低3",
+    "desc": "在暴雨中行动时，抵抗力额外降低3",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.7通关后解锁"
   },
   {
     "id": 21055,
@@ -310,9 +310,9 @@
     "isShow": 0,
     "icon": "21055",
     "titile": "雨浸Ⅲ",
-    "desc": "处于暴雨中行动时，抵抗力额外降低4",
+    "desc": "在暴雨中行动时，抵抗力额外降低4",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.05通关后解锁"
   },
   {
     "id": 21065,
@@ -325,9 +325,9 @@
     "isShow": 0,
     "icon": "21065",
     "titile": "败者无获",
-    "desc": "探索失败时，完全损失所有探索物品",
+    "desc": "演习失败时，完全损失所有探索物品",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.1通关后解锁"
   },
   {
     "id": 21071,
@@ -340,7 +340,7 @@
     "isShow": 0,
     "icon": "21071",
     "titile": "搜刮迟滞Ⅰ",
-    "desc": "搜刮耗时额外提升10%",
+    "desc": "选项耗时额外提升10%",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -355,9 +355,9 @@
     "isShow": 0,
     "icon": "21073",
     "titile": "搜刮迟滞Ⅱ",
-    "desc": "搜刮耗时额外提升20%",
+    "desc": "选项耗时额外提升20%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.75通关后解锁"
   },
   {
     "id": 21075,
@@ -370,9 +370,9 @@
     "isShow": 0,
     "icon": "21075",
     "titile": "搜刮迟滞Ⅲ",
-    "desc": "搜刮耗时额外提升30%",
+    "desc": "选项耗时额外提升30%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.15通关后解锁"
   },
   {
     "id": 21081,
@@ -385,7 +385,7 @@
     "isShow": 0,
     "icon": "21081",
     "titile": "携量削减Ⅰ",
-    "desc": "角色的探索负重降低10%",
+    "desc": "进行演习时，负重降低10%",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -400,9 +400,9 @@
     "isShow": 0,
     "icon": "21083",
     "titile": "携量削减Ⅱ",
-    "desc": "角色的探索负重降低20%",
+    "desc": "进行演习时，负重降低20%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.8通关后解锁"
   },
   {
     "id": 21085,
@@ -415,9 +415,9 @@
     "isShow": 0,
     "icon": "21085",
     "titile": "携量削减Ⅲ",
-    "desc": "角色的探索负重降低30%",
+    "desc": "进行演习时，负重降低30%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.2通关后解锁"
   },
   {
     "id": 22011,
@@ -430,7 +430,7 @@
     "isShow": 0,
     "icon": "22011",
     "titile": "慢性侵蚀Ⅰ",
-    "desc": "若探索战斗结束回合超过8，上阵角色失去10%最大抵抗力",
+    "desc": "若演习战斗结束回合超过8，上阵成员失去10%最大抵抗力",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -445,9 +445,9 @@
     "isShow": 0,
     "icon": "22013",
     "titile": "慢性侵蚀Ⅱ",
-    "desc": "若探索战斗结束回合超过7，上阵角色失去10%最大抵抗力",
+    "desc": "若演习战斗结束回合超过7，上阵成员失去10%最大抵抗力",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.85通关后解锁"
   },
   {
     "id": 22015,
@@ -460,9 +460,9 @@
     "isShow": 0,
     "icon": "22015",
     "titile": "慢性侵蚀Ⅲ",
-    "desc": "若探索战斗结束回合超过6，上阵角色失去10%最大抵抗力",
+    "desc": "若演习战斗结束回合超过6，上阵成员失去10%最大抵抗力",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.25通关后解锁"
   },
   {
     "id": 22021,
@@ -475,7 +475,7 @@
     "isShow": 0,
     "icon": "22021",
     "titile": "狂暴肆虐Ⅰ",
-    "desc": "探索战斗中，怪物会在第10回合会进入【狂暴】状态",
+    "desc": "演习战斗中，怪物会在第10回合变得更加强大",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -490,9 +490,9 @@
     "isShow": 0,
     "icon": "22023",
     "titile": "狂暴肆虐Ⅱ",
-    "desc": "探索战斗中，怪物会在第8回合会进入【狂暴】状态",
+    "desc": "演习战斗中，怪物会在第8回合变得更加强大",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.9通关后解锁"
   },
   {
     "id": 22025,
@@ -505,9 +505,9 @@
     "isShow": 0,
     "icon": "22025",
     "titile": "狂暴肆虐Ⅲ",
-    "desc": "探索战斗中，怪物会在第6回合会进入【狂暴】状态",
+    "desc": "演习战斗中，怪物会在第6回合变得更加强大",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.3通关后解锁"
   },
   {
     "id": 22031,
@@ -520,7 +520,7 @@
     "isShow": 0,
     "icon": "22031",
     "titile": "死神窥视Ⅰ",
-    "desc": "第6天开始，演习剩余时间不足1小时后，会出现必定追踪自身的强敌",
+    "desc": "第6天开始，演习剩余时间不足5小时后，会出现追踪自身的强敌",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -535,9 +535,9 @@
     "isShow": 0,
     "icon": "22033",
     "titile": "死神窥视Ⅱ",
-    "desc": "第6天开始，演习剩余时间不足2小时后，会出现必定追踪自身的强敌",
+    "desc": "第6天开始，演习剩余时间不足6小时后，会出现追踪自身的强敌",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×1.95通关后解锁"
   },
   {
     "id": 22035,
@@ -550,9 +550,9 @@
     "isShow": 0,
     "icon": "22035",
     "titile": "死神窥视Ⅲ",
-    "desc": "第6天开始，演习剩余时间不足3小时后，会出现必定追踪自身的强敌",
+    "desc": "第6天开始，演习剩余时间不足7小时后，会出现追踪自身的强敌",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.35通关后解锁"
   },
   {
     "id": 22040,
@@ -565,7 +565,7 @@
     "isShow": 0,
     "icon": "22041",
     "titile": "终末之刻",
-    "desc": "第6天为最终之日，将迎来1次入侵",
+    "desc": "坚持生存4天，击退1次入侵怪物",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -580,8 +580,8 @@
     "isShow": 0,
     "icon": "22041",
     "titile": "终末之刻Ⅰ",
-    "desc": "第8天为最终之日，将迎来2次入侵",
-    "scoreRate": 0,
+    "desc": "坚持生存8天，击退2次入侵怪物",
+    "scoreRate": 50,
     "lockDesc": ""
   },
   {
@@ -591,13 +591,13 @@
     "type": 2,
     "subtype": 4,
     "level": 2,
-    "optional": 0,
+    "optional": 1,
     "isShow": 0,
     "icon": "22042",
     "titile": "终末之刻Ⅱ",
-    "desc": "第9天为最终之日，将迎来2次入侵",
+    "desc": "坚持生存9天，击退2次更大的入侵怪物",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 22043,
@@ -606,13 +606,13 @@
     "type": 2,
     "subtype": 4,
     "level": 3,
-    "optional": 0,
+    "optional": 1,
     "isShow": 0,
     "icon": "22043",
     "titile": "终末之刻Ⅲ",
-    "desc": "第10天为最终之日，将迎来3次入侵，入侵怪物变强大了",
+    "desc": "坚持生存10天，击退3次更强的入侵怪物",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2通关后解锁"
   },
   {
     "id": 22044,
@@ -625,9 +625,9 @@
     "isShow": 0,
     "icon": "22044",
     "titile": "终末之刻Ⅳ",
-    "desc": "第11天为最终之日，将迎来3次入侵，入侵怪物更为强大了",
+    "desc": "坚持生存11天，击退3次极强的入侵怪物",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.55通关后解锁"
   },
   {
     "id": 22045,
@@ -640,9 +640,9 @@
     "isShow": 0,
     "icon": "22045",
     "titile": "终末之刻Ⅴ",
-    "desc": "第12天为最终之日，将迎来3次入侵，入侵怪物强得可怕",
+    "desc": "坚持生存12天，击退3次最强的入侵怪物",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.4通关后解锁"
   },
   {
     "id": 22051,
@@ -655,7 +655,7 @@
     "isShow": 0,
     "icon": "22051",
     "titile": "秽蚀翻涌Ⅰ",
-    "desc": "BOSS入侵时，初始获得5层【秽蚀升格】",
+    "desc": "入侵怪物获得微量强化",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -670,9 +670,9 @@
     "isShow": 0,
     "icon": "22052",
     "titile": "秽蚀翻涌Ⅱ",
-    "desc": "BOSS入侵时，初始获得10层【秽蚀升格】",
+    "desc": "入侵怪物获得少量强化",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 22053,
@@ -685,9 +685,9 @@
     "isShow": 0,
     "icon": "22053",
     "titile": "秽蚀翻涌Ⅲ",
-    "desc": "BOSS入侵时，初始获得15层【秽蚀升格】",
+    "desc": "入侵怪物获得中量强化",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.05通关后解锁"
   },
   {
     "id": 22054,
@@ -700,9 +700,9 @@
     "isShow": 0,
     "icon": "22054",
     "titile": "秽蚀翻涌Ⅳ",
-    "desc": "BOSS入侵时，初始获得20层【秽蚀升格】",
+    "desc": "入侵怪物获得大量强化",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.6通关后解锁"
   },
   {
     "id": 22055,
@@ -715,9 +715,9 @@
     "isShow": 0,
     "icon": "22055",
     "titile": "秽蚀翻涌Ⅴ",
-    "desc": "BOSS入侵时，初始获得25层【秽蚀升格】",
+    "desc": "入侵怪物获得超量强化",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.45通关后解锁"
   },
   {
     "id": 22061,
@@ -730,7 +730,7 @@
     "isShow": 0,
     "icon": "22061",
     "titile": "恶敌横行Ⅰ",
-    "desc": "地图会额外出现少量的精英战斗",
+    "desc": "演习地图会额外出现少量的精英怪物",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -745,9 +745,9 @@
     "isShow": 0,
     "icon": "22063",
     "titile": "恶敌横行Ⅱ",
-    "desc": "地图会额外出现中量的精英战斗",
+    "desc": "演习地图会额外出现中量的精英怪物",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.1通关后解锁"
   },
   {
     "id": 22065,
@@ -760,9 +760,9 @@
     "isShow": 0,
     "icon": "22065",
     "titile": "恶敌横行Ⅲ",
-    "desc": "地图会额外出现大量的精英战斗",
+    "desc": "演习地图会额外出现大量的精英怪物",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 22071,
@@ -773,11 +773,11 @@
     "level": 3,
     "optional": 1,
     "isShow": 0,
-    "icon": "22071",
+    "icon": "22073",
     "titile": "敌速激增Ⅰ",
-    "desc": "探索战斗，怪物行动力+1",
+    "desc": "演习战斗，怪物行动力+1",
     "scoreRate": 150,
-    "lockDesc": ""
+    "lockDesc": "完成度效率×2.15通关后解锁"
   },
   {
     "id": 22073,
@@ -788,11 +788,11 @@
     "level": 5,
     "optional": 1,
     "isShow": 0,
-    "icon": "22073",
+    "icon": "22075",
     "titile": "敌速激增Ⅱ",
-    "desc": "探索战斗，怪物行动力+2",
+    "desc": "演习战斗，怪物行动力+2",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 22083,
@@ -805,9 +805,9 @@
     "isShow": 0,
     "icon": "22083",
     "titile": "抗性瓦解Ⅰ",
-    "desc": "探索战斗失败，额外损失100%抵抗力",
+    "desc": "演习战斗失败，额外损失100%抵抗力",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.2通关后解锁"
   },
   {
     "id": 22085,
@@ -820,9 +820,9 @@
     "isShow": 0,
     "icon": "22085",
     "titile": "抗性瓦解Ⅱ",
-    "desc": "探索战斗失败，额外损失200%抵抗力",
+    "desc": "演习战斗失败，额外损失200%抵抗力",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 23012,
@@ -837,7 +837,7 @@
     "titile": "饥荒迫近Ⅰ",
     "desc": "每日储备消耗提升10%",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 23013,
@@ -852,7 +852,7 @@
     "titile": "饥荒迫近Ⅱ",
     "desc": "每日储备消耗提升20%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.25通关后解锁"
   },
   {
     "id": 23014,
@@ -867,7 +867,7 @@
     "titile": "饥荒迫近Ⅲ",
     "desc": "每日储备消耗提升30%",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.65通关后解锁"
   },
   {
     "id": 23015,
@@ -882,7 +882,7 @@
     "titile": "饥荒迫近Ⅳ",
     "desc": "每日储备消耗提升40%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 23022,
@@ -895,9 +895,9 @@
     "isShow": 0,
     "icon": "23022",
     "titile": "筑费攀升Ⅰ",
-    "desc": "建造、修缮建筑的消耗提升25%",
+    "desc": "建造建筑消耗提升25%",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 23023,
@@ -910,9 +910,9 @@
     "isShow": 0,
     "icon": "23023",
     "titile": "筑费攀升Ⅱ",
-    "desc": "建造、修缮建筑的消耗提升50%",
+    "desc": "建造建筑消耗提升50%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.3通关后解锁"
   },
   {
     "id": 23024,
@@ -925,9 +925,9 @@
     "isShow": 0,
     "icon": "23024",
     "titile": "筑费攀升Ⅲ",
-    "desc": "建造、修缮建筑的消耗提升75%",
+    "desc": "建造建筑消耗提升75%",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.7通关后解锁"
   },
   {
     "id": 23025,
@@ -940,9 +940,9 @@
     "isShow": 0,
     "icon": "23025",
     "titile": "筑费攀升Ⅳ",
-    "desc": "建造、修缮建筑的消耗提升100%",
+    "desc": "建造建筑消耗提升100%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 23031,
@@ -955,7 +955,7 @@
     "isShow": 0,
     "icon": "23031",
     "titile": "物价飞涨Ⅰ",
-    "desc": "购买商品时，价格上升20%",
+    "desc": "购买商品价格上升20%",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -970,9 +970,9 @@
     "isShow": 0,
     "icon": "23032",
     "titile": "物价飞涨Ⅱ",
-    "desc": "购买商品时，价格上升40%",
+    "desc": "购买商品价格上升40%",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 23033,
@@ -985,9 +985,9 @@
     "isShow": 0,
     "icon": "23033",
     "titile": "物价飞涨Ⅲ",
-    "desc": "购买商品时，价格上升60%",
+    "desc": "购买商品价格上升60%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.35通关后解锁"
   },
   {
     "id": 23034,
@@ -1000,9 +1000,9 @@
     "isShow": 0,
     "icon": "23034",
     "titile": "物价飞涨Ⅳ",
-    "desc": "购买商品时，价格上升80%",
+    "desc": "购买商品价格上升80%",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.75通关后解锁"
   },
   {
     "id": 23035,
@@ -1015,9 +1015,9 @@
     "isShow": 0,
     "icon": "23035",
     "titile": "物价飞涨Ⅴ",
-    "desc": "购买商品时，价格上升100%",
+    "desc": "购买商品价格上升100%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 23041,
@@ -1030,7 +1030,7 @@
     "isShow": 0,
     "icon": "23041",
     "titile": "贱价抛售Ⅰ",
-    "desc": "出售商品时，价格降低10%",
+    "desc": "出售商品价格降低10%",
     "scoreRate": 50,
     "lockDesc": ""
   },
@@ -1045,9 +1045,9 @@
     "isShow": 0,
     "icon": "23042",
     "titile": "贱价抛售Ⅱ",
-    "desc": "出售商品时，价格降低20%",
+    "desc": "出售商品价格降低20%",
     "scoreRate": 100,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
     "id": 23043,
@@ -1060,9 +1060,9 @@
     "isShow": 0,
     "icon": "23043",
     "titile": "贱价抛售Ⅲ",
-    "desc": "出售商品时，价格降低30%",
+    "desc": "出售商品价格降低30%",
     "scoreRate": 150,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": "完成度效率×2.4通关后解锁"
   },
   {
     "id": 23044,
@@ -1075,9 +1075,9 @@
     "isShow": 0,
     "icon": "23044",
     "titile": "贱价抛售Ⅳ",
-    "desc": "出售商品时，价格降低40%",
+    "desc": "出售商品价格降低40%",
     "scoreRate": 200,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": "完成度效率×2.8通关后解锁"
   },
   {
     "id": 23045,
@@ -1090,9 +1090,9 @@
     "isShow": 0,
     "icon": "23045",
     "titile": "贱价抛售Ⅴ",
-    "desc": "出售商品时，价格降低50%",
+    "desc": "出售商品价格降低50%",
     "scoreRate": 250,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
     "id": 24010,
@@ -1150,7 +1150,7 @@
     "isShow": 1,
     "icon": "",
     "titile": "",
-    "desc": "进入地图时，会点亮撤离点、搜刮事件，其他事件会用？标记",
+    "desc": "进入地图时，会点亮撤离点、选项事件，其他事件会用？标记",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -1204,7 +1204,7 @@
     "versions": "",
     "seasons": "",
     "type": 4,
-    "subtype": 2,
+    "subtype": 6,
     "level": 0,
     "optional": 0,
     "isShow": 1,
@@ -1219,7 +1219,7 @@
     "versions": "",
     "seasons": "",
     "type": 4,
-    "subtype": 2,
+    "subtype": 6,
     "level": 0,
     "optional": 0,
     "isShow": 1,
@@ -1234,7 +1234,7 @@
     "versions": "",
     "seasons": "",
     "type": 4,
-    "subtype": 2,
+    "subtype": 6,
     "level": 0,
     "optional": 0,
     "isShow": 1,
@@ -1245,17 +1245,32 @@
     "lockDesc": ""
   },
   {
+    "id": 2204101,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 41,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22041",
+    "titile": "终末之刻Ⅰ",
+    "desc": "第5天为最终之日，将迎来1次入侵",
+    "scoreRate": 100,
+    "lockDesc": ""
+  },
+  {
     "id": 2107101,
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 7,
+    "subtype": 71,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21071",
     "titile": "搜刮迟滞Ⅰ",
-    "desc": "搜刮耗时额外提升10%",
+    "desc": "选项耗时额外提升10%",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -1264,28 +1279,58 @@
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 2,
+    "subtype": 21,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22021",
     "titile": "狂暴肆虐Ⅰ",
-    "desc": "探索战斗中，怪物会在第10回合会进入【狂暴】状态",
+    "desc": "探索战斗中，怪物会在第10回合变得更加强大",
     "scoreRate": 0,
     "lockDesc": ""
   },
   {
-    "id": 2204101,
+    "id": 2204202,
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 4,
-    "level": 1,
+    "subtype": 41,
+    "level": 3,
     "optional": 0,
     "isShow": 0,
-    "icon": "22041",
-    "titile": "终末之刻Ⅰ",
-    "desc": "第8天为最终之日，将迎来2次入侵",
+    "icon": "22042",
+    "titile": "终末之刻Ⅱ",
+    "desc": "第6天为最终之日，将迎来2次入侵",
+    "scoreRate": 250,
+    "lockDesc": ""
+  },
+  {
+    "id": 2107302,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 71,
+    "level": 3,
+    "optional": 3,
+    "isShow": 0,
+    "icon": "21073",
+    "titile": "搜刮迟滞Ⅱ",
+    "desc": "选项耗时额外提升20%",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 2202302,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 21,
+    "level": 3,
+    "optional": 3,
+    "isShow": 0,
+    "icon": "22023",
+    "titile": "狂暴肆虐Ⅱ",
+    "desc": "探索战斗中，怪物会在第8回合变得更加强大",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -1294,73 +1339,58 @@
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 5,
+    "subtype": 51,
     "level": 2,
-    "optional": 1,
+    "optional": 2,
     "isShow": 0,
     "icon": "22052",
     "titile": "秽蚀翻涌Ⅱ",
-    "desc": "BOSS入侵时，初始获得10层【秽蚀升格】",
+    "desc": "入侵怪物获得少量强化",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到30000时解锁"
+    "lockDesc": ""
   },
   {
-    "id": 2202302,
+    "id": 2204303,
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 2,
-    "level": 3,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "22023",
-    "titile": "狂暴肆虐Ⅱ",
-    "desc": "探索战斗中，怪物会在第8回合会进入【狂暴】状态",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到40000时解锁"
-  },
-  {
-    "id": 2107302,
-    "versions": "",
-    "seasons": "",
-    "type": 1,
-    "subtype": 7,
-    "level": 3,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "21073",
-    "titile": "搜刮迟滞Ⅱ",
-    "desc": "搜刮耗时额外提升20%",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到40000时解锁"
-  },
-  {
-    "id": 2204202,
-    "versions": "",
-    "seasons": "",
-    "type": 2,
-    "subtype": 4,
-    "level": 2,
+    "subtype": 41,
+    "level": 4,
     "optional": 0,
     "isShow": 0,
-    "icon": "22042",
-    "titile": "终末之刻Ⅱ",
-    "desc": "第9天为最终之日，将迎来2次入侵",
-    "scoreRate": 150,
-    "lockDesc": "结算积分达到30000时解锁"
+    "icon": "22043",
+    "titile": "终末之刻Ⅲ",
+    "desc": "第7天为最终之日，将迎来2次入侵",
+    "scoreRate": 350,
+    "lockDesc": ""
   },
   {
-    "id": 2101103,
+    "id": 2107503,
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 1,
-    "level": 3,
-    "optional": 1,
+    "subtype": 71,
+    "level": 5,
+    "optional": 5,
     "isShow": 0,
-    "icon": "21011",
-    "titile": "视线遮蔽Ⅰ",
-    "desc": "基础可见范围-1",
+    "icon": "21075",
+    "titile": "搜刮迟滞Ⅲ",
+    "desc": "选项耗时额外提升30%",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 2202503,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 21,
+    "level": 5,
+    "optional": 5,
+    "isShow": 0,
+    "icon": "22025",
+    "titile": "狂暴肆虐Ⅲ",
+    "desc": "探索战斗中，怪物会在第6回合变得更加强大",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -1369,73 +1399,88 @@
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 5,
+    "subtype": 51,
     "level": 3,
-    "optional": 1,
+    "optional": 3,
     "isShow": 0,
     "icon": "22053",
     "titile": "秽蚀翻涌Ⅲ",
-    "desc": "BOSS入侵时，初始获得15层【秽蚀升格】",
+    "desc": "入侵怪物获得中量强化",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到40000时解锁"
+    "lockDesc": ""
   },
   {
-    "id": 2202503,
-    "versions": "",
-    "seasons": "",
-    "type": 2,
-    "subtype": 2,
-    "level": 5,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "22025",
-    "titile": "狂暴肆虐Ⅲ",
-    "desc": "探索战斗中，怪物会在第6回合会进入【狂暴】状态",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
-  },
-  {
-    "id": 2107503,
+    "id": 2101103,
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 7,
-    "level": 5,
-    "optional": 1,
+    "subtype": 11,
+    "level": 3,
+    "optional": 3,
     "isShow": 0,
-    "icon": "21075",
-    "titile": "搜刮迟滞Ⅲ",
-    "desc": "搜刮耗时额外提升30%",
+    "icon": "21011",
+    "titile": "视线遮蔽Ⅰ",
+    "desc": "基础视野-1",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
+    "lockDesc": ""
   },
   {
-    "id": 2204303,
+    "id": 2204304,
     "versions": "",
     "seasons": "",
     "type": 2,
-    "subtype": 4,
-    "level": 3,
+    "subtype": 41,
+    "level": 5,
     "optional": 0,
     "isShow": 0,
     "icon": "22043",
     "titile": "终末之刻Ⅲ",
-    "desc": "第10天为最终之日，将迎来3次入侵，入侵怪物变强大了",
-    "scoreRate": 300,
-    "lockDesc": "结算积分达到40000时解锁"
+    "desc": "第8天为最终之日，将迎来2次入侵",
+    "scoreRate": 500,
+    "lockDesc": ""
   },
   {
-    "id": 2102104,
+    "id": 2107504,
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 2,
-    "level": 1,
-    "optional": 1,
+    "subtype": 71,
+    "level": 5,
+    "optional": 5,
     "isShow": 0,
-    "icon": "21021",
-    "titile": "污染崩溃Ⅰ",
-    "desc": "进入探索地图时，损失10%当前抵抗力",
+    "icon": "21075",
+    "titile": "搜刮迟滞Ⅲ",
+    "desc": "选项耗时额外提升30%",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 2202504,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 21,
+    "level": 5,
+    "optional": 5,
+    "isShow": 0,
+    "icon": "22025",
+    "titile": "狂暴肆虐Ⅲ",
+    "desc": "探索战斗中，怪物会在第6回合变得更加强大",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 2205504,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 51,
+    "level": 5,
+    "optional": 5,
+    "isShow": 0,
+    "icon": "22055",
+    "titile": "秽蚀翻涌Ⅴ",
+    "desc": "入侵怪物获得超量强化",
     "scoreRate": 0,
     "lockDesc": ""
   },
@@ -1444,74 +1489,89 @@
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 1,
+    "subtype": 11,
     "level": 5,
-    "optional": 1,
+    "optional": 5,
     "isShow": 0,
     "icon": "21012",
     "titile": "视线遮蔽Ⅱ",
-    "desc": "基础可见范围-2",
+    "desc": "基础视野-2",
     "scoreRate": 0,
-    "lockDesc": "结算积分达到50000时解锁"
+    "lockDesc": ""
   },
   {
-    "id": 2205504,
-    "versions": "",
-    "seasons": "",
-    "type": 2,
-    "subtype": 5,
-    "level": 5,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "22055",
-    "titile": "秽蚀翻涌Ⅴ",
-    "desc": "BOSS入侵时，初始获得25层【秽蚀升格】",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
-  },
-  {
-    "id": 2202504,
-    "versions": "",
-    "seasons": "",
-    "type": 2,
-    "subtype": 2,
-    "level": 5,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "22025",
-    "titile": "狂暴肆虐Ⅲ",
-    "desc": "探索战斗中，怪物会在第6回合会进入【狂暴】状态",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
-  },
-  {
-    "id": 2107504,
+    "id": 2102104,
     "versions": "",
     "seasons": "",
     "type": 1,
-    "subtype": 7,
-    "level": 5,
-    "optional": 1,
-    "isShow": 0,
-    "icon": "21075",
-    "titile": "搜刮迟滞Ⅲ",
-    "desc": "搜刮耗时额外提升30%",
-    "scoreRate": 0,
-    "lockDesc": "结算积分达到60000时解锁"
-  },
-  {
-    "id": 2204304,
-    "versions": "",
-    "seasons": "",
-    "type": 2,
-    "subtype": 4,
-    "level": 3,
+    "subtype": 21,
+    "level": 1,
     "optional": 0,
     "isShow": 0,
-    "icon": "22043",
-    "titile": "终末之刻Ⅲ",
-    "desc": "第10天为最终之日，将迎来3次入侵，入侵怪物变强大了",
-    "scoreRate": 500,
-    "lockDesc": "结算积分达到40000时解锁"
+    "icon": "21021",
+    "titile": "污染崩溃Ⅰ",
+    "desc": "进入演习地图时，损失10%当前抵抗力",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 901005,
+    "versions": "",
+    "seasons": "",
+    "type": 4,
+    "subtype": 4,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "",
+    "titile": "",
+    "desc": "每日完全的抵抗力恢复",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 901006,
+    "versions": "",
+    "seasons": "",
+    "type": 4,
+    "subtype": 4,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "",
+    "titile": "",
+    "desc": "每日中量的抵抗力恢复",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 901007,
+    "versions": "",
+    "seasons": "",
+    "type": 4,
+    "subtype": 4,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "",
+    "titile": "",
+    "desc": "每日少量的抵抗力恢复",
+    "scoreRate": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 901008,
+    "versions": "",
+    "seasons": "",
+    "type": 4,
+    "subtype": 5,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "",
+    "titile": "",
+    "desc": "进入地图生成1个泉水",
+    "scoreRate": 0,
+    "lockDesc": ""
   }
 ]

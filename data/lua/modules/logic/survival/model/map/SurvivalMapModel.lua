@@ -16,6 +16,7 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0.save_mapScale = 0.6
 	arg_1_0.isHealthSub = false
 	arg_1_0.isFightLvUp = false
+	arg_1_0.isGetTalent = false
 	arg_1_0.isFightEnter = false
 end
 

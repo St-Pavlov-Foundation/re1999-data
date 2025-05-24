@@ -42,13 +42,16 @@ function var_0_0._processGuideEvent(arg_3_0)
 		ViewName.GuideStepEditor
 	}) and not SurvivalMapHelper.instance:isInFlow() then
 		local var_3_0 = false
-		local var_3_1 = SurvivalMapModel.instance:getSceneMo()
+		local var_3_1 = false
+		local var_3_2 = SurvivalMapModel.instance:getSceneMo()
 
-		for iter_3_0, iter_3_1 in ipairs(var_3_1.bag.items) do
+		for iter_3_0, iter_3_1 in ipairs(var_3_2.bag.items) do
 			if iter_3_1.equipCo then
 				var_3_0 = true
+			end
 
-				break
+			if iter_3_1.co and iter_3_1.co.type == SurvivalEnum.ItemType.Quick then
+				var_3_1 = true
 			end
 		end
 
@@ -56,17 +59,21 @@ function var_0_0._processGuideEvent(arg_3_0)
 			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitHaveEquip)
 		end
 
-		local var_3_2 = false
+		if var_3_1 and not arg_3_0:isGuideLock() then
+			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitHaveQuickItem)
+		end
 
-		for iter_3_2, iter_3_3 in ipairs(var_3_1.safeZone) do
-			if var_3_1.gameTime >= iter_3_3.startTime and var_3_1.gameTime <= iter_3_3.endTime then
-				var_3_2 = true
+		local var_3_3 = false
+
+		for iter_3_2, iter_3_3 in ipairs(var_3_2.safeZone) do
+			if var_3_2.gameTime >= iter_3_3.startTime and var_3_2.gameTime <= iter_3_3.endTime then
+				var_3_3 = true
 
 				break
 			end
 		end
 
-		if var_3_2 and not arg_3_0:isGuideLock() then
+		if var_3_3 and not arg_3_0:isGuideLock() then
 			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitInCircle)
 		end
 
@@ -76,6 +83,10 @@ function var_0_0._processGuideEvent(arg_3_0)
 
 		if SurvivalMapModel.instance.isFightLvUp and not arg_3_0:isGuideLock() then
 			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitFightLvUp)
+		end
+
+		if SurvivalMapModel.instance.isGetTalent and not arg_3_0:isGuideLock() then
+			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitTalentGet)
 		end
 	end
 end

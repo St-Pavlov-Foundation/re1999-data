@@ -42,6 +42,7 @@ function var_0_0._dropHealthHero(arg_7_0)
 end
 
 function var_0_0.onOpen(arg_8_0)
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_2)
 	arg_8_0:refreshParam()
 	arg_8_0:refreshView()
 	UIBlockHelper.instance:startBlock(arg_8_0.viewName, 0.4, arg_8_0.viewName)
@@ -51,6 +52,8 @@ end
 function var_0_0.refreshParam(arg_9_0)
 	arg_9_0.buildingId = arg_9_0.viewParam.buildingId
 	arg_9_0.buildingInfo = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfo(arg_9_0.buildingId)
+
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnOpenBuildingView, arg_9_0.buildingInfo:getBuildingType())
 end
 
 function var_0_0.refreshView(arg_10_0)
@@ -96,7 +99,7 @@ function var_0_0.refreshInfoView(arg_12_0)
 	arg_12_0.infoView:refreshParam(var_12_2)
 end
 
-function var_0_0.onClose(arg_13_0)
+function var_0_0.onDestroyView(arg_13_0)
 	TaskDispatcher.cancelTask(arg_13_0._dropHealthHero, arg_13_0)
 end
 

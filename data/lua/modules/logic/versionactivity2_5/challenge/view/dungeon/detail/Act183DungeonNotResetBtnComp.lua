@@ -9,7 +9,7 @@ function var_0_0.updateInfo(arg_1_0, arg_1_1)
 end
 
 function var_0_0.checkIsVisible(arg_2_0)
-	return arg_2_0._isSimulate
+	return arg_2_0._isSimulate and arg_2_0._episodeType ~= Act183Enum.EpisodeType.Boss
 end
 
 return var_0_0

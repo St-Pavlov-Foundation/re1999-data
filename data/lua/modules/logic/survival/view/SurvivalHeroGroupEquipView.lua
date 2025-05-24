@@ -3,9 +3,9 @@
 local var_0_0 = class("SurvivalHeroGroupEquipView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
-	arg_1_0._btntalent = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_HeroEffect/#btn_talent")
-	arg_1_0._imagetalentskill = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_HeroEffect/#btn_talent/#image_skill")
-	arg_1_0._btnequip = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_HeroEffect/#btn_equip")
+	arg_1_0._btntalent = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_container/#go_HeroEffect/#btn_talent")
+	arg_1_0._imagetalentskill = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_container/#go_HeroEffect/#btn_talent/#image_skill")
+	arg_1_0._btnequip = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_container/#go_HeroEffect/#btn_equip")
 end
 
 function var_0_0.addEvents(arg_2_0)

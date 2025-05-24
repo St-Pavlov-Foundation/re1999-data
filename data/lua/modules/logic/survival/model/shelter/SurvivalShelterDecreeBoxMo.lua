@@ -74,13 +74,25 @@ function var_0_0.isCurAllPolicyNotFinish(arg_6_0)
 end
 
 function var_0_0.getCurPolicyNeedTags(arg_7_0)
-	local var_7_0, var_7_1 = arg_7_0:isCurAllPolicyNotFinish()
-
-	if var_7_0 then
-		return arg_7_0:getDecreeInfo(var_7_1):getCurPolicyNeedTags()
+	if not arg_7_0.decrees then
+		return {}
 	end
 
-	return {}
+	local var_7_0
+
+	for iter_7_0, iter_7_1 in ipairs(arg_7_0.decrees) do
+		if not arg_7_0:isFinish(iter_7_1.id) then
+			var_7_0 = iter_7_0
+
+			break
+		end
+	end
+
+	if not var_7_0 then
+		return {}
+	end
+
+	return arg_7_0:getDecreeInfo(var_7_0):getCurPolicyNeedTags()
 end
 
 return var_0_0

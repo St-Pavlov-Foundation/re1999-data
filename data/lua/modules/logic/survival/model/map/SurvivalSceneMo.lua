@@ -142,13 +142,25 @@ function var_0_0.addUnit(arg_5_0, arg_5_1)
 		return
 	end
 
-	if arg_5_0.unitsById[arg_5_1.id] then
-		local var_5_0 = arg_5_0.unitsById[arg_5_1.id].cfgId
+	local var_5_0 = arg_5_0.unitsById[arg_5_1.id]
 
-		arg_5_0.unitsById[arg_5_1.id]:copyFrom(arg_5_1)
+	if var_5_0 then
+		local var_5_1 = var_5_0.cfgId
+		local var_5_2 = var_5_0.pos
+
+		var_5_0:copyFrom(arg_5_1)
+
+		if var_5_0.pos ~= var_5_2 then
+			local var_5_3 = var_5_0.pos
+
+			var_5_0.pos = var_5_0
+
+			arg_5_0:onUnitUpdatePos(var_5_0, var_5_3)
+		end
+
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.OnMapUnitChange, arg_5_1.id)
 
-		if var_5_0 ~= arg_5_1.cfgId then
+		if var_5_1 ~= arg_5_1.cfgId then
 			arg_5_0:fixUnitExPos(arg_5_1)
 		end
 

@@ -85,20 +85,22 @@ end
 
 function var_0_0._btnBuyOnClick(arg_5_0)
 	local var_5_0 = AutoChessModel.instance.moduleId
+	local var_5_1 = AutoChessModel.instance:getChessMo()
+	local var_5_2, var_5_3 = var_5_1:checkCostEnough(arg_5_0.costType, arg_5_0.cost)
 
-	if arg_5_0.isFree or arg_5_0.costEnough then
-		local var_5_1, var_5_2 = AutoChessModel.instance:getChessMo():getEmptyPos(arg_5_0.config.type)
+	if arg_5_0.isFree or var_5_2 then
+		local var_5_4, var_5_5 = var_5_1:getEmptyPos(arg_5_0.config.type)
 
-		if not var_5_1 then
+		if not var_5_4 then
 			GameFacade.showToast(ToastEnum.AutoChessBoardFull)
 
 			return
 		end
 
 		AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_chess_purchase)
-		AutoChessRpc.instance:sendAutoChessBuyChessRequest(var_5_0, arg_5_0.param.mallId, arg_5_0.itemData.uid, var_5_1, var_5_2 - 1)
+		AutoChessRpc.instance:sendAutoChessBuyChessRequest(var_5_0, arg_5_0.param.mallId, arg_5_0.itemData.uid, var_5_4, var_5_5 - 1)
 	else
-		GameFacade.showToast(ToastEnum.AutoChessCoinNotEnough)
+		GameFacade.showToast(var_5_3)
 	end
 end
 
@@ -195,7 +197,7 @@ function var_0_0.refreshBuy(arg_15_0)
 	local var_15_1 = var_15_0:getEmptyPos(arg_15_0.config.type)
 
 	if arg_15_0.isFree then
-		arg_15_0.costEnough = true
+		arg_15_0.cost = 0
 
 		if not var_15_1 then
 			arg_15_0._txtBuyCost1.text = luaLang("p_autochesscard_txt_free")
@@ -203,23 +205,22 @@ function var_0_0.refreshBuy(arg_15_0)
 			gohelper.setActive(arg_15_0._imageBuyCost1, false)
 		end
 	else
-		local var_15_2, var_15_3 = AutoChessConfig.instance:getItemBuyCost(arg_15_0.itemData.id)
+		arg_15_0.costType, arg_15_0.cost = AutoChessConfig.instance:getItemBuyCost(arg_15_0.itemData.id)
 
-		if var_15_0.svrFight.mySideMaster.id == AutoChessEnum.SpecialMaster.Role37 and AutoChessHelper.isPrimeNumber(arg_15_0.itemData.chess.battle) and AutoChessHelper.isPrimeNumber(arg_15_0.itemData.chess.hp) then
-			var_15_3 = var_15_3 - 1
+		if arg_15_0.cost >= 1 and var_15_0.svrFight.mySideMaster.id == AutoChessEnum.SpecialMaster.Role37 and AutoChessHelper.isPrimeNumber(arg_15_0.itemData.chess.battle) and AutoChessHelper.isPrimeNumber(arg_15_0.itemData.chess.hp) then
+			arg_15_0.cost = arg_15_0.cost - 1
 		end
 
-		arg_15_0.costEnough = var_15_0:checkCostEnough(var_15_2, var_15_3)
-		var_15_3 = arg_15_0.costEnough and var_15_3 or string.format("<color=#BD2C2C>%s</color>", var_15_3)
-
-		local var_15_4 = "v2a5_autochess_cost" .. var_15_2
+		local var_15_2 = var_15_0:checkCostEnough(arg_15_0.costType, arg_15_0.cost)
+		local var_15_3 = var_15_2 and arg_15_0.cost or string.format("<color=#BD2C2C>%s</color>", arg_15_0.cost)
+		local var_15_4 = "v2a5_autochess_cost" .. arg_15_0.costType
 
 		if var_15_1 then
 			UISpriteSetMgr.instance:setAutoChessSprite(arg_15_0._imageBuyCost, var_15_4)
 
 			arg_15_0._txtBuyCost.text = var_15_3
 
-			gohelper.setActive(arg_15_0._goNotEnough, not arg_15_0.costEnough)
+			gohelper.setActive(arg_15_0._goNotEnough, not var_15_2)
 		else
 			UISpriteSetMgr.instance:setAutoChessSprite(arg_15_0._imageBuyCost1, var_15_4)
 			gohelper.setActive(arg_15_0._imageBuyCost1, true)
@@ -256,8 +257,9 @@ end
 
 function var_0_0.refreshHandbook(arg_17_0)
 	local var_17_0 = arg_17_0.param.star
+	local var_17_1 = AutoChessConfig.instance:getChessCfgById(arg_17_0.param.itemId)
 
-	arg_17_0.config = AutoChessConfig.instance:getChessCfgById(arg_17_0.param.itemId, var_17_0 and var_17_0 or 1)
+	arg_17_0.config = var_17_1[var_17_0 and var_17_0 or next(var_17_1)]
 
 	arg_17_0.meshComp:setData(arg_17_0.config.image)
 
@@ -267,18 +269,18 @@ function var_0_0.refreshHandbook(arg_17_0)
 	arg_17_0:refreshConfigAttr()
 	gohelper.setActive(arg_17_0._btnSelect, false)
 
-	local var_17_1 = arg_17_0.param.arrow
+	local var_17_2 = arg_17_0.param.arrow
 
-	gohelper.setActive(arg_17_0._goArrow, var_17_1)
+	gohelper.setActive(arg_17_0._goArrow, var_17_2)
 	gohelper.setActive(arg_17_0._btnCheck.gameObject, var_17_0 == nil)
 	gohelper.setActive(arg_17_0._goLevel, var_17_0 ~= nil)
 
 	if var_17_0 then
-		local var_17_2 = luaLang("autochess_malllevelupview_level")
+		local var_17_3 = luaLang("autochess_malllevelupview_level")
 
 		UISpriteSetMgr.instance:setAutoChessSprite(arg_17_0._imageLevel, "v2a5_autochess_levelbg_" .. var_17_0)
 
-		arg_17_0._txtLevel.text = GameUtil.getSubPlaceholderLuaLangOneParam(var_17_2, var_17_0)
+		arg_17_0._txtLevel.text = GameUtil.getSubPlaceholderLuaLangOneParam(var_17_3, var_17_0)
 
 		gohelper.setActive(arg_17_0._goStar, false)
 	end

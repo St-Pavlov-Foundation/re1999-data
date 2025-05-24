@@ -1,11 +1,32 @@
 ﻿module("modules.logic.handbook.view.HandbookSkinSuitDetailViewBase", package.seeall)
 
 local var_0_0 = class("HandbookSkinSuitDetailViewBase", BaseView)
+local var_0_1 = 50
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._skinItemRoot = gohelper.findChild(arg_1_0.viewGO, "#go_scroll/#go_storyStages")
-	arg_1_0._imageBg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
+	arg_1_0._imageBg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_scroll/Viewport/#go_storyStages/#simage_FullBG")
+	arg_1_0._goscroll = gohelper.findChild(arg_1_0.viewGO, "#go_scroll")
+	arg_1_0._scroll = arg_1_0._goscroll:GetComponent(gohelper.Type_ScrollRect)
 	arg_1_0._textSkinThemeDescr = gohelper.findChildText(arg_1_0.viewGO, "#go_scroll/Viewport/#go_storyStages/#txt_Descr")
+	arg_1_0._bgTrans = arg_1_0._imageBg.transform
+
+	local var_1_0 = recthelper.getWidth(arg_1_0._bgTrans)
+
+	for iter_1_0 = 1, arg_1_0._bgTrans.childCount do
+		local var_1_1 = arg_1_0._bgTrans:GetChild(iter_1_0 - 1)
+
+		if var_1_1 then
+			var_1_0 = var_1_0 + recthelper.getWidth(var_1_1)
+		end
+	end
+
+	local var_1_2 = ViewMgr.instance:getUIRoot()
+
+	if var_1_0 - recthelper.getWidth(var_1_2.transform) < var_0_1 then
+		arg_1_0._scroll.horizontal = false
+		arg_1_0._scroll.vertical = false
+	end
 
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()

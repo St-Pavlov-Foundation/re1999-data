@@ -87,8 +87,13 @@ function var_0_0.getTaskList(arg_5_0, arg_5_1)
 					"step",
 					"id"
 				}))
+			elseif arg_5_1 == SurvivalEnum.TaskModule.NormalTask then
+				table.sort(var_5_0, SortUtil.tableKeyLower({
+					"status",
+					"id"
+				}))
 			else
-				table.sort(var_5_0, SortUtil.keyLower("id"))
+				table.sort(var_5_0, SortUtil.keyUpper("id"))
 			end
 		end
 	end

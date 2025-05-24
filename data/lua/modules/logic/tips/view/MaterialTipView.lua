@@ -1186,6 +1186,8 @@ function var_0_0._setIconNativeSize(arg_50_0)
 end
 
 function var_0_0._refreshInclude(arg_51_0)
+	MaterialTipListModel.instance:clear()
+
 	local var_51_0 = MaterialEnum.SubTypePackages[arg_51_0._config.subType] == true
 
 	var_51_0 = var_51_0 or arg_51_0:_isPackageSkin()

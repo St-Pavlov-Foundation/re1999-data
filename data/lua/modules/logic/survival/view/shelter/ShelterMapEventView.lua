@@ -224,7 +224,7 @@ function var_0_0.getOptionDataList(arg_16_0)
 
 	if arg_16_0.behaviorConfig then
 		var_16_1 = string.split(arg_16_0.behaviorConfig.chooseDesc, "|")
-		var_16_2 = string.split(arg_16_0.behaviorConfig.chooseEvent, "|")
+		var_16_2 = string.split(arg_16_0.behaviorConfig.chooseEvent, "&")
 	end
 
 	if arg_16_0.taskConfig then
@@ -276,9 +276,11 @@ function var_0_0.onClose(arg_19_0)
 end
 
 function var_0_0.onDestroyView(arg_20_0)
-	if sceneType == SceneType.SurvivalShelter then
+	local var_20_0 = GameSceneMgr.instance:getCurSceneType()
+
+	if var_20_0 == SceneType.SurvivalShelter then
 		SurvivalMapHelper.instance:getSceneFogComp():setRainEnable(true)
-	elseif sceneType == SceneType.Survival then
+	elseif var_20_0 == SceneType.Survival then
 		SurvivalMapHelper.instance:getSceneFogComp():setFogEnable(true)
 	end
 end
@@ -328,7 +330,7 @@ function var_0_0.onClickOption(arg_22_0, arg_22_1)
 	arg_22_0:hideOption()
 
 	arg_22_0._eventIndex = 0
-	arg_22_0._eventList = GameUtil.splitString2(arg_22_1, false, ",", "#") or {}
+	arg_22_0._eventList = GameUtil.splitString2(arg_22_1, false) or {}
 
 	arg_22_0:_playNext()
 end
