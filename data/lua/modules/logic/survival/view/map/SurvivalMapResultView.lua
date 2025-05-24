@@ -240,6 +240,10 @@ function var_0_0._onFinishShow(arg_15_0)
 end
 
 function var_0_0._createItem(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
+	if not arg_16_0.viewContainer._abLoader then
+		return
+	end
+
 	local var_16_0 = arg_16_0.viewContainer._viewSetting.otherRes.itemRes
 	local var_16_1 = gohelper.findChild(arg_16_1, "inst") or arg_16_0:getResInst(var_16_0, arg_16_1, "inst")
 	local var_16_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_16_1, SurvivalBagItem)

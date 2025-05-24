@@ -6409,7 +6409,7 @@
   },
   {
     "id": "survivalcompositeview_equip_tip1",
-    "lang": "可获得<color=#60ab6c>绿色</color>以上盒中之物"
+    "lang": "可获得<color=#60ab6c>普通</color>以上盒中之物"
   },
   {
     "id": "survivalcompositeview_equip_tip2",
@@ -6425,7 +6425,7 @@
   },
   {
     "id": "survivalcompositeview_equip_tip5",
-    "lang": "可获得<color=#f59540>橙色</color>品质以上盒中之物"
+    "lang": "可获得<color=#f59540>妙想</color>品质盒中之物"
   },
   {
     "id": "survivalceremonyopeningview_txt_1",
@@ -6557,7 +6557,7 @@
   },
   {
     "id": "survivalceremonyclosingview_item",
-    "lang": "本次演算收获物资"
+    "lang": "本次模拟生存收获物资"
   },
   {
     "id": "molideer_interludeview_txt_title",

@@ -298,7 +298,10 @@ function var_0_0.handleJump(arg_16_0)
 				[ViewName.VersionActivity_1_2_HeroGroupEditView] = true,
 				[ViewName.Season123HeroGroupEditView] = true,
 				[ViewName.Season166HeroGroupEditView] = true,
-				[ViewName.RougeHeroGroupEditView] = true
+				[ViewName.RougeHeroGroupEditView] = true,
+				[ViewName.SurvivalHeroGroupFightView] = true,
+				[ViewName.ShelterHeroGroupFightView] = true,
+				[ViewName.SurvivalHeroGroupEditView] = true
 			}
 		end
 

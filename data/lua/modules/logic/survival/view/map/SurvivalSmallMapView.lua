@@ -256,7 +256,6 @@ end
 
 local var_0_5 = {
 	[SurvivalEnum.UnitType.Task] = "survival_smallmap_block_3_1",
-	[SurvivalEnum.UnitType.NPC] = "survival_smallmap_block_3_2",
 	[SurvivalEnum.UnitType.Treasure] = "survival_smallmap_block_3_5",
 	[SurvivalEnum.UnitType.Exit] = "survival_smallmap_block_3_8",
 	[SurvivalEnum.UnitType.Door] = "survival_smallmap_block_3_9"
@@ -314,10 +313,12 @@ function var_0_0.getIcon(arg_12_0, arg_12_1)
 	end
 
 	local var_12_0 = arg_12_1.unitType
-	local var_12_1 = arg_12_1.co.type
+	local var_12_1 = arg_12_1.co.subType
 
 	if arg_12_1.visionVal == 8 then
 		return "survival_smallmap_block_3_10"
+	elseif var_12_0 == SurvivalEnum.UnitType.NPC then
+		return var_12_1 == 53 and "survival_smallmap_block_3_13" or "survival_smallmap_block_3_2"
 	elseif var_12_0 == SurvivalEnum.UnitType.Search then
 		local var_12_2 = arg_12_1.extraParam == "true"
 

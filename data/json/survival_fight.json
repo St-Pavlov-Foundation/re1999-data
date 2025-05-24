@@ -7777,7 +7777,7 @@
   },
   {
     "id": 107021402,
-    "name": "聚集的魔精",
+    "name": "跨语种交流",
     "versions": "",
     "seasons": "",
     "desc": "辱骂，依靠其面部表情以及肢体语言的独特性而保持着跨种族与跨语种的通用——就像现在这样。",
@@ -7804,12 +7804,12 @@
   },
   {
     "id": 107021403,
-    "name": "大只魔精",
+    "name": "“揭竿而起”",
     "versions": "",
     "seasons": "",
     "desc": "被欺骗的魔精发出了尖锐的叫声，不必欺骗自己，这就是叫骂。",
     "priority": 100,
-    "resource": "survival/roles/prefab/monster_ordinary_hulimojing.prefab",
+    "resource": "survival/roles/prefab/monster_elite_hulimojing.prefab",
     "grid": "",
     "rotate": "1#2",
     "camera": 0,

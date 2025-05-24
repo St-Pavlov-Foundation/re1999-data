@@ -4393,11 +4393,11 @@
   },
   {
     "id": 1070301,
-    "nodeId": 94,
+    "nodeId": 117,
     "desc": "招募",
     "icon": 2,
     "condition": "",
-    "result": "RecrNpc|"
+    "result": "DeleteTalent|24034#1"
   },
   {
     "id": 1070301,
@@ -4461,7 +4461,15 @@
     "desc": "招募",
     "icon": 2,
     "condition": "",
-    "result": "RecrNpc|"
+    "result": "DeleteTalent|24034#1"
+  },
+  {
+    "id": 1070301,
+    "nodeId": 114,
+    "desc": "我改变主意了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 1070302,
@@ -5009,11 +5017,27 @@
   },
   {
     "id": 1070401,
+    "nodeId": 88,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1070401,
     "nodeId": 51,
     "desc": "收下奖励",
     "icon": 15,
     "condition": "",
     "result": "CostItem|100201:1&100202:1&107040107:1"
+  },
+  {
+    "id": 1070401,
+    "nodeId": 86,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
   },
   {
     "id": 107040103,

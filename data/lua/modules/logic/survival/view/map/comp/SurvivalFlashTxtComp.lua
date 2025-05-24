@@ -25,7 +25,13 @@ function var_0_0.setFlashTxt(arg_3_0, arg_3_1)
 		TaskDispatcher.runRepeat(arg_3_0._autoFlashTxt, arg_3_0, 2)
 	else
 		TaskDispatcher.cancelTask(arg_3_0._autoFlashTxt, arg_3_0)
+		TaskDispatcher.cancelTask(arg_3_0._autoFlashTxt2, arg_3_0)
+		ZProj.TweenHelper.KillByObj(arg_3_0._txt)
 
+		local var_3_0 = arg_3_0._txt.color
+
+		var_3_0.a = 1
+		arg_3_0._txt.color = var_3_0
 		arg_3_0.isShowFlashTxt = false
 		arg_3_0._txt.text = arg_3_0._normalTxt
 	end

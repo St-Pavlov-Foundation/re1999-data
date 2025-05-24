@@ -1573,5 +1573,20 @@
     "desc": "进入地图生成1个泉水",
     "scoreRate": 0,
     "lockDesc": ""
+  },
+  {
+    "id": 901009,
+    "versions": "",
+    "seasons": "",
+    "type": 4,
+    "subtype": 52,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "",
+    "titile": "",
+    "desc": "生成报童",
+    "scoreRate": 0,
+    "lockDesc": ""
   }
 ]
