@@ -206,7 +206,7 @@ function var_0_3._getTargetDay(arg_25_0)
 	local var_25_0 = arg_25_0.viewContainer:getFirstAvailableIndex()
 	local var_25_1 = arg_25_0.viewContainer:getMoonFestivalSignMaxDay()
 
-	if var_25_1 <= var_25_0 then
+	if var_25_1 < var_25_0 then
 		return
 	end
 
