@@ -1170,7 +1170,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3001",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3002,
@@ -1193,7 +1193,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3002",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3003,
@@ -1216,7 +1216,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3003",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3004,
@@ -1239,7 +1239,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3004",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3005,
@@ -1262,7 +1262,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3005",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3006,
@@ -1285,7 +1285,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3006",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3007,
@@ -1308,7 +1308,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3007",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3008,
@@ -1331,7 +1331,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3008",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3009,
@@ -1354,7 +1354,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3009",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3010,
@@ -1377,7 +1377,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3010",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3011,
@@ -1400,7 +1400,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3011",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3012,
@@ -1423,7 +1423,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3012",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3013,
@@ -1446,7 +1446,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3013",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3014,
@@ -1469,7 +1469,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3014",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3015,
@@ -1492,7 +1492,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3015",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3016,
@@ -1515,7 +1515,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3016",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3017,
@@ -1538,7 +1538,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3017",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3018,
@@ -1561,7 +1561,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3018",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3019,
@@ -1584,7 +1584,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3019",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3020,
@@ -1607,7 +1607,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3020",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3021,
@@ -1630,7 +1630,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3021",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3022,
@@ -1653,7 +1653,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3022",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3023,
@@ -1676,7 +1676,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3023",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3024,
@@ -1699,7 +1699,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3024",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3025,
@@ -1722,7 +1722,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3025",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3026,
@@ -1745,7 +1745,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3026",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3027,
@@ -1768,7 +1768,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3027",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3028,
@@ -1791,7 +1791,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3028",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3029,
@@ -1814,7 +1814,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3029",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3030,
@@ -1837,7 +1837,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3030",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3031,
@@ -1860,7 +1860,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3031",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3032,
@@ -1883,7 +1883,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3032",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3033,
@@ -1906,7 +1906,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3033",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3034,
@@ -1929,7 +1929,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3034",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3035,
@@ -1952,7 +1952,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3035",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3036,
@@ -1975,7 +1975,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3036",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3037,
@@ -1998,7 +1998,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3037",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3038,
@@ -2021,7 +2021,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3038",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3039,
@@ -2044,7 +2044,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3039",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3040,
@@ -2067,7 +2067,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3040",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3041,
@@ -2090,7 +2090,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3041",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3042,
@@ -2113,7 +2113,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3042",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3043,
@@ -2136,7 +2136,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3043",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3044,
@@ -2159,7 +2159,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3044",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3045,
@@ -2182,7 +2182,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3045",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3046,
@@ -2205,7 +2205,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3046",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3047,
@@ -2228,7 +2228,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3047",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3048,
@@ -2251,7 +2251,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3048",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3049,
@@ -2274,7 +2274,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3049",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3050,
@@ -2297,7 +2297,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3050",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3051,
@@ -2320,7 +2320,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3051",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3052,
@@ -2343,7 +2343,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3052",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3053,
@@ -2366,7 +2366,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3053",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3054,
@@ -2389,7 +2389,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3054",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3055,
@@ -2412,7 +2412,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3055",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3056,
@@ -2435,7 +2435,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3056",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3057,
@@ -2458,7 +2458,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3057",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3058,
@@ -2481,7 +2481,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3058",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3059,
@@ -2504,7 +2504,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3059",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3060,
@@ -2527,7 +2527,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3060",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3061,
@@ -2550,7 +2550,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3061",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3062,
@@ -2573,7 +2573,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3062",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3063,
@@ -2596,7 +2596,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3063",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3064,
@@ -2619,7 +2619,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3064",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3065,
@@ -2642,7 +2642,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3065",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3066,
@@ -2665,7 +2665,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3066",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3067,
@@ -2688,7 +2688,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3067",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3068,
@@ -2711,7 +2711,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3068",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3069,
@@ -2734,7 +2734,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3069",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3070,
@@ -2757,7 +2757,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3070",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3071,
@@ -2780,7 +2780,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3071",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3072,
@@ -2803,7 +2803,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3072",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3073,
@@ -2826,7 +2826,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3073",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3074,
@@ -2849,7 +2849,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3074",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3075,
@@ -2872,7 +2872,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3075",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3076,
@@ -2895,7 +2895,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3076",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3077,
@@ -2918,7 +2918,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3077",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3078,
@@ -2941,7 +2941,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3078",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3079,
@@ -2964,7 +2964,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3079",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3080,
@@ -2987,7 +2987,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3080",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3081,
@@ -3010,7 +3010,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3081",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3082,
@@ -3033,7 +3033,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3082",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3083,
@@ -3056,7 +3056,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3083",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3084,
@@ -3079,7 +3079,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3084",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3085,
@@ -3102,7 +3102,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3085",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3086,
@@ -3125,7 +3125,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3086",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3087,
@@ -3148,7 +3148,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3087",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3088,
@@ -3171,7 +3171,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3088",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3089,
@@ -3194,7 +3194,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3089",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3090,
@@ -3217,7 +3217,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3090",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3091,
@@ -3240,7 +3240,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3091",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3092,
@@ -3263,7 +3263,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3092",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3093,
@@ -3286,7 +3286,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3093",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3094,
@@ -3309,7 +3309,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3094",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3095,
@@ -3332,7 +3332,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3095",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3096,
@@ -3355,7 +3355,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3096",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3097,
@@ -3378,7 +3378,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3097",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3098,
@@ -3401,7 +3401,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3098",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3099,
@@ -3424,7 +3424,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3099",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3100,
@@ -3447,7 +3447,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3100",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3101,
@@ -3470,7 +3470,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3101",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3102,
@@ -3493,7 +3493,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3102",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3103,
@@ -3516,7 +3516,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3103",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3104,
@@ -3539,7 +3539,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3104",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3105,
@@ -3562,7 +3562,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3105",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3106,
@@ -3585,7 +3585,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3106",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3107,
@@ -3608,7 +3608,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3107",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3108,
@@ -3631,7 +3631,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3108",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3109,
@@ -3654,7 +3654,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3109",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3110,
@@ -3677,7 +3677,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3110",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3111,
@@ -3700,7 +3700,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3111",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3112,
@@ -3723,7 +3723,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3112",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3113,
@@ -3746,7 +3746,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3113",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3114,
@@ -3769,7 +3769,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3114",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3115,
@@ -3792,7 +3792,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3115",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3116,
@@ -3815,7 +3815,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3116",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3117,
@@ -3838,7 +3838,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3117",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3118,
@@ -3861,7 +3861,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3118",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3119,
@@ -3884,7 +3884,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3119",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3120,
@@ -3907,7 +3907,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3120",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3121,
@@ -3930,7 +3930,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3121",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3122,
@@ -3953,7 +3953,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3122",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3123,
@@ -3976,7 +3976,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3123",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3124,
@@ -3999,7 +3999,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3124",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3125,
@@ -4022,7 +4022,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3125",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3126,
@@ -4045,7 +4045,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3126",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3127,
@@ -4068,7 +4068,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3127",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3128,
@@ -4091,7 +4091,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3128",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3129,
@@ -4114,7 +4114,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3129",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3130,
@@ -4137,7 +4137,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3130",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3131,
@@ -4160,7 +4160,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3131",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3132,
@@ -4183,7 +4183,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3132",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3133,
@@ -4206,7 +4206,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3133",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3134,
@@ -4229,7 +4229,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3134",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3135,
@@ -4252,7 +4252,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3135",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3136,
@@ -4275,7 +4275,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3136",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3137,
@@ -4298,7 +4298,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3137",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3138,
@@ -4321,7 +4321,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3138",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3139,
@@ -4344,7 +4344,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3139",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3140,
@@ -4367,7 +4367,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3140",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3141,
@@ -4390,7 +4390,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3141",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3142,
@@ -4413,7 +4413,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3142",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3143,
@@ -4436,7 +4436,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3143",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3144,
@@ -4459,7 +4459,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3144",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3145,
@@ -4482,7 +4482,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3145",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3146,
@@ -4505,7 +4505,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3146",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3147,
@@ -4528,7 +4528,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3147",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3148,
@@ -4551,7 +4551,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3148",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3149,
@@ -4574,7 +4574,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3149",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3150,
@@ -4597,7 +4597,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3150",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3151,
@@ -4620,7 +4620,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3151",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3152,
@@ -4643,7 +4643,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3152",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3153,
@@ -4666,7 +4666,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3153",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3154,
@@ -4689,7 +4689,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3154",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3155,
@@ -4712,7 +4712,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3155",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3156,
@@ -4735,7 +4735,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3156",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3157,
@@ -4758,7 +4758,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3157",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3158,
@@ -4781,7 +4781,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3158",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3159,
@@ -4804,7 +4804,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3159",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3160,
@@ -4827,7 +4827,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3160",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3161,
@@ -4850,7 +4850,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3161",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3162,
@@ -4873,7 +4873,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3162",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3163,
@@ -4896,7 +4896,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3163",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3164,
@@ -4919,7 +4919,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3164",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3165,
@@ -4942,7 +4942,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3165",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3166,
@@ -4965,7 +4965,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3166",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3167,
@@ -4988,7 +4988,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3167",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3168,
@@ -5011,7 +5011,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3168",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3169,
@@ -5034,7 +5034,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3169",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3170,
@@ -5057,7 +5057,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3170",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3171,
@@ -5080,7 +5080,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3171",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3172,
@@ -5103,7 +5103,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3172",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3173,
@@ -5126,7 +5126,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3173",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3174,
@@ -5149,7 +5149,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3174",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3175,
@@ -5172,7 +5172,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3175",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3176,
@@ -5195,7 +5195,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3176",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3177,
@@ -5218,7 +5218,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3177",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3178,
@@ -5241,7 +5241,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3178",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3179,
@@ -5264,7 +5264,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3179",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3180,
@@ -5287,7 +5287,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3180",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3181,
@@ -5310,7 +5310,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3181",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3182,
@@ -5333,7 +5333,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3182",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3183,
@@ -5356,7 +5356,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3183",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3184,
@@ -5379,7 +5379,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3184",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3185,
@@ -5402,7 +5402,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3185",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3186,
@@ -5425,7 +5425,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3186",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3187,
@@ -5448,7 +5448,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3187",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3188,
@@ -5471,7 +5471,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3188",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3189,
@@ -5494,7 +5494,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3189",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3190,
@@ -5517,7 +5517,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3190",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3191,
@@ -5540,7 +5540,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3191",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3192,
@@ -5563,7 +5563,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3192",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3193,
@@ -5586,7 +5586,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3193",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3194,
@@ -5609,7 +5609,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3194",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3195,
@@ -5632,7 +5632,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3195",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3196,
@@ -5655,7 +5655,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3196",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3197,
@@ -5678,7 +5678,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3197",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3198,
@@ -5701,7 +5701,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3198",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3199,
@@ -5724,7 +5724,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3199",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3200,
@@ -5747,7 +5747,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3200",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3201,
@@ -5770,7 +5770,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3201",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3202,
@@ -5793,7 +5793,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3202",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3203,
@@ -5816,7 +5816,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3203",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3204,
@@ -5839,7 +5839,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3204",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 3205,
@@ -5862,7 +5862,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "3205",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 1070301,
@@ -5885,7 +5885,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "1070301",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 1070302,
@@ -5908,7 +5908,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "1070302",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 107030302,
@@ -5931,7 +5931,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "107030302",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 107030403,
@@ -5954,7 +5954,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "107030403",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 107030502,
@@ -5977,7 +5977,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "107030502",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 107020303,
@@ -6000,7 +6000,7 @@
     "isDestroy": 0,
     "exchange": "",
     "effect": "107020303",
-    "maxLimit": 0
+    "maxLimit": 1
   },
   {
     "id": 107040107,

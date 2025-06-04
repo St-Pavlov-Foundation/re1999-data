@@ -341,6 +341,19 @@ function var_0_0._onRecvMsg(arg_31_0, arg_31_1, arg_31_2, arg_31_3)
 		local var_31_5 = var_31_4 == nil and var_31_0.currRound or var_31_4
 
 		HeroGroupSnapshotModel.instance:setSelectIndex(ModuleEnum.HeroGroupSnapshotType.Shelter, var_31_5)
+
+		local var_31_6 = HeroGroupSnapshotModel.instance:getHeroGroupInfo(ModuleEnum.HeroGroupSnapshotType.Shelter, var_31_0.currRound)
+
+		if var_31_6 then
+			for iter_31_0 = 1, #var_31_6.heroList do
+				local var_31_7 = var_31_0:getUseRoundByHeroUid(var_31_6.heroList[iter_31_0])
+
+				if var_31_7 and var_31_7 ~= var_31_0.currRound then
+					var_31_6.heroList[iter_31_0] = "0"
+				end
+			end
+		end
+
 		DungeonFightController.instance:enterFightByBattleId(var_31_3.chapterId, var_31_2, var_31_1.battleId)
 		arg_31_0:callShelterBackFight()
 	else

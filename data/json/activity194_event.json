@@ -360,18 +360,6 @@
     "position": "-477#58"
   },
   {
-    "eventId": 10102,
-    "eventGroup": 3,
-    "trigger": "1#3",
-    "picture": "",
-    "name": "落单的敌人",
-    "number": 1,
-    "desc": "小队瞥见几名重塑之手门徒正朝冰原深处前行。\n放眼望去，目之所及处只有一片白茫茫的雪地，门徒们的目的究竟何在？",
-    "optionIds": "1000303|1000304",
-    "eventType": 3,
-    "position": "729#192"
-  },
-  {
     "eventId": 10103,
     "eventGroup": 3,
     "trigger": "1#4",
@@ -494,7 +482,7 @@
   {
     "eventId": 10044,
     "eventGroup": 4,
-    "trigger": "2#0#1000164",
+    "trigger": "2#1#1000164",
     "picture": "",
     "name": "企鹅交流官",
     "number": 2,
@@ -506,7 +494,7 @@
   {
     "eventId": 10045,
     "eventGroup": 4,
-    "trigger": "2#0#1000166",
+    "trigger": "2#1#1000166",
     "picture": "",
     "name": "企鹅交流官",
     "number": 3,

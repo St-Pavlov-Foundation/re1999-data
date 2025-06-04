@@ -34,6 +34,10 @@ function var_0_0.removeEventListeners(arg_4_0)
 end
 
 function var_0_0.onWithDrawTeam(arg_5_0, arg_5_1)
+	if arg_5_0.teamId == nil then
+		return
+	end
+
 	if arg_5_0.viewGO.activeSelf == true and arg_5_0.state == MoLiDeErEnum.DispatchState.Main and arg_5_1 == arg_5_0.teamId then
 		arg_5_0:showAnim(MoLiDeErEnum.AnimName.RoleItemOut, true)
 		TaskDispatcher.runDelay(arg_5_0.onFadeOutEnd, arg_5_0, 0.5)
@@ -46,6 +50,10 @@ function var_0_0.onFadeOutEnd(arg_6_0)
 end
 
 function var_0_0.onDispatchTeam(arg_7_0, arg_7_1)
+	if arg_7_0.teamId == nil then
+		return
+	end
+
 	if arg_7_0.viewGO.activeSelf == true and arg_7_0.state == MoLiDeErEnum.DispatchState.Main and arg_7_1 == arg_7_0.teamId then
 		arg_7_0:showAnim(MoLiDeErEnum.AnimName.RoleItemIn, true)
 	end
@@ -95,6 +103,10 @@ function var_0_0.setActive(arg_11_0, arg_11_1)
 end
 
 function var_0_0.setSelect(arg_12_0, arg_12_1)
+	if arg_12_0.teamId == nil then
+		return
+	end
+
 	gohelper.setActive(arg_12_0.viewGO, not arg_12_1)
 	gohelper.setActive(arg_12_0._goSelected, arg_12_1)
 	arg_12_0:refreshBuffState()
@@ -114,7 +126,7 @@ function var_0_0.refreshUI(arg_13_0)
 end
 
 function var_0_0.refreshState(arg_14_0)
-	if arg_14_0.viewGO.activeSelf == false then
+	if arg_14_0.teamId == nil then
 		return
 	end
 
@@ -156,7 +168,14 @@ function var_0_0.refreshBuffState(arg_15_0)
 	end
 end
 
-function var_0_0.onDestroy(arg_16_0)
+function var_0_0.clear(arg_16_0)
+	arg_16_0.teamId = nil
+	arg_16_0.state = nil
+	arg_16_0.info = nil
+	arg_16_0._teamConfig = nil
+end
+
+function var_0_0.onDestroy(arg_17_0)
 	return
 end
 

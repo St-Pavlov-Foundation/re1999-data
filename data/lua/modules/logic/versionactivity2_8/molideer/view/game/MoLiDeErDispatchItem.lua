@@ -238,7 +238,17 @@ function var_0_0.refreshItem(arg_16_0)
 end
 
 function var_0_0.refreshItemCount(arg_17_0, arg_17_1)
+	local var_17_0 = MoLiDeErGameModel.instance:getCurGameInfo()
+
 	for iter_17_0, iter_17_1 in ipairs(arg_17_0._showItemList) do
+		local var_17_1 = iter_17_1.itemId
+
+		if var_17_0:getEquipInfo(var_17_1) == nil then
+			iter_17_1:reset()
+
+			return
+		end
+
 		iter_17_1:refreshUI()
 
 		if arg_17_1 then
@@ -336,11 +346,16 @@ function var_0_0.onUseItem(arg_19_0, arg_19_1)
 		end
 	end
 
+	if MoLiDeErGameModel.instance:getCurGameInfo():getEquipInfo(arg_19_1).quantity <= 0 then
+		gohelper.setActive(arg_19_0._goTips, false)
+	end
+
 	if arg_19_0._state == MoLiDeErEnum.DispatchState.Main then
 		return
 	end
 
 	arg_19_0:refreshItem()
+	arg_19_0:refreshState()
 end
 
 function var_0_0.refreshTeam(arg_20_0)
@@ -389,13 +404,16 @@ function var_0_0.refreshDispatchTeam(arg_21_0)
 		local var_21_6 = var_21_0[iter_21_0]
 
 		var_21_4:setActive(true)
-		var_21_4:setSelect(false)
 		var_21_4:setData(var_21_6, arg_21_0._state)
+		var_21_4:setSelect(false)
 	end
 
 	if var_21_1 < var_21_3 then
 		for iter_21_1 = var_21_1 + 1, var_21_3 do
-			var_21_2[iter_21_1]:setActive(false)
+			local var_21_7 = var_21_2[iter_21_1]
+
+			var_21_7:setActive(false)
+			var_21_7:clear()
 		end
 	end
 end
@@ -414,13 +432,13 @@ function var_0_0.refreshDispatchingTeam(arg_22_0)
 end
 
 function var_0_0.onItemSelect(arg_23_0, arg_23_1)
-	if arg_23_0.viewGO.activeSelf == false then
-		return
-	end
-
 	arg_23_0:showItemTips(arg_23_1 ~= nil, arg_23_1)
 
 	arg_23_0._selectItemId = arg_23_1
+
+	if arg_23_0.viewGO.activeSelf == false then
+		return
+	end
 
 	arg_23_0:refreshState()
 end

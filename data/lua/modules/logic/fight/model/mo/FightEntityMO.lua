@@ -846,7 +846,9 @@ function var_0_0.getHeroDestinyStoneMo(arg_85_0)
 end
 
 function var_0_0.initSkin(arg_86_0, arg_86_1)
-	local var_86_0 = FightHelper.processEntitySkin(arg_86_1.skin, arg_86_1.uid)
+	local var_86_0 = arg_86_1.skin
+
+	var_86_0 = var_86_0 ~= 312001 and FightHelper.processEntitySkin(var_86_0, arg_86_1.uid) or var_86_0
 
 	if var_86_0 == 312001 then
 		local var_86_1, var_86_2 = HeroConfig.instance:getShowLevel(arg_86_1.level)

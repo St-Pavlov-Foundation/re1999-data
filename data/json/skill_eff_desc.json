@@ -15141,7 +15141,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "布设中归属【启示】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击次数受【混沌】影响，攻击倍率受【怒火】【混沌】影响，"
+    "desc": "布设中归属【启示】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击次数受【混沌<id:1>】影响，攻击倍率受【怒火】【混沌<id:1>】影响，"
   },
   {
     "id": 72800010,
@@ -15149,7 +15149,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "布设中归属【薪血】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌】影响，"
+    "desc": "布设中归属【薪血】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌<id:1>】影响，"
   },
   {
     "id": 72800011,
@@ -15157,7 +15157,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "布设中归属【仪式】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌】【连锁】影响，"
+    "desc": "布设中归属【仪式】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契的【痕契之击<id:0>】攻击倍率受【怒火】【混沌<id:1>】【连锁】影响，"
   },
   {
     "id": 72800012,
@@ -15209,7 +15209,7 @@
   },
   {
     "id": 72800018,
-    "name": "混沌",
+    "name": "混沌<id:1>",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
@@ -15262,6 +15262,182 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "仪式威力-10%，持续3回合（效果可叠加，每层时间独立计算，不可驱散）"
+  },
+  {
+    "id": 31210111,
+    "name": "将过往摧毁<id:01>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成100%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续1回合"
+  },
+  {
+    "id": 31210112,
+    "name": "将过往摧毁<id:02>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成150%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续1回合"
+  },
+  {
+    "id": 31210113,
+    "name": "将过往摧毁<id:03>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成250%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续1回合"
+  },
+  {
+    "id": 31210114,
+    "name": "战备<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时根据层数触发对应效果，最多叠加50层，不可驱散"
+  },
+  {
+    "id": 31210115,
+    "name": "主见<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "免疫【心神不宁】"
+  },
+  {
+    "id": 31210116,
+    "name": "教条<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升20%，无法获得【主见<id:0>】"
+  },
+  {
+    "id": 31210117,
+    "name": "攻坚<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用至终的仪式反击（生效后移除）"
+  },
+  {
+    "id": 31210118,
+    "name": "闪击<id:01>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用1阶【将过往摧毁<id:01>】反击（生效后移除）"
+  },
+  {
+    "id": 31210119,
+    "name": "闪击<id:02>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用2阶【将过往摧毁<id:02>】反击（生效后移除）"
+  },
+  {
+    "id": 31210120,
+    "name": "闪击<id:03>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用3阶【将过往摧毁<id:03>】反击（生效后移除）"
+  },
+  {
+    "id": 31210121,
+    "name": "战备部署<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "施加时每有1层【战备<id:0>】，至终的仪式造成伤害提升2%"
+  },
+  {
+    "id": 31210122,
+    "name": "武装整修<id:0>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升30%，释放至终的仪式时溢出暴击率转化为暴击创伤"
+  },
+  {
+    "id": 31210123,
+    "name": "礼仪：暴击创伤",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "至终的仪式暴击创伤提升3%（效果可叠加，最多叠加100层，不可驱散，释放至终的仪式攻击后消失）"
+  },
+  {
+    "id": 31210124,
+    "name": "将过往摧毁<id:11>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成150%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续2回合"
+  },
+  {
+    "id": 31210125,
+    "name": "将过往摧毁<id:12>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成225%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续2回合"
+  },
+  {
+    "id": 31210126,
+    "name": "将过往摧毁<id:13>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成375%现实创伤；攻击后赋予目标1层【激情萃取】；使自身获得【连续行动Ⅰ】，持续2回合"
+  },
+  {
+    "id": 31210127,
+    "name": "闪击<id:11>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用1阶【将过往摧毁<id:11>】反击（生效后移除）"
+  },
+  {
+    "id": 31210128,
+    "name": "闪击<id:12>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用2阶【将过往摧毁<id:12>】反击（生效后移除）"
+  },
+  {
+    "id": 31210129,
+    "name": "闪击<id:13>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，莫莉德尔使用3阶【将过往摧毁<id:13>】反击（生效后移除）"
+  },
+  {
+    "id": 31210130,
+    "name": "战备部署<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "施加时每有1层【战备<id:0>】，至终的仪式造成伤害提升2.5%"
+  },
+  {
+    "id": 31210131,
+    "name": "武装整修<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升40%，释放至终的仪式时溢出暴击率转化为暴击创伤"
+  },
+  {
+    "id": 31210132,
+    "name": "教条<id:5>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升30%，无法获得【主见<id:0>】"
   },
   {
     "id": 30862141,
@@ -16070,5 +16246,13 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "创伤加成+5%，吸血率+1%（最多可叠加15层）"
+  },
+  {
+    "id": 25512,
+    "name": "协作退场",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御、精神防御-10%（不可净化，可以叠加）"
   }
 ]

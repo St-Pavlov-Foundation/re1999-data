@@ -66,12 +66,12 @@ function var_0_0._onClickStart(arg_5_0)
 	if SurvivalEquipRedDotHelper.instance.reddotType >= 0 then
 		GameFacade.showMessageBox(MessageBoxIdDefine.SurvivalEnterFightEquipRed, MsgBoxEnum.BoxType.Yes_No, arg_5_0._realClickStart, nil, nil, arg_5_0, nil, nil)
 	else
-		SurvivalHeroGroupFightView.super._onClickStart(arg_5_0)
+		var_0_0.super._onClickStart(arg_5_0)
 	end
 end
 
 function var_0_0._realClickStart(arg_6_0)
-	SurvivalHeroGroupFightView.super._onClickStart(arg_6_0)
+	var_0_0.super._onClickStart(arg_6_0)
 end
 
 function var_0_0.checkHeroList(arg_7_0)

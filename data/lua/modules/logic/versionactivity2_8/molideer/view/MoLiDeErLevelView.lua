@@ -172,6 +172,8 @@ function var_0_0.onEpisodeFinish(arg_13_0, arg_13_1, arg_13_2)
 		return
 	end
 
+	arg_13_0:_checkRedDot()
+
 	arg_13_0._finishEpisodeId = arg_13_2
 
 	arg_13_0:_lockScreen(true)
@@ -180,55 +182,26 @@ function var_0_0.onEpisodeFinish(arg_13_0, arg_13_1, arg_13_2)
 	TaskDispatcher.runDelay(arg_13_0.forceEndBlock, arg_13_0, MoLiDeErEnum.LevelAnimTime.LevelForceEndBlock)
 end
 
-function var_0_0.forceEndBlock(arg_14_0)
+function var_0_0._checkRedDot(arg_14_0)
+	logNormal("莫莉德尔角色活动 关卡完成 请求红点")
+	RedDotRpc.instance:sendGetRedDotInfosRequest({
+		RedDotEnum.DotNode.V2a8MoLiDeErTask
+	})
+end
+
+function var_0_0.forceEndBlock(arg_15_0)
 	logError("莫莉德尔角色活动 关卡解锁表现超时")
-	arg_14_0:_lockScreen(false)
+	arg_15_0:_lockScreen(false)
 end
 
-function var_0_0.onLevelOpenAnimTimeEnd(arg_15_0)
-	TaskDispatcher.cancelTask(arg_15_0.onLevelOpenAnimTimeEnd, arg_15_0)
-
-	local var_15_0 = arg_15_0._finishEpisodeId
-	local var_15_1
-
-	for iter_15_0, iter_15_1 in ipairs(arg_15_0._levelItemList) do
-		if iter_15_1.episodeId == var_15_0 then
-			var_15_1 = iter_15_1
-
-			break
-		end
-	end
-
-	if var_15_1 == nil then
-		logError("莫莉德尔 角色活动 不存在对应关卡id的level item id:" .. tostring(var_15_0))
-
-		return
-	end
-
-	if not MoLiDeErModel.instance:isEpisodeFinish(arg_15_0._actId, var_15_0, true) then
-		var_15_1:setStarState(true)
-		arg_15_0:onLevelUnlockAnimTimeEnd()
-
-		return
-	end
-
-	var_15_1:refreshUI(true)
-	AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_yuzhou_level_lit)
-
-	local var_15_2 = var_15_1.index
-
-	arg_15_0:setPathItemState(var_15_2, true, true)
-	TaskDispatcher.runDelay(arg_15_0.onLevelFinishAnimTimeEnd, arg_15_0, MoLiDeErEnum.LevelAnimTime.LevelItemFinish)
-end
-
-function var_0_0.onLevelFinishAnimTimeEnd(arg_16_0)
-	TaskDispatcher.cancelTask(arg_16_0.onLevelFinishAnimTimeEnd, arg_16_0)
+function var_0_0.onLevelOpenAnimTimeEnd(arg_16_0)
+	TaskDispatcher.cancelTask(arg_16_0.onLevelOpenAnimTimeEnd, arg_16_0)
 
 	local var_16_0 = arg_16_0._finishEpisodeId
 	local var_16_1
 
 	for iter_16_0, iter_16_1 in ipairs(arg_16_0._levelItemList) do
-		if iter_16_1.preEpisodeId == var_16_0 then
+		if iter_16_1.episodeId == var_16_0 then
 			var_16_1 = iter_16_1
 
 			break
@@ -241,58 +214,100 @@ function var_0_0.onLevelFinishAnimTimeEnd(arg_16_0)
 		return
 	end
 
-	var_16_1:setActive(true)
+	if not MoLiDeErModel.instance:isEpisodeFinish(arg_16_0._actId, var_16_0, true) then
+		var_16_1:setStarState(true)
+		arg_16_0:onLevelUnlockAnimTimeEnd()
+
+		return
+	end
+
 	var_16_1:refreshUI(true)
+	AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_yuzhou_level_lit)
+
+	local var_16_2 = var_16_1.index
+
+	arg_16_0:setPathItemState(var_16_2, true, true)
+
+	if var_16_2 < #arg_16_0._levelItemList then
+		TaskDispatcher.runDelay(arg_16_0.onLevelFinishAnimTimeEnd, arg_16_0, MoLiDeErEnum.LevelAnimTime.LevelItemFinish)
+	else
+		arg_16_0:_focusStoryItem(var_16_1.episodeId)
+		TaskDispatcher.runDelay(arg_16_0.onLevelUnlockAnimTimeEnd, arg_16_0, MoLiDeErEnum.LevelAnimTime.LevelItemFinish)
+	end
+end
+
+function var_0_0.onLevelFinishAnimTimeEnd(arg_17_0)
+	TaskDispatcher.cancelTask(arg_17_0.onLevelFinishAnimTimeEnd, arg_17_0)
+
+	local var_17_0 = arg_17_0._finishEpisodeId
+	local var_17_1
+
+	for iter_17_0, iter_17_1 in ipairs(arg_17_0._levelItemList) do
+		if iter_17_1.preEpisodeId == var_17_0 then
+			var_17_1 = iter_17_1
+
+			break
+		end
+	end
+
+	if var_17_1 == nil then
+		logError("莫莉德尔 角色活动 不存在对应关卡id的level item id:" .. tostring(var_17_0))
+
+		return
+	end
+
+	var_17_1:setActive(true)
+	var_17_1:refreshUI(true)
 	AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_fuleyuan_newlevels_unlock)
-	arg_16_0:_focusStoryItem(var_16_1.episodeId)
-	TaskDispatcher.runDelay(arg_16_0.onLevelUnlockAnimTimeEnd, arg_16_0, MoLiDeErEnum.LevelAnimTime.LevelItemUnlock)
+	arg_17_0:_focusStoryItem(var_17_1.episodeId)
+	TaskDispatcher.runDelay(arg_17_0.onLevelUnlockAnimTimeEnd, arg_17_0, MoLiDeErEnum.LevelAnimTime.LevelItemUnlock)
 end
 
-function var_0_0.onLevelUnlockAnimTimeEnd(arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0.onLevelUnlockAnimTimeEnd, arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0.forceEndBlock, arg_17_0)
+function var_0_0.onLevelUnlockAnimTimeEnd(arg_18_0)
+	TaskDispatcher.cancelTask(arg_18_0.onLevelUnlockAnimTimeEnd, arg_18_0)
+	TaskDispatcher.cancelTask(arg_18_0.forceEndBlock, arg_18_0)
 
-	arg_17_0._finishEpisodeId = nil
+	arg_18_0._finishEpisodeId = nil
 
-	arg_17_0:_lockScreen(false)
-end
-
-function var_0_0._playFirstUnlock(arg_18_0)
-	TaskDispatcher.cancelTask(arg_18_0._playFirstUnlock, arg_18_0)
 	arg_18_0:_lockScreen(false)
 end
 
-function var_0_0.updateTime(arg_19_0)
-	local var_19_0 = arg_19_0._actId
-	local var_19_1 = ActivityModel.instance:getActivityInfo()[var_19_0]
+function var_0_0._playFirstUnlock(arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._playFirstUnlock, arg_19_0)
+	arg_19_0:_lockScreen(false)
+end
 
-	if var_19_1 then
-		local var_19_2 = var_19_1:getRealEndTimeStamp() - ServerTime.now()
+function var_0_0.updateTime(arg_20_0)
+	local var_20_0 = arg_20_0._actId
+	local var_20_1 = ActivityModel.instance:getActivityInfo()[var_20_0]
 
-		if var_19_2 > 0 then
-			if arg_19_0._txtLimitTime ~= nil then
-				local var_19_3 = TimeUtil.SecondToActivityTimeFormat(var_19_2)
+	if var_20_1 then
+		local var_20_2 = var_20_1:getRealEndTimeStamp() - ServerTime.now()
 
-				arg_19_0._txtLimitTime.text = var_19_3
+		if var_20_2 > 0 then
+			if arg_20_0._txtLimitTime ~= nil then
+				local var_20_3 = TimeUtil.SecondToActivityTimeFormat(var_20_2)
+
+				arg_20_0._txtLimitTime.text = var_20_3
 			end
 
 			return
 		end
 	end
 
-	TaskDispatcher.cancelTask(arg_19_0.updateTime, arg_19_0)
+	TaskDispatcher.cancelTask(arg_20_0.updateTime, arg_20_0)
 end
 
-function var_0_0._refreshRedDot(arg_20_0, arg_20_1)
-	arg_20_1:defaultRefreshDot()
+function var_0_0._refreshRedDot(arg_21_0, arg_21_1)
+	arg_21_1:defaultRefreshDot()
 
-	local var_20_0 = arg_20_1.show
+	local var_21_0 = arg_21_1.show
 
-	arg_20_0._taskAnimator:Play(var_20_0 and "loop" or "idle")
+	arg_21_0._taskAnimator:Play(var_21_0 and "loop" or "idle")
 end
 
-function var_0_0._lockScreen(arg_21_0, arg_21_1)
-	if arg_21_1 then
+function var_0_0._lockScreen(arg_22_0, arg_22_1)
+	if arg_22_1 then
 		UIBlockMgrExtend.setNeedCircleMv(false)
 		UIBlockMgr.instance:startBlock("MoLiDeErLevelView")
 	else
@@ -301,14 +316,14 @@ function var_0_0._lockScreen(arg_21_0, arg_21_1)
 	end
 end
 
-function var_0_0._checkFirstEnter(arg_22_0)
-	local var_22_0 = arg_22_0._levelItemList[2]
+function var_0_0._checkFirstEnter(arg_23_0)
+	local var_23_0 = arg_23_0._levelItemList[2]
 
-	if var_22_0 and not MoLiDeErModel.instance:isEpisodeFinish(arg_22_0._actId, var_22_0.preEpisodeId) then
-		local var_22_1 = string.format("ActMoLiDeErFirstEnter_%s", PlayerModel.instance:getMyUserId())
+	if var_23_0 and not MoLiDeErModel.instance:isEpisodeFinish(arg_23_0._actId, var_23_0.preEpisodeId) then
+		local var_23_1 = string.format("ActMoLiDeErFirstEnter_%s", PlayerModel.instance:getMyUserId())
 
-		if PlayerPrefsHelper.getNumber(var_22_1, 0) == 0 then
-			PlayerPrefsHelper.setNumber(var_22_1, 1)
+		if PlayerPrefsHelper.getNumber(var_23_1, 0) == 0 then
+			PlayerPrefsHelper.setNumber(var_23_1, 1)
 
 			return true
 		end
@@ -317,12 +332,12 @@ function var_0_0._checkFirstEnter(arg_22_0)
 	return false
 end
 
-function var_0_0.onClose(arg_23_0)
-	TaskDispatcher.cancelTask(arg_23_0.updateTime, arg_23_0)
+function var_0_0.onClose(arg_24_0)
+	TaskDispatcher.cancelTask(arg_24_0.updateTime, arg_24_0)
 end
 
-function var_0_0.onDestroyView(arg_24_0)
-	TaskDispatcher.cancelTask(arg_24_0.updateTime, arg_24_0)
+function var_0_0.onDestroyView(arg_25_0)
+	TaskDispatcher.cancelTask(arg_25_0.updateTime, arg_25_0)
 end
 
 return var_0_0

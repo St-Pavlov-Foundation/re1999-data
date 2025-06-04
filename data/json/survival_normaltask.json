@@ -223,7 +223,7 @@
     "icon": "300401",
     "desc2": "找到营地，为飞行员带回“可燃水”",
     "showInExplore": 0,
-    "progressCondition": "itemGet#100201",
+    "progressCondition": "itemGet#100206",
     "maxProgress": 1,
     "needAccept": 1,
     "prepose": "",

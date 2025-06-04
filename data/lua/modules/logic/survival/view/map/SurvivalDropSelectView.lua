@@ -106,7 +106,11 @@ function var_0_0.onClickGetReward(arg_10_0)
 end
 
 function var_0_0._realGetItems(arg_11_0)
-	SurvivalWeekRpc.instance:sendSurvivalPanelOperationRequest(arg_11_0._panel.uid, table.concat(arg_11_0._selectIndex, ","))
+	SurvivalWeekRpc.instance:sendSurvivalPanelOperationRequest(arg_11_0._panel.uid, table.concat(arg_11_0._selectIndex, ","), arg_11_0._onRecvMsg, arg_11_0)
+end
+
+function var_0_0._onRecvMsg(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
+	arg_12_0:closeThis()
 end
 
 return var_0_0

@@ -272,6 +272,8 @@ function var_0_0.onClickScene(arg_21_0, arg_21_1, arg_21_2)
 				local var_21_5 = SurvivalHelper.instance:getDir(var_21_1, var_21_4[1])
 
 				SurvivalInteriorRpc.instance:sendSurvivalSceneOperation(SurvivalEnum.OperType.PlayerMove, tostring(var_21_5))
+			else
+				SurvivalMapHelper.instance:tryRemoveFlow()
 			end
 		else
 			SurvivalMapModel.instance:setShowTarget(arg_21_2)

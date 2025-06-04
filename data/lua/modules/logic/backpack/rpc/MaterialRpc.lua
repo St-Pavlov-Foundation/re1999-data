@@ -196,15 +196,15 @@ function var_0_0._onReceiveMaterialChangePush_default(arg_7_0, arg_7_1, arg_7_2,
 
 			return
 		end
+	end
 
-		local var_7_2 = FightUISwitchModel.instance:getStyleMoByItemId(arg_7_2[1].materilId)
+	for iter_7_0, iter_7_1 in ipairs(arg_7_2) do
+		local var_7_2 = FightUISwitchModel.instance:getStyleMoByItemId(iter_7_1.materilId)
 
 		if var_7_2 then
 			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.FightUISwitchEquipView, {
 				mo = var_7_2
 			})
-
-			return
 		end
 	end
 
@@ -221,9 +221,9 @@ function var_0_0._onReceiveMaterialChangePush_default(arg_7_0, arg_7_1, arg_7_2,
 	local var_7_4 = ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg)
 
 	if var_7_4 and #var_7_4 > 0 then
-		for iter_7_0, iter_7_1 in ipairs(var_7_4) do
-			if #arg_7_2 == 1 and iter_7_1.id == arg_7_2[1].materilId then
-				PlayerCardController.instance:ShowChangeBgSkin(iter_7_1.id)
+		for iter_7_2, iter_7_3 in ipairs(var_7_4) do
+			if #arg_7_2 == 1 and iter_7_3.id == arg_7_2[1].materilId then
+				PlayerCardController.instance:ShowChangeBgSkin(iter_7_3.id)
 			end
 		end
 	end

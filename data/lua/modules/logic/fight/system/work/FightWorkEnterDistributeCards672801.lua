@@ -56,7 +56,10 @@ function var_0_0.onAllLoaded(arg_4_0)
 		var_4_0:registWork(FightWorkFunction, arg_4_0.showOnceCard, arg_4_0, var_4_4)
 	end
 
-	var_4_0:registWork(FightWorkDelayTimer, 1.3 / var_4_3)
+	var_4_0:registWork(FightWorkDelayTimer, 1.3)
+	var_4_0:registWork(FightWorkFunction, arg_4_0.stopCardAni, arg_4_0)
+	var_4_0:registWork(FightWorkDelayTimer, 0.2)
+	var_4_0:registWork(FightWorkFunction, arg_4_0.correctAppearance, arg_4_0)
 	var_4_0:start()
 end
 
@@ -69,23 +72,33 @@ function var_0_0.showOnceCard(arg_6_0, arg_6_1)
 	arg_6_1:playCardAni("ui/animations/dynamic/fightcarditem_skin_0001.controller", "fightcarditem_skin_0001")
 end
 
-function var_0_0.onDestructor(arg_7_0)
+function var_0_0.stopCardAni(arg_7_0)
 	local var_7_0 = FightDataHelper.handCardMgr.handCard
 	local var_7_1 = arg_7_0.fightViewHandCard._handCardItemList
 
 	for iter_7_0 = 1, #var_7_0 do
 		local var_7_2 = var_7_1[iter_7_0]
-		local var_7_3 = var_7_2._innerGO.transform
+
+		SLFramework.AnimatorPlayer.Get(var_7_2._innerGO):Stop()
 
 		var_7_2._cardAni.runtimeAnimatorController = nil
 		var_7_2._cardAni.enabled = false
+	end
+end
 
-		transformhelper.setLocalRotation(var_7_3, 0, 0, 0)
-		transformhelper.setLocalScale(var_7_3, 1, 1, 1)
+function var_0_0.correctAppearance(arg_8_0)
+	local var_8_0 = FightDataHelper.handCardMgr.handCard
+	local var_8_1 = arg_8_0.fightViewHandCard._handCardItemList
+
+	for iter_8_0 = 1, #var_8_0 do
+		local var_8_2 = var_8_1[iter_8_0]._innerGO.transform
+
+		transformhelper.setLocalRotation(var_8_2, 0, 0, 0)
+		transformhelper.setLocalScale(var_8_2, 1, 1, 1)
 	end
 
-	for iter_7_1, iter_7_2 in ipairs(arg_7_0.effectList) do
-		gohelper.destroy(iter_7_2)
+	for iter_8_1, iter_8_2 in ipairs(arg_8_0.effectList) do
+		gohelper.destroy(iter_8_2)
 	end
 end
 

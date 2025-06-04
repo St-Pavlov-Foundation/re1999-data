@@ -143,7 +143,7 @@ function var_0_0.quickSelectNpc(arg_13_0, arg_13_1)
 
 	if var_13_1:getNpcPostion(arg_13_1) == var_13_0 then
 		if not arg_13_0:isQuickSelect() then
-			arg_13_0.selectPos = nil
+			arg_13_0.selectNpcId = 0
 		end
 
 		SurvivalWeekRpc.instance:sendSurvivalNpcChangePositionRequest(arg_13_1, var_13_0, -1)
@@ -163,7 +163,7 @@ function var_0_0.quickSelectNpc(arg_13_0, arg_13_1)
 	for iter_13_2 = 1, var_13_3 do
 		if not var_13_4[iter_13_2 - 1] then
 			if not arg_13_0:isQuickSelect() then
-				arg_13_0.selectPos = nil
+				arg_13_0.selectNpcId = 0
 			end
 
 			SurvivalWeekRpc.instance:sendSurvivalNpcChangePositionRequest(arg_13_1, var_13_0, iter_13_2 - 1)

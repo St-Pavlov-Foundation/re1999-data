@@ -376,5 +376,50 @@
     "tagType": 2,
     "effect": 0,
     "color": 6
+  },
+  {
+    "id": 5001,
+    "name": "隐藏判定1",
+    "desc": "隐藏判定1",
+    "beHidden": "2021",
+    "tagType": 3,
+    "effect": 0,
+    "color": 6
+  },
+  {
+    "id": 5002,
+    "name": "隐藏判定2",
+    "desc": "隐藏判定2",
+    "beHidden": "2021",
+    "tagType": 3,
+    "effect": 0,
+    "color": 6
+  },
+  {
+    "id": 5003,
+    "name": "隐藏判定3",
+    "desc": "隐藏判定3",
+    "beHidden": "2021",
+    "tagType": 3,
+    "effect": 0,
+    "color": 6
+  },
+  {
+    "id": 5004,
+    "name": "隐藏判定4",
+    "desc": "隐藏判定4",
+    "beHidden": "2021",
+    "tagType": 3,
+    "effect": 0,
+    "color": 6
+  },
+  {
+    "id": 5005,
+    "name": "隐藏判定5",
+    "desc": "隐藏判定5",
+    "beHidden": "2021",
+    "tagType": 3,
+    "effect": 0,
+    "color": 6
   }
 ]

@@ -74,6 +74,7 @@ function var_0_0.onOpen(arg_2_0)
 	arg_2_0:com_registFightEvent(FightEvent.CoverPerformanceEntityData, arg_2_0.onCoverPerformanceEntityData)
 	arg_2_0:com_registFightEvent(FightEvent.ChangeCareer, arg_2_0._onChangeCareer)
 	arg_2_0:com_registFightEvent(FightEvent.ChangeShield, arg_2_0._onChangeShield)
+	arg_2_0:com_registFightEvent(FightEvent.SetFakeNuoDiKaDamageShield, arg_2_0.onSetFakeNuoDiKaDamageShield)
 
 	arg_2_0.sheildWidth = recthelper.getWidth(arg_2_0._goHpShield.transform)
 
@@ -649,12 +650,20 @@ function var_0_0._onChangeShield(arg_38_0, arg_38_1)
 	end
 end
 
-function var_0_0.onCoverPerformanceEntityData(arg_39_0, arg_39_1)
-	if not arg_39_0._bossEntityMO or arg_39_1 ~= arg_39_0._bossEntityMO.id then
+function var_0_0.onSetFakeNuoDiKaDamageShield(arg_39_0, arg_39_1, arg_39_2)
+	if arg_39_0._bossEntityMO and arg_39_0._bossEntityMO.id == arg_39_1 then
+		arg_39_0._curShield = arg_39_2 > 0 and arg_39_2 or 0
+
+		arg_39_0:_tweenFillAmount()
+	end
+end
+
+function var_0_0.onCoverPerformanceEntityData(arg_40_0, arg_40_1)
+	if not arg_40_0._bossEntityMO or arg_40_1 ~= arg_40_0._bossEntityMO.id then
 		return
 	end
 
-	arg_39_0:_tweenFillAmount()
+	arg_40_0:_tweenFillAmount()
 end
 
 return var_0_0

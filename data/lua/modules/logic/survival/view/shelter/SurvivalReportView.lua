@@ -116,7 +116,7 @@ function var_0_0._initNpcNew(arg_11_0)
 		var_11_1 = tabletool.len(var_11_0)
 	end
 
-	local var_11_2 = SurvivalShelterTentListModel:getShowList()
+	local var_11_2 = SurvivalShelterTentListModel.instance:getShowList()
 	local var_11_3 = true
 
 	for iter_11_0, iter_11_1 in pairs(var_11_2) do

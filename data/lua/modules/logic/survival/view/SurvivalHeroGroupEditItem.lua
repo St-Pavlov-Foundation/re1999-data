@@ -55,33 +55,8 @@ function var_0_0.setAdventureBuff(arg_6_0, arg_6_1)
 end
 
 function var_0_0.updateLimitStatus(arg_7_0)
-	if HeroGroupQuickEditListModel.instance.adventure then
-		gohelper.setActive(arg_7_0._gohp, false)
-
-		local var_7_0 = WeekWalkModel.instance:getCurMapHeroCd(arg_7_0._mo.config.id)
-
-		arg_7_0._heroItem:setInjury(var_7_0 > 0)
-	elseif HeroGroupQuickEditListModel.instance.isWeekWalk_2 then
-		gohelper.setActive(arg_7_0._gohp, false)
-
-		local var_7_1 = WeekWalk_2Model.instance:getCurMapHeroCd(arg_7_0._mo.config.id)
-
-		arg_7_0._heroItem:setInjury(var_7_1 > 0)
-	elseif HeroGroupQuickEditListModel.instance.isTowerBattle then
-		gohelper.setActive(arg_7_0._gohp, false)
-
-		local var_7_2 = TowerModel.instance:isHeroBan(arg_7_0._mo.config.id)
-
-		arg_7_0._heroItem:setLost(var_7_2)
-	else
-		gohelper.setActive(arg_7_0._gohp, false)
-
-		if HeroGroupModel.instance:isRestrict(arg_7_0._mo.uid) then
-			arg_7_0._heroItem:setRestrict(true)
-		else
-			arg_7_0._heroItem:setRestrict(false)
-		end
-	end
+	gohelper.setActive(arg_7_0._gohp, false)
+	arg_7_0._heroItem:setRestrict(false)
 end
 
 function var_0_0.onUpdateMO(arg_8_0, arg_8_1)

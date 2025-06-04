@@ -572,12 +572,9 @@ function var_0_0.onClickActivity1(arg_36_0, arg_36_1)
 	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
 
 	local var_36_0 = Activity125Config.instance:getH5BaseUrl(arg_36_1)
+	local var_36_1 = WebViewController.instance:getRecordUserUrl(var_36_0)
 
-	if SettingsModel.instance:isTwRegion() or SettingsModel.instance:isKrRegion() then
-		WebViewController.instance:openWebView(var_36_0, false, arg_36_0._onWebViewCb, arg_36_0)
-	else
-		WebViewController.instance:simpleOpenWebView(var_36_0, false, arg_36_0._onWebViewCb, arg_36_0)
-	end
+	GameUtil.openURL(var_36_1)
 
 	if GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.Activity2ndAnnualReview, 0) == 0 then
 		GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Activity2ndAnnualReview, 1)

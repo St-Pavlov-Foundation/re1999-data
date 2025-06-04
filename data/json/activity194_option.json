@@ -38,8 +38,8 @@
   {
     "optionId": 1000105,
     "name": "设置驻地",
-    "conditionDesc": "达成<color=#9C3E09>探索目标</color>",
-    "optionDesc": "达成<color=#9C3E09>探索目标</color>",
+    "conditionDesc": "<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
+    "optionDesc": "<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
     "optionRestriction": "",
     "effect": "1#-10",
     "optionResultId": 1000205
@@ -110,8 +110,8 @@
   {
     "optionId": 1000120,
     "name": "标记地点",
-    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>达成<color=#9C3E09>探索目标</color>",
-    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>达成<color=#9C3E09>探索目标</color>",
+    "conditionDesc": "<color=#9C3E09>花费▩2%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
+    "optionDesc": "<color=#9C3E09>花费▩2%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
     "optionRestriction": "",
     "effect": "1#-20|5#3",
     "optionResultId": 1000220
@@ -263,7 +263,7 @@
   {
     "optionId": 1000137,
     "name": "与嚼嚼松果合作",
-    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩2%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
+    "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30002",
     "effect": "1#-10|5#2",
@@ -338,7 +338,7 @@
     "conditionDesc": "<color=#9C3E09>▩1%s</color>可选择，<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>▩1%s</color>可选择\n<color=#9C3E09>花费▩3%s回合</color>推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30002",
-    "effect": "1#-20|5#3",
+    "effect": "1#-10|5#2",
     "optionResultId": 1000245
   },
   {
@@ -347,7 +347,7 @@
     "conditionDesc": "<color=#9C3E09>嚼嚼松果和企鹅们</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>嚼嚼松果和企鹅们</color>可选择\n<color=#9C3E09>花费▩5%s回合</color>推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30009#30004#30006",
-    "effect": "1#-10|5#2",
+    "effect": "1#-20|5#3",
     "optionResultId": 1000246
   },
   {
@@ -401,7 +401,7 @@
     "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30002#30006",
-    "effect": "1#-30|5#2",
+    "effect": "1#-30|5#1",
     "optionResultId": 1000252
   },
   {
@@ -419,7 +419,7 @@
     "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30002#30006",
-    "effect": "1#-30|5#1",
+    "effect": "1#-30|5#2",
     "optionResultId": 1000254
   },
   {
@@ -428,7 +428,7 @@
     "conditionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionDesc": "<color=#9C3E09>花费▩4%s回合</color>安置<color=#9C3E09>▩5%s</color>\n推进<color=#9C3E09>探索目标</color>",
     "optionRestriction": "1#30002#30006",
-    "effect": "1#-30|5#1",
+    "effect": "1#-30|5#2",
     "optionResultId": 1000255
   },
   {
@@ -443,8 +443,8 @@
   {
     "optionId": 1000157,
     "name": "呼叫白手套队长",
-    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
-    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
+    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
     "optionRestriction": "1#30002#30006",
     "effect": "5#1",
     "optionResultId": 1000257
@@ -455,7 +455,7 @@
     "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>解锁一处<color=#9C3E09>新地点</color>\n推进<color=#9C3E09>额外探索目标</color>",
     "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n推进<color=#9C3E09>额外探索目标</color>",
     "optionRestriction": "1#30002#30006",
-    "effect": "5#2|1#-10",
+    "effect": "5#2|1#-20",
     "optionResultId": 1000258
   },
   {
@@ -543,7 +543,7 @@
     "optionId": 1000167,
     "name": "无视这条信息",
     "conditionDesc": "获取<color=#9C3E09>补充物资</color>",
-    "optionDesc": "行动力▩4%s",
+    "optionDesc": "行动力▩3%s",
     "optionRestriction": "1#30002#30006",
     "effect": "",
     "optionResultId": 1000267
@@ -551,8 +551,8 @@
   {
     "optionId": 1000168,
     "name": "呼叫白手套队长",
-    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
-    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>，达成<color=#9C3E09>探索目标</color>",
+    "conditionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
+    "optionDesc": "<color=#9C3E09>花费▩3%s回合</color>\n<b><color=#9C3E09>选择后，将无法探索其他关卡目标</color></b>",
     "optionRestriction": "1#30002#30006",
     "effect": "5#1",
     "optionResultId": 1000268
@@ -574,24 +574,6 @@
     "optionRestriction": "",
     "effect": "5#2",
     "optionResultId": 1000402
-  },
-  {
-    "optionId": 1000303,
-    "name": "持续观察",
-    "conditionDesc": "我们不知道重塑之手在打什么主意",
-    "optionDesc": "行动力▩1%s",
-    "optionRestriction": "",
-    "effect": "",
-    "optionResultId": 1000403
-  },
-  {
-    "optionId": 1000304,
-    "name": "视而不见",
-    "conditionDesc": "结束该事件",
-    "optionDesc": "结束该事件",
-    "optionRestriction": "",
-    "effect": "",
-    "optionResultId": 1000404
   },
   {
     "optionId": 1000305,

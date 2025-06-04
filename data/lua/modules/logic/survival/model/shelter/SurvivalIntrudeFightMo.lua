@@ -66,28 +66,42 @@ function var_0_0.getUseRoundByHeroId(arg_7_0, arg_7_1)
 	return nil
 end
 
-function var_0_0.canShowReset(arg_8_0)
-	return arg_8_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting or arg_8_0.status == SurvivalEnum.ShelterMonsterFightState.Fail
+function var_0_0.getUseRoundByHeroUid(arg_8_0, arg_8_1)
+	if arg_8_0.usedHeroId ~= nil then
+		for iter_8_0, iter_8_1 in pairs(arg_8_0.usedHeroId) do
+			local var_8_0 = HeroModel.instance:getByHeroId(iter_8_0)
+
+			if var_8_0 and var_8_0.uid == arg_8_1 then
+				return iter_8_1
+			end
+		end
+	end
+
+	return nil
 end
 
-function var_0_0.canShowFightBtn(arg_9_0)
-	return arg_9_0.status ~= SurvivalEnum.ShelterMonsterFightState.Fail
+function var_0_0.canShowReset(arg_9_0)
+	return arg_9_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting or arg_9_0.status == SurvivalEnum.ShelterMonsterFightState.Fail
 end
 
-function var_0_0.canAbandon(arg_10_0)
-	return arg_10_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart or arg_10_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
+function var_0_0.canShowFightBtn(arg_10_0)
+	return arg_10_0.status ~= SurvivalEnum.ShelterMonsterFightState.Fail
 end
 
-function var_0_0.isFighting(arg_11_0)
-	return arg_11_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
+function var_0_0.canAbandon(arg_11_0)
+	return arg_11_0.status == SurvivalEnum.ShelterMonsterFightState.NoStart or arg_11_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
 end
 
-function var_0_0.setWin(arg_12_0)
-	arg_12_0.status = SurvivalEnum.ShelterMonsterFightState.Win
+function var_0_0.isFighting(arg_12_0)
+	return arg_12_0.status == SurvivalEnum.ShelterMonsterFightState.Fighting
 end
 
-function var_0_0.getBattleId(arg_13_0)
-	return arg_13_0.fightCo.battleId
+function var_0_0.setWin(arg_13_0)
+	arg_13_0.status = SurvivalEnum.ShelterMonsterFightState.Win
+end
+
+function var_0_0.getBattleId(arg_14_0)
+	return arg_14_0.fightCo.battleId
 end
 
 return var_0_0

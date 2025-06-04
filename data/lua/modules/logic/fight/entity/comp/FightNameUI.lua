@@ -336,6 +336,12 @@ function var_0_0.beforeDestroy(arg_23_0)
 		arg_23_0._enemyOperation:disposeSelf()
 	end
 
+	if arg_23_0.healthComp then
+		arg_23_0.healthComp:beforeDestroy()
+
+		arg_23_0.healthComp = nil
+	end
+
 	arg_23_0._opCtrl:beforeDestroy()
 	arg_23_0.buffMgr:beforeDestroy()
 	CameraMgr.instance:getCameraTrace():RemoveChangeActor(arg_23_0._uiFollower)

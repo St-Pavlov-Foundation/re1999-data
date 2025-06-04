@@ -43,7 +43,7 @@ function var_0_0.onLoadFinish(arg_4_0)
 
 	arg_4_0:hideHealth()
 	arg_4_0:tryShowHealth()
-	FightController.instance:registerCallback(FightEvent.HeroHealthValueChange, arg_4_0.onHeroHealthChange, arg_4_0)
+	arg_4_0:addEventCb(FightController.instance, FightEvent.HeroHealthValueChange, arg_4_0.onHeroHealthChange, arg_4_0)
 end
 
 function var_0_0.onHeroHealthChange(arg_5_0, arg_5_1, arg_5_2, arg_5_3, arg_5_4)

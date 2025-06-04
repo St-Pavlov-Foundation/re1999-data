@@ -177,47 +177,34 @@ end
 function var_0_0.getExecutionCost(arg_15_0, arg_15_1, arg_15_2)
 	local var_15_0 = arg_15_0:getCurGameInfo()
 	local var_15_1 = {}
+	local var_15_2 = {}
 
 	if var_15_0.itemBuffIds then
 		for iter_15_0, iter_15_1 in ipairs(var_15_0.itemBuffIds) do
-			local var_15_2 = MoLiDeErConfig.instance:getBuffConfig(iter_15_1)
-
-			if var_15_2.buffType == MoLiDeErEnum.BuffType.Passive then
-				local var_15_3 = string.splitToNumber(var_15_2.effectType, "#")
-				local var_15_4 = var_15_3[1]
-
-				if var_15_4 == MoLiDeErEnum.ExecutionBuffType.Fixed then
-					arg_15_1 = math.max(0, arg_15_1 + var_15_3[2])
-				elseif var_15_4 == MoLiDeErEnum.ExecutionBuffType.Percent then
-					table.insert(var_15_1, var_15_3[2])
-				end
-			end
+			arg_15_1 = MoLiDeErHelper.calculateExecutionCost(iter_15_1, arg_15_1, var_15_1, arg_15_2)
+			var_15_2[iter_15_1] = true
 		end
 	end
 
 	if arg_15_2 then
-		local var_15_5 = var_15_0:getTeamInfo(arg_15_2)
+		local var_15_3 = var_15_0:getTeamInfo(arg_15_2)
 
-		if var_15_5 then
-			for iter_15_2, iter_15_3 in ipairs(var_15_5.buffIds) do
-				local var_15_6 = MoLiDeErConfig.instance:getBuffConfig(iter_15_3)
+		if var_15_3 then
+			for iter_15_2, iter_15_3 in ipairs(var_15_3.buffIds) do
+				arg_15_1 = MoLiDeErHelper.calculateExecutionCost(iter_15_3, arg_15_1, var_15_1, arg_15_2)
+				var_15_2[iter_15_3] = true
+			end
+		end
 
-				if var_15_6.buffType == MoLiDeErEnum.BuffType.Forever or var_15_6.buffType == MoLiDeErEnum.BuffType.Passive then
-					local var_15_7 = string.splitToNumber(var_15_6.effectType, "#")
-					local var_15_8 = var_15_7[1]
-
-					if var_15_8 == MoLiDeErEnum.ExecutionBuffType.Fixed then
-						arg_15_1 = math.max(0, arg_15_1 + var_15_7[2])
-					elseif var_15_8 == MoLiDeErEnum.ExecutionBuffType.Percent then
-						table.insert(var_15_1, var_15_7[2])
-					end
-				end
+		for iter_15_4, iter_15_5 in ipairs(var_15_0.buffIds) do
+			if not var_15_2[iter_15_5] then
+				arg_15_1 = MoLiDeErHelper.calculateExecutionCost(iter_15_5, arg_15_1, var_15_1, arg_15_2, MoLiDeErEnum.ExecutionBuffType.FixedOther)
 			end
 		end
 	end
 
-	for iter_15_4, iter_15_5 in ipairs(var_15_1) do
-		arg_15_1 = arg_15_1 * (1 + iter_15_5 * 0.01)
+	for iter_15_6, iter_15_7 in ipairs(var_15_1) do
+		arg_15_1 = arg_15_1 * (1 + iter_15_7 * 0.01)
 	end
 
 	arg_15_1 = math.ceil(arg_15_1)
@@ -242,47 +229,34 @@ end
 function var_0_0.getRoundCost(arg_17_0, arg_17_1, arg_17_2)
 	local var_17_0 = arg_17_0:getCurGameInfo()
 	local var_17_1 = {}
+	local var_17_2 = {}
 
 	if var_17_0.itemBuffIds then
 		for iter_17_0, iter_17_1 in ipairs(var_17_0.itemBuffIds) do
-			local var_17_2 = MoLiDeErConfig.instance:getBuffConfig(iter_17_1)
-
-			if var_17_2.buffType == MoLiDeErEnum.BuffType.Passive then
-				local var_17_3 = string.splitToNumber(var_17_2.effectType, "#")
-				local var_17_4 = var_17_3[1]
-
-				if var_17_4 == MoLiDeErEnum.RoundBuffType.Fixed then
-					arg_17_1 = math.max(0, arg_17_1 + var_17_3[2])
-				elseif var_17_4 == MoLiDeErEnum.RoundBuffType.Percent then
-					table.insert(var_17_1, var_17_3[2])
-				end
-			end
+			arg_17_1 = MoLiDeErHelper.calculateRoundCost(iter_17_1, arg_17_1, var_17_1, arg_17_2)
+			var_17_2[iter_17_1] = true
 		end
 	end
 
 	if arg_17_2 then
-		local var_17_5 = var_17_0:getTeamInfo(arg_17_2)
+		local var_17_3 = var_17_0:getTeamInfo(arg_17_2)
 
-		if var_17_5 then
-			for iter_17_2, iter_17_3 in ipairs(var_17_5.buffIds) do
-				local var_17_6 = MoLiDeErConfig.instance:getBuffConfig(iter_17_3)
-
-				if var_17_6.buffType == MoLiDeErEnum.BuffType.Forever or var_17_6.buffType == MoLiDeErEnum.BuffType.Passive then
-					local var_17_7 = string.splitToNumber(var_17_6.effectType, "#")
-					local var_17_8 = var_17_7[1]
-
-					if var_17_8 == MoLiDeErEnum.RoundBuffType.Fixed then
-						arg_17_1 = math.max(0, arg_17_1 + var_17_7[2])
-					elseif var_17_8 == MoLiDeErEnum.RoundBuffType.Percent then
-						table.insert(var_17_1, var_17_7[2])
-					end
-				end
+		if var_17_3 then
+			for iter_17_2, iter_17_3 in ipairs(var_17_3.buffIds) do
+				arg_17_1 = MoLiDeErHelper.calculateRoundCost(iter_17_3, arg_17_1, var_17_1, arg_17_2)
+				var_17_2[iter_17_3] = true
 			end
 		end
 	end
 
-	for iter_17_4, iter_17_5 in ipairs(var_17_1) do
-		arg_17_1 = arg_17_1 * (1 + iter_17_5 * 0.01)
+	for iter_17_4, iter_17_5 in ipairs(var_17_0.buffIds) do
+		if not var_17_2[iter_17_5] then
+			arg_17_1 = MoLiDeErHelper.calculateRoundCost(iter_17_5, arg_17_1, var_17_1, arg_17_2, MoLiDeErEnum.RoundBuffType.FixedOther)
+		end
+	end
+
+	for iter_17_6, iter_17_7 in ipairs(var_17_1) do
+		arg_17_1 = arg_17_1 * (1 + iter_17_7 * 0.01)
 	end
 
 	arg_17_1 = math.ceil(arg_17_1)

@@ -5307,6 +5307,7 @@ setNeedLoadModule("modules.logic.ressplit.work.ResSplitSpecialWork", "ResSplitSp
 setNeedLoadModule("modules.logic.ressplit.work.ResSplitStoryWork", "ResSplitStoryWork")
 setNeedLoadModule("modules.logic.ressplit.work.ResSplitUIWork", "ResSplitUIWork")
 setNeedLoadModule("modules.logic.ressplit.work.ResSplitWeekWalkWork", "ResSplitWeekWalkWork")
+setNeedLoadModule("modules.logic.ressplit.work.VersionResSpiltAudioWhiteWork", "VersionResSpiltAudioWhiteWork")
 setNeedLoadModule("modules.logic.ressplit.xml.ResSplitXml2lua", "ResSplitXml2lua")
 setNeedLoadModule("modules.logic.ressplit.xml.ResSplitXmlDom", "ResSplitXmlDom")
 setNeedLoadModule("modules.logic.ressplit.xml.ResSplitXmlParser", "ResSplitXmlParser")

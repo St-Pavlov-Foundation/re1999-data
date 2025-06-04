@@ -1313,19 +1313,20 @@ end
 
 function var_0_0._refreshHp(arg_51_0, arg_51_1)
 	local var_51_0 = arg_51_1:getLockMaxHpRate()
-	local var_51_1, var_51_2 = arg_51_1:getHpAndShieldFillAmount()
-	local var_51_3 = math.max(arg_51_1.currentHp, 0)
-	local var_51_4 = (arg_51_1.attrMO and math.max(arg_51_1.attrMO.hp, 0)) * var_51_0
+	local var_51_1 = math.max(arg_51_1.currentHp, 0)
+	local var_51_2 = (arg_51_1.attrMO and math.max(arg_51_1.attrMO.hp, 0)) * var_51_0
 
-	arg_51_0._txthp.text = string.format("%d/%d", var_51_3, var_51_4)
+	arg_51_0._txthp.text = string.format("%d/%d", var_51_1, var_51_2)
 
-	arg_51_0._sliderhp:SetValue(var_51_1)
+	local var_51_3 = var_51_1 / var_51_2 * var_51_0
 
-	local var_51_5 = var_51_0 < 1
+	arg_51_0._sliderhp:SetValue(var_51_3)
 
-	gohelper.setActive(arg_51_0.reduceHpGo, var_51_5)
+	local var_51_4 = var_51_0 < 1
 
-	if var_51_5 then
+	gohelper.setActive(arg_51_0.reduceHpGo, var_51_4)
+
+	if var_51_4 then
 		arg_51_0.reduceHpImage.fillAmount = Mathf.Clamp01(1 - var_51_0)
 	end
 end

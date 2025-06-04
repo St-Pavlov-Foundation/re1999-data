@@ -158,7 +158,7 @@ function var_0_0.refreshTab(arg_12_0, arg_12_1, arg_12_2)
 	end
 end
 
-function var_0_0.onClose(arg_13_0)
+function var_0_0.onDestroyView(arg_13_0)
 	for iter_13_0, iter_13_1 in pairs(arg_13_0.tabList) do
 		iter_13_1.btn:RemoveClickListener()
 	end

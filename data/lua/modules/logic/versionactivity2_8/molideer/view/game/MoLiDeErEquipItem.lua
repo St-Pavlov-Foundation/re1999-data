@@ -63,7 +63,7 @@ function var_0_0.refreshUI(arg_10_0)
 	local var_10_3 = MoLiDeErConfig.instance:getItemConfig(var_10_1)
 
 	if var_10_2 == nil or var_10_3 == nil then
-		logError("莫莉德尔 角色活动 不存在的小队id" .. var_10_1)
+		logError("莫莉德尔 角色活动 不存在的道具id" .. var_10_1)
 
 		return
 	end

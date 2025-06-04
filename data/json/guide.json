@@ -4846,7 +4846,7 @@
     "trigger": "RoomLv#6",
     "invalid": "",
     "interruptFinish": 1,
-    "priority": 0,
+    "priority": 119,
     "parallel": 1,
     "restart": 0
   },

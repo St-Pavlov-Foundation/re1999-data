@@ -229,10 +229,6 @@ function var_0_0.processNuoDiKaUniqueDamage(arg_11_0, arg_11_1, arg_11_2, arg_11
 			if var_11_1.effectType == FightEnum.EffectType.SHIELD and var_11_1.configEffect == var_11_0 then
 				var_11_1.custom_nuoDiKaDamageSign = true
 			end
-
-			if var_11_1.effectType == FightEnum.EffectType.NUODIKADAMAGE or var_11_1.effectType == FightEnum.EffectType.NUODIKATEAMDAMAGE then
-				var_11_1.custom_nuoDiKaDamageSign = true
-			end
 		end
 	end
 end

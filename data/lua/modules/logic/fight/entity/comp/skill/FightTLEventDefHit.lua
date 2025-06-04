@@ -319,34 +319,41 @@ function var_0_0._playDefHit(arg_7_0, arg_7_1, arg_7_2)
 
 	if arg_7_2.effectType == FightEnum.EffectType.DAMAGE or var_7_9 then
 		local var_7_11 = arg_7_0:_calcNum(arg_7_2.clientId, arg_7_2.targetId, arg_7_2.effectNum, arg_7_0._ratio)
+		local var_7_12 = var_7_11
 
 		if arg_7_1.nameUI then
 			if var_7_9 then
-				local var_7_12 = var_7_3.shieldValue
+				local var_7_13 = arg_7_1.nameUI._curShield
 
-				if var_7_12 and var_7_12 > 0 then
-					local var_7_13 = var_7_12 - var_7_11
+				if var_7_13 and var_7_13 > 0 then
+					if var_7_12 <= var_7_13 then
+						local var_7_14 = var_7_13 - var_7_12
 
-					arg_7_1.nameUI:setShield(var_7_13)
+						arg_7_1.nameUI:setShield(var_7_14)
+						FightController.instance:dispatchEvent(FightEvent.SetFakeNuoDiKaDamageShield, var_7_1.id, var_7_14)
 
-					var_7_11 = var_7_11 - var_7_13
+						var_7_12 = 0
+					else
+						local var_7_15 = 0
 
-					arg_7_1.nameUI:addHp(-var_7_11)
-				else
-					arg_7_1.nameUI:addHp(-var_7_11)
+						arg_7_1.nameUI:setShield(var_7_15)
+						FightController.instance:dispatchEvent(FightEvent.SetFakeNuoDiKaDamageShield, var_7_1.id, var_7_15)
+
+						var_7_12 = var_7_12 - var_7_15
+					end
 				end
-			else
-				arg_7_1.nameUI:addHp(-var_7_11)
 			end
+
+			arg_7_1.nameUI:addHp(-var_7_12)
 		end
 
-		local var_7_14 = var_7_6 == 1000 and FightEnum.FloatType.damage or var_7_6 > 1000 and FightEnum.FloatType.restrain or FightEnum.FloatType.berestrain
-		local var_7_15 = arg_7_1:isMySide() and -var_7_11 or var_7_11
+		local var_7_16 = var_7_6 == 1000 and FightEnum.FloatType.damage or var_7_6 > 1000 and FightEnum.FloatType.restrain or FightEnum.FloatType.berestrain
+		local var_7_17 = arg_7_1:isMySide() and -var_7_11 or var_7_11
 
 		table.insert(arg_7_0._floatParams, {
 			arg_7_2.targetId,
-			var_7_14,
-			var_7_15
+			var_7_16,
+			var_7_17
 		})
 
 		if var_7_11 ~= 0 then
@@ -356,133 +363,140 @@ function var_0_0._playDefHit(arg_7_0, arg_7_1, arg_7_2)
 		arg_7_0:_playHitAudio(arg_7_1, false)
 		arg_7_0:_playHitVoice(arg_7_1)
 		arg_7_0:_playDefRestrain(arg_7_1, var_7_6)
-		FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_11)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_15, arg_7_0._isLastHit, var_7_8)
+		FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_12)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_17, arg_7_0._isLastHit, var_7_8)
 	elseif arg_7_2.effectType == FightEnum.EffectType.CRIT or var_7_10 then
-		local var_7_16 = arg_7_0:_calcNum(arg_7_2.clientId, arg_7_2.targetId, arg_7_2.effectNum, arg_7_0._ratio)
+		local var_7_18 = arg_7_0:_calcNum(arg_7_2.clientId, arg_7_2.targetId, arg_7_2.effectNum, arg_7_0._ratio)
+		local var_7_19 = var_7_18
 
 		if arg_7_1.nameUI then
 			if var_7_10 then
-				local var_7_17 = var_7_3.shieldValue
+				local var_7_20 = arg_7_1.nameUI._curShield
 
-				if var_7_17 and var_7_17 > 0 then
-					local var_7_18 = var_7_17 - var_7_16
+				if var_7_20 and var_7_20 > 0 then
+					if var_7_19 <= var_7_20 then
+						local var_7_21 = var_7_20 - var_7_19
 
-					arg_7_1.nameUI:setShield(var_7_18)
+						arg_7_1.nameUI:setShield(var_7_21)
+						FightController.instance:dispatchEvent(FightEvent.SetFakeNuoDiKaDamageShield, var_7_1.id, var_7_21)
 
-					var_7_16 = var_7_16 - var_7_18
+						var_7_19 = 0
+					else
+						local var_7_22 = 0
 
-					arg_7_1.nameUI:addHp(-var_7_16)
-				else
-					arg_7_1.nameUI:addHp(-var_7_16)
+						arg_7_1.nameUI:setShield(var_7_22)
+						FightController.instance:dispatchEvent(FightEvent.SetFakeNuoDiKaDamageShield, var_7_1.id, var_7_22)
+
+						var_7_19 = var_7_19 - var_7_22
+					end
 				end
-			else
-				arg_7_1.nameUI:addHp(-var_7_16)
 			end
+
+			arg_7_1.nameUI:addHp(-var_7_19)
 		end
 
-		local var_7_19 = var_7_6 == 1000 and FightEnum.FloatType.crit_damage or var_7_6 > 1000 and FightEnum.FloatType.crit_restrain or FightEnum.FloatType.crit_berestrain
-		local var_7_20 = arg_7_1:isMySide() and -var_7_16 or var_7_16
+		local var_7_23 = var_7_6 == 1000 and FightEnum.FloatType.crit_damage or var_7_6 > 1000 and FightEnum.FloatType.crit_restrain or FightEnum.FloatType.crit_berestrain
+		local var_7_24 = arg_7_1:isMySide() and -var_7_18 or var_7_18
 
 		table.insert(arg_7_0._floatParams, {
 			arg_7_2.targetId,
-			var_7_19,
-			var_7_20
+			var_7_23,
+			var_7_24
 		})
 
-		if var_7_16 ~= 0 then
+		if var_7_18 ~= 0 then
 			arg_7_0:_checkPlayAction(arg_7_1, arg_7_0._critAction, arg_7_2)
 		end
 
 		arg_7_0:_playHitAudio(arg_7_1, true)
 		arg_7_0:_playHitVoice(arg_7_1)
 		arg_7_0:_playDefRestrain(arg_7_1, var_7_6)
-		FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_16)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_20, arg_7_0._isLastHit, var_7_8)
+		FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_19)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_24, arg_7_0._isLastHit, var_7_8)
 	elseif arg_7_2.effectType == FightEnum.EffectType.MISS then
 		if arg_7_0._ratio > 0 then
 			arg_7_0:_checkPlayAction(arg_7_1, arg_7_0._missAction, arg_7_2)
 			FightFloatMgr.instance:float(arg_7_2.targetId, FightEnum.FloatType.buff, luaLang("fight_float_miss"), FightEnum.BuffFloatEffectType.Good)
 		end
 	elseif arg_7_2.effectType == FightEnum.EffectType.SHIELD then
-		local var_7_21 = var_7_1.shieldValue
-		local var_7_22 = arg_7_0:_calcNum(arg_7_2.clientId, arg_7_2.targetId, arg_7_2.diffValue or 0, arg_7_0._ratio)
-		local var_7_23 = arg_7_1:isMySide() and -var_7_22 or var_7_22
+		local var_7_25 = var_7_1.shieldValue
+		local var_7_26 = arg_7_0:_calcNum(arg_7_2.clientId, arg_7_2.targetId, arg_7_2.diffValue or 0, arg_7_0._ratio)
+		local var_7_27 = arg_7_1:isMySide() and -var_7_26 or var_7_26
 
 		if arg_7_1.nameUI then
-			arg_7_1.nameUI:setShield(arg_7_1.nameUI._curShield + var_7_22 * arg_7_2.sign)
+			arg_7_1.nameUI:setShield(arg_7_1.nameUI._curShield + var_7_26 * arg_7_2.sign)
 		end
 
 		if arg_7_2.sign == -1 then
 			if not arg_7_2.isShieldOriginDamage and not arg_7_2.isShieldAdditionalDamage then
-				local var_7_24 = var_7_6 == 1000 and FightEnum.FloatType.shield_damage or var_7_6 > 1000 and FightEnum.FloatType.shield_restrain or FightEnum.FloatType.shield_berestrain
+				local var_7_28 = var_7_6 == 1000 and FightEnum.FloatType.shield_damage or var_7_6 > 1000 and FightEnum.FloatType.shield_restrain or FightEnum.FloatType.shield_berestrain
 
 				table.insert(arg_7_0._floatParams, {
 					arg_7_2.targetId,
-					var_7_24,
-					var_7_23
+					var_7_28,
+					var_7_27
 				})
 			end
 
-			local var_7_25 = true
+			local var_7_29 = true
 
 			if not FightHelper.checkShieldHit(arg_7_2) then
-				var_7_25 = false
+				var_7_29 = false
 			end
 
 			if arg_7_2.effectNum1 == FightEnum.EffectType.ORIGINDAMAGE and not arg_7_0._forcePlayHitForOrigin then
-				var_7_25 = false
+				var_7_29 = false
 			end
 
 			if arg_7_2.effectNum1 == FightEnum.EffectType.ORIGINCRIT and not arg_7_0._forcePlayHitForOrigin then
-				var_7_25 = false
+				var_7_29 = false
 			end
 
-			if var_7_22 ~= 0 and var_7_25 then
+			if var_7_26 ~= 0 and var_7_29 then
 				arg_7_0:_checkPlayAction(arg_7_1, arg_7_0._defeAction, arg_7_2)
 			end
 
-			if var_7_25 then
+			if var_7_29 then
 				arg_7_0:_playHitAudio(arg_7_1, false)
 				arg_7_0:_playHitVoice(arg_7_1)
 				arg_7_0:_playDefRestrain(arg_7_1, var_7_6)
 			end
 		end
 
-		FightController.instance:dispatchEvent(FightEvent.OnShieldChange, arg_7_1, var_7_22 * arg_7_2.sign)
-		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_23, arg_7_0._isLastHit, var_7_8)
+		FightController.instance:dispatchEvent(FightEvent.OnShieldChange, arg_7_1, var_7_26 * arg_7_2.sign)
+		FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_27, arg_7_0._isLastHit, var_7_8)
 	elseif var_0_2[arg_7_2.effectType] then
-		local var_7_26 = arg_7_2.effectNum
-		local var_7_27 = arg_7_2.effectType == FightEnum.EffectType.ORIGINCRIT
+		local var_7_30 = arg_7_2.effectNum
+		local var_7_31 = arg_7_2.effectType == FightEnum.EffectType.ORIGINCRIT
 
-		if var_7_26 > 0 and arg_7_1.nameUI then
-			arg_7_1.nameUI:addHp(-var_7_26)
+		if var_7_30 > 0 and arg_7_1.nameUI then
+			arg_7_1.nameUI:addHp(-var_7_30)
 		end
 
-		local var_7_28 = var_7_27 and FightEnum.FloatType.crit_damage_origin or FightEnum.FloatType.damage_origin
-		local var_7_29 = arg_7_1:isMySide() and -var_7_26 or var_7_26
+		local var_7_32 = var_7_31 and FightEnum.FloatType.crit_damage_origin or FightEnum.FloatType.damage_origin
+		local var_7_33 = arg_7_1:isMySide() and -var_7_30 or var_7_30
 
 		if not arg_7_2.shieldOriginEffectNum then
-			if var_7_26 > 0 then
+			if var_7_30 > 0 then
 				table.insert(arg_7_0._floatParams, {
 					arg_7_2.targetId,
-					var_7_28,
-					var_7_29
+					var_7_32,
+					var_7_33
 				})
 			end
 		else
-			local var_7_30 = arg_7_1:isMySide() and -arg_7_2.shieldOriginEffectNum or arg_7_2.shieldOriginEffectNum
+			local var_7_34 = arg_7_1:isMySide() and -arg_7_2.shieldOriginEffectNum or arg_7_2.shieldOriginEffectNum
 
 			table.insert(arg_7_0._floatParams, {
 				arg_7_2.targetId,
-				var_7_28,
-				var_7_30
+				var_7_32,
+				var_7_34
 			})
 		end
 
-		if var_7_26 > 0 then
-			FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_26)
-			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_29, arg_7_0._isLastHit, var_7_8)
+		if var_7_30 > 0 then
+			FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_30)
+			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_33, arg_7_0._isLastHit, var_7_8)
 		end
 
 		if arg_7_0._forcePlayHitForOrigin then
@@ -492,37 +506,37 @@ function var_0_0._playDefHit(arg_7_0, arg_7_1, arg_7_2)
 			arg_7_0:_playDefRestrain(arg_7_1, var_7_6)
 		end
 	elseif var_0_3[arg_7_2.effectType] then
-		local var_7_31 = arg_7_2.effectNum
-		local var_7_32 = arg_7_2.effectType == FightEnum.EffectType.ADDITIONALDAMAGECRIT
+		local var_7_35 = arg_7_2.effectNum
+		local var_7_36 = arg_7_2.effectType == FightEnum.EffectType.ADDITIONALDAMAGECRIT
 
-		if var_7_31 > 0 and arg_7_1.nameUI then
-			arg_7_1.nameUI:addHp(-var_7_31)
+		if var_7_35 > 0 and arg_7_1.nameUI then
+			arg_7_1.nameUI:addHp(-var_7_35)
 		end
 
-		local var_7_33 = var_7_32 and FightEnum.FloatType.crit_additional_damage or FightEnum.FloatType.additional_damage
-		local var_7_34 = arg_7_1:isMySide() and -var_7_31 or var_7_31
+		local var_7_37 = var_7_36 and FightEnum.FloatType.crit_additional_damage or FightEnum.FloatType.additional_damage
+		local var_7_38 = arg_7_1:isMySide() and -var_7_35 or var_7_35
 
 		if not arg_7_2.shieldAdditionalEffectNum then
-			if var_7_31 > 0 then
+			if var_7_35 > 0 then
 				table.insert(arg_7_0._floatParams, {
 					arg_7_2.targetId,
-					var_7_33,
-					var_7_34
+					var_7_37,
+					var_7_38
 				})
 			end
 		else
-			local var_7_35 = arg_7_1:isMySide() and -arg_7_2.shieldAdditionalEffectNum or arg_7_2.shieldAdditionalEffectNum
+			local var_7_39 = arg_7_1:isMySide() and -arg_7_2.shieldAdditionalEffectNum or arg_7_2.shieldAdditionalEffectNum
 
 			table.insert(arg_7_0._floatParams, {
 				arg_7_2.targetId,
-				var_7_33,
-				var_7_35
+				var_7_37,
+				var_7_39
 			})
 		end
 
-		if var_7_31 > 0 then
-			FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_31)
-			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_34, arg_7_0._isLastHit, var_7_8)
+		if var_7_35 > 0 then
+			FightController.instance:dispatchEvent(FightEvent.OnHpChange, arg_7_1, -var_7_35)
+			FightController.instance:dispatchEvent(FightEvent.OnSkillDamage, arg_7_0.fightStepData, arg_7_2, arg_7_1, var_7_38, arg_7_0._isLastHit, var_7_8)
 		end
 	end
 

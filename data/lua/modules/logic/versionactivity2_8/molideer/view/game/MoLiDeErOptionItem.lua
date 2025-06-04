@@ -52,7 +52,26 @@ function var_0_0.onItemClick(arg_7_0)
 	if not arg_7_0._canSelect then
 		local var_7_1 = MoLiDeErGameModel.instance:getCurGameInfo()
 		local var_7_2 = MoLiDeErGameModel.instance:getSelectEventId()
-		local var_7_3 = MoLiDeErGameModel.instance:getExecutionCostById(var_7_2, var_7_0)
+		local var_7_3 = MoLiDeErHelper.getOptionItemCost(var_7_0)
+
+		if var_7_3 and var_7_3[1] then
+			for iter_7_0, iter_7_1 in ipairs(var_7_3) do
+				local var_7_4 = iter_7_1[3]
+				local var_7_5 = iter_7_1[2]
+
+				if var_7_4 and var_7_5 then
+					local var_7_6 = var_7_1:getEquipInfo(var_7_4)
+
+					if var_7_6 == nil or var_7_6.quantity + var_7_5 < 0 then
+						GameFacade.showToast(ToastEnum.Act194EquipCountNotEnough)
+
+						return
+					end
+				end
+			end
+		end
+
+		local var_7_7 = MoLiDeErGameModel.instance:getExecutionCostById(var_7_2, var_7_0)
 
 		if var_7_1:isAllActTimesNotMatch() then
 			GameFacade.showToast(ToastEnum.Act194AllTeamActTimesNotMatch)
@@ -60,7 +79,7 @@ function var_0_0.onItemClick(arg_7_0)
 			return
 		end
 
-		if var_7_3 + var_7_1.leftRoundEnergy < 0 then
+		if var_7_7 + var_7_1.leftRoundEnergy < 0 then
 			GameFacade.showToast(ToastEnum.Act194ExecutionNotEnough)
 
 			return

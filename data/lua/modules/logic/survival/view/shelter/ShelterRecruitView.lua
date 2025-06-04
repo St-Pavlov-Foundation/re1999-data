@@ -472,7 +472,7 @@ function var_0_0.refreshNpcAttrItem(arg_28_0, arg_28_1, arg_28_2)
 	UISpriteSetMgr.instance:setSurvivalSprite(arg_28_1.imgTitle, string.format("survivalpartnerteam_attrbg%s", var_28_0.color))
 end
 
-function var_0_0.onClose(arg_29_0)
+function var_0_0.onDestroyView(arg_29_0)
 	for iter_29_0, iter_29_1 in pairs(arg_29_0.tagList) do
 		iter_29_1.btn:RemoveClickListener()
 	end

@@ -390,7 +390,7 @@ function var_0_0.refreshTarget(arg_21_0, arg_21_1)
 		local var_21_12
 		local var_21_13 = false
 
-		if var_21_11 == MoLiDeErEnum.ProgressChangeType.Percentage or arg_21_1 then
+		if var_21_11 == MoLiDeErEnum.ProgressChangeType.Percentage or arg_21_1 and var_21_0:isNewCompleteTarget(iter_21_1) then
 			var_21_6 = var_21_6 + 1
 
 			if var_21_8 < var_21_6 then
@@ -611,23 +611,18 @@ function var_0_0.onFinishEventViewShowEnd(arg_26_0)
 	if #var_26_9 > 0 then
 		for iter_26_1, iter_26_2 in ipairs(var_26_9) do
 			local var_26_10 = iter_26_2.preEventId
-			local var_26_11 = MoLiDeErHelper.getPreEventId(iter_26_2.eventId)
-
-			if var_26_10 ~= var_26_11 then
-				logError("莫莉德尔 角色活动 完成事件前置id不一致 前端：" .. tostring(var_26_11) .. " .. 后端：" .. tostring(var_26_10))
-			end
 
 			if var_26_10 and var_26_10 ~= 0 then
 				var_26_7 = var_26_7 + 1
 
-				local var_26_12 = MoLiDeErConfig.instance:getEventConfig(var_26_10)
-				local var_26_13 = MoLiDeErConfig.instance:getEventConfig(iter_26_2.eventId)
+				local var_26_11 = MoLiDeErConfig.instance:getEventConfig(var_26_10)
+				local var_26_12 = MoLiDeErConfig.instance:getEventConfig(iter_26_2.eventId)
+				local var_26_13 = string.splitToNumber(var_26_11.position, "#")
 				local var_26_14 = string.splitToNumber(var_26_12.position, "#")
-				local var_26_15 = string.splitToNumber(var_26_13.position, "#")
 
-				if not MoLiDeErHelper.checkIsInSamePosition(var_26_14, var_26_15) then
+				if not MoLiDeErHelper.checkIsInSamePosition(var_26_13, var_26_14) then
 					logNormal("莫莉德尔 角色活动 显示延展路线效果 前置id: " .. tostring(var_26_10) .. "新事件id:" .. tostring(iter_26_2.eventId))
-					arg_26_0:doEventLineTween(var_26_14, var_26_15)
+					arg_26_0:doEventLineTween(var_26_13, var_26_14)
 
 					var_26_8 = var_26_8 + 1
 				end
@@ -938,6 +933,8 @@ function var_0_0.onClose(arg_48_0)
 	TaskDispatcher.cancelTask(arg_48_0._showToast, arg_48_0)
 	TaskDispatcher.cancelTask(arg_48_0.onGameOver, arg_48_0)
 	TaskDispatcher.cancelTask(arg_48_0.forceCloseLock, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onTargetFxAllShowEnd, arg_48_0)
+	TaskDispatcher.cancelTask(arg_48_0.onTargetProgressAddFxShowEnd, arg_48_0)
 	MoLiDeErGameModel.instance:resetSelect()
 
 	if arg_48_0._tweenIdList[1] then

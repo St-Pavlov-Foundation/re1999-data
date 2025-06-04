@@ -158,6 +158,14 @@ function var_0_0.getOptionEffectParamList(arg_7_0, arg_7_1)
 				local var_7_7 = MoLiDeErGameModel.instance:getExecutionCost(var_7_5, arg_7_1)
 
 				table.insert(var_7_1, var_0_0.getExecutionCostStr(var_7_7))
+			elseif var_7_4 == MoLiDeErEnum.OptionEffectType.Team then
+				local var_7_8 = MoLiDeErConfig.instance:getTeamConfig(var_7_3[#var_7_3])
+
+				table.insert(var_7_1, var_7_8.name)
+			elseif var_7_4 == MoLiDeErEnum.OptionEffectType.Item then
+				local var_7_9 = MoLiDeErConfig.instance:getItemConfig(var_7_3[#var_7_3])
+
+				table.insert(var_7_1, var_7_9.name)
 			end
 		end
 	end
@@ -378,6 +386,85 @@ function var_0_0.isTeamCanChose(arg_16_0, arg_16_1, arg_16_2)
 	end
 
 	return true
+end
+
+function var_0_0.calculateExecutionCost(arg_17_0, arg_17_1, arg_17_2, arg_17_3, arg_17_4)
+	local var_17_0 = MoLiDeErConfig.instance:getBuffConfig(arg_17_0)
+
+	if var_17_0.buffType == MoLiDeErEnum.BuffType.Forever or var_17_0.buffType == MoLiDeErEnum.BuffType.Passive then
+		local var_17_1 = string.splitToNumber(var_17_0.effectType, "#")
+		local var_17_2 = var_17_1[1]
+
+		if arg_17_4 == nil or var_17_2 == arg_17_4 then
+			if var_17_2 == MoLiDeErEnum.ExecutionBuffType.Fixed then
+				arg_17_1 = arg_17_1 + var_17_1[2]
+			elseif var_17_2 == MoLiDeErEnum.ExecutionBuffType.Percent then
+				table.insert(arg_17_2, var_17_1[2])
+			elseif var_17_2 == MoLiDeErEnum.ExecutionBuffType.FixedOther and arg_17_3 then
+				for iter_17_0 = 3, #var_17_1 do
+					if var_17_1[iter_17_0] == arg_17_3 then
+						arg_17_1 = arg_17_1 + var_17_1[2]
+
+						break
+					end
+				end
+			end
+		end
+	end
+
+	return arg_17_1
+end
+
+function var_0_0.calculateRoundCost(arg_18_0, arg_18_1, arg_18_2, arg_18_3, arg_18_4)
+	local var_18_0 = MoLiDeErConfig.instance:getBuffConfig(arg_18_0)
+
+	if var_18_0.buffType == MoLiDeErEnum.BuffType.Forever or var_18_0.buffType == MoLiDeErEnum.BuffType.Passive then
+		local var_18_1 = string.splitToNumber(var_18_0.effectType, "#")
+		local var_18_2 = var_18_1[1]
+
+		if arg_18_4 == nil or var_18_2 == arg_18_4 then
+			if var_18_2 == MoLiDeErEnum.RoundBuffType.Fixed then
+				arg_18_1 = math.max(0, arg_18_1 + var_18_1[2])
+			elseif var_18_2 == MoLiDeErEnum.RoundBuffType.Percent then
+				table.insert(arg_18_2, var_18_1[2])
+			elseif var_18_2 == MoLiDeErEnum.RoundBuffType.FixedOther and arg_18_3 then
+				for iter_18_0 = 3, #var_18_1 do
+					if var_18_1[iter_18_0] == arg_18_3 then
+						arg_18_1 = math.max(0, arg_18_1 + var_18_1[2])
+
+						break
+					end
+				end
+			end
+		end
+	end
+
+	return arg_18_1
+end
+
+function var_0_0.getOptionItemCost(arg_19_0)
+	local var_19_0 = MoLiDeErConfig.instance:getOptionConfig(arg_19_0)
+	local var_19_1 = {}
+
+	if var_19_0 == nil then
+		return nil
+	end
+
+	if string.nilorempty(var_19_0.effect) then
+		return nil
+	end
+
+	local var_19_2 = string.split(var_19_0.effect, "|")
+
+	for iter_19_0, iter_19_1 in ipairs(var_19_2) do
+		local var_19_3 = string.splitToNumber(iter_19_1, "#")
+
+		if var_19_3[1] == MoLiDeErEnum.OptionEffectType.Item then
+			table.insert(var_19_1, var_19_3)
+		end
+	end
+
+	return var_19_1
 end
 
 return var_0_0
