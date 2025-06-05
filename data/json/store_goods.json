@@ -8818,7 +8818,7 @@
   {
     "id": 901002,
     "product": "9#1001#1",
-    "maxBuyCount": 6,
+    "maxBuyCount": 10,
     "cost": "2#26#750",
     "cost2": "",
     "reduction": "",
@@ -8856,7 +8856,7 @@
   {
     "id": 901003,
     "product": "1#120013#1",
-    "maxBuyCount": 35,
+    "maxBuyCount": 40,
     "cost": "2#26#240",
     "cost2": "",
     "reduction": "",
@@ -8894,7 +8894,7 @@
   {
     "id": 901004,
     "product": "1#180003#1",
-    "maxBuyCount": 16,
+    "maxBuyCount": 18,
     "cost": "2#26#180",
     "cost2": "",
     "reduction": "",
@@ -8932,7 +8932,7 @@
   {
     "id": 901005,
     "product": "9#1005#1",
-    "maxBuyCount": 25,
+    "maxBuyCount": 30,
     "cost": "2#26#80",
     "cost2": "",
     "reduction": "",
@@ -12732,7 +12732,7 @@
   {
     "id": 901014,
     "product": "1#481010#1",
-    "maxBuyCount": 1,
+    "maxBuyCount": 2,
     "cost": "2#26#1500",
     "cost2": "",
     "reduction": "",
