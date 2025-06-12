@@ -30,7 +30,6 @@ end
 function var_0_0._editableInitView(arg_4_0)
 	arg_4_0._lineEffectPool = arg_4_0:getUserDataTb_()
 	arg_4_0._useLineEffectPool = arg_4_0:getUserDataTb_()
-	arg_4_0._episodeItemTab = arg_4_0.viewContainer:getMainView():getEpisodeItemTab()
 	arg_4_0._animcompleted = gohelper.onceAddComponent(arg_4_0._gocompleted, gohelper.Type_Animator)
 	arg_4_0._animdailycompleted = gohelper.onceAddComponent(arg_4_0._godailycompleted, gohelper.Type_Animator)
 
@@ -243,17 +242,25 @@ function var_0_0._showRepressEffect(arg_19_0, arg_19_1, arg_19_2, arg_19_3)
 end
 
 function var_0_0._setLinePosAndRotation(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
-	local var_20_0 = arg_20_0._episodeItemTab[arg_20_1]:getIconTran()
-	local var_20_1 = recthelper.rectToRelativeAnchorPos(var_20_0.position, arg_20_0._gomiddle.transform)
-	local var_20_2 = arg_20_0._episodeItemTab[arg_20_2]:getIconTran()
-	local var_20_3 = recthelper.rectToRelativeAnchorPos(var_20_2.position, arg_20_0._gomiddle.transform)
+	local var_20_0 = arg_20_0:getEpisodeItemTab()
+	local var_20_1 = var_20_0 and var_20_0[arg_20_1]
+	local var_20_2 = var_20_0 and var_20_0[arg_20_2]
+
+	if not var_20_1 or not var_20_2 then
+		return
+	end
+
+	local var_20_3 = var_20_1:getIconTran()
+	local var_20_4 = recthelper.rectToRelativeAnchorPos(var_20_3.position, arg_20_0._gomiddle.transform)
+	local var_20_5 = var_20_2:getIconTran()
+	local var_20_6 = recthelper.rectToRelativeAnchorPos(var_20_5.position, arg_20_0._gomiddle.transform)
 
 	gohelper.setActive(arg_20_3, true)
-	recthelper.setAnchor(arg_20_3.transform, var_20_3.x, var_20_3.y)
+	recthelper.setAnchor(arg_20_3.transform, var_20_6.x, var_20_6.y)
 
-	local var_20_4, var_20_5, var_20_6 = arg_20_0:_calcLineRotation(var_20_1, var_20_3)
+	local var_20_7, var_20_8, var_20_9 = arg_20_0:_calcLineRotation(var_20_4, var_20_6)
 
-	transformhelper.setLocalRotation(arg_20_3.transform, var_20_4, var_20_5, var_20_6)
+	transformhelper.setLocalRotation(arg_20_3.transform, var_20_7, var_20_8, var_20_9)
 end
 
 function var_0_0._calcLineRotation(arg_21_0, arg_21_1, arg_21_2)
@@ -386,14 +393,15 @@ function var_0_0._playRuleRepressEffect2BossEpisode(arg_28_0, arg_28_1)
 end
 
 function var_0_0._showEscapeEffect(arg_29_0, arg_29_1)
-	local var_29_0 = arg_29_0._episodeItemTab[arg_29_1]
+	local var_29_0 = arg_29_0:getEpisodeItemTab()
+	local var_29_1 = var_29_0 and var_29_0[arg_29_1]
 
-	if not var_29_0 then
+	if not var_29_1 then
 		return
 	end
 
-	if var_29_0.playFakeRepressAnim then
-		var_29_0:playFakeRepressAnim()
+	if var_29_1.playFakeRepressAnim then
+		var_29_1:playFakeRepressAnim()
 	end
 end
 
@@ -401,9 +409,15 @@ function var_0_0._onPlayFightBossEffectDone(arg_30_0, arg_30_1)
 	Act183Controller.instance:dispatchEvent(Act183Event.OnPlayEffectDoneIfSubUnfinish, arg_30_1)
 end
 
-function var_0_0.onClose(arg_31_0)
-	arg_31_0:destroyFlow()
-	arg_31_0:_lockScreen(false)
+function var_0_0.getEpisodeItemTab(arg_31_0)
+	local var_31_0 = arg_31_0.viewContainer:getMainView()
+
+	return var_31_0 and var_31_0:getEpisodeItemTab()
+end
+
+function var_0_0.onClose(arg_32_0)
+	arg_32_0:destroyFlow()
+	arg_32_0:_lockScreen(false)
 	Act183Model.instance:clearBattleFinishedInfo()
 end
 

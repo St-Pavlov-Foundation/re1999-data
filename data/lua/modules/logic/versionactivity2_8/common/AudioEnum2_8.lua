@@ -141,5 +141,10 @@ var_0_0.AutoChess = {
 var_0_0.TakePhotosActivity = {
 	play_ui_diqiu_yure_success_20249043 = 20249043
 }
+var_0_0.WarmUp = {
+	play_ui_fuleyuan_yure_paper = 20280752,
+	play_ui_fuleyuan_yure_open = 20280751,
+	play_ui_fuleyuan_yure_whoosh = 20280753
+}
 
 return var_0_0

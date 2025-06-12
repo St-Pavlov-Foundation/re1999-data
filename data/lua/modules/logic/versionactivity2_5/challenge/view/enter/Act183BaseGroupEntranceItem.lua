@@ -14,17 +14,15 @@ end
 
 function var_0_0.init(arg_3_0, arg_3_1)
 	arg_3_0.go = arg_3_1
-
-	arg_3_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, arg_3_0._onOpenViewFinish, arg_3_0)
-	arg_3_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_3_0._onCloseViewFinish, arg_3_0)
 end
 
 function var_0_0.addEventListeners(arg_4_0)
-	return
+	arg_4_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, arg_4_0._onOpenViewFinish, arg_4_0)
+	arg_4_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_4_0._onCloseViewFinish, arg_4_0)
 end
 
 function var_0_0.removeEventListeners(arg_5_0)
-	TaskDispatcher.cancelTask(arg_5_0.tryPlayUnlockAnim, arg_5_0)
+	return
 end
 
 function var_0_0.onUpdateMO(arg_6_0, arg_6_1)

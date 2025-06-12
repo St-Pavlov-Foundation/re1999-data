@@ -67,7 +67,9 @@ function var_0_0.showModel(arg_9_0)
 	gohelper.setActive(arg_9_0._spineGo, true)
 
 	if gohelper.isNil(arg_9_0:getSpineGo()) == false then
-		arg_9_0:play(arg_9_0:getCurBody(), true)
+		local var_9_0 = arg_9_0:getCurBody()
+
+		arg_9_0:play(var_9_0, var_9_0 == StoryAnimName.B_IDLE)
 	end
 
 	if not arg_9_0._uiEffectGos then

@@ -167,14 +167,17 @@ function var_0_0.onClickEpisodeItem(arg_12_0, arg_12_1, arg_12_2)
 	MoLiDeErController.instance:enterEpisode(arg_12_0._actId, arg_12_2)
 end
 
-function var_0_0.onEpisodeFinish(arg_13_0, arg_13_1, arg_13_2)
+function var_0_0.onEpisodeFinish(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
 	if arg_13_1 ~= arg_13_0._actId then
 		return
 	end
 
-	arg_13_0:_checkRedDot()
+	if not arg_13_3 then
+		arg_13_0:_checkRedDot()
+	end
 
 	arg_13_0._finishEpisodeId = arg_13_2
+	arg_13_0._isSkipGame = arg_13_3
 
 	arg_13_0:_lockScreen(true)
 	arg_13_0._viewAnimator:Play(MoLiDeErEnum.AnimName.LevelViewOpen)
@@ -214,9 +217,16 @@ function var_0_0.onLevelOpenAnimTimeEnd(arg_16_0)
 		return
 	end
 
-	if not MoLiDeErModel.instance:isEpisodeFinish(arg_16_0._actId, var_16_0, true) then
-		var_16_1:setStarState(true)
+	if not MoLiDeErModel.instance:isEpisodeFinish(arg_16_0._actId, var_16_0, true) or arg_16_0._isSkipGame == true then
+		logNormal("莫莉德尔 角色活动 非首次通关")
+
+		if not arg_16_0._isSkipGame then
+			var_16_1:setStarState(true)
+		end
+
 		arg_16_0:onLevelUnlockAnimTimeEnd()
+
+		arg_16_0._isSkipGame = false
 
 		return
 	end

@@ -206,6 +206,8 @@ function var_0_0.onReceiveSkipGame(arg_24_0, arg_24_1, arg_24_2)
 	local var_24_0 = MoLiDeErModel.instance:getCurActId()
 	local var_24_1 = MoLiDeErModel.instance:getCurEpisodeId()
 
+	MoLiDeErGameModel.instance:setSkipGameTrigger(arg_24_1, arg_24_2, true)
+
 	if var_24_0 == arg_24_1 and var_24_1 == arg_24_2 then
 		arg_24_0:onSuccessExit()
 	end

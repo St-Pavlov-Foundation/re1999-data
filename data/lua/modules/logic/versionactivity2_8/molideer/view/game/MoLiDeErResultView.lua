@@ -40,8 +40,7 @@ function var_0_0.removeEvents(arg_3_0)
 end
 
 function var_0_0._btnquitgameOnClick(arg_4_0)
-	MoLiDeErGameController.instance:onFailExit()
-	MoLiDeErController.instance:statGameExit(StatEnum.MoLiDeErGameExitType.Lose)
+	arg_4_0:closeThis()
 end
 
 function var_0_0._btnrestartOnClick(arg_5_0)
@@ -49,8 +48,7 @@ function var_0_0._btnrestartOnClick(arg_5_0)
 end
 
 function var_0_0._btnsuccessClickOnClick(arg_6_0)
-	MoLiDeErGameController.instance:onSuccessExit()
-	MoLiDeErController.instance:statGameExit(StatEnum.MoLiDeErGameExitType.Win)
+	arg_6_0:closeThis()
 end
 
 function var_0_0._editableInitView(arg_7_0)
@@ -88,6 +86,8 @@ function var_0_0.refreshUI(arg_10_0)
 		AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_pkls_challenge_fail)
 	end
 
+	arg_10_0.isSuccess = var_10_1
+
 	gohelper.setActive(arg_10_0._gosuccess, var_10_1)
 	gohelper.setActive(arg_10_0._goTargetParent, var_10_1)
 	gohelper.setActive(arg_10_0._gofail, not var_10_1)
@@ -116,7 +116,13 @@ function var_0_0.onGameReset(arg_12_0)
 end
 
 function var_0_0.onClose(arg_13_0)
-	return
+	if arg_13_0.isSuccess then
+		MoLiDeErGameController.instance:onSuccessExit()
+		MoLiDeErController.instance:statGameExit(StatEnum.MoLiDeErGameExitType.Win)
+	else
+		MoLiDeErGameController.instance:onFailExit()
+		MoLiDeErController.instance:statGameExit(StatEnum.MoLiDeErGameExitType.Lose)
+	end
 end
 
 function var_0_0.onDestroyView(arg_14_0)

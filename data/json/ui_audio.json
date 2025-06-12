@@ -11238,5 +11238,20 @@
     "id": 20280854,
     "eventName": "play_ui_tujianskin_group_open",
     "bankName": "ui_tujianskin_2_8"
+  },
+  {
+    "id": 20280751,
+    "eventName": "play_ui_fuleyuan_yure_open",
+    "bankName": "ui_activity_2_8_fuleyuan_yure"
+  },
+  {
+    "id": 20280752,
+    "eventName": "play_ui_fuleyuan_yure_paper",
+    "bankName": "ui_activity_2_8_fuleyuan_yure"
+  },
+  {
+    "id": 20280753,
+    "eventName": "play_ui_fuleyuan_yure_whoosh",
+    "bankName": "ui_activity_2_8_fuleyuan_yure"
   }
 ]

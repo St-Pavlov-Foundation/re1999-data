@@ -12266,6 +12266,7 @@ setNeedLoadModule("modules.logic.versionactivity2_8.nuodika.view.NuoDiKaTaskView
 setNeedLoadModule("modules.logic.versionactivity2_8.nuodika.view.NuoDiKaTaskViewContainer", "NuoDiKaTaskViewContainer")
 setNeedLoadModule("modules.logic.versionactivity2_8.warmup.view.V2a8_WarmUp", "V2a8_WarmUp")
 setNeedLoadModule("modules.logic.versionactivity2_8.warmup.view.V2a8_WarmUpContainer", "V2a8_WarmUpContainer")
+setNeedLoadModule("modules.logic.versionactivity2_8.warmup.view.V2a8_WarmUpLeftView", "V2a8_WarmUpLeftView")
 setNeedLoadModule("modules.logic.versionactivity2_8.warmup.view.V2a8_WarmUp_radiotaskitem", "V2a8_WarmUp_radiotaskitem")
 setNeedLoadModule("modules.logic.versionactivity2_8.warmup.view.V2a8_WarmUp_rewarditem", "V2a8_WarmUp_rewarditem")
 setNeedLoadModule("modules.logic.versionactivity2_8.wuerlixigift.controller.V2a8_WuErLiXiGiftController", "V2a8_WuErLiXiGiftController")

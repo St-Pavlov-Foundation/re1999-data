@@ -14,6 +14,7 @@ function var_0_0.init(arg_3_0)
 	arg_3_0._episodeInfoDic = {}
 	arg_3_0._curGameConfig = nil
 	arg_3_0._curGameId = nil
+	arg_3_0._skipGameTriggerDic = {}
 end
 
 function var_0_0.setEpisodeInfo(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)
@@ -381,6 +382,27 @@ function var_0_0.removeInfoMo(arg_34_0, arg_34_1, arg_34_2)
 	if arg_34_0._episodeInfoDic[arg_34_1] then
 		arg_34_0._episodeInfoDic[arg_34_1][arg_34_2] = nil
 	end
+end
+
+function var_0_0.setSkipGameTrigger(arg_35_0, arg_35_1, arg_35_2, arg_35_3)
+	local var_35_0
+
+	if not arg_35_0._skipGameTriggerDic[arg_35_1] then
+		var_35_0 = {}
+		arg_35_0._skipGameTriggerDic[arg_35_1] = var_35_0
+	else
+		var_35_0 = arg_35_0._skipGameTriggerDic[arg_35_1]
+	end
+
+	var_35_0[arg_35_2] = arg_35_3
+end
+
+function var_0_0.getSkipGameTrigger(arg_36_0, arg_36_1, arg_36_2)
+	if not arg_36_0._skipGameTriggerDic[arg_36_1] then
+		return false
+	end
+
+	return arg_36_0._skipGameTriggerDic[arg_36_1][arg_36_2]
 end
 
 var_0_0.instance = var_0_0.New()

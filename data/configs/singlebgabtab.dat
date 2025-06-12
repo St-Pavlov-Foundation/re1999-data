@@ -31269,6 +31269,27 @@
   "singlebg/v2a8_versionsummon_singlebg/v2a8_versionsummon_panelrole.png.dat": [
     "Assets/ZResourcesLib/singlebg/v2a8_versionsummon_singlebg/v2a8_versionsummon_panelrole.png"
   ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_decbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_decbg.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_fullbg.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_1.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_2.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_3.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_4.png"
+  ],
+  "singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v2a8_warmup_singlebg/v2a8_warmup_pic_5.png"
+  ],
   "singlebg/versionactivityhelp/v2a5_challenge_help_10.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionactivityhelp/v2a5_challenge_help_10.png"
   ],
@@ -32237,6 +32258,12 @@
   ],
   "singlebg_lang/txt_v2a8_versionsummon_singlebg/v2a8_versionsummon_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_v2a8_versionsummon_singlebg/v2a8_versionsummon_title.png"
+  ],
+  "singlebg_lang/txt_v2a8_warmup_singlebg/v2a8_warmup_btn_h5.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a8_warmup_singlebg/v2a8_warmup_btn_h5.png"
+  ],
+  "singlebg_lang/txt_v2a8_warmup_singlebg/v2a8_warmup_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_v2a8_warmup_singlebg/v2a8_warmup_title.png"
   ],
   "singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_versionactivityhelp/v2a5_autochess_help_1.png"

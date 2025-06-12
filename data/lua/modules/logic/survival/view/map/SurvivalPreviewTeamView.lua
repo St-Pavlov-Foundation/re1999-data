@@ -14,6 +14,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._gonpccontent = gohelper.findChild(arg_1_0._root, "Partner/Scroll View/Viewport/#go_content")
 	arg_1_0._txtnpcnum = gohelper.findChildTextMesh(arg_1_0._root, "Partner/Title/txt_Partner/#txt_MemberNum")
 	arg_1_0._btntalent = gohelper.findChildButtonWithAudio(arg_1_0._root, "Left/#btn_talent")
+	arg_1_0._txttalentname = gohelper.findChildTextMesh(arg_1_0._root, "Left/#btn_talent/txt_Attr1")
 	arg_1_0._imagetalentskill = gohelper.findChildSingleImage(arg_1_0._root, "Left/#btn_talent/simage_talent")
 	arg_1_0._btnequip = gohelper.findChildButtonWithAudio(arg_1_0._root, "Left/#btn_equip")
 	arg_1_0._slider = gohelper.findChildSlider(arg_1_0._root, "Left/image_Slider/Slider")
@@ -64,6 +65,8 @@ function var_0_0.updateTalentIcon(arg_5_0)
 	local var_5_2 = lua_survival_talent_group.configDict[var_5_1]
 
 	arg_5_0._imagetalentskill:LoadImage(ResUrl.getSurvivalTalentIcon(var_5_2.folder .. "/icon_1"))
+
+	arg_5_0._txttalentname.text = var_5_2.name
 end
 
 function var_0_0.onViewShow(arg_6_0)

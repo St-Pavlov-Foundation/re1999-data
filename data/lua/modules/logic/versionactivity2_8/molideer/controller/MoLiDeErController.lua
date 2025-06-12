@@ -123,7 +123,13 @@ function var_0_0.afterStoryFinish(arg_11_0)
 end
 
 function var_0_0.episodeFinish(arg_12_0, arg_12_1, arg_12_2)
-	arg_12_0:dispatchEvent(MoLiDeErEvent.OnFinishEpisode, arg_12_1, arg_12_2)
+	local var_12_0 = MoLiDeErGameModel.instance:getSkipGameTrigger(arg_12_1, arg_12_2)
+
+	if var_12_0 then
+		MoLiDeErGameModel.instance:setSkipGameTrigger(arg_12_1, arg_12_2, false)
+	end
+
+	arg_12_0:dispatchEvent(MoLiDeErEvent.OnFinishEpisode, arg_12_1, arg_12_2, var_12_0)
 end
 
 function var_0_0.storyEpisodeFinish(arg_13_0, arg_13_1, arg_13_2)

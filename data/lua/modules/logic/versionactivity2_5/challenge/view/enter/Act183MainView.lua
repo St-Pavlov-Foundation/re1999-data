@@ -2,6 +2,7 @@
 
 local var_0_0 = class("Act183MainView", BaseView)
 local var_0_1 = 1
+local var_0_2 = 30
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._gotopleft = gohelper.findChild(arg_1_0.viewGO, "root/#go_topleft")
@@ -134,6 +135,8 @@ function var_0_0.initMainGroupEntranceList(arg_13_0)
 end
 
 function var_0_0.initDailyGroupEntranceList(arg_14_0)
+	TaskDispatcher.cancelTask(arg_14_0.initDailyGroupEntranceList, arg_14_0)
+
 	arg_14_0._dailyGroupEpisodeMos = arg_14_0._info:getGroupEpisodeMos(Act183Enum.GroupType.Daily)
 	arg_14_0._dailyGroupEpisodeCount = arg_14_0._dailyGroupEpisodeMos and #arg_14_0._dailyGroupEpisodeMos or 0
 
@@ -141,8 +144,23 @@ function var_0_0.initDailyGroupEntranceList(arg_14_0)
 		return
 	end
 
+	local var_14_0 = false
+
 	for iter_14_0, iter_14_1 in ipairs(arg_14_0._dailyGroupEpisodeMos) do
-		Act183DailyGroupEntranceItem.Get(arg_14_0.viewGO, arg_14_0._godailyitem, iter_14_1, iter_14_0):onUpdateMO(iter_14_1)
+		local var_14_1 = Act183DailyGroupEntranceItem.Get(arg_14_0.viewGO, arg_14_0._godailyitem, iter_14_1, iter_14_0)
+		local var_14_2 = iter_14_1:getStatus()
+
+		var_14_1:onUpdateMO(iter_14_1)
+
+		if var_14_2 == Act183Enum.GroupStatus.Locked and not var_14_0 then
+			var_14_1:showUnlockCountDown()
+
+			var_14_0 = true
+		end
+	end
+
+	if var_14_0 then
+		TaskDispatcher.runDelay(arg_14_0.initDailyGroupEntranceList, arg_14_0, var_0_2)
 	end
 end
 
@@ -170,6 +188,7 @@ end
 
 function var_0_0.onClose(arg_17_0)
 	TaskDispatcher.cancelTask(arg_17_0.showLeftTime, arg_17_0)
+	TaskDispatcher.cancelTask(arg_17_0.initDailyGroupEntranceList, arg_17_0)
 end
 
 function var_0_0.onDestroyView(arg_18_0)

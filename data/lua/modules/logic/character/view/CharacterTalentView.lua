@@ -295,7 +295,7 @@ function var_0_0._addTouPrefab(arg_17_0, arg_17_1)
 			arg_17_0.rentou_ani = var_17_2:GetComponent(typeof(UnityEngine.Animator))
 		end
 
-		if arg_17_0.viewParam.isBack then
+		if arg_17_0.viewParam.isBack and not ViewMgr.instance:isOpen(ViewName.CharacterTalentStyleView) then
 			arg_17_0:_btninsightOnClick()
 		end
 	end

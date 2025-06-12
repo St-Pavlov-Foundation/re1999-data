@@ -1,8 +1,6 @@
 ﻿module("modules.logic.versionactivity2_5.challenge.view.enter.Act183DailyGroupEntranceItem", package.seeall)
 
 local var_0_0 = class("Act183DailyGroupEntranceItem", Act183BaseGroupEntranceItem)
-local var_0_1 = 7
-local var_0_2 = 30
 
 function var_0_0.Get(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
 	local var_1_0 = arg_1_2 and arg_1_2:getGroupType()
@@ -42,7 +40,6 @@ end
 function var_0_0.removeEventListeners(arg_4_0)
 	var_0_0.super.removeEventListeners(arg_4_0)
 	arg_4_0._btnclick:RemoveClickListener()
-	TaskDispatcher.cancelTask(arg_4_0.checkGroupUnlock, arg_4_0)
 end
 
 function var_0_0._btnclickOnClick(arg_5_0)
@@ -64,66 +61,39 @@ end
 
 function var_0_0.onUpdateMO(arg_6_0, arg_6_1)
 	var_0_0.super.onUpdateMO(arg_6_0, arg_6_1)
-	TaskDispatcher.cancelTask(arg_6_0.checkGroupUnlock, arg_6_0)
+	arg_6_0:refreshUI()
+end
 
-	local var_6_0 = arg_6_0._status == Act183Enum.GroupStatus.Locked
+function var_0_0.refreshUI(arg_7_0)
+	local var_7_0 = arg_7_0._status == Act183Enum.GroupStatus.Locked
 
-	if var_6_0 and arg_6_0._index > var_0_1 then
-		arg_6_0:startCheckGroupUnlock()
-		gohelper.setActive(arg_6_0.go, false)
+	gohelper.setActive(arg_7_0._golock, false)
+	gohelper.setActive(arg_7_0._goempty, var_7_0)
+	gohelper.setActive(arg_7_0._gounlock, not var_7_0)
 
-		return
-	end
+	if not var_7_0 then
+		local var_7_1, var_7_2 = Act183Helper.getGroupEpisodeTaskProgress(arg_7_0._actId, arg_7_0._groupId)
+		local var_7_3 = var_7_1 <= var_7_2
 
-	gohelper.setActive(arg_6_0.go, true)
-	gohelper.setActive(arg_6_0._goempty, var_6_0)
+		arg_7_0._txtindex.text = string.format("<color=#E1E1E14D>RT</color><color=#E1E1E180><size=77>%s</size></color>", arg_7_0._index)
+		arg_7_0._txtprogress.text = string.format("%s/%s", var_7_2, var_7_1)
 
-	if var_6_0 then
-		gohelper.setActive(arg_6_0._golock, false)
-		gohelper.setActive(arg_6_0._gounlock, false)
-		arg_6_0:startCheckGroupUnlock()
-
-		return
-	end
-
-	local var_6_1 = arg_6_1:getGroupId()
-	local var_6_2 = arg_6_1:getStatus() == Act183Enum.GroupStatus.Locked
-
-	gohelper.setActive(arg_6_0._golock, var_6_2)
-	gohelper.setActive(arg_6_0._gounlock, not var_6_2)
-
-	local var_6_3 = false
-
-	if var_6_2 then
-		local var_6_4, var_6_5 = TimeUtil.secondToRoughTime(arg_6_1:getUnlockRemainTime())
-
-		arg_6_0._txtunlocktime.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("v2a5_challenge_mainview_unlock"), var_6_4, var_6_5)
-	else
-		local var_6_6, var_6_7 = Act183Helper.getGroupEpisodeTaskProgress(arg_6_0._actId, var_6_1)
-		local var_6_8 = var_6_6 <= var_6_7
-
-		arg_6_0._txtindex.text = string.format("<color=#E1E1E14D>RT</color><color=#E1E1E180><size=77>%s</size></color>", arg_6_0._index)
-		arg_6_0._txtprogress.text = string.format("%s/%s", var_6_7, var_6_6)
-
-		gohelper.setActive(arg_6_0._gofinish, var_6_8)
+		gohelper.setActive(arg_7_0._gofinish, var_7_3)
+		arg_7_0:tryPlayUnlockAnim()
 	end
 end
 
-function var_0_0.startCheckGroupUnlock(arg_7_0)
-	TaskDispatcher.cancelTask(arg_7_0.checkGroupUnlock, arg_7_0)
-	TaskDispatcher.runRepeat(arg_7_0.checkGroupUnlock, arg_7_0, var_0_2)
-end
-
-function var_0_0.checkGroupUnlock(arg_8_0)
-	if not arg_8_0._groupMo then
-		TaskDispatcher.cancelTask(arg_8_0.checkGroupUnlock, arg_8_0)
-
+function var_0_0.showUnlockCountDown(arg_8_0)
+	if not (arg_8_0._status == Act183Enum.GroupStatus.Locked) then
 		return
 	end
 
-	if arg_8_0._groupMo:getStatus() ~= Act183Enum.GroupStatus.Locked then
-		arg_8_0:onUpdateMO(arg_8_0._groupMo)
-	end
+	gohelper.setActive(arg_8_0._goempty, false)
+	gohelper.setActive(arg_8_0._golock, true)
+
+	local var_8_0, var_8_1 = TimeUtil.secondToRoughTime(arg_8_0._groupMo:getUnlockRemainTime())
+
+	arg_8_0._txtunlocktime.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("v2a5_challenge_mainview_unlock"), var_8_0, var_8_1)
 end
 
 function var_0_0.startPlayUnlockAnim(arg_9_0)

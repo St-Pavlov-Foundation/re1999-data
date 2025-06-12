@@ -205,7 +205,7 @@
     "icon": "611310",
     "desc2": "把迷路的温迪带回到边牧身边",
     "showInExplore": 0,
-    "progressCondition": "eventFinished#72#1070402",
+    "progressCondition": "eventFinished#72#107040201",
     "maxProgress": 1,
     "needAccept": 0,
     "prepose": "107040201",

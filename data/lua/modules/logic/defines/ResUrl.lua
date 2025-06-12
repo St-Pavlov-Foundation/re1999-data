@@ -1545,4 +1545,8 @@ function var_0_0.getDecorateStoreBuyBannerFullPath(arg_361_0)
 	return string.format("singlebg_lang/txt_playercard_singlebg/%s.png", arg_361_0)
 end
 
+function var_0_0.getV2a8WarmUpSingleBg(arg_362_0)
+	return string.format("singlebg/v2a8_warmup_singlebg/%s.png", arg_362_0)
+end
+
 return var_0_0
