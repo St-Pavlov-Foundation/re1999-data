@@ -111,13 +111,14 @@ function var_0_0._startOneLangDownload(arg_2_0)
 		arg_2_0._downloadDict = nil
 
 		arg_2_0:_setDoneFirstDownload()
-		arg_2_0._onDownloadFinish(arg_2_0._onDownloadFinishObj)
 
 		if arg_2_0._eventMgrInst then
 			arg_2_0._eventMgrInst:ClearLuaListener()
 
 			arg_2_0._eventMgrInst = nil
 		end
+
+		arg_2_0._onDownloadFinish(arg_2_0._onDownloadFinishObj)
 	end
 end
 
@@ -132,6 +133,7 @@ function var_0_0._onDownloadStart(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 
 	arg_4_2 = tonumber(tostring(arg_4_2))
 	arg_4_3 = tonumber(tostring(arg_4_3))
+	arg_4_0._nowPackSize = arg_4_3
 	arg_4_0._downloadSize = arg_4_2 + arg_4_0._downloadSuccSize
 
 	arg_4_0:statHotUpdate(0, arg_4_0._downloadSize)
@@ -174,7 +176,7 @@ function var_0_0._onDownloadProgressRefresh(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
 	arg_5_0._downProgressS2 = var_5_6
 
 	if var_5_0 then
-		BootLoadingView.instance:show(var_5_4, var_5_7)
+		HotUpdateProgress.instance:setProgressDownloadVoice(arg_5_2, arg_5_0._downloadSuccSize, var_5_7)
 	end
 
 	arg_5_0:statHotUpdate(var_5_4, var_5_3)
@@ -329,7 +331,7 @@ function var_0_0._onUnzipProgress(arg_14_0, arg_14_1)
 		var_14_3 = string.format(booterLang("unziping_progress"), tostring(var_14_2), var_14_0, var_14_1)
 	end
 
-	BootLoadingView.instance:setProgressMsg(var_14_3)
+	HotUpdateProgress.instance:setProgressUnzipVoice(arg_14_1, arg_14_0._nowPackSize, arg_14_0._downloadSuccSize, var_14_3)
 end
 
 function var_0_0.cancelDownload(arg_15_0)

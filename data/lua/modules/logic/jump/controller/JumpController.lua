@@ -242,7 +242,9 @@ local var_0_1 = {
 	"V2a4_Role_PanelSignView_Part2",
 	"V2a5_Role_PanelSignView_Part1",
 	"V2a5_Role_PanelSignView_Part2",
-	"V2a7_Labor_PanelSignView"
+	"V2a7_Labor_PanelSignView",
+	"V3a0_SummerSign_PanelView",
+	"RoomFormulaMsgBoxView"
 }
 
 function var_0_0.jumpTo(arg_15_0, arg_15_1, arg_15_2, arg_15_3, arg_15_4)
@@ -510,7 +512,8 @@ function var_0_0.getCurrentOpenedView(arg_26_0, arg_26_1)
 			[SeasonViewHelper.getViewName(Activity104Model.instance:getCurSeasonId(), Activity104Enum.ViewName.HeroGroupFightView)] = true,
 			[Season123Controller.instance:getHeroGroupFightViewName()] = true,
 			[Season123Controller.instance:getHeroGroupEditViewName()] = true,
-			[ViewName.TowerHeroGroupFightView] = true
+			[ViewName.TowerHeroGroupFightView] = true,
+			[ViewName.CommandStationDispatchEventMainView] = true
 		}
 	end
 

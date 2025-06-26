@@ -1039,6 +1039,43 @@ function var_0_0.closePreviewChapterViewActEnd(arg_61_0, arg_61_1)
 	return true
 end
 
+function var_0_0.checkEpisodeFiveHero(arg_62_0)
+	local var_62_0 = DungeonConfig.instance:getEpisodeCO(arg_62_0)
+	local var_62_1 = var_62_0 and lua_chapter.configDict[var_62_0.chapterId]
+
+	if not (var_62_1 and (var_62_1.type == DungeonEnum.ChapterType.Normal or var_62_1.type == DungeonEnum.ChapterType.Hard or var_62_1.type == DungeonEnum.ChapterType.Simple)) then
+		return false
+	end
+
+	local var_62_2 = var_62_0 and lua_battle.configDict[var_62_0.battleId]
+
+	if var_62_2 and var_62_2.roleNum == ModuleEnum.FiveHeroEnum.MaxHeroNum then
+		return true
+	end
+
+	return false
+end
+
+function var_0_0.saveFiveHeroGroupData(arg_63_0, arg_63_1, arg_63_2, arg_63_3, arg_63_4)
+	local var_63_0 = HeroGroupModule_pb.SetHeroGroupSnapshotRequest()
+
+	FightParam.initFightGroup(var_63_0.fightGroup, arg_63_0.clothId, arg_63_0:getMainList(), arg_63_0:getSubList(), arg_63_0:getAllHeroEquips(), arg_63_0:getAllHeroActivity104Equips())
+
+	local var_63_1 = ModuleEnum.HeroGroupSnapshotType.FiveHero
+	local var_63_2 = 1
+
+	if arg_63_1 == ModuleEnum.HeroGroupType.General then
+		var_63_1 = HeroGroupSnapshotModel.instance:getCurSnapshotId()
+		var_63_2 = HeroGroupSnapshotModel.instance:getCurGroupId()
+	end
+
+	if var_63_1 and var_63_2 then
+		HeroGroupRpc.instance:sendSetHeroGroupSnapshotRequest(var_63_1, var_63_2, var_63_0, arg_63_3, arg_63_4)
+	else
+		logError(string.format("未设置快照id, 无法保存, snapshotId:%s, snapshotSubId:%s", var_63_1, var_63_2))
+	end
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

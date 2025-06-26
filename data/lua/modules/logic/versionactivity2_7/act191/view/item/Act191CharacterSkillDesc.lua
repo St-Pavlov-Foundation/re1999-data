@@ -135,18 +135,20 @@ function var_0_0._onHyperLinkClick(arg_13_0, arg_13_1, arg_13_2)
 	if arg_13_1 ~= "skillIndex" then
 		CommonBuffTipController.instance:openCommonTipViewWithCustomPos(tonumber(arg_13_1), CommonBuffTipEnum.Anchor[ViewName.CharacterExSkillView], CommonBuffTipEnum.Pivot.Right)
 	elseif arg_13_0._skillIndex == 0 then
-		local var_13_0 = {
-			id = arg_13_0.config.id,
-			tipPos = Vector2.New(-292, -51.1),
-			anchorParams = {
-				Vector2.New(1, 0.5),
-				Vector2.New(1, 0.5)
+		if arg_13_0.config.type == Activity191Enum.CharacterType.Hero then
+			local var_13_0 = {
+				id = arg_13_0.config.id,
+				tipPos = Vector2.New(-292, -51.1),
+				anchorParams = {
+					Vector2.New(1, 0.5),
+					Vector2.New(1, 0.5)
+				}
 			}
-		}
 
-		var_13_0.buffTipsX = -776
+			var_13_0.buffTipsX = -776
 
-		ViewMgr.instance:openView(ViewName.Act191CharacterTipView, var_13_0)
+			ViewMgr.instance:openView(ViewName.Act191CharacterTipView, var_13_0)
+		end
 	else
 		local var_13_1 = {}
 		local var_13_2 = Activity191Config.instance:getHeroSkillIdDic(arg_13_0.config.id)

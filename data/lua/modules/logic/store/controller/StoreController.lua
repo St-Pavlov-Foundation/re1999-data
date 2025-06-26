@@ -38,10 +38,11 @@ function var_0_0.checkAndOpenStoreView(arg_5_0, arg_5_1, arg_5_2)
 	return var_5_0
 end
 
-function var_0_0.openStoreView(arg_6_0, arg_6_1, arg_6_2)
+function var_0_0.openStoreView(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
 	local var_6_0 = {
 		jumpTab = arg_6_1,
-		jumpGoodsId = arg_6_2
+		jumpGoodsId = arg_6_2,
+		isFocus = arg_6_3
 	}
 
 	ViewMgr.instance:openView(ViewName.StoreView, var_6_0)
@@ -67,8 +68,9 @@ function var_0_0.isRoomBlockGift(arg_8_0, arg_8_1)
 	local var_8_0 = GameUtil.splitString2(arg_8_1.config.product, true)
 	local var_8_1 = var_8_0[1][1]
 	local var_8_2 = var_8_0[1][2]
+	local var_8_3 = ItemModel.instance:getItemConfig(var_8_1, var_8_2)
 
-	return ItemModel.instance:getItemConfig(var_8_1, var_8_2).subType == ItemEnum.SubType.RoomBlockGift
+	return var_8_3.subType == ItemEnum.SubType.RoomBlockGift or var_8_3.subType == ItemEnum.SubType.RoomBlockGiftNew
 end
 
 function var_0_0.openChargeGoodsView(arg_9_0, arg_9_1)
@@ -85,15 +87,13 @@ end
 
 function var_0_0.openDecorateStoreGoodsView(arg_11_0, arg_11_1)
 	local var_11_0 = string.splitToNumber(arg_11_1.config.product, "#")
-	local var_11_1 = ItemModel.instance:getItemConfig(var_11_0[1], var_11_0[2])
-	local var_11_2 = DecorateStoreEnum.SpecialGoodsId
 
-	if var_11_1.subType == ItemEnum.SubType.PlayerBg and var_11_1.id == var_11_2 then
-		local var_11_3 = {
+	if ItemModel.instance:getItemConfig(var_11_0[1], var_11_0[2]).subType == ItemEnum.SubType.PlayerBg then
+		local var_11_1 = {
 			goodsMo = arg_11_1
 		}
 
-		ViewMgr.instance:openView(ViewName.DecorateStoreGoodsBuyView, var_11_3)
+		ViewMgr.instance:openView(ViewName.DecorateStoreGoodsBuyView, var_11_1)
 	else
 		ViewMgr.instance:openView(ViewName.DecorateStoreGoodsView, arg_11_1)
 	end

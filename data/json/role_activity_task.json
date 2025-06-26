@@ -1294,5 +1294,113 @@
     "maxProgress": 1,
     "bonus": "2#2#40|1#110703#1|2#5#10000",
     "jumpid": 10012312
+  },
+  {
+    "activityId": 13015,
+    "id": 302319,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关01-【疲惫主义】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060101",
+    "maxProgress": 1,
+    "bonus": "2#2#20|9#1003#4|2#3#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302320,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关02-【来自过去】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060102",
+    "maxProgress": 1,
+    "bonus": "2#2#20|9#1003#4|2#5#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302321,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关03-【蝉蜕的谵妄】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060103",
+    "maxProgress": 1,
+    "bonus": "2#2#30|1#110903#2|2#3#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302322,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关04-【忍耐，忍耐】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060104",
+    "maxProgress": 1,
+    "bonus": "2#2#30|1#110603#2|2#5#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302323,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关05-【蜻蜓已死】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060105",
+    "maxProgress": 1,
+    "bonus": "2#2#30|1#110903#2|2#3#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302324,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关06-【空心人】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060106",
+    "maxProgress": 1,
+    "bonus": "2#2#30|1#110603#2|2#5#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302325,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关07-【燃烧的空白】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060107",
+    "maxProgress": 1,
+    "bonus": "2#2#20|9#1003#4|2#3#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302326,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "通关08-【灰烬赋格】",
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060108",
+    "maxProgress": 1,
+    "bonus": "2#2#20|9#1003#4|2#5#5000",
+    "jumpid": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 302327,
+    "minType": "卡戎角色活动任务",
+    "name": "三重赋格",
+    "taskDesc": "完成卡戎的考察关卡",
+    "listenerType": "EpisodePassIncr",
+    "listenerParam": "309101",
+    "maxProgress": 1,
+    "bonus": "2#2#40|1#110703#1|2#5#10000",
+    "jumpid": 10013095
   }
 ]

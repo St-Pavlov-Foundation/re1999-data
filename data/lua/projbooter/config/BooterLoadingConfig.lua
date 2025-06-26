@@ -11,7 +11,7 @@ local var_0_0 = {
 	},
 	{
 		titleen = "Storm Syndrome",
-		bg = "originbg2",
+		bg = "originbg15",
 		id = 2,
 		title = "暴雨症候/时代病",
 		weight = 100,
@@ -27,7 +27,7 @@ local var_0_0 = {
 	},
 	{
 		titleen = "Arcanum",
-		bg = "originbg4",
+		bg = "originbg8",
 		id = 4,
 		title = "神秘学",
 		weight = 100,
@@ -35,7 +35,7 @@ local var_0_0 = {
 	},
 	{
 		titleen = "Arcanist",
-		bg = "originbg5",
+		bg = "originbg9",
 		id = 5,
 		title = "神秘学家",
 		weight = 100,
@@ -43,7 +43,7 @@ local var_0_0 = {
 	},
 	{
 		titleen = "Laplace Scientific Computing Center",
-		bg = "originbg6",
+		bg = "originbg10",
 		id = 6,
 		title = "拉普拉斯科算中心",
 		weight = 100,
@@ -56,6 +56,22 @@ local var_0_0 = {
 		title = "芝诺军备学院",
 		weight = 100,
 		desc = "服从，坚定，从不退怯。\n以优补优，主张融合神秘学界武装力量与人类社会武装力量的组织。\n作为鸽子屋的常备军队活动于世界各地，同时担负着筛选与培育下一代战斗力量的责任。\n在《视界线公约》签署后陆续与各国签订引渡条约，接收来自于不同国家的适龄儿童，进行系统战术训练。"
+	},
+	{
+		titleen = "The Uluru Games",
+		bg = "originbg12",
+		id = 8,
+		title = "乌卢鲁运动会",
+		weight = 100,
+		desc = "和平、奋斗、公正、竞技、热情。\n它是一段段古老而崇高的相遇与重逢，恰如那簇永不熄灭的圣火。"
+	},
+	{
+		titleen = "Artificial Somnambulism",
+		bg = "originbg13",
+		id = 9,
+		title = "人工梦游",
+		weight = 100,
+		desc = "在玻璃琴的辅助下，通过声音的赫兹引导，人工梦游可以涉足你的深层颅脑意识。\n梦境？回忆？幻象？情绪？人工梦游都可以替你制造。"
 	}
 }
 

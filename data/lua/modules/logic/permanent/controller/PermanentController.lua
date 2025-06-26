@@ -16,7 +16,11 @@ function var_0_0.enterActivity(arg_3_0, arg_3_1)
 	local var_3_2 = "PermanentStoryRecord" .. var_3_1.storyId .. var_3_0
 
 	if PlayerPrefsHelper.getNumber(var_3_2, 0) == 0 then
-		StoryController.instance:playStory(var_3_1.storyId, nil, arg_3_0.storyCallback, arg_3_0, {
+		local var_3_3 = {}
+
+		var_3_3.isVersionActivityPV = true
+
+		StoryController.instance:playStory(var_3_1.storyId, var_3_3, arg_3_0.storyCallback, arg_3_0, {
 			_actId = arg_3_1
 		})
 		PlayerPrefsHelper.setNumber(var_3_2, 1)

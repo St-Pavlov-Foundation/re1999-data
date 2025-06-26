@@ -4156,5 +4156,38 @@
     "isNoShow": 0,
     "desc": "己方任意角色主动行动后，自身应激+5",
     "uiType": 1
+  },
+  {
+    "id": 930045401,
+    "name": "2.7挑战玩法",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "溢出红色能量球时，自身应激+5，\n溢出蓝色能量球时，自身应激+5，\n溢出黄色能量球时，自身应激+5，\n溢出紫色能量球时，自身应激+5，\n溢出彩色能量球时，自身应激+20\n",
+    "uiType": 1
+  },
+  {
+    "id": 900042101,
+    "name": "3.0爬塔-温妮贵妇",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "",
+    "uiType": 0
+  },
+  {
+    "id": 900042102,
+    "name": "3.0爬塔-温妮极地",
+    "identity": "custom",
+    "typeParam": "",
+    "effect": "",
+    "param": "",
+    "isNoShow": 0,
+    "desc": "",
+    "uiType": 0
   }
 ]

@@ -34,6 +34,7 @@ var_0_0.SubType = {
 	CommonGift = 50,
 	LimitPower = 31,
 	RoomManufactureItem = 25,
+	RoomBlockGiftNew = 69,
 	CritterFood = 27,
 	CritterSummon = 29,
 	DestinyStoneUp = 64

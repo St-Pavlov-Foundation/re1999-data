@@ -1423,7 +1423,16 @@ function var_0_0.getPredeductionExpoint(arg_62_0)
 
 			for iter_62_0, iter_62_1 in ipairs(var_62_3) do
 				if arg_62_0 == iter_62_1.belongToEntityId and iter_62_1:isPlayCard() and FightCardDataHelper.isBigSkill(iter_62_1.skillId) and not FightCardDataHelper.isSkill3(iter_62_1.cardInfoMO) then
-					var_62_0 = var_62_0 + var_62_2:getUniqueSkillPoint()
+					local var_62_4 = true
+					local var_62_5 = lua_skill.configDict[iter_62_1.skillId]
+
+					if var_62_5 and var_62_5.needExPoint == 1 then
+						var_62_4 = false
+					end
+
+					if var_62_4 then
+						var_62_0 = var_62_0 + var_62_2:getUniqueSkillPoint()
+					end
 				end
 			end
 		end
@@ -1797,27 +1806,32 @@ function var_0_0.processBuffEffectPath(arg_87_0, arg_87_1, arg_87_2, arg_87_3, a
 	local var_87_0 = lua_fight_effect_buff_skin.configDict[arg_87_2]
 
 	if var_87_0 then
-		local var_87_1 = arg_87_1:getSide()
+		local var_87_1 = {
+			delEffect = "delAudio",
+			effectPath = "audio",
+			triggerEffect = "triggerAudio"
+		}
+		local var_87_2 = arg_87_1:getSide()
 
 		if var_87_0[1] then
-			var_87_1 = FightEnum.EntitySide.MySide == var_87_1 and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+			var_87_2 = FightEnum.EntitySide.MySide == var_87_2 and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
 			var_87_0 = var_87_0[1]
 		else
 			var_87_0 = var_87_0[2]
 		end
 
-		local var_87_2 = var_0_0.getSideEntitys(var_87_1, true)
+		local var_87_3 = var_0_0.getSideEntitys(var_87_2, true)
 
-		for iter_87_0, iter_87_1 in ipairs(var_87_2) do
-			local var_87_3 = iter_87_1:getMO()
+		for iter_87_0, iter_87_1 in ipairs(var_87_3) do
+			local var_87_4 = iter_87_1:getMO()
 
-			if var_87_3 then
-				local var_87_4 = var_87_3.skin
+			if var_87_4 then
+				local var_87_5 = var_87_4.skin
 
-				if var_87_0[var_87_4] and not string.nilorempty(var_87_0[var_87_4][arg_87_3]) then
-					local var_87_5 = var_87_0[var_87_4].audio
+				if var_87_0[var_87_5] and not string.nilorempty(var_87_0[var_87_5][arg_87_3]) then
+					local var_87_6 = var_87_0[var_87_5][var_87_1[arg_87_3]]
 
-					return var_87_0[var_87_4][arg_87_3], var_87_5 ~= 0 and var_87_5 or arg_87_4, var_87_0[var_87_4]
+					return var_87_0[var_87_5][arg_87_3], var_87_6 ~= 0 and var_87_6 or arg_87_4, var_87_0[var_87_5]
 				end
 			end
 		end
@@ -3005,6 +3019,7 @@ function var_0_0.getEmptyFightEntityMO(arg_126_0, arg_126_1, arg_126_2, arg_126_
 	var_126_1.shieldValue = 0
 	var_126_1.level = arg_126_2 or 1
 	var_126_1.skin = arg_126_3 or var_126_0.skinId
+	var_126_1.originSkin = arg_126_3 or var_126_0.skinId
 
 	if not string.nilorempty(var_126_0.powerMax) then
 		local var_126_2 = FightStrUtil.instance:getSplitToNumberCache(var_126_0.powerMax, "#")
@@ -3083,6 +3098,7 @@ function var_0_0.buildHeroEntityMOList(arg_127_0, arg_127_1, arg_127_2, arg_127_
 
 				var_127_7.position = iter_127_0
 				var_127_7.skin = var_127_6
+				var_127_7.originSkin = var_127_6
 
 				table.insert(var_127_1, var_127_7)
 			else
@@ -3102,6 +3118,7 @@ function var_0_0.buildHeroEntityMOList(arg_127_0, arg_127_1, arg_127_2, arg_127_
 
 				var_127_10.position = -1
 				var_127_10.skin = arg_127_4 and arg_127_4[iter_127_1] or var_127_9.skinId
+				var_127_10.originSkin = arg_127_4 and arg_127_4[iter_127_1] or var_127_9.skinId
 
 				table.insert(var_127_2, var_127_10)
 			else
@@ -3145,6 +3162,7 @@ function var_0_0.buildMonsterEntityMOList(arg_130_0, arg_130_1, arg_130_2)
 				var_130_4.entityType = 2
 				var_130_4.exPoint = 0
 				var_130_4.skin = var_130_3.skinId
+				var_130_4.originSkin = var_130_3.skinId
 				var_130_4.side = arg_130_0
 				var_130_4.currentHp = var_0_0.SkillEditorHp
 				var_130_4.attrMO = var_0_0._buildAttr(var_130_3)
@@ -3178,6 +3196,7 @@ function var_0_0.buildMonsterEntityMOList(arg_130_0, arg_130_1, arg_130_2)
 				var_130_7.entityType = 2
 				var_130_7.exPoint = 0
 				var_130_7.skin = var_130_6.skinId
+				var_130_7.originSkin = var_130_6.skinId
 				var_130_7.side = arg_130_0
 				var_130_7.currentHp = var_0_0.SkillEditorHp
 				var_130_7.attrMO = var_0_0._buildAttr(var_130_6)

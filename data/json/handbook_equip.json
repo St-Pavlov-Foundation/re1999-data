@@ -664,5 +664,17 @@
     "order": 0,
     "equipId": 1441,
     "desc": ""
+  },
+  {
+    "id": 5051,
+    "order": 0,
+    "equipId": 1553,
+    "desc": "玛丽安娜"
+  },
+  {
+    "id": 4042,
+    "order": 0,
+    "equipId": 1442,
+    "desc": "坦南特"
   }
 ]

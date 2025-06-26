@@ -423,19 +423,8 @@ function var_0_0._onHotUpdateDownloadProgress(arg_35_0, arg_35_1, arg_35_2)
 	local var_35_2 = arg_35_1 / arg_35_2
 	local var_35_3 = arg_35_0:_fixSizeMB(arg_35_2)
 
-	arg_35_1 = arg_35_0:_fixSizeStr(arg_35_1)
-	arg_35_2 = arg_35_0:_fixSizeStr(arg_35_2)
-
-	local var_35_4
-
-	if UnityEngine.Application.internetReachability == UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork then
-		var_35_4 = string.format(booterLang("download_info_wifi"), arg_35_1, arg_35_2)
-	else
-		var_35_4 = string.format(booterLang("download_info"), arg_35_1, arg_35_2)
-	end
-
 	if var_35_0 then
-		BootLoadingView.instance:show(var_35_2, var_35_4)
+		HotUpdateProgress.instance:setProgressDownloadHotupdate(arg_35_1)
 	end
 
 	arg_35_0:statHotUpdate(var_35_2, var_35_3)
@@ -532,7 +521,6 @@ end
 
 function var_0_0._onStartUnzipNotify(arg_41_0)
 	SDKDataTrackMgr.instance:track(SDKDataTrackMgr.EventName.unzip_start)
-	BootLoadingView.instance:show(0.05, booterLang("unpacking"))
 end
 
 function var_0_0._onDiskSpaceNotEnough(arg_42_0)
@@ -551,14 +539,14 @@ function var_0_0._onDiskSpaceNotEnough(arg_42_0)
 	BootMsgBox.instance:show(var_42_0)
 end
 
-function var_0_0._onUnzipProgress(arg_43_0, arg_43_1)
-	logNormal("正在解压资源包，请稍后... progress = " .. arg_43_1)
+function var_0_0._onUnzipProgress(arg_43_0, arg_43_1, arg_43_2)
+	logNormal("正在解压资源包，请稍后... progress = " .. arg_43_1 .. " totalProgress = " .. arg_43_2)
 
 	if tostring(arg_43_1) == "nan" then
 		return
 	end
 
-	BootLoadingView.instance:show(arg_43_1, booterLang("unpacking"))
+	HotUpdateProgress.instance:setProgressUnzipHotupdate(arg_43_2)
 end
 
 function var_0_0._onUnzipFail(arg_44_0, arg_44_1)
@@ -606,7 +594,6 @@ end
 
 function var_0_0._onUnzipSuccess(arg_47_0)
 	SDKDataTrackMgr.instance:trackUnzipFinishEvent(SDKDataTrackMgr.Result.success)
-	BootLoadingView.instance:show(1, booterLang("unpack_done"))
 end
 
 function var_0_0.hasHotUpdate(arg_48_0)
@@ -623,39 +610,43 @@ end
 
 function var_0_0._showConfirmUpdateSize(arg_50_0, arg_50_1, arg_50_2, arg_50_3)
 	local var_50_0 = HotUpdateVoiceMgr.instance:getTotalSize()
+
+	HotUpdateProgress.instance:initDownloadSize(arg_50_1, arg_50_2)
+
 	local var_50_1 = HotUpdateVoiceMgr.instance:getNeedDownloadSize()
-	local var_50_2 = arg_50_1 - arg_50_2
-	local var_50_3 = var_50_1 + var_50_2
+	local var_50_2 = HotUpdateOptionPackageMgr.instance:getNeedDownloadSize()
+	local var_50_3 = arg_50_1 - arg_50_2
+	local var_50_4 = var_50_1 + var_50_3 + var_50_2
 
 	if not BootVoiceView.instance:isFirstDownloadDone() and not VersionValidator.instance:isInReviewing() then
-		local var_50_4 = BootVoiceView.instance:getDownloadChoices()
+		local var_50_5 = BootVoiceView.instance:getDownloadChoices()
 
-		if var_50_3 > 0 or #var_50_4 > 0 and var_50_0 == 0 then
-			BootVoiceView.instance:showDownloadSize(var_50_2, arg_50_3, arg_50_0)
+		if var_50_4 > 0 or #var_50_5 > 0 and var_50_0 == 0 then
+			BootVoiceView.instance:showDownloadSize(var_50_3, arg_50_3, arg_50_0)
 		else
 			BootVoiceView.instance:hide()
 			arg_50_3(arg_50_0)
 		end
-	elseif var_50_3 > 0 then
+	elseif var_50_4 > 0 then
 		if UnityEngine.Application.internetReachability == UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork then
 			BootVoiceView.instance:hide()
 			arg_50_3(arg_50_0)
 		else
-			local var_50_5 = arg_50_0:_fixSizeStr(var_50_3)
-			local var_50_6 = {
+			local var_50_6 = arg_50_0:_fixSizeStr(var_50_4)
+			local var_50_7 = {
 				title = booterLang("hotupdate")
 			}
-			local var_50_7 = arg_50_2 == 0 and booterLang("hotupdate_info") or booterLang("hotupdate_continue_info")
+			local var_50_8 = arg_50_2 == 0 and booterLang("hotupdate_info") or booterLang("hotupdate_continue_info")
 
-			var_50_6.content = string.format(var_50_7, var_50_5)
-			var_50_6.leftMsg = booterLang("exit")
-			var_50_6.leftCb = arg_50_0._quitGame
-			var_50_6.leftCbObj = arg_50_0
-			var_50_6.rightMsg = arg_50_2 == 0 and booterLang("download") or booterLang("continue_download")
-			var_50_6.rightCb = arg_50_3
-			var_50_6.rightCbObj = arg_50_0
+			var_50_7.content = string.format(var_50_8, var_50_6)
+			var_50_7.leftMsg = booterLang("exit")
+			var_50_7.leftCb = arg_50_0._quitGame
+			var_50_7.leftCbObj = arg_50_0
+			var_50_7.rightMsg = arg_50_2 == 0 and booterLang("download") or booterLang("continue_download")
+			var_50_7.rightCb = arg_50_3
+			var_50_7.rightCbObj = arg_50_0
 
-			BootMsgBox.instance:show(var_50_6)
+			BootMsgBox.instance:show(var_50_7)
 		end
 	else
 		BootVoiceView.instance:hide()

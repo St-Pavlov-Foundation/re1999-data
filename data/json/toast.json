@@ -4169,7 +4169,7 @@
   },
   {
     "id": 10407,
-    "tips": "活动第二周，翻阅至20章后开启特贩周",
+    "tips": "翻阅至20章后开启特贩周",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -9386,6 +9386,46 @@
   {
     "id": 289001,
     "tips": "▩1%s更换成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 300001,
+    "tips": "相同品质的名人卡数量少于3张",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 300002,
+    "tips": "通关后开启沙盘时间点",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 300003,
+    "tips": "需要先完成当前密码纸的刻录",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 300004,
+    "tips": "翻阅进度到达第20章时开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 300005,
+    "tips": "翻阅进度不足，无法查看",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

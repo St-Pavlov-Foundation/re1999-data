@@ -601,16 +601,17 @@ function var_0_0.getMissionUnlockToastId(arg_41_0, arg_41_1, arg_41_2)
 	end
 
 	local var_41_7, var_41_8 = string.match(var_41_2, "(EpisodeFinish=)(%d+)")
-	local var_41_9 = var_41_8 and DungeonModel.instance:hasPassLevelAndStory(var_41_8)
+	local var_41_9 = tonumber(var_41_8)
+	local var_41_10 = var_41_9 and DungeonModel.instance:hasPassLevelAndStory(var_41_9)
 
-	if var_41_8 and not var_41_9 then
+	if var_41_9 and not var_41_10 then
 		return ToastEnum.V1a8Activity157MissionLockedByStory
 	end
 
-	local var_41_10, var_41_11 = string.match(var_41_2, "(Act157ComponentUnlock=)(%d+)")
-	local var_41_12 = var_41_11 and arg_41_0:isRepairComponent(var_41_11)
+	local var_41_11, var_41_12 = string.match(var_41_2, "(Act157ComponentUnlock=)(%d+)")
+	local var_41_13 = var_41_12 and arg_41_0:isRepairComponent(var_41_12)
 
-	if var_41_11 and not var_41_12 then
+	if var_41_12 and not var_41_13 then
 		return ToastEnum.V1a8Activity157NotRepairComponent
 	end
 

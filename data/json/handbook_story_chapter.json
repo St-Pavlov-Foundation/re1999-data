@@ -294,5 +294,21 @@
     "name": "在路上",
     "nameEn": "Away From Home",
     "year": ""
+  },
+  {
+    "id": 13,
+    "type": 1,
+    "order": 0,
+    "name": "行于漫漫长路上",
+    "nameEn": "A Long Long Way ",
+    "year": "1920"
+  },
+  {
+    "id": 1025,
+    "type": 2,
+    "order": 0,
+    "name": "钻石游戏",
+    "nameEn": "The Diamond Con",
+    "year": ""
   }
 ]

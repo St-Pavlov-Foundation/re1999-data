@@ -7,7 +7,8 @@
     "nameen": "Special Offer Week",
     "icon": "06",
     "level": 120,
-    "desc": ""
+    "desc": "",
+    "openDay": 0
   },
   {
     "activityId": 11100,
@@ -17,7 +18,8 @@
     "nameen": "Special Offer Week",
     "icon": "06",
     "level": 120,
-    "desc": ""
+    "desc": "",
+    "openDay": 0
   },
   {
     "activityId": 11100,
@@ -27,7 +29,8 @@
     "nameen": "Special Offer Week",
     "icon": "06",
     "level": 120,
-    "desc": ""
+    "desc": "",
+    "openDay": 0
   },
   {
     "activityId": 11100,
@@ -37,7 +40,8 @@
     "nameen": "Special Offer Week",
     "icon": "06",
     "level": 120,
-    "desc": ""
+    "desc": "",
+    "openDay": 0
   },
   {
     "activityId": 11100,
@@ -47,7 +51,8 @@
     "nameen": "Special Offer Week",
     "icon": "06",
     "level": 120,
-    "desc": ""
+    "desc": "",
+    "openDay": 0
   },
   {
     "activityId": 11200,
@@ -57,7 +62,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 121,
-    "desc": "那颗泥土做成的心。它究竟，究竟如何来到这个世界上？"
+    "desc": "那颗泥土做成的心。它究竟，究竟如何来到这个世界上？",
+    "openDay": 0
   },
   {
     "activityId": 11200,
@@ -67,7 +73,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 130,
-    "desc": "在墓园起舞，以腿骨敲响脊柱。"
+    "desc": "在墓园起舞，以腿骨敲响脊柱。",
+    "openDay": 0
   },
   {
     "activityId": 11200,
@@ -77,7 +84,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 140,
-    "desc": "“送给你，这湖底最漂亮的鹅卵石。”\n是的，它光滑，就像一枚子弹。"
+    "desc": "“送给你，这湖底最漂亮的鹅卵石。”\n是的，它光滑，就像一枚子弹。",
+    "openDay": 0
   },
   {
     "activityId": 11200,
@@ -87,7 +95,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "不——那并非日食。而是乌鸦遮蔽了太阳。"
+    "desc": "不——那并非日食。而是乌鸦遮蔽了太阳。",
+    "openDay": 0
   },
   {
     "activityId": 11200,
@@ -97,7 +106,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“知道吗，只有握在手里的砍刀，和眼前破裂的血管，才最靠得住。”"
+    "desc": "“知道吗，只有握在手里的砍刀，和眼前破裂的血管，才最靠得住。”",
+    "openDay": 0
   },
   {
     "activityId": 11300,
@@ -107,7 +117,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 121,
-    "desc": "湿婆的神弓于选婿大会上破裂，而罗摩与悉多的爱意弥坚。"
+    "desc": "湿婆的神弓于选婿大会上破裂，而罗摩与悉多的爱意弥坚。",
+    "openDay": 0
   },
   {
     "activityId": 11300,
@@ -117,7 +128,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 130,
-    "desc": "王国被拱手相让，或是失去，或是无力守护。继位者婆罗多不愿为王，取长兄罗摩的鞋子为证，待其归来。"
+    "desc": "王国被拱手相让，或是失去，或是无力守护。继位者婆罗多不愿为王，取长兄罗摩的鞋子为证，待其归来。",
+    "openDay": 0
   },
   {
     "activityId": 11300,
@@ -127,7 +139,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 140,
-    "desc": "魔王罗波那派手下化身金鹿，引开罗摩，他便趁机劫走了悉多。"
+    "desc": "魔王罗波那派手下化身金鹿，引开罗摩，他便趁机劫走了悉多。",
+    "openDay": 0
   },
   {
     "activityId": 11300,
@@ -137,7 +150,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "背叛与失信化作灭国之火，须羯哩婆听了妻子陀罗一席言说，终使良心不昧。"
+    "desc": "背叛与失信化作灭国之火，须羯哩婆听了妻子陀罗一席言说，终使良心不昧。",
+    "openDay": 0
   },
   {
     "activityId": 11300,
@@ -147,7 +161,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "神猴大闹魔国，被捕仍威胁罗波那放走悉多。\n愤怒的魔王点燃了神猴的尾巴，神猴飞出牢笼，带着火势一路烧毁魔国的城市，返回到罗摩身旁。"
+    "desc": "神猴大闹魔国，被捕仍威胁罗波那放走悉多。\n愤怒的魔王点燃了神猴的尾巴，神猴飞出牢笼，带着火势一路烧毁魔国的城市，返回到罗摩身旁。",
+    "openDay": 0
   },
   {
     "activityId": 11400,
@@ -157,7 +172,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 121,
-    "desc": "囿于感官的人，囿于无知。"
+    "desc": "囿于感官的人，囿于无知。",
+    "openDay": 0
   },
   {
     "activityId": 11400,
@@ -167,7 +183,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 130,
-    "desc": "在一抹光来临前，智慧先行叩门；\n在一只锁解开前，意志先行挣脱。"
+    "desc": "在一抹光来临前，智慧先行叩门；\n在一只锁解开前，意志先行挣脱。",
+    "openDay": 0
   },
   {
     "activityId": 11400,
@@ -177,7 +194,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 140,
-    "desc": "寻臣服的王冠，箍住头脑；供瞻仰的雕塑，坐落而起。"
+    "desc": "寻臣服的王冠，箍住头脑；供瞻仰的雕塑，坐落而起。",
+    "openDay": 0
   },
   {
     "activityId": 11400,
@@ -187,7 +205,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“可孰弱孰优？”\n他们共处一厅，分庭抗礼。"
+    "desc": "“可孰弱孰优？”\n他们共处一厅，分庭抗礼。",
+    "openDay": 0
   },
   {
     "activityId": 11400,
@@ -197,7 +216,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "繁星拥有了荣名。无垠之中，人们终于放下了船锚。"
+    "desc": "繁星拥有了荣名。无垠之中，人们终于放下了船锚。",
+    "openDay": 0
   },
   {
     "activityId": 11500,
@@ -207,7 +227,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 121,
-    "desc": "迈动双足，为我尚不知的终点，我在懵懂之中已瞧见它的轮廓。"
+    "desc": "迈动双足，为我尚不知的终点，我在懵懂之中已瞧见它的轮廓。",
+    "openDay": 0
   },
   {
     "activityId": 11500,
@@ -217,7 +238,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 130,
-    "desc": "一个梦就此发端，当你站得更高，就看得更远。"
+    "desc": "一个梦就此发端，当你站得更高，就看得更远。",
+    "openDay": 0
   },
   {
     "activityId": 11500,
@@ -227,7 +249,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 140,
-    "desc": "与自然敌对的一课就此落幕。不被吞噬者，是浪涛的主人。"
+    "desc": "与自然敌对的一课就此落幕。不被吞噬者，是浪涛的主人。",
+    "openDay": 0
   },
   {
     "activityId": 11500,
@@ -237,7 +260,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "经由双手，飞吧，飞吧。撕裂血肉与革皮，越过蓝天与红土，替我接触我所渴望的一切。                  "
+    "desc": "经由双手，飞吧，飞吧。撕裂血肉与革皮，越过蓝天与红土，替我接触我所渴望的一切。                  ",
+    "openDay": 0
   },
   {
     "activityId": 11500,
@@ -247,7 +271,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "就像是语言，也像是目光，来与往，总是如此简单。"
+    "desc": "就像是语言，也像是目光，来与往，总是如此简单。",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -257,7 +282,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 121,
-    "desc": "“虽然有俚语‘一屋不扫何以扫天下’，但扫帚的地位显然与剑完全不等同。”\n<i>注：我们仍在努力寻找“剑器驾驶指南”的相关古籍。</i>"
+    "desc": "“虽然有俚语‘一屋不扫何以扫天下’，但扫帚的地位显然与剑完全不等同。”\n<i>注：我们仍在努力寻找“剑器驾驶指南”的相关古籍。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -267,7 +293,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 130,
-    "desc": "“符咒纸与术杖效用相近，多普及于民间宅邸，用以驱避不洁的生物与魔精。”\n<i>注：符咒的图案仅在部分神秘学家间秘传。</i>"
+    "desc": "“符咒纸与术杖效用相近，多普及于民间宅邸，用以驱避不洁的生物与魔精。”\n<i>注：符咒的图案仅在部分神秘学家间秘传。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -277,7 +304,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 140,
-    "desc": "“通晓炼丹的神秘学家往往受雇于宫廷，另有一些则行脚于民间。”\n<i>注：其中一部分身兼厨师、医师数职。</i>"
+    "desc": "“通晓炼丹的神秘学家往往受雇于宫廷，另有一些则行脚于民间。”\n<i>注：其中一部分身兼厨师、医师数职。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -287,7 +315,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“因此常有身死却不自知的魂魄，游离于世间，叨扰生者的门扉。”"
+    "desc": "“因此常有身死却不自知的魂魄，游离于世间，叨扰生者的门扉。”",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -297,7 +326,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“酒坊别有风味，其酿造技艺另有诀窍，回味无穷。”\n<i>注：别小看那些米粒。</i>"
+    "desc": "“酒坊别有风味，其酿造技艺另有诀窍，回味无穷。”\n<i>注：别小看那些米粒。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -307,7 +337,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“由栖息环境所影响，魔精在东方亦另有一番样貌。”\n<i>生物进化论仍然不过时。</i>"
+    "desc": "“由栖息环境所影响，魔精在东方亦另有一番样貌。”\n<i>生物进化论仍然不过时。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -317,7 +348,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“有名为饕餮者，其形状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿。”\n<i>这是撒旦在世的有力佐证！</i>"
+    "desc": "“有名为饕餮者，其形状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿。”\n<i>这是撒旦在世的有力佐证！</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -327,7 +359,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“有名为孰湖者，其状马身而鸟翼，人面蛇尾，是好举人。”\n<i>大陆板块漂移前，美杜莎或曾在各地繁衍生息。</i>"
+    "desc": "“有名为孰湖者，其状马身而鸟翼，人面蛇尾，是好举人。”\n<i>大陆板块漂移前，美杜莎或曾在各地繁衍生息。</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -337,7 +370,8 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“有名为穷奇者，状如牛，蝟毛，音如嗥狗。”\n<i>狼与牛的生殖隔离有待商榷，这是生物学领域的新突破！</i>"
+    "desc": "“有名为穷奇者，状如牛，蝟毛，音如嗥狗。”\n<i>狼与牛的生殖隔离有待商榷，这是生物学领域的新突破！</i>",
+    "openDay": 0
   },
   {
     "activityId": 11600,
@@ -347,6 +381,117 @@
     "nameen": "Special Offer Week",
     "icon": "05",
     "level": 150,
-    "desc": "“有名为驳者，状如白马，锯牙，食虎豹。有素兽焉。”\n<i>我们猜测这是东方谚语“白马非马”的现实依据。</i>"
+    "desc": "“有名为驳者，状如白马，锯牙，食虎豹。有素兽焉。”\n<i>我们猜测这是东方谚语“白马非马”的现实依据。</i>",
+    "openDay": 0
+  },
+  {
+    "activityId": 13000,
+    "layer": 1,
+    "episodeId": 3001121,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "不知何人丢下的火种，落在了覆于腐泥之上的那厚厚枯叶中，紧跟着便是那漫漫浓烟和火啃叶子的咔嚓声。",
+    "openDay": 1
+  },
+  {
+    "activityId": 13000,
+    "layer": 2,
+    "episodeId": 3001122,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "火焰呀，火焰下是甜美的树汁！快去，快去，快去！",
+    "openDay": 1
+  },
+  {
+    "activityId": 13000,
+    "layer": 3,
+    "episodeId": 3001123,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "第二只蚂蚁看到了，它慌忙地逃开了大树。树汁呀，腐肉呀，还有族群呀，什么都不要了！",
+    "openDay": 1
+  },
+  {
+    "activityId": 13000,
+    "layer": 4,
+    "episodeId": 3001124,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "第三只蚂蚁看到了，好大的火，好美丽的火，照在身上是金色的，只要冲进去，那一定就永远是金色的了！",
+    "openDay": 1
+  },
+  {
+    "activityId": 13000,
+    "layer": 5,
+    "episodeId": 3001125,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 121,
+    "desc": "第二只蚂蚁看到雨落，兴奋地冲进了水中以为得了救……",
+    "openDay": 1
+  },
+  {
+    "activityId": 13000,
+    "layer": 6,
+    "episodeId": 3001126,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "雨水浇灭了金色的火，第三只蚂蚁气急败坏，它咒骂着一切，全然忘了刚刚被炙烤的疼痛。",
+    "openDay": 8
+  },
+  {
+    "activityId": 13000,
+    "layer": 7,
+    "episodeId": 3001127,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "蚂蚁们顶着大雨从洞中钻出，从草间钻出，它们爬上了大树，爬进了枯叶中。它们要找火。",
+    "openDay": 8
+  },
+  {
+    "activityId": 13000,
+    "layer": 8,
+    "episodeId": 3001128,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "蚂蚁四处寻找，终于在缝隙中寻到了——那一丝微弱的火星。火星也在等，等这大雨过去，一切就又会熊熊燃烧。",
+    "openDay": 8
+  },
+  {
+    "activityId": 13000,
+    "layer": 9,
+    "episodeId": 3001129,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "直到一只在水中泡了很久的蚂蚁回过神，我们不是要灭火吗？",
+    "openDay": 8
+  },
+  {
+    "activityId": 13000,
+    "layer": 10,
+    "episodeId": 3001130,
+    "name": "特贩周",
+    "nameen": "Special Offer Week",
+    "icon": "05",
+    "level": 130,
+    "desc": "再看看，那些已经化成了灰烬漂在坑中泥水的它们。",
+    "openDay": 8
   }
 ]

@@ -2946,5 +2946,159 @@
     "episodeId": 2902323,
     "image": "story_atcg/2_6/2_6_at_biyu.jpg",
     "preCgId": 0
+  },
+  {
+    "id": 2001301,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "是，长官",
+    "nameEn": "Yes, Sir",
+    "desc": "在这儿，一切看似与战争无关，一切却又与战争有关。",
+    "episodeId": 11101,
+    "image": "story_atcg/3_0/3_0_at_liaotian.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001302,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "蓄意暴露",
+    "nameEn": "Eyes Up",
+    "desc": "从观察者变为被观察者。",
+    "episodeId": 1102,
+    "image": "story_atcg/3_0/3_0_at_aiguozhe.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001303,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "“公平”对谈·一",
+    "nameEn": "A \"Fair\" Encounter I",
+    "desc": "唯有朝向彼此的枪口能使我们公平地对谈。",
+    "episodeId": 11103,
+    "image": "story_atcg/3_0/3_0_at_zhuisha1.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001304,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "“公平”对谈·二",
+    "nameEn": "A \"Fair\" Encounter II",
+    "desc": "不分伯仲的恶孽。",
+    "episodeId": 1104,
+    "image": "story_atcg/3_0/3_0_at_zhuisha2.jpg",
+    "preCgId": 2001303
+  },
+  {
+    "id": 2001305,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "“公平”对谈·三",
+    "nameEn": "A \"Fair\" Encounter III",
+    "desc": "忏悔，坦白，即便无人聆听。",
+    "episodeId": 1105,
+    "image": "story_atcg/3_0/3_0_at_zhuisha3.jpg",
+    "preCgId": 2001304
+  },
+  {
+    "id": 2001306,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "“公平”对谈·四",
+    "nameEn": "A \"Fair\" Encounter IV",
+    "desc": "期以永恒的祷告，久候不至的救赎。",
+    "episodeId": 11106,
+    "image": "story_atcg/3_0/3_0_at_zhuisha4.jpg",
+    "preCgId": 2001305
+  },
+  {
+    "id": 2001307,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "“公平”对谈·五",
+    "nameEn": "A \"Fair\" Encounter V",
+    "desc": "不会悔过、不再惊惶，已然无可救药的结局。",
+    "episodeId": 11107,
+    "image": "story_atcg/3_0/3_0_at_zhuisha5.jpg",
+    "preCgId": 2001306
+  },
+  {
+    "id": 2001308,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "杀死野果·一",
+    "nameEn": "Painted Red I",
+    "desc": "你我相互争斗，好似童年嬉戏时。",
+    "episodeId": 11108,
+    "image": "story_atcg/3_0/3_0_at_bodou1.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001309,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "杀死野果·二",
+    "nameEn": "Painted Red II",
+    "desc": "最后，我们以痛苦与血泪沐浴。",
+    "episodeId": 1109,
+    "image": "story_atcg/3_0/3_0_at_bodou2_zone.png",
+    "preCgId": 2001308
+  },
+  {
+    "id": 2001310,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "不归乡·一",
+    "nameEn": "No Longer That Boy I",
+    "desc": "天气晴朗，我们登上山坡，向远乡眺望。",
+    "episodeId": 11110,
+    "image": "story_atcg/3_0/3_0_at_gaobie.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001311,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "不归乡·二",
+    "nameEn": "No Longer That Boy II",
+    "desc": "那个再不复返的好地方。",
+    "episodeId": 1111,
+    "image": "story_atcg/3_0/3_0_at_gaobie2_zone.png",
+    "preCgId": 2001310
+  },
+  {
+    "id": 2001312,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "片刻梦游",
+    "nameEn": "A Fleeting Moment of Serenity",
+    "desc": "尽管驰骋，尽管畅想，尽管将未知诉诸未来。",
+    "episodeId": 11112,
+    "image": "story_atcg/3_0/3_0_at_qixing.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 2001313,
+    "order": 0,
+    "storyChapterId": 13,
+    "name": "于门前",
+    "nameEn": "At the Gates of Hell",
+    "desc": "“你们来到这里，放弃一切希望。”",
+    "episodeId": 11113,
+    "image": "story_atcg/3_0/3_0_at_diyuzhimen.jpg",
+    "preCgId": 0
+  },
+  {
+    "id": 102501,
+    "order": 0,
+    "storyChapterId": 1025,
+    "name": "合作愉快",
+    "nameEn": "A Pleasure Working with You",
+    "desc": "鱼目混珠的血腥落日，识破真假莫辨的钻石。",
+    "episodeId": 192507,
+    "image": "story_atcg/3_0/3_0_at_ys_tannante.jpg",
+    "preCgId": 0
   }
 ]

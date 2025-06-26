@@ -383,6 +383,7 @@ function var_0_0._onClickDownload(arg_24_0)
 	arg_24_0._downloadSizeCallback = nil
 	arg_24_0._downloadSizeCallbackObj = nil
 
+	HotUpdateProgress.instance:updateVoiceNeedDownloadSize()
 	var_24_1(var_24_2)
 end
 

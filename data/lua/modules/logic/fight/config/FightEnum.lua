@@ -357,6 +357,7 @@ var_0_0.EffectType = {
 	BFSGSKILLEND = 158,
 	SPCARDADD = 78,
 	CANTSELECTEX = 105,
+	REALDAMAGEKILL = 351,
 	CARDEFFECTCHANGE = 85,
 	SIMPLEPOLARIZATIONADDLIMIT = 296,
 	ACT174MONSTERAICARD = 273,
@@ -436,6 +437,7 @@ var_0_0.EffectType = {
 	PLAYAROUNDDOWNRANK = 219,
 	NUODIKARANDOMATTACKNUM = 349,
 	DUDUBONECONTINUECHANNEL = 257,
+	BUFFDELREASON = 352,
 	ADDTOBUFFENTITY = 147,
 	CURRENTHPCHANGE = 109,
 	ADDBUFFROUNDBYTYPEID = 82,
@@ -801,6 +803,7 @@ var_0_0.BuffType_SpecialCountCastChannel = "SpecialCountCastChannel"
 var_0_0.BuffType_SpecialCountContinueChannelBuff = "SpecialCountContinueChannelBuff"
 var_0_0.BuffType_LockHpMax = "LockHpMax"
 var_0_0.BuffType_NoUseCardEnergyRecordByRound = "NoUseCardEnergyRecordByRound"
+var_0_0.BuffType_RealDamageKill = "RealDamageKill"
 var_0_0.BuffTypeId_CoverPerson = 8398
 var_0_0.BuffTypeId_CelebrityCharm = 8399
 var_0_0.BuffFeature = {
@@ -813,6 +816,7 @@ var_0_0.BuffFeature = {
 	ResistancesAttr = "ResistancesAttr",
 	CountUseSelfSkillContinueChannel = "CountUseSelfSkillContinueChannel",
 	InjuryBank = "InjuryBank",
+	ConsumeBuffAddBuffContinueChannel = "ConsumeBuffAddBuffContinueChannel",
 	StorageDamage = "StorageDamage",
 	NuoDiKaCastChannel = "NuoDiKaCastChannel",
 	Dream = "Dream",
@@ -989,9 +993,11 @@ var_0_0.CardInfoStatus = {
 }
 var_0_0.BuffActId = {
 	ExSkillNoConsumption = 514,
+	RealDamageKill = 1028,
+	LockHpMax = 1013,
 	NoUseCardEnergyRecordByRound = 1016,
 	ExPointCantAdd = 603,
-	LockHpMax = 1013
+	ConsumeBuffAddBuffContinueChannel = 1031
 }
 var_0_0.ExPointState = {
 	Server = 2,
@@ -1200,6 +1206,9 @@ var_0_0.ExPointTypeFeature = {
 		combineAddExpoint = false,
 		playAddExpoint = false
 	}
+}
+var_0_0.BuffDeleteReason = {
+	Overflow = 1
 }
 
 return var_0_0

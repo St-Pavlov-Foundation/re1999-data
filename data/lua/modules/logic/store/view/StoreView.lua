@@ -208,7 +208,7 @@ function var_0_0.refreshTimeDeadline(arg_8_0, arg_8_1, arg_8_2)
 		if arg_8_1.id ~= arg_8_0._selectFirstTabId and not var_8_1 then
 			local var_8_5 = StoreHelper.getRemainExpireTimeDeepByStoreId(arg_8_1.id)
 
-			if var_8_5 and var_8_5 > 0 then
+			if var_8_5 and var_8_5 > 0 and var_8_5 < TimeUtil.OneWeekSecond then
 				gohelper.setActive(arg_8_2.godeadline, true)
 				gohelper.setActive(arg_8_2.txttime.gameObject, true)
 

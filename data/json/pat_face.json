@@ -453,5 +453,33 @@
     "patFaceViewName": "BPSkinFaceView",
     "patFaceStoryId": 0,
     "patFaceOrder": 2090
+  },
+  {
+    "id": 30000,
+    "patFaceActivityId": 13012,
+    "patFaceViewName": "V3a0_Role_PanelSignView_Part1",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 2001
+  },
+  {
+    "id": 30001,
+    "patFaceActivityId": 13013,
+    "patFaceViewName": "V3a0_Role_PanelSignView_Part2",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 2002
+  },
+  {
+    "id": 30002,
+    "patFaceActivityId": 13014,
+    "patFaceViewName": "V3a0_SummerSign_PanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 2000
+  },
+  {
+    "id": 30003,
+    "patFaceActivityId": 13005,
+    "patFaceViewName": "VersionActivity2_3NewCultivationGiftFullView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 2089
   }
 ]

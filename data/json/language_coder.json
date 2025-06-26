@@ -2477,7 +2477,7 @@
   },
   {
     "id": "season_compose_hint1",
-    "lang": "UTTU名人卡回收处,缴纳三张同品质名人卡,将合并一张相同或更高品质名人卡；"
+    "lang": "UTTU名人卡回收处,缴纳三张同品质名人卡,将合并一张<color=#e99b56>更高品质且未拥有</color>的名人卡；"
   },
   {
     "id": "season_compose_hint2",
@@ -6650,5 +6650,53 @@
   {
     "id": "survival_shelter_quit_fight_confirm",
     "lang": "退出会令本轮战斗失败，导致参战组员抵抗力减少，是否确认?"
+  },
+  {
+    "id": "season104_compose_filter_txt",
+    "lang": "超出%s张的部分"
+  },
+  {
+    "id": "comma_sep",
+    "lang": "，"
+  },
+  {
+    "id": "multiple_2",
+    "lang": "▩1%s×▩2%s"
+  },
+  {
+    "id": "karongdrawview_remaintimes",
+    "lang": "剩余次数：▩1%s"
+  },
+  {
+    "id": "maliannagame_tip_player",
+    "lang": "我方占领了▩1%s"
+  },
+  {
+    "id": "maliannagame_tip_enemy",
+    "lang": "敌方占领了▩1%s"
+  },
+  {
+    "id": "commandstation_itemname_and",
+    "lang": "<color=#FFFFFF>和</color>"
+  },
+  {
+    "id": "commandstation_paper_canget",
+    "lang": "剩余可获得碎片：▩1%s"
+  },
+  {
+    "id": "commandstation_map_character",
+    "lang": "前线动向"
+  },
+  {
+    "id": "commandstation_map_event",
+    "lang": "沙盘事件"
+  },
+  {
+    "id": "commandstation_dispatch_event_forecast_time",
+    "lang": "预估：▩1%s"
+  },
+  {
+    "id": "roomformula_combine_and_up",
+    "lang": "合成并提升"
   }
 ]

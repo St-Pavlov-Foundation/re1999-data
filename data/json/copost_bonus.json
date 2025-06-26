@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "bonus": "1#110503#6",
+    "pointNum": 1,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 2,
+    "bonus": "2#3#100000",
+    "pointNum": 2,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 3,
+    "bonus": "1#110203#6",
+    "pointNum": 3,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 4,
+    "bonus": "1#120013#3|2#5#50000",
+    "pointNum": 4,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 5,
+    "bonus": "2#3#100000",
+    "pointNum": 5,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 6,
+    "bonus": "1#120012#6",
+    "pointNum": 6,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 7,
+    "bonus": "2#5#100000",
+    "pointNum": 7,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 8,
+    "bonus": "1#620104#1|1#501012#1",
+    "pointNum": 8,
+    "versionId": 300,
+    "isBig": 1
+  },
+  {
+    "id": 9,
+    "bonus": "1#180002#3",
+    "pointNum": 9,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 10,
+    "bonus": "2#3#100000",
+    "pointNum": 10,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 11,
+    "bonus": "1#110603#6",
+    "pointNum": 11,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 12,
+    "bonus": "1#111005#1|2#5#50000",
+    "pointNum": 12,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 13,
+    "bonus": "2#3#100000",
+    "pointNum": 13,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 14,
+    "bonus": "1#110803#6",
+    "pointNum": 14,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 15,
+    "bonus": "2#5#100000",
+    "pointNum": 15,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 16,
+    "bonus": "1#110903#6",
+    "pointNum": 16,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 17,
+    "bonus": "2#3#100000",
+    "pointNum": 17,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 18,
+    "bonus": "1#111008#1|2#5#50000",
+    "pointNum": 18,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 19,
+    "bonus": "1#110303#6",
+    "pointNum": 19,
+    "versionId": 300,
+    "isBig": 0
+  },
+  {
+    "id": 20,
+    "bonus": "2#3#100000",
+    "pointNum": 20,
+    "versionId": 300,
+    "isBig": 0
+  }
+]

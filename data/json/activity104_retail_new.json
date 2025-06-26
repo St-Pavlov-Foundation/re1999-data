@@ -1,0 +1,37 @@
+[
+  {
+    "activityId": 13000,
+    "retailEpisodeId": 3002101,
+    "desc": "浊血为薪",
+    "level": 125,
+    "equipRareWeight": "2#10|3#12|4#8"
+  },
+  {
+    "activityId": 13000,
+    "retailEpisodeId": 3002102,
+    "desc": "高压高伏",
+    "level": 125,
+    "equipRareWeight": "2#10|3#12|4#8"
+  },
+  {
+    "activityId": 13000,
+    "retailEpisodeId": 3002103,
+    "desc": "燃烧转化",
+    "level": 125,
+    "equipRareWeight": "2#10|3#12|4#8"
+  },
+  {
+    "activityId": 13000,
+    "retailEpisodeId": 3002104,
+    "desc": "坚守技艺",
+    "level": 125,
+    "equipRareWeight": "2#10|3#12|4#8"
+  },
+  {
+    "activityId": 13000,
+    "retailEpisodeId": 3002105,
+    "desc": "暴击艺术",
+    "level": 125,
+    "equipRareWeight": "2#10|3#12|4#8"
+  }
+]

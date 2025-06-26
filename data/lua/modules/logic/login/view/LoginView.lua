@@ -138,9 +138,11 @@ function var_0_0._onLogoLoaded(arg_7_0)
 end
 
 function var_0_0._onBgLoaded(arg_8_0)
-	arg_8_0._bgLoaded = true
+	if not arg_8_0._bgLoaded then
+		arg_8_0._bgLoaded = true
 
-	arg_8_0:_checkOpenDone()
+		arg_8_0:_checkOpenDone()
+	end
 end
 
 function var_0_0._checkOpenDone(arg_9_0)
@@ -480,6 +482,7 @@ end
 
 function var_0_0._onClickFix(arg_37_0)
 	if arg_37_0._noticeBtnPressed then
+		logNormal("begin init ProfilerCmdFileCheck")
 		GMController.instance:initProfilerCmdFileCheck()
 
 		arg_37_0._noticeBtnPressed = false
@@ -496,6 +499,7 @@ function var_0_0._onNoticeLongPress(arg_38_0)
 	arg_38_0._noticeBtnClickable = false
 
 	BenchmarkApi.AndroidLog("_onNoticeLongPress")
+	logNormal("_onNoticeLongPress")
 end
 
 function var_0_0._onClickPolicy(arg_39_0)

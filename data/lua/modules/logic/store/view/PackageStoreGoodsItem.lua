@@ -186,7 +186,7 @@ function var_0_0.onUpdateMO(arg_9_0, arg_9_1)
 
 		gohelper.setActive(arg_9_0._imagematerial.gameObject, false)
 	elseif arg_9_0._mo.isChargeGoods then
-		arg_9_0._txtmaterialNum.text = string.format("%s%s", StoreModel.instance:getCostStr(var_9_7))
+		arg_9_0._txtmaterialNum.text = PayModel.instance:getProductPrice(arg_9_0._mo.id)
 
 		gohelper.setActive(arg_9_0._imagematerial.gameObject, false)
 

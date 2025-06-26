@@ -153,6 +153,8 @@ end
 var_0_0.FillAmountDuration = 0.5
 
 function var_0_0.refreshSlider(arg_9_0, arg_9_1, arg_9_2)
+	arg_9_0.curMaxProgress = arg_9_1.maxElectricProgress
+
 	if not arg_9_0.preProgress then
 		arg_9_0:refreshSliderByProgressAndLevel(arg_9_1.electricProgress, arg_9_1.electricLevel)
 		arg_9_0:showCurLevelVx()
@@ -188,15 +190,10 @@ function var_0_0.refreshSliderByProgressAndLevel(arg_11_0, arg_11_1, arg_11_2)
 				arg_11_0.textSlider.text = "MAX"
 				iter_11_1.fillAmount = 1
 			else
-				local var_11_0 = lua_fight_dnsz.configList[arg_11_2 + 1]
-				local var_11_1 = 0
+				local var_11_0 = arg_11_0.curMaxProgress
 
-				if var_11_0 then
-					var_11_1 = var_11_0.progress
-				end
-
-				iter_11_1.fillAmount = arg_11_1 / var_11_1
-				arg_11_0.textSlider.text = string.format("%s/<#E3E3E3>%s</COLOR>", arg_11_1, var_11_1)
+				iter_11_1.fillAmount = arg_11_1 / var_11_0
+				arg_11_0.textSlider.text = string.format("%s/<#E3E3E3>%s</COLOR>", arg_11_1, var_11_0)
 			end
 		else
 			iter_11_1.fillAmount = 0

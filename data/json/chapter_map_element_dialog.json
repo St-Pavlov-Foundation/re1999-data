@@ -16963,5 +16963,860 @@
     "audio": 0,
     "speaker": "",
     "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800169,
+    "speaker": "？？？",
+    "content": "您好，请问您来到只有灰烬的破屋要做什么？"
+  },
+  {
+    "id": 52,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800170,
+    "speaker": "？？？",
+    "content": "这里没有学校或是游乐场，像您这样打扮体面的人不该在这里。"
+  },
+  {
+    "id": 52,
+    "stepId": 3,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "我不认识你#这里确实没什么好风景"
+  },
+  {
+    "id": 52,
+    "stepId": 4,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800171,
+    "speaker": "？？？",
+    "content": "我不是什么名人，一个擅自出现在我面前的人应该不认识我。"
+  },
+  {
+    "id": 52,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800172,
+    "speaker": "？？？",
+    "content": "而且您没有必要知道我是谁。"
+  },
+  {
+    "id": 52,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800173,
+    "speaker": "？？？",
+    "content": "我对出名没有任何兴趣，名声只会让我被更多的人骚扰。"
+  },
+  {
+    "id": 52,
+    "stepId": 8,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800174,
+    "speaker": "？？？",
+    "content": "那么我们达成了共识。"
+  },
+  {
+    "id": 52,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800175,
+    "speaker": "？？？",
+    "content": "我也不喜欢这满是铁锈味和焦臭的环境。"
+  },
+  {
+    "id": 52,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800176,
+    "speaker": "？？？",
+    "content": "哪怕一条蛆虫都会为了爬出这里而产生斗志。"
+  },
+  {
+    "id": 52,
+    "stepId": 12,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800177,
+    "speaker": "？？？",
+    "content": "可惜，现在全世界都没有好日子过，害得我无处可去，必须得忍受这片废墟。"
+  },
+  {
+    "id": 52,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800178,
+    "speaker": "？？？",
+    "content": "而您恐怕也得和我一起忍受，真是可悲。"
+  },
+  {
+    "id": 52,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800179,
+    "speaker": "？？？",
+    "content": "跑到世界的尽头打了一场不知所谓的仗，战利品却只有一台破烂纺车。"
+  },
+  {
+    "id": 52,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800180,
+    "speaker": "？？？",
+    "content": "然后呢？他们收走了那辆纺车，和那个半死不活的人一起，再把您送到下一个战场。"
+  },
+  {
+    "id": 52,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800181,
+    "speaker": "？？？",
+    "content": "我衷心希望那辆纺车中有着拯救全世界的线索，也许一个停战布告，或者别的什么。"
+  },
+  {
+    "id": 52,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800182,
+    "speaker": "？？？",
+    "content": "那样您就可以赶在战死前去找另一份工作，也许做个钟表匠之类的。"
+  },
+  {
+    "id": 52,
+    "stepId": 19,
+    "type": "options",
+    "param": "3#4",
+    "audio": 0,
+    "speaker": "",
+    "content": "战争会结束的#我有我的目的"
+  },
+  {
+    "id": 52,
+    "stepId": 20,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800183,
+    "speaker": "？？？",
+    "content": "我暂时没话想说了，可以请您让我一个人待一会么？"
+  },
+  {
+    "id": 52,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800184,
+    "speaker": "？？？",
+    "content": "没有茶和点心给任何客人，我已经想不起那些东西的味道了。"
+  },
+  {
+    "id": 52,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800185,
+    "speaker": "？？？",
+    "content": "您就随便享受下战争吧。反正这场结束之后还会有下一场，务必不要吝惜，去吧。"
+  },
+  {
+    "id": 52,
+    "stepId": 24,
+    "type": "selector",
+    "param": "4",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 52,
+    "stepId": 25,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800183,
+    "speaker": "？？？",
+    "content": "我暂时没话想说了，可以请您让我一个人待一会么？"
+  },
+  {
+    "id": 52,
+    "stepId": 26,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800184,
+    "speaker": "？？？",
+    "content": "没有茶和点心给任何客人，我已经想不起那些东西的味道了。"
+  },
+  {
+    "id": 52,
+    "stepId": 27,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800185,
+    "speaker": "？？？",
+    "content": "您就随便享受下战争吧。反正这场结束之后还会有下一场，务必不要吝惜，去吧。"
+  },
+  {
+    "id": 52,
+    "stepId": 28,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 53,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800186,
+    "speaker": "？？？",
+    "content": "看看这群人，他们走出家门时心中满是荣誉感，脸上也都是自信的笑容。"
+  },
+  {
+    "id": 53,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800187,
+    "speaker": "？？？",
+    "content": "脑子里想着到战场上活动活动食指，杀死几个敌人，成为国家英雄。"
+  },
+  {
+    "id": 53,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800188,
+    "speaker": "？？？",
+    "content": "却突然在前线善心大发，开始呼吁起和平，宁愿伤害自己的手也不愿伤害敌人。"
+  },
+  {
+    "id": 53,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800189,
+    "speaker": "？？？",
+    "content": "这群蠢材的母亲当时就该哭着抱住他们，叫他们不要去，而不是挥着手帕目送他们离开。"
+  },
+  {
+    "id": 53,
+    "stepId": 5,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "他们只是一时糊涂#有时人们别无选择"
+  },
+  {
+    "id": 53,
+    "stepId": 6,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 53,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800190,
+    "speaker": "？？？",
+    "content": "每个人都只是一时糊涂。"
+  },
+  {
+    "id": 53,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800191,
+    "speaker": "？？？",
+    "content": "上前线的士兵，下命令的军官，做决定的贵族，送孩子去死的家长。"
+  },
+  {
+    "id": 53,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800192,
+    "speaker": "？？？",
+    "content": "谁都不愿意承担犯糊涂的后果，那么这群家伙就只能遭这报应了。"
+  },
+  {
+    "id": 53,
+    "stepId": 10,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 53,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800193,
+    "speaker": "？？？",
+    "content": "那请告诉我唯一的选择是什么？死亡？"
+  },
+  {
+    "id": 53,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800194,
+    "speaker": "？？？",
+    "content": "死在这里有什么意义？"
+  },
+  {
+    "id": 53,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800195,
+    "speaker": "？？？",
+    "content": "别告诉我死在战场上是什么伟大的牺牲，我都快吐了。"
+  },
+  {
+    "id": 53,
+    "stepId": 14,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 53,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800196,
+    "speaker": "？？？",
+    "content": "最后一切都落在了外面那个可怜虫头上。"
+  },
+  {
+    "id": 53,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800197,
+    "speaker": "？？？",
+    "content": "他甚至鼓不起勇气自己逃跑，所以用三根烟和同一个战壕里的陌生人交了朋友。"
+  },
+  {
+    "id": 53,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800198,
+    "speaker": "？？？",
+    "content": "结果他死了，因为前一秒的仇恨，而他的朋友暂时活了下来，因为下一秒诞生的对生命的尊重。"
+  },
+  {
+    "id": 53,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800199,
+    "speaker": "？？？",
+    "content": "他的母亲该把这股愤怒发泄给谁？那个突然悔悟的军官？"
+  },
+  {
+    "id": 53,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800200,
+    "speaker": "？？？",
+    "content": "毫无可能，人们会谅解那军官，因为他也是无止境的仇恨的受害者。"
+  },
+  {
+    "id": 53,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800201,
+    "speaker": "？？？",
+    "content": "现在请告诉我吧，请告诉我这股仇恨究竟该流向谁，我会用这把厨刀去捅它。"
+  },
+  {
+    "id": 54,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800202,
+    "speaker": "？？？",
+    "content": "我只有炖芜菁能招待客人，不过我在您的碗里加了些碎香肠。"
+  },
+  {
+    "id": 54,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800203,
+    "speaker": "？？？",
+    "content": "请用，然后再见，现在这段和平的时间是您离开的最佳时机了。"
+  },
+  {
+    "id": 54,
+    "stepId": 3,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "这就要再见了么？#这可真是寒酸"
+  },
+  {
+    "id": 54,
+    "stepId": 4,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 54,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800204,
+    "speaker": "？？？",
+    "content": "请问您还希望从我这得到什么？"
+  },
+  {
+    "id": 54,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800205,
+    "speaker": "？？？",
+    "content": "既然您如此喜欢在我这做客，干脆带走您屁股下的椅子吧。"
+  },
+  {
+    "id": 54,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800206,
+    "speaker": "？？？",
+    "content": "那把椅子跟着我熬过了一整出闹剧，即便在最寒冷的冬天也没有被变成木柴。"
+  },
+  {
+    "id": 54,
+    "stepId": 8,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 54,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800207,
+    "speaker": "？？？",
+    "content": "是的，您是个尊贵的体面人，不该接受这样寒酸的招待，但可惜我已经挤不出一滴泪来为这碗汤调味了。"
+  },
+  {
+    "id": 54,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800208,
+    "speaker": "？？？",
+    "content": "如果有人能够早些结束这场闹剧，我或许可以有更多余粮来招待您。"
+  },
+  {
+    "id": 54,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800209,
+    "speaker": "？？？",
+    "content": "腌猪肉、炖牛肉、盐味卷饼、马铃薯泥、酸菜、或许还能有啤酒。"
+  },
+  {
+    "id": 54,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800210,
+    "speaker": "？？？",
+    "content": "然而在有些人看来，一口吃的远比不上几枚勋章。"
+  },
+  {
+    "id": 54,
+    "stepId": 13,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 54,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800211,
+    "speaker": "？？？",
+    "content": "不过我可以趁着现在去采买些物资。"
+  },
+  {
+    "id": 54,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800212,
+    "speaker": "？？？",
+    "content": "如果您兴趣独特，坚持要留在这里享受硝烟的余味，那您可以再坐一会。"
+  },
+  {
+    "id": 54,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800213,
+    "speaker": "？？？",
+    "content": "运气够好的话，下一场闹剧会把您长久地留在这里。"
+  },
+  {
+    "id": 55,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800214,
+    "speaker": "？？？",
+    "content": "那些狗又开始互吠了。"
+  },
+  {
+    "id": 55,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800215,
+    "speaker": "？？？",
+    "content": "您应该在之前听过类似的道理，人们会用沉默贯彻自己的意志。"
+  },
+  {
+    "id": 55,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800216,
+    "speaker": "？？？",
+    "content": "不过沉默不便于下达命令和指示。"
+  },
+  {
+    "id": 55,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800217,
+    "speaker": "？？？",
+    "content": "所以有些人用起了狗哨，既不用发出声响，又可以下达命令。"
+  },
+  {
+    "id": 55,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800218,
+    "speaker": "？？？",
+    "content": "这下世界上连一丝意志的声音都听不到了，只剩下此起彼伏的狗吠。"
+  },
+  {
+    "id": 55,
+    "stepId": 6,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "我听过这个道理么？#这像是某个士兵会说的话"
+  },
+  {
+    "id": 55,
+    "stepId": 7,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 55,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800219,
+    "speaker": "？？？",
+    "content": "如果您不记得那些洞窟里的琐事了，那么您就当作没听过吧。"
+  },
+  {
+    "id": 55,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800220,
+    "speaker": "？？？",
+    "content": "毕竟忘却有时也是一种解决方法，正如这场狗哨对决。"
+  },
+  {
+    "id": 55,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800221,
+    "speaker": "？？？",
+    "content": "只有等一切后天的训练都被遗忘，这些狗或许才能想起来，像这样互相吠叫根本毫无意义。"
+  },
+  {
+    "id": 55,
+    "stepId": 11,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 55,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800222,
+    "speaker": "？？？",
+    "content": "收回你的话！你居然把我和那些油腔滑调的老兵混为一谈？！"
+  },
+  {
+    "id": 55,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800223,
+    "speaker": "？？？",
+    "content": "如果我的声音像那群只能活在战场的魔鬼一般，我早就自己划破了自己的喉咙！"
+  },
+  {
+    "id": 55,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800224,
+    "speaker": "？？？",
+    "content": "那些可憎的！不知死活的混蛋！"
+  },
+  {
+    "id": 55,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800225,
+    "speaker": "？？？",
+    "content": "……抱歉，这就像是……伤口总是如此难以愈合，只是暂时没有人去揭开。"
+  },
+  {
+    "id": 55,
+    "stepId": 16,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 56,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800226,
+    "speaker": "？？？",
+    "content": "很抱歉，但我想您是时候离开了。"
+  },
+  {
+    "id": 56,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800227,
+    "speaker": "？？？",
+    "content": "恐怕这里暂时不会再有闹剧发生了。"
+  },
+  {
+    "id": 56,
+    "stepId": 3,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "可战争还没有结束#我们下次见"
+  },
+  {
+    "id": 56,
+    "stepId": 4,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 56,
+    "stepId": 5,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800228,
+    "speaker": "？？？",
+    "content": "难道战争是否结束会有什么区别么？"
+  },
+  {
+    "id": 56,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800229,
+    "speaker": "？？？",
+    "content": "地震、洪水、饥荒、瘟疫、抢劫、车祸、摔倒在浴缸里。"
+  },
+  {
+    "id": 56,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800230,
+    "speaker": "？？？",
+    "content": "人总有各种机会去死，战争只是其中之一。"
+  },
+  {
+    "id": 56,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800231,
+    "speaker": "？？？",
+    "content": "它甚至还不足以让世界去真正地重视它。"
+  },
+  {
+    "id": 56,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800232,
+    "speaker": "？？？",
+    "content": "至少这次不会。"
+  },
+  {
+    "id": 56,
+    "stepId": 10,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 56,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800233,
+    "speaker": "？？？",
+    "content": "您就这么热衷于打扰我这靠抚恤金维持的拮据生活？"
+  },
+  {
+    "id": 56,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800234,
+    "speaker": "？？？",
+    "content": "可出于礼节，我确实不应该拒绝您。"
+  },
+  {
+    "id": 56,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800235,
+    "speaker": "？？？",
+    "content": "而且我也理解，在屋檐下喝泥水总胜过在战场吃灰尘……"
+  },
+  {
+    "id": 56,
+    "stepId": 14,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": ""
+  },
+  {
+    "id": 56,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 922800236,
+    "speaker": "？？？",
+    "content": "好了，您的朋友还在东线等您，我会替您祈祷她的平安无事。"
   }
 ]

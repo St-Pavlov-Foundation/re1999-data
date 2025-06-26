@@ -3,48 +3,112 @@
     "activityId": 12306,
     "id": 2360101,
     "elementId": 0,
-    "target": ""
+    "target": "",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360102,
     "elementId": 0,
-    "target": ""
+    "target": "",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360103,
     "elementId": 23601011,
-    "target": "逃往东面树林深处"
+    "target": "逃往东面树林深处",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360104,
     "elementId": 23601012,
-    "target": "前往北面僵尸公墓"
+    "target": "前往北面僵尸公墓",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360105,
     "elementId": 23601013,
-    "target": "前往西面下午茶俱乐部"
+    "target": "前往西面下午茶俱乐部",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360106,
     "elementId": 23601014,
-    "target": "前往东北面肉罐头加工厂"
+    "target": "前往东北面肉罐头加工厂",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360107,
     "elementId": 23601015,
-    "target": "遍历黑暗到达最东面"
+    "target": "遍历黑暗到达最东面",
+    "uiTemplate": 0
   },
   {
     "activityId": 12306,
     "id": 2360108,
     "elementId": 0,
-    "target": ""
+    "target": "",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060101,
+    "elementId": 0,
+    "target": "",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060102,
+    "elementId": 0,
+    "target": "",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060103,
+    "elementId": 30601011,
+    "target": "通过各地点,抵达终点",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060104,
+    "elementId": 30601012,
+    "target": "通过各地点,抵达终点",
+    "uiTemplate": 1
+  },
+  {
+    "activityId": 13015,
+    "id": 3060105,
+    "elementId": 30601013,
+    "target": "通过各地点,抵达终点",
+    "uiTemplate": 1
+  },
+  {
+    "activityId": 13015,
+    "id": 3060106,
+    "elementId": 30601014,
+    "target": "通过各地点,抵达终点",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060107,
+    "elementId": 0,
+    "target": "",
+    "uiTemplate": 0
+  },
+  {
+    "activityId": 13015,
+    "id": 3060108,
+    "elementId": 0,
+    "target": "",
+    "uiTemplate": 0
   }
 ]

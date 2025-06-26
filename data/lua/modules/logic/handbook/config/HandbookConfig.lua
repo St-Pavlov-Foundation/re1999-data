@@ -267,12 +267,18 @@ function var_0_0.getSkinThemeGroupCfg(arg_25_0, arg_25_1)
 	return arg_25_0._skinThemeGroupCfg.configDict[arg_25_1]
 end
 
-function var_0_0.getSkinSuitCfgListInGroup(arg_26_0, arg_26_1)
+function var_0_0.getSkinSuitCfgListInGroup(arg_26_0, arg_26_1, arg_26_2)
 	local var_26_0 = {}
 
 	for iter_26_0, iter_26_1 in pairs(arg_26_0._skinThemeCfg.configDict) do
 		if iter_26_1.highId == arg_26_1 then
-			var_26_0[#var_26_0 + 1] = iter_26_1
+			if arg_26_2 then
+				if iter_26_1.show and iter_26_1.show == 1 then
+					var_26_0[#var_26_0 + 1] = iter_26_1
+				end
+			else
+				var_26_0[#var_26_0 + 1] = iter_26_1
+			end
 		end
 	end
 

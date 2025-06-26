@@ -71,7 +71,7 @@ function var_0_0.onOpen(arg_8_0)
 	arg_8_0._txtTitle.text = arg_8_0.chargeGoodsCfg.name
 	arg_8_0._txtTitleEn.text = arg_8_0.chargeGoodsCfg.nameEn
 
-	local var_8_0 = string.format("<color=#e98457>%s%s</color>", StoreModel.instance:getCostStr(arg_8_0._mo.cost))
+	local var_8_0 = string.format("<color=#e98457>%s</color>", PayModel.instance:getProductPrice(arg_8_0._mo.id))
 
 	arg_8_0._txtPrice.text = formatLuaLang("price_cost", var_8_0)
 

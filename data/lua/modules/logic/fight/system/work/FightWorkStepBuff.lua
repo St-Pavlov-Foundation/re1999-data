@@ -40,7 +40,7 @@ function var_0_0.onStart(arg_2_0)
 		return
 	end
 
-	var_0_0.canPlayDormantBuffAni = FightBuffHelper.canPlayDormantBuffAni(arg_2_0.actEffectData, arg_2_0.fightStepData)
+	var_0_0.updateWaitTime = FightBuffHelper.canPlayDormantBuffAni(arg_2_0.actEffectData, arg_2_0.fightStepData)
 
 	local var_2_1 = arg_2_0.actEffectData.effectType
 
@@ -64,8 +64,8 @@ function var_0_0.onStart(arg_2_0)
 
 	FightController.instance:dispatchEvent(FightEvent.OnBuffUpdate, arg_2_0._entityId, var_2_1, arg_2_0._buffId, arg_2_0._buffUid, arg_2_0.actEffectData.configEffect, arg_2_0.actEffectData.buff)
 
-	if var_0_0.canPlayDormantBuffAni then
-		arg_2_0:com_registTimer(arg_2_0._delayDone, 2 / FightModel.instance:getSpeed())
+	if var_0_0.updateWaitTime then
+		arg_2_0:com_registTimer(arg_2_0._delayDone, var_0_0.updateWaitTime / FightModel.instance:getSpeed())
 
 		return
 	end

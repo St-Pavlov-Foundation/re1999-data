@@ -31,6 +31,9 @@ var_0_0.patFace = {
 	V1a9_SemmelWeisGift = 10904,
 	V2a3_Special_PanelsView = 20304,
 	V2a7_Labor_PanelSignView = 20702,
+	V3a0_Role_PanelSignView_Part1 = 30000,
+	V3a0_Role_PanelSignView_Part2 = 30001,
+	V3a0_NeWCultivationGift = 30003,
 	TurnBackView = 2,
 	V2a8_Role_PanelSignView_Part1 = 20800,
 	ShortenAct_PanelView = 20602,
@@ -44,6 +47,7 @@ var_0_0.patFace = {
 	V2a1_MoonFestival_PanelView = 20102,
 	V1a8_Role_PanelSignView_Part2 = 14,
 	V1a9_Role_PanelSignView_Part2 = 10901,
+	V3a0_SummerSign_PanelView = 30002,
 	V1a9_AnniversarySign_PanelSignView = 10905,
 	V2a0_Role_PanelSignView_Part2 = 20002,
 	V2a1_Role_PanelSignView_Part2 = 20101,
@@ -148,7 +152,11 @@ var_0_0.patFaceCustomWork = {
 	[var_0_0.patFace.V2a8_NewCultivationDestiny] = NewCultivationGiftPatFaceWork,
 	[var_0_0.patFace.Activity2ndMailView] = Activity101SignPatFaceWork,
 	[var_0_0.patFace.V2a8_DragonBoat] = Activity101SignSpRewardPatFaceWork,
-	[var_0_0.patFace.Activity2ndShowSkinView] = Activity101SignPatFaceWork
+	[var_0_0.patFace.Activity2ndShowSkinView] = Activity101SignPatFaceWork,
+	[var_0_0.patFace.V3a0_NeWCultivationGift] = NewCultivationGiftPatFaceWork,
+	[var_0_0.patFace.V3a0_Role_PanelSignView_Part1] = Activity101SignPatFaceWork,
+	[var_0_0.patFace.V3a0_Role_PanelSignView_Part2] = Activity101SignPatFaceWork,
+	[var_0_0.patFace.V3a0_SummerSign_PanelView] = Activity101SignPatFaceWork
 }
 
 return var_0_0

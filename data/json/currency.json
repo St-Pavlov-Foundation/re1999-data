@@ -13,7 +13,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2,
@@ -29,7 +30,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 3,
@@ -45,7 +47,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3501|10110"
+    "sources": "3501|10110",
+    "headIconSign": ""
   },
   {
     "id": 4,
@@ -61,7 +64,8 @@
     "recoverLimit": 120,
     "dayRecoverNum": 0,
     "maxLimit": 1200,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 5,
@@ -77,7 +81,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3401|10110"
+    "sources": "3401|10110",
+    "headIconSign": ""
   },
   {
     "id": 10,
@@ -93,7 +98,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "202|1202"
+    "sources": "202|1202",
+    "headIconSign": ""
   },
   {
     "id": 11,
@@ -109,7 +115,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "202"
+    "sources": "202",
+    "headIconSign": ""
   },
   {
     "id": 6,
@@ -125,7 +132,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 0,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 20,
@@ -141,7 +149,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3601"
+    "sources": "3601",
+    "headIconSign": ""
   },
   {
     "id": 21,
@@ -157,7 +166,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3601"
+    "sources": "3601",
+    "headIconSign": ""
   },
   {
     "id": 22,
@@ -173,7 +183,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3801"
+    "sources": "3801",
+    "headIconSign": ""
   },
   {
     "id": 23,
@@ -189,7 +200,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "1201|1202"
+    "sources": "1201|1202",
+    "headIconSign": ""
   },
   {
     "id": 1111,
@@ -205,7 +217,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1112,
@@ -221,7 +234,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 111,
@@ -237,7 +251,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011105"
+    "sources": "10011105",
+    "headIconSign": ""
   },
   {
     "id": 1201,
@@ -253,7 +268,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1202,
@@ -269,7 +285,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1211,
@@ -285,7 +302,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1212,
@@ -301,7 +319,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1301,
@@ -317,7 +336,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011302"
+    "sources": "10011302",
+    "headIconSign": ""
   },
   {
     "id": 1302,
@@ -333,7 +353,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 300,
-    "sources": "10011302"
+    "sources": "10011302",
+    "headIconSign": ""
   },
   {
     "id": 1311,
@@ -349,7 +370,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1312,
@@ -365,7 +387,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 24,
@@ -381,7 +404,8 @@
     "recoverLimit": 5,
     "dayRecoverNum": 0,
     "maxLimit": 5,
-    "sources": "100"
+    "sources": "100",
+    "headIconSign": ""
   },
   {
     "id": 31,
@@ -397,7 +421,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1401,
@@ -413,7 +438,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "3105|10011407|10011408"
+    "sources": "3105|10011407|10011408",
+    "headIconSign": ""
   },
   {
     "id": 1411,
@@ -429,7 +455,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1412,
@@ -445,7 +472,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1413,
@@ -461,7 +489,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1414,
@@ -477,7 +506,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1515,
@@ -493,7 +523,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 2147483647,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1501,
@@ -509,7 +540,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1502,
@@ -525,7 +557,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 700,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1511,
@@ -541,7 +574,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1512,
@@ -557,7 +591,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1601,
@@ -573,7 +608,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 100,
-    "sources": "10011602"
+    "sources": "10011602",
+    "headIconSign": ""
   },
   {
     "id": 1602,
@@ -589,7 +625,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011105"
+    "sources": "10011105",
+    "headIconSign": ""
   },
   {
     "id": 25,
@@ -605,7 +642,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1603,
@@ -621,7 +659,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 0,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1604,
@@ -637,7 +676,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 0,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1605,
@@ -653,7 +693,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011602"
+    "sources": "10011602",
+    "headIconSign": ""
   },
   {
     "id": 26,
@@ -669,7 +710,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1611,
@@ -685,7 +727,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1612,
@@ -701,7 +744,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1701,
@@ -717,7 +761,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011702"
+    "sources": "10011702",
+    "headIconSign": ""
   },
   {
     "id": 1702,
@@ -733,7 +778,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1711,
@@ -749,7 +795,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1712,
@@ -765,7 +812,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1713,
@@ -781,7 +829,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1801,
@@ -797,7 +846,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011302"
+    "sources": "10011302",
+    "headIconSign": ""
   },
   {
     "id": 1802,
@@ -813,7 +863,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1803,
@@ -829,7 +880,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1804,
@@ -845,7 +897,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011804"
+    "sources": "10011804",
+    "headIconSign": ""
   },
   {
     "id": 1805,
@@ -861,7 +914,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1806,
@@ -877,7 +931,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1807,
@@ -893,7 +948,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1811,
@@ -909,7 +965,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011813"
+    "sources": "10011813",
+    "headIconSign": ""
   },
   {
     "id": 1812,
@@ -925,7 +982,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10011813|10011814"
+    "sources": "10011813|10011814",
+    "headIconSign": ""
   },
   {
     "id": 1901,
@@ -941,7 +999,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1902,
@@ -957,7 +1016,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 2000,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1903,
@@ -973,7 +1033,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1904,
@@ -989,7 +1050,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 1905,
@@ -1005,7 +1067,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2001,
@@ -1021,7 +1084,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2003,
@@ -1037,7 +1101,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2004,
@@ -1053,7 +1118,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2005,
@@ -1069,7 +1135,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2101,
@@ -1085,7 +1152,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2103,
@@ -1101,7 +1169,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2104,
@@ -1117,7 +1186,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2105,
@@ -1133,7 +1203,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2201,
@@ -1149,7 +1220,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2202,
@@ -1165,7 +1237,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2203,
@@ -1181,7 +1254,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 280001,
@@ -1197,7 +1271,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10012240"
+    "sources": "10012240",
+    "headIconSign": ""
   },
   {
     "id": 290001,
@@ -1213,7 +1288,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10012240"
+    "sources": "10012240",
+    "headIconSign": ""
   },
   {
     "id": 300001,
@@ -1229,7 +1305,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": "10012240"
+    "sources": "10012240",
+    "headIconSign": ""
   },
   {
     "id": 2301,
@@ -1245,7 +1322,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2302,
@@ -1261,7 +1339,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 6000,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2303,
@@ -1277,7 +1356,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2304,
@@ -1293,7 +1373,8 @@
     "recoverLimit": 10,
     "dayRecoverNum": 5,
     "maxLimit": 100,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2305,
@@ -1309,7 +1390,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2401,
@@ -1325,7 +1407,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2402,
@@ -1341,7 +1424,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2501,
@@ -1357,7 +1441,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 7,
@@ -1373,7 +1458,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 27,
@@ -1389,7 +1475,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2502,
@@ -1405,7 +1492,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 8,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2503,
@@ -1421,7 +1509,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 0,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2601,
@@ -1437,7 +1526,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2602,
@@ -1453,7 +1543,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 28,
@@ -1469,7 +1560,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2701,
@@ -1485,7 +1577,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2702,
@@ -1501,7 +1594,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2801,
@@ -1517,7 +1611,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2881,
@@ -1533,7 +1628,8 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
   },
   {
     "id": 2882,
@@ -1549,6 +1645,75 @@
     "recoverLimit": 0,
     "dayRecoverNum": 0,
     "maxLimit": 999999999,
-    "sources": ""
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3011,
+    "name": "可阅次数",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "100102",
+    "smallIcon": "",
+    "useDesc": "此为“闪烁侧刊”扉页上的一句友善的提醒。可用于挑战UTTU零售。\n仅限[UTTU闪烁集会]举办期间使用。\n<color=#e47124>活动期间每日5：00自动获得5次</color>",
+    "desc": "读者的节制是一种珍贵的美德。我们相信，你已于本刊中寻得了诸多趣味。无论如何，不必一口气读上太多。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 10,
+    "dayRecoverNum": 5,
+    "maxLimit": 100,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3012,
+    "name": "UTTU购物票据",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3012",
+    "smallIcon": "",
+    "useDesc": "由《UTTU》杂志提供的票据，可于[市场货架]处进行兑换。\n仅限[UTTU闪烁集会-残垣新说]活动举办期间使用。",
+    "desc": "辛勤的犒赏。它与丰富的学识、精明的领悟、恒久的耐性同行。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3001,
+    "name": "空弹壳",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3001",
+    "smallIcon": "",
+    "useDesc": "战争的计量单位，空洞地坠在地上冷却、被遗忘。可用于特别柜台兑换。",
+    "desc": "私藏的弹壳变成打火机、笔筒、烟盒……催生战壕艺术的从来不是用剩的武器，而是还在跳动的心。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3013,
+    "name": "密函卷轴",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3013",
+    "smallIcon": "",
+    "useDesc": "微细的，足以藏于双指缝隙间的传信纸条。可用于填补加密纸上残缺的信息。",
+    "desc": "它被随手放置在报纸上、电话亭的角落里、留声机的声筒旁。请不要在意，这只是一场属于神秘学家们的解谜游戏而已。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
   }
 ]

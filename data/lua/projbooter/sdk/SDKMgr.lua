@@ -555,6 +555,18 @@ function var_0_0.getShowNotice(arg_83_0)
 	return true
 end
 
+function var_0_0.getIntMetaData(arg_84_0, arg_84_1)
+	return ZProj.SDKManager.Instance:GetIntMetaData(arg_84_1)
+end
+
+function var_0_0.getBoolMetaData(arg_85_0, arg_85_1)
+	return ZProj.SDKManager.Instance:GetBoolMetaData(arg_85_1)
+end
+
+function var_0_0.getStringMetaData(arg_86_0, arg_86_1)
+	return ZProj.SDKManager.Instance:GetStringMetaData(arg_86_1)
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

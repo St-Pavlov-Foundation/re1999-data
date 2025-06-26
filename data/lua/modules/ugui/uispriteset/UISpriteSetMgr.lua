@@ -142,6 +142,7 @@ function var_0_0.ctor(arg_1_0)
 	arg_1_0._v2a6_xugouji = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a6_xugouji_spriteset.asset")
 	arg_1_0._v2a6_main_activity = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a6_mainactivity_spriteset.asset")
 	arg_1_0._v2a8_main_activity = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a8_mainactivity_spriteset.asset")
+	arg_1_0._v3a0_main_activity = arg_1_0:newSpriteSetUnit("ui/spriteassets/v3a0_mainactivity_spriteset.asset")
 	arg_1_0._v2a7_main_activity = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a7_mainactivity_spriteset.asset")
 	arg_1_0._v2a7_dungeon_sprite = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a7_dungeon.asset")
 	arg_1_0._v2a7_coopergarland_sprite = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a7_coopergarland_spriteset.asset")
@@ -149,6 +150,8 @@ function var_0_0.ctor(arg_1_0)
 	arg_1_0._survival = arg_1_0:newSpriteSetUnit("ui/spriteassets/survival_spriteset.asset")
 	arg_1_0._v2a8_molideer_sprite = arg_1_0:newSpriteSetUnit("ui/spriteassets/v2a8_molideer.asset")
 	arg_1_0._skinhandbook_sprite = arg_1_0:newSpriteSetUnit("ui/spriteassets/skinhandbook_spriteset.asset")
+	arg_1_0._v3a0_malianna = arg_1_0:newSpriteSetUnit("ui/spriteassets/v3a0_malianna.asset")
+	arg_1_0._v3a0_karong = arg_1_0:newSpriteSetUnit("ui/spriteassets/v3a0_karong.asset")
 end
 
 function var_0_0.newSpriteSetUnit(arg_2_0, arg_2_1)
@@ -708,49 +711,61 @@ function var_0_0.setV2a8MainActivitySprite(arg_139_0, arg_139_1, arg_139_2, arg_
 	arg_139_0._v2a8_main_activity:setSprite(arg_139_1, arg_139_2, arg_139_3)
 end
 
-function var_0_0.setV2a7MainActivitySprite(arg_140_0, arg_140_1, arg_140_2, arg_140_3)
-	arg_140_0._v2a7_main_activity:setSprite(arg_140_1, arg_140_2, arg_140_3)
+function var_0_0.setV3a0MainActivitySprite(arg_140_0, arg_140_1, arg_140_2, arg_140_3)
+	arg_140_0._v3a0_main_activity:setSprite(arg_140_1, arg_140_2, arg_140_3)
 end
 
-function var_0_0.setV2a7DungeonSprite(arg_141_0, arg_141_1, arg_141_2, arg_141_3)
-	arg_141_0._v2a7_dungeon_sprite:setSprite(arg_141_1, arg_141_2, arg_141_3)
+function var_0_0.setV2a7MainActivitySprite(arg_141_0, arg_141_1, arg_141_2, arg_141_3)
+	arg_141_0._v2a7_main_activity:setSprite(arg_141_1, arg_141_2, arg_141_3)
 end
 
-function var_0_0.setV2a7CooperGarlandSprite(arg_142_0, arg_142_1, arg_142_2, arg_142_3)
-	arg_142_0._v2a7_coopergarland_sprite:setSprite(arg_142_1, arg_142_2, arg_142_3)
+function var_0_0.setV2a7DungeonSprite(arg_142_0, arg_142_1, arg_142_2, arg_142_3)
+	arg_142_0._v2a7_dungeon_sprite:setSprite(arg_142_1, arg_142_2, arg_142_3)
 end
 
-function var_0_0.setSocialSkinSprite(arg_143_0, arg_143_1, arg_143_2, arg_143_3)
-	arg_143_0._socialskin:setSprite(arg_143_1, arg_143_2, arg_143_3)
+function var_0_0.setV2a7CooperGarlandSprite(arg_143_0, arg_143_1, arg_143_2, arg_143_3)
+	arg_143_0._v2a7_coopergarland_sprite:setSprite(arg_143_1, arg_143_2, arg_143_3)
 end
 
-function var_0_0.setDiceHeroSprite(arg_144_0, arg_144_1, arg_144_2, arg_144_3)
-	arg_144_0._v2a6dicehero:setSprite(arg_144_1, arg_144_2, arg_144_3)
+function var_0_0.setSocialSkinSprite(arg_144_0, arg_144_1, arg_144_2, arg_144_3)
+	arg_144_0._socialskin:setSprite(arg_144_1, arg_144_2, arg_144_3)
 end
 
-function var_0_0.setXugoujiSprite(arg_145_0, arg_145_1, arg_145_2, arg_145_3)
-	arg_145_0._v2a6_xugouji:setSprite(arg_145_1, arg_145_2, arg_145_3)
+function var_0_0.setDiceHeroSprite(arg_145_0, arg_145_1, arg_145_2, arg_145_3)
+	arg_145_0._v2a6dicehero:setSprite(arg_145_1, arg_145_2, arg_145_3)
 end
 
-function var_0_0.setHisSaBethSprite(arg_146_0, arg_146_1, arg_146_2, arg_146_3)
-	arg_146_0._v2a7_hissabeth_sprite:setSprite(arg_146_1, arg_146_2, arg_146_3)
+function var_0_0.setXugoujiSprite(arg_146_0, arg_146_1, arg_146_2, arg_146_3)
+	arg_146_0._v2a6_xugouji:setSprite(arg_146_1, arg_146_2, arg_146_3)
 end
 
-function var_0_0.setSurvivalSprite(arg_147_0, arg_147_1, arg_147_2, arg_147_3)
-	arg_147_0._survival:setSprite(arg_147_1, arg_147_2, arg_147_3)
+function var_0_0.setHisSaBethSprite(arg_147_0, arg_147_1, arg_147_2, arg_147_3)
+	arg_147_0._v2a7_hissabeth_sprite:setSprite(arg_147_1, arg_147_2, arg_147_3)
 end
 
-function var_0_0.setMoLiDeErSprite(arg_148_0, arg_148_1, arg_148_2, arg_148_3)
-	arg_148_0._v2a8_molideer_sprite:setSprite(arg_148_1, arg_148_2, arg_148_3)
+function var_0_0.setSurvivalSprite(arg_148_0, arg_148_1, arg_148_2, arg_148_3)
+	arg_148_0._survival:setSprite(arg_148_1, arg_148_2, arg_148_3)
 end
 
-function var_0_0.setSkinHandbook(arg_149_0, arg_149_1, arg_149_2, arg_149_3)
-	arg_149_0._skinhandbook_sprite:setSprite(arg_149_1, arg_149_2, arg_149_3)
+function var_0_0.setMoLiDeErSprite(arg_149_0, arg_149_1, arg_149_2, arg_149_3)
+	arg_149_0._v2a8_molideer_sprite:setSprite(arg_149_1, arg_149_2, arg_149_3)
 end
 
-function var_0_0.tryDispose(arg_150_0)
-	for iter_150_0, iter_150_1 in ipairs(arg_150_0._spriteSetList) do
-		iter_150_1:tryDispose()
+function var_0_0.setSkinHandbook(arg_150_0, arg_150_1, arg_150_2, arg_150_3)
+	arg_150_0._skinhandbook_sprite:setSprite(arg_150_1, arg_150_2, arg_150_3)
+end
+
+function var_0_0.setMaliAnNaSprite(arg_151_0, arg_151_1, arg_151_2, arg_151_3)
+	arg_151_0._v3a0_malianna:setSprite(arg_151_1, arg_151_2, arg_151_3)
+end
+
+function var_0_0.setV3a0KaRongSprite(arg_152_0, arg_152_1, arg_152_2, arg_152_3)
+	arg_152_0._v3a0_karong:setSprite(arg_152_1, arg_152_2, arg_152_3)
+end
+
+function var_0_0.tryDispose(arg_153_0)
+	for iter_153_0, iter_153_1 in ipairs(arg_153_0._spriteSetList) do
+		iter_153_1:tryDispose()
 	end
 end
 

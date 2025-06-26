@@ -226,5 +226,17 @@
     "collectionBonus": "11#12803#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3001,
+    "name": "无果之路",
+    "nameEn": "The Pointless Trudge",
+    "desc": "红色的战马从左边走到右边，再被灰色的骑士带回家乡。",
+    "rewardIcon": "1702000",
+    "building": "13001|13002|13003",
+    "packages": "3001|3002|3003|3004",
+    "collectionBonus": "11#13003#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

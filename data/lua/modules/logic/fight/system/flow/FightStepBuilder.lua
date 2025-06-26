@@ -179,7 +179,9 @@ var_0_0.ActEffectWorkCls = {
 	[FightEnum.EffectType.GETSECRETKEY] = FightWorkGetSecretKey344,
 	[FightEnum.EffectType.SAVEFIGHTRECORDUPDATE] = FightWorkSaveFightRecordUpdate,
 	[FightEnum.EffectType.ROUNDOFFSET] = FightWorkRoundOffset,
-	[FightEnum.EffectType.SURVIVALHEALTHCHANGE] = FightWorkSurvivalHealthChange345
+	[FightEnum.EffectType.SURVIVALHEALTHCHANGE] = FightWorkSurvivalHealthChange345,
+	[FightEnum.EffectType.REALDAMAGEKILL] = FightWorkRealDamageKill351,
+	[FightEnum.EffectType.BUFFDELREASON] = FightWorkBuffDelReason352
 }
 var_0_0.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.ADDSPHANDCARD] = FightWorkAddSpHandCard320Container,

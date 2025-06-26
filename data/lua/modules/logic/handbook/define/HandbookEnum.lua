@@ -34,7 +34,24 @@ var_0_0.SkinScene = {
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10005.prefab",
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10006.prefab",
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10007.prefab",
-	"scenes/v2a8_m_s17_pftj/prefab/sence_10009.prefab"
+	"scenes/v2a8_m_s17_pftj/prefab/sence_10009.prefab",
+	"scenes/v2a8_m_s17_pftj/prefab/sence_10001.prefab",
+	"scenes/v3a0_m_s17_pftj/prefab/sence_10010.prefab"
+}
+var_0_0.SkinSuitSceneType = {
+	Tarot = 2,
+	Normal = 1
+}
+var_0_0.SkinSuitId2SceneType = {
+	[11001] = var_0_0.SkinSuitSceneType.Tarot
+}
+var_0_0.SkinSuitGroupDefaultScene = "scenes/v2a8_m_s17_pftj/prefab/skin_sence_01.prefab"
+var_0_0.TarotSkinDefaultCardPath = "singlebg/skinhandbook_singlebg/tarot/card00.png"
+var_0_0.TarotSkinCount = 21
+var_0_0.TarotSkinCardDir = "singlebg/skinhandbook_singlebg/tarot"
+var_0_0.HandbookSkinShowRedDotMap = {
+	[10001] = true,
+	[11001] = true
 }
 var_0_0.Live2DSkin = {
 	[302504] = {

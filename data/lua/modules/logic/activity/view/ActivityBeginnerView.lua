@@ -110,7 +110,9 @@ local var_0_1 = {
 	[ActivityEnum.Activity.V2a8_DecaLogPresent] = ViewName.V2a8DecalogPresentFullView,
 	[ActivityEnum.Activity.V2a8_NewCultivationDestiny] = ViewName.VersionActivity2_3NewCultivationGiftView,
 	[ActivityEnum.Activity.V2a8_DragonBoat] = ViewName.V2a8_DragonBoat_FullView,
-	[ActivityEnum.Activity.V2a8_WuErLiXiGift] = ViewName.V2a8_WuErLiXiGiftFullView
+	[ActivityEnum.Activity.V2a8_WuErLiXiGift] = ViewName.V2a8_WuErLiXiGiftFullView,
+	[ActivityEnum.Activity.V3a0_NewCultivationGift] = ViewName.VersionActivity2_3NewCultivationGiftView,
+	[ActivityEnum.Activity.V3a0_SummerSign] = ViewName.V3a0_SummerSign_FullView
 }
 local var_0_2 = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,

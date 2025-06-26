@@ -17,6 +17,7 @@ function var_0_0.ctor(arg_1_0)
 	arg_1_0._storyHeroConfig = {}
 	arg_1_0._storyBgEffTransConfig = {}
 	arg_1_0._storyBgZoneConfig = {}
+	arg_1_0._audioSwitchConfig = {}
 end
 
 function var_0_0.onInit(arg_2_0)
@@ -33,7 +34,8 @@ function var_0_0.reqConfigNames(arg_3_0)
 		"story_prologue_synopsis",
 		"story_text_reflect",
 		"story_leadherospine",
-		"story_pictxt"
+		"story_pictxt",
+		"story_audio_switch"
 	}
 end
 
@@ -56,6 +58,8 @@ function var_0_0.onConfigLoaded(arg_4_0, arg_4_1, arg_4_2)
 		arg_4_0._leadHeroSpineConfig = arg_4_2
 	elseif arg_4_1 == "story_pictxt" then
 		arg_4_0._picTxtsConfig = arg_4_2
+	elseif arg_4_1 == "story_audio_switch" then
+		arg_4_0._audioSwitchConfig = arg_4_2
 	end
 end
 
@@ -207,54 +211,58 @@ function var_0_0.getStoryPicTxtConfig(arg_20_0, arg_20_1)
 	return arg_20_0._picTxtsConfig.configDict[arg_20_1]
 end
 
-function var_0_0.getEpisodeStoryIds(arg_21_0, arg_21_1)
-	local var_21_0 = {}
-
-	if not arg_21_1 then
-		return var_21_0
-	end
-
-	if arg_21_1.beforeStory > 0 then
-		table.insert(var_21_0, arg_21_1.beforeStory)
-	end
-
-	local var_21_1 = arg_21_0:getEpisodeFightStory(arg_21_1)
-
-	tabletool.addValues(var_21_0, var_21_1)
-
-	if arg_21_1.afterStory > 0 then
-		table.insert(var_21_0, arg_21_1.afterStory)
-	end
-
-	return var_21_0
+function var_0_0.getStoryAudioSwitchConfig(arg_21_0, arg_21_1)
+	return arg_21_0._audioSwitchConfig.configDict[arg_21_1]
 end
 
-function var_0_0.getEpisodeFightStory(arg_22_0, arg_22_1)
+function var_0_0.getEpisodeStoryIds(arg_22_0, arg_22_1)
 	local var_22_0 = {}
 
-	if not string.nilorempty(arg_22_1.story) then
-		local var_22_1 = string.split(arg_22_1.story, "|")
+	if not arg_22_1 then
+		return var_22_0
+	end
 
-		for iter_22_0 = 1, #var_22_1 do
-			local var_22_2 = var_22_1[iter_22_0]
-			local var_22_3 = string.split(var_22_2, "#")
-			local var_22_4 = var_22_3[3] and tonumber(var_22_3[3])
+	if arg_22_1.beforeStory > 0 then
+		table.insert(var_22_0, arg_22_1.beforeStory)
+	end
 
-			if var_22_4 and var_22_4 > 0 then
-				table.insert(var_22_0, var_22_4)
-			end
-		end
+	local var_22_1 = arg_22_0:getEpisodeFightStory(arg_22_1)
+
+	tabletool.addValues(var_22_0, var_22_1)
+
+	if arg_22_1.afterStory > 0 then
+		table.insert(var_22_0, arg_22_1.afterStory)
 	end
 
 	return var_22_0
 end
 
-function var_0_0.replaceStoryMagicText(arg_23_0, arg_23_1)
-	for iter_23_0, iter_23_1 in pairs(arg_23_0._textRefrectConfig.configDict) do
-		arg_23_1 = string.gsub(arg_23_1, iter_23_1.magicText, iter_23_1.normalText)
+function var_0_0.getEpisodeFightStory(arg_23_0, arg_23_1)
+	local var_23_0 = {}
+
+	if not string.nilorempty(arg_23_1.story) then
+		local var_23_1 = string.split(arg_23_1.story, "|")
+
+		for iter_23_0 = 1, #var_23_1 do
+			local var_23_2 = var_23_1[iter_23_0]
+			local var_23_3 = string.split(var_23_2, "#")
+			local var_23_4 = var_23_3[3] and tonumber(var_23_3[3])
+
+			if var_23_4 and var_23_4 > 0 then
+				table.insert(var_23_0, var_23_4)
+			end
+		end
 	end
 
-	return arg_23_1
+	return var_23_0
+end
+
+function var_0_0.replaceStoryMagicText(arg_24_0, arg_24_1)
+	for iter_24_0, iter_24_1 in pairs(arg_24_0._textRefrectConfig.configDict) do
+		arg_24_1 = string.gsub(arg_24_1, iter_24_1.magicText, iter_24_1.normalText)
+	end
+
+	return arg_24_1
 end
 
 var_0_0.instance = var_0_0.New()

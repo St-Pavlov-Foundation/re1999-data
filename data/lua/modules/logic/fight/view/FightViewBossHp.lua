@@ -50,6 +50,9 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._multiHpItem = gohelper.findChild(arg_1_0.viewGO, "Alpha/bossHp/image_HPBG/grid/image_HpItem")
 	arg_1_0._bossActionRoot = gohelper.findChild(arg_1_0.viewGO, "Alpha/bossHp/actionbar")
 	arg_1_0._bossEnergyRoot = gohelper.findChild(arg_1_0.viewGO, "Alpha/bossHp/#go_assisthpbar")
+	arg_1_0.killLineComp = FightBossHpKillLineComp.New(FightHpKillLineComp.KillLineType.BossHp)
+
+	arg_1_0.killLineComp:init(arg_1_0._imgHp.gameObject)
 end
 
 function var_0_0.onOpen(arg_2_0)
@@ -87,6 +90,12 @@ end
 
 function var_0_0.onClose(arg_3_0)
 	arg_3_0._btnpassiveSkill:RemoveClickListener()
+
+	if arg_3_0.killLineComp then
+		arg_3_0.killLineComp:destroy()
+
+		arg_3_0.killLineComp = nil
+	end
 end
 
 function var_0_0._onBeginWave(arg_4_0)
@@ -117,6 +126,8 @@ function var_0_0._checkBossAndUpdate(arg_7_0)
 		arg_7_0._aniHpEffect.enabled = false
 		arg_7_0._bossEntityMO = nil
 
+		arg_7_0.killLineComp:refreshByEntityMo()
+
 		return
 	end
 
@@ -127,6 +138,8 @@ function var_0_0._checkBossAndUpdate(arg_7_0)
 	if not arg_7_0._bossEntityMO then
 		arg_7_0._bossEntityMO = arg_7_0:_getBossEntityMO()
 	end
+
+	arg_7_0.killLineComp:refreshByEntityMo(arg_7_0._bossEntityMO)
 
 	if not arg_7_0._bossEntityMO or not GMFightShowState.bossHp then
 		arg_7_0._aniHpEffect.enabled = false
@@ -662,6 +675,9 @@ function var_0_0.onCoverPerformanceEntityData(arg_40_0, arg_40_1)
 	if not arg_40_0._bossEntityMO or arg_40_1 ~= arg_40_0._bossEntityMO.id then
 		return
 	end
+
+	arg_40_0._curHp = arg_40_0._bossEntityMO.currentHp
+	arg_40_0._curShield = arg_40_0._bossEntityMO.shieldValue
 
 	arg_40_0:_tweenFillAmount()
 end

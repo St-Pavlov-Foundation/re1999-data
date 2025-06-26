@@ -43,8 +43,18 @@ function var_0_0._btnbuyOnClick(arg_4_0)
 		[StatEnum.EventProperties.RecommendPageId] = "711",
 		[StatEnum.EventProperties.RecommendPageName] = "月历"
 	})
-	arg_4_0.viewContainer.storeView:_refreshTabs(StoreEnum.StoreId.Package, StoreEnum.MonthCardGoodsId)
-	StoreController.instance:statSwitchStore(StoreEnum.StoreId.Package)
+
+	local var_4_0 = string.splitToNumber(arg_4_0.config.systemJumpCode, "#")
+
+	if var_4_0[2] then
+		local var_4_1 = var_4_0[2]
+		local var_4_2 = StoreModel.instance:getGoodsMO(var_4_1)
+
+		StoreController.instance:openPackageStoreGoodsView(var_4_2)
+	else
+		arg_4_0.viewContainer.storeView:_refreshTabs(StoreEnum.StoreId.Package, StoreEnum.MonthCardGoodsId)
+		StoreController.instance:statSwitchStore(StoreEnum.StoreId.Package)
+	end
 end
 
 function var_0_0.onWenHaoClick(arg_5_0)
@@ -70,6 +80,7 @@ function var_0_0._editableInitView(arg_6_0)
 	arg_6_0._animator = arg_6_0.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	arg_6_0._animatorPlayer = SLFramework.AnimatorPlayer.Get(arg_6_0.viewGO)
 	arg_6_0._txtgoodstips.text = luaLang("storemonthcard_tips")
+	arg_6_0._txtcost.text = PayModel.instance:getProductOriginPriceNum(StoreEnum.MonthCardGoodsId)
 end
 
 function var_0_0.onUpdateParam(arg_7_0)
@@ -78,6 +89,7 @@ end
 
 function var_0_0.onOpen(arg_8_0)
 	arg_8_0.monthCardInfo = StoreModel.instance:getMonthCardInfo()
+	arg_8_0.config = StoreConfig.instance:getStoreRecommendConfig(StoreEnum.RecommendSubStoreId.MonthCardId)
 
 	arg_8_0:refreshUI()
 	var_0_0.super.onOpen(arg_8_0)

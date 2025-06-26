@@ -187,7 +187,6 @@ end
 
 function var_0_0._initPages(arg_17_0, arg_17_1)
 	recthelper.setAnchorX(arg_17_0._gocontent.transform, 0)
-	arg_17_0:setTargetPageIndex(1)
 
 	local var_17_0 = {}
 
@@ -233,6 +232,9 @@ function var_0_0._initPages(arg_17_0, arg_17_1)
 		end
 	end
 
+	local var_17_8 = arg_17_0:_getEnterPageIndex()
+
+	arg_17_0:setTargetPageIndex(var_17_8)
 	arg_17_0:setSelectItem()
 	arg_17_0:setContentItem()
 	arg_17_0:_startAutoSwitch()
@@ -447,38 +449,62 @@ function var_0_0._tweenPosFinish(arg_32_0)
 	return
 end
 
-function var_0_0.onClose(arg_33_0)
-	arg_33_0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_33_0._initPages, arg_33_0)
+function var_0_0._getEnterPageIndex(arg_33_0)
+	local var_33_0 = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.MainThumbnailRecommendViewIndex, "")
+
+	if string.nilorempty(var_33_0) then
+		return 1
+	else
+		local var_33_1 = string.split(var_33_0, "#")
+		local var_33_2 = var_33_1[1]
+		local var_33_3 = tonumber(var_33_1[2])
+
+		if var_33_2 ~= GameBranchMgr.instance:VHyphenA() then
+			return 1
+		elseif var_33_3 >= #arg_33_0._pagesCo then
+			return 1
+		else
+			return var_33_3 + 1
+		end
+	end
 end
 
-function var_0_0._clearPages(arg_34_0)
-	if arg_34_0._selectItems then
-		for iter_34_0, iter_34_1 in pairs(arg_34_0._selectItems) do
-			iter_34_1:destroy()
-		end
+function var_0_0.onClose(arg_34_0)
+	arg_34_0:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, arg_34_0._initPages, arg_34_0)
 
-		arg_34_0._selectItems = {}
-	end
+	local var_34_0 = GameBranchMgr.instance:VHyphenA() .. "#" .. arg_34_0._targetPageIndex
 
-	if arg_34_0._helpItems then
-		for iter_34_2, iter_34_3 in pairs(arg_34_0._helpItems) do
-			iter_34_3:destroy()
-		end
-
-		arg_34_0._helpItems = {}
-	end
-
-	gohelper.destroyAllChildren(arg_34_0._goslider)
-	gohelper.destroyAllChildren(arg_34_0._gocontent)
+	GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.MainThumbnailRecommendViewIndex, var_34_0)
 end
 
-function var_0_0.onDestroyView(arg_35_0)
-	arg_35_0:_clearPages()
-	arg_35_0._scroll:RemoveDragBeginListener()
-	arg_35_0._scroll:RemoveDragEndListener()
-	arg_35_0._viewClick:RemoveClickListener()
-	TaskDispatcher.cancelTask(arg_35_0._onSwitch, arg_35_0)
-	TaskDispatcher.cancelTask(arg_35_0._checkExpire, arg_35_0)
+function var_0_0._clearPages(arg_35_0)
+	if arg_35_0._selectItems then
+		for iter_35_0, iter_35_1 in pairs(arg_35_0._selectItems) do
+			iter_35_1:destroy()
+		end
+
+		arg_35_0._selectItems = {}
+	end
+
+	if arg_35_0._helpItems then
+		for iter_35_2, iter_35_3 in pairs(arg_35_0._helpItems) do
+			iter_35_3:destroy()
+		end
+
+		arg_35_0._helpItems = {}
+	end
+
+	gohelper.destroyAllChildren(arg_35_0._goslider)
+	gohelper.destroyAllChildren(arg_35_0._gocontent)
+end
+
+function var_0_0.onDestroyView(arg_36_0)
+	arg_36_0:_clearPages()
+	arg_36_0._scroll:RemoveDragBeginListener()
+	arg_36_0._scroll:RemoveDragEndListener()
+	arg_36_0._viewClick:RemoveClickListener()
+	TaskDispatcher.cancelTask(arg_36_0._onSwitch, arg_36_0)
+	TaskDispatcher.cancelTask(arg_36_0._checkExpire, arg_36_0)
 end
 
 return var_0_0

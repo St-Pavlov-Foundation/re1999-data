@@ -47,6 +47,7 @@ var_0_0.UnlockFunc = {
 	Act_70103 = 70103,
 	TestTask = 53,
 	Rouge1 = 74,
+	CommandStation = 300001,
 	Act131OpenTips = 67,
 	FightBack = 23,
 	Critter = 220104,

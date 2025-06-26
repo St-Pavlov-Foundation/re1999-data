@@ -116,5 +116,7 @@ var_0_0.SeasonCardTipsDesc = 2505
 var_0_0.MainSceneChangeCD = 2506
 var_0_0.BpShowBonusLvs = 2601
 var_0_0.BPSkinFaceViewSkinId = 28124
+var_0_0.LoginViewVideoPathId = 30101
+var_0_0.LoginViewVideoShowDungeonId = 30102
 
 return var_0_0

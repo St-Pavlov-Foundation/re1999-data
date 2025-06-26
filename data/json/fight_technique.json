@@ -865,5 +865,22 @@
     "isCn": 0,
     "displayType": "",
     "noDisplayType": ""
+  },
+  {
+    "id": 59,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "2#101101|2#201101|2#301101",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "战场效果",
+    "title_en": "Environment",
+    "iconShow": "1",
+    "picture1": "",
+    "picture2": "v3a0_bunker_help_1",
+    "content1": "{【暴露】}：降低受创减免，失去{【暴露】}时，获得{【掩护】}|{【掩护】}：每层增加受创减免，受击后失去1层，可叠加3层\n失去全部{【掩护】}时，获得{【暴露】}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": ""
   }
 ]

@@ -3,12 +3,12 @@
     "id": 10001,
     "name": "局中群像",
     "nameEn": "From the Uniform Locker",
-    "show": false,
+    "show": true,
     "order": 1,
-    "des": "大套组描述AAA",
-    "scenePath": "",
-    "nameRes": "",
-    "iconRes": ""
+    "des": "人们怀揣着信仰，漫步在时代的对局中。",
+    "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10001.prefab",
+    "nameRes": "skinhandbook_titletxt_07",
+    "iconRes": "skinhandbook_titleicon_07"
   },
   {
     "id": 10002,
@@ -102,10 +102,10 @@
     "id": 11001,
     "name": "21又1",
     "nameEn": "Card #0 to #21",
-    "show": false,
+    "show": true,
     "order": 10,
     "des": "从门扉徘徊至门扉，自故事辗转于故事，命运如此吹拂。",
-    "scenePath": "",
+    "scenePath": "scenes/v3a0_m_s17_pftj/prefab/sence_10010.prefab",
     "nameRes": "",
     "iconRes": ""
   },

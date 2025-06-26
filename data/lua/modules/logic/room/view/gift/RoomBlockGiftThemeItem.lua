@@ -44,7 +44,7 @@ function var_0_0.onUpdateMO(arg_5_0, arg_5_1, arg_5_2)
 	local var_5_5 = RoomBlockGiftEnum.SubTypeInfo[arg_5_2]
 	local var_5_6 = var_5_5.CellSize[1]
 	local var_5_7 = var_5_5.CellSize[2]
-	local var_5_8 = var_5_5.CellSpacing[1]
+	local var_5_8 = var_5_5.CellSpacing[1] - 15
 	local var_5_9 = var_5_5.CellSpacing[2]
 
 	arg_5_0._gridlayout.cellSize = Vector2(var_5_6, var_5_7)

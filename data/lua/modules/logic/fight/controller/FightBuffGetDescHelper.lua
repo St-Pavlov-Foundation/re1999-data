@@ -13,22 +13,31 @@ function var_0_0.getBuffDesc(arg_1_0)
 		return ""
 	end
 
-	if string.nilorempty(arg_1_0.actCommonParams) then
-		return var_0_0.buildDesc(var_1_0.desc)
+	if not string.nilorempty(arg_1_0.actCommonParams) then
+		local var_1_1 = string.split(arg_1_0.actCommonParams, "|")
+
+		for iter_1_0, iter_1_1 in ipairs(var_1_1) do
+			local var_1_2 = string.split(iter_1_1, "#")
+			local var_1_3 = tonumber(var_1_2[1])
+			local var_1_4 = lua_buff_act.configDict[var_1_3]
+			local var_1_5 = var_1_4 and var_0_0.getBuffFeatureHandle(var_1_4.type)
+
+			if var_1_5 then
+				local var_1_6 = var_1_5(arg_1_0, var_1_0, var_1_4, var_1_2)
+
+				return var_0_0.buildDesc(var_1_6)
+			end
+		end
 	end
 
-	local var_1_1 = string.split(arg_1_0.actCommonParams, "|")
+	for iter_1_2, iter_1_3 in ipairs(arg_1_0.actInfo) do
+		local var_1_7 = lua_buff_act.configDict[iter_1_3.actId]
+		local var_1_8 = var_1_7 and var_0_0.getBuffFeatureHandle(var_1_7.type)
 
-	for iter_1_0, iter_1_1 in ipairs(var_1_1) do
-		local var_1_2 = string.split(iter_1_1, "#")
-		local var_1_3 = tonumber(var_1_2[1])
-		local var_1_4 = lua_buff_act.configDict[var_1_3]
-		local var_1_5 = var_1_4 and var_0_0.getBuffFeatureHandle(var_1_4.type)
+		if var_1_8 then
+			local var_1_9 = var_1_8(arg_1_0, var_1_0, var_1_7, nil, iter_1_3)
 
-		if var_1_5 then
-			local var_1_6 = var_1_5(arg_1_0, var_1_0, var_1_4, var_1_2)
-
-			return var_0_0.buildDesc(var_1_6)
+			return var_0_0.buildDesc(var_1_9)
 		end
 	end
 
@@ -50,7 +59,8 @@ function var_0_0.getBuffFeatureHandle(arg_3_0)
 			[FightEnum.BuffFeature.FixAttrTeamEnergy] = var_0_0.getFixAttrTeamEnergyDesc,
 			[FightEnum.BuffFeature.SpecialCountContinueChannelBuff] = var_0_0.getSpecialCountCastBuffDesc,
 			[FightEnum.BuffFeature.AddAttrBySpecialCount] = var_0_0.getAddAttrBySpecialCountDesc,
-			[FightEnum.BuffFeature.SpecialCountCastChannel] = var_0_0.getSpecialCountCastChannelDesc
+			[FightEnum.BuffFeature.SpecialCountCastChannel] = var_0_0.getSpecialCountCastChannelDesc,
+			[FightEnum.BuffFeature.ConsumeBuffAddBuffContinueChannel] = var_0_0.getConsumeBuffAddBuffContinueChannelDesc
 		}
 	end
 
@@ -136,6 +146,10 @@ end
 
 function var_0_0.getSpecialCountCastChannelDesc(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
 	return GameUtil.getSubPlaceholderLuaLangOneParam(arg_13_1.desc, arg_13_3[2])
+end
+
+function var_0_0.getConsumeBuffAddBuffContinueChannelDesc(arg_14_0, arg_14_1, arg_14_2, arg_14_3, arg_14_4)
+	return GameUtil.getSubPlaceholderLuaLangOneParam(arg_14_1.desc, arg_14_4.strParam)
 end
 
 return var_0_0

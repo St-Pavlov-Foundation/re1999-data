@@ -55,48 +55,59 @@ function var_0_0._onPicPrefabLoaded(arg_3_0)
 	transformhelper.setLocalPosXY(arg_3_0._picGo.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
 
 	arg_3_0._simg = gohelper.findChildSingleImage(arg_3_0._picGo, "result")
-	arg_3_0._txtImg = gohelper.findChildText(arg_3_0._picGo, "txt")
-	arg_3_0._txtEnImg = gohelper.findChildText(arg_3_0._picGo, "txten")
 	arg_3_0._txtTmp = gohelper.findChildText(arg_3_0._picGo, "txt_tmp")
+	arg_3_0._gosptxt = gohelper.findChild(arg_3_0._picGo, "#go_sptxt")
+	arg_3_0._spTxts = {}
 
-	transformhelper.setLocalPosXY(arg_3_0._txtEnImg.transform, 0, 0)
-	transformhelper.setLocalPosXY(arg_3_0._txtImg.transform, 0, 0)
+	for iter_3_0 = 1, 3 do
+		local var_3_0 = gohelper.findChildText(arg_3_0._gosptxt, "txt" .. iter_3_0)
+
+		table.insert(arg_3_0._spTxts, var_3_0)
+	end
+
 	transformhelper.setLocalPosXY(arg_3_0._txtTmp.transform, 0, 0)
+	transformhelper.setLocalPosXY(arg_3_0._gosptxt.transform, 0, 0)
 
 	if arg_3_0._picCo.picType == StoryEnum.PictureType.PicTxt then
 		gohelper.setActive(arg_3_0._simg.gameObject, false)
 
-		local var_3_0 = GameLanguageMgr.instance:getLanguageTypeStoryIndex()
-		local var_3_1 = GameLanguageMgr.instance:getShortCutByStoryIndex(var_3_0)
-		local var_3_2 = string.splitToNumber(arg_3_0._picCo.picture, "#")
-		local var_3_3 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(var_3_2[1]))
-		local var_3_4 = var_3_1 == LangSettings.shortcutTab[LangSettings.zh] and var_3_3.fontType == 1
+		local var_3_1 = GameLanguageMgr.instance:getLanguageTypeStoryIndex()
+		local var_3_2 = GameLanguageMgr.instance:getShortCutByStoryIndex(var_3_1)
+		local var_3_3 = string.splitToNumber(arg_3_0._picCo.picture, "#")
+		local var_3_4 = StoryConfig.instance:getStoryPicTxtConfig(tonumber(var_3_3[1]))
+		local var_3_5 = 0
+		local var_3_6 = LuaUtil.containChinese(var_3_4[LangSettings.shortcutTab[LangSettings.zh]]) and var_3_4.fontType ~= 0 and arg_3_0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn and 0 or var_3_4.fontType + 1
 
-		gohelper.setActive(arg_3_0._txtEnImg.gameObject, not var_3_4)
-		gohelper.setActive(arg_3_0._txtImg.gameObject, var_3_4 and arg_3_0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn)
-		gohelper.setActive(arg_3_0._txtTmp.gameObject, var_3_4 and arg_3_0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn)
+		if var_3_6 ~= 0 and not arg_3_0._spTxts[var_3_6] then
+			logError(string.format("配置异常，目前还未设置相关fontType：%s的字体设定,请检查配置！", var_3_6))
 
-		local var_3_5 = var_3_3[var_3_1]
-		local var_3_6 = 0.1 * LuaUtil.getStrLen(var_3_5) * var_3_2[2]
+			return
+		end
 
-		if arg_3_0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn then
-			if var_3_4 then
-				arg_3_0.tweenId = ZProj.TweenHelper.DOText(arg_3_0._txtImg, var_3_5, var_3_6, nil, nil, nil, EaseType.Linear)
-			else
-				arg_3_0.tweenId = ZProj.TweenHelper.DOText(arg_3_0._txtEnImg, var_3_5, var_3_6, nil, nil, nil, EaseType.Linear)
-			end
+		gohelper.setActive(arg_3_0._txtTmp.gameObject, var_3_6 == 0)
+		gohelper.setActive(arg_3_0._gosptxt, var_3_6 ~= 0)
+
+		for iter_3_1 = 1, 3 do
+			gohelper.setActive(arg_3_0._spTxts[iter_3_1].gameObject, var_3_6 == iter_3_1)
+		end
+
+		local var_3_7 = var_3_4[var_3_2]
+		local var_3_8 = 0.1 * LuaUtil.getStrLen(var_3_7) * var_3_3[2]
+
+		if arg_3_0._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn and var_3_6 ~= 0 then
+			arg_3_0._dtTweenId = ZProj.TweenHelper.DOText(arg_3_0._spTxts[var_3_6], var_3_7, var_3_8, nil, nil, nil, EaseType.Linear)
 		end
 
 		if arg_3_0._picCo.inType == StoryEnum.PictureInType.FadeIn or arg_3_0._picCo.inType == StoryEnum.PictureInType.TxtFadeIn then
-			arg_3_0._txtImg.text = var_3_5
-			arg_3_0._txtEnImg.text = var_3_5
-			arg_3_0._txtTmp.text = var_3_5
+			if var_3_6 == 0 then
+				arg_3_0._txtTmp.text = var_3_7
+			else
+				arg_3_0._spTxts[var_3_6].text = var_3_7
+			end
 
 			ZProj.TweenHelper.DOFadeCanvasGroup(arg_3_0._picGo, 0, 1, arg_3_0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
 		else
-			arg_3_0._txtImg.color.a = 1
-			arg_3_0._txtEnImg.color.a = 1
-			arg_3_0._txtTmp.color.a = 1
+			arg_3_0._picGo:GetComponent(typeof(UnityEngine.CanvasGroup)).alpha = 1
 		end
 
 		if arg_3_0._picCo.effType == StoryEnum.PictureEffectType.Shake then
@@ -104,9 +115,8 @@ function var_0_0._onPicPrefabLoaded(arg_3_0)
 				return
 			end
 
-			transformhelper.setLocalPosXY(arg_3_0._txtEnImg.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
-			transformhelper.setLocalPosXY(arg_3_0._txtImg.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
 			transformhelper.setLocalPosXY(arg_3_0._txtTmp.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
+			transformhelper.setLocalPosXY(arg_3_0._gosptxt.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
 
 			if arg_3_0._picCo.effDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 				arg_3_0:_playShake()
@@ -114,9 +124,8 @@ function var_0_0._onPicPrefabLoaded(arg_3_0)
 				TaskDispatcher.runDelay(arg_3_0._playShake, arg_3_0, arg_3_0._picCo.effDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 			end
 		elseif arg_3_0._picCo.effType == StoryEnum.PictureEffectType.Scale then
-			transformhelper.setLocalPosXY(arg_3_0._txtEnImg.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
-			transformhelper.setLocalPosXY(arg_3_0._txtImg.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
 			transformhelper.setLocalPosXY(arg_3_0._txtTmp.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
+			transformhelper.setLocalPosXY(arg_3_0._gosptxt.transform, arg_3_0._picCo.pos[1], arg_3_0._picCo.pos[2])
 
 			if arg_3_0._picCo.effDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 				arg_3_0:_playScale()
@@ -131,9 +140,8 @@ function var_0_0._onPicPrefabLoaded(arg_3_0)
 	end
 
 	gohelper.setActive(arg_3_0._simg.gameObject, true)
-	gohelper.setActive(arg_3_0._txtImg.gameObject, false)
 	gohelper.setActive(arg_3_0._txtTmp.gameObject, false)
-	gohelper.setActive(arg_3_0._txtEnImg.gameObject, false)
+	gohelper.setActive(arg_3_0._gosptxt.gameObject, false)
 	arg_3_0._simg:LoadImage(ResUrl.getStoryItem(arg_3_0._picCo.picture), arg_3_0._onPicImageLoaded, arg_3_0)
 end
 
@@ -264,6 +272,12 @@ function var_0_0.resetStep(arg_10_0)
 end
 
 function var_0_0._killTweenId(arg_11_0)
+	if arg_11_0._dtTweenId then
+		ZProj.TweenHelper.KillById(arg_11_0._dtTweenId)
+
+		arg_11_0._dtTweenId = nil
+	end
+
 	if arg_11_0._posTweenId then
 		ZProj.TweenHelper.KillById(arg_11_0._posTweenId)
 
@@ -292,6 +306,7 @@ function var_0_0.reset(arg_12_0, arg_12_1, arg_12_2)
 	arg_12_0._picCo = arg_12_2
 
 	TaskDispatcher.cancelTask(arg_12_0._realDestroy, arg_12_0)
+	TaskDispatcher.cancelTask(arg_12_0._followBg, arg_12_0)
 	arg_12_0:_killTweenId()
 
 	if arg_12_0._picCo.picType == StoryEnum.PictureType.FullScreen then
@@ -347,23 +362,13 @@ function var_0_0._setFullPicture(arg_15_0)
 
 	arg_15_0._picParentGo.transform:SetParent(arg_15_0.viewGO.transform)
 
-	local var_15_0 = arg_15_0._picGo:GetComponent(typeof(Coffee.UISoftMask.SoftMask))
-
-	recthelper.setSize(arg_15_0._picGo.transform, 3000, 2000)
-
-	var_15_0.enabled = false
 	arg_15_0._picImg = arg_15_0._picGo:GetComponent(gohelper.Type_Image)
-	arg_15_0._picImg.sprite = nil
 
-	local var_15_1 = gohelper.findChild(arg_15_0._picGo, "result")
+	local var_15_0 = SLFramework.UGUI.GuiHelper.ParseColor(arg_15_0._picCo.picColor)
 
-	gohelper.setActive(var_15_1, false)
+	arg_15_0._picImg.color = var_15_0
 
-	local var_15_2 = SLFramework.UGUI.GuiHelper.ParseColor(arg_15_0._picCo.picColor)
-
-	arg_15_0._picImg.color = var_15_2
-
-	ZProj.TweenHelper.DOFadeCanvasGroup(arg_15_0._picGo, 0, var_15_2.a, arg_15_0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
+	ZProj.TweenHelper.DOFadeCanvasGroup(arg_15_0._picGo, 0, var_15_0.a, arg_15_0._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
 end
 
 function var_0_0._onFullFocusPictureLoaded(arg_16_0)
@@ -377,13 +382,17 @@ function var_0_0._onFullFocusPictureLoaded(arg_16_0)
 	arg_16_0._picGo.name = arg_16_0._picName
 
 	arg_16_0:_setFullPicture()
+
+	if arg_16_0._setDestroy then
+		TaskDispatcher.runDelay(arg_16_0._realDestroy, arg_16_0, 0.1)
+	end
 end
 
 function var_0_0.destroyPicture(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
-	arg_17_0._picCo = arg_17_1
+	arg_17_0._picDestroyCo = arg_17_1
 	arg_17_0._destroyKeepTime = arg_17_3 or 0
 
-	if not arg_17_0._picCo then
+	if not arg_17_0._picDestroyCo then
 		return
 	end
 
@@ -398,17 +407,19 @@ function var_0_0.destroyPicture(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
 	TaskDispatcher.cancelTask(arg_17_0._startDestroy, arg_17_0)
 	TaskDispatcher.cancelTask(arg_17_0._checkDestroyItem, arg_17_0)
 
-	if arg_17_0._picCo.picType == StoryEnum.PictureType.FullScreen then
+	if arg_17_0._picDestroyCo.picType == StoryEnum.PictureType.FullScreen then
 		TaskDispatcher.runDelay(arg_17_0._startDestroy, arg_17_0, 0.1 + arg_17_0._destroyKeepTime)
-	elseif arg_17_0._picCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] > 0 then
-		TaskDispatcher.runDelay(arg_17_0._startDestroy, arg_17_0, arg_17_0._picCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	elseif arg_17_0._picDestroyCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] > 0 then
+		TaskDispatcher.runDelay(arg_17_0._startDestroy, arg_17_0, arg_17_0._picDestroyCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 	else
 		arg_17_0:_startDestroy()
 	end
 end
 
 function var_0_0._startDestroy(arg_18_0)
-	if arg_18_0._picCo.outType == StoryEnum.PictureOutType.Hard then
+	arg_18_0._setDestroy = true
+
+	if arg_18_0._picDestroyCo.outType == StoryEnum.PictureOutType.Hard then
 		arg_18_0:onDestroy()
 	else
 		if not arg_18_0._picGo then
@@ -421,10 +432,10 @@ function var_0_0._startDestroy(arg_18_0)
 
 		ZProj.TweenHelper.KillByObj(arg_18_0._picImg)
 
-		if arg_18_0._picCo.outTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] > 0.1 then
+		if arg_18_0._picDestroyCo.outTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] > 0.1 then
 			local var_18_0 = arg_18_0._picGo:GetComponent(typeof(UnityEngine.CanvasGroup)).alpha
 
-			ZProj.TweenHelper.DOFadeCanvasGroup(arg_18_0._picGo, var_18_0, 0, arg_18_0._picCo.outTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] - 0.1, arg_18_0.onDestroy, arg_18_0, nil, EaseType.Linear)
+			ZProj.TweenHelper.DOFadeCanvasGroup(arg_18_0._picGo, var_18_0, 0, arg_18_0._picDestroyCo.outTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] - 0.1, arg_18_0.onDestroy, arg_18_0, nil, EaseType.Linear)
 		else
 			arg_18_0:onDestroy()
 		end
@@ -434,7 +445,7 @@ end
 function var_0_0.onDestroy(arg_19_0)
 	TaskDispatcher.cancelTask(arg_19_0._build, arg_19_0)
 
-	if arg_19_0._picCo.picType == StoryEnum.PictureType.FullScreen then
+	if arg_19_0._picDestroyCo and arg_19_0._picDestroyCo.picType == StoryEnum.PictureType.FullScreen then
 		TaskDispatcher.runRepeat(arg_19_0._checkDestroyItem, arg_19_0, 0.1)
 	else
 		arg_19_0:_realDestroy()

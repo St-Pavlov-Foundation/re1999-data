@@ -15,7 +15,9 @@ function var_0_0.reqConfigNames(arg_2_0)
 		"activity104_equip",
 		"activity104_equip_attr",
 		"activity104_equip_tag",
-		"activity104_trial"
+		"activity104_trial",
+		"activity104_story",
+		"activity104_retail_new"
 	}
 end
 
@@ -40,6 +42,10 @@ function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
 		arg_3_0._equipAttrConfig = arg_3_2
 	elseif arg_3_1 == "activity104_trial" then
 		arg_3_0._trialConfig = arg_3_2
+	elseif arg_3_1 == "activity104_story" then
+		arg_3_0._storyConfig = arg_3_2
+	elseif arg_3_1 == "activity104_retail_new" then
+		arg_3_0._retailNewConfig = arg_3_2
 	end
 end
 
@@ -49,10 +55,13 @@ end
 
 function var_0_0.preprocessEquip(arg_5_0)
 	arg_5_0._equipIsOptionalDict = {}
+	arg_5_0._equipIsOptionalList = {}
 
 	for iter_5_0, iter_5_1 in pairs(arg_5_0._equipConfig.configList) do
 		if iter_5_1.isOptional == 1 then
 			arg_5_0._equipIsOptionalDict[iter_5_1.equipId] = true
+
+			table.insert(arg_5_0._equipIsOptionalList, iter_5_1)
 		end
 	end
 end
@@ -101,15 +110,7 @@ function var_0_0.getSeasonEquipCo(arg_14_0, arg_14_1)
 end
 
 function var_0_0.getSeasonOptionalEquipCos(arg_15_0)
-	local var_15_0 = {}
-
-	for iter_15_0, iter_15_1 in pairs(arg_15_0._equipConfig.configDict) do
-		if iter_15_1.isOptional == 1 then
-			table.insert(var_15_0, iter_15_1)
-		end
-	end
-
-	return var_15_0
+	return arg_15_0._equipIsOptionalList
 end
 
 function var_0_0.getSeasonTagDict(arg_16_0, arg_16_1)
@@ -217,6 +218,54 @@ function var_0_0.filterRule(arg_27_0, arg_27_1)
 	end
 
 	return var_27_0
+end
+
+function var_0_0.getAllStoryCo(arg_28_0, arg_28_1)
+	return arg_28_0._storyConfig.configDict[arg_28_1]
+end
+
+function var_0_0.getStoryConfig(arg_29_0, arg_29_1, arg_29_2)
+	return arg_29_0._storyConfig.configDict[arg_29_1][arg_29_2]
+end
+
+function var_0_0.getSeasonConstStr(arg_30_0, arg_30_1, arg_30_2)
+	local var_30_0 = arg_30_0:getSeasonConstCo(arg_30_1, arg_30_2)
+
+	if not var_30_0 then
+		return
+	end
+
+	return var_30_0.value2
+end
+
+function var_0_0.getSeasonConstLangStr(arg_31_0, arg_31_1, arg_31_2)
+	local var_31_0 = arg_31_0:getSeasonConstCo(arg_31_1, arg_31_2)
+
+	if not var_31_0 then
+		return
+	end
+
+	return var_31_0.value3
+end
+
+function var_0_0.getSeasonRetailEpisodeCo(arg_32_0, arg_32_1, arg_32_2)
+	local var_32_0 = arg_32_0._retailNewConfig.configDict[arg_32_1][arg_32_2]
+
+	if not var_32_0 then
+		logError(string.format("not retail config seasonId:%s episodeId:%s", arg_32_1, arg_32_2))
+	end
+
+	return var_32_0
+end
+
+function var_0_0.getSeasonRetailEpisodes(arg_33_0, arg_33_1)
+	local var_33_0 = arg_33_0._retailNewConfig.configDict[arg_33_1]
+
+	if not var_33_0 then
+		logError(string.format("not retail episodelist seasonId:%s", arg_33_1))
+	end
+
+	return var_33_0
 end
 
 var_0_0.instance = var_0_0.New()

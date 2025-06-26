@@ -54,19 +54,51 @@ function var_0_0._refreshView(arg_7_0)
 
 	ActivityModel.instance:removeFinishedWelfare(var_7_0)
 
+	local var_7_1 = arg_7_0.data and tabletool.copy(arg_7_0.data) or nil
+	local var_7_2 = {}
+
 	arg_7_0.data = {}
 
 	for iter_7_0, iter_7_1 in pairs(var_7_0) do
-		local var_7_1 = {
+		local var_7_3 = {
 			id = iter_7_1,
 			co = ActivityConfig.instance:getActivityCo(iter_7_1),
 			type = ActivityEnum.ActivityType.Welfare
 		}
 
-		table.insert(arg_7_0.data, var_7_1)
+		table.insert(arg_7_0.data, var_7_3)
+
+		var_7_2[iter_7_1] = var_7_3
 	end
 
 	ActivityWelfareListModel.instance:setOpenViewTime()
+
+	local var_7_4 = var_7_1 == nil
+
+	if var_7_1 ~= nil then
+		if #var_7_1 ~= #arg_7_0.data then
+			var_7_4 = true
+		else
+			for iter_7_2, iter_7_3 in ipairs(var_7_1) do
+				if not var_7_2[iter_7_3.id] then
+					var_7_4 = true
+
+					break
+				end
+			end
+		end
+	end
+
+	if not var_7_4 and arg_7_0._viewName then
+		local var_7_5 = ViewMgr.instance:getContainer(arg_7_0._viewName)
+
+		if var_7_5 then
+			ViewMgr.instance:openView(arg_7_0._viewName, var_7_5.viewParam, true)
+
+			return
+		end
+	end
+
 	ActivityWelfareListModel.instance:setCategoryList(arg_7_0.data)
 	arg_7_0:_openSubView()
 end

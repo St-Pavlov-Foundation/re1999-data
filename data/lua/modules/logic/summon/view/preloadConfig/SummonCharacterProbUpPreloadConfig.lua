@@ -13,6 +13,19 @@ function var_0_0.getCharacterItemCountByName(arg_2_0)
 	return var_0_0.characterItemCounts[arg_2_0] or 1
 end
 
+var_0_0.preloadLists.SummonCharacterProbUpVer302 = {
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_role.png",
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_fullbg.png"
+}
+var_0_0.preloadLists.SummonStrongOneCustomPick30 = {
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_3_0/v3a0_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer301 = {
+	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_role.png",
+	"singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer286 = {
 	"singlebg/summon/heroversion_2_0/joe/v2a0_joe_role1.png",
 	"singlebg/summon/heroversion_2_0/joe/full/v2a0_joe_fullbg.png"

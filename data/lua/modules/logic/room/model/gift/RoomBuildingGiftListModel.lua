@@ -5,13 +5,13 @@ local var_0_0 = class("RoomBuildingGiftListModel", ListScrollModel)
 function var_0_0.setMoList(arg_1_0, arg_1_1)
 	arg_1_0._subType = RoomBlockGiftEnum.SubType[2]
 
-	local var_1_0 = RoomBlockBuildingGiftModel.instance:getRoomRareTypeBlocks(arg_1_1, arg_1_0._subType)
+	local var_1_0 = RoomBlockBuildingGiftModel.instance:getBlockIds(arg_1_1, arg_1_0._subType)
 	local var_1_1 = {}
 
 	arg_1_0._themeBuilding = {}
 	arg_1_0._themeIds = {}
 
-	local var_1_2 = RoomBlockBuildingGiftModel.instance:isAllColloctBySubType(arg_1_0._subType)
+	local var_1_2 = RoomBlockBuildingGiftModel.instance:isAllColloctBySubType(arg_1_1, arg_1_0._subType)
 
 	if var_1_0 then
 		for iter_1_0, iter_1_1 in ipairs(var_1_0) do
@@ -29,15 +29,19 @@ function var_0_0.setMoList(arg_1_0, arg_1_1)
 
 			local var_1_4 = RoomConfig.instance:getThemeIdByItem(iter_1_1, arg_1_0._subType)
 
-			if not arg_1_0._themeBuilding[var_1_4] then
-				arg_1_0._themeBuilding[var_1_4] = {}
-			end
+			if var_1_4 then
+				if not arg_1_0._themeBuilding[var_1_4] then
+					arg_1_0._themeBuilding[var_1_4] = {}
+				end
 
-			if not arg_1_0:isHasTheme(var_1_4) then
-				table.insert(arg_1_0._themeIds, var_1_4)
-			end
+				if not arg_1_0:isHasTheme(var_1_4) then
+					table.insert(arg_1_0._themeIds, var_1_4)
+				end
 
-			table.insert(arg_1_0._themeBuilding[var_1_4], var_1_3)
+				table.insert(arg_1_0._themeBuilding[var_1_4], var_1_3)
+			else
+				logError("该建筑没找到主题:" .. iter_1_1)
+			end
 		end
 	end
 

@@ -410,30 +410,37 @@ function var_0_0.getSummonFullExSkillHero(arg_25_0, arg_25_1, arg_25_2)
 
 	for iter_25_0 = 1, #var_25_1 do
 		local var_25_3 = var_25_1[iter_25_0]
-		local var_25_4 = HeroModel.instance:getByHeroId(var_25_3)
+		local var_25_4 = 0
+		local var_25_5 = HeroModel.instance:getByHeroId(var_25_3)
 
-		if var_25_4 and var_25_4.exSkillLevel >= 5 then
-			return var_25_3
-		end
+		if var_25_5 then
+			var_25_4 = var_25_5.exSkillLevel
 
-		local var_25_5 = SkillConfig.instance:getheroexskillco(var_25_3)
-		local var_25_6 = 0
-		local var_25_7
-		local var_25_8
-
-		for iter_25_1 = 1, #var_25_5 do
-			local var_25_9 = var_25_5[iter_25_1]
-
-			if var_25_9 then
-				local var_25_10 = string.splitToNumber(var_25_9.consume, "#")
-
-				var_25_8 = var_25_10[1]
-				var_25_7 = var_25_10[2]
-				var_25_6 = var_25_10[3] + var_25_6
+			if var_25_4 >= 5 then
+				return var_25_3
 			end
 		end
 
-		if var_25_7 and var_25_8 and var_25_6 <= ItemModel.instance:getItemQuantity(var_25_8, var_25_7) then
+		local var_25_6 = SkillConfig.instance:getheroexskillco(var_25_3)
+		local var_25_7 = 0
+		local var_25_8
+		local var_25_9
+
+		for iter_25_1 = 1, #var_25_6 do
+			if var_25_4 < iter_25_1 then
+				local var_25_10 = var_25_6[iter_25_1]
+
+				if var_25_10 then
+					local var_25_11 = string.splitToNumber(var_25_10.consume, "#")
+
+					var_25_9 = var_25_11[1]
+					var_25_8 = var_25_11[2]
+					var_25_7 = var_25_11[3] + var_25_7
+				end
+			end
+		end
+
+		if var_25_8 and var_25_9 and var_25_7 <= ItemModel.instance:getItemQuantity(var_25_9, var_25_8) then
 			return var_25_3
 		end
 	end

@@ -39,6 +39,7 @@ var_0_0.CurrencyType = {
 	KeyCurrency = 2882,
 	V2a6Dungeon = 2601,
 	V2a0Dungeon = 2001,
+	V3a0Dungeon = 3001,
 	Act186 = 2503,
 	RoomCritterTrain = 280001,
 	LvHuEMen = 1201,

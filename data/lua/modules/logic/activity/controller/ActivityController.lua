@@ -102,7 +102,8 @@ local var_0_1 = {
 	ActivityEnum.Activity.V2a7_SelfSelectSix1,
 	ActivityEnum.Activity.V2a7_SelfSelectSix2,
 	ActivityEnum.Activity.V2a8_DragonBoat,
-	ActivityEnum.Activity.V2a8_WuErLiXiGift
+	ActivityEnum.Activity.V2a8_WuErLiXiGift,
+	ActivityEnum.Activity.V3a0_SummerSign
 }
 
 function var_0_0.checkGetActivityInfo(arg_9_0)

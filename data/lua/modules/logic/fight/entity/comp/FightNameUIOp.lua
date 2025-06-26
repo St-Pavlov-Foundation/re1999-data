@@ -88,14 +88,16 @@ function var_0_0.setPlayCardInfo(arg_5_0, arg_5_1)
 	local var_5_0 = FightDataHelper.roundMgr:getRoundData()
 
 	if var_5_0 then
-		if arg_5_1 then
-			local var_5_1 = FightDataHelper.roundMgr:getPreRoundData():getEntityAIUseCardMOList(arg_5_0.entity.id)
+		local var_5_1 = FightDataHelper.roundMgr:getPreRoundData()
 
-			tabletool.addValues(arg_5_0.playCardInfoList, var_5_1)
-		else
-			local var_5_2 = var_5_0:getEntityAIUseCardMOList(arg_5_0.entity.id)
+		if arg_5_1 and var_5_1 then
+			local var_5_2 = var_5_1:getEntityAIUseCardMOList(arg_5_0.entity.id)
 
 			tabletool.addValues(arg_5_0.playCardInfoList, var_5_2)
+		else
+			local var_5_3 = var_5_0:getEntityAIUseCardMOList(arg_5_0.entity.id)
+
+			tabletool.addValues(arg_5_0.playCardInfoList, var_5_3)
 		end
 	end
 end

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 620001,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 1200,
+    "desc": "本周消耗1200细胞活性",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620002,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 1600,
+    "desc": "本周消耗1600细胞活性",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620003,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 2000,
+    "desc": "本周消耗2000细胞活性",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620004,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 2400,
+    "desc": "本周消耗2400细胞活性",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  }
+]

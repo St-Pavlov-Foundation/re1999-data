@@ -1,0 +1,20 @@
+[
+  {
+    "passive_skillid": 11001,
+    "name": "激励",
+    "description": "处于据点中时，该据点士兵生成速度加成20%",
+    "effect": "1001#200"
+  },
+  {
+    "passive_skillid": 11002,
+    "name": "动员",
+    "description": "每次进我方据点时，使该据点士兵增加5",
+    "effect": "1002#5"
+  },
+  {
+    "passive_skillid": 11003,
+    "name": "​​精准狙击",
+    "description": "每3秒射出1颗子弹击杀半径30内1个敌方士兵/据点驻军",
+    "effect": "1003#3000#500#1#750"
+  }
+]

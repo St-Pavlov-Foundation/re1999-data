@@ -3396,6 +3396,9 @@ var_0_0.HeroGroupFightWeekwalkView = tabletool.copy(var_0_0.HeroGroupFightView)
 var_0_0.HeroGroupFightWeekwalkView.container = "HeroGroupFightWeekwalkViewContainer"
 var_0_0.VersionActivity2_8HeroGroupBossView = tabletool.copy(var_0_0.HeroGroupFightView)
 var_0_0.VersionActivity2_8HeroGroupBossView.container = "VersionActivity2_8HeroGroupBossViewContainer"
+var_0_0.HeroGroupFightFiveHeroView = tabletool.copy(var_0_0.HeroGroupFightView)
+var_0_0.HeroGroupFightFiveHeroView.container = "HeroGroupFightFiveHeroViewContainer"
+var_0_0.HeroGroupFightFiveHeroView.mainRes = "ui/viewres/herogroup/herogroupfiveheroview.prefab"
 var_0_0.HeroGroupFightWeekwalk_2View = tabletool.copy(var_0_0.HeroGroupFightView)
 var_0_0.HeroGroupFightWeekwalk_2View.otherRes.weekwalkheart_star = "ui/viewres/weekwalk/weekwalkheart/weekwalkheart_star.prefab"
 var_0_0.HeroGroupFightWeekwalk_2View.container = "HeroGroupFightWeekwalk_2ViewContainer"
@@ -4818,7 +4821,14 @@ var_0_0.RoomFormulaMsgBoxView = {
 	mainRes = "ui/viewres/room/roomformulaviewmsgboxview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
 }
 var_0_0.RoomProductLineLevelUpView = {
 	destroy = 0,
@@ -5235,7 +5245,9 @@ var_0_0.HandbookSkinView = {
 		[5] = HandbookEnum.SkinScene[4],
 		[6] = HandbookEnum.SkinScene[5],
 		[7] = HandbookEnum.SkinScene[6],
-		[8] = HandbookEnum.SkinScene[7]
+		[8] = HandbookEnum.SkinScene[7],
+		[9] = HandbookEnum.SkinScene[8],
+		[10] = HandbookEnum.SkinScene[9]
 	}
 }
 var_0_0.HandbookSkinSuitDetailView = {
@@ -5269,6 +5281,9 @@ var_0_0.HandbookSkinSuitDetailView1_9 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_0 = {
@@ -5284,6 +5299,9 @@ var_0_0.HandbookSkinSuitDetailView2_0 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_3 = {
@@ -5299,6 +5317,9 @@ var_0_0.HandbookSkinSuitDetailView2_3 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_8 = {
@@ -5314,6 +5335,9 @@ var_0_0.HandbookSkinSuitDetailView2_8 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_1 = {
@@ -5331,7 +5355,7 @@ var_0_0.HandbookSkinSuitDetailView2_1 = {
 		}
 	},
 	otherRes = {
-		[1] = "ui/viewres/skinhandbook/handbookskinitem.prefab"
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_2 = {
@@ -5347,6 +5371,9 @@ var_0_0.HandbookSkinSuitDetailView2_2 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.HandbookSkinSuitDetailView2_4 = {
@@ -5362,6 +5389,27 @@ var_0_0.HandbookSkinSuitDetailView2_4 = {
 				NavigateButtonsView.prefabPath
 			}
 		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+var_0_0.HandbookSkinSuitDetailView3_0 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_0Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_0.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
 var_0_0.EquipFilterView = {
@@ -12430,7 +12478,7 @@ var_0_0.ReactivityStoreView = {
 	destroy = 0,
 	container = "ReactivityStoreViewContainer",
 	bgBlur = 1,
-	mainRes = "ui/viewres/versionactivity_2_0/v2a0_dungeon/v2a0_storeview.prefab",
+	mainRes = "ui/viewres/versionactivity_2_1/v2a1_dungeon/v2a1_storeview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	tabRes = {
@@ -12469,7 +12517,7 @@ var_0_0.ReactivityRuleView = {
 var_0_0.ReactivityTaskView = {
 	bgBlur = 3,
 	container = "ReactivityTaskViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_0/v2a0_dungeon/v2a0_taskview.prefab",
+	mainRes = "ui/viewres/versionactivity_2_1/v2a1_dungeon/v2a1_taskview.prefab",
 	destroy = 0,
 	blurFactor = 0.64,
 	layer = "POPUP_TOP",
@@ -21149,6 +21197,79 @@ var_0_0.VersionActivity2_8BossStoryLoadingView = {
 		[1] = "ui/viewres/versionactivity_2_8/v2a8_dungeonboss/v2a8_dungeonbossstorysnow.prefab"
 	}
 }
+var_0_0.VersionActivity3_0EnterView = {
+	destroy = 0,
+	container = "VersionActivity3_0EnterViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_enter/v3a0_enterview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_0/v3a0_enter/v3a0_enterdragitem.prefab"
+	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		},
+		{
+			{
+				"ui/viewres/versionactivity_3_0/v3a0_enter/v3a0_dungeonenterview.prefab"
+			},
+			{
+				"ui/viewres/versionactivity_1_4/v1a4_bossrush/v1a6_bossrush_enterview.prefab"
+			},
+			{
+				"ui/viewres/dungeon/rolestory/rolestoryenterview.prefab"
+			},
+			{
+				"ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_enterview.prefab"
+			},
+			{
+				"ui/viewres/versionactivity_3_0/v3a0_enter/v3a0_karong_enterview.prefab"
+			},
+			{
+				"ui/viewres/versionactivity_3_0/v3a0_enter/v3a0_season_enterview.prefab"
+			},
+			{
+				"ui/viewres/versionactivity_3_0/v3a0_reprint/v3a0_v2a1reprint_enterview.prefab"
+			},
+			{
+				"ui/viewres/activity/show/activityweekwalkdeepshowview.prefab"
+			},
+			{
+				"ui/viewres/tower/towermainentryview.prefab"
+			},
+			{
+				"ui/viewres/activity/show/activiyweekwalkheartshowview.prefab"
+			}
+		}
+	}
+}
+var_0_0.V3a0_SummerSign_PanelView = {
+	destroy = 0,
+	container = "V2a0_SummerSign_PanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a0_summersign_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/v3a0_summersign_signitem.prefab"
+	}
+}
+var_0_0.V3a0_SummerSign_FullView = {
+	destroy = 0,
+	container = "V2a0_SummerSign_FullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/v3a0_summersign_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/v3a0_summersign_signitem.prefab"
+	}
+}
 var_0_0.VersionActivity2_8EnterView = {
 	destroy = 0,
 	container = "VersionActivity2_8EnterViewContainer",
@@ -21505,6 +21626,8 @@ var_0_0.V2a8_WarmUp = {
 
 SurvivalViewDefine.init(var_0_0)
 DecalogPresentViewDefine.init(var_0_0)
+CommandStationViewDefine.init(var_0_0)
+SeasonViewDefine.init(var_0_0)
 
 var_0_0.TurnBackFullView = {
 	destroy = 0,
@@ -21598,6 +21721,161 @@ var_0_0.SkinCouponTipView = {
 	maskAlpha = 0,
 	bgBlur = 2,
 	mainRes = "ui/viewres/versionactivity_2_8/v2a8_activity2nd/v2a8_skin_getpanelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.Activity201MaLiAnNaLevelView = {
+	destroy = 0,
+	container = "Activity201MaLiAnNaLevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_levelviewstageitem.prefab"
+	}
+}
+var_0_0.Activity201MaLiAnNaTaskView = {
+	destroy = 0,
+	container = "Activity201MaLiAnNaTaskViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		"ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_taskitem.prefab"
+	}
+}
+var_0_0.Activity201MaLiAnNaGameView = {
+	destroy = 0,
+	container = "Activity201MaLiAnNaGameViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_gameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		"ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_slotitem.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_skillitem.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_malianna/malianna_solider_item.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_malianna/malianna_hero_item.prefab"
+	}
+}
+var_0_0.MaLiAnNaNoticeView = {
+	destroy = 0,
+	container = "MaLiAnNaNoticeViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_noticeview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.MaLiAnNaResultView = {
+	destroy = 0,
+	container = "MaLiAnNaResultViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_dungeonresultview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.Activity201MaLiAnNaGameMainView = {
+	destroy = 0,
+	container = "Activity201MaLiAnNaGameMainViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_malianna/v3a0_malianna_loadingpage.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default
+}
+var_0_0.KaRongLevelView = {
+	destroy = 0,
+	container = "KaRongLevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_karong/v3a0_karong_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_0/v3a0_karong/v3a0_karong_levelitem.prefab"
+	}
+}
+var_0_0.KaRongTaskView = {
+	bgBlur = 0,
+	container = "KaRongTaskViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_karong/v3a0_karong_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_0/v3a0_karong/v3a0_karong_taskitem.prefab"
+	}
+}
+var_0_0.KaRongDrawView = {
+	destroy = 0,
+	container = "KaRongDrawViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_karong/maze/v3a0_puzzlemazedrawview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		"ui/viewres/versionactivity_3_0/v3a0_karong/maze/v3a0_puzzlemazeitem.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_karong/maze/v3a0_puzzlemazepath.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_karong/maze/v3a0_puzzlemazepawn.prefab",
+		"ui/viewres/versionactivity_3_0/v3a0_karong/maze/v3a0_puzzlemazeblockitem.prefab"
+	}
+}
+var_0_0.KaRongRoleTagView = {
+	destroy = 0,
+	container = "KaRongRoleTagViewContainer",
+	maskAlpha = 0,
+	bgBlur = 0,
+	mainRes = "ui/viewres/versionactivity_3_0/v3a0_karong/v3a0_karong_roletagview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
+}
+var_0_0.V3a0_WarmUp = {
+	destroy = 0,
+	container = "V3a0_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/v3a0_warmup/v3a0_warmup.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default

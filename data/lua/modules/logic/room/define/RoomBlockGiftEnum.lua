@@ -9,6 +9,7 @@ var_0_0.SubType = {
 var_0_0.SubTypeInfo = {
 	[MaterialEnum.MaterialType.BlockPackage] = {
 		NumSortTxt = "p_roomblockpackageview_filtrate",
+		SubType = 1,
 		ListModel = RoomBlockGiftListModel,
 		AllColloctToast = ToastEnum.RoomBlockAllCollectBlock,
 		CellSize = {
@@ -22,6 +23,7 @@ var_0_0.SubTypeInfo = {
 	},
 	[MaterialEnum.MaterialType.Building] = {
 		NumSortTxt = "roombuildinggift_placingrange",
+		SubType = 2,
 		ListModel = RoomBuildingGiftListModel,
 		AllColloctToast = ToastEnum.RoomBlockAllCollectBuilding,
 		CellSize = {

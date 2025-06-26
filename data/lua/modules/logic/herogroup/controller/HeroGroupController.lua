@@ -115,6 +115,10 @@ function var_0_0._getGroupFightViewName(arg_8_0, arg_8_1)
 		}
 	end
 
+	if DungeonController.checkEpisodeFiveHero(arg_8_1) then
+		return ViewName.HeroGroupFightFiveHeroView
+	end
+
 	local var_8_0 = DungeonConfig.instance:getEpisodeCO(arg_8_1)
 	local var_8_1 = var_8_0 and DungeonConfig.instance:getChapterCO(var_8_0.chapterId)
 

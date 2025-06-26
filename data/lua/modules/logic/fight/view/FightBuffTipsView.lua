@@ -123,6 +123,7 @@ var_0_0.filterTypeKey = {
 local var_0_1 = 635
 local var_0_2 = 597
 local var_0_3 = 300
+local var_0_4 = 141
 
 function var_0_0.updateBuffDesc(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4, arg_10_5)
 	local var_10_0 = arg_10_1 and arg_10_1:getBuffList() or {}
@@ -154,125 +155,123 @@ function var_0_0.updateBuffDesc(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4
 
 		if var_10_9 and var_10_9.isNoShow == 0 then
 			local var_10_10 = lua_skill_bufftype.configDict[var_10_9.typeId]
+			local var_10_11 = lua_skill_buff_desc.configDict[var_10_10.type]
 
 			var_10_4 = var_10_4 + 1
 
-			local var_10_11 = arg_10_2[var_10_4]
+			local var_10_12 = arg_10_2[var_10_4]
 
-			if not var_10_11 then
-				var_10_11 = arg_10_4:getUserDataTb_()
-				var_10_11.go = gohelper.cloneInPlace(arg_10_3, "buff" .. var_10_4)
-				var_10_11.getAnchorFunc = arg_10_5
-				var_10_11.viewClass = arg_10_4
+			if not var_10_12 then
+				var_10_12 = arg_10_4:getUserDataTb_()
+				var_10_12.go = gohelper.cloneInPlace(arg_10_3, "buff" .. var_10_4)
+				var_10_12.getAnchorFunc = arg_10_5
+				var_10_12.viewClass = arg_10_4
 
-				table.insert(arg_10_2, var_10_11)
+				table.insert(arg_10_2, var_10_12)
 			end
 
-			local var_10_12 = var_10_11.go
+			local var_10_13 = var_10_12.go
 
-			gohelper.setActive(var_10_12, true)
+			lastIndex = #arg_10_2
 
-			local var_10_13 = gohelper.findChildText(var_10_12, "title/txt_time")
+			local var_10_14 = gohelper.findChildText(var_10_13, "title/txt_time")
+			local var_10_15 = gohelper.findChildText(var_10_13, "txt_desc")
 
-			var_0_0.showBuffTime(var_10_13, var_10_8, var_10_9, arg_10_1)
+			SkillHelper.addHyperLinkClick(var_10_15, var_0_0.onClickBuffHyperLink, var_10_12)
 
-			local var_10_14 = gohelper.findChildText(var_10_12, "txt_desc")
+			local var_10_16 = var_10_15.transform
+			local var_10_17 = gohelper.findChild(var_10_13, "title").transform
+			local var_10_18 = gohelper.findChildText(var_10_13, "title/txt_name")
+			local var_10_19 = gohelper.findChildImage(var_10_13, "title/simage_icon")
+			local var_10_20 = gohelper.findChild(var_10_13, "txt_desc/image_line")
+			local var_10_21 = gohelper.findChild(var_10_13, "title/txt_name/go_tag")
+			local var_10_22 = gohelper.findChildText(var_10_13, "title/txt_name/go_tag/bg/txt_tagname")
+			local var_10_23 = var_10_13.transform
 
-			SkillHelper.addHyperLinkClick(var_10_14, var_0_0.onClickBuffHyperLink, var_10_11)
+			gohelper.setActive(var_10_13, true)
+			gohelper.setActive(var_10_20, var_10_4 ~= var_10_3)
 
-			local var_10_15 = gohelper.findChildText(var_10_12, "title/txt_name")
+			var_10_7[#var_10_7 + 1] = var_10_16
+			var_10_7[#var_10_7 + 1] = var_10_17
+			var_10_7[#var_10_7 + 1] = var_10_23
+			var_10_7[#var_10_7 + 1] = var_10_15
+			var_10_7[#var_10_7 + 1] = var_10_8
 
-			var_10_15.text = var_10_9.name
+			var_0_0.showBuffTime(var_10_14, var_10_8, var_10_9, arg_10_1)
 
-			local var_10_16 = var_10_15.preferredWidth
-			local var_10_17 = FightBuffGetDescHelper.getBuffDesc(var_10_8)
-			local var_10_18 = GameUtil.getTextHeightByLine(var_10_14, var_10_17, 52.1) + 62
+			var_10_18.text = var_10_9.name
 
-			recthelper.setHeight(var_10_12.transform, var_10_18)
-
-			var_10_14.text = var_10_17
-
-			local var_10_19 = gohelper.findChildImage(var_10_12, "title/simage_icon")
+			local var_10_24 = var_10_18.preferredWidth
 
 			if var_10_19 then
 				UISpriteSetMgr.instance:setBuffSprite(var_10_19, var_10_9.iconId)
 			end
 
-			local var_10_20 = gohelper.findChild(var_10_12, "title/txt_name/go_tag")
-			local var_10_21 = gohelper.findChildText(var_10_12, "title/txt_name/go_tag/bg/txt_tagname")
-			local var_10_22 = lua_skill_buff_desc.configDict[var_10_10.type]
-
-			if var_10_22 then
-				var_10_21.text = var_10_22.name
-				var_10_16 = var_10_16 + var_10_21.preferredWidth
+			if var_10_11 then
+				var_10_22.text = var_10_11.name
+				var_10_24 = var_10_24 + var_10_22.preferredWidth
 			end
 
-			gohelper.setActive(var_10_20, var_10_22)
+			local var_10_25 = var_10_14.preferredWidth
 
-			arg_10_4._scrollbuff.verticalNormalizedPosition = 1
+			if var_10_25 > var_0_4 then
+				var_10_24 = var_10_24 + math.max(0, var_10_25 - var_0_4)
+			end
 
-			local var_10_23 = var_10_14.transform
-			local var_10_24 = gohelper.findChild(var_10_12, "title").transform
-			local var_10_25 = var_10_12.transform
-
-			var_10_7[#var_10_7 + 1] = var_10_23
-			var_10_7[#var_10_7 + 1] = var_10_24
-			var_10_7[#var_10_7 + 1] = var_10_25
-			var_10_7[#var_10_7 + 1] = var_10_14
-			var_10_7[#var_10_7 + 1] = var_10_8
-
-			if var_10_16 > var_0_3 then
-				local var_10_26 = var_10_16 - var_0_3
+			if var_10_24 > var_0_3 then
+				local var_10_26 = var_10_24 - var_0_3
 				local var_10_27 = var_0_2 + var_10_26
 
 				var_10_5 = math.max(var_10_5, var_10_27)
 				var_10_6 = math.max(var_10_6, var_10_27)
 			end
+
+			gohelper.setActive(var_10_21, var_10_11)
 		end
 	end
-
-	for iter_10_3 = 1, var_10_4 do
-		local var_10_28 = arg_10_2[iter_10_3]
-
-		if var_10_28 then
-			local var_10_29 = gohelper.findChild(var_10_28.go, "txt_desc/image_line")
-
-			gohelper.setActive(var_10_29, iter_10_3 ~= var_10_4)
-		end
-	end
-
-	recthelper.setWidth(arg_10_0.rectTrScrollBuff, var_10_6)
-	recthelper.setWidth(arg_10_0.rectTrBuffContent, var_10_6)
 
 	if #var_10_7 > 0 then
-		for iter_10_4 = 0, #var_10_7 - 1, 5 do
-			local var_10_30 = var_10_7[iter_10_4 + 1]
-			local var_10_31 = var_10_7[iter_10_4 + 2]
-			local var_10_32 = var_10_7[iter_10_4 + 3]
-			local var_10_33 = var_10_7[iter_10_4 + 4]
-			local var_10_34 = var_10_7[iter_10_4 + 5]
+		for iter_10_3 = 0, #var_10_7 - 1, 5 do
+			local var_10_28 = var_10_7[iter_10_3 + 1]
+			local var_10_29 = var_10_7[iter_10_3 + 2]
+			local var_10_30 = var_10_7[iter_10_3 + 3]
+			local var_10_31 = var_10_7[iter_10_3 + 4]
+			local var_10_32 = var_10_7[iter_10_3 + 5]
+			local var_10_33 = var_10_32.buffId
+			local var_10_34 = lua_skill_buff.configDict[var_10_33]
 
-			recthelper.setWidth(var_10_31, var_10_6 - 10)
-			recthelper.setWidth(var_10_30, var_10_6 - 46)
-			ZProj.UGUIHelper.RebuildLayout(var_10_32)
-			recthelper.setWidth(var_10_32, var_10_6)
+			recthelper.setWidth(var_10_29, var_10_6 - 10)
+			recthelper.setWidth(var_10_28, var_10_6 - 46)
+			ZProj.UGUIHelper.RebuildLayout(var_10_30)
+			recthelper.setWidth(var_10_30, var_10_6)
 
-			var_10_33.text = FightBuffGetDescHelper.getBuffDesc(var_10_34)
-			var_10_33.text = var_10_33.text
+			var_10_31.text = FightBuffGetDescHelper.getBuffDesc(var_10_32)
+			var_10_31.text = var_10_31.text
 
-			local var_10_35 = var_10_33.preferredHeight + 52.1 + 10
+			local var_10_35 = var_10_31.preferredHeight + 52.1 + 10
 
-			recthelper.setHeight(var_10_32, var_10_35)
+			recthelper.setHeight(var_10_30, var_10_35)
 		end
 	end
 
-	for iter_10_5 in pairs(var_10_7) do
-		rawset(var_10_7, iter_10_5, nil)
+	for iter_10_4 in pairs(var_10_7) do
+		rawset(var_10_7, iter_10_4, nil)
 	end
 
 	local var_10_36
 
-	ZProj.UGUIHelper.RebuildLayout(arg_10_0.rectTrBuffContent)
+	if lastIndex ~= -1 then
+		local var_10_37 = arg_10_2[lastIndex].go
+		local var_10_38 = gohelper.findChild(var_10_37, "txt_desc/image_line")
+
+		gohelper.setActive(var_10_38, false)
+	end
+
+	if arg_10_4 then
+		arg_10_4._scrollbuff.verticalNormalizedPosition = 1
+
+		recthelper.setWidth(arg_10_4._scrollbuff.transform, var_10_5)
+	end
 end
 
 function var_0_0.onClickBuffHyperLink(arg_12_0, arg_12_1, arg_12_2)

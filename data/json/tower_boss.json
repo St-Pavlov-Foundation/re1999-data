@@ -28,5 +28,11 @@
     "bossId": 5,
     "name": "原始欢乐",
     "nameEn": "Primitive Urge"
+  },
+  {
+    "towerId": 6,
+    "bossId": 6,
+    "name": "新世代宣告者",
+    "nameEn": "Harbinger of the New Era"
   }
 ]

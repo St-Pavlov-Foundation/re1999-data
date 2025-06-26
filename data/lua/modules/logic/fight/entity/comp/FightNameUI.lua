@@ -10,6 +10,7 @@ function var_0_0.ctor(arg_1_0, arg_1_1)
 	arg_1_0._opCtrl = FightNameUIOp.New(arg_1_0)
 	arg_1_0.buffMgr = FightNameUIBuffMgr.New()
 	arg_1_0._power = FightNameUIPower.New(arg_1_0, 1)
+	arg_1_0._hpKillLineComp = FightHpKillLineComp.New(FightHpKillLineComp.KillLineType.NameUiHp)
 
 	if FightDataHelper.fieldMgr:isDouQuQu() then
 		arg_1_0._enemyOperation = FightNameUIEnemyOperation.New(arg_1_0)
@@ -168,6 +169,7 @@ function var_0_0._onLoaded(arg_16_0)
 	gohelper.setActive(var_16_1.gameObject, var_16_0)
 	gohelper.setActive(var_16_2.gameObject, not var_16_0)
 
+	arg_16_0._hpGo = gohelper.findChild(arg_16_0._uiGO, "layout/top/hp")
 	arg_16_0._hp_ani = gohelper.findChild(arg_16_0._uiGO, "layout/top/hp"):GetComponent(typeof(UnityEngine.Animator))
 	arg_16_0._hp_container_tran = gohelper.findChild(arg_16_0._uiGO, "layout/top/hp/container").transform
 	arg_16_0._imgHp = var_16_0 and var_16_1 or var_16_2
@@ -183,6 +185,7 @@ function var_0_0._onLoaded(arg_16_0)
 
 	arg_16_0:initExPointMgr()
 	arg_16_0:initStressMgr()
+	arg_16_0._hpKillLineComp:init(arg_16_0.entity.id, arg_16_0._hpGo)
 
 	arg_16_0._opContainerGO = gohelper.findChild(arg_16_0._uiGO, "layout/top/op")
 	arg_16_0._opContainerCanvasGroup = gohelper.onceAddComponent(arg_16_0._opContainerGO, typeof(UnityEngine.CanvasGroup))
@@ -344,6 +347,7 @@ function var_0_0.beforeDestroy(arg_23_0)
 
 	arg_23_0._opCtrl:beforeDestroy()
 	arg_23_0.buffMgr:beforeDestroy()
+	arg_23_0._hpKillLineComp:beforeDestroy()
 	CameraMgr.instance:getCameraTrace():RemoveChangeActor(arg_23_0._uiFollower)
 	FightFloatMgr.instance:nameUIBeforeDestroy(arg_23_0._floatContainerGO)
 	arg_23_0:removeEventCb(FightController.instance, FightEvent.OnSpineLoaded, arg_23_0._updateFollow, arg_23_0)

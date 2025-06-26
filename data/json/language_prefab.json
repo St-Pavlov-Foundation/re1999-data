@@ -6309,11 +6309,11 @@
   },
   {
     "id": "p_vahelpcontentitem_season3_2",
-    "lang": "随机出现多场贩售时，每次可选择1个进行参与"
+    "lang": "出现多场贩售时，每次可选择1个进行参与"
   },
   {
     "id": "p_vahelpcontentitem_season3_3",
-    "lang": "当UTTU超级市场<#FF906A>阅读章节提升</color>，UTTU零售的<#FF906A>数量、难度、奖励随之提升</color>"
+    "lang": "<#FF906A>难度、奖励</color>由参与的贩售决定"
   },
   {
     "id": "p_vahelpcontentitem_season3_4",
@@ -6365,7 +6365,7 @@
   },
   {
     "id": "p_vahelpcontentitem_season6_3",
-    "lang": "特贩周收录的文章将限时<#FF906A>全部开放</color>\n<#FF906A>成就</color>也增加了特贩周相关条目"
+    "lang": "特贩周收录的文章将限时<#FF906A>逐步开放</color>\n<#FF906A>成就</color>也增加了特贩周相关条目"
   },
   {
     "id": "p_vahelpcontentitem_season6_4",
@@ -6461,7 +6461,7 @@
   },
   {
     "id": "p_seasonretailview_rule2",
-    "lang": "翻阅章节越多，高品质名人卡获取概率越高"
+    "lang": "参与贩售，可获取不同类型的名人卡"
   },
   {
     "id": "p_seasonretailview_search",
@@ -18929,7 +18929,7 @@
   },
   {
     "id": "p_v2a7_tower_help_8_txt_1",
-    "lang": "木魅山鬼"
+    "lang": "木魁山鬼"
   },
   {
     "id": "p_v2a7_tower_help_8_txt_2",
@@ -18945,7 +18945,7 @@
   },
   {
     "id": "p_v2a7_tower_help_8_txt_5",
-    "lang": "木魅山鬼的主动咒语可提升队伍的咒语阶次，释放高阶咒语时有概率额外释放"
+    "lang": "木魁山鬼的主动咒语可提升队伍的咒语阶次，释放高阶咒语时有概率额外释放"
   },
   {
     "id": "p_v2a7_tower_help_9_txt_1",
@@ -18977,11 +18977,11 @@
   },
   {
     "id": "p_v2a7_tower_help_10_txt_3",
-    "lang": "木魅山鬼释放至终的仪式时，主目标获得1回合【石化】"
+    "lang": "木魁山鬼释放至终的仪式时，主目标获得1回合【石化】"
   },
   {
     "id": "p_v2a7_tower_help_10_txt_4",
-    "lang": "木魅山鬼的蓝图效果可强化主动咒语，赋予主目标石化，可以频繁控制敌人并驱散敌方反制状态！"
+    "lang": "木魁山鬼的蓝图效果可强化主动咒语，赋予主目标石化，可以频繁控制敌人并驱散敌方反制状态！"
   },
   {
     "id": "p_v2a7_tower_help_11_txt_1",
@@ -19109,7 +19109,7 @@
   },
   {
     "id": "p_v2a7_tower_help_17_txt_1",
-    "lang": "星体灾厄"
+    "lang": "星体灾兆"
   },
   {
     "id": "p_v2a7_tower_help_17_txt_2",
@@ -19133,7 +19133,7 @@
   },
   {
     "id": "p_v2a7_tower_help_17_txt_7",
-    "lang": "星体灾厄的主动咒语会根据消耗的能量提升伤害，己方星系角色额外行动和暴击可以加速获得能量"
+    "lang": "星体灾兆的主动咒语会根据消耗的能量提升伤害，己方星系角色额外行动和暴击可以加速获得能量"
   },
   {
     "id": "p_v2a7_tower_help_18_txt_1",
@@ -19169,7 +19169,7 @@
   },
   {
     "id": "p_v2a7_tower_help_19_txt_4",
-    "lang": "星体灾厄的主动咒语会根据消耗的能量提升伤害，己方星系角色消耗灵光时会加速能量获取"
+    "lang": "星体灾兆的主动咒语会根据消耗的能量提升伤害，己方星系角色消耗灵光时会加速能量获取"
   },
   {
     "id": "p_v2a7_tower_help_20_txt_1",
@@ -19817,7 +19817,7 @@
   },
   {
     "id": "p_normalstoreview_txt_sort",
-    "lang": "已有角色"
+    "lang": "推荐心相"
   },
   {
     "id": "p_survivalpartnermanageinfoview_txt_build",
@@ -20646,5 +20646,409 @@
   {
     "id": "p_v2a8_warmup_txt_tips",
     "lang": "翻开书包取出书信"
+  },
+  {
+    "id": "p_commandstation_dungeonmapenteritem_txt_map",
+    "lang": "沙盘解构"
+  },
+  {
+    "id": "p_commandstation_dispatcheventnormalview_txt_Dispatch",
+    "lang": "派遣调查"
+  },
+  {
+    "id": "p_commandstation_dispatcheventnormalview_txt_HaveDispatch",
+    "lang": "已派遣"
+  },
+  {
+    "id": "p_commandstation_taskview_txt_tips1",
+    "lang": "完成任务获得"
+  },
+  {
+    "id": "p_commandstation_taskview_txt_tips2",
+    "lang": "<#DC6638>槲寄生专属狂想解锁券</color>和<#DC6638>材料包</color>"
+  },
+  {
+    "id": "p_commandstation_taskview_txt_normalTask",
+    "lang": "解构进程"
+  },
+  {
+    "id": "p_commandstation_taskview_txt_catchTask",
+    "lang": "遗落事项"
+  },
+  {
+    "id": "p_v3a0_malianna_levelview_txt_Endless",
+    "lang": "<color=#D54A4A>战场</color>的回声"
+  },
+  {
+    "id": "p_v3a0_malianna_noticeview_txt_Descr",
+    "lang": "从上次寄出明信片到现在，不知家里的玉兰是否已经落完。前线初秋的夜晚格外冷，泥土混着硝烟的味道直钻衣领，即便如此，我还是想着春天院子里那点淡淡花香。战壕里的日子像一条长不见头尾的土路，偶尔一道炮声把路面炸出新坑，我们再用木板和麻袋去补。鞋子总是湿的，脚背发白，医官说只要还感觉得到痛就算好消息。\n\n弟弟如果还在帮邻居推磨，就告诉他别逞强；空闲时多把练习簿拿给先生检查，别学我年少时粗心。信封里夹了半张法郎兑换券，是上个月的津贴，买点米面给妹妹补身子。假若家里有多余的线与扣子，能否寄些过来？战壕里的针线包早已借来借去，只剩几根弯针。"
+  },
+  {
+    "id": "p_v3a0_malianna_noticeview_txt_Close",
+    "lang": "点击继续"
+  },
+  {
+    "id": "p_v3a0_malianna_noticeview_txt_Start",
+    "lang": "作战开始"
+  },
+  {
+    "id": "p_v3a0_karong_roletagview_txt_Name",
+    "lang": "姓名："
+  },
+  {
+    "id": "p_v3a0_karong_roletagview_txt_Num",
+    "lang": "部队番号："
+  },
+  {
+    "id": "p_v3a0_karong_roletagview_txt_Date",
+    "lang": "入伍日期："
+  },
+  {
+    "id": "p_v3a0_karong_roletagview_txt_Blood",
+    "lang": "血型："
+  },
+  {
+    "id": "p_v3a0_karong_roletagview_txt_Descr",
+    "lang": "狗牌（军用身份牌）起源于19世纪中叶，普鲁士军队首次配发金属身份牌以便识别伤亡士兵。"
+  },
+  {
+    "id": "p_v3a0_puzzlemazedrawview_txt_Target",
+    "lang": "目标：到达目的地"
+  },
+  {
+    "id": "p_v3a0_puzzlemazedrawview_txt_Tips",
+    "lang": "选择要熄灭的硝烟"
+  },
+  {
+    "id": "p_v3a0_puzzlemazedrawview_txt_Skill",
+    "lang": "熄灭"
+  },
+  {
+    "id": "p_v3a0_dungeonenterview_txt_Board",
+    "lang": "函电汇报"
+  },
+  {
+    "id": "p_commandstation_paperview_txt_task",
+    "lang": "寻找卷轴"
+  },
+  {
+    "id": "p_commandstation_paperview_txt_Schedule",
+    "lang": "收集进度"
+  },
+  {
+    "id": "p_commandstation_paperview_txt_Compose",
+    "lang": "刻录"
+  },
+  {
+    "id": "p_commandstation_paperview_txt_Done",
+    "lang": "已刻录"
+  },
+  {
+    "id": "p_commandstation_charactereventview_txt_TimeLine",
+    "lang": "时间线"
+  },
+  {
+    "id": "p_commandstation_getdiskview_txt_Get",
+    "lang": "获得光盘"
+  },
+  {
+    "id": "p_commandstation_timedetailpanel_txt_Role",
+    "lang": "人物"
+  },
+  {
+    "id": "p_commandstation_timedetailpanel_txt_Title",
+    "lang": "时间点详情"
+  },
+  {
+    "id": "p_common_txt_oncecombine",
+    "lang": "可一键合成材料提升"
+  },
+  {
+    "id": "p_mainview_txt_copost",
+    "lang": "前线观察室"
+  },
+  {
+    "id": "p_commandstation_enterview_txt_map",
+    "lang": "沙盘解构"
+  },
+  {
+    "id": "p_commandstation_enterview_txt_task",
+    "lang": "函电汇报"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview_txt_shopnamecn1",
+    "lang": "功勋的赠礼"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview_txt_shopnamecn2",
+    "lang": "和平的收获"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview_txt_shopnamecn3",
+    "lang": "抗争的收获"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview2_txt_shopnamecn1",
+    "lang": "战友的赠礼"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview2_txt_shopnamecn2",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview2_txt_shopnamecn3",
+    "lang": "功勋的赠礼"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview3_txt_shopnamecn1",
+    "lang": "银河一餐"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview3_txt_shopnamecn2",
+    "lang": "仲夏特惠"
+  },
+  {
+    "id": "p_v3a0_giftrecommendview3_txt_shopnamecn3",
+    "lang": "仲夏酬宾"
+  },
+  {
+    "id": "p_v3a0_malianna_dungeonresultview_txt_fail",
+    "lang": "作战失败"
+  },
+  {
+    "id": "p_v3a0_malianna_dungeonresultview_txt_success",
+    "lang": "作战成功"
+  },
+  {
+    "id": "p_v3a0_malianna_gameview_txt_Self",
+    "lang": "英雄优先"
+  },
+  {
+    "id": "p_v3a0_malianna_gameview_txt_Enemy",
+    "lang": "士兵优先"
+  },
+  {
+    "id": "p_commandstation_enterview_txt_name",
+    "lang": "无线电小姐"
+  },
+  {
+    "id": "p_v3a0_warmup_txt_goto",
+    "lang": "资讯合集"
+  },
+  {
+    "id": "p_v3a0_warmup_txt_Reward",
+    "lang": "探寻后领取"
+  },
+  {
+    "id": "p_v3a0_warmup_txt_WrongChannel",
+    "lang": "划开帷幕，探寻那些被时间隐藏的往事……"
+  },
+  {
+    "id": "p_v3a0_warmup_txt_tips",
+    "lang": "挥动袖剑，划开帷幕"
+  },
+  {
+    "id": "p_v3a0_season_enterview_txt_Title",
+    "lang": "残垣新说"
+  },
+  {
+    "id": "p_v3a0_season_enterview_txt_dec1",
+    "lang": "过去这片土地繁华无比。"
+  },
+  {
+    "id": "p_v3a0_season_enterview_txt_dec2",
+    "lang": "未来这片土地繁华无比。"
+  },
+  {
+    "id": "p_v3a0_season_enterview_txt_dec3",
+    "lang": "那为何偏偏现在如此凋敝？"
+  },
+  {
+    "id": "p_normalstoreview_txt_tips",
+    "lang": "按已有角色的推荐心相进行排序"
+  },
+  {
+    "id": "p_v3a0_season_help_1_txt_1",
+    "lang": "UTTU闪烁集会路线图"
+  },
+  {
+    "id": "p_v3a0_season_help_1_txt_2",
+    "lang": "UTTU闪烁集会——由UTTU杂志社定期举办的群体性阅读活动，逐渐流行于年轻一代的神秘学家群体"
+  },
+  {
+    "id": "p_v3a0_season_help_1_txt_3",
+    "lang": "<#FF906A><size=36>【UTTU超级市场】</color></size>——闪烁集会的中心，为耐心的读者带来<#FF906A>衣着、头像</color>等丰厚嘉奖"
+  },
+  {
+    "id": "p_v3a0_season_help_1_txt_4",
+    "lang": "战地生命线"
+  },
+  {
+    "id": "p_season123mainview_txt_storybtn",
+    "lang": "闪烁集会"
+  },
+  {
+    "id": "p_v3a0_storeblockpackageview_dec",
+    "lang": "*集齐当期<color=#D99157>活动兑换</color>及<color=#D99157>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_v3a0_storeblockpackageview_name",
+    "lang": "「巨人风车」"
+  },
+  {
+    "id": "p_v2a7_tower_help_24_txt_1",
+    "lang": "新世代宣告者"
+  },
+  {
+    "id": "p_v2a7_tower_help_24_txt_2",
+    "lang": "电能强化"
+  },
+  {
+    "id": "p_v2a7_tower_help_24_txt_3",
+    "lang": "电磁兼容"
+  },
+  {
+    "id": "p_v2a7_tower_help_24_txt_4",
+    "lang": "获得的【原生亲和】替换为【电磁亲和】：额外获得术法威力提升"
+  },
+  {
+    "id": "p_v2a7_tower_help_24_txt_5",
+    "lang": "新世代宣告者释放至终的仪式时，若消耗更多<#E99B56>【原生能量】</color>,将净化己方全体负面状态，并赋予提升术法威力和仪式威力的增益状态"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_1",
+    "lang": "木呆呆教官"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_2",
+    "lang": "洞悉三1级"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_3",
+    "lang": "形貌近似神话野兽的造物。\n千万岁月之中，火光与炊烟里的人们终获了火种，从此筑造了它的祠殿。\n万千岁月之后，纵使燃尽，它的余热依然温暖人心。"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_4",
+    "lang": "指导·电能净化"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_5",
+    "lang": "进入战斗时，使敌方全体造成伤害降低<#B04D21>100%</color>，持续5回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_25_txt_6",
+    "lang": "所有教官都有其弱点，虽然入场会赋予强力弱化状态，但<#E99B56>可以通过驱散效果消除此状态！</color>"
+  },
+  {
+    "id": "p_v2a7_tower_help_26_txt_1",
+    "lang": "行动强化"
+  },
+  {
+    "id": "p_v2a7_tower_help_26_txt_2",
+    "lang": "仪式余波"
+  },
+  {
+    "id": "p_v2a7_tower_help_26_txt_3",
+    "lang": "新时代宣告者释放至终的仪式时，若消耗3点及以上【自然能量】，下回合己方行动点+1"
+  },
+  {
+    "id": "p_v2a7_tower_help_26_txt_4",
+    "lang": "新世代宣告者释放至终的仪式时，若消耗更多<#E99B56>【自然能量】</color>，将驱散敌方全体正面状态，并赋予暴击防御降低的异常状态"
+  },
+  {
+    "id": "p_v2a7_tower_help_27_txt_1",
+    "lang": "指导·行动驱散"
+  },
+  {
+    "id": "p_v2a7_tower_help_27_txt_2",
+    "lang": "进入战斗时，使己方全体受到伤害降低<#B04D21>100%</color>，持续5回合"
+  },
+  {
+    "id": "p_v2a7_tower_help_27_txt_3",
+    "lang": "所有教官都有其弱点，虽然入场会赋予自身强力减伤状态，但<#E99B56>可以通过净化效果消除此状态！</color>"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_1_txt_1",
+    "lang": "沙盘解构：通关《故事的根须》系列中主线章节后，章节中故事发生的时间点将会被记录至沙盘中。通过沙盘可以查看已记录的时间与地点中所发生过的事件，也能了解对应人物在事件中的行动轨迹。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_1_txt_2",
+    "lang": "函电汇报：在《故事的根须》系列故事结束为止，每个版本都将在这里更新「解构进程」任务，完成任务可获得“密函卷轴”。随着收集的卷轴数量增加，可以获得更多奖励。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_2_txt_1",
+    "lang": "「解构进程」任务会跟随版本更新，请注意在版本结束前完成任务。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_2_txt_2",
+    "lang": "之前版本中未完成的任务，则会在下一个版本中转化为「遗落事项」任务。该类任务会每周更新，直至收集齐对应版本中所有遗漏的“密函卷轴”。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_3_txt_1",
+    "lang": "点击转轴筛选按钮，可以切换不同版本主线故事中已记录的时间点，或是切换到行迹汇编，以显示目前为止所有已记录的主线时间点。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_3_txt_2",
+    "lang": "沙盘会记录在《故事的根须》系列故事中已通关主线章节的时间点。可以通过切换时间点，来改变沙盘上展示的事件。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_3_txt_3",
+    "lang": "某些事件会发生在沙盘之外的地点。这类事件会显示在罗盘上。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_1",
+    "lang": "沙盘事件一共有节点、见闻、遭遇、派遣四种类型。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_2",
+    "lang": "节点：记录了时间点上发生的重要事件。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_3",
+    "lang": "遭遇：记录了一些发生在该时间点上的，偶然发生的事件或获得的情报。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_4",
+    "lang": "见闻：记录了一些发生在该时间点上的，某些人物的对话内容。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_5",
+    "lang": "派遣：推进相应的派遣任务，从执行任务的角色口中获知的信息。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_6",
+    "lang": "在前线动向中，沙盘会展示故事中人物的动向与发生的事件。"
+  },
+  {
+    "id": "p_v3a0_commandstation_help_4_txt_7",
+    "lang": "人物：以特定人物为视角核心的事件类型，会存在独立的人物动线。"
+  },
+  {
+    "id": "p_v3a0_malianna_gameview_txt_pauseTips",
+    "lang": "暂停中，点击任意位置继续"
+  },
+  {
+    "id": "p_v3a0_malianna_slotitem_txt_name_my",
+    "lang": "防守目标"
+  },
+  {
+    "id": "p_v3a0_malianna_slotitem_txt_name_enemy",
+    "lang": "进攻目标"
+  },
+  {
+    "id": "p_v3a0_storeroleskinview_roletxt1",
+    "lang": "明日的春风"
+  },
+  {
+    "id": "p_v3a0_storeroleskinview_roletxt2",
+    "lang": "野嗥"
+  },
+  {
+    "id": "p_v3a0_storeroleskinview_rolename1",
+    "lang": "纸信圈儿"
+  },
+  {
+    "id": "p_v3a0_storeroleskinview_rolename2",
+    "lang": "J"
   }
 ]

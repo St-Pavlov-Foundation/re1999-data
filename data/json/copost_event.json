@@ -1,0 +1,1345 @@
+[
+  {
+    "id": 10000,
+    "eventType": 1,
+    "eventCoordinate": [
+      13.45,
+      -5.9
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10000",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10001,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.85,
+      -6.4
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10001",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10002,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.85,
+      -6.4
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10002",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10003,
+    "eventType": 1,
+    "eventCoordinate": [
+      11.6,
+      -6.7
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10003",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10004,
+    "eventType": 1,
+    "eventCoordinate": [
+      11,
+      -7.32
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10004",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10005,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.85,
+      -6.4
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10005",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10006,
+    "eventType": 1,
+    "eventCoordinate": [
+      10.3,
+      -6.31
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10006",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10007,
+    "eventType": 1,
+    "eventCoordinate": [
+      13.58,
+      -5.85
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10007",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10008,
+    "eventType": 1,
+    "eventCoordinate": [
+      11.51,
+      -5.5
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10008",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10009,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.27,
+      -5.3
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10009",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10010,
+    "eventType": 1,
+    "eventCoordinate": [
+      11.6,
+      -6.1
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10010",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10011,
+    "eventType": 1,
+    "eventCoordinate": [
+      8.61,
+      -6.3
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10011",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10012,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.85,
+      -6.4
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10012",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10013,
+    "eventType": 1,
+    "eventCoordinate": [
+      10.3,
+      -6.31
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10013",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10014,
+    "eventType": 1,
+    "eventCoordinate": [
+      11,
+      -7.32
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10014",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10015,
+    "eventType": 1,
+    "eventCoordinate": [
+      8.61,
+      -6.3
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10015",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10016,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.27,
+      -5.3
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10016",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10017,
+    "eventType": 1,
+    "eventCoordinate": [
+      12.85,
+      -6.4
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10017",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10018,
+    "eventType": 1,
+    "eventCoordinate": [
+      10.3,
+      -6.31
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10018",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10019,
+    "eventType": 1,
+    "eventCoordinate": [
+      11.2,
+      -5.03
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10019",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10020,
+    "eventType": 1,
+    "eventCoordinate": [
+      10.3,
+      -6.31
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10020",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10021,
+    "eventType": 1,
+    "eventCoordinate": [
+      9.1,
+      -3.78
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10021",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10022,
+    "eventType": 1,
+    "eventCoordinate": [
+      8.61,
+      -6.3
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10022",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 10023,
+    "eventType": 1,
+    "eventCoordinate": [
+      13.65,
+      -5.9
+    ],
+    "eventTitleId": "节点",
+    "eventTextId": "10023",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20000,
+    "eventType": 2,
+    "eventCoordinate": [
+      12.4,
+      -6.6
+    ],
+    "eventTitleId": "基金会调查员笔记Ⅰ",
+    "eventTextId": "20000",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20001,
+    "eventType": 2,
+    "eventCoordinate": [
+      10.9,
+      -5.8
+    ],
+    "eventTitleId": "远处的鸣响",
+    "eventTextId": "20001",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20002,
+    "eventType": 2,
+    "eventCoordinate": [
+      13.93,
+      -6
+    ],
+    "eventTitleId": "《UTTU前线特刊》摘录",
+    "eventTextId": "20002",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20003,
+    "eventType": 2,
+    "eventCoordinate": [
+      13.61,
+      -6
+    ],
+    "eventTitleId": "“Ⅻ”小队战场调查报告",
+    "eventTextId": "20003",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20004,
+    "eventType": 2,
+    "eventCoordinate": [
+      8.65,
+      -6.58
+    ],
+    "eventTitleId": "寂静无声",
+    "eventTextId": "20004",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20005,
+    "eventType": 2,
+    "eventCoordinate": [
+      12.78,
+      -6.2
+    ],
+    "eventTitleId": "基金会调查员笔记Ⅱ",
+    "eventTextId": "20005",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20006,
+    "eventType": 2,
+    "eventCoordinate": [
+      9.37,
+      -6.89
+    ],
+    "eventTitleId": "转交给基金会信使的信函",
+    "eventTextId": "20006",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20007,
+    "eventType": 2,
+    "eventCoordinate": [
+      6.83,
+      -3.88
+    ],
+    "eventTitleId": "某位医务兵的手记残页",
+    "eventTextId": "20007",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20008,
+    "eventType": 2,
+    "eventCoordinate": [
+      11.55,
+      -4.9
+    ],
+    "eventTitleId": "战场如地狱",
+    "eventTextId": "20008",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20009,
+    "eventType": 2,
+    "eventCoordinate": [
+      8.96,
+      -6.43
+    ],
+    "eventTitleId": "被遗忘的玩偶",
+    "eventTextId": "20009",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20010,
+    "eventType": 2,
+    "eventCoordinate": [
+      10.95,
+      -6.7
+    ],
+    "eventTitleId": "小失常",
+    "eventTextId": "20010",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20011,
+    "eventType": 2,
+    "eventCoordinate": [
+      13.35,
+      -5.9
+    ],
+    "eventTitleId": "基金会调查员笔记Ⅲ",
+    "eventTextId": "20011",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20012,
+    "eventType": 2,
+    "eventCoordinate": [
+      13.9,
+      -5.8
+    ],
+    "eventTitleId": "往东线去",
+    "eventTextId": "20012",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30000,
+    "eventType": 3,
+    "eventCoordinate": [
+      10.5,
+      -5.9
+    ],
+    "eventTitleId": "东线的异变",
+    "eventTextId": "30000#30001#30002#30003",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30001,
+    "eventType": 3,
+    "eventCoordinate": [
+      13.61,
+      -6
+    ],
+    "eventTitleId": "关于“剃刀”小队",
+    "eventTextId": "30004#30005#30006#30007#30008#30009",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30002,
+    "eventType": 3,
+    "eventCoordinate": [
+      9.9,
+      -6.55
+    ],
+    "eventTitleId": "战壕对谈",
+    "eventTextId": "30010#30011#30012#30013#30014#30015",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30003,
+    "eventType": 3,
+    "eventCoordinate": [
+      8.26,
+      -4.35
+    ],
+    "eventTitleId": "昏暗堡垒中的对话",
+    "eventTextId": "30016#30017#30018#30019#30020#30021#30022#30023",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30004,
+    "eventType": 3,
+    "eventCoordinate": [
+      12.94,
+      -4.44
+    ],
+    "eventTitleId": "祈祷",
+    "eventTextId": "30024#30025#30026#30027#30028#30029#30030#30031",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30005,
+    "eventType": 3,
+    "eventCoordinate": [
+      6,
+      -4
+    ],
+    "eventTitleId": "如愿以偿",
+    "eventTextId": "30032#30033#30034#30035#30036",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30006,
+    "eventType": 3,
+    "eventCoordinate": [
+      6.42,
+      -6.59
+    ],
+    "eventTitleId": "战后调查",
+    "eventTextId": "30037#30038#30039#30040#30041#30042",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 40000,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.25,
+      -6.2
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40000#41000",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310701",
+    "needchaText": "乌尔里希或嚼嚼松果可以缩短委托完成时间",
+    "chaId": [
+      3107,
+      3115
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110802#2"
+  },
+  {
+    "id": 40001,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.38,
+      -6.1
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40001#41001",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "305701",
+    "needchaText": "小梅斯梅尔可以缩短委托完成时间",
+    "chaId": [
+      3057
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40002,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.7,
+      -5.8
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40002#41002",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "302301",
+    "needchaText": "十四行诗可以缩短委托完成时间",
+    "chaId": [
+      3023
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110202#2"
+  },
+  {
+    "id": 40003,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.6,
+      -6.8
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40003#41003",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "309401",
+    "needchaText": "J，玛蒂尔达或先驱者可以缩短委托完成时间",
+    "chaId": [
+      3041,
+      3094,
+      3096
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40004,
+    "eventType": 4,
+    "eventCoordinate": [
+      9.28,
+      -6.84
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40004#41004",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "305101",
+    "needchaText": "温妮弗雷德或坦南特可以缩短委托完成时间",
+    "chaId": [
+      3043,
+      3051
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110102#2"
+  },
+  {
+    "id": 40005,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.53,
+      -6.4
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40005#41005",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310501",
+    "needchaText": "纸信圈儿，丽莎&路易斯或铅玻璃可以缩短委托完成时间",
+    "chaId": [
+      3105,
+      3040,
+      3031
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40006,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.01,
+      -6.4
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40006#41006",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "306101",
+    "needchaText": "恐怖通，喀嚓喀嚓或洋葱头可以缩短委托完成时间",
+    "chaId": [
+      3049,
+      3061,
+      3054
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110702#2"
+  },
+  {
+    "id": 40007,
+    "eventType": 4,
+    "eventCoordinate": [
+      10,
+      -6.51
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40007#41007",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "304901",
+    "needchaText": "喀嚓喀嚓，恐怖通或门可以缩短委托完成时间",
+    "chaId": [
+      3049,
+      3061,
+      3059
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40008,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.46,
+      -6.55
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40008#41008",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "302701",
+    "needchaText": "无线电小姐可以缩短委托完成时间",
+    "chaId": [
+      3027
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110602#2"
+  },
+  {
+    "id": 40009,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40009#41009",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310201",
+    "needchaText": "洛佩拉或莉拉妮可以缩短委托完成时间",
+    "chaId": [
+      3102,
+      3035
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40010,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.33,
+      -6.2
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40010#41010",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "301001",
+    "needchaText": "X或约翰·提托可以缩短委托完成时间",
+    "chaId": [
+      3010,
+      3036
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110302#2"
+  },
+  {
+    "id": 40011,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40011#41011",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "303601",
+    "needchaText": "约翰·提托或X可以缩短委托完成时间",
+    "chaId": [
+      3010,
+      3036
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40012,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.36,
+      -3.9
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40012#41012",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "302702",
+    "needchaText": "无线电小姐可以缩短委托完成时间",
+    "chaId": [
+      3027
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110902#2"
+  },
+  {
+    "id": 40013,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.86,
+      -6.34
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40013#41013",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "303501",
+    "needchaText": "莉拉妮可以缩短委托完成时间",
+    "chaId": [
+      3035
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40014,
+    "eventType": 4,
+    "eventCoordinate": [
+      8.95,
+      -6.5
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40014#41014",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "306501",
+    "needchaText": "马库斯，莫桑女士或柏林以东可以缩短委托完成时间",
+    "chaId": [
+      3065,
+      3044,
+      3020
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110402#2"
+  },
+  {
+    "id": 40015,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.58,
+      -6.55
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40015#41015",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "300601",
+    "needchaText": "小春雀儿可以缩短委托完成时间",
+    "chaId": [
+      3006
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40016,
+    "eventType": 4,
+    "eventCoordinate": [
+      10.93,
+      -6.59
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40016#41016",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310503",
+    "needchaText": "纸信圈儿或红斗篷可以缩短委托完成时间",
+    "chaId": [
+      3026,
+      3105
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110502#2"
+  },
+  {
+    "id": 40017,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40017#41017",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "304101",
+    "needchaText": "玛蒂尔达可以缩短委托完成时间",
+    "chaId": [
+      3041
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40018,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40018#41018",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "311401",
+    "needchaText": "虚构集，冬或夏利可以缩短委托完成时间",
+    "chaId": [
+      3114,
+      3013,
+      3017
+    ],
+    "reduceTime": 5,
+    "bonus": "1#111001#2"
+  },
+  {
+    "id": 40019,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.59,
+      -4.6
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40019#41019",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "311801",
+    "needchaText": "命名日或白朗姆可以缩短委托完成时间",
+    "chaId": [
+      3118,
+      3101
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40020,
+    "eventType": 4,
+    "eventCoordinate": [
+      10.93,
+      -6.59
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40020#41020",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "308001",
+    "needchaText": "卡卡尼亚或气球派对可以缩短委托完成时间",
+    "chaId": [
+      3080,
+      3024
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110802#2"
+  },
+  {
+    "id": 40021,
+    "eventType": 4,
+    "eventCoordinate": [
+      12.68,
+      -4.9
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40021#41021",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "309403",
+    "needchaText": "J或宽檐帽可以缩短委托完成时间",
+    "chaId": [
+      3106,
+      3094
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40022,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40022#41022",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "311501",
+    "needchaText": "嚼嚼松果或爱宠可以缩短委托完成时间",
+    "chaId": [
+      3115,
+      3042
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110202#2"
+  },
+  {
+    "id": 40023,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40023#41023",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "304701",
+    "needchaText": "兔毛手袋或小梅斯梅尔可以缩短委托完成时间",
+    "chaId": [
+      3047,
+      3057
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40024,
+    "eventType": 4,
+    "eventCoordinate": [
+      7.2,
+      -4.3
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40024#41024",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "307401",
+    "needchaText": "爱兹拉或尼克·波顿可以缩短委托完成时间",
+    "chaId": [
+      3074,
+      3005
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110102#2"
+  },
+  {
+    "id": 40025,
+    "eventType": 4,
+    "eventCoordinate": [
+      6.46,
+      -6.6
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40025#41025",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "304401",
+    "needchaText": "莫桑女士可以缩短委托完成时间",
+    "chaId": [
+      3044
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40026,
+    "eventType": 4,
+    "eventCoordinate": [
+      10,
+      -6.51
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40026#41026",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "308801",
+    "needchaText": "塞梅尔维斯可以缩短委托完成时间",
+    "chaId": [
+      3088
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110702#2"
+  },
+  {
+    "id": 40027,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.31,
+      -6.1
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40027#41027",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "302301",
+    "needchaText": "十四行诗可以缩短委托完成时间",
+    "chaId": [
+      3023
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40028,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.6,
+      -5.93
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40028#41028",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "302501",
+    "needchaText": "星锑或苏芙比可以缩短委托完成时间",
+    "chaId": [
+      3025,
+      3009
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110302#2"
+  },
+  {
+    "id": 40029,
+    "eventType": 4,
+    "eventCoordinate": [
+      13.62,
+      -6.3
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40029#41029",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "308601",
+    "needchaText": "露西可以缩短委托完成时间",
+    "chaId": [
+      3086
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  }
+]

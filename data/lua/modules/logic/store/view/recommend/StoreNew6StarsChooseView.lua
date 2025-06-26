@@ -40,7 +40,17 @@ function var_0_0._btnbuyOnClick(arg_5_0)
 		[StatEnum.EventProperties.RecommendPageId] = tostring(arg_5_0.config and arg_5_0.config.id or ""),
 		[StatEnum.EventProperties.RecommendPageName] = arg_5_0.config and arg_5_0.config.name or arg_5_0.__cname
 	})
-	GameFacade.jumpByAdditionParam(arg_5_0.config.systemJumpCode)
+
+	local var_5_0 = string.splitToNumber(arg_5_0.config.systemJumpCode, "#")
+
+	if var_5_0[2] then
+		local var_5_1 = var_5_0[2]
+		local var_5_2 = StoreModel.instance:getGoodsMO(var_5_1)
+
+		StoreController.instance:openPackageStoreGoodsView(var_5_2)
+	else
+		GameFacade.jumpByAdditionParam(arg_5_0.config.systemJumpCode)
+	end
 end
 
 function var_0_0._editableInitView(arg_6_0)

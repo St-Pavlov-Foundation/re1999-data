@@ -71,7 +71,7 @@ function var_0_0._refreshGoods(arg_9_0)
 	UISpriteSetMgr.instance:setStoreGoodsSprite(arg_9_0._imageicon, arg_9_0._mo.config.id, true)
 
 	arg_9_0._txtnum.text = var_9_1
-	arg_9_0._txtbtnnum.text = arg_9_0._mo.config.price
+	arg_9_0._txtbtnnum.text = PayModel.instance:getProductPrice(arg_9_0._mo.id)
 	arg_9_0._txtname.text = arg_9_0._mo.config.name
 end
 

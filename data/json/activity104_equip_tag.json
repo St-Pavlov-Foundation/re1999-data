@@ -390,5 +390,40 @@
     "desc": "专属之力",
     "name": "专属之力",
     "order": 8
+  },
+  {
+    "activityId": 13000,
+    "id": 20,
+    "desc": "浊血为薪",
+    "name": "浊血为薪",
+    "order": 1
+  },
+  {
+    "activityId": 13000,
+    "id": 21,
+    "desc": "高压高伏",
+    "name": "高压高伏",
+    "order": 2
+  },
+  {
+    "activityId": 13000,
+    "id": 22,
+    "desc": "燃烧转化",
+    "name": "燃烧转化",
+    "order": 3
+  },
+  {
+    "activityId": 13000,
+    "id": 17,
+    "desc": "坚守技艺",
+    "name": "坚守技艺",
+    "order": 4
+  },
+  {
+    "activityId": 13000,
+    "id": 9,
+    "desc": "暴击艺术",
+    "name": "暴击艺术",
+    "order": 5
   }
 ]

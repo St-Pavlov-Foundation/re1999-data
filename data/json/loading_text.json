@@ -6,7 +6,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "不要忘记灵感之间的相互克制关系，恰当的选择会让战斗事半功倍",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 302,
@@ -15,7 +16,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "优先消灭敌方的有生力量，可使战斗更加快捷高效",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 303,
@@ -24,7 +26,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "高阶咒语的效果强于低阶咒语",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 304,
@@ -33,7 +36,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "兽克制木、木克制星、星克制岩、岩克制兽\n当角色攻击被其克制的敌人时，角色造成的创伤增加",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 305,
@@ -42,7 +46,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "控制即将行动的敌人，可以使战斗更加轻松",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 306,
@@ -51,7 +56,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "【石化】、【冰冻】、【眩晕】、【噩梦】可以使敌人陷入无法行动的状态",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 307,
@@ -60,7 +66,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "陷入【缴械】状态的敌人，无法使用【攻击】类咒语",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 308,
@@ -69,7 +76,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "陷入【缄默】状态的敌人，无法使用【增益/减益/治疗/反制】类咒语",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 309,
@@ -78,7 +86,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "陷入【封印】状态的敌人，无法使用【至终的仪式】",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 310,
@@ -87,7 +96,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "请注意，【现实创伤】会唤醒陷入【石化】状态的敌人",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 311,
@@ -96,7 +106,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "请注意，【精神创伤】会唤醒陷入【冰冻】状态的敌人",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 312,
@@ -105,7 +116,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "率先集火攻击同个敌人，造成减员，可降低敌方每回合的行动次数",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 314,
@@ -114,7 +126,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "咒语上限取决于我方场上存活和援助人数，当达到4人时，我方将拥有7个咒语",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 315,
@@ -123,7 +136,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "当我方减员后，回合行动次数将减少，也更容易获得高阶神秘术。永远不要放弃希望",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 316,
@@ -132,7 +146,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "兼顾敌我克制关系和神秘术组合，合理构建阵容",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 317,
@@ -141,7 +156,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "部分玩法的战场规则对敌我双方有强力效果，请注意阅读规则信息并合理利用",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 318,
@@ -150,7 +166,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "战斗中，点击行动次数区，可撤回已经使用的咒语",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 319,
@@ -159,7 +176,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "本源创伤是无视任何防御和创伤减免的固定创伤，但也无法受到绝大多数的创伤加成",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 320,
@@ -168,7 +186,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "同名的状态效果，会根据效果强度和持续时间进行覆盖",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 321,
@@ -177,7 +196,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "战斗中，不应盲目移动咒语升阶；根据场上形势，合理分配行动次数才是最优解",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 322,
@@ -186,7 +206,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "战斗中，若想快速跳过回合，可以手动移动咒语，消耗行动次数的同时还将获得激情",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 323,
@@ -195,7 +216,8 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "艰难的战斗中，合理使用律的调校也是通向胜利的重要一环",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
   },
   {
     "id": 401,
@@ -204,7 +226,8 @@
     "title": "",
     "titleen": "",
     "content": "此处祥和安稳——比最初的时刻热闹了许多。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 402,
@@ -213,7 +236,8 @@
     "title": "",
     "titleen": "",
     "content": "受邀前来的人们都有着属于自己的一隅之地。\n有的人乐于精心布置，而有的人更偏好简单朴素。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 403,
@@ -222,7 +246,8 @@
     "title": "",
     "titleen": "",
     "content": "众口难调，但箱中众人常能享用到适口的美食。\n在这一点上，负责采购的芭妮芭妮功不可没。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 404,
@@ -231,7 +256,8 @@
     "title": "",
     "titleen": "",
     "content": "它曾经历许多，并非一尘不染，但依旧八角硬朗，普通地整洁着。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 405,
@@ -240,7 +266,8 @@
     "title": "",
     "titleen": "",
     "content": "不止一人声称自己曾变成了一幅画——该现象的成因尚不明确。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 406,
@@ -249,7 +276,8 @@
     "title": "",
     "titleen": "",
     "content": "荒原的天气变化似乎毫无规律，天气预测的经验在这里难以派上用场。",
-    "scenes": "4"
+    "scenes": "4",
+    "isOnline": 1
   },
   {
     "id": 407,
@@ -258,7 +286,8 @@
     "title": "",
     "titleen": "",
     "content": "荒原植物的生长不依赖气候，常能见到不同季节的花朵同时盛开的奇异景象。",
-    "scenes": "4"
+    "scenes": "4",
+    "isOnline": 1
   },
   {
     "id": 408,
@@ -267,7 +296,8 @@
     "title": "",
     "titleen": "",
     "content": "茂密的树丛颇受欢迎。\n有人认为这里是颇佳的藏身之所；也有人乐于在其间独处，以躲避不期而至的喧嚣。",
-    "scenes": "4"
+    "scenes": "4",
+    "isOnline": 1
   },
   {
     "id": 409,
@@ -276,7 +306,8 @@
     "title": "",
     "titleen": "",
     "content": "曾有人称自己在荒原目睹过小型湖泊汇入流水的瞬间。",
-    "scenes": "4"
+    "scenes": "4",
+    "isOnline": 1
   },
   {
     "id": 410,
@@ -285,7 +316,8 @@
     "title": "",
     "titleen": "",
     "content": "荒原水域的质地异常平稳，似乎不会被其他液体影响。",
-    "scenes": "4"
+    "scenes": "4",
+    "isOnline": 1
   },
   {
     "id": 411,
@@ -294,7 +326,8 @@
     "title": "",
     "titleen": "",
     "content": "偶有兽类足印交错于此。",
-    "scenes": "5"
+    "scenes": "5",
+    "isOnline": 1
   },
   {
     "id": 412,
@@ -303,7 +336,8 @@
     "title": "",
     "titleen": "",
     "content": "这里空气潮湿……似乎带有雨后湿润的泥土气息。",
-    "scenes": "5"
+    "scenes": "5",
+    "isOnline": 1
   },
   {
     "id": 413,
@@ -312,7 +346,8 @@
     "title": "",
     "titleen": "",
     "content": "盘踞雾浓处的几何微微发亮。只是它们无法触碰——令人惋惜。",
-    "scenes": "5"
+    "scenes": "5",
+    "isOnline": 1
   },
   {
     "id": 414,
@@ -321,7 +356,8 @@
     "title": "",
     "titleen": "",
     "content": "河流与坚冰点缀于废墟之中。\n这里的生态自成一体。",
-    "scenes": "5"
+    "scenes": "5",
+    "isOnline": 1
   },
   {
     "id": 415,
@@ -330,7 +366,8 @@
     "title": "",
     "titleen": "",
     "content": "那门偶然洞开，进入者却并未离开原地。",
-    "scenes": "5"
+    "scenes": "5",
+    "isOnline": 1
   },
   {
     "id": 501,
@@ -339,7 +376,8 @@
     "title": "",
     "titleen": "",
     "content": "人类无法像神秘学家那样使用神秘术，他们以科技与体术作为助力。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 502,
@@ -348,7 +386,8 @@
     "title": "",
     "titleen": "",
     "content": "神秘学中的灵感分类对人类并不适用。\n但在性格、惯用仪器等因素下，某位人类也许会对某种神秘学灵感更亲近。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 503,
@@ -357,7 +396,8 @@
     "title": "",
     "titleen": "",
     "content": "相较“神秘术”和“咒语”，“科学技术”和“指令”是对人类技艺的更准确称呼。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 504,
@@ -366,7 +406,8 @@
     "title": "",
     "titleen": "",
     "content": "人类无法在箱中免疫“暴雨”。\n即使他们在此处留有房间，也必须定时回到自己更稳定的庇护所中。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 505,
@@ -375,7 +416,8 @@
     "title": "",
     "titleen": "",
     "content": "人类以理性高效而著称，比起“激情”，“计划性”一词更适合他们。",
-    "scenes": "2"
+    "scenes": "2",
+    "isOnline": 1
   },
   {
     "id": 324,
@@ -384,6 +426,107 @@
     "title": "作战手册-2",
     "titleen": "Field Manual-2",
     "content": "【状态抗性】：咒语的特殊效果有概率会被目标抵抗",
-    "scenes": "1"
+    "scenes": "1",
+    "isOnline": 1
+  },
+  {
+    "id": 506,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "资源获取，检查。任务列表，检查。还有没处理的邮件吗？",
+    "scenes": "2",
+    "isOnline": 0
+  },
+  {
+    "id": 507,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "请进，请进，这里只有你的朋友们。",
+    "scenes": "2",
+    "isOnline": 0
+  },
+  {
+    "id": 508,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "推开窗子，偶见另一个推窗的人。",
+    "scenes": "2",
+    "isOnline": 0
+  },
+  {
+    "id": 509,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "选择广播哪种音乐——往往是最易起争端的事项。",
+    "scenes": "2",
+    "isOnline": 0
+  },
+  {
+    "id": 510,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "值得庆幸，在这里，换一种装潢风格是如此简单。",
+    "scenes": "2",
+    "isOnline": 0
+  },
+  {
+    "id": 511,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "一棵掩体，一寸沟壑，一座地堡，一方原野。",
+    "scenes": "4",
+    "isOnline": 0
+  },
+  {
+    "id": 512,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "有些人存在枪炮幻听的症状，流水声音疗法可起作用。",
+    "scenes": "4",
+    "isOnline": 0
+  },
+  {
+    "id": 513,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "建筑拔地而起，饱含纪念与怀想。",
+    "scenes": "4",
+    "isOnline": 0
+  },
+  {
+    "id": 514,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "静谧，平和，偶尔会有一点吵闹，来自魔精。",
+    "scenes": "4",
+    "isOnline": 0
+  },
+  {
+    "id": 515,
+    "unlocklevel": 1,
+    "weight": 100,
+    "title": "",
+    "titleen": "",
+    "content": "一些或称之为阳光，或称之为希望的东西，悄然生长。",
+    "scenes": "4",
+    "isOnline": 0
   }
 ]

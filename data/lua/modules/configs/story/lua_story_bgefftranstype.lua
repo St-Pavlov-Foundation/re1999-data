@@ -268,5 +268,14 @@
 		"",
 		0,
 		""
+	},
+	{
+		30,
+		"甩镜头",
+		"",
+		"v3a0_dynamicblur_controller.prefab",
+		"",
+		0,
+		""
 	}
 }

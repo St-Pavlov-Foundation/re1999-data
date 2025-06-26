@@ -2072,6 +2072,30 @@
 		"Get201InfoRequest",
 		"Get201InfoReply"
 	},
+	[4332] = {
+		"Activity203",
+		"GetAct203InfoRequest",
+		"GetAct203InfoReply"
+	},
+	[30829] = {
+		"Activity203",
+		"Act203SaveEpisodeProgressRequest",
+		"Act203SaveEpisodeProgressReply"
+	},
+	[-11542] = {
+		"Activity203",
+		"Act203FinishEpisodeRequest",
+		"Act203FinishEpisodeReply"
+	},
+	[4792] = {
+		"Activity203",
+		"Act203ChooseEpisodeBranchRequest",
+		"Act203ChooseEpisodeBranchReply"
+	},
+	[-29699] = {
+		"Activity203",
+		"Act203EpisodePush"
+	},
 	[-14582] = {
 		"Activity",
 		"GetActivityInfosRequest",
@@ -2328,6 +2352,41 @@
 		"Chat",
 		"WordTestRequest",
 		"WordTestReply"
+	},
+	[19527] = {
+		"CommandPost",
+		"GetCommandPostInfoRequest",
+		"GetCommandPostInfoReply"
+	},
+	[22910] = {
+		"CommandPost",
+		"FinishCommandPostEventRequest",
+		"FinishCommandPostEventReply"
+	},
+	[-4117] = {
+		"CommandPost",
+		"CommandPostDispatchRequest",
+		"CommandPostDispatchReply"
+	},
+	[7554] = {
+		"CommandPost",
+		"CommandPostBonusRequest",
+		"CommandPostBonusReply"
+	},
+	[-12877] = {
+		"CommandPost",
+		"CommandPostPaperRequest",
+		"CommandPostPaperReply"
+	},
+	[26907] = {
+		"CommandPost",
+		"CommandPostBonusAllRequest",
+		"CommandPostBonusAllReply"
+	},
+	[-16743] = {
+		"CommandPost",
+		"CommandPostEventReadRequest",
+		"CommandPostEventReadReply"
 	},
 	[24032] = {
 		"Common",

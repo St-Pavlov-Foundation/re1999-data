@@ -248,9 +248,9 @@ function var_0_0._enterActivity12102(arg_15_0, arg_15_1)
 	local var_15_3 = FlowSequence.New()
 
 	var_15_3:addWork(OpenViewWork.New({
-		openFunction = VersionActivity2_1EnterController.directOpenVersionActivityEnterView,
-		openFunctionObj = VersionActivity2_1EnterController.instance,
-		waitOpenViewName = ViewName.VersionActivity2_1EnterView
+		openFunction = var_0_0.open3_0ReactivityEnterView,
+		openFunctionObj = VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance,
+		waitOpenViewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
 	}))
 	var_15_3:registerDoneListener(function()
 		if var_15_2 then
@@ -266,6 +266,10 @@ function var_0_0._enterActivity12102(arg_15_0, arg_15_1)
 	var_15_3:start()
 
 	var_0_0.sequence = var_15_3
+end
+
+function var_0_0.open3_0ReactivityEnterView()
+	VersionActivityFixedHelper.getVersionActivityEnterController(3, 0):directOpenVersionActivityEnterView(VersionActivity3_0Enum.ActivityId.Reactivity)
 end
 
 return var_0_0

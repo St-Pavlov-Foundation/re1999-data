@@ -118,5 +118,55 @@
     "name": "完成雨中曲试用",
     "nameEn": "UTTU",
     "equipId": 161006
+  },
+  {
+    "activityId": 13000,
+    "layer": 1,
+    "episodeId": 3001131,
+    "unlockLayer": 3,
+    "firstPassEquipIds": "300001",
+    "name": "浊血为薪",
+    "nameEn": "UTTU",
+    "equipId": 300001
+  },
+  {
+    "activityId": 13000,
+    "layer": 2,
+    "episodeId": 3001132,
+    "unlockLayer": 4,
+    "firstPassEquipIds": "300024",
+    "name": "高压高伏",
+    "nameEn": "UTTU",
+    "equipId": 300024
+  },
+  {
+    "activityId": 13000,
+    "layer": 3,
+    "episodeId": 3001133,
+    "unlockLayer": 5,
+    "firstPassEquipIds": "300047",
+    "name": "燃烧转化",
+    "nameEn": "UTTU",
+    "equipId": 300047
+  },
+  {
+    "activityId": 13000,
+    "layer": 4,
+    "episodeId": 3001134,
+    "unlockLayer": 6,
+    "firstPassEquipIds": "300070",
+    "name": "坚守技艺",
+    "nameEn": "UTTU",
+    "equipId": 300070
+  },
+  {
+    "activityId": 13000,
+    "layer": 5,
+    "episodeId": 3001135,
+    "unlockLayer": 7,
+    "firstPassEquipIds": "300095",
+    "name": "暴击艺术",
+    "nameEn": "UTTU",
+    "equipId": 300095
   }
 ]

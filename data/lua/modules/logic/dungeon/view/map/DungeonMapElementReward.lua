@@ -78,20 +78,20 @@ function var_0_0._OnRemoveElement(arg_10_0, arg_10_1)
 		if var_10_5 and var_10_5.type == DungeonEnum.FragmentType.LeiMiTeBeiNew then
 			arg_10_0._lastViewName = ViewName.VersionActivityNewsView
 		elseif var_10_0.type == DungeonEnum.ElementType.SpStory then
-			if var_10_5 and var_10_5.type == DungeonEnum.FragmentType.AvgStory then
-				arg_10_0._lastViewName = ViewName.StoryView
-			end
+			-- block empty
 		elseif var_10_0.type == DungeonEnum.ElementType.Investigate then
 			arg_10_0._lastViewName = ViewName.InvestigateTipsView
 		else
 			arg_10_0._lastViewName = ViewName.DungeonFragmentInfoView
 		end
 
-		PopupController.instance:addPopupView(PopupEnum.PriorityType.DungeonFragmentInfoView, arg_10_0._lastViewName, {
-			elementId = var_10_0.id,
-			fragmentId = var_10_0.fragment,
-			notShowToast = arg_10_0.notShowToast
-		})
+		if arg_10_0._lastViewName then
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.DungeonFragmentInfoView, arg_10_0._lastViewName, {
+				elementId = var_10_0.id,
+				fragmentId = var_10_0.fragment,
+				notShowToast = arg_10_0.notShowToast
+			})
+		end
 	end
 
 	if var_10_0.type == DungeonEnum.ElementType.EnterDialogue then

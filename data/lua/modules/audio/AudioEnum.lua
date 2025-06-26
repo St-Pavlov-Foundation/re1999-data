@@ -23,6 +23,7 @@ var_0_0.Bgm = {
 	play_activitymusic_mission1_4 = 3200068,
 	ActivityMapAmbientBgm = 3200064,
 	play_ui_secretroom_music = 3200061,
+	stop_login_interface_music_3_0 = 3309055,
 	play_activitymusic_humorousburglary_74bpm4_4 = 3300004,
 	ActivityMainBgm1_3 = 3300038,
 	PlayPassPortMusic = 3300006,
@@ -75,7 +76,9 @@ var_0_0.Story = {
 	play_activitysfx_yuzhou_subsection_open = 27520002,
 	play_activitysfx_tangren_chapter_small_open = 25520006,
 	Activity_Part_Start = 500521,
+	pause_cg_bus = 3309053,
 	play_activitysfx_wulu_subsection_open = 520067,
+	resume_cg_bus = 3309054,
 	Stop_Lowpass = 1111110,
 	play_activitysfx_shiji_subsection_open = 520095,
 	play_activitysfx_shenghuo_subsection_open = 23520002,
@@ -1013,6 +1016,7 @@ var_0_0.Handbook = {
 	play_ui_tujianskin_group_open = 20280854,
 	play_ui_tujianskin_amb_loop = 20280850,
 	play_ui_tujianskin_group_switch_1 = 20280851,
+	play_ui_tujianskin_group_special = 20301050,
 	play_ui_tujianskin_group_switch_2 = 20280852
 }
 

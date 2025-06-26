@@ -1,0 +1,202 @@
+[
+  {
+    "id": 100,
+    "listenerType": "DungeonMainFirstPass",
+    "listenerParam": "",
+    "maxProgress": 15,
+    "desc": "主线关卡中累计首通15个关卡",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 101,
+    "listenerType": "DungeonMainFirstPass",
+    "listenerParam": "",
+    "maxProgress": 30,
+    "desc": "主线关卡中累计首通30个关卡",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 102,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 1500,
+    "desc": "累计消耗1500点细胞活性",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 103,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "4",
+    "maxProgress": 2000,
+    "desc": "累计消耗2000点细胞活性",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 104,
+    "listenerType": "Act203",
+    "listenerParam": "1301105#13011",
+    "maxProgress": 1,
+    "desc": "完成玛丽安娜角色活动关卡【行军令】",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 105,
+    "listenerType": "Act203",
+    "listenerParam": "1301110#13011",
+    "maxProgress": 1,
+    "desc": "完成玛丽安娜角色活动关卡【一切的终结】",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 106,
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060104",
+    "maxProgress": 1,
+    "desc": "完成卡戎角色活动关卡【忍耐，忍耐】",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 107,
+    "listenerType": "EpisodeFinish",
+    "listenerParam": "3060108",
+    "maxProgress": 1,
+    "desc": "完成卡戎角色活动关卡【灰烬赋格】",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 108,
+    "listenerType": "HeroStoryGetScore",
+    "listenerParam": "",
+    "maxProgress": 5000,
+    "desc": "坦南特轶事中累计获得5000积分",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 109,
+    "listenerType": "Act128BossTypeLayerPoint",
+    "listenerParam": "11#3#450000",
+    "maxProgress": 1,
+    "desc": "鬃毛邮报怪象的表征最佳委托评估达到450000",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 110,
+    "listenerType": "Act128BossTypeLayerPoint",
+    "listenerParam": "2#3#450000",
+    "maxProgress": 1,
+    "desc": "鬃毛邮报沼泽的怪象最佳委托评估达到450000",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 111,
+    "listenerType": "Act128BossTypeLayerPoint",
+    "listenerParam": "10#3#450000",
+    "maxProgress": 1,
+    "desc": "鬃毛邮报焦土的焚风最佳委托评估达到450000",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 112,
+    "listenerType": "EpisodePassCount",
+    "listenerParam": "3001110",
+    "maxProgress": 1,
+    "desc": "UTTU中完成第10关",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 113,
+    "listenerType": "Act104Retail",
+    "listenerParam": "",
+    "maxProgress": 2,
+    "desc": "UTTU中完成2次UTTU零售的阅读",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 114,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 10000,
+    "desc": "翻覆之舟中最高积分累计达到10000",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 115,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 20000,
+    "desc": "翻覆之舟中最高积分累计达到20000",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 116,
+    "listenerType": "WeekwalkStarTotalIncrOnly",
+    "listenerParam": "3",
+    "maxProgress": 12,
+    "desc": "深眠域中累计获得12星",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 117,
+    "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 4,
+    "desc": "醒梦域中累计获得4个A级认证",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 118,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "2101",
+    "maxProgress": 3000,
+    "desc": "在重映【77号往事】中累计消耗3000个“老钥匙”",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 119,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "2101",
+    "maxProgress": 5000,
+    "desc": "在重映【77号往事】中累计消耗5000个“老钥匙”",
+    "versionId": 300,
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  }
+]

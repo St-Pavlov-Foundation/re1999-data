@@ -1474,5 +1474,113 @@
     "recommendLevelDesc": "？？？",
     "openDay": 15,
     "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13016,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500101,
+    "desc": "非现实属类，曾出现于旅馆、公路、废弃医院与街头巷尾的传闻中，无处不在，无孔不入。\n“它潜藏在床底，锁眼儿深处，无故飘起的窗帘后，正在哭泣的孩子的瞳孔内，以及……你的梦里。”\n<i>当理性不复存在，恐惧便趁虚而入。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 1,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500102,
+    "desc": "“它正逐步渗入我的心脏，我们融为一体，温暖、安全，我从未体验过如此强烈的幸福感。”\n<i>而谁又能说这不是另一种福音呢？</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 1,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500201,
+    "desc": "“我渴望再度见到它，难道我疯了吗？不？不！如果这种感觉被世人称之为疯狂，那我甘愿沉溺于此。”\n<i>快感、战栗，它能给予你的，不止如此。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 1,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13016,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500103,
+    "desc": "拟态类，属别不明，多见于山林、沼泽。\n“据说炼金术士们只要为它奉上指骨，便能一睹所求之物。”\n<i>一张并不厚道的入场券，好在收获颇丰。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 2,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500104,
+    "desc": "“我们在泥沼中发现了大量腐烂的躯体，且缺失数节指骨。目前情报者已断联。”\n<i>若您见报，请即刻予以回信，否则将视为放弃您一切奖金的归属权。</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 2,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500202,
+    "desc": "“警长来电：某怀抱牛犊的病患，被发现昏迷于泥沼前沿。”\n<i>编者附：病患口袋内有数张邮报剪片与指骨。注，与本报社毫无瓜葛。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 8,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13016,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500105,
+    "desc": "走兽类，豹亚科，疑似拥有操控自然的力量。偶出没于城市废墟中。\n“毫无疑问，它并非生来便是猛兽。但硝烟与战火逼迫它披上了尖牙与利爪。”\n<i>当你身处动荡地带，这一切都显得稀松平常。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 3,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500106,
+    "desc": "“传闻某位战地记者成功拍到了一场具有自我意识的飓风。那张足以证明这一说法的照片，至今依然躺在他的遗物里。”\n<i>请远离危险场所。</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13016,
+    "stage": 3,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500203,
+    "desc": "“当地警方已对坍塌的郊区教堂实施封锁。万幸的是，本次事故没有造成任何人员伤亡。”\n<i>被救出的孩子们没有大碍，除了身上全都留有一些像被锋利刀刃划破的伤口以外。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 15,
+    "evaluate": "10101#10201#10301#10401"
   }
 ]

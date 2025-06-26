@@ -98,7 +98,9 @@ function var_0_0._btnconfirmOnClick(arg_9_0)
 		return
 	end
 
-	for iter_9_0, iter_9_1 in pairs(RoomBlockBuildingGiftModel.instance:getSelectGoodsData()) do
+	local var_9_1 = RoomBlockBuildingGiftModel.instance:getSelectGoodsData(arg_9_0.itemId)
+
+	for iter_9_0, iter_9_1 in pairs(var_9_1) do
 		ItemRpc.instance:sendUseItemRequest(iter_9_1.data, iter_9_1.goodsId, var_9_0, arg_9_0)
 	end
 end
@@ -148,9 +150,9 @@ function var_0_0.onUpdateParam(arg_14_0)
 end
 
 function var_0_0.onOpen(arg_15_0)
-	arg_15_0.rare = arg_15_0.viewParam.rare
+	arg_15_0.itemId = arg_15_0.viewParam.itemId
 
-	RoomBlockBuildingGiftModel.instance:onOpenView()
+	RoomBlockBuildingGiftModel.instance:onOpenView(arg_15_0.itemId)
 	arg_15_0:_refreshView()
 	arg_15_0:_onRefreshSelect()
 end
@@ -225,7 +227,7 @@ function var_0_0._onClickSubTypeBtn(arg_23_0, arg_23_1)
 		return
 	end
 
-	RoomBlockBuildingGiftModel.instance:setSelectSubType(arg_23_1)
+	RoomBlockBuildingGiftModel.instance:setSelectSubType(arg_23_0.itemId, arg_23_1)
 	arg_23_0:_refreshBlockBuildingBtn(arg_23_1)
 	arg_23_0:_refreshTheme()
 	RoomBlockBuildingGiftModel.instance:setThemeList()

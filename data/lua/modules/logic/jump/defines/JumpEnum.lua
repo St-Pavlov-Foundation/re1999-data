@@ -54,6 +54,7 @@ var_0_0.JumpView = {
 	VersionEnterView = 110,
 	DungeonViewWithChapter = 3,
 	Turnback = 104,
+	CommandStationTask = 3001,
 	NoticeView = 19,
 	ActivityView = 100,
 	DungeonViewWithType = 5,

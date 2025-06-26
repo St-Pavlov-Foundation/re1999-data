@@ -43,6 +43,18 @@ function var_0_0.findMOByProduct(arg_2_0, arg_2_1, arg_2_2)
 	return nil
 end
 
+function var_0_0.getGoodIndex(arg_3_0, arg_3_1)
+	local var_3_0 = arg_3_0:getList()
+
+	for iter_3_0 = 1, #var_3_0 do
+		if var_3_0[iter_3_0].goodsId == arg_3_1 then
+			return iter_3_0
+		end
+	end
+
+	return 1
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

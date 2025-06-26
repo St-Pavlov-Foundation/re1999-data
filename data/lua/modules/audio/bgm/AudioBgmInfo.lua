@@ -103,6 +103,9 @@ function var_0_0._initBgmDatas(arg_2_0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_8DungeonBoss, AudioEnum2_8.DungeonBgm.boss, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.SurvivalBGM, AudioEnum2_8.Survival.play_activitymusic_dl_state_2_8, AudioEnum2_8.Survival.stop_activitymusic_dl_state_2_8)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.ShelterBGM, AudioEnum2_8.Survival.play_activitymusic_dl_camp_2_8, AudioEnum2_8.Survival.stop_activitymusic_dl_camp_2_8)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_0Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.CommanStationEnterView, AudioEnum3_0.Bgm.play_ui_zhihuisuo_music, AudioEnum.UI.Stop_UIMusic)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_0MainAmbientSound, 0, 0)
 end
 
 function var_0_0._initBgmUsage(arg_3_0)
@@ -450,7 +453,8 @@ function var_0_0._initBgmUsage(arg_3_0)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity2_1Main
 	}, AudioBgmEnum.UsageType.View, {
-		ViewName.VersionActivity2_1EnterView
+		ViewName.VersionActivity2_1EnterView,
+		ViewName.Permanent2_1EnterView
 	}, nil, nil, true)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.V2a1_WarmUp
@@ -578,6 +582,16 @@ function var_0_0._initBgmUsage(arg_3_0)
 	}, AudioBgmEnum.UsageType.Scene, {
 		SceneType.SurvivalShelter
 	})
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity3_0Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity3_0EnterView
+	}, nil, nil, true)
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.CommanStationEnterView
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.CommandStationEnterView
+	})
 end
 
 function var_0_0._initBgmBind(arg_4_0)
@@ -586,6 +600,9 @@ function var_0_0._initBgmBind(arg_4_0)
 	})
 	arg_4_0:_addBgmBind(AudioBgmEnum.Layer.VersionActivity1_3Main, {
 		AudioBgmEnum.Layer.VersionActivity1_3DungeonAmbientSound
+	})
+	arg_4_0:_addBgmBind(AudioBgmEnum.Layer.VersionActivity3_0Main, {
+		AudioBgmEnum.Layer.VersionActivity3_0MainAmbientSound
 	})
 end
 

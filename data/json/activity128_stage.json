@@ -622,5 +622,53 @@
     "skinIds": "610302",
     "skinScales": "0.85#0.85",
     "skinOffsetXYs": "-420#-330"
+  },
+  {
+    "activityId": 13016,
+    "stage": 1,
+    "name": "怪象的表征",
+    "name_en": "Avatar of Abhorrence",
+    "maxPoints": 850000,
+    "layer4MaxPoints": 0,
+    "openDay": 0,
+    "bossRushMainItemBossSprite": "v3a0_bossrush_boss01",
+    "bossRushLevelDetailFullBgSimage": "v3a0_bossrush_fullbg_1",
+    "resultViewFullBgSImage": "v3a0_bossrush_resultfullbg_1",
+    "resultViewNameSImage": "v3a0_bossrush_bossname_1",
+    "skinIds": "670405",
+    "skinScales": "0.85",
+    "skinOffsetXYs": "-483#-375"
+  },
+  {
+    "activityId": 13016,
+    "stage": 2,
+    "name": "沼泽的怪象",
+    "name_en": "Marsh Creation",
+    "maxPoints": 850000,
+    "layer4MaxPoints": 0,
+    "openDay": 0,
+    "bossRushMainItemBossSprite": "v1a4_bossrush_boss03",
+    "bossRushLevelDetailFullBgSimage": "v1a4_bossrush_fullbg_3",
+    "resultViewFullBgSImage": "v1a4_bossrush_resultfullbg_3",
+    "resultViewNameSImage": "v1a4_bossrush_bossname_3",
+    "skinIds": "413401",
+    "skinScales": "1",
+    "skinOffsetXYs": "-353#-558"
+  },
+  {
+    "activityId": 13016,
+    "stage": 3,
+    "name": "焦土的焚风",
+    "name_en": "Wind of the Ravages",
+    "maxPoints": 850000,
+    "layer4MaxPoints": 0,
+    "openDay": 0,
+    "bossRushMainItemBossSprite": "v2a4_bossrush_boss01",
+    "bossRushLevelDetailFullBgSimage": "v2a4_bossrush_fullbg_1",
+    "resultViewFullBgSImage": "v2a4_bossrush_resultfullbg_1",
+    "resultViewNameSImage": "v2a4_bossrush_bossname_1",
+    "skinIds": "610405#610404",
+    "skinScales": "1#1",
+    "skinOffsetXYs": "-290#-485|-345#-513"
   }
 ]

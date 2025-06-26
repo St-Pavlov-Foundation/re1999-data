@@ -343,43 +343,47 @@ function var_0_0.getJumpGoodsId(arg_16_0)
 	return var_16_0
 end
 
-function var_0_0.setVisibleInternal(arg_17_0, arg_17_1)
-	var_0_0.super.setVisibleInternal(arg_17_0, arg_17_1)
-	StoreController.instance:dispatchEvent(StoreEvent.SetVisibleInternal, arg_17_1)
+function var_0_0.isJumpFocus(arg_17_0)
+	return arg_17_0.viewParam.isFocus
 end
 
-function var_0_0.sortSkinStoreSiblingIndex(arg_18_0)
-	local var_18_0 = arg_18_0._ScrollViewSkinStore and arg_18_0._ScrollViewSkinStore._cellCompDict
-	local var_18_1
+function var_0_0.setVisibleInternal(arg_18_0, arg_18_1)
+	var_0_0.super.setVisibleInternal(arg_18_0, arg_18_1)
+	StoreController.instance:dispatchEvent(StoreEvent.SetVisibleInternal, arg_18_1)
+end
 
-	if var_18_0 then
-		local var_18_2 = 0
+function var_0_0.sortSkinStoreSiblingIndex(arg_19_0)
+	local var_19_0 = arg_19_0._ScrollViewSkinStore and arg_19_0._ScrollViewSkinStore._cellCompDict
+	local var_19_1
 
-		for iter_18_0, iter_18_1 in pairs(var_18_0) do
-			if iter_18_0 and iter_18_0._mo and iter_18_0._isUniqueSkin and iter_18_0:_isUniqueSkin() then
-				var_18_1 = var_18_1 or {}
+	if var_19_0 then
+		local var_19_2 = 0
 
-				table.insert(var_18_1, iter_18_0)
+		for iter_19_0, iter_19_1 in pairs(var_19_0) do
+			if iter_19_0 and iter_19_0._mo and iter_19_0._isUniqueSkin and iter_19_0:_isUniqueSkin() then
+				var_19_1 = var_19_1 or {}
+
+				table.insert(var_19_1, iter_19_0)
 			end
 
-			var_18_2 = var_18_2 + 1
+			var_19_2 = var_19_2 + 1
 		end
 	end
 
-	if var_18_1 then
-		table.sort(var_18_1, var_0_0._sortSkinGoodsItem)
+	if var_19_1 then
+		table.sort(var_19_1, var_0_0._sortSkinGoodsItem)
 
-		for iter_18_2 = #var_18_1, 1, -1 do
-			local var_18_3 = var_18_1[iter_18_2]
+		for iter_19_2 = #var_19_1, 1, -1 do
+			local var_19_3 = var_19_1[iter_19_2]
 
-			gohelper.setAsLastSibling(var_18_3.parentViewGO)
+			gohelper.setAsLastSibling(var_19_3.parentViewGO)
 		end
 	end
 end
 
-function var_0_0._sortSkinGoodsItem(arg_19_0, arg_19_1)
-	if arg_19_0._index ~= arg_19_1._index then
-		return arg_19_0._index < arg_19_1._index
+function var_0_0._sortSkinGoodsItem(arg_20_0, arg_20_1)
+	if arg_20_0._index ~= arg_20_1._index then
+		return arg_20_0._index < arg_20_1._index
 	end
 end
 
