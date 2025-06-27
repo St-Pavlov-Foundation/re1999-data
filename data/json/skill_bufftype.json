@@ -56886,7 +56886,7 @@
     "includeTypes": "0",
     "excludeTypes": "2#1261002311",
     "takeStage": 0,
-    "takeAct": "",
+    "takeAct": "1",
     "cannotRemove": false,
     "dontShowFloat": 0,
     "removeNum": 0,

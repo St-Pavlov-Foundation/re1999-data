@@ -85,7 +85,7 @@ var_0_0.TabSetting = {
 		fontSize = 42,
 		cnColor = "#FFFFFF",
 		enFontSize = 14,
-		enColor = "#337C61",
+		enColor = "#FFFFFF99",
 		act2TabImg = {
 			[var_0_0.ActivityId.Dungeon] = "singlebg_lang/txt_v3a0_mainactivity_singlebg/v3a0_enterview_itemtitleselected.png"
 		}
@@ -94,7 +94,7 @@ var_0_0.TabSetting = {
 		fontSize = 38,
 		cnColor = "#8D8D8D",
 		enFontSize = 14,
-		enColor = "#485143",
+		enColor = "#FFFFFF24",
 		act2TabImg = {
 			[var_0_0.ActivityId.Dungeon] = "singlebg_lang/txt_v3a0_mainactivity_singlebg/v3a0_enterview_itemtitleunselected.png"
 		}

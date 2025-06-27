@@ -44,6 +44,8 @@ var_0_0.ConstId = {
 var_0_0.PrefsKey = {
 	Version = 3,
 	NewMapTip = 1,
+	DungeonMapLoopEffect = 4,
+	DungeonMapLightEffect = 5,
 	TimeId = 2
 }
 var_0_0.FirstEpisodeId = 11101

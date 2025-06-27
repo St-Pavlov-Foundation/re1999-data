@@ -611,6 +611,13 @@ function var_0_0.setHeroGroupSelectIndex(arg_26_0, arg_26_1)
 		var_26_1 = arg_26_0._episodeType
 	end
 
+	if var_26_1 == 1 and arg_26_1 == ModuleEnum.FiveHeroEnum.FifthIndex then
+		logError("编队设置错误，加个保底以及打印log线上确认问题")
+
+		arg_26_1 = arg_26_0._groupTypeSelect[var_26_1] or 0
+		arg_26_1 = math.min(arg_26_1, 4)
+	end
+
 	arg_26_0._groupTypeSelect[var_26_1] = arg_26_1
 
 	arg_26_0:_setSingleGroup()

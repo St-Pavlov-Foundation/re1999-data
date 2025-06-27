@@ -3617,5 +3617,16 @@
     "level": 0,
     "sub": 15202,
     "multiHp": 0
+  },
+  {
+    "id": 4300146,
+    "life": 30000,
+    "attack": 6000,
+    "defense": 4000,
+    "mdefense": 4000,
+    "technic": 4000,
+    "level": 0,
+    "sub": 10002,
+    "multiHp": 0
   }
 ]

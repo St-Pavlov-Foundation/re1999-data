@@ -224,11 +224,15 @@ function var_0_1._editableInitView(arg_15_0)
 end
 
 function var_0_1.onScreenResize(arg_16_0)
-	return
+	local var_16_0 = arg_16_0:_calcFovInternal()
+	local var_16_1 = CameraMgr.instance:getVirtualCamera(1, 1)
+	local var_16_2 = var_16_1.m_Lens
+
+	var_16_1.m_Lens = Cinemachine.LensSettings.New(var_16_0, var_16_2.OrthographicSize, var_16_2.NearClipPlane, var_16_2.FarClipPlane, var_16_2.Dutch)
 end
 
 function var_0_1.resetCamera(arg_17_0)
-	return
+	GameSceneMgr.instance:getCurScene().camera:resetParam()
 end
 
 function var_0_1.updateSuitGroupData(arg_18_0, arg_18_1)
@@ -281,30 +285,30 @@ function var_0_1._refreshScene(arg_21_0, arg_21_1)
 	gohelper.setActive(var_21_2, true)
 
 	local var_21_3 = CameraMgr.instance:getCameraTraceGO()
+	local var_21_4 = arg_21_0:_calcFovInternal()
+	local var_21_5 = CameraMgr.instance:getVirtualCamera(1, 1)
+	local var_21_6 = var_21_5.m_Lens
 
+	var_21_5.m_Lens = Cinemachine.LensSettings.New(var_21_4, var_21_6.OrthographicSize, var_21_6.NearClipPlane, var_21_6.FarClipPlane, var_21_6.Dutch)
 	arg_21_0._cameraRootAnimator = gohelper.onceAddComponent(var_21_3, typeof(UnityEngine.Animator))
 
-	local var_21_4 = arg_21_0.viewContainer:getSetting().otherRes[1]
-	local var_21_5 = arg_21_0.viewContainer._abLoader:getAssetItem(var_21_4):GetResource()
+	local var_21_7 = arg_21_0.viewContainer:getSetting().otherRes[1]
+	local var_21_8 = arg_21_0.viewContainer._abLoader:getAssetItem(var_21_7):GetResource()
 
-	arg_21_0._cameraRootAnimator.runtimeAnimatorController = var_21_5
+	arg_21_0._cameraRootAnimator.runtimeAnimatorController = var_21_8
 
 	arg_21_0._cameraRootAnimator:Rebind()
 
 	arg_21_0._sceneAnimator = arg_21_0._curSceneGo:GetComponent(gohelper.Type_Animator)
 	arg_21_0._sceneAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_21_0._curSceneGo)
 
-	if HandbookEnum.SkinSuitId2SceneType[arg_21_1] == HandbookEnum.SkinSuitSceneType.Tarot then
-		-- block empty
-	else
-		local var_21_6 = gohelper.findChild(var_21_1, "cvure"):GetComponent(typeof(ZProj.SplineFollow))
+	local var_21_9 = gohelper.findChild(var_21_1, "cvure"):GetComponent(typeof(ZProj.SplineFollow))
 
-		if var_21_6 == nil then
-			return
-		end
-
-		var_21_6:Add(var_21_3.transform, 0)
+	if var_21_9 == nil then
+		return
 	end
+
+	var_21_9:Add(var_21_3.transform, 0)
 end
 
 function var_0_1._createSuitItems(arg_22_0)
@@ -681,13 +685,23 @@ end
 function var_0_1.doTarotCardPosResetTween(arg_38_0)
 	arg_38_0._dragResetPosTweens = {}
 
-	for iter_38_0 = 1, var_0_6 do
-		local var_38_0 = arg_38_0._tarotCardAniProgress[iter_38_0]
-		local var_38_1 = arg_38_0:_checkCardPosIdx(var_38_0)
-		local var_38_2 = var_0_8[var_38_1]
-		local var_38_3 = ZProj.TweenHelper.DOTweenFloat(var_38_0, var_38_2, var_0_9, arg_38_0.cardPosResetTweenFrameCallback, nil, arg_38_0, iter_38_0)
+	local var_38_0 = 0
 
-		arg_38_0._dragResetPosTweens[iter_38_0] = var_38_3
+	for iter_38_0 = 1, var_0_6 do
+		local var_38_1 = arg_38_0._tarotCardAniProgress[iter_38_0]
+
+		if iter_38_0 == 1 then
+			var_38_0 = arg_38_0:_checkCardPosIdx(var_38_1)
+		end
+
+		local var_38_2 = var_38_0 + (iter_38_0 - 1)
+
+		var_38_2 = var_38_2 > var_0_6 and var_38_2 - var_0_6 or var_38_2
+
+		local var_38_3 = var_0_8[var_38_2]
+		local var_38_4 = ZProj.TweenHelper.DOTweenFloat(var_38_1, var_38_3, var_0_9, arg_38_0.cardPosResetTweenFrameCallback, nil, arg_38_0, iter_38_0)
+
+		arg_38_0._dragResetPosTweens[iter_38_0] = var_38_4
 	end
 end
 
@@ -720,66 +734,87 @@ function var_0_1.isInTarotMode(arg_41_0)
 	return arg_41_0._tarotMode or arg_41_0._enteringTarotMode
 end
 
-function var_0_1.playCloseAni(arg_42_0)
-	local var_42_0 = CameraMgr.instance:getVirtualCameraGO()
+function var_0_1._calcFovInternal(arg_42_0)
+	local var_42_0 = 1.7777777777777777 * (UnityEngine.Screen.height / UnityEngine.Screen.width)
 
-	gohelper.setActive(var_42_0, false)
+	if BootNativeUtil.isWindows() and not SLFramework.FrameworkSettings.IsEditor then
+		local var_42_1, var_42_2 = SettingsModel.instance:getCurrentScreenSize()
 
-	if arg_42_0._cameraRootAnimator then
-		arg_42_0._cameraRootAnimator:Rebind()
-		arg_42_0._cameraRootAnimator:Play(var_0_0.Close, 0, 0)
+		var_42_0 = 16 * var_42_2 / 9 / var_42_1
+	end
+
+	local var_42_3 = HandbookEnum.TarotDefaultFOV * var_42_0
+	local var_42_4, var_42_5 = arg_42_0:_getMinMaxFov()
+
+	return (Mathf.Clamp(var_42_3, var_42_4, var_42_5))
+end
+
+function var_0_1._getMinMaxFov(arg_43_0)
+	return 22, 40
+end
+
+function var_0_1.playCloseAni(arg_44_0)
+	local var_44_0 = CameraMgr.instance:getVirtualCameraGO()
+
+	gohelper.setActive(var_44_0, false)
+
+	if arg_44_0._cameraRootAnimator then
+		arg_44_0._cameraRootAnimator:Rebind()
+		arg_44_0._cameraRootAnimator:Play(var_0_0.Close, 0, 0)
 	end
 end
 
-function var_0_1.onClose(arg_43_0)
-	TaskDispatcher.cancelTask(arg_43_0.onTarotEnterAniDone, arg_43_0)
+function var_0_1.onClose(arg_45_0)
+	TaskDispatcher.cancelTask(arg_45_0.onTarotEnterAniDone, arg_45_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Stop_UI_Bus)
 
-	if arg_43_0._cameraRootAnimator then
-		arg_43_0._cameraRootAnimator:Rebind()
-		arg_43_0._cameraRootAnimator:Play(var_0_0.Close, 0, 0)
-		TaskDispatcher.runDelay(var_0_1.delayRemoveAnimator, nil, 0.1)
+	if arg_45_0._cameraRootAnimator then
+		arg_45_0._cameraRootAnimator:Rebind()
+		arg_45_0._cameraRootAnimator:Play(var_0_0.Close, 0, 0)
+		TaskDispatcher.runDelay(var_0_1.delayRemoveAnimator, arg_45_0, 0.1)
 	end
 end
 
-function var_0_1.delayRemoveAnimator(arg_44_0)
-	local var_44_0 = CameraMgr.instance:getCameraTraceGO()
-	local var_44_1 = gohelper.onceAddComponent(var_44_0, typeof(UnityEngine.Animator))
+function var_0_1.delayRemoveAnimator(arg_46_0)
+	local var_46_0 = CameraMgr.instance:getCameraTraceGO()
+	local var_46_1 = gohelper.onceAddComponent(var_46_0, typeof(UnityEngine.Animator))
 
-	if var_44_1 then
-		gohelper.removeComponent(var_44_1.gameObject, typeof(UnityEngine.Animator))
-	end
-end
-
-function var_0_1.UpdateAnimProgress(arg_45_0, arg_45_1, arg_45_2, arg_45_3)
-	arg_45_1:Play(arg_45_2, 0, arg_45_3)
-end
-
-function var_0_1.onDestroyView(arg_46_0)
-	if arg_46_0._sceneRoot then
-		gohelper.destroy(arg_46_0._sceneRoot)
-
-		arg_46_0._sceneRoot = nil
+	if var_46_1 then
+		gohelper.removeComponent(var_46_1.gameObject, typeof(UnityEngine.Animator))
 	end
 
-	if arg_46_0._cardLoaderxMap then
-		for iter_46_0, iter_46_1 in pairs(arg_46_0._cardLoaderxMap) do
-			if iter_46_1 then
-				iter_46_1:dispose()
+	CameraMgr.instance:getMainCamera().fieldOfView = 35
+end
+
+function var_0_1.UpdateAnimProgress(arg_47_0, arg_47_1, arg_47_2, arg_47_3)
+	arg_47_1:Play(arg_47_2, 0, arg_47_3)
+end
+
+function var_0_1.onDestroyView(arg_48_0)
+	if arg_48_0._sceneRoot then
+		gohelper.destroy(arg_48_0._sceneRoot)
+
+		arg_48_0._sceneRoot = nil
+	end
+
+	if arg_48_0._cardLoaderxMap then
+		for iter_48_0, iter_48_1 in pairs(arg_48_0._cardLoaderxMap) do
+			if iter_48_1 then
+				iter_48_1:dispose()
 			end
 		end
 
-		arg_46_0._cardLoaderxMap = nil
+		arg_48_0._cardLoaderxMap = nil
 	end
 
-	if arg_46_0._cardbackLoader then
-		arg_46_0._cardbackLoader:dispose()
+	if arg_48_0._cardbackLoader then
+		arg_48_0._cardbackLoader:dispose()
 	end
 
-	if arg_46_0._suitItemLoaderList and #arg_46_0._suitItemLoaderList > 0 then
-		for iter_46_2, iter_46_3 in ipairs(arg_46_0._suitItemLoaderList) do
-			if iter_46_3 then
-				iter_46_3:dispose()
+	if arg_48_0._suitItemLoaderList and #arg_48_0._suitItemLoaderList > 0 then
+		for iter_48_2, iter_48_3 in ipairs(arg_48_0._suitItemLoaderList) do
+			if iter_48_3 then
+				iter_48_3:dispose()
 			end
 		end
 	end

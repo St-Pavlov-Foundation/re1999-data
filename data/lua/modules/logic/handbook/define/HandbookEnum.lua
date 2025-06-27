@@ -49,6 +49,7 @@ var_0_0.SkinSuitGroupDefaultScene = "scenes/v2a8_m_s17_pftj/prefab/skin_sence_01
 var_0_0.TarotSkinDefaultCardPath = "singlebg/skinhandbook_singlebg/tarot/card00.png"
 var_0_0.TarotSkinCount = 21
 var_0_0.TarotSkinCardDir = "singlebg/skinhandbook_singlebg/tarot"
+var_0_0.TarotDefaultFOV = 22
 var_0_0.HandbookSkinShowRedDotMap = {
 	[10001] = true,
 	[11001] = true

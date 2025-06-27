@@ -127,6 +127,7 @@ function var_0_0._btnitemdetailOnClick(arg_14_0)
 end
 
 function var_0_0._delayPlayVideo(arg_15_0)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "commandstation_tocode_video", true)
 	module_views_preloader._startLoad({
 		"ui/viewres/commandstation/commandstation_paperview.prefab"
 	}, function()
@@ -480,6 +481,7 @@ function var_0_0.onClose(arg_50_0)
 	TaskDispatcher.cancelTask(arg_50_0._delayHideSelf, arg_50_0)
 	CommandStationController.StatCommandStationViewClose(arg_50_0.viewName, Time.realtimeSinceStartup - arg_50_0._viewOpenTime)
 	UIBlockMgrExtend.setNeedCircleMv(true)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "commandstation_tocode_video", false)
 end
 
 return var_0_0

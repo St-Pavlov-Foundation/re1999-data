@@ -15,6 +15,11 @@ return {
 						NavigateButtonsView.prefabPath
 					}
 				}
+			},
+			otherRes = {
+				"singlebg/commandstation/enter/commandstation_enter_fullbg.png",
+				"singlebg/commandstation/enter/commandstation_enter_mask.png",
+				"singlebg/commandstation/enter/commandstation_enter_decbg.png"
 			}
 		}
 		arg_1_0.CommandStationPaperView = {
@@ -30,6 +35,9 @@ return {
 						NavigateButtonsView.prefabPath
 					}
 				}
+			},
+			otherRes = {
+				"singlebg/commandstation/paper/commandstation_paper_fullbg.png"
 			}
 		}
 		arg_1_0.CommandStationPaperGetView = {

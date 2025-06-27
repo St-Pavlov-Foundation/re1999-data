@@ -1098,6 +1098,16 @@ var_0_0.StressThreshold = {
 	[var_0_0.Status.Positive] = 24,
 	[var_0_0.Status.Negative] = 50
 }
+var_0_0.MonsterId2StressThresholdDict = {
+	[900042101] = {
+		[var_0_0.Status.Positive] = 39,
+		[var_0_0.Status.Negative] = 60
+	},
+	[900042102] = {
+		[var_0_0.Status.Positive] = 39,
+		[var_0_0.Status.Negative] = 60
+	}
+}
 var_0_0.BuffType = {
 	LayerMasterHalo = 1,
 	LayerSalveHalo = 2,

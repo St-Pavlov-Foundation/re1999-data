@@ -43,6 +43,8 @@ function var_0_0.removeEvents(arg_3_0)
 end
 
 function var_0_0.onOpen(arg_4_0)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "commandstation_tocode_video", false)
+
 	arg_4_0._viewOpenTime = Time.realtimeSinceStartup
 	arg_4_0._itemNum = CommandStationConfig.instance:getCurPaperCount()
 

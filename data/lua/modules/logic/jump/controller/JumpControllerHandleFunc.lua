@@ -1550,6 +1550,10 @@ function var_0_0.jumpToShelterBuilding(arg_127_0, arg_127_1)
 end
 
 function var_0_0.jumpToCommandStationTask(arg_128_0, arg_128_1)
+	if ViewMgr.instance:isOpen(ViewName.CommandStationTaskView) then
+		return JumpEnum.JumpResult.Success
+	end
+
 	CommandStationController.instance:openCommandStationPaperView(nil, true)
 	CommandStationController.instance:openCommandStationTaskView()
 

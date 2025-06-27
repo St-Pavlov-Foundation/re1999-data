@@ -17574,7 +17574,7 @@
     "loopType": 5,
     "minType": "战令赛季",
     "name": "§在“上半玩法”中完成STAGE-08",
-    "desc": "在“谋杀始于清晨”中参与一次“战场的回声”",
+    "desc": "在“谋杀始于清晨”中通关一次“战场的回声”",
     "listenerType": "Act203",
     "listenerParam": "1301111#13011",
     "maxProgress": 1,

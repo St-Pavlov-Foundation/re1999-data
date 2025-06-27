@@ -3401,7 +3401,7 @@
     "year": "1920",
     "storyIdList": "101101",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "111001",
     "image": "story_bg/3_0/3_0_bg_01.png"
   },
   {
@@ -3416,7 +3416,7 @@
     "year": "",
     "storyIdList": "101102#101103",
     "levelIdDict": "",
-    "fragmentIdList": "11102",
+    "fragmentIdList": "111002",
     "image": "story_bg/3_0/3_0_bg_02.png"
   },
   {
@@ -3491,7 +3491,7 @@
     "year": "",
     "storyIdList": "101110",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "111007",
     "image": "story_bg/3_0/3_0_bg_07.png"
   },
   {
@@ -3521,7 +3521,7 @@
     "year": "",
     "storyIdList": "101112",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "111009",
     "image": "story_bg/3_0/3_0_bg_09.png"
   },
   {
@@ -3656,7 +3656,7 @@
     "year": "",
     "storyIdList": "101122#101123",
     "levelIdDict": "",
-    "fragmentIdList": "",
+    "fragmentIdList": "111018",
     "image": "story_bg/3_0/3_0_bg_18.png"
   },
   {
@@ -3746,7 +3746,7 @@
     "year": "",
     "storyIdList": "101133",
     "levelIdDict": "",
-    "fragmentIdList": "1110241",
+    "fragmentIdList": "111024#1110241",
     "image": "story_bg/3_0/3_0_bg_24.png"
   }
 ]

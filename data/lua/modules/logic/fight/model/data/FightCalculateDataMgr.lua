@@ -1989,6 +1989,13 @@ end
 
 function var_0_0.playEffect330(arg_241_0, arg_241_1)
 	local var_241_0 = arg_241_0.dataMgr.fieldMgr.param
+
+	if string.nilorempty(arg_241_1.reserveStr) then
+		logError("playEffect330 reserveStr is " .. tostring(arg_241_1.reserveStr))
+
+		return
+	end
+
 	local var_241_1 = GameUtil.splitString2(arg_241_1.reserveStr, true)
 
 	for iter_241_0, iter_241_1 in ipairs(var_241_1) do
@@ -2005,6 +2012,13 @@ end
 
 function var_0_0.playEffect338(arg_243_0, arg_243_1)
 	local var_243_0 = arg_243_0:getHandCard()
+
+	if string.nilorempty(arg_243_1.reserveStr) then
+		logError("playEffect338 reserveStr is " .. tostring(arg_243_1.reserveStr))
+
+		return
+	end
+
 	local var_243_1 = FightStrUtil.instance:getSplitString2Cache(arg_243_1.reserveStr, true)
 
 	for iter_243_0, iter_243_1 in ipairs(var_243_1) do

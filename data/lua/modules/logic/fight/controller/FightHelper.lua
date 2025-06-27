@@ -3494,7 +3494,9 @@ function var_0_0.buildSceneAndLevel(arg_142_0, arg_142_1)
 	return var_142_1(arg_142_0, arg_142_1)
 end
 
-function var_0_0.getStressStatus(arg_143_0)
+function var_0_0.getStressStatus(arg_143_0, arg_143_1)
+	arg_143_1 = arg_143_1 or FightEnum.StressThreshold
+
 	if not arg_143_0 then
 		logError("stress is nil")
 
@@ -3502,7 +3504,7 @@ function var_0_0.getStressStatus(arg_143_0)
 	end
 
 	for iter_143_0 = 1, 2 do
-		if arg_143_0 <= FightEnum.StressThreshold[iter_143_0] then
+		if arg_143_0 <= arg_143_1[iter_143_0] then
 			return iter_143_0
 		end
 	end
