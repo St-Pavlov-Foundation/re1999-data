@@ -1608,6 +1608,66 @@
     "audio": 431050352
   },
   {
+    "buffId": 22301621,
+    "orEnemy": 2,
+    "skinId": 308803,
+    "effectHang": "",
+    "effectPath": "v2a3_smews/v2a3_smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 22301622,
+    "orEnemy": 2,
+    "skinId": 308803,
+    "effectHang": "",
+    "effectPath": "v2a3_smews/v2a3_smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801211,
+    "orEnemy": 2,
+    "skinId": 308803,
+    "effectHang": "",
+    "effectPath": "v2a3_smews/v2a3_smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801311,
+    "orEnemy": 2,
+    "skinId": 308803,
+    "effectHang": "",
+    "effectPath": "v2a3_smews/v2a3_smews_kuangre",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801321,
+    "orEnemy": 2,
+    "skinId": 308803,
+    "effectHang": "",
+    "effectPath": "v2a3_smews/v2a3_smews_kuangre",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
     "buffId": 30880121,
     "orEnemy": 2,
     "skinId": 308804,
@@ -1632,6 +1692,42 @@
     "audio": 0
   },
   {
+    "buffId": 22301621,
+    "orEnemy": 2,
+    "skinId": 308804,
+    "effectHang": "",
+    "effectPath": "v3a0_smews/smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 22301622,
+    "orEnemy": 2,
+    "skinId": 308804,
+    "effectHang": "",
+    "effectPath": "v3a0_smews/smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801211,
+    "orEnemy": 2,
+    "skinId": 308804,
+    "effectHang": "",
+    "effectPath": "v3a0_smews/smews_xueyong",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
     "buffId": 30880131,
     "orEnemy": 2,
     "skinId": 308804,
@@ -1645,6 +1741,30 @@
   },
   {
     "buffId": 30880132,
+    "orEnemy": 2,
+    "skinId": 308804,
+    "effectHang": "",
+    "effectPath": "v3a0_smews/smews_kuangre",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801311,
+    "orEnemy": 2,
+    "skinId": 308804,
+    "effectHang": "",
+    "effectPath": "v3a0_smews/smews_kuangre",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 308801321,
     "orEnemy": 2,
     "skinId": 308804,
     "effectHang": "",

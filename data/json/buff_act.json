@@ -3161,7 +3161,7 @@
   {
     "id": 1029,
     "type": "AddAttrByOtherBuffLayer",
-    "effectTime": 102,
+    "effectTime": 203,
     "effectCondition": 0,
     "effect": "",
     "effectHangPoint": "",
@@ -3216,6 +3216,15 @@
     "id": 1035,
     "type": "Seed",
     "effectTime": 302,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1036,
+    "type": "AddAttrByOtherBuffLayer",
+    "effectTime": 204,
     "effectCondition": 0,
     "effect": "",
     "effectHangPoint": "",

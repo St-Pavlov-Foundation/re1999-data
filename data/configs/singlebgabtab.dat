@@ -30231,6 +30231,9 @@
   "singlebg/summon/banner/v2a8_selfselectsix2.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/v2a8_selfselectsix2.png"
   ],
+  "singlebg/summon/banner/v3a0_37.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/banner/v3a0_37.png"
+  ],
   "singlebg/summon/banner/v3a0_karong.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/v3a0_karong.png"
   ],
@@ -30264,14 +30267,26 @@
   "singlebg/summon/banner/bannerline/v2a8_selfselectsix2_line.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/bannerline/v2a8_selfselectsix2_line.png"
   ],
+  "singlebg/summon/banner/bannerline/v3a0_37_line.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/banner/bannerline/v3a0_37_line.png"
+  ],
   "singlebg/summon/banner/bannerline/v3a0_karong_line.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/bannerline/v3a0_karong_line.png"
   ],
   "singlebg/summon/banner/bannerline/v3a0_malianna_line.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/banner/bannerline/v3a0_malianna_line.png"
   ],
+  "singlebg/summon/heroversion_1_4/role37/v1a4_role37_bottombg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_1_4/role37/v1a4_role37_bottombg.png"
+  ],
+  "singlebg/summon/heroversion_1_4/role37/v1a4_role37_summon_37.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_1_4/role37/v1a4_role37_summon_37.png"
+  ],
   "singlebg/summon/heroversion_1_6/quniang/full/v1a6_quniang_summon_fullbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_1_6/quniang/full/v1a6_quniang_summon_fullbg.png"
+  ],
+  "singlebg/summon/heroversion_1_7/37/full/v1a7_37_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_1_7/37/full/v1a7_37_fullbg.png"
   ],
   "singlebg/summon/heroversion_2_4/v2a4_windsong/v2a4_windsong_role1.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_4/v2a4_windsong/v2a4_windsong_role1.png"
@@ -30494,6 +30509,12 @@
   ],
   "singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_role2.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_role2.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role2.png"
   ],
   "singlebg/survival_singlebg/bag/survival_bag_car.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/bag/survival_bag_car.png"
@@ -33638,6 +33659,12 @@
   ],
   "singlebg_lang/txt_store/v3a0_store_block_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_store/v3a0_store_block_title.png"
+  ],
+  "singlebg_lang/txt_summon_version_1_4/role37/v1a4_role37_summon_name1.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_summon_version_1_4/role37/v1a4_role37_summon_name1.png"
+  ],
+  "singlebg_lang/txt_summon_version_1_4/role37/v1a4_role37_summon_title.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_summon_version_1_4/role37/v1a4_role37_summon_title.png"
   ],
   "singlebg_lang/txt_summon_version_1_6/quniang/v1a6_quniang_img_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_summon_version_1_6/quniang/v1a6_quniang_img_title.png"

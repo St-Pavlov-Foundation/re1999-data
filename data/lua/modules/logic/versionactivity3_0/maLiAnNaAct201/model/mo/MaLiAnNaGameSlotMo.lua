@@ -79,6 +79,10 @@ function var_0_0.update(arg_6_0, arg_6_1)
 	for iter_6_0, iter_6_1 in pairs(arg_6_0._slotSoldierList) do
 		if iter_6_1 then
 			iter_6_1:update(arg_6_1)
+
+			if iter_6_1:getCamp() ~= arg_6_0._slotCamp then
+				iter_6_1:setCamp(arg_6_0._slotCamp)
+			end
 		end
 	end
 
@@ -202,8 +206,8 @@ function var_0_0.enterSoldier(arg_11_0, arg_11_1, arg_11_2)
 			end
 		end
 	elseif arg_11_1:isMoveEnd() or arg_11_2 then
-		arg_11_0:_checkSoliderEnterPassive(arg_11_1)
 		arg_11_0:_updateSoliderList(arg_11_1, true)
+		arg_11_0:_checkSoliderEnterPassive(arg_11_1)
 
 		return false
 	end
@@ -259,13 +263,13 @@ function var_0_0.soliderDead(arg_14_0, arg_14_1)
 end
 
 function var_0_0._updateCurCamp(arg_15_0)
+	arg_15_0:_sortSoliderList()
+
 	if #arg_15_0._slotSoldierList > 0 then
 		arg_15_0:updateSlotCamp(arg_15_0._slotSoldierList[1]:getCamp())
 	else
 		arg_15_0:updateSlotCamp(Activity201MaLiAnNaEnum.CampType.Middle)
 	end
-
-	arg_15_0:_sortSoliderList()
 end
 
 function var_0_0.setDispatchSoldierInfo(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
@@ -427,10 +431,6 @@ function var_0_0.updateSlotCamp(arg_28_0, arg_28_1)
 		arg_28_0:clearDisPatchInfo()
 
 		arg_28_0._skillGenerateSoliderEffectTime = 0
-
-		for iter_28_0, iter_28_1 in ipairs(arg_28_0._slotSoldierList) do
-			iter_28_1:setCamp(arg_28_0._slotCamp)
-		end
 	end
 end
 
@@ -580,8 +580,6 @@ function var_0_0._checkSoliderEnterPassive(arg_44_0, arg_44_1)
 	if var_44_0 == nil then
 		return
 	end
-
-	var_44_0 = var_44_0 == Activity201MaLiAnNaEnum.CampType.Player and var_44_0 or arg_44_0._slotCamp
 
 	if var_44_1 ~= nil then
 		if var_44_1 > 0 then

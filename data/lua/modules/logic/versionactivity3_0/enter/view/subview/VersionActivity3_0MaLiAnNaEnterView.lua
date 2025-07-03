@@ -46,7 +46,7 @@ function var_0_0.onOpen(arg_5_0)
 	arg_5_0:_refreshTime()
 	TaskDispatcher.runRepeat(arg_5_0._refreshTime, arg_5_0, TimeUtil.OneMinuteSecond)
 	arg_5_0._animator:Play("open", 0, 0)
-	AudioMgr.instance:trigger(AudioEnum3_0.MaLiAnNa.play_ui_lushang_burn_loop)
+	Activity201MaLiAnNaController.instance:startBurnAudio()
 end
 
 function var_0_0._enterGame(arg_6_0)
@@ -134,7 +134,7 @@ end
 
 function var_0_0.onClose(arg_13_0)
 	TaskDispatcher.cancelTask(arg_13_0._refreshTime, arg_13_0)
-	AudioMgr.instance:trigger(AudioEnum3_0.MaLiAnNa.stop_ui_lushang_burn_loop)
+	Activity201MaLiAnNaController.instance:stopBurnAudio()
 end
 
 function var_0_0.onDestroyView(arg_14_0)

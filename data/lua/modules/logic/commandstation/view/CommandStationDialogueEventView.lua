@@ -148,6 +148,7 @@ function var_0_0._btnRightOnClick(arg_17_0)
 end
 
 function var_0_0._editableInitView(arg_18_0)
+	arg_18_0._goViewport = gohelper.findChild(arg_18_0.viewGO, "root/#go_OutsideEvent/Scroll View/Viewport")
 	arg_18_0._outSideEventAnimator = arg_18_0._goOutsideEvent:GetComponent("Animator")
 	arg_18_0._outSidePanelAnimator = arg_18_0._goOutsideEventPanel:GetComponent("Animator")
 	arg_18_0._goArrow = gohelper.findChild(arg_18_0.viewGO, "root/#go_OutsideEvent/image_Arrow")
@@ -224,12 +225,18 @@ function var_0_0._updateDialogue(arg_22_0)
 
 	local var_22_0 = arg_22_0._dialogueList[arg_22_0._dialogueCurIndex]
 	local var_22_1 = var_22_0 and lua_copost_event_text.configDict[var_22_0]
+	local var_22_2 = var_22_1 and var_22_1.text or ""
+	local var_22_3 = GameUtil.getPreferredHeight(arg_22_0._txtDescr, var_22_2)
 
-	arg_22_0._txtDescr.text = var_22_1 and var_22_1.text
+	arg_22_0._txtDescr.text = var_22_2
 
-	local var_22_2 = var_22_1 and lua_copost_character.configDict[var_22_1.chaId]
+	if arg_22_0._goViewport then
+		arg_22_0._goViewport:GetComponent(typeof(UnityEngine.UI.MaskableGraphic)).raycastTarget = var_22_3 > recthelper.getHeight(arg_22_0._goViewport.transform)
+	end
 
-	arg_22_0._txtTitle.text = var_22_2 and var_22_2.chaName
+	local var_22_4 = var_22_1 and lua_copost_character.configDict[var_22_1.chaId]
+
+	arg_22_0._txtTitle.text = var_22_4 and var_22_4.chaName
 
 	gohelper.setActive(arg_22_0._goArrow, arg_22_0._dialogueCurIndex < arg_22_0._dialogueMaxIndex)
 end

@@ -3,7 +3,7 @@
 local var_0_0 = class("Activity201MaLiAnNaController", BaseController)
 
 function var_0_0.onInit(arg_1_0)
-	return
+	arg_1_0._isPlayBurn = false
 end
 
 function var_0_0.onInitFinish(arg_2_0)
@@ -15,7 +15,7 @@ function var_0_0.addConstEvents(arg_3_0)
 end
 
 function var_0_0.reInit(arg_4_0)
-	return
+	arg_4_0:onInit()
 end
 
 function var_0_0._onGameFinished(arg_5_0, arg_5_1, arg_5_2)
@@ -39,6 +39,7 @@ function var_0_0._onGameFinished(arg_5_0, arg_5_1, arg_5_2)
 		end
 
 		if var_5_0 and var_5_0 ~= 0 then
+			var_0_0.instance:stopBurnAudio()
 			StoryController.instance:playStory(var_5_0, nil, arg_5_0._afterFinishStory, arg_5_0, {
 				isWin = true,
 				episodeId = arg_5_2
@@ -72,6 +73,7 @@ function var_0_0._playStoryClear(arg_9_0, arg_9_1)
 	local var_9_1 = Activity201MaLiAnNaConfig.instance:getStoryClear(var_9_0, arg_9_1)
 
 	if var_9_1 and var_9_1 ~= 0 then
+		var_0_0.instance:stopBurnAudio()
 		StoryController.instance:playStory(var_9_1, nil, arg_9_0.openResultView, arg_9_0, {
 			isWin = true,
 			episodeId = arg_9_1
@@ -85,6 +87,8 @@ function var_0_0._playStoryClear(arg_9_0, arg_9_1)
 end
 
 function var_0_0.openResultView(arg_10_0, arg_10_1)
+	var_0_0.instance:startBurnAudio()
+
 	local var_10_0 = VersionActivity3_0Enum.ActivityId.MaLiAnNa
 	local var_10_1 = arg_10_1 and arg_10_1.episodeId
 
@@ -114,6 +118,20 @@ function var_0_0._onRecInfo(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
 		Activity201MaLiAnNaModel.instance:initInfos(arg_12_3.episodes)
 		ViewMgr.instance:openView(ViewName.Activity201MaLiAnNaGameMainView)
 		ViewMgr.instance:openView(ViewName.Activity201MaLiAnNaLevelView)
+	end
+end
+
+function var_0_0.startBurnAudio(arg_13_0)
+	AudioMgr.instance:trigger(AudioEnum3_0.MaLiAnNa.play_ui_lushang_burn_loop)
+
+	arg_13_0._isPlayBurn = true
+end
+
+function var_0_0.stopBurnAudio(arg_14_0)
+	if arg_14_0._isPlayBurn then
+		AudioMgr.instance:trigger(AudioEnum3_0.MaLiAnNa.stop_ui_lushang_burn_loop)
+
+		arg_14_0._isPlayBurn = false
 	end
 end
 

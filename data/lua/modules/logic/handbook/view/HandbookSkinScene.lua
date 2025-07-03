@@ -10,11 +10,11 @@ local var_0_5 = "sence2up"
 local var_0_6 = 5
 local var_0_7 = 0.00025
 local var_0_8 = {
-	0.833,
-	0.667,
+	0.8333,
+	0.6667,
 	0.5,
-	0.333,
-	0.167
+	0.3333,
+	0.1667
 }
 local var_0_9 = 0.25
 
@@ -195,6 +195,8 @@ function var_0_1._onMoveToOtherSuitAniDone(arg_12_0)
 end
 
 function var_0_1.onOpen(arg_13_0)
+	CameraMgr.instance:switchVirtualCamera(1)
+
 	local var_13_0 = arg_13_0.viewParam
 
 	arg_13_0.sceneVisible = true
@@ -661,6 +663,10 @@ function var_0_1.onTarotItemClickUp(arg_37_0, arg_37_1)
 		return
 	end
 
+	if not arg_37_0.sceneVisible then
+		return
+	end
+
 	local var_37_0 = arg_37_0._tarotCardIdx2SkinIdx[arg_37_1]
 	local var_37_1 = arg_37_0._tarotCardDatas[var_37_0].skinId
 	local var_37_2 = SkinConfig.instance:getSkinCo(var_37_1)
@@ -715,19 +721,19 @@ function var_0_1.cardPosResetTweenFrameCallback(arg_39_0, arg_39_1, arg_39_2)
 end
 
 function var_0_1._checkCardPosIdx(arg_40_0, arg_40_1)
+	local var_40_0 = math.huge
+	local var_40_1 = 1
+
 	for iter_40_0, iter_40_1 in ipairs(var_0_8) do
-		if iter_40_1 < arg_40_1 then
-			if iter_40_0 == 1 then
-				return 1
-			elseif math.abs(arg_40_1 - iter_40_1) < math.abs(arg_40_1 - var_0_8[iter_40_0 - 1]) then
-				return iter_40_0
-			else
-				return iter_40_0 - 1
-			end
+		local var_40_2 = math.abs(arg_40_1 - iter_40_1)
+
+		if var_40_2 < var_40_0 then
+			var_40_0 = var_40_2
+			var_40_1 = iter_40_0
 		end
 	end
 
-	return #var_0_8
+	return var_40_1
 end
 
 function var_0_1.isInTarotMode(arg_41_0)
@@ -782,8 +788,6 @@ function var_0_1.delayRemoveAnimator(arg_46_0)
 	if var_46_1 then
 		gohelper.removeComponent(var_46_1.gameObject, typeof(UnityEngine.Animator))
 	end
-
-	CameraMgr.instance:getMainCamera().fieldOfView = 35
 end
 
 function var_0_1.UpdateAnimProgress(arg_47_0, arg_47_1, arg_47_2, arg_47_3)
@@ -818,6 +822,10 @@ function var_0_1.onDestroyView(arg_48_0)
 			end
 		end
 	end
+end
+
+function var_0_1.onCloseFinish(arg_49_0)
+	CameraMgr.instance:getMainCamera().fieldOfView = 35
 end
 
 return var_0_1

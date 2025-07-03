@@ -6558,7 +6558,7 @@
   {
     "id": 28601,
     "desc": "皮肤图鉴功能",
-    "isOnline": 1,
+    "isOnline": 0,
     "trigger": "EpisodeFinish#10316",
     "invalid": "",
     "interruptFinish": 1,

@@ -157,6 +157,7 @@ function var_0_0._onBackToLevel(arg_15_0)
 	end
 
 	arg_15_0:_refreshTask()
+	Activity201MaLiAnNaController.instance:startBurnAudio()
 end
 
 function var_0_0._onEpisodeFinished(arg_16_0)

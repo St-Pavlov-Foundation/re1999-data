@@ -403,7 +403,7 @@ function var_0_0.getEnterSlotSkillValue(arg_43_0)
 		if var_43_0:getSkillActionType() == Activity201MaLiAnNaEnum.SkillAction.enterSlotAddSolider then
 			local var_43_1 = var_43_0:getEffect()
 
-			return Activity201MaLiAnNaEnum.CampType.Player, tonumber(var_43_1[2])
+			return arg_43_0._camp, tonumber(var_43_1[2])
 		end
 	end
 

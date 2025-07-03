@@ -201,7 +201,9 @@ function var_0_0.onUpdateParam(arg_20_0)
 end
 
 function var_0_0.onOpen(arg_21_0)
-	if ViewMgr.instance:isOpen(ViewName.LoadingView) then
+	local var_21_0 = arg_21_0.viewParam and arg_21_0.viewParam.jumpId
+
+	if ViewMgr.instance:isOpen(ViewName.LoadingView) and var_21_0 ~= nil then
 		return
 	end
 

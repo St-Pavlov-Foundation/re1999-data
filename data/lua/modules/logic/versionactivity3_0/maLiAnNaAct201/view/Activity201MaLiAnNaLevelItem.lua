@@ -48,6 +48,7 @@ function var_0_0._btnOnClick(arg_3_0)
 
 			var_3_0.mark = true
 
+			Activity201MaLiAnNaController.instance:stopBurnAudio()
 			StoryController.instance:playStory(arg_3_0._config.storyBefore, var_3_0, arg_3_0._onGameFinished, arg_3_0)
 		else
 			arg_3_0:_onGameFinished()
@@ -57,6 +58,7 @@ function var_0_0._btnOnClick(arg_3_0)
 
 		var_3_1.mark = true
 
+		Activity201MaLiAnNaController.instance:stopBurnAudio()
 		StoryController.instance:playStory(arg_3_0._config.storyBefore, var_3_1, arg_3_0._enterGame, arg_3_0)
 	else
 		arg_3_0:_enterGame()
@@ -108,6 +110,8 @@ function var_0_0.refreshUI(arg_5_0)
 end
 
 function var_0_0._enterGame(arg_6_0)
+	Activity201MaLiAnNaController.instance:startBurnAudio()
+
 	if Activity201MaLiAnNaModel.instance:checkEpisodeFinishGame(arg_6_0.id) and not Activity201MaLiAnNaModel.instance:isEpisodePass(arg_6_0.id) then
 		arg_6_0:_onGameFinished()
 	else
