@@ -916,8 +916,8 @@
     "type": 0,
     "isCustomLoad": 1,
     "className": "GiftrecommendView1",
-    "topDay": 0,
-    "topType": 1
+    "topDay": 1,
+    "topType": 0
   },
   {
     "id": 804,
