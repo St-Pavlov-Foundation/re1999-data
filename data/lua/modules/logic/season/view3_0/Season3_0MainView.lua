@@ -400,25 +400,24 @@ function var_0_0.refreshTrial(arg_35_0)
 	if var_35_2 then
 		gohelper.setActive(arg_35_0._gotry, true)
 
-		local var_35_3 = SeasonConfig.instance:getSeasonEpisodeCo(var_35_0, var_35_2.unlockLayer).stage
-		local var_35_4 = Activity104Model.instance:getMaxStage()
+		local var_35_3 = SeasonConfig.instance:getTrialCount(var_35_0) + 1
 
 		if not arg_35_0.starComp then
-			local var_35_5 = gohelper.findChild(arg_35_0._gotry, "progress")
+			local var_35_4 = gohelper.findChild(arg_35_0._gotry, "progress")
 
-			arg_35_0.starComp = MonoHelper.addNoUpdateLuaComOnceToGo(var_35_5, SeasonStarProgressComp)
+			arg_35_0.starComp = MonoHelper.addNoUpdateLuaComOnceToGo(var_35_4, SeasonStarProgressComp)
 		end
 
-		arg_35_0.starComp:refreshStar("#go_progress", var_35_3, var_35_4)
+		arg_35_0.starComp:refreshStar("#go_progress", var_35_1, var_35_3)
 
 		arg_35_0._trialTxtNameen.text = var_35_2.nameEn
 		arg_35_0._trialTxtNamecn.text = var_35_2.name
 
-		local var_35_6 = DungeonConfig.instance:getEpisodeCO(var_35_2.episodeId)
-		local var_35_7 = var_35_6 and var_35_6.battleId
-		local var_35_8
+		local var_35_5 = DungeonConfig.instance:getEpisodeCO(var_35_2.episodeId)
+		local var_35_6 = var_35_5 and var_35_5.battleId
+		local var_35_7
 
-		var_35_8 = var_35_7 and lua_battle.configDict[var_35_7]
+		var_35_7 = var_35_6 and lua_battle.configDict[var_35_6]
 
 		if not arg_35_0.trialCardItem then
 			arg_35_0.trialCardItem = Season3_0CelebrityCardItem.New()

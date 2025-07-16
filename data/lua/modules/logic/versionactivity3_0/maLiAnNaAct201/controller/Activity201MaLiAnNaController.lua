@@ -122,6 +122,10 @@ function var_0_0._onRecInfo(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
 end
 
 function var_0_0.startBurnAudio(arg_13_0)
+	if arg_13_0._isPlayBurn then
+		return
+	end
+
 	AudioMgr.instance:trigger(AudioEnum3_0.MaLiAnNa.play_ui_lushang_burn_loop)
 
 	arg_13_0._isPlayBurn = true

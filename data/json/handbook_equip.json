@@ -676,5 +676,11 @@
     "order": 0,
     "equipId": 1442,
     "desc": "坦南特"
+  },
+  {
+    "id": 5052,
+    "order": 0,
+    "equipId": 1554,
+    "desc": "卡戎"
   }
 ]

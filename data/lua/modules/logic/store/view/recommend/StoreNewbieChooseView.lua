@@ -110,7 +110,8 @@ function var_0_0._onClick(arg_9_0)
 	StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 		[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
 		[StatEnum.EventProperties.RecommendPageId] = "712",
-		[StatEnum.EventProperties.RecommendPageName] = "新人邀约"
+		[StatEnum.EventProperties.RecommendPageName] = "新人邀约",
+		[StatEnum.EventProperties.RecommendPageRank] = arg_9_0:getTabIndex()
 	})
 end
 

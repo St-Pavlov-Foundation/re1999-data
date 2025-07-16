@@ -30495,6 +30495,30 @@
   "singlebg/summon/heroversion_3_0/v3a0_selfselectsix_role.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_selfselectsix_role.png"
   ],
+  "singlebg/summon/heroversion_3_0/v3a0_37/v3a0_37_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_37/v3a0_37_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_37/v3a0_37_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_37/v3a0_37_role2.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_37/v3a0_summon_37_chancebg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_37/v3a0_summon_37_chancebg.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_chancebg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_chancebg.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_fullbg.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_karong/v3a0_karong_role2.png"
+  ],
   "singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_chancebg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_chancebg.png"
   ],
@@ -33080,6 +33104,30 @@
   ],
   "singlebg/v3a0_sign_singlebg/v3a0_sign_summer_panelbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/v3a0_sign_singlebg/v3a0_sign_summer_panelbg.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg2.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_fullbg3.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_1.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_2.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_3.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_4.png"
+  ],
+  "singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a0_warmup_singlebg/v3a0_warmup_pic_5.png"
   ],
   "singlebg/versionactivityhelp/v2a5_challenge_help_10.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionactivityhelp/v2a5_challenge_help_10.png"

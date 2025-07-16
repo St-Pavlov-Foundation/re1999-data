@@ -751,15 +751,24 @@ function var_0_0.getAct104SpecialInitLayer(arg_53_0)
 		return 0
 	end
 
-	local var_53_2 = arg_53_0:getMaxSpecialLayer()
+	local var_53_2 = 1
+	local var_53_3
 
 	for iter_53_0, iter_53_1 in pairs(var_53_1.specials) do
 		if iter_53_1.state == 0 then
-			var_53_2 = math.min(iter_53_1.layer, var_53_2)
+			var_53_3 = var_53_3 and math.min(iter_53_1.layer, var_53_3) or iter_53_1.layer
+		end
+
+		if arg_53_0:isSpecialLayerOpen(var_53_0, iter_53_1.layer) then
+			var_53_2 = math.max(iter_53_1.layer, var_53_2)
 		end
 	end
 
-	return var_53_2
+	if var_53_3 == nil then
+		var_53_3 = var_53_2
+	end
+
+	return var_53_3
 end
 
 function var_0_0.getMaxSpecialLayer(arg_54_0)

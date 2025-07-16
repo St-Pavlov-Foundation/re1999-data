@@ -41,7 +41,8 @@ function var_0_0._btnbuyOnClick(arg_4_0)
 	StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 		[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
 		[StatEnum.EventProperties.RecommendPageId] = "711",
-		[StatEnum.EventProperties.RecommendPageName] = "月历"
+		[StatEnum.EventProperties.RecommendPageName] = "月历",
+		[StatEnum.EventProperties.RecommendPageRank] = arg_4_0:getTabIndex()
 	})
 
 	local var_4_0 = string.splitToNumber(arg_4_0.config.systemJumpCode, "#")

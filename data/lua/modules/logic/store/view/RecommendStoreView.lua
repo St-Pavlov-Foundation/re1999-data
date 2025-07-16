@@ -37,7 +37,8 @@ function var_0_0._onClickRecommend(arg_4_0)
 			StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 				[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
 				[StatEnum.EventProperties.RecommendPageId] = var_4_1.id,
-				[StatEnum.EventProperties.RecommendPageName] = var_4_1.name
+				[StatEnum.EventProperties.RecommendPageName] = var_4_1.name,
+				[StatEnum.EventProperties.RecommendPageRank] = arg_4_0:getIndexByTabId(var_4_0)
 			})
 			GameFacade.jumpByAdditionParam(var_4_1.systemJumpCode)
 		end
@@ -253,8 +254,13 @@ function var_0_0._refreshTabsItem(arg_18_0)
 		arg_18_0._selectSecondTabId = var_18_0[1].id
 	end
 
+	arg_18_0._tabIdList = {}
+
 	for iter_18_2 = 1, #var_18_0 do
-		arg_18_0:_refreshSecondTabs(iter_18_2, var_18_0[iter_18_2])
+		local var_18_3 = var_18_0[iter_18_2]
+
+		table.insert(arg_18_0._tabIdList, var_18_3.id)
+		arg_18_0:_refreshSecondTabs(iter_18_2, var_18_3)
 		gohelper.setActive(arg_18_0._categoryItemContainer[iter_18_2].go, true)
 		gohelper.setActive(arg_18_0._categoryItemContainer[iter_18_2].sliderGo, true)
 	end
@@ -268,14 +274,14 @@ function var_0_0._refreshTabsItem(arg_18_0)
 		arg_18_0._categoryItemContainer[iter_18_3] = nil
 	end
 
-	local var_18_3 = -300 * (arg_18_0._nowIndex - 5) - 50
-	local var_18_4 = -300 * (arg_18_0._nowIndex - 1)
-	local var_18_5 = recthelper.getAnchorX(arg_18_0._categorycontentTrans)
+	local var_18_4 = -300 * (arg_18_0._nowIndex - 5) - 50
+	local var_18_5 = -300 * (arg_18_0._nowIndex - 1)
+	local var_18_6 = recthelper.getAnchorX(arg_18_0._categorycontentTrans)
 
-	if var_18_5 < var_18_4 then
+	if var_18_6 < var_18_5 then
+		recthelper.setAnchorX(arg_18_0._categorycontentTrans, var_18_5)
+	elseif var_18_4 < var_18_6 then
 		recthelper.setAnchorX(arg_18_0._categorycontentTrans, var_18_4)
-	elseif var_18_3 < var_18_5 then
-		recthelper.setAnchorX(arg_18_0._categorycontentTrans, var_18_3)
 	end
 
 	arg_18_0:_onRefreshRedDot()
@@ -523,6 +529,10 @@ function var_0_0.onDestroyView(arg_34_0)
 	TaskDispatcher.cancelTask(arg_34_0._toNextTab, arg_34_0)
 	TaskDispatcher.cancelTask(arg_34_0._onSwitchCloseAnimDone, arg_34_0)
 	TaskDispatcher.cancelTask(arg_34_0._resetIgnoreClick, arg_34_0)
+end
+
+function var_0_0.getIndexByTabId(arg_35_0, arg_35_1)
+	return tabletool.indexOf(arg_35_0._tabIdList, arg_35_1) or 1
 end
 
 return var_0_0

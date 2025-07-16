@@ -69,9 +69,11 @@ function var_0_0.updateView(arg_6_0)
 	arg_6_0.posUnlock = Activity104Model.instance:isSeasonLayerPosUnlock(var_6_0, var_6_1, arg_6_0._layer, arg_6_0.slot, arg_6_0.id - 1)
 	arg_6_0.slotUnlock = Activity104Model.instance:isSeasonLayerSlotUnlock(var_6_0, var_6_1, arg_6_0._layer, arg_6_0.slot)
 
-	if arg_6_0.hasTrialEquip and arg_6_0:getEquipId(var_6_0, var_6_1) == 0 then
-		arg_6_0.posUnlock = false
-		arg_6_0.slotUnlock = false
+	if arg_6_0.hasTrialEquip then
+		local var_6_2 = arg_6_0:getEquipId(var_6_0, var_6_1) ~= 0
+
+		arg_6_0.posUnlock = var_6_2
+		arg_6_0.slotUnlock = var_6_2
 	end
 
 	gohelper.setActive(arg_6_0._gocardlock, not arg_6_0.posUnlock)
@@ -79,18 +81,18 @@ function var_0_0.updateView(arg_6_0)
 	gohelper.setActive(arg_6_0.go, arg_6_0.slotUnlock)
 
 	if arg_6_0.posUnlock then
-		local var_6_2 = arg_6_0:getEquipId(var_6_0, var_6_1)
+		local var_6_3 = arg_6_0:getEquipId(var_6_0, var_6_1)
 
-		if var_6_2 ~= 0 then
+		if var_6_3 ~= 0 then
 			if not arg_6_0._seasonCardItem then
 				arg_6_0._seasonCardItem = Season3_0CelebrityCardItem.New()
 
-				arg_6_0._seasonCardItem:init(arg_6_0._gocardicon, var_6_2, {
+				arg_6_0._seasonCardItem:init(arg_6_0._gocardicon, var_6_3, {
 					noClick = true
 				})
 			else
 				gohelper.setActive(arg_6_0._seasonCardItem.go, true)
-				arg_6_0._seasonCardItem:reset(var_6_2)
+				arg_6_0._seasonCardItem:reset(var_6_3)
 			end
 
 			arg_6_0._hasUseSeasonEquipCard = true
@@ -165,7 +167,7 @@ function var_0_0._btnCardClick(arg_10_0)
 	local var_10_0 = Activity104Model.instance:getCurSeasonId()
 	local var_10_1 = Activity104Model.instance:getSeasonCurSnapshotSubId(var_10_0)
 
-	if not Activity104Model.instance:isSeasonPosUnlock(var_10_0, var_10_1, arg_10_0.slot, arg_10_0.id - 1) then
+	if not Activity104Model.instance:isSeasonPosUnlock(var_10_0, var_10_1, arg_10_0.slot, arg_10_0.id - 1) and not arg_10_0.hasTrialEquip then
 		GameFacade.showToast(ToastEnum.SeasonEquipSlotNotUnlock)
 
 		return

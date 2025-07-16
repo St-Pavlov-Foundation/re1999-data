@@ -192,6 +192,20 @@ function var_0_0.refreshSliderByProgressAndLevel(arg_11_0, arg_11_1, arg_11_2)
 			else
 				local var_11_0 = arg_11_0.curMaxProgress
 
+				if not var_11_0 or var_11_0 < 1 then
+					local var_11_1 = lua_fight_dnsz.configList[arg_11_2 + 1]
+
+					var_11_0 = 0
+
+					if var_11_1 then
+						var_11_0 = var_11_1.progress
+					else
+						logError("not found fight_dnsz co, level : " .. tostring(arg_11_2))
+
+						var_11_0 = 1
+					end
+				end
+
 				iter_11_1.fillAmount = arg_11_1 / var_11_0
 				arg_11_0.textSlider.text = string.format("%s/<#E3E3E3>%s</COLOR>", arg_11_1, var_11_0)
 			end

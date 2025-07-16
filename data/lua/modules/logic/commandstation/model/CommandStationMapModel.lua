@@ -12,6 +12,9 @@ function var_0_0.reInit(arg_2_0)
 	arg_2_0._versionId = nil
 	arg_2_0._timelineIsCharacterMode = false
 	arg_2_0._characterId = nil
+	arg_2_0._preloadScene = nil
+	arg_2_0._preloadSceneLoader = nil
+	arg_2_0._preloadView = nil
 end
 
 function var_0_0.setVersionId(arg_3_0, arg_3_1)
@@ -186,6 +189,27 @@ function var_0_0.getSceneNode(arg_21_0, arg_21_1)
 	end
 
 	return var_21_0
+end
+
+function var_0_0.setPreloadScene(arg_22_0, arg_22_1, arg_22_2)
+	arg_22_0._preloadScene = arg_22_2
+	arg_22_0._preloadSceneLoader = arg_22_1
+end
+
+function var_0_0.getPreloadScene(arg_23_0)
+	return arg_23_0._preloadScene
+end
+
+function var_0_0.getPreloadSceneLoader(arg_24_0)
+	return arg_24_0._preloadSceneLoader
+end
+
+function var_0_0.setPreloadView(arg_25_0, arg_25_1)
+	arg_25_0._preloadView = arg_25_1
+end
+
+function var_0_0.getPreloadView(arg_26_0)
+	return arg_26_0._preloadView
 end
 
 var_0_0.instance = var_0_0.New()

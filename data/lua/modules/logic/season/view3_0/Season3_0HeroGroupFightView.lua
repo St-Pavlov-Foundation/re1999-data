@@ -33,7 +33,6 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._goTrialTipsBg = gohelper.findChild(arg_1_0.viewGO, "#go_container/trialContainer/#go_trialTips/#go_tipsbg")
 	arg_1_0._goTrialTipsItem = gohelper.findChild(arg_1_0.viewGO, "#go_container/trialContainer/#go_trialTips/#go_tipsbg/#go_tipsitem")
 	arg_1_0._btnTrialTips = gohelper.findChildButton(arg_1_0.viewGO, "#go_container/trialContainer/#go_trialTips/#btn_tips")
-	arg_1_0._simagereplayframe = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_container/#go_replayready/frame3")
 
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()
@@ -163,7 +162,6 @@ end
 
 function var_0_0._editableInitView(arg_15_0)
 	arg_15_0._simagerole:LoadImage(ResUrl.getSeasonIcon("img_vertin.png"))
-	arg_15_0._simagereplayframe:LoadImage(SeasonViewHelper.getSeasonIcon("replay_frame.png"))
 	arg_15_0:_initComponent()
 	arg_15_0:_initData()
 	arg_15_0:_addEvents()

@@ -135,7 +135,8 @@ function var_0_0._onClickView(arg_12_0)
 		StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 			[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Main,
 			[StatEnum.EventProperties.RecommendPageId] = tostring(var_12_0.id),
-			[StatEnum.EventProperties.RecommendPageName] = var_12_0.name
+			[StatEnum.EventProperties.RecommendPageName] = var_12_0.name,
+			[StatEnum.EventProperties.RecommendPageRank] = arg_12_0:getTargetPageIndex()
 		})
 		GameFacade.jumpByAdditionParam(var_12_0.systemJumpCode)
 	end

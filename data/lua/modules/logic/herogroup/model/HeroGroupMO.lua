@@ -481,6 +481,15 @@ function var_0_0.replaceHeroList(arg_9_0, arg_9_1)
 		if arg_9_1[iter_9_0].aid then
 			arg_9_0.aidDict[iter_9_0] = arg_9_1[iter_9_0].aid
 		end
+
+		local var_9_1 = arg_9_1[iter_9_0]:getTrialCO()
+
+		if var_9_1 then
+			arg_9_0.trialDict[iter_9_0] = {
+				var_9_1.id,
+				var_9_1.trialTemplate
+			}
+		end
 	end
 
 	arg_9_0:_dropAidEquip()

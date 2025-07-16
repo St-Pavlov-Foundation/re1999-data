@@ -1882,5 +1882,53 @@
     "triggerAudio": 0,
     "delAudio": 430940342,
     "audio": 430940341
+  },
+  {
+    "buffId": 230002,
+    "orEnemy": 2,
+    "skinId": 308404,
+    "effectHang": "",
+    "effectPath": "v2a3_getian_rajj/getian_rajj_skill2_02",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 230003,
+    "orEnemy": 2,
+    "skinId": 308404,
+    "effectHang": "",
+    "effectPath": "v2a3_getian_rajj/getian_rajj_skill2_02",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 230004,
+    "orEnemy": 2,
+    "skinId": 308404,
+    "effectHang": "",
+    "effectPath": "v2a3_getian_rajj/getian_rajj_skill2_02",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 230006,
+    "orEnemy": 2,
+    "skinId": 308404,
+    "effectHang": "",
+    "effectPath": "v2a3_getian_rajj/getian_rajj_skill2_02",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
   }
 ]

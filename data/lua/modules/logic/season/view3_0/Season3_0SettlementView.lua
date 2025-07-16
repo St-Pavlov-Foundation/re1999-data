@@ -451,38 +451,34 @@ function var_0_0._onHeroItemLoaded(arg_27_0)
 
 		for iter_27_11 = 1, 4 do
 			if var_27_7[iter_27_11] then
-				local var_27_12 = lua_hero_trial.configDict[var_27_7[iter_27_11].trialId][0]
+				if lua_hero_trial.configDict[var_27_7[iter_27_11].trialId][0] then
+					local var_27_12 = var_27_7[iter_27_11].equipUid
+					local var_27_13 = arg_27_0:openSubView(Season3_0SettlementHeroItem, arg_27_0._hero_obj_list[iter_27_11], nil, var_27_6, nil, var_27_12, nil, nil, var_27_7[iter_27_11])
 
-				if var_27_12 then
-					local var_27_13 = tostring(var_27_12.heroId - 1099511627776)
-					local var_27_14 = var_27_7[iter_27_11].equipUid
-					local var_27_15 = var_27_10[var_27_13] and var_27_10[var_27_13].equipUid
-					local var_27_16 = arg_27_0:openSubView(Season3_0SettlementHeroItem, arg_27_0._hero_obj_list[iter_27_11], nil, var_27_6, nil, var_27_14, var_27_15, nil, var_27_7[iter_27_11])
-
-					table.insert(arg_27_0._heroList, var_27_16)
+					table.insert(arg_27_0._heroList, var_27_13)
 				end
 			else
-				local var_27_17 = var_27_8[iter_27_11]
-				local var_27_18 = var_27_17 ~= "0" and var_27_9[var_27_17] and var_27_9[var_27_17].equipUid
-				local var_27_19 = var_27_17 ~= "0" and var_27_10[var_27_17] and var_27_10[var_27_17].equipUid
-				local var_27_20 = arg_27_0:openSubView(Season3_0SettlementHeroItem, arg_27_0._hero_obj_list[iter_27_11], nil, var_27_6, var_27_17, var_27_18, var_27_19)
+				local var_27_14 = var_27_8[iter_27_11]
+				local var_27_15 = var_27_14 ~= "0" and var_27_9[var_27_14] and var_27_9[var_27_14].equipUid
+				local var_27_16 = var_27_14 ~= "0" and var_27_10[var_27_14] and var_27_10[var_27_14].equipUid
+				local var_27_17 = arg_27_0:openSubView(Season3_0SettlementHeroItem, arg_27_0._hero_obj_list[iter_27_11], nil, var_27_6, var_27_14, var_27_15, var_27_16)
 
-				if var_27_17 ~= "0" then
-					table.insert(arg_27_0._heroList, var_27_20)
+				if var_27_14 ~= "0" then
+					table.insert(arg_27_0._heroList, var_27_17)
 				end
 			end
 		end
 
 		arg_27_0:_refreshHeroItemPos()
 
-		local var_27_21 = "-100000"
+		local var_27_18 = "-100000"
 
-		if var_27_10[var_27_21] then
-			local var_27_22 = var_27_10[var_27_21].equipUid and var_27_10[var_27_21].equipUid[1]
+		if var_27_10[var_27_18] then
+			local var_27_19 = var_27_10[var_27_18].equipUid and var_27_10[var_27_18].equipUid[1]
 
-			if var_27_22 and var_27_22 ~= "0" then
+			if var_27_19 and var_27_19 ~= "0" then
 				gohelper.setActive(arg_27_0._gosupercard, true)
-				arg_27_0:openSubView(Season3_0CelebrityCardGetItem, Season3_0CelebrityCardItem.AssetPath, arg_27_0._gosupercard, var_27_22, true)
+				arg_27_0:openSubView(Season3_0CelebrityCardGetItem, Season3_0CelebrityCardItem.AssetPath, arg_27_0._gosupercard, var_27_19, true)
 			end
 		end
 	else

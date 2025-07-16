@@ -62,26 +62,37 @@ function var_0_0._showNormalData(arg_6_0)
 
 	local var_6_0 = arg_6_0._equip and EquipModel.instance:getEquip(arg_6_0._equip[1])
 	local var_6_1 = var_6_0 and var_6_0.equipId
-
-	arg_6_0:_showEquipIcon(var_6_1)
+	local var_6_2 = Activity104Model.instance:getAllItemMo()
+	local var_6_3 = {}
+	local var_6_4 = {}
 
 	if arg_6_0._equip_104 then
-		local var_6_2 = Activity104Model.instance:getAllItemMo()
-		local var_6_3 = {}
-
 		for iter_6_0, iter_6_1 in ipairs(arg_6_0._equip_104) do
 			if var_6_2[iter_6_1] then
 				table.insert(var_6_3, var_6_2[iter_6_1].uid)
 			end
 		end
+	end
 
-		local var_6_4 = #var_6_3
+	if arg_6_0._trail then
+		local var_6_5 = lua_hero_trial.configDict[arg_6_0._trail.trialId][0]
 
-		arg_6_0._no104Equip = var_6_4 == 0
+		if var_6_5 then
+			table.insert(var_6_4, var_6_5.act104EquipId1)
+			table.insert(var_6_4, var_6_5.act104EquipId2)
 
-		for iter_6_2, iter_6_3 in ipairs(var_6_3) do
-			arg_6_0:_showEquip104(iter_6_2, iter_6_3, var_6_4)
+			var_6_1 = var_6_5.equipId
 		end
+	end
+
+	arg_6_0:_showEquipIcon(var_6_1)
+
+	local var_6_6 = math.max(#var_6_3, #var_6_4)
+
+	arg_6_0._no104Equip = var_6_6 == 0
+
+	for iter_6_2 = 1, var_6_6 do
+		arg_6_0:_showEquip104(iter_6_2, var_6_3[iter_6_2], var_6_6, var_6_4[iter_6_2])
 	end
 end
 

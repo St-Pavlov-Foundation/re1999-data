@@ -69,4 +69,49 @@ function var_0_0._setVisible(arg_8_0, arg_8_1)
 	end
 end
 
+function var_0_0._onResLoadFinish(arg_9_0, arg_9_1)
+	arg_9_0.viewGO = CommandStationMapModel.instance:getPreloadView()
+
+	if not arg_9_0.viewGO then
+		local var_9_0 = ViewMgr.instance:getUILayer(arg_9_0._viewSetting.layer)
+		local var_9_1 = arg_9_0._abLoader:getAssetItem(arg_9_0._viewSetting.mainRes):GetResource(arg_9_0._viewSetting.mainRes)
+
+		arg_9_0.viewGO = gohelper.clone(var_9_1, var_9_0, arg_9_0.viewName)
+	else
+		CommandStationMapModel.instance:setPreloadView(nil)
+		recthelper.setAnchor(arg_9_0.viewGO.transform, 0, 0)
+		gohelper.setAsLastSibling(arg_9_0.viewGO)
+	end
+
+	arg_9_0._views = arg_9_0:buildViews()
+
+	if arg_9_0._views then
+		for iter_9_0, iter_9_1 in ipairs(arg_9_0._views) do
+			if isTypeOf(iter_9_1, TabViewGroup) then
+				arg_9_0._tabViews = arg_9_0._tabViews or {}
+				arg_9_0._tabViews[iter_9_1:getTabContainerId()] = iter_9_1
+			end
+
+			iter_9_1:tryCallMethodName("__onInit")
+
+			iter_9_1.viewGO = arg_9_0.viewGO
+			iter_9_1.viewContainer = arg_9_0
+			iter_9_1.viewName = arg_9_0.viewName
+
+			iter_9_1:onInitViewInternal()
+			iter_9_1:addEventsInternal()
+		end
+	end
+
+	arg_9_0:onContainerInit()
+
+	BaseViewContainer.ViewLoadingCount = BaseViewContainer.ViewLoadingCount - 1
+
+	if BaseViewContainer.ViewLoadingCount <= 0 then
+		UIBlockMgr.instance:endBlock(UIBlockKey.ViewOpening)
+	end
+
+	arg_9_0:_reallyOpen()
+end
+
 return var_0_0

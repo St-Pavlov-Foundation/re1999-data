@@ -391,7 +391,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 121,
+    "level": 150,
     "desc": "不知何人丢下的火种，落在了覆于腐泥之上的那厚厚枯叶中，紧跟着便是那漫漫浓烟和火啃叶子的咔嚓声。",
     "openDay": 1
   },
@@ -402,7 +402,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 121,
+    "level": 150,
     "desc": "火焰呀，火焰下是甜美的树汁！快去，快去，快去！",
     "openDay": 1
   },
@@ -413,7 +413,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 121,
+    "level": 150,
     "desc": "第二只蚂蚁看到了，它慌忙地逃开了大树。树汁呀，腐肉呀，还有族群呀，什么都不要了！",
     "openDay": 1
   },
@@ -424,7 +424,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 121,
+    "level": 150,
     "desc": "第三只蚂蚁看到了，好大的火，好美丽的火，照在身上是金色的，只要冲进去，那一定就永远是金色的了！",
     "openDay": 1
   },
@@ -435,7 +435,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 121,
+    "level": 150,
     "desc": "第二只蚂蚁看到雨落，兴奋地冲进了水中以为得了救……",
     "openDay": 1
   },
@@ -446,7 +446,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 130,
+    "level": 180,
     "desc": "雨水浇灭了金色的火，第三只蚂蚁气急败坏，它咒骂着一切，全然忘了刚刚被炙烤的疼痛。",
     "openDay": 8
   },
@@ -457,7 +457,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 130,
+    "level": 180,
     "desc": "蚂蚁们顶着大雨从洞中钻出，从草间钻出，它们爬上了大树，爬进了枯叶中。它们要找火。",
     "openDay": 8
   },
@@ -468,7 +468,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 130,
+    "level": 180,
     "desc": "蚂蚁四处寻找，终于在缝隙中寻到了——那一丝微弱的火星。火星也在等，等这大雨过去，一切就又会熊熊燃烧。",
     "openDay": 8
   },
@@ -479,7 +479,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 130,
+    "level": 180,
     "desc": "直到一只在水中泡了很久的蚂蚁回过神，我们不是要灭火吗？",
     "openDay": 8
   },
@@ -490,7 +490,7 @@
     "name": "特贩周",
     "nameen": "Special Offer Week",
     "icon": "05",
-    "level": 130,
+    "level": 180,
     "desc": "再看看，那些已经化成了灰烬漂在坑中泥水的它们。",
     "openDay": 8
   }

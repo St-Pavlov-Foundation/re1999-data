@@ -91,22 +91,51 @@ function var_0_0._btnlvstartOnClick(arg_5_0)
 end
 
 function var_0_0._btnlastOnClick(arg_6_0)
-	if arg_6_0._layer < 2 then
+	local var_6_0 = arg_6_0._layer - 1
+
+	if var_6_0 < 1 then
 		return
 	end
 
-	arg_6_0._layer = arg_6_0._layer - 1
+	local var_6_1 = Activity104Model.instance:getCurSeasonId()
+	local var_6_2, var_6_3 = Activity104Model.instance:isSpecialLayerOpen(var_6_1, var_6_0)
+
+	if not var_6_2 then
+		local var_6_4 = math.ceil(var_6_3 / TimeUtil.OneDaySecond)
+		local var_6_5 = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("season166_unlockHardEpisodeTime"), var_6_4)
+
+		GameFacade.showToastString(var_6_5)
+
+		return
+	end
+
+	arg_6_0._layer = var_6_0
 
 	arg_6_0._animScroll:Play(UIAnimationName.Switch, 0, 0)
 	arg_6_0:_refreshInfo()
 end
 
 function var_0_0._btnnextOnClick(arg_7_0)
-	if Activity104Model.instance:getMaxSpecialLayer() <= arg_7_0._layer then
+	local var_7_0 = Activity104Model.instance:getMaxSpecialLayer()
+	local var_7_1 = arg_7_0._layer + 1
+
+	if var_7_0 < var_7_1 then
 		return
 	end
 
-	arg_7_0._layer = arg_7_0._layer + 1
+	local var_7_2 = Activity104Model.instance:getCurSeasonId()
+	local var_7_3, var_7_4 = Activity104Model.instance:isSpecialLayerOpen(var_7_2, var_7_1)
+
+	if not var_7_3 then
+		local var_7_5 = math.ceil(var_7_4 / TimeUtil.OneDaySecond)
+		local var_7_6 = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("season166_unlockHardEpisodeTime"), var_7_5)
+
+		GameFacade.showToastString(var_7_6)
+
+		return
+	end
+
+	arg_7_0._layer = var_7_1
 
 	arg_7_0._animScroll:Play(UIAnimationName.Switch, 0, 0)
 	arg_7_0:_refreshInfo()

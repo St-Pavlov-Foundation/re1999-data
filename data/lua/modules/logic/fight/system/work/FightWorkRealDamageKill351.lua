@@ -52,4 +52,8 @@ function var_0_0.getKillCo(arg_2_0)
 	end
 end
 
+function var_0_0.clearWork(arg_3_0)
+	TaskDispatcher.cancelTask(arg_3_0.finishWork, arg_3_0, waitTime)
+end
+
 return var_0_0

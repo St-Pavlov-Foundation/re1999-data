@@ -11,7 +11,7 @@ end
 
 function var_0_0.onOpen(arg_2_0)
 	arg_2_0.videoDone = false
-	arg_2_0.videoPlayer, arg_2_0.displayUGUI, arg_2_0.videoGo = AvProMgr.instance:getVideoPlayer(arg_2_0._govideo)
+	arg_2_0._videoPlayer, arg_2_0.displayUGUI, arg_2_0.videoGo = AvProMgr.instance:getVideoPlayer(arg_2_0._govideo)
 
 	if arg_2_0.viewParam.videoAudio then
 		AudioMgr.instance:trigger(arg_2_0.viewParam.videoAudio)
@@ -19,7 +19,7 @@ function var_0_0.onOpen(arg_2_0)
 
 	arg_2_0._videoPath = arg_2_0.viewParam.videoPath
 
-	arg_2_0.videoPlayer:Play(arg_2_0.displayUGUI, arg_2_0.viewParam.videoPath, false, arg_2_0.videoStatusUpdate, arg_2_0)
+	arg_2_0._videoPlayer:Play(arg_2_0.displayUGUI, arg_2_0.viewParam.videoPath, false, arg_2_0.videoStatusUpdate, arg_2_0)
 
 	arg_2_0.doneCb = arg_2_0.viewParam.doneCb
 	arg_2_0.doneCbObj = arg_2_0.viewParam.doneCbObj
@@ -28,8 +28,9 @@ function var_0_0.onOpen(arg_2_0)
 	gohelper.setActive(arg_2_0._goblackbg, not arg_2_0.viewParam.noShowBlackBg)
 
 	arg_2_0.videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter)).enabled = false
+	arg_2_0._time = arg_2_0.viewParam.videoDuration or var_0_0.DefaultMaxDuration
 
-	TaskDispatcher.runDelay(arg_2_0.onVideoOverTime, arg_2_0, arg_2_0.viewParam.videoDuration or var_0_0.DefaultMaxDuration)
+	TaskDispatcher.runDelay(arg_2_0.onVideoOverTime, arg_2_0, arg_2_0._time)
 end
 
 function var_0_0.videoStatusUpdate(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
@@ -38,8 +39,12 @@ function var_0_0.videoStatusUpdate(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
 	elseif arg_3_2 == AvProEnum.PlayerStatus.Closing then
 		arg_3_0:onPlayVideoDone()
 	elseif arg_3_2 == AvProEnum.PlayerStatus.Started then
+		TaskDispatcher.cancelTask(arg_3_0.onVideoOverTime, arg_3_0)
+		TaskDispatcher.runDelay(arg_3_0.onVideoOverTime, arg_3_0, arg_3_0._time)
 		VideoController.instance:dispatchEvent(VideoEvent.OnVideoStarted, arg_3_0._videoPath)
 	elseif arg_3_2 == AvProEnum.PlayerStatus.FirstFrameReady then
+		TaskDispatcher.cancelTask(arg_3_0.onVideoOverTime, arg_3_0)
+		TaskDispatcher.runDelay(arg_3_0.onVideoOverTime, arg_3_0, arg_3_0._time)
 		VideoController.instance:dispatchEvent(VideoEvent.OnVideoFirstFrameReady, arg_3_0._videoPath)
 	end
 end
