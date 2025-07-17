@@ -374,12 +374,12 @@ function var_0_0.canExchange(arg_20_0, arg_20_1)
 	local var_20_6 = arg_20_0.slot
 	local var_20_7 = SeasonConfig.instance:getSeasonEquipCo(var_20_4)
 	local var_20_8 = Activity104EquipItemListModel.instance:getEquipMaxCount(var_20_5)
-	local var_20_9 = Activity104Model.instance:getCurSeasonId()
-	local var_20_10 = Activity104Model.instance:getSeasonCurSnapshotSubId(var_20_9)
+	local var_20_9 = HeroGroupModel.instance:getCurGroupMO()
 
 	for iter_20_0 = 1, var_20_8 do
 		if iter_20_0 ~= var_20_6 then
-			local var_20_11 = Activity104Model.instance:getSeasonHeroGroupEquipId(var_20_9, var_20_10, iter_20_0, var_20_5)
+			local var_20_10 = var_20_9:getAct104PosSlotEquip(var_20_5, iter_20_0)
+			local var_20_11 = Activity104Model.instance:getItemIdByUid(var_20_10)
 			local var_20_12 = SeasonConfig.instance:getSeasonEquipCo(var_20_11)
 
 			if var_20_3 and var_20_12 and var_20_12.group == var_20_3.group and var_20_1 ~= var_20_5 then
@@ -390,10 +390,11 @@ function var_0_0.canExchange(arg_20_0, arg_20_1)
 		end
 
 		if iter_20_0 ~= var_20_2 then
-			local var_20_13 = Activity104Model.instance:getSeasonHeroGroupEquipId(var_20_9, var_20_10, iter_20_0, var_20_1)
-			local var_20_14 = SeasonConfig.instance:getSeasonEquipCo(var_20_13)
+			local var_20_13 = var_20_9:getAct104PosSlotEquip(var_20_1, iter_20_0)
+			local var_20_14 = Activity104Model.instance:getItemIdByUid(var_20_13)
+			local var_20_15 = SeasonConfig.instance:getSeasonEquipCo(var_20_14)
 
-			if var_20_7 and var_20_14 and var_20_14.group == var_20_7.group and var_20_1 ~= var_20_5 then
+			if var_20_7 and var_20_15 and var_20_15.group == var_20_7.group and var_20_1 ~= var_20_5 then
 				GameFacade.showToast(Season3_0EquipItem.Toast_Same_Card)
 
 				return false
