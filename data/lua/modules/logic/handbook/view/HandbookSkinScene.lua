@@ -528,15 +528,18 @@ function var_0_1.enterTarotScene(arg_29_0)
 		arg_29_0:addTarotCardBoxColliderListener(arg_29_0._tarotCardGos[iter_29_1], iter_29_1)
 
 		arg_29_0._tarotCardAnimators[iter_29_1] = var_29_2:GetComponent(gohelper.Type_Animator)
-		arg_29_0._tarotCardSpriteRender[iter_29_1] = var_29_2:GetComponentInChildren(typeof(UnityEngine.SpriteRenderer))
 
-		local var_29_3 = gohelper.findChild(var_29_2, "card/sprite/spriteglow")
+		local var_29_3 = var_29_2.transform:Find("card/sprite").gameObject
 
-		arg_29_0._tarotCardGlowSpriteRender[iter_29_1] = var_29_3:GetComponent(typeof(UnityEngine.SpriteRenderer))
+		arg_29_0._tarotCardSpriteRender[iter_29_1] = var_29_3:GetComponent(typeof(UnityEngine.SpriteRenderer))
 
-		local var_29_4 = gohelper.findChild(var_29_2, "card/back")
+		local var_29_4 = gohelper.findChild(var_29_2, "card/sprite/spriteglow")
 
-		arg_29_0._tarotCardBackSpriteRender[iter_29_1] = var_29_4:GetComponent(typeof(UnityEngine.SpriteRenderer))
+		arg_29_0._tarotCardGlowSpriteRender[iter_29_1] = var_29_4:GetComponent(typeof(UnityEngine.SpriteRenderer))
+
+		local var_29_5 = gohelper.findChild(var_29_2, "card/back")
+
+		arg_29_0._tarotCardBackSpriteRender[iter_29_1] = var_29_5:GetComponent(typeof(UnityEngine.SpriteRenderer))
 		arg_29_0._tarotCardIdx2SkinIdx[iter_29_1] = iter_29_1
 	end
 
@@ -549,7 +552,7 @@ function var_0_1.enterTarotScene(arg_29_0)
 	arg_29_0._enteringTarotMode = true
 
 	AudioMgr.instance:trigger(AudioEnum.Handbook.play_ui_tujianskin_group_special)
-	TaskDispatcher.runDelay(arg_29_0.onTarotEnterAniDone, arg_29_0, 2)
+	TaskDispatcher.runDelay(arg_29_0.onTarotEnterAniDone, arg_29_0, 2.5)
 end
 
 function var_0_1.exitTarotScene(arg_30_0)
@@ -583,25 +586,23 @@ function var_0_1.onTarotEnterAniDone(arg_31_0)
 end
 
 function var_0_1.setCardSprite(arg_32_0, arg_32_1, arg_32_2)
-	local var_32_0 = arg_32_0._tarotCardSpriteRender[arg_32_1]
-	local var_32_1 = arg_32_0._tarotCardDatas[arg_32_2].path
+	local var_32_0 = arg_32_0._tarotCardDatas[arg_32_2].path
 
 	arg_32_0._changeCardIdxMap = arg_32_0._changeCardIdxMap and arg_32_0._changeCardIdxMap or {}
 	arg_32_0._cardLoaderxMap = arg_32_0._cardLoaderxMap and arg_32_0._cardLoaderxMap or {}
 
-	if not string.nilorempty(var_32_1) then
+	if not string.nilorempty(var_32_0) then
 		if arg_32_0._cardLoaderxMap[arg_32_1] then
 			arg_32_0._cardLoaderxMap[arg_32_1]:dispose()
 		end
 
-		local var_32_2 = MultiAbLoader.New()
+		local var_32_1 = MultiAbLoader.New()
 
-		arg_32_0._cardLoaderxMap[arg_32_1] = var_32_2
+		arg_32_0._cardLoaderxMap[arg_32_1] = var_32_1
 		arg_32_0._changeCardIdxMap[arg_32_1] = arg_32_2
-		arg_32_0._changeCardSpriteRender = var_32_0
 
-		var_32_2:addPath(var_32_1)
-		var_32_2:startLoad(arg_32_0._onLoadSpriteDone, arg_32_0)
+		var_32_1:addPath(var_32_0)
+		var_32_1:startLoad(arg_32_0._onLoadSpriteDone, arg_32_0)
 	end
 end
 
@@ -625,6 +626,12 @@ function var_0_1._onLoadSpriteDone(arg_33_0, arg_33_1)
 
 	arg_33_0._tarotCardGlowSpriteRender[var_33_0].sprite = var_33_4
 	var_33_5.sprite = var_33_4
+
+	gohelper.setActive(var_33_5.gameObject, true)
+
+	local var_33_6 = arg_33_0._tarotCardDatas[var_33_1].skinId
+
+	var_33_5.color = (var_33_6 == nil or HeroModel.instance:checkHasSkin(var_33_6)) and Color.white or SLFramework.UGUI.GuiHelper.ParseColor("#7E7E7E")
 end
 
 function var_0_1._setCardBackSprite(arg_34_0)

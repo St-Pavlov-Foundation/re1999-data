@@ -30540,6 +30540,15 @@
   "singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role2.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_xugouji/v3a0_xugouji_role2.png"
   ],
+  "singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_chancebg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_chancebg.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_0/v3a0_zhixinquaner/v3a0_zhixinquaner_role2.png"
+  ],
   "singlebg/survival_singlebg/bag/survival_bag_car.png.dat": [
     "Assets/ZResourcesLib/singlebg/survival_singlebg/bag/survival_bag_car.png"
   ],
@@ -33473,6 +33482,9 @@
   ],
   "singlebg_lang/txt_adventuretask/v3a0_summon_selfselectsix.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v3a0_summon_selfselectsix.png"
+  ],
+  "singlebg_lang/txt_adventuretask/v3a0_zhoubian_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v3a0_zhoubian_1.png"
   ],
   "singlebg_lang/txt_adventuretask/zhoubian1.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/zhoubian1.png"

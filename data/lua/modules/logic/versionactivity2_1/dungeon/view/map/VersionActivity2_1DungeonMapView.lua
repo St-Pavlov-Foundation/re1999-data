@@ -264,7 +264,7 @@ function var_0_0.refreshMask(arg_30_0)
 end
 
 function var_0_0.refreshStoreRemainTime(arg_31_0)
-	local var_31_0 = VersionActivity2_1Enum.ActivityId.DungeonStore
+	local var_31_0 = VersionActivity3_0Enum.ActivityId.ReactivityStore
 	local var_31_1 = ActivityModel.instance:getActMO(var_31_0):getRealEndTimeStamp() - ServerTime.now()
 
 	if var_31_1 > TimeUtil.OneDaySecond then
