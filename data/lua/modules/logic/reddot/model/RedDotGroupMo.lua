@@ -10,13 +10,18 @@ end
 
 function var_0_0._buildDotInfo(arg_2_0, arg_2_1)
 	local var_2_0 = {}
+	local var_2_1 = BootNativeUtil.isIOS()
 
 	for iter_2_0, iter_2_1 in ipairs(arg_2_1) do
-		local var_2_1 = RedDotInfoMo.New()
+		if var_2_1 and ActivityEnum.IOSHideActIdMap[tonumber(iter_2_1.id)] then
+			logNormal("iOS临时屏蔽双端登录活动红点")
+		else
+			local var_2_2 = RedDotInfoMo.New()
 
-		var_2_1:init(iter_2_1)
+			var_2_2:init(iter_2_1)
 
-		var_2_0[tonumber(iter_2_1.id)] = var_2_1
+			var_2_0[tonumber(iter_2_1.id)] = var_2_2
+		end
 	end
 
 	return var_2_0

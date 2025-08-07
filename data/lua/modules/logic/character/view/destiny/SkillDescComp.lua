@@ -76,7 +76,7 @@ function var_0_0._replaceSkillTag(arg_5_0, arg_5_1, arg_5_2)
 	if var_5_3 == 0 then
 		var_5_4 = SkillConfig.instance:getpassiveskillsCO(arg_5_0._heroId)[1].skillPassive
 	else
-		var_5_4 = SkillConfig.instance:getHeroBaseSkillIdDict(arg_5_0._heroId)[var_5_3]
+		var_5_4 = SkillConfig.instance:getHeroBaseSkillIdDict(arg_5_0._heroId, true)[var_5_3]
 	end
 
 	if not var_5_4 then

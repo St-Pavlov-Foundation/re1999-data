@@ -163,14 +163,20 @@ function var_0_0._refreshView(arg_7_0)
 
 	arg_7_0.data = {}
 
-	for iter_7_0, iter_7_1 in pairs(var_7_0) do
-		local var_7_1 = {
-			id = iter_7_1,
-			co = ActivityConfig.instance:getActivityCo(iter_7_1),
-			type = ActivityEnum.ActivityType.Beginner
-		}
+	local var_7_1 = BootNativeUtil.isIOS()
 
-		table.insert(arg_7_0.data, var_7_1)
+	for iter_7_0, iter_7_1 in pairs(var_7_0) do
+		if var_7_1 and ActivityEnum.IOSHideActIdMap[tonumber(iter_7_1)] then
+			logNormal("iOS临时屏蔽双端登录活动入口")
+		else
+			local var_7_2 = {
+				id = iter_7_1,
+				co = ActivityConfig.instance:getActivityCo(iter_7_1),
+				type = ActivityEnum.ActivityType.Beginner
+			}
+
+			table.insert(arg_7_0.data, var_7_2)
+		end
 	end
 
 	if arg_7_0._needSetSortInfos then

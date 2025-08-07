@@ -15293,7 +15293,7 @@
     "tabBgmId": 0,
     "achievementJumpId": 0,
     "defaultPriority": 1,
-    "hintPriority": 8000,
+    "hintPriority": 1,
     "extraDisplayId": 0,
     "extraDisplayIcon": "",
     "tryoutEpisode": 0,

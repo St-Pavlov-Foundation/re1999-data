@@ -269,6 +269,9 @@ var_0_0.MainViewActivityState = {
 	DouQuQu = 6,
 	None = 0
 }
+var_0_0.IOSHideActIdMap = {
+	[var_0_0.Activity.V2a9_Act208] = true
+}
 var_0_0.RetroType = {
 	Permanent = 2,
 	Retro = 1,
