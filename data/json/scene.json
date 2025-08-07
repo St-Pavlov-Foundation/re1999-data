@@ -3893,5 +3893,77 @@
     "levels": [
       30902
     ]
+  },
+  {
+    "id": 31101,
+    "name": "圣母百花大教堂·屋檐",
+    "nameen": "Rooftop, Florence Cathedral",
+    "levels": [
+      31101
+    ]
+  },
+  {
+    "id": 31201,
+    "name": "圣母百花大教堂·密室",
+    "nameen": "Secret Chamber, Florence Cathedral",
+    "levels": [
+      31201
+    ]
+  },
+  {
+    "id": 31301,
+    "name": "临时工作室",
+    "nameen": "Temporary Workshop",
+    "levels": [
+      31301
+    ]
+  },
+  {
+    "id": 31401,
+    "name": "雅典·街道",
+    "nameen": "Street, Athens",
+    "levels": [
+      31401
+    ]
+  },
+  {
+    "id": 31501,
+    "name": "神庙·内部",
+    "nameen": "Inside the Temple",
+    "levels": [
+      31501
+    ]
+  },
+  {
+    "id": 31601,
+    "name": "酒神节会场",
+    "nameen": "Festival Plaza",
+    "levels": [
+      31601
+    ]
+  },
+  {
+    "id": 31701,
+    "name": "酒神节会场",
+    "nameen": "Festival Plaza",
+    "levels": [
+      31701
+    ]
+  },
+  {
+    "id": 31801,
+    "name": "圣母百花大教堂·密室",
+    "nameen": "Secret Chamber, Florence Cathedral",
+    "levels": [
+      31801
+    ]
+  },
+  {
+    "id": 241011,
+    "name": "废弃修道院",
+    "nameen": "Abandoned Monastery",
+    "levels": [
+      241011
+    ]
   }
 ]

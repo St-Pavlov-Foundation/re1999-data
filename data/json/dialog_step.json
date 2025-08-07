@@ -6136,5 +6136,1148 @@
     "name": "",
     "avatar": "",
     "chessId": 0
+  },
+  {
+    "groupId": 10000,
+    "id": 10000001,
+    "type": 1,
+    "content": "刑场旁的领主宫……权力的中心总离不开死亡，这仿佛是古来有之的规律。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10000,
+    "id": 10000002,
+    "type": 2,
+    "content": "就像提丰和自动小岛！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10000,
+    "id": 10000003,
+    "type": 1,
+    "content": "嗯……",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10000,
+    "id": 10000004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10001,
+    "id": 10001001,
+    "type": 1,
+    "content": "APPLe某认为，当时的人并非不和善，只是他们释放善意的对象在类别上有所偏颇。就像这个秘密结社的“会员准入制度”。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10001,
+    "id": 10001002,
+    "type": 2,
+    "content": "呀，我和卡森管家当时也一起给所有人分过好吃的！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10001,
+    "id": 10001003,
+    "type": 1,
+    "content": "如果能早点遇见您，说不定APPLe某也能见识下苏芙比家族的晚宴……",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10001,
+    "id": 10001004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10002,
+    "id": 10002001,
+    "type": 2,
+    "content": "哇哦，四十个人……他们每次开这个名叫“议会”的派对，肯定都热闹非凡！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10002,
+    "id": 10002002,
+    "type": 1,
+    "content": "是的，如果您把唇枪舌剑算作热闹的一部分，想必他们的每次议会都“盛况空前”。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 2
+  },
+  {
+    "groupId": 10002,
+    "id": 10002003,
+    "type": 1,
+    "content": "而这位派对主持人“总督先生”，显然也是其中最容易被蛋糕砸中的人。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 2
+  },
+  {
+    "groupId": 10002,
+    "id": 10002004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10003,
+    "id": 10003001,
+    "type": 1,
+    "content": "容APPLe某担忧一下，这座宅邸散发出一股古旧的味道……",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10003,
+    "id": 10003002,
+    "type": 2,
+    "content": "那是什么味道？！是葡萄酒地窖的味道吗？家里人以前总不让我去那里。",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10003,
+    "id": 10003003,
+    "type": 1,
+    "content": "您的描述很准确，它让人感到有些……温馨又悲伤。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10003,
+    "id": 10003004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10004,
+    "id": 10004001,
+    "type": 1,
+    "content": "作为弃婴最后的容身之所，APPLe某对此深表尊敬。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10004,
+    "id": 10004002,
+    "type": 1,
+    "content": "在不同的时代，APPLe某有不少朋友出身于类似的孤儿院，他们的美德与卓越从不逊于旁人。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10004,
+    "id": 10004003,
+    "type": 1,
+    "content": "人们的善意聚集于此，托起那些嗷嗷待哺的孩子。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10004,
+    "id": 10004004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10005,
+    "id": 10005001,
+    "type": 1,
+    "content": "一座充当着“血管”的桥……",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10005,
+    "id": 10005002,
+    "type": 1,
+    "content": "它将那些人秘密地送往权力中心，以此巩固他们的王国。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10005,
+    "id": 10005003,
+    "type": 2,
+    "content": "我喜欢这个！就像能绕开卡森管家，偷偷溜出家的后门一样。",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10005,
+    "id": 10005004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10006,
+    "id": 10006001,
+    "type": 1,
+    "content": "不管是生前，还是死后，显然人们都想要为自己购置一处好“宅邸”。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 1
+  },
+  {
+    "groupId": 10006,
+    "id": 10006002,
+    "type": 2,
+    "content": "噢！APPLe先生，你是说他们都在那些用石头做的大匣子里吗？",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10006,
+    "id": 10006003,
+    "type": 2,
+    "content": "原来躺在里面的先生们，每天都要盖那么厚的被子！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 2
+  },
+  {
+    "groupId": 10006,
+    "id": 10006004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10007,
+    "id": 10007001,
+    "type": 2,
+    "content": "哇！“自动小岛”的大本营！这里也会有提丰和朱庇特吗？",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10007,
+    "id": 10007002,
+    "type": 1,
+    "content": "噢……苏芙比小姐，我相信这里的人们恐怕并不友善。",
+    "name": "APPLe",
+    "avatar": "302810",
+    "chessId": 2
+  },
+  {
+    "groupId": 10007,
+    "id": 10007003,
+    "type": 2,
+    "content": "哦，那就是说会有邪恶的朱庇特在这里！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10007,
+    "id": 10007004,
+    "type": 2,
+    "content": "没关系，提丰会出来保护我们！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10007,
+    "id": 10007005,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10008,
+    "id": 10008001,
+    "type": 1,
+    "content": "……嗯？",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008002,
+    "type": 2,
+    "content": "怎么了，X先生？",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10008,
+    "id": 10008003,
+    "type": 1,
+    "content": "实验出现了一点小“偏差”：有一位观测者的时间未能和其他观测者同步。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008004,
+    "type": 2,
+    "content": "听上去很可怕……会造成危险吗？",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10008,
+    "id": 10008005,
+    "type": 1,
+    "content": "这相当于向前滚动的小球之一，进入了一条更长的、独立的轨道分支。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008006,
+    "type": 1,
+    "content": "好消息是，这些轨道都是殊途同归的。目前的情况还算可控，也不会影响现实。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008007,
+    "type": 1,
+    "content": "只是在观测者的意识里，她大概会在没有同伴的情况下，独自生活好一段时间，有可能长达几年。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008008,
+    "type": 2,
+    "content": "我们能为此做什么吗？本来还期待他们能有一场愉快的体验呢……",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10008,
+    "id": 10008009,
+    "type": 1,
+    "content": "恐怕我们有更优先处理的事。4号观测者的数据显示“已损坏”，但却没有与舞台断开连接。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008010,
+    "type": 1,
+    "content": "这可比时间偏差棘手多了。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10008,
+    "id": 10008011,
+    "type": 2,
+    "content": "4号？我记得那是……APPLe先生？",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10008,
+    "id": 10008012,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10009,
+    "id": 10009001,
+    "type": 1,
+    "content": "莱昂纳多先生～您别动，您身上趴了一只梦魇兽，它晃来晃去的，很危险。",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10009,
+    "id": 10009002,
+    "type": 2,
+    "content": "不可能，我可没给这幅画准备这么一个模特……",
+    "name": "莱昂纳多",
+    "avatar": "635101",
+    "chessId": 2
+  },
+  {
+    "groupId": 10009,
+    "id": 10009003,
+    "type": 1,
+    "content": "那就是我看错了，它应该是一只发育不良的苏卡拉特，它趴在您背上，在对我打招呼……",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10009,
+    "id": 10009004,
+    "type": 2,
+    "content": "你们俩的脚步都还在打晃。熏香的致幻作用还没完全过去，说真的，要不我们休息一会儿再走？",
+    "name": "拉·沃尔佩",
+    "avatar": "636520",
+    "chessId": 3
+  },
+  {
+    "groupId": 10009,
+    "id": 10009005,
+    "type": 1,
+    "content": "哦～狐狸先生，您想认识一下这只苏卡拉特吗？和传闻中不一样，它非常友好！",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10009,
+    "id": 10009006,
+    "type": 1,
+    "content": "你看，它允许我随便拽它的尾巴，却完全没有生气。",
+    "name": "苏芙比",
+    "avatar": "635001",
+    "chessId": 1
+  },
+  {
+    "groupId": 10009,
+    "id": 10009007,
+    "type": 2,
+    "content": "我好像有点呼吸不过来，嘶……咳咳？它真的没有生气吗？",
+    "name": "莱昂纳多",
+    "avatar": "635101",
+    "chessId": 2
+  },
+  {
+    "groupId": 10009,
+    "id": 10009008,
+    "type": 2,
+    "content": "……我想你们最好再休息一会儿。顺便，苏芙比小姐，你可以松开莱昂纳多的披风么？",
+    "name": "拉·沃尔佩",
+    "avatar": "636520",
+    "chessId": 3
+  },
+  {
+    "groupId": 10009,
+    "id": 10009009,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10010,
+    "id": 10010001,
+    "type": 1,
+    "content": "能亲身到狄俄尼索斯剧场中观看《酒神的伴侣》……APPLe某将把今天的体验铭记在心。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010002,
+    "type": 1,
+    "content": "歌队的演唱令人陶醉，几乎让空气中飘荡起葡萄酒的味道了。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010003,
+    "type": 1,
+    "content": "等等，这好像不是APPLe某的错觉……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010004,
+    "type": 2,
+    "content": "嗯？祭品在说话……呵呵……我一定是、一定是已经心醉神迷（ecstasy）了！",
+    "name": "大酒神节女信徒",
+    "avatar": "636901",
+    "chessId": 2
+  },
+  {
+    "groupId": 10010,
+    "id": 10010005,
+    "type": 1,
+    "content": "“心醉神迷”？",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010006,
+    "type": 2,
+    "content": "你错过了庆典游行？这可不好，祭品朋友……快喝点我新酿的酒吧！",
+    "name": "大酒神节女信徒",
+    "avatar": "636901",
+    "chessId": 2
+  },
+  {
+    "groupId": 10010,
+    "id": 10010007,
+    "type": 1,
+    "content": "谢谢您的好意，但……唔！",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010008,
+    "type": 2,
+    "content": "哈哈哈，感觉如何？再多喝些！我们得从酒里领悟神的恩赐——",
+    "name": "大酒神节女信徒",
+    "avatar": "636901",
+    "chessId": 2
+  },
+  {
+    "groupId": 10010,
+    "id": 10010009,
+    "type": 1,
+    "content": "噢……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010010,
+    "type": 1,
+    "content": "非常美妙……我好像明白、明白您的意思了……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010011,
+    "type": 2,
+    "content": "没错，摆脱自我，而后心醉神迷——",
+    "name": "大酒神节女信徒",
+    "avatar": "636901",
+    "chessId": 2
+  },
+  {
+    "groupId": 10010,
+    "id": 10010012,
+    "type": 1,
+    "content": "摆脱？唔，APPLe某的确……嗝！开始摆脱引力了……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10010,
+    "id": 10010013,
+    "type": 2,
+    "content": "你要去哪儿？……哦，你、你要摆脱我，去找狄俄尼索斯大人了，哈哈！那么再见，祭品朋友！再见！",
+    "name": "大酒神节女信徒",
+    "avatar": "636901",
+    "chessId": 2
+  },
+  {
+    "groupId": 10010,
+    "id": 10010014,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10011,
+    "id": 10011001,
+    "type": 1,
+    "content": "这就是你们向我保证的“万全计划”。",
+    "name": "阿利克西欧斯",
+    "avatar": "312201",
+    "chessId": 1
+  },
+  {
+    "groupId": 10011,
+    "id": 10011002,
+    "type": 1,
+    "content": "留下狗都能看见的线索，让敌人追到神庙里，而我只能束手束脚、像个傻瓜似的放完狠话就走。",
+    "name": "阿利克西欧斯",
+    "avatar": "312201",
+    "chessId": 1
+  },
+  {
+    "groupId": 10011,
+    "id": 10011003,
+    "type": 2,
+    "content": "我相信这次只是个意外，德谟斯大人……",
+    "name": "秩序神教成员",
+    "avatar": "636601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10011,
+    "id": 10011004,
+    "type": 2,
+    "content": "很少有人能注意到这些装饰，况且那些人也并未参透我们的安排……",
+    "name": "秩序神教成员",
+    "avatar": "636601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10011,
+    "id": 10011005,
+    "type": 1,
+    "content": "意外？如果不是考虑到你们愚蠢的布置，达摩克利斯之剑早已割下了驯鹰人的头。",
+    "name": "阿利克西欧斯",
+    "avatar": "312201",
+    "chessId": 1
+  },
+  {
+    "groupId": 10011,
+    "id": 10011006,
+    "type": 1,
+    "content": "现在，你最好给我一个理由，好让我不“意外地”把你的头砍下来。",
+    "name": "阿利克西欧斯",
+    "avatar": "312201",
+    "chessId": 1
+  },
+  {
+    "groupId": 10011,
+    "id": 10011007,
+    "type": 2,
+    "content": "请、请您息怒！事实上，我们早就考虑到了各种情况——",
+    "name": "秩序神教成员",
+    "avatar": "636601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10011,
+    "id": 10011008,
+    "type": 2,
+    "content": "我已经在雅典各地的神庙都布置好了飘带，即使破坏了一处，我们也还有更多传递密文的地点！",
+    "name": "秩序神教成员",
+    "avatar": "636601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10011,
+    "id": 10011009,
+    "type": 2,
+    "content": "您以后大可以放心下手！",
+    "name": "秩序神教成员",
+    "avatar": "636601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10011,
+    "id": 10011010,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10012,
+    "id": 10012001,
+    "type": 1,
+    "content": "卡珊德拉女士，这里还有一些与符号相关的线索。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012002,
+    "type": 2,
+    "content": "嗯？也许有漏网之鱼，给我瞧瞧。",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012003,
+    "type": 1,
+    "content": "一个由小三角堆叠起来的大三角形，这位女士在帕特农神庙的廊柱上刻下了它。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012004,
+    "type": 2,
+    "content": "我对这个有印象——不用管，是一帮跟什么毕达哥拉斯学派有关的怪人搞的。他们只是单纯喜欢……",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012005,
+    "type": 1,
+    "content": "数学。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012006,
+    "type": 1,
+    "content": "……他们也用数字做名字吗？",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012007,
+    "type": 2,
+    "content": "哈哈，看来你也和他们打过交道。这儿还有什么？",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012008,
+    "type": 1,
+    "content": "一些画着奇怪符号的金箔。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012009,
+    "type": 2,
+    "content": "生命、真理……俄耳甫斯……嗯……",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012010,
+    "type": 2,
+    "content": "像是某个传说中的密教，据说他们用这种金箔和死者沟通。你拿着箔片的时候听到什么声音了吗？",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012011,
+    "type": 1,
+    "content": "……",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012012,
+    "type": 1,
+    "content": "没有。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012013,
+    "type": 2,
+    "content": "我猜也是——按我的经验，传言只有十分之一能信……希望这儿没有更多想用符号传教的人员了？",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012014,
+    "type": 1,
+    "content": "只有这些。",
+    "name": "维尔汀",
+    "avatar": "300101",
+    "chessId": 1
+  },
+  {
+    "groupId": 10012,
+    "id": 10012015,
+    "type": 2,
+    "content": "好极了。",
+    "name": "卡珊德拉",
+    "avatar": "312401",
+    "chessId": 2
+  },
+  {
+    "groupId": 10012,
+    "id": 10012016,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10013,
+    "id": 10013001,
+    "type": 1,
+    "content": "在APPLe某看来，这座建筑被后来者赋予的价值，已远超它一开始所拥有的。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10013,
+    "id": 10013002,
+    "type": 2,
+    "content": "哈……是有这样的事！就像本唱片骑师的限时广播，每一场都不可复刻，“价值”与日俱增！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10013,
+    "id": 10013003,
+    "type": 2,
+    "content": "伟大的事迹永远值得传颂！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10013,
+    "id": 10013004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10014,
+    "id": 10014001,
+    "type": 2,
+    "content": "这么热闹的地方，他们竟然用来开一些又长又闷的会议！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10014,
+    "id": 10014002,
+    "type": 2,
+    "content": "要是我们在这里举行一次摇滚演唱会，我保准所有苦恼和争端都会烟消云散！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10014,
+    "id": 10014003,
+    "type": 1,
+    "content": "嗯……星锑船长，我想他们离理解摇滚乐，还有一段——不短的距离。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10014,
+    "id": 10014004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10015,
+    "id": 10015001,
+    "type": 1,
+    "content": "星锑船长，这就是他们收集沉船战利品的地方……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10015,
+    "id": 10015002,
+    "type": 2,
+    "content": "……嘿，我在想，他们是不是也能帮我把沉没的APPLe号上我没带走的唱片给捞出来？",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10015,
+    "id": 10015003,
+    "type": 1,
+    "content": "我想他们不会乐意帮这个忙，毕竟这对于他们来说并非是“战利品”……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10015,
+    "id": 10015004,
+    "type": 2,
+    "content": "我是说，如果报酬是100瓶胡椒博士呢……？如果他们在酒神庆典上喝的是胡椒博士就好了。",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10015,
+    "id": 10015005,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10016,
+    "id": 10016001,
+    "type": 1,
+    "content": "这座神殿非常宏伟……看来太阳神与酒神一样，在雅典人的生活里都有着举足轻重的地位。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10016,
+    "id": 10016002,
+    "type": 2,
+    "content": "唉……我有些想念那个脑袋上挂着葡萄的小子了。",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10016,
+    "id": 10016003,
+    "type": 2,
+    "content": "他跟这帮人肯定都聊得来。",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10016,
+    "id": 10016004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10017,
+    "id": 10017001,
+    "type": 2,
+    "content": "噢，我知道“发电小子”！听说他能在天空上放出闪电，把整片大地照亮。",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10017,
+    "id": 10017002,
+    "type": 2,
+    "content": "难怪他们会为他建造神殿，哪场派对能少了眼花缭乱的灯光效果！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10017,
+    "id": 10017003,
+    "type": 1,
+    "content": "您说的并没有错，但他……显然是一位脾气不太好的“灯光师”。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10017,
+    "id": 10017004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10018,
+    "id": 10018001,
+    "type": 1,
+    "content": "作为“众神之后”的神殿……它拥有着与众不同的魅力，那些细腻而精湛的柱上雕塑，记录的只是一个个运动会上的凡人女性……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10018,
+    "id": 10018002,
+    "type": 1,
+    "content": "既不是神明，也不是国王。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10018,
+    "id": 10018003,
+    "type": 2,
+    "content": "“所有伟大的歌手都来自民间！”看来他们也懂这个道理。",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10018,
+    "id": 10018004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10019,
+    "id": 10019001,
+    "type": 1,
+    "content": "这是一个令人遗憾的故事，在呕心沥血之后，艺术家没来得及享受到那些将至的掌声与崇敬……",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 2
+  },
+  {
+    "groupId": 10019,
+    "id": 10019002,
+    "type": 2,
+    "content": "呜……让我们致“菲迪亚斯”！以崇高敬意！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10019,
+    "id": 10019003,
+    "type": 2,
+    "content": "我们将怀念他，一如怀念我们伟大的APPLe号！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 1
+  },
+  {
+    "groupId": 10019,
+    "id": 10019004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 10020,
+    "id": 10020001,
+    "type": 1,
+    "content": "人们总是容易健忘，APPLe某认为，即便卫城的遗迹存在，历史在人们口中也会是另一个截然不同的故事。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10020,
+    "id": 10020002,
+    "type": 1,
+    "content": "坍塌的立柱可能被解释为一次意外，被浸染成红色的石砖，也许被传唱成一个骄傲的行刑地。",
+    "name": "APPLe",
+    "avatar": "635601",
+    "chessId": 1
+  },
+  {
+    "groupId": 10020,
+    "id": 10020003,
+    "type": 2,
+    "content": "噢，我明白你的意思！就像歌词的谐音，人们总是会听成另一个截然不同的词！",
+    "name": "星锑",
+    "avatar": "635501",
+    "chessId": 2
+  },
+  {
+    "groupId": 10020,
+    "id": 10020004,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
   }
 ]

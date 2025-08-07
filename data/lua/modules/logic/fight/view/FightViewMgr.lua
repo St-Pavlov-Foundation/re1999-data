@@ -136,51 +136,69 @@ function var_0_0._showFightProgress(arg_13_0)
 	end
 end
 
-function var_0_0.onOpen(arg_14_0)
-	arg_14_0.top = arg_14_0:com_openSubView(FightTopView, arg_14_0.viewGO)
-	arg_14_0.topLeft = arg_14_0:com_openSubView(FightTopLeftView, arg_14_0.viewGO)
-	arg_14_0.topRight = arg_14_0:com_openSubView(FightTopRightView, arg_14_0.viewGO)
-	arg_14_0.center = arg_14_0:com_openSubView(FightCenterView, arg_14_0.viewGO)
-	arg_14_0.left = arg_14_0:com_openSubView(FightLeftView, arg_14_0.viewGO)
-	arg_14_0.right = arg_14_0:com_openSubView(FightRightView, arg_14_0.viewGO)
-	arg_14_0.bottom = arg_14_0:com_openSubView(FightBottomView, arg_14_0.viewGO)
-	arg_14_0.bottomLeft = arg_14_0:com_openSubView(FightBottomLeftView, arg_14_0.viewGO)
-	arg_14_0.bottomRight = arg_14_0:com_openSubView(FightBottomRightView, arg_14_0.viewGO)
-
-	arg_14_0:_showCardDeckBtn()
-	arg_14_0:_showSeasonTalentBtn()
-	arg_14_0:_showPlayerFinisherSkill()
-	arg_14_0:_showSimplePolarizationLevel()
-	arg_14_0:_showTaskPart()
-	arg_14_0:_showBloodPool()
-	arg_14_0:_showDoomsdayClock()
-	arg_14_0:showDouQuQuCoin()
-	arg_14_0:showDouQuQuHunting()
+function var_0_0.showFightNewProgress(arg_14_0)
+	arg_14_0:com_openSubView(FightNewProgressView, arg_14_0.viewGO)
 end
 
-function var_0_0.showDouQuQuHunting(arg_15_0)
+function var_0_0.onOpen(arg_15_0)
+	arg_15_0.top = arg_15_0:com_openSubView(FightTopView, arg_15_0.viewGO)
+	arg_15_0.topLeft = arg_15_0:com_openSubView(FightTopLeftView, arg_15_0.viewGO)
+	arg_15_0.topRight = arg_15_0:com_openSubView(FightTopRightView, arg_15_0.viewGO)
+	arg_15_0.center = arg_15_0:com_openSubView(FightCenterView, arg_15_0.viewGO)
+	arg_15_0.left = arg_15_0:com_openSubView(FightLeftView, arg_15_0.viewGO)
+	arg_15_0.right = arg_15_0:com_openSubView(FightRightView, arg_15_0.viewGO)
+	arg_15_0.bottom = arg_15_0:com_openSubView(FightBottomView, arg_15_0.viewGO)
+	arg_15_0.bottomLeft = arg_15_0:com_openSubView(FightBottomLeftView, arg_15_0.viewGO)
+	arg_15_0.bottomRight = arg_15_0:com_openSubView(FightBottomRightView, arg_15_0.viewGO)
+
+	arg_15_0:_showCardDeckBtn()
+	arg_15_0:_showSeasonTalentBtn()
+	arg_15_0:_showPlayerFinisherSkill()
+	arg_15_0:_showSimplePolarizationLevel()
+	arg_15_0:_showTaskPart()
+	arg_15_0:_showBloodPool()
+	arg_15_0:_showDoomsdayClock()
+	arg_15_0:showDouQuQuCoin()
+	arg_15_0:showDouQuQuHunting()
+	arg_15_0:showFightNewProgress()
+	arg_15_0:showItemSkillInfos()
+	arg_15_0:showBattleId_9290103_Task()
+end
+
+function var_0_0.showItemSkillInfos(arg_16_0)
+	local var_16_0 = FightDataHelper.teamDataMgr.myData.itemSkillInfos
+
+	if var_16_0 and #var_16_0 > 0 then
+		local var_16_1 = "ui/viewres/fight/fightassassinwheelbtnview.prefab"
+		local var_16_2 = gohelper.findChild(arg_16_0.viewGO, "root")
+
+		arg_16_0:com_openSubView(FightItemSkillInfosBtnView, var_16_1, var_16_2)
+	end
+end
+
+function var_0_0.showDouQuQuHunting(arg_17_0)
 	if not FightDataHelper.fieldMgr.customData then
 		return
 	end
 
-	local var_15_0 = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
+	local var_17_0 = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191]
 
-	if not var_15_0 then
+	if not var_17_0 then
 		return
 	end
 
-	if var_15_0.minNeedHuntValue == -1 then
+	if var_17_0.minNeedHuntValue == -1 then
 		return
 	end
 
-	local var_15_1 = FightRightElementEnum.Elements.DouQuQuHunting
-	local var_15_2 = arg_15_0.viewContainer.rightElementLayoutView:getElementContainer(var_15_1)
+	local var_17_1 = FightRightElementEnum.Elements.DouQuQuHunting
+	local var_17_2 = arg_17_0.viewContainer.rightElementLayoutView:getElementContainer(var_17_1)
 
-	arg_15_0:com_openSubView(FightDouQuQuHuntingView, "ui/viewres/fight/fight_act191huntview.prefab", var_15_2)
-	arg_15_0.viewContainer.rightElementLayoutView:showElement(var_15_1)
+	arg_17_0:com_openSubView(FightDouQuQuHuntingView, "ui/viewres/fight/fight_act191huntview.prefab", var_17_2)
+	arg_17_0.viewContainer.rightElementLayoutView:showElement(var_17_1)
 end
 
-function var_0_0.showDouQuQuCoin(arg_16_0)
+function var_0_0.showDouQuQuCoin(arg_18_0)
 	if not FightDataHelper.fieldMgr.customData then
 		return
 	end
@@ -189,117 +207,96 @@ function var_0_0.showDouQuQuCoin(arg_16_0)
 		return
 	end
 
-	local var_16_0 = FightRightElementEnum.Elements.DouQuQuCoin
-	local var_16_1 = arg_16_0.viewContainer.rightElementLayoutView:getElementContainer(var_16_0)
+	local var_18_0 = FightRightElementEnum.Elements.DouQuQuCoin
+	local var_18_1 = arg_18_0.viewContainer.rightElementLayoutView:getElementContainer(var_18_0)
 
-	arg_16_0:com_openSubView(FightDouQuQuCoinView, "ui/viewres/fight/fight_act191coinview.prefab", var_16_1)
-	arg_16_0.viewContainer.rightElementLayoutView:showElement(var_16_0)
+	arg_18_0:com_openSubView(FightDouQuQuCoinView, "ui/viewres/fight/fight_act191coinview.prefab", var_18_1)
+	arg_18_0.viewContainer.rightElementLayoutView:showElement(var_18_0)
 end
 
-function var_0_0._showDoomsdayClock(arg_17_0)
-	local var_17_0 = FightDataHelper.fieldMgr.param
+function var_0_0._showDoomsdayClock(arg_19_0)
+	local var_19_0 = FightDataHelper.fieldMgr.param
 
-	if var_17_0 and var_17_0:getKey(FightParamData.ParamKey.DoomsdayClock_Range4) then
-		arg_17_0:createDoomsdayClock()
+	if var_19_0 and var_19_0:getKey(FightParamData.ParamKey.DoomsdayClock_Range4) then
+		arg_19_0:createDoomsdayClock()
 	end
 end
 
-function var_0_0.createDoomsdayClock(arg_18_0)
-	if arg_18_0.doomsdayClockView then
+function var_0_0.createDoomsdayClock(arg_20_0)
+	if arg_20_0.doomsdayClockView then
 		return
 	end
 
-	local var_18_0 = arg_18_0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DoomsdayClock)
+	local var_20_0 = arg_20_0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DoomsdayClock)
 
-	arg_18_0.doomsdayClockView = arg_18_0:com_openSubView(FightDoomsdayClockView, "ui/viewres/fight/fightclockview.prefab", var_18_0)
+	arg_20_0.doomsdayClockView = arg_20_0:com_openSubView(FightDoomsdayClockView, "ui/viewres/fight/fightclockview.prefab", var_20_0)
 
-	arg_18_0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DoomsdayClock)
+	arg_20_0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DoomsdayClock)
 end
 
-function var_0_0._showBloodPool(arg_19_0)
+function var_0_0._showBloodPool(arg_21_0)
 	if FightDataHelper.getBloodPool(FightEnum.TeamType.MySide) then
-		arg_19_0:_createBloodPool(FightEnum.TeamType.MySide)
+		arg_21_0:_createBloodPool(FightEnum.TeamType.MySide)
 	end
 end
 
-function var_0_0._createBloodPool(arg_20_0, arg_20_1)
-	if arg_20_0.bloodPoolView then
+function var_0_0._createBloodPool(arg_22_0, arg_22_1)
+	if arg_22_0.bloodPoolView then
 		return
 	end
 
-	local var_20_0 = arg_20_0.viewContainer.rightBottomElementLayoutView:getElementContainer(FightRightBottomElementEnum.Elements.BloodPool)
+	local var_22_0 = arg_22_0.viewContainer.rightBottomElementLayoutView:getElementContainer(FightRightBottomElementEnum.Elements.BloodPool)
 
-	arg_20_0.bloodPoolView = arg_20_0:com_openSubView(FightBloodPoolView, "ui/viewres/fight/fightbloodview.prefab", var_20_0, arg_20_1)
+	arg_22_0.bloodPoolView = arg_22_0:com_openSubView(FightBloodPoolView, "ui/viewres/fight/fightbloodview.prefab", var_22_0, arg_22_1)
 
-	arg_20_0.viewContainer.rightBottomElementLayoutView:showElement(FightRightBottomElementEnum.Elements.BloodPool)
+	arg_22_0.viewContainer.rightBottomElementLayoutView:showElement(FightRightBottomElementEnum.Elements.BloodPool)
 end
 
-function var_0_0._createSurvivalTalent(arg_21_0)
-	if arg_21_0.survivalTalentView then
+function var_0_0._createSurvivalTalent(arg_23_0)
+	if arg_23_0.survivalTalentView then
 		return
 	end
 
-	local var_21_0 = arg_21_0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.SurvivalTalent)
+	local var_23_0 = arg_23_0.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.SurvivalTalent)
 
-	arg_21_0.survivalTalentView = arg_21_0:com_openSubView(FightSurvivalTalentView, "ui/viewres/fight/fightsurvivaltalentview.prefab", var_21_0)
+	arg_23_0.survivalTalentView = arg_23_0:com_openSubView(FightSurvivalTalentView, "ui/viewres/fight/fightsurvivaltalentview.prefab", var_23_0)
 
-	arg_21_0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.SurvivalTalent)
+	arg_23_0.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.SurvivalTalent)
 end
 
-function var_0_0._showPlayerFinisherSkill(arg_22_0)
-	local var_22_0 = FightDataHelper.fieldMgr.playerFinisherInfo
+function var_0_0._showPlayerFinisherSkill(arg_24_0)
+	local var_24_0 = FightDataHelper.fieldMgr.playerFinisherInfo
 
-	if not var_22_0 then
+	if not var_24_0 then
 		return
 	end
 
-	if var_22_0.type == FightPlayerFinisherInfoData.Type.SurvivalTalent then
-		arg_22_0:_createSurvivalTalent()
+	if var_24_0.type == FightPlayerFinisherInfoData.Type.SurvivalTalent then
+		arg_24_0:_createSurvivalTalent()
 
 		return
 	end
 
-	if var_22_0 and #var_22_0.skills > 0 then
-		arg_22_0:_onRefreshPlayerFinisherSkill()
+	if var_24_0 and #var_24_0.skills > 0 then
+		arg_24_0:_onRefreshPlayerFinisherSkill()
 	end
 end
 
-function var_0_0._showCardDeckBtn(arg_23_0)
+function var_0_0._showCardDeckBtn(arg_25_0)
 	if FightDataHelper.fieldMgr:isDouQuQu() then
 		return
 	end
 
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.CardDeck) then
-		arg_23_0:com_loadAsset("ui/viewres/fight/fightcarddeckbtnview.prefab", arg_23_0._onBtnLoaded)
+		arg_25_0:com_loadAsset("ui/viewres/fight/fightcarddeckbtnview.prefab", arg_25_0._onBtnLoaded)
 	end
 end
 
-function var_0_0.onDeckGenerate_Anim(arg_24_0, arg_24_1)
-	local var_24_0 = arg_24_1 and #arg_24_1 or 0
-
-	if var_24_0 <= 0 then
-		return
-	end
-
-	for iter_24_0, iter_24_1 in ipairs(arg_24_0.goPaiList) do
-		gohelper.setActive(iter_24_1, iter_24_0 <= var_24_0)
-	end
-
-	arg_24_0:showDeckActiveGo()
-	arg_24_0.deckAnimatorPlayer:Play("generate", arg_24_0.hideDeckActiveGo, arg_24_0)
-	AudioMgr.instance:trigger(20250502)
-end
-
-function var_0_0.onPlayGenerateAnimDone(arg_25_0)
-	arg_25_0:hideDeckActiveGo()
-	arg_25_0:com_sendFightEvent(FightEvent.CardDeckGenerateDone)
-end
-
-function var_0_0.onDeckDelete_Anim(arg_26_0, arg_26_1)
+function var_0_0.onDeckGenerate_Anim(arg_26_0, arg_26_1)
 	local var_26_0 = arg_26_1 and #arg_26_1 or 0
 
 	if var_26_0 <= 0 then
-		return arg_26_0:onPlayDeleteAnimDone()
+		return
 	end
 
 	for iter_26_0, iter_26_1 in ipairs(arg_26_0.goPaiList) do
@@ -307,140 +304,161 @@ function var_0_0.onDeckDelete_Anim(arg_26_0, arg_26_1)
 	end
 
 	arg_26_0:showDeckActiveGo()
-	arg_26_0.deckAnimatorPlayer:Play("delete", arg_26_0.onPlayDeleteAnimAnchorDone, arg_26_0)
+	arg_26_0.deckAnimatorPlayer:Play("generate", arg_26_0.hideDeckActiveGo, arg_26_0)
+	AudioMgr.instance:trigger(20250502)
+end
+
+function var_0_0.onPlayGenerateAnimDone(arg_27_0)
+	arg_27_0:hideDeckActiveGo()
+	arg_27_0:com_sendFightEvent(FightEvent.CardDeckGenerateDone)
+end
+
+function var_0_0.onDeckDelete_Anim(arg_28_0, arg_28_1)
+	local var_28_0 = arg_28_1 and #arg_28_1 or 0
+
+	if var_28_0 <= 0 then
+		return arg_28_0:onPlayDeleteAnimDone()
+	end
+
+	for iter_28_0, iter_28_1 in ipairs(arg_28_0.goPaiList) do
+		gohelper.setActive(iter_28_1, iter_28_0 <= var_28_0)
+	end
+
+	arg_28_0:showDeckActiveGo()
+	arg_28_0.deckAnimatorPlayer:Play("delete", arg_28_0.onPlayDeleteAnimAnchorDone, arg_28_0)
 	AudioMgr.instance:trigger(20250503)
 end
 
-function var_0_0.onPlayDeleteAnimAnchorDone(arg_27_0)
-	local var_27_0 = {
+function var_0_0.onPlayDeleteAnimAnchorDone(arg_29_0)
+	local var_29_0 = {
 		dissolveScale = 1,
 		dissolveSkillItemGOs = {
-			arg_27_0.goDeckActive
+			arg_29_0.goDeckActive
 		}
 	}
 
-	arg_27_0:clearFlow()
+	arg_29_0:clearFlow()
 
-	arg_27_0.dissolveFlow = FlowSequence.New()
+	arg_29_0.dissolveFlow = FlowSequence.New()
 
-	arg_27_0.dissolveFlow:addWork(FightCardDissolveEffect.New())
-	arg_27_0.dissolveFlow:registerDoneListener(arg_27_0.onPlayDeleteAnimDone, arg_27_0)
-	arg_27_0.dissolveFlow:start(var_27_0)
+	arg_29_0.dissolveFlow:addWork(FightCardDissolveEffect.New())
+	arg_29_0.dissolveFlow:registerDoneListener(arg_29_0.onPlayDeleteAnimDone, arg_29_0)
+	arg_29_0.dissolveFlow:start(var_29_0)
 end
 
-function var_0_0.clearFlow(arg_28_0)
-	if arg_28_0.dissolveFlow then
-		arg_28_0.dissolveFlow:stop()
+function var_0_0.clearFlow(arg_30_0)
+	if arg_30_0.dissolveFlow then
+		arg_30_0.dissolveFlow:stop()
 
-		arg_28_0.dissolveFlow = nil
+		arg_30_0.dissolveFlow = nil
 	end
 end
 
-function var_0_0.onPlayDeleteAnimDone(arg_29_0)
-	arg_29_0:hideDeckActiveGo()
-	arg_29_0:com_sendFightEvent(FightEvent.CardDeckDeleteDone)
+function var_0_0.onPlayDeleteAnimDone(arg_31_0)
+	arg_31_0:hideDeckActiveGo()
+	arg_31_0:com_sendFightEvent(FightEvent.CardDeckDeleteDone)
 end
 
-function var_0_0.hideDeckActiveGo(arg_30_0)
-	gohelper.setActive(arg_30_0.goDeckActive, false)
+function var_0_0.hideDeckActiveGo(arg_32_0)
+	gohelper.setActive(arg_32_0.goDeckActive, false)
 end
 
-function var_0_0.showDeckActiveGo(arg_31_0)
-	gohelper.setActive(arg_31_0.goDeckActive, true)
+function var_0_0.showDeckActiveGo(arg_33_0)
+	gohelper.setActive(arg_33_0.goDeckActive, true)
 end
 
 var_0_0.MaxDeckAnimLen = 15
 
-function var_0_0._onBtnLoaded(arg_32_0, arg_32_1, arg_32_2)
-	if not arg_32_1 then
+function var_0_0._onBtnLoaded(arg_34_0, arg_34_1, arg_34_2)
+	if not arg_34_1 then
 		return
 	end
 
-	local var_32_0 = arg_32_2:GetResource()
-	local var_32_1 = gohelper.clone(var_32_0, arg_32_0._topRightBtnRoot, "cardBox")
+	local var_34_0 = arg_34_2:GetResource()
+	local var_34_1 = gohelper.clone(var_34_0, arg_34_0._topRightBtnRoot, "cardBox")
 
-	arg_32_0.goDeckBtn = var_32_1
+	arg_34_0.goDeckBtn = var_34_1
 
-	arg_32_0:com_registClick(gohelper.getClickWithDefaultAudio(var_32_1), arg_32_0._onCardBoxClick, arg_32_0)
-	gohelper.setAsFirstSibling(var_32_1)
+	arg_34_0:com_registClick(gohelper.getClickWithDefaultAudio(var_34_1), arg_34_0._onCardBoxClick, arg_34_0)
+	gohelper.setAsFirstSibling(var_34_1)
 
-	arg_32_0._deckCardAnimator = gohelper.onceAddComponent(var_32_1, typeof(UnityEngine.Animator))
-	arg_32_0._deckBtnAniPlayer = SLFramework.AnimatorPlayer.Get(var_32_1)
-	arg_32_0.txtNum = gohelper.findChildText(var_32_1, "txt_Num")
+	arg_34_0._deckCardAnimator = gohelper.onceAddComponent(var_34_1, typeof(UnityEngine.Animator))
+	arg_34_0._deckBtnAniPlayer = SLFramework.AnimatorPlayer.Get(var_34_1)
+	arg_34_0.txtNum = gohelper.findChildText(var_34_1, "txt_Num")
 
-	gohelper.setActive(arg_32_0.txtNum.gameObject, false)
+	gohelper.setActive(arg_34_0.txtNum.gameObject, false)
 
-	local var_32_2 = gohelper.findChild(arg_32_0.goDeckBtn, "#go_Active")
+	local var_34_2 = gohelper.findChild(arg_34_0.goDeckBtn, "#go_Active")
 
-	gohelper.setActive(var_32_2, false)
+	gohelper.setActive(var_34_2, false)
 
-	arg_32_0.deckContainer = gohelper.findChild(arg_32_0.goDeckBtn, "#deckbtn")
+	arg_34_0.deckContainer = gohelper.findChild(arg_34_0.goDeckBtn, "#deckbtn")
 
-	gohelper.setActive(arg_32_0.deckContainer, true)
+	gohelper.setActive(arg_34_0.deckContainer, true)
 
-	arg_32_0.deckAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_32_0.deckContainer)
-	arg_32_0.goDeckActive = gohelper.findChild(arg_32_0.deckContainer, "active")
+	arg_34_0.deckAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_34_0.deckContainer)
+	arg_34_0.goDeckActive = gohelper.findChild(arg_34_0.deckContainer, "active")
 
-	arg_32_0:hideDeckActiveGo()
+	arg_34_0:hideDeckActiveGo()
 
-	arg_32_0.goPaiList = arg_32_0:newUserDataTable()
+	arg_34_0.goPaiList = arg_34_0:newUserDataTable()
 
-	for iter_32_0 = 1, var_0_0.MaxDeckAnimLen do
-		local var_32_3 = gohelper.findChild(arg_32_0.goDeckActive, string.format("#pai%02d", iter_32_0))
+	for iter_34_0 = 1, var_0_0.MaxDeckAnimLen do
+		local var_34_3 = gohelper.findChild(arg_34_0.goDeckActive, string.format("#pai%02d", iter_34_0))
 
-		if not var_32_3 then
-			logError("deck view not find pai , index : " .. iter_32_0)
+		if not var_34_3 then
+			logError("deck view not find pai , index : " .. iter_34_0)
 		end
 
-		table.insert(arg_32_0.goPaiList, var_32_3)
+		table.insert(arg_34_0.goPaiList, var_34_3)
 	end
 
-	arg_32_0:com_registFightEvent(FightEvent.CardDeckGenerate, arg_32_0._onCardDeckGenerate)
-	arg_32_0:com_registFightEvent(FightEvent.CardClear, arg_32_0._onCardClear)
-	arg_32_0:com_registFightEvent(FightEvent.CardBoxNumChange, arg_32_0.onCardBoxNumChange)
-	arg_32_0:com_registFightEvent(FightEvent.CardDeckGenerate, arg_32_0.onDeckGenerate_Anim)
-	arg_32_0:com_registFightEvent(FightEvent.CardDeckDelete, arg_32_0.onDeckDelete_Anim)
+	arg_34_0:com_registFightEvent(FightEvent.CardDeckGenerate, arg_34_0._onCardDeckGenerate)
+	arg_34_0:com_registFightEvent(FightEvent.CardClear, arg_34_0._onCardClear)
+	arg_34_0:com_registFightEvent(FightEvent.CardBoxNumChange, arg_34_0.onCardBoxNumChange)
+	arg_34_0:com_registFightEvent(FightEvent.CardDeckGenerate, arg_34_0.onDeckGenerate_Anim)
+	arg_34_0:com_registFightEvent(FightEvent.CardDeckDelete, arg_34_0.onDeckDelete_Anim)
 end
 
-function var_0_0.activeDeck(arg_33_0)
-	local var_33_0 = FightDataHelper.fieldMgr
+function var_0_0.activeDeck(arg_35_0)
+	local var_35_0 = FightDataHelper.fieldMgr
 
-	if var_33_0 and var_33_0:isAct183() then
-		local var_33_1 = gohelper.findChild(arg_33_0.goDeckBtn, "#go_Active")
+	if var_35_0 and var_35_0:isAct183() then
+		local var_35_1 = gohelper.findChild(arg_35_0.goDeckBtn, "#go_Active")
 
-		gohelper.setActive(var_33_1, true)
-		gohelper.setActive(arg_33_0.txtNum.gameObject, true)
+		gohelper.setActive(var_35_1, true)
+		gohelper.setActive(arg_35_0.txtNum.gameObject, true)
 	end
 end
 
-function var_0_0.clearTweenId(arg_34_0)
-	if arg_34_0.tweenId then
-		ZProj.TweenHelper.KillById(arg_34_0.tweenId)
+function var_0_0.clearTweenId(arg_36_0)
+	if arg_36_0.tweenId then
+		ZProj.TweenHelper.KillById(arg_36_0.tweenId)
 
-		arg_34_0.tweenId = nil
+		arg_36_0.tweenId = nil
 	end
 end
 
 var_0_0.DeckNumChangeDuration = 0.5
 
-function var_0_0.onCardBoxNumChange(arg_35_0, arg_35_1, arg_35_2)
-	arg_35_0:activeDeck()
-	arg_35_0:clearTweenId()
+function var_0_0.onCardBoxNumChange(arg_37_0, arg_37_1, arg_37_2)
+	arg_37_0:activeDeck()
+	arg_37_0:clearTweenId()
 
-	local var_35_0 = tonumber(arg_35_0.txtNum.text) or 0
+	local var_37_0 = tonumber(arg_37_0.txtNum.text) or 0
 
-	arg_35_0.tweenId = ZProj.TweenHelper.DOTweenFloat(var_35_0, arg_35_2, var_0_0.DeckNumChangeDuration, arg_35_0.directSetDeckNum, nil, arg_35_0)
+	arg_37_0.tweenId = ZProj.TweenHelper.DOTweenFloat(var_37_0, arg_37_2, var_0_0.DeckNumChangeDuration, arg_37_0.directSetDeckNum, nil, arg_37_0)
 end
 
-function var_0_0.directSetDeckNum(arg_36_0, arg_36_1)
-	arg_36_0.txtNum.text = math.ceil(arg_36_1)
+function var_0_0.directSetDeckNum(arg_38_0, arg_38_1)
+	arg_38_0.txtNum.text = math.ceil(arg_38_1)
 end
 
-function var_0_0.onNumChangeDone(arg_37_0)
-	arg_37_0:directSetDeckNum(FightDataHelper.fieldMgr.deckNum)
+function var_0_0.onNumChangeDone(arg_39_0)
+	arg_39_0:directSetDeckNum(FightDataHelper.fieldMgr.deckNum)
 end
 
-function var_0_0._onCardBoxClick(arg_38_0)
+function var_0_0._onCardBoxClick(arg_40_0)
 	if not FightDataHelper.stageMgr:isFree() then
 		return
 	end
@@ -450,72 +468,79 @@ function var_0_0._onCardBoxClick(arg_38_0)
 	})
 end
 
-function var_0_0._showSeasonTalentBtn(arg_39_0)
+function var_0_0._showSeasonTalentBtn(arg_41_0)
 	if not Season166Model.instance:getBattleContext(true) then
 		return
 	end
 
 	if Season166Model.instance:checkCanShowSeasonTalent() then
-		arg_39_0:com_loadAsset("ui/viewres/fight/fightseasontalentbtn.prefab", arg_39_0._onBtnSeasonTalentLoaded)
+		arg_41_0:com_loadAsset("ui/viewres/fight/fightseasontalentbtn.prefab", arg_41_0._onBtnSeasonTalentLoaded)
 	end
 end
 
-function var_0_0._onBtnSeasonTalentLoaded(arg_40_0, arg_40_1, arg_40_2)
-	if not arg_40_1 then
+function var_0_0._onBtnSeasonTalentLoaded(arg_42_0, arg_42_1, arg_42_2)
+	if not arg_42_1 then
 		return
 	end
 
-	local var_40_0 = arg_40_2:GetResource()
-	local var_40_1 = gohelper.clone(var_40_0, arg_40_0._topRightBtnRoot, "fightseasontalentbtn")
+	local var_42_0 = arg_42_2:GetResource()
+	local var_42_1 = gohelper.clone(var_42_0, arg_42_0._topRightBtnRoot, "fightseasontalentbtn")
 
-	arg_40_0:com_registClick(gohelper.getClickWithDefaultAudio(var_40_1), arg_40_0._onSeasonTalentClick, arg_40_0)
-	gohelper.setAsFirstSibling(var_40_1)
+	arg_42_0:com_registClick(gohelper.getClickWithDefaultAudio(var_42_1), arg_42_0._onSeasonTalentClick, arg_42_0)
+	gohelper.setAsFirstSibling(var_42_1)
 end
 
-function var_0_0._onSeasonTalentClick(arg_41_0)
+function var_0_0._onSeasonTalentClick(arg_43_0)
 	Season166Controller.instance:openTalentInfoView()
 end
 
-function var_0_0._deckAniFinish(arg_42_0)
-	arg_42_0._deckCardAnimator.enabled = true
+function var_0_0._deckAniFinish(arg_44_0)
+	arg_44_0._deckCardAnimator.enabled = true
 
-	arg_42_0._deckCardAnimator:Play("idle")
+	arg_44_0._deckCardAnimator:Play("idle")
 end
 
-function var_0_0._onCardDeckGenerate(arg_43_0)
-	arg_43_0._deckBtnAniPlayer:Play("add", arg_43_0._deckAniFinish, arg_43_0)
+function var_0_0._onCardDeckGenerate(arg_45_0)
+	arg_45_0._deckBtnAniPlayer:Play("add", arg_45_0._deckAniFinish, arg_45_0)
 end
 
-function var_0_0._onCardClear(arg_44_0)
-	arg_44_0._deckBtnAniPlayer:Play("delete", arg_44_0._deckAniFinish, arg_44_0)
+function var_0_0._onCardClear(arg_46_0)
+	arg_46_0._deckBtnAniPlayer:Play("delete", arg_46_0._deckAniFinish, arg_46_0)
 end
 
-function var_0_0._showTaskPart(arg_45_0)
-	local var_45_0 = FightDataHelper.fieldMgr.episodeId
+function var_0_0._showTaskPart(arg_47_0)
+	local var_47_0 = FightDataHelper.fieldMgr.episodeId
 
 	if FightDataHelper.fieldMgr:isDungeonType(DungeonEnum.EpisodeType.Act183) then
-		local var_45_1 = lua_challenge_episode.configDict[var_45_0]
+		local var_47_1 = lua_challenge_episode.configDict[var_47_0]
 
-		if not var_45_1 then
+		if not var_47_1 then
 			return
 		end
 
-		if string.nilorempty(var_45_1.condition) then
+		if string.nilorempty(var_47_1.condition) then
 			return
 		end
 
-		gohelper.setActive(arg_45_0._taskRoot, true)
-		arg_45_0:com_openSubView(Fight183TaskView, "ui/viewres/fight/fighttaskview.prefab", arg_45_0._taskRoot, var_45_1.condition)
+		gohelper.setActive(arg_47_0._taskRoot, true)
+		arg_47_0:com_openSubView(Fight183TaskView, "ui/viewres/fight/fighttaskview.prefab", arg_47_0._taskRoot, var_47_1.condition)
 	end
 end
 
-function var_0_0.onClose(arg_46_0)
+function var_0_0.showBattleId_9290103_Task(arg_48_0)
+	if FightDataHelper.fieldMgr.battleId == 9290103 then
+		gohelper.setActive(arg_48_0._taskRoot, true)
+		arg_48_0:com_openSubView(FightBattleId_9290103TaskView, "ui/viewres/fight/fighttaskview.prefab", arg_48_0._taskRoot)
+	end
+end
+
+function var_0_0.onClose(arg_49_0)
 	return
 end
 
-function var_0_0.onDestroyView(arg_47_0)
-	arg_47_0:clearFlow()
-	arg_47_0:clearTweenId()
+function var_0_0.onDestroyView(arg_50_0)
+	arg_50_0:clearFlow()
+	arg_50_0:clearTweenId()
 end
 
 return var_0_0

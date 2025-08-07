@@ -42,6 +42,9 @@ local var_0_0 = {
 	GetDeadEntityMgr = GameUtil.getMsgId(),
 	GetExPointView = GameUtil.getMsgId(),
 	OperationForPlayEffect = GameUtil.getMsgId(),
+	NewProgressValueChange = GameUtil.getMsgId(),
+	ShowAiJiAoExpointEffectBeforeUniqueSkill = GameUtil.getMsgId(),
+	CheckGuideFightItemPlayerSkillGroup = GameUtil.getMsgId(),
 	GMDouQuQuSkip2IndexRound = GameUtil.getMsgId()
 }
 local var_0_1 = {}

@@ -59,7 +59,8 @@ var_0_0.FrameEventHandlerCls = {
 	FightTLEventALFCardEffect,
 	FightTLEventPlayEffectByOperation,
 	FightTLEventEffectVisible,
-	[1001] = FightTLEventObjFly
+	[1001] = FightTLEventObjFly,
+	[1002] = FightTLEventSetSign
 }
 
 function var_0_0.ctor(arg_1_0, arg_1_1)

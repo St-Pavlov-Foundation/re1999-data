@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "影中断矛",
+    "desc": "进入战斗时获得【潜行】",
+    "icon": "odyssey_herogroup_icon_5_0"
+  },
+  {
+    "id": 2,
+    "name": "悬颅利剑",
+    "desc": "咒语上限提高",
+    "icon": "odyssey_herogroup_icon_2_0"
+  },
+  {
+    "id": 3,
+    "name": "盾防战术",
+    "desc": "进入战斗时获得护盾，拥有护盾时获得属性提升",
+    "icon": "odyssey_herogroup_icon_1_0"
+  },
+  {
+    "id": 4,
+    "name": "隐秘毒牙",
+    "desc": "攻击后赋予【状态异常】，削弱具有【状态异常】的敌人",
+    "icon": "odyssey_herogroup_icon_7_0"
+  },
+  {
+    "id": 5,
+    "name": "泉澧祝福",
+    "desc": "进入战斗时激活至终的仪式，至终的仪式不消耗行动点",
+    "icon": "odyssey_herogroup_icon_6_0"
+  },
+  {
+    "id": 6,
+    "name": "神速行路",
+    "desc": "累计行动触发额外行动，额外行动附带本源创伤",
+    "icon": "odyssey_herogroup_icon_8_0"
+  },
+  {
+    "id": 7,
+    "name": "日神灵光",
+    "desc": "额外消耗灵光，【即兴咒语】伤害提升",
+    "icon": "odyssey_herogroup_icon_4_0"
+  },
+  {
+    "id": 8,
+    "name": "神血献祭",
+    "desc": "提升最大生命，攻击附带基于最大生命的本源创伤",
+    "icon": "odyssey_herogroup_icon_10_0"
+  },
+  {
+    "id": 9,
+    "name": "雷神之怒",
+    "desc": "布设【涌动电场】，注入【电能】并随机释放【电击】",
+    "icon": "odyssey_herogroup_icon_3_0"
+  }
+]

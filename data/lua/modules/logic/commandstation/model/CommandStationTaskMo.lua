@@ -51,4 +51,14 @@ function var_0_0.alreadyGotReward(arg_7_0)
 	return false
 end
 
+function var_0_0.getActivityStatus(arg_8_0)
+	local var_8_0 = arg_8_0.config and arg_8_0.config.activityid
+
+	if not var_8_0 or var_8_0 <= 0 then
+		return nil
+	end
+
+	return ActivityHelper.getActivityStatus(var_8_0)
+end
+
 return var_0_0

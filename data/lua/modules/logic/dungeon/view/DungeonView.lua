@@ -52,9 +52,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._goperUnselectIcon = gohelper.findChild(arg_1_0.viewGO, "bottom/categorylist/#btn_permanent/#go_perUnselectText/icon")
 	arg_1_0._goperSelectText = gohelper.findChild(arg_1_0.viewGO, "bottom/categorylist/#btn_permanent/#go_perSelectText")
 	arg_1_0._goreddotpermanent = gohelper.findChild(arg_1_0.viewGO, "bottom/categorylist/#btn_permanent/#go_perUnselectText/redpoint")
-
-	RedDotController.instance:addRedDotTag(arg_1_0._goreddotpermanent, RedDotEnum.DotNode.Dungeon_Permanent, false, arg_1_0._checkPermanentReddot, arg_1_0)
-
+	arg_1_0._goreddotpermanentTag = RedDotController.instance:addRedDotTag(arg_1_0._goreddotpermanent, RedDotEnum.DotNode.Dungeon_Permanent, false, arg_1_0._checkPermanentReddot, arg_1_0)
 	arg_1_0._btnDramaReward = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_story/#btn_story")
 	arg_1_0._gostoryUnselectTextIcon = gohelper.findChild(arg_1_0.viewGO, "bottom/categorylist/#btn_story/#go_storyUnselectText/icon")
 	arg_1_0._goreddotstory = gohelper.findChild(arg_1_0.viewGO, "bottom/categorylist/#btn_story/#go_storyUnselectText/redpoint")
@@ -489,6 +487,7 @@ function var_0_0.onOpen(arg_36_0)
 	arg_36_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, arg_36_0._onCloseView, arg_36_0)
 	arg_36_0:addEventCb(WeekWalkController.instance, WeekWalkEvent.OnAllShallowLayerFinish, arg_36_0._onAllShallowLayerFinish, arg_36_0)
 	arg_36_0:addEventCb(DungeonController.instance, DungeonEvent.OnDramaRewardStatusChange, arg_36_0._refreshDramaBtnStatus, arg_36_0)
+	arg_36_0:addEventCb(Activity165Controller.instance, Activity165Event.refreshStoryReddot, arg_36_0._onRefreshStoryReddot, arg_36_0)
 	arg_36_0:_refreshDramaBtnStatus()
 	arg_36_0:_moveChapter(DungeonMainStoryModel.instance:getJumpFocusChapterIdOnce())
 	arg_36_0:_refreshBtnUnlock()
@@ -624,8 +623,18 @@ end
 function var_0_0._checkPermanentReddot(arg_52_0, arg_52_1)
 	local var_52_0 = RedDotModel.instance:isDotShow(arg_52_1.dotId, 0) or not PermanentModel.instance:isActivityLocalRead()
 
+	var_52_0 = var_52_0 or PermanentModel.instance:IsDotShowPermanent2_1()
+
 	gohelper.setActive(arg_52_0._goperUnselectIcon, not var_52_0)
 	gohelper.setActive(arg_52_0._goreddotpermanent, var_52_0)
+end
+
+function var_0_0._onRefreshStoryReddot(arg_53_0)
+	if not arg_53_0._goreddotpermanentTag then
+		return
+	end
+
+	arg_53_0._goreddotpermanentTag:refreshDot()
 end
 
 return var_0_0

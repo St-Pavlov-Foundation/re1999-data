@@ -1,4 +1,23 @@
 ﻿return {
+	Activity208 = {
+		model = {
+			"Act208Model"
+		},
+		controller = {
+			"Act208Controller"
+		},
+		rpc = {
+			"Act208Rpc"
+		},
+		config = {
+			"Act208Config"
+		}
+	},
+	CharacterSkillTalent = {
+		config = {
+			"CharacterExtraConfig"
+		}
+	},
 	KaRong = {
 		model = {
 			"KaRongDrawModel"
@@ -84,6 +103,30 @@
 		config = {
 			"LengZhou6Config",
 			"LengZhou6EliminateConfig"
+		}
+	},
+	Assassin2 = {
+		model = {
+			"AssassinOutsideModel",
+			"AssassinHeroModel",
+			"AssassinItemModel",
+			"AssassinStealthGameModel",
+			"AssassinBackpackListModel",
+			"AssassinLibraryModel"
+		},
+		controller = {
+			"AssassinController",
+			"AssassinStealthGameController",
+			"AssassinStealthGameEntityMgr",
+			"AssassinLibraryController",
+			"VersionActivity2_9DungeonController"
+		},
+		rpc = {
+			"AssassinOutSideRpc",
+			"AssassinSceneRpc"
+		},
+		config = {
+			"AssassinConfig"
 		}
 	},
 	CooperGarland = {
@@ -772,7 +815,8 @@
 			"WeatherModel"
 		},
 		controller = {
-			"WeatherController"
+			"WeatherController",
+			"WeatherSceneController"
 		},
 		rpc = {
 			"WeatherRpc"
@@ -833,6 +877,26 @@
 		},
 		model = {
 			"MainSceneSwitchModel"
+		}
+	},
+	MainUISwitch = {
+		controller = {
+			"MainUISwitchController"
+		},
+		config = {
+			"MainUISwitchConfig"
+		},
+		model = {
+			"MainUISwitchModel",
+			"MainUISwitchListModel"
+		}
+	},
+	MainSwitchClassify = {
+		controller = {
+			"MainSwitchClassifyController"
+		},
+		model = {
+			"MainSwitchClassifyListModel"
 		}
 	},
 	Main = {
@@ -1231,7 +1295,8 @@
 			"DecorateStoreModel"
 		},
 		controller = {
-			"StoreController"
+			"StoreController",
+			"StoreGoodsTaskController"
 		},
 		rpc = {
 			"StoreRpc",
@@ -1773,7 +1838,9 @@
 		model = {
 			"BossRushModel",
 			"BossRushRedModel",
-			"V1a6_BossRush_StoreModel"
+			"V1a6_BossRush_StoreModel",
+			"V2a9BossRushModel",
+			"V2a9BossRushSkillBackpackListModel"
 		},
 		controller = {
 			"BossRushController",
@@ -2703,6 +2770,78 @@
 		},
 		controller = {
 			"DestinyStoneGiftPickChoiceController"
+		}
+	},
+	Odyssey = {
+		model = {
+			"OdysseyModel",
+			"OdysseyDungeonModel",
+			"OdysseyItemModel",
+			"OdysseyTalentModel",
+			"OdysseyHeroGroupModel",
+			"OdysseyTaskModel",
+			"OdysseyMembersModel"
+		},
+		config = {
+			"OdysseyConfig"
+		},
+		controller = {
+			"OdysseyController",
+			"OdysseyDungeonController",
+			"OdysseyHeroGroupController"
+		},
+		rpc = {
+			"OdysseyRpc"
+		}
+	},
+	Activity204 = {
+		model = {
+			"Activity204Model"
+		},
+		rpc = {
+			"Activity204Rpc"
+		},
+		config = {
+			"Activity204Config"
+		},
+		controller = {
+			"Activity204Controller"
+		}
+	},
+	Act205 = {
+		model = {
+			"Act205Model",
+			"Act205OceanModel",
+			"Act205CardModel"
+		},
+		rpc = {
+			"Activity205Rpc"
+		},
+		config = {
+			"Act205Config"
+		},
+		controller = {
+			"Act205Controller",
+			"Act205CardController"
+		}
+	},
+	Activity206 = {
+		model = {
+			"AssassinChaseModel"
+		},
+		controller = {
+			"AssassinChaseController"
+		},
+		rpc = {
+			"AssassinChaseRpc"
+		},
+		config = {
+			"AssassinChaseConfig"
+		}
+	},
+	VersionActivity2_3NewCultivationDestiny = {
+		model = {
+			"VersionActivity2_3NewCultivationDestinyModel"
 		}
 	},
 	NuoDiKa = {

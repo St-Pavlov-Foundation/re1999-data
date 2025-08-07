@@ -819,7 +819,18 @@ function var_0_0._playCardAudio(arg_38_0, arg_38_1)
 	local var_38_6 = HeroConfig.instance:getHeroCO(var_38_5)
 	local var_38_7
 
-	if var_38_4 == 1 or var_38_4 == 2 then
+	if arg_38_1.cardType == FightEnum.CardType.SKILL3 then
+		local var_38_8 = FightConfig.instance:getSkinSkillTimeline(var_38_1.skin, arg_38_1.skillId)
+		local var_38_9 = FightAudioMgr.instance:_getHeroVoiceCOs(var_38_5, CharacterEnum.VoiceType.FightCardSkill3, var_38_1.skin)
+
+		for iter_38_0, iter_38_1 in ipairs(var_38_9) do
+			if iter_38_1.param == var_38_8 then
+				var_38_7 = iter_38_1.audio
+
+				break
+			end
+		end
+	elseif var_38_4 == 1 or var_38_4 == 2 then
 		var_38_7 = FightAudioMgr.instance:getHeroVoiceRandom(var_38_5, CharacterEnum.VoiceType.FightCardStar12, arg_38_1.uid)
 	elseif var_38_4 == 3 then
 		var_38_7 = FightAudioMgr.instance:getHeroVoiceRandom(var_38_5, CharacterEnum.VoiceType.FightCardStar3, arg_38_1.uid)

@@ -223,10 +223,8 @@ function var_0_0._btndodialogOnClick(arg_10_0)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
-function var_0_0._onPlayDialogFinished(arg_11_0)
-	local var_11_0 = tonumber(arg_11_0._config.param)
-
-	if not DialogueModel.instance:isFinishDialogue(var_11_0) then
+function var_0_0._onPlayDialogFinished(arg_11_0, arg_11_1, arg_11_2)
+	if not arg_11_2 then
 		return
 	end
 

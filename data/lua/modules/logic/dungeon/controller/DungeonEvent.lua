@@ -77,5 +77,6 @@ var_0_0.BossStoryMoveMapAnim = 603
 var_0_0.BossStoryPreMoveMapPos = 604
 var_0_0.OnCoverDungeonRecordReply = 1001
 var_0_0.OnDramaRewardStatusChange = 1101
+var_0_0.OnStartDungeonExtraParams = 1102
 
 return var_0_0

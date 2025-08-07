@@ -3,6 +3,7 @@
 local var_0_0 = class("SettingsRoleVoiceSearchFilterView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
+	arg_1_0._dropfilterTemplateTrans = gohelper.findChild(arg_1_0.viewGO, "#go_rolecontainer/#go_rolesort/#drop_lang/Template").transform
 	arg_1_0._gosearchfilter = gohelper.findChild(arg_1_0.viewGO, "#go_searchfilter")
 	arg_1_0._btnclosefilterview = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_searchfilter/#btn_closefilterview")
 	arg_1_0._btnclassify = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_rolecontainer/#go_rolesort/#btn_classify")
@@ -374,8 +375,13 @@ function var_0_0.initOptions(arg_25_0)
 	arg_25_0._languageOptions = {
 		0,
 		LangSettings.en,
-		LangSettings.zh
+		LangSettings.zh,
+		LangSettings.kr,
+		LangSettings.jp
 	}
+
+	recthelper.setHeight(arg_25_0._dropfilterTemplateTrans, #arg_25_0._languageOptions * 70)
+
 	arg_25_0._optionsName = {}
 
 	for iter_25_0, iter_25_1 in ipairs(arg_25_0._languageOptions) do

@@ -74,6 +74,8 @@ function var_0_0.init(arg_3_0, arg_3_1, arg_3_2)
 		arg_3_0.side = arg_3_2
 	end
 
+	arg_3_0._powerInfos = {}
+
 	arg_3_0:setPowerInfos(arg_3_1.powerInfos)
 	arg_3_0:buildSummonedInfo(arg_3_1.SummonedList)
 
@@ -92,6 +94,7 @@ function var_0_0.init(arg_3_0, arg_3_1, arg_3_2)
 	arg_3_0.equipRecord = arg_3_1.equipRecord
 	arg_3_0.destinyStone = arg_3_1.destinyStone
 	arg_3_0.destinyRank = arg_3_1.destinyRank
+	arg_3_0.customUnitId = arg_3_1.customUnitId
 end
 
 function var_0_0._buildAttr(arg_4_0, arg_4_1)
@@ -373,6 +376,11 @@ end
 
 function var_0_0.changeExpointMaxAdd(arg_39_0, arg_39_1)
 	arg_39_0.expointMaxAdd = arg_39_0.expointMaxAdd or 0
+
+	if arg_39_0.exPointType ~= FightEnum.ExPointType.Common then
+		return
+	end
+
 	arg_39_0.expointMaxAdd = arg_39_0.expointMaxAdd + arg_39_1
 end
 
@@ -389,6 +397,10 @@ function var_0_0.getExpointMaxAddNum(arg_41_0)
 end
 
 function var_0_0.changeServerUniqueCost(arg_42_0, arg_42_1)
+	if arg_42_0.exPointType ~= FightEnum.ExPointType.Common then
+		return
+	end
+
 	arg_42_0.exSkillPointChange = arg_42_0:getExpointCostOffsetNum() + arg_42_1
 end
 
@@ -514,7 +526,7 @@ function var_0_0.hasBuffFeature(arg_53_0, arg_53_1)
 				local var_53_2 = lua_buff_act.configDict[iter_53_3[1]]
 
 				if var_53_2 and var_53_2.type == arg_53_1 then
-					return true
+					return true, iter_53_1
 				end
 			end
 		end
@@ -593,20 +605,22 @@ function var_0_0.onChangeHero(arg_61_0)
 end
 
 function var_0_0.setPowerInfos(arg_62_0, arg_62_1)
-	arg_62_0._powerInfos = {}
+	local var_62_0 = {}
 
 	for iter_62_0, iter_62_1 in ipairs(arg_62_1) do
-		arg_62_0:refreshPowerInfo(iter_62_1)
+		local var_62_1 = FightPowerInfoData.New(iter_62_1)
+
+		var_62_0[var_62_1.powerId] = var_62_1
 	end
+
+	FightDataUtil.coverData(var_62_0, arg_62_0._powerInfos)
 end
 
 function var_0_0.refreshPowerInfo(arg_63_0, arg_63_1)
-	local var_63_0 = arg_63_0._powerInfos[arg_63_1.powerId] or {}
+	local var_63_0 = FightPowerInfoData.New(arg_63_1)
+	local var_63_1 = var_63_0.powerId
 
-	var_63_0.powerId = arg_63_1.powerId
-	var_63_0.num = arg_63_1.num
-	var_63_0.max = arg_63_1.max
-	arg_63_0._powerInfos[arg_63_1.powerId] = var_63_0
+	arg_63_0._powerInfos[var_63_1] = FightDataUtil.coverData(var_63_0, arg_63_0._powerInfos[var_63_1])
 end
 
 function var_0_0.getPowerInfos(arg_64_0)
@@ -873,38 +887,83 @@ function var_0_0.initSkin(arg_88_0, arg_88_1)
 	return var_88_0
 end
 
-function var_0_0.getEquipMo(arg_89_0)
-	if not arg_89_0.equipRecord then
+function var_0_0.getHeroExtraMo(arg_89_0)
+	if arg_89_0.trialId and arg_89_0.trialId > 0 then
+		local var_89_0 = lua_hero_trial.configDict[arg_89_0.trialId][0]
+
+		if var_89_0 then
+			local var_89_1 = var_89_0.extraStr
+
+			if not string.nilorempty(var_89_1) then
+				local var_89_2 = HeroConfig.instance:getHeroCO(arg_89_0.modelId)
+				local var_89_3 = HeroMo.New()
+
+				var_89_3:init(var_89_0, var_89_2)
+
+				arg_89_0.extraMo = arg_89_0.extraMo or CharacterExtraMO.New(var_89_3)
+
+				arg_89_0.extraMo:refreshMo(var_89_1)
+			end
+		end
+	else
+		local var_89_4 = HeroModel.instance:getByHeroId(arg_89_0.modelId)
+
+		arg_89_0.extraMo = var_89_4 and var_89_4.extraMo
+	end
+
+	return arg_89_0.extraMo
+end
+
+function var_0_0.checkReplaceSkill(arg_90_0, arg_90_1)
+	if arg_90_1 then
+		local var_90_0 = arg_90_0:getHeroDestinyStoneMo()
+
+		if var_90_0 then
+			arg_90_1 = var_90_0:_replaceSkill(arg_90_1)
+		end
+
+		local var_90_1 = arg_90_0:getHeroExtraMo()
+
+		if var_90_1 then
+			arg_90_1 = var_90_1:getReplaceSkills(arg_90_1)
+		end
+	end
+
+	return arg_90_1
+end
+
+function var_0_0.getEquipMo(arg_91_0)
+	if not arg_91_0.equipRecord then
 		return
 	end
 
-	if not arg_89_0.equipMo then
-		arg_89_0.equipMo = EquipMO.New()
+	if not arg_91_0.equipMo then
+		arg_91_0.equipMo = EquipMO.New()
 
-		arg_89_0.equipMo:init({
+		arg_91_0.equipMo:init({
 			count = 1,
 			exp = 0,
-			uid = arg_89_0.equipRecord.equipUid,
-			equipId = arg_89_0.equipRecord.equipId,
-			level = arg_89_0.equipRecord.equipLv,
-			refineLv = arg_89_0.equipRecord.refineLv
+			uid = arg_91_0.equipRecord.equipUid,
+			equipId = arg_91_0.equipRecord.equipId,
+			level = arg_91_0.equipRecord.equipLv,
+			refineLv = arg_91_0.equipRecord.refineLv
 		})
-		arg_89_0.equipMo:setBreakLvByLevel()
+		arg_91_0.equipMo:setBreakLvByLevel()
 	end
 
-	return arg_89_0.equipMo
+	return arg_91_0.equipMo
 end
 
-function var_0_0.getLockMaxHpRate(arg_90_0)
-	for iter_90_0, iter_90_1 in pairs(arg_90_0.buffDic) do
-		local var_90_0 = iter_90_1.actCommonParams
+function var_0_0.getLockMaxHpRate(arg_92_0)
+	for iter_92_0, iter_92_1 in pairs(arg_92_0.buffDic) do
+		local var_92_0 = iter_92_1.actCommonParams
 
-		if not string.nilorempty(var_90_0) then
-			local var_90_1 = FightStrUtil.instance:getSplitString2Cache(var_90_0, true, "|", "#")
+		if not string.nilorempty(var_92_0) then
+			local var_92_1 = FightStrUtil.instance:getSplitString2Cache(var_92_0, true, "|", "#")
 
-			for iter_90_2, iter_90_3 in ipairs(var_90_1) do
-				if iter_90_3[1] == FightEnum.BuffActId.LockHpMax then
-					return iter_90_3[2] and iter_90_3[2] / 1000 or 1
+			for iter_92_2, iter_92_3 in ipairs(var_92_1) do
+				if iter_92_3[1] == FightEnum.BuffActId.LockHpMax then
+					return iter_92_3[2] and iter_92_3[2] / 1000 or 1
 				end
 			end
 		end
@@ -913,26 +972,26 @@ function var_0_0.getLockMaxHpRate(arg_90_0)
 	return 1
 end
 
-function var_0_0.getHpAndShieldFillAmount(arg_91_0, arg_91_1, arg_91_2)
-	local var_91_0 = arg_91_0:getLockMaxHpRate()
-	local var_91_1 = (arg_91_0.attrMO and arg_91_0.attrMO.hp > 0 and arg_91_0.attrMO.hp or 1) * var_91_0
-	local var_91_2 = arg_91_1 or arg_91_0.currentHp
-	local var_91_3 = arg_91_2 or arg_91_0.shieldValue
-	local var_91_4 = var_91_2 / var_91_1 or 0
-	local var_91_5 = 0
+function var_0_0.getHpAndShieldFillAmount(arg_93_0, arg_93_1, arg_93_2)
+	local var_93_0 = arg_93_0:getLockMaxHpRate()
+	local var_93_1 = (arg_93_0.attrMO and arg_93_0.attrMO.hp > 0 and arg_93_0.attrMO.hp or 1) * var_93_0
+	local var_93_2 = arg_93_1 or arg_93_0.currentHp
+	local var_93_3 = arg_93_2 or arg_93_0.shieldValue
+	local var_93_4 = var_93_2 / var_93_1 or 0
+	local var_93_5 = 0
 
-	if var_91_1 >= var_91_3 + var_91_2 then
-		var_91_4 = var_91_2 / var_91_1
-		var_91_5 = (var_91_3 + var_91_2) / var_91_1
+	if var_93_1 >= var_93_3 + var_93_2 then
+		var_93_4 = var_93_2 / var_93_1
+		var_93_5 = (var_93_3 + var_93_2) / var_93_1
 	else
-		var_91_4 = var_91_2 / (var_91_2 + var_91_3)
-		var_91_5 = 1
+		var_93_4 = var_93_2 / (var_93_2 + var_93_3)
+		var_93_5 = 1
 	end
 
-	local var_91_6 = var_91_4 * var_91_0
-	local var_91_7 = var_91_5 * var_91_0
+	local var_93_6 = var_93_4 * var_93_0
+	local var_93_7 = var_93_5 * var_93_0
 
-	return var_91_6, var_91_7
+	return var_93_6, var_93_7
 end
 
 return var_0_0

@@ -186,7 +186,14 @@ end
 
 function var_0_0._onClothSkillRoundFinish(arg_23_0)
 	FightMgr.instance:exitStage(FightStageMgr.StageType.Play)
-	FightController.instance:setCurStage(arg_23_0._beforeClothSkillStage)
+
+	if not FightModel.instance:isFinish() then
+		if FightModel.instance:isAuto() then
+			FightController.instance:setCurStage(FightEnum.Stage.AutoCard)
+		else
+			FightController.instance:setCurStage(FightEnum.Stage.Card)
+		end
+	end
 
 	local var_23_0 = FightModel.instance:getCurStage()
 

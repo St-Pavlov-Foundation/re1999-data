@@ -39,6 +39,7 @@ function var_0_0.initViewContent(arg_2_0)
 
 	arg_2_0._langDrop = arg_2_0:addDropDown("L1", "UI多语言", nil, arg_2_0._onLangDropChange, arg_2_0)
 
+	arg_2_0:addButton("L1.2", "多语言文本查找", arg_2_0._onClickLangTxtSearch, arg_2_0)
 	arg_2_0:addTitleSplitLine("BGM")
 	arg_2_0:addButton("L2", "显示BGM播放进度", arg_2_0._onClickBGMProgress, arg_2_0)
 	arg_2_0:addButton("L2", "视频资源列表", arg_2_0._onClickVideoList, arg_2_0)
@@ -372,26 +373,31 @@ function var_0_0._checkDescHaveTag(arg_21_0, arg_21_1, arg_21_2, arg_21_3, arg_2
 	end
 end
 
-function var_0_0._onLangDropChange(arg_24_0, arg_24_1)
-	local var_24_0 = arg_24_0.langList[arg_24_1 + 1]
+function var_0_0._onClickLangTxtSearch(arg_24_0, arg_24_1)
+	ViewMgr.instance:openView(ViewName.GMLangTxtView)
+end
 
-	if var_24_0 == arg_24_0.curLang then
+function var_0_0._onLangDropChange(arg_25_0, arg_25_1)
+	if arg_25_0.langList[arg_25_1 + 1] == arg_25_0.curUILang then
 		return
 	end
 
-	local var_24_1 = GameConfig:GetCurLangType()
+	local var_25_0 = GameConfig:GetCurLangType()
 
-	GameConfig:SetCurLangType(arg_24_0.langShortCutList[arg_24_1 + 1])
-
-	LangSettings.instance._curLang = var_24_0
-	LangSettings.instance._captionsActive = LangSettings._captionsSetting[var_24_0] ~= false
-
-	UnityEngine.PlayerPrefs.SetInt("CurLanguageType", var_24_1)
-	UnityEngine.PlayerPrefs.Save()
+	LangSettings.instance:SetCurLangType(arg_25_0.langShortCutList[arg_25_1 + 1], arg_25_0._onChangeLangTxtType2, arg_25_0)
 end
 
-function var_0_0._switchKeyInput(arg_25_0, arg_25_1, arg_25_2)
-	UnityEngine.PlayerPrefs.SetInt("PCInputSwitch", arg_25_2 and 1 or 0)
+function var_0_0._onChangeLangTxtType2(arg_26_0)
+	local var_26_0 = GameConfig:GetCurLangShortcut()
+	local var_26_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(var_26_0)
+
+	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(var_26_1)
+	PlayerPrefsHelper.setNumber("StoryTxtLanType", var_26_1 - 1)
+	SettingsController.instance:changeLangTxt()
+end
+
+function var_0_0._switchKeyInput(arg_27_0, arg_27_1, arg_27_2)
+	UnityEngine.PlayerPrefs.SetInt("PCInputSwitch", arg_27_2 and 1 or 0)
 	UnityEngine.PlayerPrefs.Save()
 	PCInputController.instance:Switch()
 end

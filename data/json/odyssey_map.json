@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "unlockCondition": "",
+    "res": "sp01_m_s08_hddt_b/scenes_prefab/sp01_m_s08_hddt_yadian_p",
+    "initPos": "-17.03#11.5",
+    "mapName": "雅典卫城",
+    "recommendLevel": "1#10",
+    "unlockDesc": ""
+  },
+  {
+    "id": 2,
+    "unlockCondition": "finish#130110",
+    "res": "sp01_m_s08_hddt_b/scenes_prefab/sp01_m_s08_hddt_kaifalongniya_p",
+    "initPos": "-17.03#11.5",
+    "mapName": "凯法隆尼亚岛",
+    "recommendLevel": "4#12",
+    "unlockDesc": "完成雅典卫城全部主线任务解锁"
+  },
+  {
+    "id": 3,
+    "unlockCondition": "finish#216002",
+    "res": "sp01_m_s08_hddt_b/scenes_prefab/sp01_m_s08_hddt_deerfeishenmiao_p",
+    "initPos": "-14.43#8.81",
+    "mapName": "德尔菲神庙",
+    "recommendLevel": "7#18",
+    "unlockDesc": "完成凯法隆尼亚岛全部主线任务解锁"
+  },
+  {
+    "id": 4,
+    "unlockCondition": "time#7|finish#316002",
+    "res": "sp01_m_s08_hddt_b/scenes_prefab/sp01_m_s08_hddt_sibada_p",
+    "initPos": "-11.91#5.3",
+    "mapName": "斯巴达卫城",
+    "recommendLevel": "9#25",
+    "unlockDesc": "完成德尔菲神庙全部主线任务解锁"
+  },
+  {
+    "id": 5,
+    "unlockCondition": "time#7|finish#430410",
+    "res": "sp01_m_s08_hddt_b/scenes_prefab/sp01_m_s08_hddt_aolinpiya_p",
+    "initPos": "-15.95#5.98",
+    "mapName": "奥林匹亚",
+    "recommendLevel": "11#30",
+    "unlockDesc": "完成斯巴达卫城全部主线任务解锁"
+  }
+]

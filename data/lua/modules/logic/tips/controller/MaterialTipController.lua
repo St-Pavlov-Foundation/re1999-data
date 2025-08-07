@@ -48,6 +48,12 @@ function var_0_0.showMaterialInfoWithData(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
 			return
 		end
 
+		if var_4_1.subType == ItemEnum.SubType.MainUISkin then
+			ViewMgr.instance:openView(ViewName.MainUISkinMaterialTipView, arg_4_3)
+
+			return
+		end
+
 		if var_4_1.subType == ItemEnum.SubType.FightCard or var_4_1.subType == ItemEnum.SubType.FightFloatType then
 			ViewMgr.instance:openView(ViewName.MainSceneSkinMaterialTipView, arg_4_3)
 

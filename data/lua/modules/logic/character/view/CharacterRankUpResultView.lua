@@ -229,7 +229,7 @@ function var_0_0._refreshEffect(arg_15_0)
 			local var_15_3 = HeroConfig.instance:getShowLevel(tonumber(var_15_2[2]))
 			local var_15_4 = {
 				arg_15_0.heroMo.config.name,
-				tostring(var_15_3)
+				var_15_3
 			}
 
 			arg_15_0._txtlevel.text = GameUtil.getSubPlaceholderLuaLang(luaLang("character_rankupresult_levellimit"), var_15_4)
@@ -271,70 +271,106 @@ function var_0_0._refreshEffect(arg_15_0)
 		arg_15_0._txttalentlevel.text = string.format(var_15_12, var_0_0.characterTalentLevel[var_15_11])
 	end
 
+	arg_15_0:_cheskExtra()
 	arg_15_0:_refreshSpecialEffect()
 end
 
-function var_0_0._refreshSpecialEffect(arg_16_0)
-	local var_16_0 = CharacterModel.instance:getSpecialEffectDesc(arg_16_0.heroMo.skin, arg_16_0.heroMo.rank - 1)
-	local var_16_1 = 0
+function var_0_0._cheskExtra(arg_16_0)
+	if arg_16_0.heroMo.extraMo then
+		local var_16_0
+		local var_16_1 = arg_16_0.heroMo.extraMo:getSkillTalentMo()
 
-	if var_16_0 then
-		for iter_16_0, iter_16_1 in ipairs(var_16_0) do
-			arg_16_0._specialEffectItem[iter_16_0].txt.text = iter_16_1
-			var_16_1 = var_16_1 + 1
+		if var_16_1 then
+			var_16_0 = var_16_1:getUnlockRankStr(arg_16_0.heroMo.rank)
+		end
+
+		if arg_16_0.heroMo.extraMo:hasWeapon() then
+			local var_16_2 = arg_16_0.heroMo.extraMo:getWeaponMo()
+
+			if var_16_2 then
+				var_16_0 = var_16_2:getUnlockRankStr(arg_16_0.heroMo.rank)
+			end
+		end
+
+		if var_16_0 then
+			for iter_16_0, iter_16_1 in ipairs(var_16_0) do
+				if not arg_16_0._txtextra then
+					arg_16_0._txtextra = arg_16_0:getUserDataTb_()
+				end
+
+				if not arg_16_0._txtextra[iter_16_0] then
+					local var_16_3 = gohelper.cloneInPlace(arg_16_0._txtlevel.gameObject, "extra")
+
+					arg_16_0._txtextra[iter_16_0] = var_16_3:GetComponent(typeof(TMPro.TMP_Text))
+				end
+
+				arg_16_0._txtextra[iter_16_0].text = iter_16_1
+			end
+		end
+	end
+end
+
+function var_0_0._refreshSpecialEffect(arg_17_0)
+	local var_17_0 = CharacterModel.instance:getSpecialEffectDesc(arg_17_0.heroMo.skin, arg_17_0.heroMo.rank - 1)
+	local var_17_1 = 0
+
+	if var_17_0 then
+		for iter_17_0, iter_17_1 in ipairs(var_17_0) do
+			arg_17_0._specialEffectItem[iter_17_0].txt.text = iter_17_1
+			var_17_1 = var_17_1 + 1
 		end
 	end
 
-	for iter_16_2 = 1, #arg_16_0._specialEffectItem do
-		gohelper.setActive(arg_16_0._specialEffectItem[iter_16_2].go, iter_16_2 <= var_16_1)
+	for iter_17_2 = 1, #arg_17_0._specialEffectItem do
+		gohelper.setActive(arg_17_0._specialEffectItem[iter_17_2].go, iter_17_2 <= var_17_1)
 	end
 end
 
-function var_0_0._refreshAttribute(arg_17_0)
-	local var_17_0 = arg_17_0:getCurrentHeroAttribute()
-	local var_17_1 = arg_17_0:getHeroPreAttribute()
+function var_0_0._refreshAttribute(arg_18_0)
+	local var_18_0 = arg_18_0:getCurrentHeroAttribute()
+	local var_18_1 = arg_18_0:getHeroPreAttribute()
 
-	for iter_17_0, iter_17_1 in ipairs(arg_17_0._attributeItems) do
-		UISpriteSetMgr.instance:setCommonSprite(iter_17_1.icon, "icon_att_" .. CharacterEnum.BaseAttrIdList[iter_17_0])
+	for iter_18_0, iter_18_1 in ipairs(arg_18_0._attributeItems) do
+		UISpriteSetMgr.instance:setCommonSprite(iter_18_1.icon, "icon_att_" .. CharacterEnum.BaseAttrIdList[iter_18_0])
 
-		iter_17_1.preNumTxt.text = var_17_1[iter_17_0]
-		iter_17_1.curNumTxt.text = var_17_0[iter_17_0]
+		iter_18_1.preNumTxt.text = var_18_1[iter_18_0]
+		iter_18_1.curNumTxt.text = var_18_0[iter_18_0]
 	end
 end
 
-function var_0_0.getHeroPreAttribute(arg_18_0)
-	return arg_18_0:_getHeroAttribute(arg_18_0.heroMo.level - 1, arg_18_0.heroMo.rank - 1)
+function var_0_0.getHeroPreAttribute(arg_19_0)
+	return arg_19_0:_getHeroAttribute(arg_19_0.heroMo.level - 1, arg_19_0.heroMo.rank - 1)
 end
 
-function var_0_0.getCurrentHeroAttribute(arg_19_0)
-	return arg_19_0:_getHeroAttribute()
+function var_0_0.getCurrentHeroAttribute(arg_20_0)
+	return arg_20_0:_getHeroAttribute()
 end
 
-function var_0_0._getHeroAttribute(arg_20_0, arg_20_1, arg_20_2)
-	arg_20_1 = arg_20_1 or arg_20_0.heroMo.level
-	arg_20_2 = arg_20_2 or arg_20_0.heroMo.rank
+function var_0_0._getHeroAttribute(arg_21_0, arg_21_1, arg_21_2)
+	arg_21_1 = arg_21_1 or arg_21_0.heroMo.level
+	arg_21_2 = arg_21_2 or arg_21_0.heroMo.rank
 
-	local var_20_0
+	local var_21_0
 
-	if arg_20_0.heroMo:hasDefaultEquip() then
-		var_20_0 = {
-			arg_20_0.heroMo.defaultEquipUid
+	if arg_21_0.heroMo:hasDefaultEquip() then
+		var_21_0 = {
+			arg_21_0.heroMo.defaultEquipUid
 		}
 	end
 
-	return arg_20_0.heroMo:getTotalBaseAttrList(var_20_0, arg_20_1, arg_20_2)
+	return arg_21_0.heroMo:getTotalBaseAttrList(var_21_0, arg_21_1, arg_21_2)
 end
 
-function var_0_0.onClose(arg_21_0)
-	arg_21_0._simagecenterbg:UnLoadImage()
-	arg_21_0._uiSpine:setModelVisible(false)
+function var_0_0.onClose(arg_22_0)
+	arg_22_0._simagecenterbg:UnLoadImage()
+	arg_22_0._uiSpine:setModelVisible(false)
 end
 
-function var_0_0.onDestroyView(arg_22_0)
-	if arg_22_0._uiSpine then
-		arg_22_0._uiSpine:onDestroy()
+function var_0_0.onDestroyView(arg_23_0)
+	if arg_23_0._uiSpine then
+		arg_23_0._uiSpine:onDestroy()
 
-		arg_22_0._uiSpine = nil
+		arg_23_0._uiSpine = nil
 	end
 end
 

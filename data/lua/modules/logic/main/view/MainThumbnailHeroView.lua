@@ -288,6 +288,10 @@ function var_0_0.resetSpineAnchorTween(arg_22_0, arg_22_1)
 	if arg_22_1 then
 		recthelper.setAnchor(arg_22_0._golightspine.transform, var_22_3[1], var_22_3[2])
 
+		local var_22_4 = tonumber(var_22_3[3])
+
+		transformhelper.setLocalScale(arg_22_0._golightspine.transform, var_22_4, var_22_4, var_22_4)
+
 		return
 	end
 
@@ -878,6 +882,10 @@ end
 
 function var_0_0.onDestroyView(arg_67_0)
 	arg_67_0:_disableKeyword()
+end
+
+function var_0_0.getLightSpineGo(arg_68_0)
+	return arg_68_0._golightspine
 end
 
 return var_0_0

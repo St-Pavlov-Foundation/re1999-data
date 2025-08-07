@@ -1412,13 +1412,7 @@ function var_0_0._onClickOpenHuaRongViewBtn(arg_98_0)
 end
 
 function var_0_0._onClickOpenSeasonViewBtn(arg_99_0)
-	local var_99_0 = FeiLinShiDuoConfig.instance:getGameEpisode(1251301)
-	local var_99_1 = {
-		mapId = FeiLinShiDuoEnum.TestMapId,
-		gameConfig = var_99_0
-	}
-
-	FeiLinShiDuoGameController.instance:openGameView(var_99_1)
+	Act205Controller.instance:openGameStartView(Act205Enum.ActId)
 end
 
 function var_0_0._onEarToggleValueChange(arg_100_0)

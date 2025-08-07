@@ -6,6 +6,7 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0.paper = 0
 	arg_1_0.gainBonus = {}
 	arg_1_0._eventList = {}
+	arg_1_0.catchNum = 0
 end
 
 function var_0_0.reInit(arg_2_0)

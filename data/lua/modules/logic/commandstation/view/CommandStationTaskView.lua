@@ -3,7 +3,7 @@
 local var_0_0 = class("CommandStationTaskView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
-	arg_1_0._imageTitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/Dec/simage_title")
+	arg_1_0._imageTitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/simage_title")
 	arg_1_0._imageReward = gohelper.findChildSingleImage(arg_1_0.viewGO, "Left/#simage_reward")
 	arg_1_0._btnLeft = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#btn_arrowLeft")
 	arg_1_0._btnRight = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/#btn_arrowRight")
@@ -36,6 +36,7 @@ function var_0_0.addEvents(arg_2_0)
 	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, arg_2_0._onGetTaskBonus, arg_2_0)
 	CommandStationController.instance:registerCallback(CommandStationEvent.OnBonusUpdate, arg_2_0.refreshBonus, arg_2_0)
 	BackpackController.instance:registerCallback(BackpackEvent.UpdateItemList, arg_2_0.refreshBonus, arg_2_0)
+	arg_2_0:addEventCb(CommandStationController.instance, CommandStationEvent.OnGetCommandPostInfo, arg_2_0._onOnGetCommandPostInfo, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
@@ -130,7 +131,7 @@ function var_0_0._autoScrollNoGetBonus(arg_5_0)
 end
 
 function var_0_0.haveCatchTask(arg_6_0)
-	return #CommandStationTaskListModel.instance.allCatchTaskMos > 0
+	return #CommandStationTaskListModel.instance.allCatchTaskMos > 0 and CommandStationModel.instance.catchNum > 0
 end
 
 function var_0_0.refreshTask(arg_7_0)
@@ -140,7 +141,7 @@ function var_0_0.refreshTask(arg_7_0)
 
 	gohelper.setActive(arg_7_0._btnCatchTask, var_7_0)
 
-	local var_7_1 = CommandStationTaskListModel.instance.curSelectType == 2
+	local var_7_1 = CommandStationTaskListModel.instance.curSelectType == CommandStationEnum.TaskType.Catch
 
 	arg_7_0:setTaskNewRed(var_7_1 and RedDotEnum.DotNode.CommandStationTaskCatch or RedDotEnum.DotNode.CommandStationTaskNormal, var_7_1 and PlayerPrefsKey.CommandStationTaskCatchOnce or PlayerPrefsKey.CommandStationTaskNormalOnce)
 	gohelper.setActive(arg_7_0._goNormalTaskSelect, not var_7_1)
@@ -173,15 +174,10 @@ end
 
 function var_0_0._refreshTime(arg_9_0)
 	local var_9_0 = 0
+	local var_9_1 = CommandStationConfig.instance:getConstConfig(CommandStationEnum.ConstId.VersionEndDt)
 
-	if CommandStationTaskListModel.instance.curSelectType == 1 then
-		local var_9_1 = CommandStationConfig.instance:getConstConfig(CommandStationEnum.ConstId.VersionEndDt)
-
-		if var_9_1 then
-			var_9_0 = TimeUtil.stringToTimestamp(var_9_1.value2) + ServerTime.clientToServerOffset() - ServerTime.now()
-		end
-	elseif CommandStationTaskListModel.instance.curSelectType == 2 then
-		var_9_0 = ServerTime.getWeekEndTimeStamp(true) - ServerTime.now()
+	if var_9_1 then
+		var_9_0 = TimeUtil.stringToTimestamp(var_9_1.value2) + ServerTime.clientToServerOffset() - ServerTime.now()
 	end
 
 	local var_9_2 = math.max(0, var_9_0)
@@ -189,113 +185,121 @@ function var_0_0._refreshTime(arg_9_0)
 	arg_9_0._txtTime.text = TimeUtil.SecondToActivityTimeFormat(var_9_2)
 end
 
-function var_0_0.refreshBonus(arg_10_0)
-	local var_10_0 = CommandStationConfig.instance:getCurPaperCount()
-	local var_10_1 = CommandStationConfig.instance:getCurTotalPaperCount()
+function var_0_0._onOnGetCommandPostInfo(arg_10_0)
+	arg_10_0:refreshBonus()
+end
 
-	arg_10_0._txtCanGet.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("commandstation_paper_canget"), math.max(0, var_10_1 - var_10_0))
-	arg_10_0._txtprogress.text = string.format("<#DE9A2F>%d</color>/%d", var_10_0, var_10_1)
+function var_0_0.refreshBonus(arg_11_0)
+	local var_11_0 = CommandStationConfig.instance:getCurPaperCount()
+	local var_11_1 = CommandStationConfig.instance:getCurTotalPaperCount()
 
-	local var_10_2 = 0
-	local var_10_3 = 0
-	local var_10_4 = false
+	arg_11_0._txtCanGet.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("commandstation_paper_canget"), CommandStationModel.instance.catchNum)
+	arg_11_0._txtprogress.text = string.format("<#DE9A2F>%d</color>/%d", var_11_0, var_11_1)
 
-	for iter_10_0 = 1, #arg_10_0._bonusCos do
-		local var_10_5 = arg_10_0._bonusCos[iter_10_0]
-		local var_10_6 = arg_10_0._bonusCos[iter_10_0 - 1]
-		local var_10_7 = var_10_6 and var_10_6.pointNum or 0
-		local var_10_8 = ((arg_10_0._bonusCountList[iter_10_0 - 1] and arg_10_0._bonusCountList[iter_10_0 - 1] * 100 + 70 or 0) + (arg_10_0._bonusCountList[iter_10_0] * 100 + 70)) / 2
+	local var_11_2 = 0
+	local var_11_3 = 0
+	local var_11_4 = false
 
-		if var_10_0 >= var_10_5.pointNum then
-			var_10_2 = var_10_2 + var_10_8
-		elseif not var_10_4 then
-			var_10_2 = var_10_2 + var_10_8 * (var_10_0 - var_10_7) / (var_10_5.pointNum - var_10_7)
-			var_10_4 = true
+	for iter_11_0 = 1, #arg_11_0._bonusCos do
+		local var_11_5 = arg_11_0._bonusCos[iter_11_0]
+		local var_11_6 = arg_11_0._bonusCos[iter_11_0 - 1]
+		local var_11_7 = var_11_6 and var_11_6.pointNum or 0
+		local var_11_8 = ((arg_11_0._bonusCountList[iter_11_0 - 1] and arg_11_0._bonusCountList[iter_11_0 - 1] * 100 + 70 or 0) + (arg_11_0._bonusCountList[iter_11_0] * 100 + 70)) / 2
+
+		if var_11_0 >= var_11_5.pointNum then
+			var_11_2 = var_11_2 + var_11_8
+		elseif not var_11_4 then
+			var_11_2 = var_11_2 + var_11_8 * (var_11_0 - var_11_7) / (var_11_5.pointNum - var_11_7)
+			var_11_4 = true
 		end
 
-		var_10_3 = var_10_3 + var_10_8
+		var_11_3 = var_11_3 + var_11_8
 	end
 
-	arg_10_0._slider.fillAmount = var_10_2 / var_10_3
+	arg_11_0._slider.fillAmount = var_11_2 / var_11_3
 
-	CommandStationBonusListModel.instance:setData(arg_10_0._bonusCos, arg_10_0._bonusCountList)
+	CommandStationBonusListModel.instance:setData(arg_11_0._bonusCos, arg_11_0._bonusCountList)
 end
 
-function var_0_0.refreshBigBonus(arg_11_0)
-	local var_11_0 = arg_11_0._bigBonusCos[arg_11_0._curBigBonusIndex]
-
-	if not var_11_0 then
-		return
-	end
-
-	gohelper.setActive(arg_11_0._btnLeft, arg_11_0._curBigBonusIndex > 1)
-	gohelper.setActive(arg_11_0._btnRight, arg_11_0._curBigBonusIndex < #arg_11_0._bigBonusCos)
-	arg_11_0._imageTitle:LoadImage(string.format("singlebg_lang/txt_v3a0_commandstation_singlebg/commandstation_task_title%s.png", arg_11_0._curBigBonusIndex))
-	arg_11_0._imageReward:LoadImage(string.format("singlebg/commandstation/task/commandstation_task_reward%s.png", arg_11_0._curBigBonusIndex))
-
-	local var_11_1 = {}
-	local var_11_2 = GameUtil.splitString2(var_11_0.bonus, true)
-
-	for iter_11_0, iter_11_1 in ipairs(var_11_2) do
-		local var_11_3 = ItemConfig:getItemConfig(iter_11_1[1], iter_11_1[2])
-
-		if var_11_3 then
-			table.insert(var_11_1, var_11_3.name)
-		end
-	end
-
-	arg_11_0._txtRewardDesc.text = table.concat(var_11_1, luaLang("commandstation_itemname_and"))
+function var_0_0._titleLoadCallback(arg_12_0)
+	gohelper.findChildImage(arg_12_0.viewGO, "Left/simage_title"):SetNativeSize()
 end
 
-function var_0_0.changeBigBonusIndex(arg_12_0, arg_12_1)
-	arg_12_0._curBigBonusIndex = Mathf.Clamp(arg_12_1 + arg_12_0._curBigBonusIndex, 1, #arg_12_0._bigBonusCos)
-
-	if arg_12_1 > 0 then
-		arg_12_0._anim:Play("switch_right", 0, 0)
-	elseif arg_12_1 < 0 then
-		arg_12_0._anim:Play("switch_left", 0, 0)
-	end
-
-	TaskDispatcher.runDelay(arg_12_0.refreshBigBonus, arg_12_0, 0.167)
-	UIBlockHelper.instance:startBlock("CommandStationTaskView_switch", 0.167)
-end
-
-function var_0_0.showItemTips(arg_13_0)
+function var_0_0.refreshBigBonus(arg_13_0)
 	local var_13_0 = arg_13_0._bigBonusCos[arg_13_0._curBigBonusIndex]
 
 	if not var_13_0 then
 		return
 	end
 
-	local var_13_1 = GameUtil.splitString2(var_13_0.bonus, true)
+	gohelper.setActive(arg_13_0._btnLeft, arg_13_0._curBigBonusIndex > 1)
+	gohelper.setActive(arg_13_0._btnRight, arg_13_0._curBigBonusIndex < #arg_13_0._bigBonusCos)
+	arg_13_0._imageTitle:LoadImage(string.format("singlebg_lang/txt_commandstation_singlebg/commandstation_task_title%s.png", arg_13_0._curBigBonusIndex), arg_13_0._titleLoadCallback, arg_13_0)
+	arg_13_0._imageReward:LoadImage(string.format("singlebg/commandstation/task/commandstation_task_reward%s.png", arg_13_0._curBigBonusIndex))
 
-	MaterialTipController.instance:showMaterialInfo(var_13_1[1][1], var_13_1[1][2])
+	local var_13_1 = {}
+	local var_13_2 = GameUtil.splitString2(var_13_0.bonus, true)
+
+	for iter_13_0, iter_13_1 in ipairs(var_13_2) do
+		local var_13_3 = ItemConfig:getItemConfig(iter_13_1[1], iter_13_1[2])
+
+		if var_13_3 then
+			table.insert(var_13_1, var_13_3.name)
+		end
+	end
+
+	arg_13_0._txtRewardDesc.text = table.concat(var_13_1, luaLang("commandstation_itemname_and"))
 end
 
-function var_0_0._sendGetAllBonus(arg_14_0)
-	CommandStationRpc.instance:sendCommandPostBonusAllRequest()
+function var_0_0.changeBigBonusIndex(arg_14_0, arg_14_1)
+	arg_14_0._curBigBonusIndex = Mathf.Clamp(arg_14_1 + arg_14_0._curBigBonusIndex, 1, #arg_14_0._bigBonusCos)
+
+	if arg_14_1 > 0 then
+		arg_14_0._anim:Play("switch_right", 0, 0)
+	elseif arg_14_1 < 0 then
+		arg_14_0._anim:Play("switch_left", 0, 0)
+	end
+
+	TaskDispatcher.runDelay(arg_14_0.refreshBigBonus, arg_14_0, 0.167)
+	UIBlockHelper.instance:startBlock("CommandStationTaskView_switch", 0.167)
 end
 
-function var_0_0._swtichTaskShow(arg_15_0, arg_15_1)
-	if arg_15_1 == CommandStationTaskListModel.instance.curSelectType then
+function var_0_0.showItemTips(arg_15_0)
+	local var_15_0 = arg_15_0._bigBonusCos[arg_15_0._curBigBonusIndex]
+
+	if not var_15_0 then
 		return
 	end
 
-	CommandStationTaskListModel.instance.curSelectType = arg_15_1
+	local var_15_1 = GameUtil.splitString2(var_15_0.bonus, true)
 
-	arg_15_0:refreshTask()
-	arg_15_0:_refreshTime()
+	MaterialTipController.instance:showMaterialInfo(var_15_1[1][1], var_15_1[1][2])
 end
 
-function var_0_0._onGetTaskBonus(arg_16_0)
+function var_0_0._sendGetAllBonus(arg_16_0)
+	CommandStationRpc.instance:sendCommandPostBonusAllRequest()
+end
+
+function var_0_0._swtichTaskShow(arg_17_0, arg_17_1)
+	if arg_17_1 == CommandStationTaskListModel.instance.curSelectType then
+		return
+	end
+
+	CommandStationTaskListModel.instance.curSelectType = arg_17_1
+
+	arg_17_0:refreshTask()
+	arg_17_0:_refreshTime()
+end
+
+function var_0_0._onGetTaskBonus(arg_18_0)
 	CommandStationRpc.instance:sendGetCommandPostInfoRequest()
 end
 
-function var_0_0.onClose(arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0.refreshBigBonus, arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0._refreshTime, arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0._onGetTaskBonus, arg_17_0)
-	TaskDispatcher.cancelTask(arg_17_0._autoScrollNoGetBonus, arg_17_0)
+function var_0_0.onClose(arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0.refreshBigBonus, arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._refreshTime, arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._onGetTaskBonus, arg_19_0)
+	TaskDispatcher.cancelTask(arg_19_0._autoScrollNoGetBonus, arg_19_0)
 end
 
 return var_0_0

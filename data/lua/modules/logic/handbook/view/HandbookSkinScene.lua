@@ -9,14 +9,15 @@ local var_0_4 = "sence2down"
 local var_0_5 = "sence2up"
 local var_0_6 = 5
 local var_0_7 = 0.00025
-local var_0_8 = {
+local var_0_8 = 0.15
+local var_0_9 = {
 	0.8333,
 	0.6667,
 	0.5,
 	0.3333,
 	0.1667
 }
-local var_0_9 = 0.25
+local var_0_10 = 0.25
 
 var_0_1.SkinSuitId2SuitView = {
 	[20011] = ViewName.HandbookSkinSuitDetailView2_1,
@@ -26,7 +27,8 @@ var_0_1.SkinSuitId2SuitView = {
 	[20018] = ViewName.HandbookSkinSuitDetailView2_8,
 	[20013] = ViewName.HandbookSkinSuitDetailView2_3,
 	[20010] = ViewName.HandbookSkinSuitDetailView2_0,
-	[20019] = ViewName.HandbookSkinSuitDetailView3_0
+	[20019] = ViewName.HandbookSkinSuitDetailView3_0,
+	[22003] = ViewName.HandbookSkinSuitDetailView2_9
 }
 
 function var_0_1.onInitView(arg_1_0)
@@ -125,15 +127,16 @@ function var_0_1.onDragging(arg_9_0, arg_9_1)
 	end
 
 	local var_9_0 = var_0_7 * arg_9_1
-	local var_9_1 = false
+	local var_9_1 = Mathf.Clamp(var_9_0, -var_0_8, var_0_8)
+	local var_9_2 = false
 
 	for iter_9_1, iter_9_2 in ipairs(arg_9_0._tarotCardAnimators) do
-		local var_9_2 = arg_9_0._tarotCardAniProgress[iter_9_1]
-		local var_9_3 = "slide"
-		local var_9_4 = var_9_2 - var_9_0
+		local var_9_3 = arg_9_0._tarotCardAniProgress[iter_9_1]
+		local var_9_4 = "slide"
+		local var_9_5 = var_9_3 - var_9_1
 
-		if var_9_4 >= arg_9_0._maxProgress then
-			arg_9_0._tarotCardAniProgress[iter_9_1] = arg_9_0._minProgress + var_9_4 - arg_9_0._maxProgress
+		if var_9_5 >= arg_9_0._maxProgress then
+			arg_9_0._tarotCardAniProgress[iter_9_1] = arg_9_0._minProgress + var_9_5 - arg_9_0._maxProgress
 			arg_9_0._curLeftIdx = arg_9_0._curLeftIdx >= HandbookEnum.TarotSkinCount and 1 or arg_9_0._curLeftIdx + 1
 			arg_9_0._curRightIdx = arg_9_0._curRightIdx >= HandbookEnum.TarotSkinCount and 1 or arg_9_0._curRightIdx + 1
 
@@ -141,9 +144,9 @@ function var_0_1.onDragging(arg_9_0, arg_9_1)
 
 			arg_9_0._tarotCardIdx2SkinIdx[iter_9_1] = arg_9_0._curRightIdx
 
-			local var_9_5 = true
-		elseif var_9_4 <= arg_9_0._minProgress then
-			arg_9_0._tarotCardAniProgress[iter_9_1] = arg_9_0._maxProgress + var_9_4 - arg_9_0._minProgress
+			local var_9_6 = true
+		elseif var_9_5 <= arg_9_0._minProgress then
+			arg_9_0._tarotCardAniProgress[iter_9_1] = arg_9_0._maxProgress + var_9_5 - arg_9_0._minProgress
 			arg_9_0._curLeftIdx = arg_9_0._curLeftIdx <= 1 and HandbookEnum.TarotSkinCount or arg_9_0._curLeftIdx - 1
 			arg_9_0._curRightIdx = arg_9_0._curRightIdx <= 1 and HandbookEnum.TarotSkinCount or arg_9_0._curRightIdx - 1
 
@@ -151,12 +154,12 @@ function var_0_1.onDragging(arg_9_0, arg_9_1)
 
 			arg_9_0._tarotCardIdx2SkinIdx[iter_9_1] = arg_9_0._curLeftIdx
 
-			local var_9_6 = true
+			local var_9_7 = true
 		else
-			arg_9_0._tarotCardAniProgress[iter_9_1] = var_9_4
+			arg_9_0._tarotCardAniProgress[iter_9_1] = var_9_5
 		end
 
-		arg_9_0:UpdateAnimProgress(iter_9_2, var_9_3, arg_9_0._tarotCardAniProgress[iter_9_1])
+		arg_9_0:UpdateAnimProgress(iter_9_2, var_9_4, arg_9_0._tarotCardAniProgress[iter_9_1])
 	end
 end
 
@@ -572,11 +575,11 @@ function var_0_1.onTarotEnterAniDone(arg_31_0)
 	arg_31_0._tarotMode = true
 	arg_31_0._maxProgress = 0.916
 	arg_31_0._minProgress = 0.083
-	arg_31_0._tarotCardAniProgress[1] = var_0_8[1]
-	arg_31_0._tarotCardAniProgress[2] = var_0_8[2]
-	arg_31_0._tarotCardAniProgress[3] = var_0_8[3]
-	arg_31_0._tarotCardAniProgress[4] = var_0_8[4]
-	arg_31_0._tarotCardAniProgress[5] = var_0_8[5]
+	arg_31_0._tarotCardAniProgress[1] = var_0_9[1]
+	arg_31_0._tarotCardAniProgress[2] = var_0_9[2]
+	arg_31_0._tarotCardAniProgress[3] = var_0_9[3]
+	arg_31_0._tarotCardAniProgress[4] = var_0_9[4]
+	arg_31_0._tarotCardAniProgress[5] = var_0_9[5]
 
 	for iter_31_0 = 1, var_0_6 do
 		local var_31_0 = "slide"
@@ -711,8 +714,8 @@ function var_0_1.doTarotCardPosResetTween(arg_38_0)
 
 		var_38_2 = var_38_2 > var_0_6 and var_38_2 - var_0_6 or var_38_2
 
-		local var_38_3 = var_0_8[var_38_2]
-		local var_38_4 = ZProj.TweenHelper.DOTweenFloat(var_38_1, var_38_3, var_0_9, arg_38_0.cardPosResetTweenFrameCallback, nil, arg_38_0, iter_38_0)
+		local var_38_3 = var_0_9[var_38_2]
+		local var_38_4 = ZProj.TweenHelper.DOTweenFloat(var_38_1, var_38_3, var_0_10, arg_38_0.cardPosResetTweenFrameCallback, nil, arg_38_0, iter_38_0)
 
 		arg_38_0._dragResetPosTweens[iter_38_0] = var_38_4
 	end
@@ -731,7 +734,7 @@ function var_0_1._checkCardPosIdx(arg_40_0, arg_40_1)
 	local var_40_0 = math.huge
 	local var_40_1 = 1
 
-	for iter_40_0, iter_40_1 in ipairs(var_0_8) do
+	for iter_40_0, iter_40_1 in ipairs(var_0_9) do
 		local var_40_2 = math.abs(arg_40_1 - iter_40_1)
 
 		if var_40_2 < var_40_0 then

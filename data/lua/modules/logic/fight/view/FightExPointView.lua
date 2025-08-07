@@ -11,10 +11,14 @@ end
 
 local var_0_1 = {
 	[FightEnum.ExPointType.Common] = FightExPointCommonView,
-	[FightEnum.ExPointType.Belief] = FightExPointBeliefView
+	[FightEnum.ExPointType.Belief] = FightExPointBeliefView,
+	[FightEnum.ExPointType.Synchronization] = FightExPointSynchronizationView,
+	[FightEnum.ExPointType.Adrenaline] = FightExPointAdrenalineView
 }
 local var_0_2 = {
-	[FightEnum.ExPointType.Belief] = "ui/viewres/fight/fight_nuodika_energyview.prefab"
+	[FightEnum.ExPointType.Belief] = "ui/viewres/fight/fight_nuodika_energyview.prefab",
+	[FightEnum.ExPointType.Synchronization] = "ui/viewres/fight/fightaijiaoenergeyview.prefab",
+	[FightEnum.ExPointType.Adrenaline] = "ui/viewres/fight/fight_expoint_adrenalineview.prefab"
 }
 
 function var_0_0.onAwake(arg_2_0)

@@ -6,13 +6,17 @@ var_0_0.CustomDataType = {
 	Act191 = 3,
 	WeekwalkVer2 = 2,
 	Act183 = 1,
-	Survival = 4
+	Odyssey = 5,
+	Survival = 4,
+	Act128Sp = 6
 }
 
 local var_0_1 = {
 	[var_0_0.CustomDataType.Act183] = true,
 	[var_0_0.CustomDataType.Act191] = true,
-	[var_0_0.CustomDataType.Survival] = true
+	[var_0_0.CustomDataType.Survival] = true,
+	[var_0_0.CustomDataType.Odyssey] = true,
+	[var_0_0.CustomDataType.Act128Sp] = true
 }
 
 function var_0_0.onConstructor(arg_1_0, arg_1_1)

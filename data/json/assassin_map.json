@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "佛罗伦萨-圣乔瓦尼区",
+    "unlock": "",
+    "bg": "assassin2_map_fullbg1",
+    "bgCenter": "-20#413.8"
+  },
+  {
+    "id": 2,
+    "title": "威尼斯",
+    "unlock": "finish_quest#3016",
+    "bg": "assassin2_map_fullbg2",
+    "bgCenter": "-20#248"
+  },
+  {
+    "id": 3,
+    "title": "佛罗伦萨-圣马可区",
+    "unlock": "finish_quest#3022",
+    "bg": "assassin2_map_fullbg1",
+    "bgCenter": "0#-220"
+  }
+]

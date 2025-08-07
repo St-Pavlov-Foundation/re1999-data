@@ -103,7 +103,25 @@ local var_0_1 = {
 	ActivityEnum.Activity.V2a7_SelfSelectSix2,
 	ActivityEnum.Activity.V2a8_DragonBoat,
 	ActivityEnum.Activity.V2a8_WuErLiXiGift,
+	ActivityEnum.Activity.V2a9_VersionSummon_Part1,
+	ActivityEnum.Activity.V2a9_VersionSummon_Part2,
+	ActivityEnum.Activity.V2a9_FreeMonthCard,
 	ActivityEnum.Activity.V3a0_SummerSign
+}
+local var_0_2 = {
+	ActivityEnum.Activity.VersionActivity1_3Radio,
+	ActivityEnum.Activity.Activity1_6WarmUp,
+	ActivityEnum.Activity.Activity1_7WarmUp,
+	ActivityEnum.Activity.Activity1_8WarmUp,
+	ActivityEnum.Activity.Activity1_9WarmUp,
+	ActivityEnum.Activity.V2a0_WarmUp,
+	ActivityEnum.Activity.V2a1_WarmUp,
+	ActivityEnum.Activity.RoomSign,
+	ActivityEnum.Activity.V2a2_WarmUp,
+	ActivityEnum.Activity.V2a3_WarmUp,
+	ActivityEnum.Activity.V2a4_WarmUp,
+	ActivityEnum.Activity.V2a5_WarmUp,
+	ActivityEnum.Activity.V2a7_WarmUp
 }
 
 function var_0_0.checkGetActivityInfo(arg_9_0)
@@ -151,6 +169,7 @@ function var_0_0.checkGetActivityInfo(arg_9_0)
 	end
 
 	arg_9_0:requestAct186Info()
+	arg_9_0:requestAct165Info()
 end
 
 function var_0_0.requestAct186Info(arg_10_0)
@@ -193,14 +212,14 @@ function var_0_0._onDailyRefresh(arg_12_0)
 	arg_12_0:updateAct101Infos()
 end
 
-local var_0_2 = false
+local var_0_3 = false
 
 function var_0_0._initRoleSign_kAct101RedList(arg_13_0)
-	if var_0_2 then
+	if var_0_3 then
 		return
 	end
 
-	var_0_2 = true
+	var_0_3 = true
 
 	local var_13_0 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part1", ActivityEnum.Activity.V2a6_Role_SignView_Part1)
 	local var_13_1 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part2", ActivityEnum.Activity.V2a6_Role_SignView_Part2)
@@ -213,32 +232,36 @@ function var_0_0.onModuleViews(arg_14_0, arg_14_1, arg_14_2)
 	ActivityType101Model.instance:onModuleViews(arg_14_1, arg_14_2)
 end
 
-local var_0_3 = false
-
-function var_0_0._initSpecialSign_kAct101RedList(arg_15_0)
-	if var_0_3 then
-		return
-	end
-
-	var_0_3 = true
-
-	local var_15_0 = GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special)
-
-	table.insert(var_0_1, var_15_0)
-end
-
 local var_0_4 = false
 
-function var_0_0._initLinkageActivity_kAct101RedList(arg_16_0)
+function var_0_0._initSpecialSign_kAct101RedList(arg_15_0)
 	if var_0_4 then
 		return
 	end
 
 	var_0_4 = true
 
+	local var_15_0 = GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special)
+
+	table.insert(var_0_1, var_15_0)
+end
+
+local var_0_5 = false
+
+function var_0_0._initLinkageActivity_kAct101RedList(arg_16_0)
+	if var_0_5 then
+		return
+	end
+
+	var_0_5 = true
+
 	local var_16_0 = GameBranchMgr.instance:Vxax_ActId("LinkageActivity", ActivityEnum.Activity.LinkageActivity_FullView)
 
 	table.insert(var_0_1, var_16_0)
+end
+
+function var_0_0.requestAct165Info(arg_17_0)
+	Activity165Model.instance:onInitInfo()
 end
 
 var_0_0.instance = var_0_0.New()

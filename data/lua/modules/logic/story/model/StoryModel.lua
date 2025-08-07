@@ -690,6 +690,24 @@ function var_0_0.isDirectSkipStory(arg_64_0, arg_64_1)
 	return false
 end
 
+function var_0_0.setCurStoryId(arg_65_0, arg_65_1)
+	arg_65_0._curStoryId = arg_65_1
+end
+
+function var_0_0.getCurStoryId(arg_66_0)
+	return arg_66_0._curStoryId or 0
+end
+
+function var_0_0.isS01Story(arg_67_0, arg_67_1)
+	local var_67_0 = arg_67_1 or arg_67_0:getCurStoryId()
+
+	if math.floor(var_67_0 / 100) == 20305 then
+		return true
+	end
+
+	return false
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

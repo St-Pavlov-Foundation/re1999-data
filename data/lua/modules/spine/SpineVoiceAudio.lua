@@ -29,15 +29,11 @@ function var_0_0.init(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
 		end
 
 		if arg_3_4 then
-			if GameConfig:GetCurVoiceShortcut() == LangSettings.shortcutTab[LangSettings.zh] then
-				local var_3_0 = AudioConfig.instance:getAudioCOById(arg_3_2.audio).bankName
+			local var_3_0 = AudioConfig.instance:getAudioCOById(arg_3_2.audio).bankName
 
-				ZProj.AudioManager.Instance:LoadBank(var_3_0, arg_3_4)
-				arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_4, arg_3_0._onEmitterCallback, arg_3_0)
-				ZProj.AudioManager.Instance:UnloadBank(var_3_0)
-			else
-				arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_4, arg_3_0._onEmitterCallback, arg_3_0)
-			end
+			ZProj.AudioManager.Instance:LoadBank(var_3_0, arg_3_4)
+			arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_4, arg_3_0._onEmitterCallback, arg_3_0)
+			ZProj.AudioManager.Instance:UnloadBank(var_3_0)
 		else
 			arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_0._onEmitterCallback, arg_3_0)
 		end

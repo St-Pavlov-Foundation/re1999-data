@@ -519,6 +519,10 @@ function var_0_0.buildTempSceneEntity(arg_23_0, arg_23_1)
 end
 
 function var_0_0.destroyUnit(arg_24_0, arg_24_1)
+	if arg_24_1.IS_REMOVED then
+		return
+	end
+
 	arg_24_1.IS_REMOVED = true
 
 	if FightSkillMgr.instance:isEntityPlayingTimeline(arg_24_1.id) then

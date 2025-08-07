@@ -408,6 +408,10 @@ function var_0_0._getConfigHeroList(arg_27_0)
 end
 
 function var_0_0._checkConfig(arg_28_0, arg_28_1)
+	if arg_28_1.stat == CharacterEnum.StatType.NotStat and not HeroModel.instance:getByHeroId(arg_28_1.id) then
+		return false
+	end
+
 	if not arg_28_0:_isAllHeroType() then
 		local var_28_0 = HeroModel.instance:getByHeroId(arg_28_1.id)
 

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "地面",
+    "icon": "assassinstealthoverview_legend_plain"
+  },
+  {
+    "id": 2,
+    "name": "屋顶",
+    "icon": "assassinstealthoverview_legend_roof"
+  },
+  {
+    "id": 3,
+    "name": "水域",
+    "icon": "assassinstealthoverview_legend_water"
+  }
+]

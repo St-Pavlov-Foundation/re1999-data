@@ -355,6 +355,10 @@ function var_0_0._refreshBtnShow(arg_31_0)
 		arg_31_0:_layoutPlanUnLockAnim()
 	end
 
+	if VersionValidator.instance:isInReviewing() then
+		gohelper.setActive(arg_31_0._btnstore, false)
+	end
+
 	arg_31_0:_refreshTradeBtn()
 end
 

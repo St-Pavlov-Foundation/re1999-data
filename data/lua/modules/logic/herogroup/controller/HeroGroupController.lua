@@ -97,7 +97,8 @@ function var_0_0._getGroupFightViewName(arg_8_0, arg_8_1)
 			[VersionActivity1_5Enum.ActivityId.Dungeon] = ViewName.V1a5_HeroGroupFightView,
 			[VersionActivity1_6Enum.ActivityId.Dungeon] = ViewName.V1a6_HeroGroupFightView,
 			[VersionActivity1_6Enum.ActivityId.DungeonBossRush] = ViewName.V1a6_HeroGroupFightView,
-			[VersionActivity2_7Enum.ActivityId.Act191] = ViewName.Act191HeroGroupView
+			[VersionActivity2_7Enum.ActivityId.Act191] = ViewName.Act191HeroGroupView,
+			[VersionActivity2_9Enum.ActivityId.Dungeon] = ViewName.VersionActivity2_9HeroGroupFightView
 		}
 		arg_8_0.ChapterTypeToHeroGroupView = {
 			[DungeonEnum.ChapterType.WeekWalk] = ViewName.HeroGroupFightWeekwalkView,
@@ -107,6 +108,7 @@ function var_0_0._getGroupFightViewName(arg_8_0, arg_8_1)
 			[DungeonEnum.ChapterType.TowerLimited] = ViewName.TowerHeroGroupFightView,
 			[DungeonEnum.ChapterType.TowerBossTeach] = ViewName.TowerHeroGroupFightView,
 			[DungeonEnum.ChapterType.Act183] = ViewName.Act183HeroGroupFightView,
+			[DungeonEnum.ChapterType.Odyssey] = ViewName.OdysseyHeroGroupView,
 			[DungeonEnum.ChapterType.Survival] = ViewName.SurvivalHeroGroupFightView,
 			[DungeonEnum.ChapterType.Shelter] = ViewName.ShelterHeroGroupFightView
 		}
@@ -120,10 +122,19 @@ function var_0_0._getGroupFightViewName(arg_8_0, arg_8_1)
 	end
 
 	local var_8_0 = DungeonConfig.instance:getEpisodeCO(arg_8_1)
-	local var_8_1 = var_8_0 and DungeonConfig.instance:getChapterCO(var_8_0.chapterId)
 
-	if var_8_1 then
-		return arg_8_0.ActivityIdToHeroGroupView[var_8_1.actId] or arg_8_0.ChapterTypeToHeroGroupView[var_8_1.type] or arg_8_0.ChapterIdToHeroGroupView[var_8_1.id] or ViewName.HeroGroupFightView
+	if var_8_0.type == DungeonEnum.EpisodeType.BossRush then
+		local var_8_1 = BossRushController.instance:getGroupFightViewName(arg_8_1)
+
+		if var_8_1 then
+			return var_8_1
+		end
+	end
+
+	local var_8_2 = var_8_0 and DungeonConfig.instance:getChapterCO(var_8_0.chapterId)
+
+	if var_8_2 then
+		return arg_8_0.ActivityIdToHeroGroupView[var_8_2.actId] or arg_8_0.ChapterTypeToHeroGroupView[var_8_2.type] or arg_8_0.ChapterIdToHeroGroupView[var_8_2.id] or ViewName.HeroGroupFightView
 	end
 
 	return ViewName.HeroGroupFightView

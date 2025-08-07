@@ -670,5 +670,37 @@
     "skinIds": "610405#610404",
     "skinScales": "1#1",
     "skinOffsetXYs": "-290#-485|-345#-513"
+  },
+  {
+    "activityId": 130505,
+    "stage": 1,
+    "name": "古谚中的神迹",
+    "name_en": "",
+    "maxPoints": 850000,
+    "layer4MaxPoints": 0,
+    "openDay": 0,
+    "bossRushMainItemBossSprite": "v2a9_bossrush_boss01",
+    "bossRushLevelDetailFullBgSimage": "v2a9_bossrush_fullbg_1",
+    "resultViewFullBgSImage": "v2a9_bossrush_resultfullbg_1",
+    "resultViewNameSImage": "v2a9_bossrush_bossname_3",
+    "skinIds": "640403",
+    "skinScales": "0.35",
+    "skinOffsetXYs": "-332#-364"
+  },
+  {
+    "activityId": 130505,
+    "stage": 2,
+    "name": "恐惧的名讳",
+    "name_en": "",
+    "maxPoints": 850000,
+    "layer4MaxPoints": 0,
+    "openDay": 0,
+    "bossRushMainItemBossSprite": "v2a9_bossrush_boss02",
+    "bossRushLevelDetailFullBgSimage": "v2a9_bossrush_fullbg_2",
+    "resultViewFullBgSImage": "v2a9_bossrush_resultfullbg_2",
+    "resultViewNameSImage": "v2a9_bossrush_bossname_4",
+    "skinIds": "640305",
+    "skinScales": "1.1",
+    "skinOffsetXYs": "-316#-440"
   }
 ]

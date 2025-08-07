@@ -335,7 +335,13 @@ function var_0_0.getLimitSoldNum(arg_10_0)
 	local var_10_3 = var_10_1[1][2]
 
 	if var_10_2 == MaterialEnum.MaterialType.Equip then
-		return ItemModel.instance:getItemConfig(var_10_2, var_10_3).upperLimit
+		local var_10_4 = ItemModel.instance:getItemConfig(var_10_2, var_10_3)
+
+		if not var_10_4 then
+			logError(string.format("获取道具配置失败: 道具类型 : %s, 道具id : %s", var_10_2, var_10_3))
+		end
+
+		return var_10_4.upperLimit
 	end
 end
 

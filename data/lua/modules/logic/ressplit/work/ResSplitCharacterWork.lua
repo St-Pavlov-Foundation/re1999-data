@@ -4,43 +4,53 @@ local var_0_0 = class("ResSplitCharacterWork", BaseWork)
 
 function var_0_0.onStart(arg_1_0, arg_1_1)
 	local var_1_0 = SkinConfig.instance:getAllSkinCoList()
+	local var_1_1 = lua_monster_skin.configList
+	local var_1_2 = {}
 
 	for iter_1_0, iter_1_1 in pairs(var_1_0) do
-		if ResSplitModel.instance:isExcludeCharacter(iter_1_1.characterId) and ResSplitModel.instance:isExcludeSkin(iter_1_1.id) then
-			arg_1_0:_addSkinRes(iter_1_1, true)
+		table.insert(var_1_2, iter_1_1)
+	end
+
+	for iter_1_2, iter_1_3 in pairs(var_1_1) do
+		table.insert(var_1_2, iter_1_3)
+	end
+
+	for iter_1_4, iter_1_5 in pairs(var_1_2) do
+		if ResSplitModel.instance:isExcludeCharacter(iter_1_5.characterId) and ResSplitModel.instance:isExcludeSkin(iter_1_5.id) then
+			arg_1_0:_addSkinRes(iter_1_5, true)
 		else
-			arg_1_0:_addSkinRes(iter_1_1, false)
+			arg_1_0:_addSkinRes(iter_1_5, false)
 		end
 	end
 
-	local var_1_1 = HeroConfig.instance.heroConfig.configDict
+	local var_1_3 = HeroConfig.instance.heroConfig.configDict
 
-	for iter_1_2, iter_1_3 in pairs(var_1_1) do
-		local var_1_2 = ResSplitModel.instance:isExcludeCharacter(iter_1_2)
+	for iter_1_6, iter_1_7 in pairs(var_1_3) do
+		local var_1_4 = ResSplitModel.instance:isExcludeCharacter(iter_1_6)
 
-		if ResSplitModel.instance:isExcludeCharacter(iter_1_2) then
-			local var_1_3 = CharacterDataConfig.instance:getCharacterVoicesCo(iter_1_2)
+		if ResSplitModel.instance:isExcludeCharacter(iter_1_6) then
+			local var_1_5 = CharacterDataConfig.instance:getCharacterVoicesCo(iter_1_6)
 
-			if var_1_3 then
-				for iter_1_4, iter_1_5 in pairs(var_1_3) do
-					local var_1_4 = ResSplitModel.instance.audioDic[iter_1_4]
+			if var_1_5 then
+				for iter_1_8, iter_1_9 in pairs(var_1_5) do
+					local var_1_6 = ResSplitModel.instance.audioDic[iter_1_8]
 
-					if var_1_4 then
-						ResSplitModel.instance:setExclude(ResSplitEnum.AudioBank, var_1_4.bankName, true)
+					if var_1_6 then
+						ResSplitModel.instance:setExclude(ResSplitEnum.AudioBank, var_1_6.bankName, true)
 					end
 				end
 			end
 		else
-			local var_1_5 = FightHelper.buildSkills(iter_1_2)
+			local var_1_7 = FightHelper.buildSkills(iter_1_6)
 
-			for iter_1_6, iter_1_7 in ipairs(var_1_5) do
-				ResSplitModel.instance:addIncludeSkill(iter_1_7)
+			for iter_1_10, iter_1_11 in ipairs(var_1_7) do
+				ResSplitModel.instance:addIncludeSkill(iter_1_11)
 			end
 		end
 
-		local var_1_6 = ResUrl.getSignature(iter_1_3.signature)
+		local var_1_8 = ResUrl.getSignature(iter_1_7.signature)
 
-		ResSplitModel.instance:setExclude(ResSplitEnum.Path, var_1_6, var_1_2)
+		ResSplitModel.instance:setExclude(ResSplitEnum.Path, var_1_8, var_1_4)
 	end
 
 	arg_1_0:onDone(true)
@@ -119,18 +129,16 @@ function var_0_0._addSkinRes(arg_2_0, arg_2_1, arg_2_2)
 	local var_2_20 = lua_character_limited.configDict[arg_2_1.id]
 
 	if var_2_20 and not string.nilorempty(var_2_20.entranceMv) then
-		local var_2_21 = langVideoUrl(var_2_20.entranceMv)
-
-		ResSplitModel.instance:setExclude(ResSplitEnum.Path, var_2_21, arg_2_2)
+		ResSplitModel.instance:setExclude(ResSplitEnum.Video, var_2_20.entranceMv, true)
 	end
 
 	if arg_2_2 == false then
 		FightConfig.instance:_checkskinSkill()
 
-		local var_2_22 = FightConfig.instance._skinSkillTLDict[arg_2_1.id]
+		local var_2_21 = FightConfig.instance._skinSkillTLDict[arg_2_1.id]
 
-		if var_2_22 then
-			for iter_2_0, iter_2_1 in pairs(var_2_22) do
+		if var_2_21 then
+			for iter_2_0, iter_2_1 in pairs(var_2_21) do
 				ResSplitModel.instance:addIncludeTimeline(iter_2_1)
 			end
 		end

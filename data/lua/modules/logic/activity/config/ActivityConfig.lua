@@ -99,13 +99,13 @@ function var_0_0._initMainActExtraDisplay(arg_6_0)
 	arg_6_0._rougeActivityConfig = arg_6_0._displayBindActivityList[ActivityEnum.MainViewActivityState.Rouge]
 
 	if not arg_6_0._seasonActivityConfig then
-		logError("ActivityConfig:_initMainActExtraDisplay seasonActivityConfig is nil")
+		logWarn("ActivityConfig:_initMainActExtraDisplay seasonActivityConfig is nil")
 
 		return
 	end
 
 	if not arg_6_0._rougeActivityConfig then
-		logError("ActivityConfig:_initMainActExtraDisplay rougeActivityConfig is nil")
+		logWarn("ActivityConfig:_initMainActExtraDisplay rougeActivityConfig is nil")
 
 		return
 	end

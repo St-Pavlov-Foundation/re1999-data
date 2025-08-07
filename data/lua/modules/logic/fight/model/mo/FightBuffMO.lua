@@ -45,8 +45,6 @@ function var_0_0.clone(arg_3_0)
 
 	var_3_0:init(arg_3_0, arg_3_0.entityId)
 
-	arg_3_0._last_clone_mo = var_3_0
-
 	return var_3_0
 end
 

@@ -11,6 +11,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._skillTipsGO = gohelper.findChild(arg_1_0.viewGO, "root/waitingArea/inner/skill")
 	arg_1_0._txtCardTitle = gohelper.findChildText(arg_1_0._skillTipsGO, "txtTips/txtTitle")
 	arg_1_0._txtCardDesc = gohelper.findChildText(arg_1_0._skillTipsGO, "txtTips")
+	arg_1_0._rectTrCardDesc = arg_1_0._txtCardDesc:GetComponent(gohelper.Type_RectTransform)
 	arg_1_0._cardItemList = {}
 	arg_1_0._cardItemGOList = arg_1_0:getUserDataTb_()
 	arg_1_0._cardObjModel = gohelper.findChild(arg_1_0._waitingAreaGO, "cardItemModel")
@@ -237,13 +238,17 @@ function var_0_0._beforePlaySkill(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
 	if FightModel.instance:getCurStage() == FightEnum.Stage.Play then
 		local var_20_0 = lua_skill.configDict[arg_20_2]
 		local var_20_1 = FightConfig.instance:getEntitySkillDesc(arg_20_1.id, var_20_0)
-		local var_20_2 = GameUtil.getTextHeightByLine(arg_20_0._txtCardDesc, var_20_1, 38) + 83
 
-		recthelper.setHeight(arg_20_0._skillTipsGO.transform, var_20_2)
-
-		arg_20_0._txtCardTitle.text = var_20_0 and var_20_0.name or ""
 		arg_20_0._txtCardDesc.text = var_20_0 and HeroSkillModel.instance:skillDesToSpot(var_20_1) or ""
+		arg_20_0._txtCardTitle.text = var_20_0 and var_20_0.name or ""
 
+		arg_20_0._txtCardDesc:ForceMeshUpdate(true, true)
+
+		local var_20_2 = arg_20_0._txtCardDesc:GetRenderedValues().y
+		local var_20_3 = var_20_2 + 83
+
+		recthelper.setHeight(arg_20_0._rectTrCardDesc, var_20_2)
+		recthelper.setHeight(arg_20_0._skillTipsGO.transform, var_20_3)
 		arg_20_0:_displayFlow(arg_20_1.id, arg_20_2, FightPlayCardModel.instance:getCurIndex())
 	end
 end

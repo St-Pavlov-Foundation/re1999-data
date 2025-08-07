@@ -327,62 +327,78 @@ function var_0_0.V2a3_WarmUp(arg_36_0)
 	end
 end
 
+function var_0_0.MainUISwitchInfoBlurMaskView(arg_37_0)
+	local var_37_0 = {}
+
+	table.insert(var_37_0, "ui/viewres/mainsceneswitch/mainuiswitchblurmaskview.prefab")
+	var_0_0._startLoad(var_37_0, arg_37_0)
+end
+
+function var_0_0.MainUISwitchInfoView(arg_38_0)
+	local var_38_0 = {}
+
+	table.insert(var_38_0, "ui/viewres/mainsceneswitch/mainsuiswitchinfoview.prefab")
+	table.insert(var_38_0, "ui/viewres/mainsceneswitch/mainuiswitchblurmask.prefab")
+	table.insert(var_38_0, "ui/viewres/main/mainview.prefab")
+	var_0_0._startLoad(var_38_0, arg_38_0)
+end
+
 local var_0_1 = {}
 
-function var_0_0._startLoad(arg_37_0, arg_37_1, arg_37_2)
-	local var_37_0 = MultiAbLoader.New()
+function var_0_0._startLoad(arg_39_0, arg_39_1, arg_39_2)
+	local var_39_0 = MultiAbLoader.New()
 
-	var_0_1[var_37_0] = true
+	var_0_1[var_39_0] = true
 
 	UIBlockMgr.instance:startBlock("ui_preload")
-	var_37_0:setPathList(arg_37_0)
-	var_37_0:startLoad(function()
-		var_0_1[var_37_0] = nil
+	var_39_0:setPathList(arg_39_0)
+	var_39_0:startLoad(function()
+		var_0_1[var_39_0] = nil
 
 		UIBlockMgr.instance:endBlock("ui_preload")
-		var_37_0:dispose()
-		arg_37_1(arg_37_2)
+		var_39_0:dispose()
+		arg_39_1(arg_39_2)
 	end)
 end
 
 function var_0_0.stopPreload()
-	for iter_39_0, iter_39_1 in pairs(var_0_1) do
-		iter_39_0:dispose()
+	for iter_41_0, iter_41_1 in pairs(var_0_1) do
+		iter_41_0:dispose()
 		logNormal("module_views_preloader dispose loader")
 	end
 
 	var_0_1 = {}
 end
 
-function var_0_0._getResPathList(arg_40_0)
-	local var_40_0 = {}
-	local var_40_1 = ViewMgr.instance:getSetting(arg_40_0)
+function var_0_0._getResPathList(arg_42_0)
+	local var_42_0 = {}
+	local var_42_1 = ViewMgr.instance:getSetting(arg_42_0)
 
-	if var_40_1.mainRes then
-		table.insert(var_40_0, var_40_1.mainRes)
+	if var_42_1.mainRes then
+		table.insert(var_42_0, var_42_1.mainRes)
 	end
 
-	if var_40_1.otherRes then
-		for iter_40_0, iter_40_1 in pairs(var_40_1.otherRes) do
-			table.insert(var_40_0, iter_40_1)
+	if var_42_1.otherRes then
+		for iter_42_0, iter_42_1 in pairs(var_42_1.otherRes) do
+			table.insert(var_42_0, iter_42_1)
 		end
 	end
 
-	if var_40_1.tabRes then
-		for iter_40_2, iter_40_3 in pairs(var_40_1.tabRes) do
-			for iter_40_4, iter_40_5 in pairs(iter_40_3) do
-				for iter_40_6, iter_40_7 in pairs(iter_40_5) do
-					table.insert(var_40_0, iter_40_7)
+	if var_42_1.tabRes then
+		for iter_42_2, iter_42_3 in pairs(var_42_1.tabRes) do
+			for iter_42_4, iter_42_5 in pairs(iter_42_3) do
+				for iter_42_6, iter_42_7 in pairs(iter_42_5) do
+					table.insert(var_42_0, iter_42_7)
 				end
 			end
 		end
 	end
 
-	if var_40_1.anim and var_40_1.anim ~= ViewAnim.Default and string.find(var_40_1.anim, ".controller") then
-		table.insert(var_40_0, var_40_1.anim)
+	if var_42_1.anim and var_42_1.anim ~= ViewAnim.Default and string.find(var_42_1.anim, ".controller") then
+		table.insert(var_42_0, var_42_1.anim)
 	end
 
-	return var_40_0
+	return var_42_0
 end
 
 return var_0_0

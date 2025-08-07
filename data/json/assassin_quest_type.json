@@ -1,0 +1,17 @@
+[
+  {
+    "type": 1,
+    "name": "一场冲突",
+    "icon": "assassin2_mapicon_2"
+  },
+  {
+    "type": 2,
+    "name": "时代印象",
+    "icon": "assassin2_mapicon_1"
+  },
+  {
+    "type": 3,
+    "name": "影的痕迹",
+    "icon": "assassin2_mapicon_3"
+  }
+]

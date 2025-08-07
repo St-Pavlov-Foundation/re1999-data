@@ -1,4 +1,4 @@
-﻿module("modules.logic.versionactivitybase.enterview.view.comp.VersionActivityVideoComp", package.seeall)
+﻿module("modules.versionactivitybase.enterview.view.comp.VersionActivityVideoComp", package.seeall)
 
 local var_0_0 = class("VersionActivityVideoComp", UserDataDispose)
 

@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "mainTitleId": 1,
+    "subTitleId": 1,
+    "mainTitle": "地形",
+    "subTitle": "屋顶/地面",
+    "picture": "assassin2_help_type2_4",
+    "content": "刺客可以不借助梯子，在屋顶和地面之间进行移动。\n大部分敌人无法直接跨越两种地形，部分敌人可以通过梯子跨越两种地形。\n一个格子最多容纳4名敌人。",
+    "showInMap": 0
+  },
+  {
+    "id": 2,
+    "mainTitleId": 1,
+    "subTitleId": 2,
+    "mainTitle": "地形",
+    "subTitle": "高塔",
+    "picture": "assassin2_help_type2_1",
+    "content": "高塔处于四个格子的中心，刺客可消耗行动力爬上高塔，爬上高塔的刺客会立刻进入潜行状态，且不会被敌人侦查。\n敌人无法登上高塔。",
+    "showInMap": 3013
+  },
+  {
+    "id": 3,
+    "mainTitleId": 1,
+    "subTitleId": 3,
+    "mainTitle": "地形",
+    "subTitle": "隐匿点",
+    "picture": "assassin2_help_type2_5",
+    "content": "干草堆和屋顶花园被视为隐匿点。处于潜行状态下的刺客可以进入隐匿点，隐匿点中的刺客不会被侦查。",
+    "showInMap": 3015
+  },
+  {
+    "id": 4,
+    "mainTitleId": 1,
+    "subTitleId": 4,
+    "mainTitle": "地形",
+    "subTitle": "警戒区域",
+    "picture": "assassin2_help_type2_6",
+    "content": "警戒区域中若存在敌人，进入警戒区域的刺客必定会被侦查导致暴露。",
+    "showInMap": 3045
+  },
+  {
+    "id": 5,
+    "mainTitleId": 1,
+    "subTitleId": 5,
+    "mainTitle": "地形",
+    "subTitle": "水域",
+    "picture": "assassin2_help_type2_2",
+    "content": "水域中的刺客无法使用刺客技能。",
+    "showInMap": 3021
+  },
+  {
+    "id": 6,
+    "mainTitleId": 1,
+    "subTitleId": 6,
+    "mainTitle": "地形",
+    "subTitle": "敌人刷新点",
+    "picture": "assassin2_help_type2_3",
+    "content": "每个回合，会从敌人刷新点中生成敌人，警报状态下会生成更多敌人。",
+    "showInMap": 3014
+  },
+  {
+    "id": 7,
+    "mainTitleId": 1,
+    "subTitleId": 7,
+    "mainTitle": "地形",
+    "subTitle": "未知区域",
+    "picture": "assassin2_help_type2_7",
+    "content": "需要刺客进入该格子，或是技能影响后，才能知晓未知区域中的情况。",
+    "showInMap": 3045
+  },
+  {
+    "id": 8,
+    "mainTitleId": 2,
+    "subTitleId": 1,
+    "mainTitle": "刺客动作",
+    "subTitle": "警报",
+    "picture": "assassin2_help_type3_4",
+    "content": "当有刺客在敌方回合处于暴露状态，则会触发警报，警报状态下敌人侦查率提高，敌人刷新点会生成更多敌人。\n警报会在场上连续2回合无刺客暴露的情况下，变回常规状态。",
+    "showInMap": 3014
+  },
+  {
+    "id": 9,
+    "mainTitleId": 2,
+    "subTitleId": 2,
+    "mainTitle": "刺客动作",
+    "subTitle": "信仰之跃",
+    "picture": "assassin2_help_type1_6",
+    "content": "当刺客处于高塔上时，点击高塔周围四格内的干草堆，可以使用信仰之跃，不消耗行动力移动到对应的干草堆中。",
+    "showInMap": 0
+  },
+  {
+    "id": 10,
+    "mainTitleId": 2,
+    "subTitleId": 3,
+    "mainTitle": "刺客动作",
+    "subTitle": "潜行状态",
+    "picture": "assassin2_help_type1_2",
+    "content": "刺客在无敌人的区域会自动变为潜行状态，潜行状态下，刺客可以执行刺杀相关的动作。",
+    "showInMap": 0
+  },
+  {
+    "id": 11,
+    "mainTitleId": 2,
+    "subTitleId": 4,
+    "mainTitle": "刺客动作",
+    "subTitle": "暴露",
+    "picture": "assassin2_help_type1_1",
+    "content": "当刺客被敌人侦查发现，会进入暴露状态。暴露状态下，敌人会朝着暴露的刺客移动。\n敌人会在敌方回合对暴露的刺客发动攻击。",
+    "showInMap": 3012
+  },
+  {
+    "id": 12,
+    "mainTitleId": 2,
+    "subTitleId": 5,
+    "mainTitle": "刺客动作",
+    "subTitle": "刺杀",
+    "picture": "assassin2_help_type1_4",
+    "content": "处于潜行状态的刺客，可以对同格子的敌人使用刺杀，刺杀会直接击杀敌人。",
+    "showInMap": 0
+  },
+  {
+    "id": 13,
+    "mainTitleId": 2,
+    "subTitleId": 6,
+    "mainTitle": "刺客动作",
+    "subTitle": "空中刺杀",
+    "picture": "assassin2_help_type1_7",
+    "content": "处于高塔/屋顶，并且处于潜行状态下的刺客，可以对相邻地面格子的敌人使用空中刺杀，会在击杀敌人的同时，移动到该格子。",
+    "showInMap": 0
+  },
+  {
+    "id": 14,
+    "mainTitleId": 2,
+    "subTitleId": 7,
+    "mainTitle": "刺客动作",
+    "subTitle": "攻击/伏击",
+    "picture": "assassin2_help_type1_8",
+    "content": "当刺客对敌人发动攻击，会与格子中的所有敌人一同进入战斗。\n当刺客处于潜行状态下，攻击会自动转化为伏击，通过伏击进入战斗，暴击创伤提升。",
+    "showInMap": 0
+  },
+  {
+    "id": 15,
+    "mainTitleId": 2,
+    "subTitleId": 8,
+    "mainTitle": "刺客动作",
+    "subTitle": "联合攻击/联合伏击",
+    "picture": "assassin2_help_type1_5",
+    "content": "当有多名刺客处于同一格子，可以对敌人发动联合攻击，发动后，格子中的所有刺客和所有敌人一同进入战斗。\n当刺客处于潜行状态下，联合攻击会自动转化为联合伏击，通过联合伏击进入战斗，暴击创伤提升。",
+    "showInMap": 0
+  },
+  {
+    "id": 16,
+    "mainTitleId": 2,
+    "subTitleId": 9,
+    "mainTitle": "刺客动作",
+    "subTitle": "隐匿刺杀",
+    "picture": "assassin2_help_type1_9",
+    "content": "当刺客处于隐匿点，可以对同格子的敌人发动隐匿刺杀，隐匿刺杀的敌人不会留下遗体，并直接获得其掉落的道具。",
+    "showInMap": 3015
+  },
+  {
+    "id": 17,
+    "mainTitleId": 2,
+    "subTitleId": 10,
+    "mainTitle": "刺客动作",
+    "subTitle": "濒死",
+    "picture": "assassin2_help_type1_10",
+    "content": "当刺客血量降低至0后，会陷入濒死状态，濒死状态下无法执行任何动作。\n其他刺客可以通过道具或者刺客技能，将濒死的刺客恢复为正常状态。",
+    "showInMap": 0
+  },
+  {
+    "id": 18,
+    "mainTitleId": 3,
+    "subTitleId": 1,
+    "mainTitle": "敌人行为",
+    "subTitle": "遗体",
+    "picture": "assassin2_help_type3_2",
+    "content": "敌人被击杀后，会留下遗体，在无敌人的情况下，可以执行清理敌人遗体的操作，清理后有概率获得道具。\n敌人移动到有遗体的格子，会直接触发警报。",
+    "showInMap": 0
+  },
+  {
+    "id": 19,
+    "mainTitleId": 3,
+    "subTitleId": 2,
+    "mainTitle": "敌人行为",
+    "subTitle": "事件",
+    "picture": "assassin2_help_type3_7",
+    "content": "回合初会触发一个事件，事件会造成各种各样的影响，同时还会决定敌人在场上未有暴露刺客的情况下的移动方向。",
+    "showInMap": 3011
+  },
+  {
+    "id": 20,
+    "mainTitleId": 3,
+    "subTitleId": 3,
+    "mainTitle": "敌人行为",
+    "subTitle": "敌人移动",
+    "picture": "assassin2_help_type3_1",
+    "content": "在场上未有暴露刺客的情况下，敌人会按照事件规定的方向统一进行移动。\n当场上存在暴露的刺客，敌人会朝着暴露刺客所在的格子移动。",
+    "showInMap": 0
+  },
+  {
+    "id": 21,
+    "mainTitleId": 3,
+    "subTitleId": 4,
+    "mainTitle": "敌人行为",
+    "subTitle": "侦查",
+    "picture": "assassin2_help_type3_3",
+    "content": "当刺客进入存在敌人的格子，或敌人进入刺客存在的格子，都会触发敌人的侦查。\n每个敌人的侦查单独计算，被侦查的刺客会从潜行状态变为暴露状态。",
+    "showInMap": 3012
+  },
+  {
+    "id": 22,
+    "mainTitleId": 3,
+    "subTitleId": 5,
+    "mainTitle": "敌人行为",
+    "subTitle": "追击",
+    "picture": "assassin2_help_type3_5",
+    "content": "当暴露状态的刺客从存在敌人的格子离开，格子中一半的敌人会在刺客移动时尝试追击，若该格子可移动，会跟随刺客移动。",
+    "showInMap": 0
+  },
+  {
+    "id": 23,
+    "mainTitleId": 3,
+    "subTitleId": 6,
+    "mainTitle": "敌人行为",
+    "subTitle": "敌人攻击",
+    "picture": "assassin2_help_type3_8",
+    "content": "敌人回合，敌人会对同格子暴露的刺客发动攻击，该格子中的所有敌人会和所有暴露的刺客进入战斗。",
+    "showInMap": 3012
+  },
+  {
+    "id": 24,
+    "mainTitleId": 3,
+    "subTitleId": 7,
+    "mainTitle": "敌人行为",
+    "subTitle": "固守",
+    "picture": "assassin2_help_type3_6",
+    "content": "固守状态下的敌人不会移动。",
+    "showInMap": 3011
+  },
+  {
+    "id": 25,
+    "mainTitleId": 4,
+    "subTitleId": 1,
+    "mainTitle": "敌人种类",
+    "subTitle": "卡邦克鲁",
+    "picture": "assassin2_help_type4_1",
+    "content": "观测错误产生的怪物。侦查率很高，好在战斗力不强。",
+    "showInMap": 0
+  },
+  {
+    "id": 26,
+    "mainTitleId": 4,
+    "subTitleId": 2,
+    "mainTitle": "敌人种类",
+    "subTitle": "圣殿骑士·斧兵",
+    "picture": "assassin2_help_type4_4",
+    "content": "斧兵无法登上房顶，但是拥有很强的战斗力，飞刀也无法对其造成有效的杀伤，尽量避免与其进入正面战斗。",
+    "showInMap": 0
+  },
+  {
+    "id": 27,
+    "mainTitleId": 4,
+    "subTitleId": 3,
+    "mainTitle": "敌人种类",
+    "subTitle": "占卜妖精",
+    "picture": "assassin2_help_type4_9",
+    "content": "观测错误产生的怪物。可以不使用梯子跨越屋顶和地面。",
+    "showInMap": 0
+  },
+  {
+    "id": 28,
+    "mainTitleId": 4,
+    "subTitleId": 4,
+    "mainTitle": "敌人种类",
+    "subTitle": "星·逐昏双狼",
+    "picture": "assassin2_help_type4_8",
+    "content": "观测错误产生的怪物。一回合可以移动2格。",
+    "showInMap": 0
+  },
+  {
+    "id": 29,
+    "mainTitleId": 4,
+    "subTitleId": 5,
+    "mainTitle": "敌人种类",
+    "subTitle": "圣殿骑士·弓兵",
+    "picture": "assassin2_help_type4_5",
+    "content": "弓兵移动前，会随机对十字范围内，已经暴露的刺客造成25%的血量伤害。",
+    "showInMap": 0
+  },
+  {
+    "id": 30,
+    "mainTitleId": 4,
+    "subTitleId": 6,
+    "mainTitle": "敌人种类",
+    "subTitle": "基基图克",
+    "picture": "assassin2_help_type4_2",
+    "content": "观测错误产生的怪物。处于水域中时，进入战斗后的属性大幅提升。",
+    "showInMap": 0
+  },
+  {
+    "id": 31,
+    "mainTitleId": 4,
+    "subTitleId": 7,
+    "mainTitle": "敌人种类",
+    "subTitle": "圣殿骑士·长官",
+    "picture": "assassin2_help_type4_7",
+    "content": "长官会在敌人生成阶段，在所在格子额外生成一名兵卒。",
+    "showInMap": 0
+  },
+  {
+    "id": 32,
+    "mainTitleId": 4,
+    "subTitleId": 8,
+    "mainTitle": "敌人种类",
+    "subTitle": "引导之人的造物",
+    "picture": "assassin2_help_type4_3",
+    "content": "观测错误产生的怪物。不受道具和刺客技能影响，只能通过正面战斗击败。",
+    "showInMap": 0
+  }
+]

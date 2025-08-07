@@ -1715,5 +1715,39 @@
     "maxLimit": 999999999,
     "sources": "",
     "headIconSign": ""
+  },
+  {
+    "id": 30501,
+    "name": "弗罗林",
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "30501",
+    "smallIcon": "",
+    "useDesc": "文艺复兴时期佛罗伦萨使用的铸币，通行于意大利半岛。可用于特别柜台兑换。",
+    "desc": "从街头医生到圣天使堡的领袖，没有人会拒绝闪闪发亮的金币。你已经知晓如何获得它，而关于如何使用，你熟悉的那位刺客有一些经验之谈。\n“蒙特里久尼庄园感谢您的慷慨。”",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 30503,
+    "name": "纷飞数据",
+    "rare": 4,
+    "highQuality": 0,
+    "icon": "30503",
+    "smallIcon": "",
+    "useDesc": "菲涅尔干涉仪运行途中产生的变量数据，可用于在“数据拾遗”中兑换相应奖励。",
+    "desc": "“嘿，谁能听懂这是什么东西？听上去像是要我把‘分号’和‘小数点’打包成礼盒带回来。”",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 0,
+    "sources": "",
+    "headIconSign": ""
   }
 ]

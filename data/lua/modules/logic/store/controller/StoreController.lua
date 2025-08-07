@@ -78,8 +78,12 @@ function var_0_0.openChargeGoodsView(arg_9_0, arg_9_1)
 end
 
 function var_0_0.openPackageStoreGoodsView(arg_10_0, arg_10_1)
-	if arg_10_1.config.type == StoreEnum.StoreChargeType.Optional then
+	local var_10_0 = arg_10_1.config.type
+
+	if var_10_0 == StoreEnum.StoreChargeType.Optional then
 		ViewMgr.instance:openView(ViewName.OptionalChargeView, arg_10_1)
+	elseif var_10_0 == StoreEnum.StoreChargeType.LinkGiftGoods then
+		ViewMgr.instance:openView(ViewName.StoreLinkGiftGoodsView, arg_10_1)
 	else
 		ViewMgr.instance:openView(ViewName.PackageStoreGoodsView, arg_10_1)
 	end

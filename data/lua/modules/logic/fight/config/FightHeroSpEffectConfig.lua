@@ -23,7 +23,8 @@ function var_0_0.reqConfigNames(arg_2_0)
 		"fight_sp_wuerlixi_monster_star_effect",
 		"fight_sp_wuerlixi_monster_star_position_offset",
 		"fight_luxi_skin_effect",
-		"fight_sp_sm"
+		"fight_sp_sm",
+		"hero3124_buff_talent"
 	}
 end
 
@@ -81,6 +82,40 @@ function var_0_0.getRandomAlfASFDMissileRes(arg_7_0)
 	local var_7_1 = math.random(var_7_0)
 
 	return table.remove(arg_7_0.tempRandomList, var_7_1)
+end
+
+function var_0_0.isKSDLSpecialBuff(arg_8_0, arg_8_1)
+	if not arg_8_1 then
+		return false
+	end
+
+	arg_8_0:initKSDLSpecialBuffCo()
+
+	return arg_8_0:getKSDLSpecialBuffRank(arg_8_1) ~= nil
+end
+
+function var_0_0.getKSDLSpecialBuffRank(arg_9_0, arg_9_1)
+	if not arg_9_1 then
+		return
+	end
+
+	arg_9_0:initKSDLSpecialBuffCo()
+
+	return arg_9_0.ksdlBuffDict[arg_9_1]
+end
+
+function var_0_0.initKSDLSpecialBuffCo(arg_10_0)
+	if arg_10_0.ksdlBuffDict then
+		return arg_10_0.ksdlBuffDict
+	end
+
+	arg_10_0.ksdlBuffDict = {}
+
+	for iter_10_0, iter_10_1 in ipairs(lua_hero3124_buff_talent.configList) do
+		arg_10_0.ksdlBuffDict[iter_10_1.buffId] = iter_10_1.rank
+	end
+
+	return arg_10_0.ksdlBuffDict
 end
 
 var_0_0.instance = var_0_0.New()

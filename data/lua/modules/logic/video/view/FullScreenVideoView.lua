@@ -10,8 +10,26 @@ function var_0_0.onInitView(arg_1_0)
 end
 
 function var_0_0.onOpen(arg_2_0)
+	arg_2_0.doneCb = arg_2_0.viewParam.doneCb
+	arg_2_0.doneCbObj = arg_2_0.viewParam.doneCbObj
+	arg_2_0.waitViewOpen = arg_2_0.viewParam.waitViewOpen
 	arg_2_0.videoDone = false
-	arg_2_0._videoPlayer, arg_2_0.displayUGUI, arg_2_0.videoGo = AvProMgr.instance:getVideoPlayer(arg_2_0._govideo)
+
+	local var_2_0 = arg_2_0.viewParam.getVideoPlayer
+
+	arg_2_0._setVideoPlayer = arg_2_0.viewParam.setVideoPlayer
+
+	if var_2_0 then
+		arg_2_0._videoPlayer, arg_2_0.displayUGUI, arg_2_0.videoGo = var_2_0(arg_2_0.doneCbObj)
+
+		gohelper.addChild(arg_2_0._govideo, arg_2_0.videoGo)
+		transformhelper.setLocalScale(arg_2_0.videoGo.transform, 1, 1, 1)
+		gohelper.setActive(arg_2_0.videoGo, true)
+
+		arg_2_0.displayUGUI.enabled = false
+	else
+		arg_2_0._videoPlayer, arg_2_0.displayUGUI, arg_2_0.videoGo = AvProMgr.instance:getVideoPlayer(arg_2_0._govideo)
+	end
 
 	if arg_2_0.viewParam.videoAudio then
 		AudioMgr.instance:trigger(arg_2_0.viewParam.videoAudio)
@@ -20,11 +38,6 @@ function var_0_0.onOpen(arg_2_0)
 	arg_2_0._videoPath = arg_2_0.viewParam.videoPath
 
 	arg_2_0._videoPlayer:Play(arg_2_0.displayUGUI, arg_2_0.viewParam.videoPath, false, arg_2_0.videoStatusUpdate, arg_2_0)
-
-	arg_2_0.doneCb = arg_2_0.viewParam.doneCb
-	arg_2_0.doneCbObj = arg_2_0.viewParam.doneCbObj
-	arg_2_0.waitViewOpen = arg_2_0.viewParam.waitViewOpen
-
 	gohelper.setActive(arg_2_0._goblackbg, not arg_2_0.viewParam.noShowBlackBg)
 
 	arg_2_0.videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter)).enabled = false
@@ -68,9 +81,6 @@ function var_0_0.onPlayVideoDone(arg_4_0)
 		arg_4_0.doneCb(arg_4_0.doneCbObj)
 	end
 
-	arg_4_0.doneCb = nil
-	arg_4_0.doneCbObj = nil
-
 	VideoController.instance:dispatchEvent(VideoEvent.OnVideoPlayFinished)
 end
 
@@ -89,12 +99,22 @@ function var_0_0.onDestroyView(arg_7_0)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, arg_7_0._onViewOpen, arg_7_0)
 	TaskDispatcher.cancelTask(arg_7_0.onVideoOverTime, arg_7_0)
 
+	if arg_7_0._setVideoPlayer then
+		arg_7_0._setVideoPlayer(arg_7_0.doneCbObj, arg_7_0._videoPlayer, arg_7_0.displayUGUI, arg_7_0.videoGo)
+
+		arg_7_0._setVideoPlayer = nil
+		arg_7_0._videoPlayer = nil
+	end
+
 	if arg_7_0._videoPlayer then
 		arg_7_0._videoPlayer:Stop()
 		arg_7_0._videoPlayer:Clear()
 
 		arg_7_0._videoPlayer = nil
 	end
+
+	arg_7_0.doneCb = nil
+	arg_7_0.doneCbObj = nil
 end
 
 return var_0_0

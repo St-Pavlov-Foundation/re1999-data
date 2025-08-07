@@ -1280,281 +1280,317 @@ function var_0_0.getMainSceneSwitchIcon(arg_298_0)
 	return string.format("singlebg/mainsceneswitch_singlebg/%s.png", arg_298_0)
 end
 
-function var_0_0.getRougeIcon(arg_299_0)
-	return string.format("singlebg/rouge/%s.png", arg_299_0)
+function var_0_0.getMainSceneSwitchLangIcon(arg_299_0)
+	return string.format("singlebg_lang/txt_mainsceneswitch_singlebg/%s.png", arg_299_0)
 end
 
-function var_0_0.getRougeBattleRoleIcon(arg_300_0)
-	return string.format("singlebg/toughbattle_singlebg/role/%s.png", arg_300_0)
+function var_0_0.getRougeIcon(arg_300_0)
+	return string.format("singlebg/rouge/%s.png", arg_300_0)
 end
 
-function var_0_0.getRougeSingleBgCollection(arg_301_0)
-	return string.format("singlebg/rouge/collection/%s.png", arg_301_0)
+function var_0_0.getRougeBattleRoleIcon(arg_301_0)
+	return string.format("singlebg/toughbattle_singlebg/role/%s.png", arg_301_0)
 end
 
-function var_0_0.getRougeSingleBgDLC(arg_302_0)
-	return string.format("singlebg/rouge/dlc/%s.png", arg_302_0)
+function var_0_0.getRougeSingleBgCollection(arg_302_0)
+	return string.format("singlebg/rouge/collection/%s.png", arg_302_0)
 end
 
-function var_0_0.getRougeDLCLangImage(arg_303_0)
-	return string.format("singlebg_lang/txt_rouge/dlc/%s.png", arg_303_0)
+function var_0_0.getRougeSingleBgDLC(arg_303_0)
+	return string.format("singlebg/rouge/dlc/%s.png", arg_303_0)
 end
 
-function var_0_0.getGraffitiIcon(arg_304_0)
-	return string.format("singlebg/v2a0_graffiti_singlebg/%s.png", arg_304_0)
+function var_0_0.getRougeDLCLangImage(arg_304_0)
+	return string.format("singlebg_lang/txt_rouge/dlc/%s.png", arg_304_0)
 end
 
-function var_0_0.getV2a0SignSingleBg(arg_305_0)
-	return string.format("singlebg/v2a0_sign_singlebg/%s.png", arg_305_0)
+function var_0_0.getGraffitiIcon(arg_305_0)
+	return string.format("singlebg/v2a0_graffiti_singlebg/%s.png", arg_305_0)
 end
 
-function var_0_0.getV2a0SignSingleBgLang(arg_306_0)
-	return string.format("singlebg_lang/txt_v2a0_sign_singlebg/%s.png", arg_306_0)
+function var_0_0.getV2a0SignSingleBg(arg_306_0)
+	return string.format("singlebg/v2a0_sign_singlebg/%s.png", arg_306_0)
 end
 
-function var_0_0.getV2a0WarmUpSingleBg(arg_307_0)
-	return string.format("singlebg/v2a0_warmup_singlebg/%s.png", arg_307_0)
+function var_0_0.getV2a0SignSingleBgLang(arg_307_0)
+	return string.format("singlebg_lang/txt_v2a0_sign_singlebg/%s.png", arg_307_0)
 end
 
-function var_0_0.getV2a1SignSingleBg(arg_308_0)
-	return string.format("singlebg/v2a1_sign_singlebg/%s.png", arg_308_0)
+function var_0_0.getV2a0WarmUpSingleBg(arg_308_0)
+	return string.format("singlebg/v2a0_warmup_singlebg/%s.png", arg_308_0)
 end
 
-function var_0_0.getV2a1SignSingleBgLang(arg_309_0)
-	return string.format("singlebg_lang/txt_v2a1_sign_singlebg/%s.png", arg_309_0)
+function var_0_0.getV2a1SignSingleBg(arg_309_0)
+	return string.format("singlebg/v2a1_sign_singlebg/%s.png", arg_309_0)
 end
 
-function var_0_0.getV2a1AergusiSingleBg(arg_310_0)
-	return string.format("singlebg/v2a1_aergusi_singlebg/%s.png", arg_310_0)
+function var_0_0.getV2a1SignSingleBgLang(arg_310_0)
+	return string.format("singlebg_lang/txt_v2a1_sign_singlebg/%s.png", arg_310_0)
 end
 
-function var_0_0.getV2a1MoonFestivalSignSingleBg(arg_311_0)
-	return string.format("singlebg/v2a1_moonfestival_singlebg/%s.png", arg_311_0)
+function var_0_0.getV2a1AergusiSingleBg(arg_311_0)
+	return string.format("singlebg/v2a1_aergusi_singlebg/%s.png", arg_311_0)
 end
 
-function var_0_0.getV2a1MoonFestivalSignSingleBgLang(arg_312_0)
-	return string.format("singlebg_lang/txt_v2a1_moonfestival_singlebg/%s.png", arg_312_0)
+function var_0_0.getV2a1MoonFestivalSignSingleBg(arg_312_0)
+	return string.format("singlebg/v2a1_moonfestival_singlebg/%s.png", arg_312_0)
 end
 
-function var_0_0.getV2a1WarmUpSingleBg(arg_313_0)
-	return string.format("singlebg/v2a1_warmup_singlebg/%s.png", arg_313_0)
+function var_0_0.getV2a1MoonFestivalSignSingleBgLang(arg_313_0)
+	return string.format("singlebg_lang/txt_v2a1_moonfestival_singlebg/%s.png", arg_313_0)
 end
 
-function var_0_0.getV2a2SignSingleBg(arg_314_0)
-	return string.format("singlebg/v2a2_sign_singlebg/%s.png", arg_314_0)
+function var_0_0.getV2a1WarmUpSingleBg(arg_314_0)
+	return string.format("singlebg/v2a1_warmup_singlebg/%s.png", arg_314_0)
 end
 
-function var_0_0.getV2a2SignSingleBgLang(arg_315_0)
-	return string.format("singlebg_lang/txt_v2a2_logo/%s.png", arg_315_0)
+function var_0_0.getV2a2SignSingleBg(arg_315_0)
+	return string.format("singlebg/v2a2_sign_singlebg/%s.png", arg_315_0)
 end
 
-function var_0_0.getV2a2RedLeafFestivalSignSingleBg(arg_316_0)
-	return string.format("singlebg/v2a2_redleaffestival_singlebg/%s.png", arg_316_0)
+function var_0_0.getV2a2SignSingleBgLang(arg_316_0)
+	return string.format("singlebg_lang/txt_v2a2_logo/%s.png", arg_316_0)
 end
 
-function var_0_0.getV2a2RedLeafFestivalSignSingleBgLang(arg_317_0)
-	return string.format("singlebg_lang/txt_v2a2_redleaffestival_singlebg/%s.png", arg_317_0)
+function var_0_0.getV2a2RedLeafFestivalSignSingleBg(arg_317_0)
+	return string.format("singlebg/v2a2_redleaffestival_singlebg/%s.png", arg_317_0)
 end
 
-function var_0_0.getV2a3SignSingleBg(arg_318_0)
-	return string.format("singlebg/v2a3_sign_singlebg/%s.png", arg_318_0)
+function var_0_0.getV2a2RedLeafFestivalSignSingleBgLang(arg_318_0)
+	return string.format("singlebg_lang/txt_v2a2_redleaffestival_singlebg/%s.png", arg_318_0)
 end
 
-function var_0_0.getV2a3SignSingleBgLang(arg_319_0)
-	return string.format("singlebg_lang/txt_v2a3_sign_singlebg/%s.png", arg_319_0)
+function var_0_0.getV2a3SignSingleBg(arg_319_0)
+	return string.format("singlebg/v2a3_sign_singlebg/%s.png", arg_319_0)
 end
 
-function var_0_0.getV2a3WarmUpSingleBg(arg_320_0)
-	return string.format("singlebg/v2a3_warmup_singlebg/%s.png", arg_320_0)
+function var_0_0.getV2a3SignSingleBgLang(arg_320_0)
+	return string.format("singlebg_lang/txt_v2a3_sign_singlebg/%s.png", arg_320_0)
 end
 
-function var_0_0.getV2a4SignSingleBg(arg_321_0)
-	return string.format("singlebg/v2a4_sign_singlebg/%s.png", arg_321_0)
+function var_0_0.getV2a3WarmUpSingleBg(arg_321_0)
+	return string.format("singlebg/v2a3_warmup_singlebg/%s.png", arg_321_0)
 end
 
-function var_0_0.getV2a4SignSingleBgLang(arg_322_0)
-	return string.format("singlebg_lang/txt_v2a4_sign_singlebg/%s.png", arg_322_0)
+function var_0_0.getV2a4SignSingleBg(arg_322_0)
+	return string.format("singlebg/v2a4_sign_singlebg/%s.png", arg_322_0)
 end
 
-function var_0_0.getChessDialogueSingleBg(arg_323_0)
-	return string.format("singlebg/dialogue/chess/%s.png", arg_323_0)
+function var_0_0.getV2a4SignSingleBgLang(arg_323_0)
+	return string.format("singlebg_lang/txt_v2a4_sign_singlebg/%s.png", arg_323_0)
 end
 
-function var_0_0.getV2a5SignSingleBg(arg_324_0)
-	return string.format("singlebg/v2a5_sign_singlebg/%s.png", arg_324_0)
+function var_0_0.getChessDialogueSingleBg(arg_324_0)
+	return string.format("singlebg/dialogue/chess/%s.png", arg_324_0)
 end
 
-function var_0_0.getV2a5SignSingleBgLang(arg_325_0)
-	return string.format("singlebg_lang/txt_v2a5_sign_singlebg/%s.png", arg_325_0)
+function var_0_0.getV2a5SignSingleBg(arg_325_0)
+	return string.format("singlebg/v2a5_sign_singlebg/%s.png", arg_325_0)
+end
+
+function var_0_0.getV2a5SignSingleBgLang(arg_326_0)
+	return string.format("singlebg_lang/txt_v2a5_sign_singlebg/%s.png", arg_326_0)
 end
 
 local var_0_1 = "Assets/ZResourcesLib/"
 local var_0_2 = string.len(var_0_1)
 
-function var_0_0.getPathWithoutAssetLib(arg_326_0)
-	local var_326_0 = string.find(arg_326_0, var_0_1)
+function var_0_0.getPathWithoutAssetLib(arg_327_0)
+	local var_327_0 = string.find(arg_327_0, var_0_1)
 
-	if var_326_0 then
-		return string.sub(arg_326_0, var_326_0 + var_0_2)
+	if var_327_0 then
+		return string.sub(arg_327_0, var_327_0 + var_0_2)
 	end
 
-	return arg_326_0
+	return arg_327_0
 end
 
-function var_0_0.getV2a1Act165SingleBgLang(arg_327_0)
-	return string.format("singlebg/v2a1_strangetale_singlebg/%s.png", arg_327_0)
+function var_0_0.getV2a1Act165SingleBgLang(arg_328_0)
+	return string.format("singlebg/v2a1_strangetale_singlebg/%s.png", arg_328_0)
 end
 
-function var_0_0.monsterHeadIcon(arg_328_0)
-	return string.format("singlebg/headicon_monster/%s.png", tostring(arg_328_0))
+function var_0_0.monsterHeadIcon(arg_329_0)
+	return string.format("singlebg/headicon_monster/%s.png", tostring(arg_329_0))
 end
 
-function var_0_0.roomHeadIcon(arg_329_0)
-	return string.format("singlebg/headicon_room/%s.png", tostring(arg_329_0))
+function var_0_0.roomHeadIcon(arg_330_0)
+	return string.format("singlebg/headicon_room/%s.png", tostring(arg_330_0))
 end
 
-function var_0_0.getCritterHedaIcon(arg_330_0)
-	return string.format("singlebg/headicon_critter/%s.png", tostring(arg_330_0))
+function var_0_0.getCritterHedaIcon(arg_331_0)
+	return string.format("singlebg/headicon_critter/%s.png", tostring(arg_331_0))
 end
 
-function var_0_0.getCritterLargeIcon(arg_331_0)
-	return string.format("singlebg/largeicon_critter/%s.png", tostring(arg_331_0))
+function var_0_0.getCritterLargeIcon(arg_332_0)
+	return string.format("singlebg/largeicon_critter/%s.png", tostring(arg_332_0))
 end
 
-function var_0_0.getRoomCritterIcon(arg_332_0)
-	return string.format("singlebg/room/critter/%s.png", tostring(arg_332_0))
+function var_0_0.getRoomCritterIcon(arg_333_0)
+	return string.format("singlebg/room/critter/%s.png", tostring(arg_333_0))
 end
 
-function var_0_0.getRoomCritterEggPrefab(arg_333_0)
-	return string.format("ui/viewres/room/critter/egg/%s.prefab", arg_333_0)
+function var_0_0.getRoomCritterEggPrefab(arg_334_0)
+	return string.format("ui/viewres/room/critter/egg/%s.prefab", arg_334_0)
 end
 
-function var_0_0.getBgmEggIcon(arg_334_0)
-	return string.format("singlebg/bgmtoggle_singlebg/%s.png", tostring(arg_334_0))
+function var_0_0.getBgmEggIcon(arg_335_0)
+	return string.format("singlebg/bgmtoggle_singlebg/%s.png", tostring(arg_335_0))
 end
 
-function var_0_0.getTowerIcon(arg_335_0)
-	return string.format("singlebg/tower_singlebg/%s.png", tostring(arg_335_0))
+function var_0_0.getTowerIcon(arg_336_0)
+	return string.format("singlebg/tower_singlebg/%s.png", tostring(arg_336_0))
 end
 
-function var_0_0.getAct174BadgeIcon(arg_336_0, arg_336_1)
-	return string.format("singlebg/act174/badgeicon/%s_%s.png", arg_336_0, arg_336_1)
+function var_0_0.getAct174BadgeIcon(arg_337_0, arg_337_1)
+	return string.format("singlebg/act174/badgeicon/%s_%s.png", arg_337_0, arg_337_1)
 end
 
-function var_0_0.getAct174BuffIcon(arg_337_0)
-	return string.format("singlebg/act174/bufficon/%s.png", arg_337_0)
+function var_0_0.getAct174BuffIcon(arg_338_0)
+	return string.format("singlebg/act174/bufficon/%s.png", arg_338_0)
 end
 
-function var_0_0.getV2a4WuErLiXiIcon(arg_338_0)
-	return string.format("singlebg/v2a4_wuerlixi_singlebg/%s.png", arg_338_0)
+function var_0_0.getV2a4WuErLiXiIcon(arg_339_0)
+	return string.format("singlebg/v2a4_wuerlixi_singlebg/%s.png", arg_339_0)
 end
 
-function var_0_0.getAutoChessIcon(arg_339_0, arg_339_1)
-	if arg_339_1 then
-		return string.format("singlebg/v2a5_autochess_singlebg/%s/%s.png", arg_339_1, arg_339_0)
+function var_0_0.getAutoChessIcon(arg_340_0, arg_340_1)
+	if arg_340_1 then
+		return string.format("singlebg/v2a5_autochess_singlebg/%s/%s.png", arg_340_1, arg_340_0)
 	else
-		return string.format("singlebg/v2a5_autochess_singlebg/%s.png", arg_339_0)
+		return string.format("singlebg/v2a5_autochess_singlebg/%s.png", arg_340_0)
 	end
 end
 
-function var_0_0.getChallengeIcon(arg_340_0)
-	return string.format("singlebg/v2a5_challenge_singlebg/%s.png", arg_340_0)
+function var_0_0.getChallengeIcon(arg_341_0)
+	return string.format("singlebg/v2a5_challenge_singlebg/%s.png", arg_341_0)
 end
 
-function var_0_0.getAct184LanternIcon(arg_341_0)
-	return string.format("singlebg/v2a5_lanternfestival_singlebg/%s.png", arg_341_0)
+function var_0_0.getAct184LanternIcon(arg_342_0)
+	return string.format("singlebg/v2a5_lanternfestival_singlebg/%s.png", arg_342_0)
 end
 
-function var_0_0.getV2a5FeiLinShiDuoBg(arg_342_0)
-	return string.format("singlebg/v2a5_feilinshiduo_singlebg/%s.png", arg_342_0)
+function var_0_0.getV2a5FeiLinShiDuoBg(arg_343_0)
+	return string.format("singlebg/v2a5_feilinshiduo_singlebg/%s.png", arg_343_0)
 end
 
-function var_0_0.getLiveHeadIconPrefab(arg_343_0)
-	return (string.format("ui/viewres/dynamichead/%s.prefab", tostring(arg_343_0)))
+function var_0_0.getLiveHeadIconPrefab(arg_344_0)
+	return (string.format("ui/viewres/dynamichead/%s.prefab", tostring(arg_344_0)))
 end
 
-function var_0_0.getAntiqueEffect(arg_344_0)
-	return (string.format("ui/viewres/antique/effect/%s.prefab", tostring(arg_344_0)))
+function var_0_0.getAntiqueEffect(arg_345_0)
+	return (string.format("ui/viewres/antique/effect/%s.prefab", tostring(arg_345_0)))
 end
 
-function var_0_0.getDestinyIcon(arg_345_0)
-	return (string.format("singlebg/characterdestiny/stone/%s.png", tostring(arg_345_0)))
+function var_0_0.getDestinyIcon(arg_346_0)
+	return (string.format("singlebg/characterdestiny/stone/%s.png", tostring(arg_346_0)))
 end
 
-function var_0_0.getV2a4WarmUpSingleBg(arg_346_0)
-	return string.format("singlebg/v2a4_warmup_singlebg/%s.png", arg_346_0)
+function var_0_0.getV2a4WarmUpSingleBg(arg_347_0)
+	return string.format("singlebg/v2a4_warmup_singlebg/%s.png", arg_347_0)
 end
 
-function var_0_0.getDecorateStoreImg(arg_347_0)
-	return (string.format("singlebg/store/decorate/%s.png", tostring(arg_347_0)))
+function var_0_0.getDecorateStoreImg(arg_348_0)
+	return (string.format("singlebg/store/decorate/%s.png", tostring(arg_348_0)))
 end
 
-function var_0_0.getV2a5LiangYueImg(arg_348_0)
-	return (string.format("singlebg_lang/txt_v2a5_liangyue_singlebg/%s.png", tostring(arg_348_0)))
+function var_0_0.getV2a5LiangYueImg(arg_349_0)
+	return (string.format("singlebg_lang/txt_v2a5_liangyue_singlebg/%s.png", tostring(arg_349_0)))
 end
 
-function var_0_0.getShortenActSingleBg(arg_349_0)
-	return string.format("singlebg/shortenact_singlebg/%s.png", arg_349_0)
+function var_0_0.getShortenActSingleBg(arg_350_0)
+	return string.format("singlebg/shortenact_singlebg/%s.png", arg_350_0)
 end
 
-function var_0_0.getAct191SingleBg(arg_350_0)
-	return string.format("singlebg/act191/%s.png", arg_350_0)
+function var_0_0.getAct191SingleBg(arg_351_0)
+	return string.format("singlebg/act191/%s.png", arg_351_0)
 end
 
-function var_0_0.getV2a7WarmUpSingleBg(arg_351_0)
-	return string.format("singlebg/v2a7_warmup_singlebg/%s.png", arg_351_0)
+function var_0_0.getV2a7WarmUpSingleBg(arg_352_0)
+	return string.format("singlebg/v2a7_warmup_singlebg/%s.png", arg_352_0)
 end
 
-function var_0_0.getSurvivalItemIcon(arg_352_0)
-	return string.format("singlebg/survival_singlebg/collection/%s.png", arg_352_0)
+function var_0_0.getSp01AssassinSingleBg(arg_353_0)
+	return string.format("singlebg/assassin2_singlebg/%s.png", arg_353_0)
 end
 
-function var_0_0.getSurvivalTalentIcon(arg_353_0)
-	return string.format("singlebg/survival_singlebg/talent/%s.png", arg_353_0)
+function var_0_0.getSp01OdysseySingleBg(arg_354_0)
+	return string.format("singlebg/odyssey_singlebg/%s.png", arg_354_0)
 end
 
-function var_0_0.getSurvivalMapIcon(arg_354_0)
-	return string.format("singlebg/survival_singlebg/map/%s.png", arg_354_0)
+function var_0_0.getSp01OdysseyItemSingleBg(arg_355_0)
+	return string.format("singlebg/odyssey_singlebg/equip/%s.png", arg_355_0)
 end
 
-function var_0_0.getSurvivalNpcIcon(arg_355_0)
-	return string.format("singlebg/survival_singlebg/npc/%s.png", arg_355_0)
+function var_0_0.getV2a9VersionSummonSingleBg(arg_356_0)
+	return string.format("singlebg/v2a9_versionsummon_singlebg/%s.png", arg_356_0)
 end
 
-function var_0_0.getSurvivalEquipIcon(arg_356_0)
-	return string.format("singlebg/survival_singlebg/equip/icon/%s.png", arg_356_0)
+function var_0_0.getV2a9VersionSummonSingleBgLang(arg_357_0)
+	return string.format("singlebg_lang/txt_v2a9_versionsummon_singlebg/%s.png", arg_357_0)
 end
 
-function var_0_0.getNuoDiKaSingleBg(arg_357_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/%s.png", arg_357_0)
+function var_0_0.getV2a9ActSingleBg(arg_358_0)
+	return string.format("singlebg/v2a9_act_singlebg/%s.png", arg_358_0)
 end
 
-function var_0_0.getNuoDiKaItemIcon(arg_358_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/item/%s.png", arg_358_0)
+function var_0_0.getV2a9ActOceanSingleBg(arg_359_0)
+	return string.format("singlebg/v2a9_act_singlebg/ocean/%s.png", arg_359_0)
 end
 
-function var_0_0.getNuoDiKaMonsterIcon(arg_359_0)
-	return string.format("singlebg/v2a8_nuodika_singlebg/monster/%s.png", arg_359_0)
+function var_0_0.getSurvivalItemIcon(arg_360_0)
+	return string.format("singlebg/survival_singlebg/collection/%s.png", arg_360_0)
 end
 
-function var_0_0.getActivity2ndTakePhotoSingleBg(arg_360_0)
-	return string.format("singlebg/v2a8_gift_singlebg/%s", arg_360_0)
+function var_0_0.getSurvivalTalentIcon(arg_361_0)
+	return string.format("singlebg/survival_singlebg/talent/%s.png", arg_361_0)
 end
 
-function var_0_0.getDecorateStoreBuyBannerFullPath(arg_361_0)
-	return string.format("singlebg_lang/txt_playercard_singlebg/%s.png", arg_361_0)
+function var_0_0.getSurvivalMapIcon(arg_362_0)
+	return string.format("singlebg/survival_singlebg/map/%s.png", arg_362_0)
 end
 
-function var_0_0.getV2a8WarmUpSingleBg(arg_362_0)
-	return string.format("singlebg/v2a8_warmup_singlebg/%s.png", arg_362_0)
+function var_0_0.getSurvivalNpcIcon(arg_363_0)
+	return string.format("singlebg/survival_singlebg/npc/%s.png", arg_363_0)
 end
 
-function var_0_0.getCommandStationPaperIcon(arg_363_0)
-	return string.format("singlebg/commandstation/paper/%s.png", arg_363_0)
+function var_0_0.getSurvivalEquipIcon(arg_364_0)
+	return string.format("singlebg/survival_singlebg/equip/icon/%s.png", arg_364_0)
 end
 
-function var_0_0.getV3a0WarmUpSingleBg(arg_364_0)
-	return string.format("singlebg/v3a0_warmup_singlebg/%s.png", arg_364_0)
+function var_0_0.getNuoDiKaSingleBg(arg_365_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/%s.png", arg_365_0)
+end
+
+function var_0_0.getNuoDiKaItemIcon(arg_366_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/item/%s.png", arg_366_0)
+end
+
+function var_0_0.getNuoDiKaMonsterIcon(arg_367_0)
+	return string.format("singlebg/v2a8_nuodika_singlebg/monster/%s.png", arg_367_0)
+end
+
+function var_0_0.getActivity2ndTakePhotoSingleBg(arg_368_0)
+	return string.format("singlebg/v2a8_gift_singlebg/%s", arg_368_0)
+end
+
+function var_0_0.getDecorateStoreBuyBannerFullPath(arg_369_0)
+	return string.format("singlebg_lang/txt_playercard_singlebg/%s.png", arg_369_0)
+end
+
+function var_0_0.getV2a8WarmUpSingleBg(arg_370_0)
+	return string.format("singlebg/v2a8_warmup_singlebg/%s.png", arg_370_0)
+end
+
+function var_0_0.getCommandStationPaperIcon(arg_371_0)
+	return string.format("singlebg/commandstation/paper/%s.png", arg_371_0)
+end
+
+function var_0_0.getV3a0WarmUpSingleBg(arg_372_0)
+	return string.format("singlebg/v3a0_warmup_singlebg/%s.png", arg_372_0)
+end
+
+function var_0_0.getV2a9WarmUpSingleBg(arg_373_0)
+	return string.format("singlebg/v2a9_warmup_singlebg/%s.png", arg_373_0)
 end
 
 return var_0_0

@@ -13,46 +13,72 @@ function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
 
 	local var_1_0 = CameraMgr.instance:getVirtualCameraGO()
 	local var_1_1 = GameSceneMgr.instance:getCurScene().camera
-	local var_1_2 = arg_1_3[1]
-	local var_1_3 = arg_1_3[2]
-	local var_1_4 = var_1_3 == "1"
-	local var_1_5 = var_1_3 == "2"
+	local var_1_2 = arg_1_3[6]
+
+	if not string.nilorempty(var_1_2) then
+		local var_1_3 = string.splitToNumber(var_1_2, "#")
+
+		if var_1_3[1] and var_1_3[2] and var_1_3[3] then
+			FightWorkFocusMonster.setVirtualCameDamping(var_1_3[1], var_1_3[2], var_1_3[3])
+		end
+	end
+
+	local var_1_4 = arg_1_3[7]
+
+	if not string.nilorempty(var_1_4) then
+		local var_1_5 = string.splitToNumber(var_1_4, "#")
+
+		if var_1_5[1] and var_1_5[2] and var_1_5[3] then
+			transformhelper.setLocalPos(var_1_0.transform, var_1_5[1], var_1_5[2], var_1_5[3])
+		end
+	end
+
+	local var_1_6 = arg_1_3[1]
+	local var_1_7 = arg_1_3[2]
+	local var_1_8 = var_1_7 == "1"
+	local var_1_9 = var_1_7 == "2"
 
 	arg_1_0.holdPosAfterTraceEnd = arg_1_3[3] == "1"
 
-	if var_1_4 then
-		local var_1_6 = var_1_1:getDefaultCameraOffset()
+	if var_1_8 then
+		local var_1_10 = var_1_1:getDefaultCameraOffset()
 
-		arg_1_0.tweenComp:DOLocalMove(var_1_0.transform, var_1_6.x, var_1_6.y, var_1_6.z, arg_1_2)
-	elseif var_1_5 then
+		arg_1_0.tweenComp:DOLocalMove(var_1_0.transform, var_1_10.x, var_1_10.y, var_1_10.z, arg_1_2)
+	elseif var_1_9 then
 		FightWorkFocusMonster.setVirtualCameDamping(0, 0, 0)
 		var_1_1:setSceneCameraOffset()
 		FightWorkFocusMonster.setVirtualCameDamping(1, 1, 1)
-	elseif not string.nilorempty(var_1_2) then
-		local var_1_7 = string.splitToNumber(var_1_2, ",")
+	elseif not string.nilorempty(var_1_6) then
+		local var_1_11 = string.splitToNumber(var_1_6, ",")
 
-		if var_1_7[1] and var_1_7[2] and var_1_7[3] then
-			arg_1_0.tweenComp:DOLocalMove(var_1_0.transform, var_1_7[1], var_1_7[2], var_1_7[3], arg_1_2)
+		if var_1_11[1] and var_1_11[2] and var_1_11[3] then
+			arg_1_0.tweenComp:DOLocalMove(var_1_0.transform, var_1_11[1], var_1_11[2], var_1_11[3], arg_1_2)
 		else
-			logError("相机统一距离参数错误（3个数字用逗号分隔）：" .. var_1_2)
+			logError("相机统一距离参数错误（3个数字用逗号分隔）：" .. var_1_6)
 		end
 	else
 		var_1_1:setSceneCameraOffset()
 	end
 
-	local var_1_8 = arg_1_3[4]
+	local var_1_12 = arg_1_3[4]
 
-	if not string.nilorempty(var_1_8) then
-		local var_1_9 = CameraMgr.instance:getCameraRootGO()
-		local var_1_10 = gohelper.findChild(var_1_9, "main/VirtualCameras/light/direct"):GetComponent(typeof(UnityEngine.Light))
+	if not string.nilorempty(var_1_12) then
+		local var_1_13 = string.split(var_1_12, "#")
+		local var_1_14 = var_1_13[2] == "1"
+		local var_1_15 = CameraMgr.instance:getCameraRootGO()
+		local var_1_16 = gohelper.findChild(var_1_15, "main/VirtualCameras/light/direct"):GetComponent(typeof(UnityEngine.Light))
 
-		arg_1_0.light = var_1_10
+		arg_1_0.light = var_1_16
 
-		local var_1_11 = var_1_10.color
-		local var_1_12 = tonumber(var_1_8)
-		local var_1_13 = Color.New(var_1_11.r, var_1_11.g, var_1_11.b, var_1_12)
+		local var_1_17 = var_1_16.color
+		local var_1_18 = tonumber(var_1_13[1])
+		local var_1_19 = Color.New(var_1_17.r, var_1_17.g, var_1_17.b, var_1_18)
 
-		arg_1_0.tweenComp:DOTweenFloat(var_1_11.a, var_1_12, arg_1_2, arg_1_0.frameCallback, nil, arg_1_0, var_1_13)
+		if var_1_14 then
+			var_1_16.color = var_1_19
+		else
+			arg_1_0.tweenComp:DOTweenFloat(var_1_17.a, var_1_18, arg_1_2, arg_1_0.frameCallback, nil, arg_1_0, var_1_19)
+		end
 	end
 end
 

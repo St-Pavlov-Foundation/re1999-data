@@ -7,6 +7,7 @@
     "desc": "主线关卡中累计首通15个关卡",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -17,6 +18,7 @@
     "desc": "主线关卡中累计首通30个关卡",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -27,6 +29,7 @@
     "desc": "累计消耗1500点细胞活性",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -37,6 +40,7 @@
     "desc": "累计消耗2000点细胞活性",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -47,6 +51,7 @@
     "desc": "完成玛丽安娜角色活动关卡【行军令】",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -57,6 +62,7 @@
     "desc": "完成玛丽安娜角色活动关卡【一切的终结】",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -67,6 +73,7 @@
     "desc": "完成卡戎角色活动关卡【忍耐，忍耐】",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -77,6 +84,7 @@
     "desc": "完成卡戎角色活动关卡【灰烬赋格】",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -87,6 +95,7 @@
     "desc": "坦南特轶事中累计获得5000积分",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -97,6 +106,7 @@
     "desc": "鬃毛邮报怪象的表征最佳委托评估达到450000",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -107,6 +117,7 @@
     "desc": "鬃毛邮报沼泽的怪象最佳委托评估达到450000",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -117,6 +128,7 @@
     "desc": "鬃毛邮报焦土的焚风最佳委托评估达到450000",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -127,6 +139,7 @@
     "desc": "UTTU中完成第10关",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -137,6 +150,7 @@
     "desc": "UTTU中完成2次UTTU零售的阅读",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -147,6 +161,7 @@
     "desc": "翻覆之舟中最高积分累计达到10000",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -157,6 +172,7 @@
     "desc": "翻覆之舟中最高积分累计达到20000",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -167,6 +183,7 @@
     "desc": "深眠域中累计获得12星",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -177,6 +194,7 @@
     "desc": "醒梦域中累计获得4个A级认证",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -187,6 +205,7 @@
     "desc": "在重映【77号往事】中累计消耗3000个“老钥匙”",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
   },
   {
@@ -197,6 +216,227 @@
     "desc": "在重映【77号往事】中累计消耗5000个“老钥匙”",
     "versionId": 300,
     "bonus": "1#300000#1",
+    "activityid": 0,
     "jumpId": 0
+  },
+  {
+    "id": 200,
+    "listenerType": "EpisodePassIncr",
+    "listenerParam": "30510104",
+    "maxProgress": 1,
+    "desc": "在【翡冷翠之春】中完成关卡<color=#94240a>LPdF-04[故事]</color>难度",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 430540202
+  },
+  {
+    "id": 201,
+    "listenerType": "EpisodePassIncr",
+    "listenerParam": "30510110",
+    "maxProgress": 1,
+    "desc": "在【翡冷翠之春】中完成关卡<color=#94240a>LPdF-10[故事]</color>难度",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 430540202
+  },
+  {
+    "id": 202,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "30501",
+    "maxProgress": 10000,
+    "desc": "在【克劳迪娅账务室】中消耗<color=#94240a>10000个</color>弗罗林",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 10013503
+  },
+  {
+    "id": 203,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "30501",
+    "maxProgress": 20000,
+    "desc": "在【克劳迪娅账务室】中消耗<color=#94240a>20000个</color>弗罗林",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 10013503
+  },
+  {
+    "id": 204,
+    "listenerType": "AssassinQuestCount",
+    "listenerParam": "1",
+    "maxProgress": 1,
+    "desc": "在【步入影中】玩法中完成<color=#94240a>1次「一场冲突」</color>",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 100130527
+  },
+  {
+    "id": 205,
+    "listenerType": "AssassinQuestCount",
+    "listenerParam": "3",
+    "maxProgress": 1,
+    "desc": "在【步入影中】玩法中完成<color=#94240a>1次「影的痕迹」</color>",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 100130527
+  },
+  {
+    "id": 206,
+    "listenerType": "Act128BossHighestPoint",
+    "listenerParam": "1#130505",
+    "maxProgress": 450000,
+    "desc": "鬃毛邮报特刊·鹰眼古谚中的神迹【肃清】最佳进度达到450000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130505,
+    "jumpId": 100130526
+  },
+  {
+    "id": 207,
+    "listenerType": "Act128BossHighestPoint",
+    "listenerParam": "2#130505",
+    "maxProgress": 450000,
+    "desc": "鬃毛邮报特刊·鹰眼恐惧的名讳【肃清】最佳进度达到450000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130505,
+    "jumpId": 100130526
+  },
+  {
+    "id": 208,
+    "listenerType": "Act128BossSpHighestPoint",
+    "listenerParam": "1#130505",
+    "maxProgress": 450000,
+    "desc": "鬃毛邮报特刊·鹰眼古谚中的神迹【刺探】最佳进度达到450000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130505,
+    "jumpId": 100130526
+  },
+  {
+    "id": 209,
+    "listenerType": "Act128BossSpHighestPoint",
+    "listenerParam": "2#130505",
+    "maxProgress": 450000,
+    "desc": "鬃毛邮报特刊·鹰眼恐惧的名讳【刺探】最佳进度达到450000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130505,
+    "jumpId": 100130526
+  },
+  {
+    "id": 210,
+    "listenerType": "EpisodePassIncr",
+    "listenerParam": "30510215",
+    "maxProgress": 1,
+    "desc": "在【入雅典记】中完成关卡<color=#94240a>DIA-05屋顶赛跑</color>",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130507,
+    "jumpId": 430540204
+  },
+  {
+    "id": 211,
+    "listenerType": "EpisodePassIncr",
+    "listenerParam": "30510220",
+    "maxProgress": 1,
+    "desc": "在【入雅典记】中完成关卡<color=#94240a>DIA-10金苹果颂</color>",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130507,
+    "jumpId": 430540204
+  },
+  {
+    "id": 212,
+    "listenerType": "OdysseyDefeatReligion",
+    "listenerParam": "130507",
+    "maxProgress": 1,
+    "desc": "在【入雅典记】中打败1名秩序神教成员",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130507,
+    "jumpId": 430540204
+  },
+  {
+    "id": 213,
+    "listenerType": "OdysseyConquestWave",
+    "listenerParam": "130507#130501",
+    "maxProgress": 1,
+    "desc": "在【入雅典记】中的征服战-雅典卫城中击败1波次敌人",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130507,
+    "jumpId": 430540204
+  },
+  {
+    "id": 214,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 10000,
+    "desc": "翻覆之舟中最高积分累计达到10000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 42350000
+  },
+  {
+    "id": 215,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 20000,
+    "desc": "翻覆之舟中最高积分累计达到20000",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 42350000
+  },
+  {
+    "id": 216,
+    "listenerType": "WeekwalkStarTotalIncrOnly",
+    "listenerParam": "3",
+    "maxProgress": 12,
+    "desc": "深眠域中累计获得12星",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 3801
+  },
+  {
+    "id": 217,
+    "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "listenerParam": "",
+    "maxProgress": 4,
+    "desc": "醒梦域中累计获得4个A级认证",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 3801
+  },
+  {
+    "id": 218,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "2301",
+    "maxProgress": 3000,
+    "desc": "在重映【东区黎明】中消耗<color=#94240a>3000个</color>纸条儿勋章 ",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130508,
+    "jumpId": 10012303
+  },
+  {
+    "id": 219,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "2301",
+    "maxProgress": 5000,
+    "desc": "在重映【东区黎明】中消耗<color=#94240a>5000个</color>纸条儿勋章 ",
+    "versionId": 305,
+    "bonus": "1#300000#1",
+    "activityid": 130508,
+    "jumpId": 10012303
   }
 ]

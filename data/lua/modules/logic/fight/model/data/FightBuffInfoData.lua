@@ -18,8 +18,10 @@ function var_0_0.onConstructor(arg_1_0, arg_1_1, arg_1_2)
 
 	local var_1_0 = arg_1_1.actInfo
 
-	for iter_1_0 = 1, #var_1_0 do
-		arg_1_0.actInfo[iter_1_0] = FightBuffActInfoData.New(var_1_0[iter_1_0])
+	if var_1_0 then
+		for iter_1_0 = 1, #var_1_0 do
+			arg_1_0.actInfo[iter_1_0] = FightBuffActInfoData.New(var_1_0[iter_1_0])
+		end
 	end
 
 	local var_1_1 = arg_1_0:getCO()
@@ -36,7 +38,6 @@ function var_0_0.clone(arg_2_0)
 	local var_2_0 = var_0_0.New(arg_2_0)
 
 	var_2_0.clientNum = arg_2_0.clientNum
-	arg_2_0._last_clone_mo = var_2_0
 
 	return var_2_0
 end

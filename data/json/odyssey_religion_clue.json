@@ -1,0 +1,102 @@
+[
+  {
+    "id": 101,
+    "clue": "这位神教成员在大酒神节的人群中。",
+    "unlockCondition": "finish#110104"
+  },
+  {
+    "id": 201,
+    "clue": "这位神教成员经受过军事训练。",
+    "unlockCondition": "finish#110107|finish#130401"
+  },
+  {
+    "id": 301,
+    "clue": "这位神教成员位于雅典的住宅中，文件记录了详细地址。",
+    "unlockCondition": "item#10001#1"
+  },
+  {
+    "id": 401,
+    "clue": "这位神教成员有丰富和航海经验。",
+    "unlockCondition": "finish#215001"
+  },
+  {
+    "id": 501,
+    "clue": "这位神教成员驯养了一些“宠物”。",
+    "unlockCondition": "finish#216001"
+  },
+  {
+    "id": 601,
+    "clue": "这位神教成员聆听神谕。",
+    "unlockCondition": "finish#315001"
+  },
+  {
+    "id": 701,
+    "clue": "这位神教成员热衷于戏剧。",
+    "unlockCondition": "finish#316001"
+  },
+  {
+    "id": 801,
+    "clue": "这位神教成员要求更多葡萄酒，以便社交。",
+    "unlockCondition": "item#10002#1"
+  },
+  {
+    "id": 802,
+    "clue": "这位神教成员对古代遗物很感兴趣。",
+    "unlockCondition": "item#10003#1"
+  },
+  {
+    "id": 803,
+    "clue": "这位神教成员关心神谕。",
+    "unlockCondition": "item#10004#1"
+  },
+  {
+    "id": 804,
+    "clue": "这位神教成员藏匿于剧院附近的某处。",
+    "unlockCondition": "item#10005#1"
+  },
+  {
+    "id": 901,
+    "clue": "这位神教成员是一名雇佣兵。",
+    "unlockCondition": "finish#414001"
+  },
+  {
+    "id": 1001,
+    "clue": "这位神教成员在本地颇有声望。",
+    "unlockCondition": "finish#415001"
+  },
+  {
+    "id": 1101,
+    "clue": "这位神教成员财力丰厚。",
+    "unlockCondition": "finish#515001"
+  },
+  {
+    "id": 1201,
+    "clue": "这位神教成员要求介绍一些奥林匹亚的佣兵。",
+    "unlockCondition": "item#10006#1"
+  },
+  {
+    "id": 1202,
+    "clue": "这位神教成员关心斯巴达近期的军事行动。",
+    "unlockCondition": "item#10007#1"
+  },
+  {
+    "id": 1203,
+    "clue": "这位神教成员将去观赏一次运动竞技。",
+    "unlockCondition": "item#10008#1"
+  },
+  {
+    "id": 1301,
+    "clue": "这位智者初来乍到，正在发展自己的势力。",
+    "unlockCondition": "item#10009#1"
+  },
+  {
+    "id": 1302,
+    "clue": "这位智者有丰富的战斗经验。",
+    "unlockCondition": "item#10010#1"
+  },
+  {
+    "id": 1303,
+    "clue": "这位智者无意于藏匿，因为他对自己的实力颇为自信。",
+    "unlockCondition": "item#10011#1"
+  }
+]

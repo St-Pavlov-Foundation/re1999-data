@@ -4,16 +4,16 @@
     "lang": "English",
     "fontasset1": "regularpro",
     "fontasset2": "regularpro",
-    "textfontasset1": "hwzs.ttf",
-    "textfontasset2": "hwzs.ttf"
+    "textfontasset1": "regular.ttf",
+    "textfontasset2": "regular.ttf"
   },
   {
     "shortcuts": "jp",
     "lang": "日本語",
     "fontasset1": "japanpro",
-    "fontasset2": "japanpro",
+    "fontasset2": "japankot",
     "textfontasset1": "japan.otf",
-    "textfontasset2": "japan.otf"
+    "textfontasset2": "japankot.otf"
   },
   {
     "shortcuts": "zh",
@@ -26,10 +26,10 @@
   {
     "shortcuts": "kr",
     "lang": "한국어",
-    "fontasset1": "regularpro",
-    "fontasset2": "regularpro",
-    "textfontasset1": "hwzs.ttf",
-    "textfontasset2": "hwzs.ttf"
+    "fontasset1": "koreapro",
+    "fontasset2": "koreapro",
+    "textfontasset1": "korea.ttf",
+    "textfontasset2": "korea.ttf"
   },
   {
     "shortcuts": "thai",

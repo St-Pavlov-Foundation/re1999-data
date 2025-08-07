@@ -444,14 +444,7 @@ end
 
 function var_0_0._btngotoOnClick(arg_44_0)
 	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
-
-	local var_44_0 = arg_44_0.viewContainer:getH5BaseUrl()
-
-	if SettingsModel.instance:isTwRegion() or SettingsModel.instance:isKrRegion() then
-		WebViewController.instance:openWebView(var_44_0, false, arg_44_0._onWebViewCb, arg_44_0)
-	else
-		WebViewController.instance:simpleOpenWebView(var_44_0, false, arg_44_0._onWebViewCb, arg_44_0)
-	end
+	arg_44_0.viewContainer:openWebView(arg_44_0._onWebViewCb, arg_44_0)
 end
 
 function var_0_0._onWebViewCb(arg_45_0, arg_45_1, arg_45_2)

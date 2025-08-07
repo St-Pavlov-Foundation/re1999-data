@@ -20,7 +20,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._txtgoodsName = gohelper.findChildText(arg_1_0.viewGO, "layout/txt_goodsName")
 	arg_1_0._gosoldout = gohelper.findChild(arg_1_0.viewGO, "go_soldout")
 	arg_1_0._golevellimit = gohelper.findChild(arg_1_0.viewGO, "go_levellimit")
-	arg_1_0._txtlvlimit = gohelper.findChildText(arg_1_0.viewGO, "go_levellimit/txt")
+	arg_1_0._txtlvlimit = gohelper.findChildText(arg_1_0.viewGO, "go_levellimit/bg/txt")
 	arg_1_0._gohas = gohelper.findChild(arg_1_0.viewGO, "go_has")
 	arg_1_0._goline = gohelper.findChild(arg_1_0.viewGO, "#go_line")
 	arg_1_0._goitemreddot = gohelper.findChild(arg_1_0.viewGO, "go_itemreddot")
@@ -277,7 +277,7 @@ function var_0_0.refreshNormalGoods(arg_17_0)
 
 				var_17_7, var_17_9 = DungeonConfig.instance:getChapterEpisodeIndexWithSP(var_17_4.id, var_17_3.id)
 
-				if type == DungeonEnum.EpisodeType.Sp then
+				if var_17_9 == DungeonEnum.EpisodeType.Sp then
 					var_17_6 = "SP"
 				end
 			end

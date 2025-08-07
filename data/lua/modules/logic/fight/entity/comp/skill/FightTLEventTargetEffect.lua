@@ -23,6 +23,8 @@ function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
 		return
 	end
 
+	arg_1_0._tokenRelease = not string.nilorempty(arg_1_0.paramsArr[12])
+
 	local var_1_1 = arg_1_3[2]
 	local var_1_2 = arg_1_3[3]
 	local var_1_3 = 0
@@ -123,20 +125,32 @@ function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
 		end
 	end
 
+	local var_1_23 = arg_1_3[13]
+
+	var_1_23 = not string.nilorempty(var_1_23) and var_1_23
+
+	if var_1_23 then
+		for iter_1_8, iter_1_9 in ipairs(var_1_8) do
+			iter_1_9.effect:_onInvokeTokenRelease(var_1_23)
+		end
+
+		return
+	end
+
 	if #var_1_8 > 0 then
 		arg_1_0._effectWrapDict = {}
 
-		local var_1_23 = tonumber(arg_1_3[10])
+		local var_1_24 = tonumber(arg_1_3[10])
 
-		for iter_1_8, iter_1_9 in ipairs(var_1_8) do
-			local var_1_24 = arg_1_0:_createEffect(iter_1_9, var_1_0, var_1_1, var_1_2, var_1_3, var_1_4, var_1_5)
+		for iter_1_10, iter_1_11 in ipairs(var_1_8) do
+			local var_1_25 = arg_1_0:_createEffect(iter_1_11, var_1_0, var_1_1, var_1_2, var_1_3, var_1_4, var_1_5)
 
-			arg_1_0:_setRenderOrder(iter_1_9.id, var_1_24, var_1_7)
+			arg_1_0:_setRenderOrder(iter_1_11.id, var_1_25, var_1_7)
 
-			arg_1_0._effectWrapDict[iter_1_9] = var_1_24
+			arg_1_0._effectWrapDict[iter_1_11] = var_1_25
 
-			if var_1_23 then
-				AudioMgr.instance:trigger(var_1_23)
+			if var_1_24 then
+				AudioMgr.instance:trigger(var_1_24)
 			end
 		end
 	end
@@ -198,6 +212,10 @@ function var_0_0._createEffect(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4, arg_
 		var_3_1:setWorldPos(var_3_7 + var_3_12, var_3_8 + arg_3_6, var_3_9 + arg_3_7)
 	end
 
+	if arg_3_0._tokenRelease then
+		arg_3_1.effect:addTokenRelease(arg_3_0.paramsArr[12], var_3_1)
+	end
+
 	return var_3_1
 end
 
@@ -214,7 +232,7 @@ function var_0_0.onDestructor(arg_5_0)
 end
 
 function var_0_0._removeEffect(arg_6_0)
-	if arg_6_0._effectWrapDict and not arg_6_0._delayReleaseEffect then
+	if arg_6_0._effectWrapDict and not arg_6_0._delayReleaseEffect and not arg_6_0._tokenRelease then
 		for iter_6_0, iter_6_1 in pairs(arg_6_0._effectWrapDict) do
 			FightRenderOrderMgr.instance:onRemoveEffectWrap(iter_6_0.id, iter_6_1)
 			iter_6_0.effect:removeEffect(iter_6_1)

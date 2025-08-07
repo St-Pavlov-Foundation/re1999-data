@@ -20,6 +20,7 @@ var_0_0.SimpleProperty = {
 	EquipPreferenceOpen = 9,
 	V2a7_BossRushCurrencyNum = 16,
 	MainHero = 2,
+	MainUISkin = 21,
 	PreviouslyOn = 17,
 	ShowHelpIds = 6
 }

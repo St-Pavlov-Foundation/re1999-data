@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "干草堆",
+    "icon": "assassin2_stealth_game_haystack",
+    "smallIcon": ""
+  },
+  {
+    "id": 2,
+    "name": "屋顶花园",
+    "icon": "assassin2_stealth_game_garden",
+    "smallIcon": ""
+  },
+  {
+    "id": 3,
+    "name": "高塔",
+    "icon": "assassin2_stealth_game_tower",
+    "smallIcon": "assassinstealthoverview_legend_tower"
+  }
+]

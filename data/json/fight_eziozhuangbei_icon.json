@@ -1,0 +1,44 @@
+[
+  {
+    "weaponId": 1001,
+    "type": 1,
+    "firsticon": "character_weapon_main_3",
+    "secondicon": "character_weapon_main_3",
+    "name": "威尼斯弯刀"
+  },
+  {
+    "weaponId": 1002,
+    "type": 1,
+    "firsticon": "character_weapon_main_1",
+    "secondicon": "character_weapon_main_1",
+    "name": "佣兵队长战锤"
+  },
+  {
+    "weaponId": 1003,
+    "type": 1,
+    "firsticon": "character_weapon_main_2",
+    "secondicon": "character_weapon_main_2",
+    "name": "船长剑"
+  },
+  {
+    "weaponId": 2001,
+    "type": 2,
+    "firsticon": "character_weapon_sub_1",
+    "secondicon": "character_weapon_sub_1",
+    "name": "多槽五指剑"
+  },
+  {
+    "weaponId": 2002,
+    "type": 2,
+    "firsticon": "character_weapon_sub_2",
+    "secondicon": "character_weapon_sub_2",
+    "name": "屠刀"
+  },
+  {
+    "weaponId": 2003,
+    "type": 2,
+    "firsticon": "character_weapon_sub_3",
+    "secondicon": "character_weapon_sub_3",
+    "name": "苏丹短刀"
+  }
+]

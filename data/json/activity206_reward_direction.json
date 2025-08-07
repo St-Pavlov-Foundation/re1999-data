@@ -1,0 +1,86 @@
+[
+  {
+    "activityId": 130520,
+    "directionId": 1,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 1,
+    "rewardGroupId": 6,
+    "des": "紧盯目标，飞扑的角度不偏不倚——但亦仅此而已。",
+    "name": "循规蹈矩",
+    "pic": "recruit_targeticon_03"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 2,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 5,
+    "des": "迷失之时，你永远可以倚靠飞鸟与屋顶。",
+    "name": "屋顶知晓一切",
+    "pic": "recruit_targeticon_04"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 3,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 1,
+    "des": "闯入酒鬼的居所，亦或堆满金色筹码的天国。",
+    "name": "押注暗巷",
+    "pic": "recruit_targeticon_07"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 4,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 4,
+    "des": "优雅、婉转，永远先你一步刺破衣袋。",
+    "name": "飞刀先至",
+    "pic": "recruit_targeticon_06"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 5,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 2,
+    "des": "偶尔传来“扑通”一声，两只雀儿便同时落入笼中。",
+    "name": "一石二鸟",
+    "pic": "recruit_targeticon_05"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 6,
+    "baseRate": 80,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 3,
+    "des": "并非每位信使都值得追捕，沿路的宝箱亦值得一看。",
+    "name": "路边风景",
+    "pic": "recruit_targeticon_02"
+  },
+  {
+    "activityId": 130520,
+    "directionId": 7,
+    "baseRate": 20,
+    "nextDayDecRate": 20,
+    "haveGuarantee": true,
+    "guaranteeCount": 0,
+    "rewardGroupId": 7,
+    "des": "某人获知你第一千零五次摔落屋顶后，你收到了从蒙特里久尼寄出的一笔财物。",
+    "name": "付出便有回报",
+    "pic": "recruit_targeticon_01"
+  }
+]

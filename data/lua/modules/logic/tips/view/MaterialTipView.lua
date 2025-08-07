@@ -960,33 +960,35 @@ function var_0_0._refreshUI(arg_41_0)
 
 	gohelper.setActive(arg_41_0._simagepropicon.gameObject, false)
 
-	if arg_41_0:_isUseBtnShow() then
+	local var_41_0 = arg_41_0:_isUseBtnShow()
+
+	if var_41_0 then
 		gohelper.setActive(arg_41_0._gouse, true)
 
-		local var_41_0 = true
+		local var_41_1 = true
 
 		if arg_41_0.viewParam.type == MaterialEnum.MaterialType.PowerPotion then
-			var_41_0 = false
+			var_41_1 = false
 		elseif arg_41_0._config.subType == ItemEnum.SubType.RoomTicket then
-			var_41_0 = false
+			var_41_1 = false
 		elseif arg_41_0._config.subType == ItemEnum.SubType.SkinTicket then
-			var_41_0 = false
+			var_41_1 = false
 		elseif arg_41_0._config.subType == ItemEnum.SubType.DecorateDiscountTicket then
-			var_41_0 = false
+			var_41_1 = false
 		elseif arg_41_0.viewParam.type == MaterialEnum.MaterialType.NewInsight then
-			var_41_0 = false
+			var_41_1 = false
 		elseif arg_41_0._config.subType == ItemEnum.SubType.SelfSelectSix then
-			var_41_0 = false
+			var_41_1 = false
 
 			recthelper.setAnchorY(arg_41_0._btnuse.transform, -190)
 		elseif arg_41_0._config.subType == ItemEnum.SubType.RoomBlockGiftNew then
-			var_41_0 = false
+			var_41_1 = false
 
 			recthelper.setAnchorY(arg_41_0._btnuse.transform, -190)
 			recthelper.setAnchorY(arg_41_0._goincludeScroll.transform, 45)
 		end
 
-		gohelper.setActive(arg_41_0._gouseDetail, var_41_0)
+		gohelper.setActive(arg_41_0._gouseDetail, var_41_1)
 	else
 		gohelper.setActive(arg_41_0._gouse, false)
 	end
@@ -1002,7 +1004,7 @@ function var_0_0._refreshUI(arg_41_0)
 	TaskDispatcher.cancelTask(arg_41_0._onRefreshPowerPotionDeadline, arg_41_0)
 	TaskDispatcher.cancelTask(arg_41_0._onRefreshItemDeadline, arg_41_0)
 
-	local var_41_1 = arg_41_0._config.subType == ItemEnum.SubType.Portrait
+	local var_41_2 = arg_41_0._config.subType == ItemEnum.SubType.Portrait
 
 	gohelper.setActive(arg_41_0._goequipicon, false)
 
@@ -1021,7 +1023,7 @@ function var_0_0._refreshUI(arg_41_0)
 	else
 		arg_41_0:_onRefreshItemDeadline()
 
-		if var_41_1 then
+		if var_41_2 then
 			if not arg_41_0._liveHeadIcon then
 				arg_41_0._liveHeadIcon = IconMgr.instance:getCommonLiveHeadIcon(arg_41_0._simageheadicon)
 			end
@@ -1035,7 +1037,7 @@ function var_0_0._refreshUI(arg_41_0)
 			arg_41_0._simagepropicon:LoadImage(arg_41_0._icon, arg_41_0._setIconNativeSize, arg_41_0)
 		end
 
-		gohelper.setActive(arg_41_0._simagepropicon.gameObject, not var_41_1)
+		gohelper.setActive(arg_41_0._simagepropicon.gameObject, not var_41_2)
 		TaskDispatcher.runRepeat(arg_41_0._onRefreshItemDeadline, arg_41_0, 1)
 	end
 
@@ -1048,29 +1050,29 @@ function var_0_0._refreshUI(arg_41_0)
 	gohelper.setActive(arg_41_0._btnplayerbg, false)
 	gohelper.setActive(arg_41_0._goplayericon, arg_41_0._config.subType == ItemEnum.SubType.Portrait)
 
-	local var_41_2 = arg_41_0._config.subType == ItemEnum.SubType.SummonSimulationPick
-	local var_41_3 = var_41_2 or arg_41_0:_isPackageSkin()
+	local var_41_3 = arg_41_0._config.subType == ItemEnum.SubType.SummonSimulationPick
+	local var_41_4 = var_41_3 or arg_41_0:_isPackageSkin()
 
-	gohelper.setActive(arg_41_0._goSummonsimulationtips, var_41_3)
-	gohelper.setActive(arg_41_0._btnsummonsimulation, var_41_3)
+	gohelper.setActive(arg_41_0._goSummonsimulationtips, var_41_4)
+	gohelper.setActive(arg_41_0._btnsummonsimulation, var_41_4)
 
-	local var_41_4 = arg_41_0.viewParam.type == MaterialEnum.MaterialType.Exp
+	local var_41_5 = arg_41_0.viewParam.type == MaterialEnum.MaterialType.Exp
 
-	gohelper.setActive(arg_41_0._gohadnumber, not var_41_4 and arg_41_0._config.subType ~= ItemEnum.SubType.Portrait and not arg_41_0:_checkIsFakeIcon())
+	gohelper.setActive(arg_41_0._gohadnumber, not var_41_5 and arg_41_0._config.subType ~= ItemEnum.SubType.Portrait and not arg_41_0:_checkIsFakeIcon())
 	gohelper.setActive(arg_41_0._goupgrade, arg_41_0._config.subType == ItemEnum.SubType.Portrait and not string.nilorempty(arg_41_0._config.effect))
 
-	local var_41_5 = string.split(arg_41_0._config.effect, "#")
+	local var_41_6 = string.split(arg_41_0._config.effect, "#")
 
 	if arg_41_0._config.subType == ItemEnum.SubType.Portrait then
-		if #var_41_5 > 1 then
-			if arg_41_0._config.id == tonumber(var_41_5[#var_41_5]) then
+		if #var_41_6 > 1 then
+			if arg_41_0._config.id == tonumber(var_41_6[#var_41_6]) then
 				gohelper.setActive(arg_41_0._goupgrade, false)
 				gohelper.setActive(arg_41_0._goframe, false)
 				gohelper.setActive(arg_41_0._goframenode, true)
 
-				local var_41_6 = "ui/viewres/common/effect/frame.prefab"
+				local var_41_7 = "ui/viewres/common/effect/frame.prefab"
 
-				arg_41_0._loader:addPath(var_41_6)
+				arg_41_0._loader:addPath(var_41_7)
 				arg_41_0._loader:startLoad(arg_41_0._onLoadCallback, arg_41_0)
 			end
 		else
@@ -1081,9 +1083,26 @@ function var_0_0._refreshUI(arg_41_0)
 
 	arg_41_0:_refreshValue()
 	arg_41_0:_refreshInclude()
-	arg_41_0:_cloneJumpItem()
 
-	if arg_41_0:_isUseBtnShow() then
+	if var_41_0 then
+		gohelper.setActive(arg_41_0._gosource, false)
+
+		for iter_41_0, iter_41_1 in ipairs(arg_41_0._boxItemGos or {}) do
+			if iter_41_1 then
+				gohelper.setActive(iter_41_1.go, false)
+			end
+		end
+
+		for iter_41_2, iter_41_3 in ipairs(arg_41_0.jumpItemGos or {}) do
+			if iter_41_3 then
+				gohelper.setActive(iter_41_3.go, false)
+			end
+		end
+	else
+		arg_41_0:_cloneJumpItem()
+	end
+
+	if var_41_0 then
 		recthelper.setHeight(arg_41_0._scrolldesc.transform, 180)
 	elseif arg_41_0._goinclude.activeInHierarchy then
 		recthelper.setHeight(arg_41_0._scrolldesc.transform, 162)
@@ -1091,8 +1110,8 @@ function var_0_0._refreshUI(arg_41_0)
 		recthelper.setHeight(arg_41_0._scrolldesc.transform, 415)
 	end
 
-	if var_41_3 then
-		if var_41_2 then
+	if var_41_4 then
+		if var_41_3 then
 			arg_41_0._txtSummonsimulationtips.text = luaLang("p_normalstoregoodsview_txt_summonpicktips")
 		end
 

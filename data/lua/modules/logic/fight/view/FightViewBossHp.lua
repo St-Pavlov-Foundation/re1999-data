@@ -78,6 +78,8 @@ function var_0_0.onOpen(arg_2_0)
 	arg_2_0:com_registFightEvent(FightEvent.ChangeCareer, arg_2_0._onChangeCareer)
 	arg_2_0:com_registFightEvent(FightEvent.ChangeShield, arg_2_0._onChangeShield)
 	arg_2_0:com_registFightEvent(FightEvent.SetFakeNuoDiKaDamageShield, arg_2_0.onSetFakeNuoDiKaDamageShield)
+	arg_2_0:com_registFightEvent(FightEvent.AiJiAoFakeDecreaseHp, arg_2_0.onAiJiAoFakeDecreaseHp)
+	arg_2_0:com_registFightEvent(FightEvent.OnFightReconnectLastWork, arg_2_0.onFightReconnectLastWork)
 
 	arg_2_0.sheildWidth = recthelper.getWidth(arg_2_0._goHpShield.transform)
 
@@ -371,6 +373,10 @@ function var_0_0._onHpChange(arg_20_0, arg_20_1, arg_20_2)
 
 		arg_20_0:_tweenFillAmount()
 	end
+
+	if arg_20_0.aiJiAoFakeHpBgImg then
+		arg_20_0.aiJiAoFakeHpBgImg.fillAmount = 0
+	end
 end
 
 function var_0_0._playHpEffectAni(arg_21_0)
@@ -402,6 +408,17 @@ function var_0_0._onMultiHpChange(arg_24_0, arg_24_1)
 		arg_24_0._bossEntityMO = nil
 
 		arg_24_0:_checkBossAndUpdate()
+
+		local var_24_2 = arg_24_0._curHp
+		local var_24_3 = arg_24_0._curShield
+
+		if arg_24_0._bossEntityMO and FightDataHelper.tempMgr.aiJiAoFakeHpOffset[arg_24_0._bossEntityMO.id] then
+			local var_24_4, var_24_5 = FightWorkEzioBigSkillDamage1000.calFakeHpAndShield(arg_24_0._bossEntityMO.id, var_24_2, var_24_3)
+
+			var_24_0, var_24_1 = arg_24_0:_getFillAmount(var_24_4, var_24_5)
+			var_24_0 = Mathf.Clamp(var_24_0, 0.01, 1)
+			var_24_1 = Mathf.Clamp(var_24_1, 0.01, 1)
+		end
 
 		arg_24_0._imgHp.fillAmount = var_24_0
 		arg_24_0._imgHpShield.fillAmount = var_24_1
@@ -455,16 +472,31 @@ function var_0_0._onShieldChange(arg_27_0, arg_27_1, arg_27_2)
 	if arg_27_0._bossEntityMO and arg_27_1.id == arg_27_0._bossEntityMO.id then
 		arg_27_0._curShield = arg_27_2 ~= 0 and arg_27_0._curShield + arg_27_2 or arg_27_0._bossEntityMO.shieldValue
 
-		local var_27_0, var_27_1 = arg_27_0:_getFillAmount()
+		local var_27_0 = arg_27_0._curHp
+		local var_27_1 = arg_27_0._curShield
+		local var_27_2, var_27_3 = arg_27_0:_getFillAmount()
 
-		arg_27_0:_changeShieldPos(var_27_0)
+		if arg_27_0._bossEntityMO and FightDataHelper.tempMgr.aiJiAoFakeHpOffset[arg_27_0._bossEntityMO.id] then
+			local var_27_4
 
-		if arg_27_0._curShield <= 0 then
+			var_27_4, var_27_1 = FightWorkEzioBigSkillDamage1000.calFakeHpAndShield(arg_27_0._bossEntityMO.id, var_27_0, var_27_1)
+
+			local var_27_5
+
+			var_27_2, var_27_5 = arg_27_0:_getFillAmount(var_27_4, var_27_1)
+			var_27_2 = Mathf.Clamp(var_27_2, 0.01, 1)
+
+			local var_27_6 = Mathf.Clamp(var_27_5, 0.01, 1)
+		end
+
+		arg_27_0:_changeShieldPos(var_27_2)
+
+		if var_27_1 <= 0 then
 			if arg_27_0:_checkShieldBreakAnim() then
 				return
 			end
 
-			arg_27_0._imgHp.fillAmount = var_27_0
+			arg_27_0._imgHp.fillAmount = var_27_2
 
 			arg_27_0._aniHpShield:Play(UIAnimationName.Open)
 			arg_27_0._aniBossHp:Play("shake", 0, 0)
@@ -485,16 +517,27 @@ function var_0_0._checkShieldBreakAnim(arg_28_0)
 	return false
 end
 
-function var_0_0._tweenFillAmount(arg_29_0, arg_29_1)
+function var_0_0._tweenFillAmount(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
 	arg_29_1 = arg_29_1 or 0.5
+	arg_29_2 = arg_29_2 or arg_29_0._curHp
+	arg_29_3 = arg_29_3 or arg_29_0._curShield
 
-	local var_29_0, var_29_1 = arg_29_0:_getFillAmount()
+	local var_29_0, var_29_1 = arg_29_0:_getFillAmount(arg_29_2, arg_29_3)
+	local var_29_2 = var_29_0
+
+	if arg_29_0._bossEntityMO and FightDataHelper.tempMgr.aiJiAoFakeHpOffset[arg_29_0._bossEntityMO.id] then
+		arg_29_2, arg_29_3 = FightWorkEzioBigSkillDamage1000.calFakeHpAndShield(arg_29_0._bossEntityMO.id, arg_29_2, arg_29_3)
+		var_29_0, var_29_1 = arg_29_0:_getFillAmount(arg_29_2, arg_29_3)
+		var_29_0 = Mathf.Clamp(var_29_0, 0.01, 1)
+		var_29_1 = Mathf.Clamp(var_29_1, 0.01, 1)
+	end
 
 	arg_29_0:_changeShieldPos(var_29_0)
 	ZProj.TweenHelper.KillByObj(arg_29_0._imgHp)
 	ZProj.TweenHelper.KillByObj(arg_29_0._imgHpShield)
 	ZProj.TweenHelper.DOFillAmount(arg_29_0._imgHp, var_29_0, arg_29_1 / FightModel.instance:getUISpeed())
 	ZProj.TweenHelper.DOFillAmount(arg_29_0._imgHpShield, var_29_1, arg_29_1 / FightModel.instance:getUISpeed())
+	arg_29_0:setAiJiAoFakeHp(var_29_2)
 	arg_29_0:refreshReduceHP()
 end
 
@@ -525,13 +568,16 @@ function var_0_0._changeShieldPos(arg_31_0, arg_31_1)
 	recthelper.setAnchorX(arg_31_0._trsShieldPosUI, arg_31_1 * arg_31_0.sheildWidth)
 end
 
-function var_0_0._getFillAmount(arg_32_0)
+function var_0_0._getFillAmount(arg_32_0, arg_32_1, arg_32_2)
 	if not arg_32_0._bossEntityMO then
 		return 0, 0
 	end
 
+	arg_32_1 = arg_32_1 or arg_32_0._curHp
+	arg_32_2 = arg_32_2 or arg_32_0._curShield
+
 	local var_32_0 = arg_32_0._bossEntityMO
-	local var_32_1, var_32_2 = var_32_0:getHpAndShieldFillAmount(arg_32_0._curHp, arg_32_0._curShield)
+	local var_32_1, var_32_2 = var_32_0:getHpAndShieldFillAmount(arg_32_1, arg_32_2)
 	local var_32_3 = var_32_0.attrMO and var_32_0.attrMO.hp > 0 and var_32_0.attrMO.hp or 1
 	local var_32_4 = var_32_0.attrMO and var_32_0.attrMO.original_max_hp or 1
 
@@ -680,6 +726,49 @@ function var_0_0.onCoverPerformanceEntityData(arg_40_0, arg_40_1)
 	arg_40_0._curShield = arg_40_0._bossEntityMO.shieldValue
 
 	arg_40_0:_tweenFillAmount()
+end
+
+function var_0_0.onAiJiAoFakeDecreaseHp(arg_41_0, arg_41_1)
+	if arg_41_0._bossEntityMO and arg_41_1 == arg_41_0._bossEntityMO.id and FightDataHelper.tempMgr.aiJiAoFakeHpOffset[arg_41_1] then
+		arg_41_0:_tweenFillAmount()
+	end
+end
+
+function var_0_0.setAiJiAoFakeHp(arg_42_0, arg_42_1)
+	if not arg_42_0.aiJiAoFakeHpBgImg then
+		local var_42_0 = arg_42_0._imgHp.gameObject
+
+		arg_42_0.aiJiAoFakeHpBgImg = gohelper.onceAddComponent(gohelper.cloneInPlace(var_42_0, "aiJiAoFakeHpBgImg"), gohelper.Type_Image)
+
+		gohelper.setAsLastSibling(var_42_0)
+
+		local var_42_1 = arg_42_0.aiJiAoFakeHpBgImg.transform
+		local var_42_2 = var_42_1.childCount
+
+		for iter_42_0 = 1, var_42_2 do
+			local var_42_3 = var_42_1:GetChild(iter_42_0 - 1)
+
+			gohelper.setActive(var_42_3.gameObject, false)
+		end
+
+		SLFramework.UGUI.GuiHelper.SetColor(arg_42_0.aiJiAoFakeHpBgImg, "#E1C590")
+	end
+
+	if arg_42_0._bossEntityMO and not FightDataHelper.tempMgr.aiJiAoFakeHpOffset[arg_42_0._bossEntityMO.id] then
+		arg_42_1 = 0
+	end
+
+	arg_42_0.aiJiAoFakeHpBgImg.fillAmount = arg_42_1
+end
+
+function var_0_0.checkAiJiAoFakeDecreaseHp(arg_43_0)
+	if arg_43_0._bossEntityMO then
+		arg_43_0:onAiJiAoFakeDecreaseHp(arg_43_0._bossEntityMO.id)
+	end
+end
+
+function var_0_0.onFightReconnectLastWork(arg_44_0)
+	arg_44_0:checkAiJiAoFakeDecreaseHp()
 end
 
 return var_0_0

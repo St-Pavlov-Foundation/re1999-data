@@ -198,5 +198,15 @@
     "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/123.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/123_1.png\",\"id\":[1,2,3,4,5,6,7,8],\"pX\":[-113.5,17.699995,188.0,363.4,511.25,-113.5,188.0,512.4],\"pY\":[117.0,1.099997,87.0,-5.01,106.4,-117.4,-83.0,-115.3],\"sX\":[0.6,0.95,0.95,0.95,0.72,0.6,0.72,0.66],\"sY\":[0.6,0.95,0.95,0.95,0.72,0.6,0.72,0.66]}",
     "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/123.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/123_1.png\",\"groupTitleColor\":\"#B79583FF\",\"id\":[1,2,3,4,5,6,7,8],\"pX\":[-26.0,26.7,97.2,170.3,227.1,-27.1,97.4,227.100021],\"pY\":[27.2,-22.0,14.1,-24.2,22.5,-71.6,-56.8,-70.1],\"sX\":[0.27,0.4,0.4,0.4,0.3,0.26,0.3,0.28],\"sY\":[0.27,0.4,0.4,0.4,0.3,0.26,0.3,0.28]}",
     "unLockAchievement": 41230801
+  },
+  {
+    "id": 124,
+    "category": 4,
+    "order": 979,
+    "name": "影中之鹰",
+    "desc": "",
+    "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/124.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/124_1.png\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[-105.4,27.0,199.0,373.6,518.0,28.7,200.2,373.0,537.5],\"pY\":[8.4,85.4,80.1,85.4,43.3,-82.2,-83.4,-83.3,-97.0],\"sX\":[0.5,0.61,0.75,0.61,0.61,0.75,0.6,0.75,0.5],\"sY\":[0.5,0.61,0.75,0.61,0.61,0.75,0.6,0.75,0.5]}",
+    "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/124.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/124_1.png\",\"groupTitleColor\":\"#F0E3C8FF\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[-50.2,9.0,86.1,162.4,226.5,9.0,86.10002,162.4,235.7],\"pY\":[-16.0,18.1,15.8,18.1,-3.8147E-06,-56.1,-55.3,-57.1,-62.8],\"sX\":[0.22,0.27,0.34,0.27,0.26,0.34,0.27,0.34,0.22],\"sY\":[0.22,0.27,0.34,0.27,0.26,0.34,0.27,0.34,0.22]}",
+    "unLockAchievement": 41240901
   }
 ]

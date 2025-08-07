@@ -40,6 +40,7 @@ function var_0_0.ctor(arg_1_0)
 	arg_1_0.duplicateCount = 0
 	arg_1_0.belongOtherPlayer = false
 	arg_1_0.otherPlayerEquipMo = nil
+	arg_1_0.extraStr = nil
 end
 
 function var_0_0.init(arg_2_0, arg_2_1, arg_2_2)
@@ -258,6 +259,10 @@ function var_0_0.initFromTrial(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
 
 	arg_18_0.destinyStoneMo:refreshMo(var_18_0.facetslevel, 1, var_18_0.facetsId)
 	arg_18_0.destinyStoneMo:setTrial()
+
+	arg_18_0.extraMo = arg_18_0.extraMo or CharacterExtraMO.New(arg_18_0)
+
+	arg_18_0.extraMo:refreshMo(var_18_0.special)
 end
 
 function var_0_0.initFromConfig(arg_19_0, arg_19_1)
@@ -316,6 +321,10 @@ function var_0_0.update(arg_20_0, arg_20_1)
 	arg_20_0.destinyStoneMo:refreshMo(arg_20_1.destinyRank, arg_20_1.destinyLevel, arg_20_1.destinyStone, arg_20_1.destinyStoneUnlock)
 	arg_20_0.destinyStoneMo:setRedDot(arg_20_1.redDot)
 	arg_20_0:setIsBelongOtherPlayer(arg_20_1.belongOtherPlayer)
+
+	arg_20_0.extraMo = arg_20_0.extraMo or CharacterExtraMO.New(arg_20_0)
+
+	arg_20_0.extraMo:refreshMo(arg_20_1.extraStr)
 end
 
 function var_0_0._getListInfo(arg_21_0, arg_21_1, arg_21_2)
@@ -929,48 +938,60 @@ function var_0_0.isHasDestinySystem(arg_54_0)
 	return CharacterDestinyConfig.instance:hasDestinyHero(arg_54_0.heroId)
 end
 
-function var_0_0.getRecommendEquip(arg_55_0)
-	if arg_55_0.recommendEquips then
-		return arg_55_0.recommendEquips
+function var_0_0.checkReplaceSkill(arg_55_0, arg_55_1)
+	if arg_55_0.destinyStoneMo then
+		arg_55_1 = arg_55_0.destinyStoneMo:_replaceSkill(arg_55_1)
 	end
 
-	arg_55_0.recommendEquips = {}
-
-	if not arg_55_0.config or string.nilorempty(arg_55_0.config.equipRec) then
-		return arg_55_0.recommendEquips
+	if arg_55_0.extraMo then
+		arg_55_1 = arg_55_0.extraMo:getReplaceSkills(arg_55_1)
 	end
 
-	arg_55_0.recommendEquips = string.splitToNumber(arg_55_0.config.equipRec, "#")
-
-	return arg_55_0.recommendEquips
+	return arg_55_1
 end
 
-function var_0_0.getHeroType(arg_56_0)
-	local var_56_0 = lua_character_rank_replace.configDict[arg_56_0.heroId]
+function var_0_0.getRecommendEquip(arg_56_0)
+	if arg_56_0.recommendEquips then
+		return arg_56_0.recommendEquips
+	end
 
-	if var_56_0 then
-		local var_56_1 = lua_character_limited.configDict[arg_56_0.skin]
+	arg_56_0.recommendEquips = {}
 
-		if var_56_1 and not string.nilorempty(var_56_1.specialLive2d) then
-			local var_56_2 = string.split(var_56_1.specialLive2d, "#")
+	if not arg_56_0.config or string.nilorempty(arg_56_0.config.equipRec) then
+		return arg_56_0.recommendEquips
+	end
 
-			if tonumber(var_56_2[1]) == 1 then
-				local var_56_3 = var_56_2[2] and tonumber(var_56_2[2]) or 3
+	arg_56_0.recommendEquips = string.splitToNumber(arg_56_0.config.equipRec, "#")
 
-				if arg_56_0.rank > var_56_3 - 1 then
-					return var_56_0.heroType
+	return arg_56_0.recommendEquips
+end
+
+function var_0_0.getHeroType(arg_57_0)
+	local var_57_0 = lua_character_rank_replace.configDict[arg_57_0.heroId]
+
+	if var_57_0 then
+		local var_57_1 = lua_character_limited.configDict[arg_57_0.skin]
+
+		if var_57_1 and not string.nilorempty(var_57_1.specialLive2d) then
+			local var_57_2 = string.split(var_57_1.specialLive2d, "#")
+
+			if tonumber(var_57_2[1]) == 1 then
+				local var_57_3 = var_57_2[2] and tonumber(var_57_2[2]) or 3
+
+				if arg_57_0.rank > var_57_3 - 1 then
+					return var_57_0.heroType
 				end
 			end
 		end
 	end
 
-	return arg_56_0.config.heroType
+	return arg_57_0.config.heroType
 end
 
-function var_0_0.getTalentTxtByHeroType(arg_57_0)
-	local var_57_0 = arg_57_0:getHeroType()
+function var_0_0.getTalentTxtByHeroType(arg_58_0)
+	local var_58_0 = arg_58_0:getHeroType()
 
-	return CharacterEnum.TalentTxtByHeroType[var_57_0]
+	return CharacterEnum.TalentTxtByHeroType[var_58_0]
 end
 
 return var_0_0

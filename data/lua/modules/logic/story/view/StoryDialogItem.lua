@@ -713,7 +713,20 @@ function var_0_0._playConAudio(arg_23_0)
 		var_23_0.callbackTarget = arg_23_0
 		arg_23_0._playingAudioId = arg_23_0._conAudioId
 
-		AudioEffectMgr.instance:playAudio(arg_23_0._conAudioId, var_23_0)
+		local var_23_1 = StoryModel.instance:isS01Story()
+		local var_23_2 = GameConfig:GetCurVoiceShortcut()
+
+		if var_23_2 == "jp" or var_23_2 == "kr" then
+			if var_23_1 then
+				var_23_0.audioLang = var_23_2
+
+				AudioEffectMgr.instance:playAudio(arg_23_0._conAudioId, var_23_0, var_23_0.audioLang)
+			else
+				AudioEffectMgr.instance:playAudio(arg_23_0._conAudioId, var_23_0)
+			end
+		else
+			AudioEffectMgr.instance:playAudio(arg_23_0._conAudioId, var_23_0)
+		end
 	else
 		arg_23_0._playingAudioId = 0
 	end

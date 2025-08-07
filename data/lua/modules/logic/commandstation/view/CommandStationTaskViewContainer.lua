@@ -27,7 +27,7 @@ function var_0_0.buildViews(arg_1_0)
 
 	local var_1_2 = {}
 
-	for iter_1_0 = 1, 10 do
+	for iter_1_0 = 1, 30 do
 		var_1_2[iter_1_0] = (iter_1_0 - 1) * 0.06
 	end
 

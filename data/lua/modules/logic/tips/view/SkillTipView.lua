@@ -4,6 +4,7 @@ local var_0_0 = class("SkillTipView", BaseView)
 
 function var_0_0.onInitView(arg_1_0)
 	arg_1_0._gonewskilltip = gohelper.findChild(arg_1_0.viewGO, "#go_newskilltip")
+	arg_1_0._goassassinbg = gohelper.findChild(arg_1_0.viewGO, "#go_newskilltip/skillbgassassin")
 	arg_1_0._goBuffContainer = gohelper.findChild(arg_1_0.viewGO, "#go_buffContainer")
 	arg_1_0._goBuffItem = gohelper.findChild(arg_1_0.viewGO, "#go_buffContainer/#go_buffitem")
 	arg_1_0._btnupgradeShow = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_newskilltip/#btn_upgradeShow")
@@ -145,14 +146,22 @@ function var_0_0.initInfo(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
 		gohelper.setActive(arg_9_0._gonewskilltip, true)
 	end
 
-	arg_9_0:_setViewAnchorX()
+	gohelper.setActive(arg_9_0._goassassinbg, arg_9_0.viewParam and arg_9_0.viewParam.showAssassinBg)
+	arg_9_0:_setViewAnchorPos()
 end
 
-function var_0_0._setViewAnchorX(arg_10_0)
-	local var_10_0 = arg_10_0.viewParam and arg_10_0.viewParam.anchorX
+function var_0_0._setViewAnchorPos(arg_10_0)
+	local var_10_0 = arg_10_0.viewGO.transform
+	local var_10_1 = arg_10_0.viewParam and arg_10_0.viewParam.anchorX
 
-	if var_10_0 then
-		recthelper.setAnchorX(arg_10_0.viewGO.transform, var_10_0)
+	if var_10_1 then
+		recthelper.setAnchorX(var_10_0, var_10_1)
+	end
+
+	local var_10_2 = arg_10_0.viewParam and arg_10_0.viewParam.anchorY
+
+	if var_10_2 then
+		recthelper.setAnchorY(var_10_0, var_10_2)
 	end
 end
 

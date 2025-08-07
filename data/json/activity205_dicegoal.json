@@ -1,0 +1,74 @@
+[
+  {
+    "id": 19302001,
+    "hardType": 1,
+    "winRewardId": 1,
+    "failRewardId": 7,
+    "bindingDice": "19302101#19302106",
+    "goalRange": "1#7",
+    "goalname": "风平浪静之域",
+    "goaldesc": "鱼群和海潮平稳得像人们夜晚的好梦，这里没有惊喜——但有生活耕耘堆叠起的奇迹。",
+    "iconRes": "oceanselect_pic01",
+    "weight": 20
+  },
+  {
+    "id": 19302002,
+    "hardType": 1,
+    "winRewardId": 2,
+    "failRewardId": 8,
+    "bindingDice": "19302102",
+    "goalRange": "6#12",
+    "goalname": "暗礁走廊",
+    "goaldesc": "“你该试试往外瞧一瞧，不远不近，刚好迈到门外，去见识见识不友好的水手以及暗礁。”",
+    "iconRes": "oceanselect_pic02",
+    "weight": 10
+  },
+  {
+    "id": 19302003,
+    "hardType": 1,
+    "winRewardId": 3,
+    "failRewardId": 9,
+    "bindingDice": "19302104",
+    "goalRange": "9#14",
+    "goalname": "覆舟漩涡",
+    "goaldesc": "瘸腿的老乔治和他濒死的船都折在了这里。若你行至此处，请脱帽致敬。",
+    "iconRes": "oceanselect_pic03",
+    "weight": 30
+  },
+  {
+    "id": 19302004,
+    "hardType": 1,
+    "winRewardId": 4,
+    "failRewardId": 10,
+    "bindingDice": "19302104#19302107",
+    "goalRange": "12#18",
+    "goalname": "沉船遗迹",
+    "goaldesc": "遗骸、财宝与满怀热切的罗盘都静默在这里。若你有勇气，就试着把他们带走，连同他们未实现的雄心壮志。",
+    "iconRes": "oceanselect_pic04",
+    "weight": 30
+  },
+  {
+    "id": 19302005,
+    "hardType": 2,
+    "winRewardId": 5,
+    "failRewardId": 11,
+    "bindingDice": "19302105#19302104",
+    "goalRange": "20#25",
+    "goalname": "无垠迷雾",
+    "goaldesc": "没有风在鼓动，没有罗盘将赋予方向，只有你知道该去哪儿，只有你能决定去哪儿。",
+    "iconRes": "oceanselect_pic05",
+    "weight": 20
+  },
+  {
+    "id": 19302006,
+    "hardType": 2,
+    "winRewardId": 6,
+    "failRewardId": 12,
+    "bindingDice": "19302101#19302105",
+    "goalRange": "-3#3",
+    "goalname": "？？？",
+    "goaldesc": "一片未曾有人到达的海域，不会有人记载你的涉足，除非你活着回来。",
+    "iconRes": "oceanselect_pic06",
+    "weight": 10
+  }
+]

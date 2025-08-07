@@ -18,14 +18,18 @@ function var_0_0.onReceiveGetCommandPostInfoReply(arg_2_0, arg_2_1, arg_2_2)
 	local var_2_2 = arg_2_2.catchTasks
 	local var_2_3 = arg_2_2.gainBonus
 	local var_2_4 = arg_2_2.paper
+	local var_2_5 = arg_2_2.catchNum
 
 	CommandStationModel.instance:updateEventList(var_2_0)
 	CommandStationTaskListModel.instance:initServerData(var_2_1, var_2_2)
 
 	CommandStationModel.instance.paper = var_2_4
+	CommandStationModel.instance.catchNum = var_2_5
 	CommandStationModel.instance.gainBonus = {
 		unpack(var_2_3)
 	}
+
+	CommandStationController.instance:dispatchEvent(CommandStationEvent.OnGetCommandPostInfo)
 end
 
 function var_0_0.sendFinishCommandPostEventRequest(arg_3_0, arg_3_1, arg_3_2, arg_3_3)

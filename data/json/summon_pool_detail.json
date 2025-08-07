@@ -178,5 +178,23 @@
     "historyShowType": 0,
     "order": 10,
     "openId": 11
+  },
+  {
+    "id": 305,
+    "desc": "",
+    "info": "830501",
+    "name": "联动征集【时代引导先知】",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
+  },
+  {
+    "id": 306,
+    "desc": "",
+    "info": "830502",
+    "name": "联动征集【鹰翔于酒色之海】",
+    "historyShowType": 0,
+    "order": 1,
+    "openId": 11
   }
 ]

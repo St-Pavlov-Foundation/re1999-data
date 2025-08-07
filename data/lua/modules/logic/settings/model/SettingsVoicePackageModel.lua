@@ -11,7 +11,7 @@ function var_0_0.onInit(arg_1_0)
 
 	arg_1_0._packInfoDic = {}
 
-	local var_1_1 = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+	local var_1_1 = arg_1_0:getSupportVoiceLangs()
 
 	table.insert(var_1_1, "res-HD")
 
@@ -36,39 +36,38 @@ function var_0_0.onInit(arg_1_0)
 	SettingsVoicePackageListModel.instance:setList(var_1_0)
 end
 
-function var_0_0.getPackInfo(arg_2_0, arg_2_1)
-	return arg_2_0._packInfoDic[arg_2_1]
+function var_0_0.getSupportVoiceLangs(arg_2_0)
+	local var_2_0 = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+
+	table.insert(var_2_0, "kr")
+	table.insert(var_2_0, "jp")
+
+	return var_2_0
 end
 
-function var_0_0.getPackLangName(arg_3_0, arg_3_1)
-	local var_3_0 = arg_3_0:getPackInfo(arg_3_1)
+function var_0_0.getPackInfo(arg_3_0, arg_3_1)
+	return arg_3_0._packInfoDic[arg_3_1]
+end
 
-	if var_3_0 then
-		return luaLang(var_3_0.nameLangId)
+function var_0_0.getPackLangName(arg_4_0, arg_4_1)
+	local var_4_0 = arg_4_0:getPackInfo(arg_4_1)
+
+	if var_4_0 then
+		return luaLang(var_4_0.nameLangId)
 	else
 		return ""
 	end
 end
 
-function var_0_0.setDownloadProgress(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
-	local var_4_0 = arg_4_0:getPackInfo(arg_4_1)
-
-	if var_4_0 then
-		var_4_0:setLocalSize(arg_4_2)
-	end
-end
-
-function var_0_0.onDownloadSucc(arg_5_0, arg_5_1)
+function var_0_0.setDownloadProgress(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
 	local var_5_0 = arg_5_0:getPackInfo(arg_5_1)
 
 	if var_5_0 then
-		local var_5_1 = SettingsVoicePackageController.instance:getLocalVersionInt(arg_5_1)
-
-		var_5_0:setLang(arg_5_1, var_5_1)
+		var_5_0:setLocalSize(arg_5_2)
 	end
 end
 
-function var_0_0.onDeleteVoicePack(arg_6_0, arg_6_1)
+function var_0_0.onDownloadSucc(arg_6_0, arg_6_1)
 	local var_6_0 = arg_6_0:getPackInfo(arg_6_1)
 
 	if var_6_0 then
@@ -78,16 +77,26 @@ function var_0_0.onDeleteVoicePack(arg_6_0, arg_6_1)
 	end
 end
 
-function var_0_0.getLocalVoiceTypeList(arg_7_0)
-	local var_7_0 = {}
+function var_0_0.onDeleteVoicePack(arg_7_0, arg_7_1)
+	local var_7_0 = arg_7_0:getPackInfo(arg_7_1)
 
-	for iter_7_0, iter_7_1 in pairs(arg_7_0._packInfoDic) do
-		if iter_7_1:hasLocalFile() then
-			table.insert(var_7_0, iter_7_0)
+	if var_7_0 then
+		local var_7_1 = SettingsVoicePackageController.instance:getLocalVersionInt(arg_7_1)
+
+		var_7_0:setLang(arg_7_1, var_7_1)
+	end
+end
+
+function var_0_0.getLocalVoiceTypeList(arg_8_0)
+	local var_8_0 = {}
+
+	for iter_8_0, iter_8_1 in pairs(arg_8_0._packInfoDic) do
+		if iter_8_1:hasLocalFile() then
+			table.insert(var_8_0, iter_8_0)
 		end
 	end
 
-	return var_7_0
+	return var_8_0
 end
 
 var_0_0.instance = var_0_0.New()

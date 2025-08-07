@@ -6681,7 +6681,7 @@
   },
   {
     "id": "commandstation_paper_canget",
-    "lang": "剩余可获得碎片：▩1%s"
+    "lang": "剩余可获得卷轴：▩1%s"
   },
   {
     "id": "commandstation_map_character",
@@ -6698,5 +6698,453 @@
   {
     "id": "roomformula_combine_and_up",
     "lang": "合成并提升"
+  },
+  {
+    "id": "assassin_quest_fight_pick_hero",
+    "lang": "编队"
+  },
+  {
+    "id": "assassin_quest_fight_begin",
+    "lang": "开始战斗"
+  },
+  {
+    "id": "assassin_stealth_game_pick_hero",
+    "lang": "编队"
+  },
+  {
+    "id": "assassin_stealth_game_begin",
+    "lang": "开始行动"
+  },
+  {
+    "id": "assassin_stealth_game_has_pick_hero",
+    "lang": "所需刺客数量 ▩1%s/▩2%s"
+  },
+  {
+    "id": "assassin_stealth_game_fight_has_pick_hero",
+    "lang": "可上阵刺客数量 ▩1%s/▩2%s"
+  },
+  {
+    "id": "assassin_stealth_game_player_turn",
+    "lang": "我方回合"
+  },
+  {
+    "id": "assassin_stealth_game_enemy_turn",
+    "lang": "敌方回合"
+  },
+  {
+    "id": "assassin_stealth_game_recommend",
+    "lang": "推荐"
+  },
+  {
+    "id": "assassin_stealth_game_mission_progress",
+    "lang": "(▩1%s/▩2%s)"
+  },
+  {
+    "id": "assassin_stealth_enemy_refresh_point",
+    "lang": "敌人刷新点"
+  },
+  {
+    "id": "assassin_stealth_use_skill_prop_select_target",
+    "lang": "选择目标"
+  },
+  {
+    "id": "assassin_stealth_use_skill_prop_no_target",
+    "lang": "无有效目标"
+  },
+  {
+    "id": "assassin_stealth_expose_tip",
+    "lang": "▩1%s进入暴露状态"
+  },
+  {
+    "id": "assassin_stealth_game_unlock_hero",
+    "lang": "完成关卡后解锁刺客：▩1%s"
+  },
+  {
+    "id": "assassin_stealth_game_recommend_hero",
+    "lang": "推荐刺客：▩1%s"
+  },
+  {
+    "id": "assassineyegameview_title",
+    "lang": "使用鹰之视觉，找到画作中隐藏的信息(▩1%s/▩2%s)"
+  },
+  {
+    "id": "assassineyegameview_title1",
+    "lang": "寻找作品中的隐藏信息(▩1%s/▩2%s)"
+  },
+  {
+    "id": "assassinbuildinglevelupsuccessview_tips",
+    "lang": "建筑已升级至Lv.▩1%s ，▩2%s"
+  },
+  {
+    "id": "odyssey_get_rateup",
+    "lang": "▩1%s掉落概率提升"
+  },
+  {
+    "id": "odyssey_conquest_wave",
+    "lang": "击败▩1%s波次敌人"
+  },
+  {
+    "id": "odyssey_myth_record",
+    "lang": "获得阿尔忒弥斯的认可·▩1%s"
+  },
+  {
+    "id": "odyssey_myth_record1",
+    "lang": "阿尔忒弥斯的认可·▩1%s"
+  },
+  {
+    "id": "odyssey_myth_record_empty",
+    "lang": "未获得阿尔忒弥斯的认可"
+  },
+  {
+    "id": "odyssey_tag_mercenary_normal",
+    "lang": "普通佣兵"
+  },
+  {
+    "id": "odyssey_tag_mercenary_rare",
+    "lang": "稀有佣兵"
+  },
+  {
+    "id": "odyssey_tag_mercenary_epic",
+    "lang": "史诗佣兵"
+  },
+  {
+    "id": "odyssey_tag_religion",
+    "lang": "神教成员"
+  },
+  {
+    "id": "odyssey_tag_conquest",
+    "lang": "征服战"
+  },
+  {
+    "id": "odyssey_tag_myth",
+    "lang": "神话生物"
+  },
+  {
+    "id": "odyssey_tag_fight",
+    "lang": "战斗"
+  },
+  {
+    "id": "odyssey_tag_fight_elite",
+    "lang": "战斗"
+  },
+  {
+    "id": "odyssey_equip_normal",
+    "lang": "普通装备"
+  },
+  {
+    "id": "odyssey_equip_rare",
+    "lang": "稀有装备"
+  },
+  {
+    "id": "odyssey_equip_epic",
+    "lang": "史诗装备"
+  },
+  {
+    "id": "odyssey_equip_legend",
+    "lang": "传奇装备"
+  },
+  {
+    "id": "odyssey_dungeon_mercenary_nexttime",
+    "lang": "▩1%s后将会有佣兵出现"
+  },
+  {
+    "id": "odyssey_dungeon_mercenary_totaltime",
+    "lang": "▩1%s后佣兵数量达到上限"
+  },
+  {
+    "id": "odyssey_dungeon_mapselectinfo_mythRecord3",
+    "lang": "获得阿尔忒弥斯的认可·熊之证"
+  },
+  {
+    "id": "odyssey_dungeon_mapselectinfo_mythRecord2",
+    "lang": "获得阿尔忒弥斯的认可·狼之证"
+  },
+  {
+    "id": "odyssey_dungeon_mapselectinfo_mythRecord1",
+    "lang": "获得阿尔忒弥斯的认可·鹿之证"
+  },
+  {
+    "id": "odyssey_dungeon_mapselectinfo_conquest",
+    "lang": "已击败▩1%s波次敌人"
+  },
+  {
+    "id": "odyssey_reward_getexp",
+    "lang": "经验值+▩1%s"
+  },
+  {
+    "id": "odyssey_reward_gettalent",
+    "lang": "能力点+▩1%s"
+  },
+  {
+    "id": "odyssey_talenttree_locktip_needlight",
+    "lang": "需要激活▩1%s点▩2%s能力"
+  },
+  {
+    "id": "odyssey_talenttree_locktip_prenode",
+    "lang": "需要激活前置能力"
+  },
+  {
+    "id": "odyssey_talenttree_type1",
+    "lang": "猎人"
+  },
+  {
+    "id": "odyssey_talenttree_type2",
+    "lang": "战士"
+  },
+  {
+    "id": "odyssey_talenttree_type3",
+    "lang": "刺客"
+  },
+  {
+    "id": "assassinlibrary_type_Hero_1",
+    "lang": "艾吉奥"
+  },
+  {
+    "id": "assassinlibrary_type_Hero_2",
+    "lang": "卡珊德拉"
+  },
+  {
+    "id": "assassinlibrary_type_Geology",
+    "lang": "地理"
+  },
+  {
+    "id": "assassinlibrary_type_Culture",
+    "lang": "人文"
+  },
+  {
+    "id": "assassinlibrary_type_Video",
+    "lang": "影像"
+  },
+  {
+    "id": "odyssey_religion_notexpose_clue",
+    "lang": "尚未发现的线索"
+  },
+  {
+    "id": "character_rankup_unlock_system",
+    "lang": "解锁<color=#e7933f>▩1%s</color>"
+  },
+  {
+    "id": "character_rankup_talentskilltree_add_point",
+    "lang": "能力点<color=#e7933f>+▩1%s</color>"
+  },
+  {
+    "id": "character_rankup_system_1",
+    "lang": "能力"
+  },
+  {
+    "id": "character_rankup_system_2",
+    "lang": "武器组合"
+  },
+  {
+    "id": "character_rankup_system_3",
+    "lang": "小型武器"
+  },
+  {
+    "id": "characterskilltalent_warning_1",
+    "lang": "同一时间仅能有一个生效的力场效果\n▩1%s力场已激活，▩2%s力场将不生效"
+  },
+  {
+    "id": "characterskilltalent_warning_2",
+    "lang": "需要先激活全部同一流派能力"
+  },
+  {
+    "id": "characterskilltalent_warning_3",
+    "lang": "能力点不足"
+  },
+  {
+    "id": "characterskilltalent_sub_1",
+    "lang": "猎人"
+  },
+  {
+    "id": "characterskilltalent_sub_2",
+    "lang": "战士"
+  },
+  {
+    "id": "characterskilltalent_sub_3",
+    "lang": "刺客"
+  },
+  {
+    "id": "odyssey_task_tab_1",
+    "lang": "旅程"
+  },
+  {
+    "id": "odyssey_task_tab_2",
+    "lang": "挑战"
+  },
+  {
+    "id": "odyssey_task_tab_3",
+    "lang": "收集"
+  },
+  {
+    "id": "odyssey_task_tab_4",
+    "lang": "神话生物"
+  },
+  {
+    "id": "bossrush_skillcomp_title",
+    "lang": "道具袋"
+  },
+  {
+    "id": "aijiao_expoint_desc",
+    "lang": "艾吉奥释放至终的仪式消耗的资源，上限100%"
+  },
+  {
+    "id": "act205_canPlayGameTimes",
+    "lang": "玩法可参与次数：▩1%s/▩2%s"
+  },
+  {
+    "id": "act205_ocean_nextStep",
+    "lang": "下一步"
+  },
+  {
+    "id": "act205_ocean_startGame",
+    "lang": "杨帆启航"
+  },
+  {
+    "id": "act205_ocean_selectDiceCount",
+    "lang": "可选船队数量(▩1%s/▩2%s)"
+  },
+  {
+    "id": "act205_remainGameTimes",
+    "lang": "剩余次数：▩1%s/▩2%s"
+  },
+  {
+    "id": "main_switch_classify_title_1",
+    "lang": "箱中布景"
+  },
+  {
+    "id": "main_switch_classify_title_2",
+    "lang": "框架艺术"
+  },
+  {
+    "id": "act205_ocean_firstStepName",
+    "lang": "选择航海目标"
+  },
+  {
+    "id": "act205_ocean_secondStepName",
+    "lang": "选择船队"
+  },
+  {
+    "id": "act205_ocean_firstStepNameEn",
+    "lang": "Select Destination"
+  },
+  {
+    "id": "act205_ocean_secondStepNameEn",
+    "lang": "Select Fleet"
+  },
+  {
+    "id": "act205_ocean_needPoints",
+    "lang": "所需点数：▩1%s~▩2%s"
+  },
+  {
+    "id": "act205_card_selected",
+    "lang": "(▩1%s/1)"
+  },
+  {
+    "id": "characterweaponview_unlock_rank",
+    "lang": "洞悉二解锁"
+  },
+  {
+    "id": "freemonthcard_canget_day",
+    "lang": "还可领<#FEF0D1><size=42>▩1%s</color></size>次"
+  },
+  {
+    "id": "freemonthcard_hasget_day",
+    "lang": "当前已领<#FEF0D1><size=42>▩1%s</color></size>天"
+  },
+  {
+    "id": "summonmaincharacter_progress_rewards",
+    "lang": "<SIZE=36><#FFEF99>▩1%s</color></SIZE>次后额外获取"
+  },
+  {
+    "id": "summonmaincharacter_progress_rewards_full",
+    "lang": "<SIZE=36><#FFEF99>▩1%s</color></SIZE>造像可领取"
+  },
+  {
+    "id": "summonmaincharacter_progress_rewards_hero",
+    "lang": "当前拥有▩1%s造像：<#e8e2d4>▩2%s</color>"
+  },
+  {
+    "id": "characterskilltalent_sure_light",
+    "lang": "激活"
+  },
+  {
+    "id": "characterskilltalent_cancel_light",
+    "lang": "取消"
+  },
+  {
+    "id": "assassinChase_change_direction_time_tip",
+    "lang": "下一个▩1%s(UTC+8)点前可以重选"
+  },
+  {
+    "id": "assassinChase_get_reward_time_tip",
+    "lang": "下一个▩1%s(UTC+8)点揭晓结果"
+  },
+  {
+    "id": "character_skill_passive_0",
+    "lang": "[先觉]"
+  },
+  {
+    "id": "store_linkgift_totalcount_txt",
+    "lang": "共计x▩1%s"
+  },
+  {
+    "id": "odyssey_mapselect_lock_time",
+    "lang": "▩1%s后解锁"
+  },
+  {
+    "id": "add_percent_value",
+    "lang": "+▩1%s%"
+  },
+  {
+    "id": "battle_id_9290103_task_text",
+    "lang": "零件组装失败次数：▩1%s/3\n累计失败3次后战争机器将无法完成组装"
+  },
+  {
+    "id": "v2a9_versionsummon_txt_tips1",
+    "lang": "活动期间，可获得十全调·【时代引导先知】"
+  },
+  {
+    "id": "v2a9_versionsummon_txt_tips2",
+    "lang": "活动期间，可获得十全调·【鹰翔于酒色之海】"
+  },
+  {
+    "id": "assassinbuildinglevelupview_unlocktips",
+    "lang": "解锁条件:▩1%s"
+  },
+  {
+    "id": "activity204taskview_dailyget",
+    "lang": "5(UTC+8)点刷新"
+  },
+  {
+    "id": "bossrush_unlockepisode",
+    "lang": "通关“▩1%s”▩2%s后开启"
+  },
+  {
+    "id": "summon_cobrand_banner_flag",
+    "lang": "联动"
+  },
+  {
+    "id": "activity204entranceview_bubble",
+    "lang": "▩1%s后可领取"
+  },
+  {
+    "id": "activity204entranceview_lock",
+    "lang": "▩1%s后开放"
+  },
+  {
+    "id": "activity204entranceview_open",
+    "lang": "剩余▩1%s"
+  },
+  {
+    "id": "store_linkfigt_getitnow_txt",
+    "lang": "<color=#AC5320>已解锁</color>"
+  },
+  {
+    "id": "odyssey_lvdown",
+    "lang": "降级"
+  },
+  {
+    "id": "odyssey_lvcancel",
+    "lang": "取消"
   }
 ]

@@ -2,7 +2,7 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	extraDiamond = 18,
+	taskid = 28,
 	name = 5,
 	preGoodsId = 21,
 	type = 3,
@@ -15,12 +15,14 @@ local var_0_1 = {
 	detailDesc = 25,
 	quickUseItemList = 26,
 	notShowInRecommend = 24,
+	extraDiamond = 18,
 	price = 14,
 	order = 4,
 	showLinkageTag = 27,
 	isOnline = 11,
 	item = 19,
 	offTag = 10,
+	showLogoTag = 29,
 	offlineTime = 13,
 	limit = 20,
 	firstDiamond = 17,
@@ -28,6 +30,7 @@ local var_0_1 = {
 	diamond = 16,
 	product = 9,
 	id = 1,
+	overviewJumpId = 30,
 	nameEn = 6
 }
 local var_0_2 = {

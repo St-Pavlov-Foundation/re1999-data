@@ -2708,7 +2708,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30510132,
-    "passiveSkill": "",
+    "passiveSkill": "30510250#30510251",
     "consume2": ""
   },
   {
@@ -2720,7 +2720,7 @@
     "skillGroup1": "30510114|30510115|30510116",
     "skillGroup2": "",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30510250#30510252",
     "consume2": ""
   },
   {
@@ -2732,7 +2732,7 @@
     "skillGroup1": "",
     "skillGroup2": "30510124|30510125|30510126",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30510250#30510253",
     "consume2": ""
   },
   {
@@ -2744,7 +2744,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30510133,
-    "passiveSkill": "",
+    "passiveSkill": "30510250#30510254",
     "consume2": ""
   },
   {
@@ -2756,7 +2756,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30510134,
-    "passiveSkill": "",
+    "passiveSkill": "30510250#30510255",
     "consume2": ""
   },
   {
@@ -4568,7 +4568,7 @@
     "skillGroup1": "30870114|30870115|30870116",
     "skillGroup2": "",
     "skillEx": 30870132,
-    "passiveSkill": "",
+    "passiveSkill": "30870141#30870142",
     "consume2": ""
   },
   {
@@ -4580,7 +4580,7 @@
     "skillGroup1": "30870117|30870118|30870119",
     "skillGroup2": "",
     "skillEx": 30870133,
-    "passiveSkill": "",
+    "passiveSkill": "30870141#30870143",
     "consume2": ""
   },
   {
@@ -4592,7 +4592,7 @@
     "skillGroup1": "30870201|30870202|30870203",
     "skillGroup2": "",
     "skillEx": 30870134,
-    "passiveSkill": "",
+    "passiveSkill": "30870141#30870144",
     "consume2": ""
   },
   {
@@ -4604,7 +4604,7 @@
     "skillGroup1": "30870204|30870205|30870206",
     "skillGroup2": "",
     "skillEx": 30870135,
-    "passiveSkill": "",
+    "passiveSkill": "30870141#30870145",
     "consume2": ""
   },
   {
@@ -4616,7 +4616,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30870136,
-    "passiveSkill": "",
+    "passiveSkill": "30870141#30870145",
     "consume2": ""
   },
   {
@@ -6596,6 +6596,186 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 31280133,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3122,
+    "skillLevel": 1,
+    "consume": "1#133122#1",
+    "requirement": "",
+    "desc": "▩1%s在咒语1/2/3阶时，造成的现实创伤提升至240/360/600%",
+    "skillGroup1": "31220114|31220115|31220116",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3122,
+    "skillLevel": 2,
+    "consume": "1#133122#1",
+    "requirement": "",
+    "desc": "▩0%s回合开始时，获得肾上腺素提升至2",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31220141#31220144",
+    "consume2": ""
+  },
+  {
+    "heroId": 3122,
+    "skillLevel": 3,
+    "consume": "1#133122#1",
+    "requirement": "",
+    "desc": "▩2%s在咒语1/2/3阶时，造成的现实创伤提升至150/225/375%",
+    "skillGroup1": "",
+    "skillGroup2": "31220124|31220125|31220126",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3122,
+    "skillLevel": 4,
+    "consume": "1#133122#1",
+    "requirement": "",
+    "desc": "▩3%s【伊述之血<id:0>】额外造成现实创伤提升至100%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31220132,
+    "passiveSkill": "31220140#31220145|31220143#31220146",
+    "consume2": ""
+  },
+  {
+    "heroId": 3122,
+    "skillLevel": 5,
+    "consume": "1#133122#1",
+    "requirement": "",
+    "desc": "▩3%s造成的现实创伤提升至500%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31220133,
+    "passiveSkill": "31220140#31220147|31220143#31220148",
+    "consume2": ""
+  },
+  {
+    "heroId": 3123,
+    "skillLevel": 1,
+    "consume": "1#133123#1",
+    "requirement": "",
+    "desc": "▩0%s【刺客大师】【刺杀】时与攻击目标每差距100点暴击技巧，最终造成伤害的额外提升效果变为10%，▩3%s中【箭矢同心】或【锋刃同心】的可释放次数提升至4",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 312301311,
+    "passiveSkill": "31230153#312301531|31230140#312301401",
+    "consume2": ""
+  },
+  {
+    "heroId": 3123,
+    "skillLevel": 2,
+    "consume": "1#133123#1",
+    "requirement": "",
+    "desc": "武器效果强化：【威尼斯弯刀强化<id:1>】【佣兵队长战锤强化<id:1>】【船长剑强化<id:1>】",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3123,
+    "skillLevel": 3,
+    "consume": "1#133123#1",
+    "requirement": "",
+    "desc": "▩0%s【刺客大师<id:1>】【刺杀】时与攻击目标每差距100点暴击技巧，最终造成伤害的额外提升效果变为11%，▩1%s在咒语1/2/3阶时，造成的现实创伤提升至460/675/1125%，▩3%s中【箭矢同心】【锋刃同心】造成的现实创伤提升至140%/140%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 312301312,
+    "passiveSkill": "31230153#312301532|31230140#312301402",
+    "consume2": ""
+  },
+  {
+    "heroId": 3123,
+    "skillLevel": 4,
+    "consume": "1#133123#1",
+    "requirement": "",
+    "desc": "▩0%s【刺客大师<id:2>】【刺杀】时与攻击目标每差距100点暴击技巧，最终造成伤害的额外提升效果变为12%，▩2%s【反制击杀】若自身受到攻击，则反击造成的现实创伤提升至600%，若只有其他友方受到攻击，则反击造成的现实创伤提升至600%，▩3%s中【死亡并非残酷】造成的现实创伤提升至900%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 312301313,
+    "passiveSkill": "31230153#312301533|31230140#312301403",
+    "consume2": ""
+  },
+  {
+    "heroId": 3123,
+    "skillLevel": 5,
+    "consume": "1#133123#1",
+    "requirement": "",
+    "desc": "武器和小型武器的组合效果强化：【威尼斯弯刀强化<id:2>】【佣兵队长战锤强化<id:2>】【船长剑强化<id:2>】",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3124,
+    "skillLevel": 1,
+    "consume": "1#133124#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "31243111|31243112|31243113",
+    "skillGroup2": "31243121|31243122|31243123",
+    "skillEx": 0,
+    "passiveSkill": "31240141#31243141",
+    "consume2": ""
+  },
+  {
+    "heroId": 3124,
+    "skillLevel": 2,
+    "consume": "1#133124#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3124,
+    "skillLevel": 3,
+    "consume": "1#133124#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31242103,
+    "passiveSkill": "31240140#31242140",
+    "consume2": ""
+  },
+  {
+    "heroId": 3124,
+    "skillLevel": 4,
+    "consume": "1#133124#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3124,
+    "skillLevel": 5,
+    "consume": "1#133124#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
     "passiveSkill": "",
     "consume2": ""
   }

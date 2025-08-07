@@ -21,6 +21,8 @@ function var_0_0.addEvents(arg_2_0)
 	if arg_2_0._btnExchange then
 		arg_2_0:addClickCb(arg_2_0._btnExchange, arg_2_0._onClickExchange, arg_2_0)
 	end
+
+	arg_2_0:addEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, arg_2_0._onRefreshActivityState, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
@@ -147,6 +149,18 @@ end
 function var_0_0.onDestroyView(arg_14_0)
 	for iter_14_0, iter_14_1 in ipairs(arg_14_0.storeItemList) do
 		iter_14_1:onDestroy()
+	end
+end
+
+function var_0_0._onRefreshActivityState(arg_15_0, arg_15_1)
+	if not arg_15_1 or arg_15_1 ~= arg_15_0.actId then
+		return
+	end
+
+	if not ActivityHelper.isOpen(arg_15_1) then
+		arg_15_0:closeThis()
+
+		return
 	end
 end
 

@@ -18,10 +18,19 @@ var_0_0.preloadLists.SummonCharacterProbUpVer305 = {
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
 }
+var_0_0.preloadLists.SummonCharacterProbUpVer306 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer304 = {
 	"singlebg/summon/heroversion_1_4/role37/v1a4_role37_bottombg.png",
 	"singlebg/summon/heroversion_1_4/role37/v1a4_role37_summon_37.png",
 	"singlebg/summon/heroversion_1_7/37/full/v1a7_37_fullbg.png"
+}
+var_0_0.preloadLists.SummonStrongOneCustomPick29 = {
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_2_9/v2a9_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
 }
 var_0_0.preloadLists.SummonCharacterProbUpVer303 = {
 	"singlebg/summon/heroversion_2_6/xugouji/v2a6_xugouji_fontbg2.png",
@@ -500,6 +509,18 @@ var_0_0.preloadLists.SummonCharacterProbUpVer256 = {
 	"singlebg/summon/heroversion_2_1/makusi/v2a1_makusi_role3.png",
 	"singlebg/summon/heroversion_2_1/makusi/v2a1_makusi_middlebg.png",
 	"singlebg/summon/heroversion_2_1/makusi/v2a1_makusi_frontbg.png"
+}
+var_0_0.preloadLists.SummonCharacterCoBranding291 = {
+	"singlebg/summon/heroversion_2_9/v2a9_kashandela/v2a9_summon_kashandela_fullbg.png",
+	"singlebg/summon/heroversion_2_9/v2a9_kashandela/v2a9_summon_kashandela_role.png",
+	"singlebg_lang/txt_summon_version_2_9/v2a9_kashandela/v2a9_summon_kashandela_title.png",
+	"singlebg_lang/txt_summon_version_2_9/v2a9_kashandela/v2a9_summon_kashandela_logo.png"
+}
+var_0_0.preloadLists.SummonCharacterCoBranding292 = {
+	"singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_fullbg.png",
+	"singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_rolebg.png",
+	"singlebg_lang/txt_summon_version_2_9/v2a9_azio/v2a9_summon_azio_title.png",
+	"singlebg_lang/txt_summon_version_2_9/v2a9_azio/v2a9_summon_azio_logo.png"
 }
 var_0_0.preloadLists.SummonCharacterProbUpVerBeta1 = {
 	ResUrl.getSummonCoverBg("hero/full/bg2"),

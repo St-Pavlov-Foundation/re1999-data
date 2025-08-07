@@ -11,7 +11,7 @@ var_0_0.ChessState = {
 }
 var_0_0.StepWorkType = {
 	StartShowView = 5,
-	Arrange_XY = 11,
+	LengZhou6PlayAudio = 23,
 	RefreshEliminate = 10,
 	PlayAudio = 9,
 	ChangeState = 13,
@@ -24,7 +24,7 @@ var_0_0.StepWorkType = {
 	Debug = 4,
 	EndShowView = 6,
 	EliminateCheckAndRefresh = 22,
-	LengZhouPlayAudio = 23,
+	Arrange_XY = 11,
 	HandleData = 3,
 	Die = 1,
 	DieEffect = 12,

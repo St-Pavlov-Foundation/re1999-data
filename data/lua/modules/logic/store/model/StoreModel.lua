@@ -10,6 +10,7 @@ function var_0_0.onInit(arg_1_0)
 	arg_1_0._versionChargePackageDict = {}
 	arg_1_0._onceTimeChargePackageDict = {}
 	arg_1_0._recommendPackageList = {}
+	arg_1_0._taskGoodsIdList = {}
 	arg_1_0._packageType2GoodsDict = {
 		[StoreEnum.StoreId.VersionPackage] = arg_1_0._versionChargePackageDict,
 		[StoreEnum.StoreId.OneTimePackage] = arg_1_0._onceTimeChargePackageDict,
@@ -64,11 +65,13 @@ function var_0_0.initChargeInfo(arg_5_0, arg_5_1)
 	arg_5_0._onceTimeChargePackageDict = {}
 	arg_5_0._skinChargeDict = {}
 	arg_5_0._recommendPackageList = {}
+	arg_5_0._taskGoodsIdList = {}
 	arg_5_0._packageType2GoodsDict = {
 		[StoreEnum.StoreId.VersionPackage] = arg_5_0._versionChargePackageDict,
 		[StoreEnum.StoreId.OneTimePackage] = arg_5_0._onceTimeChargePackageDict,
 		[StoreEnum.StoreId.NormalPackage] = arg_5_0._chargePackageStoreDic,
-		[StoreEnum.StoreId.RecommendPackage] = arg_5_0._recommendPackageList
+		[StoreEnum.StoreId.RecommendPackage] = arg_5_0._recommendPackageList,
+		[StoreEnum.StoreId.MediciPackage] = {}
 	}
 
 	local var_5_0 = {}
@@ -98,6 +101,12 @@ function var_0_0.initChargeInfo(arg_5_0, arg_5_1)
 					arg_5_0._versionChargePackageDict[iter_5_1.id] = var_5_3
 				elseif var_5_1.belongStoreId == StoreEnum.StoreId.OneTimePackage then
 					arg_5_0._onceTimeChargePackageDict[iter_5_1.id] = var_5_3
+				elseif arg_5_0._packageType2GoodsDict[var_5_1.belongStoreId] then
+					arg_5_0._packageType2GoodsDict[var_5_1.belongStoreId][iter_5_1.id] = var_5_3
+				end
+
+				if var_5_1.taskid and var_5_1.taskid ~= 0 then
+					table.insert(arg_5_0._taskGoodsIdList, iter_5_1.id)
 				end
 			end
 		end
@@ -334,6 +343,10 @@ function var_0_0.getPackageGoodList(arg_26_0, arg_26_1)
 	local var_26_0 = {}
 	local var_26_1 = arg_26_0._packageType2GoodsDict[arg_26_1]
 
+	if not var_26_1 then
+		return var_26_0
+	end
+
 	for iter_26_0, iter_26_1 in pairs(var_26_1) do
 		var_26_0[iter_26_1.id] = iter_26_1
 	end
@@ -385,6 +398,10 @@ function var_0_0.checkValid(arg_28_0, arg_28_1, arg_28_2)
 
 		if arg_28_2 == false and arg_28_1.config.refreshTime == StoreEnum.RefreshTime.Forever then
 			var_28_0 = false
+		end
+
+		if not var_28_0 and StoreCharageConditionalHelper.isCharageTaskNotFinish(arg_28_1.goodsId) then
+			var_28_0 = true
 		end
 	end
 
@@ -582,17 +599,41 @@ function var_0_0.getAllRedDotInfo(arg_36_0)
 		end
 	end
 
+	if arg_36_0._taskGoodsIdList then
+		arg_36_0._taskGoodsId2DotInfoDict = arg_36_0._taskGoodsId2DotInfoDict or {}
+
+		for iter_36_8, iter_36_9 in ipairs(arg_36_0._taskGoodsIdList) do
+			local var_36_5 = arg_36_0._taskGoodsId2DotInfoDict[iter_36_9]
+
+			if not var_36_5 then
+				var_36_5 = RedDotInfoMo.New()
+				arg_36_0._taskGoodsId2DotInfoDict[iter_36_9] = var_36_5
+
+				var_36_5:init({
+					value = 0,
+					time = 0,
+					ext = "",
+					id = iter_36_9
+				})
+			end
+
+			var_36_5.value = 0
+
+			if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(iter_36_9) then
+				var_36_5.value = 1
+			end
+
+			table.insert(var_36_4, var_36_5)
+		end
+	end
+
 	return var_36_4
 end
 
-function var_0_0.isGoodsItemRedDotShow(arg_37_0, arg_37_1)
-	local var_37_0 = RedDotModel.instance:getRedDotInfo(RedDotEnum.DotNode.StoreTab)
-
-	if var_37_0 then
-		local var_37_1 = var_37_0.infos
-
-		for iter_37_0, iter_37_1 in pairs(var_37_1) do
-			if iter_37_1.uid == arg_37_1 and iter_37_1.value > 0 then
+function var_0_0.isHasTaskGoodsReward(arg_37_0)
+	if arg_37_0._taskGoodsIdList then
+		for iter_37_0, iter_37_1 in ipairs(arg_37_0._taskGoodsIdList) do
+			if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(iter_37_1) then
 				return true
 			end
 		end
@@ -601,17 +642,37 @@ function var_0_0.isGoodsItemRedDotShow(arg_37_0, arg_37_1)
 	return false
 end
 
-function var_0_0.isStoreTabLock(arg_38_0, arg_38_1)
-	local var_38_0 = StoreConfig.instance:getStoreConfig(arg_38_1)
+function var_0_0.isGoodsItemRedDotShow(arg_38_0, arg_38_1)
+	local var_38_0 = RedDotModel.instance:getRedDotInfo(RedDotEnum.DotNode.StoreTab)
 
-	if var_38_0 and var_38_0.needClearStore > 0 then
-		local var_38_1 = arg_38_0._storeMODict[var_38_0.needClearStore].goodsInfos
+	if var_38_0 then
+		local var_38_1 = var_38_0.infos
 
 		for iter_38_0, iter_38_1 in pairs(var_38_1) do
-			if iter_38_1.goodsId then
-				local var_38_2 = StoreConfig.instance:getGoodsConfig(iter_38_1.goodsId)
+			if iter_38_1.uid == arg_38_1 and iter_38_1.value > 0 then
+				return true
+			end
+		end
+	end
 
-				if var_38_2 and iter_38_1.buyCount < var_38_2.maxBuyCount then
+	if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(arg_38_1) then
+		return true
+	end
+
+	return false
+end
+
+function var_0_0.isStoreTabLock(arg_39_0, arg_39_1)
+	local var_39_0 = StoreConfig.instance:getStoreConfig(arg_39_1)
+
+	if var_39_0 and var_39_0.needClearStore > 0 then
+		local var_39_1 = arg_39_0._storeMODict[var_39_0.needClearStore].goodsInfos
+
+		for iter_39_0, iter_39_1 in pairs(var_39_1) do
+			if iter_39_1.goodsId then
+				local var_39_2 = StoreConfig.instance:getGoodsConfig(iter_39_1.goodsId)
+
+				if var_39_2 and iter_39_1.buyCount < var_39_2.maxBuyCount then
 					return true
 				end
 			end
@@ -626,9 +687,9 @@ var_0_0.ignoreStoreTab = {
 	StoreEnum.TowerStore
 }
 
-function var_0_0.checkContainIgnoreStoreTab(arg_39_0, arg_39_1)
-	for iter_39_0, iter_39_1 in pairs(arg_39_0.ignoreStoreTab) do
-		if LuaUtil.tableContains(iter_39_1, arg_39_1) then
+function var_0_0.checkContainIgnoreStoreTab(arg_40_0, arg_40_1)
+	for iter_40_0, iter_40_1 in pairs(arg_40_0.ignoreStoreTab) do
+		if LuaUtil.tableContains(iter_40_1, arg_40_1) then
 			return true
 		end
 	end
@@ -636,47 +697,31 @@ function var_0_0.checkContainIgnoreStoreTab(arg_39_0, arg_39_1)
 	return false
 end
 
-function var_0_0.getFirstTabs(arg_40_0, arg_40_1, arg_40_2)
-	local var_40_0 = {}
-
-	for iter_40_0, iter_40_1 in ipairs(lua_store_entrance.configList) do
-		if not StoreConfig.instance:hasTab(iter_40_1.belongFirstTab) and not StoreConfig.instance:hasTab(iter_40_1.belongSecondTab) then
-			local var_40_1 = arg_40_0:checkContainIgnoreStoreTab(iter_40_1.id)
-
-			if iter_40_1.id == StoreEnum.StoreId.DecorateStore and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) == 0 and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.OldDecorateStore) == 0 then
-				var_40_1 = true
-			end
-
-			if not var_40_1 and (not arg_40_1 or arg_40_0:isTabOpen(iter_40_1.id)) then
-				table.insert(var_40_0, iter_40_1)
-			end
-		end
-	end
-
-	if arg_40_2 and #var_40_0 > 1 then
-		table.sort(var_40_0, arg_40_0._tabSortFunction)
-	end
-
-	return var_40_0
-end
-
-function var_0_0.getSecondTabs(arg_41_0, arg_41_1, arg_41_2, arg_41_3)
+function var_0_0.getFirstTabs(arg_41_0, arg_41_1, arg_41_2)
 	local var_41_0 = {}
 
 	for iter_41_0, iter_41_1 in ipairs(lua_store_entrance.configList) do
-		if StoreConfig.instance:hasTab(iter_41_1.belongFirstTab) and iter_41_1.belongFirstTab == arg_41_1 and (not arg_41_2 or arg_41_0:isTabOpen(iter_41_1.id)) then
-			table.insert(var_41_0, iter_41_1)
+		if not StoreConfig.instance:hasTab(iter_41_1.belongFirstTab) and not StoreConfig.instance:hasTab(iter_41_1.belongSecondTab) then
+			local var_41_1 = arg_41_0:checkContainIgnoreStoreTab(iter_41_1.id)
+
+			if iter_41_1.id == StoreEnum.StoreId.DecorateStore and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.NewDecorateStore) == 0 and #DecorateStoreModel.instance:getDecorateGoodList(StoreEnum.StoreId.OldDecorateStore) == 0 then
+				var_41_1 = true
+			end
+
+			if not var_41_1 and (not arg_41_1 or arg_41_0:isTabOpen(iter_41_1.id)) then
+				table.insert(var_41_0, iter_41_1)
+			end
 		end
 	end
 
-	if arg_41_3 and #var_41_0 > 1 then
+	if arg_41_2 and #var_41_0 > 1 then
 		table.sort(var_41_0, arg_41_0._tabSortFunction)
 	end
 
 	return var_41_0
 end
 
-function var_0_0.getRecommendSecondTabs(arg_42_0, arg_42_1, arg_42_2)
+function var_0_0.getSecondTabs(arg_42_0, arg_42_1, arg_42_2, arg_42_3)
 	local var_42_0 = {}
 
 	for iter_42_0, iter_42_1 in ipairs(lua_store_entrance.configList) do
@@ -685,84 +730,100 @@ function var_0_0.getRecommendSecondTabs(arg_42_0, arg_42_1, arg_42_2)
 		end
 	end
 
-	for iter_42_2, iter_42_3 in ipairs(lua_store_recommend.configList) do
-		if iter_42_3.type == 0 then
-			table.insert(var_42_0, iter_42_3)
-		end
+	if arg_42_3 and #var_42_0 > 1 then
+		table.sort(var_42_0, arg_42_0._tabSortFunction)
 	end
 
 	return var_42_0
 end
 
-function var_0_0.getThirdTabs(arg_43_0, arg_43_1, arg_43_2, arg_43_3)
+function var_0_0.getRecommendSecondTabs(arg_43_0, arg_43_1, arg_43_2)
 	local var_43_0 = {}
 
 	for iter_43_0, iter_43_1 in ipairs(lua_store_entrance.configList) do
-		if StoreConfig.instance:hasTab(iter_43_1.belongSecondTab) and iter_43_1.belongSecondTab == arg_43_1 and (not arg_43_2 or arg_43_0:isTabOpen(iter_43_1.id)) then
+		if StoreConfig.instance:hasTab(iter_43_1.belongFirstTab) and iter_43_1.belongFirstTab == arg_43_1 and (not arg_43_2 or arg_43_0:isTabOpen(iter_43_1.id)) then
 			table.insert(var_43_0, iter_43_1)
 		end
 	end
 
-	if arg_43_3 and #var_43_0 > 1 then
-		table.sort(var_43_0, arg_43_0._tabSortFunction)
+	for iter_43_2, iter_43_3 in ipairs(lua_store_recommend.configList) do
+		if iter_43_3.type == 0 then
+			table.insert(var_43_0, iter_43_3)
+		end
 	end
 
 	return var_43_0
 end
 
-function var_0_0.isTabOpen(arg_44_0, arg_44_1)
-	local var_44_0 = StoreConfig.instance:getTabConfig(arg_44_1)
+function var_0_0.getThirdTabs(arg_44_0, arg_44_1, arg_44_2, arg_44_3)
+	local var_44_0 = {}
 
-	if var_44_0 then
-		if var_44_0.openId and var_44_0.openId ~= 0 and not OpenModel.instance:isFunctionUnlock(var_44_0.openId) then
+	for iter_44_0, iter_44_1 in ipairs(lua_store_entrance.configList) do
+		if StoreConfig.instance:hasTab(iter_44_1.belongSecondTab) and iter_44_1.belongSecondTab == arg_44_1 and (not arg_44_2 or arg_44_0:isTabOpen(iter_44_1.id)) then
+			table.insert(var_44_0, iter_44_1)
+		end
+	end
+
+	if arg_44_3 and #var_44_0 > 1 then
+		table.sort(var_44_0, arg_44_0._tabSortFunction)
+	end
+
+	return var_44_0
+end
+
+function var_0_0.isTabOpen(arg_45_0, arg_45_1)
+	local var_45_0 = StoreConfig.instance:getTabConfig(arg_45_1)
+
+	if var_45_0 then
+		if var_45_0.openId and var_45_0.openId ~= 0 and not OpenModel.instance:isFunctionUnlock(var_45_0.openId) then
 			return false
 		end
 
-		if var_44_0.openHideId and var_44_0.openHideId ~= 0 and OpenModel.instance:isFunctionUnlock(var_44_0.openHideId) then
+		if var_45_0.openHideId and var_45_0.openHideId ~= 0 and OpenModel.instance:isFunctionUnlock(var_45_0.openHideId) then
 			return false
 		end
 
-		local var_44_1
-		local var_44_2
+		local var_45_1
+		local var_45_2
 
-		if not string.nilorempty(var_44_0.openTime) then
-			var_44_1 = TimeUtil.stringToTimestamp(var_44_0.openTime)
+		if not string.nilorempty(var_45_0.openTime) then
+			var_45_1 = TimeUtil.stringToTimestamp(var_45_0.openTime)
 		end
 
-		if not string.nilorempty(var_44_0.endTime) then
-			var_44_2 = TimeUtil.stringToTimestamp(var_44_0.endTime)
+		if not string.nilorempty(var_45_0.endTime) then
+			var_45_2 = TimeUtil.stringToTimestamp(var_45_0.endTime)
 		end
 
-		if string.nilorempty(var_44_0.openTime) and string.nilorempty(var_44_0.endTime) then
+		if string.nilorempty(var_45_0.openTime) and string.nilorempty(var_45_0.endTime) then
 			-- block empty
-		elseif string.nilorempty(var_44_0.endTime) then
-			if var_44_1 >= ServerTime.now() then
+		elseif string.nilorempty(var_45_0.endTime) then
+			if var_45_1 >= ServerTime.now() then
 				return false
 			end
-		elseif string.nilorempty(var_44_0.openTime) then
-			if var_44_2 <= ServerTime.now() then
+		elseif string.nilorempty(var_45_0.openTime) then
+			if var_45_2 <= ServerTime.now() then
 				return false
 			end
 		else
-			local var_44_3 = var_44_1
-			local var_44_4 = var_44_2
+			local var_45_3 = var_45_1
+			local var_45_4 = var_45_2
 
-			if StoreConfig.instance:getOpenTimeDiff(var_44_3, var_44_4, ServerTime.now()) <= 0 then
+			if StoreConfig.instance:getOpenTimeDiff(var_45_3, var_45_4, ServerTime.now()) <= 0 then
 				return false
 			end
 		end
 
-		if var_44_0.storeId == StoreEnum.StoreId.Package and GameFacade.isKOLTest() then
+		if var_45_0.storeId == StoreEnum.StoreId.Package and GameFacade.isKOLTest() then
 			return false
 		end
 
-		if StoreConfig.instance:getTabHierarchy(var_44_0.id) == 2 then
-			if var_44_0.storeId and var_44_0.storeId ~= 0 then
+		if StoreConfig.instance:getTabHierarchy(var_45_0.id) == 2 then
+			if var_45_0.storeId and var_45_0.storeId ~= 0 then
 				return true
 			else
-				local var_44_5 = arg_44_0:getThirdTabs(var_44_0.id, true, false)
+				local var_45_5 = arg_45_0:getThirdTabs(var_45_0.id, true, false)
 
-				if var_44_5 and #var_44_5 > 0 then
+				if var_45_5 and #var_45_5 > 0 then
 					return true
 				end
 			end
@@ -774,153 +835,165 @@ function var_0_0.isTabOpen(arg_44_0, arg_44_1)
 	return false
 end
 
-function var_0_0._tabSortFunction(arg_45_0, arg_45_1)
-	return arg_45_0.order > arg_45_1.order
+function var_0_0._tabSortFunction(arg_46_0, arg_46_1)
+	return arg_46_0.order > arg_46_1.order
 end
 
-function var_0_0._packageSortFunction(arg_46_0, arg_46_1)
-	local var_46_0 = arg_46_0.config
-	local var_46_1 = arg_46_1.config
+function var_0_0._packageSortFunction(arg_47_0, arg_47_1)
+	local var_47_0 = arg_47_0.config
+	local var_47_1 = arg_47_1.config
 
-	return var_46_0.order < var_46_1.order
+	return var_47_0.order < var_47_1.order
 end
 
-function var_0_0.jumpTabIdToSelectTabId(arg_47_0, arg_47_1)
-	local var_47_0 = 0
-	local var_47_1 = 0
-	local var_47_2 = 0
-	local var_47_3 = StoreConfig.instance:getTabHierarchy(arg_47_1)
-
-	if var_47_3 == 3 then
-		var_47_2 = arg_47_1
-
-		local var_47_4 = StoreConfig.instance:getTabConfig(var_47_2)
-
-		var_47_1 = var_47_4 and var_47_4.belongSecondTab or 0
-
-		local var_47_5 = StoreConfig.instance:getTabConfig(var_47_1)
-
-		var_47_0 = var_47_5 and var_47_5.belongFirstTab or 0
-	elseif var_47_3 == 2 then
-		var_47_1 = arg_47_1
-
-		local var_47_6 = arg_47_0:getThirdTabs(var_47_1, true, true)
-
-		if var_47_6 and #var_47_6 > 0 then
-			var_47_2 = var_47_6[1].id
-		end
-
-		local var_47_7 = StoreConfig.instance:getTabConfig(var_47_1)
-
-		var_47_0 = var_47_7 and var_47_7.belongFirstTab or 0
-	else
-		var_47_0 = arg_47_1
-
-		local var_47_8 = arg_47_0:getSecondTabs(var_47_0, true, true)
-
-		if var_47_0 == StoreEnum.StoreId.Package then
-			for iter_47_0 = 1, #var_47_8 do
-				if #arg_47_0:getPackageGoodValidList(var_47_8[iter_47_0].id) > 0 then
-					var_47_1 = var_47_8[iter_47_0].id
-
-					break
-				end
-			end
-
-			var_47_2 = 0
-		elseif var_47_0 == StoreEnum.StoreId.DecorateStore then
-			for iter_47_1 = 1, #var_47_8 do
-				if #DecorateStoreModel.instance:getDecorateGoodList(var_47_8[iter_47_1].id) > 0 then
-					var_47_1 = var_47_8[iter_47_1].id
-
-					break
-				end
-			end
-
-			var_47_2 = 0
-		elseif var_47_8 and #var_47_8 > 0 then
-			var_47_1 = var_47_8[1].id
-
-			local var_47_9 = arg_47_0:getThirdTabs(var_47_1, true, true)
-
-			if var_47_9 and #var_47_9 > 0 then
-				var_47_2 = var_47_9[1].id
-			end
-		else
-			var_47_1 = var_47_0
-		end
-	end
-
-	return var_47_0, var_47_1, var_47_2
-end
-
-function var_0_0.jumpTabIdToStoreId(arg_48_0, arg_48_1)
+function var_0_0.jumpTabIdToSelectTabId(arg_48_0, arg_48_1)
 	local var_48_0 = 0
-	local var_48_1, var_48_2, var_48_3 = arg_48_0:jumpTabIdToSelectTabId(arg_48_1)
-	local var_48_4 = StoreConfig.instance:getTabConfig(var_48_3)
-	local var_48_5 = StoreConfig.instance:getTabConfig(var_48_2)
-	local var_48_6 = StoreConfig.instance:getTabConfig(var_48_1)
-	local var_48_7 = var_48_4 and var_48_4.storeId or 0
+	local var_48_1 = 0
+	local var_48_2 = 0
+	local var_48_3 = StoreConfig.instance:getTabHierarchy(arg_48_1)
 
-	if var_48_7 == 0 then
-		var_48_7 = var_48_5 and var_48_5.storeId or 0
+	if var_48_3 == 3 then
+		var_48_2 = arg_48_1
+
+		local var_48_4 = StoreConfig.instance:getTabConfig(var_48_2)
+
+		var_48_1 = var_48_4 and var_48_4.belongSecondTab or 0
+
+		local var_48_5 = StoreConfig.instance:getTabConfig(var_48_1)
+
+		var_48_0 = var_48_5 and var_48_5.belongFirstTab or 0
+	elseif var_48_3 == 2 then
+		var_48_1 = arg_48_1
+
+		local var_48_6 = arg_48_0:getThirdTabs(var_48_1, true, true)
+
+		if var_48_6 and #var_48_6 > 0 then
+			var_48_2 = var_48_6[1].id
+		end
+
+		local var_48_7 = StoreConfig.instance:getTabConfig(var_48_1)
+
+		var_48_0 = var_48_7 and var_48_7.belongFirstTab or 0
+	else
+		var_48_0 = arg_48_1
+
+		local var_48_8 = arg_48_0:getSecondTabs(var_48_0, true, true)
+
+		if var_48_0 == StoreEnum.StoreId.Package then
+			for iter_48_0 = 1, #var_48_8 do
+				if #arg_48_0:getPackageGoodValidList(var_48_8[iter_48_0].id) > 0 then
+					var_48_1 = var_48_8[iter_48_0].id
+
+					break
+				end
+			end
+
+			var_48_2 = 0
+		elseif var_48_0 == StoreEnum.StoreId.DecorateStore then
+			for iter_48_1 = 1, #var_48_8 do
+				if #DecorateStoreModel.instance:getDecorateGoodList(var_48_8[iter_48_1].id) > 0 then
+					var_48_1 = var_48_8[iter_48_1].id
+
+					break
+				end
+			end
+
+			var_48_2 = 0
+		elseif var_48_8 and #var_48_8 > 0 then
+			var_48_1 = var_48_8[1].id
+
+			local var_48_9 = arg_48_0:getThirdTabs(var_48_1, true, true)
+
+			if var_48_9 and #var_48_9 > 0 then
+				var_48_2 = var_48_9[1].id
+			end
+		else
+			var_48_1 = var_48_0
+		end
 	end
 
-	if var_48_7 == 0 then
-		var_48_7 = var_48_6 and var_48_6.storeId or 0
-	end
-
-	return var_48_7
+	return var_48_0, var_48_1, var_48_2
 end
 
-function var_0_0.updateMonthCardInfo(arg_49_0, arg_49_1)
-	if arg_49_1 then
-		if arg_49_0.monthCardInfo then
-			arg_49_0.monthCardInfo:update(arg_49_1)
-		else
-			arg_49_0.monthCardInfo = StoreMonthCardInfoMO.New()
+function var_0_0.jumpTabIdToStoreId(arg_49_0, arg_49_1)
+	local var_49_0 = 0
+	local var_49_1, var_49_2, var_49_3 = arg_49_0:jumpTabIdToSelectTabId(arg_49_1)
+	local var_49_4 = StoreConfig.instance:getTabConfig(var_49_3)
+	local var_49_5 = StoreConfig.instance:getTabConfig(var_49_2)
+	local var_49_6 = StoreConfig.instance:getTabConfig(var_49_1)
+	local var_49_7 = var_49_4 and var_49_4.storeId or 0
 
-			arg_49_0.monthCardInfo:init(arg_49_1)
+	if var_49_7 == 0 then
+		var_49_7 = var_49_5 and var_49_5.storeId or 0
+	end
+
+	if var_49_7 == 0 then
+		var_49_7 = var_49_6 and var_49_6.storeId or 0
+	end
+
+	return var_49_7
+end
+
+function var_0_0.updateMonthCardInfo(arg_50_0, arg_50_1)
+	if arg_50_1 then
+		if arg_50_0.monthCardInfo then
+			arg_50_0.monthCardInfo:update(arg_50_1)
+		else
+			arg_50_0.monthCardInfo = StoreMonthCardInfoMO.New()
+
+			arg_50_0.monthCardInfo:init(arg_50_1)
 		end
 	end
 end
 
-function var_0_0.getMonthCardInfo(arg_50_0)
-	return arg_50_0.monthCardInfo
+function var_0_0.getMonthCardInfo(arg_51_0)
+	return arg_51_0.monthCardInfo
 end
 
-function var_0_0.hasPurchaseMonthCard(arg_51_0)
-	return arg_51_0.monthCardInfo ~= nil
+function var_0_0.hasPurchaseMonthCard(arg_52_0)
+	return arg_52_0.monthCardInfo ~= nil
 end
 
-function var_0_0.IsMonthCardDaysEnough(arg_52_0)
-	local var_52_0 = false
+function var_0_0.IsMonthCardDaysEnough(arg_53_0)
+	local var_53_0 = false
 
-	if arg_52_0:hasPurchaseMonthCard() then
-		var_52_0 = arg_52_0:getMonthCardInfo():getRemainDay() > CommonConfig.instance:getConstNum(ConstEnum.MonthCardPurchaseRemindDay)
+	if arg_53_0:hasPurchaseMonthCard() then
+		var_53_0 = arg_53_0:getMonthCardInfo():getRemainDay() > CommonConfig.instance:getConstNum(ConstEnum.MonthCardPurchaseRemindDay)
 	end
 
-	return var_52_0
+	return var_53_0
 end
 
-function var_0_0.getCostStr(arg_53_0, arg_53_1)
-	return "¥", arg_53_1
+function var_0_0.getCostStr(arg_54_0, arg_54_1)
+	return "¥", arg_54_1
 end
 
-function var_0_0.getCostSymbolAndPrice(arg_54_0, arg_54_1)
-	local var_54_0 = StoreConfig.instance:getChargeGoodsConfig(arg_54_1)
+function var_0_0.getCostSymbolAndPrice(arg_55_0, arg_55_1)
+	local var_55_0 = StoreConfig.instance:getChargeGoodsConfig(arg_55_1)
 
-	return "¥", var_54_0.price
+	return "¥", var_55_0.price
 end
 
-function var_0_0.checkTabShowNewTag(arg_55_0, arg_55_1)
-	local var_55_0 = arg_55_0:getStoreMO(arg_55_1)
+function var_0_0.getCostPriceFull(arg_56_0, arg_56_1)
+	local var_56_0 = StoreConfig.instance:getChargeGoodsConfig(arg_56_1)
 
-	if var_55_0 then
-		local var_55_1 = var_55_0:getGoodsList()
+	return string.format("¥%d", var_56_0.price)
+end
 
-		for iter_55_0, iter_55_1 in pairs(var_55_1) do
-			if iter_55_1:needShowNew() then
+function var_0_0.getOriginCostPriceFull(arg_57_0, arg_57_1)
+	local var_57_0 = StoreConfig.instance:getChargeGoodsConfig(arg_57_1)
+
+	return string.format("¥%d", var_57_0.originalCost)
+end
+
+function var_0_0.checkTabShowNewTag(arg_58_0, arg_58_1)
+	local var_58_0 = arg_58_0:getStoreMO(arg_58_1)
+
+	if var_58_0 then
+		local var_58_1 = var_58_0:getGoodsList()
+
+		for iter_58_0, iter_58_1 in pairs(var_58_1) do
+			if iter_58_1:needShowNew() then
 				return true
 			end
 		end
@@ -929,118 +1002,118 @@ function var_0_0.checkTabShowNewTag(arg_55_0, arg_55_1)
 	return false
 end
 
-function var_0_0.setNewRedDotKey(arg_56_0, arg_56_1)
-	local var_56_0 = PlayerPrefsKey.StoreViewShowNew .. arg_56_1
+function var_0_0.setNewRedDotKey(arg_59_0, arg_59_1)
+	local var_59_0 = PlayerPrefsKey.StoreViewShowNew .. arg_59_1
 
-	GameUtil.playerPrefsSetStringByUserId(var_56_0, arg_56_1)
+	GameUtil.playerPrefsSetStringByUserId(var_59_0, arg_59_1)
 end
 
-function var_0_0.checkShowNewRedDot(arg_57_0, arg_57_1)
-	local var_57_0 = PlayerPrefsKey.StoreViewShowNew .. arg_57_1
+function var_0_0.checkShowNewRedDot(arg_60_0, arg_60_1)
+	local var_60_0 = PlayerPrefsKey.StoreViewShowNew .. arg_60_1
 
-	if GameUtil.playerPrefsGetStringByUserId(var_57_0, nil) then
+	if GameUtil.playerPrefsGetStringByUserId(var_60_0, nil) then
 		return false
 	end
 
 	return true
 end
 
-function var_0_0.isSkinGoodsCanRepeatBuy(arg_58_0, arg_58_1, arg_58_2)
-	local var_58_0 = arg_58_1
+function var_0_0.isSkinGoodsCanRepeatBuy(arg_61_0, arg_61_1, arg_61_2)
+	local var_61_0 = arg_61_1
 
-	if not var_58_0 then
+	if not var_61_0 then
 		return false
 	end
 
-	local var_58_1 = arg_58_2 == nil
+	local var_61_1 = arg_61_2 == nil
 
-	if arg_58_2 == nil then
-		arg_58_2 = string.splitToNumber(var_58_0.config.product, "#")[2]
+	if arg_61_2 == nil then
+		arg_61_2 = string.splitToNumber(var_61_0.config.product, "#")[2]
 	end
 
-	local var_58_2 = SkinConfig.instance:getSkinCo(arg_58_2)
+	local var_61_2 = SkinConfig.instance:getSkinCo(arg_61_2)
 
-	if not var_58_2 then
+	if not var_61_2 then
 		return false
 	end
 
-	local var_58_3 = var_58_0.config.storeId
-	local var_58_4 = var_58_2.unavailableStore
+	local var_61_3 = var_61_0.config.storeId
+	local var_61_4 = var_61_2.unavailableStore
 
-	if not string.nilorempty(var_58_4) then
-		local var_58_5 = string.split(var_58_4, "#")
+	if not string.nilorempty(var_61_4) then
+		local var_61_5 = string.split(var_61_4, "#")
 
-		for iter_58_0, iter_58_1 in ipairs(var_58_5 or {}) do
-			if var_58_3 == iter_58_1 then
+		for iter_61_0, iter_61_1 in ipairs(var_61_5 or {}) do
+			if var_61_3 == iter_61_1 then
 				return false
 			end
 		end
 	end
 
-	if string.nilorempty(var_58_2.repeatBuyTime) then
+	if string.nilorempty(var_61_2.repeatBuyTime) then
 		return false
 	end
 
-	if ServerTime.now() > TimeUtil.stringToTimestamp(var_58_2.repeatBuyTime) then
+	if ServerTime.now() > TimeUtil.stringToTimestamp(var_61_2.repeatBuyTime) then
 		return false
 	end
 
-	local var_58_6 = var_58_0:isSoldOut()
+	local var_61_6 = var_61_0:isSoldOut()
 
-	if not var_58_6 and var_58_1 then
-		local var_58_7 = StoreConfig.instance:getSkinChargeGoodsId(arg_58_2)
+	if not var_61_6 and var_61_1 then
+		local var_61_7 = StoreConfig.instance:getSkinChargeGoodsId(arg_61_2)
 
-		if var_58_7 then
-			local var_58_8 = arg_58_0._skinChargeDict[var_58_7]
+		if var_61_7 then
+			local var_61_8 = arg_61_0._skinChargeDict[var_61_7]
 
-			var_58_6 = var_58_8 and var_58_8:isSoldOut()
+			var_61_6 = var_61_8 and var_61_8:isSoldOut()
 		end
 	end
 
-	return HeroModel.instance:checkHasSkin(arg_58_2) and not var_58_6
+	return HeroModel.instance:checkHasSkin(arg_61_2) and not var_61_6
 end
 
-function var_0_0.isSkinCanShowMessageBox(arg_59_0, arg_59_1)
-	if not arg_59_1 then
+function var_0_0.isSkinCanShowMessageBox(arg_62_0, arg_62_1)
+	if not arg_62_1 then
 		return
 	end
 
-	local var_59_0 = lua_skin.configDict[arg_59_1]
+	local var_62_0 = lua_skin.configDict[arg_62_1]
 
-	if not var_59_0 then
+	if not var_62_0 then
 		return
 	end
 
-	local var_59_1 = ServerTime.now()
+	local var_62_1 = ServerTime.now()
 
-	if not string.nilorempty(var_59_0.repeatBuyTime) and var_59_1 > TimeUtil.stringToTimestamp(var_59_0.repeatBuyTime) then
+	if not string.nilorempty(var_62_0.repeatBuyTime) and var_62_1 > TimeUtil.stringToTimestamp(var_62_0.repeatBuyTime) then
 		return
 	end
 
-	local var_59_2 = var_59_0.skinStoreId
+	local var_62_2 = var_62_0.skinStoreId
 
-	if var_59_2 == 0 then
+	if var_62_2 == 0 then
 		return
 	end
 
-	local var_59_3 = arg_59_0:getGoodsMO(var_59_2)
+	local var_62_3 = arg_62_0:getGoodsMO(var_62_2)
 
-	if not var_59_3 then
+	if not var_62_3 then
 		return
 	end
 
-	local var_59_4 = var_59_3.config
-	local var_59_5 = string.nilorempty(var_59_4.onlineTime) and var_59_1 or TimeUtil.stringToTimestamp(var_59_4.onlineTime) - ServerTime.clientToServerOffset()
-	local var_59_6 = string.nilorempty(var_59_4.offlineTime) and var_59_1 or TimeUtil.stringToTimestamp(var_59_4.offlineTime) - ServerTime.clientToServerOffset()
+	local var_62_4 = var_62_3.config
+	local var_62_5 = string.nilorempty(var_62_4.onlineTime) and var_62_1 or TimeUtil.stringToTimestamp(var_62_4.onlineTime) - ServerTime.clientToServerOffset()
+	local var_62_6 = string.nilorempty(var_62_4.offlineTime) and var_62_1 or TimeUtil.stringToTimestamp(var_62_4.offlineTime) - ServerTime.clientToServerOffset()
 
-	if var_59_4.isOnline and var_59_5 <= var_59_1 and var_59_1 <= var_59_6 and not var_59_3:isSoldOut() then
-		local var_59_7 = PlayerPrefsKey.SkinCanShowMessageBox
-		local var_59_8 = GameUtil.playerPrefsGetStringByUserId(var_59_7, "")
-		local var_59_9 = string.splitToNumber(var_59_8, "#")
+	if var_62_4.isOnline and var_62_5 <= var_62_1 and var_62_1 <= var_62_6 and not var_62_3:isSoldOut() then
+		local var_62_7 = PlayerPrefsKey.SkinCanShowMessageBox
+		local var_62_8 = GameUtil.playerPrefsGetStringByUserId(var_62_7, "")
+		local var_62_9 = string.splitToNumber(var_62_8, "#")
 
-		if not (tabletool.indexOf(var_59_9, arg_59_1) ~= nil) then
-			table.insert(var_59_9, arg_59_1)
-			GameUtil.playerPrefsSetStringByUserId(var_59_7, table.concat(var_59_9, "#"))
+		if not (tabletool.indexOf(var_62_9, arg_62_1) ~= nil) then
+			table.insert(var_62_9, arg_62_1)
+			GameUtil.playerPrefsSetStringByUserId(var_62_7, table.concat(var_62_9, "#"))
 
 			return true
 		end

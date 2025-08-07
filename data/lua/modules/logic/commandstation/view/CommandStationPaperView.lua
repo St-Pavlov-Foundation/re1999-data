@@ -335,6 +335,8 @@ function var_0_0._onComposeClick(arg_17_0)
 end
 
 function var_0_0.onPaperUpdate(arg_18_0)
+	arg_18_0:_checkCanCompose()
+
 	arg_18_0._anim.enabled = true
 
 	arg_18_0._anim:Play("rightout", 0, 0)

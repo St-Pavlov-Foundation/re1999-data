@@ -868,12 +868,20 @@ function var_0_0._wordByWordFinished(arg_53_0)
 end
 
 function var_0_0._lineShow(arg_54_0, arg_54_1)
+	if not arg_54_0._stepCo then
+		return
+	end
+
 	StoryModel.instance:enableClick(false)
 	StoryModel.instance:setTextShowing(true)
 	StoryController.instance:dispatchEvent(StoryEvent.PlayFullTextLineShow, arg_54_1, arg_54_0._stepCo)
 end
 
 function var_0_0._onFullTextShowFinished(arg_55_0)
+	if not arg_55_0._stepCo then
+		return
+	end
+
 	StoryModel.instance:setTextShowing(false)
 	TaskDispatcher.cancelTask(arg_55_0._onFullTextKeepFinished, arg_55_0)
 	TaskDispatcher.runDelay(arg_55_0._onFullTextKeepFinished, arg_55_0, arg_55_0._stepCo.conversation.keepTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
@@ -1234,199 +1242,192 @@ function var_0_0._destroyPicture(arg_71_0, arg_71_1, arg_71_2, arg_71_3)
 			end
 
 			TaskDispatcher.runDelay(function()
-				local var_72_0 = 0
-				local var_72_1 = arg_71_0._stepCo.videoList
-
-				for iter_72_0, iter_72_1 in pairs(var_72_1) do
-					if iter_72_1.orderType == StoryEnum.VideoOrderType.Produce then
-						var_72_0 = 0.5
-					end
-				end
-
-				if not arg_71_0._pictures[arg_71_1] then
-					return
-				end
-
-				arg_71_0._pictures[arg_71_1]:destroyPicture(arg_71_2, arg_71_3, var_72_0)
-
-				arg_71_0._pictures[arg_71_1] = nil
+				arg_71_0:_startDestroyPic(arg_71_2, arg_71_3, arg_71_1)
 			end, nil, 0.2)
 		end
 
 		return
 	end
 
-	local var_71_0 = 0
-	local var_71_1 = arg_71_0._stepCo.videoList
+	arg_71_0:_startDestroyPic(arg_71_2, arg_71_3, arg_71_1)
+end
 
-	for iter_71_0, iter_71_1 in pairs(var_71_1) do
-		if iter_71_1.orderType == StoryEnum.VideoOrderType.Produce then
-			var_71_0 = 0.5
+function var_0_0._startDestroyPic(arg_73_0, arg_73_1, arg_73_2, arg_73_3)
+	if not arg_73_0._pictures[arg_73_3] then
+		return
+	end
+
+	local var_73_0 = 0
+	local var_73_1 = arg_73_0._stepCo.videoList
+
+	for iter_73_0, iter_73_1 in pairs(var_73_1) do
+		if iter_73_1.orderType == StoryEnum.VideoOrderType.Produce then
+			var_73_0 = 0.5
 		end
 	end
 
-	arg_71_0._pictures[arg_71_1]:destroyPicture(arg_71_2, arg_71_3, var_71_0)
+	arg_73_0._pictures[arg_73_3]:destroyPicture(arg_73_1, arg_73_2, var_73_0)
 
-	arg_71_0._pictures[arg_71_1] = nil
+	arg_73_0._pictures[arg_73_3] = nil
 end
 
-function var_0_0._updateNavigateList(arg_73_0, arg_73_1)
-	StoryController.instance:dispatchEvent(StoryEvent.RefreshNavigate, arg_73_1)
+function var_0_0._updateNavigateList(arg_74_0, arg_74_1)
+	StoryController.instance:dispatchEvent(StoryEvent.RefreshNavigate, arg_74_1)
 end
 
-function var_0_0._updateVideoList(arg_74_0, arg_74_1)
-	arg_74_0._videoCo = arg_74_1
+function var_0_0._updateVideoList(arg_75_0, arg_75_1)
+	arg_75_0._videoCo = arg_75_1
 
-	local var_74_0 = false
+	local var_75_0 = false
 
-	arg_74_0:_checkCreatePlayList()
+	arg_75_0:_checkCreatePlayList()
 
-	for iter_74_0, iter_74_1 in pairs(arg_74_0._videoCo) do
-		if iter_74_1.orderType == StoryEnum.VideoOrderType.Produce then
-			arg_74_0:_buildVideo(iter_74_1.video, iter_74_1)
-		elseif iter_74_1.orderType == StoryEnum.VideoOrderType.Destroy then
-			arg_74_0:_destroyVideo(iter_74_1.video, iter_74_1)
-		elseif iter_74_1.orderType == StoryEnum.VideoOrderType.Pause then
-			arg_74_0._videos[iter_74_1.video]:pause(true)
+	for iter_75_0, iter_75_1 in pairs(arg_75_0._videoCo) do
+		if iter_75_1.orderType == StoryEnum.VideoOrderType.Produce then
+			arg_75_0:_buildVideo(iter_75_1.video, iter_75_1)
+		elseif iter_75_1.orderType == StoryEnum.VideoOrderType.Destroy then
+			arg_75_0:_destroyVideo(iter_75_1.video, iter_75_1)
+		elseif iter_75_1.orderType == StoryEnum.VideoOrderType.Pause then
+			arg_75_0._videos[iter_75_1.video]:pause(true)
 		else
-			arg_74_0._videos[iter_74_1.video]:pause(false)
+			arg_75_0._videos[iter_75_1.video]:pause(false)
 		end
 	end
 
-	for iter_74_2, iter_74_3 in pairs(arg_74_0._videoCo) do
-		if iter_74_3.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 and (iter_74_3.orderType == StoryEnum.VideoOrderType.Produce or iter_74_3.orderType == StoryEnum.VideoOrderType.Pause or iter_74_3.orderType == StoryEnum.VideoOrderType.Restart) then
-			var_74_0 = true
+	for iter_75_2, iter_75_3 in pairs(arg_75_0._videoCo) do
+		if iter_75_3.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 and (iter_75_3.orderType == StoryEnum.VideoOrderType.Produce or iter_75_3.orderType == StoryEnum.VideoOrderType.Pause or iter_75_3.orderType == StoryEnum.VideoOrderType.Restart) then
+			var_75_0 = true
 		end
 	end
 
-	if not var_74_0 then
+	if not var_75_0 then
 		StoryController.instance:dispatchEvent(StoryEvent.ShowBackground)
 	end
 end
 
-function var_0_0._videoStarted(arg_75_0, arg_75_1)
-	for iter_75_0, iter_75_1 in pairs(arg_75_0._videos) do
-		if iter_75_1 ~= arg_75_1 then
-			iter_75_1:pause(true)
+function var_0_0._videoStarted(arg_76_0, arg_76_1)
+	for iter_76_0, iter_76_1 in pairs(arg_76_0._videos) do
+		if iter_76_1 ~= arg_76_1 then
+			iter_76_1:pause(true)
 		end
 	end
 end
 
-function var_0_0._buildVideo(arg_76_0, arg_76_1, arg_76_2)
-	arg_76_0:_checkCreatePlayList()
+function var_0_0._buildVideo(arg_77_0, arg_77_1, arg_77_2)
+	arg_77_0:_checkCreatePlayList()
 
-	local var_76_0
+	local var_77_0
 
-	if arg_76_2.layer < 4 then
-		var_76_0 = arg_76_0._govideo1
-	elseif arg_76_2.layer < 7 then
-		var_76_0 = arg_76_0._govideo2
+	if arg_77_2.layer < 4 then
+		var_77_0 = arg_77_0._govideo1
+	elseif arg_77_2.layer < 7 then
+		var_77_0 = arg_77_0._govideo2
 	else
-		var_76_0 = arg_76_0._govideo3
+		var_77_0 = arg_77_0._govideo3
 	end
 
-	if not arg_76_0._videos[arg_76_1] then
-		arg_76_0._videos[arg_76_1] = StoryVideoItem.New()
+	if not arg_77_0._videos[arg_77_1] then
+		arg_77_0._videos[arg_77_1] = StoryVideoItem.New()
 
-		arg_76_0._videos[arg_76_1]:init(var_76_0, arg_76_1, arg_76_2, arg_76_0._videoStarted, arg_76_0, arg_76_0._videoPlayList)
+		arg_77_0._videos[arg_77_1]:init(var_77_0, arg_77_1, arg_77_2, arg_77_0._videoStarted, arg_77_0, arg_77_0._videoPlayList)
 	else
-		arg_76_0._videos[arg_76_1]:reset(var_76_0, arg_76_2)
+		arg_77_0._videos[arg_77_1]:reset(var_77_0, arg_77_2)
 	end
 end
 
-function var_0_0._destroyVideo(arg_77_0, arg_77_1, arg_77_2)
-	if not arg_77_0._videos[arg_77_1] then
+function var_0_0._destroyVideo(arg_78_0, arg_78_1, arg_78_2)
+	if not arg_78_0._videos[arg_78_1] then
 		return
 	end
 
-	arg_77_0._videos[arg_77_1]:destroyVideo(arg_77_2)
+	arg_78_0._videos[arg_78_1]:destroyVideo(arg_78_2)
 
-	arg_77_0._videos[arg_77_1] = nil
+	arg_78_0._videos[arg_78_1] = nil
 end
 
-function var_0_0._checkCreatePlayList(arg_78_0)
-	if not arg_78_0._videoPlayList then
-		local var_78_0 = AvProMgr.instance:getStoryUrl()
-		local var_78_1 = arg_78_0:getResInst(var_78_0, arg_78_0.viewGO, "play_list")
+function var_0_0._checkCreatePlayList(arg_79_0)
+	if not arg_79_0._videoPlayList then
+		local var_79_0 = AvProMgr.instance:getStoryUrl()
+		local var_79_1 = arg_79_0:getResInst(var_79_0, arg_79_0.viewGO, "play_list")
 
-		arg_78_0._videoPlayList = StoryVideoPlayList.New()
+		arg_79_0._videoPlayList = StoryVideoPlayList.New()
 
-		arg_78_0._videoPlayList:init(var_78_1, arg_78_0.viewGO)
+		arg_79_0._videoPlayList:init(var_79_1, arg_79_0.viewGO)
 	end
 end
 
-function var_0_0._checkDisposePlayList(arg_79_0)
-	if arg_79_0._videoPlayList then
-		arg_79_0._videoPlayList:dispose()
+function var_0_0._checkDisposePlayList(arg_80_0)
+	if arg_80_0._videoPlayList then
+		arg_80_0._videoPlayList:dispose()
 
-		arg_79_0._videoPlayList = nil
+		arg_80_0._videoPlayList = nil
 	end
 end
 
-function var_0_0._updateOptionList(arg_80_0, arg_80_1)
-	arg_80_0._optCo = arg_80_1
+function var_0_0._updateOptionList(arg_81_0, arg_81_1)
+	arg_81_0._optCo = arg_81_1
 end
 
-function var_0_0._clearItems(arg_81_0)
-	TaskDispatcher.cancelTask(arg_81_0._viewFadeIn, arg_81_0)
-	TaskDispatcher.cancelTask(arg_81_0._enterNextStep, arg_81_0)
-	TaskDispatcher.cancelTask(arg_81_0._startShowText, arg_81_0)
-	TaskDispatcher.cancelTask(arg_81_0._startShake, arg_81_0)
-	TaskDispatcher.cancelTask(arg_81_0._shakeStop, arg_81_0)
+function var_0_0._clearItems(arg_82_0)
+	TaskDispatcher.cancelTask(arg_82_0._viewFadeIn, arg_82_0)
+	TaskDispatcher.cancelTask(arg_82_0._enterNextStep, arg_82_0)
+	TaskDispatcher.cancelTask(arg_82_0._startShowText, arg_82_0)
+	TaskDispatcher.cancelTask(arg_82_0._startShake, arg_82_0)
+	TaskDispatcher.cancelTask(arg_82_0._shakeStop, arg_82_0)
 
-	for iter_81_0, iter_81_1 in pairs(arg_81_0._pictures) do
-		iter_81_1:onDestroy()
+	for iter_82_0, iter_82_1 in pairs(arg_82_0._pictures) do
+		iter_82_1:onDestroy()
 	end
 
-	arg_81_0._pictures = {}
+	arg_82_0._pictures = {}
 
-	for iter_81_2, iter_81_3 in pairs(arg_81_0._effects) do
-		iter_81_3:onDestroy()
+	for iter_82_2, iter_82_3 in pairs(arg_82_0._effects) do
+		iter_82_3:onDestroy()
 	end
 
-	arg_81_0._effects = {}
+	arg_82_0._effects = {}
 
-	for iter_81_4, iter_81_5 in pairs(arg_81_0._videos) do
-		iter_81_5:onDestroy()
+	for iter_82_4, iter_82_5 in pairs(arg_82_0._videos) do
+		iter_82_5:onDestroy()
 	end
 
-	arg_81_0._videos = {}
+	arg_82_0._videos = {}
 
-	arg_81_0:_checkDisposePlayList()
+	arg_82_0:_checkDisposePlayList()
 end
 
-function var_0_0.onDestroyView(arg_82_0)
+function var_0_0.onDestroyView(arg_83_0)
 	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
 		ViewMgr.instance:closeView(ViewName.MessageBoxView, true)
 	end
 
-	if arg_82_0._confadeId then
-		ZProj.TweenHelper.KillById(arg_82_0._confadeId)
+	if arg_83_0._confadeId then
+		ZProj.TweenHelper.KillById(arg_83_0._confadeId)
 
-		arg_82_0._confadeId = nil
+		arg_83_0._confadeId = nil
 	end
 
-	ZProj.TweenHelper.KillByObj(arg_82_0._imagefullbottom)
-	arg_82_0:_checkDisposePlayList()
-	TaskDispatcher.cancelTask(arg_82_0._conShowIn, arg_82_0)
-	TaskDispatcher.cancelTask(arg_82_0._startShowText, arg_82_0)
-	TaskDispatcher.cancelTask(arg_82_0._enterNextStep, arg_82_0)
-	TaskDispatcher.cancelTask(arg_82_0._onFullTextKeepFinished, arg_82_0)
-	TaskDispatcher.cancelTask(arg_82_0._startShake, arg_82_0)
-	TaskDispatcher.cancelTask(arg_82_0._shakeStop, arg_82_0)
+	ZProj.TweenHelper.KillByObj(arg_83_0._imagefullbottom)
+	arg_83_0:_checkDisposePlayList()
+	TaskDispatcher.cancelTask(arg_83_0._conShowIn, arg_83_0)
+	TaskDispatcher.cancelTask(arg_83_0._startShowText, arg_83_0)
+	TaskDispatcher.cancelTask(arg_83_0._enterNextStep, arg_83_0)
+	TaskDispatcher.cancelTask(arg_83_0._onFullTextKeepFinished, arg_83_0)
+	TaskDispatcher.cancelTask(arg_83_0._startShake, arg_83_0)
+	TaskDispatcher.cancelTask(arg_83_0._shakeStop, arg_83_0)
 	StoryTool.enablePostProcess(false)
 	ViewMgr.instance:closeView(ViewName.StoryFrontView, nil, true)
-	arg_82_0._simagehead:UnLoadImage()
+	arg_83_0._simagehead:UnLoadImage()
 	StoryController.instance:stopPlotMusic()
 
-	arg_82_0._bgAudio = nil
+	arg_83_0._bgAudio = nil
 
-	arg_82_0:stopAllAudio(0)
+	arg_83_0:stopAllAudio(0)
 
-	if arg_82_0._dialogItem then
-		arg_82_0._dialogItem:destroy()
+	if arg_83_0._dialogItem then
+		arg_83_0._dialogItem:destroy()
 
-		arg_82_0._dialogItem = nil
+		arg_83_0._dialogItem = nil
 	end
 end
 

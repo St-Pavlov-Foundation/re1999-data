@@ -44,8 +44,12 @@ function var_0_0.jumpToStoreView(arg_4_0, arg_4_1)
 		local var_4_2 = var_4_0[3]
 		local var_4_3 = var_4_0[4]
 
-		if (var_4_1 == StoreEnum.StoreId.Package or var_4_1 == StoreEnum.StoreId.RecommendPackage or var_4_1 == StoreEnum.StoreId.NormalPackage or var_4_1 == StoreEnum.StoreId.OneTimePackage or var_4_1 == StoreEnum.StoreId.VersionPackage) and var_4_2 then
+		if (var_4_1 == StoreEnum.StoreId.Package or var_4_1 == StoreEnum.StoreId.RecommendPackage or var_4_1 == StoreEnum.StoreId.NormalPackage or var_4_1 == StoreEnum.StoreId.OneTimePackage or var_4_1 == StoreEnum.StoreId.VersionPackage or var_4_1 == StoreEnum.StoreId.MediciPackage) and var_4_2 then
 			table.insert(arg_4_0.remainViewNames, ViewName.PackageStoreGoodsView)
+		end
+
+		if (var_4_1 == StoreEnum.StoreId.NewDecorateStore or var_4_1 == StoreEnum.StoreId.OldDecorateStore) and var_4_2 then
+			table.insert(arg_4_0.remainViewNames, ViewName.DecorateStoreGoodsView)
 		end
 
 		StoreController.instance:openStoreView(var_4_1, var_4_2, var_4_3)
@@ -632,7 +636,7 @@ function var_0_0.jumpToActivityView(arg_30_0, arg_30_1)
 				VersionActivityDungeonController.instance:openVersionActivityDungeonMapView(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)
 			end
 		end, nil, var_30_1)
-	elseif var_30_1 == ActivityEnum.Activity.Work_SignView_1_8 or var_30_1 == ActivityEnum.Activity.V2a0_SummerSign or var_30_1 == ActivityEnum.Activity.V2a1_MoonFestival or var_30_1 == ActivityEnum.Activity.V2a2_RedLeafFestival_PanelView or var_30_1 == VersionActivity2_2Enum.ActivityId.LimitDecorate or var_30_1 == ActivityEnum.Activity.V2a2_TurnBack_H5 or var_30_1 == ActivityEnum.Activity.V2a2_SummonCustomPickNew or var_30_1 == ActivityEnum.Activity.V2a3_NewCultivationGift or var_30_1 == ActivityEnum.Activity.V2a7_Labor_Sign or var_30_1 == ActivityEnum.Activity.V2a8_DragonBoat or var_30_1 == ActivityEnum.Activity.V3a0_SummerSign then
+	elseif var_30_1 == ActivityEnum.Activity.Work_SignView_1_8 or var_30_1 == ActivityEnum.Activity.V2a0_SummerSign or var_30_1 == ActivityEnum.Activity.V2a1_MoonFestival or var_30_1 == ActivityEnum.Activity.V2a2_RedLeafFestival_PanelView or var_30_1 == VersionActivity2_2Enum.ActivityId.LimitDecorate or var_30_1 == ActivityEnum.Activity.V2a2_TurnBack_H5 or var_30_1 == ActivityEnum.Activity.V2a2_SummonCustomPickNew or var_30_1 == ActivityEnum.Activity.V2a3_NewCultivationGift or var_30_1 == ActivityEnum.Activity.V2a7_Labor_Sign or var_30_1 == ActivityEnum.Activity.V2a9_FreeMonthCard or var_30_1 == ActivityEnum.Activity.V2a8_DragonBoat or var_30_1 == ActivityEnum.Activity.V3a0_SummerSign then
 		if ActivityHelper.getActivityStatus(var_30_1, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
 		end
@@ -1534,22 +1538,55 @@ function var_0_0.jumpToDiceHeroLevelView(arg_126_0, arg_126_1)
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpToShelterBuilding(arg_127_0, arg_127_1)
+function var_0_0.jumpToMainUISwitchInfoViewGiftSet(arg_127_0, arg_127_1)
+	local var_127_0 = string.splitToNumber(arg_127_1, "#")
+	local var_127_1 = var_127_0[2]
+	local var_127_2 = var_127_0[3]
+
+	MainUISwitchController.instance:openMainUISwitchInfoViewGiftSet(var_127_1, var_127_2)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function var_0_0.jumpToPackageStoreGoodsView(arg_128_0, arg_128_1)
+	local var_128_0 = string.splitToNumber(arg_128_1, "#")
+
+	if var_128_0 then
+		local var_128_1 = var_128_0[2]
+		local var_128_2 = StoreModel.instance:getGoodsMO(var_128_1)
+
+		if var_128_2 and not var_128_2:isSoldOut() then
+			if not arg_128_0._delayOpenPackageStoreGoodsView then
+				function arg_128_0._delayOpenPackageStoreGoodsView(arg_129_0)
+					StoreController.instance:openPackageStoreGoodsView(arg_129_0)
+				end
+			end
+
+			TaskDispatcher.runDelay(arg_128_0._delayOpenPackageStoreGoodsView, var_128_2, 0.1)
+
+			return JumpEnum.JumpResult.Success
+		end
+	end
+
+	return JumpEnum.JumpResult.Fail
+end
+
+function var_0_0.jumpToShelterBuilding(arg_130_0, arg_130_1)
 	if GameSceneMgr.instance:getCurSceneType() ~= SceneType.SurvivalShelter then
 		return JumpEnum.JumpResult.Fail
 	end
 
-	local var_127_0 = string.splitToNumber(arg_127_1, "#")[2]
-	local var_127_1 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfoByBuildingId(var_127_0)
+	local var_130_0 = string.splitToNumber(arg_130_1, "#")[2]
+	local var_130_1 = SurvivalShelterModel.instance:getWeekInfo():getBuildingInfoByBuildingId(var_130_0)
 
-	if var_127_1 then
-		SurvivalMapHelper.instance:gotoBuilding(var_127_1.id, nil, true)
+	if var_130_1 then
+		SurvivalMapHelper.instance:gotoBuilding(var_130_1.id, nil, true)
 	end
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpToCommandStationTask(arg_128_0, arg_128_1)
+function var_0_0.jumpToCommandStationTask(arg_131_0, arg_131_1)
 	if ViewMgr.instance:isOpen(ViewName.CommandStationTaskView) then
 		return JumpEnum.JumpResult.Success
 	end
@@ -1560,18 +1597,61 @@ function var_0_0.jumpToCommandStationTask(arg_128_0, arg_128_1)
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpToTowerView(arg_129_0, arg_129_1)
-	local var_129_0 = string.splitToNumber(arg_129_1, "#")
-	local var_129_1 = var_129_0[2]
-	local var_129_2 = var_129_0[3]
-	local var_129_3 = {
-		towerType = var_129_1,
-		towerId = var_129_2
+function var_0_0.jumpToTowerView(arg_132_0, arg_132_1)
+	local var_132_0 = string.splitToNumber(arg_132_1, "#")
+	local var_132_1 = var_132_0[2]
+	local var_132_2 = var_132_0[3]
+	local var_132_3 = {
+		towerType = var_132_1,
+		towerId = var_132_2
 	}
 
-	TowerController.instance:jumpView(var_129_3)
+	TowerController.instance:jumpView(var_132_3)
 
 	return JumpEnum.JumpResult.Success
+end
+
+function var_0_0.jumpToOdyssey(arg_133_0, arg_133_1)
+	local var_133_0 = string.splitToNumber(arg_133_1, "#")
+	local var_133_1 = var_133_0[2]
+	local var_133_2 = var_133_0[3]
+
+	if var_133_1 == OdysseyEnum.JumpType.JumpToMainElement then
+		local var_133_3, var_133_4 = OdysseyDungeonModel.instance:getCurMainElement()
+
+		if var_133_4 then
+			OdysseyDungeonController.instance:jumpToMapElement(var_133_4.id)
+		else
+			OdysseyDungeonController.instance:jumpToHeroPos()
+		end
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToElementAndOpen then
+		OdysseyDungeonController.instance:jumpToMapElement(var_133_2)
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToHeroPos then
+		OdysseyDungeonController.instance:jumpToHeroPos()
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToReligion then
+		OdysseyDungeonController.instance:openMembersView()
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToMyth then
+		OdysseyDungeonController.instance:openMythView()
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToLevelReward then
+		TaskRpc.instance:sendGetTaskInfoRequest({
+			TaskEnum.TaskType.Odyssey
+		}, function()
+			OdysseyTaskModel.instance:setTaskInfoList()
+			OdysseyDungeonController.instance:openLevelRewardView()
+		end)
+	elseif var_133_1 == OdysseyEnum.JumpType.JumpToLibrary then
+		OdysseyController.instance:openLibraryView(AssassinEnum.LibraryType.Hero)
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
+function var_0_0.jumpToAssassinLibraryView(arg_135_0, arg_135_1)
+	local var_135_0 = string.splitToNumber(arg_135_1, "#")
+	local var_135_1 = var_135_0[2]
+	local var_135_2 = var_135_0[3]
+
+	AssassinController.instance:openAssassinLibraryView(var_135_1, var_135_2)
 end
 
 var_0_0.JumpViewToHandleFunc = {
@@ -1611,6 +1691,8 @@ var_0_0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.RoleStoryActivity] = var_0_0.jumpToRoleStoryActivity,
 	[JumpEnum.JumpView.BossRush] = var_0_0.jumpToBossRush,
 	[JumpEnum.JumpView.Tower] = var_0_0.jumpToTowerView,
+	[JumpEnum.JumpView.Odyssey] = var_0_0.jumpToOdyssey,
+	[JumpEnum.JumpView.AssassinLibraryView] = var_0_0.jumpToAssassinLibraryView,
 	[JumpEnum.JumpView.Challenge] = Act183JumpController.jumpToAct183,
 	[JumpEnum.JumpView.V1a5Dungeon] = var_0_0.jumpToAct1_5DungeonView,
 	[JumpEnum.JumpView.V1a6Dungeon] = var_0_0.jumpToAct1_6DungeonView,
@@ -1622,6 +1704,8 @@ var_0_0.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.InvestigateView] = var_0_0.jumpToInvestigateView,
 	[JumpEnum.JumpView.InvestigateOpinionTabView] = var_0_0.jumpToInvestigateOpinionTabView,
 	[JumpEnum.JumpView.DiceHero] = var_0_0.jumpToDiceHeroLevelView,
+	[JumpEnum.JumpView.MainUISwitchInfoViewGiftSet] = var_0_0.jumpToMainUISwitchInfoViewGiftSet,
+	[JumpEnum.JumpView.PackageStoreGoodsView] = var_0_0.jumpToPackageStoreGoodsView,
 	[JumpEnum.JumpView.ShelterBuilding] = var_0_0.jumpToShelterBuilding,
 	[JumpEnum.JumpView.CommandStationTask] = var_0_0.jumpToCommandStationTask
 }

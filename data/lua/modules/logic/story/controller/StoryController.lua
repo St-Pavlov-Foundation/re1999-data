@@ -49,6 +49,7 @@ function var_0_0.playStoryByStartStep(arg_5_0, arg_5_1, arg_5_2)
 	arg_5_0._mark = false
 	arg_5_0._curStoryId = arg_5_1
 
+	StoryModel.instance:setCurStoryId(arg_5_1)
 	arg_5_0:initStoryData(arg_5_1, function()
 		StoryModel.instance:setStoryFirstStep(arg_5_2)
 		arg_5_0:dispatchEvent(StoryEvent.Start, arg_5_1)
@@ -72,6 +73,9 @@ function var_0_0.playStory(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4, arg_7_5)
 	end
 
 	arg_7_0._curStoryId = arg_7_1
+
+	StoryModel.instance:setCurStoryId(arg_7_1)
+
 	arg_7_0._finishCallback = arg_7_3
 	arg_7_0._callbackTarget = arg_7_4
 	arg_7_0._param = arg_7_5

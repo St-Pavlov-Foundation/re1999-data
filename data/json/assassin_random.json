@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1001,
+    "weight": 100,
+    "type": 1,
+    "param": "",
+    "name": "屋顶搜查",
+    "img": "assassinstealthevent_pic_01",
+    "desc": "在屋顶上的刺客立刻进入暴露状态"
+  },
+  {
+    "id": 1002,
+    "weight": 100,
+    "type": 2,
+    "param": "1",
+    "name": "加强兵力",
+    "img": "assassinstealthevent_pic_02",
+    "desc": "敌人刷新点出现额外敌人"
+  },
+  {
+    "id": 1003,
+    "weight": 100,
+    "type": 3,
+    "param": "5000",
+    "name": "加强戒备",
+    "img": "assassinstealthevent_pic_03",
+    "desc": "本回合敌人侦查率提升50%"
+  },
+  {
+    "id": 1004,
+    "weight": 100,
+    "type": 4,
+    "param": "1",
+    "name": "延伸警戒",
+    "img": "assassinstealthevent_pic_05",
+    "desc": "本回合敌人将额外移动1格"
+  },
+  {
+    "id": 1005,
+    "weight": 100,
+    "type": 3,
+    "param": "-1000",
+    "name": "放松警惕",
+    "img": "assassinstealthevent_pic_04",
+    "desc": "本回合敌人侦查率降低10%"
+  },
+  {
+    "id": 1006,
+    "weight": 100,
+    "type": 4,
+    "param": "-2",
+    "name": "固守",
+    "img": "assassinstealthevent_pic_06",
+    "desc": "本回合所有敌人不移动"
+  },
+  {
+    "id": 1007,
+    "weight": 100,
+    "type": 5,
+    "param": "",
+    "name": "黑夜",
+    "img": "assassinstealthevent_pic_07",
+    "desc": "本回合敌人不会侦查"
+  },
+  {
+    "id": 1008,
+    "weight": 100,
+    "type": 6,
+    "param": "-1",
+    "name": "乏力",
+    "img": "assassinstealthevent_pic_08",
+    "desc": "本回合刺客行动力上限-1"
+  },
+  {
+    "id": 1009,
+    "weight": 100,
+    "type": 6,
+    "param": "1",
+    "name": "精力充沛",
+    "img": "assassinstealthevent_pic_09",
+    "desc": "本回合刺客行动力上限+1"
+  },
+  {
+    "id": 1010,
+    "weight": 100,
+    "type": 8,
+    "param": "-250",
+    "name": "不翼而飞",
+    "img": "assassinstealthevent_pic_10",
+    "desc": "刺客身上道具数量减少"
+  },
+  {
+    "id": 1011,
+    "weight": 100,
+    "type": 8,
+    "param": "250",
+    "name": "临时补给",
+    "img": "assassinstealthevent_pic_11",
+    "desc": "刺客身上道具数量增加"
+  },
+  {
+    "id": 1012,
+    "weight": 100,
+    "type": 7,
+    "param": "",
+    "name": "隐秘行动",
+    "img": "assassinstealthevent_pic_12",
+    "desc": "本回合被刺杀的敌人，遗体会被直接藏匿"
+  }
+]

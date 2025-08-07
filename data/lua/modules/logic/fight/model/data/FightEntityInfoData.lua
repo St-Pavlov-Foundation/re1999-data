@@ -92,6 +92,8 @@ function var_0_0.onConstructor(arg_1_0, arg_1_1)
 		arg_1_0.destinyStone = arg_1_1.destinyStone
 		arg_1_0.destinyRank = arg_1_1.destinyRank
 	end
+
+	arg_1_0.customUnitId = arg_1_1.customUnitId
 end
 
 return var_0_0

@@ -1,0 +1,50 @@
+[
+  {
+    "goodsId": 83056301,
+    "listenerType": "HasHero",
+    "listenerParam": "3123",
+    "maxProgress": 1,
+    "bonus": "1#140051#2",
+    "bigImg2": "v2a9_chainpacksell_1",
+    "bigImg3": "v2a9_chainpacksell_1_0",
+    "id": 305111,
+    "order2": 85,
+    "conDesc": "获取<color=#B65223>艾吉奥</color>后可领取"
+  },
+  {
+    "goodsId": 83056302,
+    "listenerType": "HasHero",
+    "listenerParam": "3123",
+    "maxProgress": 1,
+    "bonus": "1#140051#3",
+    "bigImg2": "v2a9_chainpacksell_1",
+    "bigImg3": "v2a9_chainpacksell_1_0",
+    "id": 305111,
+    "order2": 190,
+    "conDesc": "获取<color=#B65223>艾吉奥</color>后可领取"
+  },
+  {
+    "goodsId": 83056303,
+    "listenerType": "HasHero",
+    "listenerParam": "3124",
+    "maxProgress": 1,
+    "bonus": "1#140052#2",
+    "bigImg2": "v2a9_chainpacksell_2",
+    "bigImg3": "v2a9_chainpacksell_2_0",
+    "id": 305121,
+    "order2": 85,
+    "conDesc": "获取<color=#B65223>卡珊德拉</color>后可领取"
+  },
+  {
+    "goodsId": 83056304,
+    "listenerType": "HasHero",
+    "listenerParam": "3124",
+    "maxProgress": 1,
+    "bonus": "1#140052#3",
+    "bigImg2": "v2a9_chainpacksell_2",
+    "bigImg3": "v2a9_chainpacksell_2_0",
+    "id": 305121,
+    "order2": 190,
+    "conDesc": "获取<color=#B65223>卡珊德拉</color>后可领取"
+  }
+]

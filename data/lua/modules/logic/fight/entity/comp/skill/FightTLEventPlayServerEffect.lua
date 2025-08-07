@@ -90,6 +90,15 @@ function var_0_0.onTrackStart(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
 	if not string.nilorempty(arg_1_3[13]) then
 		arg_1_0.timelineItem.workTimelineItem:onDoneAndKeepPlay()
 	end
+
+	local var_1_9 = arg_1_3[14]
+
+	if not string.nilorempty(var_1_9) then
+		local var_1_10 = string.split(var_1_9, "#")
+		local var_1_11 = arg_1_0:com_registWork(Work2FightWork, FightWorkNormalDialog, FightViewDialog.Type.NoCondition, tonumber(var_1_10[2]))
+
+		arg_1_0:addWork2TimelineFinishWork(var_1_11)
+	end
 end
 
 function var_0_0._playEffect(arg_2_0, arg_2_1)

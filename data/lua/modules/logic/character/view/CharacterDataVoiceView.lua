@@ -190,10 +190,20 @@ function var_0_0._refreshVoice(arg_16_0)
 end
 
 function var_0_0.initLanguageOptions(arg_17_0)
-	arg_17_0._languageOptions = {
-		LangSettings.en,
-		LangSettings.zh
-	}
+	if SettingsRoleVoiceModel.instance:isHeroSp01(arg_17_0._heroId) then
+		arg_17_0._languageOptions = {
+			LangSettings.en,
+			LangSettings.zh,
+			LangSettings.kr,
+			LangSettings.jp
+		}
+	else
+		arg_17_0._languageOptions = {
+			LangSettings.en,
+			LangSettings.zh
+		}
+	end
+
 	arg_17_0._optionsName = {}
 
 	local var_17_0 = 1

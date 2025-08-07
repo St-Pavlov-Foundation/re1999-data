@@ -168,10 +168,6 @@ function var_0_0.GMToolView_register(arg_3_0)
 
 	if SettingsModel.instance:isOverseas() then
 		var_0_1()
-	else
-		local var_3_0 = LangSettings.shortcutTab[LangSettings.zh]
-
-		LangSettings.instance:SetCurLangType(var_3_0)
 	end
 end
 

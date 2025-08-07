@@ -115,8 +115,11 @@ var_0_0.RoomCritterNameLimit = 2503
 var_0_0.SeasonCardTipsDesc = 2505
 var_0_0.MainSceneChangeCD = 2506
 var_0_0.BpShowBonusLvs = 2601
+var_0_0.FreeMonthCardTitle = 30501
+var_0_0.FreeMonthCardDesc = 30502
 var_0_0.BPSkinFaceViewSkinId = 28124
 var_0_0.LoginViewVideoPathId = 30101
 var_0_0.LoginViewVideoShowDungeonId = 30102
+var_0_0.S01SpRole = 30503
 
 return var_0_0

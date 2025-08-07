@@ -808,5 +808,41 @@
     "audioLength": 90.0,
     "audioEvaluates": "冷周六#九个灵魂都在说，拜托，这样的歌只会抑制多巴胺的分泌，快把它关了。",
     "isNonLoop": 0
+  },
+  {
+    "id": 10230501,
+    "audio": 20305011,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 2213051,
+    "defaultUnlock": 0,
+    "audioName": "太阳亲吻葡萄时",
+    "audioNameEn": "On Sun-Kissed Vines",
+    "audioIntroduce": "去告诉太阳吧！我们会在葡萄的血液中再次重逢。",
+    "audioBg": "10230501_1",
+    "audioicon": "10230501_2",
+    "sort": 23001,
+    "audioType": 205,
+    "audioLength": 118.0,
+    "audioEvaluates": "APPLe#APPLe某很怀念这股滋味。",
+    "isNonLoop": 0
+  },
+  {
+    "id": 10230502,
+    "audio": 20305012,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 2213052,
+    "defaultUnlock": 0,
+    "audioName": "我最亲爱的",
+    "audioNameEn": "My Heart and Light",
+    "audioIntroduce": "你的思念将你带至此处，在无痛的梦中沉沉睡去。",
+    "audioBg": "10230502_1",
+    "audioicon": "10230502_2",
+    "sort": 11101,
+    "audioType": 205,
+    "audioLength": 111.0,
+    "audioEvaluates": "铅玻璃#虽然，这不是来自马勒拉斯的曲调，但是一样……有妈妈的味道。我很喜欢。",
+    "isNonLoop": 0
   }
 ]

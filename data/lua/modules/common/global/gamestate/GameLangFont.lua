@@ -6,6 +6,11 @@ local var_0_2 = 2
 local var_0_3 = 3
 
 function var_0_0.ctor(arg_1_0)
+	if not LangSettings.instance:isOverseas() then
+		return
+	end
+
+	arg_1_0._hasInit = true
 	arg_1_0._loadStatus = var_0_1
 	arg_1_0._SettingStatus = var_0_1
 	arg_1_0._registerFontDict = {}
@@ -30,17 +35,28 @@ function var_0_0._callback(arg_2_0, arg_2_1, arg_2_2)
 	else
 		arg_2_0._registerFontDict[arg_2_1] = nil
 
-		if arg_2_1.id > 0 and not string.nilorempty(arg_2_1.str1) then
-			local var_2_0 = arg_2_1.tmpText
+		local var_2_0 = arg_2_1.id
 
-			if var_2_0 then
-				gohelper.destroy(var_2_0.fontSharedMaterial)
+		if var_2_0 > 0 and (not string.nilorempty(arg_2_1.str1) or arg_2_1.instanceMaterial) then
+			local var_2_1 = arg_2_1.tmpText
+			local var_2_2 = arg_2_0._id2TmpFontAssetDict[var_2_0]
+
+			if var_2_1 and (var_2_2 == nil or var_2_2.material ~= var_2_1.fontSharedMaterial) then
+				gohelper.destroy(var_2_1.fontSharedMaterial)
 			end
 		end
 	end
 end
 
 function var_0_0.changeFontAsset(arg_3_0, arg_3_1, arg_3_2)
+	if not arg_3_0._hasInit then
+		if arg_3_1 then
+			arg_3_1(arg_3_2)
+		end
+
+		return
+	end
+
 	arg_3_0._loadStatus = var_0_1
 	arg_3_0._loadFontAssetCallback = arg_3_1
 	arg_3_0._loadFontAssetcallbackObj = arg_3_2
@@ -147,28 +163,54 @@ function var_0_0._setFontAsset(arg_6_0, arg_6_1)
 
 			local var_6_3 = arg_6_1.str1
 
-			if not string.nilorempty(var_6_3) then
-				local var_6_4 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_3)
-				local var_6_5 = UnityEngine.Color32.New(var_6_4.r * 255, var_6_4.g * 255, var_6_4.b * 255, var_6_4.a * 255)
-				local var_6_6 = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
-
-				var_6_1.fontSharedMaterial = var_6_6
-
-				var_6_6:EnableKeyword("OUTLINE_ON")
-
-				var_6_1.outlineColor = var_6_5
-				var_6_1.outlineWidth = arg_6_1.int1 / 1000
-			elseif arg_6_1.instanceMaterial then
-				var_6_1.fontSharedMaterial = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
+			if not string.nilorempty(var_6_3) or not string.nilorempty(arg_6_1.str2) then
+				arg_6_1.instanceMaterial = true
 			end
+
+			local var_6_4 = var_6_1.fontSharedMaterial
+
+			if arg_6_1.instanceMaterial then
+				var_6_4 = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
+			end
+
+			if not string.nilorempty(var_6_3) then
+				local var_6_5 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_3)
+
+				var_6_1.outlineColor = UnityEngine.Color32.New(var_6_5.r * 255, var_6_5.g * 255, var_6_5.b * 255, var_6_5.a * 255), var_6_4:EnableKeyword("OUTLINE_ON")
+				var_6_1.outlineWidth = arg_6_1.int1 / 1000
+			end
+
+			if not string.nilorempty(arg_6_1.str2) then
+				local var_6_6 = string.split(arg_6_1.str2, "|||")
+				local var_6_7 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_6[1])
+
+				var_6_4:EnableKeyword("UNDERLAY_ON")
+				var_6_4:SetFloat("_UnderlayOffsetX", tonumber(var_6_6[2]))
+				var_6_4:SetFloat("_UnderlayOffsetY", tonumber(var_6_6[3]))
+				var_6_4:SetFloat("_UnderlayDilate", tonumber(var_6_6[4]))
+				var_6_4:SetFloat("_UnderlaySoftness", tonumber(var_6_6[5]))
+				var_6_4:SetColor("_UnderlayColor", var_6_7)
+			end
+
+			var_6_1.fontSharedMaterial = var_6_4
 		else
-			local var_6_7 = arg_6_1.tmpInputText
+			local var_6_8 = arg_6_1.tmpInputText
 
-			if var_6_7 then
-				local var_6_8 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+			if var_6_8 then
+				local var_6_9 = arg_6_0._id2TmpFontAssetDict[var_6_0]
 
-				if var_6_8 then
-					var_6_7.fontAsset = var_6_8
+				if var_6_9 then
+					var_6_8.fontAsset = var_6_9
+				end
+			end
+
+			local var_6_10 = arg_6_1.tmpTextScene
+
+			if var_6_10 then
+				local var_6_11 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+
+				if var_6_11 then
+					var_6_10.font = var_6_11
 				end
 			end
 		end
@@ -176,22 +218,26 @@ function var_0_0._setFontAsset(arg_6_0, arg_6_1)
 		return
 	end
 
-	local var_6_9 = arg_6_1.textId
+	local var_6_12 = arg_6_1.textId
 
-	if var_6_9 > 0 then
-		local var_6_10 = arg_6_1.text
+	if var_6_12 > 0 then
+		local var_6_13 = arg_6_1.text
 
-		if var_6_10 then
-			local var_6_11 = arg_6_0._id2TextFontAssetDict[var_6_9]
+		if var_6_13 then
+			local var_6_14 = arg_6_0._id2TextFontAssetDict[var_6_12]
 
-			if var_6_11 then
-				var_6_10.font = var_6_11
+			if var_6_14 then
+				var_6_13.font = var_6_14
 			end
 		end
 	end
 end
 
 function var_0_0.ControlDoubleEn(arg_7_0)
+	if not arg_7_0._hasInit then
+		return
+	end
+
 	local var_7_0 = ViewMgr.instance:getUIRoot()
 
 	arg_7_0.languageMgr = SLFramework.LanguageMgr.Instance

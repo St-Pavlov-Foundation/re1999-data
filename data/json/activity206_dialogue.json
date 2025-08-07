@@ -1,0 +1,18 @@
+[
+  {
+    "activityId": 130520,
+    "chaseId": 1305201,
+    "roleIcon": "302501",
+    "roleName": "星锑",
+    "roleNameEn": "Regulus",
+    "dialog": "“据X所说，这些信使四处传达波吉亚家族的诡计，而且随身携带着整整1503枚弗洛林！如果抓到其中一个，不仅可以阻止他们的阴谋，还能再买一艘全新的‘APPLe Ⅲ’号！我们得擦亮靴子，以最热烈的摇滚精神追上去！”"
+  },
+  {
+    "activityId": 130520,
+    "chaseId": 1305202,
+    "roleIcon": "302801",
+    "roleName": "APPLe",
+    "roleNameEn": "APPLe",
+    "dialog": "“明白船长……看起来，后者才是我们的主要目标。”"
+  }
+]

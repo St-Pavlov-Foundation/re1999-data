@@ -474,73 +474,55 @@ function var_0_0.getExSkillDesc(arg_35_0, arg_35_1, arg_35_2)
 	return var_35_0, lua_skill.configDict[var_35_9].name, var_35_8
 end
 
-function var_0_0._matchChioceSkill(arg_36_0, arg_36_1, arg_36_2, arg_36_3)
-	if arg_36_2 and arg_36_1 then
-		arg_36_1 = tonumber(arg_36_1)
-		arg_36_2 = tonumber(arg_36_2)
+function var_0_0._getHeroWeaponReplaceSkill(arg_36_0, arg_36_1)
+	local var_36_0 = HeroModel.instance:getByHeroId(arg_36_1)
 
-		local var_36_0
+	if var_36_0 and var_36_0.extraMo then
+		local var_36_1 = var_36_0.extraMo:getWeaponMo()
 
-		if arg_36_1 == 0 then
-			var_36_0 = arg_36_0:getpassiveskillsCO(arg_36_3)[1].skillPassive
+		if var_36_1 then
+			return var_36_1:getReplaceSkill()
+		end
+	end
+end
+
+function var_0_0._matchChioceSkill(arg_37_0, arg_37_1, arg_37_2, arg_37_3)
+	if arg_37_2 and arg_37_1 then
+		arg_37_1 = tonumber(arg_37_1)
+		arg_37_2 = tonumber(arg_37_2)
+
+		local var_37_0
+
+		if arg_37_1 == 0 then
+			var_37_0 = arg_37_0:getpassiveskillsCO(arg_37_3)[1].skillPassive
 		else
-			local var_36_1 = arg_36_0:getHeroBaseSkillIdDict(arg_36_3, true)
+			local var_37_1 = arg_37_0:getHeroBaseSkillIdDict(arg_37_3, true)
 
-			var_36_0 = var_36_1 and var_36_1[arg_36_1]
+			var_37_0 = var_37_1 and var_37_1[arg_37_1]
 		end
 
-		local var_36_2 = arg_36_0:getFightCardChoiceSkillIdByIndex(var_36_0, arg_36_2)
+		local var_37_2 = arg_37_0:getFightCardChoiceSkillIdByIndex(var_37_0, arg_37_2)
 
-		if var_36_2 then
-			local var_36_3 = lua_skill.configDict[var_36_2].name
+		if var_37_2 then
+			local var_37_3 = lua_skill.configDict[var_37_2].name
 
 			return {
-				skillId = var_36_0,
-				skillName = var_36_3,
-				skillIndex = arg_36_1,
-				choiceSkillIndex = arg_36_2
+				skillId = var_37_0,
+				skillName = var_37_3,
+				skillIndex = arg_37_1,
+				choiceSkillIndex = arg_37_2
 			}
 		end
 	end
 end
 
-function var_0_0.getHeroBaseSkillIdDict(arg_37_0, arg_37_1, arg_37_2)
-	local var_37_0 = HeroConfig.instance:getHeroCO(arg_37_1)
-	local var_37_1 = var_37_0.skill
-	local var_37_2 = var_37_0.exSkill
+function var_0_0.getHeroBaseSkillIdDict(arg_38_0, arg_38_1, arg_38_2)
+	local var_38_0, var_38_1 = arg_38_0:_getHeroSkillAndExSkill(arg_38_1, arg_38_2)
 
-	if arg_37_2 then
-		local var_37_3 = HeroConfig.instance:getHeroRankReplaceConfig(arg_37_1)
-
-		if var_37_3 then
-			var_37_1 = var_37_3.skill
-			var_37_2 = var_37_3.exSkill
-		end
-	end
-
-	return arg_37_0:getHeroBaseSkillIdDictByStr(var_37_1, var_37_2)
+	return arg_38_0:getHeroBaseSkillIdDictByStr(var_38_0, var_38_1)
 end
 
-function var_0_0.getHeroBaseSkillIdDictByStr(arg_38_0, arg_38_1, arg_38_2)
-	local var_38_0 = {}
-	local var_38_1 = string.split(arg_38_1, "|")
-	local var_38_2
-	local var_38_3
-	local var_38_4
-
-	for iter_38_0 = 1, #var_38_1 do
-		local var_38_5 = string.split(var_38_1[iter_38_0], ",")
-		local var_38_6 = string.splitToNumber(var_38_5[1], "#")
-
-		var_38_0[var_38_6[1]] = var_38_6[2]
-	end
-
-	var_38_0[3] = arg_38_2
-
-	return var_38_0
-end
-
-function var_0_0.getHeroAllSkillIdDict(arg_39_0, arg_39_1, arg_39_2)
+function var_0_0._getHeroSkillAndExSkill(arg_39_0, arg_39_1, arg_39_2)
 	local var_39_0 = HeroConfig.instance:getHeroCO(arg_39_1)
 	local var_39_1 = var_39_0.skill
 	local var_39_2 = var_39_0.exSkill
@@ -551,285 +533,333 @@ function var_0_0.getHeroAllSkillIdDict(arg_39_0, arg_39_1, arg_39_2)
 		if var_39_3 then
 			var_39_1 = var_39_3.skill
 			var_39_2 = var_39_3.exSkill
+
+			return var_39_1, var_39_2
 		end
 	end
 
-	return arg_39_0:getHeroAllSkillIdDictByStr(var_39_1, var_39_2)
+	local var_39_4, var_39_5 = arg_39_0:_getHeroWeaponReplaceSkill(arg_39_1)
+
+	if var_39_4 or var_39_5 then
+		var_39_1 = var_39_4 or var_39_1
+		var_39_2 = var_39_5 or var_39_2
+
+		return var_39_1, var_39_2
+	end
+
+	return var_39_1, var_39_2
 end
 
-function var_0_0.getHeroAllSkillIdDictByStr(arg_40_0, arg_40_1, arg_40_2)
+function var_0_0.getHeroBaseSkillIdDictByStr(arg_40_0, arg_40_1, arg_40_2)
 	local var_40_0 = {}
 	local var_40_1 = string.split(arg_40_1, "|")
 	local var_40_2
 	local var_40_3
+	local var_40_4
 
 	for iter_40_0 = 1, #var_40_1 do
-		local var_40_4 = string.split(var_40_1[iter_40_0], ",")
-		local var_40_5 = string.splitToNumber(var_40_4[1], "#")
+		local var_40_5 = string.split(var_40_1[iter_40_0], ",")
+		local var_40_6 = string.splitToNumber(var_40_5[1], "#")
 
-		var_40_0[table.remove(var_40_5, 1)] = var_40_5
+		var_40_0[var_40_6[1]] = var_40_6[2]
 	end
 
-	var_40_0[3] = {
-		arg_40_2
-	}
+	var_40_0[3] = arg_40_2
 
 	return var_40_0
 end
 
-function var_0_0._isNeedReplaceExSkill(arg_41_0, arg_41_1)
-	if arg_41_1 and lua_character_rank_replace.configDict[arg_41_1.heroId] then
-		local var_41_0 = arg_41_1.rank or 0
-		local var_41_1 = lua_character_limited.configDict[arg_41_1.skin]
-		local var_41_2 = string.split(var_41_1.specialLive2d, "#")
+function var_0_0.getHeroAllSkillIdDict(arg_41_0, arg_41_1, arg_41_2)
+	local var_41_0, var_41_1 = arg_41_0:_getHeroSkillAndExSkill(arg_41_1, arg_41_2)
 
-		return var_41_0 > (var_41_2[2] and tonumber(var_41_2[2]) or 3) - 1
+	return arg_41_0:getHeroAllSkillIdDictByStr(var_41_0, var_41_1)
+end
+
+function var_0_0.getHeroAllSkillIdDictByStr(arg_42_0, arg_42_1, arg_42_2)
+	local var_42_0 = {}
+	local var_42_1 = string.split(arg_42_1, "|")
+	local var_42_2
+	local var_42_3
+
+	for iter_42_0 = 1, #var_42_1 do
+		local var_42_4 = string.split(var_42_1[iter_42_0], ",")
+		local var_42_5 = string.splitToNumber(var_42_4[1], "#")
+
+		var_42_0[table.remove(var_42_5, 1)] = var_42_5
+	end
+
+	var_42_0[3] = {
+		arg_42_2
+	}
+
+	return var_42_0
+end
+
+function var_0_0._isNeedReplaceExSkill(arg_43_0, arg_43_1)
+	if arg_43_1 and lua_character_rank_replace.configDict[arg_43_1.heroId] then
+		local var_43_0 = arg_43_1.rank or 0
+		local var_43_1 = lua_character_limited.configDict[arg_43_1.skin]
+		local var_43_2 = string.split(var_43_1.specialLive2d, "#")
+
+		return var_43_0 > (var_43_2[2] and tonumber(var_43_2[2]) or 3) - 1
 	end
 
 	return true
 end
 
-function var_0_0.getHeroBaseSkillIdDictByExSkillLevel(arg_42_0, arg_42_1, arg_42_2, arg_42_3)
-	if arg_42_3 and arg_42_3.trialAttrCo then
-		local var_42_0 = arg_42_0:getHeroBaseSkillIdDictByStr(arg_42_3.trialAttrCo.activeSkill, arg_42_3.trialAttrCo.uniqueSkill)
+function var_0_0.getHeroBaseSkillIdDictByExSkillLevel(arg_44_0, arg_44_1, arg_44_2, arg_44_3)
+	if arg_44_3 and arg_44_3.trialAttrCo then
+		local var_44_0 = arg_44_0:getHeroBaseSkillIdDictByStr(arg_44_3.trialAttrCo.activeSkill, arg_44_3.trialAttrCo.uniqueSkill)
 
-		return (arg_42_0:_checkDestinyEffect(var_42_0, arg_42_3))
+		return (arg_44_0:_checkReplaceSkill(var_44_0, arg_44_3))
 	end
 
-	local var_42_1 = arg_42_3 and arg_42_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_42_3) - 1
-	local var_42_2 = arg_42_0:getHeroBaseSkillIdDict(arg_42_1, var_42_1)
+	local var_44_1 = arg_44_3 and arg_44_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_44_3) - 1
+	local var_44_2 = arg_44_0:getHeroBaseSkillIdDict(arg_44_1, var_44_1)
 
-	arg_42_3 = arg_42_3 or HeroModel.instance:getByHeroId(arg_42_1)
+	arg_44_3 = arg_44_3 or HeroModel.instance:getByHeroId(arg_44_1)
 
-	if arg_42_0:_isNeedReplaceExSkill(arg_42_3) then
-		var_42_2 = arg_42_0:getHeroExBaseSkillIdDict(arg_42_1, arg_42_3, var_42_2, arg_42_2)
+	if arg_44_0:_isNeedReplaceExSkill(arg_44_3) then
+		var_44_2 = arg_44_0:getHeroExBaseSkillIdDict(arg_44_1, arg_44_3, var_44_2, arg_44_2)
 	end
 
-	return (arg_42_0:_checkDestinyEffect(var_42_2, arg_42_3))
+	return (arg_44_0:_checkDestinyEffect(var_44_2, arg_44_3))
 end
 
-function var_0_0.getHeroExBaseSkillIdDict(arg_43_0, arg_43_1, arg_43_2, arg_43_3, arg_43_4)
-	arg_43_4 = arg_43_4 or CharacterEnum.showAttributeOption.ShowCurrent
+function var_0_0.getHeroExBaseSkillIdDict(arg_45_0, arg_45_1, arg_45_2, arg_45_3, arg_45_4)
+	arg_45_4 = arg_45_4 or CharacterEnum.showAttributeOption.ShowCurrent
 
-	local var_43_0 = 0
+	local var_45_0 = 0
 
-	if arg_43_4 == CharacterEnum.showAttributeOption.ShowMax then
-		var_43_0 = CharacterModel.instance:getMaxexskill(arg_43_1)
+	if arg_45_4 == CharacterEnum.showAttributeOption.ShowMax then
+		var_45_0 = CharacterModel.instance:getMaxexskill(arg_45_1)
 	else
-		var_43_0 = arg_43_4 == CharacterEnum.showAttributeOption.ShowMin and 0 or arg_43_2.exSkillLevel
+		var_45_0 = arg_45_4 == CharacterEnum.showAttributeOption.ShowMin and 0 or arg_45_2.exSkillLevel
 	end
 
-	if var_43_0 < 1 then
-		return arg_43_3
+	if var_45_0 < 1 then
+		arg_45_3 = arg_45_0:_checkReplaceSkill(arg_45_3, arg_45_2)
+
+		return arg_45_3
 	end
 
-	local var_43_1 = math.min(var_43_0, CharacterEnum.MaxSkillExLevel)
-	local var_43_2
+	local var_45_1 = math.min(var_45_0, CharacterEnum.MaxSkillExLevel)
+	local var_45_2
 
-	for iter_43_0 = 1, var_43_1 do
-		local var_43_3 = arg_43_0:getherolevelexskillCO(arg_43_1, iter_43_0)
+	for iter_45_0 = 1, var_45_1 do
+		local var_45_3 = arg_45_0:getherolevelexskillCO(arg_45_1, iter_45_0)
 
-		if not string.nilorempty(var_43_3.skillGroup1) then
-			arg_43_3[1] = string.splitToNumber(var_43_3.skillGroup1, "|")[1]
+		if not string.nilorempty(var_45_3.skillGroup1) then
+			arg_45_3[1] = string.splitToNumber(var_45_3.skillGroup1, "|")[1]
 		end
 
-		if not string.nilorempty(var_43_3.skillGroup2) then
-			arg_43_3[2] = string.splitToNumber(var_43_3.skillGroup2, "|")[1]
+		if not string.nilorempty(var_45_3.skillGroup2) then
+			arg_45_3[2] = string.splitToNumber(var_45_3.skillGroup2, "|")[1]
 		end
 
-		if var_43_3.skillEx ~= 0 then
-			arg_43_3[3] = var_43_3.skillEx
+		if var_45_3.skillEx ~= 0 then
+			arg_45_3[3] = var_45_3.skillEx
 		end
 	end
 
-	return arg_43_3
+	arg_45_3 = arg_45_0:_checkReplaceSkill(arg_45_3, arg_45_2)
+
+	return arg_45_3
 end
 
-function var_0_0._checkDestinyEffect(arg_44_0, arg_44_1, arg_44_2)
-	if arg_44_1 and arg_44_2 and arg_44_2.destinyStoneMo then
-		arg_44_1 = arg_44_2.destinyStoneMo:_replaceSkill(arg_44_1)
+function var_0_0._checkReplaceSkill(arg_46_0, arg_46_1, arg_46_2)
+	if arg_46_1 and arg_46_2 then
+		arg_46_1 = arg_46_2:checkReplaceSkill(arg_46_1)
 	end
 
-	return arg_44_1
+	return arg_46_1
 end
 
-function var_0_0.getHeroAllSkillIdDictByExSkillLevel(arg_45_0, arg_45_1, arg_45_2, arg_45_3, arg_45_4, arg_45_5)
-	if arg_45_3 and arg_45_3.trialAttrCo then
-		return arg_45_0:getHeroAllSkillIdDictByStr(arg_45_3.trialAttrCo.activeSkill, arg_45_3.trialAttrCo.uniqueSkill)
+function var_0_0._checkDestinyEffect(arg_47_0, arg_47_1, arg_47_2)
+	if arg_47_1 and arg_47_2 and arg_47_2.destinyStoneMo then
+		arg_47_1 = arg_47_2.destinyStoneMo:_replaceSkill(arg_47_1)
 	end
 
-	local var_45_0 = arg_45_5 or arg_45_3 and arg_45_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_45_3) - 1
-	local var_45_1 = arg_45_0:getHeroAllSkillIdDict(arg_45_1, var_45_0)
+	return arg_47_1
+end
 
-	arg_45_3 = arg_45_3 or HeroModel.instance:getByHeroId(arg_45_1)
-
-	if not arg_45_0:_isNeedReplaceExSkill(arg_45_3) then
-		return var_45_1
+function var_0_0.getHeroAllSkillIdDictByExSkillLevel(arg_48_0, arg_48_1, arg_48_2, arg_48_3, arg_48_4, arg_48_5)
+	if arg_48_3 and arg_48_3.trialAttrCo then
+		return arg_48_0:getHeroAllSkillIdDictByStr(arg_48_3.trialAttrCo.activeSkill, arg_48_3.trialAttrCo.uniqueSkill)
 	end
 
-	arg_45_2 = arg_45_2 or CharacterEnum.showAttributeOption.ShowCurrent
+	local var_48_0 = arg_48_5 or arg_48_3 and arg_48_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_48_3) - 1
+	local var_48_1 = arg_48_0:getHeroAllSkillIdDict(arg_48_1, var_48_0)
 
-	local var_45_2 = 0
+	arg_48_3 = arg_48_3 or HeroModel.instance:getByHeroId(arg_48_1)
 
-	if arg_45_2 == CharacterEnum.showAttributeOption.ShowMax then
-		var_45_2 = CharacterModel.instance:getMaxexskill(arg_45_1)
-	elseif arg_45_2 == CharacterEnum.showAttributeOption.ShowMin then
-		var_45_2 = 0
-	elseif arg_45_4 then
-		var_45_2 = arg_45_4
-	elseif arg_45_3 then
-		var_45_2 = arg_45_3.exSkillLevel
+	if not arg_48_0:_isNeedReplaceExSkill(arg_48_3) then
+		return var_48_1
 	end
 
-	if var_45_2 < 1 then
-		return var_45_1
+	arg_48_2 = arg_48_2 or CharacterEnum.showAttributeOption.ShowCurrent
+
+	local var_48_2 = 0
+
+	if arg_48_2 == CharacterEnum.showAttributeOption.ShowMax then
+		var_48_2 = CharacterModel.instance:getMaxexskill(arg_48_1)
+	elseif arg_48_2 == CharacterEnum.showAttributeOption.ShowMin then
+		var_48_2 = 0
+	elseif arg_48_4 then
+		var_48_2 = arg_48_4
+	elseif arg_48_3 then
+		var_48_2 = arg_48_3.exSkillLevel
 	end
 
-	local var_45_3
+	if var_48_2 < 1 then
+		return var_48_1
+	end
 
-	for iter_45_0 = 1, var_45_2 do
-		local var_45_4 = arg_45_0:getherolevelexskillCO(arg_45_1, iter_45_0)
+	local var_48_3
 
-		if not string.nilorempty(var_45_4.skillGroup1) then
-			var_45_1[1] = string.splitToNumber(var_45_4.skillGroup1, "|")
+	for iter_48_0 = 1, var_48_2 do
+		local var_48_4 = arg_48_0:getherolevelexskillCO(arg_48_1, iter_48_0)
+
+		if not string.nilorempty(var_48_4.skillGroup1) then
+			var_48_1[1] = string.splitToNumber(var_48_4.skillGroup1, "|")
 		end
 
-		if not string.nilorempty(var_45_4.skillGroup2) then
-			var_45_1[2] = string.splitToNumber(var_45_4.skillGroup2, "|")
+		if not string.nilorempty(var_48_4.skillGroup2) then
+			var_48_1[2] = string.splitToNumber(var_48_4.skillGroup2, "|")
 		end
 
-		if var_45_4.skillEx ~= 0 then
-			var_45_1[3] = {
-				var_45_4.skillEx
+		if var_48_4.skillEx ~= 0 then
+			var_48_1[3] = {
+				var_48_4.skillEx
 			}
 		end
 	end
 
-	return var_45_1
+	return (arg_48_0:_checkReplaceSkill(var_48_1, arg_48_3))
 end
 
-function var_0_0.getRankLevelByLevel(arg_46_0, arg_46_1, arg_46_2)
-	local var_46_0 = arg_46_0.rankConfig.configDict[arg_46_1]
+function var_0_0.getRankLevelByLevel(arg_49_0, arg_49_1, arg_49_2)
+	local var_49_0 = arg_49_0.rankConfig.configDict[arg_49_1]
 
-	if not var_46_0 then
+	if not var_49_0 then
 		return 0
 	end
 
-	local var_46_1 = {}
+	local var_49_1 = {}
 
-	for iter_46_0, iter_46_1 in pairs(var_46_0) do
-		table.insert(var_46_1, iter_46_1)
+	for iter_49_0, iter_49_1 in pairs(var_49_0) do
+		table.insert(var_49_1, iter_49_1)
 	end
 
-	table.sort(var_46_1, function(arg_47_0, arg_47_1)
-		return arg_47_0.rank < arg_47_1.rank
+	table.sort(var_49_1, function(arg_50_0, arg_50_1)
+		return arg_50_0.rank < arg_50_1.rank
 	end)
 
-	local var_46_2 = 1
+	local var_49_2 = 1
 
-	for iter_46_2, iter_46_3 in ipairs(var_46_1) do
-		local var_46_3 = 0
+	for iter_49_2, iter_49_3 in ipairs(var_49_1) do
+		local var_49_3 = 0
 
-		for iter_46_4, iter_46_5 in pairs(GameUtil.splitString2(iter_46_3.effect, true, "|", "#")) do
-			if iter_46_5[1] == 1 then
-				var_46_3 = iter_46_5[2]
+		for iter_49_4, iter_49_5 in pairs(GameUtil.splitString2(iter_49_3.effect, true, "|", "#")) do
+			if iter_49_5[1] == 1 then
+				var_49_3 = iter_49_5[2]
 
 				break
 			end
 		end
 
-		if arg_46_2 <= var_46_3 then
-			return iter_46_3.rank
+		if arg_49_2 <= var_49_3 then
+			return iter_49_3.rank
 		end
 	end
 
-	return var_46_2
+	return var_49_2
 end
 
-function var_0_0.getConstNum(arg_48_0, arg_48_1)
-	local var_48_0 = arg_48_0:getConstStr(arg_48_1)
+function var_0_0.getConstNum(arg_51_0, arg_51_1)
+	local var_51_0 = arg_51_0:getConstStr(arg_51_1)
 
-	if string.nilorempty(var_48_0) then
+	if string.nilorempty(var_51_0) then
 		return 0
 	else
-		return tonumber(var_48_0)
+		return tonumber(var_51_0)
 	end
 end
 
-function var_0_0.getConstStr(arg_49_0, arg_49_1)
-	local var_49_0 = lua_fight_const.configDict[arg_49_1]
+function var_0_0.getConstStr(arg_52_0, arg_52_1)
+	local var_52_0 = lua_fight_const.configDict[arg_52_1]
 
-	if not var_49_0 then
-		printError("fight const not exist: ", arg_49_1)
+	if not var_52_0 then
+		printError("fight const not exist: ", arg_52_1)
 
 		return nil
 	end
 
-	local var_49_1 = var_49_0.value
+	local var_52_1 = var_52_0.value
 
-	if not string.nilorempty(var_49_1) then
-		return var_49_1
+	if not string.nilorempty(var_52_1) then
+		return var_52_1
 	end
 
-	return var_49_0.value2
+	return var_52_0.value2
 end
 
-function var_0_0.getHeroUpgradeSkill(arg_50_0, arg_50_1)
-	if not arg_50_1 then
+function var_0_0.getHeroUpgradeSkill(arg_53_0, arg_53_1)
+	if not arg_53_1 then
 		return false, {}
 	end
 
-	local var_50_0 = {}
+	local var_53_0 = {}
 
-	for iter_50_0, iter_50_1 in ipairs(arg_50_1) do
-		local var_50_1 = arg_50_0.heroUpgradeBreakLevelConfig.configDict[iter_50_1]
+	for iter_53_0, iter_53_1 in ipairs(arg_53_1) do
+		local var_53_1 = arg_53_0.heroUpgradeBreakLevelConfig.configDict[iter_53_1]
 
-		if var_50_1 then
-			var_50_0[#var_50_0 + 1] = var_50_1.upgradeSkillId
+		if var_53_1 then
+			var_53_0[#var_53_0 + 1] = var_53_1.upgradeSkillId
 		end
 	end
 
-	return #var_50_0 > 0, var_50_0
+	return #var_53_0 > 0, var_53_0
 end
 
-function var_0_0.getFightCardChoice(arg_51_0, arg_51_1)
-	if not arg_51_1 then
+function var_0_0.getFightCardChoice(arg_54_0, arg_54_1)
+	if not arg_54_1 then
 		return
 	end
 
-	local var_51_0 = {}
+	local var_54_0 = {}
 
-	for iter_51_0, iter_51_1 in ipairs(arg_51_1) do
-		local var_51_1 = lua_fight_card_choice.configDict[iter_51_1]
+	for iter_54_0, iter_54_1 in ipairs(arg_54_1) do
+		local var_54_1 = lua_fight_card_choice.configDict[iter_54_1]
 
-		if not var_51_1 then
+		if not var_54_1 then
 			return
 		end
 
-		local var_51_2 = string.splitToNumber(var_51_1.choiceSkIlls, "#")
+		local var_54_2 = string.splitToNumber(var_54_1.choiceSkIlls, "#")
 
-		for iter_51_2, iter_51_3 in ipairs(var_51_2) do
-			if not var_51_0[iter_51_2] then
-				var_51_0[iter_51_2] = {}
+		for iter_54_2, iter_54_3 in ipairs(var_54_2) do
+			if not var_54_0[iter_54_2] then
+				var_54_0[iter_54_2] = {}
 			end
 
-			table.insert(var_51_0[iter_51_2], iter_51_3)
+			table.insert(var_54_0[iter_54_2], iter_54_3)
 		end
 	end
 
-	return var_51_0
+	return var_54_0
 end
 
-function var_0_0.getFightCardChoiceSkillIdByIndex(arg_52_0, arg_52_1, arg_52_2)
-	local var_52_0 = lua_fight_card_choice.configDict[arg_52_1]
+function var_0_0.getFightCardChoiceSkillIdByIndex(arg_55_0, arg_55_1, arg_55_2)
+	local var_55_0 = lua_fight_card_choice.configDict[arg_55_1]
 
-	if var_52_0 then
-		return string.splitToNumber(var_52_0.choiceSkIlls, "#")[arg_52_2]
+	if var_55_0 then
+		return string.splitToNumber(var_55_0.choiceSkIlls, "#")[arg_55_2]
 	end
 end
 
-function var_0_0.getFightCardFootnoteConfig(arg_53_0, arg_53_1)
-	return arg_53_0.fightCardFootnoteConfig.configDict[arg_53_1]
+function var_0_0.getFightCardFootnoteConfig(arg_56_0, arg_56_1)
+	return arg_56_0.fightCardFootnoteConfig.configDict[arg_56_1]
 end
 
 var_0_0.instance = var_0_0.New()

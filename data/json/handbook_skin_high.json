@@ -113,11 +113,11 @@
     "id": 12001,
     "name": "雨幕之外",
     "nameEn": "On the Other Side of the \"Storm\"",
-    "show": false,
+    "show": true,
     "order": 11,
-    "des": "大套组描述AAA",
-    "scenePath": "",
-    "nameRes": "",
-    "iconRes": ""
+    "des": "悬置在水泊之上，另一个时空的侧影。",
+    "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_12001.prefab",
+    "nameRes": "skinhandbook_titletxt_08",
+    "iconRes": "skinhandbook_titleicon_08"
   }
 ]

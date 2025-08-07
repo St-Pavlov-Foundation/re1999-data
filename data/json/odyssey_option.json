@@ -1,0 +1,932 @@
+[
+  {
+    "id": 12100101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我会找到她",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12100201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "调查",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12100301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12100401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12200101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我倒要去瞧瞧",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12300101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "挺身而出",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22100101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "神将回应你的祷告",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22200101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "交给我吧",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我去查看",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "调查",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300501,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 32100101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "交给我吧",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 32200101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我会尽快找到",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42100101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "接受悬赏",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42200101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "一定尽力",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42200201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "调查",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42200301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42200401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52100101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "仔细查看",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52100201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "完成",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52200101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "接受",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52300101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "用密码棒解码",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52300201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "动身前往",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52300301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "挖掘",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12100102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12200102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 12300102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22100102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22200102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 22300102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 32100102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 32200102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42100102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 42200102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52100102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52200102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 52300102,
+    "unlockCondition": "",
+    "notFinish": 1,
+    "desc": "离开",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21400101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你有什么麻烦么？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21400102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "真是稀奇，一个塞壬在呼救。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21500101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "雅典很少有你这样粗鲁的人。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21500102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "一个雇佣兵在寻求另一个雇佣兵的帮助？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21500103,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "既然这涉及到神教成员。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21500104,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "让我们来聊聊报酬。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21600101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我只是个雇佣兵。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 21600102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你似乎在说些……哲学？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31400101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你需要我去和谁战斗？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31400102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我对你的研究感兴趣。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31400201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我要和一只戈尔工共事？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31400202,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "举起弓箭",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31500101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我可以潜入进去。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31500102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我暂时没什么主意。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31500201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "她似乎是个无理数。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31500202,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "她说不出话了。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31600101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "神教可不是剧院常客会随口说出的东西。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 31600102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你都知道了些什么？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 41400101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我很惊讶我竟然能听懂一些。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 41400102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "或许我正在见证神谕被降下。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 41500101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你在做什么？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 41500102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你在模仿雕塑么？",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 51500101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "我是个雇佣兵，专门解决烦恼。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 51500102,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "你可以告诉我，我不会告诉任何人。",
+    "subDesc": "",
+    "reward": "",
+    "dataBase": 0,
+    "story": 0
+  },
+  {
+    "id": 11000101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 101,
+    "story": 0
+  },
+  {
+    "id": 11000201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 102,
+    "story": 0
+  },
+  {
+    "id": 31000501,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 103,
+    "story": 0
+  },
+  {
+    "id": 31000401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 104,
+    "story": 0
+  },
+  {
+    "id": 11000501,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 111,
+    "story": 0
+  },
+  {
+    "id": 11000601,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 120,
+    "story": 0
+  },
+  {
+    "id": 11000701,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 121,
+    "story": 0
+  },
+  {
+    "id": 11000801,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 126,
+    "story": 0
+  },
+  {
+    "id": 11000901,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 114,
+    "story": 0
+  },
+  {
+    "id": 21000101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 122,
+    "story": 0
+  },
+  {
+    "id": 21000201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 113,
+    "story": 0
+  },
+  {
+    "id": 21000301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 115,
+    "story": 0
+  },
+  {
+    "id": 31000101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 116,
+    "story": 0
+  },
+  {
+    "id": 31000201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 123,
+    "story": 0
+  },
+  {
+    "id": 31000301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 105,
+    "story": 0
+  },
+  {
+    "id": 41000101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 117,
+    "story": 0
+  },
+  {
+    "id": 41000201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 118,
+    "story": 0
+  },
+  {
+    "id": 41000301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 124,
+    "story": 0
+  },
+  {
+    "id": 41000401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 106,
+    "story": 0
+  },
+  {
+    "id": 41000501,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 107,
+    "story": 0
+  },
+  {
+    "id": 51000101,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 119,
+    "story": 0
+  },
+  {
+    "id": 51000201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 125,
+    "story": 0
+  },
+  {
+    "id": 51000301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 108,
+    "story": 0
+  },
+  {
+    "id": 51000401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 109,
+    "story": 0
+  },
+  {
+    "id": 51000501,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "收录数据",
+    "subDesc": "",
+    "reward": "exp#50",
+    "dataBase": 110,
+    "story": 0
+  },
+  {
+    "id": 11010201,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "开始行动",
+    "subDesc": "",
+    "reward": "exp#200",
+    "dataBase": 0,
+    "story": 2030524
+  },
+  {
+    "id": 11010301,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "开始行动",
+    "subDesc": "",
+    "reward": "exp#200",
+    "dataBase": 0,
+    "story": 2030525
+  },
+  {
+    "id": 11010401,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "开始行动",
+    "subDesc": "",
+    "reward": "exp#200",
+    "dataBase": 0,
+    "story": 2030526
+  },
+  {
+    "id": 11010701,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "开始行动",
+    "subDesc": "",
+    "reward": "exp#200",
+    "dataBase": 0,
+    "story": 2030531
+  },
+  {
+    "id": 11010801,
+    "unlockCondition": "",
+    "notFinish": 0,
+    "desc": "开始行动",
+    "subDesc": "",
+    "reward": "exp#200",
+    "dataBase": 0,
+    "story": 2030532
+  }
+]

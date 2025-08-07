@@ -214,5 +214,17 @@
     "skinId": 309403,
     "motion": "sikao|shouwan|naotou|toukui|anfu",
     "onlyStopCut": 1
+  },
+  {
+    "heroId": 3051,
+    "skinId": 305104,
+    "motion": "chayao",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3065,
+    "skinId": 306504,
+    "motion": "yuedu",
+    "onlyStopCut": 1
   }
 ]

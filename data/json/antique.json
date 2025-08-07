@@ -163,5 +163,20 @@
     "storyId": 800003,
     "iconArea": 0,
     "effect": "v1a9_caidai"
+  },
+  {
+    "id": 3051001,
+    "name": "刺客观测反馈",
+    "nameen": "Assassin Observation Result",
+    "icon": "v2a9_antique_icon_1",
+    "gifticon": "v2a9_antique_icon_1",
+    "sign": "501207",
+    "title": "刺客观测反馈",
+    "titleen": "Assassin Observation Result",
+    "desc": "观测及其施与的影响并不是单向的。远方的暴风同样会影响到蝴蝶的振翅，这份赠礼便是其证明。",
+    "sources": "",
+    "storyId": 800004,
+    "iconArea": 0,
+    "effect": "v1a9_caidai"
   }
 ]

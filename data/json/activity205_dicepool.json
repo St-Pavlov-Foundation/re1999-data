@@ -1,0 +1,74 @@
+[
+  {
+    "id": 19302101,
+    "dicePoints": "-1#-1#0#1#2#3",
+    "winDice": 0,
+    "name": "夏日美酒",
+    "desc": "安逸而轻缓，举杯小酌，何须奔波。",
+    "weight": 30,
+    "iconRes": "v2a9_act205_ship_6"
+  },
+  {
+    "id": 19302102,
+    "dicePoints": "1#2#3#4#5#6",
+    "winDice": 0,
+    "name": "破浪者",
+    "desc": "循规蹈矩的选择，无惧浪涛，稳步向前。",
+    "weight": 20,
+    "iconRes": "v2a9_act205_ship_3"
+  },
+  {
+    "id": 19302103,
+    "dicePoints": "2#4#5#6#6#7",
+    "winDice": 0,
+    "name": "提丰之子",
+    "desc": "兼具野心与保守的选择，驶向海的更远方。",
+    "weight": 15,
+    "iconRes": "v2a9_act205_ship_8"
+  },
+  {
+    "id": 19302104,
+    "dicePoints": "0#5#5#5#5#5",
+    "winDice": 0,
+    "name": "米诺陶洛斯的复仇",
+    "desc": "满腹雄心壮志的人们，乘上此船，终将抵达海的尽头。",
+    "weight": 15,
+    "iconRes": "v2a9_act205_ship_4"
+  },
+  {
+    "id": 19302105,
+    "dicePoints": "-2#-1#-1#9#9#9",
+    "winDice": 0,
+    "name": "愤怒公牛",
+    "desc": "破釜沉舟的选择，若非满载而归，便成为死去的传奇。",
+    "weight": 20,
+    "iconRes": "v2a9_act205_ship_7"
+  },
+  {
+    "id": 19302106,
+    "dicePoints": "1#1#2#2#3#3",
+    "winDice": 0,
+    "name": "迷宫之弓",
+    "desc": "古怪的选择，当驶入无人涉足过的海域，它或将为你领航？",
+    "weight": 10,
+    "iconRes": "v2a9_act205_ship_2"
+  },
+  {
+    "id": 19302107,
+    "dicePoints": "4#4#5#5#6#6",
+    "winDice": 0,
+    "name": "梅杜莎",
+    "desc": "“纹丝不动”的选择，在某些厌恶变化的船员眼中，她具有令人痴迷的魅力。",
+    "weight": 10,
+    "iconRes": "v2a9_act205_ship_3"
+  },
+  {
+    "id": 19302108,
+    "dicePoints": "",
+    "winDice": 1,
+    "name": "黑帝斯的猎犬",
+    "desc": "他们说：“笨蛋才会放弃百分百的赢面。”但也有人说：“会失败的人才是英雄。”你说呢？",
+    "weight": 0,
+    "iconRes": "v2a9_act205_ship_5"
+  }
+]

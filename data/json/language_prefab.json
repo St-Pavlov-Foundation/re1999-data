@@ -13961,7 +13961,7 @@
   },
   {
     "id": "p_mainsceneswitchview_title_2",
-    "lang": "箱中布景"
+    "lang": "幕布更换"
   },
   {
     "id": "p_v2a2_dungeonmapview_task",
@@ -15121,7 +15121,7 @@
   },
   {
     "id": "p_mainsceneskinmaterialtipview_txt_tagname",
-    "lang": "主界面"
+    "lang": "幕布更换"
   },
   {
     "id": "p_v2a2_eliminate_resultview_txt_Click_Reward",
@@ -20981,7 +20981,7 @@
   },
   {
     "id": "p_v3a0_commandstation_help_2_txt_2",
-    "lang": "之前版本中未完成的任务，则会在下一个版本中转化为「遗落事项」任务。该类任务会每周更新，直至收集齐对应版本中所有遗漏的“密函卷轴”。"
+    "lang": "之前版本中未完成的任务，则会在下一个版本中转化为「遗落事项」任务。该类任务会随版本更新，部分任务可以多次完成直至收集齐对应版本中所有遗漏的“密函卷轴”。"
   },
   {
     "id": "p_v3a0_commandstation_help_3_txt_1",
@@ -21050,5 +21050,1365 @@
   {
     "id": "p_v3a0_storeroleskinview_rolename2",
     "lang": "J"
+  },
+  {
+    "id": "p_v2a9_storeview_txt_title1",
+    "lang": "舶来珍奇货"
+  },
+  {
+    "id": "p_v2a9_storeview_txt_title2",
+    "lang": "半岛新商品"
+  },
+  {
+    "id": "p_v2a9_storeview_txt_title3",
+    "lang": "庄园的收获"
+  },
+  {
+    "id": "p_odysseysuccview_txt_title",
+    "lang": "击败敌人波次"
+  },
+  {
+    "id": "p_odysseybagview_txt_equip",
+    "lang": "装备"
+  },
+  {
+    "id": "p_odysseybagview_txt_task",
+    "lang": "任务物品"
+  },
+  {
+    "id": "p_odysseyherogroupview_txt_enemy",
+    "lang": "敌方详情"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_title1",
+    "lang": "线索"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_title2",
+    "lang": "相关物品"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_title3",
+    "lang": "奖励"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_goto",
+    "lang": "追踪"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_Exposed",
+    "lang": "长按揭露"
+  },
+  {
+    "id": "p_odysseymemberstipview_txt_dead",
+    "lang": "已打败"
+  },
+  {
+    "id": "p_odysseymembersview_txt_title",
+    "lang": "<size=72>神</size>教成员"
+  },
+  {
+    "id": "p_odysseysuittipview_txt_uneffect",
+    "lang": "未激活"
+  },
+  {
+    "id": "p_odysseysuittipview_txt_effect",
+    "lang": "激活中"
+  },
+  {
+    "id": "p_assassinbuildinglevelupsuccessview_txt_success",
+    "lang": "翻修完成"
+  },
+  {
+    "id": "p_assassinbuildinglevelupview_txt_levelup",
+    "lang": "翻修"
+  },
+  {
+    "id": "p_assassinbuildingmapview_txt_develop",
+    "lang": "刺客养成"
+  },
+  {
+    "id": "p_assassinloginview_txt_dec",
+    "lang": "开始同步"
+  },
+  {
+    "id": "p_assassinquestdetailview_txt_start",
+    "lang": "接受任务"
+  },
+  {
+    "id": "p_assassinquestdetailview_txt_start2",
+    "lang": "收集数据"
+  },
+  {
+    "id": "p_assassinquestdetailview_txt_rewardTips",
+    "lang": "奖励："
+  },
+  {
+    "id": "p_assassinstealthgameview_txt_rewardTips",
+    "lang": "§升级"
+  },
+  {
+    "id": "p_assassinquestdetailview_txt_end",
+    "lang": "结束回合"
+  },
+  {
+    "id": "p_v2a9_dungeonmapview_txt_stealth",
+    "lang": "步入影中"
+  },
+  {
+    "id": "p_v2a9_dungeonmapview_txt_library",
+    "lang": "数据库"
+  },
+  {
+    "id": "p_v2a9_dungeonmapview_txt_shop",
+    "lang": "§克劳迪娅账务室"
+  },
+  {
+    "id": "p_characterweaponview_txt_mainTitle",
+    "lang": "<size=45>武</size>器"
+  },
+  {
+    "id": "p_characterweaponview_txt_mainTitleEn",
+    "lang": "Primary Weapon"
+  },
+  {
+    "id": "p_characterweaponview_txt_unequip",
+    "lang": "选择左侧武器进行装备"
+  },
+  {
+    "id": "p_characterweaponview_txt_secondTitle",
+    "lang": "<size=45>小</size>型武器"
+  },
+  {
+    "id": "p_characterweaponview_txt_secondTitleEn",
+    "lang": "Secondary Waepon"
+  },
+  {
+    "id": "p_characterweaponview_txt_locked",
+    "lang": "洞悉二解锁"
+  },
+  {
+    "id": "p_characterweaponview_txt_unequip2",
+    "lang": "选择右侧小型武器进行装备"
+  },
+  {
+    "id": "p_characterweaponview_txt_effect",
+    "lang": "武器效果"
+  },
+  {
+    "id": "p_characterweaponview_txt_effect2",
+    "lang": "组合效果"
+  },
+  {
+    "id": "p_characterweaponview_txt_empty",
+    "lang": "暂无效果"
+  },
+  {
+    "id": "p_odysseyrewardview_txt_title",
+    "lang": "探索等级"
+  },
+  {
+    "id": "p_odysseyrewardview_txt_tips",
+    "lang": "达到<#F8C480><size=46>LV10</color></size>，领取APPLe衣着<#F8C480><size=46>智慧尽头</color></size>"
+  },
+  {
+    "id": "p_odysseyrewardview_txt_role",
+    "lang": "智慧尽头"
+  },
+  {
+    "id": "p_odysseyrewardview_txt_rolename",
+    "lang": "APPLe"
+  },
+  {
+    "id": "p_odysseytaskview_txt_title",
+    "lang": "限定心相"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_title",
+    "lang": "事件"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_eff",
+    "lang": "影响"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_Dir",
+    "lang": "敌人移动方向"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_title1",
+    "lang": "概况"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_title2",
+    "lang": "事件"
+  },
+  {
+    "id": "p_assassinstealthgameeventview_txt_desc",
+    "lang": "警报状态下，敌人侦查率提高20%，敌人刷新点生成敌人数量增加"
+  },
+  {
+    "id": "p_assassinstealthgamegetitemview_txt_Title",
+    "lang": "获得道具"
+  },
+  {
+    "id": "p_assassinstealthgamepauseview_txt_back",
+    "lang": "回溯"
+  },
+  {
+    "id": "p_assassinstealthgamepauseview_txt_reset",
+    "lang": "重置"
+  },
+  {
+    "id": "p_assassinstealthgamepauseview_txt_exit",
+    "lang": "暂离"
+  },
+  {
+    "id": "p_assassinstealthgamepauseview_txt_abandon",
+    "lang": "放弃"
+  },
+  {
+    "id": "p_assassinstealthgamepauseview_txt_Close",
+    "lang": "点击空白处关闭"
+  },
+  {
+    "id": "p_assassinstealthgameresultview_txt_Success",
+    "lang": "同步成功"
+  },
+  {
+    "id": "p_assassinstealthgameresultview_txt_Failed",
+    "lang": "同步失败"
+  },
+  {
+    "id": "p_assassinheroview_txt_skilltitle",
+    "lang": "刺客技能"
+  },
+  {
+    "id": "p_assassinequipview_txt_title",
+    "lang": "切换信物"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_title",
+    "lang": "道具袋"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_remove",
+    "lang": "卸下"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_equip",
+    "lang": "携带"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_ban",
+    "lang": "无法携带更多道具"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_item_title1",
+    "lang": "战斗效果"
+  },
+  {
+    "id": "p_assassinbackpackview_txt_item_title2",
+    "lang": "非战斗效果"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_title",
+    "lang": "<size=72>能</size>力"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_talentpoint",
+    "lang": "能力点"
+  },
+  {
+    "id": "p_fightaijiaoselectview_txt_title",
+    "lang": "选择刺杀目标"
+  },
+  {
+    "id": "p_v2a9_bossrush_mainview_txt_SmallTitle",
+    "lang": "特刊·鹰眼"
+  },
+  {
+    "id": "p_v2a9_bossrush_mainview_txt_NormalRecord",
+    "lang": "刺探"
+  },
+  {
+    "id": "p_v2a9_bossrush_mainview_txt_SpecialRecord",
+    "lang": "肃清"
+  },
+  {
+    "id": "p_v2a9_bossrush_mainview_txt_Locked",
+    "lang": "前往解锁"
+  },
+  {
+    "id": "p_v2a9_bossrush_leveldetail_txt_Simple",
+    "lang": "肃清"
+  },
+  {
+    "id": "p_v2a9_bossrush_leveldetail_txt_Hard",
+    "lang": "刺探"
+  },
+  {
+    "id": "p_v2a9_versionsummonaijiaohalfview_txt_allGet",
+    "lang": "已额外获取4次"
+  },
+  {
+    "id": "p_v2a9_versionsummonaijiaohalfview_txt_namecn",
+    "lang": "卡珊德拉"
+  },
+  {
+    "id": "p_v2a9_aijiaolapanelview_txt_tip",
+    "lang": "当前征集次数"
+  },
+  {
+    "id": "p_v2a9_aijiaopanelview_txt_title",
+    "lang": "累计征集，可额外获取<#E1A75B>卡珊德拉×4</color>"
+  },
+  {
+    "id": "p_v2a9_aijiaopanelview_txt_confirm",
+    "lang": "前往角色塑造"
+  },
+  {
+    "id": "p_v2a9_versionsummonkashandelahalfview_txt_allGet",
+    "lang": "已额外获取4次"
+  },
+  {
+    "id": "p_v2a9_versionsummonkashandelahalfview_txt_namecn",
+    "lang": "卡珊德拉"
+  },
+  {
+    "id": "p_v2a9_kashandelapanelview_txt_tip",
+    "lang": "当前征集次数"
+  },
+  {
+    "id": "p_v2a9_kashandelapanelview_txt_title",
+    "lang": "累计征集，可额外获取<#E1A75B>卡珊德拉×4</color>"
+  },
+  {
+    "id": "p_v2a9_kashandelapanelview_txt_confirm",
+    "lang": "前往角色塑造"
+  },
+  {
+    "id": "p_v2a9_kashandelapanelview_txt_confirmen",
+    "lang": "CONFIRM"
+  },
+  {
+    "id": "p_odysseydungeonview_txt_myth",
+    "lang": "神话生物"
+  },
+  {
+    "id": "p_odysseydungeonview_txt_religion",
+    "lang": "神教成员"
+  },
+  {
+    "id": "p_odysseydungeonview_txt_backpack",
+    "lang": "背包"
+  },
+  {
+    "id": "p_odysseydungeonview_txt_herogroup",
+    "lang": "编队"
+  },
+  {
+    "id": "p_odysseydungeonview_txt_database",
+    "lang": "数据库"
+  },
+  {
+    "id": "p_mainview_mail_2",
+    "lang": "<color=#F1EFE3><b>邮<indent=32>件</indent></b></color>"
+  },
+  {
+    "id": "p_mainview_task_2",
+    "lang": "<color=#F1EFE3><b>任<indent=32>务</indent></b></color>"
+  },
+  {
+    "id": "p_mainview_backpack_2",
+    "lang": "<color=#F1EFE3><b>仓<indent=32>库</indent></b></color>"
+  },
+  {
+    "id": "p_mainview_store_2",
+    "lang": "<color=#F1EFE3><b>银<indent=32>行</indent></b></color>"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_tag",
+    "lang": "惊喜日历"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_dec",
+    "lang": "聆听特别的咆哮，这本免费的日历等待着所有朋友"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_tips",
+    "lang": "每日登录领取 <#EF4444>纯雨滴×90、苦目糖果×1</color>"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_canget",
+    "lang": "今日可领取"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_hasget",
+    "lang": "今日已领取"
+  },
+  {
+    "id": "p_v2a9_monthcard_panelview_txt_doneget",
+    "lang": "已全部领取"
+  },
+  {
+    "id": "p_a11_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "睡前故事"
+  },
+  {
+    "id": "p_a11_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "红墙"
+  },
+  {
+    "id": "p_a13_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "太阳的背面"
+  },
+  {
+    "id": "p_a13_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "夜游十字街"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_tips",
+    "lang": "<color=#f5dc8e>获取艾吉奥</color>后可领取追加征集道具"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_shopnamecn1",
+    "lang": "与影同行Ⅱ"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_shopnameEn1",
+    "lang": "With the Shadows II"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_num1",
+    "lang": "共计<size=32>×7</size>"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_shopnameEn2",
+    "lang": "With the Shadows I"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_shopnamecn2",
+    "lang": "与影同行Ⅰ"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview_txt_num2",
+    "lang": "共计<size=32>×13</size>"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview2_txt_shopnamecn1",
+    "lang": "与西风同行Ⅱ"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview2_txt_shopnameEn2",
+    "lang": "With the West Wind II"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview2_txt_shopnamecn2",
+    "lang": "与西风同行Ⅰ"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview2_txt_shopnameEn3",
+    "lang": "With the West Wind I"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview2_txt_tips",
+    "lang": "<color=#f5dc8e>获取卡珊德拉</color>后可领取追加征集道具"
+  },
+  {
+    "id": "p_v2a9_gift_panelview_txt_total",
+    "lang": "共计"
+  },
+  {
+    "id": "p_v2a9_gift_panelview_txt_dec",
+    "lang": "购买与影同行系列礼包，立即获取“时代引导先知”征集道具，在<#f5dc8e>获取艾吉奥</color>后领取追加征集道具"
+  },
+  {
+    "id": "p_v2a9_gift_panelview2_txt_dec",
+    "lang": "购买与西风同行系列礼包，立即获取“鹰翔于酒色之海”征集道具，在<#f5dc8e>获取卡珊德拉</color>后领取追加征集道具"
+  },
+  {
+    "id": "p_v2a9_gift_uicombopack_txt_dec",
+    "lang": "开启此馈赠，可获取箱中布景【鹰巢园地】、框架艺术【伊卡洛斯所见】和纯雨滴*1000。\n与鹰同行的人们，悄然走过历史的间隙，又在你的庭中流连。"
+  },
+  {
+    "id": "p_helpcontentitem_60101_txt_title1",
+    "lang": "屋顶/地面"
+  },
+  {
+    "id": "p_helpcontentitem_60102_txt_title1",
+    "lang": "高塔"
+  },
+  {
+    "id": "p_helpcontentitem_60103_txt_title1",
+    "lang": "隐匿点"
+  },
+  {
+    "id": "p_helpcontentitem_60104_txt_title1",
+    "lang": "警戒区域"
+  },
+  {
+    "id": "p_helpcontentitem_60105_txt_title1",
+    "lang": "水域"
+  },
+  {
+    "id": "p_helpcontentitem_60106_txt_title1",
+    "lang": "敌人刷新点"
+  },
+  {
+    "id": "p_helpcontentitem_60107_txt_title1",
+    "lang": "未知区域"
+  },
+  {
+    "id": "p_helpcontentitem_60108_txt_title1",
+    "lang": "警报"
+  },
+  {
+    "id": "p_helpcontentitem_60109_txt_title1",
+    "lang": "信仰之跃"
+  },
+  {
+    "id": "p_helpcontentitem_60110_txt_title1",
+    "lang": "潜行状态"
+  },
+  {
+    "id": "p_helpcontentitem_60111_txt_title1",
+    "lang": "暴露"
+  },
+  {
+    "id": "p_helpcontentitem_60112_txt_title1",
+    "lang": "踪迹"
+  },
+  {
+    "id": "p_helpcontentitem_60113_txt_title1",
+    "lang": "刺杀"
+  },
+  {
+    "id": "p_helpcontentitem_60114_txt_title1",
+    "lang": "空中刺杀"
+  },
+  {
+    "id": "p_helpcontentitem_60115_txt_title1",
+    "lang": "攻击/伏击"
+  },
+  {
+    "id": "p_helpcontentitem_60116_txt_title1",
+    "lang": "联合攻击/联合伏击"
+  },
+  {
+    "id": "p_helpcontentitem_60117_txt_title1",
+    "lang": "隐匿刺杀"
+  },
+  {
+    "id": "p_helpcontentitem_60118_txt_title1",
+    "lang": "濒死"
+  },
+  {
+    "id": "p_helpcontentitem_60119_txt_title1",
+    "lang": "遗体"
+  },
+  {
+    "id": "p_helpcontentitem_60120_txt_title1",
+    "lang": "事件"
+  },
+  {
+    "id": "p_helpcontentitem_60121_txt_title1",
+    "lang": "敌人移动"
+  },
+  {
+    "id": "p_helpcontentitem_60122_txt_title1",
+    "lang": "侦查"
+  },
+  {
+    "id": "p_helpcontentitem_60123_txt_title1",
+    "lang": "追击"
+  },
+  {
+    "id": "p_helpcontentitem_60124_txt_title1",
+    "lang": "敌人攻击"
+  },
+  {
+    "id": "p_helpcontentitem_60125_txt_title1",
+    "lang": "固守"
+  },
+  {
+    "id": "p_helpcontentitem_60126_txt_title1",
+    "lang": "卡邦克鲁"
+  },
+  {
+    "id": "p_helpcontentitem_60127_txt_title1",
+    "lang": "圣殿骑士·斧兵"
+  },
+  {
+    "id": "p_helpcontentitem_60128_txt_title1",
+    "lang": "占卜妖精"
+  },
+  {
+    "id": "p_helpcontentitem_60129_txt_title1",
+    "lang": "星·逐昏双狼"
+  },
+  {
+    "id": "p_helpcontentitem_60130_txt_title1",
+    "lang": "圣殿骑士·弓兵"
+  },
+  {
+    "id": "p_helpcontentitem_60131_txt_title1",
+    "lang": "基基图克"
+  },
+  {
+    "id": "p_helpcontentitem_60132_txt_title1",
+    "lang": "圣殿骑士·长官"
+  },
+  {
+    "id": "p_helpcontentitem_60133_txt_title1",
+    "lang": "引导之人的造物"
+  },
+  {
+    "id": "p_helpcontentitem_60101_txt_dec1",
+    "lang": "刺客可以不借助梯子，在屋顶和地面之间进行移动。\n大部分敌人无法直接跨越两种地形，部分敌人可以通过梯子跨越两种地形。\n一个格子最多容纳4名敌人。"
+  },
+  {
+    "id": "p_helpcontentitem_60102_txt_dec1",
+    "lang": "高塔处于四个格子的中心，刺客可消耗行动力爬上高塔，爬上高塔的刺客会立刻进入潜行状态，且不会被敌人侦查。\n敌人无法登上高塔。"
+  },
+  {
+    "id": "p_helpcontentitem_60103_txt_dec1",
+    "lang": "干草堆和屋顶花园被视为隐匿点。处于潜行状态下的刺客可以进入隐匿点，隐匿点中的刺客不会被侦查。"
+  },
+  {
+    "id": "p_helpcontentitem_60104_txt_dec1",
+    "lang": "警戒区域中若存在敌人，进入警戒区域的刺客必定会被侦查导致暴露。"
+  },
+  {
+    "id": "p_helpcontentitem_60105_txt_dec1",
+    "lang": "水域中的刺客无法使用刺客技能。"
+  },
+  {
+    "id": "p_helpcontentitem_60106_txt_dec1",
+    "lang": "每个回合，会从敌人刷新点中生成敌人，警报状态下会生成更多敌人。"
+  },
+  {
+    "id": "p_helpcontentitem_60107_txt_dec1",
+    "lang": "需要刺客进入该格子，或是技能影响后，才能知晓未知区域中的情况。"
+  },
+  {
+    "id": "p_helpcontentitem_60108_txt_dec1",
+    "lang": "当有刺客在敌方回合处于暴露状态，则会触发警报，警报状态下敌人侦查率提高，敌人刷新点会生成更多敌人。\n警报会在场上连续2回合无刺客暴露的情况下，变回常规状态。"
+  },
+  {
+    "id": "p_helpcontentitem_60109_txt_dec1",
+    "lang": "当刺客处于高塔上时，点击高塔周围四格内的干草堆，可以使用信仰之跃，不消耗行动力移动到对应的干草堆中。"
+  },
+  {
+    "id": "p_helpcontentitem_60110_txt_dec1",
+    "lang": "刺客在无敌人的区域会自动变为潜行状态，潜行状态下，刺客可以执行刺杀相关的动作。"
+  },
+  {
+    "id": "p_helpcontentitem_60111_txt_dec1",
+    "lang": "当刺客被敌人侦查发现，会进入暴露状态。暴露状态下，敌人会朝着暴露的刺客移动。\n敌人会在敌方回合对暴露的刺客发动攻击。"
+  },
+  {
+    "id": "p_helpcontentitem_60112_txt_dec1",
+    "lang": "当刺客从暴露状态转变为潜行状态时，会在进入潜行状态的格子留下踪迹，敌人会继续追踪此踪迹。\n当有敌人到达踪迹位置或踪迹存在2回合后，踪迹消失。"
+  },
+  {
+    "id": "p_helpcontentitem_60113_txt_dec1",
+    "lang": "处于潜行状态的刺客，可以对同格子的敌人使用刺杀，刺杀会直接击杀敌人。"
+  },
+  {
+    "id": "p_helpcontentitem_60114_txt_dec1",
+    "lang": "处于高塔/屋顶，并且处于潜行状态下的刺客，可以对相邻地面格子的敌人使用空中刺杀，会在击杀敌人的同时，移动到该格子。"
+  },
+  {
+    "id": "p_helpcontentitem_60115_txt_dec1",
+    "lang": "当刺客对敌人发动攻击，会与格子中的所有敌人一同进入战斗。\n当刺客处于潜行状态下，攻击会自动转化为伏击，通过伏击进入战斗，暴击创伤提升。"
+  },
+  {
+    "id": "p_helpcontentitem_60116_txt_dec1",
+    "lang": "当有多名刺客处于同一格子，可以对敌人发动联合攻击，发动后，格子中的所有刺客和所有敌人一同进入战斗。\n当刺客处于潜行状态下，联合攻击会自动转化为联合伏击，通过联合伏击进入战斗，暴击创伤提升。"
+  },
+  {
+    "id": "p_helpcontentitem_60117_txt_dec1",
+    "lang": "当刺客处于隐匿点，可以对同格子的敌人发动隐匿刺杀，隐匿刺杀的敌人不会留下遗体，并直接获得其掉落的道具。"
+  },
+  {
+    "id": "p_helpcontentitem_60118_txt_dec1",
+    "lang": "当刺客血量降低至0后，会陷入濒死状态，濒死状态下无法执行任何动作。\n其他刺客可以通过道具或者刺客技能，将濒死的刺客恢复为正常状态。"
+  },
+  {
+    "id": "p_helpcontentitem_60119_txt_dec1",
+    "lang": "敌人被击杀后，会留下遗体，在无敌人的情况下，可以执行清理敌人遗体的操作，清理后有概率获得道具。\n敌人移动到有遗体的格子，会直接触发警报。"
+  },
+  {
+    "id": "p_helpcontentitem_60120_txt_dec1",
+    "lang": "回合初会触发一个事件，事件会造成各种各样的影响，同时还会决定敌人在场上未有暴露刺客的情况下的移动方向。"
+  },
+  {
+    "id": "p_helpcontentitem_60121_txt_dec1",
+    "lang": "在场上未有暴露刺客的情况下，敌人会按照事件规定的方向统一进行移动。\n当场上存在暴露的刺客，敌人会朝着暴露刺客所在的格子移动。"
+  },
+  {
+    "id": "p_helpcontentitem_60122_txt_dec1",
+    "lang": "当刺客进入存在敌人的格子，或敌人进入刺客存在的格子，都会触发敌人的侦查。\n每个敌人的侦查单独计算，被侦查的刺客会从潜行状态变为暴露状态。"
+  },
+  {
+    "id": "p_helpcontentitem_60123_txt_dec1",
+    "lang": "当暴露状态的刺客从存在敌人的格子离开，格子中一半的敌人会在刺客移动时尝试追击，若该格子可移动，会跟随刺客移动。"
+  },
+  {
+    "id": "p_helpcontentitem_60124_txt_dec1",
+    "lang": "敌人回合，敌人会对同格子暴露的刺客发动攻击，该格子中的所有敌人会和所有暴露的刺客进入战斗。"
+  },
+  {
+    "id": "p_helpcontentitem_60125_txt_dec1",
+    "lang": "固守状态下的敌人不会移动。"
+  },
+  {
+    "id": "p_helpcontentitem_60126_txt_dec1",
+    "lang": "观测错误产生的怪物。侦查率很高，好在战斗力不强。"
+  },
+  {
+    "id": "p_helpcontentitem_60127_txt_dec1",
+    "lang": "斧兵无法登上房顶，但是拥有很强的战斗力，飞刀也无法对其造成有效的杀伤，尽量避免与其进入正面战斗。"
+  },
+  {
+    "id": "p_helpcontentitem_60128_txt_dec1",
+    "lang": "观测错误产生的怪物。可以不使用梯子跨越屋顶和地面。"
+  },
+  {
+    "id": "p_helpcontentitem_60129_txt_dec1",
+    "lang": "观测错误产生的怪物。一回合可以移动2格。"
+  },
+  {
+    "id": "p_helpcontentitem_60130_txt_dec1",
+    "lang": "弓兵移动前，会随机对十字范围内，已经暴露的刺客造成25%的血量伤害。"
+  },
+  {
+    "id": "p_helpcontentitem_60131_txt_dec1",
+    "lang": "观测错误产生的怪物。处于水域中时，进入战斗后的属性大幅提升。"
+  },
+  {
+    "id": "p_helpcontentitem_60132_txt_dec1",
+    "lang": "长官会在敌人生成阶段，在所在格子额外生成一名兵卒。"
+  },
+  {
+    "id": "p_helpcontentitem_60133_txt_dec1",
+    "lang": "观测错误产生的怪物。不受道具和刺客技能影响，只能通过正面战斗击败。"
+  },
+  {
+    "id": "p_helpcontentitem_60301_txt_title1",
+    "lang": "武器轮引导"
+  },
+  {
+    "id": "p_helpcontentitem_60301_txt_dec1",
+    "lang": "点击刺客标记，打开武器轮"
+  },
+  {
+    "id": "p_helpcontentitem_60301_txt_dec2",
+    "lang": "在武器轮中选中道具，可查看具体效果，再次点击中心确认键即可释放"
+  },
+  {
+    "id": "p_helpcontentitem_60301_txt_dec3",
+    "lang": "每种道具会有独立的使用次数"
+  },
+  {
+    "id": "p_helpcontentitem_60301_txt_dec4",
+    "lang": "当道具次数为0时，道具将无法使用"
+  },
+  {
+    "id": "p_helpcontentitem_60302_txt_title1",
+    "lang": "目击值引导"
+  },
+  {
+    "id": "p_helpcontentitem_60302_txt_dec1",
+    "lang": "此时敌人可被任意攻击触发刺杀"
+  },
+  {
+    "id": "p_helpcontentitem_60302_txt_dec2",
+    "lang": "敌人每回合的目击值提升，受到的伤害也随之减少"
+  },
+  {
+    "id": "p_helpcontentitem_60302_txt_dec3",
+    "lang": "此时敌人获得高额护盾且无法被刺杀，护盾被击破后目击值清零"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_title",
+    "lang": "「影的痕迹」引导"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec1",
+    "lang": "「影的痕迹」中，我们需要作为刺客完成各种任务。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec2",
+    "lang": "刺客进行大部分行动都需要消耗行动力，当刺客行动力不足时，可以结束回合。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec3",
+    "lang": "回合结束后会进入敌人的回合，敌人执行入场、移动、攻击等操作。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec4",
+    "lang": "敌人回合结束后，会再次进入刺客回合，会恢复所有刺客的行动力。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec5",
+    "lang": "当刺客进入存在敌人的格子，或是敌人移动到存在刺客的格子，都会触发敌人的侦查，被侦查出来的刺客会进入暴露状态。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec6",
+    "lang": "暴露状态下，敌人会对同格子的刺客进行攻击。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec7",
+    "lang": "刺客在没有存活敌人的格子，或攀爬高塔后，会自动进入潜行状态。"
+  },
+  {
+    "id": "p_helpcontentitem_60303_txt_dec8",
+    "lang": "潜行状态下可以执行刺杀等动作。"
+  },
+  {
+    "id": "p_v2a9_bossrush_achievement_txt_title1",
+    "lang": "【刺探】"
+  },
+  {
+    "id": "p_v2a9_bossrush_achievement_txt_title2",
+    "lang": "【肃清】"
+  },
+  {
+    "id": "p_v2a9_bossrush_achievement_txt_title3",
+    "lang": "累计调查进度"
+  },
+  {
+    "id": "p_v2a9_bossrushleveldetail_txt_ScoreDesc1",
+    "lang": "【刺探】最佳进度达到"
+  },
+  {
+    "id": "p_v2a9_bossrushleveldetail_txt_ScoreDesc2",
+    "lang": "【肃清】最佳进度达到"
+  },
+  {
+    "id": "p_versionactivity_2_9_enterview_txt_Activity3",
+    "lang": "克劳迪娅账务室"
+  },
+  {
+    "id": "p_versionactivity_2_9_enterview_txt_Activity4",
+    "lang": "探索等级"
+  },
+  {
+    "id": "p_act205_gamestartview_txt_Start",
+    "lang": "开始模拟"
+  },
+  {
+    "id": "p_activitycollectionpageview_txt_Get",
+    "lang": "奖励待领取！"
+  },
+  {
+    "id": "p_packagestoregoodsitem_linkgift_txt_lock",
+    "lang": "已购买"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_LvDown",
+    "lang": "降级"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_LvUp",
+    "lang": "升级"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_LvUpDisable",
+    "lang": "已满级"
+  },
+  {
+    "id": "p_odysseytalenttreeview_txt_LvUpLock",
+    "lang": "激活"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_firstStep",
+    "lang": "选择航海目标"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_secondStep",
+    "lang": "选择船队"
+  },
+  {
+    "id": "p_act205_oceanselectview_needPoint",
+    "lang": "航行成功所需点数："
+  },
+  {
+    "id": "p_act193_recruitview_txt_Progress",
+    "lang": "追逐中……"
+  },
+  {
+    "id": "p_act193_recruitview_txt_Success",
+    "lang": "追逐完成"
+  },
+  {
+    "id": "p_act193_recruitview_txt_Failed",
+    "lang": "追逐失败"
+  },
+  {
+    "id": "p_act193_recruitview_txt_Again",
+    "lang": "开启下一轮"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_roletxt1",
+    "lang": "致冥府的门扉"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_roletxt2",
+    "lang": "群蛇的春祭"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_roletxt3",
+    "lang": "酒色之海的女儿"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_rolename1",
+    "lang": "马库斯"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_rolename2",
+    "lang": "冷周六"
+  },
+  {
+    "id": "p_v2a9_storeroleskinview_rolename3",
+    "lang": "维拉"
+  },
+  {
+    "id": "p_v2a9_aziopanelview_txt_title",
+    "lang": "累计征集，可额外获取<#E1A75B>艾吉奥×4</color>"
+  },
+  {
+    "id": "p_v2a9_versionsummonaziohalfview_txt_allGet",
+    "lang": "已额外获取4次"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview3_txt_shopnamecn1",
+    "lang": "兄弟会赠礼"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview3_txt_shopnamecn2",
+    "lang": "伊甸的间奏"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview3_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview4_txt_shopnamecn1",
+    "lang": "达·芬奇赠礼"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview4_txt_shopnamecn2",
+    "lang": "佣兵礼赞·特惠"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview4_txt_shopnamecn3",
+    "lang": "佣兵礼赞·酬宾"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview5_txt_tips",
+    "lang": "开启此馈赠，可获取箱中布景【鹰巢园地】、框架艺术【伊卡洛斯所见】和纯雨滴*1000。"
+  },
+  {
+    "id": "p_v2a9_giftrecommendview5_txt_overview",
+    "lang": "装配预览"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_Need",
+    "lang": "所需点数"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_All",
+    "lang": "投掷点数总和"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_fail",
+    "lang": "航海失败"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_success",
+    "lang": "航海胜利"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_Finished",
+    "lang": "完成"
+  },
+  {
+    "id": "p_act205_oceanresultview_txt_New",
+    "lang": "开启新一轮"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_point",
+    "lang": "可投掷点数"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_next",
+    "lang": "下一步"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_start",
+    "lang": "开始模拟"
+  },
+  {
+    "id": "p_act205_oceanselectview_txt_reset",
+    "lang": "重选地点"
+  },
+  {
+    "id": "p_act205_oceanshowview_txt_loading",
+    "lang": "航行中…"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_1",
+    "lang": "无目击值"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_2",
+    "lang": "低目击值"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_3",
+    "lang": "中目击值"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_4",
+    "lang": "高目击值"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_5",
+    "lang": "此时敌人可被任意攻击触发刺杀"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_6",
+    "lang": "敌人每回合的目击值提升，受到的伤害也随之减少"
+  },
+  {
+    "id": "p_v2a9_alert_help_1_txt_7",
+    "lang": "此时敌人获得高额护盾且无法被刺杀，护盾被击破后目击值清零"
+  },
+  {
+    "id": "p_v2a9_storeblockpackageview_name",
+    "lang": "「贡多拉隧道」"
+  },
+  {
+    "id": "p_v2a9_storeblockpackageview_dec",
+    "lang": "*集齐当期<color=#A65E28>活动兑换</color>及<color=#A65E28>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_v2a9_role_help_1_txt_1",
+    "lang": "艾吉奥可以通过选择装备武器和小型武器获得战斗加成"
+  },
+  {
+    "id": "p_v2a9_role_help_1_txt_2",
+    "lang": "武器和小型武器搭配，会产生组合效果"
+  },
+  {
+    "id": "p_v2a9_role_help_2_txt_1",
+    "lang": "卡珊德拉通过<#FF906A>洞悉</COLOR>会获得5点能力点"
+  },
+  {
+    "id": "p_v2a9_role_help_2_txt_2",
+    "lang": "消耗能力点可在<#FF906A>猎人、战士、刺客</COLOR>的分支中从下到上选择能力进行激活"
+  },
+  {
+    "id": "p_v2a9_role_help_3_txt_1",
+    "lang": "选择分支后，需要将该条分支能力<#FF906A>全部激活</COLOR>，才可再激活其他分支能力\n<#FF906A>率先</COLOR>激活的分支，会激活对应的<#FF906A>力场效果</COLOR>"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_1_txt_1",
+    "lang": "「影的痕迹」引导"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_1_txt_2",
+    "lang": "「影的痕迹」中，我们需要作为刺客完成各种任务。"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_2_txt_1",
+    "lang": "行动力耗尽"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_2_txt_2",
+    "lang": "行动力恢复"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_2_txt_3",
+    "lang": "刺客进行大部分行动都需要消耗行动力，当刺客行动力不足时，可以结束回合。\n回合结束后会进入敌人的回合，敌人执行入场、移动、攻击等操作。"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_2_txt_4",
+    "lang": "敌人回合结束后，会再次进入刺客回合，会恢复所有刺客的行动力。"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_3_txt_1",
+    "lang": "暴露状态"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_3_txt_2",
+    "lang": "潜行状态"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_3_txt_3",
+    "lang": "当刺客进入存在敌人的格子，或是敌人移动到存在刺客的格子，都会触发敌人的侦查，被侦查出来的刺客会进入暴露状态。\n\n暴露状态下，敌人会对同格子的刺客进行攻击。"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_3_txt_4",
+    "lang": "刺客在没有存活敌人的格子，或攀爬高塔后，会自动进入潜行状态。"
+  },
+  {
+    "id": "p_v2a9_assassin2_help_4_txt_1",
+    "lang": "潜行状态下可以执行刺杀等动作。"
+  },
+  {
+    "id": "p_v2a9_bossrush_help_1_txt_1",
+    "lang": "在鬃毛邮报特刊·鹰眼中，有<color=#ff9061>「刺探」</color>、<color=#ff9061>「肃清」</color>两种模式"
+  },
+  {
+    "id": "p_v2a9_bossrush_help_1_txt_2",
+    "lang": "<color=#ff9061>「刺探」</color>模式下，可以根据活动玩法中的游玩情况，使用<color=#ff9061>对应</color>内容对战斗进行助力"
+  },
+  {
+    "id": "p_v2a9_bossrush_help_1_txt_3",
+    "lang": "<color=#ff9061>「肃清」</color>模式下，为<color=#ff9061>常规</color>鬃毛邮报战斗"
+  },
+  {
+    "id": "p_act205_cardselectview_txt_Info",
+    "lang": "对手已部署"
+  },
+  {
+    "id": "p_act205_cardselectview_txt_InfoDescr",
+    "lang": "对手已部署，下一步选择武器和行动点，完成刺杀"
+  },
+  {
+    "id": "p_act205_cardselectview_txt_Selected",
+    "lang": "请选择："
+  },
+  {
+    "id": "p_act205_cardselectview_txt_Beat",
+    "lang": "出牌，向对手发起刺杀行动"
+  },
+  {
+    "id": "p_act205_cardshowview_txt_Broadcast",
+    "lang": "克制关系结算中"
+  },
+  {
+    "id": "p_act205_cardresultview_txt_Title1",
+    "lang": "行动失败"
+  },
+  {
+    "id": "p_act205_cardresultview_txt_Title2",
+    "lang": "自由奠基"
+  },
+  {
+    "id": "p_act205_cardresultview_txt_Title3",
+    "lang": "正义得鸣"
+  },
+  {
+    "id": "p_act205_cardresultview_txt_Title4",
+    "lang": "无形无影"
+  },
+  {
+    "id": "p_v2a9_wheel_help_1_txt_1",
+    "lang": "点击刺客标记，打开武器轮"
+  },
+  {
+    "id": "p_v2a9_wheel_help_2_txt_1",
+    "lang": "每种道具会有独立的使用次数"
+  },
+  {
+    "id": "p_v2a9_wheel_help_2_txt_2",
+    "lang": "当道具次数为0时，道具将无法使用"
+  },
+  {
+    "id": "p_v2a9_wheel_help_2_txt_3",
+    "lang": "在武器轮中选中道具，可查看具体效果，再次点击中心确认键即可释放"
+  },
+  {
+    "id": "p_characterskilltalentview_Tips_txt_LockedTips",
+    "lang": "需完全激活一条分支/天赋点不足"
+  },
+  {
+    "id": "p_assassinbuildingmapview_txt_title",
+    "lang": "蒙特里久尼庄园"
+  },
+  {
+    "id": "p_storelinkgiftgoodsview_txt_hasget",
+    "lang": "已拥有"
+  },
+  {
+    "id": "p_odysseydungeonmapselectview_txt_lock",
+    "lang": "地区未开放"
+  },
+  {
+    "id": "p_odysseydungeonrewardview_txt_taskFinish",
+    "lang": "完成任务"
+  },
+  {
+    "id": "p_odysseydungeonrewardview_txt_itemGet",
+    "lang": "获得奖励"
+  },
+  {
+    "id": "p_odysseydungeonmapselectinfoview_txt_explore",
+    "lang": "同步率："
+  },
+  {
+    "id": "p_odysseydungeonmapselectinfoview_txt_task",
+    "lang": "地区任务:"
+  },
+  {
+    "id": "p_odysseydungeonmapselectinfoview_txt_conquer",
+    "lang": "征服战"
+  },
+  {
+    "id": "p_odysseydungeonmapselectinfoview_txt_enter",
+    "lang": "进入地区"
+  },
+  {
+    "id": "p_odysseydungeoninteractview_txt_tips",
+    "lang": "获得阿尔忒弥斯的认可领取奖励"
+  },
+  {
+    "id": "p_odysseydungeoninteractview_txt_dec",
+    "lang": ""
+  },
+  {
+    "id": "p_versionactivity_2_9_enterview_txt_act1",
+    "lang": "活动正篇·上"
+  },
+  {
+    "id": "p_versionactivity_2_9_enterview_txt_act2",
+    "lang": "活动正篇·下"
+  },
+  {
+    "id": "p_assassinlinegameview_txt_title",
+    "lang": "延长线条，看看会发生什么"
+  },
+  {
+    "id": "p_assassinpointgameview_txt_title",
+    "lang": "点击颜色相同的消失点，看看能不能找到有用的信息"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_1",
+    "lang": "此处显示了当前的主线任务\n点击可以快速定位到地图中对应事件点"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_2",
+    "lang": "事件点分为需要不同类型"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_3",
+    "lang": "完成事件点可以提升探索等级"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_2_txt_1",
+    "lang": "每位上阵的角色可以装配1件装备，卡珊德拉可以额外装配1件"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_2_txt_2",
+    "lang": "编队中装配相同套装的装备达到一定数量，\n会激活额外的套装效果"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_3_txt_1",
+    "lang": "使用能力点可以选择激活不同的能力技能"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_3_txt_2",
+    "lang": "每次提升探索等级可以获得1点能力点"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_4_txt_1",
+    "lang": "通过秩序神教名单可以追踪并找出所有的神教成员\n在探索中会逐步揭露神教成员的线索，若获得神教成员的所有线索可以揭露并发起挑战"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_5_txt_1",
+    "lang": "提升探索等级会出现更高等级的佣兵，\n击败他们会掉落更多更高稀有度的装备"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_5_txt_2",
+    "lang": "每8个小时会有新的佣兵出现，最多同时存在5名佣兵\n击败佣兵会掉落大量随机装备"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_6_txt_1",
+    "lang": "挑战它们获得狩猎女神阿尔忒弥斯的认可"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_7_txt_1",
+    "lang": "作战双方具有士气值，击败敌人会降低敌方的士气值\n我方士气值会随回合逐步降低\n在我方士气值耗尽前，尽可能击败更多的敌人吧"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_7_txt_2",
+    "lang": "征服战中会和大量的敌人进行战斗"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_11",
+    "lang": "战斗事件"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_12",
+    "lang": "对话事件"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_13",
+    "lang": "遭遇事件"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_14",
+    "lang": "剧情事件"
+  },
+  {
+    "id": "p_v2a9_odyssey_help_1_txt_15",
+    "lang": "数据库事件"
+  },
+  {
+    "id": "p_commandstation_taskitem_txt_Expire",
+    "lang": "活动已结束"
+  },
+  {
+    "id": "p_assassinlibrarydetailview_txt_Dialogue",
+    "lang": "对话事件"
+  },
+  {
+    "id": "p_odysseydungeoninteractview_txt_suitSelectTipTitle",
+    "lang": ""
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_dec",
+    "lang": "在<#E98457>官方定制模拟器</color>和<#E98457>移动端</color>登录可获得对应奖励，双端登陆后即可获得<#E98457>限定头像</color>"
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_time",
+    "lang": "不限时"
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_reward1",
+    "lang": "移动端登录"
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_reward2",
+    "lang": "官方定制模拟器登录"
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_reward3",
+    "lang": "双端登录后可领取"
+  },
+  {
+    "id": "p_v2a9_login_fullview_txt_tips",
+    "lang": "官方定制模拟器可前往游戏官网下载"
+  },
+  {
+    "id": "p_v2a9_warmup_txt_goto",
+    "lang": "联络基金会"
+  },
+  {
+    "id": "p_v2a9_warmup_txt_Reward",
+    "lang": "阅读后领取"
+  },
+  {
+    "id": "p_v2a9_warmup_txt_WrongChannel",
+    "lang": "愉快的旅行需要充足的准备与严格的时间观念，为此应当留下记录。"
+  },
+  {
+    "id": "p_v2a9_warmup_txt_tips",
+    "lang": "点击开启"
   }
 ]

@@ -222,10 +222,10 @@
     "highId": 11001,
     "show": 1,
     "des": "§无小套组描述",
-    "skinContain": "306204|300306|305604|304804|308804|310703",
+    "skinContain": "306204|300306|305104|305604|304804|308804|310703",
     "backImg": "",
     "spineParams": "",
-    "tarotCardPath": "card01|card02|card06|card17|card18|card21"
+    "tarotCardPath": "card01|card02|card03|card06|card17|card18|card21"
   },
   {
     "id": 22001,
@@ -233,7 +233,7 @@
     "nameEn": "ANOTHER STAGE",
     "highId": 12001,
     "show": 0,
-    "des": "小套组描述AAA",
+    "des": "无数个舞台闪耀的时刻，无数个传奇交汇的瞬间。",
     "skinContain": "304104|300604",
     "backImg": "",
     "spineParams": "",
@@ -245,7 +245,7 @@
     "nameEn": "AROUND THE THIRD ROCK",
     "highId": 12001,
     "show": 0,
-    "des": "小套组描述AAA",
+    "des": "草木、砖瓦、文明，它们与它们永恒的呼吸。",
     "skinContain": "305304|308404|310903|307904",
     "backImg": "",
     "spineParams": "",
@@ -259,6 +259,18 @@
     "show": 1,
     "des": "一场避无可避的战争，每个人都在祈祷橄榄枝被抛下的那一刻。",
     "skinContain": "302303|310503|309403|302702",
+    "backImg": "",
+    "spineParams": "",
+    "tarotCardPath": ""
+  },
+  {
+    "id": 22003,
+    "name": "鹰与众神的时代",
+    "nameEn": "SOARING OVER MOUNT OLYMPUS",
+    "highId": 12001,
+    "show": 1,
+    "des": "当鹰飞过奥林匹斯山麓，当众神的故事\n尚未远去。",
+    "skinContain": "306504|308704|311603|302804",
     "backImg": "",
     "spineParams": "",
     "tarotCardPath": ""

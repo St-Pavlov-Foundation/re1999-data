@@ -37,6 +37,7 @@ var_0_0.DialogueType = {
 }
 var_0_0.ConstId = {
 	ChapterList = 1,
+	ActParam2 = 5,
 	VersionEndDt = 3,
 	ActParam = 2,
 	VersionName = 4
@@ -47,6 +48,10 @@ var_0_0.PrefsKey = {
 	DungeonMapLoopEffect = 4,
 	DungeonMapLightEffect = 5,
 	TimeId = 2
+}
+var_0_0.TaskType = {
+	Catch = 2,
+	Normal = 1
 }
 var_0_0.FirstEpisodeId = 11101
 var_0_0.CameraFov = 21

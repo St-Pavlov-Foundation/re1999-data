@@ -64,6 +64,7 @@ end
 
 function var_0_0._setNewSkills(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
 	arg_6_0._curSkillLevel = arg_6_0._curSkillLevel or nil
+	arg_6_1 = arg_6_0:_checkReplaceSkill(arg_6_1)
 	arg_6_0._skillIdList = arg_6_1
 	arg_6_0._super = arg_6_2
 

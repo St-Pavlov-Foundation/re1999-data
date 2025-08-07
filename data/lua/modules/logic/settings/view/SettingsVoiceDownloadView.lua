@@ -18,6 +18,8 @@ function var_0_0.onInitView(arg_1_0)
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()
 	end
+
+	SettingsVoicePackageController.instance:register()
 end
 
 function var_0_0.addEvents(arg_2_0)

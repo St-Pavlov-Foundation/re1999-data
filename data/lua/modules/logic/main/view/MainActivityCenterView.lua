@@ -193,6 +193,7 @@ function var_0_0._freshBtns(arg_15_0)
 	arg_15_0:_checkRoleSignViewBtn()
 	arg_15_0:_checkSpringSignViewBtn()
 	arg_15_0:_checkActivity186Btn()
+	arg_15_0:_checkActivity204Btn()
 	arg_15_0:_checkActivity2ndCollectionPageViewBtn()
 	arg_15_0:_checkActivityImgVisible()
 	arg_15_0:_sortBtns()
@@ -575,79 +576,100 @@ function var_0_0._checkActivity186Btn(arg_31_0)
 	arg_31_0._act186Item:refresh()
 end
 
-function var_0_0._createActCenterItem(arg_32_0, arg_32_1)
-	local var_32_0 = gohelper.cloneInPlace(arg_32_0._itemGo)
+function var_0_0._checkActivity204Btn(arg_32_0)
+	local var_32_0 = ActivityEnum.Activity.V2a9_ActCollection
 
-	arg_32_0:_refreshActBgWidth()
+	if not ActivityHelper.isOpen(var_32_0) then
+		GameUtil.onDestroyViewMember(arg_32_0, "_act204Item")
 
-	return MonoHelper.addNoUpdateLuaComOnceToGo(var_32_0, arg_32_1)
+		return
+	end
+
+	if not arg_32_0._act204Item then
+		local var_32_1 = gohelper.cloneInPlace(arg_32_0._itemGo)
+
+		arg_32_0._act204Item = MonoHelper.addNoUpdateLuaComOnceToGo(var_32_1, Activity204MainBtnItem)
+
+		arg_32_0:_addSortBtn(var_32_0, arg_32_0._act204Item)
+	end
+
+	arg_32_0._act204Item:refresh()
 end
 
-function var_0_0.onClose(arg_33_0)
-	arg_33_0._scrollview:RemoveOnValueChanged()
-	arg_33_0._btnarrow:RemoveClickListener()
+function var_0_0._createActCenterItem(arg_33_0, arg_33_1)
+	local var_33_0 = gohelper.cloneInPlace(arg_33_0._itemGo)
+
+	arg_33_0:_refreshActBgWidth()
+
+	return MonoHelper.addNoUpdateLuaComOnceToGo(var_33_0, arg_33_1)
 end
 
-function var_0_0.onDestroyView(arg_34_0)
-	GameUtil.onDestroyViewMemberList(arg_34_0, "_centerItems")
-	GameUtil.onDestroyViewMember(arg_34_0, "_bpItem")
-	GameUtil.onDestroyViewMember(arg_34_0, "_bpSpItem")
-	GameUtil.onDestroyViewMember(arg_34_0, "_testTaskItem")
-	GameUtil.onDestroyViewMember(arg_34_0, "_turnbackItem")
-	GameUtil.onDestroyViewMember(arg_34_0, "_selfSelectCharacterBtn")
-	GameUtil.onDestroyViewMember(arg_34_0, "_act186Item")
-	GameUtil.onDestroyViewMember(arg_34_0, "_roleSignViewBtn")
-	GameUtil.onDestroyViewMember(arg_34_0, "_springSignViewBtn")
-	GameUtil.onDestroyViewMember(arg_34_0, "_2ndItem")
-	arg_34_0:removeEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, arg_34_0._freshBtns, arg_34_0)
-	arg_34_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, arg_34_0._onCloseFullView, arg_34_0)
-	arg_34_0:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, arg_34_0._freshBtns, arg_34_0)
-	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_34_0._onDailyRefresh, arg_34_0)
+function var_0_0.onClose(arg_34_0)
+	arg_34_0._scrollview:RemoveOnValueChanged()
+	arg_34_0._btnarrow:RemoveClickListener()
 end
 
-function var_0_0._updateRoleSignViewBtn(arg_35_0)
-	for iter_35_0, iter_35_1 in ipairs(var_0_1) do
-		if ActivityType101Model.instance:isOpen(iter_35_1) then
-			Activity101Rpc.instance:sendGet101InfosRequest(iter_35_1)
+function var_0_0.onDestroyView(arg_35_0)
+	GameUtil.onDestroyViewMemberList(arg_35_0, "_centerItems")
+	GameUtil.onDestroyViewMember(arg_35_0, "_bpItem")
+	GameUtil.onDestroyViewMember(arg_35_0, "_bpSpItem")
+	GameUtil.onDestroyViewMember(arg_35_0, "_testTaskItem")
+	GameUtil.onDestroyViewMember(arg_35_0, "_turnbackItem")
+	GameUtil.onDestroyViewMember(arg_35_0, "_selfSelectCharacterBtn")
+	GameUtil.onDestroyViewMember(arg_35_0, "_act186Item")
+	GameUtil.onDestroyViewMember(arg_35_0, "_act204Item")
+	GameUtil.onDestroyViewMember(arg_35_0, "_roleSignViewBtn")
+	GameUtil.onDestroyViewMember(arg_35_0, "_springSignViewBtn")
+	GameUtil.onDestroyViewMember(arg_35_0, "_2ndItem")
+	arg_35_0:removeEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, arg_35_0._freshBtns, arg_35_0)
+	arg_35_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, arg_35_0._onCloseFullView, arg_35_0)
+	arg_35_0:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, arg_35_0._freshBtns, arg_35_0)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, arg_35_0._onDailyRefresh, arg_35_0)
+end
+
+function var_0_0._updateRoleSignViewBtn(arg_36_0)
+	for iter_36_0, iter_36_1 in ipairs(var_0_1) do
+		if ActivityType101Model.instance:isOpen(iter_36_1) then
+			Activity101Rpc.instance:sendGet101InfosRequest(iter_36_1)
 		end
 	end
 end
 
-function var_0_0._updateSpringSignViewBtn(arg_36_0)
-	local var_36_0 = ActivityEnum.Activity.SpringSign
+function var_0_0._updateSpringSignViewBtn(arg_37_0)
+	local var_37_0 = ActivityEnum.Activity.SpringSign
 
-	if ActivityType101Model.instance:isOpen(var_36_0) then
-		Activity101Rpc.instance:sendGet101InfosRequest(var_36_0)
+	if ActivityType101Model.instance:isOpen(var_37_0) then
+		Activity101Rpc.instance:sendGet101InfosRequest(var_37_0)
 	end
 end
 
-function var_0_0._onDailyRefresh(arg_37_0)
-	arg_37_0:_freshBtns()
-	arg_37_0:_updateRoleSignViewBtn()
-	arg_37_0:_updateSpringSignViewBtn()
+function var_0_0._onDailyRefresh(arg_38_0)
+	arg_38_0:_freshBtns()
+	arg_38_0:_updateRoleSignViewBtn()
+	arg_38_0:_updateSpringSignViewBtn()
 end
 
 local var_0_2 = 840.4
 
-function var_0_0._refreshActBgWidth(arg_38_0)
-	local var_38_0 = ActivityModel.checkIsShowLogoVisible()
-	local var_38_1 = 0
+function var_0_0._refreshActBgWidth(arg_39_0)
+	local var_39_0 = ActivityModel.checkIsShowLogoVisible()
+	local var_39_1 = 0
 
-	if arg_38_0._sortBtnList then
-		for iter_38_0, iter_38_1 in pairs(arg_38_0._sortBtnList) do
-			var_38_1 = var_38_1 + 1
+	if arg_39_0._sortBtnList then
+		for iter_39_0, iter_39_1 in pairs(arg_39_0._sortBtnList) do
+			var_39_1 = var_39_1 + 1
 		end
 	end
 
-	if arg_38_0._centerItems then
-		var_38_1 = var_38_1 + #arg_38_0._centerItems
+	if arg_39_0._centerItems then
+		var_39_1 = var_39_1 + #arg_39_0._centerItems
 	end
 
-	local var_38_2 = arg_38_0._horizontal.spacing
-	local var_38_3 = (var_38_1 - 1) * var_38_2
-	local var_38_4 = var_38_1 * arg_38_0._itemSize + arg_38_0._horizontalLeft + -math.min(0, arg_38_0._goactbgOffsetX) * 2
+	local var_39_2 = arg_39_0._horizontal.spacing
+	local var_39_3 = (var_39_1 - 1) * var_39_2
+	local var_39_4 = var_39_1 * arg_39_0._itemSize + arg_39_0._horizontalLeft + -math.min(0, arg_39_0._goactbgOffsetX) * 2
 
-	recthelper.setWidth(arg_38_0._goactbgTrans, GameUtil.clamp(var_38_4, 0, var_0_2))
+	recthelper.setWidth(arg_39_0._goactbgTrans, GameUtil.clamp(var_39_4, 0, var_0_2))
 end
 
 return var_0_0

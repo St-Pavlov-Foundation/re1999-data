@@ -78,14 +78,16 @@ function var_0_0._initBgmDatas(arg_2_0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Act_Joe, AudioEnum.Bgm.role_activity_joe, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Act_Mercuria, AudioEnum.Bgm.role_activity_mercuria, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.V2a0_WarmUp, AudioEnum.Bgm.play_ui_feichi_noise_yure_20200116, AudioEnum.Bgm.stop_ui_feichi_noise_yure_20200117)
-	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_1Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_1Main, AudioEnum.Bgm.Act2_1DungeonBgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.V2a1_WarmUp, AudioEnum.Bgm.play_ui_preheat_2_1_music_20211601, AudioEnum.Bgm.stop_ui_preheat_2_1_music_20211602)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Act_Aergusi, AudioEnum.Bgm.Act2_1_Aergusi, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Act_LanShouPa, AudioEnum.Bgm.Act2_1_LanShouPa, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_2Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.InvestigateRoleStory, AudioEnum.Bgm.play_activitymusic_sadness, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.NormalBattleV2_2, AudioEnum.Bgm.play_battle_youyui_2_2_normalfight, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.BossBattleV2_2, AudioEnum.Bgm.play_battle_youyui_2_2_bossfight, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.InvestigateView, AudioEnum.VersionActivity2_2Investigate.play_ui_youyu_survey_scene_loop, AudioEnum.UI.Stop_UI_Bus)
-	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_3Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_3Main, AudioEnum.Bgm.Act2_3DungeonBgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Tower, AudioEnum.TowerBgm.play_replay_music_towermain_2_3, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.LinkageActivity_FullView, AudioEnum.Bgm.ui_shenghuo_discovery_amb_20234001, AudioEnum.Bgm.stop_ui_bus_2000048)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.V2a3_WarmUp, AudioEnum.Bgm.play_ui_shenghuo_preheat_amb_20234003, AudioEnum.Bgm.stop_ui_bus_2000048)
@@ -99,6 +101,8 @@ function var_0_0._initBgmDatas(arg_2_0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_6_DiceHero, AudioEnum2_6.DiceHero.Bgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_6_DiceHero_Game, AudioEnum2_6.DiceHero.Bgm_Game, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_7Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_9Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_9Stealth, AudioEnum2_9.StealthGameBgm.StealthGameBgm, AudioEnum2_9.StealthGameBgm.StealthGameStopBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_8Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity2_8DungeonBoss, AudioEnum2_8.DungeonBgm.boss, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.SurvivalBGM, AudioEnum2_8.Survival.play_activitymusic_dl_state_2_8, AudioEnum2_8.Survival.stop_activitymusic_dl_state_2_8)
@@ -462,6 +466,16 @@ function var_0_0._initBgmUsage(arg_3_0)
 		ViewName.V2a1_WarmUp
 	})
 	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.Act_Aergusi
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AergusiLevelView
+	})
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.Act_LanShouPa
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.LanShouPaMapView
+	})
+	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity2_2Main
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.VersionActivity2_2EnterView
@@ -487,7 +501,8 @@ function var_0_0._initBgmUsage(arg_3_0)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity2_3Main
 	}, AudioBgmEnum.UsageType.View, {
-		ViewName.VersionActivity2_3EnterView
+		ViewName.VersionActivity2_3EnterView,
+		ViewName.V2a3_ReactivityEnterview
 	}, nil, nil, true)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.Tower
@@ -562,6 +577,16 @@ function var_0_0._initBgmUsage(arg_3_0)
 		ViewName.VersionActivity2_7EnterView
 	}, nil, nil, true)
 	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity2_9Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity2_9EnterView
+	}, nil, nil, true)
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity2_9Stealth
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AssassinStealthGameView
+	}, nil, nil, true)
+	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity2_8Main
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.VersionActivity2_8EnterView
@@ -590,7 +615,8 @@ function var_0_0._initBgmUsage(arg_3_0)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.CommanStationEnterView
 	}, AudioBgmEnum.UsageType.View, {
-		ViewName.CommandStationEnterView
+		ViewName.CommandStationEnterView,
+		ViewName.CommandStationMapView
 	})
 end
 

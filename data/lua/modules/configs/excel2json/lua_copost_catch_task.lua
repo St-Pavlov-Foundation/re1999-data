@@ -2,13 +2,15 @@
 
 local var_0_0 = {}
 local var_0_1 = {
-	listenerParam = 3,
-	desc = 5,
-	bonus = 6,
-	jumpId = 7,
+	jumpId = 9,
+	isOnline = 3,
+	desc = 7,
+	finishNum = 2,
+	listenerType = 4,
+	listenerParam = 5,
 	id = 1,
-	maxProgress = 4,
-	listenerType = 2
+	maxProgress = 6,
+	bonus = 8
 }
 local var_0_2 = {
 	"id"

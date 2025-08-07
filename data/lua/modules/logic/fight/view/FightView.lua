@@ -247,6 +247,10 @@ function var_0_0._setIsShowUI(arg_10_0, arg_10_1)
 		arg_10_0._canvasGroup = gohelper.onceAddComponent(arg_10_0._rootGO, typeof(UnityEngine.CanvasGroup))
 	end
 
+	if FightDataHelper.tempMgr.aiJiAoSelectTargetView then
+		arg_10_1 = false
+	end
+
 	gohelper.setActiveCanvasGroup(arg_10_0._canvasGroup, arg_10_1)
 end
 
@@ -339,11 +343,15 @@ function var_0_0._onBlockOperateEnd(arg_19_0)
 end
 
 function var_0_0._onClothSkillRoundSequenceFinish(arg_20_0)
-	if not FightModel.instance:isFinish() and not FightReplayModel.instance:isReplay() and FightDataHelper.operationDataMgr:isCardOpEnd() then
-		local var_20_0 = FightModel.instance:getCurStage()
+	if not FightModel.instance:isFinish() and not FightReplayModel.instance:isReplay() then
+		if FightDataHelper.operationDataMgr:isCardOpEnd() then
+			local var_20_0 = FightModel.instance:getCurStage()
 
-		if var_20_0 == FightEnum.Stage.Card or var_20_0 == FightEnum.Stage.AutoCard then
-			FightRpc.instance:sendBeginRoundRequest(FightDataHelper.operationDataMgr:getOpList())
+			if var_20_0 == FightEnum.Stage.Card or var_20_0 == FightEnum.Stage.AutoCard then
+				FightRpc.instance:sendBeginRoundRequest(FightDataHelper.operationDataMgr:getOpList())
+			end
+		else
+			arg_20_0:_checkStartAutoCards()
 		end
 	end
 end
@@ -656,7 +664,7 @@ function var_0_0._onClickAuto(arg_43_0)
 end
 
 function var_0_0._checkAutoCard(arg_44_0)
-	if FightModel.instance:getCurStage() == FightEnum.Stage.Card and FightModel.instance:isAuto() then
+	if (FightModel.instance:getCurStage() == FightEnum.Stage.Card or FightModel.instance:getCurStage() == FightEnum.Stage.AutoCard) and FightModel.instance:isAuto() then
 		FightController.instance:setCurStage(FightEnum.Stage.AutoCard)
 		ViewMgr.instance:closeView(ViewName.FightSkillStrengthenView, true)
 
@@ -706,6 +714,10 @@ end
 
 function var_0_0._autoPlayCard(arg_48_0)
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.Season2AutoChangeHero) then
+		return
+	end
+
+	if (FightDataHelper.tempMgr.aiJiAoQteCount or 0) > 0 then
 		return
 	end
 

@@ -8,11 +8,17 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._txtnum = gohelper.findChildText(arg_1_0.viewGO, "#go_normal/progress/#txt_num")
 	arg_1_0._txttotal = gohelper.findChildText(arg_1_0.viewGO, "#go_normal/progress/#txt_num/#txt_total")
 	arg_1_0._txttaskdes = gohelper.findChildText(arg_1_0.viewGO, "#go_normal/#txt_taskdes")
+	arg_1_0._scrollrewards = gohelper.findChildScrollRect(arg_1_0.viewGO, "#go_normal/#scroll_rewards")
 	arg_1_0._gorewards = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#scroll_rewards/Viewport/#go_rewards")
-	arg_1_0._btnnotfinishbg = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_normal/#btn_notfinishbg")
 	arg_1_0._gonojump = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#go_nojump")
+	arg_1_0._btnnotfinishbg = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_normal/#btn_notfinishbg")
 	arg_1_0._btnfinishbg = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_normal/#btn_finishbg")
 	arg_1_0._goallfinish = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#go_allfinish")
+	arg_1_0._gounopen = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#go_unopen")
+	arg_1_0._txtUnOpen = gohelper.findChildText(arg_1_0.viewGO, "#go_normal/#go_unopen/image_Tag/#txt_UnOpen")
+	arg_1_0._goexpire = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#go_expire")
+	arg_1_0._goopen = gohelper.findChild(arg_1_0.viewGO, "#go_normal/#go_open")
+	arg_1_0._txtOpen = gohelper.findChildText(arg_1_0.viewGO, "#go_normal/#go_open/image_Tag/#txt_Open")
 	arg_1_0._gogetall = gohelper.findChild(arg_1_0.viewGO, "#go_getall")
 	arg_1_0._simagegetallbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#go_getall/#simage_getallbg")
 	arg_1_0._btngetall = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#go_getall/#btn_getall/#btn_getall")
@@ -139,55 +145,123 @@ function var_0_0._refreshUI(arg_17_0)
 		if arg_17_0._playFinishAnin then
 			arg_17_0._playFinishAnin = false
 
-			arg_17_0._animator:Play("idle", 0, 1)
+			arg_17_0._animator:Play("idle", 0, 0)
 		end
 
 		gohelper.setActive(arg_17_0._goallfinish, false)
 		gohelper.setActive(arg_17_0._btnnotfinishbg, false)
 		gohelper.setActive(arg_17_0._btnfinishbg, false)
 		gohelper.setActive(arg_17_0._gonojump, false)
+		gohelper.setActive(arg_17_0._goopen, false)
+		gohelper.setActive(arg_17_0._goexpire, false)
+		gohelper.setActive(arg_17_0._gounopen, false)
 
-		if var_17_0:isFinished() then
+		local var_17_2 = arg_17_0:_getActStatus(var_17_0)
+
+		if var_17_2 and var_17_0:isFinished() then
 			gohelper.setActive(arg_17_0._goallfinish, true)
 		elseif var_17_0:alreadyGotReward() then
 			gohelper.setActive(arg_17_0._btnfinishbg, true)
-		elseif var_17_0.config.jumpId and var_17_0.config.jumpId > 0 then
+			gohelper.setActive(arg_17_0._goexpire, false)
+		elseif var_17_2 and var_17_0.config.jumpId and var_17_0.config.jumpId > 0 then
 			gohelper.setActive(arg_17_0._btnnotfinishbg, true)
 		else
-			gohelper.setActive(arg_17_0._gonojump, true)
+			gohelper.setActive(arg_17_0._gonojump, var_17_2)
 		end
 
-		local var_17_2 = var_17_0.config and var_17_0.config.offestProgress or 0
+		local var_17_3 = var_17_0.config and var_17_0.config.offestProgress or 0
 
-		arg_17_0._txtnum.text = math.max(var_17_0:getFinishProgress() + var_17_2, 0)
-		arg_17_0._txttotal.text = math.max(var_17_0:getMaxProgress() + var_17_2, 0)
+		arg_17_0._txtnum.text = math.max(var_17_0:getFinishProgress() + var_17_3, 0)
+		arg_17_0._txttotal.text = math.max(var_17_0:getMaxProgress() + var_17_3, 0)
 		arg_17_0._txttaskdes.text = var_17_0.config and var_17_0.config.desc or ""
 
-		local var_17_3 = ItemModel.instance:getItemDataListByConfigStr(var_17_0.config.bonus)
+		local var_17_4 = ItemModel.instance:getItemDataListByConfigStr(var_17_0.config.bonus)
 
-		arg_17_0.item_list = var_17_3
+		arg_17_0.item_list = var_17_4
 
-		IconMgr.instance:getCommonPropItemIconList(arg_17_0, arg_17_0._onItemShow, var_17_3, arg_17_0._gorewards)
+		IconMgr.instance:getCommonPropItemIconList(arg_17_0, arg_17_0._onItemShow, var_17_4, arg_17_0._gorewards)
 
 		arg_17_0._scrollRewards.horizontalNormalizedPosition = 0
+
+		if CommandStationTaskListModel.instance:isCatchTaskType() then
+			arg_17_0._txttaskdes.text = string.format(var_17_0.config and var_17_0.config.desc or "", var_17_0:getMaxProgress())
+		end
 	end
 end
 
-function var_0_0._onItemShow(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
-	arg_18_1:onUpdateMO(arg_18_2)
-	arg_18_1:setConsume(true)
-	arg_18_1:showStackableNum2()
-	arg_18_1:isShowEffect(true)
-	arg_18_1:setAutoPlay(true)
-	arg_18_1:setCountFontSize(48)
+function var_0_0._getActStatus(arg_18_0, arg_18_1)
+	if CommandStationTaskListModel.instance:isCatchTaskType() then
+		return true
+	end
+
+	TaskDispatcher.cancelTask(arg_18_0._delayRefreshActivityStatus, arg_18_0)
+
+	local var_18_0 = arg_18_1.config and arg_18_1.config.activityid
+
+	if not var_18_0 or var_18_0 <= 0 then
+		return true
+	end
+
+	local var_18_1 = ActivityHelper.getActivityStatus(var_18_0)
+
+	if var_18_1 == ActivityEnum.ActivityStatus.NotOpen then
+		gohelper.setActive(arg_18_0._gounopen, true)
+
+		local var_18_2 = ActivityModel.instance:getActStartTime(var_18_0) / 1000 - ServerTime.now()
+		local var_18_3 = string.format("%s%s", TimeUtil.secondToRoughTime2(var_18_2))
+
+		arg_18_0._txtUnOpen.text = string.format(luaLang("seasonmainview_timeopencondition"), var_18_3)
+
+		TaskDispatcher.runDelay(arg_18_0._delayRefreshActivityStatus, arg_18_0, var_18_2)
+
+		return false
+	end
+
+	if var_18_1 == ActivityEnum.ActivityStatus.Expired then
+		gohelper.setActive(arg_18_0._goexpire, true)
+
+		local var_18_4 = gohelper.findChild(arg_18_0._goexpire, "image_Disable")
+		local var_18_5 = gohelper.findChild(arg_18_0._goexpire, "image_ClaimedTick")
+		local var_18_6 = arg_18_1:isFinished()
+
+		gohelper.setActive(var_18_4, not var_18_6)
+		gohelper.setActive(var_18_5, var_18_6)
+
+		return false
+	end
+
+	gohelper.setActive(arg_18_0._goopen, true)
+
+	local var_18_7 = ActivityModel.instance:getActEndTime(var_18_0) / 1000 - ServerTime.now()
+
+	arg_18_0._txtOpen.text = TimeUtil.SecondToActivityTimeFormat(var_18_7)
+
+	TaskDispatcher.runDelay(arg_18_0._delayRefreshActivityStatus, arg_18_0, var_18_7)
+
+	return true
 end
 
-function var_0_0.onDestroyView(arg_19_0)
-	if arg_19_0._rankDiffMoveId then
-		ZProj.TweenHelper.KillById(arg_19_0._rankDiffMoveId)
+function var_0_0._delayRefreshActivityStatus(arg_19_0)
+	arg_19_0:_refreshUI()
+end
 
-		arg_19_0._rankDiffMoveId = nil
+function var_0_0._onItemShow(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
+	arg_20_1:onUpdateMO(arg_20_2)
+	arg_20_1:setConsume(true)
+	arg_20_1:showStackableNum2()
+	arg_20_1:isShowEffect(true)
+	arg_20_1:setAutoPlay(true)
+	arg_20_1:setCountFontSize(48)
+end
+
+function var_0_0.onDestroyView(arg_21_0)
+	if arg_21_0._rankDiffMoveId then
+		ZProj.TweenHelper.KillById(arg_21_0._rankDiffMoveId)
+
+		arg_21_0._rankDiffMoveId = nil
 	end
+
+	TaskDispatcher.cancelTask(arg_21_0._delayRefreshActivityStatus, arg_21_0)
 end
 
 var_0_0.prefabPath = "ui/viewres/commandstation/commandstation_taskitem.prefab"

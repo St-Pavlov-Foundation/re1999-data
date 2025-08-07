@@ -1,0 +1,211 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "name": "交错屋顶",
+    "desc": "<b>属于【街巷角落】，克制大型建筑。</b>\n空中的捷径，刺客的游廊。",
+    "img": "icon_changjing_1",
+    "restrain": "7#8#9",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 2,
+    "type": 1,
+    "name": "地下暗道",
+    "desc": "<b>属于【街巷角落】，克制大型建筑。</b>\n感谢这座城市的消化系统。",
+    "img": "icon_changjing_2",
+    "restrain": "7#8#9",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "name": "逼仄小巷",
+    "desc": "<b>属于【街巷角落】，克制大型建筑。</b>\n黑暗之中，隐藏着无数双眼睛。",
+    "img": "icon_changjing_3",
+    "restrain": "7#8#9",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 4,
+    "type": 1,
+    "name": "香料摊位",
+    "desc": "<b>属于【纷乱集市】，克制小型地点。</b>\n色香味俱全的香料炸弹，拦住追击者的小妙招。",
+    "img": "icon_changjing_4",
+    "restrain": "1#2#3",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 5,
+    "type": 1,
+    "name": "市井喷泉",
+    "desc": "<b>属于【纷乱集市】，克制小型地点。</b>\n虹彩四溅的水流足以迷惑每个人的视线。",
+    "img": "icon_changjing_5",
+    "restrain": "1#2#3",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 6,
+    "type": 1,
+    "name": "干草车",
+    "desc": "<b>属于【纷乱集市】，克制小型地点。</b>\n温暖、柔软而熟悉的怀抱。",
+    "img": "icon_changjing_6",
+    "restrain": "1#2#3",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 7,
+    "type": 1,
+    "name": "驻军内庭",
+    "desc": "<b>属于【坚实堡垒】，克制集会型地点。</b>\n有足够多的敌人，但也有足够的空间挥舞你的剑。",
+    "img": "icon_changjing_7",
+    "restrain": "4#5#6",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 8,
+    "type": 1,
+    "name": "哨塔",
+    "desc": "<b>属于【坚实堡垒】，克制集会型地点。</b>\n弓箭手的眼睛片刻不离，你知道该怎么做。",
+    "img": "icon_changjing_8",
+    "restrain": "4#5#6",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 9,
+    "type": 1,
+    "name": "砖石高墙",
+    "desc": "<b>属于【坚实堡垒】，克制集会型地点。</b>\n易守难攻之所。",
+    "img": "icon_changjing_9",
+    "restrain": "4#5#6",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 10,
+    "type": 2,
+    "name": "米兰剑",
+    "desc": "<b>属于【中型武器】。</b>\n值得欣赏的不仅仅是那优雅卷曲的护手。",
+    "img": "icon_wuqi_5",
+    "restrain": "14#15",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 11,
+    "type": 2,
+    "name": "佛罗伦萨弯刀",
+    "desc": "<b>属于【中型武器】。</b>\n飘逸而轻巧，配重合理。",
+    "img": "icon_wuqi_4",
+    "restrain": "14#15",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 12,
+    "type": 2,
+    "name": "卡瓦里里钉头锤",
+    "desc": "<b>属于【重型武器】。</b>\n谁都能听懂这份道理。",
+    "img": "icon_wuqi_7",
+    "restrain": "10#11",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 13,
+    "type": 2,
+    "name": "凸缘钉头锤",
+    "desc": "<b>属于【重型武器】。</b>\n一次用力，多重伤痕。",
+    "img": "icon_wuqi_6",
+    "restrain": "10#11",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 14,
+    "type": 2,
+    "name": "有沟五指剑 ",
+    "desc": "<b>属于【短武器】。</b>\n锋锐，敏捷，不易愈合。",
+    "img": "icon_wuqi_2",
+    "restrain": "12#13",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 15,
+    "type": 2,
+    "name": "屠刀",
+    "desc": "<b>属于【短武器】。</b>\n简单就是好。",
+    "img": "icon_wuqi_3",
+    "restrain": "12#13",
+    "spEff": 0,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 16,
+    "type": 2,
+    "name": "叙利亚古剑",
+    "desc": "<b>特殊武器：必定胜利</b>\n鹰之巢的古老记忆。",
+    "img": "icon_wuqi_1",
+    "restrain": "",
+    "spEff": 1,
+    "weight": 0,
+    "subWeight": 0
+  },
+  {
+    "id": 17,
+    "type": 2,
+    "name": "领袖战锤",
+    "desc": "<b>特殊武器：50%胜率</b>\n哨声响起时，无数箭矢从阴影中射出，命中敌人的心脏。",
+    "img": "icon_wuqi_8",
+    "restrain": "",
+    "spEff": 2,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 18,
+    "type": 2,
+    "name": "防御反击",
+    "desc": "<b>特殊武器：必定胜利</b>\n敌人的力量将成为你的力量。",
+    "img": "icon_wuqi_9",
+    "restrain": "",
+    "spEff": 1,
+    "weight": 100,
+    "subWeight": 100
+  },
+  {
+    "id": 19,
+    "type": 2,
+    "name": "鹰之哨",
+    "desc": "<b>特殊武器：50%胜率</b>\n哨声响起时，无数箭矢从阴影中射出，命中敌人的心脏。",
+    "img": "icon_wuqi_10",
+    "restrain": "",
+    "spEff": 2,
+    "weight": 100,
+    "subWeight": 100
+  }
+]

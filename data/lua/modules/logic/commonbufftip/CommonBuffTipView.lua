@@ -90,12 +90,9 @@ end
 function var_0_0.calculateMaxHeight(arg_9_0)
 	local var_9_0 = recthelper.getHeight(arg_9_0.rectTrViewGo)
 	local var_9_1 = recthelper.getAnchorY(arg_9_0.rectTrScrollTip)
+	local var_9_2 = math.abs(var_9_1)
 
-	arg_9_0.maxHeight = var_9_0 / 2 + var_9_1 - CommonBuffTipEnum.BottomMargin
-
-	if arg_9_0.rectTrScrollTip.pivot.y == 0 then
-		arg_9_0.maxHeight = var_9_0 / 2 - var_9_1 - CommonBuffTipEnum.BottomMargin
-	end
+	arg_9_0.maxHeight = var_9_0 / 2 + var_9_2 - CommonBuffTipEnum.BottomMargin
 end
 
 function var_0_0.addBuffTip(arg_10_0, arg_10_1)

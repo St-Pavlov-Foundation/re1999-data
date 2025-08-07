@@ -36,7 +36,8 @@ var_0_0.SkinScene = {
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10007.prefab",
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10009.prefab",
 	"scenes/v2a8_m_s17_pftj/prefab/sence_10001.prefab",
-	"scenes/v3a0_m_s17_pftj/prefab/sence_10010.prefab"
+	"scenes/v3a0_m_s17_pftj/prefab/sence_10010.prefab",
+	"scenes/v2a8_m_s17_pftj/prefab/sence_12001.prefab"
 }
 var_0_0.SkinSuitSceneType = {
 	Tarot = 2,

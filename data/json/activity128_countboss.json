@@ -232,5 +232,29 @@
     "monsterId": "10301021",
     "finalMonsterId": "10301021",
     "maxPoints": 50000
+  },
+  {
+    "battleId": 1029111,
+    "monsterId": "10291111#10291121#10291131#10291141",
+    "finalMonsterId": "10291141",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 1029121,
+    "monsterId": "10291211",
+    "finalMonsterId": "10291211",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 1029211,
+    "monsterId": "10292111#10292121#10292131#10292141",
+    "finalMonsterId": "10292141",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 1029221,
+    "monsterId": "10292211",
+    "finalMonsterId": "10292211",
+    "maxPoints": 0
   }
 ]

@@ -11,6 +11,8 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 		"scenes/v1a9_m_s16_dilao",
 		"scenes/v1a9_m_s16_dilao_room",
 		"singlebg/toughbattle_singlebg",
+		"ui/viewres/playercard/",
+		"ui/viewres/skinhandbook_singlebg/",
 		"singlebg/seasoncelebritycard/",
 		"singlebg/summon/heroversion_1_9/",
 		"singlebg/summon/heroversion_1_8/",
@@ -73,7 +75,17 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 		"singlebg/storybg/story_atcg/3_0/",
 		"singlebg/storybg/smallbg/story_atcg/2_8/",
 		"singlebg/storybg/story_bg/2_8/",
-		"singlebg/dungeon/fragmenticon/"
+		"singlebg/storybg/story_bg/",
+		"singlebg/storybg/story_atcg/",
+		"singlebg/storybg/smallbg/story_bg/",
+		"singlebg/storybg/smallbg/story_atcg/",
+		"singlebg/storybg/item/",
+		"singlebg/dungeon/fragmenticon/",
+		"scenes/dynamic/v2a5_m_s01_zjm_a/",
+		"scenes/dynamic/v2a2_m_s01_zjm_a/",
+		"scenes/dynamic/sp01_m_s08_hddt_b/",
+		"room/configs/",
+		"singlebg/roomget"
 	}
 	local var_1_1 = {
 		"1_2lvhuemeng",
@@ -91,7 +103,10 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 		"quniang",
 		"liangyue_v2a5",
 		"luxi_v1a9",
-		"37_v2a2"
+		"37_v2a2",
+		"sp01_kv_up",
+		"s01_bg",
+		"s01_opening"
 	}
 	local var_1_2 = {
 		"effects/prefabs/buff/shuzhen_zaowu_znegyi_1_2.prefab",
@@ -300,7 +315,26 @@ function var_0_0.onStart(arg_1_0, arg_1_1)
 		"singlebg/help/v2a7_tower_help_9.png",
 		"singlebg/help/v2a7_tower_help_10.png",
 		"singlebg/help/v2a7_tower_help_11.png",
-		"singlebg/help/v2a7_tower_help_12.png"
+		"singlebg/help/v2a7_tower_help_12.png",
+		"singlebg/help/v2a7_tower_help_24.png",
+		"singlebg/help/v2a7_tower_help_25.png",
+		"singlebg/help/v2a9_alert_help_1.png",
+		"singlebg/help/v2a9_assassin2_help_1.png",
+		"singlebg/help/v2a9_assassin2_help_2.png",
+		"singlebg/help/v2a9_assassin2_help_3.png",
+		"singlebg/help/v2a9_assassin2_help_4.png",
+		"singlebg/help/v2a9_odyssey_help_1.png",
+		"singlebg/help/v2a9_odyssey_help_2.png",
+		"singlebg/help/v2a9_odyssey_help_3.png",
+		"singlebg/help/v2a9_odyssey_help_4.png",
+		"singlebg/help/v2a9_odyssey_help_5.png",
+		"singlebg/help/v2a9_odyssey_help_6.png",
+		"singlebg/help/v2a9_odyssey_help_7.png",
+		"singlebg/help/v2a9_role_help_1.png",
+		"singlebg/help/v2a9_role_help_2.png",
+		"singlebg/help/v2a9_role_help_3.png",
+		"singlebg/help/v2a9_wheel_help_1.png",
+		"singlebg/help/v2a9_wheel_help_2.png"
 	}
 	local var_1_3 = {
 		FightHelper.getEffectUrlWithLod(FightPreloadEffectWork.buff_chuchang),
