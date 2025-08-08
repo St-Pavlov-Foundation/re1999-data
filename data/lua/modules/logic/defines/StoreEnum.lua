@@ -61,6 +61,12 @@ var_0_0.StoreId = {
 	GlowCharge = 412
 }
 var_0_0.DefaultTabId = var_0_0.StoreId.RecommendStore
+var_0_0.RecommendPackageStoreIdList = {
+	var_0_0.StoreId.VersionPackage,
+	var_0_0.StoreId.OneTimePackage,
+	var_0_0.StoreId.NormalPackage,
+	var_0_0.StoreId.MediciPackage
+}
 var_0_0.RecommendSubStoreId = {
 	StoreRoleSkinView = 801,
 	GiftrecommendView1 = 803,

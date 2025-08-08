@@ -290,39 +290,34 @@ function var_0_0.getRecommendPackageList(arg_24_0, arg_24_1)
 	end
 
 	local var_24_1 = {}
-	local var_24_2 = arg_24_0:getPackageGoodList(StoreEnum.StoreId.VersionPackage)
-	local var_24_3 = arg_24_0:getPackageGoodList(StoreEnum.StoreId.OneTimePackage)
-	local var_24_4 = arg_24_0:getPackageGoodList(StoreEnum.StoreId.NormalPackage)
 
-	for iter_24_0, iter_24_1 in pairs(var_24_2) do
-		var_24_1[#var_24_1 + 1] = iter_24_1
-	end
+	for iter_24_0, iter_24_1 in ipairs(StoreEnum.RecommendPackageStoreIdList) do
+		local var_24_2 = arg_24_0:getPackageGoodList(iter_24_1)
 
-	for iter_24_2, iter_24_3 in pairs(var_24_3) do
-		var_24_1[#var_24_1 + 1] = iter_24_3
-	end
-
-	for iter_24_4, iter_24_5 in pairs(var_24_4) do
-		var_24_1[#var_24_1 + 1] = iter_24_5
+		if var_24_2 then
+			for iter_24_2, iter_24_3 in pairs(var_24_2) do
+				var_24_1[#var_24_1 + 1] = iter_24_3
+			end
+		end
 	end
 
 	if #var_24_1 > 1 then
 		table.sort(var_24_1, arg_24_0._packageSortFunction)
 	end
 
-	local var_24_5 = 1
+	local var_24_3 = 1
 
-	for iter_24_6 = 1, #var_24_1 do
-		local var_24_6 = var_24_1[iter_24_6]
+	for iter_24_4 = 1, #var_24_1 do
+		local var_24_4 = var_24_1[iter_24_4]
 
-		if arg_24_0:checkShowInRecommand(var_24_6, var_24_6.isChargeGoods) then
-			arg_24_0._recommendPackageList[var_24_5] = var_24_6
+		if arg_24_0:checkShowInRecommand(var_24_4, var_24_4.isChargeGoods) then
+			arg_24_0._recommendPackageList[var_24_3] = var_24_4
 
-			if var_24_5 == var_24_0 then
+			if var_24_3 == var_24_0 then
 				break
 			end
 
-			var_24_5 = var_24_5 + 1
+			var_24_3 = var_24_3 + 1
 		end
 	end
 

@@ -63,9 +63,7 @@ end
 function var_0_0._btnpauseOnClick(arg_4_0)
 	TaskDispatcher.cancelTask(arg_4_0._playFinished, arg_4_0)
 	UIBlockMgr.instance:endBlock("PlayPv")
-
-	arg_4_0._pvPause = true
-
+	StoryModel.instance:setStoryPvPause(true)
 	gohelper.setActive(arg_4_0._gopvpause, true)
 	gohelper.setActive(arg_4_0._objskip, true)
 	arg_4_0._pvpauseAnim:Play("pause", 0, 0)
@@ -83,9 +81,7 @@ end
 function var_0_0._btnplayOnClick(arg_6_0)
 	UIBlockMgr.instance:endBlock("waitPause")
 	TaskDispatcher.cancelTask(arg_6_0._realPause, arg_6_0)
-
-	arg_6_0._pvPause = false
-
+	StoryModel.instance:setStoryPvPause(false)
 	gohelper.setActive(arg_6_0._gopvpause, true)
 	AudioMgr.instance:trigger(AudioEnum.Story.resume_cg_bus)
 	StoryController.instance:dispatchEvent(StoryEvent.PvPlay)
@@ -101,9 +97,8 @@ function var_0_0._playFinished(arg_7_0)
 end
 
 function var_0_0._checkPvPlayRestart(arg_8_0)
-	if arg_8_0._pvPause then
-		arg_8_0._pvPause = false
-
+	if StoryModel.instance:isStoryPvPause() then
+		StoryModel.instance:setStoryPvPause(false)
 		AudioMgr.instance:trigger(AudioEnum.Story.resume_cg_bus)
 		StoryController.instance:dispatchEvent(StoryEvent.PvPlay)
 		GameTimeMgr.instance:setTimeScale(GameTimeMgr.TimeScaleType.StoryPv, 1)
@@ -261,7 +256,7 @@ function var_0_0._btnnextOnClick(arg_19_0)
 			arg_19_0._frontItem:enableFrontRayCast(false)
 		end
 
-		if not arg_19_0._pvPause then
+		if not StoryModel.instance:isStoryPvPause() then
 			arg_19_0:_btnpauseOnClick()
 		else
 			arg_19_0:_btnplayOnClick()
@@ -731,6 +726,7 @@ function var_0_0.resetRightBtnPos(arg_54_0)
 end
 
 function var_0_0.onDestroyView(arg_55_0)
+	StoryModel.instance:setStoryPvPause(false)
 	TaskDispatcher.cancelTask(arg_55_0._realPause, arg_55_0)
 	TaskDispatcher.cancelTask(arg_55_0._playFinished, arg_55_0)
 	UIBlockMgr.instance:endBlock("waitPause")

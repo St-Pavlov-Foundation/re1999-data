@@ -708,6 +708,14 @@ function var_0_0.isS01Story(arg_67_0, arg_67_1)
 	return false
 end
 
+function var_0_0.isStoryPvPause(arg_68_0)
+	return arg_68_0._pvPause
+end
+
+function var_0_0.setStoryPvPause(arg_69_0, arg_69_1)
+	arg_69_0._pvPause = arg_69_1
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0
