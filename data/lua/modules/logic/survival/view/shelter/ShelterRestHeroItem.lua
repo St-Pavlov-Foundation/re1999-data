@@ -14,6 +14,7 @@ function var_0_0.onInitView(arg_1_0)
 
 	arg_1_0._heroItem = IconMgr.instance:getCommonHeroItem(var_1_1)
 
+	arg_1_0._heroItem:setStyle_CharacterBackpack()
 	arg_1_0._heroItem:hideFavor(true)
 	arg_1_0._heroItem:setSelectFrameSize(245, 583, 0, -12)
 

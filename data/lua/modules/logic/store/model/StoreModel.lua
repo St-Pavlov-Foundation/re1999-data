@@ -616,9 +616,9 @@ function var_0_0.getAllRedDotInfo(arg_36_0)
 
 			if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(iter_36_9) then
 				var_36_5.value = 1
-			end
 
-			table.insert(var_36_4, var_36_5)
+				table.insert(var_36_4, var_36_5)
+			end
 		end
 	end
 

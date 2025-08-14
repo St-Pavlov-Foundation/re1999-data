@@ -163,12 +163,8 @@ function var_0_0.onOpen(arg_8_0)
 
 	arg_8_0._initVoice = GameConfig:GetCurVoiceShortcut()
 
-	if not var_8_0 then
-		if arg_8_0._initVoice == "jp" or arg_8_0._initVoice == "kr" then
-			AudioMgr.instance:changeLang("en")
-		end
-	else
-		AudioMgr.instance:changeLang(arg_8_0._initVoice)
+	if not var_8_0 and (arg_8_0._initVoice == "jp" or arg_8_0._initVoice == "kr") then
+		AudioMgr.instance:changeLang("en")
 	end
 
 	arg_8_0:_addEvents()

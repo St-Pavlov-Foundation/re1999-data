@@ -15,6 +15,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 
 	arg_1_0._heroItem = IconMgr.instance:getCommonHeroItem(var_1_0)
 
+	arg_1_0._heroItem:setStyle_CharacterBackpack()
 	arg_1_0._heroItem:hideFavor(true)
 
 	arg_1_0._clickThis = gohelper.getClick(arg_1_0.go)

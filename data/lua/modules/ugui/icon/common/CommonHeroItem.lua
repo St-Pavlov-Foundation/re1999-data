@@ -597,18 +597,23 @@ function var_0_0._setTxtWidth(arg_53_0, arg_53_1, arg_53_2)
 end
 
 function var_0_0.setStyle_HeroGroupEdit(arg_54_0)
-	arg_54_0:_setTxtPos("_nameCnTxt", 0.55, 68.9)
-	arg_54_0:_setTxtPos("_nameEnTxt", 0.55, 41.1)
-	arg_54_0:_setTxtPos("_lvObj", 1.7, 82)
-	arg_54_0:_setTxtPos("_rankObj", 1.7, -107.7)
 	arg_54_0:_setTranScale("_nameCnTxt", 1.25, 1.25)
 	arg_54_0:_setTranScale("_nameEnTxt", 1.25, 1.25)
 	arg_54_0:_setTranScale("_lvObj", 1.25, 1.25)
 	arg_54_0:_setTranScale("_rankObj", 0.22, 0.22)
+	arg_54_0:_setTxtPos("_nameCnTxt", 0.55, 68.9)
+	arg_54_0:_setTxtPos("_nameEnTxt", 0.55, 41.1)
+	arg_54_0:_setTxtPos("_lvObj", 1.7, 82)
+	arg_54_0:_setTxtPos("_rankObj", 1.7, -107.7)
 	arg_54_0:_setTxtSizeScale("_nameCnTxt", 0.8, 1)
 end
 
 function var_0_0.setStyle_SeasonPickAssist(arg_55_0)
+	arg_55_0:_setTxtWidth("_nameCnTxt", 205)
+	arg_55_0:_setTranScale("_nameCnTxt", 1, 1)
+	arg_55_0:_setTranScale("_nameEnTxt", 1, 1)
+	arg_55_0:_setTranScale("_lvObj", 1, 1)
+	arg_55_0:_setTranScale("_rankObj", 0.18, 0.18)
 	arg_55_0:_setTxtPos("_rankObj", 2, -37)
 	arg_55_0:_setTxtPos("_lvObj", 1.7, 178.6)
 	arg_55_0:_setTxtPos("_nameCnTxt", 0.55, 153.4)
@@ -617,12 +622,16 @@ function var_0_0.setStyle_SeasonPickAssist(arg_55_0)
 end
 
 function var_0_0.setStyle_RougePickAssist(arg_56_0)
+	arg_56_0:_setTxtWidth("_nameCnTxt", 205)
+	arg_56_0:_setTranScale("_nameCnTxt", 1, 1)
+	arg_56_0:_setTranScale("_nameEnTxt", 1, 1)
+	arg_56_0:_setTranScale("_lvObj", 1, 1)
+	arg_56_0:_setTranScale("_rankObj", 0.2, 0.2)
 	arg_56_0:_setTxtPos("_rankObj", 2, -37)
 	arg_56_0:_setTxtPos("_lvObj", 1.7, 165)
 	arg_56_0:_setTxtPos("_nameCnTxt", 0.55, 153.4)
 	arg_56_0:_setTxtPos("_nameEnTxt", 0.55, 124.3)
 	arg_56_0:_setTxtPos("_goexskill", 1.7, -170)
-	arg_56_0:_setTranScale("_rankObj", 0.2, 0.2)
 end
 
 function var_0_0.setStyle_CharacterBackpack(arg_57_0)
@@ -635,6 +644,17 @@ function var_0_0.setStyle_CharacterBackpack(arg_57_0)
 	arg_57_0:_setTxtPos("_nameEnTxt", 1.1, 42.29)
 	arg_57_0:_setTxtPos("_lvObj", 2.02, 75)
 	arg_57_0:_setTxtPos("_rankObj", 1.06, -127.22)
+end
+
+function var_0_0.setStyle_SurvivalHeroGroupEdit(arg_58_0)
+	arg_58_0:_setTranScale("_nameCnTxt", 1.25, 1.25)
+	arg_58_0:_setTranScale("_nameEnTxt", 1.25, 1.25)
+	arg_58_0:_setTranScale("_lvObj", 1.25, 1.25)
+	arg_58_0:_setTranScale("_rankObj", 0.22, 0.22)
+	arg_58_0:_setTxtPos("_nameCnTxt", 0.55, 68.9)
+	arg_58_0:_setTxtPos("_nameEnTxt", 0.55, 36.1)
+	arg_58_0:_setTxtPos("_lvObj", 1.7, 96.8)
+	arg_58_0:_setTxtPos("_rankObj", 1.7, -107.7)
 end
 
 return var_0_0

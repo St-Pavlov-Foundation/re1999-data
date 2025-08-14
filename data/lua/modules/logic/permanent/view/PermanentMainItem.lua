@@ -235,6 +235,14 @@ function var_0_0._onRefreshStoryReddot(arg_18_0)
 		return
 	end
 
+	if var_18_0.id == -999 then
+		return
+	end
+
+	if not var_18_0.config then
+		return
+	end
+
 	if var_18_0.config.id ~= VersionActivity2_1Enum.ActivityId.EnterView then
 		return
 	end

@@ -29,10 +29,6 @@ function var_0_0.init(arg_2_0, arg_2_1, arg_2_2)
 
 	AudioConfig.instance:InitCSByConfig(arg_2_0.csharpInst)
 	arg_2_0.csharpInst:InitFromLua(arg_2_0._onInitCS, arg_2_0)
-
-	local var_2_0 = GameConfig:GetCurVoiceShortcut()
-
-	arg_2_0:changeLang(var_2_0)
 end
 
 function var_0_0._setAutoSwitchDefault(arg_3_0, arg_3_1)
@@ -43,6 +39,7 @@ function var_0_0._onInitCS(arg_4_0, arg_4_1)
 	local var_4_0 = GameConfig:GetCurVoiceShortcut()
 
 	logNormal("AudioMgr:init, voiceType = " .. var_4_0)
+	arg_4_0:changeLang(var_4_0)
 
 	if arg_4_0._onInited then
 		local var_4_1 = arg_4_0._onInited

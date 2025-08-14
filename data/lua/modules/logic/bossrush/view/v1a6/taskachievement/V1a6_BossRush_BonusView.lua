@@ -73,12 +73,16 @@ end
 
 function var_0_0.onOpen(arg_10_0)
 	arg_10_0._stage = arg_10_0.viewParam.stage
-	arg_10_0._selectTab = BossRushModel.instance:isSpecialActivity() and BossRushEnum.BonusViewTab.SpecialScheduleTab or BossRushEnum.BonusViewTab.AchievementTab
+	arg_10_0._selectTab = arg_10_0.viewParam.defaultTab or V1a6_BossRush_BonusModel.instance:getTab()
 
+	arg_10_0:_refreshRedDot()
 	arg_10_0:activeTab()
 	arg_10_0:_refreshTab()
 	arg_10_0:_addRedDot()
-	BossRushController.instance:sendGetTaskInfoRequest(arg_10_0.openDefaultTab, arg_10_0)
+
+	if arg_10_0._selectTab == BossRushEnum.BonusViewTab.AchievementTab then
+		V1a6_BossRush_BonusModel.instance:selecAchievementTab(arg_10_0._stage)
+	end
 end
 
 function var_0_0.onClose(arg_11_0)

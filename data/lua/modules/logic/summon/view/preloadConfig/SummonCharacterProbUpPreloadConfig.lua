@@ -13,14 +13,14 @@ function var_0_0.getCharacterItemCountByName(arg_2_0)
 	return var_0_0.characterItemCounts[arg_2_0] or 1
 end
 
+var_0_0.preloadLists.SummonCharacterProbUpVer306 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer305 = {
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_dec4.png",
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
 	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
-}
-var_0_0.preloadLists.SummonCharacterProbUpVer306 = {
-	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
-	"singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_fullbg.png"
 }
 var_0_0.preloadLists.SummonCharacterProbUpVer304 = {
 	"singlebg/summon/heroversion_1_4/role37/v1a4_role37_bottombg.png",

@@ -34305,6 +34305,12 @@
   "singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_titlebg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_titlebg.png"
   ],
+  "singlebg/summon/heroversion_2_9/v2a9_hissabeth/v2a9_summon_hissabeth_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_hissabeth/v2a9_summon_hissabeth_role1.png"
+  ],
+  "singlebg/summon/heroversion_2_9/v2a9_hissabeth/v2a9_summon_hissabeth_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_hissabeth/v2a9_summon_hissabeth_role2.png"
+  ],
   "singlebg/summon/heroversion_2_9/v2a9_kashandela/v2a9_summon_kashandela_chance2.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_kashandela/v2a9_summon_kashandela_chance2.png"
   ],

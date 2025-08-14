@@ -12625,6 +12625,11 @@
     "bankName": "hero3066_skill"
   },
   {
+    "id": 1306600,
+    "eventName": "play_hero3066_fightingvoc_33",
+    "bankName": "hero3066_skill"
+  },
+  {
     "id": 1307901,
     "eventName": "play_hero3079_mainvoc_1",
     "bankName": "hero3079_mainvoc"
