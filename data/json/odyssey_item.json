@@ -276,18 +276,6 @@
     "extraSuitCount": 0
   },
   {
-    "id": 20404,
-    "rare": 3,
-    "type": 2,
-    "name": "蛇行腰带",
-    "desc": "这是条蛇！哦，不，也许不是。",
-    "skillDesc": "若敌方全体共计携带20个以上的【中毒】状态，则本回合敌方的【中毒】持续回合不会因结算而减少",
-    "icon": "odyssey_equip_10",
-    "suitId": 4,
-    "addSkill": "2#8290307",
-    "extraSuitCount": 0
-  },
-  {
     "id": 20405,
     "rare": 3,
     "type": 2,
@@ -336,39 +324,15 @@
     "extraSuitCount": 0
   },
   {
-    "id": 20409,
-    "rare": 2,
-    "type": 2,
-    "name": "兜虫",
-    "desc": "这件多层式的盔甲看起来就像是昆虫的甲壳，在战斗中能提供绝佳的防御能力。",
-    "skillDesc": "己方攻击使敌方退场后，敌方身上携带的所有【状态异常】将转移至其他随机敌方（优先选择生命最低）",
-    "icon": "odyssey_equip_5",
-    "suitId": 4,
-    "addSkill": "2#8290312",
-    "extraSuitCount": 0
-  },
-  {
-    "id": 20410,
-    "rare": 3,
-    "type": 2,
-    "name": "工人的饰裙",
-    "desc": "伟大的战士绝对不会忽略良好保护的重要性，像这条腰带就能为上腹部及大腿带来坚韧的防御能力。",
-    "skillDesc": "己方释放至终的仪式后，使敌方的【状态异常】回合+1",
-    "icon": "odyssey_equip_6",
-    "suitId": 4,
-    "addSkill": "2#8290313",
-    "extraSuitCount": 0
-  },
-  {
     "id": 20411,
     "rare": 3,
     "type": 2,
     "name": "外骨骼",
     "desc": "即使穿着拥有最佳防御力的装备，依然必须注意针对弱点而来的重击。",
-    "skillDesc": "敌方全体每共计携带3种【状态异常】【控制】，己方主动使用咒语后额外施放一次，至多5次",
+    "skillDesc": "敌方全体每共计携带3种【状态异常】【控制】，己方主动使用咒语后额外施放一次，至多1次",
     "icon": "odyssey_equip_4",
     "suitId": 4,
-    "addSkill": "3#8290314",
+    "addSkill": "2#8290314",
     "extraSuitCount": 0
   },
   {
@@ -430,18 +394,6 @@
     "suitId": 5,
     "addSkill": "2#8290407",
     "extraSuitCount": 0
-  },
-  {
-    "id": 20505,
-    "rare": 4,
-    "type": 2,
-    "name": "斗技场斗士的靴子",
-    "desc": "斗技场斗士通常不太穿盔甲或衣服，但一双好靴子总是相当有用的。",
-    "skillDesc": "视为2件「泉澧祝福」装备\n己方至终的仪式有50%的概率额外释放1次",
-    "icon": "odyssey_equip_167",
-    "suitId": 5,
-    "addSkill": "2#8290408",
-    "extraSuitCount": 1
   },
   {
     "id": 20506,
@@ -569,7 +521,7 @@
     "type": 2,
     "name": "珀伽索斯的拥抱",
     "desc": "受到这件高防御性盔甲的保护，就像被巨大翅膀环抱一样安全。",
-    "skillDesc": "己方额外行动会对目标施加【伤口】",
+    "skillDesc": "己方额外行动会对目标施加【明昧】",
     "icon": "odyssey_equip_111",
     "suitId": 6,
     "addSkill": "2#8290507",

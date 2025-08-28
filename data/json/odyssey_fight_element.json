@@ -237,7 +237,7 @@
     "episodeId": 202532101,
     "title": "角斗比赛",
     "desc": "场上的角斗士跃跃欲试，谁都想欺负下这位“业余选手”以便顺利晋级。\n好吧，祝他们好运。",
-    "reward": "exp#400|item#20505#1",
+    "reward": "exp#400",
     "randomDrop": 0,
     "enemyLevel": 25
   },
@@ -688,7 +688,7 @@
     "episodeId": 202130501,
     "title": "征服战 雅典卫城",
     "desc": "众神的目光在此交汇，而凡人的刀剑将决定谁配得上它的荣光。",
-    "reward": "exp#400@exp#400|item#20404#1@exp#200@exp#200|item#20406#1",
+    "reward": "exp#400@exp#400|item#20403#1@exp#200@exp#200|item#20406#1",
     "randomDrop": 0,
     "enemyLevel": 5
   },
@@ -743,7 +743,7 @@
     "episodeId": 202230601,
     "title": "斯库拉",
     "desc": "出没于凯法隆尼亚的大型神秘学生物。\n海生，形似少女，间歇性发出类似人声的高频声波，但据当地塞壬称，其并不具备交流能力，仅凭借掠食本能行动。\n不建议窥探她的裙摆。\n注：其出现或为观测时的冗余数据所致，需长期观察、收集数据。",
-    "reward": "exp#500|item#20510#1@exp#500|item#20410#1@item#20512#1",
+    "reward": "exp#500|item#20510#1@exp#500|item#20511#1@item#20512#1",
     "randomDrop": 0,
     "enemyLevel": 10
   },

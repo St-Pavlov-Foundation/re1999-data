@@ -1646,6 +1646,24 @@
         "mainRes": 5,
         "defineId": 3055003,
         "blockId": 65130
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 3055001,
+        "blockId": 66126
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 3055002,
+        "blockId": 66127
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 3055003,
+        "blockId": 66128
       }
     ],
     "id": 16

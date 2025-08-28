@@ -341,12 +341,20 @@ function var_0_0._getEntityList(arg_18_0)
 		end
 	end
 
+	for iter_18_5 = #var_18_0, 1, -1 do
+		local var_18_4 = FightLocalDataMgr.instance.entityMgr:getById(var_18_0[iter_18_5].id)
+
+		if var_18_4 and var_18_4:isStatusDead() then
+			table.remove(var_18_0, iter_18_5)
+		end
+	end
+
 	arg_18_0:sortFightEntityList(var_18_0)
 
-	local var_18_4 = FightDataHelper.entityMgr:getAssistBoss()
+	local var_18_5 = FightDataHelper.entityMgr:getAssistBoss()
 
-	if var_18_4 and arg_18_0._curSelectSide == FightEnum.EntitySide.MySide then
-		table.insert(var_18_0, var_18_4)
+	if var_18_5 and arg_18_0._curSelectSide == FightEnum.EntitySide.MySide then
+		table.insert(var_18_0, var_18_5)
 	end
 
 	return var_18_0

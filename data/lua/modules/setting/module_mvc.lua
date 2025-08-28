@@ -119,7 +119,8 @@
 			"AssassinStealthGameController",
 			"AssassinStealthGameEntityMgr",
 			"AssassinLibraryController",
-			"VersionActivity2_9DungeonController"
+			"VersionActivity2_9DungeonController",
+			"VersionActivity2_9EnterController"
 		},
 		rpc = {
 			"AssassinOutSideRpc",

@@ -157,6 +157,18 @@
 		desampleRate = PostProcessingMgr.DesamplingRate.x8,
 		reduceRate = PostProcessingMgr.DesamplingRate.x8
 	},
+	FightUISkinMaterialTipView = {
+		container = "FightUISkinMaterialTipViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/mainsceneswitch/mainsceneskinmaterialtipview.prefab",
+		destroy = 0,
+		blurIterations = 3,
+		blurFactor = 0.85,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		desampleRate = PostProcessingMgr.DesamplingRate.x8,
+		reduceRate = PostProcessingMgr.DesamplingRate.x8
+	},
 	MainUISkinMaterialTipView = {
 		container = "MainUISkinMaterialTipViewContainer",
 		bgBlur = 1,

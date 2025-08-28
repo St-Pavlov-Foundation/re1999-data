@@ -266,7 +266,7 @@ function var_0_0._onHyperLinkClick(arg_23_0, arg_23_1, arg_23_2)
 		CharacterController.instance:openCharacterTipView(var_23_1)
 	else
 		local var_23_2 = {}
-		local var_23_3 = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(arg_23_0._heroId)
+		local var_23_3 = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(arg_23_0._heroId, nil, nil, nil, true)
 
 		var_23_2.super = var_23_0 == 3
 		var_23_2.skillIdList = var_23_3[var_23_0]
