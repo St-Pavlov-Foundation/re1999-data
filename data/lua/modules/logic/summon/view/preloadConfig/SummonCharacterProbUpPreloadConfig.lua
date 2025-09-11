@@ -13,6 +13,10 @@ function var_0_0.getCharacterItemCountByName(arg_2_0)
 	return var_0_0.characterItemCounts[arg_2_0] or 1
 end
 
+var_0_0.preloadLists.SummonCharacterProbUpVer308 = {
+	"singlebg/summon/heroversion_2_2/v2a2_role6/v2a2_role6_summon_6.png",
+	"singlebg/summon/heroversion_2_2/v2a2_role6/v2a2_role6_summon_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer307 = {
 	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_dec2.png",
 	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_dec1.png",

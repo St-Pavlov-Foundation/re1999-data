@@ -34422,6 +34422,12 @@
   "singlebg/summon/heroversion_2_9/v2a9_selfselectsix_role.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_selfselectsix_role.png"
   ],
+  "singlebg/summon/heroversion_2_9/v2a9_6/v2a9_summon_6_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_6/v2a9_summon_6_role1.png"
+  ],
+  "singlebg/summon/heroversion_2_9/v2a9_6/v2a9_summon_6_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_6/v2a9_summon_6_role2.png"
+  ],
   "singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_chancebg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_2_9/v2a9_azio/v2a9_summon_azio_chancebg.png"
   ],
