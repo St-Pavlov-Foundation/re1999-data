@@ -19,6 +19,8 @@ function var_0_0.getNodeIcon(arg_3_0)
 
 	if arg_3_0 == 0 then
 		return "act191_progress_largeicon_0"
+	elseif arg_3_0 == Activity191Enum.NodeType.MixStore then
+		return "act191_progress_largeicon_1"
 	elseif var_0_0.isPveBattle(arg_3_0) then
 		return "act191_progress_largeicon_2"
 	elseif var_0_0.isPvpBattle(arg_3_0) then
@@ -31,6 +33,8 @@ function var_0_0.getNodeIcon(arg_3_0)
 		return "act191_progress_largeicon_6"
 	elseif arg_3_0 == Activity191Enum.NodeType.Enhance then
 		return "act191_progress_largeicon_7"
+	elseif arg_3_0 == Activity191Enum.NodeType.ReplaceEvent or arg_3_0 == Activity191Enum.NodeType.UpgradeEvent then
+		return "act191_progress_largeicon_8"
 	end
 end
 
@@ -281,6 +285,21 @@ function var_0_0.clickHyperLinkSkill(arg_23_0, arg_23_1)
 	}
 
 	ViewMgr.instance:openView(ViewName.Act191BuffTipView, var_23_0)
+end
+
+function var_0_0.clickHyperLinkRole(arg_24_0)
+	local var_24_0 = string.splitToNumber(arg_24_0, "#")[1]
+
+	if var_24_0 then
+		local var_24_1 = {
+			preview = true,
+			heroList = {
+				tonumber(var_24_0)
+			}
+		}
+
+		Activity191Controller.instance:openHeroTipView(var_24_1)
+	end
 end
 
 return var_0_0

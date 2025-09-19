@@ -1,0 +1,79 @@
+[
+  {
+    "id": 303701,
+    "storyId": 26,
+    "storyName": "通灵之屋",
+    "storyNameEn": "She Who Hears the Dead",
+    "time": 8.0,
+    "place": "列支敦士登",
+    "weather": 1,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303702,
+    "storyId": 26,
+    "storyName": "墓碑遗愿",
+    "storyNameEn": "His Last Wish",
+    "time": 8.2,
+    "place": "墓碑博物馆",
+    "weather": 1,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303703,
+    "storyId": 26,
+    "storyName": "信仰",
+    "storyNameEn": "His Belief",
+    "time": 16.0,
+    "place": "柏林",
+    "weather": 6,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303704,
+    "storyId": 26,
+    "storyName": "鸣响",
+    "storyNameEn": "The Whistle",
+    "time": 19.0,
+    "place": "柏林",
+    "weather": 7,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303705,
+    "storyId": 26,
+    "storyName": "新与旧",
+    "storyNameEn": "The Old and the New",
+    "time": 8.1,
+    "place": "彼得格勒",
+    "weather": 6,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303706,
+    "storyId": 26,
+    "storyName": "安宁",
+    "storyNameEn": "Peace",
+    "time": 7.0,
+    "place": "斯帕卡湾",
+    "weather": 2,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  },
+  {
+    "id": 303707,
+    "storyId": 26,
+    "storyName": "博物馆",
+    "storyNameEn": "The Museum",
+    "time": 9.0,
+    "place": "列支敦士登",
+    "weather": 1,
+    "roleName": "讣告人",
+    "storyPic": "rolestory_pic_01"
+  }
+]

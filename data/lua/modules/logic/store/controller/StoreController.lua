@@ -84,6 +84,12 @@ function var_0_0.openPackageStoreGoodsView(arg_10_0, arg_10_1)
 		ViewMgr.instance:openView(ViewName.OptionalChargeView, arg_10_1)
 	elseif var_10_0 == StoreEnum.StoreChargeType.LinkGiftGoods then
 		ViewMgr.instance:openView(ViewName.StoreLinkGiftGoodsView, arg_10_1)
+	elseif var_10_0 == StoreEnum.StoreChargeType.NationalGift then
+		local var_10_1 = {
+			goodMo = arg_10_1
+		}
+
+		NationalGiftController.instance:openNationalGiftBuyTipView(var_10_1)
 	else
 		ViewMgr.instance:openView(ViewName.PackageStoreGoodsView, arg_10_1)
 	end
@@ -239,6 +245,10 @@ function var_0_0.statOpenGoods(arg_19_0, arg_19_1, arg_19_2)
 		return
 	end
 
+	if ChargePushStatController.instance:statClick(arg_19_2.id) then
+		return
+	end
+
 	arg_19_0._lastViewGoodsId = arg_19_2.id
 	arg_19_0._goodsTime = ServerTime.now()
 
@@ -262,6 +272,10 @@ function var_0_0.statOpenChargeGoods(arg_20_0, arg_20_1, arg_20_2)
 		return
 	end
 
+	if ChargePushStatController.instance:statClick(arg_20_2.id) then
+		return
+	end
+
 	arg_20_0._lastViewGoodsId = arg_20_2.id
 	arg_20_0._goodsTime = ServerTime.now()
 
@@ -279,8 +293,6 @@ function var_0_0.statCloseGoods(arg_21_0, arg_21_1)
 	end
 
 	if arg_21_0._lastViewGoodsId ~= arg_21_1.id then
-		logError("打开和关闭时商品不一致， 不应该发生")
-
 		return
 	end
 
@@ -583,6 +595,23 @@ function var_0_0.statOnClickPowerPotionJump(arg_36_0, arg_36_1, arg_36_2)
 		[StatEnum.EventProperties.WindowName] = arg_36_1,
 		[StatEnum.EventProperties.JumpName] = arg_36_2
 	})
+end
+
+function var_0_0.needHideHome(arg_37_0)
+	if arg_37_0._needHideBackHomeViews == nil then
+		arg_37_0._needHideBackHomeViews = {
+			ViewName.SummonResultView,
+			ViewName.SummonADView
+		}
+	end
+
+	for iter_37_0 = 1, #arg_37_0._needHideBackHomeViews do
+		if ViewMgr.instance:isOpen(arg_37_0._needHideBackHomeViews[iter_37_0]) then
+			return true
+		end
+	end
+
+	return false
 end
 
 var_0_0.instance = var_0_0.New()

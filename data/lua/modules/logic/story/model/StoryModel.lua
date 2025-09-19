@@ -698,22 +698,42 @@ function var_0_0.getCurStoryId(arg_66_0)
 	return arg_66_0._curStoryId or 0
 end
 
-function var_0_0.isS01Story(arg_67_0, arg_67_1)
-	local var_67_0 = arg_67_1 or arg_67_0:getCurStoryId()
+function var_0_0.setCurStepId(arg_67_0, arg_67_1)
+	arg_67_0._curStepId = arg_67_1 or 0
+end
 
-	if math.floor(var_67_0 / 100) == 20305 then
+function var_0_0.getCurStepId(arg_68_0)
+	return arg_68_0._curStepId
+end
+
+function var_0_0.isS01Story(arg_69_0, arg_69_1)
+	local var_69_0 = arg_69_1 or arg_69_0:getCurStoryId()
+
+	if math.floor(var_69_0 / 100) == 20305 then
 		return true
 	end
 
 	return false
 end
 
-function var_0_0.isStoryPvPause(arg_68_0)
-	return arg_68_0._pvPause
+function var_0_0.isStoryPvPause(arg_70_0)
+	return arg_70_0._pvPause
 end
 
-function var_0_0.setStoryPvPause(arg_69_0, arg_69_1)
-	arg_69_0._pvPause = arg_69_1
+function var_0_0.setStoryPvPause(arg_71_0, arg_71_1)
+	arg_71_0._pvPause = arg_71_1
+end
+
+function var_0_0.setLimitNoInteractLock(arg_72_0, arg_72_1)
+	arg_72_0._isLimitNoInteractLock = arg_72_1
+end
+
+function var_0_0.isLimitNoInteractLock(arg_73_0, arg_73_1)
+	if not arg_73_1 or arg_73_1.conversation.type ~= StoryEnum.ConversationType.LimitNoInteract then
+		return false
+	end
+
+	return arg_73_0._isLimitNoInteractLock
 end
 
 var_0_0.instance = var_0_0.New()

@@ -60,6 +60,10 @@ function var_0_0.onOpen(arg_6_0)
 				arg_6_0._txtDesc.text = Activity191Helper.buildDesc(var_6_2, Activity191Enum.HyperLinkPattern.EnhanceItem, var_6_4.typeParam .. "#")
 
 				SkillHelper.addHyperLinkClick(arg_6_0._txtDesc, Activity191Helper.clickHyperLinkItem)
+			elseif var_6_4.type == Activity191Enum.EffectType.Hero then
+				arg_6_0._txtDesc.text = Activity191Helper.buildDesc(var_6_2, Activity191Enum.HyperLinkPattern.Hero, var_6_4.typeParam)
+
+				SkillHelper.addHyperLinkClick(arg_6_0._txtDesc, Activity191Helper.clickHyperLinkRole)
 			else
 				arg_6_0._txtDesc.text = var_6_2
 			end

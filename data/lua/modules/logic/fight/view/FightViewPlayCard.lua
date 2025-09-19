@@ -61,11 +61,11 @@ function var_0_0.onOpen(arg_4_0)
 	arg_4_0:addEventCb(FightController.instance, FightEvent.EnterOperateState, arg_4_0._onEnterOperateState, arg_4_0)
 	arg_4_0:addEventCb(FightController.instance, FightEvent.ExitOperateState, arg_4_0._onExitOperateState, arg_4_0)
 	arg_4_0:addEventCb(FightController.instance, FightEvent.HidePlayCardAllCard, arg_4_0._onHidePlayCardAllCard, arg_4_0)
-	arg_4_0:addEventCb(FightController.instance, FightEvent.EnterStage, arg_4_0._onEnterStage, arg_4_0)
+	arg_4_0:addEventCb(FightController.instance, FightEvent.StageChanged, arg_4_0.onStageChanged, arg_4_0)
 	arg_4_0:addEventCb(FightController.instance, FightEvent.BeforeCancelOperation, arg_4_0.onBeforeCancelOperation, arg_4_0)
 end
 
-function var_0_0._onEnterStage(arg_5_0, arg_5_1)
+function var_0_0.onStageChanged(arg_5_0, arg_5_1)
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end

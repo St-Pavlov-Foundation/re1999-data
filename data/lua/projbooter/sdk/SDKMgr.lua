@@ -349,7 +349,11 @@ function var_0_0.payGoods(arg_44_0, arg_44_1)
 end
 
 function var_0_0.getWinPackageName(arg_45_0)
-	return arg_45_0.csharpInst:GetWinPackageName()
+	if GameChannelConfig.isSlsdk() then
+		return "com.shenlan.m.proj1"
+	else
+		return arg_45_0.csharpInst:GetWinPackageName()
+	end
 end
 
 function var_0_0.pcLoginForQrCode(arg_46_0)

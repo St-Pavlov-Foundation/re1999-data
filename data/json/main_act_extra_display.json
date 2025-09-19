@@ -57,7 +57,7 @@
   },
   {
     "id": 10,
-    "name": "",
+    "name": "和平角斗场",
     "icon": "singlebg_lang/txt_act191_singlebg/act191_main_banner.png",
     "sortId": 3,
     "show": 1
@@ -65,7 +65,7 @@
   {
     "id": 11,
     "name": "《雨前漫游指南》",
-    "icon": "singlebg_lang/txt_v2a8_survival_singlebg/survival_mainenter_banner.png",
+    "icon": "singlebg_lang/txt_survival_singlebg/survival_mainenter_banner.png",
     "sortId": 4,
     "show": 1
   }

@@ -177,7 +177,7 @@ function var_0_0._refreshItem(arg_6_0)
 			}
 
 			RedDotController.instance:addMultiRedDot(arg_6_0._goreddot, var_6_15)
-		elseif var_6_5 == ActivityEnum.ActivityTypeID.Act201 then
+		elseif var_6_5 == ActivityEnum.ActivityTypeID.Act201 or var_6_5 == ActivityEnum.ActivityTypeID.Act209 or var_6_5 == ActivityEnum.ActivityTypeID.Act212 or var_6_5 == ActivityEnum.ActivityTypeID.Act214 or var_6_5 == ActivityEnum.ActivityTypeID.Act100 then
 			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_4, nil, arg_6_0.checkActivityShowFirstEnter, arg_6_0)
 		else
 			RedDotController.instance:addRedDot(arg_6_0._goreddot, var_6_8, arg_6_0._mo.id)

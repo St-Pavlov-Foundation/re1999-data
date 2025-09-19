@@ -491,17 +491,35 @@ end
 function var_0_0._playGreetingVoice(arg_33_0)
 	if arg_33_0._selectedCharMos and #arg_33_0._selectedCharMos == 1 then
 		local var_33_0 = CharacterDataConfig.instance:getCharacterVoicesCo(arg_33_0._selectedCharMos[1].heroId)
-		local var_33_1
+		local var_33_1 = arg_33_0._selectedCharMos[1].skin
+		local var_33_2
+		local var_33_3
 
 		for iter_33_0, iter_33_1 in pairs(var_33_0) do
 			if iter_33_1.type == CharacterEnum.VoiceType.Greeting then
-				var_33_1 = iter_33_1
+				local var_33_4 = iter_33_1.skins
 
-				break
+				if not var_33_4 or string.nilorempty(var_33_4) then
+					var_33_3 = iter_33_1
+				else
+					local var_33_5 = string.splitToNumber(var_33_4, "#")
+
+					for iter_33_2, iter_33_3 in ipairs(var_33_5) do
+						if iter_33_3 == var_33_1 then
+							var_33_2 = iter_33_1
+
+							break
+						end
+					end
+				end
+
+				if var_33_2 then
+					break
+				end
 			end
 		end
 
-		arg_33_0._curVoiceCfg = var_33_1
+		arg_33_0._curVoiceCfg = var_33_2 and var_33_2 or var_33_3
 
 		arg_33_0:_playVoice()
 	end

@@ -34,13 +34,13 @@ var_0_0.TaskType = {
 	Activity142 = 27,
 	Activity134 = 25,
 	Activity119 = 14,
-	Novice = 4,
+	Activity211 = 68,
 	HideAchievement = 5,
 	Activity194 = 58,
 	Activity128 = 22,
 	Activity189 = 53,
 	Season = 9,
-	CommandStationNormal = 62,
+	Activity210 = 67,
 	ActivityDungeon = 11,
 	Season123 = 31,
 	CommandStationCatch = 64,
@@ -49,16 +49,22 @@ var_0_0.TaskType = {
 	Activity109 = 12,
 	Activity203 = 61,
 	Activity172 = 37,
+	NecrologistStory = 65,
 	Activity131 = 20,
+	TowerDeep = 66,
 	Turnback = 18,
+	CommandStationNormal = 62,
 	Activity125 = 45,
 	Activity163 = 32,
 	Activity164 = 33,
+	Novice = 4,
 	Achievement = 3,
 	Activity192 = 56,
 	DiceHero = 51,
 	AutoChess = 47,
 	Activity167 = 35,
+	TowerPermanentDeep = 69,
+	BpOperAct = 70,
 	Activity122 = 17,
 	Weekly = 2
 }
@@ -66,6 +72,9 @@ var_0_0.TaskMinType = {
 	Novice = 1,
 	Stationary = 2,
 	GrowBack = 3
+}
+var_0_0.ListenerType = {
+	Act209GlobalTowerLayer = "Act209GlobalTowerLayer"
 }
 
 return var_0_0

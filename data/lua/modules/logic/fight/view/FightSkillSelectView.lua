@@ -54,7 +54,7 @@ function var_0_0.addEvents(arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, arg_2_0._setEntityVisibleByTimeline, arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.OnBeginWave, arg_2_0._onBeginWave, arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.EntityDeadFinish, arg_2_0.onEntityDeadFinish, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.ExitStage, arg_2_0.onExitStage, arg_2_0)
+	arg_2_0:addEventCb(FightController.instance, FightEvent.StageChanged, arg_2_0.onStageChanged, arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.GuideCreateClickBySkinId, arg_2_0._onGuideCreateClickBySkinId, arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.GuideReleaseClickBySkilId, arg_2_0._onGuideReleaseClickBySkilId, arg_2_0)
 	arg_2_0:addEventCb(FightController.instance, FightEvent.OnChangeEntity, arg_2_0.onChangeEntity, arg_2_0)
@@ -73,7 +73,7 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0:removeEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, arg_3_0._setEntityVisibleByTimeline, arg_3_0)
 	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnBeginWave, arg_3_0._onBeginWave, arg_3_0)
 	arg_3_0:removeEventCb(FightController.instance, FightEvent.EntityDeadFinish, arg_3_0.onEntityDeadFinish, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.ExitStage, arg_3_0.onExitStage, arg_3_0)
+	arg_3_0:removeEventCb(FightController.instance, FightEvent.StageChanged, arg_3_0.onStageChanged, arg_3_0)
 	arg_3_0:removeEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelect, arg_3_0.OnKeySelect, arg_3_0)
 	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnChangeEntity, arg_3_0.onChangeEntity, arg_3_0)
 	arg_3_0._clickBlock:RemoveClickListener()
@@ -248,7 +248,7 @@ function var_0_0._onClick(arg_10_0, arg_10_1, arg_10_2)
 		return
 	end
 
-	if FightReplayModel.instance:isReplay() then
+	if FightDataHelper.stateMgr.isReplay then
 		return
 	end
 
@@ -258,7 +258,7 @@ function var_0_0._onClick(arg_10_0, arg_10_1, arg_10_2)
 		return
 	end
 
-	if FightModel.instance:isAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() then
 		if var_10_0 == FightDataHelper.operationDataMgr.curSelectEntityId then
 			FightDataHelper.operationDataMgr:setCurSelectEntityId(0)
 		else
@@ -298,6 +298,10 @@ function var_0_0._onClickDown(arg_11_0, arg_11_1, arg_11_2)
 end
 
 function var_0_0.checkCanSelect(arg_12_0, arg_12_1)
+	if FightDataHelper.entityMgr:getById(arg_12_1):isAct191Boss() then
+		return false
+	end
+
 	if FightDataHelper.entityMgr:isSub(arg_12_1) then
 		return false
 	end
@@ -330,21 +334,25 @@ function var_0_0._onClickUp(arg_13_0, arg_13_1, arg_13_2)
 end
 
 function var_0_0._onLongPress(arg_14_0, arg_14_1)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if not arg_14_0._curClickEntityId then
 		return
 	end
 
-	if FightReplayModel.instance:isReplay() then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
+		return
+	end
+
+	if FightDataHelper.stateMgr.isReplay then
 		return
 	end
 
 	local var_14_0 = FightDataHelper.stageMgr:getCurOperateState()
 
 	if var_14_0 == FightStageMgr.OperateStateType.Discard or var_14_0 == FightStageMgr.OperateStateType.DiscardEffect then
-		return
-	end
-
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
 		return
 	end
 
@@ -362,7 +370,7 @@ function var_0_0._onLongPress(arg_14_0, arg_14_1)
 		return
 	end
 
-	if FightModel.instance:isAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() then
 		return
 	end
 
@@ -391,16 +399,16 @@ function var_0_0._onLongPress(arg_14_0, arg_14_1)
 	arg_14_0.viewContainer:openFightFocusView(arg_14_0.currentFocusEntityMO.id)
 end
 
-function var_0_0.onExitStage(arg_15_0, arg_15_1)
+function var_0_0.onStageChanged(arg_15_0, arg_15_1)
 	local var_15_0 = FightDataHelper.stageMgr:getCurStage()
 
-	if FightDataHelper.stageMgr:inReplay() then
+	if FightDataHelper.stateMgr.isReplay then
 		logError("reply stage ?")
 
 		return
 	end
 
-	if var_15_0 == FightStageMgr.StageType.Normal then
+	if var_15_0 == FightStageMgr.StageType.Operate then
 		arg_15_0:clearAllFlag()
 		arg_15_0:_updatePos()
 	end
@@ -425,7 +433,7 @@ end
 function var_0_0.onOpen(arg_19_0)
 	gohelper.setAsFirstSibling(arg_19_0.viewGO)
 
-	if FightReplayModel.instance:isReplay() then
+	if FightDataHelper.stateMgr.isReplay then
 		arg_19_0:_removeAllEvent()
 	end
 end
@@ -577,7 +585,7 @@ function var_0_0._delayStartSequenceFinish(arg_32_0)
 end
 
 function var_0_0.OnKeySelect(arg_33_0, arg_33_1)
-	if FightReplayModel.instance:isReplay() then
+	if FightDataHelper.stateMgr.isReplay then
 		return
 	end
 

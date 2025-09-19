@@ -23,6 +23,26 @@ var_0_0.preloadLists.SummonCharacterProbUpVer307 = {
 	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_role.png",
 	"singlebg/summon/heroversion_2_3/dudugu/v2a3_dudugu_fullbg.png"
 }
+var_0_0.preloadLists.SummonCharacterProbUpVer315 = {
+	"singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_role1.png",
+	"singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_light.png",
+	"singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer314 = {
+	"singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_light.png",
+	"singlebg/summon/heroversion_3_1/v3a1_yeshumei/v3a1_yeshumei_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer313 = {
+	"singlebg/summon/heroversion_1_9/kakaniya/v1a9_kakaniya_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer312 = {
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role4.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
+	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_fullbg.png"
+}
+var_0_0.preloadLists.SummonCharacterProbUpVer311 = {
+	"singlebg/summon/heroversion_2_7/v2a7_coopergarland/v2a7_summon_coopergarland_fullbg.png"
+}
 var_0_0.preloadLists.SummonCharacterProbUpVer306 = {
 	"singlebg/summon/heroversion_2_6/dicehero/v2a6_dicehero_summon_role3.png",
 	"singlebg/summon/heroversion_2_7/v2a7_hissabeth/v2a7_summon_hissabeth_fullbg.png"
@@ -36,6 +56,11 @@ var_0_0.preloadLists.SummonCharacterProbUpVer304 = {
 	"singlebg/summon/heroversion_1_4/role37/v1a4_role37_bottombg.png",
 	"singlebg/summon/heroversion_1_4/role37/v1a4_role37_summon_37.png",
 	"singlebg/summon/heroversion_1_7/37/full/v1a7_37_fullbg.png"
+}
+var_0_0.preloadLists.SummonStrongOneCustomPick31 = {
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_3_1/v3a1_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
 }
 var_0_0.preloadLists.SummonStrongOneCustomPick29 = {
 	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",

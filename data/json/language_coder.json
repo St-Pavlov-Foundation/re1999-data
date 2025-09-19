@@ -6213,7 +6213,7 @@
   },
   {
     "id": "survival_log_removecurrency_shelter",
-    "lang": "预支了营地▩1%s×▩2%s"
+    "lang": "预支了庇护所▩1%s×▩2%s"
   },
   {
     "id": "survival_log_addheart",
@@ -6273,15 +6273,15 @@
   },
   {
     "id": "survival_mainview_beginshrink",
-    "lang": "暴雨将于▩1%s开始"
+    "lang": "认知污染将于▩1%s开始"
   },
   {
     "id": "survival_mainview_endshrink",
-    "lang": "暴雨将于▩1%s停止"
+    "lang": "认知污染将于▩1%s停止"
   },
   {
     "id": "survival_mainview_lastshrink",
-    "lang": "暴雨已经无法停止"
+    "lang": "认知污染已经无法停止"
   },
   {
     "id": "survival_mainview_useitem_tips",
@@ -6297,7 +6297,7 @@
   },
   {
     "id": "survival_resultview_loss",
-    "lang": "在暴雨中迷失，收益损失▩1%s%"
+    "lang": "撤离失败，收益损失▩1%s%"
   },
   {
     "id": "survival_eventview_commititem",
@@ -7146,5 +7146,273 @@
   {
     "id": "odyssey_lvcancel",
     "lang": "取消"
+  },
+  {
+    "id": "character_develop_goals_title_1",
+    "lang": "等级【洞悉▩1%s Lv.▩2%s】"
+  },
+  {
+    "id": "character_develop_goals_title_2",
+    "lang": "等级【Lv.▩1%s】"
+  },
+  {
+    "id": "character_develop_goals_title_3",
+    "lang": "共鸣【Lv.▩1%s】"
+  },
+  {
+    "id": "survival_spequip_tag",
+    "lang": "乐观装置"
+  },
+  {
+    "id": "survival_mapblockname",
+    "lang": "平地"
+  },
+  {
+    "id": "v3a1_necrologiststory_target_txt",
+    "lang": "请于<color=#e7933f>▩1%s</color>准时抵达<color=#e7933f>▩2%s</color>"
+  },
+  {
+    "id": "SurvivalRewardInheritView_1",
+    "lang": "可选择▩1%s个漫游行装继承到下局流程"
+  },
+  {
+    "id": "SurvivalRewardInheritView_2",
+    "lang": "可选择▩1%s个漫游助理继承到下局流程"
+  },
+  {
+    "id": "SurvivalBossInvasionView_1",
+    "lang": "已失效"
+  },
+  {
+    "id": "SurvivalBossInvasionView_2",
+    "lang": "转译进度▩1%s令此效果失效"
+  },
+  {
+    "id": "PowerMakerPatFaceView_desc_1",
+    "lang": "在司辰离开的 <color=#e99b56>【▩1%s】</color> 里，"
+  },
+  {
+    "id": "PowerMakerPatFaceView_desc_2",
+    "lang": "苦目风味制糖机制造了 <color=#e99b56>【▩1%s】</color> 颗苦目风味糖球"
+  },
+  {
+    "id": "SurvivalSummaryActView_1",
+    "lang": "本次演习共招募了▩1%s位助理。分别是▩2%s"
+  },
+  {
+    "id": "191collectionchangeview_title1",
+    "lang": "拓片置换"
+  },
+  {
+    "id": "191collectionchangeview_title2",
+    "lang": "拓片加工"
+  },
+  {
+    "id": "191collectionchangeview_addtip1",
+    "lang": "置换次数：▩1%s"
+  },
+  {
+    "id": "191collectionchangeview_addtip2",
+    "lang": "添加造物（▩1%s/▩2%s）"
+  },
+  {
+    "id": "191collectiontipview_addchange",
+    "lang": "置换"
+  },
+  {
+    "id": "191collectiontipview_addupgrade",
+    "lang": "加工"
+  },
+  {
+    "id": "main_switch_classify_title_3",
+    "lang": "叩门余音"
+  },
+  {
+    "id": "SurvivalShopView_1",
+    "lang": "“露西号”拖车"
+  },
+  {
+    "id": "SurvivalShopView_2",
+    "lang": "提交"
+  },
+  {
+    "id": "SurvivalShopView_3",
+    "lang": "临行商店"
+  },
+  {
+    "id": "TowerDeep_normalNotFight",
+    "lang": "<size=80>与</size>之纠缠"
+  },
+  {
+    "id": "TowerDeep_normalFight",
+    "lang": "<size=80>与</size>之纠缠"
+  },
+  {
+    "id": "TowerDeep_endlessNotFight",
+    "lang": "<size=80>无</size>尽迷思"
+  },
+  {
+    "id": "TowerDeep_endlessFight",
+    "lang": "<size=80>无</size>尽迷思"
+  },
+  {
+    "id": "TowerDeep_normalNotFightEn",
+    "lang": "Begin Entwinement"
+  },
+  {
+    "id": "TowerDeep_normalFightEn",
+    "lang": "Begin Entwinement"
+  },
+  {
+    "id": "TowerDeep_endlessNotFightEn",
+    "lang": "Infinite Entwinement"
+  },
+  {
+    "id": "TowerDeep_endlessFightEn",
+    "lang": "Infinite Entwinement"
+  },
+  {
+    "id": "TowerDeep_curDeepHigh",
+    "lang": "下潜中 ▩1%sM"
+  },
+  {
+    "id": "TowerDeep_teamSave_save",
+    "lang": "保存存档"
+  },
+  {
+    "id": "TowerDeep_teamSave_load",
+    "lang": "加载存档"
+  },
+  {
+    "id": "TowerDeep_teamSave_round",
+    "lang": "挑战次数▩1%s"
+  },
+  {
+    "id": "RoomFishing_times",
+    "lang": "打捞▩1%s次"
+  },
+  {
+    "id": "RoomFishing_StoreItem",
+    "lang": "茸毛集换所"
+  },
+  {
+    "id": "RoomFishing_reward_tips",
+    "lang": "你完成了▩3%s次打捞，共计用时▩1%s时▩2%s分"
+  },
+  {
+    "id": "RoomFishing_other_reward_tips",
+    "lang": "友人在你的好梦井完成了▩3%s次打捞，共计用时▩1%s时▩2%s分"
+  },
+  {
+    "id": "RoomFishing_refresh_time",
+    "lang": "距好梦井馈赠更新：▩1%s"
+  },
+  {
+    "id": "RoomFishing_fishing_time",
+    "lang": "▩1%s时▩2%s分▩3%s秒"
+  },
+  {
+    "id": "Room_block_reform_select_all",
+    "lang": "全选"
+  },
+  {
+    "id": "Room_block_reform_select_single",
+    "lang": "单选"
+  },
+  {
+    "id": "Room_block_reform_select_multiple",
+    "lang": "相邻同风格"
+  },
+  {
+    "id": "c_optionpackage_downloadsize_txt_opveract",
+    "lang": "是否下载常驻活动资源？\n资源大小:▩1%s"
+  },
+  {
+    "id": "c_optionpackage_downloadsize_txt_opexplore",
+    "lang": "是否下载第三扇门资源？\n资源大小:▩1%s"
+  },
+  {
+    "id": "c_optionpackage_download_btn_yes",
+    "lang": "确定下载"
+  },
+  {
+    "id": "c_optionpackage_download_btn_no",
+    "lang": "取消下载"
+  },
+  {
+    "id": "storeskinview_skintips",
+    "lang": "重复获取该衣着转化为▩1%s"
+  },
+  {
+    "id": "storeskingoodsview2_storeskin_txt_tips",
+    "lang": "该衣着在“▩1%s”同步热卖中，是否查看"
+  },
+  {
+    "id": "skinhandbook_lock_suit",
+    "lang": "敬请期待"
+  },
+  {
+    "id": "towermain_deeplayer",
+    "lang": "无底涡流 ▩1%sM"
+  },
+  {
+    "id": "buy_limit_time",
+    "lang": "购买剩余时间:"
+  },
+  {
+    "id": "receive_limit_time",
+    "lang": "领奖剩余时间:"
+  },
+  {
+    "id": "v3a1_bpoperactshowview_txt_MAX",
+    "lang": "已达分贝等级上限"
+  },
+  {
+    "id": "v3a1_bpoperactshowview_txt_finish",
+    "lang": "本周任务已完成"
+  },
+  {
+    "id": "Survival_HandBookTitle_StateAbnormal",
+    "lang": "状态异常"
+  },
+  {
+    "id": "SurvivalBubble_1",
+    "lang": "我需要先击败入侵者"
+  },
+  {
+    "id": "achievement_category_nameplate",
+    "lang": "馆藏"
+  },
+  {
+    "id": "SurvivalSummaryActReputationItem_1",
+    "lang": "▩1%s成员+▩2%s"
+  },
+  {
+    "id": "SurvivalSummaryActReputationItem_2",
+    "lang": "转译资料+▩2%s"
+  },
+  {
+    "id": "SurvivalSelectTalentTreeView_1",
+    "lang": "战利品点数：▩1%s/▩2%s"
+  },
+  {
+    "id": "SurvivalRewardSelectView_1",
+    "lang": "战利品点数不足"
+  },
+  {
+    "id": "SurvivalRewardSelectView_2",
+    "lang": "战利品数量不足"
+  },
+  {
+    "id": "SurvivalDecreeSelectView_1",
+    "lang": "§▩1%s发布成功"
+  },
+  {
+    "id": "pata_500M_pogress_title",
+    "lang": "压力"
+  },
+  {
+    "id": "pata_500M_pogress_desc",
+    "lang": "回台开始时：\n-若压力大于等于<color=#E99B56>30</color>时，遮蔽敌方咒语1回合\n-若压力大于等于<color=#E99B56>70</color>时，使敌方后续回合行\n动点-1\n-若压力大于等于<color=#E99B56>100</color>时，将会释放1次至终\n的仪式"
   }
 ]

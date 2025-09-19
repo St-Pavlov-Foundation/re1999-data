@@ -2,71 +2,109 @@
   {
     "id": 1000,
     "name": "",
-    "flag": "count0"
+    "flag": "count0",
+    "desc": ""
   },
   {
     "id": 1001,
     "name": "连锁",
-    "flag": "count1"
+    "flag": "count1",
+    "desc": "最多叠加40个\n①大幅度提升【电能痕契<id:0>】的效果\n②中等幅度提升【额外行动痕契<id:0>】【状态异常痕契<id:0>】的效果\n③小幅度提升【薪血痕契<id:0>】【仪式痕契<id:0>】的效果"
   },
   {
     "id": 1002,
     "name": "怒火",
-    "flag": "count2"
+    "flag": "count2",
+    "desc": "最多叠加40个\n①极大幅度提升【薪血痕契<id:0>】的效果\n②小幅度提升【电能痕契<id:0>】【仪式痕契<id:0>】【启示痕契<id:0>】【额外行动痕契<id:0>】的效果"
   },
   {
     "id": 1003,
     "name": "",
-    "flag": "count3"
+    "flag": "count3",
+    "desc": ""
   },
   {
     "id": 1004,
     "name": "混沌",
-    "flag": "count4"
+    "flag": "count4",
+    "desc": "最多叠加40个\n①大幅度提升【启示痕契<id:0>】【仪式痕契<id:0>】【状态异常痕契<id:0>】的效果\n②小幅度提升【薪血痕契<id:0>】的效果"
   },
   {
     "id": 1005,
     "name": "",
-    "flag": "count5"
+    "flag": "count5",
+    "desc": ""
   },
   {
     "id": 1006,
     "name": "",
-    "flag": "count6"
+    "flag": "count6",
+    "desc": ""
   },
   {
     "id": 1007,
     "name": "",
-    "flag": "count7"
+    "flag": "count7",
+    "desc": ""
   },
   {
     "id": 1008,
     "name": "",
-    "flag": "count8"
+    "flag": "count8",
+    "desc": ""
   },
   {
     "id": 1009,
     "name": "",
-    "flag": "count9"
+    "flag": "count9",
+    "desc": ""
   },
   {
     "id": 1010,
     "name": "",
-    "flag": "count10"
+    "flag": "count10",
+    "desc": ""
   },
   {
     "id": 1011,
     "name": "",
-    "flag": "count11"
+    "flag": "count11",
+    "desc": ""
   },
   {
     "id": 1012,
     "name": "",
-    "flag": "count12"
+    "flag": "count12",
+    "desc": ""
   },
   {
     "id": 1013,
     "name": "",
-    "flag": "count13"
+    "flag": "count13",
+    "desc": ""
+  },
+  {
+    "id": 1014,
+    "name": "",
+    "flag": "count14",
+    "desc": ""
+  },
+  {
+    "id": 1015,
+    "name": "",
+    "flag": "count15",
+    "desc": ""
+  },
+  {
+    "id": 1016,
+    "name": "",
+    "flag": "count16",
+    "desc": ""
+  },
+  {
+    "id": 1017,
+    "name": "",
+    "flag": "count17",
+    "desc": ""
   }
 ]

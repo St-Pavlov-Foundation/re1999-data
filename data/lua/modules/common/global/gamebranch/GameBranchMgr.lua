@@ -5,18 +5,8 @@ local var_0_1 = _G.tonumber
 local var_0_2 = _G.assert
 local var_0_3 = class("GameBranchMgr")
 local var_0_4 = false
-local var_0_5 = true
-local var_0_6 = 2
-local var_0_7 = 9
 
-local function var_0_8(arg_1_0)
-	if var_0_5 then
-		arg_1_0.V = var_0_6
-		arg_1_0.A = var_0_7
-
-		return
-	end
-
+local function var_0_5(arg_1_0)
 	local var_1_0 = "AudioEnum%s_%s"
 	local var_1_1 = 1
 	local var_1_2 = 5
@@ -73,7 +63,7 @@ function var_0_3.ctor(arg_2_0)
 	if not var_0_4 then
 		var_0_4 = {}
 
-		var_0_8(var_0_4)
+		var_0_5(var_0_4)
 	end
 
 	arg_2_0._versionInfo = var_0_4

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 660001,
+    "activityId": 13112,
+    "isOnline": 1,
+    "minType": "迷思无尽时",
+    "name": "迷思无尽时",
+    "desc": "登录游戏",
+    "prepose": "",
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "episodeId": 0,
+    "jumpId": 0,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 660002,
+    "activityId": 13112,
+    "isOnline": 1,
+    "minType": "迷思无尽时",
+    "name": "迷思无尽时",
+    "desc": "完成%s次迷思海挑战",
+    "prepose": "",
+    "listenerType": "FinishTowerEpisode",
+    "listenerParam": "1",
+    "maxProgress": 1,
+    "episodeId": 0,
+    "jumpId": 0,
+    "bonus": "10#10#1"
+  },
+  {
+    "id": 660003,
+    "activityId": 13112,
+    "isOnline": 1,
+    "minType": "迷思无尽时",
+    "name": "迷思无尽时",
+    "desc": "全服泛流最深处达%sM",
+    "prepose": "",
+    "listenerType": "Act209GlobalTowerLayer",
+    "listenerParam": "13112",
+    "maxProgress": 500,
+    "episodeId": 0,
+    "jumpId": 0,
+    "bonus": "1#491007#1"
+  },
+  {
+    "id": 660004,
+    "activityId": 13112,
+    "isOnline": 1,
+    "minType": "迷思无尽时",
+    "name": "迷思无尽时",
+    "desc": "全服泛流最深处达%sM",
+    "prepose": "660003",
+    "listenerType": "Act209GlobalTowerLayer",
+    "listenerParam": "13112",
+    "maxProgress": 1000,
+    "episodeId": 0,
+    "jumpId": 0,
+    "bonus": "1#491010#1"
+  }
+]

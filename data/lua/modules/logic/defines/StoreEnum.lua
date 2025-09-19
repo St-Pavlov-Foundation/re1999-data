@@ -35,16 +35,17 @@ var_0_0.ChargeRefreshTime = {
 }
 var_0_0.LittleMonthCardGoodsId = 811450
 var_0_0.StoreId = {
-	Charge = 410,
 	PubbleCharge = 411,
 	LimitStore = 112,
-	CritterStore = 173,
 	SummonExchange = 110,
+	CritterStore = 173,
+	RecommendPackage = 611,
 	OneTimePackage = 613,
 	OldRoomStore = 172,
 	WeekWalk = 160,
+	RoomFishingStore = 190,
 	DecorateStore = 800,
-	RecommendPackage = 611,
+	Charge = 410,
 	MediciPackage = 616,
 	Summon = 130,
 	RoomStore = 170,
@@ -111,10 +112,11 @@ var_0_0.MonthCardStatus = {
 }
 var_0_0.Need4RDEpisodeId = 9999
 var_0_0.StoreChargeType = {
+	LinkGiftGoods = 8,
 	DailyReleasePackage = 4,
-	Optional = 5,
+	NationalGift = 9,
 	MonthCard = 2,
-	LinkGiftGoods = 8
+	Optional = 5
 }
 var_0_0.Prefab = {
 	RoomStore = 6,
@@ -135,6 +137,9 @@ var_0_0.TowerStore = {
 }
 var_0_0.StoreTabId = {
 	Skin = 500
+}
+var_0_0.StoreId2TabId = {
+	[var_0_0.StoreId.Skin] = var_0_0.StoreTabId.Skin
 }
 
 return var_0_0

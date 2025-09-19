@@ -146,7 +146,7 @@ function var_0_0.setCurSelectEntityId(arg_16_0, arg_16_1)
 end
 
 function var_0_0.resetCurSelectEntityIdDefault(arg_17_0)
-	if FightModel.instance:isAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() then
 		if FightHelper.canSelectEnemyEntity(arg_17_0.curSelectEntityId) then
 			arg_17_0:setCurSelectEntityId(arg_17_0.curSelectEntityId)
 		else

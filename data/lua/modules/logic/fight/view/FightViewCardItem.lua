@@ -203,6 +203,8 @@ function var_0_0.init(arg_2_0, arg_2_1)
 			gohelper.setActive(arg_2_0.attributeBg[iter_2_6], false)
 		end
 	end
+
+	arg_2_0.playedHideCardOpenAnim = false
 end
 
 function var_0_0.resetPreDelete(arg_3_0)
@@ -224,426 +226,521 @@ end
 function var_0_0.addEventListeners(arg_5_0)
 	arg_5_0:addEventCb(FightController.instance, FightEvent.ASFD_EmitterEnergyChange, arg_5_0.onEmitterEnergyChange, arg_5_0)
 	arg_5_0:addEventCb(FightController.instance, FightEvent.UpdateBuffActInfo, arg_5_0.onUpdateBuffActInfo, arg_5_0)
+
+	if arg_5_0:checkCanShowHideCardEffect() then
+		arg_5_0:addEventCb(FightController.instance, FightEvent.OnAddHideCardBuff, arg_5_0.onAddHideCardBuff, arg_5_0)
+		arg_5_0:addEventCb(FightController.instance, FightEvent.OnRemoveHideCardBuff, arg_5_0.OnRemoveHideCardBuff, arg_5_0)
+	end
 end
 
-function var_0_0.onUpdateBuffActInfo(arg_6_0, arg_6_1, arg_6_2, arg_6_3)
-	if arg_6_3.actId ~= FightEnum.BuffActId.NoUseCardEnergyRecordByRound then
-		return
-	end
+function var_0_0.onAddHideCardBuff(arg_6_0)
+	arg_6_0.playedHideCardOpenAnim = false
 
-	arg_6_0:refreshXiTiSpecialSkill(arg_6_0.entityId, arg_6_0.skillId)
+	arg_6_0:refreshCardIcon()
 end
 
-function var_0_0.onEmitterEnergyChange(arg_7_0)
-	if not FightHelper.isASFDSkill(arg_7_0.skillId) then
+function var_0_0.OnRemoveHideCardBuff(arg_7_0)
+	arg_7_0:refreshCardIcon()
+end
+
+local var_0_1 = "ui/viewres/fight/fighttower/card_mshboss.prefab"
+
+function var_0_0.refreshHideCardVx(arg_8_0)
+	if not arg_8_0:checkCanShowHideCardEffect() then
 		return
 	end
 
-	arg_7_0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)
+	if arg_8_0.goHideCardVx then
+		local var_8_0 = FightCardDataHelper.getSkillLv(arg_8_0.entityId, arg_8_0.skillId) == FightEnum.UniqueSkillCardLv
+		local var_8_1
 
-	if arg_7_0._disappearFlow and arg_7_0._disappearFlow.status == WorkStatus.Running then
+		if var_8_0 then
+			var_8_1 = FightModel.instance.bigSkillIcon ~= nil
+		else
+			var_8_1 = FightModel.instance.smallSkillIcon ~= nil
+		end
+
+		gohelper.setActive(arg_8_0.goHideCardVx, var_8_1)
+		gohelper.setActive(arg_8_0.goHideCardVxNormal, var_8_1 and not var_8_0)
+		gohelper.setActive(arg_8_0.goHideCardVxBigSkill, var_8_1 and var_8_0)
+
+		if var_8_1 and not arg_8_0.playedHideCardOpenAnim then
+			if var_8_0 then
+				arg_8_0.hideCardBigSkillAnim:Play("open")
+			else
+				arg_8_0.hideCardNormalAnim:Play("open")
+			end
+
+			arg_8_0.playedHideCardOpenAnim = true
+		end
+	else
+		if arg_8_0.hideVxLoader then
+			return
+		end
+
+		arg_8_0.hideVxLoader = MultiAbLoader.New()
+
+		arg_8_0.hideVxLoader:addPath(var_0_1)
+		arg_8_0.hideVxLoader:startLoad(arg_8_0.onHideCardVxLoaded, arg_8_0)
+	end
+end
+
+var_0_0.HideCardVxGoName = "hideCardVx"
+
+function var_0_0.onHideCardVxLoaded(arg_9_0)
+	local var_9_0 = arg_9_0.hideVxLoader:getAssetItem(var_0_1):GetResource()
+
+	arg_9_0.goHideCardVx = gohelper.clone(var_9_0, arg_9_0.go, var_0_0.HideCardVxGoName)
+	arg_9_0.goHideCardVxNormal = gohelper.findChild(arg_9_0.goHideCardVx, "normal")
+
+	local var_9_1 = gohelper.findChild(arg_9_0.goHideCardVxNormal, "ani")
+
+	arg_9_0.hideCardNormalAnim = ZProj.ProjAnimatorPlayer.Get(var_9_1)
+	arg_9_0.goHideCardVxBigSkill = gohelper.findChild(arg_9_0.goHideCardVx, "ultimate")
+
+	local var_9_2 = gohelper.findChild(arg_9_0.goHideCardVxBigSkill, "ani")
+
+	arg_9_0.hideCardBigSkillAnim = ZProj.ProjAnimatorPlayer.Get(var_9_2)
+
+	arg_9_0:refreshHideCardVx()
+end
+
+function var_0_0.onUpdateBuffActInfo(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
+	if arg_10_3.actId ~= FightEnum.BuffActId.NoUseCardEnergyRecordByRound then
 		return
 	end
 
-	if arg_7_0._dissolveFlow and arg_7_0._dissolveFlow.status == WorkStatus.Running then
+	arg_10_0:refreshXiTiSpecialSkill(arg_10_0.entityId, arg_10_0.skillId)
+end
+
+function var_0_0.onEmitterEnergyChange(arg_11_0)
+	if not FightHelper.isASFDSkill(arg_11_0.skillId) then
+		return
+	end
+
+	arg_11_0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)
+
+	if arg_11_0._disappearFlow and arg_11_0._disappearFlow.status == WorkStatus.Running then
+		return
+	end
+
+	if arg_11_0._dissolveFlow and arg_11_0._dissolveFlow.status == WorkStatus.Running then
 		return
 	end
 
 	AudioMgr.instance:trigger(20248003)
 
-	arg_7_0.asfdSkillAnimator = arg_7_0.asfdSkillAnimator or arg_7_0.goASFDSkill:GetComponent(gohelper.Type_Animator)
+	arg_11_0.asfdSkillAnimator = arg_11_0.asfdSkillAnimator or arg_11_0.goASFDSkill:GetComponent(gohelper.Type_Animator)
 
-	arg_7_0.asfdSkillAnimator:Play("aggrandizement", 0, 0)
+	arg_11_0.asfdSkillAnimator:Play("aggrandizement", 0, 0)
 end
 
-function var_0_0.resetAllNode(arg_8_0)
-	local var_8_0 = arg_8_0.tr.childCount
+function var_0_0.resetAllNode(arg_12_0)
+	local var_12_0 = arg_12_0.tr.childCount
 
-	for iter_8_0 = 1, var_8_0 do
-		local var_8_1 = arg_8_0.tr:GetChild(iter_8_0 - 1)
+	for iter_12_0 = 1, var_12_0 do
+		local var_12_1 = arg_12_0.tr:GetChild(iter_12_0 - 1)
 
-		gohelper.setActive(var_8_1.gameObject, false)
+		gohelper.setActive(var_12_1.gameObject, false)
 	end
 end
 
-function var_0_0.updateItem(arg_9_0, arg_9_1, arg_9_2, arg_9_3)
-	arg_9_0.entityId = arg_9_1
-	arg_9_0.skillId = arg_9_2
-	arg_9_0._cardInfoMO = arg_9_3
+function var_0_0.updateItem(arg_13_0, arg_13_1, arg_13_2, arg_13_3)
+	arg_13_0.entityId = arg_13_1
+	arg_13_0.skillId = arg_13_2
+	arg_13_0._cardInfoMO = arg_13_3
 
-	arg_9_0:resetAllNode()
-	gohelper.setActive(arg_9_0.go, true)
-	gohelper.setActive(arg_9_0.goTag, true)
-	gohelper.setActive(arg_9_0.goRedAndBlue, true)
-	gohelper.setActive(arg_9_0._layout, true)
-	gohelper.setActive(arg_9_0.frontBgRoot, true)
-	gohelper.setActive(arg_9_0.backBgRoot, true)
+	arg_13_0:resetAllNode()
+	gohelper.setActive(arg_13_0.go, true)
+	gohelper.setActive(arg_13_0.goTag, true)
+	gohelper.setActive(arg_13_0.goRedAndBlue, true)
+	gohelper.setActive(arg_13_0._layout, true)
+	gohelper.setActive(arg_13_0.frontBgRoot, true)
+	gohelper.setActive(arg_13_0.backBgRoot, true)
 
-	arg_9_0._canvasGroup.alpha = 1
-	arg_9_0.tagCanvas.alpha = 1
+	arg_13_0._canvasGroup.alpha = 1
+	arg_13_0.tagCanvas.alpha = 1
 
-	if FightHelper.isBloodPoolSkill(arg_9_2) then
-		gohelper.setActive(arg_9_0.frontBgRoot, false)
+	if FightHelper.isBloodPoolSkill(arg_13_2) then
+		gohelper.setActive(arg_13_0.frontBgRoot, false)
 
-		return arg_9_0:refreshBloodPoolSkill(arg_9_1, arg_9_2, arg_9_3)
+		return arg_13_0:refreshBloodPoolSkill(arg_13_1, arg_13_2, arg_13_3)
 	end
 
-	if FightHelper.isASFDSkill(arg_9_2) then
-		gohelper.setActive(arg_9_0.frontBgRoot, false)
+	if FightHelper.isASFDSkill(arg_13_2) then
+		gohelper.setActive(arg_13_0.frontBgRoot, false)
 
-		return arg_9_0:refreshASFDSkill(arg_9_1, arg_9_2, arg_9_3)
+		return arg_13_0:refreshASFDSkill(arg_13_1, arg_13_2, arg_13_3)
 	end
 
-	if FightHelper.isPreDeleteSkill(arg_9_2) then
-		gohelper.setActive(arg_9_0.frontBgRoot, false)
+	if FightHelper.isPreDeleteSkill(arg_13_2) then
+		gohelper.setActive(arg_13_0.frontBgRoot, false)
 
-		return arg_9_0:refreshPreDeleteSkill(arg_9_1, arg_9_2, arg_9_3)
+		return arg_13_0:refreshPreDeleteSkill(arg_13_1, arg_13_2, arg_13_3)
 	end
 
-	arg_9_0:_hideAniEffect()
+	arg_13_0:_hideAniEffect()
+	arg_13_0:refreshCardIcon()
 
-	local var_9_0 = lua_skill.configDict[arg_9_2]
-	local var_9_1 = FightCardDataHelper.getSkillLv(arg_9_1, arg_9_2)
+	local var_13_0 = FightCardDataHelper.getSkillLv(arg_13_0.entityId, arg_13_0.skillId)
+	local var_13_1 = var_13_0 < FightEnum.UniqueSkillCardLv and var_13_0 > 0
 
-	for iter_9_0, iter_9_1 in pairs(arg_9_0._lvGOs) do
-		gohelper.setActive(iter_9_1, true)
-		gohelper.setActiveCanvasGroup(iter_9_1, var_9_1 == iter_9_0)
-	end
+	gohelper.setActive(arg_13_0._starGO, var_13_1)
 
-	for iter_9_2, iter_9_3 in pairs(arg_9_0._lvImgIcons) do
-		local var_9_2 = ResUrl.getSkillIcon(var_9_0.icon)
+	arg_13_0._starCanvas.alpha = 1
 
-		if gohelper.isNil(arg_9_0._lvImgComps[iter_9_2].sprite) then
-			iter_9_3:UnLoadImage()
-		elseif iter_9_3.curImageUrl ~= var_9_2 then
-			iter_9_3:UnLoadImage()
-		end
+	for iter_13_0, iter_13_1 in ipairs(arg_13_0._innerStartGOs) do
+		gohelper.setActive(iter_13_1, iter_13_0 == var_13_0)
 
-		iter_9_3:LoadImage(var_9_2)
-	end
-
-	local var_9_3 = var_9_1 < FightEnum.UniqueSkillCardLv and var_9_1 > 0
-
-	gohelper.setActive(arg_9_0._starGO, var_9_3)
-
-	arg_9_0._starCanvas.alpha = 1
-
-	for iter_9_4, iter_9_5 in ipairs(arg_9_0._innerStartGOs) do
-		gohelper.setActive(iter_9_5, iter_9_4 == var_9_1)
-
-		if arg_9_0._starItemCanvas[iter_9_4] then
-			arg_9_0._starItemCanvas[iter_9_4].alpha = 1
+		if arg_13_0._starItemCanvas[iter_13_0] then
+			arg_13_0._starItemCanvas[iter_13_0].alpha = 1
 		end
 	end
 
-	arg_9_0:refreshTag()
+	arg_13_0:refreshTag()
 
-	arg_9_0._txt.text = var_9_0.id .. "\nLv." .. var_9_1
+	local var_13_2 = lua_skill.configDict[arg_13_0.skillId]
 
-	local var_9_4 = var_9_1 == FightEnum.UniqueSkillCardLv
+	arg_13_0._txt.text = var_13_2.id .. "\nLv." .. var_13_0
 
-	if arg_9_0.useSkin then
-		var_9_4 = false
+	local var_13_3 = var_13_0 == FightEnum.UniqueSkillCardLv
+
+	if arg_13_0.useSkin then
+		var_13_3 = false
 	end
 
-	if var_9_1 == FightEnum.UniqueSkillCardLv and not arg_9_0._uniqueCardEffect then
-		local var_9_5 = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
-		local var_9_6 = FightHelper.getPreloadAssetItem(var_9_5)
+	if var_13_0 == FightEnum.UniqueSkillCardLv and not arg_13_0._uniqueCardEffect then
+		local var_13_4 = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
+		local var_13_5 = FightHelper.getPreloadAssetItem(var_13_4)
 
-		arg_9_0._uniqueCardEffect = gohelper.clone(var_9_6:GetResource(var_9_5), arg_9_0.go)
+		arg_13_0._uniqueCardEffect = gohelper.clone(var_13_5:GetResource(var_13_4), arg_13_0.go)
 	end
 
-	gohelper.setActive(arg_9_0._uniqueCardEffect, var_9_4)
-	gohelper.setActive(arg_9_0.frontBgNormal, var_9_1 ~= FightEnum.UniqueSkillCardLv)
-	gohelper.setActive(arg_9_0.frontBgBigSkill, var_9_1 == FightEnum.UniqueSkillCardLv)
-	gohelper.setActive(arg_9_0._predisplay, arg_9_0._cardInfoMO and arg_9_0._cardInfoMO.tempCard)
-	arg_9_0:_showUpgradeEffect()
-	arg_9_0:_showEnchantsEffect()
-	arg_9_0:_refreshGray()
-	arg_9_0:_refreshASFD()
-	arg_9_0:_refreshPreDeleteArrow()
-	arg_9_0:showCardHeat()
-	arg_9_0:refreshXiTiSpecialSkill(arg_9_1, arg_9_2, arg_9_3)
+	gohelper.setActive(arg_13_0._uniqueCardEffect, var_13_3)
+	gohelper.setActive(arg_13_0.frontBgNormal, var_13_0 ~= FightEnum.UniqueSkillCardLv)
+	gohelper.setActive(arg_13_0.frontBgBigSkill, var_13_0 == FightEnum.UniqueSkillCardLv)
+	gohelper.setActive(arg_13_0._predisplay, arg_13_0._cardInfoMO and arg_13_0._cardInfoMO.tempCard)
+	arg_13_0:_showUpgradeEffect()
+	arg_13_0:_showEnchantsEffect()
+	arg_13_0:_refreshGray()
+	arg_13_0:_refreshASFD()
+	arg_13_0:_refreshPreDeleteArrow()
+	arg_13_0:showCardHeat()
+	arg_13_0:refreshXiTiSpecialSkill(arg_13_1, arg_13_2, arg_13_3)
 end
 
-function var_0_0.refreshTag(arg_10_0)
-	local var_10_0 = lua_skill.configDict[arg_10_0.skillId]
-	local var_10_1 = FightCardDataHelper.getSkillLv(arg_10_0.entityId, arg_10_0.skillId)
-	local var_10_2 = "attribute_"
-	local var_10_3 = 168
-	local var_10_4 = 56
+function var_0_0.refreshCardIcon(arg_14_0)
+	local var_14_0 = lua_skill.configDict[arg_14_0.skillId]
+	local var_14_1 = FightCardDataHelper.getSkillLv(arg_14_0.entityId, arg_14_0.skillId)
 
-	if arg_10_0.useSkin then
-		var_10_2 = "v2a8_skin/attribute_"
-		var_10_3 = 180
-		var_10_4 = 64
+	for iter_14_0, iter_14_1 in pairs(arg_14_0._lvGOs) do
+		gohelper.setActive(iter_14_1, true)
+		gohelper.setActiveCanvasGroup(iter_14_1, var_14_1 == iter_14_0)
 	end
 
-	local var_10_5 = ResUrl.getAttributeIcon(var_10_2 .. var_10_0.showTag)
+	local var_14_2
 
-	arg_10_0._tag:LoadImage(var_10_5)
-	recthelper.setSize(arg_10_0.tagTransform, var_10_3, var_10_4)
+	if arg_14_0:checkCanShowHideCardEffect() then
+		var_14_2 = FightModel.instance:getHandCardSkillIcon(arg_14_0.entityId, var_14_0)
+	else
+		var_14_2 = ResUrl.getSkillIcon(var_14_0.icon)
+	end
 
-	local var_10_6 = var_0_0.TagPosForLvs[var_10_1]
+	for iter_14_2, iter_14_3 in pairs(arg_14_0._lvImgIcons) do
+		if gohelper.isNil(arg_14_0._lvImgComps[iter_14_2].sprite) then
+			iter_14_3:UnLoadImage()
+		elseif iter_14_3.curImageUrl ~= var_14_2 then
+			iter_14_3:UnLoadImage()
+		end
 
-	if var_10_6 then
-		recthelper.setAnchor(arg_10_0._tagRootTr, var_10_6[1], var_10_6[2])
+		iter_14_3:LoadImage(var_14_2)
+	end
 
-		if arg_10_0.useSkin then
-			recthelper.setAnchorY(arg_10_0._tagRootTr, -200)
+	arg_14_0:refreshHideCardVx()
+end
+
+function var_0_0.checkCanShowHideCardEffect(arg_15_0)
+	return arg_15_0.handCardType == FightEnum.CardShowType.HandCard or arg_15_0.handCardType == FightEnum.CardShowType.Operation
+end
+
+function var_0_0.refreshTag(arg_16_0)
+	local var_16_0 = lua_skill.configDict[arg_16_0.skillId]
+	local var_16_1 = FightCardDataHelper.getSkillLv(arg_16_0.entityId, arg_16_0.skillId)
+	local var_16_2 = "attribute_"
+	local var_16_3 = 168
+	local var_16_4 = 56
+
+	if arg_16_0.useSkin then
+		var_16_2 = "v2a8_skin/attribute_"
+		var_16_3 = 180
+		var_16_4 = 64
+	end
+
+	local var_16_5 = ResUrl.getAttributeIcon(var_16_2 .. var_16_0.showTag)
+
+	arg_16_0._tag:LoadImage(var_16_5)
+	recthelper.setSize(arg_16_0.tagTransform, var_16_3, var_16_4)
+
+	local var_16_6 = var_0_0.TagPosForLvs[var_16_1]
+
+	if var_16_6 then
+		recthelper.setAnchor(arg_16_0._tagRootTr, var_16_6[1], var_16_6[2])
+
+		if arg_16_0.useSkin then
+			recthelper.setAnchorY(arg_16_0._tagRootTr, -200)
 		end
 	end
 
-	gohelper.setActive(arg_10_0._tag.gameObject, var_10_1 < FightEnum.UniqueSkillCardLv)
+	gohelper.setActive(arg_16_0._tag.gameObject, var_16_1 < FightEnum.UniqueSkillCardLv)
 end
 
-function var_0_0.showCardHeat(arg_11_0)
-	if arg_11_0._cardInfoMO and arg_11_0._cardInfoMO.heatId and arg_11_0._cardInfoMO.heatId ~= 0 then
-		arg_11_0:setHeatRootVisible(true)
+function var_0_0.showCardHeat(arg_17_0)
+	if arg_17_0._cardInfoMO and arg_17_0._cardInfoMO.heatId and arg_17_0._cardInfoMO.heatId ~= 0 then
+		arg_17_0:setHeatRootVisible(true)
 
-		if arg_11_0._heatObj then
-			arg_11_0:_refreshCardHeat()
-		elseif not arg_11_0._loadHeat then
-			arg_11_0._loadHeat = true
+		if arg_17_0._heatObj then
+			arg_17_0:_refreshCardHeat()
+		elseif not arg_17_0._loadHeat then
+			arg_17_0._loadHeat = true
 
-			arg_11_0._loader:loadAsset("ui/viewres/fight/fightheatview.prefab", arg_11_0._onHeatLoadFinish, arg_11_0)
+			arg_17_0._loader:loadAsset("ui/viewres/fight/fightheatview.prefab", arg_17_0._onHeatLoadFinish, arg_17_0)
 		end
 	else
-		arg_11_0:setHeatRootVisible(false)
+		arg_17_0:setHeatRootVisible(false)
 	end
 end
 
-function var_0_0.setHeatRootVisible(arg_12_0, arg_12_1)
-	gohelper.setActive(arg_12_0._heatRoot, arg_12_1)
+function var_0_0.setHeatRootVisible(arg_18_0, arg_18_1)
+	gohelper.setActive(arg_18_0._heatRoot, arg_18_1)
 end
 
-function var_0_0._refreshCardHeat(arg_13_0)
-	if arg_13_0._cardInfoMO and arg_13_0._cardInfoMO.heatId ~= 0 then
-		local var_13_0 = arg_13_0._cardInfoMO.heatId
-		local var_13_1 = FightDataHelper.teamDataMgr.myData.cardHeat.values[var_13_0]
+function var_0_0._refreshCardHeat(arg_19_0)
+	if arg_19_0._cardInfoMO and arg_19_0._cardInfoMO.heatId ~= 0 then
+		local var_19_0 = arg_19_0._cardInfoMO.heatId
+		local var_19_1 = FightDataHelper.teamDataMgr.myData.cardHeat.values[var_19_0]
 
-		if var_13_1 then
-			local var_13_2 = FightDataHelper.teamDataMgr.myCardHeatOffset[var_13_0] or 0
+		if var_19_1 then
+			local var_19_2 = FightDataHelper.teamDataMgr.myCardHeatOffset[var_19_0] or 0
 
-			arg_13_0._heatText.text = Mathf.Clamp(var_13_1.value + var_13_2, var_13_1.lowerLimit, var_13_1.upperLimit)
+			arg_19_0._heatText.text = Mathf.Clamp(var_19_1.value + var_19_2, var_19_1.lowerLimit, var_19_1.upperLimit)
 		else
-			arg_13_0._heatText.text = ""
+			arg_19_0._heatText.text = ""
 		end
 	end
 end
 
-function var_0_0._onHeatLoadFinish(arg_14_0, arg_14_1, arg_14_2)
-	if not arg_14_1 then
+function var_0_0._onHeatLoadFinish(arg_20_0, arg_20_1, arg_20_2)
+	if not arg_20_1 then
 		return
 	end
 
-	arg_14_0._heatObj = gohelper.clone(arg_14_2:GetResource(), arg_14_0._heatRoot)
-	arg_14_0._heatText = gohelper.findChildText(arg_14_0._heatObj, "heatText")
+	arg_20_0._heatObj = gohelper.clone(arg_20_2:GetResource(), arg_20_0._heatRoot)
+	arg_20_0._heatText = gohelper.findChildText(arg_20_0._heatObj, "heatText")
 
-	arg_14_0:_refreshCardHeat()
+	arg_20_0:_refreshCardHeat()
 end
 
-function var_0_0._refreshPreDeleteArrow(arg_15_0)
-	local var_15_0 = arg_15_0.handCardType == FightEnum.CardShowType.HandCard
+function var_0_0._refreshPreDeleteArrow(arg_21_0)
+	local var_21_0 = arg_21_0.handCardType == FightEnum.CardShowType.HandCard
 
-	gohelper.setActive(arg_15_0.goPreDelete, var_15_0)
+	gohelper.setActive(arg_21_0.goPreDelete, var_21_0)
 
-	if var_15_0 then
-		gohelper.setActive(arg_15_0.goPreDeleteBoth, false)
-		gohelper.setActive(arg_15_0.goPreDeleteLeft, false)
-		gohelper.setActive(arg_15_0.goPreDeleteRight, false)
+	if var_21_0 then
+		gohelper.setActive(arg_21_0.goPreDeleteBoth, false)
+		gohelper.setActive(arg_21_0.goPreDeleteLeft, false)
+		gohelper.setActive(arg_21_0.goPreDeleteRight, false)
 
-		local var_15_1 = lua_fight_card_pre_delete.configDict[arg_15_0.skillId]
+		local var_21_1 = lua_fight_card_pre_delete.configDict[arg_21_0.skillId]
 
-		if var_15_1 then
-			local var_15_2 = var_15_1.left > 0
-			local var_15_3 = var_15_1.right > 0
+		if var_21_1 then
+			local var_21_2 = var_21_1.left > 0
+			local var_21_3 = var_21_1.right > 0
 
-			if var_15_2 and var_15_3 then
-				gohelper.setActive(arg_15_0.goPreDeleteBoth, true)
-			elseif var_15_2 then
-				gohelper.setActive(arg_15_0.goPreDeleteLeft, true)
-			elseif var_15_3 then
-				gohelper.setActive(arg_15_0.goPreDeleteRight, true)
+			if var_21_2 and var_21_3 then
+				gohelper.setActive(arg_21_0.goPreDeleteBoth, true)
+			elseif var_21_2 then
+				gohelper.setActive(arg_21_0.goPreDeleteLeft, true)
+			elseif var_21_3 then
+				gohelper.setActive(arg_21_0.goPreDeleteRight, true)
 			end
 
-			gohelper.setActive(arg_15_0._starGO, false)
+			gohelper.setActive(arg_21_0._starGO, false)
 		end
 	end
 end
 
-function var_0_0._refreshPreDeleteImage(arg_16_0, arg_16_1)
-	local var_16_0 = arg_16_0.handCardType == FightEnum.CardShowType.HandCard
+function var_0_0._refreshPreDeleteImage(arg_22_0, arg_22_1)
+	local var_22_0 = arg_22_0.handCardType == FightEnum.CardShowType.HandCard
 
-	gohelper.setActive(arg_16_0.goPreDelete, var_16_0)
+	gohelper.setActive(arg_22_0.goPreDelete, var_22_0)
 
-	if var_16_0 then
-		local var_16_1 = FightCardDataHelper.isBigSkill(arg_16_0.skillId)
+	if var_22_0 then
+		local var_22_1 = FightCardDataHelper.isBigSkill(arg_22_0.skillId)
 
-		gohelper.setActive(arg_16_0.goPreDeleteNormal, not var_16_1 and arg_16_1)
-		gohelper.setActive(arg_16_0.goPreDeleteUnique, var_16_1 and arg_16_1)
+		gohelper.setActive(arg_22_0.goPreDeleteNormal, not var_22_1 and arg_22_1)
+		gohelper.setActive(arg_22_0.goPreDeleteUnique, var_22_1 and arg_22_1)
 	end
 end
 
-function var_0_0.refreshPreDeleteSkill(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
-	gohelper.setActive(arg_17_0.goPreDeleteCard, true)
-	gohelper.setActive(arg_17_0.goPreDeleteNormal, false)
-	gohelper.setActive(arg_17_0.goPreDeleteUnique, false)
-	arg_17_0:refreshTag()
-	arg_17_0:_refreshPreDeleteArrow()
+function var_0_0.refreshPreDeleteSkill(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
+	gohelper.setActive(arg_23_0.goPreDeleteCard, true)
+	gohelper.setActive(arg_23_0.goPreDeleteNormal, false)
+	gohelper.setActive(arg_23_0.goPreDeleteUnique, false)
+	arg_23_0:refreshTag()
+	arg_23_0:_refreshPreDeleteArrow()
 end
 
-function var_0_0.refreshBloodPoolSkill(arg_18_0, arg_18_1, arg_18_2, arg_18_3)
-	gohelper.setActive(arg_18_0.goBloodPool, true)
-	gohelper.setActive(arg_18_0.goTag, true)
-	gohelper.setActive(arg_18_0._tag.gameObject, true)
+function var_0_0.refreshBloodPoolSkill(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
+	gohelper.setActive(arg_24_0.goBloodPool, true)
+	gohelper.setActive(arg_24_0.goTag, true)
+	gohelper.setActive(arg_24_0._tag.gameObject, true)
 
-	arg_18_0.bloodPoolAnimator = arg_18_0.bloodPoolAnimator or arg_18_0.goBloodPool:GetComponent(gohelper.Type_Animator)
+	arg_24_0.bloodPoolAnimator = arg_24_0.bloodPoolAnimator or arg_24_0.goBloodPool:GetComponent(gohelper.Type_Animator)
 
-	if arg_18_0.handCardType == FightEnum.CardShowType.Operation then
-		arg_18_0.bloodPoolAnimator:Play("open", 0, 0)
+	if arg_24_0.handCardType == FightEnum.CardShowType.Operation then
+		arg_24_0.bloodPoolAnimator:Play("open", 0, 0)
 		AudioMgr.instance:trigger(20270007)
 	else
-		arg_18_0.bloodPoolAnimator:Play("open", 0, 1)
+		arg_24_0.bloodPoolAnimator:Play("open", 0, 1)
 	end
 
-	arg_18_0._tag:LoadImage(ResUrl.getAttributeIcon("blood_tex2"))
+	arg_24_0._tag:LoadImage(ResUrl.getAttributeIcon("blood_tex2"))
 
-	local var_18_0 = var_0_0.TagPosForLvs[1]
+	local var_24_0 = var_0_0.TagPosForLvs[1]
 
-	recthelper.setAnchor(arg_18_0._tagRootTr, var_18_0[1], var_18_0[2])
+	recthelper.setAnchor(arg_24_0._tagRootTr, var_24_0[1], var_24_0[2])
 end
 
-function var_0_0.refreshASFDSkill(arg_19_0, arg_19_1, arg_19_2, arg_19_3)
-	gohelper.setActive(arg_19_0.goASFDSkill, true)
-	gohelper.setActive(arg_19_0.goTag, true)
-	gohelper.setActive(arg_19_0._tag.gameObject, true)
+function var_0_0.refreshASFDSkill(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
+	gohelper.setActive(arg_25_0.goASFDSkill, true)
+	gohelper.setActive(arg_25_0.goTag, true)
+	gohelper.setActive(arg_25_0._tag.gameObject, true)
 
-	local var_19_0 = ResUrl.getSkillIcon(FightASFDConfig.instance.normalSkillIcon)
+	local var_25_0 = ResUrl.getSkillIcon(FightASFDConfig.instance.normalSkillIcon)
 
-	arg_19_0.asfdSkillSimage:LoadImage(var_19_0)
+	arg_25_0.asfdSkillSimage:LoadImage(var_25_0)
 
-	arg_19_0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)
+	arg_25_0.asfdNumTxt.text = FightDataHelper.ASFDDataMgr:getEmitterEnergy(FightEnum.EntitySide.MySide)
 
-	arg_19_0._tag:LoadImage(ResUrl.getAttributeIcon("attribute_asfd"))
+	arg_25_0._tag:LoadImage(ResUrl.getAttributeIcon("attribute_asfd"))
 
-	local var_19_1 = var_0_0.TagPosForLvs[1]
+	local var_25_1 = var_0_0.TagPosForLvs[1]
 
-	recthelper.setAnchor(arg_19_0._tagRootTr, var_19_1[1], var_19_1[2])
+	recthelper.setAnchor(arg_25_0._tagRootTr, var_25_1[1], var_25_1[2])
 end
 
-function var_0_0.refreshXiTiSpecialSkill(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
-	if not FightHelper.isXiTiSpecialSkill(arg_20_2) then
-		gohelper.setActive(arg_20_0.xingtiGo, false)
+function var_0_0.refreshXiTiSpecialSkill(arg_26_0, arg_26_1, arg_26_2, arg_26_3)
+	if not FightHelper.isXiTiSpecialSkill(arg_26_2) then
+		gohelper.setActive(arg_26_0.xingtiGo, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_20_0.xingtiGo, true)
+	gohelper.setActive(arg_26_0.xingtiGo, true)
 
-	arg_20_0.xingtiTxt.text = FightASFDHelper.getLastRoundRecordCardEnergy()
+	arg_26_0.xingtiTxt.text = FightASFDHelper.getLastRoundRecordCardEnergy()
 end
 
-function var_0_0.updateResistanceByCardInfo(arg_21_0, arg_21_1)
-	arg_21_0._resistanceComp:updateByCardInfo(arg_21_1)
+function var_0_0.updateResistanceByCardInfo(arg_27_0, arg_27_1)
+	arg_27_0._resistanceComp:updateByCardInfo(arg_27_1)
 end
 
-function var_0_0.updateResistanceByBeginRoundOp(arg_22_0, arg_22_1)
-	arg_22_0._resistanceComp:updateByBeginRoundOp(arg_22_1)
+function var_0_0.updateResistanceByBeginRoundOp(arg_28_0, arg_28_1)
+	arg_28_0._resistanceComp:updateByBeginRoundOp(arg_28_1)
 end
 
-function var_0_0.updateResistanceBySkillDisplayMo(arg_23_0, arg_23_1)
-	arg_23_0._resistanceComp:updateBySkillDisplayMo(arg_23_1)
+function var_0_0.updateResistanceBySkillDisplayMo(arg_29_0, arg_29_1)
+	arg_29_0._resistanceComp:updateBySkillDisplayMo(arg_29_1)
 end
 
-function var_0_0.detectShowBlueStar(arg_24_0)
-	local var_24_0 = arg_24_0.entityId and arg_24_0.skillId and FightCardDataHelper.getSkillLv(arg_24_0.entityId, arg_24_0.skillId)
+function var_0_0.detectShowBlueStar(arg_30_0)
+	local var_30_0 = arg_30_0.entityId and arg_30_0.skillId and FightCardDataHelper.getSkillLv(arg_30_0.entityId, arg_30_0.skillId)
 
-	arg_24_0:showBlueStar(var_24_0)
+	arg_30_0:showBlueStar(var_30_0)
 end
 
-function var_0_0.showBlueStar(arg_25_0, arg_25_1)
-	if arg_25_0._lightBlueObj then
-		for iter_25_0, iter_25_1 in ipairs(arg_25_0._lightBlueObj) do
-			gohelper.setActive(iter_25_1.blue, false)
-			gohelper.setActive(iter_25_1.dark, true)
+function var_0_0.showBlueStar(arg_31_0, arg_31_1)
+	if arg_31_0._lightBlueObj then
+		for iter_31_0, iter_31_1 in ipairs(arg_31_0._lightBlueObj) do
+			gohelper.setActive(iter_31_1.blue, false)
+			gohelper.setActive(iter_31_1.dark, true)
 		end
 	else
-		arg_25_0._lightBlueObj = {}
-		arg_25_0._lightBlueObj[1] = arg_25_0:getUserDataTb_()
-		arg_25_0._lightBlueObj[1].blue = gohelper.findChild(arg_25_0._innerStartGOs[1], "lightblue")
-		arg_25_0._lightBlueObj[1].dark = gohelper.findChild(arg_25_0._innerStartGOs[1], "dark2")
-		arg_25_0._lightBlueObj[2] = arg_25_0:getUserDataTb_()
-		arg_25_0._lightBlueObj[2].blue = gohelper.findChild(arg_25_0._innerStartGOs[2], "lightblue")
-		arg_25_0._lightBlueObj[2].dark = gohelper.findChild(arg_25_0._innerStartGOs[2], "dark3")
+		arg_31_0._lightBlueObj = {}
+		arg_31_0._lightBlueObj[1] = arg_31_0:getUserDataTb_()
+		arg_31_0._lightBlueObj[1].blue = gohelper.findChild(arg_31_0._innerStartGOs[1], "lightblue")
+		arg_31_0._lightBlueObj[1].dark = gohelper.findChild(arg_31_0._innerStartGOs[1], "dark2")
+		arg_31_0._lightBlueObj[2] = arg_31_0:getUserDataTb_()
+		arg_31_0._lightBlueObj[2].blue = gohelper.findChild(arg_31_0._innerStartGOs[2], "lightblue")
+		arg_31_0._lightBlueObj[2].dark = gohelper.findChild(arg_31_0._innerStartGOs[2], "dark3")
 	end
 
-	if arg_25_1 == 1 or arg_25_1 == 2 then
-		local var_25_0 = FightDataHelper.entityMgr:getById(arg_25_0.entityId)
+	if arg_31_1 == 1 or arg_31_1 == 2 then
+		local var_31_0 = FightDataHelper.entityMgr:getById(arg_31_0.entityId)
 
-		if var_25_0 and var_25_0:hasBuffFeature(FightEnum.BuffFeature.SkillLevelJudgeAdd) then
-			local var_25_1 = arg_25_0._lightBlueObj[arg_25_1]
+		if var_31_0 and var_31_0:hasBuffFeature(FightEnum.BuffFeature.SkillLevelJudgeAdd) then
+			local var_31_1 = arg_31_0._lightBlueObj[arg_31_1]
 
-			gohelper.setActive(var_25_1.blue, true)
-			gohelper.setActive(var_25_1.dark, false)
+			gohelper.setActive(var_31_1.blue, true)
+			gohelper.setActive(var_31_1.dark, false)
 		end
 	end
 end
 
-function var_0_0.showPrecisionEffect(arg_26_0)
-	gohelper.setActive(arg_26_0._precisionEffect, true)
+function var_0_0.showPrecisionEffect(arg_32_0)
+	gohelper.setActive(arg_32_0._precisionEffect, true)
 end
 
-function var_0_0.hidePrecisionEffect(arg_27_0)
-	gohelper.setActive(arg_27_0._precisionEffect, false)
+function var_0_0.hidePrecisionEffect(arg_33_0)
+	gohelper.setActive(arg_33_0._precisionEffect, false)
 end
 
-local var_0_1 = {
+local var_0_2 = {
 	[FightEnum.EnchantedType.Frozen] = "ui/viewres/fight/card_freeze.prefab",
 	[FightEnum.EnchantedType.Burn] = "ui/viewres/fight/card_flaring.prefab",
 	[FightEnum.EnchantedType.Chaos] = "ui/viewres/fight/card_chaos.prefab",
 	[FightEnum.EnchantedType.depresse] = "ui/viewres/fight/card_qmyj.prefab"
 }
 
-function var_0_0._showEnchantsEffect(arg_28_0)
-	gohelper.setActive(arg_28_0._abandon, false)
-	gohelper.setActive(arg_28_0._blockadeTwo, false)
-	gohelper.setActive(arg_28_0._blockadeOne, false)
-	gohelper.setActive(arg_28_0._precision, false)
-	gohelper.setActive(arg_28_0._precisionEffect, false)
+function var_0_0._showEnchantsEffect(arg_34_0)
+	gohelper.setActive(arg_34_0._abandon, false)
+	gohelper.setActive(arg_34_0._blockadeTwo, false)
+	gohelper.setActive(arg_34_0._blockadeOne, false)
+	gohelper.setActive(arg_34_0._precision, false)
+	gohelper.setActive(arg_34_0._precisionEffect, false)
 
-	if not arg_28_0._cardInfoMO then
+	if not arg_34_0._cardInfoMO then
 		return
 	end
 
-	local var_28_0 = arg_28_0:_refreshEnchantEffectActive()
+	local var_34_0 = arg_34_0:_refreshEnchantEffectActive()
 
-	if #var_28_0 > 0 then
-		arg_28_0._loader:loadListAsset(var_28_0, arg_28_0._onEnchantEffectLoaded, arg_28_0._onEnchantEffectsLoaded, arg_28_0)
+	if #var_34_0 > 0 then
+		arg_34_0._loader:loadListAsset(var_34_0, arg_34_0._onEnchantEffectLoaded, arg_34_0._onEnchantEffectsLoaded, arg_34_0)
 	end
 
-	if arg_28_0._cardInfoMO.enchants then
-		for iter_28_0, iter_28_1 in ipairs(arg_28_0._cardInfoMO.enchants) do
-			if iter_28_1.enchantId == FightEnum.EnchantedType.Discard then
-				gohelper.setActive(arg_28_0._abandon, true)
-			elseif iter_28_1.enchantId == FightEnum.EnchantedType.Blockade then
-				local var_28_1 = FightDataHelper.handCardMgr.handCard
+	if arg_34_0._cardInfoMO.enchants then
+		for iter_34_0, iter_34_1 in ipairs(arg_34_0._cardInfoMO.enchants) do
+			if iter_34_1.enchantId == FightEnum.EnchantedType.Discard then
+				gohelper.setActive(arg_34_0._abandon, true)
+			elseif iter_34_1.enchantId == FightEnum.EnchantedType.Blockade then
+				local var_34_1 = FightDataHelper.handCardMgr.handCard
 
-				if arg_28_0._cardInfoMO.clientData.custom_playedCard then
-					gohelper.setActive(arg_28_0._blockadeOne, true)
-				elseif arg_28_0._cardInfoMO.clientData.custom_handCardIndex then
-					if arg_28_0._cardInfoMO.clientData.custom_handCardIndex == 1 or arg_28_0._cardInfoMO.clientData.custom_handCardIndex == #var_28_1 then
-						gohelper.setActive(arg_28_0._blockadeOne, true)
+				if arg_34_0._cardInfoMO.clientData.custom_playedCard then
+					gohelper.setActive(arg_34_0._blockadeOne, true)
+				elseif arg_34_0._cardInfoMO.clientData.custom_handCardIndex then
+					if arg_34_0._cardInfoMO.clientData.custom_handCardIndex == 1 or arg_34_0._cardInfoMO.clientData.custom_handCardIndex == #var_34_1 then
+						gohelper.setActive(arg_34_0._blockadeOne, true)
 					else
-						gohelper.setActive(arg_28_0._blockadeTwo, true)
+						gohelper.setActive(arg_34_0._blockadeTwo, true)
 					end
 				else
-					gohelper.setActive(arg_28_0._blockadeOne, true)
+					gohelper.setActive(arg_34_0._blockadeOne, true)
 				end
-			elseif iter_28_1.enchantId == FightEnum.EnchantedType.Precision then
-				gohelper.setActive(arg_28_0._precision, true)
+			elseif iter_34_1.enchantId == FightEnum.EnchantedType.Precision then
+				gohelper.setActive(arg_34_0._precision, true)
 
-				if arg_28_0._cardInfoMO.clientData.custom_handCardIndex == 1 then
+				if arg_34_0._cardInfoMO.clientData.custom_handCardIndex == 1 then
 					FightController.instance:dispatchEvent(FightEvent.RefreshHandCardPrecisionEffect)
 				end
 			end
@@ -651,551 +748,557 @@ function var_0_0._showEnchantsEffect(arg_28_0)
 	end
 end
 
-function var_0_0._refreshEnchantEffectActive(arg_29_0)
-	arg_29_0:_hideEnchantsEffect()
+function var_0_0._refreshEnchantEffectActive(arg_35_0)
+	arg_35_0:_hideEnchantsEffect()
 
-	arg_29_0._enchantsEffect = arg_29_0._enchantsEffect or {}
+	arg_35_0._enchantsEffect = arg_35_0._enchantsEffect or {}
 
-	local var_29_0 = arg_29_0._cardInfoMO.enchants or {}
-	local var_29_1 = {}
+	local var_35_0 = arg_35_0._cardInfoMO.enchants or {}
+	local var_35_1 = {}
 
-	for iter_29_0, iter_29_1 in ipairs(var_29_0) do
-		local var_29_2 = iter_29_1.enchantId
+	for iter_35_0, iter_35_1 in ipairs(var_35_0) do
+		local var_35_2 = iter_35_1.enchantId
 
-		if arg_29_0._enchantsEffect[var_29_2] then
-			for iter_29_2, iter_29_3 in ipairs(arg_29_0._enchantsEffect[var_29_2]) do
-				gohelper.setActive(iter_29_3, true)
+		if arg_35_0._enchantsEffect[var_35_2] then
+			for iter_35_2, iter_35_3 in ipairs(arg_35_0._enchantsEffect[var_35_2]) do
+				gohelper.setActive(iter_35_3, true)
 			end
 		else
-			local var_29_3 = var_0_1[var_29_2]
+			local var_35_3 = var_0_2[var_35_2]
 
-			if var_29_3 then
-				table.insert(var_29_1, var_29_3)
+			if var_35_3 then
+				table.insert(var_35_1, var_35_3)
 			end
 		end
 	end
 
-	return var_29_1
+	return var_35_1
 end
 
-function var_0_0._hideEnchantsEffect(arg_30_0)
-	if arg_30_0._enchantsEffect then
-		for iter_30_0, iter_30_1 in pairs(arg_30_0._enchantsEffect) do
-			for iter_30_2, iter_30_3 in ipairs(iter_30_1) do
-				gohelper.setActive(iter_30_3, false)
+function var_0_0._hideEnchantsEffect(arg_36_0)
+	if arg_36_0._enchantsEffect then
+		for iter_36_0, iter_36_1 in pairs(arg_36_0._enchantsEffect) do
+			for iter_36_2, iter_36_3 in ipairs(iter_36_1) do
+				gohelper.setActive(iter_36_3, false)
 			end
 		end
 	end
 end
 
-function var_0_0._onEnchantEffectLoaded(arg_31_0, arg_31_1, arg_31_2)
+function var_0_0._onEnchantEffectLoaded(arg_37_0, arg_37_1, arg_37_2)
 	return
 end
 
-function var_0_0._onEnchantEffectsLoaded(arg_32_0, arg_32_1)
-	for iter_32_0, iter_32_1 in pairs(var_0_1) do
-		if not arg_32_0._enchantsEffect[iter_32_0] then
-			local var_32_0 = arg_32_1:getAssetItem(iter_32_1)
+function var_0_0._onEnchantEffectsLoaded(arg_38_0, arg_38_1)
+	for iter_38_0, iter_38_1 in pairs(var_0_2) do
+		if not arg_38_0._enchantsEffect[iter_38_0] then
+			local var_38_0 = arg_38_1:getAssetItem(iter_38_1)
 
-			if var_32_0 then
-				local var_32_1 = var_32_0:GetResource()
+			if var_38_0 then
+				local var_38_1 = var_38_0:GetResource()
 
-				if arg_32_0._lvGOs then
-					arg_32_0._enchantsEffect[iter_32_0] = arg_32_0:getUserDataTb_()
+				if arg_38_0._lvGOs then
+					arg_38_0._enchantsEffect[iter_38_0] = arg_38_0:getUserDataTb_()
 
-					for iter_32_2, iter_32_3 in pairs(arg_32_0._lvGOs) do
-						local var_32_2 = gohelper.clone(var_32_1, gohelper.findChild(iter_32_3, "#cardeffect"))
+					for iter_38_2, iter_38_3 in pairs(arg_38_0._lvGOs) do
+						local var_38_2 = gohelper.clone(var_38_1, gohelper.findChild(iter_38_3, "#cardeffect"))
 
-						for iter_32_4 = 0, 4 do
-							local var_32_3 = gohelper.findChild(var_32_2, "lv" .. iter_32_4)
+						for iter_38_4 = 0, 4 do
+							local var_38_3 = gohelper.findChild(var_38_2, "lv" .. iter_38_4)
 
-							gohelper.setActive(var_32_3, iter_32_4 == iter_32_2)
+							gohelper.setActive(var_38_3, iter_38_4 == iter_38_2)
 						end
 
-						table.insert(arg_32_0._enchantsEffect[iter_32_0], var_32_2)
+						table.insert(arg_38_0._enchantsEffect[iter_38_0], var_38_2)
 					end
 				end
 			end
 		end
 	end
 
-	arg_32_0:_refreshEnchantEffectActive()
+	arg_38_0:_refreshEnchantEffectActive()
 end
 
-function var_0_0._showUpgradeEffect(arg_33_0)
-	if lua_fight_upgrade_show_skillid.configDict[arg_33_0.skillId] then
-		if not arg_33_0._upgradeEffects then
-			arg_33_0._loader:loadAsset("ui/viewres/fight/card_aggrandizement.prefab", arg_33_0._onUpgradeEffectLoaded, arg_33_0)
+function var_0_0._showUpgradeEffect(arg_39_0)
+	if lua_fight_upgrade_show_skillid.configDict[arg_39_0.skillId] then
+		if not arg_39_0._upgradeEffects then
+			arg_39_0._loader:loadAsset("ui/viewres/fight/card_aggrandizement.prefab", arg_39_0._onUpgradeEffectLoaded, arg_39_0)
 
 			return
 		end
 
-		for iter_33_0, iter_33_1 in ipairs(arg_33_0._upgradeEffects) do
-			gohelper.setActive(iter_33_1, false)
-			gohelper.setActive(iter_33_1, true)
+		for iter_39_0, iter_39_1 in ipairs(arg_39_0._upgradeEffects) do
+			gohelper.setActive(iter_39_1, false)
+			gohelper.setActive(iter_39_1, true)
 		end
 	else
-		arg_33_0:_hideUpgradeEffects()
+		arg_39_0:_hideUpgradeEffects()
 	end
 end
 
-function var_0_0._hideUpgradeEffects(arg_34_0)
-	if arg_34_0._upgradeEffects then
-		for iter_34_0, iter_34_1 in ipairs(arg_34_0._upgradeEffects) do
-			gohelper.setActive(iter_34_1, false)
+function var_0_0._hideUpgradeEffects(arg_40_0)
+	if arg_40_0._upgradeEffects then
+		for iter_40_0, iter_40_1 in ipairs(arg_40_0._upgradeEffects) do
+			gohelper.setActive(iter_40_1, false)
 		end
 	end
 end
 
-function var_0_0._onUpgradeEffectLoaded(arg_35_0, arg_35_1, arg_35_2)
-	if not arg_35_1 then
+function var_0_0._onUpgradeEffectLoaded(arg_41_0, arg_41_1, arg_41_2)
+	if not arg_41_1 then
 		return
 	end
 
-	if arg_35_0._upgradeEffects then
+	if arg_41_0._upgradeEffects then
 		return
 	end
 
-	arg_35_0._upgradeEffects = arg_35_0:getUserDataTb_()
+	arg_41_0._upgradeEffects = arg_41_0:getUserDataTb_()
 
-	local var_35_0 = arg_35_2:GetResource()
+	local var_41_0 = arg_41_2:GetResource()
 
-	if arg_35_0._lvGOs and var_35_0 then
-		for iter_35_0, iter_35_1 in pairs(arg_35_0._lvGOs) do
-			local var_35_1 = gohelper.clone(var_35_0, gohelper.findChild(iter_35_1, "#cardeffect"))
+	if arg_41_0._lvGOs and var_41_0 then
+		for iter_41_0, iter_41_1 in pairs(arg_41_0._lvGOs) do
+			local var_41_1 = gohelper.clone(var_41_0, gohelper.findChild(iter_41_1, "#cardeffect"))
 
-			for iter_35_2 = 0, 4 do
-				local var_35_2 = gohelper.findChild(var_35_1, "lv" .. iter_35_2)
+			for iter_41_2 = 0, 4 do
+				local var_41_2 = gohelper.findChild(var_41_1, "lv" .. iter_41_2)
 
-				gohelper.setActive(var_35_2, iter_35_2 == iter_35_0)
+				gohelper.setActive(var_41_2, iter_41_2 == iter_41_0)
 			end
 
-			table.insert(arg_35_0._upgradeEffects, var_35_1)
+			table.insert(arg_41_0._upgradeEffects, var_41_1)
 		end
 	end
 
-	arg_35_0:_showUpgradeEffect()
+	arg_41_0:_showUpgradeEffect()
 end
 
-function var_0_0.showCountPart(arg_36_0, arg_36_1)
-	gohelper.setActive(arg_36_0._countRoot, true)
+function var_0_0.showCountPart(arg_42_0, arg_42_1)
+	gohelper.setActive(arg_42_0._countRoot, true)
 
-	arg_36_0._countText.text = luaLang("multiple") .. arg_36_1
+	arg_42_0._countText.text = luaLang("multiple") .. arg_42_1
 end
 
-function var_0_0.changeToTempCard(arg_37_0)
-	gohelper.setActive(arg_37_0._predisplay, true)
+function var_0_0.changeToTempCard(arg_43_0)
+	gohelper.setActive(arg_43_0._predisplay, true)
 end
 
-function var_0_0.dissolveCard(arg_38_0, arg_38_1, arg_38_2)
-	if not arg_38_0.go.activeInHierarchy then
+function var_0_0.dissolveCard(arg_44_0, arg_44_1, arg_44_2)
+	if not arg_44_0.go.activeInHierarchy then
 		return
 	end
 
-	if FightHelper.isASFDSkill(arg_38_0.skillId) then
-		return arg_38_0:disappearCard()
+	if FightHelper.isASFDSkill(arg_44_0.skillId) then
+		return arg_44_0:disappearCard()
 	end
 
-	if FightHelper.isPreDeleteSkill(arg_38_0.skillId) then
-		return arg_38_0:disappearCard()
+	if FightHelper.isPreDeleteSkill(arg_44_0.skillId) then
+		return arg_44_0:disappearCard()
 	end
 
-	if FightHelper.isBloodPoolSkill(arg_38_0.skillId) then
-		return arg_38_0:disappearCard()
+	if FightHelper.isBloodPoolSkill(arg_44_0.skillId) then
+		return arg_44_0:disappearCard()
 	end
 
-	arg_38_0:setASFDActive(false)
-	arg_38_0:revertASFDSkillAnimator()
+	arg_44_0:setASFDActive(false)
+	arg_44_0:revertASFDSkillAnimator()
 
-	local var_38_0 = arg_38_0:getUserDataTb_()
+	local var_44_0 = arg_44_0:getUserDataTb_()
 
-	var_38_0.dissolveScale = arg_38_1 or 1
+	var_44_0.dissolveScale = arg_44_1 or 1
 
-	local var_38_1 = arg_38_0:getUserDataTb_()
+	local var_44_1 = arg_44_0:getUserDataTb_()
 
-	arg_38_2 = arg_38_2 or arg_38_0.go
+	arg_44_2 = arg_44_2 or arg_44_0.go
 
-	table.insert(var_38_1, arg_38_2)
+	table.insert(var_44_1, arg_44_2)
 
-	var_38_0.dissolveSkillItemGOs = var_38_1
+	var_44_0.dissolveSkillItemGOs = var_44_1
 
-	if not arg_38_0._dissolveFlow then
-		arg_38_0._dissolveFlow = FlowSequence.New()
+	if not arg_44_0._dissolveFlow then
+		arg_44_0._dissolveFlow = FlowSequence.New()
 
-		arg_38_0._dissolveFlow:addWork(FightCardDissolveEffect.New())
+		arg_44_0._dissolveFlow:addWork(FightCardDissolveEffect.New())
 	else
-		arg_38_0._dissolveFlow:stop()
+		arg_44_0._dissolveFlow:stop()
 	end
 
-	arg_38_0:_hideAllEffect()
-	arg_38_0._dissolveFlow:start(var_38_0)
+	arg_44_0:_hideAllEffect()
+	arg_44_0._dissolveFlow:start(var_44_0)
 end
 
-function var_0_0.disappearCard(arg_39_0)
-	if not arg_39_0.go.activeInHierarchy then
+function var_0_0.disappearCard(arg_45_0)
+	if not arg_45_0.go.activeInHierarchy then
 		return
 	end
 
-	arg_39_0:setASFDActive(false)
-	arg_39_0:revertASFDSkillAnimator()
+	arg_45_0:setASFDActive(false)
+	arg_45_0:revertASFDSkillAnimator()
 
-	local var_39_0 = arg_39_0:getUserDataTb_()
+	local var_45_0 = arg_45_0:getUserDataTb_()
 
-	var_39_0.hideSkillItemGOs = arg_39_0:getUserDataTb_()
+	var_45_0.hideSkillItemGOs = arg_45_0:getUserDataTb_()
 
-	table.insert(var_39_0.hideSkillItemGOs, arg_39_0.go)
+	table.insert(var_45_0.hideSkillItemGOs, arg_45_0.go)
 
-	if not arg_39_0._disappearFlow then
-		arg_39_0._disappearFlow = FlowSequence.New()
+	if not arg_45_0._disappearFlow then
+		arg_45_0._disappearFlow = FlowSequence.New()
 
-		arg_39_0._disappearFlow:addWork(FightCardDisplayHideAllEffect.New())
+		arg_45_0._disappearFlow:addWork(FightCardDisplayHideAllEffect.New())
 	else
-		arg_39_0._disappearFlow:stop()
+		arg_45_0._disappearFlow:stop()
 	end
 
-	arg_39_0._disappearFlow:start(var_39_0)
+	arg_45_0._disappearFlow:start(var_45_0)
 end
 
-function var_0_0.revertASFDSkillAnimator(arg_40_0)
-	if not FightHelper.isASFDSkill(arg_40_0.skillId) then
+function var_0_0.revertASFDSkillAnimator(arg_46_0)
+	if not FightHelper.isASFDSkill(arg_46_0.skillId) then
 		return
 	end
 
-	if arg_40_0.asfdSkillAnimator then
-		arg_40_0.asfdSkillAnimator:Play("open", 0, 0)
+	if arg_46_0.asfdSkillAnimator then
+		arg_46_0.asfdSkillAnimator:Play("open", 0, 0)
 	end
 end
 
-function var_0_0.playUsedCardDisplay(arg_41_0, arg_41_1)
-	if not arg_41_0.go.activeInHierarchy then
+function var_0_0.playUsedCardDisplay(arg_47_0, arg_47_1)
+	if not arg_47_0.go.activeInHierarchy then
 		return
 	end
 
-	if not arg_41_0._cardDisplayFlow then
-		arg_41_0._cardDisplayFlow = FlowSequence.New()
+	if not arg_47_0._cardDisplayFlow then
+		arg_47_0._cardDisplayFlow = FlowSequence.New()
 
-		arg_41_0._cardDisplayFlow:addWork(FightCardDisplayEffect.New())
+		arg_47_0._cardDisplayFlow:addWork(FightCardDisplayEffect.New())
 	end
 
-	local var_41_0 = arg_41_0:getUserDataTb_()
+	local var_47_0 = arg_47_0:getUserDataTb_()
 
-	var_41_0.skillTipsGO = arg_41_1
-	var_41_0.skillItemGO = arg_41_0.go
+	var_47_0.skillTipsGO = arg_47_1
+	var_47_0.skillItemGO = arg_47_0.go
 
-	arg_41_0._cardDisplayFlow:start(var_41_0)
+	arg_47_0._cardDisplayFlow:start(var_47_0)
 end
 
-function var_0_0.playUsedCardFinish(arg_42_0, arg_42_1, arg_42_2)
-	if not arg_42_0.go.activeInHierarchy then
+function var_0_0.playUsedCardFinish(arg_48_0, arg_48_1, arg_48_2)
+	if not arg_48_0.go.activeInHierarchy then
 		return
 	end
 
-	if not arg_42_0._cardDisplayEndFlow then
-		arg_42_0._cardDisplayEndFlow = FlowSequence.New()
+	if not arg_48_0._cardDisplayEndFlow then
+		arg_48_0._cardDisplayEndFlow = FlowSequence.New()
 
-		arg_42_0._cardDisplayEndFlow:addWork(FightCardDisplayEndEffect.New())
+		arg_48_0._cardDisplayEndFlow:addWork(FightCardDisplayEndEffect.New())
 	end
 
-	local var_42_0 = arg_42_0:getUserDataTb_()
+	local var_48_0 = arg_48_0:getUserDataTb_()
 
-	var_42_0.skillTipsGO = arg_42_1
-	var_42_0.skillItemGO = arg_42_0.go
-	var_42_0.waitingAreaGO = arg_42_2
+	var_48_0.skillTipsGO = arg_48_1
+	var_48_0.skillItemGO = arg_48_0.go
+	var_48_0.waitingAreaGO = arg_48_2
 
-	arg_42_0._cardDisplayEndFlow:start(var_42_0)
+	arg_48_0._cardDisplayEndFlow:start(var_48_0)
 end
 
-function var_0_0.playCardLevelChange(arg_43_0, arg_43_1, arg_43_2, arg_43_3)
-	if not arg_43_0._cardInfoMO then
+function var_0_0.playCardLevelChange(arg_49_0, arg_49_1, arg_49_2, arg_49_3)
+	if not arg_49_0._cardInfoMO then
 		return
 	end
 
-	if not arg_43_0.go.activeInHierarchy then
+	if not arg_49_0.go.activeInHierarchy then
 		return
 	end
 
-	arg_43_0._cardInfoMO = arg_43_1 or arg_43_0._cardInfoMO
+	arg_49_0._cardInfoMO = arg_49_1 or arg_49_0._cardInfoMO
 
-	local var_43_0 = FightConfig.instance:getSkillLv(arg_43_2)
-	local var_43_1 = FightConfig.instance:getSkillLv(arg_43_0._cardInfoMO.skillId)
+	local var_49_0 = FightConfig.instance:getSkillLv(arg_49_2)
+	local var_49_1 = FightConfig.instance:getSkillLv(arg_49_0._cardInfoMO.skillId)
 
-	if not arg_43_0._cardLevelChangeFlow then
-		arg_43_0._cardLevelChangeFlow = FlowSequence.New()
+	if not arg_49_0._cardLevelChangeFlow then
+		arg_49_0._cardLevelChangeFlow = FlowSequence.New()
 
-		arg_43_0._cardLevelChangeFlow:addWork(FightCardChangeEffect.New())
-		arg_43_0._cardLevelChangeFlow:registerDoneListener(arg_43_0._onCardLevelChangeFlowDone, arg_43_0)
+		arg_49_0._cardLevelChangeFlow:addWork(FightCardChangeEffect.New())
+		arg_49_0._cardLevelChangeFlow:registerDoneListener(arg_49_0._onCardLevelChangeFlowDone, arg_49_0)
 	else
-		var_43_0 = arg_43_0._cardLevelChangeFlow.status == WorkStatus.Running and arg_43_0._cardLevelChangeFlow.context and arg_43_0._cardLevelChangeFlow.context.oldCardLevel or var_43_0
+		var_49_0 = arg_49_0._cardLevelChangeFlow.status == WorkStatus.Running and arg_49_0._cardLevelChangeFlow.context and arg_49_0._cardLevelChangeFlow.context.oldCardLevel or var_49_0
 
-		arg_43_0._cardLevelChangeFlow:stop()
+		arg_49_0._cardLevelChangeFlow:stop()
 	end
 
-	local var_43_2 = arg_43_0:getUserDataTb_()
+	local var_49_2 = arg_49_0:getUserDataTb_()
 
-	var_43_2.skillId = arg_43_0._cardInfoMO.skillId
-	var_43_2.entityId = arg_43_0._cardInfoMO.uid
-	var_43_2.oldCardLevel = var_43_0
-	var_43_2.newCardLevel = var_43_1
-	var_43_2.cardItem = arg_43_0
-	var_43_2.failType = arg_43_3
+	var_49_2.skillId = arg_49_0._cardInfoMO.skillId
+	var_49_2.entityId = arg_49_0._cardInfoMO.uid
+	var_49_2.oldCardLevel = var_49_0
+	var_49_2.newCardLevel = var_49_1
+	var_49_2.cardItem = arg_49_0
+	var_49_2.failType = arg_49_3
 
-	arg_43_0._cardLevelChangeFlow:start(var_43_2)
+	arg_49_0._cardLevelChangeFlow:start(var_49_2)
 
-	if var_43_0 <= var_43_1 then
+	if var_49_0 <= var_49_1 then
 		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_cardstarup)
 	else
 		AudioMgr.instance:trigger(20211403)
 	end
 end
 
-function var_0_0._refreshGray(arg_44_0)
-	if arg_44_0._cardInfoMO and arg_44_0._cardInfoMO.status == FightEnum.CardInfoStatus.STATUS_PLAYSETGRAY then
-		gohelper.setActive(arg_44_0._cardMask, true)
+function var_0_0._refreshGray(arg_50_0)
+	if arg_50_0._cardInfoMO and arg_50_0._cardInfoMO.status == FightEnum.CardInfoStatus.STATUS_PLAYSETGRAY then
+		gohelper.setActive(arg_50_0._cardMask, true)
 
-		local var_44_0 = arg_44_0._cardInfoMO.uid
-		local var_44_1 = arg_44_0._cardInfoMO.skillId
-		local var_44_2 = FightCardDataHelper.getSkillLv(var_44_0, var_44_1)
-		local var_44_3 = FightCardDataHelper.isBigSkill(var_44_1)
+		local var_50_0 = arg_50_0._cardInfoMO.uid
+		local var_50_1 = arg_50_0._cardInfoMO.skillId
+		local var_50_2 = FightCardDataHelper.getSkillLv(var_50_0, var_50_1)
+		local var_50_3 = FightCardDataHelper.isBigSkill(var_50_1)
 
-		for iter_44_0, iter_44_1 in ipairs(arg_44_0._maskList) do
-			if iter_44_0 < 4 then
-				gohelper.setActive(iter_44_1, iter_44_0 == var_44_2)
+		for iter_50_0, iter_50_1 in ipairs(arg_50_0._maskList) do
+			if iter_50_0 < 4 then
+				gohelper.setActive(iter_50_1, iter_50_0 == var_50_2)
 			else
-				gohelper.setActive(iter_44_1, var_44_3)
+				gohelper.setActive(iter_50_1, var_50_3)
 			end
 		end
 	else
-		gohelper.setActive(arg_44_0._cardMask, false)
+		gohelper.setActive(arg_50_0._cardMask, false)
 	end
 end
 
-function var_0_0.playCardAroundSetGray(arg_45_0)
-	arg_45_0:_refreshGray()
+function var_0_0.playCardAroundSetGray(arg_51_0)
+	arg_51_0:_refreshGray()
 end
 
-function var_0_0.playChangeRankFail(arg_46_0, arg_46_1)
-	if arg_46_0._cardInfoMO then
-		arg_46_0:playCardLevelChange(arg_46_0._cardInfoMO, arg_46_0._cardInfoMO.skillId, arg_46_1)
+function var_0_0.playChangeRankFail(arg_52_0, arg_52_1)
+	if arg_52_0._cardInfoMO then
+		arg_52_0:playCardLevelChange(arg_52_0._cardInfoMO, arg_52_0._cardInfoMO.skillId, arg_52_1)
 	end
 end
 
-function var_0_0.setASFDActive(arg_47_0, arg_47_1)
-	arg_47_0.showASFD = arg_47_1
+function var_0_0.setASFDActive(arg_53_0, arg_53_1)
+	arg_53_0.showASFD = arg_53_1
 
-	arg_47_0:_refreshASFD()
+	arg_53_0:_refreshASFD()
 end
 
-function var_0_0._refreshASFD(arg_48_0)
-	local var_48_0 = arg_48_0.showASFD and arg_48_0._cardInfoMO and arg_48_0._cardInfoMO.energy > 0
+function var_0_0._refreshASFD(arg_54_0)
+	local var_54_0 = arg_54_0.showASFD and arg_54_0._cardInfoMO and arg_54_0._cardInfoMO.energy > 0
 
-	gohelper.setActive(arg_48_0.goASFD, var_48_0)
+	gohelper.setActive(arg_54_0.goASFD, var_54_0)
 
-	if var_48_0 then
-		arg_48_0.txtASFDEnergy.text = arg_48_0._cardInfoMO.energy
+	if var_54_0 then
+		arg_54_0.txtASFDEnergy.text = arg_54_0._cardInfoMO.energy
 	end
 end
 
-function var_0_0.changeEnergy(arg_49_0)
-	local var_49_0 = arg_49_0.showASFD and arg_49_0._cardInfoMO and arg_49_0._cardInfoMO.energy > 0
+function var_0_0.changeEnergy(arg_55_0)
+	local var_55_0 = arg_55_0.showASFD and arg_55_0._cardInfoMO and arg_55_0._cardInfoMO.energy > 0
 
-	gohelper.setActive(arg_49_0.goASFD, var_49_0)
+	gohelper.setActive(arg_55_0.goASFD, var_55_0)
 
-	if var_49_0 then
-		arg_49_0.txtASFDEnergy.text = arg_49_0._cardInfoMO.energy
-		arg_49_0.asfdAnimator = arg_49_0.asfdAnimator or arg_49_0.goASFD:GetComponent(gohelper.Type_Animator)
+	if var_55_0 then
+		arg_55_0.txtASFDEnergy.text = arg_55_0._cardInfoMO.energy
+		arg_55_0.asfdAnimator = arg_55_0.asfdAnimator or arg_55_0.goASFD:GetComponent(gohelper.Type_Animator)
 
-		arg_49_0.asfdAnimator:Play("add", 0, 0)
+		arg_55_0.asfdAnimator:Play("add", 0, 0)
 	end
 end
 
-function var_0_0._allocateEnergyDone(arg_50_0)
-	local var_50_0 = arg_50_0.showASFD and arg_50_0._cardInfoMO and arg_50_0._cardInfoMO.energy > 0
+function var_0_0._allocateEnergyDone(arg_56_0)
+	local var_56_0 = arg_56_0.showASFD and arg_56_0._cardInfoMO and arg_56_0._cardInfoMO.energy > 0
 
-	gohelper.setActive(arg_50_0.goASFD, var_50_0)
+	gohelper.setActive(arg_56_0.goASFD, var_56_0)
 
-	if var_50_0 then
-		arg_50_0.txtASFDEnergy.text = arg_50_0._cardInfoMO.energy
-		arg_50_0.asfdAnimator = arg_50_0.asfdAnimator or arg_50_0.goASFD:GetComponent(gohelper.Type_Animator)
+	if var_56_0 then
+		arg_56_0.txtASFDEnergy.text = arg_56_0._cardInfoMO.energy
+		arg_56_0.asfdAnimator = arg_56_0.asfdAnimator or arg_56_0.goASFD:GetComponent(gohelper.Type_Animator)
 
-		arg_50_0.asfdAnimator:Play("open", 0, 0)
+		arg_56_0.asfdAnimator:Play("open", 0, 0)
 	end
 end
 
-function var_0_0.playASFDAnim(arg_51_0, arg_51_1)
-	if arg_51_0.goASFD.activeSelf then
-		arg_51_0.asfdAnimator = arg_51_0.asfdAnimator or arg_51_0.goASFD:GetComponent(gohelper.Type_Animator)
+function var_0_0.playASFDAnim(arg_57_0, arg_57_1)
+	if arg_57_0.goASFD.activeSelf then
+		arg_57_0.asfdAnimator = arg_57_0.asfdAnimator or arg_57_0.goASFD:GetComponent(gohelper.Type_Animator)
 
-		arg_51_0.asfdAnimator:Play(arg_51_1, 0, 0)
+		arg_57_0.asfdAnimator:Play(arg_57_1, 0, 0)
 	end
 end
 
-function var_0_0._onCardLevelChangeFlowDone(arg_52_0)
-	arg_52_0:updateItem(arg_52_0._cardInfoMO.uid, arg_52_0._cardInfoMO.skillId, arg_52_0._cardInfoMO)
-	FightController.instance:dispatchEvent(FightEvent.CardLevelChangeDone, arg_52_0._cardInfoMO)
-	arg_52_0:detectShowBlueStar()
+function var_0_0._onCardLevelChangeFlowDone(arg_58_0)
+	arg_58_0:updateItem(arg_58_0._cardInfoMO.uid, arg_58_0._cardInfoMO.skillId, arg_58_0._cardInfoMO)
+	FightController.instance:dispatchEvent(FightEvent.CardLevelChangeDone, arg_58_0._cardInfoMO)
+	arg_58_0:detectShowBlueStar()
 end
 
-function var_0_0.playCardAni(arg_53_0, arg_53_1, arg_53_2)
-	arg_53_0._cardAniName = arg_53_2 or UIAnimationName.Open
+function var_0_0.playCardAni(arg_59_0, arg_59_1, arg_59_2)
+	arg_59_0._cardAniName = arg_59_2 or UIAnimationName.Open
 
-	arg_53_0._loader:loadAsset(arg_53_1, arg_53_0._onCardAniLoaded, arg_53_0)
+	arg_59_0._loader:loadAsset(arg_59_1, arg_59_0._onCardAniLoaded, arg_59_0)
 end
 
-function var_0_0._onCardAniLoaded(arg_54_0, arg_54_1, arg_54_2)
-	if not arg_54_1 then
+function var_0_0._onCardAniLoaded(arg_60_0, arg_60_1, arg_60_2)
+	if not arg_60_1 then
 		return
 	end
 
-	if not arg_54_0._cardAniName then
-		arg_54_0:_hideAniEffect()
+	if not arg_60_0._cardAniName then
+		arg_60_0:_hideAniEffect()
 
 		return
 	end
 
-	arg_54_0._cardAni.runtimeAnimatorController = arg_54_2:GetResource()
-	arg_54_0._cardAni.enabled = true
-	arg_54_0._cardAni.speed = FightModel.instance:getUISpeed()
+	arg_60_0._cardAni.runtimeAnimatorController = arg_60_2:GetResource()
+	arg_60_0._cardAni.enabled = true
+	arg_60_0._cardAni.speed = FightModel.instance:getUISpeed()
 
-	SLFramework.AnimatorPlayer.Get(arg_54_0.go):Play(arg_54_0._cardAniName, arg_54_0.onCardAniFinish, arg_54_0)
+	SLFramework.AnimatorPlayer.Get(arg_60_0.go):Play(arg_60_0._cardAniName, arg_60_0.onCardAniFinish, arg_60_0)
 end
 
-function var_0_0.onCardAniFinish(arg_55_0)
-	arg_55_0:_hideAniEffect()
-	arg_55_0:hideCardAppearEffect()
+function var_0_0.onCardAniFinish(arg_61_0)
+	arg_61_0:_hideAniEffect()
+	arg_61_0:hideCardAppearEffect()
 end
 
-function var_0_0._hideAniEffect(arg_56_0)
-	arg_56_0._cardAniName = nil
-	arg_56_0._cardAni.enabled = false
+function var_0_0._hideAniEffect(arg_62_0)
+	arg_62_0._cardAniName = nil
+	arg_62_0._cardAni.enabled = false
 
-	gohelper.setActive(gohelper.findChild(arg_56_0.go, "vx_balance"), false)
+	gohelper.setActive(gohelper.findChild(arg_62_0.go, "vx_balance"), false)
 end
 
-function var_0_0.playAppearEffect(arg_57_0)
-	gohelper.setActive(arg_57_0._cardAppearEffectRoot, true)
+function var_0_0.playAppearEffect(arg_63_0)
+	gohelper.setActive(arg_63_0._cardAppearEffectRoot, true)
 
-	if not arg_57_0._appearEffect then
-		if arg_57_0._appearEffectLoadStart then
+	if not arg_63_0._appearEffect then
+		if arg_63_0._appearEffectLoadStart then
 			return
 		end
 
-		arg_57_0._appearEffectLoadStart = true
+		arg_63_0._appearEffectLoadStart = true
 
-		arg_57_0._loader:loadAsset("ui/viewres/fight/card_appear.prefab", arg_57_0._onAppearEffectLoaded, arg_57_0)
+		arg_63_0._loader:loadAsset("ui/viewres/fight/card_appear.prefab", arg_63_0._onAppearEffectLoaded, arg_63_0)
 	else
-		arg_57_0:showAppearEffect()
+		arg_63_0:showAppearEffect()
 	end
 end
 
-function var_0_0._onAppearEffectLoaded(arg_58_0, arg_58_1, arg_58_2)
-	if not arg_58_1 then
+function var_0_0._onAppearEffectLoaded(arg_64_0, arg_64_1, arg_64_2)
+	if not arg_64_1 then
 		return
 	end
 
-	local var_58_0 = arg_58_2:GetResource()
+	local var_64_0 = arg_64_2:GetResource()
 
-	arg_58_0._appearEffect = gohelper.clone(var_58_0, arg_58_0._cardAppearEffectRoot)
+	arg_64_0._appearEffect = gohelper.clone(var_64_0, arg_64_0._cardAppearEffectRoot)
 
-	gohelper.addChild(arg_58_0._cardAppearEffectRoot.transform.parent.parent.gameObject, arg_58_0._cardAppearEffectRoot)
-	arg_58_0:showAppearEffect()
+	gohelper.addChild(arg_64_0._cardAppearEffectRoot.transform.parent.parent.gameObject, arg_64_0._cardAppearEffectRoot)
+	arg_64_0:showAppearEffect()
 end
 
-function var_0_0.showAppearEffect(arg_59_0)
-	local var_59_0 = FightCardDataHelper.isBigSkill(arg_59_0.skillId)
+function var_0_0.showAppearEffect(arg_65_0)
+	local var_65_0 = FightCardDataHelper.isBigSkill(arg_65_0.skillId)
 
-	gohelper.setActive(gohelper.findChild(arg_59_0._appearEffect, "nomal_skill"), not var_59_0)
-	gohelper.setActive(gohelper.findChild(arg_59_0._appearEffect, "ultimate_skill"), var_59_0)
+	gohelper.setActive(gohelper.findChild(arg_65_0._appearEffect, "nomal_skill"), not var_65_0)
+	gohelper.setActive(gohelper.findChild(arg_65_0._appearEffect, "ultimate_skill"), var_65_0)
 end
 
-function var_0_0.hideCardAppearEffect(arg_60_0)
-	gohelper.setActive(arg_60_0._cardAppearEffectRoot, false)
+function var_0_0.hideCardAppearEffect(arg_66_0)
+	gohelper.setActive(arg_66_0._cardAppearEffectRoot, false)
 end
 
-function var_0_0.getASFDScreenPos(arg_61_0)
-	arg_61_0.rectTrASFD = arg_61_0.rectTrASFD or arg_61_0.goASFD:GetComponent(gohelper.Type_RectTransform)
+function var_0_0.getASFDScreenPos(arg_67_0)
+	arg_67_0.rectTrASFD = arg_67_0.rectTrASFD or arg_67_0.goASFD:GetComponent(gohelper.Type_RectTransform)
 
-	return recthelper.uiPosToScreenPos2(arg_61_0.rectTrASFD)
+	return recthelper.uiPosToScreenPos2(arg_67_0.rectTrASFD)
 end
 
-function var_0_0.setActiveRed(arg_62_0, arg_62_1)
-	gohelper.setActive(arg_62_0.goRed, arg_62_1)
-	arg_62_0:refreshLyMaskActive()
+function var_0_0.setActiveRed(arg_68_0, arg_68_1)
+	gohelper.setActive(arg_68_0.goRed, arg_68_1)
+	arg_68_0:refreshLyMaskActive()
 end
 
-function var_0_0.setActiveBlue(arg_63_0, arg_63_1)
-	gohelper.setActive(arg_63_0.goBlue, arg_63_1)
-	arg_63_0:refreshLyMaskActive()
+function var_0_0.setActiveBlue(arg_69_0, arg_69_1)
+	gohelper.setActive(arg_69_0.goBlue, arg_69_1)
+	arg_69_0:refreshLyMaskActive()
 end
 
-function var_0_0.setActiveBoth(arg_64_0, arg_64_1)
-	gohelper.setActive(arg_64_0.goBoth, arg_64_1)
-	arg_64_0:refreshLyMaskActive()
+function var_0_0.setActiveBoth(arg_70_0, arg_70_1)
+	gohelper.setActive(arg_70_0.goBoth, arg_70_1)
+	arg_70_0:refreshLyMaskActive()
 end
 
-function var_0_0.refreshLyMaskActive(arg_65_0)
-	local var_65_0 = arg_65_0.goRed.activeInHierarchy or arg_65_0.goBlue.activeInHierarchy or arg_65_0.goBoth.activeInHierarchy
+function var_0_0.refreshLyMaskActive(arg_71_0)
+	local var_71_0 = arg_71_0.goRed.activeInHierarchy or arg_71_0.goBlue.activeInHierarchy or arg_71_0.goBoth.activeInHierarchy
 
-	gohelper.setActive(arg_65_0.goLyMask, var_65_0)
+	gohelper.setActive(arg_71_0.goLyMask, var_71_0)
 end
 
-function var_0_0.releaseEffectFlow(arg_66_0)
-	if arg_66_0._cardLevelChangeFlow then
-		arg_66_0._cardLevelChangeFlow:unregisterDoneListener(arg_66_0._onCardLevelChangeFlowDone, arg_66_0)
-		arg_66_0._cardLevelChangeFlow:stop()
+function var_0_0.releaseEffectFlow(arg_72_0)
+	if arg_72_0._cardLevelChangeFlow then
+		arg_72_0._cardLevelChangeFlow:unregisterDoneListener(arg_72_0._onCardLevelChangeFlowDone, arg_72_0)
+		arg_72_0._cardLevelChangeFlow:stop()
 
-		arg_66_0._cardLevelChangeFlow = nil
+		arg_72_0._cardLevelChangeFlow = nil
 	end
 
-	if arg_66_0._dissolveFlow then
-		arg_66_0._dissolveFlow:stop()
+	if arg_72_0._dissolveFlow then
+		arg_72_0._dissolveFlow:stop()
 
-		arg_66_0._dissolveFlow = nil
+		arg_72_0._dissolveFlow = nil
 	end
 
-	if arg_66_0._cardDisplayFlow then
-		arg_66_0._cardDisplayFlow:stop()
+	if arg_72_0._cardDisplayFlow then
+		arg_72_0._cardDisplayFlow:stop()
 
-		arg_66_0._cardDisplayFlow = nil
+		arg_72_0._cardDisplayFlow = nil
 	end
 
-	if arg_66_0._cardDisplayEndFlow then
-		arg_66_0._cardDisplayEndFlow:stop()
+	if arg_72_0._cardDisplayEndFlow then
+		arg_72_0._cardDisplayEndFlow:stop()
 
-		arg_66_0._cardDisplayEndFlow = nil
+		arg_72_0._cardDisplayEndFlow = nil
 	end
 
-	if arg_66_0._disappearFlow then
-		if not gohelper.isNil(arg_66_0.go) then
-			gohelper.onceAddComponent(arg_66_0.go, gohelper.Type_CanvasGroup).alpha = 1
+	if arg_72_0._disappearFlow then
+		if not gohelper.isNil(arg_72_0.go) then
+			gohelper.onceAddComponent(arg_72_0.go, gohelper.Type_CanvasGroup).alpha = 1
 		end
 
-		arg_66_0._disappearFlow:stop()
+		arg_72_0._disappearFlow:stop()
 
-		arg_66_0._disappearFlow = nil
+		arg_72_0._disappearFlow = nil
 	end
 end
 
-function var_0_0.onDestroy(arg_67_0)
-	if arg_67_0._loader then
-		arg_67_0._loader:disposeSelf()
+function var_0_0.onDestroy(arg_73_0)
+	if arg_73_0._loader then
+		arg_73_0._loader:disposeSelf()
 
-		arg_67_0._loader = nil
+		arg_73_0._loader = nil
 	end
 
-	arg_67_0:releaseEffectFlow()
+	if arg_73_0.hideVxLoader then
+		arg_73_0.hideVxLoader:dispose()
 
-	for iter_67_0, iter_67_1 in pairs(arg_67_0._lvGOs) do
-		arg_67_0._lvImgIcons[iter_67_0]:UnLoadImage()
+		arg_73_0.hideVxLoader = nil
 	end
 
-	arg_67_0._tag:UnLoadImage()
-	arg_67_0:clearAlfEffect()
+	arg_73_0:releaseEffectFlow()
+
+	for iter_73_0, iter_73_1 in pairs(arg_73_0._lvGOs) do
+		arg_73_0._lvImgIcons[iter_73_0]:UnLoadImage()
+	end
+
+	arg_73_0._tag:UnLoadImage()
+	arg_73_0:clearAlfEffect()
 end
 
-function var_0_0._hideAllEffect(arg_68_0)
-	arg_68_0:_hideUpgradeEffects()
-	arg_68_0:_hideEnchantsEffect()
-	gohelper.setActive(arg_68_0.goPreDelete, false)
+function var_0_0._hideAllEffect(arg_74_0)
+	arg_74_0:_hideUpgradeEffects()
+	arg_74_0:_hideEnchantsEffect()
+	gohelper.setActive(arg_74_0.goPreDelete, false)
 end
 
 var_0_0.AlfLoadStatus = {
@@ -1204,84 +1307,86 @@ var_0_0.AlfLoadStatus = {
 	None = 1
 }
 
-function var_0_0.tryPlayAlfEffect(arg_69_0)
-	if not arg_69_0._cardInfoMO then
+function var_0_0.tryPlayAlfEffect(arg_75_0)
+	if not arg_75_0._cardInfoMO then
 		return
 	end
 
-	if not FightHeroALFComp.ALFSkillDict[arg_69_0._cardInfoMO.clientData.custom_fromSkillId] then
+	if not FightHeroALFComp.ALFSkillDict[arg_75_0._cardInfoMO.clientData.custom_fromSkillId] then
 		return
 	end
 
-	arg_69_0.showAlfEffectIng = true
+	arg_75_0.showAlfEffectIng = true
 
-	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectAppear, arg_69_0)
+	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectAppear, arg_75_0)
 
-	if arg_69_0.alfLoadStatus == var_0_0.AlfLoadStatus.Loaded then
-		arg_69_0:_tryPlayAlfEffect()
-	elseif arg_69_0.alfLoadStatus == var_0_0.AlfLoadStatus.Loading then
+	if arg_75_0.alfLoadStatus == var_0_0.AlfLoadStatus.Loaded then
+		arg_75_0:_tryPlayAlfEffect()
+	elseif arg_75_0.alfLoadStatus == var_0_0.AlfLoadStatus.Loading then
 		-- block empty
 	else
-		arg_69_0.alfLoadStatus = var_0_0.AlfLoadStatus.Loading
-		arg_69_0.alfLoader = PrefabInstantiate.Create(arg_69_0.tr.parent.gameObject)
+		arg_75_0.alfLoadStatus = var_0_0.AlfLoadStatus.Loading
+		arg_75_0.alfLoader = PrefabInstantiate.Create(arg_75_0.tr.parent.gameObject)
 
-		arg_69_0.alfLoader:startLoad(FightHeroALFComp.CardAddEffect, arg_69_0.onLoadedAlfEffect, arg_69_0)
+		local var_75_0 = FightHeroSpEffectConfig.instance:getAlfCardAddEffect()
+
+		arg_75_0.alfLoader:startLoad(var_75_0, arg_75_0.onLoadedAlfEffect, arg_75_0)
 	end
 end
 
-function var_0_0.onLoadedAlfEffect(arg_70_0)
-	arg_70_0.goAlfAddCardEffect = arg_70_0.alfLoader:getInstGO()
-	arg_70_0.goAlfAddCardAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_70_0.goAlfAddCardEffect)
-	arg_70_0.alfLoadStatus = var_0_0.AlfLoadStatus.Loaded
+function var_0_0.onLoadedAlfEffect(arg_76_0)
+	arg_76_0.goAlfAddCardEffect = arg_76_0.alfLoader:getInstGO()
+	arg_76_0.goAlfAddCardAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_76_0.goAlfAddCardEffect)
+	arg_76_0.alfLoadStatus = var_0_0.AlfLoadStatus.Loaded
 
-	arg_70_0:_tryPlayAlfEffect()
+	arg_76_0:_tryPlayAlfEffect()
 end
 
-function var_0_0._tryPlayAlfEffect(arg_71_0)
-	if not arg_71_0.goAlfAddCardAnimatorPlayer then
+function var_0_0._tryPlayAlfEffect(arg_77_0)
+	if not arg_77_0.goAlfAddCardAnimatorPlayer then
 		return
 	end
 
-	gohelper.setActive(arg_71_0.go, false)
-	gohelper.setActive(arg_71_0.goAlfAddCardEffect, true)
-	arg_71_0.goAlfAddCardAnimatorPlayer:Play("open", arg_71_0.playAlfCloseAnim, arg_71_0)
+	gohelper.setActive(arg_77_0.go, false)
+	gohelper.setActive(arg_77_0.goAlfAddCardEffect, true)
+	arg_77_0.goAlfAddCardAnimatorPlayer:Play("open", arg_77_0.playAlfCloseAnim, arg_77_0)
 end
 
-function var_0_0.playAlfCloseAnim(arg_72_0)
-	arg_72_0.goAlfAddCardAnimatorPlayer:Play("close", arg_72_0.playAlfCloseAnimDone, arg_72_0)
-	TaskDispatcher.runDelay(arg_72_0.showCardGo, arg_72_0, 0.2 / FightModel.instance:getUISpeed())
+function var_0_0.playAlfCloseAnim(arg_78_0)
+	arg_78_0.goAlfAddCardAnimatorPlayer:Play("close", arg_78_0.playAlfCloseAnimDone, arg_78_0)
+	TaskDispatcher.runDelay(arg_78_0.showCardGo, arg_78_0, 0.2 / FightModel.instance:getUISpeed())
 end
 
-function var_0_0.showCardGo(arg_73_0)
-	gohelper.setActive(arg_73_0.go, true)
-	arg_73_0:playCardAni(ViewAnim.FightCardAppear, "fightcard_apper")
+function var_0_0.showCardGo(arg_79_0)
+	gohelper.setActive(arg_79_0.go, true)
+	arg_79_0:playCardAni(ViewAnim.FightCardAppear, "fightcard_apper")
 end
 
-function var_0_0.playAlfCloseAnimDone(arg_74_0)
-	gohelper.setActive(arg_74_0.goAlfAddCardEffect, false)
+function var_0_0.playAlfCloseAnimDone(arg_80_0)
+	gohelper.setActive(arg_80_0.goAlfAddCardEffect, false)
 
-	arg_74_0.showAlfEffectIng = false
+	arg_80_0.showAlfEffectIng = false
 
-	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectEnd, arg_74_0)
+	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectEnd, arg_80_0)
 end
 
-function var_0_0.clearAlfEffect(arg_75_0)
-	if arg_75_0.alfLoader then
-		arg_75_0.alfLoader:dispose()
+function var_0_0.clearAlfEffect(arg_81_0)
+	if arg_81_0.alfLoader then
+		arg_81_0.alfLoader:dispose()
 
-		arg_75_0.alfLoader = nil
+		arg_81_0.alfLoader = nil
 	end
 
-	arg_75_0.alfLoadStatus = var_0_0.AlfLoadStatus.None
-	arg_75_0.goAlfAddCardEffect = nil
+	arg_81_0.alfLoadStatus = var_0_0.AlfLoadStatus.None
+	arg_81_0.goAlfAddCardEffect = nil
 
-	if arg_75_0.goAlfAddCardAnimatorPlayer then
-		arg_75_0.goAlfAddCardAnimatorPlayer:Stop()
+	if arg_81_0.goAlfAddCardAnimatorPlayer then
+		arg_81_0.goAlfAddCardAnimatorPlayer:Stop()
 
-		arg_75_0.goAlfAddCardAnimatorPlayer = nil
+		arg_81_0.goAlfAddCardAnimatorPlayer = nil
 	end
 
-	TaskDispatcher.cancelTask(arg_75_0.showCardGo, arg_75_0)
+	TaskDispatcher.cancelTask(arg_81_0.showCardGo, arg_81_0)
 end
 
 return var_0_0

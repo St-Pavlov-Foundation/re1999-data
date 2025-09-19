@@ -248,7 +248,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30070132,
-    "passiveSkill": "",
+    "passiveSkill": "30070141#30070144",
     "consume2": ""
   },
   {
@@ -260,7 +260,7 @@
     "skillGroup1": "30070114|30070115|30070116",
     "skillGroup2": "",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30070141#30070144",
     "consume2": ""
   },
   {
@@ -272,7 +272,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30070133,
-    "passiveSkill": "",
+    "passiveSkill": "30070141#30070145",
     "consume2": ""
   },
   {
@@ -284,7 +284,7 @@
     "skillGroup1": "",
     "skillGroup2": "30070124|30070125|30070126",
     "skillEx": 0,
-    "passiveSkill": "",
+    "passiveSkill": "30070141#30070145",
     "consume2": ""
   },
   {
@@ -296,7 +296,7 @@
     "skillGroup1": "",
     "skillGroup2": "",
     "skillEx": 30070134,
-    "passiveSkill": "",
+    "passiveSkill": "30070141#30070146",
     "consume2": ""
   },
   {
@@ -6777,6 +6777,126 @@
     "skillGroup2": "",
     "skillEx": 0,
     "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3125,
+    "skillLevel": 1,
+    "consume": "1#133125#1",
+    "requirement": "",
+    "desc": "▩3%s【影子盛宴<id:1>】持续回合数提升至2，获得清空【影子行头<id:1>】之和的比例提升至35%，【影子盛宴<id:1>】提供的额外【影子行头<id:1>】获得的暴击创伤/仪式威力收益提升至正常收益的100%；",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31250132,
+    "passiveSkill": "31250142#31250145",
+    "consume2": ""
+  },
+  {
+    "heroId": 3125,
+    "skillLevel": 2,
+    "consume": "1#133125#1",
+    "requirement": "",
+    "desc": "▩0%s【影子行头<id:1>】上限提升至野树莓入场时最大生命的18%，野树莓通过【影子玩伴<id:1>】失去生命转化为【影子行头<id:1>】的比例提升至100%",
+    "skillGroup1": "31250114|31250115|31250116",
+    "skillGroup2": "31250124|31250125|31250126",
+    "skillEx": 0,
+    "passiveSkill": "31250142#31250146",
+    "consume2": ""
+  },
+  {
+    "heroId": 3125,
+    "skillLevel": 3,
+    "consume": "1#133125#1",
+    "requirement": "",
+    "desc": "▩1%s造成的现实创伤提升至180/270/450%",
+    "skillGroup1": "31250117|31250118|31250119",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3125,
+    "skillLevel": 4,
+    "consume": "1#133125#1",
+    "requirement": "",
+    "desc": "▩0%s任意己方受到攻击后，野树莓为己方全体回复生命提升至自身最大生命*16%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 0,
+    "passiveSkill": "31250144#31250147",
+    "consume2": ""
+  },
+  {
+    "heroId": 3125,
+    "skillLevel": 5,
+    "consume": "1#133125#1",
+    "requirement": "",
+    "desc": "▩0%s持有【影子玩伴<id:2>】的角色，每提升1%暴击创伤/仪式威力所需的【影子行头<id:1>】降低至100/200",
+    "skillGroup1": "312501110|312501111|312501112",
+    "skillGroup2": "31250127|31250128|31250129",
+    "skillEx": 31250133,
+    "passiveSkill": "31250142#31250148",
+    "consume2": ""
+  },
+  {
+    "heroId": 3132,
+    "skillLevel": 1,
+    "consume": "1#133132#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "31320174|31320175|31320176",
+    "skillEx": 31320132,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3132,
+    "skillLevel": 2,
+    "consume": "1#133132#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31320133,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3132,
+    "skillLevel": 3,
+    "consume": "1#133132#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "31320117|31320118|31320119",
+    "skillGroup2": "31320124|31320125|31320126",
+    "skillEx": 31320134,
+    "passiveSkill": "31320143#31320145",
+    "consume2": ""
+  },
+  {
+    "heroId": 3132,
+    "skillLevel": 4,
+    "consume": "1#133132#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "31320181|31320182|31320183",
+    "skillGroup2": "31320127|31320128|31320129",
+    "skillEx": 31320135,
+    "passiveSkill": "31320143#31320146",
+    "consume2": ""
+  },
+  {
+    "heroId": 3132,
+    "skillLevel": 5,
+    "consume": "1#133132#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "31320114|31320115|31320116",
+    "skillGroup2": "31320171|31320172|31320173",
+    "skillEx": 31320136,
+    "passiveSkill": "31320141#31320144|31320143#31320147",
     "consume2": ""
   }
 ]

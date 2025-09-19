@@ -530,5 +530,47 @@
     "patFaceViewName": "V2a9_Role_PanelSignView_Part2",
     "patFaceStoryId": 0,
     "patFaceOrder": 20906
+  },
+  {
+    "id": 30100,
+    "patFaceActivityId": 0,
+    "patFaceViewName": "",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30100
+  },
+  {
+    "id": 30101,
+    "patFaceActivityId": 13111,
+    "patFaceViewName": "SurvivalOperActPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 13111
+  },
+  {
+    "id": 30102,
+    "patFaceActivityId": 13112,
+    "patFaceViewName": "TowerDeepOperActPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 13112
+  },
+  {
+    "id": 30103,
+    "patFaceActivityId": 13116,
+    "patFaceViewName": "VersionActivity2_3NewCultivationGiftFullView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 2089
+  },
+  {
+    "id": 30104,
+    "patFaceActivityId": 13110,
+    "patFaceViewName": "V3a1_AutumnSign_PanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30104
+  },
+  {
+    "id": 30110,
+    "patFaceActivityId": 0,
+    "patFaceViewName": "PowerMakerPatFaceView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 999999
   }
 ]

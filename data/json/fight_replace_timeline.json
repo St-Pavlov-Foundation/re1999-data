@@ -2862,5 +2862,133 @@
     "target": 1,
     "simulate": 1,
     "condition": "9#312302"
+  },
+  {
+    "id": "bfsg_307701_skill1_1",
+    "timeline": "bfsg_307704_skill1_1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "9#307704"
+  },
+  {
+    "id": "bfsg_307701_skill1_1",
+    "timeline": "bfsg_307704_skill1_2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "9#307704"
+  },
+  {
+    "id": "bfsg_307701_skill1_1",
+    "timeline": "bfsg_307704_skill1_3",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "9#307704"
+  },
+  {
+    "id": "bfsg_307701_skill2",
+    "timeline": "bfsg_307704_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#307704"
+  },
+  {
+    "id": "bfsg_307701_unique",
+    "timeline": "bfsg_307704_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#307704"
+  },
+  {
+    "id": "luolan_300701_skill1",
+    "timeline": "luolan_300731_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#300731"
+  },
+  {
+    "id": "luolan_300701_skill2",
+    "timeline": "luolan_300731_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#300731"
+  },
+  {
+    "id": "luolan_300701_unique",
+    "timeline": "luolan_300731_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#300731"
+  },
+  {
+    "id": "alaifu_311301_linggan",
+    "timeline": "alaifu_311303_linggan",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_skill1",
+    "timeline": "alaifu_311303_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_skill2",
+    "timeline": "alaifu_311303_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_unique",
+    "timeline": "alaifu_311303_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_unique_1",
+    "timeline": "alaifu_311303_unique_1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_unique_2",
+    "timeline": "alaifu_311303_unique_2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_unique_3",
+    "timeline": "alaifu_311303_unique_3",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
+  },
+  {
+    "id": "alaifu_311301_unique_4",
+    "timeline": "alaifu_311303_unique_4",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "5#311303"
   }
 ]

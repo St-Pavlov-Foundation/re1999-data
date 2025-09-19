@@ -26,6 +26,7 @@ function var_0_0._initBgmDatas(arg_2_0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.ChessGame, AudioEnum.Bgm.ChessGameBgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Meilanni, AudioEnum.Bgm.play_activitymusic_humorousburglary_74bpm4_4, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Season, AudioEnum.Bgm.LeiMiTeBeiDungeonBgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.HandbookSkin, AudioEnum.Bgm.HandbookSkinBgm, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.DungeonAmbientSound, 0, 0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.WeekWalk, 0, 0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.Summon, 0, 0)
@@ -110,6 +111,8 @@ function var_0_0._initBgmDatas(arg_2_0)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_0Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.CommanStationEnterView, AudioEnum3_0.Bgm.play_ui_zhihuisuo_music, AudioEnum.UI.Stop_UIMusic)
 	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_0MainAmbientSound, 0, 0)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_1Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	arg_2_0:_addBgmData(AudioBgmEnum.Layer.NecrologistStoryView, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function var_0_0._initBgmUsage(arg_3_0)
@@ -221,6 +224,11 @@ function var_0_0._initBgmUsage(arg_3_0)
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.SeasonMainView
 	})
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.HandbookSkin
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.HandbookSkinView
+	}, nil, nil, true)
 	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity1_2Main
 	}, AudioBgmEnum.UsageType.View, {
@@ -608,6 +616,11 @@ function var_0_0._initBgmUsage(arg_3_0)
 		SceneType.SurvivalShelter
 	})
 	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.ShelterBGM
+	}, AudioBgmEnum.UsageType.Scene, {
+		SceneType.SurvivalSummaryAct
+	})
+	arg_3_0:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity3_0Main
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.VersionActivity3_0EnterView
@@ -618,6 +631,16 @@ function var_0_0._initBgmUsage(arg_3_0)
 		ViewName.CommandStationEnterView,
 		ViewName.CommandStationMapView
 	})
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity3_1Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity3_1EnterView
+	}, nil, nil, true)
+	arg_3_0:_addBgmUsage({
+		AudioBgmEnum.Layer.NecrologistStoryView
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.NecrologistStoryView
+	}, nil, nil, true)
 end
 
 function var_0_0._initBgmBind(arg_4_0)

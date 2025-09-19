@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2010101,
+    "group": 20101,
+    "step": 1,
+    "desc": "语言转译",
+    "icon": "512901",
+    "desc2": "跟随科学直觉仪找到翻译站，完成可获取25转译进度",
+    "showInExplore": 0,
+    "progressCondition": "eventFinished#2#202011100",
+    "maxProgress": 0,
+    "needAccept": 0,
+    "prepose": "",
+    "failCondition": "",
+    "uselessCondition": "leaveExploreUseless",
+    "autoDrop": 0,
+    "dropShow": "5:25",
+    "track": "2#202011100"
+  }
+]

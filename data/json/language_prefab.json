@@ -12413,7 +12413,7 @@
   },
   {
     "id": "p_roomwaterreformview_tips",
-    "lang": "点击选择需要改造的水体，再选择水体样式"
+    "lang": "点击选择需要改造的水体或孤屿，再选择改造样式"
   },
   {
     "id": "p_roomwaterreformview_reforming_en",
@@ -14509,7 +14509,7 @@
   },
   {
     "id": "p_resourcedownloadview_txt_title2",
-    "lang": "常驻活动资源下载"
+    "lang": "资源下载中"
   },
   {
     "id": "p_v2a2_selfselectfivestars_txt_title",
@@ -19413,7 +19413,7 @@
   },
   {
     "id": "p_survivalinitteamview_txt_Leader",
-    "lang": "乌尔里希"
+    "lang": "哑谜"
   },
   {
     "id": "p_survivalinitteamview_txt_Attr1",
@@ -19461,7 +19461,7 @@
   },
   {
     "id": "p_survivaltaskview_main_txt1",
-    "lang": "入侵怪物会毁坏庇护所，必须全部击退。"
+    "lang": "     "
   },
   {
     "id": "p_survivaltaskview_main_txt2",
@@ -19805,7 +19805,7 @@
   },
   {
     "id": "p_survivalceremonyopeningview_txt",
-    "lang": "    暴雨来临前，白方每个部门都有一套严格的紧急预案，但唯独拉普拉斯科算中心执行的最糟糕。\n    \n    这帮天才们各有各的想法：冒险出去做实验的，疯狂收集非对称核素R的，优先避难的，不要命地抢救设备的……他们谁也说服不了谁。\n\n    因此，出台一份具有说服力的《雨前紧急状况应对指南》迫在眉睫！而作为组长的你，必须通过演习收集暴雨相关信息，同时也需要击败入侵银色庇护所的怪物，从而完成这份指南。"
+    "lang": "     奇怪的语言异常已在拉普拉斯科算中心蔓延数日，人们开始用各种稀奇古怪的编码讲话。尽管缪斯三世将这一切似乎解释明白了，但是问题还得我们解决。幸运的是基金会也不想看到一个通过手语和结绳计数法来研究项目的拉普拉斯。他们同意让马库斯以临时助手的身份前来，运用她的阅读神秘术为我们提供援助。\n    事态严峻，时不我待，为了避免空耗时间，我决定亲自进入箱中，解决语言异化问题。\n                                              ——《关于拉普拉斯语言异化相关问题的报告》阿德勒·霍夫曼"
   },
   {
     "id": "p_v2a3_destiny_preview_txt_new",
@@ -20225,7 +20225,7 @@
   },
   {
     "id": "p_survivalshelterrewardview_txt_dec",
-    "lang": "组长永远都会有“应急预案”。但是能否成功，谁说得准呢？"
+    "lang": "     "
   },
   {
     "id": "p_autochesscrazymodetipview_txt_dec",
@@ -22418,5 +22418,777 @@
   {
     "id": "p_v2a9_warmup_txt_tips",
     "lang": "点击开启"
+  },
+  {
+    "id": "p_v3a1_storeview_txt_title1",
+    "lang": "“<size=50>午</size>夜”专享"
+  },
+  {
+    "id": "p_v3a1_storeview_txt_title2",
+    "lang": "“<size=50>猩</size>红”情调"
+  },
+  {
+    "id": "p_v3a1_storeview_txt_title3",
+    "lang": "“<size=50>果</size>腹”餐点"
+  },
+  {
+    "id": "p_activityweekwalkdeepview_txt_hasget",
+    "lang": "已领取雨滴"
+  },
+  {
+    "id": "p_survivalrewardinheritview_txt_Title",
+    "lang": "奖励继承"
+  },
+  {
+    "id": "p_survivalitemcommitview_txt_Title",
+    "lang": "选择<#FFA64D>阵营</color>提交转译资料"
+  },
+  {
+    "id": "p_survivalitemcommitview_txt_score",
+    "lang": "转译资料"
+  },
+  {
+    "id": "p_survivalitemcommitview_txt_scoreAdd",
+    "lang": "提交转译资料"
+  },
+  {
+    "id": "p_survivalitemcommitview_txt_confirm",
+    "lang": "提交"
+  },
+  {
+    "id": "p_survivalitemcommitview_txt_dec",
+    "lang": "所得转译道具"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_event",
+    "lang": "事件"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_amplifier",
+    "lang": "漫游行装"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_npc",
+    "lang": "漫游助理"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_result",
+    "lang": "结局"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Task",
+    "lang": "演习事件"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Fight",
+    "lang": "战斗事件"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Search",
+    "lang": "搜刮事件"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Common",
+    "lang": "通用"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_ElectricEnergy",
+    "lang": "电能"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Revelation",
+    "lang": "启示"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Bloom",
+    "lang": "薪血"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_ExtraActions",
+    "lang": "额外行动"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Ceremony",
+    "lang": "仪式"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Foundation",
+    "lang": "基金会"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Laplace",
+    "lang": "拉普拉斯"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_Zeno",
+    "lang": "芝诺"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_tab_People",
+    "lang": "民众"
+  },
+  {
+    "id": "p_survivalhandbookeventitem_txt_Empty",
+    "lang": "未遭遇事件"
+  },
+  {
+    "id": "p_summonConfirmView_auto_option",
+    "lang": "今日内自动消耗纯雨滴购买独一律"
+  },
+  {
+    "id": "p_charactertalentrecommendview_txt_title",
+    "lang": "共鸣方案推荐"
+  },
+  {
+    "id": "p_dungeonview_txt_trace",
+    "lang": "养成追踪"
+  },
+  {
+    "id": "p_recommedgroupview_txt_group",
+    "lang": "推荐队伍"
+  },
+  {
+    "id": "p_recommedgroupview_txt_equip",
+    "lang": "心相推荐"
+  },
+  {
+    "id": "p_goalsitem_txt_tracing",
+    "lang": "追踪中"
+  },
+  {
+    "id": "p_goalsitem_txt_trace",
+    "lang": "追踪"
+  },
+  {
+    "id": "p_characterrecommendview_txt_tab1",
+    "lang": "队伍推荐"
+  },
+  {
+    "id": "p_characterrecommendview_txt_tab2",
+    "lang": "养成目标"
+  },
+  {
+    "id": "p_characterrecommendview_txt_max",
+    "lang": "洞悉、共鸣已满级"
+  },
+  {
+    "id": "p_characterrecommendview_txt_changehero",
+    "lang": "更换角色"
+  },
+  {
+    "id": "p_v3a1_dungeonmapview_txt_shop",
+    "lang": "3.1商店临时文本"
+  },
+  {
+    "id": "p_v3a1_rolestoryticketview_txt_confirm",
+    "lang": "出示车票【临时文本】"
+  },
+  {
+    "id": "p_export",
+    "lang": "导出"
+  },
+  {
+    "id": "p_export_fishing",
+    "lang": "导出渔场"
+  },
+  {
+    "id": "p_v3a1_rolestoryerasepicture_txt",
+    "lang": "擦一下包裹上的灰尘"
+  },
+  {
+    "id": "p_v3a1_rolestorydragpicture_txt",
+    "lang": "将包裹拖至左侧墓碑博物馆"
+  },
+  {
+    "id": "p_survivaloperactfullview_txt_item1",
+    "lang": "<color=#e99b56>盒中之物</color>全面焕新"
+  },
+  {
+    "id": "p_survivaloperactfullview_txt_item2",
+    "lang": "新增神秘<color=#e99b56>漫游事件</color>"
+  },
+  {
+    "id": "p_survivaloperactfullview_txt_item3",
+    "lang": "全新<color=#e99b56>阵营建筑</color>系统"
+  },
+  {
+    "id": "p_roomview_fishing_tracking",
+    "lang": "好梦井定位"
+  },
+  {
+    "id": "p_roomview_fishing_myself",
+    "lang": "我的好梦井"
+  },
+  {
+    "id": "p_roomview_fishing_reward",
+    "lang": "馈赠产出"
+  },
+  {
+    "id": "p_necrologiststorytaskview_txt_title",
+    "lang": "<size=68>胶</size>卷注脚"
+  },
+  {
+    "id": "p_v3a1_rolestoryfailview_txt_fail",
+    "lang": "您未在规定时间<color=#e99b56>准时抵达</color>目的地\n在规定的时间到达之前，在附近消磨一下时间吧"
+  },
+  {
+    "id": "p_v3a1_towerdeep_fullview_txt_deep",
+    "lang": "全服泛流最深处"
+  },
+  {
+    "id": "p_v3a1_towerdeep_fullview_txt_tag",
+    "lang": "全服任务"
+  },
+  {
+    "id": "p_v3a1_towerdeep_fullview_txt_goto",
+    "lang": "前往雨中悬想"
+  },
+  {
+    "id": "p_v3a1_gaosiniao_level_txt_Endless",
+    "lang": "缝合技法"
+  },
+  {
+    "id": "p_survivalrewardinheritview_txt_tips",
+    "lang": "可选择<#C66030>1</color>个漫游行装继承到下局流程"
+  },
+  {
+    "id": "p_survivalreputationshopview_txt_lock",
+    "lang": "转译等级未达到要求"
+  },
+  {
+    "id": "p_survivalreputationshopview_txt_title",
+    "lang": "每日储备消耗"
+  },
+  {
+    "id": "p_survivalreputationshopview_txt_shop",
+    "lang": "战备商店"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_maintarget",
+    "lang": "主目标"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_mapeffect",
+    "lang": "地图效果"
+  },
+  {
+    "id": "p_v3a1_bpoperactshowview_txt_Tips",
+    "lang": "完成任务获得更多“吼吼分贝”！！"
+  },
+  {
+    "id": "p_v3a1_bpoperactshowview_txt_Goto",
+    "lang": "去看看"
+  },
+  {
+    "id": "p_v3a1_bpoperactshowview_txt_Descr",
+    "lang": "更为响亮，更为热情！“吼吼狂欢夜”额外分贝放送中！"
+  },
+  {
+    "id": "p_v3a1_bpoperactshowview_txt_Tips2",
+    "lang": "完成【吼吼狂欢夜】任务获得更多“吼吼分贝”！！"
+  },
+  {
+    "id": "p_v3a1_bpoperactshowview_txt_MAX",
+    "lang": "已达分贝等级上限"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn1",
+    "lang": "织针的赠礼"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn2",
+    "lang": "午夜的纪念"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn3",
+    "lang": "素材丰收派对"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn4",
+    "lang": "汽笛的赠礼"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn5",
+    "lang": "月相时刻表"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn6",
+    "lang": "邀月特惠"
+  },
+  {
+    "id": "p_v3a1_giftrecommendview_txt_shopnamecn7",
+    "lang": "邀月酬宾"
+  },
+  {
+    "id": "p_powerview_txt_name",
+    "lang": "苦目风味制糖机"
+  },
+  {
+    "id": "p_powermakerpatfaceview_desc_3",
+    "lang": "快去使用吧！"
+  },
+  {
+    "id": "p_releasegiftview_txt_title",
+    "lang": "蜜酒始酿之宴"
+  },
+  {
+    "id": "p_releasegiftview_txt_tips_1",
+    "lang": "购买后14日内累计登录可领取全部奖励（购买后将生成新的可持续领取时间）"
+  },
+  {
+    "id": "p_releasegiftview_txt_tips_2",
+    "lang": "购买后立即可得"
+  },
+  {
+    "id": "p_releasegiftview_txt_tips_3",
+    "lang": "奖励领取剩余时间"
+  },
+  {
+    "id": "p_releasegiftview_txt_tips_4",
+    "lang": "次日登录可领"
+  },
+  {
+    "id": "p_releasegiftview_txt_tag",
+    "lang": "超值！"
+  },
+  {
+    "id": "p_releasegiftview_txt_reward1",
+    "lang": "粹雨滴"
+  },
+  {
+    "id": "p_releasegiftview_txt_reward2",
+    "lang": "特阶秘物匣子"
+  },
+  {
+    "id": "p_roomfishview_txt_tab1",
+    "lang": "未打捞"
+  },
+  {
+    "id": "p_roomfishview_txt_tab2",
+    "lang": "打捞中"
+  },
+  {
+    "id": "p_commomexchangeview_txt_title",
+    "lang": "道具兑换"
+  },
+  {
+    "id": "p_achievemententryview_misihai_txt_entrance",
+    "lang": "<size=90>诙</size>奇馆藏"
+  },
+  {
+    "id": "p_roomfishview_txt_inform",
+    "lang": "好梦坐标"
+  },
+  {
+    "id": "p_roomview_txt_fishenter",
+    "lang": "好梦井"
+  },
+  {
+    "id": "p_roomview_txt_fishingResource",
+    "lang": "馈赠仓库"
+  },
+  {
+    "id": "p_roomview_txt_tracking",
+    "lang": "定位"
+  },
+  {
+    "id": "p_v3a1_gaosiniao_gameview_txt_close",
+    "lang": "点击空白关闭"
+  },
+  {
+    "id": "p_v3a1_yeshumeigame_txt_review1",
+    "lang": "回想"
+  },
+  {
+    "id": "p_v3a1_yeshumeigame_txt_review2",
+    "lang": "回想中"
+  },
+  {
+    "id": "p_v3a1_storeroleskinview_roletxt1",
+    "lang": "魇与夜"
+  },
+  {
+    "id": "p_v3a1_storeroleskinview_rolename1",
+    "lang": "北方哨歌"
+  },
+  {
+    "id": "p_v3a1_storeroleskinview_roletxt2",
+    "lang": "意象的欢宴"
+  },
+  {
+    "id": "p_v3a1_storeroleskinview_rolename2",
+    "lang": "阿莱夫"
+  },
+  {
+    "id": "p_towerpermanent_txt_DeepRare",
+    "lang": "泛流最深处"
+  },
+  {
+    "id": "p_towerpermanent_txt_DeepFightName",
+    "lang": "<size=110>与</size>之纠缠"
+  },
+  {
+    "id": "p_towerpermanent_txt_DeepLayer",
+    "lang": "无底涡流"
+  },
+  {
+    "id": "p_towerdeepherogroup_txt_Save",
+    "lang": "保存"
+  },
+  {
+    "id": "p_towerdeepherogroup_txt_Load",
+    "lang": "加载"
+  },
+  {
+    "id": "p_towerdeepherogroup_txt_RestRound",
+    "lang": "剩余挑战次数"
+  },
+  {
+    "id": "p_towerdeepherogroup_txt_assistBossEmpty",
+    "lang": ""
+  },
+  {
+    "id": "p_towerdeepherogroup_txt_titledepth",
+    "lang": "下潜深度"
+  },
+  {
+    "id": "p_towerdeepteamsave_txt_Title",
+    "lang": "加载存档"
+  },
+  {
+    "id": "p_towerdeepteamsave_txt_Tips",
+    "lang": "以下角色无法出战"
+  },
+  {
+    "id": "p_towerdeepteamsave_txt_Cover",
+    "lang": "覆盖"
+  },
+  {
+    "id": "p_towerdeeptask_txt_Title",
+    "lang": "顿悟所得"
+  },
+  {
+    "id": "p_v3a1_warmup_txt_WrongChannel",
+    "lang": "点击地点查看旅游指南"
+  },
+  {
+    "id": "p_v3a1_warmup_txt_tips",
+    "lang": "点击照片查看旅游指南"
+  },
+  {
+    "id": "p_survivaloperactfull_Title",
+    "lang": "活动奖励"
+  },
+  {
+    "id": "p_survivaloperactfull_SmallTitle",
+    "lang": "全新内容"
+  },
+  {
+    "id": "p_survivaloperactfull_Tips",
+    "lang": "物品效果展示"
+  },
+  {
+    "id": "p_survivaloperactfull_Enter",
+    "lang": "<size=60>前</size>往参与"
+  },
+  {
+    "id": "p_v3a1_power_help_1_txt_1",
+    "lang": "制糖机制造的苦目风味糖球在使用时可以<#FF906A>恢复60点细胞活性</color>\n每日生产的苦目风味糖球都会在<#FF906A>七日后</color>的<#FF906A>凌晨5时</color>过期，\n请司辰注意\n(苦目风味糖球过期时，会<#FF906A>自动使用</color>为司辰恢复细胞活性)"
+  },
+  {
+    "id": "p_v3a1_power_help_1_txt_2",
+    "lang": "苦目风味制糖机能够将司辰<#FF906A>超出上限的细胞活性</color>转化为苦目糖球。\n制作一颗苦目风味糖球所需的时间为<#FF906A>12个小时</color>。仅当司辰的细胞活\n性超出或等于上限时，制作倒计时才会继续，倒计时归零时，制糖\n机会立刻制造一颗苦目风味糖球加入司辰的仓库"
+  },
+  {
+    "id": "p_v3a1_enterview_txt_enter",
+    "lang": "<size=66>步</size>入故事"
+  },
+  {
+    "id": "p_v3a1_enterview_txt_new",
+    "lang": "全新轶事"
+  },
+  {
+    "id": "p_v3a1_rolestoryticketview_txt_show",
+    "lang": "出示车票"
+  },
+  {
+    "id": "p_roomwaterreformview_txt_clear",
+    "lang": "清除选中"
+  },
+  {
+    "id": "p_roomfishview_txt_friend",
+    "lang": "友人"
+  },
+  {
+    "id": "p_roomfishstoreview_txt_Title",
+    "lang": "茸毛集换所"
+  },
+  {
+    "id": "p_roomwaterreformview_txt_initial",
+    "lang": "初始"
+  },
+  {
+    "id": "p_v3a1_gaosiniao_game_txt_TargetTitle",
+    "lang": "手术目标"
+  },
+  {
+    "id": "p_v3a1_gaosiniao_game_txt_TargetDescr",
+    "lang": "连通所有血管断面"
+  },
+  {
+    "id": "p_towerpermanentview_txt_DeepTitle",
+    "lang": "无底涡流"
+  },
+  {
+    "id": "p_towerpermanentview_txt_DeepSuccReward",
+    "lang": ""
+  },
+  {
+    "id": "p_charactertalentview_txt_recommend",
+    "lang": "共鸣推荐"
+  },
+  {
+    "id": "p_characterteamselectitem_txt_replaced",
+    "lang": "已替换"
+  },
+  {
+    "id": "p_fightprogressview_txt_title",
+    "lang": "压力"
+  },
+  {
+    "id": "p_powermakerpatfaceview_txt_title",
+    "lang": "获得糖果"
+  },
+  {
+    "id": "p_powerview_txt_making",
+    "lang": "制造中"
+  },
+  {
+    "id": "p_powerview_txt_pause",
+    "lang": "已暂停"
+  },
+  {
+    "id": "p_roomfishbubbleui_txt_Fishing",
+    "lang": "打捞"
+  },
+  {
+    "id": "p_roomfishbubbleui_txt_RemainTime",
+    "lang": "剩余耗时"
+  },
+  {
+    "id": "p_roomfishrewardview_txt_View",
+    "lang": "收获馈赠"
+  },
+  {
+    "id": "p_roomfishrewardview_txt_Title",
+    "lang": "<size=76>打</size>捞所获"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_Empty",
+    "lang": "未揭示的结局"
+  },
+  {
+    "id": "p_survivalmapbagitem_txt_reward",
+    "lang": "赠礼"
+  },
+  {
+    "id": "p_survivalequipoverview_txt_Type1",
+    "lang": "饰品"
+  },
+  {
+    "id": "p_survivalequipoverview_txt_Type2",
+    "lang": "盒中之物"
+  },
+  {
+    "id": "p_act191herogroupview_txt_title",
+    "lang": "托管与奖励"
+  },
+  {
+    "id": "p_act191herogroupview_txt_assistBossTitle",
+    "lang": "特邀助阵"
+  },
+  {
+    "id": "p_act191assistantview_txt_select",
+    "lang": "上阵"
+  },
+  {
+    "id": "p_act191collectionchangeview_txt_QuickAdd",
+    "lang": "快捷添加"
+  },
+  {
+    "id": "p_act191collectionchangeview_txt_tips",
+    "lang": "点击造物添加"
+  },
+  {
+    "id": "p_act191collectionchangeview_txt_Exchange",
+    "lang": "开始置换"
+  },
+  {
+    "id": "p_act191collectionchangeview_txt_Upgrade",
+    "lang": "开始加工"
+  },
+  {
+    "id": "p_act191collectiontipview_txt_add",
+    "lang": "添加"
+  },
+  {
+    "id": "p_v3a1_survival_help_1_txt_1",
+    "lang": "Ⅱ类认知污染：\n该类认知污染对<#FF906A>理智影响极大</color>，受到该暴雨侵蚀的盒中居民会失去理智，<#FF906A>持续追踪并攻击敌人</color>。"
+  },
+  {
+    "id": "p_v3a1_survival_help_2_txt_1",
+    "lang": "Ⅲ类认知污染：\n该类认知污染对<#FF906A>实体影响极大</color>，受到该暴雨侵蚀的物品，在搜刮时会有概率变为<#FF906A>【无用垃圾】</color>。"
+  },
+  {
+    "id": "p_v3a1_survival_help_3_txt_1",
+    "lang": "特殊地形<#FF906A>【迷障泡泡】</color>会使进入地形的单位迷失方向。\n购买了特殊载具<#FF906A>【乌尔里希首相号】</color>后，可以免疫地形效果，在地形中自由移动。"
+  },
+  {
+    "id": "p_v3a1_survival_help_4_txt_1",
+    "lang": "特殊地形<#FF906A>【多色油砂】</color>会使进入地形的单位减速，同时在地形中有概率获取【无用垃圾】。\n购买了特殊载具<#FF906A>【清洁工号】</color>后，可以免疫地形效果，在地形中自由移动。"
+  },
+  {
+    "id": "p_v3a1_survival_help_5_txt_1",
+    "lang": "特殊地形<#FF906A>【拟态圣火】</color>会周期性的喷发火焰，除平稳状态外，进入准备和爆发状态的地形将扣除抵抗力。\n购买了特殊载具<#FF906A>【不可燃点】</color>后，可以免疫地形效果，在地形中自由移动。"
+  },
+  {
+    "id": "p_v3a1_survival_help_6_txt_1",
+    "lang": "特殊地形<#FF906A>【滑冰场远亲】</color>会使进入地形的单位加速，但在地形中有概率滑倒，需要花费时间起身。\n购买了特殊载具<#FF906A>【北方小调】</color>后，可以免疫地形效果，在地形中自由移动。"
+  },
+  {
+    "id": "p_v3a1_survival_help_7_txt_1",
+    "lang": "特殊地形<#FF906A>【水域】</color>会使进入地形的单位减速，并会周期性的生成水龙卷，触碰水龙卷的单位会被传送至随机位置。\n购买了特殊载具<#FF906A>【迷你摇滚海盗】</color>后，可以免疫地形效果，在地形中自由移动。"
+  },
+  {
+    "id": "p_storeblockpackageview_v3a1desc",
+    "lang": "*集齐当期<color=#C8B173>活动兑换</color>及<color=#C8B173>荒原构<space=10>想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_activity_monthcardbuypanelview_txt_tag",
+    "lang": "超值"
+  },
+  {
+    "id": "p_activity_monthcardbuypanelview_txt_buy",
+    "lang": "立刻购买"
+  },
+  {
+    "id": "p_activity_monthcardbuypanelview_txt_tip1",
+    "lang": "立即获得"
+  },
+  {
+    "id": "p_activity_monthcardbuypanelview_txt_tip2",
+    "lang": "每日获得"
+  },
+  {
+    "id": "p_activity_giftbuypanelview_txt_tag",
+    "lang": "恭喜"
+  },
+  {
+    "id": "v3a1_towerdeep_help_1_txt_1",
+    "lang": "无底涡流玩法说明"
+  },
+  {
+    "id": "v3a1_towerdeep_help_1_txt_2",
+    "lang": "无底涡流中，玩家最多可以出场6队角色，依次与首领进行战斗"
+  },
+  {
+    "id": "v3a1_towerdeep_help_1_txt_3",
+    "lang": "迷思原型将无法在战斗中上阵"
+  },
+  {
+    "id": "v3a1_towerdeep_help_2_txt_1",
+    "lang": "战斗中对首领造成伤害会提升下潜深度"
+  },
+  {
+    "id": "v3a1_towerdeep_help_2_txt_2",
+    "lang": "随着下潜深度提升，首领会依次切换不同的形态，具有不同的灵感和技能"
+  },
+  {
+    "id": "v3a1_towerdeep_help_3_txt_1",
+    "lang": "战斗过程中，首领会积累压力，压力达到阈值时会发动强力的效果"
+  },
+  {
+    "id": "v3a1_towerdeep_help_4_txt_1",
+    "lang": "在编队界面可以保存和加载存档"
+  },
+  {
+    "id": "p_v3a1_fish_help_1_txt_1",
+    "lang": "捕捞获得的馈赠，可以在茸毛集换所兑换为<#FF906A>【空白创意】</color>和<#FF906A>【多彩灵感】</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_1_txt_2",
+    "lang": "点击打捞，即可消耗茸毛特供罐在好梦井中捕捞不休荒原的<#FF906A>神秘馈赠</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_2_txt_1",
+    "lang": "全服玩家的好梦井馈赠将在<#FF906A>同一时间</color>刷新"
+  },
+  {
+    "id": "p_v3a1_fish_help_2_txt_2",
+    "lang": "可以拜访其他友人的好梦井以获取和自己的好梦井<#FF906A>不同类型的馈赠</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_2_txt_3",
+    "lang": "在友人的好梦井打捞也会给予友人<#FF906A>额外的分享奖励</color>，请多多参与"
+  },
+  {
+    "id": "p_v3a1_fish_help_3_txt_1",
+    "lang": "好梦井中的打捞到的馈赠，可以在茸毛集换所兑换为<#FF906A>【空白创意】</color>和<#FF906A>【多彩灵感】</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_3_txt_2",
+    "lang": "<#FF906A>【空白创意】</color>可以在消耗品中查看和使用，使用后解锁一个全新的<#FF906A>【构想色彩】</color>，用于改造不休荒原中的孤屿"
+  },
+  {
+    "id": "p_v3a1_fish_help_3_txt_3",
+    "lang": "<#FF906A>【多彩灵感】</color>可以在荒原改造中使用，每改造一个孤屿都需要消耗一个<#FF906A>【多彩灵感】</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_4_txt_1",
+    "lang": "在不休荒原中，可以将孤屿用<#FF906A>【构想色彩】</color>进行改造，每块孤屿的每次改造需要消耗一个<#FF906A>【多彩灵感】</color>"
+  },
+  {
+    "id": "p_v3a1_fish_help_4_txt_2",
+    "lang": "在茸毛集换所中获取<#FF906A>【空白构想】</color>\n可以解锁更多的<#FF906A>【构想色彩】</color>以供改造"
+  },
+  {
+    "id": "p_v3a1_fish_help_4_txt_3",
+    "lang": "可以通过<#FF906A>单选</color>、<#FF906A>相邻同风格</color>、<#FF906A>全选</color>来快速选中想要改造的孤屿"
+  },
+  {
+    "id": "p_survivalrewardselectview_txt_title",
+    "lang": "选择战利品"
+  },
+  {
+    "id": "p_survivalrewardselectview_txt_score",
+    "lang": "剩余分数"
+  },
+  {
+    "id": "p_survivalceremonyopeningview_txt2",
+    "lang": "\n选择<#C16614>漫游行装</color>或<#C16614>漫游助理</color>参与演习。 (剩余点数会转换成研究资料)"
+  },
+  {
+    "id": "p_survivalreputationselectview_txt_tips",
+    "lang": "提升阵营转译等级可以获得协助"
+  },
+  {
+    "id": "p_survivalshelterrewardview_txt_rewardtips",
+    "lang": "全新叩门余音「拉普拉斯式问候」！"
+  },
+  {
+    "id": "p_survivalmapbaginfoview_txt_value",
+    "lang": "高价值"
+  },
+  {
+    "id": "p_v3a1_storeblockpackageview_name",
+    "lang": "「零点月台」"
+  },
+  {
+    "id": "p_activity_giftbuypanelview_txt_level",
+    "lang": "玩家等级达到："
+  },
+  {
+    "id": "p_roomfishview_txt_visit",
+    "lang": "拜访中"
   }
 ]

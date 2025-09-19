@@ -3,7 +3,7 @@
 module("modules.logic.handbook.view.HandbookSkinView", package.seeall)
 
 local var_0_1 = class("HandbookSkinView", BaseView)
-local var_0_2 = 150
+local var_0_2 = 120
 local var_0_3 = 170
 local var_0_4 = 5
 local var_0_5 = "up_start"
@@ -57,6 +57,12 @@ function var_0_1.removeEvents(arg_3_0)
 	arg_3_0._scroll:RemoveDragBeginListener()
 	arg_3_0._scroll:RemoveDragEndListener()
 	arg_3_0._scroll:RemoveDragListener()
+	arg_3_0.dropClick:RemoveClickListener()
+	arg_3_0._dropFilter:RemoveOnValueChanged()
+
+	if arg_3_0.dropExtend then
+		arg_3_0.dropExtend:dispose()
+	end
 end
 
 function var_0_1._onScrollChange(arg_4_0, arg_4_1)
@@ -64,11 +70,16 @@ function var_0_1._onScrollChange(arg_4_0, arg_4_1)
 end
 
 function var_0_1._onScrollDragBegin(arg_5_0, arg_5_1, arg_5_2)
-	arg_5_0.scrollStartPos = arg_5_2.position
 	arg_5_0.scrollDragPos = arg_5_2.position
+	arg_5_0._scrollDragOffsetX = 0
+	arg_5_0._scrollDragOffsetY = 0
 end
 
 function var_0_1._onScrollDragging(arg_6_0, arg_6_1, arg_6_2)
+	if not arg_6_0.scrollDragPos then
+		arg_6_0.scrollDragPos = arg_6_2.position
+	end
+
 	local var_6_0 = arg_6_2.position - arg_6_0.scrollDragPos
 
 	arg_6_0.scrollDragPos = arg_6_2.position
@@ -77,26 +88,18 @@ function var_0_1._onScrollDragging(arg_6_0, arg_6_1, arg_6_2)
 
 	if HandbookEnum.SkinSuitId2SceneType[var_6_1] == HandbookEnum.SkinSuitSceneType.Tarot then
 		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, var_6_0.x)
+	else
+		arg_6_0._scrollDragOffsetX = arg_6_0._scrollDragOffsetX + var_6_0.x
+		arg_6_0._scrollDragOffsetY = arg_6_0._scrollDragOffsetY + var_6_0.y
+
+		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, -var_6_0.x, -var_6_0.y)
 	end
 end
 
 function var_0_1._onScrollDragEnd(arg_7_0, arg_7_1, arg_7_2)
-	local var_7_0 = arg_7_2.position - arg_7_0.scrollStartPos
-	local var_7_1 = arg_7_0._skinSuitFloorCfgList[arg_7_0._curSelectedIdx].id
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideEnd)
 
-	if HandbookEnum.SkinSuitId2SceneType[var_7_1] == HandbookEnum.SkinSuitSceneType.Tarot then
-		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideEnd)
-	else
-		local var_7_2 = Mathf.Abs(var_7_0.y) - var_0_2 >= 0
-
-		if var_7_0.y > 0 and var_7_2 then
-			arg_7_0:slideToPre()
-		elseif var_7_0.y < 0 and var_7_2 then
-			arg_7_0:slideToNext()
-		end
-
-		arg_7_0.scrollStartPos = nil
-	end
+	arg_7_0._slideToOtherSuit = false
 end
 
 function var_0_1.slideToPre(arg_8_0)
@@ -136,6 +139,8 @@ function var_0_1.onOpen(arg_11_0)
 
 	arg_11_0._textPlayerName.text = var_11_2
 	arg_11_0._textName.text = ""
+
+	arg_11_0:updateFilterDrop()
 end
 
 function var_0_1.onOpenFinish(arg_12_0)
@@ -257,6 +262,7 @@ function var_0_1.onClickFloorAniDone(arg_19_0)
 	HandbookController.instance:statSkinTab(var_19_0 and var_19_0.id or arg_19_0._curSelectedIdx)
 	arg_19_0:_refreshDesc()
 	TaskDispatcher.runDelay(arg_19_0.onSwitchFloorDone, arg_19_0, 0.1)
+	arg_19_0:updateFilterDrop()
 end
 
 function var_0_1.onSwitchFloorDone(arg_20_0)
@@ -272,7 +278,7 @@ function var_0_1._refresPoint(arg_21_0, arg_21_1, arg_21_2)
 
 	for iter_21_0 = #arg_21_0._pointItemTbList + 1, arg_21_2 do
 		local var_21_0 = gohelper.cloneInPlace(arg_21_0._gopointItem)
-		local var_21_1 = arg_21_0:_createPointTB(var_21_0)
+		local var_21_1 = arg_21_0:_createPointTB(var_21_0, iter_21_0)
 
 		table.insert(arg_21_0._pointItemTbList, var_21_1)
 	end
@@ -283,34 +289,101 @@ function var_0_1._refresPoint(arg_21_0, arg_21_1, arg_21_2)
 		gohelper.setActive(var_21_2.golight, iter_21_1 == arg_21_1)
 		gohelper.setActive(var_21_2.go, iter_21_1 <= arg_21_2 and arg_21_2 > 1)
 	end
+
+	if arg_21_0._dropFilter then
+		arg_21_0._dropFilter:SetValue(#arg_21_0._suitCfgList - arg_21_1)
+	end
 end
 
-function var_0_1._onEnterTarotMode(arg_22_0)
-	arg_22_0._tarotMode = true
+function var_0_1._createPointTB(arg_22_0, arg_22_1, arg_22_2)
+	local var_22_0 = arg_22_0:getUserDataTb_()
 
-	arg_22_0._viewAnimatorPlayer:Play(var_0_0.Close)
+	var_22_0.go = arg_22_1
+	var_22_0.golight = gohelper.findChild(arg_22_1, "light")
+
+	return var_22_0
 end
 
-function var_0_1._onExitTarotMode(arg_23_0)
-	arg_23_0._tarotMode = false
+function var_0_1._clickToSuit(arg_23_0, arg_23_1)
+	arg_23_1 = arg_23_1 and arg_23_1 or 1
 
-	arg_23_0._viewAnimatorPlayer:Play(var_0_0.Back)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, arg_23_1)
 end
 
-function var_0_1._createPointTB(arg_24_0, arg_24_1)
-	local var_24_0 = arg_24_0:getUserDataTb_()
+function var_0_1._onEnterTarotMode(arg_24_0)
+	arg_24_0._tarotMode = true
 
-	var_24_0.go = arg_24_1
-	var_24_0.golight = gohelper.findChild(arg_24_1, "light")
-
-	return var_24_0
+	arg_24_0._viewAnimatorPlayer:Play(var_0_0.Close)
 end
 
-function var_0_1.onClose(arg_25_0)
+function var_0_1._onExitTarotMode(arg_25_0)
+	arg_25_0._tarotMode = false
+
+	arg_25_0._viewAnimatorPlayer:Play(var_0_0.Back)
+end
+
+function var_0_1.updateFilterDrop(arg_26_0)
+	if not arg_26_0._dropFilter then
+		arg_26_0._dropFilter = gohelper.findChildDropdown(arg_26_0.viewGO, "Left/#drop_filter")
+		arg_26_0._goDrop = arg_26_0._dropFilter.gameObject
+		arg_26_0.dropArrowTr = gohelper.findChildComponent(arg_26_0._goDrop, "Arrow", gohelper.Type_Transform)
+		arg_26_0.dropClick = gohelper.getClick(arg_26_0._goDrop)
+		arg_26_0.dropExtend = DropDownExtend.Get(arg_26_0._goDrop)
+
+		arg_26_0.dropExtend:init(arg_26_0.onDropShow, arg_26_0.onDropHide, arg_26_0)
+		arg_26_0._dropFilter:AddOnValueChanged(arg_26_0.onDropValueChanged, arg_26_0)
+		arg_26_0.dropClick:AddClickListener(function()
+			AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_click)
+		end, arg_26_0)
+	end
+
+	arg_26_0._curskinSuitGroupCfg = arg_26_0._skinSuitFloorCfgList[arg_26_0._curSelectedIdx]
+	arg_26_0._curSuitGroupId = arg_26_0._curskinSuitGroupCfg.id
+	arg_26_0._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(arg_26_0._curskinSuitGroupCfg.id)
+
+	table.sort(arg_26_0._suitCfgList, function(arg_28_0, arg_28_1)
+		if arg_28_0.show == 1 and arg_28_1.show == 0 then
+			return false
+		elseif arg_28_0.show == 0 and arg_28_1.show == 1 then
+			return true
+		else
+			return arg_28_0.id < arg_28_1.id
+		end
+	end)
+	gohelper.setActive(arg_26_0._goDrop, #arg_26_0._suitCfgList > 1)
+
+	local var_26_0 = {}
+
+	for iter_26_0, iter_26_1 in ipairs(arg_26_0._suitCfgList) do
+		local var_26_1 = iter_26_1.show == 1 and arg_26_0._suitCfgList[iter_26_0].name or luaLang("skinhandbook_lock_suit")
+
+		table.insert(var_26_0, var_26_1)
+	end
+
+	arg_26_0._dropFilter:ClearOptions()
+	arg_26_0._dropFilter:AddOptions(var_26_0)
+	arg_26_0._dropFilter:SetValue(#arg_26_0._suitCfgList - 1)
+end
+
+function var_0_1.onDropHide(arg_29_0)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookDropListOpen, false)
+end
+
+function var_0_1.onDropShow(arg_30_0)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookDropListOpen, true)
+end
+
+function var_0_1.onDropValueChanged(arg_31_0, arg_31_1)
+	arg_31_1 = #arg_31_0._suitCfgList - arg_31_1
+
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, arg_31_1)
+end
+
+function var_0_1.onClose(arg_32_0)
 	return
 end
 
-function var_0_1.onDestroyView(arg_26_0)
+function var_0_1.onDestroyView(arg_33_0)
 	return
 end
 

@@ -74,13 +74,24 @@ function var_0_0.getBlockLandPath(arg_5_0, arg_5_1)
 			var_0_0._ReplaceBlockLandDict[iter_5_1] = string.format("scenes/m_s07_xiaowu/prefab/ground/floor/%sb.prefab", var_5_0)
 		end
 
+		local var_5_2 = RoomConfig.instance:getBlockColorReformList()
+
+		for iter_5_2, iter_5_3 in ipairs(var_5_2) do
+			if not var_0_0._DefaultBlockLandDict[iter_5_3] or not var_0_0._ReplaceBlockLandDict[iter_5_3] then
+				local var_5_3 = iter_5_3 + 2
+
+				var_0_0._DefaultBlockLandDict[iter_5_3] = string.format("scenes/m_s07_xiaowu/prefab/ground/floor/%s.prefab", var_5_3)
+				var_0_0._ReplaceBlockLandDict[iter_5_3] = string.format("scenes/m_s07_xiaowu/prefab/ground/floor/%sb.prefab", var_5_3)
+			end
+		end
+
 		var_0_0._DefaultBlockLandDict[0] = RoomScenePreloader.DefaultLand
 		var_0_0._ReplaceBlockLandDict[0] = RoomScenePreloader.ReplaceLand
 	end
 
-	local var_5_2 = arg_5_1 and var_0_0._ReplaceBlockLandDict or var_0_0._DefaultBlockLandDict
+	local var_5_4 = arg_5_1 and var_0_0._ReplaceBlockLandDict or var_0_0._DefaultBlockLandDict
 
-	return var_5_2[arg_5_0] or var_5_2[0], var_5_2[arg_5_0] or var_5_2[0]
+	return var_5_4[arg_5_0] or var_5_4[0], var_5_4[arg_5_0] or var_5_4[0]
 end
 
 var_0_0._TransportPathDict = {}

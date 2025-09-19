@@ -622,6 +622,37 @@ function var_0_0.getAllRedDotInfo(arg_36_0)
 		end
 	end
 
+	local var_36_6 = StoreClothesGoodsItemListModel.instance:getList()
+
+	if var_36_6 then
+		arg_36_0._skinGoodsId2DotInfoDict = arg_36_0._skinGoodsId2DotInfoDict or {}
+
+		for iter_36_10, iter_36_11 in ipairs(var_36_6) do
+			local var_36_7 = iter_36_11.goodsId
+			local var_36_8 = arg_36_0._skinGoodsId2DotInfoDict[var_36_7]
+
+			if not var_36_8 then
+				var_36_8 = RedDotInfoMo.New()
+				arg_36_0._skinGoodsId2DotInfoDict[var_36_7] = var_36_8
+
+				var_36_8:init({
+					value = 0,
+					time = 0,
+					ext = "",
+					id = var_36_7
+				})
+			end
+
+			var_36_8.value = 0
+
+			if iter_36_11:checkShowNewRedDot() then
+				var_36_8.value = 1
+
+				table.insert(var_36_4, var_36_8)
+			end
+		end
+	end
+
 	return var_36_4
 end
 
@@ -679,7 +710,10 @@ end
 
 var_0_0.ignoreStoreTab = {
 	StoreEnum.BossRushStore,
-	StoreEnum.TowerStore
+	StoreEnum.TowerStore,
+	{
+		StoreEnum.StoreId.RoomFishingStore
+	}
 }
 
 function var_0_0.checkContainIgnoreStoreTab(arg_40_0, arg_40_1)
@@ -1069,50 +1103,54 @@ function var_0_0.isSkinGoodsCanRepeatBuy(arg_61_0, arg_61_1, arg_61_2)
 end
 
 function var_0_0.isSkinCanShowMessageBox(arg_62_0, arg_62_1)
-	if not arg_62_1 then
-		return
-	end
+	if arg_62_0:isSkinHasStoreId(arg_62_1) then
+		local var_62_0 = PlayerPrefsKey.SkinCanShowMessageBox
+		local var_62_1 = GameUtil.playerPrefsGetStringByUserId(var_62_0, "")
+		local var_62_2 = string.splitToNumber(var_62_1, "#")
 
-	local var_62_0 = lua_skin.configDict[arg_62_1]
-
-	if not var_62_0 then
-		return
-	end
-
-	local var_62_1 = ServerTime.now()
-
-	if not string.nilorempty(var_62_0.repeatBuyTime) and var_62_1 > TimeUtil.stringToTimestamp(var_62_0.repeatBuyTime) then
-		return
-	end
-
-	local var_62_2 = var_62_0.skinStoreId
-
-	if var_62_2 == 0 then
-		return
-	end
-
-	local var_62_3 = arg_62_0:getGoodsMO(var_62_2)
-
-	if not var_62_3 then
-		return
-	end
-
-	local var_62_4 = var_62_3.config
-	local var_62_5 = string.nilorempty(var_62_4.onlineTime) and var_62_1 or TimeUtil.stringToTimestamp(var_62_4.onlineTime) - ServerTime.clientToServerOffset()
-	local var_62_6 = string.nilorempty(var_62_4.offlineTime) and var_62_1 or TimeUtil.stringToTimestamp(var_62_4.offlineTime) - ServerTime.clientToServerOffset()
-
-	if var_62_4.isOnline and var_62_5 <= var_62_1 and var_62_1 <= var_62_6 and not var_62_3:isSoldOut() then
-		local var_62_7 = PlayerPrefsKey.SkinCanShowMessageBox
-		local var_62_8 = GameUtil.playerPrefsGetStringByUserId(var_62_7, "")
-		local var_62_9 = string.splitToNumber(var_62_8, "#")
-
-		if not (tabletool.indexOf(var_62_9, arg_62_1) ~= nil) then
-			table.insert(var_62_9, arg_62_1)
-			GameUtil.playerPrefsSetStringByUserId(var_62_7, table.concat(var_62_9, "#"))
+		if not (tabletool.indexOf(var_62_2, arg_62_1) ~= nil) then
+			table.insert(var_62_2, arg_62_1)
+			GameUtil.playerPrefsSetStringByUserId(var_62_0, table.concat(var_62_2, "#"))
 
 			return true
 		end
 	end
+end
+
+function var_0_0.isSkinHasStoreId(arg_63_0, arg_63_1)
+	if not arg_63_1 then
+		return
+	end
+
+	local var_63_0 = lua_skin.configDict[arg_63_1]
+
+	if not var_63_0 then
+		return
+	end
+
+	local var_63_1 = ServerTime.now()
+
+	if not string.nilorempty(var_63_0.repeatBuyTime) and var_63_1 > TimeUtil.stringToTimestamp(var_63_0.repeatBuyTime) then
+		return
+	end
+
+	local var_63_2 = var_63_0.skinStoreId
+
+	if var_63_2 == 0 then
+		return
+	end
+
+	local var_63_3 = arg_63_0:getGoodsMO(var_63_2)
+
+	if not var_63_3 then
+		return
+	end
+
+	local var_63_4 = var_63_3.config
+	local var_63_5 = string.nilorempty(var_63_4.onlineTime) and var_63_1 or TimeUtil.stringToTimestamp(var_63_4.onlineTime) - ServerTime.clientToServerOffset()
+	local var_63_6 = string.nilorempty(var_63_4.offlineTime) and var_63_1 or TimeUtil.stringToTimestamp(var_63_4.offlineTime) - ServerTime.clientToServerOffset()
+
+	return var_63_4.isOnline and var_63_5 <= var_63_1 and var_63_1 <= var_63_6 and not var_63_3:isSoldOut(), var_63_2
 end
 
 var_0_0.instance = var_0_0.New()

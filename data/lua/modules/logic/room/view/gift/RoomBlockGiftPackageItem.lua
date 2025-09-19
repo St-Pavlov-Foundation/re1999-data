@@ -93,7 +93,7 @@ function var_0_0._btnitemOnClick(arg_8_0)
 end
 
 function var_0_0.onSelect(arg_9_0)
-	arg_9_0._isSelect = RoomBlockBuildingGiftModel.instance:isSelect(arg_9_0._showPackageMO)
+	arg_9_0._isSelect = arg_9_0._showPackageMO.isSelect
 
 	gohelper.setActive(arg_9_0._goselect, arg_9_0._isSelect)
 end

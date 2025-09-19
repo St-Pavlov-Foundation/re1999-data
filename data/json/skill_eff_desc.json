@@ -12861,7 +12861,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "持有时无法获得至终的仪式，在咒语区时每行动1次给予所有者5%最大生命伤害"
+    "desc": "持有时无法获得至终的仪式，在咒语区时每行动1次使所有者失去10%当前生命"
   },
   {
     "id": 925010121,
@@ -14269,7 +14269,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，涌动电场根据注入【电能】层数升级：注入【电能】值大于等于50时，术阵升级成【涌动电场lv2】，注入【电能】值大于等于120时，术阵升级成【涌动电场lv3】（当涌动电场消失时，注入【电能】值的将一同清空）"
+    "desc": "回合开始时，涌动电场根据注入【电能】层数升级：注入【电能】值大于等于50时，术阵升级成【涌动电场lv2】，注入【电能】值大于等于120时，术阵升级成【涌动电场lv3】（当涌动电场消失时，注入的【电能】值将一同清空）"
   },
   {
     "id": 227007,
@@ -15197,7 +15197,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "①大幅度提升【电能痕契<id:0>】的效果\n②中等幅度提升【额外行动痕契<id:0>】的效果\n③小幅度提升【薪血痕契<id:0>】【仪式痕契<id:0>】的效果"
+    "desc": "最多叠加40个\n①大幅度提升【电能痕契<id:0>】的效果\n②中等幅度提升【额外行动痕契<id:0>】【状态异常痕契<id:0>】的效果\n③小幅度提升【薪血痕契<id:0>】【仪式痕契<id:0>】的效果"
   },
   {
     "id": 72800017,
@@ -15205,7 +15205,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "①极大幅度提升【薪血痕契<id:0>】的效果\n②小幅度提升【电能痕契<id:0>】【仪式痕契<id:0>】【启示痕契<id:0>】【额外行动痕契<id:0>】的效果"
+    "desc": "最多叠加40个\n①极大幅度提升【薪血痕契<id:0>】的效果\n②小幅度提升【电能痕契<id:0>】【仪式痕契<id:0>】【启示痕契<id:0>】【额外行动痕契<id:0>】的效果"
   },
   {
     "id": 72800018,
@@ -15213,7 +15213,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "①大幅度提升【启示痕契<id:0>】【仪式痕契<id:0>】的效果\n②小幅度提升【薪血痕契<id:0>】的效果"
+    "desc": "最多叠加40个\n①大幅度提升【启示痕契<id:0>】【仪式痕契<id:0>】【状态异常痕契<id:0>】的效果\n②小幅度提升【薪血痕契<id:0>】的效果"
   },
   {
     "id": 72800019,
@@ -17237,7 +17237,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "受到自身最大生命10%的本源创伤，若未携带【掩护】，则额外受到自身最大生命10%的本源创伤"
+    "desc": "造成500%现实创伤，受到自身最大生命10%的本源创伤，若未携带【掩护】，则额外受到自身最大生命10%的本源创伤"
   },
   {
     "id": 530000127,
@@ -18630,5 +18630,485 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "受到【刺杀】攻击时，受到最终伤害提升50%\n无目击值或者低目击值可以被任意攻击触发【刺杀】；\n中目击值或者高目击值受到伤害减少30%；\n目击值提升至高时，将获得其最大生命*30%的【护盾】，【护盾】被击破后目击值清零"
+  },
+  {
+    "id": 107311001,
+    "name": "痛楚激涌<id:0>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "持有者主动使用咒语攻击后，立即结算敌方全体的【燃烧】【污染】【中毒】【流血】【伤口】，造成其基础本源创伤*70%的本源创伤，持续3回合。（此结算不会减少剩余回合）"
+  },
+  {
+    "id": 107311002,
+    "name": "悲鸣终响<id:0>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "持有者攻击后，立即结算敌方全体的【燃烧】【污染】【中毒】【流血】【伤口】，造成其基础本源创伤*70%的本源创伤，持续3回合。（此结算不会减少剩余回合）"
+  },
+  {
+    "id": 107311003,
+    "name": "状态异常痕契<id:0>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "布设中归属【状态异常<id:0>】的盒中之物数量最多时，进入战斗将激活该痕契，该痕契受【混沌<id:1>】的影响大"
+  },
+  {
+    "id": 107311004,
+    "name": "痛楚激涌<id:1>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "持有者主动使用咒语攻击后，立即结算敌方全体的【燃烧】【污染】【中毒】【流血】【伤口】，造成其基础本源创伤*120%的本源创伤，持续3回合。（此结算不会减少剩余回合）"
+  },
+  {
+    "id": 107311005,
+    "name": "悲鸣终响<id:1>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "持有者攻击后，立即结算敌方全体的【燃烧】【污染】【中毒】【流血】【伤口】，造成其基础本源创伤*120%的本源创伤，持续3回合。（此结算不会减少剩余回合）"
+  },
+  {
+    "id": 107311006,
+    "name": "状态异常集合<id:522000112>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "共有6种效果：【燃烧】【污染】【中毒】【流血】【伤口】"
+  },
+  {
+    "id": 107311007,
+    "name": "鲁莽复仇",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击+2%，穿透率+2%，创伤加成+10%，创伤减免-10%"
+  },
+  {
+    "id": 107311008,
+    "name": "状态异常<id:0>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 107311009,
+    "name": "黑羽卫士",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击+15%，现实防御+30%，吸血率+30%，不会受到【控制】影响，嘲讽"
+  },
+  {
+    "id": 31250111,
+    "name": "影子玩伴<id:1>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时失去10%当前生命，将野树莓通过此效果失去生命的70%转化为【影子行头<id:1>】，影子行头上限为野树莓入场时最大生命的15%；\n野树莓退场时，【影子玩伴<id:1>】消失"
+  },
+  {
+    "id": 31250112,
+    "name": "影子玩伴<id:2>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时失去10%当前生命，将野树莓通过此效果失去生命的100%转化为【影子行头<id:1>】，影子行头上限为野树莓入场时最大生命的18%；\n野树莓退场时，【影子玩伴<id:2>】消失"
+  },
+  {
+    "id": 31250113,
+    "name": "影子玩伴<id:3>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时失去10%当前生命，将野树莓通过此效果失去生命的100%转化为【影子行头<id:2>】，影子行头上限为野树莓入场时最大生命的18%；\n野树莓退场时，【影子玩伴<id:3>】消失"
+  },
+  {
+    "id": 312501121,
+    "name": "影子行头<id:1>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每点【影子行头<id:1>】提升角色1点最大生命，每200/300点【影子行头<id:1>】提升角色1%暴击创伤/仪式威力"
+  },
+  {
+    "id": 312501122,
+    "name": "影子行头<id:2>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每点【影子行头<id:2>】提升角色1点最大生命，每100/200点【影子行头<id:2>】提升角色1%暴击创伤/仪式威力"
+  },
+  {
+    "id": 31250131,
+    "name": "影子盛宴<id:1>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "清空除目标外其余己方的【影子行头<id:1>】，使目标获得清空【影子行头<id:1>】之和的20%，该状态提供的额外【影子行头<id:1>】不影响目标自身的【影子行头<id:1>】获取且能够超过上限；\n该状态提供的额外【影子行头<id:1>】获得的暴击创伤/仪式威力收益为正常收益的80%；\n该状态结束时，额外【影子行头<id:1>】消失"
+  },
+  {
+    "id": 31250132,
+    "name": "影子盛宴<id:2>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "清空除目标外其余己方的【影子行头<id:1>】，使目标获得清空【影子行头<id:1>】之和的35%，该状态提供的额外【影子行头<id:1>】不影响目标自身的【影子行头<id:1>】获取且能够超过上限；\n该状态提供的额外【影子行头<id:1>】获得的暴击创伤/仪式威力收益为正常收益的100%；\n该状态结束时，额外【影子行头<id:1>】消失"
+  },
+  {
+    "id": 31250133,
+    "name": "影子盛宴<id:3>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "清空除目标外其余己方的【影子行头<id:2>】，使目标获得清空【影子行头<id:2>】之和的35%，该状态提供的额外【影子行头<id:2>】不影响目标自身的【影子行头<id:2>】获取且能够超过上限；\n该状态提供的额外【影子行头<id:2>】获得的暴击创伤/仪式威力收益为正常收益的100%；\n该状态结束时，额外【影子行头<id:2>】消失"
+  },
+  {
+    "id": 31250141,
+    "name": "野树莓一世的恩典",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "拥有者受到致命攻击时不会退场，并回复野树莓最大生命*30%的生命，生效后消失，不可叠加，不可驱散"
+  },
+  {
+    "id": 30070211,
+    "name": "美德",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，若层数大于等于2，未锈铠消耗2层立即释放至终的仪式"
+  },
+  {
+    "id": 109310005,
+    "name": "双向药剂<id:109310005>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击后消耗所有层数，每消耗1层则赋予目标1个【中毒】，回合结束时受到使用者攻击*30%的本源创伤，持续2回合，并赋予我方全体2回合【愈合】（可以叠加，最多叠加2层）"
+  },
+  {
+    "id": 109310103,
+    "name": "守卫·春",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力+50%"
+  },
+  {
+    "id": 109310104,
+    "name": "守卫·夏",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力+50%"
+  },
+  {
+    "id": 109310105,
+    "name": "守卫·秋",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+50%，暴击创伤+50%"
+  },
+  {
+    "id": 109310106,
+    "name": "守卫·冬",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御+80%，精神防御+80%"
+  },
+  {
+    "id": 109310101,
+    "name": "炮管所向<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时，受到【标定炮击<id:2>】攻击"
+  },
+  {
+    "id": 109310102,
+    "name": "标定炮击<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "造成500%精神创伤，附带目标最大生命20%的本源创伤"
+  },
+  {
+    "id": 231001,
+    "name": "复唱",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "正在积蓄能量"
+  },
+  {
+    "id": 231002,
+    "name": "火图腾<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，造成50%现实创伤，对敌方全体造成目标攻击*40%的本源创伤；命中后赋予敌方全体5层【燃烧】"
+  },
+  {
+    "id": 231003,
+    "name": "压力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "怪物的压力槽"
+  },
+  {
+    "id": 231004,
+    "name": "心灵脱轨",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到非至终的仪式攻击后，自身激情-1"
+  },
+  {
+    "id": 231005,
+    "name": "狂热投射",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到至终的仪式攻击后，自身激情-3"
+  },
+  {
+    "id": 231006,
+    "name": "思维僵化",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免-7.5%，受到本源创伤+7.5%；回合结束时，若自身的【思维僵化】层数达到8层时，失去所有【思维僵化】层数，随机使1名敌方陷入【石化】状态1回合，触发2次，之后自身失去12%最大生命（最多叠加8层）"
+  },
+  {
+    "id": 231007,
+    "name": "过度幻觉",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终免伤降低50%（效果可叠加）"
+  },
+  {
+    "id": 231008,
+    "name": "死线",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束造成携带者当前生命*33%的本源创伤；成为治疗/增益/反制/吟诵咒语的目标时驱散1层此状态（效果至多可叠加4层，每层时间独立计算）"
+  },
+  {
+    "id": 231009,
+    "name": "八灵震慴·星",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到非至终的仪式攻击后，自身3回合内现实防御、精神防御提升5%，效果可叠加（不可驱散）"
+  },
+  {
+    "id": 231010,
+    "name": "八灵震慴·木",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "免疫中毒，燃烧，石化（不可驱散）"
+  },
+  {
+    "id": 231011,
+    "name": "八灵震慴·兽",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到至终的仪式攻击后，自身3回合内现实防御、精神防御提升10%，效果可叠加（不可驱散）"
+  },
+  {
+    "id": 231012,
+    "name": "除厄·壹<id:2301>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击时，对敌方反击1次咒语1"
+  },
+  {
+    "id": 231013,
+    "name": "疾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+1（效果可叠加，最多叠加4层）"
+  },
+  {
+    "id": 231014,
+    "name": "影",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+30%（效果可叠加，最多叠加4层）"
+  },
+  {
+    "id": 231015,
+    "name": "虎",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成+15%，回合开始时，回复5%已损失生命（效果可叠加，最多叠加4层）"
+  },
+  {
+    "id": 231016,
+    "name": "强梁既出<id:2301>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+50%；并会释放能够获得【疾】【影】【虎】的3种咒语"
+  },
+  {
+    "id": 231017,
+    "name": "守福于内",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法获得激情，濒死时回复50%最大生命"
+  },
+  {
+    "id": 231018,
+    "name": "回归的赐福<id:2301>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，不会受到伤害"
+  },
+  {
+    "id": 231019,
+    "name": "香甜蜜酒<id:2301>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": "小心火烛"
+  },
+  {
+    "id": 231020,
+    "name": "熊熊火光<id:2301>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "主动使用非至终的仪式咒语和每回合结束时受到1次灼烧，造成当前生命*15%的本源创伤"
+  },
+  {
+    "id": 231021,
+    "name": "隐隐雷鸣<id:2301>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "主动使用非3阶的普通咒语和每回合结束时受到1次雷击，造成当前生命*10%的本源创伤"
+  },
+  {
+    "id": 231022,
+    "name": "濒死体验",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": "积攒能量中"
+  },
+  {
+    "id": 231023,
+    "name": "欢愉漩涡",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击时，对敌方反击1次群体攻击，对敌方全体造成210%精神创伤，但使自身术法威力-10%，持续2回合（该效果可叠加）"
+  },
+  {
+    "id": 231024,
+    "name": "醉意昏沉<id:2301>",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，受到任意攻击后解除"
+  },
+  {
+    "id": 104310111,
+    "name": "挣扎的意志",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+15%"
+  },
+  {
+    "id": 104310112,
+    "name": "感染征兆",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每层攻击+5%，受创减免-10%；累计5层后转变为【溃亡时刻】"
+  },
+  {
+    "id": 104310113,
+    "name": "溃亡时刻",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "吸血率+50%，受创减免-50%，与【感染征兆】互斥"
+  },
+  {
+    "id": 104310114,
+    "name": "以血求生",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，赋予全体角色1层【感染征兆】"
+  },
+  {
+    "id": 104310115,
+    "name": "以血同谋",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，赋予全体角色2层【感染征兆】"
+  },
+  {
+    "id": 104310116,
+    "name": "真实证明",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成400%精神创伤；命中时驱散敌方全体所有【癔症】"
+  },
+  {
+    "id": 104310117,
+    "name": "论点阐述",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到所有伤害固定为1"
+  },
+  {
+    "id": 104310118,
+    "name": "强化掩护",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "获得时驱散携带的【暴露】，每层受创减免+80%，受击后扣除1层，最多可叠加3层"
+  },
+  {
+    "id": 106312013,
+    "name": "仪式辅导",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力+10%（效果可叠加，不可驱散）"
+  },
+  {
+    "id": 106315218,
+    "name": "庇护Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+5%（可以叠加，最多叠加20层，不可驱散）"
   }
 ]

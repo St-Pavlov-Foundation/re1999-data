@@ -235,7 +235,7 @@ function var_0_0._beforePlaySkill(arg_20_0, arg_20_1, arg_20_2, arg_20_3)
 
 	FightPlayCardModel.instance:playCard(arg_20_3.cardIndex)
 
-	if FightModel.instance:getCurStage() == FightEnum.Stage.Play then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		arg_20_0:refreshSkillText(arg_20_2, arg_20_1.id)
 		arg_20_0:_displayFlow(arg_20_1.id, arg_20_2, FightPlayCardModel.instance:getCurIndex())
 	end
@@ -293,7 +293,7 @@ function var_0_0.onASFDStart(arg_24_0, arg_24_1, arg_24_2, arg_24_3)
 
 	FightPlayCardModel.instance:playCard(arg_24_3.cardIndex)
 
-	if FightModel.instance:getCurStage() == FightEnum.Stage.Play then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		arg_24_0:refreshSkillText(arg_24_2, arg_24_1.id)
 		arg_24_0:_displayFlow(arg_24_1.id, arg_24_2, FightPlayCardModel.instance:getCurIndex())
 	end

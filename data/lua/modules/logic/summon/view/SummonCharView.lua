@@ -300,6 +300,7 @@ function var_0_0.startDraw(arg_20_0)
 
 	AudioMgr.instance:setSwitch(AudioMgr.instance:getIdFromString(AudioEnum.SwitchGroup.Summon), AudioMgr.instance:getIdFromString(AudioEnum.SwitchState.SummonAward))
 
+	arg_20_0.resultViewIsClose = false
 	arg_20_0.summonResult = SummonModel.instance:getSummonResult(true)
 	arg_20_0.summonResultCount = tabletool.len(arg_20_0.summonResult)
 
@@ -774,6 +775,10 @@ function var_0_0._summonEnd(arg_37_0)
 end
 
 function var_0_0._onCloseView(arg_38_0, arg_38_1)
+	if arg_38_1 == ViewName.SummonResultView then
+		arg_38_0.resultViewIsClose = true
+	end
+
 	if arg_38_1 == ViewName.CharacterGetView or arg_38_1 == ViewName.SummonGetLuckyBag or arg_38_1 == ViewName.LimitedRoleView then
 		arg_38_0:_refreshIcons()
 
@@ -784,7 +789,7 @@ function var_0_0._onCloseView(arg_38_0, arg_38_1)
 				SummonController.instance:nextSummonPopupParam()
 			end
 		end
-	elseif arg_38_1 == ViewName.CommonPropView and arg_38_0.summonResult and arg_38_0.summonResultCount > 1 then
+	elseif arg_38_1 == ViewName.CommonPropView and arg_38_0.summonResult and arg_38_0.summonResultCount > 1 and arg_38_0.resultViewIsClose then
 		arg_38_0:_summonEnd()
 	end
 end
@@ -823,7 +828,7 @@ function var_0_0._gc(arg_42_0)
 	arg_42_0._summonCount = (arg_42_0._summonCount or 0) + (arg_42_0.summonResult and arg_42_0.summonResultCount)
 
 	if arg_42_0._summonCount > 1 then
-		GameGCMgr.instance:dispatchEvent(GameGCEvent.FullGC, arg_42_0)
+		GameGCMgr.instance:dispatchEvent(GameGCEvent.DelayFullGC, 1, arg_42_0)
 
 		arg_42_0._summonCount = 0
 	end

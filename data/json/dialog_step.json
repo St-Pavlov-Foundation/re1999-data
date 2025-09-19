@@ -7279,5 +7279,482 @@
     "name": "",
     "avatar": "",
     "chessId": 0
+  },
+  {
+    "groupId": 49,
+    "id": 49001,
+    "type": 1,
+    "content": "那么，你从哪儿来？",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49002,
+    "type": 2,
+    "content": "这是要了解游击队新成员的基本信息？",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49003,
+    "type": 1,
+    "content": "只是确实到了该好奇的时候，毕竟你也加入游击队一段时间了。",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49004,
+    "type": 2,
+    "content": "我忘了，或者我根本不知道，我一直都在流浪。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49005,
+    "type": 2,
+    "content": "走着走着，一阵歌声传来，指引我来到了这里。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49006,
+    "type": 1,
+    "content": "我也不知道故乡在哪里，但我一直想要找到一个家……或者，创造一个。",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49007,
+    "type": 2,
+    "content": "游击队是你想要创造的这个家吗？",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49008,
+    "type": 1,
+    "content": "是的，游击队会像接纳你一样接纳所有希望有家可回的人。",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49009,
+    "type": 2,
+    "content": "我明白了。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49010,
+    "type": 1,
+    "content": "什么？",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49011,
+    "type": 2,
+    "content": "“联合与希望”，不就是解放阵线的理念么？",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49012,
+    "type": 2,
+    "content": "伊格丽卡，这会是我们的愿景。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49013,
+    "type": 2,
+    "content": "你让我加入了这个“家”，而这个家包容了我的一切。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49014,
+    "type": 1,
+    "content": "我们需要一起活下去。",
+    "name": "伊格丽卡",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 49,
+    "id": 49015,
+    "type": 2,
+    "content": "我们需要一起战斗下去。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 49,
+    "id": 49016,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 50,
+    "id": 50001,
+    "type": 2,
+    "content": "最近过得怎么样？",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50002,
+    "type": 1,
+    "content": "不好也不坏，我只是在游荡而已。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50003,
+    "type": 1,
+    "content": "解放阵线解散之后，我有了大把的时间游荡，但我也只能游荡。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50004,
+    "type": 2,
+    "content": "你需要动起来，你不是一个擅长休假的人——我们都不擅长。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50005,
+    "type": 1,
+    "content": "这是你邀请我来伊斯坦布尔的原因？",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50006,
+    "type": 2,
+    "content": "不算是。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50007,
+    "type": 1,
+    "content": "难民们……",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50008,
+    "type": 2,
+    "content": "是的。难民们来了，他们从不错过列车。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50009,
+    "type": 2,
+    "content": "他们想搭上列车，而他们唯一能想到的办法就是像这样钻进车底、搭上横梁。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50010,
+    "type": 1,
+    "content": "我见过一个孩子，他是第一个不怕我的孩子。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50011,
+    "type": 1,
+    "content": "我们在火车站说了几句话，他说有钱的猪猡总能搭上车离去，还问了我为什么不走。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50012,
+    "type": 1,
+    "content": "他说他不是猪猡，所以他灵巧地钻进车底，和我挥手告别。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50013,
+    "type": 1,
+    "content": "告别时，他对我说：“再见，游击队员。”",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50014,
+    "type": 2,
+    "content": "他知道你来自哪里。",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50015,
+    "type": 1,
+    "content": "但我却差点忘了。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50016,
+    "type": 1,
+    "content": "……我有了一个想法。",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50017,
+    "type": 2,
+    "content": "什么想法？",
+    "name": "鲍里斯",
+    "avatar": "637501",
+    "chessId": 2
+  },
+  {
+    "groupId": 50,
+    "id": 50018,
+    "type": 1,
+    "content": "……",
+    "name": "告死鸟",
+    "avatar": "313201",
+    "chessId": 1
+  },
+  {
+    "groupId": 50,
+    "id": 50019,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 51,
+    "id": 51001,
+    "type": 1,
+    "content": "我、我有些不安……",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51002,
+    "type": 2,
+    "content": "实话说，我也没好到哪里去。",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51003,
+    "type": 1,
+    "content": "我们俩还要在这个临时拘留室门口守多久？",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51004,
+    "type": 2,
+    "content": "鬼知道，我又没和长官搭过话。",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51005,
+    "type": 1,
+    "content": "隔离指令下达之后，一直有人被送进拘留室，他们的哀嚎根本没有停过……",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51006,
+    "type": 2,
+    "content": "我知道，你跟我抱怨也没用，他们叫得我脑子疼……但是我们能有什么办法？",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51007,
+    "type": 1,
+    "content": "我……我的天呐！我好像听到了卢卡的声音！他也在里面？",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51008,
+    "type": 2,
+    "content": "……鞋底快磨烂了的那小子？",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51009,
+    "type": 2,
+    "content": "好像真是他的声音，为什么自己人也是受审的对象？！",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51010,
+    "type": 1,
+    "content": "到底发生了什么？为什么要这么做？天呐……这种情况经常发生吗？",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51011,
+    "type": 1,
+    "content": "我以前从、从来没有听说过这种情况。",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51012,
+    "type": 2,
+    "content": "我其实就比你早来半年，只是个和你一样的新兵蛋子。",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51013,
+    "type": 2,
+    "content": "……但这种情况最近一两个月才比较明显。",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51014,
+    "type": 1,
+    "content": "我不明白，到底为什么？到底在做什么？他们一直在喊……这得是什么样的酷刑啊。",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51015,
+    "type": 2,
+    "content": "咱们还是少管……嘘，你听，歌声？",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51016,
+    "type": 1,
+    "content": "好像真的有人在唱歌！",
+    "name": "士兵Ⅰ",
+    "avatar": "639501",
+    "chessId": 1
+  },
+  {
+    "groupId": 51,
+    "id": 51017,
+    "type": 2,
+    "content": "我怎么有点头晕……",
+    "name": "士兵Ⅱ",
+    "avatar": "639502",
+    "chessId": 2
+  },
+  {
+    "groupId": 51,
+    "id": 51018,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
   }
 ]

@@ -700,5 +700,17 @@
     "order": 0,
     "equipId": 1555,
     "desc": "温妮弗雷德"
+  },
+  {
+    "id": 5056,
+    "order": 0,
+    "equipId": 1556,
+    "desc": "野树莓"
+  },
+  {
+    "id": 4043,
+    "order": 0,
+    "equipId": 1443,
+    "desc": "讣告人"
   }
 ]

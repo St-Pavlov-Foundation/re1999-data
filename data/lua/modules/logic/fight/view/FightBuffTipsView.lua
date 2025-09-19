@@ -201,69 +201,70 @@ function var_0_0.updateBuffDesc(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4
 			local var_10_22 = gohelper.findChild(var_10_14, "txt_desc/image_line")
 			local var_10_23 = gohelper.findChild(var_10_14, "title/txt_name/go_tag")
 			local var_10_24 = gohelper.findChildText(var_10_14, "title/txt_name/go_tag/bg/txt_tagname")
+			local var_10_25 = var_10_12.name
 
-			if var_10_12 then
-				var_10_24.text = var_10_12.name
+			if not string.nilorempty(var_10_25) then
+				var_10_24.text = var_10_25
 				var_10_18 = var_10_18 + var_10_24.preferredWidth
 			end
 
-			gohelper.setActive(var_10_23, var_10_12)
+			gohelper.setActive(var_10_23, not string.nilorempty(var_10_25))
 			gohelper.setActive(var_10_22, var_10_4 ~= var_10_3)
 
 			arg_10_4._scrollbuff.verticalNormalizedPosition = 1
 
-			local var_10_25 = var_10_16.transform
-			local var_10_26 = gohelper.findChild(var_10_14, "title").transform
-			local var_10_27 = var_10_14.transform
+			local var_10_26 = var_10_16.transform
+			local var_10_27 = gohelper.findChild(var_10_14, "title").transform
+			local var_10_28 = var_10_14.transform
 
 			gohelper.setActive(var_10_14, true)
 			gohelper.setActive(var_10_22, var_10_4 ~= var_10_3)
 
-			var_10_8[#var_10_8 + 1] = var_10_25
 			var_10_8[#var_10_8 + 1] = var_10_26
 			var_10_8[#var_10_8 + 1] = var_10_27
+			var_10_8[#var_10_8 + 1] = var_10_28
 			var_10_8[#var_10_8 + 1] = var_10_16
 			var_10_8[#var_10_8 + 1] = var_10_9
 
 			var_0_0.showBuffTime(var_10_15, var_10_9, var_10_10, arg_10_1)
 
-			local var_10_28 = var_10_15.preferredWidth
+			local var_10_29 = var_10_15.preferredWidth
 
-			if var_10_28 > var_0_4 then
-				var_10_18 = var_10_18 + math.max(0, var_10_28 - var_0_4)
+			if var_10_29 > var_0_4 then
+				var_10_18 = var_10_18 + math.max(0, var_10_29 - var_0_4)
 			end
 
 			if var_10_18 > var_0_3 then
-				local var_10_29 = var_10_18 - var_0_3
-				local var_10_30 = var_0_2 + var_10_29
+				local var_10_30 = var_10_18 - var_0_3
+				local var_10_31 = var_0_2 + var_10_30
 
-				var_10_6 = math.max(var_10_6, var_10_30)
-				var_10_7 = math.max(var_10_7, var_10_30)
+				var_10_6 = math.max(var_10_6, var_10_31)
+				var_10_7 = math.max(var_10_7, var_10_31)
 			end
 		end
 	end
 
 	if #var_10_8 > 0 then
 		for iter_10_3 = 0, #var_10_8 - 1, 5 do
-			local var_10_31 = var_10_8[iter_10_3 + 1]
-			local var_10_32 = var_10_8[iter_10_3 + 2]
-			local var_10_33 = var_10_8[iter_10_3 + 3]
-			local var_10_34 = var_10_8[iter_10_3 + 4]
-			local var_10_35 = var_10_8[iter_10_3 + 5]
-			local var_10_36 = var_10_35.buffId
-			local var_10_37 = lua_skill_buff.configDict[var_10_36]
+			local var_10_32 = var_10_8[iter_10_3 + 1]
+			local var_10_33 = var_10_8[iter_10_3 + 2]
+			local var_10_34 = var_10_8[iter_10_3 + 3]
+			local var_10_35 = var_10_8[iter_10_3 + 4]
+			local var_10_36 = var_10_8[iter_10_3 + 5]
+			local var_10_37 = var_10_36.buffId
+			local var_10_38 = lua_skill_buff.configDict[var_10_37]
 
-			recthelper.setWidth(var_10_32, var_10_7 - 10)
-			recthelper.setWidth(var_10_31, var_10_7 - 46)
-			ZProj.UGUIHelper.RebuildLayout(var_10_33)
-			recthelper.setWidth(var_10_33, var_10_7)
+			recthelper.setWidth(var_10_33, var_10_7 - 10)
+			recthelper.setWidth(var_10_32, var_10_7 - 46)
+			ZProj.UGUIHelper.RebuildLayout(var_10_34)
+			recthelper.setWidth(var_10_34, var_10_7)
 
-			var_10_34.text = FightBuffGetDescHelper.getBuffDesc(var_10_35)
-			var_10_34.text = var_10_34.text
+			var_10_35.text = FightBuffGetDescHelper.getBuffDesc(var_10_36)
+			var_10_35.text = var_10_35.text
 
-			local var_10_38 = var_10_34.preferredHeight + 52.1 + 10
+			local var_10_39 = var_10_35.preferredHeight + 52.1 + 10
 
-			recthelper.setHeight(var_10_33, var_10_38)
+			recthelper.setHeight(var_10_34, var_10_39)
 		end
 	end
 
@@ -271,13 +272,13 @@ function var_0_0.updateBuffDesc(arg_10_0, arg_10_1, arg_10_2, arg_10_3, arg_10_4
 		rawset(var_10_8, iter_10_4, nil)
 	end
 
-	local var_10_39
+	local var_10_40
 
 	if var_10_5 ~= -1 then
-		local var_10_40 = arg_10_2[var_10_5].go
-		local var_10_41 = gohelper.findChild(var_10_40, "txt_desc/image_line")
+		local var_10_41 = arg_10_2[var_10_5].go
+		local var_10_42 = gohelper.findChild(var_10_41, "txt_desc/image_line")
 
-		gohelper.setActive(var_10_41, false)
+		gohelper.setActive(var_10_42, false)
 	end
 
 	if arg_10_4 then

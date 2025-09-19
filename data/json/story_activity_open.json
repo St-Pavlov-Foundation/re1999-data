@@ -3582,5 +3582,301 @@
     "titleEn": "Ode to the Golden Apple",
     "labelRes": "10",
     "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 1,
+    "title": "乘车须知",
+    "titleEn": "Travel Notice",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 2,
+    "title": "羊肠线",
+    "titleEn": "Catgut",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 3,
+    "title": "用餐愉快",
+    "titleEn": "Bon Appétit",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 4,
+    "title": "雪夜快车",
+    "titleEn": "The Midnight Piercer",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 5,
+    "title": "四个半朋友",
+    "titleEn": "Four and a Half Friends",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 6,
+    "title": "野树莓的证词",
+    "titleEn": "The Suspect's Testimony",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 7,
+    "title": "多瑙黎明",
+    "titleEn": "The Danube Dawn",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 8,
+    "title": "铁道猫",
+    "titleEn": "The Railway Cat",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 9,
+    "title": "生人勿近",
+    "titleEn": "Do Not Enter",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 10,
+    "title": "墓园里",
+    "titleEn": "Among the Dead",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 11,
+    "title": "十三号车厢",
+    "titleEn": "Carriage No. 13",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 12,
+    "title": "凉水泉",
+    "titleEn": "Kreynero",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 13,
+    "title": "不归者",
+    "titleEn": "The Non-Returnees",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 14,
+    "title": "征服者爬虫",
+    "titleEn": "The Conqueror Worm",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 15,
+    "title": "云雀蛋糕",
+    "titleEn": "Lark Cake",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 16,
+    "title": "雪与惊魂夜",
+    "titleEn": "Winter Fright Night",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 17,
+    "title": "睦邻",
+    "titleEn": "Friends in Need",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 18,
+    "title": "吾血之血",
+    "titleEn": "Blood of My Blood",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 19,
+    "title": "“我们”",
+    "titleEn": "Here, Together",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 20,
+    "title": "长夜漫漫",
+    "titleEn": "Comes the Dawning Light",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 21,
+    "title": "阳光下的土地",
+    "titleEn": "A Land Under the Sun",
+    "labelRes": "21",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 22,
+    "title": "新人乘务员",
+    "titleEn": "Stewardess-in-Training",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 23,
+    "title": "豆子预言",
+    "titleEn": "Fate's Bitter Beans",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 24,
+    "title": "黑暗共舞",
+    "titleEn": "Dancing with Darkness",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 25,
+    "title": "影子剧场",
+    "titleEn": "Shadow Theater",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 26,
+    "title": "逝去，归来",
+    "titleEn": "What Was Lost Is Found",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 27,
+    "title": "燃烧的夜",
+    "titleEn": "The Night It Burned",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 28,
+    "title": "“复活”",
+    "titleEn": "\"Resurrection\"",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 29,
+    "title": "血红誓言",
+    "titleEn": "By Blood I Swear",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 30,
+    "title": "血与浮叶",
+    "titleEn": "A Leaf on Blood-Stained Water",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 31,
+    "title": "刺青手艺",
+    "titleEn": "The Sutures",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 32,
+    "title": "圣诞前夜",
+    "titleEn": "Christmas Eve",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 33,
+    "title": "那久违的",
+    "titleEn": "Square One",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 34,
+    "title": "反攻指令",
+    "titleEn": "Return to the Battlefield",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 35,
+    "title": "我们终将联合",
+    "titleEn": "Together, We Stand",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 36,
+    "title": "审判日",
+    "titleEn": "Thus the Decision Is Made",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 31,
+    "part": 37,
+    "title": "鱼肚白",
+    "titleEn": "A New Dawn",
+    "labelRes": "8",
+    "storyBg": ""
   }
 ]

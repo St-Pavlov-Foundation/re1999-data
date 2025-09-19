@@ -12,7 +12,8 @@
     "titile": "视线遮蔽Ⅰ",
     "desc": "基础视野-1",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21012,
@@ -27,7 +28,8 @@
     "titile": "视线遮蔽Ⅱ",
     "desc": "基础视野-2",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×2.85通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.55通关后解锁"
   },
   {
     "id": 21013,
@@ -42,6 +44,7 @@
     "titile": "视线遮蔽Ⅲ",
     "desc": "基础视野-3（废弃）",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -57,6 +60,7 @@
     "titile": "视线遮蔽Ⅳ",
     "desc": "基础视野-4（废弃）",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -72,6 +76,7 @@
     "titile": "视线遮蔽Ⅴ",
     "desc": "基础视野-5（废弃）",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -81,12 +86,13 @@
     "type": 1,
     "subtype": 2,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21021",
     "titile": "污染崩溃Ⅰ",
     "desc": "进入演习地图时，损失10%当前抵抗力",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -96,13 +102,14 @@
     "type": 1,
     "subtype": 2,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21023",
     "titile": "污染崩溃Ⅱ",
     "desc": "进入演习地图时，损失15%当前抵抗力",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.55通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21025,
@@ -111,13 +118,14 @@
     "type": 1,
     "subtype": 2,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21025",
     "titile": "污染崩溃Ⅲ",
     "desc": "进入演习地图时，损失20%当前抵抗力",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×2.9通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21031,
@@ -132,6 +140,7 @@
     "titile": "垃圾成山Ⅰ",
     "desc": "移动时有1%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -147,6 +156,7 @@
     "titile": "垃圾成山Ⅱ",
     "desc": "移动时有2%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -162,7 +172,8 @@
     "titile": "垃圾成山Ⅲ",
     "desc": "移动时有3%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.6通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.5通关后解锁"
   },
   {
     "id": 21034,
@@ -177,7 +188,8 @@
     "titile": "垃圾成山Ⅳ",
     "desc": "移动时有4%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.45通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.2通关后解锁"
   },
   {
     "id": 21035,
@@ -192,7 +204,8 @@
     "titile": "垃圾成山Ⅴ",
     "desc": "移动时有5%概率会获得无法丢弃的物品【无用垃圾】",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×2.95通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.05通关后解锁"
   },
   {
     "id": 21041,
@@ -200,13 +213,14 @@
     "seasons": "",
     "type": 1,
     "subtype": 4,
-    "level": 1,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "21041",
     "titile": "腐坏Ⅰ",
     "desc": "招募漫游助理时，物品价值降低10%",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -215,13 +229,14 @@
     "seasons": "",
     "type": 1,
     "subtype": 4,
-    "level": 2,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "21042",
     "titile": "腐坏Ⅱ",
     "desc": "招募漫游助理时，物品价值降低20%",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -230,14 +245,15 @@
     "seasons": "",
     "type": 1,
     "subtype": 4,
-    "level": 3,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "21043",
     "titile": "腐坏Ⅲ",
     "desc": "招募漫游助理时，物品价值降低30%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.65通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21044,
@@ -245,14 +261,15 @@
     "seasons": "",
     "type": 1,
     "subtype": 4,
-    "level": 4,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "21044",
     "titile": "腐坏Ⅳ",
     "desc": "招募漫游助理时，物品价值降低40%",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21045,
@@ -260,14 +277,15 @@
     "seasons": "",
     "type": 1,
     "subtype": 4,
-    "level": 5,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "21045",
     "titile": "腐坏Ⅴ",
     "desc": "招募漫游助理时，物品价值降低50%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21051,
@@ -282,6 +300,7 @@
     "titile": "雨浸Ⅰ",
     "desc": "在暴雨中行动时，抵抗力额外降低2",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -297,7 +316,8 @@
     "titile": "雨浸Ⅱ",
     "desc": "在暴雨中行动时，抵抗力额外降低3",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.7通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21055,
@@ -312,7 +332,8 @@
     "titile": "雨浸Ⅲ",
     "desc": "在暴雨中行动时，抵抗力额外降低4",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.05通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21065,
@@ -325,9 +346,10 @@
     "isShow": 0,
     "icon": "21065",
     "titile": "败者无获",
-    "desc": "演习失败时，完全损失所有探索物品",
+    "desc": "演习失败时，完全损失所有演习中获得的物品与漫游助理",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.1通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.15通关后解锁"
   },
   {
     "id": 21071,
@@ -342,6 +364,7 @@
     "titile": "搜刮迟滞Ⅰ",
     "desc": "选项耗时额外提升10%",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -357,7 +380,8 @@
     "titile": "搜刮迟滞Ⅱ",
     "desc": "选项耗时额外提升20%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.75通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21075,
@@ -372,7 +396,8 @@
     "titile": "搜刮迟滞Ⅲ",
     "desc": "选项耗时额外提升30%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.15通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.6通关后解锁"
   },
   {
     "id": 21081,
@@ -381,12 +406,13 @@
     "type": 1,
     "subtype": 8,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21081",
     "titile": "携量削减Ⅰ",
     "desc": "进行演习时，负重降低10%",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -396,13 +422,14 @@
     "type": 1,
     "subtype": 8,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21083",
     "titile": "携量削减Ⅱ",
     "desc": "进行演习时，负重降低20%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.8通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 21085,
@@ -411,13 +438,14 @@
     "type": 1,
     "subtype": 8,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "21085",
     "titile": "携量削减Ⅲ",
     "desc": "进行演习时，负重降低30%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.2通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22011,
@@ -426,12 +454,13 @@
     "type": 2,
     "subtype": 1,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22011",
     "titile": "慢性侵蚀Ⅰ",
     "desc": "若演习战斗结束回合超过8，上阵成员失去10%最大抵抗力",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -441,13 +470,14 @@
     "type": 2,
     "subtype": 1,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22013",
     "titile": "慢性侵蚀Ⅱ",
     "desc": "若演习战斗结束回合超过7，上阵成员失去10%最大抵抗力",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.85通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22015,
@@ -456,13 +486,14 @@
     "type": 2,
     "subtype": 1,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22015",
     "titile": "慢性侵蚀Ⅲ",
     "desc": "若演习战斗结束回合超过6，上阵成员失去10%最大抵抗力",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.25通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22021,
@@ -471,12 +502,13 @@
     "type": 2,
     "subtype": 2,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22021",
     "titile": "狂暴肆虐Ⅰ",
     "desc": "演习战斗中，怪物会在第10回合变得更加强大",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -486,13 +518,14 @@
     "type": 2,
     "subtype": 2,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22023",
     "titile": "狂暴肆虐Ⅱ",
     "desc": "演习战斗中，怪物会在第8回合变得更加强大",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×1.9通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22025,
@@ -501,13 +534,14 @@
     "type": 2,
     "subtype": 2,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22025",
     "titile": "狂暴肆虐Ⅲ",
     "desc": "演习战斗中，怪物会在第6回合变得更加强大",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.3通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22031,
@@ -516,12 +550,13 @@
     "type": 2,
     "subtype": 3,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22031",
     "titile": "死神窥视Ⅰ",
     "desc": "第6天开始，演习剩余时间不足5小时后，会出现追踪自身的强敌",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -531,12 +566,13 @@
     "type": 2,
     "subtype": 3,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22033",
     "titile": "死神窥视Ⅱ",
     "desc": "第6天开始，演习剩余时间不足6小时后，会出现追踪自身的强敌",
     "scoreRate": 150,
+    "extendScoreFix": 0,
     "lockDesc": "完成度效率×1.95通关后解锁"
   },
   {
@@ -546,12 +582,13 @@
     "type": 2,
     "subtype": 3,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22035",
     "titile": "死神窥视Ⅲ",
     "desc": "第6天开始，演习剩余时间不足7小时后，会出现追踪自身的强敌",
     "scoreRate": 250,
+    "extendScoreFix": 0,
     "lockDesc": "完成度效率×3.35通关后解锁"
   },
   {
@@ -565,8 +602,9 @@
     "isShow": 0,
     "icon": "22041",
     "titile": "终末之刻",
-    "desc": "坚持生存4天，击退1次入侵怪物",
+    "desc": "坚持生存3天，击退1次入侵怪物",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -582,6 +620,7 @@
     "titile": "终末之刻Ⅰ",
     "desc": "坚持生存8天，击退2次入侵怪物",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -597,6 +636,7 @@
     "titile": "终末之刻Ⅱ",
     "desc": "坚持生存9天，击退2次更大的入侵怪物",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -612,7 +652,8 @@
     "titile": "终末之刻Ⅲ",
     "desc": "坚持生存10天，击退3次更强的入侵怪物",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22044,
@@ -627,7 +668,8 @@
     "titile": "终末之刻Ⅳ",
     "desc": "坚持生存11天，击退3次极强的入侵怪物",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.55通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.9通关后解锁"
   },
   {
     "id": 22045,
@@ -642,7 +684,8 @@
     "titile": "终末之刻Ⅴ",
     "desc": "坚持生存12天，击退3次最强的入侵怪物",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.4通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.65通关后解锁"
   },
   {
     "id": 22051,
@@ -657,6 +700,7 @@
     "titile": "秽蚀翻涌Ⅰ",
     "desc": "入侵怪物获得微量强化",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -672,6 +716,7 @@
     "titile": "秽蚀翻涌Ⅱ",
     "desc": "入侵怪物获得少量强化",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -687,7 +732,8 @@
     "titile": "秽蚀翻涌Ⅲ",
     "desc": "入侵怪物获得中量强化",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.05通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22054,
@@ -702,7 +748,8 @@
     "titile": "秽蚀翻涌Ⅳ",
     "desc": "入侵怪物获得大量强化",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.6通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.95通关后解锁"
   },
   {
     "id": 22055,
@@ -717,7 +764,8 @@
     "titile": "秽蚀翻涌Ⅴ",
     "desc": "入侵怪物获得超量强化",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.45通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.7通关后解锁"
   },
   {
     "id": 22061,
@@ -726,12 +774,13 @@
     "type": 2,
     "subtype": 6,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22061",
     "titile": "恶敌横行Ⅰ",
     "desc": "演习地图会额外出现少量的精英怪物",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -741,12 +790,13 @@
     "type": 2,
     "subtype": 6,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22063",
     "titile": "恶敌横行Ⅱ",
     "desc": "演习地图会额外出现中量的精英怪物",
     "scoreRate": 150,
+    "extendScoreFix": 0,
     "lockDesc": "完成度效率×2.1通关后解锁"
   },
   {
@@ -756,12 +806,13 @@
     "type": 2,
     "subtype": 6,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22065",
     "titile": "恶敌横行Ⅲ",
     "desc": "演习地图会额外出现大量的精英怪物",
     "scoreRate": 250,
+    "extendScoreFix": 0,
     "lockDesc": "完成度效率×3.5通关后解锁"
   },
   {
@@ -777,7 +828,8 @@
     "titile": "敌速激增Ⅰ",
     "desc": "演习战斗，怪物行动力+1",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.15通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22073,
@@ -792,7 +844,8 @@
     "titile": "敌速激增Ⅱ",
     "desc": "演习战斗，怪物行动力+2",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.75通关后解锁"
   },
   {
     "id": 22083,
@@ -801,13 +854,14 @@
     "type": 2,
     "subtype": 8,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22083",
     "titile": "抗性瓦解Ⅰ",
     "desc": "演习战斗失败，额外损失100%抵抗力",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.2通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 22085,
@@ -816,13 +870,14 @@
     "type": 2,
     "subtype": 8,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "22085",
     "titile": "抗性瓦解Ⅱ",
     "desc": "演习战斗失败，额外损失200%抵抗力",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23012,
@@ -831,12 +886,13 @@
     "type": 3,
     "subtype": 1,
     "level": 2,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23012",
     "titile": "饥荒迫近Ⅰ",
     "desc": "每日储备消耗提升10%",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -846,13 +902,14 @@
     "type": 3,
     "subtype": 1,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23013",
     "titile": "饥荒迫近Ⅱ",
     "desc": "每日储备消耗提升20%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.25通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23014,
@@ -861,13 +918,14 @@
     "type": 3,
     "subtype": 1,
     "level": 4,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23014",
     "titile": "饥荒迫近Ⅲ",
     "desc": "每日储备消耗提升30%",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.65通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23015,
@@ -876,13 +934,14 @@
     "type": 3,
     "subtype": 1,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23015",
     "titile": "饥荒迫近Ⅳ",
     "desc": "每日储备消耗提升40%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23022,
@@ -890,13 +949,14 @@
     "seasons": "",
     "type": 3,
     "subtype": 2,
-    "level": 2,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "23022",
     "titile": "筑费攀升Ⅰ",
     "desc": "建造建筑消耗提升25%",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -905,14 +965,15 @@
     "seasons": "",
     "type": 3,
     "subtype": 2,
-    "level": 3,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "23023",
     "titile": "筑费攀升Ⅱ",
     "desc": "建造建筑消耗提升50%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.3通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23024,
@@ -920,14 +981,15 @@
     "seasons": "",
     "type": 3,
     "subtype": 2,
-    "level": 4,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "23024",
     "titile": "筑费攀升Ⅲ",
     "desc": "建造建筑消耗提升75%",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.7通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23025,
@@ -935,14 +997,15 @@
     "seasons": "",
     "type": 3,
     "subtype": 2,
-    "level": 5,
-    "optional": 1,
+    "level": 0,
+    "optional": 0,
     "isShow": 0,
     "icon": "23025",
     "titile": "筑费攀升Ⅳ",
     "desc": "建造建筑消耗提升100%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23031,
@@ -955,8 +1018,9 @@
     "isShow": 0,
     "icon": "23031",
     "titile": "物价飞涨Ⅰ",
-    "desc": "购买商品价格上升20%",
+    "desc": "购买商品价格上升10%",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -970,8 +1034,9 @@
     "isShow": 0,
     "icon": "23032",
     "titile": "物价飞涨Ⅱ",
-    "desc": "购买商品价格上升40%",
+    "desc": "购买商品价格上升20%",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -985,9 +1050,10 @@
     "isShow": 0,
     "icon": "23033",
     "titile": "物价飞涨Ⅲ",
-    "desc": "购买商品价格上升60%",
+    "desc": "购买商品价格上升30%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.35通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23034,
@@ -1000,9 +1066,10 @@
     "isShow": 0,
     "icon": "23034",
     "titile": "物价飞涨Ⅳ",
-    "desc": "购买商品价格上升80%",
+    "desc": "购买商品价格上升40%",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.75通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2通关后解锁"
   },
   {
     "id": 23035,
@@ -1015,9 +1082,10 @@
     "isShow": 0,
     "icon": "23035",
     "titile": "物价飞涨Ⅴ",
-    "desc": "购买商品价格上升100%",
+    "desc": "购买商品价格上升50%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.8通关后解锁"
   },
   {
     "id": 23041,
@@ -1026,12 +1094,13 @@
     "type": 3,
     "subtype": 4,
     "level": 1,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23041",
     "titile": "贱价抛售Ⅰ",
     "desc": "出售商品价格降低10%",
     "scoreRate": 50,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1041,12 +1110,13 @@
     "type": 3,
     "subtype": 4,
     "level": 2,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23042",
     "titile": "贱价抛售Ⅱ",
     "desc": "出售商品价格降低20%",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1056,13 +1126,14 @@
     "type": 3,
     "subtype": 4,
     "level": 3,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23043",
     "titile": "贱价抛售Ⅲ",
     "desc": "出售商品价格降低30%",
     "scoreRate": 150,
-    "lockDesc": "完成度效率×2.4通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": ""
   },
   {
     "id": 23044,
@@ -1071,13 +1142,14 @@
     "type": 3,
     "subtype": 4,
     "level": 4,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23044",
     "titile": "贱价抛售Ⅳ",
     "desc": "出售商品价格降低40%",
     "scoreRate": 200,
-    "lockDesc": "完成度效率×2.8通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.05通关后解锁"
   },
   {
     "id": 23045,
@@ -1086,13 +1158,14 @@
     "type": 3,
     "subtype": 4,
     "level": 5,
-    "optional": 1,
+    "optional": 0,
     "isShow": 0,
     "icon": "23045",
     "titile": "贱价抛售Ⅴ",
     "desc": "出售商品价格降低50%",
     "scoreRate": 250,
-    "lockDesc": "完成度效率×3.5通关后解锁"
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.85通关后解锁"
   },
   {
     "id": 24010,
@@ -1107,6 +1180,7 @@
     "titile": "",
     "desc": "角色等级/共鸣等级/心相等级提升至150/12/60，视野+2，获得1名漫游助理",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1122,6 +1196,7 @@
     "titile": "",
     "desc": "角色等级/共鸣等级/心相等级提升至150/12/60，视野+2",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1137,6 +1212,7 @@
     "titile": "",
     "desc": "角色等级/共鸣等级/心相等级提升至121/10/50",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1150,8 +1226,9 @@
     "isShow": 1,
     "icon": "",
     "titile": "",
-    "desc": "进入地图时，会点亮撤离点、选项事件，其他事件会用？标记",
+    "desc": "进入地图时，会点亮翻译站、选项事件，其他事件会用？标记",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1165,8 +1242,9 @@
     "isShow": 1,
     "icon": "",
     "titile": "",
-    "desc": "进入地图时，会点亮撤离点，其他事件会用？标记",
+    "desc": "进入地图时，会点亮翻译站，其他事件会用？标记",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1180,8 +1258,9 @@
     "isShow": 1,
     "icon": "",
     "titile": "",
-    "desc": "进入地图时，会点亮撤离点",
+    "desc": "进入地图时，会点亮翻译站",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1197,6 +1276,7 @@
     "titile": "",
     "desc": "每提升1难度等级，敌方受到最终伤害降低1%",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1212,6 +1292,7 @@
     "titile": "",
     "desc": "模板2难度加成",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1227,6 +1308,7 @@
     "titile": "",
     "desc": "模板3难度加成",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1242,6 +1324,7 @@
     "titile": "",
     "desc": "模板4难度加成",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1257,6 +1340,7 @@
     "titile": "终末之刻Ⅰ",
     "desc": "第5天为最终之日，将迎来1次入侵",
     "scoreRate": 100,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1272,6 +1356,7 @@
     "titile": "搜刮迟滞Ⅰ",
     "desc": "选项耗时额外提升10%",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1287,6 +1372,7 @@
     "titile": "狂暴肆虐Ⅰ",
     "desc": "演习战斗中，怪物会在第10回合变得更加强大",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1302,6 +1388,7 @@
     "titile": "终末之刻Ⅱ",
     "desc": "第6天为最终之日，将迎来2次入侵",
     "scoreRate": 250,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1311,12 +1398,13 @@
     "type": 1,
     "subtype": 71,
     "level": 3,
-    "optional": 3,
+    "optional": 0,
     "isShow": 0,
     "icon": "21073",
     "titile": "搜刮迟滞Ⅱ",
     "desc": "选项耗时额外提升20%",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1326,12 +1414,13 @@
     "type": 2,
     "subtype": 21,
     "level": 3,
-    "optional": 3,
+    "optional": 0,
     "isShow": 0,
     "icon": "22023",
     "titile": "狂暴肆虐Ⅱ",
     "desc": "演习战斗中，怪物会在第8回合变得更加强大",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1341,12 +1430,13 @@
     "type": 2,
     "subtype": 51,
     "level": 2,
-    "optional": 2,
+    "optional": 0,
     "isShow": 0,
     "icon": "22052",
     "titile": "秽蚀翻涌Ⅱ",
     "desc": "入侵怪物获得少量强化",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1362,6 +1452,7 @@
     "titile": "终末之刻Ⅲ",
     "desc": "第7天为最终之日，将迎来2次入侵",
     "scoreRate": 350,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1371,12 +1462,13 @@
     "type": 1,
     "subtype": 71,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "21075",
     "titile": "搜刮迟滞Ⅲ",
     "desc": "选项耗时额外提升30%",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1386,12 +1478,13 @@
     "type": 2,
     "subtype": 21,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "22025",
     "titile": "狂暴肆虐Ⅲ",
     "desc": "演习战斗中，怪物会在第6回合变得更加强大",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1401,12 +1494,13 @@
     "type": 2,
     "subtype": 51,
     "level": 3,
-    "optional": 3,
+    "optional": 0,
     "isShow": 0,
     "icon": "22053",
     "titile": "秽蚀翻涌Ⅲ",
     "desc": "入侵怪物获得中量强化",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1416,12 +1510,13 @@
     "type": 1,
     "subtype": 11,
     "level": 3,
-    "optional": 3,
+    "optional": 0,
     "isShow": 0,
     "icon": "21011",
     "titile": "视线遮蔽Ⅰ",
     "desc": "基础视野-1",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1437,6 +1532,7 @@
     "titile": "终末之刻Ⅲ",
     "desc": "第8天为最终之日，将迎来2次入侵",
     "scoreRate": 500,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1446,12 +1542,13 @@
     "type": 1,
     "subtype": 71,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "21075",
     "titile": "搜刮迟滞Ⅲ",
     "desc": "选项耗时额外提升30%",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1461,12 +1558,13 @@
     "type": 2,
     "subtype": 21,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "22025",
     "titile": "狂暴肆虐Ⅲ",
     "desc": "演习战斗中，怪物会在第6回合变得更加强大",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1476,12 +1574,13 @@
     "type": 2,
     "subtype": 51,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "22055",
     "titile": "秽蚀翻涌Ⅴ",
     "desc": "入侵怪物获得超量强化",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1491,12 +1590,13 @@
     "type": 1,
     "subtype": 11,
     "level": 5,
-    "optional": 5,
+    "optional": 0,
     "isShow": 0,
     "icon": "21012",
     "titile": "视线遮蔽Ⅱ",
     "desc": "基础视野-2",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1512,6 +1612,7 @@
     "titile": "污染崩溃Ⅰ",
     "desc": "进入演习地图时，损失10%当前抵抗力",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1527,6 +1628,7 @@
     "titile": "",
     "desc": "每日完全的抵抗力恢复",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1542,6 +1644,7 @@
     "titile": "",
     "desc": "每日中量的抵抗力恢复",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1557,6 +1660,7 @@
     "titile": "",
     "desc": "每日少量的抵抗力恢复",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1572,6 +1676,7 @@
     "titile": "",
     "desc": "进入地图生成1个泉水",
     "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   },
   {
@@ -1587,6 +1692,1303 @@
     "titile": "",
     "desc": "生成报童",
     "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110011,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 101,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21011",
+    "titile": "近视",
+    "desc": "视野-1",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110021,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 102,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22085",
+    "titile": "一次人生",
+    "desc": "演习中无法复活阵亡角色",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.9通关后解锁"
+  },
+  {
+    "id": 3110031,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 103,
+    "level": 1,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21051",
+    "titile": "虚弱体质Ⅰ",
+    "desc": "抵抗力降低幅度提升10%",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110032,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 103,
+    "level": 2,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21052",
+    "titile": "虚弱体质Ⅱ",
+    "desc": "抵抗力降低幅度提升20%",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110033,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 103,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21053",
+    "titile": "虚弱体质Ⅲ",
+    "desc": "抵抗力降低幅度提升30%",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110034,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 103,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21054",
+    "titile": "虚弱体质Ⅳ",
+    "desc": "抵抗力降低幅度提升40%",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.1通关后解锁"
+  },
+  {
+    "id": 3110035,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 103,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21055",
+    "titile": "虚弱体质Ⅴ",
+    "desc": "抵抗力降低幅度提升50%",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.95通关后解锁"
+  },
+  {
+    "id": 3110041,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 104,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21031",
+    "titile": "带病探索Ⅰ",
+    "desc": "演习开始时,抵抗力-10",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110042,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 104,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21032",
+    "titile": "带病探索Ⅱ",
+    "desc": "演习开始时,抵抗力-20",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110043,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 104,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21033",
+    "titile": "带病探索Ⅲ",
+    "desc": "演习开始时,抵抗力-30",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110044,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 104,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21034",
+    "titile": "带病探索Ⅳ",
+    "desc": "演习开始时,抵抗力-40",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110045,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 104,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21035",
+    "titile": "带病探索Ⅴ",
+    "desc": "演习开始时,抵抗力-50",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110051,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 105,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21061",
+    "titile": "肌无力Ⅰ",
+    "desc": "负重降低10%",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110052,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 105,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21062",
+    "titile": "肌无力Ⅱ",
+    "desc": "负重降低20%",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110053,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 105,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21063",
+    "titile": "肌无力Ⅲ",
+    "desc": "负重降低30%",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.5通关后解锁"
+  },
+  {
+    "id": 3110054,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 105,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21064",
+    "titile": "肌无力Ⅳ",
+    "desc": "负重降低40%",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.2通关后解锁"
+  },
+  {
+    "id": 3110055,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 105,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21065",
+    "titile": "肌无力Ⅴ",
+    "desc": "负重降低50%",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.05通关后解锁"
+  },
+  {
+    "id": 3110061,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 106,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21081",
+    "titile": "笨手笨脚Ⅰ",
+    "desc": "搜刮耗时提升10%",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110062,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 106,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21083",
+    "titile": "笨手笨脚Ⅱ",
+    "desc": "搜刮耗时提升20%",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110063,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 106,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21085",
+    "titile": "笨手笨脚Ⅲ",
+    "desc": "搜刮耗时提升30%",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110071,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 107,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21025",
+    "titile": "恶土厄运",
+    "desc": "在灾害地形使用快捷道具时,无法触发复制",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.1通关后解锁"
+  },
+  {
+    "id": 3110081,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 101,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22023",
+    "titile": "巢穴Ⅰ",
+    "desc": "地图上会生成额外的自爆机器人",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.55通关后解锁"
+  },
+  {
+    "id": 3110082,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 101,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22024",
+    "titile": "巢穴Ⅱ",
+    "desc": "地图上会生成更多的自爆机器人",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.25通关后解锁"
+  },
+  {
+    "id": 3110083,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 101,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22025",
+    "titile": "巢穴Ⅲ",
+    "desc": "地图上会生成超多的自爆机器人",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.15通关后解锁"
+  },
+  {
+    "id": 3110091,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 102,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22031",
+    "titile": "苦战Ⅰ",
+    "desc": "每次战斗抵抗力降低2,超过5回合额外降低2",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110092,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 102,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22032",
+    "titile": "苦战Ⅱ",
+    "desc": "每次战斗抵抗力降低3,超过5回合额外降低3",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110093,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 102,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22033",
+    "titile": "苦战Ⅲ",
+    "desc": "每次战斗抵抗力降低4,超过5回合额外降低4",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110101,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 103,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22075",
+    "titile": "警惕Ⅰ",
+    "desc": "怪物的警戒视野+1",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.2通关后解锁"
+  },
+  {
+    "id": 3110102,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 103,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22075",
+    "titile": "警惕Ⅱ",
+    "desc": "怪物的警戒视野+2",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110111,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 104,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22033",
+    "titile": "狂暴Ⅰ",
+    "desc": "怪物属性小幅提升",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.6通关后解锁"
+  },
+  {
+    "id": 3110112,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 104,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22034",
+    "titile": "狂暴Ⅱ",
+    "desc": "怪物属性中幅提升",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.3通关后解锁"
+  },
+  {
+    "id": 3110113,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 104,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22035",
+    "titile": "狂暴Ⅲ",
+    "desc": "怪物属性大幅提升",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.25通关后解锁"
+  },
+  {
+    "id": 3110121,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 105,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22053",
+    "titile": "应激Ⅰ",
+    "desc": "怪物进入战斗及回合开始时,怪物激情+1",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.65通关后解锁"
+  },
+  {
+    "id": 3110122,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 105,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22054",
+    "titile": "应激Ⅱ",
+    "desc": "怪物进入战斗及回合开始时,怪物激情+2",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.35通关后解锁"
+  },
+  {
+    "id": 3110123,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 105,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "22055",
+    "titile": "应激Ⅲ",
+    "desc": "怪物进入战斗及回合开始时,怪物激情+3",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.3通关后解锁"
+  },
+  {
+    "id": 3110131,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 106,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22061",
+    "titile": "再生Ⅰ",
+    "desc": "怪物免疫激情降低,受创回复+20%",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110132,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 106,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22062",
+    "titile": "再生Ⅱ",
+    "desc": "怪物免疫激情降低,受创回复+40%",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110133,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 106,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22063",
+    "titile": "再生Ⅲ",
+    "desc": "怪物免疫激情降低,受创回复+60%",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110141,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 101,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21015",
+    "titile": "遮天蔽日Ⅰ",
+    "desc": "剩余18小时后,每隔6小时云雾重新遮盖视野外所有地块",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.7通关后解锁"
+  },
+  {
+    "id": 3110142,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 101,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21014",
+    "titile": "遮天蔽日Ⅱ",
+    "desc": "剩余18小时后,每隔4小时云雾重新遮盖视野外所有地块",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.4通关后解锁"
+  },
+  {
+    "id": 3110143,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 101,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21015",
+    "titile": "遮天蔽日Ⅲ",
+    "desc": "剩余18小时后,每隔2小时云雾重新遮盖视野外所有地块",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.35通关后解锁"
+  },
+  {
+    "id": 3110151,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 102,
+    "level": 1,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21021",
+    "titile": "贫瘠恶土Ⅰ",
+    "desc": "灾害地形数量增加5格",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110152,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 102,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21023",
+    "titile": "贫瘠恶土Ⅱ",
+    "desc": "灾害地形数量增加10格",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.75通关后解锁"
+  },
+  {
+    "id": 3110153,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 102,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "21025",
+    "titile": "贫瘠恶土Ⅲ",
+    "desc": "灾害地形数量增加15格",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.4通关后解锁"
+  },
+  {
+    "id": 3110161,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 103,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21071",
+    "titile": "坐地起价Ⅰ",
+    "desc": "地图商人处购买道具价格提升10%",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110162,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 103,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21072",
+    "titile": "坐地起价Ⅱ",
+    "desc": "地图商人处购买道具价格提升20%",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110163,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 103,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21073",
+    "titile": "坐地起价Ⅲ",
+    "desc": "地图商人处购买道具价格提升30%",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110164,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 103,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21074",
+    "titile": "坐地起价Ⅳ",
+    "desc": "地图商人处购买道具价格提升40%",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110165,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 103,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21075",
+    "titile": "坐地起价Ⅴ",
+    "desc": "地图商人处购买道具价格提升50%",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110171,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 104,
+    "level": 1,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21081",
+    "titile": "手忙脚乱Ⅰ",
+    "desc": "进入地图时,随机丢失30%的快捷道具",
+    "scoreRate": 50,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110172,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 104,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21083",
+    "titile": "手忙脚乱Ⅱ",
+    "desc": "进入地图时,随机丢失40%的快捷道具",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110173,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 104,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21085",
+    "titile": "手忙脚乱Ⅲ",
+    "desc": "进入地图时,随机丢失50%的快捷道具",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110181,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 105,
+    "level": 1,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23031",
+    "titile": "精简开局Ⅰ",
+    "desc": "可使用的战利品点数降低250",
+    "scoreRate": 50,
+    "extendScoreFix": -250,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110182,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 105,
+    "level": 2,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23032",
+    "titile": "精简开局Ⅱ",
+    "desc": "可使用的战利品点数降低500",
+    "scoreRate": 100,
+    "extendScoreFix": -500,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110183,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 105,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23033",
+    "titile": "精简开局Ⅲ",
+    "desc": "可使用的战利品点数降低750",
+    "scoreRate": 150,
+    "extendScoreFix": -750,
+    "lockDesc": "完成度效率×1.8通关后解锁"
+  },
+  {
+    "id": 3110184,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 105,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23034",
+    "titile": "精简开局Ⅳ",
+    "desc": "可使用的战利品点数降低1000",
+    "scoreRate": 200,
+    "extendScoreFix": -1000,
+    "lockDesc": "完成度效率×2.45通关后解锁"
+  },
+  {
+    "id": 3110185,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 105,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23035",
+    "titile": "精简开局Ⅴ",
+    "desc": "可使用的战利品点数降低1200",
+    "scoreRate": 250,
+    "extendScoreFix": -1200,
+    "lockDesc": "完成度效率×3.45通关后解锁"
+  },
+  {
+    "id": 3110191,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 106,
+    "level": 2,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23042",
+    "titile": "提前量Ⅰ",
+    "desc": "演习时间降低至23小时",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3110192,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 106,
+    "level": 3,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23043",
+    "titile": "提前量Ⅱ",
+    "desc": "演习时间降低至22小时",
+    "scoreRate": 150,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×1.85通关后解锁"
+  },
+  {
+    "id": 3110193,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 106,
+    "level": 4,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23044",
+    "titile": "提前量Ⅲ",
+    "desc": "演习时间降低至21小时",
+    "scoreRate": 200,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×2.5通关后解锁"
+  },
+  {
+    "id": 3110194,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 106,
+    "level": 5,
+    "optional": 1,
+    "isShow": 0,
+    "icon": "23045",
+    "titile": "提前量Ⅳ",
+    "desc": "演习时间降低至20小时",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": "完成度效率×3.5通关后解锁"
+  },
+  {
+    "id": 3124101,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 41,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22041",
+    "titile": "终末之刻Ⅰ",
+    "desc": "第5天为最终之日，将迎来1次入侵",
+    "scoreRate": 100,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124102,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1051,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21032",
+    "titile": "垃圾成山Ⅱ",
+    "desc": "移动时有2%概率会获得无法丢弃的物品【无用垃圾】",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124103,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1031,
+    "level": 2,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21052",
+    "titile": "虚弱体质Ⅱ",
+    "desc": "抵抗力降低幅度提升20%",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124201,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 41,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22042",
+    "titile": "终末之刻Ⅱ",
+    "desc": "第6天为最终之日，将迎来2次入侵",
+    "scoreRate": 250,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124202,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1051,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21033",
+    "titile": "垃圾成山Ⅲ",
+    "desc": "移动时有3%概率会获得无法丢弃的物品【无用垃圾】",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124203,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1031,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21053",
+    "titile": "虚弱体质Ⅲ",
+    "desc": "抵抗力降低幅度提升30%",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124204,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 1061,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "23043",
+    "titile": "提前量Ⅱ",
+    "desc": "演习时间降低至22小时",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124301,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 41,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22043",
+    "titile": "终末之刻Ⅲ",
+    "desc": "第7天为最终之日，将迎来2次入侵",
+    "scoreRate": 350,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124302,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1051,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21034",
+    "titile": "垃圾成山Ⅳ",
+    "desc": "移动时有4%概率会获得无法丢弃的物品【无用垃圾】",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124303,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1031,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21054",
+    "titile": "虚弱体质Ⅳ",
+    "desc": "抵抗力降低幅度提升40%",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124304,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 1061,
+    "level": 4,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "23044",
+    "titile": "提前量Ⅲ",
+    "desc": "演习时间降低至21小时",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124305,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 1031,
+    "level": 3,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22073",
+    "titile": "警惕Ⅰ",
+    "desc": "怪物的警戒视野+1",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124401,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 41,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22043",
+    "titile": "终末之刻Ⅲ",
+    "desc": "第8天为最终之日，将迎来2次入侵",
+    "scoreRate": 500,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124402,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1051,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21035",
+    "titile": "垃圾成山Ⅴ",
+    "desc": "移动时有5%概率会获得无法丢弃的物品【无用垃圾】",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124403,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1031,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21055",
+    "titile": "虚弱体质Ⅴ",
+    "desc": "抵抗力降低幅度提升50%",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124404,
+    "versions": "",
+    "seasons": "",
+    "type": 3,
+    "subtype": 1061,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "23045",
+    "titile": "提前量Ⅳ",
+    "desc": "演习时间降低至20小时",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124405,
+    "versions": "",
+    "seasons": "",
+    "type": 2,
+    "subtype": 1031,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "22075",
+    "titile": "警惕Ⅰ",
+    "desc": "怪物的警戒视野+1",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3124406,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 1071,
+    "level": 5,
+    "optional": 0,
+    "isShow": 0,
+    "icon": "21025",
+    "titile": "恶土厄运",
+    "desc": "在灾害地形使用快捷道具时,无法触发复制",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3129901,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 2001,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "21025",
+    "titile": "难度3，4，自定义",
+    "desc": "§生成主线单位",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
+    "lockDesc": ""
+  },
+  {
+    "id": 3129902,
+    "versions": "",
+    "seasons": "",
+    "type": 1,
+    "subtype": 2002,
+    "level": 0,
+    "optional": 0,
+    "isShow": 1,
+    "icon": "21025",
+    "titile": "难度1，2，自定义",
+    "desc": "§进入地图6，必定刷出207091801，然后删除自身",
+    "scoreRate": 0,
+    "extendScoreFix": 0,
     "lockDesc": ""
   }
 ]

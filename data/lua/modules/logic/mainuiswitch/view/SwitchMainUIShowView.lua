@@ -315,8 +315,6 @@ function var_0_0._onRefreshDeadline(arg_17_0)
 		local var_17_0 = arg_17_0._itemDeadline - ServerTime.now()
 
 		if var_17_0 <= 0 then
-			ItemRpc.instance:sendGetItemListRequest()
-			ItemRpc.instance:sendAutoUseExpirePowerItemRequest()
 			gohelper.setActive(arg_17_0._godeadline, false)
 
 			return

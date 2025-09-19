@@ -64,7 +64,10 @@ function var_0_0.getBuffFeatureHandle(arg_3_0)
 			[FightEnum.BuffFeature.SpecialCountContinueChannelBuff] = var_0_0.getSpecialCountCastBuffDesc,
 			[FightEnum.BuffFeature.AddAttrBySpecialCount] = var_0_0.getAddAttrBySpecialCountDesc,
 			[FightEnum.BuffFeature.SpecialCountCastChannel] = var_0_0.getSpecialCountCastChannelDesc,
-			[FightEnum.BuffFeature.ConsumeBuffAddBuffContinueChannel] = var_0_0.getConsumeBuffAddBuffContinueChannelDesc
+			[FightEnum.BuffFeature.ConsumeBuffAddBuffContinueChannel] = var_0_0.getConsumeBuffAddBuffContinueChannelDesc,
+			[FightEnum.BuffFeature.BeAttackAccrualFixAttr] = var_0_0.getBeAttackAccrualFixAttr,
+			[FightEnum.BuffFeature.Raspberry] = var_0_0.getRaspberryDesc,
+			[FightEnum.BuffFeature.RaspberryBigSkill] = var_0_0.getRaspberryBigSkillDesc
 		}
 	end
 
@@ -174,6 +177,22 @@ end
 
 function var_0_0.getConsumeBuffAddBuffContinueChannelDesc(arg_15_0, arg_15_1, arg_15_2, arg_15_3, arg_15_4)
 	return GameUtil.getSubPlaceholderLuaLangOneParam(arg_15_1.desc, arg_15_4.strParam)
+end
+
+function var_0_0.getBeAttackAccrualFixAttr(arg_16_0, arg_16_1, arg_16_2, arg_16_3, arg_16_4)
+	return GameUtil.getSubPlaceholderLuaLangOneParam(arg_16_1.desc, math.abs(tonumber(arg_16_4.strParam) or 0) / 10)
+end
+
+function var_0_0.getRaspberryDesc(arg_17_0, arg_17_1, arg_17_2, arg_17_3, arg_17_4)
+	local var_17_0 = arg_17_4.param
+
+	return GameUtil.getSubPlaceholderLuaLangTwoParam(arg_17_1.desc, var_17_0[1], var_17_0[2])
+end
+
+function var_0_0.getRaspberryBigSkillDesc(arg_18_0, arg_18_1, arg_18_2, arg_18_3, arg_18_4)
+	local var_18_0 = arg_18_4.param
+
+	return GameUtil.getSubPlaceholderLuaLangOneParam(arg_18_1.desc, var_18_0[1])
 end
 
 return var_0_0

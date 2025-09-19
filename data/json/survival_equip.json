@@ -1,1442 +1,2258 @@
 [
   {
     "id": 7100101,
+    "extendCost": 0,
     "group": 10001,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|<sprite=6>【怒火】+1",
-    "effectDesc2": "己方受创减免提升；|<sprite=6>提升",
+    "effectDesc": "己方受创减免+10%；|<sprite=8>【怒火】+1",
+    "effectDesc2": "己方受创减免提升；|<sprite=8>提升",
     "desc": "令人不适却迷人的香味也是一种平衡。",
     "tag": "",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7200101,
+    "extendCost": 200,
     "group": 10001,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|<sprite=6>【怒火】+2",
-    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|<sprite=8>【怒火】+2",
+    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=8>较大幅度提升",
     "desc": "令人不适却迷人的香味也是一种平衡。",
     "tag": "",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7300101,
+    "extendCost": 500,
     "group": 10001,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|<sprite=6>【怒火】+4",
-    "effectDesc2": "己方受创减免大幅度提升；|<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|<sprite=8>【怒火】+4",
+    "effectDesc2": "己方受创减免大幅度提升；|<sprite=8>大幅度提升",
     "desc": "令人不适却迷人的香味也是一种平衡。",
     "tag": "",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7100102,
+    "extendCost": 0,
     "group": 10002,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|<sprite=5>【连锁】+1",
-    "effectDesc2": "己方受创减免提升；|<sprite=5>提升",
+    "effectDesc": "己方受创减免+10%；|<sprite=7>【连锁】+1",
+    "effectDesc2": "己方受创减免提升；|<sprite=7>提升",
     "desc": "吹响它时，整个树林都会一起跳舞",
     "tag": "",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7200102,
+    "extendCost": 200,
     "group": 10002,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|<sprite=5>【连锁】+2",
-    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=5>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|<sprite=7>【连锁】+2",
+    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=7>较大幅度提升",
     "desc": "吹响它时，整个树林都会一起跳舞",
     "tag": "",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7300102,
+    "extendCost": 500,
     "group": 10002,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|<sprite=5>【连锁】+4",
-    "effectDesc2": "己方受创减免大幅度提升；|<sprite=5>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|<sprite=7>【连锁】+4",
+    "effectDesc2": "己方受创减免大幅度提升；|<sprite=7>大幅度提升",
     "desc": "吹响它时，整个树林都会一起跳舞",
     "tag": "",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7100103,
+    "extendCost": 0,
     "group": 10003,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方受创减免提升；|<sprite=7>提升",
+    "effectDesc": "己方受创减免+10%；|<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方受创减免提升；|<sprite=9>提升",
     "desc": "奠基一切。",
     "tag": "",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7200103,
+    "extendCost": 200,
     "group": 10003,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=7>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方受创减免较大幅度提升；|<sprite=9>较大幅度提升",
     "desc": "奠基一切。",
     "tag": "",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7300103,
+    "extendCost": 500,
     "group": 10003,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|<sprite=7>【混沌<id:1>】+4",
-    "effectDesc2": "己方受创减免大幅度提升；|<sprite=7>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|<sprite=9>【混沌<id:1>】+4",
+    "effectDesc2": "己方受创减免大幅度提升；|<sprite=9>大幅度提升",
     "desc": "奠基一切。",
     "tag": "",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7100104,
+    "extendCost": 0,
     "group": 10004,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "一本什么字都没有却又能解答一切的书，税后二十五利齿子儿。",
     "tag": "",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7200104,
+    "extendCost": 200,
     "group": 10004,
     "score": 200,
     "effectDesc": "己方术法威力+40%",
     "effectDesc2": "己方术法威力大幅度提升",
     "desc": "一本什么字都没有却又能解答一切的书，税后二十五利齿子儿。",
     "tag": "",
-    "effect": "1000018#1000018"
+    "effect": "1000018#1000018",
+    "equipType": 0
   },
   {
     "id": 7300104,
+    "extendCost": 500,
     "group": 10004,
     "score": 300,
     "effectDesc": "己方术法威力+70%",
     "effectDesc2": "己方术法威力极大幅度提升",
     "desc": "一本什么字都没有却又能解答一切的书，税后二十五利齿子儿。",
     "tag": "",
-    "effect": "1000018#1000018#1000020#1000005"
+    "effect": "1000018#1000018#1000020",
+    "equipType": 0
   },
   {
     "id": 7100105,
+    "extendCost": 0,
     "group": 10005,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "沐浴龙血的时候离它远点。",
     "tag": "",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7200105,
+    "extendCost": 200,
     "group": 10005,
     "score": 200,
     "effectDesc": "己方暴击率+30%",
     "effectDesc2": "己方暴击率大幅度提升",
     "desc": "沐浴龙血的时候离它远点。",
     "tag": "",
-    "effect": "1000010"
+    "effect": "1000010",
+    "equipType": 0
   },
   {
     "id": 7300105,
+    "extendCost": 500,
     "group": 10005,
     "score": 300,
     "effectDesc": "己方暴击率+50%",
     "effectDesc2": "己方暴击率极大幅度提升",
     "desc": "沐浴龙血的时候离它远点。",
     "tag": "",
-    "effect": "1000008#1000010"
+    "effect": "1000008#1000010",
+    "equipType": 0
   },
   {
     "id": 7100201,
+    "extendCost": 0,
     "group": 10006,
     "score": 100,
     "effectDesc": "己方创伤加成+10%；|入场及每4回合开始时，行动点临时+1，咒语获取上限临时+1",
     "effectDesc2": "己方创伤加成提升；|入场及每4回合开始时，行动点临时+1，咒语获取上限临时+1",
     "desc": "它自无尽的水中而来。",
     "tag": "",
-    "effect": "1000077#1000001"
+    "effect": "1000077#1000001",
+    "equipType": 0
   },
   {
     "id": 7200201,
+    "extendCost": 200,
     "group": 10006,
     "score": 200,
     "effectDesc": "己方创伤加成+20%；|入场及每3回合开始时，行动点临时+1，咒语获取上限临时+1",
     "effectDesc2": "己方创伤加成较大幅度提升；|入场及每3回合开始时，行动点临时+1，咒语获取上限临时+1",
     "desc": "它自无尽的水中而来。",
     "tag": "",
-    "effect": "1000078#1000003"
+    "effect": "1000078#1000003",
+    "equipType": 0
   },
   {
     "id": 7300201,
+    "extendCost": 500,
     "group": 10006,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|入场及每2回合开始时，行动点临时+1，咒语获取上限临时+1",
     "effectDesc2": "己方创伤加成大幅度提升；|入场及每2回合开始时，行动点临时+1，咒语获取上限临时+1",
     "desc": "它自无尽的水中而来。",
     "tag": "",
-    "effect": "1000079#1000005#1000001"
+    "effect": "1000079#1000005#1000001",
+    "equipType": 0
   },
   {
     "id": 7100202,
+    "extendCost": 0,
     "group": 10007,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%；|【痕契之击<id:0>】将额外攻击1名敌方目标",
     "effectDesc2": "己方暴击创伤提升；|【痕契之击<id:0>】攻击目标数量提升",
     "desc": "心脏和羽毛孰轻孰重？",
     "tag": "",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7200202,
+    "extendCost": 200,
     "group": 10007,
     "score": 200,
     "effectDesc": "己方暴击创伤+20%；|【痕契之击<id:0>】将额外攻击1名敌方目标",
     "effectDesc2": "己方暴击创伤较大幅度提升；|【痕契之击<id:0>】攻击目标数量提升",
     "desc": "心脏和羽毛孰轻孰重？",
     "tag": "",
-    "effect": "1000013"
+    "effect": "1000013",
+    "equipType": 0
   },
   {
     "id": 7300202,
+    "extendCost": 500,
     "group": 10007,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|【痕契之击<id:0>】将额外攻击2名敌方目标",
     "effectDesc2": "己方暴击创伤大幅度提升；|【痕契之击<id:0>】攻击目标数量大幅度提升",
     "desc": "心脏和羽毛孰轻孰重？",
     "tag": "",
-    "effect": "1000015"
+    "effect": "1000015",
+    "equipType": 0
   },
   {
     "id": 7100203,
+    "extendCost": 0,
     "group": 10008,
     "score": 100,
-    "effectDesc": "己方仪式威力+10%；",
-    "effectDesc2": "仪式威力提升；",
+    "effectDesc": "己方仪式威力+10%",
+    "effectDesc2": "仪式威力提升",
     "desc": "它就在河里！快去！",
     "tag": "",
-    "effect": "1000021"
+    "effect": "1000021",
+    "equipType": 0
   },
   {
     "id": 7200203,
+    "extendCost": 200,
     "group": 10008,
     "score": 200,
-    "effectDesc": "己方仪式威力+40%；",
+    "effectDesc": "己方仪式威力+40%",
     "effectDesc2": "仪式威力大幅度提升",
     "desc": "它就在河里！快去！",
     "tag": "",
-    "effect": "1000023#1000023"
+    "effect": "1000023#1000023",
+    "equipType": 0
   },
   {
     "id": 7300203,
+    "extendCost": 500,
     "group": 10008,
     "score": 300,
-    "effectDesc": "己方仪式威力+70%；",
-    "effectDesc2": "仪式威力极大幅度提升；",
+    "effectDesc": "己方仪式威力+70%",
+    "effectDesc2": "仪式威力极大幅度提升",
     "desc": "它就在河里！快去！",
     "tag": "",
-    "effect": "1000025#1000025#1000021"
+    "effect": "1000025#1000025#1000021",
+    "equipType": 0
   },
   {
     "id": 7101101,
+    "extendCost": 0,
     "group": 10101,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=5>【连锁】+2",
-    "effectDesc2": "己方受创减免提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=5>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方受创减免提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>提升",
     "desc": "其实满不满月都可以点亮。",
     "tag": "101",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7201101,
+    "extendCost": 200,
     "group": 10101,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=5>【连锁】+3",
-    "effectDesc2": "己方受创减免较大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=5>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+3",
+    "effectDesc2": "己方受创减免较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>较大幅度提升",
     "desc": "其实满不满月都可以点亮。",
     "tag": "101",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7301101,
+    "extendCost": 500,
     "group": 10101,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=5>【连锁】+5",
-    "effectDesc2": "己方受创减免大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=5>大幅度提升",
+    "effectDesc": "己方受创减免+40%；{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+5",
+    "effectDesc2": "己方受创减免大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>大幅度提升",
     "desc": "其实满不满月都可以点亮。",
     "tag": "101",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7101102,
+    "extendCost": 0,
     "group": 10102,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方受创减免提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=6>【怒火】提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方受创减免提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=8>【怒火】提升",
     "desc": "人们把正负极插在橙子上能发电，那插在曼德拉草上……",
     "tag": "101",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7201102,
+    "extendCost": 200,
     "group": 10102,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方受创减免较大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方受创减免较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=8>较大幅度提升",
     "desc": "人们把正负极插在橙子上能发电，那插在曼德拉草上……",
     "tag": "101",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7301102,
+    "extendCost": 500,
     "group": 10102,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=6>【怒火】+5",
-    "effectDesc2": "己方受创减免大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+5",
+    "effectDesc2": "己方受创减免大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=8>大幅度提升",
     "desc": "人们把正负极插在橙子上能发电，那插在曼德拉草上……",
     "tag": "101",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7101201,
+    "extendCost": 0,
     "group": 10103,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "静电使人毛躁。",
     "tag": "101",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7201201,
+    "extendCost": 200,
     "group": 10103,
     "score": 200,
-    "effectDesc": "己方创伤加成+20%；|<sprite=5>【连锁】+1；|布设【术阵】时，为术阵附加额外效果：使己方创伤加成+20%，术阵结束后或被顶替后移除额外效果；",
-    "effectDesc2": "己方创伤较大幅度提升；|<sprite=5>提升；|布设【术阵】时，使己方全体创伤加成较大幅度提升，术阵结束后或被顶替后失效",
+    "effectDesc": "己方创伤加成+20%；|<sprite=7>【连锁】+1；|布设【术阵】时，为术阵附加额外效果：使己方创伤加成+20%，术阵结束后或被顶替后移除额外效果；",
+    "effectDesc2": "己方创伤较大幅度提升；|<sprite=7>提升；|布设【术阵】时，使己方全体创伤加成较大幅度提升，术阵结束后或被顶替后失效",
     "desc": "静电使人毛躁。",
     "tag": "101",
-    "effect": "1000003#1010009#1010001"
+    "effect": "1000003#1010009#1010001",
+    "equipType": 0
   },
   {
     "id": 7301201,
+    "extendCost": 500,
     "group": 10103,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|<sprite=5>【连锁】+2；|布设【术阵】时，为术阵附加额外效果：使己方创伤加成+30%，术阵结束后或被顶替后移除额外效果",
-    "effectDesc2": "己方创伤大幅度提升；|<sprite=5>提升；|布设【术阵】时，使己方全体创伤加成大幅度提升，术阵结束后或被顶替后失效",
+    "effectDesc": "己方创伤加成+40%；|<sprite=7>【连锁】+2；|布设【术阵】时，为术阵附加额外效果：使己方创伤加成+30%，术阵结束后或被顶替后移除额外效果",
+    "effectDesc2": "己方创伤大幅度提升；|<sprite=7>提升；|布设【术阵】时，使己方全体创伤加成大幅度提升，术阵结束后或被顶替后失效",
     "desc": "静电使人毛躁。",
     "tag": "101",
-    "effect": "1000001#1000005#1010010#1010002"
+    "effect": "1000001#1000005#1010010#1010002",
+    "equipType": 0
   },
   {
     "id": 7101202,
+    "extendCost": 0,
     "group": 10104,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "据说生病了就可以摸一摸。",
     "tag": "101",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7201202,
+    "extendCost": 200,
     "group": 10104,
     "score": 200,
-    "effectDesc": "己方暴击率+20%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=5>【连锁】+1，当前<sprite=5>【连锁】加成{count10}；",
-    "effectDesc2": "己方暴击率较大幅度提升；|布设中<sprite=0><sprite=3>盒中之物越多，自身获得<sprite=5>越多",
+    "effectDesc": "己方暴击率+20%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=7>【连锁】+1，当前<sprite=7>【连锁】加成{count10}",
+    "effectDesc2": "己方暴击率较大幅度提升；|布设中<sprite=0><sprite=3>盒中之物越多，自身获得<sprite=7>越多",
     "desc": "据说生病了就可以摸一摸。",
     "tag": "101#104",
-    "effect": "1000008"
+    "effect": "1000008",
+    "equipType": 0
   },
   {
     "id": 7301202,
+    "extendCost": 500,
     "group": 10104,
     "score": 300,
-    "effectDesc": "己方暴击率+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=5>【连锁】+1，当前<sprite=5>【连锁】加成{count10}；|{check(count9 > 0)}自身处于首个槽位且激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=5>【连锁】+4",
-    "effectDesc2": "己方暴击率大幅度提升；|布设中<sprite=0><sprite=3>盒中之物越多，自身获得<sprite=5>越多；|{check(count9 > 0)}自身处于首个槽位且激活<sprite=8>时生效：<sprite=5>大幅度提升",
+    "effectDesc": "己方暴击率+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=7>【连锁】+1，当前<sprite=7>【连锁】加成{count10}；|{check(count9 > 0)}自身处于首个槽位且激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+4",
+    "effectDesc2": "己方暴击率大幅度提升；|布设中<sprite=0><sprite=3>盒中之物越多，自身获得<sprite=7>越多；|{check(count9 > 0)}自身处于首个槽位且激活<sprite=10>时生效：<sprite=7>大幅度提升",
     "desc": "据说生病了就可以摸一摸。",
     "tag": "101#104",
-    "effect": "1000008#1000008"
+    "effect": "1000008#1000008",
+    "equipType": 0
   },
   {
     "id": 7101203,
+    "extendCost": 0,
     "group": 10105,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "它曾经和你的手产生过一丝微弱的电感。",
     "tag": "101",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7201203,
+    "extendCost": 200,
     "group": 10105,
     "score": 200,
-    "effectDesc": "己方创伤加成+20%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=2>【薪血<id:0>】盒中之物，<sprite=6>【怒火】+1，当前<sprite=6>【怒火】加成{count10}",
-    "effectDesc2": "己方创伤加成较大幅度提升；|布设中<sprite=0><sprite=2>盒中之物越多，自身获得的<sprite=6>越多",
+    "effectDesc": "己方创伤加成+20%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=2>【薪血<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成{count10}",
+    "effectDesc2": "己方创伤加成较大幅度提升；|布设中<sprite=0><sprite=2>盒中之物越多，自身获得的<sprite=8>越多",
     "desc": "它曾经和你的手产生过一丝微弱的电感。",
     "tag": "101#103",
-    "effect": "1000003"
+    "effect": "1000003",
+    "equipType": 0
   },
   {
     "id": 7301203,
+    "extendCost": 500,
     "group": 10105,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=2>【薪血<id:0>】盒中之物，<sprite=6>【怒火】+1，当前<sprite=6>【怒火】加成{count10}；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方创伤加成大幅度提升；|布设中<sprite=0><sprite=2>盒中之物越多，自身获得的<sprite=6>越多；|{check(count9 > 0)}激活<sprite=8>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方创伤加成+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=2>【薪血<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成{count10}；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方创伤加成大幅度提升；|布设中<sprite=0><sprite=2>盒中之物越多，自身获得的<sprite=8>越多；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=8>大幅度提升",
     "desc": "它曾经和你的手产生过一丝微弱的电感。",
     "tag": "101#103",
-    "effect": "1000003#1000003"
+    "effect": "1000003#1000003",
+    "equipType": 0
   },
   {
     "id": 7101204,
+    "extendCost": 0,
     "group": 10106,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "真假并不重要，重要的是口口相传或许真的让它可以迎接闪电。",
     "tag": "101",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7201204,
+    "extendCost": 200,
     "group": 10106,
     "score": 200,
-    "effectDesc": "己方术法威力+20%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】；<sprite=5>【连锁】+1",
-    "effectDesc2": "己方术法较大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：【痕契之击<id:0>】使目标陷入【导电】；<sprite=5>提升",
+    "effectDesc": "己方术法威力+20%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】；<sprite=7>【连锁】+1",
+    "effectDesc2": "己方术法较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：【痕契之击<id:0>】使目标陷入【导电】；<sprite=7>提升",
     "desc": "真假并不重要，重要的是口口相传或许真的让它可以迎接闪电。",
     "tag": "101",
-    "effect": "1000018#1010003"
+    "effect": "1000018#1010003",
+    "equipType": 0
   },
   {
     "id": 7301204,
+    "extendCost": 500,
     "group": 10106,
     "score": 300,
-    "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】，若暴击，则额外使目标陷入【麻痹】；<sprite=5>【连锁】+2",
-    "effectDesc2": "己方术法大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】，若暴击，则额外使目标陷入【麻痹】；<sprite=5>提升",
+    "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】，若暴击，则额外使目标陷入【麻痹】；<sprite=7>【连锁】+2",
+    "effectDesc2": "己方术法大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】，若暴击，则额外使目标陷入【麻痹】；<sprite=7>提升",
     "desc": "真假并不重要，重要的是口口相传或许真的让它可以迎接闪电。",
     "tag": "101",
-    "effect": "1000018#1000018#1010004"
+    "effect": "1000018#1000018#1010004",
+    "equipType": 0
   },
   {
     "id": 7101205,
+    "extendCost": 0,
     "group": 10107,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%",
     "effectDesc2": "己方暴击创伤提升",
     "desc": "它会一直转。",
     "tag": "101",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7201205,
+    "extendCost": 200,
     "group": 10107,
     "score": 200,
-    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：进入战斗时，开启【涌动电场lv2】，<sprite=5>【连锁】+1",
-    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：进入战斗时，开启【涌动电场lv2】，<sprite=5>提升",
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：进入战斗时，开启【涌动电场lv2】，<sprite=7>【连锁】+1",
+    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：进入战斗时，开启【涌动电场lv2】，<sprite=7>提升",
     "desc": "它会一直转。",
     "tag": "101",
-    "effect": "1000012#1010005"
+    "effect": "1000012#1010005",
+    "equipType": 0
   },
   {
     "id": 7301205,
+    "extendCost": 500,
     "group": 10107,
     "score": 300,
-    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】时生效：进入战斗时，开启【涌动电场lv3】，<sprite=5>【连锁】+2",
-    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=8>时生效：进入战斗时，开启【涌动电场lv3】，<sprite=5>提升",
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：进入战斗时，开启【涌动电场lv3】，<sprite=7>【连锁】+2",
+    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：进入战斗时，开启【涌动电场lv3】，<sprite=7>提升",
     "desc": "它会一直转。",
     "tag": "101",
-    "effect": "1000015#1010006"
+    "effect": "1000015#1010006",
+    "equipType": 0
   },
   {
     "id": 7101206,
+    "extendCost": 0,
     "group": 10108,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "人工闪电！滋啦——滋啦——",
     "tag": "101",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7201206,
+    "extendCost": 200,
     "group": 10108,
     "score": 200,
-    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】生效：回合结束时，给当前【涌动电场】注入15点【电能】，<sprite=5>【连锁】+1",
-    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=8>生效：回合结束时，给当前【涌动电场】注入大量【电能】，<sprite=5>提升",
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】生效：回合结束时，给当前【涌动电场】注入15点【电能】，<sprite=7>【连锁】+1",
+    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=10>生效：回合结束时，给当前【涌动电场】注入大量【电能】，<sprite=7>提升",
     "desc": "人工闪电！滋啦——滋啦——",
     "tag": "101",
-    "effect": "1000007#1010007"
+    "effect": "1000007#1010007",
+    "equipType": 0
   },
   {
     "id": 7301206,
+    "extendCost": 500,
     "group": 10108,
     "score": 300,
-    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=8>【电能痕契<id:0>】生效：回合结束时，给当前【涌动电场】注入30点【电能】，<sprite=5>【连锁】+2",
-    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=8>生效：回合结束时，给当前【涌动电场】注入巨额【电能】，<sprite=5>提升",
+    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】生效：回合结束时，给当前【涌动电场】注入30点【电能】，<sprite=7>【连锁】+2",
+    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=10>生效：回合结束时，给当前【涌动电场】注入巨额【电能】，<sprite=7>提升",
     "desc": "人工闪电！滋啦——滋啦——",
     "tag": "101",
-    "effect": "1000010#1010008"
+    "effect": "1000010#1010008",
+    "equipType": 0
   },
   {
     "id": 7102101,
+    "extendCost": 0,
     "group": 10201,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=9>时生效：<sprite=6>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=8>提升",
     "desc": "一套由龙骨雕刻的古老占卜牌。",
     "tag": "102",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7202101,
+    "extendCost": 200,
     "group": 10201,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=8>较大幅度提升",
     "desc": "一套由龙骨雕刻的古老占卜牌。",
     "tag": "102",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7302101,
+    "extendCost": 500,
     "group": 10201,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=6>【怒火】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=9>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=8>【怒火】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=11>时生效：<sprite=8>大幅度提升",
     "desc": "一套由龙骨雕刻的古老占卜牌。",
     "tag": "102",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7102102,
+    "extendCost": 0,
     "group": 10202,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方创伤减免提升；{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方创伤减免提升；{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>提升",
     "desc": "这可不是普通的红砖被炸成了灰。",
     "tag": "102",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7202102,
+    "extendCost": 200,
     "group": 10202,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>较大幅度提升",
     "desc": "这可不是普通的红砖被炸成了灰。",
     "tag": "102",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7302102,
+    "extendCost": 500,
     "group": 10202,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>大幅度提升",
     "desc": "这可不是普通的红砖被炸成了灰。",
     "tag": "102",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7102201,
+    "extendCost": 0,
     "group": 10203,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "远古却不原始。",
     "tag": "102",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7202201,
+    "extendCost": 200,
     "group": 10203,
     "score": 200,
     "effectDesc": "己方创伤加成+20%；|【即兴咒语】的创伤加成+10%",
     "effectDesc2": "己方创伤加成较大幅度提升；|【即兴咒语】的创伤加成提升",
     "desc": "远古却不原始。",
     "tag": "102",
-    "effect": "1000003#1020001"
+    "effect": "1000003#1020001",
+    "equipType": 0
   },
   {
     "id": 7302201,
+    "extendCost": 500,
     "group": 10203,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|【即兴咒语】的创伤加成+20%；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：己方角色灵光上限+2，<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方创伤加成大幅度提升；|【即兴咒语】的创伤加成较中等幅度提升；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>时生效：己方角色增加灵光上限，<sprite=7>提升",
+    "effectDesc": "己方创伤加成+40%；|【即兴咒语】的创伤加成+20%；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：己方角色灵光上限+2，<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方创伤加成大幅度提升；|【即兴咒语】的创伤加成较中等幅度提升；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>时生效：己方角色增加灵光上限，<sprite=9>提升",
     "desc": "远古却不原始。",
     "tag": "102",
-    "effect": "1000003#1000003#1020002#1020003"
+    "effect": "1000003#1000003#1020002#1020003",
+    "equipType": 0
   },
   {
     "id": 7102202,
+    "extendCost": 0,
     "group": 10204,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "金黄色的时间在捕食的那一刻停止了。",
     "tag": "102",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7202202,
+    "extendCost": 200,
     "group": 10204,
     "score": 200,
-    "effectDesc": "己方术法威力+20%；|布设中每有2件<sprite=1>【启示<id:0>】<sprite=4>【仪式<id:0>】盒中之物，<sprite=7>【混沌<id:1>】+1，当前<sprite=7>【混沌<id:1>】加成：{count10}",
-    "effectDesc2": "己方术法威力较大幅度提升；|布设中<sprite=1><sprite=4>盒中之物越多，自身获得<sprite=7>越多",
+    "effectDesc": "己方术法威力+20%；|布设中每有2件<sprite=1>【启示<id:0>】<sprite=4>【仪式<id:0>】盒中之物，<sprite=9>【混沌<id:1>】+1，当前<sprite=9>【混沌<id:1>】加成：{count10}",
+    "effectDesc2": "己方术法威力较大幅度提升；|布设中<sprite=1><sprite=4>盒中之物越多，自身获得<sprite=9>越多",
     "desc": "金黄色的时间在捕食的那一刻停止了。",
     "tag": "102#105",
-    "effect": "1000018"
+    "effect": "1000018",
+    "equipType": 0
   },
   {
     "id": 7302202,
+    "extendCost": 500,
     "group": 10204,
     "score": 300,
-    "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=1>【启示<id:0>】<sprite=4>【仪式<id:0>】盒中之物，<sprite=7>【混沌<id:1>】+1，当前<sprite=7>【混沌<id:1>】加成：{count10}；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：回合开始时，己方灵光+2",
-    "effectDesc2": "己方术法威力大幅度提升；|布设中<sprite=1><sprite=4>盒中之物越多，自身获得<sprite=7>越多；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>时生效：回合开始时，己方获得灵光",
+    "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=1>【启示<id:0>】<sprite=4>【仪式<id:0>】盒中之物，<sprite=9>【混沌<id:1>】+1，当前<sprite=9>【混沌<id:1>】加成：{count10}；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：回合开始时，己方灵光+2",
+    "effectDesc2": "己方术法威力大幅度提升；|布设中<sprite=1><sprite=4>盒中之物越多，自身获得<sprite=9>越多；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>时生效：回合开始时，己方获得灵光",
     "desc": "金黄色的时间在捕食的那一刻停止了。",
     "tag": "102#105",
-    "effect": "1000018#1000018#1020004"
+    "effect": "1000018#1000018#1020004",
+    "equipType": 0
   },
   {
     "id": 7102203,
+    "extendCost": 0,
     "group": 10205,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "它会给你灵感，给你思路，给你预设好的一切。",
     "tag": "102",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7202203,
+    "extendCost": 200,
     "group": 10205,
     "score": 200,
     "effectDesc": "己方术法威力+20%；|【即兴咒语】的术法威力+10%",
     "effectDesc2": "己方术法威力较大幅度提升；|【即兴咒语】的术法威力提升",
     "desc": "它会给你灵感，给你思路，给你预设好的一切。",
     "tag": "102",
-    "effect": "1000018#1020012"
+    "effect": "1000018#1020012",
+    "equipType": 0
   },
   {
     "id": 7302203,
+    "extendCost": 500,
     "group": 10205,
     "score": 300,
-    "effectDesc": "己方术法威力+40%；|【即兴咒语】的术法威力+20%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：【痕契之击<id:0>】攻击时，目标每损失10%最大生命，则提升对其造成的30%最终伤害",
-    "effectDesc2": "己方术法威力大幅度提升；|【即兴咒语】的术法威力中等幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：【痕契之击<id:0>】攻击时，目标血越低，对其造成的伤害越高",
+    "effectDesc": "己方术法威力+40%；|【即兴咒语】的术法威力+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：【痕契之击<id:0>】攻击时，目标每损失10%最大生命，则提升对其造成的30%最终伤害",
+    "effectDesc2": "己方术法威力大幅度提升；|【即兴咒语】的术法威力中等幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：【痕契之击<id:0>】攻击时，目标血越低，对其造成的伤害越高",
     "desc": "它会给你灵感，给你思路，给你预设好的一切。",
     "tag": "102",
-    "effect": "1000018#1000018#1020005#1020012#1020012"
+    "effect": "1000018#1000018#1020005#1020012#1020012",
+    "equipType": 0
   },
   {
     "id": 7102204,
+    "extendCost": 0,
     "group": 10206,
     "score": 100,
     "effectDesc": "己方穿透率+10%",
     "effectDesc2": "己方穿透率提升",
     "desc": "真的必要吗？",
     "tag": "102",
-    "effect": "1000061"
+    "effect": "1000061",
+    "equipType": 0
   },
   {
     "id": 7202204,
+    "extendCost": 200,
     "group": 10206,
     "score": 200,
     "effectDesc": "己方穿透率+20%；|【即兴咒语】的穿透率+10%",
     "effectDesc2": "己方穿透率较大幅度提升；|【即兴咒语】的穿透率提升",
     "desc": "真的必要吗？",
     "tag": "102",
-    "effect": "1000063#1020006"
+    "effect": "1000063#1020006",
+    "equipType": 0
   },
   {
     "id": 7302204,
+    "extendCost": 500,
     "group": 10206,
     "score": 300,
-    "effectDesc": "己方穿透率+30%；|【即兴咒语】的穿透率+20%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2；",
-    "effectDesc2": "己方穿透率大幅度提升；|【即兴咒语】的穿透率中等幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>提升；",
+    "effectDesc": "己方穿透率+30%；|【即兴咒语】的穿透率+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方穿透率大幅度提升；|【即兴咒语】的穿透率中等幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>提升",
     "desc": "真的必要吗？",
     "tag": "102",
-    "effect": "1000063#1000063#1020007"
+    "effect": "1000063#1000063#1020007",
+    "equipType": 0
   },
   {
     "id": 7102205,
+    "extendCost": 0,
     "group": 10207,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "圣歌之外皆虚无。",
     "tag": "102",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7202205,
+    "extendCost": 200,
     "group": 10207,
     "score": 200,
-    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：布设中每有1点<sprite=7>【混沌<id:1>】，痕契暴击率+5%，当前加成：{5*out_count4}%",
-    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：布设中<sprite=7>越多，痕契暴击率越高",
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：布设中每有1点<sprite=9>【混沌<id:1>】，痕契暴击率+5%，当前加成：{5*out_count4}%",
+    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：布设中<sprite=9>越多，痕契暴击率越高",
     "desc": "圣歌之外皆虚无。",
     "tag": "102",
-    "effect": "1000007#1020009"
+    "effect": "1000007#1020009",
+    "equipType": 0
   },
   {
     "id": 7302205,
+    "extendCost": 500,
     "group": 10207,
     "score": 300,
-    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：布设中每有1点<sprite=7>【混沌<id:1>】，痕契暴击率+5%，当前加成{5*out_count4}%；|{check(count10 > 0)}相邻的盒中之物归属<sprite=1>【启示<id:0>】时生效：【痕契之击<id:0>】溢出的100%暴击转化为暴击创伤。",
-    "effectDesc2": "己方暴击率大幅度提升；；|{check(count9 > 0)}激活<sprite=9>时生效：布设中<sprite=7>越多，痕契暴击率越高；|{check(count10 > 0)}相邻的盒中之物归属<sprite=1>时生效：【痕契之击<id:0>】溢出的暴击转化为暴击创伤。",
+    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：布设中每有1点<sprite=9>【混沌<id:1>】，痕契暴击率+5%，当前加成{5*out_count4}%；|{check(count10 > 0)}相邻的盒中之物归属<sprite=1>【启示<id:0>】时生效：【痕契之击<id:0>】溢出的100%暴击转化为暴击创伤",
+    "effectDesc2": "己方暴击率大幅度提升；；|{check(count9 > 0)}激活<sprite=11>时生效：布设中<sprite=9>越多，痕契暴击率越高；|{check(count10 > 0)}相邻的盒中之物归属<sprite=1>时生效：【痕契之击<id:0>】溢出的暴击转化为暴击创伤",
     "desc": "圣歌之外皆虚无。",
     "tag": "102",
-    "effect": "1000010#1020009#1020010"
+    "effect": "1000010#1020009#1020010",
+    "equipType": 0
   },
   {
     "id": 7102206,
+    "extendCost": 0,
     "group": 10208,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%",
     "effectDesc2": "己方暴击创伤提升",
     "desc": "这一切的尽头都是疯狂与黑暗。",
     "tag": "102",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7202206,
+    "extendCost": 200,
     "group": 10208,
     "score": 200,
-    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>提升",
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>提升",
     "desc": "这一切的尽头都是疯狂与黑暗。",
     "tag": "102",
-    "effect": "1000012"
+    "effect": "1000012",
+    "equipType": 0
   },
   {
     "id": 7302206,
+    "extendCost": 500,
     "group": 10208,
     "score": 300,
-    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=9>【启示痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2；|{check(count13 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效，【痕契之击<id:0>】的发动条件下调成即兴咒语每攻击5次",
-    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=9>时生效：<sprite=7>提升；|{check(count13 > 0)}相邻的盒中之物都归属<sprite=1>时生效，【痕契之击<id:0>】的发动条件变简单",
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2；|{check(count13 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效，【痕契之击<id:0>】的发动条件下调成即兴咒语每攻击5次",
+    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=9>提升；|{check(count13 > 0)}相邻的盒中之物都归属<sprite=1>时生效，【痕契之击<id:0>】的发动条件变简单",
     "desc": "这一切的尽头都是疯狂与黑暗。",
     "tag": "102",
-    "effect": "1000015#1020011"
+    "effect": "1000015#1020011",
+    "equipType": 0
   },
   {
     "id": 7103101,
+    "extendCost": 0,
     "group": 10301,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=6>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=8>提升",
     "desc": "她说这只是一管石榴汁。",
     "tag": "103",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7203101,
+    "extendCost": 200,
     "group": 10301,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=8>较大幅度提升",
     "desc": "她说这只是一管石榴汁。",
     "tag": "103",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7303101,
+    "extendCost": 500,
     "group": 10301,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=6>【怒火】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=10>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=12>时生效：<sprite=8>大幅度提升",
     "desc": "她说这只是一管石榴汁。",
     "tag": "103",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7103102,
+    "extendCost": 0,
     "group": 10302,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=9>提升",
     "desc": "听说是从一艘船上换下来的。",
     "tag": "103",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7203102,
+    "extendCost": 200,
     "group": 10302,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=9>较大幅度提升",
     "desc": "听说是从一艘船上换下来的。",
     "tag": "103",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7303102,
+    "extendCost": 500,
     "group": 10302,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=7>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=9>大幅度提升",
     "desc": "听说是从一艘船上换下来的。",
     "tag": "103",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7103201,
+    "extendCost": 0,
     "group": 10303,
     "score": 100,
     "effectDesc": "己方治疗率+10%",
     "effectDesc2": "己方治疗率提升",
     "desc": "刺下，割开，仪式本身。",
     "tag": "103",
-    "effect": "1000071"
+    "effect": "1000071",
+    "equipType": 0
   },
   {
     "id": 7203201,
+    "extendCost": 200,
     "group": 10303,
     "score": 200,
-    "effectDesc": "己方治疗率+20%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：己方治疗率+10%",
-    "effectDesc2": "己方治疗率较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：己方治疗率提升",
+    "effectDesc": "己方治疗率+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方治疗率+10%",
+    "effectDesc2": "己方治疗率较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：己方治疗率提升",
     "desc": "刺下，割开，仪式本身。",
     "tag": "103",
-    "effect": "1000073#1030008"
+    "effect": "1000073#1030008",
+    "equipType": 0
   },
   {
     "id": 7303201,
+    "extendCost": 500,
     "group": 10303,
     "score": 300,
-    "effectDesc": "己方治疗率+30%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：己方治疗率+20%",
-    "effectDesc2": "己方治疗率大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：己方治疗率中等幅度提升",
+    "effectDesc": "己方治疗率+30%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方治疗率+20%",
+    "effectDesc2": "己方治疗率大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：己方治疗率中等幅度提升",
     "desc": "刺下，割开，仪式本身。",
     "tag": "103",
-    "effect": "1000075#1030009"
+    "effect": "1000075#1030009",
+    "equipType": 0
   },
   {
     "id": 7103202,
+    "extendCost": 0,
     "group": 10304,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "红色的星星，绿色的火。",
     "tag": "103",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7203202,
+    "extendCost": 200,
     "group": 10304,
     "score": 200,
-    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}处于首位槽位且激活<sprite=10>【薪血痕契<id:0>】时生效：回合开始时，己方全体失去20%当前生命；攻击时，若己方角色当前生命低于40%，攻击临时提高20%；回合结束时，己方全体回复20%最大生命，<sprite=6>【怒火】+2",
-    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}处于首位槽位且激活<sprite=10>时生效：回合开始时，己方全体失去一定当前生命；攻击时，若己方角色当前生命较低，则临时提升攻击；回合结束时，己方全体回复最大生命，<sprite=6>提升",
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}处于首位槽位且激活<sprite=12>【薪血痕契<id:0>】时生效：回合开始时，己方全体失去20%当前生命；攻击时，若己方角色当前生命低于40%，攻击临时提高20%；回合结束时，己方全体回复20%最大生命，<sprite=8>【怒火】+2",
+    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}处于首位槽位且激活<sprite=12>时生效：回合开始时，己方全体失去一定当前生命；攻击时，若己方角色当前生命较低，则临时提升攻击；回合结束时，己方全体回复最大生命，<sprite=8>提升",
     "desc": "红色的星星，绿色的火。",
     "tag": "103",
-    "effect": "1000007#1030001"
+    "effect": "1000007#1030001",
+    "equipType": 0
   },
   {
     "id": 7303202,
+    "extendCost": 500,
     "group": 10304,
     "score": 300,
-    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}处于首位槽位且激活<sprite=10>【薪血痕契<id:0>】时生效：回合开始时，己方全体失去30%当前生命；攻击时，若己方角色当前生命低于40%，攻击临时提高30%；回合结束时，己方全体回复30%最大生命，<sprite=6>【怒火】+3",
-    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}处于首位槽位且激活<sprite=10>时生效：回合开始时，己方全体失去一定当前生命；攻击时，若己方角色当前生命较低，则临时提升攻击；回合结束时，己方全体回复一定最大生命，<sprite=6>较大幅度提升",
+    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}处于首位槽位且激活<sprite=12>【薪血痕契<id:0>】时生效：回合开始时，己方全体失去30%当前生命；攻击时，若己方角色当前生命低于40%，攻击临时提高30%；回合结束时，己方全体回复30%最大生命，<sprite=8>【怒火】+3",
+    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}处于首位槽位且激活<sprite=12>时生效：回合开始时，己方全体失去一定当前生命；攻击时，若己方角色当前生命较低，则临时提升攻击；回合结束时，己方全体回复一定最大生命，<sprite=8>较大幅度提升",
     "desc": "红色的星星，绿色的火。",
     "tag": "103",
-    "effect": "1000010#1030002"
+    "effect": "1000010#1030002",
+    "equipType": 0
   },
   {
     "id": 7103203,
+    "extendCost": 0,
     "group": 10305,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%",
     "effectDesc2": "己方暴击创伤提升",
     "desc": "亡者的衣裳，最后的体面。",
     "tag": "103",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7203203,
+    "extendCost": 200,
     "group": 10305,
     "score": 200,
-    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：己方暴击率+15%，暴击创伤+15%",
-    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：己方暴击率较大幅度提升，暴击创伤较大幅度提升；",
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方暴击率+15%，暴击创伤+15%",
+    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：己方暴击率较大幅度提升，暴击创伤较大幅度提升",
     "desc": "亡者的衣裳，最后的体面。",
     "tag": "103",
-    "effect": "1000012#1030010"
+    "effect": "1000012#1030010",
+    "equipType": 0
   },
   {
     "id": 7303203,
+    "extendCost": 500,
     "group": 10305,
     "score": 300,
-    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：己方暴击率+30%，暴击创伤+30%",
-    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：己方暴击率大幅度提升，暴击创伤大幅度提升",
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方暴击率+30%，暴击创伤+30%",
+    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：己方暴击率大幅度提升，暴击创伤大幅度提升",
     "desc": "亡者的衣裳，最后的体面。",
     "tag": "103",
-    "effect": "1000015#1030011"
+    "effect": "1000015#1030011",
+    "equipType": 0
   },
   {
     "id": 7103204,
+    "extendCost": 0,
     "group": 10306,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "可以抓一只魔精放在里面。",
     "tag": "103",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7203204,
+    "extendCost": 200,
     "group": 10306,
     "score": 200,
-    "effectDesc": "己方术法威力+20%；|布设中每有2件<sprite=2>【薪血<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=6>【怒火】+1，当前<sprite=6>【怒火】加成：{count10}",
-    "effectDesc2": "己方术法威力较大幅度提升；|布设中<sprite=2><sprite=3>盒中之物越多，自身获得<sprite=6>越多",
+    "effectDesc": "己方术法威力+20%；|布设中每有2件<sprite=2>【薪血<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成：{count10}",
+    "effectDesc2": "己方术法威力较大幅度提升；|布设中<sprite=2><sprite=3>盒中之物越多，自身获得<sprite=8>越多",
     "desc": "可以抓一只魔精放在里面。",
     "tag": "103#104",
-    "effect": "1000018"
+    "effect": "1000018",
+    "equipType": 0
   },
   {
     "id": 7303204,
+    "extendCost": 500,
     "group": 10306,
     "score": 300,
-    "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=2>【薪血<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=6>【怒火】+1，当前<sprite=6>【怒火】加成：{count10}；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方术法威力大幅度提升；|布设中<sprite=2><sprite=3>盒中之物越多，自身获得<sprite=6>越多|{check(count9 > 0)}激活<sprite=10>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=2>【薪血<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成：{count10}；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方术法威力大幅度提升；|布设中<sprite=2><sprite=3>盒中之物越多，自身获得<sprite=8>越多|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=8>较大幅度提升",
     "desc": "可以抓一只魔精放在里面。",
     "tag": "103#104",
-    "effect": "1000018#1000018"
+    "effect": "1000018#1000018",
+    "equipType": 0
   },
   {
     "id": 7103205,
+    "extendCost": 0,
     "group": 10307,
     "score": 100,
     "effectDesc": "己方穿透率+10%",
     "effectDesc2": "己方穿透率提升",
     "desc": "奉献！奉献！奉献！",
     "tag": "103",
-    "effect": "1000061"
+    "effect": "1000061",
+    "equipType": 0
   },
   {
     "id": 7203205,
+    "extendCost": 200,
     "group": 10307,
     "score": 200,
-    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：【痕契之击<id:0>】：额外提升5%*已消耗【薪血】计数值的创伤；<sprite=6>【怒火】+2",
-    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：【痕契之击<id:0>】：额外提升已消耗【薪血】计数值的创伤；<sprite=6>提升",
+    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：【痕契之击<id:0>】：额外提升5%*已消耗【薪血】计数值的创伤；<sprite=8>【怒火】+2",
+    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：【痕契之击<id:0>】：额外提升已消耗【薪血】计数值的创伤；<sprite=8>提升",
     "desc": "奉献！奉献！奉献！",
     "tag": "103",
-    "effect": "1000063#1030006"
+    "effect": "1000063#1030006",
+    "equipType": 0
   },
   {
     "id": 7303205,
+    "extendCost": 500,
     "group": 10307,
     "score": 300,
-    "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效：【痕契之击<id:0>】：额外提升10%*已消耗【薪血】计数值的创伤；<sprite=6>【怒火】+3",
-    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效：【痕契之击<id:0>】：额外较大幅度提升已消耗【薪血】计数值的创伤；<sprite=6>较大幅度提升",
+    "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：【痕契之击<id:0>】：额外提升10%*已消耗【薪血】计数值的创伤；<sprite=8>【怒火】+3",
+    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：【痕契之击<id:0>】：额外较大幅度提升已消耗【薪血】计数值的创伤；<sprite=8>较大幅度提升",
     "desc": "奉献！奉献！奉献！",
     "tag": "103",
-    "effect": "1000063#1000063#1030007"
+    "effect": "1000063#1000063#1030007",
+    "equipType": 0
   },
   {
     "id": 7103206,
+    "extendCost": 0,
     "group": 10308,
     "score": 100,
     "effectDesc": "己方最大生命+10%",
     "effectDesc2": "己方最大生命提升",
     "desc": "以牙还牙，这是还过来的那颗。",
     "tag": "103",
-    "effect": "1000026"
+    "effect": "1000026",
+    "equipType": 0
   },
   {
     "id": 7203206,
+    "extendCost": 200,
     "group": 10308,
     "score": 200,
-    "effectDesc": "己方最大生命+15%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效:<sprite=6>【怒火】+2，己方最大生命+10%；",
-    "effectDesc2": "己方最大生命较大幅度提升；|{check(count9 > 0)}激活时生效:<sprite=6>【怒火】提升，己方最大生命提升；",
+    "effectDesc": "己方最大生命+15%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效:<sprite=8>【怒火】+2，己方最大生命+10%",
+    "effectDesc2": "己方最大生命较大幅度提升；|{check(count9 > 0)}激活时生效:<sprite=8>【怒火】提升，己方最大生命提升",
     "desc": "以牙还牙，这是还过来的那颗。",
     "tag": "103",
-    "effect": "1000027#1030012"
+    "effect": "1000027#1030012",
+    "equipType": 0
   },
   {
     "id": 7303206,
+    "extendCost": 500,
     "group": 10308,
     "score": 300,
-    "effectDesc": "己方最大生命+20%；|{check(count9 > 0)}激活<sprite=10>【薪血痕契<id:0>】时生效:<sprite=6>【怒火】+2，己方最大生命+20%",
-    "effectDesc2": "己方最大生命大幅度提升；|{check(count9 > 0)}激活<sprite=10>时生效:<sprite=6>提升，己方最大生命大幅度提升",
+    "effectDesc": "己方最大生命+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效:<sprite=8>【怒火】+2，己方最大生命+20%",
+    "effectDesc2": "己方最大生命大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效:<sprite=8>提升，己方最大生命大幅度提升",
     "desc": "以牙还牙，这是还过来的那颗。",
     "tag": "103",
-    "effect": "1000028#1030013"
+    "effect": "1000028#1030013",
+    "equipType": 0
   },
   {
     "id": 7104101,
+    "extendCost": 0,
     "group": 10401,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>提升",
     "desc": "嗡————叮！",
     "tag": "104",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7204101,
+    "extendCost": 200,
     "group": 10401,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>较大幅度提升",
     "desc": "嗡————叮！",
     "tag": "104",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7304101,
+    "extendCost": 500,
     "group": 10401,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>大幅度提升",
     "desc": "嗡————叮！",
     "tag": "104",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7104102,
+    "extendCost": 0,
     "group": 10402,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>提升",
     "desc": "舒适的脚掌，好吧可能也不是很舒适。",
     "tag": "104",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7204102,
+    "extendCost": 200,
     "group": 10402,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>较大幅度提升",
     "desc": "舒适的脚掌，好吧可能也不是很舒适。",
     "tag": "104",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7304102,
+    "extendCost": 500,
     "group": 10402,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>大幅度升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>大幅度升",
     "desc": "舒适的脚掌，好吧可能也不是很舒适。",
     "tag": "104",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7104201,
+    "extendCost": 0,
     "group": 10403,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "取些许，再加点液化战栗、青柠汁和冰块，最后再来一点点爱？",
     "tag": "104",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7204201,
+    "extendCost": 200,
     "group": 10403,
     "score": 200,
     "effectDesc": "己方创伤加成+20%；|己方额外行动时，创伤加成+10%",
     "effectDesc2": "己方创伤加成较大幅度提升；|己方额外行动时，创伤加成提升",
     "desc": "取些许，再加点液化战栗、青柠汁和冰块，最后再来一点点爱？",
     "tag": "104",
-    "effect": "1000001#1040001"
+    "effect": "1000001#1040001",
+    "equipType": 0
   },
   {
     "id": 7304201,
+    "extendCost": 500,
     "group": 10403,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|己方额外行动时，创伤加成+10%；|布设中每有1点<sprite=5>【连锁】，额外行动时，创伤加成+5%，当前加成：{5*out_count1}%",
-    "effectDesc2": "己方创伤加成大幅度提升；|己方额外行动时，创伤加成提升；|布设中<sprite=5>越多，己方额外行动时，创伤加成提升越高",
+    "effectDesc": "己方创伤加成+40%；|己方额外行动时，创伤加成+10%；|布设中每有1点<sprite=7>【连锁】，额外行动时，创伤加成+5%，当前加成：{5*out_count1}%",
+    "effectDesc2": "己方创伤加成大幅度提升；|己方额外行动时，创伤加成提升；|布设中<sprite=7>越多，己方额外行动时，创伤加成提升越高",
     "desc": "取些许，再加点液化战栗、青柠汁和冰块，最后再来一点点爱？",
     "tag": "104",
-    "effect": "1000001#1040002#1040003"
+    "effect": "1000001#1040002#1040003",
+    "equipType": 0
   },
   {
     "id": 7104202,
+    "extendCost": 0,
     "group": 10404,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "有蛋白质燃烧的香味，是烧黑的。",
     "tag": "104",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7204202,
+    "extendCost": 200,
     "group": 10404,
     "score": 200,
-    "effectDesc": "己方创伤加成+20%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方创伤加成较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>提升",
+    "effectDesc": "己方创伤加成+20%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方创伤加成较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>提升",
     "desc": "有蛋白质燃烧的香味，是烧黑的。",
     "tag": "104",
-    "effect": "1000003"
+    "effect": "1000003",
+    "equipType": 0
   },
   {
     "id": 7304202,
+    "extendCost": 500,
     "group": 10404,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+4",
-    "effectDesc2": "己方创伤加成大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+4",
+    "effectDesc2": "己方创伤加成大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>大幅度提升",
     "desc": "有蛋白质燃烧的香味，是烧黑的。",
     "tag": "104",
-    "effect": "1000003#1000003"
+    "effect": "1000003#1000003",
+    "equipType": 0
   },
   {
     "id": 7104203,
+    "extendCost": 0,
     "group": 10405,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "苦目液不起作用了，快把起搏器拿过来。",
     "tag": "104",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7204203,
+    "extendCost": 200,
     "group": 10405,
     "score": 200,
-    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+2",
-    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>提升",
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>提升",
     "desc": "苦目液不起作用了，快把起搏器拿过来。",
     "tag": "104",
-    "effect": "1000007"
+    "effect": "1000007",
+    "equipType": 0
   },
   {
     "id": 7304203,
+    "extendCost": 500,
     "group": 10405,
     "score": 300,
-    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+3；【痕契之击lv4】使己方全体提升2%暴击率（最多提升30次）",
-    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>较大幅度提升；【痕契之击lv4】攻击后使己方全体暴击率提升，可叠加",
+    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+3；【痕契之击lv4】使己方全体提升2%暴击率（最多提升30次）",
+    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>较大幅度提升；【痕契之击lv4】攻击后使己方全体暴击率提升，可叠加",
     "desc": "苦目液不起作用了，快把起搏器拿过来。",
     "tag": "104",
-    "effect": "1000010#1040004"
+    "effect": "1000010#1040004",
+    "equipType": 0
   },
   {
     "id": 7104204,
+    "extendCost": 0,
     "group": 10406,
     "score": 100,
     "effectDesc": "己方穿透率+10%",
     "effectDesc2": "己方穿透率提升",
     "desc": "它们源源不断地长出来，我砍不完……",
     "tag": "104",
-    "effect": "1000061"
+    "effect": "1000061",
+    "equipType": 0
   },
   {
     "id": 7204204,
+    "extendCost": 200,
     "group": 10406,
     "score": 200,
-    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+2",
-    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>提升",
+    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>提升",
     "desc": "它们源源不断地长出来，我砍不完……",
     "tag": "104",
-    "effect": "1000062"
+    "effect": "1000062",
+    "equipType": 0
   },
   {
     "id": 7304204,
+    "extendCost": 500,
     "group": 10406,
     "score": 300,
-    "effectDesc": "己方穿透率+30%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+4",
-    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>大幅度提升",
+    "effectDesc": "己方穿透率+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+4",
+    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>大幅度提升",
     "desc": "它们源源不断地长出来，我砍不完……",
     "tag": "104",
-    "effect": "1000065"
+    "effect": "1000065",
+    "equipType": 0
   },
   {
     "id": 7104205,
+    "extendCost": 0,
     "group": 10407,
     "score": 100,
     "effectDesc": "己方术法威力+10%",
     "effectDesc2": "己方术法威力提升",
     "desc": "在被发现并被烤熟之前据说它在用男高音歌唱。",
     "tag": "104",
-    "effect": "1000016"
+    "effect": "1000016",
+    "equipType": 0
   },
   {
     "id": 7204205,
+    "extendCost": 200,
     "group": 10407,
     "score": 200,
-    "effectDesc": "己方术法威力+20%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方术法威力较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>提升",
+    "effectDesc": "己方术法威力+20%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方术法威力较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>提升",
     "desc": "在被发现并被烤熟之前据说它在用男高音歌唱。",
     "tag": "104",
-    "effect": "1000018"
+    "effect": "1000018",
+    "equipType": 0
   },
   {
     "id": 7304205,
+    "extendCost": 500,
     "group": 10407,
     "score": 300,
-    "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=6>【怒火】+2；【痕契之击<id:0>】溢出的暴击率转化为100%等额的暴击创伤",
-    "effectDesc2": "己方术法威力大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=6>提升；【痕契之击<id:0>】溢出的暴击率转化暴击创伤",
+    "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+2；【痕契之击<id:0>】溢出的暴击率转化为100%等额的暴击创伤",
+    "effectDesc2": "己方术法威力大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=8>提升；【痕契之击<id:0>】溢出的暴击率转化暴击创伤",
     "desc": "在被发现并被烤熟之前据说它在用男高音歌唱。",
     "tag": "104",
-    "effect": "1000018#1000018#1040005"
+    "effect": "1000018#1000018#1040005",
+    "equipType": 0
   },
   {
     "id": 7104206,
+    "extendCost": 0,
     "group": 10408,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%",
     "effectDesc2": "己方暴击创伤提升",
     "desc": "“再给我一小块，求求您，就一小块。”",
     "tag": "104",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7204206,
+    "extendCost": 200,
     "group": 10408,
     "score": 200,
-    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+2",
-    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>提升",
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>提升",
     "desc": "“再给我一小块，求求您，就一小块。”",
     "tag": "104",
-    "effect": "1000012"
+    "effect": "1000012",
+    "equipType": 0
   },
   {
     "id": 7304206,
+    "extendCost": 500,
     "group": 10408,
     "score": 300,
-    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=11>【额外行动痕契<id:0>】时生效：<sprite=5>【连锁】+3；【痕契之击lv4】使己方全体提升2%创伤加成（最多提升30次）",
-    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=11>时生效：<sprite=5>较大幅度提升；【痕契之击lv4】攻击后使己方全体创伤加成提升，可叠加",
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+3；【痕契之击lv4】使己方全体提升2%创伤加成（最多提升30次）",
+    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=13>时生效：<sprite=7>较大幅度提升；【痕契之击lv4】攻击后使己方全体创伤加成提升，可叠加",
     "desc": "“再给我一小块，求求您，就一小块。”",
     "tag": "104",
-    "effect": "1000015#1040006"
+    "effect": "1000015#1040006",
+    "equipType": 0
   },
   {
     "id": 7105101,
+    "extendCost": 0,
     "group": 10501,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=6>【怒火】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=6>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=8>提升",
     "desc": "大家都很想念它。",
     "tag": "105",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7205101,
+    "extendCost": 200,
     "group": 10501,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=6>【怒火】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=6>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=8>较大幅度提升",
     "desc": "大家都很想念它。",
     "tag": "105",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7305101,
+    "extendCost": 500,
     "group": 10501,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=6>【怒火】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=6>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=8>大幅度提升",
     "desc": "大家都很想念它。",
     "tag": "105",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7105102,
+    "extendCost": 0,
     "group": 10502,
     "score": 100,
-    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=7>提升",
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=9>提升",
     "desc": "据说可以语音控制火焰大小。",
     "tag": "105",
-    "effect": "1000081"
+    "effect": "1000081",
+    "equipType": 0
   },
   {
     "id": 7205102,
+    "extendCost": 200,
     "group": 10502,
     "score": 200,
-    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+3",
-    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=7>较大幅度提升",
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=9>较大幅度提升",
     "desc": "据说可以语音控制火焰大小。",
     "tag": "105",
-    "effect": "1000083"
+    "effect": "1000083",
+    "equipType": 0
   },
   {
     "id": 7305102,
+    "extendCost": 500,
     "group": 10502,
     "score": 300,
-    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+5",
-    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=7>大幅度提升",
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=9>大幅度提升",
     "desc": "据说可以语音控制火焰大小。",
     "tag": "105",
-    "effect": "1000086"
+    "effect": "1000086",
+    "equipType": 0
   },
   {
     "id": 7105201,
+    "extendCost": 0,
     "group": 10503,
     "score": 100,
     "effectDesc": "己方暴击率+10%",
     "effectDesc2": "己方暴击率提升",
     "desc": "通常玻璃突然开裂那是要有大事发生。",
     "tag": "105",
-    "effect": "1000006"
+    "effect": "1000006",
+    "equipType": 0
   },
   {
     "id": 7205201,
+    "extendCost": 200,
     "group": 10503,
     "score": 200,
-    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=6>【怒火】+2，己方全体暴击率+15%",
-    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=6>提升，己方全体暴击率提升",
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+2，己方全体暴击率+15%",
+    "effectDesc2": "己方暴击率较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=8>提升，己方全体暴击率提升",
     "desc": "通常玻璃突然开裂那是要有大事发生。",
     "tag": "105",
-    "effect": "1000007#1050009"
+    "effect": "1000007#1050009",
+    "equipType": 0
   },
   {
     "id": 7305201,
+    "extendCost": 500,
     "group": 10503,
     "score": 300,
-    "effectDesc": "己方暴击率+30%;|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=6>【怒火】+4，己方全体暴击率+30%",
-    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=6>大幅度提升，己方全体暴击率提升",
+    "effectDesc": "己方暴击率+30%;|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+4，己方全体暴击率+30%",
+    "effectDesc2": "己方暴击率大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=8>大幅度提升，己方全体暴击率提升",
     "desc": "通常玻璃突然开裂那是要有大事发生。",
     "tag": "105",
-    "effect": "1000010#1050009"
+    "effect": "1000010#1050009",
+    "equipType": 0
   },
   {
     "id": 7105202,
+    "extendCost": 0,
     "group": 10504,
     "score": 100,
     "effectDesc": "己方暴击创伤+10%",
     "effectDesc2": "己方暴击创伤提升",
     "desc": "古老的，洞察的，天真的。",
     "tag": "105",
-    "effect": "1000011"
+    "effect": "1000011",
+    "equipType": 0
   },
   {
     "id": 7205202,
+    "extendCost": 200,
     "group": 10504,
     "score": 200,
-    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=5>【连锁】+2；己方全体暴击创伤+15%",
-    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=5>提升；己方全体暴击创伤提升",
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=7>【连锁】+2；己方全体暴击创伤+15%",
+    "effectDesc2": "己方暴击创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=7>提升；己方全体暴击创伤提升",
     "desc": "古老的，洞察的，天真的。",
     "tag": "105",
-    "effect": "1000012#1050010"
+    "effect": "1000012#1050010",
+    "equipType": 0
   },
   {
     "id": 7305202,
+    "extendCost": 500,
     "group": 10504,
     "score": 300,
-    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=5>【连锁】+4；己方全体暴击创伤+30%",
-    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=5>大幅度提升；己方全体暴击创伤提升",
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=7>【连锁】+4；己方全体暴击创伤+30%",
+    "effectDesc2": "己方暴击创伤大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=7>大幅度提升；己方全体暴击创伤提升",
     "desc": "古老的，洞察的，天真的。",
     "tag": "105",
-    "effect": "1000015#1050010"
+    "effect": "1000015#1050010",
+    "equipType": 0
   },
   {
     "id": 7105203,
+    "extendCost": 0,
     "group": 10505,
     "score": 100,
     "effectDesc": "己方穿透率+10%",
     "effectDesc2": "己方穿透率提升",
     "desc": "就跟人生一样充满了……光明！",
     "tag": "105",
-    "effect": "1000061"
+    "effect": "1000061",
+    "equipType": 0
   },
   {
     "id": 7205203,
+    "extendCost": 200,
     "group": 10505,
     "score": 200,
-    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：进入战斗时，使己方激情最低的角色激情+5",
-    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：进入战斗时，使己方激情最低的角色获得激情",
+    "effectDesc": "己方穿透率+20%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：进入战斗时，使己方激情最低的角色激情+5",
+    "effectDesc2": "己方穿透率较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：进入战斗时，使己方激情最低的角色获得激情",
     "desc": "就跟人生一样充满了……光明！",
     "tag": "105",
-    "effect": "1000063#1050001"
+    "effect": "1000063#1050001",
+    "equipType": 0
   },
   {
     "id": 7305203,
+    "extendCost": 500,
     "group": 10505,
     "score": 300,
-    "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：进入战斗时，使己方激情最低的角色激情+5，重复2次",
-    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：进入战斗时，使己方激情最低的角色获得激情，重复2次",
+    "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：进入战斗时，使己方激情最低的角色激情+5，重复2次",
+    "effectDesc2": "己方穿透率大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：进入战斗时，使己方激情最低的角色获得激情，重复2次",
     "desc": "就跟人生一样充满了……光明！",
     "tag": "105",
-    "effect": "1000063#1000063#1050002"
+    "effect": "1000063#1000063#1050002",
+    "equipType": 0
   },
   {
     "id": 7105204,
+    "extendCost": 0,
     "group": 10506,
     "score": 100,
     "effectDesc": "己方仪式威力+10%",
     "effectDesc2": "己方仪式威力提升",
     "desc": "一罐永远盛着清水的壶。",
     "tag": "105",
-    "effect": "1000021"
+    "effect": "1000021",
+    "equipType": 0
   },
   {
     "id": 7205204,
+    "extendCost": 200,
     "group": 10506,
     "score": 200,
-    "effectDesc": "己方仪式威力+20%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+2",
-    "effectDesc2": "己方仪式威力较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=7>提升",
+    "effectDesc": "己方仪式威力+20%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方仪式威力较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=9>提升",
     "desc": "一罐永远盛着清水的壶。",
     "tag": "105",
-    "effect": "1000023"
+    "effect": "1000023",
+    "equipType": 0
   },
   {
     "id": 7305204,
+    "extendCost": 500,
     "group": 10506,
     "score": 300,
-    "effectDesc": "己方仪式威力+40%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：<sprite=7>【混沌<id:1>】+4",
-    "effectDesc2": "己方仪式威力大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：<sprite=7>大幅度提升",
+    "effectDesc": "己方仪式威力+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+4",
+    "effectDesc2": "己方仪式威力大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：<sprite=9>大幅度提升",
     "desc": "一罐永远盛着清水的壶。",
     "tag": "105",
-    "effect": "1000023#1000023"
+    "effect": "1000023#1000023",
+    "equipType": 0
   },
   {
     "id": 7105205,
+    "extendCost": 0,
     "group": 10507,
     "score": 100,
     "effectDesc": "己方攻击+5%",
     "effectDesc2": "己方攻击提升",
     "desc": "一毫升用了十二根接骨木，一瓶装五毫升。",
     "tag": "105",
-    "effect": "1000076"
+    "effect": "1000076",
+    "equipType": 0
   },
   {
     "id": 7205205,
+    "extendCost": 200,
     "group": 10507,
     "score": 200,
-    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：己方咒语获取数量上限+2，<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方攻击提升；|{check(count9 > 0)}激活<sprite=12>时生效：己方咒语获取数量上限提高，<sprite=7>提升",
+    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：己方咒语获取数量上限+2，<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方攻击提升；|{check(count9 > 0)}激活<sprite=14>时生效：己方咒语获取数量上限提高，<sprite=9>提升",
     "desc": "一毫升用了十二根接骨木，一瓶装五毫升。",
     "tag": "105",
-    "effect": "1000076#1050005"
+    "effect": "1000076#1050005",
+    "equipType": 0
   },
   {
     "id": 7305205,
+    "extendCost": 500,
     "group": 10507,
     "score": 300,
-    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：己方咒语获取数量上限+2，己方仪式不消耗行动点，<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方攻击提高；|{check(count9 > 0)}激活<sprite=12>时生效：己方咒语获取数量上限提高，己方仪式不消耗行动点，<sprite=7>提升",
+    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：己方咒语获取数量上限+2，己方仪式不消耗行动点，<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方攻击提高；|{check(count9 > 0)}激活<sprite=14>时生效：己方咒语获取数量上限提高，己方仪式不消耗行动点，<sprite=9>提升",
     "desc": "一毫升用了十二根接骨木，一瓶装五毫升。",
     "tag": "105",
-    "effect": "1000076#1050006"
+    "effect": "1000076#1050006",
+    "equipType": 0
   },
   {
     "id": 7105206,
+    "extendCost": 0,
     "group": 10508,
     "score": 100,
     "effectDesc": "己方创伤加成+10%",
     "effectDesc2": "己方创伤加成提升",
     "desc": "这些远东的泥土也许可以被用来提取一些有用的物质。",
     "tag": "105",
-    "effect": "1000001"
+    "effect": "1000001",
+    "equipType": 0
   },
   {
     "id": 7205206,
+    "extendCost": 200,
     "group": 10508,
     "score": 200,
-    "effectDesc": "己方创伤加成+20%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：【痕契之击<id:0>】可使己方全体获得3层【礼仪】，<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方创伤加成较大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：【痕契之击<id:0>】可使己方全体获得【礼仪】，<sprite=7>提升",
+    "effectDesc": "己方创伤加成+20%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：【痕契之击<id:0>】可使己方全体获得3层【礼仪】，<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方创伤加成较大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：【痕契之击<id:0>】可使己方全体获得【礼仪】，<sprite=9>提升",
     "desc": "这些远东的泥土也许可以被用来提取一些有用的物质。",
     "tag": "105",
-    "effect": "1000003#1050007"
+    "effect": "1000003#1050007",
+    "equipType": 0
   },
   {
     "id": 7305206,
+    "extendCost": 500,
     "group": 10508,
     "score": 300,
-    "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=12>【仪式痕契<id:0>】时生效：【痕契之击<id:0>】可使己方全体获得5层【礼仪】，己方免疫【心神不宁】状态，<sprite=7>【混沌<id:1>】+1",
-    "effectDesc2": "己方创伤加成大幅度提升；|{check(count9 > 0)}激活<sprite=12>时生效：【痕契之击<id:0>】可使己方全体获得【礼仪】，己方免疫【心神不宁】状态，<sprite=7>提升",
+    "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：【痕契之击<id:0>】可使己方全体获得5层【礼仪】，己方免疫【心神不宁】状态，<sprite=9>【混沌<id:1>】+1",
+    "effectDesc2": "己方创伤加成大幅度提升；|{check(count9 > 0)}激活<sprite=14>时生效：【痕契之击<id:0>】可使己方全体获得【礼仪】，己方免疫【心神不宁】状态，<sprite=9>提升",
     "desc": "这些远东的泥土也许可以被用来提取一些有用的物质。",
     "tag": "105",
-    "effect": "1000003#1000003#1050008"
+    "effect": "1000003#1000003#1050008",
+    "equipType": 0
+  },
+  {
+    "id": 7106101,
+    "extendCost": 0,
+    "group": 10601,
+    "score": 100,
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升",
+    "desc": "收纳或倾倒不幸，使用前记得摇匀。",
+    "tag": "106",
+    "effect": "1000081",
+    "equipType": 0
+  },
+  {
+    "id": 7206101,
+    "extendCost": 200,
+    "group": 10601,
+    "score": 200,
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>较大幅度提升",
+    "desc": "收纳或倾倒不幸，使用前记得摇匀。",
+    "tag": "106",
+    "effect": "1000083",
+    "equipType": 0
+  },
+  {
+    "id": 7306101,
+    "extendCost": 500,
+    "group": 10601,
+    "score": 300,
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>大幅度提升",
+    "desc": "收纳或倾倒不幸，使用前记得摇匀。",
+    "tag": "106",
+    "effect": "1000086",
+    "equipType": 0
+  },
+  {
+    "id": 7106102,
+    "extendCost": 0,
+    "group": 10602,
+    "score": 100,
+    "effectDesc": "己方受创减免+10%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方创伤减免提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升",
+    "desc": "我心中有一团火，而行人们却只看到一片烟。",
+    "tag": "106",
+    "effect": "1000081",
+    "equipType": 0
+  },
+  {
+    "id": 7206102,
+    "extendCost": 200,
+    "group": 10602,
+    "score": 200,
+    "effectDesc": "己方受创减免+20%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+3",
+    "effectDesc2": "己方创伤减免较大幅度提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>较大幅度提升",
+    "desc": "我心中有一团火，而行人们却只看到一片烟。",
+    "tag": "106",
+    "effect": "1000083",
+    "equipType": 0
+  },
+  {
+    "id": 7306102,
+    "extendCost": 500,
+    "group": 10602,
+    "score": 300,
+    "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+5",
+    "effectDesc2": "己方创伤减免大幅度提升；{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>大幅度提升",
+    "desc": "我心中有一团火，而行人们却只看到一片烟。",
+    "tag": "106",
+    "effect": "1000086",
+    "equipType": 0
+  },
+  {
+    "id": 7106201,
+    "extendCost": 0,
+    "group": 10603,
+    "score": 100,
+    "effectDesc": "己方攻击+5%；",
+    "effectDesc2": "己方攻击提升",
+    "desc": "据说它在越尴尬的情境里，形变得越厉害。",
+    "tag": "106",
+    "effect": "1000076",
+    "equipType": 0
+  },
+  {
+    "id": 7206201,
+    "extendCost": 200,
+    "group": 10603,
+    "score": 200,
+    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方攻击提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升",
+    "desc": "据说它在越尴尬的情境里，形变得越厉害。",
+    "tag": "106",
+    "effect": "1000076",
+    "equipType": 0
+  },
+  {
+    "id": 7306201,
+    "extendCost": 500,
+    "group": 10603,
+    "score": 300,
+    "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9> 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：触发【痕契之击<id:0>】的能量点数下调至80",
+    "effectDesc2": "己方攻击提高；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升,触发【痕契之击<id:0>】所需能量降低",
+    "desc": "据说它在越尴尬的情境里，形变得越厉害。",
+    "tag": "106",
+    "effect": "1000076#1060001",
+    "equipType": 0
+  },
+  {
+    "id": 7106202,
+    "extendCost": 0,
+    "group": 10604,
+    "score": 100,
+    "effectDesc": "己方暴击率+10%；",
+    "effectDesc2": "己方暴击率提升",
+    "desc": "据说咸加甜的滋味有成瘾性。",
+    "tag": "106",
+    "effect": "1000006",
+    "equipType": 0
+  },
+  {
+    "id": 7206202,
+    "extendCost": 200,
+    "group": 10604,
+    "score": 200,
+    "effectDesc": "己方暴击率+15%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方暴击率较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升",
+    "desc": "据说咸加甜的滋味有成瘾性。",
+    "tag": "106",
+    "effect": "1000007",
+    "equipType": 0
+  },
+  {
+    "id": 7306202,
+    "extendCost": 500,
+    "group": 10604,
+    "score": 300,
+    "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：己方角色主动释放咒语时每为敌方目标施加1个【状态异常】后，痕契积攒的能量提升至5",
+    "effectDesc2": "己方暴击率大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升;|{check(count9 > 0)}激活<sprite=15>时生效：己方角色主动释放咒语时每为敌方目标施加1个【状态异常】后，痕契积攒的能量提升",
+    "desc": "据说咸加甜的滋味有成瘾性。",
+    "tag": "106",
+    "effect": "1000010#1060002",
+    "equipType": 0
+  },
+  {
+    "id": 7106203,
+    "extendCost": 0,
+    "group": 10605,
+    "score": 100,
+    "effectDesc": "己方暴击创伤+10%",
+    "effectDesc2": "己方暴击创伤提升",
+    "desc": "刚与力之美从此处发源，祭司则不这么认为。",
+    "tag": "106",
+    "effect": "1000011",
+    "equipType": 0
+  },
+  {
+    "id": 7206203,
+    "extendCost": 200,
+    "group": 10605,
+    "score": 200,
+    "effectDesc": "己方暴击创伤+15%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
+    "effectDesc2": "己方暴击创伤较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升",
+    "desc": "刚与力之美从此处发源，祭司则不这么认为。",
+    "tag": "106",
+    "effect": "1000012",
+    "equipType": 0
+  },
+  {
+    "id": 7306203,
+    "extendCost": 500,
+    "group": 10605,
+    "score": 300,
+    "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：【痕契之击<id:0>】赋予的状态变为【悲鸣终响<id:0>】",
+    "effectDesc2": "己方暴击创伤大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=9>提升;|{check(count9 > 0)}激活<sprite=15>时生效：【痕契之击<id:0>】赋予的状态增强",
+    "desc": "刚与力之美从此处发源，祭司则不这么认为。",
+    "tag": "106",
+    "effect": "1000015#1060003",
+    "equipType": 0
+  },
+  {
+    "id": 7106204,
+    "extendCost": 0,
+    "group": 10606,
+    "score": 100,
+    "effectDesc": "己方本源创伤+10%",
+    "effectDesc2": "己方本源创伤提升",
+    "desc": "已经提前处理掉了可食用的部分。",
+    "tag": "106",
+    "effect": "1000087",
+    "equipType": 0
+  },
+  {
+    "id": 7206204,
+    "extendCost": 200,
+    "group": 10606,
+    "score": 200,
+    "effectDesc": "己方本源创伤+20%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方本源创伤较大幅度提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升",
+    "desc": "已经提前处理掉了可食用的部分。",
+    "tag": "106",
+    "effect": "1000088",
+    "equipType": 0
+  },
+  {
+    "id": 7306204,
+    "extendCost": 500,
+    "group": 10606,
+    "score": 300,
+    "effectDesc": "己方本源创伤+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：状态异常结算的比例提高至120%",
+    "effectDesc2": "己方本源创伤大幅度提升；|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升;|{check(count9 > 0)}激活<sprite=15>时生效：【痕契之击<id:0>】赋予的状态效果增强",
+    "desc": "已经提前处理掉了可食用的部分。",
+    "tag": "106",
+    "effect": "1000088#1000088#1060004",
+    "equipType": 0
+  },
+  {
+    "id": 7106205,
+    "extendCost": 0,
+    "group": 10607,
+    "score": 100,
+    "effectDesc": "己方仪式威力+10%",
+    "effectDesc2": "己方仪式威力提升",
+    "desc": "有时候思想是有毒的。",
+    "tag": "106",
+    "effect": "1000021",
+    "equipType": 0
+  },
+  {
+    "id": 7206205,
+    "extendCost": 200,
+    "group": 10607,
+    "score": 200,
+    "effectDesc": "己方仪式威力+20%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方仪式威力较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升",
+    "desc": "有时候思想是有毒的。",
+    "tag": "106",
+    "effect": "1000023",
+    "equipType": 0
+  },
+  {
+    "id": 7306205,
+    "extendCost": 500,
+    "group": 10607,
+    "score": 300,
+    "effectDesc": "己方仪式威力+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：回合开始时，己方全体获得本源创伤加成，持续1回合，其效果等同于当前各自的创伤加成*20%+术法威力*20%+仪式威力*20%",
+    "effectDesc2": "己方仪式威力较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升;{check(count9 > 0)}激活<sprite=15>时生效：回合开始时，己方角色获得本源创伤加成，其数值等同于创伤加成，术法威力，仪式威力的一定比例",
+    "desc": "有时候思想是有毒的。",
+    "tag": "106",
+    "effect": "1000023#1000023#1060005",
+    "equipType": 0
+  },
+  {
+    "id": 7106206,
+    "extendCost": 0,
+    "group": 10608,
+    "score": 100,
+    "effectDesc": "己方创伤加成+10%",
+    "effectDesc2": "己方创伤加成提升",
+    "desc": "重感冒者佩戴会更有效果。",
+    "tag": "106",
+    "effect": "1000001",
+    "equipType": 0
+  },
+  {
+    "id": 7206206,
+    "extendCost": 200,
+    "group": 10608,
+    "score": 200,
+    "effectDesc": "己方创伤加成+20%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2",
+    "effectDesc2": "己方创伤加成较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升",
+    "desc": "重感冒者佩戴会更有效果。",
+    "tag": "106",
+    "effect": "1000003",
+    "equipType": 0
+  },
+  {
+    "id": 7306206,
+    "extendCost": 500,
+    "group": 10608,
+    "score": 300,
+    "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：行动点+1",
+    "effectDesc2": "己方创伤加成较大幅度提升;|{check(count9 > 0)}激活<sprite=15>时生效：<sprite=7>提升;|{check(count9 > 0)}激活<sprite=15>时生效：行动点提升",
+    "desc": "重感冒者佩戴会更有效果。",
+    "tag": "106",
+    "effect": "1000003#1000003#1060006",
+    "equipType": 0
+  },
+  {
+    "id": 7000301,
+    "extendCost": 800,
+    "group": 10009,
+    "score": 400,
+    "effectDesc": "触发额外行动时，自身暴击率和暴击创伤提升8%（可叠加，每人最多叠加20次）",
+    "effectDesc2": "触发额外行动时，自身暴击率和暴击创伤提升（可叠加，每人最多叠加20次）",
+    "desc": "确保已有的事后必再有。",
+    "tag": "",
+    "effect": "1001001",
+    "equipType": 1
+  },
+  {
+    "id": 7000302,
+    "extendCost": 800,
+    "group": 10010,
+    "score": 400,
+    "effectDesc": "任意行动后若己方角色激情到达上限，立即释放其至终的仪式（每人每回合最多触发1次）",
+    "effectDesc2": "任意行动后若己方角色激情到达上限，则立即释放其至终的仪式（每人每回合最多触发1次）",
+    "desc": "一个忠告：不要随手把它扔进仓库又将这事儿置之脑后。",
+    "tag": "",
+    "effect": "1001002",
+    "equipType": 1
+  },
+  {
+    "id": 7000303,
+    "extendCost": 800,
+    "group": 10011,
+    "score": 400,
+    "effectDesc": "己方释放至终的仪式时，使己方全体造成的本源创伤提升50%（最多提升200%），持续1回合",
+    "effectDesc2": "己方释放至终的仪式时，使己方全体本回合造成的本源创伤提升",
+    "desc": "其间流淌的力量足以倾覆王朝。",
+    "tag": "",
+    "effect": "1001003",
+    "equipType": 1
+  },
+  {
+    "id": 7000304,
+    "extendCost": 800,
+    "group": 10012,
+    "score": 400,
+    "effectDesc": "己方咒语获取数量上限+2，移动咒语不获得激情但不消耗行动点，合卡获得的激情+1",
+    "effectDesc2": "己方咒语获取数量上限增加，移动咒语不获得激情但不消耗行动点，合卡获得的激情增加",
+    "desc": "如同枝头结出果子，肋骨攀上了毒蛇。",
+    "tag": "",
+    "effect": "1001004",
+    "equipType": 1
+  },
+  {
+    "id": 7000305,
+    "extendCost": 800,
+    "group": 10013,
+    "score": 400,
+    "effectDesc": "角色处于不同站位，将获得不同效果；回合结束时，最右侧角色将向前位移4位\n站位1号位：角色攻击时攻击临时提升25%\n站位2号位：回合开始时，角色获得[咒语强化Ⅱ][蓄势·预备Ⅱ]持续1回合\n站位3号位：角色攻击时暴击创伤提升50%，且溢出暴击率转为暴击创伤\n站位4号位：回合开始时，角色激情+5\n站位5号位：获得1,2,3,4号位的加成\t",
+    "effectDesc2": "角色处于不同站位，将获得不同效果；回合结束时，最右侧角色将向前位移4位；\n站位1号位：角色攻击时攻击临时提升\n站位2号位：回合开始时，角色获得[咒语强化Ⅱ][蓄势·预备Ⅱ]\n站位3号位：角色攻击时暴击创伤提升，且溢出暴击率转为暴击创伤\n站位4号位：回合开始时，角色激情提升\n站位5号位：获得1,2,3,4号位的加成\t",
+    "desc": "整颗饮下，从此通晓爱与美的语言。",
+    "tag": "",
+    "effect": "1001005",
+    "equipType": 1
+  },
+  {
+    "id": 7000306,
+    "extendCost": 800,
+    "group": 10014,
+    "score": 400,
+    "effectDesc": "单回合内己方每主动使用一张不同类型的普通咒语后，己方全体造成伤害将提高25%，持续1回合",
+    "effectDesc2": "本回合内己方每主动使用一张不同类型的普通咒语后，己方全体造成伤害提升，持续1回合",
+    "desc": "跟上它！快——跟上它！",
+    "tag": "",
+    "effect": "1001006",
+    "equipType": 1
+  },
+  {
+    "id": 7000307,
+    "extendCost": 800,
+    "group": 10015,
+    "score": 400,
+    "effectDesc": "每回合开始时将我方所有咒语转化为预备咒语，并使所有咒语阶次+1；己方角色释放2/3阶咒语后，本回合该角色造成伤害提升25%（效果可叠加）",
+    "effectDesc2": "每回合开始时将我方所有咒语转化为预备咒语，并使所有咒语阶次提升；己方角色释放高阶咒语后，本回合该角色造成伤害提升（效果可叠加）",
+    "desc": "凝固的大地之血。",
+    "tag": "",
+    "effect": "1001007#1001013",
+    "equipType": 1
+  },
+  {
+    "id": 7000308,
+    "extendCost": 800,
+    "group": 10016,
+    "score": 400,
+    "effectDesc": "进入战斗时，使最左侧角色最大生命+100%，免疫控制，永久进入嘲讽状态，己方行动时使该角色回复3%最大生命",
+    "effectDesc2": "进入战斗时，最左侧角色最大生命大幅度提升，免疫控制，永久进入嘲讽状态，己方任意角色行动后将使1号位角色回复生命",
+    "desc": "卷绕的磁带，卷绕的星空。",
+    "tag": "",
+    "effect": "1001008",
+    "equipType": 1
+  },
+  {
+    "id": 7000309,
+    "extendCost": 800,
+    "group": 10017,
+    "score": 400,
+    "effectDesc": "回合开始时，额外发放最左侧角色的3阶咒语1，3阶咒语2",
+    "effectDesc2": "回合开始时，额外发放最左侧角色的高阶咒语1，高阶咒语2",
+    "desc": "让人心烦的结！",
+    "tag": "",
+    "effect": "1001009",
+    "equipType": 1
+  },
+  {
+    "id": 7000310,
+    "extendCost": 800,
+    "group": 10018,
+    "score": 400,
+    "effectDesc": "额外行动后，咒语区中随机咒语阶次+1",
+    "effectDesc2": "额外行动后，咒语区中随机咒语阶次提升",
+    "desc": "一个阻断并拒斥黑暗的圆，小心扎手。",
+    "tag": "",
+    "effect": "1001010",
+    "equipType": 1
+  },
+  {
+    "id": 7000311,
+    "extendCost": 800,
+    "group": 10019,
+    "score": 400,
+    "effectDesc": "进入战斗时，己方全体根据己方角色灵感获得增益（效果可叠加）\n每有1名[木]灵感角色，自身造成的本源创伤提升15%\n每有1名[兽]灵感角色，自身仪式威力提升15%\n每有1名[岩]灵感角色，自身最大生命提升15%\n每有1名[星]灵感角色，自身暴击率提升15%\n每有1名[灵]/[智]灵感角色，自身穿透率提升15%",
+    "effectDesc2": "进入战斗时，己方全体根据己方角色全体灵感获得增益（效果可叠加）\n[木]灵感角色使本源创伤提升\t\n[兽]灵感角色使仪式威力提升\t\n[岩]灵感角色使最大生命提升\n[星]灵感角色使暴击率提升\n[灵]/[智]灵感角色使穿透率提升",
+    "desc": "很难从这些极度痛苦的笔画中看出，诗的全篇仅由字母“P”书写而成。",
+    "tag": "",
+    "effect": "1001011",
+    "equipType": 1
+  },
+  {
+    "id": 7000312,
+    "extendCost": 800,
+    "group": 10020,
+    "score": 400,
+    "effectDesc": "己方角色回合开始时，获得1层[汲取]",
+    "effectDesc2": "己方角色回合开始时，获得[汲取]",
+    "desc": "真实的形体在光中如蜡般融化。",
+    "tag": "",
+    "effect": "1001012",
+    "equipType": 1
+  },
+  {
+    "id": 7000313,
+    "extendCost": 800,
+    "group": 10021,
+    "score": 400,
+    "effectDesc": "【连锁】+20",
+    "effectDesc2": "【连锁】超大幅度提升",
+    "desc": "呼唤黄昏、午夜与黎明。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
+  },
+  {
+    "id": 7000314,
+    "extendCost": 800,
+    "group": 10022,
+    "score": 400,
+    "effectDesc": "【怒火】+20",
+    "effectDesc2": "【怒火】超大幅度提升",
+    "desc": "相比真正的湖中剑赋予勇者无尽力量，这个可以赋予的剂量约合五吨。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
+  },
+  {
+    "id": 7000315,
+    "extendCost": 800,
+    "group": 10023,
+    "score": 400,
+    "effectDesc": "【混沌<id:1>】+20",
+    "effectDesc2": "【混沌<id:1>】超大幅度提升",
+    "desc": "在无光处阅读，以免月光趁机毒害你的影子。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
+  },
+  {
+    "id": 7000316,
+    "extendCost": 400,
+    "group": 10009,
+    "score": 250,
+    "effectDesc": "己方角色释放2/3阶咒语后，本回合该角色造成伤害提升25%（可叠加）",
+    "effectDesc2": "己方角色释放高阶咒语后，本回合该角色造成伤害提升（可叠加）",
+    "desc": "凝固的大地之血。",
+    "tag": "",
+    "effect": "1001013",
+    "equipType": 1
+  },
+  {
+    "id": 7000317,
+    "extendCost": 400,
+    "group": 10010,
+    "score": 250,
+    "effectDesc": "回合开始时，额外发放最左侧角色的1张2阶咒语1，2阶咒语2",
+    "effectDesc2": "回合开始时，额外发放最左侧角色的高阶咒语1，高阶咒语2",
+    "desc": "让人心烦的结！",
+    "tag": "",
+    "effect": "1001014",
+    "equipType": 1
+  },
+  {
+    "id": 7000318,
+    "extendCost": 400,
+    "group": 10021,
+    "score": 250,
+    "effectDesc": "【连锁】+10",
+    "effectDesc2": "【连锁】大幅度提升",
+    "desc": "呼唤黄昏、午夜与黎明。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
+  },
+  {
+    "id": 7000319,
+    "extendCost": 400,
+    "group": 10012,
+    "score": 250,
+    "effectDesc": "【怒火】+10",
+    "effectDesc2": "【怒火】大幅度提升",
+    "desc": "相比真正的湖中剑赋予勇者无尽力量，这个可以赋予的剂量约合五吨。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
+  },
+  {
+    "id": 7000320,
+    "extendCost": 400,
+    "group": 10013,
+    "score": 250,
+    "effectDesc": "【混沌<id:1>】+10",
+    "effectDesc2": "【混沌<id:1>】大幅度提升",
+    "desc": "在无光处阅读，以免月光趁机毒害你的影子。",
+    "tag": "",
+    "effect": "",
+    "equipType": 1
   }
 ]

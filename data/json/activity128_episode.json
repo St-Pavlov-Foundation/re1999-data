@@ -1630,5 +1630,113 @@
     "recommendLevelDesc": "？？？",
     "openDay": 0,
     "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13113,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500101,
+    "desc": "拟态类，属别不明，多见于山林、沼泽。\n“据说炼金术士们只要为它奉上指骨，便能一睹所求之物。”\n<i>一张并不厚道的入场券，好在收获颇丰。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 1,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500102,
+    "desc": "“我们在泥沼中发现了大量腐烂的躯体，且缺失数节指骨。目前情报者已断联。”\n<i>若您见报，请即刻予以回信，否则将视为放弃您一切奖金的归属权。</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 1,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 1,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500201,
+    "desc": "“警长来电：某怀抱牛犊的病患，被发现昏迷于泥沼前沿。”\n<i>编者附：病患口袋内有数张邮报剪片与指骨。注，与本报社毫无瓜葛。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 1,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13113,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500103,
+    "desc": "非现实属类，曾出现于旅馆、公路、废弃医院与街头巷尾的传闻中，无处不在，无孔不入。\n“它潜藏在床底，锁眼儿深处，无故飘起的窗帘后，正在哭泣的孩子的瞳孔内，以及……你的梦里。”\n<i>当理性不复存在，恐惧便趁虚而入。</i>",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 2,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500104,
+    "desc": "“它正逐步渗入我的心脏，我们融为一体，温暖、安全，我从未体验过如此强烈的幸福感。”\n<i>而谁又能说这不是另一种福音呢？</i>",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 8,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 2,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500202,
+    "desc": "“我渴望再度见到它，难道我疯了吗？不？不！如果这种感觉被世人称之为疯狂，那我甘愿沉溺于此。”\n<i>快感、战栗，它能给予你的，不止如此。</i>",
+    "recommendLevelDesc": "？？？",
+    "openDay": 8,
+    "evaluate": "10101#10201#10301#10401"
+  },
+  {
+    "activityId": 13113,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500105,
+    "desc": "非现实属类，存于口述资料，曾被视为某种谵妄现象。\n“萦绕在耳边的声音如此美妙，如同来自缪斯本人。在演出结束后，观众们说，它依然不曾消散。”\n<i>拥有一点艺术修养总是好的，对吧？</i> ",
+    "recommendLevelDesc": "洞悉二20级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 3,
+    "layer": 2,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500106,
+    "desc": "“患者声称，自己有义务记录下某种旋律。三小时后，他从轮床上跳下，试图破坏自己的耳膜。”\n<i>三思而后行。</i> ",
+    "recommendLevelDesc": "洞悉二50级",
+    "openDay": 15,
+    "evaluate": ""
+  },
+  {
+    "activityId": 13113,
+    "stage": 3,
+    "layer": 3,
+    "type": 1,
+    "enhanceRole": 0,
+    "episodeId": 13500203,
+    "desc": "“请勿靠近音乐厅等空旷空间，请勿哼唱来历不明的曲调。如发觉自己产生了难以解释的表演冲动，请联系有关部门。”\n<i>使命感是个好东西，耳塞更是。</i> ",
+    "recommendLevelDesc": "？？？",
+    "openDay": 15,
+    "evaluate": "10101#10201#10301#10401"
   }
 ]

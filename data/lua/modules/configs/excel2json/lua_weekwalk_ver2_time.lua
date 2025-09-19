@@ -6,6 +6,7 @@ local var_0_1 = {
 	ruleRear = 6,
 	issueId = 2,
 	ruleIcon = 4,
+	previousId = 7,
 	optionalSkills = 3,
 	timeId = 1
 }

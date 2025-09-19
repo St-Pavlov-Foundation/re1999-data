@@ -9,6 +9,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._skillTipsGO = gohelper.findChild(arg_1_0.viewGO, "root/waitingArea/inner/skill")
 	arg_1_0._txtCardTitle = gohelper.findChildText(arg_1_0._skillTipsGO, "txtTips/txtTitle")
 	arg_1_0._txtCardDesc = gohelper.findChildText(arg_1_0._skillTipsGO, "txtTips")
+	arg_1_0._rectTrCardDesc = arg_1_0._txtCardDesc:GetComponent(gohelper.Type_RectTransform)
 	arg_1_0._cardItemList = {}
 	arg_1_0._cardItemGOList = arg_1_0:getUserDataTb_()
 	arg_1_0._cardObjModel = gohelper.findChild(arg_1_0._waitingAreaGO, "cardItemModel")
@@ -222,7 +223,7 @@ function var_0_0._beforePlaySkill(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
 
 	arg_14_0:_updateView()
 
-	if FightModel.instance:getCurStage() == FightEnum.Stage.Play then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		if arg_14_2 == var_14_0[var_14_1].skillId then
 			arg_14_0:_displayFlow(arg_14_0._playingEntityId, arg_14_0._playingSkillId)
 			FightController.instance:dispatchEvent(FightEvent.ToPlaySkill, arg_14_2)
@@ -423,26 +424,30 @@ function var_0_0._updateView(arg_22_0)
 	local var_22_11 = var_22_0[var_22_1] and var_22_0[var_22_1].entityId
 	local var_22_12 = var_22_10 and lua_skill.configDict[var_22_10]
 	local var_22_13 = FightConfig.instance:getEntitySkillDesc(var_22_11, var_22_12, var_22_10)
-	local var_22_14 = GameUtil.getTextHeightByLine(arg_22_0._txtCardDesc, var_22_13, 38) + 83
-
-	recthelper.setHeight(arg_22_0._skillTipsGO.transform, var_22_14)
 
 	arg_22_0._txtCardTitle.text = var_22_12 and var_22_12.name or ""
 	arg_22_0._txtCardDesc.text = var_22_12 and HeroSkillModel.instance:skillDesToSpot(var_22_13) or ""
 
+	arg_22_0._txtCardDesc:ForceMeshUpdate(true, true)
+
+	local var_22_14 = arg_22_0._txtCardDesc:GetRenderedValues().y
+	local var_22_15 = var_22_14 + 83
+
+	recthelper.setHeight(arg_22_0._rectTrCardDesc, var_22_14)
+	recthelper.setHeight(arg_22_0._skillTipsGO.transform, var_22_15)
 	arg_22_0:_releaseScalseTween()
 
-	local var_22_15 = var_22_1 > 7 and 1 - (var_22_1 - 7) * 0.12 or 1
+	local var_22_16 = var_22_1 > 7 and 1 - (var_22_1 - 7) * 0.12 or 1
 
-	if var_22_15 < 0 then
-		var_22_15 = 0.5
+	if var_22_16 < 0 then
+		var_22_16 = 0.5
 	end
 
-	local var_22_16 = 1 / var_22_15
+	local var_22_17 = 1 / var_22_16
 
-	transformhelper.setLocalScale(arg_22_0._skillTipsGO.transform, var_22_16, var_22_16, var_22_16)
+	transformhelper.setLocalScale(arg_22_0._skillTipsGO.transform, var_22_17, var_22_17, var_22_17)
 
-	arg_22_0._tweenScale = ZProj.TweenHelper.DOScale(arg_22_0._waitingAreaTran, var_22_15, var_22_15, var_22_15, 0.1)
+	arg_22_0._tweenScale = ZProj.TweenHelper.DOScale(arg_22_0._waitingAreaTran, var_22_16, var_22_16, var_22_16, 0.1)
 end
 
 function var_0_0._releaseScalseTween(arg_23_0)

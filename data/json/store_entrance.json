@@ -627,5 +627,22 @@
     "endTime": "2025-09-19 04:59:59",
     "storeId": 616,
     "openHideId": 0
+  },
+  {
+    "id": 190,
+    "belongFirstTab": 0,
+    "belongSecondTab": 0,
+    "name": "捕捞商店",
+    "nameEn": "",
+    "prefab": 1,
+    "icon": "",
+    "order": 500,
+    "showCost": "",
+    "openId": 0,
+    "activityId": 0,
+    "openTime": "",
+    "endTime": "",
+    "storeId": 190,
+    "openHideId": 0
   }
 ]

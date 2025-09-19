@@ -108,5 +108,115 @@
     "position": 3,
     "name": "赛后补给间III",
     "desc": "它能察觉到偶人间的芯灵感应，从而精挑细选一些特定的偶人"
+  },
+  {
+    "activityId": 13105,
+    "id": 1,
+    "type": "mixtureShop",
+    "level": 1,
+    "stage": 101,
+    "position": 6,
+    "name": "赛后补给间I",
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西"
+  },
+  {
+    "activityId": 13105,
+    "id": 2,
+    "type": "roleShop",
+    "level": 1,
+    "stage": 101,
+    "position": 6,
+    "name": "赛后补给间I",
+    "desc": "偶人们在此处聚集，等待获得角斗的机会"
+  },
+  {
+    "activityId": 13105,
+    "id": 3,
+    "type": "collectionShop",
+    "level": 1,
+    "stage": 101,
+    "position": 6,
+    "name": "赛后补给间I",
+    "desc": "效果各异的造物拓片在专柜中等待挑选"
+  },
+  {
+    "activityId": 13105,
+    "id": 4,
+    "type": "mixtureShop",
+    "level": 2,
+    "stage": 102,
+    "position": 6,
+    "name": "赛后补给间II",
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西"
+  },
+  {
+    "activityId": 13105,
+    "id": 5,
+    "type": "roleShop",
+    "level": 2,
+    "stage": 102,
+    "position": 6,
+    "name": "赛后补给间II",
+    "desc": "偶人们在此处聚集，等待获得角斗的机会"
+  },
+  {
+    "activityId": 13105,
+    "id": 6,
+    "type": "collectionShop",
+    "level": 2,
+    "stage": 102,
+    "position": 6,
+    "name": "赛后补给间II",
+    "desc": "效果各异的造物拓片在专柜中等待挑选"
+  },
+  {
+    "activityId": 13105,
+    "id": 7,
+    "type": "tagShop",
+    "level": 2,
+    "stage": 102,
+    "position": 3,
+    "name": "赛后补给间II",
+    "desc": "它能察觉到偶人间的芯灵感应，从而精挑细选一些特定的偶人"
+  },
+  {
+    "activityId": 13105,
+    "id": 8,
+    "type": "mixtureShop",
+    "level": 3,
+    "stage": 103,
+    "position": 6,
+    "name": "赛后补给间III",
+    "desc": "偶人和造物拓片尽在其中，付出足够的年轮切片就能得到你需要的东西"
+  },
+  {
+    "activityId": 13105,
+    "id": 9,
+    "type": "roleShop",
+    "level": 3,
+    "stage": 103,
+    "position": 6,
+    "name": "赛后补给间III",
+    "desc": "偶人们在此处聚集，等待获得角斗的机会"
+  },
+  {
+    "activityId": 13105,
+    "id": 10,
+    "type": "collectionShop",
+    "level": 3,
+    "stage": 103,
+    "position": 6,
+    "name": "赛后补给间III",
+    "desc": "效果各异的造物拓片在专柜中等待挑选"
+  },
+  {
+    "activityId": 13105,
+    "id": 11,
+    "type": "tagShop",
+    "level": 3,
+    "stage": 103,
+    "position": 3,
+    "name": "赛后补给间III",
+    "desc": "它能察觉到偶人间的芯灵感应，从而精挑细选一些特定的偶人"
   }
 ]

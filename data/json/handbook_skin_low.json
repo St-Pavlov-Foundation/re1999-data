@@ -104,7 +104,7 @@
     "des": "那些不曾拥有的，对新世界的想象。",
     "skinContain": "304803|305603|302504|307503|305703",
     "backImg": "",
-    "spineParams": "",
+    "spineParams": "302504|roles_bust/v3a1_302504_xt_skinsuit/302504_xt_skinsuit.prefab|0,-60|1.55",
     "tarotCardPath": ""
   },
   {
@@ -140,7 +140,7 @@
     "des": "海岸、沙粒、盐。快跟上那串脚印，赶在涨潮之前。",
     "skinContain": "306503|306604|308703|308203|307203|304603",
     "backImg": "",
-    "spineParams": "",
+    "spineParams": "306604|roles_bust/v3a1_306604_37_skinsuit/306604_37_skinsuit.prefab|150,210|0.8",
     "tarotCardPath": ""
   },
   {
@@ -212,7 +212,7 @@
     "des": "棋局之上，唯信念不倒；时代之下，已遍地残垣。",
     "skinContain": "311703|308603|311403|304002",
     "backImg": "",
-    "spineParams": "",
+    "spineParams": "308603|roles_bust/v3a1_308603_lx_skinsuit/308603_lx_skinsuit.prefab|30,20|1",
     "tarotCardPath": ""
   },
   {
@@ -222,10 +222,10 @@
     "highId": 11001,
     "show": 1,
     "des": "§无小套组描述",
-    "skinContain": "306204|300306|305104|305604|304804|308804|310703",
+    "skinContain": "306204|300306|305104|305604|304804|308804|300731|310703",
     "backImg": "",
     "spineParams": "",
-    "tarotCardPath": "card01|card02|card03|card06|card17|card18|card21"
+    "tarotCardPath": "card01|card02|card03|card06|card17|card18|card20|card21"
   },
   {
     "id": 22001,
@@ -271,6 +271,18 @@
     "show": 1,
     "des": "当鹰飞过奥林匹斯山麓，当众神的故事\n尚未远去。",
     "skinContain": "306504|308704|311603|302804",
+    "backImg": "",
+    "spineParams": "",
+    "tarotCardPath": ""
+  },
+  {
+    "id": 20020,
+    "name": "怪诞不眠夜",
+    "nameEn": "A Night of the Bizarre",
+    "highId": 10005,
+    "show": 1,
+    "des": "猎物与猎人博弈追逐，幻象与真实变换交错，而故事的走向，连作家都已遗忘。",
+    "skinContain": "307704|311303|303103",
     "backImg": "",
     "spineParams": "",
     "tarotCardPath": ""

@@ -27,6 +27,13 @@ function var_0_0._build(arg_2_0)
 		return
 	end
 
+	if arg_2_0._picCo.layer == StoryEnum.PicLayer.BetweenBgAndHero3 then
+		arg_2_0._picRootCanvas = gohelper.onceAddComponent(arg_2_0.viewGO, typeof(UnityEngine.Canvas))
+		arg_2_0._picRootCanvas.overrideSorting = true
+		arg_2_0._picRootCanvas.sortingLayerName = "Unit"
+		arg_2_0._picRootCanvas.sortingOrder = 6
+	end
+
 	TaskDispatcher.cancelTask(arg_2_0._realDestroy, arg_2_0)
 
 	if arg_2_0._pictureLoader then
@@ -403,7 +410,7 @@ function var_0_0.destroyPicture(arg_17_0, arg_17_1, arg_17_2, arg_17_3)
 		return
 	end
 
-	if arg_17_2 then
+	if not arg_17_0._picCo or arg_17_2 then
 		arg_17_0:onDestroy()
 
 		return
@@ -469,6 +476,12 @@ function var_0_0._checkDestroyItem(arg_20_0)
 end
 
 function var_0_0._realDestroy(arg_21_0)
+	if arg_21_0._picRootCanvas then
+		arg_21_0._picRootCanvas.sortingOrder = 1008
+		arg_21_0._picRootCanvas.overrideSorting = true
+		arg_21_0._picRootCanvas.sortingLayerName = "Default"
+	end
+
 	arg_21_0:_killTweenId()
 
 	if not arg_21_0._picLoaded then

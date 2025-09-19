@@ -136,7 +136,7 @@ var_0_0.ChineseViewName = {
 	[ViewName.CooperGarlandLevelView] = "库珀花环角色活动",
 	[ViewName.CooperGarlandTaskView] = "库珀花环角色任务",
 	[ViewName.TowerGiftFullView] = "爬塔运营活动",
-	[ViewName.Act191MainView] = "匣中交流赛",
+	[ViewName.Act191MainView] = "拓片杂技赛",
 	[ViewName.VersionActivity2_9EnterView] = "S01版本活动页",
 	[ViewName.VersionActivity2_9DungeonMapView] = "副本地图-翡冷翠之春",
 	[ViewName.OdysseyDungeonView] = "副本地图-入雅典记",
@@ -161,7 +161,17 @@ var_0_0.ChineseViewName = {
 	[ViewName.KaRongLevelView] = "卡戎角色活动",
 	[ViewName.KaRongTaskView] = "卡戎角色任务",
 	[ViewName.CommandStationEnterView] = "观察室",
-	[ViewName.Season3_0MainView] = "3.0赛季"
+	[ViewName.Season3_0MainView] = "3.0赛季",
+	[ViewName.VersionActivity3_1EnterView] = "3.1版本活动页",
+	[ViewName.VersionActivity3_1DungeonMapView] = "副本地图-长夜鸣笛",
+	[ViewName.YeShuMeiLevelView] = "野树莓角色活动",
+	[ViewName.YeShuMeiTaskView] = "野树莓角色任务",
+	[ViewName.V3a1_GaoSiNiao_LevelView] = "告死鸟角色活动",
+	[ViewName.V3a1_GaoSiNiao_TaskView] = "告死鸟角色任务",
+	[ViewName.V3A1_RoleStoryGameView] = "轶事玩法",
+	[ViewName.NecrologistStoryTaskView] = "轶事奖励",
+	[ViewName.VersionActivity3_1StoreView] = "3.1副本商店",
+	[ViewName.ActivityWarmUpH5FullView] = "版本预热H5界面"
 }
 var_0_0.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -303,7 +313,17 @@ var_0_0.NeedTrackViewDict = {
 	[ViewName.KaRongLevelView] = true,
 	[ViewName.KaRongTaskView] = true,
 	[ViewName.CommandStationEnterView] = true,
-	[ViewName.Season3_0MainView] = true
+	[ViewName.Season3_0MainView] = true,
+	[ViewName.VersionActivity3_1EnterView] = true,
+	[ViewName.VersionActivity3_1DungeonMapView] = true,
+	[ViewName.YeShuMeiLevelView] = true,
+	[ViewName.YeShuMeiTaskView] = true,
+	[ViewName.V3a1_GaoSiNiao_LevelView] = true,
+	[ViewName.V3a1_GaoSiNiao_TaskView] = true,
+	[ViewName.V3A1_RoleStoryGameView] = true,
+	[ViewName.NecrologistStoryTaskView] = true,
+	[ViewName.VersionActivity3_1StoreView] = true,
+	[ViewName.ActivityWarmUpH5FullView] = true
 }
 var_0_0.NeedListenTabSwitchList = {
 	ViewName.VersionActivity1_8EnterView,
@@ -318,7 +338,8 @@ var_0_0.NeedListenTabSwitchList = {
 	ViewName.VersionActivity2_7EnterView,
 	ViewName.VersionActivity2_8EnterView,
 	ViewName.StoreView,
-	ViewName.VersionActivity3_0EnterView
+	ViewName.VersionActivity3_0EnterView,
+	ViewName.VersionActivity3_1EnterView
 }
 var_0_0.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
@@ -333,13 +354,14 @@ var_0_0.TabViewContainerID = {
 	[ViewName.VersionActivity2_7EnterView] = 2,
 	[ViewName.VersionActivity2_8EnterView] = 2,
 	[ViewName.StoreView] = 3,
-	[ViewName.VersionActivity3_0EnterView] = 2
+	[ViewName.VersionActivity3_0EnterView] = 2,
+	[ViewName.VersionActivity3_1EnterView] = 2
 }
 var_0_0.TabViewName = {
 	V2a6_XugoujiEnterView = "虚构集",
 	V2a2_RoomCritterEnterView = "魔精公司",
 	VersionActivity2_5AutoChessEnterView = "魔精自走棋",
-	VersionActivity2_3DungeonEnterView = "圣火纪行：东区黎明",
+	V3a1_GaoSiNiao_EnterView = "告死鸟",
 	VersionActivity2_5ChallengeEnterView = "挑战玩法",
 	V2a4_Season166EnterView = "赛季",
 	VersionActivity2_4RougeEnterView = "常驻肉鸽",
@@ -350,7 +372,7 @@ var_0_0.TabViewName = {
 	ActivityWeekWalkDeepShowView = "深眠域",
 	V2a7_v2a0_ReactivityEnterview = "2.0活动复刻",
 	V2a2_LoperaEnterView = "洛佩拉",
-	V2a7_LengZhou6EnterView = "冷周六",
+	V3a1_Act191EnterView = "拓片杂技赛",
 	VersionActivity2_5FeiLinShiDuoEnterView = "菲林士多",
 	V2a7_Act191EnterView = "匣中交流赛",
 	VersionActivity2_5DungeonEnterView = "唐人街影话",
@@ -378,8 +400,13 @@ var_0_0.TabViewName = {
 	VersionActivity2_8AutoChessEnterView = "魔精自走棋",
 	V2a5_v1a6_ReactivityEnterview = "1.6活动复刻",
 	V1a6_BossRush_EnterView = "鬃毛邮报",
+	VersionActivity3_1DungeonEnterView = "长夜鸣笛",
+	V2a7_LengZhou6EnterView = "冷周六",
+	V3a1_YeShuMeiEnterView = "野树莓",
+	V3a1_v2a4_ReactivityEnterview = "2.4活动复刻",
 	VersionActivity2_3Act174EnterView = "和平角斗场",
 	VersionActivity3_0KaRongEnterView = "卡戎",
+	VersionActivity2_3DungeonEnterView = "圣火纪行：东区黎明",
 	VersionActivity2_8DungeonEnterView = "复乐园",
 	V2a2_TianShiNaNaEnterView = "天使娜娜",
 	V2a6_Season166EnterView = "赛季",

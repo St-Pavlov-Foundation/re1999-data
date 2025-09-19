@@ -106,6 +106,7 @@ var_0_0.Activity = {
 	RoleSignViewPart1_1_6 = 11614,
 	Activity1_9WarmUp = 11923,
 	V2a2_Calendar_Decoration = 12221,
+	V3a1_WarmUp = 13124,
 	SummerSignPart2_1_2 = 11212,
 	V2a7_TowerGift = 12720,
 	DailyAllowance = 11423,
@@ -127,6 +128,7 @@ var_0_0.Activity = {
 	FurnaceTreasure = 11619,
 	V2a9_FreeMonthCard = 130513,
 	V2a8_WuErLiXiGift = 12869,
+	V3a1_NewCultivationDestiny = 13116,
 	V2a4_Blind_Box_Draw = 12434,
 	V2a6_WeekwalkHeart = 12613,
 	V2a9_WarmUp = 130530,
@@ -138,6 +140,7 @@ var_0_0.Activity = {
 	NewInsight = 12237,
 	SelfSelectCharacter = 12238,
 	V2a7_LinkageActivity = 12721,
+	V3a1_AutumnSign = 13110,
 	V2a8_Matildagift = 12870,
 	V1a9_Matildagift = 11915,
 	LinkageActivity_FullView = 12312,
@@ -178,16 +181,22 @@ var_0_0.ActivitySortWeight = {
 	[var_0_0.MainActivityCenterViewClientId.Act186] = 8
 }
 var_0_0.ActivityTypeID = {
-	Act158 = 158,
+	JieXiKa = 114,
 	Act125 = 125,
+	Act209 = 209,
 	Act171 = 171,
-	OpenTestWarmUp = 106,
 	DoubleDrop = 153,
+	Act158 = 158,
+	Act210 = 210,
 	Act186 = 186,
+	Act212 = 212,
+	Act100 = 100,
+	OpenTestWarmUp = 106,
+	NecrologistStory = 207,
 	Act189 = 189,
 	DreamTail = 119,
-	JieXiKa = 114,
 	Act201 = 201,
+	Act214 = 214,
 	Act147 = 147
 }
 var_0_0.ActivityStatus = {
@@ -210,6 +219,7 @@ var_0_0.VersionActivityIdDict = {
 	Activity_Assassin_2 = 130506,
 	Activity3_0 = 13006,
 	Activity1_9 = 11901,
+	Activity3_1 = 13102,
 	Activity1_2 = 11201,
 	Activity2_0 = 12002,
 	Activity2_5 = 12501,
@@ -227,7 +237,7 @@ var_0_0.VersionActivityIdDict = {
 var_0_0.VersionActivityIdList = {
 	var_0_0.VersionActivityIdDict.Activity_Assassin_1,
 	var_0_0.VersionActivityIdDict.Activity_Assassin_2,
-	var_0_0.VersionActivityIdDict.Activity3_0
+	var_0_0.VersionActivityIdDict.Activity3_1
 }
 var_0_0.MainIcon = {
 	[var_0_0.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -252,7 +262,8 @@ var_0_0.MainIcon = {
 	[var_0_0.VersionActivityIdDict.Activity_Assassin_1] = "rk_2_9_1",
 	[var_0_0.VersionActivityIdDict.Activity_Assassin_2] = "rk_2_9_2",
 	[var_0_0.VersionActivityIdDict.Activity2_8] = "rk_2_8",
-	[var_0_0.VersionActivityIdDict.Activity3_0] = "rk_3_0"
+	[var_0_0.VersionActivityIdDict.Activity3_0] = "rk_3_0",
+	[var_0_0.VersionActivityIdDict.Activity3_1] = "rk_3_1"
 }
 var_0_0.ShowVersionActivityEpisode = 10103
 var_0_0.MainViewActivityState = {

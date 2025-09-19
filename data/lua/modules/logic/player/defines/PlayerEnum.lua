@@ -15,6 +15,7 @@ var_0_0.SimpleProperty = {
 	MainSceneSkin = 13,
 	Weather = 1,
 	FightUIFloatStyle = 20,
+	ClickUISkin = 22,
 	NuoDiKaNewSkill = 18,
 	FightTechnique = 4,
 	EquipPreferenceOpen = 9,

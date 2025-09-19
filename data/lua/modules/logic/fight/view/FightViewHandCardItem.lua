@@ -56,15 +56,21 @@ function var_0_0.init(arg_2_0, arg_2_1)
 end
 
 function var_0_0.addEventListeners(arg_3_0)
-	if not FightReplayModel.instance:isReplay() then
+	if not FightDataHelper.stateMgr.isReplay then
 		arg_3_0._click:AddClickListener(arg_3_0._onClickThis, arg_3_0)
 		arg_3_0._drag:AddDragBeginListener(arg_3_0._onDragBegin, arg_3_0)
 		arg_3_0._drag:AddDragListener(arg_3_0._onDragThis, arg_3_0)
 		arg_3_0._drag:AddDragEndListener(arg_3_0._onDragEnd, arg_3_0)
+		arg_3_0._long:SetLongPressTime(arg_3_0._longPressArr)
+		arg_3_0._long:AddLongPressListener(arg_3_0._onLongPress, arg_3_0)
+
+		if PCInputController.instance:getIsUse() then
+			arg_3_0._long:AddHoverListener(arg_3_0._onHover, arg_3_0)
+		end
 	end
 
 	arg_3_0:addEventCb(FightController.instance, FightEvent.SelectSkillTarget, arg_3_0._onSelectSkillTarget, arg_3_0)
-	arg_3_0:addEventCb(FightController.instance, FightEvent.OnStageChange, arg_3_0._onStageChange, arg_3_0)
+	arg_3_0:addEventCb(FightController.instance, FightEvent.StageChanged, arg_3_0.onStageChange, arg_3_0)
 	arg_3_0:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, arg_3_0._onBuffUpdate, arg_3_0)
 	arg_3_0:addEventCb(FightController.instance, FightEvent.DragHandCardBegin, arg_3_0._onDragHandCardBegin, arg_3_0)
 	arg_3_0:addEventCb(FightController.instance, FightEvent.DragHandCardEnd, arg_3_0._onDragHandCardEnd, arg_3_0)
@@ -95,7 +101,7 @@ function var_0_0.removeEventListeners(arg_4_0)
 	end
 
 	arg_4_0:removeEventCb(FightController.instance, FightEvent.SelectSkillTarget, arg_4_0._onSelectSkillTarget, arg_4_0)
-	arg_4_0:removeEventCb(FightController.instance, FightEvent.OnStageChange, arg_4_0._onStageChange, arg_4_0)
+	arg_4_0:removeEventCb(FightController.instance, FightEvent.StageChanged, arg_4_0.onStageChange, arg_4_0)
 	arg_4_0:removeEventCb(FightController.instance, FightEvent.OnBuffUpdate, arg_4_0._onBuffUpdate, arg_4_0)
 	arg_4_0:removeEventCb(FightController.instance, FightEvent.DragHandCardBegin, arg_4_0._onDragHandCardBegin, arg_4_0)
 	arg_4_0:removeEventCb(FightController.instance, FightEvent.DragHandCardEnd, arg_4_0._onDragHandCardEnd, arg_4_0)
@@ -168,17 +174,11 @@ function var_0_0.playASFDAnim(arg_12_0, arg_12_1)
 end
 
 function var_0_0.onStart(arg_13_0)
-	local var_13_0 = FightModel.instance:getCurStage()
-
-	if var_13_0 then
-		arg_13_0:_onStageChange(var_13_0)
-	end
-
 	arg_13_0:_checkStartReplay()
 end
 
 function var_0_0._checkStartReplay(arg_14_0)
-	if FightReplayModel.instance:isReplay() then
+	if FightDataHelper.stateMgr.isReplay then
 		arg_14_0._click:RemoveClickListener()
 		arg_14_0._drag:RemoveDragBeginListener()
 		arg_14_0._drag:RemoveDragListener()
@@ -354,37 +354,36 @@ function var_0_0._updateSpEffect(arg_28_0)
 	end
 
 	local var_28_0 = lua_skill.configDict[arg_28_0._skillId]
-	local var_28_1 = FightModel.instance:getCurStage()
 
-	if var_28_1 ~= FightEnum.Stage.Card and var_28_1 ~= FightEnum.Stage.AutoCard then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		gohelper.setActive(arg_28_0._spEffectGO, false)
 
 		return
 	end
 
-	local var_28_2 = false
-	local var_28_3 = {}
+	local var_28_1 = false
+	local var_28_2 = {}
 
 	for iter_28_0, iter_28_1 in ipairs(FightStrUtil.instance:getSplitToNumberCache(var_28_0.clientIgnoreCondition, "#")) do
-		var_28_3[iter_28_1] = true
+		var_28_2[iter_28_1] = true
 	end
 
 	for iter_28_2 = 1, FightEnum.MaxBehavior do
-		if not var_28_3[iter_28_2] then
-			local var_28_4 = var_28_0["condition" .. iter_28_2]
-			local var_28_5 = var_28_0["conditionTarget" .. iter_28_2]
-			local var_28_6 = var_28_0["behavior" .. iter_28_2]
+		if not var_28_2[iter_28_2] then
+			local var_28_3 = var_28_0["condition" .. iter_28_2]
+			local var_28_4 = var_28_0["conditionTarget" .. iter_28_2]
+			local var_28_5 = var_28_0["behavior" .. iter_28_2]
 
-			if arg_28_0:_checkConditionSpEffect(var_28_4, var_28_5) or arg_28_0:_checkSkillRateUpBehavior(var_28_6, var_28_5) then
-				var_28_2 = true
+			if arg_28_0:_checkConditionSpEffect(var_28_3, var_28_4) or arg_28_0:_checkSkillRateUpBehavior(var_28_5, var_28_4) then
+				var_28_1 = true
 
 				break
 			end
 		end
 	end
 
-	if var_28_2 ~= arg_28_0._spEffectGO.activeSelf then
-		gohelper.setActive(arg_28_0._spEffectGO, var_28_2)
+	if var_28_1 ~= arg_28_0._spEffectGO.activeSelf then
+		gohelper.setActive(arg_28_0._spEffectGO, var_28_1)
 	end
 end
 
@@ -871,36 +870,19 @@ function var_0_0._simulateSkillehavior(arg_39_0, arg_39_1, arg_39_2, arg_39_3, a
 		end
 
 		if var_39_4 then
-			local var_39_5 = FightBuffMO.New()
+			local var_39_5 = FightDef_pb.BuffInfo()
 
 			var_39_5.uid = "9999"
-			var_39_5.id = "9999"
-			var_39_5.entityId = arg_39_1.id
 			var_39_5.buffId = var_39_4
 
-			table.insert(arg_39_5, var_39_5)
+			local var_39_6 = FightBuffInfoData.New(var_39_5, arg_39_1.id)
+
+			table.insert(arg_39_5, var_39_6)
 		end
 	end
 end
 
-function var_0_0._onStageChange(arg_40_0, arg_40_1)
-	if arg_40_1 == FightEnum.Stage.Card then
-		if not FightReplayModel.instance:isReplay() then
-			arg_40_0._long:SetLongPressTime(arg_40_0._longPressArr)
-			arg_40_0._long:AddLongPressListener(arg_40_0._onLongPress, arg_40_0)
-
-			if PCInputController.instance:getIsUse() then
-				arg_40_0._long:AddHoverListener(arg_40_0._onHover, arg_40_0)
-			end
-		end
-	else
-		arg_40_0._long:RemoveLongPressListener()
-
-		if PCInputController.instance:getIsUse() then
-			arg_40_0._long:RemoveHoverListener()
-		end
-	end
-
+function var_0_0.onStageChange(arg_40_0, arg_40_1)
 	arg_40_0:_updateSpEffect()
 end
 
@@ -920,6 +902,10 @@ function var_0_0.stopLongPressEffect(arg_43_0)
 end
 
 function var_0_0._onClickThis(arg_44_0)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end
@@ -963,14 +949,14 @@ function var_0_0._onClickThis(arg_44_0)
 		return
 	end
 
-	if FightModel.instance:isAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() then
 		logNormal("Auto Fight, can't click card")
 
 		return
 	end
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
-		logNormal("stage = " .. FightModel.instance:getCurStageDesc() .. ", can't click card")
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
+		logNormal("Play Stage, can't click card")
 
 		return
 	end
@@ -1050,6 +1036,10 @@ function var_0_0._toPlayCard(arg_45_0, arg_45_1, arg_45_2, arg_45_3)
 end
 
 function var_0_0._onDragBegin(arg_46_0, arg_46_1, arg_46_2)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end
@@ -1058,11 +1048,11 @@ function var_0_0._onDragBegin(arg_46_0, arg_46_1, arg_46_2)
 		return
 	end
 
-	if FightViewHandCard.blockOperate or FightModel.instance:isAuto() then
+	if FightViewHandCard.blockOperate or FightDataHelper.stateMgr:getIsAuto() then
 		return
 	end
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		return
 	end
 
@@ -1086,6 +1076,10 @@ function var_0_0._onDragBegin(arg_46_0, arg_46_1, arg_46_2)
 end
 
 function var_0_0._onDragThis(arg_47_0, arg_47_1, arg_47_2)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end
@@ -1094,11 +1088,11 @@ function var_0_0._onDragThis(arg_47_0, arg_47_1, arg_47_2)
 		return
 	end
 
-	if FightViewHandCard.blockOperate or FightModel.instance:isAuto() then
+	if FightViewHandCard.blockOperate or FightDataHelper.stateMgr:getIsAuto() then
 		return
 	end
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		return
 	end
 
@@ -1108,6 +1102,10 @@ function var_0_0._onDragThis(arg_47_0, arg_47_1, arg_47_2)
 end
 
 function var_0_0._onDragEnd(arg_48_0, arg_48_1, arg_48_2)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end
@@ -1116,11 +1114,11 @@ function var_0_0._onDragEnd(arg_48_0, arg_48_1, arg_48_2)
 		return
 	end
 
-	if FightViewHandCard.blockOperate or FightModel.instance:isAuto() then
+	if FightViewHandCard.blockOperate or FightDataHelper.stateMgr:getIsAuto() then
 		return
 	end
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		return
 	end
 
@@ -1133,17 +1131,25 @@ function var_0_0._onDragEnd(arg_48_0, arg_48_1, arg_48_2)
 end
 
 function var_0_0._onLongPress(arg_49_0)
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
+	if FightModel.instance.isHideCard then
+		return
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Rolesgo)
 
 	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.FightForbidLongPressCard) then
 		return
 	end
 
-	if FightViewHandCard.blockOperate or FightModel.instance:isAuto() then
+	if FightViewHandCard.blockOperate or FightDataHelper.stateMgr:getIsAuto() then
 		return
 	end
 
-	if FightModel.instance:getCurStage() ~= FightEnum.Stage.Card then
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		return
 	end
 
@@ -1185,9 +1191,9 @@ function var_0_0._simulateDragHandCardBegin(arg_51_0, arg_51_1)
 
 	local var_51_0 = recthelper.uiPosToScreenPos(arg_51_0.tr)
 
-	arg_51_0:_onDragBegin(nil, {
-		position = var_51_0
-	})
+	arg_51_0._isDraging = true
+
+	FightController.instance:dispatchEvent(FightEvent.DragHandCardBegin, arg_51_1, var_51_0, arg_51_0.cardInfoMO)
 end
 
 function var_0_0._simulateDragHandCard(arg_52_0, arg_52_1, arg_52_2)
@@ -1204,9 +1210,7 @@ function var_0_0._simulateDragHandCard(arg_52_0, arg_52_1, arg_52_2)
 	if var_52_0 then
 		local var_52_1 = recthelper.uiPosToScreenPos(var_52_0.tr)
 
-		arg_52_0:_onDragThis(nil, {
-			position = var_52_1
-		})
+		FightController.instance:dispatchEvent(FightEvent.DragHandCard, arg_52_0.index, var_52_1)
 	end
 end
 
@@ -1221,11 +1225,10 @@ function var_0_0._simulateDragHandCardEnd(arg_53_0, arg_53_1, arg_53_2)
 
 	local var_53_0 = recthelper.uiPosToScreenPos(arg_53_0.tr)
 
-	arg_53_0._isDraging = true
+	arg_53_0._isDraging = false
 
-	arg_53_0:_onDragEnd(nil, {
-		position = var_53_0
-	})
+	FightController.instance:dispatchEvent(FightEvent.DragHandCardEnd, arg_53_0.index, var_53_0)
+	GuideController.instance:dispatchEvent(GuideEvent.SpecialEventDone, GuideEnum.SpecialEventEnum.FightCardOp)
 end
 
 function var_0_0._simulatePlayHandCard(arg_54_0, arg_54_1, arg_54_2, arg_54_3, arg_54_4)

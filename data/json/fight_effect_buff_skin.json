@@ -2422,5 +2422,17 @@
     "triggerAudio": 0,
     "delAudio": 0,
     "audio": 430870343
+  },
+  {
+    "buffId": 30770141,
+    "orEnemy": 2,
+    "skinId": 307704,
+    "effectHang": "special4",
+    "effectPath": "v3a1_bfsg/bfsg_start",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
   }
 ]

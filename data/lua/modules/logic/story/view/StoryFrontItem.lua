@@ -53,7 +53,7 @@ function var_0_0.showFullScreenText(arg_4_0, arg_4_1, arg_4_2)
 
 	arg_4_0._diatxt = string.gsub(arg_4_2, "<notShowInLog>", "")
 
-	local var_4_0 = StoryController.instance._curStepId
+	local var_4_0 = StoryModel.instance:getCurStepId()
 	local var_4_1 = StoryStepModel.instance:getStepListById(var_4_0)
 
 	arg_4_0._diatxt = StoryModel.instance:getStoryTxtByVoiceType(arg_4_0._diatxt, var_4_1.conversation.audio or 0)
@@ -140,7 +140,7 @@ function var_0_0.setFullTopShow(arg_10_0)
 end
 
 function var_0_0.playStoryViewIn(arg_11_0)
-	local var_11_0 = StoryModel.instance:isTypeSkip(StoryEnum.SkipType.InDarkFade, StoryController.instance._curStoryId)
+	local var_11_0 = StoryModel.instance:isTypeSkip(StoryEnum.SkipType.InDarkFade, StoryModel.instance:getCurStoryId())
 
 	StoryModel.instance.skipFade = var_11_0
 
@@ -164,7 +164,7 @@ function var_0_0._startStoryViewIn(arg_12_0)
 end
 
 function var_0_0.playStoryViewOut(arg_14_0, arg_14_1, arg_14_2, arg_14_3)
-	local var_14_0 = StoryModel.instance:isTypeSkip(StoryEnum.SkipType.OutDarkFade, StoryController.instance._curStoryId)
+	local var_14_0 = StoryModel.instance:isTypeSkip(StoryEnum.SkipType.OutDarkFade, StoryModel.instance:getCurStoryId())
 
 	StoryModel.instance.skipFade = var_14_0
 
@@ -209,7 +209,7 @@ function var_0_0._onOpenView(arg_16_0, arg_16_1)
 		return
 	end
 
-	local var_16_0 = StoryController.instance._curStoryId
+	local var_16_0 = StoryModel.instance:getCurStoryId()
 
 	if StoryModel.instance:isStoryFinished(var_16_0) then
 		StoryController.instance:closeStoryView()

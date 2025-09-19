@@ -444,6 +444,10 @@ function var_0_0.openDungeonChapterView(arg_29_0, arg_29_1, arg_29_2)
 
 	arg_29_0._lastChapterId = arg_29_1.chapterId
 
+	if arg_29_1.chapterId and not arg_29_1.episodeId then
+		arg_29_1.episodeId = CharacterRecommedModel.instance:getChapterTradeEpisodeId(arg_29_1.chapterId)
+	end
+
 	DungeonModel.instance:changeCategory(var_29_0.type, false)
 	ViewMgr.instance:openView(ViewName.DungeonMapView, arg_29_1, arg_29_2)
 
@@ -953,7 +957,7 @@ function var_0_0.enterTowerView(arg_59_0, arg_59_1)
 
 	local var_59_1
 
-	if var_59_0.type == DungeonEnum.EpisodeType.TowerPermanent then
+	if var_59_0.type == DungeonEnum.EpisodeType.TowerPermanent or var_59_0.type == DungeonEnum.EpisodeType.TowerDeep then
 		var_59_1 = {
 			jumpId = TowerEnum.JumpId.TowerPermanent
 		}

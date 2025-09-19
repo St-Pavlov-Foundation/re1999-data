@@ -182,5 +182,29 @@
     "bossPool": "2#4#5",
     "taskGroupId": 910023,
     "isOnline": 1
+  },
+  {
+    "season": 24,
+    "startTime": "2025-09-22",
+    "endTime": "2025-10-06",
+    "bossPool": "6#4#1",
+    "taskGroupId": 910024,
+    "isOnline": 1
+  },
+  {
+    "season": 25,
+    "startTime": "2025-10-06",
+    "endTime": "2025-10-20",
+    "bossPool": "4#5#6",
+    "taskGroupId": 910025,
+    "isOnline": 1
+  },
+  {
+    "season": 26,
+    "startTime": "2025-10-20",
+    "endTime": "2025-11-03",
+    "bossPool": "2#3#4",
+    "taskGroupId": 910026,
+    "isOnline": 1
   }
 ]

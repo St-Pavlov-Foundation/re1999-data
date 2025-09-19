@@ -10,6 +10,7 @@ function var_0_0.activateExtend()
 	var_0_0.EventName.voice_pack_delete = "voice_pack_delete"
 	var_0_0.EventName.resources_downloading = "resources_downloading"
 	var_0_0.EventName.main_hero_interaction = "main_hero_interaction"
+	var_0_0.EventName.act210_operation = "act210_operation"
 	var_0_0.EventName.resource_fixup = "resource_fixup"
 	var_0_0.EventName.click_activity_jump_button = "click_activity_jump_button"
 	var_0_0.EventProperties.current_language = "current_language"
@@ -27,6 +28,8 @@ function var_0_0.activateExtend()
 	var_0_0.EventProperties.main_hero_interaction_voice_id = "voiceid"
 	var_0_0.EventProperties.resource_fixup_status = "status"
 	var_0_0.EventProperties.resource_fixup_count = "resource_count"
+	var_0_0.EventProperties.act210_grid_info = "act210_grid_info"
+	var_0_0.EventProperties.used_times = "used_times"
 	var_0_0.PropertyTypes[var_0_0.EventProperties.current_language] = "string"
 	var_0_0.PropertyTypes[var_0_0.EventProperties.entrance] = "string"
 	var_0_0.PropertyTypes[var_0_0.EventProperties.current_voice_pack_list] = "list"
@@ -42,6 +45,8 @@ function var_0_0.activateExtend()
 	var_0_0.PropertyTypes[var_0_0.EventProperties.main_hero_interaction_voice_id] = "string"
 	var_0_0.PropertyTypes[var_0_0.EventProperties.resource_fixup_status] = "string"
 	var_0_0.PropertyTypes[var_0_0.EventProperties.resource_fixup_count] = "number"
+	var_0_0.PropertyTypes[var_0_0.EventProperties.act210_grid_info] = "array"
+	var_0_0.PropertyTypes[var_0_0.EventProperties.used_times] = "number"
 end
 
 function var_0_0.trackVoicePackDownloadConfirm(arg_2_0, arg_2_1)
@@ -124,6 +129,16 @@ function var_0_0.trackClickEnterActivityButton(arg_11_0, arg_11_1, arg_11_2)
 	StatController.instance:track(StatEnum.EventName.ButtonClick, {
 		[StatEnum.EventProperties.ViewName] = arg_11_1 or "",
 		[StatEnum.EventProperties.ButtonName] = arg_11_2 or ""
+	})
+end
+
+function var_0_0.track_act210_operation(arg_12_0, arg_12_1, arg_12_2, arg_12_3, arg_12_4, arg_12_5)
+	StatController.instance:track(var_0_0.EventName.act210_operation, {
+		[StatEnum.EventProperties.MapId] = tostring(arg_12_1) or "",
+		[StatEnum.EventProperties.OperationType] = arg_12_2 or "",
+		[var_0_0.EventProperties.act210_grid_info] = arg_12_3 or {},
+		[var_0_0.EventProperties.used_times] = arg_12_4 or 0,
+		[StatEnum.EventProperties.UseTime] = arg_12_5 or -1
 	})
 end
 

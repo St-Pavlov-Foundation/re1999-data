@@ -6,7 +6,8 @@
     "beHidden": "2021#2022#2023#2024",
     "tagType": 1,
     "effect": 202101,
-    "color": 3
+    "color": 3,
+    "suggestMap": ""
   },
   {
     "id": 1002,
@@ -15,7 +16,8 @@
     "beHidden": "2021#2024#2026#2027",
     "tagType": 1,
     "effect": 202102,
-    "color": 1
+    "color": 1,
+    "suggestMap": ""
   },
   {
     "id": 1003,
@@ -24,16 +26,18 @@
     "beHidden": "2021#2023#2025#2027",
     "tagType": 1,
     "effect": 202103,
-    "color": 2
+    "color": 2,
+    "suggestMap": ""
   },
   {
     "id": 1004,
     "name": "芝诺",
-    "desc": "隶属于芝诺的成员，会支持组长关于芝诺的决策，探索结束额外恢复5抵抗力；进入战斗获得1层[场外支持]",
+    "desc": "隶属于芝诺的成员，会支持组长关于芝诺的决策，演习结束额外恢复5抵抗力；进入战斗获得1层[场外支持]",
     "beHidden": "2021#2022#2025#2026",
     "tagType": 1,
     "effect": 202104,
-    "color": 5
+    "color": 5,
+    "suggestMap": ""
   },
   {
     "id": 2001,
@@ -42,7 +46,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202001,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2002,
@@ -51,7 +56,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202002,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2003,
@@ -60,7 +66,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202003,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2004,
@@ -69,7 +76,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202004,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2005,
@@ -78,7 +86,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202005,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2006,
@@ -87,7 +96,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202006,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2007,
@@ -96,7 +106,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202007,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2008,
@@ -105,7 +116,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202008,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2009,
@@ -114,7 +126,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202009,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2010,
@@ -123,7 +136,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202010,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2011,
@@ -132,7 +146,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202011,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 2012,
@@ -141,7 +156,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202012,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2013,
@@ -150,7 +166,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202013,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2014,
@@ -159,7 +176,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202014,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2015,
@@ -168,7 +186,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202015,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2016,
@@ -177,7 +196,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202016,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2017,
@@ -186,7 +206,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202017,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2018,
@@ -195,7 +216,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202018,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2019,
@@ -204,7 +226,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202019,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2020,
@@ -213,7 +236,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202020,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2021,
@@ -222,7 +246,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202021,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2022,
@@ -231,7 +256,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202022,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2023,
@@ -240,7 +266,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202023,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2024,
@@ -249,7 +276,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202024,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2025,
@@ -258,7 +286,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202025,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2026,
@@ -267,7 +296,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202026,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2027,
@@ -276,7 +306,8 @@
     "beHidden": "",
     "tagType": 1,
     "effect": 202027,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 2028,
@@ -285,7 +316,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202028,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 3001,
@@ -294,7 +326,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202301,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 3002,
@@ -303,7 +336,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202302,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 3003,
@@ -312,7 +346,8 @@
     "beHidden": "",
     "tagType": 3,
     "effect": 202303,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 3004,
@@ -321,7 +356,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202304,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 3005,
@@ -330,7 +366,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202305,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 3006,
@@ -339,7 +376,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202306,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 4001,
@@ -348,7 +386,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 0,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 4002,
@@ -357,7 +396,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 0,
-    "color": 4
+    "color": 4,
+    "suggestMap": ""
   },
   {
     "id": 4003,
@@ -366,7 +406,8 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 202203,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 4004,
@@ -375,43 +416,48 @@
     "beHidden": "",
     "tagType": 2,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 5001,
-    "name": "隐藏判定1",
+    "name": "隐藏判定Ⅰ",
     "desc": "隐藏判定1",
     "beHidden": "2021",
     "tagType": 3,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 5002,
-    "name": "隐藏判定2",
+    "name": "隐藏判定Ⅱ",
     "desc": "隐藏判定2",
     "beHidden": "2021",
     "tagType": 3,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 5003,
-    "name": "隐藏判定3",
+    "name": "隐藏判定Ⅲ",
     "desc": "隐藏判定3",
     "beHidden": "2021",
     "tagType": 3,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 5004,
-    "name": "隐藏判定4",
+    "name": "隐藏判定Ⅳ",
     "desc": "隐藏判定4",
     "beHidden": "2021",
     "tagType": 3,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
   },
   {
     "id": 5005,
@@ -420,6 +466,787 @@
     "beHidden": "2021",
     "tagType": 3,
     "effect": 0,
-    "color": 6
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 311001,
+    "name": "民众",
+    "desc": "并无隶属的平民",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 3,
+    "suggestMap": ""
+  },
+  {
+    "id": 311002,
+    "name": "芝诺",
+    "desc": "隶属于芝诺的成员",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 1,
+    "suggestMap": ""
+  },
+  {
+    "id": 311003,
+    "name": "基金会",
+    "desc": "隶属于基金会的成员",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 2,
+    "suggestMap": ""
+  },
+  {
+    "id": 311004,
+    "name": "拉普拉斯",
+    "desc": "隶属于拉普拉斯的成员",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 5,
+    "suggestMap": ""
+  },
+  {
+    "id": 311005,
+    "name": "民众领袖",
+    "desc": "并无隶属的平民领袖",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 3,
+    "suggestMap": ""
+  },
+  {
+    "id": 311006,
+    "name": "芝诺领袖",
+    "desc": "隶属于芝诺的领袖",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 1,
+    "suggestMap": ""
+  },
+  {
+    "id": 311007,
+    "name": "基金会领袖",
+    "desc": "隶属于基金会的领袖",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 2,
+    "suggestMap": ""
+  },
+  {
+    "id": 311008,
+    "name": "拉普拉斯领袖",
+    "desc": "隶属于拉普拉斯的领袖",
+    "beHidden": "",
+    "tagType": 3101,
+    "effect": 0,
+    "color": 5,
+    "suggestMap": ""
+  },
+  {
+    "id": 312001,
+    "name": "收集",
+    "desc": "参与演习时，搜刮额外获得10%的研究资料",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212001,
+    "color": 4,
+    "suggestMap": ""
+  },
+  {
+    "id": 312002,
+    "name": "训练",
+    "desc": "参与演习时，战斗伤害+5%",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212002,
+    "color": 4,
+    "suggestMap": ""
+  },
+  {
+    "id": 312003,
+    "name": "交涉",
+    "desc": "参与演习时，地图商店折扣+4%",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212003,
+    "color": 4,
+    "suggestMap": ""
+  },
+  {
+    "id": 312004,
+    "name": "灵感",
+    "desc": "参与演习时，使用快捷道具4%概率获得1个复制品(复制品无法再复制)",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212004,
+    "color": 4,
+    "suggestMap": ""
+  },
+  {
+    "id": 3120051,
+    "name": "向导Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，视野+1",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120051,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120052,
+    "name": "向导Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，视野+1",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120052,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120053,
+    "name": "向导Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，视野+1",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120053,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120054,
+    "name": "向导Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，视野+1",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120054,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120061,
+    "name": "居民Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，进入地图随机点亮3个搜刮点位置",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120061,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120062,
+    "name": "居民Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，进入地图随机点亮3个搜刮点位置",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120062,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120063,
+    "name": "居民Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，进入地图随机点亮3个搜刮点位置",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120063,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120064,
+    "name": "居民Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，进入地图随机点亮3个搜刮点位置",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120064,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120071,
+    "name": "销售Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，演习开始每携带1种[载具]，获得100研究资料",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120071,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120072,
+    "name": "销售Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，演习开始每携带1种[载具]，获得100研究资料",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120072,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120073,
+    "name": "销售Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，演习开始每携带1种[载具]，获得100研究资料",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120073,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120074,
+    "name": "销售Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，演习开始每携带1种[载具]，获得100研究资料",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120074,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120081,
+    "name": "追踪Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，获取周围10格范围的怪物位置信息",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120081,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120082,
+    "name": "追踪Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，获取周围10格范围的怪物位置信息",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120082,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120083,
+    "name": "追踪Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，获取周围10格范围的怪物位置信息",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120083,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120084,
+    "name": "追踪Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，获取周围10格范围的怪物位置信息",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120084,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120091,
+    "name": "熟客Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，地图商店出售价格+10%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120091,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120092,
+    "name": "熟客Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，地图商店出售价格+10%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120092,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120093,
+    "name": "熟客Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，地图商店出售价格+10%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120093,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120094,
+    "name": "熟客Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，地图商店出售价格+10%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120094,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120101,
+    "name": "黑市Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，[呼唤仪式]替换为将随机\"商店\"传送到自身周围1格",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120101,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120102,
+    "name": "黑市Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，[呼唤仪式]替换为将随机\"商店\"传送到自身周围1格",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120102,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120103,
+    "name": "黑市Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，[呼唤仪式]替换为将随机\"商店\"传送到自身周围1格",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120103,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120104,
+    "name": "黑市Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，[呼唤仪式]替换为将随机\"商店\"传送到自身周围1格",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120104,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120111,
+    "name": "考察Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120111,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120112,
+    "name": "考察Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120112,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120113,
+    "name": "考察Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120113,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120114,
+    "name": "考察Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120114,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120121,
+    "name": "寻宝Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，搜刮耗时-20%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120121,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120122,
+    "name": "寻宝Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，搜刮耗时-20%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120122,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120123,
+    "name": "寻宝Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，搜刮耗时-20%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120123,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120124,
+    "name": "寻宝Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，搜刮耗时-20%",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120124,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 3120131,
+    "name": "灵光一闪Ⅰ",
+    "desc": "参与演习[完美居所][语言防线]地图时，使用快捷道具8%概率获得1个复制品",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120131,
+    "color": 4,
+    "suggestMap": "1#5"
+  },
+  {
+    "id": 3120132,
+    "name": "灵光一闪Ⅱ",
+    "desc": "参与演习[第73区][语言防线]地图时，使用快捷道具8%概率获得1个复制品",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120132,
+    "color": 4,
+    "suggestMap": "2#5"
+  },
+  {
+    "id": 3120133,
+    "name": "灵光一闪Ⅲ",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，使用快捷道具8%概率获得1个复制品",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120133,
+    "color": 4,
+    "suggestMap": "3#6"
+  },
+  {
+    "id": 3120134,
+    "name": "灵光一闪Ⅳ",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，使用快捷道具8%概率获得1个复制品",
+    "beHidden": "",
+    "tagType": 3103,
+    "effect": 2120134,
+    "color": 4,
+    "suggestMap": "4#6"
+  },
+  {
+    "id": 313001,
+    "name": "线人",
+    "desc": "参与演习时，演习开始额外生成2个搜刮点",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212014,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313002,
+    "name": "老司机",
+    "desc": "参与演习时，若拥有任一载具(不包括初始船只)，移动耗时-25%(无法叠加)",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212015,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313003,
+    "name": "边缘行者",
+    "desc": "参与演习时，沿障碍物移动时耗时-20%",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212016,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313004,
+    "name": "古老之光",
+    "desc": "参与演习时，视野+1，点亮所有搜刮点位置",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212017,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313005,
+    "name": "灵敏嗅觉",
+    "desc": "参与演习时，额外生成1个金色搜刮点",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212018,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313006,
+    "name": "幸运小狗",
+    "desc": "参与演习时，每次搜刮后根据地图难度获得额外研究资料",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212019,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313007,
+    "name": "追踪",
+    "desc": "参与演习时，获取周围8格范围的怪物位置信息(无法叠加)",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212020,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313008,
+    "name": "引导药剂",
+    "desc": "参与演习时，获得3个[引导药剂]",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212021,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313009,
+    "name": "爆破专家",
+    "desc": "参与演习时，获得一个[黏土工具箱]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212022,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313010,
+    "name": "排异体质",
+    "desc": "参与演习时，健康度降低效果减少50%;无法回复健康度(无法叠加)",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212023,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313011,
+    "name": "动物向导",
+    "desc": "参与演习时，获得已知怪物周围2格的视野",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212024,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313012,
+    "name": "华丽走位",
+    "desc": "参与演习时，每次位移3格以上后回复30分钟时间",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212025,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313013,
+    "name": "天降正义",
+    "desc": "参与演习时，初始携带2个[黏土炸药]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212026,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313014,
+    "name": "保镖",
+    "desc": "参与演习时，每遇到1个商人，地图商店折扣永久增加1%",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212027,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313015,
+    "name": "再利用",
+    "desc": "参与演习时，可以把无用的废品出售给商人",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212028,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313016,
+    "name": "商业医疗",
+    "desc": "参与演习时，演习开始获得3个寻常[迷因造物]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212029,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313017,
+    "name": "贸易路线",
+    "desc": "参与演习时，和商人第一次互动后，获得视野外的最近商人的位置及路线视野",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212030,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313018,
+    "name": "完美助理",
+    "desc": "参与演习时，使用\"理性助理\"后，回复10点抵抗力",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212031,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313019,
+    "name": "特制软盘",
+    "desc": "参与演习时，演习开始获得[特制软盘]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212032,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313020,
+    "name": "先知之眼",
+    "desc": "参与演习时，在剩余18/12/6小时时，都会点亮2个视野外事件(商人/搜刮点/怪物/NPC)",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212033,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313021,
+    "name": "宣传大使",
+    "desc": "参与演习时，演习结束获得的所有转译资料提升10%",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212034,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313022,
+    "name": "鬼才",
+    "desc": "参与演习时，初始演习开始获得1个[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212035,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313023,
+    "name": "就地取材",
+    "desc": "参与演习时，每次移动1格极低概率获得[小鬼的袋子]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212036,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313024,
+    "name": "\"火力\"充足",
+    "desc": "参与演习时，初始获得2个[黏土炸药]",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212037,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313025,
+    "name": "医疗专家",
+    "desc": "参与演习时，初始获得1个[甘蔗糖汁]和1个[急救注射器]",
+    "beHidden": "",
+    "tagType": 3102,
+    "effect": 212038,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313026,
+    "name": "时间专家",
+    "desc": "使用[倒置沙漏]时，额外获得30分钟",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212039,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313027,
+    "name": "时间奥秘",
+    "desc": "参与演习时，获得1个[倒置沙漏]",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212040,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313028,
+    "name": "实地考察",
+    "desc": "参与演习时，每次演习结束，获得1次[进化]:复制快捷道具概率+4%",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212041,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313029,
+    "name": "理论修正",
+    "desc": "参与演习时，复制快捷道具的概率加倍(复制概率最高为100%)",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212042,
+    "color": 6,
+    "suggestMap": ""
+  },
+  {
+    "id": 313030,
+    "name": "绝对绝望",
+    "desc": "进入演习时，将丢失所有的快捷道具",
+    "beHidden": "",
+    "tagType": 3104,
+    "effect": 212043,
+    "color": 6,
+    "suggestMap": ""
   }
 ]

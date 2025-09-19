@@ -28,5 +28,17 @@
     "time": "2025-06-26",
     "name": "无光层·浅",
     "nameEn": "Hadal Zone"
+  },
+  {
+    "stageId": 6,
+    "time": "2025-09-19",
+    "name": "无光层·深",
+    "nameEn": "Hadal Zone"
+  },
+  {
+    "stageId": 7,
+    "time": "2025-09-19",
+    "name": "无底涡流",
+    "nameEn": "Wailing Whirl"
   }
 ]

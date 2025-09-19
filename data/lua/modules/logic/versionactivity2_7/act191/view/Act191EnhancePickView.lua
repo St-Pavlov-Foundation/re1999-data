@@ -64,6 +64,10 @@ function var_0_0.refreshUI(arg_8_0)
 				var_8_0.txtDesc.text = Activity191Helper.buildDesc(var_8_2, Activity191Enum.HyperLinkPattern.EnhanceItem, var_8_4.typeParam .. "#")
 
 				SkillHelper.addHyperLinkClick(var_8_0.txtDesc, Activity191Helper.clickHyperLinkItem)
+			elseif var_8_4.type == Activity191Enum.EffectType.Hero then
+				var_8_0.txtDesc.text = Activity191Helper.buildDesc(var_8_2, Activity191Enum.HyperLinkPattern.Hero, var_8_4.typeParam)
+
+				SkillHelper.addHyperLinkClick(var_8_0.txtDesc, Activity191Helper.clickHyperLinkRole)
 			else
 				var_8_0.txtDesc.text = var_8_2
 			end

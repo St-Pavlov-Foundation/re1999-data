@@ -3,9 +3,9 @@
 local var_0_0 = _M
 
 var_0_0.ActivityDefine = {
-	[VersionActivity2_9Enum.ActivityId.Reactivity] = {
-		storeCurrency = CurrencyEnum.CurrencyType.V2a3Dungeon,
-		storeActId = VersionActivity2_9Enum.ActivityId.ReactivityStore
+	[VersionActivity3_1Enum.ActivityId.Reactivity] = {
+		storeCurrency = CurrencyEnum.CurrencyType.V2a4Dungeon,
+		storeActId = VersionActivity3_1Enum.ActivityId.ReactivityStore
 	}
 }
 

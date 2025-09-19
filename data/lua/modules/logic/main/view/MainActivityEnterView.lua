@@ -255,6 +255,7 @@ function var_0_0.getEnterViewActIdList(arg_21_0)
 			[ActivityEnum.VersionActivityIdDict.Activity2_7] = VersionActivity2_7Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity2_8] = VersionActivity2_8Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity3_0] = VersionActivity3_0Enum.EnterViewActIdListWithRedDot,
+			[ActivityEnum.VersionActivityIdDict.Activity3_1] = VersionActivity3_1Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity_Assassin_1] = VersionActivity2_9Enum.EnterViewActIdListWithGroup[ActivityEnum.VersionActivityIdDict.Activity_Assassin_1],
 			[ActivityEnum.VersionActivityIdDict.Activity_Assassin_2] = VersionActivity2_9Enum.EnterViewActIdListWithGroup[ActivityEnum.VersionActivityIdDict.Activity_Assassin_2]
 		}
@@ -277,7 +278,7 @@ function var_0_0.refreshActivityIcon(arg_22_0)
 	else
 		arg_22_0.imageActivityIcon.color = Color.white
 
-		gohelper.setAsLastSibling(arg_22_0.btnEnterActivity.gameObject)
+		gohelper.setAsFirstSibling(arg_22_0.btnEnterActivity.gameObject)
 	end
 end
 

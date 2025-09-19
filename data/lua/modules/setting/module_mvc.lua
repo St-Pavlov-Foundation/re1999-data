@@ -1,4 +1,15 @@
 ﻿return {
+	ClickUI = {
+		model = {
+			"ClickUISwitchModel"
+		},
+		controller = {
+			"ClickUISwitchController"
+		},
+		config = {
+			"ClickUISwitchConfig"
+		}
+	},
 	Activity208 = {
 		model = {
 			"Act208Model"
@@ -11,6 +22,29 @@
 		},
 		config = {
 			"Act208Config"
+		}
+	},
+	HeroGroupPreset = {
+		model = {
+			"HeroGroupPresetModel"
+		},
+		controller = {
+			"HeroGroupPresetController"
+		},
+		config = {
+			"HeroGroupPresetConfig"
+		}
+	},
+	CharacterRecommed = {
+		model = {
+			"CharacterRecommedModel",
+			"CharacterRecommedHeroListModel"
+		},
+		controller = {
+			"CharacterRecommedController"
+		},
+		config = {
+			"CharacterRecommedConfig"
 		}
 	},
 	CharacterSkillTalent = {
@@ -1340,7 +1374,8 @@
 			"ActivityConfig",
 			"Activity106Config",
 			"ActivityType101Config",
-			"Activity172Config"
+			"Activity172Config",
+			"ActivityType100Config"
 		}
 	},
 	SignIn = {
@@ -1501,6 +1536,36 @@
 			"ManufactureConfig",
 			"RoomTradeConfig",
 			"RoomLogConfig"
+		}
+	},
+	Fishing = {
+		model = {
+			"FishingModel",
+			"FishingStoreModel",
+			"FishingFriendListModel"
+		},
+		controller = {
+			"FishingController"
+		},
+		rpc = {
+			"FishingRpc"
+		},
+		config = {
+			"FishingConfig"
+		}
+	},
+	UnlockVoucher = {
+		model = {
+			"UnlockVoucherModel"
+		},
+		controller = {
+			"UnlockVoucherController"
+		},
+		rpc = {
+			"UnlockVoucherRpc"
+		},
+		config = {
+			"UnlockVoucherConfig"
 		}
 	},
 	handbook = {
@@ -1778,16 +1843,21 @@
 	},
 	RoleStory = {
 		config = {
-			"RoleStoryConfig"
+			"RoleStoryConfig",
+			"NecrologistStoryConfig",
+			"NecrologistStoryV3A1Config"
 		},
 		model = {
-			"RoleStoryModel"
+			"RoleStoryModel",
+			"NecrologistStoryModel"
 		},
 		rpc = {
-			"HeroStoryRpc"
+			"HeroStoryRpc",
+			"NecrologistStoryRpc"
 		},
 		controller = {
-			"RoleStoryController"
+			"RoleStoryController",
+			"NecrologistStoryController"
 		}
 	},
 	Season123 = {
@@ -2491,13 +2561,17 @@
 			"TowerAssistBossModel",
 			"TowerPermanentModel",
 			"TowerTaskModel",
-			"TowerTimeLimitLevelModel"
+			"TowerTimeLimitLevelModel",
+			"TowerPermanentDeepModel",
+			"TowerDeepTaskModel"
 		},
 		rpc = {
-			"TowerRpc"
+			"TowerRpc",
+			"TowerDeepRpc"
 		},
 		config = {
-			"TowerConfig"
+			"TowerConfig",
+			"TowerDeepConfig"
 		},
 		controller = {
 			"TowerController"
@@ -2649,7 +2723,10 @@
 		model = {
 			"SurvivalModel",
 			"SurvivalMapModel",
-			"SurvivalShelterModel"
+			"SurvivalShelterModel",
+			"SurvivalHandbookModel",
+			"SurvivalRewardInheritModel",
+			"SurvivalReputationModel"
 		},
 		rpc = {
 			"SurvivalInteriorRpc",
@@ -2657,10 +2734,12 @@
 			"SurvivalOutSideRpc"
 		},
 		config = {
-			"SurvivalConfig"
+			"SurvivalConfig",
+			"SurvivalHandbookConfig"
 		},
 		controller = {
-			"SurvivalController"
+			"SurvivalController",
+			"SurvivalHandbookController"
 		}
 	},
 	LifeCircle = {
@@ -2840,11 +2919,6 @@
 			"AssassinChaseConfig"
 		}
 	},
-	VersionActivity2_3NewCultivationDestiny = {
-		model = {
-			"VersionActivity2_3NewCultivationDestinyModel"
-		}
-	},
 	NuoDiKa = {
 		model = {
 			"NuoDiKaModel",
@@ -2954,6 +3028,95 @@
 		},
 		rpc = {
 			"Activity203Rpc"
+		}
+	},
+	TowerDeep = {
+		model = {
+			"TowerDeepOperActModel"
+		},
+		config = {
+			"TowerDeepOperActConfig"
+		},
+		controller = {
+			"TowerDeepOperActController"
+		},
+		rpc = {
+			"Activity209Rpc"
+		}
+	},
+	UI3DRenderController = {
+		controller = {
+			"UI3DRenderController"
+		}
+	},
+	Activity211 = {
+		model = {
+			"YeShuMeiModel",
+			"YeShuMeiGameModel"
+		},
+		config = {
+			"YeShuMeiConfig"
+		},
+		controller = {
+			"YeShuMeiController",
+			"YeShuMeiGameController"
+		},
+		rpc = {
+			"YeShuMeiRpc"
+		}
+	},
+	BpOperAct = {
+		model = {
+			"V3a1_BpOperActModel"
+		},
+		config = {
+			"V3a1_BpOperActConfig"
+		},
+		controller = {
+			"V3a1_BpOperActController"
+		}
+	},
+	NationalGift = {
+		model = {
+			"NationalGiftModel"
+		},
+		config = {
+			"NationalGiftConfig"
+		},
+		controller = {
+			"NationalGiftController"
+		},
+		rpc = {
+			"Activity212Rpc"
+		}
+	},
+	GaoSiNiao = {
+		model = {
+			"GaoSiNiaoSysModel",
+			"GaoSiNiaoBattleModel"
+		},
+		rpc = {
+			"GaoSiNiaoRpc"
+		},
+		config = {
+			"GaoSiNiaoConfig"
+		},
+		controller = {
+			"GaoSiNiaoController"
+		}
+	},
+	ChargePush = {
+		model = {
+			"ChargePushModel"
+		},
+		rpc = {
+			"ChargePushRpc"
+		},
+		config = {
+			"ChargePushConfig"
+		},
+		controller = {
+			"ChargePushController"
 		}
 	}
 }

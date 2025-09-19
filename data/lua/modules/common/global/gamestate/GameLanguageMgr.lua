@@ -24,7 +24,11 @@ end
 function var_0_0.getVoiceTypeStoryIndex(arg_5_0)
 	if arg_5_0._voiceType then
 		if not StoryModel.instance:isS01Story() then
-			return LanguageEnum.LanguageStoryType.EN
+			if arg_5_0._voiceType == LanguageEnum.LanguageStoryType.JP or arg_5_0._voiceType == LanguageEnum.LanguageStoryType.KR then
+				return LanguageEnum.LanguageStoryType.EN
+			else
+				return arg_5_0._voiceType
+			end
 		end
 
 		return arg_5_0._voiceType
@@ -33,7 +37,11 @@ function var_0_0.getVoiceTypeStoryIndex(arg_5_0)
 		local var_5_1 = arg_5_0:getStoryIndexByShortCut(var_5_0)
 
 		if not StoryModel.instance:isS01Story() then
-			return LanguageEnum.LanguageStoryType.EN
+			if var_5_1 == LanguageEnum.LanguageStoryType.JP or var_5_1 == LanguageEnum.LanguageStoryType.KR then
+				return LanguageEnum.LanguageStoryType.EN
+			else
+				return var_5_1
+			end
 		end
 
 		return var_5_1

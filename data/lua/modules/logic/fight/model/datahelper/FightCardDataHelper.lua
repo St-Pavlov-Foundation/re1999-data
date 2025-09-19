@@ -612,13 +612,13 @@ function var_0_0.moveCanAddExpoint(arg_38_0, arg_38_1)
 	end
 
 	if FightDataHelper.operationDataMgr:isUnlimitMoveCard() then
-		return false
+		return false, true
 	end
 
 	local var_38_0 = FightDataHelper.operationDataMgr.extraMoveAct
 
 	if var_38_0 > 0 and var_38_0 > #FightDataHelper.operationDataMgr:getMoveCardOpCostActList() then
-		return false
+		return false, true
 	end
 
 	local var_38_1 = FightDataHelper.entityMgr:getById(arg_38_1.uid)

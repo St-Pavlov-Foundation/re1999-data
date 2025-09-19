@@ -2,7 +2,7 @@
 
 local var_0_0 = class("FightWorkFunction", FightWorkItem)
 
-function var_0_0.onAwake(arg_1_0, arg_1_1, arg_1_2, ...)
+function var_0_0.onLogicEnter(arg_1_0, arg_1_1, arg_1_2, ...)
 	arg_1_0._func = arg_1_1
 	arg_1_0._target = arg_1_2
 	arg_1_0._param = {

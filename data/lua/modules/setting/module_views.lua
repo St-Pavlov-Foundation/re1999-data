@@ -246,6 +246,9 @@
 				},
 				{
 					"ui/viewres/mainsceneswitch/mainuiswitchview.prefab"
+				},
+				{
+					"ui/viewres/mainsceneswitch/clickuiswitchview.prefab"
 				}
 			},
 			{
@@ -285,6 +288,13 @@
 		destroy = 0,
 		container = "MainUISwitchInfoBlurMaskViewContainer",
 		mainRes = "ui/viewres/mainsceneswitch/mainuiswitchblurmaskview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full
+	},
+	ClickUISwitchInfoView = {
+		destroy = 0,
+		container = "ClickUISwitchInfoViewContainer",
+		mainRes = "ui/viewres/mainsceneswitch/clickuiswitchinfoview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Full
 	},
@@ -427,6 +437,11 @@
 				{
 					CurrencyView.prefabPath
 				}
+			},
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
 			}
 		}
 	},
@@ -463,6 +478,18 @@
 					CurrencyView.prefabPath
 				}
 			}
+		}
+	},
+	PowerMakerPatFaceView = {
+		destroy = 0,
+		container = "PowerMakerPatFaceViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/power/powermakerpatfaceview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
+		customAnimBg = {
+			"#simage_tipbg"
 		}
 	},
 	ExploreView = {
@@ -650,7 +677,9 @@
 		otherRes = {
 			"ui/viewres/fight/fightcarditem.prefab",
 			"ui/viewres/fight/clothskill.prefab",
-			"ui/viewres/fight/fightcarddeckbtnview.prefab"
+			"ui/viewres/fight/fightcarddeckbtnview.prefab",
+			"ui/viewres/fight/fighttower/fightcardremoveview.prefab",
+			"ui/viewres/fight/fighttower/fighttowerbosshplock.prefab"
 		}
 	},
 	FightSuccView = {
@@ -1177,6 +1206,26 @@
 			}
 		}
 	},
+	CommonExchangeView = {
+		bgBlur = 1,
+		container = "CommonExchangeViewContainer",
+		mainRes = "ui/viewres/common/commomexchangeview.prefab",
+		destroy = 0,
+		blurFactor = 0.6,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
+		customAnimBg = {
+			"bg"
+		},
+		tabRes = {
+			{
+				{
+					CurrencyView.prefabPath
+				}
+			}
+		}
+	},
 	SummonView = {
 		destroy = 0,
 		container = "SummonViewContainer",
@@ -1256,6 +1305,13 @@
 		anim = ViewAnim.Default,
 		customAnimBg = {
 			"#simage_bg"
+		},
+		tabRes = {
+			{
+				{
+					CurrencyView.prefabPath
+				}
+			}
 		},
 		otherRes = {
 			"ui/viewres/summonresultview/r.prefab",
@@ -3451,6 +3507,26 @@
 			[1] = "singlebg/loading/full/originbg.png"
 		}
 	},
+	HeroGroupPresetTeamView = {
+		destroy = 0,
+		container = "HeroGroupPresetTeamViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/herogroup/herogrouppreteamview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			"ui/viewres/herogroup/herogrouppreteamtabitem.prefab",
+			"ui/viewres/herogroup/herogrouppreteamitem.prefab",
+			"ui/viewres/herogroup/herogrouppreteamheroitem.prefab"
+		}
+	},
 	HeroGroupFightView = {
 		bgBlur = 4,
 		container = "HeroGroupFightViewContainer",
@@ -3523,6 +3599,15 @@ var_0_0.HeroGroupModifyNameView = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
+var_0_0.HeroGroupPresetModifyNameView = {
+	destroy = 0,
+	container = "HeroGroupPresetModifyNameViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/herogroup/herogrouppremodifynameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default
+}
 var_0_0.HeroGroupRecommendView = {
 	bgBlur = 1,
 	container = "HeroGroupRecommendViewContainer",
@@ -3545,6 +3630,28 @@ var_0_0.HeroGroupRecommendView = {
 }
 var_0_0.HeroGroupEditView = {
 	container = "HeroGroupEditViewContainer",
+	destroy = 5,
+	mainRes = "ui/viewres/herogroup/herogroupeditview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/herogroup/herogroupedititem.prefab",
+		[2] = "ui/viewres/herogroup/herogroupquickedititem.prefab"
+	},
+	customAnimBg = {
+		"bg"
+	}
+}
+var_0_0.HeroGroupPresetEditView = {
+	container = "HeroGroupPresetEditViewContainer",
 	destroy = 5,
 	mainRes = "ui/viewres/herogroup/herogroupeditview.prefab",
 	layer = "POPUP_TOP",
@@ -4235,7 +4342,7 @@ var_0_0.StoreView = {
 				"ui/viewres/store/chargestoreview.prefab"
 			},
 			{
-				"ui/viewres/store/storeskinview.prefab"
+				"ui/viewres/store/storeskinview2.prefab"
 			},
 			{
 				"ui/viewres/store/packagestoreview.prefab"
@@ -4293,7 +4400,7 @@ var_0_0.StoreView = {
 	otherRes = {
 		"ui/viewres/store/normalstoregoodsitem.prefab",
 		"ui/viewres/store/chargestoregoodsitem.prefab",
-		"ui/viewres/store/storeskingoodsitem.prefab",
+		"ui/viewres/store/storeskingoodsitem3.prefab",
 		"ui/viewres/store/packagestoregoodsitem.prefab",
 		"ui/viewres/store/summonstoregoodsitem.prefab",
 		"ui/viewres/store/decoratestoreitem.prefab",
@@ -4326,6 +4433,13 @@ var_0_0.StoreSkinConfirmView = {
 var_0_0.DecorateStoreDefaultShowView = {
 	destroy = 0,
 	container = "DecorateStoreDefaultShowViewContainer",
+	mainRes = "ui/viewres/store/decoratestoredefaultshowview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full
+}
+var_0_0.StoreSkinDefaultShowView = {
+	destroy = 0,
+	container = "StoreSkinDefaultShowViewContainer",
 	mainRes = "ui/viewres/store/decoratestoredefaultshowview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full
@@ -4364,6 +4478,26 @@ var_0_0.StoreSkinGoodsView = {
 	bgBlur = 1,
 	container = "StoreSkinGoodsViewContainer",
 	mainRes = "ui/viewres/store/storeskingoodsview.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
+}
+var_0_0.StoreSkinGoodsView2 = {
+	bgBlur = 1,
+	container = "StoreSkinGoodsView2Container",
+	mainRes = "ui/viewres/store/storeskingoodsview2.prefab",
 	destroy = 0,
 	blurIterations = 3,
 	blurFactor = 0.85,
@@ -4690,6 +4824,11 @@ var_0_0.RoomView = {
 			{
 				"ui/viewres/room/layout/roomlayoutvisitplan.prefab"
 			}
+		},
+		{
+			{
+				"ui/viewres/room/fish/roomfishview.prefab"
+			}
 		}
 	},
 	otherRes = {
@@ -4705,7 +4844,9 @@ var_0_0.RoomView = {
 		"ui/viewres/room/sceneui/roomsceneproductionlineui.prefab",
 		"ui/viewres/room/sceneui/roomscenemanufactureui.prefab",
 		RoomViewUITransportSiteItem.prefabPath,
-		RoomViewUICritterEventItem.prefabPath
+		RoomViewUICritterEventItem.prefabPath,
+		RoomViewUIFishingItem.prefabPath,
+		RoomViewUIFishingFriendItem.prefabPath
 	}
 }
 var_0_0.RoomDebugView = {
@@ -5252,6 +5393,27 @@ var_0_0.RoomManufacturePlaceCostView = {
 		}
 	}
 }
+var_0_0.RoomFishingStoreView = {
+	destroy = 0,
+	container = "RoomFishingStoreViewContainer",
+	mainRes = "ui/viewres/room/fish/roomfishstoreview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+var_0_0.RoomFishingRewardView = {
+	destroy = 0,
+	container = "RoomFishingRewardViewContainer",
+	mainRes = "ui/viewres/room/fish/roomfishrewardview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full
+}
 var_0_0.HandbookView = {
 	destroy = 0,
 	container = "HandbookViewContainer",
@@ -5363,7 +5525,7 @@ var_0_0.HandbookSkinView = {
 		}
 	},
 	otherRes = {
-		[1] = "explore/camera_anim/skinbook_camerar.controller",
+		[1] = "ui/animations/dynamic/skinbook_camerar.controller",
 		[2] = HandbookEnum.SkinScene[1],
 		[3] = HandbookEnum.SkinScene[2],
 		[4] = HandbookEnum.SkinScene[3],
@@ -5524,6 +5686,24 @@ var_0_0.HandbookSkinSuitDetailView2_9 = {
 	destroy = 0,
 	container = "HandbookSkinSuitDetailView2_9Container",
 	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_2_9.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+var_0_0.HandbookSkinSuitDetailView3_1 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_1Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_1.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
@@ -10578,8 +10758,9 @@ var_0_0.AchievementMainView = {
 		}
 	},
 	otherRes = {
-		[1] = "ui/viewres/achievement/achievementmainitem.prefab",
-		[2] = "ui/viewres/achievement/achievementmainicon.prefab"
+		"ui/viewres/achievement/achievementmainitem.prefab",
+		"ui/viewres/achievement/achievementmainicon.prefab",
+		"ui/viewres/achievement/achievementmainitem_misihai.prefab"
 	}
 }
 var_0_0.AchievementSelectView = {
@@ -10597,8 +10778,9 @@ var_0_0.AchievementSelectView = {
 		}
 	},
 	otherRes = {
-		[1] = "ui/viewres/achievement/achievementselectitem.prefab",
-		[2] = "ui/viewres/achievement/achievementmainicon.prefab"
+		"ui/viewres/achievement/achievementselectitem.prefab",
+		"ui/viewres/achievement/achievementmainicon.prefab",
+		"ui/viewres/achievement/achievementselectitem_misihai.prefab"
 	}
 }
 var_0_0.AchievementLevelView = {
@@ -10618,6 +10800,54 @@ var_0_0.AchievementLevelView = {
 	},
 	otherRes = {
 		[1] = "ui/viewres/achievement/achievementmainicon.prefab"
+	}
+}
+var_0_0.AchievementNamePlateLevelView = {
+	bgBlur = 1,
+	container = "AchievementNamePlateLevelViewContainer",
+	mainRes = "ui/viewres/achievement/achievementlevelview_misihai.prefab",
+	destroy = 0,
+	blurIterations = 2,
+	blurFactor = 0.1,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	customAnimBg = {
+		"bg"
+	}
+}
+var_0_0.AchievementNamePlateUnlockView = {
+	bgBlur = 1,
+	container = "AchievementNamePlateUnlockViewContainer",
+	mainRes = "ui/viewres/tower/tower_achievement_unlockview.prefab",
+	destroy = 0,
+	blurIterations = 2,
+	blurFactor = 0.1,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	customAnimBg = {
+		"bg"
+	}
+}
+var_0_0.AchievementNamePlatePanelView = {
+	bgBlur = 1,
+	container = "AchievementNamePlatePanelViewContainer",
+	mainRes = "ui/viewres/tower/tower_achievement_panelview.prefab",
+	destroy = 0,
+	blurIterations = 2,
+	blurFactor = 0.1,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	customAnimBg = {
+		"bg"
 	}
 }
 var_0_0.AchievementGroupPreView = {
@@ -12597,7 +12827,7 @@ var_0_0.ReactivityStoreView = {
 	destroy = 0,
 	container = "ReactivityStoreViewContainer",
 	bgBlur = 1,
-	mainRes = "ui/viewres/versionactivity_2_1/v2a1_dungeon/v2a1_storeview.prefab",
+	mainRes = "ui/viewres/versionactivity_2_4/v2a4_dungeon/v2a4_storeview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	tabRes = {
@@ -12636,7 +12866,7 @@ var_0_0.ReactivityRuleView = {
 var_0_0.ReactivityTaskView = {
 	bgBlur = 3,
 	container = "ReactivityTaskViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_1/v2a1_dungeon/v2a1_taskview.prefab",
+	mainRes = "ui/viewres/versionactivity_2_4/v2a4_dungeon/v2a4_taskview.prefab",
 	destroy = 0,
 	blurFactor = 0.64,
 	layer = "POPUP_TOP",
@@ -12649,7 +12879,7 @@ var_0_0.ReactivityTaskView = {
 		}
 	},
 	otherRes = {
-		"ui/viewres/versionactivity_2_0/v2a0_dungeon/v2a0_taskitem.prefab"
+		"ui/viewres/versionactivity_2_4/v2a4_dungeon/v2a4_taskitem.prefab"
 	}
 }
 var_0_0.LimitedRoleView = {
@@ -16075,8 +16305,9 @@ var_0_0.NewPlayerCardContentView = {
 		}
 	},
 	otherRes = {
-		skinpreview = "ui/viewres/player/playercard/playercardskinpreview.prefab",
-		achieveitem = "ui/viewres/achievement/achievementmainicon.prefab"
+		misihaiitem = "ui/viewres/player/playercard/playercardachieve_misihai.prefab",
+		achieveitem = "ui/viewres/achievement/achievementmainicon.prefab",
+		skinpreview = "ui/viewres/player/playercard/playercardskinpreview.prefab"
 	}
 }
 var_0_0.PlayerCardCritterPlaceView = {
@@ -16201,8 +16432,9 @@ var_0_0.PlayerCardAchievementSelectView = {
 		}
 	},
 	otherRes = {
-		[1] = "ui/viewres/achievement/achievementselectitem.prefab",
-		[2] = "ui/viewres/achievement/achievementmainicon.prefab"
+		"ui/viewres/achievement/achievementselectitem.prefab",
+		"ui/viewres/achievement/achievementmainicon.prefab",
+		"ui/viewres/achievement/achievementselectitem_misihai.prefab"
 	}
 }
 var_0_0.VersionActivity2_2EnterView = {
@@ -17941,8 +18173,8 @@ var_0_0.WebView = {
 	container = "WebViewContainer",
 	bgBlur = 0,
 	mainRes = "ui/viewres/webview/webview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal
+	layer = "MESSAGE",
+	viewType = ViewType.Full
 }
 var_0_0.TowerGuideView = {
 	destroy = 0,
@@ -18270,6 +18502,60 @@ var_0_0.TowerBossTeachView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default
+}
+var_0_0.TowerDeepHeroGroupFightView = {
+	bgBlur = 4,
+	container = "TowerDeepHeroGroupFightViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/tower/towerdeepherogroupview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		},
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/fight/clothskill.prefab"
+	}
+}
+var_0_0.TowerDeepTeamSaveView = {
+	destroy = 0,
+	container = "TowerDeepTeamSaveViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/tower/towerdeepteamsaveview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.TowerDeepTaskView = {
+	destroy = 0,
+	container = "TowerDeepTaskViewContainer",
+	bgBlur = 4,
+	mainRes = "ui/viewres/tower/towerdeeptaskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/tower/towerdeeptaskitem.prefab"
+	}
+}
+var_0_0.TowerDeepResultView = {
+	destroy = 0,
+	container = "TowerDeepResultViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/tower/towerdeepresultview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal
 }
 var_0_0.VersionActivity2_3EnterView = {
 	destroy = 0,
@@ -21028,23 +21314,6 @@ var_0_0.Act191HeroEditView = {
 		Activity191Enum.PrefabPath.FetterItem
 	}
 }
-var_0_0.Act191CollectionEditView = {
-	destroy = 0,
-	container = "Act191CollectionEditViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_7/act191/act191collectioneditview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
-	tabRes = {
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		}
-	},
-	otherRes = {
-		Activity191Enum.PrefabPath.CollectionItem
-	}
-}
 var_0_0.Act191CharacterExSkillView = {
 	container = "Act191CharacterExSkillViewContainer",
 	destroy = 0,
@@ -21182,6 +21451,79 @@ var_0_0.Act191GetView = {
 	otherRes = {
 		Activity191Enum.PrefabPath.HeroHeadItem
 	}
+}
+var_0_0.Act191CollectionView = {
+	destroy = 0,
+	container = "Act191CollectionViewContainer",
+	mainRes = "ui/viewres/versionactivity_2_7/act191/act191collectionview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		Activity191Enum.PrefabPath.CollectionItem,
+		Activity191Enum.PrefabPath.HeroHeadItem
+	}
+}
+var_0_0.Act191AssistantView = {
+	destroy = 0,
+	container = "Act191AssistantViewContainer",
+	mainRes = "ui/viewres/versionactivity_2_7/act191/act191assistantview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+var_0_0.Act191CollectionChangeView = {
+	destroy = 0,
+	container = "Act191CollectionChangeViewContainer",
+	mainRes = "ui/viewres/versionactivity_2_7/act191/act191collectionchangeview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		},
+		{
+			{
+				"ui/viewres/versionactivity_2_7/act191/act191collectiontipview.prefab"
+			}
+		}
+	},
+	otherRes = {
+		Activity191Enum.PrefabPath.CollectionItem
+	}
+}
+var_0_0.Act191CollectionGetView = {
+	destroy = 0,
+	container = "Act191CollectionGetViewContainer",
+	mainRes = "ui/viewres/versionactivity_2_7/act191/act191collectiongetview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	otherRes = {
+		Activity191Enum.PrefabPath.CollectionItem
+	}
+}
+var_0_0.Act191EnhanceView = {
+	destroy = 0,
+	container = "Act191EnhanceViewContainer",
+	maskAlpha = 0,
+	bgBlur = 0,
+	mainRes = "ui/viewres/versionactivity_2_7/act191/act191enhanceview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
 }
 var_0_0.V2a7_SelfSelectSix_FullView = {
 	destroy = 0,
@@ -23112,6 +23454,293 @@ var_0_0.V2a9_Act208MainView = {
 	mainRes = "ui/viewres/activity/v2a9_login_fullview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
+}
+var_0_0.TowerDeepOperActPanelView = {
+	destroy = 0,
+	container = "TowerDeepOperActPanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a1_towerdeep_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.TowerDeepOperActFullView = {
+	destroy = 0,
+	container = "TowerDeepOperActFullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/v3a1_towerdeep_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.SurvivalOperActPanelView = {
+	destroy = 0,
+	container = "SurvivalOperActPanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/versionactivity_3_1/survivaloperact/survivaloperactpanelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.SurvivalOperActFullView = {
+	destroy = 0,
+	container = "SurvivalOperActFullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/versionactivity_3_1/survivaloperact/survivaloperactfullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+
+VersionActivityViewDefine.init(var_0_0)
+
+var_0_0.GMYeShuMeiView = {
+	destroy = 0,
+	container = "GMYeShuMeiViewContainer",
+	mainRes = "ui/viewres/gm/gmyeshumeiview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
+}
+
+NecologistStoryViewDefine.init(var_0_0)
+
+var_0_0.Role_PanelSignView_Part1 = {
+	destroy = 0,
+	container = "Role_PanelSignView_Part1_Container",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/role_panelsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/role_signitem.prefab"
+	}
+}
+var_0_0.Role_PanelSignView_Part2 = {
+	destroy = 0,
+	container = "Role_PanelSignView_Part2_Container",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/role_panelsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/role_signitem.prefab"
+	}
+}
+var_0_0.Role_FullSignView_Part1 = {
+	destroy = 0,
+	container = "Role_FullSignView_Part1_Container",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/role_fullsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/role_signitem.prefab"
+	}
+}
+var_0_0.Role_FullSignView_Part2 = {
+	destroy = 0,
+	container = "Role_FullSignView_Part2_Container",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/role_fullsignview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/role_signitem.prefab"
+	}
+}
+var_0_0.YeShuMeiGameView = {
+	destroy = 0,
+	container = "YeShuMeiGameViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_yeshumei/v3a1_yeshumeigameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+var_0_0.YeShuMeiLevelView = {
+	destroy = 0,
+	container = "YeShuMeiLevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_yeshumei/v3a1_yeshumei_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_1/v3a1_yeshumei/v3a1_yeshumei_levelitem.prefab"
+	}
+}
+var_0_0.YeShuMeiTaskView = {
+	bgBlur = 0,
+	container = "YeShuMeiTaskViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_yeshumei/v3a1_yeshumei_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_1/v3a1_yeshumei/v3a1_yeshumei_taskitem.prefab"
+	}
+}
+var_0_0.V3a1_BpOperActShowView = {
+	destroy = 0,
+	container = "V3a1_BpOperActShowViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_bpoper/v3a1_bpoperactshowview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.NationalGiftBuyTipView = {
+	destroy = 0,
+	container = "NationalGiftBuyTipViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/store/nationalgiftbuytipview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.NationalGiftFullView = {
+	destroy = 0,
+	container = "NationalGiftFullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/activitynationalgiftview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.ActivityWarmUpH5FullView = {
+	destroy = 0,
+	container = "ActivityWarmUpH5FullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/activitywarmuph5fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.V3a1_AutumnSign_PanelView = {
+	destroy = 0,
+	container = "V2a0_SummerSign_PanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a1_autumnsign_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/v3a1_autumnsign_signitem.prefab"
+	}
+}
+var_0_0.V3a1_AutumnSign_FullView = {
+	destroy = 0,
+	container = "V2a0_SummerSign_FullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/v3a1_autumnsign_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/activity/v3a1_autumnsign_signitem.prefab"
+	}
+}
+var_0_0.V3a1_GaoSiNiao_TaskView = {
+	bgBlur = 0,
+	container = "V3a1_GaoSiNiao_TaskViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_gaosiniao/v3a1_gaosiniao_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_1/v3a1_gaosiniao/v3a1_gaosiniao_taskitem.prefab"
+	}
+}
+var_0_0.V3a1_GaoSiNiao_LevelView = {
+	destroy = 0,
+	container = "V3a1_GaoSiNiao_LevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_gaosiniao/v3a1_gaosiniao_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		v3a1_gaosiniao_levelviewstageitem = GaoSiNiaoEnum.ResPath.v3a1_gaosiniao_levelviewstageitem
+	}
+}
+var_0_0.V3a1_GaoSiNiao_GameView = {
+	destroy = 0,
+	container = "V3a1_GaoSiNiao_GameViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_gaosiniao/v3a1_gaosiniao_gameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+var_0_0.V3a1_WarmUp = {
+	destroy = 0,
+	container = "V3a1_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/v3a1_warmup/v3a1_warmup.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+var_0_0.ChargePushLevelGoodsView = {
+	destroy = 0,
+	container = "ChargePushLevelGoodsViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/activity_giftbuypanelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	otherRes = {
+		itemRes = "ui/viewres/store/packagestoregoodsitem.prefab"
+	}
+}
+var_0_0.ChargePushMonthCardView = {
+	destroy = 0,
+	container = "ChargePushMonthCardViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/activity_monthcardbuypanelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
 }
 
 local var_0_1 = {}

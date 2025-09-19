@@ -256,5 +256,12 @@
     "supportLang": [
       "zh"
     ]
+  },
+  {
+    "name": "3_1_pv",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
   }
 ]

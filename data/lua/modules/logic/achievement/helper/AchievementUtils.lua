@@ -62,4 +62,23 @@ function var_0_0.isGamePlayGroup(arg_5_0)
 	return var_5_0 and var_5_0.category == AchievementEnum.Type.GamePlay
 end
 
+function var_0_0.getBgPrefabUrl(arg_6_0)
+	return string.format("ui/viewres/achievement/mishihai/%s.prefab", arg_6_0)
+end
+
+function var_0_0.getAchievementProgressBySourceType(arg_7_0)
+	if arg_7_0 == AchievementEnum.SourceType.Tower then
+		local var_7_0 = TowerPermanentModel.instance:getCurPermanentPassLayer()
+		local var_7_1 = TowerPermanentDeepModel.instance:getCurMaxDeepHigh()
+		local var_7_2 = TowerDeepConfig.instance:getConstConfigValue(TowerDeepEnum.ConstId.StartDeepHigh)
+		local var_7_3 = TowerPermanentDeepModel.instance.isOpenEndless
+
+		if var_7_2 < var_7_1 or var_7_3 or var_7_0 > 50 then
+			return var_7_1
+		else
+			return var_7_0 * 10
+		end
+	end
+end
+
 return var_0_0

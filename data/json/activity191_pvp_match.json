@@ -40,5 +40,23 @@
     "rewardView": "1009#300",
     "autoRewardView": "1009#450",
     "attribute": "101#6000|102#0"
+  },
+  {
+    "type": "playerBattle8",
+    "rewardView": "1009#300",
+    "autoRewardView": "1009#450",
+    "attribute": "101#7000|102#100"
+  },
+  {
+    "type": "playerBattle9",
+    "rewardView": "1009#300",
+    "autoRewardView": "1009#450",
+    "attribute": "101#8000|102#200"
+  },
+  {
+    "type": "playerBattle10",
+    "rewardView": "1009#300",
+    "autoRewardView": "1009#450",
+    "attribute": "101#10000|102#250"
   }
 ]

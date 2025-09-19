@@ -98,26 +98,11 @@ function var_0_0._onSecond(arg_12_0)
 end
 
 function var_0_0._fixErrorState(arg_13_0)
-	local var_13_0 = FightSystem.instance:getStartSequence()
-	local var_13_1 = FightSystem.instance:getRoundSequence()
-	local var_13_2 = FightSystem.instance:getClothSkillSequence()
-	local var_13_3 = FightSystem.instance:getEndSequence()
-	local var_13_4 = FightModel.instance:getCurStage()
+	FightMsgMgr.sendMsg(FightMsgId.ForceReleasePlayFlow)
 
-	if var_13_0:isRunning() then
-		arg_13_0:_log("行为复现出错，起始回合卡住")
-		var_13_0:doneRunningWork()
-	elseif var_13_1:isRunning() then
-		arg_13_0:_log("行为复现出错，回合卡住")
-		var_13_1:doneRunningWork()
-	elseif var_13_2:isRunning() then
-		arg_13_0:_log("行为复现出错，主角技能卡住")
-		var_13_2:doneRunningWork()
-	elseif var_13_3:isRunning() then
-		arg_13_0:_log("行为复现出错，结算卡住")
-		var_13_3:doneRunningWork()
-	elseif var_13_4 == FightEnum.Stage.Card or var_13_4 == FightEnum.Stage.AutoCard then
-		arg_13_0:_log("行为复现出错，出牌阶段卡住")
+	if FightModel.instance:isFinish() then
+		FightRpc.instance:sendEndFightRequest(false)
+	else
 		FightReplayController.instance:doneCardStage()
 		FightRpc.instance:sendBeginRoundRequest({})
 	end

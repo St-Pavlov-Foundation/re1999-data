@@ -114,7 +114,7 @@ function var_0_0.InitData(arg_10_0)
 	local var_10_4 = TowerConfig.instance:getPermanentEpisodeStageCoList(var_10_3)
 	local var_10_5 = TowerConfig.instance:getTowerPermanentTimeCo(var_10_3)
 
-	if var_10_4 or var_10_5 then
+	if (var_10_4 or var_10_5) and var_10_3 < TowerDeepEnum.DeepLayerStage then
 		local var_10_6 = TowerPermanentMo.New()
 
 		arg_10_0.PermanentInfoMap[var_10_3] = var_10_6
@@ -232,7 +232,9 @@ function var_0_0.checkLayerUnlock(arg_23_0, arg_23_1)
 end
 
 function var_0_0.getCurPermanentPassLayer(arg_24_0)
-	return TowerModel.instance:getCurPermanentMo().passLayerId or 0
+	local var_24_0 = TowerModel.instance:getCurPermanentMo()
+
+	return var_24_0 and var_24_0.passLayerId or 0
 end
 
 function var_0_0.getCurPassEpisodeId(arg_25_0)

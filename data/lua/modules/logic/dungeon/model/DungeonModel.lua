@@ -694,6 +694,7 @@ local var_0_1 = {
 	[DungeonEnum.EpisodeType.TowerBoss] = true,
 	[DungeonEnum.EpisodeType.TowerLimited] = true,
 	[DungeonEnum.EpisodeType.TowerBossTeach] = true,
+	[DungeonEnum.EpisodeType.TowerDeep] = true,
 	[DungeonEnum.EpisodeType.Act183] = true,
 	[DungeonEnum.EpisodeType.Act191] = true,
 	[DungeonEnum.EpisodeType.Odyssey] = true,

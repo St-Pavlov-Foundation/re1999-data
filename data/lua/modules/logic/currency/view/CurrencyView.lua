@@ -366,7 +366,8 @@ function var_0_0.isNeedShieldAddBtn(arg_18_0)
 			[ViewName.PowerActChangeView] = 1,
 			[ViewName.SummonStoreGoodsView] = 1,
 			[ViewName.VersionActivity1_6NormalStoreGoodsView] = 1,
-			[ViewName.RoomFormulaMsgBoxView] = 1
+			[ViewName.RoomFormulaMsgBoxView] = 1,
+			[ViewName.SummonResultView] = 1
 		}
 	end
 
@@ -398,8 +399,7 @@ function var_0_0._onRefreshDeadlineUI(arg_21_0)
 		local var_21_1 = var_21_0 - ServerTime.now()
 
 		if var_21_1 <= 0 then
-			ItemRpc.instance:sendGetItemListRequest()
-			ItemRpc.instance:sendAutoUseExpirePowerItemRequest()
+			ItemRpc.instance:autoUseExpirePowerItem()
 			gohelper.setActive(arg_21_0.powerItemObj.goCurrentTime, false)
 			gohelper.setActive(arg_21_0.powerItemObj.deadlineEffect, false)
 			TaskDispatcher.cancelTask(arg_21_0._onRefreshDeadlineUI, arg_21_0)

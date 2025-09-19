@@ -134,7 +134,7 @@ function var_0_0.getUCharArr(arg_12_0)
 
 	local var_12_0 = {}
 
-	for iter_12_0 in string.gmatch(arg_12_0, "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF ]*") do
+	for iter_12_0 in string.gmatch(arg_12_0, "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF \n]*") do
 		if not var_0_0.isEmptyStr(iter_12_0) then
 			table.insert(var_12_0, iter_12_0)
 		end

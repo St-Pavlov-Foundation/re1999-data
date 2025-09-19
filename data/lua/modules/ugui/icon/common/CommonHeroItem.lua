@@ -647,14 +647,7 @@ function var_0_0.setStyle_CharacterBackpack(arg_57_0)
 end
 
 function var_0_0.setStyle_SurvivalHeroGroupEdit(arg_58_0)
-	arg_58_0:_setTranScale("_nameCnTxt", 1.25, 1.25)
-	arg_58_0:_setTranScale("_nameEnTxt", 1.25, 1.25)
-	arg_58_0:_setTranScale("_lvObj", 1.25, 1.25)
-	arg_58_0:_setTranScale("_rankObj", 0.22, 0.22)
-	arg_58_0:_setTxtPos("_nameCnTxt", 0.55, 68.9)
-	arg_58_0:_setTxtPos("_nameEnTxt", 0.55, 36.1)
-	arg_58_0:_setTxtPos("_lvObj", 1.7, 96.8)
-	arg_58_0:_setTxtPos("_rankObj", 1.7, -107.7)
+	arg_58_0:setStyle_HeroGroupEdit()
 end
 
 return var_0_0

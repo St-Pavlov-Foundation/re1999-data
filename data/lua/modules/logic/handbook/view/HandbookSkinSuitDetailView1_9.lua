@@ -20,22 +20,7 @@ function var_0_0.onOpen(arg_2_0)
 	arg_2_0:_refreshBg()
 end
 
-function var_0_0._refreshSkinItems(arg_3_0)
-	arg_3_0._skinItemList = {}
-
-	for iter_3_0 = 1, #arg_3_0._skinIdList do
-		local var_3_0 = arg_3_0._skinItemGoList[iter_3_0]
-
-		if var_3_0 then
-			local var_3_1 = MonoHelper.addNoUpdateLuaComOnceToGo(var_3_0, HandbookSkinItem, arg_3_0)
-
-			var_3_1:refreshItem(arg_3_0._skinIdList[iter_3_0])
-			table.insert(arg_3_0._skinItemList, var_3_1)
-		end
-	end
-end
-
-function var_0_0.onDestroyView(arg_4_0)
+function var_0_0.onDestroyView(arg_3_0)
 	return
 end
 

@@ -74,11 +74,11 @@ function var_0_0._btncloseviewOnClick(arg_4_0)
 end
 
 function var_0_0._btnactivitystoreOnClick(arg_5_0)
-	VersionActivity2_4DungeonController.instance:openStoreView()
+	ReactivityController.instance:openReactivityStoreView(VersionActivity3_1Enum.ActivityId.Reactivity)
 end
 
 function var_0_0._btnactivitytaskOnClick(arg_6_0)
-	VersionActivity2_4DungeonController.instance:openTaskView()
+	ReactivityController.instance:openReactivityTaskView(VersionActivity3_1Enum.ActivityId.Reactivity)
 end
 
 function var_0_0._btnwuerlixiOnClick(arg_7_0)

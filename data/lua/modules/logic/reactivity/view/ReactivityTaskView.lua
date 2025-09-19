@@ -4,7 +4,7 @@ local var_0_0 = class("ReactivityTaskView", BaseView)
 local var_0_1 = 0.8
 
 function var_0_0.onInitView(arg_1_0)
-	arg_1_0.txtTime = gohelper.findChildTextMesh(arg_1_0.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_LimitTime")
+	arg_1_0.txtTime = gohelper.findChildTextMesh(arg_1_0.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_time")
 	arg_1_0._btnactivitystore = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Left/Prop/#btn_shop")
 	arg_1_0._txtstorenum = gohelper.findChildTextMesh(arg_1_0.viewGO, "Left/Prop/txt_PropName/#txt_PropNum")
 

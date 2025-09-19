@@ -9081,7 +9081,7 @@
   },
   {
     "id": 281004,
-    "tips": "【▩1%s】天才可击退",
+    "tips": "需达到第▩1%s天才可击退",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -9161,7 +9161,7 @@
   },
   {
     "id": 283004,
-    "tips": "升级科算大楼等级以解锁漫游行装栏位",
+    "tips": "于科算大楼解锁漫游行装栏位",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -9612,6 +9612,518 @@
     "tips": "需要先装备武器",
     "icon": 11,
     "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 311001,
+    "tips": "盒中之物无法置入该槽位",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 311101,
+    "tips": "编队方案替换成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 311102,
+    "tips": "无法调整预设编队",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 311201,
+    "tips": "加载存档成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310005,
+    "tips": "提升【古厅】等级至5级后解锁",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310006,
+    "tips": "每日至多可兑换▩1%s个茸茸特供罐",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310007,
+    "tips": "至多同时在▩1%s个好梦井处进行打捞",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310008,
+    "tips": "每日至多可收取100份友人打捞分红",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313001,
+    "tips": "已定位显示我的好梦井",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313002,
+    "tips": "未持有神秘馈赠",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313003,
+    "tips": "剩余打捞时间不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313004,
+    "tips": "最多同时持有▩1%s个茸茸特供罐",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313006,
+    "tips": "【多彩灵感】不足，无法复制此布局方案",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 314001,
+    "tips": "已兑换▩1%s枚独一律",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310009,
+    "tips": "茸茸特供罐数量已满",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -501,
+    "tips": "友人不存在",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -502,
+    "tips": "友人好梦井未开放",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -503,
+    "tips": "搜刮后,20%概率点亮野外随机搜刮点",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -504,
+    "tips": "战斗后,回复6%最大抵抗力",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -505,
+    "tips": "地图商店出售价格提升10%",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -506,
+    "tips": "进入地图时,随机获得1个快捷道具",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -507,
+    "tips": "搜刮额外获得10%研究资料",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -508,
+    "tips": "战斗中伤害提升5%",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -509,
+    "tips": "探索折扣+4%",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -510,
+    "tips": "使用快捷道具4%概率获得1个复制品(复制品无法再复制)",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -511,
+    "tips": "",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -512,
+    "tips": "盒中之物可穿戴上限+1",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -513,
+    "tips": "探索负重永久提升200",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -514,
+    "tips": "",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -515,
+    "tips": "下次探索免疫[迷障泡泡]地形",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -516,
+    "tips": "下次探索免疫[多色油砂]地形",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -517,
+    "tips": "下次探索免疫[拟态圣火]地形",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -518,
+    "tips": "下次探索免疫[滑冰场远亲]地形",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -519,
+    "tips": "下次探索免疫[水域]地形",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -520,
+    "tips": "这是你自己的好梦井，无法拜访",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -521,
+    "tips": "已解锁新商品 [引导药剂]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -522,
+    "tips": "已解锁新商品 [惊喜胶囊α]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -523,
+    "tips": "已解锁新商品 [小鬼的袋子]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -524,
+    "tips": "已解锁新商品 [链接铆钉]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -525,
+    "tips": "已解锁新商品 [\"理性助理\"Ⅰ]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -526,
+    "tips": "已解锁新商品 [嘲弄假面]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -527,
+    "tips": "已解锁新商品 [寻踪纸鹤]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -528,
+    "tips": "已解锁新商品 [望远镜]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -529,
+    "tips": "已解锁新商品 [购物特快]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -530,
+    "tips": "已解锁新商品 [粘土炸药]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -531,
+    "tips": "已解锁新商品 [\"心动\"药剂]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -532,
+    "tips": "已解锁新商品 [甘蔗糖汁]",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -533,
+    "tips": "云雾重新笼罩了…",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -534,
+    "tips": "冰凉又清甜，抵抗力恢复了…",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -535,
+    "tips": "获得战斗强化【谢幕致意】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -536,
+    "tips": "获得战斗强化【第一愿望】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -537,
+    "tips": "获得战斗强化【昂扬祝福】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -538,
+    "tips": "获得战斗强化【清涤残言Ⅰ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -539,
+    "tips": "获得战斗强化【清涤残言Ⅱ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -540,
+    "tips": "获得战斗强化【蝮蛇低语Ⅰ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -541,
+    "tips": "获得战斗强化【蝮蛇低语Ⅱ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -542,
+    "tips": "获得战斗强化【障壁语法Ⅰ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -543,
+    "tips": "获得战斗强化【障壁语法Ⅱ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -544,
+    "tips": "获得战斗强化【狂化音节Ⅰ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -545,
+    "tips": "获得战斗强化【狂化音节Ⅱ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -546,
+    "tips": "获得战斗强化【跃升语素Ⅰ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -547,
+    "tips": "获得战斗强化【跃升语素Ⅱ】",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313005,
+    "tips": "已获得所有【构想色彩】，无法使用",
+    "icon": 0,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 313010,
+    "tips": "孤屿色彩未解锁，在仓库中使用【空白创意】获取更多色彩",
+    "icon": 0,
+    "audioId": 0,
     "notMerge": 0,
     "notShow": 0
   }

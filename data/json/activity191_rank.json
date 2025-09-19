@@ -54,5 +54,29 @@
   {
     "rank": 14,
     "fightLevel": "SSS"
+  },
+  {
+    "rank": 15,
+    "fightLevel": "EX-1"
+  },
+  {
+    "rank": 16,
+    "fightLevel": "EX-1"
+  },
+  {
+    "rank": 17,
+    "fightLevel": "EX-2"
+  },
+  {
+    "rank": 18,
+    "fightLevel": "EX-2"
+  },
+  {
+    "rank": 19,
+    "fightLevel": "EX-3"
+  },
+  {
+    "rank": 20,
+    "fightLevel": "EX-3"
   }
 ]

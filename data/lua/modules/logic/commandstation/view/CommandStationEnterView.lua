@@ -289,6 +289,7 @@ function var_0_0._addCacheVideo(arg_29_0, arg_29_1, arg_29_2)
 	local var_29_0 = UnityEngine.GameObject.New(arg_29_1)
 
 	gohelper.addChild(arg_29_0.viewGO, var_29_0)
+	transformhelper.setLocalPosXY(var_29_0.transform, 10000, 0)
 
 	local var_29_1, var_29_2, var_29_3 = AvProMgr.instance:getVideoPlayer(var_29_0)
 
@@ -302,6 +303,8 @@ function var_0_0._updateBoxAnim(arg_30_0)
 end
 
 function var_0_0._afterBoxClose(arg_31_0, arg_31_1)
+	arg_31_0._viewIsClose = true
+
 	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "commandstation_playvideo", true)
 
 	if not arg_31_0._openBox then
@@ -450,15 +453,7 @@ function var_0_0._onVideoStarted(arg_44_0, arg_44_1)
 end
 
 function var_0_0._onVideoFirstFrameReady(arg_45_0, arg_45_1)
-	if arg_45_1 == arg_45_0._toMapVedioPath then
-		TaskDispatcher.cancelTask(arg_45_0._delayHideSelf, arg_45_0)
-		TaskDispatcher.runDelay(arg_45_0._delayHideSelf, arg_45_0, 0)
-	end
-
-	if arg_45_1 == arg_45_0._toPaperVedioPath then
-		CommandStationController.instance:openCommandStationPaperView()
-		VideoController.instance:openFullScreenVideoView(arg_45_0._toPaperVedioPath, nil, 5, arg_45_0._realOpenPaperView, arg_45_0, ViewName.CommandStationPaperView, true)
-	end
+	return
 end
 
 function var_0_0._delayHideSelf(arg_46_0)
@@ -519,10 +514,11 @@ function var_0_0._OnCloseViewFinish(arg_51_0, arg_51_1)
 		AudioMgr.instance:trigger(AudioEnum3_0.CommandStationPaper.play_ui_lushang_zhihuibu_fanhui)
 	end
 
-	if arg_51_1 == ViewName.CommandStationMapView or arg_51_1 == ViewName.DungeonMapView or arg_51_1 == ViewName.CommandStationPaperView then
+	if arg_51_1 == ViewName.CommandStationMapView or arg_51_1 == ViewName.DungeonMapView or arg_51_1 == ViewName.CommandStationPaperView or arg_51_0._viewIsClose then
 		arg_51_0.viewContainer:setVisibleInternal(true)
 		arg_51_0._viewAnimatorPlayer:Play("open2", arg_51_0._animDone, arg_51_0)
 
+		arg_51_0._viewIsClose = false
 		arg_51_0._openBox = true
 
 		arg_51_0:_updateBoxAnim()
@@ -566,7 +562,7 @@ end
 function var_0_0._isShowActivity(arg_58_0)
 	if arg_58_0._constActParamConfig2 then
 		local var_58_0 = arg_58_0._constActParamConfig2.value
-		local var_58_1 = ActivityHelper.getActivityStatus(var_58_0) == ActivityEnum.ActivityStatus.Normal
+		local var_58_1 = (var_58_0 > 0 and ActivityHelper.getActivityStatus(var_58_0)) == ActivityEnum.ActivityStatus.Normal
 
 		if var_58_1 then
 			return var_58_1, arg_58_0._constActParamConfig2.value3

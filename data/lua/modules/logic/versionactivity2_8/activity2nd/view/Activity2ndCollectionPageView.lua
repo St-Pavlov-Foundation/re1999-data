@@ -572,9 +572,8 @@ function var_0_0.onClickActivity1(arg_36_0, arg_36_1)
 	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
 
 	local var_36_0 = Activity125Config.instance:getH5BaseUrl(arg_36_1)
-	local var_36_1 = WebViewController.instance:getRecordUserUrl(var_36_0)
 
-	GameUtil.openURL(var_36_1)
+	WebViewController.instance:simpleOpenWebBrowser(var_36_0)
 
 	if GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.Activity2ndAnnualReview, 0) == 0 then
 		GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Activity2ndAnnualReview, 1)
@@ -582,107 +581,101 @@ function var_0_0.onClickActivity1(arg_36_0, arg_36_1)
 	end
 end
 
-function var_0_0._onWebViewCb(arg_37_0, arg_37_1, arg_37_2)
-	if arg_37_1 == WebViewEnum.WebViewCBType.Cb and string.split(arg_37_2, "#")[1] == "webClose" then
-		ViewMgr.instance:closeView(ViewName.WebView)
-	end
-end
-
-function var_0_0.onClickActivity2(arg_38_0, arg_38_1)
-	local function var_38_0()
-		local var_39_0 = {
-			actId = arg_38_1
+function var_0_0.onClickActivity2(arg_37_0, arg_37_1)
+	local function var_37_0()
+		local var_38_0 = {
+			actId = arg_37_1
 		}
 
-		ViewMgr.instance:openView(ViewName.Activity2ndShowSkinView, var_39_0)
+		ViewMgr.instance:openView(ViewName.Activity2ndShowSkinView, var_38_0)
 	end
 
-	Activity101Rpc.instance:sendGet101InfosRequest(arg_38_1, var_38_0, arg_38_0)
-	Activity2ndController.instance:statButtonClick(arg_38_1)
+	Activity101Rpc.instance:sendGet101InfosRequest(arg_37_1, var_37_0, arg_37_0)
+	Activity2ndController.instance:statButtonClick(arg_37_1)
 end
 
-function var_0_0.onClickActivity3(arg_40_0, arg_40_1)
-	local function var_40_0()
-		local var_41_0 = {
-			actId = arg_40_1
+function var_0_0.onClickActivity3(arg_39_0, arg_39_1)
+	local function var_39_0()
+		local var_40_0 = {
+			actId = arg_39_1
 		}
 
-		ViewMgr.instance:openView(ViewName.Activity2ndTakePhotosView, var_41_0)
+		ViewMgr.instance:openView(ViewName.Activity2ndTakePhotosView, var_40_0)
 	end
 
-	Activity2ndController.instance:statButtonClick(arg_40_1)
-	Activity125Rpc.instance:sendGetAct125InfosRequest(arg_40_1, var_40_0, arg_40_0)
+	Activity2ndController.instance:statButtonClick(arg_39_1)
+	Activity125Rpc.instance:sendGetAct125InfosRequest(arg_39_1, var_39_0, arg_39_0)
 end
 
-function var_0_0.onClickActivity4(arg_42_0, arg_42_1)
-	local var_42_0 = {
-		actId = arg_42_1
+function var_0_0.onClickActivity4(arg_41_0, arg_41_1)
+	local var_41_0 = {
+		actId = arg_41_1
 	}
 
-	Activity2ndController.instance:statButtonClick(arg_42_1)
-	ViewMgr.instance:openView(ViewName.V2a8_SelfSelectCharacterView, var_42_0)
+	Activity2ndController.instance:statButtonClick(arg_41_1)
+	ViewMgr.instance:openView(ViewName.V2a8_SelfSelectCharacterView, var_41_0)
 end
 
-function var_0_0.onClickActivity5(arg_43_0, arg_43_1)
-	local function var_43_0()
-		local var_44_0 = {
-			actId = arg_43_1
+function var_0_0.onClickActivity5(arg_42_0, arg_42_1)
+	local function var_42_0()
+		local var_43_0 = {
+			actId = arg_42_1
 		}
 
-		ViewMgr.instance:openView(ViewName.Activity197View, var_44_0)
+		ViewMgr.instance:openView(ViewName.Activity197View, var_43_0)
 	end
 
-	Activity2ndController.instance:statButtonClick(arg_43_1)
-	Activity197Rpc.instance:sendGet197InfoRequest(arg_43_1, var_43_0, arg_43_0)
+	Activity2ndController.instance:statButtonClick(arg_42_1)
+	Activity197Rpc.instance:sendGet197InfoRequest(arg_42_1, var_42_0, arg_42_0)
 end
 
-function var_0_0.checkReceied(arg_45_0, arg_45_1)
-	return (ActivityType101Model.instance:isType101RewardGet(arg_45_1, 1))
+function var_0_0.checkReceied(arg_44_0, arg_44_1)
+	return (ActivityType101Model.instance:isType101RewardGet(arg_44_1, 1))
 end
 
-function var_0_0.checkCanGet(arg_46_0, arg_46_1)
-	return (ActivityType101Model.instance:isType101RewardCouldGet(arg_46_1, 1))
+function var_0_0.checkCanGet(arg_45_0, arg_45_1)
+	return (ActivityType101Model.instance:isType101RewardCouldGet(arg_45_1, 1))
 end
 
-function var_0_0.onReceivePVBtn(arg_47_0)
-	local var_47_0 = Activity2ndEnum.ActivityId.V2a8_PVPopupReward
+function var_0_0.onReceivePVBtn(arg_46_0)
+	local var_46_0 = Activity2ndEnum.ActivityId.V2a8_PVPopupReward
 
-	if arg_47_0:checkReceied(var_47_0) then
-		gohelper.setActive(arg_47_0._gopvrewardcanget, false)
-		gohelper.setActive(arg_47_0._gopvrewardreceive, true)
-		gohelper.setActive(arg_47_0._btnpvrewarditem.gameObject, false)
+	if arg_46_0:checkReceied(var_46_0) then
+		gohelper.setActive(arg_46_0._gopvrewardcanget, false)
+		gohelper.setActive(arg_46_0._gopvrewardreceive, true)
+		gohelper.setActive(arg_46_0._btnpvrewarditem.gameObject, false)
 
-		arg_47_0._onceGetReward = true
-	end
-end
-
-function var_0_0._checkFirstClickRed(arg_48_0, arg_48_1)
-	arg_48_1:defaultRefreshDot()
-
-	if not arg_48_1.show then
-		arg_48_1.show = Activity2ndModel.instance:checkAnnualReviewShowRed()
-
-		arg_48_1:showRedDot(RedDotEnum.Style.Normal)
+		arg_46_0._onceGetReward = true
 	end
 end
 
-function var_0_0.onDestroyView(arg_49_0)
+function var_0_0._checkFirstClickRed(arg_47_0, arg_47_1)
+	arg_47_1:defaultRefreshDot()
+
+	if not arg_47_1.show then
+		arg_47_1.show = Activity2ndModel.instance:checkAnnualReviewShowRed()
+
+		arg_47_1:showRedDot(RedDotEnum.Style.Normal)
+	end
+end
+
+function var_0_0.onDestroyView(arg_48_0)
 	return
 end
 
-function var_0_0.onClose(arg_50_0)
-	TaskDispatcher.cancelTask(arg_50_0._endShowTip, arg_50_0)
-	TaskDispatcher.cancelTask(arg_50_0._afteranim, arg_50_0)
+function var_0_0.onClose(arg_49_0)
+	TaskDispatcher.cancelTask(arg_49_0._endShowTip, arg_49_0)
+	TaskDispatcher.cancelTask(arg_49_0._afteranim, arg_49_0)
 
-	if arg_50_0._btnList and #arg_50_0._btnList > 0 then
-		for iter_50_0, iter_50_1 in ipairs(arg_50_0._btnList) do
-			iter_50_1.btn:RemoveClickListener()
+	if arg_49_0._btnList and #arg_49_0._btnList > 0 then
+		for iter_49_0, iter_49_1 in ipairs(arg_49_0._btnList) do
+			iter_49_1.btn:RemoveClickListener()
 		end
 	end
 
-	if arg_50_0._activityItemList and #arg_50_0._activityItemList > 0 then
-		for iter_50_2, iter_50_3 in ipairs(arg_50_0._activityItemList) do
-			iter_50_3.btn:RemoveClickListener()
+	if arg_49_0._activityItemList and #arg_49_0._activityItemList > 0 then
+		for iter_49_2, iter_49_3 in ipairs(arg_49_0._activityItemList) do
+			iter_49_3.btn:RemoveClickListener()
 		end
 	end
 

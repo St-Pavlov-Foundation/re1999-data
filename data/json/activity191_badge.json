@@ -78,5 +78,85 @@
     "trigger": "WithoutLosePassStage",
     "actParam": 3,
     "spParam": 7
+  },
+  {
+    "activityId": 13105,
+    "id": 1,
+    "name": "交锋里程",
+    "desc": "单局角斗中通过的最多节点数",
+    "icon": "act174_badgeicon1",
+    "trigger": "GameProgress",
+    "actParam": 5,
+    "spParam": 15
+  },
+  {
+    "activityId": 13105,
+    "id": 2,
+    "name": "锯工速成",
+    "desc": "累计获得年轮切片的数量",
+    "icon": "act174_badgeicon7",
+    "trigger": "GainCoin",
+    "actParam": 99,
+    "spParam": 199
+  },
+  {
+    "activityId": 13105,
+    "id": 3,
+    "name": "胜利鼓点",
+    "desc": "偶人专家角斗胜利的次数",
+    "icon": "act174_badgeicon2",
+    "trigger": "PVPWin",
+    "actParam": 9,
+    "spParam": 13
+  },
+  {
+    "activityId": 13105,
+    "id": 4,
+    "name": "高“芯”角斗士 ",
+    "desc": "累计获得偶人之心的数量",
+    "icon": "act174_badgeicon4",
+    "trigger": "GainScore",
+    "actParam": 3000,
+    "spParam": 8500
+  },
+  {
+    "activityId": 13105,
+    "id": 5,
+    "name": "智能“角斗士”",
+    "desc": "偶人专家自动角斗胜利的次数",
+    "icon": "act174_badgeicon3",
+    "trigger": "PVPAutoWin",
+    "actParam": 5,
+    "spParam": 15
+  },
+  {
+    "activityId": 13105,
+    "id": 6,
+    "name": "涨“芯”",
+    "desc": "累计提升偶人品质的次数",
+    "icon": "act174_badgeicon5",
+    "trigger": "UpgradeHero",
+    "actParam": 15,
+    "spParam": 40
+  },
+  {
+    "activityId": 13105,
+    "id": 7,
+    "name": "“芯”照不宣",
+    "desc": "单局内同时激活的词条数量",
+    "icon": "act174_badgeicon6",
+    "trigger": "ActiveTagNum",
+    "actParam": 3,
+    "spParam": 5
+  },
+  {
+    "activityId": 13105,
+    "id": 8,
+    "name": "兔脚代言人",
+    "desc": "胜利通过单个阶段所有关卡的次数",
+    "icon": "act174_badgeicon8",
+    "trigger": "WithoutLosePassStage",
+    "actParam": 3,
+    "spParam": 7
   }
 ]

@@ -53,7 +53,7 @@ end
 
 function var_0_0._btngotoOnClick(arg_5_0)
 	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
-	WebViewController.instance:simpleOpenWebView(arg_5_0.viewContainer:getH5BaseUrl(), false, arg_5_0._onWebViewCb, arg_5_0)
+	arg_5_0.viewContainer:openWebView(arg_5_0._onWebViewCb, arg_5_0)
 end
 
 function var_0_0._onWebViewCb(arg_6_0, arg_6_1, arg_6_2)

@@ -54,6 +54,7 @@ function var_0_0._initFightGroupDropFiveHero(arg_5_0)
 	arg_5_0._dropherogroup:ClearOptions()
 	arg_5_0._dropherogroup:AddOptions(var_5_0)
 	arg_5_0._dropherogroup:SetValue(var_5_3)
+	gohelper.setActive(arg_5_0._dropherogroup, false)
 end
 
 function var_0_0._groupDropValueChanged(arg_6_0, arg_6_1)
@@ -67,7 +68,6 @@ function var_0_0._groupDropValueChanged(arg_6_0, arg_6_1)
 
 	if arg_6_0:_setHeroGroupSelectIndex(var_6_1) then
 		arg_6_0:_checkEquipClothSkill()
-		GameFacade.showToast(arg_6_0._changeToastId or ToastEnum.SeasonGroupChanged)
 		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 		gohelper.setActive(arg_6_0._goherogroupcontain, false)
 		gohelper.setActive(arg_6_0._goherogroupcontain, true)

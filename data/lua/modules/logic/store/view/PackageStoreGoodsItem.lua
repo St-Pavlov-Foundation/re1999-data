@@ -62,6 +62,7 @@ function var_0_0._editableInitView(arg_4_0)
 	arg_4_0._goremaintime = gohelper.findChild(arg_4_0.viewGO, "go_remaintime")
 	arg_4_0._txtremiantime = gohelper.findChildText(arg_4_0.viewGO, "go_remaintime/bg/#txt_remiantime")
 	arg_4_0._gonewtag = gohelper.findChild(arg_4_0.viewGO, "go_newtag")
+	arg_4_0._nationalgifttag = gohelper.findChild(arg_4_0.viewGO, "go_nationalgift")
 	arg_4_0._gomooncardup = gohelper.findChild(arg_4_0.viewGO, "#go_mooncardup")
 	arg_4_0._gomaterialup = gohelper.findChild(arg_4_0.viewGO, "#go_materialup")
 	arg_4_0._gocobranded = gohelper.findChild(arg_4_0.viewGO, "#go_cobranded")
@@ -71,6 +72,10 @@ function var_0_0._editableInitView(arg_4_0)
 end
 
 function var_0_0._onClick(arg_5_0)
+	if arg_5_0._clickCallback then
+		arg_5_0._clickCallback(arg_5_0._clickCallbackObj, arg_5_0._mo)
+	end
+
 	StoreController.instance:forceReadTab(arg_5_0._mo.belongStoreId)
 
 	local var_5_0 = {
@@ -154,6 +159,7 @@ function var_0_0.onUpdateMO(arg_9_0, arg_9_1)
 	gohelper.setActive(arg_9_0._goitemreddot, StoreModel.instance:isGoodsItemRedDotShow(arg_9_1.goodsId))
 	gohelper.setActive(arg_9_0._golevellimit, not arg_9_0:_isStoreItemUnlock())
 	gohelper.setActive(arg_9_0._gomooncardup, false)
+	gohelper.setActive(arg_9_0._nationalgifttag, arg_9_1.config.offTag == "1")
 
 	if not arg_9_0:_isStoreItemUnlock() then
 		local var_9_0 = arg_9_0._mo.config.needEpisodeId
@@ -435,6 +441,11 @@ function var_0_0._onUpdateMO_linkPackage(arg_18_0, arg_18_1)
 
 		arg_18_0._linkGiftItemComp:onUpdateMO(arg_18_1)
 	end
+end
+
+function var_0_0.setClickCallback(arg_19_0, arg_19_1, arg_19_2)
+	arg_19_0._clickCallback = arg_19_1
+	arg_19_0._clickCallbackObj = arg_19_2
 end
 
 return var_0_0

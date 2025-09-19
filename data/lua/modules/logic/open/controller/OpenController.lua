@@ -82,6 +82,7 @@ function var_0_0._delayCheckFuncUnlock(arg_5_0)
 
 	TurnbackRpc.instance:sendGetTurnbackInfoRequest()
 	UserSettingRpc.instance:sendGetSettingInfosRequest()
+	ItemRpc.instance:sendGetPowerMakerInfoRequest(false, true)
 end
 
 function var_0_0._newFuncUnlock(arg_7_0, arg_7_1)

@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "粹雨滴",
+    "subType": 0,
     "rare": 5,
     "highQuality": 1,
     "icon": "201",
@@ -19,6 +20,7 @@
   {
     "id": 2,
     "name": "纯雨滴",
+    "subType": 0,
     "rare": 5,
     "highQuality": 1,
     "icon": "202",
@@ -36,6 +38,7 @@
   {
     "id": 3,
     "name": "利齿子儿",
+    "subType": 0,
     "rare": 2,
     "highQuality": 0,
     "icon": "203",
@@ -53,6 +56,7 @@
   {
     "id": 4,
     "name": "细胞活性",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "204",
@@ -63,13 +67,14 @@
     "recoverNum": 1,
     "recoverLimit": 120,
     "dayRecoverNum": 0,
-    "maxLimit": 1200,
+    "maxLimit": 1600,
     "sources": "",
     "headIconSign": ""
   },
   {
     "id": 5,
     "name": "微尘",
+    "subType": 0,
     "rare": 2,
     "highQuality": 0,
     "icon": "205",
@@ -87,6 +92,7 @@
   {
     "id": 10,
     "name": "迷途之声",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "210",
@@ -104,6 +110,7 @@
   {
     "id": 11,
     "name": "大容量迷途之声",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "211",
@@ -121,6 +128,7 @@
   {
     "id": 6,
     "name": "未知道具",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "14018",
@@ -138,6 +146,7 @@
   {
     "id": 20,
     "name": "零散碎影",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "212",
@@ -155,6 +164,7 @@
   {
     "id": 21,
     "name": "规序影像",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "215",
@@ -172,6 +182,7 @@
   {
     "id": 22,
     "name": "梦境流体",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "213",
@@ -189,6 +200,7 @@
   {
     "id": 23,
     "name": "荒原齿贝",
+    "subType": 0,
     "rare": 2,
     "highQuality": 0,
     "icon": "190006",
@@ -206,6 +218,7 @@
   {
     "id": 1111,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -223,6 +236,7 @@
   {
     "id": 1112,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "214",
@@ -240,6 +254,7 @@
   {
     "id": 111,
     "name": "帕帕币",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100101",
@@ -257,6 +272,7 @@
   {
     "id": 1201,
     "name": "尖叫罐头",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "1201",
@@ -274,6 +290,7 @@
   {
     "id": 1202,
     "name": "干燥林木",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "1202",
@@ -291,6 +308,7 @@
   {
     "id": 1211,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -308,6 +326,7 @@
   {
     "id": 1212,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100201",
@@ -325,6 +344,7 @@
   {
     "id": 1301,
     "name": "无止星盘",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100301",
@@ -342,6 +362,7 @@
   {
     "id": 1302,
     "name": "掌中闪耀",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100302",
@@ -359,6 +380,7 @@
   {
     "id": 1311,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -376,6 +398,7 @@
   {
     "id": 1312,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100303",
@@ -393,6 +416,7 @@
   {
     "id": 24,
     "name": "显影罐",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "216",
@@ -410,6 +434,7 @@
   {
     "id": 31,
     "name": "新程票",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "231",
@@ -427,6 +452,7 @@
   {
     "id": 1401,
     "name": "尤里卡",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100401",
@@ -444,6 +470,7 @@
   {
     "id": 1411,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -461,6 +488,7 @@
   {
     "id": 1412,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100402",
@@ -478,6 +506,7 @@
   {
     "id": 1413,
     "name": "APPLe币",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100404",
@@ -495,6 +524,7 @@
   {
     "id": 1414,
     "name": "尘封文书",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100405",
@@ -512,6 +542,7 @@
   {
     "id": 1515,
     "name": "火星印",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "1050701",
@@ -529,6 +560,7 @@
   {
     "id": 1501,
     "name": "远古的种火",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "10501",
@@ -546,6 +578,7 @@
   {
     "id": 1502,
     "name": "尤加利种荚 ",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "10502",
@@ -563,6 +596,7 @@
   {
     "id": 1511,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -580,6 +614,7 @@
   {
     "id": 1512,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100501",
@@ -597,6 +632,7 @@
   {
     "id": 1601,
     "name": "纸马",
+    "subType": 1601,
     "rare": 3,
     "highQuality": 0,
     "icon": "100602",
@@ -614,6 +650,7 @@
   {
     "id": 1602,
     "name": "帕帕币",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100101",
@@ -631,6 +668,7 @@
   {
     "id": 25,
     "name": "“一小束光”",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "217",
@@ -648,6 +686,7 @@
   {
     "id": 1603,
     "name": "金雀子儿",
+    "subType": 1603,
     "rare": 3,
     "highQuality": 0,
     "icon": "100603",
@@ -665,6 +704,7 @@
   {
     "id": 1604,
     "name": "共济",
+    "subType": 1604,
     "rare": 3,
     "highQuality": 0,
     "icon": "100604",
@@ -682,6 +722,7 @@
   {
     "id": 1605,
     "name": "压胜钱",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100601",
@@ -699,6 +740,7 @@
   {
     "id": 26,
     "name": "出勤证明",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "232",
@@ -716,6 +758,7 @@
   {
     "id": 1611,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -733,6 +776,7 @@
   {
     "id": 1612,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100605",
@@ -750,6 +794,7 @@
   {
     "id": 1701,
     "name": "“交响曲”",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100701",
@@ -767,6 +812,7 @@
   {
     "id": 1702,
     "name": "尖叫罐头",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "1201",
@@ -784,6 +830,7 @@
   {
     "id": 1711,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -801,6 +848,7 @@
   {
     "id": 1712,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100703",
@@ -818,6 +866,7 @@
   {
     "id": 1713,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -835,6 +884,7 @@
   {
     "id": 1801,
     "name": "无止星盘",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100301",
@@ -852,6 +902,7 @@
   {
     "id": 1802,
     "name": "修复零件",
+    "subType": 0,
     "rare": 0,
     "highQuality": 0,
     "icon": "",
@@ -869,6 +920,7 @@
   {
     "id": 1803,
     "name": "修复原料",
+    "subType": 0,
     "rare": 0,
     "highQuality": 0,
     "icon": "",
@@ -886,6 +938,7 @@
   {
     "id": 1804,
     "name": "奠基物",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100801",
@@ -903,6 +956,7 @@
   {
     "id": 1805,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100805",
@@ -920,6 +974,7 @@
   {
     "id": 1806,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -937,6 +992,7 @@
   {
     "id": 1807,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -954,6 +1010,7 @@
   {
     "id": 1811,
     "name": "黑金",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "1811",
@@ -971,6 +1028,7 @@
   {
     "id": 1812,
     "name": "旧零件",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "1812",
@@ -988,6 +1046,7 @@
   {
     "id": 1901,
     "name": "一日之餐",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100901",
@@ -1005,6 +1064,7 @@
   {
     "id": 1902,
     "name": "勋章流体",
+    "subType": 1901,
     "rare": 3,
     "highQuality": 0,
     "icon": "100902",
@@ -1022,6 +1082,7 @@
   {
     "id": 1903,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100903",
@@ -1039,6 +1100,7 @@
   {
     "id": 1904,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -1056,6 +1118,7 @@
   {
     "id": 1905,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -1073,6 +1136,7 @@
   {
     "id": 2001,
     "name": "灵态晶簇",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2001",
@@ -1090,6 +1154,7 @@
   {
     "id": 2003,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "101003",
@@ -1107,6 +1172,7 @@
   {
     "id": 2004,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -1124,6 +1190,7 @@
   {
     "id": 2005,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -1141,6 +1208,7 @@
   {
     "id": 2101,
     "name": "“老钥匙”",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2101",
@@ -1158,6 +1226,7 @@
   {
     "id": 2103,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "101003",
@@ -1175,6 +1244,7 @@
   {
     "id": 2104,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -1192,6 +1262,7 @@
   {
     "id": 2105,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -1209,6 +1280,7 @@
   {
     "id": 2201,
     "name": "备用废品",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2201",
@@ -1226,6 +1298,7 @@
   {
     "id": 2202,
     "name": "魔精跳跳币",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2202",
@@ -1243,6 +1316,7 @@
   {
     "id": 2203,
     "name": "谍报秘钥",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2203",
@@ -1260,6 +1334,7 @@
   {
     "id": 280001,
     "name": "微尘跳跳糖",
+    "subType": 28,
     "rare": 3,
     "highQuality": 0,
     "icon": "280001",
@@ -1277,6 +1352,7 @@
   {
     "id": 290001,
     "name": "嗡鸣发条",
+    "subType": 29,
     "rare": 4,
     "highQuality": 0,
     "icon": "290001",
@@ -1294,6 +1370,7 @@
   {
     "id": 300001,
     "name": "纠缠发条",
+    "subType": 30,
     "rare": 4,
     "highQuality": 0,
     "icon": "300001",
@@ -1311,6 +1388,7 @@
   {
     "id": 2301,
     "name": "纸条儿勋章",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2301",
@@ -1328,6 +1406,7 @@
   {
     "id": 2302,
     "name": "偶人之芯",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2302",
@@ -1345,6 +1424,7 @@
   {
     "id": 2303,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "101303",
@@ -1362,6 +1442,7 @@
   {
     "id": 2304,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -1379,6 +1460,7 @@
   {
     "id": 2305,
     "name": "UTTU积分",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100702",
@@ -1396,6 +1478,7 @@
   {
     "id": 2401,
     "name": "鸥声信笺",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2401",
@@ -1413,6 +1496,7 @@
   {
     "id": 2402,
     "name": "谍报秘钥",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2203",
@@ -1430,6 +1514,7 @@
   {
     "id": 2501,
     "name": "小道消息",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2501",
@@ -1447,6 +1532,7 @@
   {
     "id": 7,
     "name": "辉光丝",
+    "subType": 0,
     "rare": 5,
     "highQuality": 1,
     "icon": "207",
@@ -1464,6 +1550,7 @@
   {
     "id": 27,
     "name": "旧旅票",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "227",
@@ -1481,6 +1568,7 @@
   {
     "id": 2502,
     "name": "雨痕防护信标",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "2502",
@@ -1498,6 +1586,7 @@
   {
     "id": 2503,
     "name": "利事",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "2503",
@@ -1515,6 +1604,7 @@
   {
     "id": 2601,
     "name": "万能指示物",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2601",
@@ -1532,6 +1622,7 @@
   {
     "id": 2602,
     "name": "谍报秘钥",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2203",
@@ -1549,6 +1640,7 @@
   {
     "id": 28,
     "name": "迷思沉淀",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "228",
@@ -1566,6 +1658,7 @@
   {
     "id": 2701,
     "name": "宇宙玻片",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2701",
@@ -1583,6 +1676,7 @@
   {
     "id": 2702,
     "name": "偶人之芯",
+    "subType": 2702,
     "rare": 3,
     "highQuality": 0,
     "icon": "2302",
@@ -1600,6 +1694,7 @@
   {
     "id": 2801,
     "name": "冰岩标本",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2801",
@@ -1617,6 +1712,7 @@
   {
     "id": 2881,
     "name": "“好点子”",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2881",
@@ -1634,6 +1730,7 @@
   {
     "id": 2882,
     "name": "“拿来”的钥匙",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "2882",
@@ -1651,6 +1748,7 @@
   {
     "id": 3011,
     "name": "可阅次数",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "100102",
@@ -1668,6 +1766,7 @@
   {
     "id": 3012,
     "name": "UTTU购物票据",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "3012",
@@ -1685,6 +1784,7 @@
   {
     "id": 3001,
     "name": "空弹壳",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "3001",
@@ -1702,6 +1802,7 @@
   {
     "id": 3013,
     "name": "密函卷轴",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "3013",
@@ -1719,6 +1820,7 @@
   {
     "id": 30501,
     "name": "弗罗林",
+    "subType": 0,
     "rare": 3,
     "highQuality": 0,
     "icon": "30501",
@@ -1736,6 +1838,7 @@
   {
     "id": 30503,
     "name": "纷飞数据",
+    "subType": 0,
     "rare": 4,
     "highQuality": 0,
     "icon": "30503",
@@ -1748,6 +1851,204 @@
     "dayRecoverNum": 0,
     "maxLimit": 0,
     "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3101,
+    "name": "“多瑙”之心",
+    "subType": 0,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3101",
+    "smallIcon": "",
+    "useDesc": "“多瑙黎明”号的特供纪念品，由列车长参与设计，赠予于此安稳度过长夜的旅客。可用于特别柜台兑换。",
+    "desc": "汽笛鸣过，黑影攒动，吹笛手轻声奏响，献给无家可归者的启程纪念。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3102,
+    "name": "偶人之芯",
+    "subType": 3102,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "2302",
+    "smallIcon": "2302_1",
+    "useDesc": "击败偶人的证明。可用于芯的回收处兑换。（最多可保留8620个）",
+    "desc": "恭喜，你赢得了木偶的芯，虽然不是通过爱……",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 3103,
+    "name": "茸茸特供罐",
+    "subType": 0,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3103",
+    "smallIcon": "3103_1",
+    "useDesc": "一盒足以称得上诱饵的零食罐，内有微尘、脆树枝与仙境气泡，在井中冒险后的最佳酬劳。用于鼓励魔精员工在好梦井完成一次打捞。",
+    "desc": "漫步于荒原的人们皆对“井”有所好奇。泉水精灵向其注入清水，仙境所爱的少女则赠它以糖浆，而它以变幻的色彩作出回答。最终，能在“井”中徜徉的是那些毛茸茸的小家伙，它们跃入其中，带着“井”的馈赠回归，就像狗儿身上沾满苍耳。你只需奉上佳肴，作为小小冒险之后的美餐。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 20,
+    "sources": "",
+    "headIconSign": ""
+  },
+  {
+    "id": 310101,
+    "name": "自走王后棋",
+    "subType": 3101,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "310101",
+    "smallIcon": "310101_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "在棋盘上有多少位王后？嘘，在仙境，对弈的规则总是可以自由些的。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310102,
+    "name": "骑士小鼠",
+    "subType": 3101,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "310102",
+    "smallIcon": "310102_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "灵巧、吱吱叫、偶尔生锈的小家伙，攀附在卡邦克鲁们厚实的毛皮中，随它们一道钻出井底。它们喜爱你的土地。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310103,
+    "name": "笑点胡椒",
+    "subType": 3101,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "310103",
+    "smallIcon": "310103_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "精灵的泉水混合“仙境”的糖浆，荒原的大地裂隙由此开始吐出馈赠。据婴儿蓝所说，这种胡椒是“仙境”茶歇时间中的珍品，至少她那位咧着嘴的朋友对此十分喜爱。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310104,
+    "name": "俯瞰蘑菇",
+    "subType": 3101,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "310104",
+    "smallIcon": "310104_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "鲜艳而奇异的蘑菇，似乎并不属于现存的任何品种。爱兹拉不建议任何人贸然食用，但对婴儿蓝提到的“拓展视野”功效充满了兴趣。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310105,
+    "name": "自走兵卒棋",
+    "subType": 3101,
+    "rare": 2,
+    "highQuality": 0,
+    "icon": "310105",
+    "smallIcon": "310105_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "每个士兵都有一颗渴望升格的心，在64格之中，它们奔走不休。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310106,
+    "name": "渡渡瞌睡粉",
+    "subType": 3101,
+    "rare": 2,
+    "highQuality": 0,
+    "icon": "310106",
+    "smallIcon": "310106_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "只需一茶勺，兑换一场淡蓝色的美梦。新巴别塔公司保证，梦中不会有任何字谜、王冠或斧头。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310107,
+    "name": "眼泪球",
+    "subType": 3101,
+    "rare": 2,
+    "highQuality": 0,
+    "icon": "310107",
+    "smallIcon": "310107_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "众所周知，“好梦井”的诞生与拉拉泉的恶作剧不无关系。但是……\n“这不是我的泉水，它不可能如此咸苦！”精灵如是惊呼道。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
+    "headIconSign": ""
+  },
+  {
+    "id": 310108,
+    "name": "向后路标",
+    "subType": 3101,
+    "rare": 2,
+    "highQuality": 0,
+    "icon": "310108",
+    "smallIcon": "310108_1",
+    "useDesc": "好梦井中打捞上来的奇异造物，可以在“茸毛集换所”中兑换奖励。",
+    "desc": "并不能指示任何方向，似乎来自“仙境”的路标。香脆可口、富含微尘，在好梦井中撒欢的卡邦克鲁喜爱这些磨牙棒。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "10013139",
     "headIconSign": ""
   }
 ]

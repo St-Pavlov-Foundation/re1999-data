@@ -119,7 +119,13 @@ local var_0_1 = {
 	[ActivityEnum.Activity.V3a0_NewCultivationGift] = ViewName.VersionActivity2_3NewCultivationGiftView,
 	[ActivityEnum.Activity.V3a0_SummerSign] = ViewName.V3a0_SummerSign_FullView,
 	[ActivityEnum.Activity.V2a9_WarmUp] = ViewName.V2a9_WarmUp,
-	[ActivityEnum.Activity.V2a9_Act208] = ViewName.V2a9_Act208MainView
+	[ActivityEnum.Activity.V2a9_Act208] = ViewName.V2a9_Act208MainView,
+	[VersionActivity3_1Enum.ActivityId.SurvivalOperAct] = ViewName.SurvivalOperActFullView,
+	[VersionActivity3_1Enum.ActivityId.TowerDeep] = ViewName.TowerDeepOperActFullView,
+	[VersionActivity3_1Enum.ActivityId.BpOperAct] = ViewName.V3a1_BpOperActShowView,
+	[VersionActivity3_1Enum.ActivityId.NationalGift] = ViewName.NationalGiftFullView,
+	[ActivityEnum.Activity.V3a1_AutumnSign] = ViewName.V3a1_AutumnSign_FullView,
+	[ActivityEnum.Activity.V3a1_NewCultivationDestiny] = ViewName.VersionActivity2_3NewCultivationGiftView
 }
 local var_0_2 = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -144,6 +150,7 @@ function var_0_0.onOpen(arg_6_0)
 	arg_6_0:_initSpecial_FullSignView()
 	arg_6_0:_initLinkageActivity_FullView()
 	arg_6_0:_initWarmUp()
+	arg_6_0:_initWarmUpH5()
 
 	arg_6_0._needSetSortInfos = true
 
@@ -323,15 +330,22 @@ function var_0_0._initRole_FullSignView(arg_19_0)
 
 	var_0_3 = true
 
-	local var_19_0 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part1", ActivityEnum.Activity.V2a6_Role_SignView_Part1)
-	local var_19_1 = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part1", ViewName.V2a5_Role_FullSignView_Part1)
+	local var_19_0 = ActivityType101Model.instance:getRoleSignActIdList()
+	local var_19_1 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part1", var_19_0[1])
 
-	var_0_1[var_19_0] = var_19_1
+	if var_19_1 then
+		local var_19_2 = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part1", ViewName.Role_FullSignView_Part1)
 
-	local var_19_2 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part2", ActivityEnum.Activity.V2a6_Role_SignView_Part2)
-	local var_19_3 = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part2", ViewName.V2a5_Role_FullSignView_Part2)
+		var_0_1[var_19_1] = var_19_2
+	end
 
-	var_0_1[var_19_2] = var_19_3
+	local var_19_3 = GameBranchMgr.instance:Vxax_ActId("Role_SignView_Part2", var_19_0[2])
+
+	if var_19_3 then
+		local var_19_4 = GameBranchMgr.instance:Vxax_ViewName("Role_FullSignView_Part2", ViewName.Role_FullSignView_Part2)
+
+		var_0_1[var_19_3] = var_19_4
+	end
 end
 
 local var_0_4 = false
@@ -377,6 +391,20 @@ function var_0_0._initWarmUp(arg_22_0)
 	local var_22_1 = GameBranchMgr.instance:Vxax_ViewName("WarmUp", ViewName.V2a8_WarmUp)
 
 	var_0_1[var_22_0] = var_22_1
+end
+
+local var_0_7 = false
+
+function var_0_0._initWarmUpH5(arg_23_0)
+	if var_0_7 then
+		return
+	end
+
+	var_0_7 = true
+
+	local var_23_0 = ActivityType100Config.instance:getWarmUpH5ActivityId()
+
+	var_0_1[var_23_0] = ViewName.ActivityWarmUpH5FullView
 end
 
 return var_0_0

@@ -117,5 +117,131 @@
     "random": 0,
     "selectNum": 3,
     "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 2011,
+    "node": 1,
+    "random": 0,
+    "selectNum": 1,
+    "desc": "选择赞助，取你所需"
+  },
+  {
+    "ruleId": 2011,
+    "node": 2,
+    "random": 1,
+    "selectNum": 2,
+    "desc": "赛事节点由你决定"
+  },
+  {
+    "ruleId": 2011,
+    "node": 3,
+    "random": 0,
+    "selectNum": 2,
+    "desc": "赢得偶人角斗拿走更多补给"
+  },
+  {
+    "ruleId": 2011,
+    "node": 4,
+    "random": 1,
+    "selectNum": 2,
+    "desc": "补给按需挑选"
+  },
+  {
+    "ruleId": 2011,
+    "node": 5,
+    "random": 0,
+    "selectNum": 2,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 2021,
+    "node": 1,
+    "random": 0,
+    "selectNum": 1,
+    "desc": "选择赞助，取你所需"
+  },
+  {
+    "ruleId": 2021,
+    "node": 2,
+    "random": 1,
+    "selectNum": 3,
+    "desc": "赛事节点由你决定"
+  },
+  {
+    "ruleId": 2021,
+    "node": 3,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "赢得偶人角斗拿走更多补给"
+  },
+  {
+    "ruleId": 2021,
+    "node": 4,
+    "random": 1,
+    "selectNum": 3,
+    "desc": "补给按需挑选"
+  },
+  {
+    "ruleId": 2021,
+    "node": 5,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 3031,
+    "node": 1,
+    "random": 0,
+    "selectNum": 1,
+    "desc": "芯灵感应定制服务"
+  },
+  {
+    "ruleId": 3031,
+    "node": 2,
+    "random": 1,
+    "selectNum": 3,
+    "desc": "赛事节点由你决定"
+  },
+  {
+    "ruleId": 3031,
+    "node": 3,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "赢得偶人角斗拿走更多补给"
+  },
+  {
+    "ruleId": 3031,
+    "node": 4,
+    "random": 1,
+    "selectNum": 3,
+    "desc": "补给按需挑选"
+  },
+  {
+    "ruleId": 3031,
+    "node": 5,
+    "random": 1,
+    "selectNum": 2,
+    "desc": "加工置换将拓片不断打磨"
+  },
+  {
+    "ruleId": 3031,
+    "node": 6,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 3031,
+    "node": 7,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "击败偶人专家夺得角斗荣誉"
+  },
+  {
+    "ruleId": 3031,
+    "node": 8,
+    "random": 0,
+    "selectNum": 3,
+    "desc": "击败偶人专家夺得角斗荣誉"
   }
 ]

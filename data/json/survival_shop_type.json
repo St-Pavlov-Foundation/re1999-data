@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "载具",
+    "tabIcon": "survival_shoptab_4"
+  },
+  {
+    "id": 2,
+    "name": "漫游行装",
+    "tabIcon": "survival_shoptab_3"
+  },
+  {
+    "id": 3,
+    "name": "强化",
+    "tabIcon": "survival_shoptab_2"
+  },
+  {
+    "id": 4,
+    "name": "快捷道具",
+    "tabIcon": "survival_shoptab_1"
+  }
+]
