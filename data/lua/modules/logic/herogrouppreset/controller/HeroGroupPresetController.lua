@@ -228,7 +228,7 @@ function var_0_0.revertCurHeroGroup(arg_20_0)
 		var_20_3 = string.format("%s#%s", var_20_3, iter_20_1.groupId)
 
 		if iter_20_1.groupId == var_20_2.groupId then
-			var_20_2:init(iter_20_1)
+			var_20_2.name = var_20_2.name, var_20_2:init(iter_20_1)
 
 			return
 		end

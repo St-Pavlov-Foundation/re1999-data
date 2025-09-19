@@ -134,7 +134,10 @@ function var_0_0._onUISpineLoaded(arg_13_0)
 	local var_13_1 = SkinConfig.instance:getSkinOffset(var_13_0)
 
 	recthelper.setAnchor(arg_13_0._gobigspine.transform, tonumber(var_13_1[1]), tonumber(var_13_1[2]))
-	transformhelper.setLocalScale(arg_13_0._gobigspine.transform, tonumber(var_13_1[3]), tonumber(var_13_1[3]), tonumber(var_13_1[3]))
+
+	local var_13_2 = tonumber(var_13_1[3]) * 1
+
+	transformhelper.setLocalScale(arg_13_0._gobigspine.transform, var_13_2, var_13_2, var_13_2)
 	TaskDispatcher.cancelTask(arg_13_0._tryPlayVoice, arg_13_0)
 	TaskDispatcher.runDelay(arg_13_0._tryPlayVoice, arg_13_0, 0.3)
 end

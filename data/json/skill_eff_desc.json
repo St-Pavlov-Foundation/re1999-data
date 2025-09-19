@@ -19085,7 +19085,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "受到所有伤害固定为1"
+    "desc": "受到所有伤害固定为1（不可驱散）"
   },
   {
     "id": 104310118,

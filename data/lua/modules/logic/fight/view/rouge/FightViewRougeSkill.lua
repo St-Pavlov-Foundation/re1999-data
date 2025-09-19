@@ -368,8 +368,8 @@ function var_0_0._checkPlayPowerMaxAudio(arg_29_0)
 	arg_29_0._prevPower = var_29_4
 end
 
-function var_0_0._onClickSkillIcon(arg_30_0, arg_30_1)
-	if FightDataHelper.lockOperateMgr:isLock() then
+function var_0_0._onClickSkillIcon(arg_30_0, arg_30_1, arg_30_2)
+	if FightDataHelper.lockOperateMgr:isLock() and not arg_30_2 then
 		return
 	end
 
@@ -481,7 +481,7 @@ function var_0_0._simulateClickClothSkillIcon(arg_36_0, arg_36_1)
 
 		for iter_36_0, iter_36_1 in ipairs(var_36_1) do
 			if iter_36_1.skillId == var_36_0 then
-				arg_36_0:_onClickSkillIcon(iter_36_0)
+				arg_36_0:_onClickSkillIcon(iter_36_0, true)
 
 				return
 			end

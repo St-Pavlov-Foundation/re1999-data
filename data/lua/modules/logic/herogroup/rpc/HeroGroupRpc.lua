@@ -105,6 +105,10 @@ function var_0_0.onReceiveSetHeroGroupEquipReply(arg_6_0, arg_6_1, arg_6_2)
 end
 
 function var_0_0.sendSetHeroGroupSnapshotRequest(arg_7_0, arg_7_1, arg_7_2, arg_7_3, arg_7_4, arg_7_5)
+	if arg_7_1 == ModuleEnum.HeroGroupSnapshotType.Resources and arg_7_2 ~= VersionActivity2_8BossEnum.HeroGroupId.First and arg_7_2 ~= VersionActivity2_8BossEnum.HeroGroupId.Second then
+		logError(string.format("HeroGroupRpc:sendSetHeroGroupSnapshotRequest snapshotId:%s snapshotSubId:%s 使用错误", arg_7_1, arg_7_2))
+	end
+
 	arg_7_3.snapshotId = arg_7_1
 	arg_7_3.snapshotSubId = arg_7_2
 

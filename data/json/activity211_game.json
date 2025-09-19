@@ -2,14 +2,14 @@
   {
     "groupId": 1000,
     "gameId": "1#2#3",
-    "targetDesc": "还原出父亲的影子#还原出母亲的样子#还原出弟弟的影子",
+    "targetDesc": "还原出父亲的影子#还原出母亲的影子#还原出弟弟的影子",
     "shadowBg": "v3a1_yeshumei_game_shadow1#v3a1_yeshumei_game_shadow2#v3a1_yeshumei_game_shadow3",
     "desc": "还原出亲人们的影子"
   },
   {
     "groupId": 1001,
     "gameId": "4#5#6#7",
-    "targetDesc": "还原出逝者A的影子#还原出逝者B的样子#还原出逝者C的影子#还原出逝者D的影子",
+    "targetDesc": "还原出逝者A的影子#还原出逝者B的影子#还原出逝者C的影子#还原出逝者D的影子",
     "shadowBg": "v3a1_yeshumei_game_shadow4#v3a1_yeshumei_game_shadow5#v3a1_yeshumei_game_shadow6#v3a1_yeshumei_game_shadow7",
     "desc": "还原出逝者们的影子"
   },

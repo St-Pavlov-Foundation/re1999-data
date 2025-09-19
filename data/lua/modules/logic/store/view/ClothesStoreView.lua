@@ -372,13 +372,10 @@ function var_0_0.onOpen(arg_24_0)
 			})
 		end
 
-		local var_24_3 = StoreClothesGoodsItemListModel.instance:getGoodIndex(var_24_1)
-		local var_24_4 = transformhelper.getLocalPos(arg_24_0._gocontent.transform)
-		local var_24_5 = arg_24_0.viewContainer._ScrollViewSkinStore._param
-		local var_24_6 = math.ceil(var_24_3 / 2)
-		local var_24_7 = (var_24_5.cellHeight + var_24_5.cellSpaceV) * (var_24_6 - 1) + var_24_5.startSpace
+		arg_24_0:locationGoodsItemByGoodsId(var_24_1)
 
-		transformhelper.setLocalPosXY(arg_24_0._gocontent.transform, var_24_4, var_24_7)
+		local var_24_3 = StoreClothesGoodsItemListModel.instance:getGoodIndex(var_24_1)
+
 		StoreClothesGoodsItemListModel.instance:setSelectIndex(var_24_3)
 	end
 end
@@ -429,16 +426,13 @@ function var_0_0._updateInfo(arg_28_0)
 		return
 	end
 
-	local var_28_2 = Vector2.up
+	local var_28_2 = 870
 
 	if var_28_0 <= 2 then
-		var_28_2 = Vector2(0, 0.5)
+		var_28_2 = 408
 	end
 
-	arg_28_0._gocontent.transform.anchorMin = var_28_2
-	arg_28_0._gocontent.transform.anchorMax = var_28_2
-	arg_28_0._gocontent.transform.pivot = var_28_2
-
+	recthelper.setHeight(arg_28_0._scrollprop.transform, var_28_2)
 	arg_28_0:refreshSwitchBtn()
 	arg_28_0:refreshSkinPreview()
 end

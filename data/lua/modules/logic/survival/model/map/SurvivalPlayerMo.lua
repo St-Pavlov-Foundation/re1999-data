@@ -37,7 +37,7 @@ function var_0_0.getResPath(arg_3_0)
 	elseif var_3_2 == SurvivalEnum.UnitSubType.Morass and var_3_1:getAttr(SurvivalEnum.AttrType.Vehicle_Morass) > 0 then
 		var_3_0 = SurvivalEnum.ConstId.Vehicle_Morass
 	elseif var_3_2 == SurvivalEnum.UnitSubType.Water then
-		if var_3_1:getAttr(SurvivalEnum.AttrType.Vehicle_Morass) > 0 then
+		if var_3_1:getAttr(SurvivalEnum.AttrType.Vehicle_Water) > 0 then
 			var_3_0 = SurvivalEnum.ConstId.Vehicle_Water
 		else
 			var_3_0 = SurvivalEnum.ConstId.Vehicle_WaterNormal
