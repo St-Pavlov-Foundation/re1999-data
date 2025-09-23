@@ -6731,7 +6731,7 @@
     "sortId": 1,
     "level": 1,
     "icon": "",
-    "image": "300_mishihai_bg#achievement_towerdeep_title_1#achievement_towerdeep_badgebg_1"
+    "image": "300_mishihai#achievement_towerdeep_title_1#achievement_towerdeep_badgebg_1"
   },
   {
     "id": 50000102,
@@ -6744,7 +6744,7 @@
     "sortId": 2,
     "level": 2,
     "icon": "",
-    "image": "500_mishihai_bg#achievement_towerdeep_title_2#achievement_towerdeep_badgebg_2"
+    "image": "500_mishihai#achievement_towerdeep_title_2#achievement_towerdeep_badgebg_2"
   },
   {
     "id": 50000103,
@@ -6757,6 +6757,6 @@
     "sortId": 3,
     "level": 3,
     "icon": "",
-    "image": "1000_mishihai_bg#achievement_towerdeep_title_3#achievement_towerdeep_badgebg_3"
+    "image": "1000_mishihai#achievement_towerdeep_title_3#achievement_towerdeep_badgebg_3"
   }
 ]

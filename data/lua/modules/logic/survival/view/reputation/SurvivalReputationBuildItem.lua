@@ -119,6 +119,14 @@ function var_0_0.refreshNotAnimUI(arg_11_0)
 	local var_11_2 = arg_11_0.survivalReputationPropMo:getLevelProgressBkg()
 
 	UISpriteSetMgr.instance:setSurvivalSprite2(arg_11_0._imageprogress, var_11_2)
+
+	if arg_11_0.isMaxLevel then
+		arg_11_0._txttotal.text = "--"
+	else
+		local var_11_3 = SurvivalConfig.instance:getReputationCost(arg_11_0.reputationId, arg_11_0.reputationLevel)
+
+		arg_11_0._txttotal.text = var_11_3
+	end
 end
 
 function var_0_0.refreshUpgrade(arg_12_0)
@@ -159,22 +167,17 @@ end
 function var_0_0.refreshTextScore(arg_15_0)
 	if arg_15_0.isMaxLevel then
 		arg_15_0._txtcurrent.text = "--"
-		arg_15_0._txttotal.text = "--"
+
+		gohelper.setActive(arg_15_0._txtcurrentloop, false)
+	elseif arg_15_0.isSelect then
+		arg_15_0._txtcurrent.text = string.format("%s", arg_15_0.curReputation)
+		arg_15_0._txtcurrentloop.text = string.format("(+%s)", arg_15_0.score)
+
+		gohelper.setActive(arg_15_0._txtcurrentloop, true)
 	else
-		if arg_15_0.isSelect then
-			arg_15_0._txtcurrent.text = string.format("%s", arg_15_0.curReputation)
-			arg_15_0._txtcurrentloop.text = string.format("(+%s)", arg_15_0.score)
+		arg_15_0._txtcurrent.text = arg_15_0.curReputation
 
-			gohelper.setActive(arg_15_0._txtcurrentloop, true)
-		else
-			arg_15_0._txtcurrent.text = arg_15_0.curReputation
-
-			gohelper.setActive(arg_15_0._txtcurrentloop, false)
-		end
-
-		local var_15_0 = SurvivalConfig.instance:getReputationCost(arg_15_0.reputationId, arg_15_0.reputationLevel)
-
-		arg_15_0._txttotal.text = var_15_0
+		gohelper.setActive(arg_15_0._txtcurrentloop, false)
 	end
 end
 
@@ -256,12 +259,16 @@ function var_0_0._onProgressFloat(arg_17_0, arg_17_1)
 		arg_17_0._imageprogress.fillAmount = arg_17_0.oldPer + arg_17_1
 	end
 
-	if arg_17_1 >= arg_17_0.firstMovePer and arg_17_0.progresMoveStage == 1 then
-		arg_17_0.progresMoveStage = 2
+	if arg_17_1 >= arg_17_0.firstMovePer then
+		log("SurvivalReputationBuildItem _onProgressFloat")
 
-		arg_17_0:_refreshUIState({
-			per = arg_17_0.secondMovePer
-		})
+		if arg_17_0.progresMoveStage == 1 then
+			arg_17_0.progresMoveStage = 2
+
+			arg_17_0:_refreshUIState({
+				per = arg_17_0.secondMovePer
+			})
+		end
 	end
 
 	if arg_17_1 > arg_17_0.firstMovePer then

@@ -91,8 +91,6 @@ function var_0_0.changePowerItemList(arg_7_0, arg_7_1)
 			arg_7_0._powerItemList[var_7_0]:reset(iter_7_1)
 		end
 	end
-
-	arg_7_0:setPowerMakerItemsList()
 end
 
 function var_0_0.getLatestPowerChange(arg_8_0)
@@ -195,7 +193,7 @@ end
 
 function var_0_0.getNoExpirePower(arg_16_0, arg_16_1)
 	for iter_16_0, iter_16_1 in pairs(arg_16_0._powerItemList) do
-		if iter_16_1.id == arg_16_1 and iter_16_1.expireTime == 0 then
+		if iter_16_1.id == arg_16_1 and iter_16_1.quantity > 0 and iter_16_1.expireTime == 0 then
 			return iter_16_1
 		end
 	end

@@ -225,11 +225,11 @@ function var_0_0.getHeroSkillIdDic(arg_13_0, arg_13_1, arg_13_2)
 	else
 		local var_13_9 = {}
 		local var_13_10 = string.splitToNumber(var_13_0.activeSkill1, "#")
-		local var_13_11 = string.splitToNumber(var_13_0.activeSkill2, "#")
+		local var_13_11 = GameUtil.splitString2(var_13_0.activeSkill2, true, ",", "#")[1]
 
 		if arg_13_2 then
-			var_13_9[1] = var_13_10[#var_13_10]
-			var_13_9[2] = var_13_11[#var_13_10]
+			var_13_9[1] = var_13_10[1]
+			var_13_9[2] = var_13_11[1]
 			var_13_9[3] = var_13_0.uniqueSkill
 		else
 			var_13_9[1] = var_13_10

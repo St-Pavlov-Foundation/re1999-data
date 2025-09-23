@@ -62,8 +62,12 @@ function var_0_0.isGamePlayGroup(arg_5_0)
 	return var_5_0 and var_5_0.category == AchievementEnum.Type.GamePlay
 end
 
-function var_0_0.getBgPrefabUrl(arg_6_0)
-	return string.format("ui/viewres/achievement/mishihai/%s.prefab", arg_6_0)
+function var_0_0.getBgPrefabUrl(arg_6_0, arg_6_1)
+	if arg_6_1 then
+		return string.format("ui/viewres/achievement/mishihai/%s_mini.prefab", arg_6_0)
+	else
+		return string.format("ui/viewres/achievement/mishihai/%s_bg.prefab", arg_6_0)
+	end
 end
 
 function var_0_0.getAchievementProgressBySourceType(arg_7_0)

@@ -1738,7 +1738,7 @@
     "isShow": 0,
     "icon": "21051",
     "titile": "虚弱体质Ⅰ",
-    "desc": "抵抗力降低幅度提升10%",
+    "desc": "演习战斗损失的抵抗力提升10%",
     "scoreRate": 50,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -1754,7 +1754,7 @@
     "isShow": 0,
     "icon": "21052",
     "titile": "虚弱体质Ⅱ",
-    "desc": "抵抗力降低幅度提升20%",
+    "desc": "演习战斗损失的抵抗力提升20%",
     "scoreRate": 100,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -1770,7 +1770,7 @@
     "isShow": 0,
     "icon": "21053",
     "titile": "虚弱体质Ⅲ",
-    "desc": "抵抗力降低幅度提升30%",
+    "desc": "演习战斗损失的抵抗力提升30%",
     "scoreRate": 150,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -1786,7 +1786,7 @@
     "isShow": 0,
     "icon": "21054",
     "titile": "虚弱体质Ⅳ",
-    "desc": "抵抗力降低幅度提升40%",
+    "desc": "演习战斗损失的抵抗力提升40%",
     "scoreRate": 200,
     "extendScoreFix": 0,
     "lockDesc": "完成度效率×2.1通关后解锁"
@@ -1802,7 +1802,7 @@
     "isShow": 0,
     "icon": "21055",
     "titile": "虚弱体质Ⅴ",
-    "desc": "抵抗力降低幅度提升50%",
+    "desc": "演习战斗损失的抵抗力提升50%",
     "scoreRate": 250,
     "extendScoreFix": 0,
     "lockDesc": "完成度效率×2.95通关后解锁"
@@ -2714,7 +2714,7 @@
     "isShow": 0,
     "icon": "21052",
     "titile": "虚弱体质Ⅱ",
-    "desc": "抵抗力降低幅度提升20%",
+    "desc": "演习战斗损失的抵抗力提升20%",
     "scoreRate": 0,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -2762,7 +2762,7 @@
     "isShow": 0,
     "icon": "21053",
     "titile": "虚弱体质Ⅲ",
-    "desc": "抵抗力降低幅度提升30%",
+    "desc": "演习战斗损失的抵抗力提升30%",
     "scoreRate": 0,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -2826,7 +2826,7 @@
     "isShow": 0,
     "icon": "21054",
     "titile": "虚弱体质Ⅳ",
-    "desc": "抵抗力降低幅度提升40%",
+    "desc": "演习战斗损失的抵抗力提升40%",
     "scoreRate": 0,
     "extendScoreFix": 0,
     "lockDesc": ""
@@ -2906,7 +2906,7 @@
     "isShow": 0,
     "icon": "21055",
     "titile": "虚弱体质Ⅴ",
-    "desc": "抵抗力降低幅度提升50%",
+    "desc": "演习战斗损失的抵抗力提升50%",
     "scoreRate": 0,
     "extendScoreFix": 0,
     "lockDesc": ""

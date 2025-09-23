@@ -148,6 +148,10 @@ end
 function var_0_0.setTab(arg_9_0, arg_9_1)
 	arg_9_0._curCategory = arg_9_1
 
+	if arg_9_0:checkIsNamePlate() then
+		arg_9_0.isGroup = false
+	end
+
 	arg_9_0:refreshTabData()
 end
 

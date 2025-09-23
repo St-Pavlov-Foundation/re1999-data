@@ -179,7 +179,7 @@ function var_0_0._refreshNamePlate(arg_14_0, arg_14_1)
 
 	var_14_2._bgLoader = PrefabInstantiate.Create(var_14_2.gobg)
 
-	var_14_2._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(var_14_3), var_14_6, arg_14_0)
+	var_14_2._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(var_14_3, true), var_14_6, arg_14_0)
 	var_14_2.simagetitle:LoadImage(ResUrl.getAchievementLangIcon(var_14_4))
 
 	local var_14_7 = var_14_0.listenerType

@@ -226,7 +226,7 @@ function var_0_0.buildDesc(arg_19_0, arg_19_1, arg_19_2)
 	local var_19_0
 
 	if arg_19_2 then
-		var_19_0 = string.format("【<u><link=%s>%s</link></u>】", arg_19_2, "%1")
+		var_19_0 = string.format("【<u><link=%s>%%1</link></u>】", arg_19_2)
 	else
 		var_19_0 = "【<u><link=%1>%1</link></u>】"
 	end
@@ -287,18 +287,22 @@ function var_0_0.clickHyperLinkSkill(arg_23_0, arg_23_1)
 	ViewMgr.instance:openView(ViewName.Act191BuffTipView, var_23_0)
 end
 
-function var_0_0.clickHyperLinkRole(arg_24_0)
-	local var_24_0 = string.splitToNumber(arg_24_0, "#")[1]
+function var_0_0.clickHyperLinkRole(arg_24_0, arg_24_1)
+	if string.find(arg_24_0, "#") then
+		local var_24_0 = string.splitToNumber(arg_24_0, "#")[1]
 
-	if var_24_0 then
-		local var_24_1 = {
-			preview = true,
-			heroList = {
-				tonumber(var_24_0)
+		if var_24_0 then
+			local var_24_1 = {
+				preview = true,
+				heroList = {
+					tonumber(var_24_0)
+				}
 			}
-		}
 
-		Activity191Controller.instance:openHeroTipView(var_24_1)
+			Activity191Controller.instance:openHeroTipView(var_24_1)
+		end
+	else
+		SkillHelper.defaultClick(arg_24_0, arg_24_1)
 	end
 end
 

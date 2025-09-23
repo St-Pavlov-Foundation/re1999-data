@@ -64,6 +64,8 @@ end
 
 function var_0_0.onStart(arg_7_0)
 	arg_7_0.go:GetComponent(typeof(SLFramework.LuaMonobehavier)).enabled = false
+
+	arg_7_0:_checkIsTop(arg_7_0._unitMo.pos)
 end
 
 function var_0_0._onResLoadEnd(arg_8_0)

@@ -380,9 +380,9 @@
   {
     "id": 3049,
     "teamRec": "3003#3004#3005#3006|3003#3004#3009#3010",
-    "teamDisplay": 1,
+    "teamDisplay": 0,
     "equipRec": "1515|1420|1421",
-    "equipDisplay": 1,
+    "equipDisplay": 0,
     "lvRec": "2#40|3#50|4#60",
     "resonanceRec": "5|10|13|15"
   },

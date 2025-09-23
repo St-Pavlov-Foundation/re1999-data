@@ -64,7 +64,7 @@ end
 
 function var_0_0.haveBoss(arg_7_0)
 	if arg_7_0._weekInfo then
-		return arg_7_0._weekInfo:getMonsterFight():canShowEntity()
+		return arg_7_0._weekInfo:getMonsterFight():isFighting()
 	else
 		return true
 	end

@@ -46,7 +46,7 @@ function var_0_0.refreshBagItem(arg_6_0, arg_6_1)
 	arg_6_0.survivalBagItem:setReputationShopStyle({
 		isShowFreeReward = false,
 		isCanGet = false,
-		isReceive = arg_6_0.survivalShopItemMo.count == 0,
+		isReceive = arg_6_0.survivalShopItemMo.count <= 0,
 		price = arg_6_0.survivalShopItemMo:getBuyPrice()
 	})
 

@@ -110,7 +110,7 @@ function var_0_0.onLockAnimEnd(arg_8_0)
 end
 
 function var_0_0.onClickShopItem(arg_9_0, arg_9_1)
-	local var_9_0 = arg_9_1.survivalShopItemMo.count == 0
+	local var_9_0 = arg_9_1.survivalShopItemMo.count <= 0
 
 	arg_9_0.survivalReputationShopView:showInfoPanel(arg_9_1.survivalBagItem, arg_9_1.survivalShopItemMo, arg_9_0.shopId, arg_9_0.survivalShopMo.shopType, arg_9_0.isLock or var_9_0)
 end

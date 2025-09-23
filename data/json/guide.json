@@ -7557,17 +7557,6 @@
     "restart": 0
   },
   {
-    "id": 31607,
-    "desc": "雨前漫游指南怪物入侵指引",
-    "isOnline": 1,
-    "trigger": "OpenView#SurvivalView",
-    "invalid": "ActivityEnd#13106",
-    "interruptFinish": 1,
-    "priority": 0,
-    "parallel": 1,
-    "restart": 0
-  },
-  {
     "id": 31608,
     "desc": "特殊地形指引1",
     "isOnline": 1,

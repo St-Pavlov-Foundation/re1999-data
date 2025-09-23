@@ -44,12 +44,13 @@ function var_0_0._refreshSkillUI(arg_4_0)
 		for iter_4_0, iter_4_1 in pairs(var_4_0) do
 			local var_4_1 = lua_skill.configDict[iter_4_1]
 
-			if not var_4_1 then
+			if var_4_1 then
+				arg_4_0._skillitems[iter_4_0].icon:LoadImage(ResUrl.getSkillIcon(var_4_1.icon))
+				arg_4_0._skillitems[iter_4_0].tag:LoadImage(ResUrl.getAttributeIcon("attribute_" .. var_4_1.showTag))
+			else
 				logError(string.format("heroID : %s, skillId not found : %s", arg_4_0._roleId, iter_4_1))
 			end
 
-			arg_4_0._skillitems[iter_4_0].icon:LoadImage(ResUrl.getSkillIcon(var_4_1.icon))
-			arg_4_0._skillitems[iter_4_0].tag:LoadImage(ResUrl.getAttributeIcon("attribute_" .. var_4_1.showTag))
 			gohelper.setActive(arg_4_0._skillitems[iter_4_0].tag.gameObject, iter_4_0 ~= 3)
 		end
 	end

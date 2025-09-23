@@ -957,7 +957,7 @@
     "tagType": 3102,
     "effect": 212014,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313002,
@@ -967,7 +967,7 @@
     "tagType": 3102,
     "effect": 212015,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313003,
@@ -977,7 +977,7 @@
     "tagType": 3102,
     "effect": 212016,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313004,
@@ -987,7 +987,7 @@
     "tagType": 3104,
     "effect": 212017,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313005,
@@ -997,7 +997,7 @@
     "tagType": 3104,
     "effect": 212018,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313006,
@@ -1007,7 +1007,7 @@
     "tagType": 3104,
     "effect": 212019,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313007,
@@ -1017,7 +1017,7 @@
     "tagType": 3102,
     "effect": 212020,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313008,
@@ -1027,7 +1027,7 @@
     "tagType": 3102,
     "effect": 212021,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313009,
@@ -1037,7 +1037,7 @@
     "tagType": 3104,
     "effect": 212022,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313010,
@@ -1047,7 +1047,7 @@
     "tagType": 3102,
     "effect": 212023,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313011,
@@ -1057,7 +1057,7 @@
     "tagType": 3104,
     "effect": 212024,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313012,
@@ -1067,7 +1067,7 @@
     "tagType": 3104,
     "effect": 212025,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313013,
@@ -1077,7 +1077,7 @@
     "tagType": 3104,
     "effect": 212026,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313014,
@@ -1087,7 +1087,7 @@
     "tagType": 3104,
     "effect": 212027,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313015,
@@ -1097,7 +1097,7 @@
     "tagType": 3102,
     "effect": 212028,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313016,
@@ -1107,7 +1107,7 @@
     "tagType": 3104,
     "effect": 212029,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313017,
@@ -1117,7 +1117,7 @@
     "tagType": 3104,
     "effect": 212030,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313018,
@@ -1127,7 +1127,7 @@
     "tagType": 3104,
     "effect": 212031,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313019,
@@ -1137,17 +1137,17 @@
     "tagType": 3104,
     "effect": 212032,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313020,
     "name": "先知之眼",
-    "desc": "参与演习时，在剩余18/12/6小时时，都会点亮2个视野外事件(商人/搜刮点/怪物/NPC)",
+    "desc": "参与演习时，在剩余18/12/6小时时，会点亮2个视野外的事件",
     "beHidden": "",
     "tagType": 3104,
     "effect": 212033,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313021,
@@ -1157,7 +1157,7 @@
     "tagType": 3104,
     "effect": 212034,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313022,
@@ -1167,17 +1167,17 @@
     "tagType": 3102,
     "effect": 212035,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313023,
     "name": "就地取材",
-    "desc": "参与演习时，每次移动1格极低概率获得[小鬼的袋子]",
+    "desc": "参与演习时，每次移动1格有极低概率获得1个[小鬼的袋子]",
     "beHidden": "",
     "tagType": 3104,
     "effect": 212036,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313024,
@@ -1187,7 +1187,7 @@
     "tagType": 3102,
     "effect": 212037,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313025,
@@ -1197,7 +1197,7 @@
     "tagType": 3102,
     "effect": 212038,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313026,
@@ -1207,7 +1207,7 @@
     "tagType": 3104,
     "effect": 212039,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313027,
@@ -1217,7 +1217,7 @@
     "tagType": 3104,
     "effect": 212040,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313028,
@@ -1227,7 +1227,7 @@
     "tagType": 3104,
     "effect": 212041,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313029,
@@ -1237,7 +1237,7 @@
     "tagType": 3104,
     "effect": 212042,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   },
   {
     "id": 313030,
@@ -1247,6 +1247,6 @@
     "tagType": 3104,
     "effect": 212043,
     "color": 6,
-    "suggestMap": ""
+    "suggestMap": "1#2#3#4#5#6"
   }
 ]

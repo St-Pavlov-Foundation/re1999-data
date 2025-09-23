@@ -8,6 +8,8 @@ function var_0_0.onInitView(arg_1_0)
 
 	arg_1_0:_initLevelItems()
 
+	arg_1_0._prefab = {}
+
 	if arg_1_0._editableInitView then
 		arg_1_0:_editableInitView()
 	end
@@ -117,11 +119,16 @@ function var_0_0.refreshUI(arg_9_0)
 				if var_9_8 then
 					local function var_9_13()
 						local var_10_0 = var_9_6._bgLoader:getInstGO()
+
+						arg_9_0._prefab[iter_9_0] = var_10_0
 					end
 
-					var_9_6._bgLoader = PrefabInstantiate.Create(var_9_6.gounlockbg)
+					if not arg_9_0._prefab[iter_9_0] then
+						var_9_6._bgLoader = PrefabInstantiate.Create(var_9_6.gounlockbg)
 
-					var_9_6._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(var_9_9), var_9_13, arg_9_0)
+						var_9_6._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(var_9_9), var_9_13, arg_9_0)
+					end
+
 					var_9_6.simageunlocktitle:LoadImage(ResUrl.getAchievementLangIcon(var_9_10))
 				else
 					var_9_6.simagelockbg:LoadImage(ResUrl.getAchievementIcon(var_9_11))

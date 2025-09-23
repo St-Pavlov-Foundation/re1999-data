@@ -4404,6 +4404,7 @@ var_0_0.StoreView = {
 		"ui/viewres/store/packagestoregoodsitem.prefab",
 		"ui/viewres/store/summonstoregoodsitem.prefab",
 		"ui/viewres/store/decoratestoreitem.prefab",
+		misihaiitem = "ui/viewres/player/playercard/playercardachieve_misihai.prefab",
 		achieveitem = "ui/viewres/achievement/achievementmainicon.prefab"
 	},
 	customAnimBg = {

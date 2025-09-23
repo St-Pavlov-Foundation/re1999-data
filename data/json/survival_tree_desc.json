@@ -1971,7 +1971,7 @@
     "id": 207010700,
     "nodeId": 116,
     "desc": "彰显武力",
-    "icon": 15,
+    "icon": 6,
     "condition": "",
     "result": "JumpEvent|4#207010701"
   },
@@ -3531,7 +3531,7 @@
     "id": 207020201,
     "nodeId": 188,
     "desc": "获得物资",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "Drop|320702022"
   },

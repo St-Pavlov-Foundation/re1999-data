@@ -63,6 +63,10 @@ function var_0_0.playEnd(arg_7_0)
 		return
 	end
 
+	ViewMgr.instance:closeView(ViewName.FightQuitTipView)
+	ViewMgr.instance:closeView(ViewName.MessageBoxView)
+	FightGameMgr.restartMgr:killComponent(FightFlowComponent)
+	FightDataMgr.instance.stateMgr:setPlayingEnd(true)
 	arg_7_0:_PlayEnd()
 end
 

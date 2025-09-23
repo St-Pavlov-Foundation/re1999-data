@@ -257,7 +257,11 @@ function var_0_0._frameCallback(arg_13_0, arg_13_1)
 	end
 
 	for iter_13_0, iter_13_1 in ipairs(arg_13_0._frontRendererList) do
-		iter_13_1.material:SetFloat(ShaderPropertyId.FrontSceneAlpha, arg_13_1)
+		local var_13_0 = iter_13_1.material
+
+		if not gohelper.isNil(var_13_0) then
+			var_13_0:SetFloat(ShaderPropertyId.FrontSceneAlpha, arg_13_1)
+		end
 	end
 end
 

@@ -484,7 +484,7 @@ function var_0_0.refreshAct191Info(arg_16_0)
 
 				if var_16_2 then
 					UISpriteSetMgr.instance:setCommonSprite(arg_16_0._career, "lssx_" .. tostring(var_16_2.career))
-					arg_16_0._heroIcon:LoadImage(ResUrl.getHeadIconSmall(var_16_2.headIcon))
+					arg_16_0._heroIcon:LoadImage(ResUrl.monsterHeadIcon(var_16_2.headIcon))
 
 					arg_16_0._txtName.text = var_16_2.name
 				end

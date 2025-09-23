@@ -123,6 +123,14 @@ function var_0_0.getLocalVoiceTypeList(arg_9_0)
 	return var_9_0
 end
 
+function var_0_0.clearNeedDownloadSize(arg_10_0, arg_10_1)
+	local var_10_0 = arg_10_0:getPackInfo(arg_10_1)
+
+	if var_10_0 then
+		var_10_0:setLocalSize(0)
+	end
+end
+
 var_0_0.instance = var_0_0.New()
 
 return var_0_0

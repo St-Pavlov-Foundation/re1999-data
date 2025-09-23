@@ -435,7 +435,7 @@
     "versions": "",
     "seasons": "",
     "name": "多元协作",
-    "desc": "每携带1个不同阵营的漫游助理参与探索；搜刮耗时降低5%",
+    "desc": "每携带1个不同阵营的漫游助理参与探索，搜刮耗时降低5%",
     "icon": "survivaldecree_icon1",
     "getTalents": "211002"
   },
@@ -455,7 +455,7 @@
     "versions": "",
     "seasons": "",
     "name": "商业头脑",
-    "desc": "每携带1个不同阵营的漫游助理参与探索；搜刮额外获得10%金币",
+    "desc": "每携带1个不同阵营的漫游助理参与探索，搜刮额外获得10%研究资料",
     "icon": "survivaldecree_icon1",
     "getTalents": "211004"
   },
@@ -495,7 +495,7 @@
     "versions": "",
     "seasons": "",
     "name": "离别赠礼",
-    "desc": "每携带1个不同阵营的漫游助理参与探索；在翻译站附近3格生成1个搜刮点",
+    "desc": "每携带1个不同阵营的漫游助理参与探索，在翻译站附近3格生成1个搜刮点",
     "icon": "survivaldecree_icon1",
     "getTalents": "211008"
   },
@@ -625,7 +625,7 @@
     "versions": "",
     "seasons": "",
     "name": "人脉折扣",
-    "desc": "每携带1个不同阵营的NPC参与探索；探索折扣+5%",
+    "desc": "每携带1个不同阵营的漫游助理参与探索；探索折扣+5%",
     "icon": "survivaldecree_icon4",
     "getTalents": "211021"
   },
@@ -645,7 +645,7 @@
     "versions": "",
     "seasons": "",
     "name": "游商云集",
-    "desc": "每携带1个不同阵营的NPC参与探索；地图额外出现1个商人",
+    "desc": "每携带1个不同阵营的漫游助理参与探索，地图额外出现1个商人",
     "icon": "survivaldecree_icon4",
     "getTalents": "211023"
   },
@@ -685,7 +685,7 @@
     "versions": "",
     "seasons": "",
     "name": "声望卓著",
-    "desc": "每携带1个不同阵营的NPC参与探索；探索结束时获得声望+5%",
+    "desc": "每携带1个不同阵营的漫游助理参与探索；探索结束时获得声望+5%",
     "icon": "survivaldecree_icon4",
     "getTalents": "211027"
   },
@@ -755,7 +755,7 @@
     "versions": "",
     "seasons": "",
     "name": "拉式援助",
-    "desc": "每携带1个拉普拉斯漫游助理参与探索；快捷道具复制概率+3%",
+    "desc": "每携带1个拉普拉斯漫游助理参与探索，快捷道具复制概率+3%",
     "icon": "survivaldecree_icon3",
     "getTalents": "211034"
   },

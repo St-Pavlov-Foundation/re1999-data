@@ -8,6 +8,7 @@ function var_0_0.onConstructor(arg_1_0)
 	arg_1_0.isReplay = false
 	arg_1_0.isFinish = false
 	arg_1_0.buffForceAuto = false
+	arg_1_0.playingEnd = false
 end
 
 function var_0_0.initReplayState(arg_2_0)
@@ -95,6 +96,14 @@ function var_0_0.getIsAuto(arg_6_0)
 	end
 
 	return arg_6_0.isAuto
+end
+
+function var_0_0.setPlayingEnd(arg_7_0, arg_7_1)
+	arg_7_0.playingEnd = arg_7_1
+end
+
+function var_0_0.isPlayingEnd(arg_8_0)
+	return arg_8_0.playingEnd
 end
 
 return var_0_0

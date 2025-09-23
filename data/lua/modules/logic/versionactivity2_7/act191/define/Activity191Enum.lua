@@ -141,7 +141,8 @@ var_0_0.CharacterType = {
 var_0_0.CollectionColor = {
 	"587FA1",
 	"8D6993",
-	"B8945F"
+	"B8945F",
+	"BD5900"
 }
 var_0_0.CharacterMaxStar = 6
 var_0_0.SortRule = {
@@ -150,7 +151,7 @@ var_0_0.SortRule = {
 }
 var_0_0.HyperLinkPattern = {
 	EnhanceDestiny = "「(.-)」",
-	Hero = "<(.-)>",
+	Hero = "《(.-)》",
 	SkillDesc = "﹝(.-)﹞",
 	EnhanceItem = "『(.-)』"
 }

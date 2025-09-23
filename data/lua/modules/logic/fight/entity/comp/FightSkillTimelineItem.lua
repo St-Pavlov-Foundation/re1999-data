@@ -143,10 +143,6 @@ function var_0_0.skipSkill(arg_8_0)
 end
 
 function var_0_0._onTimelineEndCallback(arg_9_0)
-	if Time.time - arg_9_0._startTime < arg_9_0.binder:GetDuration() * 0.5 then
-		return
-	end
-
 	if arg_9_0.finishWork then
 		arg_9_0.finishWork:registFinishCallback(arg_9_0.onTimelineEnd, arg_9_0)
 		arg_9_0.finishWork:start()
