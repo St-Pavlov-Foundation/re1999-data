@@ -275,6 +275,15 @@ function var_0_0.refreshHero(arg_22_0)
 	local var_22_0 = arg_22_0.gameBaseMO:getCurBaseId()
 
 	arg_22_0:moveToBase(var_22_0)
+
+	local var_22_1 = NecrologistStoryV3A1Config.instance:getFugaorenBaseCo(var_22_0)
+
+	if var_22_1.unlockAreaId > 0 and arg_22_0.gameBaseMO:isAreaUnlock(var_22_1.unlockAreaId) then
+		arg_22_0._waitMoveAreaId = var_22_1.unlockAreaId
+
+		TaskDispatcher.cancelTask(arg_22_0._moveToArea, arg_22_0)
+		TaskDispatcher.runDelay(arg_22_0._moveToArea, arg_22_0, 1)
+	end
 end
 
 function var_0_0.moveToBase(arg_23_0, arg_23_1, arg_23_2, arg_23_3, arg_23_4)
