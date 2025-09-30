@@ -310,5 +310,13 @@
     "name": "钻石游戏",
     "nameEn": "The Diamond Con",
     "year": ""
+  },
+  {
+    "id": 1026,
+    "type": 2,
+    "order": 0,
+    "name": "墓碑博物馆",
+    "nameEn": "The Tombstone Museum",
+    "year": ""
   }
 ]

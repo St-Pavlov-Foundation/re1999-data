@@ -114,7 +114,7 @@ function var_0_0.setForecastChess(arg_11_0, arg_11_1)
 	local var_11_3 = var_11_2 and var_11_2.resPic or ""
 
 	if not string.nilorempty(var_11_3) then
-		SurvivalUnitIconHelper.instance:setNpcIcon(arg_11_0._simageRoleSkill, var_11_3, false)
+		SurvivalUnitIconHelper.instance:setNpcIcon(arg_11_0._simageRoleSkill, var_11_3)
 		gohelper.setActive(arg_11_0._goEnemySkill, true)
 	end
 

@@ -527,7 +527,7 @@ end
 function var_0_0.playAnim(arg_42_0, arg_42_1)
 	arg_42_0._curAnimName = arg_42_1
 
-	if arg_42_0._anim and arg_42_0._anim.isActiveAndEnabled then
+	if arg_42_0._anim and not tolua.isnull(arg_42_0._anim) and arg_42_0._anim.isActiveAndEnabled then
 		arg_42_0._anim:Play(arg_42_1, 0, 0)
 	end
 end

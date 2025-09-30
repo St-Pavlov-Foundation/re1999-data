@@ -3,6 +3,10 @@
 local var_0_0 = class("FightWorkPlayStart", FightWorkItem)
 
 function var_0_0.onStart(arg_1_0)
+	if FightDataHelper.stateMgr.isReplay then
+		FightReplayController.instance._replayErrorFix:startReplayErrorFix()
+	end
+
 	arg_1_0.roundData = FightDataHelper.roundMgr:getRoundData()
 
 	local var_1_0 = arg_1_0:com_registFlowSequence()

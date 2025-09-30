@@ -10,7 +10,6 @@ function var_0_0.ctor(arg_1_0)
 end
 
 function var_0_0.addConstEvents(arg_2_0)
-	FightController.instance:registerCallback(FightEvent.StartReplay, arg_2_0._startReplay, arg_2_0)
 	FightController.instance:registerCallback(FightEvent.PushEndFight, arg_2_0._stopReplay, arg_2_0)
 	ConnectAliveMgr.instance:registerCallback(ConnectEvent.OnLostConnect, arg_2_0._onLostConnect, arg_2_0)
 	ConnectAliveMgr.instance:registerCallback(ConnectEvent.OnReconnectSucc, arg_2_0._onReconnectSucc, arg_2_0)
@@ -21,7 +20,7 @@ function var_0_0.reInit(arg_3_0)
 	arg_3_0:_stopReplay()
 end
 
-function var_0_0._startReplay(arg_4_0)
+function var_0_0.startReplayErrorFix(arg_4_0)
 	arg_4_0._lostConnect = false
 	arg_4_0._hasStartErrorCheck = true
 	arg_4_0._startTime = Time.time

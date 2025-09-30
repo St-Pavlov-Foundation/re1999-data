@@ -214,7 +214,7 @@ function var_0_0.isDisasterRecommendItem(arg_14_0, arg_14_1)
 		local var_14_3 = lua_survival_disaster.configDict[var_14_2]
 		local var_14_4 = SurvivalShelterModel.instance:getWeekInfo():getSurvivalMapInfoMo(arg_14_1).disasterCo
 
-		if var_14_3 and (var_14_3.recommend == arg_14_0.co.id or var_14_4 and var_14_4.recommend == arg_14_0.co.id) then
+		if var_14_3 and var_14_3.recommend == arg_14_0.co.id or var_14_4 and var_14_4.recommend == arg_14_0.co.id then
 			return true
 		end
 	else

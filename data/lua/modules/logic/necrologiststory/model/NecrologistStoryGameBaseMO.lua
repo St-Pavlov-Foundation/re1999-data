@@ -11,6 +11,7 @@ end
 
 function var_0_0.init(arg_2_0, arg_2_1)
 	arg_2_0.id = arg_2_1
+	arg_2_0.plotInfoDict = {}
 
 	arg_2_0:onInit()
 end
