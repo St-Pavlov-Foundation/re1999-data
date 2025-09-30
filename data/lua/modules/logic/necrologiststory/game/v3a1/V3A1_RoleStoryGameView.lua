@@ -171,6 +171,14 @@ function var_0_0._onCloseViewFinish(arg_13_0, arg_13_1)
 end
 
 function var_0_0._onMoveToBase(arg_14_0, arg_14_1)
+	local var_14_0 = arg_14_0.gameBaseMO:isBaseEntered(arg_14_1)
+
+	if not var_14_0 then
+		arg_14_0.gameBaseMO:setBaseEntered(arg_14_1)
+	end
+
+	arg_14_0.tempBaseHasEntered = var_14_0
+
 	arg_14_0:moveToBase(arg_14_1, true, arg_14_0.onMoveBaseEnd, arg_14_0)
 	arg_14_0:refreshBaseItemList()
 	arg_14_0:refreshTitle()
@@ -183,11 +191,7 @@ function var_0_0.onMoveBaseEnd(arg_15_0)
 
 	for iter_15_0, iter_15_1 in pairs(arg_15_0.itemList) do
 		if iter_15_1.baseConfig and iter_15_1.baseConfig.id == var_15_0 then
-			local var_15_1 = arg_15_0.gameBaseMO:isBaseEntered(var_15_0)
-
-			if not var_15_1 then
-				arg_15_0.gameBaseMO:setBaseEntered(var_15_0)
-			end
+			local var_15_1 = arg_15_0.tempBaseHasEntered
 
 			if iter_15_1.baseConfig.storyId > 0 and not var_15_1 then
 				TipDialogController.instance:openTipDialogView(iter_15_1.baseConfig.storyId, iter_15_1.onClickBtn, iter_15_1)
@@ -249,196 +253,182 @@ function var_0_0.onOpen(arg_19_0)
 	NecrologistStoryStatController.instance:startGameStat()
 	arg_19_0:refreshData()
 	arg_19_0:refreshView()
+	arg_19_0:checkData()
 end
 
-function var_0_0.refreshData(arg_20_0)
-	local var_20_0 = arg_20_0.viewParam.roleStoryId
+function var_0_0.checkData(arg_20_0)
+	if not arg_20_0.gameBaseMO then
+		return
+	end
 
-	arg_20_0.gameBaseMO = NecrologistStoryModel.instance:getGameMO(var_20_0)
+	if arg_20_0.gameBaseMO:isAreaUnlock(4) and not arg_20_0.gameBaseMO:isBaseEntered(401) then
+		arg_20_0.gameBaseMO:setBaseEntered(401)
+	end
 
-	arg_20_0.gameBaseMO:setIsExitGame(false)
-	RedDotController.instance:addRedDot(arg_20_0.goRewardRed, RedDotEnum.DotNode.NecrologistStoryTask, var_20_0)
-end
-
-function var_0_0.refreshView(arg_21_0)
-	arg_21_0:refreshBaseItemList()
-	arg_21_0:refreshHero()
-	arg_21_0:refreshFog()
-	arg_21_0:refreshTitle()
-	arg_21_0:refreshTask()
-	arg_21_0:refreshButton()
-	arg_21_0:refreshRewardTime()
-	arg_21_0:refreshFinish()
-end
-
-function var_0_0.refreshHero(arg_22_0)
-	local var_22_0 = arg_22_0.gameBaseMO:getCurBaseId()
-
-	arg_22_0:moveToBase(var_22_0)
-
-	local var_22_1 = NecrologistStoryV3A1Config.instance:getFugaorenBaseCo(var_22_0)
-
-	if var_22_1.unlockAreaId > 0 and arg_22_0.gameBaseMO:isAreaUnlock(var_22_1.unlockAreaId) then
-		arg_22_0._waitMoveAreaId = var_22_1.unlockAreaId
-
-		TaskDispatcher.cancelTask(arg_22_0._moveToArea, arg_22_0)
-		TaskDispatcher.runDelay(arg_22_0._moveToArea, arg_22_0, 1)
+	if arg_20_0.gameBaseMO:isAreaUnlock(3) and not arg_20_0.gameBaseMO:isBaseEntered(301) then
+		arg_20_0.gameBaseMO:setBaseEntered(301)
 	end
 end
 
-function var_0_0.moveToBase(arg_23_0, arg_23_1, arg_23_2, arg_23_3, arg_23_4)
-	local var_23_0 = gohelper.findChild(arg_23_0.viewGO, string.format("Map/Content/go_item%s", arg_23_1))
-	local var_23_1, var_23_2 = recthelper.getAnchor(var_23_0.transform)
+function var_0_0.refreshData(arg_21_0)
+	local var_21_0 = arg_21_0.viewParam.roleStoryId
 
-	arg_23_0.heroComp:setHeroPos(var_23_1, var_23_2, arg_23_2, arg_23_3, arg_23_4)
+	arg_21_0.gameBaseMO = NecrologistStoryModel.instance:getGameMO(var_21_0)
+
+	arg_21_0.gameBaseMO:setIsExitGame(false)
+	RedDotController.instance:addRedDot(arg_21_0.goRewardRed, RedDotEnum.DotNode.NecrologistStoryTask, var_21_0)
 end
 
-function var_0_0.refreshBaseItemList(arg_24_0)
-	local var_24_0 = NecrologistStoryV3A1Config.instance:getBaseList()
+function var_0_0.refreshView(arg_22_0)
+	arg_22_0:refreshBaseItemList()
+	arg_22_0:refreshHero()
+	arg_22_0:refreshFog()
+	arg_22_0:refreshTitle()
+	arg_22_0:refreshTask()
+	arg_22_0:refreshButton()
+	arg_22_0:refreshRewardTime()
+	arg_22_0:refreshFinish()
+end
 
-	for iter_24_0, iter_24_1 in ipairs(var_24_0) do
-		arg_24_0:getOrCreateItem(iter_24_1.id):refreshView(iter_24_1, arg_24_0.gameBaseMO)
+function var_0_0.refreshHero(arg_23_0)
+	local var_23_0 = arg_23_0.gameBaseMO:getCurBaseId()
+
+	arg_23_0:moveToBase(var_23_0)
+
+	local var_23_1 = NecrologistStoryV3A1Config.instance:getFugaorenBaseCo(var_23_0)
+
+	if var_23_1.unlockAreaId > 0 and arg_23_0.gameBaseMO:isAreaUnlock(var_23_1.unlockAreaId) then
+		arg_23_0._waitMoveAreaId = var_23_1.unlockAreaId
+
+		TaskDispatcher.cancelTask(arg_23_0._moveToArea, arg_23_0)
+		TaskDispatcher.runDelay(arg_23_0._moveToArea, arg_23_0, 1)
+	end
+end
+
+function var_0_0.moveToBase(arg_24_0, arg_24_1, arg_24_2, arg_24_3, arg_24_4)
+	local var_24_0 = gohelper.findChild(arg_24_0.viewGO, string.format("Map/Content/go_item%s", arg_24_1))
+	local var_24_1, var_24_2 = recthelper.getAnchor(var_24_0.transform)
+
+	arg_24_0.heroComp:setHeroPos(var_24_1, var_24_2, arg_24_2, arg_24_3, arg_24_4)
+end
+
+function var_0_0.refreshBaseItemList(arg_25_0)
+	local var_25_0 = NecrologistStoryV3A1Config.instance:getBaseList()
+
+	for iter_25_0, iter_25_1 in ipairs(var_25_0) do
+		arg_25_0:getOrCreateItem(iter_25_1.id):refreshView(iter_25_1, arg_25_0.gameBaseMO)
 	end
 
-	arg_24_0:refreshLine()
+	arg_25_0:refreshLine()
 end
 
-function var_0_0.getOrCreateItem(arg_25_0, arg_25_1)
-	local var_25_0 = arg_25_0.itemList[arg_25_1]
+function var_0_0.getOrCreateItem(arg_26_0, arg_26_1)
+	local var_26_0 = arg_26_0.itemList[arg_26_1]
 
-	if not var_25_0 then
-		local var_25_1 = gohelper.findChild(arg_25_0.viewGO, string.format("Map/Content/go_item%s", arg_25_1))
-		local var_25_2 = gohelper.clone(arg_25_0.itemGO, var_25_1, "go_mapitem")
+	if not var_26_0 then
+		local var_26_1 = gohelper.findChild(arg_26_0.viewGO, string.format("Map/Content/go_item%s", arg_26_1))
+		local var_26_2 = gohelper.clone(arg_26_0.itemGO, var_26_1, "go_mapitem")
 
-		var_25_0 = MonoHelper.addNoUpdateLuaComOnceToGo(var_25_2, V3A1_RoleStoryGameBaseItem)
-		arg_25_0.itemList[arg_25_1] = var_25_0
+		var_26_0 = MonoHelper.addNoUpdateLuaComOnceToGo(var_26_2, V3A1_RoleStoryGameBaseItem)
+		arg_26_0.itemList[arg_26_1] = var_26_0
 	end
 
-	return var_25_0
+	return var_26_0
 end
 
-function var_0_0.refreshLine(arg_26_0)
-	local var_26_0 = false
+function var_0_0.refreshLine(arg_27_0)
+	local var_27_0 = false
 
-	for iter_26_0, iter_26_1 in ipairs(arg_26_0.lineList) do
-		local var_26_1 = arg_26_0.itemList[iter_26_1.baseId1]
-		local var_26_2 = arg_26_0.itemList[iter_26_1.baseId2]
-		local var_26_3 = var_26_1:getIsVisible() and var_26_2:getIsVisible()
+	for iter_27_0, iter_27_1 in ipairs(arg_27_0.lineList) do
+		local var_27_1 = arg_27_0.itemList[iter_27_1.baseId1]
+		local var_27_2 = arg_27_0.itemList[iter_27_1.baseId2]
+		local var_27_3 = var_27_1:getIsVisible() and var_27_2:getIsVisible()
 
-		gohelper.setActive(iter_26_1.goLine, var_26_3)
+		gohelper.setActive(iter_27_1.goLine, var_27_3)
 
-		if iter_26_1.visible ~= nil and iter_26_1.visible ~= var_26_3 then
-			var_26_0 = true
+		if iter_27_1.visible ~= nil and iter_27_1.visible ~= var_27_3 then
+			var_27_0 = true
 		end
 
-		iter_26_1.visible = var_26_3
+		iter_27_1.visible = var_27_3
 	end
 
-	if var_26_0 then
+	if var_27_0 then
 		AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_artificial_ui_entrance)
 	end
 end
 
-function var_0_0.refreshFog(arg_27_0, arg_27_1)
-	for iter_27_0, iter_27_1 in ipairs(arg_27_0.fogList) do
-		if arg_27_1 == iter_27_0 then
-			iter_27_1.animFog:Play("close", 0, 0)
-		elseif arg_27_0.gameBaseMO:isAreaUnlock(iter_27_0) then
-			iter_27_1.animFog:Play("none", 0, 0)
+function var_0_0.refreshFog(arg_28_0, arg_28_1)
+	for iter_28_0, iter_28_1 in ipairs(arg_28_0.fogList) do
+		if arg_28_1 == iter_28_0 then
+			iter_28_1.animFog:Play("close", 0, 0)
+		elseif arg_28_0.gameBaseMO:isAreaUnlock(iter_28_0) then
+			iter_28_1.animFog:Play("none", 0, 0)
 		else
-			iter_27_1.animFog:Play("idle", 0, 0)
+			iter_28_1.animFog:Play("idle", 0, 0)
 		end
 	end
 end
 
-function var_0_0.refreshTitle(arg_28_0)
-	local var_28_0 = arg_28_0.gameBaseMO:getCurBaseId()
-	local var_28_1 = arg_28_0.gameBaseMO:getCurTime()
-
-	if arg_28_0._lastTitleBaseId and arg_28_0._lastTitleBaseId ~= var_28_0 then
-		arg_28_0.animTitle:Play("switch", 0, 0)
-		TaskDispatcher.cancelTask(arg_28_0._refreshTitle, arg_28_0)
-		TaskDispatcher.runDelay(arg_28_0._refreshTitle, arg_28_0, 0.15)
-	else
-		arg_28_0:_refreshTitle()
-	end
-
-	arg_28_0._lastTitleBaseId = var_28_0
-
-	if arg_28_0._lastTime and arg_28_0._lastTime ~= var_28_1 then
-		local var_28_2 = var_28_1 - arg_28_0._lastTime
-		local var_28_3 = math.floor(var_28_2)
-		local var_28_4 = math.floor((var_28_2 - var_28_3) * 60)
-
-		if var_28_3 > 0 then
-			if var_28_4 > 0 then
-				arg_28_0.txtNum.text = string.format("+%sh%sm", var_28_3, var_28_4)
-			else
-				arg_28_0.txtNum.text = string.format("+%sh", var_28_3)
-			end
-		else
-			arg_28_0.txtNum.text = string.format("+%sm", var_28_4)
-		end
-
-		gohelper.setActive(arg_28_0.goNum, false)
-		gohelper.setActive(arg_28_0.goNum, true)
-	end
-
-	arg_28_0._lastTime = var_28_1
-end
-
-function var_0_0._refreshTitle(arg_29_0)
+function var_0_0.refreshTitle(arg_29_0)
 	local var_29_0 = arg_29_0.gameBaseMO:getCurBaseId()
 	local var_29_1 = arg_29_0.gameBaseMO:getCurTime()
-	local var_29_2 = NecrologistStoryV3A1Config.instance:getFugaorenBaseCo(var_29_0)
-	local var_29_3, var_29_4 = NecrologistStoryHelper.getTimeFormat2(var_29_1)
 
-	arg_29_0.txtTime.text = string.format("%d:%02d", var_29_3, var_29_4)
-	arg_29_0.txtPlace.text = var_29_2.name
-
-	local var_29_5 = var_29_2.weather
-
-	if var_29_5 and var_29_5 > 0 then
-		gohelper.setActive(arg_29_0.imageWeather, true)
-
-		if var_29_5 < NecrologistStoryEnum.WeatherType.Flow then
-			UISpriteSetMgr.instance:setRoleStorySprite(arg_29_0.imageWeather, string.format("rolestory_weather%s", var_29_5))
-		end
+	if arg_29_0._lastTitleBaseId and arg_29_0._lastTitleBaseId ~= var_29_0 then
+		arg_29_0.animTitle:Play("switch", 0, 0)
+		TaskDispatcher.cancelTask(arg_29_0._refreshTitle, arg_29_0)
+		TaskDispatcher.runDelay(arg_29_0._refreshTitle, arg_29_0, 0.15)
 	else
-		gohelper.setActive(arg_29_0.imageWeather, false)
-	end
-end
-
-function var_0_0.refreshTask(arg_30_0)
-	local var_30_0 = arg_30_0.gameBaseMO:getCurTargetData()
-
-	if not var_30_0 then
-		gohelper.setActive(arg_30_0.goTarget, false)
-
-		return
+		arg_29_0:_refreshTitle()
 	end
 
-	gohelper.setActive(arg_30_0.goTarget, true)
+	arg_29_0._lastTitleBaseId = var_29_0
 
-	local var_30_1 = var_30_0.config.id
+	if arg_29_0._lastTime and arg_29_0._lastTime ~= var_29_1 then
+		local var_29_2 = var_29_1 - arg_29_0._lastTime
+		local var_29_3 = math.floor(var_29_2)
+		local var_29_4 = math.floor((var_29_2 - var_29_3) * 60)
 
-	if arg_30_0._targetId and arg_30_0._targetId ~= var_30_1 then
-		if var_30_0.isEnter and not var_30_0.isFail then
-			arg_30_0.animTarget:Play("finish", 0, 0)
+		if var_29_3 > 0 then
+			if var_29_4 > 0 then
+				arg_29_0.txtNum.text = string.format("+%sh%sm", var_29_3, var_29_4)
+			else
+				arg_29_0.txtNum.text = string.format("+%sh", var_29_3)
+			end
 		else
-			arg_30_0.animTarget:Play("open", 0, 0)
+			arg_29_0.txtNum.text = string.format("+%sm", var_29_4)
 		end
 
-		TaskDispatcher.cancelTask(arg_30_0._refreshTask, arg_30_0)
-		TaskDispatcher.runDelay(arg_30_0._refreshTask, arg_30_0, 0.16)
-	else
-		arg_30_0:_refreshTask()
+		gohelper.setActive(arg_29_0.goNum, false)
+		gohelper.setActive(arg_29_0.goNum, true)
 	end
 
-	arg_30_0._targetId = var_30_1
+	arg_29_0._lastTime = var_29_1
 end
 
-function var_0_0._refreshTask(arg_31_0)
+function var_0_0._refreshTitle(arg_30_0)
+	local var_30_0 = arg_30_0.gameBaseMO:getCurBaseId()
+	local var_30_1 = arg_30_0.gameBaseMO:getCurTime()
+	local var_30_2 = NecrologistStoryV3A1Config.instance:getFugaorenBaseCo(var_30_0)
+	local var_30_3, var_30_4 = NecrologistStoryHelper.getTimeFormat2(var_30_1)
+
+	arg_30_0.txtTime.text = string.format("%d:%02d", var_30_3, var_30_4)
+	arg_30_0.txtPlace.text = var_30_2.name
+
+	local var_30_5 = var_30_2.weather
+
+	if var_30_5 and var_30_5 > 0 then
+		gohelper.setActive(arg_30_0.imageWeather, true)
+
+		if var_30_5 < NecrologistStoryEnum.WeatherType.Flow then
+			UISpriteSetMgr.instance:setRoleStorySprite(arg_30_0.imageWeather, string.format("rolestory_weather%s", var_30_5))
+		end
+	else
+		gohelper.setActive(arg_30_0.imageWeather, false)
+	end
+end
+
+function var_0_0.refreshTask(arg_31_0)
 	local var_31_0 = arg_31_0.gameBaseMO:getCurTargetData()
 
 	if not var_31_0 then
@@ -449,147 +439,176 @@ function var_0_0._refreshTask(arg_31_0)
 
 	gohelper.setActive(arg_31_0.goTarget, true)
 
-	local var_31_1, var_31_2 = NecrologistStoryHelper.getTimeFormat2(var_31_0.config.endTime)
-	local var_31_3 = string.format("%d:%02d", var_31_1, var_31_2)
+	local var_31_1 = var_31_0.config.id
 
-	arg_31_0.txtTarget.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("v3a1_necrologiststory_target_txt"), var_31_3, var_31_0.config.name)
+	if arg_31_0._targetId and arg_31_0._targetId ~= var_31_1 then
+		if var_31_0.isEnter and not var_31_0.isFail then
+			arg_31_0.animTarget:Play("finish", 0, 0)
+		else
+			arg_31_0.animTarget:Play("open", 0, 0)
+		end
 
-	local var_31_4 = not var_31_0.isFail and var_31_0.isEnter
+		TaskDispatcher.cancelTask(arg_31_0._refreshTask, arg_31_0)
+		TaskDispatcher.runDelay(arg_31_0._refreshTask, arg_31_0, 0.16)
+	else
+		arg_31_0:_refreshTask()
+	end
 
-	gohelper.setActive(arg_31_0.goTargetFinished, var_31_4)
-	gohelper.setActive(arg_31_0.goTargetUnFinish, not var_31_4)
+	arg_31_0._targetId = var_31_1
 end
 
-function var_0_0.refreshButton(arg_32_0)
-	local var_32_0 = NecrologistStoryModel.instance:isReviewCanShow(arg_32_0.gameBaseMO.id)
+function var_0_0._refreshTask(arg_32_0)
+	local var_32_0 = arg_32_0.gameBaseMO:getCurTargetData()
 
-	gohelper.setActive(arg_32_0.btnReview, var_32_0)
-end
+	if not var_32_0 then
+		gohelper.setActive(arg_32_0.goTarget, false)
 
-function var_0_0.refreshGameState(arg_33_0)
-	if not arg_33_0.gameBaseMO then
 		return
 	end
 
-	local var_33_0 = arg_33_0.gameBaseMO:getGameState()
+	gohelper.setActive(arg_32_0.goTarget, true)
 
-	if var_33_0 == NecrologistStoryEnum.GameState.Win then
-		arg_33_0:statSettlement(StatEnum.Result.Success)
-		ViewMgr.instance:openView(ViewName.V3A1_RoleStorySuccessView, {
-			roleStoryId = arg_33_0.gameBaseMO.id
-		})
-	elseif var_33_0 == NecrologistStoryEnum.GameState.Fail then
-		arg_33_0:statSettlement(StatEnum.Result.Fail)
-		ViewMgr.instance:openView(ViewName.V3A1_RoleStoryFailView, {
-			roleStoryId = arg_33_0.gameBaseMO.id
-		})
-	end
+	local var_32_1, var_32_2 = NecrologistStoryHelper.getTimeFormat2(var_32_0.config.endTime)
+	local var_32_3 = string.format("%d:%02d", var_32_1, var_32_2)
 
-	arg_33_0:refreshFinish(true)
+	arg_32_0.txtTarget.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("v3a1_necrologiststory_target_txt"), var_32_3, var_32_0.config.name)
+
+	local var_32_4 = not var_32_0.isFail and var_32_0.isEnter
+
+	gohelper.setActive(arg_32_0.goTargetFinished, var_32_4)
+	gohelper.setActive(arg_32_0.goTargetUnFinish, not var_32_4)
 end
 
-function var_0_0.refreshFinish(arg_34_0, arg_34_1)
+function var_0_0.refreshButton(arg_33_0)
+	local var_33_0 = NecrologistStoryModel.instance:isReviewCanShow(arg_33_0.gameBaseMO.id)
+
+	gohelper.setActive(arg_33_0.btnReview, var_33_0)
+end
+
+function var_0_0.refreshGameState(arg_34_0)
 	if not arg_34_0.gameBaseMO then
 		return
 	end
 
-	arg_34_0.waitPlayFinishAnim = nil
+	local var_34_0 = arg_34_0.gameBaseMO:getGameState()
 
-	local var_34_0 = arg_34_0.gameBaseMO:getGameState() == NecrologistStoryEnum.GameState.Win
+	if var_34_0 == NecrologistStoryEnum.GameState.Win then
+		arg_34_0:statSettlement(StatEnum.Result.Success)
+		ViewMgr.instance:openView(ViewName.V3A1_RoleStorySuccessView, {
+			roleStoryId = arg_34_0.gameBaseMO.id
+		})
+	elseif var_34_0 == NecrologistStoryEnum.GameState.Fail then
+		arg_34_0:statSettlement(StatEnum.Result.Fail)
+		ViewMgr.instance:openView(ViewName.V3A1_RoleStoryFailView, {
+			roleStoryId = arg_34_0.gameBaseMO.id
+		})
+	end
 
-	gohelper.setActive(arg_34_0.goFinish, var_34_0)
-	gohelper.setActive(arg_34_0.goHero, not var_34_0)
+	arg_34_0:refreshFinish(true)
+end
 
-	local var_34_1 = not var_34_0 and arg_34_0.gameBaseMO:canReset()
+function var_0_0.refreshFinish(arg_35_0, arg_35_1)
+	if not arg_35_0.gameBaseMO then
+		return
+	end
 
-	gohelper.setActive(arg_34_0.btnReset, var_34_1)
+	arg_35_0.waitPlayFinishAnim = nil
 
-	if arg_34_1 and var_34_0 then
-		if ViewHelper.instance:checkViewOnTheTop(arg_34_0.viewName) then
-			arg_34_0.animFinish:Play("open", 0, 0)
+	local var_35_0 = arg_35_0.gameBaseMO:getGameState() == NecrologistStoryEnum.GameState.Win
+
+	gohelper.setActive(arg_35_0.goFinish, var_35_0)
+	gohelper.setActive(arg_35_0.goHero, not var_35_0)
+
+	local var_35_1 = not var_35_0 and arg_35_0.gameBaseMO:canReset()
+
+	gohelper.setActive(arg_35_0.btnReset, var_35_1)
+
+	if arg_35_1 and var_35_0 then
+		if ViewHelper.instance:checkViewOnTheTop(arg_35_0.viewName) then
+			arg_35_0.animFinish:Play("open", 0, 0)
 			AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_note_course_finish)
 		else
-			arg_34_0.waitPlayFinishAnim = true
+			arg_35_0.waitPlayFinishAnim = true
 		end
 	end
 end
 
-function var_0_0.showBlock(arg_35_0)
-	GameUtil.setActiveUIBlock(arg_35_0.viewName, true, false)
+function var_0_0.showBlock(arg_36_0)
+	GameUtil.setActiveUIBlock(arg_36_0.viewName, true, false)
 end
 
-function var_0_0.closeBlock(arg_36_0)
-	GameUtil.setActiveUIBlock(arg_36_0.viewName, false, false)
+function var_0_0.closeBlock(arg_37_0)
+	GameUtil.setActiveUIBlock(arg_37_0.viewName, false, false)
 end
 
-function var_0_0.statSettlement(arg_37_0, arg_37_1)
-	if not arg_37_0.gameBaseMO then
+function var_0_0.statSettlement(arg_38_0, arg_38_1)
+	if not arg_38_0.gameBaseMO then
 		return
 	end
 
-	local var_37_0 = arg_37_0.gameBaseMO:getCurTime()
-	local var_37_1, var_37_2 = NecrologistStoryHelper.getTimeFormat2(var_37_0)
-	local var_37_3 = {
-		heroStoryId = arg_37_0.gameBaseMO.id,
-		baseId = arg_37_0.gameBaseMO:getCurBaseId(),
-		time = string.format("%d:%02d", var_37_1, var_37_2)
+	local var_38_0 = arg_38_0.gameBaseMO:getCurTime()
+	local var_38_1, var_38_2 = NecrologistStoryHelper.getTimeFormat2(var_38_0)
+	local var_38_3 = {
+		heroStoryId = arg_38_0.gameBaseMO.id,
+		baseId = arg_38_0.gameBaseMO:getCurBaseId(),
+		time = string.format("%d:%02d", var_38_1, var_38_2)
 	}
 
-	NecrologistStoryStatController.instance:statStorySettlement(var_37_3, arg_37_1)
+	NecrologistStoryStatController.instance:statStorySettlement(var_38_3, arg_38_1)
 end
 
-function var_0_0.refreshRewardTime(arg_38_0)
-	local var_38_0 = NecrologistStoryTaskListModel.instance:hasLimitTaskNotFinish(arg_38_0.gameBaseMO.id)
+function var_0_0.refreshRewardTime(arg_39_0)
+	local var_39_0 = NecrologistStoryTaskListModel.instance:hasLimitTaskNotFinish(arg_39_0.gameBaseMO.id)
 
-	gohelper.setActive(arg_38_0.goRewardTime, var_38_0)
+	gohelper.setActive(arg_39_0.goRewardTime, var_39_0)
 
-	if not var_38_0 then
+	if not var_39_0 then
 		return
 	end
 
-	TaskDispatcher.cancelTask(arg_38_0._frameRefreshRewardTime, arg_38_0)
-	TaskDispatcher.runDelay(arg_38_0._frameRefreshRewardTime, arg_38_0, 1)
-	arg_38_0:_frameRefreshRewardTime()
+	TaskDispatcher.cancelTask(arg_39_0._frameRefreshRewardTime, arg_39_0)
+	TaskDispatcher.runDelay(arg_39_0._frameRefreshRewardTime, arg_39_0, 1)
+	arg_39_0:_frameRefreshRewardTime()
 end
 
-function var_0_0._frameRefreshRewardTime(arg_39_0)
-	if not arg_39_0.gameBaseMO then
+function var_0_0._frameRefreshRewardTime(arg_40_0)
+	if not arg_40_0.gameBaseMO then
 		return
 	end
 
-	local var_39_0 = RoleStoryConfig.instance:getStoryById(arg_39_0.gameBaseMO.id).activityId
-	local var_39_1 = ActivityModel.instance:getActMO(var_39_0)
+	local var_40_0 = RoleStoryConfig.instance:getStoryById(arg_40_0.gameBaseMO.id).activityId
+	local var_40_1 = ActivityModel.instance:getActMO(var_40_0)
 
-	if not var_39_1 then
+	if not var_40_1 then
 		return
 	end
 
-	local var_39_2 = var_39_1:getRealEndTimeStamp() - ServerTime.now()
+	local var_40_2 = var_40_1:getRealEndTimeStamp() - ServerTime.now()
 
-	if var_39_2 > 0 then
-		local var_39_3, var_39_4 = TimeUtil.secondToRoughTime2(var_39_2, true)
+	if var_40_2 > 0 then
+		local var_40_3, var_40_4 = TimeUtil.secondToRoughTime2(var_40_2, true)
 
-		arg_39_0.txtRewardTime.text = var_39_3
-		arg_39_0.txtRewardTimeFormat.text = var_39_4
+		arg_40_0.txtRewardTime.text = var_40_3
+		arg_40_0.txtRewardTimeFormat.text = var_40_4
 	else
-		gohelper.setActive(arg_39_0.goRewardTime, false)
-		TaskDispatcher.cancelTask(arg_39_0._frameRefreshRewardTime, arg_39_0)
+		gohelper.setActive(arg_40_0.goRewardTime, false)
+		TaskDispatcher.cancelTask(arg_40_0._frameRefreshRewardTime, arg_40_0)
 	end
 end
 
-function var_0_0.onClose(arg_40_0)
-	if arg_40_0.gameBaseMO:getGameState() == NecrologistStoryEnum.GameState.Normal and not arg_40_0.gameBaseMO:getIsExitGame() then
-		arg_40_0:statSettlement(StatEnum.Result.Abort)
+function var_0_0.onClose(arg_41_0)
+	if arg_41_0.gameBaseMO:getGameState() == NecrologistStoryEnum.GameState.Normal and not arg_41_0.gameBaseMO:getIsExitGame() then
+		arg_41_0:statSettlement(StatEnum.Result.Abort)
 	end
 
-	arg_40_0.gameBaseMO:setIsExitGame(false)
+	arg_41_0.gameBaseMO:setIsExitGame(false)
 end
 
-function var_0_0.onDestroyView(arg_41_0)
-	TaskDispatcher.cancelTask(arg_41_0._frameRefreshRewardTime, arg_41_0)
-	TaskDispatcher.cancelTask(arg_41_0._refreshTask, arg_41_0)
-	TaskDispatcher.cancelTask(arg_41_0._moveToArea, arg_41_0)
-	TaskDispatcher.cancelTask(arg_41_0._refreshTitle, arg_41_0)
+function var_0_0.onDestroyView(arg_42_0)
+	TaskDispatcher.cancelTask(arg_42_0._frameRefreshRewardTime, arg_42_0)
+	TaskDispatcher.cancelTask(arg_42_0._refreshTask, arg_42_0)
+	TaskDispatcher.cancelTask(arg_42_0._moveToArea, arg_42_0)
+	TaskDispatcher.cancelTask(arg_42_0._refreshTitle, arg_42_0)
 end
 
 return var_0_0

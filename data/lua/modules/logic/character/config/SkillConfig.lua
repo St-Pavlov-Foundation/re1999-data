@@ -517,9 +517,9 @@ function var_0_0._matchChioceSkill(arg_37_0, arg_37_1, arg_37_2, arg_37_3)
 end
 
 function var_0_0.getHeroBaseSkillIdDict(arg_38_0, arg_38_1, arg_38_2)
-	local var_38_0, var_38_1 = arg_38_0:_getHeroSkillAndExSkill(arg_38_1, arg_38_2)
+	local var_38_0, var_38_1, var_38_2 = arg_38_0:_getHeroSkillAndExSkill(arg_38_1, arg_38_2)
 
-	return arg_38_0:getHeroBaseSkillIdDictByStr(var_38_0, var_38_1)
+	return arg_38_0:getHeroBaseSkillIdDictByStr(var_38_0, var_38_1), var_38_2
 end
 
 function var_0_0._getHeroSkillAndExSkill(arg_39_0, arg_39_1, arg_39_2)
@@ -544,7 +544,7 @@ function var_0_0._getHeroSkillAndExSkill(arg_39_0, arg_39_1, arg_39_2)
 		var_39_1 = var_39_4 or var_39_1
 		var_39_2 = var_39_5 or var_39_2
 
-		return var_39_1, var_39_2
+		return var_39_1, var_39_2, true
 	end
 
 	return var_39_1, var_39_2
@@ -570,9 +570,9 @@ function var_0_0.getHeroBaseSkillIdDictByStr(arg_40_0, arg_40_1, arg_40_2)
 end
 
 function var_0_0.getHeroAllSkillIdDict(arg_41_0, arg_41_1, arg_41_2)
-	local var_41_0, var_41_1 = arg_41_0:_getHeroSkillAndExSkill(arg_41_1, arg_41_2)
+	local var_41_0, var_41_1, var_41_2 = arg_41_0:_getHeroSkillAndExSkill(arg_41_1, arg_41_2)
 
-	return arg_41_0:getHeroAllSkillIdDictByStr(var_41_0, var_41_1)
+	return arg_41_0:getHeroAllSkillIdDictByStr(var_41_0, var_41_1), var_41_2
 end
 
 function var_0_0.getHeroAllSkillIdDictByStr(arg_42_0, arg_42_1, arg_42_2)
@@ -689,7 +689,11 @@ function var_0_0.getHeroAllSkillIdDictByExSkillLevel(arg_48_0, arg_48_1, arg_48_
 	end
 
 	local var_48_0 = arg_48_5 or arg_48_3 and arg_48_3.rank > CharacterModel.instance:getReplaceSkillRank(arg_48_3) - 1
-	local var_48_1 = arg_48_0:getHeroAllSkillIdDict(arg_48_1, var_48_0)
+	local var_48_1, var_48_2 = arg_48_0:getHeroAllSkillIdDict(arg_48_1, var_48_0)
+
+	if var_48_2 then
+		return var_48_1
+	end
 
 	arg_48_3 = arg_48_3 or HeroModel.instance:getByHeroId(arg_48_1)
 
@@ -699,38 +703,38 @@ function var_0_0.getHeroAllSkillIdDictByExSkillLevel(arg_48_0, arg_48_1, arg_48_
 
 	arg_48_2 = arg_48_2 or CharacterEnum.showAttributeOption.ShowCurrent
 
-	local var_48_2 = 0
+	local var_48_3 = 0
 
 	if arg_48_2 == CharacterEnum.showAttributeOption.ShowMax then
-		var_48_2 = CharacterModel.instance:getMaxexskill(arg_48_1)
+		var_48_3 = CharacterModel.instance:getMaxexskill(arg_48_1)
 	elseif arg_48_2 == CharacterEnum.showAttributeOption.ShowMin then
-		var_48_2 = 0
+		var_48_3 = 0
 	elseif arg_48_4 then
-		var_48_2 = arg_48_4
+		var_48_3 = arg_48_4
 	elseif arg_48_3 then
-		var_48_2 = arg_48_3.exSkillLevel
+		var_48_3 = arg_48_3.exSkillLevel
 	end
 
-	if var_48_2 < 1 then
+	if var_48_3 < 1 then
 		return var_48_1
 	end
 
-	local var_48_3
+	local var_48_4
 
-	for iter_48_0 = 1, var_48_2 do
-		local var_48_4 = arg_48_0:getherolevelexskillCO(arg_48_1, iter_48_0)
+	for iter_48_0 = 1, var_48_3 do
+		local var_48_5 = arg_48_0:getherolevelexskillCO(arg_48_1, iter_48_0)
 
-		if not string.nilorempty(var_48_4.skillGroup1) then
-			var_48_1[1] = string.splitToNumber(var_48_4.skillGroup1, "|")
+		if not string.nilorempty(var_48_5.skillGroup1) then
+			var_48_1[1] = string.splitToNumber(var_48_5.skillGroup1, "|")
 		end
 
-		if not string.nilorempty(var_48_4.skillGroup2) then
-			var_48_1[2] = string.splitToNumber(var_48_4.skillGroup2, "|")
+		if not string.nilorempty(var_48_5.skillGroup2) then
+			var_48_1[2] = string.splitToNumber(var_48_5.skillGroup2, "|")
 		end
 
-		if var_48_4.skillEx ~= 0 then
+		if var_48_5.skillEx ~= 0 then
 			var_48_1[3] = {
-				var_48_4.skillEx
+				var_48_5.skillEx
 			}
 		end
 	end

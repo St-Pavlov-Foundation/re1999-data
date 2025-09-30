@@ -85,9 +85,7 @@ function var_0_0._btnFightOnClick(arg_9_0)
 	end
 
 	if not arg_9_0._fight:isFighting() then
-		local var_9_0 = SurvivalShelterModel.instance:getWeekInfo()
-
-		GameFacade.showToast(ToastEnum.SurvivalBossDotOpen, var_9_0.day)
+		GameFacade.showToast(ToastEnum.SurvivalBossDotOpen, arg_9_0._fight.beginTime)
 
 		return
 	end

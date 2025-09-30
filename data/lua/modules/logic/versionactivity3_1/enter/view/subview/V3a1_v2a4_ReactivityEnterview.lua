@@ -15,6 +15,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._txtNum = gohelper.findChildText(arg_1_0.viewGO, "entrance/#btn_store/normal/#txt_num")
 	arg_1_0._gotime = gohelper.findChild(arg_1_0.viewGO, "entrance/#btn_store/#go_time")
 	arg_1_0._txtstoretime = gohelper.findChildText(arg_1_0.viewGO, "entrance/#btn_store/#go_time/#txt_time")
+	arg_1_0._btnExchange = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "entrance/#btn_Exchange")
 	arg_1_0.rewardItems = {}
 
 	if arg_1_0._editableInitView then
@@ -25,12 +26,14 @@ end
 function var_0_0.addEvents(arg_2_0)
 	arg_2_0._btnstore:AddClickListener(arg_2_0._onClickStoreBtn, arg_2_0)
 	arg_2_0._btnEnter:AddClickListener(arg_2_0._onClickEnter, arg_2_0)
+	arg_2_0._btnExchange:AddClickListener(arg_2_0._onClickExchange, arg_2_0)
 	arg_2_0._btnEnd:AddClickListener(arg_2_0._onClickEnter, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btnstore:RemoveClickListener()
 	arg_3_0._btnEnter:RemoveClickListener()
+	arg_3_0._btnExchange:RemoveClickListener()
 	arg_3_0._btnEnd:RemoveClickListener()
 end
 

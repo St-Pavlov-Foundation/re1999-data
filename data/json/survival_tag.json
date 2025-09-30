@@ -4,7 +4,7 @@
     "name": "民众",
     "desc": "并无隶属的平民，会支持组长关于平民的决策，每日自动增加50储备；进入战斗获得1层[场外支持]",
     "beHidden": "2021#2022#2023#2024",
-    "tagType": 1,
+    "tagType": 3101,
     "effect": 202101,
     "color": 3,
     "suggestMap": ""
@@ -14,7 +14,7 @@
     "name": "拉普拉斯",
     "desc": "隶属于拉普拉斯的成员，会支持组长关于拉普拉斯的决策，每日自动增加50研究资料；进入战斗获得1层[场外支持]",
     "beHidden": "2021#2024#2026#2027",
-    "tagType": 1,
+    "tagType": 3101,
     "effect": 202102,
     "color": 1,
     "suggestMap": ""
@@ -24,7 +24,7 @@
     "name": "基金会",
     "desc": "隶属于基金会的成员，会支持组长关于基金会的决策，储备、建材的转换效率提升5%；进入战斗获得1层[场外支持]",
     "beHidden": "2021#2023#2025#2027",
-    "tagType": 1,
+    "tagType": 3101,
     "effect": 202103,
     "color": 2,
     "suggestMap": ""
@@ -34,7 +34,7 @@
     "name": "芝诺",
     "desc": "隶属于芝诺的成员，会支持组长关于芝诺的决策，演习结束额外恢复5抵抗力；进入战斗获得1层[场外支持]",
     "beHidden": "2021#2022#2025#2026",
-    "tagType": 1,
+    "tagType": 3101,
     "effect": 202104,
     "color": 5,
     "suggestMap": ""
@@ -44,7 +44,7 @@
     "name": "视力辅助",
     "desc": "参与演习时，视野+1(不可叠加)",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202001,
     "color": 4,
     "suggestMap": ""
@@ -54,7 +54,7 @@
     "name": "驾驶执照",
     "desc": "参与演习时，获得1个氮气推进座驾",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202002,
     "color": 6,
     "suggestMap": ""
@@ -64,7 +64,7 @@
     "name": "富尔顿回收",
     "desc": "参与演习时，获得1个心向往之",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202003,
     "color": 6,
     "suggestMap": ""
@@ -74,7 +74,7 @@
     "name": "携带武装",
     "desc": "参与演习时，获得1个玩具摔炮",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202004,
     "color": 6,
     "suggestMap": ""
@@ -84,7 +84,7 @@
     "name": "过度筹备",
     "desc": "参与演习时，获得1个小鬼的袋子",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202005,
     "color": 6,
     "suggestMap": ""
@@ -94,7 +94,7 @@
     "name": "冷藏果汁",
     "desc": "参与演习时，获得1个甘蔗糖汁",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202006,
     "color": 6,
     "suggestMap": ""
@@ -104,7 +104,7 @@
     "name": "时间规划",
     "desc": "参与演习时，获得1个倒置沙漏",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202007,
     "color": 6,
     "suggestMap": ""
@@ -114,7 +114,7 @@
     "name": "自制助理",
     "desc": "参与演习时，获得1个\"理性助理\"Ⅰ",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202008,
     "color": 6,
     "suggestMap": ""
@@ -124,7 +124,7 @@
     "name": "不规范操作",
     "desc": "参与演习时，获得1个嘲弄假面",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202009,
     "color": 6,
     "suggestMap": ""
@@ -134,7 +134,7 @@
     "name": "传送术式",
     "desc": "参与演习时，获得1个寻踪纸鹤",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202010,
     "color": 6,
     "suggestMap": ""
@@ -144,7 +144,7 @@
     "name": "便携纸箱",
     "desc": "参与演习时，获得1个水果箱",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202011,
     "color": 6,
     "suggestMap": ""
@@ -154,7 +154,7 @@
     "name": "侦查装备",
     "desc": "参与演习时，获得1个望远镜",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202012,
     "color": 4,
     "suggestMap": ""
@@ -164,7 +164,7 @@
     "name": "作战指南",
     "desc": "参与演习时，额外出现1个胆小的魔精",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202013,
     "color": 4,
     "suggestMap": ""
@@ -174,7 +174,7 @@
     "name": "勘测指南",
     "desc": "参与演习时，额外出现1个陆行灯塔",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202014,
     "color": 4,
     "suggestMap": ""
@@ -184,7 +184,7 @@
     "name": "露营指南",
     "desc": "参与演习时，额外出现1个宁静画幅",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202015,
     "color": 4,
     "suggestMap": ""
@@ -194,7 +194,7 @@
     "name": "贸易指南",
     "desc": "参与演习时，额外出现1个魔精商人",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202016,
     "color": 4,
     "suggestMap": ""
@@ -204,7 +204,7 @@
     "name": "搜刮指南",
     "desc": "参与演习时，额外出现1个遗留物",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202017,
     "color": 4,
     "suggestMap": ""
@@ -214,7 +214,7 @@
     "name": "手脚麻利",
     "desc": "参与演习时，选项消耗时间降低10%",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202018,
     "color": 4,
     "suggestMap": ""
@@ -224,7 +224,7 @@
     "name": "采购负责人",
     "desc": "参与演习时，招募助理时，物品价值提升50%",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202019,
     "color": 4,
     "suggestMap": ""
@@ -234,7 +234,7 @@
     "name": "平衡伞申请",
     "desc": "参与演习时，处于暴雨中损失的抵抗力降低10%（最多降低至75%)",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202020,
     "color": 4,
     "suggestMap": ""
@@ -244,7 +244,7 @@
     "name": "领袖",
     "desc": "视为拥有[民众][芝诺军][基金会][拉普拉斯]；进入战斗额外获得10层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202021,
     "color": 4,
     "suggestMap": ""
@@ -254,7 +254,7 @@
     "name": "民兵",
     "desc": "视为拥有[民众][芝诺军]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202022,
     "color": 4,
     "suggestMap": ""
@@ -264,7 +264,7 @@
     "name": "代理人",
     "desc": "视为拥有[民众][基金会]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202023,
     "color": 4,
     "suggestMap": ""
@@ -274,7 +274,7 @@
     "name": "科研志愿者",
     "desc": "视为拥有[民众][拉普拉斯]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202024,
     "color": 4,
     "suggestMap": ""
@@ -284,7 +284,7 @@
     "name": "后方工作者",
     "desc": "视为拥有[芝诺军][基金会]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202025,
     "color": 4,
     "suggestMap": ""
@@ -294,7 +294,7 @@
     "name": "装备研发者",
     "desc": "视为拥有[芝诺军][拉普拉斯]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202026,
     "color": 4,
     "suggestMap": ""
@@ -304,7 +304,7 @@
     "name": "科研主管",
     "desc": "视为拥有[基金会][拉普拉斯]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 1,
+    "tagType": 3102,
     "effect": 202027,
     "color": 4,
     "suggestMap": ""
@@ -314,7 +314,7 @@
     "name": "参谋",
     "desc": "颁布组长的决策时，可选项+1(不可叠加)]；进入战斗额外获得5层[场外支持]",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202028,
     "color": 4,
     "suggestMap": ""
@@ -324,7 +324,7 @@
     "name": "好胃口",
     "desc": "每天额外消耗3%储备(可叠加)",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202301,
     "color": 6,
     "suggestMap": ""
@@ -334,7 +334,7 @@
     "name": "小爱好",
     "desc": "每天额外消耗3%材料(可叠加)",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202302,
     "color": 6,
     "suggestMap": ""
@@ -344,7 +344,7 @@
     "name": "高薪",
     "desc": "每天额外消耗3%研究资料(可叠加)",
     "beHidden": "",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 202303,
     "color": 6,
     "suggestMap": ""
@@ -354,7 +354,7 @@
     "name": "资料补贴",
     "desc": "参与演习时，消耗5%仓库研究资料(可叠加)",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202304,
     "color": 4,
     "suggestMap": ""
@@ -364,7 +364,7 @@
     "name": "食物补贴",
     "desc": "参与演习时，消耗5%仓库储备(可叠加)",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202305,
     "color": 4,
     "suggestMap": ""
@@ -374,7 +374,7 @@
     "name": "材料补贴",
     "desc": "参与演习时，消耗5%仓库材料(可叠加)",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202306,
     "color": 4,
     "suggestMap": ""
@@ -384,7 +384,7 @@
     "name": "热心的苹果",
     "desc": "一枚热心的苹果先生，他愿意和你一起去帮助小魔药家\n注：苹果先生很忙，他不会跟随你回到庇护所",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 0,
     "color": 4,
     "suggestMap": ""
@@ -394,7 +394,7 @@
     "name": "轮回者",
     "desc": "这位少女身上埋藏着许多秘密，作为漫游助理一起参与演习时，也许会有什么意外发现",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 0,
     "color": 4,
     "suggestMap": ""
@@ -404,7 +404,7 @@
     "name": "膝盖中箭",
     "desc": "倒霉的士兵，在膝盖中箭后荣升为营地守卫！(参与演习时，移动耗时+50%)",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 202203,
     "color": 6,
     "suggestMap": ""
@@ -414,7 +414,7 @@
     "name": "摸鱼成性",
     "desc": "在摸鱼时被组长抓到的倒霉研究员。（参与演习时，选项消耗时间增加10%）",
     "beHidden": "",
-    "tagType": 2,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -424,7 +424,7 @@
     "name": "隐藏判定Ⅰ",
     "desc": "隐藏判定1",
     "beHidden": "2021",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -434,7 +434,7 @@
     "name": "隐藏判定Ⅱ",
     "desc": "隐藏判定2",
     "beHidden": "2021",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -444,7 +444,7 @@
     "name": "隐藏判定Ⅲ",
     "desc": "隐藏判定3",
     "beHidden": "2021",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -454,7 +454,7 @@
     "name": "隐藏判定Ⅳ",
     "desc": "隐藏判定4",
     "beHidden": "2021",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -464,7 +464,7 @@
     "name": "隐藏判定5",
     "desc": "隐藏判定5",
     "beHidden": "2021",
-    "tagType": 3,
+    "tagType": 3102,
     "effect": 0,
     "color": 6,
     "suggestMap": ""
@@ -473,7 +473,7 @@
     "id": 311001,
     "name": "民众",
     "desc": "并无隶属的平民",
-    "beHidden": "",
+    "beHidden": "311005",
     "tagType": 3101,
     "effect": 0,
     "color": 3,
@@ -483,7 +483,7 @@
     "id": 311002,
     "name": "芝诺",
     "desc": "隶属于芝诺的成员",
-    "beHidden": "",
+    "beHidden": "311006",
     "tagType": 3101,
     "effect": 0,
     "color": 1,
@@ -493,7 +493,7 @@
     "id": 311003,
     "name": "基金会",
     "desc": "隶属于基金会的成员",
-    "beHidden": "",
+    "beHidden": "311007",
     "tagType": 3101,
     "effect": 0,
     "color": 2,
@@ -503,7 +503,7 @@
     "id": 311004,
     "name": "拉普拉斯",
     "desc": "隶属于拉普拉斯的成员",
-    "beHidden": "",
+    "beHidden": "311008",
     "tagType": 3101,
     "effect": 0,
     "color": 5,
@@ -832,7 +832,7 @@
   {
     "id": 3120111,
     "name": "考察Ⅰ",
-    "desc": "参与演习[完美居所][语言防线]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "desc": "参与演习[完美居所][语言防线]地图时，剩余12小时时获得1个[小鬼的袋子]",
     "beHidden": "",
     "tagType": 3103,
     "effect": 2120111,
@@ -842,7 +842,7 @@
   {
     "id": 3120112,
     "name": "考察Ⅱ",
-    "desc": "参与演习[第73区][语言防线]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "desc": "参与演习[第73区][语言防线]地图时，剩余12小时时获得1个[小鬼的袋子]",
     "beHidden": "",
     "tagType": 3103,
     "effect": 2120112,
@@ -852,7 +852,7 @@
   {
     "id": 3120113,
     "name": "考察Ⅲ",
-    "desc": "参与演习[科算中心][幻想坟场]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "desc": "参与演习[科算中心][幻想坟场]地图时，剩余12小时时获得1个[小鬼的袋子]",
     "beHidden": "",
     "tagType": 3103,
     "effect": 2120113,
@@ -862,7 +862,7 @@
   {
     "id": 3120114,
     "name": "考察Ⅳ",
-    "desc": "参与演习[世界尽头][幻想坟场]地图时，剩余16/8小时时获得1个[小鬼的袋子]",
+    "desc": "参与演习[世界尽头][幻想坟场]地图时，剩余12小时时获得1个[小鬼的袋子]",
     "beHidden": "",
     "tagType": 3103,
     "effect": 2120114,
@@ -971,8 +971,8 @@
   },
   {
     "id": 313003,
-    "name": "边缘行者",
-    "desc": "参与演习时，沿障碍物移动时耗时-20%",
+    "name": "\"箱\"中漫游",
+    "desc": "参与演习时，获得1个[水果箱]",
     "beHidden": "",
     "tagType": 3102,
     "effect": 212016,
@@ -1042,7 +1042,7 @@
   {
     "id": 313010,
     "name": "排异体质",
-    "desc": "参与演习时，健康度降低效果减少50%;无法回复健康度(无法叠加)",
+    "desc": "参与演习时，暴雨内抵抗力降低值减少2",
     "beHidden": "",
     "tagType": 3102,
     "effect": 212023,
@@ -1062,7 +1062,7 @@
   {
     "id": 313012,
     "name": "华丽走位",
-    "desc": "参与演习时，每次位移3格以上后回复30分钟时间",
+    "desc": "参与演习时，每次传送3格及以上后回复30分钟时间",
     "beHidden": "",
     "tagType": 3104,
     "effect": 212025,
@@ -1222,7 +1222,7 @@
   {
     "id": 313028,
     "name": "实地考察",
-    "desc": "参与演习时，每次演习结束，获得1次[进化]:复制快捷道具概率+4%",
+    "desc": "每次参与演习时，复制快捷道具概率+4%",
     "beHidden": "",
     "tagType": 3104,
     "effect": 212041,
@@ -1232,7 +1232,7 @@
   {
     "id": 313029,
     "name": "理论修正",
-    "desc": "参与演习时，复制快捷道具的概率加倍(复制概率最高为100%)",
+    "desc": "参与演习时，复制快捷道具的概率加倍",
     "beHidden": "",
     "tagType": 3104,
     "effect": 212042,
@@ -1247,6 +1247,6 @@
     "tagType": 3104,
     "effect": 212043,
     "color": 6,
-    "suggestMap": "1#2#3#4#5#6"
+    "suggestMap": ""
   }
 ]

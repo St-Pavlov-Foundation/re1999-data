@@ -58,13 +58,14 @@ function var_0_0._onCurrencyChange(arg_7_0)
 	var_0_0.instance:dispatchEvent(CharacterRecommedEvent.OnRefreshTraced)
 end
 
-function var_0_0.openRecommedView(arg_8_0, arg_8_1, arg_8_2)
+function var_0_0.openRecommedView(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
 	local var_8_0 = CharacterRecommedModel.instance:getHeroRecommendMo(arg_8_1)
 	local var_8_1 = (var_8_0:isShowTeam() or var_8_0:isShowEquip()) and CharacterRecommedEnum.TabSubType.RecommedGroup or CharacterRecommedEnum.TabSubType.DevelopGoals
 	local var_8_2 = {
 		heroId = arg_8_1,
 		fromView = arg_8_2,
-		defaultTabId = var_8_1
+		defaultTabId = var_8_1,
+		uiSpine = arg_8_3
 	}
 
 	ViewMgr.instance:openView(ViewName.CharacterRecommedView, var_8_2)

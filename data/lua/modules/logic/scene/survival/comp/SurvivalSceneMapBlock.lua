@@ -30,12 +30,8 @@ function var_0_0._onPreloadFinish(arg_2_0)
 	for iter_2_4, iter_2_5 in ipairs(var_2_2.allBlocks) do
 		local var_2_3 = iter_2_5.pos
 
-		if not SurvivalHelper.instance:getValueFromDict(var_2_0.allDestroyPos, var_2_3) then
+		if not SurvivalHelper.instance:getValueFromDict(var_2_0.allDestroyPos, var_2_3) and not SurvivalHelper.instance:getValueFromDict(var_2_1, var_2_3) then
 			local var_2_4 = SurvivalBlockEntity.Create(iter_2_5, arg_2_0._blockRoot)
-
-			if SurvivalHelper.instance:getValueFromDict(var_2_1, var_2_3) then
-				gohelper.setActive(var_2_4.go, false)
-			end
 
 			if not arg_2_0._allBlocks[var_2_3.q] then
 				arg_2_0._allBlocks[var_2_3.q] = {}
@@ -48,12 +44,8 @@ function var_0_0._onPreloadFinish(arg_2_0)
 	for iter_2_6, iter_2_7 in ipairs(var_2_0.extraBlock) do
 		local var_2_5 = iter_2_7.pos
 
-		if not SurvivalHelper.instance:getValueFromDict(var_2_0.allDestroyPos, var_2_5) then
+		if not SurvivalHelper.instance:getValueFromDict(var_2_0.allDestroyPos, var_2_5) and not SurvivalHelper.instance:getValueFromDict(var_2_1, var_2_5) then
 			local var_2_6 = SurvivalExBlockEntity.Create(iter_2_7, arg_2_0._blockRoot)
-
-			if SurvivalHelper.instance:getValueFromDict(var_2_1, var_2_5) then
-				gohelper.setActive(var_2_6.go, false)
-			end
 
 			if not arg_2_0._allBlocks[var_2_5.q] then
 				arg_2_0._allBlocks[var_2_5.q] = {}

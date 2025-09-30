@@ -19,6 +19,7 @@ function var_0_0.addConstEvents(arg_3_0)
 	TaskController.instance:registerCallback(TaskEvent.SetTaskList, arg_3_0.onSetTaskList, arg_3_0)
 	arg_3_0:registerCallback(TowerEvent.DailyReresh, arg_3_0.dailyReddotRefresh, arg_3_0)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, arg_3_0._onDailyRefresh, arg_3_0)
+	LoginController.instance:registerCallback(LoginEvent.OnGetInfoFinish, arg_3_0._trySendTowerDeepRPC, arg_3_0)
 end
 
 function var_0_0.jumpView(arg_4_0, arg_4_1)
@@ -539,6 +540,12 @@ function var_0_0.endFightEnterTowerDeepHeroGroup(arg_51_0, arg_51_1)
 	TowerPermanentDeepModel.instance:setIsFightFailNotEndState(true)
 	TowerPermanentDeepModel.instance:setInDeepLayerState(true)
 	DungeonFightController.instance:enterFight(arg_51_1.chapterId, arg_51_1.id, DungeonModel.instance.curSelectTicketId)
+end
+
+function var_0_0._trySendTowerDeepRPC(arg_52_0)
+	if TowerPermanentDeepModel.instance:checkDeepLayerUnlock() then
+		TowerDeepRpc.instance:sendTowerDeepGetInfoRequest()
+	end
 end
 
 var_0_0.instance = var_0_0.New()

@@ -181,7 +181,7 @@ function var_0_0.isNoShowIcon(arg_7_0, arg_7_1)
 		return true
 	end
 
-	if var_7_1 == subType == SurvivalEnum.UnitSubType.BlockEvent then
+	if var_7_1 == SurvivalEnum.UnitSubType.BlockEvent then
 		return true
 	end
 

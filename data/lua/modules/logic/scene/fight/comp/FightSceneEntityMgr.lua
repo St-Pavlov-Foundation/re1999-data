@@ -3,6 +3,8 @@
 local var_0_0 = class("FightSceneEntityMgr", BaseSceneUnitMgr)
 
 function var_0_0.ctor(arg_1_0, arg_1_1)
+	arg_1_0._remainCount = 0
+
 	var_0_0.super.ctor(arg_1_0, arg_1_1)
 
 	arg_1_0.enableSpineRotate = true

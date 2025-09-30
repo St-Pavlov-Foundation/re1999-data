@@ -11,6 +11,7 @@ end
 
 function var_0_0.init(arg_2_0, arg_2_1)
 	arg_2_0._rainComp = arg_2_1:GetComponent("ZProj.SurvivalRain")
+	arg_2_0._rainComp.enabled = false
 	arg_2_0._rainLoader = PrefabInstantiate.Create(arg_2_0._param and arg_2_0._param.effectRoot or arg_2_1)
 	arg_2_0._textureLoader = SequenceAbLoader.New()
 
@@ -36,7 +37,6 @@ function var_0_0.init(arg_2_0, arg_2_1)
 end
 
 function var_0_0.onStart(arg_3_0)
-	arg_3_0._rainComp.enabled = false
 	arg_3_0._inited = true
 
 	arg_3_0:_setRainParam()
@@ -85,15 +85,17 @@ function var_0_0._setRainParam(arg_6_0)
 	var_0_1.DisableKeyword("_SURVIAL_SCENE")
 	var_0_1.DisableKeyword("_ENABLE_SURVIVAL_RAIN_DISTORTION")
 	var_0_1.DisableKeyword("_ENABLE_SURVIVAL_RAIN_GLITCH")
+	arg_6_0:applyRainParam()
 
-	arg_6_0._rainComp.enabled = true
-	arg_6_0._rainComp.enabled = false
+	arg_6_0._allTextRef = arg_6_0._allTextRef or arg_6_0:getUserDataTb_()
 
 	for iter_6_0, iter_6_1 in pairs(var_6_0) do
 		local var_6_1 = SurvivalRainParam.ParamToShaderFunc[iter_6_0]
 
 		if var_6_1 == var_0_1.SetGlobalTexture then
 			local var_6_2 = arg_6_0:getTexture(iter_6_1)
+
+			arg_6_0._allTextRef[iter_6_0] = var_6_2
 
 			if var_6_2 then
 				var_6_1(iter_6_0, var_6_2)
@@ -115,52 +117,69 @@ function var_0_0._setRainParam(arg_6_0)
 	end
 end
 
-function var_0_0.getTexture(arg_7_0, arg_7_1)
-	local var_7_0 = "survival/common/rain/" .. arg_7_1 .. ".png"
-	local var_7_1
+local var_0_2
+
+function var_0_0.applyRainParam(arg_7_0)
+	if not var_0_2 then
+		require("tolua.reflection")
+		tolua.loadassembly("Assembly-CSharp")
+
+		local var_7_0 = tolua.findtype("ZProj.SurvivalRain")
+
+		var_0_2 = tolua.gettypemethod(var_7_0, "UpdateRainSetting", 36)
+	end
+
+	var_0_2:Call(arg_7_0._rainComp)
+end
+
+function var_0_0.getTexture(arg_8_0, arg_8_1)
+	local var_8_0 = "survival/common/rain/" .. arg_8_1 .. ".png"
+	local var_8_1
 
 	if GameResMgr.IsFromEditorDir then
-		var_7_1 = arg_7_0._textureLoader:getAssetItem(var_7_0)
+		var_8_1 = arg_8_0._textureLoader:getAssetItem(var_8_0)
 	else
-		var_7_1 = arg_7_0._textureLoader:getAssetItem("survival/common/rain")
+		var_8_1 = arg_8_0._textureLoader:getAssetItem("survival/common/rain")
 	end
 
-	if not var_7_1 then
+	if not var_8_1 then
+		logError("没有资源文件" .. var_8_0)
+
 		return
 	end
 
-	return var_7_1:GetResource(var_7_0)
+	return var_8_1:GetResource(var_8_0)
 end
 
-function var_0_0._resetParam(arg_8_0, arg_8_1)
-	local var_8_0 = SurvivalRainParam[arg_8_1]
-
-	if not var_8_0 then
-		return
-	end
-
-	if var_8_0.KeyWord then
-		var_0_1.DisableKeyword(var_8_0.KeyWord)
-	end
+function var_0_0._resetParam(arg_9_0)
+	var_0_1.DisableKeyword("_SURVIAL_SCENE")
+	var_0_1.DisableKeyword("_ENABLE_SURVIVAL_RAIN_DISTORTION")
+	var_0_1.DisableKeyword("_ENABLE_SURVIVAL_RAIN_GLITCH")
 end
 
-function var_0_0.onDestroy(arg_9_0)
-	if arg_9_0._rainId and arg_9_0._inited and arg_9_0._abLoaded then
-		arg_9_0:_resetParam(arg_9_0._rainId)
+function var_0_0.onDestroy(arg_10_0)
+	TaskDispatcher.cancelTask(arg_10_0._setRainParam, arg_10_0)
 
-		arg_9_0._rainId = nil
+	for iter_10_0, iter_10_1 in pairs(SurvivalRainParam.ParamToShaderFunc) do
+		if iter_10_1 == var_0_1.SetGlobalTexture then
+			var_0_1.SetGlobalTexture(iter_10_0, nil)
+		end
 	end
 
-	if arg_9_0._rainLoader then
-		arg_9_0._rainLoader:dispose()
+	arg_10_0:_resetParam()
 
-		arg_9_0._rainLoader = nil
+	arg_10_0._rainId = nil
+
+	if arg_10_0._rainLoader then
+		arg_10_0._rainLoader:dispose()
+
+		arg_10_0._rainLoader = nil
 	end
 
-	if arg_9_0._textureLoader then
-		arg_9_0._textureLoader:dispose()
+	if arg_10_0._textureLoader then
+		arg_10_0._textureLoader:dispose()
 
-		arg_9_0._textureLoader = nil
+		arg_10_0._textureLoader = nil
 	end
 end
 

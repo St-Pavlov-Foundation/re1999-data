@@ -109,7 +109,7 @@
     "desc2": "为了修建最后一座高塔，哑谜前往了【世界尽头】，尽管过程十分艰辛，但在众人的帮助下，最后一座“语言高塔”终于建造完毕，盒中的危机暂时解决了。",
     "desc3": "",
     "desc4": "",
-    "progressCondition": "eventFinished#73#207040700",
+    "progressCondition": "eventFinished#73#207040703",
     "maxProgress": 1,
     "needAccept": 1,
     "prepose": "",

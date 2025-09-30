@@ -1151,6 +1151,10 @@ function var_0_0.rpcInfosToListAndMap(arg_75_0, arg_75_1, arg_75_2)
 end
 
 function var_0_0.setActiveUIBlock(arg_76_0, arg_76_1, arg_76_2)
+	if type(arg_76_0) ~= "string" then
+		logError("blockKey can't be " .. type(arg_76_0))
+	end
+
 	arg_76_2 = arg_76_2 ~= false and true or false
 
 	UIBlockMgrExtend.setNeedCircleMv(arg_76_2)

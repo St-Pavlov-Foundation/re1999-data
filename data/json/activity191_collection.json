@@ -630,20 +630,6 @@
     "weight": 100
   },
   {
-    "id": 21015,
-    "activityId": 13105,
-    "rare": 2,
-    "unique": 0,
-    "title": "星空的腹部",
-    "tag": "",
-    "tag2": "",
-    "label": "防御#重塑",
-    "desc": "攻击时若目标携带【重塑之口】，则受到伤害和本源创伤提升20%",
-    "replaceDesc": "",
-    "icon": "8330816",
-    "weight": 100
-  },
-  {
     "id": 21016,
     "activityId": 13105,
     "rare": 1,

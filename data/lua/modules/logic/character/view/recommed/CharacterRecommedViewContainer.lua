@@ -77,7 +77,6 @@ function var_0_0._addCharacterChangeHeroView(arg_4_0, arg_4_1)
 end
 
 function var_0_0.playCloseTransition(arg_5_0)
-	arg_5_0._heroView:playCloseTransition()
 	arg_5_0._recommedView:playViewAnimPlayer(CharacterRecommedEnum.AnimName.Close, arg_5_0.onPlayCloseTransitionFinish, arg_5_0)
 end
 

@@ -32,9 +32,11 @@ function var_0_0.addLowPhoneMemoryComp(arg_2_0)
 
 	local var_2_0 = UnityEngine.SystemInfo.systemMemorySize / 1024
 
-	if var_2_0 > 2 then
+	if var_2_0 > 3.6 then
 		return
 	end
+
+	var_0_0.ios3GBMemory = true
 
 	logNormal(string.format("add FightSceneLowPhoneMemoryComp, memory : %G", var_2_0))
 	arg_2_0:_addComp("lowPhoneMemoryMgr", FightSceneLowPhoneMemoryComp)

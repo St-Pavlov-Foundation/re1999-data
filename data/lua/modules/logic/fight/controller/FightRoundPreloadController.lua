@@ -3,6 +3,7 @@
 local var_0_0 = class("FightRoundPreloadController", BaseController)
 
 function var_0_0.onInit(arg_1_0)
+	arg_1_0._assetItemDict = arg_1_0:getUserDataTb_()
 	arg_1_0._roundPreloadSequence = FlowSequence.New()
 
 	arg_1_0._roundPreloadSequence:addWork(FightRoundPreloadTimelineWork.New())

@@ -89,48 +89,49 @@ function var_0_0._refreshRadarLevel(arg_9_0)
 	local var_9_0 = SurvivalMapModel.instance:getSceneMo()
 	local var_9_1 = var_9_0.player.pos
 	local var_9_2 = var_9_1
+	local var_9_3 = SurvivalMapModel.instance:isInMiasma()
 
-	if var_9_0.mainTask.followUnitUid ~= 0 and var_9_0:getBlockTypeByPos(var_9_1) ~= SurvivalEnum.UnitSubType.Miasma then
+	if var_9_0.mainTask.followUnitUid ~= 0 and not var_9_3 then
 		var_9_2 = var_9_0.sceneProp.radarPosition
 	end
 
-	local var_9_3 = SurvivalHelper.instance:getDistance(var_9_1, var_9_2)
-	local var_9_4, var_9_5, var_9_6 = SurvivalHelper.instance:hexPointToWorldPoint(var_9_1.q, var_9_1.r)
-	local var_9_7, var_9_8, var_9_9 = SurvivalHelper.instance:hexPointToWorldPoint(var_9_2.q, var_9_2.r)
-	local var_9_10 = math.deg(math.atan2(var_9_9 - var_9_6, var_9_7 - var_9_4)) - 90
-	local var_9_11 = 3
-	local var_9_12
+	local var_9_4 = SurvivalHelper.instance:getDistance(var_9_1, var_9_2)
+	local var_9_5, var_9_6, var_9_7 = SurvivalHelper.instance:hexPointToWorldPoint(var_9_1.q, var_9_1.r)
+	local var_9_8, var_9_9, var_9_10 = SurvivalHelper.instance:hexPointToWorldPoint(var_9_2.q, var_9_2.r)
+	local var_9_11 = math.deg(math.atan2(var_9_10 - var_9_7, var_9_8 - var_9_5)) - 90
+	local var_9_12 = 3
+	local var_9_13
 
-	while var_9_11 > 0 do
-		local var_9_13 = SurvivalEnum.ConstId["RadarLv" .. var_9_11]
-		local var_9_14, var_9_15 = SurvivalConfig.instance:getConstValue(var_9_13)
-		local var_9_16
+	while var_9_12 > 0 do
+		local var_9_14 = SurvivalEnum.ConstId["RadarLv" .. var_9_12]
+		local var_9_15, var_9_16 = SurvivalConfig.instance:getConstValue(var_9_14)
+		local var_9_17
 
-		var_9_16 = tonumber(var_9_14) or 0
+		var_9_17 = tonumber(var_9_15) or 0
 
-		if var_9_16 <= var_9_3 then
-			var_9_12 = var_9_15
+		if var_9_17 <= var_9_4 then
+			var_9_13 = var_9_16
 
 			break
 		end
 
-		var_9_11 = var_9_11 - 1
+		var_9_12 = var_9_12 - 1
 	end
 
-	if var_9_11 ~= arg_9_0._level then
-		arg_9_0._level = var_9_11
+	if var_9_12 ~= arg_9_0._level then
+		arg_9_0._level = var_9_12
 
 		for iter_9_0, iter_9_1 in pairs(arg_9_0._levelGos) do
-			gohelper.setActive(iter_9_1, iter_9_0 == var_9_11)
+			gohelper.setActive(iter_9_1, iter_9_0 == var_9_12)
 		end
 
-		arg_9_0._levelGo = arg_9_0._levelGos[var_9_11]
+		arg_9_0._levelGo = arg_9_0._levelGos[var_9_12]
 	end
 
 	if arg_9_0._levelGo then
-		transformhelper.setLocalRotation(arg_9_0._levelGo.transform, 0, 0, var_9_10)
+		transformhelper.setLocalRotation(arg_9_0._levelGo.transform, 0, 0, var_9_11)
 
-		arg_9_0._txtdesc.text = var_9_12
+		arg_9_0._txtdesc.text = var_9_13
 	else
 		arg_9_0._isTipsClose = true
 

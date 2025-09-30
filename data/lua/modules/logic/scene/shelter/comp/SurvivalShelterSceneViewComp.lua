@@ -28,10 +28,10 @@ function var_0_0._delayProcessGuideEvent(arg_2_0)
 
 	if var_2_0.day > 1 then
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideWaitWeekDay)
+	end
 
-		if var_2_0.difficulty == 3 or var_2_0.difficulty == 4 then
-			SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideShelterHard)
-		end
+	if var_2_0.difficulty == 3 or var_2_0.difficulty == 4 then
+		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideShelterHard)
 	end
 end
 

@@ -26,6 +26,7 @@ end
 
 function var_0_0.initComponents(arg_3_0)
 	arg_3_0:addComp("effect", RoomEffectComp)
+	arg_3_0:addComp("changeColorComp", RoomBlockChangeColorComp)
 end
 
 function var_0_0.removeParamsAndPlayAnimator(arg_4_0, arg_4_1, arg_4_2, arg_4_3)
@@ -85,6 +86,7 @@ function var_0_0.refreshLand(arg_7_0)
 	arg_7_0:_refreshFullRiver(var_7_0)
 	arg_7_0:_refreshWaterGradient(var_7_0)
 	arg_7_0:_refreshEffect()
+	arg_7_0.changeColorComp:refreshLand()
 end
 
 function var_0_0.checkBlockLandShow(arg_8_0, arg_8_1)

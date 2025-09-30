@@ -89,7 +89,8 @@ function var_0_0.reqConfigNames(arg_2_0)
 		"room_skin",
 		"room_building_occupy",
 		"room_building_type",
-		"room_block_color"
+		"room_block_color",
+		"room_block_color_param"
 	}
 end
 

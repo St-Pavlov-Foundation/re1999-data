@@ -47,7 +47,7 @@ function var_0_0._onEnterOneSceneFinish(arg_3_0, arg_3_1)
 		return
 	end
 
-	GameUtil.setActiveUIBlock(arg_3_0._msg, true, false)
+	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", true, false)
 
 	local var_3_0, var_3_1 = SurvivalShelterModel.instance:getNeedShowFightSuccess()
 
@@ -117,7 +117,12 @@ function var_0_0.onPlayerAnimFinish(arg_7_0)
 		var_7_4 = tonumber(var_7_3) or 0
 
 		if var_7_4 > 0 and not StoryModel.instance:isStoryFinished(var_7_4) then
-			StoryController.instance:playStory(var_7_4, nil, arg_7_0.showResultPanel, arg_7_0, true)
+			GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
+			StoryController.instance:playStory(var_7_4, nil, arg_7_0.showResultPanel, arg_7_0, {
+				storyIds = {
+					var_7_4
+				}
+			})
 		else
 			arg_7_0:showResultPanel(true)
 		end
@@ -142,13 +147,13 @@ function var_0_0.isHideEnding(arg_8_0)
 end
 
 function var_0_0.showSettle(arg_9_0, arg_9_1)
-	GameUtil.setActiveUIBlock(arg_9_0._msg, false, true)
+	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
 	SurvivalController.instance:enterSurvivalSettle()
 	arg_9_0:onDone(arg_9_1)
 end
 
 function var_0_0.showResultPanel(arg_10_0, arg_10_1)
-	GameUtil.setActiveUIBlock(arg_10_0._msg, false, true)
+	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
 
 	local var_10_0 = SurvivalModel.instance:getSurvivalSettleInfo()
 	local var_10_1 = var_10_0 and var_10_0.win

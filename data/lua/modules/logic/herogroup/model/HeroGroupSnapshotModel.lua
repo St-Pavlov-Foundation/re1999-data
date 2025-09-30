@@ -45,7 +45,7 @@ end
 function var_0_0.getSortSubIds(arg_6_0, arg_6_1)
 	local var_6_0 = arg_6_0:getById(arg_6_1)
 
-	return var_6_0 and var_6_0:getSortSubIds()
+	return var_6_0 and var_6_0:getSortSubIds() or {}
 end
 
 function var_0_0.getHeroGroupSnapshotList(arg_7_0, arg_7_1)

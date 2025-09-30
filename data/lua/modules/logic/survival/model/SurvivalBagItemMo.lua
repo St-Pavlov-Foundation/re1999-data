@@ -212,25 +212,26 @@ function var_0_0.isDisasterRecommendItem(arg_14_0, arg_14_1)
 		local var_14_1 = var_14_0 and var_14_0.id or 0
 		local var_14_2 = lua_survival_map_group.configDict[var_14_1].initDisaster
 		local var_14_3 = lua_survival_disaster.configDict[var_14_2]
+		local var_14_4 = SurvivalShelterModel.instance:getWeekInfo():getSurvivalMapInfoMo(arg_14_1).disasterCo
 
-		if var_14_3 and (var_14_3.recommend == arg_14_0.co.id or var_14_3.recommend == arg_14_0.co.id) then
+		if var_14_3 and (var_14_3.recommend == arg_14_0.co.id or var_14_4 and var_14_4.recommend == arg_14_0.co.id) then
 			return true
 		end
 	else
-		local var_14_4 = SurvivalMapModel.instance:getSceneMo()
+		local var_14_5 = SurvivalMapModel.instance:getSceneMo()
 
-		if not var_14_4 then
+		if not var_14_5 then
 			return false
 		end
 
-		if not var_14_4._mapInfo.groupCo or not var_14_4._mapInfo.disasterCo then
+		if not var_14_5._mapInfo.groupCo or not var_14_5._mapInfo.disasterCo then
 			return false
 		end
 
-		local var_14_5 = var_14_4._mapInfo.groupCo.initDisaster
-		local var_14_6 = lua_survival_disaster.configDict[var_14_5]
+		local var_14_6 = var_14_5._mapInfo.groupCo.initDisaster
+		local var_14_7 = lua_survival_disaster.configDict[var_14_6]
 
-		if var_14_6 and var_14_6.recommend == arg_14_0.co.id or var_14_4._mapInfo.disasterCo.recommend == arg_14_0.co.id then
+		if var_14_7 and var_14_7.recommend == arg_14_0.co.id or var_14_5._mapInfo.disasterCo.recommend == arg_14_0.co.id then
 			return true
 		end
 	end

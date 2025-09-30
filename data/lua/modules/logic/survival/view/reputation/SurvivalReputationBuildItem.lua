@@ -259,16 +259,12 @@ function var_0_0._onProgressFloat(arg_17_0, arg_17_1)
 		arg_17_0._imageprogress.fillAmount = arg_17_0.oldPer + arg_17_1
 	end
 
-	if arg_17_1 >= arg_17_0.firstMovePer then
-		log("SurvivalReputationBuildItem _onProgressFloat")
+	if arg_17_1 >= arg_17_0.firstMovePer and arg_17_0.progresMoveStage == 1 then
+		arg_17_0.progresMoveStage = 2
 
-		if arg_17_0.progresMoveStage == 1 then
-			arg_17_0.progresMoveStage = 2
-
-			arg_17_0:_refreshUIState({
-				per = arg_17_0.secondMovePer
-			})
-		end
+		arg_17_0:_refreshUIState({
+			per = arg_17_0.secondMovePer
+		})
 	end
 
 	if arg_17_1 > arg_17_0.firstMovePer then

@@ -70,7 +70,7 @@ function var_0_0.getBgPrefabUrl(arg_6_0, arg_6_1)
 	end
 end
 
-function var_0_0.getAchievementProgressBySourceType(arg_7_0)
+function var_0_0.getAchievementProgressBySourceType(arg_7_0, arg_7_1, arg_7_2)
 	if arg_7_0 == AchievementEnum.SourceType.Tower then
 		local var_7_0 = TowerPermanentModel.instance:getCurPermanentPassLayer()
 		local var_7_1 = TowerPermanentDeepModel.instance:getCurMaxDeepHigh()

@@ -72,7 +72,7 @@ function var_0_0.requestAutoFight(arg_10_0)
 		return
 	end
 
-	arg_10_0.workComp:com_registWork(FightWorkRequestAutoFight):start()
+	arg_10_0.workComp:registWork(FightWorkRequestAutoFight):start()
 end
 
 function var_0_0.onDestructor(arg_11_0)

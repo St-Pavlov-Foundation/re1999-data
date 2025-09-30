@@ -9,7 +9,7 @@ end
 function var_0_0.onInitView(arg_2_0)
 	arg_2_0._btnTalent = gohelper.findChildButtonWithAudio(arg_2_0.viewGO, arg_2_0._rootPath .. "Left/#btn_effect")
 	arg_2_0._goTalentTips = gohelper.findChild(arg_2_0.viewGO, arg_2_0._rootPath .. "Left/#go_effectTips")
-	arg_2_0._goTalentTipsItem = gohelper.findChild(arg_2_0.viewGO, arg_2_0._rootPath .. "Left/#go_effectTips/#go_effectItem")
+	arg_2_0._goTalentTipsItem = gohelper.findChild(arg_2_0.viewGO, arg_2_0._rootPath .. "Left/#go_effectTips/#scroll_tips/viewport/content/#go_effectItem")
 end
 
 function var_0_0.addEvents(arg_3_0)

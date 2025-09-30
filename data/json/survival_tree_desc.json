@@ -3225,14 +3225,6 @@
   },
   {
     "id": 207020100,
-    "nodeId": 106,
-    "desc": "别再丢了！",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31007"
-  },
-  {
-    "id": 207020100,
     "nodeId": 78,
     "desc": "询问",
     "icon": 15,
@@ -3413,7 +3405,7 @@
     "desc": "3号",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|207020110"
+    "result": "ChoiceList|207020111"
   },
   {
     "id": 207020101,
@@ -3421,7 +3413,7 @@
     "desc": "5号",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|207020111"
+    "result": "ChoiceList|207020110"
   },
   {
     "id": 207020101,
@@ -3478,6 +3470,14 @@
     "icon": 15,
     "condition": "",
     "result": "SettleState|5"
+  },
+  {
+    "id": 207020103,
+    "nodeId": 106,
+    "desc": "别再丢了！",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|31007"
   },
   {
     "id": 207020200,
@@ -5395,7 +5395,7 @@
     "id": 207030401,
     "nodeId": 50,
     "desc": "为什么总是魔精？",
-    "icon": 15,
+    "icon": 6,
     "condition": "",
     "result": "JumpEvent|4#207030404"
   },
@@ -5733,7 +5733,7 @@
     "desc": "伺机“借”走他的钥匙",
     "icon": 15,
     "condition": "",
-    "result": "CostGameTime|60"
+    "result": "CostGameTime|30"
   },
   {
     "id": 207030501,
@@ -6139,7 +6139,7 @@
     "id": 207040401,
     "nodeId": 177,
     "desc": "只能战斗了",
-    "icon": 15,
+    "icon": 6,
     "condition": "",
     "result": "JumpEvent|4#207040402"
   },
@@ -6251,6 +6251,14 @@
     "id": 207040702,
     "nodeId": 66,
     "desc": "可惜只是脱口而出“该死的”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|207040713"
+  },
+  {
+    "id": 207040702,
+    "nodeId": 68,
+    "desc": "走吧",
     "icon": 15,
     "condition": "",
     "result": "CreateEvent|7#207040703#3#6#false"

@@ -221,6 +221,12 @@ function var_0_0.updateEntity(arg_19_0, arg_19_1)
 end
 
 function var_0_0.onDestroy(arg_20_0)
+	if arg_20_0._loader then
+		arg_20_0._loader:dispose()
+
+		arg_20_0._loader = nil
+	end
+
 	arg_20_0._effectDelayTime = nil
 
 	TaskDispatcher.cancelTask(arg_20_0._onBuildEffectPlayFinish, arg_20_0)

@@ -586,4 +586,12 @@ function var_0_0.isAllReputationShopMaxLevel(arg_45_0)
 	return true
 end
 
+function var_0_0.getSurvivalMapInfoMo(arg_46_0, arg_46_1)
+	for iter_46_0, iter_46_1 in ipairs(arg_46_0.mapInfos) do
+		if arg_46_1 == iter_46_1.mapId then
+			return iter_46_1
+		end
+	end
+end
+
 return var_0_0

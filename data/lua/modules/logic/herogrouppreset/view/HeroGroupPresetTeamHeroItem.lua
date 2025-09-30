@@ -92,6 +92,11 @@ end
 
 function var_0_0._editableAddEvents(arg_7_0)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, arg_7_0._onCloseViewFinish, arg_7_0)
+	arg_7_0:addEventCb(EquipController.instance, EquipEvent.onDeleteEquip, arg_7_0._showEquip, arg_7_0)
+	arg_7_0:addEventCb(EquipController.instance, EquipEvent.onBreakSuccess, arg_7_0._showEquip, arg_7_0)
+	arg_7_0:addEventCb(EquipController.instance, EquipEvent.onEquipStrengthenReply, arg_7_0._showEquip, arg_7_0)
+	arg_7_0:addEventCb(EquipController.instance, EquipEvent.onEquipRefineReply, arg_7_0._showEquip, arg_7_0)
+	arg_7_0:addEventCb(EquipController.instance, EquipEvent.onUpdateEquip, arg_7_0._showEquip, arg_7_0)
 end
 
 function var_0_0._editableRemoveEvents(arg_8_0)
@@ -183,41 +188,47 @@ function var_0_0.onUpdateMO(arg_11_0, arg_11_1, arg_11_2, arg_11_3, arg_11_4)
 		UISpriteSetMgr.instance:setCommonSprite(arg_11_0.imagecareer, "lssx_" .. tostring(var_11_1.career))
 	end
 
-	local var_11_9 = arg_11_3 and arg_11_3:getPosEquips(arg_11_4 - 1).equipUid
-	local var_11_10 = var_11_9 and var_11_9[1]
-	local var_11_11 = var_11_10 and EquipModel.instance:getEquip(var_11_10) or var_11_10 and HeroGroupTrialModel.instance:getEquipMo(var_11_10)
-	local var_11_12 = var_11_11 ~= nil
+	arg_11_0:_showEquip()
 
-	gohelper.setActive(arg_11_0.goequipempty, not var_11_12)
-	gohelper.setActive(arg_11_0.equipicon, var_11_12)
-
-	if var_11_12 then
-		arg_11_0.equipicon:LoadImage(ResUrl.getEquipIcon(var_11_11.config.icon))
-	end
-
-	arg_11_0._equipMo = var_11_11
-
-	local var_11_13
+	local var_11_9
 
 	if arg_11_0.trialCO and arg_11_0.trialCO.equipId > 0 then
-		local var_11_14 = EquipConfig.instance:getEquipCo(arg_11_0.trialCO.equipId)
-		local var_11_15 = EquipConfig.instance:getEquipCo(arg_11_0.trialCO.equipId)
-		local var_11_16 = var_11_15 ~= nil
+		local var_11_10 = EquipConfig.instance:getEquipCo(arg_11_0.trialCO.equipId)
+		local var_11_11 = EquipConfig.instance:getEquipCo(arg_11_0.trialCO.equipId)
+		local var_11_12 = var_11_11 ~= nil
 
-		gohelper.setActive(arg_11_0.goequipempty, not var_11_16)
-		gohelper.setActive(arg_11_0.equipicon, var_11_16)
+		gohelper.setActive(arg_11_0.goequipempty, not var_11_12)
+		gohelper.setActive(arg_11_0.equipicon, var_11_12)
 
-		if var_11_16 then
-			arg_11_0.equipicon:LoadImage(ResUrl.getEquipIcon(var_11_15.icon))
+		if var_11_12 then
+			arg_11_0.equipicon:LoadImage(ResUrl.getEquipIcon(var_11_11.icon))
 		end
 	end
 end
 
-function var_0_0.getShowLevelText(arg_12_0, arg_12_1)
-	return "<size=12>LV.</size>" .. tostring(arg_12_1)
+function var_0_0._showEquip(arg_12_0)
+	local var_12_0 = arg_12_0._heroGroupMo
+	local var_12_1 = arg_12_0._index
+	local var_12_2 = var_12_0 and var_12_0:getPosEquips(var_12_1 - 1).equipUid
+	local var_12_3 = var_12_2 and var_12_2[1]
+	local var_12_4 = var_12_3 and EquipModel.instance:getEquip(var_12_3) or var_12_3 and HeroGroupTrialModel.instance:getEquipMo(var_12_3)
+	local var_12_5 = var_12_4 ~= nil
+
+	gohelper.setActive(arg_12_0.goequipempty, not var_12_5)
+	gohelper.setActive(arg_12_0.equipicon, var_12_5)
+
+	if var_12_5 then
+		arg_12_0.equipicon:LoadImage(ResUrl.getEquipIcon(var_12_4.config.icon))
+	end
+
+	arg_12_0._equipMo = var_12_4
 end
 
-function var_0_0.onDestroyView(arg_13_0)
+function var_0_0.getShowLevelText(arg_13_0, arg_13_1)
+	return "<size=12>LV.</size>" .. tostring(arg_13_1)
+end
+
+function var_0_0.onDestroyView(arg_14_0)
 	return
 end
 

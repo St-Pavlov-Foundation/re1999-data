@@ -183,6 +183,12 @@ function var_0_0.refreshUI(arg_13_0)
 		gohelper.CreateObjList(arg_13_0, arg_13_0.showHeroGroupItem, var_13_6, arg_13_0._gocurherogroup, arg_13_0._goherogroupItem)
 	end
 
+	local var_13_8 = FightModel.instance:getFightParam()
+
+	if var_13_8 then
+		var_13_8:setEpisodeId(arg_13_0.episodeCo.id)
+	end
+
 	arg_13_0:refreshRecommend()
 end
 

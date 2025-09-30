@@ -21,12 +21,14 @@ function var_0_0.addEvents(arg_2_0)
 	arg_2_0._btnsave:AddClickListener(arg_2_0._btnSaveOnClick, arg_2_0)
 	arg_2_0._btnload:AddClickListener(arg_2_0._btnLoadOnClick, arg_2_0)
 	arg_2_0:addEventCb(TowerController.instance, TowerEvent.OnLoadTeamSuccess, arg_2_0.refreshUI, arg_2_0)
+	arg_2_0:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, arg_2_0.playDeepInfoAnim, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
 	arg_3_0._btnsave:RemoveClickListener()
 	arg_3_0._btnload:RemoveClickListener()
 	arg_3_0:removeEventCb(TowerController.instance, TowerEvent.OnLoadTeamSuccess, arg_3_0.refreshUI, arg_3_0)
+	arg_3_0:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, arg_3_0.playDeepInfoAnim, arg_3_0)
 end
 
 function var_0_0._btnSaveOnClick(arg_4_0)
@@ -56,6 +58,8 @@ function var_0_0._editableInitView(arg_6_0)
 
 	gohelper.setActive(arg_6_0._goroundItem, false)
 	gohelper.setActive(arg_6_0._goassistBossClick, false)
+
+	arg_6_0.isDropAssistBoss = false
 end
 
 function var_0_0.onUpdateParam(arg_7_0)
@@ -124,9 +128,13 @@ function var_0_0.refreshBoss(arg_12_0)
 end
 
 function var_0_0.playDeepInfoAnim(arg_13_0)
+	arg_13_0.curGroupMO = HeroGroupModel.instance:getCurGroupMO()
+	arg_13_0.bossId = arg_13_0.curGroupMO:getAssistBossId()
+
 	if arg_13_0.bossId > 0 then
 		arg_13_0._animAssistBoss:Play("out", 0, 0)
 		arg_13_0._animAssistBoss:Update(0)
+		gohelper.setActive(arg_13_0._goassistBoss, not arg_13_0.isDropAssistBoss)
 		TaskDispatcher.runDelay(arg_13_0.showAssistBossEmpty, arg_13_0, 0.167)
 	else
 		TowerController.instance:dispatchEvent(TowerEvent.OnShowAssistBossEmpty)
@@ -148,6 +156,8 @@ function var_0_0.showAssistBossEmpty(arg_14_0)
 	gohelper.setActive(arg_14_0._goassistBossEmpty, true)
 	arg_14_0._animAssistBossEmpty:Play()
 	TowerController.instance:dispatchEvent(TowerEvent.OnShowAssistBossEmpty)
+
+	arg_14_0.isDropAssistBoss = true
 end
 
 function var_0_0.removeAssistBoss(arg_15_0)

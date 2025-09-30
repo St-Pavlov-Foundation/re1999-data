@@ -285,7 +285,7 @@ function var_0_0._onUpdateHeroGroupSort(arg_27_0)
 end
 
 function var_0_0._onChangeEquip(arg_28_0, arg_28_1, arg_28_2)
-	if arg_28_0._groupId == arg_28_1 and arg_28_0._mo.id == arg_28_2 then
+	if arg_28_0._groupId == arg_28_1 and arg_28_0._mo and arg_28_0._mo.id == arg_28_2 then
 		arg_28_0:_refreshHeroItem()
 	end
 end

@@ -333,7 +333,8 @@ var_0_0.EffectRebuildCompNames = {
 	"cameraFollowTargetComp",
 	"critter",
 	"vehickleTransport",
-	"atmosphere"
+	"atmosphere",
+	"changeColorComp"
 }
 var_0_0.AtmosphereCacheKey = "RoomAtmosphereCacheKey_v2a5"
 var_0_0.AtmosphereTriggerType = {

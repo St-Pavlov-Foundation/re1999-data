@@ -1348,7 +1348,7 @@
     "group": 21,
     "tag": "",
     "type": 17,
-    "typeParam": "1#50",
+    "typeParam": "50",
     "itemParam": ""
   },
   {
@@ -1356,7 +1356,7 @@
     "group": 21,
     "tag": "",
     "type": 17,
-    "typeParam": "1#100",
+    "typeParam": "100",
     "itemParam": ""
   },
   {

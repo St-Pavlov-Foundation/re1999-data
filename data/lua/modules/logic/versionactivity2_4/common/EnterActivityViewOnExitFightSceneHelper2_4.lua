@@ -124,7 +124,7 @@ function var_0_0._enterActivity12402(arg_10_0, arg_10_1)
 	local var_10_2 = FlowSequence.New()
 
 	var_10_2:addWork(OpenViewWork.New({
-		openFunction = var_0_0.open2_7ReactivityEnterView,
+		openFunction = var_0_0.open3_1ReactivityEnterView,
 		openFunctionObj = VersionActivityFixedHelper.getVersionActivityEnterController().instance,
 		waitOpenViewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
 	}))
@@ -144,7 +144,7 @@ function var_0_0._enterActivity12402(arg_10_0, arg_10_1)
 	var_0_0.sequence = var_10_2
 end
 
-function var_0_0.open2_4ReactivityEnterView()
+function var_0_0.open3_1ReactivityEnterView()
 	VersionActivityFixedHelper.getVersionActivityEnterController():directOpenVersionActivityEnterView(VersionActivity3_1Enum.ActivityId.Reactivity)
 end
 

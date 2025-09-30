@@ -218,28 +218,30 @@ function var_0_0.delayRefreshInfo(arg_15_0)
 
 	arg_15_0._simageCIcon:LoadImage(ResUrl.getRougeSingleBgCollection(var_15_1.icon))
 
-	arg_15_0._txtCName.text = var_15_1.title
+	local var_15_2 = Activity191Enum.CollectionColor[var_15_1.rare]
+
+	arg_15_0._txtCName.text = string.format("<#%s>%s</color>", var_15_2, var_15_1.title)
 	arg_15_0._txtCDesc.text = SkillHelper.buildDesc(var_15_1.desc)
 
 	if string.nilorempty(var_15_1.label) then
 		gohelper.setActive(arg_15_0._goCTag1, false)
 		gohelper.setActive(arg_15_0._goCTag2, false)
 	else
-		local var_15_2 = string.split(var_15_1.label, "#")
+		local var_15_3 = string.split(var_15_1.label, "#")
 
 		for iter_15_0 = 1, 2 do
-			local var_15_3 = var_15_2[iter_15_0]
+			local var_15_4 = var_15_3[iter_15_0]
 
-			arg_15_0["_txtCTag" .. iter_15_0].text = var_15_3
+			arg_15_0["_txtCTag" .. iter_15_0].text = var_15_4
 
-			gohelper.setActive(arg_15_0["_goCTag" .. iter_15_0], var_15_3)
+			gohelper.setActive(arg_15_0["_goCTag" .. iter_15_0], var_15_4)
 		end
 	end
 
-	local var_15_4 = arg_15_0.gameInfo:isItemInTeam(arg_15_0.showItemUid)
+	local var_15_5 = arg_15_0.gameInfo:isItemInTeam(arg_15_0.showItemUid)
 
-	gohelper.setActive(arg_15_0._btnEquip, not var_15_4)
-	gohelper.setActive(arg_15_0._btnUnEquip, var_15_4)
+	gohelper.setActive(arg_15_0._btnEquip, not var_15_5)
+	gohelper.setActive(arg_15_0._btnUnEquip, var_15_5)
 end
 
 function var_0_0.refreshHeroInfo(arg_16_0)

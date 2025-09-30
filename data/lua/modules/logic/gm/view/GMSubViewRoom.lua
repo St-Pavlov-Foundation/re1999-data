@@ -682,6 +682,7 @@ end
 local var_0_2 = UnityEngine.Shader
 local var_0_3 = "_ENABLE_CHANGE_COLOR"
 local var_0_4 = {
+	enableChangeColor = var_0_2.PropertyToID("_EnableChangeColor"),
 	hue = var_0_2.PropertyToID("_Hue"),
 	saturation = var_0_2.PropertyToID("_Saturation"),
 	brightness = var_0_2.PropertyToID("_Brightness")
@@ -692,17 +693,29 @@ function var_0_0._setEntityListByEffectKeyList(arg_46_0, arg_46_1, arg_46_2, arg
 
 	var_46_0:Clear()
 
+	local var_46_1 = lua_room_block_color_param.configList
+	local var_46_2 = #var_46_1
+	local var_46_3 = 0
+
 	for iter_46_0, iter_46_1 in ipairs(arg_46_1) do
 		if arg_46_3 then
-			local var_46_1 = math.floor(iter_46_0 % 200) * 0.01 - 1
+			var_46_3 = var_46_3 + 1
 
-			var_46_0:SetFloat(var_0_4.hue, var_46_1)
-			var_46_0:SetFloat(var_0_4.saturation, var_46_1)
-			var_46_0:SetFloat(var_0_4.brightness, var_46_1)
+			if var_46_3 > #var_46_1 then
+				var_46_3 = 1
+			end
+
+			local var_46_4 = var_46_1[var_46_3]
+			local var_46_5 = math.floor(iter_46_0 % 200) * 0.01 - 1
+
+			var_46_0:SetFloat(var_0_4.enableChangeColor, 1)
+			var_46_0:SetFloat(var_0_4.hue, var_46_4.hue)
+			var_46_0:SetFloat(var_0_4.saturation, var_46_4.saturation)
+			var_46_0:SetFloat(var_0_4.brightness, var_46_4.brightness)
 		end
 
 		for iter_46_2, iter_46_3 in ipairs(arg_46_2) do
-			arg_46_0:_setMeshReaderColor(iter_46_1.effect:getMeshRenderersByKey(iter_46_3), var_46_0, open)
+			arg_46_0:_setMeshReaderColor(iter_46_1.effect:getComponentsByPath(iter_46_3, RoomEnum.ComponentName.MeshRenderer, "mesh"), var_46_0, open)
 		end
 	end
 end
@@ -711,12 +724,6 @@ function var_0_0._setMeshReaderColor(arg_47_0, arg_47_1, arg_47_2, arg_47_3)
 	if arg_47_1 then
 		for iter_47_0, iter_47_1 in ipairs(arg_47_1) do
 			iter_47_1:SetPropertyBlock(arg_47_2)
-
-			if arg_47_3 then
-				MaterialReplaceHelper.SetRendererKeyworld(iter_47_1, var_0_3, true)
-			else
-				MaterialReplaceHelper.SetRendererKeyworld(iter_47_1, var_0_3, false)
-			end
 		end
 	end
 end

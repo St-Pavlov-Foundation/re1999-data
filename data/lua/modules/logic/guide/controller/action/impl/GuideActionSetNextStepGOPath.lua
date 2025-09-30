@@ -294,7 +294,12 @@ function var_0_0.findSurvivalSpBlockPath(arg_20_0)
 		return ""
 	end
 
-	return string.format("cameraroot/SceneRoot/SurvivalScene/SPBlockRoot/%s", tostring(SurvivalMapModel.instance.guideSpBlockPos))
+	local var_20_0 = SurvivalMapModel.instance.guideSpBlockPos
+	local var_20_1 = Vector3.New(SurvivalHelper.instance:hexPointToWorldPoint(var_20_0.q, var_20_0.r))
+
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.TweenCameraFocus, var_20_1, 0.3)
+
+	return string.format("cameraroot/SceneRoot/SurvivalScene/SPBlockRoot/%s", tostring(var_20_0))
 end
 
 function var_0_0.getBossTowerFirstBossPath(arg_21_0)

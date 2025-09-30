@@ -199,9 +199,17 @@ end
 function var_0_0.refreshCollectionItem(arg_15_0)
 	local var_15_0 = {}
 
-	for iter_15_0, iter_15_1 in ipairs(arg_15_0.gameInfo.warehouseInfo.item) do
-		if Activity191Config.instance:getCollectionCo(iter_15_1.itemId).rare < Activity191Enum.MaxItemLevel and not tabletool.indexOf(arg_15_0.selectItemUidList, iter_15_1.uid) then
-			var_15_0[#var_15_0 + 1] = iter_15_1
+	if arg_15_0.nodeDetailMo.type == Activity191Enum.NodeType.ReplaceEvent then
+		for iter_15_0, iter_15_1 in ipairs(arg_15_0.gameInfo.warehouseInfo.item) do
+			if not tabletool.indexOf(arg_15_0.selectItemUidList, iter_15_1.uid) then
+				var_15_0[#var_15_0 + 1] = iter_15_1
+			end
+		end
+	elseif arg_15_0.nodeDetailMo.type == Activity191Enum.NodeType.UpgradeEvent then
+		for iter_15_2, iter_15_3 in ipairs(arg_15_0.gameInfo.warehouseInfo.item) do
+			if Activity191Config.instance:getCollectionCo(iter_15_3.itemId).rare < Activity191Enum.MaxItemLevel and not tabletool.indexOf(arg_15_0.selectItemUidList, iter_15_3.uid) then
+				var_15_0[#var_15_0 + 1] = iter_15_3
+			end
 		end
 	end
 
@@ -212,19 +220,19 @@ function var_0_0.refreshCollectionItem(arg_15_0)
 		return var_16_0.rare > var_16_1.rare
 	end)
 
-	for iter_15_2 = 1, #var_15_0 do
-		local var_15_1 = var_15_0[iter_15_2]
-		local var_15_2 = arg_15_0.collectionItemList[iter_15_2]
+	for iter_15_4 = 1, #var_15_0 do
+		local var_15_1 = var_15_0[iter_15_4]
+		local var_15_2 = arg_15_0.collectionItemList[iter_15_4]
 
 		if not var_15_2 then
 			local var_15_3 = arg_15_0:getResInst(Activity191Enum.PrefabPath.CollectionItem, arg_15_0._goContent)
 
 			var_15_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_15_3, Act191CollectionItem)
-			arg_15_0.collectionItemList[iter_15_2] = var_15_2
+			arg_15_0.collectionItemList[iter_15_4] = var_15_2
 		end
 
 		var_15_2:setData(var_15_1)
-		arg_15_0.collectionItemList[iter_15_2]:setActive(true)
+		arg_15_0.collectionItemList[iter_15_4]:setActive(true)
 
 		if arg_15_0.removeItemUid and arg_15_0.removeItemUid == var_15_1.uid then
 			var_15_2:playAnim("open")
@@ -233,8 +241,8 @@ function var_0_0.refreshCollectionItem(arg_15_0)
 		end
 	end
 
-	for iter_15_3 = #var_15_0 + 1, #arg_15_0.collectionItemList do
-		arg_15_0.collectionItemList[iter_15_3]:setActive(false)
+	for iter_15_5 = #var_15_0 + 1, #arg_15_0.collectionItemList do
+		arg_15_0.collectionItemList[iter_15_5]:setActive(false)
 	end
 end
 
