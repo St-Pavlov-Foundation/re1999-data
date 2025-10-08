@@ -57,6 +57,7 @@ function var_0_0._showSpine(arg_7_0, arg_7_1)
 	if arg_7_1 then
 		gohelper.addChildPosStay(arg_7_0._gospineroot, arg_7_0._spineGo)
 		arg_7_0._uiSpine:setModelVisible(true)
+		gohelper.setActive(arg_7_0._spineGo, true)
 
 		var_7_0, var_7_1 = -69, 0
 	else

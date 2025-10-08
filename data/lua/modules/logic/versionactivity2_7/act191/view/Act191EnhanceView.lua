@@ -51,6 +51,30 @@ function var_0_0.onOpen(arg_6_0)
 			var_6_2.text = var_6_1.desc
 
 			var_6_3:LoadImage(ResUrl.getAct174BuffIcon(var_6_1.icon))
+
+			local var_6_4 = SkillHelper.addLink(var_6_1.desc)
+			local var_6_5 = string.splitToNumber(var_6_1.effects, "|")[1]
+			local var_6_6 = lua_activity191_effect.configDict[var_6_5]
+
+			if var_6_6 then
+				if var_6_6.type == Activity191Enum.EffectType.EnhanceHero then
+					var_6_2.text = Activity191Helper.buildDesc(var_6_4, Activity191Enum.HyperLinkPattern.EnhanceDestiny, var_6_6.typeParam)
+
+					SkillHelper.addHyperLinkClick(var_6_2, Activity191Helper.clickHyperLinkDestiny)
+				elseif var_6_6.type == Activity191Enum.EffectType.Item then
+					var_6_2.text = Activity191Helper.buildDesc(var_6_4, Activity191Enum.HyperLinkPattern.EnhanceItem, var_6_6.typeParam .. "#")
+
+					SkillHelper.addHyperLinkClick(var_6_2, Activity191Helper.clickHyperLinkItem)
+				elseif var_6_6.type == Activity191Enum.EffectType.Hero then
+					var_6_2.text = Activity191Helper.buildDesc(var_6_4, Activity191Enum.HyperLinkPattern.Hero, var_6_6.typeParam)
+
+					SkillHelper.addHyperLinkClick(var_6_2, Activity191Helper.clickHyperLinkRole)
+				else
+					var_6_2.text = var_6_4
+				end
+			else
+				var_6_2.text = var_6_4
+			end
 		end
 	end
 

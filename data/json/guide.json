@@ -7452,7 +7452,7 @@
     "isOnline": 1,
     "trigger": "OpenView#Act191MainView",
     "invalid": "",
-    "interruptFinish": 0,
+    "interruptFinish": 1,
     "priority": 0,
     "parallel": 1,
     "restart": 0

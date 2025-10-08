@@ -503,6 +503,7 @@ return {
 	RoleStoryTickNoEnough2 = 40901,
 	RoleStoryDispatchNormalUnlock = 80105,
 	CharacterRankUp = -145,
+	DouQuQu3CntNotEnough = 315001,
 	Act194EquipCountNotEnough = 280011,
 	MeilanniEntranceLock5 = 10205,
 	RoomCritteNeedTwo = 220904,

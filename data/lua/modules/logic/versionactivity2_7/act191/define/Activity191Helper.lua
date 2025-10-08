@@ -154,14 +154,18 @@ function var_0_0.sortRoleCo(arg_14_0, arg_14_1)
 end
 
 function var_0_0.sortFetterHeroList(arg_15_0, arg_15_1)
-	if arg_15_0.transfer == arg_15_1.transfer then
-		if arg_15_0.config.quality == arg_15_1.config.quality then
-			return arg_15_0.config.roleId < arg_15_1.config.roleId
+	if arg_15_0.inBag == arg_15_1.inBag then
+		if arg_15_0.transfer == arg_15_1.transfer then
+			if arg_15_0.config.quality == arg_15_1.config.quality then
+				return arg_15_0.config.roleId < arg_15_1.config.roleId
+			else
+				return arg_15_0.config.quality < arg_15_1.config.quality
+			end
 		else
-			return arg_15_0.config.quality < arg_15_1.config.quality
+			return arg_15_0.transfer < arg_15_1.transfer
 		end
 	else
-		return arg_15_0.transfer < arg_15_1.transfer
+		return arg_15_0.inBag > arg_15_1.inBag
 	end
 end
 

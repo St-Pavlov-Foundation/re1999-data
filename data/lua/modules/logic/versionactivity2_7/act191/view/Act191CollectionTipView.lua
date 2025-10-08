@@ -54,91 +54,95 @@ end
 function var_0_0._editableInitView(arg_7_0)
 	arg_7_0.actId = Activity191Model.instance:getCurActId()
 
-	SkillHelper.addHyperLinkClick(arg_7_0._txtDesc)
+	SkillHelper.addHyperLinkClick(arg_7_0._txtDesc, arg_7_0._onHyperLinkClick, arg_7_0)
 end
 
-function var_0_0.onUpdateParam(arg_8_0)
-	arg_8_0:refreshUI()
+function var_0_0._onHyperLinkClick(arg_8_0, arg_8_1, arg_8_2)
+	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(arg_8_1, Vector2(305, -55), CommonBuffTipEnum.Pivot.Left)
 end
 
-function var_0_0.onOpen(arg_9_0)
-	Act191StatController.instance:onViewOpen(arg_9_0.viewName)
+function var_0_0.onUpdateParam(arg_9_0)
 	arg_9_0:refreshUI()
 end
 
-function var_0_0.onClose(arg_10_0)
-	local var_10_0 = arg_10_0.viewContainer:isManualClose()
-	local var_10_1 = arg_10_0.config and arg_10_0.config.title
-
-	Act191StatController.instance:statViewClose(arg_10_0.viewName, var_10_0, var_10_1)
+function var_0_0.onOpen(arg_10_0)
+	Act191StatController.instance:onViewOpen(arg_10_0.viewName)
+	arg_10_0:refreshUI()
 end
 
-function var_0_0.refreshUI(arg_11_0)
-	if arg_11_0.viewParam then
-		if arg_11_0.viewParam.pos then
-			local var_11_0 = recthelper.rectToRelativeAnchorPos(arg_11_0.viewParam.pos, arg_11_0.viewGO.transform)
+function var_0_0.onClose(arg_11_0)
+	local var_11_0 = arg_11_0.viewContainer:isManualClose()
+	local var_11_1 = arg_11_0.config and arg_11_0.config.title
 
-			recthelper.setAnchor(arg_11_0._goRoot.transform, var_11_0.x + 85, 8)
+	Act191StatController.instance:statViewClose(arg_11_0.viewName, var_11_0, var_11_1)
+end
+
+function var_0_0.refreshUI(arg_12_0)
+	if arg_12_0.viewParam then
+		if arg_12_0.viewParam.pos then
+			local var_12_0 = recthelper.rectToRelativeAnchorPos(arg_12_0.viewParam.pos, arg_12_0.viewGO.transform)
+
+			recthelper.setAnchor(arg_12_0._goRoot.transform, var_12_0.x + 85, 8)
 		end
 
-		gohelper.setActive(arg_11_0._btnClose, not arg_11_0.viewParam.notShowBg)
+		gohelper.setActive(arg_12_0._btnClose, not arg_12_0.viewParam.notShowBg)
 
-		if arg_11_0.viewParam.showBuy then
-			arg_11_0:refreshCost()
-			gohelper.setActive(arg_11_0._btnBuy, true)
+		if arg_12_0.viewParam.showBuy then
+			arg_12_0:refreshCost()
+			gohelper.setActive(arg_12_0._btnBuy, true)
 		else
-			gohelper.setActive(arg_11_0._btnBuy, false)
+			gohelper.setActive(arg_12_0._btnBuy, false)
 		end
 
-		if arg_11_0.viewParam.itemId then
-			arg_11_0:refreshCollection(arg_11_0.viewParam.itemId)
+		if arg_12_0.viewParam.itemId then
+			arg_12_0:refreshCollection(arg_12_0.viewParam.itemId)
 		end
 	end
 end
 
-function var_0_0.refreshCollection(arg_12_0, arg_12_1)
-	arg_12_0.config = Activity191Config.instance:getCollectionCo(arg_12_1)
+function var_0_0.refreshCollection(arg_13_0, arg_13_1)
+	arg_13_0.config = Activity191Config.instance:getCollectionCo(arg_13_1)
 
-	if arg_12_0.config then
-		arg_12_0._simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(arg_12_0.config.icon))
+	if arg_13_0.config then
+		arg_13_0._simageIcon:LoadImage(ResUrl.getRougeSingleBgCollection(arg_13_0.config.icon))
 
-		local var_12_0 = Activity191Enum.CollectionColor[arg_12_0.config.rare]
+		local var_13_0 = Activity191Enum.CollectionColor[arg_13_0.config.rare]
 
-		arg_12_0._txtName.text = string.format("<#%s>%s</color>", var_12_0, arg_12_0.config.title)
+		arg_13_0._txtName.text = string.format("<#%s>%s</color>", var_13_0, arg_13_0.config.title)
 
-		if arg_12_0.viewParam and arg_12_0.viewParam.enhance then
-			arg_12_0._txtDesc.text = SkillHelper.buildDesc(arg_12_0.config.replaceDesc)
+		if arg_13_0.viewParam and arg_13_0.viewParam.enhance then
+			arg_13_0._txtDesc.text = SkillHelper.buildDesc(arg_13_0.config.replaceDesc)
 		else
-			arg_12_0._txtDesc.text = SkillHelper.buildDesc(arg_12_0.config.desc)
+			arg_13_0._txtDesc.text = SkillHelper.buildDesc(arg_13_0.config.desc)
 		end
 
-		if string.nilorempty(arg_12_0.config.label) then
-			gohelper.setActive(arg_12_0._goTag1, false)
-			gohelper.setActive(arg_12_0._goTag2, false)
+		if string.nilorempty(arg_13_0.config.label) then
+			gohelper.setActive(arg_13_0._goTag1, false)
+			gohelper.setActive(arg_13_0._goTag2, false)
 		else
-			local var_12_1 = string.split(arg_12_0.config.label, "#")
+			local var_13_1 = string.split(arg_13_0.config.label, "#")
 
-			for iter_12_0 = 1, 2 do
-				local var_12_2 = var_12_1[iter_12_0]
+			for iter_13_0 = 1, 2 do
+				local var_13_2 = var_13_1[iter_13_0]
 
-				arg_12_0["_txtTag" .. iter_12_0].text = var_12_2
+				arg_13_0["_txtTag" .. iter_13_0].text = var_13_2
 
-				gohelper.setActive(arg_12_0["_goTag" .. iter_12_0], var_12_2)
+				gohelper.setActive(arg_13_0["_goTag" .. iter_13_0], var_13_2)
 			end
 		end
 	end
 end
 
-function var_0_0.refreshCost(arg_13_0)
-	local var_13_0 = arg_13_0.viewParam.cost
+function var_0_0.refreshCost(arg_14_0)
+	local var_14_0 = arg_14_0.viewParam.cost
 
-	if var_13_0 > Activity191Model.instance:getActInfo():getGameInfo().coin then
-		SLFramework.UGUI.GuiHelper.SetColor(arg_13_0._txtBuyCost, "#be4343")
+	if var_14_0 > Activity191Model.instance:getActInfo():getGameInfo().coin then
+		SLFramework.UGUI.GuiHelper.SetColor(arg_14_0._txtBuyCost, "#be4343")
 	else
-		SLFramework.UGUI.GuiHelper.SetColor(arg_13_0._txtBuyCost, "#211f1f")
+		SLFramework.UGUI.GuiHelper.SetColor(arg_14_0._txtBuyCost, "#211f1f")
 	end
 
-	arg_13_0._txtBuyCost.text = var_13_0
+	arg_14_0._txtBuyCost.text = var_14_0
 end
 
 return var_0_0

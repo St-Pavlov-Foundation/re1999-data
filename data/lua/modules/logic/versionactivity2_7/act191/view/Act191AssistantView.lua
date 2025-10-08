@@ -233,6 +233,7 @@ function var_0_0.refreshAssistantInfo(arg_16_0)
 
 	Activity191Helper.setFetterIcon(arg_16_0._imageTag, var_16_1.icon)
 	arg_16_0._simageBoss:LoadImage(ResUrl.getAct191SingleBg(string.format("boss/%s", var_16_0.icon)))
+	UISpriteSetMgr.instance:setCommonSprite(arg_16_0._imageCareer, "lssx_" .. var_16_0.career)
 
 	if var_16_0.summonType == Activity191Enum.SummonType.Boss then
 		local var_16_2 = lua_activity191_assist_boss.configDict[var_16_0.id]
@@ -254,7 +255,7 @@ function var_0_0.refreshAssistantInfo(arg_16_0)
 		local var_16_7 = lua_monster_skill_template.configDict[var_16_5.skillTemplate]
 
 		arg_16_0.passiveSkillIds = string.splitToNumber(var_16_7.passiveSkill, "|")
-		arg_16_0.uniqueSkill = var_16_7.uniqueSkill
+		arg_16_0.uniqueSkill = tonumber(var_16_7.uniqueSkill)
 		arg_16_0._txtAttack.text = var_16_6.attack
 		arg_16_0._txtHp.text = var_16_6.life
 		arg_16_0._txtDef.text = var_16_6.defense

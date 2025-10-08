@@ -410,7 +410,7 @@ function var_0_0._onCloseView(arg_18_0, arg_18_1)
 	end
 
 	if arg_18_1 == ViewName.CharacterRecommedView then
-		arg_18_0:_refreshSpine()
+		arg_18_0:_refreshSkin()
 	end
 end
 

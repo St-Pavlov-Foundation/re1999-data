@@ -9728,6 +9728,14 @@
     "notShow": 0
   },
   {
+    "id": 315001,
+    "tips": "次数已耗尽",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
     "id": 310009,
     "tips": "茸茸特供罐数量已满",
     "icon": 0,

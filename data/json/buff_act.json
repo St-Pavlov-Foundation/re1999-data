@@ -3440,7 +3440,7 @@
   {
     "id": 1045,
     "type": "ChangeCardToSelf",
-    "effectTime": 101,
+    "effectTime": 102,
     "effectCondition": 0,
     "effect": "",
     "effectHangPoint": "",

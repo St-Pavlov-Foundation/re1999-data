@@ -305,47 +305,61 @@ function var_0_0.getFetterHeroList(arg_14_0, arg_14_1)
 	local var_14_1 = lua_activity191_role.configList
 
 	for iter_14_0, iter_14_1 in ipairs(var_14_1) do
-		if iter_14_1.activityId == arg_14_0.actId and iter_14_1.star == 1 then
-			local var_14_2 = 0
-			local var_14_3 = 0
+		local var_14_2 = iter_14_1.roleId
 
-			if arg_14_0:isHeroInTeam(iter_14_1.roleId) then
-				var_14_3 = 2
-			elseif arg_14_0:getHeroInfoInWarehouse(iter_14_1.roleId, true) then
-				var_14_3 = 1
+		if iter_14_1.activityId == arg_14_0.actId and iter_14_1.star == 1 then
+			local var_14_3 = 0
+			local var_14_4 = 0
+
+			if arg_14_0:isHeroInTeam(var_14_2) then
+				var_14_4 = 2
+			elseif arg_14_0:getHeroInfoInWarehouse(var_14_2, true) then
+				var_14_4 = 1
 			end
 
-			local var_14_4 = string.split(iter_14_1.tag, "#")
+			local var_14_5 = string.split(iter_14_1.tag, "#")
 
-			if tabletool.indexOf(var_14_4, arg_14_1) then
-				local var_14_5 = {
+			if tabletool.indexOf(var_14_5, arg_14_1) then
+				local var_14_6 = {
 					config = iter_14_1,
-					inBag = var_14_3,
-					transfer = var_14_2
+					inBag = var_14_4,
+					transfer = var_14_3
 				}
 
-				var_14_0[#var_14_0 + 1] = var_14_5
+				var_14_0[#var_14_0 + 1] = var_14_6
 			else
-				local var_14_6 = arg_14_0:getBattleHeroInfoInTeam(iter_14_1.roleId)
+				local var_14_7 = arg_14_0:getBattleHeroInfoInTeam(var_14_2)
 
-				if var_14_6 and var_14_6.itemUid1 ~= 0 then
-					local var_14_7 = arg_14_0:getItemInfoInWarehouse(var_14_6.itemUid1)
-					local var_14_8 = Activity191Config.instance:getCollectionCo(var_14_7.itemId)
+				if var_14_7 and var_14_7.itemUid1 ~= 0 then
+					local var_14_8 = arg_14_0:getItemInfoInWarehouse(var_14_7.itemUid1)
+					local var_14_9 = Activity191Config.instance:getCollectionCo(var_14_8.itemId)
 
-					if not string.nilorempty(var_14_8.tag) then
-						local var_14_9 = string.split(var_14_8.tag, "#")
+					if not string.nilorempty(var_14_9.tag) then
+						local var_14_10 = string.split(var_14_9.tag, "#")
 
-						if tabletool.indexOf(var_14_9, arg_14_1) then
-							local var_14_10 = {
+						if tabletool.indexOf(var_14_10, arg_14_1) then
+							local var_14_11 = {
 								inBag = 2,
 								transfer = 1,
 								config = iter_14_1
 							}
 
-							var_14_0[#var_14_0 + 1] = var_14_10
+							var_14_0[#var_14_0 + 1] = var_14_11
 						end
 					end
 				end
+			end
+
+			local var_14_12 = arg_14_0.heroId2ExtraFetterMap[var_14_2]
+
+			if var_14_12 and tabletool.indexOf(var_14_12, arg_14_1) then
+				local var_14_13 = {
+					transfer = 2,
+					config = iter_14_1,
+					inBag = var_14_4
+				}
+
+				var_14_0[#var_14_0 + 1] = var_14_13
 			end
 		end
 	end
@@ -724,7 +738,7 @@ function var_0_0.getBossAttr(arg_39_0)
 	local var_39_3 = arg_39_0:getTeamInfo()
 
 	for iter_39_0, iter_39_1 in ipairs(var_39_3.battleHeroInfo) do
-		if iter_39_1.heroId then
+		if iter_39_1.heroId and iter_39_1.heroId ~= 0 then
 			var_39_2 = var_39_2 + 1
 
 			local var_39_4 = Activity191Config.instance:getRoleCoByNativeId(iter_39_1.heroId, 1)

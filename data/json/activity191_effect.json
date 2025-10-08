@@ -1036,7 +1036,7 @@
     "group": 0,
     "tag": "",
     "type": 16,
-    "typeParam": "1#0#rewardEvent",
+    "typeParam": "1#0#rewardEvent#0#0",
     "itemParam": ""
   },
   {
@@ -1044,7 +1044,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#2",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
     "itemParam": ""
   },
   {
@@ -1052,7 +1052,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#3",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
     "itemParam": ""
   },
   {
@@ -1196,7 +1196,7 @@
     "group": 0,
     "tag": "",
     "type": 16,
-    "typeParam": "2#0#battleEvent",
+    "typeParam": "2#0#battleEvent#0#0",
     "itemParam": ""
   },
   {
@@ -1204,7 +1204,7 @@
     "group": 0,
     "tag": "",
     "type": 14,
-    "typeParam": "20",
+    "typeParam": "10",
     "itemParam": ""
   },
   {

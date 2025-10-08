@@ -6577,7 +6577,7 @@
   },
   {
     "id": 20571,
-    "life": 8096,
+    "life": 7744,
     "attack": 1510,
     "defense": 762,
     "mdefense": 762,
@@ -6585,7 +6585,7 @@
   },
   {
     "id": 20572,
-    "life": 9715,
+    "life": 9292,
     "attack": 1615,
     "defense": 792,
     "mdefense": 792,
@@ -6593,7 +6593,7 @@
   },
   {
     "id": 20573,
-    "life": 11334,
+    "life": 10841,
     "attack": 1721,
     "defense": 822,
     "mdefense": 822,
@@ -6601,7 +6601,7 @@
   },
   {
     "id": 20574,
-    "life": 12953,
+    "life": 12390,
     "attack": 1827,
     "defense": 853,
     "mdefense": 853,
@@ -6609,7 +6609,7 @@
   },
   {
     "id": 20575,
-    "life": 14572,
+    "life": 13939,
     "attack": 1932,
     "defense": 883,
     "mdefense": 883,
@@ -6617,7 +6617,7 @@
   },
   {
     "id": 20576,
-    "life": 16192,
+    "life": 15488,
     "attack": 2038,
     "defense": 914,
     "mdefense": 914,
@@ -7489,7 +7489,7 @@
   },
   {
     "id": 20761,
-    "life": 8360,
+    "life": 15840,
     "attack": 1553,
     "defense": 688,
     "mdefense": 688,
@@ -7497,7 +7497,7 @@
   },
   {
     "id": 20762,
-    "life": 10032,
+    "life": 19008,
     "attack": 1661,
     "defense": 715,
     "mdefense": 715,
@@ -7505,7 +7505,7 @@
   },
   {
     "id": 20763,
-    "life": 11704,
+    "life": 22176,
     "attack": 1770,
     "defense": 743,
     "mdefense": 743,
@@ -7513,7 +7513,7 @@
   },
   {
     "id": 20764,
-    "life": 13376,
+    "life": 25344,
     "attack": 1879,
     "defense": 770,
     "mdefense": 770,
@@ -7521,7 +7521,7 @@
   },
   {
     "id": 20765,
-    "life": 15048,
+    "life": 28512,
     "attack": 1987,
     "defense": 798,
     "mdefense": 798,
@@ -7529,7 +7529,7 @@
   },
   {
     "id": 20766,
-    "life": 16720,
+    "life": 31680,
     "attack": 2096,
     "defense": 825,
     "mdefense": 825,

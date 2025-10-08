@@ -10,11 +10,7 @@ function var_0_0.onInitView(arg_1_0)
 	arg_1_0._btnconfirm = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "Btn/#btn_confirm")
 	arg_1_0._btnconfirmgrey = gohelper.findChild(arg_1_0.viewGO, "Btn/#btn_confirm_grey")
 	arg_1_0._scrollitem = gohelper.findChildScrollRect(arg_1_0.viewGO, "item/#scroll_item")
-
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
-	end
-
+	arg_1_0.txt_tips = gohelper.findChildTextMesh(arg_1_0.viewGO, "titlebg/txt_tips")
 	arg_1_0.customItems = {}
 
 	arg_1_0:createItemScroll()
@@ -51,6 +47,7 @@ function var_0_0.onOpen(arg_4_0)
 	arg_4_0:refreshItemList()
 	arg_4_0:refreshBuildList()
 	arg_4_0:refreshBtnConfirm()
+	arg_4_0:refreshTextTip()
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideSurvivalReputationSelectViewOpen)
 end
 
@@ -175,6 +172,17 @@ function var_0_0.setSelect(arg_15_0, arg_15_1)
 	end
 
 	arg_15_0:refreshBtnConfirm()
+	arg_15_0:refreshTextTip()
+end
+
+function var_0_0.refreshTextTip(arg_16_0)
+	if arg_16_0.curSelect then
+		local var_16_0 = arg_16_0.customItems[arg_16_0.curSelect]
+
+		arg_16_0.txt_tips.text = var_16_0.buildCfg.desc
+	else
+		arg_16_0.txt_tips.text = ""
+	end
 end
 
 return var_0_0

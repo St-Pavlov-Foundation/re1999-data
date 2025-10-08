@@ -298,6 +298,8 @@ end
 
 function var_0_0.onClickCollectionAdd(arg_19_0)
 	if #arg_19_0.selectItemUidList >= arg_19_0.maxAddCnt then
+		GameFacade.showToast(ToastEnum.DouQuQu3CntNotEnough)
+
 		return
 	end
 
@@ -341,6 +343,8 @@ function var_0_0.onClickCollectionItem(arg_21_0, arg_21_1, arg_21_2)
 
 	if arg_21_0.quickAdd then
 		if #arg_21_0.selectItemUidList >= arg_21_0.maxAddCnt then
+			GameFacade.showToast(ToastEnum.DouQuQu3CntNotEnough)
+
 			return
 		end
 

@@ -35,7 +35,7 @@ function var_0_0.onClick(arg_3_0)
 
 	local var_3_0 = recthelper.uiPosToScreenPos(arg_3_0.viewGO.transform)
 
-	FightCommonTipController.instance:openCommonView("", arg_3_0.config.bossDesc, var_3_0, nil, nil)
+	FightCommonTipController.instance:openCommonView("", arg_3_0.config.bossDesc, var_3_0, nil, nil, -600)
 end
 
 function var_0_0.onPowerChange(arg_4_0, arg_4_1, arg_4_2, arg_4_3, arg_4_4)

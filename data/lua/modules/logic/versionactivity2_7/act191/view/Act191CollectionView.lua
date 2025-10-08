@@ -52,8 +52,6 @@ function var_0_0._editableInitView(arg_6_0)
 	SkillHelper.addHyperLinkClick(arg_6_0._txtCDesc)
 
 	arg_6_0._goItemList = arg_6_0._scrollItemList.gameObject
-	arg_6_0._layout = arg_6_0._goItemContent:GetComponent(gohelper.Type_GridLayoutGroup)
-	arg_6_0._mask2d = gohelper.findChild(arg_6_0._goItemList, "Viewport"):GetComponent(gohelper.Type_RectMask2D)
 	arg_6_0.equipItemList = {}
 	arg_6_0.showItemUid = nil
 	arg_6_0.equipPosTrList = {}
@@ -101,10 +99,6 @@ end
 function var_0_0.onDestroyView(arg_8_0)
 	for iter_8_0, iter_8_1 in ipairs(arg_8_0.slotItemList) do
 		CommonDragHelper.instance:unregisterDragObj(iter_8_1.go)
-	end
-
-	for iter_8_2, iter_8_3 in ipairs(arg_8_0.equipItemList) do
-		CommonDragHelper.instance:unregisterDragObj(iter_8_3.go)
 	end
 
 	TaskDispatcher.cancelTask(arg_8_0.delayRefreshInfo, arg_8_0)
@@ -176,21 +170,13 @@ function var_0_0.refreshItemList(arg_12_0)
 	end)
 
 	for iter_12_2, iter_12_3 in ipairs(var_12_0) do
-		local var_12_2 = arg_12_0.equipItemList[iter_12_2]
+		if not arg_12_0.equipItemList[iter_12_2] then
+			local var_12_2 = arg_12_0:getResInst(Activity191Enum.PrefabPath.CollectionItem, arg_12_0._goItemContent)
 
-		if var_12_2 then
-			var_12_2:setActive(true)
-		else
-			local var_12_3 = arg_12_0:getResInst(Activity191Enum.PrefabPath.CollectionItem, arg_12_0._goItemContent)
-
-			var_12_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_12_3, Act191CollectionItem)
-
-			CommonDragHelper.instance:registerDragObj(var_12_3, arg_12_0._beginDrag1, nil, arg_12_0._endDrag1, nil, arg_12_0, iter_12_2)
-
-			arg_12_0.equipItemList[iter_12_2] = var_12_2
+			arg_12_0.equipItemList[iter_12_2] = MonoHelper.addNoUpdateLuaComOnceToGo(var_12_2, Act191CollectionItem)
 		end
 
-		var_12_2:setData(iter_12_3)
+		arg_12_0.equipItemList[iter_12_2]:setData(iter_12_3)
 	end
 
 	for iter_12_4 = #var_12_0 + 1, #arg_12_0.equipItemList do
@@ -304,7 +290,7 @@ function var_0_0.refreshEquipSelect(arg_18_0)
 	end
 end
 
-function var_0_0._beginDrag(arg_19_0, arg_19_1, arg_19_2)
+function var_0_0._beginDrag(arg_19_0)
 	arg_19_0.dragging = true
 
 	gohelper.setAsLastSibling(arg_19_0._goTeam)
@@ -329,6 +315,8 @@ function var_0_0._endDrag(arg_20_0, arg_20_1, arg_20_2)
 	end
 
 	if var_20_2 and var_20_2 ~= arg_20_1 then
+		arg_20_0.equipping = true
+
 		arg_20_0.gameInfo:exchangeItem(arg_20_1, var_20_2)
 		gohelper.setActive(var_20_0.goCollection, false)
 	end
@@ -342,86 +330,40 @@ function var_0_0._checkDrag(arg_21_0, arg_21_1)
 	return not arg_21_0.itemUIdMap[arg_21_1]
 end
 
-function var_0_0._beginDrag1(arg_22_0, arg_22_1)
-	local var_22_0 = arg_22_0.equipItemList[arg_22_1]
+function var_0_0.onUpdateTeam(arg_22_0)
+	arg_22_0.showItemUid = nil
+	arg_22_0.teamInfo = arg_22_0.gameInfo:getTeamInfo()
 
-	if not var_22_0 then
-		return
-	end
-
-	var_22_0:setDrag(true)
-
-	arg_22_0._layout.enabled = false
-	arg_22_0._mask2d.enabled = false
-
-	gohelper.setAsLastSibling(arg_22_0._goItemList)
-end
-
-function var_0_0._endDrag1(arg_23_0, arg_23_1, arg_23_2)
-	local var_23_0 = arg_23_0.equipItemList[arg_23_1]
-
-	if not var_23_0 then
-		return
-	end
-
-	var_23_0:setDrag(false)
-	ZProj.TweenHelper.KillByObj(var_23_0.transform)
-
-	local var_23_1 = arg_23_2.position
-	local var_23_2
-
-	for iter_23_0, iter_23_1 in ipairs(arg_23_0.equipPosTrList) do
-		if gohelper.isMouseOverGo(iter_23_1, var_23_1) then
-			var_23_2 = iter_23_0
-
-			break
-		end
-	end
-
-	if var_23_2 then
-		arg_23_0.gameInfo:replaceItemInTeam(var_23_0.itemInfo.uid, var_23_2)
-		var_23_0:setActive(false)
-	end
-
-	recthelper.setAnchor(var_23_0.transform, 0, 0)
-	gohelper.setSibling(var_23_0.go, var_23_0.sibling)
-
-	arg_23_0._mask2d.enabled = true
-	arg_23_0._layout.enabled = true
-end
-
-function var_0_0.onUpdateTeam(arg_24_0)
-	arg_24_0.showItemUid = nil
-	arg_24_0.teamInfo = arg_24_0.gameInfo:getTeamInfo()
-
-	if arg_24_0.equipping then
+	if arg_22_0.equipping then
 		GameFacade.showToast(ToastEnum.Act191EquipTip)
 	end
 
-	arg_24_0:refreshUI()
-	arg_24_0:selectEmptySlot()
+	arg_22_0:refreshUI()
+	arg_22_0:selectEmptySlot()
 
-	arg_24_0.equipping = false
+	arg_22_0.equipping = false
 
-	local var_24_0 = arg_24_0.gameInfo.rankMark
+	local var_22_0 = arg_22_0.gameInfo.rankMark
 
-	if var_24_0 > 0 then
-		arg_24_0.animLevel:Play("levelup", 0, 0)
-	elseif var_24_0 < 0 then
-		arg_24_0.animLevel:Play("swicth", 0, 0)
+	if var_22_0 > 0 then
+		arg_22_0.animLevel:Play("levelup", 0, 0)
+	elseif var_22_0 < 0 then
+		arg_22_0.animLevel:Play("swicth", 0, 0)
 	end
 
-	arg_24_0.gameInfo:clearRankMark()
+	arg_22_0.gameInfo:clearRankMark()
 end
 
-function var_0_0.selectEmptySlot(arg_25_0)
-	for iter_25_0 = 1, 4 do
-		if arg_25_0.itemUIdMap[iter_25_0] == 0 then
-			arg_25_0:onClickSlot(iter_25_0)
+function var_0_0.selectEmptySlot(arg_23_0)
+	for iter_23_0 = 1, 4 do
+		if arg_23_0.itemUIdMap[iter_23_0] == 0 then
+			arg_23_0:onClickSlot(iter_23_0)
 
-			break
+			return
 		end
 	end
+
+	arg_23_0:onClickSlot(4)
 end
 
 return var_0_0

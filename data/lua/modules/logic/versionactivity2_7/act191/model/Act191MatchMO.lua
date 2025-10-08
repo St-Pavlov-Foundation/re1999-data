@@ -151,63 +151,90 @@ function var_0_0.getTeamFetterCntDic(arg_7_0)
 				var_7_0[iter_7_11] = 1
 			end
 		end
+
+		local var_7_9 = arg_7_0.heroId2ExtraFetterMap[iter_7_9]
+
+		if var_7_9 then
+			for iter_7_12, iter_7_13 in ipairs(var_7_9) do
+				if not var_7_0[iter_7_13] then
+					var_7_0[iter_7_13] = 1
+				else
+					var_7_0[iter_7_13] = var_7_0[iter_7_13] + 1
+				end
+			end
+		end
 	end
 
 	return var_7_0
 end
 
 function var_0_0.getFetterHeroList(arg_8_0, arg_8_1)
-	local var_8_0 = {}
-	local var_8_1 = lua_activity191_role.configList
+	local var_8_0 = Activity191Model.instance:getCurActId()
+	local var_8_1 = {}
+	local var_8_2 = lua_activity191_role.configList
 
-	for iter_8_0, iter_8_1 in ipairs(var_8_1) do
-		if iter_8_1.star == 1 then
-			local var_8_2 = 0
-			local var_8_3 = 0
+	for iter_8_0, iter_8_1 in ipairs(var_8_2) do
+		local var_8_3 = arg_8_0.robot and iter_8_1.id or iter_8_1.roleId
 
-			if arg_8_0.robot and arg_8_0:isHeroInTeam(iter_8_1.id) or not arg_8_0.robot and arg_8_0:isHeroInTeam(iter_8_1.roleId) then
-				var_8_3 = 2
-			elseif not arg_8_0.robot and arg_8_0:getHeroInfo(iter_8_1.roleId) then
-				var_8_3 = 1
+		if iter_8_1.activityId == var_8_0 and iter_8_1.star == 1 then
+			local var_8_4 = 0
+			local var_8_5 = 0
+
+			if arg_8_0:isHeroInTeam(var_8_3) then
+				var_8_5 = 2
+			elseif not arg_8_0.robot and arg_8_0:getHeroInfo(var_8_3) then
+				var_8_5 = 1
 			end
 
-			local var_8_4 = string.split(iter_8_1.tag, "#")
+			local var_8_6 = string.split(iter_8_1.tag, "#")
 
-			if tabletool.indexOf(var_8_4, arg_8_1) then
-				local var_8_5 = {
+			if tabletool.indexOf(var_8_6, arg_8_1) then
+				local var_8_7 = {
 					config = iter_8_1,
-					inBag = var_8_3,
-					transfer = var_8_2
+					inBag = var_8_5,
+					transfer = var_8_4
 				}
 
-				var_8_0[#var_8_0 + 1] = var_8_5
+				var_8_1[#var_8_1 + 1] = var_8_7
 			else
-				local var_8_6 = arg_8_0:getBattleHeroInfoInTeam(iter_8_1.roleId)
+				local var_8_8 = arg_8_0:getBattleHeroInfoInTeam(iter_8_1.roleId)
 
-				if var_8_6 and var_8_6.itemUid1 ~= 0 then
-					local var_8_7 = arg_8_0:getItemCo(var_8_6.itemUid1)
+				if var_8_8 and var_8_8.itemUid1 ~= 0 then
+					local var_8_9 = arg_8_0:getItemCo(var_8_8.itemUid1)
 
-					if not string.nilorempty(var_8_7.tag) then
-						local var_8_8 = string.split(var_8_7.tag, "#")
+					if not string.nilorempty(var_8_9.tag) then
+						local var_8_10 = string.split(var_8_9.tag, "#")
 
-						if tabletool.indexOf(var_8_8, arg_8_1) then
-							local var_8_9 = {
+						if tabletool.indexOf(var_8_10, arg_8_1) then
+							local var_8_11 = {
 								inBag = 2,
 								transfer = 1,
 								config = iter_8_1
 							}
 
-							var_8_0[#var_8_0 + 1] = var_8_9
+							var_8_1[#var_8_1 + 1] = var_8_11
 						end
 					end
 				end
 			end
+
+			local var_8_12 = arg_8_0.heroId2ExtraFetterMap[var_8_3]
+
+			if var_8_12 and tabletool.indexOf(var_8_12, arg_8_1) then
+				local var_8_13 = {
+					transfer = 2,
+					config = iter_8_1,
+					inBag = var_8_5
+				}
+
+				var_8_1[#var_8_1 + 1] = var_8_13
+			end
 		end
 	end
 
-	table.sort(var_8_0, Activity191Helper.sortFetterHeroList)
+	table.sort(var_8_1, Activity191Helper.sortFetterHeroList)
 
-	return var_8_0
+	return var_8_1
 end
 
 function var_0_0.isHeroInTeam(arg_9_0, arg_9_1)

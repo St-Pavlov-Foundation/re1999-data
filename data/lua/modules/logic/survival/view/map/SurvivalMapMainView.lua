@@ -47,6 +47,7 @@ function var_0_0.addEvents(arg_2_0)
 	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, arg_2_0.onRefreshViewState, arg_2_0)
 	arg_2_0:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_2_0.onRefreshViewState, arg_2_0)
 	arg_2_0:addEventCb(HelpController.instance, HelpEvent.RefreshHelp, arg_2_0.refreshHelpBtnPos, arg_2_0)
+	arg_2_0:addEventCb(GuideController.instance, GuideEvent.FinishGuideLastStep, arg_2_0.refreshHelpBtnPos, arg_2_0)
 end
 
 function var_0_0.removeEvents(arg_3_0)
@@ -67,6 +68,7 @@ function var_0_0.removeEvents(arg_3_0)
 	arg_3_0:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, arg_3_0.onRefreshViewState, arg_3_0)
 	arg_3_0:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, arg_3_0.onRefreshViewState, arg_3_0)
 	arg_3_0:removeEventCb(HelpController.instance, HelpEvent.RefreshHelp, arg_3_0.refreshHelpBtnPos, arg_3_0)
+	arg_3_0:removeEventCb(GuideController.instance, GuideEvent.FinishGuideLastStep, arg_3_0.refreshHelpBtnPos, arg_3_0)
 end
 
 function var_0_0.onOpen(arg_4_0)
