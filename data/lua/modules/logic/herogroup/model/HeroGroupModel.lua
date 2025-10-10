@@ -300,6 +300,16 @@ function var_0_0.setParam(arg_14_0, arg_14_1, arg_14_2, arg_14_3, arg_14_4, arg_
 		arg_14_0._curGroupId = 1
 
 		arg_14_0:_checkCommonSelectIndex()
+
+		if arg_14_0._isBossStory then
+			local var_14_19 = arg_14_0.heroGroupTypeCo and arg_14_0:getCustomHeroGroupMo(arg_14_0.heroGroupTypeCo.id) or arg_14_0._commonGroups[arg_14_0.curGroupSelectIndex]
+			local var_14_20 = GameUtil.getSubPlaceholderLuaLang(luaLang("herogroup_groupName"), {
+				var_14_3.name
+			})
+
+			var_14_19:setTempName(var_14_20)
+			table.insert(arg_14_0._heroGroupList, var_14_19)
+		end
 	elseif var_14_6 then
 		arg_14_0.heroGroupType = ModuleEnum.HeroGroupType.NormalFb
 		arg_14_0._heroGroupList = {}
@@ -313,10 +323,10 @@ function var_0_0.setParam(arg_14_0, arg_14_1, arg_14_2, arg_14_3, arg_14_4, arg_
 			arg_14_0:_checkCommonSelectIndex()
 		end
 
-		local var_14_19 = arg_14_0:getCurGroupMO()
+		local var_14_21 = arg_14_0:getCurGroupMO()
 
-		if var_14_19 and var_14_19.aidDict then
-			var_14_19.aidDict = nil
+		if var_14_21 and var_14_21.aidDict then
+			var_14_21.aidDict = nil
 		end
 	else
 		arg_14_0.heroGroupType = ModuleEnum.HeroGroupType.Default
@@ -337,6 +347,10 @@ function var_0_0._convertToPreset(arg_15_0)
 	arg_15_0._presetHeroGroupType = nil
 
 	if arg_15_0.heroGroupType == ModuleEnum.HeroGroupType.NormalFb or arg_15_0.heroGroupType == ModuleEnum.HeroGroupType.Resources then
+		if arg_15_0._isBossStory then
+			return
+		end
+
 		arg_15_0._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.Common
 
 		return
@@ -459,7 +473,7 @@ function var_0_0.generateTempGroup(arg_25_0, arg_25_1, arg_25_2, arg_25_3)
 	local var_25_0 = HeroGroupMO.New()
 
 	if not arg_25_1 and not arg_25_3 then
-		arg_25_1 = arg_25_0._commonGroups[1]
+		arg_25_1 = arg_25_0:getMainGroupMo()
 	end
 
 	if arg_25_1 then
@@ -561,12 +575,13 @@ function var_0_0.getCommonGroupName(arg_28_0, arg_28_1, arg_28_2)
 		end
 	end
 
-	local var_28_1 = arg_28_0._commonGroups[arg_28_1].name
+	local var_28_1 = arg_28_0._commonGroups[arg_28_1]
+	local var_28_2 = var_28_1 and var_28_1.name
 
-	if string.nilorempty(var_28_1) then
+	if string.nilorempty(var_28_2) then
 		return formatLuaLang("herogroup_common_name", GameUtil.getNum2Chinese(arg_28_1))
 	else
-		return var_28_1
+		return var_28_2
 	end
 end
 
@@ -597,6 +612,10 @@ function var_0_0.getCurGroupMO(arg_30_0)
 			return var_30_0()
 		end
 	elseif arg_30_0.heroGroupType == ModuleEnum.HeroGroupType.Resources then
+		if arg_30_0._isBossStory then
+			return arg_30_0._heroGroupList[1]
+		end
+
 		return arg_30_0:_getCommonBySelectIndex()
 	elseif arg_30_0.heroGroupType == ModuleEnum.HeroGroupType.NormalFb then
 		return arg_30_0:_getCommonBySelectIndex()
@@ -683,7 +702,13 @@ function var_0_0.getGroupTypeName(arg_34_0)
 end
 
 function var_0_0.getMainGroupMo(arg_35_0)
-	return arg_35_0._commonGroups[1]
+	for iter_35_0 = HeroGroupPresetEnum.MinNum, HeroGroupPresetEnum.MaxNum do
+		local var_35_0 = arg_35_0:getCommonGroupList(iter_35_0)
+
+		if var_35_0 then
+			return var_35_0
+		end
+	end
 end
 
 function var_0_0.saveCurGroupData(arg_36_0, arg_36_1, arg_36_2, arg_36_3)

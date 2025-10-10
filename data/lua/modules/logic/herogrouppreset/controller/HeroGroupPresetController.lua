@@ -64,8 +64,10 @@ function var_0_0.openHeroGroupPresetTeamView(arg_12_0, arg_12_1, arg_12_2)
 	if not arg_12_0:isFightScene() then
 		HeroGroupModel.instance.episodeId = nil
 
+		HeroGroupModel.instance:initRestrictHeroData()
 		HeroGroupTrialModel.instance:clear()
 		TowerModel.instance:clearRecordFightParam()
+		FightModel.instance:setFightParam(FightParam.New())
 	end
 
 	ViewMgr.instance:closeView(ViewName.HeroGroupPresetTeamView)

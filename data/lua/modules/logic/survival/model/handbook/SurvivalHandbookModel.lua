@@ -110,13 +110,25 @@ function var_0_0.setSurvivalHandbookBox(arg_3_0, arg_3_1)
 			local var_3_4 = arg_3_0.handbookMoDic[var_3_2]
 
 			if var_3_4 then
-				var_3_4:setCellCfgId(iter_3_1.param)
-				var_3_4:setIsNew(var_3_3)
+				local var_3_5 = true
 
-				var_3_0[var_3_2] = true
+				if var_3_4:getType() == SurvivalEnum.HandBookType.Amplifier and iter_3_1.param then
+					local var_3_6 = lua_survival_equip.configDict[iter_3_1.param]
 
-				if iter_3_1.param then
-					arg_3_0.cellMoDic[iter_3_1.param] = var_3_4
+					if not var_3_4:isLinkGroup(var_3_6.group) then
+						var_3_5 = false
+					end
+				end
+
+				if var_3_5 then
+					var_3_4:setCellCfgId(iter_3_1.param)
+					var_3_4:setIsNew(var_3_3)
+
+					var_3_0[var_3_2] = true
+
+					if iter_3_1.param then
+						arg_3_0.cellMoDic[iter_3_1.param] = var_3_4
+					end
 				end
 			else
 				logError("配置表没有id：" .. tostring(var_3_2) .. " i:" .. iter_3_0)
@@ -125,27 +137,27 @@ function var_0_0.setSurvivalHandbookBox(arg_3_0, arg_3_1)
 	end
 
 	for iter_3_2, iter_3_3 in pairs(arg_3_0.handbookMoDic) do
-		local var_3_5 = var_3_0[iter_3_3.id]
+		local var_3_7 = var_3_0[iter_3_3.id]
 
-		iter_3_3:setIsUnlock(var_3_5)
+		iter_3_3:setIsUnlock(var_3_7)
 	end
 
 	tabletool.clear(arg_3_0.progressDic)
 
 	for iter_3_4, iter_3_5 in pairs(arg_3_0.handbookMoDic) do
-		local var_3_6 = iter_3_5:getType()
+		local var_3_8 = iter_3_5:getType()
 
-		if arg_3_0.progressDic[var_3_6] == nil then
-			arg_3_0.progressDic[var_3_6] = {
+		if arg_3_0.progressDic[var_3_8] == nil then
+			arg_3_0.progressDic[var_3_8] = {
 				progress = 0,
 				amount = 0
 			}
 		end
 
-		arg_3_0.progressDic[var_3_6].amount = arg_3_0.progressDic[var_3_6].amount + 1
+		arg_3_0.progressDic[var_3_8].amount = arg_3_0.progressDic[var_3_8].amount + 1
 
 		if iter_3_5.isUnlock then
-			arg_3_0.progressDic[var_3_6].progress = arg_3_0.progressDic[var_3_6].progress + 1
+			arg_3_0.progressDic[var_3_8].progress = arg_3_0.progressDic[var_3_8].progress + 1
 		end
 	end
 
@@ -156,34 +168,34 @@ function var_0_0.setSurvivalHandbookBox(arg_3_0, arg_3_1)
 	arg_3_0.inheritSubTypeMoDic = {}
 
 	for iter_3_6, iter_3_7 in pairs(var_3_0) do
-		local var_3_7 = lua_survival_handbook.configDict[iter_3_6]
+		local var_3_9 = lua_survival_handbook.configDict[iter_3_6]
 
-		if var_3_7.type == SurvivalEnum.HandBookType.Amplifier then
-			local var_3_8 = arg_3_0.handbookMoDic[iter_3_6]
-			local var_3_9 = var_3_8:getCellCfgId()
-			local var_3_10 = var_3_7.subtype
-			local var_3_11 = lua_survival_item.configDict[var_3_9].rare
+		if var_3_9.type == SurvivalEnum.HandBookType.Amplifier then
+			local var_3_10 = arg_3_0.handbookMoDic[iter_3_6]
+			local var_3_11 = var_3_10:getCellCfgId()
+			local var_3_12 = var_3_9.subtype
+			local var_3_13 = lua_survival_item.configDict[var_3_11].rare
 
-			if var_3_8:getSurvivalBagItemMo():getExtendCost() > 0 then
-				arg_3_0:insetInheritMo(var_3_9, var_3_10, var_3_8)
+			if var_3_10:getSurvivalBagItemMo():getExtendCost() > 0 then
+				arg_3_0:insetInheritMo(var_3_11, var_3_12, var_3_10)
 			end
 
-			local var_3_12 = var_3_7.link
-			local var_3_13 = SurvivalConfig.instance:getEquipByGroup(var_3_12)
+			local var_3_14 = var_3_9.link
+			local var_3_15 = SurvivalConfig.instance:getEquipByGroup(var_3_14)
 
-			for iter_3_8, iter_3_9 in ipairs(var_3_13) do
-				local var_3_14 = iter_3_9.id
+			for iter_3_8, iter_3_9 in ipairs(var_3_15) do
+				local var_3_16 = iter_3_9.id
 
-				if var_3_14 ~= var_3_9 and var_3_11 >= lua_survival_item.configDict[var_3_14].rare then
-					local var_3_15 = SurvivalHandbookMo.New()
+				if var_3_16 ~= var_3_11 and var_3_13 >= lua_survival_item.configDict[var_3_16].rare then
+					local var_3_17 = SurvivalHandbookMo.New()
 
-					var_3_15:setData(var_3_8.cfg)
-					var_3_15:setCellCfgId(var_3_14)
-					var_3_15:setIsNew(var_3_8.isNew)
-					var_3_15:setIsUnlock(var_3_8.isUnlock)
+					var_3_17:setData(var_3_10.cfg)
+					var_3_17:setCellCfgId(var_3_16)
+					var_3_17:setIsNew(var_3_10.isNew)
+					var_3_17:setIsUnlock(var_3_10.isUnlock)
 
-					if var_3_15:getSurvivalBagItemMo():getExtendCost() > 0 then
-						arg_3_0:insetInheritMo(var_3_14, var_3_10, var_3_15)
+					if var_3_17:getSurvivalBagItemMo():getExtendCost() > 0 then
+						arg_3_0:insetInheritMo(var_3_16, var_3_12, var_3_17)
 					end
 				end
 			end

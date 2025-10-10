@@ -32,7 +32,7 @@ function var_0_0.onStart(arg_1_0)
 	var_1_0:addWork(FightWorkEndGC.New())
 
 	if FightWorkDirectStartNewFightAfterEndFight.directStartNewFight(FightDataHelper.fieldMgr.episodeId) then
-		var_1_0:addWork(FunctionWork.New(arg_1_0.replaceEndCallback, arg_1_0, FightSystem.directStartNewFight))
+		var_1_0:registWork(FightWorkFunction, FightGameMgr.restartMgr.directStartNewFight, FightGameMgr.restartMgr)
 		arg_1_0:playWorkAndDone(var_1_0, {})
 
 		return

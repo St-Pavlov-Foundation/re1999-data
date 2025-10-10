@@ -5,6 +5,7 @@ local var_0_0 = class("FightBuffAddScaleOffset")
 function var_0_0.onBuffStart(arg_1_0, arg_1_1, arg_1_2)
 	local var_1_0 = arg_1_1.id
 
+	arg_1_0.entityId = var_1_0
 	FightDataHelper.entityExMgr:getById(var_1_0).scaleOffsetDic.FightBuffAddScaleOffset = 1.3
 
 	local var_1_1 = FightDataHelper.entityMgr:getById(var_1_0)
@@ -16,17 +17,23 @@ function var_0_0.onBuffStart(arg_1_0, arg_1_1, arg_1_2)
 	end
 end
 
-function var_0_0.onBuffEnd(arg_2_0, arg_2_1, arg_2_2)
-	local var_2_0 = arg_2_1.id
+function var_0_0.onBuffEnd(arg_2_0)
+	local var_2_0 = FightHelper.getEntity(arg_2_0.entityId)
 
-	FightDataHelper.entityExMgr:getById(var_2_0).scaleOffsetDic.FightBuffAddScaleOffset = nil
+	if not var_2_0 then
+		return
+	end
 
-	local var_2_1 = FightDataHelper.entityMgr:getById(var_2_0)
+	local var_2_1 = var_2_0.id
 
-	if var_2_1 then
-		local var_2_2, var_2_3, var_2_4, var_2_5 = FightHelper.getEntityStandPos(var_2_1)
+	FightDataHelper.entityExMgr:getById(var_2_1).scaleOffsetDic.FightBuffAddScaleOffset = nil
 
-		arg_2_1:setScale(var_2_5)
+	local var_2_2 = FightDataHelper.entityMgr:getById(var_2_1)
+
+	if var_2_2 then
+		local var_2_3, var_2_4, var_2_5, var_2_6 = FightHelper.getEntityStandPos(var_2_2)
+
+		var_2_0:setScale(var_2_6)
 	end
 end
 

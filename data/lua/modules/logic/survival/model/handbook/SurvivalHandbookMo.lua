@@ -51,60 +51,68 @@ function var_0_0.getDesc(arg_9_0)
 	return arg_9_0.cfg.desc
 end
 
-function var_0_0.setIsUnlock(arg_10_0, arg_10_1)
-	arg_10_0.isUnlock = arg_10_1
-
-	if arg_10_0.survivalBagItemMo then
-		arg_10_0.survivalBagItemMo.isUnknown = not arg_10_0.isUnlock
+function var_0_0.isLinkGroup(arg_10_0, arg_10_1)
+	for iter_10_0, iter_10_1 in ipairs(arg_10_0.links) do
+		if iter_10_1 == arg_10_1 then
+			return true
+		end
 	end
 end
 
-function var_0_0.getSurvivalBagItemMo(arg_11_0)
-	if arg_11_0.survivalBagItemMo == nil then
-		arg_11_0.survivalBagItemMo = SurvivalBagItemMo.New()
+function var_0_0.setIsUnlock(arg_11_0, arg_11_1)
+	arg_11_0.isUnlock = arg_11_1
 
-		arg_11_0:updateSurvivalBagItemMo()
+	if arg_11_0.survivalBagItemMo then
+		arg_11_0.survivalBagItemMo.isUnknown = not arg_11_0.isUnlock
 	end
-
-	return arg_11_0.survivalBagItemMo
 end
 
-function var_0_0.updateSurvivalBagItemMo(arg_12_0)
-	if not arg_12_0.survivalBagItemMo then
+function var_0_0.getSurvivalBagItemMo(arg_12_0)
+	if arg_12_0.survivalBagItemMo == nil then
+		arg_12_0.survivalBagItemMo = SurvivalBagItemMo.New()
+
+		arg_12_0:updateSurvivalBagItemMo()
+	end
+
+	return arg_12_0.survivalBagItemMo
+end
+
+function var_0_0.updateSurvivalBagItemMo(arg_13_0)
+	if not arg_13_0.survivalBagItemMo then
 		return
 	end
 
-	local var_12_0 = arg_12_0:getCellCfgId()
+	local var_13_0 = arg_13_0:getCellCfgId()
 
-	arg_12_0.survivalBagItemMo:init({
+	arg_13_0.survivalBagItemMo:init({
 		count = 1,
-		id = var_12_0
+		id = var_13_0
 	})
 
-	arg_12_0.survivalBagItemMo.source = SurvivalEnum.ItemSource.None
-	arg_12_0.survivalBagItemMo.isUnknown = not arg_12_0.isUnlock
+	arg_13_0.survivalBagItemMo.source = SurvivalEnum.ItemSource.None
+	arg_13_0.survivalBagItemMo.isUnknown = not arg_13_0.isUnlock
 end
 
-function var_0_0.getEventShowId(arg_13_0)
-	if arg_13_0.cfg.eventId > 0 then
-		return arg_13_0.cfg.eventId
+function var_0_0.getEventShowId(arg_14_0)
+	if arg_14_0.cfg.eventId > 0 then
+		return arg_14_0.cfg.eventId
 	end
 end
 
-function var_0_0.getResultTitle(arg_14_0)
-	return arg_14_0:getName()
+function var_0_0.getResultTitle(arg_15_0)
+	return arg_15_0:getName()
 end
 
-function var_0_0.getResultDesc(arg_15_0)
-	local var_15_0 = arg_15_0:getCellCfgId()
-
-	return lua_survival_end.configDict[var_15_0].endDesc
-end
-
-function var_0_0.getResultImage(arg_16_0)
+function var_0_0.getResultDesc(arg_16_0)
 	local var_16_0 = arg_16_0:getCellCfgId()
 
-	return lua_survival_end.configDict[var_16_0].endImg
+	return lua_survival_end.configDict[var_16_0].endDesc
+end
+
+function var_0_0.getResultImage(arg_17_0)
+	local var_17_0 = arg_17_0:getCellCfgId()
+
+	return lua_survival_end.configDict[var_17_0].endImg
 end
 
 return var_0_0

@@ -1020,7 +1020,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#3",
     "itemParam": ""
   },
   {
@@ -1028,7 +1028,7 @@
     "group": 0,
     "tag": "",
     "type": 21,
-    "typeParam": "2",
+    "typeParam": "3",
     "itemParam": ""
   },
   {
@@ -1044,7 +1044,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#2",
     "itemParam": ""
   },
   {
@@ -1052,7 +1052,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#2",
     "itemParam": ""
   },
   {
@@ -1060,7 +1060,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "5#5#1031",
+    "typeParam": "5#5,10,15#1031",
     "itemParam": ""
   },
   {
@@ -1068,7 +1068,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "10#5#1032",
+    "typeParam": "10#5,10,15#1032",
     "itemParam": ""
   },
   {
@@ -1076,7 +1076,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "15#5#1033",
+    "typeParam": "15#5,10,15#1033",
     "itemParam": ""
   },
   {
@@ -1084,7 +1084,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "20#5#1034",
+    "typeParam": "20#5,10,15#1034",
     "itemParam": ""
   },
   {
@@ -1092,7 +1092,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "25#5#1035",
+    "typeParam": "25#5,10,15#1035",
     "itemParam": ""
   },
   {
@@ -1100,7 +1100,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "30#5#1036",
+    "typeParam": "30#5,10,15#1036",
     "itemParam": ""
   },
   {
@@ -1108,7 +1108,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "35#5#1037",
+    "typeParam": "35#5,10,15#1037",
     "itemParam": ""
   },
   {
@@ -1116,7 +1116,7 @@
     "group": 0,
     "tag": "",
     "type": 20,
-    "typeParam": "40#5#1038",
+    "typeParam": "40#5,10,15#1038",
     "itemParam": ""
   },
   {
@@ -1188,7 +1188,7 @@
     "group": 0,
     "tag": "",
     "type": 14,
-    "typeParam": "10",
+    "typeParam": "50",
     "itemParam": ""
   },
   {
@@ -1204,7 +1204,7 @@
     "group": 0,
     "tag": "",
     "type": 14,
-    "typeParam": "10",
+    "typeParam": "20",
     "itemParam": ""
   },
   {
@@ -1676,7 +1676,7 @@
     "group": 0,
     "tag": "",
     "type": 22,
-    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#1",
+    "typeParam": "mixtureShop,roleShop,collectionShop,tagShop,enhance,rewardEvent,replaceEvent,upgradeEvent#5",
     "itemParam": ""
   },
   {
@@ -1692,7 +1692,7 @@
     "group": 0,
     "tag": "",
     "type": 14,
-    "typeParam": "10",
+    "typeParam": "70",
     "itemParam": ""
   },
   {

@@ -3,8 +3,6 @@
 local var_0_0 = class("FightWorkRequestAutoFight", FightWorkItem)
 
 function var_0_0.onConstructor(arg_1_0)
-	arg_1_0.SAFETIME = 5
-
 	FightDataHelper.stageMgr:enterFightState(FightStageMgr.FightStateType.AutoCardPlaying)
 end
 
@@ -12,6 +10,7 @@ function var_0_0.onStart(arg_2_0)
 	arg_2_0:com_registMsg(FightMsgId.AutoRoundReply, arg_2_0.onAutoRoundReply)
 	arg_2_0:com_registMsg(FightMsgId.AutoRoundReplyFail, arg_2_0.onAutoRoundReplyFail)
 	FightRpc.instance:sendAutoRoundRequest(FightDataHelper.operationDataMgr:getOpList())
+	arg_2_0:cancelFightWorkSafeTimer()
 end
 
 function var_0_0.onAutoRoundReply(arg_3_0, arg_3_1)
