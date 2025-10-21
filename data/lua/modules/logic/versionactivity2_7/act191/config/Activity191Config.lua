@@ -151,7 +151,7 @@ function var_0_0.getHeroPassiveSkillIdList(arg_12_0, arg_12_1)
 		local var_12_2 = SkillConfig.instance:getPassiveSKillsCoByExSkillLevel(var_12_0.roleId, var_12_0.exLevel)
 
 		for iter_12_0, iter_12_1 in pairs(var_12_2) do
-			var_12_1[#var_12_1 + 1] = iter_12_1.skillPassive
+			var_12_1[iter_12_0] = iter_12_1.skillPassive
 		end
 
 		return var_12_1

@@ -36983,6 +36983,15 @@
   "singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_role3.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_role3.png"
   ],
+  "singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_role2.png"
+  ],
+  "singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_summon_chancebg.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_1/v3a1_kakaniya/v3a1_kakaniya_summon_chancebg.png"
+  ],
   "singlebg/summon/heroversion_3_1/v3a1_yeshumei/v3a1_yeshumei_chancebg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_1/v3a1_yeshumei/v3a1_yeshumei_chancebg.png"
   ],
@@ -40447,6 +40456,9 @@
   ],
   "singlebg_lang/txt_activity/activity_gift_txt_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_activity/activity_gift_txt_title.png"
+  ],
+  "singlebg_lang/txt_activity/activity_h5_banner.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_activity/activity_h5_banner.png"
   ],
   "singlebg_lang/txt_activity/activity_turnback_txt_title.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_activity/activity_turnback_txt_title.png"

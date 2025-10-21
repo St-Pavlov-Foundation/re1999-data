@@ -105,7 +105,7 @@ end
 function var_0_0.jumpTo13115(arg_16_0)
 	table.insert(arg_16_0.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
 	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
-		Activity191Controller.instance:openMainView()
+		Activity191Controller.instance:enterActivity(VersionActivity3_1Enum.ActivityId.DouQuQu3)
 		Activity191Controller.instance:openStoreView(VersionActivity3_1Enum.ActivityId.DouQuQu3Store)
 	end, nil, VersionActivity3_1Enum.ActivityId.DouQuQu3, true)
 

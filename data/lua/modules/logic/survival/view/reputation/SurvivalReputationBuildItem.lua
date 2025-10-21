@@ -187,70 +187,70 @@ function var_0_0.playUpAnim(arg_16_0, arg_16_1)
 	arg_16_0.oldPer = var_16_1 / var_16_0
 
 	local var_16_2 = (var_16_1 + arg_16_0.score) / var_16_0
-	local var_16_3 = var_16_2 >= 1
 
+	arg_16_0.isUpgrade = var_16_2 >= 1
 	arg_16_0.reputationProp = arg_16_1.reputationProp
 
 	arg_16_0:refreshReputationData()
 
-	local var_16_4 = math.min(var_16_2, 1)
-	local var_16_5 = 1.5
+	local var_16_3 = math.min(var_16_2, 1)
+	local var_16_4 = 1.5
 
-	arg_16_0.firstMovePer = var_16_4 - arg_16_0.oldPer
+	arg_16_0.firstMovePer = var_16_3 - arg_16_0.oldPer
 
-	local var_16_6 = var_16_1 + arg_16_0.score
-	local var_16_7 = arg_16_0.reputationProp.reputationLevel
+	local var_16_5 = var_16_1 + arg_16_0.score
+	local var_16_6 = arg_16_0.reputationProp.reputationLevel
 
 	arg_16_0.secondMovePer = 0
 
-	if var_16_3 then
+	if arg_16_0.isUpgrade then
 		if arg_16_0.isMaxLevel then
 			arg_16_0.secondMovePer = 0
 		else
-			arg_16_0.secondMovePer = arg_16_0.reputationProp.reputationExp / SurvivalConfig.instance:getReputationCost(arg_16_0.reputationId, var_16_7)
+			arg_16_0.secondMovePer = arg_16_0.reputationProp.reputationExp / SurvivalConfig.instance:getReputationCost(arg_16_0.reputationId, var_16_6)
 		end
 	end
 
-	local var_16_8 = FlowSequence.New()
+	local var_16_7 = FlowSequence.New()
 
-	var_16_8:addWork(TweenWork.New({
+	var_16_7:addWork(TweenWork.New({
 		from = 0,
 		type = "DOTweenFloat",
 		to = arg_16_0.firstMovePer + arg_16_0.secondMovePer,
-		t = var_16_5,
+		t = var_16_4,
 		frameCb = arg_16_0._onProgressFloat,
 		cbObj = arg_16_0,
 		ease = EaseType.OutQuart
 	}))
 	gohelper.setActive(arg_16_0._imageprogresspre, true)
 
-	arg_16_0._imageprogresspre.fillAmount = var_16_4
+	arg_16_0._imageprogresspre.fillAmount = var_16_3
 
-	if var_16_3 then
-		var_16_8:addWork(AnimatorWork.New({
+	if arg_16_0.isUpgrade then
+		var_16_7:addWork(AnimatorWork.New({
 			animName = "lvup",
 			go = arg_16_0.viewGO
 		}))
 	end
 
-	local var_16_9 = FlowParallel.New()
+	local var_16_8 = FlowParallel.New()
 
-	var_16_9:addWork(AnimatorWork.New({
+	var_16_8:addWork(AnimatorWork.New({
 		animName = "scoreup",
 		go = arg_16_0.viewGO
 	}))
-	var_16_9:addWork(TweenWork.New({
+	var_16_8:addWork(TweenWork.New({
 		type = "DOTweenFloat",
 		from = var_16_1,
-		to = var_16_6,
-		t = var_16_5,
+		to = var_16_5,
+		t = var_16_4,
 		frameCb = arg_16_0._onFloat,
 		cbObj = arg_16_0,
 		ease = EaseType.OutQuart
 	}))
-	var_16_9:addWork(var_16_8)
+	var_16_8:addWork(var_16_7)
 
-	return var_16_9
+	return var_16_8
 end
 
 function var_0_0._onProgressFloat(arg_17_0, arg_17_1)
@@ -259,7 +259,7 @@ function var_0_0._onProgressFloat(arg_17_0, arg_17_1)
 		arg_17_0._imageprogress.fillAmount = arg_17_0.oldPer + arg_17_1
 	end
 
-	if arg_17_1 >= arg_17_0.firstMovePer and arg_17_0.progresMoveStage == 1 then
+	if arg_17_1 >= arg_17_0.firstMovePer and arg_17_0.isUpgrade and arg_17_0.progresMoveStage == 1 then
 		arg_17_0.progresMoveStage = 2
 
 		arg_17_0:_refreshUIState({
@@ -267,7 +267,7 @@ function var_0_0._onProgressFloat(arg_17_0, arg_17_1)
 		})
 	end
 
-	if arg_17_1 > arg_17_0.firstMovePer then
+	if arg_17_1 > arg_17_0.firstMovePer and arg_17_0.isUpgrade then
 		arg_17_0._imageprogress.fillAmount = arg_17_1 - arg_17_0.firstMovePer
 	end
 end

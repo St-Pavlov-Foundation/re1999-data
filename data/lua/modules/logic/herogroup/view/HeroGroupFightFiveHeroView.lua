@@ -87,4 +87,9 @@ function var_0_0.onClose(arg_8_0)
 	HeroSingleGroupModel.instance:setMaxHeroCount()
 end
 
+function var_0_0._refreshBtns(arg_9_0, arg_9_1)
+	var_0_0.super._refreshBtns(arg_9_0, arg_9_1)
+	gohelper.setActive(arg_9_0._dropherogroup, false)
+end
+
 return var_0_0

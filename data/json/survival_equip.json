@@ -1133,7 +1133,7 @@
     "group": 10308,
     "score": 200,
     "effectDesc": "己方最大生命+15%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效:<sprite=8>【怒火】+2，己方最大生命+10%",
-    "effectDesc2": "己方最大生命较大幅度提升；|{check(count9 > 0)}激活时生效:<sprite=8>【怒火】提升，己方最大生命提升",
+    "effectDesc2": "己方最大生命较大幅度提升；|{check(count9 > 0)}激活时<sprite=12>生效:<sprite=8>提升，己方最大生命提升",
     "desc": "以牙还牙，这是还过来的那颗。",
     "tag": "103",
     "effect": "1000027#1030012",

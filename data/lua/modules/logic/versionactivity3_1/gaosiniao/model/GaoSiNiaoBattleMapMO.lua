@@ -506,7 +506,11 @@ function var_0_1.single(arg_47_0, arg_47_1, arg_47_2)
 	local var_47_7 = {}
 
 	for iter_47_0, iter_47_1 in ipairs(arg_47_1) do
-		var_47_5[iter_47_1:id()] = true
+		local var_47_8 = iter_47_1:id()
+		local var_47_9 = arg_47_0:rootId(iter_47_1)
+
+		var_47_5[var_47_9] = true
+		var_47_5[var_47_8] = true
 
 		if arg_47_0:isConnedStart(iter_47_1) then
 			var_47_6 = true
@@ -514,6 +518,7 @@ function var_0_1.single(arg_47_0, arg_47_1, arg_47_2)
 
 		var_47_4(iter_47_1)
 
+		var_47_7[var_47_9] = true
 		var_47_7[iter_47_1:id()] = true
 	end
 
@@ -525,10 +530,10 @@ function var_0_1.single(arg_47_0, arg_47_1, arg_47_2)
 		end
 	end)
 
-	local var_47_8 = {}
+	local var_47_10 = {}
 
 	for iter_47_2, iter_47_3 in ipairs(arg_47_0._startGridList) do
-		var_47_8[iter_47_3] = true
+		var_47_10[iter_47_3] = true
 
 		if var_47_6 then
 			var_47_5[arg_47_0:rootId(iter_47_3)] = true
@@ -549,32 +554,32 @@ function var_0_1.single(arg_47_0, arg_47_1, arg_47_2)
 		end
 	end
 
-	local var_47_9 = {}
+	local var_47_11 = {}
 
 	while var_47_0 <= var_47_1 do
-		local var_47_10 = var_47_3()
+		local var_47_12 = var_47_3()
 
-		var_47_8[var_47_10] = true
+		var_47_10[var_47_12] = true
 
 		for iter_47_6 = 1, 4 do
-			local var_47_11 = var_47_10:x() + GaoSiNiaoEnum.dX[iter_47_6]
-			local var_47_12 = var_47_10:y() + GaoSiNiaoEnum.dY[iter_47_6]
-			local var_47_13 = arg_47_0:getGrid(var_47_11, var_47_12)
+			local var_47_13 = var_47_12:x() + GaoSiNiaoEnum.dX[iter_47_6]
+			local var_47_14 = var_47_12:y() + GaoSiNiaoEnum.dY[iter_47_6]
+			local var_47_15 = arg_47_0:getGrid(var_47_13, var_47_14)
 
-			if var_47_13 and not var_47_8[var_47_13] and var_47_5[arg_47_0:rootId(var_47_13)] then
-				var_47_4(var_47_13)
+			if var_47_15 and not var_47_10[var_47_15] and var_47_5[arg_47_0:rootId(var_47_15)] then
+				var_47_4(var_47_15)
 			end
 		end
 
-		var_0_5(arg_47_0, var_47_10:id())
-		var_0_0(var_47_9, var_47_10)
+		var_0_5(arg_47_0, var_47_12:id())
+		var_0_0(var_47_11, var_47_12)
 	end
 
 	if not arg_47_2 then
-		arg_47_0:tryMergeAll(var_47_9)
+		arg_47_0:tryMergeAll(var_47_11)
 	end
 
-	return var_47_9
+	return var_47_11
 end
 
 function var_0_1.s_foreachGrid(arg_51_0, arg_51_1, arg_51_2)

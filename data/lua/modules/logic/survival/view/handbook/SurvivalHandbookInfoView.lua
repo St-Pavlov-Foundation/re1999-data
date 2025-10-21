@@ -42,39 +42,43 @@ function var_0_0.onDestroyView(arg_5_0)
 	arg_5_0.refreshFlow:clearWork()
 end
 
-function var_0_0.onClickBtnLeftArrow(arg_6_0)
-	if arg_6_0.select > 1 then
-		arg_6_0.select = arg_6_0.select - 1
-	end
-
-	arg_6_0._infoPanel:playAnim("switchleft")
-	arg_6_0.refreshFlow:clearWork()
-	arg_6_0.refreshFlow:start()
+function var_0_0.onClickModalMask(arg_6_0)
+	arg_6_0:closeThis()
 end
 
-function var_0_0.onClickBtnRightArrow(arg_7_0)
-	if arg_7_0.select < #arg_7_0.handBookDatas then
-		arg_7_0.select = arg_7_0.select + 1
+function var_0_0.onClickBtnLeftArrow(arg_7_0)
+	if arg_7_0.select > 1 then
+		arg_7_0.select = arg_7_0.select - 1
 	end
 
-	arg_7_0._infoPanel:playAnim("switchright")
+	arg_7_0._infoPanel:playAnim("switchleft")
 	arg_7_0.refreshFlow:clearWork()
 	arg_7_0.refreshFlow:start()
 end
 
-function var_0_0.refreshArrow(arg_8_0)
-	gohelper.setActive(arg_8_0.btnLeftArrow, arg_8_0.select > 1)
-	gohelper.setActive(arg_8_0.btnRightArrow, arg_8_0.select < #arg_8_0.handBookDatas)
+function var_0_0.onClickBtnRightArrow(arg_8_0)
+	if arg_8_0.select < #arg_8_0.handBookDatas then
+		arg_8_0.select = arg_8_0.select + 1
+	end
 
-	arg_8_0.textIndex.text = string.format("%s/%s", arg_8_0.select, #arg_8_0.handBookDatas)
+	arg_8_0._infoPanel:playAnim("switchright")
+	arg_8_0.refreshFlow:clearWork()
+	arg_8_0.refreshFlow:start()
 end
 
-function var_0_0.refreshInfo(arg_9_0)
-	arg_9_0:refreshArrow()
+function var_0_0.refreshArrow(arg_9_0)
+	gohelper.setActive(arg_9_0.btnLeftArrow, arg_9_0.select > 1)
+	gohelper.setActive(arg_9_0.btnRightArrow, arg_9_0.select < #arg_9_0.handBookDatas)
 
-	local var_9_0 = arg_9_0.handBookDatas[arg_9_0.select]
+	arg_9_0.textIndex.text = string.format("%s/%s", arg_9_0.select, #arg_9_0.handBookDatas)
+end
 
-	arg_9_0._infoPanel:updateMo(var_9_0:getSurvivalBagItemMo(), {
+function var_0_0.refreshInfo(arg_10_0)
+	arg_10_0:refreshArrow()
+
+	local var_10_0 = arg_10_0.handBookDatas[arg_10_0.select]
+
+	arg_10_0._infoPanel:updateMo(var_10_0:getSurvivalBagItemMo(), {
 		jumpChangeAnim = true
 	})
 end

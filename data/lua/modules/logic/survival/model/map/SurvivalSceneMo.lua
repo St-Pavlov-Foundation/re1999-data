@@ -9,7 +9,7 @@ function var_0_0.init(arg_1_0, arg_1_1)
 	arg_1_0.units = {}
 	arg_1_0.unitsById = arg_1_0.unitsById or {}
 	arg_1_0.blocks = {}
-	arg_1_0.blocksById = arg_1_0.unitsById or {}
+	arg_1_0.blocksById = arg_1_0.blocksById or {}
 	arg_1_0.allDestroyPos = {}
 
 	for iter_1_0, iter_1_1 in ipairs(arg_1_1.unit) do

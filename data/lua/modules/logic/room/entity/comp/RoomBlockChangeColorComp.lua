@@ -97,11 +97,15 @@ function var_0_0._refreshColor(arg_9_0, arg_9_1, arg_9_2)
 		return
 	end
 
-	arg_9_0._blockColorKeyMap[arg_9_1] = arg_9_2
+	local var_9_0 = arg_9_0.entity.effect:getComponentsByPath(arg_9_1, RoomEnum.ComponentName.MeshRenderer, "mesh")
 
-	local var_9_0 = arg_9_0:_getMPBById(arg_9_2)
+	if var_9_0 and #var_9_0 > 0 then
+		local var_9_1 = arg_9_0:_getMPBById(arg_9_2)
 
-	arg_9_0:_setMeshReaderColor(arg_9_0.entity.effect:getComponentsByPath(arg_9_1, RoomEnum.ComponentName.MeshRenderer, "mesh"), var_9_0)
+		arg_9_0:_setMeshReaderColor(var_9_0, var_9_1)
+
+		arg_9_0._blockColorKeyMap[arg_9_1] = arg_9_2
+	end
 end
 
 function var_0_0._setMeshReaderColor(arg_10_0, arg_10_1, arg_10_2)
