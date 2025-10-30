@@ -63,7 +63,7 @@ function FightStatModel:checkShield(statInfo)
 
 	local entityMo = FightDataHelper.entityMgr:getById(statInfo.heroUid)
 
-	if entityMo:isRouge2Music() then
+	if entityMo and entityMo:isRouge2Music() then
 		return true
 	end
 

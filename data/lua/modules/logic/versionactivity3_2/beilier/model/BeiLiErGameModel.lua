@@ -12,8 +12,7 @@ function BeiLiErGameModel:reInit()
 	self._curGameIdStr = nil
 	self._curGameId = nil
 	self._curLevelIndex = nil
-
-	self:_onStart()
+	self._tipCount = 3
 end
 
 function BeiLiErGameModel:getGameConfig()
@@ -87,7 +86,7 @@ function BeiLiErGameModel:_initGameMo(gameId)
 end
 
 function BeiLiErGameModel:_onStart()
-	self._tipCount = 3
+	self._tipCount = BeiLiErEnum.GameId2TipCount[self._curGameId]
 end
 
 function BeiLiErGameModel:setMaxTipCount()

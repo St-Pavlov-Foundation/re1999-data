@@ -81,8 +81,8 @@ function FightCardDataHelper.combineCard(cardInfo1, cardInfo2, entityDataMgr)
 end
 
 function FightCardDataHelper.combineMusicType(cardInfo1, cardInfo2)
-	local type1 = cardInfo1.musicNote.type
-	local type2 = cardInfo2.musicNote.type
+	local type1 = cardInfo1 and cardInfo1.musicNote and cardInfo1.musicNote.type or FightEnum.Rouge2MusicType.None
+	local type2 = cardInfo2 and cardInfo2.musicNote and cardInfo2.musicNote.type or FightEnum.Rouge2MusicType.None
 	local note = FightRouge2MusicNote.New()
 
 	cardInfo1.musicNote.blueValue = cardInfo1.musicNote.blueValue + cardInfo2.musicNote.blueValue

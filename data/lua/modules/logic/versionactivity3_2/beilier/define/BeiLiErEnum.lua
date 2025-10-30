@@ -35,5 +35,11 @@ BeiLiErEnum.TipRange = 1323102
 BeiLiErEnum.SpGuideStep2Count = 10
 BeiLiErEnum.SpEpisodeType = 1
 BeiLiErEnum.HardGameId = 1323109
+BeiLiErEnum.GameId2TipCount = {
+	[1003] = 10,
+	[1001] = 3,
+	[1002] = 5,
+	[1004] = 15
+}
 
 return BeiLiErEnum
