@@ -1,8 +1,10 @@
-﻿module("modules.logic.stat.defines.StatViewNameEnum", package.seeall)
+﻿-- chunkname: @modules/logic/stat/defines/StatViewNameEnum.lua
 
-local var_0_0 = _M
+module("modules.logic.stat.defines.StatViewNameEnum", package.seeall)
 
-var_0_0.ChineseViewName = {
+local StatViewNameEnum = _M
+
+StatViewNameEnum.ChineseViewName = {
 	[ViewName.MainView] = "主界面",
 	[ViewName.MainThumbnailView] = "主界面缩略图",
 	[ViewName.BpView] = "吼吼点唱机",
@@ -171,9 +173,23 @@ var_0_0.ChineseViewName = {
 	[ViewName.V3A1_RoleStoryGameView] = "轶事玩法",
 	[ViewName.NecrologistStoryTaskView] = "轶事奖励",
 	[ViewName.VersionActivity3_1StoreView] = "3.1副本商店",
-	[ViewName.ActivityWarmUpH5FullView] = "版本预热H5界面"
+	[ViewName.ActivityWarmUpH5FullView] = "版本预热H5界面",
+	[ViewName.VersionActivity3_2EnterView] = "3.2版本活动页",
+	[ViewName.VersionActivity3_2DungeonMapView] = "副本地图-迁流的盛宴",
+	[ViewName.BeiLiErLevelView] = "贝丽尔角色活动",
+	[ViewName.BeiLiErTaskView] = "贝丽尔角色任务",
+	[ViewName.HuiDiaoLanEpisodeLevelView] = "灰调蓝角色活动",
+	[ViewName.HuiDiaoLanTaskView] = "灰调蓝角色任务",
+	[ViewName.V3A2_RoleStoryGameView] = "轶事玩法",
+	[ViewName.V3a2_BossRush_MainView] = "鬃毛邮报",
+	[ViewName.V3a2_BossRush_LevelDetailView] = "鬃毛邮报Boss详情",
+	[ViewName.VersionActivity3_2StoreView] = "3.2副本商店",
+	[ViewName.Rouge2_EnterView] = "肉鸽2",
+	[ViewName.Rouge2_MainView] = "肉鸽2局外",
+	[ViewName.UdimoMainView] = "冲印箱",
+	[ViewName.CharacterRecommedView] = "角色队伍推荐"
 }
-var_0_0.NeedTrackViewDict = {
+StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
 	[ViewName.VersionActivity1_8DungeonMapView] = true,
 	[ViewName.VersionActivity1_8StoreView] = true,
@@ -323,9 +339,23 @@ var_0_0.NeedTrackViewDict = {
 	[ViewName.V3A1_RoleStoryGameView] = true,
 	[ViewName.NecrologistStoryTaskView] = true,
 	[ViewName.VersionActivity3_1StoreView] = true,
-	[ViewName.ActivityWarmUpH5FullView] = true
+	[ViewName.ActivityWarmUpH5FullView] = true,
+	[ViewName.VersionActivity3_2EnterView] = true,
+	[ViewName.VersionActivity3_2DungeonMapView] = true,
+	[ViewName.BeiLiErLevelView] = true,
+	[ViewName.BeiLiErTaskView] = true,
+	[ViewName.HuiDiaoLanEpisodeLevelView] = true,
+	[ViewName.HuiDiaoLanTaskView] = true,
+	[ViewName.V3A2_RoleStoryGameView] = true,
+	[ViewName.V3a2_BossRush_MainView] = true,
+	[ViewName.V3a2_BossRush_LevelDetailView] = true,
+	[ViewName.VersionActivity3_2StoreView] = true,
+	[ViewName.Rouge2_EnterView] = true,
+	[ViewName.Rouge2_MainView] = true,
+	[ViewName.UdimoMainView] = true,
+	[ViewName.CharacterRecommedView] = true
 }
-var_0_0.NeedListenTabSwitchList = {
+StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity1_8EnterView,
 	ViewName.VersionActivity1_9EnterView,
 	ViewName.VersionActivity2_0EnterView,
@@ -339,9 +369,10 @@ var_0_0.NeedListenTabSwitchList = {
 	ViewName.VersionActivity2_8EnterView,
 	ViewName.StoreView,
 	ViewName.VersionActivity3_0EnterView,
-	ViewName.VersionActivity3_1EnterView
+	ViewName.VersionActivity3_1EnterView,
+	ViewName.VersionActivity3_2EnterView
 }
-var_0_0.TabViewContainerID = {
+StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
 	[ViewName.VersionActivity1_9EnterView] = 2,
 	[ViewName.VersionActivity2_0EnterView] = 2,
@@ -355,9 +386,10 @@ var_0_0.TabViewContainerID = {
 	[ViewName.VersionActivity2_8EnterView] = 2,
 	[ViewName.StoreView] = 3,
 	[ViewName.VersionActivity3_0EnterView] = 2,
-	[ViewName.VersionActivity3_1EnterView] = 2
+	[ViewName.VersionActivity3_1EnterView] = 2,
+	[ViewName.VersionActivity3_2EnterView] = 2
 }
-var_0_0.TabViewName = {
+StatViewNameEnum.TabViewName = {
 	V2a6_XugoujiEnterView = "虚构集",
 	V2a2_RoomCritterEnterView = "魔精公司",
 	VersionActivity2_5AutoChessEnterView = "魔精自走棋",
@@ -381,7 +413,7 @@ var_0_0.TabViewName = {
 	V2a2_DungeonEnterView = "忧郁的热带",
 	RoleStoryEnterView = "轶事",
 	VersionActivity2_5LiangYueEnterView = "梁月",
-	V2a2_Season166EnterView = "赛季",
+	VersionActivity3_2DungeonEnterView = "迁流的盛宴",
 	V2a2_EliminateEnterView = "小队玩法",
 	VersionActivity2_4WuErLiXiEnterView = "乌尔里希",
 	V2a8_Season166EnterView = "赛季",
@@ -389,7 +421,7 @@ var_0_0.TabViewName = {
 	Act183VersionActivityEnterView = "挑战玩法",
 	SurvivalEnterView = "雨前漫游指南",
 	ActivityWeekWalkHeartShowView = "醒梦域",
-	VersionActivity3_0_v2a1_ReactivityEnterview = "2.1活动复刻",
+	AutoChessEnterView = "魔精自走棋",
 	VersionActivity3_0MaLiAnNaEnterView = "玛丽安娜",
 	VersionActivity2_7DungeonEnterView = "1987宇宙组曲",
 	VersionActivity2_6RougeEnterView = "常驻肉鸽",
@@ -408,12 +440,18 @@ var_0_0.TabViewName = {
 	VersionActivity3_0KaRongEnterView = "卡戎",
 	VersionActivity2_3DungeonEnterView = "圣火纪行：东区黎明",
 	VersionActivity2_8DungeonEnterView = "复乐园",
+	V2a2_Season166EnterView = "赛季",
+	VersionActivity3_2BeiLiErEnterView = "贝丽尔",
+	VersionActivity3_2HuiDiaoLanEnterView = "灰调蓝",
 	V2a2_TianShiNaNaEnterView = "天使娜娜",
 	V2a6_Season166EnterView = "赛季",
 	VersionActivity2_6DungeonEnterView = "疯癫与文明",
+	V3a2_BossRush_EnterView = "鬃毛邮报",
 	VersionActivity2_8MoLiDeErEnterView = "莫莉德尔",
 	V2a4_PinballEnterView = "图图石子",
 	VersionActivity3_0DungeonEnterView = "行于漫漫长路",
+	VersionActivity3_0_v2a1_ReactivityEnterview = "2.1活动复刻",
+	Rouge2_ActivityView = "肉鸽2",
 	V2a3_Season123EnterView = "赛季",
 	[V1a8_DungeonEnterView] = "副本",
 	[V1a8_Season123EnterView] = "赛季",
@@ -435,7 +473,7 @@ var_0_0.TabViewName = {
 	[LanShouPaEnterView] = "蓝手帕",
 	[AergusiEnterView] = "阿尔古斯"
 }
-var_0_0.IgnoreViewList = {
+StatViewNameEnum.IgnoreViewList = {
 	ViewName.ToastView,
 	ViewName.ToastTopView,
 	ViewName.LoadingView,
@@ -459,8 +497,8 @@ var_0_0.IgnoreViewList = {
 	ViewName.StoryTyperView,
 	ViewName.StoryPrologueSkipView
 }
-var_0_0.MaterialTipView = ViewName.MaterialTipView
-var_0_0.DungeonViewName = {
+StatViewNameEnum.MaterialTipView = ViewName.MaterialTipView
+StatViewNameEnum.DungeonViewName = {
 	Story = "故事",
 	Res = "资源",
 	WeekWalkName = "人工梦游",
@@ -469,9 +507,9 @@ var_0_0.DungeonViewName = {
 	RoleStory = "轶事",
 	Break = "洞悉"
 }
-var_0_0.OtherViewName = {
+StatViewNameEnum.OtherViewName = {
 	HandbookSkinSuitDetailView = "皮肤图鉴界面",
 	HandbookSkinView = "皮肤套组界面"
 }
 
-return var_0_0
+return StatViewNameEnum

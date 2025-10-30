@@ -318,5 +318,13 @@
     "name": "墓碑博物馆",
     "nameEn": "The Tombstone Museum",
     "year": ""
+  },
+  {
+    "id": 1027,
+    "type": 2,
+    "order": 0,
+    "name": "交接日",
+    "nameEn": "Handover Day",
+    "year": ""
   }
 ]

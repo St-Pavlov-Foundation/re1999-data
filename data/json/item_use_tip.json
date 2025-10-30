@@ -1,0 +1,29 @@
+[
+  {
+    "id": 540002,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 0,
+    "desc": "是否立刻使用道具【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
+  },
+  {
+    "id": 713201,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 0,
+    "desc": "是否立刻使用道具【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
+  },
+  {
+    "id": 2929001,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 56,
+    "desc": "是否立刻使用道具【▩1%s】进行奖励补领",
+    "descParam": "1",
+    "checkParam": "1"
+  }
+]

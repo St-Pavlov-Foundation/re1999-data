@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "desc": "赚取<color=#FFB052>▩1%s金雀子儿</color>，当前已赚取<color=#FFB052>▩2%s金雀子儿</color>",
+    "finishDesc": "赚取<color=#FFB052>▩1%s金雀子儿</color>，当前已赚取<color=#FFB052>▩2%s金雀子儿</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 2,
+    "desc": "累计失去<color=#FFB052>▩1%s金雀子儿</color>，当前已经失去<color=#FFB052>▩2%s金雀子儿</color>",
+    "finishDesc": "累计失去<color=#FFB052>▩1%s金雀子儿</color>，当前已经失去<color=#FFB052>▩2%s金雀子儿</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 3,
+    "desc": "进入<color=#FFB052>▩1%s次▩2%s</color>路径点，当前已进入<color=#FFB052>▩3%s次</color>",
+    "finishDesc": "进入<color=#FFB052>▩1%s次▩2%s</color>路径点，当前已进入<color=#FFB052>▩3%s次</color>\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 4,
+    "desc": "<color=#FFB052>成功抵达</color>下个区域",
+    "finishDesc": "<color=#FFB052>成功抵达</color>下个区域"
+  },
+  {
+    "id": 5,
+    "desc": "自主配置",
+    "finishDesc": "自主配置"
+  },
+  {
+    "id": 6,
+    "desc": "获得▩1%s件造物，当前已获得▩2%s件",
+    "finishDesc": "获得▩1%s件造物，当前已获得▩2%s件\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 7,
+    "desc": "获得▩1%s件稀有造物，当前已获得▩2%s件",
+    "finishDesc": "获得▩1%s件稀有造物，当前已获得▩2%s件\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 8,
+    "desc": "获得▩1%s件稀有谐波，当前已获得▩2%s件",
+    "finishDesc": "获得▩1%s件稀有谐波，当前已获得▩2%s件\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 9,
+    "desc": "获得▩1%s件谐波，当前已获得▩2%s件",
+    "finishDesc": "获得▩1%s件谐波，当前已获得▩2%s件\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 10,
+    "desc": "击败▩1%s个敌人，当前已击败▩2%s个",
+    "finishDesc": "击败▩1%s个敌人，当前已击败▩2%s个\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 11,
+    "desc": "完成路点时达到▩1%s点Y属性，当前已达到▩2%s个",
+    "finishDesc": "完成路点时达到▩1%s点Y属性，当前已达到▩2%s个\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 12,
+    "desc": "成功检定▩1%s次，当前已成功▩2%s次",
+    "finishDesc": "成功检定▩1%s次，当前已成功▩2%s次\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 13,
+    "desc": "在购物契机进行1次偷窃",
+    "finishDesc": "在购物契机进行1次偷窃\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 14,
+    "desc": "获得▩1%s个重振，当前已获得▩2%s个",
+    "finishDesc": "获得▩1%s个重振，当前已获得▩2%s个\n<color=#FFB052>（已完成）</color>"
+  },
+  {
+    "id": 15,
+    "desc": "自主配置",
+    "finishDesc": "自主配置"
+  }
+]

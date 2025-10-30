@@ -1,0 +1,122 @@
+[
+  {
+    "udimoWeatherId": 1,
+    "temperature": -100,
+    "description": "大风呼啸，折树毁枝，外出要小心。"
+  },
+  {
+    "udimoWeatherId": 2,
+    "temperature": -100,
+    "description": "烈风阵阵，损坏房屋，外出请小心。"
+  },
+  {
+    "udimoWeatherId": 3,
+    "temperature": -100,
+    "description": "狂风呼啸，可拔起树木，请注意安全"
+  },
+  {
+    "udimoWeatherId": 4,
+    "temperature": -100,
+    "description": "暴风咆哮，请避免外出。"
+  },
+  {
+    "udimoWeatherId": 5,
+    "temperature": -100,
+    "description": "飓风极其凶猛，请避免外出，注意安全。"
+  },
+  {
+    "udimoWeatherId": 6,
+    "temperature": -100,
+    "description": "天气寒冷，出门请注意保暖。"
+  },
+  {
+    "udimoWeatherId": 6,
+    "temperature": 8,
+    "description": "天气较凉，适当添加衣物。"
+  },
+  {
+    "udimoWeatherId": 6,
+    "temperature": 18,
+    "description": "气温舒适，请享受当下。"
+  },
+  {
+    "udimoWeatherId": 6,
+    "temperature": 28,
+    "description": "天气炎热，请注意防暑。"
+  },
+  {
+    "udimoWeatherId": 7,
+    "temperature": -100,
+    "description": "天气寒冷，出门请注意保暖。"
+  },
+  {
+    "udimoWeatherId": 7,
+    "temperature": 8,
+    "description": "天气较凉，适当添加衣物。"
+  },
+  {
+    "udimoWeatherId": 7,
+    "temperature": 18,
+    "description": "气温舒适，请享受当下。"
+  },
+  {
+    "udimoWeatherId": 7,
+    "temperature": 28,
+    "description": "天气炎热，请注意防暑。"
+  },
+  {
+    "udimoWeatherId": 8,
+    "temperature": -100,
+    "description": "天气寒冷，出门请注意保暖。"
+  },
+  {
+    "udimoWeatherId": 8,
+    "temperature": 8,
+    "description": "天气较凉，适当添加衣物。"
+  },
+  {
+    "udimoWeatherId": 8,
+    "temperature": 18,
+    "description": "气温舒适，请享受当下。"
+  },
+  {
+    "udimoWeatherId": 8,
+    "temperature": 28,
+    "description": "天气炎热，请注意防暑。"
+  },
+  {
+    "udimoWeatherId": 9,
+    "temperature": -100,
+    "description": "天气寒冷，外出记得带伞。"
+  },
+  {
+    "udimoWeatherId": 9,
+    "temperature": 8,
+    "description": "天气较凉，外出记得带伞。"
+  },
+  {
+    "udimoWeatherId": 9,
+    "temperature": 18,
+    "description": "气温舒适，外出记得带伞。"
+  },
+  {
+    "udimoWeatherId": 9,
+    "temperature": 28,
+    "description": "天气炎热，外出记得带伞。"
+  },
+  {
+    "udimoWeatherId": 10,
+    "temperature": -100,
+    "description": "大雨道路湿滑，出行请小心。"
+  },
+  {
+    "udimoWeatherId": 11,
+    "temperature": -100,
+    "description": "雪天道路湿滑，出行请小心。"
+  },
+  {
+    "udimoWeatherId": 12,
+    "temperature": -100,
+    "description": "雾天能见度低，出行请小心"
+  }
+]

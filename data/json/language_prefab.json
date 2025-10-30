@@ -14769,7 +14769,7 @@
   },
   {
     "id": "p_summonpickresultview_txt_confirm",
-    "lang": "确认结果"
+    "lang": "前往确认结果"
   },
   {
     "id": "p_summonpickresultview_txt_again",
@@ -14853,19 +14853,19 @@
   },
   {
     "id": "p_bpspfaceview_txt_title2",
-    "lang": "吼吼点唱机\n巡游专列"
+    "lang": "吼吼点唱机\n典藏母盘"
   },
   {
     "id": "p_bpspfaceview_txt_dec",
-    "lang": "巡游专列·典藏版吼吼光碟免费解锁"
+    "lang": "典藏母盘·典藏版吼吼光碟免费解锁"
   },
   {
     "id": "p_bpspfaceview_txt_dec1",
-    "lang": "巡游专列分贝等级<#AA5F36>10级</color>获得"
+    "lang": "典藏母盘分贝等级<#AA5F36>10级</color>获得"
   },
   {
     "id": "p_bpspfaceview_txt_dec2",
-    "lang": "【箱中巡游】活动期间，登录即<#cd6a33>免费</color>解锁吼吼点唱机·巡游专列！"
+    "lang": "【箱中巡游】活动期间，登录即<#cd6a33>免费</color>解锁吼吼点唱机·典藏母盘"
   },
   {
     "id": "p_bpspfaceview_txt_skin",
@@ -14917,11 +14917,11 @@
   },
   {
     "id": "p_bpspview_txt_switch2",
-    "lang": "巡游专列!"
+    "lang": "典藏母盘"
   },
   {
     "id": "p_bpspinformationview_txt_name",
-    "lang": "吼吼点唱机·巡游专列"
+    "lang": "吼吼点唱机·典藏母盘"
   },
   {
     "id": "p_bpspinformationview_txt_dec",
@@ -15733,7 +15733,7 @@
   },
   {
     "id": "p_v2a3_versionsummonselfselectsixhalfview_txt_tips",
-    "lang": "本卡池征集次数与保底均继承"
+    "lang": "本卡池征集次数与保底\n均可继承至后续同名卡池"
   },
   {
     "id": "p_packagestoregoodsitem_txt_materialup",
@@ -20385,7 +20385,7 @@
   },
   {
     "id": "p_bpfaceview2_txt_dec1",
-    "lang": "《叩响天宇一角》智者宣称：圆即完满。 世界嘲笑：椭圆也是。"
+    "lang": "《恶之果》他们将要审判一枚果实，因着他们自己的罪。"
   },
   {
     "id": "p_bpfaceview2_txt_dec2",
@@ -23190,5 +23190,1673 @@
   {
     "id": "p_roomfishview_txt_visit",
     "lang": "拜访中"
+  },
+  {
+    "id": "p_a14_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "河港与海之间"
+  },
+  {
+    "id": "p_a14_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "努库泰澳兴建日！"
+  },
+  {
+    "id": "p_a14_reappear_mainactivity_enterview_txt_EntranceRole3",
+    "lang": "深空波"
+  },
+  {
+    "id": "p_mainview_udimo",
+    "lang": "冲印箱"
+  },
+  {
+    "id": "p_mainview_udimo_en",
+    "lang": "printing box"
+  },
+  {
+    "id": "p_settingsgameview_txt_udimoenter",
+    "lang": "进入冲印生态箱"
+  },
+  {
+    "id": "p_setting_launcher",
+    "lang": "登录页面设置"
+  },
+  {
+    "id": "p_setting_launcher_hint",
+    "lang": "可以修改登录场景"
+  },
+  {
+    "id": "p_bpchargeview_txt_new",
+    "lang": "焕新!"
+  },
+  {
+    "id": "p_bpenterview_txt_new",
+    "lang": "奖励焕新!"
+  },
+  {
+    "id": "p_bpspfaceview_new_txt_tips",
+    "lang": "典藏母盘·典藏版吼吼光碟<#FF8A38>免费解锁！</color>"
+  },
+  {
+    "id": "p_bpspfaceview_new_txt_dec1",
+    "lang": "风尚剪影特辑"
+  },
+  {
+    "id": "p_v3a2_enterview_txt_tabname",
+    "lang": "<size=60>迁</size>流的盛宴"
+  },
+  {
+    "id": "p_rouge2_main_txt_EventHandbook",
+    "lang": "嗡鸣的往昔"
+  },
+  {
+    "id": "p_rouge2_main_txt_Formula",
+    "lang": "旅途所获"
+  },
+  {
+    "id": "p_rouge2_main_txt_RoleHandbook",
+    "lang": "配器总览"
+  },
+  {
+    "id": "p_rouge2_main_txt_Alchemy",
+    "lang": "沉默者<voffset=-15><size=61>沙龙</size></voffset>"
+  },
+  {
+    "id": "p_rouge2_main_txt_Prop",
+    "lang": "材料"
+  },
+  {
+    "id": "p_rouge2_main_txt_Talent",
+    "lang": "意志孵化"
+  },
+  {
+    "id": "p_rouge2_main_txt_Review",
+    "lang": "塞纳纪行"
+  },
+  {
+    "id": "p_rouge2_enter_txt_Store",
+    "lang": "声源修葺处"
+  },
+  {
+    "id": "p_monthcard_reappear",
+    "lang": "补领"
+  },
+  {
+    "id": "p_monthcard_reappear_tips_01",
+    "lang": "当前咆哮月历可补领奖励天数：<#FD7536>%s天</color>。是否一键补领？"
+  },
+  {
+    "id": "p_monthcard_reappear_txt_01",
+    "lang": "完成每周活跃任务可领取往日咆哮"
+  },
+  {
+    "id": "p_monthcard_reappear_tips_02",
+    "lang": "暂无可补领奖励的日期"
+  },
+  {
+    "id": "p_monthcard_reappear_txt_02",
+    "lang": "倾听往日咆哮，重拾错过的奖励"
+  },
+  {
+    "id": "p_monthcard_reappear_new_title",
+    "lang": "咆哮月历新增奖励补领功能！"
+  },
+  {
+    "id": "p_monthcard_reappear_new_txt",
+    "lang": "咆哮的一月、喧笑月历集、回归咆哮特辑新增<#FD7536>补领</color>功能，完成每周活跃任务即可领取补领道具——往日咆哮！使用往日咆哮可以补领因未登录而错失的每日奖励。"
+  },
+  {
+    "id": "p_v3a2_tripledrop_tips",
+    "lang": "狂欢助力+200%"
+  },
+  {
+    "id": "p_rouge2_illustrationmainview_txt_tab1",
+    "lang": "事件列表"
+  },
+  {
+    "id": "p_rouge2_illustrationmainview_txt_tab2",
+    "lang": "影像列表"
+  },
+  {
+    "id": "p_rouge2_illustrationlistview_txt_Title",
+    "lang": "嗡鸣的往昔"
+  },
+  {
+    "id": "p_rouge2_avgreviewview_txt_Title",
+    "lang": "嗡鸣的往昔"
+  },
+  {
+    "id": "p_rouge2_backpackcareerview_txt_1",
+    "lang": "推荐队伍"
+  },
+  {
+    "id": "p_rouge2_backpackcareerview_txt_2",
+    "lang": "携带技能"
+  },
+  {
+    "id": "p_rouge2_backpackcareerview_txt_3",
+    "lang": "属性详情"
+  },
+  {
+    "id": "p_rouge2_backpackskilleditview_txt_1",
+    "lang": "获得顺序"
+  },
+  {
+    "id": "p_rouge2_backpackskilleditview_txt_2",
+    "lang": "耗费"
+  },
+  {
+    "id": "p_rouge2_careerskilltipsview_txt_1",
+    "lang": "替换"
+  },
+  {
+    "id": "p_rouge2_careerskilltipsview_txt_2",
+    "lang": "上阵"
+  },
+  {
+    "id": "p_rouge2_attributedetailview_txt_1",
+    "lang": "<size=44>属</size>性详情"
+  },
+  {
+    "id": "p_rouge2_mapdiceview_txt_1",
+    "lang": "成功率"
+  },
+  {
+    "id": "p_rouge2_mapdiceview_txt_2",
+    "lang": "修正值"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt1",
+    "lang": "侧耳倾听吧，那合奏中总有属于你的位置\n在倒逆的狂欢中，命运又将演奏哪种结局？"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt2",
+    "lang": "咆哮月历·福利升级"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt3",
+    "lang": "每周可获得2个【往日咆哮】，用于补领在咆哮月历中错失的每日奖励。"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt4",
+    "lang": "去购买"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt5",
+    "lang": "前往挑战"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt6",
+    "lang": "每日签到·惊喜放送"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt7",
+    "lang": "双倍"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt8",
+    "lang": "每周日"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt9",
+    "lang": "奖励"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt10",
+    "lang": "吼吼点唱机·巡游特辑"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt11",
+    "lang": "购买典藏光碟立即获得<color=#A85F17>【十全调·湖的涟漪】×1</color>"
+  },
+  {
+    "id": "p_v3a2_storeblockpackageview_name",
+    "lang": "幻想的凯旋"
+  },
+  {
+    "id": "p_v3a2_storeblockpackageview_desc",
+    "lang": "集齐当期<color=#CDB06E>活动兑换</color>及<color=#CDB06E>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt12",
+    "lang": "明日可领"
+  },
+  {
+    "id": "p_v3a2_beiliergame_txt_Tips",
+    "lang": "点击残像可旋转角度"
+  },
+  {
+    "id": "p_necrologiststoryuseitem_txt_title",
+    "lang": "在下方选择目标“彼时所得”"
+  },
+  {
+    "id": "p_setting_saving_txt_1",
+    "lang": "待机模式"
+  },
+  {
+    "id": "p_setting_saving_txt_2",
+    "lang": "开启后，在设置时间内不进行任何操作，将进入待机状态"
+  },
+  {
+    "id": "p_v3a2_necrologiststory_get_item_txt_title",
+    "lang": "§获得回忆"
+  },
+  {
+    "id": "p_beilier_selectcrystal_txt_Title",
+    "lang": "组合流溢"
+  },
+  {
+    "id": "p_beilier_selectcrystal_txt_1",
+    "lang": "点击添加"
+  },
+  {
+    "id": "p_beilier_selectcrystal_txt_2",
+    "lang": "效果总览"
+  },
+  {
+    "id": "p_storepatch_txt1",
+    "lang": "补领"
+  },
+  {
+    "id": "p_storepatch_txt2",
+    "lang": "新增每日奖励补领道具"
+  },
+  {
+    "id": "p_storepatch_txt3",
+    "lang": "咆哮月历新增补领功能！"
+  },
+  {
+    "id": "p_storepatch_txt4",
+    "lang": "咆哮的一月、喧笑月历集、回归咆哮特辑新增<color=#DD632A>奖励补领</color>功能，完成每周活跃任务即可获得<color=#DD632A>往日咆哮</color>，使用往日咆哮可以补领因未登录而错失的每日奖励！"
+  },
+  {
+    "id": "p_storepatch_txt5",
+    "lang": "月卡补签"
+  },
+  {
+    "id": "p_v3a2_festival_panelsview_txt_dec",
+    "lang": "初始空无的孩子在众人的欢呼中落座，请吧，他们乐意拥你为王。"
+  },
+  {
+    "id": "p_v3a2_festival_panelsview_txt_reward1",
+    "lang": "欢庆的佳礼"
+  },
+  {
+    "id": "p_v3a2_festival_panelsview_txt_reward2",
+    "lang": "汇聚的馈赠"
+  },
+  {
+    "id": "p_v3a2_festival_panelsview_txt_get",
+    "lang": "领取赠礼"
+  },
+  {
+    "id": "p_autochesspvpsettleview_txt_warnExp",
+    "lang": "警戒度"
+  },
+  {
+    "id": "p_autochesscollectionview_txt_title",
+    "lang": "艾西的教诲"
+  },
+  {
+    "id": "p_v3a2_tripledrop_fullview_txt_expDesc",
+    "lang": "尘埃运动总计次数："
+  },
+  {
+    "id": "p_v3a2_tripledrop_fullview_txt_coinDesc",
+    "lang": "铸币美学总计次数："
+  },
+  {
+    "id": "p_autochessbeginview_txt_check",
+    "lang": "查看守卫"
+  },
+  {
+    "id": "p_bpfaceview2_txt_title",
+    "lang": "《二十一又一》新卡揭秘"
+  },
+  {
+    "id": "p_v3a2_dungeonmapview_txt_shop",
+    "lang": "璀璨工房"
+  },
+  {
+    "id": "p_turnback3_bpview_txt1",
+    "lang": "解锁后可领取以下奖励"
+  },
+  {
+    "id": "p_turnback3_bpview_txt2",
+    "lang": "继续收集新程票可领取"
+  },
+  {
+    "id": "p_turnback3_bpview_txt3",
+    "lang": "解锁再会特辑"
+  },
+  {
+    "id": "p_turnback3_bpview_txt4",
+    "lang": "咆哮的一月"
+  },
+  {
+    "id": "p_turnback3_bpview_txt5",
+    "lang": "再会好礼"
+  },
+  {
+    "id": "p_turnback3_bpview_txt6",
+    "lang": "再会任务"
+  },
+  {
+    "id": "p_turnback3_bpview_txt7",
+    "lang": "每日"
+  },
+  {
+    "id": "p_turnback3_bpview_txt8",
+    "lang": "持有票数"
+  },
+  {
+    "id": "p_turnback3_bpview_txt9",
+    "lang": "解锁立赠300"
+  },
+  {
+    "id": "p_turnback3_bpview_txt10",
+    "lang": "再会赠礼"
+  },
+  {
+    "id": "p_turnback3_bpview_txt11",
+    "lang": "再会特辑"
+  },
+  {
+    "id": "p_turnback3_bpview_txt12",
+    "lang": "购买立得"
+  },
+  {
+    "id": "p_turnback3_bpview_txt13",
+    "lang": "已解锁|已领取300"
+  },
+  {
+    "id": "p_turnback3_bpview_txt14",
+    "lang": "活动期间，完成再会任务即可获得任务奖励和新程票\n收集新程票达到指定数量，还可领取<color=#DD632A>纯雨滴</color>、<color=#DD632A>独一律</color>等再会赠礼奖励！"
+  },
+  {
+    "id": "p_turnback3_beginview_txt1",
+    "lang": "司辰，欢迎回来。请收下这份再会礼。"
+  },
+  {
+    "id": "p_turnback3_signinview_txt1",
+    "lang": "2天可得"
+  },
+  {
+    "id": "p_turnback3_signinview_txt2",
+    "lang": "载波盒子"
+  },
+  {
+    "id": "p_turnback3_signinview_txt3",
+    "lang": "7天可得"
+  },
+  {
+    "id": "p_turnback3_signinview_txt4",
+    "lang": "载波保险箱"
+  },
+  {
+    "id": "p_turnback3_signinview_txt5",
+    "lang": "获得物品"
+  },
+  {
+    "id": "p_turnback3_signinview_txt6",
+    "lang": "接受邀请"
+  },
+  {
+    "id": "p_turnback3_signinview_txt7",
+    "lang": "独一律"
+  },
+  {
+    "id": "p_turnback3_signinview_txt8",
+    "lang": "纯雨滴"
+  },
+  {
+    "id": "p_turnback3_signinview_txt9",
+    "lang": "完成活动累计总可得"
+  },
+  {
+    "id": "p_turnback3_signinview_txt10",
+    "lang": "6星心相自选"
+  },
+  {
+    "id": "p_turnback3_signinview_txt11",
+    "lang": "完成箱中归客活动累计总可得"
+  },
+  {
+    "id": "p_turnback3_signinview_txt12",
+    "lang": "登录7天累计获得"
+  },
+  {
+    "id": "p_turnback3_signinview_txt13",
+    "lang": "每日特荐礼"
+  },
+  {
+    "id": "p_turnback3_signinview_txt14",
+    "lang": "即将上新"
+  },
+  {
+    "id": "p_turnback3_signinview_txt15",
+    "lang": "回归<color=#9B3D0D>咆哮特辑</color>"
+  },
+  {
+    "id": "p_turnback3_signinview_txt16",
+    "lang": "接受朋友们的拜访\n每日签到即可获取<color=#DD632A>纯雨滴</color>、<color=#DD632A>自选6星心相</color>等奖励！"
+  },
+  {
+    "id": "p_turnback3_signinview_txt17",
+    "lang": "5星心相自选"
+  },
+  {
+    "id": "p_turnback3_doublevuiew_txt1",
+    "lang": "双倍酬劳"
+  },
+  {
+    "id": "p_turnback3_doublevuiew_txt2",
+    "lang": "剩下可用次数"
+  },
+  {
+    "id": "p_turnback3_doublevuiew_txt3",
+    "lang": "在线达到一定时长即可获得奖励。每日5:00刷新，持续5天"
+  },
+  {
+    "id": "p_turnback3_doublevuiew_txt4",
+    "lang": "箱中归客活动期间，铸币美学、尘埃运动及洞悉之门副本可享受固定次数的双倍掉落机会，挑战成功即可获得双倍酬劳。"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt1",
+    "lang": "请从以下心相选择一个作为奖励"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt2",
+    "lang": "推荐角色"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt3",
+    "lang": "暂无推荐"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt4",
+    "lang": "您已拥有当前所有可选心相"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt5",
+    "lang": "确定转化"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt6",
+    "lang": "可将本次自选转化为▩1%s▩2%s"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt7",
+    "lang": "确认选择后无法再度变更"
+  },
+  {
+    "id": "p_turnback3_equipchooseview_txt8",
+    "lang": "是否选择<color=#B65223>▩1%s</color>？"
+  },
+  {
+    "id": "p_turnback3_title",
+    "lang": "<size=66>箱</size>中归客"
+  },
+  {
+    "id": "Turnback3BuyMonthCardView_Tip",
+    "lang": "解锁再会特辑需<color=#B65223>▩1%s粹雨滴</color>，仍差▩2%s粹雨滴，是否前往购买？"
+  },
+  {
+    "id": "Turnback3BuyBpTipView_FinishTip",
+    "lang": "已领取所有再会赠礼\n解锁再会特辑后可获取以下奖励"
+  },
+  {
+    "id": "Turnback3BpViewTipTitle",
+    "lang": "规则说明"
+  },
+  {
+    "id": "Turnback3BpViewTipContent",
+    "lang": "1.箱中归客活动期间，完成再会任务即可获得任务奖励，并获得一定数量的【新程票】。\n2.每日任务将于第二日的5:00(UTC+8)刷新。\n3.每获取一定数量的【新程票】，即可在再会赠礼中获取更多奖励。\n4.消耗300粹雨滴可解锁再会特辑奖励，并立即获得300纯雨滴。\n   解锁后，获取一定数量的【新程票】还可获得再会特辑内的额外奖励。\n5.活动结束后，已解锁但未领取的奖励将不会进行补发，请及时领取。"
+  },
+  {
+    "id": "Turnback3DoubleViewTipTitle",
+    "lang": "规则说明"
+  },
+  {
+    "id": "Turnback3DoubleViewTipContent",
+    "lang": "1.箱中归客活动期间，铸币美学、尘埃运动及洞悉之门副本可享受共计12次数的双倍掉落机会，\n   挑战成功即可获得双倍酬劳并消耗次数。\n2.本活动的双倍酬劳不会与其他同类活动同时消耗次数。\n3.在线时长任务在箱中归客活动第一天开启，持续连续5天。每日5:00(UTC+8)将刷新在线时长任务完成状态。"
+  },
+  {
+    "id": "p_optionalgroupchargeview_txttips",
+    "lang": "选择1个区域，获取所选区域中所有物品"
+  },
+  {
+    "id": "p_bpenterview_stamp2txt",
+    "lang": "「巡游特典」"
+  },
+  {
+    "id": "p_bpreceiverewardview_txt",
+    "lang": "解锁典藏吼吼光碟即赠【十全调·湖的涟漪】"
+  },
+  {
+    "id": "p_bpview_unlockreward",
+    "lang": "解锁即送"
+  },
+  {
+    "id": "p_bpchargeview_cruise",
+    "lang": "巡游"
+  },
+  {
+    "id": "p_cruisegamemainview_start",
+    "lang": "<size=80>开</size>始游戏"
+  },
+  {
+    "id": "p_cruisegamemainview_value",
+    "lang": "当前积分"
+  },
+  {
+    "id": "p_cruisegamemainview_desc",
+    "lang": "荣耀的卡邦克鲁时代已经来临，决斗吧！\n花车将归于我们最伟大的、迷人的、勇猛的、贤明的王。"
+  },
+  {
+    "id": "p_cruisegamemainview_target",
+    "lang": "目标：通过石头剪刀布战胜魔精"
+  },
+  {
+    "id": "p_cruisegamemainview_bubble",
+    "lang": "花车是我的！"
+  },
+  {
+    "id": "p_cruisegamemainview_txt1",
+    "lang": "选择一张牌撤回"
+  },
+  {
+    "id": "p_cruisegamemainview_txt2",
+    "lang": "出牌"
+  },
+  {
+    "id": "p_cruisegamemainview_txt3",
+    "lang": "收牌"
+  },
+  {
+    "id": "p_cruisegamemainview_txt4",
+    "lang": "选第一张牌"
+  },
+  {
+    "id": "p_cruisegamemainview_txt5",
+    "lang": "双击出牌"
+  },
+  {
+    "id": "p_cruisegamemainview_txt6",
+    "lang": "我方先选一张牌"
+  },
+  {
+    "id": "p_cruisegameresultview_txt1",
+    "lang": "平局"
+  },
+  {
+    "id": "p_cruisegameresultview_txt2",
+    "lang": "开启新一轮"
+  },
+  {
+    "id": "p_v3a2_cruiseselftaskherotypetipview_txt1",
+    "lang": "提升下述范围内的角色可更快完成任务"
+  },
+  {
+    "id": "p_v3a2_cruiseselftaskherotypetipview_txt2",
+    "lang": "点击角色前往养成"
+  },
+  {
+    "id": "p_v3a2_cruiseglobaltaskview_txt1",
+    "lang": "全服花车装点"
+  },
+  {
+    "id": "p_v3a2_cruiseglobaltaskview_txt2",
+    "lang": "加赠"
+  },
+  {
+    "id": "p_v3a2_cruiseglobaltaskview_txt3",
+    "lang": "提交"
+  },
+  {
+    "id": "p_monthcard_reappear_txt_03",
+    "lang": "使用往日咆哮可以补领错失的奖励"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec7",
+    "lang": "前往<#E87243>选购</color>"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_name1",
+    "lang": "独一律"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_name2",
+    "lang": "金纺轮"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec1",
+    "lang": "开启3次十连模拟，选择1次结果"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec2",
+    "lang": "每次模拟必出1个6星，概率出双6星"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec3",
+    "lang": "6星角色组合不重复出现"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec5",
+    "lang": "必出"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview3_txt_dec6",
+    "lang": "概率"
+  },
+  {
+    "id": "p_v3a2_bossrush_mainview_txt_Record",
+    "lang": "巅峰观测"
+  },
+  {
+    "id": "p_v3a2_bossrush_rankview_txt_Lv",
+    "lang": "目击者等级"
+  },
+  {
+    "id": "p_v3a2_bossrush_rankbtn_txt_rank",
+    "lang": "目击者等级"
+  },
+  {
+    "id": "p_v3a2_bossrush_handbookview_txt_HighScore",
+    "lang": "巅峰观测"
+  },
+  {
+    "id": "p_v3a2_bossrush_handbookview_txt_Skill",
+    "lang": "技能与被动"
+  },
+  {
+    "id": "p_fightpowerview10_txt_Tips",
+    "lang": "进入目击回合"
+  },
+  {
+    "id": "p_v3a2_bossrush_ig_scoretips_txt_Score",
+    "lang": "当局委托评估"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_strategy",
+    "lang": "调查建议"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_resilience",
+    "lang": "隐匿度"
+  },
+  {
+    "id": "p_v3a2_bossrush_resultview_txt_NewScore",
+    "lang": "新纪录!!"
+  },
+  {
+    "id": "p_v3a2_bossrush_resultassess_txt_Score1",
+    "lang": "怪象实况"
+  },
+  {
+    "id": "p_v3a2_bossrush_resultassess_txt_Score2",
+    "lang": "怪相细节"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_dungeon",
+    "lang": "三重狂欢"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_game",
+    "lang": "众王的愚乐"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_globaltask",
+    "lang": "巡游装点中心"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_ceremony",
+    "lang": "胜者与愚众"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_selftask",
+    "lang": "愚王之路"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_guest",
+    "lang": "盛典特邀嘉宾"
+  },
+  {
+    "id": "p_v3a2_cruisemainview_txt_new",
+    "lang": "new六星"
+  },
+  {
+    "id": "p_optionalgroupchargeview_txt_title",
+    "lang": "神秘学潮汐"
+  },
+  {
+    "id": "p_v3a2_tripledrop_panelview_txt_dec",
+    "lang": "“三重狂欢”活动期间，前往【尘埃运动】、【铸币美学】关卡，即可各享受固定次数的三倍掉落机会，挑战成功即可获得三倍酬劳。"
+  },
+  {
+    "id": "p_cruisegameplayview_txt_name",
+    "lang": "魔精之王"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview_txt_shopnamecn1",
+    "lang": "水晶的赠礼"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview_txt_shopnamecn2",
+    "lang": "狂欢的收获"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview_txt_shopnamecn3",
+    "lang": "神秘学潮汐"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview2_txt_shopnamecn1",
+    "lang": "宝石的赠礼"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview2_txt_shopnamecn2",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v3a2_giftrecommendview2_txt_shopnamecn3",
+    "lang": "水晶的赠礼"
+  },
+  {
+    "id": "p_v3a2_dungeonreport_fullview_txt_unfinish",
+    "lang": "收集更多信息"
+  },
+  {
+    "id": "p_summonpickview2_txt_title",
+    "lang": "请选择模拟结果"
+  },
+  {
+    "id": "p_summonpickview2_txt_unselect",
+    "lang": "从3次模拟结果中<#DE9445>选择其中1个</color>作为最终模拟结果"
+  },
+  {
+    "id": "p_summonpickview2_txt_tips",
+    "lang": "选择<#DE9445>其中1次模拟</color>作为<#DE9445>最终结果</color>"
+  },
+  {
+    "id": "p_rouge2_talenttreeview_txt_title",
+    "lang": "意志孵化"
+  },
+  {
+    "id": "p_rouge2_talenttreeview_txt_titleEn",
+    "lang": "HER GROWING VOLITION"
+  },
+  {
+    "id": "p_rouge2_unlockinfoview_txt_title",
+    "lang": "解锁信息"
+  },
+  {
+    "id": "p_rouge2_unlockinfoview_txt_titleEn",
+    "lang": "INFORMATION"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_title",
+    "lang": "评分结算"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_titleEn",
+    "lang": "INFORMATION"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_new",
+    "lang": "难度+好旅伴"
+  },
+  {
+    "id": "p_rouge2_resultview_txt_title",
+    "lang": "花絮回顾"
+  },
+  {
+    "id": "p_rouge2_resultview_txt_titleEn",
+    "lang": "INFORMATION"
+  },
+  {
+    "id": "p_rouge2_resultreportview_txt_title",
+    "lang": "幕终所获"
+  },
+  {
+    "id": "p_rouge2_resultreportview_txt_titleEn",
+    "lang": "Results"
+  },
+  {
+    "id": "p_rouge2_resultreportview_txt_tips",
+    "lang": "仅保留最近10次结果"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_success101",
+    "lang": "再<size=60>教</size>育"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_successtips101",
+    "lang": "动物一旦成为人，绝无回归的方法。"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_success102",
+    "lang": "人<size=60>性的底</size>层"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_successtips102",
+    "lang": "于是动物将杀戮等陋习列为禁忌，拥抱良知成为了人。"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_failed",
+    "lang": "痛<size=60>苦逃</size>遁"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_failedtips",
+    "lang": "你放弃思考，凭本能远离了危险，然后再不靠近。"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleSelect",
+    "lang": "造物选择"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleSelectEn",
+    "lang": "Select Artefact"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleDrop",
+    "lang": "获得造物"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleDropEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleLoss",
+    "lang": "失去造物"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleLossEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_Title",
+    "lang": "谐波选择"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_TitleEn",
+    "lang": "Select Harmonic"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_TitleDrop",
+    "lang": "获得谐波"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_TitleDropEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_TitleLoss",
+    "lang": "失去谐波"
+  },
+  {
+    "id": "p_rouge2_buffdropview_txt_TitleLossEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_Title",
+    "lang": "属性提升"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_TitleEn",
+    "lang": "Stats Up"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_overview",
+    "lang": "提升预览"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_attribute",
+    "lang": "属性点"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_TitleSelect",
+    "lang": "选择共鸣器"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_TitleSelectEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_TitleLoss",
+    "lang": "失去共鸣器"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_TitleLossEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_Title",
+    "lang": "获得共鸣器"
+  },
+  {
+    "id": "p_rouge2_activeskilldropview_txt_TitleEn",
+    "lang": "Select Resonator"
+  },
+  {
+    "id": "p_rouge2_handbookmainview_txt_check",
+    "lang": "配器查看"
+  },
+  {
+    "id": "p_rouge2_difficultyitem_txt_locked",
+    "lang": "通过上一难度解锁"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_Title",
+    "lang": "选择配器"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_TitleEn",
+    "lang": "Select Instrument"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_origin1",
+    "lang": "初始共鸣器"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_origin2",
+    "lang": "初始造物"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_RecommandTeam",
+    "lang": "推荐配队"
+  },
+  {
+    "id": "p_rouge2_difficultyselectview_txt_Title",
+    "lang": "难度选择"
+  },
+  {
+    "id": "p_rouge2_difficultyselectview_txt_TitleEn",
+    "lang": "Select Noise"
+  },
+  {
+    "id": "p_rouge2_difficultyselectview_txt_Setting",
+    "lang": "设定："
+  },
+  {
+    "id": "p_rouge2alchemyenterview_txt_Title",
+    "lang": "好旅伴详情"
+  },
+  {
+    "id": "p_rouge2alchemyenterview_txt_TitleEn",
+    "lang": "Keepsake Details"
+  },
+  {
+    "id": "p_rouge2alchemyenterview_txt_enter",
+    "lang": "<size=86>进</size>入游戏"
+  },
+  {
+    "id": "p_rouge2alchemysuccessview_txt_Title",
+    "lang": "搭配成功"
+  },
+  {
+    "id": "p_rouge2alchemysuccessview_txt_TitleEn",
+    "lang": "Complete"
+  },
+  {
+    "id": "p_rouge2_backpackskillview_tips1",
+    "lang": "获取共鸣器进行装配"
+  },
+  {
+    "id": "p_rouge2_backpackskillview_tips2",
+    "lang": "存在未装配的共鸣器"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview_roletxt1",
+    "lang": "若向死振翅"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview_rolename1",
+    "lang": "伊索尔德"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview_roletxt2",
+    "lang": "太阳何时瞑目"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview_rolename2",
+    "lang": "伽菈波娜"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview2_roletxt1",
+    "lang": "恶之果"
+  },
+  {
+    "id": "p_v3a2_storeroleskinview2_rolename1",
+    "lang": "天使娜娜"
+  },
+  {
+    "id": "p_characterdestinyslotview_txt_reshape",
+    "lang": "流变"
+  },
+  {
+    "id": "p_activity_giftbuypanelview2_txt_title",
+    "lang": "<size=75>精</size>品礼包推荐"
+  },
+  {
+    "id": "p_activity_giftbuypanelview2_txt_title2",
+    "lang": "鬃毛的认可"
+  },
+  {
+    "id": "p_bppropview2_txt_activitytips",
+    "lang": "箱中巡游期间额外加赠十全调·【湖的涟漪】X1"
+  },
+  {
+    "id": "p_commandstation_taskitem_txt_xunyou",
+    "lang": "巡游限定"
+  },
+  {
+    "id": "p_commandstation_taskitem_txt_Catch",
+    "lang": "历史密报"
+  },
+  {
+    "id": "p_rolestory_madierda_itemgetview_txt_title",
+    "lang": "彼时所得"
+  },
+  {
+    "id": "p_rouge2_attributetoolbar_txt_name",
+    "lang": "角色总览"
+  },
+  {
+    "id": "p_rouge2_attributetoolbar_txt_nameEn",
+    "lang": "Character Profile"
+  },
+  {
+    "id": "p_rouge2_careerselectview_txt_tag",
+    "lang": "高难"
+  },
+  {
+    "id": "p_v3a2_huidiaolan_gameresultview_txt_title",
+    "lang": "共获得完美光色"
+  },
+  {
+    "id": "p_v3a2_huidiaolangameview_txt_remain",
+    "lang": "剩余步数"
+  },
+  {
+    "id": "p_autochesswarningitem_txt_warning",
+    "lang": "警戒值"
+  },
+  {
+    "id": "p_autochessmainview_txt_MyCardpack",
+    "lang": "计策制定"
+  },
+  {
+    "id": "p_autochesscardpackview_txt_title",
+    "lang": "艾西的教诲"
+  },
+  {
+    "id": "p_autochessbossbookview_txt_smalltitle",
+    "lang": "技能"
+  },
+  {
+    "id": "p_udimo_mainview_txt_info",
+    "lang": "信息"
+  },
+  {
+    "id": "p_udimo_mainview_txt_bg",
+    "lang": "背景"
+  },
+  {
+    "id": "p_udimo_mainview_txt_change",
+    "lang": "生态布设"
+  },
+  {
+    "id": "p_udimo_infoview_txt_in",
+    "lang": "入驻"
+  },
+  {
+    "id": "p_udimo_infoview_txt_out",
+    "lang": "撤离"
+  },
+  {
+    "id": "p_udimo_infoview_txt_inTag",
+    "lang": "已入驻"
+  },
+  {
+    "id": "p_udimo_infoview_txt_Info",
+    "lang": "<size=52>旅</size>途信息"
+  },
+  {
+    "id": "p_udimo_changedecorationview_txt_dress",
+    "lang": "装扮"
+  },
+  {
+    "id": "p_udimo_changebgview_txt_Title",
+    "lang": "更换背景"
+  },
+  {
+    "id": "p_turnback3_bppopup_3_txt_name",
+    "lang": "回归的一月"
+  },
+  {
+    "id": "p_turnback3_bppopup_3_txt_get",
+    "lang": "购买立得"
+  },
+  {
+    "id": "p_rouge2_settlementview2_txt_title",
+    "lang": "结算报告"
+  },
+  {
+    "id": "p_rouge2_settlementview2_txt_unlock",
+    "lang": "解锁天赋"
+  },
+  {
+    "id": "p_rouge2_settlementview2_txt_drop",
+    "lang": "材料掉落"
+  },
+  {
+    "id": "p_rouge2_handbookcareerview_txt_title1",
+    "lang": "职业解锁"
+  },
+  {
+    "id": "p_rouge2_handbookcareerview_txt_title2",
+    "lang": "初始技能"
+  },
+  {
+    "id": "p_rouge2_handbookcareerview_txt_title3",
+    "lang": "转职条件"
+  },
+  {
+    "id": "p_rouge2_handbookcareerview_txt_title4",
+    "lang": "初始造物"
+  },
+  {
+    "id": "p_rouge2_collectionlistview_txt_title",
+    "lang": "旅途所获"
+  },
+  {
+    "id": "p_rouge2_collectionlistview_txt_titleEn",
+    "lang": "COLLECTED PIECES"
+  },
+  {
+    "id": "p_rouge2_collectionlistview_txt_check",
+    "lang": "收藏展示"
+  },
+  {
+    "id": "p_rouge2_collectionhandbookview_txt_title",
+    "lang": "旅途所获"
+  },
+  {
+    "id": "p_rouge2_collectionhandbookview_txt_titleEn",
+    "lang": "COLLECTED PIECES"
+  },
+  {
+    "id": "p_rouge2_collectionhandbookview_txt_smalltitle",
+    "lang": "合成所需材料"
+  },
+  {
+    "id": "p_rouge2alchemysuccessview_txt_return",
+    "lang": "材料返还"
+  },
+  {
+    "id": "p_rouge2alchemysuccessview_txt_again",
+    "lang": "重新搭配"
+  },
+  {
+    "id": "p_rouge2alchemysuccessview_txt_addition",
+    "lang": "附加属性"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_title",
+    "lang": "沉默者沙龙"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_titleEn",
+    "lang": "THE WORDLESS WORKSHOP"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_left",
+    "lang": "金点子"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_right",
+    "lang": "材料"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_empty2",
+    "lang": "选择金点子后解锁"
+  },
+  {
+    "id": "p_rouge2alchemymainview_txt_confirm",
+    "lang": "<size=86>确</size>定搭配"
+  },
+  {
+    "id": "p_rouge2alchemylistview_txt_empty",
+    "lang": "点击左侧金点子添加"
+  },
+  {
+    "id": "p_rouge2alchemylistview_txt_need",
+    "lang": "所需材料"
+  },
+  {
+    "id": "p_characterexskillview_txt_reshape",
+    "lang": "流变中"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec1",
+    "lang": "自选范围"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec2",
+    "lang": "购买后可从下方自选任一衣着，点击可查看皮肤详情"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec3",
+    "lang": "点击选择衣着，长按查看衣着详情"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec4",
+    "lang": "自选范围"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec5",
+    "lang": "吼吼自选衣箱"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec6",
+    "lang": "可自选任一衣着"
+  },
+  {
+    "id": "p_decoratestoreview_txt_skinselect_dec7",
+    "lang": "特别售卖"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_Title",
+    "lang": "购物契机"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_TitleEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_Buy",
+    "lang": "<size=56>购</size>买"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_hasbuy",
+    "lang": "-已购买-"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_EnterSteal",
+    "lang": "<size=50>偷</size>窃"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_Steal",
+    "lang": "<size=56>偷</size>走"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_StealFail",
+    "lang": "偷取失败"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_StealSucc",
+    "lang": "成功偷取"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_ExitSteal",
+    "lang": "<size=50>退</size>出偷窃"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubbleFail",
+    "lang": "嗯！！什么动静"
+  },
+  {
+    "id": "p_fight_rouge2_revival",
+    "lang": "重新振响"
+  },
+  {
+    "id": "p_storemonthcardview_txt_new_tips",
+    "lang": "使用往日咆哮可以补领错失的奖励"
+  },
+  {
+    "id": "p_monthcard_reappear_txt_04",
+    "lang": "可补领<#FD7536>%s日</color>"
+  },
+  {
+    "id": "p_v3a2_warmup_txt_WrongChannel",
+    "lang": "深入骑兵的营帐，探寻他们人生的一隅。"
+  },
+  {
+    "id": "p_v3a2_warmup_txt_tips",
+    "lang": "向下滑动打开营帐中的柜子"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_bouns",
+    "lang": "调查委托"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_Condition",
+    "lang": "悬赏规则："
+  },
+  {
+    "id": "p_v3a2_bossrush_mainview_txt_HandBook",
+    "lang": "怪相档案"
+  },
+  {
+    "id": "p_v2a5_autochess_help_11_txt_1",
+    "lang": "每个计策都有特定的策略倾向。\n包含了不同的棋手、棋子和艾西的教诲。\n在对决中只能获得计策里的内容。"
+  },
+  {
+    "id": "p_v2a5_autochess_help_11_txt_2",
+    "lang": "警戒值等级越高，对决时可以制定的计策越多。"
+  },
+  {
+    "id": "p_v2a5_autochess_help_12_txt_1",
+    "lang": "警戒值提升可以解锁特殊的<#e08d6c>“艾西的教诲”</color>，能够在对决中默认生效\n同时解锁的棋手，也有机会在对决中使用"
+  },
+  {
+    "id": "p_v2a5_autochess_help_13_txt_1",
+    "lang": "警戒值提升会触发更多的安保守卫，<#e08d6c>等级越高的安保守卫越强</color>"
+  },
+  {
+    "id": "p_v2a5_autochess_help_14_txt_1",
+    "lang": "对决中获得的“艾西的教诲”会显示在这里，点击可以查看对应的效果"
+  },
+  {
+    "id": "p_v2a5_autochess_help_14_txt_2",
+    "lang": "下一个回合，根据将会遭遇的敌人，<#e08d6c>会显示不同的图标</color>。这个可以注意下哦"
+  },
+  {
+    "id": "p_v3a2_cruiseselftaskview_txt",
+    "lang": "可使1名6星角色<color=#FFFFFF>共鸣/觉察</color>等级提升<color=#FFFFFF>1级</color> "
+  },
+  {
+    "id": "p_v3a2_beiliergameview_txt_RightTopTips",
+    "lang": "灵光一现"
+  },
+  {
+    "id": "p_characterdestinystoneview_txt_newunlocktips",
+    "lang": "唤起所有闪念效果后解锁"
+  },
+  {
+    "id": "p_rouge2_mapdiceview_txt_new_tips",
+    "lang": "点击投掷"
+  },
+  {
+    "id": "p_v2a3_destiny_preview_txt_go_smalltitle1",
+    "lang": "闪念效果"
+  },
+  {
+    "id": "p_v2a3_destiny_preview_txt_go_smalltitle2",
+    "lang": "流变效果"
+  },
+  {
+    "id": "p_v3a2_bossrush_help_1_txt_1",
+    "lang": "使用特定的方式降低敌方的隐匿度"
+  },
+  {
+    "id": "p_v3a2_bossrush_help_1_txt_2",
+    "lang": "隐匿度归零后，下一个回合进入<color=#FF906A>目击回合</color>"
+  },
+  {
+    "id": "p_v3a2_bossrush_help_2_txt_1",
+    "lang": "进入目击回合后，<color=#FF906A>回合数上限将同步提升</color>"
+  },
+  {
+    "id": "p_v3a2_bossrush_help_2_txt_2",
+    "lang": "目击<color=#FF906A>持续一回合</color>，期间敌方<color=#FF906A>无法行动</color>"
+  },
+  {
+    "id": "p_rouge2_collectioncollectview_txt_collect",
+    "lang": "收集："
+  },
+  {
+    "id": "p_rouge2_careerskilltipsview_txt_replace2",
+    "lang": "下阵"
+  },
+  {
+    "id": "p_rouge2collectionchessview_txt_list",
+    "lang": "回声大全"
+  },
+  {
+    "id": "p_rouge2collectionchessview_txt_formula",
+    "lang": "金点子集"
+  },
+  {
+    "id": "p_packagestoregoodsitem_txt_jinfanglun",
+    "lang": "概率双6<sprite=0>"
+  },
+  {
+    "id": "p_rouge2talentreeview_txt_dec1",
+    "lang": "成长节拍："
+  },
+  {
+    "id": "p_rouge2talentreeview_txt_dec2",
+    "lang": "总览"
+  },
+  {
+    "id": "p_rouge2talentreeview_txt_dec3",
+    "lang": "已获取的节拍：<#eb5f34>▩1%s</color>/▩2%s\n成长节拍:每在沉默者沙龙中进行1次\n搭配可以获得1个成长节拍。成长节\n拍可用于激活天赋"
+  },
+  {
+    "id": "p_rouge2talenttreeview_txt_light",
+    "lang": "选择"
+  },
+  {
+    "id": "p_rouge2illustrated_txt_type1",
+    "lang": "主料"
+  },
+  {
+    "id": "p_rouge2illustrated_txt_type2",
+    "lang": "边角料"
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_title",
+    "lang": "更换弦钉"
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_titleEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_title2",
+    "lang": "获取专属造物"
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_dec",
+    "lang": "通过获取【力量】、【反应】或【奥秘】属性，累计打磨进度\n打磨进度达到2时，可以进行一次【弦钉获取】，获得共鸣造物和拨弦手专属的其他强力造物"
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_confirm",
+    "lang": "打磨弦丝"
+  },
+  {
+    "id": "p_rouge2_backpackskillview_txt_box",
+    "lang": "更换弦钉"
+  },
+  {
+    "id": "p_rouge2fightsuccview_txt_tips",
+    "lang": "攻击首领等级"
+  },
+  {
+    "id": "p_rouge2_warehouseview_txt_title",
+    "lang": "材料仓库"
+  },
+  {
+    "id": "p_rouge2_warehouseview_txt_titleEn",
+    "lang": "Inventory"
+  },
+  {
+    "id": "p_rouge2_warehouseview_txt_canUse",
+    "lang": "可用于制作"
+  },
+  {
+    "id": "p_rouge2herogroupview_txt_title",
+    "lang": "本局目标！"
+  },
+  {
+    "id": "p_rouge2herogroupview_txt_dec",
+    "lang": "攻击首领获得<#D9A06F>谐波"
+  },
+  {
+    "id": "p_rouge2_herorecruititem_txt_zhaomu",
+    "lang": "招募价格"
+  },
+  {
+    "id": "p_rouge2_herorecruititem_txt_zhaomu2",
+    "lang": "确认招募"
+  },
+  {
+    "id": "p_rouge3_herorecruititem_txt_huishou",
+    "lang": "回收价格"
+  },
+  {
+    "id": "p_rouge4_herorecruititem_txt_huishou2",
+    "lang": "确认回收"
+  },
+  {
+    "id": "p_rouge2_herorecruitview_txt_title",
+    "lang": "招募成员"
+  },
+  {
+    "id": "p_rouge2_herorecruitview_txt_titleEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_herorecruitview_txt_shouqi",
+    "lang": "收起"
+  },
+  {
+    "id": "p_rouge2_herorecruitview_txt_title2",
+    "lang": "现有成员"
+  },
+  {
+    "id": "p_rouge2_herorecruitview_txt_rongliang",
+    "lang": "总容量"
+  },
+  {
+    "id": "p_rouge2_mapentrustdetailview_txt_title",
+    "lang": "<size=46>区</size>域委托"
+  },
+  {
+    "id": "p_rouge2_maprelicsabandonview_txt_confirm",
+    "lang": "确认丢弃"
+  },
+  {
+    "id": "p_rouge2_mapview_txt_timetips",
+    "lang": "选择启程的时间"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleStrength",
+    "lang": "造物强化"
+  },
+  {
+    "id": "p_rouge2_settlementview_txt_TitleStrengthEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_lefttitle",
+    "lang": "你的行为被发现了！"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_leftdec",
+    "lang": "要么归还财物，要么准备一场恶战"
+  },
+  {
+    "id": "p_rouge2_careerskilltipsview_replace",
+    "lang": "替换"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubbleSuccess",
+    "lang": "咦，什么动静"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubble_stealFail",
+    "lang": "你在做什么"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubble_return",
+    "lang": "还算你识相……"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubble_fightSucc",
+    "lang": "哼惹不起我还躲不起"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_bubble_fightfail",
+    "lang": "不自量力…"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_stealFail_fightFailTitle",
+    "lang": "你被击败了"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_stealFail_fightFailTips",
+    "lang": "偷来的财务都被收回了"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_stealFail_fightSuccTitle",
+    "lang": "店主被击败了"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_stealFail_fightSuccTips",
+    "lang": "你带着财物离开了"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_1_1",
+    "lang": "每个回合会随机发放3种<#FF906A>音符</color>在普通咒语上"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_1_2",
+    "lang": "打出拥有音符的普通咒语时，上方的写入区将会<#FF906A>记录</color>对应的音符<#FF906A>写入区</color>的音符将会一直保留，在每回合开始时会<#FF906A>触发特殊效果</color>"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_2_1",
+    "lang": "当写入区的音符达到上限时再写入音符，则会<#FF906A>激发</color>最左的音符"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_2_2",
+    "lang": "激发的音符会生成对应的<#FF906A>音符咒语</color>进操作区上，且不占用行动点数"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_3_1",
+    "lang": "拨弦手能带入最多3种<#FF906A>宝藏</color>进战斗中"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_3_2",
+    "lang": "每回合开始将会<#FF906A>随机增加</color>宝藏的计数\n当<#FF906A>任意宝藏计数</color>填满时，都将触发特殊效果"
+  },
+  {
+    "id": "p_v3a2_rouge2_help_1_txt_4_1",
+    "lang": "在特定战斗中，角色回复的生命值<#FF906A>只能保留一回合</color>，该部分生命值称之为<#FF906A>虚血</color>，<#FF906A>虚血</color>会在下回合开始时自动清空"
+  },
+  {
+    "id": "p_v3a2_storeview_txt_title1",
+    "lang": "王室定制"
+  },
+  {
+    "id": "p_v3a2_storeview_txt_title2",
+    "lang": "大师工艺"
+  },
+  {
+    "id": "p_v3a2_storeview_txt_title3",
+    "lang": "标准展柜"
+  },
+  {
+    "id": "p_rouge2_alchemydetail",
+    "lang": "好旅伴将在下次玩法中生效后消失"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_title1",
+    "lang": "当前效果"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_title2",
+    "lang": "升至下一级激活效果"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_title3",
+    "lang": "提升至特定属性点可激活造物"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_title4",
+    "lang": "暂无可激活造物"
+  },
+  {
+    "id": "p_rouge2_relicsdropview_txt_successEffect",
+    "lang": "成功激活"
   }
 ]

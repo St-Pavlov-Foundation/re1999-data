@@ -92,7 +92,7 @@
     "id": 6,
     "desc": "周常奖励6",
     "needActivity": 4,
-    "bonus": "2#10#60|10#10#1",
+    "bonus": "29#2929001#1|2#10#60|10#10#1",
     "hideInVerifing": false
   },
   {
@@ -100,7 +100,7 @@
     "id": 7,
     "desc": "周常奖励7",
     "needActivity": 4,
-    "bonus": "2#2#100|10#10#1",
+    "bonus": "2#2#100|29#2929001#1|10#10#1",
     "hideInVerifing": false
   },
   {
@@ -108,7 +108,7 @@
     "id": 8,
     "desc": "周常奖励8",
     "needActivity": 4,
-    "bonus": "2#10#90|10#11#1",
+    "bonus": "10#11#1|2#10#90",
     "hideInVerifing": false
   },
   {

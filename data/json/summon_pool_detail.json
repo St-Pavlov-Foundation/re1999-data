@@ -196,5 +196,32 @@
     "historyShowType": 0,
     "order": 1,
     "openId": 11
+  },
+  {
+    "id": 22,
+    "desc": "",
+    "info": "83201",
+    "name": "巡游限定征集【天真与渴盼】",
+    "historyShowType": 0,
+    "order": 3,
+    "openId": 11
+  },
+  {
+    "id": 23,
+    "desc": "",
+    "info": "83202",
+    "name": "巡游限定征集【命运亦需捧场】",
+    "historyShowType": 0,
+    "order": 1,
+    "openId": 11
+  },
+  {
+    "id": 102,
+    "desc": "",
+    "info": "830",
+    "name": "金纺轮",
+    "historyShowType": 0,
+    "order": 40,
+    "openId": 11
   }
 ]

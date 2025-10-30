@@ -1,49 +1,51 @@
-﻿module("modules.logic.versionactivity2_6.common.VersionActivity2_6JumpHandleFunc", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity2_6/common/VersionActivity2_6JumpHandleFunc.lua
 
-local var_0_0 = class("VersionActivity2_6JumpHandleFunc")
+module("modules.logic.versionactivity2_6.common.VersionActivity2_6JumpHandleFunc", package.seeall)
 
-function var_0_0.jumpTo12601(arg_1_0)
+local VersionActivity2_6JumpHandleFunc = class("VersionActivity2_6JumpHandleFunc")
+
+function VersionActivity2_6JumpHandleFunc:jumpTo12601()
 	VersionActivity2_6EnterController.instance:openVersionActivityEnterView()
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo12602(arg_2_0, arg_2_1)
-	local var_2_0 = arg_2_1[2]
+function VersionActivity2_6JumpHandleFunc:jumpTo12602(paramsList)
+	local actId = paramsList[2]
 
-	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, var_2_0)
-
-	return JumpEnum.JumpResult.Success
-end
-
-function var_0_0.jumpTo12605(arg_3_0, arg_3_1)
-	local var_3_0 = arg_3_1[2]
-
-	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, var_3_0)
+	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, actId)
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo12603(arg_4_0, arg_4_1)
+function VersionActivity2_6JumpHandleFunc:jumpTo12605(paramsList)
+	local actId = paramsList[2]
+
+	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, actId)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function VersionActivity2_6JumpHandleFunc:jumpTo12603(paramsList)
 	VersionActivity2_6DungeonController.instance:openStoreView()
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo12606(arg_5_0, arg_5_1)
-	local var_5_0 = arg_5_1[2]
+function VersionActivity2_6JumpHandleFunc:jumpTo12606(paramsList)
+	local actId = paramsList[2]
 
-	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, var_5_0)
-
-	return JumpEnum.JumpResult.Success
-end
-
-function var_0_0.jumpTo12618(arg_6_0, arg_6_1)
-	local var_6_0 = arg_6_1[2]
-
-	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, var_6_0)
+	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, actId)
 
 	return JumpEnum.JumpResult.Success
 end
 
-return var_0_0
+function VersionActivity2_6JumpHandleFunc:jumpTo12618(paramsList)
+	local actId = paramsList[2]
+
+	VersionActivity2_6EnterController.instance:openVersionActivityEnterView(nil, nil, actId)
+
+	return JumpEnum.JumpResult.Success
+end
+
+return VersionActivity2_6JumpHandleFunc

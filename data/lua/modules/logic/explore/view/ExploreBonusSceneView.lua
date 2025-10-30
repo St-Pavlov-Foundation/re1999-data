@@ -1,113 +1,117 @@
-﻿module("modules.logic.explore.view.ExploreBonusSceneView", package.seeall)
+﻿-- chunkname: @modules/logic/explore/view/ExploreBonusSceneView.lua
 
-local var_0_0 = class("ExploreBonusSceneView", BaseView)
+module("modules.logic.explore.view.ExploreBonusSceneView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._btnfullscreen = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_fullscreen")
-	arg_1_0._gochoicelist = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist")
-	arg_1_0._gochoiceitem = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist/#go_choiceitem")
-	arg_1_0._txttalkinfo = gohelper.findChildText(arg_1_0.viewGO, "#txt_talkinfo")
-	arg_1_0._txttalker = gohelper.findChildText(arg_1_0.viewGO, "#txt_talker")
+local ExploreBonusSceneView = class("ExploreBonusSceneView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function ExploreBonusSceneView:onInitView()
+	self._btnfullscreen = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_fullscreen")
+	self._gochoicelist = gohelper.findChild(self.viewGO, "#go_choicelist")
+	self._gochoiceitem = gohelper.findChild(self.viewGO, "#go_choicelist/#go_choiceitem")
+	self._txttalkinfo = gohelper.findChildText(self.viewGO, "#txt_talkinfo")
+	self._txttalker = gohelper.findChildText(self.viewGO, "#txt_talker")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	NavigateMgr.instance:addSpace(ViewName.ExploreBonusSceneView, arg_2_0.onClickFull, arg_2_0)
-	arg_2_0._btnfullscreen:AddClickListener(arg_2_0.onClickFull, arg_2_0)
+function ExploreBonusSceneView:addEvents()
+	NavigateMgr.instance:addSpace(ViewName.ExploreBonusSceneView, self.onClickFull, self)
+	self._btnfullscreen:AddClickListener(self.onClickFull, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function ExploreBonusSceneView:removeEvents()
 	NavigateMgr.instance:removeSpace(ViewName.ExploreBonusSceneView)
-	arg_3_0._btnfullscreen:RemoveClickListener()
+	self._btnfullscreen:RemoveClickListener()
 end
 
-function var_0_0.onClickFull(arg_4_0)
-	if arg_4_0._hasIconDialogItem and arg_4_0._hasIconDialogItem:isPlaying() then
-		arg_4_0._hasIconDialogItem:conFinished()
+function ExploreBonusSceneView:onClickFull()
+	if self._hasIconDialogItem and self._hasIconDialogItem:isPlaying() then
+		self._hasIconDialogItem:conFinished()
 
 		return
 	end
 
-	if not arg_4_0._btnDatas[1] then
-		arg_4_0._curStep = arg_4_0._curStep + 1
+	if not self._btnDatas[1] then
+		self._curStep = self._curStep + 1
 
-		if arg_4_0.config[arg_4_0._curStep] then
-			table.insert(arg_4_0.options, -1)
-			arg_4_0:onStep()
+		if self.config[self._curStep] then
+			table.insert(self.options, -1)
+			self:onStep()
 		else
-			if arg_4_0.viewParam.callBack then
-				arg_4_0.viewParam.callBack(arg_4_0.viewParam.callBackObj, arg_4_0.options)
+			if self.viewParam.callBack then
+				self.viewParam.callBack(self.viewParam.callBackObj, self.options)
 			end
 
-			arg_4_0:closeThis()
+			self:closeThis()
 		end
 	end
 end
 
-function var_0_0.onOpen(arg_5_0)
+function ExploreBonusSceneView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_course_open)
 
-	arg_5_0.unit = arg_5_0.viewParam.unit
-	arg_5_0.config = ExploreConfig.instance:getDialogueConfig(arg_5_0.viewParam.id)
+	self.unit = self.viewParam.unit
+	self.config = ExploreConfig.instance:getDialogueConfig(self.viewParam.id)
 
-	if not arg_5_0.config then
-		logError("对话配置不存在，id：" .. tostring(arg_5_0.viewParam.id))
-		arg_5_0:closeThis()
+	if not self.config then
+		logError("对话配置不存在，id：" .. tostring(self.viewParam.id))
+		self:closeThis()
 
 		return
 	end
 
-	arg_5_0.options = {}
-	arg_5_0._curStep = 1
+	self.options = {}
+	self._curStep = 1
 
-	arg_5_0:onStep()
+	self:onStep()
 end
 
-function var_0_0.onStep(arg_6_0)
-	local var_6_0 = arg_6_0.config[arg_6_0._curStep]
-	local var_6_1 = string.gsub(var_6_0.desc, " ", " ")
+function ExploreBonusSceneView:onStep()
+	local co = self.config[self._curStep]
+	local content = string.gsub(co.desc, " ", " ")
 
-	if not arg_6_0._hasIconDialogItem then
-		arg_6_0._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(arg_6_0.viewGO, TMPFadeIn)
+	if not self._hasIconDialogItem then
+		self._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(self.viewGO, TMPFadeIn)
 	end
 
-	arg_6_0._hasIconDialogItem:playNormalText(var_6_1)
+	self._hasIconDialogItem:playNormalText(content)
 
-	arg_6_0._txttalker.text = var_6_0.speaker
+	self._txttalker.text = co.speaker
 
-	local var_6_2 = {}
+	local btnDatas = {}
 
-	if not string.nilorempty(var_6_0.bonusButton) then
-		var_6_2 = string.split(var_6_0.bonusButton, "|")
+	if not string.nilorempty(co.bonusButton) then
+		btnDatas = string.split(co.bonusButton, "|")
 	end
 
-	gohelper.CreateObjList(arg_6_0, arg_6_0._createItem, var_6_2, arg_6_0._gochoicelist, arg_6_0._gochoiceitem)
+	gohelper.CreateObjList(self, self._createItem, btnDatas, self._gochoicelist, self._gochoiceitem)
 
-	arg_6_0._btnDatas = var_6_2
+	self._btnDatas = btnDatas
 end
 
-function var_0_0._createItem(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
-	gohelper.findChildText(arg_7_1, "info").text = arg_7_2
+function ExploreBonusSceneView:_createItem(obj, data, index)
+	local txt = gohelper.findChildText(obj, "info")
 
-	local var_7_0 = gohelper.findChildButtonWithAudio(arg_7_1, "click")
+	txt.text = data
 
-	arg_7_0:removeClickCb(var_7_0)
-	arg_7_0:addClickCb(var_7_0, arg_7_0.onBtnClick, arg_7_0, arg_7_3)
+	local btn = gohelper.findChildButtonWithAudio(obj, "click")
+
+	self:removeClickCb(btn)
+	self:addClickCb(btn, self.onBtnClick, self, index)
 end
 
-function var_0_0.onBtnClick(arg_8_0, arg_8_1)
-	table.insert(arg_8_0.options, arg_8_1)
+function ExploreBonusSceneView:onBtnClick(index)
+	table.insert(self.options, index)
 
-	local var_8_0 = arg_8_0.config[arg_8_0._curStep]
+	local co = self.config[self._curStep]
 
-	GameSceneMgr.instance:getCurScene().stat:onTriggerEggs(string.format("%d_%d", var_8_0.id, var_8_0.stepid), arg_8_0._btnDatas[arg_8_1])
+	GameSceneMgr.instance:getCurScene().stat:onTriggerEggs(string.format("%d_%d", co.id, co.stepid), self._btnDatas[index])
 
-	arg_8_0._btnDatas = {}
+	self._btnDatas = {}
 
-	arg_8_0:onClickFull()
+	self:onClickFull()
 end
 
-return var_0_0
+return ExploreBonusSceneView

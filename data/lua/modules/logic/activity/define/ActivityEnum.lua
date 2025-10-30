@@ -1,13 +1,15 @@
-﻿module("modules.logic.activity.define.ActivityEnum", package.seeall)
+﻿-- chunkname: @modules/logic/activity/define/ActivityEnum.lua
 
-local var_0_0 = _M
+module("modules.logic.activity.define.ActivityEnum", package.seeall)
 
-var_0_0.ActivityType = {
+local ActivityEnum = _M
+
+ActivityEnum.ActivityType = {
 	Beginner = 2,
 	Welfare = 3,
 	Normal = 1
 }
-var_0_0.Activity = {
+ActivityEnum.Activity = {
 	V2a7_NewInsight = 12716,
 	V1a9_SemmelWeisGift = 11916,
 	V2a9_LoginSign = 130521,
@@ -32,7 +34,7 @@ var_0_0.Activity = {
 	V2a9_Act208 = 130531,
 	V2a2_SummonCustomPickNew = 12235,
 	V2a7_Role_SignView_Part1 = 12708,
-	Season = 11100,
+	V3a2_WarmUp = 13233,
 	V2a7_Role_SignView_Part2 = 12709,
 	VersionActivity1_3Radio = 11309,
 	V2a5_Role_SignView_Part1 = 12508,
@@ -81,8 +83,12 @@ var_0_0.Activity = {
 	V2a9_AssassinChase = 130520,
 	V3a0_Role_SignView_Part2 = 13013,
 	Tower = 12320,
+	V3a2_SummonCustomPickNew = 13228,
+	V3a2_ActivityCollect = 13232,
 	Explore3 = 11617,
+	Season = 11100,
 	ClassShow = 10012,
+	V3a2_Calendar_Decoration = 13226,
 	V2a2_TurnBack_H5 = 12222,
 	V2a8_ActiveActivity = 12864,
 	Jessica = 11202,
@@ -132,6 +138,7 @@ var_0_0.Activity = {
 	V2a4_Blind_Box_Draw = 12434,
 	V2a6_WeekwalkHeart = 12613,
 	V2a9_WarmUp = 130530,
+	V3a2_Rouge = 13209,
 	RoomSign = 12239,
 	V2a8_NewCultivationDestiny = 12877,
 	V2a5_Act186Sign = 12519,
@@ -142,6 +149,7 @@ var_0_0.Activity = {
 	V2a7_LinkageActivity = 12721,
 	V3a1_AutumnSign = 13110,
 	V2a8_Matildagift = 12870,
+	V3a2_SummonSimulationPick = 13234,
 	V1a9_Matildagift = 11915,
 	LinkageActivity_FullView = 12312,
 	V2a1_MoonFestival = 12110,
@@ -160,27 +168,28 @@ var_0_0.Activity = {
 	V2a4_WarmUp = 12436,
 	StarLightSignPart1_1_3 = 11312
 }
-var_0_0.MainActivityCenterViewClientId = {
+ActivityEnum.MainActivityCenterViewClientId = {
 	Bp = -3,
 	Act186 = -5,
 	TestTask = -2,
 	TurnBack = -1,
 	Act2nd = -6,
-	BpSP = -4
+	BpSP = -4,
+	Cruise = -7
 }
-var_0_0.ActivitySortWeight = {
-	[var_0_0.MainActivityCenterViewClientId.Bp] = 0,
-	[var_0_0.MainActivityCenterViewClientId.BpSP] = 1.1e-07,
-	[var_0_0.Activity.GoldenMilletPresent] = 1,
-	[var_0_0.Activity.DecalogPresent] = 2,
-	[var_0_0.Activity.RoleSignViewPart1_1_6] = 3,
-	[var_0_0.Activity.RoleSignViewPart2_1_6] = 4,
-	[var_0_0.Activity.SpringSign] = 5,
-	[var_0_0.MainActivityCenterViewClientId.TestTask] = 6,
-	[var_0_0.MainActivityCenterViewClientId.TurnBack] = 7,
-	[var_0_0.MainActivityCenterViewClientId.Act186] = 8
+ActivityEnum.ActivitySortWeight = {
+	[ActivityEnum.MainActivityCenterViewClientId.Bp] = 0,
+	[ActivityEnum.MainActivityCenterViewClientId.BpSP] = 1.1e-07,
+	[ActivityEnum.Activity.GoldenMilletPresent] = 1,
+	[ActivityEnum.Activity.DecalogPresent] = 2,
+	[ActivityEnum.Activity.RoleSignViewPart1_1_6] = 3,
+	[ActivityEnum.Activity.RoleSignViewPart2_1_6] = 4,
+	[ActivityEnum.Activity.SpringSign] = 5,
+	[ActivityEnum.MainActivityCenterViewClientId.TestTask] = 6,
+	[ActivityEnum.MainActivityCenterViewClientId.TurnBack] = 7,
+	[ActivityEnum.MainActivityCenterViewClientId.Act186] = 8
 }
-var_0_0.ActivityTypeID = {
+ActivityEnum.ActivityTypeID = {
 	JieXiKa = 114,
 	Act125 = 125,
 	Act209 = 209,
@@ -195,11 +204,12 @@ var_0_0.ActivityTypeID = {
 	NecrologistStory = 207,
 	Act189 = 189,
 	DreamTail = 119,
+	Act217 = 217,
 	Act201 = 201,
 	Act214 = 214,
 	Act147 = 147
 }
-var_0_0.ActivityStatus = {
+ActivityEnum.ActivityStatus = {
 	Expired = 2,
 	Normal = 0,
 	NotOnLine = 4,
@@ -207,8 +217,8 @@ var_0_0.ActivityStatus = {
 	NotOpen = 1,
 	None = -1
 }
-var_0_0.PlaceholderActivityId = 0
-var_0_0.VersionActivityIdDict = {
+ActivityEnum.PlaceholderActivityId = 0
+ActivityEnum.VersionActivityIdDict = {
 	Activity1_42 = 11420,
 	Activity1_3 = 11301,
 	Activity1_41 = 11401,
@@ -232,41 +242,43 @@ var_0_0.VersionActivityIdDict = {
 	Activity1_1 = 11101,
 	Activity2_2 = 12201,
 	Activity2_7 = 12705,
-	Activity2_8 = 12801
+	Activity2_8 = 12801,
+	Activity3_2 = 13222
 }
-var_0_0.VersionActivityIdList = {
-	var_0_0.VersionActivityIdDict.Activity_Assassin_1,
-	var_0_0.VersionActivityIdDict.Activity_Assassin_2,
-	var_0_0.VersionActivityIdDict.Activity3_1
+ActivityEnum.VersionActivityIdList = {
+	ActivityEnum.VersionActivityIdDict.Activity_Assassin_1,
+	ActivityEnum.VersionActivityIdDict.Activity_Assassin_2,
+	ActivityEnum.VersionActivityIdDict.Activity3_2
 }
-var_0_0.MainIcon = {
-	[var_0_0.VersionActivityIdDict.Activity1_1] = "rk1111",
-	[var_0_0.VersionActivityIdDict.Activity1_2] = "rk_1_2",
-	[var_0_0.VersionActivityIdDict.Activity1_3] = "rk_1_3",
-	[var_0_0.VersionActivityIdDict.Activity1_41] = "rk_1_4_1",
-	[var_0_0.VersionActivityIdDict.Activity1_42] = "rk_1_4_2",
-	[var_0_0.VersionActivityIdDict.Activity1_51] = "rk_1_5_1",
-	[var_0_0.VersionActivityIdDict.Activity1_52] = "rk_1_5_2",
-	[var_0_0.VersionActivityIdDict.Activity1_6] = "rk_1_6",
-	[var_0_0.VersionActivityIdDict.Activity1_7] = "rk_1_7",
-	[var_0_0.VersionActivityIdDict.Activity1_8] = "rk_1_8",
-	[var_0_0.VersionActivityIdDict.Activity1_9] = "rk_1_9",
-	[var_0_0.VersionActivityIdDict.Activity2_0] = "rk_2_0",
-	[var_0_0.VersionActivityIdDict.Activity2_1] = "rk_2_1",
-	[var_0_0.VersionActivityIdDict.Activity2_2] = "rk_2_2",
-	[var_0_0.VersionActivityIdDict.Activity2_3] = "rk_2_3",
-	[var_0_0.VersionActivityIdDict.Activity2_4] = "rk_2_4",
-	[var_0_0.VersionActivityIdDict.Activity2_5] = "rk_2_5",
-	[var_0_0.VersionActivityIdDict.Activity2_6] = "rk_2_6",
-	[var_0_0.VersionActivityIdDict.Activity2_7] = "rk_2_7",
-	[var_0_0.VersionActivityIdDict.Activity_Assassin_1] = "rk_2_9_1",
-	[var_0_0.VersionActivityIdDict.Activity_Assassin_2] = "rk_2_9_2",
-	[var_0_0.VersionActivityIdDict.Activity2_8] = "rk_2_8",
-	[var_0_0.VersionActivityIdDict.Activity3_0] = "rk_3_0",
-	[var_0_0.VersionActivityIdDict.Activity3_1] = "rk_3_1"
+ActivityEnum.MainIcon = {
+	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
+	[ActivityEnum.VersionActivityIdDict.Activity1_2] = "rk_1_2",
+	[ActivityEnum.VersionActivityIdDict.Activity1_3] = "rk_1_3",
+	[ActivityEnum.VersionActivityIdDict.Activity1_41] = "rk_1_4_1",
+	[ActivityEnum.VersionActivityIdDict.Activity1_42] = "rk_1_4_2",
+	[ActivityEnum.VersionActivityIdDict.Activity1_51] = "rk_1_5_1",
+	[ActivityEnum.VersionActivityIdDict.Activity1_52] = "rk_1_5_2",
+	[ActivityEnum.VersionActivityIdDict.Activity1_6] = "rk_1_6",
+	[ActivityEnum.VersionActivityIdDict.Activity1_7] = "rk_1_7",
+	[ActivityEnum.VersionActivityIdDict.Activity1_8] = "rk_1_8",
+	[ActivityEnum.VersionActivityIdDict.Activity1_9] = "rk_1_9",
+	[ActivityEnum.VersionActivityIdDict.Activity2_0] = "rk_2_0",
+	[ActivityEnum.VersionActivityIdDict.Activity2_1] = "rk_2_1",
+	[ActivityEnum.VersionActivityIdDict.Activity2_2] = "rk_2_2",
+	[ActivityEnum.VersionActivityIdDict.Activity2_3] = "rk_2_3",
+	[ActivityEnum.VersionActivityIdDict.Activity2_4] = "rk_2_4",
+	[ActivityEnum.VersionActivityIdDict.Activity2_5] = "rk_2_5",
+	[ActivityEnum.VersionActivityIdDict.Activity2_6] = "rk_2_6",
+	[ActivityEnum.VersionActivityIdDict.Activity2_7] = "rk_2_7",
+	[ActivityEnum.VersionActivityIdDict.Activity_Assassin_1] = "rk_2_9_1",
+	[ActivityEnum.VersionActivityIdDict.Activity_Assassin_2] = "rk_2_9_2",
+	[ActivityEnum.VersionActivityIdDict.Activity2_8] = "rk_2_8",
+	[ActivityEnum.VersionActivityIdDict.Activity3_0] = "rk_3_0",
+	[ActivityEnum.VersionActivityIdDict.Activity3_1] = "rk_3_1",
+	[ActivityEnum.VersionActivityIdDict.Activity3_2] = "rk_3_2"
 }
-var_0_0.ShowVersionActivityEpisode = 10103
-var_0_0.MainViewActivityState = {
+ActivityEnum.ShowVersionActivityEpisode = 10103
+ActivityEnum.MainViewActivityState = {
 	WuErLiXi = 5,
 	WeekWalkHeart = 9,
 	Rouge = 4,
@@ -276,17 +288,18 @@ var_0_0.MainViewActivityState = {
 	Reactivity = 2,
 	Act178 = 7,
 	RoleStoryActivity = 1,
+	Rouge2 = 12,
 	Survival = 11,
 	DouQuQu = 6,
 	None = 0
 }
-var_0_0.IOSHideActIdMap = {
-	[var_0_0.Activity.V2a9_Act208] = true
+ActivityEnum.IOSHideActIdMap = {
+	[ActivityEnum.Activity.V2a9_Act208] = true
 }
-var_0_0.RetroType = {
+ActivityEnum.RetroType = {
 	Permanent = 2,
 	Retro = 1,
 	None = 0
 }
 
-return var_0_0
+return ActivityEnum

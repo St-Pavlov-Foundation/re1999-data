@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "黄",
+    "icon1": "fight_rouge2_skill_1",
+    "icon2": "fight_rouge2_yinfu_1"
+  },
+  {
+    "id": 2,
+    "name": "绿",
+    "icon1": "fight_rouge2_skill_3",
+    "icon2": "fight_rouge2_yinfu_3"
+  },
+  {
+    "id": 3,
+    "name": "蓝",
+    "icon1": "fight_rouge2_skill_2",
+    "icon2": "fight_rouge2_yinfu_2"
+  }
+]

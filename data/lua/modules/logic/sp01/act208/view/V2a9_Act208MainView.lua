@@ -1,104 +1,113 @@
-﻿module("modules.logic.sp01.act208.view.V2a9_Act208MainView", package.seeall)
+﻿-- chunkname: @modules/logic/sp01/act208/view/V2a9_Act208MainView.lua
 
-local var_0_0 = class("V2a9_Act208MainView", BaseView)
+module("modules.logic.sp01.act208.view.V2a9_Act208MainView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "Root/#simage_FullBG")
-	arg_1_0._simageTitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "Root/Title/#simage_Title")
+local V2a9_Act208MainView = class("V2a9_Act208MainView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function V2a9_Act208MainView:onInitView()
+	self._simageFullBG = gohelper.findChildSingleImage(self.viewGO, "Root/#simage_FullBG")
+	self._simageTitle = gohelper.findChildSingleImage(self.viewGO, "Root/Title/#simage_Title")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	arg_2_0:addEventCb(Act208Controller.instance, Act208Event.onGetInfo, arg_2_0.refreshState, arg_2_0)
-	arg_2_0:addEventCb(Act208Controller.instance, Act208Event.onGetBonus, arg_2_0.refreshState, arg_2_0)
+function V2a9_Act208MainView:addEvents()
+	self:addEventCb(Act208Controller.instance, Act208Event.onGetInfo, self.refreshState, self)
+	self:addEventCb(Act208Controller.instance, Act208Event.onGetBonus, self.refreshState, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
-	arg_3_0:removeEventCb(Act208Controller.instance, Act208Event.onGetInfo, arg_3_0.refreshState, arg_3_0)
-	arg_3_0:removeEventCb(Act208Controller.instance, Act208Event.onGetBonus, arg_3_0.refreshState, arg_3_0)
+function V2a9_Act208MainView:removeEvents()
+	self:removeEventCb(Act208Controller.instance, Act208Event.onGetInfo, self.refreshState, self)
+	self:removeEventCb(Act208Controller.instance, Act208Event.onGetBonus, self.refreshState, self)
 end
 
-function var_0_0._editableInitView(arg_4_0)
-	arg_4_0._goRewardParent = gohelper.findChild(arg_4_0.viewGO, "Root/reward")
+function V2a9_Act208MainView:_editableInitView()
+	self._goRewardParent = gohelper.findChild(self.viewGO, "Root/reward")
 
-	local var_4_0 = arg_4_0._goRewardParent.transform.childCount
+	local childCount = self._goRewardParent.transform.childCount
 
-	arg_4_0._rewardItemList = {}
+	self._rewardItemList = {}
 
-	for iter_4_0 = 1, var_4_0 do
-		local var_4_1 = arg_4_0._goRewardParent.transform:GetChild(iter_4_0 - 1)
-		local var_4_2 = MonoHelper.addNoUpdateLuaComOnceToGo(var_4_1.gameObject, V2a9_Act208RewardItem)
+	for i = 1, childCount do
+		local childTran = self._goRewardParent.transform:GetChild(i - 1)
+		local item = MonoHelper.addNoUpdateLuaComOnceToGo(childTran.gameObject, V2a9_Act208RewardItem)
 
-		table.insert(arg_4_0._rewardItemList, var_4_2)
+		table.insert(self._rewardItemList, item)
 	end
 end
 
-function var_0_0.onUpdateParam(arg_5_0)
+function V2a9_Act208MainView:onUpdateParam()
 	return
 end
 
-function var_0_0.onOpen(arg_6_0)
-	arg_6_0.actId = arg_6_0.viewParam.actId
+function V2a9_Act208MainView:onOpen()
+	local param = self.viewParam
 
-	local var_6_0 = Act208Helper.getCurPlatformType()
+	self.actId = param.actId
 
-	Act208Controller.instance:getActInfo(arg_6_0.actId, var_6_0)
-	arg_6_0:_checkParent()
-	arg_6_0:refreshUI()
+	local channelId = Act208Helper.getCurPlatformType()
+
+	Act208Controller.instance:getActInfo(self.actId, channelId)
+	self:_checkParent()
+	self:refreshUI()
 end
 
-function var_0_0._checkParent(arg_7_0)
-	local var_7_0 = arg_7_0.viewParam.parent
+function V2a9_Act208MainView:_checkParent()
+	local parentGO = self.viewParam.parent
 
-	if var_7_0 then
-		gohelper.addChild(var_7_0, arg_7_0.viewGO)
+	if parentGO then
+		gohelper.addChild(parentGO, self.viewGO)
 	end
 end
 
-function var_0_0.refreshUI(arg_8_0)
-	local var_8_0 = arg_8_0.actId
-	local var_8_1 = Act208Config.instance:getBonusListById(var_8_0)
+function V2a9_Act208MainView:refreshUI()
+	local actId = self.actId
+	local bonusConfigList = Act208Config.instance:getBonusListById(actId)
 
-	for iter_8_0, iter_8_1 in ipairs(var_8_1) do
-		local var_8_2 = arg_8_0._rewardItemList[iter_8_1.id]
+	for _, bonusConfig in ipairs(bonusConfigList) do
+		local item = self._rewardItemList[bonusConfig.id]
 
-		if var_8_2 ~= nil then
-			var_8_2:setData(var_8_0, iter_8_1)
+		if item ~= nil then
+			item:setData(actId, bonusConfig)
 		end
 	end
 end
 
-function var_0_0.refreshState(arg_9_0, arg_9_1, arg_9_2)
-	if arg_9_1 ~= arg_9_0.actId then
+function V2a9_Act208MainView:refreshState(activityId, id)
+	local actId = self.actId
+
+	if activityId ~= actId then
 		return
 	end
 
-	local var_9_0 = Act208Model.instance:getInfo(arg_9_1)
+	local infoMo = Act208Model.instance:getInfo(activityId)
 
-	if not var_9_0 then
+	if not infoMo then
 		return
 	end
 
-	if arg_9_2 ~= nil then
-		local var_9_1 = var_9_0.bonusDic[arg_9_2]
+	if id ~= nil then
+		local bonusMo = infoMo.bonusDic[id]
+		local item = self._rewardItemList[id]
 
-		arg_9_0._rewardItemList[arg_9_2]:setState(var_9_1)
+		item:setState(bonusMo)
 	else
-		for iter_9_0, iter_9_1 in ipairs(var_9_0.bonusList) do
-			arg_9_0._rewardItemList[iter_9_1.id]:setState(iter_9_1)
+		for _, bonusMo in ipairs(infoMo.bonusList) do
+			local item = self._rewardItemList[bonusMo.id]
+
+			item:setState(bonusMo)
 		end
 	end
 end
 
-function var_0_0.onClose(arg_10_0)
+function V2a9_Act208MainView:onClose()
 	return
 end
 
-function var_0_0.onDestroyView(arg_11_0)
+function V2a9_Act208MainView:onDestroyView()
 	return
 end
 
-return var_0_0
+return V2a9_Act208MainView

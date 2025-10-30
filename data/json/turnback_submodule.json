@@ -98,5 +98,65 @@
     "showInPopup": 0,
     "jumpId": "",
     "reddotId": 0
+  },
+  {
+    "id": 111,
+    "turnbackId": 3,
+    "name": "归途七日",
+    "nameEn": "A 7-Day Trip Back",
+    "actDesc": "接受朋友们的拜访，每日签到获取奖励！",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 1092
+  },
+  {
+    "id": 112,
+    "turnbackId": 3,
+    "name": "箱中再会",
+    "nameEn": "Reunion in the Suitcase",
+    "actDesc": "这儿已经下了太久的雨，他们仍在等待伞下的晴天。\n完成再会任务即可获得大量奖励与【新程票】，并领取再会赠礼奖励！",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 3225
+  },
+  {
+    "id": 113,
+    "turnbackId": 3,
+    "name": "归途礼遇",
+    "nameEn": "Returning Gifts",
+    "actDesc": "活动期间，铸币美学、尘埃运动及洞悉之门副本可享受固定次数的双倍掉落机会，挑战成功即可获得双倍酬劳。",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 2411
+  },
+  {
+    "id": 114,
+    "turnbackId": 3,
+    "name": "归途特荐",
+    "nameEn": "Restart Bundle",
+    "actDesc": "",
+    "showInPopup": 0,
+    "jumpId": "10170#52",
+    "reddotId": 3216
+  },
+  {
+    "id": 115,
+    "turnbackId": 3,
+    "name": "雨的归处",
+    "nameEn": "Where the Drops Go",
+    "actDesc": "点此前往收集雨滴",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 0
+  },
+  {
+    "id": 116,
+    "turnbackId": 3,
+    "name": "剧集回顾",
+    "nameEn": "Story Review",
+    "actDesc": "",
+    "showInPopup": 0,
+    "jumpId": "",
+    "reddotId": 0
   }
 ]

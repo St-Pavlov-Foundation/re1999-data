@@ -1,86 +1,89 @@
-﻿module("modules.logic.versionactivity3_0.common.VersionActivity3_0JumpHandleFunc", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity3_0/common/VersionActivity3_0JumpHandleFunc.lua
 
-local var_0_0 = class("VersionActivity3_0JumpHandleFunc")
+module("modules.logic.versionactivity3_0.common.VersionActivity3_0JumpHandleFunc", package.seeall)
 
-function var_0_0.jumpTo12102(arg_1_0, arg_1_1)
-	local var_1_0 = arg_1_1[2]
-	local var_1_1 = arg_1_1[3]
+local VersionActivity3_0JumpHandleFunc = class("VersionActivity3_0JumpHandleFunc")
 
-	table.insert(arg_1_0.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
-	table.insert(arg_1_0.closeViewNames, ViewName.VersionActivity2_1DungeonMapLevelView)
+function VersionActivity3_0JumpHandleFunc:jumpTo12102(paramsList)
+	local actId = paramsList[2]
+	local episodeId = paramsList[3]
+
+	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
+	table.insert(self.closeViewNames, ViewName.VersionActivity2_1DungeonMapLevelView)
 	VersionActivity2_1DungeonModel.instance:setMapNeedTweenState(true)
 
-	if var_1_1 then
+	if episodeId then
 		VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance:openVersionActivityEnterViewIfNotOpened(function()
-			VersionActivity2_1DungeonController.instance:openVersionActivityDungeonMapView(nil, var_1_1, function()
+			VersionActivity2_1DungeonController.instance:openVersionActivityDungeonMapView(nil, episodeId, function()
 				ViewMgr.instance:openView(ViewName.VersionActivity2_1DungeonMapLevelView, {
 					isJump = true,
-					episodeId = var_1_1
+					episodeId = episodeId
 				})
 			end)
-		end, nil, var_1_0, true)
+		end, nil, actId, true)
 	else
-		VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance:openVersionActivityEnterViewIfNotOpened(VersionActivity2_1DungeonController.openVersionActivityDungeonMapView, VersionActivity2_1DungeonController.instance, var_1_0, true)
+		VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance:openVersionActivityEnterViewIfNotOpened(VersionActivity2_1DungeonController.openVersionActivityDungeonMapView, VersionActivity2_1DungeonController.instance, actId, true)
 	end
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo13010(arg_4_0, arg_4_1)
-	table.insert(arg_4_0.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
+function VersionActivity3_0JumpHandleFunc:jumpTo13010(paramsList)
+	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
 	VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance:openVersionActivityEnterViewIfNotOpened(function()
-		table.insert(arg_4_0.waitOpenViewNames, ViewName.ReactivityStoreView)
+		table.insert(self.waitOpenViewNames, ViewName.ReactivityStoreView)
 		ReactivityController.instance:openReactivityStoreView(VersionActivity3_0Enum.ActivityId.Reactivity)
 	end)
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo12104(arg_6_0, arg_6_1)
-	local var_6_0 = arg_6_1[2]
+function VersionActivity3_0JumpHandleFunc:jumpTo12104(paramsList)
+	local actId = paramsList[2]
 
 	VersionActivityFixedHelper.getVersionActivityEnterController(3, 0).instance:openVersionActivityEnterViewIfNotOpened(function()
 		VersionActivity2_1DungeonController.instance:openVersionActivityDungeonMapView(nil, nil, function()
 			Activity165Controller.instance:openActivity165EnterView()
 		end)
-	end, nil, var_6_0)
+	end, nil, actId)
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo13008(arg_9_0, arg_9_1)
+function VersionActivity3_0JumpHandleFunc:jumpTo13008(paramsList)
 	VersionActivity3_0DungeonController.instance:openStoreView()
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo13011(arg_10_0, arg_10_1)
-	local var_10_0 = arg_10_1[2]
-	local var_10_1 = arg_10_1[3]
+function VersionActivity3_0JumpHandleFunc:jumpTo13011(paramsList)
+	local actId = paramsList[2]
+	local isTrial = paramsList[3]
 
-	table.insert(arg_10_0.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
-	table.insert(arg_10_0.closeViewNames, ViewName.Activity201MaLiAnNaTaskView)
+	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_0EnterView)
+	table.insert(self.closeViewNames, ViewName.Activity201MaLiAnNaTaskView)
 
-	if var_10_1 and var_10_1 == 1 then
-		if ActivityHelper.getActivityStatus(var_10_0) == ActivityEnum.ActivityStatus.Normal then
-			local var_10_2 = ActivityConfig.instance:getActivityCo(var_10_0).tryoutEpisode
+	if isTrial and isTrial == 1 then
+		if ActivityHelper.getActivityStatus(actId) == ActivityEnum.ActivityStatus.Normal then
+			local actco = ActivityConfig.instance:getActivityCo(actId)
+			local episodeId = actco.tryoutEpisode
 
-			if var_10_2 <= 0 then
+			if episodeId <= 0 then
 				logError("没有配置对应的试用关卡")
 
 				return JumpEnum.JumpResult.Fail
 			end
 
-			local var_10_3 = DungeonConfig.instance:getEpisodeCO(var_10_2)
+			local config = DungeonConfig.instance:getEpisodeCO(episodeId)
 
-			DungeonFightController.instance:enterFight(var_10_3.chapterId, var_10_2)
+			DungeonFightController.instance:enterFight(config.chapterId, episodeId)
 
 			return JumpEnum.JumpResult.Success
 		else
-			local var_10_4, var_10_5 = OpenHelper.getToastIdAndParam(arg_10_0.actCo.openId)
+			local toastId, toastParamList = OpenHelper.getToastIdAndParam(self.actCo.openId)
 
-			if var_10_4 and var_10_4 ~= 0 then
-				GameFacade.showToast(var_10_4)
+			if toastId and toastId ~= 0 then
+				GameFacade.showToast(toastId)
 
 				return JumpEnum.JumpResult.Fail
 			end
@@ -90,41 +93,41 @@ function var_0_0.jumpTo13011(arg_10_0, arg_10_1)
 	else
 		VersionActivity3_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 			Activity201MaLiAnNaController.instance:enterLevelView()
-		end, nil, var_10_0, true)
+		end, nil, actId, true)
 
 		return JumpEnum.JumpResult.Success
 	end
 end
 
-function var_0_0.jumpTo13015(arg_12_0, arg_12_1)
-	local var_12_0 = arg_12_1[2]
+function VersionActivity3_0JumpHandleFunc:jumpTo13015(paramsList)
+	local actId = paramsList[2]
 
 	VersionActivity3_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		ViewMgr.instance:openView(ViewName.KaRongLevelView)
-	end, nil, var_12_0, true)
+	end, nil, actId, true)
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo13000(arg_14_0, arg_14_1)
-	local var_14_0 = arg_14_1[2]
+function VersionActivity3_0JumpHandleFunc:jumpTo13000(paramsList)
+	local actId = paramsList[2]
 
 	VersionActivity3_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		Activity104Controller.instance:openSeasonMainView()
-	end, nil, var_14_0, true)
+	end, nil, actId, true)
 
 	return JumpEnum.JumpResult.Success
 end
 
-function var_0_0.jumpTo13015(arg_16_0, arg_16_1)
-	table.insert(arg_16_0.closeViewNames, ViewName.KaRongTaskView)
-	table.insert(arg_16_0.closeViewNames, ViewName.KaRongLevelView)
+function VersionActivity3_0JumpHandleFunc:jumpTo13015(paramsList)
+	table.insert(self.closeViewNames, ViewName.KaRongTaskView)
+	table.insert(self.closeViewNames, ViewName.KaRongLevelView)
 
-	local var_16_0 = arg_16_1[2]
+	local actId = paramsList[2]
 
-	VersionActivity3_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, nil, var_16_0, true)
+	VersionActivity3_0EnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, nil, actId, true)
 
 	return JumpEnum.JumpResult.Success
 end
 
-return var_0_0
+return VersionActivity3_0JumpHandleFunc

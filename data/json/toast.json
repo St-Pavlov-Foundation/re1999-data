@@ -7250,7 +7250,7 @@
   {
     "id": 220039,
     "tips": "该结果已保存",
-    "icon": 11,
+    "icon": 121,
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
@@ -10148,6 +10148,310 @@
     "tips": "孤屿色彩未解锁，在仓库中使用【空白创意】获取更多色彩",
     "icon": 0,
     "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321001,
+    "tips": "通关上一难度后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321002,
+    "tips": "后续更新解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321003,
+    "tips": "玩法进行中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321004,
+    "tips": "前置天赋未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321005,
+    "tips": "成长节拍数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321006,
+    "tips": "已清除当前金点子",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321007,
+    "tips": "需要选满▩1%s个",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321008,
+    "tips": "最多只能选▩1%s个",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321009,
+    "tips": "请先装配主动技能",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321010,
+    "tips": "超过装载上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321011,
+    "tips": "§能量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321012,
+    "tips": "玩法进行中，无法激活",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321013,
+    "tips": "玩法进行中，无法进行搭配",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321101,
+    "tips": "该位置无法移动",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321102,
+    "tips": "三重狂欢剩余次数：<color=#c66030>▩1%s/▩2%s</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321103,
+    "tips": "能量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321104,
+    "tips": "技能冷却中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321105,
+    "tips": "该区域内没有宝石，请重新选择",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321106,
+    "tips": "位置选择有误，请重新选择",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321201,
+    "tips": "行迹点已全收集",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321202,
+    "tips": "阶段尚未开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321301,
+    "tips": "未拥有该“彼时所得”",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321302,
+    "tips": "该“彼时所得”无法解锁选项",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321303,
+    "tips": "次数不足，无法施放",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321304,
+    "tips": "完成所有潜意识测试后可查看",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321401,
+    "tips": "§请选择卡包",
+    "icon": 1,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321501,
+    "tips": "展示数量已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321502,
+    "tips": "布设未拥有",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -146,
+    "tips": "锁定邮件数量已达上限",
+    "icon": 41,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322001,
+    "tips": "邮件已锁定",
+    "icon": 41,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322002,
+    "tips": "邮件已解锁",
+    "icon": 41,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322003,
+    "tips": "商店未开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322004,
+    "tips": "尚未拥有此角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322005,
+    "tips": "当前暂无角色可提升共鸣/觉察等级",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322006,
+    "tips": "全部衣着已拥有，已退还辉光丝",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322007,
+    "tips": "该奖励在【胜者与愚众】活动中领取",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 322901,
+    "tips": "是否立刻使用道具【▩1%s】进行奖励补领",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321014,
+    "tips": "玩法未开启",
+    "icon": 11,
+    "audioId": 1,
     "notMerge": 0,
     "notShow": 0
   }

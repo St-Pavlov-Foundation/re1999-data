@@ -1,61 +1,63 @@
-﻿module("modules.logic.fight.view.FightViewDialogItem", package.seeall)
+﻿-- chunkname: @modules/logic/fight/view/FightViewDialogItem.lua
 
-local var_0_0 = class("FightViewDialogItem", LuaCompBase)
+module("modules.logic.fight.view.FightViewDialogItem", package.seeall)
 
-function var_0_0.ctor(arg_1_0, arg_1_1)
-	var_0_0.super.ctor(arg_1_0)
+local FightViewDialogItem = class("FightViewDialogItem", LuaCompBase)
 
-	arg_1_0._fightViewDialog = arg_1_1
+function FightViewDialogItem:ctor(fightViewDialog)
+	FightViewDialogItem.super.ctor(self)
+
+	self._fightViewDialog = fightViewDialog
 end
 
-function var_0_0.init(arg_2_0, arg_2_1)
-	arg_2_0.go = arg_2_1
-	arg_2_0._gocontainer = gohelper.findChild(arg_2_1, "container")
-	arg_2_0._simageicon = gohelper.findChildSingleImage(arg_2_1, "container/headframe/headicon")
-	arg_2_0._goframe = gohelper.findChild(arg_2_1, "container/headframe")
-	arg_2_0._goNormalContent = gohelper.findChild(arg_2_1, "container/go_normalcontent")
-	arg_2_0._txtdialog = gohelper.findChildText(arg_2_1, "container/go_normalcontent/txt_contentcn")
-	arg_2_0._simagebg = gohelper.findChildSingleImage(arg_2_1, "container/simagebg")
-	arg_2_0._canvasGroup = arg_2_0._gocontainer:GetComponent(typeof(UnityEngine.CanvasGroup))
+function FightViewDialogItem:init(go)
+	self.go = go
+	self._gocontainer = gohelper.findChild(go, "container")
+	self._simageicon = gohelper.findChildSingleImage(go, "container/headframe/headicon")
+	self._goframe = gohelper.findChild(go, "container/headframe")
+	self._goNormalContent = gohelper.findChild(go, "container/go_normalcontent")
+	self._txtdialog = gohelper.findChildText(go, "container/go_normalcontent/txt_contentcn")
+	self._simagebg = gohelper.findChildSingleImage(go, "container/simagebg")
+	self._canvasGroup = self._gocontainer:GetComponent(typeof(UnityEngine.CanvasGroup))
 end
 
-function var_0_0.showDialogContent(arg_3_0, arg_3_1, arg_3_2)
-	gohelper.setActive(arg_3_0._goframe, arg_3_1 ~= nil)
-	gohelper.setActive(arg_3_0._simageicon.gameObject, arg_3_1 ~= nil)
+function FightViewDialogItem:showDialogContent(icon, config)
+	gohelper.setActive(self._goframe, icon ~= nil)
+	gohelper.setActive(self._simageicon.gameObject, icon ~= nil)
 
-	if arg_3_1 then
-		if arg_3_0._simageicon.curImageUrl ~= arg_3_1 then
-			arg_3_0._simageicon:UnLoadImage()
+	if icon then
+		if self._simageicon.curImageUrl ~= icon then
+			self._simageicon:UnLoadImage()
 		end
 
-		arg_3_0._simageicon:LoadImage(arg_3_1)
+		self._simageicon:LoadImage(icon)
 	end
 
-	arg_3_0._txtdialog.text = arg_3_2.text
+	self._txtdialog.text = config.text
 
-	arg_3_0._simagebg:LoadImage(ResUrl.getFightBattleDialogBg("duihuak_002"))
+	self._simagebg:LoadImage(ResUrl.getFightBattleDialogBg("duihuak_002"))
 
-	if not arg_3_0._tmpFadeIn then
-		arg_3_0._tmpFadeIn = MonoHelper.addLuaComOnceToGo(arg_3_0._gocontainer, TMPFadeIn)
+	if not self._tmpFadeIn then
+		self._tmpFadeIn = MonoHelper.addLuaComOnceToGo(self._gocontainer, TMPFadeIn)
 	end
 
-	arg_3_0._tmpFadeIn:playNormalText(arg_3_2.text)
-	recthelper.setAnchorX(arg_3_0._goframe.transform, arg_3_2.tipsDir == 2 and 920 or 0)
-	recthelper.setAnchorX(arg_3_0._goNormalContent.transform, arg_3_2.tipsDir == 2 and 382 or 529.2)
+	self._tmpFadeIn:playNormalText(config.text)
+	recthelper.setAnchorX(self._goframe.transform, config.tipsDir == 2 and 920 or 0)
+	recthelper.setAnchorX(self._goNormalContent.transform, config.tipsDir == 2 and 382 or 529.2)
 
-	local var_3_0 = arg_3_2.tipsDir == 2 and Vector2(1, 1) or Vector2(0, 1)
+	local anchor = config.tipsDir == 2 and Vector2(1, 1) or Vector2(0, 1)
 
-	arg_3_0.go.transform.anchorMin = var_3_0
-	arg_3_0.go.transform.anchorMax = var_3_0
+	self.go.transform.anchorMin = anchor
+	self.go.transform.anchorMax = anchor
 
-	recthelper.setAnchorX(arg_3_0.go.transform, arg_3_2.tipsDir == 2 and -1100 or 208.6)
+	recthelper.setAnchorX(self.go.transform, config.tipsDir == 2 and -1100 or 208.6)
 end
 
-function var_0_0.onDestroy(arg_4_0)
-	arg_4_0._tmpFadeIn = nil
+function FightViewDialogItem:onDestroy()
+	self._tmpFadeIn = nil
 
-	arg_4_0._simageicon:UnLoadImage()
-	arg_4_0._simagebg:UnLoadImage()
+	self._simageicon:UnLoadImage()
+	self._simagebg:UnLoadImage()
 end
 
-return var_0_0
+return FightViewDialogItem

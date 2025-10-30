@@ -1,47 +1,52 @@
-﻿module("modules.logic.scene.survivalsummaryact.comp.SurvivalSummaryActPreloader", package.seeall)
+﻿-- chunkname: @modules/logic/scene/survivalsummaryact/comp/SurvivalSummaryActPreloader.lua
 
-local var_0_0 = class("SurvivalSummaryActPreloader", SurvivalShelterScenePreloader)
+module("modules.logic.scene.survivalsummaryact.comp.SurvivalSummaryActPreloader", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1, arg_1_2)
-	arg_1_0._loader = MultiAbLoader.New()
+local SurvivalSummaryActPreloader = class("SurvivalSummaryActPreloader", SurvivalShelterScenePreloader)
+
+function SurvivalSummaryActPreloader:init(sceneId, levelId)
+	self._loader = MultiAbLoader.New()
 
 	if not GameResMgr.IsFromEditorDir then
-		local var_1_0 = {}
+		local list = {}
 
-		arg_1_0._loader:setPathList(var_1_0)
-		arg_1_0._loader:addPath(arg_1_0:getMapBlockAbPath())
+		self._loader:setPathList(list)
+		self._loader:addPath(self:getMapBlockAbPath())
 	else
-		local var_1_1 = {}
+		local list = {}
 
-		tabletool.addValues(var_1_1, arg_1_0:getSummaryActBlock())
-		arg_1_0._loader:setPathList(var_1_1)
+		tabletool.addValues(list, self:getSummaryActBlock())
+		self._loader:setPathList(list)
 	end
 
-	arg_1_0._loader:addPath(SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes))
+	self._loader:addPath(SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes))
 
-	local var_1_2 = SurvivalMapModel.instance.resultData:getFirstNpcMos()
+	local npcList = SurvivalMapModel.instance.resultData:getFirstNpcMos()
 
-	for iter_1_0, iter_1_1 in ipairs(var_1_2) do
-		if SurvivalConfig.instance:getNpcRenown(iter_1_1.id) then
-			arg_1_0._loader:addPath(iter_1_1.co.resource)
+	for k, v in ipairs(npcList) do
+		local renown = SurvivalConfig.instance:getNpcRenown(v.id)
+
+		if renown then
+			self._loader:addPath(v.co.resource)
 		end
 	end
 
-	arg_1_0._loader:addPath(SurvivalShelterSceneFogComp.FogResPath)
+	self._loader:addPath(SurvivalShelterSceneFogComp.FogResPath)
 
-	for iter_1_2, iter_1_3 in pairs(SurvivalShelterScenePathComp.ResPaths) do
-		arg_1_0._loader:addPath(iter_1_3)
+	for k, v in pairs(SurvivalShelterScenePathComp.ResPaths) do
+		self._loader:addPath(v)
 	end
 
-	arg_1_0._loader:startLoad(arg_1_0._onPreloadFinish, arg_1_0)
+	self._loader:startLoad(self._onPreloadFinish, self)
 end
 
-function var_0_0.getSummaryActBlock(arg_2_0)
-	local var_2_0 = SurvivalConfig.instance:getCurShelterMapId()
-	local var_2_1 = lua_survival_shelter.configDict[var_2_0]
-	local var_2_2 = SurvivalConfig.instance:getShelterMapCo(var_2_1.mapId)
+function SurvivalSummaryActPreloader:getSummaryActBlock()
+	local mapId = SurvivalConfig.instance:getCurShelterMapId()
+	local co = lua_survival_shelter.configDict[mapId]
+	local mapCo_SummaryAct = SurvivalConfig.instance:getShelterMapCo(co.mapId)
+	local blocks = tabletool.copy(mapCo_SummaryAct.allBlockPaths)
 
-	return (tabletool.copy(var_2_2.allBlockPaths))
+	return blocks
 end
 
-return var_0_0
+return SurvivalSummaryActPreloader

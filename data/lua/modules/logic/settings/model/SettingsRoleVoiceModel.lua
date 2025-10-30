@@ -1,71 +1,76 @@
-﻿module("modules.logic.settings.model.SettingsRoleVoiceModel", package.seeall)
+﻿-- chunkname: @modules/logic/settings/model/SettingsRoleVoiceModel.lua
 
-local var_0_0 = class("SettingsRoleVoiceModel", BaseModel)
+module("modules.logic.settings.model.SettingsRoleVoiceModel", package.seeall)
 
-function var_0_0.onInit(arg_1_0)
+local SettingsRoleVoiceModel = class("SettingsRoleVoiceModel", BaseModel)
+
+function SettingsRoleVoiceModel:onInit()
 	return
 end
 
-function var_0_0.setCharVoiceLangPrefValue(arg_2_0, arg_2_1, arg_2_2)
-	local var_2_0 = type(arg_2_1) == "number" and LangSettings.shortcutTab[arg_2_1] or arg_2_1
+function SettingsRoleVoiceModel:setCharVoiceLangPrefValue(langValue, heroId)
+	local langStr = type(langValue) == "number" and LangSettings.shortcutTab[langValue] or langValue
 
-	if not arg_2_0:isHeroSp01(arg_2_2) and (var_2_0 == LangSettings.shortcutTab[LangSettings.jp] or var_2_0 == LangSettings.shortcutTab[LangSettings.kr]) then
+	if not self:isHeroSp01(heroId) and (langStr == LangSettings.shortcutTab[LangSettings.jp] or langStr == LangSettings.shortcutTab[LangSettings.kr]) then
 		return
 	end
 
-	arg_2_0:statCharVoiceData(StatEnum.EventName.ChangeCharVoiceLang, arg_2_2, var_2_0)
+	self:statCharVoiceData(StatEnum.EventName.ChangeCharVoiceLang, heroId, langStr)
 
-	local var_2_1 = PlayerModel.instance:getPlayerPrefsKey(SettingsEnum.CharVoiceLangPrefsKey .. arg_2_2 .. "_")
+	local key = PlayerModel.instance:getPlayerPrefsKey(SettingsEnum.CharVoiceLangPrefsKey .. heroId .. "_")
 
-	PlayerPrefsHelper.setString(var_2_1, var_2_0)
+	PlayerPrefsHelper.setString(key, langStr)
 end
 
-function var_0_0.getCharVoiceLangPrefValue(arg_3_0, arg_3_1)
-	local var_3_0 = PlayerModel.instance:getPlayerPrefsKey(SettingsEnum.CharVoiceLangPrefsKey .. arg_3_1 .. "_")
-	local var_3_1 = PlayerPrefsHelper.getString(var_3_0)
-	local var_3_2 = false
+function SettingsRoleVoiceModel:getCharVoiceLangPrefValue(heroId)
+	local key = PlayerModel.instance:getPlayerPrefsKey(SettingsEnum.CharVoiceLangPrefsKey .. heroId .. "_")
+	local langStr = PlayerPrefsHelper.getString(key)
+	local usingDefaultLang = false
 
-	if type(var_3_1) ~= "string" or string.nilorempty(var_3_1) then
-		var_3_1 = GameConfig:GetCurVoiceShortcut()
+	if type(langStr) ~= "string" or string.nilorempty(langStr) then
+		langStr = GameConfig:GetCurVoiceShortcut()
 
-		if not arg_3_0:isHeroSp01(arg_3_1) and (var_3_1 == LangSettings.shortcutTab[LangSettings.jp] or var_3_1 == LangSettings.shortcutTab[LangSettings.kr]) then
-			var_3_1 = LangSettings.shortcutTab[LangSettings.en]
+		if not self:isHeroSp01(heroId) and (langStr == LangSettings.shortcutTab[LangSettings.jp] or langStr == LangSettings.shortcutTab[LangSettings.kr]) then
+			langStr = LangSettings.shortcutTab[LangSettings.en]
 		end
 	end
 
-	return LangSettings.shortCut2LangIdxTab[var_3_1], var_3_1, var_3_2
+	local langId = LangSettings.shortCut2LangIdxTab[langStr]
+
+	return langId, langStr, usingDefaultLang
 end
 
-function var_0_0.isHeroSp01(arg_4_0, arg_4_1)
-	local var_4_0 = string.splitToNumber(CommonConfig.instance:getConstStr(ConstEnum.S01SpRole), "#")
+function SettingsRoleVoiceModel:isHeroSp01(heroId)
+	local roles = string.splitToNumber(CommonConfig.instance:getConstStr(ConstEnum.S01SpRole), "#")
+	local isIn = LuaUtil.tableContains(roles, heroId)
 
-	return (LuaUtil.tableContains(var_4_0, arg_4_1))
+	return isIn
 end
 
-function var_0_0.statCharVoiceData(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
-	local var_5_0 = HeroConfig.instance:getHeroCO(arg_5_2)
+function SettingsRoleVoiceModel:statCharVoiceData(eventName, heroId, targetLangStr)
+	local heroCfg = HeroConfig.instance:getHeroCO(heroId)
 
-	if not var_5_0 then
+	if not heroCfg then
 		return
 	end
 
-	local var_5_1 = {
-		[StatEnum.EventProperties.HeroId] = tonumber(arg_5_2),
-		[StatEnum.EventProperties.HeroName] = var_5_0.name
-	}
+	local properties = {}
 
-	if arg_5_1 == StatEnum.EventName.ChangeCharVoiceLang then
-		local var_5_2, var_5_3, var_5_4 = arg_5_0:getCharVoiceLangPrefValue(arg_5_2)
-		local var_5_5 = GameConfig:GetCurVoiceShortcut()
+	properties[StatEnum.EventProperties.HeroId] = tonumber(heroId)
+	properties[StatEnum.EventProperties.HeroName] = heroCfg.name
 
-		var_5_1[StatEnum.EventProperties.CharVoiceLang] = arg_5_3
-		var_5_1[StatEnum.EventProperties.GlobalVoiceLang] = var_5_5
-		var_5_1[StatEnum.EventProperties.CharVoiceLangBefore] = var_5_4 and var_5_5 or var_5_3
+	if eventName == StatEnum.EventName.ChangeCharVoiceLang then
+		local langId, langStr, usingDefaultLang = self:getCharVoiceLangPrefValue(heroId)
+		local globalVoiceLang = GameConfig:GetCurVoiceShortcut()
+
+		properties[StatEnum.EventProperties.CharVoiceLang] = targetLangStr
+		properties[StatEnum.EventProperties.GlobalVoiceLang] = globalVoiceLang
+		properties[StatEnum.EventProperties.CharVoiceLangBefore] = usingDefaultLang and globalVoiceLang or langStr
 	end
 
-	StatController.instance:track(arg_5_1, var_5_1)
+	StatController.instance:track(eventName, properties)
 end
 
-var_0_0.instance = var_0_0.New()
+SettingsRoleVoiceModel.instance = SettingsRoleVoiceModel.New()
 
-return var_0_0
+return SettingsRoleVoiceModel

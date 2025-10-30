@@ -1,27 +1,29 @@
-﻿module("modules.logic.versionactivity1_4.puzzle.view.Role37PuzzleRecordViewContainer", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_4/puzzle/view/Role37PuzzleRecordViewContainer.lua
 
-local var_0_0 = class("Role37PuzzleRecordViewContainer", BaseViewContainer)
+module("modules.logic.versionactivity1_4.puzzle.view.Role37PuzzleRecordViewContainer", package.seeall)
 
-function var_0_0.buildViews(arg_1_0)
-	local var_1_0 = {}
-	local var_1_1 = ListScrollParam.New()
+local Role37PuzzleRecordViewContainer = class("Role37PuzzleRecordViewContainer", BaseViewContainer)
 
-	var_1_1.scrollGOPath = "#scroll_List"
-	var_1_1.prefabType = ScrollEnum.ScrollPrefabFromView
-	var_1_1.prefabUrl = "#scroll_List/Viewport/Content/RecordItem"
-	var_1_1.cellClass = PuzzleRecordViewItem
-	var_1_1.scrollDir = ScrollEnum.ScrollDirV
-	var_1_1.lineCount = 1
-	var_1_1.cellWidth = 1500
-	var_1_1.cellHeight = 40
-	var_1_1.cellSpaceH = 0
-	var_1_1.cellSpaceV = 15
-	var_1_1.startSpace = 0
+function Role37PuzzleRecordViewContainer:buildViews()
+	local views = {}
+	local scrollParam = ListScrollParam.New()
 
-	table.insert(var_1_0, LuaListScrollView.New(PuzzleRecordListModel.instance, var_1_1))
-	table.insert(var_1_0, Role37PuzzleRecordView.New())
+	scrollParam.scrollGOPath = "#scroll_List"
+	scrollParam.prefabType = ScrollEnum.ScrollPrefabFromView
+	scrollParam.prefabUrl = "#scroll_List/Viewport/Content/RecordItem"
+	scrollParam.cellClass = PuzzleRecordViewItem
+	scrollParam.scrollDir = ScrollEnum.ScrollDirV
+	scrollParam.lineCount = 1
+	scrollParam.cellWidth = 1500
+	scrollParam.cellHeight = 40
+	scrollParam.cellSpaceH = 0
+	scrollParam.cellSpaceV = 15
+	scrollParam.startSpace = 0
 
-	return var_1_0
+	table.insert(views, LuaListScrollView.New(PuzzleRecordListModel.instance, scrollParam))
+	table.insert(views, Role37PuzzleRecordView.New())
+
+	return views
 end
 
-return var_0_0
+return Role37PuzzleRecordViewContainer

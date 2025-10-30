@@ -1,390 +1,428 @@
-﻿local var_0_0 = require("modules.logic.common.defines.UIAnimationName")
+﻿-- chunkname: @modules/logic/handbook/view/HandbookSkinView.lua
+
+local UIAnimationName = require("modules.logic.common.defines.UIAnimationName")
 
 module("modules.logic.handbook.view.HandbookSkinView", package.seeall)
 
-local var_0_1 = class("HandbookSkinView", BaseView)
-local var_0_2 = 120
-local var_0_3 = 170
-local var_0_4 = 5
-local var_0_5 = "up_start"
-local var_0_6 = "donw_start"
+local HandbookSkinView = class("HandbookSkinView", BaseView)
+local moveDistance = 120
+local ItemCellHeight = 170
+local VisableItemCount = 5
+local upTabAnimationName = "up_start"
+local downTabAnimationName = "donw_start"
 
-function var_0_1.onInitView(arg_1_0)
-	arg_1_0._skinItemRoot = gohelper.findChild(arg_1_0.viewGO, "#go_scroll/#go_storyStages")
-	arg_1_0._imageBg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
-	arg_1_0._imageSkinSuitGroupIcon = gohelper.findChildImage(arg_1_0.viewGO, "Left/#image_Icon")
-	arg_1_0._imageSkinSuitGroupEnIcon = gohelper.findChildImage(arg_1_0.viewGO, "Left/#image_TitleEn")
-	arg_1_0._textPlayerName = gohelper.findChildText(arg_1_0.viewGO, "title/#title_name")
-	arg_1_0._textName = gohelper.findChildText(arg_1_0.viewGO, "title/#name")
-	arg_1_0._txtFloorName = gohelper.findChildText(arg_1_0.viewGO, "Left/#txt_Name")
-	arg_1_0._txtFloorThemeDescr = gohelper.findChildText(arg_1_0.viewGO, "Left/#txt_Descr")
-	arg_1_0._goFloorItemRoot = gohelper.findChild(arg_1_0.viewGO, "Right/Scroll View/Viewport/Content")
-	arg_1_0._goFloorItem = gohelper.findChild(arg_1_0.viewGO, "Right/Scroll View/Viewport/Content/Buttnitem")
-	arg_1_0._goSwitch = gohelper.findChild(arg_1_0.viewGO, "switch")
-	arg_1_0._gopoint = gohelper.findChild(arg_1_0.viewGO, "#point")
-	arg_1_0._goscroll = gohelper.findChild(arg_1_0.viewGO, "scroll")
-	arg_1_0._scroll = SLFramework.UGUI.UIDragListener.Get(arg_1_0._goscroll)
-	arg_1_0._itemScrollRect = gohelper.findChildScrollRect(arg_1_0.viewGO, "Right/Scroll View")
-	arg_1_0._goContent = gohelper.findChild(arg_1_0.viewGO, "Right/Scroll View/Viewport/Content")
-	arg_1_0._goScrollListArrow = gohelper.findChild(arg_1_0.viewGO, "Right/arrow")
-	arg_1_0._arrowAnimator = arg_1_0._goScrollListArrow:GetComponent(typeof(UnityEngine.Animator))
-	arg_1_0._scrollHeight = recthelper.getHeight(arg_1_0._itemScrollRect.transform)
-	arg_1_0._viewAnimator = arg_1_0.viewGO:GetComponent(gohelper.Type_Animator)
-	arg_1_0._viewAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_1_0.viewGO)
+function HandbookSkinView:onInitView()
+	self._skinItemRoot = gohelper.findChild(self.viewGO, "#go_scroll/#go_storyStages")
+	self._imageBg = gohelper.findChildSingleImage(self.viewGO, "#simage_FullBG")
+	self._imageSkinSuitGroupIcon = gohelper.findChildImage(self.viewGO, "Left/#image_Icon")
+	self._imageSkinSuitGroupEnIcon = gohelper.findChildImage(self.viewGO, "Left/#image_TitleEn")
+	self._textPlayerName = gohelper.findChildText(self.viewGO, "title/#title_name")
+	self._textName = gohelper.findChildText(self.viewGO, "title/#name")
+	self._txtFloorName = gohelper.findChildText(self.viewGO, "Left/#txt_Name")
+	self._txtFloorThemeDescr = gohelper.findChildText(self.viewGO, "Left/#txt_Descr")
+	self._goFloorItemRoot = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content")
+	self._goFloorItem = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content/Buttnitem")
+	self._goSwitch = gohelper.findChild(self.viewGO, "switch")
+	self._gopoint = gohelper.findChild(self.viewGO, "#point")
+	self._goscroll = gohelper.findChild(self.viewGO, "scroll")
+	self._scroll = SLFramework.UGUI.UIDragListener.Get(self._goscroll)
+	self._itemScrollRect = gohelper.findChildScrollRect(self.viewGO, "Right/Scroll View")
+	self._goContent = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content")
+	self._goScrollListArrow = gohelper.findChild(self.viewGO, "Right/arrow")
+	self._arrowAnimator = self._goScrollListArrow:GetComponent(typeof(UnityEngine.Animator))
+	self._scrollHeight = recthelper.getHeight(self._itemScrollRect.transform)
+	self._viewAnimator = self.viewGO:GetComponent(gohelper.Type_Animator)
+	self._viewAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.viewGO)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_1.addEvents(arg_2_0)
-	arg_2_0:addEventCb(arg_2_0.viewContainer, HandbookEvent.SkinPointChanged, arg_2_0._refresPoint, arg_2_0)
-	arg_2_0:addEventCb(arg_2_0.viewContainer, HandbookEvent.OnClickTarotSkinSuit, arg_2_0._onEnterTarotMode, arg_2_0)
-	arg_2_0:addEventCb(arg_2_0.viewContainer, HandbookEvent.OnExitTarotSkinSuit, arg_2_0._onExitTarotMode, arg_2_0)
-	arg_2_0:addEventCb(HandbookController.instance, HandbookEvent.OnClickSkinSuitFloorItem, arg_2_0.onClickFloorItem, arg_2_0)
+function HandbookSkinView:addEvents()
+	self:addEventCb(self.viewContainer, HandbookEvent.SkinPointChanged, self._refresPoint, self)
+	self:addEventCb(self.viewContainer, HandbookEvent.OnClickTarotSkinSuit, self._onEnterTarotMode, self)
+	self:addEventCb(self.viewContainer, HandbookEvent.OnExitTarotSkinSuit, self._onExitTarotMode, self)
+	self:addEventCb(HandbookController.instance, HandbookEvent.OnClickSkinSuitFloorItem, self.onClickFloorItem, self)
 
 	if HandbookController.instance:hasAnyHandBookSkinGroupRedDot() then
-		arg_2_0._itemScrollRect:AddOnValueChanged(arg_2_0._onScrollChange, arg_2_0)
+		self._itemScrollRect:AddOnValueChanged(self._onScrollChange, self)
 	end
 
-	arg_2_0._scroll:AddDragBeginListener(arg_2_0._onScrollDragBegin, arg_2_0)
-	arg_2_0._scroll:AddDragEndListener(arg_2_0._onScrollDragEnd, arg_2_0)
-	arg_2_0._scroll:AddDragListener(arg_2_0._onScrollDragging, arg_2_0)
+	self._scroll:AddDragBeginListener(self._onScrollDragBegin, self)
+	self._scroll:AddDragEndListener(self._onScrollDragEnd, self)
+	self._scroll:AddDragListener(self._onScrollDragging, self)
 end
 
-function var_0_1.removeEvents(arg_3_0)
-	arg_3_0._itemScrollRect:RemoveOnValueChanged()
-	arg_3_0._scroll:RemoveDragBeginListener()
-	arg_3_0._scroll:RemoveDragEndListener()
-	arg_3_0._scroll:RemoveDragListener()
-	arg_3_0.dropClick:RemoveClickListener()
-	arg_3_0._dropFilter:RemoveOnValueChanged()
+function HandbookSkinView:removeEvents()
+	self._itemScrollRect:RemoveOnValueChanged()
+	self._scroll:RemoveDragBeginListener()
+	self._scroll:RemoveDragEndListener()
+	self._scroll:RemoveDragListener()
+	self.dropClick:RemoveClickListener()
+	self._dropFilter:RemoveOnValueChanged()
 
-	if arg_3_0.dropExtend then
-		arg_3_0.dropExtend:dispose()
+	if self.dropExtend then
+		self.dropExtend:dispose()
 	end
 end
 
-function var_0_1._onScrollChange(arg_4_0, arg_4_1)
-	arg_4_0:refreshTabListArrow()
+function HandbookSkinView:_onScrollChange(value)
+	self:refreshTabListArrow()
 end
 
-function var_0_1._onScrollDragBegin(arg_5_0, arg_5_1, arg_5_2)
-	arg_5_0.scrollDragPos = arg_5_2.position
-	arg_5_0._scrollDragOffsetX = 0
-	arg_5_0._scrollDragOffsetY = 0
+function HandbookSkinView:_onScrollDragBegin(param, eventData)
+	self.scrollDragPos = eventData.position
+	self._scrollDragOffsetX = 0
+	self._scrollDragOffsetY = 0
+
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideBegin)
 end
 
-function var_0_1._onScrollDragging(arg_6_0, arg_6_1, arg_6_2)
-	if not arg_6_0.scrollDragPos then
-		arg_6_0.scrollDragPos = arg_6_2.position
+function HandbookSkinView:_onScrollDragging(param, eventData)
+	if not self.scrollDragPos then
+		self.scrollDragPos = eventData.position
 	end
 
-	local var_6_0 = arg_6_2.position - arg_6_0.scrollDragPos
+	local moveOffset = eventData.position - self.scrollDragPos
 
-	arg_6_0.scrollDragPos = arg_6_2.position
+	self.scrollDragPos = eventData.position
 
-	local var_6_1 = arg_6_0._skinSuitFloorCfgList[arg_6_0._curSelectedIdx].id
+	local skinGroupId = self._skinSuitFloorCfgList[self._curSelectedIdx].id
 
-	if HandbookEnum.SkinSuitId2SceneType[var_6_1] == HandbookEnum.SkinSuitSceneType.Tarot then
-		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, var_6_0.x)
+	if HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Tarot then
+		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, moveOffset.x)
 	else
-		arg_6_0._scrollDragOffsetX = arg_6_0._scrollDragOffsetX + var_6_0.x
-		arg_6_0._scrollDragOffsetY = arg_6_0._scrollDragOffsetY + var_6_0.y
+		self._scrollDragOffsetX = self._scrollDragOffsetX + moveOffset.x
+		self._scrollDragOffsetY = self._scrollDragOffsetY + moveOffset.y
 
-		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, -var_6_0.x, -var_6_0.y)
+		HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlide, -moveOffset.x, -moveOffset.y)
 	end
 end
 
-function var_0_1._onScrollDragEnd(arg_7_0, arg_7_1, arg_7_2)
+function HandbookSkinView:_onScrollDragEnd(param, eventData)
 	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideEnd)
 
-	arg_7_0._slideToOtherSuit = false
+	self._slideToOtherSuit = false
 end
 
-function var_0_1.slideToPre(arg_8_0)
+function HandbookSkinView:slideToPre()
 	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideToPre)
 end
 
-function var_0_1.slideToNext(arg_9_0)
+function HandbookSkinView:slideToNext()
 	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideToNext)
 end
 
-function var_0_1._editableInitView(arg_10_0)
-	arg_10_0._gopointItem = gohelper.findChild(arg_10_0.viewGO, "#point/point_item")
-	arg_10_0.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(arg_10_0.viewGO)
+function HandbookSkinView:_editableInitView()
+	self._gopointItem = gohelper.findChild(self.viewGO, "#point/point_item")
+	self.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.viewGO)
 
-	gohelper.setActive(arg_10_0._goFloorItem, false)
-	gohelper.setActive(arg_10_0._goSwitch, false)
+	gohelper.setActive(self._goFloorItem, false)
+	gohelper.setActive(self._goSwitch, false)
 
-	arg_10_0._pointItemTbList = {
-		arg_10_0:_createPointTB(arg_10_0._gopointItem)
+	self._pointItemTbList = {
+		self:_createPointTB(self._gopointItem)
 	}
 end
 
-function var_0_1.onOpen(arg_11_0)
-	local var_11_0 = arg_11_0.viewParam
+function HandbookSkinView:onOpen()
+	local viewParam = self.viewParam
 
-	arg_11_0._defaultSelectedIdx = var_11_0 and var_11_0.defaultSelectedIdx or 1
-	arg_11_0._curSelectedIdx = arg_11_0._defaultSelectedIdx
+	self._defaultSelectedIdx = viewParam and viewParam.defaultSelectedIdx or 1
+	self._curSelectedIdx = self._defaultSelectedIdx
 
-	arg_11_0:_createFloorItems()
-	arg_11_0:_refreshDesc()
+	self:_createFloorItems()
+	self:_refreshDesc()
 
-	local var_11_1 = PlayerModel.instance:getPlayinfo().name
+	local playerName = PlayerModel.instance:getPlayinfo().name
 
-	var_11_1 = var_11_1 and var_11_1 or ""
+	playerName = playerName and playerName or ""
 
-	local var_11_2 = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("handbookskinview_playername"), var_11_1)
+	local playerNameContent = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("handbookskinview_playername"), playerName)
 
-	arg_11_0._textPlayerName.text = var_11_2
-	arg_11_0._textName.text = ""
+	self._textPlayerName.text = playerNameContent
+	self._textName.text = ""
 
-	arg_11_0:updateFilterDrop()
+	self:initFilterDrop()
 end
 
-function var_0_1.onOpenFinish(arg_12_0)
-	arg_12_0:refreshTabListArrow()
+function HandbookSkinView:onOpenFinish()
+	self:refreshTabListArrow()
 end
 
-function var_0_1.refreshTabListArrow(arg_13_0)
-	arg_13_0._contentHeight = recthelper.getHeight(arg_13_0._goContent.transform)
+function HandbookSkinView:refreshTabListArrow()
+	self._contentHeight = recthelper.getHeight(self._goContent.transform)
 
-	if arg_13_0._floorNum <= var_0_4 then
-		gohelper.setActive(arg_13_0._goScrollListArrow, false)
+	local itemCount = self._floorNum
+
+	if itemCount <= VisableItemCount then
+		gohelper.setActive(self._goScrollListArrow, false)
 	else
-		local var_13_0 = 0
+		local bottomY = 0
 
-		for iter_13_0, iter_13_1 in ipairs(arg_13_0._skinSuitFloorItems) do
-			if iter_13_1:hasRedDot() then
-				local var_13_1 = iter_13_1.viewGO.transform.localPosition.y
+		for idx, skinFloorItem in ipairs(self._skinSuitFloorItems) do
+			local hasRedDot = skinFloorItem:hasRedDot()
 
-				var_13_0 = math.min(var_13_1, var_13_0)
+			if hasRedDot then
+				local tabTrans = skinFloorItem.viewGO.transform
+				local y = tabTrans.localPosition.y
+
+				bottomY = math.min(y, bottomY)
 			end
 		end
 
-		local var_13_2 = math.abs(var_13_0)
-		local var_13_3 = arg_13_0._goContent.transform.localPosition.y
-		local var_13_4 = var_13_2 - arg_13_0._scrollHeight - var_13_3 > var_0_3 / 2
+		local deepestRedDotHeight = math.abs(bottomY)
+		local contentTrans = self._goContent.transform
+		local y = contentTrans.localPosition.y
+		local showArrowEffect = deepestRedDotHeight - self._scrollHeight - y > ItemCellHeight / 2
 
-		if var_13_4 then
-			arg_13_0._arrowAnimator:Play(var_0_0.Loop)
+		if showArrowEffect then
+			self._arrowAnimator:Play(UIAnimationName.Loop)
 		else
-			arg_13_0._arrowAnimator:Play(var_0_0.Idle)
+			self._arrowAnimator:Play(UIAnimationName.Idle)
 		end
 
-		gohelper.setActive(arg_13_0._goScrollListArrow, var_13_4)
+		gohelper.setActive(self._goScrollListArrow, showArrowEffect)
 	end
 end
 
-function var_0_1._refreshDesc(arg_14_0)
-	if HandbookEnum.SkinSuitId2SceneType[arg_14_0._skinThemeCfg.id] == HandbookEnum.SkinSuitSceneType.Tarot then
-		gohelper.setActive(arg_14_0._txtFloorThemeDescr.gameObject, false)
-		gohelper.setActive(arg_14_0._txtFloorName.gameObject, false)
-		gohelper.setActive(arg_14_0._imageSkinSuitGroupEnIcon.gameObject, false)
-		gohelper.setActive(arg_14_0._imageSkinSuitGroupIcon.gameObject, false)
+function HandbookSkinView:_refreshDesc()
+	if HandbookEnum.SkinSuitId2SceneType[self._skinThemeCfg.id] == HandbookEnum.SkinSuitSceneType.Tarot then
+		gohelper.setActive(self._txtFloorThemeDescr.gameObject, false)
+		gohelper.setActive(self._txtFloorName.gameObject, false)
+		gohelper.setActive(self._imageSkinSuitGroupEnIcon.gameObject, false)
+		gohelper.setActive(self._imageSkinSuitGroupIcon.gameObject, false)
 	else
-		gohelper.setActive(arg_14_0._txtFloorThemeDescr.gameObject, true)
-		gohelper.setActive(arg_14_0._txtFloorName.gameObject, true)
-		gohelper.setActive(arg_14_0._imageSkinSuitGroupEnIcon.gameObject, true)
-		gohelper.setActive(arg_14_0._imageSkinSuitGroupIcon.gameObject, true)
+		gohelper.setActive(self._txtFloorThemeDescr.gameObject, true)
+		gohelper.setActive(self._txtFloorName.gameObject, true)
+		gohelper.setActive(self._imageSkinSuitGroupEnIcon.gameObject, true)
+		gohelper.setActive(self._imageSkinSuitGroupIcon.gameObject, true)
 
-		arg_14_0._txtFloorThemeDescr.text = arg_14_0._skinThemeCfg.des
-		arg_14_0._txtFloorName.text = arg_14_0._skinThemeCfg.name
+		self._txtFloorThemeDescr.text = self._skinThemeCfg.des
+		self._txtFloorName.text = self._skinThemeCfg.name
 
-		UISpriteSetMgr.instance:setSkinHandbook(arg_14_0._imageSkinSuitGroupEnIcon, arg_14_0._skinThemeCfg.nameRes, true)
-		UISpriteSetMgr.instance:setSkinHandbook(arg_14_0._imageSkinSuitGroupIcon, arg_14_0._skinThemeCfg.iconRes, true)
+		UISpriteSetMgr.instance:setSkinHandbook(self._imageSkinSuitGroupEnIcon, self._skinThemeCfg.nameRes, true)
+		UISpriteSetMgr.instance:setSkinHandbook(self._imageSkinSuitGroupIcon, self._skinThemeCfg.iconRes, true)
 	end
 end
 
-function var_0_1._createFloorItems(arg_15_0)
-	arg_15_0._skinSuitFloorItems = {}
-	arg_15_0._skinSuitFloorCfgList = HandbookConfig.instance:getSkinThemeGroupCfgs(true, true)
-	arg_15_0._floorNum = #arg_15_0._skinSuitFloorCfgList
+function HandbookSkinView:_createFloorItems()
+	self._skinSuitFloorItems = {}
+	self._skinSuitFloorCfgList = HandbookConfig.instance:getSkinThemeGroupCfgs(true, true)
+	self._floorNum = #self._skinSuitFloorCfgList
 
-	gohelper.CreateObjList(arg_15_0, arg_15_0._createFloorItem, arg_15_0._skinSuitFloorCfgList, arg_15_0._goFloorItemRoot, arg_15_0._goFloorItem, HandbookSkinFloorItem)
+	gohelper.CreateObjList(self, self._createFloorItem, self._skinSuitFloorCfgList, self._goFloorItemRoot, self._goFloorItem, HandbookSkinFloorItem)
 end
 
-function var_0_1._createFloorItem(arg_16_0, arg_16_1, arg_16_2, arg_16_3)
-	arg_16_1:onUpdateData(arg_16_2, arg_16_3)
-	arg_16_1:refreshRedDot()
-	arg_16_1:refreshSelectState(arg_16_3 == arg_16_0._curSelectedIdx)
-	arg_16_1:refreshFloorView()
-	arg_16_1:setClickAction(arg_16_0.clickFloorItemAction, arg_16_0)
-	arg_16_1:refreshCurSuitIdx()
+function HandbookSkinView:_createFloorItem(itemComp, data, index)
+	itemComp:onUpdateData(data, index)
+	itemComp:refreshRedDot()
+	itemComp:refreshSelectState(index == self._curSelectedIdx)
+	itemComp:refreshFloorView()
+	itemComp:setClickAction(self.clickFloorItemAction, self)
+	itemComp:refreshCurSuitIdx()
 
-	if arg_16_0._curSelectedIdx == arg_16_3 then
-		local var_16_0 = arg_16_0._skinSuitFloorCfgList[arg_16_3]
+	if self._curSelectedIdx == index then
+		local cfg = self._skinSuitFloorCfgList[index]
 
-		arg_16_0._skinThemeCfg = var_16_0
+		self._skinThemeCfg = cfg
 
-		HandbookController.instance:statSkinTab(var_16_0 and var_16_0.id or arg_16_3)
+		HandbookController.instance:statSkinTab(cfg and cfg.id or index)
 	end
 
-	arg_16_0._skinSuitFloorItems[arg_16_3] = arg_16_1
+	self._skinSuitFloorItems[index] = itemComp
 end
 
-function var_0_1.clickFloorItemAction(arg_17_0, arg_17_1)
-	if arg_17_0._tarotMode then
+function HandbookSkinView:clickFloorItemAction(item)
+	if self._tarotMode then
 		return
 	end
 
-	HandbookController.instance:dispatchEvent(HandbookEvent.OnClickSkinSuitFloorItem, arg_17_1:getIdx())
+	HandbookController.instance:dispatchEvent(HandbookEvent.OnClickSkinSuitFloorItem, item:getIdx())
 end
 
-function var_0_1.onClickFloorItem(arg_18_0, arg_18_1)
-	if arg_18_0._curSelectedIdx == arg_18_1 then
+function HandbookSkinView:onClickFloorItem(index)
+	if self._curSelectedIdx == index then
 		return
 	end
 
-	if arg_18_1 > arg_18_0._curSelectedIdx then
-		arg_18_0._isUp = true
+	if index > self._curSelectedIdx then
+		self._isUp = true
 
-		arg_18_0._viewAnimatorPlayer:Play(var_0_6, arg_18_0.onClickFloorAniDone, arg_18_0)
+		self._viewAnimatorPlayer:Play(downTabAnimationName, self.onClickFloorAniDone, self)
 	else
-		arg_18_0._isUp = false
+		self._isUp = false
 
-		arg_18_0._viewAnimatorPlayer:Play(var_0_5, arg_18_0.onClickFloorAniDone, arg_18_0)
+		self._viewAnimatorPlayer:Play(upTabAnimationName, self.onClickFloorAniDone, self)
 	end
 
-	arg_18_0._curSelectedIdx = arg_18_1
+	self._curSelectedIdx = index
 end
 
-function var_0_1.onClickFloorAniDone(arg_19_0)
-	for iter_19_0, iter_19_1 in ipairs(arg_19_0._skinSuitFloorItems) do
-		iter_19_1:refreshSelectState(iter_19_0 == arg_19_0._curSelectedIdx)
+function HandbookSkinView:onClickFloorAniDone()
+	for i, item in ipairs(self._skinSuitFloorItems) do
+		item:refreshSelectState(i == self._curSelectedIdx)
 	end
 
-	local var_19_0 = arg_19_0._skinSuitFloorCfgList[arg_19_0._curSelectedIdx]
+	local cfg = self._skinSuitFloorCfgList[self._curSelectedIdx]
 
-	arg_19_0._skinThemeCfg = var_19_0
+	self._skinThemeCfg = cfg
 
-	HandbookController.instance:statSkinTab(var_19_0 and var_19_0.id or arg_19_0._curSelectedIdx)
-	arg_19_0:_refreshDesc()
-	TaskDispatcher.runDelay(arg_19_0.onSwitchFloorDone, arg_19_0, 0.1)
-	arg_19_0:updateFilterDrop()
+	HandbookController.instance:statSkinTab(cfg and cfg.id or self._curSelectedIdx)
+	self:_refreshDesc()
+	TaskDispatcher.runDelay(self.onSwitchFloorDone, self, 0.1)
+	self:updateFilterDrop()
 end
 
-function var_0_1.onSwitchFloorDone(arg_20_0)
-	local var_20_0 = arg_20_0._isUp and "donw_end" or "up_end"
+function HandbookSkinView:onSwitchFloorDone()
+	local switchDoneAni = self._isUp and "donw_end" or "up_end"
 
-	arg_20_0._viewAnimatorPlayer:Play(var_20_0)
+	self._viewAnimatorPlayer:Play(switchDoneAni)
 	HandbookController.instance:dispatchEvent(HandbookEvent.SwitchSkinSuitFloorDone)
 end
 
-function var_0_1._refresPoint(arg_21_0, arg_21_1, arg_21_2)
-	arg_21_1 = arg_21_1 or 1
-	arg_21_2 = arg_21_2 or 0
+function HandbookSkinView:_refresPoint(idx, num)
+	idx = idx or 1
+	num = num or 0
 
-	for iter_21_0 = #arg_21_0._pointItemTbList + 1, arg_21_2 do
-		local var_21_0 = gohelper.cloneInPlace(arg_21_0._gopointItem)
-		local var_21_1 = arg_21_0:_createPointTB(var_21_0, iter_21_0)
+	for i = #self._pointItemTbList + 1, num do
+		local go = gohelper.cloneInPlace(self._gopointItem)
+		local itemTb = self:_createPointTB(go, i)
 
-		table.insert(arg_21_0._pointItemTbList, var_21_1)
+		table.insert(self._pointItemTbList, itemTb)
 	end
 
-	for iter_21_1 = 1, #arg_21_0._pointItemTbList do
-		local var_21_2 = arg_21_0._pointItemTbList[iter_21_1]
+	for i = 1, #self._pointItemTbList do
+		local itemTb = self._pointItemTbList[i]
 
-		gohelper.setActive(var_21_2.golight, iter_21_1 == arg_21_1)
-		gohelper.setActive(var_21_2.go, iter_21_1 <= arg_21_2 and arg_21_2 > 1)
+		gohelper.setActive(itemTb.golight, i == idx)
+		gohelper.setActive(itemTb.go, i <= num and num > 1)
 	end
 
-	if arg_21_0._dropFilter then
-		arg_21_0._dropFilter:SetValue(#arg_21_0._suitCfgList - arg_21_1)
+	if self._dropFilter then
+		self._dropFilter:SetValue(#self._suitCfgList - idx)
 	end
 end
 
-function var_0_1._createPointTB(arg_22_0, arg_22_1, arg_22_2)
-	local var_22_0 = arg_22_0:getUserDataTb_()
+function HandbookSkinView:_createPointTB(go, idx)
+	local tb = self:getUserDataTb_()
 
-	var_22_0.go = arg_22_1
-	var_22_0.golight = gohelper.findChild(arg_22_1, "light")
+	tb.go = go
+	tb.golight = gohelper.findChild(go, "light")
 
-	return var_22_0
+	return tb
 end
 
-function var_0_1._clickToSuit(arg_23_0, arg_23_1)
-	arg_23_1 = arg_23_1 and arg_23_1 or 1
+function HandbookSkinView:_clickToSuit(idx)
+	idx = idx and idx or 1
 
-	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, arg_23_1)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, idx)
 end
 
-function var_0_1._onEnterTarotMode(arg_24_0)
-	arg_24_0._tarotMode = true
+function HandbookSkinView:_onEnterTarotMode()
+	self._tarotMode = true
 
-	arg_24_0._viewAnimatorPlayer:Play(var_0_0.Close)
+	self._viewAnimatorPlayer:Play(UIAnimationName.Close)
 end
 
-function var_0_1._onExitTarotMode(arg_25_0)
-	arg_25_0._tarotMode = false
+function HandbookSkinView:_onExitTarotMode()
+	self._tarotMode = false
 
-	arg_25_0._viewAnimatorPlayer:Play(var_0_0.Back)
+	self._viewAnimatorPlayer:Play(UIAnimationName.Back)
 end
 
-function var_0_1.updateFilterDrop(arg_26_0)
-	if not arg_26_0._dropFilter then
-		arg_26_0._dropFilter = gohelper.findChildDropdown(arg_26_0.viewGO, "Left/#drop_filter")
-		arg_26_0._goDrop = arg_26_0._dropFilter.gameObject
-		arg_26_0.dropArrowTr = gohelper.findChildComponent(arg_26_0._goDrop, "Arrow", gohelper.Type_Transform)
-		arg_26_0.dropClick = gohelper.getClick(arg_26_0._goDrop)
-		arg_26_0.dropExtend = DropDownExtend.Get(arg_26_0._goDrop)
+function HandbookSkinView:initFilterDrop()
+	if not self._dropFilter then
+		self._dropFilter = gohelper.findChildDropdown(self.viewGO, "Left/#drop_filter")
+		self._goDrop = self._dropFilter.gameObject
+		self.dropArrowTr = gohelper.findChildComponent(self._goDrop, "Arrow", gohelper.Type_Transform)
+		self.dropClick = gohelper.getClick(self._goDrop)
+		self.dropExtend = DropDownExtend.Get(self._goDrop)
 
-		arg_26_0.dropExtend:init(arg_26_0.onDropShow, arg_26_0.onDropHide, arg_26_0)
-		arg_26_0._dropFilter:AddOnValueChanged(arg_26_0.onDropValueChanged, arg_26_0)
-		arg_26_0.dropClick:AddClickListener(function()
+		self.dropExtend:init(self.onDropShow, self.onDropHide, self)
+		self.dropClick:AddClickListener(function()
 			AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_click)
-		end, arg_26_0)
+		end, self)
 	end
 
-	arg_26_0._curskinSuitGroupCfg = arg_26_0._skinSuitFloorCfgList[arg_26_0._curSelectedIdx]
-	arg_26_0._curSuitGroupId = arg_26_0._curskinSuitGroupCfg.id
-	arg_26_0._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(arg_26_0._curskinSuitGroupCfg.id)
+	self._curskinSuitGroupCfg = self._skinSuitFloorCfgList[self._curSelectedIdx]
+	self._curSuitGroupId = self._curskinSuitGroupCfg.id
+	self._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(self._curskinSuitGroupCfg.id)
 
-	table.sort(arg_26_0._suitCfgList, function(arg_28_0, arg_28_1)
-		if arg_28_0.show == 1 and arg_28_1.show == 0 then
+	table.sort(self._suitCfgList, function(a, b)
+		if a.show == 1 and b.show == 0 then
 			return false
-		elseif arg_28_0.show == 0 and arg_28_1.show == 1 then
+		elseif a.show == 0 and b.show == 1 then
 			return true
 		else
-			return arg_28_0.id < arg_28_1.id
+			return a.id < b.id
 		end
 	end)
-	gohelper.setActive(arg_26_0._goDrop, #arg_26_0._suitCfgList > 1)
 
-	local var_26_0 = {}
+	local dropStrList = {}
 
-	for iter_26_0, iter_26_1 in ipairs(arg_26_0._suitCfgList) do
-		local var_26_1 = iter_26_1.show == 1 and arg_26_0._suitCfgList[iter_26_0].name or luaLang("skinhandbook_lock_suit")
+	for i, cfg in ipairs(self._suitCfgList) do
+		local suitName = cfg.show == 1 and self._suitCfgList[i].name or luaLang("skinhandbook_lock_suit")
 
-		table.insert(var_26_0, var_26_1)
+		table.insert(dropStrList, suitName)
 	end
 
-	arg_26_0._dropFilter:ClearOptions()
-	arg_26_0._dropFilter:AddOptions(var_26_0)
-	arg_26_0._dropFilter:SetValue(#arg_26_0._suitCfgList - 1)
+	self._dropFilter:ClearOptions()
+	self._dropFilter:AddOptions(dropStrList)
+	self._dropFilter:SetValue(#self._suitCfgList - 1)
+	self._dropFilter:AddOnValueChanged(self.onDropValueChanged, self)
 end
 
-function var_0_1.onDropHide(arg_29_0)
+function HandbookSkinView:updateFilterDrop()
+	self._curskinSuitGroupCfg = self._skinSuitFloorCfgList[self._curSelectedIdx]
+	self._curSuitGroupId = self._curskinSuitGroupCfg.id
+	self._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(self._curskinSuitGroupCfg.id)
+
+	table.sort(self._suitCfgList, function(a, b)
+		if a.show == 1 and b.show == 0 then
+			return false
+		elseif a.show == 0 and b.show == 1 then
+			return true
+		else
+			return a.id < b.id
+		end
+	end)
+	gohelper.setActive(self._goDrop, #self._suitCfgList > 1)
+
+	local dropStrList = {}
+
+	for i, cfg in ipairs(self._suitCfgList) do
+		local suitName = cfg.show == 1 and self._suitCfgList[i].name or luaLang("skinhandbook_lock_suit")
+
+		table.insert(dropStrList, suitName)
+	end
+
+	self._dropFilter:ClearOptions()
+	self._dropFilter:AddOptions(dropStrList)
+	self._dropFilter:SetValue(#self._suitCfgList - 1)
+end
+
+function HandbookSkinView:onDropHide()
 	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookDropListOpen, false)
 end
 
-function var_0_1.onDropShow(arg_30_0)
+function HandbookSkinView:onDropShow()
 	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookDropListOpen, true)
 end
 
-function var_0_1.onDropValueChanged(arg_31_0, arg_31_1)
-	arg_31_1 = #arg_31_0._suitCfgList - arg_31_1
+function HandbookSkinView:onDropValueChanged(index)
+	index = #self._suitCfgList - index
 
-	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, arg_31_1)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, index)
 end
 
-function var_0_1.onClose(arg_32_0)
+function HandbookSkinView:onClose()
 	return
 end
 
-function var_0_1.onDestroyView(arg_33_0)
+function HandbookSkinView:onDestroyView()
 	return
 end
 
-return var_0_1
+return HandbookSkinView

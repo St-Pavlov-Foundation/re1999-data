@@ -1,54 +1,56 @@
-﻿module("projbooter.sdk.SDKNativeUtil", package.seeall)
+﻿-- chunkname: @projbooter/sdk/SDKNativeUtil.lua
 
-local var_0_0 = {}
+module("projbooter.sdk.SDKNativeUtil", package.seeall)
 
-var_0_0.nativeClsName = "com.ssgame.mobile.gamesdk.unity.UnityStaticSdk"
-var_0_0.toolClsName = "com.ssgame.mobile.commonbase.unity.GameSdkTool"
-var_0_0.Permissions = {
+local SDKNativeUtil = {}
+
+SDKNativeUtil.nativeClsName = "com.ssgame.mobile.gamesdk.unity.UnityStaticSdk"
+SDKNativeUtil.toolClsName = "com.ssgame.mobile.commonbase.unity.GameSdkTool"
+SDKNativeUtil.Permissions = {
 	Internet = "android.permission.INTERNET"
 }
 
-function var_0_0.isLogin()
+function SDKNativeUtil.isLogin()
 	if not SLFramework.FrameworkSettings.IsEditor and BootNativeUtil.isAndroid() then
-		return SLFramework.NativeUtil.BoolCallNative(var_0_0.nativeClsName, "isLogin", "")
+		return SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "isLogin", "")
 	end
 
 	return true
 end
 
-function var_0_0.isShowShareButton()
+function SDKNativeUtil.isShowShareButton()
 	if BootNativeUtil.isIOS() then
 		return SDKMgr.instance:isShowShareButton()
 	end
 
-	return SLFramework.NativeUtil.BoolCallNative(var_0_0.nativeClsName, "isShowShareButton", "")
+	return SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "isShowShareButton", "")
 end
 
-function var_0_0.isGamePad()
+function SDKNativeUtil.isGamePad()
 	if BootNativeUtil.isAndroid() and GameChannelConfig.isXfsdk() then
-		if var_0_0._isGamePad == nil then
-			var_0_0._isGamePad = SLFramework.NativeUtil.BoolCallNative(var_0_0.nativeClsName, "isGamePad", "")
+		if SDKNativeUtil._isGamePad == nil then
+			SDKNativeUtil._isGamePad = SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "isGamePad", "")
 		end
 
-		return var_0_0._isGamePad
+		return SDKNativeUtil._isGamePad
 	end
 
 	return false
 end
 
-function var_0_0.updateGame(arg_4_0)
+function SDKNativeUtil.updateGame(appUrl)
 	if BootNativeUtil.isAndroid() then
 		if VersionUtil.isVersionLargeEqual("2.7.0") then
-			SLFramework.NativeUtil.VoidCallNative(var_0_0.nativeClsName, "updateGame", arg_4_0)
+			SLFramework.NativeUtil.VoidCallNative(SDKNativeUtil.nativeClsName, "updateGame", appUrl)
 		else
-			SLFramework.NativeUtil.BoolCallNative(var_0_0.nativeClsName, "updateGame", "")
+			SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "updateGame", "")
 		end
 	end
 end
 
-function var_0_0.openCostumerService()
+function SDKNativeUtil.openCostumerService()
 	if BootNativeUtil.isAndroid() then
-		SLFramework.NativeUtil.VoidCallNative(var_0_0.nativeClsName, "openCostumerService", "深蓝互动")
+		SLFramework.NativeUtil.VoidCallNative(SDKNativeUtil.nativeClsName, "openCostumerService", "深蓝互动")
 
 		return true
 	end
@@ -68,12 +70,12 @@ function var_0_0.openCostumerService()
 	return false
 end
 
-function var_0_0.checkPermissions(arg_6_0)
+function SDKNativeUtil.checkPermissions(permission)
 	if BootNativeUtil.isAndroid() then
-		return SLFramework.NativeUtil.BoolCallNative(var_0_0.toolClsName, "checkPermissions", arg_6_0, true)
+		return SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.toolClsName, "checkPermissions", permission, true)
 	end
 
 	return true
 end
 
-return var_0_0
+return SDKNativeUtil

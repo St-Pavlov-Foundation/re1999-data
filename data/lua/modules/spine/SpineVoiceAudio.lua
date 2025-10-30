@@ -1,137 +1,140 @@
-﻿module("modules.spine.SpineVoiceAudio", package.seeall)
+﻿-- chunkname: @modules/spine/SpineVoiceAudio.lua
 
-local var_0_0 = class("SpineVoiceAudio")
+module("modules.spine.SpineVoiceAudio", package.seeall)
 
-function var_0_0.ctor(arg_1_0)
+local SpineVoiceAudio = class("SpineVoiceAudio")
+
+function SpineVoiceAudio:ctor()
 	return
 end
 
-function var_0_0.onDestroy(arg_2_0)
-	arg_2_0._spineVoice = nil
-	arg_2_0._voiceConfig = nil
-	arg_2_0._spine = nil
-	arg_2_0._addAudios = nil
+function SpineVoiceAudio:onDestroy()
+	self._spineVoice = nil
+	self._voiceConfig = nil
+	self._spine = nil
+	self._addAudios = nil
 end
 
-function var_0_0.init(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4)
-	arg_3_0._spineVoice = arg_3_1
-	arg_3_0._voiceConfig = arg_3_2
-	arg_3_0._spine = arg_3_3
-	arg_3_0._hasAudio = AudioConfig.instance:getAudioCOById(arg_3_2.audio)
+function SpineVoiceAudio:init(spineVoice, voiceConfig, spine, lang)
+	self._spineVoice = spineVoice
+	self._voiceConfig = voiceConfig
+	self._spine = spine
+	self._hasAudio = AudioConfig.instance:getAudioCOById(voiceConfig.audio)
 
-	if arg_3_0._hasAudio then
-		arg_3_0._emitter = ZProj.AudioEmitter.Get(arg_3_3:getSpineGo())
+	if self._hasAudio then
+		self._emitter = ZProj.AudioEmitter.Get(spine:getSpineGo())
 
-		if not arg_3_0._emitter then
-			arg_3_0:_onVoiceEnd()
+		if not self._emitter then
+			self:_onVoiceEnd()
 
 			return
 		end
 
-		if arg_3_4 then
-			local var_3_0 = AudioConfig.instance:getAudioCOById(arg_3_2.audio).bankName
+		if lang then
+			local audioCfg = AudioConfig.instance:getAudioCOById(voiceConfig.audio)
+			local bnkName = audioCfg.bankName
 
-			ZProj.AudioManager.Instance:LoadBank(var_3_0, arg_3_4)
-			arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_4, arg_3_0._onEmitterCallback, arg_3_0)
-			ZProj.AudioManager.Instance:UnloadBank(var_3_0)
+			ZProj.AudioManager.Instance:LoadBank(bnkName, lang)
+			self._emitter:Emitter(voiceConfig.audio, lang, self._onEmitterCallback, self)
+			ZProj.AudioManager.Instance:UnloadBank(bnkName)
 		else
-			arg_3_0._emitter:Emitter(arg_3_2.audio, arg_3_0._onEmitterCallback, arg_3_0)
+			self._emitter:Emitter(voiceConfig.audio, self._onEmitterCallback, self)
 		end
 
-		print("playVoice:", arg_3_2.audio)
-		AudioMgr.instance:addAudioLog(arg_3_2.audio, "yellow", "播放音效开始")
+		print("playVoice:", voiceConfig.audio)
+		AudioMgr.instance:addAudioLog(voiceConfig.audio, "yellow", "播放音效开始")
 	else
-		print("playVoice no audio:", arg_3_2.audio)
-		arg_3_0:_onVoiceEnd()
+		print("playVoice no audio:", voiceConfig.audio)
+		self:_onVoiceEnd()
 	end
 
-	arg_3_0._hasAddAudio = arg_3_2.addaudio and arg_3_2.addaudio ~= ""
+	self._hasAddAudio = voiceConfig.addaudio and voiceConfig.addaudio ~= ""
 
-	if arg_3_0._hasAddAudio then
-		arg_3_0._addAudios = {}
+	if self._hasAddAudio then
+		self._addAudios = {}
 
-		local var_3_1 = GameLanguageMgr.instance:getVoiceTypeStoryIndex()
+		local curVoiceTypeIdx = GameLanguageMgr.instance:getVoiceTypeStoryIndex()
 
-		if arg_3_4 then
-			var_3_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(arg_3_4)
+		if lang then
+			curVoiceTypeIdx = GameLanguageMgr.instance:getStoryIndexByShortCut(lang)
 		end
 
-		local var_3_2 = string.split(arg_3_2.addaudio, "|")
+		local addAudiosParams = string.split(voiceConfig.addaudio, "|")
 
-		for iter_3_0, iter_3_1 in pairs(var_3_2) do
-			local var_3_3 = string.splitToNumber(iter_3_1, "#")
-			local var_3_4 = var_3_3[1]
-			local var_3_5 = var_3_3[var_3_1 + 1]
-			local var_3_6 = SpineVoiceAddAudio.New()
+		for _, audioParam in pairs(addAudiosParams) do
+			local params = string.splitToNumber(audioParam, "#")
+			local audioId = params[1]
+			local delayTime = params[curVoiceTypeIdx + 1]
+			local audioItem = SpineVoiceAddAudio.New()
 
-			var_3_6:init(var_3_4, var_3_5 or 0)
-			table.insert(arg_3_0._addAudios, var_3_6)
+			audioItem:init(audioId, delayTime or 0)
+			table.insert(self._addAudios, audioItem)
 		end
 	end
 end
 
-function var_0_0.hasAudio(arg_4_0)
-	return arg_4_0._hasAudio
+function SpineVoiceAudio:hasAudio()
+	return self._hasAudio
 end
 
-function var_0_0.setSwitch(arg_5_0, arg_5_1, arg_5_2, arg_5_3)
-	if not arg_5_0._emitter then
-		arg_5_0._emitter = ZProj.AudioEmitter.Get(arg_5_1:getSpineGo())
+function SpineVoiceAudio:setSwitch(spine, switchGroup, switchState)
+	if not self._emitter then
+		self._emitter = ZProj.AudioEmitter.Get(spine:getSpineGo())
 	end
 
-	if arg_5_0._emitter then
-		arg_5_0._emitter:SetSwitch(arg_5_2, arg_5_3)
+	if self._emitter then
+		self._emitter:SetSwitch(switchGroup, switchState)
 	end
 end
 
-function var_0_0._onEmitterCallback(arg_6_0, arg_6_1, arg_6_2)
-	if arg_6_1 == AudioEnum.AkCallbackType.AK_Duration then
+function SpineVoiceAudio:_onEmitterCallback(callbackType, value)
+	if callbackType == AudioEnum.AkCallbackType.AK_Duration then
 		-- block empty
-	elseif arg_6_1 == AudioEnum.AkCallbackType.AK_EndOfEvent then
-		arg_6_0:_emitterStopVoice()
+	elseif callbackType == AudioEnum.AkCallbackType.AK_EndOfEvent then
+		self:_emitterStopVoice()
 	end
 end
 
-function var_0_0._emitterStopVoice(arg_7_0)
-	arg_7_0:_onVoiceEnd()
+function SpineVoiceAudio:_emitterStopVoice()
+	self:_onVoiceEnd()
 end
 
-function var_0_0._onVoiceEnd(arg_8_0)
-	if not arg_8_0._spineVoice then
+function SpineVoiceAudio:_onVoiceEnd()
+	if not self._spineVoice then
 		return
 	end
 
-	if arg_8_0._hasAudio then
-		arg_8_0._spineVoice:onSpineVoiceAudioStop()
+	if self._hasAudio then
+		self._spineVoice:onSpineVoiceAudioStop()
 	end
 
-	arg_8_0._spineVoice:_onComponentStop(arg_8_0)
+	self._spineVoice:_onComponentStop(self)
 
-	if arg_8_0._hasAudio then
-		AudioMgr.instance:addAudioLog(arg_8_0._voiceConfig.audio, "green", "播放音效结束")
+	if self._hasAudio then
+		AudioMgr.instance:addAudioLog(self._voiceConfig.audio, "green", "播放音效结束")
 	end
 end
 
-function var_0_0.getEmitter(arg_9_0)
-	if arg_9_0._spine then
-		if arg_9_0._emitter == nil or gohelper.isNil(arg_9_0._emitter) then
-			arg_9_0._emitter = ZProj.AudioEmitter.Get(arg_9_0._spine:getSpineGo())
+function SpineVoiceAudio:getEmitter()
+	if self._spine then
+		if self._emitter == nil or gohelper.isNil(self._emitter) then
+			self._emitter = ZProj.AudioEmitter.Get(self._spine:getSpineGo())
 		end
 
-		return arg_9_0._emitter
+		return self._emitter
 	else
 		return nil
 	end
 end
 
-function var_0_0.onVoiceStop(arg_10_0)
-	if arg_10_0._addAudios then
-		for iter_10_0, iter_10_1 in pairs(arg_10_0._addAudios) do
-			iter_10_1:onDestroy()
+function SpineVoiceAudio:onVoiceStop()
+	if self._addAudios then
+		for _, audio in pairs(self._addAudios) do
+			audio:onDestroy()
 		end
 
-		arg_10_0._addAudios = nil
+		self._addAudios = nil
 	end
 end
 
-return var_0_0
+return SpineVoiceAudio

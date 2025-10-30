@@ -1,60 +1,62 @@
-﻿module("modules.logic.summon.view.luckybag.SummonGetLuckyBagView", package.seeall)
+﻿-- chunkname: @modules/logic/summon/view/luckybag/SummonGetLuckyBagView.lua
 
-local var_0_0 = class("SummonGetLuckyBagView", BaseView)
+module("modules.logic.summon.view.luckybag.SummonGetLuckyBagView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._txtname = gohelper.findChildText(arg_1_0.viewGO, "content/#go_collection/txt_name")
-	arg_1_0._txtnameen = gohelper.findChildText(arg_1_0.viewGO, "content/#go_collection/en")
-	arg_1_0._simageicon = gohelper.findChildSingleImage(arg_1_0.viewGO, "content/#go_collection/#simage_icon")
+local SummonGetLuckyBagView = class("SummonGetLuckyBagView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function SummonGetLuckyBagView:onInitView()
+	self._txtname = gohelper.findChildText(self.viewGO, "content/#go_collection/txt_name")
+	self._txtnameen = gohelper.findChildText(self.viewGO, "content/#go_collection/en")
+	self._simageicon = gohelper.findChildSingleImage(self.viewGO, "content/#go_collection/#simage_icon")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
+function SummonGetLuckyBagView:addEvents()
 	return
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function SummonGetLuckyBagView:removeEvents()
 	return
 end
 
-function var_0_0._editableInitView(arg_4_0)
-	arg_4_0._bgClick = gohelper.getClick(arg_4_0.viewGO)
+function SummonGetLuckyBagView:_editableInitView()
+	self._bgClick = gohelper.getClick(self.viewGO)
 
-	arg_4_0._bgClick:AddClickListener(arg_4_0._onClickBG, arg_4_0)
+	self._bgClick:AddClickListener(self._onClickBG, self)
 end
 
-function var_0_0.onDestroyView(arg_5_0)
-	arg_5_0._bgClick:RemoveClickListener()
+function SummonGetLuckyBagView:onDestroyView()
+	self._bgClick:RemoveClickListener()
 end
 
-function var_0_0.onOpen(arg_6_0)
+function SummonGetLuckyBagView:onOpen()
 	logNormal("SummonGetLuckyBagView onOpen")
 	AudioMgr.instance:trigger(AudioEnum.Summon.play_ui_wulu_lucky_bag_gain)
-	arg_6_0:refreshView()
+	self:refreshView()
 end
 
-function var_0_0.onClose(arg_7_0)
+function SummonGetLuckyBagView:onClose()
 	return
 end
 
-function var_0_0.refreshView(arg_8_0)
-	local var_8_0 = arg_8_0.viewParam.poolId
-	local var_8_1 = arg_8_0.viewParam.luckyBagId
-	local var_8_2 = SummonConfig.instance:getLuckyBag(var_8_0, var_8_1)
+function SummonGetLuckyBagView:refreshView()
+	local poolId = self.viewParam.poolId
+	local luckyBagId = self.viewParam.luckyBagId
+	local luckyBagCo = SummonConfig.instance:getLuckyBag(poolId, luckyBagId)
 
-	if var_8_2 then
-		arg_8_0._txtname.text = var_8_2.name
-		arg_8_0._txtnameen.text = var_8_2.nameEn or ""
+	if luckyBagCo then
+		self._txtname.text = luckyBagCo.name
+		self._txtnameen.text = luckyBagCo.nameEn or ""
 
-		arg_8_0._simageicon:LoadImage(ResUrl.getSummonCoverBg(var_8_2.icon))
+		self._simageicon:LoadImage(ResUrl.getSummonCoverBg(luckyBagCo.icon))
 	end
 end
 
-function var_0_0._onClickBG(arg_9_0)
-	arg_9_0:closeThis()
+function SummonGetLuckyBagView:_onClickBG()
+	self:closeThis()
 end
 
-return var_0_0
+return SummonGetLuckyBagView

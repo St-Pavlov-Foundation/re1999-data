@@ -1,110 +1,116 @@
-﻿module("modules.logic.notice.view.NoticeViewContainer", package.seeall)
+﻿-- chunkname: @modules/logic/notice/view/NoticeViewContainer.lua
 
-local var_0_0 = class("NoticeViewContainer", BaseViewContainer)
+module("modules.logic.notice.view.NoticeViewContainer", package.seeall)
 
-function var_0_0.buildViews(arg_1_0)
-	local var_1_0 = {}
-	local var_1_1 = ListScrollParam.New()
+local NoticeViewContainer = class("NoticeViewContainer", BaseViewContainer)
 
-	var_1_1.scrollGOPath = "left/#scroll_notice"
-	var_1_1.prefabType = ScrollEnum.ScrollPrefabFromView
-	var_1_1.prefabUrl = "left/#scroll_notice/Viewport/Content/noticeItem"
-	var_1_1.cellClass = NoticeTitleItem
-	var_1_1.scrollDir = ScrollEnum.ScrollDirV
-	var_1_1.lineCount = 1
-	var_1_1.cellWidth = 420
-	var_1_1.cellHeight = 120
-	var_1_1.cellSpaceH = 0
-	var_1_1.cellSpaceV = 8
-	var_1_1.startSpace = 0
-	var_1_1.endSpace = 20
+function NoticeViewContainer:buildViews()
+	local views = {}
+	local scrollParam = ListScrollParam.New()
 
-	local var_1_2 = MixScrollParam.New()
+	scrollParam.scrollGOPath = "left/#scroll_notice"
+	scrollParam.prefabType = ScrollEnum.ScrollPrefabFromView
+	scrollParam.prefabUrl = "left/#scroll_notice/Viewport/Content/noticeItem"
+	scrollParam.cellClass = NoticeTitleItem
+	scrollParam.scrollDir = ScrollEnum.ScrollDirV
+	scrollParam.lineCount = 1
+	scrollParam.cellWidth = 420
+	scrollParam.cellHeight = 120
+	scrollParam.cellSpaceH = 0
+	scrollParam.cellSpaceV = 8
+	scrollParam.startSpace = 0
+	scrollParam.endSpace = 20
 
-	var_1_2.scrollGOPath = "right/#scroll_content"
-	var_1_2.prefabType = ScrollEnum.ScrollPrefabFromView
-	var_1_2.prefabUrl = "right/#scroll_content/Viewport/Content/cell/noticeContentItem"
-	var_1_2.cellClass = NoticeContentItemWrap
-	var_1_2.scrollDir = ScrollEnum.ScrollDirV
-	arg_1_0._titleListView = LuaListScrollView.New(NoticeModel.instance, var_1_1)
-	arg_1_0._contentListView = LuaMixScrollView.New(NoticeContentListModel.instance, var_1_2)
-	arg_1_0._noticeView = NoticeView.New()
+	local scrollParam2 = MixScrollParam.New()
 
-	table.insert(var_1_0, arg_1_0._titleListView)
-	table.insert(var_1_0, arg_1_0._contentListView)
-	table.insert(var_1_0, arg_1_0._noticeView)
+	scrollParam2.scrollGOPath = "right/#scroll_content"
+	scrollParam2.prefabType = ScrollEnum.ScrollPrefabFromView
+	scrollParam2.prefabUrl = "right/#scroll_content/Viewport/Content/cell/noticeContentItem"
+	scrollParam2.cellClass = NoticeContentItemWrap
+	scrollParam2.scrollDir = ScrollEnum.ScrollDirV
+	self._titleListView = LuaListScrollView.New(NoticeModel.instance, scrollParam)
+	self._contentListView = LuaMixScrollView.New(NoticeContentListModel.instance, scrollParam2)
+	self._noticeView = NoticeView.New()
 
-	local var_1_3 = ToggleListView.New(1, "right/#toggleGroup")
+	table.insert(views, self._titleListView)
+	table.insert(views, self._contentListView)
+	table.insert(views, self._noticeView)
 
-	var_1_3.onOpen = var_0_0.customToggleViewOpen
+	local toggleView = ToggleListView.New(1, "right/#toggleGroup")
 
-	table.insert(var_1_0, var_1_3)
+	toggleView.onOpen = NoticeViewContainer.customToggleViewOpen
 
-	return var_1_0
+	table.insert(views, toggleView)
+
+	return views
 end
 
-function var_0_0.customToggleViewOpen(arg_2_0)
-	local var_2_0 = arg_2_0._toggleGroup.allowSwitchOff
+function NoticeViewContainer.customToggleViewOpen(toggleView)
+	local originAllowSwitchOff = toggleView._toggleGroup.allowSwitchOff
 
-	arg_2_0._toggleGroup.allowSwitchOff = true
+	toggleView._toggleGroup.allowSwitchOff = true
 
-	local var_2_1 = arg_2_0.viewContainer:getFirstShowNoticeType()
-	local var_2_2 = NoticeType.getTypeIndex(var_2_1)
+	local firstType = toggleView.viewContainer:getFirstShowNoticeType()
+	local index = NoticeType.getTypeIndex(firstType)
 
-	for iter_2_0, iter_2_1 in pairs(arg_2_0._toggleDict) do
-		iter_2_1.isOn = iter_2_0 == var_2_2
+	for toggleId, toggleWrap in pairs(toggleView._toggleDict) do
+		toggleWrap.isOn = toggleId == index
 
-		iter_2_1:AddOnValueChanged(arg_2_0._onToggleValueChanged, arg_2_0, iter_2_0)
+		toggleWrap:AddOnValueChanged(toggleView._onToggleValueChanged, toggleView, toggleId)
 	end
 
-	arg_2_0._toggleGroup.allowSwitchOff = var_2_0
+	toggleView._toggleGroup.allowSwitchOff = originAllowSwitchOff
 end
 
-function var_0_0.onContainerInit(arg_3_0)
-	arg_3_0:registerCallback(ViewEvent.ToSwitchTab, arg_3_0._toSwitchTab, arg_3_0)
+function NoticeViewContainer:onContainerInit()
+	self:registerCallback(ViewEvent.ToSwitchTab, self._toSwitchTab, self)
 end
 
-function var_0_0.onContainerDestroy(arg_4_0)
-	arg_4_0:unregisterCallback(ViewEvent.ToSwitchTab, arg_4_0._toSwitchTab, arg_4_0)
+function NoticeViewContainer:onContainerDestroy()
+	self:unregisterCallback(ViewEvent.ToSwitchTab, self._toSwitchTab, self)
 end
 
-function var_0_0._toSwitchTab(arg_5_0, arg_5_1, arg_5_2)
-	if arg_5_2 == NoticeModel.instance:getSelectType() then
+function NoticeViewContainer:_toSwitchTab(tabContainerId, toggleId)
+	if toggleId == NoticeModel.instance:getSelectType() then
 		return
 	end
 
-	NoticeModel.instance:switchNoticeTypeByToggleId(arg_5_2)
-	arg_5_0:selectFirstNotice()
+	NoticeModel.instance:switchNoticeTypeByToggleId(toggleId)
+	self:selectFirstNotice()
 end
 
-function var_0_0.selectFirstNotice(arg_6_0)
-	if NoticeModel.instance:getCount() > 0 then
-		arg_6_0._titleListView:getCsListScroll().VerticalScrollPixel = 0
+function NoticeViewContainer:selectFirstNotice()
+	local noticeCount = NoticeModel.instance:getCount()
 
-		arg_6_0._titleListView:selectCell(1, true)
+	if noticeCount > 0 then
+		self._titleListView:getCsListScroll().VerticalScrollPixel = 0
+
+		self._titleListView:selectCell(1, true)
 	else
 		NoticeContentListModel.instance:setNoticeMO(nil)
 	end
 end
 
-function var_0_0.getFirstShowNoticeType(arg_7_0)
-	local var_7_0 = NoticeController.instance.autoOpen
-	local var_7_1 = NoticeModel.instance.autoSelectType
-	local var_7_2
+function NoticeViewContainer:getFirstShowNoticeType()
+	local isAuto = NoticeController.instance.autoOpen
+	local autoSelectType = NoticeModel.instance.autoSelectType
+	local firstType
 
-	for iter_7_0, iter_7_1 in ipairs(NoticeType.NoticeList) do
-		if #NoticeModel.instance:getNoticesByType(iter_7_1) > 0 then
-			var_7_2 = var_7_2 or iter_7_1
+	for _, type in ipairs(NoticeType.NoticeList) do
+		local len = #NoticeModel.instance:getNoticesByType(type)
 
-			if not var_7_0 then
-				return iter_7_1
-			elseif iter_7_1 == var_7_1 then
-				return iter_7_1
+		if len > 0 then
+			firstType = firstType or type
+
+			if not isAuto then
+				return type
+			elseif type == autoSelectType then
+				return type
 			end
 		end
 	end
 
-	return var_7_2
+	return firstType
 end
 
-return var_0_0
+return NoticeViewContainer

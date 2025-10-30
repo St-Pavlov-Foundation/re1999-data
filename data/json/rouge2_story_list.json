@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "storyIdList": "603200",
+    "eventId": "",
+    "fullImage": "rouge_mainstory_cg_1_2",
+    "stageId": 1,
+    "name": "门之前"
+  },
+  {
+    "id": 2,
+    "storyIdList": "600901",
+    "eventId": "146",
+    "fullImage": "",
+    "stageId": 2,
+    "name": "旅途的开始"
+  },
+  {
+    "id": 3,
+    "storyIdList": "600901",
+    "eventId": "147",
+    "fullImage": "",
+    "stageId": 3,
+    "name": "据点"
+  },
+  {
+    "id": 4,
+    "storyIdList": "600901",
+    "eventId": "148",
+    "fullImage": "",
+    "stageId": 4,
+    "name": "使命"
+  },
+  {
+    "id": 5,
+    "storyIdList": "600901",
+    "eventId": "149",
+    "fullImage": "",
+    "stageId": 5,
+    "name": "愤怒行军"
+  },
+  {
+    "id": 6,
+    "storyIdList": "600901",
+    "eventId": "150",
+    "fullImage": "",
+    "stageId": 6,
+    "name": "必经之路·I"
+  },
+  {
+    "id": 7,
+    "storyIdList": "600901",
+    "eventId": "151",
+    "fullImage": "",
+    "stageId": 7,
+    "name": "必经之路·II"
+  },
+  {
+    "id": 8,
+    "storyIdList": "600901",
+    "eventId": "152",
+    "fullImage": "",
+    "stageId": 8,
+    "name": "必经之路·III"
+  },
+  {
+    "id": 9,
+    "storyIdList": "600901",
+    "eventId": "153",
+    "fullImage": "",
+    "stageId": 9,
+    "name": "必经之路·IV"
+  },
+  {
+    "id": 10,
+    "storyIdList": "603201",
+    "eventId": "",
+    "fullImage": "rouge_mainstory_cg_8_2",
+    "stageId": 10,
+    "name": "再教育"
+  },
+  {
+    "id": 11,
+    "storyIdList": "603202",
+    "eventId": "",
+    "fullImage": "rouge_mainstory_cg_8_2",
+    "stageId": 10,
+    "name": "人性的光辉"
+  }
+]

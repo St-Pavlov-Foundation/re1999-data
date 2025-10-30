@@ -1,102 +1,106 @@
-﻿module("modules.logic.story.view.StoryVideoItem", package.seeall)
+﻿-- chunkname: @modules/logic/story/view/StoryVideoItem.lua
 
-local var_0_0 = class("StoryVideoItem")
+module("modules.logic.story.view.StoryVideoItem", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1, arg_1_2, arg_1_3, arg_1_4, arg_1_5, arg_1_6)
-	arg_1_0.viewGO = arg_1_1
-	arg_1_0._videoName = arg_1_2
-	arg_1_0._videoCo = arg_1_3
-	arg_1_0._videoGo = nil
-	arg_1_0._loop = arg_1_3.loop
-	arg_1_0._startCallBack = arg_1_4
-	arg_1_0._startCallBackObj = arg_1_5
-	arg_1_0._playList = arg_1_6
+local StoryVideoItem = class("StoryVideoItem")
 
-	arg_1_0:_build()
+function StoryVideoItem:init(go, name, co, startCallBack, startCallBackObj, playList)
+	self.viewGO = go
+	self._videoName = name
+	self._videoCo = co
+	self._videoGo = nil
+	self._loop = co.loop
+	self._startCallBack = startCallBack
+	self._startCallBackObj = startCallBackObj
+	self._playList = playList
+
+	self:_build()
 end
 
-function var_0_0.pause(arg_2_0, arg_2_1)
-	if arg_2_1 then
-		arg_2_0._playList:setPauseState(arg_2_0._videoName, false)
+function StoryVideoItem:pause(pause)
+	if pause then
+		self._playList:setPauseState(self._videoName, false)
 	else
-		arg_2_0._playList:setPauseState(arg_2_0._videoName, true)
+		self._playList:setPauseState(self._videoName, true)
 	end
 end
 
-function var_0_0.reset(arg_3_0, arg_3_1, arg_3_2)
-	arg_3_0.viewGO = arg_3_1
-	arg_3_0._videoCo = arg_3_2
-	arg_3_0._loop = arg_3_2.loop
+function StoryVideoItem:reset(go, co)
+	self.viewGO = go
+	self._videoCo = co
+	self._loop = co.loop
 
-	TaskDispatcher.cancelTask(arg_3_0._playVideo, arg_3_0)
+	TaskDispatcher.cancelTask(self._playVideo, self)
 
-	if arg_3_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		arg_3_0:_playVideo()
+	if self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		self:_playVideo()
 
 		return
 	end
 
-	TaskDispatcher.runDelay(arg_3_0._playVideo, arg_3_0, arg_3_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	TaskDispatcher.runDelay(self._playVideo, self, self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 end
 
-function var_0_0._build(arg_4_0)
-	arg_4_0._videoName = string.split(arg_4_0._videoName, ".")[1]
+function StoryVideoItem:_build()
+	local videoArgs = string.split(self._videoName, ".")
 
-	if arg_4_0._videoName == "xuzhangkaichangpv" and BootNativeUtil.isWindows() then
-		local var_4_0, var_4_1 = BootNativeUtil.getDisplayResolution()
+	self._videoName = videoArgs[1]
 
-		if var_4_1 >= 2160 then
-			arg_4_0._videoName = "xuzhangkaichangpv_4k"
-		elseif var_4_1 >= 1440 then
-			arg_4_0._videoName = "xuzhangkaichangpv_2k"
+	if self._videoName == "xuzhangkaichangpv" and BootNativeUtil.isWindows() then
+		local width, height = BootNativeUtil.getDisplayResolution()
+
+		if height >= 2160 then
+			self._videoName = "xuzhangkaichangpv_4k"
+		elseif height >= 1440 then
+			self._videoName = "xuzhangkaichangpv_2k"
 		end
 	end
 
-	TaskDispatcher.cancelTask(arg_4_0._playVideo, arg_4_0)
+	TaskDispatcher.cancelTask(self._playVideo, self)
 
-	if arg_4_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		arg_4_0:_playVideo()
-
-		return
-	end
-
-	TaskDispatcher.runDelay(arg_4_0._playVideo, arg_4_0, arg_4_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
-end
-
-function var_0_0._playVideo(arg_5_0)
-	StoryModel.instance:setSpecialVideoPlaying(arg_5_0._videoName)
-
-	if arg_5_0._playList then
-		arg_5_0._playList:buildAndStart(arg_5_0._videoName, arg_5_0._loop, arg_5_0._startCallBack, arg_5_0._startCallBackObj, arg_5_0)
-		arg_5_0._playList:setParent(arg_5_0.viewGO)
-	end
-end
-
-function var_0_0.destroyVideo(arg_6_0, arg_6_1)
-	arg_6_0._videoCo = arg_6_1
-
-	TaskDispatcher.cancelTask(arg_6_0._playVideo, arg_6_0)
-	TaskDispatcher.cancelTask(arg_6_0._realDestroy, arg_6_0)
-
-	if arg_6_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		arg_6_0:_realDestroy()
+	if self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		self:_playVideo()
 
 		return
 	end
 
-	TaskDispatcher.runDelay(arg_6_0._realDestroy, arg_6_0, arg_6_0._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	TaskDispatcher.runDelay(self._playVideo, self, self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 end
 
-function var_0_0._realDestroy(arg_7_0)
-	arg_7_0:onDestroy()
+function StoryVideoItem:_playVideo()
+	StoryModel.instance:setSpecialVideoPlaying(self._videoName)
+
+	if self._playList then
+		self._playList:buildAndStart(self._videoName, self._loop, self._startCallBack, self._startCallBackObj, self)
+		self._playList:setParent(self.viewGO)
+	end
 end
 
-function var_0_0.onDestroy(arg_8_0)
-	TaskDispatcher.cancelTask(arg_8_0._realDestroy, arg_8_0)
-	TaskDispatcher.cancelTask(arg_8_0._playVideo, arg_8_0)
-	StoryModel.instance:setSpecialVideoEnd(arg_8_0._videoName)
-	arg_8_0._playList:stop(arg_8_0._videoName)
-	gohelper.destroy(arg_8_0._videoGo)
+function StoryVideoItem:destroyVideo(co)
+	self._videoCo = co
+
+	TaskDispatcher.cancelTask(self._playVideo, self)
+	TaskDispatcher.cancelTask(self._realDestroy, self)
+
+	if self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		self:_realDestroy()
+
+		return
+	end
+
+	TaskDispatcher.runDelay(self._realDestroy, self, self._videoCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 end
 
-return var_0_0
+function StoryVideoItem:_realDestroy()
+	self:onDestroy()
+end
+
+function StoryVideoItem:onDestroy()
+	TaskDispatcher.cancelTask(self._realDestroy, self)
+	TaskDispatcher.cancelTask(self._playVideo, self)
+	StoryModel.instance:setSpecialVideoEnd(self._videoName)
+	self._playList:stop(self._videoName)
+	gohelper.destroy(self._videoGo)
+end
+
+return StoryVideoItem

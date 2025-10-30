@@ -3878,5 +3878,293 @@
     "titleEn": "A New Dawn",
     "labelRes": "8",
     "storyBg": ""
+  },
+  {
+    "chapter": 32,
+    "part": 1,
+    "title": "法兰西特快",
+    "titleEn": "The French Express",
+    "labelRes": "1",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 2,
+    "title": "友好证人",
+    "titleEn": "Innocent Bystanders",
+    "labelRes": "2",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 3,
+    "title": "会面礼",
+    "titleEn": "Encounter Etiquette",
+    "labelRes": "3",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 4,
+    "title": "潜意识猎手",
+    "titleEn": "Unconscious Hunting",
+    "labelRes": "4",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 5,
+    "title": "所有映照万物的光",
+    "titleEn": "Light That Illuminates All",
+    "labelRes": "5",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 6,
+    "title": "午夜咖啡",
+    "titleEn": "Midnight Café",
+    "labelRes": "6",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 7,
+    "title": "好梦，朋友",
+    "titleEn": "\"Sweet Dreams\"",
+    "labelRes": "7",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg2.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 8,
+    "title": "法兰西之蓝",
+    "titleEn": "The French Blue",
+    "labelRes": "8",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 9,
+    "title": "先觉者",
+    "titleEn": "The Seer",
+    "labelRes": "9",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 10,
+    "title": "城市的癔症",
+    "titleEn": "Paris in Hysteria",
+    "labelRes": "10",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 11,
+    "title": "岔路口",
+    "titleEn": "Confluence",
+    "labelRes": "11",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg3.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 12,
+    "title": "天国阶梯",
+    "titleEn": "A Ladder to Heaven",
+    "labelRes": "12",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg3.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 13,
+    "title": "与你同在",
+    "titleEn": "Soul Mate",
+    "labelRes": "13",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg3.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 14,
+    "title": "大木偶剧场",
+    "titleEn": "Grand Guignol",
+    "labelRes": "14",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg4.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 15,
+    "title": "巴黎遥远",
+    "titleEn": "Paris Out of Reach",
+    "labelRes": "15",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg5.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 16,
+    "title": "应许的时刻",
+    "titleEn": "Moment of Revelation",
+    "labelRes": "16",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg5.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 17,
+    "title": "不必再会",
+    "titleEn": "No Need for Promises",
+    "labelRes": "17",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg6.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 18,
+    "title": "雨",
+    "titleEn": "Rain",
+    "labelRes": "18",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg6.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 19,
+    "title": "英雄之旅",
+    "titleEn": "The Hero's Journey",
+    "labelRes": "19",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg6.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 20,
+    "title": "平凡的日子",
+    "titleEn": "In Ordinary Times",
+    "labelRes": "20",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg6.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 21,
+    "title": "视野盲区",
+    "titleEn": "The Unforeseen",
+    "labelRes": "1",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 22,
+    "title": "所知的未知",
+    "titleEn": "To Answer the Unanswerable",
+    "labelRes": "2",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 23,
+    "title": "水晶的缝隙",
+    "titleEn": "Cracks and Splinters",
+    "labelRes": "3",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 24,
+    "title": "“我”",
+    "titleEn": "\"Me\"",
+    "labelRes": "4",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 25,
+    "title": "勇敢的噩兆",
+    "titleEn": "To Look Upon Doom",
+    "labelRes": "5",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 26,
+    "title": "你好，旧友",
+    "titleEn": "Familiar Strangers",
+    "labelRes": "6",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 27,
+    "title": "旁观者",
+    "titleEn": "Take No Sides",
+    "labelRes": "7",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 28,
+    "title": "雨中咏叹",
+    "titleEn": "Aria in the Rain",
+    "labelRes": "8",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 29,
+    "title": "火焰魔法师",
+    "titleEn": "The Pyromancer",
+    "labelRes": "1",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 30,
+    "title": "“救世主”",
+    "titleEn": "Playing God",
+    "labelRes": "2",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 31,
+    "title": "自由、尊严、平静",
+    "titleEn": "Freedom, Dignity, Peace",
+    "labelRes": "3",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 32,
+    "title": "潜在客户",
+    "titleEn": "A Business Opportunity",
+    "labelRes": "4",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 33,
+    "title": "命运逃兵",
+    "titleEn": "Against the Inevitable",
+    "labelRes": "5",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 34,
+    "title": "破咒骑士",
+    "titleEn": "The Cursebreaker",
+    "labelRes": "6",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 35,
+    "title": "宝石蕴意",
+    "titleEn": "Why Gemstones Matter",
+    "labelRes": "7",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
+  },
+  {
+    "chapter": 32,
+    "part": 36,
+    "title": "再见，旧世界",
+    "titleEn": "Another World Forsaken",
+    "labelRes": "8",
+    "storyBg": "singlebg/v3a2_opening_singlebg/bg1.jpg"
   }
 ]

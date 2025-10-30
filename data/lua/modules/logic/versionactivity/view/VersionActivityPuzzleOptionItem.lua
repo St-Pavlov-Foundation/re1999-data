@@ -1,83 +1,87 @@
-﻿module("modules.logic.versionactivity.view.VersionActivityPuzzleOptionItem", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity/view/VersionActivityPuzzleOptionItem.lua
 
-local var_0_0 = class("VersionActivityPuzzleOptionItem", UserDataDispose)
+module("modules.logic.versionactivity.view.VersionActivityPuzzleOptionItem", package.seeall)
 
-function var_0_0.onInitView(arg_1_0, arg_1_1, arg_1_2)
-	arg_1_0:__onInit()
+local VersionActivityPuzzleOptionItem = class("VersionActivityPuzzleOptionItem", UserDataDispose)
 
-	arg_1_0.go = arg_1_1
-	arg_1_0.parentView = arg_1_2
-	arg_1_0.txtInfo = gohelper.findChildText(arg_1_1, "info")
-	arg_1_0.head = gohelper.findChild(arg_1_0.go, "head")
-	arg_1_0.txtLineIndex = gohelper.findChildText(arg_1_0.go, "head/txt_index")
+function VersionActivityPuzzleOptionItem:onInitView(go, parentView)
+	self:__onInit()
 
-	if not arg_1_2.isFinish then
-		arg_1_0.drag = SLFramework.UGUI.UIDragListener.Get(arg_1_0.go)
+	self.go = go
+	self.parentView = parentView
+	self.txtInfo = gohelper.findChildText(go, "info")
+	self.head = gohelper.findChild(self.go, "head")
+	self.txtLineIndex = gohelper.findChildText(self.go, "head/txt_index")
 
-		arg_1_0.drag:AddDragBeginListener(arg_1_0._onDragBegin, arg_1_0)
-		arg_1_0.drag:AddDragEndListener(arg_1_0._onDragEnd, arg_1_0)
-		arg_1_0.drag:AddDragListener(arg_1_0._onDrag, arg_1_0)
+	if not parentView.isFinish then
+		self.drag = SLFramework.UGUI.UIDragListener.Get(self.go)
+
+		self.drag:AddDragBeginListener(self._onDragBegin, self)
+		self.drag:AddDragEndListener(self._onDragEnd, self)
+		self.drag:AddDragListener(self._onDrag, self)
 	end
 end
 
-function var_0_0.updateInfo(arg_2_0, arg_2_1, arg_2_2)
-	gohelper.setActive(arg_2_0.go, true)
+function VersionActivityPuzzleOptionItem:updateInfo(info, answerIndex)
+	gohelper.setActive(self.go, true)
 
-	arg_2_0.txtInfo.text = arg_2_1
-	arg_2_0.info = arg_2_1
-	arg_2_0.answerIndex = arg_2_2
+	self.txtInfo.text = info
+	self.info = info
+	self.answerIndex = answerIndex
 
-	gohelper.setActive(arg_2_0.head, false)
+	gohelper.setActive(self.head, false)
 
-	if (arg_2_0.answerIndex - 1) % 4 == 0 then
-		gohelper.setActive(arg_2_0.head, true)
+	local isFirstInLine = (self.answerIndex - 1) % 4 == 0
 
-		arg_2_0.txtLineIndex.text = math.ceil(arg_2_0.answerIndex / 4)
+	if isFirstInLine then
+		gohelper.setActive(self.head, true)
+
+		self.txtLineIndex.text = math.ceil(self.answerIndex / 4)
 	end
 end
 
-function var_0_0.hide(arg_3_0)
-	gohelper.setActive(arg_3_0.go, false)
+function VersionActivityPuzzleOptionItem:hide()
+	gohelper.setActive(self.go, false)
 end
 
-function var_0_0._onDragBegin(arg_4_0, arg_4_1, arg_4_2)
-	arg_4_0.parentView:onDragItemDragBegin(arg_4_2, arg_4_0.info, arg_4_0.answerIndex)
+function VersionActivityPuzzleOptionItem:_onDragBegin(param, pointerEventData)
+	self.parentView:onDragItemDragBegin(pointerEventData, self.info, self.answerIndex)
 end
 
-function var_0_0._onDrag(arg_5_0, arg_5_1, arg_5_2)
-	arg_5_0.parentView:onDragItemDragging(arg_5_2)
+function VersionActivityPuzzleOptionItem:_onDrag(param, pointerEventData)
+	self.parentView:onDragItemDragging(pointerEventData)
 end
 
-function var_0_0._onDragEnd(arg_6_0, arg_6_1, arg_6_2)
-	arg_6_0.parentView:onDragItemDragEnd(arg_6_2)
+function VersionActivityPuzzleOptionItem:_onDragEnd(param, pointerEventData)
+	self.parentView:onDragItemDragEnd(pointerEventData)
 end
 
-function var_0_0.unUse(arg_7_0)
-	arg_7_0.txtInfo.text = arg_7_0.info
+function VersionActivityPuzzleOptionItem:unUse()
+	self.txtInfo.text = self.info
 end
 
-function var_0_0.matchCorrect(arg_8_0)
-	arg_8_0.txtInfo.text = string.format("<color=%s>%s</color>", VersionActivityEnum.PuzzleColorEnum.MatchCorrectColor, arg_8_0.info)
+function VersionActivityPuzzleOptionItem:matchCorrect()
+	self.txtInfo.text = string.format("<color=%s>%s</color>", VersionActivityEnum.PuzzleColorEnum.MatchCorrectColor, self.info)
 end
 
-function var_0_0.matchError(arg_9_0)
-	arg_9_0.txtInfo.text = string.format("<color=%s>%s</color>", VersionActivityEnum.PuzzleColorEnum.MatchErrorColor, arg_9_0.info)
+function VersionActivityPuzzleOptionItem:matchError()
+	self.txtInfo.text = string.format("<color=%s>%s</color>", VersionActivityEnum.PuzzleColorEnum.MatchErrorColor, self.info)
 end
 
-function var_0_0.getScreenPos(arg_10_0)
-	return recthelper.uiPosToScreenPos(arg_10_0.go.transform)
+function VersionActivityPuzzleOptionItem:getScreenPos()
+	return recthelper.uiPosToScreenPos(self.go.transform)
 end
 
-function var_0_0.onDestroy(arg_11_0)
-	if arg_11_0.drag then
-		arg_11_0.drag:RemoveDragListener()
-		arg_11_0.drag:RemoveDragBeginListener()
-		arg_11_0.drag:RemoveDragEndListener()
+function VersionActivityPuzzleOptionItem:onDestroy()
+	if self.drag then
+		self.drag:RemoveDragListener()
+		self.drag:RemoveDragBeginListener()
+		self.drag:RemoveDragEndListener()
 
-		arg_11_0.drag = nil
+		self.drag = nil
 	end
 
-	arg_11_0:__onDispose()
+	self:__onDispose()
 end
 
-return var_0_0
+return VersionActivityPuzzleOptionItem

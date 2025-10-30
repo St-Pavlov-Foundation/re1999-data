@@ -1,61 +1,63 @@
-﻿module("modules.logic.act201.config.Activity201Config", package.seeall)
+﻿-- chunkname: @modules/logic/act201/config/Activity201Config.lua
 
-local var_0_0 = class("Activity201Config", BaseConfig)
+module("modules.logic.act201.config.Activity201Config", package.seeall)
 
-function var_0_0.reqConfigNames(arg_1_0)
+local Activity201Config = class("Activity201Config", BaseConfig)
+
+function Activity201Config:reqConfigNames()
 	return {
 		"turnback_sp_h5_channel",
 		"turnback_sp_h5_roletype"
 	}
 end
 
-local function var_0_1(arg_2_0)
-	return lua_turnback_sp_h5_roletype.configDict[arg_2_0]
+local function _roleTypeCO(id)
+	return lua_turnback_sp_h5_roletype.configDict[id]
 end
 
-function var_0_0.onConfigLoaded(arg_3_0, arg_3_1, arg_3_2)
-	if arg_3_1 == "turnback_sp_h5_channel" then
-		arg_3_0:_initTurnBackH5Config(arg_3_2)
+function Activity201Config:onConfigLoaded(configName, configTable)
+	if configName == "turnback_sp_h5_channel" then
+		self:_initTurnBackH5Config(configTable)
 	end
 end
 
-function var_0_0._initTurnBackH5Config(arg_4_0, arg_4_1)
-	local var_4_0 = {}
-	local var_4_1 = {}
+function Activity201Config:_initTurnBackH5Config(configTable)
+	local channelDic = {}
+	local channelTestDic = {}
 
-	for iter_4_0, iter_4_1 in ipairs(arg_4_1.configList) do
-		if var_4_0[iter_4_1.channelId] == nil then
-			var_4_0[iter_4_1.channelId] = iter_4_1.url
-			var_4_1[iter_4_1.channelId] = iter_4_1.testUrl
+	for _, config in ipairs(configTable.configList) do
+		if channelDic[config.channelId] == nil then
+			channelDic[config.channelId] = config.url
+			channelTestDic[config.channelId] = config.testUrl
 		end
 	end
 
-	arg_4_0._channelUrlDic = var_4_0
-	arg_4_0._channelTestDic = var_4_1
+	self._channelUrlDic = channelDic
+	self._channelTestDic = channelTestDic
 end
 
-function var_0_0.getChannelConfig(arg_5_0, arg_5_1)
-	return lua_turnback_sp_h5_channel.configDict[arg_5_1]
+function Activity201Config:getChannelConfig(id)
+	return lua_turnback_sp_h5_channel.configDict[id]
 end
 
-function var_0_0.getUrlByChannelId(arg_6_0, arg_6_1)
-	return arg_6_0._channelUrlDic[arg_6_1]
+function Activity201Config:getUrlByChannelId(channelId)
+	return self._channelUrlDic[channelId]
 end
 
-function var_0_0.getTestUrlByChannelId(arg_7_0, arg_7_1)
-	if arg_7_0._channelTestDic[arg_7_1] ~= nil then
-		return arg_7_0._channelTestDic[arg_7_1]
+function Activity201Config:getTestUrlByChannelId(channelId)
+	if self._channelTestDic[channelId] ~= nil then
+		return self._channelTestDic[channelId]
 	end
 
-	return arg_7_0._channelUrlDic[arg_7_1]
+	return self._channelUrlDic[channelId]
 end
 
-function var_0_0.getRoleTypeStr(arg_8_0, arg_8_1)
-	local var_8_0 = var_0_1[arg_8_1 or 1] or var_0_1[1]
+function Activity201Config:getRoleTypeStr(roleTypeId)
+	local CO = _roleTypeCO[roleTypeId or 1] or _roleTypeCO[1]
 
-	return gohelper.getRichColorText(var_8_0.name, var_8_0.nameHexColor)
+	return gohelper.getRichColorText(CO.name, CO.nameHexColor)
 end
 
-var_0_0.instance = var_0_0.New()
+Activity201Config.instance = Activity201Config.New()
 
-return var_0_0
+return Activity201Config

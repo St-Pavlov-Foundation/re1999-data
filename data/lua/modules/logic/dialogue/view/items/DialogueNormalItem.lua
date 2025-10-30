@@ -1,58 +1,61 @@
-﻿module("modules.logic.dialogue.view.items.DialogueNormalItem", package.seeall)
+﻿-- chunkname: @modules/logic/dialogue/view/items/DialogueNormalItem.lua
 
-local var_0_0 = class("DialogueNormalItem", DialogueItem)
+module("modules.logic.dialogue.view.items.DialogueNormalItem", package.seeall)
 
-function var_0_0.initView(arg_1_0)
-	arg_1_0.simageAvatar = gohelper.findChildSingleImage(arg_1_0.go, "rolebg/#image_avatar")
-	arg_1_0.txtName = gohelper.findChildText(arg_1_0.go, "#txt_name")
-	arg_1_0.txtContent = gohelper.findChildText(arg_1_0.go, "content_bg/#txt_content")
-	arg_1_0.goLoading = gohelper.findChild(arg_1_0.go, "content_bg/#go_loading")
-	arg_1_0.contentBgRectTr = gohelper.findChildComponent(arg_1_0.go, "content_bg", gohelper.Type_RectTransform)
-	arg_1_0.txtRectTr = arg_1_0.txtContent:GetComponent(gohelper.Type_RectTransform)
+local DialogueNormalItem = class("DialogueNormalItem", DialogueItem)
+
+function DialogueNormalItem:initView()
+	self.simageAvatar = gohelper.findChildSingleImage(self.go, "rolebg/#image_avatar")
+	self.txtName = gohelper.findChildText(self.go, "#txt_name")
+	self.txtContent = gohelper.findChildText(self.go, "content_bg/#txt_content")
+	self.goLoading = gohelper.findChild(self.go, "content_bg/#go_loading")
+	self.contentBgRectTr = gohelper.findChildComponent(self.go, "content_bg", gohelper.Type_RectTransform)
+	self.txtRectTr = self.txtContent:GetComponent(gohelper.Type_RectTransform)
 end
 
-function var_0_0.refresh(arg_2_0)
-	arg_2_0.simageAvatar:LoadImage(ResUrl.getHeadIconSmall(arg_2_0.stepCo.avatar))
+function DialogueNormalItem:refresh()
+	self.simageAvatar:LoadImage(ResUrl.getHeadIconSmall(self.stepCo.avatar))
 
-	arg_2_0.txtName.text = arg_2_0.stepCo.name
-	arg_2_0.txtContent.text = arg_2_0.stepCo.content
+	self.txtName.text = self.stepCo.name
+	self.txtContent.text = self.stepCo.content
 
 	AudioMgr.instance:trigger(AudioEnum.Dialogue.play_ui_wulu_duihua)
 end
 
-function var_0_0.calculateHeight(arg_3_0)
-	local var_3_0 = arg_3_0.txtContent.preferredWidth
+function DialogueNormalItem:calculateHeight()
+	local width = self.txtContent.preferredWidth
 
-	if var_3_0 <= DialogueEnum.MessageTxtMaxWidth then
-		local var_3_1 = DialogueEnum.MessageTxtOneLineHeight + DialogueEnum.MessageBgOffsetHeight
+	if width <= DialogueEnum.MessageTxtMaxWidth then
+		local contentBgHeight = DialogueEnum.MessageTxtOneLineHeight + DialogueEnum.MessageBgOffsetHeight
 
-		recthelper.setSize(arg_3_0.contentBgRectTr, var_3_0 + DialogueEnum.MessageBgOffsetWidth, var_3_1)
-		recthelper.setSize(arg_3_0.txtRectTr, var_3_0, DialogueEnum.MessageTxtOneLineHeight)
+		recthelper.setSize(self.contentBgRectTr, width + DialogueEnum.MessageBgOffsetWidth, contentBgHeight)
+		recthelper.setSize(self.txtRectTr, width, DialogueEnum.MessageTxtOneLineHeight)
 
-		arg_3_0.height = Mathf.Max(DialogueEnum.MinHeight[DialogueEnum.Type.LeftMessage], var_3_1 + DialogueEnum.MessageNameHeight)
+		self.height = Mathf.Max(DialogueEnum.MinHeight[DialogueEnum.Type.LeftMessage], contentBgHeight + DialogueEnum.MessageNameHeight)
 
 		return
 	end
 
-	local var_3_2 = DialogueEnum.MessageTxtMaxWidth
-	local var_3_3 = arg_3_0.txtContent.preferredHeight
-	local var_3_4 = var_3_3 + DialogueEnum.MessageBgOffsetHeight
+	width = DialogueEnum.MessageTxtMaxWidth
 
-	recthelper.setSize(arg_3_0.contentBgRectTr, DialogueEnum.MessageTxtMaxWidth + DialogueEnum.MessageBgOffsetWidth, var_3_4)
-	recthelper.setSize(arg_3_0.txtRectTr, var_3_2, var_3_3)
+	local height = self.txtContent.preferredHeight
+	local contentBgHeight = height + DialogueEnum.MessageBgOffsetHeight
 
-	arg_3_0.height = Mathf.Max(DialogueEnum.MinHeight[DialogueEnum.Type.LeftMessage], var_3_4 + DialogueEnum.MessageNameHeight)
+	recthelper.setSize(self.contentBgRectTr, DialogueEnum.MessageTxtMaxWidth + DialogueEnum.MessageBgOffsetWidth, contentBgHeight)
+	recthelper.setSize(self.txtRectTr, width, height)
+
+	self.height = Mathf.Max(DialogueEnum.MinHeight[DialogueEnum.Type.LeftMessage], contentBgHeight + DialogueEnum.MessageNameHeight)
 end
 
-function var_0_0.logHeight(arg_4_0)
-	logError(string.format("【%s】", arg_4_0.stepCo.id) .. " : " .. arg_4_0.txtContent.preferredHeight)
-	logError(string.format("【%s】", arg_4_0.stepCo.id) .. " : " .. arg_4_0.txtContent.preferredWidth)
-	logError(string.format("【%s】", arg_4_0.stepCo.id) .. " : " .. arg_4_0.txtContent.renderedWidth)
-	logError(string.format("【%s】", arg_4_0.stepCo.id) .. " : " .. arg_4_0.txtContent.renderedHeight)
+function DialogueNormalItem:logHeight()
+	logError(string.format("【%s】", self.stepCo.id) .. " : " .. self.txtContent.preferredHeight)
+	logError(string.format("【%s】", self.stepCo.id) .. " : " .. self.txtContent.preferredWidth)
+	logError(string.format("【%s】", self.stepCo.id) .. " : " .. self.txtContent.renderedWidth)
+	logError(string.format("【%s】", self.stepCo.id) .. " : " .. self.txtContent.renderedHeight)
 end
 
-function var_0_0.onDestroy(arg_5_0)
-	arg_5_0.simageAvatar:UnLoadImage()
+function DialogueNormalItem:onDestroy()
+	self.simageAvatar:UnLoadImage()
 end
 
-return var_0_0
+return DialogueNormalItem

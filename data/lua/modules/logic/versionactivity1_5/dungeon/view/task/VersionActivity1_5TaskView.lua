@@ -1,87 +1,90 @@
-﻿module("modules.logic.versionactivity1_5.dungeon.view.task.VersionActivity1_5TaskView", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_5/dungeon/view/task/VersionActivity1_5TaskView.lua
 
-local var_0_0 = class("VersionActivity1_5TaskView", BaseView)
+module("modules.logic.versionactivity1_5.dungeon.view.task.VersionActivity1_5TaskView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._simageFullBG = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_FullBG")
-	arg_1_0._txtLimitTime = gohelper.findChildText(arg_1_0.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_LimitTime")
+local VersionActivity1_5TaskView = class("VersionActivity1_5TaskView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function VersionActivity1_5TaskView:onInitView()
+	self._simageFullBG = gohelper.findChildSingleImage(self.viewGO, "#simage_FullBG")
+	self._txtLimitTime = gohelper.findChildText(self.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_LimitTime")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
+function VersionActivity1_5TaskView:addEvents()
 	return
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function VersionActivity1_5TaskView:removeEvents()
 	return
 end
 
-function var_0_0._editableInitView(arg_4_0)
-	arg_4_0._simageFullBG:LoadImage("singlebg/v1a5_taskview_singlebg/v1a5_taskview_fullbg.png")
+function VersionActivity1_5TaskView:_editableInitView()
+	self._simageFullBG:LoadImage("singlebg/v1a5_taskview_singlebg/v1a5_taskview_fullbg.png")
 
-	arg_4_0._txtremaintime = gohelper.findChildText(arg_4_0.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_LimitTime")
+	self._txtremaintime = gohelper.findChildText(self.viewGO, "Left/LimitTime/image_LimitTimeBG/#txt_LimitTime")
 end
 
-function var_0_0.onUpdateParam(arg_5_0)
+function VersionActivity1_5TaskView:onUpdateParam()
 	return
 end
 
-function var_0_0.onOpen(arg_6_0)
+function VersionActivity1_5TaskView:onOpen()
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.ActivityDungeon
-	}, arg_6_0._onOpen, arg_6_0)
+	}, self._onOpen, self)
 end
 
-function var_0_0._onOpen(arg_7_0)
-	arg_7_0:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, arg_7_0.refreshRight, arg_7_0)
-	arg_7_0:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, arg_7_0.refreshRight, arg_7_0)
-	arg_7_0:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, arg_7_0.refreshRight, arg_7_0)
-	TaskDispatcher.runRepeat(arg_7_0.refreshRemainTime, arg_7_0, TimeUtil.OneMinuteSecond)
+function VersionActivity1_5TaskView:_onOpen()
+	self:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, self.refreshRight, self)
+	self:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.refreshRight, self)
+	self:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.refreshRight, self)
+	TaskDispatcher.runRepeat(self.refreshRemainTime, self, TimeUtil.OneMinuteSecond)
 	VersionActivity1_5TaskListModel.instance:initTask()
-	arg_7_0:refreshLeft()
-	arg_7_0:refreshRight()
+	self:refreshLeft()
+	self:refreshRight()
 end
 
-function var_0_0.refreshLeft(arg_8_0)
-	arg_8_0:refreshRemainTime()
+function VersionActivity1_5TaskView:refreshLeft()
+	self:refreshRemainTime()
 end
 
-function var_0_0.refreshRemainTime(arg_9_0)
-	local var_9_0 = ActivityModel.instance:getActivityInfo()[VersionActivity1_5Enum.ActivityId.Dungeon]:getRealEndTimeStamp() - ServerTime.now()
-	local var_9_1 = Mathf.Floor(var_9_0 / TimeUtil.OneDaySecond)
-	local var_9_2 = var_9_0 % TimeUtil.OneDaySecond
-	local var_9_3 = Mathf.Floor(var_9_2 / TimeUtil.OneHourSecond)
+function VersionActivity1_5TaskView:refreshRemainTime()
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity1_5Enum.ActivityId.Dungeon]
+	local offsetSecond = actInfoMo:getRealEndTimeStamp() - ServerTime.now()
+	local day = Mathf.Floor(offsetSecond / TimeUtil.OneDaySecond)
+	local hourSecond = offsetSecond % TimeUtil.OneDaySecond
+	local hour = Mathf.Floor(hourSecond / TimeUtil.OneHourSecond)
 
-	if var_9_1 > 0 then
-		arg_9_0._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s%s%s", var_9_1, luaLang("time_day"), var_9_3, luaLang("time_hour")))
+	if day > 0 then
+		self._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s%s%s", day, luaLang("time_day"), hour, luaLang("time_hour")))
 	else
-		local var_9_4 = var_9_2 % TimeUtil.OneHourSecond
-		local var_9_5 = Mathf.Floor(var_9_4 / TimeUtil.OneMinuteSecond)
+		local minuteSecond = hourSecond % TimeUtil.OneHourSecond
+		local minute = Mathf.Floor(minuteSecond / TimeUtil.OneMinuteSecond)
 
-		if var_9_3 > 0 then
-			arg_9_0._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s%s%s", var_9_3, luaLang("time_hour"), var_9_5, luaLang("time_minute2")))
-		elseif var_9_5 > 0 then
-			arg_9_0._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s", var_9_5, luaLang("time_minute")))
+		if hour > 0 then
+			self._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s%s%s", hour, luaLang("time_hour"), minute, luaLang("time_minute2")))
+		elseif minute > 0 then
+			self._txtremaintime.text = string.format(luaLang("remain"), string.format("%s%s", minute, luaLang("time_minute")))
 		else
-			arg_9_0._txtremaintime.text = string.format(luaLang("remain"), string.format("<1%s", luaLang("time_minute")))
+			self._txtremaintime.text = string.format(luaLang("remain"), string.format("<1%s", luaLang("time_minute")))
 		end
 	end
 end
 
-function var_0_0.refreshRight(arg_10_0)
+function VersionActivity1_5TaskView:refreshRight()
 	VersionActivity1_5TaskListModel.instance:sortTaskMoList()
 	VersionActivity1_5TaskListModel.instance:refreshList()
 end
 
-function var_0_0.onClose(arg_11_0)
-	TaskDispatcher.cancelTask(arg_11_0.refreshRemainTime, arg_11_0)
+function VersionActivity1_5TaskView:onClose()
+	TaskDispatcher.cancelTask(self.refreshRemainTime, self)
 end
 
-function var_0_0.onDestroyView(arg_12_0)
-	arg_12_0._simageFullBG:UnLoadImage()
+function VersionActivity1_5TaskView:onDestroyView()
+	self._simageFullBG:UnLoadImage()
 end
 
-return var_0_0
+return VersionActivity1_5TaskView

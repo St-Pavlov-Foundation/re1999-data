@@ -1,6 +1,7 @@
 [
   {
     "id": 620001,
+    "taskType": 0,
     "finishNum": 1,
     "isOnline": 0,
     "listenerType": "CurrencyDec",
@@ -12,6 +13,7 @@
   },
   {
     "id": 620002,
+    "taskType": 0,
     "finishNum": 1,
     "isOnline": 0,
     "listenerType": "CurrencyDec",
@@ -23,6 +25,7 @@
   },
   {
     "id": 620003,
+    "taskType": 0,
     "finishNum": 1,
     "isOnline": 0,
     "listenerType": "CurrencyDec",
@@ -34,6 +37,7 @@
   },
   {
     "id": 620004,
+    "taskType": 0,
     "finishNum": 1,
     "isOnline": 0,
     "listenerType": "CurrencyDec",
@@ -45,12 +49,133 @@
   },
   {
     "id": 620005,
+    "taskType": 0,
     "finishNum": 999,
     "isOnline": 1,
     "listenerType": "CurrencyDec",
     "listenerParam": "4",
     "maxProgress": 800,
     "desc": "消耗%s细胞活性",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620006,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "desc": "累计登录1天",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620007,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 3,
+    "desc": "累计登录3天",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620008,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 5,
+    "desc": "累计登录5天",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620009,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "LoginDays",
+    "listenerParam": "",
+    "maxProgress": 7,
+    "desc": "累计登录7天",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620010,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "5",
+    "maxProgress": 50000,
+    "desc": "累计消耗50000微尘",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620011,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "5",
+    "maxProgress": 100000,
+    "desc": "累计消耗100000微尘",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620012,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "3",
+    "maxProgress": 50000,
+    "desc": "累计消耗50000利齿子儿",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620013,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "CurrencyDec",
+    "listenerParam": "3",
+    "maxProgress": 100000,
+    "desc": "累计消耗100000利齿子儿",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620014,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "DoneCount",
+    "listenerParam": "DungeonPass",
+    "maxProgress": 10,
+    "desc": "完成任意关卡10次",
+    "bonus": "1#300000#1",
+    "jumpId": 0
+  },
+  {
+    "id": 620015,
+    "taskType": 1,
+    "finishNum": 1,
+    "isOnline": 1,
+    "listenerType": "DoneCount",
+    "listenerParam": "DungeonPass",
+    "maxProgress": 20,
+    "desc": "完成任意关卡20次",
     "bonus": "1#300000#1",
     "jumpId": 0
   }

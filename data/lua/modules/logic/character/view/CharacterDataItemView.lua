@@ -1,528 +1,521 @@
-﻿module("modules.logic.character.view.CharacterDataItemView", package.seeall)
+﻿-- chunkname: @modules/logic/character/view/CharacterDataItemView.lua
 
-local var_0_0 = class("CharacterDataItemView", BaseView)
+module("modules.logic.character.view.CharacterDataItemView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._simagebg = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_bg")
-	arg_1_0._simagecentericon = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_centericon")
-	arg_1_0._simagelefticon = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_lefticon")
-	arg_1_0._simagerighticon = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_righticon")
-	arg_1_0._simagerighticon2 = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_righticon2")
-	arg_1_0._simagemask = gohelper.findChildSingleImage(arg_1_0.viewGO, "bg/#simage_mask")
-	arg_1_0._gopointercontainer = gohelper.findChild(arg_1_0.viewGO, "content/bottom/#go_pointcontainer")
-	arg_1_0._gopointeritem = gohelper.findChild(arg_1_0.viewGO, "content/bottom/#go_pointcontainer/#go_pointitem")
+local CharacterDataItemView = class("CharacterDataItemView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function CharacterDataItemView:onInitView()
+	self._simagebg = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_bg")
+	self._simagecentericon = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_centericon")
+	self._simagelefticon = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_lefticon")
+	self._simagerighticon = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_righticon")
+	self._simagerighticon2 = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_righticon2")
+	self._simagemask = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_mask")
+	self._gopointercontainer = gohelper.findChild(self.viewGO, "content/bottom/#go_pointcontainer")
+	self._gopointeritem = gohelper.findChild(self.viewGO, "content/bottom/#go_pointcontainer/#go_pointitem")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
+function CharacterDataItemView:addEvents()
 	return
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function CharacterDataItemView:removeEvents()
 	return
 end
 
-function var_0_0.onLeftPageClick(arg_4_0)
-	if not arg_4_0.needShowPageBtn then
+function CharacterDataItemView:onLeftPageClick()
+	if not self.needShowPageBtn then
 		return
 	end
 
-	if arg_4_0.skinIndex <= 1 then
+	if self.skinIndex <= 1 then
 		return
 	end
 
-	arg_4_0.skinIndex = arg_4_0.skinIndex - 1
-	arg_4_0.skinId = arg_4_0.skinList[arg_4_0.skinIndex]
+	self.skinIndex = self.skinIndex - 1
+	self.skinId = self.skinList[self.skinIndex]
 
-	arg_4_0.contentAnimator:Play("switch_left", 0, 0)
+	self.contentAnimator:Play("switch_left", 0, 0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_character_data_item_page)
 end
 
-function var_0_0.onRightPageClick(arg_5_0)
-	if not arg_5_0.needShowPageBtn then
+function CharacterDataItemView:onRightPageClick()
+	if not self.needShowPageBtn then
 		return
 	end
 
-	if arg_5_0.skinIndex >= arg_5_0.skinLen then
+	if self.skinIndex >= self.skinLen then
 		return
 	end
 
-	arg_5_0.skinIndex = arg_5_0.skinIndex + 1
-	arg_5_0.skinId = arg_5_0.skinList[arg_5_0.skinIndex]
+	self.skinIndex = self.skinIndex + 1
+	self.skinId = self.skinList[self.skinIndex]
 
-	arg_5_0.contentAnimator:Play("switch_right", 0, 0)
+	self.contentAnimator:Play("switch_right", 0, 0)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_character_data_item_page)
 end
 
-function var_0_0.initItem(arg_6_0)
-	arg_6_0.itemList = arg_6_0:getUserDataTb_()
+function CharacterDataItemView:initItem()
+	self.itemList = self:getUserDataTb_()
 
-	local var_6_0
+	local item
 
-	for iter_6_0 = 1, 3 do
-		local var_6_1 = arg_6_0:getUserDataTb_()
+	for i = 1, 3 do
+		item = self:getUserDataTb_()
+		item.itemGo = gohelper.findChild(self.viewGO, "content/itembg" .. i)
+		item.animator = item.itemGo:GetComponent(typeof(UnityEngine.Animator))
+		item.itemshow = gohelper.findChild(item.itemGo, "go_itemshow")
+		item.itemlock = gohelper.findChild(item.itemGo, "go_itemlock")
+		item.lockicon = gohelper.findChild(item.itemlock, "go_lockicon")
+		item.unlocktxt = gohelper.findChildText(item.lockicon, "unlocktext")
+		item.treasurego = gohelper.findChild(item.itemGo, "go_itemlock/go_treasure")
+		item.goitemshow = gohelper.findChild(item.itemGo, "go_itemshow")
+		item.title1 = gohelper.findChildText(item.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemname1")
+		item.title2 = gohelper.findChildText(item.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemname2")
+		item.titleen = gohelper.findChildText(item.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemnameen")
+		item.text = gohelper.findChildText(item.itemGo, "go_itemshow/itemtxtbg/descScroll/Viewport/descContent/itemtext")
+		item.icon = gohelper.findChildSingleImage(item.itemGo, "go_itemshow/itemicon")
+		item.goimageestimate = gohelper.findChild(item.itemGo, "go_itemshow/itemtxtbg/estimate/image_estimate")
+		item.imageestimate = gohelper.findChildImage(item.itemGo, "go_itemshow/itemtxtbg/estimate/image_estimate/image_estimate")
+		item.txtestimate = gohelper.findChildText(item.itemGo, "go_itemshow/itemtxtbg/estimate/txt_estimate")
+		item.treasurebtn = gohelper.findChildButtonWithAudio(item.itemlock, "clickarea")
 
-		var_6_1.itemGo = gohelper.findChild(arg_6_0.viewGO, "content/itembg" .. iter_6_0)
-		var_6_1.animator = var_6_1.itemGo:GetComponent(typeof(UnityEngine.Animator))
-		var_6_1.itemshow = gohelper.findChild(var_6_1.itemGo, "go_itemshow")
-		var_6_1.itemlock = gohelper.findChild(var_6_1.itemGo, "go_itemlock")
-		var_6_1.lockicon = gohelper.findChild(var_6_1.itemlock, "go_lockicon")
-		var_6_1.unlocktxt = gohelper.findChildText(var_6_1.lockicon, "unlocktext")
-		var_6_1.treasurego = gohelper.findChild(var_6_1.itemGo, "go_itemlock/go_treasure")
-		var_6_1.goitemshow = gohelper.findChild(var_6_1.itemGo, "go_itemshow")
-		var_6_1.title1 = gohelper.findChildText(var_6_1.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemname1")
-		var_6_1.title2 = gohelper.findChildText(var_6_1.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemname2")
-		var_6_1.titleen = gohelper.findChildText(var_6_1.itemGo, "go_itemshow/itemtxtbg/itemnamelist/itemnameen")
-		var_6_1.text = gohelper.findChildText(var_6_1.itemGo, "go_itemshow/itemtxtbg/descScroll/Viewport/descContent/itemtext")
-		var_6_1.icon = gohelper.findChildSingleImage(var_6_1.itemGo, "go_itemshow/itemicon")
-		var_6_1.goimageestimate = gohelper.findChild(var_6_1.itemGo, "go_itemshow/itemtxtbg/estimate/image_estimate")
-		var_6_1.imageestimate = gohelper.findChildImage(var_6_1.itemGo, "go_itemshow/itemtxtbg/estimate/image_estimate/image_estimate")
-		var_6_1.txtestimate = gohelper.findChildText(var_6_1.itemGo, "go_itemshow/itemtxtbg/estimate/txt_estimate")
-		var_6_1.treasurebtn = gohelper.findChildButtonWithAudio(var_6_1.itemlock, "clickarea")
-
-		var_6_1.treasurebtn:AddClickListener(arg_6_0._onTreasureBtnClick, arg_6_0, iter_6_0)
-		table.insert(arg_6_0.itemList, var_6_1)
+		item.treasurebtn:AddClickListener(self._onTreasureBtnClick, self, i)
+		table.insert(self.itemList, item)
 	end
 end
 
-function var_0_0._editableInitView(arg_7_0)
-	gohelper.setActive(arg_7_0._gopointeritem, false)
+function CharacterDataItemView:_editableInitView()
+	gohelper.setActive(self._gopointeritem, false)
 
-	arg_7_0.goContent = gohelper.findChild(arg_7_0.viewGO, "content")
+	self.goContent = gohelper.findChild(self.viewGO, "content")
 
-	arg_7_0._simagebg:LoadImage(ResUrl.getCommonIcon("full/bg_fmand2"))
-	arg_7_0._simagecentericon:LoadImage(ResUrl.getCharacterDataIcon("bg_fm_circle.png"))
-	arg_7_0._simagelefticon:LoadImage(ResUrl.getCommonIcon("bg_leftdown"))
-	arg_7_0._simagerighticon:LoadImage(ResUrl.getCommonIcon("bg_rightdown"))
-	arg_7_0._simagerighticon2:LoadImage(ResUrl.getCommonIcon("bg_rightup"))
-	arg_7_0._simagemask:LoadImage(ResUrl.getCommonIcon("full/bg_noise2"))
-	arg_7_0:initItem()
+	self._simagebg:LoadImage(ResUrl.getCommonIcon("full/bg_fmand2"))
+	self._simagecentericon:LoadImage(ResUrl.getCharacterDataIcon("bg_fm_circle.png"))
+	self._simagelefticon:LoadImage(ResUrl.getCommonIcon("bg_leftdown"))
+	self._simagerighticon:LoadImage(ResUrl.getCommonIcon("bg_rightdown"))
+	self._simagerighticon2:LoadImage(ResUrl.getCommonIcon("bg_rightup"))
+	self._simagemask:LoadImage(ResUrl.getCommonIcon("full/bg_noise2"))
+	self:initItem()
 
-	arg_7_0._effectsList = arg_7_0:getUserDataTb_()
-	arg_7_0._dataList = {}
+	self._effectsList = self:getUserDataTb_()
+	self._dataList = {}
 
-	CharacterController.instance:registerCallback(CharacterEvent.HeroDataAddUnlockItemFail, arg_7_0._unlockItemCallbackFail, arg_7_0)
-	CharacterController.instance:registerCallback(CharacterEvent.HeroDataAddUnlockItem, arg_7_0._unlockItemCallback, arg_7_0)
+	CharacterController.instance:registerCallback(CharacterEvent.HeroDataAddUnlockItemFail, self._unlockItemCallbackFail, self)
+	CharacterController.instance:registerCallback(CharacterEvent.HeroDataAddUnlockItem, self._unlockItemCallback, self)
 end
 
-function var_0_0.onUpdateParam(arg_8_0)
-	arg_8_0:_refreshUI()
+function CharacterDataItemView:onUpdateParam()
+	self:_refreshUI()
 end
 
-function var_0_0.onOpen(arg_9_0)
-	gohelper.setActive(arg_9_0.viewGO, true)
+function CharacterDataItemView:onOpen()
+	gohelper.setActive(self.viewGO, true)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_role_pieces_open)
 
-	arg_9_0._heroId = CharacterDataModel.instance:getCurHeroId()
-	arg_9_0.heroMo = HeroModel.instance:getByHeroId(arg_9_0._heroId)
+	self._heroId = CharacterDataModel.instance:getCurHeroId()
+	self.heroMo = HeroModel.instance:getByHeroId(self._heroId)
 
-	arg_9_0:initSkinInfo()
-	arg_9_0:_statStart()
-	arg_9_0:_refreshUI()
+	self:initSkinInfo()
+	self:_statStart()
+	self:_refreshUI()
 end
 
-function var_0_0.sortSkin(arg_10_0, arg_10_1)
-	return arg_10_0 < arg_10_1
+function CharacterDataItemView.sortSkin(skin1, skin2)
+	return skin1 < skin2
 end
 
-function var_0_0.initSkinInfo(arg_11_0)
-	local var_11_0 = arg_11_0.heroMo.skinInfoList
-	local var_11_1 = CharacterDataConfig.instance:geCharacterSkinIdList(arg_11_0._heroId)
+function CharacterDataItemView:initSkinInfo()
+	local hadSkinList = self.heroMo.skinInfoList
+	local configSkinList = CharacterDataConfig.instance:geCharacterSkinIdList(self._heroId)
 
-	arg_11_0.skinList = {
+	self.skinList = {
 		CharacterDataConfig.DefaultSkinDataKey
 	}
 
-	local var_11_2 = CharacterDataConfig.instance:getDataConfig()
+	local dataConfig = CharacterDataConfig.instance:getDataConfig()
 
-	for iter_11_0, iter_11_1 in ipairs(var_11_0) do
-		if tabletool.indexOf(var_11_1, iter_11_1.skin) then
-			local var_11_3 = var_11_2[arg_11_0._heroId][iter_11_1.skin]
+	for _, skinInfo in ipairs(hadSkinList) do
+		if tabletool.indexOf(configSkinList, skinInfo.skin) then
+			local dataCo = dataConfig[self._heroId][skinInfo.skin]
 
-			if var_11_3 and var_11_3[CharacterEnum.CharacterDataItemType.Item] then
-				table.insert(arg_11_0.skinList, iter_11_1.skin)
+			if dataCo and dataCo[CharacterEnum.CharacterDataItemType.Item] then
+				table.insert(self.skinList, skinInfo.skin)
 			end
 		end
 	end
 
-	arg_11_0.skinId = arg_11_0.skinList[1]
+	self.skinId = self.skinList[1]
 
-	table.sort(arg_11_0.skinList, var_0_0.sortSkin)
+	table.sort(self.skinList, CharacterDataItemView.sortSkin)
 
-	arg_11_0.skinIndex = 1
-	arg_11_0.skinLen = #arg_11_0.skinList
-	arg_11_0.needShowPageBtn = arg_11_0.skinLen > 1
+	self.skinIndex = 1
+	self.skinLen = #self.skinList
+	self.needShowPageBtn = self.skinLen > 1
 
-	if arg_11_0.needShowPageBtn then
-		arg_11_0.contentAnimator = arg_11_0.goContent:GetComponent(typeof(UnityEngine.Animator))
-		arg_11_0.contentAnimatorEvent = arg_11_0.goContent:GetComponent(typeof(ZProj.AnimationEventWrap))
+	if self.needShowPageBtn then
+		self.contentAnimator = self.goContent:GetComponent(typeof(UnityEngine.Animator))
+		self.contentAnimatorEvent = self.goContent:GetComponent(typeof(ZProj.AnimationEventWrap))
 
-		arg_11_0.contentAnimatorEvent:AddEventListener("refresh", arg_11_0._refreshUI, arg_11_0)
+		self.contentAnimatorEvent:AddEventListener("refresh", self._refreshUI, self)
 	end
 
-	arg_11_0:initPointItem()
-	arg_11_0:initPageBtnItem()
+	self:initPointItem()
+	self:initPageBtnItem()
 end
 
-function var_0_0.initPointItem(arg_12_0)
-	if not arg_12_0.needShowPageBtn then
+function CharacterDataItemView:initPointItem()
+	if not self.needShowPageBtn then
 		return
 	end
 
-	arg_12_0.pointItemList = arg_12_0.pointItemList or arg_12_0:getUserDataTb_()
+	self.pointItemList = self.pointItemList or self:getUserDataTb_()
 
-	local var_12_0
+	local pointerItem
 
-	for iter_12_0, iter_12_1 in ipairs(arg_12_0.skinList) do
-		local var_12_1 = arg_12_0.pointItemList[iter_12_0]
+	for index, skinId in ipairs(self.skinList) do
+		pointerItem = self.pointItemList[index]
 
-		if not var_12_1 then
-			var_12_1 = {
-				go = gohelper.cloneInPlace(arg_12_0._gopointeritem, "point_" .. iter_12_0)
+		if not pointerItem then
+			pointerItem = {
+				go = gohelper.cloneInPlace(self._gopointeritem, "point_" .. index)
 			}
-			var_12_1.gonormalstar = gohelper.findChild(var_12_1.go, "#go_nomalstar")
-			var_12_1.golightstar = gohelper.findChild(var_12_1.go, "#go_lightstar")
-			var_12_1.click = gohelper.getClick(var_12_1.go)
+			pointerItem.gonormalstar = gohelper.findChild(pointerItem.go, "#go_nomalstar")
+			pointerItem.golightstar = gohelper.findChild(pointerItem.go, "#go_lightstar")
+			pointerItem.click = gohelper.getClick(pointerItem.go)
 
-			var_12_1.click:AddClickListener(arg_12_0.pointOnClick, arg_12_0, iter_12_0)
-			table.insert(arg_12_0.pointItemList, var_12_1)
+			pointerItem.click:AddClickListener(self.pointOnClick, self, index)
+			table.insert(self.pointItemList, pointerItem)
 		end
 
-		gohelper.setActive(var_12_1.go, true)
+		gohelper.setActive(pointerItem.go, true)
 	end
 
-	for iter_12_2 = #arg_12_0.skinList + 1, #arg_12_0.pointItemList do
-		gohelper.setActive(arg_12_0.pointItemList[iter_12_2].go, false)
+	for i = #self.skinList + 1, #self.pointItemList do
+		gohelper.setActive(self.pointItemList[i].go, false)
 	end
 end
 
-function var_0_0.initPageBtnItem(arg_13_0)
-	arg_13_0.btnLeftPage = gohelper.findChildClick(arg_13_0.viewGO, "content/#btn_leftpage")
-	arg_13_0.btnRightPage = gohelper.findChildClick(arg_13_0.viewGO, "content/#btn_rightpage")
+function CharacterDataItemView:initPageBtnItem()
+	self.btnLeftPage = gohelper.findChildClick(self.viewGO, "content/#btn_leftpage")
+	self.btnRightPage = gohelper.findChildClick(self.viewGO, "content/#btn_rightpage")
 
-	if not arg_13_0.needShowPageBtn then
+	if not self.needShowPageBtn then
 		return
 	end
 
-	arg_13_0.btnLeftPage:AddClickListener(arg_13_0.onLeftPageClick, arg_13_0)
-	arg_13_0.btnRightPage:AddClickListener(arg_13_0.onRightPageClick, arg_13_0)
+	self.btnLeftPage:AddClickListener(self.onLeftPageClick, self)
+	self.btnRightPage:AddClickListener(self.onRightPageClick, self)
 end
 
-function var_0_0.pointOnClick(arg_14_0, arg_14_1)
-	arg_14_0.skinIndex = arg_14_1
-	arg_14_0.skinId = arg_14_0.skinList[arg_14_0.skinIndex]
+function CharacterDataItemView:pointOnClick(index)
+	self.skinIndex = index
+	self.skinId = self.skinList[self.skinIndex]
 
-	arg_14_0:_refreshUI()
+	self:_refreshUI()
 end
 
-function var_0_0.initDrag(arg_15_0)
-	if #arg_15_0.skinList <= 1 then
+function CharacterDataItemView:initDrag()
+	if #self.skinList <= 1 then
 		return
 	end
 
-	arg_15_0._itemDrag = SLFramework.UGUI.UIDragListener.Get(arg_15_0.goContent)
+	self._itemDrag = SLFramework.UGUI.UIDragListener.Get(self.goContent)
 
-	arg_15_0._itemDrag:AddDragBeginListener(arg_15_0._onDragBegin, arg_15_0)
-	arg_15_0._itemDrag:AddDragEndListener(arg_15_0._onDragEnd, arg_15_0)
+	self._itemDrag:AddDragBeginListener(self._onDragBegin, self)
+	self._itemDrag:AddDragEndListener(self._onDragEnd, self)
 end
 
-function var_0_0._onDragBegin(arg_16_0, arg_16_1, arg_16_2)
-	arg_16_0.startDragPosX = arg_16_2.position.x
+function CharacterDataItemView:_onDragBegin(param, pointerEventData)
+	self.startDragPosX = pointerEventData.position.x
 end
 
-function var_0_0._onDragEnd(arg_17_0, arg_17_1, arg_17_2)
-	local var_17_0 = arg_17_2.position.x
+function CharacterDataItemView:_onDragEnd(param, pointerEventData)
+	local endDragPosX = pointerEventData.position.x
 
-	if math.abs(var_17_0 - arg_17_0.startDragPosX) > 30 then
+	if math.abs(endDragPosX - self.startDragPosX) > 30 then
 		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_character_view_switch)
 
-		if var_17_0 > arg_17_0.startDragPosX then
-			arg_17_0.skinIndex = arg_17_0.skinIndex - 1
+		if endDragPosX > self.startDragPosX then
+			self.skinIndex = self.skinIndex - 1
 
-			if arg_17_0.skinIndex < 1 then
-				arg_17_0.skinIndex = #arg_17_0.skinList
+			if self.skinIndex < 1 then
+				self.skinIndex = #self.skinList
 			end
 		else
-			arg_17_0.skinIndex = arg_17_0.skinIndex + 1
+			self.skinIndex = self.skinIndex + 1
 
-			if arg_17_0.skinIndex > #arg_17_0.skinList then
-				arg_17_0.skinIndex = 1
+			if self.skinIndex > #self.skinList then
+				self.skinIndex = 1
 			end
 		end
 
-		arg_17_0.skinId = arg_17_0.skinList[arg_17_0.skinIndex]
+		self.skinId = self.skinList[self.skinIndex]
 
-		arg_17_0:_refreshUI()
+		self:_refreshUI()
 	end
 end
 
-function var_0_0._refreshUI(arg_18_0)
-	arg_18_0:refreshItem()
-	arg_18_0:refreshPointItem()
-	arg_18_0:refreshPageBtn()
+function CharacterDataItemView:_refreshUI()
+	self:refreshItem()
+	self:refreshPointItem()
+	self:refreshPageBtn()
 end
 
-function var_0_0._unlockItemCallback(arg_19_0, arg_19_1, arg_19_2)
+function CharacterDataItemView:_unlockItemCallback(heroId, itemId)
 	UIBlockMgr.instance:endBlock("playRewardsAnimtion")
 	UIBlockMgrExtend.setNeedCircleMv(true)
 
-	if arg_19_2 >= 2 and arg_19_2 <= 4 then
-		arg_19_0.itemList[arg_19_2 - 1].treasurebtn:RemoveClickListener()
+	if itemId >= 2 and itemId <= 4 then
+		self.itemList[itemId - 1].treasurebtn:RemoveClickListener()
 
-		arg_19_0._dataList[arg_19_2 - 1].isGetRewards = true
+		self._dataList[itemId - 1].isGetRewards = true
 	end
 end
 
-function var_0_0._unlockItemCallbackFail(arg_20_0)
+function CharacterDataItemView:_unlockItemCallbackFail()
 	UIBlockMgr.instance:endBlock("playRewardsAnimtion")
 	UIBlockMgrExtend.setNeedCircleMv(true)
 end
 
-function var_0_0.refreshItem(arg_21_0)
-	local var_21_0
-	local var_21_1
-	local var_21_2
-	local var_21_3
-	local var_21_4
-	local var_21_5
-	local var_21_6
-	local var_21_7
+function CharacterDataItemView:refreshItem()
+	local item, lockCO, islock, isGetRewards, unlockitems, tag, tip, data
 
-	for iter_21_0 = 1, 3 do
-		local var_21_8 = arg_21_0.itemList[iter_21_0]
-		local var_21_9 = arg_21_0._dataList[iter_21_0]
+	for i = 1, 3 do
+		item = self.itemList[i]
+		data = self._dataList[i]
 
-		if not var_21_9 then
-			var_21_9 = {}
-			arg_21_0._dataList[iter_21_0] = var_21_9
+		if not data then
+			data = {}
+			self._dataList[i] = data
 		end
 
-		var_21_9.itemId = iter_21_0 + 1
+		data.itemId = i + 1
+		lockCO = CharacterDataConfig.instance:getCharacterDataCO(self._heroId, self.skinId, CharacterEnum.CharacterDataItemType.Item, i)
+		islock = CharacterDataConfig.instance:checkLockCondition(lockCO)
+		isGetRewards = HeroModel.instance:checkGetRewards(self._heroId, data.itemId)
+		data.islock = islock
+		data.isGetRewards = isGetRewards
 
-		local var_21_10 = CharacterDataConfig.instance:getCharacterDataCO(arg_21_0._heroId, arg_21_0.skinId, CharacterEnum.CharacterDataItemType.Item, iter_21_0)
-		local var_21_11 = CharacterDataConfig.instance:checkLockCondition(var_21_10)
-		local var_21_12 = HeroModel.instance:checkGetRewards(arg_21_0._heroId, var_21_9.itemId)
+		if islock then
+			gohelper.setActive(item.itemshow, false)
+			gohelper.setActive(item.itemlock, true)
+			gohelper.setActive(item.lockicon, true)
+			gohelper.setActive(item.treasurego, false)
 
-		var_21_9.islock = var_21_11
-		var_21_9.isGetRewards = var_21_12
+			unlockitems = string.splitToNumber(lockCO.unlockConditine, "#")
+			tag = {}
 
-		if var_21_11 then
-			gohelper.setActive(var_21_8.itemshow, false)
-			gohelper.setActive(var_21_8.itemlock, true)
-			gohelper.setActive(var_21_8.lockicon, true)
-			gohelper.setActive(var_21_8.treasurego, false)
-
-			local var_21_13 = string.splitToNumber(var_21_10.unlockConditine, "#")
-			local var_21_14 = {}
-
-			if var_21_13[1] == CharacterDataConfig.unlockConditionEpisodeID then
-				var_21_14 = {
-					DungeonConfig.instance:getEpisodeCO(var_21_13[2]).name
+			if unlockitems[1] == CharacterDataConfig.unlockConditionEpisodeID then
+				tag = {
+					DungeonConfig.instance:getEpisodeCO(unlockitems[2]).name
 				}
-			elseif var_21_13[1] == CharacterDataConfig.unlockConditionRankID then
-				var_21_14 = {
-					var_21_13[2] - 1
+			elseif unlockitems[1] == CharacterDataConfig.unlockConditionRankID then
+				tag = {
+					unlockitems[2] - 1
 				}
 			else
-				var_21_14 = {
-					var_21_13[2]
+				tag = {
+					unlockitems[2]
 				}
 			end
 
-			local var_21_15 = ToastConfig.instance:getToastCO(var_21_10.lockText).tips
-			local var_21_16 = GameUtil.getSubPlaceholderLuaLang(var_21_15, var_21_14)
-
-			var_21_8.unlocktxt.text = var_21_16
+			tip = ToastConfig.instance:getToastCO(lockCO.lockText).tips
+			tip = GameUtil.getSubPlaceholderLuaLang(tip, tag)
+			item.unlocktxt.text = tip
 		else
-			arg_21_0:_setItemTitlePos(var_21_8.title1, var_21_8.title2, var_21_8.titleen, var_21_10.title)
+			self:_setItemTitlePos(item.title1, item.title2, item.titleen, lockCO.title)
 
-			var_21_8.titleen.text = var_21_10.titleEn
-			var_21_8.text.text = LuaUtil.replaceSpace(var_21_10.text)
+			item.titleen.text = lockCO.titleEn
+			item.text.text = LuaUtil.replaceSpace(lockCO.text)
 
-			arg_21_0:_refreshEstimate(var_21_8, var_21_10)
-			var_21_8.icon:LoadImage(ResUrl.getCharacterDataPic(var_21_10.icon))
+			self:_refreshEstimate(item, lockCO)
+			item.icon:LoadImage(ResUrl.getCharacterDataPic(lockCO.icon))
 
-			if string.nilorempty(var_21_10.unlockRewards) then
-				gohelper.setActive(var_21_8.itemshow, true)
-				gohelper.setActive(var_21_8.itemlock, false)
-			elseif var_21_12 then
-				gohelper.setActive(var_21_8.itemshow, true)
-				gohelper.setActive(var_21_8.itemlock, false)
+			if string.nilorempty(lockCO.unlockRewards) then
+				gohelper.setActive(item.itemshow, true)
+				gohelper.setActive(item.itemlock, false)
+			elseif isGetRewards then
+				gohelper.setActive(item.itemshow, true)
+				gohelper.setActive(item.itemlock, false)
 			else
-				arg_21_0:addAniEffect(var_21_8.goitemshow, var_21_9.itemId, arg_21_0._heroId)
-				gohelper.setActive(var_21_8.itemshow, false)
-				gohelper.setActive(var_21_8.itemlock, true)
-				gohelper.setActive(var_21_8.lockicon, false)
-				gohelper.setActive(var_21_8.treasurego, true)
-				arg_21_0:checkAndCloneMaterialIfNeed(var_21_8.treasurego, iter_21_0)
+				self:addAniEffect(item.goitemshow, data.itemId, self._heroId)
+				gohelper.setActive(item.itemshow, false)
+				gohelper.setActive(item.itemlock, true)
+				gohelper.setActive(item.lockicon, false)
+				gohelper.setActive(item.treasurego, true)
+				self:checkAndCloneMaterialIfNeed(item.treasurego, i)
 			end
 		end
 	end
 end
 
-function var_0_0.checkAndCloneMaterialIfNeed(arg_22_0, arg_22_1, arg_22_2)
-	if arg_22_0._cloneMaterialMap and arg_22_0._cloneMaterialMap[arg_22_2] then
+function CharacterDataItemView:checkAndCloneMaterialIfNeed(treasurego, index)
+	if self._cloneMaterialMap and self._cloneMaterialMap[index] then
 		return
 	end
 
-	arg_22_0._cloneMaterialMap = arg_22_0._cloneMaterialMap or {}
-	arg_22_0._cloneMaterialMap[arg_22_2] = true
+	self._cloneMaterialMap = self._cloneMaterialMap or {}
+	self._cloneMaterialMap[index] = true
 
-	local var_22_0 = gohelper.findChildImage(arg_22_1, "image")
-	local var_22_1 = var_22_0.material
+	local image = gohelper.findChildImage(treasurego, "image")
+	local material = image.material
 
-	var_22_0.material = UnityEngine.Object.Instantiate(var_22_1)
+	image.material = UnityEngine.Object.Instantiate(material)
 
-	local var_22_2 = var_22_0.gameObject:GetComponent(typeof(ZProj.MaterialPropsCtrl))
+	local materialPropsCtrl = image.gameObject:GetComponent(typeof(ZProj.MaterialPropsCtrl))
 
-	var_22_2.mas:Clear()
-	var_22_2.mas:Add(var_22_0.material)
+	materialPropsCtrl.mas:Clear()
+	materialPropsCtrl.mas:Add(image.material)
 end
 
-function var_0_0.refreshPointItem(arg_23_0)
-	if not arg_23_0.pointItemList then
+function CharacterDataItemView:refreshPointItem()
+	if not self.pointItemList then
 		return
 	end
 
-	for iter_23_0, iter_23_1 in ipairs(arg_23_0.pointItemList) do
-		gohelper.setActive(iter_23_1.gonormalstar, iter_23_0 ~= arg_23_0.skinIndex)
-		gohelper.setActive(iter_23_1.golightstar, iter_23_0 == arg_23_0.skinIndex)
+	for index, pointItem in ipairs(self.pointItemList) do
+		gohelper.setActive(pointItem.gonormalstar, index ~= self.skinIndex)
+		gohelper.setActive(pointItem.golightstar, index == self.skinIndex)
 	end
 end
 
-function var_0_0.refreshPageBtn(arg_24_0)
-	if not arg_24_0.needShowPageBtn then
-		gohelper.setActive(arg_24_0.btnLeftPage.gameObject, false)
-		gohelper.setActive(arg_24_0.btnRightPage.gameObject, false)
+function CharacterDataItemView:refreshPageBtn()
+	if not self.needShowPageBtn then
+		gohelper.setActive(self.btnLeftPage.gameObject, false)
+		gohelper.setActive(self.btnRightPage.gameObject, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_24_0.btnLeftPage.gameObject, arg_24_0.skinIndex ~= 1)
-	gohelper.setActive(arg_24_0.btnRightPage.gameObject, arg_24_0.skinIndex ~= arg_24_0.skinLen)
+	gohelper.setActive(self.btnLeftPage.gameObject, self.skinIndex ~= 1)
+	gohelper.setActive(self.btnRightPage.gameObject, self.skinIndex ~= self.skinLen)
 end
 
-function var_0_0._onTreasureBtnClick(arg_25_0, arg_25_1)
-	local var_25_0 = arg_25_0._dataList[arg_25_1]
+function CharacterDataItemView:_onTreasureBtnClick(index)
+	local data = self._dataList[index]
 
-	if var_25_0.islock then
-		local var_25_1 = CharacterDataConfig.instance:getCharacterDataCO(arg_25_0._heroId, arg_25_0.heroMo.skin, CharacterEnum.CharacterDataItemType.Item, arg_25_1)
-		local var_25_2 = string.splitToNumber(var_25_1.unlockConditine, "#")
-		local var_25_3 = ""
+	if data.islock then
+		local lockCo = CharacterDataConfig.instance:getCharacterDataCO(self._heroId, self.heroMo.skin, CharacterEnum.CharacterDataItemType.Item, index)
+		local unlockitems = string.splitToNumber(lockCo.unlockConditine, "#")
+		local tag = ""
 
-		if var_25_2[1] == CharacterDataConfig.unlockConditionEpisodeID then
-			var_25_3 = DungeonConfig.instance:getEpisodeCO(var_25_2[2]).name
-		elseif var_25_2[1] == CharacterDataConfig.unlockConditionRankID then
-			var_25_3 = var_25_2[2] - 1
+		if unlockitems[1] == CharacterDataConfig.unlockConditionEpisodeID then
+			tag = DungeonConfig.instance:getEpisodeCO(unlockitems[2]).name
+		elseif unlockitems[1] == CharacterDataConfig.unlockConditionRankID then
+			tag = unlockitems[2] - 1
 		else
-			var_25_3 = var_25_2[2]
+			tag = unlockitems[2]
 		end
 
-		GameFacade.showToast(var_25_1.lockText, var_25_3)
-	elseif not var_25_0.isGetRewards then
-		local var_25_4 = arg_25_0.itemList[arg_25_1]
+		GameFacade.showToast(lockCo.lockText, tag)
+	elseif not data.isGetRewards then
+		local item = self.itemList[index]
 
-		gohelper.setActive(var_25_4.itemshow, true)
-		gohelper.setActive(var_25_4.itemlock, false)
+		gohelper.setActive(item.itemshow, true)
+		gohelper.setActive(item.itemlock, false)
 		UIBlockMgrExtend.setNeedCircleMv(false)
 		UIBlockMgr.instance:startBlock("playRewardsAnimtion")
-		arg_25_0:playAniEffect(var_25_0.itemId)
-		var_25_4.animator:Play(UIAnimationName.Unlock)
+		self:playAniEffect(data.itemId)
+		item.animator:Play(UIAnimationName.Unlock)
 		TaskDispatcher.runDelay(function()
-			HeroRpc.instance:sendItemUnlockRequest(arg_25_0._heroId, var_25_0.itemId)
+			HeroRpc.instance:sendItemUnlockRequest(self._heroId, data.itemId)
 		end, nil, 2)
 	end
 end
 
-function var_0_0._refreshEstimate(arg_27_0, arg_27_1, arg_27_2)
-	local var_27_0 = arg_27_2.estimate
+function CharacterDataItemView:_refreshEstimate(item, lockCO)
+	local estimateParam = lockCO.estimate
 
-	if string.nilorempty(var_27_0) then
-		gohelper.setActive(arg_27_1.goimageestimate.gameObject, false)
+	if string.nilorempty(estimateParam) then
+		gohelper.setActive(item.goimageestimate.gameObject, false)
 
-		arg_27_1.txtestimate.text = luaLang("notestimate")
+		item.txtestimate.text = luaLang("notestimate")
 	else
-		gohelper.setActive(arg_27_1.goimageestimate.gameObject, true)
+		gohelper.setActive(item.goimageestimate.gameObject, true)
 
-		local var_27_1 = string.split(var_27_0, "#")
-		local var_27_2 = var_27_1[1]
-		local var_27_3 = var_27_1[2]
+		local estimates = string.split(estimateParam, "#")
+		local estimateType = estimates[1]
+		local estimateNumber = estimates[2]
 
-		UISpriteSetMgr.instance:setUiCharacterSprite(arg_27_1.imageestimate, "fh" .. tostring(var_27_2))
+		UISpriteSetMgr.instance:setUiCharacterSprite(item.imageestimate, "fh" .. tostring(estimateType))
 
-		arg_27_1.txtestimate.text = string.format("%s", tostring(var_27_3))
+		item.txtestimate.text = string.format("%s", tostring(estimateNumber))
 	end
 end
 
-function var_0_0.addAniEffect(arg_28_0, arg_28_1, arg_28_2, arg_28_3)
-	local var_28_0 = HeroModel.instance:getByHeroId(arg_28_3).itemUnlock
+function CharacterDataItemView:addAniEffect(goitemshow, id, heroId)
+	local unlockItemIdList = HeroModel.instance:getByHeroId(heroId).itemUnlock
 
-	if arg_28_0:checkItemIsLock(var_28_0, arg_28_2) and not arg_28_0._effectsList[arg_28_2] then
-		arg_28_0._effectsList[arg_28_2] = arg_28_0:getUserDataTb_()
+	if self:checkItemIsLock(unlockItemIdList, id) and not self._effectsList[id] then
+		self._effectsList[id] = self:getUserDataTb_()
 
-		local var_28_1 = arg_28_1:GetComponentsInChildren(typeof(UnityEngine.UI.Graphic), true)
+		local graphics = goitemshow:GetComponentsInChildren(typeof(UnityEngine.UI.Graphic), true)
 
-		if var_28_1 then
-			local var_28_2 = var_28_1:GetEnumerator()
+		if graphics then
+			local iter = graphics:GetEnumerator()
 
-			while var_28_2:MoveNext() do
-				if not gohelper.findChildTextMesh(var_28_2.Current.gameObject, "") then
-					local var_28_3 = UIEffectManager.instance:getUIEffect(var_28_2.Current.gameObject, typeof(Coffee.UIEffects.UIDissolve))
+			while iter:MoveNext() do
+				if not gohelper.findChildTextMesh(iter.Current.gameObject, "") then
+					local effect = UIEffectManager.instance:getUIEffect(iter.Current.gameObject, typeof(Coffee.UIEffects.UIDissolve))
 
-					table.insert(arg_28_0._effectsList[arg_28_2], var_28_3)
+					table.insert(self._effectsList[id], effect)
 				end
 			end
 		end
 
-		for iter_28_0, iter_28_1 in ipairs(arg_28_0._effectsList[arg_28_2]) do
-			iter_28_1.width = 0.2
-			iter_28_1.softness = 1
-			iter_28_1.color = "#956C4B"
-			iter_28_1.effectFactor = 0
+		for i, effect in ipairs(self._effectsList[id]) do
+			effect.width = 0.2
+			effect.softness = 1
+			effect.color = "#956C4B"
+			effect.effectFactor = 0
 		end
 	end
 end
 
-function var_0_0.playAniEffect(arg_29_0, arg_29_1)
-	if not arg_29_0._effectsList[arg_29_1] then
+function CharacterDataItemView:playAniEffect(id)
+	local effects = self._effectsList[id]
+
+	if not effects then
 		return
 	end
 
-	for iter_29_0, iter_29_1 in ipairs(arg_29_0._effectsList[arg_29_1]) do
-		iter_29_1.effectFactor = 1
+	for _, effect in ipairs(self._effectsList[id]) do
+		effect.effectFactor = 1
 	end
 
-	arg_29_0._tweenIds = arg_29_0._tweenIds or {}
+	self._tweenIds = self._tweenIds or {}
 
-	if arg_29_0._tweenIds[arg_29_1] then
-		ZProj.TweenHelper.KillById(arg_29_0._tweenIds[arg_29_1])
+	if self._tweenIds[id] then
+		ZProj.TweenHelper.KillById(self._tweenIds[id])
 
-		arg_29_0._tweenIds[arg_29_1] = nil
+		self._tweenIds[id] = nil
 	end
 
-	local var_29_0 = ZProj.TweenHelper.DOTweenFloat(0, 2.85, 2.85, function(arg_30_0)
-		if arg_30_0 >= 0.35 then
-			local var_30_0 = arg_29_0._effectsList[arg_29_1]
+	local tweenId = ZProj.TweenHelper.DOTweenFloat(0, 2.85, 2.85, function(value)
+		if value >= 0.35 then
+			local effects = self._effectsList[id]
 
-			if not var_30_0 then
+			if not effects then
 				return
 			end
 
-			for iter_30_0, iter_30_1 in ipairs(var_30_0) do
-				iter_30_1.effectFactor = 1 - (arg_30_0 - 0.35) / 2.5
+			for i, effect in ipairs(effects) do
+				effect.effectFactor = 1 - (value - 0.35) / 2.5
 			end
 		end
 	end)
 
-	arg_29_0._tweenIds[arg_29_1] = var_29_0
+	self._tweenIds[id] = tweenId
 end
 
-function var_0_0.checkItemIsLock(arg_31_0, arg_31_1, arg_31_2)
-	for iter_31_0, iter_31_1 in pairs(arg_31_1) do
-		if iter_31_1 == arg_31_2 then
+function CharacterDataItemView:checkItemIsLock(list, id)
+	for _, k in pairs(list) do
+		if k == id then
 			return false
 		end
 	end
@@ -530,119 +523,119 @@ function var_0_0.checkItemIsLock(arg_31_0, arg_31_1, arg_31_2)
 	return true
 end
 
-function var_0_0._statStart(arg_32_0)
-	arg_32_0._viewTime = ServerTime.now()
+function CharacterDataItemView:_statStart()
+	self._viewTime = ServerTime.now()
 end
 
-function var_0_0._statEnd(arg_33_0)
-	if not arg_33_0._heroId then
+function CharacterDataItemView:_statEnd()
+	if not self._heroId then
 		return
 	end
 
-	if arg_33_0._viewTime then
-		local var_33_0 = ServerTime.now() - arg_33_0._viewTime
-		local var_33_1 = arg_33_0.viewParam and type(arg_33_0.viewParam) == "table" and arg_33_0.viewParam.fromHandbookView
+	if self._viewTime then
+		local duration = ServerTime.now() - self._viewTime
+		local isHandbook = self.viewParam and type(self.viewParam) == "table" and self.viewParam.fromHandbookView
 
-		CharacterController.instance:statCharacterData(StatEnum.EventName.ReadHeroItem, arg_33_0._heroId, nil, var_33_0, var_33_1)
+		CharacterController.instance:statCharacterData(StatEnum.EventName.ReadHeroItem, self._heroId, nil, duration, isHandbook)
 	end
 
-	arg_33_0._viewTime = nil
+	self._viewTime = nil
 end
 
-function var_0_0._setItemTitlePos(arg_34_0, arg_34_1, arg_34_2, arg_34_3, arg_34_4)
-	local var_34_0 = not string.nilorempty(arg_34_4) and string.split(arg_34_4, "\n") or {}
-	local var_34_1 = -1.18
-	local var_34_2 = -23.2
-	local var_34_3 = 13.2
-	local var_34_4 = -30.17
+function CharacterDataItemView:_setItemTitlePos(line1, line2, txtTitleEn, title)
+	local titleList = not string.nilorempty(title) and string.split(title, "\n") or {}
+	local targetLine1PosX = -1.18
+	local targetTitleEnPosX = -23.2
+	local targetLine1PosY = 13.2
+	local targetTitleEnPosY = -30.17
 
-	if GameUtil.getTabLen(var_34_0) > 1 then
-		local var_34_5 = {
+	if GameUtil.getTabLen(titleList) > 1 then
+		local line1PosX = {
 			-21.7,
 			-21.7,
 			-24.8,
 			-24.8
 		}
-		local var_34_6 = {
+		local line2PosX = {
 			62.1,
 			52.221,
 			60.6,
 			46.9
 		}
-		local var_34_7 = {
+		local titelEnPosX = {
 			-52.32,
 			-81.1,
 			-73.4,
 			-73.4
 		}
-		local var_34_8 = GameUtil.utf8len(GameUtil.trimInput(arg_34_4))
-		local var_34_9 = var_34_8 - 6 <= 4 and var_34_8 - 6 or 4
+		local titleLen = GameUtil.utf8len(GameUtil.trimInput(title))
+		local posIndex = titleLen - 6 <= 4 and titleLen - 6 or 4
 
-		var_34_1 = var_34_5[var_34_9]
-		var_34_2 = var_34_7[var_34_9]
-		var_34_3 = 30
-		var_34_4 = -47.03
+		targetLine1PosX = line1PosX[posIndex]
+		targetTitleEnPosX = titelEnPosX[posIndex]
+		targetLine1PosY = 30
+		targetTitleEnPosY = -47.03
 
-		local var_34_10 = var_34_6[var_34_9]
+		local targetLine2PosX = line2PosX[posIndex]
 
-		recthelper.setAnchorX(arg_34_2.transform, var_34_10)
+		recthelper.setAnchorX(line2.transform, targetLine2PosX)
 
-		arg_34_2.text = var_34_0[2]
+		line2.text = titleList[2]
 	else
-		arg_34_2.text = ""
+		line2.text = ""
 	end
 
-	arg_34_1.text = var_34_0[1]
+	line1.text = titleList[1]
 
-	recthelper.setAnchor(arg_34_1.transform, var_34_1, var_34_3)
-	recthelper.setAnchor(arg_34_3.transform, var_34_2, var_34_4)
+	recthelper.setAnchor(line1.transform, targetLine1PosX, targetLine1PosY)
+	recthelper.setAnchor(txtTitleEn.transform, targetTitleEnPosX, targetTitleEnPosY)
 end
 
-function var_0_0.onClose(arg_35_0)
-	gohelper.setActive(arg_35_0.viewGO, false)
-	arg_35_0:_statEnd()
+function CharacterDataItemView:onClose()
+	gohelper.setActive(self.viewGO, false)
+	self:_statEnd()
 end
 
-function var_0_0.onDestroyView(arg_36_0)
-	CharacterController.instance:unregisterCallback(CharacterEvent.HeroDataAddUnlockItemFail, arg_36_0._unlockItemCallbackFail, arg_36_0)
-	CharacterController.instance:unregisterCallback(CharacterEvent.HeroDataAddUnlockItem, arg_36_0._unlockItemCallback, arg_36_0)
+function CharacterDataItemView:onDestroyView()
+	CharacterController.instance:unregisterCallback(CharacterEvent.HeroDataAddUnlockItemFail, self._unlockItemCallbackFail, self)
+	CharacterController.instance:unregisterCallback(CharacterEvent.HeroDataAddUnlockItem, self._unlockItemCallback, self)
 
-	if arg_36_0._itemDrag then
-		arg_36_0._itemDrag:RemoveDragBeginListener()
-		arg_36_0._itemDrag:RemoveDragEndListener()
+	if self._itemDrag then
+		self._itemDrag:RemoveDragBeginListener()
+		self._itemDrag:RemoveDragEndListener()
 	end
 
-	arg_36_0._simagebg:UnLoadImage()
-	arg_36_0._simagecentericon:UnLoadImage()
-	arg_36_0._simagelefticon:UnLoadImage()
-	arg_36_0._simagerighticon:UnLoadImage()
-	arg_36_0._simagerighticon2:UnLoadImage()
-	arg_36_0._simagemask:UnLoadImage()
+	self._simagebg:UnLoadImage()
+	self._simagecentericon:UnLoadImage()
+	self._simagelefticon:UnLoadImage()
+	self._simagerighticon:UnLoadImage()
+	self._simagerighticon2:UnLoadImage()
+	self._simagemask:UnLoadImage()
 
-	for iter_36_0, iter_36_1 in ipairs(arg_36_0.itemList) do
-		iter_36_1.icon:UnLoadImage()
-		iter_36_1.treasurebtn:RemoveClickListener()
+	for _, item in ipairs(self.itemList) do
+		item.icon:UnLoadImage()
+		item.treasurebtn:RemoveClickListener()
 	end
 
-	if arg_36_0.pointItemList then
-		for iter_36_2, iter_36_3 in ipairs(arg_36_0.pointItemList) do
-			iter_36_3.click:RemoveClickListener()
+	if self.pointItemList then
+		for _, pointerItem in ipairs(self.pointItemList) do
+			pointerItem.click:RemoveClickListener()
 		end
 	end
 
-	if arg_36_0._tweenIds then
-		for iter_36_4, iter_36_5 in pairs(arg_36_0._tweenIds) do
-			ZProj.TweenHelper.KillById(iter_36_5)
+	if self._tweenIds then
+		for _, tweenId in pairs(self._tweenIds) do
+			ZProj.TweenHelper.KillById(tweenId)
 		end
 
-		arg_36_0._tweenIds = nil
+		self._tweenIds = nil
 	end
 
-	if arg_36_0.needShowPageBtn then
-		arg_36_0.btnLeftPage:RemoveClickListener()
-		arg_36_0.btnRightPage:RemoveClickListener()
-		arg_36_0.contentAnimatorEvent:RemoveAllEventListener()
+	if self.needShowPageBtn then
+		self.btnLeftPage:RemoveClickListener()
+		self.btnRightPage:RemoveClickListener()
+		self.contentAnimatorEvent:RemoveAllEventListener()
 	end
 end
 
-return var_0_0
+return CharacterDataItemView

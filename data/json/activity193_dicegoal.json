@@ -1,0 +1,74 @@
+[
+  {
+    "id": 19302001,
+    "hardType": 1,
+    "victoryrewards": "1#110603#3|1#110401#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "19302101",
+    "goalRange": "2#10",
+    "goalname": "目标1",
+    "goaldesc": "挑战目标描述1",
+    "mattername": "和目标1沟通",
+    "weight": 20
+  },
+  {
+    "id": 19302002,
+    "hardType": 1,
+    "victoryrewards": "1#110203#3|1#110102#3|1#110201#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "19302102#19302106",
+    "goalRange": "1#20",
+    "goalname": "目标2",
+    "goaldesc": "挑战目标描述2",
+    "mattername": "和目标2沟通",
+    "weight": 10
+  },
+  {
+    "id": 19302003,
+    "hardType": 1,
+    "victoryrewards": "1#110603#3|1#110401#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "",
+    "goalRange": "-1#5",
+    "goalname": "目标3",
+    "goaldesc": "挑战目标描述3",
+    "mattername": "和目标3沟通",
+    "weight": 30
+  },
+  {
+    "id": 19302004,
+    "hardType": 1,
+    "victoryrewards": "1#110203#3|1#110102#3|1#110201#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "19302102#19302103",
+    "goalRange": "-2#6",
+    "goalname": "目标4",
+    "goaldesc": "挑战目标描述4",
+    "mattername": "和目标4沟通",
+    "weight": 30
+  },
+  {
+    "id": 19302005,
+    "hardType": 2,
+    "victoryrewards": "1#110203#3|1#110102#3|1#110201#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "",
+    "goalRange": "1#10",
+    "goalname": "目标5",
+    "goaldesc": "挑战目标描述5",
+    "mattername": "和目标5沟通",
+    "weight": 20
+  },
+  {
+    "id": 19302006,
+    "hardType": 2,
+    "victoryrewards": "1#110603#3|1#110401#2",
+    "lossrewards": "1#110402#2",
+    "bindingDice": "19302107",
+    "goalRange": "2#8",
+    "goalname": "目标6",
+    "goaldesc": "挑战目标描述6",
+    "mattername": "和目标6沟通",
+    "weight": 10
+  }
+]

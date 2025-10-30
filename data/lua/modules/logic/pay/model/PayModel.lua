@@ -1,11 +1,13 @@
-﻿module("modules.logic.pay.model.PayModel", package.seeall)
+﻿-- chunkname: @modules/logic/pay/model/PayModel.lua
 
-local var_0_0 = LuaUtil.class("PayModel", PayModelBase, PayModel_OverseasImpl, PayModel_NativesImpl)
+module("modules.logic.pay.model.PayModel", package.seeall)
 
-function var_0_0.ctor(arg_1_0)
+local PayModel = LuaUtil.class("PayModel", PayModelBase, PayModel_OverseasImpl, PayModel_NativesImpl)
+
+function PayModel:ctor()
 	return
 end
 
-var_0_0.instance = var_0_0.New()
+PayModel.instance = PayModel.New()
 
-return var_0_0
+return PayModel

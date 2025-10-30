@@ -7756,5 +7756,113 @@
     "name": "",
     "avatar": "",
     "chessId": 0
+  },
+  {
+    "groupId": 52,
+    "id": 52001,
+    "type": 1,
+    "content": "很少有这么高规格的问话，有大人物专门调来了最新的测谎仪。现在，让我们第三次确认你所提供的内容。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52002,
+    "type": 2,
+    "content": "我会如实回答。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
+  },
+  {
+    "groupId": 52,
+    "id": 52003,
+    "type": 1,
+    "content": "重塑之手的成员罗西诱骗了他的学生，包括你的好友西莉亚。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52004,
+    "type": 2,
+    "content": "是的。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
+  },
+  {
+    "groupId": 52,
+    "id": 52005,
+    "type": 1,
+    "content": "你被迫参与到了重塑之手的活动中，他们控制了你。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52006,
+    "type": 2,
+    "content": "是的，我的意识被驱逐了。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
+  },
+  {
+    "groupId": 52,
+    "id": 52007,
+    "type": 1,
+    "content": "贝丽尔帮助你重新控制身体，并带你逃离了迷思海的溢流。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52008,
+    "type": 2,
+    "content": "是的，她救了我。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
+  },
+  {
+    "groupId": 52,
+    "id": 52009,
+    "type": 1,
+    "content": "整个过程中，你没有发现任何贝丽尔·布翁尼和重塑之手一起行动的情况。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52010,
+    "type": 2,
+    "content": "没有。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
+  },
+  {
+    "groupId": 52,
+    "id": 52011,
+    "type": 1,
+    "content": "此后直到现在，你没有发现贝丽尔·布翁尼与重塑之手以任何形式联络的迹象。",
+    "name": "执夜人",
+    "avatar": "631501",
+    "chessId": 1
+  },
+  {
+    "groupId": 52,
+    "id": 52012,
+    "type": 2,
+    "content": "我确信，没有。",
+    "name": "灰调蓝",
+    "avatar": "313529",
+    "chessId": 2
   }
 ]

@@ -1,67 +1,69 @@
-﻿module("modules.logic.pcInput.activityAdapter.BaseActivityAdapter", package.seeall)
+﻿-- chunkname: @modules/logic/pcInput/activityAdapter/BaseActivityAdapter.lua
 
-local var_0_0 = class("BaseActivityAdapter")
+module("modules.logic.pcInput.activityAdapter.BaseActivityAdapter", package.seeall)
 
-function var_0_0.ctor(arg_1_0)
-	arg_1_0.keytoFunction = {}
-	arg_1_0.activitid = nil
-	arg_1_0._registeredKey = {}
+local BaseActivityAdapter = class("BaseActivityAdapter")
+
+function BaseActivityAdapter:ctor()
+	self.keytoFunction = {}
+	self.activitid = nil
+	self._registeredKey = {}
 end
 
-function var_0_0.registerFunction(arg_2_0)
-	local var_2_0 = PCInputModel.instance:getActivityKeys(arg_2_0.activitid)
+function BaseActivityAdapter:registerFunction()
+	local keys = PCInputModel.instance:getActivityKeys(self.activitid)
 
-	if not var_2_0 then
+	if not keys then
 		return
 	end
 
-	arg_2_0._registeredKey = var_2_0
+	self._registeredKey = keys
 
-	for iter_2_0, iter_2_1 in pairs(var_2_0) do
-		PCInputController.instance:registerKey(iter_2_1[4], ZProj.PCInputManager.PCInputEvent.KeyUp)
+	for _, v in pairs(keys) do
+		PCInputController.instance:registerKey(v[4], ZProj.PCInputManager.PCInputEvent.KeyUp)
 	end
 end
 
-function var_0_0.unRegisterFunction(arg_3_0)
-	for iter_3_0, iter_3_1 in pairs(arg_3_0._registeredKey) do
-		PCInputController.instance:unregisterKey(iter_3_1[4], ZProj.PCInputManager.PCInputEvent.KeyUp)
+function BaseActivityAdapter:unRegisterFunction()
+	for _, v in pairs(self._registeredKey) do
+		PCInputController.instance:unregisterKey(v[4], ZProj.PCInputManager.PCInputEvent.KeyUp)
 	end
 
-	arg_3_0._registeredKey = {}
+	self._registeredKey = {}
 end
 
-function var_0_0.OnkeyUp(arg_4_0, arg_4_1)
-	local var_4_0 = PCInputModel.instance:getkeyidBykeyName(arg_4_0.activitid, arg_4_1)
+function BaseActivityAdapter:OnkeyUp(keyName)
+	local keyid = PCInputModel.instance:getkeyidBykeyName(self.activitid, keyName)
 
-	if not var_4_0 then
+	if not keyid then
 		return
 	end
 
-	local var_4_1 = arg_4_0.keytoFunction[var_4_0]
+	local func = self.keytoFunction[keyid]
 
-	if var_4_1 then
-		var_4_1()
+	if func then
+		func()
 	end
 end
 
-function var_0_0.OnkeyDown(arg_5_0, arg_5_1)
-	local var_5_0 = PCInputModel.instance:getkeyidBykeyName(arg_5_0.activitid, arg_5_1)
+function BaseActivityAdapter:OnkeyDown(keyName)
+	local keyid = PCInputModel.instance:getkeyidBykeyName(self.activitid, keyName)
 
-	if not var_5_0 then
+	if not keyid then
 		logError("keyName not exist in keyBinding")
 
 		return
 	end
 
-	local var_5_1 = arg_5_0.keytoFunction[var_5_0]
+	local func = self.keytoFunction[keyid]
 
-	if var_5_1 then
-		var_5_1()
+	if func then
+		func()
 	end
 end
 
-function var_0_0.destroy(arg_6_0)
-	arg_6_0:unRegisterFunction()
+function BaseActivityAdapter:destroy()
+	self:unRegisterFunction()
 end
 
-return var_0_0
+return BaseActivityAdapter

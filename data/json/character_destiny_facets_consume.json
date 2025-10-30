@@ -6,7 +6,10 @@
     "tend": 0,
     "icon": "",
     "facetsSort": 0,
-    "keyword": ""
+    "keyword": "",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 305201,
@@ -15,7 +18,10 @@
     "tend": 2,
     "icon": "305201",
     "facetsSort": 100,
-    "keyword": "反击#护盾"
+    "keyword": "反击#护盾",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300401,
@@ -24,7 +30,10 @@
     "tend": 1,
     "icon": "300401",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300402,
@@ -33,7 +42,10 @@
     "tend": 1,
     "icon": "300402",
     "facetsSort": 200,
-    "keyword": "额外行动#子弹"
+    "keyword": "额外行动#子弹",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 307201,
@@ -42,7 +54,10 @@
     "tend": 5,
     "icon": "307201",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 302001,
@@ -51,7 +66,10 @@
     "tend": 4,
     "icon": "302001",
     "facetsSort": 100,
-    "keyword": "辅助#仪式"
+    "keyword": "辅助#仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300301,
@@ -60,7 +78,10 @@
     "tend": 5,
     "icon": "300301",
     "facetsSort": 100,
-    "keyword": "石化"
+    "keyword": "石化",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300901,
@@ -69,7 +90,10 @@
     "tend": 3,
     "icon": "300901",
     "facetsSort": 100,
-    "keyword": "治疗#中毒"
+    "keyword": "治疗#中毒",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 305101,
@@ -78,7 +102,10 @@
     "tend": 1,
     "icon": "305101",
     "facetsSort": 100,
-    "keyword": "辅助#本源"
+    "keyword": "辅助#本源",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 305601,
@@ -87,7 +114,10 @@
     "tend": 1,
     "icon": "305601",
     "facetsSort": 100,
-    "keyword": "中毒"
+    "keyword": "中毒",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 304301,
@@ -96,7 +126,10 @@
     "tend": 4,
     "icon": "304301",
     "facetsSort": 100,
-    "keyword": "护盾#子弹"
+    "keyword": "护盾#子弹",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 304801,
@@ -105,7 +138,10 @@
     "tend": 4,
     "icon": "304801",
     "facetsSort": 100,
-    "keyword": "启示"
+    "keyword": "启示",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 304101,
@@ -114,7 +150,10 @@
     "tend": 4,
     "icon": "304101",
     "facetsSort": 100,
-    "keyword": "启示"
+    "keyword": "启示",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 306301,
@@ -123,7 +162,10 @@
     "tend": 4,
     "icon": "306301",
     "facetsSort": 100,
-    "keyword": "额外行动"
+    "keyword": "额外行动",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 303901,
@@ -132,7 +174,10 @@
     "tend": 5,
     "icon": "303901",
     "facetsSort": 100,
-    "keyword": "升阶#异常"
+    "keyword": "升阶#异常",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 306201,
@@ -141,7 +186,10 @@
     "tend": 1,
     "icon": "306201",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 304701,
@@ -150,7 +198,10 @@
     "tend": 3,
     "icon": "304701",
     "facetsSort": 100,
-    "keyword": "治疗#辅助"
+    "keyword": "治疗#辅助",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 307401,
@@ -159,7 +210,10 @@
     "tend": 4,
     "icon": "307401",
     "facetsSort": 200,
-    "keyword": "电能"
+    "keyword": "电能",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 307402,
@@ -168,7 +222,10 @@
     "tend": 4,
     "icon": "307402",
     "facetsSort": 100,
-    "keyword": "薪血"
+    "keyword": "薪血",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 308301,
@@ -177,7 +234,10 @@
     "tend": 1,
     "icon": "308301",
     "facetsSort": 100,
-    "keyword": "额外行动"
+    "keyword": "额外行动",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 308601,
@@ -186,7 +246,10 @@
     "tend": 1,
     "icon": "308601",
     "facetsSort": 100,
-    "keyword": "电能"
+    "keyword": "电能",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 302501,
@@ -195,7 +258,10 @@
     "tend": 5,
     "icon": "302501",
     "facetsSort": 100,
-    "keyword": "启示"
+    "keyword": "启示",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 305602,
@@ -204,7 +270,10 @@
     "tend": 1,
     "icon": "305602",
     "facetsSort": 200,
-    "keyword": "中毒"
+    "keyword": "中毒",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 308801,
@@ -213,7 +282,10 @@
     "tend": 4,
     "icon": "308801",
     "facetsSort": 100,
-    "keyword": "薪血"
+    "keyword": "薪血",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300302,
@@ -222,7 +294,10 @@
     "tend": 5,
     "icon": "300302",
     "facetsSort": 200,
-    "keyword": "升阶"
+    "keyword": "升阶",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 303201,
@@ -231,7 +306,10 @@
     "tend": 1,
     "icon": "303201",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 308401,
@@ -240,7 +318,10 @@
     "tend": 4,
     "icon": "308401",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 306501,
@@ -249,7 +330,10 @@
     "tend": 1,
     "icon": "306501",
     "facetsSort": 100,
-    "keyword": "升阶"
+    "keyword": "升阶",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 308701,
@@ -258,7 +342,10 @@
     "tend": 3,
     "icon": "308701",
     "facetsSort": 100,
-    "keyword": "升阶"
+    "keyword": "升阶",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 305102,
@@ -267,7 +354,10 @@
     "tend": 1,
     "icon": "305102",
     "facetsSort": 200,
-    "keyword": "薪血#仪式"
+    "keyword": "薪血#仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 309701,
@@ -276,7 +366,10 @@
     "tend": 1,
     "icon": "309701",
     "facetsSort": 100,
-    "keyword": "升阶"
+    "keyword": "升阶",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   },
   {
     "facetsId": 300701,
@@ -285,6 +378,45 @@
     "tend": 1,
     "icon": "300701",
     "facetsSort": 100,
-    "keyword": "仪式"
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
+  },
+  {
+    "facetsId": 307001,
+    "name": "目光包罗寰宇",
+    "consume": "1#620103#12|1#620102#40|1#620101#200|1#111005#3",
+    "tend": 1,
+    "icon": "307001",
+    "facetsSort": 100,
+    "keyword": "额外行动",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
+  },
+  {
+    "facetsId": 308101,
+    "name": "灵魂翩跹而眠",
+    "consume": "1#620103#12|1#620102#40|1#620101#200|1#111006#3",
+    "tend": 5,
+    "icon": "308101",
+    "facetsSort": 100,
+    "keyword": "余辉",
+    "type": 1,
+    "titleName": "",
+    "tag": "101#103#129"
+  },
+  {
+    "facetsId": 310001,
+    "name": "浮靡旧梦之声",
+    "consume": "1#620103#12|1#620102#40|1#620101#200|1#111007#3",
+    "tend": 1,
+    "icon": "310001",
+    "facetsSort": 100,
+    "keyword": "额外行动",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   }
 ]

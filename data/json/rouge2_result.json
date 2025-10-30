@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "desc": "在<color=#FFB052>▩1%s</color>难度中，你",
+    "priority": 0,
+    "trigger": "1",
+    "triggerParam": ""
+  },
+  {
+    "id": 2,
+    "type": 1,
+    "desc": "携带<color=#FFB052>▩1%s</color>药剂，",
+    "priority": 1,
+    "trigger": "2",
+    "triggerParam": ""
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "desc": "选择成为了<color=#FFB052>▩1%s</color>，",
+    "priority": 2,
+    "trigger": "3",
+    "triggerParam": ""
+  },
+  {
+    "id": 4,
+    "type": 1,
+    "desc": "后续转职为领路人<color=#FFB052>▩1%s</color>，",
+    "priority": 3,
+    "trigger": "4",
+    "triggerParam": ""
+  },
+  {
+    "id": 5,
+    "type": 1,
+    "desc": "你珍贵的伙伴▩1%s和你一起击败了BOSS",
+    "priority": 4,
+    "trigger": "5",
+    "triggerParam": "1"
+  },
+  {
+    "id": 6,
+    "type": 1,
+    "desc": "你珍贵的伙伴▩1%s和你一起击败了BOSS(失败)",
+    "priority": 5,
+    "trigger": "5",
+    "triggerParam": "2"
+  },
+  {
+    "id": 7,
+    "type": 2,
+    "desc": "一共经历了<color=#FFB052>▩1%s</color>个检定事件，其中成功检定次数为<color=#FFB052>▩2%s</color>次，你最常使用的检定属性为<color=#FFB052>▩3%s</color>",
+    "priority": 0,
+    "trigger": "6",
+    "triggerParam": " "
+  },
+  {
+    "id": 8,
+    "type": 3,
+    "desc": "行迹遍布<color=#FFB052>▩1%s</color>个节点，收获了<color=#FFB052>▩2%s</color>枚喳喳叫的金雀子儿",
+    "priority": 0,
+    "trigger": "7",
+    "triggerParam": ""
+  },
+  {
+    "id": 9,
+    "type": 6,
+    "desc": "毕生渴求之物已在此中，俯首亦为胜利",
+    "priority": 1,
+    "trigger": "13",
+    "triggerParam": "101"
+  },
+  {
+    "id": 10,
+    "type": 6,
+    "desc": "毕生渴求之物已在此中，其稀缺价值即刻使它的拥有者赢取了应有的优容",
+    "priority": 1,
+    "trigger": "13",
+    "triggerParam": "102"
+  },
+  {
+    "id": 11,
+    "type": 6,
+    "desc": "在与<color=#FFB052>剃刀小队</color>的战斗中，乐曲停奏，前路尽失",
+    "priority": 1,
+    "trigger": "14",
+    "triggerParam": "101"
+  },
+  {
+    "id": 12,
+    "type": 6,
+    "desc": "在与<color=#FFB052>战争的从役</color>的战斗中，乐曲停奏，前路尽失",
+    "priority": 1,
+    "trigger": "14",
+    "triggerParam": "102"
+  },
+  {
+    "id": 13,
+    "type": 6,
+    "desc": "在名为<color=#FFB052>▩1%s</color>的战斗中，乐曲停奏，前路尽失",
+    "priority": 1,
+    "trigger": "15",
+    "triggerParam": ""
+  },
+  {
+    "id": 14,
+    "type": 6,
+    "desc": "乐曲停奏，前路尽失",
+    "priority": 1,
+    "trigger": "16",
+    "triggerParam": ""
+  },
+  {
+    "id": 15,
+    "type": 6,
+    "desc": "属于塞梅尔维斯的故事不会完结",
+    "priority": 1,
+    "trigger": "13",
+    "triggerParam": "103"
+  },
+  {
+    "id": 16,
+    "type": 6,
+    "desc": "塞梅尔维斯迷失在灵性的漩涡中",
+    "priority": 1,
+    "trigger": "14",
+    "triggerParam": "103"
+  },
+  {
+    "id": 17,
+    "type": 6,
+    "desc": "她成功与一切和解，是休息的时候了",
+    "priority": 1,
+    "trigger": "13",
+    "triggerParam": "104"
+  },
+  {
+    "id": 18,
+    "type": 6,
+    "desc": "不用害怕，没有不会放晴的雨",
+    "priority": 1,
+    "trigger": "14",
+    "triggerParam": "104"
+  }
+]

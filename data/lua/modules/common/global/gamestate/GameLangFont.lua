@@ -1,216 +1,221 @@
-﻿module("modules.common.global.gamestate.GameLangFont", package.seeall)
+﻿-- chunkname: @modules/common/global/gamestate/GameLangFont.lua
 
-local var_0_0 = class("GameLangFont")
-local var_0_1 = 1
-local var_0_2 = 2
-local var_0_3 = 3
+module("modules.common.global.gamestate.GameLangFont", package.seeall)
 
-function var_0_0.ctor(arg_1_0)
+local GameLangFont = class("GameLangFont")
+local NotLoad = 1
+local Loading = 2
+local Loaded = 3
+
+function GameLangFont:ctor()
 	if not LangSettings.instance:isOverseas() then
 		return
 	end
 
-	arg_1_0._hasInit = true
-	arg_1_0._loadStatus = var_0_1
-	arg_1_0._SettingStatus = var_0_1
-	arg_1_0._registerFontDict = {}
-	arg_1_0._id2TmpFontUrlDict = {}
-	arg_1_0._id2TextFontUrlDict = {}
-	arg_1_0._id2TmpFontAssetDict = {}
-	arg_1_0._id2TextFontAssetDict = {}
+	self._hasInit = true
+	self._loadStatus = NotLoad
+	self._SettingStatus = NotLoad
+	self._registerFontDict = {}
+	self._id2TmpFontUrlDict = {}
+	self._id2TextFontUrlDict = {}
+	self._id2TmpFontAssetDict = {}
+	self._id2TextFontAssetDict = {}
 
-	arg_1_0:_loadFontAsset()
-	ZProj.LangFontAssetMgr.Instance:SetLuaCallback(arg_1_0._callback, arg_1_0)
+	self:_loadFontAsset()
+	ZProj.LangFontAssetMgr.Instance:SetLuaCallback(self._callback, self)
 end
 
-function var_0_0._callback(arg_2_0, arg_2_1, arg_2_2)
-	if arg_2_2 then
-		arg_2_0._registerFontDict[arg_2_1] = true
+function GameLangFont:_callback(langFont, isRegister)
+	if isRegister then
+		self._registerFontDict[langFont] = true
 
-		if arg_2_0._loadStatus == var_0_3 then
-			arg_2_0:_setFontAsset(arg_2_1)
+		if self._loadStatus == Loaded then
+			self:_setFontAsset(langFont)
 		else
-			arg_2_0:_loadFontAsset()
+			self:_loadFontAsset()
 		end
 	else
-		arg_2_0._registerFontDict[arg_2_1] = nil
+		self._registerFontDict[langFont] = nil
 
-		local var_2_0 = arg_2_1.id
+		local tmpTextId = langFont.id
 
-		if var_2_0 > 0 and (not string.nilorempty(arg_2_1.str1) or arg_2_1.instanceMaterial) then
-			local var_2_1 = arg_2_1.tmpText
-			local var_2_2 = arg_2_0._id2TmpFontAssetDict[var_2_0]
+		if tmpTextId > 0 and (not string.nilorempty(langFont.str1) or langFont.instanceMaterial) then
+			local tmpText = langFont.tmpText
+			local fontAsset = self._id2TmpFontAssetDict[tmpTextId]
 
-			if var_2_1 and (var_2_2 == nil or var_2_2.material ~= var_2_1.fontSharedMaterial) then
-				gohelper.destroy(var_2_1.fontSharedMaterial)
+			if tmpText and (fontAsset == nil or fontAsset.material ~= tmpText.fontSharedMaterial) then
+				gohelper.destroy(tmpText.fontSharedMaterial)
 			end
 		end
 	end
 end
 
-function var_0_0.changeFontAsset(arg_3_0, arg_3_1, arg_3_2)
-	if not arg_3_0._hasInit then
-		if arg_3_1 then
-			arg_3_1(arg_3_2)
+function GameLangFont:changeFontAsset(callback, callbackObj)
+	if not self._hasInit then
+		if callback then
+			callback(callbackObj)
 		end
 
 		return
 	end
 
-	arg_3_0._loadStatus = var_0_1
-	arg_3_0._loadFontAssetCallback = arg_3_1
-	arg_3_0._loadFontAssetcallbackObj = arg_3_2
+	self._loadStatus = NotLoad
+	self._loadFontAssetCallback = callback
+	self._loadFontAssetcallbackObj = callbackObj
 
-	arg_3_0:_loadFontAsset()
+	self:_loadFontAsset()
 end
 
-function var_0_0._loadFontAsset(arg_4_0)
-	if arg_4_0._loadStatus ~= var_0_1 then
+function GameLangFont:_loadFontAsset()
+	if self._loadStatus ~= NotLoad then
 		return
 	end
 
-	arg_4_0._loadStatus = var_0_2
+	self._loadStatus = Loading
 
-	local var_4_0 = {}
+	local fontUrlList = {}
 
-	arg_4_0._id2TmpFontUrlDict = {}
-	arg_4_0._id2TextFontUrlDict = {}
+	self._id2TmpFontUrlDict = {}
+	self._id2TextFontUrlDict = {}
 
-	local var_4_1 = LangSettings.shortcutTab[GameConfig:GetCurLangType()]
-	local var_4_2 = lua_setting_lang.configDict[var_4_1]
+	local lang = LangSettings.shortcutTab[GameConfig:GetCurLangType()]
+	local config = lua_setting_lang.configDict[lang]
 
-	for iter_4_0 = 1, 2 do
-		local var_4_3 = "fontasset" .. iter_4_0
+	for i = 1, 2 do
+		local fontname = "fontasset" .. i
 
-		if not string.nilorempty(var_4_2[var_4_3]) then
-			local var_4_4 = string.format("font/meshpro/%s.asset", var_4_2[var_4_3])
+		if not string.nilorempty(config[fontname]) then
+			local url = string.format("font/meshpro/%s.asset", config[fontname])
 
-			table.insert(var_4_0, var_4_4)
+			table.insert(fontUrlList, url)
 
-			arg_4_0._id2TmpFontUrlDict[iter_4_0] = var_4_4
+			self._id2TmpFontUrlDict[i] = url
 		end
 
-		local var_4_5 = "textfontasset" .. iter_4_0
+		fontname = "textfontasset" .. i
 
-		if not string.nilorempty(var_4_2[var_4_5]) then
-			local var_4_6 = string.format("font/%s", var_4_2[var_4_5])
+		if not string.nilorempty(config[fontname]) then
+			local url = string.format("font/%s", config[fontname])
 
-			table.insert(var_4_0, var_4_6)
+			table.insert(fontUrlList, url)
 
-			arg_4_0._id2TextFontUrlDict[iter_4_0] = var_4_6
+			self._id2TextFontUrlDict[i] = url
 		end
 	end
 
-	if arg_4_0._loader then
-		arg_4_0._loader:dispose()
+	if self._loader then
+		self._loader:dispose()
 	end
 
-	arg_4_0._loader = MultiAbLoader.New()
+	self._loader = MultiAbLoader.New()
 
-	arg_4_0._loader:setPathList(var_4_0)
-	arg_4_0._loader:startLoad(arg_4_0._onFontLoaded, arg_4_0)
+	self._loader:setPathList(fontUrlList)
+	self._loader:startLoad(self._onFontLoaded, self)
 end
 
-function var_0_0._onFontLoaded(arg_5_0)
-	arg_5_0._loadStatus = var_0_3
-	arg_5_0._id2TmpFontAssetDict = {}
-	arg_5_0._id2TextFontAssetDict = {}
+function GameLangFont:_onFontLoaded()
+	self._loadStatus = Loaded
+	self._id2TmpFontAssetDict = {}
+	self._id2TextFontAssetDict = {}
 
-	local var_5_0 = arg_5_0._loader:getAssetItemDict()
+	local fontAssetDict = self._loader:getAssetItemDict()
 
-	for iter_5_0, iter_5_1 in pairs(var_5_0) do
-		for iter_5_2, iter_5_3 in pairs(arg_5_0._id2TmpFontUrlDict) do
-			if iter_5_3 == iter_5_0 then
-				arg_5_0._id2TmpFontAssetDict[iter_5_2] = iter_5_1:GetResource()
+	for url, assetItem in pairs(fontAssetDict) do
+		for id, url1 in pairs(self._id2TmpFontUrlDict) do
+			if url1 == url then
+				self._id2TmpFontAssetDict[id] = assetItem:GetResource()
 			end
 		end
 
-		for iter_5_4, iter_5_5 in pairs(arg_5_0._id2TextFontUrlDict) do
-			if iter_5_5 == iter_5_0 then
-				arg_5_0._id2TextFontAssetDict[iter_5_4] = iter_5_1:GetResource()
+		for id, url1 in pairs(self._id2TextFontUrlDict) do
+			if url1 == url then
+				self._id2TextFontAssetDict[id] = assetItem:GetResource()
 			end
 		end
 	end
 
-	for iter_5_6, iter_5_7 in pairs(arg_5_0._registerFontDict) do
-		arg_5_0:_setFontAsset(iter_5_6)
+	for langfont, value in pairs(self._registerFontDict) do
+		self:_setFontAsset(langfont)
 	end
 
-	if arg_5_0._loadFontAssetCallback then
-		arg_5_0._loadFontAssetCallback(arg_5_0._loadFontAssetcallbackObj)
+	if self._loadFontAssetCallback then
+		self._loadFontAssetCallback(self._loadFontAssetcallbackObj)
 	end
 
-	arg_5_0._loadFontAssetCallback = nil
-	arg_5_0._loadFontAssetcallbackObj = nil
+	self._loadFontAssetCallback = nil
+	self._loadFontAssetcallbackObj = nil
 end
 
-function var_0_0._setFontAsset(arg_6_0, arg_6_1)
-	if gohelper.isNil(arg_6_1) then
+function GameLangFont:_setFontAsset(langFont)
+	if gohelper.isNil(langFont) then
 		return
 	end
 
-	local var_6_0 = arg_6_1.id
+	local tmpTextId = langFont.id
 
-	if var_6_0 > 0 then
-		local var_6_1 = arg_6_1.tmpText
+	if tmpTextId > 0 then
+		local tmpText = langFont.tmpText
 
-		if var_6_1 then
-			local var_6_2 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+		if tmpText then
+			local fontAsset = self._id2TmpFontAssetDict[tmpTextId]
 
-			if var_6_2 then
-				var_6_1.font = var_6_2
+			if fontAsset then
+				tmpText.font = fontAsset
 			end
 
-			local var_6_3 = arg_6_1.str1
+			local outlineColorHex = langFont.str1
 
-			if not string.nilorempty(var_6_3) or not string.nilorempty(arg_6_1.str2) then
-				arg_6_1.instanceMaterial = true
+			if not string.nilorempty(outlineColorHex) or not string.nilorempty(langFont.str2) then
+				langFont.instanceMaterial = true
 			end
 
-			local var_6_4 = var_6_1.fontSharedMaterial
+			local fontSharedMaterial = tmpText.fontSharedMaterial
 
-			if arg_6_1.instanceMaterial then
-				var_6_4 = UnityEngine.Object.Instantiate(var_6_1.fontSharedMaterial)
+			if langFont.instanceMaterial then
+				fontSharedMaterial = UnityEngine.Object.Instantiate(tmpText.fontSharedMaterial)
 			end
 
-			if not string.nilorempty(var_6_3) then
-				local var_6_5 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_3)
+			if not string.nilorempty(outlineColorHex) then
+				local color = SLFramework.UGUI.GuiHelper.ParseColor(outlineColorHex)
+				local color32 = UnityEngine.Color32.New(color.r * 255, color.g * 255, color.b * 255, color.a * 255)
 
-				var_6_1.outlineColor = UnityEngine.Color32.New(var_6_5.r * 255, var_6_5.g * 255, var_6_5.b * 255, var_6_5.a * 255), var_6_4:EnableKeyword("OUTLINE_ON")
-				var_6_1.outlineWidth = arg_6_1.int1 / 1000
+				fontSharedMaterial:EnableKeyword("OUTLINE_ON")
+
+				tmpText.outlineColor = color32
+				tmpText.outlineWidth = langFont.int1 / 1000
 			end
 
-			if not string.nilorempty(arg_6_1.str2) then
-				local var_6_6 = string.split(arg_6_1.str2, "|||")
-				local var_6_7 = SLFramework.UGUI.GuiHelper.ParseColor(var_6_6[1])
+			if not string.nilorempty(langFont.str2) then
+				local underlayInfo = string.split(langFont.str2, "|||")
+				local color = SLFramework.UGUI.GuiHelper.ParseColor(underlayInfo[1])
 
-				var_6_4:EnableKeyword("UNDERLAY_ON")
-				var_6_4:SetFloat("_UnderlayOffsetX", tonumber(var_6_6[2]))
-				var_6_4:SetFloat("_UnderlayOffsetY", tonumber(var_6_6[3]))
-				var_6_4:SetFloat("_UnderlayDilate", tonumber(var_6_6[4]))
-				var_6_4:SetFloat("_UnderlaySoftness", tonumber(var_6_6[5]))
-				var_6_4:SetColor("_UnderlayColor", var_6_7)
+				fontSharedMaterial:EnableKeyword("UNDERLAY_ON")
+				fontSharedMaterial:SetFloat("_UnderlayOffsetX", tonumber(underlayInfo[2]))
+				fontSharedMaterial:SetFloat("_UnderlayOffsetY", tonumber(underlayInfo[3]))
+				fontSharedMaterial:SetFloat("_UnderlayDilate", tonumber(underlayInfo[4]))
+				fontSharedMaterial:SetFloat("_UnderlaySoftness", tonumber(underlayInfo[5]))
+				fontSharedMaterial:SetColor("_UnderlayColor", color)
 			end
 
-			var_6_1.fontSharedMaterial = var_6_4
+			tmpText.fontSharedMaterial = fontSharedMaterial
 		else
-			local var_6_8 = arg_6_1.tmpInputText
+			local TMPInputField = langFont.tmpInputText
 
-			if var_6_8 then
-				local var_6_9 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+			if TMPInputField then
+				local fontAsset = self._id2TmpFontAssetDict[tmpTextId]
 
-				if var_6_9 then
-					var_6_8.fontAsset = var_6_9
+				if fontAsset then
+					TMPInputField.fontAsset = fontAsset
 				end
 			end
 
-			local var_6_10 = arg_6_1.tmpTextScene
+			local tmpTextScene = langFont.tmpTextScene
 
-			if var_6_10 then
-				local var_6_11 = arg_6_0._id2TmpFontAssetDict[var_6_0]
+			if tmpTextScene then
+				local fontAsset = self._id2TmpFontAssetDict[tmpTextId]
 
-				if var_6_11 then
-					var_6_10.font = var_6_11
+				if fontAsset then
+					tmpTextScene.font = fontAsset
 				end
 			end
 		end
@@ -218,62 +223,62 @@ function var_0_0._setFontAsset(arg_6_0, arg_6_1)
 		return
 	end
 
-	local var_6_12 = arg_6_1.textId
+	local textId = langFont.textId
 
-	if var_6_12 > 0 then
-		local var_6_13 = arg_6_1.text
+	if textId > 0 then
+		local text = langFont.text
 
-		if var_6_13 then
-			local var_6_14 = arg_6_0._id2TextFontAssetDict[var_6_12]
+		if text then
+			local fontAsset = self._id2TextFontAssetDict[textId]
 
-			if var_6_14 then
-				var_6_13.font = var_6_14
+			if fontAsset then
+				text.font = fontAsset
 			end
 		end
 	end
 end
 
-function var_0_0.ControlDoubleEn(arg_7_0)
-	if not arg_7_0._hasInit then
+function GameLangFont:ControlDoubleEn()
+	if not self._hasInit then
 		return
 	end
 
-	local var_7_0 = ViewMgr.instance:getUIRoot()
+	local root = ViewMgr.instance:getUIRoot()
 
-	arg_7_0.languageMgr = SLFramework.LanguageMgr.Instance
+	self.languageMgr = SLFramework.LanguageMgr.Instance
 
-	local var_7_1 = var_7_0:GetComponentsInChildren(typeof(SLFramework.LangCaptions), true)
+	local arrays = root:GetComponentsInChildren(typeof(SLFramework.LangCaptions), true)
 
-	arg_7_0._comps = {}
+	self._comps = {}
 
-	ZProj.AStarPathBridge.ArrayToLuaTable(var_7_1, arg_7_0._comps)
-	TaskDispatcher.runRepeat(arg_7_0._onRepectSetEnActive, arg_7_0, 0)
+	ZProj.AStarPathBridge.ArrayToLuaTable(arrays, self._comps)
+	TaskDispatcher.runRepeat(self._onRepectSetEnActive, self, 0)
 end
 
-function var_0_0._onRepectSetEnActive(arg_8_0)
-	for iter_8_0 = 1, 100 do
-		if #arg_8_0._comps > 0 then
-			local var_8_0 = arg_8_0._comps[#arg_8_0._comps]
+function GameLangFont:_onRepectSetEnActive()
+	for i = 1, 100 do
+		if #self._comps > 0 then
+			local captionsComInfo = self._comps[#self._comps]
 
-			table.remove(arg_8_0._comps, #arg_8_0._comps)
+			table.remove(self._comps, #self._comps)
 
-			if not gohelper.isNil(var_8_0) then
-				arg_8_0.languageMgr:ApplyLangCaptions(var_8_0)
+			if not gohelper.isNil(captionsComInfo) then
+				self.languageMgr:ApplyLangCaptions(captionsComInfo)
 			end
 		end
 	end
 
-	if #arg_8_0._comps == 0 then
-		arg_8_0:_stopSetEnActive()
+	if #self._comps == 0 then
+		self:_stopSetEnActive()
 	end
 end
 
-function var_0_0._stopSetEnActive(arg_9_0)
-	TaskDispatcher.cancelTask(arg_9_0._onRepectSetEnActive, arg_9_0)
+function GameLangFont:_stopSetEnActive()
+	TaskDispatcher.cancelTask(self._onRepectSetEnActive, self)
 
-	if arg_9_0._comps then
-		arg_9_0._comps = nil
+	if self._comps then
+		self._comps = nil
 	end
 end
 
-return var_0_0
+return GameLangFont

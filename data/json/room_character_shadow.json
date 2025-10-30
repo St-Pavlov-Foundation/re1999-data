@@ -338,5 +338,35 @@
     "skinId": 300731,
     "animName": "interact",
     "shadow": 1
+  },
+  {
+    "skinId": 313401,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 313402,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 313501,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 313502,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 307004,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 308004,
+    "animName": "interact",
+    "shadow": 1
   }
 ]

@@ -4109,5 +4109,133 @@
     "levels": [
       23002
     ]
+  },
+  {
+    "id": 3201,
+    "name": "§尤提姆图鉴场景",
+    "nameen": "§UdimoScene",
+    "levels": [
+      80101
+    ]
+  },
+  {
+    "id": 328,
+    "name": "空中巴黎",
+    "nameen": "",
+    "levels": [
+      32801
+    ]
+  },
+  {
+    "id": 329,
+    "name": "空中巴黎（boss战）",
+    "nameen": "",
+    "levels": [
+      32901
+    ]
+  },
+  {
+    "id": 330,
+    "name": "宴会厅",
+    "nameen": "",
+    "levels": [
+      33001
+    ]
+  },
+  {
+    "id": 331,
+    "name": "地下墓穴",
+    "nameen": "",
+    "levels": [
+      33101
+    ]
+  },
+  {
+    "id": 332,
+    "name": "巴黎街道",
+    "nameen": "",
+    "levels": [
+      33201
+    ]
+  },
+  {
+    "id": 333,
+    "name": "水晶工坊陈列室",
+    "nameen": "",
+    "levels": [
+      33301
+    ]
+  },
+  {
+    "id": 32801,
+    "name": "埃菲尔铁塔",
+    "nameen": "Eiffel Tower",
+    "levels": [
+      32801
+    ]
+  },
+  {
+    "id": 32901,
+    "name": "埃菲尔铁塔",
+    "nameen": "Eiffel Tower",
+    "levels": [
+      32901
+    ]
+  },
+  {
+    "id": 33001,
+    "name": "宴会厅",
+    "nameen": "Banquet Hall",
+    "levels": [
+      33001
+    ]
+  },
+  {
+    "id": 33101,
+    "name": "地下墓穴",
+    "nameen": "The Catacombs",
+    "levels": [
+      33101
+    ]
+  },
+  {
+    "id": 33102,
+    "name": "地下墓穴·秘密房间",
+    "nameen": "Secret Chamber, Catacombs",
+    "levels": [
+      33101
+    ]
+  },
+  {
+    "id": 33201,
+    "name": "巴黎街道",
+    "nameen": "Street, Paris",
+    "levels": [
+      33201
+    ]
+  },
+  {
+    "id": 33202,
+    "name": "夜间咖啡馆",
+    "nameen": "Cafe, Night",
+    "levels": [
+      33201
+    ]
+  },
+  {
+    "id": 33203,
+    "name": "夜间街道",
+    "nameen": "Street, Night",
+    "levels": [
+      33201
+    ]
+  },
+  {
+    "id": 33301,
+    "name": "水晶工房·入口走廊",
+    "nameen": "Hallway, Parlor of Crystals",
+    "levels": [
+      33301
+    ]
   }
 ]

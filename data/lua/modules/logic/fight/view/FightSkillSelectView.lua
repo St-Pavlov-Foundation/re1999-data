@@ -1,250 +1,253 @@
-﻿module("modules.logic.fight.view.FightSkillSelectView", package.seeall)
+﻿-- chunkname: @modules/logic/fight/view/FightSkillSelectView.lua
 
-local var_0_0 = class("FightSkillSelectView", BaseView)
-local var_0_1 = SLFramework.UGUI.UILongPressListener
+module("modules.logic.fight.view.FightSkillSelectView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._clickBlock = gohelper.findChildClick(arg_1_0.viewGO, "clickBlock")
-	arg_1_0._clickBlockTransform = arg_1_0._clickBlock:GetComponent(gohelper.Type_RectTransform)
-	arg_1_0._longPress = var_0_1.Get(arg_1_0._clickBlock.gameObject)
-	arg_1_0._guideClickObj = gohelper.findChild(arg_1_0.viewGO, "guideClick")
+local FightSkillSelectView = class("FightSkillSelectView", BaseView)
+local UILongPressListener = SLFramework.UGUI.UILongPressListener
 
-	gohelper.setActive(arg_1_0._guideClickObj, false)
+function FightSkillSelectView:onInitView()
+	self._clickBlock = gohelper.findChildClick(self.viewGO, "clickBlock")
+	self._clickBlockTransform = self._clickBlock:GetComponent(gohelper.Type_RectTransform)
+	self._longPress = UILongPressListener.Get(self._clickBlock.gameObject)
+	self._guideClickObj = gohelper.findChild(self.viewGO, "guideClick")
 
-	arg_1_0._guideClickObj.name = "guideClick"
-	arg_1_0._guideClickList = {}
-	arg_1_0._containerGO = arg_1_0.viewGO
-	arg_1_0._containerTr = arg_1_0._containerGO.transform
-	arg_1_0._imgSelectGO = gohelper.findChild(arg_1_0.viewGO, "imgSkillSelect")
-	arg_1_0._imgSelectTr = arg_1_0._imgSelectGO.transform
-	arg_1_0._imgSelectAnimator = arg_1_0._containerGO:GetComponent(typeof(UnityEngine.Animator))
+	gohelper.setActive(self._guideClickObj, false)
 
-	gohelper.setActive(arg_1_0._containerGO, false)
+	self._guideClickObj.name = "guideClick"
+	self._guideClickList = {}
+	self._containerGO = self.viewGO
+	self._containerTr = self._containerGO.transform
+	self._imgSelectGO = gohelper.findChild(self.viewGO, "imgSkillSelect")
+	self._imgSelectTr = self._imgSelectGO.transform
+	self._imgSelectAnimator = self._containerGO:GetComponent(typeof(UnityEngine.Animator))
 
-	arg_1_0.showUI = true
-	arg_1_0.entityVisible = true
+	gohelper.setActive(self._containerGO, false)
 
-	arg_1_0:_setSelectGOActive(false)
+	self.showUI = true
+	self.entityVisible = true
 
-	arg_1_0.started = nil
+	self:_setSelectGOActive(false)
 
-	arg_1_0._clickBlock:AddClickListener(arg_1_0._onClick, arg_1_0)
-	arg_1_0._clickBlock:AddClickDownListener(arg_1_0._onClickDown, arg_1_0)
-	arg_1_0._clickBlock:AddClickUpListener(arg_1_0._onClickUp, arg_1_0)
-	arg_1_0._longPress:AddLongPressListener(arg_1_0._onLongPress, arg_1_0)
+	self.started = nil
 
-	arg_1_0._pressTab = {
+	self._clickBlock:AddClickListener(self._onClick, self)
+	self._clickBlock:AddClickDownListener(self._onClickDown, self)
+	self._clickBlock:AddClickUpListener(self._onClickUp, self)
+	self._longPress:AddLongPressListener(self._onLongPress, self)
+
+	self._pressTab = {
 		0.5,
 		99999
 	}
 
-	arg_1_0._longPress:SetLongPressTime(arg_1_0._pressTab)
+	self._longPress:SetLongPressTime(self._pressTab)
 end
 
-function var_0_0.addEvents(arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, arg_2_0._onStartSequenceFinish, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnCameraFocusChanged, arg_2_0.onCameraFocusChanged, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnEnemyActionStatusChange, arg_2_0.onEnemyActionStatusChange, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, arg_2_0._onRoundSequenceFinish, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.StartReplay, arg_2_0._removeAllEvent, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.SetIsShowUI, arg_2_0._setIsShowUI, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnRestartStageBefore, arg_2_0._onRestartStage, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnSkillPlayStart, arg_2_0._onSkillPlayStart, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, arg_2_0._onSkillTimeLineDone, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, arg_2_0._setEntityVisibleByTimeline, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnBeginWave, arg_2_0._onBeginWave, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.EntityDeadFinish, arg_2_0.onEntityDeadFinish, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.StageChanged, arg_2_0.onStageChanged, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.GuideCreateClickBySkinId, arg_2_0._onGuideCreateClickBySkinId, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.GuideReleaseClickBySkilId, arg_2_0._onGuideReleaseClickBySkilId, arg_2_0)
-	arg_2_0:addEventCb(FightController.instance, FightEvent.OnChangeEntity, arg_2_0.onChangeEntity, arg_2_0)
+function FightSkillSelectView:addEvents()
+	self:addEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, self._onStartSequenceFinish, self)
+	self:addEventCb(FightController.instance, FightEvent.OnCameraFocusChanged, self.onCameraFocusChanged, self)
+	self:addEventCb(FightController.instance, FightEvent.OnEnemyActionStatusChange, self.onEnemyActionStatusChange, self)
+	self:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, self._onRoundSequenceFinish, self)
+	self:addEventCb(FightController.instance, FightEvent.StartReplay, self._removeAllEvent, self)
+	self:addEventCb(FightController.instance, FightEvent.SetIsShowUI, self._setIsShowUI, self)
+	self:addEventCb(FightController.instance, FightEvent.OnRestartStageBefore, self._onRestartStage, self)
+	self:addEventCb(FightController.instance, FightEvent.OnSkillPlayStart, self._onSkillPlayStart, self)
+	self:addEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, self._onSkillTimeLineDone, self)
+	self:addEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, self._setEntityVisibleByTimeline, self)
+	self:addEventCb(FightController.instance, FightEvent.OnBeginWave, self._onBeginWave, self)
+	self:addEventCb(FightController.instance, FightEvent.EntityDeadFinish, self.onEntityDeadFinish, self)
+	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChanged, self)
+	self:addEventCb(FightController.instance, FightEvent.GuideCreateClickBySkinId, self._onGuideCreateClickBySkinId, self)
+	self:addEventCb(FightController.instance, FightEvent.GuideReleaseClickBySkilId, self._onGuideReleaseClickBySkilId, self)
+	self:addEventCb(FightController.instance, FightEvent.OnChangeEntity, self.onChangeEntity, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, arg_3_0._onStartSequenceFinish, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnCameraFocusChanged, arg_3_0.onCameraFocusChanged, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnEnemyActionStatusChange, arg_3_0.onEnemyActionStatusChange, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, arg_3_0._onRoundSequenceFinish, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.StartReplay, arg_3_0._removeAllEvent, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.SetIsShowUI, arg_3_0._setIsShowUI, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnRestartStageBefore, arg_3_0._onRestartStage, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnSkillPlayStart, arg_3_0._onSkillPlayStart, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, arg_3_0._onSkillTimeLineDone, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, arg_3_0._setEntityVisibleByTimeline, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnBeginWave, arg_3_0._onBeginWave, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.EntityDeadFinish, arg_3_0.onEntityDeadFinish, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.StageChanged, arg_3_0.onStageChanged, arg_3_0)
-	arg_3_0:removeEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelect, arg_3_0.OnKeySelect, arg_3_0)
-	arg_3_0:removeEventCb(FightController.instance, FightEvent.OnChangeEntity, arg_3_0.onChangeEntity, arg_3_0)
-	arg_3_0._clickBlock:RemoveClickListener()
-	arg_3_0._clickBlock:RemoveClickDownListener()
-	arg_3_0._clickBlock:RemoveClickUpListener()
-	arg_3_0._longPress:RemoveLongPressListener()
+function FightSkillSelectView:removeEvents()
+	self:removeEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, self._onStartSequenceFinish, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnCameraFocusChanged, self.onCameraFocusChanged, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnEnemyActionStatusChange, self.onEnemyActionStatusChange, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, self._onRoundSequenceFinish, self)
+	self:removeEventCb(FightController.instance, FightEvent.StartReplay, self._removeAllEvent, self)
+	self:removeEventCb(FightController.instance, FightEvent.SetIsShowUI, self._setIsShowUI, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnRestartStageBefore, self._onRestartStage, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnSkillPlayStart, self._onSkillPlayStart, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, self._onSkillTimeLineDone, self)
+	self:removeEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, self._setEntityVisibleByTimeline, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnBeginWave, self._onBeginWave, self)
+	self:removeEventCb(FightController.instance, FightEvent.EntityDeadFinish, self.onEntityDeadFinish, self)
+	self:removeEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChanged, self)
+	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelect, self.OnKeySelect, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnChangeEntity, self.onChangeEntity, self)
+	self._clickBlock:RemoveClickListener()
+	self._clickBlock:RemoveClickDownListener()
+	self._clickBlock:RemoveClickUpListener()
+	self._longPress:RemoveLongPressListener()
 
-	for iter_3_0, iter_3_1 in ipairs(arg_3_0._guideClickList) do
-		local var_3_0 = iter_3_1.click
+	for i, v in ipairs(self._guideClickList) do
+		local click = v.click
 
-		var_3_0:RemoveClickListener()
-		var_3_0:RemoveClickDownListener()
-		var_3_0:RemoveClickUpListener()
-		iter_3_1.longPress:RemoveLongPressListener()
+		click:RemoveClickListener()
+		click:RemoveClickDownListener()
+		click:RemoveClickUpListener()
+		v.longPress:RemoveLongPressListener()
 	end
 end
 
-function var_0_0._onRoundSequenceFinish(arg_4_0)
-	arg_4_0:_resetDefaultFocus()
+function FightSkillSelectView:_onRoundSequenceFinish()
+	self:_resetDefaultFocus()
 	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
 end
 
-function var_0_0.onChangeEntity(arg_5_0, arg_5_1)
-	if not FightHelper.getEntity(FightDataHelper.operationDataMgr.curSelectEntityId) then
-		arg_5_0:_resetDefaultFocus()
+function FightSkillSelectView:onChangeEntity(newEntity)
+	local entity = FightHelper.getEntity(FightDataHelper.operationDataMgr.curSelectEntityId)
+
+	if not entity then
+		self:_resetDefaultFocus()
 		FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
 	end
 end
 
-function var_0_0._updateGuideClick(arg_6_0)
-	for iter_6_0, iter_6_1 in ipairs(arg_6_0._guideClickList) do
-		local var_6_0 = iter_6_1.entity
-		local var_6_1 = var_6_0:getMO()
-		local var_6_2, var_6_3, var_6_4, var_6_5 = FightHelper.calcRect(var_6_0, arg_6_0._clickBlockTransform)
-		local var_6_6
-		local var_6_7
-		local var_6_8 = var_6_0:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
+function FightSkillSelectView:_updateGuideClick()
+	for i, v in ipairs(self._guideClickList) do
+		local entity = v.entity
+		local entityMO = entity:getMO()
+		local rectPos1X, rectPos1Y, rectPos2X, rectPos2Y = FightHelper.calcRect(entity, self._clickBlockTransform)
+		local rectPosX, rectPosY
+		local mountmiddleGO = entity:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
 
-		if var_6_8 then
-			local var_6_9, var_6_10, var_6_11 = transformhelper.getPos(var_6_8.transform)
+		if mountmiddleGO then
+			local trposX, trposY, trposZ = transformhelper.getPos(mountmiddleGO.transform)
 
-			var_6_6, var_6_7 = recthelper.worldPosToAnchorPosXYZ(var_6_9, var_6_10, var_6_11, arg_6_0._containerTr)
+			rectPosX, rectPosY = recthelper.worldPosToAnchorPosXYZ(trposX, trposY, trposZ, self._containerTr)
 		else
-			var_6_6 = (var_6_2 + var_6_4) / 2
-			var_6_7 = (var_6_3 + var_6_5) / 2
+			rectPosX = (rectPos1X + rectPos2X) / 2
+			rectPosY = (rectPos1Y + rectPos2Y) / 2
 		end
 
-		recthelper.setAnchor(iter_6_1.transform, var_6_6, var_6_7)
+		recthelper.setAnchor(v.transform, rectPosX, rectPosY)
 
-		local var_6_12 = math.abs(var_6_2 - var_6_4)
-		local var_6_13 = math.abs(var_6_3 - var_6_5)
-		local var_6_14 = lua_monster_skin.configDict[var_6_1.skin]
-		local var_6_15 = var_6_14 and var_6_14.clickBoxUnlimit == 1
-		local var_6_16 = var_6_15 and 800 or 200
-		local var_6_17 = var_6_15 and 800 or 500
-		local var_6_18 = Mathf.Clamp(var_6_12, 150, var_6_16)
-		local var_6_19 = Mathf.Clamp(var_6_13, 150, var_6_17)
+		local width = math.abs(rectPos1X - rectPos2X)
+		local height = math.abs(rectPos1Y - rectPos2Y)
+		local monsterSkinCO = lua_monster_skin.configDict[entityMO.skin]
+		local clickBoxUnlimit = monsterSkinCO and monsterSkinCO.clickBoxUnlimit == 1
+		local maxWidth = clickBoxUnlimit and 800 or 200
+		local maxHeight = clickBoxUnlimit and 800 or 500
+		local fixWidth = Mathf.Clamp(width, 150, maxWidth)
+		local fixHeight = Mathf.Clamp(height, 150, maxHeight)
 
-		recthelper.setSize(iter_6_1.transform, var_6_18, var_6_19)
+		recthelper.setSize(v.transform, fixWidth, fixHeight)
 	end
 end
 
-function var_0_0._onGuideCreateClickBySkinId(arg_7_0, arg_7_1, arg_7_2)
-	arg_7_1 = tonumber(arg_7_1)
-	arg_7_2 = tonumber(arg_7_2)
+function FightSkillSelectView:_onGuideCreateClickBySkinId(skinId, pos)
+	skinId = tonumber(skinId)
+	pos = tonumber(pos)
 
-	local var_7_0 = FightHelper.getAllEntitys()
+	local list = FightHelper.getAllEntitys()
 
-	for iter_7_0, iter_7_1 in ipairs(var_7_0) do
-		local var_7_1 = iter_7_1:getMO()
+	for i, v in ipairs(list) do
+		local entityMO = v:getMO()
 
-		if arg_7_0:_checkEntityGuideClick(var_7_1, arg_7_1, arg_7_2) then
+		if self:_checkEntityGuideClick(entityMO, skinId, pos) then
 			FightModel.instance:setClickEnemyState(true)
 
-			arg_7_0._curClickEntityId = iter_7_1.id
+			self._curClickEntityId = v.id
 
-			local var_7_2 = arg_7_0:getUserDataTb_()
+			local tab = self:getUserDataTb_()
 
-			var_7_2.entity = iter_7_1
+			tab.entity = v
 
-			local var_7_3 = gohelper.cloneInPlace(arg_7_0._guideClickObj, "guideClick" .. arg_7_1)
+			local obj = gohelper.cloneInPlace(self._guideClickObj, "guideClick" .. skinId)
 
-			gohelper.setActive(var_7_3, true)
+			gohelper.setActive(obj, true)
 
-			var_7_2.obj = var_7_3
-			var_7_2.transform = var_7_3.transform
+			tab.obj = obj
+			tab.transform = obj.transform
 
-			local var_7_4 = gohelper.getClick(var_7_3)
+			local click = gohelper.getClick(obj)
 
-			var_7_4:AddClickListener(arg_7_0._onClick, arg_7_0)
-			var_7_4:AddClickDownListener(arg_7_0._onClickDown, arg_7_0)
-			var_7_4:AddClickUpListener(arg_7_0._onClickUp, arg_7_0)
+			click:AddClickListener(self._onClick, self)
+			click:AddClickDownListener(self._onClickDown, self)
+			click:AddClickUpListener(self._onClickUp, self)
 
-			var_7_2.click = var_7_4
+			tab.click = click
 
-			local var_7_5 = var_0_1.Get(var_7_3)
+			local longPress = UILongPressListener.Get(obj)
 
-			var_7_5:AddLongPressListener(arg_7_0._onLongPress, arg_7_0)
-			var_7_5:SetLongPressTime(arg_7_0._pressTab)
+			longPress:AddLongPressListener(self._onLongPress, self)
+			longPress:SetLongPressTime(self._pressTab)
 
-			var_7_2.longPress = var_7_5
+			tab.longPress = longPress
 
-			table.insert(arg_7_0._guideClickList, var_7_2)
-			TaskDispatcher.runRepeat(arg_7_0._updateGuideClick, arg_7_0, 0.01)
+			table.insert(self._guideClickList, tab)
+			TaskDispatcher.runRepeat(self._updateGuideClick, self, 0.01)
 
 			break
 		end
 	end
 end
 
-function var_0_0._checkEntityGuideClick(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
-	if not arg_8_1 then
+function FightSkillSelectView:_checkEntityGuideClick(entityMO, skinId, pos)
+	if not entityMO then
 		return false
 	end
 
-	if arg_8_1.skin ~= tonumber(arg_8_2) then
+	if entityMO.skin ~= tonumber(skinId) then
 		return false
 	end
 
-	if arg_8_3 and tonumber(arg_8_3) ~= arg_8_1.position then
+	if pos and tonumber(pos) ~= entityMO.position then
 		return false
 	end
 
 	return true
 end
 
-function var_0_0._onGuideReleaseClickBySkilId(arg_9_0, arg_9_1, arg_9_2)
-	for iter_9_0 = #arg_9_0._guideClickList, 1, -1 do
-		local var_9_0 = arg_9_0._guideClickList[iter_9_0].entity:getMO()
+function FightSkillSelectView:_onGuideReleaseClickBySkilId(skinId, pos)
+	for i = #self._guideClickList, 1, -1 do
+		local entityMO = self._guideClickList[i].entity:getMO()
 
-		if arg_9_0:_checkEntityGuideClick(var_9_0, arg_9_1, arg_9_2) then
-			local var_9_1 = table.remove(arg_9_0._guideClickList, iter_9_0)
-			local var_9_2 = var_9_1.click
+		if self:_checkEntityGuideClick(entityMO, skinId, pos) then
+			local tab = table.remove(self._guideClickList, i)
+			local click = tab.click
 
-			var_9_2:RemoveClickListener()
-			var_9_2:RemoveClickDownListener()
-			var_9_2:RemoveClickUpListener()
-			var_9_1.longPress:RemoveLongPressListener()
-			gohelper.destroy(var_9_1.obj)
+			click:RemoveClickListener()
+			click:RemoveClickDownListener()
+			click:RemoveClickUpListener()
+			tab.longPress:RemoveLongPressListener()
+			gohelper.destroy(tab.obj)
 		end
 	end
 
-	if #arg_9_0._guideClickList == 0 then
-		TaskDispatcher.cancelTask(arg_9_0._updateGuideClick, arg_9_0)
+	if #self._guideClickList == 0 then
+		TaskDispatcher.cancelTask(self._updateGuideClick, self)
 		FightModel.instance:setClickEnemyState(false)
 
-		arg_9_0._curClickEntityId = nil
+		self._curClickEntityId = nil
 	end
 end
 
-function var_0_0._onClick(arg_10_0, arg_10_1, arg_10_2)
-	local var_10_0 = arg_10_1 or arg_10_0._curClickEntityId
+function FightSkillSelectView:_onClick(param, screenPosition)
+	local entityId = param or self._curClickEntityId
 
-	if not var_10_0 then
+	if not entityId then
 		return
 	end
 
-	local var_10_1 = FightHelper.getEntity(var_10_0)
+	local entity = FightHelper.getEntity(entityId)
 
-	if not var_10_1 then
+	if not entity then
 		return
 	end
 
-	if not var_10_1:isEnemySide() then
+	if not entity:isEnemySide() then
 		return
 	end
 
-	local var_10_2 = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FightFocus)
-	local var_10_3 = GuideModel.instance:isGuideFinish(GuideController.FirstGuideId)
+	local openFightFocus = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FightFocus)
+	local finishFirstGuide = GuideModel.instance:isGuideFinish(GuideController.FirstGuideId)
 
-	if not var_10_2 and not var_10_3 then
+	if not openFightFocus and not finishFirstGuide then
 		return
 	end
 
@@ -252,93 +255,95 @@ function var_0_0._onClick(arg_10_0, arg_10_1, arg_10_2)
 		return
 	end
 
-	local var_10_4 = FightDataHelper.stageMgr:getCurOperateState()
+	local curOperateState = FightDataHelper.stageMgr:getCurOperateState()
 
-	if var_10_4 == FightStageMgr.OperateStateType.Discard or var_10_4 == FightStageMgr.OperateStateType.DiscardEffect then
+	if curOperateState == FightStageMgr.OperateStateType.Discard or curOperateState == FightStageMgr.OperateStateType.DiscardEffect then
 		return
 	end
 
 	if FightDataHelper.stateMgr:getIsAuto() then
-		if var_10_0 == FightDataHelper.operationDataMgr.curSelectEntityId then
+		if entityId == FightDataHelper.operationDataMgr.curSelectEntityId then
 			FightDataHelper.operationDataMgr:setCurSelectEntityId(0)
 		else
-			arg_10_0:_playSelectAnim()
-			FightDataHelper.operationDataMgr:setCurSelectEntityId(var_10_0)
+			self:_playSelectAnim()
+			FightDataHelper.operationDataMgr:setCurSelectEntityId(entityId)
 		end
 	else
-		if var_10_0 ~= FightDataHelper.operationDataMgr.curSelectEntityId then
-			arg_10_0:_playSelectAnim()
+		if entityId ~= FightDataHelper.operationDataMgr.curSelectEntityId then
+			self:_playSelectAnim()
 		end
 
-		FightDataHelper.operationDataMgr:setCurSelectEntityId(var_10_0)
+		FightDataHelper.operationDataMgr:setCurSelectEntityId(entityId)
 	end
 
-	arg_10_0:_updateSelectUI()
-	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, var_10_0)
+	self:_updateSelectUI()
+	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, entityId)
 end
 
-function var_0_0._onClickDown(arg_11_0, arg_11_1, arg_11_2)
-	arg_11_0._curClickEntityId = nil
+function FightSkillSelectView:_onClickDown(param, screenPosition)
+	self._curClickEntityId = nil
 
-	local var_11_0 = FightHelper.getAllEntitys()
+	local entityList = FightHelper.getAllEntitys()
 
-	for iter_11_0 = #var_11_0, 1, -1 do
-		if not arg_11_0:checkCanSelect(var_11_0[iter_11_0].id) then
-			table.remove(var_11_0, iter_11_0)
+	for i = #entityList, 1, -1 do
+		if not self:checkCanSelect(entityList[i].id) then
+			table.remove(entityList, i)
 		end
 	end
 
-	local var_11_1 = FightHelper.getClickEntity(var_11_0, arg_11_0._clickBlockTransform, arg_11_2)
+	local entityId = FightHelper.getClickEntity(entityList, self._clickBlockTransform, screenPosition)
 
-	if var_11_1 then
+	if entityId then
 		FightModel.instance:setClickEnemyState(true)
 
-		arg_11_0._curClickEntityId = var_11_1
+		self._curClickEntityId = entityId
 	end
 end
 
-function var_0_0.checkCanSelect(arg_12_0, arg_12_1)
-	if FightDataHelper.entityMgr:getById(arg_12_1):isAct191Boss() then
+function FightSkillSelectView:checkCanSelect(entityId)
+	local entityData = FightDataHelper.entityMgr:getById(entityId)
+
+	if entityData:isAct191Boss() then
 		return false
 	end
 
-	if FightDataHelper.entityMgr:isSub(arg_12_1) then
+	if FightDataHelper.entityMgr:isSub(entityId) then
 		return false
 	end
 
-	local var_12_0 = FightDataHelper.entityMgr:getById(arg_12_1)
+	local entityMo = FightDataHelper.entityMgr:getById(entityId)
 
-	if not var_12_0 then
+	if not entityMo then
 		return false
 	end
 
-	if var_12_0:hasBuffFeature(FightEnum.BuffType_CantSelect) then
+	if entityMo:hasBuffFeature(FightEnum.BuffType_CantSelect) then
 		return false
 	end
 
-	if var_12_0:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
+	if entityMo:hasBuffFeature(FightEnum.BuffType_CantSelectEx) then
 		return false
 	end
 
-	if var_12_0:hasBuffFeature(FightEnum.BuffType_HideLife) then
+	if entityMo:hasBuffFeature(FightEnum.BuffType_HideLife) then
 		return false
 	end
 
 	return true
 end
 
-function var_0_0._onClickUp(arg_13_0, arg_13_1, arg_13_2)
-	if arg_13_0._curClickEntityId then
+function FightSkillSelectView:_onClickUp(param, screenPosition)
+	if self._curClickEntityId then
 		FightModel.instance:setClickEnemyState(false)
 	end
 end
 
-function var_0_0._onLongPress(arg_14_0, arg_14_1)
+function FightSkillSelectView:_onLongPress(param)
 	if FightDataHelper.lockOperateMgr:isLock() then
 		return
 	end
 
-	if not arg_14_0._curClickEntityId then
+	if not self._curClickEntityId then
 		return
 	end
 
@@ -350,9 +355,9 @@ function var_0_0._onLongPress(arg_14_0, arg_14_1)
 		return
 	end
 
-	local var_14_0 = FightDataHelper.stageMgr:getCurOperateState()
+	local curOperateState = FightDataHelper.stageMgr:getCurOperateState()
 
-	if var_14_0 == FightStageMgr.OperateStateType.Discard or var_14_0 == FightStageMgr.OperateStateType.DiscardEffect then
+	if curOperateState == FightStageMgr.OperateStateType.Discard or curOperateState == FightStageMgr.OperateStateType.DiscardEffect then
 		return
 	end
 
@@ -380,27 +385,27 @@ function var_0_0._onLongPress(arg_14_0, arg_14_1)
 		return
 	end
 
-	local var_14_1 = FightHelper.getEntity(arg_14_0._curClickEntityId)
+	local entity = FightHelper.getEntity(self._curClickEntityId)
 
-	if not var_14_1 then
+	if not entity then
 		return
 	end
 
-	if FightDataHelper.entityMgr:isSub(var_14_1.id) then
+	if FightDataHelper.entityMgr:isSub(entity.id) then
 		return
 	end
 
-	arg_14_0.currentFocusEntityMO = FightDataHelper.entityMgr:getById(arg_14_0._curClickEntityId)
+	self.currentFocusEntityMO = FightDataHelper.entityMgr:getById(self._curClickEntityId)
 
-	if not arg_14_0.currentFocusEntityMO then
+	if not self.currentFocusEntityMO then
 		return
 	end
 
-	arg_14_0.viewContainer:openFightFocusView(arg_14_0.currentFocusEntityMO.id)
+	self.viewContainer:openFightFocusView(self.currentFocusEntityMO.id)
 end
 
-function var_0_0.onStageChanged(arg_15_0, arg_15_1)
-	local var_15_0 = FightDataHelper.stageMgr:getCurStage()
+function FightSkillSelectView:onStageChanged(stage)
+	local curStage = FightDataHelper.stageMgr:getCurStage()
 
 	if FightDataHelper.stateMgr.isReplay then
 		logError("reply stage ?")
@@ -408,287 +413,291 @@ function var_0_0.onStageChanged(arg_15_0, arg_15_1)
 		return
 	end
 
-	if var_15_0 == FightStageMgr.StageType.Operate then
-		arg_15_0:clearAllFlag()
-		arg_15_0:_updatePos()
+	if curStage == FightStageMgr.StageType.Operate then
+		self:clearAllFlag()
+		self:_updatePos()
 	end
 end
 
-function var_0_0.onEntityDeadFinish(arg_16_0)
-	arg_16_0:_resetDefaultFocus()
+function FightSkillSelectView:onEntityDeadFinish()
+	self:_resetDefaultFocus()
 	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
-	arg_16_0:_updatePos()
+	self:_updatePos()
 end
 
-function var_0_0.onEnemyActionStatusChange(arg_17_0, arg_17_1)
-	arg_17_0.showEnemyActioning = FightEnum.EnemyActionStatus.Select == arg_17_1
+function FightSkillSelectView:onEnemyActionStatusChange(status)
+	self.showEnemyActioning = FightEnum.EnemyActionStatus.Select == status
 
-	arg_17_0:_setSelectGOActive(true)
+	self:_setSelectGOActive(true)
 end
 
-function var_0_0.onUpdateParam(arg_18_0)
-	gohelper.setAsFirstSibling(arg_18_0.viewGO)
+function FightSkillSelectView:onUpdateParam()
+	gohelper.setAsFirstSibling(self.viewGO)
 end
 
-function var_0_0.onOpen(arg_19_0)
-	gohelper.setAsFirstSibling(arg_19_0.viewGO)
+function FightSkillSelectView:onOpen()
+	gohelper.setAsFirstSibling(self.viewGO)
 
 	if FightDataHelper.stateMgr.isReplay then
-		arg_19_0:_removeAllEvent()
+		self:_removeAllEvent()
 	end
 end
 
-function var_0_0.onClose(arg_20_0)
-	TaskDispatcher.cancelTask(arg_20_0._updateGuideClick, arg_20_0)
+function FightSkillSelectView:onClose()
+	TaskDispatcher.cancelTask(self._updateGuideClick, self)
 	FightDataHelper.operationDataMgr:setCurSelectEntityId(0)
-	TaskDispatcher.cancelTask(arg_20_0._delayStartSequenceFinish, arg_20_0)
-	arg_20_0:removeLateUpdate()
+	TaskDispatcher.cancelTask(self._delayStartSequenceFinish, self)
+	self:removeLateUpdate()
 end
 
-function var_0_0._onBeginWave(arg_21_0)
-	arg_21_0:_resetDefaultFocus()
+function FightSkillSelectView:_onBeginWave()
+	self:_resetDefaultFocus()
 	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
 end
 
-function var_0_0._setEntityVisibleByTimeline(arg_22_0, arg_22_1, arg_22_2, arg_22_3, arg_22_4)
-	if arg_22_1.id ~= FightDataHelper.operationDataMgr.curSelectEntityId then
+function FightSkillSelectView:_setEntityVisibleByTimeline(entity, fightStepData, isVisible, transitionTime)
+	if entity.id ~= FightDataHelper.operationDataMgr.curSelectEntityId then
 		return
 	end
 
-	arg_22_0.entityVisible = arg_22_3
+	self.entityVisible = isVisible
 
-	arg_22_0:_setSelectGOActive(true)
+	self:_setSelectGOActive(true)
 end
 
-function var_0_0._onSkillPlayStart(arg_23_0, arg_23_1)
-	if FightDataHelper.operationDataMgr.curSelectEntityId ~= arg_23_1.id then
+function FightSkillSelectView:_onSkillPlayStart(entity)
+	if FightDataHelper.operationDataMgr.curSelectEntityId ~= entity.id then
 		return
 	end
 
-	arg_23_0.playingCurSelectEntityTimeline = true
+	self.playingCurSelectEntityTimeline = true
 
-	arg_23_0:_setSelectGOActive(false)
+	self:_setSelectGOActive(false)
 end
 
-function var_0_0._onSkillTimeLineDone(arg_24_0, arg_24_1)
-	local var_24_0 = arg_24_1 and arg_24_1.fromId
+function FightSkillSelectView:_onSkillTimeLineDone(fightStepData)
+	local entityId = fightStepData and fightStepData.fromId
 
-	if FightDataHelper.operationDataMgr.curSelectEntityId ~= var_24_0 then
+	if FightDataHelper.operationDataMgr.curSelectEntityId ~= entityId then
 		return
 	end
 
-	arg_24_0.playingCurSelectEntityTimeline = false
+	self.playingCurSelectEntityTimeline = false
 
-	arg_24_0:_setSelectGOActive(true)
+	self:_setSelectGOActive(true)
 end
 
-function var_0_0._setIsShowUI(arg_25_0, arg_25_1)
-	arg_25_0.showUI = arg_25_1
+function FightSkillSelectView:_setIsShowUI(isVisible)
+	self.showUI = isVisible
 
-	if not arg_25_0._canvasGroup then
-		arg_25_0._canvasGroup = gohelper.onceAddComponent(arg_25_0._containerGO, typeof(UnityEngine.CanvasGroup))
+	if not self._canvasGroup then
+		self._canvasGroup = gohelper.onceAddComponent(self._containerGO, typeof(UnityEngine.CanvasGroup))
 	end
 
-	gohelper.setActiveCanvasGroup(arg_25_0._canvasGroup, arg_25_1)
+	gohelper.setActiveCanvasGroup(self._canvasGroup, isVisible)
 end
 
-function var_0_0._removeAllEvent(arg_26_0)
-	arg_26_0:removeEvents()
-	arg_26_0:removeLateUpdate()
+function FightSkillSelectView:_removeAllEvent()
+	self:removeEvents()
+	self:removeLateUpdate()
 end
 
-function var_0_0.onCameraFocusChanged(arg_27_0, arg_27_1)
-	if arg_27_1 then
-		arg_27_0._on_camera_focus = true
+function FightSkillSelectView:onCameraFocusChanged(isFocus)
+	if isFocus then
+		self._on_camera_focus = true
 
-		arg_27_0:_setSelectGOActive(false)
+		self:_setSelectGOActive(false)
 	else
-		arg_27_0._on_camera_focus = false
+		self._on_camera_focus = false
 
-		arg_27_0:_setSelectGOActive(true)
+		self:_setSelectGOActive(true)
 	end
 end
 
-function var_0_0.clearAllFlag(arg_28_0)
-	arg_28_0._on_camera_focus = nil
-	arg_28_0.playingCurSelectEntityTimeline = nil
-	arg_28_0.entityVisible = true
-	arg_28_0.showEnemyActioning = nil
+function FightSkillSelectView:clearAllFlag()
+	self._on_camera_focus = nil
+	self.playingCurSelectEntityTimeline = nil
+	self.entityVisible = true
+	self.showEnemyActioning = nil
 end
 
-function var_0_0._setSelectGOActive(arg_29_0, arg_29_1)
-	if not arg_29_1 then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+function FightSkillSelectView:_setSelectGOActive(value)
+	if not value then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	if arg_29_0.showEnemyActioning then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+	if self.showEnemyActioning then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	if arg_29_0._on_camera_focus then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+	if self._on_camera_focus then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	if arg_29_0.playingCurSelectEntityTimeline then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+	if self.playingCurSelectEntityTimeline then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	if not arg_29_0.entityVisible then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+	if not self.entityVisible then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	if GuideModel.instance:isDoingFirstGuide() then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+	local guiding = GuideModel.instance:isDoingFirstGuide()
+
+	if guiding then
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
 	if not GMFightShowState.monsterSelect then
-		gohelper.setActive(arg_29_0._imgSelectGO, false)
+		gohelper.setActive(self._imgSelectGO, false)
 
 		return
 	end
 
-	gohelper.setActive(arg_29_0._imgSelectGO, true)
+	gohelper.setActive(self._imgSelectGO, true)
 end
 
-function var_0_0._resetSelect(arg_30_0)
-	arg_30_0:_resetDefaultFocus()
+function FightSkillSelectView:_resetSelect()
+	self:_resetDefaultFocus()
 	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
-	arg_30_0:_updateSelectUI()
+	self:_updateSelectUI()
 end
 
-function var_0_0._onStartSequenceFinish(arg_31_0)
+function FightSkillSelectView:_onStartSequenceFinish()
 	FightDataHelper.operationDataMgr:setCurSelectEntityId(0)
-	TaskDispatcher.runDelay(arg_31_0._delayStartSequenceFinish, arg_31_0, 0.01)
+	TaskDispatcher.runDelay(self._delayStartSequenceFinish, self, 0.01)
 end
 
-function var_0_0._delayStartSequenceFinish(arg_32_0)
-	arg_32_0.started = true
+function FightSkillSelectView:_delayStartSequenceFinish()
+	self.started = true
 
-	arg_32_0:clearAllFlag()
-	gohelper.setActive(arg_32_0._containerGO, true)
-	arg_32_0:_resetDefaultFocus()
+	self:clearAllFlag()
+	gohelper.setActive(self._containerGO, true)
+	self:_resetDefaultFocus()
 	FightController.instance:dispatchEvent(FightEvent.SelectSkillTarget, FightDataHelper.operationDataMgr.curSelectEntityId)
-	arg_32_0:addEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelect, arg_32_0.OnKeySelect, arg_32_0)
-	arg_32_0:initUpdateBeat()
+	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyBattleSelect, self.OnKeySelect, self)
+	self:initUpdateBeat()
 end
 
-function var_0_0.OnKeySelect(arg_33_0, arg_33_1)
-	if FightDataHelper.stateMgr.isReplay then
+function FightSkillSelectView:OnKeySelect(LorR)
+	local isReplay = FightDataHelper.stateMgr.isReplay
+
+	if isReplay then
 		return
 	end
 
-	local var_33_0 = FightDataHelper.operationDataMgr:getSelectEnemyPosLOrR(arg_33_1)
+	local id = FightDataHelper.operationDataMgr:getSelectEnemyPosLOrR(LorR)
 
-	if var_33_0 ~= nil then
-		arg_33_0:_onClick(var_33_0)
+	if id ~= nil then
+		self:_onClick(id)
 	end
 end
 
-function var_0_0.initUpdateBeat(arg_34_0)
-	if arg_34_0.lateUpdateHandle or not arg_34_0.showUI or arg_34_0.playingCurSelectEntityTimeline then
+function FightSkillSelectView:initUpdateBeat()
+	if self.lateUpdateHandle or not self.showUI or self.playingCurSelectEntityTimeline then
 		return
 	end
 
-	arg_34_0.lateUpdateHandle = LateUpdateBeat:CreateListener(arg_34_0._onFrameLateUpdate, arg_34_0)
+	self.lateUpdateHandle = LateUpdateBeat:CreateListener(self._onFrameLateUpdate, self)
 
-	LateUpdateBeat:AddListener(arg_34_0.lateUpdateHandle)
+	LateUpdateBeat:AddListener(self.lateUpdateHandle)
 end
 
-function var_0_0._onFrameLateUpdate(arg_35_0)
-	if arg_35_0._on_camera_focus then
+function FightSkillSelectView:_onFrameLateUpdate()
+	if self._on_camera_focus then
 		return
 	end
 
-	arg_35_0:_updatePos()
+	self:_updatePos()
 end
 
-function var_0_0.removeLateUpdate(arg_36_0)
-	if arg_36_0.lateUpdateHandle then
-		LateUpdateBeat:RemoveListener(arg_36_0.lateUpdateHandle)
+function FightSkillSelectView:removeLateUpdate()
+	if self.lateUpdateHandle then
+		LateUpdateBeat:RemoveListener(self.lateUpdateHandle)
 
-		arg_36_0.lateUpdateHandle = nil
+		self.lateUpdateHandle = nil
 	end
 end
 
-function var_0_0._playSelectAnim(arg_37_0)
-	if arg_37_0._imgSelectAnimator then
-		arg_37_0._imgSelectAnimator:Play("fightview_skillselect", 0, 0)
+function FightSkillSelectView:_playSelectAnim()
+	if self._imgSelectAnimator then
+		self._imgSelectAnimator:Play("fightview_skillselect", 0, 0)
 	else
 		logError("无法播放目标锁定动画，Animator不存在")
 	end
 end
 
-function var_0_0._onRestartStage(arg_38_0)
-	gohelper.setActive(arg_38_0._containerGO, false)
-	arg_38_0:removeLateUpdate()
+function FightSkillSelectView:_onRestartStage()
+	gohelper.setActive(self._containerGO, false)
+	self:removeLateUpdate()
 
-	arg_38_0.started = nil
+	self.started = nil
 end
 
-function var_0_0._updatePos(arg_39_0)
-	arg_39_0:_updateSelectUI()
+function FightSkillSelectView:_updatePos()
+	self:_updateSelectUI()
 end
 
-function var_0_0._resetDefaultFocus(arg_40_0)
+function FightSkillSelectView:_resetDefaultFocus()
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.FightAutoFocus) then
 		FightDataHelper.operationDataMgr:resetCurSelectEntityIdDefault()
 	end
 end
 
-function var_0_0._updateSelectUI(arg_41_0)
-	local var_41_0 = FightHelper.getEntity(FightDataHelper.operationDataMgr.curSelectEntityId)
+function FightSkillSelectView:_updateSelectUI()
+	local entity = FightHelper.getEntity(FightDataHelper.operationDataMgr.curSelectEntityId)
 
-	arg_41_0:_setSelectGOActive(var_41_0 ~= nil)
+	self:_setSelectGOActive(entity ~= nil)
 
-	if var_41_0 then
-		local var_41_1, var_41_2 = arg_41_0:_getEntityMiddlePos(var_41_0)
+	if entity then
+		local middlePosX, middlePosY = self:_getEntityMiddlePos(entity)
 
-		recthelper.setAnchor(arg_41_0._imgSelectTr, var_41_1, var_41_2)
+		recthelper.setAnchor(self._imgSelectTr, middlePosX, middlePosY)
 	end
 end
 
-function var_0_0._getEntityMiddlePos(arg_42_0, arg_42_1)
-	if FightHelper.isAssembledMonster(arg_42_1) then
-		local var_42_0 = arg_42_1:getMO()
-		local var_42_1 = lua_fight_assembled_monster.configDict[var_42_0.skin]
-		local var_42_2, var_42_3, var_42_4 = transformhelper.getPos(arg_42_1.go.transform)
-		local var_42_5, var_42_6 = recthelper.worldPosToAnchorPosXYZ(var_42_2 + var_42_1.selectPos[1], var_42_3 + var_42_1.selectPos[2], var_42_4, arg_42_0._containerTr)
+function FightSkillSelectView:_getEntityMiddlePos(entity)
+	if FightHelper.isAssembledMonster(entity) then
+		local entityMO = entity:getMO()
+		local config = lua_fight_assembled_monster.configDict[entityMO.skin]
+		local worldPosX, worldPosY, worldPosZ = transformhelper.getPos(entity.go.transform)
+		local rectPosX, rectPosY = recthelper.worldPosToAnchorPosXYZ(worldPosX + config.selectPos[1], worldPosY + config.selectPos[2], worldPosZ, self._containerTr)
 
-		return var_42_5, var_42_6
+		return rectPosX, rectPosY
 	end
 
-	local var_42_7 = arg_42_1:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
+	local mountMiddleGO = entity:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
 
-	if var_42_7 and var_42_7.name == ModuleEnum.SpineHangPoint.mountmiddle then
-		local var_42_8, var_42_9, var_42_10 = transformhelper.getPos(var_42_7.transform)
-		local var_42_11, var_42_12 = recthelper.worldPosToAnchorPosXYZ(var_42_8, var_42_9, var_42_10, arg_42_0._containerTr)
+	if mountMiddleGO and mountMiddleGO.name == ModuleEnum.SpineHangPoint.mountmiddle then
+		local worldPosX, worldPosY, worldPosZ = transformhelper.getPos(mountMiddleGO.transform)
+		local rectPosX, rectPosY = recthelper.worldPosToAnchorPosXYZ(worldPosX, worldPosY, worldPosZ, self._containerTr)
 
-		return var_42_11, var_42_12
+		return rectPosX, rectPosY
 	else
-		local var_42_13, var_42_14, var_42_15, var_42_16 = FightHelper.calcRect(arg_42_1, arg_42_0._clickBlockTransform)
+		local rectPos1X, rectPos1Y, rectPos2X, rectPos2Y = FightHelper.calcRect(entity, self._clickBlockTransform)
 
-		return (var_42_13 + var_42_15) / 2, (var_42_14 + var_42_16) / 2
+		return (rectPos1X + rectPos2X) / 2, (rectPos1Y + rectPos2Y) / 2
 	end
 end
 
-function var_0_0.getCurrentFocusEntityId(arg_43_0)
-	return arg_43_0.currentFocusEntityMO.id
+function FightSkillSelectView:getCurrentFocusEntityId()
+	return self.currentFocusEntityMO.id
 end
 
-function var_0_0.onDestroyView(arg_44_0)
+function FightSkillSelectView:onDestroyView()
 	return
 end
 
-return var_0_0
+return FightSkillSelectView

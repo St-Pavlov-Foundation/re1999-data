@@ -136,5 +136,17 @@
     "name": "荒原地块换色兑换",
     "useType": 6,
     "use_max": 99
+  },
+  {
+    "id": 71,
+    "name": "皮肤自选",
+    "useType": 2,
+    "use_max": 99999
+  },
+  {
+    "id": 75,
+    "name": "5星6星限定心相自选",
+    "useType": 2,
+    "use_max": 1
   }
 ]

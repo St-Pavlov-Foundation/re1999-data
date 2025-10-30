@@ -1,0 +1,652 @@
+[
+  {
+    "id": 101,
+    "name": "力量",
+    "careerDesc": "<color=#87817B><i>你欲磨利刀刃，蓄蕴咒语。<i></color>",
+    "icon": "rouge2_skillicon1",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 25
+  },
+  {
+    "id": 102,
+    "name": "反应",
+    "careerDesc": "<color=#87817B><i>你欲机动行事，因时制宜。<i></color>",
+    "icon": "rouge2_skillicon2",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 25
+  },
+  {
+    "id": 103,
+    "name": "奥秘",
+    "careerDesc": "<color=#87817B><i>你欲勘破迷雾，识见真知。<i></color>",
+    "icon": "rouge2_skillicon3",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 25
+  },
+  {
+    "id": 104,
+    "name": "感知",
+    "careerDesc": "<color=#87817B><i>你欲行至幽微，以心为镜。<i></color>",
+    "icon": "rouge2_skillicon4",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 25
+  },
+  {
+    "id": 105,
+    "name": "激情",
+    "careerDesc": "<color=#87817B><i>你欲抛却重负，长驱直进。<i></color>",
+    "icon": "rouge2_skillicon5",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 25
+  },
+  {
+    "id": 106,
+    "name": "良知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 201,
+    "name": "§造物掉落次数",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 1,
+    "showMax": 0
+  },
+  {
+    "id": 202,
+    "name": "§造物背包容量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 99,
+    "showMax": 0
+  },
+  {
+    "id": 203,
+    "name": "§隐藏造物背包容量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 99,
+    "showMax": 0
+  },
+  {
+    "id": 204,
+    "name": "§谐波背包容量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 99,
+    "showMax": 0
+  },
+  {
+    "id": 205,
+    "name": "§主动技能背包容量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 12,
+    "showMax": 0
+  },
+  {
+    "id": 206,
+    "name": "§鸡煲扩容槽位属性",
+    "careerDesc": "",
+    "icon": "",
+    "type": 2,
+    "level": "",
+    "min": 0,
+    "showMax": 2
+  },
+  {
+    "id": 301,
+    "name": "身体素质",
+    "careerDesc": "",
+    "icon": "rouge2_skillicon6",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 310,
+    "name": "§虚血",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 311,
+    "name": "§力量 - 最大生命",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 312,
+    "name": "§力量 - 攻击",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 313,
+    "name": "§力量 - 暴击创伤",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 314,
+    "name": "§力量 - 创伤加成",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 315,
+    "name": "§反应 - 本源创伤加成",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 316,
+    "name": "§反应 - 最终免伤",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 317,
+    "name": "§奥秘 - 倍率",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 318,
+    "name": "§奥秘 - 威力",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 319,
+    "name": "§奥秘 - 缓冲",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 320,
+    "name": "§反应 - 受击自身最大生命",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 321,
+    "name": "§反应 - 额外行动附加自身攻击",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 322,
+    "name": "§反应 - 目标最大生命",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 323,
+    "name": "§力量收益公式系数",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 324,
+    "name": "§反应收益公式系数",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 325,
+    "name": "§奥秘收益公式系数",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 326,
+    "name": "§奥秘主目标重刃",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 327,
+    "name": "§奥秘副目标反向重刃",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 328,
+    "name": "§鸡煲用力量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 329,
+    "name": "§鸡煲用反应",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 330,
+    "name": "§鸡煲黄球用奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 331,
+    "name": "§鸡煲用感知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 332,
+    "name": "§鸡煲黑球用激情",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 333,
+    "name": "§鸡煲用良知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 334,
+    "name": "§鸡煲黄球用0.5奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 335,
+    "name": "§鸡煲绿球用奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 401,
+    "name": "§感知检定收益 - 力量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 402,
+    "name": "§感知检定收益 - 反应",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 403,
+    "name": "§感知检定收益 - 奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 404,
+    "name": "§感知检定收益 - 感知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 405,
+    "name": "§感知检定收益 - 激情",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 406,
+    "name": "§激情造物计数收益 - 力量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 407,
+    "name": "§激情造物计数收益 - 反应",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 408,
+    "name": "§激情造物计数收益 - 奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 409,
+    "name": "§激情造物计数收益 - 感知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 410,
+    "name": "§激情造物计数收益 - 激情",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 411,
+    "name": "§激情委托计数收益 - 力量",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 412,
+    "name": "§激情委托计数收益 - 反应",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 413,
+    "name": "§激情委托计数收益 - 奥秘",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 414,
+    "name": "§激情委托计数收益 - 感知",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 415,
+    "name": "§激情委托计数收益 - 激情",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 416,
+    "name": "§商品价格修正基础值",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 417,
+    "name": "§商品价格修正千分比",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 418,
+    "name": "§获得金币修正基础值",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 419,
+    "name": "§获得金币修正千分比",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 420,
+    "name": "§获得复活币修正基础值",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 421,
+    "name": "§商店不再可以偷窃",
+    "careerDesc": "",
+    "icon": "",
+    "type": 4,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 501,
+    "name": "§线上热更备用1",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 502,
+    "name": "§线上热更备用2",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 503,
+    "name": "§线上热更备用3",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 504,
+    "name": "§线上热更备用4",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 505,
+    "name": "§线上热更备用5",
+    "careerDesc": "",
+    "icon": "",
+    "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  }
+]

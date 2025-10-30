@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "name": "“愤怒之日”",
+    "desc": "愤怒的极致，强音的止点！\n(累计战斗超过12场)",
+    "icon": "rouge2_achieve_icon_6",
+    "trigger": "20:12",
+    "score": 50
+  },
+  {
+    "id": 2,
+    "name": "好奇心珍藏",
+    "desc": "每一只收藏都是举世无双的好奇心！\n(累计获得造物>=10)",
+    "icon": "rouge2_achieve_icon_8",
+    "trigger": "13:2#10",
+    "score": 50
+  },
+  {
+    "id": 3,
+    "name": "“声学实验”",
+    "desc": "希望在这里你能找到和自己共振的声音\n（累计获得谐波>=30）",
+    "icon": "rouge2_achieve_icon_16",
+    "trigger": "13:1#30",
+    "score": 50
+  },
+  {
+    "id": 4,
+    "name": "“天堂的门槛”",
+    "desc": "卸下黄金的重负让自己能穿过通往天堂的门\n（累计消耗金币>=1000）",
+    "icon": "rouge2_achieve_icon_19",
+    "trigger": "21:1000",
+    "score": 50
+  },
+  {
+    "id": 5,
+    "name": "第一声部",
+    "desc": "听见的旋律很美，但未曾听见的更动人\n（任意属性点数超过50）",
+    "icon": "rouge2_achieve_icon_4",
+    "trigger": "22:50",
+    "score": 50
+  },
+  {
+    "id": 6,
+    "name": "圆形卡农",
+    "desc": "如果精力允许，如果时间宽容，它将永续奏鸣\n（总属性点数超过100）",
+    "icon": "rouge2_achieve_icon_25",
+    "trigger": "23:100",
+    "score": 50
+  },
+  {
+    "id": 7,
+    "name": "死神的自我怀疑",
+    "desc": "死神在工作中也会偶尔受挫。\n（剩余复活币大于5）",
+    "icon": "rouge2_achieve_icon_18",
+    "trigger": "9:5",
+    "score": 50
+  },
+  {
+    "id": 8,
+    "name": "死神的自我焦虑",
+    "desc": " 我们需要认真思考：死神是否有业绩指标？\n（最终BOSS战斗中，没有使用过复活币）",
+    "icon": "rouge2_achieve_icon_17",
+    "trigger": "24",
+    "score": 50
+  },
+  {
+    "id": 9,
+    "name": "“力比多”",
+    "desc": "肉体的巅峰，咒语的极致\n（力量属性的检定成功超过5次）",
+    "icon": "rouge2_achieve_icon_10",
+    "trigger": "25:101#5",
+    "score": 50
+  },
+  {
+    "id": 10,
+    "name": "熔化未知",
+    "desc": "真相将星星点点地摘下她的面纱\n（奥秘属性的检定成功超过5次）",
+    "icon": "rouge2_achieve_icon_15",
+    "trigger": "25:103#5",
+    "score": 50
+  },
+  {
+    "id": 11,
+    "name": "纤细神经",
+    "desc": "捕风捉影是一种化险为夷的能力\n（反应属性的检定成功超过5次）",
+    "icon": "rouge2_achieve_icon_20",
+    "trigger": "25:102#5",
+    "score": 50
+  },
+  {
+    "id": 12,
+    "name": "全息感知",
+    "desc": "我即万物的度量\n（感知属性的检定成功超过5次）",
+    "icon": "rouge2_achieve_icon_14",
+    "trigger": "25:104#5",
+    "score": 50
+  },
+  {
+    "id": 13,
+    "name": "多巴胺冲动",
+    "desc": "你要小心自己变成一头失控的野兽\n（激情属性的检定成功超过5次）",
+    "icon": "rouge2_achieve_icon_5",
+    "trigger": "25:105#5",
+    "score": 50
+  },
+  {
+    "id": 14,
+    "name": "\"Lucky Dog\"",
+    "desc": "你有亿点幸运！\n（检定大成功超过3次）",
+    "icon": "rouge2_achieve_icon_1",
+    "trigger": "26:3",
+    "score": 50
+  },
+  {
+    "id": 15,
+    "name": "你被做局了",
+    "desc": "我相信冥冥之中有人做局！\n（检定失败超过5次）",
+    "icon": "rouge2_achieve_icon_12",
+    "trigger": "27:5",
+    "score": 50
+  },
+  {
+    "id": 16,
+    "name": "“语言剥夺实验后遗症”",
+    "desc": "何为人性？抱歉，我忘记了你没有\n（良知过低）",
+    "icon": "rouge2_achieve_icon_23",
+    "trigger": "5:106#5",
+    "score": 50
+  },
+  {
+    "id": 17,
+    "name": "“光速物流”",
+    "desc": "就算顺走一整座商店那也是瞬息之间\n（成功偷走了一个商店里面的全都商品）",
+    "icon": "rouge2_achieve_icon_7",
+    "trigger": "28",
+    "score": 50
+  },
+  {
+    "id": 18,
+    "name": "编织信赖",
+    "desc": "积少成多，他人的信赖也是如此\n（完成超过3个委托）",
+    "icon": "rouge2_achieve_icon_2",
+    "trigger": "29:3",
+    "score": 50
+  },
+  {
+    "id": 19,
+    "name": "“乐偶集会”",
+    "desc": "木偶是没有选择的，如果有也无足轻重\n（达成过满编圣歌团成员）",
+    "icon": "rouge2_achieve_icon_9",
+    "trigger": "30",
+    "score": 50
+  },
+  {
+    "id": 20,
+    "name": "淬炼宇宙",
+    "desc": "日月星辰从此刻开始以人类的意志为转移\n（强化过3次造物）",
+    "icon": "rouge2_achieve_icon_3",
+    "trigger": "31:3",
+    "score": 50
+  },
+  {
+    "id": 21,
+    "name": "灵肉器乐",
+    "desc": "褪去灵魂的外衣，你是否还持有自己的名字？\n（完成转职）",
+    "icon": "rouge2_achieve_icon_11",
+    "trigger": "19",
+    "score": 50
+  },
+  {
+    "id": 22,
+    "name": "艺术造诣",
+    "desc": "艺术让真理源出，平凡让非凡澄明\n（获得了道具：完美的画作）",
+    "icon": "rouge2_achieve_icon_21",
+    "trigger": "1:140003",
+    "score": 50
+  },
+  {
+    "id": 23,
+    "name": "“葡萄酒哲学”",
+    "desc": "何以通过痛苦抵达宇宙和生命的交点？\n（获得了道具：酿酒机）",
+    "icon": "rouge2_achieve_icon_13",
+    "trigger": "1:140021",
+    "score": 50
+  },
+  {
+    "id": 24,
+    "name": "与时间缱绻",
+    "desc": "也许那些无可挽留的曾让你无能为力，但其实时间和你一样\n（获得了道具：精美的怀表）",
+    "icon": "rouge2_achieve_icon_22",
+    "trigger": "1:140004",
+    "score": 50
+  }
+]

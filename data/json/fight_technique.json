@@ -882,5 +882,39 @@
     "isCn": 0,
     "displayType": "",
     "noDisplayType": ""
+  },
+  {
+    "id": 60,
+    "mainTitleId": 1,
+    "subTitleId": 10,
+    "condition": "8",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "聚光盏",
+    "title_en": "Lightcalix",
+    "iconShow": "",
+    "picture1": "zhandoutujian_ranshaojizhi",
+    "picture2": "",
+    "content1": "在特定效果下，战斗中将出现{【聚光盏】}\n任意敌方被赋予{【燃烧】【光晕】}时将积累{【余辉】}\n{【余辉】与【薪血】互斥}|回合开始时将根据{【余辉】}数量提升己方全体的暴击率\n生效后扣除一半当前{【余辉】}|某些角色可以赋予{【聚光盏】}特殊能力",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": ""
+  },
+  {
+    "id": 61,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "8",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "聚光盏",
+    "title_en": "Lightcalix",
+    "iconShow": "1",
+    "picture1": "",
+    "picture2": "bg_help_ranshaojizhi",
+    "content1": "在特定效果下，战斗中将出现{【聚光盏】}\n任意敌方被赋予{【燃烧】【光晕】}时将积累{【余辉】}\n{【余辉】与【薪血】互斥}|回合开始时将根据{【余辉】}数量提升己方全体的暴击率\n生效后扣除一半当前{【余辉】}|某些角色可以赋予{【聚光盏】}特殊能力",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": ""
   }
 ]

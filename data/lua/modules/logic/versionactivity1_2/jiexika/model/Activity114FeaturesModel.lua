@@ -1,17 +1,19 @@
-﻿module("modules.logic.versionactivity1_2.jiexika.model.Activity114FeaturesModel", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_2/jiexika/model/Activity114FeaturesModel.lua
 
-local var_0_0 = class("Activity114FeaturesModel", ListScrollModel)
+module("modules.logic.versionactivity1_2.jiexika.model.Activity114FeaturesModel", package.seeall)
 
-function var_0_0.onFeatureListUpdate(arg_1_0, arg_1_1)
-	local var_1_0 = {}
+local Activity114FeaturesModel = class("Activity114FeaturesModel", ListScrollModel)
 
-	for iter_1_0 = 1, #arg_1_1 do
-		var_1_0[iter_1_0] = Activity114Config.instance:getFeatureCo(Activity114Model.instance.id, arg_1_1[iter_1_0])
+function Activity114FeaturesModel:onFeatureListUpdate(featureList)
+	local list = {}
+
+	for i = 1, #featureList do
+		list[i] = Activity114Config.instance:getFeatureCo(Activity114Model.instance.id, featureList[i])
 	end
 
-	arg_1_0:setList(var_1_0)
+	self:setList(list)
 end
 
-var_0_0.instance = var_0_0.New()
+Activity114FeaturesModel.instance = Activity114FeaturesModel.New()
 
-return var_0_0
+return Activity114FeaturesModel

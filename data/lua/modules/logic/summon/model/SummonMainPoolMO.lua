@@ -1,59 +1,61 @@
-﻿module("modules.logic.summon.model.SummonMainPoolMO", package.seeall)
+﻿-- chunkname: @modules/logic/summon/model/SummonMainPoolMO.lua
 
-local var_0_0 = pureTable("SummonMainPoolMO")
+module("modules.logic.summon.model.SummonMainPoolMO", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1)
-	arg_1_0.id = arg_1_1.poolId
-	arg_1_0.luckyBagMO = SummonLuckyBagMO.New()
-	arg_1_0.customPickMO = SummonCustomPickMO.New()
+local SummonMainPoolMO = pureTable("SummonMainPoolMO")
 
-	arg_1_0:update(arg_1_1)
+function SummonMainPoolMO:init(info)
+	self.id = info.poolId
+	self.luckyBagMO = SummonLuckyBagMO.New()
+	self.customPickMO = SummonCustomPickMO.New()
+
+	self:update(info)
 end
 
-function var_0_0.update(arg_2_0, arg_2_1)
-	arg_2_0.offlineTime = arg_2_1.offlineTime or 0
-	arg_2_0.onlineTime = arg_2_1.onlineTime or 0
-	arg_2_0.haveFree = arg_2_1.haveFree or false
-	arg_2_0.usedFreeCount = arg_2_1.usedFreeCount or 0
+function SummonMainPoolMO:update(info)
+	self.offlineTime = info.offlineTime or 0
+	self.onlineTime = info.onlineTime or 0
+	self.haveFree = info.haveFree or false
+	self.usedFreeCount = info.usedFreeCount or 0
 
-	if arg_2_1.luckyBagInfo then
-		arg_2_0.luckyBagMO:update(arg_2_1.luckyBagInfo)
+	if info.luckyBagInfo then
+		self.luckyBagMO:update(info.luckyBagInfo)
 	end
 
-	if arg_2_1.spPoolInfo then
-		arg_2_0.customPickMO:update(arg_2_1.spPoolInfo)
+	if info.spPoolInfo then
+		self.customPickMO:update(info.spPoolInfo)
 	end
 
-	arg_2_0.discountTime = arg_2_1.discountTime or 0
-	arg_2_0.canGetGuaranteeSRCount = arg_2_1.canGetGuaranteeSRCount or 0
-	arg_2_0.guaranteeSRCountDown = arg_2_1.guaranteeSRCountDown or 0
-	arg_2_0.summonCount = arg_2_1.summonCount or 0
+	self.discountTime = info.discountTime or 0
+	self.canGetGuaranteeSRCount = info.canGetGuaranteeSRCount or 0
+	self.guaranteeSRCountDown = info.guaranteeSRCountDown or 0
+	self.summonCount = info.summonCount or 0
 end
 
-function var_0_0.isOpening(arg_3_0)
-	if arg_3_0.offlineTime == 0 and arg_3_0.onlineTime == 0 then
+function SummonMainPoolMO:isOpening()
+	if self.offlineTime == 0 and self.onlineTime == 0 then
 		return true
 	end
 
-	local var_3_0 = ServerTime.now()
+	local serverTime = ServerTime.now()
 
-	return var_3_0 >= arg_3_0.onlineTime and var_3_0 <= arg_3_0.offlineTime
+	return serverTime >= self.onlineTime and serverTime <= self.offlineTime
 end
 
-function var_0_0.isHasProgressReward(arg_4_0)
-	local var_4_0 = SummonConfig.instance:getProgressRewardsByPoolId(arg_4_0.id)
-	local var_4_1 = 0
-	local var_4_2 = arg_4_0.customPickMO:getRewardCount() or 0
+function SummonMainPoolMO:isHasProgressReward()
+	local numsList = SummonConfig.instance:getProgressRewardsByPoolId(self.id)
+	local canRewardCount = 0
+	local rewardCount = self.customPickMO:getRewardCount() or 0
 
-	if var_4_0 and #var_4_0 > 0 then
-		for iter_4_0, iter_4_1 in ipairs(var_4_0) do
-			if iter_4_1[1] <= arg_4_0.summonCount then
-				var_4_1 = var_4_1 + 1
+	if numsList and #numsList > 0 then
+		for i, nums in ipairs(numsList) do
+			if nums[1] <= self.summonCount then
+				canRewardCount = canRewardCount + 1
 			end
 		end
 	end
 
-	return var_4_2 < var_4_1
+	return rewardCount < canRewardCount
 end
 
-return var_0_0
+return SummonMainPoolMO

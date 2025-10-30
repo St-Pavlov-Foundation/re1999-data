@@ -1,10 +1,12 @@
-﻿module("modules.ProjModuleStart", package.seeall)
+﻿-- chunkname: @modules/ProjModuleStart.lua
 
-local var_0_0 = class("ProjModuleStart")
+module("modules.ProjModuleStart", package.seeall)
 
-function var_0_0.start(arg_1_0)
+local ProjModuleStart = class("ProjModuleStart")
+
+function ProjModuleStart:start()
 	logNormal("ProjModuleStart:start()!!!")
-	arg_1_0:addCrashsightSceneData()
+	self:addCrashsightSceneData()
 
 	if GameResMgr.IsFromEditorDir or VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
 		if VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
@@ -13,71 +15,71 @@ function var_0_0.start(arg_1_0)
 			SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResRootDir .. "/audios")
 		end
 
-		arg_1_0:init()
+		self:init()
 	else
-		arg_1_0:resCheck()
+		self:resCheck()
 	end
 end
 
-function var_0_0.resCheck(arg_2_0)
+function ProjModuleStart:resCheck()
 	setNeedLoadModule("modules.reschecker.MassHotUpdateMgr", "MassHotUpdateMgr")
 	setNeedLoadModule("modules.reschecker.ResCheckMgr", "ResCheckMgr")
 	setNeedLoadModule("modules.common.others.SDKDataTrackExt", "SDKDataTrackExt")
 	setNeedLoadModule("modules.logic.defines.PlayerPrefsKey", "PlayerPrefsKey")
 	SDKDataTrackExt.activateExtend()
-	ResCheckMgr.instance:startCheck(arg_2_0.onResCheckFinish, arg_2_0)
+	ResCheckMgr.instance:startCheck(self.onResCheckFinish, self)
 end
 
-function var_0_0.onResCheckFinish(arg_3_0, arg_3_1)
+function ProjModuleStart:onResCheckFinish(allPass)
 	logNormal("ProjModuleStart:onResCheckFinish")
 
-	if arg_3_1 then
-		arg_3_0:init()
+	if allPass then
+		self:init()
 	else
-		arg_3_0:loadUnmatchRes()
+		self:loadUnmatchRes()
 	end
 end
 
-function var_0_0.loadUnmatchRes(arg_4_0)
-	MassHotUpdateMgr.instance:loadUnmatchRes(arg_4_0.loadUnmatchResFinish, arg_4_0)
+function ProjModuleStart:loadUnmatchRes()
+	MassHotUpdateMgr.instance:loadUnmatchRes(self.loadUnmatchResFinish, self)
 end
 
-function var_0_0.loadUnmatchResFinish(arg_5_0)
+function ProjModuleStart:loadUnmatchResFinish()
 	logNormal("ProjModuleStart:loadUnmatchResFinish")
-	arg_5_0:init()
+	self:init()
 end
 
-function var_0_0.init(arg_6_0)
-	arg_6_0:addCrashsightResCheckerV()
+function ProjModuleStart:init()
+	self:addCrashsightResCheckerV()
 	logNormal("ProjModuleStart:init()!!!")
 	SDKDataTrackMgr.instance:track(SDKDataTrackMgr.EventName.resource_load)
-	GameResMgr:InitAbDependencies(arg_6_0.onAbDependenciesInited, arg_6_0)
+	GameResMgr:InitAbDependencies(self.onAbDependenciesInited, self)
 	BootLoadingView.instance:show(0.2, booterLang("loading_res"))
 end
 
-function var_0_0.addCrashsightSceneData(arg_7_0)
-	local var_7_0 = SLFramework.GameUpdate.HotUpdateInfoMgr.LocalResVersionStr
+function ProjModuleStart:addCrashsightSceneData()
+	local resourceName = SLFramework.GameUpdate.HotUpdateInfoMgr.LocalResVersionStr
 
-	CrashSightAgent.AddSceneData("K#resVersion", var_7_0)
+	CrashSightAgent.AddSceneData("K#resVersion", resourceName)
 end
 
-function var_0_0.addCrashsightResCheckerV(arg_8_0)
-	local var_8_0 = SLFramework.FileHelper.ReadText(SLFramework.ResChecker.OutVersionPath)
+function ProjModuleStart:addCrashsightResCheckerV()
+	local markVersion = SLFramework.FileHelper.ReadText(SLFramework.ResChecker.OutVersionPath)
 
-	if string.nilorempty(var_8_0) then
-		var_8_0 = "0"
+	if string.nilorempty(markVersion) then
+		markVersion = "0"
 	end
 
-	CrashSightAgent.AddSceneData("K#resCheckerV", var_8_0)
+	CrashSightAgent.AddSceneData("K#resCheckerV", markVersion)
 end
 
-function var_0_0.onAbDependenciesInited(arg_9_0)
+function ProjModuleStart:onAbDependenciesInited()
 	logNormal("ProjModuleStart:onAbDependenciesInited()!!!")
-	arg_9_0:initFramework()
-	arg_9_0:initModuleLogic()
+	self:initFramework()
+	self:initModuleLogic()
 end
 
-function var_0_0.initFramework(arg_10_0)
+function ProjModuleStart:initFramework()
 	addGlobalModule("framework.require_framework")
 	addGlobalModule("modules.setting.require_proto")
 	addGlobalModule("modules.setting.require_modules")
@@ -85,142 +87,142 @@ function var_0_0.initFramework(arg_10_0)
 	FrameworkExtend.init()
 end
 
-function var_0_0.initModuleLogic(arg_11_0)
+function ProjModuleStart:initModuleLogic()
 	GameBranchMgr.instance:init()
 
-	local var_11_0 = addGlobalModule("modules.setting.module_mvc", "module_mvc")
+	local moduleMvc = addGlobalModule("modules.setting.module_mvc", "module_mvc")
 
-	ModuleMgr.instance:init(var_11_0, arg_11_0._onModuleIniFinish, arg_11_0)
+	ModuleMgr.instance:init(moduleMvc, self._onModuleIniFinish, self)
 end
 
-function var_0_0._onModuleIniFinish(arg_12_0)
+function ProjModuleStart:_onModuleIniFinish()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
 	addGlobalModule("modules.setting.module_views_preloader", "module_views_preloader")
 
-	local var_12_0 = addGlobalModule("modules.setting.module_views", "module_views")
+	local moduleViews = addGlobalModule("modules.setting.module_views", "module_views")
 
-	ViewMgr.instance:init(var_12_0)
+	ViewMgr.instance:init(moduleViews)
 	FullScreenViewLimitMgr.instance:init()
 	SLFramework.TimeWatch.Instance:Start()
 	ConfigMgr.instance:init("configs/excel2json/json_", "modules.configs.excel2json.lua_", "configs/datacfg_")
-	ConfigMgr.instance:loadConfigs(arg_12_0._onAllConfigLoaded, arg_12_0)
+	ConfigMgr.instance:loadConfigs(self._onAllConfigLoaded, self)
 end
 
-function var_0_0._onAllConfigLoaded(arg_13_0)
+function ProjModuleStart:_onAllConfigLoaded()
 	LangSettings.instance:init()
-	LangSettings.instance:loadLangConfig(arg_13_0._onLangConfigLoaded, arg_13_0)
+	LangSettings.instance:loadLangConfig(self._onLangConfigLoaded, self)
 end
 
-function var_0_0._onLangConfigLoaded(arg_14_0)
+function ProjModuleStart:_onLangConfigLoaded()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
-	local var_14_0 = GameResMgr.IsFromEditorDir and "direct" or "bundle"
-	local var_14_1 = ConfigMgr.instance._isAllToOne and "allToOne" or "oneToOne"
+	local loadTypeStr = GameResMgr.IsFromEditorDir and "direct" or "bundle"
+	local isAllToOne = ConfigMgr.instance._isAllToOne and "allToOne" or "oneToOne"
 
-	logNormal(var_14_0 .. " " .. var_14_1 .. " load configs cost time: " .. SLFramework.TimeWatch.Instance:Watch() .. " s")
+	logNormal(loadTypeStr .. " " .. isAllToOne .. " load configs cost time: " .. SLFramework.TimeWatch.Instance:Watch() .. " s")
 	LangSettings.instance:init()
-	SLFramework.LanguageMgr.Instance:Init(arg_14_0._onLangSettingsInit, arg_14_0)
+	SLFramework.LanguageMgr.Instance:Init(self._onLangSettingsInit, self)
 end
 
-function var_0_0._onLangSettingsInit(arg_15_0)
+function ProjModuleStart:_onLangSettingsInit()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
 	logNormal("_onLangSettingsInit, 多语言资源列表加载完成！")
-	ConstResLoader.instance:startLoad(arg_15_0._onConstResLoaded, arg_15_0)
+	ConstResLoader.instance:startLoad(self._onConstResLoaded, self)
 end
 
-function var_0_0._onConstResLoaded(arg_16_0)
+function ProjModuleStart:_onConstResLoaded()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
 	logNormal("OnConstResLoaded, 常驻内存的资源加载完毕了！")
-	SLFramework.LanguageMgr.Instance:RegisterLangImageSetter(arg_16_0._loadLangImage, arg_16_0)
-	SLFramework.LanguageMgr.Instance:RegisterLangSpriteSetImageSetter(arg_16_0._loadLangSpriteSetImage, arg_16_0)
-	SLFramework.LanguageMgr.Instance:RegisterLangTxtSetter(arg_16_0._loadLangTxt, arg_16_0)
-	SLFramework.LanguageMgr.Instance:RegisterLangCaptionsSetter(arg_16_0._loadLangCaptions, arg_16_0)
-	AudioMgr.instance:init(arg_16_0._onAudioInited, arg_16_0)
+	SLFramework.LanguageMgr.Instance:RegisterLangImageSetter(self._loadLangImage, self)
+	SLFramework.LanguageMgr.Instance:RegisterLangSpriteSetImageSetter(self._loadLangSpriteSetImage, self)
+	SLFramework.LanguageMgr.Instance:RegisterLangTxtSetter(self._loadLangTxt, self)
+	SLFramework.LanguageMgr.Instance:RegisterLangCaptionsSetter(self._loadLangCaptions, self)
+	AudioMgr.instance:init(self._onAudioInited, self)
 end
 
-function var_0_0._onAudioInited(arg_17_0, arg_17_1)
+function ProjModuleStart:_onAudioInited(ret)
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
-	if not arg_17_1 then
-		logError("ProjModuleStart._onAudioInited ret = " .. tostring(arg_17_1))
+	if not ret then
+		logError("ProjModuleStart._onAudioInited ret = " .. tostring(ret))
 	end
 
 	AudioMgr.instance:initSoundVolume()
 	AudioMgr.instance:changeEarMode()
 	BootLoadingView.instance:show(0.99, booterLang("loading_res"))
-	CameraMgr.instance:initCamera(arg_17_0._onCameraInit, arg_17_0)
+	CameraMgr.instance:initCamera(self._onCameraInit, self)
 end
 
-function var_0_0._onCameraInit(arg_18_0)
+function ProjModuleStart:_onCameraInit()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
 	GameGlobalMgr.instance:initLangFont()
-	VoiceChooseMgr.instance:start(arg_18_0._onVoiceChoose, arg_18_0)
+	VoiceChooseMgr.instance:start(self._onVoiceChoose, self)
 end
 
-function var_0_0._onVoiceChoose(arg_19_0)
+function ProjModuleStart:_onVoiceChoose()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
 	logNormal("_onVoiceChoose！")
-	arg_19_0:startLogic()
+	self:startLogic()
 end
 
-function var_0_0._loadLangImage(arg_20_0, arg_20_1, arg_20_2)
-	arg_20_1:LoadImage(arg_20_2)
+function ProjModuleStart:_loadLangImage(singleImage, refPath)
+	singleImage:LoadImage(refPath)
 end
 
-function var_0_0._loadLangSpriteSetImage(arg_21_0, arg_21_1, arg_21_2, arg_21_3)
-	arg_21_1:LoadImage(arg_21_2, arg_21_3)
+function ProjModuleStart:_loadLangSpriteSetImage(singleImage, refPath, refSpriteName)
+	singleImage:LoadImage(refPath, refSpriteName)
 end
 
-function var_0_0._loadLangTxt(arg_22_0, arg_22_1, arg_22_2)
-	if arg_22_1 and arg_22_1.text then
-		arg_22_1.text = luaLang(arg_22_2)
+function ProjModuleStart:_loadLangTxt(txtCom, langId)
+	if txtCom and txtCom.text then
+		txtCom.text = luaLang(langId)
 	end
 end
 
-function var_0_0._loadLangCaptions(arg_23_0, arg_23_1, arg_23_2, arg_23_3)
-	if arg_23_3 then
-		local var_23_0 = LangSettings.instance:getCurLang()
+function ProjModuleStart:_loadLangCaptions(captionsCom, langType, needActiveLangList)
+	if needActiveLangList then
+		local curLang = LangSettings.instance:getCurLang()
 
-		for iter_23_0 = 1, arg_23_3.Length do
-			if arg_23_3[iter_23_0 - 1] == var_23_0 then
-				gohelper.setActive(arg_23_1.gameObject, true)
+		for i = 1, needActiveLangList.Length do
+			if needActiveLangList[i - 1] == curLang then
+				gohelper.setActive(captionsCom.gameObject, true)
 
 				return
 			end
 		end
 	end
 
-	gohelper.setActive(arg_23_1.gameObject, LangSettings.instance:langCaptionsActive())
+	gohelper.setActive(captionsCom.gameObject, LangSettings.instance:langCaptionsActive())
 end
 
-function var_0_0.startLogic(arg_24_0)
+function ProjModuleStart:startLogic()
 	if BootLoadingView.instance.hasClickFix then
 		return
 	end
 
-	local var_24_0 = addGlobalModule("modules.setting.module_cmd", "module_cmd")
+	local moduleCmds = addGlobalModule("modules.setting.module_cmd", "module_cmd")
 
 	ServerTime.init()
-	LuaSocketMgr.instance:init(system_cmd, var_24_0)
+	LuaSocketMgr.instance:init(system_cmd, moduleCmds)
 	PreReciveLogicMsg.instance:init()
 	GameSceneMgr.instance:init()
 	GameGlobalMgr.instance:init()
@@ -243,8 +245,8 @@ function var_0_0.startLogic(arg_24_0)
 	end, nil, 0.167)
 end
 
-var_0_0.instance = var_0_0.New()
+ProjModuleStart.instance = ProjModuleStart.New()
 
-var_0_0.instance:start()
+ProjModuleStart.instance:start()
 
-return var_0_0
+return ProjModuleStart

@@ -263,5 +263,19 @@
       "en",
       "zh"
     ]
+  },
+  {
+    "name": "3_2_pv",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
+  },
+  {
+    "name": "3_2_activity_04",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
   }
 ]

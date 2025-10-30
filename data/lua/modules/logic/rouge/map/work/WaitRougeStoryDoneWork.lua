@@ -1,25 +1,27 @@
-﻿module("modules.logic.rouge.map.work.WaitRougeStoryDoneWork", package.seeall)
+﻿-- chunkname: @modules/logic/rouge/map/work/WaitRougeStoryDoneWork.lua
 
-local var_0_0 = class("WaitRougeStoryDoneWork", BaseWork)
+module("modules.logic.rouge.map.work.WaitRougeStoryDoneWork", package.seeall)
 
-function var_0_0.ctor(arg_1_0, arg_1_1)
-	arg_1_0.storyId = arg_1_1
+local WaitRougeStoryDoneWork = class("WaitRougeStoryDoneWork", BaseWork)
+
+function WaitRougeStoryDoneWork:ctor(storyId)
+	self.storyId = storyId
 end
 
-function var_0_0.onStart(arg_2_0)
-	if not arg_2_0.storyId or arg_2_0.storyId == 0 then
-		return arg_2_0:onDone(true)
+function WaitRougeStoryDoneWork:onStart()
+	if not self.storyId or self.storyId == 0 then
+		return self:onDone(true)
 	end
 
-	StoryController.instance:playStory(arg_2_0.storyId, nil, arg_2_0.onStoryDone, arg_2_0)
+	StoryController.instance:playStory(self.storyId, nil, self.onStoryDone, self)
 end
 
-function var_0_0.onStoryDone(arg_3_0)
-	arg_3_0:onDone(true)
+function WaitRougeStoryDoneWork:onStoryDone()
+	self:onDone(true)
 end
 
-function var_0_0.clearWork(arg_4_0)
+function WaitRougeStoryDoneWork:clearWork()
 	return
 end
 
-return var_0_0
+return WaitRougeStoryDoneWork

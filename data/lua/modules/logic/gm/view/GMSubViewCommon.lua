@@ -1,171 +1,176 @@
-﻿module("modules.logic.gm.view.GMSubViewCommon", package.seeall)
+﻿-- chunkname: @modules/logic/gm/view/GMSubViewCommon.lua
 
-local var_0_0 = class("GMSubViewCommon", GMSubViewBase)
+module("modules.logic.gm.view.GMSubViewCommon", package.seeall)
 
-function var_0_0.ctor(arg_1_0)
-	arg_1_0.tabName = "其他"
+local GMSubViewCommon = class("GMSubViewCommon", GMSubViewBase)
+
+function GMSubViewCommon:ctor()
+	self.tabName = "其他"
 end
 
 require("tolua.reflection")
 tolua.loadassembly("UnityEngine.UI")
 
-local var_0_1 = tolua.findtype("UnityEngine.UI.InputField+LineType")
-local var_0_2 = System.Enum.Parse(var_0_1, "MultiLineSubmit")
-local var_0_3 = System.Enum.Parse(var_0_1, "MultiLineNewline")
+local type_linetype = tolua.findtype("UnityEngine.UI.InputField+LineType")
+local MultiLineSubmit = System.Enum.Parse(type_linetype, "MultiLineSubmit")
+local MultiLineNewline = System.Enum.Parse(type_linetype, "MultiLineNewline")
 
-function var_0_0.initViewContent(arg_2_0)
-	if arg_2_0._inited then
+function GMSubViewCommon:initViewContent()
+	if self._inited then
 		return
 	end
 
-	GMSubViewBase.initViewContent(arg_2_0)
-	arg_2_0:addTitleSplitLine("日志上传")
-	arg_2_0:addButton("L-1", "上传此次运行日志文件", arg_2_0._onClickUploadCurLog, arg_2_0)
-	arg_2_0:addButton("L-1", "上传上次运行日志文件", arg_2_0._onClickUploadLastLog, arg_2_0)
-	arg_2_0:addTitleSplitLine("服务端GM多行输入")
+	GMSubViewBase.initViewContent(self)
+	self:addTitleSplitLine("日志上传")
+	self:addButton("L-1", "上传此次运行日志文件", self._onClickUploadCurLog, self)
+	self:addButton("L-1", "上传上次运行日志文件", self._onClickUploadLastLog, self)
+	self:addTitleSplitLine("服务端GM多行输入")
 
-	arg_2_0._gmInput = arg_2_0:addInputText("L0", "", "GM ...", nil, nil, {
+	self._gmInput = self:addInputText("L0", "", "GM ...", nil, nil, {
 		w = 1000,
 		h = 500
 	})
-	arg_2_0._gmInput.inputField.lineType = var_0_3
+	self._gmInput.inputField.lineType = MultiLineNewline
 
-	arg_2_0._gmInput:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewMultiServerGM, ""))
-	arg_2_0:addButton("L0", "发送", arg_2_0._onClickOk, arg_2_0)
-	arg_2_0:addTitleSplitLine("检查")
-	arg_2_0:addButton("L1", "资源完整性验证", arg_2_0._onClickCheckMD5, arg_2_0)
-	arg_2_0:addButton("L1", "配置描述Tag检测", arg_2_0._onClickCheckSkillTag, arg_2_0)
-	arg_2_0:addButton("L1", "扫描无用配置", arg_2_0._onClickCheckUnuseConfig, arg_2_0)
+	self._gmInput:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewMultiServerGM, ""))
+	self:addButton("L0", "发送", self._onClickOk, self)
+	self:addTitleSplitLine("检查")
+	self:addButton("L1", "资源完整性验证", self._onClickCheckMD5, self)
+	self:addButton("L1", "配置描述Tag检测", self._onClickCheckSkillTag, self)
+	self:addButton("L1", "扫描无用配置", self._onClickCheckUnuseConfig, self)
 
-	arg_2_0._langDrop = arg_2_0:addDropDown("L1", "UI多语言", nil, arg_2_0._onLangDropChange, arg_2_0)
+	self._langDrop = self:addDropDown("L1", "UI多语言", nil, self._onLangDropChange, self)
 
-	arg_2_0:addButton("L1.2", "多语言文本查找", arg_2_0._onClickLangTxtSearch, arg_2_0)
-	arg_2_0:addTitleSplitLine("BGM")
-	arg_2_0:addButton("L2", "显示BGM播放进度", arg_2_0._onClickBGMProgress, arg_2_0)
-	arg_2_0:addButton("L2", "视频资源列表", arg_2_0._onClickVideoList, arg_2_0)
-	arg_2_0:addTitleSplitLine("剧情")
+	self:addButton("L1.2", "多语言文本查找", self._onClickLangTxtSearch, self)
+	self:addTitleSplitLine("BGM")
+	self:addButton("L2", "显示BGM播放进度", self._onClickBGMProgress, self)
+	self:addButton("L2", "视频资源列表", self._onClickVideoList, self)
+	self:addTitleSplitLine("剧情")
 
-	arg_2_0._inpClearStoryValue = arg_2_0:addInputText("L3", "", "剧情id", nil, nil, {
+	self._inpClearStoryValue = self:addInputText("L3", "", "剧情id", nil, nil, {
 		w = 1000
 	})
 
-	arg_2_0:addButton("L3", "重置剧情", arg_2_0._onClickClearStory, arg_2_0)
+	self:addButton("L3", "重置剧情", self._onClickClearStory, self)
 
-	arg_2_0._inpFinishStoryValue = arg_2_0:addInputText("L4", "", "剧情id", nil, nil, {
+	self._inpFinishStoryValue = self:addInputText("L4", "", "剧情id", nil, nil, {
 		w = 1000
 	})
 
-	arg_2_0:addButton("L4", "完成剧情", arg_2_0._onClickFinishStory, arg_2_0)
-	arg_2_0:addButton("L5", "监听按键", arg_2_0._onClickListenKeyboard, arg_2_0)
-	arg_2_0:addTitleSplitLine("内置浏览器")
+	self:addButton("L4", "完成剧情", self._onClickFinishStory, self)
+	self:addButton("L5", "监听按键", self._onClickListenKeyboard, self)
+	self:addTitleSplitLine("内置浏览器")
 
-	arg_2_0._inpUrl = arg_2_0:addInputText("L6", "", "url", nil, nil, {
+	self._inpUrl = self:addInputText("L6", "", "url", nil, nil, {
 		w = 1000
 	})
 
-	arg_2_0:addButton("L6", "打开链接", arg_2_0._onClickOpenWebView, arg_2_0)
+	self:addButton("L6", "打开链接", self._onClickOpenWebView, self)
 
-	arg_2_0.recordUserToggle = arg_2_0:addToggle("L6", "携带用\n户信息", nil, nil, {
+	self.recordUserToggle = self:addToggle("L6", "携带用\n户信息", nil, nil, {
 		fsize = 20
 	})
 
-	arg_2_0:addTitleSplitLine("按键")
+	self:addTitleSplitLine("按键")
 
-	arg_2_0._switchKeyToggle = arg_2_0:addToggle("L7", "切换按键功能", arg_2_0._switchKeyInput, arg_2_0, {
+	self._switchKeyToggle = self:addToggle("L7", "切换按键功能", self._switchKeyInput, self, {
 		fsize = 40
 	})
-	arg_2_0._switchKeyToggle.isOn = UnityEngine.PlayerPrefs.GetInt("PCInputSwitch", 0) == 1
-	arg_2_0.langList = {}
-	arg_2_0.langShortCutList = {}
-	arg_2_0.curUILang = LangSettings.instance:getCurLang()
+	self._switchKeyToggle.isOn = UnityEngine.PlayerPrefs.GetInt("PCInputSwitch", 0) == 1
+	self.langList = {}
+	self.langShortCutList = {}
+	self.curUILang = LangSettings.instance:getCurLang()
 
-	local var_2_0 = 0
-	local var_2_1 = 0
+	local selectIndex = 0
+	local index = 0
 
-	for iter_2_0, iter_2_1 in pairs(LangSettings.shortcutTab) do
-		table.insert(arg_2_0.langList, iter_2_0)
-		table.insert(arg_2_0.langShortCutList, iter_2_1)
+	for lang, shortcut in pairs(LangSettings.shortcutTab) do
+		table.insert(self.langList, lang)
+		table.insert(self.langShortCutList, shortcut)
 
-		if iter_2_0 == arg_2_0.curUILang then
-			var_2_0 = var_2_1
+		if lang == self.curUILang then
+			selectIndex = index
 		end
 
-		var_2_1 = var_2_1 + 1
+		index = index + 1
 	end
 
-	arg_2_0._langDrop:ClearOptions()
-	arg_2_0._langDrop:AddOptions(arg_2_0.langShortCutList)
-	arg_2_0._langDrop:SetValue(var_2_0)
+	self._langDrop:ClearOptions()
+	self._langDrop:AddOptions(self.langShortCutList)
+	self._langDrop:SetValue(selectIndex)
 end
 
-function var_0_0._onClickUploadCurLog(arg_3_0)
+function GMSubViewCommon:_onClickUploadCurLog()
 	SendWeWorkFileHelper.SendCurLogFile()
 end
 
-function var_0_0._onClickUploadLastLog(arg_4_0)
+function GMSubViewCommon:_onClickUploadLastLog()
 	SendWeWorkFileHelper.SendLastLogFile()
 end
 
-function var_0_0._onClickOpenWebView(arg_5_0)
-	local var_5_0 = arg_5_0._inpUrl:GetText()
+function GMSubViewCommon:_onClickOpenWebView()
+	local url = self._inpUrl:GetText()
 
-	if string.nilorempty(var_5_0) then
+	if string.nilorempty(url) then
 		return
 	end
 
-	WebViewController.instance:openWebView(var_5_0, arg_5_0.recordUserToggle.isOn)
+	WebViewController.instance:openWebView(url, self.recordUserToggle.isOn)
 end
 
-function var_0_0.removeEvents(arg_6_0)
-	var_0_0.super.removeEvents(arg_6_0)
-	TaskDispatcher.cancelTask(arg_6_0._tickListenKeyboard, arg_6_0)
+function GMSubViewCommon:removeEvents()
+	GMSubViewCommon.super.removeEvents(self)
+	TaskDispatcher.cancelTask(self._tickListenKeyboard, self)
 end
 
-function var_0_0._onClickOk(arg_7_0)
-	local var_7_0 = arg_7_0._gmInput:GetText()
+function GMSubViewCommon:_onClickOk()
+	local text = self._gmInput:GetText()
 
-	if string.nilorempty(var_7_0) then
+	if string.nilorempty(text) then
 		return
 	end
 
-	PlayerPrefsHelper.setString(PlayerPrefsKey.GMToolViewMultiServerGM, var_7_0)
+	PlayerPrefsHelper.setString(PlayerPrefsKey.GMToolViewMultiServerGM, text)
 
-	local var_7_1 = string.split(var_7_0, "\n")
+	local lineList = string.split(text, "\n")
 
-	for iter_7_0, iter_7_1 in ipairs(var_7_1) do
-		iter_7_1 = string.trim(iter_7_1)
+	for _, line in ipairs(lineList) do
+		line = string.trim(line)
 
-		if not string.nilorempty(iter_7_1) then
-			GMRpc.instance:sendGMRequest(iter_7_1)
+		if not string.nilorempty(line) then
+			GMRpc.instance:sendGMRequest(line)
 		end
 	end
 end
 
-function var_0_0._onClickCheckMD5(arg_8_0)
+function GMSubViewCommon:_onClickCheckMD5()
 	MessageBoxController.instance:showMsgBoxByStr("正在验证资源完整性", MsgBoxEnum.BoxType.Yes)
 
-	local var_8_0 = ResCheckMgr.instance:_getAllLocalLang()
-	local var_8_1, var_8_2 = ResCheckMgr.instance:_getDLCInfo(var_8_0)
+	local allLocalLang = ResCheckMgr.instance:_getAllLocalLang()
+	local useDLC, allDLCLocalLang = ResCheckMgr.instance:_getDLCInfo(allLocalLang)
 
-	arg_8_0.eventDispatcher = SLFramework.GameLuaEventDispatcher.Instance
+	self.eventDispatcher = SLFramework.GameLuaEventDispatcher.Instance
 
-	arg_8_0.eventDispatcher:AddListener(arg_8_0.eventDispatcher.ResChecker_Finish, arg_8_0._onResCheckFinish, arg_8_0)
-	SLFramework.ResChecker.Instance:CheckAllRes(var_8_0, var_8_1, var_8_2)
+	self.eventDispatcher:AddListener(self.eventDispatcher.ResChecker_Finish, self._onResCheckFinish, self)
+	SLFramework.ResChecker.Instance:CheckAllRes(allLocalLang, useDLC, allDLCLocalLang)
 end
 
-function var_0_0._onResCheckFinish(arg_9_0, arg_9_1)
-	local var_9_0
-	local var_9_1 = arg_9_1 and "验证通过" or "资源完整性验证失败！！请查看日志"
+function GMSubViewCommon:_onResCheckFinish(pass)
+	local msg
 
-	arg_9_0.eventDispatcher:RemoveListener(arg_9_0.eventDispatcher.ResChecker_Finish)
+	msg = pass and "验证通过" or "资源完整性验证失败！！请查看日志"
 
-	arg_9_0.eventDispatcher = nil
+	self.eventDispatcher:RemoveListener(self.eventDispatcher.ResChecker_Finish)
 
-	MessageBoxController.instance:showSystemMsgBoxByStr(var_9_1, MsgBoxEnum.BoxType.Yes)
+	self.eventDispatcher = nil
+
+	MessageBoxController.instance:showSystemMsgBoxByStr(msg, MsgBoxEnum.BoxType.Yes)
 end
 
-function var_0_0._onClickBGMProgress(arg_10_0)
-	if PlayerPrefsHelper.getNumber(PlayerPrefsKey.GMToolViewBGMProgress, 0) == 0 then
+function GMSubViewCommon:_onClickBGMProgress()
+	local value = PlayerPrefsHelper.getNumber(PlayerPrefsKey.GMToolViewBGMProgress, 0)
+
+	if value == 0 then
 		GameFacade.showToast(ToastEnum.IconId, "show bgm progress")
 		PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewBGMProgress, 1)
 	else
@@ -174,89 +179,89 @@ function var_0_0._onClickBGMProgress(arg_10_0)
 	end
 end
 
-function var_0_0._onClickVideoList(arg_11_0)
+function GMSubViewCommon:_onClickVideoList()
 	ViewMgr.instance:openView(ViewName.GMVideoList)
 end
 
-function var_0_0._onClickClearRougeStories(arg_12_0)
-	for iter_12_0, iter_12_1 in ipairs(lua_rouge_story_list.configList) do
-		local var_12_0 = string.splitToNumber(iter_12_1.storyIdList, "#")
+function GMSubViewCommon:_onClickClearRougeStories()
+	for i, v in ipairs(lua_rouge_story_list.configList) do
+		local storyList = string.splitToNumber(v.storyIdList, "#")
 
-		for iter_12_2, iter_12_3 in ipairs(var_12_0) do
-			GMRpc.instance:sendGMRequest(string.format("delete story %s", iter_12_3))
+		for _, id in ipairs(storyList) do
+			GMRpc.instance:sendGMRequest(string.format("delete story %s", id))
 		end
 	end
 
 	StoryRpc.instance:sendGetStoryRequest()
 end
 
-function var_0_0._onClickFinishRougeStories(arg_13_0)
-	for iter_13_0, iter_13_1 in ipairs(lua_rouge_story_list.configList) do
-		local var_13_0 = string.splitToNumber(iter_13_1.storyIdList, "#")
+function GMSubViewCommon:_onClickFinishRougeStories()
+	for i, v in ipairs(lua_rouge_story_list.configList) do
+		local storyList = string.splitToNumber(v.storyIdList, "#")
 
-		for iter_13_2, iter_13_3 in ipairs(var_13_0) do
-			StoryRpc.instance:sendUpdateStoryRequest(iter_13_3, -1, 0)
+		for _, id in ipairs(storyList) do
+			StoryRpc.instance:sendUpdateStoryRequest(id, -1, 0)
 		end
 	end
 
 	StoryRpc.instance:sendGetStoryRequest()
 end
 
-function var_0_0._onClickClearStory(arg_14_0)
-	local var_14_0 = string.splitToNumber(arg_14_0._inpClearStoryValue:GetText(), "#")
+function GMSubViewCommon:_onClickClearStory()
+	local storyList = string.splitToNumber(self._inpClearStoryValue:GetText(), "#")
 
-	for iter_14_0, iter_14_1 in ipairs(var_14_0) do
-		GMRpc.instance:sendGMRequest(string.format("delete story %s", iter_14_1))
+	for _, id in ipairs(storyList) do
+		GMRpc.instance:sendGMRequest(string.format("delete story %s", id))
 	end
 
 	StoryRpc.instance:sendGetStoryRequest()
 end
 
-function var_0_0._onClickFinishStory(arg_15_0)
-	local var_15_0 = string.splitToNumber(arg_15_0._inpFinishStoryValue:GetText(), "#")
+function GMSubViewCommon:_onClickFinishStory()
+	local storyList = string.splitToNumber(self._inpFinishStoryValue:GetText(), "#")
 
-	for iter_15_0, iter_15_1 in ipairs(var_15_0) do
-		StoryRpc.instance:sendUpdateStoryRequest(iter_15_1, -1, 0)
+	for _, id in ipairs(storyList) do
+		StoryRpc.instance:sendUpdateStoryRequest(id, -1, 0)
 	end
 
 	StoryRpc.instance:sendGetStoryRequest()
 end
 
-function var_0_0._onClickListenKeyboard(arg_16_0)
-	if not arg_16_0._keyCodes then
-		arg_16_0._keyCodeStrs = {}
-		arg_16_0._keyCodes = {}
+function GMSubViewCommon:_onClickListenKeyboard()
+	if not self._keyCodes then
+		self._keyCodeStrs = {}
+		self._keyCodes = {}
 
-		local var_16_0 = UnityEngine.KeyCode
+		local KeyCodeEnum = UnityEngine.KeyCode
 
-		for iter_16_0 = 8, 329 do
-			local var_16_1 = var_16_0.IntToEnum(iter_16_0)
+		for keyCodeInt = 8, 329 do
+			local keyCode = KeyCodeEnum.IntToEnum(keyCodeInt)
 
-			if var_16_1 then
-				local var_16_2 = var_16_1:ToString()
+			if keyCode then
+				local keyCodeStr = keyCode:ToString()
 
-				table.insert(arg_16_0._keyCodes, var_16_1)
-				table.insert(arg_16_0._keyCodeStrs, var_16_2)
+				table.insert(self._keyCodes, keyCode)
+				table.insert(self._keyCodeStrs, keyCodeStr)
 			end
 		end
 	end
 
-	TaskDispatcher.cancelTask(arg_16_0._tickListenKeyboard, arg_16_0)
-	TaskDispatcher.runRepeat(arg_16_0._tickListenKeyboard, arg_16_0, 0.01)
+	TaskDispatcher.cancelTask(self._tickListenKeyboard, self)
+	TaskDispatcher.runRepeat(self._tickListenKeyboard, self, 0.01)
 	GameFacade.showToast(ToastEnum.IconId, "请按下键盘，按键码将复制到粘贴板")
 end
 
-local var_0_4 = UnityEngine.Input
+local Input = UnityEngine.Input
 
-function var_0_0._tickListenKeyboard(arg_17_0)
-	if var_0_4.anyKey then
-		for iter_17_0, iter_17_1 in ipairs(arg_17_0._keyCodes) do
-			if var_0_4.GetKey(iter_17_1) then
-				local var_17_0 = arg_17_0._keyCodeStrs[iter_17_0]
+function GMSubViewCommon:_tickListenKeyboard()
+	if Input.anyKey then
+		for i, keyCode in ipairs(self._keyCodes) do
+			if Input.GetKey(keyCode) then
+				local pressKeyStr = self._keyCodeStrs[i]
 
-				logError(var_17_0)
-				GameFacade.showToast(ToastEnum.IconId, var_17_0)
-				ZProj.GameHelper.SetSystemBuffer(var_17_0)
+				logError(pressKeyStr)
+				GameFacade.showToast(ToastEnum.IconId, pressKeyStr)
+				ZProj.GameHelper.SetSystemBuffer(pressKeyStr)
 
 				break
 			end
@@ -264,43 +269,43 @@ function var_0_0._tickListenKeyboard(arg_17_0)
 	end
 end
 
-function var_0_0._onClickCheckSkillTag(arg_18_0)
-	local var_18_0 = {}
+function GMSubViewCommon:_onClickCheckSkillTag()
+	local allNames = {}
 
-	for iter_18_0, iter_18_1 in ipairs(lua_skill_eff_desc.configList) do
-		if var_18_0[iter_18_1.name] and iter_18_1.name ~= "？？？" then
-			logError(string.format("技能Tag 重复 [%s] %d -> %d", iter_18_1.name, iter_18_1.id, var_18_0[iter_18_1.name]))
+	for _, co in ipairs(lua_skill_eff_desc.configList) do
+		if allNames[co.name] and co.name ~= "？？？" then
+			logError(string.format("技能Tag 重复 [%s] %d -> %d", co.name, co.id, allNames[co.name]))
 		end
 
-		var_18_0[iter_18_1.name] = iter_18_1.id
+		allNames[co.name] = co.id
 	end
 
 	FightConfig.instance:setGetDescFlag(true)
-	arg_18_0:_checkDescHaveTag(var_18_0, "skill_effect", "desc")
-	arg_18_0:_checkDescHaveTag(var_18_0, "skill_buff", "desc", arg_18_0._isCheckBuff)
-	arg_18_0:_checkDescHaveTag(var_18_0, "skill_eff_desc", "desc")
-	arg_18_0:_checkDescHaveTag(var_18_0, "equip_skill", "baseDesc")
-	arg_18_0:_checkDescHaveTag(var_18_0, "rule", "desc")
-	arg_18_0:_checkDescHaveTag(var_18_0, "rouge_desc", "desc")
+	self:_checkDescHaveTag(allNames, "skill_effect", "desc")
+	self:_checkDescHaveTag(allNames, "skill_buff", "desc", self._isCheckBuff)
+	self:_checkDescHaveTag(allNames, "skill_eff_desc", "desc")
+	self:_checkDescHaveTag(allNames, "equip_skill", "baseDesc")
+	self:_checkDescHaveTag(allNames, "rule", "desc")
+	self:_checkDescHaveTag(allNames, "rouge_desc", "desc")
 	FightConfig.instance:setGetDescFlag(false)
 end
 
-function var_0_0._onClickCheckUnuseConfig(arg_19_0)
-	local var_19_0 = {}
+function GMSubViewCommon:_onClickCheckUnuseConfig()
+	local allConfig = {}
 
-	for iter_19_0, iter_19_1 in ipairs(ModuleMgr.instance._moduleSettingList) do
-		local var_19_1 = iter_19_1.config
+	for i, setting in ipairs(ModuleMgr.instance._moduleSettingList) do
+		local configs = setting.config
 
-		if var_19_1 then
-			for iter_19_2, iter_19_3 in ipairs(var_19_1) do
-				local var_19_2 = _G[iter_19_3]
+		if configs then
+			for _, name in ipairs(configs) do
+				local config = _G[name]
 
-				if var_19_2 then
-					local var_19_3 = var_19_2.instance:reqConfigNames()
+				if config then
+					local reqConfigNames = config.instance:reqConfigNames()
 
-					if var_19_3 then
-						for iter_19_4, iter_19_5 in ipairs(var_19_3) do
-							var_19_0[iter_19_5] = true
+					if reqConfigNames then
+						for __, value in ipairs(reqConfigNames) do
+							allConfig[value] = true
 						end
 					end
 				end
@@ -308,98 +313,101 @@ function var_0_0._onClickCheckUnuseConfig(arg_19_0)
 		end
 	end
 
-	local var_19_4 = SLFramework.FrameworkSettings.AssetRootDir .. "/configs/excel2json/"
-	local var_19_5 = SLFramework.FileHelper.GetDirFilePaths(var_19_4)
-	local var_19_6 = ""
-	local var_19_7 = var_19_5.Length
+	local jsonPath = SLFramework.FrameworkSettings.AssetRootDir .. "/configs/excel2json/"
+	local allJson = SLFramework.FileHelper.GetDirFilePaths(jsonPath)
+	local str = ""
+	local count = allJson.Length
 
-	for iter_19_6 = 0, var_19_7 - 1 do
-		local var_19_8 = var_19_5[iter_19_6]
+	for i = 0, count - 1 do
+		local path = allJson[i]
 
-		if not string.find(var_19_8, ".meta") then
-			local var_19_9 = SLFramework.FileHelper.GetFileName(var_19_8, false)
+		if not string.find(path, ".meta") then
+			local fileName = SLFramework.FileHelper.GetFileName(path, false)
+			local configName = string.gsub(fileName, "json_", "")
 
-			if not var_19_0[string.gsub(var_19_9, "json_", "")] then
-				var_19_6 = var_19_6 .. var_19_9 .. "\n"
+			if not allConfig[configName] then
+				str = str .. fileName .. "\n"
 			end
 		end
 	end
 
-	logError(var_19_6)
+	logError(str)
 end
 
-function var_0_0._isCheckBuff(arg_20_0, arg_20_1)
-	if arg_20_1 and arg_20_1.isNoShow == 1 then
+function GMSubViewCommon:_isCheckBuff(buffCo)
+	if buffCo and buffCo.isNoShow == 1 then
 		return false
 	end
 
 	return true
 end
 
-function var_0_0._checkDescHaveTag(arg_21_0, arg_21_1, arg_21_2, arg_21_3, arg_21_4)
-	local var_21_0 = _G["lua_" .. arg_21_2]
+function GMSubViewCommon:_checkDescHaveTag(allNames, configName, fieldName, checkFunc)
+	local cls = _G["lua_" .. configName]
 
-	if not var_21_0 then
-		logError(arg_21_2 .. "配置不存在 !!!!!!!!!!!!!")
+	if not cls then
+		logError(configName .. "配置不存在 !!!!!!!!!!!!!")
 
 		return
 	end
 
-	for iter_21_0, iter_21_1 in ipairs(var_21_0.configList) do
-		local var_21_1 = iter_21_1[arg_21_3]
+	for _, co in ipairs(cls.configList) do
+		local str = co[fieldName]
 
-		if arg_21_4 and not arg_21_4(arg_21_0, iter_21_1) or var_21_1:find("不外显") then
+		if checkFunc and not checkFunc(self, co) or str:find("不外显") then
 			-- block empty
-		elseif type(var_21_1) == "string" then
-			string.gsub(var_21_1, "%[(.-)%]", function(arg_22_0)
-				if not arg_21_1[arg_22_0] then
-					logError(string.format("%s.%s id:%s tag不存在 ->  %s\n%s", arg_21_2, arg_21_3, iter_21_1[1], arg_22_0, var_21_1))
+		elseif type(str) == "string" then
+			string.gsub(str, "%[(.-)%]", function(val)
+				if not allNames[val] then
+					logError(string.format("%s.%s id:%s tag不存在 ->  %s\n%s", configName, fieldName, co[1], val, str))
 				end
 
-				return arg_22_0
+				return val
 			end)
-			string.gsub(var_21_1, "【(.-)】", function(arg_23_0)
-				if not arg_21_1[arg_23_0] then
-					logError(string.format("%s.%s id:%s tag不存在 ->  %s\n%s", arg_21_2, arg_21_3, iter_21_1[1], arg_23_0, var_21_1))
+			string.gsub(str, "【(.-)】", function(val)
+				if not allNames[val] then
+					logError(string.format("%s.%s id:%s tag不存在 ->  %s\n%s", configName, fieldName, co[1], val, str))
 				end
 
-				return arg_23_0
+				return val
 			end)
 		else
-			logError(arg_21_2 .. "." .. arg_21_3 .. "配置字段不存在 !!!!!!!!!!!!!")
+			logError(configName .. "." .. fieldName .. "配置字段不存在 !!!!!!!!!!!!!")
 
 			break
 		end
 	end
 end
 
-function var_0_0._onClickLangTxtSearch(arg_24_0, arg_24_1)
+function GMSubViewCommon:_onClickLangTxtSearch(index)
 	ViewMgr.instance:openView(ViewName.GMLangTxtView)
 end
 
-function var_0_0._onLangDropChange(arg_25_0, arg_25_1)
-	if arg_25_0.langList[arg_25_1 + 1] == arg_25_0.curUILang then
+function GMSubViewCommon:_onLangDropChange(index)
+	local lang = self.langList[index + 1]
+
+	if lang == self.curUILang then
 		return
 	end
 
-	local var_25_0 = GameConfig:GetCurLangType()
+	local old = GameConfig:GetCurLangType()
 
-	LangSettings.instance:SetCurLangType(arg_25_0.langShortCutList[arg_25_1 + 1], arg_25_0._onChangeLangTxtType2, arg_25_0)
+	LangSettings.instance:SetCurLangType(self.langShortCutList[index + 1], self._onChangeLangTxtType2, self)
 end
 
-function var_0_0._onChangeLangTxtType2(arg_26_0)
-	local var_26_0 = GameConfig:GetCurLangShortcut()
-	local var_26_1 = GameLanguageMgr.instance:getStoryIndexByShortCut(var_26_0)
+function GMSubViewCommon:_onChangeLangTxtType2()
+	local curLang = GameConfig:GetCurLangShortcut()
+	local lanIndex = GameLanguageMgr.instance:getStoryIndexByShortCut(curLang)
 
-	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(var_26_1)
-	PlayerPrefsHelper.setNumber("StoryTxtLanType", var_26_1 - 1)
+	GameLanguageMgr.instance:setLanguageTypeByStoryIndex(lanIndex)
+	PlayerPrefsHelper.setNumber("StoryTxtLanType", lanIndex - 1)
 	SettingsController.instance:changeLangTxt()
 end
 
-function var_0_0._switchKeyInput(arg_27_0, arg_27_1, arg_27_2)
-	UnityEngine.PlayerPrefs.SetInt("PCInputSwitch", arg_27_2 and 1 or 0)
+function GMSubViewCommon:_switchKeyInput(parem, isOn)
+	UnityEngine.PlayerPrefs.SetInt("PCInputSwitch", isOn and 1 or 0)
 	UnityEngine.PlayerPrefs.Save()
 	PCInputController.instance:Switch()
 end
 
-return var_0_0
+return GMSubViewCommon

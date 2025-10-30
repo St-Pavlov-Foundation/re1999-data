@@ -1,14 +1,16 @@
-﻿module("modules.logic.versionactivity1_6.v1a6_cachot.view.V1a6_CachotHeroGroupFightViewContainer", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_6/v1a6_cachot/view/V1a6_CachotHeroGroupFightViewContainer.lua
 
-local var_0_0 = class("V1a6_CachotHeroGroupFightViewContainer", BaseViewContainer)
+module("modules.logic.versionactivity1_6.v1a6_cachot.view.V1a6_CachotHeroGroupFightViewContainer", package.seeall)
 
-function var_0_0.buildViews(arg_1_0)
-	arg_1_0._heroGroupFightView = V1a6_CachotHeroGroupFightView.New()
-	arg_1_0._heroGroupLayoutView = HeroGroupFightLayoutView.New()
+local V1a6_CachotHeroGroupFightViewContainer = class("V1a6_CachotHeroGroupFightViewContainer", BaseViewContainer)
 
-	return {
-		arg_1_0._heroGroupLayoutView,
-		arg_1_0._heroGroupFightView,
+function V1a6_CachotHeroGroupFightViewContainer:buildViews()
+	self._heroGroupFightView = V1a6_CachotHeroGroupFightView.New()
+	self._heroGroupLayoutView = HeroGroupFightLayoutView.New()
+
+	local views = {
+		self._heroGroupLayoutView,
+		self._heroGroupFightView,
 		HeroGroupAnimView.New(),
 		V1a6_CachotHeroGroupListView.New(),
 		HeroGroupFightViewLevel.New(),
@@ -18,72 +20,76 @@ function var_0_0.buildViews(arg_1_0)
 		V1a5HeroGroupBuildingView.New(),
 		TabViewGroup.New(1, "#go_container/btnContain/commonBtns")
 	}
+
+	return views
 end
 
-function var_0_0.getHeroGroupFightView(arg_2_0)
-	return arg_2_0._heroGroupFightView
+function V1a6_CachotHeroGroupFightViewContainer:getHeroGroupFightView()
+	return self._heroGroupFightView
 end
 
-function var_0_0.beforeEnterFight(arg_3_0)
+function V1a6_CachotHeroGroupFightViewContainer:beforeEnterFight()
 	return
 end
 
-function var_0_0.buildTabViews(arg_4_0, arg_4_1)
-	if arg_4_1 == 1 then
-		local var_4_0 = arg_4_0:getHelpId()
-		local var_4_1 = not arg_4_0:_checkHideHomeBtn()
+function V1a6_CachotHeroGroupFightViewContainer:buildTabViews(tabContainerId)
+	if tabContainerId == 1 then
+		local helpId = self:getHelpId()
+		local showHome = not self:_checkHideHomeBtn()
 
-		arg_4_0._navigateButtonsView = NavigateButtonsView.New({
+		self._navigateButtonsView = NavigateButtonsView.New({
 			true,
-			var_4_1,
-			var_4_0 ~= nil
-		}, var_4_0, arg_4_0._closeCallback, nil, nil, arg_4_0)
+			showHome,
+			helpId ~= nil
+		}, helpId, self._closeCallback, nil, nil, self)
 
-		arg_4_0._navigateButtonsView:setCloseCheck(arg_4_0.defaultOverrideCloseCheck, arg_4_0)
-
-		return {
-			arg_4_0._navigateButtonsView
-		}
-	elseif arg_4_1 == 2 then
-		local var_4_2 = CurrencyEnum.CurrencyType
-		local var_4_3 = arg_4_0:_checkHidePowerCurrencyBtn() and {} or {
-			var_4_2.Power
-		}
+		self._navigateButtonsView:setCloseCheck(self.defaultOverrideCloseCheck, self)
 
 		return {
-			CurrencyView.New(var_4_3)
+			self._navigateButtonsView
+		}
+	elseif tabContainerId == 2 then
+		local currencyType = CurrencyEnum.CurrencyType
+		local hidePower = self:_checkHidePowerCurrencyBtn()
+		local currencyParam = hidePower and {} or {
+			currencyType.Power
+		}
+
+		return {
+			CurrencyView.New(currencyParam)
 		}
 	end
 end
 
-function var_0_0.getHelpId(arg_5_0)
+function V1a6_CachotHeroGroupFightViewContainer:getHelpId()
 	return HelpEnum.HelpId.Cachot1_6TotalHelp
 end
 
-function var_0_0._closeCallback(arg_6_0)
-	arg_6_0:closeThis()
+function V1a6_CachotHeroGroupFightViewContainer:_closeCallback()
+	self:closeThis()
 
-	if arg_6_0:handleVersionActivityCloseCall() then
+	if self:handleVersionActivityCloseCall() then
 		return
 	end
 
-	local var_6_0 = HeroGroupModel.instance.episodeId
+	local episodeId = HeroGroupModel.instance.episodeId
+	local episodeCO = DungeonConfig.instance:getEpisodeCO(episodeId)
 
-	if DungeonConfig.instance:getEpisodeCO(var_6_0).type == DungeonEnum.EpisodeType.Explore then
+	if episodeCO.type == DungeonEnum.EpisodeType.Explore then
 		ExploreController.instance:enterExploreScene()
 	else
 		MainController.instance:enterMainScene(true, false)
 
 		if TeachNoteModel.instance:isJumpEnter() then
 			TeachNoteModel.instance:setJumpEnter(false)
-			TeachNoteController.instance:enterTeachNoteView(var_6_0, true)
+			TeachNoteController.instance:enterTeachNoteView(episodeId, true)
 
 			DungeonModel.instance.curSendEpisodeId = nil
 		end
 	end
 end
 
-function var_0_0.handleVersionActivityCloseCall(arg_7_0)
+function V1a6_CachotHeroGroupFightViewContainer:handleVersionActivityCloseCall()
 	if EnterActivityViewOnExitFightSceneHelper.checkCurrentIsActivityFight() then
 		EnterActivityViewOnExitFightSceneHelper.enterCurrentActivity(true, true)
 
@@ -91,51 +97,55 @@ function var_0_0.handleVersionActivityCloseCall(arg_7_0)
 	end
 end
 
-function var_0_0._checkHideHomeBtn(arg_8_0)
+function V1a6_CachotHeroGroupFightViewContainer:_checkHideHomeBtn()
 	return true
 end
 
-var_0_0._hideHomeBtnEpisodeType = {
+V1a6_CachotHeroGroupFightViewContainer._hideHomeBtnEpisodeType = {
 	[DungeonEnum.EpisodeType.Act1_3Role1Chess] = true,
 	[DungeonEnum.EpisodeType.Act1_3Role2Chess] = true
 }
 
-function var_0_0.checkShowHomeByEpisodeType(arg_9_0)
-	local var_9_0 = HeroGroupModel.instance.episodeId
-	local var_9_1 = DungeonConfig.instance:getEpisodeCO(var_9_0)
+function V1a6_CachotHeroGroupFightViewContainer:checkShowHomeByEpisodeType()
+	local episodeId = HeroGroupModel.instance.episodeId
+	local episodeCfg = DungeonConfig.instance:getEpisodeCO(episodeId)
 
-	return var_0_0._hideHomeBtnEpisodeType[var_9_1.type]
+	return V1a6_CachotHeroGroupFightViewContainer._hideHomeBtnEpisodeType[episodeCfg.type]
 end
 
-function var_0_0._checkHidePowerCurrencyBtn(arg_10_0)
-	return (arg_10_0:checkHidePowerCurrencyBtnByEpisodeType())
+function V1a6_CachotHeroGroupFightViewContainer:_checkHidePowerCurrencyBtn()
+	local hidePowerCurrencyBtn = self:checkHidePowerCurrencyBtnByEpisodeType()
+
+	return hidePowerCurrencyBtn
 end
 
-var_0_0._hidePowerCurrencyBtnEpisodeType = {
+V1a6_CachotHeroGroupFightViewContainer._hidePowerCurrencyBtnEpisodeType = {
 	[DungeonEnum.EpisodeType.Act1_3Role1Chess] = true,
 	[DungeonEnum.EpisodeType.Act1_3Role2Chess] = true
 }
 
-function var_0_0.checkHidePowerCurrencyBtnByEpisodeType(arg_11_0)
-	local var_11_0 = HeroGroupModel.instance.episodeId
-	local var_11_1 = DungeonConfig.instance:getEpisodeCO(var_11_0)
+function V1a6_CachotHeroGroupFightViewContainer:checkHidePowerCurrencyBtnByEpisodeType()
+	local episodeId = HeroGroupModel.instance.episodeId
+	local episodeCfg = DungeonConfig.instance:getEpisodeCO(episodeId)
 
-	return var_0_0._hidePowerCurrencyBtnEpisodeType[var_11_1.type]
+	return V1a6_CachotHeroGroupFightViewContainer._hidePowerCurrencyBtnEpisodeType[episodeCfg.type]
 end
 
-function var_0_0.setNavigateOverrideClose(arg_12_0, arg_12_1, arg_12_2)
-	arg_12_0._navigateButtonsView:setOverrideClose(arg_12_1, arg_12_2)
+function V1a6_CachotHeroGroupFightViewContainer:setNavigateOverrideClose(callBack, callbackObject)
+	self._navigateButtonsView:setOverrideClose(callBack, callbackObject)
 end
 
-function var_0_0.defaultOverrideCloseCheck(arg_13_0, arg_13_1, arg_13_2)
-	local var_13_0 = DungeonModel.instance.curSendChapterId
+function V1a6_CachotHeroGroupFightViewContainer:defaultOverrideCloseCheck(reallyClose, reallyCloseObj)
+	local chapterId = DungeonModel.instance.curSendChapterId
+	local chapterCo = DungeonConfig.instance:getChapterCO(chapterId)
+	local actId = chapterCo.actId
 
-	if DungeonConfig.instance:getChapterCO(var_13_0).actId == VersionActivityEnum.ActivityId.Act109 then
-		local function var_13_1()
-			arg_13_1(arg_13_2)
+	if actId == VersionActivityEnum.ActivityId.Act109 then
+		local function yesFunc()
+			reallyClose(reallyCloseObj)
 		end
 
-		GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, var_13_1)
+		GameFacade.showMessageBox(MessageBoxIdDefine.QuitPushBoxEpisode, MsgBoxEnum.BoxType.Yes_No, yesFunc)
 
 		return false
 	end
@@ -143,20 +153,20 @@ function var_0_0.defaultOverrideCloseCheck(arg_13_0, arg_13_1, arg_13_2)
 	return true
 end
 
-function var_0_0.onContainerInit(arg_15_0)
-	HelpController.instance:registerCallback(HelpEvent.RefreshHelp, arg_15_0.refreshHelpBtnIcon, arg_15_0)
+function V1a6_CachotHeroGroupFightViewContainer:onContainerInit()
+	HelpController.instance:registerCallback(HelpEvent.RefreshHelp, self.refreshHelpBtnIcon, self)
 end
 
-function var_0_0.onContainerOpenFinish(arg_16_0)
-	arg_16_0._navigateButtonsView:resetOnCloseViewAudio(AudioEnum.UI.UI_Team_close)
+function V1a6_CachotHeroGroupFightViewContainer:onContainerOpenFinish()
+	self._navigateButtonsView:resetOnCloseViewAudio(AudioEnum.UI.UI_Team_close)
 end
 
-function var_0_0.onContainerDestroy(arg_17_0)
-	HelpController.instance:unregisterCallback(HelpEvent.RefreshHelp, arg_17_0.refreshHelpBtnIcon, arg_17_0)
+function V1a6_CachotHeroGroupFightViewContainer:onContainerDestroy()
+	HelpController.instance:unregisterCallback(HelpEvent.RefreshHelp, self.refreshHelpBtnIcon, self)
 end
 
-function var_0_0.refreshHelpBtnIcon(arg_18_0)
-	arg_18_0._navigateButtonsView:changerHelpId(arg_18_0:getHelpId())
+function V1a6_CachotHeroGroupFightViewContainer:refreshHelpBtnIcon()
+	self._navigateButtonsView:changerHelpId(self:getHelpId())
 end
 
-return var_0_0
+return V1a6_CachotHeroGroupFightViewContainer

@@ -1,65 +1,67 @@
-﻿module("modules.logic.versionactivity.controller.VersionActivityDungeonController", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity/controller/VersionActivityDungeonController.lua
 
-local var_0_0 = class("VersionActivityDungeonController", BaseController)
+module("modules.logic.versionactivity.controller.VersionActivityDungeonController", package.seeall)
 
-function var_0_0.onInit(arg_1_0)
+local VersionActivityDungeonController = class("VersionActivityDungeonController", BaseController)
+
+function VersionActivityDungeonController:onInit()
 	return
 end
 
-function var_0_0.reInit(arg_2_0)
+function VersionActivityDungeonController:reInit()
 	return
 end
 
-function var_0_0.openVersionActivityDungeonMapView(arg_3_0, arg_3_1, arg_3_2, arg_3_3, arg_3_4, arg_3_5)
-	arg_3_0.rpcCallback = arg_3_3
-	arg_3_0.rpcCallbackObj = arg_3_4
-	arg_3_0.openViewParam = {
-		chapterId = arg_3_1,
-		episodeId = arg_3_2
+function VersionActivityDungeonController:openVersionActivityDungeonMapView(chapterId, episodeId, rpcCallback, rpcCallbackObj, otherViewParam)
+	self.rpcCallback = rpcCallback
+	self.rpcCallbackObj = rpcCallbackObj
+	self.openViewParam = {
+		chapterId = chapterId,
+		episodeId = episodeId
 	}
 
-	if arg_3_5 then
-		for iter_3_0, iter_3_1 in pairs(arg_3_5) do
-			arg_3_0.openViewParam[iter_3_0] = iter_3_1
+	if otherViewParam then
+		for key, value in pairs(otherViewParam) do
+			self.openViewParam[key] = value
 		end
 	end
 
 	TaskRpc.instance:sendGetTaskInfoRequest({
 		TaskEnum.TaskType.ActivityDungeon
-	}, arg_3_0._openVersionActivityDungeonMapView, arg_3_0)
+	}, self._openVersionActivityDungeonMapView, self)
 end
 
-function var_0_0._openVersionActivityDungeonMapView(arg_4_0)
-	ViewMgr.instance:openView(ViewName.VersionActivityDungeonMapView, arg_4_0.openViewParam)
+function VersionActivityDungeonController:_openVersionActivityDungeonMapView()
+	ViewMgr.instance:openView(ViewName.VersionActivityDungeonMapView, self.openViewParam)
 
-	if arg_4_0.rpcCallback then
-		arg_4_0.rpcCallback(arg_4_0.rpcCallbackObj)
+	if self.rpcCallback then
+		self.rpcCallback(self.rpcCallbackObj)
 	end
 end
 
-function var_0_0.getEpisodeMapConfig(arg_5_0, arg_5_1)
-	local var_5_0 = DungeonConfig.instance:getEpisodeCO(arg_5_1)
+function VersionActivityDungeonController:getEpisodeMapConfig(episodeId)
+	local episodeCo = DungeonConfig.instance:getEpisodeCO(episodeId)
 
-	if var_5_0.chapterId == VersionActivityEnum.DungeonChapterId.LeiMiTeBeiHard then
-		local var_5_1 = DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(arg_5_1)
-		local var_5_2 = DungeonConfig.instance:getChapterEpisodeCOList(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)
+	if episodeCo.chapterId == VersionActivityEnum.DungeonChapterId.LeiMiTeBeiHard then
+		local index = DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(episodeId)
+		local episodeList = DungeonConfig.instance:getChapterEpisodeCOList(VersionActivityEnum.DungeonChapterId.LeiMiTeBei)
 
-		for iter_5_0, iter_5_1 in ipairs(var_5_2) do
-			if var_5_1 == DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(iter_5_1.id) then
-				var_5_0 = iter_5_1
+		for _, config in ipairs(episodeList) do
+			if index == DungeonConfig.instance:getEpisodeLevelIndexByEpisodeId(config.id) then
+				episodeCo = config
 
 				break
 			end
 		end
 	else
-		while var_5_0.chapterId ~= VersionActivityEnum.DungeonChapterId.LeiMiTeBei do
-			var_5_0 = DungeonConfig.instance:getEpisodeCO(var_5_0.preEpisode)
+		while episodeCo.chapterId ~= VersionActivityEnum.DungeonChapterId.LeiMiTeBei do
+			episodeCo = DungeonConfig.instance:getEpisodeCO(episodeCo.preEpisode)
 		end
 	end
 
-	return DungeonConfig.instance:getChapterMapCfg(VersionActivityEnum.DungeonChapterId.LeiMiTeBei, var_5_0.preEpisode)
+	return DungeonConfig.instance:getChapterMapCfg(VersionActivityEnum.DungeonChapterId.LeiMiTeBei, episodeCo.preEpisode)
 end
 
-var_0_0.instance = var_0_0.New()
+VersionActivityDungeonController.instance = VersionActivityDungeonController.New()
 
-return var_0_0
+return VersionActivityDungeonController

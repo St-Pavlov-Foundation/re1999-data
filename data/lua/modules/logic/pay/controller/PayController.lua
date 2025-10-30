@@ -1,171 +1,180 @@
-﻿module("modules.logic.pay.controller.PayController", package.seeall)
+﻿-- chunkname: @modules/logic/pay/controller/PayController.lua
 
-local var_0_0 = class("PayController", BaseController)
+module("modules.logic.pay.controller.PayController", package.seeall)
 
-function var_0_0.onInit(arg_1_0)
+local PayController = class("PayController", BaseController)
+
+function PayController:onInit()
 	return
 end
 
-function var_0_0.reInit(arg_2_0)
+function PayController:reInit()
 	return
 end
 
-function var_0_0.onInitFinish(arg_3_0)
+function PayController:onInitFinish()
 	return
 end
 
-function var_0_0.addConstEvents(arg_4_0)
-	SDKMgr.instance:setPayCallBack(arg_4_0._onPayCallback, arg_4_0)
-	arg_4_0:registerCallback(PayEvent.GetSignSuccess, arg_4_0._onGetSignSuccess, arg_4_0)
-	arg_4_0:registerCallback(PayEvent.GetSignFailed, arg_4_0._onGetSignFailed, arg_4_0)
-	arg_4_0:registerCallback(PayEvent.PayFinished, arg_4_0._onPayFinished, arg_4_0)
-	arg_4_0:registerCallback(PayEvent.PayFailed, arg_4_0._onPayFailed, arg_4_0)
+function PayController:addConstEvents()
+	SDKMgr.instance:setPayCallBack(self._onPayCallback, self)
+	self:registerCallback(PayEvent.GetSignSuccess, self._onGetSignSuccess, self)
+	self:registerCallback(PayEvent.GetSignFailed, self._onGetSignFailed, self)
+	self:registerCallback(PayEvent.PayFinished, self._onPayFinished, self)
+	self:registerCallback(PayEvent.PayFailed, self._onPayFailed, self)
 end
 
-function var_0_0.startPay(arg_5_0, arg_5_1, arg_5_2)
+function PayController:startPay(goodsId, selectInfos, isDict)
 	if not GameChannelConfig.isXfsdk() and PayModel.instance:getSandboxEnable() ~= true then
 		return
 	end
 
 	UIBlockMgr.instance:startBlock("charging")
-	ChargeRpc.instance:sendNewOrderRequest(arg_5_1, arg_5_2)
+
+	if isDict then
+		ChargeRpc.instance:sendDictNewOrderRequest(goodsId, selectInfos)
+	else
+		ChargeRpc.instance:sendNewOrderRequest(goodsId, selectInfos)
+	end
 end
 
-function var_0_0._onGetSignSuccess(arg_6_0)
+function PayController:_onGetSignSuccess()
 	UIBlockMgr.instance:endBlock("charging")
 
 	if GameFacade.isKOLTest() then
 		return
 	end
 
-	local var_6_0 = StatModel.instance:getPayInfo()
+	local payInfo = StatModel.instance:getPayInfo()
 
 	if PayModel.instance:getSandboxEnable() then
 		ViewMgr.instance:openView(ViewName.SDKSandboxPayView, {
 			payInfo = PayModel.instance:getGamePayInfo()
 		})
 	else
-		SDKMgr.instance:payGoods(var_6_0)
+		SDKMgr.instance:payGoods(payInfo)
 	end
 end
 
-function var_0_0._onGetSignFailed(arg_7_0)
+function PayController:_onGetSignFailed()
 	UIBlockMgr.instance:endBlock("charging")
 	PayModel.instance:clearOrderInfo()
 end
 
-function var_0_0._onPayFinished(arg_8_0)
+function PayController:_onPayFinished()
 	PayModel.instance:clearOrderInfo()
 end
 
-function var_0_0._onPayFailed(arg_9_0)
+function PayController:_onPayFailed()
 	PayModel.instance:clearOrderInfo()
 end
 
-function var_0_0._onPayCallback(arg_10_0, arg_10_1, arg_10_2)
-	if arg_10_1 == PayEnum.PayResultCode.PayFinish then
+function PayController:_onPayCallback(code, msg)
+	if code == PayEnum.PayResultCode.PayFinish then
 		-- block empty
-	elseif arg_10_1 == PayEnum.PayResultCode.PayCancel then
+	elseif code == PayEnum.PayResultCode.PayCancel then
 		-- block empty
-	elseif arg_10_1 == PayEnum.PayResultCode.PayInfoFail then
+	elseif code == PayEnum.PayResultCode.PayInfoFail then
 		-- block empty
-	elseif arg_10_1 == PayEnum.PayResultCode.PayError then
+	elseif code == PayEnum.PayResultCode.PayError then
 		-- block empty
-	elseif arg_10_1 == PayEnum.PayResultCode.PayOrderCancel then
+	elseif code == PayEnum.PayResultCode.PayOrderCancel then
 		-- block empty
-	elseif arg_10_1 == PayEnum.PayResultCode.PayChannelFail then
+	elseif code == PayEnum.PayResultCode.PayChannelFail then
 		-- block empty
 	else
-		logNormal("支付异常 : " .. arg_10_1 .. ":" .. arg_10_2)
-		GameFacade.showToast(ToastEnum.PayError, arg_10_2, arg_10_1)
-		var_0_0.instance:dispatchEvent(PayEvent.PayFailed)
+		logNormal("支付异常 : " .. code .. ":" .. msg)
+		GameFacade.showToast(ToastEnum.PayError, msg, code)
+		PayController.instance:dispatchEvent(PayEvent.PayFailed)
 	end
 end
 
-function var_0_0.onReceiveMaterialChangePush(arg_11_0, arg_11_1)
-	if not arg_11_1 or #arg_11_1 == 0 then
+function PayController:onReceiveMaterialChangePush(materialDataMOList)
+	if not materialDataMOList or #materialDataMOList == 0 then
 		return
 	end
 
-	local var_11_0 = PayModel.instance:getQuickUseInfo()
+	local info = PayModel.instance:getQuickUseInfo()
 
-	if not var_11_0 then
+	if not info then
 		return
 	end
 
-	local var_11_1 = {}
+	local itemId2GotCountDict = {}
 
-	for iter_11_0, iter_11_1 in ipairs(arg_11_1) do
-		local var_11_2 = iter_11_1.materilType
-		local var_11_3 = iter_11_1.materilId
-		local var_11_4 = iter_11_1.quantity or 0
+	for i, mo in ipairs(materialDataMOList) do
+		local materilType = mo.materilType
+		local materilId = mo.materilId
+		local quantity = mo.quantity or 0
 
-		var_11_1[var_11_2] = var_11_1[var_11_2] or {}
+		itemId2GotCountDict[materilType] = itemId2GotCountDict[materilType] or {}
 
-		local var_11_5 = var_11_1[var_11_2][var_11_3] or 0
+		local cur = itemId2GotCountDict[materilType][materilId] or 0
 
-		var_11_1[var_11_2][var_11_3] = var_11_5 + var_11_4
+		itemId2GotCountDict[materilType][materilId] = cur + quantity
 	end
 
-	local var_11_6 = {}
+	local hasNumDict = {}
 
-	for iter_11_2, iter_11_3 in ipairs(var_11_0.itemList) do
-		local var_11_7 = iter_11_3[1]
-		local var_11_8 = iter_11_3[2]
-		local var_11_9 = iter_11_3[3]
+	for i, v in ipairs(info.itemList) do
+		local itemType = v[1]
+		local itemId = v[2]
+		local useCount = v[3]
 
-		if var_11_1[var_11_7] and var_11_1[var_11_7][var_11_8] then
-			var_11_6[var_11_7] = var_11_6[var_11_7] or {}
+		if itemId2GotCountDict[itemType] and itemId2GotCountDict[itemType][itemId] then
+			hasNumDict[itemType] = hasNumDict[itemType] or {}
 
-			local var_11_10 = var_11_6[var_11_7][var_11_8]
+			local has = hasNumDict[itemType][itemId]
 
-			if not var_11_10 then
-				local var_11_11 = var_11_1[var_11_7][var_11_8]
+			if not has then
+				local maxUseCount = itemId2GotCountDict[itemType][itemId]
 
-				var_11_10 = math.min(ItemModel.instance:getItemQuantity(var_11_7, var_11_8) or 0, var_11_11)
-				var_11_6[var_11_7][var_11_8] = var_11_10
+				has = math.min(ItemModel.instance:getItemQuantity(itemType, itemId) or 0, maxUseCount)
+				hasNumDict[itemType][itemId] = has
 			end
 
-			if var_11_10 - var_11_9 < 0 then
-				var_11_9 = var_11_10
-				var_11_10 = 0
+			local newHas = has - useCount
+
+			if newHas < 0 then
+				useCount = has
+				has = 0
 			end
 
-			if var_11_9 > 0 then
-				local var_11_12 = var_11_9 == 1
-				local var_11_13 = var_11_12 and MessageBoxIdDefine.ChargeStoreQuickUseTip or MessageBoxIdDefine.ChargeStoreQuickUseTipWithNum
-				local var_11_14 = ItemModel.instance:getItemConfig(var_11_7, var_11_8)
-				local var_11_15 = {
-					var_11_14.name,
-					not var_11_12 and var_11_9 or nil
+			if useCount > 0 then
+				local isOnlyOne = useCount == 1
+				local messageBoxId = isOnlyOne and MessageBoxIdDefine.ChargeStoreQuickUseTip or MessageBoxIdDefine.ChargeStoreQuickUseTipWithNum
+				local itemCo = ItemModel.instance:getItemConfig(itemType, itemId)
+				local extra = {
+					itemCo.name,
+					not isOnlyOne and useCount or nil
 				}
-				local var_11_16 = {
-					messageBoxId = var_11_13,
-					msg = MessageBoxConfig.instance:getMessage(var_11_13),
+				local viewParam = {
+					messageBoxId = messageBoxId,
+					msg = MessageBoxConfig.instance:getMessage(messageBoxId),
 					msgBoxType = MsgBoxEnum.BoxType.Yes_No,
 					yesCallback = function()
-						local var_12_0 = {
+						local list = {
 							{
-								materialId = var_11_8,
-								quantity = var_11_9
+								materialId = itemId,
+								quantity = useCount
 							}
 						}
 
 						CharacterModel.instance:setGainHeroViewShowState(false)
 						CharacterModel.instance:setGainHeroViewNewShowState(false)
-						ItemRpc.instance:sendUseItemRequest(var_12_0, 0)
+						ItemRpc.instance:sendUseItemRequest(list, 0)
 					end,
-					extra = var_11_15
+					extra = extra
 				}
 
-				PopupController.instance:addPopupView(PopupEnum.PriorityType.ChargeStoreQuickUseTip, ViewName.MessageBoxView, var_11_16)
+				PopupController.instance:addPopupView(PopupEnum.PriorityType.ChargeStoreQuickUseTip, ViewName.MessageBoxView, viewParam)
 			end
 
-			var_11_6[var_11_7][var_11_8] = var_11_10
+			hasNumDict[itemType][itemId] = has
 		end
 	end
 end
 
-var_0_0.instance = var_0_0.New()
+PayController.instance = PayController.New()
 
-return var_0_0
+return PayController

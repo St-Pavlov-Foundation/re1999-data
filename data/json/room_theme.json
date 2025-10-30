@@ -262,5 +262,17 @@
     "collectionBonus": "11#13103#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3201,
+    "name": "塞纳重奏",
+    "nameEn": "Echoes of the Seine",
+    "desc": "幻影自何处而来？行人高歌着，亲吻她如梦的面纱。",
+    "rewardIcon": "1702200",
+    "building": "13201|13202|13203",
+    "packages": "3201|3202|3203|3204",
+    "collectionBonus": "11#13203#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

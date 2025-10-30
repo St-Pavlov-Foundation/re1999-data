@@ -7742,5 +7742,192 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 32001,
+    "desc": "玛蒂尔达轶事回忆道具解锁指引",
+    "isOnline": 1,
+    "trigger": "OpenView#V3A2_RoleStoryGameView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32002,
+    "desc": "玛蒂尔达轶事选项指引",
+    "isOnline": 1,
+    "trigger": "OpenView#NecrologistStoryView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32003,
+    "desc": "尤提姆图鉴引导",
+    "isOnline": 1,
+    "trigger": "EpisodeFinishAndInMainScene#10115",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32010,
+    "desc": "自走棋总览引导",
+    "isOnline": 1,
+    "trigger": "OpenView#AutoChessMainView",
+    "invalid": "ActivityEnd#13211",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32011,
+    "desc": "自走棋外围引导",
+    "isOnline": 1,
+    "trigger": "OpenView#AutoChessMainView",
+    "invalid": "ActivityEnd#13211",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32012,
+    "desc": "自走棋开局引导",
+    "isOnline": 1,
+    "trigger": "OpenView#AutoChessMainView",
+    "invalid": "ActivityEnd#13211",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32013,
+    "desc": "自走棋战斗引导",
+    "isOnline": 1,
+    "trigger": "OpenView#AutoChessMainView",
+    "invalid": "ActivityEnd#13211",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32020,
+    "desc": "回调蓝玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#HuiDiaoLanGameView",
+    "invalid": "ActivityEnd#13229",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32021,
+    "desc": "回调蓝玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#HuiDiaoLanGameView",
+    "invalid": "ActivityEnd#13229",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32022,
+    "desc": "回调蓝玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#HuiDiaoLanGameView",
+    "invalid": "ActivityEnd#13229",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32023,
+    "desc": "回调蓝玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#HuiDiaoLanGameView",
+    "invalid": "ActivityEnd#13229",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32024,
+    "desc": "回调蓝玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#HuiDiaoLanGameView",
+    "invalid": "ActivityEnd#13229",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32025,
+    "desc": "贝丽尔玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#BeiLiErGameView",
+    "invalid": "ActivityEnd#13231",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32026,
+    "desc": "贝丽尔玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#BeiLiErGameView",
+    "invalid": "ActivityEnd#13231",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32027,
+    "desc": "贝丽尔玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#BeiLiErGameView",
+    "invalid": "ActivityEnd#13231",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32028,
+    "desc": "贝丽尔玩法引导",
+    "isOnline": 1,
+    "trigger": "OpenView#BeiLiErGameView",
+    "invalid": "ActivityEnd#13231",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32029,
+    "desc": "鬃毛指引",
+    "isOnline": 1,
+    "trigger": "OpenView#V3a2_BossRush_MainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

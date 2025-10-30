@@ -1,9 +1,12 @@
-﻿module("projbooter.config.BooterLoadingConfig", package.seeall)
+﻿-- chunkname: @projbooter/config/BooterLoadingConfig.lua
 
-local var_0_0 = {
+module("projbooter.config.BooterLoadingConfig", package.seeall)
+
+local BooterLoadingConfig = {
 	{
 		titleen = "The Storm",
 		bg = "originbg1",
+		episodeId = 0,
 		id = 1,
 		title = "暴雨",
 		weight = 100,
@@ -12,6 +15,7 @@ local var_0_0 = {
 	{
 		titleen = "Storm Syndrome",
 		bg = "originbg15",
+		episodeId = 0,
 		id = 2,
 		title = "暴雨症候/时代病",
 		weight = 100,
@@ -20,6 +24,7 @@ local var_0_0 = {
 	{
 		titleen = "Modern era",
 		bg = "originbg3",
+		episodeId = 0,
 		id = 3,
 		title = "1999年",
 		weight = 100,
@@ -28,6 +33,7 @@ local var_0_0 = {
 	{
 		titleen = "Arcanum",
 		bg = "originbg8",
+		episodeId = 0,
 		id = 4,
 		title = "神秘学",
 		weight = 100,
@@ -36,6 +42,7 @@ local var_0_0 = {
 	{
 		titleen = "Arcanist",
 		bg = "originbg9",
+		episodeId = 0,
 		id = 5,
 		title = "神秘学家",
 		weight = 100,
@@ -44,6 +51,7 @@ local var_0_0 = {
 	{
 		titleen = "Laplace Scientific Computing Center",
 		bg = "originbg10",
+		episodeId = 0,
 		id = 6,
 		title = "拉普拉斯科算中心",
 		weight = 100,
@@ -52,6 +60,7 @@ local var_0_0 = {
 	{
 		titleen = "Zeno Armaments Engineering and Technology Academy",
 		bg = "originbg7",
+		episodeId = 0,
 		id = 7,
 		title = "芝诺军备学院",
 		weight = 100,
@@ -60,6 +69,7 @@ local var_0_0 = {
 	{
 		titleen = "The Uluru Games",
 		bg = "originbg12",
+		episodeId = 0,
 		id = 8,
 		title = "乌卢鲁运动会",
 		weight = 100,
@@ -68,17 +78,54 @@ local var_0_0 = {
 	{
 		titleen = "Artificial Somnambulism",
 		bg = "originbg13",
+		episodeId = 0,
 		id = 9,
 		title = "人工梦游",
 		weight = 100,
 		desc = "在玻璃琴的辅助下，通过声音的赫兹引导，人工梦游可以涉足你的深层颅脑意识。\n梦境？回忆？幻象？情绪？人工梦游都可以替你制造。"
+	},
+	{
+		titleen = "Regulus's Record",
+		bg = "originbg11",
+		episodeId = 10730,
+		id = 10,
+		title = "星锑唱片",
+		weight = 100,
+		desc = "星锑空间望远镜和星锑唱片穿越暴雨，在近地轨道旋转十二年，最后坠落在奥尔德堡。\n它被证实是具备微弱暴雨免疫性能的材料，同时，它也是伟大的摇滚海盗最爱的唱片。"
+	},
+	{
+		titleen = "The Hofmann Knot",
+		bg = "originbg14",
+		episodeId = 10730,
+		id = 11,
+		title = "霍夫曼结",
+		weight = 100,
+		desc = "实体化的暴雨免疫术式，它的每一寸蔓延和每一个弧度，都刻有牺牲。\n它的名字来源于第三贡献者哑谜，他以姓氏命名，纪念为寻找免疫术式而付出生命的姐姐。"
+	},
+	{
+		titleen = "Beast of Gévaudan",
+		bg = "originbg16",
+		episodeId = 0,
+		id = 12,
+		title = "“热沃当的野兽”",
+		weight = 300,
+		desc = "在1936年法国巴黎，人们谣传它，忌讳它，害怕它——也创造了它。\n它始于一场混乱的癔症。市民深陷幻觉，失去维系日常的理性与常识，最后成为“野兽”……"
+	},
+	{
+		titleen = "Depths of Myth",
+		bg = "originbg17",
+		episodeId = 0,
+		id = 13,
+		title = "迷思海",
+		weight = 300,
+		desc = "意象宝库、世界灵魂、所有人的梦境、集体潜意识的海洋……\n在悠久的历史上，人们曾赋予它各种称呼，但亲眼见过的人屈指可数。"
 	}
 }
 
 function booterLoadingConfig()
-	return var_0_0
+	return BooterLoadingConfig
 end
 
 setGlobal("booterLoadingConfig", booterLoadingConfig)
 
-return var_0_0
+return BooterLoadingConfig

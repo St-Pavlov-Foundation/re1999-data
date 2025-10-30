@@ -54,5 +54,12 @@
     "name": "醒梦域进度",
     "nameEn": "Lucidscape",
     "displayPriority": 8
+  },
+  {
+    "id": 9,
+    "type": 1,
+    "name": "鬃毛邮报",
+    "nameEn": "Witness Level",
+    "displayPriority": 9
   }
 ]

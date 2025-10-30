@@ -1,223 +1,229 @@
-﻿module("modules.logic.character.model.HeroSkillModel", package.seeall)
+﻿-- chunkname: @modules/logic/character/model/HeroSkillModel.lua
 
-local var_0_0 = class("HeroSkillModel", BaseModel)
+module("modules.logic.character.model.HeroSkillModel", package.seeall)
 
-function var_0_0.onInit(arg_1_0)
-	arg_1_0._skillTagInfos = {}
+local HeroSkillModel = class("HeroSkillModel", BaseModel)
+
+function HeroSkillModel:onInit()
+	self._skillTagInfos = {}
 end
 
-function var_0_0._initSkillTagInfos(arg_2_0)
-	local var_2_0 = SkillConfig.instance:getSkillEffectDescsCo()
+function HeroSkillModel:_initSkillTagInfos()
+	local effDescCo = SkillConfig.instance:getSkillEffectDescsCo()
 
-	for iter_2_0, iter_2_1 in pairs(var_2_0) do
-		arg_2_0._skillTagInfos[iter_2_1.name] = iter_2_1
+	for _, v in pairs(effDescCo) do
+		self._skillTagInfos[v.name] = v
 	end
 end
 
-function var_0_0.isTagSkillInfo(arg_3_0, arg_3_1)
-	return arg_3_0._skillTagInfos[arg_3_1]
+function HeroSkillModel:isTagSkillInfo(tag)
+	return self._skillTagInfos[tag]
 end
 
-function var_0_0.getSkillTagInfoColorType(arg_4_0, arg_4_1)
-	return arg_4_0._skillTagInfos[arg_4_1].color
+function HeroSkillModel:getSkillTagInfoColorType(tag)
+	return self._skillTagInfos[tag].color
 end
 
-function var_0_0.getSkillTagInfoDesc(arg_5_0, arg_5_1)
-	return arg_5_0._skillTagInfos[arg_5_1].desc
+function HeroSkillModel:getSkillTagInfoDesc(tag)
+	return self._skillTagInfos[tag].desc
 end
 
-function var_0_0.getEffectTagIDsFromDescNotRecursion(arg_6_0, arg_6_1)
-	if not arg_6_0._skillTagInfos or not next(arg_6_0._skillTagInfos) then
-		arg_6_0:_initSkillTagInfos()
+function HeroSkillModel:getEffectTagIDsFromDescNotRecursion(desc)
+	if not self._skillTagInfos or not next(self._skillTagInfos) then
+		self:_initSkillTagInfos()
 	end
 
-	local var_6_0 = {}
+	local matchesTagIds = {}
 
-	arg_6_1 = not arg_6_1 and "" or arg_6_1
-	arg_6_1 = string.gsub(arg_6_1, "【", "[")
-	arg_6_1 = string.gsub(arg_6_1, "】", "]")
+	desc = not desc and "" or desc
+	desc = string.gsub(desc, "【", "[")
+	desc = string.gsub(desc, "】", "]")
 
-	for iter_6_0 in string.gmatch(arg_6_1, "%[(.-)%]") do
-		if string.nilorempty(iter_6_0) or arg_6_0._skillTagInfos[iter_6_0] == nil then
-			logError(string.format(" '%s' 技能描述中， '%s' tag 不存在", arg_6_1, iter_6_0))
+	for tag in string.gmatch(desc, "%[(.-)%]") do
+		if string.nilorempty(tag) or self._skillTagInfos[tag] == nil then
+			logError(string.format(" '%s' 技能描述中， '%s' tag 不存在", desc, tag))
 		else
-			table.insert(var_6_0, arg_6_0._skillTagInfos[iter_6_0].id)
+			table.insert(matchesTagIds, self._skillTagInfos[tag].id)
 		end
 	end
 
-	return var_6_0
+	return matchesTagIds
 end
 
-function var_0_0.getEffectTagIDsFromDescRecursion(arg_7_0, arg_7_1)
-	local var_7_0 = arg_7_0:getEffectTagIDsFromDescNotRecursion(arg_7_1)
+function HeroSkillModel:getEffectTagIDsFromDescRecursion(desc)
+	local levelQueue = self:getEffectTagIDsFromDescNotRecursion(desc)
 
-	return arg_7_0:treeLevelTraversal(var_7_0, {}, {})
+	return self:treeLevelTraversal(levelQueue, {}, {})
 end
 
-function var_0_0.getEffectTagDescFromDescRecursion(arg_8_0, arg_8_1, arg_8_2)
-	local var_8_0 = var_0_0.instance:getEffectTagIDsFromDescRecursion(arg_8_1)
-	local var_8_1 = ""
-	local var_8_2 = {}
+function HeroSkillModel:getEffectTagDescFromDescRecursion(desc, tagColor)
+	local matches = HeroSkillModel.instance:getEffectTagIDsFromDescRecursion(desc)
+	local wordContent = ""
+	local tagNameExistDict = {}
 
-	for iter_8_0 = 1, #var_8_0 do
-		local var_8_3 = SkillConfig.instance:getSkillEffectDescCo(var_8_0[iter_8_0])
+	for k = 1, #matches do
+		local co = SkillConfig.instance:getSkillEffectDescCo(matches[k])
 
-		if var_8_3 then
-			local var_8_4 = var_8_3.name
+		if co then
+			local name = co.name
+			local canShowSkillTag = HeroSkillModel.instance:canShowSkillTag(name)
 
-			if var_0_0.instance:canShowSkillTag(var_8_4) and not var_8_2[var_8_4] then
-				var_8_2[var_8_4] = true
-				var_8_1 = var_8_1 .. string.format("<color=%s>[%s]</color>:%s\n", arg_8_2, var_8_4, var_8_3.desc)
+			if canShowSkillTag and not tagNameExistDict[name] then
+				tagNameExistDict[name] = true
+				wordContent = wordContent .. string.format("<color=%s>[%s]</color>:%s\n", tagColor, name, co.desc)
 			end
 		end
 	end
 
-	return var_8_1
+	return wordContent
 end
 
-function var_0_0.getEffectTagDescIdList(arg_9_0, arg_9_1)
-	local var_9_0 = var_0_0.instance:getEffectTagIDsFromDescRecursion(arg_9_1)
-	local var_9_1 = {}
-	local var_9_2 = {}
+function HeroSkillModel:getEffectTagDescIdList(desc)
+	local matches = HeroSkillModel.instance:getEffectTagIDsFromDescRecursion(desc)
+	local tagList = {}
+	local tagNameExistDict = {}
 
-	for iter_9_0 = 1, #var_9_0 do
-		local var_9_3 = SkillConfig.instance:getSkillEffectDescCo(var_9_0[iter_9_0])
+	for k = 1, #matches do
+		local co = SkillConfig.instance:getSkillEffectDescCo(matches[k])
 
-		if var_9_3 then
-			local var_9_4 = var_9_3.name
+		if co then
+			local name = co.name
+			local canShowSkillTag = HeroSkillModel.instance:canShowSkillTag(name)
 
-			if var_0_0.instance:canShowSkillTag(var_9_4) and not var_9_2[var_9_4] then
-				var_9_2[var_9_4] = true
+			if canShowSkillTag and not tagNameExistDict[name] then
+				tagNameExistDict[name] = true
 
-				table.insert(var_9_1, var_9_3.id)
+				table.insert(tagList, co.id)
 			end
 		end
 	end
 
-	return var_9_1
+	return tagList
 end
 
-function var_0_0.canShowSkillTag(arg_10_0, arg_10_1, arg_10_2)
-	local var_10_0 = SkillConfig.instance:getSkillEffectDescCoByName(arg_10_1)
+function HeroSkillModel:canShowSkillTag(tagName, isCharacter)
+	local tagCo = SkillConfig.instance:getSkillEffectDescCoByName(tagName)
 
-	return SkillHelper.canShowTag(var_10_0)
+	return SkillHelper.canShowTag(tagCo)
 end
 
-function var_0_0.getSkillEffectTagIdsFormDescTabRecursion(arg_11_0, arg_11_1)
-	local var_11_0 = {}
-	local var_11_1 = {}
-	local var_11_2 = {}
+function HeroSkillModel:getSkillEffectTagIdsFormDescTabRecursion(descTab)
+	local existTags = {}
+	local levelQueue = {}
+	local resultTab = {}
 
-	for iter_11_0, iter_11_1 in pairs(arg_11_1) do
-		local var_11_3 = arg_11_0:getEffectTagIDsFromDescNotRecursion(iter_11_1)
-
-		var_11_2[iter_11_0] = arg_11_0:treeLevelTraversal(var_11_3, {}, var_11_0)
+	for i, tab in pairs(descTab) do
+		levelQueue = self:getEffectTagIDsFromDescNotRecursion(tab)
+		resultTab[i] = self:treeLevelTraversal(levelQueue, {}, existTags)
 	end
 
-	return var_11_2
+	return resultTab
 end
 
-function var_0_0.treeLevelTraversal(arg_12_0, arg_12_1, arg_12_2, arg_12_3)
-	if #arg_12_1 == 0 then
-		return arg_12_2
+function HeroSkillModel:treeLevelTraversal(queue, needShowTags, existTags)
+	if #queue == 0 then
+		return needShowTags
 	end
 
-	for iter_12_0 = 1, #arg_12_1 do
-		local var_12_0 = table.remove(arg_12_1, 1)
+	for i = 1, #queue do
+		local tag_id = table.remove(queue, 1)
 
-		if not arg_12_3[var_12_0] then
-			arg_12_3[var_12_0] = true
+		if not existTags[tag_id] then
+			existTags[tag_id] = true
 
-			table.insert(arg_12_2, var_12_0)
+			table.insert(needShowTags, tag_id)
 
-			local var_12_1 = arg_12_0:getEffectTagIDsFromDescNotRecursion(SkillConfig.instance:getSkillEffectDescCo(var_12_0).desc)
+			local matchTagIds = self:getEffectTagIDsFromDescNotRecursion(SkillConfig.instance:getSkillEffectDescCo(tag_id).desc)
 
-			for iter_12_1, iter_12_2 in ipairs(var_12_1) do
-				if not arg_12_3[iter_12_2] then
-					table.insert(arg_12_1, iter_12_2)
+			for _, temp_tag_id in ipairs(matchTagIds) do
+				if not existTags[temp_tag_id] then
+					table.insert(queue, temp_tag_id)
 				end
 			end
 		end
 	end
 
-	return arg_12_0:treeLevelTraversal(arg_12_1, arg_12_2, arg_12_3)
+	return self:treeLevelTraversal(queue, needShowTags, existTags)
 end
 
-function var_0_0.skillDesToSpot(arg_13_0, arg_13_1, arg_13_2, arg_13_3, arg_13_4)
-	if string.nilorempty(arg_13_2) then
-		arg_13_2 = "#C66030"
+function HeroSkillModel:skillDesToSpot(str, percentColorParam, bracketColorParam, noUseLine)
+	if string.nilorempty(percentColorParam) then
+		percentColorParam = "#C66030"
 	end
 
-	if string.nilorempty(arg_13_3) then
-		arg_13_3 = "#4e6698"
+	if string.nilorempty(bracketColorParam) then
+		bracketColorParam = "#4e6698"
 	end
 
-	local var_13_0 = string.gsub(arg_13_1, "(%-%d+%%)", "{%1}")
-	local var_13_1 = string.gsub(var_13_0, "(%+%d+%%)", "{%1}")
-	local var_13_2 = string.gsub(var_13_1, "(%-%d+%.*%d*%%)", "{%1}")
-	local var_13_3 = string.gsub(var_13_2, "(%d+%.*%d*%%)", "{%1}")
-	local var_13_4 = string.gsub(var_13_3, "%[", string.format("<color=%s>[", arg_13_3))
-	local var_13_5 = string.gsub(var_13_4, "%【", string.format("<color=%s>[", arg_13_3))
-	local var_13_6 = string.gsub(var_13_5, "%]", "]</color>")
-	local var_13_7 = string.gsub(var_13_6, "%】", "]</color>")
-	local var_13_8 = string.gsub(var_13_7, "%{", string.format("<color=%s>", arg_13_2))
-	local var_13_9 = string.gsub(var_13_8, "%}", "</color>")
-	local var_13_10 = arg_13_0:spotSkillAttribute(var_13_9, arg_13_4)
+	local result = string.gsub(str, "(%-%d+%%)", "{%1}")
 
-	return (SkillConfig.instance:processSkillDesKeyWords(var_13_10))
+	result = string.gsub(result, "(%+%d+%%)", "{%1}")
+	result = string.gsub(result, "(%-%d+%.*%d*%%)", "{%1}")
+	result = string.gsub(result, "(%d+%.*%d*%%)", "{%1}")
+	result = string.gsub(result, "%[", string.format("<color=%s>[", bracketColorParam))
+	result = string.gsub(result, "%【", string.format("<color=%s>[", bracketColorParam))
+	result = string.gsub(result, "%]", "]</color>")
+	result = string.gsub(result, "%】", "]</color>")
+	result = string.gsub(result, "%{", string.format("<color=%s>", percentColorParam))
+	result = string.gsub(result, "%}", "</color>")
+	result = self:spotSkillAttribute(result, noUseLine)
+	result = SkillConfig.instance:processSkillDesKeyWords(result)
+
+	return result
 end
 
-function var_0_0.spotSkillAttribute(arg_14_0, arg_14_1, arg_14_2)
-	local var_14_0 = arg_14_1
-	local var_14_1 = HeroConfig.instance:getHeroAttributesCO()
+function HeroSkillModel:spotSkillAttribute(str, noUseLine)
+	local result = str
+	local attCo = HeroConfig.instance:getHeroAttributesCO()
 
-	for iter_14_0, iter_14_1 in pairs(var_14_1) do
-		if iter_14_1.showcolor == 1 and not arg_14_2 then
-			var_14_0 = string.gsub(var_14_0, iter_14_1.name, string.format("<u>%s</u>", iter_14_1.name))
+	for _, v in pairs(attCo) do
+		if v.showcolor == 1 and not noUseLine then
+			result = string.gsub(result, v.name, string.format("<u>%s</u>", v.name))
 		end
 	end
 
-	return var_14_0
+	return result
 end
 
-function var_0_0.formatDescWithColor(arg_15_0, arg_15_1, arg_15_2, arg_15_3, arg_15_4)
-	arg_15_2 = arg_15_2 or "#d7a270"
-	arg_15_3 = arg_15_3 or "#5f7197"
+function HeroSkillModel:formatDescWithColor(desc, numColor, skillNameColor, notChangeNum)
+	numColor = numColor or "#d7a270"
+	skillNameColor = skillNameColor or "#5f7197"
 
-	local var_15_0 = arg_15_1
+	local result = desc
 
-	if arg_15_4 ~= true then
-		local var_15_1 = {}
-		local var_15_2 = 0
+	if notChangeNum ~= true then
+		local replaceSkillNameList = {}
+		local len = 0
 
-		var_15_0 = string.gsub(var_15_0, "(%[.-%])", function(arg_16_0)
-			var_15_2 = var_15_2 + 1
-			var_15_1[var_15_2] = arg_16_0
-
-			return "▩replace▩"
-		end)
-		var_15_0 = string.gsub(var_15_0, "(【.-】)", function(arg_17_0)
-			var_15_2 = var_15_2 + 1
-			var_15_1[var_15_2] = arg_17_0
+		result = string.gsub(result, "(%[.-%])", function(str)
+			len = len + 1
+			replaceSkillNameList[len] = str
 
 			return "▩replace▩"
 		end)
-		var_15_0 = string.gsub(var_15_0, "([%d%-%+%%%./]+)", string.format("<color=%s>%%1</color>", arg_15_2))
+		result = string.gsub(result, "(【.-】)", function(str)
+			len = len + 1
+			replaceSkillNameList[len] = str
 
-		local var_15_3 = 0
+			return "▩replace▩"
+		end)
+		result = string.gsub(result, "([%d%-%+%%%./]+)", string.format("<color=%s>%%1</color>", numColor))
 
-		var_15_0 = string.gsub(var_15_0, "▩replace▩", function()
-			var_15_3 = var_15_3 + 1
+		local index = 0
 
-			return var_15_1[var_15_3]
+		result = string.gsub(result, "▩replace▩", function()
+			index = index + 1
+
+			return replaceSkillNameList[index]
 		end)
 	end
 
-	local var_15_4 = string.gsub(var_15_0, "(%[.-%])", string.format("<color=%s>%%1</color>", arg_15_3))
+	result = string.gsub(result, "(%[.-%])", string.format("<color=%s>%%1</color>", skillNameColor))
+	result = string.gsub(result, "(【.-】)", string.format("<color=%s>%%1</color>", skillNameColor))
 
-	return (string.gsub(var_15_4, "(【.-】)", string.format("<color=%s>%%1</color>", arg_15_3)))
+	return result
 end
 
-var_0_0.instance = var_0_0.New()
+HeroSkillModel.instance = HeroSkillModel.New()
 
-return var_0_0
+return HeroSkillModel

@@ -1,100 +1,102 @@
-﻿module("modules.logic.sp01.act208.view.V2a9_Act208RewardItem", package.seeall)
+﻿-- chunkname: @modules/logic/sp01/act208/view/V2a9_Act208RewardItem.lua
 
-local var_0_0 = class("V2a9_Act208RewardItem", LuaCompBase)
+module("modules.logic.sp01.act208.view.V2a9_Act208RewardItem", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1)
-	arg_1_0.go = arg_1_1
-	arg_1_0._simageItem = gohelper.findChildSingleImage(arg_1_0.go, "#simage_Item")
-	arg_1_0._txtNum = gohelper.findChildText(arg_1_0.go, "image_NumBG/#txt_Num")
-	arg_1_0._imageQuality = gohelper.findChildImage(arg_1_0.go, "#img_Quality")
-	arg_1_0._btnclick = gohelper.findChildButtonWithAudio(arg_1_0.go, "#btn_click")
+local V2a9_Act208RewardItem = class("V2a9_Act208RewardItem", LuaCompBase)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function V2a9_Act208RewardItem:init(go)
+	self.go = go
+	self._simageItem = gohelper.findChildSingleImage(self.go, "#simage_Item")
+	self._txtNum = gohelper.findChildText(self.go, "image_NumBG/#txt_Num")
+	self._imageQuality = gohelper.findChildImage(self.go, "#img_Quality")
+	self._btnclick = gohelper.findChildButtonWithAudio(self.go, "#btn_click")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEventListeners(arg_2_0)
-	arg_2_0._btnclick:AddClickListener(arg_2_0._btnclickOnClick, arg_2_0)
+function V2a9_Act208RewardItem:addEventListeners()
+	self._btnclick:AddClickListener(self._btnclickOnClick, self)
 end
 
-function var_0_0.removeEventListeners(arg_3_0)
-	arg_3_0._btnclick:RemoveClickListener()
+function V2a9_Act208RewardItem:removeEventListeners()
+	self._btnclick:RemoveClickListener()
 end
 
-function var_0_0._btnclickOnClick(arg_4_0)
-	if arg_4_0.state == nil then
+function V2a9_Act208RewardItem:_btnclickOnClick()
+	if self.state == nil then
 		return
 	end
 
-	if arg_4_0.state == Act208Enum.BonusState.NotGet or arg_4_0.state == Act208Enum.BonusState.HaveGet then
-		if arg_4_0.bonusData == nil then
+	if self.state == Act208Enum.BonusState.NotGet or self.state == Act208Enum.BonusState.HaveGet then
+		if self.bonusData == nil then
 			logError("bonusData is nil")
 
 			return
 		end
 
-		local var_4_0 = arg_4_0.bonusData[1]
-		local var_4_1 = arg_4_0.bonusData[2]
-		local var_4_2 = arg_4_0.bonusData[3]
+		local itemType = self.bonusData[1]
+		local itemId = self.bonusData[2]
+		local num = self.bonusData[3]
 
-		MaterialTipController.instance:showMaterialInfo(var_4_0, var_4_1, false, nil, false)
+		MaterialTipController.instance:showMaterialInfo(itemType, itemId, false, nil, false)
 
 		return
 	end
 
-	Act208Controller.instance:getBonus(arg_4_0.actId, arg_4_0.id)
+	Act208Controller.instance:getBonus(self.actId, self.id)
 end
 
-function var_0_0._editableInitView(arg_5_0)
-	arg_5_0._goCanGet = gohelper.findChild(arg_5_0.go, "go_canget")
-	arg_5_0._goReceive = gohelper.findChild(arg_5_0.go, "go_receive")
+function V2a9_Act208RewardItem:_editableInitView()
+	self._goCanGet = gohelper.findChild(self.go, "go_canget")
+	self._goReceive = gohelper.findChild(self.go, "go_receive")
 
-	gohelper.setActive(arg_5_0._goCanGet, false)
-	gohelper.setActive(arg_5_0._goReceive, false)
+	gohelper.setActive(self._goCanGet, false)
+	gohelper.setActive(self._goReceive, false)
 end
 
-function var_0_0.setData(arg_6_0, arg_6_1, arg_6_2)
-	arg_6_0.actId = arg_6_1
-	arg_6_0.id = arg_6_2.id
-	arg_6_0.config = arg_6_2
+function V2a9_Act208RewardItem:setData(activityId, config)
+	self.actId = activityId
+	self.id = config.id
+	self.config = config
 
-	arg_6_0:refreshUI()
+	self:refreshUI()
 end
 
-function var_0_0.refreshUI(arg_7_0)
-	local var_7_0 = arg_7_0.config
-	local var_7_1 = string.splitToNumber(var_7_0.bonus, "#")
-	local var_7_2 = var_7_1[1]
-	local var_7_3 = var_7_1[2]
-	local var_7_4 = var_7_1[3]
+function V2a9_Act208RewardItem:refreshUI()
+	local config = self.config
+	local bonusData = string.splitToNumber(config.bonus, "#")
+	local itemType = bonusData[1]
+	local itemId = bonusData[2]
+	local num = bonusData[3]
 
-	arg_7_0.bonusData = var_7_1
+	self.bonusData = bonusData
 
-	local var_7_5, var_7_6 = ItemModel.instance:getItemConfigAndIcon(var_7_2, var_7_3, true)
+	local itemConfig, icon = ItemModel.instance:getItemConfigAndIcon(itemType, itemId, true)
 
-	if var_7_0.isAllBonus == Act208Enum.RewardType.Common then
-		arg_7_0._simageItem:LoadImage(var_7_6)
+	if config.isAllBonus == Act208Enum.RewardType.Common then
+		self._simageItem:LoadImage(icon)
 
-		arg_7_0._txtNum.text = tostring(var_7_4)
+		self._txtNum.text = tostring(num)
 
-		local var_7_7 = var_7_5.rare and var_7_5.rare or 5
+		local rare = itemConfig.rare and itemConfig.rare or 5
 
-		UISpriteSetMgr.instance:setOptionalGiftSprite(arg_7_0._imageQuality, "bg_pinjidi_" .. var_7_7)
-	elseif var_7_0.isAllBonus == Act208Enum.RewardType.Final then
+		UISpriteSetMgr.instance:setOptionalGiftSprite(self._imageQuality, "bg_pinjidi_" .. rare)
+	elseif config.isAllBonus == Act208Enum.RewardType.Final then
 		-- block empty
 	end
 end
 
-function var_0_0.setState(arg_8_0, arg_8_1)
-	arg_8_0.state = arg_8_1.status
+function V2a9_Act208RewardItem:setState(bonusMo)
+	self.state = bonusMo.status
 
-	gohelper.setActive(arg_8_0._goCanGet, arg_8_1.status == Act208Enum.BonusState.CanGet)
-	gohelper.setActive(arg_8_0._goReceive, arg_8_1.status == Act208Enum.BonusState.HaveGet)
+	gohelper.setActive(self._goCanGet, bonusMo.status == Act208Enum.BonusState.CanGet)
+	gohelper.setActive(self._goReceive, bonusMo.status == Act208Enum.BonusState.HaveGet)
 end
 
-function var_0_0.onDestroy(arg_9_0)
+function V2a9_Act208RewardItem:onDestroy()
 	return
 end
 
-return var_0_0
+return V2a9_Act208RewardItem

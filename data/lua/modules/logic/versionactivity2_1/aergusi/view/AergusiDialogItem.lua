@@ -1,61 +1,63 @@
-﻿module("modules.logic.versionactivity2_1.aergusi.view.AergusiDialogItem", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity2_1/aergusi/view/AergusiDialogItem.lua
 
-local var_0_0 = class("AergusiDialogItem", UserDataDispose)
+module("modules.logic.versionactivity2_1.aergusi.view.AergusiDialogItem", package.seeall)
 
-function var_0_0.CreateItem(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
-	local var_1_0 = AergusiEnum.DialogItemCls[arg_1_3]
+local AergusiDialogItem = class("AergusiDialogItem", UserDataDispose)
 
-	if not var_1_0 then
-		logError("un support type dialogue type : " .. tostring(arg_1_3))
+function AergusiDialogItem.CreateItem(stepCo, go, upInterval, type)
+	local cls = AergusiEnum.DialogItemCls[type]
+
+	if not cls then
+		logError("un support type dialogue type : " .. tostring(type))
 
 		return nil
 	end
 
-	local var_1_1 = var_1_0.New()
+	local item = cls.New()
 
-	var_1_1:init(arg_1_0, arg_1_1, arg_1_2, arg_1_3)
+	item:init(stepCo, go, upInterval, type)
 
-	return var_1_1
+	return item
 end
 
-function var_0_0.init(arg_2_0, arg_2_1, arg_2_2, arg_2_3, arg_2_4)
-	arg_2_0:__onInit()
+function AergusiDialogItem:init(stepCo, go, upInterval, type)
+	self:__onInit()
 
-	arg_2_0.stepCo = arg_2_1
-	arg_2_0.go = arg_2_2
-	arg_2_0.type = arg_2_4
-	arg_2_0.transform = arg_2_0.go.transform
+	self.stepCo = stepCo
+	self.go = go
+	self.type = type
+	self.transform = self.go.transform
 
-	recthelper.setAnchorY(arg_2_0.transform, -arg_2_3)
-	gohelper.setActive(arg_2_2, true)
-	arg_2_0:initView()
-	arg_2_0:refresh()
-	arg_2_0:calculateHeight()
+	recthelper.setAnchorY(self.transform, -upInterval)
+	gohelper.setActive(go, true)
+	self:initView()
+	self:refresh()
+	self:calculateHeight()
 end
 
-function var_0_0.initView(arg_3_0)
+function AergusiDialogItem:initView()
 	return
 end
 
-function var_0_0.refresh(arg_4_0)
+function AergusiDialogItem:refresh()
 	return
 end
 
-function var_0_0.calculateHeight(arg_5_0)
+function AergusiDialogItem:calculateHeight()
 	return
 end
 
-function var_0_0.getHeight(arg_6_0)
-	return arg_6_0.height
+function AergusiDialogItem:getHeight()
+	return self.height
 end
 
-function var_0_0.onDestroy(arg_7_0)
+function AergusiDialogItem:onDestroy()
 	return
 end
 
-function var_0_0.destroy(arg_8_0)
-	arg_8_0:onDestroy()
-	arg_8_0:__onDispose()
+function AergusiDialogItem:destroy()
+	self:onDestroy()
+	self:__onDispose()
 end
 
-return var_0_0
+return AergusiDialogItem

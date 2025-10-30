@@ -1,72 +1,74 @@
-﻿module("modules.logic.rouge.map.view.map.RougeMapVoiceView", package.seeall)
+﻿-- chunkname: @modules/logic/rouge/map/view/map/RougeMapVoiceView.lua
 
-local var_0_0 = class("RougeMapVoiceView", BaseView)
+module("modules.logic.rouge.map.view.map.RougeMapVoiceView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._gochesstalk = gohelper.findChild(arg_1_0.viewGO, "#go_chesstalk")
-	arg_1_0._txtchesstalk = gohelper.findChildText(arg_1_0.viewGO, "#go_chesstalk/Scroll View/Viewport/Content/#txt_talk")
+local RougeMapVoiceView = class("RougeMapVoiceView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function RougeMapVoiceView:onInitView()
+	self._gochesstalk = gohelper.findChild(self.viewGO, "#go_chesstalk")
+	self._txtchesstalk = gohelper.findChildText(self.viewGO, "#go_chesstalk/Scroll View/Viewport/Content/#txt_talk")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
+function RougeMapVoiceView:addEvents()
 	return
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function RougeMapVoiceView:removeEvents()
 	return
 end
 
-function var_0_0._editableInitView(arg_4_0)
-	arg_4_0:hideVoice()
+function RougeMapVoiceView:_editableInitView()
+	self:hideVoice()
 
-	arg_4_0.rectTr = arg_4_0._gochesstalk:GetComponent(gohelper.Type_RectTransform)
-	arg_4_0.viewRectTr = arg_4_0.viewGO:GetComponent(gohelper.Type_RectTransform)
+	self.rectTr = self._gochesstalk:GetComponent(gohelper.Type_RectTransform)
+	self.viewRectTr = self.viewGO:GetComponent(gohelper.Type_RectTransform)
 
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onTriggerShortVoice, arg_4_0.onTriggerShortVoice, arg_4_0)
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onEndTriggerShortVoice, arg_4_0.onEndTriggerShortVoice, arg_4_0)
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onActorPosChange, arg_4_0.onActorPosChange, arg_4_0)
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onMapPosChange, arg_4_0.onMapPosChange, arg_4_0)
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onCameraSizeChange, arg_4_0.onMapPosChange, arg_4_0)
-	arg_4_0:addEventCb(RougeMapController.instance, RougeMapEvent.onChangeMapInfo, arg_4_0.onChangeMapInfo, arg_4_0, LuaEventSystem.High)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onTriggerShortVoice, self.onTriggerShortVoice, self)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onEndTriggerShortVoice, self.onEndTriggerShortVoice, self)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onActorPosChange, self.onActorPosChange, self)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onMapPosChange, self.onMapPosChange, self)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onCameraSizeChange, self.onMapPosChange, self)
+	self:addEventCb(RougeMapController.instance, RougeMapEvent.onChangeMapInfo, self.onChangeMapInfo, self, LuaEventSystem.High)
 end
 
-function var_0_0.onChangeMapInfo(arg_5_0)
-	arg_5_0:hideVoice()
+function RougeMapVoiceView:onChangeMapInfo()
+	self:hideVoice()
 end
 
-function var_0_0.onActorPosChange(arg_6_0, arg_6_1)
-	if not arg_6_0.showIng then
+function RougeMapVoiceView:onActorPosChange(pos)
+	if not self.showIng then
 		return
 	end
 
-	arg_6_0:updatePos(arg_6_1)
+	self:updatePos(pos)
 end
 
-function var_0_0.onMapPosChange(arg_7_0)
+function RougeMapVoiceView:onMapPosChange()
 	if RougeMapModel.instance:isPathSelect() then
 		return
 	end
 
-	if not arg_7_0.showIng then
+	if not self.showIng then
 		return
 	end
 
-	local var_7_0 = RougeMapController.instance:getActorMap()
+	local actorComp = RougeMapController.instance:getActorMap()
 
-	if var_7_0 then
-		arg_7_0:updatePos(var_7_0:getActorWordPos())
+	if actorComp then
+		self:updatePos(actorComp:getActorWordPos())
 	end
 end
 
-function var_0_0.onTriggerShortVoice(arg_8_0, arg_8_1)
-	local var_8_0 = arg_8_1.desc
+function RougeMapVoiceView:onTriggerShortVoice(voiceCo)
+	local desc = voiceCo.desc
 
-	AudioMgr.instance:trigger(arg_8_1.audioId)
+	AudioMgr.instance:trigger(voiceCo.audioId)
 
-	if string.nilorempty(var_8_0) then
+	if string.nilorempty(desc) then
 		return
 	end
 
@@ -74,47 +76,46 @@ function var_0_0.onTriggerShortVoice(arg_8_0, arg_8_1)
 		return
 	end
 
-	arg_8_0:showVoice()
+	self:showVoice()
 
-	arg_8_0._txtchesstalk.text = var_8_0
+	self._txtchesstalk.text = desc
 
-	local var_8_1 = RougeMapController.instance:getActorMap()
+	local actorComp = RougeMapController.instance:getActorMap()
 
-	if var_8_1 then
-		arg_8_0:updatePos(var_8_1:getActorWordPos())
+	if actorComp then
+		self:updatePos(actorComp:getActorWordPos())
 	end
 end
 
-function var_0_0.onEndTriggerShortVoice(arg_9_0)
-	arg_9_0:hideVoice()
+function RougeMapVoiceView:onEndTriggerShortVoice()
+	self:hideVoice()
 end
 
-function var_0_0.hideVoice(arg_10_0)
-	gohelper.setActive(arg_10_0._gochesstalk, false)
+function RougeMapVoiceView:hideVoice()
+	gohelper.setActive(self._gochesstalk, false)
 
-	arg_10_0.showIng = false
+	self.showIng = false
 end
 
-function var_0_0.showVoice(arg_11_0)
-	gohelper.setActive(arg_11_0._gochesstalk, true)
+function RougeMapVoiceView:showVoice()
+	gohelper.setActive(self._gochesstalk, true)
 
-	arg_11_0.showIng = true
+	self.showIng = true
 end
 
-function var_0_0.updatePos(arg_12_0, arg_12_1)
-	local var_12_0, var_12_1 = recthelper.worldPosToAnchorPos2(arg_12_1, arg_12_0.viewRectTr)
-	local var_12_2
+function RougeMapVoiceView:updatePos(worldPos)
+	local anchorX, anchorY = recthelper.worldPosToAnchorPos2(worldPos, self.viewRectTr)
+	local anchor
 
 	if RougeMapModel.instance:isNormalLayer() then
-		var_12_2 = RougeMapEnum.TalkAnchorOffset[RougeMapEnum.MapType.Normal]
+		anchor = RougeMapEnum.TalkAnchorOffset[RougeMapEnum.MapType.Normal]
 	else
-		var_12_2 = RougeMapEnum.TalkAnchorOffset[RougeMapEnum.MapType.Middle]
+		anchor = RougeMapEnum.TalkAnchorOffset[RougeMapEnum.MapType.Middle]
 	end
 
-	local var_12_3 = var_12_2.x
-	local var_12_4 = var_12_2.y
+	local offsetX, offsetY = anchor.x, anchor.y
 
-	recthelper.setAnchor(arg_12_0.rectTr, var_12_0 + var_12_3, var_12_1 + var_12_4)
+	recthelper.setAnchor(self.rectTr, anchorX + offsetX, anchorY + offsetY)
 end
 
-return var_0_0
+return RougeMapVoiceView

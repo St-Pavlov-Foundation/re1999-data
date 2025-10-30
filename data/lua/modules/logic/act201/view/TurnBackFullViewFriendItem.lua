@@ -1,110 +1,119 @@
-﻿module("modules.logic.act201.view.TurnBackFullViewFriendItem", package.seeall)
+﻿-- chunkname: @modules/logic/act201/view/TurnBackFullViewFriendItem.lua
 
-local var_0_0 = class("TurnBackFullViewFriendItem", LuaCompBase)
+module("modules.logic.act201.view.TurnBackFullViewFriendItem", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1)
-	arg_1_0:__onInit()
+local TurnBackFullViewFriendItem = class("TurnBackFullViewFriendItem", LuaCompBase)
 
-	arg_1_0.go = arg_1_1
-	arg_1_0._txtName = gohelper.findChildTextMesh(arg_1_1, "invited/namebg/#txt_name")
-	arg_1_0._goInvited = gohelper.findChild(arg_1_1, "invited")
-	arg_1_0._goUnInvite = gohelper.findChild(arg_1_1, "uninvite")
-	arg_1_0._simgHeadIcon = gohelper.findChildSingleImage(arg_1_1, "invited/#go_playerheadicon")
-	arg_1_0._goframenode = gohelper.findChild(arg_1_1, "invited/#go_playerheadicon/#go_framenode")
-	arg_1_0._txtstatetext = gohelper.findChild(arg_1_0._goInvited, "playerstate/#txt_statetext")
-	arg_1_0._loader = MultiAbLoader.New()
+function TurnBackFullViewFriendItem:init(go)
+	self:__onInit()
+
+	self.go = go
+	self._txtName = gohelper.findChildTextMesh(go, "invited/namebg/#txt_name")
+	self._goInvited = gohelper.findChild(go, "invited")
+	self._goUnInvite = gohelper.findChild(go, "uninvite")
+	self._simgHeadIcon = gohelper.findChildSingleImage(go, "invited/#go_playerheadicon")
+	self._goframenode = gohelper.findChild(go, "invited/#go_playerheadicon/#go_framenode")
+	self._txtstatetext = gohelper.findChild(self._goInvited, "playerstate/#txt_statetext")
+	self._loader = MultiAbLoader.New()
 end
 
-function var_0_0.setData(arg_2_0, arg_2_1)
-	arg_2_0._roleInfo = arg_2_1
+function TurnBackFullViewFriendItem:setData(info)
+	self._roleInfo = info
 
-	arg_2_0:_refreshItem()
+	self:_refreshItem()
 end
 
-function var_0_0.setEmpty(arg_3_0)
-	arg_3_0:setInfoState(false)
+function TurnBackFullViewFriendItem:setEmpty()
+	self:setInfoState(false)
 end
 
-function var_0_0.setInfoState(arg_4_0, arg_4_1)
-	gohelper.setActive(arg_4_0._goInvited, arg_4_1)
-	gohelper.setActive(arg_4_0._goUnInvite, not arg_4_1)
+function TurnBackFullViewFriendItem:setInfoState(invited)
+	gohelper.setActive(self._goInvited, invited)
+	gohelper.setActive(self._goUnInvite, not invited)
 end
 
-function var_0_0._refreshItem(arg_5_0)
-	local var_5_0 = arg_5_0._roleInfo
+function TurnBackFullViewFriendItem:_refreshItem()
+	local roleInfo = self._roleInfo
 
-	if var_5_0 == nil then
-		arg_5_0:setEmpty()
+	if roleInfo == nil then
+		self:setEmpty()
 
 		return
 	end
 
-	arg_5_0:setInfoState(true)
+	self:setInfoState(true)
 
-	arg_5_0._txtName.text = var_5_0.name
-	arg_5_0._txtstatetext.text = Activity201Config.instance:getRoleTypeStr(var_5_0.roleType)
+	self._txtName.text = roleInfo.name
+	self._txtstatetext.text = Activity201Config.instance:getRoleTypeStr(roleInfo.roleType)
 
-	local var_5_1 = lua_item.configDict[var_5_0.portrait]
+	local config = lua_item.configDict[roleInfo.portrait]
 
-	if not arg_5_0._liveHeadIcon then
-		arg_5_0._liveHeadIcon = IconMgr.instance:getCommonLiveHeadIcon(arg_5_0._simgHeadIcon)
+	if not self._liveHeadIcon then
+		local commonLiveIcon = IconMgr.instance:getCommonLiveHeadIcon(self._simgHeadIcon)
+
+		self._liveHeadIcon = commonLiveIcon
 	end
 
-	arg_5_0._liveHeadIcon:setLiveHead(var_5_1.id)
+	self._liveHeadIcon:setLiveHead(config.id)
 
-	local var_5_2 = string.split(var_5_1.effect, "#")
+	local effectArr = string.split(config.effect, "#")
 
-	if #var_5_2 > 1 then
-		if var_5_1.id == tonumber(var_5_2[#var_5_2]) then
-			gohelper.setActive(arg_5_0._goframenode, true)
+	if #effectArr > 1 then
+		if config.id == tonumber(effectArr[#effectArr]) then
+			gohelper.setActive(self._goframenode, true)
 
-			if not arg_5_0.frame then
-				local var_5_3 = "ui/viewres/common/effect/frame.prefab"
+			if not self.frame then
+				local framePath = "ui/viewres/common/effect/frame.prefab"
 
-				arg_5_0._loader:addPath(var_5_3)
-				arg_5_0._loader:startLoad(arg_5_0._onLoadCallback, arg_5_0)
+				self._loader:addPath(framePath)
+				self._loader:startLoad(self._onLoadCallback, self)
 			end
 		end
 	else
-		gohelper.setActive(arg_5_0._goframenode, false)
+		gohelper.setActive(self._goframenode, false)
 	end
 end
 
-function var_0_0._onLoadCallback(arg_6_0)
-	local var_6_0 = arg_6_0._loader:getFirstAssetItem():GetResource()
+function TurnBackFullViewFriendItem:_onLoadCallback()
+	local framePrefab = self._loader:getFirstAssetItem():GetResource()
 
-	gohelper.clone(var_6_0, arg_6_0._goframenode, "frame")
+	gohelper.clone(framePrefab, self._goframenode, "frame")
 
-	arg_6_0.frame = gohelper.findChild(arg_6_0._goframenode, "frame")
-	arg_6_0.frame:GetComponent(gohelper.Type_Image).enabled = false
+	self.frame = gohelper.findChild(self._goframenode, "frame")
 
-	local var_6_1 = 1.41 * (recthelper.getWidth(arg_6_0._simgHeadIcon.transform) / recthelper.getWidth(arg_6_0.frame.transform))
+	local img = self.frame:GetComponent(gohelper.Type_Image)
 
-	transformhelper.setLocalScale(arg_6_0.frame.transform, var_6_1, var_6_1, 1)
+	img.enabled = false
+
+	local iconwidth = recthelper.getWidth(self._simgHeadIcon.transform)
+	local framenodewidth = recthelper.getWidth(self.frame.transform)
+	local scale = 1.41 * (iconwidth / framenodewidth)
+
+	transformhelper.setLocalScale(self.frame.transform, scale, scale, 1)
 end
 
-function var_0_0.addEventListeners(arg_7_0)
+function TurnBackFullViewFriendItem:addEventListeners()
 	return
 end
 
-function var_0_0.removeEventListeners(arg_8_0)
+function TurnBackFullViewFriendItem:removeEventListeners()
 	return
 end
 
-function var_0_0.destroy(arg_9_0)
-	arg_9_0._simgHeadIcon:UnLoadImage()
+function TurnBackFullViewFriendItem:destroy()
+	self._simgHeadIcon:UnLoadImage()
 
-	arg_9_0._roleInfo = nil
+	self._roleInfo = nil
 
-	arg_9_0:__onDispose()
+	self:__onDispose()
 end
 
-function var_0_0.onDestroyView(arg_10_0)
-	arg_10_0:destroy()
+function TurnBackFullViewFriendItem:onDestroyView()
+	self:destroy()
 end
 
-function var_0_0.onDestroy(arg_11_0)
-	arg_11_0:onDestroyView()
+function TurnBackFullViewFriendItem:onDestroy()
+	self:onDestroyView()
 end
 
-return var_0_0
+return TurnBackFullViewFriendItem

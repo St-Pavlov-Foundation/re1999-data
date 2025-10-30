@@ -1,198 +1,202 @@
-﻿module("modules.logic.versionactivity1_6.v1a6_cachot.view.V1a6_CachotCollectionSelectView", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_6/v1a6_cachot/view/V1a6_CachotCollectionSelectView.lua
 
-local var_0_0 = class("V1a6_CachotCollectionSelectView", BaseView)
+module("modules.logic.versionactivity1_6.v1a6_cachot.view.V1a6_CachotCollectionSelectView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._simagelevelbg = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_levelbg")
-	arg_1_0._simagetitle = gohelper.findChildSingleImage(arg_1_0.viewGO, "#simage_title")
-	arg_1_0._gocollectionitem = gohelper.findChild(arg_1_0.viewGO, "scroll_view/Viewport/Content/#go_collectionitem")
-	arg_1_0._btnconfirm = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_confirm")
-	arg_1_0._godisableconfirm = gohelper.findChild(arg_1_0.viewGO, "#go_disableconfirm")
+local V1a6_CachotCollectionSelectView = class("V1a6_CachotCollectionSelectView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function V1a6_CachotCollectionSelectView:onInitView()
+	self._simagelevelbg = gohelper.findChildSingleImage(self.viewGO, "#simage_levelbg")
+	self._simagetitle = gohelper.findChildSingleImage(self.viewGO, "#simage_title")
+	self._gocollectionitem = gohelper.findChild(self.viewGO, "scroll_view/Viewport/Content/#go_collectionitem")
+	self._btnconfirm = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_confirm")
+	self._godisableconfirm = gohelper.findChild(self.viewGO, "#go_disableconfirm")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	arg_2_0._btnconfirm:AddClickListener(arg_2_0._btnconfirmOnClick, arg_2_0)
+function V1a6_CachotCollectionSelectView:addEvents()
+	self._btnconfirm:AddClickListener(self._btnconfirmOnClick, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
-	arg_3_0._btnconfirm:RemoveClickListener()
+function V1a6_CachotCollectionSelectView:removeEvents()
+	self._btnconfirm:RemoveClickListener()
 end
 
-function var_0_0._editableInitView(arg_4_0)
-	arg_4_0._animatorPlayer = SLFramework.AnimatorPlayer.Get(arg_4_0.viewGO)
+function V1a6_CachotCollectionSelectView:_editableInitView()
+	self._animatorPlayer = SLFramework.AnimatorPlayer.Get(self.viewGO)
 end
 
-function var_0_0.onUpdateParam(arg_5_0)
+function V1a6_CachotCollectionSelectView:onUpdateParam()
 	return
 end
 
-function var_0_0._btnconfirmOnClick(arg_6_0)
+function V1a6_CachotCollectionSelectView:_btnconfirmOnClick()
 	UIBlockMgr.instance:startBlock("V1a6_CachotCollectionSelectView_Get")
 
-	if arg_6_0._collectionItemTab and arg_6_0._collectionItemTab[arg_6_0._selectIndex] then
-		local var_6_0 = arg_6_0.viewParam and arg_6_0.viewParam.selectCallback
-		local var_6_1 = arg_6_0.viewParam and arg_6_0.viewParam.selectCallbackObj
+	local collectionItem = self._collectionItemTab and self._collectionItemTab[self._selectIndex]
 
-		if var_6_0 and arg_6_0._selectIndex then
-			var_6_0(var_6_1, arg_6_0._selectIndex)
+	if collectionItem then
+		local selectCallback = self.viewParam and self.viewParam.selectCallback
+		local selectCallbackObj = self.viewParam and self.viewParam.selectCallbackObj
+
+		if selectCallback and self._selectIndex then
+			selectCallback(selectCallbackObj, self._selectIndex)
 		else
-			logError(string.format("selectCallBack or selectIndex is nil, selectIndex = %s", arg_6_0._selectIndex))
+			logError(string.format("selectCallBack or selectIndex is nil, selectIndex = %s", self._selectIndex))
 		end
 	else
-		logError("cannot find collectionItem, index = " .. tostring(arg_6_0._selectIndex))
+		logError("cannot find collectionItem, index = " .. tostring(self._selectIndex))
 	end
 
-	if arg_6_0._animatorPlayer and arg_6_0._playCollectionCloseAnimCallBack then
-		arg_6_0._animatorPlayer:Play("close", arg_6_0._playCollectionCloseAnimCallBack, arg_6_0)
-		arg_6_0:_closeOtherUnselectCollections()
+	if self._animatorPlayer and self._playCollectionCloseAnimCallBack then
+		self._animatorPlayer:Play("close", self._playCollectionCloseAnimCallBack, self)
+		self:_closeOtherUnselectCollections()
 	else
-		arg_6_0:closeThis()
+		self:closeThis()
 	end
 end
 
-function var_0_0.onOpen(arg_7_0)
-	local var_7_0 = arg_7_0.viewParam and arg_7_0.viewParam.collectionList
+function V1a6_CachotCollectionSelectView:onOpen()
+	local collectionIdList = self.viewParam and self.viewParam.collectionList
 
-	arg_7_0:refreshGetCollectionList(var_7_0)
-	arg_7_0:refreshConfirmBtnState()
+	self:refreshGetCollectionList(collectionIdList)
+	self:refreshConfirmBtnState()
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_shuori_story_click)
 end
 
-function var_0_0.refreshGetCollectionList(arg_8_0, arg_8_1)
-	local var_8_0 = {}
+function V1a6_CachotCollectionSelectView:refreshGetCollectionList(collectionIdList)
+	local useMap = {}
 
-	if arg_8_1 then
-		for iter_8_0, iter_8_1 in ipairs(arg_8_1) do
-			local var_8_1 = arg_8_0:_getOrCreateCollectionItem(iter_8_0)
+	if collectionIdList then
+		for index, v in ipairs(collectionIdList) do
+			local collectionItem = self:_getOrCreateCollectionItem(index)
 
-			var_8_0[var_8_1] = true
+			useMap[collectionItem] = true
 
-			local var_8_2 = V1a6_CachotCollectionConfig.instance:getCollectionConfig(iter_8_1)
+			local collectionCfg = V1a6_CachotCollectionConfig.instance:getCollectionConfig(v)
 
-			if var_8_2 then
-				var_8_1.simageIcon:LoadImage(ResUrl.getV1a6CachotIcon("collection/" .. var_8_2.icon))
+			if collectionCfg then
+				collectionItem.simageIcon:LoadImage(ResUrl.getV1a6CachotIcon("collection/" .. collectionCfg.icon))
 
-				var_8_1.txtName.text = var_8_2 and var_8_2.name or ""
+				collectionItem.txtName.text = collectionCfg and collectionCfg.name or ""
 
-				V1a6_CachotCollectionHelper.refreshSkillDesc(var_8_2, var_8_1.goskillcontainer, var_8_1.goskillItem)
-				V1a6_CachotCollectionHelper.createCollectionHoles(var_8_2, var_8_1.goEnchantList, var_8_1.goHole)
+				V1a6_CachotCollectionHelper.refreshSkillDesc(collectionCfg, collectionItem.goskillcontainer, collectionItem.goskillItem)
+				V1a6_CachotCollectionHelper.createCollectionHoles(collectionCfg, collectionItem.goEnchantList, collectionItem.goHole)
 			end
 		end
 	end
 
-	arg_8_0:_recycleUnUseCollectionItem(var_8_0)
+	self:_recycleUnUseCollectionItem(useMap)
 end
 
-function var_0_0._getOrCreateCollectionItem(arg_9_0, arg_9_1)
-	arg_9_0._collectionItemTab = arg_9_0._collectionItemTab or {}
+function V1a6_CachotCollectionSelectView:_getOrCreateCollectionItem(index)
+	self._collectionItemTab = self._collectionItemTab or {}
 
-	local var_9_0 = arg_9_0._collectionItemTab[arg_9_1]
+	local collectionItem = self._collectionItemTab[index]
 
-	if not var_9_0 then
-		var_9_0 = arg_9_0:getUserDataTb_()
-		var_9_0.viewGO = gohelper.cloneInPlace(arg_9_0._gocollectionitem, "collectionItem_" .. arg_9_1)
-		var_9_0.animator = gohelper.onceAddComponent(var_9_0.viewGO, gohelper.Type_Animator)
-		var_9_0.imageBg = gohelper.findChildImage(var_9_0.viewGO, "#simage_bg")
-		var_9_0.normalBg = gohelper.findChildImage(var_9_0.viewGO, "normal")
+	if not collectionItem then
+		collectionItem = self:getUserDataTb_()
+		collectionItem.viewGO = gohelper.cloneInPlace(self._gocollectionitem, "collectionItem_" .. index)
+		collectionItem.animator = gohelper.onceAddComponent(collectionItem.viewGO, gohelper.Type_Animator)
+		collectionItem.imageBg = gohelper.findChildImage(collectionItem.viewGO, "#simage_bg")
+		collectionItem.normalBg = gohelper.findChildImage(collectionItem.viewGO, "normal")
 
-		UISpriteSetMgr.instance:setV1a6CachotSprite(var_9_0.imageBg, "v1a6_cachot_reward_bg1")
+		UISpriteSetMgr.instance:setV1a6CachotSprite(collectionItem.imageBg, "v1a6_cachot_reward_bg1")
 
-		var_9_0.simageIcon = gohelper.findChildSingleImage(var_9_0.viewGO, "#simage_collection")
-		var_9_0.txtName = gohelper.findChildText(var_9_0.viewGO, "#txt_name")
-		var_9_0.goSelect = gohelper.findChild(var_9_0.viewGO, "#go_select")
-		var_9_0.btnSelect = gohelper.getClickWithDefaultAudio(var_9_0.viewGO)
+		collectionItem.simageIcon = gohelper.findChildSingleImage(collectionItem.viewGO, "#simage_collection")
+		collectionItem.txtName = gohelper.findChildText(collectionItem.viewGO, "#txt_name")
+		collectionItem.goSelect = gohelper.findChild(collectionItem.viewGO, "#go_select")
+		collectionItem.btnSelect = gohelper.getClickWithDefaultAudio(collectionItem.viewGO)
 
-		var_9_0.btnSelect:AddClickListener(arg_9_0._onSelectCollection, arg_9_0, arg_9_1)
+		collectionItem.btnSelect:AddClickListener(self._onSelectCollection, self, index)
 
-		var_9_0.goskillcontainer = gohelper.findChild(var_9_0.viewGO, "scroll_desc/Viewport/#go_skillcontainer")
-		var_9_0.goskillItem = gohelper.findChild(var_9_0.viewGO, "scroll_desc/Viewport/#go_skillcontainer/#go_skillitem")
-		var_9_0.goEnchantList = gohelper.findChild(var_9_0.viewGO, "#go_enchantlist")
-		var_9_0.goHole = gohelper.findChild(var_9_0.viewGO, "#go_enchantlist/#go_hole")
+		collectionItem.goskillcontainer = gohelper.findChild(collectionItem.viewGO, "scroll_desc/Viewport/#go_skillcontainer")
+		collectionItem.goskillItem = gohelper.findChild(collectionItem.viewGO, "scroll_desc/Viewport/#go_skillcontainer/#go_skillitem")
+		collectionItem.goEnchantList = gohelper.findChild(collectionItem.viewGO, "#go_enchantlist")
+		collectionItem.goHole = gohelper.findChild(collectionItem.viewGO, "#go_enchantlist/#go_hole")
 
-		gohelper.setActive(var_9_0.viewGO, true)
+		gohelper.setActive(collectionItem.viewGO, true)
 
-		arg_9_0._collectionItemTab[arg_9_1] = var_9_0
+		self._collectionItemTab[index] = collectionItem
 	end
 
-	return var_9_0
+	return collectionItem
 end
 
-function var_0_0._onSelectCollection(arg_10_0, arg_10_1)
-	arg_10_0._selectIndex = arg_10_1
+function V1a6_CachotCollectionSelectView:_onSelectCollection(index)
+	self._selectIndex = index
 
-	arg_10_0:checkCollectionSelected(arg_10_1)
-	arg_10_0:refreshConfirmBtnState()
+	self:checkCollectionSelected(index)
+	self:refreshConfirmBtnState()
 end
 
-function var_0_0.checkCollectionSelected(arg_11_0, arg_11_1)
-	if arg_11_0._collectionItemTab then
-		for iter_11_0, iter_11_1 in ipairs(arg_11_0._collectionItemTab) do
-			gohelper.setActive(iter_11_1.goSelect, arg_11_1 == iter_11_0)
-			gohelper.setActive(iter_11_1.normalBg, arg_11_1 ~= iter_11_0)
+function V1a6_CachotCollectionSelectView:checkCollectionSelected(selectIndex)
+	if self._collectionItemTab then
+		for index, collectionItem in ipairs(self._collectionItemTab) do
+			gohelper.setActive(collectionItem.goSelect, selectIndex == index)
+			gohelper.setActive(collectionItem.normalBg, selectIndex ~= index)
 		end
 	end
 end
 
-function var_0_0.refreshConfirmBtnState(arg_12_0)
-	local var_12_0 = arg_12_0._selectIndex and arg_12_0._selectIndex ~= 0
+function V1a6_CachotCollectionSelectView:refreshConfirmBtnState()
+	local hasSelectCollection = self._selectIndex and self._selectIndex ~= 0
 
-	gohelper.setActive(arg_12_0._godisableconfirm, not var_12_0)
-	gohelper.setActive(arg_12_0._btnconfirm.gameObject, var_12_0)
+	gohelper.setActive(self._godisableconfirm, not hasSelectCollection)
+	gohelper.setActive(self._btnconfirm.gameObject, hasSelectCollection)
 end
 
-function var_0_0._releaseCallBackParam(arg_13_0)
-	if arg_13_0.viewParam then
-		arg_13_0.viewParam.selectCallback = nil
-		arg_13_0.viewParam.selectCallbackObj = nil
+function V1a6_CachotCollectionSelectView:_releaseCallBackParam()
+	if self.viewParam then
+		self.viewParam.selectCallback = nil
+		self.viewParam.selectCallbackObj = nil
 	end
 end
 
-function var_0_0._recycleUnUseCollectionItem(arg_14_0, arg_14_1)
-	if arg_14_1 and arg_14_0._collectionItemTab then
-		for iter_14_0, iter_14_1 in pairs(arg_14_0._collectionItemTab) do
-			if not arg_14_1[iter_14_1] then
-				gohelper.setActive(iter_14_1.viewGO, false)
-			end
-		end
-	end
-end
-
-function var_0_0._disposeAllCollectionItems(arg_15_0)
-	if arg_15_0._collectionItemTab then
-		for iter_15_0, iter_15_1 in pairs(arg_15_0._collectionItemTab) do
-			if iter_15_1.btnSelect then
-				iter_15_1.btnSelect:RemoveClickListener()
+function V1a6_CachotCollectionSelectView:_recycleUnUseCollectionItem(useMap)
+	if useMap and self._collectionItemTab then
+		for _, v in pairs(self._collectionItemTab) do
+			if not useMap[v] then
+				gohelper.setActive(v.viewGO, false)
 			end
 		end
 	end
 end
 
-function var_0_0._closeOtherUnselectCollections(arg_16_0)
-	if arg_16_0._collectionItemTab then
-		for iter_16_0, iter_16_1 in ipairs(arg_16_0._collectionItemTab) do
-			if iter_16_0 ~= arg_16_0._selectIndex then
-				iter_16_1.animator:Play("collectionitem_close")
+function V1a6_CachotCollectionSelectView:_disposeAllCollectionItems()
+	if self._collectionItemTab then
+		for _, v in pairs(self._collectionItemTab) do
+			if v.btnSelect then
+				v.btnSelect:RemoveClickListener()
 			end
 		end
 	end
 end
 
-function var_0_0._playCollectionCloseAnimCallBack(arg_17_0)
-	arg_17_0:closeThis()
+function V1a6_CachotCollectionSelectView:_closeOtherUnselectCollections()
+	if self._collectionItemTab then
+		for index, collectionItem in ipairs(self._collectionItemTab) do
+			if index ~= self._selectIndex then
+				collectionItem.animator:Play("collectionitem_close")
+			end
+		end
+	end
+end
+
+function V1a6_CachotCollectionSelectView:_playCollectionCloseAnimCallBack()
+	self:closeThis()
 	UIBlockMgr.instance:endBlock("V1a6_CachotCollectionSelectView_Get")
 end
 
-function var_0_0.onClose(arg_18_0)
+function V1a6_CachotCollectionSelectView:onClose()
 	UIBlockMgr.instance:endBlock("V1a6_CachotCollectionSelectView_Get")
 end
 
-function var_0_0.onDestroyView(arg_19_0)
-	arg_19_0:_disposeAllCollectionItems()
-	arg_19_0:_releaseCallBackParam()
+function V1a6_CachotCollectionSelectView:onDestroyView()
+	self:_disposeAllCollectionItems()
+	self:_releaseCallBackParam()
 end
 
-return var_0_0
+return V1a6_CachotCollectionSelectView

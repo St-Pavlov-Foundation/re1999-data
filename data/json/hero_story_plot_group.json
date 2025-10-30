@@ -8,7 +8,8 @@
     "place": "列支敦士登",
     "weather": 1,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 0
   },
   {
     "id": 303702,
@@ -19,7 +20,8 @@
     "place": "墓碑博物馆",
     "weather": 1,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303701
   },
   {
     "id": 303703,
@@ -30,7 +32,8 @@
     "place": "柏林",
     "weather": 6,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303702
   },
   {
     "id": 303704,
@@ -41,7 +44,8 @@
     "place": "柏林",
     "weather": 7,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303703
   },
   {
     "id": 303705,
@@ -52,7 +56,8 @@
     "place": "彼得格勒",
     "weather": 6,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303704
   },
   {
     "id": 303706,
@@ -63,7 +68,8 @@
     "place": "斯帕卡湾",
     "weather": 2,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303705
   },
   {
     "id": 303707,
@@ -74,6 +80,103 @@
     "place": "列支敦士登",
     "weather": 1,
     "roleName": "讣告人",
-    "storyPic": "rolestory_pic_01"
+    "storyPic": "rolestory_pic_01",
+    "preId": 303706
+  },
+  {
+    "id": 304101,
+    "storyId": 27,
+    "storyName": "意料之外，命运之中",
+    "storyNameEn": "Unexpected, but Fated",
+    "time": 8.0,
+    "place": "圣洛夫基金会·客房",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 0
+  },
+  {
+    "id": 304102,
+    "storyId": 27,
+    "storyName": "“不二人选”",
+    "storyNameEn": "The Ideal Candidate",
+    "time": 10.0,
+    "place": "第一防线学校",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304101
+  },
+  {
+    "id": 304103,
+    "storyId": 27,
+    "storyName": "坠落前",
+    "storyNameEn": "Before the Fall",
+    "time": 10.25,
+    "place": "教学楼背面",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304102
+  },
+  {
+    "id": 304104,
+    "storyId": 27,
+    "storyName": "未驯化的好奇",
+    "storyNameEn": "Curiosity Unspoiled",
+    "time": 10.75,
+    "place": "教学楼前",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304103
+  },
+  {
+    "id": 304105,
+    "storyId": 27,
+    "storyName": "非标准《守则》",
+    "storyNameEn": "An Unconventional Answer",
+    "time": 11.25,
+    "place": "禁闭室",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304104
+  },
+  {
+    "id": 304106,
+    "storyId": 27,
+    "storyName": "循迹“倒影”",
+    "storyNameEn": "The Reflections She Sees",
+    "time": 11.5,
+    "place": "禁闭室",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304105
+  },
+  {
+    "id": 304107,
+    "storyId": 27,
+    "storyName": "转瞬的机会",
+    "storyNameEn": "Seizing the Opportunity",
+    "time": 11.75,
+    "place": "禁闭室",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304106
+  },
+  {
+    "id": 304108,
+    "storyId": 27,
+    "storyName": "无定义“正确”",
+    "storyNameEn": "The Undefined Good",
+    "time": 17.0,
+    "place": "第一防线学校·校外",
+    "weather": 1,
+    "roleName": "玛蒂尔达",
+    "storyPic": "rolestory_pic_01",
+    "preId": 304107
   }
 ]

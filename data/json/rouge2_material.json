@@ -1,0 +1,211 @@
+[
+  {
+    "id": 1000,
+    "type": 1,
+    "rare": 1,
+    "name": "“坚韧”",
+    "icon": "rouge2_alchemy_1_2",
+    "details": "通用的基底主料",
+    "formula": "101#102#103#104#105#106#107#108",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1001,
+    "type": 1,
+    "rare": 1,
+    "name": "“顽固”",
+    "icon": "rouge2_alchemy_1_3",
+    "details": "进入新的区域时，获得金雀子儿100和谐波1个",
+    "formula": "103",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1002,
+    "type": 1,
+    "rare": 3,
+    "name": "“脆弱”",
+    "icon": "rouge2_alchemy_1_4",
+    "details": "本次旅途中，出现更多的【精英】战斗",
+    "formula": "106",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1003,
+    "type": 1,
+    "rare": 1,
+    "name": "“外壳”",
+    "icon": "rouge2_alchemy_1_10",
+    "details": "每次进入的路点与上一个路点相同时，金雀子儿+60",
+    "formula": "102",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1004,
+    "type": 1,
+    "rare": 3,
+    "name": "“生长”",
+    "icon": "rouge2_alchemy_1_6",
+    "details": "本次旅途中，出现更多的【商店】路点",
+    "formula": "107",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1005,
+    "type": 1,
+    "rare": 1,
+    "name": "“色彩”",
+    "icon": "rouge2_alchemy_1_7",
+    "details": "结算分数+25%，额外获得一些边角料",
+    "formula": "105",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1006,
+    "type": 1,
+    "rare": 3,
+    "name": "“漫长”",
+    "icon": "rouge2_alchemy_1_8",
+    "details": "本次旅途中，生成更多的【事件】路点",
+    "formula": "106",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1007,
+    "type": 1,
+    "rare": 1,
+    "name": "“轻盈”",
+    "icon": "rouge2_alchemy_1_9",
+    "details": "每次进入的路点与上一个路点不同时，金雀子儿+40",
+    "formula": "108",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1008,
+    "type": 1,
+    "rare": 1,
+    "name": "“遗骸”",
+    "icon": "rouge2_alchemy_1_5",
+    "details": "结算分数+50%，额外获得少量边角料",
+    "formula": "104",
+    "effects": "",
+    "numMax": 5
+  },
+  {
+    "id": 1101,
+    "type": 2,
+    "rare": 1,
+    "name": "“内在”",
+    "icon": "rouge2_alchemy_2_1",
+    "details": "每进入3个【战斗】相关路点获得1个力量谐波",
+    "formula": "",
+    "effects": "190032#100",
+    "numMax": 5
+  },
+  {
+    "id": 1102,
+    "type": 2,
+    "rare": 1,
+    "name": "“干枯”",
+    "icon": "rouge2_alchemy_2_2",
+    "details": "每进入1个【巧匠之手】路点获得1个奥秘谐波",
+    "formula": "",
+    "effects": "190034#100",
+    "numMax": 5
+  },
+  {
+    "id": 1103,
+    "type": 2,
+    "rare": 1,
+    "name": "“牢固”",
+    "icon": "rouge2_alchemy_2_7",
+    "details": "每进入2个【购物契机】路点获得1个反应谐波",
+    "formula": "",
+    "effects": "190033#100",
+    "numMax": 5
+  },
+  {
+    "id": 1104,
+    "type": 2,
+    "rare": 1,
+    "name": "“不规则”",
+    "icon": "rouge2_alchemy_2_4",
+    "details": "谐波数量达到10/20个时，获得1个紫色谐波",
+    "formula": "",
+    "effects": "190054#100",
+    "numMax": 5
+  },
+  {
+    "id": 1105,
+    "type": 2,
+    "rare": 1,
+    "name": "“变化”",
+    "icon": "rouge2_alchemy_2_5",
+    "details": "谐波数量达到15/30个时，获得1个橙色谐波",
+    "formula": "",
+    "effects": "190055#100",
+    "numMax": 5
+  },
+  {
+    "id": 1106,
+    "type": 2,
+    "rare": 3,
+    "name": "“装饰”",
+    "icon": "rouge2_alchemy_2_6",
+    "details": "完成【精英】战斗后，额外获得随机1个紫色谐波",
+    "formula": "",
+    "effects": "190004#100",
+    "numMax": 5
+  },
+  {
+    "id": 1107,
+    "type": 2,
+    "rare": 3,
+    "name": "“缓慢”",
+    "icon": "rouge2_alchemy_2_3",
+    "details": "每次进入商店时，获得50金雀子儿，购买任意商品时，返还20金雀子儿",
+    "formula": "",
+    "effects": "190038#100",
+    "numMax": 5
+  },
+  {
+    "id": 1108,
+    "type": 2,
+    "rare": 3,
+    "name": "“知识”",
+    "icon": "rouge2_alchemy_2_8",
+    "details": "旅途结算时，随机获得1个与金雀子儿或结算相关的主料",
+    "formula": "",
+    "effects": "190059#100|190060#100|190061#100|190062#100|190063#100",
+    "numMax": 5
+  },
+  {
+    "id": 1109,
+    "type": 2,
+    "rare": 3,
+    "name": "“财富”",
+    "icon": "rouge2_alchemy_2_9",
+    "details": "获得特殊造物【圣甲虫护身符】：商店价格-50%，可升级",
+    "formula": "",
+    "effects": "190071#100",
+    "numMax": 5
+  },
+  {
+    "id": 1110,
+    "type": 2,
+    "rare": 3,
+    "name": "“温暖”",
+    "icon": "rouge2_alchemy_2_10",
+    "details": "旅途结算时，随机获得1个与路点类型相关的主料",
+    "formula": "",
+    "effects": "190056#100|190057#100|190058#100",
+    "numMax": 5
+  }
+]

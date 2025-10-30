@@ -1,28 +1,30 @@
-﻿module("modules.logic.sdk.controller.SDKController", package.seeall)
+﻿-- chunkname: @modules/logic/sdk/controller/SDKController.lua
 
-local var_0_0 = class("SDKController", BaseController)
+module("modules.logic.sdk.controller.SDKController", package.seeall)
 
-function var_0_0.onInit(arg_1_0)
+local SDKController = class("SDKController", BaseController)
+
+function SDKController:onInit()
 	return
 end
 
-function var_0_0.reInit(arg_2_0)
+function SDKController:reInit()
 	return
 end
 
-function var_0_0.addConstEvents(arg_3_0)
+function SDKController:addConstEvents()
 	return
 end
 
-function var_0_0.openSDKExitView(arg_4_0, arg_4_1, arg_4_2)
-	local var_4_0 = {
-		loginCallback = arg_4_1,
-		exitCallback = arg_4_2
-	}
+function SDKController:openSDKExitView(loginCallback, exitCallback)
+	local param = {}
 
-	ViewMgr.instance:openView(ViewName.SDKExitGameView, var_4_0)
+	param.loginCallback = loginCallback
+	param.exitCallback = exitCallback
+
+	ViewMgr.instance:openView(ViewName.SDKExitGameView, param)
 end
 
-var_0_0.instance = var_0_0.New()
+SDKController.instance = SDKController.New()
 
-return var_0_0
+return SDKController

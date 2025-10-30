@@ -1,29 +1,31 @@
-﻿module("modules.logic.stat.rpc.StatRpc", package.seeall)
+﻿-- chunkname: @modules/logic/stat/rpc/StatRpc.lua
 
-local var_0_0 = class("StatRpc", BaseRpc)
+module("modules.logic.stat.rpc.StatRpc", package.seeall)
 
-function var_0_0.sendClientStatBaseInfoRequest(arg_1_0, arg_1_1)
-	local var_1_0 = StatModule_pb.ClientStatBaseInfoRequest()
+local StatRpc = class("StatRpc", BaseRpc)
 
-	var_1_0.info = arg_1_1
+function StatRpc:sendClientStatBaseInfoRequest(info)
+	local req = StatModule_pb.ClientStatBaseInfoRequest()
 
-	return arg_1_0:sendMsg(var_1_0)
+	req.info = info
+
+	return self:sendMsg(req)
 end
 
-function var_0_0.onReceiveClientStatBaseInfoReply(arg_2_0, arg_2_1, arg_2_2)
+function StatRpc:onReceiveClientStatBaseInfoReply(resultCode, msg)
 	return
 end
 
-function var_0_0.onReceiveStatInfoPush(arg_3_0, arg_3_1, arg_3_2)
-	if arg_3_1 == 0 then
-		StatModel.instance:setRoleType(arg_3_2.userTag)
+function StatRpc:onReceiveStatInfoPush(resultCode, msg)
+	if resultCode == 0 then
+		StatModel.instance:setRoleType(msg.userTag)
 
-		if string.nilorempty(arg_3_2.userTag) == false then
+		if string.nilorempty(msg.userTag) == false then
 			SDKMgr.instance:updateRole(StatModel.instance:generateRoleInfo())
 		end
 	end
 end
 
-var_0_0.instance = var_0_0.New()
+StatRpc.instance = StatRpc.New()
 
-return var_0_0
+return StatRpc

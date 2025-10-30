@@ -1,69 +1,71 @@
-﻿module("modules.logic.explore.view.ExploreGuideDialogueView", package.seeall)
+﻿-- chunkname: @modules/logic/explore/view/ExploreGuideDialogueView.lua
 
-local var_0_0 = class("ExploreGuideDialogueView", BaseView)
+module("modules.logic.explore.view.ExploreGuideDialogueView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._btnfullscreen = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_fullscreen")
-	arg_1_0._gochoicelist = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist")
-	arg_1_0._gochoiceitem = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist/#go_choiceitem")
-	arg_1_0._txttalkinfo = gohelper.findChildText(arg_1_0.viewGO, "go_normalcontent/txt_contentcn")
-	arg_1_0._txttalker = gohelper.findChildText(arg_1_0.viewGO, "#txt_talker")
+local ExploreGuideDialogueView = class("ExploreGuideDialogueView", BaseView)
 
-	gohelper.setActive(arg_1_0._gochoicelist, false)
+function ExploreGuideDialogueView:onInitView()
+	self._btnfullscreen = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_fullscreen")
+	self._gochoicelist = gohelper.findChild(self.viewGO, "#go_choicelist")
+	self._gochoiceitem = gohelper.findChild(self.viewGO, "#go_choicelist/#go_choiceitem")
+	self._txttalkinfo = gohelper.findChildText(self.viewGO, "go_normalcontent/txt_contentcn")
+	self._txttalker = gohelper.findChildText(self.viewGO, "#txt_talker")
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+	gohelper.setActive(self._gochoicelist, false)
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	arg_2_0._btnfullscreen:AddClickListener(arg_2_0.onClickFull, arg_2_0)
-	GuideController.instance:registerCallback(GuideEvent.OnClickSpace, arg_2_0.onClickFull, arg_2_0)
-	GuideController.instance:registerCallback(GuideEvent.OneKeyFinishGuides, arg_2_0.closeThis, arg_2_0)
+function ExploreGuideDialogueView:addEvents()
+	self._btnfullscreen:AddClickListener(self.onClickFull, self)
+	GuideController.instance:registerCallback(GuideEvent.OnClickSpace, self.onClickFull, self)
+	GuideController.instance:registerCallback(GuideEvent.OneKeyFinishGuides, self.closeThis, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
-	GuideController.instance:unregisterCallback(GuideEvent.OnClickSpace, arg_3_0.onClickFull, arg_3_0)
-	GuideController.instance:unregisterCallback(GuideEvent.OneKeyFinishGuides, arg_3_0.closeThis, arg_3_0)
-	arg_3_0._btnfullscreen:RemoveClickListener()
+function ExploreGuideDialogueView:removeEvents()
+	GuideController.instance:unregisterCallback(GuideEvent.OnClickSpace, self.onClickFull, self)
+	GuideController.instance:unregisterCallback(GuideEvent.OneKeyFinishGuides, self.closeThis, self)
+	self._btnfullscreen:RemoveClickListener()
 end
 
-function var_0_0.onClickFull(arg_4_0)
-	if arg_4_0._hasIconDialogItem:isPlaying() then
-		arg_4_0._hasIconDialogItem:conFinished()
+function ExploreGuideDialogueView:onClickFull()
+	if self._hasIconDialogItem:isPlaying() then
+		self._hasIconDialogItem:conFinished()
 
 		return
 	end
 
-	local var_4_0 = arg_4_0.viewParam.closeCallBack
-	local var_4_1 = arg_4_0.viewParam.guideKey
+	local closeCallback = self.viewParam.closeCallBack
+	local callbackParam = self.viewParam.guideKey
 
-	if not arg_4_0.viewParam.noClose then
-		arg_4_0:closeThis()
+	if not self.viewParam.noClose then
+		self:closeThis()
 	end
 
-	var_4_0(var_4_1)
+	closeCallback(callbackParam)
 end
 
-function var_0_0.onOpen(arg_5_0)
+function ExploreGuideDialogueView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_course_open)
-	arg_5_0:_refreshView()
+	self:_refreshView()
 end
 
-function var_0_0.onUpdateParam(arg_6_0)
-	arg_6_0:_refreshView()
+function ExploreGuideDialogueView:onUpdateParam()
+	self:_refreshView()
 end
 
-function var_0_0._refreshView(arg_7_0)
-	local var_7_0 = string.gsub(arg_7_0.viewParam.tipsContent, " ", " ")
+function ExploreGuideDialogueView:_refreshView()
+	local content = string.gsub(self.viewParam.tipsContent, " ", " ")
 
-	if not arg_7_0._hasIconDialogItem then
-		arg_7_0._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(arg_7_0.viewGO, TMPFadeIn)
+	if not self._hasIconDialogItem then
+		self._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(self.viewGO, TMPFadeIn)
 	end
 
-	arg_7_0._hasIconDialogItem:playNormalText(var_7_0)
+	self._hasIconDialogItem:playNormalText(content)
 
-	arg_7_0._txttalker.text = arg_7_0.viewParam.tipsTalker
+	self._txttalker.text = self.viewParam.tipsTalker
 end
 
-return var_0_0
+return ExploreGuideDialogueView

@@ -4705,7 +4705,7 @@
   },
   {
     "id": "bp_sp_rule",
-    "lang": "【吼吼点唱机-巡游专列！规则说明】|会发出奇怪吼叫声的怪异机器，收听内置其中的播放列表可获得各种奖励。<br>该期吼吼点唱机-巡游专列默认解锁普通光碟，并<#b95323>免费解锁典藏光碟</color>。<br>吼吼点唱机-巡游专列！的分贝等级<#b95323>与吼吼点唱机同步</color>且当分贝等级提升至<#b95323>10级</color>，即可领取<#b95323>风尚剪影特辑</color>；解锁吼吼点唱机的典藏光碟组后还可<#b95323>立即同步提升</color>吼吼点唱机-巡游专列！的10级分贝等级。|【分贝等级说明】|与吼吼点唱机的分贝等级完全同步，吼吼点唱机-巡游专列！无分贝等级任务，活动结束时，已解锁但未领取的奖励将通过邮件发送至邮箱当中，邮件有效期为<#b95323>7天</color>，请及时领取。"
+    "lang": "【吼吼点唱机·典藏母盘规则说明】|会发出奇怪吼叫声的怪异机器，收听内置其中的播放列表可获得各种奖励。<br>该期吼吼点唱机·典藏母盘默认解锁普通光碟，并<#b95323>免费解锁典藏光碟</color>。<br>吼吼点唱机·典藏母盘的分贝等级<#b95323>与吼吼点唱机同步</color>且当分贝等级提升至<#b95323>10级</color>，即可领取<#b95323>风尚剪影特辑</color>；解锁吼吼点唱机的典藏光碟组后还可<#b95323>立即同步提升</color>吼吼点唱机·典藏母盘的10级分贝等级。|【分贝等级说明】|与吼吼点唱机的分贝等级完全同步，吼吼点唱机·典藏母盘无分贝等级任务，活动结束时，已解锁但未领取的奖励将通过邮件发送至邮箱当中，邮件有效期为<#b95323>7天</color>，请及时领取。"
   },
   {
     "id": "bp_sp_level",
@@ -7414,5 +7414,429 @@
   {
     "id": "pata_500M_pogress_desc",
     "lang": "回台开始时：\n-若压力大于等于<color=#E99B56>30</color>时，遮蔽敌方咒语1回合\n-若压力大于等于<color=#E99B56>70</color>时，使敌方后续回合行\n动点-1\n-若压力大于等于<color=#E99B56>100</color>时，将会释放1次至终\n的仪式"
+  },
+  {
+    "id": "rouge2_illustration_choice_unlock",
+    "lang": "属性???解锁"
+  },
+  {
+    "id": "v3a2_loginpagesetting_new_text",
+    "lang": "最新"
+  },
+  {
+    "id": "v3a2_loginpagesetting_random_text",
+    "lang": "随机"
+  },
+  {
+    "id": "huidiaolan_skill_changepos",
+    "lang": "选择任意两个光色，交换其位置"
+  },
+  {
+    "id": "huidiaolan_skill_changecolor",
+    "lang": "将3*3方格内所有的1级光色，随机变换颜色"
+  },
+  {
+    "id": "huidiaolan_win_target",
+    "lang": "获得<color=#E99B56>(▩1%s/▩2%s)</color>个完美光色"
+  },
+  {
+    "id": "huidiaolan_getdiamond",
+    "lang": "获得<color=#E99B56>▩1%s</color>个完美光色"
+  },
+  {
+    "id": "v3a2_udimo_info_gettime",
+    "lang": "▩1%s进入箱中"
+  },
+  {
+    "id": "v3a2_udimo_info_no_gettime",
+    "lang": "暂未入箱"
+  },
+  {
+    "id": "v3a2_udimo_info_fightcount",
+    "lang": "战斗次数：▩1%s"
+  },
+  {
+    "id": "v3a2_udimo_info_herocoverday",
+    "lang": "看板天数：▩1%s"
+  },
+  {
+    "id": "v3a2_udimo_info_assistcount",
+    "lang": "助战次数：▩1%s"
+  },
+  {
+    "id": "v3a2_udimo_info_traincrittercount",
+    "lang": "培训魔精：▩1%s"
+  },
+  {
+    "id": "v3a2_udimo_info_clothescount",
+    "lang": "时装数量：▩1%s"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_1",
+    "lang": "从不"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_2",
+    "lang": "30秒"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_3",
+    "lang": "1分钟"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_4",
+    "lang": "5分钟"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_5",
+    "lang": "10分钟"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_6",
+    "lang": "30分钟"
+  },
+  {
+    "id": "v3a2_udimo_lock_setting_7",
+    "lang": "1小时"
+  },
+  {
+    "id": "autochess_beginview_title1",
+    "lang": "守卫名单"
+  },
+  {
+    "id": "autochess_beginview_title2",
+    "lang": "制定计划"
+  },
+  {
+    "id": "autochess_beginview_title3",
+    "lang": "选择领队"
+  },
+  {
+    "id": "rouge2_result_material_title",
+    "lang": ""
+  },
+  {
+    "id": "rouge2_result_relicsl_unlock_title",
+    "lang": "造物解锁"
+  },
+  {
+    "id": "rouge2_result_formula_unlock_title",
+    "lang": "配方解锁"
+  },
+  {
+    "id": "rouge2_attributeupview_up",
+    "lang": "提升▩1%s点"
+  },
+  {
+    "id": "rouge2_backpacktabview_career",
+    "lang": "改造状态"
+  },
+  {
+    "id": "rouge2_backpacktabview_skill",
+    "lang": "共鸣器"
+  },
+  {
+    "id": "rouge2_backpacktabview_buff",
+    "lang": "谐波"
+  },
+  {
+    "id": "rouge2_backpacktabview_relics",
+    "lang": "造物"
+  },
+  {
+    "id": "rouge2_mapview_fight",
+    "lang": "前往"
+  },
+  {
+    "id": "rouge2_mapview_move",
+    "lang": "前往"
+  },
+  {
+    "id": "rouge2_backpackskillview_capacity",
+    "lang": "<voffset=4><size=40>共振负荷</size>：</voffset><color=#e5c26f>▩1%s</color><color=#b4b4b4>/▩2%s</color>"
+  },
+  {
+    "id": "rouge2_attrsplittoolbar_all",
+    "lang": "全选"
+  },
+  {
+    "id": "rouge2_talent_prenode_locked",
+    "lang": "前置天赋未激活"
+  },
+  {
+    "id": "rouge2_mapdiceview_target",
+    "lang": "成功  ▩1%s"
+  },
+  {
+    "id": "rouge2_mapdiceview_tips",
+    "lang": "▩1%s以上获得大成功"
+  },
+  {
+    "id": "rouge2_alchemy_mainmaterial_not_enough",
+    "lang": "缺少主料 ▩1%s"
+  },
+  {
+    "id": "rouge2_resultreportview_txt_dec_end",
+    "lang": "旋律中止于<#D97373>▩1%s</color>"
+  },
+  {
+    "id": "rouge2_alchemy_mainmaterial_not_enough_link",
+    "lang": ","
+  },
+  {
+    "id": "rouge2_settlement_score_title_1",
+    "lang": "遭遇"
+  },
+  {
+    "id": "rouge2_settlement_score_title_2",
+    "lang": "冲突"
+  },
+  {
+    "id": "rouge2_settlement_score_title_3",
+    "lang": "恶战"
+  },
+  {
+    "id": "rouge2_settlement_score_title_4",
+    "lang": "收藏"
+  },
+  {
+    "id": "rouge2_settlement_score_title_5",
+    "lang": "层数"
+  },
+  {
+    "id": "rouge2_settlement_score_title_6",
+    "lang": "属性"
+  },
+  {
+    "id": "rouge2_fight_add_value",
+    "lang": "计数增加+▩1%s"
+  },
+  {
+    "id": "rouge2_fight_revival_tip_desc",
+    "lang": "32201重振"
+  },
+  {
+    "id": "rolestory_madierda_gameview_title",
+    "lang": "彼时所得 (<#FCA44C>▩1%s</color>/▩2%s)"
+  },
+  {
+    "id": "rolestoryview_tabname_1",
+    "lang": "演绎篇"
+  },
+  {
+    "id": "rolestoryview_tabname_2",
+    "lang": "放映篇"
+  },
+  {
+    "id": "autochess_warnupview_stage1",
+    "lang": "团队建设"
+  },
+  {
+    "id": "autochess_warnupview_stage2",
+    "lang": "新的计划"
+  },
+  {
+    "id": "autochess_warnupview_stage3",
+    "lang": "安保升级"
+  },
+  {
+    "id": "autochess_warnlevel_unlock",
+    "lang": "警戒度达到lv.▩1%s解锁"
+  },
+  {
+    "id": "autochess_beginview_btn1",
+    "lang": "筹备计划"
+  },
+  {
+    "id": "autochess_beginview_btn2",
+    "lang": "返回计划"
+  },
+  {
+    "id": "rouge2_difficultyselectview_reward",
+    "lang": "结算时获得的颅中谐振：▩1%s%"
+  },
+  {
+    "id": "rouge2_careerselectview_careertips",
+    "lang": "▩1%s"
+  },
+  {
+    "id": "cruise_selftask_targetprogress",
+    "lang": "完成 ▩1%s/▩2%s个任务可领取"
+  },
+  {
+    "id": "versionsummon_txt_tips1",
+    "lang": "活动期间，可获得十全调·【命运亦需捧场】"
+  },
+  {
+    "id": "versionsummon_txt_tips2",
+    "lang": "§活动期间，可获得十全调·【鹰翔于酒色之海】"
+  },
+  {
+    "id": "CruiseGame_1",
+    "lang": "游玩次数：▩1%s/▩2%s"
+  },
+  {
+    "id": "CruiseGame_2",
+    "lang": "选择第▩1%s张牌"
+  },
+  {
+    "id": "CruiseGame_3",
+    "lang": "胜利不过是灵光一现，总归人类的智慧更胜于魔精。"
+  },
+  {
+    "id": "CruiseGame_4",
+    "lang": "都怪这桌子不稳，牌面粗糙！总归不是我的原因。"
+  },
+  {
+    "id": "CruiseGame_5",
+    "lang": "胜利还是失败，这是一个问题。但有时候，也不都是问题。"
+  },
+  {
+    "id": "CruiseGame_6",
+    "lang": "打出第一张牌"
+  },
+  {
+    "id": "CruiseGame_7",
+    "lang": "打出第二张牌"
+  },
+  {
+    "id": "CruiseGame_8",
+    "lang": "选择一张牌撤回"
+  },
+  {
+    "id": "CruiseGame_9",
+    "lang": "§你选好了牌没呀"
+  },
+  {
+    "id": "CruiseGame_10",
+    "lang": "§到我了"
+  },
+  {
+    "id": "BPCruise_1",
+    "lang": "§巡游加赠"
+  },
+  {
+    "id": "BPCruise_2",
+    "lang": "§额外加赠"
+  },
+  {
+    "id": "CumulativeRewardsTipsTitle_1",
+    "lang": "未完成关卡"
+  },
+  {
+    "id": "CumulativeRewardsTipsTitle_2",
+    "lang": "未完成小径"
+  },
+  {
+    "id": "BLE_select_crystal",
+    "lang": "已组合<color=#e8ca70>（▩1%s/▩2%s）</color>"
+  },
+  {
+    "id": "triple_drop_remain_times",
+    "lang": "三重狂欢可加成次数：▩1%s/▩2%s"
+  },
+  {
+    "id": "v3a2BossRush_Result_BaseScore",
+    "lang": "怪象实况：▩1%s"
+  },
+  {
+    "id": "v3a2BossRush_Result_RuleScore",
+    "lang": "怪相细节：▩1%s"
+  },
+  {
+    "id": "v3a2BossRush_Result_TotalScore",
+    "lang": "当局委托评估：▩1%s"
+  },
+  {
+    "id": "fight_conceal_value",
+    "lang": "当前隐匿度: ▩1%s"
+  },
+  {
+    "id": "character_destinystone_reshape_lv",
+    "lang": "塑造 Lv. ▩1%s"
+  },
+  {
+    "id": "rouge2_maprelicsabandonview_select",
+    "lang": "确认丢弃（▩1%s/▩2%s）"
+  },
+  {
+    "id": "rouge2_maprelicsabandonview_title",
+    "lang": "丢弃▩1%s个造物"
+  },
+  {
+    "id": "rouge2_mapbuffabandonview_title",
+    "lang": "丢弃▩1%s个谐波"
+  },
+  {
+    "id": "playercard_Act128Level",
+    "lang": "目击者等级："
+  },
+  {
+    "id": "summonsimulation_result_title_1",
+    "lang": "第一次模拟"
+  },
+  {
+    "id": "summonsimulation_result_title_2",
+    "lang": "第二次模拟"
+  },
+  {
+    "id": "summonsimulation_result_title_3",
+    "lang": "第三次模拟"
+  },
+  {
+    "id": "VersionActivity2_3NewCultivationDestinyItem_refresh_desc2ItemList_prefix",
+    "lang": "塑造 Lv.%s："
+  },
+  {
+    "id": "rouge2_continue_fight",
+    "lang": "重新挑战"
+  },
+  {
+    "id": "rouge2_abort_fight",
+    "lang": "终止探索"
+  },
+  {
+    "id": "autochess_leaderbuffview_debris",
+    "lang": "灵魂层数：▩1%s"
+  },
+  {
+    "id": "autochess_gameview_bosslimit",
+    "lang": "守卫回合不会被削减斗志；每对守卫造成50%血量伤害，可获得一个“艾西的教诲”"
+  },
+  {
+    "id": "common_use_tips_btn_title",
+    "lang": "前往使用"
+  },
+  {
+    "id": "autochess_copyskill_multi",
+    "lang": "，重复▩1%s次"
+  },
+  {
+    "id": "rouge2_mapchoiceview_continue",
+    "lang": "继续"
+  },
+  {
+    "id": "rouge2_mapchoiceview_end",
+    "lang": "结束"
+  },
+  {
+    "id": "rouge2_unlockhelper_relics",
+    "lang": "造物"
+  },
+  {
+    "id": "rouge2_unlockhelper_buff",
+    "lang": "谐波"
+  },
+  {
+    "id": "rouge2_funnytask_fail",
+    "lang": "未获得奖励"
+  },
+  {
+    "id": "rouge2_shop",
+    "lang": "积分："
+  },
+  {
+    "id": "rouge2_effecttips",
+    "lang": "达到▩1%s▩2%s激活效果:▩3%s"
   }
 ]

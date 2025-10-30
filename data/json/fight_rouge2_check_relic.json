@@ -1,0 +1,86 @@
+[
+  {
+    "id": 310001,
+    "attributeTag": 101,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310002,
+    "attributeTag": 102,
+    "limit": 3,
+    "buff": 108302000,
+    "skill": 108302001
+  },
+  {
+    "id": 310004,
+    "attributeTag": 103,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310005,
+    "attributeTag": 102,
+    "limit": 3,
+    "buff": 108302000,
+    "skill": 108302001
+  },
+  {
+    "id": 310006,
+    "attributeTag": 102,
+    "limit": 3,
+    "buff": 108302000,
+    "skill": 108302001
+  },
+  {
+    "id": 310007,
+    "attributeTag": 101,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310008,
+    "attributeTag": 102,
+    "limit": 3,
+    "buff": 108302000,
+    "skill": 108302001
+  },
+  {
+    "id": 310009,
+    "attributeTag": 103,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310010,
+    "attributeTag": 103,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310011,
+    "attributeTag": 103,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310012,
+    "attributeTag": 101,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  },
+  {
+    "id": 310013,
+    "attributeTag": 101,
+    "limit": 0,
+    "buff": 0,
+    "skill": 0
+  }
+]

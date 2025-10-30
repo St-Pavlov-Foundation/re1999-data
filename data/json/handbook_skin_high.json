@@ -80,12 +80,12 @@
     "id": 10008,
     "name": "度朔时节",
     "nameEn": "Dushuo Festival",
-    "show": false,
+    "show": true,
     "order": 8,
-    "des": "大套组描述AAA",
-    "scenePath": "",
-    "nameRes": "",
-    "iconRes": ""
+    "des": "有桃有枝夜来香，无云无月影入廊。",
+    "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10008.prefab",
+    "nameRes": "skinhandbook_titletxt_09",
+    "iconRes": "skinhandbook_titleicon_09"
   },
   {
     "id": 10009,

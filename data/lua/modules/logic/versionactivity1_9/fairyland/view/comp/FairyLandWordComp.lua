@@ -1,141 +1,143 @@
-﻿module("modules.logic.versionactivity1_9.fairyland.view.comp.FairyLandWordComp", package.seeall)
+﻿-- chunkname: @modules/logic/versionactivity1_9/fairyland/view/comp/FairyLandWordComp.lua
 
-local var_0_0 = class("FairyLandWordComp", LuaCompBase)
+module("modules.logic.versionactivity1_9.fairyland.view.comp.FairyLandWordComp", package.seeall)
 
-var_0_0.WordInterval = 3.5
-var_0_0.WordTxtPosYOffset = 5
-var_0_0.WordTxtPosXOffset = 2
-var_0_0.WordTxtInterval = 0.1
-var_0_0.WordTxtOpen = 0.5
-var_0_0.WordTxtIdle = 1.1
-var_0_0.WordTxtClose = 0.5
-var_0_0.WordLine2Delay = 1
+local FairyLandWordComp = class("FairyLandWordComp", LuaCompBase)
 
-function var_0_0.ctor(arg_1_0, arg_1_1)
-	arg_1_0._co = arg_1_1.co
-	arg_1_0._res1 = arg_1_1.res1
-	arg_1_0._res2 = arg_1_1.res2
+FairyLandWordComp.WordInterval = 3.5
+FairyLandWordComp.WordTxtPosYOffset = 5
+FairyLandWordComp.WordTxtPosXOffset = 2
+FairyLandWordComp.WordTxtInterval = 0.1
+FairyLandWordComp.WordTxtOpen = 0.5
+FairyLandWordComp.WordTxtIdle = 1.1
+FairyLandWordComp.WordTxtClose = 0.5
+FairyLandWordComp.WordLine2Delay = 1
+
+function FairyLandWordComp:ctor(params)
+	self._co = params.co
+	self._res1 = params.res1
+	self._res2 = params.res2
 end
 
-function var_0_0.init(arg_2_0, arg_2_1)
-	arg_2_0.go = arg_2_1
+function FairyLandWordComp:init(go)
+	self.go = go
 
-	arg_2_0:createTxt()
+	self:createTxt()
 end
 
-function var_0_0.createTxt(arg_3_0)
-	local var_3_0 = var_0_0.WordTxtOpen + var_0_0.WordTxtIdle + var_0_0.WordTxtClose
+function FairyLandWordComp:createTxt()
+	local oneWordTime = FairyLandWordComp.WordTxtOpen + FairyLandWordComp.WordTxtIdle + FairyLandWordComp.WordTxtClose
 
-	arg_3_0._allAnimWork = {}
+	self._allAnimWork = {}
 
-	local var_3_1 = arg_3_0._co.question
-	local var_3_2 = string.format("——%s", arg_3_0._co.answer)
-	local var_3_3 = LuaUtil.getUCharArr(var_3_1) or {}
-	local var_3_4 = 0
-	local var_3_5 = 1
+	local text1 = self._co.question
+	local text2 = string.format("——%s", self._co.answer)
+	local words1 = LuaUtil.getUCharArr(text1) or {}
+	local offsetX = 0
+	local index = 1
 
-	for iter_3_0 = 1, #var_3_3 do
-		local var_3_6, var_3_7 = arg_3_0:getRes(arg_3_0.go, arg_3_0._res1)
+	for i = 1, #words1 do
+		local txtAnim, txt = self:getRes(self.go, self._res1)
 
-		var_3_7.text = var_3_3[iter_3_0]
+		txt.text = words1[i]
 
-		transformhelper.setLocalPosXY(var_3_6.transform, var_3_4, var_3_5 % 2 == 1 and -var_0_0.WordTxtPosYOffset or var_0_0.WordTxtPosYOffset)
+		transformhelper.setLocalPosXY(txtAnim.transform, offsetX, index % 2 == 1 and -FairyLandWordComp.WordTxtPosYOffset or FairyLandWordComp.WordTxtPosYOffset)
 
-		var_3_4 = var_3_4 + var_3_7.preferredWidth + var_0_0.WordTxtPosXOffset
+		offsetX = offsetX + txt.preferredWidth + FairyLandWordComp.WordTxtPosXOffset
 
-		table.insert(arg_3_0._allAnimWork, {
+		table.insert(self._allAnimWork, {
 			playAnim = "open",
-			anim = var_3_6,
-			time = (var_3_5 - 1) * var_0_0.WordTxtInterval
+			anim = txtAnim,
+			time = (index - 1) * FairyLandWordComp.WordTxtInterval
 		})
 
-		var_3_5 = var_3_5 + 1
+		index = index + 1
 	end
 
-	local var_3_8 = LuaUtil.getUCharArr(var_3_2) or {}
+	local words2 = LuaUtil.getUCharArr(text2) or {}
 
-	for iter_3_1 = 1, #var_3_8 do
-		local var_3_9, var_3_10 = arg_3_0:getRes(arg_3_0.go, arg_3_0._res2)
+	for i = 1, #words2 do
+		local txtAnim, txt = self:getRes(self.go, self._res2)
 
-		var_3_10.text = var_3_8[iter_3_1]
+		txt.text = words2[i]
 
-		transformhelper.setLocalPosXY(var_3_9.transform, var_3_4, var_3_5 % 2 == 1 and -var_0_0.WordTxtPosYOffset or var_0_0.WordTxtPosYOffset)
+		transformhelper.setLocalPosXY(txtAnim.transform, offsetX, index % 2 == 1 and -FairyLandWordComp.WordTxtPosYOffset or FairyLandWordComp.WordTxtPosYOffset)
 
-		var_3_4 = var_3_4 + var_3_10.preferredWidth + var_0_0.WordTxtPosXOffset
+		offsetX = offsetX + txt.preferredWidth + FairyLandWordComp.WordTxtPosXOffset
 
-		table.insert(arg_3_0._allAnimWork, {
+		table.insert(self._allAnimWork, {
 			playAnim = "open",
-			anim = var_3_9,
-			time = (var_3_5 - 1) * var_0_0.WordTxtInterval
+			anim = txtAnim,
+			time = (index - 1) * FairyLandWordComp.WordTxtInterval
 		})
 
-		var_3_5 = var_3_5 + 1
+		index = index + 1
 	end
 
-	local var_3_11 = var_3_0 + var_0_0.WordTxtInterval * (#var_3_3 - 1)
-	local var_3_12 = 0
+	local line1TotalTime = oneWordTime + FairyLandWordComp.WordTxtInterval * (#words1 - 1)
+	local line2TotalTime = 0
 
-	if #var_3_8 > 0 then
-		var_3_12 = var_3_0 + var_0_0.WordTxtInterval * (#var_3_8 - 1)
+	if #words2 > 0 then
+		line2TotalTime = oneWordTime + FairyLandWordComp.WordTxtInterval * (#words2 - 1)
 	end
 
-	local var_3_13 = math.max(var_3_11, var_3_12)
+	local totalTime = math.max(line1TotalTime, line2TotalTime)
 
-	table.sort(arg_3_0._allAnimWork, var_0_0.sortAnim)
-	recthelper.setAnchor(arg_3_0.go.transform, -var_3_4 + 40, 0)
-	arg_3_0:nextStep()
+	table.sort(self._allAnimWork, FairyLandWordComp.sortAnim)
+	recthelper.setAnchor(self.go.transform, -offsetX + 40, 0)
+	self:nextStep()
 end
 
-function var_0_0.nextStep(arg_4_0)
-	TaskDispatcher.cancelTask(arg_4_0.nextStep, arg_4_0)
+function FairyLandWordComp:nextStep()
+	TaskDispatcher.cancelTask(self.nextStep, self)
 
-	local var_4_0 = table.remove(arg_4_0._allAnimWork, 1)
+	local work = table.remove(self._allAnimWork, 1)
 
-	if not var_4_0 then
+	if not work then
 		return
 	end
 
-	if var_4_0.destroy then
-		gohelper.destroy(arg_4_0.go)
+	if work.destroy then
+		gohelper.destroy(self.go)
 
 		return
-	elseif var_4_0.playAnim == "open" then
-		var_4_0.anim.enabled = true
+	elseif work.playAnim == "open" then
+		work.anim.enabled = true
 	else
-		var_4_0.anim:Play(var_4_0.playAnim, 0, 0)
+		work.anim:Play(work.playAnim, 0, 0)
 	end
 
-	local var_4_1 = arg_4_0._allAnimWork[1]
+	local nextWork = self._allAnimWork[1]
 
-	if not var_4_1 then
+	if not nextWork then
 		return
 	end
 
-	TaskDispatcher.runDelay(arg_4_0.nextStep, arg_4_0, var_4_1.time - var_4_0.time)
+	TaskDispatcher.runDelay(self.nextStep, self, nextWork.time - work.time)
 end
 
-function var_0_0.sortAnim(arg_5_0, arg_5_1)
-	return arg_5_0.time < arg_5_1.time
+function FairyLandWordComp.sortAnim(a, b)
+	return a.time < b.time
 end
 
-local var_0_1 = typeof(UnityEngine.Animator)
+local Type_Animtor = typeof(UnityEngine.Animator)
 
-function var_0_0.getRes(arg_6_0, arg_6_1, arg_6_2)
-	local var_6_0 = gohelper.clone(arg_6_2, arg_6_1)
-	local var_6_1 = gohelper.findChildTextMesh(var_6_0, "txt")
-	local var_6_2 = var_6_0:GetComponent(var_0_1)
+function FairyLandWordComp:getRes(root, res)
+	local go = gohelper.clone(res, root)
+	local txt = gohelper.findChildTextMesh(go, "txt")
+	local anim = go:GetComponent(Type_Animtor)
 
-	gohelper.setActive(var_6_0, true)
-	var_6_2:Play("open", 0, 0)
-	var_6_2:Update(0)
+	gohelper.setActive(go, true)
+	anim:Play("open", 0, 0)
+	anim:Update(0)
 
-	var_6_2.enabled = false
+	anim.enabled = false
 
-	return var_6_2, var_6_1
+	return anim, txt
 end
 
-function var_0_0.onDestroy(arg_7_0)
-	TaskDispatcher.cancelTask(arg_7_0.nextStep, arg_7_0)
+function FairyLandWordComp:onDestroy()
+	TaskDispatcher.cancelTask(self.nextStep, self)
 end
 
-return var_0_0
+return FairyLandWordComp

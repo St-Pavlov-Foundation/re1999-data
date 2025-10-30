@@ -1,172 +1,178 @@
-﻿module("modules.logic.explore.view.ExploreInteractView", package.seeall)
+﻿-- chunkname: @modules/logic/explore/view/ExploreInteractView.lua
 
-local var_0_0 = class("ExploreInteractView", BaseView)
+module("modules.logic.explore.view.ExploreInteractView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._btnfullscreen = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "#btn_fullscreen")
-	arg_1_0._gochoicelist = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist")
-	arg_1_0._gochoiceitem = gohelper.findChild(arg_1_0.viewGO, "#go_choicelist/#go_choiceitem")
-	arg_1_0._txttalkinfo = gohelper.findChildText(arg_1_0.viewGO, "go_normalcontent/txt_contentcn")
-	arg_1_0._txttalker = gohelper.findChildText(arg_1_0.viewGO, "#txt_talker")
+local ExploreInteractView = class("ExploreInteractView", BaseView)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function ExploreInteractView:onInitView()
+	self._btnfullscreen = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_fullscreen")
+	self._gochoicelist = gohelper.findChild(self.viewGO, "#go_choicelist")
+	self._gochoiceitem = gohelper.findChild(self.viewGO, "#go_choicelist/#go_choiceitem")
+	self._txttalkinfo = gohelper.findChildText(self.viewGO, "go_normalcontent/txt_contentcn")
+	self._txttalker = gohelper.findChildText(self.viewGO, "#txt_talker")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	NavigateMgr.instance:addSpace(ViewName.ExploreInteractView, arg_2_0.onClickFull, arg_2_0)
-	arg_2_0._btnfullscreen:AddClickListener(arg_2_0.onClickFull, arg_2_0)
-	arg_2_0:addEventCb(PCInputController.instance, PCInputEvent.NotifyStoryDialogSelect, arg_2_0.OnStoryDialogSelect, arg_2_0)
+function ExploreInteractView:addEvents()
+	NavigateMgr.instance:addSpace(ViewName.ExploreInteractView, self.onClickFull, self)
+	self._btnfullscreen:AddClickListener(self.onClickFull, self)
+	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyStoryDialogSelect, self.OnStoryDialogSelect, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
+function ExploreInteractView:removeEvents()
 	NavigateMgr.instance:removeSpace(ViewName.ExploreInteractView)
-	arg_3_0._btnfullscreen:RemoveClickListener()
-	arg_3_0:removeEventCb(PCInputController.instance, PCInputEvent.NotifyStoryDialogSelect, arg_3_0.OnStoryDialogSelect, arg_3_0)
+	self._btnfullscreen:RemoveClickListener()
+	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyStoryDialogSelect, self.OnStoryDialogSelect, self)
 end
 
-function var_0_0.onClickFull(arg_4_0)
-	if arg_4_0._hasIconDialogItem and arg_4_0._hasIconDialogItem:isPlaying() then
-		arg_4_0._hasIconDialogItem:conFinished()
+function ExploreInteractView:onClickFull()
+	if self._hasIconDialogItem and self._hasIconDialogItem:isPlaying() then
+		self._hasIconDialogItem:conFinished()
 
 		return
 	end
 
-	if not arg_4_0._btnDatas[1] then
-		arg_4_0._curStep = arg_4_0._curStep + 1
+	if not self._btnDatas[1] then
+		self._curStep = self._curStep + 1
 
-		if arg_4_0.config[arg_4_0._curStep] then
-			arg_4_0:onStep()
+		if self.config[self._curStep] then
+			self:onStep()
 		else
-			if arg_4_0.viewParam.callBack then
-				arg_4_0.viewParam.callBack(arg_4_0.viewParam.callBackObj)
+			if self.viewParam.callBack then
+				self.viewParam.callBack(self.viewParam.callBackObj)
 			end
 
-			arg_4_0:closeThis()
+			self:closeThis()
 		end
 	end
 end
 
-function var_0_0.onOpen(arg_5_0)
+function ExploreInteractView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_course_open)
 
-	arg_5_0.config = ExploreConfig.instance:getDialogueConfig(arg_5_0.viewParam.id)
+	self.config = ExploreConfig.instance:getDialogueConfig(self.viewParam.id)
 
-	if not arg_5_0.config then
-		logError("对话配置不存在，id：" .. tostring(arg_5_0.viewParam.id))
-		arg_5_0:closeThis()
+	if not self.config then
+		logError("对话配置不存在，id：" .. tostring(self.viewParam.id))
+		self:closeThis()
 
 		return
 	end
 
-	arg_5_0._curStep = 1
+	self._curStep = 1
 
-	arg_5_0:onStep()
+	self:onStep()
 end
 
-function var_0_0.onStep(arg_6_0)
-	local var_6_0 = arg_6_0.config[arg_6_0._curStep]
+function ExploreInteractView:onStep()
+	local co = self.config[self._curStep]
 
-	if not var_6_0 or var_6_0.interrupt == 1 then
-		if arg_6_0.viewParam.callBack then
-			arg_6_0.viewParam.callBack(arg_6_0.viewParam.callBackObj)
+	if not co or co.interrupt == 1 then
+		if self.viewParam.callBack then
+			self.viewParam.callBack(self.viewParam.callBackObj)
 		end
 
-		arg_6_0:closeThis()
+		self:closeThis()
 
 		return
 	end
 
-	local var_6_1 = string.gsub(var_6_0.desc, " ", " ")
+	local content = string.gsub(co.desc, " ", " ")
 
-	if not arg_6_0._hasIconDialogItem then
-		arg_6_0._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(arg_6_0.viewGO, TMPFadeIn)
+	if not self._hasIconDialogItem then
+		self._hasIconDialogItem = MonoHelper.addLuaComOnceToGo(self.viewGO, TMPFadeIn)
 	end
 
-	arg_6_0._hasIconDialogItem:playNormalText(var_6_1)
+	self._hasIconDialogItem:playNormalText(content)
 
-	if var_6_0.audio and var_6_0.audio > 0 then
-		GuideAudioMgr.instance:playAudio(var_6_0.audio)
+	if co.audio and co.audio > 0 then
+		GuideAudioMgr.instance:playAudio(co.audio)
 	else
 		GuideAudioMgr.instance:stopAudio()
 	end
 
-	arg_6_0._txttalker.text = var_6_0.speaker
+	self._txttalker.text = co.speaker
 
-	local var_6_2 = {}
+	local btnDatas = {}
 
-	if not string.nilorempty(var_6_0.acceptButton) then
-		table.insert(var_6_2, {
+	if not string.nilorempty(co.acceptButton) then
+		table.insert(btnDatas, {
 			accept = true,
-			text = var_6_0.acceptButton
+			text = co.acceptButton
 		})
 	end
 
-	if not string.nilorempty(var_6_0.refuseButton) then
-		table.insert(var_6_2, {
+	if not string.nilorempty(co.refuseButton) then
+		table.insert(btnDatas, {
 			accept = false,
-			text = var_6_0.refuseButton
+			text = co.refuseButton
 		})
 	end
 
-	if not string.nilorempty(var_6_0.selectButton) then
-		local var_6_3 = GameUtil.splitString2(var_6_0.selectButton)
+	if not string.nilorempty(co.selectButton) then
+		local arr = GameUtil.splitString2(co.selectButton)
 
-		for iter_6_0, iter_6_1 in ipairs(var_6_3) do
-			table.insert(var_6_2, {
-				jumpStep = tonumber(iter_6_1[2]),
-				text = iter_6_1[1]
+		for _, v in ipairs(arr) do
+			table.insert(btnDatas, {
+				jumpStep = tonumber(v[2]),
+				text = v[1]
 			})
 		end
 	end
 
-	gohelper.CreateObjList(arg_6_0, arg_6_0._createItem, var_6_2, arg_6_0._gochoicelist, arg_6_0._gochoiceitem)
+	gohelper.CreateObjList(self, self._createItem, btnDatas, self._gochoicelist, self._gochoiceitem)
 
-	arg_6_0._btnDatas = var_6_2
+	self._btnDatas = btnDatas
 end
 
-function var_0_0._createItem(arg_7_0, arg_7_1, arg_7_2, arg_7_3)
-	gohelper.findChildText(arg_7_1, "info").text = arg_7_2.text
+function ExploreInteractView:_createItem(obj, data, index)
+	local txt = gohelper.findChildText(obj, "info")
 
-	local var_7_0 = gohelper.findChildButtonWithAudio(arg_7_1, "click")
+	txt.text = data.text
 
-	arg_7_0:removeClickCb(var_7_0)
-	arg_7_0:addClickCb(var_7_0, arg_7_0.onBtnClick, arg_7_0, arg_7_2)
+	local btn = gohelper.findChildButtonWithAudio(obj, "click")
 
-	local var_7_1 = gohelper.findChild(arg_7_1, "#go_pcbtn")
+	self:removeClickCb(btn)
+	self:addClickCb(btn, self.onBtnClick, self, data)
 
-	if var_7_1 then
-		PCInputController.instance:showkeyTips(var_7_1, nil, nil, arg_7_3)
+	local keytips = gohelper.findChild(obj, "#go_pcbtn")
+
+	if keytips then
+		PCInputController.instance:showkeyTips(keytips, nil, nil, index)
 	end
 end
 
-function var_0_0.OnStoryDialogSelect(arg_8_0, arg_8_1)
-	if arg_8_1 <= #arg_8_0._btnDatas and arg_8_1 > 0 then
-		arg_8_0:onBtnClick(arg_8_0._btnDatas[arg_8_1])
+function ExploreInteractView:OnStoryDialogSelect(index)
+	if index <= #self._btnDatas and index > 0 then
+		self:onBtnClick(self._btnDatas[index])
 	end
 end
 
-function var_0_0.onBtnClick(arg_9_0, arg_9_1)
-	if arg_9_1.jumpStep then
-		arg_9_0._curStep = arg_9_1.jumpStep
+function ExploreInteractView:onBtnClick(data)
+	if data.jumpStep then
+		self._curStep = data.jumpStep
 
-		arg_9_0:onStep()
+		self:onStep()
 	else
-		if arg_9_1.accept then
-			if arg_9_0.viewParam.callBack then
-				arg_9_0.viewParam.callBack(arg_9_0.viewParam.callBackObj)
+		local isAccept = data.accept
+
+		if isAccept then
+			if self.viewParam.callBack then
+				self.viewParam.callBack(self.viewParam.callBackObj)
 			end
-		elseif arg_9_0.viewParam.refuseCallBack then
-			arg_9_0.viewParam.refuseCallBack(arg_9_0.viewParam.refuseCallBackObj)
+		elseif self.viewParam.refuseCallBack then
+			self.viewParam.refuseCallBack(self.viewParam.refuseCallBackObj)
 		end
 
-		arg_9_0:closeThis()
+		self:closeThis()
 	end
 end
 
-function var_0_0.onClose(arg_10_0)
+function ExploreInteractView:onClose()
 	GuideAudioMgr.instance:stopAudio()
 end
 
-return var_0_0
+return ExploreInteractView

@@ -2,6 +2,7 @@
   {
     "id": 100,
     "listenerType": "DungeonMainFirstPass",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 15,
     "desc": "主线关卡中累计首通15个关卡",
@@ -13,6 +14,7 @@
   {
     "id": 101,
     "listenerType": "DungeonMainFirstPass",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 30,
     "desc": "主线关卡中累计首通30个关卡",
@@ -24,6 +26,7 @@
   {
     "id": 102,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "4",
     "maxProgress": 1500,
     "desc": "累计消耗1500点细胞活性",
@@ -35,6 +38,7 @@
   {
     "id": 103,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "4",
     "maxProgress": 2000,
     "desc": "累计消耗2000点细胞活性",
@@ -46,6 +50,7 @@
   {
     "id": 104,
     "listenerType": "Act203",
+    "taskType": 0,
     "listenerParam": "1301105#13011",
     "maxProgress": 1,
     "desc": "完成玛丽安娜角色活动关卡【行军令】",
@@ -57,6 +62,7 @@
   {
     "id": 105,
     "listenerType": "Act203",
+    "taskType": 0,
     "listenerParam": "1301110#13011",
     "maxProgress": 1,
     "desc": "完成玛丽安娜角色活动关卡【一切的终结】",
@@ -68,6 +74,7 @@
   {
     "id": 106,
     "listenerType": "EpisodeFinish",
+    "taskType": 0,
     "listenerParam": "3060104",
     "maxProgress": 1,
     "desc": "完成卡戎角色活动关卡【忍耐，忍耐】",
@@ -79,6 +86,7 @@
   {
     "id": 107,
     "listenerType": "EpisodeFinish",
+    "taskType": 0,
     "listenerParam": "3060108",
     "maxProgress": 1,
     "desc": "完成卡戎角色活动关卡【灰烬赋格】",
@@ -90,6 +98,7 @@
   {
     "id": 108,
     "listenerType": "HeroStoryGetScore",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 5000,
     "desc": "坦南特轶事中累计获得5000积分",
@@ -101,6 +110,7 @@
   {
     "id": 109,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "11#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报怪象的表征最佳委托评估达到450000",
@@ -112,6 +122,7 @@
   {
     "id": 110,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "2#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报沼泽的怪象最佳委托评估达到450000",
@@ -123,6 +134,7 @@
   {
     "id": 111,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "10#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报焦土的焚风最佳委托评估达到450000",
@@ -134,6 +146,7 @@
   {
     "id": 112,
     "listenerType": "EpisodePassCount",
+    "taskType": 0,
     "listenerParam": "3001110",
     "maxProgress": 1,
     "desc": "UTTU中完成第10关",
@@ -145,6 +158,7 @@
   {
     "id": 113,
     "listenerType": "Act104Retail",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 2,
     "desc": "UTTU中完成2次UTTU零售的阅读",
@@ -156,6 +170,7 @@
   {
     "id": 114,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 10000,
     "desc": "翻覆之舟中最高积分累计达到10000",
@@ -167,6 +182,7 @@
   {
     "id": 115,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 20000,
     "desc": "翻覆之舟中最高积分累计达到20000",
@@ -178,6 +194,7 @@
   {
     "id": 116,
     "listenerType": "WeekwalkStarTotalIncrOnly",
+    "taskType": 0,
     "listenerParam": "3",
     "maxProgress": 12,
     "desc": "深眠域中累计获得12星",
@@ -189,6 +206,7 @@
   {
     "id": 117,
     "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 4,
     "desc": "醒梦域中累计获得4个A级认证",
@@ -200,6 +218,7 @@
   {
     "id": 118,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2101",
     "maxProgress": 3000,
     "desc": "在重映【77号往事】中累计消耗3000个“老钥匙”",
@@ -211,6 +230,7 @@
   {
     "id": 119,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2101",
     "maxProgress": 5000,
     "desc": "在重映【77号往事】中累计消耗5000个“老钥匙”",
@@ -222,6 +242,7 @@
   {
     "id": 200,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "30510104",
     "maxProgress": 1,
     "desc": "在【翡冷翠之春】中完成关卡<color=#94240a>LPdF-04[故事]</color>难度",
@@ -233,6 +254,7 @@
   {
     "id": 201,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "30510110",
     "maxProgress": 1,
     "desc": "在【翡冷翠之春】中完成关卡<color=#94240a>LPdF-10[故事]</color>难度",
@@ -244,6 +266,7 @@
   {
     "id": 202,
     "listenerType": "CurrencyDecTotal",
+    "taskType": 0,
     "listenerParam": "30501",
     "maxProgress": 10000,
     "desc": "在【克劳迪娅账务室】中消耗<color=#94240a>10000个</color>弗罗林",
@@ -255,6 +278,7 @@
   {
     "id": 203,
     "listenerType": "CurrencyDecTotal",
+    "taskType": 0,
     "listenerParam": "30501",
     "maxProgress": 20000,
     "desc": "在【克劳迪娅账务室】中消耗<color=#94240a>20000个</color>弗罗林",
@@ -266,6 +290,7 @@
   {
     "id": 204,
     "listenerType": "AssassinQuestCount",
+    "taskType": 0,
     "listenerParam": "1",
     "maxProgress": 1,
     "desc": "在【步入影中】玩法中完成<color=#94240a>1次「一场冲突」</color>",
@@ -277,6 +302,7 @@
   {
     "id": 205,
     "listenerType": "AssassinQuestCount",
+    "taskType": 0,
     "listenerParam": "3",
     "maxProgress": 1,
     "desc": "在【步入影中】玩法中完成<color=#94240a>1次「影的痕迹」</color>",
@@ -288,6 +314,7 @@
   {
     "id": 206,
     "listenerType": "Act128BossHighestPoint",
+    "taskType": 0,
     "listenerParam": "1#130505",
     "maxProgress": 450000,
     "desc": "鬃毛邮报特刊·鹰眼古谚中的神迹【肃清】最佳进度达到450000",
@@ -299,6 +326,7 @@
   {
     "id": 207,
     "listenerType": "Act128BossHighestPoint",
+    "taskType": 0,
     "listenerParam": "2#130505",
     "maxProgress": 450000,
     "desc": "鬃毛邮报特刊·鹰眼恐惧的名讳【肃清】最佳进度达到450000",
@@ -310,6 +338,7 @@
   {
     "id": 208,
     "listenerType": "Act128BossSpHighestPoint",
+    "taskType": 0,
     "listenerParam": "1#130505",
     "maxProgress": 450000,
     "desc": "鬃毛邮报特刊·鹰眼古谚中的神迹【刺探】最佳进度达到450000",
@@ -321,6 +350,7 @@
   {
     "id": 209,
     "listenerType": "Act128BossSpHighestPoint",
+    "taskType": 0,
     "listenerParam": "2#130505",
     "maxProgress": 450000,
     "desc": "鬃毛邮报特刊·鹰眼恐惧的名讳【刺探】最佳进度达到450000",
@@ -332,6 +362,7 @@
   {
     "id": 210,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "30510215",
     "maxProgress": 1,
     "desc": "在【入雅典记】中完成关卡<color=#94240a>DIA-05屋顶赛跑</color>",
@@ -343,6 +374,7 @@
   {
     "id": 211,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "30510220",
     "maxProgress": 1,
     "desc": "在【入雅典记】中完成关卡<color=#94240a>DIA-10金苹果颂</color>",
@@ -354,6 +386,7 @@
   {
     "id": 212,
     "listenerType": "OdysseyDefeatReligion",
+    "taskType": 0,
     "listenerParam": "130507",
     "maxProgress": 1,
     "desc": "在【入雅典记】中打败1名秩序神教成员",
@@ -365,6 +398,7 @@
   {
     "id": 213,
     "listenerType": "OdysseyConquestWave",
+    "taskType": 0,
     "listenerParam": "130507#130501",
     "maxProgress": 1,
     "desc": "在【入雅典记】中的征服战-雅典卫城中击败1波次敌人",
@@ -376,6 +410,7 @@
   {
     "id": 214,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 10000,
     "desc": "翻覆之舟中最高积分累计达到10000",
@@ -387,6 +422,7 @@
   {
     "id": 215,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 20000,
     "desc": "翻覆之舟中最高积分累计达到20000",
@@ -398,6 +434,7 @@
   {
     "id": 216,
     "listenerType": "WeekwalkStarTotalIncrOnly",
+    "taskType": 0,
     "listenerParam": "3",
     "maxProgress": 12,
     "desc": "深眠域中累计获得12星",
@@ -409,6 +446,7 @@
   {
     "id": 217,
     "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 4,
     "desc": "醒梦域中累计获得4个A级认证",
@@ -420,6 +458,7 @@
   {
     "id": 218,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2301",
     "maxProgress": 3000,
     "desc": "在重映【东区黎明】中消耗<color=#94240a>3000个</color>纸条儿勋章 ",
@@ -431,6 +470,7 @@
   {
     "id": 219,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2301",
     "maxProgress": 5000,
     "desc": "在重映【东区黎明】中消耗<color=#94240a>5000个</color>纸条儿勋章 ",
@@ -442,6 +482,7 @@
   {
     "id": 300,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "3110113",
     "maxProgress": 1,
     "desc": "在【长夜鸣笛】中完成<color=#94240a>TMW-13[故事]</color>难度",
@@ -453,6 +494,7 @@
   {
     "id": 301,
     "listenerType": "EpisodePassIncr",
+    "taskType": 0,
     "listenerParam": "3110119",
     "maxProgress": 1,
     "desc": "在【长夜鸣笛】中完成<color=#94240a>TMW-19[故事]</color>难度",
@@ -464,6 +506,7 @@
   {
     "id": 302,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "3101",
     "maxProgress": 10000,
     "desc": "在【“流动”餐车】中消耗<color=#94240a>10000个</color>“多瑙”之心",
@@ -475,6 +518,7 @@
   {
     "id": 303,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "3101",
     "maxProgress": 20000,
     "desc": "在【“流动”餐车】中消耗<color=#94240a>20000个</color>“多瑙”之心",
@@ -486,6 +530,7 @@
   {
     "id": 304,
     "listenerType": "Act210",
+    "taskType": 0,
     "listenerParam": "1311802#13118",
     "maxProgress": 1,
     "desc": "在告死鸟角色活动【冷铁】中完成章节【刺青手艺】",
@@ -497,6 +542,7 @@
   {
     "id": 305,
     "listenerType": "Act210",
+    "taskType": 0,
     "listenerParam": "1311808#13118",
     "maxProgress": 1,
     "desc": "在告死鸟角色活动【冷铁】中完成章节【鱼肚白】",
@@ -508,6 +554,7 @@
   {
     "id": 306,
     "listenerType": "Act211",
+    "taskType": 0,
     "listenerParam": "1311704#13117",
     "maxProgress": 1,
     "desc": "在野树莓角色活动【灵魂影映】中完成章节【影子剧场】",
@@ -519,6 +566,7 @@
   {
     "id": 307,
     "listenerType": "Act211",
+    "taskType": 0,
     "listenerParam": "1311708#13117",
     "maxProgress": 1,
     "desc": "在野树莓角色活动【灵魂影映】中完成章节【血红誓言】",
@@ -530,6 +578,7 @@
   {
     "id": 308,
     "listenerType": "HeroStoryPlotFinish",
+    "taskType": 0,
     "listenerParam": "13107#303704",
     "maxProgress": 1,
     "desc": "在讣告人轶事【墓碑博物馆】中完成章节<color=#94240a>STAGE-4【鸣响】</color>",
@@ -541,6 +590,7 @@
   {
     "id": 309,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "2#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报沼泽的怪象最佳委托评估达到450000",
@@ -552,6 +602,7 @@
   {
     "id": 310,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "11#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报怪象的表征最佳委托评估达到450000",
@@ -563,6 +614,7 @@
   {
     "id": 311,
     "listenerType": "Act128BossTypeLayerPoint",
+    "taskType": 0,
     "listenerParam": "7#3#450000",
     "maxProgress": 1,
     "desc": "鬃毛邮报厅堂的回响最佳委托评估达到450000",
@@ -574,6 +626,7 @@
   {
     "id": 312,
     "listenerType": "Act191EndGame",
+    "taskType": 0,
     "listenerParam": "13105",
     "maxProgress": 1,
     "desc": "参与一次拓片杂技赛对局",
@@ -585,6 +638,7 @@
   {
     "id": 313,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "3102",
     "maxProgress": 2000,
     "desc": "在拓片杂技赛中累计消耗2000个“木偶之芯”",
@@ -596,6 +650,7 @@
   {
     "id": 314,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 10000,
     "desc": "翻覆之舟中最高积分累计达到10000",
@@ -607,6 +662,7 @@
   {
     "id": 315,
     "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 20000,
     "desc": "翻覆之舟中最高积分累计达到20000",
@@ -618,6 +674,7 @@
   {
     "id": 316,
     "listenerType": "WeekwalkStarTotalIncrOnly",
+    "taskType": 0,
     "listenerParam": "3",
     "maxProgress": 12,
     "desc": "深眠域中累计获得12星",
@@ -629,6 +686,7 @@
   {
     "id": 317,
     "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "taskType": 0,
     "listenerParam": "",
     "maxProgress": 4,
     "desc": "醒梦域中累计获得4个A级认证",
@@ -640,6 +698,7 @@
   {
     "id": 318,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2401",
     "maxProgress": 3000,
     "desc": "在重映【地球上最后的夜晚】中累计消耗3000个“鸥声信笺”",
@@ -651,6 +710,7 @@
   {
     "id": 319,
     "listenerType": "CurrencyDec",
+    "taskType": 0,
     "listenerParam": "2401",
     "maxProgress": 5000,
     "desc": "在重映【地球上最后的夜晚】中累计消耗5000个“鸥声信笺”",
@@ -662,6 +722,7 @@
   {
     "id": 320,
     "listenerType": "Act200FinishGame",
+    "taskType": 0,
     "listenerParam": "13106",
     "maxProgress": 1,
     "desc": "参与1次【雨前漫游指南】",
@@ -673,6 +734,7 @@
   {
     "id": 321,
     "listenerType": "Act200Score",
+    "taskType": 0,
     "listenerParam": "13106#4000",
     "maxProgress": 1,
     "desc": "【雨前漫游指南】中获得4000手册完成度",
@@ -680,5 +742,245 @@
     "bonus": "1#300000#1",
     "activityid": 13106,
     "jumpId": 10013106
+  },
+  {
+    "id": 400,
+    "listenerType": "EpisodePassIncr",
+    "taskType": 0,
+    "listenerParam": "3210111",
+    "maxProgress": 1,
+    "desc": "在【迁流的盛宴】中完成<color=#94240a>AFF-11[故事]</color>难度",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13223,
+    "jumpId": 10013203
+  },
+  {
+    "id": 401,
+    "listenerType": "EpisodePassIncr",
+    "taskType": 0,
+    "listenerParam": "3210117",
+    "maxProgress": 1,
+    "desc": "在【迁流的盛宴】中完成<color=#94240a>AFF-17[故事]</color>难度",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13223,
+    "jumpId": 10013203
+  },
+  {
+    "id": 402,
+    "listenerType": "CurrencyDec",
+    "taskType": 0,
+    "listenerParam": "3203",
+    "maxProgress": 10000,
+    "desc": "在【璀璨工房】中消耗<color=#94240a>10000个</color>破碎预言",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13224,
+    "jumpId": 10013234
+  },
+  {
+    "id": 403,
+    "listenerType": "CurrencyDec",
+    "taskType": 0,
+    "listenerParam": "3203",
+    "maxProgress": 20000,
+    "desc": "在【璀璨工房】中消耗<color=#94240a>20000个</color>破碎预言",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13224,
+    "jumpId": 10013234
+  },
+  {
+    "id": 404,
+    "listenerType": "Act220",
+    "taskType": 0,
+    "listenerParam": "1323104#13231",
+    "maxProgress": 1,
+    "desc": "在贝丽尔角色活动【命运的雨季】中完成章节【“我”】",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13231,
+    "jumpId": 10013214
+  },
+  {
+    "id": 405,
+    "listenerType": "Act220",
+    "taskType": 0,
+    "listenerParam": "1323108#13231",
+    "maxProgress": 1,
+    "desc": "在贝丽尔角色活动【命运的雨季】中完成章节【雨中咏叹】",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13231,
+    "jumpId": 10013218
+  },
+  {
+    "id": 406,
+    "listenerType": "Act220",
+    "taskType": 0,
+    "listenerParam": "1322904#13229",
+    "maxProgress": 1,
+    "desc": "在灰调蓝角色活动【无烧】中完成章节【潜在客户】",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13229,
+    "jumpId": 10013226
+  },
+  {
+    "id": 407,
+    "listenerType": "Act220",
+    "taskType": 0,
+    "listenerParam": "1322906#13229",
+    "maxProgress": 1,
+    "desc": "在灰调蓝角色活动【无烧】中完成章节【破咒骑士】",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13229,
+    "jumpId": 10013228
+  },
+  {
+    "id": 408,
+    "listenerType": "HeroStoryPlotFinish",
+    "taskType": 0,
+    "listenerParam": "13227#304104",
+    "maxProgress": 1,
+    "desc": "在玛蒂尔达轶事【交接日】中完成章节<color=#94240a>STAGE-4【未驯化的好奇】</color>",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13227,
+    "jumpId": 10013207
+  },
+  {
+    "id": 409,
+    "listenerType": "Act128BossHighestPoint",
+    "taskType": 0,
+    "listenerParam": "1#13230",
+    "maxProgress": 500000,
+    "desc": "鬃毛邮报信仰的移位最佳委托评估达到500000",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13230,
+    "jumpId": 100130526
+  },
+  {
+    "id": 410,
+    "listenerType": "Act128BossHighestPoint",
+    "taskType": 0,
+    "listenerParam": "2#13230",
+    "maxProgress": 500000,
+    "desc": "鬃毛邮报蜕化的残响最佳委托评估达到500000",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13230,
+    "jumpId": 100130526
+  },
+  {
+    "id": 411,
+    "listenerType": "Act128BossHighestPoint",
+    "taskType": 0,
+    "listenerParam": "3#13230",
+    "maxProgress": 500000,
+    "desc": "鬃毛邮报超限的囚徒最佳委托评估达到500000",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13230,
+    "jumpId": 100130526
+  },
+  {
+    "id": 412,
+    "listenerType": "Act182TargetRank",
+    "taskType": 0,
+    "listenerParam": "13211#3",
+    "maxProgress": 1,
+    "desc": "在小怪物翻斗棋中棋艺评价达到入门学徒",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13211,
+    "jumpId": 10013208
+  },
+  {
+    "id": 413,
+    "listenerType": "Act182JoinAutoChess",
+    "taskType": 0,
+    "listenerParam": "",
+    "maxProgress": 1,
+    "desc": "在小怪物翻斗棋中累计参与1次箱中对决",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13211,
+    "jumpId": 10013208
+  },
+  {
+    "id": 414,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
+    "listenerParam": "",
+    "maxProgress": 10000,
+    "desc": "翻覆之舟中最高积分累计达到10000",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 42350000
+  },
+  {
+    "id": 415,
+    "listenerType": "TowerLimitedHighScoreIncrOnly",
+    "taskType": 0,
+    "listenerParam": "",
+    "maxProgress": 20000,
+    "desc": "翻覆之舟中最高积分累计达到20000",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 42350000
+  },
+  {
+    "id": 416,
+    "listenerType": "WeekwalkStarTotalIncrOnly",
+    "taskType": 0,
+    "listenerParam": "3",
+    "maxProgress": 12,
+    "desc": "深眠域中累计获得12星",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 3801
+  },
+  {
+    "id": 417,
+    "listenerType": "WeekwalkVer2GoldCupIncrOnly",
+    "taskType": 0,
+    "listenerParam": "",
+    "maxProgress": 4,
+    "desc": "醒梦域中累计获得4个A级认证",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 0,
+    "jumpId": 3801
+  },
+  {
+    "id": 418,
+    "listenerType": "Rouge2ParticipateBp",
+    "taskType": 0,
+    "listenerParam": "",
+    "maxProgress": 1,
+    "desc": "参与1次【无声综合征】玩法",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13209,
+    "jumpId": 10013210
+  },
+  {
+    "id": 419,
+    "listenerType": "Rouge2RewardBp",
+    "taskType": 0,
+    "listenerParam": "100000",
+    "maxProgress": 1,
+    "desc": "在【声源修葺处】中获得渐弱之心弦",
+    "versionId": 320,
+    "bonus": "1#300000#1",
+    "activityid": 13209,
+    "jumpId": 10013210
   }
 ]

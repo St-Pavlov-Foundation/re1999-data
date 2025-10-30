@@ -1,0 +1,26 @@
+[
+  {
+    "id": 111,
+    "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
+    "simageMapPos": "-371#253",
+    "startPos": "-531#-50"
+  },
+  {
+    "id": 121,
+    "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
+    "simageMapPos": "-700#50",
+    "startPos": "-509#116"
+  },
+  {
+    "id": 131,
+    "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
+    "simageMapPos": "-510#234",
+    "startPos": "98#-110"
+  },
+  {
+    "id": 141,
+    "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
+    "simageMapPos": "-580#0",
+    "startPos": "-263#102"
+  }
+]

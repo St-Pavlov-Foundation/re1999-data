@@ -1,12 +1,14 @@
-﻿module("modules.logic.reactivity.define.ReactivityEnum", package.seeall)
+﻿-- chunkname: @modules/logic/reactivity/define/ReactivityEnum.lua
 
-local var_0_0 = _M
+module("modules.logic.reactivity.define.ReactivityEnum", package.seeall)
 
-var_0_0.ActivityDefine = {
+local ReactivityEnum = _M
+
+ReactivityEnum.ActivityDefine = {
 	[VersionActivity3_1Enum.ActivityId.Reactivity] = {
 		storeCurrency = CurrencyEnum.CurrencyType.V2a4Dungeon,
 		storeActId = VersionActivity3_1Enum.ActivityId.ReactivityStore
 	}
 }
 
-return var_0_0
+return ReactivityEnum

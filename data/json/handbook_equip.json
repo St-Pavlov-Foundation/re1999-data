@@ -718,5 +718,23 @@
     "order": 0,
     "equipId": 1443,
     "desc": "讣告人"
+  },
+  {
+    "id": 5060,
+    "order": 0,
+    "equipId": 1558,
+    "desc": "贝丽尔"
+  },
+  {
+    "id": 5062,
+    "order": 0,
+    "equipId": 1560,
+    "desc": "伊索尔德"
+  },
+  {
+    "id": 4044,
+    "order": 0,
+    "equipId": 1444,
+    "desc": "玛蒂尔达"
   }
 ]

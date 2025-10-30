@@ -1,0 +1,80 @@
+[
+  {
+    "difficulty": 1,
+    "title": "颤动 I",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg1",
+    "preDifficulty": 0,
+    "monsterDesc": "1",
+    "scoreReward": 100,
+    "startView": "",
+    "initCollections": "",
+    "desc": "没有特殊效果",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 2,
+    "title": "颤动 II",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg1",
+    "preDifficulty": 1,
+    "monsterDesc": "2",
+    "scoreReward": 120,
+    "startView": "",
+    "initCollections": "100022",
+    "desc": "战斗开始时，己方受到最大百分比20%的本源创伤",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 3,
+    "title": "嗡鸣 I",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg2",
+    "preDifficulty": 2,
+    "monsterDesc": "3",
+    "scoreReward": 140,
+    "startView": "",
+    "initCollections": "100023",
+    "desc": "进入商店、科研所路点，扣除50金币",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 4,
+    "title": "嗡鸣 II",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg2",
+    "preDifficulty": 3,
+    "monsterDesc": "4",
+    "scoreReward": 160,
+    "startView": "",
+    "initCollections": "100024",
+    "desc": "精英/首领战，敌方属性提升",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 5,
+    "title": "尖啸 I",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg3",
+    "preDifficulty": 4,
+    "monsterDesc": "5",
+    "scoreReward": 180,
+    "startView": "",
+    "initCollections": "",
+    "desc": "",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 6,
+    "title": "尖啸 II",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg3",
+    "preDifficulty": 5,
+    "monsterDesc": "5",
+    "scoreReward": 200,
+    "startView": "",
+    "initCollections": "",
+    "desc": "",
+    "balanceLevel": "121#10#60"
+  }
+]

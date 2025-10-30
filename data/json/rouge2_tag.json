@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "力量",
+    "iconUrl": "rouge_collection_tag1"
+  },
+  {
+    "id": 2,
+    "name": "反应",
+    "iconUrl": "rouge_collection_tag5"
+  },
+  {
+    "id": 3,
+    "name": "奥秘",
+    "iconUrl": "rouge_collection_tag6"
+  },
+  {
+    "id": 4,
+    "name": "感知",
+    "iconUrl": "rouge_collection_tag2"
+  },
+  {
+    "id": 5,
+    "name": "激情",
+    "iconUrl": "rouge_collection_tag3"
+  },
+  {
+    "id": 100,
+    "name": "造物",
+    "iconUrl": ""
+  },
+  {
+    "id": 140,
+    "name": "诅咒",
+    "iconUrl": ""
+  },
+  {
+    "id": 200,
+    "name": "谐波",
+    "iconUrl": ""
+  },
+  {
+    "id": 300,
+    "name": "共鸣器",
+    "iconUrl": ""
+  }
+]

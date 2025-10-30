@@ -1,208 +1,211 @@
-﻿module("modules.ugui.textmeshpro.TMPFadeIn", package.seeall)
+﻿-- chunkname: @modules/ugui/textmeshpro/TMPFadeIn.lua
 
-local var_0_0 = class("TMPFadeIn", LuaCompBase)
-local var_0_1 = 0.03
+module("modules.ugui.textmeshpro.TMPFadeIn", package.seeall)
 
-function var_0_0.init(arg_1_0, arg_1_1)
-	arg_1_0._contentGO = arg_1_1
-	arg_1_0._norDiaGO = gohelper.findChild(arg_1_1, "go_normalcontent")
-	arg_1_0._txtcontentcn = gohelper.findChildText(arg_1_0._norDiaGO, "txt_contentcn")
-	arg_1_0._conMat = arg_1_0._txtcontentcn.fontMaterial
+local TMPFadeIn = class("TMPFadeIn", LuaCompBase)
+local EachCharacterDelay = 0.03
 
-	local var_1_0 = UnityEngine.Shader
+function TMPFadeIn:init(go)
+	self._contentGO = go
+	self._norDiaGO = gohelper.findChild(go, "go_normalcontent")
+	self._txtcontentcn = gohelper.findChildText(self._norDiaGO, "txt_contentcn")
+	self._conMat = self._txtcontentcn.fontMaterial
 
-	arg_1_0._LineMinYId = var_1_0.PropertyToID("_LineMinY")
-	arg_1_0._LineMaxYId = var_1_0.PropertyToID("_LineMaxY")
+	local _shader = UnityEngine.Shader
+
+	self._LineMinYId = _shader.PropertyToID("_LineMinY")
+	self._LineMaxYId = _shader.PropertyToID("_LineMaxY")
 end
 
-function var_0_0.hideDialog(arg_2_0)
-	if arg_2_0._conTweenId then
-		ZProj.TweenHelper.KillById(arg_2_0._conTweenId)
+function TMPFadeIn:hideDialog()
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
 
-		arg_2_0._conTweenId = nil
+		self._conTweenId = nil
 	end
 
-	gohelper.setActive(arg_2_0._norDiaGO, false)
+	gohelper.setActive(self._norDiaGO, false)
 
-	local var_2_0, var_2_1, var_2_2 = transformhelper.getLocalPos(arg_2_0._txtcontentcn.transform)
+	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
-	transformhelper.setLocalPos(arg_2_0._txtcontentcn.transform, var_2_0, var_2_1, 1)
+	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 1)
 end
 
-function var_0_0.playNormalText(arg_3_0, arg_3_1, arg_3_2, arg_3_3)
-	arg_3_0._conMat:EnableKeyword("_GRADUAL_ON")
+function TMPFadeIn:playNormalText(txt, callback, callbackobj)
+	self._conMat:EnableKeyword("_GRADUAL_ON")
 
-	local var_3_0 = UnityEngine.Screen.height
+	local height = UnityEngine.Screen.height
 
-	arg_3_0._conMat:SetFloat(arg_3_0._LineMinYId, var_3_0)
-	arg_3_0._conMat:SetFloat(arg_3_0._LineMaxYId, var_3_0)
-	gohelper.setActive(arg_3_0._norDiaGO, true)
+	self._conMat:SetFloat(self._LineMinYId, height)
+	self._conMat:SetFloat(self._LineMaxYId, height)
+	gohelper.setActive(self._norDiaGO, true)
 
-	arg_3_0._txt = arg_3_1
-	arg_3_0._finishCallback = arg_3_2
-	arg_3_0._finishCallbackObj = arg_3_3
+	self._txt = txt
+	self._finishCallback = callback
+	self._finishCallbackObj = callbackobj
 
-	local var_3_1, var_3_2, var_3_3 = transformhelper.getLocalPos(arg_3_0._txtcontentcn.transform)
+	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
-	transformhelper.setLocalPos(arg_3_0._txtcontentcn.transform, var_3_1, var_3_2, 1)
+	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 1)
 
-	arg_3_0._txtcontentcn.text = arg_3_0._txt
+	self._txtcontentcn.text = self._txt
 
-	TaskDispatcher.runDelay(arg_3_0._delayShow, arg_3_0, 0)
+	TaskDispatcher.runDelay(self._delayShow, self, 0)
 end
 
-function var_0_0._delayShow(arg_4_0)
-	local var_4_0 = CameraMgr.instance:getUICamera()
-	local var_4_1 = arg_4_0._txtcontentcn:GetTextInfo(arg_4_0._txt)
+function TMPFadeIn:_delayShow()
+	local uiCamera = CameraMgr.instance:getUICamera()
+	local textInfo = self._txtcontentcn:GetTextInfo(self._txt)
 
-	arg_4_0._textInfo = var_4_1
-	arg_4_0._lineInfoList = {}
+	self._textInfo = textInfo
+	self._lineInfoList = {}
 
-	local var_4_2 = 0
-	local var_4_3 = arg_4_0._txtcontentcn.transform
+	local totalVisibleCharacterCount = 0
+	local contentTransform = self._txtcontentcn.transform
 
-	for iter_4_0 = 1, var_4_1.lineCount do
-		local var_4_4 = var_4_1.lineInfo[iter_4_0 - 1]
-		local var_4_5 = var_4_2 + 1
+	for i = 1, textInfo.lineCount do
+		local lineInfo = textInfo.lineInfo[i - 1]
+		local prevLineTotalCount = totalVisibleCharacterCount + 1
 
-		var_4_2 = var_4_2 + var_4_4.visibleCharacterCount
+		totalVisibleCharacterCount = totalVisibleCharacterCount + lineInfo.visibleCharacterCount
 
-		local var_4_6 = arg_4_0._textInfo.characterInfo
-		local var_4_7 = var_4_6[var_4_4.firstVisibleCharacterIndex]
-		local var_4_8 = var_4_6[var_4_4.lastVisibleCharacterIndex]
-		local var_4_9 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_7.bottomLeft))
-		local var_4_10 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_7.topLeft))
-		local var_4_11 = var_4_9.y
-		local var_4_12 = var_4_10.y
+		local characterInfo = self._textInfo.characterInfo
+		local firstChar = characterInfo[lineInfo.firstVisibleCharacterIndex]
+		local lastChar = characterInfo[lineInfo.lastVisibleCharacterIndex]
+		local firstBL = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(firstChar.bottomLeft))
+		local firstTL = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(firstChar.topLeft))
+		local minbly = firstBL.y
+		local maxtly = firstTL.y
 
-		for iter_4_1 = var_4_4.firstVisibleCharacterIndex, var_4_4.lastVisibleCharacterIndex do
-			local var_4_13 = var_4_6[iter_4_1]
-			local var_4_14 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_13.bottomLeft))
+		for index = lineInfo.firstVisibleCharacterIndex, lineInfo.lastVisibleCharacterIndex do
+			local char = characterInfo[index]
+			local bl = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(char.bottomLeft))
 
-			if var_4_11 > var_4_14.y then
-				var_4_11 = var_4_14.y
+			if minbly > bl.y then
+				minbly = bl.y
 			end
 
-			local var_4_15 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_13.topLeft))
+			local tl = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(char.topLeft))
 
-			if var_4_12 < var_4_15.y then
-				var_4_12 = var_4_15.y
+			if maxtly < tl.y then
+				maxtly = tl.y
 			end
 		end
 
-		var_4_9.y = var_4_11
-		var_4_10.y = var_4_12
+		firstBL.y = minbly
+		firstTL.y = maxtly
 
-		local var_4_16 = var_4_0:WorldToScreenPoint(var_4_3:TransformPoint(var_4_8.bottomRight))
+		local lastBR = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(lastChar.bottomRight))
 
-		table.insert(arg_4_0._lineInfoList, {
-			var_4_4,
-			var_4_5,
-			var_4_2,
-			var_4_9,
-			var_4_10,
-			var_4_16
+		table.insert(self._lineInfoList, {
+			lineInfo,
+			prevLineTotalCount,
+			totalVisibleCharacterCount,
+			firstBL,
+			firstTL,
+			lastBR
 		})
 	end
 
-	arg_4_0._contentX, arg_4_0._contentY, _ = transformhelper.getLocalPos(arg_4_0._txtcontentcn.transform)
-	arg_4_0._curLine = nil
+	self._contentX, self._contentY, _ = transformhelper.getLocalPos(self._txtcontentcn.transform)
+	self._curLine = nil
 
-	local var_4_17 = var_0_1 * var_4_2
+	local delay = EachCharacterDelay * totalVisibleCharacterCount
 
-	if arg_4_0._conTweenId then
-		ZProj.TweenHelper.KillById(arg_4_0._conTweenId)
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
 
-		arg_4_0._conTweenId = nil
+		self._conTweenId = nil
 	end
 
-	arg_4_0._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, var_4_2, var_4_17, arg_4_0._conUpdate, arg_4_0.conFinished, arg_4_0)
+	self._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, totalVisibleCharacterCount, delay, self._conUpdate, self.conFinished, self)
 end
 
-function var_0_0._conUpdate(arg_5_0, arg_5_1)
-	local var_5_0 = UnityEngine.Screen.width
+function TMPFadeIn:_conUpdate(value)
+	local screenWidth = UnityEngine.Screen.width
 
-	for iter_5_0, iter_5_1 in ipairs(arg_5_0._lineInfoList) do
-		local var_5_1 = iter_5_1[1]
-		local var_5_2 = iter_5_1[2]
-		local var_5_3 = iter_5_1[3]
+	for i, v in ipairs(self._lineInfoList) do
+		local lineInfo = v[1]
+		local startCount = v[2]
+		local endCount = v[3]
 
-		if var_5_2 <= arg_5_1 and arg_5_1 <= var_5_3 and var_5_2 ~= var_5_3 then
-			local var_5_4 = iter_5_1[4]
-			local var_5_5 = iter_5_1[5]
-			local var_5_6 = iter_5_1[6]
+		if startCount <= value and value <= endCount and startCount ~= endCount then
+			local firstBL = v[4]
+			local firstTL = v[5]
+			local lastBR = v[6]
 
-			if arg_5_0._curLine ~= iter_5_0 then
-				arg_5_0._curLine = iter_5_0
+			if self._curLine ~= i then
+				self._curLine = i
 
-				arg_5_0._conMat:SetFloat(arg_5_0._LineMinYId, var_5_4.y)
-				arg_5_0._conMat:SetFloat(arg_5_0._LineMaxYId, var_5_5.y)
+				self._conMat:SetFloat(self._LineMinYId, firstBL.y)
+				self._conMat:SetFloat(self._LineMaxYId, firstTL.y)
 
-				local var_5_7 = arg_5_0._txtcontentcn.gameObject
+				local go = self._txtcontentcn.gameObject
 
-				gohelper.setActive(var_5_7, false)
-				gohelper.setActive(var_5_7, true)
+				gohelper.setActive(go, false)
+				gohelper.setActive(go, true)
 			end
 
-			local var_5_8 = (arg_5_1 - var_5_2) / (var_5_3 - var_5_2)
-			local var_5_9 = Mathf.Lerp(var_5_4.x, var_5_6.x, var_5_8)
+			local rate = (value - startCount) / (endCount - startCount)
+			local screenPosX = Mathf.Lerp(firstBL.x, lastBR.x, rate)
 
-			transformhelper.setLocalPos(arg_5_0._txtcontentcn.transform, arg_5_0._contentX, arg_5_0._contentY, 1 - var_5_9 / var_5_0)
+			transformhelper.setLocalPos(self._txtcontentcn.transform, self._contentX, self._contentY, 1 - screenPosX / screenWidth)
 		end
 	end
 end
 
-function var_0_0.isPlaying(arg_6_0)
-	return arg_6_0._conTweenId and true or false
+function TMPFadeIn:isPlaying()
+	return self._conTweenId and true or false
 end
 
-function var_0_0.conFinished(arg_7_0)
-	if arg_7_0._conTweenId then
-		ZProj.TweenHelper.KillById(arg_7_0._conTweenId)
+function TMPFadeIn:conFinished()
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
 
-		arg_7_0._conTweenId = nil
+		self._conTweenId = nil
 	end
 
-	arg_7_0:_disable_GRADUAL_ON()
+	self:_disable_GRADUAL_ON()
 
-	local var_7_0, var_7_1, var_7_2 = transformhelper.getLocalPos(arg_7_0._txtcontentcn.transform)
+	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
-	transformhelper.setLocalPos(arg_7_0._txtcontentcn.transform, var_7_0, var_7_1, 0)
+	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 0)
 
-	if arg_7_0._finishCallback then
-		arg_7_0._finishCallback(arg_7_0._finishCallbackObj)
+	if self._finishCallback then
+		self._finishCallback(self._finishCallbackObj)
 	end
 end
 
-function var_0_0._disable_GRADUAL_ON(arg_8_0)
-	local var_8_0 = arg_8_0._txtcontentcn.gameObject:GetComponentsInChildren(gohelper.Type_TMP_SubMeshUI, true)
+function TMPFadeIn:_disable_GRADUAL_ON()
+	local csArray = self._txtcontentcn.gameObject:GetComponentsInChildren(gohelper.Type_TMP_SubMeshUI, true)
 
-	if var_8_0 then
-		local var_8_1 = var_8_0.Length
+	if csArray then
+		local n = csArray.Length
 
-		for iter_8_0 = 0, var_8_1 - 1 do
-			local var_8_2 = var_8_0[iter_8_0].sharedMaterial
+		for i = 0, n - 1 do
+			local tmpSubMeshUICmp = csArray[i]
+			local material = tmpSubMeshUICmp.sharedMaterial
 
-			if not gohelper.isNil(var_8_2) then
-				var_8_2:DisableKeyword("_GRADUAL_ON")
-				var_8_2:SetFloat(arg_8_0._LineMinYId, 0)
-				var_8_2:SetFloat(arg_8_0._LineMaxYId, 0)
+			if not gohelper.isNil(material) then
+				material:DisableKeyword("_GRADUAL_ON")
+				material:SetFloat(self._LineMinYId, 0)
+				material:SetFloat(self._LineMaxYId, 0)
 			end
 		end
 	end
 
-	arg_8_0._conMat:DisableKeyword("_GRADUAL_ON")
-	arg_8_0._conMat:SetFloat(arg_8_0._LineMinYId, 0)
-	arg_8_0._conMat:SetFloat(arg_8_0._LineMaxYId, 0)
+	self._conMat:DisableKeyword("_GRADUAL_ON")
+	self._conMat:SetFloat(self._LineMinYId, 0)
+	self._conMat:SetFloat(self._LineMaxYId, 0)
 end
 
-function var_0_0.onDestroy(arg_9_0)
-	arg_9_0:onDestroyView()
+function TMPFadeIn:onDestroy()
+	self:onDestroyView()
 end
 
-function var_0_0.onDestroyView(arg_10_0)
-	TaskDispatcher.cancelTask(arg_10_0._delayShow, arg_10_0)
-	GameUtil.onDestroyViewMember_TweenId(arg_10_0, "_conTweenId")
+function TMPFadeIn:onDestroyView()
+	TaskDispatcher.cancelTask(self._delayShow, self)
+	GameUtil.onDestroyViewMember_TweenId(self, "_conTweenId")
 end
 
-return var_0_0
+return TMPFadeIn

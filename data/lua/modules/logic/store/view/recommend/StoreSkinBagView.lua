@@ -1,55 +1,57 @@
-﻿module("modules.logic.store.view.recommend.StoreSkinBagView", package.seeall)
+﻿-- chunkname: @modules/logic/store/view/recommend/StoreSkinBagView.lua
 
-local var_0_0 = class("StoreSkinBagView", GiftrecommendViewBase)
+module("modules.logic.store.view.recommend.StoreSkinBagView", package.seeall)
 
-function var_0_0.onInitView(arg_1_0)
-	arg_1_0._simagebg = gohelper.findChildSingleImage(arg_1_0.viewGO, "view/#simage_bg")
-	arg_1_0._txtdurationTime = gohelper.findChildText(arg_1_0.viewGO, "view/time/#txt_durationTime")
-	arg_1_0._btnbuy = gohelper.findChildButtonWithAudio(arg_1_0.viewGO, "view/#btn_buy")
+local StoreSkinBagView = class("StoreSkinBagView", GiftrecommendViewBase)
 
-	if arg_1_0._editableInitView then
-		arg_1_0:_editableInitView()
+function StoreSkinBagView:onInitView()
+	self._simagebg = gohelper.findChildSingleImage(self.viewGO, "view/#simage_bg")
+	self._txtdurationTime = gohelper.findChildText(self.viewGO, "view/time/#txt_durationTime")
+	self._btnbuy = gohelper.findChildButtonWithAudio(self.viewGO, "view/#btn_buy")
+
+	if self._editableInitView then
+		self:_editableInitView()
 	end
 end
 
-function var_0_0.addEvents(arg_2_0)
-	arg_2_0._btnbuy:AddClickListener(arg_2_0._btnbuyOnClick, arg_2_0)
+function StoreSkinBagView:addEvents()
+	self._btnbuy:AddClickListener(self._btnbuyOnClick, self)
 end
 
-function var_0_0.removeEvents(arg_3_0)
-	arg_3_0._btnbuy:RemoveClickListener()
+function StoreSkinBagView:removeEvents()
+	self._btnbuy:RemoveClickListener()
 end
 
-function var_0_0._btnbuyOnClick(arg_4_0)
+function StoreSkinBagView:_btnbuyOnClick()
 	StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
 		[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
-		[StatEnum.EventProperties.RecommendPageId] = tostring(arg_4_0.config and arg_4_0.config.id or ""),
-		[StatEnum.EventProperties.RecommendPageName] = arg_4_0.config and arg_4_0.config.name or "StoreSkinBagView",
-		[StatEnum.EventProperties.RecommendPageRank] = arg_4_0:getTabIndex()
+		[StatEnum.EventProperties.RecommendPageId] = tostring(self.config and self.config.id or ""),
+		[StatEnum.EventProperties.RecommendPageName] = self.config and self.config.name or "StoreSkinBagView",
+		[StatEnum.EventProperties.RecommendPageRank] = self:getTabIndex()
 	})
-	GameFacade.jumpByAdditionParam(arg_4_0.config.systemJumpCode)
+	GameFacade.jumpByAdditionParam(self.config.systemJumpCode)
 end
 
-function var_0_0._editableInitView(arg_5_0)
-	var_0_0.super._editableInitView(arg_5_0)
+function StoreSkinBagView:_editableInitView()
+	StoreSkinBagView.super._editableInitView(self)
 end
 
-function var_0_0.onOpen(arg_6_0)
-	arg_6_0.config = arg_6_0.config or StoreConfig.instance:getStoreRecommendConfig(StoreEnum.RecommendSubStoreId.StoreSkinBagView)
+function StoreSkinBagView:onOpen()
+	self.config = self.config or StoreConfig.instance:getStoreRecommendConfig(StoreEnum.RecommendSubStoreId.StoreSkinBagView)
 
-	var_0_0.super.onOpen(arg_6_0)
+	StoreSkinBagView.super.onOpen(self)
 end
 
-function var_0_0.onClose(arg_7_0)
-	var_0_0.super.onClose(arg_7_0)
+function StoreSkinBagView:onClose()
+	StoreSkinBagView.super.onClose(self)
 end
 
-function var_0_0.refreshUI(arg_8_0)
-	arg_8_0._txtdurationTime.text = StoreController.instance:getRecommendStoreTime(arg_8_0.config)
+function StoreSkinBagView:refreshUI()
+	self._txtdurationTime.text = StoreController.instance:getRecommendStoreTime(self.config)
 end
 
-function var_0_0.onDestroyView(arg_9_0)
-	var_0_0.super.onDestroyView(arg_9_0)
+function StoreSkinBagView:onDestroyView()
+	StoreSkinBagView.super.onDestroyView(self)
 end
 
-return var_0_0
+return StoreSkinBagView
