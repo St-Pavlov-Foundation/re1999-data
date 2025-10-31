@@ -195,8 +195,32 @@ function Rouge2_StatController:statUpgradeOutsideTalent(talentId)
 	})
 end
 
-function Rouge2_StatController:statUnlockIllustration(illustrationId)
-	return
+function Rouge2_StatController:statUnlockIllustration(type, itemList)
+	if itemList then
+		if type == Rouge2_StatController.FavoriteType.Collection then
+			for _, itemId in ipairs(itemList) do
+				local itemCo = Rouge2_BackpackHelper.getItemConfig(itemId)
+				local itemName = itemCo and itemCo.name
+
+				StatController.instance:track(StatEnum.EventName.Rouge2UnlockIllustration, {
+					[StatEnum.EventProperties.IllustrationType] = type,
+					[StatEnum.EventProperties.CollectionId] = itemId,
+					[StatEnum.EventProperties.CollectionName] = itemName
+				})
+			end
+		elseif type == Rouge2_StatController.FavoriteType.Formula then
+			for _, formulaId in ipairs(itemList) do
+				local formulaCo = Rouge2_OutSideConfig.instance:getFormulaConfig(formulaId)
+				local formulaName = formulaCo and formulaCo.name
+
+				StatController.instance:track(StatEnum.EventName.Rouge2UnlockIllustration, {
+					[StatEnum.EventProperties.IllustrationType] = type,
+					[StatEnum.EventProperties.FormulaId] = formulaId,
+					[StatEnum.EventProperties.Formula] = formulaName
+				})
+			end
+		end
+	end
 end
 
 function Rouge2_StatController:getSeason()
@@ -618,6 +642,10 @@ Rouge2_StatController.EndResult = {
 	Fail = 2,
 	AbortRechallenge = 5,
 	Success = 1
+}
+Rouge2_StatController.FavoriteType = {
+	Formula = "配方图鉴",
+	Collection = "造物图鉴"
 }
 Rouge2_StatController.instance = Rouge2_StatController.New()
 

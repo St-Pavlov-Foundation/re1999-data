@@ -210,6 +210,13 @@ end
 
 function Rouge2_CollectionListView:_onClickCollectionListItem()
 	self._rightAnimator:Play("switch", 0, 0)
+
+	local collectionConfig = Rouge2_CollectionListModel.instance:getSelectedConfig()
+
+	if collectionConfig then
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
+	end
+
 	TaskDispatcher.cancelTask(self._refreshSelectCollectionInfo, self)
 	TaskDispatcher.runDelay(self._refreshSelectCollectionInfo, self, Rouge2_OutsideEnum.CollectionListViewDelayTime)
 end

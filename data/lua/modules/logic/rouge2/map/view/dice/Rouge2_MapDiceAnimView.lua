@@ -72,6 +72,7 @@ function Rouge2_MapDiceAnimView:_btnClickOnClick()
 end
 
 function Rouge2_MapDiceAnimView:_btnJumpOnClick()
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.StopDice)
 	gohelper.setActive(self._btnClick.gameObject, false)
 	gohelper.setActive(self._btnJump.gameObject, false)
 	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.OnJumpFinishDice)

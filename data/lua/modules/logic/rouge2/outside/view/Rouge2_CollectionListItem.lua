@@ -35,6 +35,8 @@ function Rouge2_CollectionListItem:_editableInitView()
 	self._orderColor = self._txtnum.color
 
 	gohelper.setActive(self._simagecollection.gameObject, true)
+
+	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
 function Rouge2_CollectionListItem:_editableAddEvents()
@@ -99,8 +101,23 @@ function Rouge2_CollectionListItem:onUpdateMO(mo)
 	self:_updateNewFlag()
 end
 
+function Rouge2_CollectionListItem:onDelayPlayUnlock()
+	self.animator:Play("unlock", 0, 0)
+	TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
+end
+
 function Rouge2_CollectionListItem:_updateNewFlag()
-	return
+	TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
+
+	local reddot = RedDotController.instance:addRedDot(self._gonew, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Collection, self._mo.id)
+
+	if reddot.show then
+		Rouge2_OutsideController.instance:addShowRedDot(Rouge2_OutsideEnum.LocalData.Collection, self._mo.id)
+		TaskDispatcher.runDelay(self.onDelayPlayUnlock, self, 1)
+		self.animator:Play("unlock", 0, 0)
+	else
+		self.animator:Play("idle", 0, 0)
+	end
 end
 
 function Rouge2_CollectionListItem:onSelect(isSelect)
@@ -108,7 +125,7 @@ function Rouge2_CollectionListItem:onSelect(isSelect)
 end
 
 function Rouge2_CollectionListItem:onDestroyView()
-	return
+	TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
 end
 
 return Rouge2_CollectionListItem

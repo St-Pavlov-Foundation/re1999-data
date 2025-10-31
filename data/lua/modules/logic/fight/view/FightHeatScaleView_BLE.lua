@@ -7,7 +7,14 @@ local FightHeatScaleView_BLE = class("FightHeatScaleView_BLE", FightHeatScaleVie
 function FightHeatScaleView_BLE:initView(viewGo, teamType)
 	FightHeatScaleView_BLE.super.initView(self, viewGo, teamType)
 
+	local goLayout = gohelper.findChild(self.root, "crystal_layout")
+
+	gohelper.setActive(goLayout, true)
+
 	self.goImageItem = gohelper.findChild(self.root, "crystal_layout/crystal_item")
+
+	gohelper.setActive(self.goImageItem, false)
+
 	self.countPosListDict = {
 		[2] = self:getPosList(gohelper.findChild(self.root, "crystal_layout/pos2"), 2),
 		[3] = self:getPosList(gohelper.findChild(self.root, "crystal_layout/pos3"), 3),

@@ -80,6 +80,8 @@ function Rouge2_OutsideController:onAlchemySuccess(alchemyInfo, spEventNum, retu
 	self.alchemySuccessFlow:addWork(Rouge2_WaitAlchemySuccessFxDoneWork.New(viewParam))
 	self.alchemySuccessFlow:registerDoneListener(self.onEndFlowDone, self)
 	self.alchemySuccessFlow:start()
+
+	self._hasCleanRedDotTask = false
 end
 
 function Rouge2_OutsideController:onEndFlowDone()
@@ -168,6 +170,60 @@ end
 function Rouge2_OutsideController:forceCloseLock()
 	logError("肉鸽开始场景 事件出现表现超时 已强制关闭遮罩")
 	self:_lockScreen(false)
+end
+
+function Rouge2_OutsideController.buildSingleInfo(uid, showRedDot)
+	local info = {
+		time = 0,
+		id = uid,
+		value = showRedDot and 1 or 0
+	}
+
+	return info
+end
+
+function Rouge2_OutsideController:setRedDotState(defineId, infoList)
+	local reddotItemInfo = {
+		replaceAll = true,
+		defineId = defineId,
+		infos = infoList
+	}
+	local redDotInfos = {
+		reddotItemInfo
+	}
+
+	RedDotModel.instance:updateRedDotInfo(redDotInfos)
+
+	local refreshlist = {}
+	local ids = RedDotModel.instance:_getAssociateRedDots(defineId)
+
+	for _, id in pairs(ids) do
+		refreshlist[id] = true
+	end
+
+	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, refreshlist)
+end
+
+function Rouge2_OutsideController:addShowRedDot(type, uid)
+	Rouge2_OutsideModel.instance:addTempLocalDataList(type, uid)
+	self:delayClearRedDot()
+end
+
+function Rouge2_OutsideController:delayClearRedDot()
+	if not self._hasCleanRedDotTask then
+		self._hasCleanRedDotTask = true
+
+		TaskDispatcher.runDelay(self._onRunClearRedDot, self, 0.5)
+	end
+end
+
+function Rouge2_OutsideController:_onRunClearRedDot()
+	TaskDispatcher.cancelTask(self._onRunClearRedDot, self)
+	Rouge2_OutsideModel.instance:saveTempLocalDataList()
+	self:dispatchEvent(Rouge2_OutsideEvent.OnClearRedDot)
+	Rouge2_OutsideModel.instance:clearTempLocalDataList()
+
+	self._hasCleanRedDotTask = false
 end
 
 Rouge2_OutsideController.instance = Rouge2_OutsideController.New()

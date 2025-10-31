@@ -12477,7 +12477,7 @@
     "id": 320061,
     "battleId": 116320061,
     "triggerType": "RoundStart",
-    "actionList": "116320061",
+    "actionList": "116320060",
     "limit": 1,
     "limitOneTurn": 1,
     "param1": "1",

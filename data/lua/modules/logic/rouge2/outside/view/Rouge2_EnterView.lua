@@ -92,7 +92,7 @@ end
 function Rouge2_EnterView:_editableInitView()
 	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 
-	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.ActivityNoviceInsight)
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a2_Rouge_Store_Main, 0)
 	gohelper.setActive(self._golocked, false)
 end
 
@@ -104,13 +104,13 @@ function Rouge2_EnterView:onOpen()
 	self.actId = Rouge2_Model.instance:getCurActId()
 
 	self:_refreshTime()
-	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_1)
 	TaskDispatcher.runRepeat(self._refreshTime, self, TimeUtil.OneSecond)
 
 	if self.viewParam and self.viewParam.openMain == true then
 		self.animator:Play("close", 0, 0)
 		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.BackEnterScene, Rouge2_OutsideEnum.SceneIndex.MainScene)
 	else
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_1)
 		self.animator:Play("open", 0, 0)
 		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, Rouge2_OutsideEnum.SceneIndex.EnterScene)
 	end

@@ -16,6 +16,7 @@ function Rouge2_RelicsDropView:onInitView()
 	self._goBottomLeft = gohelper.findChild(self.viewGO, "#go_bottomleft")
 	self._goTopLeft = gohelper.findChild(self.viewGO, "#go_topleft")
 	self._goTopRight = gohelper.findChild(self.viewGO, "#go_topright")
+	self._goLevelUpSuccEffect = gohelper.findChild(self.viewGO, "#go_successEffect")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -56,6 +57,7 @@ function Rouge2_RelicsDropView:initViewParam()
 	self._viewEnum = self.viewParam and self.viewParam.viewEnum
 	self._dataType = self.viewParam and self.viewParam.dataType
 	self._relicsList = self.viewParam and self.viewParam.itemList or {}
+	self._reason = self.viewParam and self.viewParam.reason
 
 	if self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select or self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp then
 		NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.blockEsc)
@@ -73,6 +75,7 @@ function Rouge2_RelicsDropView:refreshTitle()
 	gohelper.setActive(self._goDrop, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Drop)
 	gohelper.setActive(self._goLoss, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Loss)
 	gohelper.setActive(self._goStrength, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp)
+	gohelper.setActive(self._goLevelUpSuccEffect, self._reason == Rouge2_MapEnum.ItemDropReason.LevelUpSucc)
 end
 
 function Rouge2_RelicsDropView:refreshButton()

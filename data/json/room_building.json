@@ -7541,7 +7541,7 @@
     "reflerction": 0,
     "canLevelUp": false,
     "isAreaMainBuilding": false,
-    "canExchange": false
+    "canExchange": true
   },
   {
     "id": 13102,
@@ -7582,7 +7582,7 @@
     "reflerction": 0,
     "canLevelUp": false,
     "isAreaMainBuilding": false,
-    "canExchange": false
+    "canExchange": true
   },
   {
     "id": 13103,

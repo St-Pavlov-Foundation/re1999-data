@@ -35,6 +35,7 @@ function BleSkinInteraction:_onInit()
 	self._targetPos = Vector2(31.78, -78.47)
 	self._lightSpine = self._view._lightSpine
 	self._spineGo = self._lightSpine:getSpineGo()
+	self._boneDragOffsetPos = {}
 end
 
 function BleSkinInteraction:_loadEffectFinished(effectLoader)
@@ -143,6 +144,10 @@ local areaList = {
 		{
 			0.78,
 			0.32
+		},
+		{
+			-309.59,
+			154.78
 		}
 	},
 	{
@@ -154,6 +159,10 @@ local areaList = {
 		{
 			0.67,
 			0.14
+		},
+		{
+			-431.53,
+			13.6
 		}
 	},
 	{
@@ -161,7 +170,11 @@ local areaList = {
 		3,
 		"Param_yidong3",
 		"Param_jianbian3",
-		10
+		10,
+		[7] = {
+			-354.63,
+			-127
+		}
 	},
 	{
 		4,
@@ -199,6 +212,34 @@ local dragFinishEffect = {
 	"Drawables/bone6/effect-Bone/roleeffect_ble_jh04_6jin"
 }
 
+function BleSkinInteraction:_getBoneDragOffsetPos(spineGo, index, normalPos)
+	local offset = self._boneDragOffsetPos[index]
+
+	if offset then
+		return offset
+	end
+
+	local bonePath = string.format("Drawables/bone%s/effect-Bone", index)
+	local boneGo = gohelper.findChild(spineGo, bonePath)
+	local posX, posY = self:_getBoneViewPos(boneGo)
+	local offset = Vector2.New(normalPos[1] - posX, normalPos[2] - posY)
+
+	self._boneDragOffsetPos[index] = offset
+
+	return offset
+end
+
+function BleSkinInteraction:_getBoneViewPos(boneGo)
+	local transform = boneGo.transform
+	local camera = CameraMgr.instance:getUnitCamera()
+	local worldPos = transform.position
+	local posX, posY = recthelper.worldPosToScreenPoint(camera, worldPos.x, worldPos.y, worldPos.z)
+
+	posX, posY = recthelper.screenPosToAnchorPos2(Vector2(posX, posY), self._mainHeroView._golightspinecontrol.transform)
+
+	return posX, posY
+end
+
 function BleSkinInteraction:beforeBeginDrag(view, config, skinConfig)
 	if self:_isDragSuccess() or self:inProtectionTime() then
 		return false
@@ -215,10 +256,23 @@ function BleSkinInteraction:beforeBeginDrag(view, config, skinConfig)
 	self._spineGo = spineGo
 
 	local pos = recthelper.screenPosToAnchorPos(GamepadController.instance:getMousePosition(), self._mainHeroView._golightspinecontrol.transform)
+	local posX = pos.x
+	local posY = pos.y
 
 	for i, v in ipairs(areaList) do
 		local areaId = v[1]
 		local areaIndex = v[2]
+		local effectIndex = v[5]
+		local normalPos = v[7]
+		local offsetPos = normalPos and self:_getBoneDragOffsetPos(spineGo, effectIndex, normalPos)
+
+		if offsetPos then
+			pos.x = posX + offsetPos.x
+			pos.y = posY + offsetPos.y
+		else
+			pos.x = posX
+			pos.y = posY
+		end
 
 		if self._mainHeroView:checkSpecialTouchByKey(areaId, pos, areaIndex) then
 			self._beingDragPos = pos
@@ -243,7 +297,6 @@ function BleSkinInteraction:beforeBeginDrag(view, config, skinConfig)
 				logError("add parameter failed paramName:", self._fadeParamName)
 			end
 
-			local effectIndex = v[5]
 			local effectPath = string.format("Drawables/bone%s/effect-Bone/roleeffect_ble_jh02_%s", effectIndex, effectIndex)
 
 			self._effectGo = gohelper.findChild(spineGo, effectPath)
@@ -436,6 +489,8 @@ function BleSkinInteraction:_resetParams()
 end
 
 function BleSkinInteraction:beforeOnDrag(pos)
+	tabletool.clear(self._boneDragOffsetPos)
+
 	if not self._beingDragPos then
 		return
 	end

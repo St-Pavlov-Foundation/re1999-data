@@ -43,13 +43,13 @@ function RoomViewUIPartItem:_customOnInit()
 end
 
 function RoomViewUIPartItem:_customAddEventListeners()
+	self:refreshUI(true)
 	RoomMapController.instance:registerCallback(RoomEvent.UpdateRoomLevel, self.refreshUI, self)
 	RoomController.instance:registerCallback(RoomEvent.ProduceLineLevelUp, self._refreshUpgradeUI, self)
 	RoomController.instance:registerCallback(RoomEvent.UpdateProduceLineData, self._updateProduceLineData, self)
 	RoomController.instance:registerCallback(RoomEvent.GainProductionLineReply, self._gainProductionLineCallback, self)
 	RoomMapController.instance:registerCallback(RoomEvent.GuideTouchUIPart, self._onGuideTouchUIPart, self)
 	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, self.refreshRelateDot, self)
-	self:refreshUI(true)
 end
 
 function RoomViewUIPartItem:_customRemoveEventListeners()

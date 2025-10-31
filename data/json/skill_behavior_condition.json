@@ -25838,5 +25838,13 @@
   {
     "id": 513212,
     "type": "SelfTeamHasBuffTypeLayerMoreThan"
+  },
+  {
+    "id": 51101,
+    "type": "HasTypeIdBuffMoreThan"
+  },
+  {
+    "id": 512100,
+    "type": "HasTypeBuffIdsLessThan"
   }
 ]

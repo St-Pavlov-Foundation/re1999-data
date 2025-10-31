@@ -37,6 +37,8 @@ function Rouge2_StoreModel:refreshStoreStage()
 			table.insert(self._openStoreStageList, id)
 		end
 	end
+
+	Rouge2_OutsideModel.instance:checkStoreRedDot()
 end
 
 function Rouge2_StoreModel:updateInfo(outsideInfo)
@@ -56,7 +58,32 @@ end
 function Rouge2_StoreModel:refreshPoint(rewardPoint)
 	self.rewardPoint = rewardPoint or 0
 
+	self:checkRedPoint()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnStorePointUpdate, rewardPoint)
+end
+
+function Rouge2_StoreModel:checkRedPoint()
+	local finalRewardConstConfig = Rouge2_OutSideConfig.instance:getConstConfigById(Rouge2_Enum.OutSideConstId.StoreFinalReward)
+	local finalRewardConfig = Rouge2_OutSideConfig.instance:getRewardConfigById(tonumber(finalRewardConstConfig.value))
+	local isClaimed = Rouge2_StoreModel.instance:getGoodsBuyCount(finalRewardConfig.id) >= finalRewardConfig.maxBuyCount
+	local showRedDot
+
+	if isClaimed then
+		showRedDot = false
+	else
+		local curScore = self:getCurUseScore()
+		local targetScore = finalRewardConfig.rewardScore
+
+		showRedDot = targetScore <= curScore
+	end
+
+	logNormal("肉鸽2 商店红点状态:" .. tostring(showRedDot))
+
+	local info = Rouge2_OutsideController.buildSingleInfo(0, showRedDot)
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Store_FinalReward, {
+		info
+	})
 end
 
 function Rouge2_StoreModel:refreshBuyCount(outsideInfo)

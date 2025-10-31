@@ -34,6 +34,7 @@ function Rouge2_IllustrationMainView:_btnillustrationOnClick()
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_main_switch_scene_2_2)
 	self.viewContainer:selectTabView(1)
 	self:_setBtnIllustrationSelected(true)
 end
@@ -43,12 +44,19 @@ function Rouge2_IllustrationMainView:_btnreviewOnClick()
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_main_switch_scene_2_2)
 	self.viewContainer:selectTabView(2)
 	self:_setBtnIllustrationSelected(false)
 end
 
 function Rouge2_IllustrationMainView:_editableInitView()
 	self:_setBtnIllustrationSelected(true)
+
+	self._goreddotIllustration = gohelper.findChild(self.viewGO, "#go_Bottom/#btn_illustration/#go_reddot")
+	self._goreddotStory = gohelper.findChild(self.viewGO, "#go_Bottom/#btn_review/#go_reddot")
+
+	RedDotController.instance:addRedDot(self._goreddotIllustration, RedDotEnum.DotNode.V3a2_Rouge_Review_Illustration_Tab, 0)
+	RedDotController.instance:addRedDot(self._goreddotStory, RedDotEnum.DotNode.V3a2_Rouge_Review_AVG_Tab, 0)
 end
 
 function Rouge2_IllustrationMainView:onUpdateParam()

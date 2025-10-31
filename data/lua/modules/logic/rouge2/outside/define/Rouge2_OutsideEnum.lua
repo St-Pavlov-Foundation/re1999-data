@@ -116,7 +116,7 @@ Rouge2_OutsideEnum.SceneOpenDelay = {
 	[Rouge2_OutsideEnum.SceneIndex.MainScene] = 1.7,
 	[Rouge2_OutsideEnum.SceneIndex.DifficultyScene] = 1,
 	[Rouge2_OutsideEnum.SceneIndex.CareerScene] = 1,
-	[Rouge2_OutsideEnum.SceneIndex.LevelScene] = 1
+	[Rouge2_OutsideEnum.SceneIndex.LevelScene] = 0.7
 }
 Rouge2_OutsideEnum.DifficultyChangeTime = 0.667
 Rouge2_OutsideEnum.CareerRefreshTime = 0.167
@@ -167,5 +167,20 @@ Rouge2_OutsideEnum.IllustrationDetailType = {
 	Story = 2,
 	Illustration = 1
 }
+Rouge2_OutsideEnum.LocalData = {
+	Store = 5,
+	Avg = 4,
+	Formula = 2,
+	Collection = 1,
+	Illustration = 3
+}
+Rouge2_OutsideEnum.LocalDataType2PlayerKey = {
+	[Rouge2_OutsideEnum.LocalData.Collection] = PlayerPrefsKey.Rouge2FavoriteCollectionRedDot,
+	[Rouge2_OutsideEnum.LocalData.Formula] = PlayerPrefsKey.Rouge2FavoriteFormulaRedDot,
+	[Rouge2_OutsideEnum.LocalData.Illustration] = PlayerPrefsKey.Rouge2FavoriteIllustrationRedDot,
+	[Rouge2_OutsideEnum.LocalData.Avg] = PlayerPrefsKey.Rouge2FavoriteAvgRedDot,
+	[Rouge2_OutsideEnum.LocalData.Store] = PlayerPrefsKey.Rouge2StoreTabRedDot
+}
+Rouge2_OutsideEnum.MainViewBallAudioDelay = 0.02
 
 return Rouge2_OutsideEnum

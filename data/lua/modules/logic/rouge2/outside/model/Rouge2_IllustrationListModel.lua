@@ -22,6 +22,8 @@ local cellWidth = {
 }
 
 function Rouge2_IllustrationListModel:getInfoList(scrollGO)
+	self.scrollGO = scrollGO
+
 	local mixCellInfos = {}
 	local list = self:getList()
 
@@ -35,6 +37,10 @@ function Rouge2_IllustrationListModel:getInfoList(scrollGO)
 	end
 
 	return mixCellInfos
+end
+
+function Rouge2_IllustrationListModel:getScrollGO()
+	return self.scrollGO
 end
 
 Rouge2_IllustrationListModel.instance = Rouge2_IllustrationListModel.New()

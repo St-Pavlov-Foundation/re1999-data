@@ -100,6 +100,7 @@ function Rouge2_BackpackModel:updateBagInfo(bagInfo)
 	end
 
 	self._bagInfo:init(bagInfo)
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onUpdateBagInfo)
 end
 
 function Rouge2_BackpackModel:updateItems(itemInfoList)

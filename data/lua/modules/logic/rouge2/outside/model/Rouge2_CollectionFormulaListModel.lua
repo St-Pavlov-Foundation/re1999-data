@@ -26,6 +26,7 @@ function Rouge2_CollectionFormulaListModel:onCollectionDataUpdate()
 
 				mo.itemId = co.id
 				mo.type = Rouge2_OutsideEnum.CollectionType.Formula
+				mo.showRedDot = true
 
 				table.insert(productCollections, mo)
 			end

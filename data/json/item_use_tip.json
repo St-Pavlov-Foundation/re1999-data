@@ -21,7 +21,7 @@
     "id": 2929001,
     "priority": 1,
     "type": 1,
-    "jumpId": 56,
+    "jumpId": 700,
     "desc": "是否立刻使用道具【▩1%s】进行奖励补领",
     "descParam": "1",
     "checkParam": "1"

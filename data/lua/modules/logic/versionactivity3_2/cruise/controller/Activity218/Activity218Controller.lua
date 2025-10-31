@@ -69,8 +69,8 @@ function Activity218Controller:startGame()
 	local flipCardAudio = 0.3
 	local discardTimesAudio = 0.46
 	local updateDiscardTimes = 1
-	local discardFlipCardAnimTime = 2.7 - updateDiscardTimes
-	local discardToFlipAnim = 4.6
+	local discardFlipCardAnimTime = 2.6332999999999998
+	local discardToFlipAnim = 4.533333
 
 	self.flow = FlowSequence.New()
 
@@ -126,13 +126,27 @@ function Activity218Controller:startGame()
 	flow:addWork(WaitEventWork.New("Activity218Controller;Activity218Event;OnPlayerDiscard"))
 	flow:addWork(FunctionWork.New(self.startDiscardFlip, self))
 	flow:addWork(CruiseGameEventWork.New(Activity218Event.OnTriggerDiscardFlipAnim))
-	flow:addWork(TimerWork.New(discardTimesAudio))
-	flow:addWork(FunctionWork.New(self.playAudio, self, AudioEnum3_2.play_ui_shengyan_box_songjin_shuffle))
-	flow:addWork(TimerWork.New(updateDiscardTimes - discardTimesAudio))
-	flow:addWork(CruiseGameEventWork.New(Activity218Event.OnTriggerDiscardFlipAnimRefresh))
-	flow:addWork(TimerWork.New(discardFlipCardAnimTime))
-	flow:addWork(FunctionWork.New(self.playAudio, self, AudioEnum3_2.play_ui_shengyan_box_songjin_flip))
-	flow:addWork(TimerWork.New(discardToFlipAnim - updateDiscardTimes - discardTimesAudio - discardFlipCardAnimTime))
+
+	local flowParallel = FlowParallel.New()
+	local flow1 = FlowSequence.New()
+
+	flow1:addWork(TimerWork.New(discardTimesAudio))
+	flow1:addWork(FunctionWork.New(self.playAudio, self, AudioEnum3_2.play_ui_shengyan_box_songjin_shuffle))
+
+	local flow2 = FlowSequence.New()
+
+	flow2:addWork(TimerWork.New(updateDiscardTimes))
+	flow2:addWork(CruiseGameEventWork.New(Activity218Event.OnTriggerDiscardFlipAnimRefresh))
+
+	local flow3 = FlowSequence.New()
+
+	flow3:addWork(TimerWork.New(discardFlipCardAnimTime, true))
+	flow3:addWork(FunctionWork.New(self.playAudio, self, AudioEnum3_2.play_ui_shengyan_box_songjin_flip))
+	flowParallel:addWork(flow1)
+	flowParallel:addWork(flow2)
+	flowParallel:addWork(flow3)
+	flowParallel:addWork(TimerWork.New(discardToFlipAnim))
+	flow:addWork(flowParallel)
 	flow:addWork(FunctionWork.New(self.settleGame, self))
 	flow:addWork(TimerWork.New(0.9))
 	flow:addWork(CruiseGameEventWork.New(Activity218Event.OnTriggerGameSettle_2))

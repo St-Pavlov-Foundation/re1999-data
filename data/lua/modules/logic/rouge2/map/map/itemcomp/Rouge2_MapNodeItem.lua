@@ -141,10 +141,6 @@ function Rouge2_MapNodeItem:onSelectNode(nodeMo)
 	if arriveStatusChange then
 		self:updateNode()
 	end
-
-	if self.select then
-		AudioMgr.instance:trigger(AudioEnum.UI.SelectNode)
-	end
 end
 
 function Rouge2_MapNodeItem:updateNode()

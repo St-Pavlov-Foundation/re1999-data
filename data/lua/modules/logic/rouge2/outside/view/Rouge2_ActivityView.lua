@@ -82,7 +82,7 @@ end
 function Rouge2_ActivityView:_editableInitView()
 	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 
-	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.ActivityNoviceInsight)
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a2_Rouge_Store_Main, 0)
 	gohelper.setActive(self._golocked, false)
 	gohelper.setActive(self._btnachievementpreview, false)
 end

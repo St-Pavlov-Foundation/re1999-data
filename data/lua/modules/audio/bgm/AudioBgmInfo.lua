@@ -656,6 +656,11 @@ function AudioBgmInfo:_initBgmUsage()
 	}, AudioBgmEnum.UsageType.Scene, {
 		SceneType.Udimo
 	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.Rouge2Scene
+	}, AudioBgmEnum.UsageType.Scene, {
+		SceneType.Rouge2
+	})
 end
 
 function AudioBgmInfo:_initBgmBind()

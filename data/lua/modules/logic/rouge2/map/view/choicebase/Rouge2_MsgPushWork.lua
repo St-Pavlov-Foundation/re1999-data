@@ -45,7 +45,7 @@ function Rouge2_MsgPushWork:onReceiveRouge2BagItemRemovePush(msg)
 	local items = msg.items
 
 	Rouge2_BackpackModel.instance:removeItems(items)
-	Rouge2_BackpackController.instance:showLossItemView(items)
+	Rouge2_BackpackController.instance:showLossItemView(reason, items)
 	Rouge2_BackpackController.instance:buildItemReddot()
 end
 

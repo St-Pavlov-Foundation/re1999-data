@@ -76,7 +76,7 @@ function AutoChessMeshComp:loadResFinish()
 
 			if self.independent then
 				self.matInst1 = UnityEngine.Object.Instantiate(mat)
-				self.uiMesh.material = self.matInst
+				self.uiMesh.material = self.matInst1
 			else
 				self.uiMesh.material = mat
 			end

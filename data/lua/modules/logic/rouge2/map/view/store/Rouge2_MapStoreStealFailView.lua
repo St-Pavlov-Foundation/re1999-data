@@ -65,6 +65,8 @@ function Rouge2_MapStoreStealFailView:refreshTitle()
 
 		self._txtTitle.text = luaLang("p_rouge2_mapstoreview_txt_lefttitle")
 		self._txtDesc.text = luaLang("p_rouge2_mapstoreview_txt_leftdec")
+
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.StealFail)
 	end
 
 	if self._isFight then

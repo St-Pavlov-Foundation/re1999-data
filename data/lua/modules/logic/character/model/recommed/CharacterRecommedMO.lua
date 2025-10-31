@@ -132,7 +132,7 @@ function CharacterRecommedMO:getNextDevelopMaterial()
 		end
 
 		local realLevel = self:_getRealLevel(rank, lvRec[2])
-		local ignoreLevels = self:_getIgnoreLevel(heroMo.heroId)
+		local ignoreLevels = self:_getIgnoreLevel(self.heroId)
 
 		for level = curLv + 1, realLevel do
 			if not LuaUtil.tableContains(ignoreLevels, level) then

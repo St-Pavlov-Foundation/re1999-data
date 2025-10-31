@@ -31,7 +31,7 @@ function Rouge2_AttributeDetailView:_btnCloseOnClick()
 end
 
 function Rouge2_AttributeDetailView:_editableInitView()
-	return
+	self._clickTab = self:getUserDataTb_()
 end
 
 function Rouge2_AttributeDetailView:onUpdateParam()
@@ -76,6 +76,13 @@ function Rouge2_AttributeDetailView:_refreshAttribute(obj, attrInfo, index)
 	local goDescItem = gohelper.findChild(obj, "go_DescList/go_DescItem")
 	local goLine = gohelper.findChild(obj, "image_Line")
 	local goRecommend = gohelper.findChild(obj, "go_Recommend")
+	local btnTips = gohelper.findChildButtonWithAudio(obj, "#btn_tips")
+
+	btnTips:RemoveClickListener()
+	btnTips:AddClickListener(self._btnTipsOnClick, self, attrInfo.attrId)
+
+	self._clickTab[index] = btnTips
+
 	local attrId = attrInfo.attrId
 	local attributeCo = Rouge2_AttributeConfig.instance:getAttributeConfig(attrId)
 
@@ -100,8 +107,16 @@ function Rouge2_AttributeDetailView:_refreshDesc(obj, desc, index)
 	SkillHelper.addHyperLinkClick(txtDesc)
 end
 
+function Rouge2_AttributeDetailView:_btnTipsOnClick(attrId)
+	local clickPos = GamepadController.instance:getMousePosition()
+
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onShowAttrSpSkillTips, clickPos, attrId)
+end
+
 function Rouge2_AttributeDetailView:onClose()
-	return
+	for _, btnClick in pairs(self._clickTab) do
+		btnClick:RemoveClickListener()
+	end
 end
 
 function Rouge2_AttributeDetailView:onDestroyView()

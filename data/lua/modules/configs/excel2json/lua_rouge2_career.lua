@@ -20,6 +20,7 @@ local fields = {
 	icon = 6,
 	audioId = 24,
 	unlockTime = 23,
+	heroArmIcon = 25,
 	passiveSkillBrief = 14,
 	mpInitial = 21,
 	initialColletions = 12,

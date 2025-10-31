@@ -88,6 +88,16 @@ function StoreHelper.getRecommendStoreGroup(co, includeGroupD)
 			if monthCardInfo ~= nil and monthCardInfo:getRemainDay() >= StoreEnum.MonthCardStatus.NotPurchase then
 				return StoreEnum.GroupOrderType.GroupD
 			end
+		elseif type == StoreEnum.AdjustOrderType.SeasonCard then
+			if PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.StoreSupplementMonthCardTipView), 0) == 0 or SignInModel.instance:getCanSupplementMonthCardDays() > 0 then
+				return StoreEnum.GroupOrderType.GroupA
+			end
+
+			local monthCardInfo = StoreModel.instance:getMonthCardInfo()
+
+			if monthCardInfo ~= nil and monthCardInfo:getRemainDay() >= StoreEnum.MonthCardStatus.NotPurchase then
+				return StoreEnum.GroupOrderType.GroupD
+			end
 		elseif type == StoreEnum.AdjustOrderType.BattlePass and BpModel.instance.payStatus ~= BpEnum.PayStatus.NotPay then
 			return StoreEnum.GroupOrderType.GroupD
 		end

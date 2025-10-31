@@ -17868,6 +17868,12 @@
     "weapon": 0
   },
   {
+    "id": 411000023,
+    "eventName": "play_buff_dungeon_bullet3_2",
+    "bankName": "effects_fight_3_2",
+    "weapon": 0
+  },
+  {
     "id": 430800491,
     "eventName": "play_hero308004_skill_born",
     "bankName": "hero308004_skill_skin",

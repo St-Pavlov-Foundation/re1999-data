@@ -480,6 +480,15 @@ function MainActExtraDisplay:refreshRouge2Btn()
 	self:_roleStoryLoadImage(activityConfig.extraDisplayIcon, self.onLoadImage, self)
 
 	self._txtrolestory.text = ""
+
+	local activityCo = ActivityConfig.instance:getActivityCo(actId)
+
+	RedDotController.instance:addRedDot(self._gorolestoryred, activityCo.redDotId)
+
+	local hasNew = ActivityStageHelper.checkOneActivityStageHasChange(actId)
+
+	gohelper.setActive(self._gorolestorynew, hasNew)
+	gohelper.setActive(self._gorolestoryred, not hasNew)
 end
 
 function MainActExtraDisplay:onLoadImage()

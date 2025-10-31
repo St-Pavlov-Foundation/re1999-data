@@ -424,11 +424,14 @@ function V3a2_BossRush_HandBookEnemyInfoView:refreshExp()
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_refreshExpBonus()
-	local curPointBonus = self._handBookMo:getCanClaimBonus(self._saveExp)
+	local bonus = self._handBookMo:getCanClaimBonus(self._saveExp)
 
-	self._txtbonus.text = luaLang("multiple") .. curPointBonus
+	gohelper.setActive(self._btnclaim.gameObject, bonus > 0)
 
-	gohelper.setActive(self._btnclaim.gameObject, curPointBonus > 0)
+	local curPointBonus = self:getCurPointBonus()
+
+	bonus = bonus > 0 and bonus or curPointBonus and curPointBonus.bonus or 0
+	self._txtbonus.text = luaLang("multiple") .. bonus
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_refreshStrategy()

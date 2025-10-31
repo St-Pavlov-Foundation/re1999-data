@@ -344,6 +344,7 @@ end
 function Rouge2_AlchemyMainView:onAlchemySuccess()
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onAlchemySuccessViewOpenFinish, self)
 	self._animator:Play("compose", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_cikeshang_yueka_unfold)
 end
 
 function Rouge2_AlchemyMainView:onAlchemyListViewClose(viewName)

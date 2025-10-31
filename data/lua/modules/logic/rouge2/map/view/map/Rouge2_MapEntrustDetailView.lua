@@ -30,7 +30,7 @@ function Rouge2_MapEntrustDetailView:_btnCloseOnClick()
 end
 
 function Rouge2_MapEntrustDetailView:onOpen()
-	local entrustList = Rouge2_MapModel.instance:getEntrustList() or {}
+	local entrustList = Rouge2_MapModel.instance:getDoingEntrustList() or {}
 
 	gohelper.CreateObjList(self, self._refreshEntrustItem, entrustList, self._goContent, self._goDetailItem)
 end

@@ -258,6 +258,7 @@ function Rouge2_MaterialListView:refreshFormulaInfo()
 		mo.type = Rouge2_OutsideEnum.CollectionType.Formula
 		mo.itemId = param
 		mo.id = param
+		mo.showRedDot = false
 
 		table.insert(data, mo)
 	end

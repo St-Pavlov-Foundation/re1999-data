@@ -12,7 +12,7 @@ function Rouge2_BackpackBoxTipsView:onInitView()
 	self._gobaseitem = gohelper.findChild(self.viewGO, "info/base/#go_baseitem")
 	self._imagebase = gohelper.findChildImage(self.viewGO, "info/base/#go_baseitem/#image_base")
 	self._txtdec = gohelper.findChildText(self.viewGO, "info/scroll_dec/Viewport/Content/#txt_dec")
-	self._btnconfirm = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_confirm")
+	self._btnconfirm = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_confirm", AudioEnum.Rouge2.ClickBXSPoint)
 	self._goBtnLight = gohelper.findChild(self.viewGO, "#btn_confirm/ani/lightbg")
 	self._goBtnDark = gohelper.findChild(self.viewGO, "#btn_confirm/ani/darkbg")
 
@@ -24,7 +24,7 @@ end
 function Rouge2_BackpackBoxTipsView:addEvents()
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
 	self._btnconfirm:AddClickListener(self._btnconfirmOnClick, self)
-	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateRougeInfo, self._onUpdateRougeInfo, self)
+	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateAttrInfo, self._onUpdateAttrInfo, self)
 end
 
 function Rouge2_BackpackBoxTipsView:removeEvents()
@@ -93,6 +93,8 @@ function Rouge2_BackpackBoxTipsView:refreshProgress()
 		self._confirmAnimator:Play(confirmAnim, 0, 0)
 
 		self._isFirst = false
+
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.HasBXSPoint)
 	else
 		self._animator:Play("normal", 0, 0)
 		self._confirmAnimator:Play("idle", 0, 0)
@@ -111,7 +113,7 @@ function Rouge2_BackpackBoxTipsView:_refreshAttrItem(obj, attrId, index)
 	Rouge2_IconHelper.setAttributeIcon(attrId, imagebase)
 end
 
-function Rouge2_BackpackBoxTipsView:_onUpdateRougeInfo()
+function Rouge2_BackpackBoxTipsView:_onUpdateAttrInfo()
 	self:refreshUI()
 end
 

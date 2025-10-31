@@ -63,6 +63,7 @@ function Rouge2_FightSuccessView:onUpdateParam()
 end
 
 function Rouge2_FightSuccessView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_settleaccounts_win)
 	self:refreshLeft()
 	self:refreshRight()
 end

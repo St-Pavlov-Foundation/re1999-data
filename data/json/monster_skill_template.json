@@ -71068,5 +71068,28 @@
     "maxStress": 0,
     "identity": "",
     "race": 5
+  },
+  {
+    "id": 1083050021,
+    "name": "长耳朵绅士",
+    "nameEng": "",
+    "des": "头上长有巨大鹿角的兔型魔精。\n最早目击记录可追溯到1829年万圣节。整个八十年代最疯狂的万圣节，我们都记得它。",
+    "template": "4#4#4#4",
+    "instance": 0,
+    "gender": 3,
+    "career": 1,
+    "dmgType": 2,
+    "passiveSkill": "2221|2202|512006101",
+    "activeSkill": "1#40220411#40220412|2#40220421#40220422",
+    "uniqueSkill": "40220431#40220432#40220433#40220434#40220435#40220436",
+    "uniqueSkill_point": 5,
+    "resistance": 0,
+    "powerMax": "",
+    "property": "",
+    "camp": 0,
+    "baseStress": 0,
+    "maxStress": 0,
+    "identity": "",
+    "race": 3
   }
 ]

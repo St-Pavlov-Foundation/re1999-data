@@ -82,11 +82,23 @@ end
 
 function VersionActivityVideoComp:_videoStatusUpdate(path, status, errorCode)
 	logNormal(string.format("VersionActivityVideoComp:_videoStatusUpdate status:%s name:%s ", status, AvProEnum.getPlayerStatusEnumName(status)))
+
+	if status == AvProEnum.PlayerStatus.Started and self._startCallback then
+		self._startCallback(self._startCallbackTarget)
+	end
+end
+
+function VersionActivityVideoComp:setStartCallback(callback, callbackTarget)
+	self._startCallback = callback
+	self._startCallbackTarget = callbackTarget
 end
 
 function VersionActivityVideoComp:destroy()
 	self:__onDispose()
 	self:_destroyVideo()
+
+	self._startCallback = nil
+	self._startCallbackTarget = nil
 end
 
 return VersionActivityVideoComp

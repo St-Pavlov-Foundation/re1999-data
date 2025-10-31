@@ -20109,7 +20109,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个黄色音符，为随机1名友方角色施加3层【心流】。当黄色音符被演奏时，将1张【金色音浪】置入行动区"
+    "desc": "回合开始时，乐谱上每有1个黄色音符，为随机1名友方角色施加3层【乐感】。当黄色音符被演奏时，将1张【金色音浪】置入行动区"
   },
   {
     "id": 110320002,
@@ -20129,11 +20129,11 @@
   },
   {
     "id": 110320004,
-    "name": "心流",
+    "name": "乐感",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "角色使用咒语时，自身每有1种【属性增益】【状态强化】，获得1层心流。回合开始时，若角色至少拥有15层心流，进入【即兴演奏】状态"
+    "desc": "角色使用咒语时，自身每有1种【属性增益】【状态强化】或敌方每有1种【属性削弱】【状态异常】，获得1层乐感。回合开始时，若角色至少拥有15层乐感，进入【心流】状态"
   },
   {
     "id": 110320005,
@@ -20141,7 +20141,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "单体攻击，对随机敌人造成精神创伤。对随机友方角色施加3层【心流】。"
+    "desc": "单体攻击，对随机敌人造成精神创伤。对随机友方角色施加3层【乐感】。"
   },
   {
     "id": 110320006,
@@ -20149,7 +20149,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "群体增益，我方角色下一张使用的2/3阶咒语有15%/25%概率额外打出一次。如果未触发额外打出效果，对角色施加1层【调音】"
+    "desc": "群体增益，我方角色下一张使用的2/3阶咒语有15%/25%概率额外打出一次。如果未触发额外打出效果，对角色施加1层【升调】"
   },
   {
     "id": 110320007,
@@ -20161,15 +20161,15 @@
   },
   {
     "id": 110320008,
-    "name": "即兴演奏",
+    "name": "心流",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "角色使用咒语后，对随机敌方释放2次【金色音浪】，造成50%伤害且不会施加【心流】，持续1回合"
+    "desc": "角色使用咒语后，对随机敌方释放2次【金色音浪】，造成50%伤害且不会施加【乐感】，持续1回合"
   },
   {
     "id": 110320009,
-    "name": "调音",
+    "name": "升调",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
@@ -20182,6 +20182,22 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "使用至终的仪式时，乐谱上的【蓝色音符】音强+1"
+  },
+  {
+    "id": 110320011,
+    "name": "最佳音域",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 110320012,
+    "name": "复奏",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": ""
   },
   {
     "id": 104321611,
@@ -20253,7 +20269,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "单体减益，赋予目标10层【燃烧】；使自身激情+1"
+    "desc": "单体减益，对敌方造成5%最大生命值的本源创伤，攻击命中时赋予目标10层【燃烧】；使自身激情+1"
   },
   {
     "id": 104321620,
@@ -20265,7 +20281,7 @@
   },
   {
     "id": 108300101,
-    "name": "琴弦脉搏",
+    "name": "领奏灵感",
     "color": 0,
     "notAddLink": 1,
     "isSpecialCharacter": 0,
@@ -20282,6 +20298,62 @@
   {
     "id": 108300103,
     "name": "奥秘音域",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270000,
+    "name": "奥秘束缚",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270001,
+    "name": "即兴创造",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270003,
+    "name": "噬人号角",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270004,
+    "name": "愤怒的吊坠",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270009,
+    "name": "共振",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270010,
+    "name": "反应<id:108270010>",
+    "color": 0,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 108270011,
+    "name": "奥秘<id:108270011>",
     "color": 0,
     "notAddLink": 1,
     "isSpecialCharacter": 0,

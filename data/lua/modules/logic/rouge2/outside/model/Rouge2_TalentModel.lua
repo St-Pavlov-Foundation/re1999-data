@@ -18,6 +18,7 @@ function Rouge2_TalentModel:reInit()
 	self.hadUnlockTalentDic = {}
 	self._careerExpDic = {}
 	self._careerLevelDic = {}
+	self._careerMaxLevelDic = {}
 	self._newUnlockCareerTalentList = {}
 	self._careerAddExpDic = {}
 end
@@ -26,12 +27,14 @@ function Rouge2_TalentModel:updateInfo(info)
 	self:updateUnlockTalent(info.geniusIds)
 	self:updateTalentUpdatePoint(info.geniusPoint)
 	self:updateCareerLevel(info.careerLevelInfo)
+	Rouge2_OutsideModel.instance:checkTalentRedDot()
 end
 
 function Rouge2_TalentModel:updateTalentUpdatePoint(geniusPoint)
 	self.talentUpdatePoint = geniusPoint or 0
 
 	self:calculateUseTalent()
+	Rouge2_OutsideModel.instance:checkTalentRedDot()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnUpdateRougeInfoTalentPoint)
 end
 
@@ -68,6 +71,8 @@ function Rouge2_TalentModel:onActiveTalentNode(geniusId)
 	self.activeTalentCount = self.activeTalentCount + 1
 
 	self:calculateUseTalent()
+	Rouge2_AlchemyModel.instance:updateFormulaInfo()
+	Rouge2_OutsideModel.instance:checkTalentRedDot()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnUpdateCommonTalent, geniusId)
 end
 
@@ -100,6 +105,10 @@ end
 
 function Rouge2_TalentModel:getTalentPoint()
 	return self.talentUpdatePoint
+end
+
+function Rouge2_TalentModel:getActiveTalentPoint()
+	return self.activeTalentCount
 end
 
 function Rouge2_TalentModel:getHadAllTalentPoint()
@@ -278,13 +287,18 @@ end
 function Rouge2_TalentModel:updateCareerLevel(careerLevelInfo)
 	tabletool.clear(self._careerExpDic)
 	tabletool.clear(self._careerLevelDic)
+	tabletool.clear(self._careerMaxLevelDic)
 
 	for _, info in ipairs(careerLevelInfo) do
 		self._careerExpDic[info.careerId] = info.exp
 
-		local level = self:calculateCareerLevel(info.careerId)
+		local level, isMaxLevel = self:calculateCareerLevel(info.careerId)
 
 		self._careerLevelDic[info.careerId] = level
+
+		if isMaxLevel then
+			self._careerMaxLevelDic[info.careerId] = true
+		end
 	end
 end
 
@@ -305,7 +319,7 @@ function Rouge2_TalentModel:getCareerLevelByExp(exp)
 		return 0
 	end
 
-	local talentLevel = 0
+	local talentLevel = 1
 
 	for _, config in ipairs(list) do
 		if config.geniusId and exp >= config.geniusId then
@@ -313,7 +327,9 @@ function Rouge2_TalentModel:getCareerLevelByExp(exp)
 		end
 	end
 
-	return talentLevel
+	local isMaxLevel = talentLevel >= list[#list].talent
+
+	return talentLevel, isMaxLevel
 end
 
 function Rouge2_TalentModel:getCareerLevel(careerId)
@@ -355,6 +371,12 @@ function Rouge2_TalentModel:updateResultInfo(resultInfo)
 end
 
 function Rouge2_TalentModel:onGainCareerExp(careerId, gainExp)
+	if self._careerMaxLevelDic[careerId] then
+		logNormal("肉鸽2 当前等级已经满级, 无需添加经验表现")
+
+		return
+	end
+
 	if not self._careerAddExpDic[careerId] then
 		self._careerAddExpDic[careerId] = gainExp
 	else

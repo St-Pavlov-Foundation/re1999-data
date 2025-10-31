@@ -295,7 +295,7 @@ function Rouge2_MapUnlockHelper._checkSelectChoiceNum(unlockParam)
 	if isChoiceEvent then
 		local hasSelectNum = curNode.eventMo:getChoiceSelectNum(choiceId)
 
-		return selectNum <= hasSelectNum
+		return hasSelectNum < selectNum
 	end
 end
 

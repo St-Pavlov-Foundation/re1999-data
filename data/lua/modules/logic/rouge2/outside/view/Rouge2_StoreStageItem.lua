@@ -47,6 +47,7 @@ function Rouge2_StoreStageItem:_editableInitView()
 	self._goSelectClaimed = gohelper.findChild(self._goSelect, "#go_Claimed")
 	self._imageTimeNormal = gohelper.findChild(self._goNormal, "#txt_NormalTitle/image")
 	self._imageTimeSelect = gohelper.findChild(self._goSelect, "#txt_SelectTitle/image")
+	self._goreddot = gohelper.findChild(self.go, "#go_reddot")
 end
 
 function Rouge2_StoreStageItem:setActive(active)
@@ -75,6 +76,10 @@ function Rouge2_StoreStageItem:setSelect(selectStageId)
 
 	gohelper.setActive(self._goNormal, not isSelect)
 	gohelper.setActive(self._goSelect, isSelect)
+
+	if isSelect and self._reddot and self._reddot.show then
+		Rouge2_OutsideController.instance:addShowRedDot(Rouge2_OutsideEnum.LocalData.Store, self.config.id)
+	end
 end
 
 function Rouge2_StoreStageItem:refreshUI()
@@ -96,6 +101,10 @@ function Rouge2_StoreStageItem:refreshUI()
 
 	gohelper.setActive(self._goNormalClaimed, isClaimAll)
 	gohelper.setActive(self._goSelectClaimed, isClaimAll)
+
+	if not isClaimAll then
+		self._reddot = RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a2_Rouge_Store_Tab, self.config.id)
+	end
 
 	if isStart then
 		self._txtNormalTitle.text = self.config.shopTitle

@@ -27,10 +27,12 @@ function Rouge2_IllustrationListItem:onInitView()
 end
 
 function Rouge2_IllustrationListItem:addEvents()
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 	self._btnclick:AddClickListener(self._btnclickOnClick, self)
 end
 
 function Rouge2_IllustrationListItem:removeEvents()
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 	self._btnclick:RemoveClickListener()
 end
 
@@ -105,6 +107,8 @@ function Rouge2_IllustrationListItem:onUpdateMO(mo)
 
 	if isUnlock then
 		self:_updateNewFlag()
+	else
+		gohelper.setActive(self._gonew, false)
 	end
 
 	if isUnlock then
@@ -137,11 +141,19 @@ function Rouge2_IllustrationListItem:refreshPiece(eventIdList)
 end
 
 function Rouge2_IllustrationListItem:_updateNewFlag()
-	gohelper.setActive(self._gonew, false)
+	self._reddotComp = Rouge2_OutsideRedDotComp.Get(self._gonew, self.viewGO, Rouge2_IllustrationListModel.instance:getScrollGO())
+
+	self._reddotComp:intReddotInfo(RedDotEnum.DotNode.V3a2_Rouge_Review_Illustration, self._mo.id, Rouge2_OutsideEnum.LocalData.Illustration)
 end
 
 function Rouge2_IllustrationListItem:onSelect(isSelect)
 	return
+end
+
+function Rouge2_IllustrationListItem:onClearRedDot()
+	self._showNewFlag = false
+
+	gohelper.setActive(self._gonew, self._showNewFlag)
 end
 
 function Rouge2_IllustrationListItem:onDestroyView()

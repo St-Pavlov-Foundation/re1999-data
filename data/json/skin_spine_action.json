@@ -7409,7 +7409,7 @@
   {
     "skinId": 313401,
     "actionName": "die",
-    "effect": "v3a2_ble/v3a2_ble_die",
+    "effect": "v3a2_ble/ble_die",
     "effectHangPoint": "mountroot",
     "effectRemoveTime": 0.0,
     "audioId": 431340192,

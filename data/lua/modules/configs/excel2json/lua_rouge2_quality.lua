@@ -6,6 +6,7 @@ local lua_rouge2_quality = {}
 local fields = {
 	id = 1,
 	name = 2,
+	buffColor = 4,
 	rareColor = 3
 }
 local primaryKey = {

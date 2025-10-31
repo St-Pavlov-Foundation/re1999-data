@@ -789,7 +789,7 @@ function CharacterTalentChessView:_onDebrisItemShow(obj, data, index)
 end
 
 function CharacterTalentChessView:_refreshAttrItem(id, cus_cube_level)
-	if not self._cubeRoot then
+	if not self._cubeRoot or not self._cubeRoot[id] then
 		return
 	end
 

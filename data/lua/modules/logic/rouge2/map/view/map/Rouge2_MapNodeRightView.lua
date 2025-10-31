@@ -372,6 +372,10 @@ function Rouge2_MapNodeRightView:refreshBg()
 		return
 	end
 
+	if defaultPic ~= "rouge2_map_rightbg_1" then
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.EliteFightEvent)
+	end
+
 	self._simageBG:LoadImage(string.format(Rouge2_MapEnum.PicFormat, defaultPic))
 end
 

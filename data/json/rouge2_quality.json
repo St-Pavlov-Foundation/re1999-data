@@ -2,21 +2,31 @@
   {
     "id": 1,
     "name": "寻常",
-    "rareColor": "587FA1"
+    "rareColor": "587FA1",
+    "buffColor": "1A365E"
   },
   {
     "id": 2,
     "name": "精巧",
-    "rareColor": "8D6993"
+    "rareColor": "8D6993",
+    "buffColor": "451F60"
   },
   {
     "id": 3,
     "name": "妙想",
-    "rareColor": "C8A25A"
+    "rareColor": "C8A25A",
+    "buffColor": "853313"
   },
   {
     "id": 4,
     "name": "珍奇",
-    "rareColor": "D07D45"
+    "rareColor": "D07D45",
+    "buffColor": "D07D45"
+  },
+  {
+    "id": 5,
+    "name": "诅咒",
+    "rareColor": "91353A",
+    "buffColor": "91353A"
   }
 ]

@@ -16,8 +16,9 @@ function Rouge2_CareerAttributeMap:init(go)
 	self.go = go
 	self._simageBG = gohelper.findChildSingleImage(self.go, "#simage_BG")
 	self._goCareerSelect = gohelper.findChild(self.go, "#go_CareerSelect")
+	self._simageArm = gohelper.findChildSingleImage(self.go, "#go_CareerSelect/simage_Arm")
 
-	gohelper.setActive(self._goCareerSelect, false)
+	self:setCareerSelectVisible(false)
 	self:initAttrItemList()
 	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateAttrInfo, self._onUpdateAttrInfo, self)
 	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnSelectCareerAttribute, self._onSelectAttr, self)
@@ -34,6 +35,8 @@ function Rouge2_CareerAttributeMap:removeEventListeners()
 end
 
 function Rouge2_CareerAttributeMap:setCareerSelectVisible(isVisible)
+	self._isCareerSelectVisible = isVisible
+
 	gohelper.setActive(self._goCareerSelect, isVisible)
 end
 
@@ -75,6 +78,10 @@ function Rouge2_CareerAttributeMap:refresh()
 	self:initAttrInfoList()
 	self:refreshAttrItemList()
 	self._simageBG:LoadImage(ResUrl.getRouge2Icon("backpack/" .. self._careerCo.attrMapBg))
+
+	if self._isCareerSelectVisible then
+		self._simageArm:LoadImage(ResUrl.getRouge2Icon("backpack/" .. self._careerCo.heroArmIcon))
+	end
 end
 
 function Rouge2_CareerAttributeMap:initAttrInfoList()
@@ -188,8 +195,9 @@ function Rouge2_CareerAttributeMap:playAnim(animName)
 	self.animator:Play(animName, 0, 0)
 end
 
-function Rouge2_CareerAttributeMap:onDestory()
-	self._simageBG:UnloadImage()
+function Rouge2_CareerAttributeMap:onDestroy()
+	self._simageBG:UnLoadImage()
+	self._simageArm:UnLoadImage()
 end
 
 return Rouge2_CareerAttributeMap

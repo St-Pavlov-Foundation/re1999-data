@@ -42,6 +42,8 @@ function Rouge2_TalentTreeNodeDetailItem:_editableInitView()
 	local itemConfig = CurrencyConfig.instance:getCurrencyCo(itemId)
 
 	UISpriteSetMgr.instance:setCurrencyItemSprite(self.imageUpdatePoint, tostring(itemConfig.id) .. "_1")
+
+	self._goreddot = gohelper.findChild(self.go, "#btn_lack/#go_reddot")
 end
 
 function Rouge2_TalentTreeNodeDetailItem:_btnlockedOnClick()
@@ -95,6 +97,7 @@ function Rouge2_TalentTreeNodeDetailItem:setInfo(id)
 	self.config = Rouge2_OutSideConfig.instance:getTalentConfigById(id)
 	self.typeConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigById(Rouge2_Enum.TalentType.Common, id)
 
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a2_Rouge_Talent_Button, id)
 	self:refreshUI()
 end
 

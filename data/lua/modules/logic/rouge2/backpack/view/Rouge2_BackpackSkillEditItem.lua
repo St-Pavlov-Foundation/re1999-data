@@ -11,6 +11,7 @@ end
 function Rouge2_BackpackSkillEditItem:init(go)
 	self.go = go
 	self._goEmpty = gohelper.findChild(self.go, "#go_Empty")
+	self._goEmptyEffect = gohelper.findChild(self.go, "#go_Empty/add_eff")
 	self._goUnEmpty = gohelper.findChild(self.go, "#go_UnEmpty")
 	self._btnAdd = gohelper.findChildButtonWithAudio(self.go, "#go_Empty/#btn_Add")
 	self._simageSkillIcon = gohelper.findChildSingleImage(self.go, "#go_UnEmpty/#image_SkillIcon")
@@ -92,6 +93,10 @@ function Rouge2_BackpackSkillEditItem:refreshUI()
 	gohelper.setActive(self._goUnEmpty, not self._isEmpty)
 
 	if self._isEmpty then
+		local hasAnySkillEquip = Rouge2_BackpackController.instance:isCanEquipAnySkill(self._index)
+
+		gohelper.setActive(self._goEmptyEffect, hasAnySkillEquip)
+
 		return
 	end
 
@@ -130,6 +135,10 @@ end
 
 function Rouge2_BackpackSkillEditItem:playAnim()
 	if self._preIsEmpty == nil or self._preIsEmpty == self._isEmpty then
+		local animName = self._isEmpty and "empty" or "unempty"
+
+		self._animator:Play(animName, 0, 1)
+
 		return
 	end
 

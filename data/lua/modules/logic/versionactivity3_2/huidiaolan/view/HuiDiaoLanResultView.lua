@@ -86,6 +86,8 @@ function HuiDiaoLanResultView:onOpen()
 
 	if self.isWin then
 		AudioMgr.instance:trigger(AudioEnum3_2.HuiDiaoLan.play_ui_shengyan_hdl_win1)
+	else
+		AudioMgr.instance:trigger(AudioEnum3_2.HuiDiaoLan.play_ui_shengyan_hdl_fail)
 	end
 end
 

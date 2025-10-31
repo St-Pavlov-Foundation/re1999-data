@@ -94,6 +94,7 @@ StoreEnum.RecommendRelationType = {
 StoreEnum.AdjustOrderType = {
 	MonthCard = 1,
 	BattlePass = 2,
+	SeasonCard = 3,
 	Normal = 0
 }
 StoreEnum.GroupOrderType = {

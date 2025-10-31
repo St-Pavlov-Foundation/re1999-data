@@ -125,9 +125,9 @@ end
 
 FightHeatScaleView.SubTweenDuration = 0.8
 FightHeatScaleView.QueueMaxCount = 20
-FightHeatScaleView.AddTweenDuration = 0.5
-FightHeatScaleView.Interval = 0.1
-FightHeatScaleView.ItemHeight = 12
+FightHeatScaleView.AddTweenDuration = 0.6
+FightHeatScaleView.Interval = 0.15
+FightHeatScaleView.ItemHeight = 14
 
 function FightHeatScaleView:onValueChange()
 	local curValue = self:getCurValue()

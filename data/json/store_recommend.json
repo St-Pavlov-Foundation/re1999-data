@@ -5276,7 +5276,7 @@
     "isCustomLoad": 1,
     "className": "StoreSeasonCardView",
     "topDay": 0,
-    "topType": 0,
+    "topType": 3,
     "isShowTurnback": false
   },
   {

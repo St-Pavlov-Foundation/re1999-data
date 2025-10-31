@@ -13313,5 +13313,10 @@
     "id": 20320663,
     "eventName": "play_artificial_ui_mapfinish",
     "bankName": "artificial_ui"
+  },
+  {
+    "id": 20320664,
+    "eventName": "stop_ui_dungeon3_2_diceroll",
+    "bankName": "ui_dungeon3_2_infield"
   }
 ]

@@ -15,7 +15,7 @@ function Rouge2_BackpackSkillEditScrollView:ctor()
 	scrollParam.lineCount = 1
 	scrollParam.cellWidth = 920
 	scrollParam.cellHeight = 250
-	scrollParam.cellSpaceV = -12
+	scrollParam.cellSpaceV = -4
 
 	Rouge2_BackpackSkillEditScrollView.super.ctor(self, Rouge2_BackpackSkillEditListModel.instance, scrollParam)
 end

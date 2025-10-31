@@ -65,14 +65,13 @@ function RougeCollectionListModel:onCollectionDataUpdate()
 			local isTagFilter = RougeCollectionHelper.checkCollectionHasAnyOneTag(co.id, nil, self._baseTagFilterMap, self._extraTagFilterMap)
 
 			if isTagFilter then
-				local type = Rouge2_BackpackHelper.itemId2Tag(co.id)
-				local map = typeMap[type]
+				local map = typeMap[co.type]
 
 				if not map then
 					map = {
-						type = type
+						type = co.type
 					}
-					typeMap[type] = map
+					typeMap[co.type] = map
 
 					table.insert(typeList, map)
 				end

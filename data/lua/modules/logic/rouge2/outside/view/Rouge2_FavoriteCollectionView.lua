@@ -34,6 +34,7 @@ function Rouge2_FavoriteCollectionView:_btnlistOnClick()
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
 	self.viewContainer:selectTabView(1)
 	self:_setBtnListSelected(true)
 end
@@ -43,13 +44,19 @@ function Rouge2_FavoriteCollectionView:_btnhandbookOnClick()
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_orchfirst)
 	self.viewContainer:selectTabView(2)
 	self:_setBtnListSelected(false)
 end
 
 function Rouge2_FavoriteCollectionView:_editableInitView()
+	self._reddotCollection = gohelper.findChild(self.viewGO, "#go_bottom/#btn_list/#go_reddot")
+	self._reddotFormula = gohelper.findChild(self.viewGO, "#go_bottom/#btn_handbook/#go_reddot")
+
 	self:_setBtnListSelected(true)
 	gohelper.setActive(self._gobottom, Rouge2_OutsideModel.instance:passedLayerId(Rouge2_OutsideEnum.FirstLayerId))
+	RedDotController.instance:addRedDot(self._reddotCollection, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Collection_Tab, 0)
+	RedDotController.instance:addRedDot(self._reddotFormula, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Formula_Tab, 0)
 end
 
 function Rouge2_FavoriteCollectionView:_setBtnListSelected(value)

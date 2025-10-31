@@ -57,11 +57,14 @@ function Rouge2_AlchemyModel:updateFormulaInfo()
 	local configList = Rouge2_OutSideConfig.instance:getFormulaConfigList()
 
 	for _, config in ipairs(configList) do
-		table.insert(self._unlockFormulaList, config.id)
+		if self:isFormulaUnlock(config.id) then
+			table.insert(self._unlockFormulaList, config.id)
 
-		self._unlockFormulaDic[config.id] = config.id
+			self._unlockFormulaDic[config.id] = config.id
+		end
 	end
 
+	Rouge2_OutsideModel.instance:checkFormulaRedDot()
 	table.sort(self._unlockFormulaList, Rouge2_AlchemyModel.sortFormula)
 end
 
@@ -81,6 +84,10 @@ end
 
 function Rouge2_AlchemyModel:getNewUnlockFormula()
 	return self._newUnlockFormulaList
+end
+
+function Rouge2_AlchemyModel:getUnlockFormulaList()
+	return self._unlockFormulaList
 end
 
 function Rouge2_AlchemyModel.sortFormula(a, b)

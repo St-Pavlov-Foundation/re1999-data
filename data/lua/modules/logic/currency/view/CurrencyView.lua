@@ -143,6 +143,7 @@ end
 function CurrencyView:onOpen()
 	self:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, self._onCurrencyChange, self)
 	self:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._onCurrencyChange, self)
+	self:addEventCb(StoreController.instance, StoreEvent.OnSwitchTab, self._onSwitchStoreTab, self)
 
 	if self._localItemsEvent then
 		self:addEventCb(CharacterController.instance, CharacterEvent.levelUplocalItem, self._onLocalItemChanged, self)
@@ -196,6 +197,9 @@ function CurrencyView:_onCurrencyChange()
 		gohelper.setSibling(itemObj.go, sibling)
 
 		sibling = sibling + 1
+
+		gohelper.setActive(itemObj.goCurrentTime, false)
+		gohelper.setActive(itemObj.deadlineEffect, false)
 
 		if param then
 			local isSingleImage = false
@@ -461,6 +465,11 @@ function CurrencyView:_onRefreshExpireItemDeadlineUI()
 		gohelper.setActive(self.expiredItemObj.goCurrentTime, false)
 		gohelper.setActive(self.expiredItemObj.deadlineEffect, false)
 	end
+end
+
+function CurrencyView:_onSwitchStoreTab()
+	TaskDispatcher.cancelTask(self._onRefreshPowerDeadlineUI, self)
+	TaskDispatcher.cancelTask(self._onRefreshExpireItemDeadlineUI, self)
 end
 
 CurrencyView.prefabPath = "ui/viewres/common/currencyview.prefab"

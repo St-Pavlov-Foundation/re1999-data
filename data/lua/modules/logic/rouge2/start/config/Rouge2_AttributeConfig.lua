@@ -18,6 +18,8 @@ end
 function Rouge2_AttributeConfig:onConfigLoaded(configName, configTable)
 	if configName == "rouge2_attribute" then
 		self:_onLoadAttributeConfigs(configTable)
+	elseif configName == "rouge2_passive_skill" then
+		self:_onLoadPassiveSkillConfigs(configTable)
 	end
 end
 
@@ -48,6 +50,46 @@ function Rouge2_AttributeConfig:_onLoadAttributeConfigs(configTable)
 			return aLevel[1] < bLevel[2]
 		end)
 	end
+end
+
+function Rouge2_AttributeConfig:_onLoadPassiveSkillConfigs(configTable)
+	self._skillId2SkillList = {}
+	self._skillId2SpSkillList = {}
+
+	for _, skillCo in ipairs(configTable.configList) do
+		local skillId = skillCo.id
+
+		self._skillId2SkillList[skillId] = self._skillId2SkillList[skillId] or {}
+
+		table.insert(self._skillId2SkillList[skillId], skillCo)
+
+		local isSp = skillCo.isSpecial ~= 0
+
+		if isSp then
+			self._skillId2SpSkillList[skillId] = self._skillId2SpSkillList[skillId] or {}
+
+			table.insert(self._skillId2SpSkillList[skillId], skillCo)
+		end
+	end
+
+	for _, skillList in pairs(self._skillId2SkillList) do
+		table.sort(skillList, self._sortSkillByLevel)
+	end
+
+	for _, skillList in pairs(self._skillId2SpSkillList) do
+		table.sort(skillList, self._sortSkillByLevel)
+	end
+end
+
+function Rouge2_AttributeConfig._sortSkillByLevel(aSkill, bSkill)
+	local aLevel = aSkill.level
+	local bLevel = bSkill.level
+
+	if aLevel ~= bLevel then
+		return aLevel < bLevel
+	end
+
+	return aSkill.id < bSkill.id
 end
 
 function Rouge2_AttributeConfig:getAttributeConfig(attributeId)
@@ -189,7 +231,8 @@ function Rouge2_AttributeConfig:getPassiveSkillDescList(careerId, attributeId, l
 end
 
 function Rouge2_AttributeConfig:getNextSpPassiveSkill(careerId, attrId, attrValue)
-	local skillNum = #lua_rouge2_passive_skill.configList
+	local skillList = self:getCareerPassiveSkillList(careerId, attrId)
+	local skillNum = skillList and #skillList or 0
 
 	for i = attrValue + 1, skillNum do
 		local skillCo = self:getPassiveSkillCo(careerId, attrId, i)
@@ -204,6 +247,20 @@ function Rouge2_AttributeConfig:getNextSpPassiveSkill(careerId, attrId, attrValu
 			return i, skillCo
 		end
 	end
+end
+
+function Rouge2_AttributeConfig:getCareerPassiveSkillList(careerId, attrId)
+	local skillId = Rouge2_CareerConfig.instance:getCareerPassiveSkillId(careerId, attrId)
+	local skillList = self._skillId2SkillList and self._skillId2SkillList[skillId]
+
+	return skillList
+end
+
+function Rouge2_AttributeConfig:getCareerPassiveSkillList_Sp(careerId, attrId)
+	local skillId = Rouge2_CareerConfig.instance:getCareerPassiveSkillId(careerId, attrId)
+	local skillList = self._skillId2SpSkillList and self._skillId2SpSkillList[skillId]
+
+	return skillList
 end
 
 Rouge2_AttributeConfig.instance = Rouge2_AttributeConfig.New()

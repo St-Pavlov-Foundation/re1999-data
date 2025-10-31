@@ -13,8 +13,15 @@ function Rouge2_OutsideModel:reInit()
 	self._rougeGameRecord = nil
 	self.newUnlockCollectionList = {}
 	self._unlockCollectionDic = {}
+	self._tempLocalDataList = {}
 
 	self:_setRougeOutSideInfo()
+	self:initLocalRedDot()
+end
+
+function Rouge2_OutsideModel:initLocalRedDot()
+	self._localDataListDic = {}
+	self._localDataMapDic = {}
 end
 
 function Rouge2_OutsideModel:onReceiveGetRougeOutsideInfoReply(msg)
@@ -41,7 +48,139 @@ function Rouge2_OutsideModel:updateRougeOutsideInfo(rougeInfo)
 		end
 	end
 
+	self:checkAVGRedDot()
+	self:checkIllustrationRedDot()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo)
+end
+
+function Rouge2_OutsideModel:checkFormulaRedDot()
+	local unlockFormulaList = Rouge2_AlchemyModel.instance:getUnlockFormulaList()
+	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Formula)
+	local redDotInfoList = {}
+
+	for _, itemId in ipairs(unlockFormulaList) do
+		if not haveShowRedDotDic[itemId] then
+			local info = Rouge2_OutsideController.buildSingleInfo(itemId, true)
+
+			table.insert(redDotInfoList, info)
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Favorite_Formula, redDotInfoList)
+end
+
+function Rouge2_OutsideModel:checkIllustrationRedDot()
+	local illustrationConfigList = Rouge2_OutSideConfig.instance:getIllustrationList()
+	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Illustration)
+	local redDotInfoList = {}
+
+	for _, mo in ipairs(illustrationConfigList) do
+		local config = mo.config
+
+		if config.type == Rouge2_OutsideEnum.IllustrationDetailType.Illustration and config.eventId and self:passedEventId(config.eventId) and not haveShowRedDotDic[config.id] then
+			local info = Rouge2_OutsideController.buildSingleInfo(config.id, true)
+
+			table.insert(redDotInfoList, info)
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Review_Illustration, redDotInfoList)
+end
+
+function Rouge2_OutsideModel:checkAVGRedDot()
+	local storyMoList = Rouge2_OutSideConfig.instance:getStoryList()
+	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Illustration)
+	local redDotInfoList = {}
+
+	for _, mo in ipairs(storyMoList) do
+		local config = mo.config
+		local isUnlock
+
+		if not string.nilorempty(config.eventId) then
+			local illustrationConfig = Rouge2_OutSideConfig.instance:getIllustrationConfig(tonumber(config.eventId))
+
+			isUnlock = config.eventId and self:passedEventId(config.eventId)
+		else
+			local storyIdList = string.splitToNumber(config.storyIdList, "#")
+
+			isUnlock = false
+
+			for _, storyId in ipairs(storyIdList) do
+				if StoryModel.instance:isStoryHasPlayed(storyId) then
+					isUnlock = true
+
+					break
+				end
+			end
+		end
+
+		if isUnlock and not haveShowRedDotDic[config.id] then
+			local info = Rouge2_OutsideController.buildSingleInfo(config.id, true)
+
+			table.insert(redDotInfoList, info)
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Review_AVG, redDotInfoList)
+end
+
+function Rouge2_OutsideModel:checkTalentRedDot()
+	local allTalentConfig = Rouge2_OutSideConfig.instance:getTalentConfigListByType(Rouge2_Enum.TalentType.Common)
+	local haveActiveCount = Rouge2_TalentModel.instance:getActiveTalentPoint()
+	local redDotInfoList = {}
+
+	if haveActiveCount < #allTalentConfig then
+		for _, config in ipairs(allTalentConfig) do
+			if not Rouge2_TalentModel.instance:isTalentActive(config.geniusId) and Rouge2_TalentModel.instance:isTalentUnlock(config.geniusId) and Rouge2_TalentModel.instance:isTalentCanActive(config.geniusId) then
+				local info = Rouge2_OutsideController.buildSingleInfo(config.geniusId, true)
+
+				table.insert(redDotInfoList, info)
+
+				break
+			end
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Talent_Button, redDotInfoList)
+end
+
+function Rouge2_OutsideModel:checkCollectionRedDot()
+	local haveShowItemDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Collection)
+	local redDotInfoList = {}
+
+	if next(self._unlockCollectionDic) then
+		for itemId, _ in pairs(self._unlockCollectionDic) do
+			local config = Rouge2_OutSideConfig.getItemConfig(itemId)
+
+			if config and self:collectionIsPass(config.id) and not haveShowItemDic[itemId] then
+				local info = Rouge2_OutsideController.buildSingleInfo(itemId, true)
+
+				table.insert(redDotInfoList, info)
+			end
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Favorite_Collection, redDotInfoList)
+end
+
+function Rouge2_OutsideModel:checkStoreRedDot()
+	local haveShowItemDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Store)
+	local redDotInfoList = {}
+	local storeIdList = Rouge2_StoreModel.instance:getOpenStageIdList()
+
+	if next(storeIdList) then
+		for _, storeId in pairs(storeIdList) do
+			local config = Rouge2_OutSideConfig.instance:getRewardStageConfigById(storeId)
+
+			if config and not haveShowItemDic[storeId] then
+				local info = Rouge2_OutsideController.buildSingleInfo(storeId, true)
+
+				table.insert(redDotInfoList, info)
+			end
+		end
+	end
+
+	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Store_Tab, redDotInfoList)
 end
 
 function Rouge2_OutsideModel:onGetCollectionInfo(relicts, buffs, autoBuffs)
@@ -54,21 +193,22 @@ function Rouge2_OutsideModel:onGetCollectionInfo(relicts, buffs, autoBuffs)
 
 		if config and not string.nilorempty(config.outUnlock) and not self._unlockCollectionDic[itemId] then
 			table.insert(self.newUnlockCollectionList, itemId)
-			logNormal("肉鸽2 新增解锁造物 id:" .. itemId)
 		end
 	end
 
 	tabletool.clear(self._unlockCollectionDic)
 
-	for _, itemId in ipairs(relicts) do
-		local config = Rouge2_OutSideConfig.getItemConfig(itemId)
+	if next(relicts) then
+		for _, itemId in ipairs(relicts) do
+			local config = Rouge2_OutSideConfig.getItemConfig(itemId)
 
-		if config and not string.nilorempty(config.outUnlock) and not self._unlockCollectionDic[itemId] then
-			-- block empty
+			if config then
+				self._unlockCollectionDic[itemId] = true
+			end
 		end
-
-		self._unlockCollectionDic[itemId] = true
 	end
+
+	self:checkCollectionRedDot()
 end
 
 function Rouge2_OutsideModel:getNewUnlockCollectionList()
@@ -324,10 +464,181 @@ function Rouge2_OutsideModel:_saveCollectionInfoType(infoType)
 	PlayerPrefsHelper.setNumber(key, infoType)
 end
 
-function Rouge2_OutsideModel:_getCollectionInfoTypeSaveKey()
+function Rouge2_OutsideModel._getCollectionInfoTypeSaveKey()
 	local key = string.format("%s_%s", PlayerModel.instance:getMyUserId(), PlayerPrefsKey.Rouge2CollectionInfoType)
 
 	return key
+end
+
+function Rouge2_OutsideModel._getCollectionRedDotSaveKey(playerPrefsKey)
+	local key = string.format("%s_%s", PlayerModel.instance:getMyUserId(), playerPrefsKey)
+
+	return key
+end
+
+function Rouge2_OutsideModel:initLocalDataListAndMap(key)
+	local userKey = Rouge2_OutsideModel._getCollectionRedDotSaveKey(key)
+	local dataStr = PlayerPrefsHelper.getString(userKey, "")
+	local list = string.splitToNumber(dataStr, "#")
+	local idDic = {}
+
+	for _, id in ipairs(list) do
+		idDic[id] = true
+	end
+
+	self._localDataListDic[key] = list
+	self._localDataMapDic[key] = idDic
+
+	return list, idDic
+end
+
+function Rouge2_OutsideModel:getLocalDataList(localDataType)
+	local key = Rouge2_OutsideEnum.LocalDataType2PlayerKey[localDataType]
+
+	if not key then
+		logError("肉鸽2 不存在的本地红点 type:" .. localDataType)
+
+		return nil
+	end
+
+	if not self._localDataListDic[key] then
+		self:initLocalDataListAndMap(key)
+	end
+
+	return self._localDataListDic[key]
+end
+
+function Rouge2_OutsideModel:getLocalDataDic(localDataType)
+	local key = Rouge2_OutsideEnum.LocalDataType2PlayerKey[localDataType]
+
+	if not key then
+		logError("肉鸽2 不存在的本地红点 type:" .. localDataType)
+
+		return nil
+	end
+
+	if not self._localDataMapDic[key] then
+		self:initLocalDataListAndMap(key)
+	end
+
+	return self._localDataMapDic[key]
+end
+
+function Rouge2_OutsideModel:addLocalDataList(localDataType, list)
+	local key = Rouge2_OutsideEnum.LocalDataType2PlayerKey[localDataType]
+
+	if not key then
+		logError("肉鸽2 不存在的本地红点 type:" .. localDataType)
+
+		return
+	end
+
+	local curList = self:getLocalDataList(localDataType)
+	local dic = self:getLocalDataDic(localDataType)
+
+	if list and next(list) then
+		for _, id in ipairs(list) do
+			if not dic[id] then
+				table.insert(curList, id)
+
+				dic[id] = true
+			end
+
+			local type
+
+			if localDataType == Rouge2_OutsideEnum.LocalData.Formula then
+				type = Rouge2_StatController.FavoriteType.Formula
+			elseif localDataType == Rouge2_OutsideEnum.LocalData.Collection then
+				type = Rouge2_StatController.FavoriteType.Collection
+			end
+
+			if type then
+				Rouge2_StatController.instance:statUnlockIllustration(type, list)
+			end
+		end
+
+		self:saveLocalDataList(key, curList)
+
+		if localDataType == Rouge2_OutsideEnum.LocalData.Formula then
+			self:checkFormulaRedDot()
+		elseif localDataType == Rouge2_OutsideEnum.LocalData.Avg then
+			self:checkAVGRedDot()
+		elseif localDataType == Rouge2_OutsideEnum.LocalData.Illustration then
+			self:checkIllustrationRedDot()
+		elseif localDataType == Rouge2_OutsideEnum.LocalData.Collection then
+			self:checkCollectionRedDot()
+		elseif localDataType == Rouge2_OutsideEnum.LocalData.Store then
+			self:checkStoreRedDot()
+		end
+
+		logNormal("肉鸽2 saveLocalDataList type:" .. localDataType)
+	end
+end
+
+function Rouge2_OutsideModel:addLocalData(localDataType, id)
+	local key = Rouge2_OutsideEnum.LocalDataType2PlayerKey[localDataType]
+
+	if not key then
+		logError("肉鸽2 不存在的本地红点 type:" .. localDataType)
+
+		return
+	end
+
+	self:addLocalDataList(key, {
+		id
+	})
+end
+
+function Rouge2_OutsideModel:saveLocalDataList(key, dataList)
+	local userKey = self._getCollectionRedDotSaveKey(key)
+	local dataStr = next(dataList) and table.concat(dataList, "#") or ""
+
+	PlayerPrefsHelper.setString(userKey, dataStr)
+end
+
+function Rouge2_OutsideModel:addTempLocalDataList(type, id)
+	if self._tempLocalDataList[type] == nil then
+		local localDataList = {}
+
+		self._tempLocalDataList[type] = localDataList
+	end
+
+	table.insert(self._tempLocalDataList[type], id)
+end
+
+function Rouge2_OutsideModel:saveTempLocalDataList()
+	if next(self._tempLocalDataList) then
+		for type, localDataList in pairs(self._tempLocalDataList) do
+			self:addLocalDataList(type, localDataList)
+		end
+	end
+end
+
+function Rouge2_OutsideModel:clearTempLocalDataList()
+	if next(self._tempLocalDataList) then
+		for type, localDataList in pairs(self._tempLocalDataList) do
+			tabletool.clear(localDataList)
+		end
+	end
+end
+
+function Rouge2_OutsideModel:clearLocalData()
+	for _, type in pairs(Rouge2_OutsideEnum.LocalData) do
+		self:saveLocalDataList(type, {})
+
+		local list = self:getLocalDataList(type)
+		local dic = self:getLocalDataDic(type)
+
+		tabletool.clear(list)
+		tabletool.clear(dic)
+	end
+
+	self:checkFormulaRedDot()
+	self:checkAVGRedDot()
+	self:checkIllustrationRedDot()
+	self:checkCollectionRedDot()
+	self:checkStoreRedDot()
+	logError("肉鸽2 清除本地红点数据成功")
 end
 
 Rouge2_OutsideModel.instance = Rouge2_OutsideModel.New()

@@ -40,6 +40,7 @@ end
 function Rouge2_TalentTreeNodeItem:_editableInitView()
 	self._goBigFx = gohelper.findChild(self.go, "#refresh1")
 	self._goSmallFx = gohelper.findChild(self.go, "#refresh2")
+	self._goreddot = gohelper.findChild(self.go, "#go_canlight/#go_reddot")
 
 	gohelper.setActive(self._goBigFx, true)
 	gohelper.setActive(self._goSmallFx, false)
@@ -56,6 +57,7 @@ function Rouge2_TalentTreeNodeItem:setInfo(id, index)
 	self.index = index
 	self._config = Rouge2_OutSideConfig.instance:getTalentConfigById(id)
 
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a2_Rouge_Talent_Button, id)
 	self:refreshUI()
 end
 

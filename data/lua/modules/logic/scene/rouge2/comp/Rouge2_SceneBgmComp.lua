@@ -11,13 +11,13 @@ end
 
 function Rouge2_SceneBgmComp:changeBgm()
 	local layerCo = Rouge2_MapModel.instance:getLayerCo()
-	local bgmId = AudioEnum.Bgm.RougeMain
+	local bgmId = AudioEnum.Bgm.Rouge2Main
 
 	if layerCo and layerCo.bgm ~= 0 then
 		bgmId = layerCo.bgm
 	end
 
-	AudioBgmManager.instance:modifyAndPlay(AudioBgmEnum.Layer.RougeScene, bgmId, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	AudioBgmManager.instance:modifyAndPlay(AudioBgmEnum.Layer.Rouge2Scene, bgmId, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function Rouge2_SceneBgmComp:onSceneClose(sceneId, levelId)

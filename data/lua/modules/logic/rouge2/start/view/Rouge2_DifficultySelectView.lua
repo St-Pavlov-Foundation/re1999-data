@@ -71,6 +71,9 @@ function Rouge2_DifficultySelectView:_btnStartOnClick()
 		end
 
 		self.animator:Play("close", 0, 0)
+
+		self.isPlayingCloseAnim = true
+
 		Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
 		Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
 		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, Rouge2_OutsideEnum.SceneIndex.CareerScene)
@@ -125,6 +128,7 @@ function Rouge2_DifficultySelectView:_editableInitView()
 end
 
 function Rouge2_DifficultySelectView:onOpen()
+	self.animator:Play("open", 0, 0)
 	Rouge2_DifficultySelectListModel.instance:init()
 	self:initDifficultyItemList()
 end
@@ -231,6 +235,10 @@ function Rouge2_DifficultySelectView:onClose()
 	self:killTween()
 	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnSwitchDifficultyPage, nil)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
+
+	if not self.isPlayingCloseAnim then
+		self.animator:Play("close", 0, 0)
+	end
 end
 
 function Rouge2_DifficultySelectView:onDestroyView()

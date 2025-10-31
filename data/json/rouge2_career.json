@@ -23,7 +23,8 @@
     "mpInitial": 20,
     "attrMapBg": "rouge2_careerattribute_plate_01",
     "unlockTime": "",
-    "audioId": 20320657
+    "audioId": 20320659,
+    "heroArmIcon": "rouge2_careerattribute_arm_01"
   },
   {
     "id": 2,
@@ -49,7 +50,8 @@
     "mpInitial": 20,
     "attrMapBg": "rouge2_careerattribute_plate_04",
     "unlockTime": "",
-    "audioId": 20320658
+    "audioId": 20320657,
+    "heroArmIcon": "rouge2_careerattribute_arm_04"
   },
   {
     "id": 3,
@@ -75,7 +77,8 @@
     "mpInitial": 20,
     "attrMapBg": "rouge2_careerattribute_plate_03",
     "unlockTime": "2026-12-11 00:00:00",
-    "audioId": 20320659
+    "audioId": 20320658,
+    "heroArmIcon": "rouge2_careerattribute_arm_02"
   },
   {
     "id": 4,
@@ -101,6 +104,7 @@
     "mpInitial": 20,
     "attrMapBg": "rouge2_careerattribute_plate_02",
     "unlockTime": "2026-12-11 00:00:00",
-    "audioId": 20320660
+    "audioId": 20320660,
+    "heroArmIcon": "rouge2_careerattribute_arm_03"
   }
 ]

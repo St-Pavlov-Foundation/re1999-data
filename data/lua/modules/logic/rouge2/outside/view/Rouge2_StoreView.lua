@@ -64,6 +64,9 @@ function Rouge2_StoreView:_editableInitView()
 	self.rectTrContent = self._goContent:GetComponent(gohelper.Type_RectTransform)
 	self.storeStageItemList = self:getUserDataTb_()
 	self.finalRewardProgress = gohelper.findChildImage(self.viewGO, "Right/Slider/Slider/FG")
+	self._gofinalReddot = gohelper.findChild(self.viewGO, "Right/#btn_Claim/#go_reddot")
+
+	RedDotController.instance:addRedDot(self._gofinalReddot, RedDotEnum.DotNode.V3a2_Rouge_Store_FinalReward, 0)
 end
 
 function Rouge2_StoreView:_btnClaimOnClick()

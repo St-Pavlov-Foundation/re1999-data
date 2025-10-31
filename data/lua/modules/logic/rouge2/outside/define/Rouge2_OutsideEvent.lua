@@ -48,5 +48,6 @@ E("OnSelectHandBookTalent")
 E("OnLevelUpAnimStart")
 E("OnLevelUpAnimFinish")
 E("OnClickMaterialListItem")
+E("OnClearRedDot")
 
 return Rouge2_OutsideEvent

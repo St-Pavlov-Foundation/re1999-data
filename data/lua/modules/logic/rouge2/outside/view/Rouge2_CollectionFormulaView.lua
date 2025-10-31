@@ -181,6 +181,8 @@ function Rouge2_CollectionFormulaView:_onSelectFormulaItem(readySelectId)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
+
 	local readySelectMO = Rouge2_CollectionFormulaListModel.instance:getById(readySelectId)
 	local readySelectIndex = Rouge2_CollectionFormulaListModel.instance:getIndex(readySelectMO)
 

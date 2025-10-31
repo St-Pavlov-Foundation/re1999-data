@@ -198,6 +198,7 @@ end
 function Rouge2_RelicsDescHelper.getDefaultIncludeTypeList()
 	if not Rouge2_RelicsDescHelper._defaultIncludeTypeList then
 		Rouge2_RelicsDescHelper._defaultIncludeTypeList = {
+			Rouge2_Enum.RelicsDescType.LevelUp,
 			Rouge2_Enum.RelicsDescType.Desc,
 			Rouge2_Enum.RelicsDescType.UnlockDesc,
 			Rouge2_Enum.RelicsDescType.NarrativeDesc

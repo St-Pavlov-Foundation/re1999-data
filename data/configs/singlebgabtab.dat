@@ -25891,6 +25891,36 @@
   "singlebg/fight/rouge2/rouge2_help_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_1.png"
   ],
+  "singlebg/fight/rouge2/rouge2_help_10.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_10.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_11.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_11.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_12.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_12.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_13.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_13.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_14.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_14.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_15.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_15.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_16.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_16.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_17.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_17.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_18.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_18.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_19.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_19.png"
+  ],
   "singlebg/fight/rouge2/rouge2_help_2.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_2.png"
   ],
@@ -25905,6 +25935,15 @@
   ],
   "singlebg/fight/rouge2/rouge2_help_6.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_6.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_7.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_7.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_8.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_8.png"
+  ],
+  "singlebg/fight/rouge2/rouge2_help_9.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_9.png"
   ],
   "singlebg/fight/skill/228101.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/skill/228101.png"
@@ -35713,6 +35752,21 @@
   "singlebg/rouge2/map/rouge2_relics_panelbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg.png"
   ],
+  "singlebg/rouge2/map/rouge2_relics_panelbg_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg_1.png"
+  ],
+  "singlebg/rouge2/map/rouge2_relics_panelbg_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg_2.png"
+  ],
+  "singlebg/rouge2/map/rouge2_relics_panelbg_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg_3.png"
+  ],
+  "singlebg/rouge2/map/rouge2_relics_panelbg_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg_4.png"
+  ],
+  "singlebg/rouge2/map/rouge2_relics_panelbg_5.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_panelbg_5.png"
+  ],
   "singlebg/rouge2/map/rouge2_relics_selectframe1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/map/rouge2_relics_selectframe1.png"
   ],
@@ -35871,6 +35925,9 @@
   ],
   "singlebg/rouge2/result/rouge2_result_fullbg_success.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success.png"
+  ],
+  "singlebg/rouge2/result/rouge2_result_fullbg_success10.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success10.png"
   ],
   "singlebg/rouge2/result/rouge2_result_fullbg_success2_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success2_1.png"
@@ -46854,9 +46911,6 @@
   ],
   "singlebg_lang/txt_rouge2/main/rouge2_enter_banner.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_rouge2/main/rouge2_enter_banner.png"
-  ],
-  "singlebg_lang/txt_rouge2/main/rouge2_enter_open.png.dat": [
-    "Assets/ZResourcesLib/singlebg_lang/txt_rouge2/main/rouge2_enter_open.png"
   ],
   "singlebg_lang/txt_rouge2/main/rouge2_enter_start.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_rouge2/main/rouge2_enter_start.png"

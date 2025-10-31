@@ -22,6 +22,7 @@ end
 function Rouge2_CollectionFormulaItem:_editableInitView()
 	self._gonew = gohelper.findChild(self.viewGO, "#go_normal/go_new")
 	self._click = gohelper.getClickWithAudio(self.viewGO, AudioEnum.UI.UI_Common_Click)
+	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
 function Rouge2_CollectionFormulaItem:_editableAddEvents()
@@ -49,6 +50,7 @@ function Rouge2_CollectionFormulaItem:onUpdateMO(mo)
 	self.type = mo.type
 	self.itemId = mo.itemId
 	self.needCount = mo.needCount
+	self.showRedDot = mo.showRedDot
 
 	self:refreshUI()
 end
@@ -57,6 +59,19 @@ function Rouge2_CollectionFormulaItem:refreshUI()
 	local id = self.itemId
 
 	gohelper.setActive(self._txtnum, self.type == Rouge2_OutsideEnum.CollectionType.Material)
+
+	if self.showRedDot and self.type == Rouge2_OutsideEnum.CollectionType.Formula then
+		TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
+
+		local reddot = RedDotController.instance:addRedDot(self._gonew, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Formula, id)
+
+		if reddot.show then
+			Rouge2_OutsideController.instance:addShowRedDot(Rouge2_OutsideEnum.LocalData.Formula, id)
+			TaskDispatcher.runDelay(self.onDelayPlayUnlock, self, 1)
+		else
+			self.animator:Play("idle", 0, 0)
+		end
+	end
 
 	if self.type == Rouge2_OutsideEnum.CollectionType.Formula then
 		local isUnlock = Rouge2_AlchemyModel.instance:isFormulaUnlock(id)
@@ -90,7 +105,13 @@ function Rouge2_CollectionFormulaItem:refreshUI()
 	end
 end
 
+function Rouge2_CollectionFormulaItem:onDelayPlayUnlock()
+	self.animator:Play("unlock", 0, 0)
+	TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
+end
+
 function Rouge2_CollectionFormulaItem:onSelect(isSelect)
+	TaskDispatcher.cancelTask(self.onDelayPlayUnlock, self)
 	gohelper.setActive(self._goselected, isSelect)
 end
 

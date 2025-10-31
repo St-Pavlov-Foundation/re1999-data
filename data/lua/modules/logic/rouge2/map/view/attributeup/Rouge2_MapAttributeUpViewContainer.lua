@@ -12,4 +12,19 @@ function Rouge2_MapAttributeUpViewContainer:buildViews()
 	return views
 end
 
+function Rouge2_MapAttributeUpViewContainer:playOpenTransition()
+	self:startViewOpenBlock()
+
+	local addAttrPoint = self.viewParam and self.viewParam.addAttrPoint
+	local animName = "open"
+
+	if not addAttrPoint or addAttrPoint <= 0 then
+		animName = "openmove"
+	end
+
+	local animatorPlayer = SLFramework.AnimatorPlayer.Get(self.viewGO)
+
+	animatorPlayer:Play(animName, self.onPlayOpenTransitionFinish, self)
+end
+
 return Rouge2_MapAttributeUpViewContainer

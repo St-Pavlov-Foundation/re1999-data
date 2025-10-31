@@ -11,6 +11,7 @@ end
 function Rouge2_BackpackSkillShowItem:init(go)
 	self.go = go
 	self._goEmpty = gohelper.findChild(self.go, "#go_Empty")
+	self._goEmptyEffect = gohelper.findChild(self.go, "#go_Empty/add_eff")
 	self._goTips1 = gohelper.findChild(self.go, "#go_Empty/#go_Tips1")
 	self._goTips2 = gohelper.findChild(self.go, "#go_Empty/#go_Tips2")
 	self._goUnEmpty = gohelper.findChild(self.go, "#go_UnEmpty")
@@ -124,10 +125,11 @@ function Rouge2_BackpackSkillShowItem:playAnim()
 end
 
 function Rouge2_BackpackSkillShowItem:refreshEmptyTips()
-	local hasAnyNotUseSkill = Rouge2_BackpackModel.instance:hasAnyNotUseActiveSkill()
+	local hasAnySkillEquip = Rouge2_BackpackController.instance:isCanEquipAnySkill(self._index)
 
-	gohelper.setActive(self._goTips1, not hasAnyNotUseSkill)
-	gohelper.setActive(self._goTips2, hasAnyNotUseSkill)
+	gohelper.setActive(self._goTips1, not hasAnySkillEquip)
+	gohelper.setActive(self._goTips2, hasAnySkillEquip)
+	gohelper.setActive(self._goEmptyEffect, hasAnySkillEquip)
 end
 
 function Rouge2_BackpackSkillShowItem:_refreshAssemblyItem(obj, index)

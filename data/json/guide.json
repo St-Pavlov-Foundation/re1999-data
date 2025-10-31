@@ -7929,5 +7929,104 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 32051,
+    "desc": "肉鸽2入场指引",
+    "isOnline": 0,
+    "trigger": "OpenView#VersionActivity3_2EnterView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32052,
+    "desc": "肉鸽2路线指引",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_MapView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32053,
+    "desc": "肉鸽2事件指引",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_MapDiceView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32054,
+    "desc": "肉鸽2属性指引",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_MapAttributeUpView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32055,
+    "desc": "肉鸽2天气引导",
+    "isOnline": 0,
+    "trigger": "",
+    "invalid": "",
+    "interruptFinish": 0,
+    "priority": 0,
+    "parallel": 0,
+    "restart": 0
+  },
+  {
+    "id": 32056,
+    "desc": "肉鸽2造物引导",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_RelicsDropView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32057,
+    "desc": "肉鸽2技能引导",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_MapView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32058,
+    "desc": "肉鸽2圣歌团引导",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_BandRecruitView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 32059,
+    "desc": "肉鸽2拨弦手引导",
+    "isOnline": 0,
+    "trigger": "OpenView#Rouge2_MapView",
+    "invalid": "ActivityEnd#13209",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

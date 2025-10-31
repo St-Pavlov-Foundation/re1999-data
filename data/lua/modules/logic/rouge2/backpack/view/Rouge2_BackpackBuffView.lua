@@ -66,6 +66,8 @@ function Rouge2_BackpackBuffView:_btnClickTagOnClick(attrId)
 end
 
 function Rouge2_BackpackBuffView:onOpen()
+	self.isClose = false
+
 	self:refreshUI()
 	self._animator:Play("open", 0, 0)
 end

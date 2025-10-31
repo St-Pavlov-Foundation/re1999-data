@@ -2301,7 +2301,7 @@
     "free": false,
     "blockBuildDegree": 10,
     "showOnly": false,
-    "canExchange": false
+    "canExchange": true
   },
   {
     "id": 3102,
@@ -2349,7 +2349,7 @@
     "free": false,
     "blockBuildDegree": 8,
     "showOnly": false,
-    "canExchange": false
+    "canExchange": true
   },
   {
     "id": 3201,

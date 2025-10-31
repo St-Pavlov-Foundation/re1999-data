@@ -238,6 +238,7 @@ function Rouge2_EnterScene:switchScene(sceneIndex)
 		self:_lockScreen(true, Rouge2_OutsideEnum.ForceCloseMaskTime)
 		TaskDispatcher.cancelTask(self.switchIn, self)
 		TaskDispatcher.runDelay(self.switchIn, self, delayTime)
+		self:resetNextSceneAnimState()
 	end
 end
 
@@ -274,6 +275,28 @@ end
 
 Rouge2_EnterScene.UIMaskName = "Rouge2_EnterScene_Mask"
 
+function Rouge2_EnterScene:resetNextSceneAnimState()
+	local index = self._sceneIndex
+
+	logNormal("3.2肉鸽 切换场景完成 index:" .. index)
+
+	local animator = self._sceneAnimatorList[index]
+
+	if animator then
+		local animName = Rouge2_EnterScene.getSwitchInName(index)
+
+		if animator and animator:HasState(0, UnityEngine.Animator.StringToHash(animName)) then
+			animator.enabled = true
+
+			animator:Play(animName, 0, 0)
+
+			animator.speed = 0
+
+			logNormal("rouge2 play scene reset Anim" .. animName)
+		end
+	end
+end
+
 function Rouge2_EnterScene:switchIn()
 	local index = self._sceneIndex
 
@@ -290,12 +313,20 @@ function Rouge2_EnterScene:switchIn()
 
 			local time = skipScene and 0 or 0
 
+			animator.speed = 1
+
 			animator:Play(animName, 0, time)
-			logNormal("rouge2 play scene in Anim" .. animName)
 		end
 	end
 
 	self:_lockScreen(false)
+
+	if index == Rouge2_OutsideEnum.SceneIndex.LevelScene then
+		for _, sceneGo in ipairs(self._sceneGoList) do
+			gohelper.setActive(sceneGo, false)
+		end
+	end
+
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitchFinish)
 end
 

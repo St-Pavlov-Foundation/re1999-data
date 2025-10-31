@@ -8,6 +8,7 @@ function Rouge2_AttributeDetailViewContainer:buildViews()
 	local views = {}
 
 	table.insert(views, Rouge2_AttributeDetailView.New())
+	table.insert(views, Rouge2_AttributeDetailTipsView.New())
 
 	return views
 end

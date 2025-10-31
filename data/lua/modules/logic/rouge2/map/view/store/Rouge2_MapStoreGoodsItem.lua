@@ -112,7 +112,7 @@ function Rouge2_MapStoreGoodsItem:refreshCost()
 	gohelper.setActive(self._txtOriginalPrice.gameObject, self._hasDiscount)
 
 	if self._hasDiscount then
-		self._txtDiscount.text = string.format("%+d%%", (self._discountRate - 1000) / 10)
+		self._txtDiscount.text = string.format("%s%%", (self._discountRate - 1000) / 10)
 		self._txtOriginalPrice.text = self._originalPrice
 	end
 end

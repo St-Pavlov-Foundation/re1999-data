@@ -66,7 +66,7 @@ function Rouge2_ReviewView:_initStoryItems()
 		isEnd = i >= stageCount - 1
 
 		storyItemGO.item:setMaxUnlockStateId(self._unlockStageId)
-		storyItemGO.item:onUpdateMO(storyMo, isEnd, self, stageStoryList, path)
+		storyItemGO.item:onUpdateMO(storyMo, isEnd, self, stageStoryList, path, self._scrollview.gameObject)
 
 		if not storyItemGO.item:isUnlock() then
 			isEnd = false

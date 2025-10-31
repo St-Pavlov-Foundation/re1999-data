@@ -24,6 +24,8 @@ function Rouge2_CollectionConfig:onConfigLoaded(configName, configTable)
 		self:_onLoadedTagConfigs(configTable)
 	elseif configName == "rouge2_relics_attr" then
 		self:_onLoadedAttrConfigs(configTable)
+	elseif configName == "rouge2_relics" then
+		self:_onLoadRelicsConfigs(configTable)
 	end
 end
 
@@ -47,18 +49,63 @@ function Rouge2_CollectionConfig:_onLoadedAttrConfigs(configTable)
 		local flagName = flagCo.flag
 
 		if self._flagName2ConfigMap[flagName] then
-			logError(string.format("肉鸽构筑物属性表配置错误, 存在相同的flag, id = %s, flag = %s", flagCo.id, flagCo.flag))
+			logNormal(string.format("肉鸽构筑物属性表配置错误, 存在相同的flag, id = %s, flag = %s", flagCo.id, flagCo.flag))
 		else
 			self._flagName2ConfigMap[flagName] = flagCo
 		end
 	end
 end
 
+function Rouge2_CollectionConfig:_onLoadRelicsConfigs(configTable)
+	self._attr2RelicsMap = {}
+
+	for _, relicsCo in ipairs(configTable.configList) do
+		local attrUpdate = relicsCo.attrUpdate
+
+		if not string.nilorempty(attrUpdate) then
+			local attrUpdateInfo = string.splitToNumber(attrUpdate, "#")
+			local attrId = attrUpdateInfo[1]
+			local attrValue = attrUpdateInfo[2]
+
+			self._attr2RelicsMap[attrId] = self._attr2RelicsMap[attrId] or {}
+
+			table.insert(self._attr2RelicsMap[attrId], {
+				attrValue = attrValue,
+				config = relicsCo
+			})
+		end
+	end
+
+	for _, relicsList in pairs(self._attr2RelicsMap) do
+		table.sort(relicsList, self._relicsSortFunc)
+	end
+end
+
+function Rouge2_CollectionConfig._relicsSortFunc(aInfo, bInfo)
+	local aAttrValue = aInfo.attrValue
+	local bAttrValue = bInfo.attrValue
+
+	if aAttrValue ~= bAttrValue then
+		return aAttrValue < bAttrValue
+	end
+
+	local aRelicsCo = aInfo.config
+	local bRelcisCo = bInfo.config
+	local aRelicsRare = aRelicsCo and aRelicsCo.rare or 0
+	local bRelicsRare = bRelcisCo and bRelcisCo.rare or 0
+
+	if aRelicsRare ~= bRelicsRare then
+		return aRelicsRare < bRelicsRare
+	end
+
+	return aRelicsCo.id < bRelcisCo.id
+end
+
 function Rouge2_CollectionConfig:getRelicsConfig(relicsId)
 	local relicsCo = lua_rouge2_relics.configDict[relicsId]
 
 	if not relicsCo then
-		logError(string.format("肉鸽造物配置不存在 relicsId = %s", relicsId))
+		logNormal(string.format("肉鸽造物配置不存在 relicsId = %s", relicsId))
 	end
 
 	return relicsCo
@@ -75,7 +122,7 @@ function Rouge2_CollectionConfig:getActiveSkillConfig(skillId)
 	local skillCo = lua_rouge2_active_skill.configDict[skillId]
 
 	if not skillCo then
-		logError(string.format("肉鸽主动技能配置不存在 skillId = %s", skillId))
+		logNormal(string.format("肉鸽主动技能配置不存在 skillId = %s", skillId))
 	end
 
 	return skillCo
@@ -89,7 +136,7 @@ function Rouge2_CollectionConfig:getTagConfig(tagId)
 	local tagCo = lua_rouge2_tag.configDict[tagId]
 
 	if not tagCo then
-		logError(string.format("肉鸽构造物标签配置不存在 tagId = %s", tagId))
+		logNormal(string.format("肉鸽构造物标签配置不存在 tagId = %s", tagId))
 	end
 
 	return tagCo
@@ -99,7 +146,7 @@ function Rouge2_CollectionConfig:getBuffCofing(buffId)
 	local buffCo = lua_rouge2_buff.configDict[buffId]
 
 	if not buffCo then
-		logError(string.format("肉鸽谐波配置不存在 buffId = %s", buffId))
+		logNormal(string.format("肉鸽谐波配置不存在 buffId = %s", buffId))
 	end
 
 	return buffCo
@@ -115,8 +162,10 @@ function Rouge2_CollectionConfig:getRareConfig(rareId)
 	local rareCo = lua_rouge2_quality.configDict[rareId]
 
 	if not rareCo then
-		logError(string.format("肉鸽品质配置不存在 rareId = %s", rareId))
+		logNormal(string.format("肉鸽品质配置不存在 rareId = %s", rareId))
 	end
+
+	return rareCo
 end
 
 function Rouge2_CollectionConfig:getRareName(rareId)
@@ -141,10 +190,16 @@ function Rouge2_CollectionConfig:getAttrFlagConfigByName(flagName)
 	local flagCo = self._flagName2ConfigMap and self._flagName2ConfigMap[flagName]
 
 	if not flagCo then
-		logError(string.format("肉鸽构筑物属性表配置不存在 flagName = %s", flagName))
+		logNormal(string.format("肉鸽构筑物属性表配置不存在 flagName = %s", flagName))
 	end
 
 	return flagCo
+end
+
+function Rouge2_CollectionConfig:getAttrUpdateRelicsList(attrId)
+	local relicsList = self._attr2RelicsMap[attrId]
+
+	return relicsList
 end
 
 Rouge2_CollectionConfig.instance = Rouge2_CollectionConfig.New()

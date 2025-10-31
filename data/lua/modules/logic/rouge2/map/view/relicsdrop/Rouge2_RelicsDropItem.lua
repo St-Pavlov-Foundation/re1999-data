@@ -4,13 +4,6 @@ module("modules.logic.rouge2.map.view.relicsdrop.Rouge2_RelicsDropItem", package
 
 local Rouge2_RelicsDropItem = class("Rouge2_RelicsDropItem", LuaCompBase)
 
-Rouge2_RelicsDropItem.LevelUpDescIncludeTypes = {
-	Rouge2_Enum.RelicsDescType.LevelUp,
-	Rouge2_Enum.RelicsDescType.Desc,
-	Rouge2_Enum.RelicsDescType.UnlockDesc,
-	Rouge2_Enum.RelicsDescType.NarrativeDesc
-}
-
 function Rouge2_RelicsDropItem:init(go)
 	self.go = go
 	self._goSelect = gohelper.findChild(self.go, "go_Select")
@@ -19,7 +12,7 @@ function Rouge2_RelicsDropItem:init(go)
 	gohelper.setActive(self._goSelect, false)
 
 	self._goSelect2 = gohelper.findChild(self.go, "go_Select2")
-	self._btnSelect2 = gohelper.findChildButtonWithAudio(self.go, "go_Select2/btn_Select2")
+	self._btnSelect2 = gohelper.findChildButtonWithAudio(self.go, "go_Select2/btn_Select2", AudioEnum.Rouge2.StrengthenRelics)
 
 	gohelper.setActive(self._goSelect2, false)
 
@@ -134,12 +127,6 @@ function Rouge2_RelicsDropItem:onUpdateMO(index, viewType, dataType, dataId, par
 	self._dataType = dataType
 	self._relicsCo, self._relicsMo = Rouge2_BackpackHelper.getItemCofigAndMo(dataType, dataId)
 	self._relicsId = self._relicsCo and self._relicsCo.id
-
-	if self._viewType == Rouge2_MapEnum.ItemDropViewEnum.LevelUp then
-		self._comRelicsItem:initDescIncludeTypes(Rouge2_RelicsDropItem.LevelUpDescIncludeTypes)
-	else
-		self._comRelicsItem:initDescIncludeTypes()
-	end
 
 	self._comRelicsItem:onUpdateMO(dataType, dataId)
 	self._comRelicsItem:playAnim("open")

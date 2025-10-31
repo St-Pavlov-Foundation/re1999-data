@@ -73,8 +73,6 @@ function Rouge2_ResultView:_onOpenViewFinishCallBack(viewName)
 end
 
 function Rouge2_ResultView:_btnnextOnClick()
-	TaskDispatcher.cancelTask(self.playStartSettlementTxtAudio, self)
-
 	local startIndex = self._curEventEndIndex + 1
 	local hasNeedShowResult = self:isHasNeedShowResultItem(startIndex)
 
@@ -109,12 +107,6 @@ local delayTime2PlayStartAudio = 2
 
 function Rouge2_ResultView:onOpenFinish()
 	self:onBeforeShowResultContent()
-	TaskDispatcher.cancelTask(self.playStartSettlementTxtAudio, self)
-	TaskDispatcher.runDelay(self.playStartSettlementTxtAudio, self, delayTime2PlayStartAudio)
-end
-
-function Rouge2_ResultView:playStartSettlementTxtAudio()
-	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_featurette_1)
 end
 
 function Rouge2_ResultView:onUpdateParam()
@@ -125,6 +117,8 @@ function Rouge2_ResultView:onUpdateParam()
 end
 
 function Rouge2_ResultView:onBeforeShowResultContent()
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_featurette_1)
+
 	local descs = self:filterTypeGroupCfgs(Rouge2_OutsideEnum.BeginType)
 
 	if descs then
@@ -364,7 +358,6 @@ function Rouge2_ResultView:getRougeResultCfg(cfgType, season)
 end
 
 function Rouge2_ResultView:onClose()
-	TaskDispatcher.cancelTask(self.playStartSettlementTxtAudio, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onViewOpenFinish, self)
 end
 

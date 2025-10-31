@@ -333,10 +333,6 @@ function Rouge2_SettlementView:updateBadgeList(resultInfo)
 			end
 		end
 	end
-
-	if badgeCount > 0 then
-		AudioMgr.instance:trigger(AudioEnum.UI.ShowAchievement)
-	end
 end
 
 function Rouge2_SettlementView:refreshBadgeItemUI(item, badge)

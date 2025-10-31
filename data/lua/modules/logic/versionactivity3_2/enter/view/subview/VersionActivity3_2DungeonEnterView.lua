@@ -51,6 +51,7 @@ function VersionActivity3_2DungeonEnterView:_editableInitView()
 
 	self._gobg = gohelper.findChild(self.viewGO, "#simage_bg")
 	self._videoComp = VersionActivityVideoComp.get(self._gobg, self)
+	self._animator = self.viewGO:GetComponent("Animator")
 
 	RedDotController.instance:addRedDot(self._goboardreddot, RedDotEnum.DotNode.CommandStationTask)
 end
@@ -64,6 +65,8 @@ function VersionActivity3_2DungeonEnterView:onDestroyView()
 	if container and container:isOpen() and container.viewGO and self._fullviewParent then
 		gohelper.addChildPosStay(self._fullviewParent, container.viewGO)
 	end
+
+	TaskDispatcher.cancelTask(self._onVideoStart, self)
 end
 
 function VersionActivity3_2DungeonEnterView:_btnBoardOnClick()
@@ -88,10 +91,27 @@ function VersionActivity3_2DungeonEnterView:onOpenFinish()
 			gohelper.addChildPosStay(self._gobg, container.viewGO)
 		end
 	else
+		if SDKMgr.instance:isEmulator() then
+			TaskDispatcher.cancelTask(self._onVideoStart, self)
+			TaskDispatcher.runDelay(self._onVideoStart, self, 2)
+			self._animator:Play(UIAnimationName.Open, 0, 0)
+
+			self._animator.speed = 0
+
+			self._videoComp:setStartCallback(self._onVideoStart, self)
+		end
+
 		self._videoComp:play(self._videoPath, true)
 	end
 
 	self:_setVideoAsLastSibling()
+end
+
+function VersionActivity3_2DungeonEnterView:_onVideoStart()
+	TaskDispatcher.cancelTask(self._onVideoStart, self)
+	self._videoComp:setStartCallback()
+
+	self._animator.speed = 1
 end
 
 function VersionActivity3_2DungeonEnterView:onPlayVideoDone()

@@ -56,6 +56,7 @@ AudioEnum3_2.HuiDiaoLan = {
 	play_ui_shengyan_hdl_syn2 = 20320502,
 	play_ui_shengyan_hdl_change = 20320507,
 	play_ui_shengyan_hdl_occur = 20320504,
+	play_ui_shengyan_hdl_fail = 25001205,
 	play_ui_shengyan_hdl_win1 = 20320505,
 	play_ui_shengyan_hdl_syn1 = 20320501
 }

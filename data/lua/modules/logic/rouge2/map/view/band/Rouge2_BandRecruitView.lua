@@ -16,8 +16,8 @@ function Rouge2_BandRecruitView:onInitView()
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
 	self._goempty = gohelper.findChild(self.viewGO, "bottom/#go_empty")
 	self._gohas = gohelper.findChild(self.viewGO, "bottom/#go_has")
-	self._gomaxcost = gohelper.findChild(self.viewGO, "bottom/#go_has/#go_maxcost")
-	self._gocostpoint = gohelper.findChild(self.viewGO, "bottom/#go_has/#go_maxcost/#go_costpoint")
+	self._gomaxcost = gohelper.findChild(self.viewGO, "bottom/#go_maxcost")
+	self._gocostpoint = gohelper.findChild(self.viewGO, "bottom/#go_maxcost/#go_costpoint")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -79,11 +79,6 @@ function Rouge2_BandRecruitView:refreshBandCost()
 
 	gohelper.setActive(self._goempty, self._curBandCost <= 0)
 	gohelper.setActive(self._gohas, self._curBandCost > 0)
-
-	if self._curBandCost <= 0 then
-		return
-	end
-
 	gohelper.CreateNumObjList(self._gomaxcost, self._gocostpoint, self._maxBandCost, self._refreshCostPoint, self)
 end
 

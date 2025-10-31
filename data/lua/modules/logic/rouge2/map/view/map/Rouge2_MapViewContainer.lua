@@ -18,6 +18,7 @@ function Rouge2_MapViewContainer:buildViews()
 	table.insert(views, Rouge2_MapEntrustView.New())
 	table.insert(views, Rouge2_MapVoiceView.New())
 	table.insert(views, Rouge2_MapWeatherView.New())
+	table.insert(views, Rouge2_MapBoxView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_LeftTop"))
 
 	return views

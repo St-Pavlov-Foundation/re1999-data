@@ -10454,5 +10454,13 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 321015,
+    "tips": "积分不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

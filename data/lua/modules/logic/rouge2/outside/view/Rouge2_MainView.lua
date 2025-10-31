@@ -82,6 +82,7 @@ function Rouge2_MainView:_btnFormulaOnClick()
 	end
 
 	logNormal("点击配方图鉴")
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_shenghuo_open_2)
 	Rouge2_OutsideController.instance:openFavoriteMainView()
 end
 
@@ -191,6 +192,7 @@ function Rouge2_MainView:_btnTalentOnClick()
 	end
 
 	logNormal("点击天赋树详情")
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_wenming_unclockchapter)
 	Rouge2_ViewHelper.openTalentTreeView()
 end
 
@@ -200,6 +202,7 @@ function Rouge2_MainView:_btnReviewOnClick()
 	end
 
 	logNormal("点击回顾")
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_main_fit_scane_2_2)
 	Rouge2_OutsideController.instance:openReviewView()
 end
 
@@ -212,6 +215,18 @@ function Rouge2_MainView:_editableInitView()
 	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 
 	gohelper.setActive(self._golocked, false)
+
+	self._goFavoriteDot = gohelper.findChild(self.viewGO, "Left/#btn_Formula/#go_reddot")
+
+	RedDotController.instance:addRedDot(self._goFavoriteDot, RedDotEnum.DotNode.V3a2_Rouge_Favorite, 0)
+
+	self._goTalentDot = gohelper.findChild(self.viewGO, "Right/#btn_Talent/#go_reddot")
+
+	RedDotController.instance:addRedDot(self._goTalentDot, RedDotEnum.DotNode.V3a2_Rouge_Talent, 0)
+
+	self._goEventDot = gohelper.findChild(self.viewGO, "Left/#btn_EventHandbook/#go_reddot")
+
+	RedDotController.instance:addRedDot(self._goEventDot, RedDotEnum.DotNode.V3a2_Rouge_Review, 0)
 end
 
 function Rouge2_MainView:onUpdateParam()
@@ -221,6 +236,12 @@ end
 function Rouge2_MainView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_2_2)
 	self:refreshUI()
+	TaskDispatcher.runDelay(self.playBollAudio, self, Rouge2_OutsideEnum.MainViewBallAudioDelay)
+end
+
+function Rouge2_MainView:playBollAudio()
+	TaskDispatcher.cancelTask(self.playBollAudio, self)
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_main_fit_scane_2_2)
 end
 
 function Rouge2_MainView:onOpenFinish()
@@ -324,6 +345,7 @@ function Rouge2_MainView:_endYesCallback()
 end
 
 function Rouge2_MainView:onClose()
+	TaskDispatcher.cancelTask(self.playBollAudio, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
 end
 

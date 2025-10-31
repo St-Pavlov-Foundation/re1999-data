@@ -44,6 +44,9 @@ function Rouge2_BackpackCareerView:_editableInitView()
 	local goAttributeMap = self:getResInst(Rouge2_Enum.ResPath.AttributeMap, self._goAttribute)
 
 	self._attributeMap = Rouge2_CareerAttributeMap.Get(goAttributeMap, Rouge2_Enum.AttrMapUsage.BackpackCareerView)
+
+	self._attributeMap:setCareerSelectVisible(true)
+
 	self._animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 end
 

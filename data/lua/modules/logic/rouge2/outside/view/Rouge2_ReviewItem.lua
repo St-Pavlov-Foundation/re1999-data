@@ -25,10 +25,12 @@ end
 
 function Rouge2_ReviewItem:addEventListeners()
 	self._btnPlay:AddClickListener(self._btnPlayOnClick, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 end
 
 function Rouge2_ReviewItem:removeEventListeners()
 	self._btnPlay:RemoveClickListener()
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 end
 
 function Rouge2_ReviewItem:_btnPlayOnClick()
@@ -69,19 +71,20 @@ function Rouge2_ReviewItem:_btnPlayOnClick()
 end
 
 function Rouge2_ReviewItem:_editableInitView()
-	return
+	self.animator = gohelper.findChildComponent(self.go, "", gohelper.Type_Animator)
 end
 
 function Rouge2_ReviewItem:setIndex(index)
 	self._index = index
 end
 
-function Rouge2_ReviewItem:onUpdateMO(mo, isEnd, reviewView, nodeStoryList, path)
+function Rouge2_ReviewItem:onUpdateMO(mo, isEnd, reviewView, nodeStoryList, path, scrollGo)
 	self._mo = mo
 	self._config = mo.config
 	self._isEnd = isEnd
 	self._reviewView = reviewView
 	self._path = path
+	self.scrollGo = scrollGo
 
 	self:_updateInfo()
 	self:_initNodes(nodeStoryList)
@@ -89,7 +92,15 @@ function Rouge2_ReviewItem:onUpdateMO(mo, isEnd, reviewView, nodeStoryList, path
 end
 
 function Rouge2_ReviewItem:_updateNewFlag()
-	gohelper.setActive(self._gonew, self._showNewFlag)
+	self._reddotComp = Rouge2_OutsideRedDotComp.Get(self._gonew, self.go, self.scrollGo)
+
+	self._reddotComp:intReddotInfo(RedDotEnum.DotNode.V3a2_Rouge_Review_AVG, self._mo.config.id, Rouge2_OutsideEnum.LocalData.Avg)
+
+	if self._reddotComp and self._reddotComp._isDotShow then
+		self.animator:Play("unlock", 0, 0)
+	else
+		self.animator:Play("idle", 0, 0)
+	end
 end
 
 function Rouge2_ReviewItem:_initNodes(nodeStoryList)
@@ -123,7 +134,7 @@ function Rouge2_ReviewItem:_initNodes(nodeStoryList)
 
 		nodeItem._showLock = true
 
-		nodeItem:onUpdateMO(v, true)
+		nodeItem:onUpdateMO(v, true, nil, nil, nil, self.scrollGo)
 		self:_showNodeText(v, goLine, i, nodeStoryCount)
 	end
 end
@@ -191,6 +202,12 @@ function Rouge2_ReviewItem:_isUnlockStory(mo)
 	local storyId = storyList[#storyList]
 
 	return Rouge2_OutsideModel.instance:storyIsPass(storyId)
+end
+
+function Rouge2_ReviewItem:onClearRedDot()
+	self._showNewFlag = false
+
+	gohelper.setActive(self._gonew, self._showNewFlag)
 end
 
 function Rouge2_ReviewItem:onDestroy()

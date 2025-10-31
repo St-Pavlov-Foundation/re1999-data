@@ -164,7 +164,7 @@ Rouge2_MapEnum.ClickArea = {
 }
 Rouge2_MapEnum.LeaveItemClickArea = Vector4(320.29, 184.6, -18.2, 78.39)
 Rouge2_MapEnum.LayerItemClickArea = Vector4(120, 100, 0, 0)
-Rouge2_MapEnum.PieceClickArea = Vector4(120, 270, 0, 49.42)
+Rouge2_MapEnum.PieceClickArea = Vector4(120, 300, 0, 100)
 Rouge2_MapEnum.ChoiceStatus = {
 	Select = 3,
 	UnSelect = 4,
@@ -284,7 +284,13 @@ Rouge2_MapEnum.ItemDropViewEnum = {
 }
 Rouge2_MapEnum.ItemDropReason = {
 	Common = 103,
+	LevelUpSucc = 105,
 	Drop = 104
+}
+Rouge2_MapEnum.ShowItemDropReason = {
+	[Rouge2_MapEnum.ItemDropReason.Common] = false,
+	[Rouge2_MapEnum.ItemDropReason.Drop] = true,
+	[Rouge2_MapEnum.ItemDropReason.LevelUpSucc] = true
 }
 Rouge2_MapEnum.RevertDuration = 0.4
 Rouge2_MapEnum.MoveSpeed = 7

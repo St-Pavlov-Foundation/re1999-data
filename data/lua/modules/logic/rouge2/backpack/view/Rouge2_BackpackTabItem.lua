@@ -40,18 +40,7 @@ function Rouge2_BackpackTabItem:onUpdateMO(backpackType)
 	self._type = backpackType
 
 	if Rouge2_Enum.BagTabType2Reddot[backpackType] then
-		local reddotList = {}
-
-		if backpackType == Rouge2_Enum.BagTabType.ActiveSkill then
-			table.insert(reddotList, {
-				id = RedDotEnum.DotNode.Rouge2BXSBox
-			})
-		end
-
-		table.insert(reddotList, {
-			id = Rouge2_Enum.BagTabType2Reddot[backpackType]
-		})
-		RedDotController.instance:addMultiRedDot(self._goReddot, reddotList)
+		RedDotController.instance:addRedDot(self._goReddot, Rouge2_Enum.BagTabType2Reddot[backpackType])
 	end
 
 	self._isSelected = self._container:getCurSelectType() == self._type

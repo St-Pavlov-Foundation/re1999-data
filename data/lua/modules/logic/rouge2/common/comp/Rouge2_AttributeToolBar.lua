@@ -53,9 +53,6 @@ function Rouge2_AttributeToolBar:init(go)
 		})
 	end
 
-	table.insert(reddotList, {
-		id = RedDotEnum.DotNode.Rouge2BXSBox
-	})
 	RedDotController.instance:addMultiRedDot(self._goBackpackReddot, reddotList)
 	self:showType2RefreshUI()
 	self:refreshAttrList()

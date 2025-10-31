@@ -61,6 +61,7 @@ function Rouge2_BackpackRelicsView:_btnClickTagOnClick(attrId)
 end
 
 function Rouge2_BackpackRelicsView:onOpen()
+	self.isClose = false
 	self._scrollRelics.horizontalNormalizedPosition = 0
 
 	local relicsList = Rouge2_BackpackModel.instance:getItemList(Rouge2_Enum.BagType.Relics)

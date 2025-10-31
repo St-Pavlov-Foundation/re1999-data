@@ -189,23 +189,7 @@ function Rouge2_CareerHandBookMainView:refreshTalentGroup()
 
 		table.insert(groupMo.talentIdList, v.geniusId)
 		table.insert(groupMo.indexList, i)
-
-		if not isFindNext and not Rouge2_TalentModel.instance:isTalentActive(v.geniusId) then
-			isFindNext = true
-			curTalentId = v.geniusId
-			curLevel = math.max(1, i - 1)
-
-			local nextTalentConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigByTalentId(curTalentId)
-
-			if nextTalentConfig then
-				nextTalentId = nextTalentConfig.geniusId
-			end
-		end
 	end
-
-	self._curTalentId = curTalentId
-	self._nextTalentId = nextTalentId
-	self._curLevel = curLevel
 
 	tabletool.clear(self._groupUseItemList)
 
@@ -237,20 +221,29 @@ function Rouge2_CareerHandBookMainView:refreshTalentGroup()
 		end
 	end
 
-	local isLevelUp, previousLevel = self:checkLevelUp()
+	self._curTalentId = curTalentId
+	self._curCareerConfig = Rouge2_CareerConfig.instance:getCareerConfig(self._curCareerId)
+	self._curTalentConfig = Rouge2_OutSideConfig.instance:getTalentConfigById(self._curTalentId)
+	self.typeConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigByTalentId(self._curTalentId)
+	self._curExp = Rouge2_TalentModel.instance:getCareerExp(self._curCareerId)
+	self._curLevel = Rouge2_TalentModel.instance:getCareerLevel(self._curCareerId)
 
-	self:refreshCareerInfo()
+	local nextConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigByOrder(self._curCareerId, self.typeConfig.order + 1)
 
-	if isLevelUp then
-		self:onLevelUp(previousLevel)
+	if nextConfig ~= nil then
+		self._nextTalentId = nextConfig.geniusId
+	end
+
+	local isLevelUp, previousLevel, previousExp = self:checkLevelUp()
+
+	if not isLevelUp then
+		self:refreshCareerInfo()
+	else
+		self:onLevelUp(previousLevel, previousExp)
 	end
 end
 
 function Rouge2_CareerHandBookMainView:refreshCareerInfo()
-	self._curCareerConfig = Rouge2_CareerConfig.instance:getCareerConfig(self._curCareerId)
-	self._curTalentConfig = Rouge2_OutSideConfig.instance:getTalentConfigById(self._curTalentId)
-	self.typeConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigByTalentId(self._curTalentId)
-
 	local curLevel = Rouge2_TalentModel.instance:getCareerLevel(self._curCareerId)
 
 	self._txtlevel.text = tostring(curLevel)
@@ -264,34 +257,55 @@ end
 
 function Rouge2_CareerHandBookMainView:checkLevelUp()
 	local curLevel = Rouge2_TalentModel.instance:getCareerLevel(self._curCareerId)
-	local curExp = Rouge2_TalentModel.instance:getCareerExp(self._curCareerId)
 	local gainExp = Rouge2_TalentModel.instance:getCareerGainExp(self._curCareerId)
 
 	if gainExp and gainExp > 0 then
-		local previousExp = math.max(0, curExp - gainExp)
+		local previousExp = math.max(0, self._curExp - gainExp)
 		local previousLevel = Rouge2_TalentModel.instance:getCareerLevelByExp(previousExp)
 
 		if previousLevel < curLevel then
 			logNormal("肉鸽2 当前职业技能升级 职业Id:" .. self._curCareerId .. " 先前等级: " .. previousLevel .. " 当前等级: " .. curLevel)
 
-			return true, previousLevel
+			return true, previousLevel, previousExp
 		end
 	end
 
 	return false, nil
 end
 
-function Rouge2_CareerHandBookMainView:onLevelUp(previousLevel)
+function Rouge2_CareerHandBookMainView:onLevelUp(previousLevel, previousExp)
 	Rouge2_OutsideController.instance:lockScreen(true, Rouge2_OutsideEnum.CareerLevelUpTime)
 	self.levelAnimator:Play("levelup", 0, 0)
-	TaskDispatcher.runDelay(self.onLevelUpAnimFinish, self, Rouge2_OutsideEnum.CareerLevelUpTime)
 
 	local param = {}
 
 	param.previousLevel = previousLevel
 	param.careerId = self._curCareerId
+	self._previousLevel = previousLevel
+	self._previousExp = previousExp
+
+	local previousJobConfig = Rouge2_OutSideConfig.instance:getJobConfig(previousLevel)
+	local curJobConfig = Rouge2_OutSideConfig.instance:getJobConfig(self._curLevel)
+
+	self._previousTotalExp = previousJobConfig.geniusId
+	self._curTotalExp = curJobConfig.geniusId
 
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnLevelUpAnimStart, param)
+
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+	end
+
+	self._tweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, Rouge2_OutsideEnum.CareerLevelUpTime, self.frameChangeScoreCallBack, self.onLevelUpAnimFinish, self)
+end
+
+function Rouge2_CareerHandBookMainView:frameChangeScoreCallBack(curScore)
+	local curLevel = self._previousLevel + curScore * (self._curLevel - self._previousLevel)
+	local curExp = self._previousExp + curScore * (self._curExp - self._previousExp)
+	local curTotalExp = self._previousTotalExp + curScore * (self._curTotalExp - self._previousTotalExp)
+
+	self._txtlevel.text = tostring(math.floor(curLevel))
+	self._txtprogress.text = string.format("%s/%s", math.floor(curExp), math.floor(curTotalExp))
 end
 
 function Rouge2_CareerHandBookMainView:onLevelUpAnimFinish()
@@ -299,13 +313,19 @@ function Rouge2_CareerHandBookMainView:onLevelUpAnimFinish()
 	Rouge2_OutsideController.instance:lockScreen(false, Rouge2_OutsideEnum.CareerLevelUpTime)
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnLevelUpAnimFinish, self._curCareerId)
 	Rouge2_TalentModel.instance:clearCareerGainExp(self._curCareerId)
-	TaskDispatcher.cancelTask(self.onLevelUpAnimFinish, self)
+
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+	end
 end
 
 function Rouge2_CareerHandBookMainView:onClose()
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+	end
+
 	Rouge2_TalentModel.instance:setCurTalentId(nil)
 	TaskDispatcher.cancelTask(self.onSwitchAnimPlayFinish, self)
-	TaskDispatcher.cancelTask(self.onLevelUpAnimFinish, self)
 end
 
 function Rouge2_CareerHandBookMainView:onDestroyView()

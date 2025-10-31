@@ -262,6 +262,12 @@ function FightCardDataHelper.canCombineWithUniversal(universal_card_info, target
 		return false
 	end
 
+	local nextSkill = FightCardDataHelper.getSkillNextLvId(target_card_info.uid, target_skill_id)
+
+	if not nextSkill then
+		return false
+	end
+
 	return true
 end
 

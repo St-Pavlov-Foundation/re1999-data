@@ -12,7 +12,8 @@ function Rouge2_BackpackController:tryReplaceActiveSkill(index, skillUid)
 		local skillIndex = Rouge2_BackpackSkillEditListModel.instance:getIndex(skillMo)
 
 		Rouge2_BackpackSkillEditListModel.instance:selectCell(skillIndex, false)
-		Rouge2_BackpackController.instance:sendUseActiveSkillIdsRpc(index, skillUid)
+		self:tryRemoveActiveSkillByUid(skillUid)
+		self:sendUseActiveSkillIdsRpc(index, skillUid)
 	elseif toastId then
 		GameFacade.showToast(toastId)
 	end
@@ -22,6 +23,29 @@ end
 
 function Rouge2_BackpackController:sendUseActiveSkillIdsRpc(index, skillUid)
 	Rouge2_Rpc.instance:sendRouge2EquipCareerActiveSkillRequest(index, skillUid)
+end
+
+function Rouge2_BackpackController:isCanEquipAnySkill(index)
+	local isUse = Rouge2_BackpackModel.instance:isActiveSkillIndexInUse(index)
+
+	if isUse then
+		return
+	end
+
+	local notUseSkillList = Rouge2_BackpackModel.instance:getAllNotUseActiveSkillList()
+
+	if not notUseSkillList then
+		return
+	end
+
+	for _, skillMo in ipairs(notUseSkillList) do
+		local skillUid = skillMo:getUid()
+		local isCan = self:checkCanReplaceActiveSkill(index, skillUid)
+
+		if isCan then
+			return true
+		end
+	end
 end
 
 function Rouge2_BackpackController:tryRemoveActiveSkill(index)
@@ -105,14 +129,25 @@ end
 
 function Rouge2_BackpackController:tryEquipSkillsAfterSelectCareer()
 	local notUseSkillList = Rouge2_BackpackModel.instance:getAllNotUseActiveSkillList()
+	local notUseSkillNum = notUseSkillList and #notUseSkillList or 0
+	local equipSkillNum = 0
 
-	for i = 1, Rouge2_Enum.MaxActiveSkillNum do
+	for i = 1, notUseSkillNum do
 		local skillMo = notUseSkillList and notUseSkillList[i]
 		local skillUid = skillMo and skillMo:getUid()
 
-		if skillUid then
-			self:tryReplaceActiveSkill(i, skillUid)
-			self:updateItemReddotStatus(skillUid, Rouge2_Enum.ItemStatus.Old)
+		for j = 1, Rouge2_Enum.MaxActiveSkillNum do
+			if self:tryReplaceActiveSkill(j, skillUid) then
+				self:updateItemReddotStatus(skillUid, Rouge2_Enum.ItemStatus.Old)
+
+				equipSkillNum = equipSkillNum + 1
+
+				break
+			end
+		end
+
+		if equipSkillNum >= Rouge2_Enum.MaxActiveSkillNum then
+			break
 		end
 	end
 end
@@ -156,13 +191,11 @@ function Rouge2_BackpackController:buildItemReddot()
 		end
 	end
 
-	local reddotInfo = {
+	table.insert(redDotInfo, {
 		uid = 0,
 		id = RedDotEnum.DotNode.Rouge2BackpackEntrance,
 		value = hasNewItem and 1 or 0
-	}
-
-	table.insert(redDotInfo, reddotInfo)
+	})
 	RedDotRpc.instance:clientAddRedDotGroupList(redDotInfo)
 end
 
@@ -207,7 +240,11 @@ function Rouge2_BackpackController:_getItemDescModeKey(dataFlag)
 	return PlayerPrefsKey.Rouge2ItemDescMode .. "#" .. tostring(dataFlag)
 end
 
-function Rouge2_BackpackController:showLossItemView(lossItemList)
+function Rouge2_BackpackController:showLossItemView(reason, lossItemList)
+	if reason == Rouge2_MapEnum.ShowItemDropReason.LevelUpSucc then
+		return
+	end
+
 	local type2ItemList = {}
 
 	for _, itemMo in ipairs(lossItemList) do
@@ -233,7 +270,7 @@ function Rouge2_BackpackController:showLossItemView(lossItemList)
 end
 
 function Rouge2_BackpackController:showGetItemView(reason, getItemList)
-	if reason ~= Rouge2_MapEnum.ItemDropReason.Drop then
+	if not reason or not Rouge2_MapEnum.ShowItemDropReason[reason] then
 		return
 	end
 
@@ -255,7 +292,8 @@ function Rouge2_BackpackController:showGetItemView(reason, getItemList)
 			Rouge2_PopController.instance:addPopViewWithViewName(showViewName, {
 				itemList = itemList,
 				dataType = Rouge2_Enum.ItemDataType.Server,
-				viewEnum = Rouge2_MapEnum.ItemDropViewEnum.Drop
+				viewEnum = Rouge2_MapEnum.ItemDropViewEnum.Drop,
+				reason = reason
 			})
 		end
 	end

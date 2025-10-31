@@ -131,6 +131,10 @@ function StoreSeasonCardView:onOpen()
 	self:_initCurrency()
 	StoreController.instance:registerCallback(StoreEvent.MonthCardInfoChanged, self._onMonthCardInfoChange, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self)
+
+	if SignInModel.instance:getCanSupplementMonthCardDays() > 0 then
+		StoreController.instance:dispatchEvent(StoreEvent.StopRecommendViewAuto)
+	end
 end
 
 function StoreSeasonCardView:_initCurrency()

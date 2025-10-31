@@ -18,7 +18,7 @@
     "nameEn": "Shopping Time",
     "desc": "精美的收藏可让顺利的坦途平添几分畅快，而灵验的护符则为崎岖的道路化解忧愁。",
     "mainDesc": "",
-    "eventParam": "1000",
+    "eventParam": "1001",
     "advantageAttribute": "102"
   },
   {
@@ -125,7 +125,7 @@
     "type": 9,
     "image": "rouge_choice_cg_13",
     "name": "鬃毛的回报",
-    "nameEn": "鬃毛的回报",
+    "nameEn": "鬃毛的回报假",
     "desc": "你踏上预期之外的道路，旅途最迷人之处恰恰在此。带领你来这里的或许是命运吧——也可能是迷路。",
     "mainDesc": "105201001",
     "eventParam": "5",
@@ -136,7 +136,7 @@
     "type": 9,
     "image": "rouge_choice_cg_13",
     "name": "鬃毛的回报",
-    "nameEn": "鬃毛的回报",
+    "nameEn": "鬃毛的回报真衍生",
     "desc": "你踏上预期之外的道路，旅途最迷人之处恰恰在此。带领你来这里的或许是命运吧——也可能是迷路。",
     "mainDesc": "105201101",
     "eventParam": "5",
@@ -147,7 +147,7 @@
     "type": 9,
     "image": "rouge_choice_cg_13",
     "name": "鬃毛的回报",
-    "nameEn": "鬃毛的回报",
+    "nameEn": "鬃毛的回报真衍生",
     "desc": "你踏上预期之外的道路，旅途最迷人之处恰恰在此。带领你来这里的或许是命运吧——也可能是迷路。",
     "mainDesc": "105201201",
     "eventParam": "5",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": 1012010,
-    "type": 9,
+    "type": 10,
     "image": "rouge_choice_cg_04",
     "name": "黑袍访客",
     "nameEn": "",
@@ -1354,7 +1354,7 @@
   },
   {
     "id": 4011010,
-    "type": 9,
+    "type": 10,
     "image": "rouge_choice_cg_07",
     "name": "花朵与入迷",
     "nameEn": "",
@@ -1365,7 +1365,7 @@
   },
   {
     "id": 4011020,
-    "type": 9,
+    "type": 10,
     "image": "rouge_choice_cg_08",
     "name": "回到起点",
     "nameEn": "",
@@ -1376,7 +1376,7 @@
   },
   {
     "id": 4011030,
-    "type": 9,
+    "type": 10,
     "image": "rouge_choice_cg_09",
     "name": "仙境冒险",
     "nameEn": "",

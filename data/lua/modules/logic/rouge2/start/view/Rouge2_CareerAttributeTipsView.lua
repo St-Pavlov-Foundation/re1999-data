@@ -4,6 +4,8 @@ module("modules.logic.rouge2.start.view.Rouge2_CareerAttributeTipsView", package
 
 local Rouge2_CareerAttributeTipsView = class("Rouge2_CareerAttributeTipsView", BaseView)
 
+Rouge2_CareerAttributeTipsView.SafeArea = Vector2(0, 200)
+
 function Rouge2_CareerAttributeTipsView:onInitView()
 	self._goRoot = gohelper.findChild(self.viewGO, "#go_Root")
 	self._goMark = gohelper.findChild(self.viewGO, "#go_Mark")
@@ -43,8 +45,8 @@ function Rouge2_CareerAttributeTipsView:_refreshArrow()
 end
 
 function Rouge2_CareerAttributeTipsView:_editableInitView()
-	local width = recthelper.getWidth(self._scrolloverview.transform)
-	local height = recthelper.getHeight(self._scrolloverview.transform)
+	local width = recthelper.getWidth(self._scrolloverview.transform) + Rouge2_CareerAttributeTipsView.SafeArea.x
+	local height = recthelper.getHeight(self._scrolloverview.transform) + Rouge2_CareerAttributeTipsView.SafeArea.y
 
 	recthelper.setSize(self._tranFlag, width, height)
 
@@ -52,8 +54,8 @@ function Rouge2_CareerAttributeTipsView:_editableInitView()
 
 	recthelper.setAnchor(self._tranFlag, scrollPosX, scrollPosY)
 
-	local width = recthelper.getWidth(self._tranRoot)
-	local height = recthelper.getHeight(self._tranRoot)
+	width = recthelper.getWidth(self._tranRoot)
+	height = recthelper.getHeight(self._tranRoot)
 
 	recthelper.setSize(self._tranMark, width, height)
 end

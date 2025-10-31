@@ -24280,7 +24280,7 @@ module_views.Rouge2_DifficultySelectView = {
 	mainRes = "ui/viewres/rouge2/rouge2_difficultyselectview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
-	anim = ViewAnim.Internal,
+	anim = ViewAnim.Default,
 	tabRes = {
 		{
 			{
@@ -24323,7 +24323,7 @@ module_views.Rouge2_CareerAttributeTipsView = {
 	container = "Rouge2_CareerAttributeTipsViewContainer",
 	mainRes = "ui/viewres/rouge2/rouge2_careerattributetipsview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Modal,
+	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
 module_views.Rouge2_MapLoadingView = {
