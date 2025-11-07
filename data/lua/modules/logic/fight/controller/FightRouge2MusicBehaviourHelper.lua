@@ -256,7 +256,7 @@ function FightRouge2MusicBehaviourHelper.behaviourRouge2BallRecursive(skillCo, b
 	local count = paramList and paramList[1] or 3
 
 	for _ = 1, count do
-		FightDataHelper.rouge2MusicDataMgr:addMusicType(musicNote.type)
+		FightDataHelper.rouge2MusicDataMgr:addMusicType(musicNote.type, musicNote.blueValue)
 	end
 
 	local index = FightRouge2MusicBehaviourHelper.generateBehaviourObj(BehaviourType.PopAndPush, musicNote)

@@ -14,6 +14,7 @@ function Rouge2_RelicsDescHelper._type2GetDescFunc(descType)
 		Rouge2_RelicsDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.UnlockDesc] = Rouge2_RelicsDescHelper._getDesc_UnlockDesc
 		Rouge2_RelicsDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.NarrativeDesc] = Rouge2_RelicsDescHelper._getDesc_NarrativeDesc
 		Rouge2_RelicsDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.LevelUp] = Rouge2_RelicsDescHelper._getDesc_LevelUp
+		Rouge2_RelicsDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.NarrativeDescOutside] = Rouge2_RelicsDescHelper._getDesc_NarrativeDescOutside
 	end
 
 	local func = Rouge2_RelicsDescHelper._getDescFuncMap[descType]
@@ -91,6 +92,16 @@ function Rouge2_RelicsDescHelper._getDesc_NarrativeDesc(model, config, descType,
 	table.insert(resultDescList, descMo)
 end
 
+function Rouge2_RelicsDescHelper._getDesc_NarrativeDescOutside(model, config, descType, descMode, resultDescList)
+	if string.nilorempty(config.narrativeDesc) then
+		return
+	end
+
+	local descMo = Rouge2_ItemDescHelper._buildDescMo(descType, descMode, Rouge2_Enum.RelicsDescParam.Desc, string.format("<color=#C2AA99><i>%s<i></color>", config.narrativeDesc))
+
+	table.insert(resultDescList, descMo)
+end
+
 function Rouge2_RelicsDescHelper._getDesc_LevelUp(model, config, descType, descMode, resultDescList)
 	if string.nilorempty(config.descUpdate) then
 		return
@@ -155,18 +166,20 @@ function Rouge2_RelicsDescHelper._setDesc_SplitLineAndDesc(descMo, goItem)
 	local txtDesc = gohelper.findChildText(goItem, "txt_desc")
 	local desc = descMo:getValue(Rouge2_Enum.RelicsDescParam.Desc)
 
-	txtDesc.text = SkillHelper.buildDesc(desc)
+	txtDesc.text = Rouge2_ItemDescHelper.buildDesc(desc)
 
 	SkillHelper.addHyperLinkClick(txtDesc)
+	LuaUtil.updateTMPRectHeight_LayoutElement(txtDesc)
 end
 
 function Rouge2_RelicsDescHelper._setDesc_LevelUp(descMo, goItem)
 	local txtDesc = gohelper.findChildText(goItem, "extra/txt_desc")
 	local desc = descMo:getValue(Rouge2_Enum.RelicsDescParam.LevelUp)
 
-	txtDesc.text = SkillHelper.buildDesc(desc)
+	txtDesc.text = Rouge2_ItemDescHelper.buildDesc(desc)
 
 	SkillHelper.addHyperLinkClick(txtDesc)
+	LuaUtil.updateTMPRectHeight_LayoutElement(txtDesc)
 end
 
 function Rouge2_RelicsDescHelper._setPointImage(imagePoint, isTrigger)
@@ -182,9 +195,10 @@ function Rouge2_RelicsDescHelper._updateTxtComp(txtComp, content, isTrigger)
 		return
 	end
 
-	txtComp.text = SkillHelper.buildDesc(content)
+	txtComp.text = Rouge2_ItemDescHelper.buildDesc(content)
 
 	SkillHelper.addHyperLinkClick(txtComp)
+	LuaUtil.updateTMPRectHeight_LayoutElement(txtComp)
 	Rouge2_ItemDescHelper.addFixTmpBreakLine(txtComp)
 	Rouge2_RelicsDescHelper._setTxtColor(txtComp, isTrigger)
 end

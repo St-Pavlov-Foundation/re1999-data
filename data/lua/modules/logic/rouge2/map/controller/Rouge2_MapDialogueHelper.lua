@@ -34,6 +34,10 @@ function Rouge2_MapDialogueHelper.select(dialogueComp, nodeMo, doneCallback, don
 	local selectCheckResNum = selectCheckResList and #selectCheckResList or 0
 
 	if selectChoiceNum ~= selectCheckResNum then
+		if doneCallback then
+			doneCallback(doneCallbackObj)
+		end
+
 		return
 	end
 
@@ -45,10 +49,13 @@ function Rouge2_MapDialogueHelper.select(dialogueComp, nodeMo, doneCallback, don
 	Rouge2_MapDialogueHelper._addThresholdDesc(nodeMo, list)
 
 	local dialogueList = Rouge2_MapDialogueHelper.strList2DialogueList(list)
+	local newDialogueNum = dialogueList and #dialogueList or 0
 
 	dialogueComp:_initFlow()
 	dialogueComp:addTweenDialogueList(dialogueList, doneCallback, doneCallbackObj)
 	dialogueComp:play()
+
+	return newDialogueNum > 0
 end
 
 function Rouge2_MapDialogueHelper._getEventDescList(nodeMo)

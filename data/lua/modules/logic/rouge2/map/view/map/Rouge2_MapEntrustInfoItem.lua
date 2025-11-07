@@ -14,10 +14,20 @@ end
 function Rouge2_MapEntrustInfoItem:onUpdateMO(index, entrustMo)
 	self._index = index
 	self._entrustMo = entrustMo
-	self._entrustId = entrustMo:getEntrustId()
+	self._entrustId = entrustMo and entrustMo:getEntrustId()
+	self._newEntrustMo = Rouge2_MapModel.instance:getEntrust(self._entrustId)
+
+	local isShow = self._entrustMo ~= nil and self._newEntrustMo ~= nil
+
+	gohelper.setActive(self.go, isShow)
+
+	if not isShow then
+		return
+	end
+
 	self._entrustCo = lua_rouge2_entrust.configDict[self._entrustId]
-	self._txtdesc.text = Rouge2_MapEntrustHelper.getEntrustDesc(self._entrustMo) or ""
-	self._txtdesc2.text = Rouge2_MapEntrustHelper.getEntrustDesc(self._entrustMo) or ""
+	self._txtdesc.text = Rouge2_MapEntrustHelper.getEntrustDesc(self._newEntrustMo) or ""
+	self._txtdesc2.text = Rouge2_MapEntrustHelper.getEntrustDesc(self._newEntrustMo) or ""
 
 	local isFinish = Rouge2_MapModel.instance:isEntrustFinish(self._entrustId)
 

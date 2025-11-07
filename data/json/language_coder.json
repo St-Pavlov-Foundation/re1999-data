@@ -7833,10 +7833,18 @@
   },
   {
     "id": "rouge2_shop",
-    "lang": "积分："
+    "lang": "累计评分结算："
   },
   {
     "id": "rouge2_effecttips",
-    "lang": "达到▩1%s▩2%s激活效果:▩3%s"
+    "lang": "「▩1%s▩2%s」解锁:▩3%s"
+  },
+  {
+    "id": "rouge2_effecttips2",
+    "lang": "「▩1%s▩2%s」解锁:\n▩3%s"
+  },
+  {
+    "id": "rouge2_attributeupview_maxpassiveskill",
+    "lang": "已获得所有关键属性升级"
   }
 ]

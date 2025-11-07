@@ -3,8 +3,6 @@
 module("modules.logic.rouge2.map.view.dice.Rouge2_MapDiceAnimView", package.seeall)
 
 local Rouge2_MapDiceAnimView = class("Rouge2_MapDiceAnimView", BaseView)
-local dicePosRangeX = 50
-local dicePosRangeY = 50
 local FixValueMoveDuration = 0.4
 local WaitSec2MoveOtherValue = 0.06
 local FixValueFadeOutWaitTime = 0.1

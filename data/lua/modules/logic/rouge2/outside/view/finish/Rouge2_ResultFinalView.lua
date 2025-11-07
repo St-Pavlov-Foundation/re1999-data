@@ -47,28 +47,39 @@ end
 function Rouge2_ResultFinalView:addEvents()
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
 	self._btnhide:AddClickListener(self._btnhideOnClick, self)
+	self._btnShow:AddClickListener(self._btnShowOnClick, self)
 end
 
 function Rouge2_ResultFinalView:removeEvents()
 	self._btnclose:RemoveClickListener()
 	self._btnhide:RemoveClickListener()
+	self._btnShow:RemoveClickListener()
 end
 
 function Rouge2_ResultFinalView:_btncloseOnClick()
 	self:closeThis()
 end
 
-function Rouge2_ResultFinalView:checkNewUnlock()
-	local unlockCollectionList = Rouge2_OutsideModel.instance:getNewUnlockCollectionList()
-	local unlockFormulaList = Rouge2_AlchemyModel.instance:getNewUnlockFormula()
+function Rouge2_ResultFinalView:_btnhideOnClick()
+	self:setBtnActive(false)
+end
 
-	if unlockCollectionList and #unlockCollectionList > 0 or unlockFormulaList and #unlockFormulaList > 0 then
-		Rouge2_ViewHelper.openRouge2UnlockInfoView()
+function Rouge2_ResultFinalView:_btnShowOnClick()
+	self:setBtnActive(true)
+end
+
+function Rouge2_ResultFinalView:checkNewUnlock()
+	local isOpen = Rouge2_OutsideController.instance:checkNewPass()
+
+	if not isOpen then
+		Rouge2_OutsideController.instance:checkNewUnlock()
 	end
 end
 
-function Rouge2_ResultFinalView:_btnhideOnClick()
-	return
+function Rouge2_ResultFinalView:setBtnActive(active)
+	gohelper.setActive(self._btnhide, active)
+	gohelper.setActive(self._gotopleft, active and self.type == Rouge2_OutsideEnum.ResultFinalDisplayType.Review)
+	gohelper.setActive(self._btnShow, not active)
 end
 
 function Rouge2_ResultFinalView:_editableInitView()
@@ -97,6 +108,14 @@ function Rouge2_ResultFinalView:_editableInitView()
 	end
 
 	self._goCollectionEmpty = gohelper.findChild(self.viewGO, "Right/empty")
+	self._btnShow = gohelper.findChildButton(self.viewGO, "#btn_show")
+	self.showCanvas = gohelper.findChildComponent(self._gohide, "", gohelper.Type_CanvasGroup)
+
+	NavigateMgr.instance:addEscape(self.viewName, self.closeThis, self)
+end
+
+function Rouge2_ResultFinalView:_onShowClick()
+	self:setBtnActive(true)
 end
 
 function Rouge2_ResultFinalView:onUpdateParam()
@@ -107,9 +126,12 @@ function Rouge2_ResultFinalView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_over)
 
 	local reviewInfo = self.viewParam and self.viewParam.reviewInfo
+	local type = self.viewParam and self.viewParam.displayType or Rouge2_OutsideEnum.ResultFinalDisplayType.Review
+
+	self.type = type
 
 	self:refreshUI(reviewInfo)
-	gohelper.setActive(self._gotopleft, self.viewParam and self.viewParam.showNavigate)
+	self:setBtnActive(true)
 end
 
 function Rouge2_ResultFinalView:refreshUI(reviewInfo)
@@ -384,7 +406,9 @@ function Rouge2_ResultFinalView:refreshDrag(reviewInfo)
 end
 
 function Rouge2_ResultFinalView:onClose()
-	self:checkNewUnlock()
+	if self.type == Rouge2_OutsideEnum.ResultFinalDisplayType.Result then
+		self:checkNewUnlock()
+	end
 end
 
 function Rouge2_ResultFinalView:onDestroyView()

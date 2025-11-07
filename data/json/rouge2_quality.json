@@ -3,30 +3,35 @@
     "id": 1,
     "name": "寻常",
     "rareColor": "587FA1",
-    "buffColor": "1A365E"
+    "buffColor": "1A365E",
+    "relicsColor": "DCD9C8"
   },
   {
     "id": 2,
     "name": "精巧",
     "rareColor": "8D6993",
-    "buffColor": "451F60"
+    "buffColor": "451F60",
+    "relicsColor": "DCD9C8"
   },
   {
     "id": 3,
     "name": "妙想",
     "rareColor": "C8A25A",
-    "buffColor": "853313"
+    "buffColor": "853313",
+    "relicsColor": "DCD9C8"
   },
   {
     "id": 4,
     "name": "珍奇",
     "rareColor": "D07D45",
-    "buffColor": "D07D45"
+    "buffColor": "D07D45",
+    "relicsColor": "F8F3DB"
   },
   {
     "id": 5,
-    "name": "诅咒",
+    "name": "诡秘",
     "rareColor": "91353A",
-    "buffColor": "91353A"
+    "buffColor": "91353A",
+    "relicsColor": "DCD9C8"
   }
 ]

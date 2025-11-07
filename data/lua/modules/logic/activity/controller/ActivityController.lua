@@ -190,9 +190,10 @@ function ActivityController:requestAct186Info()
 end
 
 function ActivityController:requestRouge2Info()
-	if Rouge2_Controller.instance:checkIsOpen(false) then
+	if not Rouge2_Controller:isFirstGetInfo() and Rouge2_Controller.instance:checkIsOpen(false) then
 		Rouge2OutsideRpc.instance:sendGetRouge2OutsideInfoRequest()
 		Rouge2OutsideRpc.instance:sendRouge2GetUnlockCollectionsRequest()
+		Rouge2_Rpc.instance:sendGetRouge2InfoRequest()
 	end
 end
 

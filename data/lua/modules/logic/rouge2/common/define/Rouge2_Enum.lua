@@ -85,6 +85,7 @@ Rouge2_Enum.ItemType2DescHelper = {
 Rouge2_Enum.ItemDataType = {
 	Server = 1,
 	Unknow = 0,
+	Clone = 3,
 	Config = 2
 }
 Rouge2_Enum.ItemFilterType = {
@@ -117,8 +118,9 @@ Rouge2_Enum.ItemStatus = {
 	SecNew = 2
 }
 Rouge2_Enum.RelicsDescType = {
-	NarrativeDesc = 3,
+	NarrativeDescOutside = 5,
 	LevelUp = 4,
+	NarrativeDesc = 3,
 	UnlockDesc = 2,
 	Desc = 1
 }
@@ -132,7 +134,8 @@ Rouge2_Enum.RelicsDescType2ShowType = {
 	[Rouge2_Enum.RelicsDescType.Desc] = Rouge2_Enum.RelicsDescShowType.OnlyDesc,
 	[Rouge2_Enum.RelicsDescType.UnlockDesc] = Rouge2_Enum.RelicsDescShowType.DescWithCondition,
 	[Rouge2_Enum.RelicsDescType.NarrativeDesc] = Rouge2_Enum.RelicsDescShowType.SplitLineAndDesc,
-	[Rouge2_Enum.RelicsDescType.LevelUp] = Rouge2_Enum.RelicsDescShowType.LevelUp
+	[Rouge2_Enum.RelicsDescType.LevelUp] = Rouge2_Enum.RelicsDescShowType.LevelUp,
+	[Rouge2_Enum.RelicsDescType.NarrativeDescOutside] = Rouge2_Enum.RelicsDescShowType.OnlyDesc
 }
 Rouge2_Enum.RelicsDescParam = {
 	LevelUp = "levelup",
@@ -158,10 +161,10 @@ Rouge2_Enum.BagTabTypeNameLangId = {
 	[Rouge2_Enum.BagTabType.Buff] = "rouge2_backpacktabview_buff"
 }
 Rouge2_Enum.BagTabTypeNameEn = {
-	[Rouge2_Enum.BagTabType.Career] = "THE STORM VISITOR",
-	[Rouge2_Enum.BagTabType.ActiveSkill] = "THE STORM VISITOR",
-	[Rouge2_Enum.BagTabType.Relics] = "THE STORM VISITOR",
-	[Rouge2_Enum.BagTabType.Buff] = "THE STORM VISITOR"
+	[Rouge2_Enum.BagTabType.Career] = "Character Profile",
+	[Rouge2_Enum.BagTabType.ActiveSkill] = "Resonator",
+	[Rouge2_Enum.BagTabType.Relics] = "Artefacts",
+	[Rouge2_Enum.BagTabType.Buff] = "Resonator"
 }
 Rouge2_Enum.AttributeToolType = {
 	Default = 1,
@@ -179,6 +182,12 @@ Rouge2_Enum.AttrIconSuffix = {
 Rouge2_Enum.CareerIconSuffix = {
 	Bag = "_1",
 	Tab = "_2"
+}
+Rouge2_Enum.ItemRareIconType = {
+	Default = 0,
+	Bg = 1,
+	NameBg = 2,
+	TagBg = 3
 }
 Rouge2_Enum.BagTabType2Reddot = {
 	[Rouge2_Enum.BagTabType.ActiveSkill] = RedDotEnum.DotNode.Rouge2ActiveSkillTab,

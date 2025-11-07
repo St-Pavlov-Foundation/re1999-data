@@ -16,28 +16,26 @@ function Rouge2_MapChoiceView:addEvents()
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onBeforeActorMoveToEnd, self.onBeforeActorMoveToEnd, self)
 end
 
-function Rouge2_MapChoiceView:_editableInitView()
-	Rouge2_MapChoiceView.super._editableInitView(self)
-
-	self._simageFullBG = gohelper.findChildSingleImage(self.viewGO, "#go_BG/#simage_FullBG")
-end
-
 function Rouge2_MapChoiceView:onBeforeActorMoveToEnd()
 	self.beforeChangeMap = true
 end
 
 function Rouge2_MapChoiceView:onChoiceFlowDone()
-	if self.nodeMo:isFinishEvent() and Rouge2_MapDialogueHelper.hasLastSelectDesc(self.nodeMo) then
-		self:changeState(Rouge2_MapEnum.ChoiceViewState.Finish)
-
-		if self.showChoice then
-			self:playChoiceHideAnim()
+	if self.beforeChangeMap or self.nodeMo:isFinishEvent() then
+		if not Rouge2_MapDialogueHelper.hasLastSelectDesc(self.nodeMo) then
+			self:closeThis()
+		else
+			self:changeState(Rouge2_MapEnum.ChoiceViewState.Finish)
 		end
 
 		return
 	end
 
-	self:triggerEventHandle()
+	if self.hasTweenDialogue then
+		self:playChoiceHideAnim()
+	else
+		self:triggerEventHandle()
+	end
 end
 
 function Rouge2_MapChoiceView:onReceiveChoiceEvent()
@@ -45,13 +43,21 @@ function Rouge2_MapChoiceView:onReceiveChoiceEvent()
 end
 
 function Rouge2_MapChoiceView:playSelectDialogue()
-	self:playChoiceHideAnim()
-	self:startPlaySelectDialogue()
-end
+	if self.beforeChangeMap then
+		self:closeThis()
 
-function Rouge2_MapChoiceView:startPlaySelectDialogue()
+		return
+	end
+
 	self:changeState(Rouge2_MapEnum.ChoiceViewState.PlayingDialogue)
-	Rouge2_MapDialogueHelper.select(self._dialogueListComp, self.nodeMo, self.onSelectedDescDone, self)
+
+	self.hasTweenDialogue = Rouge2_MapDialogueHelper.select(self._dialogueListComp, self.nodeMo, self.onSelectedDescDone, self)
+
+	if self.hasTweenDialogue then
+		self:playChoiceHideAnim()
+	else
+		self:playChoiceShowAnim()
+	end
 end
 
 function Rouge2_MapChoiceView:onSelectedDescDone()
@@ -160,7 +166,6 @@ function Rouge2_MapChoiceView:updateItem(item, index, choiceId)
 end
 
 function Rouge2_MapChoiceView:onDestroyView()
-	self._simageFullBG:UnLoadImage()
 	Rouge2_MapChoiceView.super.onDestroyView(self)
 end
 

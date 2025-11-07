@@ -46,7 +46,13 @@ function Rouge2_MapChoiceController:addPushToFlow(msgName, msg)
 
 	self._steps = self._steps or {}
 
-	table.insert(self._steps, work)
+	if msgName == "Rouge2CheckInfoPush" then
+		local pos = self:_findLastDiceInfo()
+
+		table.insert(self._steps, pos, work)
+	else
+		table.insert(self._steps, work)
+	end
 end
 
 function Rouge2_MapChoiceController:_destroyFlow()
@@ -67,9 +73,9 @@ function Rouge2_MapChoiceController:_addUpdateMapFlow(msg, flow)
 end
 
 function Rouge2_MapChoiceController:_addPushStepFlow(flow)
-	local firstStep = self._steps and self._steps[1]
+	local isDice = self:_checkIsFirstStepDice()
 
-	if not firstStep or firstStep:getMsgName() ~= "Rouge2CheckInfoPush" then
+	if not isDice then
 		flow:addWork(Rouge2_PlayDialogueWork.New())
 	end
 
@@ -86,6 +92,33 @@ function Rouge2_MapChoiceController:_addPushStepFlow(flow)
 	end
 
 	self._steps = nil
+end
+
+function Rouge2_MapChoiceController:_checkIsFirstStepDice()
+	local firstStep = self._steps and self._steps[1]
+
+	return firstStep and firstStep:getMsgName() == "Rouge2CheckInfoPush"
+end
+
+function Rouge2_MapChoiceController:_findLastDiceInfo()
+	local pos = 0
+	local findPos = false
+
+	if self._steps then
+		for i, stepInfo in ipairs(self._steps) do
+			pos = i
+
+			if stepInfo:getMsgName() ~= "Rouge2CheckInfoPush" then
+				findPos = true
+
+				break
+			end
+		end
+	end
+
+	pos = findPos and pos or pos + 1
+
+	return pos
 end
 
 function Rouge2_MapChoiceController:isFlowRunning()

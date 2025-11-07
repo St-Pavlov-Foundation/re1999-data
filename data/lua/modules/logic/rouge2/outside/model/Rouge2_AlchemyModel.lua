@@ -74,10 +74,12 @@ function Rouge2_AlchemyModel:checkNewUnlockFormula()
 	local configList = Rouge2_OutSideConfig.instance:getFormulaConfigList()
 
 	for _, config in ipairs(configList) do
-		local isUnlock = true
+		if not string.nilorempty(config.condition) then
+			local isUnlock = Rouge2_AlchemyModel.instance:isFormulaUnlock(config.id)
 
-		if isUnlock and not self._unlockFormulaDic[config.id] then
-			table.insert(self._newUnlockFormulaList, config.id)
+			if isUnlock and not self._unlockFormulaDic[config.id] then
+				table.insert(self._newUnlockFormulaList, config.id)
+			end
 		end
 	end
 end

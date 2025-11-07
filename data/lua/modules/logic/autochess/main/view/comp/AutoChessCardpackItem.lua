@@ -13,7 +13,7 @@ function AutoChessCardpackItem:init(go)
 	self.goLock = gohelper.findChild(go, "go_lock")
 	self.txtUnlock = gohelper.findChildText(go, "go_lock/txt_unlock")
 	self.btnClick = gohelper.findChildButton(go, "btn_Click")
-	self.btnCheck = gohelper.findChildButton(go, "btn_Check")
+	self.btnCheck = gohelper.findChildButtonWithAudio(go, "btn_Check")
 	self.goNew = gohelper.findChild(go, "go_new")
 end
 

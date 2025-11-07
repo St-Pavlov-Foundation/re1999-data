@@ -33,6 +33,7 @@ function Rouge2_ActivityView:addEvents()
 	Rouge2_Controller.instance:registerCallback(Rouge2_Event.OnUpdateRougeInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnBuyStoreGoodsSuccess, self.refreshUI, self)
 end
 
 function Rouge2_ActivityView:removeEvents()
@@ -43,6 +44,7 @@ function Rouge2_ActivityView:removeEvents()
 	Rouge2_Controller.instance:unregisterCallback(Rouge2_Event.OnUpdateRougeInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnBuyStoreGoodsSuccess, self.refreshUI, self)
 end
 
 function Rouge2_ActivityView:_btnendOnClick()
@@ -127,6 +129,11 @@ end
 function Rouge2_ActivityView:refreshUI()
 	local costId = CurrencyEnum.CurrencyType.V3a2Rouge
 	local currencyMo = CurrencyModel.instance:getCurrency(costId)
+
+	if currencyMo == nil then
+		return
+	end
+
 	local count = currencyMo.quantity or 0
 
 	if self._txtRewardNum then
@@ -178,6 +185,7 @@ function Rouge2_ActivityView:_onReceiveEndReply()
 end
 
 function Rouge2_ActivityView:_endYesCallback()
+	Rouge2_StatController.instance:setReset()
 	Rouge2_Rpc.instance:sendRouge2AbortRequest(self._onReceiveEndReply, self)
 end
 

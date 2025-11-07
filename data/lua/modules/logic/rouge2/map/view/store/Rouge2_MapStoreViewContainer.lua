@@ -20,13 +20,20 @@ function Rouge2_MapStoreViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			false,
-			false
-		}, nil, self._btnCloseCallback, nil, nil, self)
+			true
+		})
+
+		self.navigateView:setOverrideHelp(self.overrideHelpBtn, self)
+		self.navigateView:setOverrideClose(self.overrideCloaseCallback, self)
 
 		return {
 			self.navigateView
 		}
 	end
+end
+
+function Rouge2_MapStoreViewContainer:overrideCloaseCallback()
+	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.Rouge2ExitEvent, MsgBoxEnum.BoxType.Yes_No, self._btnCloseCallback, nil, nil, self)
 end
 
 function Rouge2_MapStoreViewContainer:_btnCloseCallback()
@@ -52,6 +59,10 @@ function Rouge2_MapStoreViewContainer:onContainerClose()
 	if self.leaveCallbackId then
 		Rouge2_Rpc.instance:removeCallbackById(self.leaveCallbackId)
 	end
+end
+
+function Rouge2_MapStoreViewContainer:overrideHelpBtn()
+	Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.MapStore)
 end
 
 return Rouge2_MapStoreViewContainer

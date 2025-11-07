@@ -325,9 +325,18 @@ function Rouge2_EnterScene:switchIn()
 		for _, sceneGo in ipairs(self._sceneGoList) do
 			gohelper.setActive(sceneGo, false)
 		end
+	elseif index == Rouge2_OutsideEnum.SceneIndex.DifficultyScene then
+		self:_lockScreen(true, Rouge2_OutsideEnum.ForceCloseMaskTime)
+		TaskDispatcher.runDelay(self.checkDifficultyState, self, 1.333)
 	end
 
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitchFinish)
+end
+
+function Rouge2_EnterScene:checkDifficultyState()
+	TaskDispatcher.cancelTask(self.checkDifficultyState, self)
+	self:_lockScreen(false)
+	self:onDifficultySwitchFinish()
 end
 
 function Rouge2_EnterScene.getPathName(index)
@@ -347,11 +356,24 @@ function Rouge2_EnterScene.getPathIdleName(index)
 end
 
 function Rouge2_EnterScene.getSwitchInName(index)
-	return string.format("in", index)
+	if index == Rouge2_OutsideEnum.SceneIndex.DifficultyScene then
+		local allPageList = Rouge2_DifficultySelectListModel.getDifficultyList()
+		local difficultyIndex = Rouge2_DifficultySelectListModel.getNewestDifficulty(allPageList) or 1
+
+		return string.format("in%s", difficultyIndex)
+	end
+
+	return "in"
 end
 
 function Rouge2_EnterScene.getSwitchOutName(index)
-	return string.format("out", index)
+	if index == Rouge2_OutsideEnum.SceneIndex.DifficultyScene then
+		local difficultyIndex = Rouge2_DifficultySelectListModel.instance:getCurSelectPageIndex() or 1
+
+		return string.format("out%s", difficultyIndex)
+	end
+
+	return string.format("out")
 end
 
 function Rouge2_EnterScene:switchOut()
@@ -479,10 +501,9 @@ function Rouge2_EnterScene:_onSwitchDifficultyPage(difficultyIndex)
 		TaskDispatcher.runDelay(self.onDifficultySpineSwitchFinish, self, Rouge2_OutsideEnum.DifficultyChangeTime)
 	else
 		logNormal("肉鸽2 无需切换难度")
-		self:playAnim(animator, string.format("%sidle", bgIndex))
 
 		for index, itemGo in ipairs(self._difficultyItemList) do
-			gohelper.setActive(itemGo, index == self._curDifficultyIndex)
+			gohelper.setActive(itemGo, index == bgIndex)
 		end
 
 		self._difficultyRoleSpine:PlayAnim(string.format("%s_idle", bgIndex), true, true)

@@ -74,7 +74,7 @@ function Rouge2_ActiveSkillDropView:_tryStatDrop()
 	local skillId = skillCo and skillCo.id
 	local skillName = skillCo and skillCo.name
 
-	Rouge2_StatController.instance:statSelectDrop(Rouge2_MapEnum.DropType.Relics, skillId, skillName, itemNameList)
+	Rouge2_StatController.instance:statSelectDrop(Rouge2_MapEnum.DropType.ActiveSkill, skillId, skillName, itemNameList)
 end
 
 function Rouge2_ActiveSkillDropView:_editableInitView()

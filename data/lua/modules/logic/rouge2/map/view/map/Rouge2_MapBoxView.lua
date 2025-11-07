@@ -17,6 +17,8 @@ end
 
 function Rouge2_MapBoxView:addEvents()
 	self._btnBox:AddClickListener(self._btnBoxOnClick, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onUpdateMapInfo, self._onUpdateMapInfo, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeMapInfo, self._onChangeMapInfo, self)
 	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateAttrInfo, self._onUpdateAttrInfo, self)
 end
 
@@ -39,14 +41,16 @@ end
 
 function Rouge2_MapBoxView:refreshUI()
 	self._isFit = Rouge2_Model.instance:isUseBXSCareer()
+	self._isMiddle = Rouge2_MapModel.instance:isMiddle()
+	self._show = self._isFit and not self._isMiddle
 
 	self:refreshBox()
 end
 
 function Rouge2_MapBoxView:refreshBox()
-	gohelper.setActive(self._btnBox.gameObject, self._isFit)
+	gohelper.setActive(self._btnBox.gameObject, self._show)
 
-	if not self._isFit then
+	if not self._show then
 		return
 	end
 
@@ -59,6 +63,14 @@ function Rouge2_MapBoxView:refreshBox()
 end
 
 function Rouge2_MapBoxView:_onUpdateAttrInfo()
+	self:refreshUI()
+end
+
+function Rouge2_MapBoxView:_onChangeMapInfo()
+	self:refreshUI()
+end
+
+function Rouge2_MapBoxView:_onUpdateMapInfo()
 	self:refreshUI()
 end
 

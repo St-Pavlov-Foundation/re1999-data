@@ -77,6 +77,7 @@ function Rouge2_ResultReportItem:_editableInitView()
 	self._goAttributeContent = gohelper.findChild(self.viewGO, "#go_faction/base")
 	self._goFailBg2 = gohelper.findChild(self.viewGO, "bg/simage_fail")
 	self._goSuccessBg2 = gohelper.findChild(self.viewGO, "bg/simage_success")
+	self._animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
 function Rouge2_ResultReportItem:_editableAddEvents()
@@ -99,6 +100,10 @@ function Rouge2_ResultReportItem:refreshUI()
 	self:refreshAttributeInfo()
 	self:refreshHeroInfo()
 	self:refreshDragInfo()
+end
+
+function Rouge2_ResultReportItem:getAnimator()
+	return self._animator
 end
 
 Rouge2_ResultReportItem.MaxShowHeroCount = 4

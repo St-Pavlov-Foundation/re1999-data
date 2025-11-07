@@ -69,7 +69,13 @@ function Rouge2_BackpackSkillView:switchState(state, params)
 		return
 	end
 
-	childView:onOpenChildView(params)
+	if self._curChildView then
+		self._curChildView:onCloseChildView()
+	end
+
+	self._curChildView = childView
+
+	self._curChildView:onOpenChildView(params)
 end
 
 function Rouge2_BackpackSkillView:_onSwitchSkillViewType(state, params)

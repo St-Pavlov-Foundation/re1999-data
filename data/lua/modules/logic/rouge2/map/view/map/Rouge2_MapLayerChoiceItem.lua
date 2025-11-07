@@ -30,10 +30,7 @@ function Rouge2_MapLayerChoiceItem:removeEventListeners()
 end
 
 function Rouge2_MapLayerChoiceItem:_btnClickOnClick()
-	local layer = Rouge2_MapModel.instance:getLayerId()
-	local middleLayer = Rouge2_MapModel.instance:getMiddleLayerId()
-
-	Rouge2_Rpc.instance:sendRouge2LeaveMiddleLayerRequest(layer, middleLayer, self._layerId, self._weatherId)
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onConfirmSelectLayer, self._layerId, self._weatherId)
 end
 
 function Rouge2_MapLayerChoiceItem:_btnClick2OnClick()

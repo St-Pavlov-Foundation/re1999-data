@@ -5,9 +5,9 @@
     "taskLevel": "C#1000",
     "nextTask": 321902,
     "isTopic": 1,
-    "fightTaskDesc": "人海战",
-    "fightTaskinfo": "(本场战斗失败无惩罚)敌人无限刷新，每击杀1名敌人获得100分",
-    "fightTaskDetail": "(本场战斗失败无惩罚)敌人无限刷新，每击杀1名敌人获得100分\n当前得分：▩1%s",
+    "fightTaskDesc": "无尽恶潮",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n敌人无限刷新，每击败1名敌人获得100分",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n敌人无限刷新，每击败1名敌人获得100分，当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -19,7 +19,7 @@
     "fightTaskDesc": "人海战",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：1000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 321903,
@@ -40,7 +40,7 @@
     "isTopic": 0,
     "fightTaskDesc": "人海战",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：4000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：4000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -49,9 +49,9 @@
     "taskLevel": "C#3000",
     "nextTask": 322002,
     "isTopic": 1,
-    "fightTaskDesc": "打头领",
-    "fightTaskinfo": "(本场战斗失败无惩罚)击败启明会成员后，驱散恶童可得分",
-    "fightTaskDetail": "(本场战斗失败无惩罚)击败启明会成员后，驱散恶童可得分\n当前得分：▩1%s",
+    "fightTaskDesc": "驱散恶童",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n击败启明会成员后，所有恶童被驱散；\n驱散恶童得1000分，击败得500分",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n击败启明会成员后，所有恶童被驱散；\n驱散恶童得1000分，击败得500分\n当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -63,7 +63,7 @@
     "fightTaskDesc": "打头领",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：3000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322003,
@@ -84,7 +84,7 @@
     "isTopic": 0,
     "fightTaskDesc": "打头领",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：8000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：8000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -93,31 +93,31 @@
     "taskLevel": "C#3000",
     "nextTask": 322102,
     "isTopic": 1,
-    "fightTaskDesc": "打高星",
-    "fightTaskinfo": "(本场战斗失败无惩罚)击败敌人时，敌人每有1颗星星得1000分",
-    "fightTaskDetail": "(本场战斗失败无惩罚)被击败的敌人每有1颗星星得1000分\n当前得分：▩1%s",
+    "fightTaskDesc": "夺取星星",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n击败敌人时，敌人每有1颗星星得1000分；同时击败多个星星敌人，可得更高分数",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n击败敌人时，敌人每有1颗星星得1000分；同时击败多个星星敌人，可得更高分数，当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
     "id": 322102,
     "idIndicator": 3203,
-    "taskLevel": "B#2000",
+    "taskLevel": "B#3000",
     "nextTask": 322103,
     "isTopic": 0,
     "fightTaskDesc": "打高星",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：3000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322103,
     "idIndicator": 3203,
-    "taskLevel": "A#3000",
+    "taskLevel": "A#4000",
     "nextTask": 322104,
     "isTopic": 0,
     "fightTaskDesc": "打高星",
     "fightTaskinfo": "",
-    "fightTaskDetail": "A级：5000分，额外获得1个随机谐波",
+    "fightTaskDetail": "A级：6000分，额外获得1个随机谐波",
     "stage1Interactive": "1#1050"
   },
   {
@@ -128,7 +128,7 @@
     "isTopic": 0,
     "fightTaskDesc": "打高星",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：8000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：10000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -138,8 +138,8 @@
     "nextTask": 322202,
     "isTopic": 1,
     "fightTaskDesc": "找真身",
-    "fightTaskinfo": "(本场战斗失败无惩罚)击败真身后，击败得分效率会大大提高",
-    "fightTaskDetail": "(本场战斗失败无惩罚)击败真身后，击败剩余敌人的得分提高\n当前得分：▩1%s",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n击败真身后，击败得分效率会大大提高",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n击败真身后，击败剩余敌人的得分提高，当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -151,7 +151,7 @@
     "fightTaskDesc": "找真身",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：3000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322203,
@@ -172,7 +172,7 @@
     "isTopic": 0,
     "fightTaskDesc": "找真身",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：10000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：10000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -182,8 +182,8 @@
     "nextTask": 322302,
     "isTopic": 1,
     "fightTaskDesc": "拳力计",
-    "fightTaskinfo": "(本场战斗失败无惩罚)单次攻击造成的伤害越高，得分越高",
-    "fightTaskDetail": "(本场战斗失败无惩罚)单次攻击造成的伤害越高，得分越高\n当前得分：▩1%s",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n单次攻击造成的伤害越高，得分越高",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n单次攻击造成的伤害越高，得分越高，当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -195,7 +195,7 @@
     "fightTaskDesc": "拳力计",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：1000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322303,
@@ -216,7 +216,7 @@
     "isTopic": 0,
     "fightTaskDesc": "拳力计",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：4000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：4000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -226,8 +226,8 @@
     "nextTask": 322402,
     "isTopic": 1,
     "fightTaskDesc": "速战速决",
-    "fightTaskinfo": "(本场战斗失败无惩罚)每击杀1名敌人获得100分，战斗限制3回合",
-    "fightTaskDetail": "(本场战斗失败无惩罚)战斗持续3回合，每击杀1名敌人获得100分\n当前得分：▩1%s",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n每击败1名敌人得100分，战斗限3回合",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n每击败1名敌人得100分，战斗限3回合\n当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -239,7 +239,7 @@
     "fightTaskDesc": "速战速决",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：1000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322403,
@@ -260,7 +260,7 @@
     "isTopic": 0,
     "fightTaskDesc": "速战速决",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：3000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：3000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   },
   {
@@ -269,9 +269,9 @@
     "taskLevel": "C#1000",
     "nextTask": 322502,
     "isTopic": 1,
-    "fightTaskDesc": "有埋伏",
-    "fightTaskinfo": "(本场战斗失败无惩罚)在敌人逃跑前将其击败，每1名敌人获得1000分",
-    "fightTaskDetail": "(本场战斗失败无惩罚)在敌人逃跑前将其击败，每1名敌人获得1000分\n当前得分：▩1%s",
+    "fightTaskDesc": "闪击否决",
+    "fightTaskinfo": "(本场战斗失败无惩罚)\n在敌人逃跑前将其击败，每名敌人1000分",
+    "fightTaskDetail": "(本场战斗失败无惩罚)\n在敌人逃跑前将其击败，每名敌人1000分，当前得分：▩1%s",
     "stage1Interactive": "1#50"
   },
   {
@@ -283,7 +283,7 @@
     "fightTaskDesc": "有埋伏",
     "fightTaskinfo": "",
     "fightTaskDetail": "B级：1000分，获得50金雀子儿",
-    "stage1Interactive": "1#4400"
+    "stage1Interactive": "1#440"
   },
   {
     "id": 322503,
@@ -302,9 +302,9 @@
     "taskLevel": "S",
     "nextTask": 0,
     "isTopic": 0,
-    "fightTaskDesc": "抢钱啦",
+    "fightTaskDesc": "有埋伏",
     "fightTaskinfo": "",
-    "fightTaskDetail": "S级：3000分，额外获得1个3级谐波",
+    "fightTaskDetail": "S级：3000分，额外获得1个<color=#C8A25A>妙想</color>谐波",
     "stage1Interactive": ""
   }
 ]

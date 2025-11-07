@@ -12,6 +12,7 @@ function Rouge2_BackpackController:tryReplaceActiveSkill(index, skillUid)
 		local skillIndex = Rouge2_BackpackSkillEditListModel.instance:getIndex(skillMo)
 
 		Rouge2_BackpackSkillEditListModel.instance:selectCell(skillIndex, false)
+		self:tryRemoveActiveSkill(index)
 		self:tryRemoveActiveSkillByUid(skillUid)
 		self:sendUseActiveSkillIdsRpc(index, skillUid)
 	elseif toastId then
@@ -43,6 +44,14 @@ function Rouge2_BackpackController:isCanEquipAnySkill(index)
 		local isCan = self:checkCanReplaceActiveSkill(index, skillUid)
 
 		if isCan then
+			return true
+		end
+	end
+end
+
+function Rouge2_BackpackController:hasAnyActiveSkillCanEquip()
+	for i = 1, Rouge2_Enum.MaxActiveSkillNum do
+		if self:isCanEquipAnySkill(i) then
 			return true
 		end
 	end
@@ -103,7 +112,7 @@ function Rouge2_BackpackController:checkIfOverAssembleCost(oldSkillMo, newSkillM
 	end
 
 	local oldSkillCost = 0
-	local oldSkillId = oldSkillMo and oldSkillMo.skillId
+	local oldSkillId = oldSkillMo and oldSkillMo:getItemId()
 
 	if oldSkillId and oldSkillId ~= 0 then
 		local oldSkillCo = Rouge2_CollectionConfig.instance:getActiveSkillConfig(oldSkillId)
@@ -112,7 +121,7 @@ function Rouge2_BackpackController:checkIfOverAssembleCost(oldSkillMo, newSkillM
 	end
 
 	local newSkillCost = 0
-	local newSkillId = newSkillMo and newSkillMo.skillId
+	local newSkillId = newSkillMo and newSkillMo:getItemId()
 
 	if newSkillId and newSkillId ~= 0 then
 		local newSkillCo = Rouge2_CollectionConfig.instance:getActiveSkillConfig(newSkillId)
@@ -241,7 +250,7 @@ function Rouge2_BackpackController:_getItemDescModeKey(dataFlag)
 end
 
 function Rouge2_BackpackController:showLossItemView(reason, lossItemList)
-	if reason == Rouge2_MapEnum.ShowItemDropReason.LevelUpSucc then
+	if reason == Rouge2_MapEnum.ItemDropReason.LevelUpSucc then
 		return
 	end
 
@@ -275,25 +284,52 @@ function Rouge2_BackpackController:showGetItemView(reason, getItemList)
 	end
 
 	local type2ItemList = {}
+	local updateRelicsList = {}
 
-	for _, itemMo in ipairs(getItemList) do
-		local uid = itemMo.uid
+	for _, itemInfo in ipairs(getItemList) do
+		local itemMo = Rouge2_BagItemMO.New()
+
+		itemMo:init(itemInfo)
+
+		local uid = itemMo:getUid()
 		local itemType = Rouge2_BackpackHelper.uid2BagType(uid)
+		local isRelics = itemType == Rouge2_Enum.BagType.Relics
+		local updateId = isRelics and Rouge2_CollectionConfig.instance:getBaseRelicsId(itemMo:getItemId())
 
-		type2ItemList[itemType] = type2ItemList[itemType] or {}
+		if updateId and updateId ~= 0 then
+			table.insert(updateRelicsList, itemMo)
+		else
+			type2ItemList[itemType] = type2ItemList[itemType] or {}
 
-		table.insert(type2ItemList[itemType], uid)
+			table.insert(type2ItemList[itemType], itemMo)
+		end
 	end
 
 	for itemType, itemList in pairs(type2ItemList) do
+		local itemNum = itemList and #itemList or 0
 		local showViewName = Rouge2_BackpackHelper.itemType2ShowViewName(itemType)
+
+		if showViewName and itemNum > 0 then
+			Rouge2_PopController.instance:addPopViewWithViewName(showViewName, {
+				itemList = itemList,
+				dataType = Rouge2_Enum.ItemDataType.Clone,
+				viewEnum = Rouge2_MapEnum.ItemDropViewEnum.Drop,
+				reason = reason
+			})
+		end
+	end
+
+	local updateRelicsNum = updateRelicsList and #updateRelicsList or 0
+
+	if updateRelicsNum > 0 then
+		local showViewName = Rouge2_BackpackHelper.itemType2ShowViewName(Rouge2_Enum.BagType.Relics)
 
 		if showViewName then
 			Rouge2_PopController.instance:addPopViewWithViewName(showViewName, {
-				itemList = itemList,
-				dataType = Rouge2_Enum.ItemDataType.Server,
+				itemList = updateRelicsList,
+				dataType = Rouge2_Enum.ItemDataType.Clone,
 				viewEnum = Rouge2_MapEnum.ItemDropViewEnum.Drop,
-				reason = reason
+				reason = Rouge2_MapEnum.ItemDropReason.LevelUpSucc
 			})
 		end
 	end
@@ -317,6 +353,10 @@ function Rouge2_BackpackController:buildBXSBoxReddot()
 			value = reddotValue
 		}
 	})
+end
+
+function Rouge2_BackpackController:checkCanGuideAssembleCost()
+	return not Rouge2_Model.instance:isUseBXSCareer()
 end
 
 Rouge2_BackpackController.instance = Rouge2_BackpackController.New()

@@ -20,7 +20,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 30950111,
@@ -43,7 +44,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 30950112,
@@ -66,7 +68,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 30950112,
@@ -89,7 +92,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 30950113,
@@ -112,7 +116,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 30950113,
@@ -135,7 +140,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 6240522,
@@ -158,7 +164,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -181,7 +188,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -204,7 +212,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -227,7 +236,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -250,7 +260,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -273,7 +284,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -296,7 +308,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -319,7 +332,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -342,7 +356,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -365,7 +380,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090111,
@@ -388,7 +404,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090112,
@@ -411,7 +428,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090113,
@@ -434,7 +452,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090114,
@@ -457,7 +476,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090115,
@@ -480,7 +500,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090116,
@@ -503,7 +524,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090117,
@@ -526,7 +548,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090118,
@@ -549,7 +572,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090111,
@@ -572,7 +596,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090112,
@@ -595,7 +620,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090113,
@@ -618,7 +644,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090114,
@@ -641,7 +668,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090115,
@@ -664,7 +692,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090116,
@@ -687,7 +716,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090117,
@@ -710,7 +740,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090118,
@@ -733,7 +764,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090111,
@@ -756,7 +788,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090112,
@@ -779,7 +812,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090113,
@@ -802,7 +836,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090114,
@@ -825,7 +860,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090115,
@@ -848,7 +884,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090116,
@@ -871,7 +908,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090117,
@@ -894,7 +932,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31090118,
@@ -917,7 +956,8 @@
     "destroyEffectAudio": 431090142,
     "releaseDestroyEffectTime": 1500,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31150111,
@@ -940,7 +980,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31150111,
@@ -963,7 +1004,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -986,7 +1028,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -1009,7 +1052,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170006,
@@ -1032,7 +1076,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -1055,7 +1100,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -1078,7 +1124,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170012,
@@ -1101,7 +1148,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -1124,7 +1172,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -1147,7 +1196,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31170035,
@@ -1170,7 +1220,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260121,
@@ -1193,7 +1244,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 1,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260121,
@@ -1216,7 +1268,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 1,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260121,
@@ -1239,7 +1292,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 1,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260122,
@@ -1262,7 +1316,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260122,
@@ -1285,7 +1340,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 31260122,
@@ -1308,7 +1364,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 1083200151,
@@ -1331,7 +1388,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 1083200151,
@@ -1354,7 +1412,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 1083200151,
@@ -1377,7 +1436,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 1083200151,
@@ -1400,7 +1460,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 1083200151,
@@ -1423,7 +1484,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 1083200151,
@@ -1446,7 +1508,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 1
+    "lE": 1,
+    "hideEffectWhenBigSkill": 1
   },
   {
     "id": 108300101,
@@ -1469,7 +1532,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 108300101,
@@ -1492,7 +1556,8 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   },
   {
     "id": 108300101,
@@ -1515,6 +1580,7 @@
     "destroyEffectAudio": 0,
     "releaseDestroyEffectTime": 0,
     "hideEffectWhenPlaying": 0,
-    "lE": 0
+    "lE": 0,
+    "hideEffectWhenBigSkill": 0
   }
 ]

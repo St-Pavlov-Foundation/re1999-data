@@ -11,15 +11,18 @@ function Rouge2_MapStoreStealChoiceItem:init(go)
 	self._imageIcon = gohelper.findChildImage(self.go, "image_Icon")
 	self._goSelected = gohelper.findChild(self.go, "go_Selected")
 	self._btnClick = gohelper.findChildButtonWithAudio(self.go, "btn_Click")
+	self._btnClick2 = gohelper.findChildClickWithDefaultAudio(self.go, "scroll_Desc/Viewport/Content/txt_Desc")
 end
 
 function Rouge2_MapStoreStealChoiceItem:addEventListeners()
 	self._btnClick:AddClickListener(self._btnClickOnClick, self)
+	self._btnClick2:AddClickListener(self._btnClickOnClick, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectStoreChoice, self._onSelectStoreChoice, self)
 end
 
 function Rouge2_MapStoreStealChoiceItem:removeEventListeners()
 	self._btnClick:RemoveClickListener()
+	self._btnClick2:RemoveClickListener()
 end
 
 function Rouge2_MapStoreStealChoiceItem:_btnClickOnClick()
@@ -47,7 +50,7 @@ function Rouge2_MapStoreStealChoiceItem:refreshUI()
 	local descConstCo = lua_rouge2_const.configDict[descConstId]
 
 	self._txtTitle.text = titleConstCo and titleConstCo.value2 or ""
-	self._txtDesc.text = descConstCo and descConstCo.value2 or ""
+	self._txtDesc.text = descConstCo and SkillHelper.buildDesc(descConstCo.value2) or ""
 
 	local iconName = Rouge2_MapEnum.StoreStealFialChoiceIcon[self._choiceId]
 

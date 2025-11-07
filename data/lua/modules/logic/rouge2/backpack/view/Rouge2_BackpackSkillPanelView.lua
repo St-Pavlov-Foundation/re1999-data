@@ -62,6 +62,10 @@ function Rouge2_BackpackSkillPanelView:onOpenChildView()
 	self:refreshUI()
 end
 
+function Rouge2_BackpackSkillPanelView:onCloseChildView()
+	return
+end
+
 function Rouge2_BackpackSkillPanelView:refreshUI()
 	self._assembleCost = Rouge2_BackpackModel.instance:getUseActiveSkillAssembleCost()
 	self._maxAssembleCost = Rouge2_Model.instance:getAttrValue(Rouge2_MapEnum.BasicAttrId.ActiveSkillCapacity)

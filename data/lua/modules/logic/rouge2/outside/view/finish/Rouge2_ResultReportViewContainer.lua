@@ -23,7 +23,13 @@ function Rouge2_ResultReportViewContainer:buildViews()
 	scrollParam.startSpace = 10
 	scrollParam.cellSpaceV = 8
 
-	table.insert(views, LuaListScrollView.New(Rouge2_ResultReportListModel.instance, scrollParam))
+	local animTime = {}
+
+	for i = 1, 6 do
+		animTime[i] = i * 0.03
+	end
+
+	table.insert(views, LuaListScrollViewWithAnimator.New(Rouge2_ResultReportListModel.instance, scrollParam, animTime))
 
 	return views
 end

@@ -8,6 +8,7 @@ function Rouge2_ResultFinalViewContainer:buildViews()
 	local views = {}
 
 	table.insert(views, Rouge2_ResultFinalView.New())
+	table.insert(views, TabViewGroup.New(1, "#go_topleft"))
 
 	local scrollParam = ListScrollParam.New()
 
@@ -25,6 +26,20 @@ function Rouge2_ResultFinalViewContainer:buildViews()
 	table.insert(views, LuaListScrollView.New(Rouge2_ResultCollectionListModel.instance, scrollParam))
 
 	return views
+end
+
+function Rouge2_ResultFinalViewContainer:buildTabViews(tabContainerId)
+	if tabContainerId == 1 then
+		self.navigateView = NavigateButtonsView.New({
+			true,
+			false,
+			false
+		})
+
+		return {
+			self.navigateView
+		}
+	end
 end
 
 return Rouge2_ResultFinalViewContainer

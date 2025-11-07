@@ -21773,5 +21773,57 @@
     "text": "你早该这么做的。",
     "tipsDir": 2,
     "delay": 0.3
+  },
+  {
+    "code": 108303007,
+    "id": 923200056,
+    "param": "22#1083200181",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "644801",
+    "audioId": 0,
+    "text": "你做得好！再砍一次！再砍一次！",
+    "tipsDir": 1,
+    "delay": 0.3
+  },
+  {
+    "code": 108303007,
+    "id": 923200057,
+    "param": "36#108303007",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "644801",
+    "audioId": 0,
+    "text": "终于，我们将拥有完整的生命……嗯？",
+    "tipsDir": 2,
+    "delay": 0.3
+  },
+  {
+    "code": 108303008,
+    "id": 923200058,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "640701",
+    "audioId": 0,
+    "text": "你现在还有认错的机会，不要找死！",
+    "tipsDir": 1,
+    "delay": 0.3
+  },
+  {
+    "code": 108303008,
+    "id": 923200059,
+    "param": "22#1083200281",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "640701",
+    "audioId": 0,
+    "text": "你是听信了那些无头的胡言乱语，也想追求死亡？",
+    "tipsDir": 2,
+    "delay": 0.3
   }
 ]

@@ -32,6 +32,8 @@ function Rouge2_BackpackItemCheckComp:check()
 end
 
 function Rouge2_BackpackItemCheckComp:checkIsItemFullInView()
+	ZProj.UGUIHelper.RebuildLayout(self.tran)
+
 	local worldcorners = self.tran:GetWorldCorners()
 	local posTL = worldcorners[1]
 	local posBR = worldcorners[3]

@@ -81,19 +81,7 @@ end
 function Rouge2_MapStoreGoodsItem:refreshIcon()
 	gohelper.setActive(self._imageRare.gameObject, true)
 	Rouge2_IconHelper.setAttributeIcon(self._attrTag, self._imageAttr)
-
-	if self._itmeType == Rouge2_Enum.BagType.Relics then
-		Rouge2_IconHelper.setRelicsIcon(self._itemId, self._simageIcon)
-		Rouge2_IconHelper.setRelicsRareIcon(self._itemId, self._imageRare)
-	elseif self._itmeType == Rouge2_Enum.BagType.Buff then
-		Rouge2_IconHelper.setBuffIcon(self._itemId, self._simageIcon)
-		Rouge2_IconHelper.setBuffRareIcon(self._itemId, self._imageRare)
-	elseif self._itmeType == Rouge2_Enum.BagType.ActiveSkill then
-		Rouge2_IconHelper.setActiveSkillIcon(self._itemId, self._simageIcon)
-		gohelper.setActive(self._imageRare.gameObject, false)
-	else
-		logError(string.format("肉鸽商店物品加载图标失败: 未定义的构筑物类型: itemId = %s, itemType = %s", self._itemId, self._itmeType))
-	end
+	Rouge2_IconHelper.setItemIconAndRare(self._itemId, self._simageIcon, self._imageRare)
 end
 
 function Rouge2_MapStoreGoodsItem:refreshCost()

@@ -12,9 +12,15 @@ function Rouge2_WaitOpenReviewWork:onStart()
 		return self:onDone(true)
 	end
 
+	local reviewInfo = resultInfo.reviewInfo
+	local params = {
+		reviewInfo = reviewInfo,
+		displayType = Rouge2_OutsideEnum.ResultFinalDisplayType.Result
+	}
+
 	self.flow = FlowSequence.New()
 
-	self.flow:addWork(OpenViewAndWaitCloseWork.New(ViewName.Rouge2_ResultFinalView))
+	self.flow:addWork(OpenViewAndWaitCloseWork.New(ViewName.Rouge2_ResultFinalView, params))
 	self.flow:registerDoneListener(self._onFlowDone, self)
 	self.flow:start()
 end

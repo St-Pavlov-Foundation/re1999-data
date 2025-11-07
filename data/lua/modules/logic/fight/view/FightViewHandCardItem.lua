@@ -180,6 +180,18 @@ function FightViewHandCardItem:playASFDAnim(animName)
 	end
 end
 
+function FightViewHandCardItem:hideTopLayout()
+	if self._cardItem then
+		self._cardItem:hideTopLayout()
+	end
+end
+
+function FightViewHandCardItem:showTopLayout()
+	if self._cardItem then
+		self._cardItem:showTopLayout()
+	end
+end
+
 function FightViewHandCardItem:onStart()
 	self:_checkStartReplay()
 end

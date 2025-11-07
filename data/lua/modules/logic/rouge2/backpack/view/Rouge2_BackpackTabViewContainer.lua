@@ -24,8 +24,10 @@ function Rouge2_BackpackTabViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			false,
-			false
+			true
 		})
+
+		self.navigateView:setOverrideHelp(self.overrideHelpBtn, self)
 
 		return {
 			self.navigateView
@@ -46,16 +48,16 @@ function Rouge2_BackpackTabViewContainer:buildTabViews(tabContainerId)
 			}, nil, self._closeSkillEditViewCallback, nil, nil, self)
 		}
 	elseif tabContainerId == 4 then
-		local editBtnViews = NavigateButtonsView.New({
+		self.editBtnViews = NavigateButtonsView.New({
 			true,
 			false,
 			false
 		})
 
-		editBtnViews:setOverrideClose(self._closeSkillEditViewCallback, self)
+		self.editBtnViews:setOverrideClose(self._closeSkillEditViewCallback, self)
 
 		return {
-			editBtnViews
+			self.editBtnViews
 		}
 	end
 end
@@ -72,6 +74,17 @@ function Rouge2_BackpackTabViewContainer:switchTab(type)
 	end
 
 	self:dispatchEvent(ViewEvent.ToSwitchTab, Rouge2_Enum.BackpackTabContainerId, type)
+	self:refreshHelpBtnVisible()
+end
+
+function Rouge2_BackpackTabViewContainer:onContainerOpen()
+	self:refreshHelpBtnVisible()
+end
+
+function Rouge2_BackpackTabViewContainer:refreshHelpBtnVisible()
+	local curTabId = self._containerView:getCurTabId()
+
+	self.navigateView:setHelpVisible(curTabId ~= Rouge2_Enum.BagTabType.Career)
 end
 
 function Rouge2_BackpackTabViewContainer:_closeSkillEditViewCallback()
@@ -79,6 +92,20 @@ function Rouge2_BackpackTabViewContainer:_closeSkillEditViewCallback()
 	Rouge2_BackpackController.instance:readAllActiveSkills()
 	ViewMgr.instance:closeView(ViewName.Rouge2_CareerSkillTipsView)
 	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnSwitchSkillViewType, Rouge2_BackpackSkillView.ViewState.Panel)
+end
+
+function Rouge2_BackpackTabViewContainer:overrideHelpBtn()
+	local curTabId = self._containerView:getCurTabId()
+
+	if curTabId == Rouge2_Enum.BagTabType.ActiveSkill then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.BackpackActiveSkill)
+	elseif curTabId == Rouge2_Enum.BagTabType.Buff then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.BackpackBuff)
+	elseif curTabId == Rouge2_Enum.BagTabType.Relics then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.BackpackRelcis)
+	else
+		logError("肉鸽背包界面帮助按钮未定义页签")
+	end
 end
 
 return Rouge2_BackpackTabViewContainer

@@ -52,14 +52,19 @@ function Rouge2_ResultView:_btnskipOnClick()
 
 	Rouge2_Controller.instance:onEndFlowDone()
 	Rouge2_Controller.instance:clearFlow()
+	ViewMgr.instance:closeView(ViewName.Rouge2_SettlementView)
+	ViewMgr.instance:closeView(ViewName.Rouge2_SettlementUnlockView)
 
 	if resultInfo then
 		local reviewInfo = resultInfo.reviewInfo
 		local params = {
-			reviewInfo = reviewInfo
+			reviewInfo = reviewInfo,
+			displayType = Rouge2_OutsideEnum.ResultFinalDisplayType.Result
 		}
 
 		Rouge2_OutsideController.instance:openRougeResultFinalView(params)
+		self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
+		self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
 	else
 		self:closeThis()
 	end
@@ -81,7 +86,6 @@ function Rouge2_ResultView:_btnnextOnClick()
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_featurette_2)
 	else
 		Rouge2_OutsideController.instance:openRougeSettlementView()
-		self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onViewOpenFinish, self)
 	end
 end
 
@@ -97,6 +101,8 @@ function Rouge2_ResultView:_editableInitView()
 	self._curEventEndIndex = 0
 	self._configMap = self:buildConfigMap()
 	self._descList = self:getTriggerConfigs()
+
+	NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.blockEsc)
 end
 
 function Rouge2_ResultView:onOpen()
@@ -122,7 +128,16 @@ function Rouge2_ResultView:onBeforeShowResultContent()
 	local descs = self:filterTypeGroupCfgs(Rouge2_OutsideEnum.BeginType)
 
 	if descs then
-		self._txtdec.text = table.concat(descs)
+		local connect = luaLang("p_rouge2_comma")
+
+		if #descs > 2 then
+			local endStr = table.concat(descs, connect, 2)
+
+			endStr = descs[1] .. endStr
+			self._txtdec.text = endStr
+		else
+			self._txtdec.text = table.concat(descs)
+		end
 
 		gohelper.setActive(self._txtdec.gameObject, true)
 	end

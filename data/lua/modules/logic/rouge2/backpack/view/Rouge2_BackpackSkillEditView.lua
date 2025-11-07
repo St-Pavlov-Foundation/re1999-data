@@ -22,9 +22,7 @@ function Rouge2_BackpackSkillEditView:onInitView()
 	self._btnOrder = gohelper.findChildButtonWithAudio(self.viewGO, "SkilleditPanel/Tab/#btn_Order")
 	self._btnCost = gohelper.findChildButtonWithAudio(self.viewGO, "SkilleditPanel/Tab/#btn_Cost")
 	self._goEmpty = gohelper.findChild(self.viewGO, "SkilleditPanel/List/#go_Empty")
-	self._goTipsBlock = gohelper.findChild(self.viewGO, "SkilleditPanel/#go_TipsBlock")
-	self._btnBlockLeft = gohelper.findChildButtonWithAudio(self.viewGO, "SkilleditPanel/#go_TipsBlock/#btn_BlockLeft")
-	self._btnBlockRight = gohelper.findChildButtonWithAudio(self.viewGO, "SkilleditPanel/#go_TipsBlock/#btn_BlockRight")
+	self._btnClose = gohelper.findChildClickWithDefaultAudio(self.viewGO, "SkilleditPanel/#btn_Close")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -34,18 +32,12 @@ end
 function Rouge2_BackpackSkillEditView:addEvents()
 	self._btnOrder:AddClickListener(self._btnOrderOnClick, self)
 	self._btnCost:AddClickListener(self._btnCostOnClick, self)
-	self._btnBlockLeft:AddClickListener(self._btnBlockLeftOnClick, self)
-	self._btnBlockRight:AddClickListener(self._btnBlockRightOnClick, self)
+	self._btnClose:AddClickDownListener(self._btnCloseOnClick, self)
 
 	self._dragClick = gohelper.getClickWithDefaultAudio(self._goDragArea)
 
 	self._dragClick:AddClickUpListener(self._onClickDragAreaUp, self)
-
-	self._drag = SLFramework.UGUI.UIDragListener.Get(self._goDragArea)
-
-	self._drag:AddDragBeginListener(self._onDragBegin, self)
-	self._drag:AddDragListener(self._onDrag, self)
-	self._drag:AddDragEndListener(self._onDragEnd, self)
+	CommonDragHelper.instance:registerDragObj(self._goDragArea, self._onDragBegin, self._onDrag, self._onDragEnd, nil, self, nil, true)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.ReOpenWhileOpen, self._onOpenView, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
@@ -56,12 +48,9 @@ end
 function Rouge2_BackpackSkillEditView:removeEvents()
 	self._btnOrder:RemoveClickListener()
 	self._btnCost:RemoveClickListener()
-	self._btnBlockLeft:RemoveClickListener()
-	self._btnBlockRight:RemoveClickListener()
+	self._btnClose:RemoveClickDownListener()
 	self._dragClick:RemoveClickUpListener()
-	self._drag:RemoveDragBeginListener()
-	self._drag:RemoveDragListener()
-	self._drag:RemoveDragEndListener()
+	CommonDragHelper.instance:unregisterDragObj(self._goDragArea, self._onDragBegin, self._onDrag, self._onDragEnd, nil, self, nil, true)
 end
 
 function Rouge2_BackpackSkillEditView:_btnOrderOnClick()
@@ -74,16 +63,18 @@ function Rouge2_BackpackSkillEditView:_btnCostOnClick()
 	self:refreshBtnStatus()
 end
 
-function Rouge2_BackpackSkillEditView:_btnBlockLeftOnClick()
-	ViewMgr.instance:closeView(ViewName.Rouge2_CareerSkillTipsView)
-end
+function Rouge2_BackpackSkillEditView:_btnCloseOnClick()
+	if ViewMgr.instance:isOpen(ViewName.Rouge2_CareerSkillTipsView) then
+		ViewMgr.instance:closeView(ViewName.Rouge2_CareerSkillTipsView)
 
-function Rouge2_BackpackSkillEditView:_btnBlockRightOnClick()
-	ViewMgr.instance:closeView(ViewName.Rouge2_CareerSkillTipsView)
+		return
+	end
+
+	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnSwitchSkillViewType, Rouge2_BackpackSkillView.ViewState.Panel)
 end
 
 function Rouge2_BackpackSkillEditView:_onClickDragAreaUp()
-	if not self._longPressUid or self._isTriggerDragFunc then
+	if not self._longPressUid then
 		return
 	end
 
@@ -210,6 +201,10 @@ function Rouge2_BackpackSkillEditView:_onDrag(param, pointerEventData)
 end
 
 function Rouge2_BackpackSkillEditView:_onDragEnd(param, pointerEventData)
+	self:refreshDragItem()
+
+	self._isTriggerDragFunc = false
+
 	if self._close then
 		return
 	end
@@ -221,18 +216,22 @@ function Rouge2_BackpackSkillEditView:_onDragEnd(param, pointerEventData)
 	self._pointerId = -1
 
 	if self._isScroll then
+		self._scrollRect.enabled = true
+
 		self:passEvent2Scroll(pointerEventData, 6)
+		self:setIsDraging(false)
 
 		self._isScroll = false
 
 		return
 	end
 
+	self:setScrollInteractable(true)
+
 	if not self._isDragging then
 		return
 	end
 
-	self:setScrollInteractable(true)
 	self:refreshDragItem()
 	self:updateDragItemPos()
 	self:setIsDraging(false)
@@ -250,8 +249,6 @@ function Rouge2_BackpackSkillEditView:_onDragEnd(param, pointerEventData)
 		end
 	end
 
-	Rouge2_BackpackSkillEditListModel.instance.dragEndFrameCount = UnityEngine.Time.frameCount
-
 	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnEndDragSkill, self._curDragUid, result)
 end
 
@@ -261,8 +258,6 @@ function Rouge2_BackpackSkillEditView:_editableInitView()
 	self:addChildView(self._scrollView)
 	Rouge2_BackpackSkillEditListModel.instance:initSort()
 	Rouge2_BackpackSkillEditListModel.instance:setCurSortType(Rouge2_Enum.BackpackSkillSortType.GetTime, true)
-	gohelper.setActive(self._btnBlockLeft.gameObject, false)
-	gohelper.setActive(self._btnBlockRight.gameObject, false)
 
 	self._goScroll = self._scrollList.gameObject
 	self._tranScroll = self._goScroll.transform
@@ -295,6 +290,13 @@ function Rouge2_BackpackSkillEditView:onOpenChildView(selectIndex)
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.OpenSkillEditView)
 	self:refreshList()
 	self:updateDefaultSelect(selectIndex)
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.OnGuideAssembleCost)
+end
+
+function Rouge2_BackpackSkillEditView:onCloseChildView()
+	self:refreshDragItem()
+	self:setIsDraging(false)
+	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnEndDragSkill, self._curDragUid)
 end
 
 function Rouge2_BackpackSkillEditView:refreshList()
@@ -438,11 +440,6 @@ function Rouge2_BackpackSkillEditView:_onOpenView(viewName, viewParam)
 		return
 	end
 
-	local usage = viewParam and viewParam.usage
-
-	gohelper.setActive(self._btnBlockLeft.gameObject, true)
-	gohelper.setActive(self._btnBlockRight.gameObject, false)
-
 	local dataType = viewParam and viewParam.dataType
 	local dataId = viewParam and viewParam.dataId
 
@@ -455,9 +452,6 @@ function Rouge2_BackpackSkillEditView:_onCloseView(viewName)
 	if viewName ~= ViewName.Rouge2_CareerSkillTipsView then
 		return
 	end
-
-	gohelper.setActive(self._btnBlockLeft.gameObject, false)
-	gohelper.setActive(self._btnBlockRight.gameObject, false)
 
 	self._tipsSkillCo = nil
 

@@ -18,7 +18,7 @@ function Rouge2_MapView:onInitView()
 end
 
 function Rouge2_MapView:addEvents()
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.OnPopGuideView, self._onPopGuideView, self)
+	return
 end
 
 function Rouge2_MapView:removeEvents()
@@ -41,10 +41,6 @@ function Rouge2_MapView:_editableInitView()
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onCreateMapDoneFlowDone, self.onCreateMapDoneFlowDone, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self.onOpenView, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self.onCloseView, self)
-	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onCloseViewFinish, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onUpdateBagInfo, self.onUpdateBagInfo, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onPopViewDone, self.onPopViewDone, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onClearInteract, self.onClearInteract, self)
 	NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.backToMainScene, nil)
 	Rouge2_AttributeToolBar.Load(self._goNormalAttribute, Rouge2_Enum.AttributeToolType.Enter_Attr_Detail)
 	Rouge2_AttributeToolBar.Load(self._goPathSelectAttribute, Rouge2_Enum.AttributeToolType.Enter)
@@ -76,8 +72,6 @@ function Rouge2_MapView:onCloseView(viewName)
 	if self.needPlayOpenAnimViewDict[viewName] then
 		self.animator:Play("open", 0, 0)
 	end
-
-	self:tryTriggerActiveSkillGuide()
 end
 
 function Rouge2_MapView:onBeforeChangeMapInfo()
@@ -112,10 +106,6 @@ function Rouge2_MapView:onOpen()
 	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onFocusNormalLayerActor)
 end
 
-function Rouge2_MapView:onOpenFinish()
-	self:tryTriggerActiveSkillGuide()
-end
-
 function Rouge2_MapView:playNormalLayerAudio()
 	if Rouge2_MapModel.instance:isNormalLayer() then
 		AudioMgr.instance:trigger(AudioEnum.UI.LineExpanded)
@@ -127,96 +117,6 @@ function Rouge2_MapView:refreshAttrTool()
 
 	gohelper.setActive(self._goNormalAttribute, not isPathSelect)
 	gohelper.setActive(self._goPathSelectAttribute, isPathSelect)
-end
-
-function Rouge2_MapView:_onPopGuideView(techniqueId)
-	Rouge2_Controller.instance:openTechniqueView(tonumber(techniqueId))
-end
-
-function Rouge2_MapView:checkCanTriggerGuide()
-	local isTop = Rouge2_MapHelper.checkMapViewOnTop()
-
-	if not isTop then
-		return
-	end
-
-	local isInteract = Rouge2_MapModel.instance:isInteractiving()
-
-	if isInteract then
-		return
-	end
-
-	local isPop = Rouge2_PopController.instance:isPopping()
-
-	if isPop then
-		return
-	end
-
-	return true
-end
-
-function Rouge2_MapView:tryTriggerActiveSkillGuide()
-	local isGuideFinish = GuideModel.instance:isGuideFinish(32057)
-
-	if isGuideFinish then
-		return
-	end
-
-	local hasAnyNotUseSkill = Rouge2_BackpackModel.instance:hasAnyNotUseActiveSkill()
-
-	if not hasAnyNotUseSkill then
-		return
-	end
-
-	if not self:checkCanTriggerGuide() then
-		return
-	end
-
-	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.OnGuideGetActiveSkill)
-
-	return true
-end
-
-function Rouge2_MapView:tryTriggerBXSBoxGuide()
-	local isGuideFinish = GuideModel.instance:isGuideFinish(32059)
-
-	if isGuideFinish or not Rouge2_Model.instance:isUseBXSCareer() then
-		return
-	end
-
-	if not self:checkCanTriggerGuide() then
-		return
-	end
-
-	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.OnGuideBXSBox)
-
-	return true
-end
-
-function Rouge2_MapView:tryTriggerMapGuides()
-	local activeSkillGuide = self:tryTriggerActiveSkillGuide()
-
-	if activeSkillGuide then
-		return
-	end
-
-	self:tryTriggerBXSBoxGuide()
-end
-
-function Rouge2_MapView:onPopViewDone()
-	self:tryTriggerMapGuides()
-end
-
-function Rouge2_MapView:onClearInteract()
-	self:tryTriggerMapGuides()
-end
-
-function Rouge2_MapView:onCloseViewFinish()
-	self:tryTriggerMapGuides()
-end
-
-function Rouge2_MapView:onUpdateBagInfo()
-	self:tryTriggerMapGuides()
 end
 
 function Rouge2_MapView:onClose()

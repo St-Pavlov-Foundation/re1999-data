@@ -253,6 +253,7 @@ function Rouge2_FightSuccessView:refreshFunnyTaskList()
 	end
 
 	gohelper.CreateObjList(self, self._refreshFunnyTaskDesc, descList, self._goDescList, self._txtTaskDesc.gameObject)
+	ZProj.UGUIHelper.RebuildLayout(self._goDescList.transform)
 end
 
 function Rouge2_FightSuccessView._sortFinishFunnyTask(aTaskId, bTaskId)

@@ -6,20 +6,21 @@ local Rouge2_MapUnlockHelper = class("Rouge2_MapUnlockHelper")
 
 Rouge2_MapUnlockHelper.UnlockType = {
 	FinishEntrust = 11,
-	LevelUpRelicsNum = 33,
-	CurEntrustNum = 12,
-	PossessRelicsNum = 13,
-	UnselectChoice = 17,
 	LessThanAttr = 18,
+	PossessRelicsNum = 13,
 	PossessAttr = 5,
-	PossessCoin = 8,
-	ActiveOutGenius = 7,
-	FinishEvent = 4,
 	SelectChoiceNum = 34,
 	PossessItemAnd = 1,
 	PossessItemOr = 2,
-	PassLayer = 6,
 	PossessRevival = 9,
+	CurEntrustNum = 12,
+	LevelUpRelicsNum = 33,
+	SelectPieceChoice = 10001,
+	PossessCoin = 8,
+	ActiveOutGenius = 7,
+	FinishEvent = 4,
+	UnselectChoice = 17,
+	PassLayer = 6,
 	None = 0
 }
 
@@ -32,16 +33,22 @@ function Rouge2_MapUnlockHelper.checkIsUnlock(unlock)
 		for _, unlockInfo in ipairs(unlockInfoList) do
 			local unlockType = unlockInfo.type
 			local unlockParam = unlockInfo.param
-			local handle = Rouge2_MapUnlockHelper.unlockHandleDict[unlockType]
+			local isUnlock = Rouge2_MapUnlockHelper.checkIsOneConditionUnlock(unlockType, unlockParam)
 
-			if handle then
-				local isUnlock = handle(unlockParam)
-
-				if not isUnlock then
-					return
-				end
+			if not isUnlock then
+				return
 			end
 		end
+	end
+
+	return true
+end
+
+function Rouge2_MapUnlockHelper.checkIsOneConditionUnlock(unlockType, unlockParam)
+	local handle = Rouge2_MapUnlockHelper.unlockHandleDict[unlockType]
+
+	if handle then
+		return handle and handle(unlockParam)
 	end
 
 	return true
@@ -81,13 +88,17 @@ function Rouge2_MapUnlockHelper.getLockTips(unlock)
 		for _, unlockInfo in ipairs(unlockInfoList) do
 			local unlockType = unlockInfo.type
 			local unlockParam = unlockInfo.param
-			local descCo = lua_rouge2_unlock_desc.configDict[unlockType]
-			local handle = Rouge2_MapUnlockHelper.getTipHandleDict[unlockType]
+			local isUnlock = Rouge2_MapUnlockHelper.checkIsOneConditionUnlock(unlockType, unlockParam)
 
-			if descCo and handle then
-				local desc = handle(descCo.desc, unlockParam)
+			if not isUnlock then
+				local descCo = lua_rouge2_unlock_desc.configDict[unlockType]
+				local handle = Rouge2_MapUnlockHelper.getTipHandleDict[unlockType]
 
-				table.insert(resultDescList, desc)
+				if descCo and handle then
+					local desc = handle(descCo.desc, unlockParam)
+
+					table.insert(resultDescList, desc)
+				end
 			end
 		end
 
@@ -118,7 +129,7 @@ function Rouge2_MapUnlockHelper._initHandle()
 		[Rouge2_MapUnlockHelper.UnlockType.UnselectChoice] = Rouge2_MapUnlockHelper._checkUnselectChoice,
 		[Rouge2_MapUnlockHelper.UnlockType.LessThanAttr] = Rouge2_MapUnlockHelper._checkLessThanAttr,
 		[Rouge2_MapUnlockHelper.UnlockType.LevelUpRelicsNum] = Rouge2_MapUnlockHelper._checkLevelUpRelicsNum,
-		[Rouge2_MapUnlockHelper.UnlockType.SelectChoiceNum] = Rouge2_MapUnlockHelper._checkSelectChoiceNum
+		[Rouge2_MapUnlockHelper.UnlockType.SelectPieceChoice] = Rouge2_MapUnlockHelper._checkSelectPieceChoice
 	}
 end
 
@@ -142,7 +153,8 @@ function Rouge2_MapUnlockHelper._initGetTipHandle()
 		[Rouge2_MapUnlockHelper.UnlockType.UnselectChoice] = Rouge2_MapUnlockHelper._getUnselectChoiceTips,
 		[Rouge2_MapUnlockHelper.UnlockType.LessThanAttr] = Rouge2_MapUnlockHelper._getPossessAttrTip,
 		[Rouge2_MapUnlockHelper.UnlockType.LevelUpRelicsNum] = Rouge2_MapUnlockHelper._getDefaultTips,
-		[Rouge2_MapUnlockHelper.UnlockType.SelectChoiceNum] = Rouge2_MapUnlockHelper._noParamTips
+		[Rouge2_MapUnlockHelper.UnlockType.SelectChoiceNum] = Rouge2_MapUnlockHelper._noParamTips,
+		[Rouge2_MapUnlockHelper.UnlockType.SelectPieceChoice] = Rouge2_MapUnlockHelper._noParamTips
 	}
 end
 
@@ -234,12 +246,18 @@ function Rouge2_MapUnlockHelper._checkPossessRelicsNum(unlockParam)
 	local unlockParamList = string.splitToNumber(unlockParam, "#")
 	local itemType = unlockParamList[1]
 	local itemNum = unlockParamList[2]
+	local isRemove = unlockParamList[3] == 1
+	local filterParamMap = {
+		[Rouge2_Enum.ItemFilterType.Remove] = {
+			isRemove
+		}
+	}
 	local itemList
 
 	if itemType == 1 then
-		itemList = Rouge2_BackpackModel.instance:getItemList(Rouge2_Enum.BagType.Buff)
+		itemList = Rouge2_BackpackModel.instance:getFilterItemList(Rouge2_Enum.BagType.Buff, filterParamMap)
 	elseif itemType == 2 then
-		itemList = Rouge2_BackpackModel.instance:getItemList(Rouge2_Enum.BagType.Relics)
+		itemList = Rouge2_BackpackModel.instance:getFilterItemList(Rouge2_Enum.BagType.Relics, filterParamMap)
 	else
 		logError(string.format("未定义解锁类型 unlockParam = ", unlockParam))
 	end
@@ -299,6 +317,48 @@ function Rouge2_MapUnlockHelper._checkSelectChoiceNum(unlockParam)
 	end
 end
 
+function Rouge2_MapUnlockHelper._checkSelectPieceChoice(unlockParam)
+	local isMiddle = Rouge2_MapModel.instance:isMiddle()
+
+	if not isMiddle then
+		return
+	end
+
+	local pieceList = Rouge2_MapModel.instance:getPieceList()
+
+	if not pieceList or #pieceList <= 0 then
+		return
+	end
+
+	local selectIdMap = {}
+
+	for _, pieceMo in ipairs(pieceList) do
+		local selectIdList = pieceMo:getSelectIdList()
+
+		if selectIdList then
+			for _, selectId in ipairs(selectIdList) do
+				selectIdMap[selectId] = true
+			end
+		end
+	end
+
+	local choiceIdList = string.splitToNumber(unlockParam, "#")
+
+	if choiceIdList then
+		for _, choiceId in ipairs(choiceIdList) do
+			local choiceCo = lua_rouge2_piece_select.configDict[choiceId]
+
+			if choiceCo then
+				if selectIdMap[choiceId] then
+					return true
+				end
+			else
+				logError(string.format("间隙层棋子选项解锁条件配置错误, 选项配置不存在 unlockParam = %s, choiceId = %s", unlockParam, choiceId))
+			end
+		end
+	end
+end
+
 function Rouge2_MapUnlockHelper._noParamTips(desc, unlockParam)
 	return desc
 end
@@ -318,7 +378,7 @@ function Rouge2_MapUnlockHelper._getPossessItemTip(desc, unlockParam)
 		table.insert(itemNameList, itemName)
 	end
 
-	local fullItemNameStr = table.concat(itemNameList, ",")
+	local fullItemNameStr = table.concat(itemNameList, "/")
 
 	return GameUtil.getSubPlaceholderLuaLangOneParam(desc, fullItemNameStr)
 end

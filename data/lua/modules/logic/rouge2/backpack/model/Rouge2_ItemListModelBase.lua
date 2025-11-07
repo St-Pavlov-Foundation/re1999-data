@@ -6,7 +6,8 @@ local Rouge2_ItemListModelBase = class("Rouge2_ItemListModelBase", MultiSortList
 
 function Rouge2_ItemListModelBase:initSort()
 	Rouge2_ItemListModelBase.super.initSort(self)
-	self:addSortType(1, Rouge2_ItemListModelBase._sortDefault)
+	self:addSortType(1, self._sortDefault)
+	self:addOtherSort(nil, self._sortDefault)
 end
 
 function Rouge2_ItemListModelBase:initList(itemList, selectTabId)

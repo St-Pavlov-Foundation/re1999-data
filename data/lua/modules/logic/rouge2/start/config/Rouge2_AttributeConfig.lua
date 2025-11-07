@@ -34,9 +34,9 @@ function Rouge2_AttributeConfig:_onLoadAttributeConfigs(configTable)
 
 		table.insert(self._type2AttributeList[type], attributeCo)
 
-		local attributeId = attributeCo.id
+		local attrId = attributeCo.id
 
-		self._id2LevelList[attributeId] = GameUtil.splitString2(attributeCo.level)
+		self._id2LevelList[attrId] = GameUtil.splitString2(attributeCo.level)
 	end
 
 	for _, attributeList in pairs(self._type2AttributeList) do
@@ -92,13 +92,13 @@ function Rouge2_AttributeConfig._sortSkillByLevel(aSkill, bSkill)
 	return aSkill.id < bSkill.id
 end
 
-function Rouge2_AttributeConfig:getAttributeConfig(attributeId)
-	attributeId = tonumber(attributeId)
+function Rouge2_AttributeConfig:getAttributeConfig(attrId)
+	attrId = tonumber(attrId)
 
-	local attributeCo = lua_rouge2_attribute.configDict[attributeId]
+	local attributeCo = lua_rouge2_attribute.configDict[attrId]
 
 	if not attributeCo then
-		logError(string.format("肉鸽属性配置为空 attributeId = %s", attributeId))
+		logError(string.format("肉鸽属性配置为空 attributeId = %s", attrId))
 
 		return
 	end
@@ -119,11 +119,11 @@ function Rouge2_AttributeConfig:getPassiveSkillConfig(skillId, level)
 	return skillCo
 end
 
-function Rouge2_AttributeConfig:attributeIdAndValue2LevelConfig(attributeId, attributeValue)
-	local levelList = self._id2LevelList and self._id2LevelList[tonumber(attributeId)]
+function Rouge2_AttributeConfig:attrIdAndValue2LevelConfig(attrId, attrValue)
+	local levelList = self._id2LevelList and self._id2LevelList[tonumber(attrId)]
 
 	if not levelList or #levelList <= 0 then
-		logError(string.format("肉鸽属性评级文本配置不存在 attributeId = %s, attributeValue = %s", attributeId, attributeValue))
+		logError(string.format("肉鸽属性评级文本配置不存在 attributeId = %s, attributeValue = %s", attrId, attrValue))
 
 		return
 	end
@@ -131,7 +131,7 @@ function Rouge2_AttributeConfig:attributeIdAndValue2LevelConfig(attributeId, att
 	local targetCo
 
 	for _, levelCo in ipairs(levelList) do
-		if attributeValue < levelCo[1] then
+		if attrValue < levelCo[1] then
 			break
 		end
 
@@ -141,29 +141,29 @@ function Rouge2_AttributeConfig:attributeIdAndValue2LevelConfig(attributeId, att
 	return targetCo
 end
 
-function Rouge2_AttributeConfig:getAttributeEffectDescList(attributeId, attributeValue)
-	local levelCo = self:attributeIdAndValue2LevelConfig(attributeId, attributeValue)
+function Rouge2_AttributeConfig:getAttributeEffectDescList(attrId, attrValue)
+	local levelCo = self:attrIdAndValue2LevelConfig(attrId, attrValue)
 	local desc = levelCo and levelCo[3]
 
 	return desc
 end
 
-function Rouge2_AttributeConfig:getAttributeLevelKeyworld(attributeId, attributeValue)
-	local levelCo = self:attributeIdAndValue2LevelConfig(attributeId, attributeValue)
+function Rouge2_AttributeConfig:getAttributeLevelKeyworld(attrId, attrValue)
+	local levelCo = self:attrIdAndValue2LevelConfig(attrId, attrValue)
 	local level = levelCo and levelCo[2]
 
 	return level
 end
 
-function Rouge2_AttributeConfig:getAttributeLevelContent(attributeId, attributeValue)
-	local levelCo = self:attributeIdAndValue2LevelConfig(attributeId, attributeValue)
+function Rouge2_AttributeConfig:getAttributeLevelContent(attrId, attrValue)
+	local levelCo = self:attrIdAndValue2LevelConfig(attrId, attrValue)
 	local level = levelCo and levelCo[3]
 
 	return level
 end
 
-function Rouge2_AttributeConfig:getPassiveSkillCo(careerId, attributeId, level)
-	local skillId = Rouge2_CareerConfig.instance:getCareerPassiveSkillId(careerId, attributeId)
+function Rouge2_AttributeConfig:getCareerPassiveSkill(careerId, attrId, level)
+	local skillId = Rouge2_CareerConfig.instance:getCareerPassiveSkillId(careerId, attrId)
 
 	return skillId and self:getPassiveLevelSkillCo(skillId, level)
 end
@@ -179,8 +179,8 @@ function Rouge2_AttributeConfig:getPassiveLevelSkillCo(passiveSkillId, level)
 	return skillCo
 end
 
-function Rouge2_AttributeConfig:getPassiveSkillCommonDesc(careerId, attributeId, level)
-	local skillCo = self:getPassiveSkillCo(careerId, attributeId, level)
+function Rouge2_AttributeConfig:getPassiveSkillCommonDesc(careerId, attrId, level)
+	local skillCo = self:getCareerPassiveSkill(careerId, attrId, level)
 	local descStr = skillCo and skillCo.desc or ""
 
 	if string.nilorempty(descStr) then
@@ -199,8 +199,8 @@ function Rouge2_AttributeConfig:getPassiveSkillCommonDesc(careerId, attributeId,
 	return resultDescList
 end
 
-function Rouge2_AttributeConfig:getPassiveSkillEffectDescList(careerId, attributeId, level)
-	local skillCo = self:getPassiveSkillCo(careerId, attributeId, level)
+function Rouge2_AttributeConfig:getPassiveSkillEffectDescList(careerId, attrId, level)
+	local skillCo = self:getCareerPassiveSkill(careerId, attrId, level)
 	local effectDesc = skillCo and skillCo.effectDesc or ""
 
 	if string.nilorempty(effectDesc) then
@@ -219,10 +219,10 @@ function Rouge2_AttributeConfig:getPassiveSkillEffectDescList(careerId, attribut
 	return resultDescList
 end
 
-function Rouge2_AttributeConfig:getPassiveSkillDescList(careerId, attributeId, level)
+function Rouge2_AttributeConfig:getPassiveSkillDescList(careerId, attrId, level)
 	local descList = {}
-	local commonDescList = self:getPassiveSkillCommonDesc(careerId, attributeId, level)
-	local effectDescList = self:getPassiveSkillEffectDescList(careerId, attributeId, level)
+	local commonDescList = self:getPassiveSkillCommonDesc(careerId, attrId, level)
+	local effectDescList = self:getPassiveSkillEffectDescList(careerId, attrId, level)
 
 	tabletool.addValues(descList, commonDescList)
 	tabletool.addValues(descList, effectDescList)
@@ -230,12 +230,35 @@ function Rouge2_AttributeConfig:getPassiveSkillDescList(careerId, attributeId, l
 	return descList
 end
 
+function Rouge2_AttributeConfig:getPassiveSkillUpDescList(careerId, attrId, level)
+	local descList = {}
+	local skillCo = self:getCareerPassiveSkill(careerId, attrId, level)
+	local upDescStr = skillCo and skillCo.upDesc or ""
+
+	if not string.nilorempty(upDescStr) then
+		local upDescList = string.split(upDescStr, "|")
+
+		tabletool.addValues(descList, upDescList)
+	end
+
+	local levelUpDesc = skillCo.ImLevelUpDesc
+
+	if not string.nilorempty(levelUpDesc) then
+		local levelUpDescList = string.split(levelUpDesc, "|")
+
+		tabletool.addValues(descList, levelUpDescList)
+	end
+
+	return descList
+end
+
 function Rouge2_AttributeConfig:getNextSpPassiveSkill(careerId, attrId, attrValue)
 	local skillList = self:getCareerPassiveSkillList(careerId, attrId)
 	local skillNum = skillList and #skillList or 0
+	local maxSkillLevel = skillNum - 1
 
-	for i = attrValue + 1, skillNum do
-		local skillCo = self:getPassiveSkillCo(careerId, attrId, i)
+	for i = attrValue + 1, maxSkillLevel do
+		local skillCo = self:getCareerPassiveSkill(careerId, attrId, i)
 
 		if not skillCo then
 			return
@@ -244,7 +267,7 @@ function Rouge2_AttributeConfig:getNextSpPassiveSkill(careerId, attrId, attrValu
 		local isSpecial = skillCo and skillCo.isSpecial
 
 		if isSpecial and isSpecial ~= 0 then
-			return i, skillCo
+			return skillCo
 		end
 	end
 end
@@ -261,6 +284,20 @@ function Rouge2_AttributeConfig:getCareerPassiveSkillList_Sp(careerId, attrId)
 	local skillList = self._skillId2SpSkillList and self._skillId2SpSkillList[skillId]
 
 	return skillList
+end
+
+function Rouge2_AttributeConfig:getPassiveSkillImLevelUpDesc(skillId, level)
+	local skillCo = self:getPassiveSkillConfig(skillId, level)
+	local imLevelUpDescList = string.split(skillCo.imLevelUpDesc, "|") or {}
+	local imLevelUpDescStr = table.concat(imLevelUpDescList, "\n")
+
+	return imLevelUpDescStr
+end
+
+function Rouge2_AttributeConfig:getAttrMaxValue(attrId)
+	local attrCo = self:getAttributeConfig(attrId)
+
+	return attrCo and attrCo.showMax or 0
 end
 
 Rouge2_AttributeConfig.instance = Rouge2_AttributeConfig.New()

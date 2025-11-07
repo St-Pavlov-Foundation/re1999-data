@@ -37,12 +37,13 @@ function FightRouge2TechniqueView:onInitView()
 	self._gocenter = gohelper.findChild(self.viewGO, "#go_root/#go_center")
 	self._simageicon = gohelper.findChildSingleImage(self.viewGO, "#go_root/#go_center/content/#simage_icon")
 	self._txttitle = gohelper.findChildText(self.viewGO, "#go_root/#go_center/content/#txt_title")
-	self._txtdec = gohelper.findChildText(self.viewGO, "#go_root/#go_center/content/#txt_dec")
+	self.goDescItem = gohelper.findChild(self.viewGO, "#go_root/#go_center/content/#txt_dec")
 	self._btnquit = gohelper.findChildButtonWithAudio(self.viewGO, "#go_root/#btn_quit", AudioEnum2_9.StealthGame.play_ui_cikeshang_normalclick)
 	self._goleft = gohelper.findChild(self.viewGO, "#go_root/left")
 	self._goscroll = gohelper.findChild(self.viewGO, "#go_root/left/scroll_category")
 	self._gocategorycontent = gohelper.findChild(self.viewGO, "#go_root/left/scroll_category/viewport/#go_categorycontent")
 	self._gostorecategoryitem = gohelper.findChild(self.viewGO, "#go_root/left/scroll_category/viewport/#go_categorycontent/#go_storecategoryitem")
+	self.descItemList = {}
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -206,11 +207,55 @@ function FightRouge2TechniqueView:_refreshContentData(techniqueId)
 
 	local picture = Rouge2_Config.instance:getStealthTechniquePicture(selectedTechniqueId)
 
-	self._simageicon:LoadImage(ResUrl.getSp01AssassinSingleBg("help/" .. picture), self._afterLoadPicture, self)
+	self._simageicon:LoadImage(self:getImageUrl(picture), self._afterLoadPicture, self)
 
 	local content = Rouge2_Config.instance:getStealthTechniqueContent(selectedTechniqueId)
+	local pos = Rouge2_Config.instance:getStealthTechniquePos(selectedTechniqueId)
 
-	self._txtdec.text = content
+	self:refreshDescList(content, pos)
+end
+
+function FightRouge2TechniqueView:refreshDescList(descContent, pos)
+	self:hideAllDescItem()
+
+	if string.nilorempty(descContent) then
+		return
+	end
+
+	local descList = string.split(descContent, "|")
+	local posList = GameUtil.splitString2(pos, true, "|", "#")
+
+	for i, desc in ipairs(descList) do
+		local descItem = self.descItemList[i]
+
+		if not descItem then
+			descItem = self:getUserDataTb_()
+			descItem.go = gohelper.cloneInPlace(self.goDescItem)
+			descItem.txt = descItem.go:GetComponent(gohelper.Type_TextMesh)
+			descItem.rectTr = descItem.go:GetComponent(gohelper.Type_RectTransform)
+
+			table.insert(self.descItemList, descItem)
+		end
+
+		gohelper.setActive(descItem.go, true)
+
+		descItem.txt.text = desc
+
+		local posX = posList[i] and posList[i][1] or 0
+		local posY = posList[i] and posList[i][2] or 0
+
+		recthelper.setAnchor(descItem.rectTr, posX, posY)
+	end
+end
+
+function FightRouge2TechniqueView:hideAllDescItem()
+	for _, descItem in ipairs(self.descItemList) do
+		gohelper.setActive(descItem.go, false)
+	end
+end
+
+function FightRouge2TechniqueView:getImageUrl(picture)
+	return string.format("singlebg/fight/rouge2/%s.png", picture)
 end
 
 function FightRouge2TechniqueView:_afterLoadPicture()
@@ -224,6 +269,8 @@ function FightRouge2TechniqueView:_onOpenView(viewName)
 end
 
 function FightRouge2TechniqueView:_editableInitView()
+	gohelper.setActive(self.goDescItem, false)
+
 	self._transscroll = self._goscroll.transform
 	self._imageicon = self._simageicon:GetComponent(gohelper.Type_Image)
 end

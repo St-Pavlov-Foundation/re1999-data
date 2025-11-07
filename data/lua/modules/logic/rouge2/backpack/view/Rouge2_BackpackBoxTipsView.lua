@@ -58,6 +58,8 @@ function Rouge2_BackpackBoxTipsView:_editableInitView()
 
 	self._confirmAnimator = gohelper.onceAddComponent(goConfirmAnim, gohelper.Type_Animator)
 	self._isFirst = true
+
+	NavigateMgr.instance:addEscape(self.viewName, self.closeThis, self)
 end
 
 function Rouge2_BackpackBoxTipsView:onUpdateParam()

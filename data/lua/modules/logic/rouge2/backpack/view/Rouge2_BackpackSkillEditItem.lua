@@ -52,6 +52,10 @@ function Rouge2_BackpackSkillEditItem:_btnAddOnClick()
 		return
 	end
 
+	if ViewMgr.instance:isOpen(ViewName.Rouge2_CareerSkillTipsView) then
+		return
+	end
+
 	Rouge2_BackpackSkillEditListModel.instance:onSelectUseSkillIndex(self._index)
 end
 
@@ -68,6 +72,14 @@ function Rouge2_BackpackSkillEditItem:_btnSelectOnClick()
 end
 
 function Rouge2_BackpackSkillEditItem:_btnRemoveOnClick()
+	if Rouge2_BackpackSkillEditListModel.instance:isDraging() then
+		return
+	end
+
+	if ViewMgr.instance:isOpen(ViewName.Rouge2_CareerSkillTipsView) then
+		return
+	end
+
 	self._isRemove = Rouge2_BackpackController.instance:tryRemoveActiveSkill(self._index)
 end
 
@@ -184,7 +196,7 @@ function Rouge2_BackpackSkillEditItem:_onBeginDragSkill(uid)
 end
 
 function Rouge2_BackpackSkillEditItem:_onEndDragSkill(uid, isSuccess)
-	if self._skillUid ~= uid then
+	if not self._skillUid or self._skillUid ~= uid then
 		return
 	end
 

@@ -44,7 +44,7 @@
     "stage": 1,
     "value": "1#120013#1",
     "maxBuyCount": 5,
-    "num": 7500,
+    "num": 1500,
     "group": 1,
     "rewardScore": 0,
     "rewardImage": ""
@@ -54,7 +54,7 @@
     "stage": 1,
     "value": "1#180003#1",
     "maxBuyCount": 2,
-    "num": 1500,
+    "num": 750,
     "group": 1,
     "rewardScore": 0,
     "rewardImage": ""
@@ -64,7 +64,7 @@
     "stage": 1,
     "value": "1#110604#1",
     "maxBuyCount": 2,
-    "num": 2000,
+    "num": 1000,
     "group": 1,
     "rewardScore": 0,
     "rewardImage": ""
@@ -74,7 +74,7 @@
     "stage": 1,
     "value": "1#110104#1",
     "maxBuyCount": 2,
-    "num": 2000,
+    "num": 1000,
     "group": 1,
     "rewardScore": 0,
     "rewardImage": ""
@@ -84,7 +84,7 @@
     "stage": 1,
     "value": "1#110303#1",
     "maxBuyCount": 10,
-    "num": 3000,
+    "num": 300,
     "group": 2,
     "rewardScore": 0,
     "rewardImage": ""
@@ -94,7 +94,7 @@
     "stage": 1,
     "value": "1#110403#1",
     "maxBuyCount": 10,
-    "num": 3000,
+    "num": 300,
     "group": 2,
     "rewardScore": 0,
     "rewardImage": ""
@@ -104,7 +104,7 @@
     "stage": 1,
     "value": "1#180002#1",
     "maxBuyCount": 3,
-    "num": 1200,
+    "num": 400,
     "group": 2,
     "rewardScore": 0,
     "rewardImage": ""
@@ -114,7 +114,7 @@
     "stage": 1,
     "value": "1#120012#1",
     "maxBuyCount": 10,
-    "num": 10000,
+    "num": 1000,
     "group": 2,
     "rewardScore": 0,
     "rewardImage": ""
@@ -124,7 +124,7 @@
     "stage": 1,
     "value": "1#110502#1",
     "maxBuyCount": 20,
-    "num": 2000,
+    "num": 100,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -134,7 +134,7 @@
     "stage": 1,
     "value": "1#110702#1",
     "maxBuyCount": 20,
-    "num": 2000,
+    "num": 100,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -144,7 +144,7 @@
     "stage": 1,
     "value": "9#1003#1",
     "maxBuyCount": 20,
-    "num": 1000,
+    "num": 50,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -154,7 +154,7 @@
     "stage": 1,
     "value": "1#120011#1",
     "maxBuyCount": 20,
-    "num": 10000,
+    "num": 500,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -162,9 +162,9 @@
   {
     "id": 2005,
     "stage": 1,
-    "value": "2#3#5000",
+    "value": "2#5#5000",
     "maxBuyCount": 30,
-    "num": 6000,
+    "num": 200,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -172,9 +172,9 @@
   {
     "id": 2006,
     "stage": 1,
-    "value": "2#5#5000",
+    "value": "2#3#5000",
     "maxBuyCount": 30,
-    "num": 9000,
+    "num": 300,
     "group": 3,
     "rewardScore": 0,
     "rewardImage": ""
@@ -186,7 +186,7 @@
     "maxBuyCount": 1,
     "num": 0,
     "group": 0,
-    "rewardScore": 30000,
+    "rewardScore": 20000,
     "rewardImage": "rouge2_store_reward_1"
   }
 ]

@@ -15,7 +15,6 @@ end
 
 function Rouge2_MapChoiceViewExtend:addEvents()
 	self._btnContinue:AddClickListener(self._btnContinueOnClick, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChoiceDialogueDone, self._onChoiceDialogueDone, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeChoiceViewState, self._onChangeState, self)
 end
 
@@ -32,7 +31,7 @@ function Rouge2_MapChoiceViewExtend:onOpen()
 end
 
 function Rouge2_MapChoiceViewExtend:_btnContinueOnClick()
-	if self.nodeMo and self.nodeMo:isFinishEvent() then
+	if self._state == Rouge2_MapEnum.ChoiceViewState.Finish then
 		self:closeThis()
 
 		return
@@ -41,26 +40,16 @@ function Rouge2_MapChoiceViewExtend:_btnContinueOnClick()
 	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onSwitch2SelectChoice)
 end
 
-function Rouge2_MapChoiceViewExtend:_onChoiceDialogueDone()
-	self:refreshContinueTitle()
-	gohelper.setActive(self._btnContinue.gameObject, true)
-end
-
 function Rouge2_MapChoiceViewExtend:_onChangeState(state)
 	if state == self._state then
 		return
 	end
 
 	self._state = state
+	self._isFinish = state == Rouge2_MapEnum.ChoiceViewState.Finish
+	self._txtContinue.text = self._isFinish and luaLang("rouge2_mapchoiceview_end") or luaLang("rouge2_mapchoiceview_continue")
 
-	self:refreshContinueTitle()
-	gohelper.setActive(self._btnContinue.gameObject, state == Rouge2_MapEnum.ChoiceViewState.DialogueDone)
-end
-
-function Rouge2_MapChoiceViewExtend:refreshContinueTitle()
-	local isFinish = self.nodeMo and self.nodeMo:isFinishEvent()
-
-	self._txtContinue.text = isFinish and luaLang("rouge2_mapchoiceview_end") or luaLang("rouge2_mapchoiceview_continue")
+	gohelper.setActive(self._btnContinue.gameObject, state == Rouge2_MapEnum.ChoiceViewState.DialogueDone or state == Rouge2_MapEnum.ChoiceViewState.Finish)
 end
 
 return Rouge2_MapChoiceViewExtend

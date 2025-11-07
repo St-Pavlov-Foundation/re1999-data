@@ -26,14 +26,6 @@ function AutoChessLeaderBuffView:onInitView()
 	end
 end
 
-function AutoChessLeaderBuffView:addEvents()
-	return
-end
-
-function AutoChessLeaderBuffView:removeEvents()
-	return
-end
-
 function AutoChessLeaderBuffView:onClickModalMask()
 	self:closeThis()
 end
@@ -41,6 +33,7 @@ end
 function AutoChessLeaderBuffView:_editableInitView()
 	SkillHelper.addHyperLinkClick(self._txtEnergyDesc, self.clickHyperLink, self)
 	SkillHelper.addHyperLinkClick(self._txtFireDesc, self.clickHyperLink, self)
+	SkillHelper.addHyperLinkClick(self._txtDebrisDesc, self.clickHyperLink, self)
 end
 
 function AutoChessLeaderBuffView:onOpen()
@@ -84,7 +77,7 @@ function AutoChessLeaderBuffView:onOpen()
 
 		local cfg = AutoChessConfig.instance:getSkillEffectDesc(22)
 
-		self._txtFireDesc.text = AutoChessHelper.buildSkillDesc(cfg.desc)
+		self._txtDebrisDesc.text = AutoChessHelper.buildSkillDesc(cfg.desc)
 
 		gohelper.setActive(self._goDebris, true)
 	end

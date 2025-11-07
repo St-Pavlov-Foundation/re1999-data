@@ -44,6 +44,8 @@ function Rouge2_TalentTreeNodeDetailItem:_editableInitView()
 	UISpriteSetMgr.instance:setCurrencyItemSprite(self.imageUpdatePoint, tostring(itemConfig.id) .. "_1")
 
 	self._goreddot = gohelper.findChild(self.go, "#btn_lack/#go_reddot")
+	self.animator = gohelper.findChildComponent(self.go, "", gohelper.Type_Animator)
+	self.canvas = gohelper.findChildComponent(self.go, "", gohelper.Type_CanvasGroup)
 end
 
 function Rouge2_TalentTreeNodeDetailItem:_btnlockedOnClick()
@@ -63,7 +65,7 @@ function Rouge2_TalentTreeNodeDetailItem:_btnlockedOnClick()
 end
 
 function Rouge2_TalentTreeNodeDetailItem:_btnlackOnClick()
-	if Rouge2_Model.instance:isStarted() then
+	if Rouge2_Model.instance:isFinishedDifficulty() or Rouge2_Model.instance:isStarted() then
 		GameFacade.showToast(ToastEnum.Rouge2GameStartTalentTip)
 
 		return
@@ -80,6 +82,8 @@ function Rouge2_TalentTreeNodeDetailItem:_btnlackOnClick()
 	end
 
 	if not Rouge2_TalentModel.instance:isTalentCanActive(talentId) then
+		GameFacade.showToast(ToastEnum.Rouge2UpdatePointNoEnough)
+
 		return
 	end
 
@@ -131,7 +135,13 @@ function Rouge2_TalentTreeNodeDetailItem:refreshUI()
 end
 
 function Rouge2_TalentTreeNodeDetailItem:setActive(active)
-	gohelper.setActive(self.go, active)
+	local anim = active and "open" or "close"
+
+	self.animator:Play(anim, 0, 0)
+
+	local canvas = self.canvas
+
+	canvas.blocksRaycasts = active
 end
 
 function Rouge2_TalentTreeNodeDetailItem:clear()

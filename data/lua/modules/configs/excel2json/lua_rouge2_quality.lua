@@ -4,9 +4,10 @@ module("modules.configs.excel2json.lua_rouge2_quality", package.seeall)
 
 local lua_rouge2_quality = {}
 local fields = {
-	id = 1,
+	relicsColor = 5,
 	name = 2,
 	buffColor = 4,
+	id = 1,
 	rareColor = 3
 }
 local primaryKey = {

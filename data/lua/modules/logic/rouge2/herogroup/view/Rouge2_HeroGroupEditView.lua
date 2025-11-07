@@ -695,7 +695,7 @@ function Rouge2_HeroGroupEditView:_refreshPassiveSkill()
 		return
 	end
 
-	local pskills = self._heroMO:getpassiveskillsCO()
+	local pskills = SkillConfig.instance:getpassiveskillsCO(self._heroMO.heroId)
 	local firstSkill = pskills[1]
 	local skillId = firstSkill.skillPassive
 	local passiveSkillConfig = lua_skill.configDict[skillId]
@@ -726,6 +726,15 @@ function Rouge2_HeroGroupEditView:_refreshPassiveSkill()
 
 	for i = #pskills + 1, #self._passiveskillitems do
 		gohelper.setActive(self._passiveskillitems[i].go, false)
+	end
+
+	if pskills[0] then
+		gohelper.setActive(self._passiveskillitems[0].on, true)
+		gohelper.setActive(self._passiveskillitems[0].off, false)
+		gohelper.setActive(self._passiveskillitems[0].balance, isBalance)
+		gohelper.setActive(self._passiveskillitems[0].go, true)
+	else
+		gohelper.setActive(self._passiveskillitems[0].go, false)
 	end
 end
 
@@ -1089,21 +1098,28 @@ function Rouge2_HeroGroupEditView:_editableInitView()
 	self._passiveskillitems = {}
 
 	for i = 1, 3 do
-		local o = self:getUserDataTb_()
-
-		o.go = gohelper.findChild(self._gopassiveskills, "passiveskill" .. tostring(i))
-		o.on = gohelper.findChild(o.go, "on")
-		o.off = gohelper.findChild(o.go, "off")
-		o.balance = gohelper.findChild(o.go, "balance")
-		self._passiveskillitems[i] = o
+		self._passiveskillitems[i] = self:_findPassiveskillitems(i)
 	end
 
+	self._passiveskillitems[0] = self:_findPassiveskillitems(4)
 	self._skillContainer = MonoHelper.addNoUpdateLuaComOnceToGo(self._goskill, CharacterSkillContainer)
 
+	self._skillContainer:setBalanceHelper(Rouge2_HeroGroupBalanceHelper)
 	gohelper.setActive(self._gononecharacter, false)
 	gohelper.setActive(self._gocharacterinfo, false)
 
 	self._animator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
+end
+
+function Rouge2_HeroGroupEditView:_findPassiveskillitems(index)
+	local o = self:getUserDataTb_()
+
+	o.go = gohelper.findChild(self._gopassiveskills, "passiveskill" .. index)
+	o.on = gohelper.findChild(o.go, "on")
+	o.off = gohelper.findChild(o.go, "off")
+	o.balance = gohelper.findChild(o.go, "balance")
+
+	return o
 end
 
 function Rouge2_HeroGroupEditView:onOpen()

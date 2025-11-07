@@ -18,9 +18,10 @@ function Rouge2_BandRecruitViewContainer:buildTabViews(tabContainerId)
 		local navigationView = NavigateButtonsView.New({
 			true,
 			false,
-			false
+			true
 		})
 
+		navigationView:setOverrideHelp(self.overrideHelpBtn, self)
 		navigationView:setOverrideClose(self.overrideCloaseCallback, self)
 
 		return {
@@ -29,7 +30,15 @@ function Rouge2_BandRecruitViewContainer:buildTabViews(tabContainerId)
 	end
 end
 
+function Rouge2_BandRecruitViewContainer:overrideHelpBtn()
+	Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.BandRecruit)
+end
+
 function Rouge2_BandRecruitViewContainer:overrideCloaseCallback()
+	MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.Rouge2ExitEvent, MsgBoxEnum.BoxType.Yes_No, self.reallyLeaveView, nil, nil, self)
+end
+
+function Rouge2_BandRecruitViewContainer:reallyLeaveView()
 	self._rpcCallbackId = Rouge2_Rpc.instance:sendRouge2EndBandRequest(self.closeThis, self)
 end
 

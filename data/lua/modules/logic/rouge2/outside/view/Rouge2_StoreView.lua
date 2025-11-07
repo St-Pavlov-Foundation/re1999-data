@@ -50,6 +50,19 @@ end
 
 function Rouge2_StoreView:_btnfinalRewardDetailOnClick()
 	local finalRewardConfig = self.finalRewardConfig
+	local isClaimed = Rouge2_StoreModel.instance:getGoodsBuyCount(finalRewardConfig.id) >= finalRewardConfig.maxBuyCount
+
+	if not isClaimed then
+		local curScore = Rouge2_StoreModel.instance:getCurUseScore()
+		local targetScore = finalRewardConfig.rewardScore
+
+		if targetScore <= curScore then
+			Rouge2OutsideRpc.instance:sendRouge2RewardRequest(finalRewardConfig.id, finalRewardConfig.maxBuyCount)
+
+			return
+		end
+	end
+
 	local param = string.splitToNumber(finalRewardConfig.value, "#")
 
 	MaterialTipController.instance:showMaterialInfo(param[1], param[2], false)
@@ -83,7 +96,7 @@ function Rouge2_StoreView:_btnClaimOnClick()
 	local targetScore = finalRewardConfig.rewardScore
 
 	if curScore < targetScore then
-		GameFacade.showToast(ToastEnum.SeasonEquipSlotNotUnlock)
+		GameFacade.showToast(ToastEnum.Rouge2StoreScoreTip)
 
 		return
 	end

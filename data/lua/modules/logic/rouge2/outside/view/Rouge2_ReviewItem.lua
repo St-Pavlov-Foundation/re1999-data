@@ -11,6 +11,7 @@ function Rouge2_ReviewItem:init(go)
 	self._gonew = gohelper.findChild(self.go, "#go_Unlocked/#go_new")
 	self._txtName = gohelper.findChildText(self.go, "#go_Unlocked/#txt_Name")
 	self._btnPlay = gohelper.findChildButtonWithAudio(self.go, "#go_Unlocked/#btn_Play")
+	self._imagePlay = gohelper.findChildImage(self.go, "#go_Unlocked/#btn_Play")
 	self._goLocked = gohelper.findChild(self.go, "#go_Locked")
 	self._goLine = gohelper.findChild(self.go, "#go_Line")
 	self._goLine1 = gohelper.findChild(self.go, "#go_Line/#go_Line1")
@@ -25,12 +26,12 @@ end
 
 function Rouge2_ReviewItem:addEventListeners()
 	self._btnPlay:AddClickListener(self._btnPlayOnClick, self)
-	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnAVGScrollViewValueChanged, self.onScrollValueChanged, self)
 end
 
 function Rouge2_ReviewItem:removeEventListeners()
 	self._btnPlay:RemoveClickListener()
-	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnAVGScrollViewValueChanged, self.onScrollValueChanged, self)
 end
 
 function Rouge2_ReviewItem:_btnPlayOnClick()
@@ -64,14 +65,11 @@ function Rouge2_ReviewItem:_btnPlayOnClick()
 	data.isReplay = true
 
 	StoryController.instance:playStories(self._mo.storyIdList, data)
-
-	if self._showNewFlag then
-		-- block empty
-	end
 end
 
 function Rouge2_ReviewItem:_editableInitView()
 	self.animator = gohelper.findChildComponent(self.go, "", gohelper.Type_Animator)
+	self._subItem = {}
 end
 
 function Rouge2_ReviewItem:setIndex(index)
@@ -91,23 +89,44 @@ function Rouge2_ReviewItem:onUpdateMO(mo, isEnd, reviewView, nodeStoryList, path
 	self:_updateNewFlag()
 end
 
+function Rouge2_ReviewItem:onScrollValueChanged()
+	self:checkRedDot()
+end
+
 function Rouge2_ReviewItem:_updateNewFlag()
-	self._reddotComp = Rouge2_OutsideRedDotComp.Get(self._gonew, self.go, self.scrollGo)
+	self._reddotComp = Rouge2_OutsideRedDotComp.Get(self._gonew, self._btnPlay.gameObject, self.scrollGo)
 
-	self._reddotComp:intReddotInfo(RedDotEnum.DotNode.V3a2_Rouge_Review_AVG, self._mo.config.id, Rouge2_OutsideEnum.LocalData.Avg)
+	local config = self._mo.config
+	local uid
 
-	if self._reddotComp and self._reddotComp._isDotShow then
-		self.animator:Play("unlock", 0, 0)
+	if not string.nilorempty(config.eventId) then
+		uid = tonumber(config.eventId)
 	else
-		self.animator:Play("idle", 0, 0)
+		uid = tonumber(self._mo.storyIdList[#self._mo.storyIdList])
+	end
+
+	self._reddotComp:intReddotInfo(RedDotEnum.DotNode.V3a2_Rouge_Review_AVG, uid, Rouge2_OutsideEnum.LocalData.Avg)
+
+	self._showNewFlag = self._reddotComp._isDotShow
+
+	self:checkRedDot()
+end
+
+function Rouge2_ReviewItem:checkRedDot()
+	if self._reddotComp and self._reddotComp._isDotShow then
+		logNormal("check")
+
+		local unlock = self._reddotComp:refresh()
+
+		if unlock then
+			self.animator:Play("unlock", 0, 0)
+		else
+			self.animator:Play("idle", 0, 0)
+		end
 	end
 end
 
 function Rouge2_ReviewItem:_initNodes(nodeStoryList)
-	if not self._isUnlock then
-		return
-	end
-
 	if not nodeStoryList or #nodeStoryList <= 1 then
 		local showLine = not self._isEnd
 
@@ -128,9 +147,18 @@ function Rouge2_ReviewItem:_initNodes(nodeStoryList)
 	gohelper.setActive(goLine, true)
 
 	for i, v in ipairs(nodeStoryList) do
-		local node = gohelper.findChild(goLine, "#go_End" .. i)
-		local nodeGo = self._reviewView:getResInst(self._path, node, "item" .. v.config.id)
-		local nodeItem = MonoHelper.addNoUpdateLuaComOnceToGo(nodeGo, Rouge2_ReviewItem)
+		local nodeItem
+
+		if not self._subItem[i] then
+			local node = gohelper.findChild(goLine, "#go_End" .. i)
+			local nodeGo = self._reviewView:getResInst(self._path, node, "item" .. v.config.id)
+
+			nodeItem = MonoHelper.addNoUpdateLuaComOnceToGo(nodeGo, Rouge2_ReviewItem)
+
+			table.insert(self._subItem, nodeItem)
+		else
+			nodeItem = self._subItem[i]
+		end
 
 		nodeItem._showLock = true
 
@@ -166,7 +194,7 @@ function Rouge2_ReviewItem:_updateInfo()
 
 	gohelper.setActive(self._goUnlocked, self._isUnlock)
 
-	local canShowLock = self._showLock or self._index == 1
+	local canShowLock = true
 
 	gohelper.setActive(self._goLocked, not self._isUnlock and canShowLock)
 
@@ -174,6 +202,9 @@ function Rouge2_ReviewItem:_updateInfo()
 		return
 	end
 
+	local isAvg = string.nilorempty(self._config.eventId)
+
+	self._imagePlay.enabled = isAvg
 	self._txtName.text = self._config.name
 
 	if not string.nilorempty(self._config.eventId) then
@@ -198,16 +229,17 @@ function Rouge2_ReviewItem:_isUnlockStory(mo)
 		return true
 	end
 
-	local storyList = mo.storyIdList
-	local storyId = storyList[#storyList]
+	if not string.nilorempty(mo.config.eventId) then
+		local illustrationId = tonumber(mo.config.eventId)
+		local illustrationConfig = Rouge2_OutSideConfig.instance:getIllustrationConfig(illustrationId)
 
-	return Rouge2_OutsideModel.instance:storyIsPass(storyId)
-end
+		return illustrationConfig and Rouge2_OutsideModel.instance:passedEventId(illustrationConfig.eventId)
+	else
+		local storyList = mo.storyIdList
+		local storyId = storyList[#storyList]
 
-function Rouge2_ReviewItem:onClearRedDot()
-	self._showNewFlag = false
-
-	gohelper.setActive(self._gonew, self._showNewFlag)
+		return Rouge2_OutsideModel.instance:storyIsPass(storyId)
+	end
 end
 
 function Rouge2_ReviewItem:onDestroy()

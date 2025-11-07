@@ -53,6 +53,8 @@ function Rouge2_BuffDropView:initViewParam()
 	self._dataType = self.viewParam and self.viewParam.dataType
 	self._buffList = self.viewParam and self.viewParam.itemList or {}
 
+	NavigateMgr.instance:removeEscape(self.viewName)
+
 	if self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select then
 		NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.blockEsc)
 	end

@@ -9,6 +9,7 @@ function Rouge2_MapLayerLineView:onInitView()
 	self.goLineIconItem = gohelper.findChild(self.viewGO, "#go_linecontainer/#go_lineitem")
 	self.goLine = gohelper.findChild(self.viewGO, "#go_linecontainer/#go_line")
 	self.goStart = gohelper.findChild(self.viewGO, "#go_linecontainer/#go_start")
+	self.goHead = gohelper.findChild(self.viewGO, "#go_linecontainer/#go_Head")
 	self.txtStartName = gohelper.findChildText(self.viewGO, "#go_linecontainer/#go_start/#txt_startname")
 	self.simageStartIcon = gohelper.findChildSingleImage(self.viewGO, "#go_linecontainer/#go_start/#simage_starticon")
 
@@ -18,7 +19,11 @@ function Rouge2_MapLayerLineView:onInitView()
 end
 
 function Rouge2_MapLayerLineView:addEvents()
-	return
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onConfirmSelectLayer, self.onConfirmSelectLayer, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectLayerChange, self.onSelectLayerChange, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onPathSelectMapFocusDone, self.onPathSelectMapFocusDone, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeMapInfo, self.onChangeMapInfo, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onUpdateMapInfo, self.onUpdateMapInfo, self)
 end
 
 function Rouge2_MapLayerLineView:removeEvents()
@@ -29,16 +34,14 @@ function Rouge2_MapLayerLineView:_editableInitView()
 	gohelper.setActive(self.goLineIconItem, false)
 	gohelper.setActive(self.goLine, false)
 
-	self.rectTrStart = self.goStart:GetComponent(gohelper.Type_RectTransform)
+	self.tranLineContainer = self.goLineContainer.transform
+	self.rectTrStart = self.goStart.transform
+	self.rectTrHead = self.goHead.transform
 
 	self:hide()
 
-	self.lineItemList = {}
-
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectLayerChange, self.onSelectLayerChange, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onPathSelectMapFocusDone, self.onPathSelectMapFocusDone, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeMapInfo, self.onChangeMapInfo, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onUpdateMapInfo, self.onUpdateMapInfo, self)
+	self.lineItemList = self:getUserDataTb_()
+	self.layerId2ItemMap = self:getUserDataTb_()
 end
 
 function Rouge2_MapLayerLineView:onChangeMapInfo()
@@ -104,6 +107,7 @@ function Rouge2_MapLayerLineView:refreshStartPoint()
 	local anchorX, anchorY = Rouge2_MapHelper.getPos(self.pathSelectCo.startPos)
 
 	recthelper.setAnchor(self.rectTrStart, anchorX, anchorY)
+	recthelper.setAnchor(self.rectTrHead, anchorX, anchorY)
 end
 
 function Rouge2_MapLayerLineView:refreshEndPoint()
@@ -114,6 +118,8 @@ function Rouge2_MapLayerLineView:refreshEndPoint()
 	for i = #self.nextLayerList + 1, #self.lineItemList do
 		gohelper.setActive(self.lineItemList[i].lineContainer, false)
 	end
+
+	gohelper.setAsLastSibling(self.goHead)
 end
 
 function Rouge2_MapLayerLineView:refreshEndPointItem(index, layerId)
@@ -125,6 +131,7 @@ function Rouge2_MapLayerLineView:refreshEndPointItem(index, layerId)
 	gohelper.setActive(lineItem.lineContainer, true)
 
 	lineItem.lineContainer.name = layerCo.id
+	self.layerId2ItemMap[layerCo.id] = lineItem
 
 	local pathResInfo = string.split(layerCo.pathRes, "#")
 	local pathIconName = pathResInfo[1]
@@ -140,7 +147,7 @@ function Rouge2_MapLayerLineView:refreshEndPointItem(index, layerId)
 	if middleLayerId and middleLayerId ~= 0 then
 		local middleLayerCo = lua_rouge2_middle_layer.configDict[layerCo.middleLayerId]
 
-		endPointName = middleLayerCo.name
+		endPointName = middleLayerCo.nameWeather
 	else
 		endPointName = Rouge2_MapConfig.instance:getLastLayerEndPointName()
 	end
@@ -216,6 +223,36 @@ end
 
 function Rouge2_MapLayerLineView:hide()
 	gohelper.setActive(self.goLineContainer, false)
+
+	self.selectLayerId = nil
+	self.selectWeatherId = nil
+end
+
+function Rouge2_MapLayerLineView:onConfirmSelectLayer(layerId, weatherId)
+	self.selectLayerId = layerId
+	self.selectWeatherId = weatherId
+
+	local lineItem = self.layerId2ItemMap and self.layerId2ItemMap[self.selectLayerId]
+
+	if not lineItem then
+		return
+	end
+
+	GameUtil.setActiveUIBlock("Rouge2_MapLayerLineView", true, false)
+
+	local lineIconTran = lineItem.rectLineIcon
+	local targetPosX, targetPosY = recthelper.rectToRelativeAnchorPos2(lineIconTran.position, self.tranLineContainer)
+
+	self._tweenId = ZProj.TweenHelper.DOAnchorPos(self.rectTrHead, targetPosX, targetPosY, Rouge2_MapEnum.PathSelectActorDuration, self._onMoveHeadIconDone, self)
+end
+
+function Rouge2_MapLayerLineView:_onMoveHeadIconDone()
+	GameUtil.setActiveUIBlock("Rouge2_MapLayerLineView", false, true)
+
+	local layer = Rouge2_MapModel.instance:getLayerId()
+	local middleLayer = Rouge2_MapModel.instance:getMiddleLayerId()
+
+	Rouge2_Rpc.instance:sendRouge2LeaveMiddleLayerRequest(layer, middleLayer, self.selectLayerId, self.selectWeatherId)
 end
 
 function Rouge2_MapLayerLineView:onDestroyView()
@@ -228,6 +265,14 @@ function Rouge2_MapLayerLineView:onDestroyView()
 	self.lineItemList = nil
 
 	self.simageStartIcon:UnLoadImage()
+
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
+	end
+
+	GameUtil.setActiveUIBlock("Rouge2_MapLayerLineView", false, true)
 end
 
 return Rouge2_MapLayerLineView

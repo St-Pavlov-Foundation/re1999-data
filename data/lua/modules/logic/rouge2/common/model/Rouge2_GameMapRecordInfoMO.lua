@@ -61,4 +61,12 @@ function Rouge2_GameMapRecordInfoMO:isFinishEntrust(entrustId)
 	return self._finishEntrustMap and self._finishEntrustMap[entrustId] == true
 end
 
+function Rouge2_GameMapRecordInfoMO:getFinishEntrustNum()
+	return self._finishEntrustList and #self._finishEntrustList or 0
+end
+
+function Rouge2_GameMapRecordInfoMO:getFinishEntrustIdList()
+	return self._finishEntrustList
+end
+
 return Rouge2_GameMapRecordInfoMO

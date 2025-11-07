@@ -136,7 +136,7 @@ function FightViewWaitingAreaVersion1.getCardPos(index, count)
 
 	index = index - preSpecialCount
 
-	return FightViewWaitingAreaVersion1.StartPosX - 192 * (count - index)
+	return FightViewWaitingAreaVersion1.StartPosX - FightViewWaitingAreaVersion1.CardItemWidth * (count - index)
 end
 
 function FightViewWaitingAreaVersion1:_onSetUseCards()
@@ -238,6 +238,7 @@ function FightViewWaitingAreaVersion1:_beforePlaySkill(entity, skillId, fightSte
 	end
 
 	FightPlayCardModel.instance:playCard(fightStepData.cardIndex)
+	self:playScaleTween()
 
 	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		self:refreshSkillText(skillId, entity.id)
@@ -256,6 +257,9 @@ function FightViewWaitingAreaVersion1:refreshSkillText(skillId, entityId)
 
 	local renderValue = self._txtCardDesc:GetRenderedValues()
 	local descHeight = renderValue.y
+
+	descHeight = math.max(0, descHeight)
+
 	local height = descHeight + 83
 
 	recthelper.setHeight(self._rectTrCardDesc, descHeight)
@@ -297,6 +301,7 @@ function FightViewWaitingAreaVersion1:onASFDStart(entity, skillId, fightStepData
 	end
 
 	FightPlayCardModel.instance:playCard(fightStepData.cardIndex)
+	self:playScaleTween()
 
 	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Play then
 		self:refreshSkillText(skillId, entity.id)
@@ -444,14 +449,24 @@ function FightViewWaitingAreaVersion1:refreshLYCard(usedCards)
 	end
 end
 
+FightViewWaitingAreaVersion1.ScaleInterval = 0.05
+FightViewWaitingAreaVersion1.PrefabWidth = 1270
+FightViewWaitingAreaVersion1.CardItemWidth = 192
+
 function FightViewWaitingAreaVersion1:playScaleTween(count)
+	count = count or FightPlayCardModel.instance:getRemainCardCount()
+
 	self:_releaseScalseTween()
 
-	local toScale = count > 7 and 1 - (count - 7) * 0.12 or 1
+	local lastPosX = FightViewWaitingAreaVersion1.getCardPos(1, count)
+	local needWidth = FightViewWaitingAreaVersion1.StartPosX - lastPosX + FightViewWaitingAreaVersion1.CardItemWidth
+	local toScale = 1
 
-	if toScale < 0 then
-		toScale = 0.5
+	if needWidth > FightViewWaitingAreaVersion1.PrefabWidth then
+		toScale = FightViewWaitingAreaVersion1.PrefabWidth / needWidth
 	end
+
+	toScale = math.max(0.3, toScale)
 
 	local skillScale = 1 / toScale
 

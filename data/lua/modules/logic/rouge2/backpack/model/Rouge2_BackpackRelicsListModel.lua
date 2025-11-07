@@ -23,7 +23,7 @@ function Rouge2_BackpackRelicsListModel._sortDefault(aItem, bItem)
 	local aRare = aItem:getRare()
 	local bRare = bItem:getRare()
 
-	if aRare ~= bRare then
+	if aRare and bRare and aRare ~= bRare then
 		return bRare < aRare
 	end
 
@@ -53,6 +53,7 @@ function Rouge2_BackpackRelicsListModel:_addFormulaItem(itemList)
 		local formulaItem = Rouge2_BagItemMO.New()
 
 		formulaItem._uid = -formulaId
+		formulaItem.id = formulaItem._uid
 		formulaItem._itemId = formulaId
 		formulaItem._config = Rouge2_OutSideConfig.instance:getFormulaConfig(formulaId)
 		formulaItem.alchemyInfo = alchemyInfo

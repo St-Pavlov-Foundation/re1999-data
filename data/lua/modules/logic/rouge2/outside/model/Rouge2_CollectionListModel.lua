@@ -39,13 +39,15 @@ function Rouge2_CollectionListModel:_canShow(co)
 		return true
 	end
 
-	local isPass = Rouge2_OutsideModel.instance:collectionIsPass(co.id)
+	local targetId = Rouge2_OutsideEnum.CollectionTagType[self._selectedType - 1]
 
-	if self._selectedType == 2 then
-		return isPass
+	if targetId == nil then
+		logError("当前指定的tag不存在 " .. "索引" .. self._selectedType)
 	end
 
-	return not isPass
+	local tag = Rouge2_BackpackHelper.itemId2Tag(co.id)
+
+	return tag == targetId
 end
 
 function Rouge2_CollectionListModel:onCollectionDataUpdate()
@@ -58,9 +60,7 @@ function Rouge2_CollectionListModel:onCollectionDataUpdate()
 
 	if list then
 		for _, co in pairs(list) do
-			local isTagFilter = Rouge2_CollectionHelper.checkCollectionHasAnyOneTag(co.id, nil, self._baseTagFilterMap, self._extraTagFilterMap)
-
-			if isTagFilter then
+			if self:_canShow(co) then
 				local type = Rouge2_BackpackHelper.itemId2Tag(co.id)
 				local map = typeMap[type]
 
@@ -73,9 +73,7 @@ function Rouge2_CollectionListModel:onCollectionDataUpdate()
 					table.insert(typeList, map)
 				end
 
-				if self:_canShow(co) then
-					table.insert(map, co)
-				end
+				table.insert(map, co)
 			end
 		end
 	end

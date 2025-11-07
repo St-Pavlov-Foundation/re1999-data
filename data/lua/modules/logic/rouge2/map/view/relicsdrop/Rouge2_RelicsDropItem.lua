@@ -31,6 +31,7 @@ function Rouge2_RelicsDropItem:addEventListeners()
 	self._btnSelect:AddClickListener(self._btnSelectOnClick, self)
 	self._btnSelect2:AddClickListener(self._btnSelect2OnClick, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onConfirmSelectDrop, self.onConfirmSelectDrop, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectDropChange, self.onSelectDropChange, self)
 end
 
@@ -40,6 +41,10 @@ function Rouge2_RelicsDropItem:removeEventListeners()
 end
 
 function Rouge2_RelicsDropItem:onClickSelf()
+	if self._viewType ~= Rouge2_MapEnum.ItemDropViewEnum.Select and self._viewType ~= Rouge2_MapEnum.ItemDropViewEnum.LevelUp then
+		return
+	end
+
 	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onSelectDropChange, self._index)
 end
 
@@ -49,6 +54,7 @@ function Rouge2_RelicsDropItem:_btnSelectOnClick()
 	end
 
 	GameUtil.setActiveUIBlock("Rouge2_RelicsDropItem", true, false)
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onConfirmSelectDrop, self._index)
 	self._comRelicsItem:playAnim("light", self._onSelectAnimDone, self)
 end
 
@@ -116,6 +122,16 @@ function Rouge2_RelicsDropItem:onSelectDropChange(index)
 	self:onSelect(self._index == index)
 end
 
+function Rouge2_RelicsDropItem:onConfirmSelectDrop(index)
+	if index == self._index then
+		return
+	end
+
+	self._isClsoe = true
+
+	self._comRelicsItem:playAnim("close")
+end
+
 function Rouge2_RelicsDropItem:setParentScroll(parentScroll)
 	self._comRelicsItem:setParentScroll(parentScroll)
 end
@@ -128,8 +144,14 @@ function Rouge2_RelicsDropItem:onUpdateMO(index, viewType, dataType, dataId, par
 	self._relicsCo, self._relicsMo = Rouge2_BackpackHelper.getItemCofigAndMo(dataType, dataId)
 	self._relicsId = self._relicsCo and self._relicsCo.id
 
+	self:onSelect(false)
 	self._comRelicsItem:onUpdateMO(dataType, dataId)
 	self._comRelicsItem:playAnim("open")
+
+	self._isClsoe = false
+
+	gohelper.setActive(self._goSelect, false)
+	gohelper.setActive(self._goSelect2, false)
 end
 
 function Rouge2_RelicsDropItem:onSelect(isSelect)
@@ -149,7 +171,7 @@ function Rouge2_RelicsDropItem:onSelect(isSelect)
 end
 
 function Rouge2_RelicsDropItem:_onCloseView(viewName)
-	if viewName ~= ViewName.Rouge2_RelicsDropView then
+	if viewName ~= ViewName.Rouge2_RelicsDropView or self._isClsoe then
 		return
 	end
 

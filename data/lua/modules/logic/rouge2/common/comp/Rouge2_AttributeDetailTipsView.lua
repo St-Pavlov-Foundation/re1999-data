@@ -7,8 +7,8 @@ local Rouge2_AttributeDetailTipsView = class("Rouge2_AttributeDetailTipsView", B
 function Rouge2_AttributeDetailTipsView:onInitView()
 	self._goRoot = gohelper.findChild(self.viewGO, "#go_Root")
 	self._goTips = gohelper.findChild(self.viewGO, "#go_Root/#go_Tips")
-	self._goLevelList = gohelper.findChild(self.viewGO, "#go_Root/#go_Tips/bg/#go_LevelList")
-	self._goEffectTips = gohelper.findChild(self.viewGO, "#go_Root/#go_Tips/bg/#go_LevelList/#go_EffectTips")
+	self._goLevelList = gohelper.findChild(self.viewGO, "#go_Root/#go_Tips/bg/#scroll_resistance/viewport/content")
+	self._goEffectTips = gohelper.findChild(self.viewGO, "#go_Root/#go_Tips/bg/#scroll_resistance/viewport/content/#go_EffectTips")
 	self._btnCloseTips = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Root/#go_Tips/#btn_CloseTips")
 
 	if self._editableInitView then
@@ -63,7 +63,8 @@ function Rouge2_AttributeDetailTipsView:_refreshSkillTipsItem(obj, skillCo, inde
 	gohelper.setActive(txtEffectOn.gameObject, isOn)
 	gohelper.setActive(txtEffectOff.gameObject, not isOn)
 
-	local result = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("rouge2_effecttips"), skillCo.level, self._attrName, skillCo.imLevelUpDesc)
+	local imLevelUpDescStr = Rouge2_AttributeConfig.instance:getPassiveSkillImLevelUpDesc(skillCo.id, skillCo.level)
+	local result = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("rouge2_effecttips2"), skillCo.level, self._attrName, imLevelUpDescStr)
 
 	txtEffectOn.text = SkillHelper.buildDesc(result)
 	txtEffectOff.text = SkillHelper.buildDesc(result)

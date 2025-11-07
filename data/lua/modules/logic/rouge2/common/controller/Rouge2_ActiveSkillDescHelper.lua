@@ -12,6 +12,7 @@ function Rouge2_ActiveSkillDescHelper._type2GetDescFunc(descType)
 		Rouge2_ActiveSkillDescHelper._getDescFuncMap = {}
 		Rouge2_ActiveSkillDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.Desc] = Rouge2_ActiveSkillDescHelper._getDesc_Desc
 		Rouge2_ActiveSkillDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.NarrativeDesc] = Rouge2_ActiveSkillDescHelper._getDesc_NarrativeDesc
+		Rouge2_ActiveSkillDescHelper._getDescFuncMap[Rouge2_Enum.RelicsDescType.NarrativeDescOutside] = Rouge2_ActiveSkillDescHelper._getDesc_NarrativeDescOutside
 	end
 
 	local func = Rouge2_ActiveSkillDescHelper._getDescFuncMap[descType]
@@ -62,6 +63,16 @@ function Rouge2_ActiveSkillDescHelper._getDesc_NarrativeDesc(model, config, desc
 	end
 
 	local descMo = Rouge2_ItemDescHelper._buildDescMo(descType, descMode, Rouge2_Enum.RelicsDescParam.Desc, config.narrativeDesc)
+
+	table.insert(resultDescList, descMo)
+end
+
+function Rouge2_ActiveSkillDescHelper._getDesc_NarrativeDescOutside(model, config, descType, descMode, resultDescList)
+	if string.nilorempty(config.narrativeDesc) then
+		return
+	end
+
+	local descMo = Rouge2_ItemDescHelper._buildDescMo(descType, descMode, Rouge2_Enum.RelicsDescParam.Desc, string.format("<color=#C2AA99><i>%s<i></color>", config.narrativeDesc))
 
 	table.insert(resultDescList, descMo)
 end

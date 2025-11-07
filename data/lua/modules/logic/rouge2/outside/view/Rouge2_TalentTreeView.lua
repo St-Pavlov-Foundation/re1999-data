@@ -85,21 +85,27 @@ function Rouge2_TalentTreeView:playActive(geniusId)
 	self:refreshTalentPoint()
 	self:refreshTreeNode(false)
 	Rouge2_OutsideController.instance:lockScreen(true, Rouge2_OutsideEnum.TalentLightAnimTime)
-	TaskDispatcher.runDelay(self.onLightAnimPlayFinish, self, Rouge2_OutsideEnum.TalentRefreshAnimTime)
+	TaskDispatcher.runDelay(self.onLightAnimPlayFinish, self, Rouge2_OutsideEnum.TalentLightAnimTime)
 
 	local nextGeniusId = Rouge2_TalentModel.instance:getNextOrderTalentId(geniusId)
+
+	self.nextGeniusId = nextGeniusId
+
+	local lastIndex = #self._useItemNodeList
 
 	for index, item in ipairs(self._useItemNodeList) do
 		if item.id == geniusId then
 			AudioMgr.instance:trigger(AudioEnum.Rouge2.TalentActive)
 			item:playLight()
 
-			local lineIndex, linePos = self:getItemLinePos(index)
-			local posDic = Rouge2_OutsideEnum.TalentLinePos[lineIndex]
-			local value = posDic and posDic[linePos + 1] and posDic[linePos + 1] or 0
-			local previousValue = posDic and posDic[linePos] and posDic[linePos] or 1
+			if index < lastIndex then
+				local lineIndex, linePos = self:getItemLinePos(index)
+				local posDic = Rouge2_OutsideEnum.TalentLinePos[lineIndex]
+				local value = posDic and posDic[linePos + 1] and posDic[linePos + 1] or 0
+				local previousValue = posDic and posDic[linePos] and posDic[linePos] or 1
 
-			self:talentLineBgTween(lineIndex, previousValue, value)
+				self:talentLineBgTween(lineIndex, previousValue, value)
+			end
 		elseif item.id == nextGeniusId then
 			TaskDispatcher.runDelay(self.onRefreshAnimPlayFinish, self, Rouge2_OutsideEnum.TalentRefreshAnimTime)
 			item:playRefresh(true)
@@ -117,6 +123,10 @@ function Rouge2_TalentTreeView:talentLineBgTween(lineIndex, previousValue, targe
 
 	local param = lineIndex
 	local lineItem = self._bgLineItemList[lineIndex]
+
+	if not lineItem then
+		return
+	end
 
 	gohelper.setActive(lineItem.itemGo, true)
 
@@ -205,7 +215,7 @@ end
 
 function Rouge2_TalentTreeView:onRefreshAnimPlayFinish()
 	for _, item in ipairs(self._useItemNodeList) do
-		if item.id == self._curGeniusId then
+		if item.id == self.nextGeniusId then
 			item:refreshUI()
 			item:playRefresh(false)
 		end
@@ -378,8 +388,8 @@ function Rouge2_TalentTreeView:refreshTalentPoint()
 	self._txtnum.text = tostring(Rouge2_TalentModel.instance:getTalentPoint())
 
 	local maxtalentpointConfig = Rouge2_OutSideConfig.instance:getConstConfigById(Rouge2_Enum.OutSideConstId.TalentPointMaxCount)
-	local maxtalentpoint = tostring(maxtalentpointConfig.value)
-	local getAllPoint = Rouge2_TalentModel.instance:getHadAllTalentPoint()
+	local maxtalentpoint = tonumber(maxtalentpointConfig.value)
+	local getAllPoint = math.min(Rouge2_TalentModel.instance:getHadAllTalentPoint(), maxtalentpoint)
 	local param = {
 		getAllPoint,
 		maxtalentpoint
@@ -395,6 +405,7 @@ function Rouge2_TalentTreeView:onClose()
 
 	TaskDispatcher.cancelTask(self.onLightAnimPlayFinish, self)
 	TaskDispatcher.cancelTask(self.onRefreshAnimPlayFinish, self)
+	Rouge2_TalentModel.instance:setCurSelectId(nil)
 end
 
 function Rouge2_TalentTreeView:onDestroyView()

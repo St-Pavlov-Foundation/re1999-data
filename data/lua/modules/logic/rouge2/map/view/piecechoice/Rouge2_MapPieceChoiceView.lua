@@ -9,15 +9,6 @@ function Rouge2_MapPieceChoiceView:_editableInitView()
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectPieceChoice, self.onSelectPieceChoice, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onPopViewDone, self.onPopViewDone, self)
 	Rouge2_MapPieceChoiceView.super._editableInitView(self)
-
-	local goTitle = gohelper.findChild(self.viewGO, "Title")
-
-	gohelper.setActive(goTitle, false)
-
-	self._goFullBG = gohelper.findChild(self.viewGO, "#go_BG/#simage_FullBG")
-
-	gohelper.setActive(self._goBG, true)
-	gohelper.setActive(self._goFullBG, false)
 end
 
 function Rouge2_MapPieceChoiceView:onClickBlockOnFinishState()
@@ -27,7 +18,6 @@ end
 function Rouge2_MapPieceChoiceView:onSelectPieceChoice(pieceMo, choiceId)
 	self._selectPieceMo = pieceMo
 	self._choiceId = choiceId
-	self.preSelectChoiceId = choiceId
 	self._waitUpdate = true
 
 	self:triggerSelectDesc()
@@ -93,7 +83,6 @@ function Rouge2_MapPieceChoiceView:initData()
 	self.pieceMo = self.viewParam
 	self.talkId = self.pieceMo.talkId
 	self.talkCo = lua_rouge2_piece_talk.configDict[self.talkId]
-	self.preSelectChoiceId = 0
 end
 
 function Rouge2_MapPieceChoiceView:onOpen()
@@ -104,11 +93,53 @@ function Rouge2_MapPieceChoiceView:onOpen()
 end
 
 function Rouge2_MapPieceChoiceView:refreshUI()
-	self._txtName.text = self.talkCo.title
+	local title = self.talkCo and self.talkCo.title
+	local hasTitle = not string.nilorempty(title)
+
+	self._txtName.text = title
+
+	gohelper.setActive(self._goTitle, hasTitle)
+
+	local bg = self.talkCo and self.talkCo.picture
+	local hasBG = not string.nilorempty(bg)
+
+	gohelper.setActive(self._goFullBG, hasBG)
+
+	if hasBG then
+		self._simageFullBG:LoadImage(ResUrl.getRouge2Icon("choice/" .. bg))
+	end
 end
 
 function Rouge2_MapPieceChoiceView:refreshDesc()
+	local triggerHandle = self:tryTriggerHandle()
+
+	if triggerHandle then
+		return
+	end
+
 	Rouge2_MapDialogueHelper.initPieceDialogue(self._dialogueListComp, self.pieceMo, self.enterDialogueDone, self)
+end
+
+function Rouge2_MapPieceChoiceView:tryTriggerHandle()
+	if self.pieceMo:isFinish() then
+		return
+	end
+
+	local canSelectList = self.pieceMo and self.pieceMo:getCanselectIds()
+
+	if canSelectList and #canSelectList > 0 then
+		return
+	end
+
+	local lastChoiceId = self.pieceMo:getLastSelectId()
+
+	if not lastChoiceId or lastChoiceId == 0 then
+		return
+	end
+
+	self:onSelectPieceChoice(self.pieceMo, lastChoiceId)
+
+	return true
 end
 
 function Rouge2_MapPieceChoiceView:enterDialogueDone()

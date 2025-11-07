@@ -38,6 +38,10 @@ function GuideExceptionController:onInit()
 	self.checkFuncDict.checkReturnFalse = GuideExceptionChecker.checkReturnFalse
 	self.checkFuncDict.checkMaterialNotEnough = GuideExceptionChecker.checkMaterialNotEnough
 	self.checkFuncDict.checkCan174EnoughHpToBet = GuideExceptionChecker.checkCan174EnoughHpToBet
+	self.checkFuncDict.checkRouge2AlreadyHaveAlchemy = GuideExceptionChecker.checkRouge2AlreadyHaveAlchemy
+	self.checkFuncDict.checkCanRouge2EnoughMaterialToAlchemy = GuideExceptionChecker.checkCanRouge2EnoughMaterialToAlchemy
+	self.checkFuncDict.checkRouge2TalentIsActive = GuideExceptionChecker.checkRouge2TalentIsActive
+	self.checkFuncDict.checkRouge2TalentEnoughToActive = GuideExceptionChecker.checkRouge2TalentEnoughToActive
 	self.handlerFuncDict = {}
 	self.handlerFuncDict.finishStep = GuideExceptionHandler.finishStep
 	self.handlerFuncDict.finishGuide = GuideExceptionHandler.finishGuide

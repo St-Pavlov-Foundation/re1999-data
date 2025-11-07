@@ -4,6 +4,9 @@ module("modules.logic.rouge2.start.view.Rouge2_DifficultySelectView", package.se
 
 local Rouge2_DifficultySelectView = class("Rouge2_DifficultySelectView", BaseView)
 
+Rouge2_DifficultySelectView.PercentColor = "#CE6A51"
+Rouge2_DifficultySelectView.BracketColor = "#5E7DD9"
+
 function Rouge2_DifficultySelectView:onInitView()
 	self._scrollList = gohelper.findChildScrollRect(self.viewGO, "Middle/#scroll_List")
 	self._goContent = gohelper.findChild(self.viewGO, "Middle/#scroll_List/Viewport/#go_Content")
@@ -210,11 +213,12 @@ function Rouge2_DifficultySelectView:refreshUI()
 
 	local desc = self._difficultyCo.desc
 
-	self._txtDescr.text = SkillHelper.buildDesc(desc)
+	self._txtDescr.text = SkillHelper.buildDesc(desc, Rouge2_DifficultySelectView.PercentColor, Rouge2_DifficultySelectView.BracketColor)
 
 	local scoreReward = self._difficultyCo.scoreReward
+	local scroreRewardStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("rouge2_difficultyselectview_reward"), scoreReward)
 
-	self._txtDescr2.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("rouge2_difficultyselectview_reward"), scoreReward)
+	self._txtDescr2.text = SkillHelper.buildDesc(scroreRewardStr, Rouge2_DifficultySelectView.PercentColor, Rouge2_DifficultySelectView.BracketColor)
 end
 
 function Rouge2_DifficultySelectView:refreshArrows()
@@ -229,6 +233,12 @@ function Rouge2_DifficultySelectView:refreshArrows()
 	gohelper.setActive(goDisenableLeft, not canSwitch2Pre)
 	gohelper.setActive(goEnableRight, canSwitch2Next)
 	gohelper.setActive(goDisenableRight, not canSwitch2Next)
+
+	local isPrePage = Rouge2_DifficultySelectListModel.instance:isIndexValid(false)
+	local isNextPage = Rouge2_DifficultySelectListModel.instance:isIndexValid(true)
+
+	gohelper.setActive(self._goLeftArrow, isPrePage)
+	gohelper.setActive(self._goRightArrow, isNextPage)
 end
 
 function Rouge2_DifficultySelectView:onClose()

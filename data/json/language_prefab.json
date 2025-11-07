@@ -23261,7 +23261,7 @@
   },
   {
     "id": "p_rouge2_main_txt_Prop",
-    "lang": "材料"
+    "lang": "材料仓库"
   },
   {
     "id": "p_rouge2_main_txt_Talent",
@@ -24061,7 +24061,7 @@
   },
   {
     "id": "p_rouge2_settlementview_txt_TitleDropEn",
-    "lang": "TEMP"
+    "lang": "Artefacts Obtained"
   },
   {
     "id": "p_rouge2_settlementview_txt_TitleLoss",
@@ -24069,7 +24069,7 @@
   },
   {
     "id": "p_rouge2_settlementview_txt_TitleLossEn",
-    "lang": "TEMP"
+    "lang": "Lose Artefact"
   },
   {
     "id": "p_rouge2_buffdropview_txt_Title",
@@ -24085,7 +24085,7 @@
   },
   {
     "id": "p_rouge2_buffdropview_txt_TitleDropEn",
-    "lang": "TEMP"
+    "lang": "Harmonic Obtained"
   },
   {
     "id": "p_rouge2_buffdropview_txt_TitleLoss",
@@ -24093,7 +24093,7 @@
   },
   {
     "id": "p_rouge2_buffdropview_txt_TitleLossEn",
-    "lang": "TEMP"
+    "lang": "Lose Harmonic"
   },
   {
     "id": "p_rouge2_attributeupview_txt_Title",
@@ -24117,7 +24117,7 @@
   },
   {
     "id": "p_rouge2_activeskilldropview_txt_TitleSelectEn",
-    "lang": "TEMP"
+    "lang": "Select Resonator"
   },
   {
     "id": "p_rouge2_activeskilldropview_txt_TitleLoss",
@@ -24125,7 +24125,7 @@
   },
   {
     "id": "p_rouge2_activeskilldropview_txt_TitleLossEn",
-    "lang": "TEMP"
+    "lang": "Lose Resonator"
   },
   {
     "id": "p_rouge2_activeskilldropview_txt_Title",
@@ -24173,7 +24173,7 @@
   },
   {
     "id": "p_rouge2_difficultyselectview_txt_Setting",
-    "lang": "设定："
+    "lang": "难度效果："
   },
   {
     "id": "p_rouge2alchemyenterview_txt_Title",
@@ -24217,7 +24217,7 @@
   },
   {
     "id": "p_v3a2_storeroleskinview_rolename2",
-    "lang": "伽菈波娜"
+    "lang": "伽菈波那"
   },
   {
     "id": "p_v3a2_storeroleskinview2_roletxt1",
@@ -24425,7 +24425,7 @@
   },
   {
     "id": "p_rouge2alchemylistview_txt_empty",
-    "lang": "点击左侧金点子添加"
+    "lang": "请选择想要配搭的好旅伴"
   },
   {
     "id": "p_rouge2alchemylistview_txt_need",
@@ -24469,7 +24469,7 @@
   },
   {
     "id": "p_rouge2_mapstoreview_txt_TitleEn",
-    "lang": "TEMP"
+    "lang": "Shopping Time"
   },
   {
     "id": "p_rouge2_mapstoreview_txt_Buy",
@@ -24629,7 +24629,7 @@
   },
   {
     "id": "p_rouge2talentreeview_txt_dec3",
-    "lang": "已获取的节拍：<#eb5f34>▩1%s</color>/▩2%s\n成长节拍:每在沉默者沙龙中进行1次\n搭配可以获得1个成长节拍。成长节\n拍可用于激活天赋"
+    "lang": "已获取的节拍：<#eb5f34>▩1%s</color>/▩2%s\n成长节拍：每在沉默者沙龙中进行1次\n搭配可以获得1个成长节拍。成长节\n拍可用于激活天赋"
   },
   {
     "id": "p_rouge2talenttreeview_txt_light",
@@ -24649,7 +24649,7 @@
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_titleEn",
-    "lang": "TEMP"
+    "lang": "Replace"
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_title2",
@@ -24657,11 +24657,11 @@
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_dec",
-    "lang": "通过获取【力量】、【反应】或【奥秘】属性，累计打磨进度\n打磨进度达到2时，可以进行一次【弦钉获取】，获得共鸣造物和拨弦手专属的其他强力造物"
+    "lang": "通过获取<#B84E32>【力量】</color>、<#B84E32>【反应】</color>或<#B84E32>【奥秘】</color>属性，累计打磨进度\n打磨进度达到<#B84E32>2</color>时，可以进行一次【弦钉获取】，获得<#B84E32>共鸣器和拨弦手专属的其他强力造物</color>\n弦钉获取需使用【身体素质】进行检定，检定结果关系到获取的专属造物的<#B84E32>品质</color>"
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_confirm",
-    "lang": "打磨弦丝"
+    "lang": "弦钉获取"
   },
   {
     "id": "p_rouge2_backpackskillview_txt_box",
@@ -24713,7 +24713,7 @@
   },
   {
     "id": "p_rouge2_herorecruitview_txt_titleEn",
-    "lang": "TEMP"
+    "lang": "Recruit"
   },
   {
     "id": "p_rouge2_herorecruitview_txt_shouqi",
@@ -24745,7 +24745,7 @@
   },
   {
     "id": "p_rouge2_settlementview_txt_TitleStrengthEn",
-    "lang": "TEMP"
+    "lang": "Select Artefacts"
   },
   {
     "id": "p_rouge2_mapstoreview_txt_lefttitle",
@@ -24765,7 +24765,7 @@
   },
   {
     "id": "p_rouge2_mapstoreview_txt_bubble_stealFail",
-    "lang": "你在做什么"
+    "lang": "你在干什么"
   },
   {
     "id": "p_rouge2_mapstoreview_txt_bubble_return",
@@ -24785,7 +24785,7 @@
   },
   {
     "id": "p_rouge2_mapstoreview_stealFail_fightFailTips",
-    "lang": "偷来的财务都被收回了"
+    "lang": "偷来的财物都被收回了"
   },
   {
     "id": "p_rouge2_mapstoreview_stealFail_fightSuccTitle",
@@ -24797,31 +24797,31 @@
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_1_1",
-    "lang": "每个回合会随机发放3种<#FF906A>音符</color>在普通咒语上"
+    "lang": "回合开始时，将随机发放电能音符、仪式音符、升阶音符<#FF906A>各1枚</color>，至未被发放音符的咒语"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_1_2",
-    "lang": "打出拥有音符的普通咒语时，上方的写入区将会<#FF906A>记录</color>对应的音符<#FF906A>写入区</color>的音符将会一直保留，在每回合开始时会<#FF906A>触发特殊效果</color>"
+    "lang": "打出附带音符的咒语时，会在乐谱中<#FF906A>写入</color>对应音符<#FF906A>回合开始时</color>，乐谱中的音符将<#FF906A>触发特殊效果</color>"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_2_1",
-    "lang": "当写入区的音符达到上限时再写入音符，则会<#FF906A>激发</color>最左的音符"
+    "lang": "当乐谱中的音符达到上限时，写入新的音符，会使<#FF906A>最左侧</color>音符消失并转化为对应咒语"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_2_2",
-    "lang": "激发的音符会生成对应的<#FF906A>音符咒语</color>进操作区上，且不占用行动点数"
+    "lang": "音符转化的<#FF906A>咒语</color>不占用行动点数"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_3_1",
-    "lang": "拨弦手能带入最多3种<#FF906A>宝藏</color>进战斗中"
+    "lang": "拨弦手能携带最多3种<#FF906A>共鸣造物</color>进入战斗"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_3_2",
-    "lang": "每回合开始将会<#FF906A>随机增加</color>宝藏的计数\n当<#FF906A>任意宝藏计数</color>填满时，都将触发特殊效果"
+    "lang": "回合开始时，<#FF906A>随机共鸣造物</color>的计数将会增加\n共鸣造物的<#FF906A>计数</color>累计至最大值时，将触发强大的战斗效果"
   },
   {
     "id": "p_v3a2_rouge2_help_1_txt_4_1",
-    "lang": "在特定战斗中，角色回复的生命值<#FF906A>只能保留一回合</color>，该部分生命值称之为<#FF906A>虚血</color>，<#FF906A>虚血</color>会在下回合开始时自动清空"
+    "lang": "在本次玩法中，具有特殊机制<#FF906A>“失谐”</color>，角色回复的生命值将被转化为临时生命值，该临时生命值将在下一回合开始时清空"
   },
   {
     "id": "p_v3a2_storeview_txt_title1",
@@ -24858,5 +24858,25 @@
   {
     "id": "p_rouge2_relicsdropview_txt_successEffect",
     "lang": "成功激活"
+  },
+  {
+    "id": "p_rouge2_backpackskillview_txt_UnifitTag",
+    "lang": "属性不匹配"
+  },
+  {
+    "id": "p_rouge2_mapstoreview_txt_SellOut",
+    "lang": "已售出"
+  },
+  {
+    "id": "p_rouge2_attributetoolbar_txt_newtips",
+    "lang": "可装配共鸣器"
+  },
+  {
+    "id": "p_rouge2_attributeupview_max",
+    "lang": "当前属性已达到上限"
+  },
+  {
+    "id": "p_rouge2_comma",
+    "lang": "，"
   }
 ]

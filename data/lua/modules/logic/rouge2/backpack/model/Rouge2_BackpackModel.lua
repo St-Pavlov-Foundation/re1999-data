@@ -109,6 +109,8 @@ function Rouge2_BackpackModel:updateItems(itemInfoList)
 	if bagInfo then
 		bagInfo:updateItems(itemInfoList)
 	end
+
+	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onUpdateBagInfo)
 end
 
 function Rouge2_BackpackModel:removeItems(itemInfoList)

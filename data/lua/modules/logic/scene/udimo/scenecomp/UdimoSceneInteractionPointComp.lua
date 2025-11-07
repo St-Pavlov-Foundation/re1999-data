@@ -234,6 +234,11 @@ end
 
 function UdimoSceneInteractionPointComp:onSceneClose()
 	self.pointResUrl = nil
+
+	if not gohelper.isNil(self.interactPointGO) then
+		gohelper.destroy(self.interactPointGO)
+	end
+
 	self.interactPointGO = nil
 
 	self:removeEventListeners()

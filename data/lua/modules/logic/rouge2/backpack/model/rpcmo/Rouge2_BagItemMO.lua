@@ -6,6 +6,7 @@ local Rouge2_BagItemMO = pureTable("Rouge2_BagItemMO")
 
 function Rouge2_BagItemMO:init(info)
 	self._uid = info.uid
+	self.id = self._uid
 	self._itemId = info.itemId
 	self._count = info.count
 	self._bagType = Rouge2_BackpackHelper.uid2BagType(self._uid)

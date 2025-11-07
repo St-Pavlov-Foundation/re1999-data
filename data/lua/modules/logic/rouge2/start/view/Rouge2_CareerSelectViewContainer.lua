@@ -29,8 +29,10 @@ function Rouge2_CareerSelectViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			true,
-			false
+			true
 		}, nil, self.closeCallback, nil, nil, self)
+
+		self.navigateView:setOverrideHelp(self.overrideHelpBtn, self)
 
 		return {
 			self.navigateView
@@ -40,6 +42,10 @@ end
 
 function Rouge2_CareerSelectViewContainer:closeCallback()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.BackEnterScene, Rouge2_OutsideEnum.SceneIndex.MainScene)
+end
+
+function Rouge2_CareerSelectViewContainer:overrideHelpBtn()
+	Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.CareerSelect)
 end
 
 return Rouge2_CareerSelectViewContainer

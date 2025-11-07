@@ -6,7 +6,9 @@ local Rouge2_ResultMO = pureTable("Rouge2_ResultMO")
 
 function Rouge2_ResultMO:init(info)
 	self.endHeroId = info.endHeroId
-	self.checkUseLeaderAttr = tonumber(info.checkUseLeaderAttr)
+
+	self:updateCheckEvent(info.checkStr)
+
 	self.finishEventId = info.finishEventId
 	self.gainCoin = tonumber(info.gainCoin)
 	self.stepNum = tonumber(info.stepNum)
@@ -29,6 +31,63 @@ function Rouge2_ResultMO:init(info)
 	self.addCurrency = info.addCurrency
 end
 
+function Rouge2_ResultMO:updateCheckEvent(checkStr)
+	self.attributeCheckTotalCount = 0
+	self.attributeCheckCountDic = {}
+	self.attributeCheckMaxId = 0
+	self.attributeCheckSuccessCount = 0
+
+	if not string.nilorempty(checkStr) then
+		local table = cjson.decode(checkStr)
+
+		if table and next(table) then
+			for attributeStr, checkParam in pairs(table) do
+				local attributeId = tonumber(attributeStr)
+
+				if attributeId then
+					local attributeConfig = Rouge2_AttributeConfig.instance:getAttributeConfig(attributeId)
+
+					if not attributeConfig then
+						logError("肉鸽2 前端不存在的attributeConfigId :" .. tostring(attributeId))
+					else
+						for stateStr, count in pairs(checkParam) do
+							local state = tonumber(stateStr)
+
+							if state then
+								self.attributeCheckTotalCount = self.attributeCheckTotalCount + count
+
+								if state ~= Rouge2_OutsideEnum.AttributeCheckState.Fail then
+									self.attributeCheckSuccessCount = self.attributeCheckSuccessCount + count
+								end
+
+								if not self.attributeCheckCountDic[attributeId] then
+									self.attributeCheckCountDic[attributeId] = 0
+								end
+
+								self.attributeCheckCountDic[attributeId] = self.attributeCheckCountDic[attributeId] + count
+							end
+						end
+					end
+				end
+			end
+		end
+
+		local maxCheckCount = 0
+		local maxCheckAttrId = 0
+
+		if next(self.attributeCheckCountDic) then
+			for attributeId, checkCount in pairs(self.attributeCheckCountDic) do
+				if maxCheckCount < checkCount then
+					maxCheckAttrId = attributeId
+					maxCheckCount = checkCount
+				end
+			end
+		end
+
+		self.attributeCheckMaxId = maxCheckAttrId
+	end
+end
+
 function Rouge2_ResultMO:updateReviewInfo(reviewInfo)
 	if not self.reviewInfo then
 		self.reviewInfo = Rouge2_ReviewMO.New()
@@ -38,7 +97,7 @@ function Rouge2_ResultMO:updateReviewInfo(reviewInfo)
 end
 
 function Rouge2_ResultMO:isSucceed()
-	local endId = self.end2Score and self.end2Score[1]
+	local endId = self.reviewInfo and self.reviewInfo.endId
 
 	return endId and endId ~= 0
 end

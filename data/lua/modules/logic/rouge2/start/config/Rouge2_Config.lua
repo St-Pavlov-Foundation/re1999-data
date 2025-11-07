@@ -36,8 +36,6 @@ function Rouge2_Config:onConfigLoaded(configName, configTable)
 		self._endingConfig = configTable
 	elseif configName == "rouge2_technique" then
 		self.techniqueConfig = configTable
-
-		self:onTechniqueConfigLoaded(configTable)
 	end
 end
 
@@ -101,26 +99,6 @@ function Rouge2_Config:getAchievementJumpId()
 	return jumpId
 end
 
-function Rouge2_Config:onTechniqueConfigLoaded(configTable)
-	self._mapShowTechniqueDict = {}
-
-	for _, cfg in ipairs(configTable.configList) do
-		local mapId = cfg.showInMap
-		local idList = self._mapShowTechniqueDict[mapId]
-
-		if not idList then
-			idList = {}
-			self._mapShowTechniqueDict[mapId] = idList
-		end
-
-		idList[#idList + 1] = cfg.id
-	end
-end
-
-function Rouge2_Config:getMapShowTechniqueList(mapId)
-	return self._mapShowTechniqueDict and self._mapShowTechniqueDict[mapId]
-end
-
 function Rouge2_Config:getStealthTechniqueCfg(techniqueId)
 	local cfg = self.techniqueConfig.configDict[techniqueId]
 
@@ -167,6 +145,12 @@ function Rouge2_Config:getStealthTechniqueContent(techniqueId)
 	local cfg = self:getStealthTechniqueCfg(techniqueId)
 
 	return cfg and cfg.content
+end
+
+function Rouge2_Config:getStealthTechniquePos(techniqueId)
+	local cfg = self:getStealthTechniqueCfg(techniqueId)
+
+	return cfg and cfg.pos
 end
 
 function Rouge2_Config:getTechniqueIdList()

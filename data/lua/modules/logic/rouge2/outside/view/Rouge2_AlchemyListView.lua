@@ -214,6 +214,7 @@ function Rouge2_AlchemyListView:onClickFormula(id)
 	if id ~= nil then
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
 		Rouge2_AlchemyItemListModel.instance:setSelect(id)
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnAlchemyFormulaItemClick)
 	else
 		Rouge2_AlchemyItemListModel.instance:clearSelect()
 	end
@@ -253,6 +254,7 @@ function Rouge2_AlchemyListView:onClickSubMaterial(id)
 		self._curSubMaterialId = id
 
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnAlchemyMaterialItemClick)
 	else
 		local index = Rouge2_AlchemyModel.instance:getCurSubMaterialIndex(id)
 
@@ -371,7 +373,8 @@ function Rouge2_AlchemyListView:refreshSubMaterial()
 		local item = self:getSubMaterialItem(i)
 
 		gohelper.setActive(item.go, true)
-		item:setInfo(Rouge2_OutsideEnum.SubMaterialDisplayType.Wearable, id)
+		item:setInfo(id, nil, Rouge2_OutsideEnum.SubMaterialDisplayType.Wearable)
+		item:setSelect(i == self._curSubMaterialIndex)
 	end
 
 	if maxCount < itemCount then
@@ -387,13 +390,13 @@ end
 
 function Rouge2_AlchemyListView:refreshCurMaterial()
 	local curSelectDic = Rouge2_AlchemyModel.instance:getCurSubMaterialDic()
-	local haveSelectMaterial = curSelectDic and next(curSelectDic)
+	local haveSelectMaterial = curSelectDic and next(curSelectDic) ~= nil
 	local selectMaterial = self._curSubMaterialId ~= nil
 
 	gohelper.setActive(self._btnadd, haveSelectMaterial)
-	gohelper.setActive(self._scrollsubMaterialDesc, selectMaterial)
+	gohelper.setActive(self._scrollsubMaterialDesc, haveSelectMaterial and selectMaterial)
 
-	if selectMaterial == false then
+	if haveSelectMaterial == false or selectMaterial == false then
 		return
 	end
 
@@ -417,9 +420,8 @@ end
 
 function Rouge2_AlchemyListView:createMaterialItem(index)
 	local parent = self._subMaterialParentList[index]
-	local path = self.viewContainer._viewSetting.otherRes[2]
-	local itemGo = self:getResInst(path, parent.gameObject, tostring(index))
-	local item = MonoHelper.addNoUpdateLuaComOnceToGo(itemGo, Rouge2_AlchemySubMaterialItem)
+	local itemGo = gohelper.clone(self._gosmallitem, parent.gameObject)
+	local item = MonoHelper.addNoUpdateLuaComOnceToGo(itemGo, Rouge2_AlchemyNeedMaterialItem)
 
 	return item
 end
@@ -515,7 +517,7 @@ function Rouge2_AlchemyListView:refreshFormulaNeed(needMaterialParam)
 		local item = self._needMainMaterialItemList[index]
 
 		gohelper.setActive(item.go, true)
-		item:setInfo(info[1], needCount)
+		item:setInfo(info[1], needCount, Rouge2_OutsideEnum.SubMaterialDisplayType.DisplayOnly)
 	end
 
 	local itemCount = #self._needMainMaterialItemList
@@ -538,7 +540,7 @@ function Rouge2_AlchemyListView:refreshFormulaNeed(needMaterialParam)
 		local item = self._needSubMaterialItemList[i]
 
 		gohelper.setActive(item.go, true)
-		item:setInfo(materialId)
+		item:setInfo(materialId, nil, Rouge2_OutsideEnum.SubMaterialDisplayType.DisplayOnly)
 	end
 
 	itemCount = #self._needSubMaterialItemList

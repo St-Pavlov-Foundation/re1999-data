@@ -138,7 +138,17 @@ function Rouge2_MapPieceItem:onClick()
 	Rouge2_MapController.instance:moveToPieceItem(self.pieceMo, self.onMoveDone, self)
 end
 
+function Rouge2_MapPieceItem:isActive()
+	return self.pieceCo.entrustType ~= Rouge2_MapEnum.PieceEntrustType.None
+end
+
 function Rouge2_MapPieceItem:onMoveDone()
+	if Rouge2_MapModel.instance:getCurPosIndex() == self.pieceMo.index then
+		self:onReceiveMsg()
+
+		return
+	end
+
 	local layer = Rouge2_MapModel.instance:getLayerId()
 	local middleLayer = Rouge2_MapModel.instance:getMiddleLayerId()
 

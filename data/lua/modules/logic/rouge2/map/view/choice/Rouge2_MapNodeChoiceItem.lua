@@ -30,12 +30,20 @@ function Rouge2_MapNodeChoiceItem:onClickSelf()
 	if self.status == Rouge2_MapEnum.ChoiceStatus.Select then
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.SelectChoice)
 		self.animator:Play("select", 0, 0)
+		Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.onLightAttr)
 		TaskDispatcher.cancelTask(self.onSelectAnimDone, self)
 		TaskDispatcher.runDelay(self.onSelectAnimDone, self, Rouge2_MapEnum.ChoiceSelectAnimDuration)
 		UIBlockMgr.instance:startBlock(Rouge2_MapEnum.WaitChoiceItemAnimBlock)
 	else
+		self:dispatchAttrLightEvent()
 		Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onChoiceItemStatusChange, self.choiceId)
 	end
+end
+
+function Rouge2_MapNodeChoiceItem:dispatchAttrLightEvent()
+	local lightAttrList = string.splitToNumber(self.choiceCo.attribute, "#")
+
+	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.onLightAttr, lightAttrList)
 end
 
 function Rouge2_MapNodeChoiceItem:onSelectAnimDone()

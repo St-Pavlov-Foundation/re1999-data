@@ -36,25 +36,17 @@ function Rouge2_SettlementUnlockView:_btncloseOnClick()
 	local resultInfo = Rouge2_Model.instance:getRougeResult()
 
 	if resultInfo then
+		ViewMgr.instance:closeView(ViewName.Rouge2_SettlementView)
+		ViewMgr.instance:closeView(ViewName.Rouge2_ResultView)
+		self:closeThis()
+
 		local reviewInfo = resultInfo.reviewInfo
 		local params = {
-			reviewInfo = reviewInfo
+			reviewInfo = reviewInfo,
+			displayType = Rouge2_OutsideEnum.ResultFinalDisplayType.Result
 		}
 
 		Rouge2_OutsideController.instance:openRougeResultFinalView(params)
-		self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
-		self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
-	else
-		self:closeThis()
-	end
-end
-
-function Rouge2_SettlementUnlockView:_onOpenViewFinishCallBack(viewName)
-	if viewName == ViewName.Rouge2_ResultFinalView then
-		self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
-		ViewMgr.instance:closeView(ViewName.Rouge2_SettlementUnlockView)
-		ViewMgr.instance:closeView(ViewName.Rouge2_SettlementView)
-		self:closeThis()
 	end
 end
 
@@ -67,8 +59,12 @@ function Rouge2_SettlementUnlockView:_editableInitView()
 	self._talentNodeItemList = {}
 
 	gohelper.setActive(self._gotalenttreeitem, false)
+	gohelper.setActive(self._gocollectionitem, false)
 
 	self._goMaterialEmpty = gohelper.findChild(self.viewGO, "empty")
+	self._goCareerLayout = gohelper.findChild(self.viewGO, "Layout")
+
+	NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.blockEsc)
 end
 
 function Rouge2_SettlementUnlockView:onUpdateParam()
@@ -84,9 +80,16 @@ function Rouge2_SettlementUnlockView:onOpen()
 end
 
 function Rouge2_SettlementUnlockView:refreshUI()
-	self:refreshCareerInfo()
-	self:refreshTalentInfo()
 	self:refreshMaterialInfo()
+
+	local isUnlockCareer = Rouge2_OutsideController.instance:isCareerUnlock()
+
+	gohelper.setActive(self._goCareerLayout, isUnlockCareer)
+
+	if not isUnlockCareer then
+		self:refreshCareerInfo()
+		self:refreshTalentInfo()
+	end
 end
 
 function Rouge2_SettlementUnlockView:refreshCareerInfo()
@@ -145,6 +148,11 @@ function Rouge2_SettlementUnlockView:refreshMaterialInfo()
 
 	gohelper.setActive(self._goMaterialEmpty, materialCount <= 0)
 	Rouge2_ResultMaterialListModel.instance:initList(getMaterialList)
+	gohelper.CreateObjList(self, self.onMaterialItemShow, Rouge2_ResultMaterialListModel.instance:getList(), nil, self._gocollectionitem, Rouge2_ResultCollectionListItem)
+end
+
+function Rouge2_SettlementUnlockView:onMaterialItemShow(item, data, index)
+	item:onUpdateMO(data)
 end
 
 function Rouge2_SettlementUnlockView:getTalentItem(index)
@@ -161,7 +169,7 @@ function Rouge2_SettlementUnlockView:getTalentItem(index)
 end
 
 function Rouge2_SettlementUnlockView:onClose()
-	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinishCallBack, self)
+	return
 end
 
 function Rouge2_SettlementUnlockView:onDestroyView()

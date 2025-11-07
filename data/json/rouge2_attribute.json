@@ -7,7 +7,7 @@
     "type": 1,
     "level": "",
     "min": 0,
-    "showMax": 25
+    "showMax": 12
   },
   {
     "id": 102,
@@ -17,7 +17,7 @@
     "type": 1,
     "level": "",
     "min": 0,
-    "showMax": 25
+    "showMax": 12
   },
   {
     "id": 103,
@@ -27,7 +27,7 @@
     "type": 1,
     "level": "",
     "min": 0,
-    "showMax": 25
+    "showMax": 12
   },
   {
     "id": 104,
@@ -37,7 +37,7 @@
     "type": 1,
     "level": "",
     "min": 0,
-    "showMax": 25
+    "showMax": 12
   },
   {
     "id": 105,
@@ -47,7 +47,7 @@
     "type": 1,
     "level": "",
     "min": 0,
-    "showMax": 25
+    "showMax": 12
   },
   {
     "id": 106,
@@ -106,7 +106,7 @@
     "icon": "",
     "type": 2,
     "level": "",
-    "min": 12,
+    "min": 30,
     "showMax": 0
   },
   {
@@ -231,7 +231,7 @@
   },
   {
     "id": 320,
-    "name": "§反应 - 受击自身最大生命",
+    "name": "§检定层数动态修正",
     "careerDesc": "",
     "icon": "",
     "type": 3,
@@ -341,7 +341,7 @@
   },
   {
     "id": 331,
-    "name": "§鸡煲用感知",
+    "name": "§管钟手主属性成长",
     "careerDesc": "",
     "icon": "",
     "type": 3,
@@ -361,7 +361,7 @@
   },
   {
     "id": 333,
-    "name": "§鸡煲用良知",
+    "name": "§拨弦手主属性成长",
     "careerDesc": "",
     "icon": "",
     "type": 3,
@@ -441,50 +441,50 @@
   },
   {
     "id": 406,
-    "name": "§激情造物计数收益 - 力量",
+    "name": "§五维基础成长 2%*力量",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
   },
   {
     "id": 407,
-    "name": "§激情造物计数收益 - 反应",
+    "name": "§五维基础成长 1%*力量",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
   },
   {
     "id": 408,
-    "name": "§激情造物计数收益 - 奥秘",
+    "name": "§五维基础成长 2%*反应",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
   },
   {
     "id": 409,
-    "name": "§激情造物计数收益 - 感知",
+    "name": "§五维基础成长 2%*奥秘",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
   },
   {
     "id": 410,
-    "name": "§激情造物计数收益 - 激情",
+    "name": "§五维基础成长 2%*感知",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
@@ -554,7 +554,7 @@
     "name": "§商品价格修正千分比",
     "careerDesc": "",
     "icon": "",
-    "type": 4,
+    "type": 3,
     "level": "",
     "min": 0,
     "showMax": 0
@@ -601,12 +601,12 @@
   },
   {
     "id": 501,
-    "name": "§线上热更备用1",
+    "name": "§主角技能COST上限",
     "careerDesc": "",
     "icon": "",
-    "type": 3,
+    "type": 2,
     "level": "",
-    "min": 0,
+    "min": 12,
     "showMax": 0
   },
   {

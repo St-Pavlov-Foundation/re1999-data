@@ -79,6 +79,10 @@ end
 local PopMusicAddPower = 15
 
 function FightViewRougeSkill2:onAddPlayOperationData(op)
+	if not op:isPlayCard() then
+		return
+	end
+
 	if not FightRouge2MusicBehaviourHelper.hasMusicNote(op) then
 		return
 	end
@@ -275,10 +279,10 @@ function FightViewRougeSkill2:initSkillItem()
 			skillItem.simageIcon_Not = gohelper.findChildSingleImage(skillItem.goNotCost, "#simage_icon")
 			skillItem.simageIcon = gohelper.findChildSingleImage(skillItem.goCanCost, "#simage_icon")
 
-			local imageUrl = self:getImageUrl(skillInfo)
+			local itemId = self:getItemId(skillInfo)
 
-			skillItem.simageIcon_Not:LoadImage(imageUrl)
-			skillItem.simageIcon:LoadImage(imageUrl)
+			Rouge2_IconHelper.setGameItemIcon(itemId, skillItem.simageIcon_Not)
+			Rouge2_IconHelper.setGameItemIcon(itemId, skillItem.simageIcon)
 
 			skillItem.skillInfo = skillInfo
 		end
@@ -318,10 +322,10 @@ function FightViewRougeSkill2:initDescItem()
 			descItem.simageIcon_Not = gohelper.findChildSingleImage(descItem.goNotCost, "#simage_icon")
 			descItem.simageIcon = gohelper.findChildSingleImage(descItem.goCanCost, "#simage_icon")
 
-			local imageUrl = self:getImageUrl(skillInfo)
+			local itemId = self:getItemId(skillInfo)
 
-			descItem.simageIcon_Not:LoadImage(imageUrl)
-			descItem.simageIcon:LoadImage(imageUrl)
+			Rouge2_IconHelper.setGameItemIcon(itemId, descItem.simageIcon_Not)
+			Rouge2_IconHelper.setGameItemIcon(itemId, descItem.simageIcon)
 
 			descItem.skillInfo = skillInfo
 		end
@@ -357,7 +361,7 @@ function FightViewRougeSkill2:getSkillInfoDesc(skillInfo)
 	return string.format("%s\nCOST<color=#FFA500>-%s</color>", co.desc, skillInfo.needPower)
 end
 
-function FightViewRougeSkill2:getImageUrl(skillInfo)
+function FightViewRougeSkill2:getItemId(skillInfo)
 	local co = self.skillId2Co[skillInfo.skillId]
 
 	if not co then
@@ -366,9 +370,7 @@ function FightViewRougeSkill2:getImageUrl(skillInfo)
 		co = lua_rouge2_active_skill.configList[1]
 	end
 
-	local url = string.format("singlebg/rouge2/backpack/skill/%s.png", co.icon)
-
-	return url
+	return co.id
 end
 
 function FightViewRougeSkill2:onDestroyView()

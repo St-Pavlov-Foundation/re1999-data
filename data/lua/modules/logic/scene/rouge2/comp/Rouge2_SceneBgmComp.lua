@@ -17,6 +17,12 @@ function Rouge2_SceneBgmComp:changeBgm()
 		bgmId = layerCo.bgm
 	end
 
+	local curPlayingId = AudioBgmManager.instance:getCurPlayingId()
+
+	if curPlayingId and curPlayingId ~= 0 and curPlayingId == bgmId then
+		return
+	end
+
 	AudioBgmManager.instance:modifyAndPlay(AudioBgmEnum.Layer.Rouge2Scene, bgmId, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 

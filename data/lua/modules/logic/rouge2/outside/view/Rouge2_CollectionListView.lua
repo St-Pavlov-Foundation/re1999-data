@@ -24,12 +24,10 @@ function Rouge2_CollectionListView:onInitView()
 	self._txtlocked = gohelper.findChildText(self.viewGO, "Right/#go_locked/locked/#txt_locked")
 	self._gounget = gohelper.findChild(self.viewGO, "Right/#go_unget")
 	self._imageicon2 = gohelper.findChildSingleImage(self.viewGO, "Right/#go_unget/#image_icon2")
-	self._gobasetags2 = gohelper.findChild(self.viewGO, "Right/#go_unget/tags/#go_basetags2")
-	self._gobasetagitem2 = gohelper.findChild(self.viewGO, "Right/#go_unget/tags/#go_basetags2/#go_basetagitem2")
-	self._goextratags2 = gohelper.findChild(self.viewGO, "Right/#go_unget/tags/#go_extratags2")
-	self._goextratagitem2 = gohelper.findChild(self.viewGO, "Right/#go_unget/tags/#go_extratags2/#go_extratagitem2")
-	self._gotips2 = gohelper.findChild(self.viewGO, "Right/#go_unget/tags/#go_tips2")
-	self._txttagitem2 = gohelper.findChildText(self.viewGO, "Right/#go_unget/tags/#go_tips2/#txt_tagitem2")
+	self._gobasetags = gohelper.findChild(self.viewGO, "Right/tags/#go_basetags")
+	self._gobasetagitem = gohelper.findChild(self.viewGO, "Right/tags/#go_basetags/#go_basetagitem")
+	self._goextratags = gohelper.findChild(self.viewGO, "Right/tags/#go_extratags")
+	self._goextratagitem = gohelper.findChild(self.viewGO, "Right/tags/#go_extratags/#go_extratagitem")
 	self._goshapecell2 = gohelper.findChild(self.viewGO, "Right/#go_unget/shape/#go_shapecell2")
 	self._txtcollectionname2 = gohelper.findChildText(self.viewGO, "Right/#go_unget/#txt_collectionname2")
 	self._btnshow = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#btn_show")
@@ -90,6 +88,7 @@ end
 function Rouge2_CollectionListView:_editableInitView()
 	self._goUnselectLayout = gohelper.findChild(self._golayout.gameObject, "unselected")
 	self._goSelectLayout = gohelper.findChild(self._golayout.gameObject, "selected")
+	self._txtTagTitle = gohelper.findChildTextMesh(self._goSelectLayout, "Label")
 	self._goUnselectFilter = gohelper.findChild(self._btnfilter.gameObject, "unselect")
 	self._goSelectFilter = gohelper.findChild(self._btnfilter.gameObject, "select")
 	self._cellModelTab = self:getUserDataTb_()
@@ -97,7 +96,6 @@ function Rouge2_CollectionListView:_editableInitView()
 	self._extraTagSelectMap = {}
 
 	self:_setFilterSelected(false)
-	self:_setAllSelected(true)
 
 	self._enchantList = {}
 	self._itemInstTab = self:getUserDataTb_()
@@ -114,14 +112,23 @@ function Rouge2_CollectionListView:_editableInitView()
 	self._selectIndex = 1
 
 	local list = {
-		luaLang("p_all"),
-		luaLang("p_handbookequipviewfilterview_haveget"),
-		luaLang("p_handbookequipviewfilterview_notget")
+		luaLang("p_all")
 	}
+
+	for _, tagId in ipairs(Rouge2_OutsideEnum.CollectionTagType) do
+		local tagConfig = Rouge2_CollectionConfig.instance:getTagConfig(tagId)
+
+		if tagConfig then
+			table.insert(list, tagConfig.name)
+		end
+	end
+
+	self._titleStrList = list
 
 	self._dropherogroup:ClearOptions()
 	self._dropherogroup:AddOptions(list)
 	self._dropherogroup:SetValue(self._selectIndex - 1)
+	self:_setAllSelected(self._selectIndex)
 	TaskDispatcher.runRepeat(self._checkDropArrow, self, 0)
 
 	local goRight = gohelper.findChild(self.viewGO, "Right")
@@ -138,11 +145,17 @@ function Rouge2_CollectionListView:_editableInitView()
 	self:_refreshSelectCollectionInfo()
 	gohelper.setActive(self._gotitle, false)
 	gohelper.setActive(self._imageicon.gameObject, false)
+
+	self._gotags = gohelper.findChild(self.viewGO, "Right/tags")
+
+	gohelper.setActive(self._gotags, false)
+	gohelper.setActive(self._gobasetagitem, false)
 end
 
 function Rouge2_CollectionListView:_onDropValueChanged(value)
 	self._selectIndex = value + 1
 
+	self:_setAllSelected(self._selectIndex)
 	Rouge2_CollectionListModel.instance:onInitData(self._baseTagSelectMap, self._extraTagSelectMap, self._selectIndex)
 	AudioMgr.instance:trigger(AudioEnum.UI.RougeFavoriteAudio7)
 end
@@ -155,7 +168,7 @@ function Rouge2_CollectionListView:_checkDropArrow()
 
 		local isOpen = self._dropgroupchildcount ~= childCount
 
-		transformhelper.setLocalScale(self._dropherogrouparrow, 1, isOpen and -1 or 1, 1)
+		transformhelper.setLocalScale(self._dropherogrouparrow, 1, isOpen and 1 or -1, 1)
 	end
 end
 
@@ -202,10 +215,14 @@ function Rouge2_CollectionListView:_setFilterSelected(value)
 end
 
 function Rouge2_CollectionListView:_setAllSelected(value)
-	self._isAllSelected = value
+	self._isAllSelected = value == 1
 
-	gohelper.setActive(self._goSelectLayout, value)
-	gohelper.setActive(self._goUnselectLayout, not value)
+	gohelper.setActive(self._goSelectLayout, true)
+	gohelper.setActive(self._goUnselectLayout, false)
+
+	local title = self._titleStrList[value]
+
+	self._txtTagTitle.text = title
 end
 
 function Rouge2_CollectionListView:_onClickCollectionListItem()
@@ -240,6 +257,30 @@ function Rouge2_CollectionListView:_refreshSelectCollectionInfo()
 	gohelper.setActive(self._golocked, showLocked)
 	gohelper.setActive(self._gounget, showUnget)
 
+	local haveTag = false
+
+	if not string.nilorempty(collectionConfig.attributeTag) then
+		local tagParam = string.splitToNumber(collectionConfig.attributeTag, "#")
+
+		haveTag = #tagParam > 0
+
+		if haveTag then
+			local data = {}
+
+			for _, attributeId in ipairs(tagParam) do
+				local attributeConfig = Rouge2_AttributeConfig.instance:getAttributeConfig(attributeId)
+
+				if attributeConfig and attributeConfig.type == Rouge2_OutsideEnum.AttributeShowType and not string.nilorempty(attributeConfig.icon) then
+					table.insert(data, attributeConfig)
+				end
+			end
+
+			gohelper.CreateObjList(self, self.onShowTagItem, data, nil, self._gobasetagitem, Rouge2_CollectionListTagItem)
+		end
+	end
+
+	gohelper.setActive(self._gotags, haveTag)
+
 	if showNormal then
 		self:refreshNormalInfo()
 	end
@@ -251,6 +292,10 @@ function Rouge2_CollectionListView:_refreshSelectCollectionInfo()
 	if showUnget then
 		self:refreshUnGetInfo()
 	end
+end
+
+function Rouge2_CollectionListView:onShowTagItem(item, data)
+	item:setInfo(data)
 end
 
 function Rouge2_CollectionListView:refreshNormalInfo()
@@ -280,8 +325,26 @@ function Rouge2_CollectionListView:_onSwitchCollectionInfoType()
 	local config = self._collectionConfig
 	local isSimple = infoType == Rouge2_OutsideEnum.CollectionInfoType.Simple
 	local model = isSimple and Rouge2_Enum.ItemDescMode.Simply or Rouge2_Enum.ItemDescMode.Full
+	local descTypeList = Rouge2_ItemDescHelper.getDefaultIncludeTypeList(Rouge2_Enum.ItemDataType.Config, config.id)
+	local tempDescTypeList
 
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, config.id, self._txtDesc, model)
+	if descTypeList and next(descTypeList) then
+		tempDescTypeList = {}
+
+		for index, type in ipairs(descTypeList) do
+			if type == Rouge2_Enum.RelicsDescType.NarrativeDesc then
+				table.insert(tempDescTypeList, Rouge2_Enum.RelicsDescType.NarrativeDescOutside)
+			else
+				table.insert(tempDescTypeList, type)
+			end
+		end
+	end
+
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, config.id, self._txtDesc, model, tempDescTypeList, Rouge2_OutsideEnum.DescPercentColor, Rouge2_OutsideEnum.DescBracketColor)
+
+	local desc = self._txtDesc.text
+
+	self._txtDesc.text = Rouge2_ItemDescHelper.replaceColor(desc, Rouge2_OutsideEnum.DescReplaceColor, Rouge2_OutsideEnum.DescPercentColor)
 end
 
 function Rouge2_CollectionListView:onOpen()

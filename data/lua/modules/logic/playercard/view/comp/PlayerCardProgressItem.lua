@@ -87,6 +87,10 @@ function PlayerCardProgressItem:refreshItem()
 	self._txtname.text = self.config.name
 	self._txten.text = self.config.nameEn
 
+	for index, gotype in pairs(self._typeItemList) do
+		gohelper.setActive(gotype, false)
+	end
+
 	local gotype = self._typeItemList[self.type]
 
 	gohelper.setActive(gotype, true)

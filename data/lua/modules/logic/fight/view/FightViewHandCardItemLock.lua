@@ -145,7 +145,7 @@ local TxtPaths = {
 	"bigskill/4/sealing/notani/txtLockName"
 }
 
-function FightViewHandCardItemLock.setCardLock(entityId, skillId, lockGO, hasAnim, buffList)
+function FightViewHandCardItemLock.setCardLock(entityId, skillId, lockGO, hasAnim, buffList, roundOp)
 	gohelper.setActive(lockGO, false)
 
 	if gohelper.isNil(lockGO) or not skillId then
@@ -156,7 +156,7 @@ function FightViewHandCardItemLock.setCardLock(entityId, skillId, lockGO, hasAni
 		return
 	end
 
-	local canUse = FightViewHandCardItemLock.canUseCardSkill(entityId, skillId, buffList)
+	local canUse = FightViewHandCardItemLock.canUseCardSkill(entityId, skillId, buffList, roundOp)
 
 	gohelper.setActive(lockGO, not canUse)
 
@@ -169,7 +169,7 @@ function FightViewHandCardItemLock.setCardLock(entityId, skillId, lockGO, hasAni
 		end
 
 		local skillLv = FightCardDataHelper.getSkillLv(entityId, skillId)
-		local buffCO = FightViewHandCardItemLock._getCardLockReason(entityId, skillId, buffList)
+		local buffCO = FightViewHandCardItemLock._getCardLockReason(entityId, skillId, buffList, roundOp)
 		local normalGO = gohelper.findChild(lockGO, "normal")
 		local bigskillGO = gohelper.findChild(lockGO, "bigskill")
 
@@ -378,7 +378,7 @@ local LockAllBuffType = {
 	[FightEnum.BuffFeature.ConsumeBuffLayerCastChannel] = true
 }
 
-function FightViewHandCardItemLock.canUseCardSkill(entityId, skillId, buffList)
+function FightViewHandCardItemLock.canUseCardSkill(entityId, skillId, buffList, roundOp)
 	if not entityId or not skillId then
 		return false
 	end
@@ -406,7 +406,7 @@ function FightViewHandCardItemLock.canUseCardSkill(entityId, skillId, buffList)
 			local nanaEntityId = FightModel.instance.contractEntityUid
 			local nanaEntityMo = nanaEntityId and FightDataHelper.entityMgr:getById(nanaEntityId)
 
-			buffList = FightBuffHelper.simulateBuffList(nanaEntityMo)
+			buffList = FightBuffHelper.simulateBuffList(nanaEntityMo, roundOp)
 
 			if FightBuffHelper.hasFeature(nil, buffList, FightEnum.BuffType_ContractCastChannel) then
 				return false
@@ -461,7 +461,7 @@ function FightViewHandCardItemLock.isLockByLockBuffType(feature, skillConfig, en
 	end
 end
 
-function FightViewHandCardItemLock._getCardLockReason(entityId, skillId, buffList)
+function FightViewHandCardItemLock._getCardLockReason(entityId, skillId, buffList, roundOp)
 	if not entityId or not skillId then
 		return
 	end
@@ -479,7 +479,7 @@ function FightViewHandCardItemLock._getCardLockReason(entityId, skillId, buffLis
 		local nanaEntityId = FightModel.instance.contractEntityUid
 		local nanaEntityMo = nanaEntityId and FightDataHelper.entityMgr:getById(nanaEntityId)
 
-		buffList = FightBuffHelper.simulateBuffList(nanaEntityMo)
+		buffList = FightBuffHelper.simulateBuffList(nanaEntityMo, roundOp)
 		lockBuffMO, curPriority = FightViewHandCardItemLock.getLockBuffMo(nanaEntityMo, buffList, skillCO, lockBuffMO, curPriority)
 	end
 

@@ -15,6 +15,7 @@ function Rouge2_CareerHandBookMainView:onInitView()
 	self._gocareeritem = gohelper.findChild(self.viewGO, "#scroll_Progress/Viewport/Content/#go_careerGroup/#go_careeritem")
 	self._godetailview = gohelper.findChild(self.viewGO, "#go_detailview")
 	self._golefttop = gohelper.findChild(self.viewGO, "#go_lefttop")
+	self._btnCloseDetail = gohelper.findChildButton(self.viewGO, "#scroll_Progress/Viewport/#btn_closeDetail")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -23,6 +24,7 @@ end
 
 function Rouge2_CareerHandBookMainView:addEvents()
 	self._btncheck:AddClickListener(self._btncheckOnClick, self)
+	self._btnCloseDetail:AddClickListener(self._btnCloseDetailOnClick, self)
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookCareer, self.onSelectTabItem, self)
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnUpdateCommonTalent, self.refreshTalentGroup, self)
@@ -30,6 +32,7 @@ end
 
 function Rouge2_CareerHandBookMainView:removeEvents()
 	self._btncheck:RemoveClickListener()
+	self._btnCloseDetail:RemoveClickListener()
 	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookCareer, self.onSelectTabItem, self)
 	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
 	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnUpdateCommonTalent, self.refreshTalentGroup, self)
@@ -51,6 +54,11 @@ function Rouge2_CareerHandBookMainView:_btncheckOnClick()
 	ViewMgr.instance:openView(ViewName.Rouge2_CareerHandBookTransferView, param)
 end
 
+function Rouge2_CareerHandBookMainView:_btnCloseDetailOnClick()
+	ViewMgr.instance:closeView(ViewName.Rouge2_CareerHandBookDetailView)
+	gohelper.setActive(self._btnCloseDetail, false)
+end
+
 function Rouge2_CareerHandBookMainView:_editableInitView()
 	self._groupItemList = {}
 	self._groupUseItemList = {}
@@ -61,9 +69,16 @@ function Rouge2_CareerHandBookMainView:_editableInitView()
 
 	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 	self.levelAnimator = gohelper.findChildComponent(self.viewGO, "Level", gohelper.Type_Animator)
+
+	gohelper.setActive(self._btnCloseDetail, false)
 end
 
 function Rouge2_CareerHandBookMainView:onSelectTabItem(mo, hideAnim)
+	if ViewMgr.instance:isOpen(ViewName.Rouge2_CareerHandBookDetailView) then
+		ViewMgr.instance:closeView(ViewName.Rouge2_CareerHandBookDetailView)
+		gohelper.setActive(self._btnCloseDetail, false)
+	end
+
 	self._curCareerId = mo.careerId
 
 	self:selectTabItem(mo.careerId)
@@ -106,6 +121,7 @@ function Rouge2_CareerHandBookMainView:onSelectHandBookTalent(talentId)
 	viewParam.talentId = talentId
 
 	Rouge2_ViewHelper.openRougeCareerHandBookDetailView(viewParam)
+	gohelper.setActive(self._btnCloseDetail, true)
 end
 
 function Rouge2_CareerHandBookMainView:onUpdateParam()

@@ -23,6 +23,12 @@ function Rouge2_WaitTriggerEndingWork:onStart()
 		return
 	end
 
+	if Rouge2_MapModel.instance:checkManualCloseHeroGroupView() then
+		self:onDone(true)
+
+		return
+	end
+
 	local pieceMo = Rouge2_MapModel.instance:getCurPieceMo()
 
 	if pieceMo then

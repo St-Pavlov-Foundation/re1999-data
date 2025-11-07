@@ -126,7 +126,7 @@ function FightWorkStepSkill:_playSkill(skillId)
 			work:registFinishCallback(self.onWorkTimelineFinish, self)
 			TaskDispatcher.cancelTask(self._delayDone, self)
 
-			if FightScene.ios3GBMemory and (FightDataHelper.fieldMgr.episodeId == SurvivalConst.Shelter_EpisodeId or FightDataHelper.fieldMgr.episodeId == SurvivalConst.Survival_EpisodeId) and (work.timelineName == "ndk_312002_unique_1" or work.timelineName == "ndk_312002_unique_1ex") then
+			if FightScene.ios3GBMemory and (FightDataHelper.fieldMgr:isRouge2() or FightDataHelper.fieldMgr.episodeId == SurvivalConst.Shelter_EpisodeId or FightDataHelper.fieldMgr.episodeId == SurvivalConst.Survival_EpisodeId) and (work.timelineName == "ndk_312002_unique_1" or work.timelineName == "ndk_312002_unique_1ex") then
 				FightHelper.clearNoUseEffect()
 			end
 

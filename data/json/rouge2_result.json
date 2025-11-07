@@ -2,7 +2,7 @@
   {
     "id": 1,
     "type": 1,
-    "desc": "在<color=#FFB052>▩1%s</color>难度中，你",
+    "desc": "在 <color=#FFB052>▩1%s </color>难度中，你",
     "priority": 0,
     "trigger": "1",
     "triggerParam": ""
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "type": 1,
-    "desc": "携带<color=#FFB052>▩1%s</color>药剂，",
+    "desc": "携带<color=#FFB052>▩1%s</color>好旅伴",
     "priority": 1,
     "trigger": "2",
     "triggerParam": ""
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "type": 1,
-    "desc": "选择成为了<color=#FFB052>▩1%s</color>，",
+    "desc": "选择成为了<color=#FFB052>▩1%s</color>",
     "priority": 2,
     "trigger": "3",
     "triggerParam": ""
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "type": 1,
-    "desc": "后续转职为领路人<color=#FFB052>▩1%s</color>，",
+    "desc": "后续转职为领路人<color=#FFB052>▩1%s</color>",
     "priority": 3,
     "trigger": "4",
     "triggerParam": ""
@@ -34,7 +34,7 @@
   {
     "id": 5,
     "type": 1,
-    "desc": "你珍贵的伙伴▩1%s和你一起击败了BOSS",
+    "desc": "你和你珍贵的伙伴▩1%s一起击败了敌人",
     "priority": 4,
     "trigger": "5",
     "triggerParam": "1"
@@ -42,7 +42,7 @@
   {
     "id": 6,
     "type": 1,
-    "desc": "你珍贵的伙伴▩1%s和你一起击败了BOSS(失败)",
+    "desc": "你和你珍贵的伙伴▩1%s没能成功击败敌人",
     "priority": 5,
     "trigger": "5",
     "triggerParam": "2"
@@ -51,7 +51,7 @@
     "id": 7,
     "type": 2,
     "desc": "一共经历了<color=#FFB052>▩1%s</color>个检定事件，其中成功检定次数为<color=#FFB052>▩2%s</color>次，你最常使用的检定属性为<color=#FFB052>▩3%s</color>",
-    "priority": 0,
+    "priority": 2,
     "trigger": "6",
     "triggerParam": " "
   },
@@ -142,5 +142,13 @@
     "priority": 1,
     "trigger": "14",
     "triggerParam": "104"
+  },
+  {
+    "id": 19,
+    "type": 2,
+    "desc": "一共经历了<color=#FFB052>▩1%s</color>个检定事件，其中成功检定次数为<color=#FFB052>▩2%s</color>次。",
+    "priority": 1,
+    "trigger": "17",
+    "triggerParam": " "
   }
 ]

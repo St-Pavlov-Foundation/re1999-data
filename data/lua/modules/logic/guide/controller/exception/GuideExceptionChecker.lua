@@ -261,6 +261,79 @@ function GuideExceptionChecker.checkCan174EnoughHpToBet(guideId, stepId, param)
 	return gameInfo.hp > 1
 end
 
+function GuideExceptionChecker.checkRouge2AlreadyHaveAlchemy(guideId, stepId, param)
+	local haveAlchemy = Rouge2_AlchemyModel.instance:haveAlchemyInfo()
+
+	return not haveAlchemy
+end
+
+function GuideExceptionChecker.checkCanRouge2EnoughMaterialToAlchemy(guideId, stepId, param)
+	if string.nilorempty(param) then
+		return true
+	end
+
+	local dataList = string.splitToNumber(param, "_")
+	local formulaId = dataList[1]
+	local formulaConfig = Rouge2_OutSideConfig.instance:getFormulaConfig(formulaId)
+
+	if formulaConfig then
+		local needMaterial = string.split(formulaConfig.mainIdNum, "|")
+
+		for _, singleParam in ipairs(needMaterial) do
+			local singleMaterial = string.splitToNumber(singleParam, "#")
+			local num = Rouge2_AlchemyModel.instance:getMaterialNum(singleMaterial[1])
+
+			if num < singleMaterial[2] then
+				return false
+			end
+		end
+	end
+
+	for i = 2, #dataList do
+		local materialId = dataList[i]
+		local num = Rouge2_AlchemyModel.instance:getMaterialNum(materialId)
+
+		if num <= 0 then
+			return false
+		end
+	end
+
+	return true
+end
+
+function GuideExceptionChecker.checkRouge2TalentEnoughToActive(guideId, stepId, param)
+	if string.nilorempty(param) then
+		return false
+	end
+
+	local needCheckTalentIds = string.splitToNumber(param, "_")
+	local needCount = 0
+
+	for _, talentId in ipairs(needCheckTalentIds) do
+		local talentTypeConfig = Rouge2_OutSideConfig.instance:getTalentTypeConfigByTalentId(talentId)
+
+		needCount = needCount + talentTypeConfig.pointCost
+	end
+
+	return needCount <= Rouge2_TalentModel.instance:getTalentPoint()
+end
+
+function GuideExceptionChecker.checkRouge2TalentIsActive(guideId, stepId, param)
+	if string.nilorempty(param) then
+		return true
+	end
+
+	local needCheckTalentIds = string.splitToNumber(param, "_")
+
+	for _, talentId in ipairs(needCheckTalentIds) do
+		if Rouge2_TalentModel.instance:isTalentActive(talentId) then
+			return false
+		end
+	end
+
+	return true
+end
+
 function GuideExceptionChecker.checkReturnFalse()
 	return false
 end

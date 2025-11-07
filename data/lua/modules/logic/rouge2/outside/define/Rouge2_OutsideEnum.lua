@@ -73,6 +73,11 @@ Rouge2_OutsideEnum.CollectionListType = {
 	Secret = 3,
 	Power = 1
 }
+Rouge2_OutsideEnum.CollectionTagType = {
+	Rouge2_OutsideEnum.CollectionListType.Collection,
+	Rouge2_OutsideEnum.CollectionListType.Buff,
+	Rouge2_OutsideEnum.CollectionListType.AutoBuff
+}
 Rouge2_OutsideEnum.CollectionTypeSort = {
 	[Rouge2_OutsideEnum.CollectionListType.Power] = 1,
 	[Rouge2_OutsideEnum.CollectionListType.Reaction] = 2,
@@ -114,8 +119,8 @@ Rouge2_OutsideEnum.RoleSpineOffset = 7
 Rouge2_OutsideEnum.SceneOpenDelay = {
 	[Rouge2_OutsideEnum.SceneIndex.EnterScene] = 1.2,
 	[Rouge2_OutsideEnum.SceneIndex.MainScene] = 1.7,
-	[Rouge2_OutsideEnum.SceneIndex.DifficultyScene] = 1,
-	[Rouge2_OutsideEnum.SceneIndex.CareerScene] = 1,
+	[Rouge2_OutsideEnum.SceneIndex.DifficultyScene] = 0.8,
+	[Rouge2_OutsideEnum.SceneIndex.CareerScene] = 0.8,
 	[Rouge2_OutsideEnum.SceneIndex.LevelScene] = 0.7
 }
 Rouge2_OutsideEnum.DifficultyChangeTime = 0.667
@@ -174,13 +179,32 @@ Rouge2_OutsideEnum.LocalData = {
 	Collection = 1,
 	Illustration = 3
 }
+Rouge2_OutsideEnum.LocalStatData = {
+	Formula = 7,
+	Collection = 6
+}
 Rouge2_OutsideEnum.LocalDataType2PlayerKey = {
 	[Rouge2_OutsideEnum.LocalData.Collection] = PlayerPrefsKey.Rouge2FavoriteCollectionRedDot,
 	[Rouge2_OutsideEnum.LocalData.Formula] = PlayerPrefsKey.Rouge2FavoriteFormulaRedDot,
 	[Rouge2_OutsideEnum.LocalData.Illustration] = PlayerPrefsKey.Rouge2FavoriteIllustrationRedDot,
 	[Rouge2_OutsideEnum.LocalData.Avg] = PlayerPrefsKey.Rouge2FavoriteAvgRedDot,
-	[Rouge2_OutsideEnum.LocalData.Store] = PlayerPrefsKey.Rouge2StoreTabRedDot
+	[Rouge2_OutsideEnum.LocalData.Store] = PlayerPrefsKey.Rouge2StoreTabRedDot,
+	[Rouge2_OutsideEnum.LocalStatData.Collection] = PlayerPrefsKey.Rouge2StoreTabRedDot,
+	[Rouge2_OutsideEnum.LocalStatData.Formula] = PlayerPrefsKey.Rouge2StoreTabRedDot
 }
 Rouge2_OutsideEnum.MainViewBallAudioDelay = 0.02
+Rouge2_OutsideEnum.ResultFinalDisplayType = {
+	Review = 1,
+	Result = 2
+}
+Rouge2_OutsideEnum.AttributeCheckState = {
+	BigSuccess = 2,
+	Fail = 0,
+	Success = 1
+}
+Rouge2_OutsideEnum.DescPercentColor = "#F0B75F"
+Rouge2_OutsideEnum.DescBracketColor = "#7195DF"
+Rouge2_OutsideEnum.DescReplaceColor = "#B84E32"
+Rouge2_OutsideEnum.AttributeShowType = 1
 
 return Rouge2_OutsideEnum

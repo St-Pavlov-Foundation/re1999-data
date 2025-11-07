@@ -69,9 +69,12 @@ function Rouge2_FightFunnyTaskTips:refreshTaskTips()
 end
 
 function Rouge2_FightFunnyTaskTips:_refreshOneTaskTips(obj, funnyTaskDesc, index)
+	local goPoint = gohelper.findChild(obj, "point")
 	local txtDesc = obj:GetComponent(gohelper.Type_TextMesh)
 
 	txtDesc.text = funnyTaskDesc
+
+	gohelper.setActive(goPoint, index > 1)
 end
 
 function Rouge2_FightFunnyTaskTips:show()

@@ -285,6 +285,10 @@ function Rouge2_TalentModel:getCurTalentId()
 end
 
 function Rouge2_TalentModel:updateCareerLevel(careerLevelInfo)
+	if not Rouge2_OutsideController.instance:isCareerUnlock() then
+		return
+	end
+
 	tabletool.clear(self._careerExpDic)
 	tabletool.clear(self._careerLevelDic)
 	tabletool.clear(self._careerMaxLevelDic)
@@ -365,7 +369,7 @@ function Rouge2_TalentModel:getCurTransferId()
 end
 
 function Rouge2_TalentModel:updateResultInfo(resultInfo)
-	if resultInfo and resultInfo.reviewInfo and resultInfo.reviewInfo.curCareer then
+	if Rouge2_OutsideController.instance:isCareerUnlock() and resultInfo and resultInfo.reviewInfo and resultInfo.reviewInfo.curCareer then
 		self:onGainCareerExp(resultInfo.reviewInfo.curCareer, resultInfo.addCareerExp)
 	end
 end

@@ -104,8 +104,15 @@ function Rouge2_BackpackHelper.getItemCofigAndMo(dataType, dataId)
 		itemCo = itemMo and itemMo:getConfig()
 	elseif dataType == Rouge2_Enum.ItemDataType.Config then
 		itemCo = Rouge2_BackpackHelper.getItemConfig(dataId)
+	elseif dataType == Rouge2_Enum.ItemDataType.Clone then
+		itemMo = dataId
+		itemCo = itemMo and itemMo:getConfig()
 	else
 		logError(string.format("未定义数据类型 dataType = %s, dataId = %s", dataType, dataId))
+	end
+
+	if not itemCo then
+		logError(string.format("构筑物配置不存在 dataType = %s, dataId = %s", dataType, dataId))
 	end
 
 	return itemCo, itemMo
@@ -210,7 +217,8 @@ function Rouge2_BackpackHelper.getFilterFunc(itemType, filterType)
 			[Rouge2_Enum.ItemFilterType.GreaterAndEqualRare] = Rouge2_BackpackHelper._itemFilterFunc_GreaterAndEqualRare,
 			[Rouge2_Enum.ItemFilterType.EqualRare] = Rouge2_BackpackHelper._itemFilterFunc_EqualRare,
 			[Rouge2_Enum.ItemFilterType.Attribute] = Rouge2_BackpackHelper._itemFilterFunc_Attribute,
-			[Rouge2_Enum.ItemFilterType.Unique] = Rouge2_BackpackHelper._itemFilterFunc_Unique
+			[Rouge2_Enum.ItemFilterType.Unique] = Rouge2_BackpackHelper._itemFilterFunc_Unique,
+			[Rouge2_Enum.ItemFilterType.Remove] = Rouge2_BackpackHelper._itemFilterFunc_Remove
 		}
 	end
 
@@ -264,7 +272,7 @@ function Rouge2_BackpackHelper._itemFilterFunc_Remove(itemMo, itemCo, isRemove)
 		return not isUnRemove
 	end
 
-	return isUnRemove
+	return true
 end
 
 return Rouge2_BackpackHelper

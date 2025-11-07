@@ -18,8 +18,8 @@ function Rouge2_MapRelicsAbandonViewContainer:buildViews()
 	scrollParam.scrollDir = ScrollEnum.ScrollDirH
 	scrollParam.lineCount = 1
 	scrollParam.cellWidth = 450
-	scrollParam.cellHeight = 700
-	scrollParam.cellSpaceV = 0
+	scrollParam.cellHeight = 736
+	scrollParam.cellSpaceH = 30
 	self.scrollView = LuaListScrollView.New(Rouge2_LossRelicsListModel.instance, scrollParam)
 
 	table.insert(views, self.scrollView)

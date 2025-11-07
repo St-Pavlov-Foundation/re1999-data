@@ -10,6 +10,8 @@ function Rouge2_MapNodeRightView:onInitView()
 	self._txtDesc1 = gohelper.findChildText(self.viewGO, "#go_node_right/layout/#scroll_View/Viewport/Content/#txt_Desc1")
 	self._txtDesc2 = gohelper.findChildText(self.viewGO, "#go_node_right/layout/#scroll_View/Viewport/Content/#txt_Desc2")
 	self._btnMoveBtn = gohelper.findChildButtonWithAudio(self.viewGO, "#go_node_right/#btn_MoveBtn")
+	self._goMoveNormal = gohelper.findChild(self.viewGO, "#go_node_right/#btn_MoveBtn/image_normal")
+	self._goMoveHard = gohelper.findChild(self.viewGO, "#go_node_right/#btn_MoveBtn/image_hard")
 	self._goCareer = gohelper.findChild(self.viewGO, "#go_node_right/#go_Career")
 	self._goCareerItem = gohelper.findChild(self.viewGO, "#go_node_right/#go_Career/#go_CareerItem")
 	self._goAttrList = gohelper.findChild(self.viewGO, "#go_node_right/#go_AttrList")
@@ -126,12 +128,6 @@ end
 
 function Rouge2_MapNodeRightView:autoContinueEvent()
 	if Rouge2_MapModel.instance:checkManualCloseHeroGroupView() then
-		Rouge2_MapModel.instance:setManualCloseHeroGroupView(false)
-
-		return
-	end
-
-	if Rouge2_MapModel.instance:needPlayMoveToEndAnim() then
 		return
 	end
 
@@ -219,7 +215,9 @@ function Rouge2_MapNodeRightView:refreshRight(showContinueFight)
 		return
 	end
 
-	self._txtChapterName.text = self.eventCo.name
+	local eventTypeCo = lua_rouge2_event_type.configDict[self.eventCo.type]
+
+	self._txtChapterName.text = eventTypeCo and eventTypeCo.name
 	self._txtDesc1.text = SkillHelper.buildDesc(self.eventCo.desc)
 
 	self:showDescContainer()
@@ -372,7 +370,12 @@ function Rouge2_MapNodeRightView:refreshBg()
 		return
 	end
 
-	if defaultPic ~= "rouge2_map_rightbg_1" then
+	local isRedBg = defaultPic ~= "rouge2_map_rightbg_1"
+
+	gohelper.setActive(self._goMoveNormal, not isRedBg)
+	gohelper.setActive(self._goMoveHard, isRedBg)
+
+	if isRedBg then
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.EliteFightEvent)
 	end
 
@@ -401,6 +404,10 @@ function Rouge2_MapNodeRightView:_triggerHandle()
 	if Rouge2_MapModel.instance:isInteractiving() then
 		self.waitInteract = true
 
+		return
+	end
+
+	if Rouge2_MapModel.instance:needPlayMoveToEndAnim() then
 		return
 	end
 

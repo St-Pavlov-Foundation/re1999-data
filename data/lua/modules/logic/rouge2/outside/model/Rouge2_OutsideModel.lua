@@ -12,6 +12,7 @@ function Rouge2_OutsideModel:reInit()
 	self._reviewInfoList = {}
 	self._rougeGameRecord = nil
 	self.newUnlockCollectionList = {}
+	self.newPassCollectionList = {}
 	self._unlockCollectionDic = {}
 	self._tempLocalDataList = {}
 
@@ -30,8 +31,18 @@ end
 
 function Rouge2_OutsideModel:updateRougeOutsideInfo(rougeInfo)
 	self:_setRougeOutSideInfo()
+	tabletool.clear(self.newPassCollectionList)
 
-	self._rougeGameRecord = self._rougeGameRecord or Rouge2_GameRecordInfoMO.New()
+	if self._rougeGameRecord then
+		for _, itemId in ipairs(rougeInfo.totalRecordInfo.passCollections) do
+			if not Rouge2_OutsideModel.instance:collectionIsPass(itemId) then
+				logNormal("肉鸽2 添加新解锁造物 itemId:" .. itemId)
+				table.insert(self.newPassCollectionList, itemId)
+			end
+		end
+	else
+		self._rougeGameRecord = Rouge2_GameRecordInfoMO.New()
+	end
 
 	if rougeInfo.totalRecordInfo then
 		self._rougeGameRecord:init(rougeInfo.totalRecordInfo)
@@ -56,7 +67,9 @@ end
 function Rouge2_OutsideModel:checkFormulaRedDot()
 	local unlockFormulaList = Rouge2_AlchemyModel.instance:getUnlockFormulaList()
 	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Formula)
+	local haveStatItemDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalStatData.Formula)
 	local redDotInfoList = {}
+	local statInfoList = {}
 
 	for _, itemId in ipairs(unlockFormulaList) do
 		if not haveShowRedDotDic[itemId] then
@@ -64,6 +77,15 @@ function Rouge2_OutsideModel:checkFormulaRedDot()
 
 			table.insert(redDotInfoList, info)
 		end
+
+		if not haveStatItemDic[itemId] then
+			table.insert(statInfoList, itemId)
+		end
+	end
+
+	if next(statInfoList) then
+		Rouge2_StatController.instance:statUnlockIllustration(Rouge2_StatController.FavoriteType.Formula, statInfoList)
+		self:addLocalDataList(Rouge2_OutsideEnum.LocalStatData.Formula, statInfoList)
 	end
 
 	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Favorite_Formula, redDotInfoList)
@@ -89,35 +111,33 @@ end
 
 function Rouge2_OutsideModel:checkAVGRedDot()
 	local storyMoList = Rouge2_OutSideConfig.instance:getStoryList()
-	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Illustration)
+	local haveShowRedDotDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Avg)
 	local redDotInfoList = {}
 
 	for _, mo in ipairs(storyMoList) do
 		local config = mo.config
-		local isUnlock
 
 		if not string.nilorempty(config.eventId) then
-			local illustrationConfig = Rouge2_OutSideConfig.instance:getIllustrationConfig(tonumber(config.eventId))
+			local illustrationId = tonumber(config.eventId)
+			local illustrationConfig = Rouge2_OutSideConfig.instance:getIllustrationConfig(illustrationId)
 
-			isUnlock = config.eventId and self:passedEventId(config.eventId)
+			if illustrationConfig and self:passedEventId(illustrationConfig.eventId) and not haveShowRedDotDic[illustrationId] then
+				local info = Rouge2_OutsideController.buildSingleInfo(illustrationId, true)
+
+				table.insert(redDotInfoList, info)
+			end
 		else
 			local storyIdList = string.splitToNumber(config.storyIdList, "#")
 
-			isUnlock = false
+			if next(storyIdList) then
+				for _, storyId in ipairs(storyIdList) do
+					if StoryModel.instance:isStoryHasPlayed(storyId) and not haveShowRedDotDic[storyId] then
+						local info = Rouge2_OutsideController.buildSingleInfo(storyId, true)
 
-			for _, storyId in ipairs(storyIdList) do
-				if StoryModel.instance:isStoryHasPlayed(storyId) then
-					isUnlock = true
-
-					break
+						table.insert(redDotInfoList, info)
+					end
 				end
 			end
-		end
-
-		if isUnlock and not haveShowRedDotDic[config.id] then
-			local info = Rouge2_OutsideController.buildSingleInfo(config.id, true)
-
-			table.insert(redDotInfoList, info)
 		end
 	end
 
@@ -163,6 +183,26 @@ function Rouge2_OutsideModel:checkCollectionRedDot()
 	Rouge2_OutsideController.instance:setRedDotState(RedDotEnum.DotNode.V3a2_Rouge_Favorite_Collection, redDotInfoList)
 end
 
+function Rouge2_OutsideModel:checkCollectionStat()
+	local haveStatItemDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalStatData.Collection)
+	local statInfoList = {}
+
+	if next(self._unlockCollectionDic) then
+		for itemId, _ in pairs(self._unlockCollectionDic) do
+			local config = Rouge2_OutSideConfig.getItemConfig(itemId)
+
+			if config and self:collectionIsPass(config.id) and not haveStatItemDic[itemId] then
+				table.insert(statInfoList, itemId)
+			end
+		end
+
+		if next(statInfoList) then
+			self:addLocalDataList(Rouge2_OutsideEnum.LocalStatData.Collection, statInfoList)
+			Rouge2_StatController.instance:statUnlockIllustration(Rouge2_StatController.FavoriteType.Collection, statInfoList)
+		end
+	end
+end
+
 function Rouge2_OutsideModel:checkStoreRedDot()
 	local haveShowItemDic = self:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Store)
 	local redDotInfoList = {}
@@ -191,7 +231,7 @@ function Rouge2_OutsideModel:onGetCollectionInfo(relicts, buffs, autoBuffs)
 	for _, itemId in ipairs(relicts) do
 		local config = Rouge2_OutSideConfig.getItemConfig(itemId)
 
-		if config and not string.nilorempty(config.outUnlock) and not self._unlockCollectionDic[itemId] then
+		if config and not self._unlockCollectionDic[itemId] and not string.nilorempty(config.outUnlock) then
 			table.insert(self.newUnlockCollectionList, itemId)
 		end
 	end
@@ -209,10 +249,15 @@ function Rouge2_OutsideModel:onGetCollectionInfo(relicts, buffs, autoBuffs)
 	end
 
 	self:checkCollectionRedDot()
+	self:checkCollectionStat()
 end
 
 function Rouge2_OutsideModel:getNewUnlockCollectionList()
 	return self.newUnlockCollectionList
+end
+
+function Rouge2_OutsideModel:getNewPassCollectionList()
+	return self.newPassCollectionList
 end
 
 function Rouge2_OutsideModel:getReviewInfoList()
@@ -261,7 +306,7 @@ function Rouge2_OutsideModel:isUnlockCareer(careerId)
 	local unlockRemainTime = self:getCareerUnlockRemainTime(careerId)
 
 	if unlockRemainTime > 0 then
-		return
+		return false, ToastEnum.Rouge2LockCareer
 	end
 
 	if string.nilorempty(unlockCondition) then
@@ -375,10 +420,6 @@ function Rouge2_OutsideModel:getLastMarkSelectedDifficulty(defaultValue)
 end
 
 function Rouge2_OutsideModel:passedLayerId(layerId)
-	if layerId then
-		return true
-	end
-
 	if not self._rougeGameRecord then
 		return false
 	end
@@ -543,18 +584,6 @@ function Rouge2_OutsideModel:addLocalDataList(localDataType, list)
 
 				dic[id] = true
 			end
-
-			local type
-
-			if localDataType == Rouge2_OutsideEnum.LocalData.Formula then
-				type = Rouge2_StatController.FavoriteType.Formula
-			elseif localDataType == Rouge2_OutsideEnum.LocalData.Collection then
-				type = Rouge2_StatController.FavoriteType.Collection
-			end
-
-			if type then
-				Rouge2_StatController.instance:statUnlockIllustration(type, list)
-			end
 		end
 
 		self:saveLocalDataList(key, curList)
@@ -624,6 +653,16 @@ end
 
 function Rouge2_OutsideModel:clearLocalData()
 	for _, type in pairs(Rouge2_OutsideEnum.LocalData) do
+		self:saveLocalDataList(type, {})
+
+		local list = self:getLocalDataList(type)
+		local dic = self:getLocalDataDic(type)
+
+		tabletool.clear(list)
+		tabletool.clear(dic)
+	end
+
+	for _, type in pairs(Rouge2_OutsideEnum.LocalStatData) do
 		self:saveLocalDataList(type, {})
 
 		local list = self:getLocalDataList(type)

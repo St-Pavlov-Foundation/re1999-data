@@ -68,8 +68,7 @@ function AutoChessGameScene:onOpen()
 	AutoChessEffectMgr.instance:init()
 
 	if self.moduleId == AutoChessEnum.ModuleId.Friend then
-		self:changeScene(AutoChessEnum.ViewType.All)
-		AutoChessController.instance:dispatchEvent(AutoChessEvent.StartFight)
+		self:afterBuyFlowDone()
 	else
 		self:changeScene(AutoChessEnum.ViewType.Player)
 		self:checkBeforeBuy()
@@ -214,7 +213,6 @@ function AutoChessGameScene:onCloseViewFinish(viewName)
 		end
 
 		TaskDispatcher.runDelay(self.delayAddEnemy, self, 0.5)
-		TaskDispatcher.runDelay(self.startFightFlow, self, 0.8)
 	end
 end
 
@@ -233,6 +231,8 @@ function AutoChessGameScene:delayAddEnemy()
 			end
 		end
 	end
+
+	TaskDispatcher.runDelay(self.startFightFlow, self, 0.3)
 end
 
 function AutoChessGameScene:onNextRound()

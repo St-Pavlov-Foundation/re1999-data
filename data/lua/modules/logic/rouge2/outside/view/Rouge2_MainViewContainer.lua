@@ -18,13 +18,27 @@ function Rouge2_MainViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			true,
-			false
+			true
 		}, nil, self.closeCallback, nil, nil, self)
+
+		self.navigateView:setOverrideHelp(self.onHelpClick, self)
 
 		return {
 			self.navigateView
 		}
 	end
+end
+
+function Rouge2_MainViewContainer:setVisibleInternal(isVisible)
+	if isVisible then
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnMainViewInTop)
+	end
+
+	Rouge2_MainViewContainer.super.setVisibleInternal(self, isVisible)
+end
+
+function Rouge2_MainViewContainer:onHelpClick()
+	Rouge2_Controller.instance:openTechniqueView()
 end
 
 function Rouge2_MainViewContainer:closeCallback()

@@ -73,10 +73,14 @@ function Rouge2_FinishView:onOpen()
 end
 
 function Rouge2_FinishView:onReceiveMsg()
-	self.unlockInfoCallbackId = Rouge2OutsideRpc.instance:sendRouge2GetUnlockCollectionsRequest(self.onReceiveOutSideInfo, self)
+	self.outsideInfoCallbackId = Rouge2OutsideRpc.instance:sendGetRouge2OutsideInfoRequest(self.onReceiveOutSideInfo, self)
 end
 
 function Rouge2_FinishView:onReceiveOutSideInfo()
+	self.unlockInfoCallbackId = Rouge2OutsideRpc.instance:sendRouge2GetUnlockCollectionsRequest(self.onReceiveUnlockInfo, self)
+end
+
+function Rouge2_FinishView:onReceiveUnlockInfo()
 	self.sending = false
 end
 
@@ -85,6 +89,7 @@ function Rouge2_FinishView:onClose()
 
 	Rouge2_Rpc.instance:removeCallbackById(self.callbackId)
 	Rouge2_Rpc.instance:removeCallbackById(self.unlockInfoCallbackId)
+	Rouge2_Rpc.instance:removeCallbackById(self.outsideInfoCallbackId)
 
 	local success = self.viewParam == Rouge2_OutsideEnum.FinishEnum.Finish
 	local animator = success and self.succAnimator or self.failAnimator

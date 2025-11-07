@@ -28,7 +28,7 @@ function Rouge2_ResultReportView:_btncloseOnClick()
 end
 
 function Rouge2_ResultReportView:_editableInitView()
-	return
+	Rouge2_ResultReportListModel.instance.startFrameCount = UnityEngine.Time.frameCount
 end
 
 function Rouge2_ResultReportView:onUpdateParam()

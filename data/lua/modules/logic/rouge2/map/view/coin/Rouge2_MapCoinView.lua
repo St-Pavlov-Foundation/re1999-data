@@ -135,7 +135,7 @@ function Rouge2_MapCoinView:refreshRevivalCoin()
 
 			self:killRevivalCoinTween()
 
-			self.revivalCoinTweenId = ZProj.TweenHelper.DOTweenFloat(self.preCoin, revivalCoin, Rouge2_MapEnum.CoinChangeDuration, self.reviveFrameCallback, self.reviveDoneCallback, self)
+			self.revivalCoinTweenId = ZProj.TweenHelper.DOTweenFloat(self.preRevivalCoin, revivalCoin, Rouge2_MapEnum.CoinChangeDuration, self.reviveFrameCallback, self.reviveDoneCallback, self)
 
 			gohelper.setActive(self.reviveVx, true)
 			AudioMgr.instance:trigger(AudioEnum.UI.CoinChange)

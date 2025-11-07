@@ -18,6 +18,7 @@ function Rouge2_BandRecruitView:onInitView()
 	self._gohas = gohelper.findChild(self.viewGO, "bottom/#go_has")
 	self._gomaxcost = gohelper.findChild(self.viewGO, "bottom/#go_maxcost")
 	self._gocostpoint = gohelper.findChild(self.viewGO, "bottom/#go_maxcost/#go_costpoint")
+	self._goFireEmpty = gohelper.findChild(self.viewGO, "layout/#go_FireEmpty")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -91,23 +92,34 @@ function Rouge2_BandRecruitView:_refreshCostPoint(obj, index)
 end
 
 function Rouge2_BandRecruitView:refresBandMemberList()
+	self._preBandMemberNum = self._curBandMemberNum
 	self._bandMemberList = Rouge2_BandMemberListModel.instance:getBandMemberList()
+	self._curBandMemberNum = self._bandMemberList and #self._bandMemberList or 0
+	self._preBandMemberNum = self._preBandMemberNum or self._curBandMemberNum
 
 	gohelper.CreateObjList(self, self._refreshBandMemberItem, self._bandMemberList, self._goContent, self._goheroitem, Rouge2_BandMemberHeroItem)
 end
 
 function Rouge2_BandRecruitView:_refreshBandMemberItem(memberItem, bandCo, index)
-	memberItem:onUpdateMO(bandCo, index)
+	local isNew = index > self._preBandMemberNum
+
+	memberItem:onUpdateMO(bandCo, index, isNew)
 end
 
 function Rouge2_BandRecruitView:refreshFireHeroList()
 	self._fireHeroList = Rouge2_BandMemberListModel.instance:getFireHeroList()
+	self._preFireHeroNum = self._fireHeroNum or 0
+	self._fireHeroNum = self._fireHeroList and #self._fireHeroList or 0
+	self._isFireEmpty = self._fireHeroNum <= 0
 
+	gohelper.setActive(self._goFireEmpty, self._isFireEmpty)
 	gohelper.CreateObjList(self, self._refreshFireHerotem, self._fireHeroList, self._goFireContent, self._goFireItem, Rouge2_BandRecruitHeroItem)
 end
 
 function Rouge2_BandRecruitView:_refreshFireHerotem(fireHeroItem, bandCo, index)
-	fireHeroItem:onUpdateMO(bandCo, index, self._goScrollView)
+	local isNewFire = index > self._preFireHeroNum
+
+	fireHeroItem:onUpdateMO(bandCo, index, self._goScrollView, isNewFire)
 end
 
 function Rouge2_BandRecruitView:refreshSelectMember()

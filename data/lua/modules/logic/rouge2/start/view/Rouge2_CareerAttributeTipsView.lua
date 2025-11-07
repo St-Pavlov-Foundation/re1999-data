@@ -18,6 +18,8 @@ function Rouge2_CareerAttributeTipsView:onInitView()
 	self._goContent = gohelper.findChild(self.viewGO, "#go_Root/#scroll_overview/Viewport")
 	self._goDescList = gohelper.findChild(self.viewGO, "#go_Root/#scroll_overview/Viewport/Content/#go_DescList")
 	self._goDescItem = gohelper.findChild(self.viewGO, "#go_Root/#scroll_overview/Viewport/Content/#go_DescList/#go_DescItem")
+	self._goSpDescList = gohelper.findChild(self.viewGO, "#go_Root/#scroll_overview/Viewport/Content/#go_SpDescList")
+	self._goSpDescItem = gohelper.findChild(self.viewGO, "#go_Root/#scroll_overview/Viewport/Content/#go_SpDescList/#go_SpDescItem")
 	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Close")
 	self._txtCareerDesc = gohelper.findChildText(self.viewGO, "#go_Root/#scroll_overview/Viewport/Content/CareerDesc/#txt_CareerDesc")
 	self._transform = self.viewGO.transform
@@ -89,16 +91,27 @@ function Rouge2_CareerAttributeTipsView:refreshUI()
 	self._txtNum.text = self._attrValue or 0
 	self._txtCareer.text = self._attrCo and self._attrCo.name
 	self._txtCareerDesc.text = self._attrCo and self._attrCo.careerDesc
+	self._passiveSkillList = Rouge2_AttributeConfig.instance:getPassiveSkillDescList(self._careerId, self._attrId, self._attrValue)
+	self._spPassiveSkillList = Rouge2_AttributeConfig.instance:getCareerPassiveSkillList_Sp(self._careerId, self._attrId) or {}
 
-	local descList = Rouge2_AttributeConfig.instance:getPassiveSkillDescList(self._careerId, self._attrId, self._attrValue)
-
-	gohelper.CreateObjList(self, self._refreshPassiveSkillDesc, descList, self._goDescList, self._goDescItem)
+	gohelper.CreateObjList(self, self._refreshPassiveSkillDesc, self._passiveSkillList, self._goDescList, self._goDescItem)
+	gohelper.CreateObjList(self, self._refreshSpPassiveSkillDesc, self._spPassiveSkillList, self._goSpDescList, self._goSpDescItem)
 end
 
 function Rouge2_CareerAttributeTipsView:_refreshPassiveSkillDesc(obj, desc, index)
 	local txtDesc = gohelper.findChildText(obj, "txt_Descr")
 
 	txtDesc.text = SkillHelper.buildDesc(desc)
+
+	SkillHelper.addHyperLinkClick(txtDesc)
+end
+
+function Rouge2_CareerAttributeTipsView:_refreshSpPassiveSkillDesc(obj, skillCo, index)
+	local txtDesc = gohelper.findChildText(obj, "txt_Descr")
+	local imLevelUpDescStr = Rouge2_AttributeConfig.instance:getPassiveSkillImLevelUpDesc(skillCo.id, skillCo.level)
+	local result = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("rouge2_effecttips2"), skillCo.level, self._attrCo.name, imLevelUpDescStr)
+
+	txtDesc.text = SkillHelper.buildDesc(result)
 
 	SkillHelper.addHyperLinkClick(txtDesc)
 end

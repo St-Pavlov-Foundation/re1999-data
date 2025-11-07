@@ -20,6 +20,13 @@ function FightPlayCardModel:playCard(cardIndex)
 	self._curIndex = cardIndex
 end
 
+function FightPlayCardModel:getRemainCardCount()
+	local cardCount = self._usedCards and #self._usedCards or 0
+	local remainCount = cardCount - self._curIndex
+
+	return math.max(remainCount, 0)
+end
+
 function FightPlayCardModel:clearUsedCards()
 	self._usedCards = {}
 	self._curIndex = 0

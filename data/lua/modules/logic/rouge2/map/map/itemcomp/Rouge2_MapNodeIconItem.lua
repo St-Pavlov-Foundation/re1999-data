@@ -25,6 +25,10 @@ function Rouge2_MapNodeIconItem:init(go)
 	self._txtName = gohelper.findChildText(self.go, "#go_Root/Bubble/namebg/#txt_name")
 	self._goAttrList = gohelper.findChild(self.go, "#go_Root/Bubble/#go_attrlist")
 	self._goAttrItem = gohelper.findChild(self.go, "#go_Root/Bubble/#go_attrlist/#go_attr")
+	self._goLine = gohelper.findChild(self.go, "#go_Root/Bubble/line")
+	self._iconCanvasGroup = gohelper.onceAddComponent(self._imageIcon.gameObject, gohelper.Type_CanvasGroup)
+	self._iconBgCanvasGroup = gohelper.onceAddComponent(self._imageIconBg.gameObject, gohelper.Type_CanvasGroup)
+	self._lineCanvasGroup = gohelper.onceAddComponent(self._goLine, gohelper.Type_CanvasGroup)
 	self._animator = gohelper.onceAddComponent(self.go, gohelper.Type_Animator)
 
 	gohelper.setActive(self.go, true)
@@ -77,7 +81,10 @@ function Rouge2_MapNodeIconItem:refreshUI()
 
 	if not self._isNormal then
 		gohelper.setActive(self._goSelectLight, false)
-		UISpriteSetMgr.instance:setRouge6Sprite(self._imageChessBg, "rouge2_map_chessbg_1")
+
+		local iconName = self._isLock and "rouge2_map_chessgreybg" or "rouge2_map_chessbg_1"
+
+		UISpriteSetMgr.instance:setRouge6Sprite(self._imageChessBg, iconName)
 
 		return
 	end
@@ -107,20 +114,29 @@ function Rouge2_MapNodeIconItem:refreshIcon()
 	ZProj.UGUIHelper.SetGrayFactor(self._imageIcon.gameObject, self._isLock and 1 or 0)
 
 	local iconBgColor = "#FFFFFF"
+	local iconBgAlpha = 1
 
 	if self._arriveStatus == Rouge2_MapEnum.Arrive.CantArrive then
 		iconBgColor = "#6F6F6F"
+		iconBgAlpha = 0.39
 	end
+
+	self._iconBgCanvasGroup.alpha = iconBgAlpha
+	self._lineCanvasGroup.alpha = iconBgAlpha
 
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageIconBg, iconBgColor)
 
 	local iconColor = "#FFFFFF"
+	local iconAlpha = 1
 
 	if self._isFinish then
 		iconColor = "#989898"
 	elseif self._arriveStatus == Rouge2_MapEnum.Arrive.CantArrive then
 		iconColor = "#9C9C9C"
+		iconAlpha = 0.39
 	end
+
+	self._iconCanvasGroup.alpha = iconAlpha
 
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageIcon, iconColor)
 end

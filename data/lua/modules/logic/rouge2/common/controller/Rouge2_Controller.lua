@@ -47,7 +47,7 @@ end
 function Rouge2_Controller:checkIsOpen(showToast)
 	if not Rouge2_Model.instance:isUnlock() then
 		if showToast then
-			GameFacade.showToast(ToastEnum.ActivityNotOpen)
+			GameFacade.showToast(ToastEnum.Rouge2FunctionLockTip)
 		end
 
 		return false
@@ -62,6 +62,10 @@ function Rouge2_Controller:checkIsOpen(showToast)
 	end
 
 	return true
+end
+
+function Rouge2_Controller:isFirstGetInfo()
+	return Rouge2_Model.instance:isFirstGetInfo()
 end
 
 function Rouge2_Controller:openMainView(viewParam, isImmediate, callback, callbackTarget)
@@ -110,12 +114,11 @@ function Rouge2_Controller:startEndFlow()
 			self:addEndStoryFlow(endId)
 		end
 
-		self.endFlow:addWork(Rouge2_WaitFinishViewDoneWork.New(hadEnd))
+		self.endFlow:addWork(Rouge2_WaitFinishViewDoneWork.New(hadEnd, endId))
 		self.endFlow:addWork(OpenViewAndWaitCloseWork.New(ViewName.Rouge2_ResultView))
 		self.endFlow:addWork(OpenViewAndWaitCloseWork.New(ViewName.Rouge2_SettlementView))
-		self.endFlow:addWork(OpenViewAndWaitCloseWork.New(ViewName.Rouge2_SettlementUnlockView))
+		self.endFlow:addWork(Rouge2_WaitOpenSettlementUnlockWork.New())
 		self.endFlow:addWork(Rouge2_WaitOpenReviewWork.New())
-		self.endFlow:addWork(Rouge2_WaitOpenUnlockInfoWork.New())
 		self.endFlow:registerDoneListener(self.onEndFlowDone, self)
 		self.endFlow:start()
 	end
@@ -147,6 +150,7 @@ end
 function Rouge2_Controller:clearAllData()
 	Rouge2_MapHelper.clearMapData()
 	Rouge2_Model.instance:clear()
+	Rouge2_MapModel.instance:setManualCloseHeroGroupView(false)
 end
 
 function Rouge2_Controller:showRechangeMessageBox()

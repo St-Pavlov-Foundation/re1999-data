@@ -27,13 +27,11 @@ function Rouge2_CareerSelectItem:removeEventListeners()
 end
 
 function Rouge2_CareerSelectItem:_btnClickOnClick()
-	if not Rouge2_OutsideModel.instance:isUnlockCareer(self._careerId) then
-		local remainSecond = Rouge2_OutsideModel.instance:getCareerUnlockRemainTime(self._careerId)
+	local isUnlock, toastId = Rouge2_OutsideModel.instance:isUnlockCareer(self._careerId)
 
-		if remainSecond and remainSecond > 0 then
-			local timeStr = string.format("%s%s", TimeUtil.secondToRoughTime2(remainSecond))
-
-			GameFacade.showToast(ToastEnum.Rouge2LockCareer, timeStr)
+	if not isUnlock then
+		if toastId and toastId ~= 0 then
+			GameFacade.showToast(toastId)
 		end
 
 		return

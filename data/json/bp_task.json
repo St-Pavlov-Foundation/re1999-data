@@ -21534,7 +21534,7 @@
     "loopType": 5,
     "minType": "战令赛季",
     "name": "§参与全新肉鸽玩法难度0",
-    "desc": "完成“无声综合征”[颤动的噪声I]难度",
+    "desc": "完成“无声综合征”[颤动I]难度",
     "listenerType": "Rouge2BpPassDifficulty",
     "listenerParam": "1",
     "maxProgress": 1,

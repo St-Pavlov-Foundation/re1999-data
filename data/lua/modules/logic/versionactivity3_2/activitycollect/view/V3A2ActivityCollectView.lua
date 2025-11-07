@@ -69,7 +69,14 @@ function V3A2ActivityCollectView:onClickActivity1()
 end
 
 function V3A2ActivityCollectView:onClickActivity2()
-	StoreController.instance:openStoreView(612, 832006, true)
+	local seasonCardId = 832006
+	local goodsMo = StoreModel.instance:getGoodsMO(seasonCardId)
+
+	if goodsMo and goodsMo:isSoldOut() then
+		StoreController.instance:openStoreView(612, 610001, true)
+	else
+		StoreController.instance:openStoreView(612, seasonCardId, true)
+	end
 end
 
 function V3A2ActivityCollectView:onClickActivity3()

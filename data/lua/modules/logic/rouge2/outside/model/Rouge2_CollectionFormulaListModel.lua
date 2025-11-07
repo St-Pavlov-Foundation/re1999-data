@@ -8,6 +8,7 @@ function Rouge2_CollectionFormulaListModel:onInit(baseTagFilterMap, extraTagFilt
 	self._baseTagFilterMap = baseTagFilterMap
 	self._extraTagFilterMap = extraTagFilterMap
 	self._curSelectId = nil
+	self._posDic = {}
 
 	self:onCollectionDataUpdate()
 	self:selectFirstOrDefault(selectIndex)
@@ -34,6 +35,14 @@ function Rouge2_CollectionFormulaListModel:onCollectionDataUpdate()
 	end
 
 	self:setList(productCollections)
+
+	self._posDic = {}
+
+	local list = self:getList()
+
+	for _, mo in ipairs(list) do
+		self._posDic[mo.itemId] = mo.id
+	end
 end
 
 function Rouge2_CollectionFormulaListModel:isBagEmpty()
@@ -76,6 +85,10 @@ end
 
 function Rouge2_CollectionFormulaListModel:getCurSelectCellId()
 	return self._curSelectId or 0
+end
+
+function Rouge2_CollectionFormulaListModel:getCellIndexByItemId(formulaId)
+	return self._posDic[formulaId]
 end
 
 function Rouge2_CollectionFormulaListModel:updateFilterMap(baseTagFilterMap, extraTagFilterMap)

@@ -5,6 +5,9 @@ module("modules.logic.rouge2.map.view.relicsdrop.Rouge2_RelicsDropView", package
 local Rouge2_RelicsDropView = class("Rouge2_RelicsDropView", BaseView)
 
 function Rouge2_RelicsDropView:onInitView()
+	self._goSelectBg = gohelper.findChild(self.viewGO, "#go_SelectBG")
+	self._goDropBG = gohelper.findChild(self.viewGO, "#go_DropBG")
+	self._goLossBG = gohelper.findChild(self.viewGO, "#go_LossBG")
 	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Close")
 	self._goSelect = gohelper.findChild(self.viewGO, "Title/#go_Select")
 	self._goDrop = gohelper.findChild(self.viewGO, "Title/#go_Drop")
@@ -17,6 +20,7 @@ function Rouge2_RelicsDropView:onInitView()
 	self._goTopLeft = gohelper.findChild(self.viewGO, "#go_topleft")
 	self._goTopRight = gohelper.findChild(self.viewGO, "#go_topright")
 	self._goLevelUpSuccEffect = gohelper.findChild(self.viewGO, "#go_successEffect")
+	self._imageTitleBG = gohelper.findChild(self.viewGO, "Title/image_TitleBG")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -45,7 +49,18 @@ end
 function Rouge2_RelicsDropView:onOpen()
 	self:initViewParam()
 	self:refreshUI()
-	AudioMgr.instance:trigger(AudioEnum.Rouge2.DropRelics)
+
+	if self._isLevelUpSucc then
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.LevelUpRelics)
+	else
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.DropRelics)
+	end
+end
+
+function Rouge2_RelicsDropView:onOpenFinish()
+	if self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select then
+		Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.OnGuideGetRelics)
+	end
 end
 
 function Rouge2_RelicsDropView:onUpdateParam()
@@ -59,6 +74,8 @@ function Rouge2_RelicsDropView:initViewParam()
 	self._relicsList = self.viewParam and self.viewParam.itemList or {}
 	self._reason = self.viewParam and self.viewParam.reason
 
+	NavigateMgr.instance:removeEscape(self.viewName)
+
 	if self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select or self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp then
 		NavigateMgr.instance:addEscape(self.viewName, Rouge2_MapHelper.blockEsc)
 	end
@@ -71,11 +88,20 @@ function Rouge2_RelicsDropView:refreshUI()
 end
 
 function Rouge2_RelicsDropView:refreshTitle()
+	self._isLevelUpSucc = self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Drop and self._reason == Rouge2_MapEnum.ItemDropReason.LevelUpSucc
+
 	gohelper.setActive(self._goSelect, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select)
-	gohelper.setActive(self._goDrop, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Drop)
+	gohelper.setActive(self._goDrop, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Drop and not self._isLevelUpSucc)
 	gohelper.setActive(self._goLoss, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Loss)
-	gohelper.setActive(self._goStrength, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp)
-	gohelper.setActive(self._goLevelUpSuccEffect, self._reason == Rouge2_MapEnum.ItemDropReason.LevelUpSucc)
+	gohelper.setActive(self._goStrength, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp or self._isLevelUpSucc)
+	gohelper.setActive(self._imageTitleBG.gameObject, self._viewEnum ~= Rouge2_MapEnum.ItemDropViewEnum.Tips)
+	gohelper.setActive(self._goLevelUpSuccEffect, self._isLevelUpSucc)
+
+	local showSelectBg = self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Select or self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.LevelUp
+
+	gohelper.setActive(self._goSelectBg, showSelectBg)
+	gohelper.setActive(self._goDropBG, not showSelectBg and self._viewEnum ~= Rouge2_MapEnum.ItemDropViewEnum.Loss)
+	gohelper.setActive(self._goLossBG, self._viewEnum == Rouge2_MapEnum.ItemDropViewEnum.Loss)
 end
 
 function Rouge2_RelicsDropView:refreshButton()

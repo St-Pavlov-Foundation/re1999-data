@@ -89,6 +89,8 @@ function V3a2_BossRush_HandBookEnemyInfoView:onOpen()
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:onSelectMonsterChange(mo)
+	self:_onfinishExpLoopAudio()
+
 	if not mo then
 		return
 	end
@@ -362,12 +364,12 @@ function V3a2_BossRush_HandBookEnemyInfoView:finishCallback()
 			else
 				self:_doTweenExp(self._saveExp, self._heightScore)
 			end
-		else
-			AudioMgr.instance:trigger(AudioEnum3_2.BossRush.stop_ui_zongmao_jiafen_loop)
+
+			return
 		end
-	else
-		AudioMgr.instance:trigger(AudioEnum3_2.BossRush.stop_ui_zongmao_jiafen_loop)
 	end
+
+	self:_onfinishExpLoopAudio()
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_showExpSlider()
@@ -423,6 +425,10 @@ function V3a2_BossRush_HandBookEnemyInfoView:refreshExp()
 	end
 end
 
+function V3a2_BossRush_HandBookEnemyInfoView:_onfinishExpLoopAudio()
+	AudioMgr.instance:trigger(AudioEnum3_2.BossRush.stop_ui_zongmao_jiafen_loop)
+end
+
 function V3a2_BossRush_HandBookEnemyInfoView:_refreshExpBonus()
 	local bonus = self._handBookMo:getCanClaimBonus(self._saveExp)
 
@@ -462,13 +468,14 @@ end
 function V3a2_BossRush_HandBookEnemyInfoView:_clickClaimCb()
 	self._handBookMo:setSaveExp(self._handBookMo.heightScore or self._saveExp)
 	self._scoreAnim:Play(V3a2BossRushEnum.AnimName.Lingqu, 0, 0)
+	self:_onfinishExpLoopAudio()
 	self:refreshExp()
 	gohelper.setActive(self._goFly, true)
 	AudioMgr.instance:trigger(AudioEnum.ui_settleaccounts.play_ui_settleaccounts_resources)
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:onClose()
-	AudioMgr.instance:trigger(AudioEnum3_2.BossRush.stop_ui_zongmao_jiafen_loop)
+	self:_onfinishExpLoopAudio()
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:onDestroyView()

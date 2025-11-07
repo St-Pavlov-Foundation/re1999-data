@@ -513,15 +513,10 @@ function Rouge2_StatController:getCompletedEventID()
 end
 
 function Rouge2_StatController:getCompletedEntrustId()
-	local rougeInfo = Rouge2_Model.instance:getRougeInfo()
+	local recordInfo = Rouge2_MapModel.instance:getGameRecordInfo()
+	local finishEntrustIds = recordInfo and recordInfo:getFinishEntrustIdList()
 
-	if not rougeInfo then
-		return
-	end
-
-	if rougeInfo.finishEntrust and #rougeInfo.finishEntrust > 0 then
-		return rougeInfo.finishEntrust
-	end
+	return finishEntrustIds
 end
 
 function Rouge2_StatController:getCompletedEntrustNum()

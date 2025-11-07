@@ -55,7 +55,7 @@ function Rouge2_AlchemyItemListModel:copyListFromConfig(itemType)
 			local config = Rouge2_OutSideConfig.instance:getMaterialConfig(materialId)
 
 			if config then
-				if config.type == Rouge2_OutsideEnum.MaterialType.Sub then
+				if config.type == Rouge2_OutsideEnum.MaterialType.Sub and Rouge2_AlchemyModel.instance:getMaterialNum(config.id) > 0 then
 					local mo = {}
 
 					mo.type = itemType

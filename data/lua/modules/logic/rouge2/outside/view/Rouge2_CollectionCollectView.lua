@@ -66,12 +66,14 @@ function Rouge2_CollectionCollectView:onUpdateParam()
 end
 
 function Rouge2_CollectionCollectView:onOpen()
+	self.type = self.viewParam and self.viewParam.displayType or Rouge2_OutsideEnum.ResultFinalDisplayType.Review
+
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_collectible)
 	self:refreshUI()
 	self:rotationRound()
 end
 
-local rotationTime = 0.05
+local rotationTime = 0.02
 
 function Rouge2_CollectionCollectView:rotationRound()
 	local constConfig = Rouge2_OutSideConfig.instance:getConstConfigById(Rouge2_Enum.OutSideConstId.CollectRotateParam)
@@ -116,32 +118,37 @@ function Rouge2_CollectionCollectView:refreshUI()
 
 	local newCount = 0
 
-	self.totalCount = #result
+	self.totalCount = 0
+
+	local haveShowItemDic = Rouge2_OutsideModel.instance:getLocalDataDic(Rouge2_OutsideEnum.LocalData.Collection)
 
 	for index, config in ipairs(result) do
-		local parent = self._roundChildGoList[index]
+		if config.isDisplay ~= nil and config.isDisplay ~= 0 then
+			self.totalCount = self.totalCount + 1
 
-		if not parent then
-			logError("造物收集界面 不存在的索引:" .. index)
-		elseif Rouge2_OutsideModel.instance:collectionIsUnlock(config.id) and Rouge2_OutsideModel.instance:collectionIsPass(config.id) then
-			local itemGo = gohelper.clone(self._gocollectionitem, parent)
+			local parent = self._roundChildGoList[self.totalCount]
 
-			gohelper.setActive(itemGo, true)
+			if not parent then
+				logError("造物收集界面 不存在的索引:" .. tostring(self.totalCount))
+			elseif Rouge2_OutsideModel.instance:collectionIsUnlock(config.id) and Rouge2_OutsideModel.instance:collectionIsPass(config.id) then
+				local itemGo = gohelper.clone(self._gocollectionitem, parent)
 
-			local item = MonoHelper.addNoUpdateLuaComOnceToGo(itemGo, Rouge2_CollectionCollectItem)
+				gohelper.setActive(itemGo, true)
 
-			item:setInfo(config)
+				local item = MonoHelper.addNoUpdateLuaComOnceToGo(itemGo, Rouge2_CollectionCollectItem)
 
-			local num = math.random(0, 5)
-			local isNew = num >= 3
+				item:setInfo(config)
 
-			if isNew then
-				table.insert(self._newItemList, item)
+				local isNew = not haveShowItemDic[config.id]
 
-				newCount = newCount + 1
+				if isNew then
+					table.insert(self._newItemList, item)
+
+					newCount = newCount + 1
+				end
+
+				table.insert(self._collectionItemList, item)
 			end
-
-			table.insert(self._collectionItemList, item)
 		end
 	end
 
@@ -161,6 +168,7 @@ function Rouge2_CollectionCollectView:onOpenAnimPlayFinish()
 
 	for _, item in ipairs(self._newItemList) do
 		item.animator:Play("firstin", 0, 0)
+		Rouge2_OutsideController.instance:addShowRedDot(Rouge2_OutsideEnum.LocalData.Collection, item.config.id)
 	end
 
 	self:refreshCountInfo()
@@ -212,6 +220,10 @@ function Rouge2_CollectionCollectView:onClose()
 		ZProj.TweenHelper.KillById(self._collectCountTweenId)
 
 		self._collectCountTweenId = nil
+	end
+
+	if self.type == Rouge2_OutsideEnum.ResultFinalDisplayType.Result then
+		Rouge2_OutsideController.instance:checkNewUnlock()
 	end
 end
 

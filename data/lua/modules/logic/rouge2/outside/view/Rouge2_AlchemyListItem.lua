@@ -12,7 +12,7 @@ function Rouge2_AlchemyListItem:onInitView()
 	self._txtnum = gohelper.findChildText(self.viewGO, "#txt_num")
 	self._godlctag = gohelper.findChild(self.viewGO, "#go_dlctag")
 	self._goselected = gohelper.findChild(self.viewGO, "#go_selected")
-	self._btnclick = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_click")
+	self._btnclick = gohelper.findChildButton(self.viewGO, "#btn_click")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -68,6 +68,7 @@ function Rouge2_AlchemyListItem:refreshUI()
 
 		Rouge2_IconHelper.setFormulaIcon(id, self._simageicon)
 		Rouge2_IconHelper.setAlchemyRareBg(formulaConfig.rare, self._imagebg)
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnFormulaItemRefreshFinish, self.id)
 	elseif self.type == Rouge2_OutsideEnum.AlchemyItemType.SubMaterial then
 		local materialConfig = Rouge2_OutSideConfig.instance:getMaterialConfig(id)
 
@@ -80,6 +81,8 @@ function Rouge2_AlchemyListItem:refreshUI()
 		local count = Rouge2_AlchemyModel.instance:getMaterialNum(id) or 0
 
 		self._txtnum.text = tostring(count)
+
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnMaterialItemRefreshFinish, self.id)
 	end
 end
 

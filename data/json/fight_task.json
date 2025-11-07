@@ -7058,7 +7058,7 @@
   {
     "id": 322102,
     "condition": "",
-    "taskParam1": "Indicator#3203#5000#4",
+    "taskParam1": "Indicator#3203#6000#4",
     "sysParam1": "1",
     "taskParam2": "",
     "sysParam2": "",
@@ -7070,7 +7070,7 @@
   {
     "id": 322103,
     "condition": "",
-    "taskParam1": "Indicator#3203#8000#4",
+    "taskParam1": "Indicator#3203#10000#4",
     "sysParam1": "1",
     "taskParam2": "",
     "sysParam2": "",
@@ -7082,7 +7082,7 @@
   {
     "id": 322104,
     "condition": "",
-    "taskParam1": "Indicator#3203#8000#4",
+    "taskParam1": "Indicator#3203#10000#4",
     "sysParam1": "1",
     "taskParam2": "",
     "sysParam2": "",

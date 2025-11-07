@@ -5,32 +5,9 @@ module("modules.logic.rouge2.start.model.Rouge2_DifficultySelectListModel", pack
 local Rouge2_DifficultySelectListModel = class("Rouge2_DifficultySelectListModel", ListScrollModel)
 
 function Rouge2_DifficultySelectListModel:init()
-	self._diffMap = {}
-	self._difficultyList = Rouge2_Config.instance:getDifficultyCoList()
+	local allPageList, diffMap = Rouge2_DifficultySelectListModel.getDifficultyList()
 
-	local allPageList = {}
-	local pageDiffList = {}
-
-	for _, diffCo in ipairs(self._difficultyList) do
-		local id = diffCo.difficulty
-
-		self._diffMap[id] = diffCo
-
-		table.insert(pageDiffList, diffCo)
-
-		if #pageDiffList >= Rouge2_Enum.DifficultyPageNum then
-			table.insert(allPageList, pageDiffList)
-
-			pageDiffList = {}
-		end
-	end
-
-	if #pageDiffList > 0 then
-		table.insert(allPageList, pageDiffList)
-
-		pageDiffList = {}
-	end
-
+	self._diffMap = diffMap
 	self._curPageIndex = 1
 	self._selectDiff = nil
 
@@ -51,6 +28,10 @@ end
 
 function Rouge2_DifficultySelectListModel:getCurSelectDifficulty()
 	return self._selectDiff
+end
+
+function Rouge2_DifficultySelectListModel:getCurSelectPageIndex()
+	return self._curPageIndex
 end
 
 function Rouge2_DifficultySelectListModel:isPageUnlock(pageIndex)
@@ -90,6 +71,12 @@ function Rouge2_DifficultySelectListModel:switchPage(isNext)
 	return self:switch2TargetPage(tagetPageIndex)
 end
 
+function Rouge2_DifficultySelectListModel:isIndexValid(isNext)
+	local index = isNext and self._curPageIndex + 1 or self._curPageIndex - 1
+
+	return index > 0 and index <= self:getCount()
+end
+
 function Rouge2_DifficultySelectListModel:switch2TargetPage(pageIndex)
 	local canSwitch, toastId = self:isPageUnlock(pageIndex)
 
@@ -110,8 +97,51 @@ function Rouge2_DifficultySelectListModel:switch2TargetPage(pageIndex)
 end
 
 function Rouge2_DifficultySelectListModel:selectNewestDifficulty()
-	for i = self:getCount(), 1, -1 do
-		local pageMo = self:getByIndex(i)
+	local dataList = self:getList()
+	local index, difficulty = Rouge2_DifficultySelectListModel.getNewestDifficulty(dataList)
+
+	if index and difficulty then
+		self:switch2TargetPage(index)
+		self:selectDifficulty(difficulty)
+	end
+end
+
+function Rouge2_DifficultySelectListModel.getDifficultyList()
+	local difficultyList = Rouge2_Config.instance:getDifficultyCoList()
+	local allPageList = {}
+	local pageDiffList = {}
+	local diffMap = {}
+
+	for i, diffCo in ipairs(difficultyList) do
+		local id = diffCo.difficulty
+
+		diffMap[id] = diffCo
+
+		table.insert(pageDiffList, diffCo)
+
+		if #pageDiffList >= Rouge2_Enum.DifficultyPageNum then
+			table.insert(allPageList, pageDiffList)
+
+			pageDiffList = {}
+		end
+
+		if i >= 4 then
+			break
+		end
+	end
+
+	if #pageDiffList > 0 then
+		table.insert(allPageList, pageDiffList)
+
+		pageDiffList = {}
+	end
+
+	return allPageList, diffMap
+end
+
+function Rouge2_DifficultySelectListModel.getNewestDifficulty(allPageList)
+	for i = #allPageList, 1, -1 do
+		local pageMo = allPageList[i]
 		local difficultyNum = pageMo and #pageMo or 0
 
 		for j = difficultyNum, 1, -1 do
@@ -120,13 +150,12 @@ function Rouge2_DifficultySelectListModel:selectNewestDifficulty()
 			local isUnlock = Rouge2_OutsideModel.instance:isOpenedDifficulty(difficulty)
 
 			if isUnlock then
-				self:switch2TargetPage(i)
-				self:selectDifficulty(difficulty)
-
-				return
+				return i, difficulty
 			end
 		end
 	end
+
+	return nil, nil
 end
 
 Rouge2_DifficultySelectListModel.instance = Rouge2_DifficultySelectListModel.New()

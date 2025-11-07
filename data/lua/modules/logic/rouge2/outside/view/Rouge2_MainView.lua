@@ -46,6 +46,7 @@ function Rouge2_MainView:addEvents()
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.EnterGame, self.enterGame, self)
+	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.onAlchemySuccess, self.onAlchemyInfoUpdate, self)
 end
 
 function Rouge2_MainView:removeEvents()
@@ -63,6 +64,7 @@ function Rouge2_MainView:removeEvents()
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.EnterGame, self.enterGame, self)
+	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.onAlchemySuccess, self.onAlchemyInfoUpdate, self)
 end
 
 function Rouge2_MainView:_btnEventHandbookOnClick()
@@ -91,6 +93,14 @@ function Rouge2_MainView:_btnRoleHandbookOnClick()
 		return
 	end
 
+	local isUnlockCareer = Rouge2_OutsideController.instance:isCareerUnlock()
+
+	if not isUnlockCareer then
+		GameFacade.showToast(ToastEnum.Rouge2CareerLock)
+
+		return
+	end
+
 	logNormal("点击领路人图鉴")
 	Rouge2_ViewHelper.openRougeCareerHandBookView()
 end
@@ -107,17 +117,31 @@ function Rouge2_MainView:enterGame()
 	if Rouge2_Model.instance:isStarted() then
 		self:closeThis()
 		Rouge2_Controller.instance:startRouge()
+	elseif Rouge2_Model.instance:isFinishedDifficulty() then
+		self:reallyEnterRouge()
 	else
-		self.animator:Play("close")
-		AudioMgr.instance:trigger(AudioEnum.Rouge2.EnterDifficulty)
-
-		local sceneIndex = Rouge2_Model.instance:isFinishedDifficulty() and Rouge2_OutsideEnum.SceneIndex.CareerScene or Rouge2_OutsideEnum.SceneIndex.DifficultyScene
-
-		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, sceneIndex)
-		Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
+		self:checkFormula()
 	end
 
 	Rouge2_StatController.instance:statStart()
+end
+
+function Rouge2_MainView:checkFormula()
+	if not Rouge2_AlchemyModel.instance:haveAlchemyInfo() then
+		GameFacade.showOptionMessageBox(MessageBoxIdDefine.Rouge2NoFormula, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self.reallyEnterRouge, nil, nil, self)
+	else
+		self:reallyEnterRouge()
+	end
+end
+
+function Rouge2_MainView:reallyEnterRouge()
+	self.animator:Play("close")
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.EnterDifficulty)
+
+	local sceneIndex = Rouge2_Model.instance:isFinishedDifficulty() and Rouge2_OutsideEnum.SceneIndex.CareerScene or Rouge2_OutsideEnum.SceneIndex.DifficultyScene
+
+	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, sceneIndex)
+	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
 end
 
 function Rouge2_MainView:onSceneSwitchFinish()
@@ -143,7 +167,7 @@ function Rouge2_MainView:_btnAlchemyOnClick()
 		return
 	end
 
-	if Rouge2_Model.instance:isStarted() then
+	if Rouge2_Model.instance:isFinishedDifficulty() or Rouge2_Model.instance:isStarted() then
 		GameFacade.showToast(ToastEnum.Rouge2GameStartFormulaTip)
 
 		return
@@ -169,7 +193,7 @@ function Rouge2_MainView:_btnMedicineOnClick()
 		return
 	end
 
-	if Rouge2_Model.instance:isStarted() then
+	if Rouge2_Model.instance:isFinishedDifficulty() or Rouge2_Model.instance:isStarted() then
 		GameFacade.showToast(ToastEnum.Rouge2GameStartFormulaTip)
 
 		return
@@ -227,6 +251,9 @@ function Rouge2_MainView:_editableInitView()
 	self._goEventDot = gohelper.findChild(self.viewGO, "Left/#btn_EventHandbook/#go_reddot")
 
 	RedDotController.instance:addRedDot(self._goEventDot, RedDotEnum.DotNode.V3a2_Rouge_Review, 0)
+
+	self._gocareerLock = gohelper.findChild(self.viewGO, "Left/#btn_RoleHandbook/#go_careerLock")
+	self._formulaAnimator = gohelper.findChildComponent(self.viewGO, "Right/#btn_Medicine", gohelper.Type_Animator)
 end
 
 function Rouge2_MainView:onUpdateParam()
@@ -237,6 +264,7 @@ function Rouge2_MainView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_2_2)
 	self:refreshUI()
 	TaskDispatcher.runDelay(self.playBollAudio, self, Rouge2_OutsideEnum.MainViewBallAudioDelay)
+	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnMainViewInTop)
 end
 
 function Rouge2_MainView:playBollAudio()
@@ -252,10 +280,30 @@ function Rouge2_MainView:_onUpdateRougeInfo()
 	self:refreshUI()
 end
 
+function Rouge2_MainView:onAlchemyInfoUpdate()
+	self:refreshUI()
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onAlchemyEnterViewClose, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onAlchemyEnterViewClose, self)
+end
+
+function Rouge2_MainView:onAlchemyEnterViewClose(viewName)
+	if viewName == ViewName.Rouge2_AlchemyEnterView then
+		self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onAlchemyEnterViewClose, self)
+		self._formulaAnimator:Play("light", 0, 0)
+	end
+end
+
 function Rouge2_MainView:refreshUI()
 	self:_refreshProgress()
 	self:_refreshFormula()
 	self:_refreshCDLocked()
+	self:refreshUnlock()
+end
+
+function Rouge2_MainView:refreshUnlock()
+	local isUnlockCareer = Rouge2_OutsideController.instance:isCareerUnlock()
+
+	gohelper.setActive(self._gocareerLock, not isUnlockCareer)
 end
 
 function Rouge2_MainView:_refreshFormula()
@@ -347,6 +395,7 @@ end
 function Rouge2_MainView:onClose()
 	TaskDispatcher.cancelTask(self.playBollAudio, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onAlchemyEnterViewClose, self)
 end
 
 function Rouge2_MainView:onDestroyView()

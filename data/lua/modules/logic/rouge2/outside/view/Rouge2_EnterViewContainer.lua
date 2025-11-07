@@ -20,13 +20,19 @@ function Rouge2_EnterViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			true,
-			false
+			true
 		})
+
+		self.navigateView:setOverrideHelp(self.onHelpClick, self)
 
 		return {
 			self.navigateView
 		}
 	end
+end
+
+function Rouge2_EnterViewContainer:onHelpClick()
+	Rouge2_Controller.instance:openTechniqueView()
 end
 
 return Rouge2_EnterViewContainer

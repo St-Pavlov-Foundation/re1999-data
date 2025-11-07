@@ -10,6 +10,10 @@ end
 
 function Rouge2_CommonCollectionItem:init(go)
 	self.go = go
+	self._simageBg = gohelper.findChildSingleImage(self.go, "BG_dissolve")
+	self._simageBg2 = gohelper.findChildSingleImage(self.go, "image_BG")
+	self._txtRare = gohelper.findChildText(self.go, "image_BG/#txt_rare")
+	self._imageNameBg = gohelper.findChildImage(self.go, "Relics/image_namebg")
 	self._imageRareIcon = gohelper.findChildImage(self.go, "Relics/#image_RareIcon")
 	self._imageRelicsIcon = gohelper.findChildSingleImage(self.go, "Relics/#image_RelicsIcon")
 	self._imageIcon = gohelper.findChildImage(self.go, "Relics/#image_Icon")
@@ -99,8 +103,16 @@ function Rouge2_CommonCollectionItem:refreshUI()
 	self:showRareEffect()
 	Rouge2_IconHelper.setRelicsIcon(self._relicsId, self._imageRelicsIcon)
 	Rouge2_IconHelper.setRelicsRareIcon(self._relicsId, self._imageRareIcon)
+	Rouge2_IconHelper.setRelicsRareIcon(self._relicsId, self._simageBg, Rouge2_Enum.ItemRareIconType.Bg)
+	Rouge2_IconHelper.setRelicsRareIcon(self._relicsId, self._simageBg2, Rouge2_Enum.ItemRareIconType.Bg)
+	Rouge2_IconHelper.setRelicsRareIcon(self._relicsId, self._imageNameBg, Rouge2_Enum.ItemRareIconType.NameBg)
 	Rouge2_IconHelper.setAttributeIcon(self._attrId, self._imageIcon)
 
+	local rareCo = Rouge2_CollectionConfig.instance:getRareConfig(self._relicsCo.rare)
+	local rareName = rareCo and rareCo.name
+	local rareColor = rareCo and rareCo.relicsColor
+
+	self._txtRare.text = string.format("<#%s>%s</color>", rareColor, rareName)
 	self._descMode = self._descModeFlag and Rouge2_BackpackController.instance:getItemDescMode(self._descModeFlag)
 
 	Rouge2_ItemDescHelper.setItemDesc(self._dataType, self._dataId, self._goContent, self._descMode, self._descIncludeTypes)
@@ -149,10 +161,13 @@ function Rouge2_CommonCollectionItem:_defaultOnPlayAnimDone()
 	return
 end
 
-function Rouge2_CommonCollectionItem:onDestory()
+function Rouge2_CommonCollectionItem:onDestroy()
 	self._clickCallback = nil
 	self._clickCallbackObj = nil
 	self._scrollOverview.parentGameObject = nil
+
+	self._simageBg:UnLoadImage()
+	self._simageBg2:UnLoadImage()
 end
 
 return Rouge2_CommonCollectionItem

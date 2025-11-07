@@ -10161,7 +10161,7 @@
   },
   {
     "id": 321002,
-    "tips": "后续更新解锁",
+    "tips": "敬请期待",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10193,7 +10193,7 @@
   },
   {
     "id": 321006,
-    "tips": "已清除当前金点子",
+    "tips": "已清除当前好旅伴",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10217,7 +10217,7 @@
   },
   {
     "id": 321009,
-    "tips": "请先装配主动技能",
+    "tips": "请先装配共鸣器",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10233,7 +10233,7 @@
   },
   {
     "id": 321011,
-    "tips": "§能量不足",
+    "tips": "打磨进度不足",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10353,7 +10353,7 @@
   },
   {
     "id": 321401,
-    "tips": "§请选择卡包",
+    "tips": "请先选择计划",
     "icon": 1,
     "audioId": 1,
     "notMerge": 0,
@@ -10458,6 +10458,38 @@
   {
     "id": 321015,
     "tips": "积分不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321016,
+    "tips": "敬请期待",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321017,
+    "tips": "招募所需容量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321018,
+    "tips": "当前属性已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 321019,
+    "tips": "成长节拍不足",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

@@ -92,6 +92,8 @@ function Rouge2_BackpackRelicsView:initScrollView()
 	scrollParam.cellHeight = 760
 	scrollParam.cellSpaceV = -5
 
+	Rouge2_BackpackRelicsListModel.instance:clear()
+
 	local scrollView = LuaMixScrollView.New(Rouge2_BackpackRelicsListModel.instance, scrollParam)
 
 	scrollView:setDynamicGetItem(self._dynamicGetItem, self)

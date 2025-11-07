@@ -826,11 +826,7 @@ function StoryBackgroundView:_resetBgEffOutFocus()
 	end
 end
 
-function StoryBackgroundView:_resetBgEffDiamondLight(force)
-	if not force and self._bgCo.effType == StoryEnum.BgEffectType.DiamondLight then
-		return
-	end
-
+function StoryBackgroundView:_resetBgEffDiamondLight()
 	if self._bgDiamondLightCls then
 		self._bgDiamondLightCls:destroy()
 
@@ -1813,7 +1809,7 @@ function StoryBackgroundView:_actBgEffDiamondLight()
 		self._bgDiamondLightCls = StoryBgEffsDiamondLight.New()
 
 		self._bgDiamondLightCls:init(self._bgCo)
-		self._bgDiamondLightCls:start()
+		self._bgDiamondLightCls:start(self._resetBgEffDiamondLight, self)
 	else
 		self._bgDiamondLightCls:reset(self._bgCo)
 	end

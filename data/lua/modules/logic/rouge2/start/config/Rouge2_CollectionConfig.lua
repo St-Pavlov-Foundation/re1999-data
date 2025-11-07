@@ -58,6 +58,7 @@ end
 
 function Rouge2_CollectionConfig:_onLoadRelicsConfigs(configTable)
 	self._attr2RelicsMap = {}
+	self._updateId2BaseRelicsMap = {}
 
 	for _, relicsCo in ipairs(configTable.configList) do
 		local attrUpdate = relicsCo.attrUpdate
@@ -73,6 +74,12 @@ function Rouge2_CollectionConfig:_onLoadRelicsConfigs(configTable)
 				attrValue = attrValue,
 				config = relicsCo
 			})
+
+			local updateId = relicsCo.updateId
+
+			if updateId and updateId ~= 0 then
+				self._updateId2BaseRelicsMap[updateId] = relicsCo.id
+			end
 		end
 	end
 
@@ -200,6 +207,12 @@ function Rouge2_CollectionConfig:getAttrUpdateRelicsList(attrId)
 	local relicsList = self._attr2RelicsMap[attrId]
 
 	return relicsList
+end
+
+function Rouge2_CollectionConfig:getBaseRelicsId(updateId)
+	local baseRelicsId = self._updateId2BaseRelicsMap and self._updateId2BaseRelicsMap[updateId]
+
+	return baseRelicsId
 end
 
 Rouge2_CollectionConfig.instance = Rouge2_CollectionConfig.New()

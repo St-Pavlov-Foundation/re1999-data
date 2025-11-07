@@ -115,6 +115,16 @@ function Rouge2_ItemDescHelper._getItemDescHelper(dataType, dataId)
 	return helper
 end
 
+function Rouge2_ItemDescHelper.getDefaultIncludeTypeList(dataType, dataId)
+	local helper = Rouge2_ItemDescHelper._getItemDescHelper(dataType, dataId)
+
+	if helper then
+		return helper.getDefaultIncludeTypeList()
+	end
+
+	return nil
+end
+
 function Rouge2_ItemDescHelper.addFixTmpBreakLine(txtComp)
 	if not txtComp then
 		return
@@ -160,10 +170,10 @@ function Rouge2_ItemDescHelper.getItemDescStr(dataType, dataId, descMode, includ
 	return table.concat(contentList, "\n")
 end
 
-function Rouge2_ItemDescHelper.setItemDescStr(dataType, dataId, txtComp, descMode, includeTypeList)
+function Rouge2_ItemDescHelper.setItemDescStr(dataType, dataId, txtComp, descMode, includeTypeList, percentColor, bracketColor)
 	local descStr = Rouge2_ItemDescHelper.getItemDescStr(dataType, dataId, descMode, includeTypeList)
 
-	txtComp.text = SkillHelper.buildDesc(descStr)
+	txtComp.text = Rouge2_ItemDescHelper.buildDesc(descStr, percentColor, bracketColor)
 
 	SkillHelper.addHyperLinkClick(txtComp)
 	Rouge2_ItemDescHelper.addFixTmpBreakLine(txtComp)
@@ -183,6 +193,16 @@ function Rouge2_ItemDescHelper:_refreshBuffTagItem(obj, tagId, index)
 	local tagName = tagCo and tagCo.name or ""
 
 	txtTag.text = tagName
+end
+
+function Rouge2_ItemDescHelper.buildDesc(desc, percentColor, bracketColor)
+	percentColor = percentColor or "#b84E32"
+
+	return SkillHelper.buildDesc(desc, percentColor, bracketColor)
+end
+
+function Rouge2_ItemDescHelper.replaceColor(str, originColor, targetColor)
+	return string.gsub(str, originColor, targetColor)
 end
 
 return Rouge2_ItemDescHelper

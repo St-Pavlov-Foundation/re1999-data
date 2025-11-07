@@ -25,6 +25,8 @@ function Rouge2_CollectionDetailBtnComp:_btndetailsOnClick()
 end
 
 function Rouge2_CollectionDetailBtnComp:_editableInitView()
+	self._goSelect = gohelper.findChild(self._btndetails.gameObject, "circle/#go_select")
+
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.SwitchCollectionInfoType, self._onSwitchCollectionInfoType, self)
 end
 
@@ -34,9 +36,8 @@ end
 
 function Rouge2_CollectionDetailBtnComp:refreshDetailBtnUI()
 	local infoType = Rouge2_OutsideModel.instance:getCurCollectionInfoType()
-	local goselect = gohelper.findChild(self._btndetails.gameObject, "circle/select")
 
-	gohelper.setActive(goselect, infoType == Rouge2_OutsideEnum.CollectionInfoType.Complex)
+	gohelper.setActive(self._goSelect, infoType == Rouge2_OutsideEnum.CollectionInfoType.Complex)
 end
 
 function Rouge2_CollectionDetailBtnComp:_onSwitchCollectionInfoType()

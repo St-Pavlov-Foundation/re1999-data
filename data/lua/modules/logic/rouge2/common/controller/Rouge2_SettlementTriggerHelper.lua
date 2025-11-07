@@ -184,19 +184,22 @@ end
 
 function Rouge2_SettlementTriggerHelper.triggerType6()
 	local resultInfo = Rouge2_Model.instance:getRougeResult()
-	local checkEvent = resultInfo.finishEventId
-	local eventCount = checkEvent and #checkEvent or 0
-	local successCount = 0
-	local maxUseAttributeId = resultInfo.checkUseLeaderAttr
-	local attributeConfig = lua_rouge2_attribute.configDict[maxUseAttributeId]
+
+	if resultInfo.attributeCheckTotalCount <= 0 then
+		return nil
+	end
+
+	local successCount = resultInfo.attributeCheckSuccessCount
+	local maxUseAttributeId = resultInfo.attributeCheckMaxId
+	local attributeConfig = Rouge2_AttributeConfig.instance:getAttributeConfig(maxUseAttributeId)
 
 	if not attributeConfig then
 		logError("没有找到检视属性 id:" .. tostring(maxUseAttributeId))
 
-		attributeConfig = lua_rouge2_attribute.configList[1]
+		return nil
 	end
 
-	return eventCount, successCount, attributeConfig.name
+	return resultInfo.attributeCheckTotalCount, successCount, attributeConfig.name
 end
 
 function Rouge2_SettlementTriggerHelper.triggerType7()
@@ -257,6 +260,16 @@ function Rouge2_SettlementTriggerHelper.triggerType16()
 	if isAbort then
 		return "abort"
 	end
+end
+
+function Rouge2_SettlementTriggerHelper.triggerType17()
+	local resultInfo = Rouge2_Model.instance:getRougeResult()
+
+	if resultInfo.attributeCheckTotalCount > 0 then
+		return nil
+	end
+
+	return 0, 0
 end
 
 function Rouge2_SettlementTriggerHelper.getAllEndHeroNames(endHeroIds)

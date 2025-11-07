@@ -39,11 +39,10 @@ function Rouge2_BackpackBuffView:_editableInitView()
 
 	self._animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 
-	self:initScrollView()
-
 	local relicsList = Rouge2_BackpackModel.instance:getItemList(Rouge2_Enum.BagType.Buff)
 
 	Rouge2_BackpackBuffListModel.instance:initList(relicsList, 0)
+	self:initScrollView()
 	self:initToolbar()
 end
 
@@ -78,12 +77,12 @@ function Rouge2_BackpackBuffView:refreshUI()
 end
 
 function Rouge2_BackpackBuffView:initScrollView()
-	self._scrollProp.verticalNormalizedPosition = 1
-
 	local buffItemList = Rouge2_BackpackBuffListModel.instance:getList()
 
 	gohelper.CreateObjList(self, self._refreshBuffItem, buffItemList, self._goPropContent, self._goPropItem, Rouge2_BackpackBuffListItem)
 	ZProj.UGUIHelper.RebuildLayout(self._scrollProp.transform)
+
+	self._scrollProp.verticalNormalizedPosition = 1
 end
 
 function Rouge2_BackpackBuffView:_refreshBuffItem(buffListItem, buffMo, index)

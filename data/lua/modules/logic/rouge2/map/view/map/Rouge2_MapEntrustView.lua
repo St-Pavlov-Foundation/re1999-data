@@ -39,13 +39,13 @@ function Rouge2_MapEntrustView:onAcceptEntrust(entrustIdList)
 end
 
 function Rouge2_MapEntrustView:onEntrustChange()
+	if self.isEntrustNewFinish then
+		return
+	end
+
 	local curDoingNum = Rouge2_MapModel.instance:getDoingEntrustNum()
 
 	if curDoingNum < self.doingEntrustNum then
-		self.preEntrustList = self.preEntrustList or {}
-
-		tabletool.addValues(self.preEntrustList, self.entrustList)
-
 		self.isEntrustNewFinish = true
 
 		self:tryShowFinishEntrustEffect()
@@ -89,6 +89,12 @@ function Rouge2_MapEntrustView:tryShowFinishEntrustEffect()
 		return
 	end
 
+	local isMiddleLayer = Rouge2_MapModel.instance:isMiddle()
+
+	if isMiddleLayer then
+		return
+	end
+
 	self.isEntrustNewFinish = false
 
 	self:refreshTmpEntrust()
@@ -102,7 +108,7 @@ function Rouge2_MapEntrustView:_editableInitView()
 	self.preHadEntrust = false
 end
 
-function Rouge2_MapEntrustView:onOpen()
+function Rouge2_MapEntrustView:onOpenFinish()
 	self:tryShowEntrust()
 end
 
@@ -115,19 +121,40 @@ function Rouge2_MapEntrustView:tryShowEntrust()
 end
 
 function Rouge2_MapEntrustView:updateHadEntrust()
-	self.entrustList = Rouge2_MapModel.instance:getDoingEntrustList()
+	self.entrustList = {}
+
+	local entrustMoList = Rouge2_MapModel.instance:getDoingEntrustList()
+
+	tabletool.addValues(self.entrustList, entrustMoList)
+
 	self.doingEntrustNum = Rouge2_MapModel.instance:getDoingEntrustNum()
 	self.preHadEntrust = self.hadEntrust
 	self.hadEntrust = self.doingEntrustNum > 0
-	self.preEntrustList = {}
 end
 
 function Rouge2_MapEntrustView:refreshTmpEntrust()
-	gohelper.CreateObjList(self, self._refreshEntrustItem, self.preEntrustList, self._goentrustlist, self._goentrustitem, Rouge2_MapEntrustInfoItem)
+	for i = #self.entrustList, 1, -1 do
+		local entrustMo = self.entrustList[i]
+		local entrustId = entrustMo and entrustMo:getEntrustId()
+
+		if not Rouge2_MapModel.instance:getEntrust(entrustId) then
+			table.remove(self.entrustList, i)
+		end
+	end
+
+	gohelper.CreateObjList(self, self._refreshEntrustItem, self.entrustList, self._goentrustlist, self._goentrustitem, Rouge2_MapEntrustInfoItem)
 	self:refreshStatus()
 end
 
 function Rouge2_MapEntrustView:refreshEntrust()
+	local isMiddle = Rouge2_MapModel.instance:isMiddle()
+
+	if isMiddle then
+		self:hideEntrust()
+
+		return
+	end
+
 	self:_lock(false)
 
 	if not self.hadEntrust then

@@ -1280,6 +1280,14 @@ function FightViewCardItem:_allocateEnergyDone()
 	end
 end
 
+function FightViewCardItem:hideTopLayout()
+	gohelper.setActive(self.goTopLayout, false)
+end
+
+function FightViewCardItem:showTopLayout()
+	gohelper.setActive(self.goTopLayout, true)
+end
+
 function FightViewCardItem:playASFDAnim(animName)
 	if self.goASFD.activeSelf then
 		self.asfdAnimator = self.asfdAnimator or self.goASFD:GetComponent(gohelper.Type_Animator)

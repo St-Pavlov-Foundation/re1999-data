@@ -6,6 +6,9 @@ local Rouge2_MapChoiceBaseView = class("Rouge2_MapChoiceBaseView", BaseView)
 
 function Rouge2_MapChoiceBaseView:onInitView()
 	self._goBG = gohelper.findChild(self.viewGO, "#go_BG")
+	self._goFullBG = gohelper.findChild(self.viewGO, "#go_BG/#simage_FullBG")
+	self._simageFullBG = gohelper.findChildSingleImage(self.viewGO, "#go_BG/#simage_FullBG")
+	self._goTitle = gohelper.findChild(self.viewGO, "Title")
 	self._txtName = gohelper.findChildText(self.viewGO, "Title/#txt_Name")
 	self._goDialogueList = gohelper.findChild(self.viewGO, "Right/#go_DialogueList")
 	self._scrollDialgoue = gohelper.findChild(self.viewGO, "Right/#go_DialogueList/#scroll_Dialogue")
@@ -28,7 +31,7 @@ function Rouge2_MapChoiceBaseView:addEvents()
 
 	self.dialogueBlockClick:AddClickListener(self.onClickDialogueBlock, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeMapInfo, self.onChangeMapInfo, self)
-	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChoiceDialogueDone, self.onChoiceDialogueDone, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChoiceDialogueDone, self.onChoiceDialogueDone, self, LuaEventSystem.High)
 end
 
 function Rouge2_MapChoiceBaseView:removeEvents()
@@ -37,8 +40,7 @@ function Rouge2_MapChoiceBaseView:removeEvents()
 end
 
 function Rouge2_MapChoiceBaseView:_editableInitView()
-	gohelper.setActive(self._goBG, false)
-	Rouge2_AttributeToolBar.Load(self._goAttribute, Rouge2_Enum.AttributeToolType.Default)
+	Rouge2_AttributeToolBar.Load(self._goAttribute, Rouge2_Enum.AttributeToolType.Enter_Attr)
 
 	self.goRight = gohelper.findChild(self.viewGO, "Right")
 	self.choiceItemList = {}
@@ -48,6 +50,7 @@ function Rouge2_MapChoiceBaseView:_editableInitView()
 
 	self.animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 	self.rightAnimator = gohelper.onceAddComponent(self.goRight, gohelper.Type_Animator)
+	self.showChoice = false
 end
 
 function Rouge2_MapChoiceBaseView:initDialogueList()
@@ -101,10 +104,15 @@ function Rouge2_MapChoiceBaseView:changeState(state)
 
 	self.state = state
 
-	local isBlock = self.state ~= Rouge2_MapEnum.ChoiceViewState.WaitSelect and self.state ~= Rouge2_MapEnum.ChoiceViewState.DialogueDone
+	local isBlock = self.state == Rouge2_MapEnum.ChoiceViewState.PlayingDialogue
 
 	gohelper.setActive(self._godialogueblock, isBlock)
 	gohelper.setActive(self._gochoicecontainer, self.state == Rouge2_MapEnum.ChoiceViewState.WaitSelect)
+
+	if state == Rouge2_MapEnum.ChoiceViewState.Finish then
+		self.scrollClick:RemoveClickListener()
+	end
+
 	Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onChangeChoiceViewState, self.state)
 end
 
@@ -129,6 +137,10 @@ function Rouge2_MapChoiceBaseView:onChoiceDialogueDone()
 end
 
 function Rouge2_MapChoiceBaseView:playChoiceShowAnim()
+	if self.showChoice then
+		return
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.ChoiceViewChoiceOpen)
 	self.rightAnimator:Play("tochoice", 0, 0)
 
@@ -136,6 +148,10 @@ function Rouge2_MapChoiceBaseView:playChoiceShowAnim()
 end
 
 function Rouge2_MapChoiceBaseView:playChoiceHideAnim()
+	if not self.showChoice then
+		return
+	end
+
 	self.rightAnimator:Play("todialogue", 0, 0)
 
 	self.showChoice = false
@@ -147,6 +163,7 @@ end
 
 function Rouge2_MapChoiceBaseView:onDestroyView()
 	Rouge2_MapHelper.destroyItemList(self.choiceItemList)
+	self._simageFullBG:UnLoadImage()
 end
 
 return Rouge2_MapChoiceBaseView

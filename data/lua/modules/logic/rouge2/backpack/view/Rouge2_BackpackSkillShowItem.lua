@@ -4,6 +4,9 @@ module("modules.logic.rouge2.backpack.view.Rouge2_BackpackSkillShowItem", packag
 
 local Rouge2_BackpackSkillShowItem = class("Rouge2_BackpackSkillShowItem", LuaCompBase)
 
+Rouge2_BackpackSkillShowItem.PercentColor = "#F3A055"
+Rouge2_BackpackSkillShowItem.BracketColor = "#60A0FE"
+
 function Rouge2_BackpackSkillShowItem:ctor(index)
 	self._index = index
 end
@@ -40,10 +43,6 @@ function Rouge2_BackpackSkillShowItem:removeEventListeners()
 end
 
 function Rouge2_BackpackSkillShowItem:_btnClickOnClick()
-	if Rouge2_BackpackSkillEditListModel.instance:isDraging() then
-		return
-	end
-
 	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OnSwitchSkillViewType, Rouge2_BackpackSkillView.ViewState.Edit, self._index)
 end
 
@@ -75,7 +74,7 @@ function Rouge2_BackpackSkillShowItem:refreshUI()
 	self._skillCo = Rouge2_CollectionConfig.instance:getActiveSkillConfig(self._skillId)
 	self._txtSkillName.text = self._skillCo and self._skillCo.name
 
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Server, self._skillUid, self._txtDescr)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Server, self._skillUid, self._txtDescr, nil, nil, Rouge2_BackpackSkillShowItem.PercentColor, Rouge2_BackpackSkillShowItem.BracketColor)
 
 	local assemblyNum = self._skillCo and self._skillCo.assembleCost or 0
 

@@ -54,7 +54,7 @@ function Rouge2_FavoriteCollectionView:_editableInitView()
 	self._reddotFormula = gohelper.findChild(self.viewGO, "#go_bottom/#btn_handbook/#go_reddot")
 
 	self:_setBtnListSelected(true)
-	gohelper.setActive(self._gobottom, Rouge2_OutsideModel.instance:passedLayerId(Rouge2_OutsideEnum.FirstLayerId))
+	gohelper.setActive(self._gobottom, true)
 	RedDotController.instance:addRedDot(self._reddotCollection, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Collection_Tab, 0)
 	RedDotController.instance:addRedDot(self._reddotFormula, RedDotEnum.DotNode.V3a2_Rouge_Favorite_Formula_Tab, 0)
 end
@@ -67,7 +67,7 @@ function Rouge2_FavoriteCollectionView:_setBtnListSelected(value)
 	gohelper.setActive(self._gorougemapdetailcontainer, value)
 end
 
-function Rouge2_FavoriteCollectionView:onUpdateParam()
+function Rouge2_FavoriteCollectionView:onUpdateParam(param)
 	return
 end
 

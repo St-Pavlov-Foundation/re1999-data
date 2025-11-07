@@ -28,6 +28,12 @@ function Rouge2_MaterialListModel:getSelectedConfig()
 end
 
 function Rouge2_MaterialListModel:_canShow(co)
+	local count = Rouge2_AlchemyModel.instance:getMaterialNum(co.id)
+
+	if count == nil or count < 0 then
+		return false
+	end
+
 	if self._selectedType == 1 then
 		return true
 	end

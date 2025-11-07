@@ -4,7 +4,7 @@ module("modules.logic.fight.view.rouge2.FightRouge2Check362View", package.seeall
 
 local FightRouge2Check362View = class("FightRouge2Check362View", BaseView)
 
-FightRouge2Check362View.DurationTime = 3
+FightRouge2Check362View.DurationTime = 1.5
 
 function FightRouge2Check362View:onInitView()
 	self.txtAdd = gohelper.findChildText(self.viewGO, "#txt_add")
@@ -36,6 +36,8 @@ function FightRouge2Check362View:_editableInitView()
 end
 
 function FightRouge2Check362View:onOpen()
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.DiceSucc)
+
 	self.txtAdd.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("rouge2_fight_add_value"), self.viewParam.offset)
 	self.buffId = self.viewParam.buffId
 

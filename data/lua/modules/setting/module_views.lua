@@ -24436,15 +24436,22 @@ module_views.Rouge2_MapPieceChoiceView = {
 	}
 }
 module_views.Rouge2_MapDiceView = {
-	destroy = 0.5,
-	container = "Rouge2_MapDiceViewContainer",
 	bgBlur = 1,
+	container = "Rouge2_MapDiceViewContainer",
+	destroy = 0.5,
 	mainRes = "ui/viewres/rouge2/map/rouge2_mapdiceview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal,
 	otherRes = {
 		"scenes/v3a2_ui_touzi/prefabs/v3a2_ui_touzi_1.prefab"
+	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
 	}
 }
 module_views.Rouge2_RelicsDropView = {
@@ -24487,7 +24494,7 @@ module_views.Rouge2_MapStoreView = {
 	}
 }
 module_views.Rouge2_BandRecruitView = {
-	bgBlur = 0,
+	bgBlur = 1,
 	container = "Rouge2_BandRecruitViewContainer",
 	destroy = 0,
 	mainRes = "ui/viewres/rouge2/map/rouge2_herorecruitview.prefab",
@@ -24567,15 +24574,22 @@ module_views.Rouge2_MapTipView = {
 	viewType = ViewType.Normal
 }
 module_views.Rouge2_MapAttributeUpView = {
-	destroy = 0,
-	container = "Rouge2_MapAttributeUpViewContainer",
 	bgBlur = 1,
+	container = "Rouge2_MapAttributeUpViewContainer",
+	destroy = 0,
 	mainRes = "ui/viewres/rouge2/map/rouge2_attributeupview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal,
 	otherRes = {
 		Rouge2_Enum.ResPath.AttributeMap
+	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
 	}
 }
 module_views.Rouge2_AttributeDetailView = {
@@ -24724,7 +24738,14 @@ module_views.Rouge2_BackpackBoxTipsView = {
 	mainRes = "ui/viewres/rouge2/backpack/rouge2_backpackboxtipsview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
-	anim = ViewAnim.Internal
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
 }
 module_views.Rouge2_EnterView = {
 	destroy = 0,
@@ -24832,7 +24853,7 @@ module_views.Rouge2_MaterialListView = {
 	container = "Rouge2_MaterialListViewContainer",
 	mainRes = "ui/viewres/rouge2/handbook/rouge2_warehouseview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	tabRes = {
 		{
 			{
@@ -24847,9 +24868,10 @@ module_views.Rouge2_MaterialListView = {
 module_views.Rouge2_AlchemyListView = {
 	destroy = 0,
 	container = "Rouge2_AlchemyListViewContainer",
+	bgBlur = 1,
 	mainRes = "ui/viewres/rouge2/alchemy/rouge2alchemylistview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	tabRes = {
 		{
 			{
@@ -24867,7 +24889,7 @@ module_views.Rouge2_AlchemyMainView = {
 	container = "Rouge2_AlchemyMainViewContainer",
 	mainRes = "ui/viewres/rouge2/alchemy/rouge2alchemymainview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	tabRes = {
 		{
 			{
@@ -24881,7 +24903,8 @@ module_views.Rouge2_AlchemySuccessView = {
 	container = "Rouge2_AlchemySuccessViewContainer",
 	mainRes = "ui/viewres/rouge2/alchemy/rouge2alchemysuccessview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal
 }
 module_views.Rouge2_TalentTreeView = {
 	destroy = 0,
@@ -24903,9 +24926,10 @@ module_views.Rouge2_TalentTreeView = {
 module_views.Rouge2_TalentTreeOverView = {
 	destroy = 0,
 	container = "Rouge2_TalentTreeOverViewContainer",
+	bgBlur = 1,
 	mainRes = "ui/viewres/rouge2/tree/rouge2_talenttreeoverview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
+	viewType = ViewType.Modal,
 	tabRes = {
 		{
 			{
@@ -24919,7 +24943,7 @@ module_views.Rouge2_FavoriteCollectionView = {
 	container = "Rouge2_FavoriteCollectionViewContainer",
 	mainRes = "ui/viewres/rouge2/handbook/rouge2_favoritecollectionview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	otherRes = {
 		[1] = "ui/viewres/rouge2/handbook/rouge2_collectionlistitem.prefab"
 	},
@@ -24956,7 +24980,7 @@ module_views.Rouge2_IllustrationMainView = {
 	container = "Rouge2_IllustrationMainViewContainer",
 	mainRes = "ui/viewres/rouge2/handbook/rouge2_illustrationmainview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	otherRes = {
 		"ui/viewres/rouge2/handbook/rouge2_illustrationlistpage.prefab",
 		"ui/viewres/rouge2/handbook/rouge2_illustrationlistitem.prefab",
@@ -24983,7 +25007,7 @@ module_views.Rouge2_IllustrationDetailView = {
 	container = "Rouge2_IllustrationDetailViewContainer",
 	mainRes = "ui/viewres/rouge2/handbook/rouge2_illustrationdetailview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	tabRes = {
 		{
 			{
@@ -25035,16 +25059,25 @@ module_views.Rouge2_SettlementView = {
 	container = "Rouge2_SettlementViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_settlementview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal
 }
 module_views.Rouge2_ResultFinalView = {
 	destroy = 0,
 	container = "Rouge2_ResultFinalViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_resultreview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal,
 	otherRes = {
 		[1] = "ui/viewres/rouge2/result/rouge2_resultheroitem.prefab"
+	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
 	}
 }
 module_views.Rouge2_ResultUnlockInfoView = {
@@ -25052,14 +25085,16 @@ module_views.Rouge2_ResultUnlockInfoView = {
 	container = "Rouge2_ResultUnlockInfoViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_unlockinfoview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal
 }
 module_views.Rouge2_SettlementUnlockView = {
 	destroy = 0,
 	container = "Rouge2_SettlementUnlockViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_settlementview2.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal,
 	otherRes = {
 		[1] = "ui/viewres/rouge2/handbook/rouge2_careertalentnode.prefab"
 	}
@@ -25069,7 +25104,8 @@ module_views.Rouge2_ResultUnlockInfoView = {
 	container = "Rouge2_ResultUnlockInfoViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_unlockinfoview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal
 }
 module_views.Rouge2_ResultReportView = {
 	destroy = 0,

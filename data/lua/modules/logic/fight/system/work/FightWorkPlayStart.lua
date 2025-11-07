@@ -97,6 +97,8 @@ function FightWorkPlayStart:_buildFocusBorn(flow)
 		flow:addWork(FightWorkBeforeStartNoticeView.New())
 	end
 
+	flow:addWork(FightWorkCheckOpenRouge2TechniqueView.New())
+
 	local roundViewWork = self:_buildRoundViewWork()
 
 	if roundViewWork then
@@ -142,6 +144,8 @@ function FightWorkPlayStart:_buildNormalBorn(flow)
 	if FightController.instance:canOpenRoundView() then
 		flow:addWork(FightWorkBeforeStartNoticeView.New())
 	end
+
+	flow:addWork(FightWorkCheckOpenRouge2TechniqueView.New())
 end
 
 function FightWorkPlayStart:_buildRoundViewWork()

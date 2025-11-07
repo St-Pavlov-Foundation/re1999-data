@@ -9,6 +9,7 @@ local DealyShowItemTime = 0.03
 function Rouge2_BackpackBuffListItem:init(go)
 	self.go = go
 	self._goRoot = gohelper.findChild(self.go, "go_Root")
+	self._goCheck = gohelper.findChild(self.go, "go_Check")
 	self._canvasgroup = gohelper.onceAddComponent(self.go, gohelper.Type_CanvasGroup)
 end
 
@@ -22,7 +23,7 @@ function Rouge2_BackpackBuffListItem:initParent(view, goScroll)
 	if not self._reddotComp then
 		local goReddot = self._comBuffItem:getReddotGo()
 
-		self._reddotComp = Rouge2_BackpackItemReddotComp.Get(goReddot, self.go, goScroll)
+		self._reddotComp = Rouge2_BackpackItemReddotComp.Get(goReddot, self._goCheck, goScroll)
 	end
 end
 

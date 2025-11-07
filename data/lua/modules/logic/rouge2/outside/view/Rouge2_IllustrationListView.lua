@@ -19,11 +19,11 @@ function Rouge2_IllustrationListView:onInitView()
 end
 
 function Rouge2_IllustrationListView:addEvents()
-	return
+	self._scrollview:AddOnValueChanged(self._onScrollRectValueChanged, self)
 end
 
 function Rouge2_IllustrationListView:removeEvents()
-	return
+	self._scrollview:RemoveOnValueChanged()
 end
 
 local Min_TWEENSCROLLDELTA_X = 0.01
@@ -68,6 +68,12 @@ function Rouge2_IllustrationListView:_moveScroll2TargetPos(isTween, scrollPosX)
 	end
 end
 
+function Rouge2_IllustrationListView:_onScrollRectValueChanged()
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V3a2_Rouge_Review_Illustration_Tab, 0) then
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnIllustrationScrollViewValueChanged)
+	end
+end
+
 function Rouge2_IllustrationListView:tweenFrame(value)
 	if not self._scrollview then
 		return
@@ -104,15 +110,20 @@ function Rouge2_IllustrationListView:_editableInitView()
 	Rouge2_IllustrationListModel.instance.startFrameCount = UnityEngine.Time.frameCount
 
 	Rouge2_IllustrationListModel.instance:initList()
+
+	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
 function Rouge2_IllustrationListView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.UI.RougeFavoriteAudio4)
+	self.animator:Play("open", 0, 0)
+	self._onScrollRectValueChanged()
 end
 
 function Rouge2_IllustrationListView:onClose()
 	self:killTween()
 	self:endUIBlock()
+	self.animator:Play("close", 0, 0)
 end
 
 function Rouge2_IllustrationListView:onDestroyView()

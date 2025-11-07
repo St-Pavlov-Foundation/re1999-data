@@ -5,14 +5,19 @@ module("modules.logic.rouge2.map.view.map.Rouge2_MapLayerRightView", package.see
 local Rouge2_MapLayerRightView = class("Rouge2_MapLayerRightView", BaseView)
 
 function Rouge2_MapLayerRightView:onInitView()
+	self.goPathSelectBg = gohelper.findChild(self.viewGO, "#go_PathSelectBg")
 	self.goLayerRightBg = gohelper.findChild(self.viewGO, "#go_layer_right_bg")
 	self.goLayerRight = gohelper.findChild(self.viewGO, "#go_layer_right")
-	self._simageMap1 = gohelper.findChildSingleImage(self.viewGO, "#go_layer_right_bg/#simage_Map")
-	self._simageMap2 = gohelper.findChildSingleImage(self.viewGO, "#go_layer_right_bg/#simage_Map/#simage_Map")
+	self._simageMap1 = gohelper.findChildSingleImage(self.viewGO, "#go_PathSelectBg/#simage_Map")
+	self._simageMap2 = gohelper.findChildSingleImage(self.viewGO, "#go_PathSelectBg/#simage_Map/#simage_Map")
 	self._goChoiceList = gohelper.findChild(self.viewGO, "#go_layer_right/#go_ChoiceList")
 	self._goChoiceItem = gohelper.findChild(self.viewGO, "#go_layer_right/#go_ChoiceList/#go_ChoiceItem")
 	self._btnNext = gohelper.findChildButtonWithAudio(self.viewGO, "#go_layer_right/#btn_next")
 	self._btnLast = gohelper.findChildButtonWithAudio(self.viewGO, "#go_layer_right/#btn_last")
+	self.goStartBg = gohelper.findChild(self.viewGO, "#go_layer_right_bg/#go_layer_bottom/#go_StartBg")
+	self.txtStartDesc = gohelper.findChildText(self.viewGO, "#go_layer_right_bg/#go_layer_bottom/#go_StartBg/#txt_StartDesc")
+	self.goConfirmBg = gohelper.findChild(self.viewGO, "#go_layer_right_bg/#go_layer_bottom/#go_ConfirmBg")
+	self.txtConfirmDesc = gohelper.findChildText(self.viewGO, "#go_layer_right_bg/#go_layer_bottom/#go_ConfirmBg/#txt_ConfirmDesc")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -61,6 +66,7 @@ function Rouge2_MapLayerRightView:_editableInitView()
 	self.layerAnimator = self.goLayerRight:GetComponent(gohelper.Type_Animator)
 
 	self:hide()
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.OnSelectLayerWeather, self.onSelectLayerWeather, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onSelectLayerChange, self.onSelectLayerChange, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onChangeMapInfo, self.onChangeMapInfo, self)
 	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onPathSelectMapFocusDone, self.onPathSelectMapFocusDone, self)
@@ -76,6 +82,7 @@ function Rouge2_MapLayerRightView:onChangeMapInfo()
 	end
 
 	self:initData()
+	self:refreshBg()
 end
 
 function Rouge2_MapLayerRightView:onSelectLayerChange(layerId)
@@ -88,12 +95,19 @@ function Rouge2_MapLayerRightView:onSelectLayerChange(layerId)
 	TaskDispatcher.runDelay(self.refresh, self, Rouge2_MapEnum.WaitMapRightRefreshTime)
 end
 
+function Rouge2_MapLayerRightView:onSelectLayerWeather(layerId, weatherId)
+	self.selectWeatherId = weatherId
+
+	self:refreshConfirmDesc()
+end
+
 function Rouge2_MapLayerRightView:onOpen()
 	if not Rouge2_MapModel.instance:isPathSelect() then
 		return
 	end
 
 	self:initData()
+	self:refreshBg()
 end
 
 function Rouge2_MapLayerRightView:initData()
@@ -119,13 +133,14 @@ end
 
 function Rouge2_MapLayerRightView:onPathSelectMapFocusDone()
 	self:refresh()
+	self:initStartDesc()
 end
 
 function Rouge2_MapLayerRightView:refresh()
 	self:show()
-	self:refreshBg()
 	self:refreshArrow()
 	self:refreshChoiceList()
+	self:refreshConfirmDesc()
 end
 
 function Rouge2_MapLayerRightView:refreshBg()
@@ -136,6 +151,39 @@ function Rouge2_MapLayerRightView:refreshBg()
 	self._simageMap1:LoadImage(mapResList[1])
 	self._simageMap2:LoadImage(mapResList[2])
 	recthelper.setAnchor(self._simageMap1.transform, simageMapPos[1] or 0, simageMapPos[2] or 0)
+	gohelper.setActive(self.goPathSelectBg, true)
+end
+
+function Rouge2_MapLayerRightView:initStartDesc()
+	local pathSelectCo = Rouge2_MapModel.instance:getPathSelectCo()
+	local startDesc = pathSelectCo.startDesc
+
+	self.txtStartDesc.text = startDesc
+
+	gohelper.setActive(self.goStartBg, not string.nilorempty(startDesc))
+end
+
+function Rouge2_MapLayerRightView:refreshConfirmDesc()
+	gohelper.setActive(self.goConfirmBg, false)
+
+	local pathSelectCo = Rouge2_MapModel.instance:getPathSelectCo()
+	local confirmDescList = GameUtil.splitString2(pathSelectCo.confirmDesc)
+
+	if confirmDescList then
+		for _, confirmInfo in ipairs(confirmDescList) do
+			local confirmWeatherId = tonumber(confirmInfo[1])
+			local confirmDesc = confirmInfo[2]
+
+			if confirmWeatherId == self.selectWeatherId then
+				gohelper.setActive(self.goStartBg, false)
+				gohelper.setActive(self.goConfirmBg, true)
+
+				self.txtConfirmDesc.text = confirmDesc
+
+				break
+			end
+		end
+	end
 end
 
 function Rouge2_MapLayerRightView:refreshArrow()
@@ -184,11 +232,17 @@ end
 function Rouge2_MapLayerRightView:show()
 	gohelper.setActive(self.goLayerRight, true)
 	gohelper.setActive(self.goLayerRightBg, true)
+	gohelper.setActive(self.goStartBg, true)
+	gohelper.setActive(self.goPathSelectBg, true)
 end
 
 function Rouge2_MapLayerRightView:hide()
 	gohelper.setActive(self.goLayerRight, false)
 	gohelper.setActive(self.goLayerRightBg, false)
+	gohelper.setActive(self.goStartBg, false)
+	gohelper.setActive(self.goPathSelectBg, false)
+
+	self.selectWeatherId = nil
 end
 
 function Rouge2_MapLayerRightView:onDestroyView()

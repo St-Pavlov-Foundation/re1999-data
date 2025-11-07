@@ -145,7 +145,7 @@ function MainActExtraDisplay:_onActRouge2Click()
 
 	local actId = self:_getBindActivityId(ActivityEnum.MainViewActivityState.Rouge2)
 
-	self:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, nil, actId)
+	self:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, nil, actId, true)
 end
 
 function MainActExtraDisplay:_getEnterController()

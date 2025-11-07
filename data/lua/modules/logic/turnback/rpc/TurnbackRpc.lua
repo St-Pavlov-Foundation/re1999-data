@@ -146,7 +146,7 @@ function TurnbackRpc:onReceiveAcceptAllTurnbackBonusPointReply(resultCode, msg)
 	if resultCode == 0 then
 		TurnbackModel.instance:updateHasGetTaskBonus(msg)
 
-		if TurnbackModel.instance:checkHasGetAllTaskReward() then
+		if TurnbackModel.instance:checkHasGetAllTaskReward() and not TurnbackModel.instance:getBuyDoubleBonus() then
 			TurnbackModel.instance:setOpenPopTipView(true)
 		end
 

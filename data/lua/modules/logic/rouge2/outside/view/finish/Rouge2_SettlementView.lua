@@ -50,17 +50,30 @@ function Rouge2_SettlementView:_btnreplayOnClick()
 end
 
 function Rouge2_SettlementView:_btncloseOnClick()
+	ViewMgr.instance:closeView(ViewName.Rouge2_ResultView)
+	self:closeThis()
+
 	local resultInfo = Rouge2_Model.instance:getRougeResult()
 	local finalScore = resultInfo and resultInfo.finalScore or 0
 	local isScoreMuchZero = finalScore > 0
 
 	if isScoreMuchZero then
-		local reviewInfo = resultInfo.reviewInfo
-		local params = {
-			reviewInfo = reviewInfo
-		}
+		if resultInfo.gainMaterial == nil or #resultInfo.gainMaterial <= 0 then
+			local reviewInfo = resultInfo.reviewInfo
+			local params = {
+				reviewInfo = reviewInfo,
+				displayType = Rouge2_OutsideEnum.ResultFinalDisplayType.Result
+			}
 
-		Rouge2_OutsideController.instance:openRougeSettlementUnlockView(params)
+			Rouge2_OutsideController.instance:openRougeResultFinalView(params)
+		else
+			local reviewInfo = resultInfo.reviewInfo
+			local params = {
+				reviewInfo = reviewInfo
+			}
+
+			Rouge2_OutsideController.instance:openRougeSettlementUnlockView(params)
+		end
 	else
 		ViewMgr.instance:closeView(ViewName.Rouge2_ResultView)
 		self:closeThis()
@@ -87,6 +100,7 @@ function Rouge2_SettlementView:_editableInitView()
 	self._goAchieveEmpty = gohelper.findChild(self._goachieve, "empty")
 
 	gohelper.setActive(self._goachieveitem, false)
+	gohelper.setActive(self._gotips, false)
 end
 
 function Rouge2_SettlementView:onUpdateParam()
@@ -132,8 +146,9 @@ function Rouge2_SettlementView:refreshScores(resultInfo)
 	self:setScoreData(resultList, layerCount, layerScore)
 
 	local entrustCount, entrustScore = resultInfo:getQuintupleCountAndScore()
+	local finalScore = entrustCount * entrustScore
 
-	self:setScoreData(resultList, entrustCount, entrustScore)
+	self:setScoreData(resultList, entrustCount, finalScore)
 	self:refreshScoreItem(resultList)
 	self:refreshScoreInfo(resultInfo)
 	self:refreshAddPoint(resultInfo)
@@ -385,7 +400,7 @@ function Rouge2_SettlementView:openBadgeTips(badgeId, index)
 
 	gohelper.setActive(self._gotips, true)
 
-	self._txttips.text = badgeCfg.desc
+	self._txttips.text = string.format("%s\n%s", badgeCfg.name, badgeCfg.desc)
 
 	self:setBadgeTipsPos(index)
 end

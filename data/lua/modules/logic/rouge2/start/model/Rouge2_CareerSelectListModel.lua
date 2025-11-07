@@ -48,7 +48,9 @@ function Rouge2_CareerSelectListModel:canSwitch(isNext)
 		return
 	end
 
-	return Rouge2_OutsideModel.instance:isUnlockCareer(careerCo.id)
+	local isUnlock, toastId = Rouge2_OutsideModel.instance:isUnlockCareer(careerCo.id)
+
+	return isUnlock, toastId
 end
 
 Rouge2_CareerSelectListModel.instance = Rouge2_CareerSelectListModel.New()

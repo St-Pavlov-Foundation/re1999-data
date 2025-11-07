@@ -100,6 +100,10 @@ function Rouge2_CollectionFormulaView:_editableInitView()
 	self._txtFormulaDesc = gohelper.findChildTextMesh(self._godescContent, "txt_desc")
 end
 
+function Rouge2_CollectionFormulaView:onUpdateParam(param)
+	return
+end
+
 function Rouge2_CollectionFormulaView:onOpen()
 	local selectIndex = self.viewParam and self.viewParam.selectItemId
 
@@ -161,8 +165,9 @@ end
 
 function Rouge2_CollectionFormulaView:refrehsCollectionDesc()
 	local formulaConfig = self._formulaConfig
+	local desc = Rouge2_ItemDescHelper.buildDesc(formulaConfig.details, Rouge2_OutsideEnum.DescPercentColor, Rouge2_OutsideEnum.DescBracketColor)
 
-	self._txtFormulaDesc.text = formulaConfig.details
+	self._txtFormulaDesc.text = Rouge2_ItemDescHelper.replaceColor(desc, Rouge2_OutsideEnum.DescReplaceColor, Rouge2_OutsideEnum.DescPercentColor)
 end
 
 function Rouge2_CollectionFormulaView:refreshCollectionTagIcon(tagObj, tagId, index)
@@ -174,7 +179,8 @@ function Rouge2_CollectionFormulaView:refreshCollectionTagIcon(tagObj, tagId, in
 	UISpriteSetMgr.instance:setRougeSprite(frameImg, "rouge_collection_tagframe_1")
 end
 
-function Rouge2_CollectionFormulaView:_onSelectFormulaItem(readySelectId)
+function Rouge2_CollectionFormulaView:_onSelectFormulaItem(itemId)
+	local readySelectId = Rouge2_CollectionFormulaListModel.instance:getCellIndexByItemId(itemId)
 	local curSelectCellId = Rouge2_CollectionFormulaListModel.instance:getCurSelectCellId()
 
 	if readySelectId == curSelectCellId then
@@ -184,7 +190,16 @@ function Rouge2_CollectionFormulaView:_onSelectFormulaItem(readySelectId)
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_choose_4)
 
 	local readySelectMO = Rouge2_CollectionFormulaListModel.instance:getById(readySelectId)
+
+	if readySelectMO == nil then
+		return
+	end
+
 	local readySelectIndex = Rouge2_CollectionFormulaListModel.instance:getIndex(readySelectMO)
+
+	if readySelectIndex == nil then
+		return
+	end
 
 	Rouge2_CollectionFormulaListModel.instance:selectCell(readySelectIndex, true)
 	self:delay2SwitchHandBookItem(Rouge2_CollectionFormulaView.DelayTime2SwitchCollection)

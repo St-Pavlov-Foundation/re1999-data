@@ -9,6 +9,10 @@ function Rouge2_ResultReportListModel:initList()
 	local infoList = Rouge2_OutsideModel.instance:getReviewInfoList()
 
 	if infoList then
+		if #infoList >= 2 then
+			table.sort(infoList, Rouge2_ResultReportListModel.sortList)
+		end
+
 		for _, info in ipairs(infoList) do
 			local mo = {}
 
@@ -19,6 +23,10 @@ function Rouge2_ResultReportListModel:initList()
 	end
 
 	self:setList(tempList)
+end
+
+function Rouge2_ResultReportListModel.sortList(a, b)
+	return tonumber(a.finishTime) > tonumber(b.finishTime)
 end
 
 Rouge2_ResultReportListModel.instance = Rouge2_ResultReportListModel.New()

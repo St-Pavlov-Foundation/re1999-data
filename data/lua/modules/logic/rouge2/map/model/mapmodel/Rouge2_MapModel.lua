@@ -367,7 +367,7 @@ function Rouge2_MapModel:checkDropIsEmpty(curInteractive)
 	local interactArr = string.splitToNumber(curInteractive, "#")
 	local interactType = interactArr[1]
 
-	if interactType == Rouge2_MapEnum.InteractType.Drop then
+	if interactType == Rouge2_MapEnum.InteractType.SelectDrop then
 		local dropCollectList = self.interactiveJson.dropCollectList
 
 		return not dropCollectList or #dropCollectList < 1
@@ -475,6 +475,12 @@ function Rouge2_MapModel:isEntrustFinish(entrustId)
 	local entrustMo = self.entrustMoMap and self.entrustMoMap[entrustId]
 
 	return entrustMo and entrustMo:isFinish()
+end
+
+function Rouge2_MapModel:getEntrust(entrustId)
+	local entrustMo = self.entrustMoMap and self.entrustMoMap[entrustId]
+
+	return entrustMo
 end
 
 function Rouge2_MapModel:getEpisodeList()
@@ -654,7 +660,6 @@ function Rouge2_MapModel:clear()
 	self.firstEnterMapFlag = nil
 	self.layerWeatherMo = nil
 	self.blockTrigger = false
-	self.closeHeroGroupView = false
 
 	TaskDispatcher.cancelTask(self._dispatchChangeMapEvent, self)
 

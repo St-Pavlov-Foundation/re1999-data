@@ -162,7 +162,7 @@ function FightViewPlayCardItem:updateItem(fightBeginRoundOp)
 		local entityMO = FightDataHelper.entityMgr:getById(op.belongToEntityId)
 		local buffList = FightBuffHelper.simulateBuffList(entityMO, op)
 
-		FightViewHandCardItemLock.setCardLock(op and op.belongToEntityId, op and op.skillId, self._lockGO, false, buffList)
+		FightViewHandCardItemLock.setCardLock(op and op.belongToEntityId, op and op.skillId, self._lockGO, false, buffList, op)
 		self:_setCardPreRemove(op, buffList)
 		self._cardItem:detectShowBlueStar()
 		self._cardItem:updateResistanceByBeginRoundOp(fightBeginRoundOp)

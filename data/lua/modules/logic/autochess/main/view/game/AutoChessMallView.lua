@@ -112,7 +112,13 @@ function AutoChessMallView:_btnPlayerBuffOnClick()
 		return
 	end
 
-	if self._txtEnergyP.gameObject.activeInHierarchy or self._txtFireP.gameObject.activeInHierarchy then
+	local svrFight = self.chessMo.svrFight
+	local buffs = svrFight.mySideMaster.buffContainer.buffs
+	local energy = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.EnergyBuffIds)
+	local fire = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.FireBuffIds)
+	local debris = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.DebrisIds)
+
+	if energy ~= 0 or fire ~= 0 or debris ~= 0 then
 		local uiRoot = ViewMgr.instance:getUIRoot()
 		local position = self._btnPlayerBuff.gameObject.transform.position
 		local targetPos = recthelper.rectToRelativeAnchorPos(position, uiRoot.transform)

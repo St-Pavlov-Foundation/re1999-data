@@ -338,7 +338,7 @@ function Rouge2_AlchemyMainView:refreshBtnState()
 	local curFormulaId = Rouge2_AlchemyModel.instance:getCurFormula()
 	local haveSelect = curFormulaId ~= nil
 
-	self._alchemyBtnCanvas.alpha = haveSelect and 1 or 0.5
+	gohelper.setActive(self._btncombine, haveSelect)
 end
 
 function Rouge2_AlchemyMainView:onAlchemySuccess()

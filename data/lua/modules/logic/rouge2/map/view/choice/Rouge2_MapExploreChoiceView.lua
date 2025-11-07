@@ -40,8 +40,18 @@ function Rouge2_MapExploreChoiceView:changeState(state)
 	Rouge2_MapExploreChoiceView.super.changeState(self, state)
 
 	if state == Rouge2_MapEnum.ChoiceViewState.Finish then
-		self.scrollClick:RemoveClickListener()
+		gohelper.setActive(self._godialogueblock, true)
 	end
+end
+
+function Rouge2_MapExploreChoiceView:onChoiceFlowDone()
+	Rouge2_MapExploreChoiceView.super.onChoiceFlowDone(self)
+
+	if self.beforeChangeMap or self.nodeMo:isFinishEvent() then
+		return
+	end
+
+	self:triggerEventHandle()
 end
 
 return Rouge2_MapExploreChoiceView

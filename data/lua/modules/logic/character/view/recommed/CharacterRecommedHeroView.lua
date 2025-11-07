@@ -70,6 +70,10 @@ function CharacterRecommedHeroView:_showSpine(isShow)
 			gohelper.setActive(self._spineGo, true)
 
 			x, y = -69, 0
+
+			local motion = "b_" .. SpineAnimState.idle1
+
+			self._uiSpine:playSpecialMotion(motion)
 		else
 			if not self._rootParent then
 				return

@@ -37,6 +37,7 @@ function FightSceneViewComp:onSceneClose(sceneId, levelId)
 	ViewMgr.instance:closeView(ViewName.FightAiJiAoQteSelectView, true)
 	ViewMgr.instance:closeView(ViewName.FightPlayChoiceCardView, true)
 	ViewMgr.instance:closeView(ViewName.FightNuoDiKaQteView, true)
+	ViewMgr.instance:closeView(ViewName.FightBLESelectCrystalView, true)
 end
 
 return FightSceneViewComp

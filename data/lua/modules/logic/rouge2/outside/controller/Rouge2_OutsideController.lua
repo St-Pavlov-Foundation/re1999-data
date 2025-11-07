@@ -226,6 +226,47 @@ function Rouge2_OutsideController:_onRunClearRedDot()
 	self._hasCleanRedDotTask = false
 end
 
+function Rouge2_OutsideController:isCareerUnlock()
+	return Rouge2_OutSideConfig.instance:isCareerUnlock()
+end
+
+function Rouge2_OutsideController:checkNewPass()
+	local passCollectionList = Rouge2_OutsideModel.instance:getNewPassCollectionList()
+
+	if passCollectionList and next(passCollectionList) then
+		for _, collectionId in ipairs(passCollectionList) do
+			local config = Rouge2_OutSideConfig.getItemConfig(collectionId)
+
+			if not config then
+				logError("肉鸽2 不存在的造物 id: " .. collectionId)
+			elseif config.isDisplay ~= nil and config.isDisplay ~= 0 then
+				local param = {}
+
+				param.displayType = Rouge2_OutsideEnum.ResultFinalDisplayType.Result
+
+				Rouge2_OutsideController.instance:openCollectionCollectView(param)
+
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function Rouge2_OutsideController:checkNewUnlock()
+	local unlockCollectionList = Rouge2_OutsideModel.instance:getNewUnlockCollectionList()
+	local unlockFormulaList = Rouge2_AlchemyModel.instance:getNewUnlockFormula()
+
+	if unlockCollectionList and #unlockCollectionList > 0 or unlockFormulaList and #unlockFormulaList > 0 then
+		Rouge2_ViewHelper.openRouge2UnlockInfoView()
+
+		return true
+	end
+
+	return false
+end
+
 Rouge2_OutsideController.instance = Rouge2_OutsideController.New()
 
 return Rouge2_OutsideController

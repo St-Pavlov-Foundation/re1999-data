@@ -309,6 +309,10 @@ function FightEffectPool._createLoadedEffectWrap(assetItem, path)
 end
 
 function FightEffectPool._instantiateEffectGO(assetItem, effectWrap)
+	if gohelper.isNil(effectWrap.containerGO) then
+		return
+	end
+
 	local wholeEffectGO = gohelper.clone(assetItem:GetResource(effectWrap.path), effectWrap.containerGO)
 	local effectGO = wholeEffectGO
 	local effectSuffix

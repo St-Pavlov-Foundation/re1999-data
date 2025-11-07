@@ -62,6 +62,7 @@ FightSkillComp.FrameEventHandlerCls = {
 	FightTLEventPlayEffectByOperation,
 	FightTLEventEffectVisible,
 	FightTLEvent500MMonsterRefreshHeadIcon,
+	FightTLEventAddEffectByBuffActId,
 	[1001] = FightTLEventObjFly,
 	[1002] = FightTLEventSetSign
 }

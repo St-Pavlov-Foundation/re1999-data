@@ -88,6 +88,9 @@ function BleSkinInteraction:_onBodyChange(prevBodyName, curBodyName)
 
 			self._changeUVTweenId = nil
 		end
+
+		TaskDispatcher.cancelTask(self._playBeginAudio, self)
+		AudioMgr.instance:trigger(AudioEnum.UI.hero3134_interaction_end)
 	end
 
 	if curBodyName == b_jiaohu_01 then

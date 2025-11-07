@@ -81,7 +81,7 @@ function Rouge2_MapEntrustHelper.eventHandle(entrustCo, entrustDescCo, progress,
 	local total = tonumber(param[2])
 	local desc = Rouge2_MapEntrustHelper.getDesc(entrustDescCo, finish)
 
-	return GameUtil.getSubPlaceholderLuaLangThreeParam(desc, total, table.concat(typeList, "_"), progress)
+	return GameUtil.getSubPlaceholderLuaLangThreeParam(desc, total, table.concat(typeList, "/"), progress)
 end
 
 function Rouge2_MapEntrustHelper.passLayerHandle(entrustCo, entrustDescCo, progress, finish)

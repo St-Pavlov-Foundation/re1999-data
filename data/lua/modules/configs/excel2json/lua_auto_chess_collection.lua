@@ -19,8 +19,9 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
-	desc = 2,
-	name = 1
+	name = 1,
+	skilldesc = 3,
+	desc = 2
 }
 
 function lua_auto_chess_collection.onLoad(json)

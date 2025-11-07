@@ -54,7 +54,7 @@ end
 function Rouge2_AlchemySuccessView:_btnagainOnClick()
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_click)
 
-	if Rouge2_Model.instance:isStarted() then
+	if Rouge2_Model.instance:isFinishedDifficulty() or Rouge2_Model.instance:isStarted() then
 		GameFacade.showToast(ToastEnum.Rouge2GameStartFormulaTip)
 
 		return
@@ -86,6 +86,7 @@ function Rouge2_AlchemySuccessView:_editableInitView()
 
 	gohelper.setActive(self._goTextDesc, false)
 	gohelper.setActive(self._goTextDescSpecial, false)
+	gohelper.setActive(self._goicon, false)
 	self:initIcon()
 
 	self._unuseUpdatePointItemList = self:getUserDataTb_()
@@ -111,6 +112,9 @@ function Rouge2_AlchemySuccessView:onOpen()
 	local viewParam = self.viewParam
 
 	self.state = viewParam and viewParam.state or Rouge2_OutsideEnum.AlchemySuccessViewState.Detail
+
+	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnAlchemySuccessOpenFinish, self.state)
+
 	self.mainUpdatePosDic = {}
 	self.extraUpdatePosDic = {}
 	self.alchemyInfo = Rouge2_AlchemyModel.instance:getHaveAlchemyInfo()
@@ -160,9 +164,9 @@ function Rouge2_AlchemySuccessView:refreshUI()
 		return
 	end
 
+	self:refreshMaterialReturn()
 	self:refreshSpecialEventInfo()
 	self:refreshTalentInfo()
-	self:refreshMaterialReturn()
 	self:playUpdatePointAnim()
 end
 
@@ -175,7 +179,19 @@ function Rouge2_AlchemySuccessView:refreshMaterialReturn()
 		return
 	end
 
-	gohelper.CreateObjList(self, self.onReturnItemShow, self.returnMaterial, self._goicon.transform.parent.gameObject, self._goicon, Rouge2_AlchemySuccessReturnMaterialItem)
+	local data = {}
+
+	for _, materialId in ipairs(self.returnMaterial) do
+		local materialConfig = Rouge2_OutSideConfig.instance:getMaterialConfig(materialId)
+
+		if materialConfig == nil then
+			logError("肉鸽2 返还了前端不存在的材料 id:" .. tostring(materialId))
+		else
+			table.insert(data, materialId)
+		end
+	end
+
+	gohelper.CreateObjList(self, self.onReturnItemShow, data, self._goicon.transform.parent.gameObject, self._goicon, Rouge2_AlchemySuccessReturnMaterialItem)
 end
 
 function Rouge2_AlchemySuccessView:onReturnItemShow(item, data, index)
@@ -196,6 +212,12 @@ end
 
 function Rouge2_AlchemySuccessView:refreshTalentInfo()
 	self._txttalentNum.text = tostring(Rouge2_TalentModel.instance:getTalentPoint())
+
+	local maxtalentpointConfig = Rouge2_OutSideConfig.instance:getConstConfigById(Rouge2_Enum.OutSideConstId.TalentPointMaxCount)
+	local maxtalentpoint = tonumber(maxtalentpointConfig.value)
+	local getAllPoint = math.min(Rouge2_TalentModel.instance:getHadAllTalentPoint(), maxtalentpoint)
+
+	gohelper.setActive(self._txtadd, getAllPoint < maxtalentpoint)
 end
 
 function Rouge2_AlchemySuccessView:refreshFormulaInfo()

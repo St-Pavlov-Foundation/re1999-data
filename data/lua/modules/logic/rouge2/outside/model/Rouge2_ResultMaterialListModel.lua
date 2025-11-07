@@ -9,15 +9,23 @@ function Rouge2_ResultMaterialListModel:initList(info)
 
 	if info then
 		for _, itemId in ipairs(info) do
-			local mo = {}
+			local materialConfig = Rouge2_OutSideConfig.instance:getMaterialConfig(itemId)
 
-			mo.itemId = itemId
-			mo.type = Rouge2_OutsideEnum.CollectionType.Material
+			if materialConfig == nil then
+				logError("肉鸽2 材料返回 前置不存在的材料, id: " .. tostring(itemId))
+			else
+				local mo = {}
 
-			table.insert(tempList, mo)
+				mo.itemId = itemId
+				mo.type = Rouge2_OutsideEnum.CollectionType.Material
+
+				table.insert(tempList, mo)
+			end
 		end
 
-		table.sort(tempList, Rouge2_ResultMaterialListModel.sortMaterial)
+		if #tempList >= 2 then
+			table.sort(tempList, Rouge2_ResultMaterialListModel.sortMaterial)
+		end
 	end
 
 	self:setList(tempList)

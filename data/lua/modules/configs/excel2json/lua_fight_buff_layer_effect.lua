@@ -20,6 +20,7 @@ local fields = {
 	releaseCreateEffectTime = 14,
 	loopEffectRoot = 5,
 	layer = 3,
+	hideEffectWhenBigSkill = 22,
 	hideEffectWhenPlaying = 20,
 	loopEffect = 4,
 	id = 1,

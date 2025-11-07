@@ -22,8 +22,8 @@ function FightCardCombineEffect:onStart(context)
 	local item1 = context.handCardItemList[combineIndex]
 	local item2 = context.handCardItemList[combineIndex + 1]
 
-	item1:setASFDActive(false)
-	item2:setASFDActive(false)
+	item1:hideTopLayout()
+	item2:hideTopLayout()
 
 	self._universalCombineId = FightEnum.UniversalCard[item1.cardInfoMO.skillId] or FightEnum.UniversalCard[item2.cardInfoMO.skillId]
 
@@ -324,11 +324,11 @@ function FightCardCombineEffect:_onCombineCardDone()
 	local item2 = self.context.handCardItemList[combineIndex + 1]
 
 	if item1 then
-		item1:setASFDActive(true)
+		item1:showTopLayout()
 	end
 
 	if item2 then
-		item2:setASFDActive(true)
+		item2:showTopLayout()
 	end
 
 	if self._universalCombineId then

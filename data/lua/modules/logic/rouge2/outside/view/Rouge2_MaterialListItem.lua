@@ -48,10 +48,6 @@ end
 
 function Rouge2_MaterialListItem:_onClickItem()
 	Rouge2_MaterialListModel.instance:setSelectedConfig(self._mo)
-
-	if self._showNewFlag then
-		-- block empty
-	end
 end
 
 function Rouge2_MaterialListItem:_onClickCollectionListItem()

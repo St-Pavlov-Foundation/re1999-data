@@ -23809,6 +23809,9 @@
   "singlebg/currencyitem/3103.png.dat": [
     "Assets/ZResourcesLib/singlebg/currencyitem/3103.png"
   ],
+  "singlebg/currencyitem/3201.png.dat": [
+    "Assets/ZResourcesLib/singlebg/currencyitem/3201.png"
+  ],
   "singlebg/currencyitem/3203.png.dat": [
     "Assets/ZResourcesLib/singlebg/currencyitem/3203.png"
   ],
@@ -25945,6 +25948,15 @@
   "singlebg/fight/rouge2/rouge2_help_9.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/rouge2/rouge2_help_9.png"
   ],
+  "singlebg/fight/rouge2/v3a2_rouge2_help_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/v3a2_rouge2_help_1.png"
+  ],
+  "singlebg/fight/rouge2/v3a2_rouge2_help_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/v3a2_rouge2_help_2.png"
+  ],
+  "singlebg/fight/rouge2/v3a2_rouge2_help_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fight/rouge2/v3a2_rouge2_help_3.png"
+  ],
   "singlebg/fight/skill/228101.png.dat": [
     "Assets/ZResourcesLib/singlebg/fight/skill/228101.png"
   ],
@@ -26268,6 +26280,9 @@
   ],
   "singlebg/fighttechniquetips/v3a0_bunker_help_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/fighttechniquetips/v3a0_bunker_help_1.png"
+  ],
+  "singlebg/fighttechniquetips/v3a2_rouge2_help_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/fighttechniquetips/v3a2_rouge2_help_4.png"
   ],
   "singlebg/fighttechniquetips/zhandoutujian_ranshaojizhi.png.dat": [
     "Assets/ZResourcesLib/singlebg/fighttechniquetips/zhandoutujian_ranshaojizhi.png"
@@ -35254,6 +35269,9 @@
   "singlebg/rouge2/backpack/rouge2_skill_normalbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/backpack/rouge2_skill_normalbg.png"
   ],
+  "singlebg/rouge2/backpack/rouge2_skill_normalbg2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/backpack/rouge2_skill_normalbg2.png"
+  ],
   "singlebg/rouge2/backpack/rouge2_skill_selectbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/backpack/rouge2_skill_selectbg.png"
   ],
@@ -35482,6 +35500,18 @@
   "singlebg/rouge2/choice/rouge_choice_cg_30.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_choice_cg_30.png"
   ],
+  "singlebg/rouge2/choice/rouge_function_1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_function_1.png"
+  ],
+  "singlebg/rouge2/choice/rouge_function_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_function_2.png"
+  ],
+  "singlebg/rouge2/choice/rouge_function_3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_function_3.png"
+  ],
+  "singlebg/rouge2/choice/rouge_function_4.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_function_4.png"
+  ],
   "singlebg/rouge2/choice/rouge_mainstory_cg_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/choice/rouge_mainstory_cg_1.png"
   ],
@@ -35619,6 +35649,9 @@
   ],
   "singlebg/rouge2/handbook/rouge2_handbook2_fullbg2_04.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/handbook/rouge2_handbook2_fullbg2_04.png"
+  ],
+  "singlebg/rouge2/handbook/rouge2_handbook2_fullbg3.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/handbook/rouge2_handbook2_fullbg3.png"
   ],
   "singlebg/rouge2/handbook/rouge2_handbook2_mask1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/handbook/rouge2_handbook2_mask1.png"
@@ -35929,6 +35962,9 @@
   "singlebg/rouge2/result/rouge2_result_fullbg_success10.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success10.png"
   ],
+  "singlebg/rouge2/result/rouge2_result_fullbg_success11.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success11.png"
+  ],
   "singlebg/rouge2/result/rouge2_result_fullbg_success2_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/result/rouge2_result_fullbg_success2_1.png"
   ],
@@ -36127,6 +36163,9 @@
   "singlebg/rouge2/small/rouge_choice_cg_30_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_choice_cg_30_1.png"
   ],
+  "singlebg/rouge2/small/rouge_mainstory_cg_10_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_mainstory_cg_10_2.png"
+  ],
   "singlebg/rouge2/small/rouge_mainstory_cg_1_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_mainstory_cg_1_1.png"
   ],
@@ -36174,6 +36213,9 @@
   ],
   "singlebg/rouge2/small/rouge_mainstory_cg_8_2.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_mainstory_cg_8_2.png"
+  ],
+  "singlebg/rouge2/small/rouge_mainstory_cg_9_2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_mainstory_cg_9_2.png"
   ],
   "singlebg/rouge2/small/rouge_story_cg_10_1.png.dat": [
     "Assets/ZResourcesLib/singlebg/rouge2/small/rouge_story_cg_10_1.png"
@@ -46128,18 +46170,6 @@
   ],
   "singlebg/versionactivityhelp/v3a2_bossrush_help_2.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionactivityhelp/v3a2_bossrush_help_2.png"
-  ],
-  "singlebg/versionactivityhelp/v3a2_rouge2_help_1.png.dat": [
-    "Assets/ZResourcesLib/singlebg/versionactivityhelp/v3a2_rouge2_help_1.png"
-  ],
-  "singlebg/versionactivityhelp/v3a2_rouge2_help_2.png.dat": [
-    "Assets/ZResourcesLib/singlebg/versionactivityhelp/v3a2_rouge2_help_2.png"
-  ],
-  "singlebg/versionactivityhelp/v3a2_rouge2_help_3.png.dat": [
-    "Assets/ZResourcesLib/singlebg/versionactivityhelp/v3a2_rouge2_help_3.png"
-  ],
-  "singlebg/versionactivityhelp/v3a2_rouge2_help_4.png.dat": [
-    "Assets/ZResourcesLib/singlebg/versionactivityhelp/v3a2_rouge2_help_4.png"
   ],
   "singlebg/versionsummon_singlebg/versionsummon_fullbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/versionsummon_singlebg/versionsummon_fullbg.png"

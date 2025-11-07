@@ -19,12 +19,12 @@ end
 
 function Rouge2_CareerHandBookDetailView:addEvents()
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
-	self:addEventCb(Rouge2_Controller.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
 end
 
 function Rouge2_CareerHandBookDetailView:removeEvents()
 	self._btnclose:RemoveClickListener()
-	self:removeEventCb(Rouge2_Controller.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSelectHandBookTalent, self.onSelectHandBookTalent, self)
 end
 
 function Rouge2_CareerHandBookDetailView:_btncloseOnClick()

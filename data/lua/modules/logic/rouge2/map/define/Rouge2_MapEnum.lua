@@ -137,7 +137,6 @@ Rouge2_MapEnum.MiddleLayerPointType = {
 	Path = 2
 }
 Rouge2_MapEnum.LeaveId = -1
-Rouge2_MapEnum.LeaveAnchorOffset = Vector2(-21, 77.7)
 Rouge2_MapEnum.OffsetZ = {
 	PiecesContainer = -7,
 	PieceIcon = -8,
@@ -151,6 +150,7 @@ Rouge2_MapEnum.Scale = {
 	Icon = 1.3,
 	NodeBg = 1.3
 }
+Rouge2_MapEnum.PathSelectActorDuration = 1.5
 Rouge2_MapEnum.NodeGlobalOffsetY = 0.02
 Rouge2_MapEnum.ActorOffset = Vector2(0, 0)
 Rouge2_MapEnum.StartClickArea = Vector4(80, 50, 0, 0)
@@ -190,18 +190,21 @@ Rouge2_MapEnum.InteractType = {
 }
 Rouge2_MapEnum.PieceEntrustType = {
 	Normal = 1,
+	Ending = 5,
 	Hard = 2,
 	None = 0
 }
 Rouge2_MapEnum.PieceIcon = {
 	[Rouge2_MapEnum.PieceEntrustType.Normal] = "rouge2_event_icon_14_2",
-	[Rouge2_MapEnum.PieceEntrustType.Hard] = "rouge2_event_icon_14_1"
+	[Rouge2_MapEnum.PieceEntrustType.Hard] = "rouge2_event_icon_15_1",
+	[Rouge2_MapEnum.PieceEntrustType.Ending] = "rouge2_event_icon_15_1"
 }
 Rouge2_MapEnum.PieceIconBg = {
 	[Rouge2_MapEnum.PieceEntrustType.Normal] = "rouge2_map_nodebg_6",
-	[Rouge2_MapEnum.PieceEntrustType.Hard] = "rouge2_map_nodebg_5"
+	[Rouge2_MapEnum.PieceEntrustType.Hard] = "rouge2_map_nodebg_6",
+	[Rouge2_MapEnum.PieceEntrustType.Ending] = "rouge2_map_nodebg_6"
 }
-Rouge2_MapEnum.PieceIconOffset = Vector2(0, 1.65)
+Rouge2_MapEnum.PieceIconOffset = Vector2(0, 1.3)
 Rouge2_MapEnum.PieceTriggerType = {
 	Reward = 1,
 	EndFight = 2,
@@ -277,18 +280,21 @@ Rouge2_MapEnum.StatusLineMap = {
 }
 Rouge2_MapEnum.LineOffset = 0
 Rouge2_MapEnum.ItemDropViewEnum = {
+	Tips = 5,
 	Loss = 3,
-	LevelUp = 4,
 	Select = 1,
-	Drop = 2
+	Drop = 2,
+	LevelUp = 4
 }
 Rouge2_MapEnum.ItemDropReason = {
 	Common = 103,
+	Effect = 102,
 	LevelUpSucc = 105,
 	Drop = 104
 }
 Rouge2_MapEnum.ShowItemDropReason = {
 	[Rouge2_MapEnum.ItemDropReason.Common] = false,
+	[Rouge2_MapEnum.ItemDropReason.Effect] = true,
 	[Rouge2_MapEnum.ItemDropReason.Drop] = true,
 	[Rouge2_MapEnum.ItemDropReason.LevelUpSucc] = true
 }
@@ -482,7 +488,7 @@ Rouge2_MapEnum.BasicAttrId = {
 	RelicsDropNum = 201,
 	RelicsCapacity = 202,
 	BuffCapacity = 204,
-	ActiveSkillCapacity = 205,
+	ActiveSkillCapacity = 501,
 	InvisibleCapacity = 203
 }
 Rouge2_MapEnum.AddAttrStep = 1
@@ -558,6 +564,21 @@ Rouge2_MapEnum.FunnyTaskLevelIcon = {
 Rouge2_MapEnum.WeatherIconSuffix = {
 	PathSelect = "_2",
 	Normal = "_1"
+}
+Rouge2_MapEnum.TechniqueId = {
+	PathSelectLayer = 10,
+	DifficultySelect = 3,
+	AttrUpView = 8,
+	NormalLayer = 5,
+	CareerSelect = 4,
+	BandRecruit = 14,
+	BackpackRelcis = 12,
+	DiceView = 7,
+	BackpackActiveSkill = 13,
+	MapStore = 15,
+	MiddleLayer = 9,
+	BackpackBoxTips = 17,
+	BackpackBuff = 11
 }
 
 return Rouge2_MapEnum

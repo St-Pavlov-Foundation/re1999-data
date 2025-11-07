@@ -11,6 +11,7 @@ function FightEntitySpecialEffectBuffLayer:initClass()
 	self._oldLayer = {}
 	self._buffType = {}
 	self.hideEffectWhenPlaying = {}
+	self.hideEffectWhenBigSkill = {}
 
 	self:addEventCb(FightController.instance, FightEvent.SetBuffEffectVisible, self._onSetBuffEffectVisible, self)
 	self:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, self._onBuffUpdate, self)
@@ -60,6 +61,10 @@ function FightEntitySpecialEffectBuffLayer:_onSkillPlayStart(entity, curSkillId,
 			effectWrap:setActive(false, "FightEntitySpecialEffectBuffLayerHideWhenPlaying")
 		end
 	end
+
+	for uniqueId, effectWrap in pairs(self.hideEffectWhenBigSkill) do
+		effectWrap:setActive(false, "FightEntitySpecialEffectBuffLayerHideWhenBigSkill")
+	end
 end
 
 function FightEntitySpecialEffectBuffLayer:_onSkillPlayFinish(entity, curSkillId, fightStepData)
@@ -73,6 +78,10 @@ function FightEntitySpecialEffectBuffLayer:_onSkillPlayFinish(entity, curSkillId
 		for uniqueId, effectWrap in pairs(self.hideEffectWhenPlaying) do
 			effectWrap:setActive(true, "FightEntitySpecialEffectBuffLayerHideWhenPlaying")
 		end
+	end
+
+	for uniqueId, effectWrap in pairs(self.hideEffectWhenBigSkill) do
+		effectWrap:setActive(true, "FightEntitySpecialEffectBuffLayerHideWhenBigSkill")
 	end
 end
 
@@ -209,6 +218,10 @@ function FightEntitySpecialEffectBuffLayer:_refreshEffect(buffId, list, layer, e
 		if config.hideEffectWhenPlaying == 1 then
 			self.hideEffectWhenPlaying[effectWrap.uniqueId] = effectWrap
 		end
+
+		if config.hideEffectWhenBigSkill == 1 then
+			self.hideEffectWhenBigSkill[effectWrap.uniqueId] = effectWrap
+		end
 	end
 
 	if isNew then
@@ -336,6 +349,7 @@ function FightEntitySpecialEffectBuffLayer:_releaseEffect(effectWrap)
 	FightRenderOrderMgr.instance:onRemoveEffectWrap(self._entity.id, effectWrap)
 
 	self.hideEffectWhenPlaying[effectWrap.uniqueId] = nil
+	self.hideEffectWhenBigSkill[effectWrap.uniqueId] = nil
 end
 
 function FightEntitySpecialEffectBuffLayer:_onBeforeDeadEffect(entityId)

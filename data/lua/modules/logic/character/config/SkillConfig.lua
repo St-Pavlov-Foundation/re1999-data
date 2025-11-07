@@ -641,9 +641,14 @@ function SkillConfig:getHeroAllSkillIdDictByStr(skill, exSkill)
 	return skillIdDict
 end
 
-function SkillConfig:_isNeedReplaceExSkill(heroMo)
+function SkillConfig:_isNeedReplaceExSkill(heroMo, rank)
 	if heroMo and lua_character_rank_replace.configDict[heroMo.heroId] then
 		local curRank = heroMo.rank or 0
+
+		if rank then
+			curRank = rank
+		end
+
 		local limitedCo = lua_character_limited.configDict[heroMo.skin]
 		local specialLive2d = string.split(limitedCo.specialLive2d, "#")
 		local rank = specialLive2d[2] and tonumber(specialLive2d[2]) or 3
@@ -654,7 +659,7 @@ function SkillConfig:_isNeedReplaceExSkill(heroMo)
 	return true
 end
 
-function SkillConfig:getHeroBaseSkillIdDictByExSkillLevel(heroId, showAttributeOption, heroMo)
+function SkillConfig:getHeroBaseSkillIdDictByExSkillLevel(heroId, showAttributeOption, heroMo, balanceHelper)
 	if heroMo and heroMo.trialAttrCo then
 		local SkillIdDict = self:getHeroBaseSkillIdDictByStr(heroMo.trialAttrCo.activeSkill, heroMo.trialAttrCo.uniqueSkill)
 
@@ -663,12 +668,22 @@ function SkillConfig:getHeroBaseSkillIdDictByExSkillLevel(heroId, showAttributeO
 		return SkillIdDict
 	end
 
-	local isCheckReplaceRankSkill = heroMo and heroMo.rank > CharacterModel.instance:getReplaceSkillRank(heroMo) - 1
+	local rank = heroMo and heroMo.rank
+
+	if balanceHelper and balanceHelper.getIsBalanceMode() then
+		local balanceLv, balanceRank, balanceTalent = balanceHelper.getHeroBalanceInfo(heroId)
+
+		if balanceRank then
+			rank = balanceRank
+		end
+	end
+
+	local isCheckReplaceRankSkill = rank and rank > CharacterModel.instance:getReplaceSkillRank(heroMo) - 1
 	local baseSkillIdDict = self:getHeroBaseSkillIdDict(heroId, isCheckReplaceRankSkill)
 
 	heroMo = heroMo or HeroModel.instance:getByHeroId(heroId)
 
-	if self:_isNeedReplaceExSkill(heroMo) then
+	if self:_isNeedReplaceExSkill(heroMo, rank) then
 		baseSkillIdDict = self:getHeroExBaseSkillIdDict(heroId, heroMo, baseSkillIdDict, showAttributeOption)
 	end
 
@@ -757,12 +772,22 @@ function SkillConfig:_checkDestinyEffect(skillIdList, heroMo)
 	return skillIdList
 end
 
-function SkillConfig:getHeroAllSkillIdDictByExSkillLevel(heroId, showAttributeOption, heroMo, exSkillLv, isCheckOverRank)
+function SkillConfig:getHeroAllSkillIdDictByExSkillLevel(heroId, showAttributeOption, heroMo, exSkillLv, isCheckOverRank, balanceHelper)
 	if heroMo and heroMo.trialAttrCo then
 		return self:getHeroAllSkillIdDictByStr(heroMo.trialAttrCo.activeSkill, heroMo.trialAttrCo.uniqueSkill)
 	end
 
-	local isCheckOverRank = isCheckOverRank or heroMo and heroMo.rank > CharacterModel.instance:getReplaceSkillRank(heroMo) - 1
+	local rank = heroMo and heroMo.rank
+
+	if balanceHelper and balanceHelper.getIsBalanceMode() then
+		local balanceLv, balanceRank, balanceTalent = balanceHelper.getHeroBalanceInfo(heroId)
+
+		if balanceRank then
+			rank = balanceRank
+		end
+	end
+
+	local isCheckOverRank = isCheckOverRank or rank and rank > CharacterModel.instance:getReplaceSkillRank(heroMo) - 1
 	local allSkillIdDict, isReplaceSkill = self:getHeroAllSkillIdDict(heroId, isCheckOverRank)
 
 	if isReplaceSkill then
@@ -771,7 +796,7 @@ function SkillConfig:getHeroAllSkillIdDictByExSkillLevel(heroId, showAttributeOp
 
 	heroMo = heroMo or HeroModel.instance:getByHeroId(heroId)
 
-	if not self:_isNeedReplaceExSkill(heroMo) then
+	if not self:_isNeedReplaceExSkill(heroMo, rank) then
 		return allSkillIdDict
 	end
 

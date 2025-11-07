@@ -61,7 +61,7 @@ function Rouge2_BackpackSkillListItem:_btnClickOnLongClick()
 		return
 	end
 
-	local dragEndFrame = Rouge2_BackpackSkillEditListModel.instance.dragEndFrameCount or 0
+	local dragEndFrame = Rouge2_BackpackSkillEditListModel.instance:getLastEndDragTime()
 
 	if UnityEngine.Time.frameCount - dragEndFrame < 30 then
 		return

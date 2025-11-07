@@ -4,6 +4,9 @@ module("modules.logic.rouge2.start.view.Rouge2_CareerCollectionItem", package.se
 
 local Rouge2_CareerCollectionItem = class("Rouge2_CareerCollectionItem", LuaCompBase)
 
+Rouge2_CareerCollectionItem.PercentColor = "#F3A055"
+Rouge2_CareerCollectionItem.BracketColor = "#5E7DD9"
+
 function Rouge2_CareerCollectionItem:init(go)
 	self.go = go
 	self._imagePropIcon = gohelper.findChildSingleImage(self.go, "#image_PropIcon")
@@ -31,7 +34,7 @@ function Rouge2_CareerCollectionItem:refreshUI()
 	self._txtName.text = self._relicsCo and self._relicsCo.name
 
 	Rouge2_IconHelper.setRelicsIcon(self._relicsId, self._imagePropIcon)
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, self._relicsId, self._txtDescr)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, self._relicsId, self._txtDescr, nil, nil, Rouge2_CareerCollectionItem.PercentColor, Rouge2_CareerCollectionItem.BracketColor)
 end
 
 function Rouge2_CareerCollectionItem:setUse(isUse)

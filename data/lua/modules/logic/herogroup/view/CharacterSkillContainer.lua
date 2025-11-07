@@ -65,9 +65,13 @@ function CharacterSkillContainer:onUpdateMO(heroId, showAttributeOption, heroMo,
 	self:_refreshSkillUI()
 end
 
+function CharacterSkillContainer:setBalanceHelper(balanceHelper)
+	self._balanceHelper = balanceHelper
+end
+
 function CharacterSkillContainer:_refreshSkillUI()
 	if self._heroId then
-		local skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._heroId, self._showAttributeOption, self._heroMo)
+		local skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._heroId, self._showAttributeOption, self._heroMo, self._balanceHelper)
 
 		self:_showSkillUI(skillIdDict)
 	end

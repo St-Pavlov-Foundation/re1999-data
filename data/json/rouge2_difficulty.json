@@ -22,7 +22,7 @@
     "scoreReward": 120,
     "startView": "",
     "initCollections": "100022",
-    "desc": "战斗开始时，己方受到最大百分比20%的本源创伤",
+    "desc": "所有检定结果-1\n任意战斗回合数超过5后，回合开始时敌方全体攻击+5%",
     "balanceLevel": "121#10#60"
   },
   {
@@ -34,8 +34,8 @@
     "monsterDesc": "3",
     "scoreReward": 140,
     "startView": "",
-    "initCollections": "100023",
-    "desc": "进入商店、科研所路点，扣除50金币",
+    "initCollections": "100022#100023",
+    "desc": "购物契机中商品价格+30%，偷窃检定结果-2\n敌方行动点+1",
     "balanceLevel": "121#10#60"
   },
   {
@@ -47,8 +47,8 @@
     "monsterDesc": "4",
     "scoreReward": 160,
     "startView": "",
-    "initCollections": "100024",
-    "desc": "精英/首领战，敌方属性提升",
+    "initCollections": "100022#100023#100024",
+    "desc": "每次进入地区时重振-3\n所有敌人最终免伤+40%，最终增伤+40%",
     "balanceLevel": "121#10#60"
   },
   {

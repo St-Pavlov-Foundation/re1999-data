@@ -39,7 +39,18 @@ function Rouge2_MapPieceChoiceItem:handleNormalChoice()
 		TaskDispatcher.runDelay(self.onNormalChoiceSelectAnimDone, self, Rouge2_MapEnum.ChoiceSelectAnimDuration)
 		UIBlockMgr.instance:startBlock(Rouge2_MapEnum.WaitChoiceItemAnimBlock)
 	else
+		self:dispatchAttrLightEvent()
 		Rouge2_MapController.instance:dispatchEvent(Rouge2_MapEvent.onChoiceItemStatusChange, self.dataId)
+	end
+end
+
+function Rouge2_MapPieceChoiceItem:dispatchAttrLightEvent()
+	local lightAttrList = string.splitToNumber(self.choiceCo.attribute, "#")
+
+	if lightAttrList then
+		for _, attrId in ipairs(lightAttrList) do
+			Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.onLightAttr, attrId)
+		end
 	end
 end
 
@@ -60,9 +71,8 @@ function Rouge2_MapPieceChoiceItem:onNormalChoiceSelectAnimDone()
 
 	local layer = Rouge2_MapModel.instance:getLayerId()
 	local middleLayer = Rouge2_MapModel.instance:getMiddleLayerId()
-	local index = Rouge2_MapModel.instance:getCurPosIndex()
 
-	self.callbackId = Rouge2_Rpc.instance:sendRouge2PieceTalkSelectRequest(layer, middleLayer, index, self.choiceId, self.onReceiveMsg, self)
+	self.callbackId = Rouge2_Rpc.instance:sendRouge2PieceTalkSelectRequest(layer, middleLayer, self.pieceMo.index, self.choiceId, self.onReceiveMsg, self)
 end
 
 function Rouge2_MapPieceChoiceItem:onReceiveMsg()
@@ -126,9 +136,7 @@ function Rouge2_MapPieceChoiceItem:playUnlockAnim()
 		return
 	end
 
-	local activeType = Rouge2_MapUnlockHelper.getUnlockTypeAndParam(self.choiceCo.active)
-
-	if activeType == 0 then
+	if string.nilorempty(self.choiceCo.active) then
 		return
 	end
 
@@ -140,6 +148,11 @@ function Rouge2_MapPieceChoiceItem:playUnlockAnim()
 		self.animator:Play("unlock", 0, 0)
 		Rouge2_MapController.instance:playedPieceChoiceEvent(self.choiceId)
 	end
+end
+
+function Rouge2_MapPieceChoiceItem:refreshLockUI()
+	Rouge2_MapPieceChoiceItem.super.refreshLockUI(self)
+	gohelper.setActive(self.goLockTip, false)
 end
 
 function Rouge2_MapPieceChoiceItem:destroy()

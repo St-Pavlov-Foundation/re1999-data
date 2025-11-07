@@ -140,7 +140,7 @@ function FightRouge2CoinMgr:refreshRevivalCoin()
 	self.txtRevivalCoin.text = self:getParamValue(FightParamData.ParamKey.ROUGE2_REVIVAL_COIN)
 	self.txtRevivalAdd.text = ""
 	self.txtRevivalReduce.text = ""
-	self.txtTipDesc.text = luaLang("rouge2_fight_revival_tip_desc")
+	self.txtTipDesc.text = lua_rouge2_const.configDict[Rouge2_MapEnum.ConstKey.RevivalCoinDesc].value2
 end
 
 function FightRouge2CoinMgr:changeRevivalCoin(offset)

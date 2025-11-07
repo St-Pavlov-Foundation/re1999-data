@@ -525,6 +525,7 @@ local module_mvc = {
 	},
 	Rouge2 = {
 		model = {
+			"Rouge2_Model",
 			"Rouge2_OutsideModel",
 			"Rouge2_StoreModel",
 			"Rouge2_TalentModel",

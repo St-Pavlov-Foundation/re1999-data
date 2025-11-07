@@ -4,15 +4,16 @@ module("modules.configs.excel2json.lua_rouge2_passive_skill", package.seeall)
 
 local lua_rouge2_passive_skill = {}
 local fields = {
-	isSpecial = 10,
+	isSpecial = 11,
 	name = 3,
 	effectDesc = 5,
-	levelUpDesc = 6,
-	attribute = 9,
-	imLevelUpDesc = 7,
-	desc = 4,
+	upDesc = 6,
+	icon = 9,
+	attribute = 10,
 	id = 1,
-	icon = 8,
+	desc = 4,
+	levelUpDesc = 7,
+	imLevelUpDesc = 8,
 	level = 2
 }
 local primaryKey = {
@@ -22,8 +23,9 @@ local primaryKey = {
 local mlStringKey = {
 	effectDesc = 3,
 	name = 1,
-	levelUpDesc = 4,
-	imLevelUpDesc = 5,
+	levelUpDesc = 5,
+	upDesc = 4,
+	imLevelUpDesc = 6,
 	desc = 2
 }
 

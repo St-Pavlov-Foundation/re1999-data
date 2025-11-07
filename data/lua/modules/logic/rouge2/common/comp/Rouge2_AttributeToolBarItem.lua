@@ -12,10 +12,13 @@ function Rouge2_AttributeToolBarItem:init(go)
 	self._txtValue = gohelper.findChildText(self.go, "#txt_Value")
 	self._goRecommend = gohelper.findChild(self.go, "#go_Recommand")
 	self._btnClick = gohelper.findChildButtonWithAudio(self.go, "#btn_Click")
+	self._animator = gohelper.onceAddComponent(self.go, gohelper.Type_Animator)
+	self._goLoopEffect = gohelper.findChild(self.go, "#effect/loop")
 end
 
 function Rouge2_AttributeToolBarItem:addEventListeners()
 	self._btnClick:AddClickListener(self._btnClickOnClick, self)
+	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.onLightAttr, self._onLightAttr, self)
 end
 
 function Rouge2_AttributeToolBarItem:removeEventListeners()
@@ -47,6 +50,16 @@ function Rouge2_AttributeToolBarItem:refreshUI()
 
 	gohelper.setActive(self._goRecommend, self._isRecommend)
 	Rouge2_IconHelper.setAttributeIcon(self._attrId, self._imageIcon)
+end
+
+function Rouge2_AttributeToolBarItem:_onLightAttr(lightAttrIdList)
+	local isLight = lightAttrIdList and tabletool.indexOf(lightAttrIdList, self._attrId) ~= nil
+
+	gohelper.setActive(self._goLoopEffect, isLight)
+
+	if isLight then
+		self._animator:Play("click", 0, 0)
+	end
 end
 
 function Rouge2_AttributeToolBarItem:onDestroy()

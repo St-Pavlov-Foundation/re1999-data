@@ -5,6 +5,9 @@ module("modules.logic.rouge2.start.view.Rouge2_CareerActiveSkillItem", package.s
 local Rouge2_CareerActiveSkillItem = class("Rouge2_CareerActiveSkillItem", LuaCompBase)
 local TipsViewAnchorPos = Vector2(-298, -108)
 
+Rouge2_CareerActiveSkillItem.PercentColor = "#F3A055"
+Rouge2_CareerActiveSkillItem.BracketColor = "#5E7DD9"
+
 function Rouge2_CareerActiveSkillItem:init(go)
 	self.go = go
 	self._simageSkillIcon = gohelper.findChildSingleImage(self.go, "#image_SkillIcon")
@@ -41,7 +44,7 @@ end
 function Rouge2_CareerActiveSkillItem:refreshUI()
 	self._txtName.text = self._skillCo and self._skillCo.name
 
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, self._skillId, self._txtDescr)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, self._skillId, self._txtDescr, nil, nil, Rouge2_CareerActiveSkillItem.PercentColor, Rouge2_CareerActiveSkillItem.BracketColor)
 	Rouge2_IconHelper.setActiveSkillIcon(self._skillId, self._simageSkillIcon)
 end
 

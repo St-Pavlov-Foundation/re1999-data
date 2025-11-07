@@ -27,13 +27,13 @@ function Rouge2_IllustrationListItem:onInitView()
 end
 
 function Rouge2_IllustrationListItem:addEvents()
-	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 	self._btnclick:AddClickListener(self._btnclickOnClick, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnIllustrationScrollViewValueChanged, self.onScrollValueChanged, self)
 end
 
 function Rouge2_IllustrationListItem:removeEvents()
-	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnClearRedDot, self.onClearRedDot, self)
 	self._btnclick:RemoveClickListener()
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnIllustrationScrollViewValueChanged, self.onScrollValueChanged, self)
 end
 
 function Rouge2_IllustrationListItem:_btnclickOnClick()
@@ -73,6 +73,8 @@ function Rouge2_IllustrationListItem:_editableInitView()
 			table.insert(pieceItemList, pieceItemGo)
 		end
 	end
+
+	self._aniamtor = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
 function Rouge2_IllustrationListItem:_onClick()
@@ -87,12 +89,16 @@ function Rouge2_IllustrationListItem:_editableRemoveEvents()
 	return
 end
 
+function Rouge2_IllustrationListItem:onScrollValueChanged()
+	self:checkRedDot()
+end
+
 function Rouge2_IllustrationListItem:onUpdateMO(mo)
 	self._mo = mo.config
 
 	Rouge2_IconHelper.setRougeIllustrationSmallIcon(self._mo.id, self._simageItemPic)
 
-	self._txtName.text = self._mo.name
+	self._txtName.text = self._mo.nameOther
 
 	if UnityEngine.Time.frameCount - Rouge2_IllustrationListModel.instance.startFrameCount < 10 then
 		self._aniamtor = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
@@ -146,14 +152,20 @@ function Rouge2_IllustrationListItem:_updateNewFlag()
 	self._reddotComp:intReddotInfo(RedDotEnum.DotNode.V3a2_Rouge_Review_Illustration, self._mo.id, Rouge2_OutsideEnum.LocalData.Illustration)
 end
 
-function Rouge2_IllustrationListItem:onSelect(isSelect)
-	return
+function Rouge2_IllustrationListItem:checkRedDot()
+	if self._reddotComp and self._reddotComp._isDotShow then
+		local showNew = self._reddotComp:refresh()
+
+		if showNew then
+			self._aniamtor:Play("unlock", 0, 0)
+		else
+			self._aniamtor:Play("open", 0, 0)
+		end
+	end
 end
 
-function Rouge2_IllustrationListItem:onClearRedDot()
-	self._showNewFlag = false
-
-	gohelper.setActive(self._gonew, self._showNewFlag)
+function Rouge2_IllustrationListItem:onSelect(isSelect)
+	return
 end
 
 function Rouge2_IllustrationListItem:onDestroyView()

@@ -41,7 +41,13 @@ function Rouge2_CareerSelectView:removeEvents()
 end
 
 function Rouge2_CareerSelectView:_btnRightArrowOnClick()
-	if not Rouge2_CareerSelectListModel.instance:canSwitch(true) then
+	local isCan, toastId = Rouge2_CareerSelectListModel.instance:canSwitch(true)
+
+	if not isCan then
+		if toastId then
+			GameFacade.showToast(toastId)
+		end
+
 		return
 	end
 
@@ -49,7 +55,13 @@ function Rouge2_CareerSelectView:_btnRightArrowOnClick()
 end
 
 function Rouge2_CareerSelectView:_btnLeftArrowOnClick()
-	if not Rouge2_CareerSelectListModel.instance:canSwitch(false) then
+	local isCan, toastId = Rouge2_CareerSelectListModel.instance:canSwitch(false)
+
+	if not isCan then
+		if toastId then
+			GameFacade.showToast(toastId)
+		end
+
 		return
 	end
 

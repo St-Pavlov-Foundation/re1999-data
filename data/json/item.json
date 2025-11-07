@@ -11533,7 +11533,7 @@
     "isShow": 1,
     "isTimeShow": 1,
     "isDynamic": 0,
-    "effect": "4#10",
+    "effect": "4#10|300302",
     "cd": 0,
     "expireTime": "",
     "price": "",

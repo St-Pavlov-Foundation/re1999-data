@@ -238,30 +238,40 @@ function BaseFightEntity:resetEntity()
 
 	local mo = self:getMO()
 
-	if mo then
-		if FightEntityDataHelper.isPlayerUid(mo.id) then
-			return
-		end
-
-		if self.skill and self.skill:sameSkillPlaying() then
-			return
-		end
-
-		local lookDir = FightHelper.getEntitySpineLookDir(mo)
-
-		if self.spine then
-			self.spine:changeLookDir(lookDir)
-		end
-
-		self:resetAnimState()
-		self:resetSpineMat()
-		self:resetStandPos()
-		self:resetSpineRotate()
-
-		local _, _, _, scale = FightHelper.getEntityStandPos(mo)
-
-		self:setScale(scale)
+	if not mo then
+		return
 	end
+
+	if mo:isRouge2Music() then
+		return
+	end
+
+	if mo:isVorpalith() then
+		return
+	end
+
+	if FightEntityDataHelper.isPlayerUid(mo.id) then
+		return
+	end
+
+	if self.skill and self.skill:sameSkillPlaying() then
+		return
+	end
+
+	local lookDir = FightHelper.getEntitySpineLookDir(mo)
+
+	if self.spine then
+		self.spine:changeLookDir(lookDir)
+	end
+
+	self:resetAnimState()
+	self:resetSpineMat()
+	self:resetStandPos()
+	self:resetSpineRotate()
+
+	local _, _, _, scale = FightHelper.getEntityStandPos(mo)
+
+	self:setScale(scale)
 end
 
 function BaseFightEntity:resetAnimState()

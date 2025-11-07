@@ -22,6 +22,16 @@ function FightRouge2MusicView:onInitView()
 	self.halfItemWidth = self.itemWidth / 2
 	self.rectDesc2Tr = gohelper.findChildComponent(self.viewGO, "root/#scroll_yinfu/dec2", gohelper.Type_RectTransform)
 	self.imageDesc2 = self.rectDesc2Tr:GetComponent(gohelper.Type_Image)
+	self.goTips = gohelper.findChild(self.viewGO, "root/#go_tips")
+
+	gohelper.setActive(self.goTips, false)
+
+	self.goTipItem = gohelper.findChild(self.goTips, "tips/#scroll_tips/viewport/content/#go_tipsitem")
+
+	gohelper.setActive(self.goTipItem, false)
+
+	self.tipClick = gohelper.findChildClickWithDefaultAudio(self.goTips, "#btn_click")
+	self.click = gohelper.getClick(self.viewGO)
 	self.musicItemPool = {}
 	self.musicItemList = {}
 	self.activingMusicItemList = {}
@@ -34,6 +44,8 @@ function FightRouge2MusicView:onInitView()
 end
 
 function FightRouge2MusicView:addEvents()
+	self.tipClick:AddClickListener(self.onClickTip, self)
+	self.click:AddClickListener(self.onClickSelf, self)
 	self:addEventCb(FightController.instance, FightEvent.Rouge2_OnAddMusicType, self.onAddMusicType, self)
 	self:addEventCb(FightController.instance, FightEvent.Rouge2_OnPopMusicType, self.onPopMusicType, self)
 	self:addEventCb(FightController.instance, FightEvent.Rouge2_OnPlayMusicActive, self.onPlayMusicActive, self)
@@ -41,6 +53,18 @@ function FightRouge2MusicView:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.Rouge2_ScanMusic, self.onScanMusic, self)
 	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChanged, self)
 	self:addEventCb(FightController.instance, FightEvent.OnPlayHandCard, self.onPlayHandCard, self)
+end
+
+function FightRouge2MusicView:onClickSelf()
+	if not self.hasDesc then
+		return
+	end
+
+	gohelper.setActive(self.goTips, true)
+end
+
+function FightRouge2MusicView:onClickTip()
+	gohelper.setActive(self.goTips, false)
 end
 
 local AddBlueCountBehaviourType = 40013
@@ -200,6 +224,7 @@ function FightRouge2MusicView:onStageChanged(stage)
 		return
 	end
 
+	self.viewAnimator:Stop()
 	gohelper.setActive(self.viewGO, true)
 end
 
@@ -367,6 +392,33 @@ function FightRouge2MusicView:onOpen()
 	gohelper.setActive(self.viewGO, showUi)
 	self:setScrollRectWidth()
 	self:forceRefreshMusic()
+	self:refreshTipDesc()
+end
+
+function FightRouge2MusicView:refreshTipDesc()
+	local bagType = Rouge2_Enum.BagType.Buff
+	local moList = Rouge2_BackpackModel.instance:getItemList(bagType)
+
+	self.hasDesc = moList and #moList > 0
+
+	if not self.hasDesc then
+		return
+	end
+
+	for _, mo in ipairs(moList) do
+		local goTipItem = gohelper.cloneInPlace(self.goTipItem)
+
+		gohelper.setActive(goTipItem, true)
+
+		local config = mo:getConfig()
+		local txtTip = gohelper.findChildText(goTipItem, "title/#txt_name")
+		local txtDesc = gohelper.findChildText(goTipItem, "txt_desc")
+
+		txtTip.text = config.name
+		txtDesc.text = SkillHelper.buildDesc(config.descSimply)
+
+		SkillHelper.addHyperLinkClick(txtDesc)
+	end
 end
 
 function FightRouge2MusicView:setScrollRectWidth()
@@ -445,6 +497,18 @@ function FightRouge2MusicView:clearPosTween()
 end
 
 function FightRouge2MusicView:onDestroyView()
+	if self.tipClick then
+		self.tipClick:RemoveClickListener()
+
+		self.tipClick = nil
+	end
+
+	if self.click then
+		self.click:RemoveClickListener()
+
+		self.click = nil
+	end
+
 	self:clearScanTween()
 	self:clearPosTween()
 end

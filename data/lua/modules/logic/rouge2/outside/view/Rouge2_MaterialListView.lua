@@ -77,15 +77,14 @@ function Rouge2_MaterialListView:_editableInitView()
 	self._dropherogrouparrow = gohelper.findChild(self.viewGO, "Left/filter/#go_layout/selected/Label/go_arrow").transform
 	self._dropgroupchildcount = self._goSelectLayout.transform.childCount
 	self._selectIndex = 1
-
-	local list = {
+	self._labelList = {
 		luaLang("p_all"),
 		luaLang("p_rouge2illustrated_txt_type1"),
 		luaLang("p_rouge2illustrated_txt_type2")
 	}
 
 	self._dropherogroup:ClearOptions()
-	self._dropherogroup:AddOptions(list)
+	self._dropherogroup:AddOptions(self._labelList)
 	self._dropherogroup:SetValue(self._selectIndex - 1)
 	TaskDispatcher.runRepeat(self._checkDropArrow, self, 0)
 
@@ -100,6 +99,7 @@ function Rouge2_MaterialListView:_editableInitView()
 	gohelper.setActive(self._gounget, false)
 	gohelper.setActive(self._gonormal, true)
 	gohelper.setActive(self._txtGang, false)
+	gohelper.setActive(self._imageicon, false)
 	Rouge2_ItemDescHelper.addFixTmpBreakLine(self._txtDesc)
 	SkillHelper.addHyperLinkClick(self._txtDesc)
 
@@ -107,6 +107,8 @@ function Rouge2_MaterialListView:_editableInitView()
 	self._goFormulaItem = gohelper.findChild(self.viewGO, "Right/#go_normal/canUse/#scroll_canUse/Viewport/Content/#go_collectionitem")
 
 	gohelper.setActive(self._goFormulaItem, false)
+
+	self._dropHeroText = gohelper.findChildTextMesh(self.viewGO, "Left/filter/#go_layout/selected/Label")
 end
 
 function Rouge2_MaterialListView:_checkDropArrow()
@@ -125,6 +127,9 @@ function Rouge2_MaterialListView:_onDropValueChanged(value)
 	self._selectIndex = value + 1
 
 	Rouge2_MaterialListModel.instance:onInitData(self._selectIndex)
+
+	self._dropHeroText.text = self._labelList[self._selectIndex]
+
 	AudioMgr.instance:trigger(AudioEnum.UI.RougeFavoriteAudio7)
 end
 
@@ -169,6 +174,7 @@ function Rouge2_MaterialListView:_checkDropArrow()
 		local isOpen = self._dropgroupchildcount ~= childCount
 
 		transformhelper.setLocalScale(self._dropherogrouparrow, 1, isOpen and -1 or 1, 1)
+		self:_onScrollChange()
 	end
 end
 
@@ -179,18 +185,18 @@ function Rouge2_MaterialListView:_onClickCollectionListItem()
 end
 
 function Rouge2_MaterialListView:_onClickFormulaItem(formulaId)
-	if not Rouge2_OutsideModel.instance:passedLayerId(Rouge2_OutsideEnum.FirstLayerId) then
-		return
+	if ViewMgr.instance:isOpen(ViewName.Rouge2_FavoriteCollectionView) then
+		self:closeThis()
+	else
+		local param = {
+			defaultTabIds = {
+				[2] = Rouge2_OutsideEnum.CollectionDisplayType.Formula
+			},
+			selectItemId = formulaId
+		}
+
+		Rouge2_OutsideController.instance:openFavoriteMainView(param, false, self.closeThis, self)
 	end
-
-	local param = {
-		defaultTabIds = {
-			[2] = Rouge2_OutsideEnum.CollectionDisplayType.Formula
-		},
-		selectItemId = formulaId
-	}
-
-	Rouge2_OutsideController.instance:openFavoriteMainView(param, false, self.closeThis, self)
 end
 
 function Rouge2_MaterialListView:_onSwitchCollectionInfoType()
@@ -199,7 +205,11 @@ function Rouge2_MaterialListView:_onSwitchCollectionInfoType()
 	local isSimple = infoType == Rouge2_OutsideEnum.CollectionInfoType.Simple
 	local model = isSimple and Rouge2_Enum.ItemDescMode.Simply or Rouge2_Enum.ItemDescMode.Full
 
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, config.id, self._txtDesc, model)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, config.id, self._txtDesc, model, nil, Rouge2_OutsideEnum.DescPercentColor, Rouge2_OutsideEnum.DescBracketColor)
+
+	local desc = self._txtDesc.text
+
+	self._txtDesc.text = Rouge2_ItemDescHelper.replaceColor(desc, Rouge2_OutsideEnum.DescReplaceColor, Rouge2_OutsideEnum.DescPercentColor)
 end
 
 function Rouge2_MaterialListView:_refreshSelectMaterialInfo()
@@ -236,7 +246,10 @@ function Rouge2_MaterialListView:refreshNormalInfo()
 	Rouge2_IconHelper.setMaterialIcon(materialConfig.id, self._simageicon1)
 
 	self._txtcollectionname1.text = materialConfig.name
-	self._txtDesc.text = SkillHelper.buildDesc(materialConfig.details)
+
+	local desc = Rouge2_ItemDescHelper.buildDesc(materialConfig.details, Rouge2_OutsideEnum.DescPercentColor, Rouge2_OutsideEnum.DescBracketColor)
+
+	self._txtDesc.text = Rouge2_ItemDescHelper.replaceColor(desc, Rouge2_OutsideEnum.DescReplaceColor, Rouge2_OutsideEnum.DescPercentColor)
 end
 
 function Rouge2_MaterialListView:refreshFormulaInfo()

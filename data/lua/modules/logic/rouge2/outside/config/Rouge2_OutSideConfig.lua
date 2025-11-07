@@ -266,7 +266,9 @@ function Rouge2_OutSideConfig:initIllustrationList()
 	local list = {}
 
 	for _, v in ipairs(self._illustrationListConfig.configList) do
-		table.insert(list, v)
+		if v.type == Rouge2_OutsideEnum.IllustrationDetailType.Illustration then
+			table.insert(list, v)
+		end
 	end
 
 	table.sort(list, Rouge2_OutSideConfig._sortIllustration)
@@ -411,6 +413,10 @@ function Rouge2_OutSideConfig:_get2PrimarykeyDic(configTable, key1)
 	end
 
 	return nil
+end
+
+function Rouge2_OutSideConfig:isCareerUnlock()
+	return false
 end
 
 Rouge2_OutSideConfig.instance = Rouge2_OutSideConfig.New()

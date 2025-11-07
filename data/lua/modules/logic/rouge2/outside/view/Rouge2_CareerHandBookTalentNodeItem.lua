@@ -34,7 +34,7 @@ end
 
 function Rouge2_CareerHandBookTalentNodeItem:_btnclickOnClick()
 	if not self.isActive and self.canUnlock then
-		if Rouge2_Model.instance:isStarted() then
+		if Rouge2_Model.instance:isFinishedDifficulty() or Rouge2_Model.instance:isStarted() then
 			GameFacade.showToast(ToastEnum.Rouge2GameStartTalentTip)
 
 			return

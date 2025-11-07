@@ -54,7 +54,7 @@ function Rouge2_MapPieceChoiceViewExtend:_onChangeState(state)
 	self._state = state
 
 	self:refreshContinueTitle()
-	gohelper.setActive(self._btnContinue.gameObject, state == Rouge2_MapEnum.ChoiceViewState.DialogueDone)
+	gohelper.setActive(self._btnContinue.gameObject, state == Rouge2_MapEnum.ChoiceViewState.DialogueDone or state == Rouge2_MapEnum.ChoiceViewState.Finished)
 end
 
 function Rouge2_MapPieceChoiceViewExtend:refreshContinueTitle()

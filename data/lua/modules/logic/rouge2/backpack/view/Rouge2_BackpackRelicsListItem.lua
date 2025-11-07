@@ -6,6 +6,7 @@ local Rouge2_BackpackRelicsListItem = class("Rouge2_BackpackRelicsListItem", Lis
 
 function Rouge2_BackpackRelicsListItem:onInitView()
 	self._goRoot = gohelper.findChild(self.viewGO, "go_Root")
+	self._goCheck = gohelper.findChild(self.viewGO, "go_Check")
 end
 
 function Rouge2_BackpackRelicsListItem:initInternal(go, view)
@@ -20,7 +21,7 @@ function Rouge2_BackpackRelicsListItem:initInternal(go, view)
 
 	local goReddot = self._comRelicsItem:getReddotGo()
 
-	self._reddotComp = Rouge2_BackpackItemReddotComp.Get(goReddot, go, goScroll)
+	self._reddotComp = Rouge2_BackpackItemReddotComp.Get(goReddot, self._goCheck, goScroll)
 end
 
 function Rouge2_BackpackRelicsListItem:addEvents()

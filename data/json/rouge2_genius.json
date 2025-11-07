@@ -28,144 +28,144 @@
     "name": "线性辐射·III",
     "effects": "191003",
     "replaceId": "10004",
-    "desc": "旅途开始时，获得3个谐波，谐波可能为紫色",
+    "desc": "旅途开始时，获得2个谐波，谐波可能为紫色",
     "icon": "rouge2_alltalent_4",
     "talentType": 1,
     "talentOrder": 3,
     "typeName": "线性辐射",
-    "overviewText": "旅途开始时，获得3个谐波，谐波可能为紫色"
+    "overviewText": "旅途开始时，获得2个谐波，谐波可能为紫色"
   },
   {
     "id": 10004,
     "name": "线性辐射·IV",
     "effects": "191004",
     "replaceId": "",
-    "desc": "旅途开始时，获得4个谐波，谐波可能为金色",
+    "desc": "旅途开始时，获得3个谐波，谐波可能为金色",
     "icon": "rouge2_alltalent_4",
     "talentType": 1,
     "talentOrder": 4,
     "typeName": "线性辐射",
-    "overviewText": "旅途开始时，获得4个谐波，谐波可能为金色"
+    "overviewText": "旅途开始时，获得3个谐波，谐波可能为金色"
   },
   {
     "id": 10005,
     "name": "珍奇异想·I",
     "effects": "191005",
-    "replaceId": "",
-    "desc": "初始获得100金雀子儿",
+    "replaceId": "10006",
+    "desc": "初始获得50金雀子儿",
     "icon": "rouge2_alltalent_1",
     "talentType": 2,
     "talentOrder": 1,
     "typeName": "珍奇异想",
-    "overviewText": "初始获得100金雀子儿"
+    "overviewText": "初始获得50金雀子儿"
   },
   {
     "id": 10006,
     "name": "珍奇异想·II",
     "effects": "191006",
     "replaceId": "",
-    "desc": "初始额外获得100金雀子儿",
+    "desc": "初始额外获得50金雀子儿",
     "icon": "rouge2_alltalent_1",
     "talentType": 2,
     "talentOrder": 2,
     "typeName": "珍奇异想",
-    "overviewText": "初始获得200金雀子儿"
+    "overviewText": "初始获得100金雀子儿"
   },
   {
     "id": 10007,
     "name": "珍奇异想·III",
     "effects": "191007",
-    "replaceId": "",
-    "desc": "进入新的区域时，获得200金雀子儿",
+    "replaceId": "10008",
+    "desc": "进入新的区域时，获得50金雀子儿",
     "icon": "rouge2_alltalent_1",
     "talentType": 2,
     "talentOrder": 3,
     "typeName": "珍奇异想",
-    "overviewText": "初始获得200金雀子儿|进入新的区域时，获得200金雀子儿"
+    "overviewText": "初始获得100金雀子儿|进入新的区域时，获得50金雀子儿"
   },
   {
     "id": 10008,
     "name": "珍奇异想·IV",
     "effects": "191008",
     "replaceId": "",
-    "desc": "进入新的区域时，额外获得200金雀子儿",
+    "desc": "进入新的区域时，额外获得50金雀子儿",
     "icon": "rouge2_alltalent_1",
     "talentType": 2,
     "talentOrder": 4,
     "typeName": "珍奇异想",
-    "overviewText": "初始获得200金雀子儿|进入新的区域时，获得400金雀子儿"
+    "overviewText": "初始获得100金雀子儿|进入新的区域时，获得100金雀子儿"
   },
   {
     "id": 10009,
     "name": "渐强音变奏·I",
     "effects": "191009",
     "replaceId": "",
-    "desc": "获得1点：力量、反应",
+    "desc": "旅途开始时，力量、反应、奥秘各获得1点",
     "icon": "rouge2_alltalent_6",
     "talentType": 3,
     "talentOrder": 1,
     "typeName": "渐强音变奏 ",
-    "overviewText": "获得1点力量、反应属性"
+    "overviewText": "旅途开始时，力量、反应、奥秘各获得1点"
   },
   {
     "id": 10010,
-    "name": "和弦爆破·I",
+    "name": "舒曼谐振·I",
     "effects": "191010",
-    "replaceId": "",
-    "desc": "旅途开始时，获得1个【重振】",
+    "replaceId": "10011",
+    "desc": "旅途开始时，获得2个【重振】",
     "icon": "rouge2_alltalent_3",
     "talentType": 4,
     "talentOrder": 1,
-    "typeName": "和弦爆破 ",
-    "overviewText": "旅途开始时.获得1个【重振】"
-  },
-  {
-    "id": 10011,
-    "name": "和弦爆破·II",
-    "effects": "191011",
-    "replaceId": "",
-    "desc": "旅途开始时，额外获得1个【重振】",
-    "icon": "rouge2_alltalent_3",
-    "talentType": 4,
-    "talentOrder": 2,
-    "typeName": "和弦爆破 ",
+    "typeName": "舒曼谐振 ",
     "overviewText": "旅途开始时.获得2个【重振】"
   },
   {
-    "id": 10012,
-    "name": "和弦爆破·III",
-    "effects": "191012",
+    "id": 10011,
+    "name": "舒曼谐振·II",
+    "effects": "191011",
     "replaceId": "",
+    "desc": "旅途开始时，额外获得2个【重振】",
+    "icon": "rouge2_alltalent_3",
+    "talentType": 4,
+    "talentOrder": 2,
+    "typeName": "舒曼谐振 ",
+    "overviewText": "旅途开始时.获得4个【重振】"
+  },
+  {
+    "id": 10012,
+    "name": "舒曼谐振·III",
+    "effects": "191012",
+    "replaceId": "10021",
     "desc": "进入新的区域时，获得1个【重振】",
     "icon": "rouge2_alltalent_3",
     "talentType": 4,
     "talentOrder": 3,
-    "typeName": "和弦爆破 ",
-    "overviewText": "旅途开始时，获得2个【重振】|进入新的区域时，获得1个【重振】"
+    "typeName": "舒曼谐振 ",
+    "overviewText": "旅途开始时，获得4个【重振】|进入新的区域时，获得1个【重振】"
   },
   {
     "id": 10013,
     "name": "渐强音变奏·II",
     "effects": "191013",
     "replaceId": "",
-    "desc": "获得1点：奥秘、感知、激情",
+    "desc": "旅途开始时，感知、激情各获得1点",
     "icon": "rouge2_alltalent_6",
     "talentType": 3,
     "talentOrder": 2,
     "typeName": "渐强音变奏 ",
-    "overviewText": "获得1点力量、反应、奥秘、感知、激情属性"
+    "overviewText": "旅途开始时，所有属性各获得1点"
   },
   {
     "id": 10014,
     "name": "渐强音变奏·III",
     "effects": "191014",
     "replaceId": "",
-    "desc": "获得1点：力量、反应、奥秘",
+    "desc": "进入新的区域时，获得1点随机属性",
     "icon": "rouge2_alltalent_6",
     "talentType": 3,
     "talentOrder": 3,
     "typeName": "渐强音变奏 ",
-    "overviewText": "获得2点力量、反应、奥秘属性和1点感知、激情属性"
+    "overviewText": "旅途开始时，所有属性各获得1点|进入新的区域时，获得1点随机属性"
   },
   {
     "id": 10015,
@@ -241,15 +241,15 @@
   },
   {
     "id": 10021,
-    "name": "和弦爆破·IV",
+    "name": "舒曼谐振·IV",
     "effects": "191021",
     "replaceId": "",
     "desc": "进入新的区域时，额外获得1个【重振】",
     "icon": "rouge2_alltalent_3",
     "talentType": 4,
     "talentOrder": 4,
-    "typeName": "和弦爆破 ",
-    "overviewText": "旅途开始时，获得2个【重振】|进入新的区域时，获得2个【重振】"
+    "typeName": "舒曼谐振 ",
+    "overviewText": "旅途开始时，获得4个【重振】|进入新的区域时，获得2个【重振】"
   },
   {
     "id": 2000,

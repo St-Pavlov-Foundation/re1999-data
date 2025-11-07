@@ -8,6 +8,12 @@ Rouge2_MapStoreView.NormalCostFormat = "<color=#D68A31>%s</color>"
 Rouge2_MapStoreView.NotEnoughCostFormat = "<color=#EC6363>%s</color>"
 Rouge2_MapStoreView.WaitRefreshAnim = "WaitRefreshAnim"
 Rouge2_MapStoreView.DealySwitchTime = 0.17
+Rouge2_MapStoreView.GoodsDescIncludeType = {
+	Rouge2_Enum.RelicsDescType.Desc
+}
+Rouge2_MapStoreView.GoodsDescIncludeType2 = {
+	Rouge2_Enum.RelicsDescType.NarrativeDesc
+}
 
 function Rouge2_MapStoreView:onInitView()
 	self._goOther = gohelper.findChild(self.viewGO, "#go_Other")
@@ -22,6 +28,7 @@ function Rouge2_MapStoreView:onInitView()
 	self._goContainer = gohelper.findChild(self.viewGO, "#go_Other/#go_Container")
 	self._scrollGoodsDesc = gohelper.findChildScrollRect(self.viewGO, "#go_Other/#go_Container/#scroll_GoodsDesc")
 	self._txtGoodsDesc = gohelper.findChildText(self.viewGO, "#go_Other/#go_Container/#scroll_GoodsDesc/Viewport/Content/#txt_GoodsDesc")
+	self._txtNarrativeDesc = gohelper.findChildText(self.viewGO, "#go_Other/#go_Container/#scroll_GoodsDesc/Viewport/Content/#txt_NarrativeDesc")
 	self._goNormalBtns = gohelper.findChild(self.viewGO, "#go_Other/#go_Container/#go_NormalBtns")
 	self._btnBuy = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Other/#go_Container/#go_NormalBtns/#btn_Buy")
 	self._btnEnterSteal = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Other/#go_Container/#go_NormalBtns/#btn_EnterSteal", AudioEnum.Rouge2.EnterStealType)
@@ -34,6 +41,9 @@ function Rouge2_MapStoreView:onInitView()
 	self._goStealSucc = gohelper.findChild(self.viewGO, "#go_Other/#go_Container/#go_GoodsBtns/#go_StealSucc")
 	self._goStealFail = gohelper.findChild(self.viewGO, "#go_Other/#go_Container/#go_GoodsBtns/#go_StealFail")
 	self._btnExitSteal = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Other/#go_Container/#go_StealBtns/#btn_ExitSteal")
+	self._goSelectGoods = gohelper.findChild(self.viewGO, "#go_Other/#go_Container/#go_SelectGoods")
+	self._goSelectGoodsRare = gohelper.findChildImage(self.viewGO, "#go_Other/#go_Container/#go_SelectGoods/#image_SelectGoodsRare")
+	self._goSelectGoodsIcon = gohelper.findChildSingleImage(self.viewGO, "#go_Other/#go_Container/#go_SelectGoods/#image_SelectGoodsIcon")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -147,6 +157,10 @@ end
 function Rouge2_MapStoreView:onUpdateParam()
 	Rouge2_MapStoreGoodsListModel.instance:refreshList()
 	self:refresh()
+
+	if self._storeState == Rouge2_MapEnum.StoreState.StealSucc then
+		AudioMgr.instance:trigger(AudioEnum.Rouge2.StealSucc)
+	end
 end
 
 function Rouge2_MapStoreView:refresh()
@@ -214,7 +228,9 @@ function Rouge2_MapStoreView:refreshGoodsDesc()
 
 	local itemId = self._selectGoods.collectionId
 
-	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, itemId, self._txtGoodsDesc)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, itemId, self._txtGoodsDesc, nil, Rouge2_MapStoreView.GoodsDescIncludeType)
+	Rouge2_ItemDescHelper.setItemDescStr(Rouge2_Enum.ItemDataType.Config, itemId, self._txtNarrativeDesc, nil, Rouge2_MapStoreView.GoodsDescIncludeType2)
+	Rouge2_IconHelper.setGameItemIcon(itemId, self._goSelectGoodsIcon)
 end
 
 function Rouge2_MapStoreView:refreshCount()
@@ -299,7 +315,7 @@ function Rouge2_MapStoreView:onClose()
 end
 
 function Rouge2_MapStoreView:onDestroyView()
-	return
+	self._goSelectGoodsIcon:UnLoadImage()
 end
 
 return Rouge2_MapStoreView

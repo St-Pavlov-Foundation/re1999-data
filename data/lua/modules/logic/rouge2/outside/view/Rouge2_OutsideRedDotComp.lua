@@ -23,24 +23,31 @@ function Rouge2_OutsideRedDotComp:intReddotInfo(id, uid, type)
 	self._isDotShow = RedDotModel.instance:isDotShow(self._id, self._uid)
 
 	gohelper.setActive(self.go, self._isDotShow)
-	self:refresh()
 end
 
 function Rouge2_OutsideRedDotComp:refresh()
 	if not self._isDotShow then
-		return
+		return false
 	end
 
 	local isFullInView = self.checkComp:checkIsItemFullInView()
 
 	if isFullInView then
 		self:onItemFullInView()
+
+		return true
 	end
+
+	return false
 end
 
 function Rouge2_OutsideRedDotComp:onItemFullInView()
 	logNormal("移除肉鸽2红点 type: " .. self._type .. " id:" .. self._id .. "uid: " .. self._uid)
 	Rouge2_OutsideController.instance:addShowRedDot(self._type, self._uid)
+
+	self._isDotShow = false
+
+	gohelper.setActive(self.go, self._isDotShow)
 end
 
 return Rouge2_OutsideRedDotComp

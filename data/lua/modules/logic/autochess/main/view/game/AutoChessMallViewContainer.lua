@@ -21,7 +21,7 @@ function AutoChessMallViewContainer:buildTabViews(tabContainerId)
 			true,
 			false,
 			true
-		}, 2807003)
+		}, 3207003)
 
 		self.navigateView:setOverrideClose(self.mallView._overrideClose, self.mallView)
 

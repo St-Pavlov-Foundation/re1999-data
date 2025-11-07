@@ -35,6 +35,8 @@ function Rouge2_AttributeToolBar:init(go)
 	self._btnBackpack = gohelper.findChildButtonWithAudio(self.go, "#go_Root/#go_Backpack/#btn_Backpack", AudioEnum.Rouge2.OpenBag)
 	self._imageBackpack = gohelper.findChildImage(self.go, "#go_Root/#go_Backpack/#btn_Backpack")
 	self._goBackpackReddot = gohelper.findChild(self.go, "#go_Root/#go_Backpack/#go_Reddot")
+	self._goBackpackTips = gohelper.findChild(self.go, "#go_Root/#go_Backpack/tips")
+	self._btnBackpackTips = gohelper.findChildButtonWithAudio(self.go, "#go_Root/#go_Backpack/tips/bubble/#btn_Tips")
 	self._goAttributeContainer = gohelper.findChild(self.go, "#go_Root/#go_AttributeContainer")
 	self._goAttributeList = gohelper.findChild(self.go, "#go_Root/#go_AttributeContainer/#go_AttributeList")
 	self._goAttributeItem = gohelper.findChild(self.go, "#go_Root/#go_AttributeContainer/#go_AttributeList/#go_AttributeItem")
@@ -56,25 +58,34 @@ function Rouge2_AttributeToolBar:init(go)
 	RedDotController.instance:addMultiRedDot(self._goBackpackReddot, reddotList)
 	self:showType2RefreshUI()
 	self:refreshAttrList()
+	self:refreshBackpackTips()
 end
 
 function Rouge2_AttributeToolBar:addEventListeners()
 	self._btnBackpack:AddClickListener(self._btnBackpackOnClick, self)
 	self._btnSearch:AddClickListener(self._btnSearchOnClick, self)
+	self._btnBackpackTips:AddClickListener(self._btnBackpackTipsOnClick, self)
+	self:addEventCb(Rouge2_MapController.instance, Rouge2_MapEvent.onUpdateBagInfo, self._onUpdateBagInfo, self)
+	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateActiveSkillInfo, self._onUpdateActiveSkillInfo, self)
 	self:addEventCb(Rouge2_Controller.instance, Rouge2_Event.OnUpdateAttrInfo, self._onUpdateAttrInfo, self)
 end
 
 function Rouge2_AttributeToolBar:removeEventListeners()
 	self._btnBackpack:RemoveClickListener()
 	self._btnSearch:RemoveClickListener()
+	self._btnBackpackTips:RemoveClickListener()
 end
 
 function Rouge2_AttributeToolBar:_btnBackpackOnClick()
-	Rouge2_ViewHelper.openBackpackTabView(Rouge2_Enum.BagType.Relics)
+	Rouge2_ViewHelper.openBackpackTabView(Rouge2_Enum.BagTabType.Career)
 end
 
 function Rouge2_AttributeToolBar:_btnSearchOnClick()
 	Rouge2_ViewHelper.openAttributeDetailView()
+end
+
+function Rouge2_AttributeToolBar:_btnBackpackTipsOnClick()
+	Rouge2_ViewHelper.openBackpackTabView(Rouge2_Enum.BagTabType.ActiveSkill)
 end
 
 function Rouge2_AttributeToolBar:refreshAttrList()
@@ -147,6 +158,20 @@ end
 
 function Rouge2_AttributeToolBar:_onUpdateAttrInfo()
 	self:refreshAttrList()
+end
+
+function Rouge2_AttributeToolBar:_onUpdateActiveSkillInfo()
+	self:refreshBackpackTips()
+end
+
+function Rouge2_AttributeToolBar:_onUpdateBagInfo()
+	self:refreshBackpackTips()
+end
+
+function Rouge2_AttributeToolBar:refreshBackpackTips()
+	local hasAnyEquipSkill = Rouge2_BackpackController.instance:hasAnyActiveSkillCanEquip()
+
+	gohelper.setActive(self._goBackpackTips, hasAnyEquipSkill)
 end
 
 function Rouge2_AttributeToolBar:onDestroy()

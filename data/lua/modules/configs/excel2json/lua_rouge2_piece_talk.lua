@@ -5,7 +5,8 @@ module("modules.configs.excel2json.lua_rouge2_piece_talk", package.seeall)
 local lua_rouge2_piece_talk = {}
 local fields = {
 	title = 2,
-	exitDesc = 5,
+	picture = 5,
+	exitDesc = 6,
 	id = 1,
 	selectIds = 4,
 	content = 3

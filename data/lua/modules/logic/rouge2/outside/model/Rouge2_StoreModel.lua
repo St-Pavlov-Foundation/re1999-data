@@ -50,8 +50,13 @@ function Rouge2_StoreModel:updateInfo(outsideInfo)
 end
 
 function Rouge2_StoreModel:onBuyGoodsSuccess(goodsInfo, num)
-	self.storeBuyCountDic[goodsInfo.id] = num
+	if self.storeBuyCountDic[goodsInfo.id] then
+		self.storeBuyCountDic[goodsInfo.id] = self.storeBuyCountDic[goodsInfo.id] + num
+	else
+		self.storeBuyCountDic[goodsInfo.id] = num
+	end
 
+	self:checkRedPoint()
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnBuyStoreGoodsSuccess, goodsInfo.id)
 end
 

@@ -35,7 +35,7 @@ end
 
 function Rouge2_CollectionFormulaItem:_onClickItem()
 	if self.type == Rouge2_OutsideEnum.CollectionType.Formula then
-		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnSelectCollectionFormulaItem, self._mo.id)
+		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.OnSelectCollectionFormulaItem, self._mo.itemId)
 	elseif self.type == Rouge2_OutsideEnum.CollectionType.Material then
 		local param = {}
 

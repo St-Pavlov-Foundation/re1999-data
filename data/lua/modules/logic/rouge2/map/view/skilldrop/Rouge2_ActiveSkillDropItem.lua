@@ -4,6 +4,9 @@ module("modules.logic.rouge2.map.view.skilldrop.Rouge2_ActiveSkillDropItem", pac
 
 local Rouge2_ActiveSkillDropItem = class("Rouge2_ActiveSkillDropItem", LuaCompBase)
 
+Rouge2_ActiveSkillDropItem.PercentColor = "#F3A055"
+Rouge2_ActiveSkillDropItem.BracketColor = "#5E7DD9"
+
 function Rouge2_ActiveSkillDropItem:init(go)
 	self.go = go
 	self._simageIcon = gohelper.findChildSingleImage(self.go, "go_Info/image_Icon")
@@ -64,7 +67,7 @@ function Rouge2_ActiveSkillDropItem:refreshUI()
 	Rouge2_IconHelper.setAttributeIcon(self._attributeId, self._imageAttribute)
 	gohelper.setActive(self._goCostList, self._assembleCost > 0)
 	gohelper.CreateNumObjList(self._goCostList, self._goCostItem, self._assembleCost)
-	Rouge2_ItemDescHelper.setItemDescStr(self._dataType, self._dataId, self._txtDesc)
+	Rouge2_ItemDescHelper.setItemDescStr(self._dataType, self._dataId, self._txtDesc, nil, nil, Rouge2_ActiveSkillDropItem.PercentColor, Rouge2_ActiveSkillDropItem.BracketColor)
 	gohelper.setActive(self._btnClick.gameObject, self._viewType == Rouge2_MapEnum.ItemDropViewEnum.Select)
 end
 

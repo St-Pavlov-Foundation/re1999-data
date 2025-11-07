@@ -14,6 +14,7 @@ function Rouge2_BackpackSkillEditListModel:initSort()
 	self:addOtherSort(self._sortFirst, self._sortDefault)
 
 	self._isDrag = false
+	self._dragEndTime = nil
 end
 
 function Rouge2_BackpackSkillEditListModel:initList()
@@ -125,6 +126,14 @@ end
 
 function Rouge2_BackpackSkillEditListModel:setIsDraging(isDrag)
 	self._isDrag = isDrag
+
+	if not self._isDrag then
+		self._dragEndTime = UnityEngine.Time.frameCount
+	end
+end
+
+function Rouge2_BackpackSkillEditListModel:getLastEndDragTime()
+	return self._dragEndTime or 0
 end
 
 Rouge2_BackpackSkillEditListModel.instance = Rouge2_BackpackSkillEditListModel.New()

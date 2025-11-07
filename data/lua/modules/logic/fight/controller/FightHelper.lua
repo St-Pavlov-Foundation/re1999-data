@@ -51,7 +51,7 @@ function FightHelper.getEntityStanceId(fightEntityMO, waveId)
 end
 
 function FightHelper.getEntityStandPos(fightEntityMO, waveId)
-	if fightEntityMO:isVorpalith() then
+	if fightEntityMO:isVorpalith() or fightEntityMO:isVorpalith() then
 		return 0, 0, 0, 1
 	end
 
@@ -4181,6 +4181,52 @@ function FightHelper.getRouge2FunnyTaskCurLevelAndTaskIdAndProgress()
 	end
 
 	return level, lastTaskId, 1
+end
+
+function FightHelper.checkBuffCoHasBuffActId(buffCo, buffActId)
+	if not buffCo then
+		return false
+	end
+
+	local features = buffCo.features
+
+	if string.nilorempty(features) then
+		return false
+	end
+
+	local featureList = FightStrUtil.instance:getSplitString2Cache(features, true)
+
+	if not featureList then
+		return false
+	end
+
+	for _, oneFeature in ipairs(featureList) do
+		if oneFeature[1] == buffActId then
+			return true
+		end
+	end
+
+	return false
+end
+
+function FightHelper.checkBuffIdHasBuffActId(buffId, buffActId)
+	if not buffId then
+		return false
+	end
+
+	local buffCo = lua_skill_buff.configDict[buffId]
+
+	return FightHelper.checkBuffCoHasBuffActId(buffCo, buffActId)
+end
+
+function FightHelper.checkBuffMoHasBuffActId(buffMo, buffActId)
+	if not buffMo then
+		return false
+	end
+
+	local buffCo = buffMo:getCO()
+
+	return FightHelper.checkBuffCoHasBuffActId(buffCo, buffActId)
 end
 
 return FightHelper

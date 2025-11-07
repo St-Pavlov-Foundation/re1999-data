@@ -20001,19 +20001,11 @@
   },
   {
     "id": 116320060,
-    "name": "抢完就跑",
+    "name": "打完就跑",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "若回合结束时不处于该状态，则立刻逃离战场"
-  },
-  {
-    "id": 116320064,
-    "name": "无影无形",
-    "color": 1,
-    "notAddLink": 0,
-    "isSpecialCharacter": 0,
-    "desc": "进入战斗时，自身获得1层【无影无形】，死亡或离场时，赋予其他队友2层【无影无形】"
   },
   {
     "id": 109320212,
@@ -20105,73 +20097,73 @@
   },
   {
     "id": 110320001,
-    "name": "黄色音符",
+    "name": "电能音符",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个黄色音符，为随机1名友方角色施加3层【乐感】。当黄色音符被演奏时，将1张【金色音浪】置入行动区"
+    "desc": "回合开始时，乐谱上每有1个，释放一次【电能变奏曲】；演奏时，将1张【电能变奏曲】置入行动区"
   },
   {
     "id": 110320002,
-    "name": "绿色音符",
+    "name": "升阶音符",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个绿色音符，使随机一张咒语阶次+1。当绿色音符被演奏时，将1张【翡翠歌声】置入行动区"
+    "desc": "回合开始时，乐谱上每有1个，己方行动点+1，咒语上限+1；演奏时，将1张【升阶变奏曲】置入行动区"
   },
   {
     "id": 110320003,
-    "name": "蓝色音符",
+    "name": "仪式音符",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每个蓝色音符【音强】计数+1。当蓝色音符被演奏时，将1张【蔚蓝旋律】置入行动区"
+    "desc": "回合开始时，乐谱上每有1个，【音强】+1，己方全体激情+1；演奏时，将1张【仪式变奏曲】置入行动区"
   },
   {
     "id": 110320004,
     "name": "乐感",
     "color": 1,
-    "notAddLink": 0,
+    "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": "角色使用咒语时，自身每有1种【属性增益】【状态强化】或敌方每有1种【属性削弱】【状态异常】，获得1层乐感。回合开始时，若角色至少拥有15层乐感，进入【心流】状态"
   },
   {
     "id": 110320005,
-    "name": "金色音浪",
+    "name": "电能变奏曲",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "单体攻击，对随机敌人造成精神创伤。对随机友方角色施加3层【乐感】。"
+    "desc": "单体攻击，对敌方造成180%精神创伤，在旅途中可以不断强化"
   },
   {
     "id": 110320006,
-    "name": "翡翠歌声",
+    "name": "升阶变奏曲",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "群体增益，我方角色下一张使用的2/3阶咒语有15%/25%概率额外打出一次。如果未触发额外打出效果，对角色施加1层【升调】"
+    "desc": "群体增益，赋予己方全体【咒语强化Ⅰ】"
   },
   {
     "id": 110320007,
-    "name": "蔚蓝旋律",
+    "name": "仪式变奏曲",
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "群体攻击，对敌方全体造成该音符【音强】倍数的现实创伤。"
+    "desc": "群体攻击，对敌方全体造成300%精神创伤，在旅途中可以不断强化（视为至终的仪式）"
   },
   {
     "id": 110320008,
     "name": "心流",
     "color": 1,
-    "notAddLink": 0,
+    "notAddLink": 1,
     "isSpecialCharacter": 0,
-    "desc": "角色使用咒语后，对随机敌方释放2次【金色音浪】，造成50%伤害且不会施加【乐感】，持续1回合"
+    "desc": "角色使用咒语后，对随机敌方释放2次【电能变奏曲】，造成50%伤害且不会施加【乐感】，持续1回合"
   },
   {
     "id": 110320009,
     "name": "升调",
     "color": 1,
-    "notAddLink": 0,
+    "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": "使用2/3阶咒语时，创伤加成+30%，生效后移除"
   },
@@ -20181,13 +20173,13 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "使用至终的仪式时，乐谱上的【蓝色音符】音强+1"
+    "desc": "每有1点，【仪式变奏曲】额外造成200%精神创伤"
   },
   {
     "id": 110320011,
     "name": "最佳音域",
     "color": 1,
-    "notAddLink": 0,
+    "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": ""
   },
@@ -20195,7 +20187,7 @@
     "id": 110320012,
     "name": "复奏",
     "color": 1,
-    "notAddLink": 0,
+    "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": ""
   },
@@ -20283,17 +20275,17 @@
     "id": 108300101,
     "name": "领奏灵感",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "在战斗中提升最大生命，在旅途中可以不断强化"
   },
   {
     "id": 108300102,
     "name": "子弹时间",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "在战斗中激发反应共鸣器，将进入一个具有特殊效果的回合"
   },
   {
     "id": 108300103,
@@ -20307,57 +20299,169 @@
     "id": 108270000,
     "name": "奥秘束缚",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "可叠加，每有1层，受到【愤怒的吊坠】攻击时，【愤怒的吊坠】额外造成80%己方攻击最高角色对应类型的创伤"
   },
   {
     "id": 108270001,
     "name": "即兴创造",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "单体攻击，造成200%己方攻击最高角色对应类型的创伤，目标每有1层【共振】，额外造成25%对应类型的创伤"
   },
   {
     "id": 108270003,
     "name": "噬人号角",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "对敌方全体造成本源创伤，在旅途中可以不断强化"
   },
   {
     "id": 108270004,
     "name": "愤怒的吊坠",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "单体攻击，造成己方攻击最高角色对应类型的创伤，在旅途中可以不断强化"
   },
   {
     "id": 108270009,
     "name": "共振",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "现实防御-4%，精神防御-4%（上限20层，每层持续时间独立计算）"
   },
   {
     "id": 108270010,
     "name": "反应<id:108270010>",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "持有该效果的咒语会额外释放1次"
   },
   {
     "id": 108270011,
     "name": "奥秘<id:108270011>",
     "color": 0,
-    "notAddLink": 1,
+    "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": ""
+    "desc": "使用持有该效果的咒语后，会额外释放【愤怒的吊坠】"
+  },
+  {
+    "id": 108270012,
+    "name": "途中余兴",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "它们无法对你构成威胁，而乏味的旅途正需要这些兴之所至的调剂品。"
+  },
+  {
+    "id": 108270013,
+    "name": "冲突",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "伪装、引诱、蓄谋已久。如果你毫无准备——现在还来得及考虑后果。"
+  },
+  {
+    "id": 108270014,
+    "name": "恶战",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "视线被利齿汇集，去路被锋刃阻挡。你必须战胜它，战胜未明的歧路……战胜你自己。"
+  },
+  {
+    "id": 108270015,
+    "name": "险象环生",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "于你而言，闭塞的地形绝非命运的馈赠——但对于潜藏其中的敌人而言，则恰好相反。"
+  },
+  {
+    "id": 108270016,
+    "name": "藏宝地",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "珍宝并非藏在床下、藏在地头，而是藏在循循善诱的风里，映入明察秋毫的眼中。"
+  },
+  {
+    "id": 108270017,
+    "name": "休憩处",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "它邀你停留片刻，整理脚步和心绪——愿行色匆匆之间，总有一隅让你得以停下步伐、停下喘息。"
+  },
+  {
+    "id": 108270018,
+    "name": "购物契机",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "精美的收藏可让顺利的坦途平添几分畅快，而灵验的护符则为崎岖的道路化解忧愁。"
+  },
+  {
+    "id": 108270019,
+    "name": "巧匠之手",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "它掌握着使腐朽化为神奇的技艺，又知晓使好的东西更好的诀窍。"
+  },
+  {
+    "id": 108270020,
+    "name": "途中偶遇",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "你踏上预期之外的道路，旅途最迷人之处恰恰在此。带领你来这里的或许是命运吧——也可能是迷路。"
+  },
+  {
+    "id": 108270021,
+    "name": "必经之路",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "你总有一个要去的地方，一件要办的事情。而这里便是你为此不得不途经之地，我们称之为故事的一节。"
+  },
+  {
+    "id": 108270022,
+    "name": "遭遇",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "它们无法对你构成威胁，却仍不屈不挠地尝试——踩痛一枚脚趾也算成功。"
+  },
+  {
+    "id": 108270023,
+    "name": "重振",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "复鸣的音叉，回环的和声，我们的心震颤不息。可使即将倒下的我方角色回复所有状态。"
+  },
+  {
+    "id": 108270024,
+    "name": "身体素质",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "体现力量、反应、奥秘的综合能力，以上3种属性任意提升2点，视为提升1点身体素质"
+  },
+  {
+    "id": 108270025,
+    "name": "电能协奏曲",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对敌方造成90%精神创伤，在旅途中可以不断强化"
   },
   {
     "id": 31000301,
@@ -20910,5 +21014,125 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "攻击+5%，现实、精神防御+10%（最多可叠加10层）"
+  },
+  {
+    "id": 1083200122,
+    "name": "主宰自我",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成250%精神创伤；额外造成【光荣且慷慨】层数*100%的精神创伤"
+  },
+  {
+    "id": 1083200131,
+    "name": "此处无功利",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成100%精神创伤，获得1层【倾力】【流失·倾力】"
+  },
+  {
+    "id": 1083200151,
+    "name": "“头脑”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "头脑囚笼获得了力量"
+  },
+  {
+    "id": 1083200152,
+    "name": "光荣且慷慨",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "头脑囚笼获得了极大强化"
+  },
+  {
+    "id": 1083200161,
+    "name": "献祭",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "驱散1层【光荣且慷慨】，并使头脑囚笼释放1次3阶的【主宰自我】；回合结束若持有，头脑囚笼获得1层【光荣且慷慨】"
+  },
+  {
+    "id": 1083200213,
+    "name": "反击架势",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "抵挡伤害的护盾，受到攻击后若持有该护盾,浪下亡魂可发动反击"
+  },
+  {
+    "id": 1083200211,
+    "name": "多层蜕壳",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自我增强，获得自身最大生命*25%的护盾，持续2回合；持有该护盾的我方受到攻击后，将使用【几丁质剑术】进行反击"
+  },
+  {
+    "id": 1083200221,
+    "name": "刃口劈浪",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对敌方单体造成500%现实创伤；赋予目标3层【异常浸润】，持续2回合"
+  },
+  {
+    "id": 1083200231,
+    "name": "几丁质剑术",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对敌方单体造成100%现实创伤；赋予目标1层【异常浸润】，持续2回合"
+  },
+  {
+    "id": 1083200251,
+    "name": "异常浸润",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时受到自身5%当前生命的本源创伤（效果可叠加，最多叠加10层，持续2回合）"
+  },
+  {
+    "id": 1083200252,
+    "name": "恶性浸润",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时受到自身5%当前生命的本源创伤（效果可叠加，最多叠加10层，不可驱散）"
+  },
+  {
+    "id": 1083200261,
+    "name": "对背叛的训诫",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "临场应变，在【何谓“克己”】和【何谓“忠义”】中选择1个释放；回合结束若持有，赋予己方全体1层【恶性浸润】"
+  },
+  {
+    "id": 1083200271,
+    "name": "何谓“克己”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "何谓“克己”，驱使浪下亡魂使用3阶【多层蜕壳】"
+  },
+  {
+    "id": 1083200272,
+    "name": "何谓“忠义”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "何谓“忠义”，驱使浪下亡魂使用3阶【刃口劈浪】"
+  },
+  {
+    "id": 1083020201,
+    "name": "变硬",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御提升1%(效果可叠加，无法驱散)"
   }
 ]

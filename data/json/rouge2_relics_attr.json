@@ -140,6 +140,31 @@
     "type": 1
   },
   {
+    "id": 101,
+    "flag": "attr101",
+    "type": 2
+  },
+  {
+    "id": 102,
+    "flag": "attr102",
+    "type": 2
+  },
+  {
+    "id": 103,
+    "flag": "attr103",
+    "type": 2
+  },
+  {
+    "id": 104,
+    "flag": "attr104",
+    "type": 2
+  },
+  {
+    "id": 105,
+    "flag": "attr105",
+    "type": 2
+  },
+  {
     "id": 301,
     "flag": "attr301",
     "type": 2

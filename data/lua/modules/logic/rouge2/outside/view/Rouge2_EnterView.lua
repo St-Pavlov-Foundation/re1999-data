@@ -34,6 +34,7 @@ function Rouge2_EnterView:addEvents()
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.BackEnterScene, self.onBackScene, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnBuyStoreGoodsSuccess, self.refreshUI, self)
 end
 
 function Rouge2_EnterView:removeEvents()
@@ -45,6 +46,7 @@ function Rouge2_EnterView:removeEvents()
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.onAlchemyInfoUpdate, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.OnUpdateRougeOutsideInfo, self._onUpdateRougeInfo, self)
 	Rouge2_OutsideController.instance:unregisterCallback(Rouge2_OutsideEvent.BackEnterScene, self.onBackScene, self)
+	self:removeEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnBuyStoreGoodsSuccess, self.refreshUI, self)
 end
 
 function Rouge2_EnterView:_btnendOnClick()
@@ -64,6 +66,7 @@ function Rouge2_EnterView:_btnstartOnClick()
 
 	AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_2_1)
 	self.animator:Play("close", 0, 0)
+	gohelper.setActive(self._golefttop, false)
 	Rouge2_Model.instance:setCurActId(self.actId)
 	Rouge2_OutsideController.instance:registerCallback(Rouge2_OutsideEvent.SceneSwitchFinish, self.onSceneSwitchFinish, self)
 	Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, Rouge2_OutsideEnum.SceneIndex.MainScene)
@@ -86,6 +89,7 @@ end
 function Rouge2_EnterView:onBackScene(sceneIndex)
 	if sceneIndex == Rouge2_OutsideEnum.SceneIndex.EnterScene then
 		self.animator:Play("open", 0, 0)
+		gohelper.setActive(self._golefttop, true)
 	end
 end
 
@@ -108,10 +112,12 @@ function Rouge2_EnterView:onOpen()
 
 	if self.viewParam and self.viewParam.openMain == true then
 		self.animator:Play("close", 0, 0)
+		gohelper.setActive(self._golefttop, false)
 		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.BackEnterScene, Rouge2_OutsideEnum.SceneIndex.MainScene)
 	else
 		AudioMgr.instance:trigger(AudioEnum.Rouge2.play_ui_dungeon3_2_start_1)
 		self.animator:Play("open", 0, 0)
+		gohelper.setActive(self._golefttop, true)
 		Rouge2_OutsideController.instance:dispatchEvent(Rouge2_OutsideEvent.SceneSwitch, Rouge2_OutsideEnum.SceneIndex.EnterScene)
 	end
 
@@ -157,6 +163,11 @@ end
 function Rouge2_EnterView:refreshUI()
 	local costId = CurrencyEnum.CurrencyType.V3a2Rouge
 	local currencyMo = CurrencyModel.instance:getCurrency(costId)
+
+	if currencyMo == nil then
+		return
+	end
+
 	local count = currencyMo.quantity or 0
 
 	self._txtRewardNum.text = tostring(count)
@@ -186,6 +197,7 @@ function Rouge2_EnterView:_end()
 end
 
 function Rouge2_EnterView:_endYesCallback()
+	Rouge2_StatController.instance:setReset()
 	Rouge2_Rpc.instance:sendRouge2AbortRequest(self._onReceiveEndReply, self)
 end
 

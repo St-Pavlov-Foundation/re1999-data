@@ -3,24 +3,32 @@
     "id": 111,
     "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
     "simageMapPos": "-371#253",
-    "startPos": "-531#-50"
+    "startPos": "-531#-50",
+    "startDesc": "出发：完成大人的命令",
+    "confirmDesc": "3#你还可以在这里逗留一会儿，不过大人们不会乐意等待太久|4#你还可以在这里逗留一会儿，不过大人们不会乐意等待太久"
   },
   {
     "id": 121,
     "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
     "simageMapPos": "-700#50",
-    "startPos": "-509#116"
+    "startPos": "-509#116",
+    "startDesc": "出发：寻找不协和音的源头",
+    "confirmDesc": "2#这股不协和音还在回荡，但谁也没法保证，它会一直等着你|3#这股不协和音还在回荡，但谁也没法保证，它会一直等着你"
   },
   {
     "id": 131,
     "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
     "simageMapPos": "-510#234",
-    "startPos": "98#-110"
+    "startPos": "98#-110",
+    "startDesc": "出发：作为重塑之手的一员",
+    "confirmDesc": "2#你们的交易对象，很愿意在仪式前与你多聊会天|3#你们的交易对象，很愿意在仪式前与你多聊会天"
   },
   {
     "id": 141,
     "mapRes": "singlebg/rouge2/map/rouge2_map1.png#singlebg/rouge2/map/rouge2_map2.png",
     "simageMapPos": "-580#0",
-    "startPos": "-263#102"
+    "startPos": "-263#102",
+    "startDesc": "",
+    "confirmDesc": ""
   }
 ]

@@ -63,6 +63,8 @@ function Rouge2_CareerHandBookTabItem:_editableInitView()
 
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnLevelUpAnimStart, self.onLevelUpAnimStart, self)
 	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnLevelUpAnimFinish, self.onLevelUpAnimFinish, self)
+
+	self._imageIcon = gohelper.findChildImage(self.viewGO, "#go_Selected/#image_Icon")
 end
 
 function Rouge2_CareerHandBookTabItem:_editableAddEvents()
@@ -89,6 +91,7 @@ function Rouge2_CareerHandBookTabItem:refreshUI()
 	self._txtUnSelectLevel.text = tostring(level)
 	self._txtStageName.text = config.name
 
+	Rouge2_IconHelper.setCareerIcon(config.id, self._imageIcon)
 	self:onSelect(false)
 end
 

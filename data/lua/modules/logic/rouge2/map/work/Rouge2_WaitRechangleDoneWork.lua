@@ -15,7 +15,19 @@ function Rouge2_WaitRechangleDoneWork:onStart()
 		return
 	end
 
+	if Rouge2_MapModel.instance:checkManualCloseHeroGroupView() then
+		self:onDone(true)
+
+		return
+	end
+
 	if Rouge2_MapModel.instance:isInteractiving() then
+		self:onDone(true)
+
+		return
+	end
+
+	if Rouge2_MapModel.instance:needPlayMoveToEndAnim() then
 		self:onDone(true)
 
 		return

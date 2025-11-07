@@ -19,6 +19,7 @@ function Rouge2_MapViewContainer:buildViews()
 	table.insert(views, Rouge2_MapVoiceView.New())
 	table.insert(views, Rouge2_MapWeatherView.New())
 	table.insert(views, Rouge2_MapBoxView.New())
+	table.insert(views, Rouge2_MapGuideView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_LeftTop"))
 
 	return views
@@ -28,10 +29,10 @@ function Rouge2_MapViewContainer:buildTabViews(tabContainerId)
 	self.navigateView = NavigateButtonsView.New({
 		true,
 		false,
-		false
+		true
 	})
 
-	self.navigateView:setHelpId(HelpEnum.HelpId.RougeMapViewHelp)
+	self.navigateView:setOverrideHelp(self.overrideHelpBtn, self)
 	self.navigateView:setOverrideClose(self._overrideClose, self)
 
 	return {
@@ -42,6 +43,18 @@ end
 function Rouge2_MapViewContainer:_overrideClose()
 	Rouge2_MapHelper.backToMainScene()
 	Rouge2_StatController.instance:statEnd(Rouge2_StatController.EndResult.Close)
+end
+
+function Rouge2_MapViewContainer:overrideHelpBtn()
+	if Rouge2_MapModel.instance:isNormalLayer() then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.NormalLayer)
+	elseif Rouge2_MapModel.instance:isMiddle() then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.MiddleLayer)
+	elseif Rouge2_MapModel.instance:isPathSelect() then
+		Rouge2_Controller.instance:openTechniqueView(Rouge2_MapEnum.TechniqueId.PathSelectLayer)
+	else
+		logError("肉鸽打开指引图失败!!!")
+	end
 end
 
 return Rouge2_MapViewContainer

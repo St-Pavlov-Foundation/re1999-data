@@ -12,9 +12,15 @@ function Rouge2_Model:reInit()
 	self._rougeInfo = nil
 	self._rougeResult = nil
 	self._curActId = nil
+	self._isFirstGetInfo = false
+end
+
+function Rouge2_Model:isFirstGetInfo()
+	return self._isFirstGetInfo
 end
 
 function Rouge2_Model:updateRougeInfo(info)
+	self._isFirstGetInfo = true
 	self._rougeInfo = self._rougeInfo or Rouge2_InfoMO.New()
 
 	self._rougeInfo:init(info)
