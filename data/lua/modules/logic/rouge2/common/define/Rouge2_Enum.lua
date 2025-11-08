@@ -164,7 +164,7 @@ Rouge2_Enum.BagTabTypeNameEn = {
 	[Rouge2_Enum.BagTabType.Career] = "Character Profile",
 	[Rouge2_Enum.BagTabType.ActiveSkill] = "Resonator",
 	[Rouge2_Enum.BagTabType.Relics] = "Artefacts",
-	[Rouge2_Enum.BagTabType.Buff] = "Resonator"
+	[Rouge2_Enum.BagTabType.Buff] = "Harmonic"
 }
 Rouge2_Enum.AttributeToolType = {
 	Default = 1,

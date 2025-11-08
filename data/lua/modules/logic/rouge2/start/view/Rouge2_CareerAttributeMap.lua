@@ -116,7 +116,7 @@ function Rouge2_CareerAttributeMap:_config2GetData(careerId, params)
 end
 
 function Rouge2_CareerAttributeMap:_server2GetData(careerId, params)
-	return Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	return Rouge2_Model.instance:getHeroAttrInfoList()
 end
 
 function Rouge2_CareerAttributeMap:_custom2GetData(careerId, params)

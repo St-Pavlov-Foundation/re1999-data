@@ -8,15 +8,16 @@ Rouge2_MapUnlockHelper.UnlockType = {
 	FinishEntrust = 11,
 	LessThanAttr = 18,
 	PossessRelicsNum = 13,
-	PossessAttr = 5,
+	PossessCoin = 8,
 	SelectChoiceNum = 34,
+	NotPossessItemAnd = 15,
 	PossessItemAnd = 1,
 	PossessItemOr = 2,
 	PossessRevival = 9,
 	CurEntrustNum = 12,
 	LevelUpRelicsNum = 33,
 	SelectPieceChoice = 10001,
-	PossessCoin = 8,
+	PossessAttr = 5,
 	ActiveOutGenius = 7,
 	FinishEvent = 4,
 	UnselectChoice = 17,
@@ -126,6 +127,7 @@ function Rouge2_MapUnlockHelper._initHandle()
 		[Rouge2_MapUnlockHelper.UnlockType.FinishEntrust] = Rouge2_MapUnlockHelper._checkFinishEntrust,
 		[Rouge2_MapUnlockHelper.UnlockType.CurEntrustNum] = Rouge2_MapUnlockHelper._checkCurEntrustNum,
 		[Rouge2_MapUnlockHelper.UnlockType.PossessRelicsNum] = Rouge2_MapUnlockHelper._checkPossessRelicsNum,
+		[Rouge2_MapUnlockHelper.UnlockType.NotPossessItemAnd] = Rouge2_MapUnlockHelper._checkNotPossessItemAnd,
 		[Rouge2_MapUnlockHelper.UnlockType.UnselectChoice] = Rouge2_MapUnlockHelper._checkUnselectChoice,
 		[Rouge2_MapUnlockHelper.UnlockType.LessThanAttr] = Rouge2_MapUnlockHelper._checkLessThanAttr,
 		[Rouge2_MapUnlockHelper.UnlockType.LevelUpRelicsNum] = Rouge2_MapUnlockHelper._checkLevelUpRelicsNum,
@@ -150,6 +152,7 @@ function Rouge2_MapUnlockHelper._initGetTipHandle()
 		[Rouge2_MapUnlockHelper.UnlockType.FinishEntrust] = Rouge2_MapUnlockHelper._getFinishEntrustTip,
 		[Rouge2_MapUnlockHelper.UnlockType.CurEntrustNum] = Rouge2_MapUnlockHelper._noParamTips,
 		[Rouge2_MapUnlockHelper.UnlockType.PossessRelicsNum] = Rouge2_MapUnlockHelper._getPossessRelicsNumTip,
+		[Rouge2_MapUnlockHelper.UnlockType.NotPossessItemAnd] = Rouge2_MapUnlockHelper._getPossessItemTip,
 		[Rouge2_MapUnlockHelper.UnlockType.UnselectChoice] = Rouge2_MapUnlockHelper._getUnselectChoiceTips,
 		[Rouge2_MapUnlockHelper.UnlockType.LessThanAttr] = Rouge2_MapUnlockHelper._getPossessAttrTip,
 		[Rouge2_MapUnlockHelper.UnlockType.LevelUpRelicsNum] = Rouge2_MapUnlockHelper._getDefaultTips,
@@ -265,6 +268,10 @@ function Rouge2_MapUnlockHelper._checkPossessRelicsNum(unlockParam)
 	local curItemNum = itemList and #itemList or 0
 
 	return itemNum <= curItemNum
+end
+
+function Rouge2_MapUnlockHelper._checkNotPossessItemAnd(unlockParam)
+	return not Rouge2_MapUnlockHelper._checkPossessItemAnd(unlockParam)
 end
 
 function Rouge2_MapUnlockHelper._checkUnselectChoice(choiceId)

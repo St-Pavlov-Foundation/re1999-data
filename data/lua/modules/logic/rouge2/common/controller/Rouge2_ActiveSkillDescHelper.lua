@@ -47,7 +47,7 @@ end
 
 function Rouge2_ActiveSkillDescHelper._getAttrMap()
 	local attrMap = {}
-	local attrList = Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	local attrList = Rouge2_Model.instance:getHeroAttrInfoList()
 
 	for _, attrMo in ipairs(attrList) do
 		local attrId = attrMo:getId()

@@ -154,7 +154,7 @@ end
 
 function Rouge2_BackpackHelper.getItemSplitTypeList()
 	local attrIdList = {}
-	local attrInfoList = Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	local attrInfoList = Rouge2_Model.instance:getHeroAttrInfoList()
 
 	if attrInfoList then
 		for _, attrInfo in ipairs(attrInfoList) do

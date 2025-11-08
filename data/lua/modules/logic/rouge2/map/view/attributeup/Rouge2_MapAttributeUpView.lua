@@ -200,7 +200,7 @@ function Rouge2_MapAttributeUpView:initInfo()
 end
 
 function Rouge2_MapAttributeUpView:initCustomAttrList()
-	local curAttrList = Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	local curAttrList = Rouge2_Model.instance:getHeroAttrInfoList()
 
 	self._customAttrList = {}
 	self._customAttrMap = {}

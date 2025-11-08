@@ -89,7 +89,7 @@ function Rouge2_AttributeToolBar:_btnBackpackTipsOnClick()
 end
 
 function Rouge2_AttributeToolBar:refreshAttrList()
-	local attributeList = Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr) or {}
+	local attributeList = Rouge2_Model.instance:getHeroAttrInfoList() or {}
 
 	gohelper.CreateObjList(self, self._refreshSingleAttribute, attributeList, self._goAttributeList, self._goAttributeItem, Rouge2_AttributeToolBarItem)
 end

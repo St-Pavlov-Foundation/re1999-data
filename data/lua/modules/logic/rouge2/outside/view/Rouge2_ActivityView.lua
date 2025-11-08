@@ -94,7 +94,7 @@ function Rouge2_ActivityView:onUpdateParam()
 end
 
 function Rouge2_ActivityView:onOpen()
-	local actId = self.viewParam.actId
+	local actId = Rouge2_Model.instance:getCurActId()
 
 	self.actId = actId
 

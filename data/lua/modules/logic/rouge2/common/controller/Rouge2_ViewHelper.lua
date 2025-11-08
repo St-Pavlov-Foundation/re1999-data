@@ -73,7 +73,7 @@ end
 
 function Rouge2_ViewHelper.openAttributeDetailView(careerId, attrInfoList)
 	careerId = careerId or Rouge2_Model.instance:getCareerId()
-	attrInfoList = attrInfoList or Rouge2_Model.instance:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	attrInfoList = attrInfoList or Rouge2_Model.instance:getHeroAttrInfoList()
 
 	local params = {
 		careerId = careerId,

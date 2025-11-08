@@ -184,7 +184,7 @@ end
 
 function Rouge2_ReviewView:onResetPos()
 	if self._tweenId then
-		ZPorj.TweenHelper.KillById(self._tweenId)
+		ZProj.TweenHelper.KillById(self._tweenId)
 
 		self._tweenId = nil
 	end
@@ -211,7 +211,7 @@ end
 
 function Rouge2_ReviewView:onClose()
 	if self._tweenId then
-		ZPorj.TweenHelper.KillById(self._tweenId)
+		ZProj.TweenHelper.KillById(self._tweenId)
 
 		self._tweenId = nil
 	end

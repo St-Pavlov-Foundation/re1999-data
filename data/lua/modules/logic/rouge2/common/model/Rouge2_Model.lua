@@ -213,6 +213,19 @@ function Rouge2_Model:getAttrInfoList(attrType)
 	return attrGroupInfo and attrGroupInfo:getAttrInfoList(attrType)
 end
 
+function Rouge2_Model:getHeroAttrInfoList()
+	local attrIdList = string.splitToNumber(lua_rouge2_const.configDict[Rouge2_MapEnum.ConstKey.HeroAttrIds].value, "#")
+	local attrInfoList = {}
+
+	for _, attrId in ipairs(attrIdList) do
+		local attrInfo = self:getAttrMo(attrId)
+
+		table.insert(attrInfoList, attrInfo)
+	end
+
+	return attrInfoList
+end
+
 function Rouge2_Model:getAttrMo(attrId)
 	local rougeInfo = self:getRougeInfo()
 	local attrGroupInfo = rougeInfo and rougeInfo:getAttrGroupInfo()
@@ -243,7 +256,7 @@ end
 
 function Rouge2_Model:hasAnyCareerAttrUpdate()
 	local updateAttrMap = self:getUpdateAttrMap()
-	local curAttrList = self:getAttrInfoList(Rouge2_MapEnum.AttrType.CareerAttr)
+	local curAttrList = self:getHeroAttrInfoList()
 
 	if not curAttrList then
 		return
