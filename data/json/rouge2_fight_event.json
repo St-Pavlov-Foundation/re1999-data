@@ -1345,7 +1345,7 @@
     "dieTwice": 1,
     "failInteractive": "",
     "isChangeScene": 0,
-    "monsterMask": "6502011",
+    "monsterMask": "650201",
     "fightDesc": "",
     "eliteFightDesc": "只有1个是真身，不过是哪个呢？",
     "achievement": "",
@@ -1373,7 +1373,7 @@
     "isChangeScene": 0,
     "monsterMask": "310601",
     "fightDesc": "",
-    "eliteFightDesc": "释放至终的仪式的频率会逐渐加快，先卸其”装备“",
+    "eliteFightDesc": "释放至终的仪式的频率会逐渐加快，先卸其“装备”",
     "achievement": "",
     "fightTaskId": ""
   },

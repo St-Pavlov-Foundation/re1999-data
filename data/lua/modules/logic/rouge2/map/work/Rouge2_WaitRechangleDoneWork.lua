@@ -72,7 +72,7 @@ function Rouge2_WaitRechangleDoneWork:continueFight()
 	local chapterId, episodeId = self:_getContinueFightEpisodeId()
 
 	DungeonFightController.instance:enterFight(chapterId, episodeId)
-	ViewMgr.instance:registerCallback(ViewEvent.OnOpenViewFinish, self.onOpenViewFinish, self)
+	self:onDone(true)
 end
 
 function Rouge2_WaitRechangleDoneWork:_getContinueFightEpisodeId()
@@ -115,43 +115,18 @@ function Rouge2_WaitRechangleDoneWork:_getNodeFightEpisodeId()
 	end
 end
 
-function Rouge2_WaitRechangleDoneWork:onOpenViewFinish(viewName)
-	if viewName ~= ViewName.Rouge2_HeroGroupFightView then
-		return
-	end
-
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenViewFinish, self.onOpenViewFinish, self)
-
-	local fightParam = FightModel.instance:getFightParam()
-
-	fightParam.isReplay = false
-	fightParam.multiplication = 1
-
-	DungeonFightController.instance:sendStartDungeonRequest(fightParam.chapterId, fightParam.episodeId, fightParam, 1)
-	self:onDone(true)
-end
-
 function Rouge2_WaitRechangleDoneWork:endRouge()
+	DungeonModel.instance.curSendEpisodeId = nil
+
 	Rouge2_Rpc.instance:sendRouge2AbortRequest(self._onReceiveEndReply, self)
 end
 
 function Rouge2_WaitRechangleDoneWork:_onReceiveEndReply()
-	ViewMgr.instance:registerCallback(ViewEvent.BeforeOpenView, self.onBeforeOpenView, self)
 	Rouge2_MapHelper.backToMainScene()
 end
 
-function Rouge2_WaitRechangleDoneWork:onBeforeOpenView(viewName)
-	if viewName ~= ViewName.Rouge2_EnterView then
-		return
-	end
-
-	ViewMgr.instance:unregisterCallback(ViewEvent.BeforeOpenView, self.onBeforeOpenView, self)
-	Rouge2_Controller.instance:startEndFlow()
-end
-
 function Rouge2_WaitRechangleDoneWork:clearWork()
-	ViewMgr.instance:unregisterCallback(ViewEvent.BeforeOpenView, self.onBeforeOpenView, self)
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenViewFinish, self.onOpenViewFinish, self)
+	return
 end
 
 return Rouge2_WaitRechangleDoneWork

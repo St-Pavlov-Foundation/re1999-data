@@ -115,11 +115,15 @@ end
 
 function MainHeroView:_onLoadingCloseView(viewName)
 	if viewName == ViewName.LoadingView then
+		local isOpenMainThumbnailView = ViewMgr.instance:isOpen(ViewName.MainThumbnailView)
+
 		if self._canvasGroup then
 			self._canvasGroup.alpha = 1
 			self._canvasGroup = nil
 
-			self._animator:Play("mainview_in", 0, 0)
+			if not isOpenMainThumbnailView then
+				self._animator:Play("mainview_in", 0, 0)
+			end
 		end
 
 		self:_checkPlayGreetingVoices()
@@ -560,7 +564,9 @@ function MainHeroView:_checkPlayGreetingVoices()
 		return
 	end
 
-	if self._needPlayGreeting and not ViewMgr.instance:isOpen(ViewName.LoadingView) then
+	local isOpenMainThumbnailView = ViewMgr.instance:isOpen(ViewName.MainThumbnailView)
+
+	if self._needPlayGreeting and not ViewMgr.instance:isOpen(ViewName.LoadingView) and not isOpenMainThumbnailView then
 		self:_playGreetingVoices()
 	end
 end

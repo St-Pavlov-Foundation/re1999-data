@@ -69,7 +69,7 @@ function Rouge2_MapEntrustView:onPopViewDone()
 end
 
 function Rouge2_MapEntrustView:tryShowFinishEntrustEffect()
-	if not self.isEntrustNewFinish then
+	if not self.isEntrustNewFinish or self.closed then
 		return
 	end
 
@@ -106,6 +106,7 @@ function Rouge2_MapEntrustView:_editableInitView()
 	self._animator = ZProj.ProjAnimatorPlayer.Get(self._goEntrustContainer)
 	self._canvasgroup = gohelper.onceAddComponent(self._goEntrustContainer, gohelper.Type_CanvasGroup)
 	self.preHadEntrust = false
+	self.closed = false
 end
 
 function Rouge2_MapEntrustView:onOpenFinish()
@@ -204,11 +205,16 @@ function Rouge2_MapEntrustView:_onOpenEntrustAnimDone()
 end
 
 function Rouge2_MapEntrustView:_lock(lock)
+	if not self._canvasgroup then
+		return
+	end
+
 	self._canvasgroup.blocksRaycasts = not lock
 end
 
 function Rouge2_MapEntrustView:onClose()
-	self.closing = nil
+	self.closed = true
+	self._canvasgroup = nil
 
 	TaskDispatcher.cancelTask(self.tryShowEntrust, self)
 end

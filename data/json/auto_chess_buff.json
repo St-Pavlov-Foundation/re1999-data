@@ -698,7 +698,7 @@
     "triggerPoint": 0,
     "effect": "Barrier",
     "type": 1002,
-    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "cover": "SingleLayerLongestDuration",
     "durationDeduction": 100,
     "buffeffectID": 40002,
     "downline": false

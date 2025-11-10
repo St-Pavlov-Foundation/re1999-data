@@ -153,26 +153,6 @@ function Rouge2_Controller:clearAllData()
 	Rouge2_MapModel.instance:setManualCloseHeroGroupView(false)
 end
 
-function Rouge2_Controller:showRechangeMessageBox()
-	if not Rouge2_Model.instance:inRouge() then
-		return false
-	end
-
-	if not self:checkNeedContinueFight() then
-		return false
-	end
-
-	local chapterId, episodeId = self:_getContinueFightEpisodeId()
-
-	if not chapterId or not episodeId or chapterId == 0 or episodeId == 0 then
-		return
-	end
-
-	MessageBoxController.instance:showMsgBoxAndSetBtn(MessageBoxIdDefine.Rouge2FightFailConfirm, MsgBoxEnum.BoxType.Yes_No, luaLang("rouge2_continue_fight"), "RE CHALLENGE", luaLang("rouge2_abort_fight"), "QUIT", self.continueFight, self.tryEnd, nil, self, self, nil)
-
-	return true
-end
-
 local ViewParam = {}
 
 function Rouge2_Controller:openTechniqueView(techniqueId)

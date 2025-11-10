@@ -410,8 +410,8 @@
     "type": 1,
     "nameEn": "",
     "desc": "简而言之，你迷路了，城市中的道路并非方正笔直，知道同胞的方向后还有无数墙壁挡在你们之间。\n你可以试着绕过他们，但这也许会让你远离目的地。",
-    "image": "rouge_story_cg_3_1",
-    "fullImage": "rouge_story_cg_3",
+    "image": "rouge_story_cg_2_1",
+    "fullImage": "rouge_story_cg_2",
     "eventId": 1002020,
     "eventAttribute": ""
   },

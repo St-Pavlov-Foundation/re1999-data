@@ -603,7 +603,7 @@
     "type": "active",
     "passiveChessSkills": "32200002",
     "activeChessSkill": "",
-    "abilities": "AddBuffCursor#1002#1#1",
+    "abilities": "AddBuffCursor#7006#1#1",
     "skillaction": "jump",
     "useeffect": 0,
     "skillIndex": 0,

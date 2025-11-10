@@ -28,8 +28,28 @@ function ExitUdimoSceneHelper._resumeStoreView()
 	end
 end
 
+function ExitUdimoSceneHelper._onOpenViewFinish(viewName)
+	if viewName == ViewName.MainView then
+		ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+
+		if ExitUdimoSceneHelper._waitMainViewCb then
+			ExitUdimoSceneHelper._waitMainViewCb()
+		end
+
+		ExitUdimoSceneHelper._waitMainViewCb = nil
+	end
+end
+
 function ExitUdimoSceneHelper._resumeMainThumbnailView()
-	MainController.instance:openMainThumbnailView()
+	local isOpenMainViewFinish = ViewMgr.instance:isOpenFinish(ViewName.MainView)
+
+	if isOpenMainViewFinish then
+		MainController.instance:openMainThumbnailView()
+	else
+		ExitUdimoSceneHelper._waitMainViewCb = ExitUdimoSceneHelper._resumeMainThumbnailView
+
+		ViewMgr.instance:registerCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+	end
 end
 
 function ExitUdimoSceneHelper._resumeDungeonView()
@@ -37,15 +57,31 @@ function ExitUdimoSceneHelper._resumeDungeonView()
 end
 
 function ExitUdimoSceneHelper._resumeSignInView()
-	ExitUdimoSceneHelper._resumeMainThumbnailView()
-	SignInController.instance:openSignInDetailView({
-		isBirthday = false
-	})
+	local isOpenMainViewFinish = ViewMgr.instance:isOpenFinish(ViewName.MainView)
+
+	if isOpenMainViewFinish then
+		MainController.instance:openMainThumbnailView()
+		SignInController.instance:openSignInDetailView({
+			isBirthday = false
+		})
+	else
+		ExitUdimoSceneHelper._waitMainViewCb = ExitUdimoSceneHelper._resumeSignInView
+
+		ViewMgr.instance:registerCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+	end
 end
 
 function ExitUdimoSceneHelper._resumeSettingsView()
-	ExitUdimoSceneHelper._resumeMainThumbnailView()
-	SettingsController.instance:openView()
+	local isOpenMainViewFinish = ViewMgr.instance:isOpenFinish(ViewName.MainView)
+
+	if isOpenMainViewFinish then
+		MainController.instance:openMainThumbnailView()
+		SettingsController.instance:openView()
+	else
+		ExitUdimoSceneHelper._waitMainViewCb = ExitUdimoSceneHelper._resumeSettingsView
+
+		ViewMgr.instance:registerCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+	end
 end
 
 function ExitUdimoSceneHelper._resumeNoticeView()
@@ -55,8 +91,16 @@ function ExitUdimoSceneHelper._resumeNoticeView()
 		return
 	end
 
-	ExitUdimoSceneHelper._resumeMainThumbnailView()
-	NoticeController.instance:openNoticeView()
+	local isOpenMainViewFinish = ViewMgr.instance:isOpenFinish(ViewName.MainView)
+
+	if isOpenMainViewFinish then
+		MainController.instance:openMainThumbnailView()
+		NoticeController.instance:openNoticeView()
+	else
+		ExitUdimoSceneHelper._waitMainViewCb = ExitUdimoSceneHelper._resumeNoticeView
+
+		ViewMgr.instance:registerCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+	end
 end
 
 function ExitUdimoSceneHelper._resumePlayerView()
@@ -102,6 +146,10 @@ ExitUdimoSceneHelper.ResumeViewHandlerFuncDict = {
 }
 
 function ExitUdimoSceneHelper.resumeViewOnExitScene()
+	ExitUdimoSceneHelper._waitMainViewCb = nil
+
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenViewFinish, ExitUdimoSceneHelper._onOpenViewFinish)
+
 	local viewName = UdimoModel.instance:getResumeViewName()
 
 	if string.nilorempty(viewName) then

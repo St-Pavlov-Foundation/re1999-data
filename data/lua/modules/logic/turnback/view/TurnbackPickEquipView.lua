@@ -47,7 +47,12 @@ end
 
 function TurnbackPickEquipView:onOpen()
 	self._swapCo = TurnbackPickEquipListModel.instance:getSwapItemCo()
+	self._itemCo = ItemConfig.instance:getItemConfig(self._swapCo[1], self._swapCo[2])
 
+	local currencyCo = CurrencyConfig.instance:getCurrencyCo(self._swapCo[2])
+	local currencyname = currencyCo.icon
+
+	UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconequip, currencyname .. "_1")
 	self:refreshSelectCount()
 end
 
@@ -66,9 +71,8 @@ function TurnbackPickEquipView:refreshSelectCount()
 	gohelper.setActive(self._txtnum.gameObject, not allLimit)
 
 	if allLimit then
-		local co = ItemConfig.instance:getItemConfig(self._swapCo[1], self._swapCo[2])
 		local param1 = self._swapCo[3]
-		local param2 = co.name
+		local param2 = self._itemCo.name
 		local text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("p_turnback3_equipchooseview_txt6"), param1, param2)
 
 		self._txtTips.text = allLimit and text or luaLang("p_turnback3_equipchooseview_txt7")

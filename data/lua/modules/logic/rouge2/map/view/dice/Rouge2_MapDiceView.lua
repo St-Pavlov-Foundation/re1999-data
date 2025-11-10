@@ -121,6 +121,7 @@ function Rouge2_MapDiceView:_getOrCreateFixItem(index)
 		fixItem.imageAttrIcon = gohelper.findChildImage(fixItem.go, "image_AttrIcon")
 		fixItem.goFlyEffect = gohelper.findChild(fixItem.go, "txt_FixValue/#go_flyitem")
 		fixItem.fixValue = 0
+		fixItem.done = false
 		self._fixItemTab[index] = fixItem
 	end
 

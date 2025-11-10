@@ -202,9 +202,10 @@ end
 function Rouge2_MapDiceAnimView:playDiceResultFlow(diceAnimDuration)
 	self:destroyFlow()
 
+	diceAnimDuration = diceAnimDuration or DiceAnimDuration
 	self._flow = FlowSequence.New()
 
-	self._flow:addWork(WorkWaitSeconds.New(diceAnimDuration or DiceAnimDuration))
+	self._flow:addWork(WorkWaitSeconds.New(diceAnimDuration))
 	self._flow:addWork(FunctionWork.New(self._showMiddleValue, self))
 	self._flow:addWork(TweenWork.New({
 		from = 0,
@@ -236,7 +237,7 @@ function Rouge2_MapDiceAnimView:buildFixValueMoveFlow()
 		for i, fixItem in ipairs(fixItemList) do
 			local fixValue = fixItem.fixValue or 0
 
-			if fixValue ~= 0 then
+			if fixValue ~= 0 and not fixItem.done then
 				local oneFixFlow = self:buildOneFixValueMoveFlow(i, fixItem)
 
 				moveFlow:addWork(oneFixFlow)
@@ -307,6 +308,8 @@ function Rouge2_MapDiceAnimView:_updateFixValue(fixItem)
 	self._txtMiddle.text = self._totalDicePoint
 
 	gohelper.setActive(self._txtMiddle.gameObject, true)
+
+	fixItem.done = true
 end
 
 function Rouge2_MapDiceAnimView:playFinishAnim()

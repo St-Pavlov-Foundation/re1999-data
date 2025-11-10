@@ -98,7 +98,6 @@ function AutoChessEntity:setData(data, warZone, pos)
 	self.warZone = warZone
 	self.index = pos
 	self.teamType = self.data.teamType
-	self.config = AutoChessConfig.instance:getChessCfgById(self.data.id, self.data.star)
 	self.skillIds = {}
 
 	if not string.nilorempty(self.config.skillIds) then
@@ -145,22 +144,7 @@ function AutoChessEntity:initChessData(data)
 	self.data = data
 	self.data.battle = tonumber(self.data.battle)
 	self.data.hp = tonumber(self.data.hp)
-end
-
-function AutoChessEntity:updateChessData(chess)
-	self.data.id = chess.id
-	self.data.uid = chess.uid
-	self.data.star = chess.star
-	self.data.exp = chess.exp
-	self.data.maxExpLimit = chess.maxExpLimit
-	self.data.status = chess.status
-	self.data.hp = tonumber(chess.hp)
-	self.data.battle = tonumb
-
-	er(chess.battle)
-
-	self.data.skillContainer = chess.skillContainer
-	self.data.buffContainer = chess.buffContainer
+	self.config = AutoChessConfig.instance:getChessCfgById(data.id, data.star)
 end
 
 function AutoChessEntity:move(index)
