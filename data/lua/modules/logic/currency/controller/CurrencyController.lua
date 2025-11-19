@@ -277,7 +277,7 @@ function CurrencyController:checkFreeDiamondEnoughDaily(needDiamond, srcType, no
 			local deltaDiamond = needDiamond - freeDiamondMo.quantity
 			local msg = MessageBoxConfig.instance:getMessage(MessageBoxIdDefine.FreeDiamondExchange)
 
-			if CurrencyEnum.PayDiamondExchangeSource.Summon then
+			if srcType == CurrencyEnum.PayDiamondExchangeSource.Summon then
 				msg = MessageBoxConfig.instance:getMessage(MessageBoxIdDefine.FreeDiamondNotEnough_Summon)
 			end
 
@@ -343,7 +343,7 @@ function CurrencyController:checkCurrencyExchange(params)
 	local needShowNext = false
 
 	if params.isExchangeStep then
-		needShowNext = CurrencyController.instance:checkExchangeFreeDiamond(params.needDiamond, params.srcType, params.callback, params.callbackObj, params.jumpCallBack, params.jumpCallbackObj, MessageBoxConfig.instance:getMessage(MessageBoxIdDefine.PayDiamondNotEnough_Summon), {
+		needShowNext = CurrencyController.instance:checkExchangeFreeDiamond(params.needDiamond, params.srcType, params.callback, params.callbackObj, params.jumpCallBack, params.jumpCallbackObj, params.srcType == CurrencyEnum.PayDiamondExchangeSource.Summon and MessageBoxConfig.instance:getMessage(MessageBoxIdDefine.PayDiamondNotEnough_Summon) or MessageBoxConfig.instance:getMessage(MessageBoxIdDefine.PayDiamondNotEnough), {
 			params.extra[1]
 		}, params.costData, params.noCallback, params.noCallbackObj)
 	else

@@ -76,6 +76,8 @@ function FightStatItem:onUpdateMO(mo)
 		self:refreshVorpalithInfo()
 	elseif self.entityMO:isASFDEmitter() then
 		self:refreshASFDInfo()
+	elseif self.entityMO:isRouge2Music() then
+		self:refreshRouge2MusicInfo()
 	elseif isAct174Fight then
 		self:refreshAct174Info()
 	elseif isAct191Fight then
@@ -392,6 +394,33 @@ function FightStatItem:refreshASFDInfo()
 	local asfdSkillCo = FightASFDConfig.instance:getSkillCo()
 
 	self._txtName.text = asfdSkillCo.name
+
+	gohelper.setActive(self.goLayout, false)
+	gohelper.setActive(self.goRare, false)
+	gohelper.setActive(self.goCareer, false)
+end
+
+function FightStatItem:refreshRouge2MusicInfo()
+	local iconDict = {
+		[FightEnum.Rouge2Career.Strings] = "77008117",
+		[FightEnum.Rouge2Career.TubularBell] = "77008118",
+		[FightEnum.Rouge2Career.Cymbal] = "77008119",
+		[FightEnum.Rouge2Career.Slapstick] = "77008120"
+	}
+	local career = FightHelper.getRouge2Career()
+	local careerCo = career and lua_rouge2_career.configDict[career]
+
+	if not careerCo then
+		logError("rouge2 career id not exist : " .. tostring(career))
+
+		careerCo = lua_rouge2_career.configList[1]
+	end
+
+	local headIcon = iconDict[career] or "77008118"
+
+	self._heroIcon:LoadImage(ResUrl.getHeadIconSmall(headIcon))
+
+	self._txtName.text = careerCo.name
 
 	gohelper.setActive(self.goLayout, false)
 	gohelper.setActive(self.goRare, false)

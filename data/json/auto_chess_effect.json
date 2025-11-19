@@ -11,7 +11,7 @@
     "target": 0,
     "position": 2,
     "offset": "",
-    "duration": 0.5,
+    "duration": 1.0,
     "soundId": 0
   },
   {
@@ -131,7 +131,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 0.5,
+    "duration": 1.0,
     "soundId": 0
   },
   {

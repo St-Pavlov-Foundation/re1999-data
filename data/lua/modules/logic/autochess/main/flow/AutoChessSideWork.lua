@@ -33,7 +33,6 @@ end
 
 function AutoChessSideWork:onDestroy()
 	self.seqFlow:unregisterDoneListener(self.onDone, self)
-	self.seqFlow:destroy()
 
 	self.seqFlow = nil
 	self.effectList = nil

@@ -113,8 +113,7 @@ function Rouge2_CollectionListItem:_updateNewFlag()
 
 	if reddot.show then
 		Rouge2_OutsideController.instance:addShowRedDot(Rouge2_OutsideEnum.LocalData.Collection, self._mo.id)
-		TaskDispatcher.runDelay(self.onDelayPlayUnlock, self, 1)
-		self.animator:Play("unlock", 0, 0)
+		TaskDispatcher.runDelay(self.onDelayPlayUnlock, self, 0.5)
 	else
 		self.animator:Play("idle", 0, 0)
 	end

@@ -53,6 +53,13 @@ function CruiseModel:isGuestHasReward()
 end
 
 function CruiseModel:getCurDollStage()
+	local actId = VersionActivity3_2Enum.ActivityId.CruiseGlobalTask
+	local status = ActivityHelper.getActivityStatus(actId)
+
+	if status == ActivityEnum.ActivityStatus.Expired then
+		return 4
+	end
+
 	for i = 1, 4 do
 		local taskId = Activity215Config.instance:getStageCO(i).globalTaskId
 		local taskMO = TaskModel.instance:getTaskById(taskId)

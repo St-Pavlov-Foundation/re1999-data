@@ -34,8 +34,11 @@ function AutoChessEffectWork:onStop()
 	if self.damageWork then
 		self.damageWork:onStopInternal()
 	else
-		TaskDispatcher.cancelTask(self.delayAttack, self)
-		TaskDispatcher.cancelTask(self.delayFloatLeader, self)
+		if self.effect.effectType == AutoChessEnum.EffectType.LeaderHpFloat then
+			TaskDispatcher.cancelTask(self.delayAttack, self)
+			TaskDispatcher.cancelTask(self.delayFloatLeader, self)
+		end
+
 		TaskDispatcher.cancelTask(self.finishWork, self)
 	end
 end
@@ -48,19 +51,29 @@ function AutoChessEffectWork:onResume()
 	end
 end
 
+function AutoChessEffectWork:onReset()
+	return
+end
+
 function AutoChessEffectWork:clearWork()
+	if self.hasClear then
+		return
+	end
+
+	self.hasClear = true
+
 	if self.damageWork then
 		self.damageWork:unregisterDoneListener(self.finishWork, self)
 
 		self.damageWork = nil
-	end
+	else
+		if self.effect.effectType == AutoChessEnum.EffectType.LeaderHpFloat then
+			TaskDispatcher.cancelTask(self.delayAttack, self)
+			TaskDispatcher.cancelTask(self.delayFloatLeader, self)
+		end
 
-	TaskDispatcher.cancelTask(self.delayAttack, self)
-	TaskDispatcher.cancelTask(self.delayFloatLeader, self)
-	TaskDispatcher.cancelTask(self.chessCombine1, self)
-	TaskDispatcher.cancelTask(self.chessCombine2, self)
-	TaskDispatcher.cancelTask(self.chessDisband1, self)
-	TaskDispatcher.cancelTask(self.finishWork, self)
+		TaskDispatcher.cancelTask(self.finishWork, self)
+	end
 
 	self.effect = nil
 	self.mgr = nil
@@ -100,6 +113,10 @@ function AutoChessEffectWork:delayFloatLeader()
 end
 
 function AutoChessEffectWork:chessCombine1()
+	if not self.effect then
+		return
+	end
+
 	local uidList = string.split(self.effect.effectString, "#")
 
 	for _, uid in ipairs(uidList) do
@@ -118,6 +135,10 @@ function AutoChessEffectWork:chessCombine1()
 end
 
 function AutoChessEffectWork:chessCombine2()
+	if not self.effect then
+		return
+	end
+
 	local uidList = string.split(self.effect.effectString, "#")
 
 	for _, uid in ipairs(uidList) do
@@ -136,6 +157,10 @@ function AutoChessEffectWork:chessCombine2()
 end
 
 function AutoChessEffectWork:chessDisband1()
+	if not self.effect then
+		return
+	end
+
 	local indexList = string.splitToNumber(self.effect.effectString, "#")
 
 	for k, chess in ipairs(self.effect.chessList) do

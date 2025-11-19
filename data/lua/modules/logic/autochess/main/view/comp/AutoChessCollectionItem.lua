@@ -9,10 +9,12 @@ function AutoChessCollectionItem:init(go)
 	self.simageBg = gohelper.findChildSingleImage(go, "#simage_Bg")
 	self.simageCollection = gohelper.findChildSingleImage(go, "#simage_Collection")
 	self.txtName = gohelper.findChildText(go, "namebg/#txt_Name")
-	self.txtDesc = gohelper.findChildText(go, "scroll_desc/viewport/content/#txt_Desc")
+	self.goScroll = gohelper.findChildScrollRect(go, "#go_Scroll")
+	self.txtDesc = gohelper.findChildText(go, "#go_Scroll/viewport/content/#txt_Desc")
 	self.goNew = gohelper.findChild(go, "#go_New")
 	self.goLock = gohelper.findChild(go, "#go_Lock")
 	self.txtLock = gohelper.findChildText(go, "#go_Lock/#txt_Lock")
+	self.limitScroll = self.goScroll:GetComponent(gohelper.Type_LimitedScrollRect)
 end
 
 function AutoChessCollectionItem:setData(collectionId)
@@ -45,6 +47,14 @@ function AutoChessCollectionItem:refreshNewTag()
 	end
 
 	gohelper.setActive(self.goNew, isNew)
+end
+
+function AutoChessCollectionItem:setScrollParentGo(go)
+	self.limitScroll.parentGameObject = go
+end
+
+function AutoChessCollectionItem:setActive(active)
+	gohelper.setActive(self.go, active)
 end
 
 return AutoChessCollectionItem

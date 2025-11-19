@@ -172,6 +172,10 @@ function AutoChessCard:refreshSell()
 
 	self.meshComp:setData(self.config.image, isEnemy)
 
+	if self.config.type == AutoChessStrEnum.ChessType.Boss then
+		transformhelper.setLocalScale(self._goMesh.transform, -0.5, 0.5, 1)
+	end
+
 	local key = AutoChessEnum.ConstKey.ChessSellPrice
 
 	self._txtSellCoin.text = lua_auto_chess_const.configDict[key].value
@@ -298,26 +302,28 @@ function AutoChessCard:refreshConfigAttr(chessData)
 
 	if chessData then
 		if #chessData.replaceSkillChessIds ~= 0 then
-			local chessId2CntMap = {}
+			local skillId2CntMap = {}
 
 			for _, chessId in ipairs(chessData.replaceSkillChessIds) do
-				if chessId2CntMap[chessId] then
-					chessId2CntMap[chessId] = chessId2CntMap[chessId] + 1
+				if skillId2CntMap[chessId] then
+					skillId2CntMap[chessId] = skillId2CntMap[chessId] + 1
 				else
-					chessId2CntMap[chessId] = 1
+					skillId2CntMap[chessId] = 1
 				end
 			end
 
 			local skillDesc = ""
 			local txt = luaLang("autochess_copyskill_multi")
 
-			for chessId, count in pairs(chessId2CntMap) do
-				local config = AutoChessConfig.instance:getChessCfg(chessId)
+			for skillId, count in pairs(skillId2CntMap) do
+				local config = AutoChessConfig.instance:getChessCfgBySkillId(skillId)
 
-				if count == 1 then
-					skillDesc = string.format("%s%s<br>", skillDesc, config.skillDesc)
-				else
-					skillDesc = string.format("%s%s%s<br>", skillDesc, config.skillDesc, GameUtil.getSubPlaceholderLuaLangOneParam(txt, count))
+				if config then
+					if count == 1 then
+						skillDesc = string.format("%s%s<br>", skillDesc, config.skillDesc)
+					else
+						skillDesc = string.format("%s%s%s<br>", skillDesc, config.skillDesc, GameUtil.getSubPlaceholderLuaLangOneParam(txt, count))
+					end
 				end
 			end
 
@@ -357,6 +363,10 @@ function AutoChessCard:refreshConfigAttr(chessData)
 end
 
 function AutoChessCard:refreshLevelStar(star, curExp, maxExp)
+	if star == 0 then
+		return
+	end
+
 	local txt = luaLang("autochess_malllevelupview_level")
 
 	UISpriteSetMgr.instance:setAutoChessSprite(self._imageLevel, "v2a5_autochess_levelbg_" .. star)

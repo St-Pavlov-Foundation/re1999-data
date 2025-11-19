@@ -21,6 +21,10 @@ function AutoChessHandbookPreviewView:removeEvents()
 	self._btnClose:RemoveClickListener()
 end
 
+function AutoChessHandbookPreviewView:onClickModalMask()
+	self:closeThis()
+end
+
 function AutoChessHandbookPreviewView:onClickClose()
 	self:closeThis()
 end

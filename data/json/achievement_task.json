@@ -7171,7 +7171,7 @@
     "listenerParam": "",
     "maxProgress": 5,
     "sortId": 1,
-    "level": 3,
+    "level": 1,
     "icon": "30003001",
     "image": ""
   },
@@ -7184,7 +7184,7 @@
     "listenerParam": "",
     "maxProgress": 15,
     "sortId": 1,
-    "level": 3,
+    "level": 2,
     "icon": "30003002",
     "image": ""
   },

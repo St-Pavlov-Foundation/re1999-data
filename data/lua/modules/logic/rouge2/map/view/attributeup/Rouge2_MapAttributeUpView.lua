@@ -92,6 +92,9 @@ function Rouge2_MapAttributeUpView:_btnAddOnClick()
 
 	Rouge2_Rpc.instance:sendRouge2AddCareerAttrPointRequest(self._selectAttrId, Rouge2_MapEnum.AddAttrStep, function(__, resultCode)
 		if resultCode ~= 0 then
+			self:_debugErrorInfo()
+			self:closeThis()
+
 			return
 		end
 
@@ -101,9 +104,22 @@ function Rouge2_MapAttributeUpView:_btnAddOnClick()
 		local addAttrPoint = curInteractive and curInteractive.addAttrPoint or 0
 
 		self._addAttrPoint = addAttrPoint or 0
+		self._costAddAttrPoint = self._costAddAttrPoint + 1
 
 		self:_onUpdateAttributeInfo()
 	end)
+end
+
+function Rouge2_MapAttributeUpView:_debugErrorInfo()
+	local attrValue = Rouge2_Model.instance:getAttrValue(self._selectAttrId)
+	local preAddAttrPoint = self._addAttrPoint
+	local curInteractive = Rouge2_MapModel.instance:getCurInteractiveJson()
+	local addAttrPoint = curInteractive and curInteractive.addAttrPoint or 0
+	local curAddAttrPoint = addAttrPoint or 0
+	local eventCo = Rouge2_MapModel.instance:getCurEvent()
+	local eventId = eventCo and eventCo.id or 0
+
+	logError(string.format("肉鸽属性加点参数错误: attrId = %s, attrValue = %s, preAddAttrPoint = %s, curAddAttrPoint = %s, initAttrPoint = %s, costAttrPoint = %s, eventId = %s", self._selectAttrId, attrValue, preAddAttrPoint, curAddAttrPoint, self._initAddAttrPoint, self._costAddAttrPoint, eventId))
 end
 
 function Rouge2_MapAttributeUpView:_onLightAnimDone()
@@ -194,6 +210,8 @@ end
 
 function Rouge2_MapAttributeUpView:initInfo()
 	self._addAttrPoint = self.viewParam and self.viewParam.addAttrPoint or 0
+	self._initAddAttrPoint = self._addAttrPoint or 0
+	self._costAddAttrPoint = 0
 
 	self:initCustomAttrValue()
 	self:initAttrMap()

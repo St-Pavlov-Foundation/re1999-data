@@ -142,8 +142,6 @@ end
 
 function AutoChessEntity:initChessData(data)
 	self.data = data
-	self.data.battle = tonumber(self.data.battle)
-	self.data.hp = tonumber(self.data.hp)
 	self.config = AutoChessConfig.instance:getChessCfgById(data.id, data.star)
 end
 

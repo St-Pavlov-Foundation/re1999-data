@@ -202,6 +202,7 @@ function AutoChessCardpackView:addTabItem2(index, unlockLvl)
 	local go = gohelper.cloneInPlace(goTab)
 
 	tabItem.anim = go:GetComponent(gohelper.Type_Animator)
+	tabItem.goArrow = gohelper.findChild(go, "arrow")
 
 	local simageCardpack = gohelper.findChildSingleImage(go, "cardpack/simage_cardpack")
 
@@ -266,6 +267,10 @@ function AutoChessCardpackView:_btnTabItemOnClick(index, manually)
 
 	for k, tabItem in ipairs(self.tabItemList) do
 		gohelper.setActive(tabItem.goSelect, k == index)
+
+		if tabItem.goArrow then
+			gohelper.setActive(tabItem.goArrow, k == index)
+		end
 	end
 
 	if manually then
@@ -318,14 +323,17 @@ function AutoChessCardpackView:refreshLeader()
 
 		item.meshComp:setData(config.image, false, true)
 
+		local isGray = false
+
 		if config.isSpMaster then
 			local unlockLvl = AutoChessConfig.instance:getLeaderUnlockLevel(id)
 
 			if unlockLvl > self.actMo.warnLevel then
-				item.meshComp:setGray(true)
+				isGray = true
 			end
 		end
 
+		item.meshComp:setGray(isGray)
 		gohelper.setActive(item.go, true)
 	end
 
@@ -433,7 +441,8 @@ function AutoChessCardpackView:_btnLeaderOnClick(index)
 
 		local data = {
 			freshLock = true,
-			leaderId = self.leaderIds[index]
+			leaderId = self.leaderIds[index],
+			tipPos = Vector2(20, 20)
 		}
 
 		self.leaderCard:setData(data)
@@ -472,10 +481,10 @@ function AutoChessCardpackView:_btnChessOnClick(index)
 end
 
 function AutoChessCardpackView:closeTipsView()
-	gohelper.setActive(self.leaderCard.go, false)
-	gohelper.setActive(self.collectionCard.go, false)
-	gohelper.setActive(self.leaderCard.go, self.tipType == 1)
-	gohelper.setActive(self.collectionCard.go, self.tipType == 2)
+	self.leaderCard:setActive(false)
+	self.collectionCard:setActive(false)
+	self.leaderCard:setActive(self.tipType == 1)
+	self.collectionCard:setActive(self.tipType == 2)
 end
 
 function AutoChessCardpackView:refreshSelect()

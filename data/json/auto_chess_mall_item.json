@@ -2282,7 +2282,7 @@
   {
     "id": 32002,
     "goodsId": 32102,
-    "group": 32002,
+    "group": 32001,
     "context": "32102#1",
     "cost": 3,
     "weight": 500,
@@ -2362,7 +2362,7 @@
   {
     "id": 32013,
     "goodsId": 32113,
-    "group": 32002,
+    "group": 32001,
     "context": "32113#1",
     "cost": 3,
     "weight": 500,
@@ -2382,7 +2382,7 @@
   {
     "id": 32015,
     "goodsId": 32115,
-    "group": 32003,
+    "group": 32004,
     "context": "32115#1",
     "cost": 3,
     "weight": 500,
@@ -2422,7 +2422,7 @@
   {
     "id": 32023,
     "goodsId": 32123,
-    "group": 32003,
+    "group": 32001,
     "context": "32123#1",
     "cost": 3,
     "weight": 500,
@@ -2452,7 +2452,7 @@
   {
     "id": 32026,
     "goodsId": 32126,
-    "group": 32004,
+    "group": 32005,
     "context": "32126#1",
     "cost": 3,
     "weight": 500,
@@ -2462,12 +2462,12 @@
   {
     "id": 32027,
     "goodsId": 32127,
-    "group": 32005,
+    "group": 32003,
     "context": "32127#1",
     "cost": 3,
     "weight": 500,
     "order": 27,
-    "cardpackIds": "11001#11007#11002"
+    "cardpackIds": "11002#11007#11006"
   },
   {
     "id": 32031,
@@ -2532,7 +2532,7 @@
   {
     "id": 32037,
     "goodsId": 32207,
-    "group": 32004,
+    "group": 32005,
     "context": "32207#1",
     "cost": 3,
     "weight": 500,
@@ -2542,7 +2542,7 @@
   {
     "id": 32038,
     "goodsId": 32208,
-    "group": 32005,
+    "group": 32004,
     "context": "32208#1",
     "cost": 3,
     "weight": 500,
@@ -2562,7 +2562,7 @@
   {
     "id": 32042,
     "goodsId": 32212,
-    "group": 32002,
+    "group": 32001,
     "context": "32212#1",
     "cost": 3,
     "weight": 500,
@@ -2592,7 +2592,7 @@
   {
     "id": 32045,
     "goodsId": 32215,
-    "group": 32004,
+    "group": 32003,
     "context": "32215#1",
     "cost": 3,
     "weight": 500,
@@ -2992,7 +2992,7 @@
   {
     "id": 32102,
     "goodsId": 32412,
-    "group": 32001,
+    "group": 32002,
     "context": "32412#1",
     "cost": 3,
     "weight": 500,
@@ -3002,7 +3002,7 @@
   {
     "id": 32103,
     "goodsId": 32413,
-    "group": 32002,
+    "group": 32003,
     "context": "32413#1",
     "cost": 3,
     "weight": 500,
@@ -3022,7 +3022,7 @@
   {
     "id": 32105,
     "goodsId": 32415,
-    "group": 32003,
+    "group": 32005,
     "context": "32415#1",
     "cost": 3,
     "weight": 500,
@@ -3162,7 +3162,7 @@
   {
     "id": 32132,
     "goodsId": 32512,
-    "group": 32002,
+    "group": 32003,
     "context": "32512#1",
     "cost": 3,
     "weight": 500,
@@ -3172,7 +3172,7 @@
   {
     "id": 32133,
     "goodsId": 32513,
-    "group": 32003,
+    "group": 32002,
     "context": "32513#1",
     "cost": 3,
     "weight": 500,
@@ -3192,7 +3192,7 @@
   {
     "id": 32135,
     "goodsId": 32515,
-    "group": 32004,
+    "group": 32003,
     "context": "32515#1",
     "cost": 3,
     "weight": 500,
@@ -3202,7 +3202,7 @@
   {
     "id": 32136,
     "goodsId": 32516,
-    "group": 32005,
+    "group": 32004,
     "context": "32516#1",
     "cost": 3,
     "weight": 500,
@@ -3402,7 +3402,7 @@
   {
     "id": 32164,
     "goodsId": 32614,
-    "group": 32003,
+    "group": 32005,
     "context": "32614#1",
     "cost": 3,
     "weight": 500,
@@ -3412,7 +3412,7 @@
   {
     "id": 32165,
     "goodsId": 32615,
-    "group": 32004,
+    "group": 32001,
     "context": "32615#1",
     "cost": 3,
     "weight": 500,
@@ -3422,7 +3422,7 @@
   {
     "id": 32166,
     "goodsId": 32616,
-    "group": 32005,
+    "group": 32004,
     "context": "32616#1",
     "cost": 3,
     "weight": 500,
@@ -3597,7 +3597,7 @@
     "cost": 3,
     "weight": 500,
     "order": 9,
-    "cardpackIds": "11001#11002#11003#11004#11005#11006#11007"
+    "cardpackIds": "11005#11007#11006"
   },
   {
     "id": 32190,

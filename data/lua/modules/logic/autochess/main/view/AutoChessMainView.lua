@@ -64,9 +64,7 @@ end
 
 function AutoChessMainView:_getHasSnapshotReply(_, resultCode)
 	if resultCode == 0 then
-		TaskDispatcher.runDelay(function()
-			AutoChessController.instance:openFriendBattleView()
-		end, nil, 0.16)
+		AutoChessController.instance:openFriendBattleView()
 		self:closeThis()
 	end
 end
@@ -97,6 +95,12 @@ function AutoChessMainView:_btnGiveUpPOnClick()
 		if scoreChange < 0 then
 			scoreStr = string.format("<color=#9f342c>%s</color>", scoreChange)
 		else
+			local limitRank = tonumber(lua_auto_chess_const.configDict[AutoChessEnum.ConstKey.DoubleScoreRank].value)
+
+			if limitRank >= self.actMo.rank and self.actMo.doubleScoreTimes > 0 then
+				scoreChange = scoreChange * 2
+			end
+
 			scoreStr = string.format("<color=#27682e>+%s</color>", scoreChange)
 		end
 
@@ -260,7 +264,7 @@ function AutoChessMainView:onUpdateReddot(idList)
 end
 
 function AutoChessMainView:_checkCultivateReddot()
-	local isShow = RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V2a5_AutoChess)
+	local isShow = RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V2a5_AutoChess, 0)
 
 	if isShow then
 		return true

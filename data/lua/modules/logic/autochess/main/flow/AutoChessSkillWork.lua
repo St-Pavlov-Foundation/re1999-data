@@ -47,20 +47,28 @@ function AutoChessSkillWork:onStart(context)
 	end
 end
 
-function AutoChessSkillWork:onStop()
-	TaskDispatcher.cancelTask(self.finishWork, self)
-end
-
 function AutoChessSkillWork:onResume()
 	self:finishWork()
 end
 
 function AutoChessSkillWork:clearWork()
+	if self.hasClear then
+		return
+	end
+
+	self.hasClear = true
+
 	TaskDispatcher.cancelTask(self.finishWork, self)
+
+	self.step = nil
 end
 
 function AutoChessSkillWork:finishWork()
 	self:onDone(true)
+end
+
+function AutoChessSkillWork:onReset()
+	return
 end
 
 return AutoChessSkillWork

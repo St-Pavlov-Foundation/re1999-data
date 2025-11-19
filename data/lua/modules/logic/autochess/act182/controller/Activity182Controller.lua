@@ -49,7 +49,7 @@ function Activity182Controller:yesCallback()
 	ViewMgr.instance:closeView(ViewName.AutoChessForcePickView)
 	ViewMgr.instance:closeView(ViewName.AutoChessMallView)
 	ViewMgr.instance:closeView(ViewName.AutoChessGameView)
-	AutoChessGameModel.instance:setUsingLeaderSkill(false)
+	AutoChessGameModel.instance:setUsingLeaderSkill(false, nil, true)
 end
 
 Activity182Controller.instance = Activity182Controller.New()

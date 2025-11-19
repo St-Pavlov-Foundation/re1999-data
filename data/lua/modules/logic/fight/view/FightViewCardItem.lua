@@ -232,6 +232,12 @@ function FightViewCardItem:init(go)
 		end
 	end
 
+	if PCInputController.instance:getIsUse() then
+		local x, y = recthelper.getAnchor(self.goTopLayout.transform)
+
+		recthelper.setAnchor(self.goTopLayout.transform, x, y + 50)
+	end
+
 	self.playedHideCardOpenAnim = false
 end
 

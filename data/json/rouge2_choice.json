@@ -12502,7 +12502,7 @@
     "descLose": "14|102203015",
     "interactiveLose": "",
     "descBigSuccess": "15|102203014",
-    "interactiveBigSuccess": "1#20|1#1020",
+    "interactiveBigSuccess": "1#102203015|1#20|1#1020",
     "selectType": 0
   },
   {
@@ -13230,7 +13230,7 @@
     "descLose": "14|103103009",
     "interactiveLose": "5#2#1",
     "descBigSuccess": "15|103103005|1#103103013",
-    "interactiveBigSuccess": "1#20|1#1020",
+    "interactiveBigSuccess": "1#103103005|1#20|1#1020",
     "selectType": 0
   },
   {

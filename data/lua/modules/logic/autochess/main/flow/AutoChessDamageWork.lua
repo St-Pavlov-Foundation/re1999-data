@@ -81,15 +81,17 @@ function AutoChessDamageWork:playBeingAttack()
 	TaskDispatcher.runDelay(self.finishWork, self, 0.5)
 end
 
-function AutoChessDamageWork:onStop()
-	TaskDispatcher.cancelTask(self.finishWork, self)
-end
-
 function AutoChessDamageWork:onResume()
 	self:finishWork()
 end
 
 function AutoChessDamageWork:clearWork()
+	if self.hasClear then
+		return
+	end
+
+	self.hasClear = true
+
 	TaskDispatcher.cancelTask(self.playBeingAttack, self)
 	TaskDispatcher.cancelTask(self.finishWork, self)
 
@@ -98,6 +100,10 @@ end
 
 function AutoChessDamageWork:finishWork()
 	self:onDone(true)
+end
+
+function AutoChessDamageWork:onReset()
+	return
 end
 
 return AutoChessDamageWork

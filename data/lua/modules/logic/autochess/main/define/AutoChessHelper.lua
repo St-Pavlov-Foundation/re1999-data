@@ -59,7 +59,7 @@ function AutoChessHelper.getFightBtnIcon(roundType, bossId)
 end
 
 function AutoChessHelper.getChessQualityBg(type, level)
-	if type == AutoChessStrEnum.ChessType.Attack then
+	if type == AutoChessStrEnum.ChessType.Attack or type == AutoChessStrEnum.ChessType.Boss then
 		return "v2a5_autochess_quality1_" .. level
 	elseif type == AutoChessStrEnum.ChessType.Support then
 		return "v2a5_autochess_quality2_" .. level
@@ -263,6 +263,38 @@ function AutoChessHelper.buildEmptyChess()
 	tbl.id = 0
 
 	return tbl
+end
+
+function AutoChessHelper.copyChess(chess)
+	if tonumber(chess.uid) == 0 then
+		return AutoChessHelper.buildEmptyChess()
+	end
+
+	local copyTbl = {}
+
+	copyTbl.uid = chess.uid
+	copyTbl.id = chess.id
+	copyTbl.star = chess.star
+	copyTbl.exp = chess.exp
+	copyTbl.maxExpLimit = chess.maxExpLimit
+	copyTbl.teamType = chess.teamType
+	copyTbl.status = chess.status
+	copyTbl.battle = tonumber(chess.battle)
+	copyTbl.hp = tonumber(chess.hp)
+	copyTbl.skillContainer = chess.skillContainer
+	copyTbl.buffContainer = chess.buffContainer
+	copyTbl.durability = chess.durability
+	copyTbl.cd = chess.cd
+
+	local skillIds = {}
+
+	for k, id in ipairs(chess.replaceSkillChessIds) do
+		skillIds[k] = id
+	end
+
+	copyTbl.replaceSkillChessIds = skillIds
+
+	return copyTbl
 end
 
 function AutoChessHelper.getUnlockReddot(key, id)

@@ -214,7 +214,7 @@ function AutoChessEffectHandleFunc:_handleExpChange()
 end
 
 function AutoChessEffectHandleFunc:_handleStarChange()
-	local chess = self.effect.chessList[1]
+	local chess = AutoChessHelper.copyChess(self.effect.chessList[1])
 	local chessPos
 
 	if self.context == AutoChessEnum.ContextType.EndBuy or self.context == AutoChessEnum.ContextType.Fight then
@@ -249,9 +249,7 @@ function AutoChessEffectHandleFunc:_handleBattleChange()
 end
 
 function AutoChessEffectHandleFunc:_handleSummon()
-	local chess = self.effect.chessList[1]
-
-	self.mgr:addEntity(self.effect.targetId, chess, self.effect.effectNum)
+	local chess = AutoChessHelper.copyChess(self.effect.chessList[1])
 
 	if self.context == AutoChessEnum.ContextType.EndBuy or self.context == AutoChessEnum.ContextType.Fight then
 		local chessPos = self.chessMo:getChessPosition(tonumber(self.effect.targetId), tonumber(self.effect.effectNum) + 1, self.chessMo.lastSvrFight)
@@ -263,6 +261,7 @@ function AutoChessEffectHandleFunc:_handleSummon()
 		chessPos.chess = chess
 	end
 
+	self.mgr:addEntity(self.effect.targetId, chess, self.effect.effectNum)
 	TaskDispatcher.runDelay(self.finishWork, self, AutoChessEnum.ChessAniTime.born)
 end
 
@@ -401,9 +400,7 @@ function AutoChessEffectHandleFunc:_handleRepleaceSkill()
 	local chessPos = self.chessMo:getChessPosition1(self.effect.fromId)
 	local chessIds = string.splitToNumber(self.effect.effectString, "#")
 
-	for _, chessId in ipairs(chessIds) do
-		table.insert(chessPos.chess.replaceSkillChessIds, chessId)
-	end
+	chessPos.chess.replaceSkillChessIds = chessIds
 
 	self:finishWork()
 end

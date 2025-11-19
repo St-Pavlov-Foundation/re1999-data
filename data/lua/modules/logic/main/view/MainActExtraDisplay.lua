@@ -119,7 +119,7 @@ end
 function MainActExtraDisplay:_onAct182Click()
 	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
 
-	local actId = self._act182ActId
+	local actId = self:_getBindActivityId(ActivityEnum.MainViewActivityState.Act182)
 
 	self:_getEnterController():openVersionActivityEnterViewIfNotOpened(nil, nil, actId)
 end
@@ -164,7 +164,6 @@ function MainActExtraDisplay:_editableInitView()
 	self._rougeActId = rougeActivityConfig and rougeActivityConfig.id
 	self._douququActId = VersionActivity2_3Enum.ActivityId.Act174
 	self._act178ActId = VersionActivity2_4Enum.ActivityId.Pinball
-	self._act182ActId = VersionActivity2_8Enum.ActivityId.AutoChess
 
 	self:_initActs()
 end
@@ -324,14 +323,14 @@ function MainActExtraDisplay:_getAct178StartTime()
 end
 
 function MainActExtraDisplay:_getAct182Status()
-	local actId = self._act182ActId
+	local actId = self:_getBindActivityId(ActivityEnum.MainViewActivityState.Act182)
 	local status = actId and ActivityHelper.getActivityStatus(actId)
 
 	return status == ActivityEnum.ActivityStatus.Normal
 end
 
 function MainActExtraDisplay:_getAct182StartTime()
-	local actId = self._act182ActId
+	local actId = self:_getBindActivityId(ActivityEnum.MainViewActivityState.Act182)
 	local actMo = ActivityModel.instance:getActMO(actId)
 
 	return actMo and actMo:getRealStartTimeStamp() * 1000
@@ -440,7 +439,8 @@ end
 function MainActExtraDisplay:refreshAct182Btn()
 	gohelper.setActive(self._btnrolestory, true)
 
-	local activityConfig = ActivityConfig.instance:getActivityCo(self._act182ActId)
+	local actId = self:_getBindActivityId(ActivityEnum.MainViewActivityState.Act182)
+	local activityConfig = ActivityConfig.instance:getActivityCo(actId)
 
 	self:_roleStoryLoadImage(activityConfig.extraDisplayIcon, self.onLoadImage, self)
 

@@ -5,7 +5,8 @@ module("modules.logic.autochess.main.view.game.AutoChessCollectionView", package
 local AutoChessCollectionView = class("AutoChessCollectionView", BaseView)
 
 function AutoChessCollectionView:onInitView()
-	self._goContent = gohelper.findChild(self.viewGO, "Collection/Viewport/#go_Content")
+	self._scrollCollection = gohelper.findChildScrollRect(self.viewGO, "#scroll_Collection")
+	self._goContent = gohelper.findChild(self.viewGO, "#scroll_Collection/Viewport/#go_Content")
 	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Close")
 
 	if self._editableInitView then
@@ -38,6 +39,7 @@ function AutoChessCollectionView:onOpen()
 			local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, AutoChessCollectionItem)
 
 			item:setData(id)
+			item:setScrollParentGo(self._scrollCollection.gameObject)
 		end
 	end
 end

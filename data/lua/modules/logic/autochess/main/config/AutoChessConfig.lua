@@ -57,6 +57,16 @@ function AutoChessConfig:getItemBuyCost(itemId)
 	end
 end
 
+function AutoChessConfig:getChessCfgBySkillId(skillId)
+	for _, config in ipairs(lua_auto_chess.configList) do
+		if tonumber(config.skillIds) == skillId then
+			return config
+		end
+	end
+
+	logError(string.format("自走棋随从表不存在技能ID为: %s 的配置", skillId))
+end
+
 function AutoChessConfig:getChessCfgById(chessId, star)
 	local chessCfgs = lua_auto_chess.configDict[chessId]
 

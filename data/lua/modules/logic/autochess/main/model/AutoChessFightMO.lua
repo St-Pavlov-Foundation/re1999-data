@@ -39,7 +39,7 @@ function AutoChessFightMO.buildWarZone(warZone)
 
 		posTbl.index = v.index
 		posTbl.teamType = v.teamType
-		posTbl.chess = v.chess
+		posTbl.chess = AutoChessHelper.copyChess(v.chess)
 
 		table.insert(zoneTbl.positions, posTbl)
 	end

@@ -22,6 +22,7 @@ AutoChessSpecialBookView.Type = {
 }
 
 function AutoChessSpecialBookView:_editableInitView()
+	self.goScroll = self._scrollCard.gameObject
 	self.actMo = Activity182Model.instance:getActMo()
 
 	local goWarning = self:getResInst(AutoChessStrEnum.ResPath.WarningItem, self._goWarningContent)
@@ -31,7 +32,6 @@ function AutoChessSpecialBookView:_editableInitView()
 	self.warningItem:refresh()
 
 	self.mixDataList = {}
-	self.leaderItemList = {}
 end
 
 function AutoChessSpecialBookView:onOpen()
@@ -85,14 +85,14 @@ function AutoChessSpecialBookView:onOpen()
 
 			item:setData(param)
 			item:refreshNewTag()
-
-			self.leaderItemList[#self.leaderItemList + 1] = item
+			item:setScrollParentGo(self.goScroll)
 		elseif data.type == AutoChessSpecialBookView.Type.Collection then
 			local goCollection = self:getResInst(AutoChessStrEnum.ResPath.CollectionItem, self._goCardRoot)
 			local item = MonoHelper.addNoUpdateLuaComOnceToGo(goCollection, AutoChessCollectionItem)
 
 			item:setData(id)
 			item:refreshNewTag()
+			item:setScrollParentGo(self.goScroll)
 		end
 
 		if not self.lockIndex and self.actMo.warnLevel < data.unlockLvl then

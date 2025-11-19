@@ -142,7 +142,7 @@ function AutoChessMallView:_btnBackPickOnClick()
 	gohelper.setActive(self._btnFresh, true)
 	gohelper.setActive(self._goLockBtns, true)
 	gohelper.setActive(self._goPickView, false)
-	gohelper.setActive(self._goCollection, true)
+	gohelper.setActive(self._goCollection, self.collectionCnt ~= 0)
 	ViewMgr.instance:openView(ViewName.AutoChessForcePickView, self.freeMall)
 end
 
@@ -570,7 +570,7 @@ function AutoChessMallView:onUsingLeaderSkill(using)
 	gohelper.setActive(self._btnCheckEnemy, not using)
 	gohelper.setActive(self._btnStartFight, not using)
 	gohelper.setActive(self._goRound, not using and not self.bossRound)
-	gohelper.setActive(self._goCollection, not using)
+	gohelper.setActive(self._goCollection, not using and self.collectionCnt ~= 0)
 end
 
 function AutoChessMallView:checkPopUp()
@@ -777,7 +777,9 @@ function AutoChessMallView:refreshCollection()
 		end
 	end
 
-	gohelper.setActive(self._goCollection, count ~= 0)
+	self.collectionCnt = count
+
+	gohelper.setActive(self._goCollection, self.collectionCnt ~= 0)
 end
 
 return AutoChessMallView

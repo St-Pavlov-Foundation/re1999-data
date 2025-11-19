@@ -59,6 +59,8 @@ end
 
 function AutoChessCardpackInfoView:_btnLeftOnClick()
 	if self.selectIndex > 1 then
+		self:_btnCloseTipOnClick()
+
 		self.selectIndex = self.selectIndex - 1
 
 		self:refreshUI()
@@ -67,6 +69,8 @@ end
 
 function AutoChessCardpackInfoView:_btnRightOnClick()
 	if self.selectIndex < self.cardpackCnt then
+		self:_btnCloseTipOnClick()
+
 		self.selectIndex = self.selectIndex + 1
 
 		self:refreshUI()
@@ -156,14 +160,17 @@ function AutoChessCardpackInfoView:refreshLeader()
 
 		item.meshComp:setData(config.image, false, true)
 
+		local isGray = false
+
 		if config.isSpMaster then
 			local unlockLvl = AutoChessConfig.instance:getLeaderUnlockLevel(id)
 
 			if unlockLvl > self.actMo.warnLevel then
-				item.meshComp:setGray(true)
+				isGray = true
 			end
 		end
 
+		item.meshComp:setGray(isGray)
 		gohelper.setActive(item.go, true)
 	end
 
@@ -272,7 +279,8 @@ function AutoChessCardpackInfoView:_btnLeaderOnClick(index)
 
 		local param = {
 			freshLock = true,
-			leaderId = self.leaderIds[index]
+			leaderId = self.leaderIds[index],
+			tipPos = Vector2(20, 20)
 		}
 
 		self.leaderCard:setData(param)
@@ -321,10 +329,10 @@ function AutoChessCardpackInfoView:refreshSelect()
 end
 
 function AutoChessCardpackInfoView:closeTipsView()
-	gohelper.setActive(self.leaderCard.go, false)
-	gohelper.setActive(self.collectionCard.go, false)
-	gohelper.setActive(self.leaderCard.go, self.tipType == 1)
-	gohelper.setActive(self.collectionCard.go, self.tipType == 2)
+	self.leaderCard:setActive(false)
+	self.collectionCard:setActive(false)
+	self.leaderCard:setActive(self.tipType == 1)
+	self.collectionCard:setActive(self.tipType == 2)
 end
 
 return AutoChessCardpackInfoView

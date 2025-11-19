@@ -355,7 +355,7 @@ function GuiModelAgent:setSwitch(switchGroup, switchState)
 end
 
 function GuiModelAgent:playSpecialMotion(motion, loop, mixTime)
-	if self._curModel then
+	if self._curModel and self._isLive2D then
 		self._curModel:stopVoice()
 		self._curModel:setBodyAnimation(motion, loop, mixTime)
 	end

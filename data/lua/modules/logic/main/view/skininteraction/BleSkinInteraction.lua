@@ -526,7 +526,7 @@ function BleSkinInteraction:beforeOnDrag(pos)
 
 	self:_onChangeUVUpdate(self._dragUvValue)
 
-	if distance <= 90 then
+	if distance <= 90 or percent >= 0.95 then
 		self:_onDragSuccess()
 	end
 end
@@ -700,10 +700,10 @@ function BleSkinInteraction:_onDestroy()
 	TaskDispatcher.cancelTask(self._delayExitChangeUV, self)
 	TaskDispatcher.cancelTask(self._playBeginAudio, self)
 
-	if self.tweenId then
-		ZProj.TweenHelper.KillById(self.tweenId)
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
 
-		self.tweenId = nil
+		self._tweenId = nil
 	end
 
 	if self._cameraTweenId then

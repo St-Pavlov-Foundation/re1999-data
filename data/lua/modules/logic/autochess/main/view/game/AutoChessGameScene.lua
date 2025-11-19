@@ -250,6 +250,10 @@ function AutoChessGameScene:onStopFight(stop)
 end
 
 function AutoChessGameScene:onSkipFight()
+	if self.fightFlow then
+		self.fightFlow:stop()
+	end
+
 	self:fightFlowDone()
 end
 
@@ -295,7 +299,12 @@ function AutoChessGameScene:onClickScene()
 
 	if tileY then
 		if self.viewType == AutoChessEnum.ViewType.Enemy then
-			tileY = tileY + 5
+			if self.chessMo.svrFight.roundType == AutoChessEnum.RoundType.BOSS then
+				tileX = 1
+				tileY = 6
+			else
+				tileY = tileY + 5
+			end
 		end
 
 		local fightData = self.viewType == AutoChessEnum.ViewType.All and self.chessMo.lastSvrFight or self.chessMo.svrFight
@@ -324,7 +333,9 @@ function AutoChessGameScene:onClickScene()
 			end
 		end
 
-		AutoChessGameModel.instance:setUsingLeaderSkill(false)
+		if usingLeaderSkill then
+			AutoChessGameModel.instance:setUsingLeaderSkill(false)
+		end
 	else
 		local leader = AutoChessGameModel.instance:getNearestLeader(tempPos)
 

@@ -856,5 +856,27 @@
     "durationDeduction": 0,
     "buffeffectID": 0,
     "downline": false
+  },
+  {
+    "id": 7022,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "SetSkillEffectTimes#Die#2#1",
+    "type": 1009,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 0,
+    "downline": false
+  },
+  {
+    "id": 7023,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "StatureHalo#101#Supernatural#None#-1#Hp:1",
+    "type": 7023,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 40003,
+    "downline": false
   }
 ]

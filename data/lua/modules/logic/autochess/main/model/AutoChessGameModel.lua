@@ -97,11 +97,13 @@ function AutoChessGameModel:setChessAvatar(go)
 	self.avatar = go
 end
 
-function AutoChessGameModel:setUsingLeaderSkill(bool, types)
+function AutoChessGameModel:setUsingLeaderSkill(bool, types, noEvent)
 	self.usingLeaderSkill = bool
 	self.targetTypes = types
 
-	AutoChessController.instance:dispatchEvent(AutoChessEvent.UsingLeaderSkill, bool)
+	if not noEvent then
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.UsingLeaderSkill, bool)
+	end
 end
 
 AutoChessGameModel.instance = AutoChessGameModel.New()

@@ -11,7 +11,8 @@ function AutoChessLeaderCard:init(go)
 	self._txtName = gohelper.findChildText(go, "Leader/namebg/#txt_Name")
 	self._txtHp = gohelper.findChildText(go, "hp/#txt_Hp")
 	self._simageSkill = gohelper.findChildSingleImage(go, "#simage_Skill")
-	self._txtSkillDesc = gohelper.findChildText(go, "scroll_desc/viewport/content/#txt_SkillDesc")
+	self._goScroll = gohelper.findChildScrollRect(go, "#go_Scroll")
+	self._txtSkillDesc = gohelper.findChildText(go, "#go_Scroll/viewport/content/#txt_SkillDesc")
 	self._goTip = gohelper.findChild(go, "#go_Tip")
 	self._btnCloseTip = gohelper.findChildButtonWithAudio(go, "#go_Tip/#btn_CloseTip")
 	self._txtTipTitle = gohelper.findChildText(go, "#go_Tip/#txt_TipTitle")
@@ -22,6 +23,8 @@ function AutoChessLeaderCard:init(go)
 	self.meshComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._goMesh, AutoChessMeshComp)
 
 	SkillHelper.addHyperLinkClick(self._txtSkillDesc, self.clcikHyperLink, self)
+
+	self._limitScroll = self._goScroll:GetComponent(gohelper.Type_LimitedScrollRect)
 end
 
 function AutoChessLeaderCard:addEventListeners()
@@ -163,8 +166,10 @@ function AutoChessLeaderCard:refreshSkillDesc2(leader)
 	self._txtSkillDesc.text = AutoChessHelper.buildSkillDesc(skillDesc) .. skillProDesc .. skillLockDesc
 end
 
-function AutoChessLeaderCard:closeTip()
-	if self._goTip.activeInHierarchy then
+function AutoChessLeaderCard:setActive(active)
+	gohelper.setActive(self.go, active)
+
+	if not active and self._goTip.activeInHierarchy then
 		gohelper.setActive(self._goTip, false)
 	end
 end
@@ -177,6 +182,10 @@ function AutoChessLeaderCard:refreshNewTag()
 	end
 
 	gohelper.setActive(self._goNew, isNew)
+end
+
+function AutoChessLeaderCard:setScrollParentGo(go)
+	self._limitScroll.parentGameObject = go
 end
 
 return AutoChessLeaderCard

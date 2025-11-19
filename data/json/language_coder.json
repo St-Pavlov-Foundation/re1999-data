@@ -1765,15 +1765,15 @@
   },
   {
     "id": "not_purchase",
-    "lang": "尚未购买"
+    "lang": "尚未购买月历"
   },
   {
     "id": "not_enough_one_day",
-    "lang": "不足一天"
+    "lang": "月历不足一天"
   },
   {
     "id": "remain_day",
-    "lang": "剩余%d天"
+    "lang": "月历剩余%d天"
   },
   {
     "id": "today_reward",
@@ -7641,7 +7641,7 @@
   },
   {
     "id": "autochess_warnlevel_unlock",
-    "lang": "警戒度达到lv.▩1%s解锁"
+    "lang": "警戒值达到lv.▩1%s解锁"
   },
   {
     "id": "autochess_beginview_btn1",

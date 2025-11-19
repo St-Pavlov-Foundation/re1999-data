@@ -173,6 +173,7 @@ function AutoChessFriendBattleView:requestNewFriendSnapshot(userId)
 end
 
 function AutoChessFriendBattleView:onClickGoFight()
+	AutoChessController.instance:openMainView()
 	self:closeThis()
 end
 
