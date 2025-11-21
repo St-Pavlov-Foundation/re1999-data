@@ -118,7 +118,7 @@
   },
   {
     "id": 3001001,
-    "cost": "",
+    "cost": "coin#0",
     "type": "active",
     "passiveChessSkills": "",
     "activeChessSkill": "",
@@ -653,7 +653,7 @@
     "id": 3005101,
     "cost": "",
     "type": "passive",
-    "passiveChessSkills": "",
+    "passiveChessSkills": "32200017",
     "activeChessSkill": "",
     "abilities": "",
     "skillaction": "jump",
