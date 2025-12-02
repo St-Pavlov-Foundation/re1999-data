@@ -68,7 +68,12 @@ function RoomBlockChangeColorComp:_refreshFullRiver(tempMO)
 	end
 
 	for i = 1, 6 do
-		local linkType, defineBlockType, defineBlockBType = tempMO:getResourceTypeRiver(i, true)
+		local linkType, defineBlockType, defineBlockBType
+		local resourceId = tempMO:getResourceId(i, true)
+
+		if resourceId == RoomResourceEnum.ResourceId.River then
+			linkType, defineBlockType, defineBlockBType = tempMO:getResourceTypeRiver(i, true)
+		end
 
 		if linkType then
 			if defineBlockType then

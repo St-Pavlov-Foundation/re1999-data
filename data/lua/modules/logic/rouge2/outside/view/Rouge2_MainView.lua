@@ -122,8 +122,6 @@ function Rouge2_MainView:enterGame()
 	else
 		self:checkFormula()
 	end
-
-	Rouge2_StatController.instance:statStart()
 end
 
 function Rouge2_MainView:checkFormula()

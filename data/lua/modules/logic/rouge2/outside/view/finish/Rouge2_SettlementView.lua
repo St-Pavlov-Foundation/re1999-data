@@ -441,7 +441,7 @@ function Rouge2_SettlementView:releaseAllBadgeItems()
 end
 
 function Rouge2_SettlementView:onClose()
-	return
+	AudioMgr.instance:trigger(AudioEnum.Rouge2.stop_ui_qiutu_progress_loop)
 end
 
 function Rouge2_SettlementView:onDestroyView()

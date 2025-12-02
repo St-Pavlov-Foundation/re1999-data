@@ -228,6 +228,17 @@ function EquipChooseListModel._sortNormalEquip(a, b)
 	end
 end
 
+function EquipChooseListModel._sortExpEquip(a, b)
+	local rareA = a.config.rare
+	local rareB = b.config.rare
+
+	if rareA ~= rareB then
+		return rareA < rareB
+	else
+		return a.config.id < b.config.id
+	end
+end
+
 function EquipChooseListModel:canFastAdd(equipMo)
 	if equipMo.isLock then
 		return false
@@ -412,9 +423,7 @@ function EquipChooseListModel:fastAddEquip()
 	local normalEquipCount = #normalEquipList
 
 	if expEquipCount ~= 0 then
-		table.sort(expEquipList, function(a, b)
-			return a.config.rare < b.config.rare
-		end)
+		table.sort(expEquipList, EquipChooseListModel._sortExpEquip)
 	end
 
 	if normalEquipCount ~= 0 then

@@ -7167,7 +7167,7 @@
     "title": "跟随他们",
     "desc": "【力量检定】成功随机获得1点感知或激情属性",
     "descSuccess": "13|10|100106013",
-    "interactiveSuccess": "1#1112",
+    "interactiveSuccess": "1#1112|1#1106",
     "display": "",
     "descLose": "14|10|100106014",
     "interactiveLose": "1#1106",

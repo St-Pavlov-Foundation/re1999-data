@@ -361,39 +361,10 @@ function AutoChessEffectHandleFunc:_handleChessCd()
 end
 
 function AutoChessEffectHandleFunc:_handleChessCombine()
-	if tonumber(self.effect.targetId) == 1 then
-		local chessEntity = self.mgr:getEntity(self.effect.fromId)
+	self.combineWork = AutoChessCombineWork.New(self.effect)
 
-		if chessEntity then
-			self.bornWarzone = chessEntity.warZone
-			self.bornIndex = chessEntity.index
-
-			local uidList = string.split(self.effect.effectString, "#")
-
-			for _, uid in ipairs(uidList) do
-				if uid ~= self.effect.targetId then
-					local entity = self.mgr:getEntity(uid)
-
-					if entity then
-						entity:move(self.bornIndex)
-					end
-				end
-			end
-
-			TaskDispatcher.runDelay(self.chessCombine1, self, AutoChessEnum.ChessAniTime.jump)
-		else
-			self:finishWork()
-		end
-	else
-		self.bornWarzone = tonumber(self.effect.fromId)
-		self.bornIndex = tonumber(self.effect.effectNum)
-
-		for _, chess in ipairs(self.effect.chessList) do
-			self.mgr:addEntity(self.bornWarzone, chess, self.bornIndex)
-		end
-
-		TaskDispatcher.runDelay(self.chessDisband1, self, AutoChessEnum.ChessAniTime.born)
-	end
+	self.combineWork:registerDoneListener(self.finishWork, self)
+	self.combineWork:onStart()
 end
 
 function AutoChessEffectHandleFunc:_handleRepleaceSkill()

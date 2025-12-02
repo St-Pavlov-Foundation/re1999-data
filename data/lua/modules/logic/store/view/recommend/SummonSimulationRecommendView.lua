@@ -36,11 +36,13 @@ function SummonSimulationRecommendView:removeEvents()
 end
 
 function SummonSimulationRecommendView:_btnbuyOnClick()
+	self:statClick()
 	GameFacade.jumpByAdditionParam(self.config.systemJumpCode)
 	AudioMgr.instance:trigger(2000001)
 end
 
 function SummonSimulationRecommendView:_btndetailOnClick()
+	self:statClick()
 	SummonSimulationPickController.instance:openSummonTips(ActivityEnum.Activity.V3a2_SummonSimulationPick)
 end
 
@@ -82,6 +84,15 @@ end
 function SummonSimulationRecommendView:refreshUI()
 	self.config = self.config or StoreConfig.instance:getStoreRecommendConfig(StoreEnum.RecommendSubStoreId.SummonSimulationPick)
 	self._txtdurationTime.text = StoreController.instance:getRecommendStoreTime(self.config)
+end
+
+function SummonSimulationRecommendView:statClick()
+	StatController.instance:track(StatEnum.EventName.ClickRecommendPage, {
+		[StatEnum.EventProperties.RecommendPageType] = StatEnum.RecommendType.Store,
+		[StatEnum.EventProperties.RecommendPageId] = tostring(self.config and self.config.id or ""),
+		[StatEnum.EventProperties.RecommendPageName] = self.config and self.config.name or self.__cname,
+		[StatEnum.EventProperties.RecommendPageRank] = self:getTabIndex()
+	})
 end
 
 function SummonSimulationRecommendView:onDestroyView()

@@ -33,46 +33,35 @@ end
 function AutoChessEffectWork:onStop()
 	if self.damageWork then
 		self.damageWork:onStopInternal()
-	else
-		if self.effect.effectType == AutoChessEnum.EffectType.LeaderHpFloat then
-			TaskDispatcher.cancelTask(self.delayAttack, self)
-			TaskDispatcher.cancelTask(self.delayFloatLeader, self)
-		end
-
-		TaskDispatcher.cancelTask(self.finishWork, self)
+	elseif self.combineWork then
+		self.combineWork:onStopInternal()
+	elseif self.effect and self.effect.effectType == AutoChessEnum.EffectType.LeaderHpFloat then
+		TaskDispatcher.cancelTask(self.delayAttack, self)
+		TaskDispatcher.cancelTask(self.delayFloatLeader, self)
 	end
+
+	TaskDispatcher.cancelTask(self.finishWork, self)
 end
 
 function AutoChessEffectWork:onResume()
 	if self.damageWork then
 		self.damageWork:onResumeInternal()
+	elseif self.combineWork then
+		self.combineWork:onResumeInternal()
 	else
 		self:finishWork()
 	end
 end
 
-function AutoChessEffectWork:onReset()
-	return
-end
-
 function AutoChessEffectWork:clearWork()
-	if self.hasClear then
-		return
-	end
-
-	self.hasClear = true
-
 	if self.damageWork then
 		self.damageWork:unregisterDoneListener(self.finishWork, self)
 
 		self.damageWork = nil
-	else
-		if self.effect.effectType == AutoChessEnum.EffectType.LeaderHpFloat then
-			TaskDispatcher.cancelTask(self.delayAttack, self)
-			TaskDispatcher.cancelTask(self.delayFloatLeader, self)
-		end
+	elseif self.combineWork then
+		self.combineWork:unregisterDoneListener(self.finishWork, self)
 
-		TaskDispatcher.cancelTask(self.finishWork, self)
+		self.combineWork = nil
 	end
 
 	self.effect = nil
@@ -110,73 +99,6 @@ function AutoChessEffectWork:delayFloatLeader()
 	else
 		self:finishWork()
 	end
-end
-
-function AutoChessEffectWork:chessCombine1()
-	if not self.effect then
-		return
-	end
-
-	local uidList = string.split(self.effect.effectString, "#")
-
-	for _, uid in ipairs(uidList) do
-		local entity = self.mgr:getEntity(uid)
-
-		if entity then
-			entity:die()
-		end
-
-		local chessPos = self.chessMo:getChessPosition1(uid, self.chessMo.lastSvrFight)
-
-		chessPos.chess = AutoChessHelper.buildEmptyChess()
-	end
-
-	TaskDispatcher.runDelay(self.chessCombine2, self, AutoChessEnum.ChessAniTime.die)
-end
-
-function AutoChessEffectWork:chessCombine2()
-	if not self.effect then
-		return
-	end
-
-	local uidList = string.split(self.effect.effectString, "#")
-
-	for _, uid in ipairs(uidList) do
-		self.mgr:removeEntity(uid)
-	end
-
-	local chess = self.effect.chessList[1]
-
-	self.mgr:addEntity(self.bornWarzone, chess, self.bornIndex)
-
-	local chessPos = self.chessMo:getChessPosition(self.bornWarzone, self.bornIndex + 1, self.chessMo.lastSvrFight)
-
-	chessPos.chess = chess
-
-	TaskDispatcher.runDelay(self.finishWork, self, AutoChessEnum.ChessAniTime.born)
-end
-
-function AutoChessEffectWork:chessDisband1()
-	if not self.effect then
-		return
-	end
-
-	local indexList = string.splitToNumber(self.effect.effectString, "#")
-
-	for k, chess in ipairs(self.effect.chessList) do
-		local index = indexList[k]
-		local entity = self.mgr:getEntity(chess.uid)
-
-		if entity then
-			entity:move(index)
-		end
-
-		local chessPos = self.chessMo:getChessPosition(self.bornWarzone, index + 1, self.chessMo.lastSvrFight)
-
-		chessPos.chess = chess
-	end
-
-	TaskDispatcher.runDelay(self.finishWork, self, AutoChessEnum.ChessAniTime.jump)
 end
 
 return AutoChessEffectWork

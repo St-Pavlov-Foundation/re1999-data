@@ -217,6 +217,11 @@ function FightConfig:onConfigLoaded(configName, configTable)
 			local str = string.split(config.skill, ",")[1]
 
 			config.skill = str
+
+			if config.id == 3135 then
+				config.skill = "1#31350111#31350112#31350113|2#31350121#31350122#31350123"
+			end
+
 			metatable.__newindex = errorFunc
 		end
 	end

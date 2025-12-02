@@ -3052,6 +3052,7 @@ setNeedLoadModule("modules.logic.autochess.main.controller.AutoChessEvent", "Aut
 setNeedLoadModule("modules.logic.autochess.main.define.AutoChessEnum", "AutoChessEnum")
 setNeedLoadModule("modules.logic.autochess.main.define.AutoChessHelper", "AutoChessHelper")
 setNeedLoadModule("modules.logic.autochess.main.define.AutoChessStrEnum", "AutoChessStrEnum")
+setNeedLoadModule("modules.logic.autochess.main.flow.AutoChessCombineWork", "AutoChessCombineWork")
 setNeedLoadModule("modules.logic.autochess.main.flow.AutoChessDamageWork", "AutoChessDamageWork")
 setNeedLoadModule("modules.logic.autochess.main.flow.AutoChessEffectHandleFunc", "AutoChessEffectHandleFunc")
 setNeedLoadModule("modules.logic.autochess.main.flow.AutoChessEffectWork", "AutoChessEffectWork")

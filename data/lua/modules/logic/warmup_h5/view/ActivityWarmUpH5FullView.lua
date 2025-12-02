@@ -24,6 +24,10 @@ function ActivityWarmUpH5FullView:removeEvents()
 end
 
 function ActivityWarmUpH5FullView:_btnclickOnClick()
+	StatController.instance:track(StatEnum.EventName.ButtonClick, {
+		[StatEnum.EventProperties.ViewName] = "版本H5预热页",
+		[StatEnum.EventProperties.ButtonName] = "点击参与"
+	})
 	SDKDataTrackMgr.instance:trackClickActivityJumpButton()
 
 	local baseUrl = self.viewContainer:getH5BaseUrl()

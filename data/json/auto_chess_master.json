@@ -1000,7 +1000,7 @@
     "totalTriggerCountLimit": 0,
     "skillName": "",
     "skillIcon": "30054",
-    "skillDesc": "被动：购买工厂棋子后，使随机1个工厂棋子永久获得+攻击和+1生命",
+    "skillDesc": "被动：购买工厂棋子后，使随机1个工厂棋子永久获得+1攻击和+1生命",
     "skillProgressDesc": "",
     "skillLockDesc": "",
     "udimoCase": "",

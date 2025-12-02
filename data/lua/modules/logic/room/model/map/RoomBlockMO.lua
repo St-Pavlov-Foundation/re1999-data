@@ -390,7 +390,7 @@ function RoomBlockMO:getResourceTypeRiver(direction, withoutRotate)
 
 	direction = withoutRotate and RoomRotateHelper.rotateDirection(direction, self:getRotate()) or direction
 
-	local riverType = self._riverTypeDict[direction]
+	local riverType = self._riverTypeDict and self._riverTypeDict[direction]
 	local blockType = self._neighborBlockTypeDict and self._neighborBlockTypeDict[direction]
 	local blockBtype = self._neighborBlockBTypeDict and self._neighborBlockBTypeDict[direction]
 

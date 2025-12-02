@@ -16,6 +16,7 @@ end
 
 function Rouge2_SceneDirector:onMapLoadDone()
 	self._scene:onPrepared()
+	Rouge2_StatController.instance:statStart()
 end
 
 function Rouge2_SceneDirector:onSceneClose()

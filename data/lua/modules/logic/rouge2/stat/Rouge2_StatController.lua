@@ -4,6 +4,14 @@ module("modules.logic.rouge2.stat.Rouge2_StatController", package.seeall)
 
 local Rouge2_StatController = class("Rouge2_StatController", BaseController)
 
+function Rouge2_StatController:onInit()
+	self:quitMap()
+end
+
+function Rouge2_StatController:reInit()
+	self:onInit()
+end
+
 function Rouge2_StatController:addConstEvents()
 	Rouge2_MapController.instance:registerCallback(Rouge2_MapEvent.onNodeEventStatusChange, self._onNodeEventStatusChange, self)
 	Rouge2_MapController.instance:registerCallback(Rouge2_MapEvent.onBeforeSendMoveRpc, self._beforeMoveEvent, self)
@@ -617,10 +625,18 @@ function Rouge2_StatController:getBadgeName()
 end
 
 function Rouge2_StatController:statStart()
+	if self._isStart then
+		return
+	end
+
 	self.startTime = ServerTime.now()
 	self._isStart = true
 	self._isReset = false
 	self._failResult = nil
+end
+
+function Rouge2_StatController:quitMap()
+	self._isStart = false
 end
 
 function Rouge2_StatController:checkIsReset()
